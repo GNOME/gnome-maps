@@ -1,5 +1,5 @@
 # This file is processed by autoconf to create a configure script
-AC_INIT([Gnome Maps], 1.0)
+AC_INIT([Maps], 1.0)
 AM_INIT_AUTOMAKE([1.10 no-define foreign dist-xz no-dist-gzip])
 AC_CONFIG_FILES([Makefile gnome-maps.desktop])
 AC_OUTPUT

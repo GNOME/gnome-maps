@@ -1,6 +1,6 @@
 # The actual runnable program is set to the SCRIPTS primitive.
 # # Prefix bin_ tells where to copy this
-bin_SCRIPTS = gnome-maps
+bin_SCRIPTS = src/gnome-maps
 # # List of files to be distributed
 EXTRA_DIST=  \
 	$(bin_SCRIPTS)
