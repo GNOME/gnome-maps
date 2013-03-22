@@ -31,7 +31,7 @@ AC_CONFIG_FILES([
     Makefile
     src/Makefile
     data/Makefile
-    data/gnome-maps.desktop
+    data/gnome-maps.desktop.in
     data/icons/Makefile
     po/Makefile.in
 ])
