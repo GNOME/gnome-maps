@@ -1,3 +1,5 @@
+SUBDIRS = icons
+
 # The desktop files
 desktopdir = $(datadir)/applications
 desktop_DATA = \

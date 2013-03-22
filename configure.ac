@@ -32,6 +32,7 @@ AC_CONFIG_FILES([
     src/Makefile
     data/Makefile
     data/gnome-maps.desktop
+    data/icons/Makefile
     po/Makefile.in
 ])
 AC_OUTPUT
