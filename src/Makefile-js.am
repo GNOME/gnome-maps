@@ -1,0 +1,27 @@
+jsdir = $(pkgdatadir)/js/
+dist_js_DATA = \
+    application.js \
+    main.js \
+    mainWindow.js \
+    path.js \
+    utils.js
+
+BUILT_SOURCES += \
+    path.js \
+    config.js
+
+path.js: Makefile path.js.in
+	$(AM_V_GEN) $(do_subst) $(srcdir)/path.js.in > $@
+config.js: Makefile config.js.in
+	$(AM_V_GEN) $(do_subst) $(srcdir)/config.js.in > $@
+
+nodist_js_DATA = \
+    path.js \
+    config.js
+
+CLEANFILES += \
+    $(BUILT_SOURCES)
+
+EXTRA_DIST += \
+    path.js.in \
+    config.js.in
