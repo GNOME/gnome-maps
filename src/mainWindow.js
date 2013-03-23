@@ -22,7 +22,9 @@
 const Gdk = imports.gi.Gdk;
 const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
+const Champlain = imports.gi.Champlain;
 const GtkChamplain = imports.gi.GtkChamplain;
+const Geocode = imports.gi.GeocodeGlib;
 
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
@@ -83,8 +85,23 @@ const MainWindow = new Lang.Class({
         this._embed.show_all();
         this.window.add(this._embed);
 
-        let view = this._embed.get_view();
-        view.set_zoom_level(3);
+        this._view = this._embed.get_view();
+        this._view.set_zoom_level(3);
+
+        let ipclient = new Geocode.Ipclient();
+        ipclient.server = "http://freegeoip.net/json/";
+        ipclient.search_async(null, Lang.bind(this, this._onSearchComplete));
+    },
+
+    _onSearchComplete: function(ipclient, res) {
+        try {
+            let location = ipclient.search_finish(res);
+            this._view.center_on(location.latitude, location.longitude);
+
+            this._view.set_zoom_level(10);
+        } catch (e) {
+            log("Failed to find your location: " + e);
+        }
     },
 
     _saveWindowGeometry: function() {
