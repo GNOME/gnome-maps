@@ -80,7 +80,7 @@ const MainWindow = new Lang.Class({
                             Lang.bind(this, this._onWindowStateEvent));
 
         this._embed = new GtkChamplain.Embed();
-        this._embed.show_all ();
+        this._embed.show_all();
         this.window.add(this._embed);
     },
 
