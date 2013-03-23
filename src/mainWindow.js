@@ -82,6 +82,9 @@ const MainWindow = new Lang.Class({
         this._embed = new GtkChamplain.Embed();
         this._embed.show_all();
         this.window.add(this._embed);
+
+        let view = this._embed.get_view();
+        view.set_zoom_level(3);
     },
 
     _saveWindowGeometry: function() {
