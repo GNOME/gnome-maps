@@ -22,6 +22,12 @@ PKG_PROG_PKG_CONFIG([0.22])
 AM_GNU_GETTEXT([external])
 AM_GNU_GETTEXT_VERSION([0.17])
 
+# no stupid static libraries
+AM_DISABLE_STATIC
+# enable libtool
+AC_PROG_LIBTOOL
+# avoid libtool for LTCOMPILE, use it only to link
+
 GLIB_GSETTINGS
 
 GJS_CONSOLE=`$PKG_CONFIG --variable=gjs_console gjs-1.0`
