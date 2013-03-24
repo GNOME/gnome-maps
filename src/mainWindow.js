@@ -95,10 +95,11 @@ const MainWindow = new Lang.Class({
 
     _onSearchComplete: function(ipclient, res) {
         try {
-            let location = ipclient.search_finish(res);
+            let [location, accuracy] = ipclient.search_finish(res);
             this._view.center_on(location.latitude, location.longitude);
 
-            this._view.set_zoom_level(10);
+            let zoom = Utils.getZoomLevelForAccuracy(accuracy);
+            this._view.set_zoom_level(zoom);
         } catch (e) {
             log("Failed to find your location: " + e);
         }

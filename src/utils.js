@@ -21,6 +21,7 @@
 
 const GLib = imports.gi.GLib;
 const Signals = imports.signals;
+const Geocode = imports.gi.GeocodeGlib;
 
 let debugInit = false;
 let debugEnabled = false;
@@ -43,4 +44,20 @@ function addJSSignalMethods(proto) {
     proto.disconnectJS = Signals._disconnect;
     proto.emitJS = Signals._emit;
     proto.disconnectAllJS = Signals._disconnectAll;
+}
+
+// accuracy: Geocode.LocationAccuracy
+function getZoomLevelForAccuracy(accuracy) {
+    switch (accuracy) {
+    case Geocode.LocationAccuracy.STREET:
+        return 18;
+    case Geocode.LocationAccuracy.CITY:
+        return 13;
+    case Geocode.LocationAccuracy.REGION:
+        return 10;
+    case Geocode.LocationAccuracy.COUNTRY:
+        return 6;
+    default:
+        return 3;
+    }
 }
