@@ -30,6 +30,7 @@ const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
+const MainToolbar = imports.mainToolbar;
 const Utils = imports.utils;
 const Config = imports.config;
 
@@ -81,9 +82,16 @@ const MainWindow = new Lang.Class({
         this.window.connect('window-state-event',
                             Lang.bind(this, this._onWindowStateEvent));
 
+        let grid = new Gtk.Grid ();
+        grid.set_orientation (Gtk.Orientation.VERTICAL);
+        this.window.add(grid);
+
+        this._toolbar = new MainToolbar.MainToolbar ();
+        grid.add(this._toolbar.widget);
+
         this._embed = new GtkChamplain.Embed();
-        this._embed.show_all();
-        this.window.add(this._embed);
+        grid.add(this._embed);
+        grid.show_all();
 
         this._view = this._embed.get_view();
         this._view.set_zoom_level(3);
