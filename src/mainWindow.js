@@ -86,15 +86,16 @@ const MainWindow = new Lang.Class({
         grid.set_orientation (Gtk.Orientation.VERTICAL);
         this.window.add(grid);
 
-        this._toolbar = new MainToolbar.MainToolbar ();
-        grid.add(this._toolbar.widget);
-
         this._embed = new GtkChamplain.Embed();
-        grid.add(this._embed);
-        grid.show_all();
+        this.view = this._embed.get_view();
+        this.view.set_zoom_level(3);
 
-        this._view = this._embed.get_view();
-        this._view.set_zoom_level(3);
+        this._toolbar = new MainToolbar.MainToolbar (this);
+
+        grid.add(this._toolbar.widget);
+        grid.add(this._embed);
+
+        grid.show_all();
 
         let ipclient = new Geocode.Ipclient();
         ipclient.server = "http://freegeoip.net/json/";
@@ -104,10 +105,10 @@ const MainWindow = new Lang.Class({
     _onSearchComplete: function(ipclient, res) {
         try {
             let [location, accuracy] = ipclient.search_finish(res);
-            this._view.center_on(location.latitude, location.longitude);
+            this.view.center_on(location.latitude, location.longitude);
 
             let zoom = Utils.getZoomLevelForAccuracy(accuracy);
-            this._view.set_zoom_level(zoom);
+            this.view.set_zoom_level(zoom);
         } catch (e) {
             log("Failed to find your location: " + e);
         }
