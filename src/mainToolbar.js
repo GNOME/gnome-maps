@@ -57,15 +57,19 @@ const MainToolbar = new Lang.Class({
         let forward = Geocode.Forward.new_for_string(str);
         this._markerLayer.remove_all();
 
+
+        forward.search_async (null, Lang.bind(this, this._onSearchComplete));
+    },
+
+    _onSearchComplete: function(forward, res) {
         let locations = [];
 
         try {
-            locations = forward.search ();
+            locations = forward.search_finish(res);
         } catch (e) {
             log ("Failed to search '" + str + "': " + e.message);
             return;
         }
-
         log (locations.length + " locations found");
         if (locations.length == 0)
             return;
