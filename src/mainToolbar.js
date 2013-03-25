@@ -38,14 +38,13 @@ const MainToolbar = new Lang.Class({
         this._model = null;
         this._mainWindow = mainWindow;
 
-        this.widget = new Gd.TaggedEntry({ width_request: 500 });
-        this.widget.set_halign(Gtk.Align.CENTER);
-        this.widget.set_hexpand(true);
-        this.widget.set_margin_top(10);
-        this.widget.set_margin_bottom(10);
-        this.widget.show();
+        this._entry = new Gd.TaggedEntry({ width_request: 500 });
+        this._entry.show();
 
-        this.widget.connect('activate', Lang.bind(this, this._onSearchActivate));
+        this._entry.connect('activate', Lang.bind(this, this._onSearchActivate));
+
+        this.widget = new Gd.HeaderBar();
+        this.widget.set_custom_title(this._entry);
 
         this._markerLayer = new Champlain.MarkerLayer();
         this._markerLayer.set_selection_mode(Champlain.SelectionMode.SINGLE);
@@ -53,7 +52,7 @@ const MainToolbar = new Lang.Class({
     },
 
     _onSearchActivate: function() {
-        let str = this.widget.get_text();
+        let str = this._entry.get_text();
         let forward = Geocode.Forward.new_for_string(str);
         this._markerLayer.remove_all();
 

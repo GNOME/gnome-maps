@@ -37,6 +37,7 @@ GJS_CONSOLE=`$PKG_CONFIG --variable=gjs_console gjs-1.0`
 AC_SUBST(GJS_CONSOLE)
 
 LIBGD_INIT([
+  header-bar
   tagged-entry
   gir
 ])
