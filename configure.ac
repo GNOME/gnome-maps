@@ -1,5 +1,8 @@
 # This file is processed by autoconf to create a configure script
-AC_INIT([gnome-maps], 3.7.2)
+AC_INIT([gnome-maps],
+        [3.7.2],
+        [https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-maps],
+        [gnome-maps])
 
 AC_CONFIG_HEADERS([config/config.h])
 AC_CONFIG_SRCDIR([src/main.js])
