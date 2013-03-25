@@ -11,6 +11,8 @@ public_icons =					\
 	hicolor_apps_32x32_gnome-maps.png	\
 	hicolor_apps_48x48_gnome-maps.png	\
 	hicolor_apps_256x256_gnome-maps.png	\
+	sidebar-symbolic.svg			\
+	compass-symbolic.svg			\
 	$(NULL)
 
 noinst_DATA =					\
