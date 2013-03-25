@@ -91,9 +91,10 @@ const Application = new Lang.Class({
     },
 
     _initAppMenu: function() {
-        let menu = new Gio.Menu ();
-        menu.append(_("About Maps"), "app.about");
-        menu.append(_("Quit"), "app.quit");
+        let builder = new Gtk.Builder();
+        builder.add_from_resource('/org/gnome/maps/app-menu.ui');
+
+        let menu = builder.get_object('app-menu');
         this.set_app_menu(menu);
     },
 
@@ -103,6 +104,9 @@ const Application = new Lang.Class({
 
         GtkClutter.init(null);
 
+        let resource = Gio.Resource.load(Path.RESOURCE_DIR + '/gnome-maps.gresource');
+        resource._register();
+
         application = this;
         settings = new Gio.Settings({ schema: 'org.gnome.maps' });
 
@@ -110,8 +114,7 @@ const Application = new Lang.Class({
             { name: 'about',
               callback: this._onActionAbout },
             { name: 'quit',
-              callback: this._onActionQuit,
-              accel: '<Primary>q' }
+              callback: this._onActionQuit }
         ];
 
         this._initActions();

@@ -30,6 +30,16 @@ do_subst = sed -e 's|@abs_top_srcdir[@]|$(abs_top_srcdir)|g' \
 include $(INTROSPECTION_MAKEFILE)
 include Makefile-js.am
 
+resource_files = $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/gnome-maps.gresource.xml)
+gnome-maps.gresource: gnome-maps.gresource.xml $(resource_files)
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) $<
+EXTRA_DIST += gnome-maps.gresource.xml $(resource_files)
+
+resourcedir = $(pkgdatadir)
+resource_DATA = gnome-maps.gresource
+
+CLEANFILES += gnome-maps.gresource
+
 bin_SCRIPTS = gnome-maps
 
 gnome-maps: gnome-maps.in
