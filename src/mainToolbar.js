@@ -38,22 +38,22 @@ const MainToolbar = new Lang.Class({
         this._model = null;
         this._mainWindow = mainWindow;
 
-        this.widget = new Gd.MainToolbar();
+        this.widget = new Gd.TaggedEntry({ width_request: 500 });
+        this.widget.set_halign(Gtk.Align.CENTER);
+        this.widget.set_hexpand(true);
+        this.widget.set_margin_top(10);
+        this.widget.set_margin_bottom(10);
+        this.widget.show();
 
-        this._searchEntry = new Gd.TaggedEntry({ width_request: 500 });
-        this._searchEntry.set_halign(Gtk.Align.CENTER);
-        this._searchEntry.set_hexpand(true);
-        this.widget.add_widget(this._searchEntry, true);
-        this.widget.show_all();
-
-        this._searchEntry.connect('activate', Lang.bind(this, this._onSearchActivate));
+        this.widget.connect('activate', Lang.bind(this, this._onSearchActivate));
 
         this._markerLayer = new Champlain.MarkerLayer();
+        this._markerLayer.set_selection_mode(Champlain.SelectionMode.SINGLE);
         this._mainWindow.view.add_layer(this._markerLayer);
     },
 
     _onSearchActivate: function() {
-        let str = this._searchEntry.get_text();
+        let str = this.widget.get_text();
         let forward = Geocode.Forward.new_for_string(str);
         this._markerLayer.remove_all();
 
