@@ -57,23 +57,27 @@ const MainToolbar = new Lang.Class({
         let forward = Geocode.Forward.new_for_string(str);
         this._markerLayer.remove_all();
 
-        try {
-            let locations = forward.search ();
-            log (locations.length + " locations found");
-            if (locations.length == 0)
-                return;
+        let locations = [];
 
-            locations.forEach(Lang.bind(this,
-                function(location) {
-                    log ("location: " + location);
-                    let marker = new Champlain.Label();
-                    marker.set_text(location.description);
-                    marker.set_location(location.latitude, location.longitude);
-                    this._markerLayer.add_marker(marker);
-                    log ("Added marker at " + location.latitude + ", " + location.longitude);
-                }));
+        try {
+            locations = forward.search ();
         } catch (e) {
             log ("Failed to search '" + str + "': " + e.message);
+            return;
         }
+
+        log (locations.length + " locations found");
+        if (locations.length == 0)
+            return;
+
+        locations.forEach(Lang.bind(this,
+            function(location) {
+                log ("location: " + location);
+                let marker = new Champlain.Label();
+                marker.set_text(location.description);
+                marker.set_location(location.latitude, location.longitude);
+                this._markerLayer.add_marker(marker);
+                log ("Added marker at " + location.latitude + ", " + location.longitude);
+            }));
     }
 });
