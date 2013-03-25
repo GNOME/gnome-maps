@@ -35,7 +35,6 @@ const Format = imports.format;
 const MainWindow = imports.mainWindow;
 const Utils = imports.utils;
 const Path = imports.path;
-//const MainToolbar = imports.mainToolbar;
 
 // used globally
 let application = null;
@@ -136,10 +135,6 @@ const Application = new Lang.Class({
 
     _onWindowDestroy: function(window) {
         this._mainWindow = null;
-
-        // clean up signals
-
-        // reset state
-    },
+    }
 });
 Utils.addJSSignalMethods(Application.prototype);
