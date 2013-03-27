@@ -73,11 +73,6 @@ const MainToolbar = new Lang.Class({
         if (locations.length == 0)
             return;
 
-        let min_latitude = 90;
-        let max_latitude = -90;
-        let min_longitude = 180;
-        let max_longitude = -180;
-
         locations.forEach(Lang.bind(this,
             function(location) {
                 log ("location: " + location);
@@ -86,23 +81,35 @@ const MainToolbar = new Lang.Class({
                 marker.set_location(location.latitude, location.longitude);
                 this._markerLayer.add_marker(marker);
                 log ("Added marker at " + location.latitude + ", " + location.longitude);
-
-                if (location.latitude > max_latitude)
-                    max_latitude = location.latitude;
-                if (location.latitude < min_latitude)
-                    min_latitude = location.latitude;
-                if (location.longitude > max_longitude)
-                    max_longitude = location.longitude;
-                if (location.longitude < min_longitude)
-                    min_longitude = location.longitude;
             }));
 
-        let bbox = new Champlain.BoundingBox();
-        bbox.left = min_longitude;
-        bbox.right = max_longitude;
-        bbox.bottom = min_latitude;
-        bbox.top = max_latitude;
+        if (locations.length == 1)
+            this._mainWindow.view.go_to(locations[0].latitude, locations[0].longitude);
+        else {
+            let min_latitude = 90;
+            let max_latitude = -90;
+            let min_longitude = 180;
+            let max_longitude = -180;
 
-        this._mainWindow.view.ensure_visible (bbox, true);
+            locations.forEach(Lang.bind(this,
+                function(location) {
+                    if (location.latitude > max_latitude)
+                        max_latitude = location.latitude;
+                    if (location.latitude < min_latitude)
+                        min_latitude = location.latitude;
+                    if (location.longitude > max_longitude)
+                        max_longitude = location.longitude;
+                    if (location.longitude < min_longitude)
+                        min_longitude = location.longitude;
+                }));
+
+            let bbox = new Champlain.BoundingBox();
+            bbox.left = min_longitude;
+            bbox.right = max_longitude;
+            bbox.bottom = min_latitude;
+            bbox.top = max_latitude;
+
+            this._mainWindow.view.ensure_visible(bbox, true);
+        }
     }
 });
