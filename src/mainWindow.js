@@ -105,10 +105,18 @@ const MainWindow = new Lang.Class({
     _onSearchComplete: function(ipclient, res) {
         try {
             let [location, accuracy] = ipclient.search_finish(res);
-            this.view.center_on(location.latitude, location.longitude);
 
             let zoom = Utils.getZoomLevelForAccuracy(accuracy);
-            this.view.set_zoom_level(zoom);
+            this.view.go_to(location.latitude, location.longitude);
+            this.view.connect("animation-completed::go-to", Lang.bind(this,
+                function() {
+                    // Apparently the signal is called before animation is really complete so if we don't
+                    // zoom in idle, we get a crash. Perhaps a bug in libchamplain?
+                    Mainloop.idle_add(Lang.bind(this,
+                        function() {
+                            this.view.set_zoom_level(zoom);
+                        }));
+                }));
         } catch (e) {
             log("Failed to find your location: " + e);
         }
