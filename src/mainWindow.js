@@ -105,6 +105,7 @@ const MainWindow = new Lang.Class({
     _onSearchComplete: function(ipclient, res) {
         try {
             let [location, accuracy] = ipclient.search_finish(res);
+            log(location.description);
 
             let zoom = Utils.getZoomLevelForAccuracy(accuracy);
             this.view.go_to(location.latitude, location.longitude);
