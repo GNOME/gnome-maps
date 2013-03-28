@@ -54,6 +54,7 @@ const MainToolbar = new Lang.Class({
     _onSearchActivate: function() {
         let str = this._entry.get_text();
         let forward = Geocode.Forward.new_for_string(str);
+        forward._searchStr = str;
         this._markerLayer.remove_all();
 
 
@@ -66,7 +67,8 @@ const MainToolbar = new Lang.Class({
         try {
             locations = forward.search_finish(res);
         } catch (e) {
-            log ("Failed to search '" + str + "': " + e.message);
+            let str = forward.get_data ("string");
+            log ("Failed to search '" + forward._searchStr + "': " + e.message);
             return;
         }
         log (locations.length + " locations found");
