@@ -61,10 +61,18 @@ const MapView = new Lang.Class({
 
     geocodeSearch: function(string) {
         let forward = Geocode.Forward.new_for_string(string);
-        forward._searchString = string;
         this._markerLayer.remove_all();
 
-        forward.search_async (null, Lang.bind(this, this._onGeocodeSearchComplete));
+        forward.search_async (null, Lang.bind(this,
+            function(forward, res) {
+                try {
+                    locations = forward.search_finish(res);
+                    log (locations.length + " locations found");
+                    this._showLocations(locations);
+                } catch (e) {
+                    log ("Failed to search '" + string + "': " + e.message);
+                }
+            }));
     },
 
     _gotoLocation: function(location, accuracy) {
@@ -84,17 +92,7 @@ const MapView = new Lang.Class({
             }));
     },
 
-    _onGeocodeSearchComplete: function(forward, res) {
-        let locations = [];
-
-        try {
-            locations = forward.search_finish(res);
-        } catch (e) {
-            let str = forward.get_data ("string");
-            log ("Failed to search '" + forward._searchString + "': " + e.message);
-            return;
-        }
-        log (locations.length + " locations found");
+    _showLocations: function(locations) {
         if (locations.length == 0)
             return;
 
