@@ -61,7 +61,6 @@ const MapView = new Lang.Class({
 
     geocodeSearch: function(string) {
         let forward = Geocode.Forward.new_for_string(string);
-        this._markerLayer.remove_all();
 
         forward.search_async (null, Lang.bind(this,
             function(forward, res) {
@@ -95,6 +94,7 @@ const MapView = new Lang.Class({
     _showLocations: function(locations) {
         if (locations.length == 0)
             return;
+        this._markerLayer.remove_all();
 
         locations.forEach(Lang.bind(this,
             function(location) {
