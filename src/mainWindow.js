@@ -31,6 +31,7 @@ const Mainloop = imports.mainloop;
 
 const Application = imports.application;
 const MainToolbar = imports.mainToolbar;
+const MapView = imports.mapView;
 const Utils = imports.utils;
 const Config = imports.config;
 
@@ -86,41 +87,13 @@ const MainWindow = new Lang.Class({
         grid.set_orientation (Gtk.Orientation.VERTICAL);
         this.window.add(grid);
 
-        this._embed = new GtkChamplain.Embed();
-        this.view = this._embed.get_view();
-        this.view.set_zoom_level(3);
-
-        this._toolbar = new MainToolbar.MainToolbar (this);
-
+        this._toolbar = new MainToolbar.MainToolbar(this);
         grid.add(this._toolbar.widget);
-        grid.add(this._embed);
+
+        this.mapView = new MapView.MapView();
+        grid.add(this.mapView.widget);
 
         grid.show_all();
-
-        let ipclient = new Geocode.Ipclient();
-        ipclient.server = "http://freegeoip.net/json/";
-        ipclient.search_async(null, Lang.bind(this, this._onSearchComplete));
-    },
-
-    _onSearchComplete: function(ipclient, res) {
-        try {
-            let [location, accuracy] = ipclient.search_finish(res);
-            log(location.description);
-
-            let zoom = Utils.getZoomLevelForAccuracy(accuracy);
-            this.view.go_to(location.latitude, location.longitude);
-            this.view.connect("animation-completed::go-to", Lang.bind(this,
-                function() {
-                    // Apparently the signal is called before animation is really complete so if we don't
-                    // zoom in idle, we get a crash. Perhaps a bug in libchamplain?
-                    Mainloop.idle_add(Lang.bind(this,
-                        function() {
-                            this.view.set_zoom_level(zoom);
-                        }));
-                }));
-        } catch (e) {
-            log("Failed to find your location: " + e);
-        }
     },
 
     _saveWindowGeometry: function() {
