@@ -47,7 +47,16 @@ const MapView = new Lang.Class({
 
         let ipclient = new Geocode.Ipclient();
         ipclient.server = "http://freegeoip.net/json/";
-        ipclient.search_async(null, Lang.bind(this, this._onIpclientSearchComplete));
+        ipclient.search_async(null, Lang.bind(this,
+            function(ipclient, res) {
+                try {
+                    let [location, accuracy] = ipclient.search_finish(res);
+
+                    this._gotoLocation(location, accuracy);
+                } catch (e) {
+                    log("Failed to find your location: " + e);
+                }
+            }));
     },
 
     geocodeSearch: function(string) {
@@ -58,26 +67,21 @@ const MapView = new Lang.Class({
         forward.search_async (null, Lang.bind(this, this._onGeocodeSearchComplete));
     },
 
-    _onIpclientSearchComplete: function(ipclient, res) {
-        try {
-            let [location, accuracy] = ipclient.search_finish(res);
-            log(location.description);
+    _gotoLocation: function(location, accuracy) {
+        log(location.description);
 
-            let zoom = Utils.getZoomLevelForAccuracy(accuracy);
-            this._view.go_to(location.latitude, location.longitude);
-            let anim_completed_id = this._view.connect("animation-completed::go-to", Lang.bind(this,
+        let zoom = Utils.getZoomLevelForAccuracy(accuracy);
+        this._view.go_to(location.latitude, location.longitude);
+        let anim_completed_id = this._view.connect("animation-completed::go-to", Lang.bind(this,
+            function() {
+                // Apparently the signal is called before animation is really complete so if we don't
+                // zoom in idle, we get a crash. Perhaps a bug in libchamplain?
+                Mainloop.idle_add(Lang.bind(this,
                 function() {
-                    // Apparently the signal is called before animation is really complete so if we don't
-                    // zoom in idle, we get a crash. Perhaps a bug in libchamplain?
-                    Mainloop.idle_add(Lang.bind(this,
-                        function() {
-                            this._view.set_zoom_level(zoom);
-                            this._view.disconnect(anim_completed_id);
-                        }));
+                    this._view.set_zoom_level(zoom);
+                    this._view.disconnect(anim_completed_id);
                 }));
-        } catch (e) {
-            log("Failed to find your location: " + e);
-        }
+            }));
     },
 
     _onGeocodeSearchComplete: function(forward, res) {
@@ -105,7 +109,8 @@ const MapView = new Lang.Class({
             }));
 
         if (locations.length == 1)
-            this._view.go_to(locations[0].latitude, locations[0].longitude);
+            // FIXME: accuracy should come from geocode-glib
+            this._gotoLocation(locations[0], Geocode.LocationAccuracy.CITY);
         else {
             let min_latitude = 90;
             let max_latitude = -90;
