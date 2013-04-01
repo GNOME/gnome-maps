@@ -58,10 +58,6 @@ const Application = new Lang.Class({
         this._mainWindow.window.destroy();
     },
 
-    _onActionAbout: function() {
-        this._mainWindow.showAbout();
-    },
-
     _initAppMenu: function() {
         let builder = new Gtk.Builder();
         builder.add_from_resource('/org/gnome/maps/app-menu.ui');
@@ -83,7 +79,6 @@ const Application = new Lang.Class({
         settings = new Gio.Settings({ schema: 'org.gnome.maps' });
 
         Utils.initActions(this, [
-            { name: 'about', callback: this._onActionAbout },
             { name: 'quit', callback: this._onActionQuit }
         ]);
 

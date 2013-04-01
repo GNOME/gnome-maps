@@ -50,9 +50,13 @@ const MainWindow = new Lang.Class({
         this.window = new Gtk.ApplicationWindow({ application: app,
                                                   width_request: _WINDOW_MIN_WIDTH,
                                                   height_request: _WINDOW_MIN_HEIGHT,
-						  window_position: Gtk.WindowPosition.CENTER,
+                                                  window_position: Gtk.WindowPosition.CENTER,
                                                   hide_titlebar_when_maximized: true,
-						  title: _("Maps") });
+                                                  title: _("Maps") });
+
+        Utils.initActions(this.window, [
+            { name: 'about', callback: this._onActionAbout }
+        ]);
 
         // apply the last saved window size and position
         let size = Application.settings.get_value('window-size');
@@ -150,7 +154,7 @@ const MainWindow = new Lang.Class({
         return false;
     },
 
-    showAbout: function() {
+    _onActionAbout: function() {
         let aboutDialog = new Gtk.AboutDialog();
 
         aboutDialog.artists = [ 'Jakub Steiner <jimmac@gmail.com>', 'Andreas Nilsson <nisses.mail@home.se>' ];
@@ -167,7 +171,7 @@ const MainWindow = new Lang.Class({
         aboutDialog.wrap_license = true;
 
         aboutDialog.modal = true;
-        aboutDialog.transient_for = this.window;
+        aboutDialog.transient_for = this;
 
         aboutDialog.show();
         aboutDialog.connect('response', function() {
