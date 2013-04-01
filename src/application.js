@@ -62,33 +62,6 @@ const Application = new Lang.Class({
         this._mainWindow.showAbout();
     },
 
-    _initActions: function() {
-        this._actionEntries.forEach(Lang.bind(this,
-            function(actionEntry) {
-                let state = actionEntry.state;
-                let parameterType = actionEntry.parameter_type ?
-                    GLib.VariantType.new(actionEntry.parameter_type) : null;
-                let action;
-
-                if (state)
-                    action = Gio.SimpleAction.new_stateful(actionEntry.name,
-                        parameterType, actionEntry.state);
-                else
-                    action = new Gio.SimpleAction({ name: actionEntry.name });
-
-                if (actionEntry.create_hook)
-                    actionEntry.create_hook.apply(this, [action]);
-
-                if (actionEntry.callback)
-                    action.connect('activate', Lang.bind(this, actionEntry.callback));
-
-                if (actionEntry.accel)
-                    this.add_accelerator(actionEntry.accel, 'app.' + actionEntry.name, null);
-
-                this.add_action(action);
-            }));
-    },
-
     _initAppMenu: function() {
         let builder = new Gtk.Builder();
         builder.add_from_resource('/org/gnome/maps/app-menu.ui');
@@ -109,14 +82,11 @@ const Application = new Lang.Class({
         application = this;
         settings = new Gio.Settings({ schema: 'org.gnome.maps' });
 
-        this._actionEntries = [
-            { name: 'about',
-              callback: this._onActionAbout },
-            { name: 'quit',
-              callback: this._onActionQuit }
-        ];
+        Utils.initActions(this, [
+            { name: 'about', callback: this._onActionAbout },
+            { name: 'quit', callback: this._onActionQuit }
+        ]);
 
-        this._initActions();
         this._initAppMenu();
     },
 

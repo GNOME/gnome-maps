@@ -19,7 +19,9 @@
  *         Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
+const Lang = imports.lang;
 const GLib = imports.gi.GLib;
+const Gio = imports.gi.Gio;
 const Signals = imports.signals;
 const Geocode = imports.gi.GeocodeGlib;
 
@@ -44,6 +46,17 @@ function addJSSignalMethods(proto) {
     proto.disconnectJS = Signals._disconnect;
     proto.emitJS = Signals._emit;
     proto.disconnectAllJS = Signals._disconnectAll;
+}
+
+function initActions(actionMap, simpleActionEntries) {
+    simpleActionEntries.forEach(function(entry) {
+        let action = new Gio.SimpleAction({ name: entry.name });
+
+        if (entry.callback)
+            action.connect('activate', Lang.bind(actionMap, entry.callback));
+
+        actionMap.add_action(action);
+    });
 }
 
 // accuracy: Geocode.LocationAccuracy
