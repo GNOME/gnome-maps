@@ -1,13 +1,3 @@
-AM_CPPFLAGS = \
-    -I$(top_builddir)/config \
-    -I$(top_srcdir)	\
-    -L$(top_srcdir)/src \
-    -DGNOME_MAPS_LIBDIR=\"$(libdir)\" \
-    -DGNOME_MAPS_DATADIR=\"$(datadir)\" \
-    -DGNOME_MAPS_PKGDATADIR=\"$(pkgdatadir)\" \
-    -DGNOME_MAPS_TOP_SRCDIR=\"$(abs_top_srcdir)\" \
-    -DGNOME_MAPS_BUILDDIR=\"$(abs_top_builddir)\"
-
 BUILT_SOURCES =
 EXTRA_DIST =
 CLEANFILES =
