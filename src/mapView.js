@@ -28,6 +28,7 @@ const Geocode = imports.gi.GeocodeGlib;
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
+const Application = imports.application;
 const Utils = imports.utils;
 const _ = imports.gettext.gettext;
 
@@ -45,18 +46,7 @@ const MapView = new Lang.Class({
         this._markerLayer.set_selection_mode(Champlain.SelectionMode.SINGLE);
         this._view.add_layer(this._markerLayer);
 
-        let ipclient = new Geocode.Ipclient();
-        ipclient.server = "http://freegeoip.net/json/";
-        ipclient.search_async(null, Lang.bind(this,
-            function(ipclient, res) {
-                try {
-                    let [location, accuracy] = ipclient.search_finish(res);
-
-                    this._gotoLocation(location, accuracy);
-                } catch (e) {
-                    log("Failed to find your location: " + e);
-                }
-            }));
+        this._gotoUserLocation();
     },
 
     geocodeSearch: function(string) {
@@ -88,6 +78,41 @@ const MapView = new Lang.Class({
                     this._view.set_zoom_level(zoom);
                     this._view.disconnect(anim_completed_id);
                 }));
+            }));
+    },
+
+    _gotoUserLocation: function () {
+        let lastLocation = Application.settings.get_value('last-location');
+        if (lastLocation.n_children() == 2) {
+            let lat = lastLocation.get_child_value(0);
+            let lng = lastLocation.get_child_value(1);
+
+            let location = new Geocode.Location({ latitude: lat.get_double(),
+                                                  longitude: lng.get_double() });
+            let lastLocationDescription = Application.settings.get_string('last-location-description');
+            location.set_description(lastLocationDescription);
+            // FIXME: We should keep the accuracy cached too but this type is soon going to change
+            //        from an enum to a double in geocode-glib so lets do it after that happens.
+            let accuracy = Geocode.LocationAccuracy.CITY;
+
+            this._gotoLocation(location, accuracy);
+        }
+
+        let ipclient = new Geocode.Ipclient();
+        ipclient.server = "http://freegeoip.net/json/";
+        ipclient.search_async(null, Lang.bind(this,
+            function(ipclient, res) {
+                try {
+                    let [location, accuracy] = ipclient.search_finish(res);
+
+                    this._gotoLocation(location, accuracy);
+
+                    let variant = GLib.Variant.new('ad', [location.latitude, location.longitude]);
+                    Application.settings.set_value('last-location', variant);
+                    Application.settings.set_string('last-location-description', location.description);
+                } catch (e) {
+                    log("Failed to find your location: " + e);
+                }
             }));
     },
 
