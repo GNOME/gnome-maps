@@ -50,8 +50,7 @@ const Application = new Lang.Class({
         GLib.set_prgname('gnome-maps');
         GLib.set_application_name(_("Maps"));
 
-        this.parent({ application_id: 'org.gnome.Maps',
-                      inactivity_timeout: 12000 });
+        this.parent({ application_id: 'org.gnome.Maps' });
     },
 
     _onActionQuit: function() {
