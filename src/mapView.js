@@ -55,7 +55,7 @@ const MapView = new Lang.Class({
         forward.search_async (null, Lang.bind(this,
             function(forward, res) {
                 try {
-                    locations = forward.search_finish(res);
+                    let locations = forward.search_finish(res);
                     log (locations.length + " locations found");
                     this._showLocations(locations);
                 } catch (e) {
