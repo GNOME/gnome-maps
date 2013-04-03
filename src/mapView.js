@@ -63,10 +63,10 @@ const MapView = new Lang.Class({
             }));
     },
 
-    _gotoLocation: function(location, accuracy, animate) {
+    _gotoLocation: function(location, animate) {
         log(location.description);
 
-        let zoom = Utils.getZoomLevelForAccuracy(accuracy);
+        let zoom = Utils.getZoomLevelForAccuracy(location.accuracy);
         this._view.set_zoom_level(zoom);
 
         if (animate)
@@ -81,15 +81,15 @@ const MapView = new Lang.Class({
             let lat = lastLocation.get_child_value(0);
             let lng = lastLocation.get_child_value(1);
 
-            let location = new Geocode.Location({ latitude: lat.get_double(),
-                                                  longitude: lng.get_double() });
-            let lastLocationDescription = Application.settings.get_string('last-location-description');
-            location.set_description(lastLocationDescription);
             // FIXME: We should keep the accuracy cached too but this type is soon going to change
             //        from an enum to a double in geocode-glib so lets do it after that happens.
-            let accuracy = Geocode.LocationAccuracy.CITY;
+            let location = new Geocode.Location({ latitude: lat.get_double(),
+                                                  longitude: lng.get_double(),
+                                                  accuracy: Geocode.LOCATION_ACCURACY_CITY });
+            let lastLocationDescription = Application.settings.get_string('last-location-description');
+            location.set_description(lastLocationDescription);
 
-            this._gotoLocation(location, accuracy, false);
+            this._gotoLocation(location, false);
         }
 
         let ipclient = new Geocode.Ipclient();
@@ -97,9 +97,9 @@ const MapView = new Lang.Class({
         ipclient.search_async(null, Lang.bind(this,
             function(ipclient, res) {
                 try {
-                    let [location, accuracy] = ipclient.search_finish(res);
+                    let location = ipclient.search_finish(res);
 
-                    this._gotoLocation(location, accuracy, true);
+                    this._gotoLocation(location, true);
 
                     let variant = GLib.Variant.new('ad', [location.latitude, location.longitude]);
                     Application.settings.set_value('last-location', variant);
@@ -126,8 +126,7 @@ const MapView = new Lang.Class({
             }));
 
         if (locations.length == 1)
-            // FIXME: accuracy should come from geocode-glib
-            this._gotoLocation(locations[0], Geocode.LocationAccuracy.CITY, true);
+            this._gotoLocation(locations[0], true);
         else {
             let min_latitude = 90;
             let max_latitude = -90;
