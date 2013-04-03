@@ -80,12 +80,11 @@ const MapView = new Lang.Class({
         if (lastLocation.n_children() == 2) {
             let lat = lastLocation.get_child_value(0);
             let lng = lastLocation.get_child_value(1);
+            let accuracy = lastLocation.get_child_value(2);
 
-            // FIXME: We should keep the accuracy cached too but this type is soon going to change
-            //        from an enum to a double in geocode-glib so lets do it after that happens.
             let location = new Geocode.Location({ latitude: lat.get_double(),
                                                   longitude: lng.get_double(),
-                                                  accuracy: Geocode.LOCATION_ACCURACY_CITY });
+                                                  accuracy: accuracy.get_double() });
             let lastLocationDescription = Application.settings.get_string('last-location-description');
             location.set_description(lastLocationDescription);
 
@@ -101,7 +100,7 @@ const MapView = new Lang.Class({
 
                     this._gotoLocation(location, true);
 
-                    let variant = GLib.Variant.new('ad', [location.latitude, location.longitude]);
+                    let variant = GLib.Variant.new('ad', [location.latitude, location.longitude, location.accuracy]);
                     Application.settings.set_value('last-location', variant);
                     Application.settings.set_string('last-location-description', location.description);
                 } catch (e) {
