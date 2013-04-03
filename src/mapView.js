@@ -93,6 +93,7 @@ const MapView = new Lang.Class({
 
         let ipclient = new Geocode.Ipclient();
         ipclient.server = "http://freegeoip.net/json/";
+        ipclient.compatibility_mode = true;
         ipclient.search_async(null, Lang.bind(this,
             function(ipclient, res) {
                 try {
