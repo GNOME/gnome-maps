@@ -36,8 +36,7 @@ const _ = imports.gettext.gettext;
 
 const MapType = {
    STREET:  Champlain.MAP_SOURCE_OSM_MAPQUEST,
-   /* This should be CHAMPLAIN_MAP_SOURCE_OAM but that currently causes a crash: bug#697304 */
-   TERRAIN: Champlain.MAP_SOURCE_MFF_RELIEF,
+   TERRAIN: Champlain.MAP_SOURCE_OSM_AERIAL_MAP,
    CYCLING: Champlain.MAP_SOURCE_OSM_CYCLE_MAP,
    TRANSIT: Champlain.MAP_SOURCE_OSM_TRANSPORT_MAP
 }
