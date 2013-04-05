@@ -32,6 +32,14 @@ const Application = imports.application;
 const Utils = imports.utils;
 const _ = imports.gettext.gettext;
 
+const MapType = {
+   STREET:  Champlain.MAP_SOURCE_OSM_MAPQUEST,
+   /* This should be CHAMPLAIN_MAP_SOURCE_OAM but that currently causes a crash: bug#697304 */
+   TERRAIN: Champlain.MAP_SOURCE_MFF_RELIEF,
+   CYCLING: Champlain.MAP_SOURCE_OSM_CYCLE_MAP,
+   TRANSIT: Champlain.MAP_SOURCE_OSM_TRANSPORT_MAP
+}
+
 const MapView = new Lang.Class({
     Name: 'MapView',
 
@@ -45,7 +53,15 @@ const MapView = new Lang.Class({
         this._markerLayer.set_selection_mode(Champlain.SelectionMode.SINGLE);
         this._view.add_layer(this._markerLayer);
 
+        this._factory = Champlain.MapSourceFactory.dup_default();
+        this.setMapType(MapType.STREET);
+
         this._gotoUserLocation();
+    },
+
+    setMapType: function(mapType) {
+        let source = this._factory.create_cached_source(mapType);
+        this._view.set_map_source(source);
     },
 
     geocodeSearch: function(string) {
