@@ -22,6 +22,7 @@
 const Gdk = imports.gi.Gdk;
 const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
+const Gd = imports.gi.Gd;
 const Champlain = imports.gi.Champlain;
 const Geocode = imports.gi.GeocodeGlib;
 
@@ -29,7 +30,6 @@ const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
-const MainToolbar = imports.mainToolbar;
 const MapViewEmbed = imports.mapViewEmbed;
 const Utils = imports.utils;
 const Config = imports.config;
@@ -90,8 +90,13 @@ const MainWindow = new Lang.Class({
         grid.set_orientation (Gtk.Orientation.VERTICAL);
         this.window.add(grid);
 
-        this._toolbar = new MainToolbar.MainToolbar(this);
-        grid.add(this._toolbar.widget);
+        this._searchEntry = new Gd.TaggedEntry({ width_request: 500 });
+        this._searchEntry.connect('activate', Lang.bind(this, this._onSearchActivate));
+
+        let headerBar = new Gd.HeaderBar();
+        headerBar.set_custom_title(this._searchEntry);
+
+        grid.add(headerBar);
 
         this._embed = new MapViewEmbed.MapViewEmbed();
         grid.add(this._embed);
@@ -140,6 +145,12 @@ const MainWindow = new Lang.Class({
 
         let maximized = (state & Gdk.WindowState.MAXIMIZED);
         Application.settings.set_boolean('window-maximized', maximized);
+    },
+
+    _onSearchActivate: function() {
+        let string = this._searchEntry.get_text();
+
+        this.mapView.geocodeSearch(string);
     },
 
     _quit: function() {
