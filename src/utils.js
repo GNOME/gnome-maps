@@ -48,6 +48,14 @@ function addJSSignalMethods(proto) {
     proto.disconnectAllJS = Signals._disconnectAll;
 }
 
+function clearGtkClutterActorBg(actor) {
+    let widget = actor.get_widget();
+    widget.override_background_color(0, new Gdk.RGBA({ red: 0,
+                                                       green: 0,
+                                                       blue: 0,
+                                                       alpha: 0 }));
+}
+
 function initActions(actionMap, simpleActionEntries) {
     simpleActionEntries.forEach(function(entry) {
         let action = new Gio.SimpleAction({ name: entry.name });

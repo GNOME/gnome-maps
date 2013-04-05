@@ -92,7 +92,7 @@ const Properties = new Lang.Class({
         // now create actors
         let buttonActor = new GtkClutter.Actor({ contents: revealButton,
                                                  x_align: Clutter.ActorAlign.END });
-
+        Utils.clearGtkClutterActorBg(buttonActor);
         this.actor.add_child(buttonActor);
 
         let revealerActor = new GtkClutter.Actor({ contents: revealer,
