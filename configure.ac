@@ -41,6 +41,7 @@ AC_SUBST(GLIB_COMPILE_RESOURCES)
 
 LIBGD_INIT([
   header-bar
+  revealer
   tagged-entry
   gir
 ])

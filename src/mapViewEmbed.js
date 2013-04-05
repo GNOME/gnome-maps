@@ -57,6 +57,9 @@ const MapViewEmbed = new Lang.Class({
         this.mapView.actor.y_expand = true;
         this._actor.add_child(this.mapView.actor);
 
+        this._properties = new Properties.Properties(this.mapView);
+        this._actor.add_child(this._properties.actor);
+
         let stage = this.get_stage();
         stage.add_actor(this._actor);
 
