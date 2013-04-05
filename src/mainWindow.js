@@ -23,7 +23,6 @@ const Gdk = imports.gi.Gdk;
 const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
 const Champlain = imports.gi.Champlain;
-const GtkChamplain = imports.gi.GtkChamplain;
 const Geocode = imports.gi.GeocodeGlib;
 
 const Lang = imports.lang;
