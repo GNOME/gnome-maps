@@ -91,7 +91,7 @@ const MapView = new Lang.Class({
 
     _gotoUserLocation: function () {
         let lastLocation = Application.settings.get_value('last-location');
-        if (lastLocation.n_children() == 2) {
+        if (lastLocation.n_children() >= 3) {
             let lat = lastLocation.get_child_value(0);
             let lng = lastLocation.get_child_value(1);
             let accuracy = lastLocation.get_child_value(2);
