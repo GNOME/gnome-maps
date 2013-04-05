@@ -22,7 +22,6 @@ const Gdk = imports.gi.Gdk;
 const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
 const Champlain = imports.gi.Champlain;
-const GtkChamplain = imports.gi.GtkChamplain;
 const Geocode = imports.gi.GeocodeGlib;
 
 const Lang = imports.lang;
@@ -44,8 +43,7 @@ const MapView = new Lang.Class({
     Name: 'MapView',
 
     _init: function(app) {
-        this.widget = new GtkChamplain.Embed();
-        this.actor = this.widget.get_view();
+        this.actor = new Champlain.View();
 
         this._view = this.actor;
 
