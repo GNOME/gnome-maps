@@ -52,9 +52,9 @@ const Properties = new Lang.Class({
         // then the sidebar itself, packed into the revealer
         let propsGrid = new Gtk.Grid({ vexpand: true,
                                        hexpand: true,
-                                       margin_top: 50,
-                                       margin_left: 20,
-                                       margin_right: 20,
+                                       margin_top: 32,
+                                       margin_left: 32,
+                                       margin_right: 32,
                                        row_spacing: 15,
                                        orientation: Gtk.Orientation.VERTICAL,
                                        valign: Gtk.Align.FILL });
@@ -72,7 +72,9 @@ const Properties = new Lang.Class({
         this.addMapTypeRadio(radio, radioGrid, _("Transit"), MapView.MapType.TRANSIT);
 
         let propsContainer = new Gtk.Frame({ child: propsGrid,
-                                             shadow_type: Gtk.ShadowType.NONE });
+                                             shadow_type: Gtk.ShadowType.IN,
+                                             width_request: 200 });
+        propsContainer.get_style_context().add_class('maps-sidebar');
 
         let revealer = new Gd.Revealer({ child: propsContainer,
                                          reveal_child: false,

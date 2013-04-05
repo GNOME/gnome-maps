@@ -74,6 +74,8 @@ const Application = new Lang.Class({
         let resource = Gio.Resource.load(Path.RESOURCE_DIR + '/gnome-maps.gresource');
         resource._register();
 
+        Utils.loadStyleSheet(Gio.file_new_for_uri('resource:///org/gnome/maps/application.css'));
+
         application = this;
         settings = new Gio.Settings({ schema: 'org.gnome.maps' });
 

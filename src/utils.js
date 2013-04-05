@@ -20,8 +20,10 @@
  */
 
 const Lang = imports.lang;
+const Gdk = imports.gi.Gdk;
 const GLib = imports.gi.GLib;
 const Gio = imports.gi.Gio;
+const Gtk = imports.gi.Gtk;
 const Signals = imports.signals;
 const Geocode = imports.gi.GeocodeGlib;
 
@@ -46,6 +48,17 @@ function addJSSignalMethods(proto) {
     proto.disconnectJS = Signals._disconnect;
     proto.emitJS = Signals._emit;
     proto.disconnectAllJS = Signals._disconnectAll;
+}
+
+function loadStyleSheet(file) {
+    file = file || Gio.file_new_for_path(GLib.build_filenamev([pkg.pkgdatadir,
+                                                               'application.css']));
+
+    let provider = new Gtk.CssProvider();
+    provider.load_from_file(file);
+    Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(),
+                                             provider,
+                                             Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 }
 
 function clearGtkClutterActorBg(actor) {
