@@ -82,7 +82,9 @@ function initActions(actionMap, simpleActionEntries) {
 
 // accuracy: double value in meters
 function getZoomLevelForAccuracy(accuracy) {
-    if (accuracy <= Geocode.LOCATION_ACCURACY_STREET)
+    if (accuracy == Geocode.LOCATION_ACCURACY_UNKNOWN)
+        return 13; // Accuracy is usually city-level when unknown
+    else if (accuracy <= Geocode.LOCATION_ACCURACY_STREET)
         return 16;
     else if (accuracy <= Geocode.LOCATION_ACCURACY_CITY)
         return 13;
@@ -90,8 +92,6 @@ function getZoomLevelForAccuracy(accuracy) {
         return 10;
     else if (accuracy <= Geocode.LOCATION_ACCURACY_COUNTRY)
         return 6;
-    else if (accuracy == Geocode.LOCATION_ACCURACY_UNKNOWN)
-        return 13; // Accuracy is usually city-level when unknown
     else
         return 3;
 }
