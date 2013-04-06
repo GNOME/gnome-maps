@@ -81,12 +81,25 @@ const MapView = new Lang.Class({
         log(location.description);
 
         let zoom = Utils.getZoomLevelForAccuracy(location.accuracy);
-        this._view.set_zoom_level(zoom);
 
-        if (animate)
-            this._view.go_to(location.latitude, location.longitude);
-        else
+        if (!animate) {
             this._view.center_on(location.latitude, location.longitude);
+            this._view.set_zoom_level(zoom);
+
+            return;
+        }
+
+        let anim_completed_id = this._view.connect("animation-completed::go-to", Lang.bind(this,
+            function() {
+                // Apparently the signal is called before animation is really complete so if we don't
+                // zoom in idle, we get a crash. Perhaps a bug in libchamplain?
+                Mainloop.idle_add(Lang.bind(this,
+                    function() {
+                        this._view.set_zoom_level(zoom);
+                        this._view.disconnect(anim_completed_id);
+                    }));
+            }));
+        this._view.go_to(location.latitude, location.longitude);
     },
 
     _gotoUserLocation: function () {
