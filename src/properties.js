@@ -67,7 +67,7 @@ const Properties = new Lang.Class({
                                        orientation: Gtk.Orientation.VERTICAL });
         propsGrid.add(radioGrid);
         var radio = this.addMapTypeRadio(null, radioGrid, _("Street"), MapView.MapType.STREET);
-        this.addMapTypeRadio(radio, radioGrid, _("Terrain"), MapView.MapType.TERRAIN);
+        this.addMapTypeRadio(radio, radioGrid, _("Satellite"), MapView.MapType.AERIAL);
         this.addMapTypeRadio(radio, radioGrid, _("Cycling"), MapView.MapType.CYCLING);
         this.addMapTypeRadio(radio, radioGrid, _("Transit"), MapView.MapType.TRANSIT);
 
