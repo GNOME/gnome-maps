@@ -83,7 +83,7 @@ function initActions(actionMap, simpleActionEntries) {
 // accuracy: double value in meters
 function getZoomLevelForAccuracy(accuracy) {
     if (accuracy <= Geocode.LOCATION_ACCURACY_STREET)
-        return 18;
+        return 16;
     else if (accuracy <= Geocode.LOCATION_ACCURACY_CITY)
         return 13;
     else if (accuracy <= Geocode.LOCATION_ACCURACY_REGION)
