@@ -96,8 +96,8 @@ const MapView = new Lang.Class({
                 Mainloop.idle_add(Lang.bind(this,
                     function() {
                         this._view.set_zoom_level(zoom);
-                        this._view.disconnect(anim_completed_id);
                     }));
+                this._view.disconnect(anim_completed_id);
             }));
         this._view.go_to(location.latitude, location.longitude);
     },
