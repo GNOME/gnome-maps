@@ -18,9 +18,11 @@
  * Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
+const Clutter = imports.gi.Clutter;
 const Gdk = imports.gi.Gdk;
 const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
+const GtkChamplain = imports.gi.GtkChamplain;
 const Champlain = imports.gi.Champlain;
 const Geocode = imports.gi.GeocodeGlib;
 
@@ -28,6 +30,7 @@ const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
+const Properties = imports.properties;
 const Utils = imports.utils;
 const _ = imports.gettext.gettext;
 
@@ -41,11 +44,18 @@ const MapType = {
 
 const MapView = new Lang.Class({
     Name: 'MapView',
+    Extends: GtkChamplain.Embed,
 
     _init: function(app) {
-        this.actor = new Champlain.View();
+        this.parent();
 
+        this.actor = this.get_view();
         this._view = this.actor;
+
+        this._properties = new Properties.Properties(this);
+        this._view.bin_layout_add(this._properties.actor,
+                                  Clutter.BinAlignment.FILL,
+                                  Clutter.BinAlignment.FILL);
 
         this._markerLayer = new Champlain.MarkerLayer();
         this._markerLayer.set_selection_mode(Champlain.SelectionMode.SINGLE);

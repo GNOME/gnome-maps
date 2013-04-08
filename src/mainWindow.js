@@ -30,7 +30,7 @@ const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
-const MapViewEmbed = imports.mapViewEmbed;
+const MapView = imports.mapView;
 const Utils = imports.utils;
 const Config = imports.config;
 
@@ -98,10 +98,8 @@ const MainWindow = new Lang.Class({
 
         grid.add(headerBar);
 
-        this._embed = new MapViewEmbed.MapViewEmbed();
-        grid.add(this._embed);
-
-        this.mapView = this._embed.mapView;
+        this.mapView = new MapView.MapView();
+        grid.add(this.mapView);
 
         grid.show_all();
     },
