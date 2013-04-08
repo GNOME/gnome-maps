@@ -60,6 +60,10 @@ const MapView = new Lang.Class({
         this._markerLayer.set_selection_mode(Champlain.SelectionMode.SINGLE);
         this._view.add_layer(this._markerLayer);
 
+        this._userLocationLayer = new Champlain.MarkerLayer();
+        this._userLocationLayer.set_selection_mode(Champlain.SelectionMode.NONE);
+        this._view.add_layer(this._userLocationLayer);
+
         this._factory = Champlain.MapSourceFactory.dup_default();
         this.setMapType(MapType.STREET);
 
@@ -124,6 +128,55 @@ const MapView = new Lang.Class({
         this._view.go_to(location.latitude, location.longitude);
     },
 
+    _showUserLocation: function(location, animate) {
+        if (location.accuracy <= 0)
+            return;
+
+        this._gotoLocation(location, animate);
+
+        this._userLocationLayer.remove_all();
+
+        // FIXME: Perhaps this is a misuse of Champlain.Point class and we
+        // should draw the cirlce ourselves using Champlain.CustomMarker?
+        // Although for doing so we'll need to add a C lib as cairo isn't
+        // exactly introspectable.
+        let accuracyMarker = new Champlain.Point();
+        accuracyMarker.set_color(new Clutter.Color({ red: 0,
+                                                     blue: 255,
+                                                     green: 0,
+                                                     alpha: 50 }));
+        accuracyMarker.set_location(location.latitude, location.longitude);
+        accuracyMarker.set_reactive(false);
+
+        let allocSize = Lang.bind(this,
+            function(zoom) {
+                let source = this._view.get_map_source();
+                let metersPerPixel = source.get_meters_per_pixel(zoom, location.latitude, location.longitude);
+                let size = location.accuracy / metersPerPixel;
+                let viewWidth = this._view.get_width();
+                let viewHeight = this._view.get_height();
+                // Ensure we don't endup creating way too big texture/canvas,
+                // otherwise we easily end up with bus error
+                if ((viewWidth > 0 && viewHeight > 0) &&
+                    (size > viewWidth && size > viewHeight))
+                    // Pythagorean theorem to get diagonal length of the view
+                    size = Math.sqrt(Math.pow(viewWidth, 2) + Math.pow(viewHeight, 2));
+
+                accuracyMarker.set_size(size);
+            });
+        let zoom = Utils.getZoomLevelForAccuracy(location.accuracy);
+        allocSize(zoom);
+        this._userLocationLayer.add_marker(accuracyMarker);
+
+        if (this._zoomLevelId > 0)
+            this._view.disconnect(this._zoomLevelId);
+        this._zoomLevelId = this._view.connect("notify::zoom-level", Lang.bind(this,
+            function() {
+                let zoom = this._view.get_zoom_level();
+                allocSize(zoom);
+            }));
+    },
+
     _gotoUserLocation: function() {
         let lastLocation = Application.settings.get_value('last-location');
         if (lastLocation.n_children() >= 3) {
@@ -137,7 +190,7 @@ const MapView = new Lang.Class({
             let lastLocationDescription = Application.settings.get_string('last-location-description');
             location.set_description(lastLocationDescription);
 
-            this._gotoLocation(location, false);
+            this._showUserLocation(location, false);
         }
 
         let ipclient = new Geocode.Ipclient();
@@ -148,7 +201,7 @@ const MapView = new Lang.Class({
                 try {
                     let location = ipclient.search_finish(res);
 
-                    this._gotoLocation(location, true);
+                    this._showUserLocation(location, true);
 
                     let variant = GLib.Variant.new('ad', [location.latitude, location.longitude, location.accuracy]);
                     Application.settings.set_value('last-location', variant);
