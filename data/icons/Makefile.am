@@ -13,6 +13,11 @@ public_icons =					\
 	hicolor_apps_256x256_gnome-maps.png	\
 	$(NULL)
 
+imagesdir = $(datadir)/gnome-maps/pixmaps
+images_DATA =                                   \
+	pin.svg					\
+        $(NULL)
+
 noinst_DATA =					\
 	gnome-maps.svg				\
 	$(NULL)

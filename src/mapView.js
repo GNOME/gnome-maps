@@ -19,7 +19,9 @@
  */
 
 const Clutter = imports.gi.Clutter;
+const Cogl = imports.gi.Cogl;
 const Gdk = imports.gi.Gdk;
+const GdkPixbuf = imports.gi.GdkPixbuf;
 const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
 const GtkChamplain = imports.gi.GtkChamplain;
@@ -32,6 +34,7 @@ const Mainloop = imports.mainloop;
 const Application = imports.application;
 const Properties = imports.properties;
 const Utils = imports.utils;
+const Path = imports.path;
 const _ = imports.gettext.gettext;
 
 const MapType = {
@@ -129,12 +132,41 @@ const MapView = new Lang.Class({
     },
 
     _showUserLocation: function(location, animate) {
-        if (location.accuracy <= 0)
+        if (location.accuracy == Geocode.LOCATION_ACCURACY_UNKNOWN)
             return;
 
         this._gotoLocation(location, animate);
 
         this._userLocationLayer.remove_all();
+
+        let locationMarker = new Champlain.CustomMarker();
+        try {
+            let pixbuf = GdkPixbuf.Pixbuf.new_from_file(Path.ICONS_DIR + "/pin.svg");
+            let image = new Clutter.Image();
+            image.set_data(pixbuf.get_pixels(),
+                           Cogl.PixelFormat.RGBA_8888,
+                           pixbuf.get_width(),
+                           pixbuf.get_height(),
+                           pixbuf.get_rowstride());
+
+            locationMarker.set_location(location.latitude, location.longitude);
+            locationMarker.set_reactive(false);
+            // FIXME: Using deprecated function here cause I failed to get the same result
+            //        with locationMarker.set_pivot_point(0.5, 0).
+            locationMarker.set_anchor_point_from_gravity(Clutter.Gravity.SOUTH);
+            let actor = new Clutter.Actor();
+            actor.set_content(image);
+            actor.set_size(pixbuf.get_width(), pixbuf.get_height());
+            locationMarker.add_actor(actor);
+        } catch(e) {
+            log("Failed to load image: " + e.message);
+            return;
+        }
+
+        if (location.accuracy == 0) {
+            this._userLocationLayer.add_marker(locationMarker);
+            return;
+        }
 
         // FIXME: Perhaps this is a misuse of Champlain.Point class and we
         // should draw the cirlce ourselves using Champlain.CustomMarker?
@@ -167,6 +199,7 @@ const MapView = new Lang.Class({
         let zoom = Utils.getZoomLevelForAccuracy(location.accuracy);
         allocSize(zoom);
         this._userLocationLayer.add_marker(accuracyMarker);
+        this._userLocationLayer.add_marker(locationMarker);
 
         if (this._zoomLevelId > 0)
             this._view.disconnect(this._zoomLevelId);
