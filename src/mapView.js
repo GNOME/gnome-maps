@@ -98,6 +98,19 @@ const MapView = new Lang.Class({
             return;
         }
 
+        /* Lets first ensure that both current and destination location are visible
+         * before we start the animated journey towards destination itself. We do this
+         * to create the zoom-out-then-zoom-in effect that many map implementations
+         * do. This not only makes the go-to animation look a lot better visually but
+         * also give user a good idea of where the destination is compared to current
+         * location.
+         */
+        let locations = new Array();
+        locations[0] = new Geocode.Location({ latitude: this._view.get_center_latitude(),
+                                              longitude: this._view.get_center_longitude() });
+        locations[1] = location;
+        this._ensureVisible(locations);
+
         let anim_completed_id = this._view.connect("animation-completed::go-to", Lang.bind(this,
             function() {
                 // Apparently the signal is called before animation is really complete so if we don't
@@ -163,31 +176,34 @@ const MapView = new Lang.Class({
 
         if (locations.length == 1)
             this._gotoLocation(locations[0], true);
-        else {
-            let min_latitude = 90;
-            let max_latitude = -90;
-            let min_longitude = 180;
-            let max_longitude = -180;
+        else
+            this._ensureVisible(locations);
+    },
 
-            locations.forEach(Lang.bind(this,
-                function(location) {
-                    if (location.latitude > max_latitude)
-                        max_latitude = location.latitude;
-                    if (location.latitude < min_latitude)
-                        min_latitude = location.latitude;
-                    if (location.longitude > max_longitude)
-                        max_longitude = location.longitude;
-                    if (location.longitude < min_longitude)
-                        min_longitude = location.longitude;
+    _ensureVisible: function(locations) {
+        let min_latitude = 90;
+        let max_latitude = -90;
+        let min_longitude = 180;
+        let max_longitude = -180;
+
+        locations.forEach(Lang.bind(this,
+            function(location) {
+                if (location.latitude > max_latitude)
+                    max_latitude = location.latitude;
+                if (location.latitude < min_latitude)
+                    min_latitude = location.latitude;
+                if (location.longitude > max_longitude)
+                    max_longitude = location.longitude;
+                if (location.longitude < min_longitude)
+                    min_longitude = location.longitude;
                 }));
 
-            let bbox = new Champlain.BoundingBox();
-            bbox.left = min_longitude;
-            bbox.right = max_longitude;
-            bbox.bottom = min_latitude;
-            bbox.top = max_latitude;
+        let bbox = new Champlain.BoundingBox();
+        bbox.left = min_longitude;
+        bbox.right = max_longitude;
+        bbox.bottom = min_latitude;
+        bbox.top = max_latitude;
 
-            this._view.ensure_visible(bbox, true);
-        }
+        this._view.ensure_visible(bbox, true);
     }
 });
