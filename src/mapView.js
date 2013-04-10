@@ -124,7 +124,7 @@ const MapView = new Lang.Class({
         this._view.go_to(location.latitude, location.longitude);
     },
 
-    _gotoUserLocation: function () {
+    _gotoUserLocation: function() {
         let lastLocation = Application.settings.get_value('last-location');
         if (lastLocation.n_children() >= 3) {
             let lat = lastLocation.get_child_value(0);
