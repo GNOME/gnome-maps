@@ -252,18 +252,22 @@ const MapView = new Lang.Class({
 
         locations.forEach(Lang.bind(this,
             function(location) {
-                log ("location: " + location);
-                let marker = new Champlain.Label();
-                marker.set_text(location.description);
-                marker.set_location(location.latitude, location.longitude);
-                this._markerLayer.add_marker(marker);
-                log ("Added marker at " + location.latitude + ", " + location.longitude);
+                this._addMarker(location);
             }));
 
         if (locations.length == 1)
             this._gotoLocation(locations[0], true);
         else
             this._ensureVisible(locations);
+    },
+
+    _addMarker: function(location) {
+        log ("location: " + location);
+        let marker = new Champlain.Label();
+        marker.set_text(location.description);
+        marker.set_location(location.latitude, location.longitude);
+        this._markerLayer.add_marker(marker);
+        log ("Added marker at " + location.latitude + ", " + location.longitude);
     },
 
     _ensureVisible: function(locations) {
