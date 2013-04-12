@@ -26,6 +26,9 @@ const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
 const Signals = imports.signals;
 const Geocode = imports.gi.GeocodeGlib;
+const GdkPixbuf = imports.gi.GdkPixbuf;
+const Clutter = imports.gi.Clutter;
+const Cogl = imports.gi.Cogl;
 
 let debugInit = false;
 let debugEnabled = false;
@@ -94,4 +97,25 @@ function getZoomLevelForAccuracy(accuracy) {
         return 6;
     else
         return 3;
+}
+
+function CreateActorFromImageFile(path) {
+    try {
+        let pixbuf = GdkPixbuf.Pixbuf.new_from_file(path);
+        let image = new Clutter.Image();
+        image.set_data(pixbuf.get_pixels(),
+                       Cogl.PixelFormat.RGBA_8888,
+                       pixbuf.get_width(),
+                       pixbuf.get_height(),
+                       pixbuf.get_rowstride());
+
+        let actor = new Clutter.Actor();
+        actor.set_content(image);
+        actor.set_size(pixbuf.get_width(), pixbuf.get_height());
+
+        return actor;
+    } catch(e) {
+        log("Failed to load image: " + e.message);
+        return null;
+    }
 }

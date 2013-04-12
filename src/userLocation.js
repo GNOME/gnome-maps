@@ -19,8 +19,6 @@
  */
 
 const Clutter = imports.gi.Clutter;
-const Cogl = imports.gi.Cogl;
-const GdkPixbuf = imports.gi.GdkPixbuf;
 const Champlain = imports.gi.Champlain;
 const Geocode = imports.gi.GeocodeGlib;
 
@@ -45,28 +43,15 @@ const UserLocation = new Lang.Class({
         layer.remove_all();
 
         let locationMarker = new Champlain.CustomMarker();
-        try {
-            let pixbuf = GdkPixbuf.Pixbuf.new_from_file(Path.ICONS_DIR + "/pin.svg");
-            let image = new Clutter.Image();
-            image.set_data(pixbuf.get_pixels(),
-                           Cogl.PixelFormat.RGBA_8888,
-                           pixbuf.get_width(),
-                           pixbuf.get_height(),
-                           pixbuf.get_rowstride());
-
-            locationMarker.set_location(this.latitude, this.longitude);
-            locationMarker.set_reactive(false);
-            // FIXME: Using deprecated function here cause I failed to get the same result
-            //        with locationMarker.set_pivot_point(0.5, 0).
-            locationMarker.set_anchor_point_from_gravity(Clutter.Gravity.SOUTH);
-            let actor = new Clutter.Actor();
-            actor.set_content(image);
-            actor.set_size(pixbuf.get_width(), pixbuf.get_height());
-            locationMarker.add_actor(actor);
-        } catch(e) {
-            log("Failed to load image: " + e.message);
+        locationMarker.set_reactive(false);
+        locationMarker.set_location(this.latitude, this.longitude);
+        // FIXME: Using deprecated function here cause I failed to get the same result
+        //        with locationMarker.set_pivot_point(0.5, 0).
+        locationMarker.set_anchor_point_from_gravity(Clutter.Gravity.SOUTH);
+        let actor = Utils.CreateActorFromImageFile(Path.ICONS_DIR + "/pin.svg");
+        if (actor == null)
             return;
-        }
+        locationMarker.add_actor(actor);
 
         if (this.accuracy == 0) {
             layer.add_marker(locationMarker);
