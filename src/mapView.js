@@ -35,6 +35,8 @@ const Application = imports.application;
 const Properties = imports.properties;
 const Utils = imports.utils;
 const Path = imports.path;
+const MapLocation = imports.mapLocation;
+const UserLocation = imports.userLocation;
 const _ = imports.gettext.gettext;
 
 const MapType = {
@@ -52,20 +54,20 @@ const MapView = new Lang.Class({
         this.parent();
 
         this.actor = this.get_view();
-        this._view = this.actor;
+        this.view = this.actor;
 
         this._properties = new Properties.Properties(this);
-        this._view.bin_layout_add(this._properties.actor,
-                                  Clutter.BinAlignment.FILL,
-                                  Clutter.BinAlignment.FILL);
+        this.view.bin_layout_add(this._properties.actor,
+                                 Clutter.BinAlignment.FILL,
+                                 Clutter.BinAlignment.FILL);
 
         this._markerLayer = new Champlain.MarkerLayer();
         this._markerLayer.set_selection_mode(Champlain.SelectionMode.SINGLE);
-        this._view.add_layer(this._markerLayer);
+        this.view.add_layer(this._markerLayer);
 
         this._userLocationLayer = new Champlain.MarkerLayer();
         this._userLocationLayer.set_selection_mode(Champlain.SelectionMode.NONE);
-        this._view.add_layer(this._userLocationLayer);
+        this.view.add_layer(this._userLocationLayer);
 
         this._factory = Champlain.MapSourceFactory.dup_default();
         this.setMapType(MapType.STREET);
@@ -75,7 +77,7 @@ const MapView = new Lang.Class({
 
     setMapType: function(mapType) {
         let source = this._factory.create_cached_source(mapType);
-        this._view.set_map_source(source);
+        this.view.set_map_source(source);
     },
 
     geocodeSearch: function(string) {
@@ -86,191 +88,20 @@ const MapView = new Lang.Class({
                 try {
                     let locations = forward.search_finish(res);
                     log (locations.length + " locations found");
-                    this._showLocations(locations);
+                    let mapLocations = new Array();
+                    locations.forEach(Lang.bind(this,
+                        function(location) {
+                            let mapLocation = new UserLocation.UserLocation(location, this);
+                            mapLocations.push(mapLocation);
+                        }));
+                    this._showLocations(mapLocations);
                 } catch (e) {
                     log ("Failed to search '" + string + "': " + e.message);
                 }
             }));
     },
 
-    _gotoLocation: function(location, animate) {
-        log(location.description);
-
-        let zoom = Utils.getZoomLevelForAccuracy(location.accuracy);
-
-        if (!animate) {
-            this._view.center_on(location.latitude, location.longitude);
-            this._view.set_zoom_level(zoom);
-
-            return;
-        }
-
-        /* Lets first ensure that both current and destination location are visible
-         * before we start the animated journey towards destination itself. We do this
-         * to create the zoom-out-then-zoom-in effect that many map implementations
-         * do. This not only makes the go-to animation look a lot better visually but
-         * also give user a good idea of where the destination is compared to current
-         * location.
-         */
-        let locations = new Array();
-        locations[0] = new Geocode.Location({ latitude: this._view.get_center_latitude(),
-                                              longitude: this._view.get_center_longitude() });
-        locations[1] = location;
-        this._ensureVisible(locations);
-
-        let anim_completed_id = this._view.connect("animation-completed::go-to", Lang.bind(this,
-            function() {
-                // Apparently the signal is called before animation is really complete so if we don't
-                // zoom in idle, we get a crash. Perhaps a bug in libchamplain?
-                Mainloop.idle_add(Lang.bind(this,
-                    function() {
-                        this._view.set_zoom_level(zoom);
-                    }));
-                this._view.disconnect(anim_completed_id);
-            }));
-        this._view.go_to(location.latitude, location.longitude);
-    },
-
-    _showUserLocation: function(location, animate) {
-        if (location.accuracy == Geocode.LOCATION_ACCURACY_UNKNOWN)
-            return;
-
-        this._gotoLocation(location, animate);
-
-        this._userLocationLayer.remove_all();
-
-        let locationMarker = new Champlain.CustomMarker();
-        try {
-            let pixbuf = GdkPixbuf.Pixbuf.new_from_file(Path.ICONS_DIR + "/pin.svg");
-            let image = new Clutter.Image();
-            image.set_data(pixbuf.get_pixels(),
-                           Cogl.PixelFormat.RGBA_8888,
-                           pixbuf.get_width(),
-                           pixbuf.get_height(),
-                           pixbuf.get_rowstride());
-
-            locationMarker.set_location(location.latitude, location.longitude);
-            locationMarker.set_reactive(false);
-            // FIXME: Using deprecated function here cause I failed to get the same result
-            //        with locationMarker.set_pivot_point(0.5, 0).
-            locationMarker.set_anchor_point_from_gravity(Clutter.Gravity.SOUTH);
-            let actor = new Clutter.Actor();
-            actor.set_content(image);
-            actor.set_size(pixbuf.get_width(), pixbuf.get_height());
-            locationMarker.add_actor(actor);
-        } catch(e) {
-            log("Failed to load image: " + e.message);
-            return;
-        }
-
-        if (location.accuracy == 0) {
-            this._userLocationLayer.add_marker(locationMarker);
-            return;
-        }
-
-        // FIXME: Perhaps this is a misuse of Champlain.Point class and we
-        // should draw the cirlce ourselves using Champlain.CustomMarker?
-        // Although for doing so we'll need to add a C lib as cairo isn't
-        // exactly introspectable.
-        let accuracyMarker = new Champlain.Point();
-        accuracyMarker.set_color(new Clutter.Color({ red: 0,
-                                                     blue: 255,
-                                                     green: 0,
-                                                     alpha: 50 }));
-        accuracyMarker.set_location(location.latitude, location.longitude);
-        accuracyMarker.set_reactive(false);
-
-        let allocSize = Lang.bind(this,
-            function(zoom) {
-                let source = this._view.get_map_source();
-                let metersPerPixel = source.get_meters_per_pixel(zoom, location.latitude, location.longitude);
-                let size = location.accuracy / metersPerPixel;
-                let viewWidth = this._view.get_width();
-                let viewHeight = this._view.get_height();
-                // Ensure we don't endup creating way too big texture/canvas,
-                // otherwise we easily end up with bus error
-                if ((viewWidth > 0 && viewHeight > 0) &&
-                    (size > viewWidth && size > viewHeight))
-                    // Pythagorean theorem to get diagonal length of the view
-                    size = Math.sqrt(Math.pow(viewWidth, 2) + Math.pow(viewHeight, 2));
-
-                accuracyMarker.set_size(size);
-            });
-        let zoom = Utils.getZoomLevelForAccuracy(location.accuracy);
-        allocSize(zoom);
-        this._userLocationLayer.add_marker(accuracyMarker);
-        this._userLocationLayer.add_marker(locationMarker);
-
-        if (this._zoomLevelId > 0)
-            this._view.disconnect(this._zoomLevelId);
-        this._zoomLevelId = this._view.connect("notify::zoom-level", Lang.bind(this,
-            function() {
-                let zoom = this._view.get_zoom_level();
-                allocSize(zoom);
-            }));
-    },
-
-    _gotoUserLocation: function() {
-        let lastLocation = Application.settings.get_value('last-location');
-        if (lastLocation.n_children() >= 3) {
-            let lat = lastLocation.get_child_value(0);
-            let lng = lastLocation.get_child_value(1);
-            let accuracy = lastLocation.get_child_value(2);
-
-            let location = new Geocode.Location({ latitude: lat.get_double(),
-                                                  longitude: lng.get_double(),
-                                                  accuracy: accuracy.get_double() });
-            let lastLocationDescription = Application.settings.get_string('last-location-description');
-            location.set_description(lastLocationDescription);
-
-            this._showUserLocation(location, false);
-        }
-
-        let ipclient = new Geocode.Ipclient();
-        ipclient.server = "http://freegeoip.net/json/";
-        ipclient.compatibility_mode = true;
-        ipclient.search_async(null, Lang.bind(this,
-            function(ipclient, res) {
-                try {
-                    let location = ipclient.search_finish(res);
-
-                    this._showUserLocation(location, true);
-
-                    let variant = GLib.Variant.new('ad', [location.latitude, location.longitude, location.accuracy]);
-                    Application.settings.set_value('last-location', variant);
-                    Application.settings.set_string('last-location-description', location.description);
-                } catch (e) {
-                    log("Failed to find your location: " + e);
-                }
-            }));
-    },
-
-    _showLocations: function(locations) {
-        if (locations.length == 0)
-            return;
-        this._markerLayer.remove_all();
-
-        locations.forEach(Lang.bind(this,
-            function(location) {
-                this._addMarker(location);
-            }));
-
-        if (locations.length == 1)
-            this._gotoLocation(locations[0], true);
-        else
-            this._ensureVisible(locations);
-    },
-
-    _addMarker: function(location) {
-        log ("location: " + location);
-        let marker = new Champlain.Label();
-        marker.set_text(location.description);
-        marker.set_location(location.latitude, location.longitude);
-        this._markerLayer.add_marker(marker);
-        log ("Added marker at " + location.latitude + ", " + location.longitude);
-    },
-
-    _ensureVisible: function(locations) {
+    ensureVisible: function(locations) {
         let min_latitude = 90;
         let max_latitude = -90;
         let min_longitude = 180;
@@ -294,6 +125,59 @@ const MapView = new Lang.Class({
         bbox.bottom = min_latitude;
         bbox.top = max_latitude;
 
-        this._view.ensure_visible(bbox, true);
-    }
+        this.view.ensure_visible(bbox, true);
+    },
+
+    _gotoUserLocation: function() {
+        let lastLocation = Application.settings.get_value('last-location');
+        if (lastLocation.n_children() >= 3) {
+            let lat = lastLocation.get_child_value(0);
+            let lng = lastLocation.get_child_value(1);
+            let accuracy = lastLocation.get_child_value(2);
+
+            let location = new Geocode.Location({ latitude: lat.get_double(),
+                                                  longitude: lng.get_double(),
+                                                  accuracy: accuracy.get_double() });
+            let lastLocationDescription = Application.settings.get_string('last-location-description');
+            location.set_description(lastLocationDescription);
+
+            let userLocation = new UserLocation.UserLocation(location, this);
+            userLocation.show(false, this._userLocationLayer);
+        }
+
+        let ipclient = new Geocode.Ipclient();
+        ipclient.server = "http://freegeoip.net/json/";
+        ipclient.compatibility_mode = true;
+        ipclient.search_async(null, Lang.bind(this,
+            function(ipclient, res) {
+                try {
+                    let location = ipclient.search_finish(res);
+
+                    let userLocation = new UserLocation.UserLocation(location, this);
+                    userLocation.show(true, this._userLocationLayer);
+
+                    let variant = GLib.Variant.new('ad', [location.latitude, location.longitude, location.accuracy]);
+                    Application.settings.set_value('last-location', variant);
+                    Application.settings.set_string('last-location-description', location.description);
+                } catch (e) {
+                    log("Failed to find your location: " + e);
+                }
+            }));
+    },
+
+    _showLocations: function(locations) {
+        if (locations.length == 0)
+            return;
+        this._markerLayer.remove_all();
+
+        locations.forEach(Lang.bind(this,
+            function(location) {
+                location.addMarker(this._markerLayer);
+            }));
+
+        if (locations.length == 1)
+            locations[0].goTo(true);
+        else
+            this.ensureVisible(locations);
+    },
 });
