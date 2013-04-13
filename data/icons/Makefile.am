@@ -15,6 +15,7 @@ public_icons =					\
 
 imagesdir = $(datadir)/gnome-maps/pixmaps
 images_DATA =                                   \
+	bubble.svg				\
 	pin.svg					\
         $(NULL)
 

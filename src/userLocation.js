@@ -21,6 +21,7 @@
 const Clutter = imports.gi.Clutter;
 const Champlain = imports.gi.Champlain;
 const Geocode = imports.gi.GeocodeGlib;
+const GObject = imports.gi.GObject;
 
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
@@ -47,10 +48,38 @@ const UserLocation = new Lang.Class({
         // FIXME: Using deprecated function here cause I failed to get the same result
         //        with locationMarker.set_pivot_point(0.5, 0).
         locationMarker.set_anchor_point_from_gravity(Clutter.Gravity.SOUTH);
-        let actor = Utils.CreateActorFromImageFile(Path.ICONS_DIR + "/pin.svg");
-        if (actor == null)
+        let pin_actor = Utils.CreateActorFromImageFile(Path.ICONS_DIR + "/pin.svg");
+        if (pin_actor == null)
             return;
-        locationMarker.add_actor(actor);
+        let bubbleActor = Utils.CreateActorFromImageFile(Path.ICONS_DIR + "/bubble.svg");
+        if (bubbleActor == null)
+            return;
+        bubbleActor.set_x_expand(true);
+        bubbleActor.set_y_expand(true);
+        let text = _("%s\nPosition Accuracy: %s").format (this.description,
+                                                          Utils.getDescriptionForAccuracy(this.accuracy));
+        let textActor = new Clutter.Text({ text: text });
+        textActor.set_margin_left(6);
+        textActor.set_margin_right(6);
+        textActor.set_color(new Clutter.Color({ red: 255,
+                                                 blue: 255,
+                                                 green: 255,
+                                                 alpha: 255 }));
+        let layout = new Clutter.BinLayout();
+        let descriptionActor = new Clutter.Actor({ layout_manager: layout });
+        descriptionActor.add_child(bubbleActor);
+        descriptionActor.add_child(textActor);
+
+        let layout = new Clutter.BoxLayout({ vertical: true });
+        let locationActor = new Clutter.Actor({ layout_manager: layout });
+        locationActor.add_child(descriptionActor);
+        locationActor.add_child(pin_actor);
+
+        locationMarker.add_actor(locationActor);
+
+        locationMarker.bind_property("selected",
+                                     descriptionActor, "visible",
+                                     GObject.BindingFlags.SYNC_CREATE);
 
         if (this.accuracy == 0) {
             layer.add_marker(locationMarker);
