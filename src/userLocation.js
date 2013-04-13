@@ -43,7 +43,6 @@ const UserLocation = new Lang.Class({
         layer.remove_all();
 
         let locationMarker = new Champlain.CustomMarker();
-        locationMarker.set_reactive(false);
         locationMarker.set_location(this.latitude, this.longitude);
         // FIXME: Using deprecated function here cause I failed to get the same result
         //        with locationMarker.set_pivot_point(0.5, 0).

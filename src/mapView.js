@@ -66,7 +66,7 @@ const MapView = new Lang.Class({
         this.view.add_layer(this._markerLayer);
 
         this._userLocationLayer = new Champlain.MarkerLayer();
-        this._userLocationLayer.set_selection_mode(Champlain.SelectionMode.NONE);
+        this._userLocationLayer.set_selection_mode(Champlain.SelectionMode.SINGLE);
         this.view.add_layer(this._userLocationLayer);
 
         this._factory = Champlain.MapSourceFactory.dup_default();
