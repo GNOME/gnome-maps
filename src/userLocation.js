@@ -43,11 +43,11 @@ const UserLocation = new Lang.Class({
 
         layer.remove_all();
 
-        let locationMarker = new Champlain.CustomMarker();
-        locationMarker.set_location(this.latitude, this.longitude);
+        this._locationMarker = new Champlain.CustomMarker();
+        this._locationMarker.set_location(this.latitude, this.longitude);
         // FIXME: Using deprecated function here cause I failed to get the same result
-        //        with locationMarker.set_pivot_point(0.5, 0).
-        locationMarker.set_anchor_point_from_gravity(Clutter.Gravity.SOUTH);
+        //        with this._locationMarker.set_pivot_point(0.5, 0).
+        this._locationMarker.set_anchor_point_from_gravity(Clutter.Gravity.SOUTH);
         let pin_actor = Utils.CreateActorFromImageFile(Path.ICONS_DIR + "/pin.svg");
         if (pin_actor == null)
             return;
@@ -75,14 +75,14 @@ const UserLocation = new Lang.Class({
         locationActor.add_child(descriptionActor);
         locationActor.add_child(pin_actor);
 
-        locationMarker.add_actor(locationActor);
+        this._locationMarker.add_actor(locationActor);
 
-        locationMarker.bind_property("selected",
-                                     descriptionActor, "visible",
-                                     GObject.BindingFlags.SYNC_CREATE);
+        this._locationMarker.bind_property("selected",
+                                           descriptionActor, "visible",
+                                           GObject.BindingFlags.SYNC_CREATE);
 
         if (this.accuracy == 0) {
-            layer.add_marker(locationMarker);
+            layer.add_marker(this._locationMarker);
             return;
         }
 
@@ -90,13 +90,16 @@ const UserLocation = new Lang.Class({
         // should draw the cirlce ourselves using Champlain.CustomMarker?
         // Although for doing so we'll need to add a C lib as cairo isn't
         // exactly introspectable.
-        let accuracyMarker = new Champlain.Point();
-        accuracyMarker.set_color(new Clutter.Color({ red: 0,
-                                                     blue: 255,
-                                                     green: 0,
-                                                     alpha: 50 }));
-        accuracyMarker.set_location(this.latitude, this.longitude);
-        accuracyMarker.set_reactive(false);
+        this._accuracyMarker = new Champlain.Point();
+        this._accuracyMarker.set_color(new Clutter.Color({ red: 0,
+                                                           blue: 255,
+                                                           green: 0,
+                                                           alpha: 50 }));
+        this._accuracyMarker.set_location(this.latitude, this.longitude);
+        this._accuracyMarker.set_reactive(false);
+
+        this._updateAccuracyMarker();
+        this._locationMarker.connect("notify::selected", Lang.bind(this, this._updateAccuracyMarker));
 
         let allocSize = Lang.bind(this,
             function(zoom) {
@@ -114,12 +117,12 @@ const UserLocation = new Lang.Class({
                     // Pythagorean theorem to get diagonal length of the view
                     size = Math.sqrt(Math.pow(viewWidth, 2) + Math.pow(viewHeight, 2));
 
-                accuracyMarker.set_size(size);
+                this._accuracyMarker.set_size(size);
             });
         let zoom = Utils.getZoomLevelForAccuracy(this.accuracy);
         allocSize(zoom);
-        layer.add_marker(accuracyMarker);
-        layer.add_marker(locationMarker);
+        layer.add_marker(this._accuracyMarker);
+        layer.add_marker(this._locationMarker);
 
         if (this._zoomLevelId > 0)
             this._view.disconnect(this._zoomLevelId);
@@ -128,5 +131,9 @@ const UserLocation = new Lang.Class({
                 let zoom = this._view.get_zoom_level();
                 allocSize(zoom);
             }));
+    },
+
+    _updateAccuracyMarker: function() {
+        this._accuracyMarker.visible = this._locationMarker.get_selected();
     },
 });
