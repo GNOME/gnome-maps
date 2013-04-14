@@ -99,41 +99,37 @@ const UserLocation = new Lang.Class({
         this._accuracyMarker.set_reactive(false);
 
         this._updateAccuracyMarker();
-        this._locationMarker.connect("notify::selected", Lang.bind(this, this._updateAccuracyMarker));
+        if (this._selectedId > 0)
+            this._locationMarker.disconnect(this._selectedId);
+        this._selectedId = this._locationMarker.connect("notify::selected",
+                                                        Lang.bind(this, this._updateAccuracyMarker));
 
-        let allocSize = Lang.bind(this,
-            function(zoom) {
-                let source = this._view.get_map_source();
-                let metersPerPixel = source.get_meters_per_pixel(zoom,
-                                                                 this.latitude,
-                                                                 this.longitude);
-                let size = this.accuracy * 2 / metersPerPixel;
-                let viewWidth = this._view.get_width();
-                let viewHeight = this._view.get_height();
-                // Ensure we don't endup creating way too big texture/canvas,
-                // otherwise we easily end up with bus error
-                if ((viewWidth > 0 && viewHeight > 0) &&
-                    (size > viewWidth && size > viewHeight))
-                    // Pythagorean theorem to get diagonal length of the view
-                    size = Math.sqrt(Math.pow(viewWidth, 2) + Math.pow(viewHeight, 2));
-
-                this._accuracyMarker.set_size(size);
-            });
-        let zoom = Utils.getZoomLevelForAccuracy(this.accuracy);
-        allocSize(zoom);
         layer.add_marker(this._accuracyMarker);
         layer.add_marker(this._locationMarker);
 
         if (this._zoomLevelId > 0)
             this._view.disconnect(this._zoomLevelId);
-        this._zoomLevelId = this._view.connect("notify::zoom-level", Lang.bind(this,
-            function() {
-                let zoom = this._view.get_zoom_level();
-                allocSize(zoom);
-            }));
+        this._zoomLevelId = this._view.connect("notify::zoom-level", Lang.bind(this, this._updateAccuracyMarker));
     },
 
     _updateAccuracyMarker: function() {
-        this._accuracyMarker.visible = this._locationMarker.get_selected();
+        if (!this._locationMarker.get_selected()) {
+            this._accuracyMarker.hide();
+            return;
+        }
+
+        let zoom = this._view.get_zoom_level();
+        let source = this._view.get_map_source();
+        let metersPerPixel = source.get_meters_per_pixel(zoom, this.latitude, this.longitude);
+        let size = this.accuracy * 2 / metersPerPixel;
+        let viewWidth = this._view.get_width();
+        let viewHeight = this._view.get_height();
+        if ((viewWidth > 0 && viewHeight > 0) &&
+            (size > viewWidth && size > viewHeight))
+            this._accuracyMarker.hide();
+        else {
+            this._accuracyMarker.set_size(size);
+            this._accuracyMarker.show();
+        }
     },
 });
