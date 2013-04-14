@@ -76,7 +76,7 @@ const UserLocation = new Lang.Class({
                 let metersPerPixel = source.get_meters_per_pixel(zoom,
                                                                  this.latitude,
                                                                  this.longitude);
-                let size = this.accuracy / metersPerPixel;
+                let size = this.accuracy * 2 / metersPerPixel;
                 let viewWidth = this._view.get_width();
                 let viewHeight = this._view.get_height();
                 // Ensure we don't endup creating way too big texture/canvas,
