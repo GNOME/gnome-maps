@@ -36,9 +36,6 @@ const UserLocation = new Lang.Class({
     Extends: MapLocation.MapLocation,
 
     show: function(animate, layer) {
-        if (this.accuracy == Geocode.LOCATION_ACCURACY_UNKNOWN)
-            return;
-
         this.goTo(animate);
 
         layer.remove_all();
