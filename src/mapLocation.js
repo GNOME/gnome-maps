@@ -86,4 +86,9 @@ const MapLocation = new Lang.Class({
         layer.add_marker(marker);
         log("Added marker at " + this.latitude + ", " + this.longitude);
     },
+
+    showNGoTo: function(animate, layer) {
+        this.show(layer);
+        this.goTo(animate);
+    },
 });

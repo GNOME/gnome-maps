@@ -107,11 +107,6 @@ const UserLocation = new Lang.Class({
         this._zoomLevelId = this._view.connect("notify::zoom-level", Lang.bind(this, this._updateAccuracyMarker));
     },
 
-    showNGoTo: function(animate, layer) {
-        this.show(layer);
-        this.goTo(animate);
-    },
-
     _updateAccuracyMarker: function() {
         if (!this._locationMarker.get_selected()) {
             this._accuracyMarker.hide();
