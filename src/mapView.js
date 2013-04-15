@@ -142,7 +142,7 @@ const MapView = new Lang.Class({
             location.set_description(lastLocationDescription);
 
             let userLocation = new UserLocation.UserLocation(location, this);
-            userLocation.show(false, this._userLocationLayer);
+            userLocation.showNGoTo(false, this._userLocationLayer);
         }
 
         let ipclient = new Geocode.Ipclient();
@@ -154,7 +154,7 @@ const MapView = new Lang.Class({
                     let location = ipclient.search_finish(res);
 
                     let userLocation = new UserLocation.UserLocation(location, this);
-                    userLocation.show(true, this._userLocationLayer);
+                    userLocation.showNGoTo(true, this._userLocationLayer);
 
                     let variant = GLib.Variant.new('ad', [location.latitude, location.longitude, location.accuracy]);
                     Application.settings.set_value('last-location', variant);

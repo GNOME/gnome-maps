@@ -35,9 +35,7 @@ const UserLocation = new Lang.Class({
     Name: 'UserLocation',
     Extends: MapLocation.MapLocation,
 
-    show: function(animate, layer) {
-        this.goTo(animate);
-
+    show: function(layer) {
         layer.remove_all();
 
         this._locationMarker = new Champlain.CustomMarker();
@@ -107,6 +105,11 @@ const UserLocation = new Lang.Class({
         if (this._zoomLevelId > 0)
             this._view.disconnect(this._zoomLevelId);
         this._zoomLevelId = this._view.connect("notify::zoom-level", Lang.bind(this, this._updateAccuracyMarker));
+    },
+
+    showNGoTo: function(animate, layer) {
+        this.show(layer);
+        this.goTo(animate);
     },
 
     _updateAccuracyMarker: function() {
