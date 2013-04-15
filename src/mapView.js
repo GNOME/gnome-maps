@@ -91,7 +91,7 @@ const MapView = new Lang.Class({
                     let mapLocations = new Array();
                     locations.forEach(Lang.bind(this,
                         function(location) {
-                            let mapLocation = new UserLocation.UserLocation(location, this);
+                            let mapLocation = new MapLocation.MapLocation(location, this);
                             mapLocations.push(mapLocation);
                         }));
                     this._showLocations(mapLocations);
