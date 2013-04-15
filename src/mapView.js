@@ -172,7 +172,7 @@ const MapView = new Lang.Class({
 
         locations.forEach(Lang.bind(this,
             function(location) {
-                location.addMarker(this._markerLayer);
+                location.show(this._markerLayer);
             }));
 
         if (locations.length == 1)

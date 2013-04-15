@@ -79,7 +79,7 @@ const MapLocation = new Lang.Class({
         this._view.go_to(this.latitude, this.longitude);
     },
 
-    addMarker: function(layer) {
+    show: function(layer) {
         let marker = new Champlain.Label();
         marker.set_text(this.description);
         marker.set_location(this.latitude, this.longitude);
