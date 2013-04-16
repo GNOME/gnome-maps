@@ -96,6 +96,14 @@ const MainWindow = new Lang.Class({
         let headerBar = new Gd.HeaderBar();
         headerBar.set_custom_title(this._searchEntry);
 
+        let toggle = new Gd.HeaderToggleButton({ symbolic_icon_name: 'find-location-symbolic' });
+        toggle.connect('toggled', Lang.bind(this,
+            function() {
+                if (toggle.active)
+                    this.mapView.gotoUserLocation(true);
+            }));
+        headerBar.pack_start(toggle);
+
         grid.add(headerBar);
 
         this.mapView = new MapView.MapView();
