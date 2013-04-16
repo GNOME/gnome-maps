@@ -72,7 +72,7 @@ const MapView = new Lang.Class({
         this._factory = Champlain.MapSourceFactory.dup_default();
         this.setMapType(MapType.STREET);
 
-        this._gotoUserLocation();
+        this._showUserLocation();
     },
 
     setMapType: function(mapType) {
@@ -128,7 +128,7 @@ const MapView = new Lang.Class({
         this.view.ensure_visible(bbox, true);
     },
 
-    _gotoUserLocation: function() {
+    _showUserLocation: function() {
         let lastLocation = Application.settings.get_value('last-location');
         if (lastLocation.n_children() >= 3) {
             let lat = lastLocation.get_child_value(0);
@@ -141,8 +141,8 @@ const MapView = new Lang.Class({
             let lastLocationDescription = Application.settings.get_string('last-location-description');
             location.set_description(lastLocationDescription);
 
-            let userLocation = new UserLocation.UserLocation(location, this);
-            userLocation.showNGoTo(false, this._userLocationLayer);
+            this._userLocation = new UserLocation.UserLocation(location, this);
+            this._userLocation.show(this._userLocationLayer);
         }
 
         let ipclient = new Geocode.Ipclient();
@@ -153,8 +153,8 @@ const MapView = new Lang.Class({
                 try {
                     let location = ipclient.search_finish(res);
 
-                    let userLocation = new UserLocation.UserLocation(location, this);
-                    userLocation.showNGoTo(true, this._userLocationLayer);
+                    this._userLocation = new UserLocation.UserLocation(location, this);
+                    this._userLocation.show(this._userLocationLayer);
 
                     let variant = GLib.Variant.new('ad', [location.latitude, location.longitude, location.accuracy]);
                     Application.settings.set_value('last-location', variant);
