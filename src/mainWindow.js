@@ -96,17 +96,24 @@ const MainWindow = new Lang.Class({
         let headerBar = new Gd.HeaderBar();
         headerBar.set_custom_title(this._searchEntry);
 
-        let toggle = new Gd.HeaderToggleButton({ symbolic_icon_name: 'find-location-symbolic' });
+        this.mapView = new MapView.MapView();
+
+        let trackUserLocation = Application.settings.get_boolean('track-user-location');
+        if (trackUserLocation)
+            this.mapView.gotoUserLocation(false);
+
+        let toggle = new Gd.HeaderToggleButton({ symbolic_icon_name: 'find-location-symbolic',
+                                                 active: trackUserLocation });
         toggle.connect('toggled', Lang.bind(this,
             function() {
                 if (toggle.active)
                     this.mapView.gotoUserLocation(true);
+                Application.settings.set_boolean('track-user-location', toggle.active);
             }));
         headerBar.pack_start(toggle);
 
         grid.add(headerBar);
 
-        this.mapView = new MapView.MapView();
         grid.add(this.mapView);
 
         grid.show_all();
