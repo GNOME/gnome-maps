@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <!-- interface-requires gtk+ 3.0 -->
+  <object class="GtkGrid" id="window-content">
+    <property name="visible">True</property>
+    <property name="orientation">vertical</property>
+    <child>
+      <object class="GdHeaderBar" id="header-bar">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child type="title">
+          <object class="GdTaggedEntry" id="search-entry">
+            <property name="visible">True</property>
+            <property name="width_request">500</property>
+          </object>
+        </child>
+        <child>
+          <object class="GdHeaderToggleButton" id="track-user-button">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="symbolic-icon-name">find-location-symbolic</property>
+          </object>
+          <packing>
+            <property name="pack_type">start</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

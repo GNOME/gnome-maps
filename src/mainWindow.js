@@ -86,15 +86,15 @@ const MainWindow = new Lang.Class({
         this.window.connect('window-state-event',
                             Lang.bind(this, this._onWindowStateEvent));
 
-        let grid = new Gtk.Grid ();
+        let builder = new Gtk.Builder();
+        builder.add_from_resource('/org/gnome/maps/main-window.ui');
+
+        let grid = builder.get_object('window-content');
         grid.set_orientation (Gtk.Orientation.VERTICAL);
         this.window.add(grid);
 
-        this._searchEntry = new Gd.TaggedEntry({ width_request: 500 });
+        this._searchEntry = builder.get_object('search-entry');
         this._searchEntry.connect('activate', Lang.bind(this, this._onSearchActivate));
-
-        let headerBar = new Gd.HeaderBar();
-        headerBar.set_custom_title(this._searchEntry);
 
         this.mapView = new MapView.MapView();
 
@@ -102,8 +102,8 @@ const MainWindow = new Lang.Class({
         if (trackUserLocation)
             this.mapView.gotoUserLocation(false);
 
-        let toggle = new Gd.HeaderToggleButton({ symbolic_icon_name: 'find-location-symbolic',
-                                                 active: trackUserLocation });
+        let toggle = builder.get_object('track-user-button');
+        toggle.active = trackUserLocation;
 
         let onViewMoved = Lang.bind(this,
             function () {
@@ -131,9 +131,6 @@ const MainWindow = new Lang.Class({
 
                 Application.settings.set_boolean('track-user-location', toggle.active);
             }));
-        headerBar.pack_start(toggle);
-
-        grid.add(headerBar);
 
         grid.add(this.mapView);
 

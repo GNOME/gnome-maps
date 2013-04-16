@@ -28,6 +28,7 @@ const _ = imports.gettext.gettext;
 const GtkClutter = imports.gi.GtkClutter;
 const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
+const Gd = imports.gi.Gd;
 const GLib = imports.gi.GLib;
 
 const Main = imports.main;
@@ -49,6 +50,8 @@ const Application = new Lang.Class({
         Gettext.textdomain('gnome-maps');
         GLib.set_prgname('gnome-maps');
         GLib.set_application_name(_("Maps"));
+
+        Gd.ensure_types();
 
         this.parent({ application_id: 'org.gnome.Maps' });
     },
