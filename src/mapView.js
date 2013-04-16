@@ -55,6 +55,7 @@ const MapView = new Lang.Class({
 
         this.actor = this.get_view();
         this.view = this.actor;
+        this.view.set_zoom_level(3);
 
         this._properties = new Properties.Properties(this);
         this.view.bin_layout_add(this._properties.actor,
