@@ -76,7 +76,11 @@ function clearGtkClutterActorBg(actor) {
 
 function initActions(actionMap, simpleActionEntries) {
     simpleActionEntries.forEach(function(entry) {
-        let action = new Gio.SimpleAction({ name: entry.name });
+        let actionParams = { name: entry.name };
+        if (entry.state)
+            actionParams.state = entry.state;
+
+        let action = new Gio.SimpleAction(actionParams);
 
         if (entry.callback)
             action.connect('activate', Lang.bind(actionMap, entry.callback));
