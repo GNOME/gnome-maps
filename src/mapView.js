@@ -129,6 +129,10 @@ const MapView = new Lang.Class({
         this.view.ensure_visible(bbox, true);
     },
 
+    gotoUserLocation: function(animate) {
+        this._userLocation.goTo(animate);
+    },
+
     _showUserLocation: function() {
         let lastLocation = Application.settings.get_value('last-location');
         if (lastLocation.n_children() >= 3) {
