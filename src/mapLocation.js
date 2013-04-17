@@ -65,20 +65,24 @@ const MapLocation = new Lang.Class({
         locations[0] = new Geocode.Location({ latitude: this._view.get_center_latitude(),
                                               longitude: this._view.get_center_longitude() });
         locations[1] = this;
-        this._mapView.ensureVisible(locations);
 
-        let animCompletedId = this._view.connect("animation-completed::go-to", Lang.bind(this,
+        let animCompletedId = this._view.connect("animation-completed", Lang.bind(this,
             function() {
-                // Apparently the signal is called before animation is really complete so if we don't
-                // zoom in idle, we get a crash. Perhaps a bug in libchamplain?
-                Mainloop.idle_add(Lang.bind(this,
-                    function() {
-                        this._view.set_zoom_level(zoom);
-                        this.emit('gone-to');
-                    }));
                 this._view.disconnect(animCompletedId);
+                animCompletedId = this._view.connect("animation-completed::go-to", Lang.bind(this,
+                    function() {
+                        // Apparently the signal is called before animation is really complete so if we don't
+                        // zoom in idle, we get a crash. Perhaps a bug in libchamplain?
+                        Mainloop.idle_add(Lang.bind(this,
+                            function() {
+                                this._view.set_zoom_level(zoom);
+                                this.emit('gone-to');
+                            }));
+                        this._view.disconnect(animCompletedId);
+                    }));
+                this._view.go_to(this.latitude, this.longitude);
             }));
-        this._view.go_to(this.latitude, this.longitude);
+        this._mapView.ensureVisible(locations);
     },
 
     show: function(layer) {
