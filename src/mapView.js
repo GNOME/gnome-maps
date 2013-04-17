@@ -58,6 +58,9 @@ const MapView = new Lang.Class({
         this.view = this.actor;
         this.view.set_zoom_level(3);
 
+        this.view.connect('notify::latitude', Lang.bind(this, this._onViewMoved));
+        this.view.connect('notify::longitude', Lang.bind(this, this._onViewMoved));
+
         this._properties = new Properties.Properties(this);
         this.view.bin_layout_add(this._properties.actor,
                                  Clutter.BinAlignment.FILL,
@@ -190,6 +193,10 @@ const MapView = new Lang.Class({
             locations[0].goTo(true);
         else
             this.ensureVisible(locations);
+    },
+
+    _onViewMoved: function() {
+        this.emit('view-moved');
     },
 });
 Signals.addSignalMethods(MapView.prototype);
