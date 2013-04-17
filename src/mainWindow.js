@@ -104,10 +104,31 @@ const MainWindow = new Lang.Class({
 
         let toggle = new Gd.HeaderToggleButton({ symbolic_icon_name: 'find-location-symbolic',
                                                  active: trackUserLocation });
+
+        let onViewMoved = Lang.bind(this,
+            function () {
+                if (!this.mapView.userLocationVisible())
+                    toggle.active = false;
+            });
+        if (trackUserLocation)
+            this._onViewMovedId = this.mapView.connect('view-moved', onViewMoved);
+
         toggle.connect('toggled', Lang.bind(this,
             function() {
-                if (toggle.active)
+                if (this._onViewMovedId > 0) {
+                    this.mapView.disconnect(this._onViewMovedId);
+                    this._onViewMovedId = 0;
+                }
+
+                if (toggle.active) {
+                    let goneToUserLocationId = this.mapView.connect('gone-to-user-location', Lang.bind(this,
+                        function () {
+                            this.mapView.disconnect(goneToUserLocationId);
+                            this._onViewMovedId = this.mapView.connect('view-moved', onViewMoved);
+                        }));
                     this.mapView.gotoUserLocation(true);
+                }
+
                 Application.settings.set_boolean('track-user-location', toggle.active);
             }));
         headerBar.pack_start(toggle);
