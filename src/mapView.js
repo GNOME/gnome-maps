@@ -30,6 +30,7 @@ const Geocode = imports.gi.GeocodeGlib;
 
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
+const Signals = imports.signals;
 
 const Application = imports.application;
 const Properties = imports.properties;
@@ -130,6 +131,11 @@ const MapView = new Lang.Class({
     },
 
     gotoUserLocation: function(animate) {
+        let goneToId = this._userLocation.connect("gone-to", Lang.bind(this,
+            function() {
+                this.emit('gone-to-user-location');
+                this._userLocation.disconnect(goneToId);
+            }));
         this._userLocation.goTo(animate);
     },
 
@@ -186,3 +192,4 @@ const MapView = new Lang.Class({
             this.ensureVisible(locations);
     },
 });
+Signals.addSignalMethods(MapView.prototype);

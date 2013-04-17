@@ -24,6 +24,7 @@ const Geocode = imports.gi.GeocodeGlib;
 
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
+const Signals = imports.signals;
 
 const Utils = imports.utils;
 const Path = imports.path;
@@ -73,6 +74,7 @@ const MapLocation = new Lang.Class({
                 Mainloop.idle_add(Lang.bind(this,
                     function() {
                         this._view.set_zoom_level(zoom);
+                        this.emit('gone-to');
                     }));
                 this._view.disconnect(anim_completed_id);
             }));
@@ -92,3 +94,4 @@ const MapLocation = new Lang.Class({
         this.goTo(animate);
     },
 });
+Signals.addSignalMethods(MapLocation.prototype);
