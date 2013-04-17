@@ -71,14 +71,9 @@ const MapLocation = new Lang.Class({
                 this._view.disconnect(animCompletedId);
                 animCompletedId = this._view.connect("animation-completed::go-to", Lang.bind(this,
                     function() {
-                        // Apparently the signal is called before animation is really complete so if we don't
-                        // zoom in idle, we get a crash. Perhaps a bug in libchamplain?
-                        Mainloop.idle_add(Lang.bind(this,
-                            function() {
-                                this._view.set_zoom_level(zoom);
-                                this.emit('gone-to');
-                            }));
                         this._view.disconnect(animCompletedId);
+                        this._view.set_zoom_level(zoom);
+                        this.emit('gone-to');
                     }));
                 this._view.go_to(this.latitude, this.longitude);
             }));
