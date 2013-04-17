@@ -142,6 +142,12 @@ const MapView = new Lang.Class({
         this._userLocation.goTo(animate);
     },
 
+    userLocationVisible: function() {
+        let box = this.view.get_bounding_box();
+
+        return box.covers(this._userLocation.latitude, this._userLocation.longitude);
+    },
+
     _showUserLocation: function() {
         let lastLocation = Application.settings.get_value('last-location');
         if (lastLocation.n_children() >= 3) {
