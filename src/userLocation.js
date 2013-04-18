@@ -40,9 +40,8 @@ const UserLocation = new Lang.Class({
 
         this._locationMarker = new Champlain.CustomMarker();
         this._locationMarker.set_location(this.latitude, this.longitude);
-        let allocationId = this._locationMarker.connect('notify::allocation', Lang.bind(this,
+        this._locationMarker.connect('notify::size', Lang.bind(this,
             function() {
-                this._locationMarker.disconnect(allocationId);
                 this._locationMarker.set_translation(-(this._locationMarker.get_width() / 2),
                                                      -this._locationMarker.get_height(),
                                                      0);
