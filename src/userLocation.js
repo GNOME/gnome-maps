@@ -40,9 +40,13 @@ const UserLocation = new Lang.Class({
 
         this._locationMarker = new Champlain.CustomMarker();
         this._locationMarker.set_location(this.latitude, this.longitude);
-        // FIXME: Using deprecated function here cause I failed to get the same result
-        //        with this._locationMarker.set_pivot_point(0.5, 0).
-        this._locationMarker.set_anchor_point_from_gravity(Clutter.Gravity.SOUTH);
+        let allocationId = this._locationMarker.connect('notify::allocation', Lang.bind(this,
+            function() {
+                this._locationMarker.disconnect(allocationId);
+                this._locationMarker.set_translation(-(this._locationMarker.get_width() / 2),
+                                                     -this._locationMarker.get_height(),
+                                                     0);
+            }));
         let pin_actor = Utils.CreateActorFromImageFile(Path.ICONS_DIR + "/pin.svg");
         if (pin_actor == null)
             return;
