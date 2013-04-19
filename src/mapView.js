@@ -62,9 +62,7 @@ const MapView = new Lang.Class({
         this.view.connect('notify::longitude', Lang.bind(this, this._onViewMoved));
 
         this._properties = new Properties.Properties(this);
-        this.view.bin_layout_add(this._properties.actor,
-                                 Clutter.BinAlignment.FILL,
-                                 Clutter.BinAlignment.FILL);
+        this.view.add_child(this._properties.actor);
 
         this._markerLayer = new Champlain.MarkerLayer();
         this._markerLayer.set_selection_mode(Champlain.SelectionMode.SINGLE);
