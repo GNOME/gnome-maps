@@ -42,7 +42,8 @@ const UserLocation = new Lang.Class({
         this._locationMarker.set_location(this.latitude, this.longitude);
         this._locationMarker.connect('notify::size', Lang.bind(this,
             function() {
-                this._locationMarker.set_translation(-(this._locationMarker.get_width() / 2),
+                let translate_x = -Math.floor(this._locationMarker.get_width() / 2);
+                this._locationMarker.set_translation(translate_x,
                                                      -this._locationMarker.get_height(),
                                                      0);
             }));
