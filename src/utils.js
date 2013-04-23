@@ -1,3 +1,5 @@
+/* -*- Mode: JS2; indent-tabs-mode: nil; js2-basic-offset: 4 -*- */
+/* vim: set et ts=4 sw=4: */
 /*
  * Copyright (c) 2011, 2013 Red Hat, Inc.
  *
