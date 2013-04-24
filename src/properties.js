@@ -61,18 +61,6 @@ const Properties = new Lang.Class({
                                        orientation: Gtk.Orientation.VERTICAL,
                                        valign: Gtk.Align.FILL });
 
-        let label = new Gtk.Label({ label: _("<b>Map Type</b>"),
-                                    use_markup: true });
-        propsGrid.add(label);
-
-        let radioGrid = new Gtk.Grid({ row_spacing: 5,
-                                       orientation: Gtk.Orientation.VERTICAL });
-        propsGrid.add(radioGrid);
-        var radio = this.addMapTypeRadio(null, radioGrid, _("Street"), MapView.MapType.STREET);
-        this.addMapTypeRadio(radio, radioGrid, _("Satellite"), MapView.MapType.AERIAL);
-        this.addMapTypeRadio(radio, radioGrid, _("Cycling"), MapView.MapType.CYCLING);
-        this.addMapTypeRadio(radio, radioGrid, _("Transit"), MapView.MapType.TRANSIT);
-
         let propsContainer = new Gtk.Frame({ child: propsGrid,
                                              shadow_type: Gtk.ShadowType.IN,
                                              width_request: 200 });
@@ -104,19 +92,5 @@ const Properties = new Lang.Class({
                                                    x_expand: true,
                                                    y_expand: true });
         this.actor.add_child(revealerActor);
-    },
-
-    addMapTypeRadio: function(groupLeader, container, label, mapType) {
-        let radio = Gtk.RadioButton.new_with_label_from_widget(groupLeader, label);
-        radio.connect("toggled", Lang.bind(this, function(radio) {
-            if (!radio.get_active())
-                return;
-
-            this._mapView.setMapType(mapType);
-        }));
-
-        container.add(radio);
-
-        return radio;
     }
 });
