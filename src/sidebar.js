@@ -36,8 +36,8 @@ const Mainloop = imports.mainloop;
 const Utils = imports.utils;
 const _ = imports.gettext.gettext;
 
-const Properties = new Lang.Class({
-    Name: 'Properties',
+const Sidebar = new Lang.Class({
+    Name: 'Sidebar',
 
     _init: function(mapView) {
         this._mapView = mapView;
@@ -52,21 +52,21 @@ const Properties = new Lang.Class({
         revealButton.show();
 
         // then the sidebar itself, packed into the revealer
-        let propsGrid = new Gtk.Grid({ vexpand: true,
-                                       hexpand: true,
-                                       margin_top: 32,
-                                       margin_left: 32,
-                                       margin_right: 32,
-                                       row_spacing: 15,
-                                       orientation: Gtk.Orientation.VERTICAL,
-                                       valign: Gtk.Align.FILL });
+        let grid = new Gtk.Grid({ vexpand: true,
+                                  hexpand: true,
+                                  margin_top: 32,
+                                  margin_left: 32,
+                                  margin_right: 32,
+                                  row_spacing: 15,
+                                  orientation: Gtk.Orientation.VERTICAL,
+                                  valign: Gtk.Align.FILL });
 
-        let propsContainer = new Gtk.Frame({ child: propsGrid,
-                                             shadow_type: Gtk.ShadowType.IN,
-                                             width_request: 200 });
-        propsContainer.get_style_context().add_class('maps-sidebar');
+        let container = new Gtk.Frame({ child: grid,
+                                        shadow_type: Gtk.ShadowType.IN,
+                                        width_request: 200 });
+        container.get_style_context().add_class('maps-sidebar');
 
-        let revealer = new Gd.Revealer({ child: propsContainer,
+        let revealer = new Gd.Revealer({ child: container,
                                          reveal_child: false,
                                          orientation: Gtk.Orientation.VERTICAL });
         revealer.show_all();

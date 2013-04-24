@@ -35,7 +35,7 @@ const Mainloop = imports.mainloop;
 const Signals = imports.signals;
 
 const Application = imports.application;
-const Properties = imports.properties;
+const Sidebar = imports.sidebar;
 const Utils = imports.utils;
 const Path = imports.path;
 const MapLocation = imports.mapLocation;
@@ -63,8 +63,8 @@ const MapView = new Lang.Class({
         this.view.connect('notify::latitude', Lang.bind(this, this._onViewMoved));
         this.view.connect('notify::longitude', Lang.bind(this, this._onViewMoved));
 
-        this._properties = new Properties.Properties(this);
-        this.view.add_child(this._properties.actor);
+        this._sidebar = new Sidebar.Sidebar(this);
+        this.view.add_child(this._sidebar.actor);
 
         this._markerLayer = new Champlain.MarkerLayer();
         this._markerLayer.set_selection_mode(Champlain.SelectionMode.SINGLE);
