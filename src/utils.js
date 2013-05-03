@@ -76,16 +76,14 @@ function clearGtkClutterActorBg(actor) {
                                                        alpha: 0 }));
 }
 
-function initActions(actionMap, simpleActionEntries) {
+function initActions(actionMap, simpleActionEntries, context) {
     simpleActionEntries.forEach(function(entry) {
-        let actionParams = { name: entry.name };
-        if (entry.state)
-            actionParams.state = entry.state;
+        let action = new Gio.SimpleAction(entry.properties);
 
-        let action = new Gio.SimpleAction(actionParams);
-
-        if (entry.callback)
-            action.connect('activate', Lang.bind(actionMap, entry.callback));
+        for(let signalHandler in entry.signalHandlers) {
+            let callback = entry.signalHandlers[signalHandler];
+            action.connect(signalHandler, callback.bind(context));
+        }
 
         actionMap.add_action(action);
     });

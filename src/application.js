@@ -58,7 +58,7 @@ const Application = new Lang.Class({
         this.parent({ application_id: 'org.gnome.Maps' });
     },
 
-    _onActionQuit: function() {
+    _onQuitActivate: function() {
         this._mainWindow.window.destroy();
     },
 
@@ -84,9 +84,10 @@ const Application = new Lang.Class({
         application = this;
         settings = new Gio.Settings({ schema: 'org.gnome.maps' });
 
-        Utils.initActions(this, [
-            { name: 'quit', callback: this._onActionQuit }
-        ]);
+        Utils.initActions(this, [{
+            properties: { name: 'quit' },
+            signalHandlers: { activate: this._onQuitActivate }
+        }], this);
 
         this._initAppMenu();
     },

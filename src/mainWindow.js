@@ -55,9 +55,10 @@ const MainWindow = new Lang.Class({
                                                   hide_titlebar_when_maximized: true,
                                                   title: _("Maps") });
 
-        Utils.initActions(this.window, [
-            { name: 'about', callback: this._onActionAbout }
-        ]);
+        Utils.initActions(this.window, [{ 
+            properties: { name: 'about' }, 
+            signalHandlers: { activate: this._onAboutActivate }
+        }], this.window);
 
         // apply the last saved window size and position
         let size = Application.settings.get_value('window-size');
@@ -199,7 +200,7 @@ const MainWindow = new Lang.Class({
         return false;
     },
 
-    _onActionAbout: function() {
+    _onAboutActivate: function() {
         let aboutDialog = new Gtk.AboutDialog();
 
         aboutDialog.artists = [ 'Jakub Steiner <jimmac@gmail.com>', 'Andreas Nilsson <nisses.mail@home.se>' ];
