@@ -55,10 +55,25 @@ const MainWindow = new Lang.Class({
                                                   hide_titlebar_when_maximized: true,
                                                   title: _("Maps") });
 
-        Utils.initActions(this.window, [{ 
-            properties: { name: 'about' }, 
-            signalHandlers: { activate: this._onAboutActivate }
-        }], this.window);
+        Utils.initActions(this.window, [
+            { 
+                properties: { name: 'about' }, 
+                signalHandlers: { activate: this._onAboutActivate }
+            }, {
+                properties: {
+                    name: 'map-type-menu', 
+                    state: GLib.Variant.new('b', false)
+                },
+                signalHandlers: { activate: this._onMapTypeMenuActivate }
+            }, {
+                properties: {
+                    name: 'map-type',
+                    parameter_type: GLib.VariantType.new('s'),
+                    state: GLib.Variant.new('s', 'STREET')
+                },
+                signalHandlers: { activate: this._onMapTypeActivate }
+            }
+        ], this);
 
         // apply the last saved window size and position
         let size = Application.settings.get_value('window-size');
@@ -200,6 +215,17 @@ const MainWindow = new Lang.Class({
         return false;
     },
 
+    _onMapTypeMenuActivate: function(action) {
+        let state = action.get_state().get_boolean();
+        action.set_state(GLib.Variant.new('b', !state));
+    },
+
+    _onMapTypeActivate: function(action, value) {
+        action.set_state(value);
+        let [mapType, len] = value.get_string();
+        this.mapView.setMapType(MapView.MapType[mapType]);
+    },
+
     _onAboutActivate: function() {
         let aboutDialog = new Gtk.AboutDialog();
 
@@ -217,7 +243,7 @@ const MainWindow = new Lang.Class({
         aboutDialog.wrap_license = true;
 
         aboutDialog.modal = true;
-        aboutDialog.transient_for = this;
+        aboutDialog.transient_for = this.window;
 
         aboutDialog.show();
         aboutDialog.connect('response', function() {
