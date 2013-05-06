@@ -91,11 +91,15 @@ const MapView = new Lang.Class({
         forward.search_async (null, Lang.bind(this,
             function(forward, res) {
                 try {
-                    let locations = forward.search_finish(res);
-                    log (locations.length + " locations found");
+                    let places = forward.search_finish(res);
+                    log (places.length + " places found");
                     let mapLocations = new Array();
-                    locations.forEach(Lang.bind(this,
-                        function(location) {
+                    places.forEach(Lang.bind(this,
+                        function(place) {
+                            let location = place.get_location();
+                            if (location == null)
+                                return;
+
                             let mapLocation = new MapLocation.MapLocation(location, this);
                             mapLocations.push(mapLocation);
                         }));
