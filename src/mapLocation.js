@@ -52,6 +52,7 @@ const MapLocation = new Lang.Class({
         if (!animate) {
             this._view.center_on(this.latitude, this.longitude);
             this._view.set_zoom_level(zoom);
+            this.emit('gone-to');
 
             return;
         }
