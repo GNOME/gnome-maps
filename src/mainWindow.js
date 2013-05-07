@@ -101,20 +101,17 @@ const MainWindow = new Lang.Class({
         this.mapView = new MapView.MapView();
 
         let trackUserLocation = Application.settings.get_boolean('track-user-location');
-        if (trackUserLocation)
-            this.mapView.gotoUserLocation(false);
 
         let toggle = builder.get_object('track-user-button');
-        toggle.active = trackUserLocation;
 
         let onViewMoved = Lang.bind(this,
             function () {
                 if (!this.mapView.userLocationVisible())
                     toggle.active = false;
             });
-        if (trackUserLocation)
-            this._onViewMovedId = this.mapView.connect('view-moved', onViewMoved);
 
+        // Disable animation for goto animation on startup only
+        let animateGotoUserLocation = !trackUserLocation;
         toggle.connect('toggled', Lang.bind(this,
             function() {
                 if (this._onViewMovedId > 0) {
@@ -128,11 +125,14 @@ const MainWindow = new Lang.Class({
                             this.mapView.disconnect(goneToUserLocationId);
                             this._onViewMovedId = this.mapView.connect('view-moved', onViewMoved);
                         }));
-                    this.mapView.gotoUserLocation(true);
+                    this.mapView.gotoUserLocation(animateGotoUserLocation);
+                    if (!animateGotoUserLocation)
+                        animateGotoUserLocation = true;
                 }
 
                 Application.settings.set_boolean('track-user-location', toggle.active);
             }));
+        toggle.active = trackUserLocation;
 
         grid.add(this.mapView);
 
