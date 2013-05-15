@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-04-01 20:13+0000\n"
-"PO-Revision-Date: 2013-04-02 11:12+0200\n"
+"POT-Creation-Date: 2013-05-09 18:34+0000\n"
+"PO-Revision-Date: 2013-05-15 11:50+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
@@ -19,8 +19,8 @@ msgstr ""
 "n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:51
-#: ../src/mainWindow.js:55 ../src/mainWindow.js:160
+#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:54
+#: ../src/mainWindow.js:56 ../src/mainWindow.js:236
 msgid "Maps"
 msgstr "Карте"
 
@@ -57,13 +57,18 @@ msgid "Window maximized state"
 msgstr "Стање увећаног прозора"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:7
-msgid "Last known location"
-msgstr "Последње познато место"
+#| msgid "Last known location"
+msgid "Last known location and accuracy"
+msgstr "Последње познато место и прецизност"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:8
-msgid "Last known location of user (latitude and longitude in degrees)."
+#| msgid "Last known location of user (latitude and longitude in degrees)."
+msgid ""
+"Last known location (latitude and longitude in degrees) and accuracy (in "
+"meters)."
 msgstr ""
-"Последње познато место корисника (географска ширина и дужина у степенима)."
+"Последње познато место корисника (географска ширина и дужина у степенима) и "
+"прецизност (у метрима)."
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:9
 msgid "Description of last known location"
@@ -73,6 +78,14 @@ msgstr "Опис последњег познатог места"
 msgid "Description of last known location of user."
 msgstr "Опис последњег познатог места корисника."
 
+#: ../data/org.gnome.maps.gschema.xml.in.h:11
+msgid "Track user location"
+msgstr "Прати место корисника"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:12
+msgid "Track user location."
+msgstr "Прати место корисника."
+
 #: ../src/app-menu.ui.h:1
 msgid "About"
 msgstr "О програму"
@@ -81,13 +94,34 @@ msgstr "О програму"
 msgid "Quit"
 msgstr "Изађи"
 
-#: ../src/mainWindow.js:159
+#: ../src/mainWindow.js:235
 msgid "translator-credits"
 msgstr ""
 "  Мирослав Николић\n"
 "\n"
 "http://prevod.org — превод на српски језик"
 
-#: ../src/mainWindow.js:161
+#: ../src/mainWindow.js:237
 msgid "A map application for GNOME"
 msgstr "Гномов програм за карте"
+
+#: ../src/main-window.ui.h:1
+msgid "Street"
+msgstr "Улица"
+
+#: ../src/main-window.ui.h:2
+msgid "Satellite"
+msgstr "Сателит"
+
+#: ../src/userLocation.js:60
+#, c-format
+msgid ""
+"%s\n"
+"Position Accuracy: %s"
+msgstr ""
+"%s\n"
+"Прецизност положаја: %s"
+
+#: ../src/utils.js:116
+msgid " km²"
+msgstr " km²"
