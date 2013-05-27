@@ -64,7 +64,8 @@ const MapView = new Lang.Class({
         this.view.connect('notify::longitude', Lang.bind(this, this._onViewMoved));
 
         this._sidebar = new Sidebar.Sidebar(this);
-        this.view.add_child(this._sidebar.actor);
+        // Don't show sidebar until it has something in it
+        //this.view.add_child(this._sidebar.actor);
 
         this._markerLayer = new Champlain.MarkerLayer();
         this._markerLayer.set_selection_mode(Champlain.SelectionMode.SINGLE);
