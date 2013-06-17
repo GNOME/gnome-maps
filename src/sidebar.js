@@ -26,7 +26,6 @@ const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
 const Champlain = imports.gi.Champlain;
 const GtkClutter = imports.gi.GtkClutter;
-const Geocode = imports.gi.GeocodeGlib;
 const Gd = imports.gi.Gd;
 const MapView = imports.mapView;
 

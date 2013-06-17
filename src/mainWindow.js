@@ -26,7 +26,6 @@ const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
 const Gd = imports.gi.Gd;
 const Champlain = imports.gi.Champlain;
-const Geocode = imports.gi.GeocodeGlib;
 
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
