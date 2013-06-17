@@ -137,3 +137,19 @@ function CreateActorFromImageFile(path) {
         return null;
     }
 }
+
+function dashedToCamelCase(name) {
+    return name.replace(/(-.)/g, function(x) {
+        return x[1].toUpperCase();
+    });
+}
+
+function getUIObject(res, ids) {
+    let builder = new Gtk.Builder();
+    builder.add_from_resource('/org/gnome/maps/' + res + '.ui');
+    let ret = {};
+    ids.forEach(function(id) {
+        ret[dashedToCamelCase(id)] = builder.get_object(id);
+    });
+    return ret;
+}
