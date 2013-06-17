@@ -24,7 +24,6 @@ const Clutter = imports.gi.Clutter;
 const Cogl = imports.gi.Cogl;
 const Gdk = imports.gi.Gdk;
 const GdkPixbuf = imports.gi.GdkPixbuf;
-const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
 const GtkChamplain = imports.gi.GtkChamplain;
 const Champlain = imports.gi.Champlain;
@@ -34,12 +33,12 @@ const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 const Signals = imports.signals;
 
-const Application = imports.application;
 const Sidebar = imports.sidebar;
 const Utils = imports.utils;
 const Path = imports.path;
 const MapLocation = imports.mapLocation;
 const UserLocation = imports.userLocation;
+const Geoclue = imports.geoclue;
 const _ = imports.gettext.gettext;
 
 const MapType = {
@@ -154,40 +153,18 @@ const MapView = new Lang.Class({
     },
 
     _showUserLocation: function() {
-        let lastLocation = Application.settings.get_value('last-location');
-        if (lastLocation.n_children() >= 3) {
-            let lat = lastLocation.get_child_value(0);
-            let lng = lastLocation.get_child_value(1);
-            let accuracy = lastLocation.get_child_value(2);
+        this._geoclue = new Geoclue.Geoclue();
 
-            let location = new Geocode.Location({ latitude: lat.get_double(),
-                                                  longitude: lng.get_double(),
-                                                  accuracy: accuracy.get_double() });
-            let lastLocationDescription = Application.settings.get_string('last-location-description');
-            location.set_description(lastLocationDescription);
+        let onLocationChanged = Lang.bind(this,
+            function() {
+                if (this._geoclue.location == null)
+                    return;
 
-            this._userLocation = new UserLocation.UserLocation(location, this);
-            this._userLocation.show(this._userLocationLayer);
-        }
-
-        let ipclient = new Geocode.Ipclient();
-        ipclient.server = "http://freegeoip.net/json/";
-        ipclient.compatibility_mode = true;
-        ipclient.search_async(null, Lang.bind(this,
-            function(ipclient, res) {
-                try {
-                    let location = ipclient.search_finish(res);
-
-                    this._userLocation = new UserLocation.UserLocation(location, this);
-                    this._userLocation.show(this._userLocationLayer);
-
-                    let variant = GLib.Variant.new('ad', [location.latitude, location.longitude, location.accuracy]);
-                    Application.settings.set_value('last-location', variant);
-                    Application.settings.set_string('last-location-description', location.description);
-                } catch (e) {
-                    log("Failed to find your location: " + e);
-                }
-            }));
+                this._userLocation = new UserLocation.UserLocation(this._geoclue.location, this);
+                this._userLocation.show(this._userLocationLayer);
+            });
+        this._geoclue.connect("location-changed", onLocationChanged);
+        onLocationChanged();
     },
 
     _showLocations: function(locations) {
