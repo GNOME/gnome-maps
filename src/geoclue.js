@@ -22,7 +22,9 @@
 
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
+const Gio = imports.gi.Gio;
 const Geocode = imports.gi.GeocodeGlib;
+const GClue = imports.gi.Geoclue;
 
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
@@ -54,25 +56,82 @@ const Geoclue = new Lang.Class({
     },
 
     _findLocation: function() {
-        let ipclient = new Geocode.Ipclient();
-        ipclient.server = "http://freegeoip.net/json/";
-        ipclient.compatibility_mode = true;
-        ipclient.search_async(null, Lang.bind(this,
-            function(ipclient, res) {
-                try {
-                    this.location = ipclient.search_finish(res);
+        GClue.ManagerProxy.new_for_bus(Gio.BusType.SESSION,
+                                       Gio.DBusProxyFlags.NONE,
+                                        "org.freedesktop.GeoClue2",
+                                        "/org/freedesktop/GeoClue2/Manager",
+                                        null,
+                                        Lang.bind(this, this._onManagerProxyReady));
+    },
 
-                    let variant = GLib.Variant.new('ad', [this.location.latitude,
-                                                          this.location.longitude,
-                                                          this.location.accuracy]);
-                    Application.settings.set_value('last-location', variant);
-                    Application.settings.set_string('last-location-description', this.location.description);
+    _onManagerProxyReady: function(sourceObject, res) {
+        try {
+            this._managerProxy = GClue.ManagerProxy.new_for_bus_finish(res);
 
-                    this.emit('location-changed');
-                } catch (e) {
-                    log("Failed to find your location: " + e);
-                }
-            }));
+            this._managerProxy.call_get_client(null, Lang.bind(this, this._onGetClientReady));
+        } catch (e) {
+            log ("Failed to connect to GeoClue2 service: " + e.message);
+        }
+    },
+
+    _onGetClientReady: function(sourceObject, res) {
+        try {
+            let [ret, clientPath] = this._managerProxy.call_get_client_finish(res);
+
+            GClue.ClientProxy.new_for_bus(Gio.BusType.SESSION,
+                                          Gio.DBusProxyFlags.NONE,
+                                          "org.freedesktop.GeoClue2",
+                                          clientPath,
+                                          null,
+                                          Lang.bind(this, this._onClientProxyReady));
+        } catch (e) {
+            log ("Failed to connect to GeoClue2 service: " + e.message);
+        }
+    },
+
+    _onClientProxyReady: function(sourceObject, res) {
+        try {
+            this._clientProxy = GClue.ClientProxy.new_for_bus_finish(res);
+
+            this._clientProxy.connect("location-updated", Lang.bind(this,
+                function(client, oldPath, newPath) {
+                    GClue.LocationProxy.new_for_bus(Gio.BusType.SESSION,
+                                                    Gio.DBusProxyFlags.NONE,
+                                                    "org.freedesktop.GeoClue2",
+                                                    newPath,
+                                                    null,
+                                                    Lang.bind(this, this._onLocationProxyReady));
+                }));
+
+            this._clientProxy.call_start(null, Lang.bind(this, this._onStartReady));
+        } catch (e) {
+            log ("Failed to connect to GeoClue2 service: " + e.message);
+        }
+    },
+
+    _onStartReady: function(sourceObject, res) {
+        try {
+            this._clientProxy.call_start_finish(res);
+        } catch (e) {
+            log ("Failed to connect to GeoClue2 service: " + e.message);
+        }
+    },
+
+    _onLocationProxyReady: function(sourceObject, res) {
+        try {
+            this.location =  GClue.LocationProxy.new_for_bus_finish(res);
+
+            let variant = GLib.Variant.new('ad', [this.location.latitude,
+                                                  this.location.longitude,
+                                                  this.location.accuracy]);
+            Application.settings.set_value('last-location', variant);
+            Application.settings.set_string('last-location-description', this.location.description);
+
+            this.emit('location-changed');
+            log("Found location: " + this.location.description);
+        } catch (e) {
+            log("Failed to find your location: " + e);
+        }
     },
 });
 Signals.addSignalMethods(Geoclue.prototype);
