@@ -46,13 +46,15 @@ const MainWindow = new Lang.Class({
 
     _init: function(app) {
         this._configureId = 0;
-
-        this.window = new Gtk.ApplicationWindow({ application: app,
-                                                  width_request: _WINDOW_MIN_WIDTH,
-                                                  height_request: _WINDOW_MIN_HEIGHT,
-                                                  window_position: Gtk.WindowPosition.CENTER,
-                                                  hide_titlebar_when_maximized: true,
-                                                  title: _("Maps") });
+        let ui = Utils.getUIObject('main-window', [ 'app-window',
+                                                    'window-content',
+                                                    'search-entry',
+                                                    'track-user-button']);
+        let grid = ui.windowContent,
+            toggle = ui.trackUserButton;
+        this._searchEntry = ui.searchEntry;
+        this.window = ui.appWindow;
+        this.window.application = app;
 
         Utils.initActions(this.window, [
             { 
@@ -103,21 +105,11 @@ const MainWindow = new Lang.Class({
         this.window.connect('window-state-event',
                             Lang.bind(this, this._onWindowStateEvent));
 
-        let builder = new Gtk.Builder();
-        builder.add_from_resource('/org/gnome/maps/main-window.ui');
-
-        let grid = builder.get_object('window-content');
-        grid.set_orientation (Gtk.Orientation.VERTICAL);
-        this.window.add(grid);
-
-        this._searchEntry = builder.get_object('search-entry');
         this._searchEntry.connect('activate', Lang.bind(this, this._onSearchActivate));
 
         this.mapView = new MapView.MapView();
 
         let trackUserLocation = Application.settings.get_boolean('track-user-location');
-
-        let toggle = builder.get_object('track-user-button');
 
         let onViewMoved = Lang.bind(this,
             function () {

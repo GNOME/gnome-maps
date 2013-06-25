@@ -15,42 +15,51 @@
       </item>
     </section>
   </menu>
-  <object class="GtkGrid" id="window-content">
-    <property name="visible">True</property>
-    <property name="orientation">vertical</property>
+  <object class="GtkApplicationWindow" id="app-window">
+    <property name="width_request">600</property>
+    <property name="height_request">500</property>
+    <property name="window_position">center</property>
+    <property name="hide_titlebar_when_maximized">True</property>
+    <property name="title" translatable="yes">Maps</property>
     <child>
-      <object class="GdHeaderBar" id="header-bar">
+	  <object class="GtkGrid" id="window-content">
         <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <child type="title">
-          <object class="GdTaggedEntry" id="search-entry">
-            <property name="visible">True</property>
-            <property name="width_request">500</property>
-          </object>
-        </child>
-        <child>
-          <object class="GdHeaderToggleButton" id="track-user-button">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="symbolic-icon-name">find-location-symbolic</property>
-          </object>
-          <packing>
-            <property name="pack_type">start</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GdHeaderMenuButton" id="layer-menu-button">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="symbolic-icon-name">emblem-system-symbolic</property>
-            <property name="menu-model">map-type-menu</property>
-            <property name="action_name">win.map-type-menu</property>
-          </object>
-          <packing>
-            <property name="pack_type">end</property>
-          </packing>
-        </child>
-      </object>
-    </child>
+    	<property name="orientation">vertical</property>
+		<child>
+		  <object class="GdHeaderBar" id="header-bar">
+			<property name="visible">True</property>
+			<property name="can_focus">False</property>
+			<child type="title">
+			  <object class="GdTaggedEntry" id="search-entry">
+				<property name="visible">True</property>
+				<property name="width_request">500</property>
+			  </object>
+			</child>
+			<child>
+			  <object class="GdHeaderToggleButton" id="track-user-button">
+				<property name="visible">True</property>
+				<property name="can_focus">True</property>
+				<property name="symbolic-icon-name">find-location-symbolic</property>
+			  </object>
+			  <packing>
+				<property name="pack_type">start</property>
+			  </packing>
+			</child>
+			<child>
+			  <object class="GdHeaderMenuButton" id="layer-menu-button">
+				<property name="visible">True</property>
+				<property name="can_focus">True</property>
+				<property name="symbolic-icon-name">emblem-system-symbolic</property>
+				<property name="menu-model">map-type-menu</property>
+				<property name="action_name">win.map-type-menu</property>
+			  </object>
+			  <packing>
+				<property name="pack_type">end</property>
+			  </packing>
+			</child>
+		  </object>
+		</child>
+	  </object>
+	</child>
   </object>
 </interface>
