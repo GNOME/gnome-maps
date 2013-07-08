@@ -100,6 +100,8 @@ const MainWindow = new Lang.Class({
                             this._onConfigureEvent.bind(this));
         this.window.connect('window-state-event',
                             this._onWindowStateEvent.bind(this));
+        this.window.connect('key-press-event',
+                            this._onKeyPressEvent.bind(this));
 
         this._searchEntry.connect('activate',
                                   this._onSearchActivate.bind(this));
@@ -199,6 +201,22 @@ const MainWindow = new Lang.Class({
 
         let maximized = (state & Gdk.WindowState.MAXIMIZED);
         Application.settings.set_boolean('window-maximized', maximized);
+    },
+
+    _onKeyPressEvent: function(widget, event) {
+        let state = event.get_state()[1];
+
+        if (state & Gdk.ModifierType.CONTROL_MASK) {
+            let keyval = event.get_keyval()[1];
+
+            if (keyval === Gdk.KEY_plus)
+                this.mapView.view.zoom_in();
+
+            if (keyval === Gdk.KEY_minus)
+                this.mapView.view.zoom_out();
+        }
+
+        return false;
     },
 
     _onSearchActivate: function() {
