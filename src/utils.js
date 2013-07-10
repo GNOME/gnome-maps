@@ -79,21 +79,6 @@ function initActions(actionMap, simpleActionEntries, context) {
     });
 }
 
-// accuracy: double value in meters
-function getZoomLevelForAccuracy(accuracy) {
-    if (accuracy == Geocode.LOCATION_ACCURACY_UNKNOWN)
-        return 12; // Accuracy is usually city-level when unknown
-    else if (accuracy <= Geocode.LOCATION_ACCURACY_STREET)
-        return 16;
-    else if (accuracy <= Geocode.LOCATION_ACCURACY_CITY)
-        return 12;
-    else if (accuracy <= Geocode.LOCATION_ACCURACY_REGION)
-        return 10;
-    else if (accuracy <= Geocode.LOCATION_ACCURACY_COUNTRY)
-        return 6;
-    else
-        return 3;
-}
 
 function getDescriptionForAccuracy(accuracy) {
     if (accuracy == Geocode.LOCATION_ACCURACY_UNKNOWN)

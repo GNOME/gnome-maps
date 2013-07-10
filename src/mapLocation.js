@@ -47,11 +47,9 @@ const MapLocation = new Lang.Class({
     goTo: function(animate) {
         log("Going to " + this.description);
 
-        let zoom = Utils.getZoomLevelForAccuracy(this.accuracy);
-
         if (!animate) {
             this._view.center_on(this.latitude, this.longitude);
-            this._view.set_zoom_level(zoom);
+            this.zoomToFit();
             this.emit('gone-to');
 
             return;
@@ -70,7 +68,7 @@ const MapLocation = new Lang.Class({
 
             id = this._view.connect("animation-completed::go-to", (function() {
                 this._view.disconnect(id);
-                this._view.set_zoom_level(zoom);
+                this.zoomToFit();
                 this.emit('gone-to');
             }).bind(this));
 
@@ -90,6 +88,24 @@ const MapLocation = new Lang.Class({
     showNGoTo: function(animate, layer) {
         this.show(layer);
         this.goTo(animate);
+    },
+
+    // Zoom to the maximal zoom-level that fits the accuracy circle
+    zoomToFit: function() {
+        let zoom;
+        if (this.accuracy === Geocode.LOCATION_ACCURACY_UNKNOWN)
+            zoom = 12; // Accuracy is usually city-level when unknown
+        else if (this.accuracy <= Geocode.LOCATION_ACCURACY_STREET)
+            zoom = 16;
+        else if (this.accuracy <= Geocode.LOCATION_ACCURACY_CITY)
+            zoom = 12;
+        else if (this.accuracy <= Geocode.LOCATION_ACCURACY_REGION)
+            zoom = 10;
+        else if (this.accuracy <= Geocode.LOCATION_ACCURACY_COUNTRY)
+            zoom = 6;
+        else
+            zoom = 3;
+        this._view.set_zoom_level(zoom);
     },
 
     _getCurrentLocation: function() {
