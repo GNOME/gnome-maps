@@ -42,25 +42,25 @@ const Geoclue = imports.geoclue;
 const _ = imports.gettext.gettext;
 
 const MapType = {
-   STREET:  Champlain.MAP_SOURCE_OSM_MAPQUEST,
-   AERIAL: Champlain.MAP_SOURCE_OSM_AERIAL_MAP,
-   CYCLING: Champlain.MAP_SOURCE_OSM_CYCLE_MAP,
-   TRANSIT: Champlain.MAP_SOURCE_OSM_TRANSPORT_MAP
+    STREET:  Champlain.MAP_SOURCE_OSM_MAPQUEST,
+    AERIAL:  Champlain.MAP_SOURCE_OSM_AERIAL_MAP,
+    CYCLING: Champlain.MAP_SOURCE_OSM_CYCLE_MAP,
+    TRANSIT: Champlain.MAP_SOURCE_OSM_TRANSPORT_MAP
 };
 
 const MapView = new Lang.Class({
     Name: 'MapView',
     Extends: GtkChamplain.Embed,
 
-    _init: function(app) {
+    _init: function() {
         this.parent();
 
         this.actor = this.get_view();
         this.view = this.actor;
         this.view.set_zoom_level(3);
 
-        this.view.connect('notify::latitude', Lang.bind(this, this._onViewMoved));
-        this.view.connect('notify::longitude', Lang.bind(this, this._onViewMoved));
+        this.view.connect('notify::latitude', this._onViewMoved.bind(this));
+        this.view.connect('notify::longitude', this._onViewMoved.bind(this));
 
         this._sidebar = new Sidebar.Sidebar(this);
         // Don't show sidebar until it has something in it
@@ -87,62 +87,46 @@ const MapView = new Lang.Class({
 
     geocodeSearch: function(string) {
         let forward = Geocode.Forward.new_for_string(string);
+        forward.search_async (null, (function(forward, res) {
+            try {
+                let places = forward.search_finish(res);
+                log (places.length + " places found");
+                let mapLocations = [];
+                places.forEach((function(place) {
+                    let location = place.get_location();
+                    if (!location)
+                        return;
 
-        forward.search_async (null, Lang.bind(this,
-            function(forward, res) {
-                try {
-                    let places = forward.search_finish(res);
-                    log (places.length + " places found");
-                    let mapLocations = new Array();
-                    places.forEach(Lang.bind(this,
-                        function(place) {
-                            let location = place.get_location();
-                            if (location == null)
-                                return;
-
-                            let mapLocation = new MapLocation.MapLocation(location, this);
-                            mapLocations.push(mapLocation);
-                        }));
-                    this._showLocations(mapLocations);
-                } catch (e) {
-                    log ("Failed to search '" + string + "': " + e.message);
-                }
-            }));
+                    let mapLocation = new MapLocation.MapLocation(location, this);
+                    mapLocations.push(mapLocation);
+                }).bind(this));
+                this._showLocations(mapLocations);
+            } catch (e) {
+                log ("Failed to search '" + string + "': " + e.message);
+            }
+        }).bind(this));
     },
 
     ensureVisible: function(locations) {
-        let min_latitude = 90;
-        let max_latitude = -90;
-        let min_longitude = 180;
-        let max_longitude = -180;
+        let bbox = new Champlain.BoundingBox({ left:   180,
+                                               right: -180,
+                                               bottom:  90,
+                                               top:    -90 });
 
-        locations.forEach(Lang.bind(this,
-            function(location) {
-                if (location.latitude > max_latitude)
-                    max_latitude = location.latitude;
-                if (location.latitude < min_latitude)
-                    min_latitude = location.latitude;
-                if (location.longitude > max_longitude)
-                    max_longitude = location.longitude;
-                if (location.longitude < min_longitude)
-                    min_longitude = location.longitude;
-                }));
-
-        let bbox = new Champlain.BoundingBox();
-        bbox.left = min_longitude;
-        bbox.right = max_longitude;
-        bbox.bottom = min_latitude;
-        bbox.top = max_latitude;
-
+        locations.forEach(function(location) {
+            bbox.left   = Math.min(bbox.left,   location.longitude);
+            bbox.right  = Math.max(bbox.right,  location.longitude);
+            bbox.bottom = Math.min(bbox.bottom, location.latitude);
+            bbox.top    = Math.max(bbox.top,    location.latitude);
+        });
         this.view.ensure_visible(bbox, true);
     },
 
     gotoUserLocation: function(animate) {
-        let goneToId = this._userLocation.connect("gone-to", Lang.bind(this,
-            function() {
-                this.emit('gone-to-user-location');
-                this._userLocation.disconnect(goneToId);
-            }));
+        let goneToId = this._userLocation.connect("gone-to", (function() {
+            this.emit('gone-to-user-location');
+            this._userLocation.disconnect(goneToId);
+        }).bind(this));
         this._userLocation.goTo(animate);
     },
 
@@ -155,29 +139,28 @@ const MapView = new Lang.Class({
     _showUserLocation: function() {
         this._geoclue = new Geoclue.Geoclue();
 
-        let onLocationChanged = Lang.bind(this,
-            function() {
-                if (this._geoclue.location == null)
-                    return;
+        let onLocationChanged = (function() {
+            if (this._geoclue.location == null)
+                return;
 
-                this._userLocation = new UserLocation.UserLocation(this._geoclue.location, this);
-                this._userLocation.show(this._userLocationLayer);
-            });
+            this._userLocation = new UserLocation.UserLocation(this._geoclue.location, this);
+            this._userLocation.show(this._userLocationLayer);
+        }).bind(this);
+
         this._geoclue.connect("location-changed", onLocationChanged);
         onLocationChanged();
     },
 
     _showLocations: function(locations) {
-        if (locations.length == 0)
+        if (locations.length === 0)
             return;
         this._markerLayer.remove_all();
 
-        locations.forEach(Lang.bind(this,
-            function(location) {
-                location.show(this._markerLayer);
-            }));
+        locations.forEach((function(location) {
+            location.show(this._markerLayer);
+        }).bind(this));
 
-        if (locations.length == 1)
+        if (locations.length === 1)
             locations[0].goTo(true);
         else
             this.ensureVisible(locations);

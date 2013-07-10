@@ -70,7 +70,7 @@ const Sidebar = new Lang.Class({
                                          orientation: Gtk.Orientation.VERTICAL });
         revealer.show_all();
 
-        revealButton.connect('clicked', Lang.bind(this, function() {
+        revealButton.connect('clicked', (function() {
             if (revealer.reveal_child) {
                 revealer.reveal_child = false;
                 revealButton.symbolic_icon_name = 'go-previous-symbolic';
@@ -78,7 +78,7 @@ const Sidebar = new Lang.Class({
                 revealer.reveal_child = true;
                 revealButton.symbolic_icon_name = 'go-next-symbolic';
             }
-        }));
+        }).bind(this));
 
         // now create actors
         let buttonActor = new GtkClutter.Actor({ contents: revealButton,

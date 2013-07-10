@@ -64,28 +64,24 @@ const MapLocation = new Lang.Class({
          * also give user a good idea of where the destination is compared to current
          * location.
          */
-        let locations = new Array();
-        locations[0] = new Geocode.Location({ latitude: this._view.get_center_latitude(),
-                                              longitude: this._view.get_center_longitude() });
-        locations[1] = this;
 
-        let animCompletedId = this._view.connect("animation-completed", Lang.bind(this,
-            function() {
-                this._view.disconnect(animCompletedId);
-                animCompletedId = this._view.connect("animation-completed::go-to", Lang.bind(this,
-                    function() {
-                        this._view.disconnect(animCompletedId);
-                        this._view.set_zoom_level(zoom);
-                        this.emit('gone-to');
-                    }));
-                this._view.go_to(this.latitude, this.longitude);
-            }));
-        this._mapView.ensureVisible(locations);
+        let id = this._view.connect("animation-completed", (function() {
+            this._view.disconnect(id);
+
+            id = this._view.connect("animation-completed::go-to", (function() {
+                this._view.disconnect(id);
+                this._view.set_zoom_level(zoom);
+                this.emit('gone-to');
+            }).bind(this));
+
+            this._view.go_to(this.latitude, this.longitude);
+        }).bind(this));
+
+        this._mapView.ensureVisible([this._getCurrentLocation(), this]);
     },
 
     show: function(layer) {
-        let marker = new Champlain.Label();
-        marker.set_text(this.description);
+        let marker = new Champlain.Label({ text: this.description });
         marker.set_location(this.latitude, this.longitude);
         layer.add_marker(marker);
         log("Added marker at " + this.latitude + ", " + this.longitude);
@@ -95,5 +91,12 @@ const MapLocation = new Lang.Class({
         this.show(layer);
         this.goTo(animate);
     },
+
+    _getCurrentLocation: function() {
+        return new Geocode.Location({
+            latitude: this._view.get_center_latitude(),
+            longitude: this._view.get_center_longitude()
+        });
+    }
 });
 Signals.addSignalMethods(MapLocation.prototype);

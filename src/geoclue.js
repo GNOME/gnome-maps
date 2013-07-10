@@ -58,17 +58,17 @@ const Geoclue = new Lang.Class({
     _findLocation: function() {
         GClue.ManagerProxy.new_for_bus(Gio.BusType.SESSION,
                                        Gio.DBusProxyFlags.NONE,
-                                        "org.freedesktop.GeoClue2",
-                                        "/org/freedesktop/GeoClue2/Manager",
-                                        null,
-                                        Lang.bind(this, this._onManagerProxyReady));
+                                       "org.freedesktop.GeoClue2",
+                                       "/org/freedesktop/GeoClue2/Manager",
+                                       null,
+                                       this._onManagerProxyReady.bind(this));
     },
 
     _onManagerProxyReady: function(sourceObject, res) {
         try {
             this._managerProxy = GClue.ManagerProxy.new_for_bus_finish(res);
 
-            this._managerProxy.call_get_client(null, Lang.bind(this, this._onGetClientReady));
+            this._managerProxy.call_get_client(null, this._onGetClientReady.bind(this));
         } catch (e) {
             log ("Failed to connect to GeoClue2 service: " + e.message);
         }
@@ -83,7 +83,7 @@ const Geoclue = new Lang.Class({
                                           "org.freedesktop.GeoClue2",
                                           clientPath,
                                           null,
-                                          Lang.bind(this, this._onClientProxyReady));
+                                          this._onClientProxyReady.bind(this));
         } catch (e) {
             log ("Failed to connect to GeoClue2 service: " + e.message);
         }
@@ -93,17 +93,16 @@ const Geoclue = new Lang.Class({
         try {
             this._clientProxy = GClue.ClientProxy.new_for_bus_finish(res);
 
-            this._clientProxy.connect("location-updated", Lang.bind(this,
-                function(client, oldPath, newPath) {
-                    GClue.LocationProxy.new_for_bus(Gio.BusType.SESSION,
-                                                    Gio.DBusProxyFlags.NONE,
-                                                    "org.freedesktop.GeoClue2",
-                                                    newPath,
-                                                    null,
-                                                    Lang.bind(this, this._onLocationProxyReady));
-                }));
+            this._clientProxy.connect("location-updated", (function(client, oldPath, newPath) {
+                GClue.LocationProxy.new_for_bus(Gio.BusType.SESSION,
+                                                Gio.DBusProxyFlags.NONE,
+                                                "org.freedesktop.GeoClue2",
+                                                newPath,
+                                                null,
+                                                this._onLocationProxyReady.bind(this));
+            }).bind(this));
 
-            this._clientProxy.call_start(null, Lang.bind(this, this._onStartReady));
+            this._clientProxy.call_start(null, this._onStartReady.bind(this));
         } catch (e) {
             log ("Failed to connect to GeoClue2 service: " + e.message);
         }
@@ -119,7 +118,7 @@ const Geoclue = new Lang.Class({
 
     _onLocationProxyReady: function(sourceObject, res) {
         try {
-            this.location =  GClue.LocationProxy.new_for_bus_finish(res);
+            this.location = GClue.LocationProxy.new_for_bus_finish(res);
 
             let variant = GLib.Variant.new('ad', [this.location.latitude,
                                                   this.location.longitude,
@@ -132,6 +131,6 @@ const Geoclue = new Lang.Class({
         } catch (e) {
             log("Failed to find your location: " + e);
         }
-    },
+    }
 });
 Signals.addSignalMethods(Geoclue.prototype);

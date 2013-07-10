@@ -97,7 +97,7 @@ const Application = new Lang.Class({
             return;
 
         this._mainWindow = new MainWindow.MainWindow(this);
-        this._mainWindow.window.connect('destroy', Lang.bind(this, this._onWindowDestroy));
+        this._mainWindow.window.connect('destroy', this._onWindowDestroy.bind(this));
     },
 
     vfunc_activate: function() {

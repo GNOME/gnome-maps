@@ -41,18 +41,17 @@ const UserLocation = new Lang.Class({
 
         this._locationMarker = new Champlain.CustomMarker();
         this._locationMarker.set_location(this.latitude, this.longitude);
-        this._locationMarker.connect('notify::size', Lang.bind(this,
-            function() {
-                let translate_x = -Math.floor(this._locationMarker.get_width() / 2);
-                this._locationMarker.set_translation(translate_x,
-                                                     -this._locationMarker.get_height(),
-                                                     0);
-            }));
+        this._locationMarker.connect('notify::size', (function() {
+            let translate_x = -Math.floor(this._locationMarker.get_width() / 2);
+            this._locationMarker.set_translation(translate_x,
+                                                 -this._locationMarker.get_height(),
+                                                 0);
+        }).bind(this));
         let pin_actor = Utils.CreateActorFromImageFile(Path.ICONS_DIR + "/pin.svg");
-        if (pin_actor == null)
+        if (!pin_actor)
             return;
         let bubbleActor = Utils.CreateActorFromImageFile(Path.ICONS_DIR + "/bubble.svg");
-        if (bubbleActor == null)
+        if (!bubbleActor)
             return;
         bubbleActor.set_x_expand(true);
         bubbleActor.set_y_expand(true);
@@ -62,15 +61,15 @@ const UserLocation = new Lang.Class({
         textActor.set_margin_left(6);
         textActor.set_margin_right(6);
         textActor.set_color(new Clutter.Color({ red: 255,
-                                                 blue: 255,
-                                                 green: 255,
-                                                 alpha: 255 }));
+                                                blue: 255,
+                                                green: 255,
+                                                alpha: 255 }));
         let layout = new Clutter.BinLayout();
         let descriptionActor = new Clutter.Actor({ layout_manager: layout });
         descriptionActor.add_child(bubbleActor);
         descriptionActor.add_child(textActor);
 
-        let layout = new Clutter.BoxLayout({ vertical: true });
+        layout = new Clutter.BoxLayout({ vertical: true });
         let locationActor = new Clutter.Actor({ layout_manager: layout });
         locationActor.add_child(descriptionActor);
         locationActor.add_child(pin_actor);
@@ -81,7 +80,7 @@ const UserLocation = new Lang.Class({
                                            descriptionActor, "visible",
                                            GObject.BindingFlags.SYNC_CREATE);
 
-        if (this.accuracy == 0) {
+        if (this.accuracy === 0) {
             layer.add_marker(this._locationMarker);
             return;
         }
@@ -102,14 +101,14 @@ const UserLocation = new Lang.Class({
         if (this._selectedId > 0)
             this._locationMarker.disconnect(this._selectedId);
         this._selectedId = this._locationMarker.connect("notify::selected",
-                                                        Lang.bind(this, this._updateAccuracyMarker));
+                                                        this._updateAccuracyMarker.bind(this));
 
         layer.add_marker(this._accuracyMarker);
         layer.add_marker(this._locationMarker);
 
         if (this._zoomLevelId > 0)
             this._view.disconnect(this._zoomLevelId);
-        this._zoomLevelId = this._view.connect("notify::zoom-level", Lang.bind(this, this._updateAccuracyMarker));
+        this._zoomLevelId = this._view.connect("notify::zoom-level", this._updateAccuracyMarker.bind(this));
     },
 
     _updateAccuracyMarker: function() {
@@ -131,5 +130,5 @@ const UserLocation = new Lang.Class({
             this._accuracyMarker.set_size(size);
             this._accuracyMarker.show();
         }
-    },
+    }
 });
