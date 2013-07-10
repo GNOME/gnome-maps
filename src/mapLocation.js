@@ -32,6 +32,7 @@ const Utils = imports.utils;
 const Path = imports.path;
 const _ = imports.gettext.gettext;
 
+// A map location object with an added accuracy.
 const MapLocation = new Lang.Class({
     Name: 'MapLocation',
 
@@ -44,6 +45,9 @@ const MapLocation = new Lang.Class({
         this.accuracy = geocodeLocation.accuracy;
     },
 
+    // Go to this location from the current location on the map, optionally
+    // with an animation
+    // TODO: break this out somewhere, this is useful in other cases as well.
     goTo: function(animate) {
         log("Going to " + this.description);
 
