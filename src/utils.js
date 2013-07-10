@@ -80,17 +80,6 @@ function initActions(actionMap, simpleActionEntries, context) {
 }
 
 
-function getDescriptionForAccuracy(accuracy) {
-    if (accuracy == Geocode.LOCATION_ACCURACY_UNKNOWN)
-        return "Unknown";
-    else if (accuracy == 0)
-        return "Exact";
-    else {
-        let area =  Math.PI * Math.pow(accuracy / 1000, 2);
-        area = Math.floor(area);
-        return area.toString() + _(" km²");
-    }
-}
 
 function CreateActorFromImageFile(path) {
     try {

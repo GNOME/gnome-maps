@@ -55,8 +55,8 @@ const UserLocation = new Lang.Class({
             return;
         bubbleActor.set_x_expand(true);
         bubbleActor.set_y_expand(true);
-        let text = _("%s\nPosition Accuracy: %s").format (this.description,
-                                                          Utils.getDescriptionForAccuracy(this.accuracy));
+        let text = _("%s\nPosition Accuracy: %s")
+                .format (this.description, this.getAccuracyDescription());
         let textActor = new Clutter.Text({ text: text });
         textActor.set_margin_left(6);
         textActor.set_margin_right(6);

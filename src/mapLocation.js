@@ -108,6 +108,19 @@ const MapLocation = new Lang.Class({
         this._view.set_zoom_level(zoom);
     },
 
+    getAccuracyDescription: function() {
+        switch(this.accuracy) {
+        case Geocode.LOCATION_ACCURACY_UNKNOWN:
+            return "Unknown";
+        case 0:
+            return "Exact";
+        default:
+            let area =  Math.PI * Math.pow(this.accuracy / 1000, 2);
+            area = Math.floor(area);
+            return area.toString() + _(" km²");
+        }
+    },
+
     _getCurrentLocation: function() {
         return new Geocode.Location({
             latitude: this._view.get_center_latitude(),
