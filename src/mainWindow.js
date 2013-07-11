@@ -56,47 +56,8 @@ const MainWindow = new Lang.Class({
         this.window = ui.appWindow;
         this.window.application = app;
 
-        Utils.initActions(this.window, [
-            { 
-                properties: { name: 'about' }, 
-                signalHandlers: { activate: this._onAboutActivate }
-            }, {
-                properties: {
-                    name: 'map-type-menu', 
-                    state: GLib.Variant.new('b', false)
-                },
-                signalHandlers: { activate: this._onMapTypeMenuActivate }
-            }, {
-                properties: {
-                    name: 'map-type',
-                    parameter_type: GLib.VariantType.new('s'),
-                    state: GLib.Variant.new('s', 'STREET')
-                },
-                signalHandlers: { activate: this._onMapTypeActivate }
-            }
-        ], this);
-
-        // apply the last saved window size and position
-        let size = Application.settings.get_value('window-size');
-        if (size.n_children() == 2) {
-            let width = size.get_child_value(0);
-            let height = size.get_child_value(1);
-
-            this.window.set_default_size(width.get_int32(),
-                                         height.get_int32());
-        }
-
-        let position = Application.settings.get_value('window-position');
-        if (position.n_children() == 2) {
-            let x = position.get_child_value(0);
-            let y = position.get_child_value(1);
-
-            this.window.move(x.get_int32(),
-                             y.get_int32());
-        }
-
-        if (Application.settings.get_boolean('window-maximized'))
-            this.window.maximize();
+        this._initActions();
+        this._restoreWindowGeometry();
 
         this.window.connect('delete-event', 
                             this._quit.bind(this));
@@ -143,6 +104,28 @@ const MainWindow = new Lang.Class({
         grid.show_all();
     },
 
+    _initActions: function() {
+        Utils.initActions(this.window, [
+            {
+                properties: { name: 'about' },
+                signalHandlers: { activate: this._onAboutActivate }
+            }, {
+                properties: {
+                    name: 'map-type-menu',
+                    state: GLib.Variant.new('b', false)
+                },
+                signalHandlers: { activate: this._onMapTypeMenuActivate }
+            }, {
+                properties: {
+                    name: 'map-type',
+                    parameter_type: GLib.VariantType.new('s'),
+                    state: GLib.Variant.new('s', 'STREET')
+                },
+                signalHandlers: { activate: this._onMapTypeActivate }
+            }
+        ], this);
+    },
+
     _saveWindowGeometry: function() {
         let window = this.window.get_window();
         let state = window.get_state();
@@ -158,6 +141,29 @@ const MainWindow = new Lang.Class({
         let position = this.window.get_position();
         variant = GLib.Variant.new ('ai', position);
         Application.settings.set_value('window-position', variant);
+    },
+
+    _restoreWindowGeometry: function() {
+        let size = Application.settings.get_value('window-size');
+        if (size.n_children() === 2) {
+            let width = size.get_child_value(0);
+            let height = size.get_child_value(1);
+
+            this.window.set_default_size(width.get_int32(),
+                                         height.get_int32());
+        }
+
+        let position = Application.settings.get_value('window-position');
+        if (position.n_children() === 2) {
+            let x = position.get_child_value(0);
+            let y = position.get_child_value(1);
+
+            this.window.move(x.get_int32(),
+                             y.get_int32());
+        }
+
+        if (Application.settings.get_boolean('window-maximized'))
+            this.window.maximize();
     },
 
     _onConfigureEvent: function(widget, event) {
