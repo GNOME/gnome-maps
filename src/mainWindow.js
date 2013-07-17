@@ -56,35 +56,14 @@ const MainWindow = new Lang.Class({
         this.window = ui.appWindow;
         this.window.application = app;
 
-        this._initActions();
-        this._restoreWindowGeometry();
-
-        this.window.connect('delete-event', 
-                            this._quit.bind(this));
-        this.window.connect('configure-event',
-                            this._onConfigureEvent.bind(this));
-        this.window.connect('window-state-event',
-                            this._onWindowStateEvent.bind(this));
-
-        this._searchEntry.connect('activate', this._onSearchActivate.bind(this));
-
         this.mapView = new MapView.MapView();
 
         if(Application.settings.get_boolean('track-user-location'))
             this.mapView.gotoUserLocation(false);
 
-        this._viewMovedId = 0;
-        this._connectMapMove();
-        this.mapView.connect('going-to-user-location',
-                             this._disconnectMapMove.bind(this));
-        this.mapView.connect('gone-to-user-location',
-                             this._connectMapMove.bind(this));
-
-        Application.settings.connect('changed::track-user-location', (function() {
-            if(Application.settings.get_boolean('track-user-location')) {
-                this.mapView.gotoUserLocation(true);
-            }
-        }).bind(this));
+        this._initActions();
+        this._initSignals();
+        this._restoreWindowGeometry();
 
         grid.add(this.mapView);
 
@@ -113,6 +92,29 @@ const MainWindow = new Lang.Class({
         ], this);
         let action = Application.settings.create_action('track-user-location');
         this.window.add_action(action);
+    },
+
+    _initSignals: function() {
+        this.window.connect('delete-event', this._quit.bind(this));
+        this.window.connect('configure-event',
+                            this._onConfigureEvent.bind(this));
+        this.window.connect('window-state-event',
+                            this._onWindowStateEvent.bind(this));
+
+        this._searchEntry.connect('activate',
+                                  this._onSearchActivate.bind(this));
+        this._viewMovedId = 0;
+        this._connectMapMove();
+        this.mapView.connect('going-to-user-location',
+                             this._disconnectMapMove.bind(this));
+        this.mapView.connect('gone-to-user-location',
+                             this._connectMapMove.bind(this));
+
+        Application.settings.connect('changed::track-user-location', (function() {
+            if(Application.settings.get_boolean('track-user-location')) {
+                this.mapView.gotoUserLocation(true);
+            }
+        }).bind(this));
     },
 
     _connectMapMove: function() {
