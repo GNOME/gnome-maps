@@ -110,11 +110,10 @@ const MainWindow = new Lang.Class({
         this.mapView.connect('gone-to-user-location',
                              this._connectMapMove.bind(this));
 
-        Application.settings.connect('changed::track-user-location', (function() {
-            if(Application.settings.get_boolean('track-user-location')) {
-                this.mapView.gotoUserLocation(true);
-            }
-        }).bind(this));
+        this.mapView.connect('user-location-changed',
+                             this._onUserLocationChanged.bind(this));
+        Application.settings.connect('changed::track-user-location',
+                                     this._onUserLocationChanged.bind(this));
     },
 
     _connectMapMove: function() {
@@ -129,6 +128,12 @@ const MainWindow = new Lang.Class({
         if(this._viewMovedId !== 0) {
             this.mapView.disconnect(this._viewMovedId);
             this._viewMovedId = 0;
+        }
+    },
+
+    _onUserLocationChanged: function() {
+        if(Application.settings.get_boolean('track-user-location')) {
+            this.mapView.gotoUserLocation(true);
         }
     },
 

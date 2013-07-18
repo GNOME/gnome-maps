@@ -77,7 +77,10 @@ const MapView = new Lang.Class({
         this._factory = Champlain.MapSourceFactory.dup_default();
         this.setMapType(MapType.STREET);
 
-        this._showUserLocation();
+        this._geoclue = new Geoclue.Geoclue();
+        this._updateUserLocation();
+        this._geoclue.connect("location-changed",
+                              this._updateUserLocation.bind(this));
     },
 
     setMapType: function(mapType) {
@@ -136,19 +139,13 @@ const MapView = new Lang.Class({
         return box.covers(this._userLocation.latitude, this._userLocation.longitude);
     },
 
-    _showUserLocation: function() {
-        this._geoclue = new Geoclue.Geoclue();
+    _updateUserLocation: function() {
+        if (!this._geoclue.location)
+            return;
 
-        let onLocationChanged = (function() {
-            if (this._geoclue.location == null)
-                return;
-
-            this._userLocation = new UserLocation.UserLocation(this._geoclue.location, this);
-            this._userLocation.show(this._userLocationLayer);
-        }).bind(this);
-
-        this._geoclue.connect("location-changed", onLocationChanged);
-        onLocationChanged();
+        this._userLocation = new UserLocation.UserLocation(this._geoclue.location, this);
+        this._userLocation.show(this._userLocationLayer);
+        this.emit('user-location-changed');
     },
 
     _showLocations: function(locations) {
@@ -170,4 +167,4 @@ const MapView = new Lang.Class({
         this.emit('view-moved');
     }
 });
-Signals.addSignalMethods(MapView.prototype);
+Utils.addSignalMethods(MapView.prototype);
