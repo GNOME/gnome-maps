@@ -50,13 +50,6 @@ function debug(str) {
         log('DEBUG: ' + str);
 }
 
-function addJSSignalMethods(proto) {
-    proto.connectJS = Signals._connect;
-    proto.disconnectJS = Signals._disconnect;
-    proto.emitJS = Signals._emit;
-    proto.disconnectAllJS = Signals._disconnectAll;
-}
-
 function loadStyleSheet(file) {
     let provider = new Gtk.CssProvider();
     provider.load_from_file(file);
