@@ -70,34 +70,21 @@ const MainWindow = new Lang.Class({
 
         this.mapView = new MapView.MapView();
 
-        let trackUserLocation = Application.settings.get_boolean('track-user-location');
+        if(Application.settings.get_boolean('track-user-location'))
+            this.mapView.gotoUserLocation(false);
 
-        let onViewMoved = function () {
-            if (!this.mapView.userLocationVisible())
-                toggle.active = false;
-        };
+        this._viewMovedId = 0;
+        this._connectMapMove();
+        this.mapView.connect('going-to-user-location',
+                             this._disconnectMapMove.bind(this));
+        this.mapView.connect('gone-to-user-location',
+                             this._connectMapMove.bind(this));
 
-        // Disable animation for goto animation on startup only
-        let animateGotoUserLocation = !trackUserLocation;
-        toggle.connect('toggled', (function() {
-            if (this._onViewMovedId > 0) {
-                this.mapView.disconnect(this._onViewMovedId);
-                this._onViewMovedId = 0;
+        Application.settings.connect('changed::track-user-location', (function() {
+            if(Application.settings.get_boolean('track-user-location')) {
+                this.mapView.gotoUserLocation(true);
             }
-
-            if (toggle.active) {
-                let goneToUserLocationId = this.mapView.connect('gone-to-user-location', (function () {
-                    this.mapView.disconnect(goneToUserLocationId);
-                    this._onViewMovedId = this.mapView.connect('view-moved', onViewMoved.bind(this));
-                }).bind(this));
-                this.mapView.gotoUserLocation(animateGotoUserLocation);
-                if (!animateGotoUserLocation)
-                    animateGotoUserLocation = true;
-            }
-
-            Application.settings.set_boolean('track-user-location', toggle.active);
         }).bind(this));
-        toggle.active = trackUserLocation;
 
         grid.add(this.mapView);
 
@@ -124,6 +111,23 @@ const MainWindow = new Lang.Class({
                 signalHandlers: { activate: this._onMapTypeActivate }
             }
         ], this);
+        let action = Application.settings.create_action('track-user-location');
+        this.window.add_action(action);
+    },
+
+    _connectMapMove: function() {
+        if(this._viewMovedId === 0) {
+            this._viewMovedId = this.mapView.connect('view-moved', (function() {
+                if (!this.mapView.userLocationVisible())
+                    Application.settings.set_boolean('track-user-location', false);
+            }).bind(this));
+        }
+    },
+    _disconnectMapMove: function() {
+        if(this._viewMovedId !== 0) {
+            this.mapView.disconnect(this._viewMovedId);
+            this._viewMovedId = 0;
+        }
     },
 
     _saveWindowGeometry: function() {
