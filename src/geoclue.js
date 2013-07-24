@@ -133,4 +133,4 @@ const Geoclue = new Lang.Class({
         }
     }
 });
-Signals.addSignalMethods(Geoclue.prototype);
+Utils.addSignalMethods(Geoclue.prototype);

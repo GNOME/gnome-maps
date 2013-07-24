@@ -50,6 +50,19 @@ function debug(str) {
         log('DEBUG: ' + str);
 }
 
+// Connect to a signal on an object and disconnect on its first emission.
+function once(obj, signal, callback) {
+    let id = obj.connect(signal, function() {
+        obj.disconnect(id);
+        callback();
+    });
+}
+
+function addSignalMethods(proto) {
+    Signals.addSignalMethods(proto);
+    proto.once = once.bind(undefined, proto);
+}
+
 function loadStyleSheet(file) {
     let provider = new Gtk.CssProvider();
     provider.load_from_file(file);

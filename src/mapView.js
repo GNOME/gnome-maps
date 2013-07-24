@@ -123,9 +123,9 @@ const MapView = new Lang.Class({
     },
 
     gotoUserLocation: function(animate) {
-        let goneToId = this._userLocation.connect("gone-to", (function() {
+        this.emit('going-to-user-location');
+        this._userLocation.once("gone-to", (function() {
             this.emit('gone-to-user-location');
-            this._userLocation.disconnect(goneToId);
         }).bind(this));
         this._userLocation.goTo(animate);
     },

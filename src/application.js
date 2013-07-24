@@ -109,4 +109,4 @@ const Application = new Lang.Class({
         this._mainWindow = null;
     }
 });
-Signals.addSignalMethods(Application.prototype);
+Utils.addSignalMethods(Application.prototype);

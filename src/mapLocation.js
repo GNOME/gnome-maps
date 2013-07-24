@@ -67,11 +67,8 @@ const MapLocation = new Lang.Class({
          * location.
          */
 
-        let id = this._view.connect("animation-completed", (function() {
-            this._view.disconnect(id);
-
-            id = this._view.connect("animation-completed::go-to", (function() {
-                this._view.disconnect(id);
+        Utils.once(this._view, "animation-completed", (function() {
+            Utils.once(this._view, "animation-completed::go-to", (function() {
                 this.zoomToFit();
                 this.emit('gone-to');
             }).bind(this));
@@ -132,4 +129,4 @@ const MapLocation = new Lang.Class({
         });
     }
 });
-Signals.addSignalMethods(MapLocation.prototype);
+Utils.addSignalMethods(MapLocation.prototype);
