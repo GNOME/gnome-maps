@@ -25,6 +25,7 @@ noinst_DATA =					\
 
 EXTRA_DIST =					\
 	$(public_icons)				\
+	$(images_DATA)				\
 	gnome-maps.svg				\
 	$(NULL)
 
