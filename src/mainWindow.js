@@ -117,22 +117,23 @@ const MainWindow = new Lang.Class({
     },
 
     _connectMapMove: function() {
-        if(this._viewMovedId === 0) {
+        if (this._viewMovedId === 0) {
             this._viewMovedId = this.mapView.connect('view-moved', (function() {
                 if (!this.mapView.userLocationVisible())
                     Application.settings.set_boolean('track-user-location', false);
             }).bind(this));
         }
     },
+
     _disconnectMapMove: function() {
-        if(this._viewMovedId !== 0) {
+        if (this._viewMovedId !== 0) {
             this.mapView.disconnect(this._viewMovedId);
             this._viewMovedId = 0;
         }
     },
 
     _onUserLocationChanged: function() {
-        if(Application.settings.get_boolean('track-user-location')) {
+        if (Application.settings.get_boolean('track-user-location')) {
             this.mapView.gotoUserLocation(true);
         }
     },
