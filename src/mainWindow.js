@@ -24,6 +24,7 @@
 const Gdk = imports.gi.Gdk;
 const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
+const GObject = imports.gi.GObject;
 const Champlain = imports.gi.Champlain;
 
 const Lang = imports.lang;
@@ -40,6 +41,11 @@ const _CONFIGURE_ID_TIMEOUT = 100; // msecs
 const _WINDOW_MIN_WIDTH = 600;
 const _WINDOW_MIN_HEIGHT = 500;
 
+const SearchResults = {
+    COL_DESCRIPTION:  0,
+    COL_LOCATION:     1
+};
+
 const MainWindow = new Lang.Class({
     Name: 'MainWindow',
 
@@ -47,11 +53,11 @@ const MainWindow = new Lang.Class({
         this._configureId = 0;
         let ui = Utils.getUIObject('main-window', [ 'app-window',
                                                     'window-content',
-                                                    'search-entry',
+                                                    'search-box',
                                                     'track-user-button']);
         let grid = ui.windowContent,
             toggle = ui.trackUserButton;
-        this._searchEntry = ui.searchEntry;
+        this._searchBox = ui.searchBox;
         this.window = ui.appWindow;
         this.window.application = app;
 
@@ -59,6 +65,7 @@ const MainWindow = new Lang.Class({
 
         this.mapView.gotoUserLocation(false);
 
+        this._initSearchWidgets();
         this._initActions();
         this._initSignals();
         this._restoreWindowGeometry();
@@ -66,6 +73,20 @@ const MainWindow = new Lang.Class({
         grid.add(this.mapView);
 
         grid.show_all();
+    },
+
+    _initSearchWidgets: function() {
+        this._searchEntry = new Gtk.SearchEntry();
+        this._searchBox.add(this._searchEntry);
+
+        let model = new Gtk.ListStore();
+        model.set_column_types([GObject.TYPE_STRING,
+                                GObject.TYPE_OBJECT]);
+        this._searchBox.model = model;
+        this._searchBox.entry_text_column = SearchResults.COL_DESCRIPTION;
+        this._searchBox.connect('changed',
+                                this._onSearchBoxChanged.bind(this));
+        this._searchBox.show_all();
     },
 
     _initActions: function() {
@@ -189,10 +210,46 @@ const MainWindow = new Lang.Class({
         return false;
     },
 
-    _onSearchActivate: function() {
-        let string = this._searchEntry.get_text();
+    _onSearchBoxChanged: function() {
+        let ret = this._searchBox.get_active_iter();
+        let is_set = ret[0];
+        let iter = ret[1];
 
-        this.mapView.geocodeSearch(string);
+        if (is_set) {
+            let location =
+                this._searchBox.model.get_value(iter,
+                                                SearchResults.COL_LOCATION);
+            this.mapView.showLocation(location);
+        }
+    },
+
+    _onSearchActivate: function() {
+        let searchString = this._searchEntry.get_text();
+
+        if (searchString.length > 0) {
+            this.mapView.geocodeSearch(searchString,
+                                       this._showSearchResults.bind(this));
+        }
+    },
+
+    _showSearchResults: function(places) {
+        this._searchBox.model.clear();
+
+        places.forEach((function(place) {
+            let iter = this._searchBox.model.append();
+            let location = place.get_location();
+
+            if (location == null)
+                return;
+
+            this._searchBox.model.set(iter,
+                                      [SearchResults.COL_DESCRIPTION,
+                                       SearchResults.COL_LOCATION],
+                                      [location.description,
+                                       location]);
+        }).bind(this));
+
+        this._searchBox.popup();
     },
 
     _quit: function() {

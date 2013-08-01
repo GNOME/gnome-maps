@@ -93,25 +93,19 @@ const MapView = new Lang.Class({
         this.view.set_map_source(source);
     },
 
-    geocodeSearch: function(string) {
-        let forward = Geocode.Forward.new_for_string(string);
+    geocodeSearch: function(searchString, searchCompleteCallback) {
+        let forward = Geocode.Forward.new_for_string(searchString);
+        let places = [];
+
+        this._lastSearch = searchString;
         forward.search_async (null, (function(forward, res) {
             try {
-                let places = forward.search_finish(res);
-                log (places.length + " places found");
-                let mapLocations = [];
-                places.forEach((function(place) {
-                    let location = place.get_location();
-                    if (!location)
-                        return;
-
-                    let mapLocation = new MapLocation.MapLocation(location, this);
-                    mapLocations.push(mapLocation);
-                }).bind(this));
-                this._showLocations(mapLocations);
+                places = forward.search_finish(res);
             } catch (e) {
-                log ("Failed to search '" + string + "': " + e.message);
+                places = null;
             }
+            if (places !== null)
+                searchCompleteCallback(places);
         }).bind(this));
     },
 
@@ -153,19 +147,12 @@ const MapView = new Lang.Class({
         this.emit('user-location-changed');
     },
 
-    _showLocations: function(locations) {
-        if (locations.length === 0)
-            return;
+    showLocation: function(location) {
         this._markerLayer.remove_all();
+        let mapLocation = new MapLocation.MapLocation(location, this);
 
-        locations.forEach((function(location) {
-            location.show(this._markerLayer);
-        }).bind(this));
-
-        if (locations.length === 1)
-            locations[0].goTo(true);
-        else
-            this.ensureVisible(locations);
+        mapLocation.show(this._markerLayer);
+        mapLocation.goTo(true);
     },
 
     _onViewMoved: function() {
