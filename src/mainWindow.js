@@ -73,6 +73,9 @@ const MainWindow = new Lang.Class({
     _initActions: function() {
         Utils.initActions(this.window, [
             {
+                properties: { name: 'close' },
+                signalHandlers: { activate: this.window.close.bind(this.window) }
+            }, {
                 properties: { name: 'about' },
                 signalHandlers: { activate: this._onAboutActivate }
             }, {
