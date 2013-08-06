@@ -95,11 +95,11 @@ const MapLocation = new Lang.Class({
     zoomToFit: function() {
         let zoom;
         if (this.accuracy === Geocode.LOCATION_ACCURACY_UNKNOWN)
-            zoom = 12; // Accuracy is usually city-level when unknown
+            zoom = 11; // Accuracy is usually city-level when unknown
         else if (this.accuracy <= Geocode.LOCATION_ACCURACY_STREET)
             zoom = 16;
         else if (this.accuracy <= Geocode.LOCATION_ACCURACY_CITY)
-            zoom = 12;
+            zoom = 11;
         else if (this.accuracy <= Geocode.LOCATION_ACCURACY_REGION)
             zoom = 10;
         else if (this.accuracy <= Geocode.LOCATION_ACCURACY_COUNTRY)
