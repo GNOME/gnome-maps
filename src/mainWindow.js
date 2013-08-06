@@ -58,8 +58,7 @@ const MainWindow = new Lang.Class({
 
         this.mapView = new MapView.MapView();
 
-        if(Application.settings.get_boolean('track-user-location'))
-            this.mapView.gotoUserLocation(false);
+        this.mapView.gotoUserLocation(false);
 
         this._initActions();
         this._initSignals();
@@ -91,10 +90,11 @@ const MainWindow = new Lang.Class({
                     state: GLib.Variant.new('s', 'STREET')
                 },
                 signalHandlers: { activate: this._onMapTypeActivate }
+            }, {
+                properties: { name: 'goto-user-location' },
+                signalHandlers: { activate: this._onGotoUserLocationActivate }
             }
         ], this);
-        let action = Application.settings.create_action('track-user-location');
-        this.window.add_action(action);
     },
 
     _initSignals: function() {
@@ -109,38 +109,6 @@ const MainWindow = new Lang.Class({
         this._searchEntry.connect('activate',
                                   this._onSearchActivate.bind(this));
         this._viewMovedId = 0;
-        this._connectMapMove();
-        this.mapView.connect('going-to-user-location',
-                             this._disconnectMapMove.bind(this));
-        this.mapView.connect('gone-to-user-location',
-                             this._connectMapMove.bind(this));
-
-        this.mapView.connect('user-location-changed',
-                             this._onUserLocationChanged.bind(this));
-        Application.settings.connect('changed::track-user-location',
-                                     this._onUserLocationChanged.bind(this));
-    },
-
-    _connectMapMove: function() {
-        if (this._viewMovedId === 0) {
-            this._viewMovedId = this.mapView.connect('view-moved', (function() {
-                if (!this.mapView.userLocationVisible())
-                    Application.settings.set_boolean('track-user-location', false);
-            }).bind(this));
-        }
-    },
-
-    _disconnectMapMove: function() {
-        if (this._viewMovedId !== 0) {
-            this.mapView.disconnect(this._viewMovedId);
-            this._viewMovedId = 0;
-        }
-    },
-
-    _onUserLocationChanged: function() {
-        if (Application.settings.get_boolean('track-user-location')) {
-            this.mapView.gotoUserLocation(true);
-        }
     },
 
     _saveWindowGeometry: function() {
@@ -239,6 +207,10 @@ const MainWindow = new Lang.Class({
         this._saveWindowGeometry();
 
         return false;
+    },
+
+    _onGotoUserLocationActivate: function() {
+        this.mapView.gotoUserLocation(true);
     },
 
     _onMapTypeMenuActivate: function(action) {
