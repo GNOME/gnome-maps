@@ -56,7 +56,7 @@ const Geoclue = new Lang.Class({
     },
 
     _findLocation: function() {
-        GClue.ManagerProxy.new_for_bus(Gio.BusType.SESSION,
+        GClue.ManagerProxy.new_for_bus(Gio.BusType.SYSTEM,
                                        Gio.DBusProxyFlags.NONE,
                                        "org.freedesktop.GeoClue2",
                                        "/org/freedesktop/GeoClue2/Manager",
@@ -78,7 +78,7 @@ const Geoclue = new Lang.Class({
         try {
             let [ret, clientPath] = this._managerProxy.call_get_client_finish(res);
 
-            GClue.ClientProxy.new_for_bus(Gio.BusType.SESSION,
+            GClue.ClientProxy.new_for_bus(Gio.BusType.SYSTEM,
                                           Gio.DBusProxyFlags.NONE,
                                           "org.freedesktop.GeoClue2",
                                           clientPath,
@@ -94,7 +94,7 @@ const Geoclue = new Lang.Class({
             this._clientProxy = GClue.ClientProxy.new_for_bus_finish(res);
 
             this._clientProxy.connect("location-updated", (function(client, oldPath, newPath) {
-                GClue.LocationProxy.new_for_bus(Gio.BusType.SESSION,
+                GClue.LocationProxy.new_for_bus(Gio.BusType.SYSTEM,
                                                 Gio.DBusProxyFlags.NONE,
                                                 "org.freedesktop.GeoClue2",
                                                 newPath,
