@@ -26,7 +26,6 @@ const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
 const Champlain = imports.gi.Champlain;
 const GtkClutter = imports.gi.GtkClutter;
-const Gd = imports.gi.Gd;
 const MapView = imports.mapView;
 
 const Lang = imports.lang;
@@ -44,9 +43,15 @@ const Sidebar = new Lang.Class({
                                          y_expand: true,
                                          x_align: Clutter.ActorAlign.END });
 
+        let isRtl = (Gtk.Widget.get_default_direction() == Gtk.TextDirection.RTL);
+        let prevIconName = isRtl ? 'go-previous-rtl-symbolic' : 'go-previous-symbolic';
+        let nextIconName = isRtl ? 'go-next-rtl-symbolic' : 'go-next-symbolic';
+
         // create the button
-        let revealButton = new Gd.HeaderSimpleButton({ symbolic_icon_name: 'go-previous-symbolic',
-                                                       valign: Gtk.Align.CENTER });
+        let revealImage = new Gtk.Image ({ icon_name: prevIconName,
+                                           icon_size: Gtk.IconSize.MENU });
+        let revealButton = new Gtk.Button({ child: revealImage,
+                                            valign: Gtk.Align.CENTER });
         revealButton.get_style_context().add_class('osd');
         revealButton.show();
 
@@ -65,18 +70,18 @@ const Sidebar = new Lang.Class({
                                         width_request: 200 });
         container.get_style_context().add_class('maps-sidebar');
 
-        let revealer = new Gd.Revealer({ child: container,
+        let revealer = new Gtk.Revealer({ child: container,
                                          reveal_child: false,
-                                         orientation: Gtk.Orientation.VERTICAL });
+                                         transition_type: Gtk.RevealerTransitionType.CROSSFADE });
         revealer.show_all();
 
         revealButton.connect('clicked', (function() {
             if (revealer.reveal_child) {
                 revealer.reveal_child = false;
-                revealButton.symbolic_icon_name = 'go-previous-symbolic';
+                revealButton.symbolic_icon_name = prevIconName;
             } else {
                 revealer.reveal_child = true;
-                revealButton.symbolic_icon_name = 'go-next-symbolic';
+                revealButton.symbolic_icon_name = nextIconName;
             }
         }).bind(this));
 
