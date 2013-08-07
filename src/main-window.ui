@@ -21,62 +21,52 @@
     <property name="window_position">center</property>
     <property name="title" translatable="yes">Maps</property>
     <child type="titlebar">
-      <object class="GdHeaderBar" id="header-bar">
+      <object class="GtkHeaderBar" id="header-bar">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="show_close_button">True</property>
         <child type="title">
-          <object class="GdTaggedEntry" id="search-entry">
+          <object class="GtkSearchEntry" id="search-entry">
             <property name="visible">True</property>
             <property name="width_request">500</property>
           </object>
         </child>
         <child>
-          <object class="GdHeaderSimpleButton" id="goto-user-location-button">
+          <object class="GtkButton" id="goto-user-location-button">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="symbolic-icon-name">find-location-symbolic</property>
+            <property name="valign">center</property>
             <property name="action_name">win.goto-user-location</property>
+            <style>
+              <class name="image-button"/>
+            </style>
+            <child>
+              <object class="GtkImage" id="track-user-button-image">
+                <property name="visible">True</property>
+                <property name="icon_size">1</property>
+                <property name="icon_name">find-location-symbolic</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="pack_type">start</property>
           </packing>
         </child>
         <child>
-          <object class="GdHeaderMenuButton" id="layer-menu-button">
+          <object class="GtkMenuButton" id="layer-menu-button">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="symbolic-icon-name">emblem-system-symbolic</property>
+            <property name="valign">center</property>
             <property name="menu-model">map-type-menu</property>
             <property name="action_name">win.map-type-menu</property>
-          </object>
-          <packing>
-            <property name="pack_type">end</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSeparator" id="close-button-separator">
-            <property name="visible">True</property>
-            <property name="orientation">vertical</property>
-            <property name="valign">fill</property>
-          </object>
-          <packing>
-            <property name="pack_type">end</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="close-button">
-            <property name="visible">True</property>
-            <property name="valign">center</property>
-            <property name="relief">none</property>
-            <property name="action_name">win.close</property>
             <style>
               <class name="image-button"/>
             </style>
             <child>
-              <object class="GtkImage" id="close-image">
+              <object class="GtkImage" id="layer-menu-button-image">
                 <property name="visible">True</property>
                 <property name="icon_size">1</property>
-                <property name="icon_name">window-close-symbolic</property>
+                <property name="icon_name">emblem-system-symbolic</property>
               </object>
             </child>
           </object>
