@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <!-- interface-requires gtk+ 3.10 -->
+  <object class= "GtkGrid" id="zoom-control">
+	<property name="visible">True</property>
+	<property name="can_focus">False</property>
+	<property name="orientation">vertical</property>
+	<property name="row_spacing">1</property>
+	<style>
+	  <class name="zoom-control" />
+	</style>
+	<child>
+	  <object class="GtkButton" id="zoom-in-button">
+		<property name="name">zoom-in-button</property>
+		<property name="visible">True</property>
+		<property name="width-request">22></property>
+		<property name="height-request">23></property>
+		<property name="can_focus">False</property>
+	  </object>
+	</child>
+	<child>
+	  <object class="GtkButton" id="zoom-out-button">
+		<property name="name">zoom-out-button</property>
+		<property name="visible">True</property>
+		<property name="width-request">22></property>
+		<property name="height-request">23></property>
+		<property name="can_focus">False</property>
+	  </object>
+	</child>
+  </object>
+</interface>

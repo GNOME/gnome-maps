@@ -33,6 +33,7 @@ const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 const Signals = imports.signals;
 
+const ZoomControl = imports.zoomControl;
 const Sidebar = imports.sidebar;
 const Utils = imports.utils;
 const Path = imports.path;
@@ -76,6 +77,10 @@ const MapView = new Lang.Class({
 
         this._factory = Champlain.MapSourceFactory.dup_default();
         this.setMapType(MapType.STREET);
+
+        this._zoomControl = new ZoomControl.ZoomControl(this);
+        this._zoomControl.set_position(20, 20);
+        this.view.add_child(this._zoomControl);
 
         this._geoclue = new Geoclue.Geoclue();
         this._updateUserLocation();
