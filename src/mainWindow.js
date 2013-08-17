@@ -220,6 +220,8 @@ const MainWindow = new Lang.Class({
                 this._searchBox.model.get_value(iter,
                                                 SearchResults.COL_LOCATION);
             this.mapView.showLocation(location);
+        } else {
+            this._searchBox.model.clear();
         }
     },
 
