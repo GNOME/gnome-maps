@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-27 23:42+0100\n"
-"PO-Revision-Date: 2013-03-27 23:43+0100\n"
+"POT-Creation-Date: 2013-08-20 22:25+0200\n"
+"PO-Revision-Date: 2013-08-20 22:28+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -23,8 +23,8 @@ msgstr ""
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: Poland\n"
 
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:51
-#: ../src/mainWindow.js:54 ../src/mainWindow.js:186
+#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:53
+#: ../src/mainWindow.js:293 ../src/main-window.ui.h:3
 msgid "Maps"
 msgstr "Mapy"
 
@@ -34,7 +34,7 @@ msgstr "Prosty program do wyświetlania map"
 
 #: ../data/gnome-maps.desktop.in.in.h:3
 msgid "Maps;"
-msgstr "Mapy;"
+msgstr "Mapy;Położenie;Geografia;GPS;"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:1
 msgid "Window size"
@@ -60,6 +60,26 @@ msgstr "Maksymalizacja okna"
 msgid "Window maximized state"
 msgstr "Stan maksymalizacji okna"
 
+#: ../data/org.gnome.maps.gschema.xml.in.h:7
+msgid "Last known location and accuracy"
+msgstr "Ostatnie znane położenie i dokładność"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:8
+msgid ""
+"Last known location (latitude and longitude in degrees) and accuracy (in "
+"meters)."
+msgstr ""
+"Ostatnie znane położenie (szerokość i wysokość geograficzna w stopniach) i "
+"dokładność (w metrach)."
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:9
+msgid "Description of last known location"
+msgstr "Opis ostatniego znanego położenia"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:10
+msgid "Description of last known location of user."
+msgstr "Opis ostatniego znanego położenia użytkownika."
+
 #: ../src/app-menu.ui.h:1
 msgid "About"
 msgstr "O programie"
@@ -68,12 +88,33 @@ msgstr "O programie"
 msgid "Quit"
 msgstr "Zakończ"
 
-#: ../src/mainWindow.js:185
+#: ../src/mainWindow.js:292
 msgid "translator-credits"
 msgstr ""
 "Piotr Drąg <piotrdrag@gmail.com>, 2013\n"
 "Aviary.pl <gnomepl@aviary.pl>, 2013"
 
-#: ../src/mainWindow.js:187
+#: ../src/mainWindow.js:294
 msgid "A map application for GNOME"
 msgstr "Program do wyświetlania map dla środowiska GNOME"
+
+#: ../src/main-window.ui.h:1
+msgid "Street"
+msgstr "Ulica"
+
+#: ../src/main-window.ui.h:2
+msgid "Satellite"
+msgstr "Satelita"
+
+#: ../src/mapLocation.js:121
+msgid " km²"
+msgstr " km²"
+
+#: ../src/userLocation.js:58
+#, c-format
+msgid ""
+"%s\n"
+"Position Accuracy: %s"
+msgstr ""
+"%s\n"
+"Dokładność położenia: %s"
