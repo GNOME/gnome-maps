@@ -62,7 +62,9 @@ const MainWindow = new Lang.Class({
         this.window = ui.appWindow;
         this.window.application = app;
 
-        this.mapView = new MapView.MapView();
+        this._mapOverlay = new Gtk.Overlay({ visible: true });
+        this.mapView = new MapView.MapView(this._mapOverlay);
+        this._mapOverlay.add(this.mapView);
 
         this.mapView.gotoUserLocation(false);
 
@@ -71,8 +73,6 @@ const MainWindow = new Lang.Class({
         this._initSignals();
         this._restoreWindowGeometry();
 
-        this._mapOverlay = new Gtk.Overlay({ visible: true });
-        this._mapOverlay.add(this.mapView);
         this._mapOverlay.add_overlay(this._searchPopup);
 
         grid.add(this._mapOverlay);

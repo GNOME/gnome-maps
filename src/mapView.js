@@ -53,7 +53,7 @@ const MapView = new Lang.Class({
     Name: 'MapView',
     Extends: GtkChamplain.Embed,
 
-    _init: function() {
+    _init: function(overlay) {
         this.parent();
 
         this.actor = this.get_view();
@@ -80,8 +80,7 @@ const MapView = new Lang.Class({
         this.setMapType(MapType.STREET);
 
         this._zoomControl = new ZoomControl.ZoomControl(this);
-        this._zoomControl.set_position(20, 20);
-        this.view.add_child(this._zoomControl);
+        overlay.add_overlay(this._zoomControl);
 
         this._geoclue = new Geoclue.Geoclue();
         this._updateUserLocation();

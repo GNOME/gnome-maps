@@ -21,20 +21,23 @@
 
 const Lang = imports.lang;
 
-const GtkClutter = imports.gi.GtkClutter;
+const Gtk = imports.gi.Gtk;
 const Utils = imports.utils;
 
 const ZoomControl = new Lang.Class({
     Name: 'ZoomControl',
-    Extends: GtkClutter.Actor,
+    Extends: Gtk.Bin,
 
     _init: function (mapView) {
-        this.parent();
-        Utils.clearGtkClutterActorBg(this);
+        this.parent({ halign: Gtk.Align.START,
+                      valign: Gtk.Align.START,
+                      margin_top: 20,
+                      margin_left: 20,
+                      visible: true });
+
         let ui = Utils.getUIObject('zoom-control', ['zoom-control',
                                                     'zoom-in-button',
                                                     'zoom-out-button']);
-        this.contents = ui.zoomControl;
         this._zoomInButton = ui.zoomInButton;
         this._zoomOutButton = ui.zoomOutButton;
         this._view = mapView.view;
@@ -50,6 +53,7 @@ const ZoomControl = new Lang.Class({
                            this._updateSensitive.bind(this));
         this._view.connect('notify::min-zoom-level',
                            this._updateSensitive.bind(this));
+        this.add(ui.zoomControl);
     },
 
     _updateSensitive: function () {
