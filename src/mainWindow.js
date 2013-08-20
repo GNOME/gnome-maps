@@ -32,6 +32,7 @@ const Mainloop = imports.mainloop;
 
 const Application = imports.application;
 const MapView = imports.mapView;
+const SearchPopup = imports.searchPopup;
 const Utils = imports.utils;
 const Config = imports.config;
 
@@ -53,11 +54,11 @@ const MainWindow = new Lang.Class({
         this._configureId = 0;
         let ui = Utils.getUIObject('main-window', [ 'app-window',
                                                     'window-content',
-                                                    'search-box',
+                                                    'search-entry',
                                                     'track-user-button']);
         let grid = ui.windowContent,
             toggle = ui.trackUserButton;
-        this._searchBox = ui.searchBox;
+        this._searchEntry = ui.searchEntry;
         this.window = ui.appWindow;
         this.window.application = app;
 
@@ -70,23 +71,26 @@ const MainWindow = new Lang.Class({
         this._initSignals();
         this._restoreWindowGeometry();
 
-        grid.add(this.mapView);
+        this._mapOverlay = new Gtk.Overlay({ visible: true });
+        this._mapOverlay.add(this.mapView);
+        this._mapOverlay.add_overlay(this._searchPopup);
+
+        grid.add(this._mapOverlay);
 
         grid.show_all();
     },
 
     _initSearchWidgets: function() {
-        this._searchEntry = new Gtk.SearchEntry();
-        this._searchBox.add(this._searchEntry);
+        this._searchPopup = new SearchPopup.SearchPopup(this.window);
 
         let model = new Gtk.ListStore();
         model.set_column_types([GObject.TYPE_STRING,
                                 GObject.TYPE_OBJECT]);
-        this._searchBox.model = model;
-        this._searchBox.entry_text_column = SearchResults.COL_DESCRIPTION;
-        this._searchBox.connect('changed',
-                                this._onSearchBoxChanged.bind(this));
-        this._searchBox.show_all();
+        this._searchPopup.setModel(model);
+        this._searchPopup.connect('selected',
+                                  this._onSearchPopupSelected.bind(this));
+        this.mapView.view.connect('button-press-event',
+                             this._searchPopup.hide.bind(this._searchPopup));
     },
 
     _initActions: function() {
@@ -210,19 +214,12 @@ const MainWindow = new Lang.Class({
         return false;
     },
 
-    _onSearchBoxChanged: function() {
-        let ret = this._searchBox.get_active_iter();
-        let is_set = ret[0];
-        let iter = ret[1];
+    _onSearchPopupSelected: function(widget, iter) {
+        let model = this._searchPopup.getModel();
+        let location = model.get_value(iter, SearchResults.COL_LOCATION);
 
-        if (is_set) {
-            let location =
-                this._searchBox.model.get_value(iter,
-                                                SearchResults.COL_LOCATION);
-            this.mapView.showLocation(location);
-        } else {
-            this._searchBox.model.clear();
-        }
+        this.mapView.showLocation(location);
+        this._searchPopup.hide();
     },
 
     _onSearchActivate: function() {
@@ -235,23 +232,25 @@ const MainWindow = new Lang.Class({
     },
 
     _showSearchResults: function(places) {
-        this._searchBox.model.clear();
+        let model = this._searchPopup.getModel();
 
-        places.forEach((function(place) {
-            let iter = this._searchBox.model.append();
+        model.clear();
+        places.forEach(function(place) {
+            let iter = model.append();
             let location = place.get_location();
 
             if (location == null)
                 return;
 
-            this._searchBox.model.set(iter,
-                                      [SearchResults.COL_DESCRIPTION,
-                                       SearchResults.COL_LOCATION],
-                                      [location.description,
-                                       location]);
-        }).bind(this));
-
-        this._searchBox.popup();
+            let description_markup = '<b>' + location.description + '</b>';
+            model.set(iter,
+                      [SearchResults.COL_DESCRIPTION,
+                       SearchResults.COL_LOCATION],
+                      [description_markup,
+                       location]);
+        });
+        this._searchPopup.setModel(model);
+        this._searchPopup.show();
     },
 
     _quit: function() {

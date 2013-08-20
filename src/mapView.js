@@ -59,6 +59,7 @@ const MapView = new Lang.Class({
         this.actor = this.get_view();
         this.view = this.actor;
         this.view.set_zoom_level(3);
+        this.view.set_reactive(true);
 
         this.view.connect('notify::latitude', this._onViewMoved.bind(this));
         this.view.connect('notify::longitude', this._onViewMoved.bind(this));
