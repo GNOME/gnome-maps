@@ -127,7 +127,7 @@ const Geoclue = new Lang.Class({
             Application.settings.set_string('last-location-description', this.location.description);
 
             this.emit('location-changed');
-            log("Found location: " + this.location.description);
+            Utils.debug("Found location: " + this.location.description);
         } catch (e) {
             log("Failed to find your location: " + e);
         }

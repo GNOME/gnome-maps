@@ -49,7 +49,7 @@ const MapLocation = new Lang.Class({
     // with an animation
     // TODO: break this out somewhere, this is useful in other cases as well.
     goTo: function(animate) {
-        log("Going to " + this.description);
+        Utils.debug("Going to " + this.description);
 
         if (!animate) {
             this._view.center_on(this.latitude, this.longitude);
@@ -83,7 +83,7 @@ const MapLocation = new Lang.Class({
         let marker = new Champlain.Label({ text: this.description });
         marker.set_location(this.latitude, this.longitude);
         layer.add_marker(marker);
-        log("Added marker at " + this.latitude + ", " + this.longitude);
+        Utils.debug("Added marker at " + this.latitude + ", " + this.longitude);
     },
 
     showNGoTo: function(animate, layer) {
