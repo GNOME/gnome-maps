@@ -31,7 +31,7 @@ const SearchPopup = new Lang.Class({
     Name: 'SearchPopup',
     Extends: Gtk.Bin,
 
-    _init: function (window) {
+    _init: function() {
         this.parent({ width_request: 500,
                       halign: Gtk.Align.CENTER,
                       valign: Gtk.Align.START,

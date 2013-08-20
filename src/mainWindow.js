@@ -81,7 +81,7 @@ const MainWindow = new Lang.Class({
     },
 
     _initSearchWidgets: function() {
-        this._searchPopup = new SearchPopup.SearchPopup(this.window);
+        this._searchPopup = new SearchPopup.SearchPopup();
 
         let model = new Gtk.ListStore();
         model.set_column_types([GObject.TYPE_STRING,
