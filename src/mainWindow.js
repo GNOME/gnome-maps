@@ -91,6 +91,8 @@ const MainWindow = new Lang.Class({
                                   this._onSearchPopupSelected.bind(this));
         this.mapView.view.connect('button-press-event',
                              this._searchPopup.hide.bind(this._searchPopup));
+        this._searchEntry.connect('changed',
+                                  this._searchPopup.hide.bind(this._searchPopup));
     },
 
     _initActions: function() {
