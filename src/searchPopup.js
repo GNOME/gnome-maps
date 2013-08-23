@@ -31,22 +31,27 @@ const SearchPopup = new Lang.Class({
     Name: 'SearchPopup',
     Extends: Gtk.Bin,
 
-    _init: function() {
+    _init: function(numVisible) {
+        this._numVisible = numVisible;
+
+        let ui = Utils.getUIObject('search-popup', ['frame',
+                                                    'scrolled-window',
+                                                    'treeview']);
+        this._scrolledWindow = ui.scrolledWindow;
+        this._treeView = ui.treeview;
+        this._treeView.connect('button-press-event',
+                               this._onListButtonPress.bind(this));
+        this._initList();
+
+        this.height_request = this._cellHeight * this._numVisible;
+        this._scrolledWindow.set_min_content_height(this.height_request);
+
         this.parent({ width_request: 500,
                       halign: Gtk.Align.CENTER,
                       valign: Gtk.Align.START,
                       margin_top: 10,
                       no_show_all: true,
                       visible: true });
-
-        let ui = Utils.getUIObject('search-popup', ['frame',
-                                                    'treeview',
-                                                    'treeview-selection']);
-        this._treeView = ui.treeview;
-        this._treeViewSelection = ui.treeviewSelection;
-        this._treeView.connect('button-press-event',
-                               this._onListButtonPress.bind(this));
-        this._initList();
 
         this.add(ui.frame);
         this.hide();
@@ -60,6 +65,8 @@ const SearchPopup = new Lang.Class({
         this._treeView.append_column(column);
         column.pack_start(cell, true);
         column.add_attribute(cell, 'markup', Columns.TEXT);
+
+        this._cellHeight = column.cell_get_size(null)[3];
     },
 
     _onListButtonPress: function(widget, event) {
@@ -82,6 +89,11 @@ const SearchPopup = new Lang.Class({
 
             this.emit('selected', iter);
         }
+    },
+
+    vfunc_show: function() {
+        this._treeView.columns_autosize();
+        this.parent();
     },
 
     setModel: function(model) {

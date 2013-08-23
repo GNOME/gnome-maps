@@ -8,16 +8,23 @@
       <class name="search-popup" />
     </style>
     <child>
-      <object class="GtkTreeView" id="treeview">
+      <object class="GtkScrolledWindow" id="scrolled-window">
         <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="expand">True</property>
-        <property name="headers-visible">False</property>
-        <property name="hover-selection">True</property>
-        <child internal-child="selection">
-          <object class="GtkTreeSelection" id="treeview-selection"/>
-        </child>
+        <property name="can_focus">False</property>
+        <property name="hscrollbar_policy">never</property>
+        <child>
+          <object class="GtkTreeView" id="treeview">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="expand">True</property>
+            <property name="headers-visible">False</property>
+            <property name="hover-selection">True</property>
+            <child internal-child="selection">
+              <object class="GtkTreeSelection" id="treeview-selection"/>
+            </child>
           </object>
+        </child>
+      </object>
     </child>
   </object>
 </interface>
