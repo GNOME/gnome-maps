@@ -250,7 +250,11 @@ const MainWindow = new Lang.Class({
             if (location == null)
                 return;
 
-            let description_markup = '<b>' + location.description + '</b>';
+            let description_markup =
+                '<b>' +
+                GLib.markup_escape_text(location.description, -1) +
+                '</b>';
+
             model.set(iter,
                       [SearchResults.COL_DESCRIPTION,
                        SearchResults.COL_LOCATION],
