@@ -34,6 +34,7 @@ const Mainloop = imports.mainloop;
 const Application = imports.application;
 const MapView = imports.mapView;
 const SearchPopup = imports.searchPopup;
+const ContextMenu = imports.contextMenu;
 const Utils = imports.utils;
 const Config = imports.config;
 
@@ -71,6 +72,8 @@ const MainWindow = new Lang.Class({
         this._mapOverlay.add(this.mapView);
 
         this.mapView.gotoUserLocation(false);
+
+        this._contextMenu = new ContextMenu.ContextMenu(this.mapView);
 
         this._initSearchWidgets();
         this._initActions();
