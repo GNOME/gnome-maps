@@ -95,7 +95,7 @@ const MainWindow = new Lang.Class({
         this._searchPopup.connect('selected',
                                   this._onSearchPopupSelected.bind(this));
         this.mapView.view.connect('button-press-event',
-                             this._searchPopup.hide.bind(this._searchPopup));
+                                  this._searchPopup.hide.bind(this._searchPopup));
         this._searchEntry.connect('changed',
                                   this._searchPopup.hide.bind(this._searchPopup));
     },
@@ -331,8 +331,8 @@ const MainWindow = new Lang.Class({
             program_name: _("Maps"),
             comments: _("A map application for GNOME"),
             copyright: 'Copyright ' + String.fromCharCode(0x00A9) +
-                ' 2011' + String.fromCharCode(0x2013) +
-                '2013 Red Hat, Inc.',
+                       ' 2011' + String.fromCharCode(0x2013) +
+                       '2013 Red Hat, Inc.',
             license_type: Gtk.License.GPL_2_0,
             logo_icon_name: 'gnome-maps',
             version: Config.PACKAGE_VERSION,
