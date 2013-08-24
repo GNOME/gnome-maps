@@ -24,7 +24,8 @@ const Lang = imports.lang;
 const Utils = imports.utils;
 
 const Columns = {
-    TEXT: 0
+    ICON: 0,
+    TEXT: 1
 };
 
 const SearchPopup = new Lang.Class({
@@ -58,15 +59,21 @@ const SearchPopup = new Lang.Class({
     },
 
     _initList: function() {
-        let cell = new Gtk.CellRendererText({ xpad: 16,
-                                              ypad: 8 });
         let column = new Gtk.TreeViewColumn();
 
         this._treeView.append_column(column);
+
+        let cell = new Gtk.CellRendererPixbuf({ xpad: 2 });
+        column.pack_start(cell, false);
+        column.add_attribute(cell, 'pixbuf', Columns.ICON);
+
+        cell = new Gtk.CellRendererText({ xpad: 8,
+                                          ypad: 8 });
         column.pack_start(cell, true);
         column.add_attribute(cell, 'markup', Columns.TEXT);
 
         this._cellHeight = column.cell_get_size(null)[3];
+        this._cellHeight += cell.get_preferred_height(this._treeView)[0];
     },
 
     _onListButtonPress: function(widget, event) {

@@ -37,6 +37,8 @@ const _ = imports.gettext.gettext;
 let debugInit = false;
 let debugEnabled = false;
 
+let _iconStore = {};
+
 function debug(str) {
     if (!debugInit) {
         let env = GLib.getenv('MAPS_DEBUG');
@@ -129,4 +131,48 @@ function getUIObject(res, ids) {
         ret[dashedToCamelCase(id)] = builder.get_object(id);
     });
     return ret;
+}
+
+function load_icon(icon, size, loadCompleteCallback) {
+    if (icon instanceof Gio.FileIcon) {
+        _load_file_icon(icon, loadCompleteCallback);
+    } else if (icon instanceof Gio.ThemedIcon) {
+        _load_themed_icon(icon, size, loadCompleteCallback);
+    }
+}
+
+function _load_file_icon(icon, loadCompleteCallback) {
+    let pixbuf = _iconStore[icon.file.get_uri()];
+
+    if (pixbuf) { // check if the icon is cached
+        loadCompleteCallback(pixbuf);
+        return;
+    }
+
+    icon.load_async(-1, null, function(icon, res) {
+        try {
+            let stream = icon.load_finish(res, null)[0];
+
+            pixbuf =
+                GdkPixbuf.Pixbuf.new_from_stream(stream, null);
+
+            _iconStore[icon.file.get_uri()] = pixbuf;
+            loadCompleteCallback(pixbuf);
+        } catch(e) {
+            log("Failed to load pixbuf: " + e);
+        }
+    });
+}
+
+function _load_themed_icon(icon, size, loadCompleteCallback) {
+    let theme = Gtk.IconTheme.get_default();
+    let flags = Gtk.IconLookupFlags.GENERIC_FALLBACK;
+    let info = theme.lookup_by_gicon(icon, size, flags);
+
+    try {
+        let pixbuf = info.load_icon();
+        loadCompleteCallback(pixbuf);
+    } catch(e) {
+        log("Failed to load pixbuf: " + e);
+    }
 }

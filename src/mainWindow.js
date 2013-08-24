@@ -22,6 +22,7 @@
  */
 
 const Gdk = imports.gi.Gdk;
+const GdkPixbuf = imports.gi.GdkPixbuf;
 const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
 const GObject = imports.gi.GObject;
@@ -42,9 +43,12 @@ const _CONFIGURE_ID_TIMEOUT = 100; // msecs
 const _WINDOW_MIN_WIDTH = 600;
 const _WINDOW_MIN_HEIGHT = 500;
 
+const _PLACE_ICON_SIZE = 20;
+
 const SearchResults = {
-    COL_DESCRIPTION:  0,
-    COL_LOCATION:     1
+    COL_ICON:         0,
+    COL_DESCRIPTION:  1,
+    COL_LOCATION:     2
 };
 
 const MainWindow = new Lang.Class({
@@ -84,7 +88,8 @@ const MainWindow = new Lang.Class({
         this._searchPopup = new SearchPopup.SearchPopup(10);
 
         let model = new Gtk.ListStore();
-        model.set_column_types([GObject.TYPE_STRING,
+        model.set_column_types([GdkPixbuf.Pixbuf,
+                                GObject.TYPE_STRING,
                                 GObject.TYPE_OBJECT]);
         this._searchPopup.setModel(model);
         this._searchPopup.connect('selected',
@@ -240,6 +245,7 @@ const MainWindow = new Lang.Class({
         places.forEach(function(place) {
             let iter = model.append();
             let location = place.get_location();
+            let icon = place.icon;
 
             if (location == null)
                 return;
@@ -250,6 +256,12 @@ const MainWindow = new Lang.Class({
                        SearchResults.COL_LOCATION],
                       [description_markup,
                        location]);
+
+            if (icon !== null) {
+                Utils.load_icon(icon, _PLACE_ICON_SIZE, function(pixbuf) {
+                    model.set(iter, [SearchResults.COL_ICON], [pixbuf]);
+                });
+            }
         });
         this._searchPopup.show();
     },
