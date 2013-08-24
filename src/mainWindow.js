@@ -242,15 +242,27 @@ const MainWindow = new Lang.Class({
         }
     },
 
+    // We want to match case insensitive but present in the correct case.
+    _boldMatch: function(description, searchStringLower) {
+        let index = description.toLowerCase().indexOf(searchStringLower);
+
+        if (index !== -1) {
+            let substring = description.substring(index,
+                                                  index + searchStringLower.length);
+
+            description = description.replace(substring, substring.bold());
+        }
+
+        return description;
+    },
+
     _showSearchResults: function(places) {
         let model = this._searchPopup.getModel();
 
-        if (places === null) {
-            this._searchPopup.hide();
-            return;
-        }
+        // Lower case to match case insensitive
+        let searchStringLower = this._searchEntry.text.toLowerCase();
 
-        places.forEach(function(place) {
+        places.forEach((function(place) {
             let iter = model.append();
             let location = place.get_location();
             let icon = place.icon;
@@ -258,15 +270,13 @@ const MainWindow = new Lang.Class({
             if (location == null)
                 return;
 
-            let description_markup =
-                '<b>' +
-                GLib.markup_escape_text(location.description, -1) +
-                '</b>';
+            let description = GLib.markup_escape_text(location.description, -1);
+            description = this._boldMatch(description, searchStringLower);
 
             model.set(iter,
                       [SearchResults.COL_DESCRIPTION,
                        SearchResults.COL_LOCATION],
-                      [description_markup,
+                      [description,
                        location]);
 
             if (icon !== null) {
@@ -274,7 +284,7 @@ const MainWindow = new Lang.Class({
                     model.set(iter, [SearchResults.COL_ICON], [pixbuf]);
                 });
             }
-        });
+        }).bind(this));
         this._searchPopup.showResult();
     },
 
