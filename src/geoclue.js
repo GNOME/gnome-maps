@@ -54,10 +54,10 @@ const ClientInterface = <interface name="org.freedesktop.GeoClue2.Client">
 const ClientProxy = Gio.DBusProxy.makeProxyWrapper(ClientInterface);
 
 const LocationInterface = <interface name="org.freedesktop.GeoClue2.Location">
-    <property name="latitude" type="d" access="read"/>
-    <property name="longitude" type="d" access="read"/>
-    <property name="accuracy" type="d" access="read"/>
-    <property name="description" type="s" access="read"/>
+    <property name="Latitude" type="d" access="read"/>
+    <property name="Longitude" type="d" access="read"/>
+    <property name="Accuracy" type="d" access="read"/>
+    <property name="Description" type="s" access="read"/>
 </interface>
 const LocationProxy = Gio.DBusProxy.makeProxyWrapper(LocationInterface);
 
@@ -113,9 +113,13 @@ const Geoclue = new Lang.Class({
     },
 
     _onLocationUpdated: function(proxy, sender, [oldPath, newPath]) {
-        this.location = new LocationProxy(Gio.DBus.system,
-                                          "org.freedesktop.GeoClue2",
-                                          newPath);
+        let geoclueLocation = new LocationProxy(Gio.DBus.system,
+                                                 "org.freedesktop.GeoClue2",
+                                                 newPath);
+        this.location = new Geocode.Location({ latitude: geoclueLocation.Latitude,
+                                               longitude: geoclueLocation.Longitude,
+                                               accuracy: geoclueLocation.Accuracy,
+                                               description: geoclueLocation.Description });
         try {
             let variant = GLib.Variant.new('ad', [this.location.latitude,
                                                   this.location.longitude,
