@@ -225,7 +225,7 @@ const MainWindow = new Lang.Class({
         let model = this._searchPopup.getModel();
         let location = model.get_value(iter, SearchResults.COL_LOCATION);
 
-        this.mapView.showLocation(location);
+        this.mapView.showNGotoLocation(location);
         this._searchPopup.hide();
     },
 

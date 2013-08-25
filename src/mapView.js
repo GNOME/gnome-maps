@@ -154,6 +154,12 @@ const MapView = new Lang.Class({
         let mapLocation = new MapLocation.MapLocation(location, this);
 
         mapLocation.show(this._markerLayer);
+
+        return mapLocation;
+    },
+
+    showNGotoLocation: function(location) {
+        let mapLocation = this.showLocation(location);
         mapLocation.goTo(true);
     },
 
