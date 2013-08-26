@@ -83,10 +83,10 @@ const MapView = new Lang.Class({
         this._zoomControl = new ZoomControl.ZoomControl(this);
         overlay.add_overlay(this._zoomControl);
 
-        this._geoclue = new Geoclue.Geoclue();
+        this.geoclue = new Geoclue.Geoclue();
         this._updateUserLocation();
-        this._geoclue.connect("location-changed",
-                              this._updateUserLocation.bind(this));
+        this.geoclue.connect("location-changed",
+                             this._updateUserLocation.bind(this));
     },
 
     setMapType: function(mapType) {
@@ -141,10 +141,10 @@ const MapView = new Lang.Class({
     },
 
     _updateUserLocation: function() {
-        if (!this._geoclue.location)
+        if (!this.geoclue.location)
             return;
 
-        this._userLocation = new UserLocation.UserLocation(this._geoclue.location, this);
+        this._userLocation = new UserLocation.UserLocation(this.geoclue.location, this);
         this._userLocation.show(this._userLocationLayer);
         this.emit('user-location-changed');
     },
