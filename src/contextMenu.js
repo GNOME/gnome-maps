@@ -35,7 +35,8 @@ const ContextMenu = new Lang.Class({
         this._mapView = mapView;
 
         let ui = Utils.getUIObject('context-menu', ['context-menu',
-                                                    'whats-here-item']);
+                                                    'whats-here-item',
+                                                    'i-am-here-item']);
         this._menu = ui.contextMenu;
 
         this._mapView.view.connect('button-release-event',
@@ -43,6 +44,9 @@ const ContextMenu = new Lang.Class({
 
         ui.whatsHereItem.connect('activate',
                                  this._onWhatsHereActivated.bind(this));
+
+        ui.iAmHereItem.connect('activate',
+                               this._onIAmHereActivated.bind(this));
     },
 
     _onButtonReleaseEvent: function(actor, event) {
@@ -60,6 +64,24 @@ const ContextMenu = new Lang.Class({
         let location = new Geocode.Location({ latitude: this._latitude,
                                               longitude: this._longitude,
                                               accuracy: 0 });
+
+        this._reverseGeocode(location, (function(place) {
+            this._mapView.showLocation(place.location);
+        }).bind(this));
+    },
+
+    _onIAmHereActivated: function() {
+        let location = new Geocode.Location({ latitude: this._latitude,
+                                              longitude: this._longitude,
+                                              accuracy: 0,
+                                              description: "" });
+        this._reverseGeocode(location, (function(place) {
+            location.description = place.name;
+            this._mapView.geoclue.overrideLocation(location);
+        }).bind(this));
+    },
+
+    _reverseGeocode: function(location, resultCallback) {
         let reverse = Geocode.Reverse.new_for_location(location);
 
         Application.application.mark_busy();
@@ -68,7 +90,7 @@ const ContextMenu = new Lang.Class({
             try {
                 let place = reverse.resolve_finish(res);
 
-                this._mapView.showLocation(place.location);
+                resultCallback(place);
             } catch (e) {
                 log ("Error finding place at " +
                      this._latitude + ", " +
