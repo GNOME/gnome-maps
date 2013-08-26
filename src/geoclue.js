@@ -64,6 +64,20 @@ const LocationProxy = Gio.DBusProxy.makeProxyWrapper(LocationInterface);
 const Geoclue = new Lang.Class({
     Name: 'Geoclue',
 
+    overrideLocation: function(location) {
+        if (this._locationUpdatedId > 0) {
+            this._clientProxy.disconnectSignal(this._locationUpdatedId);
+            this._locationUpdatedId = 0;
+            this._clientProxy.StopRemote(function(result, e) {
+                if (e) {
+                    log ("Failed to connect to GeoClue2 service: " + e.message);
+                }
+            });
+        }
+
+        this._updateLocation(location, true);
+    },
+
     _init: function() {
         let lastLocation = Application.settings.get_value('last-location');
         if (lastLocation.n_children() >= 3) {
@@ -76,17 +90,26 @@ const Geoclue = new Lang.Class({
                                                    accuracy: accuracy.get_double() });
             let lastLocationDescription = Application.settings.get_string('last-location-description');
             this.location.set_description(lastLocationDescription);
+            this.userSetLocation = Application.settings.get_boolean('last-location-user-set');
         }
 
-        this._findLocation();
-    },
-
-    _findLocation: function() {
         this._managerProxy = new ManagerProxy(Gio.DBus.system,
                                               "org.freedesktop.GeoClue2",
                                               "/org/freedesktop/GeoClue2/Manager");
 
         this._managerProxy.GetClientRemote(this._onGetClientReady.bind(this));
+    },
+
+    _findLocation: function() {
+        this._locationUpdatedId =
+            this._clientProxy.connectSignal("LocationUpdated",
+                                            this._onLocationUpdated.bind(this));
+
+        this._clientProxy.StartRemote(function(result, e) {
+            if (e) {
+                log ("Failed to connect to GeoClue2 service: " + e.message);
+            }
+        });
     },
 
     _onGetClientReady: function(result, e) {
@@ -100,38 +123,35 @@ const Geoclue = new Lang.Class({
         this._clientProxy = new ClientProxy(Gio.DBus.system,
                                             "org.freedesktop.GeoClue2",
                                             clientPath);
-        this._clientProxy.connectSignal("LocationUpdated",
-                                        this._onLocationUpdated.bind(this));
 
-        this._clientProxy.StartRemote(this._onStartReady.bind(this));
-    },
-
-    _onStartReady: function(result, e) {
-        if (e) {
-            log ("Failed to connect to GeoClue2 service: " + e.message);
-        }
+        if (!this.userSetLocation)
+            this._findLocation();
     },
 
     _onLocationUpdated: function(proxy, sender, [oldPath, newPath]) {
         let geoclueLocation = new LocationProxy(Gio.DBus.system,
-                                                 "org.freedesktop.GeoClue2",
-                                                 newPath);
-        this.location = new Geocode.Location({ latitude: geoclueLocation.Latitude,
-                                               longitude: geoclueLocation.Longitude,
-                                               accuracy: geoclueLocation.Accuracy,
-                                               description: geoclueLocation.Description });
-        try {
-            let variant = GLib.Variant.new('ad', [this.location.latitude,
-                                                  this.location.longitude,
-                                                  this.location.accuracy]);
-            Application.settings.set_value('last-location', variant);
-            Application.settings.set_string('last-location-description', this.location.description);
+                                                "org.freedesktop.GeoClue2",
+                                                newPath);
+        let location = new Geocode.Location({ latitude: geoclueLocation.Latitude,
+                                              longitude: geoclueLocation.Longitude,
+                                              accuracy: geoclueLocation.Accuracy,
+                                              description: geoclueLocation.Description });
+        this._updateLocation(location, false);
+    },
 
-            this.emit('location-changed');
-            Utils.debug("Found location: " + this.location.description);
-        } catch (e) {
-            log("Failed to find your location: " + e);
-        }
+    _updateLocation: function(location, userSet) {
+        this.location = location;
+
+        let variant = GLib.Variant.new('ad', [location.latitude,
+                                              location.longitude,
+                                              location.accuracy]);
+        Application.settings.set_value('last-location', variant);
+        Application.settings.set_string('last-location-description', location.description);
+        Application.settings.set_boolean('last-location-user-set', userSet);
+        this.userSetLocation = userSet;
+
+        this.emit('location-changed');
+        Utils.debug("Updated location: " + location.description);
     }
 });
 Utils.addSignalMethods(Geoclue.prototype);
