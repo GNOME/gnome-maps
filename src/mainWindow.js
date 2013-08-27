@@ -59,10 +59,8 @@ const MainWindow = new Lang.Class({
         this._configureId = 0;
         let ui = Utils.getUIObject('main-window', [ 'app-window',
                                                     'window-content',
-                                                    'search-entry',
-                                                    'track-user-button']);
-        let grid = ui.windowContent,
-            toggle = ui.trackUserButton;
+                                                    'search-entry' ]);
+        let grid = ui.windowContent;
         this._searchEntry = ui.searchEntry;
         this.window = ui.appWindow;
         this.window.application = app;
