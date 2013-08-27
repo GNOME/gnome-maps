@@ -78,6 +78,18 @@ const Geoclue = new Lang.Class({
         this._updateLocation(location, true);
     },
 
+    findLocation: function() {
+        this._locationUpdatedId =
+            this._clientProxy.connectSignal("LocationUpdated",
+                                            this._onLocationUpdated.bind(this));
+
+        this._clientProxy.StartRemote(function(result, e) {
+            if (e) {
+                log ("Failed to connect to GeoClue2 service: " + e.message);
+            }
+        });
+    },
+
     _init: function() {
         let lastLocation = Application.settings.get_value('last-location');
         if (lastLocation.n_children() >= 3) {
@@ -100,18 +112,6 @@ const Geoclue = new Lang.Class({
         this._managerProxy.GetClientRemote(this._onGetClientReady.bind(this));
     },
 
-    _findLocation: function() {
-        this._locationUpdatedId =
-            this._clientProxy.connectSignal("LocationUpdated",
-                                            this._onLocationUpdated.bind(this));
-
-        this._clientProxy.StartRemote(function(result, e) {
-            if (e) {
-                log ("Failed to connect to GeoClue2 service: " + e.message);
-            }
-        });
-    },
-
     _onGetClientReady: function(result, e) {
         if (e) {
             log ("Failed to connect to GeoClue2 service: " + e.message);
@@ -125,7 +125,7 @@ const Geoclue = new Lang.Class({
                                             clientPath);
 
         if (!this.userSetLocation)
-            this._findLocation();
+            this.findLocation();
     },
 
     _onLocationUpdated: function(proxy, sender, [oldPath, newPath]) {
