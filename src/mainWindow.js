@@ -308,7 +308,15 @@ const MainWindow = new Lang.Class({
     },
 
     _onGotoUserLocationActivate: function() {
-        this.mapView.gotoUserLocation(true);
+        if (this.mapView.geoclue.userSetLocation) {
+            Utils.once(this.mapView.geoclue,
+                       'location-changed',
+                       (function() {
+                this.mapView.gotoUserLocation(true);
+            }).bind(this));
+            this.mapView.geoclue.findLocation();
+        } else
+            this.mapView.gotoUserLocation(true);
     },
 
     _onMapTypeMenuActivate: function(action) {
