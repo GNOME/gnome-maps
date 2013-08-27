@@ -251,7 +251,6 @@ const MainWindow = new Lang.Class({
                       [description_markup,
                        location]);
         });
-        this._searchPopup.setModel(model);
         this._searchPopup.show();
     },
 
