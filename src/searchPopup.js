@@ -37,9 +37,15 @@ const SearchPopup = new Lang.Class({
 
         let ui = Utils.getUIObject('search-popup', ['frame',
                                                     'scrolled-window',
+                                                    'stack',
+                                                    'spinner',
                                                     'treeview']);
+
+        this._stack = ui.stack;
         this._scrolledWindow = ui.scrolledWindow;
+        this._spinner = ui.spinner;
         this._treeView = ui.treeview;
+
         this._treeView.connect('button-press-event',
                                this._onListButtonPress.bind(this));
         this._initList();
@@ -98,8 +104,29 @@ const SearchPopup = new Lang.Class({
         }
     },
 
-    vfunc_show: function() {
+    showSpinner: function() {
+        this._spinner.start();
+        this._stack.set_visible_child(this._spinner);
+
+        if (!this.get_visible())
+            this.show();
+    },
+
+    showResult: function() {
+        if (this._spinner.active)
+            this._spinner.stop();
+
         this._treeView.columns_autosize();
+        this._stack.set_visible_child(this._treeView);
+
+        if (!this.get_visible())
+            this.show();
+    },
+
+    vfunc_hide: function() {
+        if (this._spinner.active)
+            this._spinner.stop();
+
         this.parent();
     },
 

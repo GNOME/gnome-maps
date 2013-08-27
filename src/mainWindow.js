@@ -233,6 +233,10 @@ const MainWindow = new Lang.Class({
         let searchString = this._searchEntry.get_text();
 
         if (searchString.length > 0) {
+            let model = this._searchPopup.getModel();
+
+            model.clear();
+            this._searchPopup.showSpinner();
             this.mapView.geocodeSearch(searchString,
                                        this._showSearchResults.bind(this));
         }
@@ -241,7 +245,11 @@ const MainWindow = new Lang.Class({
     _showSearchResults: function(places) {
         let model = this._searchPopup.getModel();
 
-        model.clear();
+        if (places === null) {
+            this._searchPopup.hide();
+            return;
+        }
+
         places.forEach(function(place) {
             let iter = model.append();
             let location = place.get_location();
@@ -267,7 +275,7 @@ const MainWindow = new Lang.Class({
                 });
             }
         });
-        this._searchPopup.show();
+        this._searchPopup.showResult();
     },
 
     _quit: function() {

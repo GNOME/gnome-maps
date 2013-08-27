@@ -107,8 +107,7 @@ const MapView = new Lang.Class({
             } catch (e) {
                 places = null;
             }
-            if (places !== null)
-                searchCompleteCallback(places);
+            searchCompleteCallback(places);
         }).bind(this));
     },
 
