@@ -1,7 +1,6 @@
 # Czech translation for gnome-maps.
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
-#
 # Marek Černocký <marek@manet.cz>, 2013.
 #
 msgid ""
@@ -9,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-04-17 14:10+0000\n"
-"PO-Revision-Date: 2013-04-20 15:49+0200\n"
+"POT-Creation-Date: 2013-08-27 23:32+0000\n"
+"PO-Revision-Date: 2013-08-28 11:01+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -20,8 +19,8 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Gtranslator 2.91.6\n"
 
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:51
-#: ../src/mainWindow.js:54 ../src/mainWindow.js:210
+#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:53
+#: ../src/mainWindow.js:304 ../src/main-window.ui.h:3
 msgid "Maps"
 msgstr "Mapy"
 
@@ -78,12 +77,12 @@ msgid "Description of last known location of user."
 msgstr "Popis posledního známého místa, kde se uživatel nacházel."
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:11
-msgid "Track user location"
-msgstr "Sledovat polohu uživatele"
+msgid "Maximum number of search results"
+msgstr "Maximální počet výsledků hledání"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:12
-msgid "Track user location."
-msgstr "Sledovat polohu uživatele."
+msgid "Maximum number of search results from geocode search."
+msgstr "Maximální počet výsledků hledání z geocode."
 
 #: ../src/app-menu.ui.h:1
 msgid "About"
@@ -93,35 +92,27 @@ msgstr "O aplikaci"
 msgid "Quit"
 msgstr "Ukončit"
 
-#: ../src/mainWindow.js:209
+#: ../src/mainWindow.js:303
 msgid "translator-credits"
 msgstr "Marek Černocký"
 
-#: ../src/mainWindow.js:211
+#: ../src/mainWindow.js:305
 msgid "A map application for GNOME"
 msgstr "Mapová aplikace pro GNOME"
 
-#: ../src/properties.js:62
-msgid "<b>Map Type</b>"
-msgstr "<b>Typ mapy</b>"
-
-#: ../src/properties.js:69
+#: ../src/main-window.ui.h:1
 msgid "Street"
 msgstr "Ulice"
 
-#: ../src/properties.js:70
+#: ../src/main-window.ui.h:2
 msgid "Satellite"
 msgstr "Satelitní"
 
-#: ../src/properties.js:71
-msgid "Cycling"
-msgstr "Cyklistická"
+#: ../src/mapLocation.js:121
+msgid " km²"
+msgstr " km²"
 
-#: ../src/properties.js:72
-msgid "Transit"
-msgstr "Dopravní"
-
-#: ../src/userLocation.js:54
+#: ../src/userLocation.js:58
 #, c-format
 msgid ""
 "%s\n"
@@ -129,7 +120,3 @@ msgid ""
 msgstr ""
 "%s\n"
 "Přesnost polohy: %s"
-
-#: ../src/utils.js:112
-msgid " km²"
-msgstr " km²"
