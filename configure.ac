@@ -22,9 +22,6 @@ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE",[The name of the gettext d
 IT_PROG_INTLTOOL(0.40.0)
 PKG_PROG_PKG_CONFIG([0.22])
 
-AM_GNU_GETTEXT([external])
-AM_GNU_GETTEXT_VERSION([0.17])
-
 # no stupid static libraries
 AM_DISABLE_STATIC
 # enable libtool
