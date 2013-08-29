@@ -116,11 +116,15 @@ const SearchPopup = new Lang.Class({
         if (this._spinner.active)
             this._spinner.stop();
 
-        this._treeView.columns_autosize();
         this._stack.set_visible_child(this._treeView);
 
         if (!this.get_visible())
             this.show();
+    },
+
+    vfunc_show: function() {
+        this._treeView.columns_autosize();
+        this.parent();
     },
 
     vfunc_hide: function() {
