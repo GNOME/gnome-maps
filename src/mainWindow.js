@@ -259,6 +259,11 @@ const MainWindow = new Lang.Class({
     _showSearchResults: function(places) {
         let model = this._searchPopup.getModel();
 
+        if (places === null) {
+            this._searchPopup.hide();
+            return;
+        }
+
         // Lower case to match case insensitive
         let searchStringLower = this._searchEntry.text.toLowerCase();
 
