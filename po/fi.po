@@ -1,26 +1,26 @@
 # Finnish translation for gnome-maps.
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
+# Jiri Grönroos <jiri.gronroos+l10n@iki.fi>, 2013.
 #
-# Jiri Grönroos <jiri.gronroos@iki.fi>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-03-28 09:32+0000\n"
-"PO-Revision-Date: 2013-03-28 14:57+0000\n"
+"POT-Creation-Date: 2013-08-31 19:41+0000\n"
+"PO-Revision-Date: 2013-09-02 20:16+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
-"Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
+"Language-Team: suomi <nome-fi-laatu@lists.sourceforge.net>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Gtranslator 2.91.6\n"
 
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:51
-#: ../src/mainWindow.js:54 ../src/mainWindow.js:187
+#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:53
+#: ../src/mainWindow.js:340 ../src/main-window.ui.h:3
 msgid "Maps"
 msgstr "Kartat"
 
@@ -50,11 +50,47 @@ msgstr "Ikkunan sijainti (x ja y)."
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:5
 msgid "Window maximized"
-msgstr ""
+msgstr "Ikkuna suurennettu"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:6
 msgid "Window maximized state"
+msgstr "Suurennetun ikkunan tila"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:7
+msgid "Last known location and accuracy"
+msgstr "Viimeksi tunnettu sijainti ja tarkkuus"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:8
+msgid ""
+"Last known location (latitude and longitude in degrees) and accuracy (in "
+"meters)."
 msgstr ""
+"Viimeksi tunnettu sijainti (leveys ja pituus asteissa) ja tarkkuus "
+"(metreissä)."
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:9
+msgid "Description of last known location"
+msgstr "Viimeksi tunnetun sijainnin kuvaus"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:10
+msgid "Description of last known location of user."
+msgstr "Käyttäjän viimeksi tunnetun sijainnin kuvaus."
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:11
+msgid "Maximum number of search results"
+msgstr "Hakutulosten enimmäismäärä"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:12
+msgid "Maximum number of search results from geocode search."
+msgstr "Geocode-haun tulosten enimmäismäärä."
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:13
+msgid "User set last known location"
+msgstr "Käyttäjä asetti viimeksi tunnetun sijainnin"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:14
+msgid "Last known location was set manually by user."
+msgstr "Viimeksi tunnettu sijainti asetettiin käyttäjän toimesta."
 
 #: ../src/app-menu.ui.h:1
 msgid "About"
@@ -64,11 +100,39 @@ msgstr "Tietoja"
 msgid "Quit"
 msgstr "Lopeta"
 
-#: ../src/mainWindow.js:186
+#: ../src/context-menu.ui.h:1
+msgid "What's here?"
+msgstr "Mitä täällä on?"
+
+#: ../src/context-menu.ui.h:2
+msgid "I'm here!"
+msgstr "Minä olen täällä!"
+
+#: ../src/mainWindow.js:339
 msgid "translator-credits"
 msgstr "Jiri Grönroos"
 
-#: ../src/mainWindow.js:188
+#: ../src/mainWindow.js:341
 msgid "A map application for GNOME"
 msgstr "Karttasovellus Gnomelle"
 
+#: ../src/main-window.ui.h:1
+msgid "Street"
+msgstr "Katu"
+
+#: ../src/main-window.ui.h:2
+msgid "Satellite"
+msgstr "Satelliitti"
+
+#: ../src/mapLocation.js:121
+msgid " km²"
+msgstr " km²"
+
+#: ../src/userLocation.js:58
+#, c-format
+msgid ""
+"%s\n"
+"Position Accuracy: %s"
+msgstr ""
+"%s\n"
+"Sijainnin tarkkuus: %s"
