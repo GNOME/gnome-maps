@@ -50,6 +50,7 @@ const Application = new Lang.Class({
         Gettext.bindtextdomain('gnome-maps', Path.LOCALE_DIR);
         Gettext.textdomain('gnome-maps');
         GLib.set_prgname('gnome-maps');
+        /* Translators: This is the program name. */
         GLib.set_application_name(_("Maps"));
 
         this.parent({ application_id: 'org.gnome.Maps' });

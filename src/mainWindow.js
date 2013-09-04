@@ -337,6 +337,7 @@ const MainWindow = new Lang.Class({
             authors: [ 'Zeeshan Ali (Khattak) <zeeshanak@gnome.org>',
                        'Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>' ],
             translator_credits: _("translator-credits"),
+            /* Translators: This is the program name. */
             program_name: _("Maps"),
             comments: _("A map application for GNOME"),
             copyright: 'Copyright ' + String.fromCharCode(0x00A9) +
