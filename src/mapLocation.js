@@ -112,9 +112,9 @@ const MapLocation = new Lang.Class({
     getAccuracyDescription: function() {
         switch(this.accuracy) {
         case Geocode.LOCATION_ACCURACY_UNKNOWN:
-            return "Unknown";
+            return _("Unknown");
         case 0:
-            return "Exact";
+            return _("Exact");
         default:
             let area =  Math.PI * Math.pow(this.accuracy / 1000, 2);
             area = Math.floor(area);
