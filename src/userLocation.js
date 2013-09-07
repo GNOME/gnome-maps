@@ -55,9 +55,10 @@ const UserLocation = new Lang.Class({
             return;
         bubbleActor.set_x_expand(true);
         bubbleActor.set_y_expand(true);
-        // Translators: Showing name of place where user currently is and
-        //              accuracy of this information (which is translated
-        //              separately)
+        /* Translators: Showing name of place where user currently is and
+                        accuracy of this information (which is translated
+                        separately)
+        */
         let text = _("%s\nPosition Accuracy: %s")
                 .format (this.description, this.getAccuracyDescription());
         let textActor = new Clutter.Text({ text: text });
