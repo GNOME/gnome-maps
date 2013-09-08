@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-08-31 19:41+0000\n"
-"PO-Revision-Date: 2013-09-02 15:35+0500\n"
+"POT-Creation-Date: 2013-09-05 14:38+0000\n"
+"PO-Revision-Date: 2013-09-08 16:58+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: Tajik <tg@li.org>\n"
 "Language: tg\n"
@@ -18,8 +18,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.7\n"
 
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:53
-#: ../src/mainWindow.js:340 ../src/main-window.ui.h:3
+#: ../data/gnome-maps.appdata.xml.in.h:1
+msgid ""
+"Maps gives you quick access to maps all across the world. It allows you to "
+"quickly find the place you're looking for by searching for a city or street, "
+"or locate a place to meet a friend."
+msgstr ""
+"Харитаҳо барои шумо ба тамоми ҳаритаҳои ҷаҳон имкони дастраси зуд медиҳад. "
+"Ин барнома ба шумо инчунин имкон медиҳад, ки тавонед шаҳр ё кӯчаи "
+"мехостагиро ёфт кунед ё барои бо дӯстон фохӯрдан маконро муайян кунед."
+
+#: ../data/gnome-maps.appdata.xml.in.h:2
+msgid ""
+"<li>Search for country, region, city or street.</li> <li>Search for specific "
+"types of locations, such as \"Pubs near Main Street, Boston\" or \"WiFi "
+"Access near Alexanderplatz, Berlin\"</li>"
+msgstr ""
+"<li>Кишвар, шаҳр ё кӯчаи мехостагиро ёфт кунед.</li> <li>Маконҳои махсусро, "
+"масалан \"Каҳвахонаи Нигина дар назди роҳи асосӣ\" ё \"Нуқтаи дастраси WiFi "
+"дар назди боғи Рӯдаки\" пайдо кунед</li>"
+
+#: ../data/gnome-maps.appdata.xml.in.h:3
+msgid ""
+"Maps uses the collaborative OpenStreetMap database, made by hundreds of "
+"thousands of people across the globe."
+msgstr ""
+"Харитаҳо пойгоҳи иттилоотии OpenStreetMap-ро, ки бо миллионҳо одам аз тамоми "
+"ҷаҳон ташкил шудааст, истифода мебарад."
+
+#. Translators: This is the program name.
+#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:54
+#: ../src/mainWindow.js:341 ../src/main-window.ui.h:3
 msgid "Maps"
 msgstr "Харитаҳо"
 
@@ -82,12 +111,10 @@ msgid "Maximum number of search results from geocode search."
 msgstr "Миқдори зиёдтарини натиҷаҳои ҷустуҷӯ аз ҷустуҷӯи рамзи ҷуғрофӣ."
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:13
-#| msgid "Description of last known location"
 msgid "User set last known location"
 msgstr "Ҷойгиршавии охирини таъиншудаи корбар"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:14
-#| msgid "Last known location and accuracy"
 msgid "Last known location was set manually by user."
 msgstr "Ҷойгиршавии охирини таъиншудаи ба таври дастӣ аз ҷониби корбар"
 
@@ -111,7 +138,7 @@ msgstr "Ман дар ҳамин ҷоям!"
 msgid "translator-credits"
 msgstr "Victor Ibragimov, victor.ibragimov@gmail.com"
 
-#: ../src/mainWindow.js:341
+#: ../src/mainWindow.js:342
 msgid "A map application for GNOME"
 msgstr "Барномаи харитаҳо барои GNOME"
 
@@ -122,6 +149,14 @@ msgstr "Кӯча"
 #: ../src/main-window.ui.h:2
 msgid "Satellite"
 msgstr "Спутник"
+
+#: ../src/mapLocation.js:115
+msgid "Unknown"
+msgstr "Номаълум"
+
+#: ../src/mapLocation.js:117
+msgid "Exact"
+msgstr "Дақиқ"
 
 #: ../src/mapLocation.js:121
 msgid " km²"
