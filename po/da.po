@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-05 12:57+0200\n"
-"PO-Revision-Date: 2013-03-31 22:52+0200\n"
+"POT-Creation-Date: 2013-09-10 23:33+0200\n"
+"PO-Revision-Date: 2013-09-10 21:44+0100\n"
 "Last-Translator: Kris Thomsen <mail@kristhomsen.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -17,8 +17,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: ../data/gnome-maps.appdata.xml.in.h:1
+msgid ""
+"Maps gives you quick access to maps all across the world. It allows you to "
+"quickly find the place you're looking for by searching for a city or street, "
+"or locate a place to meet a friend."
+msgstr ""
+"Kort giver dig hurtig adgang til kort over hele verden. Det giver dig "
+"mulighed for hurtigt at finde stedet du leder efter ved at søge efter en by "
+"eller gade, eller et sted hvor du kan mødes med en ven."
+
+#: ../data/gnome-maps.appdata.xml.in.h:2
+msgid ""
+"<li>Search for country, region, city or street.</li> <li>Search for specific "
+"types of locations, such as \"Pubs near Main Street, Boston\" or \"WiFi "
+"Access near Alexanderplatz, Berlin\"</li>"
+msgstr ""
+"<li>Søg efter land, region, by eller gade.</li> <li>Søg efter specifikke "
+"steder, som f.eks. \"Caféer nær Rådhuspladsen, København\" eller Trådløs "
+"forbindelse nær Alexanderplatz, Berlin\"</li>"
+
+#: ../data/gnome-maps.appdata.xml.in.h:3
+msgid ""
+"Maps uses the collaborative OpenStreetMap database, made by hundreds of "
+"thousands of people across the globe."
+msgstr ""
+"Kort bruger den kollaborative OpenStreetMap-database, skabt af flere "
+"hundrede tusinde mennesker over hele verden."
+
+#. Translators: This is the program name.
 #: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:54
-#: ../src/mainWindow.js:259 ../src/main-window.ui.h:3
+#: ../src/mainWindow.js:341 ../src/main-window.ui.h:3
 msgid "Maps"
 msgstr "Kort"
 
@@ -56,29 +85,39 @@ msgstr "Tilstand for maksimeret vindue"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:7
 msgid "Last known location and accuracy"
-msgstr ""
+msgstr "Senest kendte lokation og nøjagtighed"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:8
 msgid ""
 "Last known location (latitude and longitude in degrees) and accuracy (in "
 "meters)."
 msgstr ""
+"Senest kendte lokation (breddegrad og længdegrad i grader) og nøjagtighed (i "
+"meter)."
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:9
 msgid "Description of last known location"
-msgstr ""
+msgstr "Beskrivelse af senest kendte lokation"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:10
 msgid "Description of last known location of user."
-msgstr ""
+msgstr "Beskrivelse af senest kendte lokation af brugeren."
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:11
-msgid "Track user location"
-msgstr ""
+msgid "Maximum number of search results"
+msgstr "Maksimum antal af søgeresultater"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:12
-msgid "Track user location."
-msgstr ""
+msgid "Maximum number of search results from geocode search."
+msgstr "Maksimum antal af søgeresultater fra geokode-søgning."
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:13
+msgid "User set last known location"
+msgstr "Brugeren angav den senest kendte lokation"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:14
+msgid "Last known location was set manually by user."
+msgstr "Senest kendte lokation blev manuelt angivet af brugeren."
 
 #: ../src/app-menu.ui.h:1
 msgid "About"
@@ -88,7 +127,15 @@ msgstr "Om"
 msgid "Quit"
 msgstr "Afslut"
 
-#: ../src/mainWindow.js:258
+#: ../src/context-menu.ui.h:1
+msgid "What's here?"
+msgstr "Hvad er der her?"
+
+#: ../src/context-menu.ui.h:2
+msgid "I'm here!"
+msgstr "Jeg er her!"
+
+#: ../src/mainWindow.js:339
 msgid "translator-credits"
 msgstr ""
 "Kris Thomsen\n"
@@ -96,25 +143,41 @@ msgstr ""
 "Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
 "Mere info: http://www.dansk-gruppen.dk"
 
-#: ../src/mainWindow.js:260
+#: ../src/mainWindow.js:342
 msgid "A map application for GNOME"
 msgstr "Et kortprogram til GNOME"
 
 #: ../src/main-window.ui.h:1
 msgid "Street"
-msgstr ""
+msgstr "Gade"
 
 #: ../src/main-window.ui.h:2
 msgid "Satellite"
-msgstr ""
+msgstr "Satellit"
 
-#: ../src/mapLocation.js:121
+#. Translators: Accuracy of user location information
+#: ../src/mapLocation.js:116
+msgid "Unknown"
+msgstr "Ukendt"
+
+#. Translators: Accuracy of user location information
+#: ../src/mapLocation.js:119
+msgid "Exact"
+msgstr "Præcis"
+
+#: ../src/mapLocation.js:123
 msgid " km²"
-msgstr ""
+msgstr " km²"
 
-#: ../src/userLocation.js:58
+#. Translators: Showing name of place where user currently is and
+#. accuracy of this information (which is translated
+#. separately)
+#.
+#: ../src/userLocation.js:62
 #, c-format
 msgid ""
 "%s\n"
 "Position Accuracy: %s"
 msgstr ""
+"%s\n"
+"Positionsnøjagtighed: %s"
