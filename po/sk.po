@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-06-25 18:52+0000\n"
-"PO-Revision-Date: 2013-06-09 22:22+0100\n"
+"POT-Creation-Date: 2013-09-07 01:54+0000\n"
+"PO-Revision-Date: 2013-08-28 17:23+0100\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <gnome-sk-list@gnome.org>\n"
 "Language: sk\n"
@@ -19,9 +19,30 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
 "X-Generator: Poedit 1.5.4\n"
 
+#: ../data/gnome-maps.appdata.xml.in.h:1
+msgid ""
+"Maps gives you quick access to maps all across the world. It allows you to "
+"quickly find the place you're looking for by searching for a city or street, "
+"or locate a place to meet a friend."
+msgstr ""
+
+#: ../data/gnome-maps.appdata.xml.in.h:2
+msgid ""
+"<li>Search for country, region, city or street.</li> <li>Search for specific "
+"types of locations, such as \"Pubs near Main Street, Boston\" or \"WiFi "
+"Access near Alexanderplatz, Berlin\"</li>"
+msgstr ""
+
+#: ../data/gnome-maps.appdata.xml.in.h:3
+msgid ""
+"Maps uses the collaborative OpenStreetMap database, made by hundreds of "
+"thousands of people across the globe."
+msgstr ""
+
 # desktop entry name
+#. Translators: This is the program name.
 #: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:54
-#: ../src/mainWindow.js:227 ../src/main-window.ui.h:3
+#: ../src/mainWindow.js:341 ../src/main-window.ui.h:3
 msgid "Maps"
 msgstr "Mapy"
 
@@ -89,13 +110,27 @@ msgstr "Popis poslednej známej polohy"
 msgid "Description of last known location of user."
 msgstr "Popis poslednej známej polohy používateľa."
 
+# summary
 #: ../data/org.gnome.maps.gschema.xml.in.h:11
-msgid "Track user location"
-msgstr "Sledovať polohu používateľa"
+msgid "Maximum number of search results"
+msgstr "Maximálny počet výsledkov hľadania"
 
+# description
 #: ../data/org.gnome.maps.gschema.xml.in.h:12
-msgid "Track user location."
-msgstr "Sledovať polohu používateľa."
+msgid "Maximum number of search results from geocode search."
+msgstr "Maximálny počet výsledkov hľadania z vyhľadávača geokódov."
+
+# summary
+#: ../data/org.gnome.maps.gschema.xml.in.h:13
+#| msgid "Description of last known location"
+msgid "User set last known location"
+msgstr "Používateľ nastavil poslednú známu polohu"
+
+# description
+#: ../data/org.gnome.maps.gschema.xml.in.h:14
+#| msgid "Last known location and accuracy"
+msgid "Last known location was set manually by user."
+msgstr "Posledná známa poloha bola ručne nastavená používateľom."
 
 #: ../src/app-menu.ui.h:1
 msgid "About"
@@ -105,11 +140,19 @@ msgstr "O programe"
 msgid "Quit"
 msgstr "Ukončiť"
 
-#: ../src/mainWindow.js:226
+#: ../src/context-menu.ui.h:1
+msgid "What's here?"
+msgstr ""
+
+#: ../src/context-menu.ui.h:2
+msgid "I'm here!"
+msgstr ""
+
+#: ../src/mainWindow.js:339
 msgid "translator-credits"
 msgstr "Dušan Kazik <prescott66@gmail.com>"
 
-#: ../src/mainWindow.js:228
+#: ../src/mainWindow.js:342
 msgid "A map application for GNOME"
 msgstr "Aplikácia na prezeranie máp pre GNOME"
 
@@ -123,7 +166,25 @@ msgstr "Klasická"
 msgid "Satellite"
 msgstr "Satelitná"
 
-#: ../src/userLocation.js:59
+#. Translators: Accuracy of user location information
+#: ../src/mapLocation.js:116
+msgid "Unknown"
+msgstr "Neznáma"
+
+#. Translators: Accuracy of user location information
+#: ../src/mapLocation.js:119
+msgid "Exact"
+msgstr "Presná"
+
+#: ../src/mapLocation.js:123
+msgid " km²"
+msgstr " km²"
+
+#. Translators: Showing name of place where user currently is and
+#. accuracy of this information (which is translated
+#. separately)
+#.
+#: ../src/userLocation.js:62
 #, c-format
 msgid ""
 "%s\n"
@@ -132,6 +193,8 @@ msgstr ""
 "%s\n"
 "Presnosť pozície: %s"
 
-#: ../src/utils.js:116
-msgid " km²"
-msgstr " km²"
+#~ msgid "Track user location"
+#~ msgstr "Sledovať polohu používateľa"
+
+#~ msgid "Track user location."
+#~ msgstr "Sledovať polohu používateľa."
