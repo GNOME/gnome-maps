@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-31 14:17+0300\n"
-"PO-Revision-Date: 2013-08-31 14:33+0300\n"
+"POT-Creation-Date: 2013-09-21 13:53+0300\n"
+"PO-Revision-Date: 2013-09-21 14:21+0300\n"
 "Last-Translator: Daniel Korostil <ted.korostiled@gmail.com>\n"
 "Language-Team: linux.org.ua\n"
 "Language: uk\n"
@@ -18,8 +18,37 @@ msgstr ""
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Virtaal 0.7.1\n"
 
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:53
-#: ../src/mainWindow.js:331 ../src/main-window.ui.h:3
+#: ../data/gnome-maps.appdata.xml.in.h:1
+msgid ""
+"Maps gives you quick access to maps all across the world. It allows you to "
+"quickly find the place you're looking for by searching for a city or street, "
+"or locate a place to meet a friend."
+msgstr ""
+"Карти надають швидкий доступ до карт по всьому світу. Вони дозволяють швидко "
+"знайти місце, яке ви шукаєте, через пошук міста, вулиці, ба визначити місце "
+"для зустрічі з друзями."
+
+#: ../data/gnome-maps.appdata.xml.in.h:2
+msgid ""
+"<li>Search for country, region, city or street.</li> <li>Search for specific "
+"types of locations, such as \"Pubs near Main Street, Boston\" or \"WiFi "
+"Access near Alexanderplatz, Berlin\"</li>"
+msgstr ""
+"<li>Пошук країни, області, міста та вулиці.</li> <li>Пошук спеціальних "
+"місць, як-от «Паби біля головної вулиці, Бостон» або «Доступний WiFi біля "
+"Алексендріївської площі, Берлін»</li>"
+
+#: ../data/gnome-maps.appdata.xml.in.h:3
+msgid ""
+"Maps uses the collaborative OpenStreetMap database, made by hundreds of "
+"thousands of people across the globe."
+msgstr ""
+"Карти використовують колективну базу даних OpenStreetMap, яку роблять тисячі "
+"осіб по всій планеті."
+
+#. Translators: This is the program name. */
+#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:54
+#: ../src/mainWindow.js:341 ../src/main-window.ui.h:3
 msgid "Maps"
 msgstr "Карти"
 
@@ -83,6 +112,14 @@ msgstr "Максимальна кількість пошукових резул�
 msgid "Maximum number of search results from geocode search."
 msgstr "Максимальна кількість пошукових результатів з пошуку geocode."
 
+#: ../data/org.gnome.maps.gschema.xml.in.h:13
+msgid "User set last known location"
+msgstr "Користувач вказав останню невідому місцевість"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:14
+msgid "Last known location was set manually by user."
+msgstr "Останню невідому місцевість вказано вручну користувачем."
+
 #: ../src/app-menu.ui.h:1
 msgid "About"
 msgstr "Про програму"
@@ -91,11 +128,19 @@ msgstr "Про програму"
 msgid "Quit"
 msgstr "Вийти"
 
-#: ../src/mainWindow.js:330
+#: ../src/context-menu.ui.h:1
+msgid "What's here?"
+msgstr "Що тут?"
+
+#: ../src/context-menu.ui.h:2
+msgid "I'm here!"
+msgstr "Я тут!"
+
+#: ../src/mainWindow.js:339
 msgid "translator-credits"
 msgstr "Daniel Korostil <ted.korostiled@gmail.com>"
 
-#: ../src/mainWindow.js:332
+#: ../src/mainWindow.js:342
 msgid "A map application for GNOME"
 msgstr "Карти для GNOME"
 
@@ -107,11 +152,25 @@ msgstr "Вулиця"
 msgid "Satellite"
 msgstr "Супутник"
 
-#: ../src/mapLocation.js:121
+#. Translators: Accuracy of user location information */
+#: ../src/mapLocation.js:116
+msgid "Unknown"
+msgstr "Невідомо"
+
+#. Translators: Accuracy of user location information */
+#: ../src/mapLocation.js:119
+msgid "Exact"
+msgstr "Уточнити"
+
+#: ../src/mapLocation.js:123
 msgid " km²"
 msgstr " км²"
 
-#: ../src/userLocation.js:58
+#. Translators: Showing name of place where user currently is and
+#. accuracy of this information (which is translated
+#. separately)
+#. */
+#: ../src/userLocation.js:62
 #, javascript-format
 msgid ""
 "%s\n"
