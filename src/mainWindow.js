@@ -152,34 +152,27 @@ const MainWindow = new Lang.Class({
 
         // GLib.Variant.new() can handle arrays just fine
         let size = this.window.get_size();
-        let variant = GLib.Variant.new ('ai', size);
-        Application.settings.set_value('window-size', variant);
+        Application.settings.set('window-size', size);
 
         let position = this.window.get_position();
-        variant = GLib.Variant.new ('ai', position);
-        Application.settings.set_value('window-position', variant);
+        Application.settings.set('window-position', position);
     },
 
     _restoreWindowGeometry: function() {
-        let size = Application.settings.get_value('window-size');
-        if (size.n_children() === 2) {
-            let width = size.get_child_value(0);
-            let height = size.get_child_value(1);
-
-            this.window.set_default_size(width.get_int32(),
-                                         height.get_int32());
+        let size = Application.settings.get('window-size');
+        if (size.length === 2) {
+            let [width, height] = size;
+            this.window.set_default_size(width, height);
         }
 
-        let position = Application.settings.get_value('window-position');
-        if (position.n_children() === 2) {
-            let x = position.get_child_value(0);
-            let y = position.get_child_value(1);
+        let position = Application.settings.get('window-position');
+        if (position.length === 2) {
+            let [x, y] = position;
 
-            this.window.move(x.get_int32(),
-                             y.get_int32());
+            this.window.move(x, y);
         }
 
-        if (Application.settings.get_boolean('window-maximized'))
+        if (Application.settings.get('window-maximized'))
             this.window.maximize();
     },
 
@@ -203,7 +196,7 @@ const MainWindow = new Lang.Class({
             return;
 
         let maximized = (state & Gdk.WindowState.MAXIMIZED);
-        Application.settings.set_boolean('window-maximized', maximized);
+        Application.settings.set('window-maximized', maximized);
     },
 
     _onKeyPressEvent: function(widget, event) {

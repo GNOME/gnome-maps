@@ -97,18 +97,15 @@ const Geoclue = new Lang.Class({
     },
 
     _init: function() {
-        let lastLocation = Application.settings.get_value('last-location');
-        if (lastLocation.n_children() >= 3) {
-            let lat = lastLocation.get_child_value(0);
-            let lng = lastLocation.get_child_value(1);
-            let accuracy = lastLocation.get_child_value(2);
-
-            this.location = new Geocode.Location({ latitude: lat.get_double(),
-                                                   longitude: lng.get_double(),
-                                                   accuracy: accuracy.get_double() });
-            let lastLocationDescription = Application.settings.get_string('last-location-description');
+        let lastLocation = Application.settings.get('last-location');
+        if (lastLocation.length >= 3) {
+            let [lat, lng, accuracy] = lastLocation;
+            this.location = new Geocode.Location({ latitude: lat,
+                                                   longitude: lng,
+                                                   accuracy: accuracy });
+            let lastLocationDescription = Application.settings.get('last-location-description');
             this.location.set_description(lastLocationDescription);
-            this.userSetLocation = Application.settings.get_boolean('last-location-user-set');
+            this.userSetLocation = Application.settings.get('last-location-user-set');
         }
 
         this._managerProxy = new ManagerProxy(Gio.DBus.system,
@@ -148,12 +145,11 @@ const Geoclue = new Lang.Class({
     _updateLocation: function(location, userSet) {
         this.location = location;
 
-        let variant = GLib.Variant.new('ad', [location.latitude,
-                                              location.longitude,
-                                              location.accuracy]);
-        Application.settings.set_value('last-location', variant);
-        Application.settings.set_string('last-location-description', location.description);
-        Application.settings.set_boolean('last-location-user-set', userSet);
+        Application.settings.set('last-location', [location.latitude,
+                                                   location.longitude,
+                                                   location.accuracy]);
+        Application.settings.set('last-location-description', location.description);
+        Application.settings.set('last-location-user-set', userSet);
         this.userSetLocation = userSet;
 
         this.emit('location-changed');

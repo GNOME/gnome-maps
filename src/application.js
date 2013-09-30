@@ -37,6 +37,7 @@ const Format = imports.format;
 const MainWindow = imports.mainWindow;
 const Utils = imports.utils;
 const Path = imports.path;
+const Settings = imports.settings;
 
 // used globally
 let application = null;
@@ -80,7 +81,7 @@ const Application = new Lang.Class({
         Utils.loadStyleSheet(Gio.file_new_for_uri('resource:///org/gnome/maps/application.css'));
 
         application = this;
-        settings = new Gio.Settings({ schema: 'org.gnome.maps' });
+        settings = new Settings.Settings('org.gnome.maps');
 
         Utils.initActions(this, [{
             properties: { name: 'quit' },

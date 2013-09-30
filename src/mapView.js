@@ -98,8 +98,7 @@ const MapView = new Lang.Class({
     geocodeSearch: function(searchString, searchCompleteCallback) {
         let forward = Geocode.Forward.new_for_string(searchString);
         let places = [];
-        let answerCount =
-            Application.settings.get_value('max-search-results').get_int32();
+        let answerCount = Application.settings.get('max-search-results');
 
         forward.set_answer_count(answerCount);
         forward.search_async (null, (function(forward, res) {
