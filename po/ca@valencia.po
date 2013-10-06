@@ -2,14 +2,15 @@
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
 # Gil Forcada <gilforcada@guifi.net>, 2013.
+# Josep Sanchez Mesegue <papapep@gmx.com>, 2013.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-01 20:28+0200\n"
-"PO-Revision-Date: 2013-04-01 20:27+0200\n"
-"Last-Translator: Gil Forcada <gilforcada@guifi.net>\n"
+"POT-Creation-Date: 2013-10-06 22:14+0200\n"
+"PO-Revision-Date: 2013-09-16 18:28+0100\n"
+"Last-Translator: Josep Sanchez Mesegue <papapep@gmx.com>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "Language: ca-XV\n"
 "MIME-Version: 1.0\n"
@@ -17,8 +18,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bits\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:51
-#: ../src/mainWindow.js:55 ../src/mainWindow.js:160
+#: ../data/gnome-maps.appdata.xml.in.h:1
+msgid ""
+"Maps gives you quick access to maps all across the world. It allows you to "
+"quickly find the place you're looking for by searching for a city or street, "
+"or locate a place to meet a friend."
+msgstr ""
+"El Mapes vos dóna un accés ràpid a mapes d'arreu del món. Vos permet trobar "
+"ràpidament el lloc que esteu cercant tant si és una ciutat com un carrer, o "
+"ubicar un lloc per trobar-vos amb una amistat."
+
+#: ../data/gnome-maps.appdata.xml.in.h:2
+msgid ""
+"<li>Search for country, region, city or street.</li> <li>Search for specific "
+"types of locations, such as \"Pubs near Main Street, Boston\" or \"WiFi "
+"Access near Alexanderplatz, Berlin\"</li>"
+msgstr ""
+"<li>Cerqueu per país, regió, ciutat o carrer.</li> <li>Cerqueu per tipus "
+"concrets d'ubicacions, com «Bars a prop de la plaça Catalunya, Barcelona» o "
+"«accés Wi-Fi a prop d'Alexanderplatz, Berlín»</li>"
+
+#: ../data/gnome-maps.appdata.xml.in.h:3
+msgid ""
+"Maps uses the collaborative OpenStreetMap database, made by hundreds of "
+"thousands of people across the globe."
+msgstr ""
+"El Mapes empra la base de dades col·laborativa de l'OpenStreetMap, creat per "
+"centenars de milers de persones d'arreu del món."
+
+#. Translators: This is the program name.
+#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:54
+#: ../src/mainWindow.js:341 ../src/main-window.ui.h:3
 msgid "Maps"
 msgstr "Mapes"
 
@@ -54,6 +84,42 @@ msgstr "Finestra maximitzada"
 msgid "Window maximized state"
 msgstr "Estat de la finestra maximitzada"
 
+#: ../data/org.gnome.maps.gschema.xml.in.h:7
+msgid "Last known location and accuracy"
+msgstr "L'última ubicació coneguda i la precisió"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:8
+msgid ""
+"Last known location (latitude and longitude in degrees) and accuracy (in "
+"meters)."
+msgstr ""
+"L'última ubicació coneguda (latitud i longitud en graus) i la precisió (en "
+"metres)."
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:9
+msgid "Description of last known location"
+msgstr "Descripció de l'última ubicació coneguda"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:10
+msgid "Description of last known location of user."
+msgstr "Descripció de l'última ubicació coneguda de l'usuari."
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:11
+msgid "Maximum number of search results"
+msgstr "Nombre màxim de resultats de cerca"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:12
+msgid "Maximum number of search results from geocode search."
+msgstr "Nombre màxim de resultats de cerca en fer-la per geocodi."
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:13
+msgid "User set last known location"
+msgstr "Última ubicació coneguda definida per l'usuari"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:14
+msgid "Last known location was set manually by user."
+msgstr "L'última ubicació coneguda l'ha definit manualment l'usuari."
+
 #: ../src/app-menu.ui.h:1
 msgid "About"
 msgstr "Quant a"
@@ -62,10 +128,55 @@ msgstr "Quant a"
 msgid "Quit"
 msgstr "Ix"
 
-#: ../src/mainWindow.js:159
-msgid "translator-credits"
-msgstr "Gil Forcada <gilforcada@guifi.net>"
+#: ../src/context-menu.ui.h:1
+msgid "What's here?"
+msgstr "Què hi ha ací?"
 
-#: ../src/mainWindow.js:161
+#: ../src/context-menu.ui.h:2
+msgid "I'm here!"
+msgstr "Sóc ací!"
+
+#: ../src/mainWindow.js:339
+msgid "translator-credits"
+msgstr ""
+"Gil Forcada <gilforcada@guifi.net>\n"
+"Josep Sanchez Mesegue <papapep@gmx.com>"
+
+#: ../src/mainWindow.js:342
 msgid "A map application for GNOME"
 msgstr "Una aplicació de mapes pel GNOME"
+
+#: ../src/main-window.ui.h:1
+msgid "Street"
+msgstr "Carrer"
+
+#: ../src/main-window.ui.h:2
+msgid "Satellite"
+msgstr "Satèl·lit"
+
+#. Translators: Accuracy of user location information
+#: ../src/mapLocation.js:116
+msgid "Unknown"
+msgstr "Desconeguda"
+
+#. Translators: Accuracy of user location information
+#: ../src/mapLocation.js:119
+msgid "Exact"
+msgstr "Exacte"
+
+#: ../src/mapLocation.js:123
+msgid " km²"
+msgstr " km²"
+
+#. Translators: Showing name of place where user currently is and
+#. accuracy of this information (which is translated
+#. separately)
+#.
+#: ../src/userLocation.js:62
+#, c-format
+msgid ""
+"%s\n"
+"Position Accuracy: %s"
+msgstr ""
+"%s\n"
+"Nivell de precisió: %s"
