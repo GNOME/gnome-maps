@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the gnome-maps package.
 # Dimitris Spingos <dmtrs32@gmail.com>, 2013.
 # Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>, 2013.
+# Efstathios Iosifidis <iosifidis@opensuse.org>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-04-09 00:33+0000\n"
-"PO-Revision-Date: 2013-04-10 17:18+0300\n"
+"POT-Creation-Date: 2013-10-13 21:29+0000\n"
+"PO-Revision-Date: 2013-10-22 10:19+0300\n"
 "Last-Translator: Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>\n"
 "Language-Team: team@gnome.gr\n"
 "Language: el\n"
@@ -20,8 +21,38 @@ msgstr ""
 "X-Generator: Virtaal 0.7.1\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:51
-#: ../src/mainWindow.js:54 ../src/mainWindow.js:174
+#: ../data/gnome-maps.appdata.xml.in.h:1
+msgid ""
+"Maps gives you quick access to maps all across the world. It allows you to "
+"quickly find the place you're looking for by searching for a city or street, "
+"or locate a place to meet a friend."
+msgstr ""
+"Η εφαρμογή Χάρτες σας παρέχει μια γρήγορη πρόσβαση σε χάρτες από όλο τον "
+"κόσμο. Σας επιτρέπει να βρείτε γρήγορα μια τοποθεσία αναζητώντας είτε μια "
+"πόλη είτε μια οδό, ή μπορείτε να εντοπίσετε μια τοποθεσία που θα συναντήσετε "
+"ένα φίλο."
+
+#: ../data/gnome-maps.appdata.xml.in.h:2
+msgid ""
+"<li>Search for country, region, city or street.</li> <li>Search for specific "
+"types of locations, such as \"Pubs near Main Street, Boston\" or \"WiFi "
+"Access near Alexanderplatz, Berlin\"</li>"
+msgstr ""
+"<li>Αναζήτηση για χώρα, περιοχή, πόλη ή οδό.</li> <li>Αναζήτηση για "
+"καθορισμένους τύπους τοποθεσιών, όπως \"Pubs κοντά στην Main Street, Boston"
+"\" ή \"Πρόσβαση WiFi κοντά στην Alexanderplatz, Berlin\"</li>"
+
+#: ../data/gnome-maps.appdata.xml.in.h:3
+msgid ""
+"Maps uses the collaborative OpenStreetMap database, made by hundreds of "
+"thousands of people across the globe."
+msgstr ""
+"Η εφαρμογή Χάρτες, χρησιμοποιεί την βάση δεδομένων OpenStreetMap, που έχει "
+"φτιαχτεί από χιλιάδες άτομα σε όλο τον κόσμο."
+
+#. Translators: This is the program name. */
+#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:54
+#: ../src/mainWindow.js:341 ../src/main-window.ui.h:3
 msgid "Maps"
 msgstr "Χάρτες"
 
@@ -76,6 +107,23 @@ msgstr "Περιγραφή της τελευταίας γνωστής θέσης
 msgid "Description of last known location of user."
 msgstr "Περιγραφή της τελευταίας γνωστής θέσης του χρήστη."
 
+#: ../data/org.gnome.maps.gschema.xml.in.h:11
+msgid "Maximum number of search results"
+msgstr "Μέγιστος αριθμός αποτελεσμάτων αναζήτησης"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:12
+msgid "Maximum number of search results from geocode search."
+msgstr ""
+"Μέχιστος αριθμός αποτελεσμάτων αναζήτησης από την αναζήτηση από το geocode."
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:13
+msgid "User set last known location"
+msgstr "Ορισμός της τελευταίας γνωστής τοποθεσίας από τον χρήστη"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:14
+msgid "Last known location was set manually by user."
+msgstr "Τελευταία γνωστή τοποθεσία ορίστηκε από τον χρήστη."
+
 #: ../src/app-menu.ui.h:1
 msgid "About"
 msgstr "Περί"
@@ -84,12 +132,57 @@ msgstr "Περί"
 msgid "Quit"
 msgstr "Έξοδος"
 
-#: ../src/mainWindow.js:173
+#: ../src/context-menu.ui.h:1
+msgid "What's here?"
+msgstr "Τι είναι εδώ;"
+
+#: ../src/context-menu.ui.h:2
+msgid "I'm here!"
+msgstr "Είμαι εδώ!"
+
+#: ../src/mainWindow.js:339
 msgid "translator-credits"
 msgstr ""
+"Ελληνική μεταφραστική ομάδα του GNOME \n"
 " Δημήτρης Σπίγγος <dmtrs32@gmail.com>\n"
-" Για περισσότερα δείτε: http://gnome.gr"
+" Ευστάθιος Ιωσηφίδης <iosifidis@opensuse.org>\n"
+"Για περισσότερα δείτε: http://gnome.gr"
 
-#: ../src/mainWindow.js:175
+#: ../src/mainWindow.js:342
 msgid "A map application for GNOME"
 msgstr "Μια εφαρμογή χάρτη για το GNOME"
+
+#: ../src/main-window.ui.h:1
+msgid "Street"
+msgstr "Οδός"
+
+#: ../src/main-window.ui.h:2
+msgid "Satellite"
+msgstr "Δορυφόρος"
+
+#. Translators: Accuracy of user location information */
+#: ../src/mapLocation.js:116
+msgid "Unknown"
+msgstr "Άγνωστο"
+
+#. Translators: Accuracy of user location information */
+#: ../src/mapLocation.js:119
+msgid "Exact"
+msgstr "Ακριβώς"
+
+#: ../src/mapLocation.js:123
+msgid " km²"
+msgstr " km²"
+
+#. Translators: Showing name of place where user currently is and
+#. accuracy of this information (which is translated
+#. separately)
+#. */
+#: ../src/userLocation.js:62
+#, javascript-format
+msgid ""
+"%s\n"
+"Position Accuracy: %s"
+msgstr ""
+"%s\n"
+"Ακρίβεια Θέσης: %s"
