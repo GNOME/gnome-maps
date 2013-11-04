@@ -60,6 +60,7 @@ const MapView = new Lang.Class({
         this.actor = this.get_view();
         this.view = this.actor;
         this.view.set_zoom_level(3);
+        this.view.goto_animation_mode = Clutter.AnimationMode.LINEAR;
         this.view.set_reactive(true);
 
         this.view.connect('notify::latitude', this._onViewMoved.bind(this));
@@ -97,8 +98,7 @@ const MapView = new Lang.Class({
     geocodeSearch: function(searchString, searchCompleteCallback) {
         let forward = Geocode.Forward.new_for_string(searchString);
         let places = [];
-        let answerCount =
-            Application.settings.get_value('max-search-results').get_int32();
+        let answerCount = Application.settings.get('max-search-results');
 
         forward.set_answer_count(answerCount);
         forward.search_async (null, (function(forward, res) {

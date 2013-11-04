@@ -1,24 +1,56 @@
-# Esperanto translation for gnome-maps
+# Esperanto translation for gnome-maps.
 # This file is distributed under the same license as the gnome-maps package.
-# Ryan Lortie <desrt@desrt.ca>, 2013.
+# Ryan LORTIE <desrt@desrt.ca>, 2013.
+# Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>, 2013.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-08-29 23:44+0200\n"
-"PO-Revision-Date: 2013-08-30 00:02+0200\n"
-"Last-Translator: Ryan Lortie <desrt@desrt.ca>\n"
+"POT-Creation-Date: 2013-09-20 10:22+0000\n"
+"PO-Revision-Date: 2013-09-21 10:19+0200\n"
+"Last-Translator: Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>\n"
 "Language-Team: Esperanto <gnome-l10n-eo@lists.launchpad.net>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 2.91.6\n"
+"X-Project-Style: gnome\n"
 
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:53
-#: ../src/mainWindow.js:331 ../src/main-window.ui.h:3
+#: ../data/gnome-maps.appdata.xml.in.h:1
+msgid ""
+"Maps gives you quick access to maps all across the world. It allows you to "
+"quickly find the place you're looking for by searching for a city or street, "
+"or locate a place to meet a friend."
+msgstr ""
+"Mapoj donas al vi rapidan aliron al mapoj de la tuta mondo. Ĝi ebligas vin "
+"rapide trovi la lokon por kiu vi serĉas (urbe aŭ strate) aŭ loki ejon por "
+"kunveni kun amikoj."
+
+#: ../data/gnome-maps.appdata.xml.in.h:2
+msgid ""
+"<li>Search for country, region, city or street.</li> <li>Search for specific "
+"types of locations, such as \"Pubs near Main Street, Boston\" or \"WiFi "
+"Access near Alexanderplatz, Berlin\"</li>"
+msgstr ""
+"<li>Serĉu por lando, regiono, urbo aŭ strato.</li> <li>Serĉu por specifaj "
+"specoj de lokoj, kiel \"Pubs near Main Street, Boston\" aŭ \"WiFi Access "
+"near Alexanderplatz, Berlin\"</li>"
+
+#: ../data/gnome-maps.appdata.xml.in.h:3
+msgid ""
+"Maps uses the collaborative OpenStreetMap database, made by hundreds of "
+"thousands of people across the globe."
+msgstr ""
+"Mapoj uzas la kunlaboran datumbazon «OpenStreetMap», farita de centoj da "
+"miloj da personoj tra la tuta mondo."
+
+#. Translators: This is the program name.
+#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:54
+#: ../src/mainWindow.js:341 ../src/main-window.ui.h:3
 msgid "Maps"
 msgstr "Mapoj"
 
@@ -67,11 +99,11 @@ msgstr ""
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:9
 msgid "Description of last known location"
-msgstr "Priskribo de laste-sciita loko"
+msgstr "Priskribo de laste sciita loko"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:10
 msgid "Description of last known location of user."
-msgstr "Priskribo de laste-sciita loko de la uzanto."
+msgstr "Priskribo de laste sciita loko de la uzanto."
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:11
 msgid "Maximum number of search results"
@@ -81,6 +113,14 @@ msgstr "Maksimuma numero da serĉa rezultoj"
 msgid "Maximum number of search results from geocode search."
 msgstr "Maksimuma numero da serĉa rezultoj de geocode-a serĉo."
 
+#: ../data/org.gnome.maps.gschema.xml.in.h:13
+msgid "User set last known location"
+msgstr "Uzanto agordis la laste sciita loko"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:14
+msgid "Last known location was set manually by user."
+msgstr "La laste sciita loko agorditis mane de uzanto."
+
 #: ../src/app-menu.ui.h:1
 msgid "About"
 msgstr "Pri"
@@ -89,11 +129,21 @@ msgstr "Pri"
 msgid "Quit"
 msgstr "Ĉesi"
 
-#: ../src/mainWindow.js:330
-msgid "translator-credits"
-msgstr "Ryan Lortie <desrt@desrt.ca>"
+#: ../src/context-menu.ui.h:1
+msgid "What's here?"
+msgstr "Kio estas ĉi tie?"
 
-#: ../src/mainWindow.js:332
+#: ../src/context-menu.ui.h:2
+msgid "I'm here!"
+msgstr "Mi estas ĉi tie!"
+
+#: ../src/mainWindow.js:339
+msgid "translator-credits"
+msgstr ""
+"Ryan LORTIE <desrt@desrt.ca>\n"
+"Kristjan SCHMIDT"
+
+#: ../src/mainWindow.js:342
 msgid "A map application for GNOME"
 msgstr "Mapa aplikaĵo por GNOME"
 
@@ -105,11 +155,25 @@ msgstr "Strato"
 msgid "Satellite"
 msgstr "Satelito"
 
-#: ../src/mapLocation.js:121
+#. Translators: Accuracy of user location information
+#: ../src/mapLocation.js:116
+msgid "Unknown"
+msgstr "Nekonate"
+
+#. Translators: Accuracy of user location information
+#: ../src/mapLocation.js:119
+msgid "Exact"
+msgstr "Ekzakte"
+
+#: ../src/mapLocation.js:123
 msgid " km²"
 msgstr " km²"
 
-#: ../src/userLocation.js:58
+#. Translators: Showing name of place where user currently is and
+#. accuracy of this information (which is translated
+#. separately)
+#.
+#: ../src/userLocation.js:62
 #, c-format
 msgid ""
 "%s\n"
