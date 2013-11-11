@@ -197,8 +197,9 @@ function _load_http_icon(icon, loadCompleteCallback) {
 let soup_session = null;
 function _get_soup_session() {
     if (soup_session === null) {
-        log ("creating soup");
+        debug("Creating soup session...");
         soup_session = new Soup.Session ();
+        debug("Created soup session");
     }
 
     return soup_session;
