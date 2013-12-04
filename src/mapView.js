@@ -50,6 +50,8 @@ const MapType = {
     TRANSIT: Champlain.MAP_SOURCE_OSM_TRANSPORT_MAP
 };
 
+const MapMinZoom = 2;
+
 const MapView = new Lang.Class({
     Name: 'MapView',
     Extends: GtkChamplain.Embed,
@@ -60,6 +62,7 @@ const MapView = new Lang.Class({
         this.actor = this.get_view();
         this.view = this.actor;
         this.view.set_zoom_level(3);
+        this.view.min_zoom_level = MapMinZoom;
         this.view.goto_animation_mode = Clutter.AnimationMode.LINEAR;
         this.view.set_reactive(true);
 
@@ -77,6 +80,13 @@ const MapView = new Lang.Class({
         this._userLocationLayer = new Champlain.MarkerLayer();
         this._userLocationLayer.set_selection_mode(Champlain.SelectionMode.SINGLE);
         this.view.add_layer(this._userLocationLayer);
+
+        // switching map type will set view min-zoom-level from map source
+        this.view.connect('notify::min-zoom-level', (function() {
+            if (this.view.min_zoom_level != MapMinZoom) {
+                this.view.min_zoom_level = MapMinZoom;
+            }
+        }).bind(this));
 
         this._factory = Champlain.MapSourceFactory.dup_default();
         this.setMapType(MapType.STREET);
