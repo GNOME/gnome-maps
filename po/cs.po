@@ -1,15 +1,15 @@
 # Czech translation for gnome-maps.
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
-# Marek Černocký <marek@manet.cz>, 2013.
+# Marek Černocký <marek@manet.cz>, 2013, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-09-05 14:38+0000\n"
-"PO-Revision-Date: 2013-09-05 19:08+0200\n"
+"POT-Creation-Date: 2013-12-18 20:54+0000\n"
+"PO-Revision-Date: 2014-01-12 11:46+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: ../data/gnome-maps.appdata.xml.in.h:1
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
-"quickly find the place you're looking for by searching for a city or street, "
+"quickly find the place you’re looking for by searching for a city or street, "
 "or locate a place to meet a friend."
 msgstr ""
 "Aplikace Mapy vám poskytuje rychlý přístup k mapám celého světa. Díky ní "
@@ -32,8 +32,8 @@ msgstr ""
 #: ../data/gnome-maps.appdata.xml.in.h:2
 msgid ""
 "<li>Search for country, region, city or street.</li> <li>Search for specific "
-"types of locations, such as \"Pubs near Main Street, Boston\" or \"WiFi "
-"Access near Alexanderplatz, Berlin\"</li>"
+"types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
+"near Alexanderplatz, Berlin”.</li>"
 msgstr ""
 "<li>Hledejte zemi, oblast, město nebo ulici.</li> <li>Hledejte konkrétní "
 "typy míst, jako „restaurace poblíž Main Street, Boston“ nebo „WiFi poblíž "
@@ -48,8 +48,8 @@ msgstr ""
 "tisíců lidů z celého světa."
 
 #. Translators: This is the program name.
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:54
-#: ../src/mainWindow.js:341 ../src/main-window.ui.h:3
+#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
+#: ../src/mainWindow.js:334 ../src/main-window.ui.h:3
 msgid "Maps"
 msgstr "Mapy"
 
@@ -74,7 +74,7 @@ msgid "Window position"
 msgstr "Poloha okna"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:4
-msgid "Window position (x and y)."
+msgid "Window position (X and Y)."
 msgstr "Poloha okna (X a Y)."
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:5
@@ -82,8 +82,8 @@ msgid "Window maximized"
 msgstr "Maximalizace okna"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:6
-msgid "Window maximized state"
-msgstr "Stav maximalizace okna."
+msgid "Window maximization state"
+msgstr "Stav maximalizace okna"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:7
 msgid "Last known location and accuracy"
@@ -118,8 +118,8 @@ msgid "User set last known location"
 msgstr "Uživatel nastavil poslední známé místo"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:14
-msgid "Last known location was set manually by user."
-msgstr "Poslední známé místo bylo ručně nastaveno uživatelem"
+msgid "Whether the last known location was set manually by the user."
+msgstr "Zda bylo poslední známé místo ručně nastaveno uživatelem."
 
 #: ../src/app-menu.ui.h:1
 msgid "About"
@@ -130,18 +130,18 @@ msgid "Quit"
 msgstr "Ukončit"
 
 #: ../src/context-menu.ui.h:1
-msgid "What's here?"
+msgid "What’s here?"
 msgstr "Co je zde?"
 
 #: ../src/context-menu.ui.h:2
-msgid "I'm here!"
+msgid "I’m here!"
 msgstr "Nacházím se zde!"
 
-#: ../src/mainWindow.js:339
+#: ../src/mainWindow.js:332
 msgid "translator-credits"
 msgstr "Marek Černocký"
 
-#: ../src/mainWindow.js:342
+#: ../src/mainWindow.js:335
 msgid "A map application for GNOME"
 msgstr "Mapová aplikace pro GNOME"
 
@@ -153,19 +153,25 @@ msgstr "Ulice"
 msgid "Satellite"
 msgstr "Satelitní"
 
-#: ../src/mapLocation.js:115
+#. Translators: Accuracy of user location information
+#: ../src/mapLocation.js:116
 msgid "Unknown"
 msgstr "neznámá"
 
-#: ../src/mapLocation.js:117
+#. Translators: Accuracy of user location information
+#: ../src/mapLocation.js:119
 msgid "Exact"
 msgstr "velmi přesná"
 
-#: ../src/mapLocation.js:121
+#: ../src/mapLocation.js:123
 msgid " km²"
 msgstr " km²"
 
-#: ../src/userLocation.js:58
+#. Translators: Showing name of place where user currently is and
+#. accuracy of this information (which is translated
+#. separately)
+#.
+#: ../src/userLocation.js:62
 #, c-format
 msgid ""
 "%s\n"
