@@ -49,7 +49,7 @@ const _PLACE_ICON_SIZE = 20;
 const SearchResults = {
     COL_ICON:         0,
     COL_DESCRIPTION:  1,
-    COL_LOCATION:     2
+    COL_PLACE:        2
 };
 
 const MainWindow = new Lang.Class({
@@ -217,9 +217,10 @@ const MainWindow = new Lang.Class({
 
     _onSearchPopupSelected: function(widget, iter) {
         let model = this._searchPopup.getModel();
-        let location = model.get_value(iter, SearchResults.COL_LOCATION);
+        let place = model.get_value(iter, SearchResults.COL_PLACE);
 
-        this.mapView.showNGotoLocation(location);
+        this.mapView.showNGotoLocation(place.location);
+
         this._searchPopup.hide();
     },
 
@@ -274,9 +275,9 @@ const MainWindow = new Lang.Class({
 
             model.set(iter,
                       [SearchResults.COL_DESCRIPTION,
-                       SearchResults.COL_LOCATION],
+                       SearchResults.COL_PLACE],
                       [description,
-                       location]);
+                       place]);
 
             if (icon !== null) {
                 Utils.load_icon(icon, _PLACE_ICON_SIZE, function(pixbuf) {
