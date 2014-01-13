@@ -35,6 +35,7 @@ const Application = imports.application;
 const MapView = imports.mapView;
 const SearchPopup = imports.searchPopup;
 const ContextMenu = imports.contextMenu;
+const PlaceStore = imports.placeStore;
 const Utils = imports.utils;
 const Config = imports.config;
 
@@ -73,6 +74,7 @@ const MainWindow = new Lang.Class({
 
         this._contextMenu = new ContextMenu.ContextMenu(this.mapView);
 
+        this._initPlaces();
         this._initSearchWidgets();
         this._initActions();
         this._initSignals();
@@ -83,6 +85,16 @@ const MainWindow = new Lang.Class({
         grid.add(this._mapOverlay);
 
         grid.show_all();
+    },
+
+    _initPlaces: function() {
+        this._placeStore = new PlaceStore.PlaceStore();
+        try {
+            this._placeStore.load();
+        } catch (e) {
+            log('Failed to parse Maps places file, ' +
+                'subsequent writes will overwrite the file!');
+        }
     },
 
     _initSearchWidgets: function() {
@@ -221,6 +233,7 @@ const MainWindow = new Lang.Class({
 
         this.mapView.showNGotoLocation(place.location);
 
+        this._placeStore.addRecent(place);
         this._searchPopup.hide();
     },
 
