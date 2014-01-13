@@ -134,6 +134,31 @@ function getUIObject(res, ids) {
     return ret;
 }
 
+function readFile(filename) {
+    let status, buffer;
+    let file = Gio.File.new_for_path(filename);
+    try {
+        [status, buffer] = file.load_contents(null);
+    } catch (e) {
+        return null;
+    }
+    if (status)
+        return buffer;
+    else
+        return null;
+}
+
+function writeFile(filename, buffer) {
+    let file = Gio.File.new_for_path(filename);
+    let status;
+    try {
+        status = file.replace_contents(buffer, null, false, 0, null)[0];
+        return status;
+    } catch (e) {
+        return false;
+    }
+}
+
 function load_icon(icon, size, loadCompleteCallback) {
     if (icon instanceof Gio.FileIcon) {
         _load_file_icon(icon, loadCompleteCallback);
