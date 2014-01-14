@@ -36,7 +36,8 @@ const _ICON_SIZE = 20;
 
 const PlaceType = {
     ANY: -1,
-    RECENT: 0
+    RECENT: 0,
+    FAVORITE: 1
 };
 
 const Columns = {
@@ -65,6 +66,19 @@ const PlaceStore = new Lang.Class({
                                GObject.TYPE_STRING,
                                GObject.TYPE_INT,
                                GObject.TYPE_DOUBLE]);
+    },
+
+    addFavorite: function(place) {
+        if (this._exists(place, PlaceType.FAVORITE))
+            return;
+
+        if (this._exists(place, PlaceType.RECENT)) {
+            this._removeIf((function(model, iter) {
+                let p = model.get_value(iter, Columns.PLACE);
+                return p.name === place.name;
+            }), true);
+        }
+        this._addPlace(place, PlaceType.FAVORITE, new Date().getTime());
     },
 
     addRecent: function(place) {
