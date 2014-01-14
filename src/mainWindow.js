@@ -111,6 +111,28 @@ const MainWindow = new Lang.Class({
                                   this._searchPopup.hide.bind(this._searchPopup));
         this._searchEntry.connect('changed',
                                   this._searchPopup.hide.bind(this._searchPopup));
+
+        // FIXME: do as much of the following from UI file as possible
+        let completion = new Gtk.EntryCompletion({ model: this._placeStore,
+                                                   popup_completion: true,
+                                                   inline_completion: false,
+                                                   minimum_key_length: 2 });
+
+        let renderer = new Gtk.CellRendererPixbuf({ xpad: 2 });
+        completion.pack_start(renderer, false);
+        completion.add_attribute(renderer, "pixbuf", PlaceStore.Columns.PLACE_ICON);
+        completion.reorder(renderer, 0);
+        completion.set_text_column(PlaceStore.Columns.NAME);
+        let textCell = completion.get_cells()[0];
+        textCell.xpad = textCell.ypad = 4;
+
+        completion.connect('match-selected', (function(completion, model, iter) {
+            let place = model.get_value(iter, PlaceStore.Columns.PLACE);
+
+            this.mapView.showNGotoLocation(place.location);
+        }).bind(this));
+
+        this._searchEntry.set_completion(completion);
     },
 
     _initActions: function() {
