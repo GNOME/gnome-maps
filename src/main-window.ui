@@ -15,6 +15,23 @@
       </item>
     </section>
   </menu>
+  <object class="GtkEntryCompletion" id="search-completion">
+    <property name="minimum_key_length">2</property>
+    <property name="text_column">2</property>
+    <child>
+      <object class="GtkCellRendererPixbuf" id="iconCellRenderer">
+        <property name="xpad">2</property>
+      </object>
+      <attributes>
+        <attribute name="pixbuf">0</attribute>
+      </attributes>
+    </child>
+    <child>
+      <object class="GtkCellRendererText" id="textCellRenderer">
+        <property name="ypad">4</property>
+      </object>
+    </child>
+  </object>
   <object class="GtkApplicationWindow" id="app-window">
     <property name="width-request">600</property>
     <property name="height-request">500</property>
@@ -33,6 +50,7 @@
             <property name="visible">True</property>
             <property name="has-focus">True</property>
             <property name="width-request">500</property>
+            <property name="completion">search-completion</property>
           </object>
         </child>
         <child>
