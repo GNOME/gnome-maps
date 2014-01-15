@@ -32,6 +32,10 @@ const Utils = imports.utils;
 const Path = imports.path;
 const _ = imports.gettext.gettext;
 
+const _MAX_DISTANCE = 19850; // half of Earth's curcumference (km)
+const _MIN_ANIMATION_DURATION = 2000; // msec
+const _MAX_ANIMATION_DURATION = 5000; // msec
+
 // A map location object with an added accuracy.
 const MapLocation = new Lang.Class({
     Name: 'MapLocation',
@@ -68,6 +72,13 @@ const MapLocation = new Lang.Class({
          */
 
         this._view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_CUBIC;
+
+        let fromLocation = new Geocode.Location({
+            latitude: this._view.get_center_latitude(),
+            longitude: this._view.get_center_longitude()
+        });
+        this._updateGoToDuration(fromLocation);
+
         Utils.once(this._view, "animation-completed", (function() {
             Utils.once(this._view, "animation-completed::go-to", (function() {
                 this.zoomToFit();
@@ -79,7 +90,7 @@ const MapLocation = new Lang.Class({
             this._view.go_to(this.latitude, this.longitude);
         }).bind(this));
 
-        this._mapView.ensureVisible([this._getCurrentLocation(), this]);
+        this._mapView.ensureVisible([fromLocation, this]);
     },
 
     show: function(layer) {
@@ -132,11 +143,22 @@ const MapLocation = new Lang.Class({
         }
     },
 
-    _getCurrentLocation: function() {
-        return new Geocode.Location({
-            latitude: this._view.get_center_latitude(),
-            longitude: this._view.get_center_longitude()
+    _updateGoToDuration: function(fromLocation) {
+        let toLocation = new Geocode.Location({
+            latitude: this.latitude,
+            longitude: this.longitude
         });
+
+        let distance = fromLocation.get_distance_from(toLocation);
+        let duration = (distance / _MAX_DISTANCE) * _MAX_ANIMATION_DURATION;
+
+        // Clamp duration
+        duration = Math.max(_MIN_ANIMATION_DURATION,
+                            Math.min(duration, _MAX_ANIMATION_DURATION));
+
+        // We divide by two because Champlain treats both go_to and
+        // ensure_visible as 'goto' journeys with its own duration.
+        this._view.goto_animation_duration = duration / 2;
     }
 });
 Utils.addSignalMethods(MapLocation.prototype);
