@@ -218,6 +218,7 @@ const MainWindow = new Lang.Class({
 
         this._configureId = Mainloop.timeout_add(_CONFIGURE_ID_TIMEOUT, (function() {
             this._saveWindowGeometry();
+            this._configureId = 0;
             return false;
         }).bind(this));
     },
