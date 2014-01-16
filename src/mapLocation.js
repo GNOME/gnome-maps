@@ -67,12 +67,15 @@ const MapLocation = new Lang.Class({
          * location.
          */
 
+        this._view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_CUBIC;
         Utils.once(this._view, "animation-completed", (function() {
             Utils.once(this._view, "animation-completed::go-to", (function() {
                 this.zoomToFit();
+                this._view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_OUT_CUBIC;
                 this.emit('gone-to');
             }).bind(this));
 
+            this._view.goto_animation_mode = Clutter.AnimationMode.EASE_OUT_CUBIC;
             this._view.go_to(this.latitude, this.longitude);
         }).bind(this));
 

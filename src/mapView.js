@@ -63,7 +63,7 @@ const MapView = new Lang.Class({
         this.view = this.actor;
         this.view.set_zoom_level(3);
         this.view.min_zoom_level = MapMinZoom;
-        this.view.goto_animation_mode = Clutter.AnimationMode.LINEAR;
+        this._view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_OUT_CUBIC;
         this.view.set_reactive(true);
 
         this.view.connect('notify::latitude', this._onViewMoved.bind(this));
