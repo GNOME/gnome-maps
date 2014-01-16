@@ -7,20 +7,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-08 21:45+0800\n"
-"PO-Revision-Date: 2013-09-07 14:15+0800\n"
+"POT-Creation-Date: 2014-01-16 19:44+0800\n"
+"PO-Revision-Date: 2014-01-16 19:45+0800\n"
 "Last-Translator: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>\n"
 "Language-Team: Chinese (Taiwan) <chinese-l10n@googlegroups.com>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: ../data/gnome-maps.appdata.xml.in.h:1
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
-"quickly find the place you're looking for by searching for a city or street, "
+"quickly find the place you’re looking for by searching for a city or street, "
 "or locate a place to meet a friend."
 msgstr ""
 "Maps 讓您可以快速存取世界上的地圖。它讓您快速的找到想找的位置，只要搜尋城市或"
@@ -29,12 +29,11 @@ msgstr ""
 #: ../data/gnome-maps.appdata.xml.in.h:2
 msgid ""
 "<li>Search for country, region, city or street.</li> <li>Search for specific "
-"types of locations, such as \"Pubs near Main Street, Boston\" or \"WiFi "
-"Access near Alexanderplatz, Berlin\"</li>"
+"types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
+"near Alexanderplatz, Berlin”.</li>"
 msgstr ""
-"<li>搜尋國家、地區、城市或街道。</li> <li>搜尋指定的位置類型，像是 \"Pubs "
-"near Main Street, Boston\" 或是 \"WiFi Access near Alexanderplatz, Berlin\"</"
-"li>"
+"<li>搜尋國家、地區、城市或街道。</li> <li>搜尋指定的位置類型，像是“Pubs near "
+"Main Street, Boston”或是“WiFi Access near Alexanderplatz, Berlin”。</li>"
 
 #: ../data/gnome-maps.appdata.xml.in.h:3
 msgid ""
@@ -43,9 +42,9 @@ msgid ""
 msgstr ""
 "Maps 使用共同協作的 OpenStreetMap 資料庫，由全球各地難以計數的人們共同製作。"
 
-#. Translators: This is the program name.
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:54
-#: ../src/mainWindow.js:341 ../src/main-window.ui.h:3
+#. Translators: This is the program name. */
+#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
+#: ../src/mainWindow.js:371 ../src/main-window.ui.h:3
 msgid "Maps"
 msgstr "地圖"
 
@@ -70,15 +69,15 @@ msgid "Window position"
 msgstr "視窗位置"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:4
-msgid "Window position (x and y)."
-msgstr "視窗位置 (x 與 y)。"
+msgid "Window position (X and Y)."
+msgstr "視窗位置 (X 與 Y)。"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:5
 msgid "Window maximized"
 msgstr "視窗已最大化"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:6
-msgid "Window maximized state"
+msgid "Window maximization state"
 msgstr "視窗為最大化狀態"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:7
@@ -112,8 +111,16 @@ msgid "User set last known location"
 msgstr "使用者設定上次知道的位置"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:14
-msgid "Last known location was set manually by user."
-msgstr "上次知道的位置是由使用者手動設定。"
+msgid "Whether the last known location was set manually by the user."
+msgstr "上次知道的位置是否由使用者手動設定。"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:15
+msgid "Number of recent places to store"
+msgstr "要儲存的最近位置數"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:16
+msgid "Number of recently visited places to store."
+msgstr "要儲存的最近參訪的位置數。"
 
 #: ../src/app-menu.ui.h:1
 msgid "About"
@@ -124,18 +131,18 @@ msgid "Quit"
 msgstr "結束"
 
 #: ../src/context-menu.ui.h:1
-msgid "What's here?"
+msgid "What’s here?"
 msgstr "這裡有什麼？"
 
 #: ../src/context-menu.ui.h:2
-msgid "I'm here!"
+msgid "I’m here!"
 msgstr "我在這裡！"
 
-#: ../src/mainWindow.js:339
+#: ../src/mainWindow.js:369
 msgid "translator-credits"
 msgstr "Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>, 2013"
 
-#: ../src/mainWindow.js:342
+#: ../src/mainWindow.js:372
 msgid "A map application for GNOME"
 msgstr "GNOME 的地圖程式"
 
@@ -147,12 +154,12 @@ msgstr "街道"
 msgid "Satellite"
 msgstr "衛星"
 
-#. Translators: Accuracy of user location information
+#. Translators: Accuracy of user location information */
 #: ../src/mapLocation.js:116
 msgid "Unknown"
 msgstr "不明"
 
-#. Translators: Accuracy of user location information
+#. Translators: Accuracy of user location information */
 #: ../src/mapLocation.js:119
 msgid "Exact"
 msgstr "準確"
@@ -164,9 +171,9 @@ msgstr " km²"
 #. Translators: Showing name of place where user currently is and
 #. accuracy of this information (which is translated
 #. separately)
-#.
+#. */
 #: ../src/userLocation.js:62
-#, c-format
+#, javascript-format
 msgid ""
 "%s\n"
 "Position Accuracy: %s"
