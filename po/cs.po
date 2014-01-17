@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-12-18 20:54+0000\n"
-"PO-Revision-Date: 2014-01-12 11:46+0100\n"
+"POT-Creation-Date: 2014-01-14 23:04+0000\n"
+"PO-Revision-Date: 2014-01-17 08:03+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -47,9 +47,9 @@ msgstr ""
 "Mapy využívají databázi OpenStreetMap, která vzniká díky spolupráci stovek "
 "tisíců lidů z celého světa."
 
-#. Translators: This is the program name.
+#. Translators: This is the program name. */
 #: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
-#: ../src/mainWindow.js:334 ../src/main-window.ui.h:3
+#: ../src/mainWindow.js:370 ../src/main-window.ui.h:3
 msgid "Maps"
 msgstr "Mapy"
 
@@ -121,6 +121,14 @@ msgstr "Uživatel nastavil poslední známé místo"
 msgid "Whether the last known location was set manually by the user."
 msgstr "Zda bylo poslední známé místo ručně nastaveno uživatelem."
 
+#: ../data/org.gnome.maps.gschema.xml.in.h:15
+msgid "Number of recent places to store"
+msgstr "Počet nedávných míst k uchování"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:16
+msgid "Number of recently visited places to store."
+msgstr "Počet nedávno navštívených míst, která se mají uchovávat."
+
 #: ../src/app-menu.ui.h:1
 msgid "About"
 msgstr "O aplikaci"
@@ -137,11 +145,11 @@ msgstr "Co je zde?"
 msgid "I’m here!"
 msgstr "Nacházím se zde!"
 
-#: ../src/mainWindow.js:332
+#: ../src/mainWindow.js:368
 msgid "translator-credits"
 msgstr "Marek Černocký"
 
-#: ../src/mainWindow.js:335
+#: ../src/mainWindow.js:371
 msgid "A map application for GNOME"
 msgstr "Mapová aplikace pro GNOME"
 
@@ -153,12 +161,12 @@ msgstr "Ulice"
 msgid "Satellite"
 msgstr "Satelitní"
 
-#. Translators: Accuracy of user location information
+#. Translators: Accuracy of user location information */
 #: ../src/mapLocation.js:116
 msgid "Unknown"
 msgstr "neznámá"
 
-#. Translators: Accuracy of user location information
+#. Translators: Accuracy of user location information */
 #: ../src/mapLocation.js:119
 msgid "Exact"
 msgstr "velmi přesná"
@@ -170,9 +178,8 @@ msgstr " km²"
 #. Translators: Showing name of place where user currently is and
 #. accuracy of this information (which is translated
 #. separately)
-#.
+#. */
 #: ../src/userLocation.js:62
-#, c-format
 msgid ""
 "%s\n"
 "Position Accuracy: %s"
