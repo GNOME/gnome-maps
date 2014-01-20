@@ -46,6 +46,7 @@ const ManagerProxy = Gio.DBusProxy.makeProxyWrapper(ManagerInterface);
 const ClientInterface = '<node> \
 <interface name="org.freedesktop.GeoClue2.Client"> \
     <property name="Location" type="o" access="read"/> \
+    <property name="DesktopId" type="s" access="readwrite"/> \
     <property name="DistanceThreshold" type="u" access="readwrite"/> \
     <method name="Start"/> \
     <method name="Stop"/> \
@@ -126,6 +127,7 @@ const Geoclue = new Lang.Class({
         this._clientProxy = new ClientProxy(Gio.DBus.system,
                                             "org.freedesktop.GeoClue2",
                                             clientPath);
+        this._clientProxy.DesktopId = "gnome-maps";
 
         if (!this.userSetLocation)
             this.findLocation();
