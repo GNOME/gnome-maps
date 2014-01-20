@@ -47,6 +47,7 @@ const ClientInterface = '<node> \
 <interface name="org.freedesktop.GeoClue2.Client"> \
     <property name="Location" type="o" access="read"/> \
     <property name="DesktopId" type="s" access="readwrite"/> \
+    <property name="RequestedAccuracyLevel" type="u" access="readwrite"/> \
     <property name="DistanceThreshold" type="u" access="readwrite"/> \
     <method name="Start"/> \
     <method name="Stop"/> \
@@ -57,6 +58,13 @@ const ClientInterface = '<node> \
 </interface> \
 </node>';
 const ClientProxy = Gio.DBusProxy.makeProxyWrapper(ClientInterface);
+
+const AccuracyLevel = {
+    COUNTRY: 1,
+    CITY: 4,
+    STREET: 6,
+    EXACT: 8,
+};
 
 const LocationInterface = '<node> \
 <interface name="org.freedesktop.GeoClue2.Location"> \
@@ -128,6 +136,7 @@ const Geoclue = new Lang.Class({
                                             "org.freedesktop.GeoClue2",
                                             clientPath);
         this._clientProxy.DesktopId = "gnome-maps";
+        this._clientProxy.RequestedAccuracyLevel = AccuracyLevel.EXACT;
 
         if (!this.userSetLocation)
             this.findLocation();
