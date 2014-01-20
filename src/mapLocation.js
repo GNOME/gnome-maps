@@ -119,7 +119,12 @@ const MapLocation = new Lang.Class({
             return _("Exact");
         default:
             let area =  Math.PI * Math.pow(this.accuracy / 1000, 2);
-            area = Math.floor(area);
+            log (this.accuracy + " => " + area);
+            if (area >= 1)
+                area = Math.floor(area);
+            else
+                area = Math.floor(area * 10) / 10;
+
             return area.toString() + _(" km²");
         }
     },
