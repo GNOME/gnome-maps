@@ -1,5 +1,6 @@
 *.orig
 *~
+*#*
 
 ABOUT-NLS
 Makefile
@@ -13,6 +14,8 @@ config.status
 configure
 install-sh
 missing
+.deps/
+*.o
 
 data/gnome-maps.appdata.xml
 data/gnome-maps.desktop
@@ -35,5 +38,7 @@ po/*.header
 
 src/config.js
 src/gnome-maps
-src/gnome-maps.gresource
+src/*.gresource
 src/path.js
+src/gnome-maps-js.[ch]
+src/gnome-maps-data.[ch]
