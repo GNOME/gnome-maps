@@ -1,14 +1,14 @@
 # Norwegian bokmål translation of gnome-maps.
 # Copyright (C) 2013 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Kjartan Maraas <kmaraas@gnome.org>, 2013.
+# Kjartan Maraas <kmaraas@gnome.org>, 2013-2014.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-maps 3.9.91\n"
+"Project-Id-Version: gnome-maps 3.11.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-28 14:54+0200\n"
-"PO-Revision-Date: 2013-09-28 14:56+0200\n"
+"POT-Creation-Date: 2014-01-21 20:26+0100\n"
+"PO-Revision-Date: 2014-01-21 20:27+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: \n"
@@ -31,7 +31,10 @@ msgid ""
 "<li>Search for country, region, city or street.</li> <li>Search for specific "
 "types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
 "near Alexanderplatz, Berlin”.</li>"
-msgstr "<li>Søk etter land, region, by eller gate.</li> <li>Søk etter spesifikke typer lokasjoner slik som «Puber nær Main Street, Boston» eller «WiFi-tilgang nær Alexanderplatz, Berlin».</li>"
+msgstr ""
+"<li>Søk etter land, region, by eller gate.</li> <li>Søk etter spesifikke "
+"typer lokasjoner slik som «Puber nær Main Street, Boston» eller «WiFi-"
+"tilgang nær Alexanderplatz, Berlin».</li>"
 
 #: ../data/gnome-maps.appdata.xml.in.h:3
 msgid ""
@@ -41,9 +44,9 @@ msgstr ""
 "Kart bruker OpenStreetMap-databasen som er laget i samarbeid med "
 "hundretusener av mennesker fra hele verden."
 
-#. Translators: This is the program name.
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:54
-#: ../src/mainWindow.js:341 ../src/main-window.ui.h:3
+#. Translators: This is the program name. */
+#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
+#: ../src/mainWindow.js:357 ../src/main-window.ui.h:3
 msgid "Maps"
 msgstr "Kart"
 
@@ -87,7 +90,9 @@ msgstr "Siste kjente lokasjon og valuta"
 msgid ""
 "Last known location (latitude and longitude in degrees) and accuracy (in "
 "meters)."
-msgstr "Siste kjente lokasjon (breddegrad og lengdegrad i grader) og nøyaktighet (i meter)."
+msgstr ""
+"Siste kjente lokasjon (breddegrad og lengdegrad i grader) og nøyaktighet (i "
+"meter)."
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:9
 msgid "Description of last known location"
@@ -113,6 +118,14 @@ msgstr "Sist kjente lokasjon satt av bruker"
 msgid "Whether the last known location was set manually by the user."
 msgstr "Hvorvidt sist kjente lokasjon ble satt manuelt av bruker."
 
+#: ../data/org.gnome.maps.gschema.xml.in.h:15
+msgid "Number of recent places to store"
+msgstr "Antall nylige steder å lagre"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:16
+msgid "Number of recently visited places to store."
+msgstr "Antall nylig besøkte steder som skal lagres."
+
 #: ../src/app-menu.ui.h:1
 msgid "About"
 msgstr "Om"
@@ -129,11 +142,11 @@ msgstr "Hva er her?"
 msgid "I’m here!"
 msgstr "Jeg er her!"
 
-#: ../src/mainWindow.js:339
+#: ../src/mainWindow.js:355
 msgid "translator-credits"
 msgstr "Kjartan Maraas <kmaraas@gnome.org>"
 
-#: ../src/mainWindow.js:342
+#: ../src/mainWindow.js:358
 msgid "A map application for GNOME"
 msgstr "Et kartprogram for GNOME"
 
@@ -145,26 +158,26 @@ msgstr "Gate"
 msgid "Satellite"
 msgstr "Satelitt"
 
-#. Translators: Accuracy of user location information
-#: ../src/mapLocation.js:116
+#. Translators: Accuracy of user location information */
+#: ../src/mapLocation.js:119
 msgid "Unknown"
 msgstr "Ukjent"
 
-#. Translators: Accuracy of user location information
-#: ../src/mapLocation.js:119
+#. Translators: Accuracy of user location information */
+#: ../src/mapLocation.js:122
 msgid "Exact"
 msgstr "Eksakt"
 
-#: ../src/mapLocation.js:123
+#: ../src/mapLocation.js:131
 msgid " km²"
 msgstr " km²"
 
 #. Translators: Showing name of place where user currently is and
 #. accuracy of this information (which is translated
 #. separately)
-#.
+#. */
 #: ../src/userLocation.js:62
-#, c-format
+#, javascript-format
 msgid ""
 "%s\n"
 "Position Accuracy: %s"
