@@ -20,30 +20,51 @@ do_subst = sed  -e 's|@abs_top_srcdir[@]|$(abs_top_srcdir)|g'		\
 include $(INTROSPECTION_MAKEFILE)
 include Makefile-js.am
 
-resource_files = $(shell $(GLIB_COMPILE_RESOURCES)			\
+data_files = $(shell $(GLIB_COMPILE_RESOURCES)				\
 		--sourcedir=$(srcdir)					\
 		--generate-dependencies $(srcdir)/gnome-maps.data.gresource.xml)
 
-gnome-maps.data.gresource: gnome-maps.data.gresource.xml $(resource_files)
+gnome-maps-data.h: gnome-maps.data.gresource.xml $(data_files)
 	$(AM_V_GEN)							\
 		$(GLIB_COMPILE_RESOURCES)				\
 		--target=$@						\
-		--sourcedir=$(srcdir) $<
+		--sourcedir=$(srcdir)					\
+		--sourcedir=$(builddir)					\
+		--generate						\
+		--c-name gnome_maps_data $<
+gnome-maps-data.c: gnome-maps.data.gresource.xml $(data_files)
+	$(AM_V_GEN)							\
+		$(GLIB_COMPILE_RESOURCES)				\
+		--target=$@						\
+		--sourcedir=$(srcdir)					\
+		--sourcedir=$(builddir)					\
+		--generate						\
+		--c-name gnome_maps_data $<
 
 EXTRA_DIST += gnome-maps.data.gresource.xml $(resource_files)
 
-resourcedir = $(pkgdatadir)
-resource_DATA = gnome-maps.data.gresource
+data_built_sources = gnome-maps-data.c gnome-maps-data.h
 
-CLEANFILES += gnome-maps.data.gresource
+BUILT_SOURCES += $(data_built_sources)
 
-bin_SCRIPTS = gnome-maps
-
-gnome-maps: gnome-maps.in
-	$(AM_V_GEN) $(do_subst) $< > $@
-	chmod +x $@
+bin_PROGRAMS = gnome-maps
 
 CLEANFILES +=								\
-	gnome-maps
-EXTRA_DIST +=								\
-	gnome-maps.in
+    gnome-maps								\
+	$(data_built_sources)
+
+gnome_maps_SOURCES = main.c						\
+	$(NULL)
+nodist_gnome_maps_SOURCES =						\
+	$(top_builddir)/src/gnome-maps-data.c				\
+	$(top_builddir)/src/gnome-maps-data.h				\
+	$(top_builddir)/src/gnome-maps-js.c				\
+	$(top_builddir)/src/gnome-maps-js.h				\
+	$(NULL)
+
+gnome_maps_CPPFLAGS =							\
+	$(GNOME_MAPS_CFLAGS)						\
+	-DLOCALEDIR=\"$(localedir)\"					\
+	-DGNOME_MAPS_PKGLIBDIR=\"$(pkglibdir)\"
+gnome_maps_LDADD =							\
+	$(GNOME_MAPS_LIBS)

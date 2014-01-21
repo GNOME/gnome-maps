@@ -5,7 +5,7 @@ AC_INIT([gnome-maps],
         [gnome-maps])
 
 AC_CONFIG_HEADERS([config/config.h])
-AC_CONFIG_SRCDIR([src/main.js])
+AC_CONFIG_SRCDIR([src/main.c])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_AUX_DIR([config])
 
@@ -21,6 +21,17 @@ AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE",[The name of the gettext domain])
 IT_PROG_INTLTOOL(0.40.0)
 PKG_PROG_PKG_CONFIG([0.22])
+
+GIO_MIN_VERSION=2.39.3
+GJS_MIN_VERSION=1.39.0
+GOBJECT_INTROSPECTION_MIN_VERSION=0.10.1
+
+PKG_CHECK_MODULES(GNOME_MAPS, [
+    gio-2.0                      >= $GIO_MIN_VERSION
+    gjs-1.0                      >= $GJS_MIN_VERSION
+    gobject-introspection-1.0    >= $GOBJECT_INTROSPECTION_MIN_VERSION
+])
+
 
 # no stupid static libraries
 AM_DISABLE_STATIC

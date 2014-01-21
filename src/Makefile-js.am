@@ -1,21 +1,3 @@
-jsdir = $(pkgdatadir)/js/
-dist_js_DATA =								\
-	application.js							\
-	main.js								\
-	mainWindow.js							\
-	mapLocation.js							\
-	mapView.js							\
-	path.js								\
-	sidebar.js							\
-	settings.js							\
-	utils.js							\
-	userLocation.js							\
-	geoclue.js							\
-	zoomControl.js							\
-	searchPopup.js							\
-	contextMenu.js							\
-	placeStore.js
-
 BUILT_SOURCES +=							\
 	path.js								\
 	config.js
@@ -25,13 +7,35 @@ path.js: Makefile path.js.in
 config.js: Makefile config.js.in
 	$(AM_V_GEN) $(do_subst) $(srcdir)/config.js.in > $@
 
-nodist_js_DATA =							\
-	path.js								\
-	config.js
+js_files = $(shell $(GLIB_COMPILE_RESOURCES)				\
+		--sourcedir=$(srcdir)					\
+		--generate-dependencies $(srcdir)/gnome-maps.js.gresource.xml)
+
+gnome-maps-js.h: gnome-maps.js.gresource.xml $(js_files) path.js config.js
+	$(AM_V_GEN)							\
+		$(GLIB_COMPILE_RESOURCES)				\
+		--target=$@						\
+		--sourcedir=$(srcdir)					\
+		--sourcedir=$(builddir)					\
+		--generate						\
+		--c-name gnome_maps_js $<
+gnome-maps-js.c: gnome-maps.js.gresource.xml $(js_files) path.js config.js
+	$(AM_V_GEN) \
+		$(GLIB_COMPILE_RESOURCES)				\
+		--target=$@						\
+		--sourcedir=$(srcdir)					\
+		--sourcedir=$(builddir)					\
+		--generate						\
+		--c-name gnome_maps_js $<
+
+js_built_sources = gnome-maps-js.c gnome-maps-js.h
+
+BUILT_SOURCES += $(js_built_sources)
 
 CLEANFILES +=								\
-	$(BUILT_SOURCES)
+	$(js_built_sources)
 
 EXTRA_DIST +=								\
+	gnome-maps.js.gresource.xml					\
 	path.js.in							\
 	config.js.in
