@@ -83,8 +83,10 @@ const PlaceStore = new Lang.Class({
     },
 
     addRecent: function(place) {
-        if (this._exists(place, PlaceType.RECENT))
+        if (this._exists(place, PlaceType.RECENT)) {
+            this._updateAddTime(place);
             return;
+        }
 
         if (this._numRecent === this.recentLimit) {
             // Since we sort by added, the oldest recent will be
@@ -195,6 +197,19 @@ const PlaceStore = new Lang.Class({
                     return true;
             }
             return false;
+        }).bind(this));
+    },
+
+    _updateAddTime: function(place) {
+        this.foreach((function(model, path, iter) {
+            let name = model.get_value(iter, Columns.NAME);
+
+            if (name === place.name) {
+                let updated = new Date().getTime();
+                model.set_value(iter, Columns.ADDED, updated);
+                this._store();
+                return;
+            }
         }).bind(this));
     }
 });

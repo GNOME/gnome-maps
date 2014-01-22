@@ -118,6 +118,7 @@ const MainWindow = new Lang.Class({
         this._searchCompletion.connect('match-selected', (function(c, m, iter) {
             let place = m.get_value(iter, PlaceStore.Columns.PLACE);
             this.mapView.showNGotoLocation(place.location);
+            this._placeStore.addRecent(place);
         }).bind(this));
 
         this._searchCompletion.set_match_func(function(completion, key, iter) {
