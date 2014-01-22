@@ -41,12 +41,12 @@ const UserLocation = new Lang.Class({
 
         this._locationMarker = new Champlain.CustomMarker();
         this._locationMarker.set_location(this.latitude, this.longitude);
-        this._locationMarker.connect('notify::size', (function() {
+        this._locationMarker.connect('notify::size', () => {
             let translate_x = -Math.floor(this._locationMarker.get_width() / 2);
             this._locationMarker.set_translation(translate_x,
                                                  -this._locationMarker.get_height(),
                                                  0);
-        }).bind(this));
+        });
         let pin_actor = Utils.CreateActorFromImageFile(Path.ICONS_DIR + "/pin.svg");
         if (!pin_actor)
             return;

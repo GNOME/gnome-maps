@@ -83,7 +83,7 @@ const Geoclue = new Lang.Class({
         if (this._locationUpdatedId > 0) {
             this._clientProxy.disconnectSignal(this._locationUpdatedId);
             this._locationUpdatedId = 0;
-            this._clientProxy.StopRemote(function(result, e) {
+            this._clientProxy.StopRemote((result, e) => {
                 if (e) {
                     log ("Failed to connect to GeoClue2 service: " + e.message);
                 }
@@ -98,7 +98,7 @@ const Geoclue = new Lang.Class({
             this._clientProxy.connectSignal("LocationUpdated",
                                             this._onLocationUpdated.bind(this));
 
-        this._clientProxy.StartRemote(function(result, e) {
+        this._clientProxy.StartRemote((result, e) => {
             if (e) {
                 log ("Failed to connect to GeoClue2 service: " + e.message);
             }

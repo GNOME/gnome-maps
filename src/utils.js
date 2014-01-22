@@ -55,7 +55,7 @@ function debug(str) {
 
 // Connect to a signal on an object and disconnect on its first emission.
 function once(obj, signal, callback) {
-    let id = obj.connect(signal, function() {
+    let id = obj.connect(signal, () => {
         obj.disconnect(id);
         callback();
     });
@@ -83,7 +83,7 @@ function clearGtkClutterActorBg(actor) {
 }
 
 function initActions(actionMap, simpleActionEntries, context) {
-    simpleActionEntries.forEach(function(entry) {
+    for (let entry of simpleActionEntries) {
         let action = new Gio.SimpleAction(entry.properties);
 
         for(let signalHandler in entry.signalHandlers) {
@@ -92,7 +92,7 @@ function initActions(actionMap, simpleActionEntries, context) {
         }
 
         actionMap.add_action(action);
-    });
+    }
 }
 
 
@@ -128,9 +128,10 @@ function getUIObject(res, ids) {
     let builder = new Gtk.Builder();
     builder.add_from_resource('/org/gnome/maps/' + res + '.ui');
     let ret = {};
-    ids.forEach(function(id) {
+    
+    for (let id of ids) {
         ret[dashedToCamelCase(id)] = builder.get_object(id);
-    });
+    }
     return ret;
 }
 
@@ -180,7 +181,7 @@ function _load_file_icon(icon, loadCompleteCallback) {
         return;
     }
 
-    icon.load_async(-1, null, function(icon, res) {
+    icon.load_async(-1, null, (icon, res) => {
         try {
             let stream = icon.load_finish(res, null)[0];
 
@@ -199,7 +200,7 @@ function _load_http_icon(icon, loadCompleteCallback) {
     let msg = Soup.form_request_new_from_hash('GET', icon.file.get_uri(), {});
     let soup_session = _get_soup_session();
 
-    soup_session.queue_message(msg, function(session, msg) {
+    soup_session.queue_message(msg, (session, msg) => {
         if (msg.status_code != Soup.KnownStatusCode.OK) {
             log("Failed to load pixbuf: " + msg.reason_phrase);
             return;

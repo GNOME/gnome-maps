@@ -65,9 +65,9 @@ const ContextMenu = new Lang.Class({
                                               longitude: this._longitude,
                                               accuracy: 0 });
 
-        this._reverseGeocode(location, (function(place) {
+        this._reverseGeocode(location, (place) => {
             this._mapView.showLocation(place.location);
-        }).bind(this));
+        });
     },
 
     _onIAmHereActivated: function() {
@@ -75,17 +75,17 @@ const ContextMenu = new Lang.Class({
                                               longitude: this._longitude,
                                               accuracy: 0,
                                               description: "" });
-        this._reverseGeocode(location, (function(place) {
+        this._reverseGeocode(location, (place) => {
             location.description = place.name;
             this._mapView.geoclue.overrideLocation(location);
-        }).bind(this));
+        });
     },
 
     _reverseGeocode: function(location, resultCallback) {
         let reverse = Geocode.Reverse.new_for_location(location);
 
         Application.application.mark_busy();
-        reverse.resolve_async (null, (function(reverse, res) {
+        reverse.resolve_async (null, (reverse, res) => {
             Application.application.unmark_busy();
             try {
                 let place = reverse.resolve_finish(res);
@@ -97,7 +97,7 @@ const ContextMenu = new Lang.Class({
                      this._longitude + ": " +
                      e.message);
             }
-        }).bind(this));
+        });
     }
 });
 Utils.addSignalMethods(ContextMenu.prototype);

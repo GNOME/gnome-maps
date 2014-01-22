@@ -34,11 +34,11 @@ const Settings = new Lang.Class({
 
     _init: function(schema) {
         this.parent({ schema: schema });
-        this.list_keys().forEach((function(key) {
+        for (let key of this.list_keys()) {
             this._keyTypes[key] = this.get_value(key)
                                       .get_type()
                                       .dup_string();
-        }).bind(this));
+        }
     },
 
     get: function(name) {

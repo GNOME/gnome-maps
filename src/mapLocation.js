@@ -68,16 +68,16 @@ const MapLocation = new Lang.Class({
          */
 
         this._view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_CUBIC;
-        Utils.once(this._view, "animation-completed", (function() {
-            Utils.once(this._view, "animation-completed::go-to", (function() {
+        Utils.once(this._view, "animation-completed", () => {
+            Utils.once(this._view, "animation-completed::go-to", () => {
                 this.zoomToFit();
                 this._view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_OUT_CUBIC;
                 this.emit('gone-to');
-            }).bind(this));
+            });
 
             this._view.goto_animation_mode = Clutter.AnimationMode.EASE_OUT_CUBIC;
             this._view.go_to(this.latitude, this.longitude);
-        }).bind(this));
+        });
 
         this._mapView.ensureVisible([this._getCurrentLocation(), this]);
     },

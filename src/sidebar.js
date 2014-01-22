@@ -75,7 +75,7 @@ const Sidebar = new Lang.Class({
                                          transition_type: Gtk.RevealerTransitionType.CROSSFADE });
         revealer.show_all();
 
-        revealButton.connect('clicked', (function() {
+        revealButton.connect('clicked', () => {
             if (revealer.reveal_child) {
                 revealer.reveal_child = false;
                 revealButton.symbolic_icon_name = prevIconName;
@@ -83,7 +83,7 @@ const Sidebar = new Lang.Class({
                 revealer.reveal_child = true;
                 revealButton.symbolic_icon_name = nextIconName;
             }
-        }).bind(this));
+        });
 
         // now create actors
         let buttonActor = new GtkClutter.Actor({ contents: revealButton,

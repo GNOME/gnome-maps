@@ -115,10 +115,10 @@ const MainWindow = new Lang.Class({
                                   this._searchPopup.hide.bind(this._searchPopup));
 
         this._searchCompletion.set_model(this._placeStore);
-        this._searchCompletion.connect('match-selected', (function(c, m, iter) {
+        this._searchCompletion.connect('match-selected', (c, m, iter) => {
             let place = m.get_value(iter, PlaceStore.Columns.PLACE);
             this.mapView.showNGotoLocation(place.location);
-        }).bind(this));
+        });
     },
 
     _initActions: function() {
@@ -202,11 +202,11 @@ const MainWindow = new Lang.Class({
             this._configureId = 0;
         }
 
-        this._configureId = Mainloop.timeout_add(_CONFIGURE_ID_TIMEOUT, (function() {
+        this._configureId = Mainloop.timeout_add(_CONFIGURE_ID_TIMEOUT, () => {
             this._saveWindowGeometry();
             this._configureId = 0;
             return false;
-        }).bind(this));
+        });
     },
 
     _onWindowStateEvent: function(widget, event) {
@@ -284,7 +284,7 @@ const MainWindow = new Lang.Class({
         // Lower case to match case insensitive
         let searchStringLower = this._searchEntry.text.toLowerCase();
 
-        places.forEach((function(place) {
+        for (let place of places) {
             let iter = model.append();
             let location = place.get_location();
             let icon = place.icon;
@@ -306,7 +306,7 @@ const MainWindow = new Lang.Class({
                     model.set(iter, [SearchResults.COL_ICON], [pixbuf]);
                 });
             }
-        }).bind(this));
+        }
         this._searchPopup.showResult();
     },
 
@@ -325,11 +325,9 @@ const MainWindow = new Lang.Class({
 
     _onGotoUserLocationActivate: function() {
         if (this.mapView.geoclue.userSetLocation) {
-            Utils.once(this.mapView.geoclue,
-                       'location-changed',
-                       (function() {
+            Utils.once(this.mapView.geoclue, 'location-changed', () => {
                 this.mapView.gotoUserLocation(true);
-            }).bind(this));
+            });
             this.mapView.geoclue.findLocation();
         } else
             this.mapView.gotoUserLocation(true);

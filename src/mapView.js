@@ -82,11 +82,11 @@ const MapView = new Lang.Class({
         this.view.add_layer(this._userLocationLayer);
 
         // switching map type will set view min-zoom-level from map source
-        this.view.connect('notify::min-zoom-level', (function() {
+        this.view.connect('notify::min-zoom-level', () => {
             if (this.view.min_zoom_level != MapMinZoom) {
                 this.view.min_zoom_level = MapMinZoom;
             }
-        }).bind(this));
+        });
 
         this._factory = Champlain.MapSourceFactory.dup_default();
         this.setMapType(MapType.STREET);
@@ -119,14 +119,14 @@ const MapView = new Lang.Class({
         });
         forward.bounded = false;
         forward.set_answer_count(answerCount);
-        forward.search_async (null, (function(forward, res) {
+        forward.search_async (null, (forward, res) => {
             try {
                 places = forward.search_finish(res);
             } catch (e) {
                 places = null;
             }
             searchCompleteCallback(places);
-        }).bind(this));
+        });
     },
 
     ensureVisible: function(locations) {
@@ -135,20 +135,20 @@ const MapView = new Lang.Class({
                                                bottom:  90,
                                                top:    -90 });
 
-        locations.forEach(function(location) {
+        for (let location of locations) {
             bbox.left   = Math.min(bbox.left,   location.longitude);
             bbox.right  = Math.max(bbox.right,  location.longitude);
             bbox.bottom = Math.min(bbox.bottom, location.latitude);
             bbox.top    = Math.max(bbox.top,    location.latitude);
-        });
+        }
         this.view.ensure_visible(bbox, true);
     },
 
     gotoUserLocation: function(animate) {
         this.emit('going-to-user-location');
-        this._userLocation.once("gone-to", (function() {
+        this._userLocation.once("gone-to", () => {
             this.emit('gone-to-user-location');
-        }).bind(this));
+        });
         this._userLocation.goTo(animate);
     },
 

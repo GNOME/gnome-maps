@@ -73,10 +73,10 @@ const PlaceStore = new Lang.Class({
             return;
 
         if (this._exists(place, PlaceType.RECENT)) {
-            this._removeIf((function(model, iter) {
+            this._removeIf((model, iter) => {
                 let p = model.get_value(iter, Columns.PLACE);
                 return p.name === place.name;
-            }), true);
+            }, true);
         }
         this._addPlace(place, PlaceType.FAVORITE, new Date().getTime());
     },
@@ -88,10 +88,10 @@ const PlaceStore = new Lang.Class({
         if (this._numRecent === this.recentLimit) {
             // Since all we do is append, the oldest recent will be
             // the first one we encounter.
-            this._removeIf((function(model, iter) {
+            this._removeIf((model, iter) => {
                 let type = model.get_value(iter, Columns.TYPE);
                 return type === PlaceType.RECENT;
-            }), true);
+            }, true);
         }
         this._addPlace(place, PlaceType.RECENT, new Date().getTime());
         this._numRecent++;
@@ -106,8 +106,7 @@ const PlaceStore = new Lang.Class({
             return;
 
         try {
-            let jsonArray = JSON.parse(buffer);
-            jsonArray.forEach((function(obj) {
+            for (let obj of JSON.parse(buffer)) {
                 let location = new Geocode.Location({
                     latitude:    obj.latitude,
                     longitude:   obj.longitude,
@@ -122,7 +121,7 @@ const PlaceStore = new Lang.Class({
                 this._addPlace(place, obj.type, obj.added);
                 if (obj.type === PlaceType.RECENT)
                     this._numRecent++;
-            }).bind(this));
+            }
         } catch (e) {
             throw new Error('failed to parse places file');
         }
@@ -133,7 +132,7 @@ const PlaceStore = new Lang.Class({
             return;
 
         let jsonArray = [];
-        this.foreach(function(model, path, iter) {
+        this.foreach((model, path, iter) => {
             let place    = model.get_value(iter, Columns.PLACE),
                 location = place.location,
                 type     = model.get_value(iter, Columns.TYPE),
@@ -172,9 +171,9 @@ const PlaceStore = new Lang.Class({
                   added]);
 
         if (place.icon !== null) {
-            Utils.load_icon(place.icon, _ICON_SIZE, (function(pixbuf) {
+            Utils.load_icon(place.icon, _ICON_SIZE, (pixbuf) => {
                 this.set(iter, [Columns.ICON], [pixbuf]);
-            }).bind(this));
+            });
         }
         this._typeTable[place.name] = type;
         this._dirty = true;
@@ -191,13 +190,13 @@ const PlaceStore = new Lang.Class({
     },
 
     _removeIf: function(evalFunc, stop) {
-        this.foreach((function(model, path, iter) {
+        this.foreach((model, path, iter) => {
             if (evalFunc(model, iter)) {
                 this.remove(iter);
                 if (stop)
                     return true;
             }
             return false;
-        }).bind(this));
+        });
     }
 });
