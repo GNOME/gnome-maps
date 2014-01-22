@@ -17,7 +17,6 @@
   </menu>
   <object class="GtkEntryCompletion" id="search-completion">
     <property name="minimum_key_length">2</property>
-    <property name="text_column">2</property>
     <child>
       <object class="GtkCellRendererPixbuf" id="iconCellRenderer">
         <property name="xpad">2</property>
@@ -30,6 +29,9 @@
       <object class="GtkCellRendererText" id="textCellRenderer">
         <property name="ypad">4</property>
       </object>
+      <attributes>
+        <attribute name="text">2</attribute>
+      </attributes>
     </child>
   </object>
   <object class="GtkApplicationWindow" id="app-window">

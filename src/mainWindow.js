@@ -119,6 +119,20 @@ const MainWindow = new Lang.Class({
             let place = m.get_value(iter, PlaceStore.Columns.PLACE);
             this.mapView.showNGotoLocation(place.location);
         }).bind(this));
+
+        this._searchCompletion.set_match_func(function(completion, key, iter) {
+            let model = completion.get_model();
+            let name = model.get_value(iter, PlaceStore.Columns.NAME);
+
+            name = GLib.utf8_normalize (name, -1, GLib.NormalizeMode.ALL);
+            if (name === null)
+                return false;
+
+            if (!GLib.ascii_strncasecmp(name, key, key.length))
+                return true;
+            else
+                return false;
+        });
     },
 
     _initActions: function() {
