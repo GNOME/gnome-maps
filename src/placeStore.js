@@ -65,6 +65,8 @@ const PlaceStore = new Lang.Class({
                                GObject.TYPE_STRING,
                                GObject.TYPE_INT,
                                GObject.TYPE_DOUBLE]);
+
+        this.set_sort_column_id(Columns.ADDED, Gtk.SortType.ASCENDING);
     },
 
     addFavorite: function(place) {
@@ -85,7 +87,7 @@ const PlaceStore = new Lang.Class({
             return;
 
         if (this._numRecent === this.recentLimit) {
-            // Since all we do is append, the oldest recent will be
+            // Since we sort by added, the oldest recent will be
             // the first one we encounter.
             this._removeIf((function(model, iter) {
                 let type = model.get_value(iter, Columns.TYPE);
