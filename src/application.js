@@ -75,7 +75,7 @@ const Application = new Lang.Class({
 
         GtkClutter.init(null);
 
-        let resource = Gio.Resource.load(Path.RESOURCE_DIR + '/gnome-maps.gresource');
+        let resource = Gio.Resource.load(Path.RESOURCE_DIR + '/gnome-maps.data.gresource');
         resource._register();
 
         Utils.loadStyleSheet(Gio.file_new_for_uri('resource:///org/gnome/maps/application.css'));
