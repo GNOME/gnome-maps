@@ -1,37 +1,37 @@
 jsdir = $(pkgdatadir)/js/
-dist_js_DATA = \
-    application.js \
-    main.js \
-    mainWindow.js \
-    mapLocation.js \
-    mapView.js \
-    path.js \
-    sidebar.js \
-    settings.js \
-    utils.js \
-    userLocation.js \
-    geoclue.js \
-    zoomControl.js \
-    searchPopup.js \
-    contextMenu.js \
-    placeStore.js
+dist_js_DATA =								\
+	application.js							\
+	main.js								\
+	mainWindow.js							\
+	mapLocation.js							\
+	mapView.js							\
+	path.js								\
+	sidebar.js							\
+	settings.js							\
+	utils.js							\
+	userLocation.js							\
+	geoclue.js							\
+	zoomControl.js							\
+	searchPopup.js							\
+	contextMenu.js							\
+	placeStore.js
 
-BUILT_SOURCES += \
-    path.js \
-    config.js
+BUILT_SOURCES +=							\
+	path.js								\
+	config.js
 
 path.js: Makefile path.js.in
 	$(AM_V_GEN) $(do_subst) $(srcdir)/path.js.in > $@
 config.js: Makefile config.js.in
 	$(AM_V_GEN) $(do_subst) $(srcdir)/config.js.in > $@
 
-nodist_js_DATA = \
-    path.js \
-    config.js
+nodist_js_DATA =							\
+	path.js								\
+	config.js
 
-CLEANFILES += \
-    $(BUILT_SOURCES)
+CLEANFILES +=								\
+	$(BUILT_SOURCES)
 
-EXTRA_DIST += \
-    path.js.in \
-    config.js.in
+EXTRA_DIST +=								\
+	path.js.in							\
+	config.js.in
