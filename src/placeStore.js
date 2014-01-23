@@ -53,7 +53,6 @@ const PlaceStore = new Lang.Class({
     Extends: Gtk.ListStore,
 
     _init: function() {
-        this._dirty = false;
         this.recentLimit = Application.settings.get('recent-places-limit');
         this._numRecent = 0;
         this.filename = GLib.build_filenamev([GLib.get_user_data_dir(),
@@ -136,9 +135,6 @@ const PlaceStore = new Lang.Class({
     },
 
     store: function() {
-        if (!this._dirty)
-            return;
-
         let jsonArray = [];
         this.foreach(function(model, path, iter) {
             let place    = model.get_value(iter, Columns.PLACE),
@@ -184,7 +180,6 @@ const PlaceStore = new Lang.Class({
             }).bind(this));
         }
         this._typeTable[place.name] = type;
-        this._dirty = true;
 
         try {
             this.store();
