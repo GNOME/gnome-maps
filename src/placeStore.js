@@ -134,7 +134,7 @@ const PlaceStore = new Lang.Class({
         }
     },
 
-    store: function() {
+    _store: function() {
         let jsonArray = [];
         this.foreach(function(model, path, iter) {
             let place    = model.get_value(iter, Columns.PLACE),
@@ -182,7 +182,7 @@ const PlaceStore = new Lang.Class({
         this._typeTable[place.name] = type;
 
         try {
-            this.store();
+            this._store();
         } catch (e) {
             Utils.debug(e);
         }
