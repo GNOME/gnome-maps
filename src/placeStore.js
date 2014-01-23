@@ -90,8 +90,14 @@ const PlaceStore = new Lang.Class({
             // the first one we encounter.
             this._removeIf((function(model, iter) {
                 let type = model.get_value(iter, Columns.TYPE);
-                return type === PlaceType.RECENT;
-            }), true);
+
+                if (type === PlaceType.RECENT) {
+                    let name = model.get_value(iter, Columns.NAME);
+                    this._typeTable[name] = null;
+                    return true;
+                }
+                return false;
+            }).bind(this), true);
         }
         this._addPlace(place, PlaceType.RECENT, new Date().getTime());
         this._numRecent++;
