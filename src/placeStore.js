@@ -158,7 +158,7 @@ const PlaceStore = new Lang.Class({
 
         let buffer = JSON.stringify(jsonArray);
         if (!Utils.writeFile(this.filename, buffer))
-            throw new Error('failed to write file');
+            log('Failed to write places file!');
     },
 
     _addPlace: function(place, type, added) {
@@ -180,12 +180,7 @@ const PlaceStore = new Lang.Class({
             }).bind(this));
         }
         this._typeTable[place.name] = type;
-
-        try {
-            this._store();
-        } catch (e) {
-            Utils.debug(e);
-        }
+        this._store();
     },
 
     _exists: function(place, type) {
