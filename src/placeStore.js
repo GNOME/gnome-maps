@@ -94,6 +94,7 @@ const PlaceStore = new Lang.Class({
                 if (type === PlaceType.RECENT) {
                     let name = model.get_value(iter, Columns.NAME);
                     this._typeTable[name] = null;
+                    this._numRecent--;
                     return true;
                 }
                 return false;
