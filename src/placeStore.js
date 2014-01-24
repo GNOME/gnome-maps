@@ -157,8 +157,6 @@ const PlaceStore = new Lang.Class({
         let buffer = JSON.stringify(jsonArray);
         if (!Utils.writeFile(this.filename, buffer))
             throw new Error('failed to write file');
-        else
-            this.dirty = false;
     },
 
     _addPlace: function(place, type, added) {
