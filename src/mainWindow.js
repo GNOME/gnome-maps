@@ -124,6 +124,9 @@ const MainWindow = new Lang.Class({
             let model = completion.get_model();
             let name = model.get_value(iter, PlaceStore.Columns.NAME);
 
+            if (name === null)
+                return false;
+
             name = GLib.utf8_normalize (name, -1, GLib.NormalizeMode.ALL);
             if (name === null)
                 return false;
