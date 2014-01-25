@@ -2,14 +2,14 @@
 # Copyright (C) 2013 THE gnome-maps'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
 # יוסף אור בוצ׳קו <yoseforb@gmail.com>, 2013.
-# Yosef Or Boczko <yoseforb@gmail.com>, 2013.
+# Yosef Or Boczko <yoseforb@gmail.com>, 2013, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps 3.9.91\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-16 22:43+0300\n"
-"PO-Revision-Date: 2013-09-16 22:56+0300\n"
+"POT-Creation-Date: 2014-01-25 23:51+0200\n"
+"PO-Revision-Date: 2014-01-25 23:53+0200\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
@@ -22,17 +22,17 @@ msgstr ""
 #: ../data/gnome-maps.appdata.xml.in.h:1
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
-"quickly find the place you're looking for by searching for a city or street, "
+"quickly find the place you’re looking for by searching for a city or street, "
 "or locate a place to meet a friend."
 msgstr ""
 "מפות נותן לך גישה מהירה למפות על פני כל העולם. הוא מאפשר לך למצוא במהירות את "
-"המקום שאתה מחפש על ידי חיפוש עיר או רחוב, או לאתר מקום לפגישת חבר."
+"המקום שאתה מחפש באמצעות חיפוש עיר או רחוב, או לאתר מקום לפגישת חבר."
 
 #: ../data/gnome-maps.appdata.xml.in.h:2
 msgid ""
 "<li>Search for country, region, city or street.</li> <li>Search for specific "
-"types of locations, such as \"Pubs near Main Street, Boston\" or \"WiFi "
-"Access near Alexanderplatz, Berlin\"</li>"
+"types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
+"near Alexanderplatz, Berlin”.</li>"
 msgstr ""
 "<li>חיפוש מדינה, אזור, עיר או רחוב.</li> <li>חיפוש סוג מסוים של מיקומים, כמו "
 "„פאבים ליד הרחוב הראשי, בוסטון” או „גישה לאינטרנט ליד כיכר אלכסנדר, ברלין”.</"
@@ -47,8 +47,8 @@ msgstr ""
 "על פני כדור הארץ."
 
 #. Translators: This is the program name. */
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:54
-#: ../src/mainWindow.js:341 ../src/main-window.ui.h:3
+#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
+#: ../src/mainWindow.js:375 ../src/main-window.ui.h:3
 msgid "Maps"
 msgstr "מפות"
 
@@ -73,16 +73,16 @@ msgid "Window position"
 msgstr "Window position"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:4
-msgid "Window position (x and y)."
-msgstr "Window position (x and y)."
+msgid "Window position (X and Y)."
+msgstr "Window position (X and Y)."
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:5
 msgid "Window maximized"
 msgstr "Window maximized"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:6
-msgid "Window maximized state"
-msgstr "Window maximized state"
+msgid "Window maximization state"
+msgstr "Window maximization state"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:7
 msgid "Last known location and accuracy"
@@ -117,8 +117,16 @@ msgid "User set last known location"
 msgstr "User set last known location"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:14
-msgid "Last known location was set manually by user."
-msgstr "Last known location was set manually by user."
+msgid "Whether the last known location was set manually by the user."
+msgstr "Whether the last known location was set manually by the user."
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:15
+msgid "Number of recent places to store"
+msgstr "Number of recent places to store"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:16
+msgid "Number of recently visited places to store."
+msgstr "Number of recently visited places to store."
 
 #: ../src/app-menu.ui.h:1
 msgid "About"
@@ -129,18 +137,18 @@ msgid "Quit"
 msgstr "יציאה"
 
 #: ../src/context-menu.ui.h:1
-msgid "What's here?"
+msgid "What’s here?"
 msgstr "מה זה כאן?"
 
 #: ../src/context-menu.ui.h:2
-msgid "I'm here!"
-msgstr "אנח כאן!"
+msgid "I’m here!"
+msgstr "אני כאן!"
 
-#: ../src/mainWindow.js:339
+#: ../src/mainWindow.js:373
 msgid "translator-credits"
-msgstr "יוסף אור בוצ׳קו <yoseforb@gmail.com>"
+msgstr "יוסף אור בוצ׳קו <yoseforb@gnome.org>"
 
-#: ../src/mainWindow.js:342
+#: ../src/mainWindow.js:376
 msgid "A map application for GNOME"
 msgstr "יישום מפות עבור GNOME"
 
@@ -153,16 +161,16 @@ msgid "Satellite"
 msgstr "לווין"
 
 #. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:116
+#: ../src/mapLocation.js:130
 msgid "Unknown"
 msgstr "לא ידוע"
 
 #. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:119
+#: ../src/mapLocation.js:133
 msgid "Exact"
 msgstr "מדויק"
 
-#: ../src/mapLocation.js:123
+#: ../src/mapLocation.js:142
 msgid " km²"
 msgstr " ק״מ²"
 
