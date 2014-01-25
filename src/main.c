@@ -38,7 +38,7 @@ main (int argc, char *argv)
 
   g_irepository_prepend_search_path (GNOME_MAPS_PKGLIBDIR);
 
-  context = gjs_context_new_with_search_path (search_path);
+  context = gjs_context_new_with_search_path ((char**) search_path);
 
   if (!gjs_context_define_string_array(context, "ARGV",
                                        argc - 1, (const char**)argv + 1,
