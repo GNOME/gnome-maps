@@ -62,6 +62,7 @@ const ClientProxy = Gio.DBusProxy.makeProxyWrapper(ClientInterface);
 const AccuracyLevel = {
     COUNTRY: 1,
     CITY: 4,
+    NEIGHBORHOOD: 5,
     STREET: 6,
     EXACT: 8,
 };
