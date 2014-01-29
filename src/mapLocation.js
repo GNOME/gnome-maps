@@ -41,6 +41,17 @@ const MapLocation = new Lang.Class({
     Name: 'MapLocation',
 
     _init: function(place, mapView) {
+        if (place.bounding_box !== null) {
+            this.bbox = new Champlain.BoundingBox({
+                top: place.bounding_box.top,
+                bottom: place.bounding_box.bottom,
+                left: place.bounding_box.left,
+                right: place.bounding_box.right
+            });
+        } else {
+            this.bbox = null;
+        }
+
         this._mapView = mapView;
         this._view = mapView.view;
         this.latitude = place.location.latitude;
@@ -91,7 +102,7 @@ const MapLocation = new Lang.Class({
             this._view.go_to(this.latitude, this.longitude);
         }).bind(this));
 
-        this._mapView.ensureVisible([fromLocation, this]);
+        this._ensureVisible(fromLocation);
     },
 
     show: function(layer) {
@@ -151,6 +162,17 @@ const MapLocation = new Lang.Class({
                 area = Math.floor(area * 10) / 10;
 
             return area.toString() + _(" km²");
+        }
+    },
+
+    _ensureVisible: function(fromLocation) {
+        if (this.bbox !== null) {
+            let visibleBox = this.bbox.copy();
+
+            visibleBox.extend(fromLocation.latitude, fromLocation.longitude);
+            this._view.ensure_visible(visibleBox, true);
+        } else {
+            this._mapView.ensureLocationsVisible([fromLocation, this]);
         }
     },
 

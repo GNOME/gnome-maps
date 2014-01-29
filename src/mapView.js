@@ -129,7 +129,7 @@ const MapView = new Lang.Class({
         }).bind(this));
     },
 
-    ensureVisible: function(locations) {
+    ensureLocationsVisible: function(locations) {
         let bbox = new Champlain.BoundingBox({ left:   180,
                                                right: -180,
                                                bottom:  90,
