@@ -128,7 +128,14 @@ const PlaceStore = new Lang.Class({
                 let place = Geocode.Place.new_with_location(obj.name,
                                                             obj.place_type,
                                                             location);
-
+                if (obj.bounding_box) {
+                    place.set_bounding_box(new Geocode.BoundingBox({
+                        top: obj.bounding_box.top,
+                        bottom: obj.bounding_box.bottom,
+                        left: obj.bounding_box.left,
+                        right: obj.bounding_box.right
+                    }));
+                }
                 this._addPlace(place, obj.type, obj.added);
                 if (obj.type === PlaceType.RECENT)
                     this._numRecent++;
@@ -146,15 +153,26 @@ const PlaceStore = new Lang.Class({
                 type     = model.get_value(iter, Columns.TYPE),
                 added    = model.get_value(iter, Columns.ADDED);
 
+            let bounding_box = null;
+            if (place.bounding_box !== null) {
+                bounding_box = {
+                    top: place.bounding_box.top,
+                    bottom: place.bounding_box.bottom,
+                    left: place.bounding_box.left,
+                    right: place.bounding_box.right
+                };
+            }
+
             jsonArray.push({
-                place_type: place.place_type,
-                name:       place.name,
-                latitude:   location.latitude,
-                longitude:  location.longitude,
-                altitude:   location.altitude,
-                accuracy:   location.accuracy,
-                type:       type,
-                added:      added
+                place_type:   place.place_type,
+                name:         place.name,
+                latitude:     location.latitude,
+                longitude:    location.longitude,
+                altitude:     location.altitude,
+                accuracy:     location.accuracy,
+                bounding_box: bounding_box,
+                type:         type,
+                added:        added
             });
         });
 
