@@ -40,13 +40,14 @@ const _MAX_ANIMATION_DURATION = 5000; // msec
 const MapLocation = new Lang.Class({
     Name: 'MapLocation',
 
-    _init: function(geocodeLocation, mapView) {
+    _init: function(place, mapView) {
         this._mapView = mapView;
         this._view = mapView.view;
-        this.latitude = geocodeLocation.latitude;
-        this.longitude = geocodeLocation.longitude;
-        this.description = geocodeLocation.description;
-        this.accuracy = geocodeLocation.accuracy;
+        this.latitude = place.location.latitude;
+        this.longitude = place.location.longitude;
+        this.description = place.location.description;
+        this.accuracy = place.location.accuracy;
+        this.type = place.place_type;
     },
 
     // Go to this location from the current location on the map, optionally

@@ -162,22 +162,26 @@ const MapView = new Lang.Class({
         if (!this.geoclue.location)
             return;
 
-        this._userLocation = new UserLocation.UserLocation(this.geoclue.location, this);
+        let place = Geocode.Place.new_with_location(this.geoclue.location.description,
+                                                    Geocode.PlaceType.UNKNOWN,
+                                                    this.geoclue.location);
+
+        this._userLocation = new UserLocation.UserLocation(place, this);
         this._userLocation.show(this._userLocationLayer);
         this.emit('user-location-changed');
     },
 
-    showLocation: function(location) {
+    showLocation: function(place) {
         this._markerLayer.remove_all();
-        let mapLocation = new MapLocation.MapLocation(location, this);
+        let mapLocation = new MapLocation.MapLocation(place, this);
 
         mapLocation.show(this._markerLayer);
 
         return mapLocation;
     },
 
-    showNGotoLocation: function(location) {
-        let mapLocation = this.showLocation(location);
+    showNGotoLocation: function(place) {
+        let mapLocation = this.showLocation(place);
         mapLocation.goTo(true);
     },
 
