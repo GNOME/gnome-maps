@@ -106,21 +106,31 @@ const MapLocation = new Lang.Class({
         this.goTo(animate);
     },
 
-    // Zoom to the maximal zoom-level that fits the accuracy circle
+    // Zoom to the maximal zoom-level that fits the place type
     zoomToFit: function() {
         let zoom;
-        if (this.accuracy === Geocode.LOCATION_ACCURACY_UNKNOWN)
-            zoom = 11; // Accuracy is usually city-level when unknown
-        else if (this.accuracy <= Geocode.LOCATION_ACCURACY_STREET)
+
+        switch (this.placeType) {
+        case Geocode.PlaceType.STREET:
             zoom = 16;
-        else if (this.accuracy <= Geocode.LOCATION_ACCURACY_CITY)
+            break;
+
+        case Geocode.PlaceType.CITY:
             zoom = 11;
-        else if (this.accuracy <= Geocode.LOCATION_ACCURACY_REGION)
+            break;
+
+        case Geocode.PlaceType.REGION:
             zoom = 10;
-        else if (this.accuracy <= Geocode.LOCATION_ACCURACY_COUNTRY)
+            break;
+
+        case Geocode.PlaceType.COUNTRY:
             zoom = 6;
-        else
-            zoom = 3;
+            break;
+
+        default:
+            zoom = 11;
+            break;
+        }
         this._view.set_zoom_level(zoom);
     },
 
