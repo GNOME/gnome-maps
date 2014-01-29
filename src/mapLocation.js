@@ -121,26 +121,38 @@ const MapLocation = new Lang.Class({
     zoomToFit: function() {
         let zoom;
 
-        switch (this.placeType) {
-        case Geocode.PlaceType.STREET:
-            zoom = 16;
-            break;
+        if (this.bbox !== null) {
+            let max = this._view.max_zoom_level;
+            let min = this._view.min_zoom_level;
+            for (let i = max; i >= min; i--) {
+                let zoom_box = this._view.get_bounding_box_for_zoom_level(i);
+                if (this._boxCovers(zoom_box)) {
+                    zoom = i;
+                    break;
+                }
+            }
+        } else {
+            switch (this.placeType) {
+            case Geocode.PlaceType.STREET:
+                zoom = 16;
+                break;
 
-        case Geocode.PlaceType.CITY:
-            zoom = 11;
-            break;
+            case Geocode.PlaceType.CITY:
+                zoom = 11;
+                break;
 
-        case Geocode.PlaceType.REGION:
-            zoom = 10;
-            break;
+            case Geocode.PlaceType.REGION:
+                zoom = 10;
+                break;
 
-        case Geocode.PlaceType.COUNTRY:
-            zoom = 6;
-            break;
+            case Geocode.PlaceType.COUNTRY:
+                zoom = 6;
+                break;
 
-        default:
-            zoom = 11;
-            break;
+            default:
+                zoom = 11;
+                break;
+            }
         }
         this._view.set_zoom_level(zoom);
     },
@@ -174,6 +186,25 @@ const MapLocation = new Lang.Class({
         } else {
             this._mapView.ensureLocationsVisible([fromLocation, this]);
         }
+    },
+
+    _boxCovers: function(coverBox) {
+        if (this.bbox === null)
+            return false;
+
+        if (coverBox.left > this.bbox.left)
+            return false;
+
+        if (coverBox.right < this.bbox.right)
+            return false;
+
+        if (coverBox.top < this.bbox.top)
+            return false;
+
+        if (coverBox.bottom > this.bbox.bottom)
+            return false;
+
+        return true;
     },
 
     _updateGoToDuration: function(fromLocation) {
