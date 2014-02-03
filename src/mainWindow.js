@@ -22,10 +22,8 @@
  */
 
 const Gdk = imports.gi.Gdk;
-const GdkPixbuf = imports.gi.GdkPixbuf;
 const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
-const GObject = imports.gi.GObject;
 const Champlain = imports.gi.Champlain;
 
 const Lang = imports.lang;
@@ -45,14 +43,6 @@ const _ = imports.gettext.gettext;
 const _CONFIGURE_ID_TIMEOUT = 100; // msecs
 const _WINDOW_MIN_WIDTH = 600;
 const _WINDOW_MIN_HEIGHT = 500;
-
-const _PLACE_ICON_SIZE = 20;
-
-const SearchResults = {
-    COL_ICON:         0,
-    COL_DESCRIPTION:  1,
-    COL_PLACE:        2
-};
 
 const MainWindow = new Lang.Class({
     Name: 'MainWindow',
@@ -99,11 +89,6 @@ const MainWindow = new Lang.Class({
     _initSearchWidgets: function() {
         this._searchPopup = new SearchPopup.SearchPopup(this._searchEntry, 10);
 
-        let model = new Gtk.ListStore();
-        model.set_column_types([GdkPixbuf.Pixbuf,
-                                GObject.TYPE_STRING,
-                                GObject.TYPE_OBJECT]);
-        this._searchPopup.setModel(model);
         this._searchPopup.connect('selected',
                                   this._onSearchPopupSelected.bind(this));
         this.mapView.view.connect('button-press-event',
@@ -251,10 +236,7 @@ const MainWindow = new Lang.Class({
         return false;
     },
 
-    _onSearchPopupSelected: function(widget, iter) {
-        let model = this._searchPopup.getModel();
-        let place = model.get_value(iter, SearchResults.COL_PLACE);
-
+    _onSearchPopupSelected: function(widget, place) {
         this.mapView.showNGotoLocation(place);
 
         this._placeStore.addRecent(place);
@@ -265,63 +247,18 @@ const MainWindow = new Lang.Class({
         let searchString = this._searchEntry.get_text();
 
         if (searchString.length > 0) {
-            let model = this._searchPopup.getModel();
-
-            model.clear();
             this._searchPopup.showSpinner();
             this.mapView.geocodeSearch(searchString,
                                        this._showSearchResults.bind(this));
         }
     },
 
-    // We want to match case insensitive but present in the correct case.
-    _boldMatch: function(description, searchStringLower) {
-        let index = description.toLowerCase().indexOf(searchStringLower);
-
-        if (index !== -1) {
-            let substring = description.substring(index,
-                                                  index + searchStringLower.length);
-
-            description = description.replace(substring, substring.bold());
-        }
-
-        return description;
-    },
-
     _showSearchResults: function(places) {
-        let model = this._searchPopup.getModel();
-
         if (places === null) {
             this._searchPopup.hide();
             return;
         }
-
-        // Lower case to match case insensitive
-        let searchStringLower = this._searchEntry.text.toLowerCase();
-
-        places.forEach((function(place) {
-            let iter = model.append();
-            let location = place.get_location();
-            let icon = place.icon;
-
-            if (location == null)
-                return;
-
-            let description = GLib.markup_escape_text(location.description, -1);
-            description = this._boldMatch(description, searchStringLower);
-
-            model.set(iter,
-                      [SearchResults.COL_DESCRIPTION,
-                       SearchResults.COL_PLACE],
-                      [description,
-                       place]);
-
-            if (icon !== null) {
-                Utils.load_icon(icon, _PLACE_ICON_SIZE, function(pixbuf) {
-                    model.set(iter, [SearchResults.COL_ICON], [pixbuf]);
-                });
-            }
-        }).bind(this));
+        this._searchPopup.updateResult(places, this._searchEntry.get_text());
         this._searchPopup.showResult();
     },
 

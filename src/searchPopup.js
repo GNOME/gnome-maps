@@ -19,14 +19,20 @@
  */
 
 const Gtk = imports.gi.Gtk;
+const GLib = imports.gi.GLib;
+const GdkPixbuf = imports.gi.GdkPixbuf;
+const GObject = imports.gi.GObject;
 
 const Lang = imports.lang;
 const Utils = imports.utils;
 
 const Columns = {
-    ICON: 0,
-    TEXT: 1
+    ICON:         0,
+    DESCRIPTION:  1,
+    PLACE:        2
 };
+
+const _PLACE_ICON_SIZE = 20;
 
 const SearchPopup = new Lang.Class({
     Name: 'SearchPopup',
@@ -45,11 +51,16 @@ const SearchPopup = new Lang.Class({
         this._spinner = ui.spinner;
         this._treeView = ui.treeview;
 
+        let model = new Gtk.ListStore();
+        model.set_column_types([GdkPixbuf.Pixbuf,
+                                GObject.TYPE_STRING,
+                                GObject.TYPE_OBJECT]);
+        this._treeView.model = model;
+
         this._treeView.connect('button-press-event',
                                this._onListButtonPress.bind(this));
         this._initList();
-
-        this.height_request = this._cellHeight * this._numVisible;
+        this.height_request = this._cellHeight * numVisible;
         this._scrolledWindow.set_min_content_height(this.height_request);
 
         this.parent({ relative_to: relativeTo,
@@ -74,7 +85,7 @@ const SearchPopup = new Lang.Class({
         cell = new Gtk.CellRendererText({ xpad: 8,
                                           ypad: 8 });
         column.pack_start(cell, true);
-        column.add_attribute(cell, 'markup', Columns.TEXT);
+        column.add_attribute(cell, 'markup', Columns.DESCRIPTION);
 
         this._cellHeight = column.cell_get_size(null)[3];
         this._cellHeight += cell.get_preferred_height(this._treeView)[0];
@@ -88,7 +99,7 @@ const SearchPopup = new Lang.Class({
         [path_valid, path] = this._treeView.get_path_at_pos(coordX, coordY,
                                                             null, null, null);
         if (path_valid) {
-            let model = this.getModel();
+            let model = this._treeView.model;
             let iter_valid, iter;
 
             if (model === null)
@@ -98,7 +109,7 @@ const SearchPopup = new Lang.Class({
             if (!iter_valid)
                 return;
 
-            this.emit('selected', iter);
+            this.emit('selected', model.get_value(iter, Columns.PLACE));
         }
     },
 
@@ -132,12 +143,47 @@ const SearchPopup = new Lang.Class({
         this.parent();
     },
 
-    setModel: function(model) {
-        this._treeView.set_model(model);
+    updateResult: function(places, searchString) {
+        let model = this._treeView.get_model();
+
+        model.clear();
+
+        places.forEach((function(place) {
+            if (!place.location)
+                return;
+
+            let iter = model.append();
+            let location = place.get_location();
+            let icon = place.icon;
+
+            let description = GLib.markup_escape_text(location.description, -1);
+            description = this._boldMatch(description, searchString);
+
+            model.set(iter,
+                      [Columns.DESCRIPTION,
+                       Columns.PLACE],
+                      [description,
+                       place]);
+
+            if (icon !== null) {
+                Utils.load_icon(icon, _PLACE_ICON_SIZE, function(pixbuf) {
+                    model.set(iter, [Columns.ICON], [pixbuf]);
+                });
+            }
+        }).bind(this));
     },
 
-    getModel: function() {
-        return this._treeView.get_model();
-    },
+    _boldMatch: function(description, searchString) {
+        searchString = searchString.toLowerCase();
+
+        let index = description.toLowerCase().indexOf(searchString);
+
+        if (index !== -1) {
+            let substring = description.substring(index,
+                                                  index + searchString.length);
+            description = description.replace(substring, substring.bold());
+        }
+        return description;
+    }
 });
 Utils.addSignalMethods(SearchPopup.prototype);
