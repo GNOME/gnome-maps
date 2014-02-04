@@ -1,3 +1,59 @@
+3.11.5 - Feb 04, 2014
+=====================
+
+Changes since 3.11.4.1:
+
+- Much smoother goto animations.
+- Avoid a redundant zoom-out at end of goto animations by making
+  use of new geocode-glib and libchamplain API.
+- Make Maps work against geoclue 2.1.x and latest gtk+.
+- If accuracy area is less than 1, show 'exact' instead of '0 km2'.
+- Explicitly specify desired accuracy level to geoclue.
+- Update website URL in AppData file.
+- Make gnome-maps executable a real binary.
+- Update recent added time on re-visits.
+- Fix a compiler warning.
+- Added/updated/fixed translations:
+  - Brazilian Portuguese
+  - Chinese simplified
+  - Czech
+  - Galician
+  - Hebrew
+  - Lithuanian
+  - Norwegian
+  - Slovenian
+  - Spanish
+  - Tajik
+  - Telugu
+  - Traditional Chinese (Hong Kong and Taiwan)
+
+Dependency-related changes:
+
+- Require gio-2.0 >= 2.39.3
+- Require gjs-1.0 >= 1.39.0
+- Require geocode-glib >= 3.11.5 (runtime-only)
+- Require libchamplain >= 0.12.6 (runtime-only)
+
+All contributors to this release:
+
+Andreas Nilsson <anilsson@redhat.com>
+Aurimas Černius <aurisc4@gmail.com>
+Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
+Colin Walters <walters@verbum.org>
+Daniel Mustieles <daniel.mustieles@gmail.com>
+Fran Diéguez <fran.dieguez@mabishu.com>
+Jonas Danielsson <jonas@threetimestwo.org>
+Kjartan Maraas <kmaraas@gnome.org>
+Marek Černocký <marek@manet.cz>
+Matej Urbančič <mateju@svn.gnome.org>
+Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+Piotr Drąg <piotrdrag@gmail.com>
+Rafael Ferreira <rafael.f.f1@gmail.com>
+Tong Hui <tonghuix@gmmail.com>
+Victor Ibragimov <victor.ibragimov@gmail.com>
+Yosef Or Boczko <yoseforb@src.gnome.org>
+Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+
 3.11.4.1 - Jan 14, 2014
 =======================
 
