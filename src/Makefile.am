@@ -41,7 +41,7 @@ gnome-maps-data.c: gnome-maps.data.gresource.xml $(data_files)
 		--generate						\
 		--c-name gnome_maps_data $<
 
-EXTRA_DIST += gnome-maps.data.gresource.xml $(resource_files)
+EXTRA_DIST += gnome-maps.data.gresource.xml $(data_files)
 
 data_built_sources = gnome-maps-data.c gnome-maps-data.h
 
