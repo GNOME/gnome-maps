@@ -178,7 +178,7 @@ const MapLocation = new Lang.Class({
     },
 
     _ensureVisible: function(fromLocation) {
-        if (this.bbox !== null) {
+        if (this.bbox !== null && this.bbox.is_valid()) {
             let visibleBox = this.bbox.copy();
 
             visibleBox.extend(fromLocation.latitude, fromLocation.longitude);
