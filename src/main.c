@@ -26,7 +26,7 @@
 #include <libintl.h>
 
 int
-main (int argc, char *argv)
+main (int argc, char *argv[])
 {
   const char *search_path[] = { "resource:///org/gnome/maps", NULL };
   GError *error = NULL;
