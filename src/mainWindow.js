@@ -62,15 +62,13 @@ const MainWindow = new Lang.Class({
                                                     'window-content',
                                                     'search-entry',
                                                     'search-completion']);
-        let grid = ui.windowContent;
         this._searchEntry = ui.searchEntry;
         this._searchCompletion = ui.searchCompletion;
         this.window = ui.appWindow;
         this.window.application = app;
 
-        this._mapOverlay = new Gtk.Overlay({ visible: true });
-        this.mapView = new MapView.MapView(this._mapOverlay);
-        this._mapOverlay.add(this.mapView);
+        this.mapView = new MapView.MapView(ui.windowContent);
+        ui.windowContent.add(this.mapView);
 
         this.mapView.gotoUserLocation(false);
 
@@ -82,9 +80,7 @@ const MainWindow = new Lang.Class({
         this._initSignals();
         this._restoreWindowGeometry();
 
-        grid.add(this._mapOverlay);
-
-        grid.show_all();
+        ui.windowContent.show_all();
     },
 
     _initPlaces: function() {
