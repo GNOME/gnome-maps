@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <object class="GtkFrame" id="frame">
+    <property name="visible">True</property>
+    <style>
+      <class name="app-notification"/>
+    </style>
+    <child>
+      <object class="GtkBox" id="box">
+        <property name="visible">True</property>
+        <property name="margin-start">10</property>
+        <property name="margin-end">10</property>
+        <property name="spacing">20</property>
+        <property name="width_request">600</property>
+        <child>
+          <object class="GtkLabel" id="notification">
+            <property name="visible">True</property>
+            <property name="hexpand">True</property>
+            <property name="halign">start</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="button">
+            <property name="visible">False</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="dismiss-button">
+            <property name="visible">True</property>
+            <property name="relief">none</property>
+            <child>
+              <object class="GtkImage" id="dismiss-image">
+                <property name="visible">True</property>
+                <property name="icon-name">window-close-symbolic</property>
+                <property name="icon-size">0</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

@@ -39,6 +39,7 @@ const PlaceStore = imports.placeStore;
 const Utils = imports.utils;
 const Config = imports.config;
 const ZoomControl = imports.zoomControl;
+const Notification = imports.notification;
 
 const _ = imports.gettext.gettext;
 
@@ -65,11 +66,12 @@ const MainWindow = new Lang.Class({
                                                     'search-completion']);
         this._searchEntry = ui.searchEntry;
         this._searchCompletion = ui.searchCompletion;
+        this._windowContent = ui.windowContent;
         this.window = ui.appWindow;
         this.window.application = app;
 
         this.mapView = new MapView.MapView();
-        ui.windowContent.add(this.mapView);
+        this._windowContent.add(this.mapView);
 
         this.mapView.gotoUserLocation(false);
 
@@ -81,10 +83,22 @@ const MainWindow = new Lang.Class({
         this._initSignals();
         this._restoreWindowGeometry();
 
-        ui.windowContent.add_overlay(this._searchPopup);
-        ui.windowContent.add_overlay(new ZoomControl.ZoomControl(this.mapView));
+        this._windowContent.add_overlay(this._searchPopup);
+        this._windowContent.add_overlay(new ZoomControl.ZoomControl(this.mapView));
 
-        ui.windowContent.show_all();
+        this._windowContent.show_all();
+    },
+
+    showNotification: function(msg, buttonLabel, callback) {
+        let notification = new Notification.Notification(msg, buttonLabel),
+            id;
+
+        if(callback) {
+            notification.connect('button-clicked', callback);
+        }
+
+        this._windowContent.add_overlay(notification);
+        notification.reveal();
     },
 
     _initPlaces: function() {
