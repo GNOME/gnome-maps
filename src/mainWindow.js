@@ -38,6 +38,7 @@ const ContextMenu = imports.contextMenu;
 const PlaceStore = imports.placeStore;
 const Utils = imports.utils;
 const Config = imports.config;
+const ZoomControl = imports.zoomControl;
 
 const _ = imports.gettext.gettext;
 
@@ -67,7 +68,7 @@ const MainWindow = new Lang.Class({
         this.window = ui.appWindow;
         this.window.application = app;
 
-        this.mapView = new MapView.MapView(ui.windowContent);
+        this.mapView = new MapView.MapView();
         ui.windowContent.add(this.mapView);
 
         this.mapView.gotoUserLocation(false);
@@ -79,6 +80,8 @@ const MainWindow = new Lang.Class({
         this._initActions();
         this._initSignals();
         this._restoreWindowGeometry();
+
+        ui.windowContent.add_overlay(new ZoomControl.ZoomControl(this.mapView));
 
         ui.windowContent.show_all();
     },
