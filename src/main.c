@@ -23,6 +23,7 @@
 
 #include <girepository.h>
 #include <gjs/gjs.h>
+#include <libintl.h>
 
 int
 main (int argc, char *argv)
