@@ -45,7 +45,7 @@ main (int argc, char *argv[])
                                        argc - 1, (const char**)argv + 1,
                                        &error))
     {
-      g_critical ("Failed to defined ARGV: %s", error->message);
+      g_critical ("Failed to define ARGV: %s", error->message);
       g_error_free (error);
 
       return 1;
@@ -59,7 +59,7 @@ main (int argc, char *argv[])
                          &status,
                          &error))
     {
-      g_critical (error->message);
+      g_critical ("Failed to run: %s", error->message);
       g_error_free (error);
 
       return status;
