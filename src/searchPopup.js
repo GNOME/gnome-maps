@@ -60,7 +60,7 @@ const SearchPopup = new Lang.Class({
                       no_show_all: true,
                       visible: true });
 
-        this.add(ui.frame);
+        this.add(this._stack);
         this.hide();
     },
 
@@ -116,7 +116,7 @@ const SearchPopup = new Lang.Class({
         if (this._spinner.active)
             this._spinner.stop();
 
-        this._stack.set_visible_child(this._treeView);
+        this._stack.set_visible_child(this._scrolledWindow);
 
         if (!this.get_visible())
             this.show();

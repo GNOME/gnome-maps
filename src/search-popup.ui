@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.10 -->
-  <object class="GtkFrame" id="frame">
+  <object class="GtkStack" id="stack">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
+    <property name="transition-type">crossfade</property>
     <style>
       <class name="search-popup" />
     </style>
@@ -12,35 +13,29 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="hscrollbar_policy">never</property>
+        <property name="shadow_type">in</property>
         <child>
-          <object class="GtkStack" id="stack">
+          <object class="GtkTreeView" id="treeview">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="transition-type">crossfade</property>
-            <child>
-              <object class="GtkTreeView" id="treeview">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="expand">True</property>
-                <property name="headers-visible">False</property>
-                <property name="hover-selection">True</property>
-                <child internal-child="selection">
-                  <object class="GtkTreeSelection" id="treeview-selection"/>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="GtkSpinner" id="spinner">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="width_request">16</property>
-                <property name="height_request">16</property>
-              </object>
+            <property name="expand">True</property>
+            <property name="headers-visible">False</property>
+            <property name="hover-selection">True</property>
+            <child internal-child="selection">
+              <object class="GtkTreeSelection" id="treeview-selection"/>
             </child>
           </object>
         </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkSpinner" id="spinner">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="halign">center</property>
+        <property name="valign">center</property>
+        <property name="width_request">16</property>
+        <property name="height_request">16</property>
       </object>
     </child>
   </object>
