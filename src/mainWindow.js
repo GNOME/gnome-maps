@@ -82,8 +82,6 @@ const MainWindow = new Lang.Class({
         this._initSignals();
         this._restoreWindowGeometry();
 
-        this._mapOverlay.add_overlay(this._searchPopup);
-
         grid.add(this._mapOverlay);
 
         grid.show_all();
@@ -100,7 +98,7 @@ const MainWindow = new Lang.Class({
     },
 
     _initSearchWidgets: function() {
-        this._searchPopup = new SearchPopup.SearchPopup(10);
+        this._searchPopup = new SearchPopup.SearchPopup(this._searchEntry, 10);
 
         let model = new Gtk.ListStore();
         model.set_column_types([GdkPixbuf.Pixbuf,

@@ -30,16 +30,15 @@ const Columns = {
 
 const SearchPopup = new Lang.Class({
     Name: 'SearchPopup',
-    Extends: Gtk.Bin,
+    Extends: Gtk.Popover,
 
-    _init: function(numVisible) {
+    _init: function(relativeTo, numVisible) {
         this._numVisible = numVisible;
 
-        let ui = Utils.getUIObject('search-popup', ['frame',
-                                                    'scrolled-window',
+        let ui = Utils.getUIObject('search-popup', ['scrolled-window',
                                                     'stack',
                                                     'spinner',
-                                                    'treeview']);
+                                                    'treeview',]);
 
         this._stack = ui.stack;
         this._scrolledWindow = ui.scrolledWindow;
@@ -53,13 +52,12 @@ const SearchPopup = new Lang.Class({
         this.height_request = this._cellHeight * this._numVisible;
         this._scrolledWindow.set_min_content_height(this.height_request);
 
-        this.parent({ width_request: 500,
-                      halign: Gtk.Align.CENTER,
-                      valign: Gtk.Align.START,
-                      margin_top: 10,
+        this.parent({ relative_to: relativeTo,
+                      width_request: 500,
                       no_show_all: true,
                       visible: true });
 
+        this.get_style_context().add_class('search-popup');
         this.add(this._stack);
         this.hide();
     },
