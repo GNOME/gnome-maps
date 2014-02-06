@@ -167,7 +167,8 @@ const MapLocation = new Lang.Class({
             return _("Exact");
         default:
             let area =  Math.PI * Math.pow(this.accuracy / 1000, 2);
-            log (this.accuracy + " => " + area);
+
+            Utils.debug(this.accuracy + " => " + area);
             if (area >= 1)
                 area = Math.floor(area);
             else
