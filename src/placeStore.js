@@ -48,6 +48,23 @@ const Columns = {
     ADDED: 4
 };
 
+function completionMatchFunc(completion, key, iter) {
+    let model = completion.get_model();
+    let name = model.get_value(iter, Columns.NAME);
+
+    if (name === null)
+        return false;
+
+    name = GLib.utf8_normalize (name, -1, GLib.NormalizeMode.ALL);
+    if (name === null)
+        return false;
+
+    if (!GLib.ascii_strncasecmp(name, key, key.length))
+        return true;
+    else
+        return false;
+}
+
 const PlaceStore = new Lang.Class({
     Name: 'PlaceStore',
     Extends: Gtk.ListStore,
