@@ -354,6 +354,12 @@ const MainWindow = new Lang.Class({
     },
 
     _onGotoUserLocationActivate: function() {
+        this.showNotification("Turn on location services to find your location",
+                              "Turn On",
+                              function() {
+                                  log("Turning on location service!");
+                              });
+        log(this._windowContent.get_children().length);
         if (this.mapView.geoclue.userSetLocation) {
             Utils.once(this.mapView.geoclue,
                        'location-changed',
@@ -373,6 +379,7 @@ const MainWindow = new Lang.Class({
     _onMapTypeActivate: function(action, value) {
         action.set_state(value);
         let [mapType, len] = value.get_string();
+        this.showNotification("Changed base layer to " + mapType);
         this.mapView.setMapType(MapView.MapType[mapType]);
     },
 
