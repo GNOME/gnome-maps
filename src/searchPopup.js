@@ -57,7 +57,7 @@ const SearchPopup = new Lang.Class({
                       no_show_all: true,
                       visible: true });
 
-        this.get_style_context().add_class('search-popup');
+        this.get_style_context().add_class('maps-popover');
         this.add(this._stack);
         this.hide();
     },
