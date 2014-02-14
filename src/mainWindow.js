@@ -89,16 +89,8 @@ const MainWindow = new Lang.Class({
         this._windowContent.show_all();
     },
 
-    showNotification: function(msg, buttonLabel, callback) {
-        let notification = new Notification.Notification(msg, buttonLabel),
-            id;
-
-        if(callback) {
-            notification.connect('button-clicked', callback);
-        }
-
-        this._windowContent.add_overlay(notification);
-        notification.reveal();
+    getOverlay: function() {
+        return this._windowContent;
     },
 
     _initPlaces: function() {
@@ -354,11 +346,7 @@ const MainWindow = new Lang.Class({
     },
 
     _onGotoUserLocationActivate: function() {
-        this.showNotification("Turn on location services to find your location",
-                              "Turn On",
-                              function() {
-                                  log("Turning on location service!");
-                              });
+        Application.notificationManager.showNotification(Notification.Type.NO_LOCATION);
         log(this._windowContent.get_children().length);
         if (this.mapView.geoclue.userSetLocation) {
             Utils.once(this.mapView.geoclue,
@@ -379,7 +367,7 @@ const MainWindow = new Lang.Class({
     _onMapTypeActivate: function(action, value) {
         action.set_state(value);
         let [mapType, len] = value.get_string();
-        this.showNotification("Changed base layer to " + mapType);
+        Application.notificationManager.showMessage("Changed base layer to " + mapType);
         this.mapView.setMapType(MapView.MapType[mapType]);
     },
 

@@ -6,22 +6,19 @@
       <class name="app-notification"/>
     </style>
     <child>
-      <object class="GtkBox" id="box">
+      <object class="GtkGrid">
         <property name="visible">True</property>
         <property name="margin-start">10</property>
         <property name="margin-end">10</property>
-        <property name="spacing">20</property>
         <property name="width_request">600</property>
+        <property name="hexpand">True</property>
+        <property name="vexpand">True</property>
         <child>
-          <object class="GtkLabel" id="notification">
+          <object class="GtkGrid" id="body">
             <property name="visible">True</property>
             <property name="hexpand">True</property>
-            <property name="halign">start</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="button">
-            <property name="visible">False</property>
+            <property name="vexpand">True</property>
+            <property name="margin-end">20</property>
           </object>
         </child>
         <child>
