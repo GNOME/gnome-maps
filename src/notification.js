@@ -60,6 +60,8 @@ const Plain = new Lang.Class({
     }
 });
 
+const Type = { };
+
 const Manager = new Lang.Class({
     Name: 'Manager',
     Extends: Gtk.Revealer,
@@ -82,6 +84,13 @@ const Manager = new Lang.Class({
         this._revealNotification(notification);
     },
 
+    // Shows a static (reusable) notification
+    showNotification: function(notificationType) {
+        let notification = this._getNotification(notificationType);
+        if(!notification.get_parent())
+            this._revealNotification(notification);
+    },
+
     _revealNotification: function(notification) {
         // only conceal the notification when it's the last one
         notification.connect('dismiss', (function() {
@@ -99,5 +108,17 @@ const Manager = new Lang.Class({
         this._stack.child_set_property(notification, 'position', 0);
         this._stack.set_visible_child(notification);
         this.set_reveal_child(true);
+    },
+
+    _getNotification: function(notificationType) {
+        if(!this._cache.hasOwnProperty(notificationType.name)) {
+            this._createNotification(notificationType);
+        }
+        return this._cache[notificationType.name];
+    },
+
+    _createNotification: function(notificationType) {
+        let notification = new notificationType.Class();
+        this._cache[notificationType.name] = notification;
     }
 });
