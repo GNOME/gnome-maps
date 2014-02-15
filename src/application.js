@@ -35,6 +35,7 @@ const GLib = imports.gi.GLib;
 const Main = imports.main;
 const Format = imports.format;
 const MainWindow = imports.mainWindow;
+const Notification = imports.notification;
 const Utils = imports.utils;
 const Path = imports.path;
 const Settings = imports.settings;
@@ -44,6 +45,7 @@ const PlaceStore = imports.placeStore;
 let application = null;
 let settings = null;
 let placeStore = null;
+let notificationManager = null;
 
 const Application = new Lang.Class({
     Name: 'Application',
@@ -105,7 +107,9 @@ const Application = new Lang.Class({
         if (this._mainWindow)
             return;
 
-        this._mainWindow = new MainWindow.MainWindow(this);
+        let overlay = new Gtk.Overlay({ visible: true });
+        notificationManager = new Notification.Manager(overlay);
+        this._mainWindow = new MainWindow.MainWindow(this, overlay);
         this._mainWindow.window.connect('destroy', this._onWindowDestroy.bind(this));
     },
 

@@ -48,10 +48,9 @@ const _WINDOW_MIN_HEIGHT = 500;
 const MainWindow = new Lang.Class({
     Name: 'MainWindow',
 
-    _init: function(app) {
+    _init: function(app, overlay) {
         this._configureId = 0;
         let ui = Utils.getUIObject('main-window', [ 'app-window',
-                                                    'window-content',
                                                     'search-entry',
                                                     'search-completion',
                                                     'layers-button']);
@@ -59,11 +58,13 @@ const MainWindow = new Lang.Class({
         this._searchCompletion = ui.searchCompletion;
         this.window = ui.appWindow;
         this.window.application = app;
-        this._windowContent = ui.windowContent;
         this._placeStore = Application.placeStore;
+        this._overlay = overlay;
+
+        ui.appWindow.add(this._overlay);
 
         this.mapView = new MapView.MapView();
-        ui.windowContent.add(this.mapView);
+        overlay.add(this.mapView);
 
         this.mapView.gotoUserLocation(false);
 
@@ -76,9 +77,8 @@ const MainWindow = new Lang.Class({
         this._initSignals();
         this._restoreWindowGeometry();
 
-        this._windowContent.add_overlay(new ZoomControl.ZoomControl(this.mapView));
-
-        this._windowContent.show_all();
+        this._overlay.add_overlay(new ZoomControl.ZoomControl(this.mapView));
+        this._overlay.show_all();
     },
 
     _initSearchWidgets: function() {
@@ -87,11 +87,11 @@ const MainWindow = new Lang.Class({
         this._searchPopup.connect('selected',
                                   this._onSearchPopupSelected.bind(this));
         this._searchPopup.connect('selected',
-                                  this._windowContent.grab_focus.bind(this._windowContent));
+                                  this._overlay.grab_focus.bind(this._overlay));
         this.mapView.view.connect('button-press-event',
                                   this._searchPopup.hide.bind(this._searchPopup));
         this.mapView.view.connect('button-press-event',
-                                  this._windowContent.grab_focus.bind(this._windowContent));
+                                  this._overlay.grab_focus.bind(this._overlay));
         this._searchEntry.connect('changed',
                                   this._searchPopup.hide.bind(this._searchPopup));
 
