@@ -65,11 +65,12 @@ const MainWindow = new Lang.Class({
                                                     'search-completion']);
         this._searchEntry = ui.searchEntry;
         this._searchCompletion = ui.searchCompletion;
+        this._windowContent = ui.windowContent;
         this.window = ui.appWindow;
         this.window.application = app;
 
         this.mapView = new MapView.MapView();
-        ui.windowContent.add(this.mapView);
+        this._windowContent.add(this.mapView);
 
         this.mapView.gotoUserLocation(false);
 
@@ -81,9 +82,13 @@ const MainWindow = new Lang.Class({
         this._initSignals();
         this._restoreWindowGeometry();
 
-        ui.windowContent.add_overlay(new ZoomControl.ZoomControl(this.mapView));
+        this._windowContent.add_overlay(new ZoomControl.ZoomControl(this.mapView));
 
-        ui.windowContent.show_all();
+        this._windowContent.show_all();
+    },
+
+    getOverlay: function() {
+        return this._windowContent;
     },
 
     _initPlaces: function() {

@@ -35,6 +35,9 @@ const GLib = imports.gi.GLib;
 const Main = imports.main;
 const Format = imports.format;
 const MainWindow = imports.mainWindow;
+const Notification = imports.notification;
+const NotificationManager = imports.notificationManager;
+
 const Utils = imports.utils;
 const Path = imports.path;
 const Settings = imports.settings;
@@ -42,6 +45,7 @@ const Settings = imports.settings;
 // used globally
 let application = null;
 let settings = null;
+let notificationManager = null;
 
 const Application = new Lang.Class({
     Name: 'Application',
@@ -98,6 +102,7 @@ const Application = new Lang.Class({
 
     vfunc_activate: function() {
         this._createWindow();
+        notificationManager = new NotificationManager.NotificationManager(this._mainWindow.getOverlay());
         this._mainWindow.window.present();
     },
 
