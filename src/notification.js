@@ -80,11 +80,14 @@ const Plain = new Lang.Class({
     }
 });
 
+const Type = { };
+
 const Manager = new Lang.Class({
     Name: 'Manager',
 
     _init: function(overlay) {
         this._overlay = overlay;
+        this._cache = {};
     },
 
     showMessage: function (msg) {
@@ -93,5 +96,29 @@ const Manager = new Lang.Class({
                              notification.destroy.bind(notification));
         this._overlay.add_overlay(notification);
         notification.reveal();
+    },
+
+    // Shows a static (reusable) notification
+    showNotification: function(notificationType) {
+        let notification = this._getNotification(notificationType);
+        if(!notification.get_parent())
+            this._overlay.add_overlay(notification);
+        notification.reveal();
+    },
+
+    _getNotification: function(notificationType) {
+        if(!this._cache.hasOwnProperty(notificationType.name)) {
+            this._createNotification(notificationType);
+        }
+        return this._cache[notificationType.name];
+    },
+
+    _createNotification: function(notificationType) {
+        let notification = new notificationType.Class();
+        notification.connect('dismissed', (function() {
+            this._overlay.remove(notification);
+        }).bind(this));
+
+        this._cache[notificationType.name] = notification;
     }
 });
