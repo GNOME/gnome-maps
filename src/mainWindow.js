@@ -81,8 +81,8 @@ const MainWindow = new Lang.Class({
         this._initSignals();
         this._restoreWindowGeometry();
 
+        ui.windowContent.add_overlay(Application.notificationManager);
         ui.windowContent.add_overlay(new ZoomControl.ZoomControl(this.mapView));
-
         ui.windowContent.show_all();
     },
 
