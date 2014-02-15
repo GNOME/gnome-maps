@@ -103,6 +103,7 @@ const Application = new Lang.Class({
     vfunc_activate: function() {
         this._createWindow();
         notificationManager = new NotificationManager.NotificationManager(this._mainWindow.getOverlay());
+        notificationManager.showNotification(Notification.Type.NO_NETWORK);
         this._mainWindow.window.present();
     },
 

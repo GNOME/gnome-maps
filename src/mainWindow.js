@@ -39,6 +39,7 @@ const PlaceStore = imports.placeStore;
 const Utils = imports.utils;
 const Config = imports.config;
 const ZoomControl = imports.zoomControl;
+const Notification = imports.notification;
 
 const _ = imports.gettext.gettext;
 
@@ -344,6 +345,8 @@ const MainWindow = new Lang.Class({
     },
 
     _onGotoUserLocationActivate: function() {
+        Application.notificationManager.showNotification(Notification.Type.NO_LOCATION);
+        log(this._windowContent.get_children().length);
         if (this.mapView.geoclue.userSetLocation) {
             Utils.once(this.mapView.geoclue,
                        'location-changed',
@@ -363,6 +366,7 @@ const MainWindow = new Lang.Class({
     _onMapTypeActivate: function(action, value) {
         action.set_state(value);
         let [mapType, len] = value.get_string();
+        Application.notificationManager.showMessage("Changed base layer to " + mapType);
         this.mapView.setMapType(MapView.MapType[mapType]);
     },
 
