@@ -57,10 +57,9 @@ const SearchResults = {
 const MainWindow = new Lang.Class({
     Name: 'MainWindow',
 
-    _init: function(app) {
+    _init: function(app, overlay) {
         this._configureId = 0;
         let ui = Utils.getUIObject('main-window', [ 'app-window',
-                                                    'window-content',
                                                     'search-entry',
                                                     'search-completion']);
         this._searchEntry = ui.searchEntry;
@@ -68,8 +67,10 @@ const MainWindow = new Lang.Class({
         this.window = ui.appWindow;
         this.window.application = app;
 
+        ui.appWindow.add(overlay);
+
         this.mapView = new MapView.MapView();
-        ui.windowContent.add(this.mapView);
+        overlay.add(this.mapView);
 
         this.mapView.gotoUserLocation(false);
 
@@ -81,9 +82,8 @@ const MainWindow = new Lang.Class({
         this._initSignals();
         this._restoreWindowGeometry();
 
-        ui.windowContent.add_overlay(new ZoomControl.ZoomControl(this.mapView));
-
-        ui.windowContent.show_all();
+        overlay.add_overlay(new ZoomControl.ZoomControl(this.mapView));
+        overlay.show_all();
     },
 
     _initPlaces: function() {
