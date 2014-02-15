@@ -60,7 +60,56 @@ const Plain = new Lang.Class({
     }
 });
 
-const Type = { };
+const WithButton = new Lang.Class({
+    Name: 'WithButton',
+    Extends: Notification,
+    Abstract: true,
+
+    _init: function(msg, buttonLabel, callback) {
+        this.parent();
+        let label = new Gtk.Label({ visible : true,
+                                    hexpand : true,
+                                    halign  : Gtk.Align.START,
+                                    label   : msg });
+        let button = new Gtk.Button({ visible : true,
+                                      label   : buttonLabel });
+        button.connect('clicked', callback);
+
+        this._ui.body.add(label);
+        this._ui.body.add(button);
+    }
+});
+
+const NoNetwork = new Lang.Class({
+    Name: 'NoNetwork',
+    Extends: WithButton,
+
+    _init: function() {
+        this.parent("Maps need a working network connection to function properly",
+                    "Turn On",
+                    (function() {
+                        log("TODO: connect to network here…");
+                    }));
+    }
+});
+
+const NoLocation = new Lang.Class({
+    Name: 'NoLocation',
+    Extends: WithButton,
+
+    _init: function() {
+        this.parent("Turn on location services to find your location",
+                    "Turn On",
+                    (function() {
+                        log("TODO: turn on location services here…");
+                    }));
+    }
+});
+
+const Type = {
+    NO_NETWORK  : { name: "NO_NETWORK",  Class: NoNetwork },
+    NO_LOCATION : { name: "NO_LOCATION", Class: NoLocation }
+};
 
 const Manager = new Lang.Class({
     Name: 'Manager',
