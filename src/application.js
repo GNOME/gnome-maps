@@ -96,6 +96,7 @@ const Application = new Lang.Class({
 
         let overlay = new Gtk.Overlay({ visible: true });
         notificationManager = new Notification.Manager(overlay);
+        notificationManager.showNotification(Notification.Type.NO_NETWORK);
         this._mainWindow = new MainWindow.MainWindow(this, overlay);
         this._mainWindow.window.connect('destroy', this._onWindowDestroy.bind(this));
     },
