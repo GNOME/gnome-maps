@@ -82,7 +82,7 @@ const MapView = new Lang.Class({
 
         // switching map type will set view min-zoom-level from map source
         this.view.connect('notify::min-zoom-level', (function() {
-            if (this.view.min_zoom_level != MapMinZoom) {
+            if (this.view.min_zoom_level < MapMinZoom) {
                 this.view.min_zoom_level = MapMinZoom;
             }
         }).bind(this));
