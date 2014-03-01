@@ -7,9 +7,24 @@
 }
 
 .maps-popover {
-	margin: 0px;
-	padding: 5px;
-	border-radius: 0px;
+    margin: 0px;
+    padding: 5px;
+    border-radius: 0px;
+}
+
+.layer-radio-button {
+    background-image: none;
+    padding: 0px;
+    border: 2px solid @insensitive_borders;
+    border-radius: 0px;
+    -GtkWidget-focus-line-width: 1;
+    -GtkWidget-focus-padding: 1;
+    -GtkButton-image-spacing: 0;
+    -GtkButton-interior-focus: true;
+}
+
+.layer-radio-button:active {
+    border: 2px solid @suggested_action_button_a;
 }
 
 .zoom-control {

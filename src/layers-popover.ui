@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <!-- interface-requires gtk+ 3.10 -->
+  <object class="GtkGrid" id="grid">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkRadioButton" id="street-layer-button">
+        <property name="visible">True</property>
+        <property name="can-focus">True</property>
+        <property name="margin">2</property>
+        <property name="action-name">win.map-type</property>
+        <property name="action-target">"STREET"</property>
+        <property name="draw-indicator">False</property>
+        <style>
+          <class name="layer-radio-button"/>
+        </style>
+        <child>
+          <object class="GtkImage" id="street-layer-image">
+            <property name="visible">True</property>
+            <property name="pixbuf">maptype-street.png</property>
+          </object>
+        </child>
+      </object>
+      <packing>
+        <property name="left-attach">0</property>
+        <property name="top-attach">0</property>
+        <property name="width">3</property>
+        <property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkRadioButton" id="aerial-layer-button">
+        <property name="visible">True</property>
+        <property name="can-focus">True</property>
+        <property name="margin">2</property>
+        <property name="action-name">win.map-type</property>
+        <property name="action-target">"AERIAL"</property>
+        <property name="draw-indicator">False</property>
+        <style>
+          <class name="layer-radio-button"/>
+        </style>
+        <child>
+          <object class="GtkImage" id="aerial-layer-image">
+            <property name="visible">True</property>
+            <property name="pixbuf">maptype-aerial.png</property>
+          </object>
+        </child>
+      </object>
+      <packing>
+        <property name="left-attach">0</property>
+        <property name="top-attach">1</property>
+        <property name="width">3</property>
+        <property name="height">1</property>
+      </packing>
+    </child>
+  </object>
+</interface>

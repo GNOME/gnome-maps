@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.0 -->
-  <menu id="map-type-menu">
-    <section>
-      <item>
-        <attribute name="label" translatable="yes">Street</attribute>
-        <attribute name="action">win.map-type</attribute>
-        <attribute name="target">STREET</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="yes">Satellite</attribute>
-        <attribute name="action">win.map-type</attribute>
-        <attribute name="target">AERIAL</attribute>
-      </item>
-    </section>
-  </menu>
   <object class="GtkEntryCompletion" id="search-completion">
     <property name="minimum_key_length">2</property>
     <child>
@@ -77,26 +63,21 @@
           </packing>
         </child>
         <child>
-          <object class="GtkMenuButton" id="layer-menu-button">
+          <object class="GtkMenuButton" id="layers-button">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="valign">center</property>
-            <property name="menu-model">map-type-menu</property>
-            <property name="action-name">win.map-type-menu</property>
             <style>
               <class name="image-button"/>
             </style>
             <child>
-              <object class="GtkImage" id="layer-menu-button-image">
+              <object class="GtkImage" id="layers-button-image">
                 <property name="visible">True</property>
                 <property name="icon-size">1</property>
-                <property name="icon-name">emblem-system-symbolic</property>
+                <property name="pixbuf">layers-button.svg</property>
               </object>
             </child>
           </object>
-          <packing>
-            <property name="pack-type">end</property>
-          </packing>
         </child>
       </object>
     </child>

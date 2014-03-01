@@ -31,6 +31,7 @@ const Mainloop = imports.mainloop;
 
 const Application = imports.application;
 const MapView = imports.mapView;
+const LayersPopover = imports.layersPopover;
 const SearchPopup = imports.searchPopup;
 const ContextMenu = imports.contextMenu;
 const PlaceStore = imports.placeStore;
@@ -52,7 +53,8 @@ const MainWindow = new Lang.Class({
         let ui = Utils.getUIObject('main-window', [ 'app-window',
                                                     'window-content',
                                                     'search-entry',
-                                                    'search-completion']);
+                                                    'search-completion',
+                                                    'layers-button']);
         this._searchEntry = ui.searchEntry;
         this._searchCompletion = ui.searchCompletion;
         this.window = ui.appWindow;
@@ -65,6 +67,8 @@ const MainWindow = new Lang.Class({
         this.mapView.gotoUserLocation(false);
 
         this._contextMenu = new ContextMenu.ContextMenu(this.mapView);
+
+        ui.layersButton.popover = new LayersPopover.LayersPopover();
 
         this._initPlaces();
         this._initSearchWidgets();
