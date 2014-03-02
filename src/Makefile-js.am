@@ -3,9 +3,9 @@ BUILT_SOURCES +=							\
 	config.js
 
 path.js: Makefile path.js.in
-	$(AM_V_GEN) $(do_subst) $(srcdir)/path.js.in > $@
+	$(AM_V_GEN) $(do_subst) $(srcdir)/path.js.in > $(builddir)/path.js
 config.js: Makefile config.js.in
-	$(AM_V_GEN) $(do_subst) $(srcdir)/config.js.in > $@
+	$(AM_V_GEN) $(do_subst) $(srcdir)/config.js.in > $(builddir)/config.js
 
 js_files = $(shell $(GLIB_COMPILE_RESOURCES)				\
 		--sourcedir=$(srcdir)					\
@@ -33,7 +33,7 @@ js_built_sources = gnome-maps-js.c gnome-maps-js.h
 BUILT_SOURCES += $(js_built_sources)
 
 CLEANFILES +=								\
-	$(js_built_sources)
+	$(BUILT_SOURCES)
 
 EXTRA_DIST +=								\
 	gnome-maps.js.gresource.xml					\
