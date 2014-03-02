@@ -366,7 +366,8 @@ const MainWindow = new Lang.Class({
             artists: [ 'Jakub Steiner <jimmac@gmail.com>',
                        'Andreas Nilsson <nisses.mail@home.se>' ],
             authors: [ 'Zeeshan Ali (Khattak) <zeeshanak@gnome.org>',
-                       'Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>' ],
+                       'Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>',
+                       'Jonas Danielsson <jonas@threetimestwo.org>'],
             translator_credits: _("translator-credits"),
             /* Translators: This is the program name. */
             program_name: _("Maps"),
@@ -377,7 +378,7 @@ const MainWindow = new Lang.Class({
             license_type: Gtk.License.GPL_2_0,
             logo_icon_name: 'gnome-maps',
             version: Config.PACKAGE_VERSION,
-            website: 'http://live.gnome.org/Maps',
+            website: 'https://live.gnome.org/Apps/Maps',
             wrap_license: true,
 
             modal: true,
