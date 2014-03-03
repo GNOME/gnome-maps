@@ -9,47 +9,47 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-09-16 15:33+0000\n"
-"PO-Revision-Date: 2013-09-16 18:28+0100\n"
-"Last-Translator: Josep Sanchez Mesegue <papapep@gmx.com>\n"
+"POT-Creation-Date: 2014-03-01 07:53+0000\n"
+"PO-Revision-Date: 2014-03-01 08:57+0100\n"
+"Last-Translator: Pau Iranzo <paugnu@gmail.com>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bits\n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: ../data/gnome-maps.appdata.xml.in.h:1
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
-"quickly find the place you're looking for by searching for a city or street, "
+"quickly find the place you’re looking for by searching for a city or street, "
 "or locate a place to meet a friend."
 msgstr ""
 "El Mapes us dóna un accés ràpid a mapes d'arreu del món. Us permet trobar "
-"ràpidament el lloc que esteu cercant tant si és una ciutat com un carrer, "
-"o ubicar un lloc per trobar-vos amb una amistat."
+"ràpidament el lloc que esteu cercant tant si és una ciutat com un carrer, o "
+"ubicar un lloc per trobar-vos amb una amistat."
 
 #: ../data/gnome-maps.appdata.xml.in.h:2
 msgid ""
 "<li>Search for country, region, city or street.</li> <li>Search for specific "
-"types of locations, such as \"Pubs near Main Street, Boston\" or \"WiFi "
-"Access near Alexanderplatz, Berlin\"</li>"
+"types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
+"near Alexanderplatz, Berlin”.</li>"
 msgstr ""
 "<li>Cerqueu per país, regió, ciutat o carrer.</li> <li>Cerqueu per tipus "
-"concrets d'ubicacions, com «Bars a prop de la plaça Catalunya, Barcelona» "
-"o «accés Wi-Fi a prop d'Alexanderplatz, Berlín»</li>"
+"concrets d'ubicacions, com «Bars a prop de la plaça Catalunya, Barcelona» o "
+"«accés Wi-Fi a prop d'Alexanderplatz, Berlín».</li>"
 
 #: ../data/gnome-maps.appdata.xml.in.h:3
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
 msgstr ""
-"El Mapes empra la base de dades col·laborativa de l'OpenStreetMap, creat "
-"per centenars de milers de persones d'arreu del món."
+"El Mapes empra la base de dades col·laborativa de l'OpenStreetMap, creat per "
+"centenars de milers de persones d'arreu del món."
 
-#. Translators: This is the program name.
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:54
-#: ../src/mainWindow.js:341 ../src/main-window.ui.h:3
+#. Translators: This is the program name. */
+#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
+#: ../src/mainWindow.js:372 ../src/main-window.ui.h:3
 msgid "Maps"
 msgstr "Mapes"
 
@@ -74,7 +74,7 @@ msgid "Window position"
 msgstr "Posició de la finestra"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:4
-msgid "Window position (x and y)."
+msgid "Window position (X and Y)."
 msgstr "Posició de la finestra (x i y)."
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:5
@@ -82,7 +82,7 @@ msgid "Window maximized"
 msgstr "Finestra maximitzada"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:6
-msgid "Window maximized state"
+msgid "Window maximization state"
 msgstr "Estat de la finestra maximitzada"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:7
@@ -94,8 +94,8 @@ msgid ""
 "Last known location (latitude and longitude in degrees) and accuracy (in "
 "meters)."
 msgstr ""
-"L'última ubicació coneguda (latitud i longitud en graus) i la precisió "
-"(en metres)."
+"L'última ubicació coneguda (latitud i longitud en graus) i la precisió (en "
+"metres)."
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:9
 msgid "Description of last known location"
@@ -118,9 +118,16 @@ msgid "User set last known location"
 msgstr "Última ubicació coneguda definida per l'usuari"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:14
-msgid "Last known location was set manually by user."
-msgstr ""
-"L'última ubicació coneguda l'ha definit manualment l'usuari."
+msgid "Whether the last known location was set manually by the user."
+msgstr "Si l'última ubicació coneguda l'ha definit manualment l'usuari."
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:15
+msgid "Number of recent places to store"
+msgstr "Nombre de llocs recents que s'ha d'emmagatzemar"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:16
+msgid "Number of recently visited places to store."
+msgstr "Nombre de llocs visitats recentment que s'ha d'emmagatzemar."
 
 #: ../src/app-menu.ui.h:1
 msgid "About"
@@ -131,20 +138,20 @@ msgid "Quit"
 msgstr "Surt"
 
 #: ../src/context-menu.ui.h:1
-msgid "What's here?"
+msgid "What’s here?"
 msgstr "Què hi ha aquí?"
 
 #: ../src/context-menu.ui.h:2
-msgid "I'm here!"
+msgid "I’m here!"
 msgstr "Sóc aquí!"
 
-#: ../src/mainWindow.js:339
+#: ../src/mainWindow.js:370
 msgid "translator-credits"
 msgstr ""
 "Gil Forcada <gilforcada@guifi.net>\n"
 "Josep Sanchez Mesegue <papapep@gmx.com>"
 
-#: ../src/mainWindow.js:342
+#: ../src/mainWindow.js:373
 msgid "A map application for GNOME"
 msgstr "Una aplicació de mapes pel GNOME"
 
@@ -156,26 +163,26 @@ msgstr "Carrer"
 msgid "Satellite"
 msgstr "Satèl·lit"
 
-#. Translators: Accuracy of user location information
-#: ../src/mapLocation.js:116
+#. Translators: Accuracy of user location information */
+#: ../src/mapLocation.js:164
 msgid "Unknown"
 msgstr "Desconeguda"
 
-#. Translators: Accuracy of user location information
-#: ../src/mapLocation.js:119
+#. Translators: Accuracy of user location information */
+#: ../src/mapLocation.js:167
 msgid "Exact"
 msgstr "Exacte"
 
-#: ../src/mapLocation.js:123
+#: ../src/mapLocation.js:177
 msgid " km²"
 msgstr " km²"
 
 #. Translators: Showing name of place where user currently is and
 #. accuracy of this information (which is translated
 #. separately)
-#.
+#. */
 #: ../src/userLocation.js:62
-#, c-format
+#, javascript-format
 msgid ""
 "%s\n"
 "Position Accuracy: %s"
