@@ -62,6 +62,7 @@ const UserLocation = new Lang.Class({
         let text = _("%s\nPosition Accuracy: %s")
                 .format (this.description, this.getAccuracyDescription());
         let textActor = new Clutter.Text({ text: text });
+        textActor.set_use_markup(true);
         textActor.set_margin_left(6);
         textActor.set_margin_right(6);
         textActor.set_color(new Clutter.Color({ red: 255,

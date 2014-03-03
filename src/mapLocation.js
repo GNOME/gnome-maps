@@ -174,7 +174,7 @@ const MapLocation = new Lang.Class({
             else
                 area = Math.floor(area * 10) / 10;
 
-            return area.toString() + _(" km²");
+            return area.toString() + _(" km<sup>2</sup>");
         }
     },
 
