@@ -57,6 +57,7 @@ const MainWindow = new Lang.Class({
         this._searchCompletion = ui.searchCompletion;
         this.window = ui.appWindow;
         this.window.application = app;
+        this._windowContent = ui.windowContent;
 
         this.mapView = new MapView.MapView();
         ui.windowContent.add(this.mapView);
@@ -71,9 +72,9 @@ const MainWindow = new Lang.Class({
         this._initSignals();
         this._restoreWindowGeometry();
 
-        ui.windowContent.add_overlay(new ZoomControl.ZoomControl(this.mapView));
+        this._windowContent.add_overlay(new ZoomControl.ZoomControl(this.mapView));
 
-        ui.windowContent.show_all();
+        this._windowContent.show_all();
     },
 
     _initPlaces: function() {
@@ -91,8 +92,12 @@ const MainWindow = new Lang.Class({
 
         this._searchPopup.connect('selected',
                                   this._onSearchPopupSelected.bind(this));
+        this._searchPopup.connect('selected',
+                                  this._windowContent.grab_focus.bind(this._windowContent));
         this.mapView.view.connect('button-press-event',
                                   this._searchPopup.hide.bind(this._searchPopup));
+        this.mapView.view.connect('button-press-event',
+                                  this._windowContent.grab_focus.bind(this._windowContent));
         this._searchEntry.connect('changed',
                                   this._searchPopup.hide.bind(this._searchPopup));
 
