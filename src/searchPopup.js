@@ -57,8 +57,8 @@ const SearchPopup = new Lang.Class({
                                 GObject.TYPE_OBJECT]);
         this._treeView.model = model;
 
-        this._treeView.connect('button-press-event',
-                               this._onListButtonPress.bind(this));
+        this._treeView.connect('row-activated',
+                               this._onRowActivated.bind(this));
         this._initList();
         this.height_request = this._cellHeight * numVisible;
         this._scrolledWindow.set_min_content_height(this.height_request);
@@ -91,26 +91,18 @@ const SearchPopup = new Lang.Class({
         this._cellHeight += cell.get_preferred_height(this._treeView)[0];
     },
 
-    _onListButtonPress: function(widget, event) {
-        let path_valid, path;
-        let bool, coordX, coordY;
+    _onRowActivated: function(widget, path, column) {
+        let model = this._treeView.model;
+        let iter_valid, iter;
 
-        [bool, coordX, coordY] = event.get_coords();
-        [path_valid, path] = this._treeView.get_path_at_pos(coordX, coordY,
-                                                            null, null, null);
-        if (path_valid) {
-            let model = this._treeView.model;
-            let iter_valid, iter;
+        if (model === null)
+            return;
 
-            if (model === null)
-                return;
+        [iter_valid, iter] = model.get_iter(path);
+        if (!iter_valid)
+            return;
 
-            [iter_valid, iter] = model.get_iter(path);
-            if (!iter_valid)
-                return;
-
-            this.emit('selected', model.get_value(iter, Columns.PLACE));
-        }
+        this.emit('selected', model.get_value(iter, Columns.PLACE));
     },
 
     showSpinner: function() {
@@ -129,6 +121,8 @@ const SearchPopup = new Lang.Class({
 
         if (!this.get_visible())
             this.show();
+
+        this._treeView.grab_focus();
     },
 
     vfunc_show: function() {
