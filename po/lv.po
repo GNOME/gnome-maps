@@ -1,14 +1,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>, 2013.
+# Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>, 2013, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-09-11 10:56+0000\n"
-"PO-Revision-Date: 2013-09-12 20:23+0300\n"
+"POT-Creation-Date: 2014-03-04 00:08+0000\n"
+"PO-Revision-Date: 2014-03-07 16:30+0200\n"
 "Last-Translator: Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>\n"
 "Language-Team: Latvian <lata-l10n@googlegroups.com>\n"
 "Language: lv\n"
@@ -20,23 +20,31 @@ msgstr ""
 "X-Generator: Lokalize 1.5\n"
 
 #: ../data/gnome-maps.appdata.xml.in.h:1
+#| msgid ""
+#| "Maps gives you quick access to maps all across the world. It allows you "
+#| "to quickly find the place you're looking for by searching for a city or "
+#| "street, or locate a place to meet a friend."
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
-"quickly find the place you're looking for by searching for a city or street, "
+"quickly find the place you’re looking for by searching for a city or street, "
 "or locate a place to meet a friend."
 msgstr ""
 "Kartes dod iespēju ātri piekļūt kartēm visā pasaulē. Tās ļauj ātri atrast  "
 "kādu vietu, meklējot pilsētu vai ielu, vai atrast vietu, kur sastapt draugus."
 
 #: ../data/gnome-maps.appdata.xml.in.h:2
+#| msgid ""
+#| "<li>Search for country, region, city or street.</li> <li>Search for "
+#| "specific types of locations, such as \"Pubs near Main Street, Boston\" or "
+#| "\"WiFi Access near Alexanderplatz, Berlin\"</li>"
 msgid ""
 "<li>Search for country, region, city or street.</li> <li>Search for specific "
-"types of locations, such as \"Pubs near Main Street, Boston\" or \"WiFi "
-"Access near Alexanderplatz, Berlin\"</li>"
+"types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
+"near Alexanderplatz, Berlin”.</li>"
 msgstr ""
-"<li>Meklējiet valstu, reģionu, pilsētu vai ielu.</li> "
-"<li>Meklējiet noteikta veida vietas, piemēram “Krogi pie gaismas ielas”, vai "
-"“Autostāvvieta Ādaži”</li>"
+"<li>Meklējiet valstu, reģionu, pilsētu vai ielu.</li> <li>Meklējiet noteikta "
+"veida vietas, piemēram “Krogi pie gaismas ielas”, vai “Autostāvvieta Ādaži”</"
+"li>"
 
 #: ../data/gnome-maps.appdata.xml.in.h:3
 msgid ""
@@ -46,9 +54,9 @@ msgstr ""
 "Kartes izmanto kolektīvi veidoto OpenStreetMap datubāzi, ko veidojuši "
 "tūkstošiem cilvēku visā pasaulē."
 
-#. Translators: This is the program name.
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:54
-#: ../src/mainWindow.js:341 ../src/main-window.ui.h:3
+#. Translators: This is the program name. */
+#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
+#: ../src/mainWindow.js:372 ../src/main-window.ui.h:3
 msgid "Maps"
 msgstr "Kartes"
 
@@ -73,16 +81,18 @@ msgid "Window position"
 msgstr "Loga novietojums"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:4
-msgid "Window position (x and y)."
-msgstr "Loga novietojums (x un y)."
+#| msgid "Window position (x and y)."
+msgid "Window position (X and Y)."
+msgstr "Loga novietojums (X un Y)."
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:5
 msgid "Window maximized"
 msgstr "Logs maksimizēts"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:6
-msgid "Window maximized state"
-msgstr "Loga stāvoklis — maksimizēts"
+#| msgid "Window maximized state"
+msgid "Window maximization state"
+msgstr "Loga maksimizācijas stāvoklis"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:7
 msgid "Last known location and accuracy"
@@ -115,8 +125,17 @@ msgid "User set last known location"
 msgstr "Lietotājs iestatījis pēdējo zināmo vietu"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:14
-msgid "Last known location was set manually by user."
-msgstr "Pēdējo zināmo vietu lietotājs iestatīja pats."
+#| msgid "Last known location was set manually by user."
+msgid "Whether the last known location was set manually by the user."
+msgstr "Vai pēdējo zināmo vietu lietotājs iestatīja pats."
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:15
+msgid "Number of recent places to store"
+msgstr "Saglabājamo neseno vietu skaits"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:16
+msgid "Number of recently visited places to store."
+msgstr "Saglabājamo nesen apmeklēto vietu skaits"
 
 #: ../src/app-menu.ui.h:1
 msgid "About"
@@ -127,18 +146,20 @@ msgid "Quit"
 msgstr "Iziet"
 
 #: ../src/context-menu.ui.h:1
-msgid "What's here?"
+#| msgid "What's here?"
+msgid "What’s here?"
 msgstr "Kas ir šeit?"
 
 #: ../src/context-menu.ui.h:2
-msgid "I'm here!"
+#| msgid "I'm here!"
+msgid "I’m here!"
 msgstr "Esmu šeit!"
 
-#: ../src/mainWindow.js:339
+#: ../src/mainWindow.js:370
 msgid "translator-credits"
 msgstr "Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>"
 
-#: ../src/mainWindow.js:342
+#: ../src/mainWindow.js:373
 msgid "A map application for GNOME"
 msgstr "GNOME karšu lietotne"
 
@@ -150,26 +171,26 @@ msgstr "Iela"
 msgid "Satellite"
 msgstr "Satelīts"
 
-#. Translators: Accuracy of user location information
-#: ../src/mapLocation.js:116
+#. Translators: Accuracy of user location information */
+#: ../src/mapLocation.js:164
 msgid "Unknown"
 msgstr "Nezināms"
 
-#. Translators: Accuracy of user location information
-#: ../src/mapLocation.js:119
+#. Translators: Accuracy of user location information */
+#: ../src/mapLocation.js:167
 msgid "Exact"
 msgstr "Precīzi"
 
-#: ../src/mapLocation.js:123
-msgid " km²"
-msgstr " km²"
+#: ../src/mapLocation.js:177
+msgid " km<sup>2</sup>"
+msgstr " km<sup>2</sup>"
 
 #. Translators: Showing name of place where user currently is and
 #. accuracy of this information (which is translated
 #. separately)
-#.
+#. */
 #: ../src/userLocation.js:62
-#, c-format
+#, javascript-format
 msgid ""
 "%s\n"
 "Position Accuracy: %s"
@@ -177,3 +198,5 @@ msgstr ""
 "%s\n"
 "Novietojuma precizitāte: %s"
 
+#~ msgid " km²"
+#~ msgstr " km²"
