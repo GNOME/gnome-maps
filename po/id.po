@@ -1,15 +1,15 @@
 # Indonesian translation for gnome-maps.
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
-# Andika Triwidada <andika@gmail.com>, 2013.
+# Andika Triwidada <andika@gmail.com>, 2013, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-09-05 14:38+0000\n"
-"PO-Revision-Date: 2013-09-11 17:54+0700\n"
+"POT-Creation-Date: 2014-03-04 00:08+0000\n"
+"PO-Revision-Date: 2014-03-14 17:52+0700\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <gnome@i15n.org>\n"
 "Language: id\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: ../data/gnome-maps.appdata.xml.in.h:1
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
-"quickly find the place you're looking for by searching for a city or street, "
+"quickly find the place you’re looking for by searching for a city or street, "
 "or locate a place to meet a friend."
 msgstr ""
 "Peta memberi Anda akses cepat ke peta di seluruh penjuru dunia. Ini "
@@ -32,8 +32,8 @@ msgstr ""
 #: ../data/gnome-maps.appdata.xml.in.h:2
 msgid ""
 "<li>Search for country, region, city or street.</li> <li>Search for specific "
-"types of locations, such as \"Pubs near Main Street, Boston\" or \"WiFi "
-"Access near Alexanderplatz, Berlin\"</li>"
+"types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
+"near Alexanderplatz, Berlin”.</li>"
 msgstr ""
 "<li>Cari negara, wilayah, kota, atau jalan.</li> <li>Cari lokasi dengan tipe "
 "tertentu, seperti misalnya \"Pub dekat Main Street, Boston\" atau \"Akses "
@@ -47,9 +47,9 @@ msgstr ""
 "Peta memakai basis data kolaboratif OpenStreetMap, yang dibuat oleh ratusan "
 "ribu orang di seluruh dunia."
 
-#. Translators: This is the program name.
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:54
-#: ../src/mainWindow.js:341 ../src/main-window.ui.h:3
+#. Translators: This is the program name. */
+#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
+#: ../src/mainWindow.js:372 ../src/main-window.ui.h:3
 msgid "Maps"
 msgstr "Peta"
 
@@ -74,15 +74,15 @@ msgid "Window position"
 msgstr "Posisi jendela"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:4
-msgid "Window position (x and y)."
-msgstr "Posisi jendela (x dan y)."
+msgid "Window position (X and Y)."
+msgstr "Posisi jendela (X dan Y)."
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:5
 msgid "Window maximized"
 msgstr "Jendela dimaksimalkan"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:6
-msgid "Window maximized state"
+msgid "Window maximization state"
 msgstr "Keadaan termaksimalkan jendela"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:7
@@ -118,9 +118,18 @@ msgid "User set last known location"
 msgstr "Lokasi terakhir yang diketahui yang diisi oleh pengguna"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:14
-msgid "Last known location was set manually by user."
+msgid "Whether the last known location was set manually by the user."
 msgstr ""
-"Posisi terakhir yang diketahui yang diatur secara manual oleh pengguna."
+"Apakah posisi terakhir yang diketahui yang diatur secara manual oleh "
+"pengguna."
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:15
+msgid "Number of recent places to store"
+msgstr "Cacah lokasi baru-baru ini yang disimpan"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:16
+msgid "Number of recently visited places to store."
+msgstr "Banyaknya lokasi baru-baru ini dikunjungi yang disimpan."
 
 #: ../src/app-menu.ui.h:1
 msgid "About"
@@ -131,18 +140,18 @@ msgid "Quit"
 msgstr "Keluar"
 
 #: ../src/context-menu.ui.h:1
-msgid "What's here?"
+msgid "What’s here?"
 msgstr "Ada apa di sini?"
 
 #: ../src/context-menu.ui.h:2
-msgid "I'm here!"
+msgid "I’m here!"
 msgstr "Saya di sini!"
 
-#: ../src/mainWindow.js:339
+#: ../src/mainWindow.js:370
 msgid "translator-credits"
-msgstr "Andika Triwidada <andika@gmail.com>, 2013"
+msgstr "Andika Triwidada <andika@gmail.com>, 2013, 2014"
 
-#: ../src/mainWindow.js:342
+#: ../src/mainWindow.js:373
 msgid "A map application for GNOME"
 msgstr "Aplikasi peta bagi GNOME"
 
@@ -154,20 +163,26 @@ msgstr "Jalan"
 msgid "Satellite"
 msgstr "Satelit"
 
-#: ../src/mapLocation.js:115
+#. Translators: Accuracy of user location information */
+#: ../src/mapLocation.js:164
 msgid "Unknown"
 msgstr "Tak diketahui"
 
-#: ../src/mapLocation.js:117
+#. Translators: Accuracy of user location information */
+#: ../src/mapLocation.js:167
 msgid "Exact"
 msgstr "Eksak"
 
-#: ../src/mapLocation.js:121
-msgid " km²"
-msgstr " km²"
+#: ../src/mapLocation.js:177
+msgid " km<sup>2</sup>"
+msgstr " km<sup>2</sup>"
 
-#: ../src/userLocation.js:58
-#, c-format
+#. Translators: Showing name of place where user currently is and
+#. accuracy of this information (which is translated
+#. separately)
+#. */
+#: ../src/userLocation.js:62
+#, javascript-format
 msgid ""
 "%s\n"
 "Position Accuracy: %s"
