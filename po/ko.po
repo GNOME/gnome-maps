@@ -1,15 +1,15 @@
 # Korean translation for gnome-maps.
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
-# Seong-ho Cho <darkcircle.0426@gmail.com>, 2013.
+# Seong-ho Cho <darkcircle.0426@gmail.com>, 2013, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-09-13 22:04+0000\n"
-"PO-Revision-Date: 2013-09-15 04:17+0900\n"
+"POT-Creation-Date: 2014-03-16 07:52+0000\n"
+"PO-Revision-Date: 2014-03-15 02:40+0900\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
 "Language-Team: Korean <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
@@ -23,21 +23,22 @@ msgstr ""
 #: ../data/gnome-maps.appdata.xml.in.h:1
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
-"quickly find the place you're looking for by searching for a city or street, "
+"quickly find the place you’re looking for by searching for a city or street, "
 "or locate a place to meet a friend."
 msgstr ""
 "지도를 통해 전 세계의 모든 지도로 빠르게 접근할 수 있습니다. 도시, 거리, 또"
-"는 친구를 만날 위치를 검색하여 여러분이 찾을 장소를 빠르게 찾을 수 있습니다."
+"는 친구를 만날 위치를 검색하여 여러분이 알아보고 있는 장소를 빠르게 찾을 수 "
+"있습니다."
 
 #: ../data/gnome-maps.appdata.xml.in.h:2
 msgid ""
 "<li>Search for country, region, city or street.</li> <li>Search for specific "
-"types of locations, such as \"Pubs near Main Street, Boston\" or \"WiFi "
-"Access near Alexanderplatz, Berlin\"</li>"
+"types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
+"near Alexanderplatz, Berlin”.</li>"
 msgstr ""
 "<li>국가, 지역, 도시 또는 거리 검색</li> <li>\"보스턴 메인 거리 근처의 술집"
-"\" 또는 \"베를린의 알렉산더플라츠 근처의 WiFi 접속\"과 같은 지정된 형식의 위"
-"치 검색</li>"
+"\" 또는 \"베를린 알렉산더플라츠 근처의 WiFi 접속\"과 같은 지정된 형식의 위치 "
+"검색</li>"
 
 #: ../data/gnome-maps.appdata.xml.in.h:3
 msgid ""
@@ -47,9 +48,9 @@ msgstr ""
 "지도는 전세계 수많은 사람이 함께 만든 OpenStreenMap 데이터베이스를 사용합니"
 "다."
 
-#. Translators: This is the program name.
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:54
-#: ../src/mainWindow.js:341 ../src/main-window.ui.h:3
+#. Translators: This is the program name. */
+#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
+#: ../src/mainWindow.js:300 ../src/main-window.ui.h:3
 msgid "Maps"
 msgstr "지도"
 
@@ -67,23 +68,23 @@ msgstr "창 크기"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:2
 msgid "Window size (width and height)."
-msgstr "창의 크기입니다(폭과 너비)."
+msgstr "창의 크기(폭과 너비)."
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:3
 msgid "Window position"
 msgstr "창 위치"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:4
-msgid "Window position (x and y)."
-msgstr "창의 위치입니다(x와 y)."
+msgid "Window position (X and Y)."
+msgstr "창의 위치(x와 y)."
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:5
 msgid "Window maximized"
 msgstr "창 최대화됨"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:6
-msgid "Window maximized state"
-msgstr "창의 최대화 상태입니다"
+msgid "Window maximization state"
+msgstr "창 최대화 상태"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:7
 msgid "Last known location and accuracy"
@@ -93,7 +94,7 @@ msgstr "최근 알려진 위치와 정확도"
 msgid ""
 "Last known location (latitude and longitude in degrees) and accuracy (in "
 "meters)."
-msgstr "최근 알려진 위치(도 단위의 위도 경도)와 정확도(미터 단위) 입니다."
+msgstr "최근 알려진 위치(도 단위의 위도 경도)와 정확도(미터 단위)."
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:9
 msgid "Description of last known location"
@@ -101,7 +102,7 @@ msgstr "최근 알려진 위치에 대한 설명"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:10
 msgid "Description of last known location of user."
-msgstr "사용자가 작성한 최근 알려진 위치에 대한 설명입니다."
+msgstr "사용자가 작성한 최근 알려진 위치에 대한 설명."
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:11
 msgid "Maximum number of search results"
@@ -109,15 +110,23 @@ msgstr "최대 검색 결과 수"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:12
 msgid "Maximum number of search results from geocode search."
-msgstr "지오코드 검색 결과의 최대 결과 갯수입니다."
+msgstr "지오코드 검색 결과의 최대 결과 갯수."
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:13
 msgid "User set last known location"
 msgstr "사용자 설정 최근 알려진 위치"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:14
-msgid "Last known location was set manually by user."
-msgstr "사용자가 직접 설정한 최근 알려진 위치입니다."
+msgid "Whether the last known location was set manually by the user."
+msgstr "사용자가 직접 설정한 최근 확인한 위치."
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:15
+msgid "Number of recent places to store"
+msgstr "최근 위치를 저장할 갯수"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:16
+msgid "Number of recently visited places to store."
+msgstr "최근 방문할 위치를 저장할 갯수."
 
 #: ../src/app-menu.ui.h:1
 msgid "About"
@@ -128,18 +137,18 @@ msgid "Quit"
 msgstr "끝내기"
 
 #: ../src/context-menu.ui.h:1
-msgid "What's here?"
+msgid "What’s here?"
 msgstr "여기는 무엇입니까?"
 
 #: ../src/context-menu.ui.h:2
-msgid "I'm here!"
+msgid "I’m here!"
 msgstr "난 여기있어요!"
 
-#: ../src/mainWindow.js:339
+#: ../src/mainWindow.js:298
 msgid "translator-credits"
 msgstr "조성호 <darkcircle.0426@gmail.com>"
 
-#: ../src/mainWindow.js:342
+#: ../src/mainWindow.js:301
 msgid "A map application for GNOME"
 msgstr "그놈용 지도 프로그램"
 
@@ -151,26 +160,26 @@ msgstr "거리"
 msgid "Satellite"
 msgstr "위성"
 
-#. Translators: Accuracy of user location information
-#: ../src/mapLocation.js:116
+#. Translators: Accuracy of user location information */
+#: ../src/mapLocation.js:164
 msgid "Unknown"
 msgstr "알 수 없음"
 
-#. Translators: Accuracy of user location information
-#: ../src/mapLocation.js:119
+#. Translators: Accuracy of user location information */
+#: ../src/mapLocation.js:167
 msgid "Exact"
 msgstr "정확도"
 
-#: ../src/mapLocation.js:123
-msgid " km²"
-msgstr " km²"
+#: ../src/mapLocation.js:177
+msgid " km<sup>2</sup>"
+msgstr " km<sup>2</sup>"
 
 #. Translators: Showing name of place where user currently is and
 #. accuracy of this information (which is translated
 #. separately)
-#.
+#. */
 #: ../src/userLocation.js:62
-#, c-format
+#, javascript-format
 msgid ""
 "%s\n"
 "Position Accuracy: %s"
