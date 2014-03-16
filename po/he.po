@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps 3.9.91\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-25 23:51+0200\n"
-"PO-Revision-Date: 2014-01-25 23:53+0200\n"
-"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
+"POT-Creation-Date: 2014-03-16 16:21+0200\n"
+"PO-Revision-Date: 2014-03-16 16:21+0200\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
@@ -20,35 +20,22 @@ msgstr ""
 "X-Generator: Gtranslator 2.91.6\n"
 
 #: ../data/gnome-maps.appdata.xml.in.h:1
-msgid ""
-"Maps gives you quick access to maps all across the world. It allows you to "
-"quickly find the place you’re looking for by searching for a city or street, "
-"or locate a place to meet a friend."
-msgstr ""
-"מפות נותן לך גישה מהירה למפות על פני כל העולם. הוא מאפשר לך למצוא במהירות את "
-"המקום שאתה מחפש באמצעות חיפוש עיר או רחוב, או לאתר מקום לפגישת חבר."
+msgid "Maps gives you quick access to maps all across the world. It allows you to quickly find the place you’re looking for by searching for a city or street, or locate a place to meet a friend."
+msgstr "מפות נותן לך גישה מהירה למפות על פני כל העולם. הוא מאפשר לך למצוא במהירות את המקום שאתה מחפש באמצעות חיפוש עיר או רחוב, או לאתר מקום לפגישת חבר."
 
 #: ../data/gnome-maps.appdata.xml.in.h:2
-msgid ""
-"<li>Search for country, region, city or street.</li> <li>Search for specific "
-"types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
-"near Alexanderplatz, Berlin”.</li>"
-msgstr ""
-"<li>חיפוש מדינה, אזור, עיר או רחוב.</li> <li>חיפוש סוג מסוים של מיקומים, כמו "
-"„פאבים ליד הרחוב הראשי, בוסטון” או „גישה לאינטרנט ליד כיכר אלכסנדר, ברלין”.</"
-"li>"
+msgid "<li>Search for country, region, city or street.</li> <li>Search for specific types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access near Alexanderplatz, Berlin”.</li>"
+msgstr "<li>חיפוש מדינה, אזור, עיר או רחוב.</li> <li>חיפוש סוג מסוים של מיקומים, כמו „פאבים ליד הרחוב הראשי, בוסטון” או „גישה לאינטרנט ליד כיכר אלכסנדר, ברלין”.</li>"
 
 #: ../data/gnome-maps.appdata.xml.in.h:3
-msgid ""
-"Maps uses the collaborative OpenStreetMap database, made by hundreds of "
-"thousands of people across the globe."
-msgstr ""
-"מפות משתמש במסד הנתונים השיתופי OpenStreetMap, שנוצר על ידי מאות אלפי אנשים "
-"על פני כדור הארץ."
+msgid "Maps uses the collaborative OpenStreetMap database, made by hundreds of thousands of people across the globe."
+msgstr "מפות משתמש במסד הנתונים השיתופי OpenStreetMap, שנוצר על ידי מאות אלפי אנשים על פני כדור הארץ."
 
-#. Translators: This is the program name. */
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
-#: ../src/mainWindow.js:375 ../src/main-window.ui.h:3
+#. Translators: This is the program name.
+#: ../data/gnome-maps.desktop.in.in.h:1
+#: ../src/application.js:55
+#: ../src/mainWindow.js:300
+#: ../src/main-window.ui.h:3
 msgid "Maps"
 msgstr "מפות"
 
@@ -89,12 +76,8 @@ msgid "Last known location and accuracy"
 msgstr "Last known location and accuracy"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:8
-msgid ""
-"Last known location (latitude and longitude in degrees) and accuracy (in "
-"meters)."
-msgstr ""
-"Last known location (latitude and longitude in degrees) and accuracy (in "
-"meters)."
+msgid "Last known location (latitude and longitude in degrees) and accuracy (in meters)."
+msgstr "Last known location (latitude and longitude in degrees) and accuracy (in meters)."
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:9
 msgid "Description of last known location"
@@ -144,11 +127,11 @@ msgstr "מה זה כאן?"
 msgid "I’m here!"
 msgstr "אני כאן!"
 
-#: ../src/mainWindow.js:373
+#: ../src/mainWindow.js:298
 msgid "translator-credits"
 msgstr "יוסף אור בוצ׳קו <yoseforb@gnome.org>"
 
-#: ../src/mainWindow.js:376
+#: ../src/mainWindow.js:301
 msgid "A map application for GNOME"
 msgstr "יישום מפות עבור GNOME"
 
@@ -160,29 +143,32 @@ msgstr "רחוב"
 msgid "Satellite"
 msgstr "לווין"
 
-#. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:130
+#. Translators: Accuracy of user location information
+#: ../src/mapLocation.js:164
 msgid "Unknown"
 msgstr "לא ידוע"
 
-#. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:133
+#. Translators: Accuracy of user location information
+#: ../src/mapLocation.js:167
 msgid "Exact"
 msgstr "מדויק"
 
-#: ../src/mapLocation.js:142
-msgid " km²"
-msgstr " ק״מ²"
+#: ../src/mapLocation.js:177
+msgid " km<sup>2</sup>"
+msgstr " ק״מ<sup>2</sup>"
 
 #. Translators: Showing name of place where user currently is and
 #. accuracy of this information (which is translated
 #. separately)
-#. */
+#.
 #: ../src/userLocation.js:62
-#, javascript-format
+#, c-format
 msgid ""
 "%s\n"
 "Position Accuracy: %s"
 msgstr ""
 "‏%s\n"
 "דיוק מיקום: %s"
+
+#~ msgid " km²"
+#~ msgstr " ק״מ²"
