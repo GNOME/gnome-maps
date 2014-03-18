@@ -5,14 +5,15 @@
 # gnomepl@aviary.pl
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 # Piotr Drąg <piotrdrag@gmail.com>, 2013.
-# Aviary.pl <gnomepl@aviary.pl>, 2013.
+# Paweł Żołnowski <pawel@zolnowski.name>, 2014.
+# Aviary.pl <gnomepl@aviary.pl>, 2013-2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-06 15:39+0200\n"
-"PO-Revision-Date: 2013-09-06 15:40+0200\n"
-"Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
+"POT-Creation-Date: 2014-03-18 20:04+0100\n"
+"PO-Revision-Date: 2014-03-17 23:30+0100\n"
+"Last-Translator: Paweł Żołnowski <pawel@zolnowski.name>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -26,17 +27,18 @@ msgstr ""
 #: ../data/gnome-maps.appdata.xml.in.h:1
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
-"quickly find the place you're looking for by searching for a city or street, "
+"quickly find the place you’re looking for by searching for a city or street, "
 "or locate a place to meet a friend."
 msgstr ""
-"Daje szybki dostęp do map całego świata. Umożliwia wyszukiwanie miejsc "
-"według miast i ulic."
+"Mapy zapewniają szybki dostęp do map całego świata oraz umożliwiają szybkie "
+"wyszukiwanie miejsc według miast i ulic. Pomogą również ustalić miejsce "
+"spotkania z przyjaciółmi."
 
 #: ../data/gnome-maps.appdata.xml.in.h:2
 msgid ""
 "<li>Search for country, region, city or street.</li> <li>Search for specific "
-"types of locations, such as \"Pubs near Main Street, Boston\" or \"WiFi "
-"Access near Alexanderplatz, Berlin\"</li>"
+"types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
+"near Alexanderplatz, Berlin”.</li>"
 msgstr ""
 "<li>Wyszukiwanie krajów, regionów, miast i ulic.</li> <li>Wyszukiwanie "
 "konkretnych rodzajów miejsc, takich jak \"Puby w pobliżu ulicy "
@@ -51,8 +53,8 @@ msgstr ""
 "setki tysięcy ludzi z całego świata."
 
 #. Translators: This is the program name. */
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:54
-#: ../src/mainWindow.js:341 ../src/main-window.ui.h:3
+#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
+#: ../src/mainWindow.js:300 ../src/main-window.ui.h:3
 msgid "Maps"
 msgstr "Mapy"
 
@@ -77,7 +79,7 @@ msgid "Window position"
 msgstr "Położenie okna"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:4
-msgid "Window position (x and y)."
+msgid "Window position (X and Y)."
 msgstr "Położenie okna (na osi X i Y)."
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:5
@@ -85,7 +87,7 @@ msgid "Window maximized"
 msgstr "Maksymalizacja okna"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:6
-msgid "Window maximized state"
+msgid "Window maximization state"
 msgstr "Stan maksymalizacji okna"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:7
@@ -121,8 +123,18 @@ msgid "User set last known location"
 msgstr "Użytkownik ustawił ostatnie znane położenie"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:14
-msgid "Last known location was set manually by user."
-msgstr "Ostatnie znane położenie zostało ręcznie ustawione przez użytkownika."
+msgid "Whether the last known location was set manually by the user."
+msgstr ""
+"Określa, czy ostatnie znane położenie zostało ręcznie ustawione przez "
+"użytkownika."
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:15
+msgid "Number of recent places to store"
+msgstr "Liczba ostatnich miejsc do zapamiętania"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:16
+msgid "Number of recently visited places to store."
+msgstr "Liczba ostatnio odwiedzonych miejsc do zapamiętania."
 
 #: ../src/app-menu.ui.h:1
 msgid "About"
@@ -133,20 +145,21 @@ msgid "Quit"
 msgstr "Zakończ"
 
 #: ../src/context-menu.ui.h:1
-msgid "What's here?"
+msgid "What’s here?"
 msgstr "Co tutaj jest?"
 
 #: ../src/context-menu.ui.h:2
-msgid "I'm here!"
+msgid "I’m here!"
 msgstr "Jestem tutaj!"
 
-#: ../src/mainWindow.js:339
+#: ../src/mainWindow.js:298
 msgid "translator-credits"
 msgstr ""
 "Piotr Drąg <piotrdrag@gmail.com>, 2013\n"
-"Aviary.pl <gnomepl@aviary.pl>, 2013"
+"Paweł Żołnowski <pawel@zolnowski.name>, 2014\n"
+"Aviary.pl <gnomepl@aviary.pl>, 2013-2014"
 
-#: ../src/mainWindow.js:342
+#: ../src/mainWindow.js:301
 msgid "A map application for GNOME"
 msgstr "Program do wyświetlania map dla środowiska GNOME"
 
@@ -158,19 +171,25 @@ msgstr "Ulica"
 msgid "Satellite"
 msgstr "Satelita"
 
-#: ../src/mapLocation.js:116
+#. Translators: Accuracy of user location information */
+#: ../src/mapLocation.js:164
 msgid "Unknown"
 msgstr "Nieznana"
 
-#: ../src/mapLocation.js:119
+#. Translators: Accuracy of user location information */
+#: ../src/mapLocation.js:167
 msgid "Exact"
 msgstr "Dokładna"
 
-#: ../src/mapLocation.js:123
-msgid " km²"
-msgstr " km²"
+#: ../src/mapLocation.js:177
+msgid " km<sup>2</sup>"
+msgstr " km<sup>2</sup>"
 
-#: ../src/userLocation.js:61
+#. Translators: Showing name of place where user currently is and
+#. accuracy of this information (which is translated
+#. separately)
+#. */
+#: ../src/userLocation.js:62
 #, javascript-format
 msgid ""
 "%s\n"
