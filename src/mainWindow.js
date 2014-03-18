@@ -60,6 +60,7 @@ const MainWindow = new Lang.Class({
         this.window = ui.appWindow;
         this.window.application = app;
         this._windowContent = ui.windowContent;
+        this._placeStore = Application.placeStore;
 
         this.mapView = new MapView.MapView();
         ui.windowContent.add(this.mapView);
@@ -70,7 +71,6 @@ const MainWindow = new Lang.Class({
 
         ui.layersButton.popover = new LayersPopover.LayersPopover();
 
-        this._initPlaces();
         this._initSearchWidgets();
         this._initActions();
         this._initSignals();
@@ -79,16 +79,6 @@ const MainWindow = new Lang.Class({
         this._windowContent.add_overlay(new ZoomControl.ZoomControl(this.mapView));
 
         this._windowContent.show_all();
-    },
-
-    _initPlaces: function() {
-        this._placeStore = new PlaceStore.PlaceStore();
-        try {
-            this._placeStore.load();
-        } catch (e) {
-            log('Failed to parse Maps places file, ' +
-                'subsequent writes will overwrite the file!');
-        }
     },
 
     _initSearchWidgets: function() {

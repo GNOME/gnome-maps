@@ -38,10 +38,12 @@ const MainWindow = imports.mainWindow;
 const Utils = imports.utils;
 const Path = imports.path;
 const Settings = imports.settings;
+const PlaceStore = imports.placeStore;
 
 // used globally
 let application = null;
 let settings = null;
+let placeStore = null;
 
 const Application = new Lang.Class({
     Name: 'Application',
@@ -59,6 +61,16 @@ const Application = new Lang.Class({
 
     _onQuitActivate: function() {
         this._mainWindow.window.destroy();
+    },
+
+    _initPlaceStore: function() {
+        placeStore = new PlaceStore.PlaceStore();
+        try {
+            placeStore.load();
+        } catch (e) {
+            log('Failed to parse Maps places file, ' +
+                'subsequent writes will overwrite the file!');
+        }
     },
 
     _initAppMenu: function() {
@@ -85,6 +97,7 @@ const Application = new Lang.Class({
             signalHandlers: { activate: this._onQuitActivate }
         }], this);
 
+        this._initPlaceStore();
         this._initAppMenu();
     },
 
