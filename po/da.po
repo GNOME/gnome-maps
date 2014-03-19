@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-01 19:09+0200\n"
-"PO-Revision-Date: 2013-10-01 19:00+0200\n"
+"POT-Creation-Date: 2014-03-19 22:13+0100\n"
+"PO-Revision-Date: 2014-03-15 13:10+0100\n"
 "Last-Translator: Kris Thomsen <mail@kristhomsen.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -46,8 +46,8 @@ msgstr ""
 "hundrede tusinde mennesker over hele verden."
 
 #. Translators: This is the program name.
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:54
-#: ../src/mainWindow.js:341 ../src/main-window.ui.h:3
+#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
+#: ../src/mainWindow.js:300 ../src/main-window.ui.h:3
 msgid "Maps"
 msgstr "Kort"
 
@@ -119,6 +119,14 @@ msgstr "Brugeren angav den senest kendte placering"
 msgid "Whether the last known location was set manually by the user."
 msgstr "Om den senest kendte placering blev manuelt angivet af brugeren."
 
+#: ../data/org.gnome.maps.gschema.xml.in.h:15
+msgid "Number of recent places to store"
+msgstr "Antal seneste steder, der skal gemmes"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:16
+msgid "Number of recently visited places to store."
+msgstr "Antal senest besøgte steder, der skal gemmes."
+
 #: ../src/app-menu.ui.h:1
 msgid "About"
 msgstr "Om"
@@ -135,7 +143,7 @@ msgstr "Hvad er der her?"
 msgid "I’m here!"
 msgstr "Jeg er her!"
 
-#: ../src/mainWindow.js:339
+#: ../src/mainWindow.js:298
 msgid "translator-credits"
 msgstr ""
 "Kris Thomsen\n"
@@ -143,7 +151,7 @@ msgstr ""
 "Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
 "Mere info: http://www.dansk-gruppen.dk"
 
-#: ../src/mainWindow.js:342
+#: ../src/mainWindow.js:301
 msgid "A map application for GNOME"
 msgstr "Et kortprogram til GNOME"
 
@@ -156,18 +164,18 @@ msgid "Satellite"
 msgstr "Satellit"
 
 #. Translators: Accuracy of user location information
-#: ../src/mapLocation.js:116
+#: ../src/mapLocation.js:164
 msgid "Unknown"
 msgstr "Ukendt"
 
 #. Translators: Accuracy of user location information
-#: ../src/mapLocation.js:119
+#: ../src/mapLocation.js:167
 msgid "Exact"
 msgstr "Præcis"
 
-#: ../src/mapLocation.js:123
-msgid " km²"
-msgstr " km²"
+#: ../src/mapLocation.js:177
+msgid " km<sup>2</sup>"
+msgstr " km<sup>2</sup>"
 
 #. Translators: Showing name of place where user currently is and
 #. accuracy of this information (which is translated
@@ -181,3 +189,6 @@ msgid ""
 msgstr ""
 "%s\n"
 "Positionsnøjagtighed: %s"
+
+#~ msgid " km²"
+#~ msgstr " km²"
