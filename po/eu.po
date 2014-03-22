@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the gnome-maps package.
 #
 #
-# Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2013.
+# Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2013, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-29 10:54+0200\n"
-"PO-Revision-Date: 2013-09-29 10:56+0200\n"
+"POT-Creation-Date: 2014-03-22 11:47+0100\n"
+"PO-Revision-Date: 2014-03-22 11:50+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
 "Language-Team: Basque <librezale@librezale.org>\n"
 "Language: eu\n"
@@ -47,9 +47,9 @@ msgstr ""
 "Mapak auzolanean eraikitako OpenStreetMap datu-basea darabil, mundu osoan "
 "zehar ehun eta milaka pertsonen artean sortutakoa "
 
-#. Translators: This is the program name. */
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:54
-#: ../src/mainWindow.js:341 ../src/main-window.ui.h:3
+#. Translators: This is the program name.
+#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
+#: ../src/mainWindow.js:300 ../src/main-window.ui.h:3
 msgid "Maps"
 msgstr "Mapak"
 
@@ -122,6 +122,14 @@ msgstr "Erabiltzaileak ezarritako azken kokaleku ezaguna"
 msgid "Whether the last known location was set manually by the user."
 msgstr "Azken kokaleku ezaguna erabiltzaileak eskuz ezarri zuen edo ez."
 
+#: ../data/org.gnome.maps.gschema.xml.in.h:15
+msgid "Number of recent places to store"
+msgstr "Azken aldiko lekuen kopurua gordetzeko"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:16
+msgid "Number of recently visited places to store."
+msgstr "Azken aldian bisitatutako lekuen kopurua gordetzeko."
+
 #: ../src/app-menu.ui.h:1
 msgid "About"
 msgstr "Honi buruz"
@@ -138,11 +146,11 @@ msgstr "Zer dago hemen?"
 msgid "I’m here!"
 msgstr "Hemen nago!"
 
-#: ../src/mainWindow.js:339
+#: ../src/mainWindow.js:298
 msgid "translator-credits"
 msgstr "Iñaki Larrañaga Murgoitio <dooteo@zundan.com>"
 
-#: ../src/mainWindow.js:342
+#: ../src/mainWindow.js:301
 msgid "A map application for GNOME"
 msgstr "GNOMEren mapen aplikazioa"
 
@@ -154,32 +162,35 @@ msgstr "Kalea"
 msgid "Satellite"
 msgstr "Satelitea"
 
-#. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:116
+#. Translators: Accuracy of user location information
+#: ../src/mapLocation.js:164
 msgid "Unknown"
 msgstr "Ezezaguna"
 
-#. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:119
+#. Translators: Accuracy of user location information
+#: ../src/mapLocation.js:167
 msgid "Exact"
 msgstr "Zehatza"
 
-#: ../src/mapLocation.js:123
-msgid " km²"
-msgstr " km²"
+#: ../src/mapLocation.js:177
+msgid " km<sup>2</sup>"
+msgstr " km<sup>2</sup>"
 
 #. Translators: Showing name of place where user currently is and
 #. accuracy of this information (which is translated
 #. separately)
-#. */
+#.
 #: ../src/userLocation.js:62
-#, javascript-format
+#, c-format
 msgid ""
 "%s\n"
 "Position Accuracy: %s"
 msgstr ""
 "%s\n"
 "Posizioaren zehaztasuna: %s"
+
+#~ msgid " km²"
+#~ msgstr " km²"
 
 #~ msgid "Track user location"
 #~ msgstr "Rastrear la ubicación del usuario"
