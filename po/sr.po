@@ -1,28 +1,33 @@
 # Serbian translation for gnome-maps.
+# Courtesy of Prevod.org team (http://prevod.org/) -- 2013—2014.
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
-# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2013.
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2013—2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-09-05 14:38+0000\n"
-"PO-Revision-Date: 2013-09-06 09:10+0200\n"
+"POT-Creation-Date: 2014-03-04 00:08+0000\n"
+"PO-Revision-Date: 2014-03-23 08:37+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
-"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
+"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
 
 #: ../data/gnome-maps.appdata.xml.in.h:1
+#| msgid ""
+#| "Maps gives you quick access to maps all across the world. It allows you "
+#| "to quickly find the place you're looking for by searching for a city or "
+#| "street, or locate a place to meet a friend."
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
-"quickly find the place you're looking for by searching for a city or street, "
+"quickly find the place you’re looking for by searching for a city or street, "
 "or locate a place to meet a friend."
 msgstr ""
 "Овај програм вам даје брз приступ картама широм света. Омогућава вам да брзо "
@@ -30,10 +35,14 @@ msgstr ""
 "место за сусрет са другарима."
 
 #: ../data/gnome-maps.appdata.xml.in.h:2
+#| msgid ""
+#| "<li>Search for country, region, city or street.</li> <li>Search for "
+#| "specific types of locations, such as \"Pubs near Main Street, Boston\" or "
+#| "\"WiFi Access near Alexanderplatz, Berlin\"</li>"
 msgid ""
 "<li>Search for country, region, city or street.</li> <li>Search for specific "
-"types of locations, such as \"Pubs near Main Street, Boston\" or \"WiFi "
-"Access near Alexanderplatz, Berlin\"</li>"
+"types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
+"near Alexanderplatz, Berlin”.</li>"
 msgstr ""
 "<li>Тражите државу, област, град или улицу.</li> <li>Тражите нека посебна "
 "места, као што су „Градски паркови у Јагодини“ или „Слободан приступ "
@@ -47,9 +56,9 @@ msgstr ""
 "Овај програм користи сарадничку базу података „OpenStreetMap“, коју стварају "
 "стотине хиљада људи широм света."
 
-#. Translators: This is the program name.
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:54
-#: ../src/mainWindow.js:341 ../src/main-window.ui.h:3
+#. Translators: This is the program name. */
+#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
+#: ../src/mainWindow.js:372 ../src/main-window.ui.h:3
 msgid "Maps"
 msgstr "Карте"
 
@@ -74,7 +83,8 @@ msgid "Window position"
 msgstr "Положај прозора"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:4
-msgid "Window position (x and y)."
+#| msgid "Window position (x and y)."
+msgid "Window position (X and Y)."
 msgstr "Положај прозора (положено и усправно)."
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:5
@@ -82,8 +92,9 @@ msgid "Window maximized"
 msgstr "Увећавање прозора"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:6
-msgid "Window maximized state"
-msgstr "Стање увећаног прозора"
+#| msgid "Window maximized state"
+msgid "Window maximization state"
+msgstr "Стање увећања прозора"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:7
 msgid "Last known location and accuracy"
@@ -118,8 +129,17 @@ msgid "User set last known location"
 msgstr "Корисник је подесио последње познато место"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:14
-msgid "Last known location was set manually by user."
-msgstr "Корисник је ручно подесио последње познато место."
+#| msgid "Last known location was set manually by user."
+msgid "Whether the last known location was set manually by the user."
+msgstr "Да ли је корисник ручно подесио последње познато место."
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:15
+msgid "Number of recent places to store"
+msgstr "Број скорашњих места за чување"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:16
+msgid "Number of recently visited places to store."
+msgstr "Број недавно посећених места за чување."
 
 #: ../src/app-menu.ui.h:1
 msgid "About"
@@ -130,21 +150,23 @@ msgid "Quit"
 msgstr "Изађи"
 
 #: ../src/context-menu.ui.h:1
-msgid "What's here?"
+#| msgid "What's here?"
+msgid "What’s here?"
 msgstr "Шта је то овде?"
 
 #: ../src/context-menu.ui.h:2
-msgid "I'm here!"
+#| msgid "I'm here!"
+msgid "I’m here!"
 msgstr "Ја сам овде!"
 
-#: ../src/mainWindow.js:339
+#: ../src/mainWindow.js:370
 msgid "translator-credits"
 msgstr ""
 "  Мирослав Николић\n"
 "\n"
 "http://prevod.org — превод на српски језик"
 
-#: ../src/mainWindow.js:342
+#: ../src/mainWindow.js:373
 msgid "A map application for GNOME"
 msgstr "Гномов програм за карте"
 
@@ -156,23 +178,32 @@ msgstr "Улица"
 msgid "Satellite"
 msgstr "Сателит"
 
-#: ../src/mapLocation.js:115
+#. Translators: Accuracy of user location information */
+#: ../src/mapLocation.js:164
 msgid "Unknown"
 msgstr "Непознато"
 
-#: ../src/mapLocation.js:117
+#. Translators: Accuracy of user location information */
+#: ../src/mapLocation.js:167
 msgid "Exact"
 msgstr "Тачно"
 
-#: ../src/mapLocation.js:121
-msgid " km²"
-msgstr " km²"
+#: ../src/mapLocation.js:177
+msgid " km<sup>2</sup>"
+msgstr " km<sup>2</sup>"
 
-#: ../src/userLocation.js:58
-#, c-format
+#. Translators: Showing name of place where user currently is and
+#. accuracy of this information (which is translated
+#. separately)
+#. */
+#: ../src/userLocation.js:62
+#, javascript-format
 msgid ""
 "%s\n"
 "Position Accuracy: %s"
 msgstr ""
 "%s\n"
 "Прецизност положаја: %s"
+
+#~ msgid " km²"
+#~ msgstr " km²"
