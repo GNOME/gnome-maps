@@ -1,14 +1,15 @@
 # Dutch translation for gnome-maps
-# Copyright (C) 2013
+# Copyright (C) 2013, 2014
 # This file is distributed under the same license as the GNOME Maps package.
-# Erwin Poeze <donnut@outlook.com>, 2013.
+# Erwin Poeze <donnut@outlook.com>, 2013, 2014.
 # Reinout van Schouwen <reinouts@gnome.org>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps 3.10\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-25 00:09+0200\n"
-"PO-Revision-Date: 2013-09-29 17:46+0100\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"maps&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2014-03-13 07:56+0000\n"
+"PO-Revision-Date: 2014-03-13 17:38-0000\n"
 "Last-Translator: Erwin Poeze <donnut@outlook.com>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "Language: nl\n"
@@ -48,8 +49,8 @@ msgstr ""
 "gemaakt door honderdduizenden mensen over de hele wereld."
 
 #. Translators: This is the program name. */
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:54
-#: ../src/mainWindow.js:341 ../src/main-window.ui.h:3
+#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
+#: ../src/mainWindow.js:300 ../src/main-window.ui.h:3
 msgid "Maps"
 msgstr "Kaarten"
 
@@ -121,6 +122,14 @@ msgstr "Gebruiker stelde laatst bekende positie in"
 msgid "Whether the last known location was set manually by the user."
 msgstr "Of de laatst bekende positie door de gebruiker handmatig is ingesteld."
 
+#: ../data/org.gnome.maps.gschema.xml.in.h:15
+msgid "Number of recent places to store"
+msgstr "Aantal recente locaties om op te slaan"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:16
+msgid "Number of recently visited places to store."
+msgstr "Aantal recent bezochte locaties om op te slaan."
+
 #: ../src/app-menu.ui.h:1
 msgid "About"
 msgstr "Info"
@@ -137,13 +146,13 @@ msgstr "Wat bevindt zich hier?"
 msgid "I’m here!"
 msgstr "Ik ben hier!"
 
-#: ../src/mainWindow.js:339
+#: ../src/mainWindow.js:298
 msgid "translator-credits"
 msgstr ""
 "Erwin Poeze <donnut@outlook.com>\n"
 "Reinout van Schouwen <reinouts@gnome.org>"
 
-#: ../src/mainWindow.js:342
+#: ../src/mainWindow.js:301
 msgid "A map application for GNOME"
 msgstr "Een kaartentoepassing voor Gnome"
 
@@ -156,18 +165,18 @@ msgid "Satellite"
 msgstr "Satelliet"
 
 #. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:116
+#: ../src/mapLocation.js:164
 msgid "Unknown"
 msgstr "Onbekend"
 
 #. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:119
+#: ../src/mapLocation.js:167
 msgid "Exact"
 msgstr "Exact"
 
-#: ../src/mapLocation.js:123
-msgid " km²"
-msgstr " km²"
+#: ../src/mapLocation.js:177
+msgid " km<sup>2</sup>"
+msgstr " km<sup>2</sup>"
 
 #. Translators: Showing name of place where user currently is and
 #. accuracy of this information (which is translated
@@ -181,3 +190,6 @@ msgid ""
 msgstr ""
 "%s\n"
 "Positienauwkeurigheid: %s"
+
+#~ msgid " km²"
+#~ msgstr " km²"
