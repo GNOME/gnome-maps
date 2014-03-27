@@ -1,23 +1,23 @@
 # Slovak translation for gnome-maps.
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
-# Dušan Kazik <prescott66@gmail.com>, 2013.
 #
+# Dušan Kazik <prescott66@gmail.com>, 2013, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-12-18 20:54+0000\n"
-"PO-Revision-Date: 2013-09-29 19:36+0100\n"
+"POT-Creation-Date: 2014-03-27 11:55+0000\n"
+"PO-Revision-Date: 2014-03-24 20:26+0100\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
-"Language-Team: Slovak <gnome-sk-list@gnome.org>\n"
+"Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Lokalize 1.5\n"
 
 #: ../data/gnome-maps.appdata.xml.in.h:1
 msgid ""
@@ -48,9 +48,9 @@ msgstr ""
 "tisícov ľudí na celej zemeguli."
 
 # desktop entry name
-#. Translators: This is the program name.
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
-#: ../src/mainWindow.js:334 ../src/main-window.ui.h:3
+#. Translators: This is the program name. */
+#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:57
+#: ../src/mainWindow.js:294 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "Mapy"
 
@@ -138,6 +138,14 @@ msgstr "Používateľ nastavil poslednú známu polohu"
 msgid "Whether the last known location was set manually by the user."
 msgstr "Určuje, či bola posledná známa poloha ručne nastavená používateľom."
 
+#: ../data/org.gnome.maps.gschema.xml.in.h:15
+msgid "Number of recent places to store"
+msgstr "Počet nedávnych miest na uloženie"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:16
+msgid "Number of recently visited places to store."
+msgstr "Počet nedávno navštívených miest, ktoré sa majú uložiť."
+
 #: ../src/app-menu.ui.h:1
 msgid "About"
 msgstr "O programe"
@@ -154,50 +162,51 @@ msgstr "Čo sa nachádza tu?"
 msgid "I’m here!"
 msgstr "Tu sa nachádzam!"
 
-#: ../src/mainWindow.js:332
+#: ../src/mainWindow.js:292
 msgid "translator-credits"
 msgstr "Dušan Kazik <prescott66@gmail.com>"
 
-#: ../src/mainWindow.js:335
+#: ../src/mainWindow.js:295
 msgid "A map application for GNOME"
 msgstr "Aplikácia na prezeranie máp pre GNOME"
 
-# map type
-#: ../src/main-window.ui.h:1
-msgid "Street"
-msgstr "Klasická"
-
-# map type
-#: ../src/main-window.ui.h:2
-msgid "Satellite"
-msgstr "Satelitná"
-
-#. Translators: Accuracy of user location information
-#: ../src/mapLocation.js:116
+#. Translators: Accuracy of user location information */
+#: ../src/mapLocation.js:164
 msgid "Unknown"
 msgstr "Neznáma"
 
-#. Translators: Accuracy of user location information
-#: ../src/mapLocation.js:119
+#. Translators: Accuracy of user location information */
+#: ../src/mapLocation.js:167
 msgid "Exact"
 msgstr "Presná"
 
-#: ../src/mapLocation.js:123
-msgid " km²"
-msgstr " km²"
+#: ../src/mapLocation.js:177
+msgid " km<sup>2</sup>"
+msgstr " km<sup>2</sup>"
 
 #. Translators: Showing name of place where user currently is and
 #. accuracy of this information (which is translated
 #. separately)
-#.
+#. */
 #: ../src/userLocation.js:62
-#, c-format
+#, javascript-format
 msgid ""
 "%s\n"
 "Position Accuracy: %s"
 msgstr ""
 "%s\n"
 "Presnosť pozície: %s"
+
+# map type
+#~ msgid "Street"
+#~ msgstr "Klasická"
+
+# map type
+#~ msgid "Satellite"
+#~ msgstr "Satelitná"
+
+#~ msgid " km²"
+#~ msgstr " km²"
 
 #~ msgid "Track user location"
 #~ msgstr "Sledovať polohu používateľa"
