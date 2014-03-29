@@ -95,7 +95,7 @@ const PlaceStore = new Lang.Class({
         if (this._exists(place, PlaceType.RECENT)) {
             this._removeIf((function(model, iter) {
                 let p = model.get_value(iter, Columns.PLACE);
-                return p.name === place.name;
+                return p.osm_id === place.osm_id;
             }), true);
         }
         this._addPlace(place, PlaceType.FAVORITE);
@@ -114,8 +114,8 @@ const PlaceStore = new Lang.Class({
                 let type = model.get_value(iter, Columns.TYPE);
 
                 if (type === PlaceType.RECENT) {
-                    let name = model.get_value(iter, Columns.NAME);
-                    this._typeTable[name] = null;
+                    let place = model.get_value(iter, Columns.PLACE);
+                    this._typeTable[place.osm_id] = null;
                     this._numRecent--;
                     return true;
                 }
@@ -137,6 +137,9 @@ const PlaceStore = new Lang.Class({
         try {
             let jsonArray = JSON.parse(buffer);
             jsonArray.forEach((function(obj) {
+                if (!obj.osm_id)
+                    return;
+
                 let location = new Geocode.Location({
                     latitude:    obj.latitude,
                     longitude:   obj.longitude,
@@ -147,6 +150,7 @@ const PlaceStore = new Lang.Class({
                 let place = Geocode.Place.new_with_location(obj.name,
                                                             obj.place_type,
                                                             location);
+                place.osm_id = obj.osm_id;
                 if (obj.bounding_box) {
                     place.set_bounding_box(new Geocode.BoundingBox({
                         top: obj.bounding_box.top,
@@ -183,6 +187,7 @@ const PlaceStore = new Lang.Class({
             }
 
             jsonArray.push({
+                osm_id:       place.osm_id,
                 place_type:   place.place_type,
                 name:         place.name,
                 latitude:     location.latitude,
@@ -216,11 +221,11 @@ const PlaceStore = new Lang.Class({
                 this.set(iter, [Columns.ICON], [pixbuf]);
             }).bind(this));
         }
-        this._typeTable[place.name] = type;
+        this._typeTable[place.osm_id] = type;
     },
 
     _exists: function(place, type) {
-        return this._typeTable[place.name] === type;
+        return this._typeTable[place.osm_id] === type;
     },
 
     _removeIf: function(evalFunc, stop) {
@@ -236,9 +241,9 @@ const PlaceStore = new Lang.Class({
 
     _updateAddTime: function(place) {
         this.foreach((function(model, path, iter) {
-            let name = model.get_value(iter, Columns.NAME);
+            let p = model.get_value(iter, Columns.PLACE);
 
-            if (name === place.name) {
+            if (p.osm_id === place.osm_id) {
                 let updated = new Date().getTime();
                 model.set_value(iter, Columns.ADDED, updated);
                 this._store();
