@@ -103,7 +103,7 @@ const PlaceStore = new Lang.Class({
 
     addRecent: function(place) {
         if (this._exists(place, PlaceType.RECENT)) {
-            this._updateAddTime(place);
+            this._updatePlace(place);
             return;
         }
 
@@ -239,13 +239,13 @@ const PlaceStore = new Lang.Class({
         }).bind(this));
     },
 
-    _updateAddTime: function(place) {
+    _updatePlace: function(place) {
         this.foreach((function(model, path, iter) {
             let p = model.get_value(iter, Columns.PLACE);
 
             if (p.osm_id === place.osm_id) {
-                let updated = new Date().getTime();
-                model.set_value(iter, Columns.ADDED, updated);
+                type = model.get_value(iter, Columns.TYPE);
+                this._setPlace(iter, place, type, new Date().getTime());
                 this._store();
                 return;
             }
