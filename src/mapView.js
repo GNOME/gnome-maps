@@ -98,6 +98,9 @@ const MapView = new Lang.Class({
     },
 
     setMapType: function(mapType) {
+        if (this.view.map_source.get_id() === mapType)
+            return;
+
         let source = this._factory.create_cached_source(mapType);
         this.view.set_map_source(source);
     },
