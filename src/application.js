@@ -107,7 +107,7 @@ const Application = new Lang.Class({
         if (this._mainWindow)
             return;
 
-        let overlay = new Gtk.Overlay({ visible: true });
+        let overlay = new Gtk.Overlay({ visible: true, can_focus: true });
         notificationManager = new Notification.Manager(overlay);
         this._mainWindow = new MainWindow.MainWindow(this, overlay);
         this._mainWindow.window.connect('destroy', this._onWindowDestroy.bind(this));
