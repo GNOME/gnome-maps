@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the gnome-maps package.
 # victory  <victory.deb@gmail.com>, 2013.
 # Jiro Matsuzawa  <jmatsuzawa@gnome.org>, 2013.
+# Ikuya Awashiro <ikuya@fruitsbasket.info>, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-09-20 10:22+0000\n"
-"PO-Revision-Date: 2013-09-20 23:22+0900\n"
-"Last-Translator: Jiro Matsuzawa  <jmatsuzawa@gnome.org>\n"
+"POT-Creation-Date: 2014-03-30 07:17+0000\n"
+"PO-Revision-Date: 2014-03-30 18:06+0900\n"
+"Last-Translator: Ikuya Awashiro <ikuya@fruitsbasket.info>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -19,20 +20,20 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../data/gnome-maps.appdata.xml.in.h:1
-msgid "Maps gives you quick access to maps all across the world. It allows you to quickly find the place you're looking for by searching for a city or street, or locate a place to meet a friend."
+msgid "Maps gives you quick access to maps all across the world. It allows you to quickly find the place you’re looking for by searching for a city or street, or locate a place to meet a friend."
 msgstr "世界中あらゆる場所の地図に簡単にアクセスできます。都市や住所を検索して、お探しの場所をさっと見つけられ、待ち合わせ場所もすぐに特定できます。"
 
 #: ../data/gnome-maps.appdata.xml.in.h:2
-msgid "<li>Search for country, region, city or street.</li> <li>Search for specific types of locations, such as \"Pubs near Main Street, Boston\" or \"WiFi Access near Alexanderplatz, Berlin\"</li>"
-msgstr "<li>国、地域、都市、町名番地による検索。</li><li>場所の特定の種類による検索。例: \"Pubs near Main Street, Boston\" あるいは \"WiFi Access near Alexanderplatz, Berlin\"</li>"
+msgid "<li>Search for country, region, city or street.</li> <li>Search for specific types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access near Alexanderplatz, Berlin”.</li>"
+msgstr "<li>国、地域、都市、町名番地による検索。</li><li>場所の特定の種類による検索。例:“Pubs near Main Street, Boston“ あるいは “WiFi Access near Alexanderplatz, Berlin“</li>"
 
 #: ../data/gnome-maps.appdata.xml.in.h:3
 msgid "Maps uses the collaborative OpenStreetMap database, made by hundreds of thousands of people across the globe."
 msgstr "この地図アプリは、OpenStreetMap データベースを利用しています。このデータベースは、世界中の膨大な人々が協力して作成しています。"
 
-#. Translators: This is the program name.
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:54
-#: ../src/mainWindow.js:341 ../src/main-window.ui.h:3
+#. Translators: This is the program name. */
+#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
+#: ../src/mainWindow.js:300 ../src/main-window.ui.h:3
 msgid "Maps"
 msgstr "地図"
 
@@ -57,7 +58,7 @@ msgid "Window position"
 msgstr "ウィンドウの位置"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:4
-msgid "Window position (x and y)."
+msgid "Window position (X and Y)."
 msgstr "ウィンドウの位置 (横位置と縦位置) です。"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:5
@@ -65,7 +66,7 @@ msgid "Window maximized"
 msgstr "ウィンドウ最大化"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:6
-msgid "Window maximized state"
+msgid "Window maximization state"
 msgstr "ウィンドウを最大化しているかどうかの設定です。"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:7
@@ -97,8 +98,16 @@ msgid "User set last known location"
 msgstr "直近の既知の位置がユーザー設定によるものかどうか"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:14
-msgid "Last known location was set manually by user."
-msgstr "直近の既知の位置が、ユーザーが手動で設定したものかどうかです。"
+msgid "Whether the last known location was set manually by the user."
+msgstr "直近の既知の位置が、ユーザーが手動で設定したものかどうかの設定です。"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:15
+msgid "Number of recent places to store"
+msgstr "記録する最近の場所の数。"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:16
+msgid "Number of recently visited places to store."
+msgstr "最近訪れた場所を記録する件数です。"
 
 #: ../src/app-menu.ui.h:1
 msgid "About"
@@ -109,20 +118,20 @@ msgid "Quit"
 msgstr "終了"
 
 #: ../src/context-menu.ui.h:1
-msgid "What's here?"
+msgid "What’s here?"
 msgstr "ここはどこ?"
 
 #: ../src/context-menu.ui.h:2
-msgid "I'm here!"
+msgid "I’m here!"
 msgstr "私はここにいます!"
 
-#: ../src/mainWindow.js:339
+#: ../src/mainWindow.js:298
 msgid "translator-credits"
 msgstr ""
 "松澤 二郎 <jmatsuzawa@gnome.org>\n"
 "日本GNOMEユーザー会 <http://www.gnome.gr.jp>"
 
-#: ../src/mainWindow.js:342
+#: ../src/mainWindow.js:301
 msgid "A map application for GNOME"
 msgstr "GNOME 向け地図アプリケーション"
 
@@ -134,29 +143,32 @@ msgstr "道路地図"
 msgid "Satellite"
 msgstr "衛星写真"
 
-#. Translators: Accuracy of user location information
-#: ../src/mapLocation.js:116
+#. Translators: Accuracy of user location information */
+#: ../src/mapLocation.js:164
 msgid "Unknown"
 msgstr "不明"
 
-#. Translators: Accuracy of user location information
-#: ../src/mapLocation.js:119
+#. Translators: Accuracy of user location information */
+#: ../src/mapLocation.js:167
 msgid "Exact"
 msgstr "正確"
 
-#: ../src/mapLocation.js:123
-msgid " km²"
-msgstr " km²"
+#: ../src/mapLocation.js:177
+msgid " km<sup>2</sup>"
+msgstr " km<sup>2</sup>"
 
 #. Translators: Showing name of place where user currently is and
 #. accuracy of this information (which is translated
 #. separately)
-#.
+#. */
 #: ../src/userLocation.js:62
-#, c-format
+#, javascript-format
 msgid ""
 "%s\n"
 "Position Accuracy: %s"
 msgstr ""
 "%s\n"
 "位置精度: %s"
+
+#~ msgid " km²"
+#~ msgstr " km²"
