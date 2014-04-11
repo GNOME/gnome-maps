@@ -166,8 +166,10 @@ const MapView = new Lang.Class({
                                                     Geocode.PlaceType.UNKNOWN,
                                                     this.geoclue.location);
 
+        let selected = this._userLocation && this._userLocation.getSelected();
         this._userLocation = new UserLocation.UserLocation(place, this);
         this._userLocation.show(this._userLocationLayer);
+        this._userLocation.setSelected(selected);
         this.emit('user-location-changed');
     },
 
