@@ -116,6 +116,15 @@ const UserLocation = new Lang.Class({
         this._zoomLevelId = this._view.connect("notify::zoom-level", this._updateAccuracyMarker.bind(this));
     },
 
+    getSelected: function() {
+        return this._locationMarker && this._locationMarker.get_selected();
+    },
+
+    setSelected: function(value) {
+        if (this._locationMarker)
+            this._locationMarker.set_selected(value);
+    },
+
     _updateAccuracyMarker: function() {
         if (!this._locationMarker.get_selected()) {
             this._accuracyMarker.hide();
