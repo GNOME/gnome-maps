@@ -41,12 +41,14 @@ const Utils = imports.utils;
 const Path = imports.path;
 const Settings = imports.settings;
 const PlaceStore = imports.placeStore;
+const RouteService = imports.routeService;
 
 // used globally
 let application = null;
 let settings = null;
 let placeStore = null;
 let notificationManager = null;
+let routeService = null;
 
 const Application = new Lang.Class({
     Name: 'Application',
@@ -94,6 +96,7 @@ const Application = new Lang.Class({
 
         application = this;
         settings = new Settings.Settings('org.gnome.maps');
+        routeService = new RouteService.GraphHopper();
 
         Utils.initActions(this, [{
             properties: { name: 'quit' },
