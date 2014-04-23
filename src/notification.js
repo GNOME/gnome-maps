@@ -79,6 +79,3 @@ const Plain = new Lang.Class({
         this._ui.body.add(label);
     }
 });
-
-const Type = {};
-
