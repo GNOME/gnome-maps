@@ -41,27 +41,15 @@ const NotificationManager = new Lang.Class({
         notification.reveal();
     },
 
-    // Shows a static (reusable) notification
-    showNotification: function(notificationType) {
-        let notification = this._getNotification(notificationType);
-        if(!notification.get_parent())
+    showNotification: function(notification) {
+        if(notification.get_parent() !== this._overlay) {
             this._overlay.add_overlay(notification);
+
+            notification.connect('dismissed', (function() {
+                this._overlay.remove(notification);
+                notification.disconnectAll();
+            }).bind(this));
+        }
         notification.reveal();
     },
-
-    _getNotification: function(notificationType) {
-        if(!this._cache.hasOwnProperty(notificationType.name)) {
-            this._createNotification(notificationType);
-        }
-        return this._cache[notificationType.name];
-    },
-
-    _createNotification: function(notificationType) {
-        let notification = new notificationType.Class();
-        notification.connect('dismissed', (function() {
-            this._overlay.remove(notification);
-        }).bind(this));
-
-        this._cache[notificationType.name] = notification;
-    }
 });
