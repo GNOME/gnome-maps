@@ -84,6 +84,8 @@ const UserLocation = new Lang.Class({
         this._locationMarker.bind_property("selected",
                                            descriptionActor, "visible",
                                            GObject.BindingFlags.SYNC_CREATE);
+        this._view.connect('button-press-event',
+                           this.setSelected.bind(this, false));
 
         if (this.accuracy === 0) {
             layer.add_marker(this._locationMarker);
