@@ -24,6 +24,15 @@ data_files = $(shell $(GLIB_COMPILE_RESOURCES)				\
 		--sourcedir=$(srcdir)					\
 		--generate-dependencies $(srcdir)/gnome-maps.data.gresource.xml)
 
+dbusservicedir = $(datadir)/dbus-1/services
+dbusservice_DATA = org.gnome.Maps.service
+
+org.gnome.Maps.service: Makefile
+		$(AM_V_GEN) (echo '[D-BUS Service]'; \
+		echo 'Name=org.gnome.Maps'; \
+		echo 'Exec=${bindir}/gnome-maps --gapplication-service') > $@.tmp && \
+		mv $@.tmp $@
+
 gnome-maps-data.h: gnome-maps.data.gresource.xml $(data_files)
 	$(AM_V_GEN)							\
 		$(GLIB_COMPILE_RESOURCES)				\
