@@ -114,6 +114,15 @@ const Application = new Lang.Class({
         this._mainWindow.window.connect('destroy', this._onWindowDestroy.bind(this));
     },
 
+    vfunc_dbus_register: function(connection, path) {
+        this.parent(connection, path);
+        return true;
+    },
+
+    vfunc_dbus_unregister: function(connection, path) {
+        this.parent(connection, path);
+    },
+
     vfunc_activate: function() {
         this._createWindow();
         this._mainWindow.window.present();
