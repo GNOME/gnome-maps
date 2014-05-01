@@ -3,7 +3,7 @@ SUBDIRS = icons
 # The desktop files
 desktopdir = $(datadir)/applications
 desktop_DATA = \
-	gnome-maps.desktop
+	org.gnome.Maps.desktop
 @INTLTOOL_DESKTOP_RULE@
 
 gsettingsschema_in_files = org.gnome.maps.gschema.xml.in
@@ -19,7 +19,7 @@ appdata_DATA = $(appdata_in_file:.xml.in=.xml)
 @INTLTOOL_XML_RULE@
 
 EXTRA_DIST= \
-    gnome-maps.desktop \
+    $(desktop_DATA) \
     $(desktop_in_files) \
     $(appdata_in_file) \
     $(gsettingsschema_in_files)
