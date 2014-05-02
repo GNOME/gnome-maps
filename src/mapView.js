@@ -39,7 +39,6 @@ const Utils = imports.utils;
 const Path = imports.path;
 const MapLocation = imports.mapLocation;
 const UserLocation = imports.userLocation;
-const Geoclue = imports.geoclue;
 const _ = imports.gettext.gettext;
 
 const MapType = {
@@ -94,11 +93,9 @@ const MapView = new Lang.Class({
         this._factory = Champlain.MapSourceFactory.dup_default();
         this.setMapType(MapType.STREET);
 
-
-        this.geoclue = new Geoclue.Geoclue();
         this._updateUserLocation();
-        this.geoclue.connect("location-changed",
-                             this._updateUserLocation.bind(this));
+        Application.geoclue.connect("location-changed",
+                                    this._updateUserLocation.bind(this));
 
         this._connectRouteSignals(Application.routeService.route);
     },
@@ -170,12 +167,14 @@ const MapView = new Lang.Class({
     },
 
     _updateUserLocation: function() {
-        if (!this.geoclue.location)
+        let location = Application.geoclue.location;
+
+        if (!location)
             return;
 
-        let place = Geocode.Place.new_with_location(this.geoclue.location.description,
+        let place = Geocode.Place.new_with_location(location.description,
                                                     Geocode.PlaceType.UNKNOWN,
-                                                    this.geoclue.location);
+                                                    location);
 
         let selected = this._userLocation && this._userLocation.getSelected();
         this._userLocation = new UserLocation.UserLocation(place, this);

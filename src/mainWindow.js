@@ -131,9 +131,9 @@ const MainWindow = new Lang.Class({
         ], this);
 
         let action = this.window.lookup_action('goto-user-location');
-        this.mapView.geoclue.bind_property('connected',
-                                           action, 'enabled',
-                                           GObject.BindingFlags.SYNC_CREATE);
+        Application.geoclue.bind_property('connected',
+                                          action, 'enabled',
+                                          GObject.BindingFlags.SYNC_CREATE);
     },
 
     _initSignals: function() {
@@ -237,13 +237,13 @@ const MainWindow = new Lang.Class({
     },
 
     _onGotoUserLocationActivate: function() {
-        if (this.mapView.geoclue.userSetLocation) {
-            Utils.once(this.mapView.geoclue,
+        if (Application.geoclue.userSetLocation) {
+            Utils.once(Application.geoclue,
                        'location-changed',
                        (function() {
                 this.mapView.gotoUserLocation(true);
             }).bind(this));
-            this.mapView.geoclue.findLocation();
+            Application.geoclue.findLocation();
         } else
             this.mapView.gotoUserLocation(true);
     },

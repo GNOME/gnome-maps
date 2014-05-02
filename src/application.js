@@ -34,6 +34,7 @@ const GLib = imports.gi.GLib;
 
 const Main = imports.main;
 const Format = imports.format;
+const Geoclue = imports.geoclue;
 const MainWindow = imports.mainWindow;
 const Notification = imports.notification;
 const NotificationManager = imports.notificationManager;
@@ -49,6 +50,7 @@ let settings = null;
 let placeStore = null;
 let notificationManager = null;
 let routeService = null;
+let geoclue = null;
 
 const Application = new Lang.Class({
     Name: 'Application',
@@ -97,6 +99,7 @@ const Application = new Lang.Class({
         application = this;
         settings = new Settings.Settings('org.gnome.maps');
         routeService = new RouteService.GraphHopper();
+        geoclue =  new Geoclue.Geoclue();
 
         Utils.initActions(this, [{
             properties: { name: 'quit' },
