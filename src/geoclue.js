@@ -64,7 +64,7 @@ const AccuracyLevel = {
     CITY: 4,
     NEIGHBORHOOD: 5,
     STREET: 6,
-    EXACT: 8,
+    EXACT: 8
 };
 
 const LocationInterface = '<node> \
