@@ -57,20 +57,38 @@ const MapView = new Lang.Class({
     _init: function() {
         this.parent();
 
-        this.actor = this.get_view();
-        this.view = this.actor;
-        this.view.set_zoom_level(3);
-        this.view.min_zoom_level = MapMinZoom;
-        this.view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_OUT_CUBIC;
-        this.view.set_reactive(true);
+        this.view = this._initView();
+        this._initLayers();
 
-        this.view.connect('notify::latitude', this._onViewMoved.bind(this));
-        this.view.connect('notify::longitude', this._onViewMoved.bind(this));
+        this._factory = Champlain.MapSourceFactory.dup_default();
+        this.setMapType(MapType.STREET);
 
-        this._sidebar = new Sidebar.Sidebar(this);
-        // Don't show sidebar until it has something in it
-        //this.view.add_child(this._sidebar.actor);
+        this._updateUserLocation();
+        Application.geoclue.connect("location-changed",
+                                    this._updateUserLocation.bind(this));
 
+        this._connectRouteSignals(Application.routeService.route);
+    },
+
+    _initView: function() {
+        let view = this.get_view();
+        view.set_zoom_level(3);
+        view.min_zoom_level = MapMinZoom;
+        view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_OUT_CUBIC;
+        view.set_reactive(true);
+
+        view.connect('notify::latitude', this._onViewMoved.bind(this));
+        view.connect('notify::longitude', this._onViewMoved.bind(this));
+        // switching map type will set view min-zoom-level from map source
+        view.connect('notify::min-zoom-level', (function() {
+            if (view.min_zoom_level < MapMinZoom) {
+                view.min_zoom_level = MapMinZoom;
+            }
+        }).bind(this));
+        return view;
+    },
+
+    _initLayers: function() {
         this._routeLayer = new Champlain.PathLayer();
         this._routeLayer.set_stroke_width(2.0);
         this.view.add_layer(this._routeLayer);
@@ -82,22 +100,6 @@ const MapView = new Lang.Class({
         this._userLocationLayer = new Champlain.MarkerLayer();
         this._userLocationLayer.set_selection_mode(Champlain.SelectionMode.SINGLE);
         this.view.add_layer(this._userLocationLayer);
-
-        // switching map type will set view min-zoom-level from map source
-        this.view.connect('notify::min-zoom-level', (function() {
-            if (this.view.min_zoom_level < MapMinZoom) {
-                this.view.min_zoom_level = MapMinZoom;
-            }
-        }).bind(this));
-
-        this._factory = Champlain.MapSourceFactory.dup_default();
-        this.setMapType(MapType.STREET);
-
-        this._updateUserLocation();
-        Application.geoclue.connect("location-changed",
-                                    this._updateUserLocation.bind(this));
-
-        this._connectRouteSignals(Application.routeService.route);
     },
 
     _connectRouteSignals: function(route) {
