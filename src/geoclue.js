@@ -79,6 +79,18 @@ const LocationProxy = Gio.DBusProxy.makeProxyWrapper(LocationInterface);
 
 const Geoclue = new Lang.Class({
     Name: 'Geoclue',
+    Extends: GObject.Object,
+    Properties: {
+        'connected': GObject.ParamSpec.boolean('connected',
+                                               'Connected',
+                                               'Connected to DBus service',
+                                               GObject.ParamFlags.READABLE,
+                                               false)
+    },
+
+    get connected() {
+        return this._connected;
+    },
 
     overrideLocation: function(location) {
         if (this._clientProxy && this._locationUpdatedId > 0) {
@@ -110,6 +122,9 @@ const Geoclue = new Lang.Class({
     },
 
     _init: function() {
+        this.parent();
+        this._connected = false;
+
         let lastLocation = Application.settings.get('last-location');
         if (lastLocation.length >= 3) {
             let [lat, lng, accuracy] = lastLocation;
@@ -148,6 +163,9 @@ const Geoclue = new Lang.Class({
 
         if (!this.userSetLocation)
             this.findLocation();
+
+        this._connected = true;
+        this.notify('connected');
     },
 
     _onLocationUpdated: function(proxy, sender, [oldPath, newPath]) {
