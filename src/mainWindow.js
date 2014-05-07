@@ -25,6 +25,7 @@ const Gdk = imports.gi.Gdk;
 const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
 const Champlain = imports.gi.Champlain;
+const GObject = imports.gi.GObject;
 
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
@@ -131,6 +132,11 @@ const MainWindow = new Lang.Class({
                 signalHandlers: { activate: this._onGotoUserLocationActivate }
             }
         ], this);
+
+        let action = this.window.lookup_action('goto-user-location');
+        this.mapView.geoclue.bind_property('connected',
+                                           action, 'enabled',
+                                           GObject.BindingFlags.SYNC_CREATE);
     },
 
     _initSignals: function() {
