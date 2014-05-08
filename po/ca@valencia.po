@@ -1,16 +1,16 @@
 # Catalan translation for gnome-maps.
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
-# Gil Forcada <gilforcada@guifi.net>, 2013.
+# Gil Forcada <gilforcada@guifi.net>, 2013, 2014.
 # Josep Sanchez Mesegue <papapep@gmx.com>, 2013.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-06 22:14+0200\n"
-"PO-Revision-Date: 2013-09-16 18:28+0100\n"
-"Last-Translator: Josep Sanchez Mesegue <papapep@gmx.com>\n"
+"POT-Creation-Date: 2014-05-09 00:13+0200\n"
+"PO-Revision-Date: 2014-03-10 23:10+0100\n"
+"Last-Translator: Gil Forcada <gilforcada@guifi.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "Language: ca-XV\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: ../data/gnome-maps.appdata.xml.in.h:1
-#, fuzzy
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
@@ -30,7 +29,6 @@ msgstr ""
 "ubicar un lloc per trobar-vos amb una amistat."
 
 #: ../data/gnome-maps.appdata.xml.in.h:2
-#, fuzzy
 msgid ""
 "<li>Search for country, region, city or street.</li> <li>Search for specific "
 "types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
@@ -38,7 +36,7 @@ msgid ""
 msgstr ""
 "<li>Cerqueu per país, regió, ciutat o carrer.</li> <li>Cerqueu per tipus "
 "concrets d'ubicacions, com «Bars a prop de la plaça Catalunya, Barcelona» o "
-"«accés Wi-Fi a prop d'Alexanderplatz, Berlín»</li>"
+"«accés Wi-Fi a prop d'Alexanderplatz, Berlín».</li>"
 
 #: ../data/gnome-maps.appdata.xml.in.h:3
 msgid ""
@@ -48,17 +46,17 @@ msgstr ""
 "El Mapes empra la base de dades col·laborativa de l'OpenStreetMap, creat per "
 "centenars de milers de persones d'arreu del món."
 
-#. Translators: This is the program name.
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:54
-#: ../src/mainWindow.js:341 ../src/main-window.ui.h:3
+#. Translators: This is the program name. */
+#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:60
+#: ../src/mainWindow.js:300 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "Mapes"
 
-#: ../data/gnome-maps.desktop.in.in.h:2
+#: ../data/org.gnome.Maps.desktop.in.in.h:2
 msgid "A simple maps application"
 msgstr "Una aplicació senzilla de mapes"
 
-#: ../data/gnome-maps.desktop.in.in.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:3
 msgid "Maps;"
 msgstr "mapes;"
 
@@ -75,7 +73,6 @@ msgid "Window position"
 msgstr "Posició de la finestra"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:4
-#, fuzzy
 msgid "Window position (X and Y)."
 msgstr "Posició de la finestra (x i y)."
 
@@ -84,7 +81,6 @@ msgid "Window maximized"
 msgstr "Finestra maximitzada"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:6
-#, fuzzy
 msgid "Window maximization state"
 msgstr "Estat de la finestra maximitzada"
 
@@ -121,9 +117,16 @@ msgid "User set last known location"
 msgstr "Última ubicació coneguda definida per l'usuari"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:14
-#, fuzzy
 msgid "Whether the last known location was set manually by the user."
-msgstr "L'última ubicació coneguda l'ha definit manualment l'usuari."
+msgstr "Si l'última ubicació coneguda l'ha definit manualment l'usuari."
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:15
+msgid "Number of recent places to store"
+msgstr "Nombre de llocs recents que s'ha d'emmagatzemar"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:16
+msgid "Number of recently visited places to store."
+msgstr "Nombre de llocs visitats recentment que s'ha d'emmagatzemar."
 
 #: ../src/app-menu.ui.h:1
 msgid "About"
@@ -134,56 +137,52 @@ msgid "Quit"
 msgstr "Ix"
 
 #: ../src/context-menu.ui.h:1
-#, fuzzy
 msgid "What’s here?"
 msgstr "Què hi ha ací?"
 
 #: ../src/context-menu.ui.h:2
-#, fuzzy
 msgid "I’m here!"
 msgstr "Sóc ací!"
 
-#: ../src/mainWindow.js:339
+#: ../src/mainWindow.js:298
 msgid "translator-credits"
 msgstr ""
 "Gil Forcada <gilforcada@guifi.net>\n"
 "Josep Sanchez Mesegue <papapep@gmx.com>"
 
-#: ../src/mainWindow.js:342
+#: ../src/mainWindow.js:301
 msgid "A map application for GNOME"
 msgstr "Una aplicació de mapes pel GNOME"
 
-#: ../src/main-window.ui.h:1
-msgid "Street"
-msgstr "Carrer"
-
-#: ../src/main-window.ui.h:2
-msgid "Satellite"
-msgstr "Satèl·lit"
-
-#. Translators: Accuracy of user location information
-#: ../src/mapLocation.js:116
+#. Translators: Accuracy of user location information */
+#: ../src/mapLocation.js:164
 msgid "Unknown"
 msgstr "Desconeguda"
 
-#. Translators: Accuracy of user location information
-#: ../src/mapLocation.js:119
+#. Translators: Accuracy of user location information */
+#: ../src/mapLocation.js:167
 msgid "Exact"
 msgstr "Exacte"
 
-#: ../src/mapLocation.js:123
-msgid " km²"
-msgstr " km²"
+#: ../src/mapLocation.js:177
+msgid " km<sup>2</sup>"
+msgstr " km<sup>2</sup>"
 
 #. Translators: Showing name of place where user currently is and
 #. accuracy of this information (which is translated
 #. separately)
-#.
+#. */
 #: ../src/userLocation.js:62
-#, c-format
+#, javascript-format
 msgid ""
 "%s\n"
 "Position Accuracy: %s"
 msgstr ""
 "%s\n"
 "Nivell de precisió: %s"
+
+#~ msgid "Street"
+#~ msgstr "Carrer"
+
+#~ msgid "Satellite"
+#~ msgstr "Satèl·lit"
