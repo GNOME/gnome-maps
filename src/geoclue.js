@@ -185,7 +185,8 @@ const Geoclue = new Lang.Class({
         Application.settings.set('last-location', [location.latitude,
                                                    location.longitude,
                                                    location.accuracy]);
-        Application.settings.set('last-location-description', location.description);
+        if (location.description !== null)
+            Application.settings.set('last-location-description', location.description);
         Application.settings.set('last-location-user-set', userSet);
         this.userSetLocation = userSet;
 
