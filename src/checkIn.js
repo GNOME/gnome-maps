@@ -22,8 +22,11 @@
 
 const GObject = imports.gi.GObject;
 const Goa = imports.gi.Goa;
+const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
+const _ = imports.gettext.gettext;
 
+const CheckInDialog = imports.checkInDialog;
 const FacebookBackend = imports.socialService.facebookBackend;
 const FoursquareBackend = imports.socialService.foursquareBackend;
 
@@ -116,6 +119,44 @@ const CheckInManager = new Lang.Class({
     findPlaces: function(account, latitude, longitude, distance, callback, cancellable) {
         this._getBackend(account)
             .findPlaces(this._getAuthorizer(account), latitude, longitude, distance, callback, cancellable);
+    },
+
+    showCheckInDialog: function(parentWindow, place, matchPlace) {
+        let dialog = new CheckInDialog.CheckInDialog({ transient_for: parentWindow,
+                                                       matchPlace: matchPlace,
+                                                       place: place });
+        let response = dialog.run();
+        dialog.destroy();
+
+        let message = null;
+
+        switch (response) {
+        case CheckInDialog.Response.FAILURE_NO_PLACES:
+            if (matchPlace)
+                /* Translators: %s is the place name that user wanted to check-in */
+                message = _("Cannot find \"%s\" in the social service").format(place.name);
+            else
+                message = _("Cannot find a suitable place to check-in in this location");
+            break;
+        case CheckInDialog.Response.FAILURE_GET_PLACES:
+            if (dialog.error.code === 401)
+                message = _("Credentials have expired, please open Online Accounts to sign in and enable this account");
+            else
+                message = dialog.error.message;
+            break;
+        }
+
+        if (message) {
+            let messageDialog = new Gtk.MessageDialog({ transient_for: parentWindow,
+                                                        destroy_with_parent: true,
+                                                        message_type: Gtk.MessageType.ERROR,
+                                                        buttons: Gtk.ButtonsType.OK,
+                                                        modal: true,
+                                                        text: _("An error has occurred"),
+                                                        secondary_text: message });
+            messageDialog.run();
+            messageDialog.destroy();
+        }
     }
 });
 
