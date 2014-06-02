@@ -1,0 +1,132 @@
+/* -*- Mode: JS2; indent-tabs-mode: nil; js2-basic-offset: 4 -*- */
+/* vim: set et ts=4 sw=4: */
+/*
+ * Copyright (c) 2014 Damián Nohales
+ *
+ * GNOME Maps is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License, or (at your
+ * option) any later version.
+ *
+ * GNOME Maps is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ * or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ * for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with GNOME Maps; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ *
+ * Author: Damián Nohales <damiannohales@gmail.com>
+ */
+
+const GObject = imports.gi.GObject;
+const Goa = imports.gi.Goa;
+const Lang = imports.lang;
+
+const FacebookBackend = imports.socialService.facebookBackend;
+const FoursquareBackend = imports.socialService.foursquareBackend;
+
+const CheckInManager = new Lang.Class({
+    Name: 'CheckInManager',
+    Extends: GObject.Object,
+    Signals: {
+        'accounts-refreshed': { }
+    },
+    Properties: {
+        'hasCheckIn': GObject.ParamSpec.boolean('hasCheckIn',
+                                                '',
+                                                '',
+                                                GObject.ParamFlags.READABLE)
+    },
+
+    _init: function() {
+        this.parent();
+
+        this._goaClient = Goa.Client.new_sync(null);
+        this._accounts = [];
+        this._authorizers = {};
+        this._backends = {};
+
+        this._initBackends();
+
+        this._goaClient.connect('account-added', this._refreshGoaAccounts.bind(this));
+        this._goaClient.connect('account-changed', this._refreshGoaAccounts.bind(this));
+        this._goaClient.connect('account-removed', this._refreshGoaAccounts.bind(this));
+
+        this._refreshGoaAccounts();
+    },
+
+    _initBackends: function() {
+        let facebookBackend = new FacebookBackend.FacebookBackend();
+        this._backends[facebookBackend.name] = facebookBackend;
+
+        let foursquareBackend = new FoursquareBackend.FoursquareBackend();
+        this._backends[foursquareBackend.name] = foursquareBackend;
+    },
+
+    _refreshGoaAccounts: function() {
+        let accounts = this._goaClient.get_accounts();
+        this._accounts = [];
+        this._accountsCount = 0;
+        this._authorizers = {};
+
+        accounts.forEach((function(object) {
+            if (!object.get_account())
+                return;
+
+            if (!object.get_maps())
+                return;
+
+            let accountId = object.get_account().id;
+            this._accounts.push(object);
+
+            this._authorizers[accountId] = this._getBackend(object).createAuthorizer(object);
+        }).bind(this));
+
+        this.emit('accounts-refreshed');
+        this.notify('hasCheckIn');
+    },
+
+    get client() {
+        return this._goaClient;
+    },
+
+    get accounts() {
+        return this._accounts;
+    },
+
+    get hasCheckIn() {
+        return this._accounts.length > 0;
+    },
+
+    _getAuthorizer: function(account) {
+        return this._authorizers[account.get_account().id];
+    },
+
+    _getBackend: function(account) {
+        return this._backends[account.get_account().provider_type];
+    },
+
+    performCheckIn: function(account, checkIn, callback, cancellable) {
+        this._getBackend(account)
+            .performCheckIn(this._getAuthorizer(account), checkIn, callback, cancellable);
+    },
+
+    findPlaces: function(account, latitude, longitude, distance, callback, cancellable) {
+        this._getBackend(account)
+            .findPlaces(this._getAuthorizer(account), latitude, longitude, distance, callback, cancellable);
+    }
+});
+
+const CheckIn = new Lang.Class({
+    Name: 'CheckIn',
+
+    _init: function() {
+        this.message = null;
+        this.place = null;
+        this.privacy = null;
+        this.broadcastFacebook = false;
+        this.broadcastTwitter = false;
+    }
+});

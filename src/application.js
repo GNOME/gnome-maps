@@ -30,6 +30,7 @@ const GtkClutter = imports.gi.GtkClutter;
 const Lang = imports.lang;
 const _ = imports.gettext.gettext;
 
+const CheckIn = imports.checkIn;
 const Format = imports.format;
 const Geoclue = imports.geoclue;
 const GeocodeService = imports.geocodeService;
@@ -50,6 +51,7 @@ let routeService = null;
 let geoclue = null;
 let geocodeService = null;
 let networkMonitor = null;
+let checkInManager = null;
 
 const Application = new Lang.Class({
     Name: 'Application',
@@ -146,6 +148,7 @@ const Application = new Lang.Class({
         networkMonitor = Gio.NetworkMonitor.get_default();
         networkMonitor.connect('network-changed',
                                this._checkNetwork.bind(this));
+        checkInManager = new CheckIn.CheckInManager();
     },
 
     _createWindow: function() {
