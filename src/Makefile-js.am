@@ -11,7 +11,7 @@ js_files = $(shell $(GLIB_COMPILE_RESOURCES)				\
 		--sourcedir=$(srcdir)					\
 		--generate-dependencies $(srcdir)/gnome-maps.js.gresource.xml)
 
-gnome-maps-js.h: gnome-maps.js.gresource.xml $(js_files) path.js config.js
+gnome-maps-js.h: gnome-maps.js.gresource.xml $(js_files)
 	$(AM_V_GEN)							\
 		$(GLIB_COMPILE_RESOURCES)				\
 		--target=$@						\
@@ -19,7 +19,7 @@ gnome-maps-js.h: gnome-maps.js.gresource.xml $(js_files) path.js config.js
 		--sourcedir=$(builddir)					\
 		--generate						\
 		--c-name gnome_maps_js $<
-gnome-maps-js.c: gnome-maps.js.gresource.xml $(js_files) path.js config.js
+gnome-maps-js.c: gnome-maps.js.gresource.xml $(js_files)
 	$(AM_V_GEN) \
 		$(GLIB_COMPILE_RESOURCES)				\
 		--target=$@						\
