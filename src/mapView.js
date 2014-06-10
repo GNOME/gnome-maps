@@ -115,30 +115,6 @@ const MapView = new Lang.Class({
         this.view.set_map_source(source);
     },
 
-    geocodeSearch: function(searchString, searchCompleteCallback) {
-        let forward = Geocode.Forward.new_for_string(searchString);
-        let places = [];
-        let answerCount = Application.settings.get('max-search-results');
-        let bbox = this.view.get_bounding_box();
-
-        forward.search_area = new Geocode.BoundingBox({
-            top: bbox.top,
-            left: bbox.left,
-            bottom: bbox.bottom,
-            right: bbox.right
-        });
-        forward.bounded = false;
-        forward.set_answer_count(answerCount);
-        forward.search_async (null, (function(forward, res) {
-            try {
-                places = forward.search_finish(res);
-            } catch (e) {
-                places = null;
-            }
-            searchCompleteCallback(places);
-        }).bind(this));
-    },
-
     ensureLocationsVisible: function(locations) {
         let bbox = new Champlain.BoundingBox({ left:   180,
                                                right: -180,

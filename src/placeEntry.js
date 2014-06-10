@@ -114,8 +114,10 @@ const PlaceEntry = new Lang.Class({
             return;
         }
 
+        let bbox = this._mapView.view.get_bounding_box();
+
         this._popover.showSpinner();
-        this._mapView.geocodeSearch(this.text, (function(places) {
+        Application.geocodeService.search(this.text, bbox, (function(places) {
             if (!places) {
                 this.place = null;
                 this._popover.hide();

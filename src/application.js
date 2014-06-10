@@ -35,6 +35,7 @@ const GLib = imports.gi.GLib;
 const Main = imports.main;
 const Format = imports.format;
 const Geoclue = imports.geoclue;
+const GeocodeService = imports.geocodeService;
 const MainWindow = imports.mainWindow;
 const Notification = imports.notification;
 const NotificationManager = imports.notificationManager;
@@ -51,6 +52,7 @@ let placeStore = null;
 let notificationManager = null;
 let routeService = null;
 let geoclue = null;
+let geocodeService = null;
 
 const Application = new Lang.Class({
     Name: 'Application',
@@ -97,9 +99,7 @@ const Application = new Lang.Class({
         Utils.loadStyleSheet(Gio.file_new_for_uri('resource:///org/gnome/maps/application.css'));
 
         application = this;
-        settings = new Settings.Settings('org.gnome.maps');
-        routeService = new RouteService.GraphHopper();
-        geoclue =  new Geoclue.Geoclue();
+        this._initServices();
 
         Utils.initActions(this, [{
             properties: { name: 'quit' },
@@ -108,6 +108,13 @@ const Application = new Lang.Class({
 
         this._initPlaceStore();
         this._initAppMenu();
+    },
+
+    _initServices: function() {
+        settings       = new Settings.Settings('org.gnome.maps');
+        routeService   = new RouteService.GraphHopper();
+        geoclue        = new Geoclue.Geoclue();
+        geocodeService = new GeocodeService.GeocodeService();
     },
 
     _createWindow: function() {
