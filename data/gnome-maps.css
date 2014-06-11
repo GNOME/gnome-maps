@@ -1,11 +1,3 @@
-.maps-sidebar {
-    border-width: 0 0 0 1px;
-}
-
-.maps-sidebar:dir(rtl) {
-    border-width: 0 1px 0 0;
-}
-
 .maps-popover {
     padding: 5px;
 }
@@ -65,4 +57,37 @@
 
 #zoom-out-button:insensitive {
     background-image: url('zoom-out-insensitive.png');
+}
+
+#sidebar-form > GtkLabel {
+    padding-right: 6px;
+}
+
+#sidebar-form .transportation-mode-button > GtkImage {
+    padding-left:   7px;
+    padding-right:  7px;
+    padding-top:    4px;
+    padding-bottom: 4px;
+}
+
+#sidebar {
+   border-left: 1px solid gray;
+}
+
+#sidebar:dir(rtl) {
+   border-right: 1px solid gray;
+}
+
+#instruction-box {
+    margin-left: 10px;
+    margin-right: 10px;
+    border-bottom: 1px;
+}
+#instruction-box > GtkImage {
+    padding-right: 6px;
+    padding-left: 6px;
+}
+
+#instruction-list {
+    border-top: 1px solid gray;
 }

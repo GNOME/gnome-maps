@@ -34,7 +34,6 @@ const Mainloop = imports.mainloop;
 const Signals = imports.signals;
 
 const Application = imports.application;
-const Sidebar = imports.sidebar;
 const Utils = imports.utils;
 const Path = imports.path;
 const MapLocation = imports.mapLocation;

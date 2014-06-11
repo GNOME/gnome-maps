@@ -52,6 +52,27 @@
             </child>
           </object>
         </child>
+        <child>
+          <object class="GtkToggleButton" id="toggle-sidebar-button">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="valign">center</property>
+            <property name="action-name">win.toggle-sidebar</property>
+            <style>
+              <class name="image-button"/>
+            </style>
+            <child>
+              <object class="GtkImage" id="toggle-sidebar-button-image">
+                <property name="visible">True</property>
+                <property name="icon-size">1</property>
+                <property name="pixbuf">route-button</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="pack-type">end</property>
+          </packing>
+        </child>
       </object>
     </child>
   </object>

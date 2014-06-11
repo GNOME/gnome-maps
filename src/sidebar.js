@@ -18,83 +18,132 @@
  * Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  * Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+ *         Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
  */
 
-const Clutter = imports.gi.Clutter;
-const Gdk = imports.gi.Gdk;
+const Geocode = imports.gi.GeocodeGlib;
 const GLib = imports.gi.GLib;
+const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const Champlain = imports.gi.Champlain;
-const GtkClutter = imports.gi.GtkClutter;
-const MapView = imports.mapView;
-
 const Lang = imports.lang;
-const Mainloop = imports.mainloop;
 
+const Application = imports.application;
+const PlaceStore = imports.placeStore;
+const PlaceEntry = imports.placeEntry;
+const Route = imports.route;
+const RouteQuery = imports.routeQuery;
+const SearchPopup = imports.searchPopup;
 const Utils = imports.utils;
-const _ = imports.gettext.gettext;
 
 const Sidebar = new Lang.Class({
     Name: 'Sidebar',
+    Extends: Gtk.Revealer,
 
     _init: function(mapView) {
-        this._mapView = mapView;
-        this.actor = new Clutter.Actor({ layout_manager: new Clutter.BoxLayout({ spacing: 12 }),
-                                         y_expand: true,
-                                         x_align: Clutter.ActorAlign.END });
+        this.parent({ visible:             true,
+                      transition_type:     Gtk.RevealerTransitionType.SLIDE_LEFT,
+                      transition_duration: 400, // ms
+                      halign:              Gtk.Align.END,
+                      valign:              Gtk.Align.FILL
+                    });
+        this.get_style_context().add_class('maps-sidebar');
 
-        let isRtl = (Gtk.Widget.get_default_direction() == Gtk.TextDirection.RTL);
-        let prevIconName = isRtl ? 'go-previous-rtl-symbolic' : 'go-previous-symbolic';
-        let nextIconName = isRtl ? 'go-next-rtl-symbolic' : 'go-next-symbolic';
+        let ui = Utils.getUIObject('sidebar', [ 'sidebar',
+                                                'sidebar-form',
+                                                'instruction-list-scrolled',
+                                                'instruction-list',
+                                                'mode-pedestrian-toggle',
+                                                'mode-bike-toggle',
+                                                'mode-car-toggle']);
+        this._instructionList = ui.instructionList;
+        this._initInstructionList();
 
-        // create the button
-        let revealImage = new Gtk.Image ({ icon_name: prevIconName,
-                                           icon_size: Gtk.IconSize.MENU });
-        let revealButton = new Gtk.Button({ child: revealImage,
-                                            valign: Gtk.Align.CENTER });
-        revealButton.get_style_context().add_class('osd');
-        revealButton.show();
+        this._initTransportationToggles(ui.modePedestrianToggle,
+                                        ui.modeBikeToggle,
+                                        ui.modeCarToggle);
 
-        // then the sidebar itself, packed into the revealer
-        let grid = new Gtk.Grid({ vexpand: true,
-                                  hexpand: true,
-                                  margin_top: 32,
-                                  margin_left: 32,
-                                  margin_right: 32,
-                                  row_spacing: 15,
-                                  orientation: Gtk.Orientation.VERTICAL,
-                                  valign: Gtk.Align.FILL });
+        ui.sidebarForm.attach(this._createEntry("from", mapView),
+                              1, 0, 1, 1);
+        ui.sidebarForm.attach(this._createEntry("to", mapView),
+                              1, 1, 1, 1);
+        this.add(ui.sidebar);
+    },
 
-        let container = new Gtk.Frame({ child: grid,
-                                        shadow_type: Gtk.ShadowType.IN,
-                                        width_request: 200 });
-        container.get_style_context().add_class('maps-sidebar');
+    _initTransportationToggles: function(pedestrian, bike, car) {
+        let query = Application.routeService.query;
+        let transport = RouteQuery.Transportation;
 
-        let revealer = new Gtk.Revealer({ child: container,
-                                         reveal_child: false,
-                                         transition_type: Gtk.RevealerTransitionType.CROSSFADE });
-        revealer.show_all();
+        let onToggle = function(mode, button) {
+            if (button.active && query.transportation !== mode)
+                query.transportation = mode;
+        };
+        pedestrian.connect('toggled', onToggle.bind(this, transport.PEDESTRIAN));
+        car.connect('toggled', onToggle.bind(this, transport.CAR));
+        bike.connect('toggled', onToggle.bind(this, transport.BIKE));
 
-        revealButton.connect('clicked', (function() {
-            if (revealer.reveal_child) {
-                revealer.reveal_child = false;
-                revealButton.symbolic_icon_name = prevIconName;
-            } else {
-                revealer.reveal_child = true;
-                revealButton.symbolic_icon_name = nextIconName;
+        query.connect('updated', function() {
+            switch(query.transportation) {
+            case transport.PEDESTRIAN:
+                pedestrian.active = true;
+                break;
+            case transport.CAR:
+                car.active = true;
+                break;
+            case transport.BIKE:
+                bike.active = true;
+                break;
             }
+        });
+    },
+
+    _createEntry: function(propName, mapView) {
+        let entry = new PlaceEntry.PlaceEntry({ visible: true,
+                                                hexpand: true,
+                                                mapView: mapView });
+        entry.bind_property("place",
+                            Application.routeService.query, propName,
+                            GObject.BindingFlags.BIDIRECTIONAL);
+        return entry;
+    },
+
+    _initInstructionList: function() {
+        let route = Application.routeService.route;
+
+        route.connect('reset', this._clearInstructions.bind(this));
+        route.connect('update', (function() {
+            this._clearInstructions();
+
+            route.turnPoints.forEach((function(turnPoint) {
+                let row = new InstructionRow({ visible:true,
+                                               turnPoint: turnPoint });
+                this._instructionList.add(row);
+            }).bind(this));
         }).bind(this));
+    },
 
-        // now create actors
-        let buttonActor = new GtkClutter.Actor({ contents: revealButton,
-                                                 x_align: Clutter.ActorAlign.END });
-        Utils.clearGtkClutterActorBg(buttonActor);
-        this.actor.add_child(buttonActor);
+    _clearInstructions: function() {
+        let listBox = this._instructionList;
+        listBox.forall(listBox.remove.bind(listBox));
+    }
+});
 
-        let revealerActor = new GtkClutter.Actor({ contents: revealer,
-                                                   x_align: Clutter.ActorAlign.END,
-                                                   x_expand: true,
-                                                   y_expand: true });
-        this.actor.add_child(revealerActor);
+const InstructionRow = new Lang.Class({
+    Name: "InstructionRow",
+    Extends: Gtk.ListBoxRow,
+
+    _init: function(params) {
+        this.turnPoint = params.turnPoint;
+        delete params.turnPoint;
+
+        this.parent(params);
+
+        this.visible = true;
+        let ui = Utils.getUIObject('sidebar', ['instruction-box',
+                                               'direction-image',
+                                               'instruction-label']);
+        ui.instructionLabel.label  = this.turnPoint.instruction;
+        ui.directionImage.resource = this.turnPoint.iconResource;
+
+        this.add(ui.instructionBox);
     }
 });

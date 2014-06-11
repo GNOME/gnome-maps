@@ -85,11 +85,27 @@ const TurnPoint = new Lang.Class({
         this._type = type;
         this.distance = distance;
         this.instruction = instruction;
+        this.iconResource = this._getIconResource();
     },
 
     isDestination: function() {
         return this._type === TurnPointType.START
             || this._type === TurnPointType.VIA
             || this._type === TurnPointType.STOP;
+    },
+
+    _getIconResource: function() {
+        switch(this._type) {
+        case TurnPointType.SHARP_LEFT:   return '/org/gnome/maps/direction-sharpleft';
+        case TurnPointType.LEFT:         return '/org/gnome/maps/direction-left';
+        case TurnPointType.SLIGHT_LEFT:  return '/org/gnome/maps/direction-slightleft';
+        case TurnPointType.CONTINUE:     return '/org/gnome/maps/direction-continue';
+        case TurnPointType.SLIGHT_RIGHT: return '/org/gnome/maps/direction-slightright';
+        case TurnPointType.RIGHT:        return '/org/gnome/maps/direction-right';
+        case TurnPointType.SHARP_RIGHT:  return '/org/gnome/maps/direction-sharpright';
+        case TurnPointType.END:          return '/org/gnome/maps/direction-end';
+        case TurnPointType.START:        return '/org/gnome/maps/direction-start';
+        default:                         return '';
+        }
     }
 });

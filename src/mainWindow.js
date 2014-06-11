@@ -36,6 +36,7 @@ const LayersPopover = imports.layersPopover;
 const ContextMenu = imports.contextMenu;
 const PlaceEntry = imports.placeEntry;
 const PlaceStore = imports.placeStore;
+const Sidebar = imports.sidebar;
 const Utils = imports.utils;
 const Config = imports.config;
 const ZoomControl = imports.zoomControl;
@@ -64,6 +65,11 @@ const MainWindow = new Lang.Class({
         overlay.add(this.mapView);
 
         this.mapView.gotoUserLocation(false);
+
+        this._sidebar = new Sidebar.Sidebar(this.mapView);
+        overlay.add_overlay(this._sidebar);
+        Application.routeService.route.connect('update',
+                                               this._setRevealSidebar.bind(this, true));
 
         this._contextMenu = new ContextMenu.ContextMenu(this.mapView);
 
@@ -127,6 +133,14 @@ const MainWindow = new Lang.Class({
             }, {
                 properties: { name: 'goto-user-location' },
                 signalHandlers: { activate: this._onGotoUserLocationActivate }
+            }, {
+                properties: {
+                    name: 'toggle-sidebar',
+                    state: GLib.Variant.new_boolean(false)
+                },
+                signalHandlers: {
+                    'change-state': this._onToggleSidebarChangeState
+                }
             }
         ], this);
 
@@ -257,6 +271,22 @@ const MainWindow = new Lang.Class({
         action.set_state(value);
         let [mapType, len] = value.get_string();
         this.mapView.setMapType(MapView.MapType[mapType]);
+    },
+
+    _onToggleSidebarChangeState: function(action, variant) {
+        action.set_state(variant);
+
+        let reveal = variant.get_boolean();
+        if (!reveal) {
+            Application.routeService.route.reset();
+            Application.routeService.query.reset();
+        }
+        this._sidebar.set_reveal_child(reveal);
+    },
+
+    _setRevealSidebar: function(value) {
+        let action = this.window.lookup_action('toggle-sidebar');
+        action.change_state(GLib.Variant.new_boolean(value));
     },
 
     _onAboutActivate: function() {
