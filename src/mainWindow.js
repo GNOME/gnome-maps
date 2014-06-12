@@ -33,8 +33,8 @@ const Mainloop = imports.mainloop;
 const Application = imports.application;
 const MapView = imports.mapView;
 const LayersPopover = imports.layersPopover;
-const SearchPopup = imports.searchPopup;
 const ContextMenu = imports.contextMenu;
+const PlaceEntry = imports.placeEntry;
 const PlaceStore = imports.placeStore;
 const Utils = imports.utils;
 const Config = imports.config;
@@ -52,14 +52,10 @@ const MainWindow = new Lang.Class({
     _init: function(app, overlay) {
         this._configureId = 0;
         let ui = Utils.getUIObject('main-window', [ 'app-window',
-                                                    'search-entry',
-                                                    'search-completion',
+                                                    'header-bar',
                                                     'layers-button']);
-        this._searchEntry = ui.searchEntry;
-        this._searchCompletion = ui.searchCompletion;
         this.window = ui.appWindow;
         this.window.application = app;
-        this._placeStore = Application.placeStore;
         this._overlay = overlay;
 
         ui.appWindow.add(this._overlay);
@@ -73,7 +69,10 @@ const MainWindow = new Lang.Class({
 
         ui.layersButton.popover = new LayersPopover.LayersPopover();
 
-        this._initSearchWidgets();
+        let placeEntry = this._createPlaceEntry();
+        ui.headerBar.set_custom_title(placeEntry);
+        placeEntry.has_focus = true;
+
         this._initActions();
         this._initSignals();
         this._restoreWindowGeometry();
@@ -82,28 +81,26 @@ const MainWindow = new Lang.Class({
         this._overlay.show_all();
     },
 
-    _initSearchWidgets: function() {
-        this._searchPopup = new SearchPopup.SearchPopup(this._searchEntry, 10);
-
-        this._searchPopup.connect('selected',
-                                  this._onSearchPopupSelected.bind(this));
-        this._searchPopup.connect('selected',
-                                  this._overlay.grab_focus.bind(this._overlay));
-        this.mapView.view.connect('button-press-event',
-                                  this._searchPopup.hide.bind(this._searchPopup));
-        this.mapView.view.connect('button-press-event',
-                                  this._overlay.grab_focus.bind(this._overlay));
-        this._searchEntry.connect('changed',
-                                  this._searchPopup.hide.bind(this._searchPopup));
-
-        this._searchCompletion.set_model(this._placeStore);
-        this._searchCompletion.connect('match-selected', (function(c, m, iter) {
-            let place = m.get_value(iter, PlaceStore.Columns.PLACE);
-            this.mapView.showNGotoLocation(place);
-            this._placeStore.addRecent(place);
+    _createPlaceEntry: function() {
+        let placeEntry = new PlaceEntry.PlaceEntry({ mapView:       this.mapView,
+                                                     visible:       true,
+                                                     margin_start:  6,
+                                                     margin_end:    6,
+                                                     width_request: 500
+                                                   });
+        placeEntry.connect('notify::place', (function() {
+            if (placeEntry.place) {
+                this.mapView.showNGotoLocation(placeEntry.place);
+                Application.placeStore.addRecent(placeEntry.place);
+            }
         }).bind(this));
 
-        this._searchCompletion.set_match_func(PlaceStore.completionMatchFunc);
+        let popover = placeEntry.popover;
+        popover.connect('selected',
+                        this._overlay.grab_focus.bind(this._overlay));
+        this.mapView.view.connect('button-press-event',
+                                  popover.hide.bind(popover));
+        return placeEntry;
     },
 
     _initActions: function() {
@@ -148,8 +145,8 @@ const MainWindow = new Lang.Class({
         this.window.connect('key-press-event',
                             this._onKeyPressEvent.bind(this));
 
-        this._searchEntry.connect('activate',
-                                  this._onSearchActivate.bind(this));
+        this.mapView.view.connect('button-press-event',
+                                  this._overlay.grab_focus.bind(this._overlay));
         this._viewMovedId = 0;
     },
 
@@ -224,32 +221,6 @@ const MainWindow = new Lang.Class({
         }
 
         return false;
-    },
-
-    _onSearchPopupSelected: function(widget, place) {
-        this.mapView.showNGotoLocation(place);
-
-        this._placeStore.addRecent(place);
-        this._searchPopup.hide();
-    },
-
-    _onSearchActivate: function() {
-        let searchString = this._searchEntry.get_text();
-
-        if (searchString.length > 0) {
-            this._searchPopup.showSpinner();
-            this.mapView.geocodeSearch(searchString,
-                                       this._showSearchResults.bind(this));
-        }
-    },
-
-    _showSearchResults: function(places) {
-        if (places === null) {
-            this._searchPopup.hide();
-            return;
-        }
-        this._searchPopup.updateResult(places, this._searchEntry.get_text());
-        this._searchPopup.showResult();
     },
 
     _quit: function() {

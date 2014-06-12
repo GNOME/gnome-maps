@@ -1,25 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.0 -->
-  <object class="GtkEntryCompletion" id="search-completion">
-    <property name="minimum_key_length">2</property>
-    <child>
-      <object class="GtkCellRendererPixbuf" id="iconCellRenderer">
-        <property name="xpad">2</property>
-      </object>
-      <attributes>
-        <attribute name="pixbuf">0</attribute>
-      </attributes>
-    </child>
-    <child>
-      <object class="GtkCellRendererText" id="textCellRenderer">
-        <property name="ypad">4</property>
-      </object>
-      <attributes>
-        <attribute name="text">2</attribute>
-      </attributes>
-    </child>
-  </object>
   <object class="GtkApplicationWindow" id="app-window">
     <property name="width-request">600</property>
     <property name="height-request">500</property>
@@ -33,16 +14,6 @@
         <style>
           <class name="titlebar"/>
         </style>
-        <child type="title">
-          <object class="GtkSearchEntry" id="search-entry">
-            <property name="visible">True</property>
-            <property name="has-focus">True</property>
-            <property name="width-request">500</property>
-            <property name="margin-start">6</property>
-            <property name="margin-end">6</property>
-            <property name="completion">search-completion</property>
-          </object>
-        </child>
         <child>
           <object class="GtkButton" id="goto-user-location-button">
             <property name="visible">True</property>
