@@ -38,8 +38,9 @@ const SearchPopup = new Lang.Class({
     Name: 'SearchPopup',
     Extends: Gtk.Popover,
 
-    _init: function(relativeTo, numVisible) {
-        this._numVisible = numVisible;
+    _init: function(props) {
+        this._numVisible = props.num_visible;
+        delete props.num_visible;
 
         let ui = Utils.getUIObject('search-popup', ['scrolled-window',
                                                     'stack',
@@ -60,13 +61,10 @@ const SearchPopup = new Lang.Class({
         this._treeView.connect('row-activated',
                                this._onRowActivated.bind(this));
         this._initList();
-        this.height_request = this._cellHeight * numVisible;
+        this.height_request = this._cellHeight * this._numVisible;
         this._scrolledWindow.set_min_content_height(this.height_request);
 
-        this.parent({ relative_to: relativeTo,
-                      width_request: 500,
-                      no_show_all: true,
-                      visible: true });
+        this.parent(props);
 
         this.get_style_context().add_class('maps-popover');
         this.add(this._stack);
