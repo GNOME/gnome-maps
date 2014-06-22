@@ -159,6 +159,27 @@ function writeFile(filename, buffer) {
     }
 }
 
+function getAccuracyDescription(accuracy) {
+    switch(accuracy) {
+    case Geocode.LOCATION_ACCURACY_UNKNOWN:
+        /* Translators: Accuracy of user location information */
+        return _("Unknown");
+    case 0:
+        /* Translators: Accuracy of user location information */
+        return _("Exact");
+    default:
+        let area =  Math.PI * Math.pow(accuracy / 1000, 2);
+
+        debug(accuracy + ' => ' + area);
+        if (area >= 1)
+            area = Math.floor(area);
+        else
+            area = Math.floor(area * 10) / 10;
+
+        return _("%f km²").format(area);
+    }
+}
+
 function load_icon(icon, size, loadCompleteCallback) {
     if (icon instanceof Gio.FileIcon) {
         _load_file_icon(icon, loadCompleteCallback);
