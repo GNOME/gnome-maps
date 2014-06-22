@@ -38,7 +38,7 @@ const Utils = imports.utils;
 const Path = imports.path;
 const MapLocation = imports.mapLocation;
 const MapWalker = imports.mapWalker;
-const UserLocation = imports.userLocation;
+const UserLocationMarker = imports.userLocationMarker;
 const _ = imports.gettext.gettext;
 
 const MapType = {
@@ -116,7 +116,7 @@ const MapView = new Lang.Class({
 
     gotoUserLocation: function(animate) {
         this.emit('going-to-user-location');
-        this._userLocation.once("gone-to", (function() {
+        Utils.once(this._userLocation, "gone-to", (function() {
             this.emit('gone-to-user-location');
         }).bind(this));
         this._userLocation.goTo(animate);
@@ -141,10 +141,14 @@ const MapView = new Lang.Class({
                                                     Geocode.PlaceType.UNKNOWN,
                                                     location);
 
-        let selected = this._userLocation && this._userLocation.getSelected();
-        this._userLocation = new UserLocation.UserLocation(place, this);
-        this._userLocation.show(this._userLocationLayer);
-        this._userLocation.setSelected(selected);
+        let previousSelected = this._userLocation && this._userLocation.selected;
+        this._userLocation = new UserLocationMarker.UserLocationMarker({ place: place,
+                                                                         mapView: this });
+        this._userLocationLayer.remove_all();
+        this._userLocation.addToLayer(this._userLocationLayer);
+
+        this._userLocation.selected = previousSelected;
+
         this.emit('user-location-changed');
     },
 
