@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-03-08 07:55+0000\n"
-"PO-Revision-Date: 2014-03-08 21:52+0200\n"
+"POT-Creation-Date: 2014-06-22 06:53+0000\n"
+"PO-Revision-Date: 2014-06-22 16:05+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -20,7 +20,7 @@ msgstr ""
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Gtranslator 2.91.6\n"
 
-#: ../data/gnome-maps.appdata.xml.in.h:1
+#: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
@@ -30,17 +30,7 @@ msgstr ""
 "leidžia greitai rasti ieškomą vietą naudojant paiešką pagal miestą ar gatvę "
 "bei rasti vietą susitikimui su draugu."
 
-#: ../data/gnome-maps.appdata.xml.in.h:2
-msgid ""
-"<li>Search for country, region, city or street.</li> <li>Search for specific "
-"types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
-"near Alexanderplatz, Berlin”.</li>"
-msgstr ""
-"<li>Ieškoti šalies, regiono, miesto ar gatvės.</li> <li>Ieškoti specifinių "
-"vietų, tokių kaip „Barai šalia Gedimino prospektas, Vilnius“ arba „WiFi "
-"prieiga šalia Basanavičiaus gatvė, Palanga“</li>"
-
-#: ../data/gnome-maps.appdata.xml.in.h:3
+#: ../data/org.gnome.Maps.appdata.xml.in.h:2
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
@@ -48,17 +38,29 @@ msgstr ""
 "Žemėlapiai naudoja OpenStreetMap duomenų bazę, kurią sukūrė tūkstančiai "
 "žmonių iš viso pasaulio."
 
+#: ../data/org.gnome.Maps.appdata.xml.in.h:3
+#| msgid ""
+#| "<li>Search for country, region, city or street.</li> <li>Search for "
+#| "specific types of locations, such as “Pubs near Main Street, Boston” or "
+#| "“Wi-Fi Access near Alexanderplatz, Berlin”.</li>"
+msgid ""
+"You can even search for specific types of locations, such as “Pubs near Main "
+"Street, Boston” or “Wi-Fi Access near Alexanderplatz, Berlin”."
+msgstr ""
+"Taip pat galite ieškoti specifinių vietų, tokių kaip „Barai šalia Gedimino "
+"prospekto, Vilnius“ arba „WiFi prieiga šalia Basanavičiaus gatvės, Palanga“"
+
 #. Translators: This is the program name. */
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
-#: ../src/mainWindow.js:300 ../src/main-window.ui.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
+#: ../src/mainWindow.js:301 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "Žemėlapiai"
 
-#: ../data/gnome-maps.desktop.in.in.h:2
+#: ../data/org.gnome.Maps.desktop.in.in.h:2
 msgid "A simple maps application"
 msgstr "Paprasta žemėlapių programa"
 
-#: ../data/gnome-maps.desktop.in.in.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:3
 msgid "Maps;"
 msgstr "Žemėlapiai;"
 
@@ -145,23 +147,15 @@ msgstr "Kas ten?"
 msgid "I’m here!"
 msgstr "Aš esu čia!"
 
-#: ../src/mainWindow.js:298
+#: ../src/mainWindow.js:299
 msgid "translator-credits"
 msgstr ""
 "Išvertė:\n"
 "Aurimas Černius <aurisc4@gmail.com>"
 
-#: ../src/mainWindow.js:301
+#: ../src/mainWindow.js:302
 msgid "A map application for GNOME"
 msgstr "Žemėlapių programa GNOME aplinkai"
-
-#: ../src/main-window.ui.h:1
-msgid "Street"
-msgstr "Gatvė"
-
-#: ../src/main-window.ui.h:2
-msgid "Satellite"
-msgstr "Palydovas"
 
 #. Translators: Accuracy of user location information */
 #: ../src/mapLocation.js:164
@@ -176,6 +170,26 @@ msgstr "Tikslus"
 #: ../src/mapLocation.js:177
 msgid " km<sup>2</sup>"
 msgstr " km<sup>2</sup>"
+
+#: ../src/routeService.js:76
+msgid "No route found."
+msgstr "Nerastas kelias."
+
+#: ../src/routeService.js:82
+msgid "Route request failed."
+msgstr "Nepavyko užklausti kelio."
+
+#: ../src/routeService.js:153
+msgid "Start!"
+msgstr "Pradėti!"
+
+#: ../src/sidebar.ui.h:1
+msgid "To"
+msgstr "Į"
+
+#: ../src/sidebar.ui.h:2
+msgid "From"
+msgstr "Iš"
 
 #. Translators: Showing name of place where user currently is and
 #. accuracy of this information (which is translated
