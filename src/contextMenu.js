@@ -77,7 +77,7 @@ const ContextMenu = new Lang.Class({
                                               description: "" });
         this._reverseGeocode(location, (function(place) {
             location.description = place.name;
-            this._mapView.geoclue.overrideLocation(location);
+            Application.geoclue.overrideLocation(location);
         }).bind(this));
     },
 
