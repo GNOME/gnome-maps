@@ -33,7 +33,7 @@ const Settings = new Lang.Class({
     _keyTypes: {},
 
     _init: function(schema) {
-        this.parent({ schema: schema });
+        this.parent({ schema_id: schema });
         this.list_keys().forEach((function(key) {
             this._keyTypes[key] = this.get_value(key)
                                       .get_type()
