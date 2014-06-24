@@ -66,7 +66,7 @@ const ContextMenu = new Lang.Class({
                                               accuracy: 0 });
 
         this._reverseGeocode(location, (function(place) {
-            this._mapView.showLocation(place);
+            this._mapView.showSearchResult(place);
         }).bind(this));
     },
 
