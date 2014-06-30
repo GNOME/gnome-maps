@@ -4,14 +4,15 @@
 #
 # Balázs Úr <urbalazs at gmail dot com>, 2013, 2014.
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2013.
+# Balázs Úr <urbalazs@gmail.com>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-03-04 00:08+0000\n"
-"PO-Revision-Date: 2014-03-04 19:25+0100\n"
-"Last-Translator: Balázs Úr <urbalazs at gmail dot com>\n"
+"POT-Creation-Date: 2014-06-30 06:52+0000\n"
+"PO-Revision-Date: 2014-07-01 00:20+0200\n"
+"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <gnome-hu-list@gnome.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -20,11 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.2\n"
 
-#: ../data/gnome-maps.appdata.xml.in.h:1
-#| msgid ""
-#| "Maps gives you quick access to maps all across the world. It allows you "
-#| "to quickly find the place you're looking for by searching for a city or "
-#| "street, or locate a place to meet a friend."
+#: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
@@ -34,21 +31,7 @@ msgstr ""
 "keresett hely gyors megtalálását település vagy utca keresésével, vagy "
 "megtalálni azt a helyet, ahol ismerőseivel találkozhat."
 
-#: ../data/gnome-maps.appdata.xml.in.h:2
-#| msgid ""
-#| "<li>Search for country, region, city or street.</li> <li>Search for "
-#| "specific types of locations, such as \"Pubs near Main Street, Boston\" or "
-#| "\"WiFi Access near Alexanderplatz, Berlin\"</li>"
-msgid ""
-"<li>Search for country, region, city or street.</li> <li>Search for specific "
-"types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
-"near Alexanderplatz, Berlin”.</li>"
-msgstr ""
-"<li>Ország, régió, település vagy utca keresése.</li> <li>Adott típusú helyek "
-"keresése, úgymint „Pubok a bostoni főutca közelében” vagy „Wi-Fi hozzáférés a "
-"berlini Alexanderplatz közelében”</li>"
-
-#: ../data/gnome-maps.appdata.xml.in.h:3
+#: ../data/org.gnome.Maps.appdata.xml.in.h:2
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
@@ -56,17 +39,29 @@ msgstr ""
 "A Térképek az együttműködési OpenStreetMap adatbázist használja, amelyet "
 "több százezer ember készít a világ minden részén."
 
+#: ../data/org.gnome.Maps.appdata.xml.in.h:3
+#| msgid ""
+#| "<li>Search for country, region, city or street.</li> <li>Search for "
+#| "specific types of locations, such as “Pubs near Main Street, Boston” or "
+#| "“Wi-Fi Access near Alexanderplatz, Berlin”.</li>"
+msgid ""
+"You can even search for specific types of locations, such as “Pubs near Main "
+"Street, Boston” or “Wi-Fi Access near Alexanderplatz, Berlin”."
+msgstr ""
+"Adott típusú helyeket is kereshet, úgymint „Pubok a bostoni főutca közelében” "
+"vagy „Wi-Fi hozzáférés a berlini Alexanderplatz közelében”."
+
 #. Translators: This is the program name. */
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
-#: ../src/mainWindow.js:372 ../src/main-window.ui.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
+#: ../src/mainWindow.js:301 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "Térképek"
 
-#: ../data/gnome-maps.desktop.in.in.h:2
+#: ../data/org.gnome.Maps.desktop.in.in.h:2
 msgid "A simple maps application"
 msgstr "Egyszerű térképalkalmazás"
 
-#: ../data/gnome-maps.desktop.in.in.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:3
 msgid "Maps;"
 msgstr "Térképek;"
 
@@ -83,7 +78,6 @@ msgid "Window position"
 msgstr "Ablakpozíció"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:4
-#| msgid "Window position (x and y)."
 msgid "Window position (X and Y)."
 msgstr "Ablakpozíció (X és Y)."
 
@@ -92,7 +86,6 @@ msgid "Window maximized"
 msgstr "Ablak teljes méretű"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:6
-#| msgid "Window maximized state"
 msgid "Window maximization state"
 msgstr "Az ablak maximalizált állapota"
 
@@ -129,7 +122,6 @@ msgid "User set last known location"
 msgstr "Az utolsó ismert helyet a felhasználó állította be"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:14
-#| msgid "Last known location was set manually by user."
 msgid "Whether the last known location was set manually by the user."
 msgstr "Az utolsó ismert helyet a felhasználó kézzel állította-e be."
 
@@ -150,30 +142,20 @@ msgid "Quit"
 msgstr "Kilépés"
 
 #: ../src/context-menu.ui.h:1
-#| msgid "What's here?"
 msgid "What’s here?"
 msgstr "Mi van itt?"
 
 #: ../src/context-menu.ui.h:2
-#| msgid "I'm here!"
 msgid "I’m here!"
 msgstr "Itt vagyok!"
 
-#: ../src/mainWindow.js:370
+#: ../src/mainWindow.js:299
 msgid "translator-credits"
 msgstr "Úr Balázs <urbalazs at gmail dot com>"
 
-#: ../src/mainWindow.js:373
+#: ../src/mainWindow.js:302
 msgid "A map application for GNOME"
 msgstr "Térképalkalmazás a GNOME-hoz"
-
-#: ../src/main-window.ui.h:1
-msgid "Street"
-msgstr "Utca"
-
-#: ../src/main-window.ui.h:2
-msgid "Satellite"
-msgstr "Műhold"
 
 #. Translators: Accuracy of user location information */
 #: ../src/mapLocation.js:164
@@ -189,6 +171,26 @@ msgstr "Pontos"
 msgid " km<sup>2</sup>"
 msgstr " km<sup>2</sup>"
 
+#: ../src/routeService.js:76
+msgid "No route found."
+msgstr "Nem található útvonal."
+
+#: ../src/routeService.js:82
+msgid "Route request failed."
+msgstr "Az útvonalkérés nem sikerült."
+
+#: ../src/routeService.js:153
+msgid "Start!"
+msgstr "Indulás!"
+
+#: ../src/sidebar.ui.h:1
+msgid "To"
+msgstr "Ide"
+
+#: ../src/sidebar.ui.h:2
+msgid "From"
+msgstr "Innen"
+
 #. Translators: Showing name of place where user currently is and
 #. accuracy of this information (which is translated
 #. separately)
@@ -201,6 +203,12 @@ msgid ""
 msgstr ""
 "%s\n"
 "Pozíció pontossága: %s"
+
+#~ msgid "Street"
+#~ msgstr "Utca"
+
+#~ msgid "Satellite"
+#~ msgstr "Műhold"
 
 #~ msgid " km²"
 #~ msgstr " km²"
