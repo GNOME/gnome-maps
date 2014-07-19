@@ -144,6 +144,9 @@ const MapView = new Lang.Class({
     },
 
     _updateUserLocation: function() {
+        if (!Application.geoclue)
+            return;
+
         let location = Application.geoclue.location;
 
         if (!location)
