@@ -54,26 +54,24 @@ const GraphHopper = new Lang.Class({
         this._route   = new Route.Route();
         this._query   = new RouteQuery.RouteQuery();
 
-        this.query.connect('updated', (function() {
-            if (this.query.from && this.query.to) {
-                this.fetchRoute([this.query.from.location,
-                                 this.query.to.location],
-                                this.query.transportation);
-            } else
-                this.route.reset();
+        this.query.connect('notify', (function() {
+            if (this.query.isValid())
+                this.fetchRoute(this.query.filledPoints,
+                                this._query.transportation);
         }).bind(this));
 
         this.parent();
     },
 
-    fetchRoute: function(viaPoints, transportationType) {
-        let url = this._buildURL(viaPoints, transportationType);
+    fetchRoute: function(points, transportationType) {
+        let url = this._buildURL(points, transportationType);
         let msg = Soup.Message.new('GET', url);
         this._session.queue_message(msg, (function(session, message) {
             try {
                 let result = this._parseMessage(message);
                 if (!result) {
                     Application.notificationManager.showMessage(_("No route found."));
+                    this.route.reset();
                 } else {
                     let route = this._createRoute(result.paths[0]);
                     this.route.update(route);
@@ -85,16 +83,16 @@ const GraphHopper = new Lang.Class({
         }).bind(this));
     },
 
-    _buildURL: function(viaPoints, transportation) {
-        let points = viaPoints.map(function({ latitude, longitude }) {
-            return [latitude, longitude].join(',');
+    _buildURL: function(points, transportation) {
+        let locations = points.map(function(point) {
+            return [point.place.location.latitude, point.place.location.longitude].join(',');
         });
         let vehicle = RouteQuery.Transportation.toString(transportation);
         let query = new HTTP.Query({ type:    'json',
                                      key:     this._key,
                                      vehicle: vehicle,
                                      locale:  this._locale,
-                                     point:   points,
+                                     point:   locations,
                                      debug:   Utils.debugEnabled
                                    });
         let url = this._baseURL + query.toString();

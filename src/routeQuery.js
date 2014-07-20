@@ -46,19 +46,14 @@ const RouteQuery = new Lang.Class({
     Name: 'RouteQuery',
     Extends: GObject.Object,
     Signals: {
-        'updated': { }
+        'reset': { }
     },
     Properties: {
-        'from': GObject.ParamSpec.object('from',
-                                         '',
-                                         '',
-                                         GObject.ParamFlags.READWRITE,
-                                         Geocode.Place),
-        'to': GObject.ParamSpec.object('to',
-                                       '',
-                                       '',
-                                       GObject.ParamFlags.READWRITE,
-                                       Geocode.Place),
+        'points': GObject.ParamSpec.object('points',
+                                            '',
+                                            '',
+                                            GObject.ParamFlags.READWRITE,
+                                            GObject.Object),
         'transportation': GObject.ParamSpec.int('transportation',
                                                 '',
                                                 '',
@@ -68,68 +63,85 @@ const RouteQuery = new Lang.Class({
                                                 Transportation.CAR)
     },
 
-    set from(place) {
-        this._from = place;
-        this.notify("from");
-    },
-    get from() {
-        return this._from;
+    get points() {
+        return this._points;
     },
 
-    set to(place) {
-        this._to = place;
-        this.notify("to");
+    set points(points) {
+        this._points = points;
+        this.notify('points');
     },
-    get to() {
-        return this._to;
+
+    get filledPoints() {
+        return this.points.filter(function(point) {
+            return point.place
+        });
+    },
+
+    _init: function(args) {
+        this.parent(args);
+        this._points = [];
+        this.reset();
+    },
+
+    addPoint: function(point, index) {
+        this._points.splice(index, 0, point);
+        point.connect('notify::place', (function() {
+            this.notify('points');
+        }).bind(this));
+    },
+
+    removePoint: function(index) {
+        this._points.splice(index, 1);
+        this.notify('points');
     },
 
     set transportation(transportation) {
         this._transportation = transportation;
-        this.notify("transportation");
+        this.notify('transportation');
     },
     get transportation() {
         return this._transportation;
     },
 
-    _init: function(args) {
-        this.parent(args);
-        this._connectSignals();
-        this.reset();
-    },
-
-    _connectSignals: function() {
-        this._updatedId = this.connect('notify', (function() {
-            this.emit('updated');
-        }).bind(this));
-    },
-
-    _disconnectSignals: function() {
-        this.disconnect(this._updatedId);
-    },
-
     reset: function() {
-        this.setMany({ from: null,
-                       to: null,
-                       transportation: Transportation.CAR });
+        this._transportation = Transportation.CAR;
+        this._points.forEach(function(point) {
+            point.place = null;
+        });
+        this.emit('reset');
     },
 
-    setMany: function(obj) {
-        this._disconnectSignals();
-
-        // Only set properties actually defined on this object
-        ["from", "to", "transportation"].forEach((function(prop) {
-            if (obj.hasOwnProperty(prop))
-                this[prop] = obj[prop];
-        }).bind(this));
-
-        this._connectSignals();
-        this.emit('updated');
+    isValid: function() {
+        if (this.filledPoints.length >= 2)
+            return true;
+        else
+            return false;
     },
 
     toString: function() {
-        return "From: " + this.from +
-            "\nTo: " + this.to +
-            "\nTransportation" + this.transportation;
+        return "\nPoints: " + this.points +
+               "\nTransportation: " + this.transportation;
+    }
+});
+
+const QueryPoint = new Lang.Class({
+    Name: 'QueryPoint',
+    Extends: GObject.Object,
+    Properties: {
+        'place': GObject.ParamSpec.object('place',
+                                          '',
+                                          '',
+                                          GObject.ParamFlags.READWRITE,
+                                          Geocode.Place),
+    },
+
+    set place(p) {
+        this._place = p;
+        this.notify('place');
+    },
+
+    get place() {
+        return this._place;
     }
 });
