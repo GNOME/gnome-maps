@@ -2,21 +2,23 @@
 # Copyright (C) 2013 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Kjartan Maraas <kmaraas@gnome.org>, 2013-2014.
+# Åka Sikrom <a4NOSPAMPLEASETHANKYOU@hush.com>, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps 3.11.x\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-05 06:54+0100\n"
-"PO-Revision-Date: 2014-03-05 06:54+0100\n"
-"Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"maps&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2014-06-20 17:41+0000\n"
+"PO-Revision-Date: 2014-06-13 14:52+0100\n"
+"Last-Translator: Åka Sikrom <a4NOSPAMPLEASETHANKYOU@hush.com>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../data/gnome-maps.appdata.xml.in.h:1
+#: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
@@ -26,35 +28,33 @@ msgstr ""
 "du leter etter ved å søke etter en by eller en gate, eller finne et sted å "
 "møte en venn."
 
-#: ../data/gnome-maps.appdata.xml.in.h:2
-msgid ""
-"<li>Search for country, region, city or street.</li> <li>Search for specific "
-"types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
-"near Alexanderplatz, Berlin”.</li>"
-msgstr ""
-"<li>Søk etter land, region, by eller gate.</li> <li>Søk etter spesifikke "
-"typer lokasjoner slik som «Puber nær Main Street, Boston» eller «WiFi-"
-"tilgang nær Alexanderplatz, Berlin».</li>"
-
-#: ../data/gnome-maps.appdata.xml.in.h:3
+#: ../data/org.gnome.Maps.appdata.xml.in.h:2
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
 msgstr ""
-"Kart bruker OpenStreetMap-databasen som er laget i samarbeid med "
-"hundretusener av mennesker fra hele verden."
+"Kart bruker OpenStreetMap-databasen som er laget av hundretusener av "
+"mennesker fra hele verden."
+
+#: ../data/org.gnome.Maps.appdata.xml.in.h:3
+msgid ""
+"You can even search for specific types of locations, such as “Pubs near Main "
+"Street, Boston” or “Wi-Fi Access near Alexanderplatz, Berlin”."
+msgstr ""
+"Du kan også søke etter en bestemt type sted, som f.eks. «Pub nær Main "
+"Street, Boston» eller «Wi-Fi-tilgang nær Alexanderplatz, Berlin»."
 
 #. Translators: This is the program name. */
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
-#: ../src/mainWindow.js:373 ../src/main-window.ui.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
+#: ../src/mainWindow.js:301 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "Kart"
 
-#: ../data/gnome-maps.desktop.in.in.h:2
+#: ../data/org.gnome.Maps.desktop.in.in.h:2
 msgid "A simple maps application"
-msgstr "Et enkelt program for kart"
+msgstr "Et enkelt kartprogram"
 
-#: ../data/gnome-maps.desktop.in.in.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:3
 msgid "Maps;"
 msgstr "Kart;"
 
@@ -84,23 +84,25 @@ msgstr "Tilstand for maksimering av vindu"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:7
 msgid "Last known location and accuracy"
-msgstr "Siste kjente lokasjon og valuta"
+msgstr "Siste kjente posisjon og nøyaktighet"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:8
 msgid ""
 "Last known location (latitude and longitude in degrees) and accuracy (in "
 "meters)."
 msgstr ""
-"Siste kjente lokasjon (breddegrad og lengdegrad i grader) og nøyaktighet (i "
+"Siste kjente posisjon (breddegrad og lengdegrad i grader) og nøyaktighet (i "
 "meter)."
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:9
 msgid "Description of last known location"
-msgstr "Beskrivelse av siste kjente lokasjon"
+msgstr "Beskrivelse av siste kjente posisjon"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:10
 msgid "Description of last known location of user."
-msgstr "Beskrivelse av brukers sist kjente lokasjon."
+msgstr ""
+"Beskrivelse av brukerens posisjon forrige gang enheten hadde en fungerende "
+"forbindelse."
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:11
 msgid "Maximum number of search results"
@@ -112,11 +114,11 @@ msgstr "Maksimalt antall søkeresultater fra geocode-søk."
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:13
 msgid "User set last known location"
-msgstr "Sist kjente lokasjon satt av bruker"
+msgstr "Selvvalgt sist kjente posisjon"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:14
 msgid "Whether the last known location was set manually by the user."
-msgstr "Hvorvidt sist kjente lokasjon ble satt manuelt av bruker."
+msgstr "Om sist kjente posisjon ble valgt manuelt av bruker."
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:15
 msgid "Number of recent places to store"
@@ -136,27 +138,19 @@ msgstr "Avslutt"
 
 #: ../src/context-menu.ui.h:1
 msgid "What’s here?"
-msgstr "Hva er her?"
+msgstr "Hva finnes her?"
 
 #: ../src/context-menu.ui.h:2
 msgid "I’m here!"
 msgstr "Jeg er her!"
 
-#: ../src/mainWindow.js:371
+#: ../src/mainWindow.js:299
 msgid "translator-credits"
 msgstr "Kjartan Maraas <kmaraas@gnome.org>"
 
-#: ../src/mainWindow.js:374
+#: ../src/mainWindow.js:302
 msgid "A map application for GNOME"
 msgstr "Et kartprogram for GNOME"
-
-#: ../src/main-window.ui.h:1
-msgid "Street"
-msgstr "Gate"
-
-#: ../src/main-window.ui.h:2
-msgid "Satellite"
-msgstr "Satelitt"
 
 #. Translators: Accuracy of user location information */
 #: ../src/mapLocation.js:164
@@ -166,11 +160,31 @@ msgstr "Ukjent"
 #. Translators: Accuracy of user location information */
 #: ../src/mapLocation.js:167
 msgid "Exact"
-msgstr "Eksakt"
+msgstr "Nøyaktig"
 
 #: ../src/mapLocation.js:177
 msgid " km<sup>2</sup>"
 msgstr "km<sup>2</sup>"
+
+#: ../src/routeService.js:76
+msgid "No route found."
+msgstr ""
+
+#: ../src/routeService.js:82
+msgid "Route request failed."
+msgstr ""
+
+#: ../src/routeService.js:153
+msgid "Start!"
+msgstr ""
+
+#: ../src/sidebar.ui.h:1
+msgid "To"
+msgstr ""
+
+#: ../src/sidebar.ui.h:2
+msgid "From"
+msgstr ""
 
 #. Translators: Showing name of place where user currently is and
 #. accuracy of this information (which is translated
@@ -183,4 +197,10 @@ msgid ""
 "Position Accuracy: %s"
 msgstr ""
 "%s\n"
-"Nøyaktighet for posisjon: %s"
+"Posisjonens nøyaktighet: %s"
+
+#~ msgid "Street"
+#~ msgstr "Gate"
+
+#~ msgid "Satellite"
+#~ msgstr "Satelitt"
