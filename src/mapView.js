@@ -38,6 +38,7 @@ const Utils = imports.utils;
 const Path = imports.path;
 const MapWalker = imports.mapWalker;
 const SearchResultMarker = imports.searchResultMarker;
+const TurnPointMarker = imports.turnPointMarker;
 const UserLocationMarker = imports.userLocationMarker;
 const _ = imports.gettext.gettext;
 
@@ -102,13 +103,20 @@ const MapView = new Lang.Class({
         this._searchResultLayer = new Champlain.MarkerLayer({ selection_mode: mode });
         this.view.add_layer(this._searchResultLayer);
 
+        this._instructionMarkerLayer = new Champlain.MarkerLayer({ selection_mode: mode });
+        this.view.add_layer(this._instructionMarkerLayer);
+
         this._userLocationLayer = new Champlain.MarkerLayer({ selection_mode: mode });
         this.view.add_layer(this._userLocationLayer);
     },
 
     _connectRouteSignals: function(route) {
         route.connect('update', this.showRoute.bind(this, route));
-        route.connect('reset', this._routeLayer.remove_all.bind(this._routeLayer));
+        route.connect('reset', (function() {
+            this._routeLayer.remove_all();
+            this._instructionMarkerLayer.remove_all();
+        }).bind(this));
+
     },
 
     setMapType: function(mapType) {
@@ -157,6 +165,13 @@ const MapView = new Lang.Class({
         this.emit('user-location-changed');
     },
 
+    showTurnPoint: function(turnPoint) {
+        let instructionMarker = new TurnPointMarker.InstructionMarker({ turnPoint: turnPoint,
+                                                                        mapView: this });
+        this._instructionMarkerLayer.add_marker(instructionMarker);
+        instructionMarker.goToAndSelect(false);
+    },
+
     showSearchResult: function(place) {
         this._searchResultLayer.remove_all();
         let searchResultMarker = new SearchResultMarker.SearchResultMarker({ place: place,
@@ -183,7 +198,26 @@ const MapView = new Lang.Class({
                                                      right  : route.bbox.right })
         });
 
+        this._showDestinationTurnpoints();
         new MapWalker.MapWalker(place, this).goTo(true);
+    },
+
+    _showDestinationTurnpoints: function() {
+        let route = Application.routeService.route;
+        let query = Application.routeService.query;
+        let pointIndex = 0;
+
+        this._instructionMarkerLayer.remove_all();
+        route.turnPoints.forEach(function(turnPoint) {
+            if (turnPoint.isStop()) {
+                let queryPoint = query.filledPoints[pointIndex];
+                let destinationMarker = new TurnPointMarker.DestinationMarker({ turnPoint: turnPoint,
+                                                                                queryPoint: queryPoint,
+                                                                                mapView: this });
+                this._instructionMarkerLayer.add_marker(destinationMarker);
+                pointIndex++;
+            }
+        }, this);
     },
 
     _onViewMoved: function() {

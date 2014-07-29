@@ -88,10 +88,14 @@ const TurnPoint = new Lang.Class({
         this.iconResource = this._getIconResource();
     },
 
-    isDestination: function() {
+    get type() {
+        return this._type;
+    },
+
+    isStop: function() {
         return this._type === TurnPointType.START
             || this._type === TurnPointType.VIA
-            || this._type === TurnPointType.STOP;
+            || this._type === TurnPointType.END;
     },
 
     _getIconResource: function() {
@@ -103,8 +107,6 @@ const TurnPoint = new Lang.Class({
         case TurnPointType.SLIGHT_RIGHT: return '/org/gnome/maps/direction-slightright';
         case TurnPointType.RIGHT:        return '/org/gnome/maps/direction-right';
         case TurnPointType.SHARP_RIGHT:  return '/org/gnome/maps/direction-sharpright';
-        case TurnPointType.END:          return '/org/gnome/maps/direction-end';
-        case TurnPointType.START:        return '/org/gnome/maps/direction-start';
         default:                         return '';
         }
     }
