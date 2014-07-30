@@ -90,7 +90,12 @@ const MapView = new Lang.Class({
     },
 
     _initLayers: function() {
-        this._routeLayer = new Champlain.PathLayer({ stroke_width: 2.0 });
+        let strokeColor = new Clutter.Color({ red: 0,
+                                               blue: 255,
+                                               green: 0,
+                                               alpha: 100 });
+        this._routeLayer = new Champlain.PathLayer({ stroke_width: 5.0,
+                                                     stroke_color: strokeColor });
         this.view.add_layer(this._routeLayer);
 
         let mode = Champlain.SelectionMode.SINGLE;
