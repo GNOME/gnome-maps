@@ -71,10 +71,10 @@ const MapView = new Lang.Class({
 
     _initView: function() {
         let view = this.get_view();
-        view.set_zoom_level(3);
+        view.zoom_level = 3;
         view.min_zoom_level = MapMinZoom;
         view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_OUT_CUBIC;
-        view.set_reactive(true);
+        view.reactive = true;
 
         view.connect('notify::latitude', this._onViewMoved.bind(this));
         view.connect('notify::longitude', this._onViewMoved.bind(this));
@@ -88,16 +88,14 @@ const MapView = new Lang.Class({
     },
 
     _initLayers: function() {
-        this._routeLayer = new Champlain.PathLayer();
-        this._routeLayer.set_stroke_width(2.0);
+        this._routeLayer = new Champlain.PathLayer({ stroke_width: 2.0 });
         this.view.add_layer(this._routeLayer);
 
-        this._markerLayer = new Champlain.MarkerLayer();
-        this._markerLayer.set_selection_mode(Champlain.SelectionMode.SINGLE);
+        let mode = Champlain.SelectionMode.SINGLE;
+        this._markerLayer = new Champlain.MarkerLayer({ selection_mode: mode });
         this.view.add_layer(this._markerLayer);
 
-        this._userLocationLayer = new Champlain.MarkerLayer();
-        this._userLocationLayer.set_selection_mode(Champlain.SelectionMode.SINGLE);
+        this._userLocationLayer = new Champlain.MarkerLayer({ selection_mode: mode });
         this.view.add_layer(this._userLocationLayer);
     },
 
@@ -107,11 +105,11 @@ const MapView = new Lang.Class({
     },
 
     setMapType: function(mapType) {
-        if (this.view.map_source.get_id() === mapType)
+        if (this.view.map_source.id === mapType)
             return;
 
         let source = this._factory.create_cached_source(mapType);
-        this.view.set_map_source(source);
+        this.view.map_source = source;
     },
 
     ensureLocationsVisible: function(locations) {
