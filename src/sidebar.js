@@ -49,14 +49,20 @@ const Sidebar = new Lang.Class({
         this.get_style_context().add_class('maps-sidebar');
 
         let ui = Utils.getUIObject('sidebar', [ 'sidebar',
-                                                'sidebar-form',
+                                                'via-grid-container',
                                                 'instruction-list-scrolled',
                                                 'instruction-stack',
                                                 'instruction-spinner',
                                                 'instruction-list',
                                                 'mode-pedestrian-toggle',
                                                 'mode-bike-toggle',
-                                                'mode-car-toggle']);
+                                                'mode-car-toggle',
+                                                'from-entry-grid',
+                                                'to-entry-grid',
+                                                'via-add-button']);
+
+        this._mapView = mapView;
+        this._viaGridContainer = ui.viaGridContainer;
         this._instructionList = ui.instructionList;
         this._instructionStack = ui.instructionStack;
         this._instructionWindow = ui.instructionListScrolled;
@@ -67,10 +73,13 @@ const Sidebar = new Lang.Class({
                                         ui.modeBikeToggle,
                                         ui.modeCarToggle);
 
-        ui.sidebarForm.attach(this._createEntry("from", mapView),
-                              1, 0, 1, 1);
-        ui.sidebarForm.attach(this._createEntry("to", mapView),
-                              1, 1, 1, 1);
+        this._initRouteEntry(ui.fromEntryGrid, 0);
+        this._initRouteEntry(ui.toEntryGrid, 1);
+
+        ui.viaAddButton.connect('clicked', (function() {
+            this._createViaRow(ui.viaGridContainer);
+        }).bind(this));
+
         this.add(ui.sidebar);
     },
 
@@ -86,7 +95,7 @@ const Sidebar = new Lang.Class({
         car.connect('toggled', onToggle.bind(this, transport.CAR));
         bike.connect('toggled', onToggle.bind(this, transport.BIKE));
 
-        query.connect('updated', function() {
+        query.connect('notify::transportation', function() {
             switch(query.transportation) {
             case transport.PEDESTRIAN:
                 pedestrian.active = true;
@@ -101,13 +110,43 @@ const Sidebar = new Lang.Class({
         });
     },
 
-    _createEntry: function(propName, mapView) {
-        let entry = new PlaceEntry.PlaceEntry({ visible: true,
-                                                mapView: mapView });
-        entry.bind_property("place",
-                            Application.routeService.query, propName,
+    _createPlaceEntry: function() {
+        return new PlaceEntry.PlaceEntry({ visible: true,
+                                           can_focus: true,
+                                           receives_default: true,
+                                           margin_start: 5,
+                                           width_request: 220,
+                                           mapView: this._mapView });
+    },
+
+    _createViaRow: function(listbox) {
+        let ui = Utils.getUIObject('route-via-row', [ 'via-grid',
+                                                      'via-remove-button',
+                                                      'via-entry-grid' ]);
+
+        // Always insert before 'To'
+        let insertIndex = Application.routeService.query.points.length - 1;
+        listbox.insert(ui.viaGrid, insertIndex);
+        this._initRouteEntry(ui.viaEntryGrid, insertIndex);
+
+        ui.viaRemoveButton.connect('clicked', function() {
+            let row = ui.viaGrid.get_parent();
+            let pointIndex = row.get_index();
+
+            listbox.remove(row);
+            Application.routeService.query.removePoint(pointIndex + 1);
+        });
+    },
+
+    _initRouteEntry: function(container, pointIndex) {
+        let entry = this._createPlaceEntry();
+        container.add(entry);
+
+        let point = new RouteQuery.QueryPoint();
+        entry.bind_property('place',
+                            point, 'place',
                             GObject.BindingFlags.BIDIRECTIONAL);
-        return entry;
+        Application.routeService.query.addPoint(point, pointIndex);
     },
 
     _initInstructionList: function() {
@@ -117,10 +156,14 @@ const Sidebar = new Lang.Class({
         route.connect('reset', (function() {
             this._clearInstructions();
             this._instructionStack.visible_child = this._instructionWindow;
+            this._viaGridContainer.get_children().forEach((function(row) {
+                query.removePoint(row.get_index() + 1);
+                row.destroy();
+            }).bind(this));
         }).bind(this));
 
-        query.connect('updated', (function() {
-            if (query.from && query.to)
+        query.connect('notify', (function() {
+            if (query.isValid())
                 this._instructionStack.visible_child = this._instructionSpinner;
         }).bind(this));
 
@@ -129,7 +172,7 @@ const Sidebar = new Lang.Class({
             this._instructionStack.visible_child = this._instructionWindow;
 
             route.turnPoints.forEach((function(turnPoint) {
-                let row = new InstructionRow({ visible:true,
+                let row = new InstructionRow({ visible: true,
                                                turnPoint: turnPoint });
                 this._instructionList.add(row);
             }).bind(this));

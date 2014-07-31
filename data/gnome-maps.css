@@ -59,15 +59,27 @@
     background-image: url('zoom-out-insensitive.png');
 }
 
-#sidebar-form > GtkLabel {
+#via-grid-container {
+    background-color: transparent;
+}
+
+#via-grid-container .list-row:hover {
+    background-color: transparent;
+}
+
+#via-grid-container .list-row:focus {
+    outline: 0;
+}
+
+#via-grid-container > GtkLabel {
     padding-right: 6px;
 }
 
-#sidebar-form > GtkLabel:dir(rtl) {
+#via-grid-container > GtkLabel:dir(rtl) {
     padding-left: 6px;
 }
 
-#sidebar-form .transportation-mode-button > GtkImage {
+#via-grid-container .transportation-mode-button > GtkImage {
     padding-left:   7px;
     padding-right:  7px;
     padding-top:    4px;
@@ -75,25 +87,31 @@
 }
 
 #sidebar {
-   border-left: 1px solid gray;
+    border-left: 1px solid gray;
 }
 
 #sidebar:dir(rtl) {
-   border-right: 1px solid gray;
+    border-right: 1px solid gray;
 }
 
-#instruction-box {
-    margin-left: 10px;
-    margin-right: 10px;
-    border-bottom: 1px;
-}
 #instruction-box > GtkImage {
     padding-right: 6px;
     padding-left: 6px;
 }
 
-#instruction-list {
-    border-top: 1px solid gray;
+#instruction-list .list-row {
+    background-color: #f1f2f1;
+    border-bottom: 1px solid #bbbeb7;
+}
+
+#instruction-list .list-row:hover {
+    background-color: #f9f9f9;
+    color: black;
+}
+
+#instruction-list .list-row:focused {
+    background-color: @theme_selected_bg_color;
+    color: @theme_selected_fg_color;
 }
 
 .bubble-title {

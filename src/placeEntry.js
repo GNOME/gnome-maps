@@ -43,9 +43,19 @@ const PlaceEntry = new Lang.Class({
     },
 
     set place(p) {
-        this._place = p;
-        this.text   = p ? p.name : "";
-        this.notify("place");
+        if (p) {
+            if (!this.place ||
+                (this.place.location.latitude != p.location.latitude ||
+                 this.place.location.longitude != p.location.longitude)) {
+                this._place = p;
+                this.text   = p.name;
+                this.notify("place");
+            }
+        } else {
+            this._place = p;
+            this.text   = "";
+            this.notify("place");
+        }
     },
     get place() {
         return this._place;

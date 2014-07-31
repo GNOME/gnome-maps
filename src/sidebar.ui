@@ -10,130 +10,154 @@
     <property name="valign">fill</property>
     <property name="column_homogeneous">True</property>
     <property name="orientation">vertical</property>
-    <property name="width_request">250</property>
-    <property name="row_spacing">12</property>
+    <property name="width_request">320</property>
+    <property name="row_spacing">2</property>
     <child>
-      <object class="GtkGrid" id="sidebar-form">
-        <property name="name">sidebar-form</property>
+      <object class="GtkGrid" id="mode-chooser">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="vexpand">False</property>
-        <property name="orientation">vertical</property>
-        <property name="row_spacing">12</property>
+        <property name="halign">center</property>
+        <property name="margin-top">10</property>
+        <child>
+          <object class="GtkRadioButton" id="mode-pedestrian-toggle">
+            <property name="name">mode-pedestrian-toggle</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="draw_indicator">False</property>
+            <property name="height-request">32</property>
+            <property name="width-request">42</property>
+            <child>
+              <object class="GtkImage" id="mode-pedestrian-image">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="pixbuf">route-pedestrian-symbolic</property>
+              </object>
+            </child>
+            <style>
+              <class name="transportation-mode-button"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="mode-bike-toggle">
+            <property name="name">mode-bike-toggle</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="draw_indicator">False</property>
+            <property name="group">mode-pedestrian-toggle</property>
+            <property name="height-request">32</property>
+            <property name="width-request">42</property>
+            <child>
+              <object class="GtkImage" id="mode-bike-image">
+              <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="pixbuf">route-bike-symbolic</property>
+              </object>
+            </child>
+            <style>
+              <class name="transportation-mode-button"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="mode-car-toggle">
+            <property name="name">mode-car-toggle</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="active">True</property>
+            <property name="draw_indicator">False</property>
+            <property name="group">mode-bike-toggle</property>
+            <property name="height-request">32</property>
+            <property name="width-request">42</property>
+            <child>
+              <object class="GtkImage" id="mode-car-image">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="pixbuf">route-car-symbolic</property>
+              </object>
+            </child>
+            <style>
+              <class name="transportation-mode-button"/>
+            </style>
+          </object>
+        </child>
+        <style>
+          <class name="linked"/>
+        </style>
+      </object>
+    </child>
+    <child>
+      <object class="GtkGrid" id="from-grid">
+        <property name="visible">True</property>
+        <property name="orientation">horizontal</property>
         <property name="margin_start">12</property>
         <property name="margin_end">12</property>
         <property name="margin_top">12</property>
-        <property name="margin_bottom">0</property>
         <child>
-          <object class="GtkBox" id="mode-chooser">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">center</property>
-            <property name="homogeneous">True</property>
-            <child>
-              <object class="GtkRadioButton" id="mode-pedestrian-toggle">
-                <property name="name">mode-pedestrian-toggle</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="draw_indicator">False</property>
-                <child>
-                  <object class="GtkImage" id="mode-pedestrian-image">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="pixbuf">route-pedestrian-symbolic</property>
-                  </object>
-                </child>
-                <style>
-                  <class name="transportation-mode-button"/>
-                </style>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkRadioButton" id="mode-bike-toggle">
-                <property name="name">mode-bike-toggle</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="draw_indicator">False</property>
-                <property name="group">mode-pedestrian-toggle</property>
-                <child>
-                  <object class="GtkImage" id="mode-bike-image">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="pixbuf">route-bike-symbolic</property>
-                  </object>
-                </child>
-                <style>
-                  <class name="transportation-mode-button"/>
-                </style>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkRadioButton" id="mode-car-toggle">
-                <property name="name">mode-car-toggle</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="active">True</property>
-                <property name="draw_indicator">False</property>
-                <property name="group">mode-bike-toggle</property>
-                <child>
-                  <object class="GtkImage" id="mode-car-image">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="pixbuf">route-car-symbolic</property>
-                  </object>
-                </child>
-                <style>
-                  <class name="transportation-mode-button"/>
-                </style>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">2</property>
-              </packing>
-            </child>
-            <style>
-              <class name="linked"/>
-            </style>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">2</property>
-            <property name="width">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="to-label">
+          <object class="GtkImage" id="from-image">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">end</property>
-            <property name="label" translatable="yes">To</property>
+            <property name="margin-start">10</property>
+            <property name="margin-end">5</property>
+            <property name="width-request">32</property>
+          <property name="resource">/org/gnome/maps/direction-start</property>
           </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">1</property>
-          </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="from-label">
+          <object class="GtkGrid" id="from-entry-grid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="halign">end</property>
-            <property name="label" translatable="yes">From</property>
-            <property name="ellipsize">end</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="via-add-button">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="valign">center</property>
+            <property name="height-request">31</property>
+            <child>
+              <object class="GtkImage" id="via-add-image">
+                <property name="visible">True</property>
+                <property name="icon-name">list-add-symbolic</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkListBox" id="via-grid-container">
+        <property name="name">via-grid-container</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="selection-mode">GTK_SELECTION_NONE</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkGrid" id="to-grid">
+        <property name="visible">True</property>
+        <property name="orientation">horizontal</property>
+        <property name="vexpand">False</property>
+        <property name="margin_start">12</property>
+        <property name="margin_end">12</property>
+        <child>
+          <object class="GtkImage" id="to-image">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="margin-start">10</property>
+            <property name="margin-end">5</property>
+            <property name="width-request">32</property>
+            <property name="resource">/org/gnome/maps/direction-end</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkGrid" id="to-entry-grid">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
           </object>
         </child>
       </object>
@@ -177,10 +201,6 @@
           </object>
         </child>
       </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">1</property>
-      </packing>
     </child>
   </object>
 
@@ -217,7 +237,8 @@
         <property name="use_underline">True</property>
         <property name="wrap">True</property>
         <property name="ellipsize">end</property>
-        <property name="max_width_chars">28</property>
+        <property name="width_chars">20</property>
+        <property name="max_width_chars">20</property>
         <property name="lines">3</property>
       </object>
       <packing>
