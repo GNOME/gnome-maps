@@ -263,3 +263,30 @@ function _load_themed_icon(icon, size, loadCompleteCallback) {
         log("Failed to load pixbuf: " + e);
     }
 }
+
+function prettyTime(time) {
+    let seconds = Math.floor(time / 1000);
+    let minutes = Math.floor(seconds / 60);
+    seconds = seconds % 60;
+    let hours = Math.floor(minutes / 60);
+    minutes = minutes % 60;
+
+    let labelledTime = "";
+    if (hours > 0)
+        labelledTime += _("%f h").format(hours)+' ';
+    if (minutes > 0)
+        labelledTime += _("%f min").format(minutes);
+    return labelledTime;
+}
+
+function prettyDistance(distance) {
+    let m = Math.floor(distance);
+    let km = Math.floor(m/1000);
+    m = m % 1000;
+
+    if (km > 0)
+        return _("%f km").format(km);
+    else if (m > 0)
+        return _("%f m").format(m);
+    return '';
+}

@@ -26,6 +26,7 @@ const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
+const _ = imports.gettext.gettext;
 
 const Application = imports.application;
 const PlaceStore = imports.placeStore;
@@ -57,6 +58,8 @@ const Sidebar = new Lang.Class({
                                                 'mode-pedestrian-toggle',
                                                 'mode-bike-toggle',
                                                 'mode-car-toggle',
+                                                'time-info',
+                                                'distance-info',
                                                 'from-entry-grid',
                                                 'to-entry-grid',
                                                 'via-add-button']);
@@ -67,6 +70,9 @@ const Sidebar = new Lang.Class({
         this._instructionStack = ui.instructionStack;
         this._instructionWindow = ui.instructionListScrolled;
         this._instructionSpinner = ui.instructionSpinner;
+        this._timeInfo = ui.timeInfo;
+        this._distanceInfo = ui.distanceInfo;
+
         this._initInstructionList();
 
         this._initTransportationToggles(ui.modePedestrianToggle,
@@ -160,6 +166,9 @@ const Sidebar = new Lang.Class({
                 query.removePoint(row.get_index() + 1);
                 row.destroy();
             }).bind(this));
+
+            this._timeInfo.label = '';
+            this._distanceInfo.label = '';
         }).bind(this));
 
         query.connect('notify', (function() {
@@ -176,6 +185,10 @@ const Sidebar = new Lang.Class({
                                                turnPoint: turnPoint });
                 this._instructionList.add(row);
             }).bind(this));
+
+            /* Translators: %s is a time expression with the format "%f h" or "%f min" */
+            this._timeInfo.label = _("Estimated time: %s").format(Utils.prettyTime(route.time));
+            this._distanceInfo.label = Utils.prettyDistance(route.distance);
         }).bind(this));
     },
 
@@ -198,9 +211,13 @@ const InstructionRow = new Lang.Class({
         this.visible = true;
         let ui = Utils.getUIObject('sidebar', ['instruction-box',
                                                'direction-image',
-                                               'instruction-label']);
+                                               'instruction-label',
+                                               'distance-label']);
         ui.instructionLabel.label  = this.turnPoint.instruction;
         ui.directionImage.resource = this.turnPoint.iconResource;
+
+        if (this.turnPoint.distance > 0)
+            ui.distanceLabel.label = Utils.prettyDistance(this.turnPoint.distance);
 
         this.add(ui.instructionBox);
     }
