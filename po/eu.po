@@ -1,15 +1,17 @@
 # Basque translation for gnome-maps.
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
+# Copyright (C) 2013-2014 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-maps package.
 #
 #
 # Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2013, 2014.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-22 11:47+0100\n"
-"PO-Revision-Date: 2014-03-22 11:50+0100\n"
+"POT-Creation-Date: 2014-08-07 11:49+0200\n"
+"PO-Revision-Date: 2014-07-29 19:23+0200\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
 "Language-Team: Basque <librezale@librezale.org>\n"
 "Language: eu\n"
@@ -19,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 1.4\n"
 
-#: ../data/gnome-maps.appdata.xml.in.h:1
+#: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
@@ -29,17 +31,7 @@ msgstr ""
 "Bilatzen ari zaren lekua modu azkar batean aurkitzen lagunduko dizu kalearen "
 "edo herriaren izena bilatuz, edo bilatu leku bat lagunekin aurkitzeko."
 
-#: ../data/gnome-maps.appdata.xml.in.h:2
-msgid ""
-"<li>Search for country, region, city or street.</li> <li>Search for specific "
-"types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
-"near Alexanderplatz, Berlin”.</li>"
-msgstr ""
-"<li>Bilatu herrialde, eskualde, herri edo kale bat</li> <li>Bilatu kokaleku "
-"mota zehatz bat, adibidez 'Bilbo alde zaharra tabernak' edo 'Pubs near Main "
-"Street, Boston'</li>"
-
-#: ../data/gnome-maps.appdata.xml.in.h:3
+#: ../data/org.gnome.Maps.appdata.xml.in.h:2
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
@@ -47,17 +39,28 @@ msgstr ""
 "Mapak auzolanean eraikitako OpenStreetMap datu-basea darabil, mundu osoan "
 "zehar ehun eta milaka pertsonen artean sortutakoa "
 
+#. Translators: Search is carried out on OpenStreetMap data using Nominatim.
+#. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
+#. your language to see what words you can use for the translated search.
+#: ../data/org.gnome.Maps.appdata.xml.in.h:6
+msgid ""
+"You can even search for specific types of locations, such as “Pubs near Main "
+"Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
+msgstr ""
+"Bilatu kokaleku mota zehatz bat, adibidez 'Diru-truke bulegoa, Bilbo' edo "
+"'Hotelak kale nagusia, Bilbo'"
+
 #. Translators: This is the program name.
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
-#: ../src/mainWindow.js:300 ../src/main-window.ui.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
+#: ../src/mainWindow.js:301 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "Mapak"
 
-#: ../data/gnome-maps.desktop.in.in.h:2
+#: ../data/org.gnome.Maps.desktop.in.in.h:2
 msgid "A simple maps application"
 msgstr "Mapen aplikazio xume bat"
 
-#: ../data/gnome-maps.desktop.in.in.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:3
 msgid "Maps;"
 msgstr "Mapak;"
 
@@ -146,21 +149,13 @@ msgstr "Zer dago hemen?"
 msgid "I’m here!"
 msgstr "Hemen nago!"
 
-#: ../src/mainWindow.js:298
+#: ../src/mainWindow.js:299
 msgid "translator-credits"
 msgstr "Iñaki Larrañaga Murgoitio <dooteo@zundan.com>"
 
-#: ../src/mainWindow.js:301
+#: ../src/mainWindow.js:302
 msgid "A map application for GNOME"
 msgstr "GNOMEren mapen aplikazioa"
-
-#: ../src/main-window.ui.h:1
-msgid "Street"
-msgstr "Kalea"
-
-#: ../src/main-window.ui.h:2
-msgid "Satellite"
-msgstr "Satelitea"
 
 #. Translators: Accuracy of user location information
 #: ../src/mapLocation.js:164
@@ -176,6 +171,26 @@ msgstr "Zehatza"
 msgid " km<sup>2</sup>"
 msgstr " km<sup>2</sup>"
 
+#: ../src/routeService.js:76
+msgid "No route found."
+msgstr "Ez da bideratzailerik aurkitu."
+
+#: ../src/routeService.js:82
+msgid "Route request failed."
+msgstr "Huts egin du bideratzailearen eskaerak."
+
+#: ../src/routeService.js:153
+msgid "Start!"
+msgstr "Hasi!"
+
+#: ../src/sidebar.ui.h:1
+msgid "To"
+msgstr "Nora"
+
+#: ../src/sidebar.ui.h:2
+msgid "From"
+msgstr "Nondik"
+
 #. Translators: Showing name of place where user currently is and
 #. accuracy of this information (which is translated
 #. separately)
@@ -188,6 +203,12 @@ msgid ""
 msgstr ""
 "%s\n"
 "Posizioaren zehaztasuna: %s"
+
+#~ msgid "Street"
+#~ msgstr "Kalea"
+
+#~ msgid "Satellite"
+#~ msgstr "Satelitea"
 
 #~ msgid " km²"
 #~ msgstr " km²"
