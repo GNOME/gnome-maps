@@ -32,7 +32,7 @@ const ZoomControl = new Lang.Class({
         this.parent({ halign: Gtk.Align.START,
                       valign: Gtk.Align.START,
                       margin_top: 20,
-                      margin_left: 20,
+                      margin_start: 20,
                       visible: true });
 
         let ui = Utils.getUIObject('zoom-control', ['zoom-control',
