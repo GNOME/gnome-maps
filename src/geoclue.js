@@ -158,7 +158,7 @@ const Geoclue = new Lang.Class({
         this._clientProxy = new ClientProxy(Gio.DBus.system,
                                             "org.freedesktop.GeoClue2",
                                             clientPath);
-        this._clientProxy.DesktopId = "gnome-maps";
+        this._clientProxy.DesktopId = "org.gnome.Maps";
         this._clientProxy.RequestedAccuracyLevel = AccuracyLevel.EXACT;
 
         if (!this.userSetLocation)
