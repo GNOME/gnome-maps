@@ -45,7 +45,7 @@ const MapType = {
     AERIAL:  Champlain.MAP_SOURCE_OSM_AERIAL_MAP
 };
 
-const MapMinZoom = 2;
+const MinZoom = 2;
 
 const MapView = new Lang.Class({
     Name: 'MapView',
@@ -70,7 +70,7 @@ const MapView = new Lang.Class({
     _initView: function() {
         let view = this.get_view();
         view.zoom_level = 3;
-        view.min_zoom_level = MapMinZoom;
+        view.min_zoom_level = MinZoom;
         view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_OUT_CUBIC;
         view.reactive = true;
         view.kinetic_mode = true;
@@ -79,8 +79,8 @@ const MapView = new Lang.Class({
         view.connect('notify::longitude', this._onViewMoved.bind(this));
         // switching map type will set view min-zoom-level from map source
         view.connect('notify::min-zoom-level', (function() {
-            if (view.min_zoom_level < MapMinZoom) {
-                view.min_zoom_level = MapMinZoom;
+            if (view.min_zoom_level < MinZoom) {
+                view.min_zoom_level = MinZoom;
             }
         }).bind(this));
         return view;
