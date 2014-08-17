@@ -42,9 +42,7 @@ const _ = imports.gettext.gettext;
 
 const MapType = {
     STREET:  Champlain.MAP_SOURCE_OSM_MAPQUEST,
-    AERIAL:  Champlain.MAP_SOURCE_OSM_AERIAL_MAP,
-    CYCLING: Champlain.MAP_SOURCE_OSM_CYCLE_MAP,
-    TRANSIT: Champlain.MAP_SOURCE_OSM_TRANSPORT_MAP
+    AERIAL:  Champlain.MAP_SOURCE_OSM_AERIAL_MAP
 };
 
 const MapMinZoom = 2;
