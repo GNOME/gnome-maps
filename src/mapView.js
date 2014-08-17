@@ -37,6 +37,7 @@ const Application = imports.application;
 const Utils = imports.utils;
 const Path = imports.path;
 const MapLocation = imports.mapLocation;
+const RouteLayer = imports.routeLayer;
 const UserLocation = imports.userLocation;
 const _ = imports.gettext.gettext;
 
@@ -63,8 +64,6 @@ const MapView = new Lang.Class({
         this._updateUserLocation();
         Application.geoclue.connect("location-changed",
                                     this._updateUserLocation.bind(this));
-
-        this._connectRouteSignals(Application.routeService.route);
     },
 
     _initView: function() {
@@ -87,20 +86,21 @@ const MapView = new Lang.Class({
     },
 
     _initLayers: function() {
-        this._routeLayer = new Champlain.PathLayer({ stroke_width: 2.0 });
+        let routeModel = Application.routeService.route;
+        this._routeLayer = new RouteLayer.RouteLayer({ model:   routeModel,
+                                                       mapView: this });
         this.view.add_layer(this._routeLayer);
 
         let mode = Champlain.SelectionMode.SINGLE;
         this._markerLayer = new Champlain.MarkerLayer({ selection_mode: mode });
-        this.view.add_layer(this._markerLayer);
+        this.view.add_layer(this._markerLayer);;
 
         this._userLocationLayer = new Champlain.MarkerLayer({ selection_mode: mode });
         this.view.add_layer(this._userLocationLayer);
     },
 
-    _connectRouteSignals: function(route) {
-        route.connect('update', this.showRoute.bind(this, route));
-        route.connect('reset', this._routeLayer.remove_all.bind(this._routeLayer));
+    get routeLayer() {
+        return this._routeLayer;
     },
 
     setMapType: function(mapType) {
@@ -171,28 +171,6 @@ const MapView = new Lang.Class({
 
     showNGotoLocation: function(place) {
         let mapLocation = this.showLocation(place);
-        mapLocation.goTo(true);
-    },
-
-    showRoute: function(route) {
-        this._routeLayer.remove_all();
-
-        route.path.forEach(this._routeLayer.add_node.bind(this._routeLayer));
-
-        // Animate to the center of the route bounding box
-        // goto() is currently implemented on mapLocation, so we need to go
-        // through some hoops here.
-        let [lat, lon] = route.bbox.get_center();
-        let place = new Geocode.Place({
-            location     : new Geocode.Location({ latitude  : lat,
-                                                  longitude : lon }),
-            bounding_box : new Geocode.BoundingBox({ top    : route.bbox.top,
-                                                     bottom : route.bbox.bottom,
-                                                     left   : route.bbox.left,
-                                                     right  : route.bbox.right })
-        });
-        let mapLocation = new MapLocation.MapLocation(place, this);
-
         mapLocation.goTo(true);
     },
 
