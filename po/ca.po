@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-03-10 19:54+0000\n"
-"PO-Revision-Date: 2014-03-10 23:10+0100\n"
+"POT-Creation-Date: 2014-08-17 06:58+0000\n"
+"PO-Revision-Date: 2014-08-17 14:48+0200\n"
 "Last-Translator: Gil Forcada <gilforcada@guifi.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "Language: ca\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bits\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: ../data/gnome-maps.appdata.xml.in.h:1
+#: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
@@ -29,17 +29,7 @@ msgstr ""
 "ràpidament el lloc que esteu cercant tant si és una ciutat com un carrer, o "
 "ubicar un lloc per trobar-vos amb una amistat."
 
-#: ../data/gnome-maps.appdata.xml.in.h:2
-msgid ""
-"<li>Search for country, region, city or street.</li> <li>Search for specific "
-"types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
-"near Alexanderplatz, Berlin”.</li>"
-msgstr ""
-"<li>Cerqueu per país, regió, ciutat o carrer.</li> <li>Cerqueu per tipus "
-"concrets d'ubicacions, com «Bars a prop de la plaça Catalunya, Barcelona» o "
-"«accés Wi-Fi a prop d'Alexanderplatz, Berlín».</li>"
-
-#: ../data/gnome-maps.appdata.xml.in.h:3
+#: ../data/org.gnome.Maps.appdata.xml.in.h:2
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
@@ -47,17 +37,28 @@ msgstr ""
 "El Mapes empra la base de dades col·laborativa de l'OpenStreetMap, creat per "
 "centenars de milers de persones d'arreu del món."
 
+#. Translators: Search is carried out on OpenStreetMap data using Nominatim.
+#. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
+#. your language to see what words you can use for the translated search.
+#: ../data/org.gnome.Maps.appdata.xml.in.h:6
+msgid ""
+"You can even search for specific types of locations, such as “Pubs near Main "
+"Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
+msgstr ""
+"També podeu cercar per tipus d'ubicacions en concret, com ara «Bars a prop "
+"de la plaça Catalunya, Barcelona» o «Hotels a prop d'Alexanderplatz, Berlín»."
+
 #. Translators: This is the program name. */
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
-#: ../src/mainWindow.js:300 ../src/main-window.ui.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
+#: ../src/mainWindow.js:301 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "Mapes"
 
-#: ../data/gnome-maps.desktop.in.in.h:2
+#: ../data/org.gnome.Maps.desktop.in.in.h:2
 msgid "A simple maps application"
 msgstr "Una aplicació senzilla de mapes"
 
-#: ../data/gnome-maps.desktop.in.in.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:3
 msgid "Maps;"
 msgstr "mapes;"
 
@@ -145,23 +146,15 @@ msgstr "Què hi ha aquí?"
 msgid "I’m here!"
 msgstr "Sóc aquí!"
 
-#: ../src/mainWindow.js:298
+#: ../src/mainWindow.js:299
 msgid "translator-credits"
 msgstr ""
 "Gil Forcada <gilforcada@guifi.net>\n"
 "Josep Sanchez Mesegue <papapep@gmx.com>"
 
-#: ../src/mainWindow.js:301
+#: ../src/mainWindow.js:302
 msgid "A map application for GNOME"
 msgstr "Una aplicació de mapes pel GNOME"
-
-#: ../src/main-window.ui.h:1
-msgid "Street"
-msgstr "Carrer"
-
-#: ../src/main-window.ui.h:2
-msgid "Satellite"
-msgstr "Satèl·lit"
 
 #. Translators: Accuracy of user location information */
 #: ../src/mapLocation.js:164
@@ -177,11 +170,32 @@ msgstr "Exacte"
 msgid " km<sup>2</sup>"
 msgstr " km<sup>2</sup>"
 
+#: ../src/routeService.js:76
+msgid "No route found."
+msgstr "No s'ha trobat cap ruta."
+
+#: ../src/routeService.js:82
+msgid "Route request failed."
+msgstr "Ha fallat la sol·licitud de cercar la ruta."
+
+#: ../src/routeService.js:153
+msgid "Start!"
+msgstr "Comença"
+
+#: ../src/sidebar.ui.h:1
+msgid "To"
+msgstr "A"
+
+#: ../src/sidebar.ui.h:2
+msgid "From"
+msgstr "De"
+
 #. Translators: Showing name of place where user currently is and
 #. accuracy of this information (which is translated
 #. separately)
 #. */
 #: ../src/userLocation.js:62
+#, javascript-format
 msgid ""
 "%s\n"
 "Position Accuracy: %s"
