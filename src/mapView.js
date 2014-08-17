@@ -37,6 +37,7 @@ const Application = imports.application;
 const Utils = imports.utils;
 const Path = imports.path;
 const MapLocation = imports.mapLocation;
+const PlaceLayer = imports.placeLayer;
 const RouteLayer = imports.routeLayer;
 const UserLocation = imports.userLocation;
 const _ = imports.gettext.gettext;
@@ -91,16 +92,20 @@ const MapView = new Lang.Class({
                                                        mapView: this });
         this.view.add_layer(this._routeLayer);
 
-        let mode = Champlain.SelectionMode.SINGLE;
-        this._markerLayer = new Champlain.MarkerLayer({ selection_mode: mode });
-        this.view.add_layer(this._markerLayer);;
+        this._placeLayer = new PlaceLayer.PlaceLayer({ mapView: this });
+        this.view.add_layer(this._placeLayer);
 
+        let mode = Champlain.SelectionMode.SINGLE;
         this._userLocationLayer = new Champlain.MarkerLayer({ selection_mode: mode });
         this.view.add_layer(this._userLocationLayer);
     },
 
     get routeLayer() {
         return this._routeLayer;
+    },
+
+    get placeLayer() {
+        return this._placeLayer;
     },
 
     setMapType: function(mapType) {
@@ -158,20 +163,6 @@ const MapView = new Lang.Class({
         this._userLocation.show(this._userLocationLayer);
         this._userLocation.setSelected(selected);
         this.emit('user-location-changed');
-    },
-
-    showLocation: function(place) {
-        this._markerLayer.remove_all();
-        let mapLocation = new MapLocation.MapLocation(place, this);
-
-        mapLocation.show(this._markerLayer);
-
-        return mapLocation;
-    },
-
-    showNGotoLocation: function(place) {
-        let mapLocation = this.showLocation(place);
-        mapLocation.goTo(true);
     },
 
     _onViewMoved: function() {

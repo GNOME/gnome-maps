@@ -96,7 +96,7 @@ const MainWindow = new Lang.Class({
                                                    });
         placeEntry.connect('notify::place', (function() {
             if (placeEntry.place) {
-                this.mapView.showNGotoLocation(placeEntry.place);
+                this.mapView.placeLayer.showAndGotoPlace(placeEntry.place);
                 Application.placeStore.addRecent(placeEntry.place);
             }
         }).bind(this));
