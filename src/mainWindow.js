@@ -54,12 +54,11 @@ const MainWindow = new Lang.Class({
         this._configureId = 0;
         let ui = Utils.getUIObject('main-window', [ 'app-window',
                                                     'header-bar',
+                                                    'grid',
                                                     'layers-button']);
         this.window = ui.appWindow;
         this.window.application = app;
         this._overlay = overlay;
-
-        ui.appWindow.add(this._overlay);
 
         this.mapView = new MapView.MapView();
         overlay.add(this.mapView);
@@ -67,7 +66,6 @@ const MainWindow = new Lang.Class({
         this.mapView.gotoUserLocation(false);
 
         this._sidebar = new Sidebar.Sidebar(this.mapView);
-        overlay.add_overlay(this._sidebar);
         Application.routeService.route.connect('update',
                                                this._setRevealSidebar.bind(this, true));
 
@@ -84,7 +82,11 @@ const MainWindow = new Lang.Class({
         this._restoreWindowGeometry();
 
         this._overlay.add_overlay(new ZoomControl.ZoomControl(this.mapView));
-        this._overlay.show_all();
+
+        ui.grid.attach(this._overlay, 0, 0, 1, 1);
+        ui.grid.attach(this._sidebar, 1, 0, 1, 1);
+
+        ui.grid.show_all();
     },
 
     _createPlaceEntry: function() {

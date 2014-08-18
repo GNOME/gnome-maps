@@ -98,7 +98,6 @@ const Sidebar = new Lang.Class({
 
     _createEntry: function(propName, mapView) {
         let entry = new PlaceEntry.PlaceEntry({ visible: true,
-                                                hexpand: true,
                                                 mapView: mapView });
         entry.bind_property("place",
                             Application.routeService.query, propName,
