@@ -40,6 +40,7 @@ const MapLocation = imports.mapLocation;
 const PlaceLayer = imports.placeLayer;
 const RouteLayer = imports.routeLayer;
 const UserLocation = imports.userLocation;
+const UserLocationLayer = imports.userLocationLayer;
 const _ = imports.gettext.gettext;
 
 const MapType = {
@@ -61,10 +62,6 @@ const MapView = new Lang.Class({
 
         this._factory = Champlain.MapSourceFactory.dup_default();
         this.setMapType(MapType.STREET);
-
-        this._updateUserLocation();
-        Application.geoclue.connect("location-changed",
-                                    this._updateUserLocation.bind(this));
     },
 
     _initView: function() {
@@ -95,8 +92,10 @@ const MapView = new Lang.Class({
         this._placeLayer = new PlaceLayer.PlaceLayer({ mapView: this });
         this.view.add_layer(this._placeLayer);
 
-        let mode = Champlain.SelectionMode.SINGLE;
-        this._userLocationLayer = new Champlain.MarkerLayer({ selection_mode: mode });
+        this._userLocationLayer =
+            new UserLocationLayer.UserLocationLayer({ mapView: this,
+                                                      model: Application.geoclue
+                                                    });
         this.view.add_layer(this._userLocationLayer);
     },
 
@@ -106,6 +105,10 @@ const MapView = new Lang.Class({
 
     get placeLayer() {
         return this._placeLayer;
+    },
+
+    get userLocationLayer() {
+        return this._userLocationLayer;
     },
 
     setMapType: function(mapType) {
@@ -129,40 +132,6 @@ const MapView = new Lang.Class({
             bbox.top    = Math.max(bbox.top,    location.latitude);
         });
         this.view.ensure_visible(bbox, true);
-    },
-
-    gotoUserLocation: function(animate) {
-        this.emit('going-to-user-location');
-        this._userLocation.once("gone-to", (function() {
-            this.emit('gone-to-user-location');
-        }).bind(this));
-        this._userLocation.goTo(animate);
-    },
-
-    userLocationVisible: function() {
-        let box = this.view.get_bounding_box();
-
-        return box.covers(this._userLocation.latitude, this._userLocation.longitude);
-    },
-
-    _updateUserLocation: function() {
-        if (!Application.geoclue)
-            return;
-
-        let location = Application.geoclue.location;
-
-        if (!location)
-            return;
-
-        let place = Geocode.Place.new_with_location(location.description,
-                                                    Geocode.PlaceType.UNKNOWN,
-                                                    location);
-
-        let selected = this._userLocation && this._userLocation.getSelected();
-        this._userLocation = new UserLocation.UserLocation(place, this);
-        this._userLocation.show(this._userLocationLayer);
-        this._userLocation.setSelected(selected);
-        this.emit('user-location-changed');
     },
 
     _onViewMoved: function() {

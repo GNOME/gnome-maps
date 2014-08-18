@@ -64,7 +64,7 @@ const MainWindow = new Lang.Class({
         this.mapView = new MapView.MapView();
         overlay.add(this.mapView);
 
-        this.mapView.gotoUserLocation(false);
+        this.mapView.userLocationLayer.gotoUserLocation(false);
 
         this._sidebar = new Sidebar.Sidebar(this.mapView);
         overlay.add_overlay(this._sidebar);
@@ -252,14 +252,12 @@ const MainWindow = new Lang.Class({
 
     _onGotoUserLocationActivate: function() {
         if (Application.geoclue.userSetLocation) {
-            Utils.once(Application.geoclue,
-                       'location-changed',
-                       (function() {
-                this.mapView.gotoUserLocation(true);
+            Utils.once(Application.geoclue, 'location-changed', (function() {
+                this.mapView.userLocationLayer.gotoUserLocation(true);
             }).bind(this));
             Application.geoclue.findLocation();
         } else
-            this.mapView.gotoUserLocation(true);
+            this.mapView.userLocationLayer.gotoUserLocation(true);
     },
 
     _onMapTypeMenuActivate: function(action) {
