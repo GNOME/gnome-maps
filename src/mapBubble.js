@@ -22,6 +22,7 @@
 
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
+const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
@@ -36,7 +37,8 @@ const Button = {
     NONE: 0,
     ROUTE: 2,
     SHARE: 4,
-    FAVORITE: 8
+    FAVORITE: 8,
+    CHECK_IN: 16
 };
 
 const MapBubble = new Lang.Class({
@@ -58,6 +60,11 @@ const MapBubble = new Lang.Class({
         let routeFrom = params.routeFrom;
         delete params.routeFrom;
 
+        let checkInMatchPlace = params.checkInMatchPlace;
+        if (checkInMatchPlace !== false)
+            checkInMatchPlace = true;
+        delete params.checkInMatchPlace;
+
         params.modal = false;
 
         this.parent(params);
@@ -67,7 +74,8 @@ const MapBubble = new Lang.Class({
                                                    'bubble-button-area',
                                                    'bubble-route-button',
                                                    'bubble-share-button',
-                                                   'bubble-favorite-button']);
+                                                   'bubble-favorite-button',
+                                                   'bubble-check-in-button']);
         this._image = ui.bubbleImage;
         this._content = ui.bubbleContentArea;
 
@@ -80,6 +88,8 @@ const MapBubble = new Lang.Class({
                 this._initShareButton(ui.bubbleShareButton);
             if (buttonFlags & Button.FAVORITE)
                 this._initFavoriteButton(ui.bubbleFavoriteButton);
+            if (buttonFlags & Button.CHECK_IN)
+                this._initCheckInButton(ui.bubbleCheckInButton, checkInMatchPlace);
         }
 
         this.add(ui.bubbleMainGrid);
@@ -147,6 +157,19 @@ const MapBubble = new Lang.Class({
             }
             this.destroy();
             query.thaw_notify();
+        }).bind(this));
+    },
+
+    _initCheckInButton: function(button, matchPlace) {
+        Application.checkInManager.bind_property('hasCheckIn',
+                                                 button, 'visible',
+                                                 GObject.BindingFlags.DEFAULT |
+                                                 GObject.BindingFlags.SYNC_CREATE);
+
+        button.connect('clicked', (function() {
+            Application.checkInManager.showCheckInDialog(this.get_toplevel(),
+                                                         this.place,
+                                                         matchPlace);
         }).bind(this));
     }
 });
