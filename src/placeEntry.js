@@ -84,6 +84,7 @@ const PlaceEntry = new Lang.Class({
 
         completion.connect('match-selected', (function(c, model, iter) {
             this.place = model.get_value(iter, PlaceStore.Columns.PLACE);
+            return true;
         }).bind(this));
 
         return completion;
