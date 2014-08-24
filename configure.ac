@@ -54,5 +54,7 @@ AC_CONFIG_FILES([
     data/org.gnome.Maps.desktop.in
     data/icons/Makefile
     po/Makefile.in
+    src/config.js
+    src/path.js
 ])
 AC_OUTPUT
