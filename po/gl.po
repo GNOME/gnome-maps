@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-06 12:28+0100\n"
-"PO-Revision-Date: 2014-03-06 12:28+0200\n"
+"POT-Creation-Date: 2014-08-25 22:27+0200\n"
+"PO-Revision-Date: 2014-08-25 22:29+0200\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
 "Language-Team: gnome-l10n-gl@gnome.org\n"
 "Language: gl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Virtaal 0.7.1\n"
 
-#: ../data/gnome-maps.appdata.xml.in.h:1
+#: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
@@ -28,17 +28,7 @@ msgstr ""
 "rápida o lugar que está buscando por cidade ou rúa, ou localizar un lugar "
 "para encontrarse con un amigo."
 
-#: ../data/gnome-maps.appdata.xml.in.h:2
-msgid ""
-"<li>Search for country, region, city or street.</li> <li>Search for specific "
-"types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
-"near Alexanderplatz, Berlin”.</li>"
-msgstr ""
-"<li>Busque por país, rexión, cidade ou rúa.</li><li>Buscar por tipos "
-"específicos de localizacións, como «Bares cerca de Rúa Nova, Compostela» ou "
-"«Puntos WiFi cerca de Praza de Galiza, Vilagarcía»</li>"
-
-#: ../data/gnome-maps.appdata.xml.in.h:3
+#: ../data/org.gnome.Maps.appdata.xml.in.h:2
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
@@ -46,17 +36,29 @@ msgstr ""
 "Mapa usa a base de datos colaborativa de OpenStreetMap, feita por centos de "
 "persoas por todo o mundo."
 
+#. Translators: Search is carried out on OpenStreetMap data using Nominatim.
+#. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
+#. your language to see what words you can use for the translated search.
+#: ../data/org.gnome.Maps.appdata.xml.in.h:6
+msgid ""
+"You can even search for specific types of locations, such as “Pubs near Main "
+"Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
+msgstr ""
+"Incluso pode buscar por tipos de localizacións específicos como «Bares cerca "
+"de Rúa Nova, Compostela» ou «Puntos WiFi cerca de Praza de Galiza, "
+"Vilagarcía»"
+
 #. Translators: This is the program name. */
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
-#: ../src/mainWindow.js:373 ../src/main-window.ui.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
+#: ../src/mainWindow.js:301 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "Mapas"
 
-#: ../data/gnome-maps.desktop.in.in.h:2
+#: ../data/org.gnome.Maps.desktop.in.in.h:2
 msgid "A simple maps application"
 msgstr "Un aplicativo sinxelo de mapas"
 
-#: ../data/gnome-maps.desktop.in.in.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:3
 msgid "Maps;"
 msgstr "Mapas;"
 
@@ -145,21 +147,13 @@ msgstr "Que hai aquí?"
 msgid "I’m here!"
 msgstr "Estou aquí!"
 
-#: ../src/mainWindow.js:371
+#: ../src/mainWindow.js:299
 msgid "translator-credits"
 msgstr "Fran Dieguez <frandieguez@gnome.org>, 2013."
 
-#: ../src/mainWindow.js:374
+#: ../src/mainWindow.js:302
 msgid "A map application for GNOME"
 msgstr "Un aplicativo de mapas para GNOME"
-
-#: ../src/main-window.ui.h:1
-msgid "Street"
-msgstr "Rúa"
-
-#: ../src/main-window.ui.h:2
-msgid "Satellite"
-msgstr "Satélite"
 
 #. Translators: Accuracy of user location information */
 #: ../src/mapLocation.js:164
@@ -175,6 +169,26 @@ msgstr "Exacta"
 msgid " km<sup>2</sup>"
 msgstr " km<sup>2</sup>"
 
+#: ../src/routeService.js:76
+msgid "No route found."
+msgstr "Non se atopou a ruta."
+
+#: ../src/routeService.js:82
+msgid "Route request failed."
+msgstr "Produciuse un fallo na solicitude de ruta."
+
+#: ../src/routeService.js:153
+msgid "Start!"
+msgstr "Comezar!"
+
+#: ../src/sidebar.ui.h:1
+msgid "To"
+msgstr "A"
+
+#: ../src/sidebar.ui.h:2
+msgid "From"
+msgstr "Desde"
+
 #. Translators: Showing name of place where user currently is and
 #. accuracy of this information (which is translated
 #. separately)
@@ -187,6 +201,12 @@ msgid ""
 msgstr ""
 "%s\n"
 "Posición Precisión: %s"
+
+#~ msgid "Street"
+#~ msgstr "Rúa"
+
+#~ msgid "Satellite"
+#~ msgstr "Satélite"
 
 #~ msgid " km²"
 #~ msgstr " km²"
