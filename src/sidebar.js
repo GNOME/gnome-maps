@@ -51,11 +51,16 @@ const Sidebar = new Lang.Class({
         let ui = Utils.getUIObject('sidebar', [ 'sidebar',
                                                 'sidebar-form',
                                                 'instruction-list-scrolled',
+                                                'instruction-stack',
+                                                'instruction-spinner',
                                                 'instruction-list',
                                                 'mode-pedestrian-toggle',
                                                 'mode-bike-toggle',
                                                 'mode-car-toggle']);
         this._instructionList = ui.instructionList;
+        this._instructionStack = ui.instructionStack;
+        this._instructionWindow = ui.instructionListScrolled;
+        this._instructionSpinner = ui.instructionSpinner;
         this._initInstructionList();
 
         this._initTransportationToggles(ui.modePedestrianToggle,
@@ -107,10 +112,21 @@ const Sidebar = new Lang.Class({
 
     _initInstructionList: function() {
         let route = Application.routeService.route;
+        let query = Application.routeService.query;
 
-        route.connect('reset', this._clearInstructions.bind(this));
+        route.connect('reset', (function() {
+            this._clearInstructions();
+            this._instructionStack.visible_child = this._instructionWindow;
+        }).bind(this));
+
+        query.connect('updated', (function() {
+            if (query.from && query.to)
+                this._instructionStack.visible_child = this._instructionSpinner;
+        }).bind(this));
+
         route.connect('update', (function() {
             this._clearInstructions();
+            this._instructionStack.visible_child = this._instructionWindow;
 
             route.turnPoints.forEach((function(turnPoint) {
                 let row = new InstructionRow({ visible:true,
