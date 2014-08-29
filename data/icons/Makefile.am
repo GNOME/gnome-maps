@@ -28,12 +28,14 @@ images_DATA =                                   \
 
 noinst_DATA =					\
 	gnome-maps.svg				\
+	gnome-maps-highcontrast.svg				\
 	$(NULL)
 
 EXTRA_DIST =					\
 	$(public_icons)				\
 	$(images_DATA)				\
 	gnome-maps.svg				\
+	gnome-maps-highcontrast.svg				\
 	$(NULL)
 
 ###############################################################################
