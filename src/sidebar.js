@@ -190,6 +190,11 @@ const Sidebar = new Lang.Class({
             this._timeInfo.label = _("Estimated time: %s").format(Utils.prettyTime(route.time));
             this._distanceInfo.label = Utils.prettyDistance(route.distance);
         }).bind(this));
+
+        this._instructionList.connect('row-selected',(function(listbox, row) {
+            if (row)
+                this._mapView.showTurnPoint(row.turnPoint);
+        }).bind(this));
     },
 
     _clearInstructions: function() {
