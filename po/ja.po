@@ -4,14 +4,15 @@
 # victory  <victory.deb@gmail.com>, 2013.
 # Jiro Matsuzawa  <jmatsuzawa@gnome.org>, 2013.
 # Ikuya Awashiro <ikuya@fruitsbasket.info>, 2014.
+# Hajime Taira <htaira@redhat.com>, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-03-30 07:17+0000\n"
-"PO-Revision-Date: 2014-03-30 18:06+0900\n"
-"Last-Translator: Ikuya Awashiro <ikuya@fruitsbasket.info>\n"
+"POT-Creation-Date: 2014-08-29 17:50+0000\n"
+"PO-Revision-Date: 2014-08-29 21:02+0900\n"
+"Last-Translator: Hajime Taira <htaira@redhat.com>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -19,29 +20,32 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../data/gnome-maps.appdata.xml.in.h:1
+#: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid "Maps gives you quick access to maps all across the world. It allows you to quickly find the place you’re looking for by searching for a city or street, or locate a place to meet a friend."
 msgstr "世界中あらゆる場所の地図に簡単にアクセスできます。都市や住所を検索して、お探しの場所をさっと見つけられ、待ち合わせ場所もすぐに特定できます。"
 
-#: ../data/gnome-maps.appdata.xml.in.h:2
-msgid "<li>Search for country, region, city or street.</li> <li>Search for specific types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access near Alexanderplatz, Berlin”.</li>"
-msgstr "<li>国、地域、都市、町名番地による検索。</li><li>場所の特定の種類による検索。例:“Pubs near Main Street, Boston“ あるいは “WiFi Access near Alexanderplatz, Berlin“</li>"
-
-#: ../data/gnome-maps.appdata.xml.in.h:3
+#: ../data/org.gnome.Maps.appdata.xml.in.h:2
 msgid "Maps uses the collaborative OpenStreetMap database, made by hundreds of thousands of people across the globe."
 msgstr "この地図アプリは、OpenStreetMap データベースを利用しています。このデータベースは、世界中の膨大な人々が協力して作成しています。"
 
+#. Translators: Search is carried out on OpenStreetMap data using Nominatim.
+#. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
+#. your language to see what words you can use for the translated search.
+#: ../data/org.gnome.Maps.appdata.xml.in.h:6
+msgid "You can even search for specific types of locations, such as “Pubs near Main Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
+msgstr "特定のタイプにより検索することができます。場所の特定の種類による検索。例:“Pubs near Main Street, Boston“ あるいは “Hotel near Alexanderplatz, Berlin“"
+
 #. Translators: This is the program name. */
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
-#: ../src/mainWindow.js:300 ../src/main-window.ui.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
+#: ../src/mainWindow.js:303 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "地図"
 
-#: ../data/gnome-maps.desktop.in.in.h:2
+#: ../data/org.gnome.Maps.desktop.in.in.h:2
 msgid "A simple maps application"
 msgstr "シンプルな地図アプリケーション"
 
-#: ../data/gnome-maps.desktop.in.in.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:3
 msgid "Maps;"
 msgstr "Maps;地図;マップ;"
 
@@ -125,50 +129,85 @@ msgstr "ここはどこ?"
 msgid "I’m here!"
 msgstr "私はここにいます!"
 
-#: ../src/mainWindow.js:298
+#: ../src/mainWindow.js:301
 msgid "translator-credits"
 msgstr ""
 "松澤 二郎 <jmatsuzawa@gnome.org>\n"
+"victory  <victory.deb@gmail.com>\n"
+"Ikuya Awashiro <ikuya@fruitsbasket.info>\n"
+"Hajime Taira <htaira@redhat.com>\n"
 "日本GNOMEユーザー会 <http://www.gnome.gr.jp>"
 
-#: ../src/mainWindow.js:301
+#: ../src/mainWindow.js:304
 msgid "A map application for GNOME"
 msgstr "GNOME 向け地図アプリケーション"
 
-#: ../src/main-window.ui.h:1
-msgid "Street"
-msgstr "道路地図"
+#: ../src/routeService.js:76
+msgid "No route found."
+msgstr "ルートが見つかりません。"
 
-#: ../src/main-window.ui.h:2
-msgid "Satellite"
-msgstr "衛星写真"
+#: ../src/routeService.js:82
+msgid "Route request failed."
+msgstr "ルート要求は失敗しました。"
 
-#. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:164
-msgid "Unknown"
-msgstr "不明"
+#: ../src/routeService.js:153
+msgid "Start!"
+msgstr "開始！"
 
-#. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:167
-msgid "Exact"
-msgstr "正確"
-
-#: ../src/mapLocation.js:177
-msgid " km<sup>2</sup>"
-msgstr " km<sup>2</sup>"
-
-#. Translators: Showing name of place where user currently is and
-#. accuracy of this information (which is translated
-#. separately)
-#. */
-#: ../src/userLocation.js:62
+#: ../src/searchResultBubble.js:60
 #, javascript-format
-msgid ""
-"%s\n"
-"Position Accuracy: %s"
+msgid "Country code: %s"
+msgstr ""
+
+#: ../src/searchResultBubble.js:66
+#, javascript-format
+msgid "Postal code: %s"
+msgstr ""
+
+#: ../src/sidebar.ui.h:1
+msgid "To"
+msgstr "目的地"
+
+#: ../src/sidebar.ui.h:2
+msgid "From"
+msgstr "出発地点"
+
+#: ../src/user-location-bubble.ui.h:1
+msgid "Current location"
+msgstr ""
+
+#. To translators: %s can be "Unknown", "Exact" or "%f km²"
+#: ../src/user-location-bubble.ui.h:4
+#, fuzzy, no-c-format
+#| msgid ""
+#| "%s\n"
+#| "Position Accuracy: %s"
+msgid "Accuracy: %s"
 msgstr ""
 "%s\n"
 "位置精度: %s"
 
-#~ msgid " km²"
-#~ msgstr " km²"
+#. Translators: Accuracy of user location information */
+#: ../src/utils.js:166
+msgid "Unknown"
+msgstr "不明"
+
+#. Translators: Accuracy of user location information */
+#: ../src/utils.js:169
+msgid "Exact"
+msgstr "正確"
+
+#: ../src/utils.js:179
+#, fuzzy, javascript-format
+#| msgid " km²"
+msgid "%f km²"
+msgstr " km²"
+
+#~ msgid " km<sup>2</sup>"
+#~ msgstr " km<sup>2</sup>"
+
+#~ msgid "Street"
+#~ msgstr "道路地図"
+
+#~ msgid "Satellite"
+#~ msgstr "衛星写真"
