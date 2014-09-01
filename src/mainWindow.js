@@ -94,7 +94,8 @@ const MainWindow = new Lang.Class({
                                                      visible:       true,
                                                      margin_start:  6,
                                                      margin_end:    6,
-                                                     width_request: 500
+                                                     width_request: 500,
+                                                     loupe:         true
                                                    });
         placeEntry.connect('notify::place', (function() {
             if (placeEntry.place) {
