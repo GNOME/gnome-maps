@@ -36,6 +36,9 @@ Geocode.Location.prototype.equals = function(location) {
             location.longitude === this.longitude);
 };
 
+// Matches coordinates string with the format "<lat>, <long>"
+const COORDINATES_REGEX = /^\s*(\-?\d+(?:\.\d+)?)\s*,\s*(\-?\d+(?:\.\d+)?)\s*$/;
+
 const PlaceEntry = new Lang.Class({
     Name: 'PlaceEntry',
     Extends: Gtk.SearchEntry,
@@ -55,8 +58,11 @@ const PlaceEntry = new Lang.Class({
             return;
 
         if (p) {
-            this.text = p.name;
-            Application.placeStore.addRecent(p);
+            if (p.name) {
+                this.text = p.name;
+                Application.placeStore.addRecent(p);
+            } else
+                this.text = p.location.latitude + ', ' + p.location.longitude;
         } else
             this.text = '';
 
@@ -130,9 +136,35 @@ const PlaceEntry = new Lang.Class({
         return popover;
     },
 
+    _validateCoordinates: function(lat, lon) {
+        return lat <= 90 && lat >= -90 && lon <= 180 && lon >= -180;
+    },
+
+    _parseCoordinates: function(text) {
+        let match = text.match(COORDINATES_REGEX);
+
+        if (match) {
+            let latitude = parseFloat(match[1]);
+            let longitude = parseFloat(match[2]);
+
+            if (this._validateCoordinates(latitude, longitude)) {
+                return new Geocode.Location({ latitude: latitude,
+                                              longitude: longitude });
+            } else
+                return null;
+        } else
+            return null;
+    },
+
     _onActivate: function() {
         if (this.text.length === 0) {
             this.place = null;
+            return;
+        }
+
+        let parsedLocation = this._parseCoordinates(this.text);
+        if (parsedLocation) {
+            this.place = new Geocode.Place({ location: parsedLocation });
             return;
         }
 
