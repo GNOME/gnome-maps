@@ -61,6 +61,10 @@ const PlaceEntry = new Lang.Class({
         this._mapView = props.mapView;
         delete props.mapView;
 
+        if (!props.loupe)
+            props.primary_icon_name = null;
+        delete props.loupe;
+
         props.completion = this._createCompletion();
         this.parent(props);
 
