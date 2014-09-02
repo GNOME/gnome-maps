@@ -214,7 +214,21 @@ const InstructionRow = new Lang.Class({
                                                'instruction-label',
                                                'distance-label']);
         ui.instructionLabel.label  = this.turnPoint.instruction;
-        ui.directionImage.resource = this.turnPoint.iconResource;
+
+        switch(this.turnPoint.type) {
+        case Route.TurnPointType.START:
+            ui.directionImage.icon_name = 'maps-point-start-symbolic';
+            break;
+        case Route.TurnPointType.END:
+            ui.directionImage.icon_name = 'maps-point-end-symbolic';
+            break;
+        case Route.TurnPointType.VIA:
+            ui.directionImage.icon_name = 'maps-point-end-symbolic';
+            break;
+        default:
+            ui.directionImage.resource = this.turnPoint.iconResource;
+            break;
+        }
 
         if (this.turnPoint.distance > 0)
             ui.distanceLabel.label = Utils.prettyDistance(this.turnPoint.distance);

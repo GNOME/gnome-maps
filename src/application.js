@@ -121,6 +121,7 @@ const Application = new Lang.Class({
         if (this._mainWindow)
             return;
 
+        Gtk.IconTheme.get_default().append_search_path(Path.ICONS_DIR);
         let overlay = new Gtk.Overlay({ visible: true, can_focus: true });
         notificationManager = new NotificationManager.NotificationManager(overlay);
         this._mainWindow = new MainWindow.MainWindow(this, overlay);

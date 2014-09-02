@@ -22,6 +22,10 @@ public_icons =						\
 
 imagesdir = $(datadir)/gnome-maps/pixmaps
 images_DATA =                                   \
+	maps-point-start.svg			\
+	maps-point-end.svg			\
+	maps-point-start-symbolic.svg		\
+	maps-point-end-symbolic.svg		\
 	pin.svg					\
 	user-location.png			\
 	$(NULL)
