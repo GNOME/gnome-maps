@@ -119,9 +119,8 @@ const Sidebar = new Lang.Class({
     _createPlaceEntry: function() {
         return new PlaceEntry.PlaceEntry({ visible: true,
                                            can_focus: true,
+                                           hexpand: true,
                                            receives_default: true,
-                                           margin_start: 5,
-                                           width_request: 220,
                                            mapView: this._mapView });
     },
 

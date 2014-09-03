@@ -4,21 +4,20 @@
   <object class="GtkGrid" id="via-grid">
     <property name="visible">True</property>
     <property name="orientation">horizontal</property>
+    <property name="hexpand">False</property>
     <child>
       <object class="GtkImage" id="via-image">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="margin-start">12</property>
-        <property name="margin-end">12</property>
-        <property name="margin_top">0</property>
-        <property name="margin_bottom">0</property>
-        <property name="width-request">32</property>
+        <property name="margin-end">21</property>
+        <property name="width-request">16</property>
       </object>
     </child>
     <child>
       <object class="GtkGrid" id="via-entry-grid">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="hexpand">True</property>
       </object>
     </child>
     <child>
@@ -27,6 +26,8 @@
         <property name="can-focus">True</property>
         <property name="valign">center</property>
         <property name="height-request">31</property>
+        <property name="margin-start">4</property>
+        <property name="margin-end">10</property>
         <child>
           <object class="GtkImage" id="via-remove-image">
             <property name="visible">True</property>
