@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps 3.9.91\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-30 21:48+0300\n"
-"PO-Revision-Date: 2014-08-30 21:53+0300\n"
-"Last-Translator: Yosef Or Boczko <yoseforb@gnome.org>\n"
+"POT-Creation-Date: 2014-09-03 13:35+0300\n"
+"PO-Revision-Date: 2014-09-03 13:40+0300\n"
+"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
@@ -49,7 +49,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
-#: ../src/mainWindow.js:303 ../src/main-window.ui.h:1
+#: ../src/mainWindow.js:304 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "מפות"
 
@@ -145,23 +145,35 @@ msgstr "מה זה כאן?"
 msgid "I’m here!"
 msgstr "אני כאן!"
 
-#: ../src/mainWindow.js:301
+#: ../src/mainWindow.js:302
 msgid "translator-credits"
 msgstr "יוסף אור בוצ׳קו <yoseforb@gnome.org>"
 
-#: ../src/mainWindow.js:304
+#: ../src/mainWindow.js:305
 msgid "A map application for GNOME"
 msgstr "יישום מפות עבור GNOME"
 
-#: ../src/routeService.js:76
+#: ../src/main-window.ui.h:2
+msgid "Go to current location"
+msgstr "מעבר למיקום הנוכחי"
+
+#: ../src/main-window.ui.h:3
+msgid "Choose map type"
+msgstr "בחירת סוג המפה"
+
+#: ../src/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr "להציג/להסתיר מתכנן מסלול"
+
+#: ../src/routeService.js:73
 msgid "No route found."
 msgstr "לא נמצא מסלול."
 
-#: ../src/routeService.js:82
+#: ../src/routeService.js:80
 msgid "Route request failed."
 msgstr "בקשת המסלול נכשלה."
 
-#: ../src/routeService.js:153
+#: ../src/routeService.js:151
 msgid "Start!"
 msgstr "להתיחל!"
 
@@ -175,13 +187,11 @@ msgstr "קוד מדינה: %s"
 msgid "Postal code: %s"
 msgstr "מיקוד: %s"
 
-#: ../src/sidebar.ui.h:1
-msgid "To"
-msgstr "אל"
-
-#: ../src/sidebar.ui.h:2
-msgid "From"
-msgstr "מ"
+#. Translators: %s is a time expression with the format "%f h" or "%f min"
+#: ../src/sidebar.js:190
+#, javascript-format
+msgid "Estimated time: %s"
+msgstr "זמן משוער: %s"
 
 #: ../src/user-location-bubble.ui.h:1
 msgid "Current location"
@@ -207,6 +217,32 @@ msgstr "מדויק"
 #, javascript-format
 msgid "%f km²"
 msgstr "‏%f ק״מ²"
+
+#: ../src/utils.js:276
+#, javascript-format
+msgid "%f h"
+msgstr "%f שעות"
+
+#: ../src/utils.js:278
+#, javascript-format
+msgid "%f min"
+msgstr "%f דקות"
+
+#: ../src/utils.js:288
+#, c-format
+msgid "%f km"
+msgstr "%f ק״מ"
+
+#: ../src/utils.js:290
+#, javascript-format
+msgid "%f m"
+msgstr "%f מ׳"
+
+#~ msgid "To"
+#~ msgstr "אל"
+
+#~ msgid "From"
+#~ msgstr "מ"
 
 #~ msgid " km<sup>2</sup>"
 #~ msgstr " ק״מ<sup>2</sup>"
