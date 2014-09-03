@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-25 22:27+0200\n"
-"PO-Revision-Date: 2014-08-25 22:29+0200\n"
+"POT-Creation-Date: 2014-09-03 10:37+0200\n"
+"PO-Revision-Date: 2014-09-03 10:38+0200\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
 "Language-Team: gnome-l10n-gl@gnome.org\n"
 "Language: gl\n"
@@ -50,7 +50,7 @@ msgstr ""
 
 #. Translators: This is the program name. */
 #: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
-#: ../src/mainWindow.js:301 ../src/main-window.ui.h:1
+#: ../src/mainWindow.js:304 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "Mapas"
 
@@ -147,72 +147,113 @@ msgstr "Que hai aquí?"
 msgid "I’m here!"
 msgstr "Estou aquí!"
 
-#: ../src/mainWindow.js:299
+#: ../src/mainWindow.js:302
 msgid "translator-credits"
 msgstr "Fran Dieguez <frandieguez@gnome.org>, 2013."
 
-#: ../src/mainWindow.js:302
+#: ../src/mainWindow.js:305
 msgid "A map application for GNOME"
 msgstr "Un aplicativo de mapas para GNOME"
 
+#: ../src/main-window.ui.h:2
+msgid "Go to current location"
+msgstr "Ir á localización actual"
+
+#: ../src/main-window.ui.h:3
+msgid "Choose map type"
+msgstr "Escolla o tipo de mapa"
+
+#: ../src/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr "Activar/desactivar o planificador de rutas"
+
+#: ../src/routeService.js:73
+msgid "No route found."
+msgstr "Non se atopou a ruta."
+
+#: ../src/routeService.js:80
+msgid "Route request failed."
+msgstr "Produciuse un fallo na solicitude de ruta."
+
+#: ../src/routeService.js:151
+msgid "Start!"
+msgstr "Comezar!"
+
+#: ../src/searchResultBubble.js:60
+#, javascript-format
+msgid "Country code: %s"
+msgstr "Código de país: %s"
+
+#: ../src/searchResultBubble.js:66
+#, javascript-format
+msgid "Postal code: %s"
+msgstr "Código postal: %s"
+
+#. Translators: %s is a time expression with the format "%f h" or "%f min" */
+#: ../src/sidebar.js:190
+#, javascript-format
+msgid "Estimated time: %s"
+msgstr "Tempo estimado: %s"
+
+#: ../src/user-location-bubble.ui.h:1
+msgid "Current location"
+msgstr "Localización actual"
+
+#. To translators: %s can be "Unknown", "Exact" or "%f km²"
+#: ../src/user-location-bubble.ui.h:4
+#, no-c-format
+msgid "Accuracy: %s"
+msgstr "Precisión: %s"
+
 #. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:164
+#: ../src/utils.js:166
 msgid "Unknown"
 msgstr "Descoñecida"
 
 #. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:167
+#: ../src/utils.js:169
 msgid "Exact"
 msgstr "Exacta"
 
-#: ../src/mapLocation.js:177
-msgid " km<sup>2</sup>"
-msgstr " km<sup>2</sup>"
-
-#: ../src/routeService.js:76
-msgid "No route found."
-msgstr "Non se atopou a ruta."
-
-#: ../src/routeService.js:82
-msgid "Route request failed."
-msgstr "Produciuse un fallo na solicitude de ruta."
-
-#: ../src/routeService.js:153
-msgid "Start!"
-msgstr "Comezar!"
-
-#: ../src/sidebar.ui.h:1
-msgid "To"
-msgstr "A"
-
-#: ../src/sidebar.ui.h:2
-msgid "From"
-msgstr "Desde"
-
-#. Translators: Showing name of place where user currently is and
-#. accuracy of this information (which is translated
-#. separately)
-#. */
-#: ../src/userLocation.js:62
+#: ../src/utils.js:179
 #, javascript-format
-msgid ""
-"%s\n"
-"Position Accuracy: %s"
-msgstr ""
-"%s\n"
-"Posición Precisión: %s"
+msgid "%f km²"
+msgstr "%f km²"
+
+#: ../src/utils.js:276
+#, javascript-format
+msgid "%f h"
+msgstr "%f h"
+
+#: ../src/utils.js:278
+#, javascript-format
+msgid "%f min"
+msgstr "%f min"
+
+#: ../src/utils.js:288
+#, javascript-format
+msgid "%f km"
+msgstr "%f km"
+
+#: ../src/utils.js:290
+#, javascript-format
+msgid "%f m"
+msgstr "%f m"
+
+#~ msgid " km<sup>2</sup>"
+#~ msgstr " km<sup>2</sup>"
+
+#~ msgid "To"
+#~ msgstr "A"
+
+#~ msgid "From"
+#~ msgstr "Desde"
 
 #~ msgid "Street"
 #~ msgstr "Rúa"
 
 #~ msgid "Satellite"
 #~ msgstr "Satélite"
-
-#~ msgid " km²"
-#~ msgstr " km²"
-
-#~ msgid "Track user location"
-#~ msgstr "Seguir a localización do usuario"
 
 #~ msgid "Track user location."
 #~ msgstr "Seguir a localización do usuario."
