@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-09-01 06:57+0000\n"
-"PO-Revision-Date: 2014-09-01 17:47+0200\n"
+"POT-Creation-Date: 2014-09-03 06:58+0000\n"
+"PO-Revision-Date: 2014-09-03 13:36+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -51,7 +51,7 @@ msgstr ""
 
 #. Translators: This is the program name. */
 #: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
-#: ../src/mainWindow.js:303 ../src/main-window.ui.h:1
+#: ../src/mainWindow.js:304 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "Mapas"
 
@@ -148,23 +148,36 @@ msgstr "¿Qué hay aquí?"
 msgid "I’m here!"
 msgstr "Yo estoy aquí"
 
-#: ../src/mainWindow.js:301
+#: ../src/mainWindow.js:302
 msgid "translator-credits"
 msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2013"
 
-#: ../src/mainWindow.js:304
+#: ../src/mainWindow.js:305
 msgid "A map application for GNOME"
 msgstr "Una aplicación de mapas para GNOME"
 
-#: ../src/routeService.js:76
+#: ../src/main-window.ui.h:2
+#| msgid "Current location"
+msgid "Go to current location"
+msgstr "Ir a la ubicación actual"
+
+#: ../src/main-window.ui.h:3
+msgid "Choose map type"
+msgstr "Elegir el tipo de mapa"
+
+#: ../src/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr "Conmutar el planificador de rutas"
+
+#: ../src/routeService.js:73
 msgid "No route found."
 msgstr "No se ha encontrado la ruta."
 
-#: ../src/routeService.js:82
+#: ../src/routeService.js:80
 msgid "Route request failed."
 msgstr "Falló al solicitar la ruta."
 
-#: ../src/routeService.js:153
+#: ../src/routeService.js:151
 msgid "Start!"
 msgstr "Empezar"
 
@@ -178,25 +191,19 @@ msgstr "Código del país: %s"
 msgid "Postal code: %s"
 msgstr "Código postal: %s"
 
-#: ../src/sidebar.ui.h:1
-msgid "To"
-msgstr "A"
-
-#: ../src/sidebar.ui.h:2
-msgid "From"
-msgstr "Desde"
+#. Translators: %s is a time expression with the format "%f h" or "%f min" */
+#: ../src/sidebar.js:190
+#, javascript-format
+msgid "Estimated time: %s"
+msgstr "Tiempo estimado: %s"
 
 #: ../src/user-location-bubble.ui.h:1
-#| msgid "Track user location"
 msgid "Current location"
 msgstr "Ubicación actual"
 
 #. To translators: %s can be "Unknown", "Exact" or "%f km²"
 #: ../src/user-location-bubble.ui.h:4
 #, no-c-format
-#| msgid ""
-#| "%s\n"
-#| "Position Accuracy: %s"
 msgid "Accuracy: %s"
 msgstr "Precisión: %s"
 
@@ -212,9 +219,35 @@ msgstr "Exacta"
 
 #: ../src/utils.js:179
 #, javascript-format
-#| msgid " km²"
 msgid "%f km²"
 msgstr "%f km²"
+
+#: ../src/utils.js:276
+#, javascript-format
+msgid "%f h"
+msgstr "%f h"
+
+#: ../src/utils.js:278
+#, javascript-format
+msgid "%f min"
+msgstr "%f min"
+
+#: ../src/utils.js:288
+#, javascript-format
+#| msgid "%f km²"
+msgid "%f km"
+msgstr "%f km"
+
+#: ../src/utils.js:290
+#, javascript-format
+msgid "%f m"
+msgstr "%f m"
+
+#~ msgid "To"
+#~ msgstr "A"
+
+#~ msgid "From"
+#~ msgstr "Desde"
 
 #~ msgid " km<sup>2</sup>"
 #~ msgstr " km<sup>2</sup>"
