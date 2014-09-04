@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-03-04 00:08+0000\n"
-"PO-Revision-Date: 2014-03-14 17:52+0700\n"
+"POT-Creation-Date: 2014-09-02 06:58+0000\n"
+"PO-Revision-Date: 2014-09-04 10:44+0700\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <gnome@i15n.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.6.9\n"
 
-#: ../data/gnome-maps.appdata.xml.in.h:1
+#: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
@@ -29,17 +29,7 @@ msgstr ""
 "mencari suatu kota atau jalan, atau menemukan tempat untuk bertemu dengan "
 "teman."
 
-#: ../data/gnome-maps.appdata.xml.in.h:2
-msgid ""
-"<li>Search for country, region, city or street.</li> <li>Search for specific "
-"types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
-"near Alexanderplatz, Berlin”.</li>"
-msgstr ""
-"<li>Cari negara, wilayah, kota, atau jalan.</li> <li>Cari lokasi dengan tipe "
-"tertentu, seperti misalnya \"Pub dekat Main Street, Boston\" atau \"Akses "
-"WiFi dekat Alexanderplatz, Berlin\"</li>"
-
-#: ../data/gnome-maps.appdata.xml.in.h:3
+#: ../data/org.gnome.Maps.appdata.xml.in.h:2
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
@@ -47,17 +37,29 @@ msgstr ""
 "Peta memakai basis data kolaboratif OpenStreetMap, yang dibuat oleh ratusan "
 "ribu orang di seluruh dunia."
 
+#. Translators: Search is carried out on OpenStreetMap data using Nominatim.
+#. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
+#. your language to see what words you can use for the translated search.
+#: ../data/org.gnome.Maps.appdata.xml.in.h:6
+msgid ""
+"You can even search for specific types of locations, such as “Pubs near Main "
+"Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
+msgstr ""
+"Anda bahkan dapat mencari lokasi dengan tipe tertentu, seperti misalnya "
+"\"Pub dekat Main Street, Boston\" atau \"Hotel dekat Alexanderplatz, Berlin"
+"\"."
+
 #. Translators: This is the program name. */
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
-#: ../src/mainWindow.js:372 ../src/main-window.ui.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
+#: ../src/mainWindow.js:304 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "Peta"
 
-#: ../data/gnome-maps.desktop.in.in.h:2
+#: ../data/org.gnome.Maps.desktop.in.in.h:2
 msgid "A simple maps application"
 msgstr "Aplikasi peta sederhana"
 
-#: ../data/gnome-maps.desktop.in.in.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:3
 msgid "Maps;"
 msgstr "Peta;"
 
@@ -147,45 +149,77 @@ msgstr "Ada apa di sini?"
 msgid "I’m here!"
 msgstr "Saya di sini!"
 
-#: ../src/mainWindow.js:370
+#: ../src/mainWindow.js:302
 msgid "translator-credits"
 msgstr "Andika Triwidada <andika@gmail.com>, 2013, 2014"
 
-#: ../src/mainWindow.js:373
+#: ../src/mainWindow.js:305
 msgid "A map application for GNOME"
 msgstr "Aplikasi peta bagi GNOME"
 
-#: ../src/main-window.ui.h:1
-msgid "Street"
-msgstr "Jalan"
-
 #: ../src/main-window.ui.h:2
-msgid "Satellite"
-msgstr "Satelit"
+msgid "Go to current location"
+msgstr "Pergi ke lokasi saat ini"
+
+#: ../src/main-window.ui.h:3
+msgid "Choose map type"
+msgstr "Pilih tipe peta"
+
+#: ../src/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr "Jungkitkan perencana rute"
+
+#: ../src/routeService.js:76
+msgid "No route found."
+msgstr "Rute tak ditemukan."
+
+#: ../src/routeService.js:82
+msgid "Route request failed."
+msgstr "Permintaan rute gagal."
+
+#: ../src/routeService.js:153
+msgid "Start!"
+msgstr "Mulai!"
+
+#: ../src/searchResultBubble.js:60
+#, javascript-format
+msgid "Country code: %s"
+msgstr "Kode negara: %s"
+
+#: ../src/searchResultBubble.js:66
+#, javascript-format
+msgid "Postal code: %s"
+msgstr "Kode pos: %s"
+
+#: ../src/sidebar.ui.h:1
+msgid "To"
+msgstr "Ke"
+
+#: ../src/sidebar.ui.h:2
+msgid "From"
+msgstr "Dari"
+
+#: ../src/user-location-bubble.ui.h:1
+msgid "Current location"
+msgstr "Lokasi saat ini"
+
+#. To translators: %s can be "Unknown", "Exact" or "%f km²"
+#: ../src/user-location-bubble.ui.h:4
+#, no-c-format
+msgid "Accuracy: %s"
+msgstr "Akurasi: %s"
 
 #. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:164
+#: ../src/utils.js:166
 msgid "Unknown"
 msgstr "Tak diketahui"
 
 #. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:167
+#: ../src/utils.js:169
 msgid "Exact"
 msgstr "Eksak"
 
-#: ../src/mapLocation.js:177
-msgid " km<sup>2</sup>"
-msgstr " km<sup>2</sup>"
-
-#. Translators: Showing name of place where user currently is and
-#. accuracy of this information (which is translated
-#. separately)
-#. */
-#: ../src/userLocation.js:62
+#: ../src/utils.js:179
 #, javascript-format
-msgid ""
-"%s\n"
-"Position Accuracy: %s"
-msgstr ""
-"%s\n"
-"Akurasi Posisi: %s"
+msgid "%f km²"
+msgstr "%f km²"
