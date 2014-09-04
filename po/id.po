@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-09-02 06:58+0000\n"
-"PO-Revision-Date: 2014-09-04 10:44+0700\n"
+"POT-Creation-Date: 2014-09-04 03:45+0000\n"
+"PO-Revision-Date: 2014-09-04 11:12+0700\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <gnome@i15n.org>\n"
 "Language: id\n"
@@ -169,15 +169,15 @@ msgstr "Pilih tipe peta"
 msgid "Toggle route planner"
 msgstr "Jungkitkan perencana rute"
 
-#: ../src/routeService.js:76
+#: ../src/routeService.js:73
 msgid "No route found."
 msgstr "Rute tak ditemukan."
 
-#: ../src/routeService.js:82
+#: ../src/routeService.js:80
 msgid "Route request failed."
 msgstr "Permintaan rute gagal."
 
-#: ../src/routeService.js:153
+#: ../src/routeService.js:151
 msgid "Start!"
 msgstr "Mulai!"
 
@@ -191,13 +191,11 @@ msgstr "Kode negara: %s"
 msgid "Postal code: %s"
 msgstr "Kode pos: %s"
 
-#: ../src/sidebar.ui.h:1
-msgid "To"
-msgstr "Ke"
-
-#: ../src/sidebar.ui.h:2
-msgid "From"
-msgstr "Dari"
+#. Translators: %s is a time expression with the format "%f h" or "%f min" */
+#: ../src/sidebar.js:190
+#, javascript-format
+msgid "Estimated time: %s"
+msgstr "Perkiraan waktu: %s"
 
 #: ../src/user-location-bubble.ui.h:1
 msgid "Current location"
@@ -223,3 +221,23 @@ msgstr "Eksak"
 #, javascript-format
 msgid "%f km²"
 msgstr "%f km²"
+
+#: ../src/utils.js:276
+#, javascript-format
+msgid "%f h"
+msgstr "%f j"
+
+#: ../src/utils.js:278
+#, javascript-format
+msgid "%f min"
+msgstr "%f men"
+
+#: ../src/utils.js:288
+#, javascript-format
+msgid "%f km"
+msgstr "%f km"
+
+#: ../src/utils.js:290
+#, javascript-format
+msgid "%f m"
+msgstr "%f m"
