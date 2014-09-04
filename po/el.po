@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-08-30 06:56+0000\n"
-"PO-Revision-Date: 2014-08-30 13:46+0200\n"
+"POT-Creation-Date: 2014-09-03 18:59+0000\n"
+"PO-Revision-Date: 2014-09-04 01:30+0200\n"
 "Last-Translator: Maria Mavridou <mavridou@gmail.com>\n"
 "Language-Team: team@gnome.gr\n"
 "Language: el\n"
@@ -54,7 +54,7 @@ msgstr ""
 
 #. Translators: This is the program name. */
 #: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
-#: ../src/mainWindow.js:303 ../src/main-window.ui.h:1
+#: ../src/mainWindow.js:304 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "Χάρτες"
 
@@ -150,7 +150,7 @@ msgstr "Τι είναι εδώ;"
 msgid "I’m here!"
 msgstr "Είμαι εδώ!"
 
-#: ../src/mainWindow.js:301
+#: ../src/mainWindow.js:302
 msgid "translator-credits"
 msgstr ""
 "Ελληνική μεταφραστική ομάδα GNOME\n"
@@ -163,19 +163,32 @@ msgstr ""
 "Για περισσότερες πληροφορίες, επισκεφθείτε τη σελίδα\n"
 "http://gnome.gr/"
 
-#: ../src/mainWindow.js:304
+#: ../src/mainWindow.js:305
 msgid "A map application for GNOME"
 msgstr "Μια εφαρμογή χάρτη για το GNOME"
 
-#: ../src/routeService.js:76
+#: ../src/main-window.ui.h:2
+#| msgid "Current location"
+msgid "Go to current location"
+msgstr "Μετάβαση στην τρέχουσα τοποθεσία"
+
+#: ../src/main-window.ui.h:3
+msgid "Choose map type"
+msgstr "Επιλογή τύπου χάρτη"
+
+#: ../src/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr "Εναλλαγή οργανωτή διαδρομής"
+
+#: ../src/routeService.js:73
 msgid "No route found."
 msgstr "Δεν βρέθηκε διαδρομή."
 
-#: ../src/routeService.js:82
+#: ../src/routeService.js:80
 msgid "Route request failed."
 msgstr "Αποτυχία αιτήματος διαδρομής"
 
-#: ../src/routeService.js:153
+#: ../src/routeService.js:151
 msgid "Start!"
 msgstr "Εκκίνηση!"
 
@@ -189,13 +202,11 @@ msgstr "Κωδικός χώρας: %s"
 msgid "Postal code: %s"
 msgstr "Ταχ. κώδικας: %s"
 
-#: ../src/sidebar.ui.h:1
-msgid "To"
-msgstr "Προς"
-
-#: ../src/sidebar.ui.h:2
-msgid "From"
-msgstr "Από"
+#. Translators: %s is a time expression with the format "%f h" or "%f min" */
+#: ../src/sidebar.js:190
+#, javascript-format
+msgid "Estimated time: %s"
+msgstr "Εκτιμώμενος χρόνος: %s"
 
 #: ../src/user-location-bubble.ui.h:1
 msgid "Current location"
@@ -204,9 +215,6 @@ msgstr "Τρέχουσα τοποθεσία"
 #. To translators: %s can be "Unknown", "Exact" or "%f km²"
 #: ../src/user-location-bubble.ui.h:4
 #, no-c-format
-#| msgid ""
-#| "%s\n"
-#| "Position Accuracy: %s"
 msgid "Accuracy: %s"
 msgstr "Ακρίβεια: %s"
 
@@ -222,9 +230,35 @@ msgstr "Ακριβής"
 
 #: ../src/utils.js:179
 #, javascript-format
-#| msgid " km²"
 msgid "%f km²"
 msgstr "%f km²"
+
+#: ../src/utils.js:276
+#, javascript-format
+msgid "%f h"
+msgstr "%f h"
+
+#: ../src/utils.js:278
+#, javascript-format
+msgid "%f min"
+msgstr "%f min"
+
+#: ../src/utils.js:288
+#, javascript-format
+#| msgid "%f km²"
+msgid "%f km"
+msgstr "%f km"
+
+#: ../src/utils.js:290
+#, javascript-format
+msgid "%f m"
+msgstr "%f m"
+
+#~ msgid "To"
+#~ msgstr "Προς"
+
+#~ msgid "From"
+#~ msgstr "Από"
 
 #~ msgid " km<sup>2</sup>"
 #~ msgstr "km<sup>2</sup>"
