@@ -41,11 +41,11 @@ const Sidebar = new Lang.Class({
     Extends: Gtk.Revealer,
 
     _init: function(mapView) {
-        this.parent({ visible:             true,
-                      transition_type:     Gtk.RevealerTransitionType.SLIDE_LEFT,
+        this.parent({ visible: true,
+                      transition_type: Gtk.RevealerTransitionType.SLIDE_LEFT,
                       transition_duration: 400, // ms
-                      halign:              Gtk.Align.END,
-                      valign:              Gtk.Align.FILL
+                      halign: Gtk.Align.END,
+                      valign: Gtk.Align.FILL
                     });
         this.get_style_context().add_class('maps-sidebar');
 
