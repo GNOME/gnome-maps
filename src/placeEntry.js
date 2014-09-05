@@ -88,6 +88,9 @@ const PlaceEntry = new Lang.Class({
             props.primary_icon_name = null;
         delete props.loupe;
 
+        let parseOnFocusOut = props.parseOnFocusOut;
+        delete props.parseOnFocusOut;
+
         props.completion = this._createCompletion();
         this.parent(props);
 
@@ -100,6 +103,13 @@ const PlaceEntry = new Lang.Class({
             if (this.text.length === 0)
                 this.place = null;
         }).bind(this));
+
+        if (parseOnFocusOut) {
+            this.connect('focus-out-event', (function() {
+                this._parse();
+                return false;
+            }).bind(this));
+        }
     },
 
     _createCompletion: function() {
@@ -156,17 +166,24 @@ const PlaceEntry = new Lang.Class({
             return null;
     },
 
-    _onActivate: function() {
+    _parse: function() {
         if (this.text.length === 0) {
             this.place = null;
-            return;
+            return true;
         }
 
         let parsedLocation = this._parseCoordinates(this.text);
         if (parsedLocation) {
             this.place = new Geocode.Place({ location: parsedLocation });
-            return;
+            return true;
         }
+
+        return false;
+    },
+
+    _onActivate: function() {
+        if (this._parse())
+            return;
 
         let bbox = this._mapView.view.get_bounding_box();
 

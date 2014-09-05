@@ -124,7 +124,8 @@ const Sidebar = new Lang.Class({
                                            can_focus: true,
                                            hexpand: true,
                                            receives_default: true,
-                                           mapView: this._mapView });
+                                           mapView: this._mapView,
+                                           parseOnFocusOut: true });
     },
 
     _createViaRow: function(listbox) {
