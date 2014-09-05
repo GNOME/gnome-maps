@@ -105,7 +105,7 @@ const RouteQuery = new Lang.Class({
     },
 
     reset: function() {
-        this._transportation = Transportation.CAR;
+        this.transportation = Transportation.CAR;
         this._points.forEach(function(point) {
             point.place = null;
         });

@@ -101,7 +101,7 @@ const Sidebar = new Lang.Class({
         car.connect('toggled', onToggle.bind(this, transport.CAR));
         bike.connect('toggled', onToggle.bind(this, transport.BIKE));
 
-        query.connect('notify::transportation', function() {
+        let setToggles = function() {
             switch(query.transportation) {
             case transport.PEDESTRIAN:
                 pedestrian.active = true;
@@ -113,7 +113,10 @@ const Sidebar = new Lang.Class({
                 bike.active = true;
                 break;
             }
-        });
+        };
+
+        setToggles();
+        query.connect('notify::transportation', setToggles);
     },
 
     _createPlaceEntry: function() {
