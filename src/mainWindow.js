@@ -100,7 +100,6 @@ const MainWindow = new Lang.Class({
         placeEntry.connect('notify::place', (function() {
             if (placeEntry.place) {
                 this.mapView.showSearchResult(placeEntry.place);
-                Application.placeStore.addRecent(placeEntry.place);
             }
         }).bind(this));
 

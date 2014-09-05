@@ -54,9 +54,10 @@ const PlaceEntry = new Lang.Class({
         if (this._place && p && this._place.location.equals(p.location))
             return;
 
-        if (p)
+        if (p) {
             this.text = p.name;
-        else
+            Application.placeStore.addRecent(p);
+        } else
             this.text = '';
 
         this._place = p;
