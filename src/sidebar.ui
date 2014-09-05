@@ -174,23 +174,33 @@
       </object>
     </child>
     <child>
-      <object class="GtkGrid" id="sidebar-route-info">
-        <property name="name">sidebar-route-info</property>
+      <object class="GtkGrid" id="sidebar-route-info-wrapper">
         <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="margin_start">17</property>
-        <property name="margin_top">12</property>
+        <property name="hexpand">False</property>
         <child>
-          <object class="GtkLabel" id="time-info">
+          <object class="GtkGrid" id="sidebar-route-info">
+            <property name="name">sidebar-route-info</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkLabel" id="distance-info">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="margin_start">100</property>
+            <property name="margin_start">17</property>
+            <property name="margin_end">17</property>
+            <property name="margin_top">12</property>
+            <property name="hexpand">true</property>
+            <child>
+              <object class="GtkLabel" id="time-info">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="hexpand">true</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="distance-info">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_start">10</property>
+              </object>
+            </child>
           </object>
         </child>
       </object>
