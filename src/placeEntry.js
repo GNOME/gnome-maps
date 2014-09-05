@@ -31,6 +31,11 @@ const PlaceStore = imports.placeStore;
 const SearchPopup = imports.searchPopup;
 const Utils = imports.utils;
 
+Geocode.Location.prototype.equals = function(location) {
+    return (location.latitude === this.latitude &&
+            location.longitude === this.longitude);
+};
+
 const PlaceEntry = new Lang.Class({
     Name: 'PlaceEntry',
     Extends: Gtk.SearchEntry,
@@ -43,20 +48,21 @@ const PlaceEntry = new Lang.Class({
     },
 
     set place(p) {
-        if (p) {
-            if (!this.place ||
-                (this.place.location.latitude != p.location.latitude ||
-                 this.place.location.longitude != p.location.longitude)) {
-                this._place = p;
-                this.text   = p.name;
-                this.notify("place");
-            }
-        } else {
-            this._place = p;
-            this.text   = "";
-            this.notify("place");
-        }
+        if (!this._place && !p)
+            return;
+
+        if (this._place && p && this._place.location.equals(p.location))
+            return;
+
+        if (p)
+            this.text = p.name;
+        else
+            this.text = '';
+
+        this._place = p;
+        this.notify('place');
     },
+
     get place() {
         return this._place;
     },
