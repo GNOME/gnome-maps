@@ -89,7 +89,7 @@ uninstall-icons:
 		CONTEXT=`echo $$icon | cut -d_ -f2`; \
 		SIZE=`echo $$icon | cut -d_ -f3`; \
 		ICONFILE=`echo $$icon | cut -d_ -f4`; \
-		rm -f $(DESTDIR)$(datadir)/gnome-mapsicons/$$THEME/$$SIZE/$$CONTEXT/$$ICONFILE; \
+		rm -f $(DESTDIR)$(datadir)/gnome-maps/icons/$$THEME/$$SIZE/$$CONTEXT/$$ICONFILE; \
 	done
 
 install-data-local: install-icons
