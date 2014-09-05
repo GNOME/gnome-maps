@@ -95,11 +95,10 @@ function initActions(actionMap, simpleActionEntries, context) {
     });
 }
 
-
-
-function CreateActorFromImageFile(path) {
+function CreateActorFromIconName(name) {
     try {
-        let pixbuf = GdkPixbuf.Pixbuf.new_from_file(path);
+        let theme = Gtk.IconTheme.get_default();
+        let pixbuf = theme.load_icon(name, 0, 0);
         let image = new Clutter.Image();
         image.set_data(pixbuf.get_pixels(),
                        Cogl.PixelFormat.RGBA_8888,

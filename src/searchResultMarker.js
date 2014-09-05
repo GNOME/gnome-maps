@@ -34,8 +34,7 @@ const SearchResultMarker = new Lang.Class({
     _init: function(params) {
         this.parent(params);
 
-        let iconActor = Utils.CreateActorFromImageFile(Path.ICONS_DIR + "/pin.svg");
-        this.add_actor(iconActor);
+        this.add_actor(Utils.CreateActorFromIconName('maps-pin'));
     },
 
     get anchor() {

@@ -20,14 +20,13 @@ public_icons =						\
 	HighContrast_apps_48x48_gnome-maps.png		\
 	$(NULL)
 
-imagesdir = $(datadir)/gnome-maps/pixmaps
-images_DATA =                                   \
-	maps-point-start.svg			\
-	maps-point-end.svg			\
-	maps-point-start-symbolic.svg		\
-	maps-point-end-symbolic.svg		\
-	pin.svg					\
-	user-location.png			\
+private_icons =							\
+	hicolor_apps_16x16_maps-point-start.svg			\
+	hicolor_apps_16x16_maps-point-end.svg			\
+	hicolor_apps_16x16_maps-point-start-symbolic.svg	\
+	hicolor_apps_16x16_maps-point-end-symbolic.svg		\
+	hicolor_apps_32x32_maps-pin.svg				\
+	hicolor_apps_22x22_user-location.png			\
 	$(NULL)
 
 noinst_DATA =					\
@@ -37,7 +36,7 @@ noinst_DATA =					\
 
 EXTRA_DIST =					\
 	$(public_icons)				\
-	$(images_DATA)				\
+	$(private_icons)			\
 	gnome-maps.svg				\
 	gnome-maps-highcontrast.svg				\
 	$(NULL)
@@ -68,6 +67,14 @@ install-icons:
 		mkdir -p $(DESTDIR)$(datadir)/icons/$$THEME/$$SIZE/$$CONTEXT; \
 		$(INSTALL_DATA) $(srcdir)/$$icon $(DESTDIR)$(datadir)/icons/$$THEME/$$SIZE/$$CONTEXT/$$ICONFILE; \
 	done
+	for icon in $(private_icons); do \
+		THEME=`echo $$icon | cut -d_ -f1`; \
+		CONTEXT=`echo $$icon | cut -d_ -f2`; \
+		SIZE=`echo $$icon | cut -d_ -f3`; \
+		ICONFILE=`echo $$icon | cut -d_ -f4`; \
+		mkdir -p $(DESTDIR)$(datadir)/gnome-maps/icons/$$THEME/$$SIZE/$$CONTEXT; \
+		$(INSTALL_DATA) $(srcdir)/$$icon $(DESTDIR)$(datadir)/gnome-maps/icons/$$THEME/$$SIZE/$$CONTEXT/$$ICONFILE; \
+	done
 
 uninstall-icons:
 	-for icon in $(public_icons); do \
@@ -76,6 +83,13 @@ uninstall-icons:
 		SIZE=`echo $$icon | cut -d_ -f3`; \
 		ICONFILE=`echo $$icon | cut -d_ -f4`; \
 		rm -f $(DESTDIR)$(datadir)/icons/$$THEME/$$SIZE/$$CONTEXT/$$ICONFILE; \
+	done
+	-for icon in $(private_icons); do \
+		THEME=`echo $$icon | cut -d_ -f1`; \
+		CONTEXT=`echo $$icon | cut -d_ -f2`; \
+		SIZE=`echo $$icon | cut -d_ -f3`; \
+		ICONFILE=`echo $$icon | cut -d_ -f4`; \
+		rm -f $(DESTDIR)$(datadir)/gnome-mapsicons/$$THEME/$$SIZE/$$CONTEXT/$$ICONFILE; \
 	done
 
 install-data-local: install-icons

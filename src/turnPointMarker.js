@@ -105,8 +105,7 @@ const DestinationMarker = new Lang.Class({
             this._onMarkerDrag();
         }).bind(this));
 
-        let iconName = Path.ICONS_DIR + '/' + this.iconName + '.svg';
-        this.add_actor(Utils.CreateActorFromImageFile(iconName));
+        this.add_actor(Utils.CreateActorFromIconName(this.iconName));
     },
 
     _onMarkerDrag: function() {

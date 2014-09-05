@@ -77,8 +77,7 @@ const UserLocationMarker = new Lang.Class({
     _init: function(params) {
         this.parent(params);
 
-        let iconActor = Utils.CreateActorFromImageFile(Path.ICONS_DIR + '/user-location.png');
-        this.add_actor(iconActor);
+        this.add_actor(Utils.CreateActorFromIconName('user-location'));
 
         if (this.place.location.accuracy !== 0) {
             this._accuracyMarker = new AccuracyCircleMarker({ place: this.place });
