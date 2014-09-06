@@ -7,38 +7,30 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-03 23:00+0100\n"
-"PO-Revision-Date: 2013-09-12 22:19+0200\n"
-"Last-Translator: Marcus Lundblad <ml@update.uu.se>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"maps&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2014-09-02 16:24+0000\n"
+"PO-Revision-Date: 2014-09-02 23:26+0100\n"
+"Last-Translator: Mattias Eriksson <snaggen@gmail.com>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.4\n"
 
-#: ../data/gnome-maps.appdata.xml.in.h:1
+#: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
 "or locate a place to meet a friend."
 msgstr ""
-"Kartor ger dig snabb tillgång till kartor över hela världen.Det låter dig "
+"Kartor ger dig snabb tillgång till kartor över hela världen. Det låter dig "
 "hitta platsen du letar efter genom att söka efter en stad eller gata eller "
 "finna ett ställe att möta en vän på."
 
-#: ../data/gnome-maps.appdata.xml.in.h:2
-msgid ""
-"<li>Search for country, region, city or street.</li> <li>Search for specific "
-"types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
-"near Alexanderplatz, Berlin”.</li>"
-msgstr ""
-"<li>Sök på land, region, stad eller gata.</li> <li>Sök efter specifika "
-"platser såsom \"Pubbar nära Drottninggatan, Stockholm\" eller \"Trådlöst "
-"nätverk nära Alexanderplatz, Berlin\"</li>"
-
-#: ../data/gnome-maps.appdata.xml.in.h:3
+#: ../data/org.gnome.Maps.appdata.xml.in.h:2
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
@@ -46,17 +38,28 @@ msgstr ""
 "Kartor använder kartdatabasen OpenStreetMap, skapad genom samarbete av flera "
 "hundratusentals personer över hela världen."
 
+#. Translators: Search is carried out on OpenStreetMap data using Nominatim.
+#. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
+#. your language to see what words you can use for the translated search.
+#: ../data/org.gnome.Maps.appdata.xml.in.h:6
+msgid ""
+"You can even search for specific types of locations, such as “Pubs near Main "
+"Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
+msgstr ""
+"Du kan till och med söka efter specifika platser såsom “Pub nära "
+"Drottninggatan, Stockholm“ eller “Hotell vid Alexanderplatz, Berlin“."
+
 #. Translators: This is the program name. */
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
-#: ../src/mainWindow.js:334 ../src/main-window.ui.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
+#: ../src/mainWindow.js:304 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "Kartor"
 
-#: ../data/gnome-maps.desktop.in.in.h:2
+#: ../data/org.gnome.Maps.desktop.in.in.h:2
 msgid "A simple maps application"
 msgstr "Ett enkelt kartprogram"
 
-#: ../data/gnome-maps.desktop.in.in.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:3
 msgid "Maps;"
 msgstr "Kartor;"
 
@@ -119,6 +122,14 @@ msgstr "Användaren angav senast kända plats."
 msgid "Whether the last known location was set manually by the user."
 msgstr "Huruvida senast kända plats angavs manuellt av användaren."
 
+#: ../data/org.gnome.maps.gschema.xml.in.h:15
+msgid "Number of recent places to store"
+msgstr "Antal senaste platser att lagra"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:16
+msgid "Number of recently visited places to store."
+msgstr "Antal senast besökta platser att lagra."
+
 #: ../src/app-menu.ui.h:1
 msgid "About"
 msgstr "Om"
@@ -135,48 +146,113 @@ msgstr "Vad finns här?"
 msgid "I’m here!"
 msgstr "Jag är här!"
 
-#: ../src/mainWindow.js:332
+#: ../src/mainWindow.js:302
 msgid "translator-credits"
 msgstr ""
 "Marcus Lundblad <ml@update.uu.se>\n"
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>."
 
-#: ../src/mainWindow.js:335
+#: ../src/mainWindow.js:305
 msgid "A map application for GNOME"
 msgstr "Ett kartprogram för GNOME"
 
-#: ../src/main-window.ui.h:1
-msgid "Street"
-msgstr "Gata"
-
 #: ../src/main-window.ui.h:2
-msgid "Satellite"
-msgstr "Satellit"
+msgid "Go to current location"
+msgstr "Gå till aktuell position"
+
+#: ../src/main-window.ui.h:3
+msgid "Choose map type"
+msgstr "Välj karttyp"
+
+#: ../src/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr "Ruttplanerare på/av"
+
+#: ../src/routeService.js:73
+msgid "No route found."
+msgstr "Hittade ingen rutt. "
+
+#: ../src/routeService.js:80
+msgid "Route request failed."
+msgstr "Ruttbegäran misslyckades."
+
+#: ../src/routeService.js:151
+msgid "Start!"
+msgstr "Starta!"
+
+#: ../src/searchResultBubble.js:60
+#, javascript-format
+msgid "Country code: %s"
+msgstr "Landskod: %s"
+
+#: ../src/searchResultBubble.js:66
+#, javascript-format
+msgid "Postal code: %s"
+msgstr "Postnummer: %s"
+
+#. Translators: %s is a time expression with the format "%f h" or "%f min" */
+#: ../src/sidebar.js:190
+#, javascript-format
+msgid "Estimated time: %s"
+msgstr "Uppskattad tid: %s"
+
+#: ../src/user-location-bubble.ui.h:1
+msgid "Current location"
+msgstr "Aktuell position"
+
+#. To translators: %s can be "Unknown", "Exact" or "%f km²"
+#: ../src/user-location-bubble.ui.h:4
+#, no-c-format
+msgid "Accuracy: %s"
+msgstr "Noggrannhet: %s"
 
 #. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:116
+#: ../src/utils.js:166
 msgid "Unknown"
 msgstr "Okänd"
 
 #. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:119
+#: ../src/utils.js:169
 msgid "Exact"
 msgstr "Exakt"
 
-#: ../src/mapLocation.js:123
-msgid " km²"
-msgstr " km²"
-
-#. Translators: Showing name of place where user currently is and
-#. accuracy of this information (which is translated
-#. separately)
-#. */
-#: ../src/userLocation.js:62
+#: ../src/utils.js:179
 #, javascript-format
-msgid ""
-"%s\n"
-"Position Accuracy: %s"
-msgstr ""
-"%s\n"
-"Positioneringsnoggrannhet: %s"
+msgid "%f km²"
+msgstr "%f km²"
+
+#: ../src/utils.js:276
+#, javascript-format
+msgid "%f h"
+msgstr "%f tim"
+
+#: ../src/utils.js:278
+#, javascript-format
+msgid "%f min"
+msgstr "%f min"
+
+#: ../src/utils.js:288
+#, javascript-format
+msgid "%f km"
+msgstr "%f km"
+
+#: ../src/utils.js:290
+#, javascript-format
+msgid "%f m"
+msgstr "%f m"
+
+#~ msgid "To"
+#~ msgstr "Till"
+
+#~ msgid "From"
+#~ msgstr "Från"
+
+#~ msgid " km<sup>2</sup>"
+#~ msgstr " km<sup>2</sup>"
+
+#~ msgid "Street"
+#~ msgstr "Gata"
+
+#~ msgid "Satellite"
+#~ msgstr "Satellit"
