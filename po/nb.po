@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps 3.13.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-23 11:15+0200\n"
-"PO-Revision-Date: 2014-08-23 11:15+0200\n"
+"POT-Creation-Date: 2014-09-06 12:14+0200\n"
+"PO-Revision-Date: 2014-09-06 12:15+0200\n"
 "Last-Translator: Åka Sikrom <a4NOSPAMPLEASETHANKYOU@hush.com>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: \n"
@@ -42,11 +42,13 @@ msgstr ""
 msgid ""
 "You can even search for specific types of locations, such as “Pubs near Main "
 "Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
-msgstr "Du kan også søke etter en bestemt type sted, som f.eks. «Pub nær Main Street, Boston» eller «Hoteller nær Alexanderplatz, Berlin»."
+msgstr ""
+"Du kan også søke etter en bestemt type sted, som f.eks. «Pub nær Main "
+"Street, Boston» eller «Hoteller nær Alexanderplatz, Berlin»."
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
-#: ../src/mainWindow.js:301 ../src/main-window.ui.h:1
+#: ../src/mainWindow.js:303 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "Kart"
 
@@ -144,57 +146,95 @@ msgstr "Hva finnes her?"
 msgid "I’m here!"
 msgstr "Jeg er her!"
 
-#: ../src/mainWindow.js:299
+#: ../src/mainWindow.js:301
 msgid "translator-credits"
 msgstr "Kjartan Maraas <kmaraas@gnome.org>"
 
-#: ../src/mainWindow.js:302
+#: ../src/mainWindow.js:304
 msgid "A map application for GNOME"
 msgstr "Et kartprogram for GNOME"
 
+#: ../src/main-window.ui.h:2
+msgid "Go to current location"
+msgstr "Gå til nåværende lokasjon"
+
+#: ../src/main-window.ui.h:3
+msgid "Choose map type"
+msgstr "Velg type kart"
+
+#: ../src/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr "Slå av/på ruteplanlegger"
+
+#: ../src/routeService.js:73
+msgid "No route found."
+msgstr "Ingen rute funnet."
+
+#: ../src/routeService.js:80
+msgid "Route request failed."
+msgstr "Forespørsel om rute feilet."
+
+#: ../src/routeService.js:151
+msgid "Start!"
+msgstr "Start!"
+
+#: ../src/searchResultBubble.js:60
+#, javascript-format
+msgid "Country code: %s"
+msgstr "Landskode: %s"
+
+#: ../src/searchResultBubble.js:66
+#, javascript-format
+msgid "Postal code: %s"
+msgstr "Postnummer: %s"
+
+#. Translators: %s is a time expression with the format "%f h" or "%f min"
+#: ../src/sidebar.js:192
+#, javascript-format
+msgid "Estimated time: %s"
+msgstr "Estimert tid: %s"
+
+#: ../src/user-location-bubble.ui.h:1
+msgid "Current location"
+msgstr "Nåværende lokasjon"
+
+#. To translators: %s can be "Unknown", "Exact" or "%f km²"
+#: ../src/user-location-bubble.ui.h:4
+#, no-c-format
+msgid "Accuracy: %s"
+msgstr "Nøyaktighet: %s"
+
 #. Translators: Accuracy of user location information
-#: ../src/mapLocation.js:164
+#: ../src/utils.js:165
 msgid "Unknown"
 msgstr "Ukjent"
 
 #. Translators: Accuracy of user location information
-#: ../src/mapLocation.js:167
+#: ../src/utils.js:168
 msgid "Exact"
 msgstr "Nøyaktig"
 
-#: ../src/mapLocation.js:177
-msgid " km<sup>2</sup>"
-msgstr "km<sup>2</sup>"
-
-#: ../src/routeService.js:76
-msgid "No route found."
-msgstr "Ingen rute funnet."
-
-#: ../src/routeService.js:82
-msgid "Route request failed."
-msgstr "Forespørsel om rute feilet."
-
-#: ../src/routeService.js:153
-msgid "Start!"
-msgstr "Start!"
-
-#: ../src/sidebar.ui.h:1
-msgid "To"
-msgstr "Til"
-
-#: ../src/sidebar.ui.h:2
-msgid "From"
-msgstr "Fra"
-
-#. Translators: Showing name of place where user currently is and
-#. accuracy of this information (which is translated
-#. separately)
-#.
-#: ../src/userLocation.js:62
+#: ../src/utils.js:178
 #, javascript-format
-msgid ""
-"%s\n"
-"Position Accuracy: %s"
-msgstr ""
-"%s\n"
-"Posisjonens nøyaktighet: %s"
+msgid "%f km²"
+msgstr "%f km²"
+
+#: ../src/utils.js:275
+#, javascript-format
+msgid "%f h"
+msgstr "%f t"
+
+#: ../src/utils.js:277
+#, javascript-format
+msgid "%f min"
+msgstr "%f min"
+
+#: ../src/utils.js:287
+#, javascript-format
+msgid "%f km"
+msgstr "%f km"
+
+#: ../src/utils.js:289
+#, javascript-format
+msgid "%f m"
+msgstr "%f m"
