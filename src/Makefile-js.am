@@ -7,11 +7,10 @@ path.js: Makefile path.js.in
 config.js: Makefile config.js.in
 	$(AM_V_GEN) $(do_subst) $(srcdir)/config.js.in > $(builddir)/config.js
 
-js_files = $(shell $(GLIB_COMPILE_RESOURCES)				\
-		--sourcedir=$(srcdir)					\
-		--generate-dependencies $(srcdir)/gnome-maps.js.gresource.xml)
+.PHONY: generated-sources
+generated-sources: path.js config.js
 
-gnome-maps-js.h: gnome-maps.js.gresource.xml $(js_files)
+gnome-maps-js.h: gnome-maps.js.gresource.xml generated-sources
 	$(AM_V_GEN)							\
 		$(GLIB_COMPILE_RESOURCES)				\
 		--target=$@						\
@@ -19,7 +18,8 @@ gnome-maps-js.h: gnome-maps.js.gresource.xml $(js_files)
 		--sourcedir=$(builddir)					\
 		--generate						\
 		--c-name gnome_maps_js $<
-gnome-maps-js.c: gnome-maps.js.gresource.xml $(js_files)
+
+gnome-maps-js.c: gnome-maps.js.gresource.xml generated-sources
 	$(AM_V_GEN) \
 		$(GLIB_COMPILE_RESOURCES)				\
 		--target=$@						\
@@ -37,6 +37,6 @@ CLEANFILES +=								\
 
 EXTRA_DIST +=								\
 	gnome-maps.js.gresource.xml					\
-	$(filter-out $(BUILT_SOURCES),$(subst ./,,$(js_files)))  	\
+	$(filter-out $(BUILT_SOURCES),$(subst ./,,$(wildcard *.js)))	\
 	path.js.in							\
 	config.js.in
