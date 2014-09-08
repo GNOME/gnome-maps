@@ -111,8 +111,8 @@ const DestinationMarker = new Lang.Class({
     _onMarkerDrag: function() {
         let query = Application.routeService.query;
         let place = new Geocode.Place({
-                        location: new Geocode.Location({ latitude: this.latitude,
-                                                         longitude: this.longitude }) });
+                        location: new Geocode.Location({ latitude: this.latitude.toFixed(5),
+                                                         longitude: this.longitude.toFixed(5) }) });
 
         this._queryPoint.place = place;
     }
