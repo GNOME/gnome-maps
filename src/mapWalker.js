@@ -58,15 +58,8 @@ const MapWalker = new Lang.Class({
         let zoom;
 
         if (this._boundingBox !== null) {
-            let max = this._view.max_zoom_level;
-            let min = this._view.min_zoom_level;
-            for (let i = max; i >= min; i--) {
-                let zoomBox = this._view.get_bounding_box_for_zoom_level(i);
-                if (this._boxCovers(zoomBox)) {
-                    zoom = i;
-                    break;
-                }
-            }
+            this._view.zoom_level = this._view.max_zoom_level;
+            this._view.ensure_visible(this._boundingBox, false);
         } else {
             switch (this.place.place_type) {
             case Geocode.PlaceType.STREET:
@@ -89,10 +82,10 @@ const MapWalker = new Lang.Class({
                 zoom = 11;
                 break;
             }
+            this._view.zoom_level = zoom;
+            this._view.center_on(this.place.location.latitude,
+                                 this.place.location.longitude);
         }
-        this._view.zoom_level = zoom;
-        this._view.center_on(this.place.location.latitude,
-                             this.place.location.longitude);
     },
 
     goTo: function(animate) {
