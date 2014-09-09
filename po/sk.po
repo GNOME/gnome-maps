@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-03-27 11:55+0000\n"
-"PO-Revision-Date: 2014-03-24 20:26+0100\n"
+"POT-Creation-Date: 2014-09-09 06:56+0000\n"
+"PO-Revision-Date: 2014-09-09 19:01+0100\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
 "Language: sk\n"
@@ -17,9 +17,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Poedit 1.5.4\n"
 
-#: ../data/gnome-maps.appdata.xml.in.h:1
+#: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
@@ -29,17 +29,7 @@ msgstr ""
 "vám rýchlo nájsť miesto, ktoré hľadáte zadaním vyhľadávaného mesta alebo "
 "ulice, prípadne zistiť polohu, kde sa máte stretnúť s priateľom."
 
-#: ../data/gnome-maps.appdata.xml.in.h:2
-msgid ""
-"<li>Search for country, region, city or street.</li> <li>Search for specific "
-"types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
-"near Alexanderplatz, Berlin”.</li>"
-msgstr ""
-"<li>Vyhľadáva krajiny, oblasti, mestá alebo ulice.</li> <li>Vyhľadáva "
-"špecifické typy umiestnení, ako sú \"Hostince neďaleko Hlavnej ulice, Boston"
-"\" alebo \"Prístup na WiFi neďaleko Alexanderplatzu, Berlin\"</li>"
-
-#: ../data/gnome-maps.appdata.xml.in.h:3
+#: ../data/org.gnome.Maps.appdata.xml.in.h:2
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
@@ -47,20 +37,35 @@ msgstr ""
 "Aplikácia Mapy používa databázu OpenStreetMap, na ktorej spolupracujú stovky "
 "tisícov ľudí na celej zemeguli."
 
+#. Translators: Search is carried out on OpenStreetMap data using Nominatim.
+#. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
+#. your language to see what words you can use for the translated search.
+#: ../data/org.gnome.Maps.appdata.xml.in.h:6
+#| msgid ""
+#| "<li>Search for country, region, city or street.</li> <li>Search for "
+#| "specific types of locations, such as “Pubs near Main Street, Boston” or "
+#| "“Wi-Fi Access near Alexanderplatz, Berlin”.</li>"
+msgid ""
+"You can even search for specific types of locations, such as “Pubs near Main "
+"Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
+msgstr ""
+"Môžete vyhľadať špecifické typy umiestnení, napríklad „Hostince neďaleko "
+"Hlavnej ulice, Boston“ alebo „Ubytovňa neďaleko Alexanderplatzu, Berlin“."
+
 # desktop entry name
 #. Translators: This is the program name. */
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:57
-#: ../src/mainWindow.js:294 ../src/main-window.ui.h:1
+#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
+#: ../src/mainWindow.js:303 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "Mapy"
 
 # desktop entry comment
-#: ../data/gnome-maps.desktop.in.in.h:2
+#: ../data/org.gnome.Maps.desktop.in.in.h:2
 msgid "A simple maps application"
 msgstr "Jednoduchá aplikácia na prezeranie máp"
 
 # desktop enty keywords
-#: ../data/gnome-maps.desktop.in.in.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:3
 msgid "Maps;"
 msgstr "Mapy;"
 
@@ -162,54 +167,106 @@ msgstr "Čo sa nachádza tu?"
 msgid "I’m here!"
 msgstr "Tu sa nachádzam!"
 
-#: ../src/mainWindow.js:292
+#: ../src/mainWindow.js:301
 msgid "translator-credits"
 msgstr "Dušan Kazik <prescott66@gmail.com>"
 
-#: ../src/mainWindow.js:295
+#: ../src/mainWindow.js:304
 msgid "A map application for GNOME"
 msgstr "Aplikácia na prezeranie máp pre GNOME"
 
+# DK:tooltip
+#: ../src/main-window.ui.h:2
+msgid "Go to current location"
+msgstr "Prejde na aktuálne umiestnenie"
+
+# DK:tooltip
+#: ../src/main-window.ui.h:3
+msgid "Choose map type"
+msgstr "Vyberie typ mapy"
+
+# DK:tooltip
+#: ../src/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr "Prepne plánovač trasy"
+
+#: ../src/routeService.js:73
+msgid "No route found."
+msgstr "Nenašla sa žiadna trasa."
+
+#: ../src/routeService.js:80
+msgid "Route request failed."
+msgstr "Požiadavka na trasu zlyhala."
+
+#: ../src/routeService.js:151
+msgid "Start!"
+msgstr "Spustiť!"
+
+#: ../src/searchResultBubble.js:60
+#, javascript-format
+msgid "Country code: %s"
+msgstr "Kód krajiny: %s"
+
+#: ../src/searchResultBubble.js:66
+#, javascript-format
+msgid "Postal code: %s"
+msgstr "Smerovacie číslo: %s"
+
+#. Translators: %s is a time expression with the format "%f h" or "%f min" */
+#: ../src/sidebar.js:193
+#, javascript-format
+msgid "Estimated time: %s"
+msgstr "Odhadovaný čas: %s"
+
+#: ../src/user-location-bubble.ui.h:1
+#| msgid "Track user location"
+msgid "Current location"
+msgstr "Aktuálne umiestnenie"
+
+#. To translators: %s can be "Unknown", "Exact" or "%f km²"
+#: ../src/user-location-bubble.ui.h:4
+#, no-c-format
+#| msgid ""
+#| "%s\n"
+#| "Position Accuracy: %s"
+msgid "Accuracy: %s"
+msgstr "Presnosť: %s"
+
 #. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:164
+#: ../src/utils.js:165
 msgid "Unknown"
 msgstr "Neznáma"
 
 #. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:167
+#: ../src/utils.js:168
 msgid "Exact"
 msgstr "Presná"
 
-#: ../src/mapLocation.js:177
-msgid " km<sup>2</sup>"
-msgstr " km<sup>2</sup>"
-
-#. Translators: Showing name of place where user currently is and
-#. accuracy of this information (which is translated
-#. separately)
-#. */
-#: ../src/userLocation.js:62
+#: ../src/utils.js:178
 #, javascript-format
-msgid ""
-"%s\n"
-"Position Accuracy: %s"
-msgstr ""
-"%s\n"
-"Presnosť pozície: %s"
+#| msgid " km²"
+msgid "%f km²"
+msgstr "%f km²"
 
-# map type
-#~ msgid "Street"
-#~ msgstr "Klasická"
+#: ../src/utils.js:275
+#, javascript-format
+msgid "%f h"
+msgstr "%f h"
 
-# map type
-#~ msgid "Satellite"
-#~ msgstr "Satelitná"
+#: ../src/utils.js:277
+#, javascript-format
+msgid "%f min"
+msgstr "%f min"
 
-#~ msgid " km²"
-#~ msgstr " km²"
+#: ../src/utils.js:287
+#, javascript-format
+msgid "%f km"
+msgstr "%f km"
 
-#~ msgid "Track user location"
-#~ msgstr "Sledovať polohu používateľa"
+#: ../src/utils.js:289
+#, javascript-format
+msgid "%f m"
+msgstr "%f m"
 
-#~ msgid "Track user location."
-#~ msgstr "Sledovať polohu používateľa."
+#~ msgid " km<sup>2</sup>"
+#~ msgstr " km<sup>2</sup>"
