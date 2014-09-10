@@ -88,7 +88,7 @@ const MapView = new Lang.Class({
         Application.geoclue.connect("location-changed",
                                     this._updateUserLocation.bind(this));
 
-        this._connectRouteSignals(Application.routeService.route);
+        this._connectRouteSignals();
     },
 
     _initView: function() {
@@ -130,13 +130,19 @@ const MapView = new Lang.Class({
         this.view.add_layer(this._userLocationLayer);
     },
 
-    _connectRouteSignals: function(route) {
+    _connectRouteSignals: function() {
+        let route = Application.routeService.route;
+        let query = Application.routeService.query;
+
         route.connect('update', this.showRoute.bind(this, route));
         route.connect('reset', (function() {
             this._routeLayer.remove_all();
             this._instructionMarkerLayer.remove_all();
         }).bind(this));
 
+        query.connect('notify', (function() {
+                this.routeVisible = query.isValid();
+        }).bind(this));
     },
 
     setMapType: function(mapType) {
@@ -205,6 +211,7 @@ const MapView = new Lang.Class({
 
     showRoute: function(route) {
         this._routeLayer.remove_all();
+        this.routeVisible = true;
 
         route.path.forEach(this._routeLayer.add_node.bind(this._routeLayer));
 

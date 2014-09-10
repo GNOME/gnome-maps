@@ -169,14 +169,13 @@ const Sidebar = new Lang.Class({
                 query.removePoint(row.get_index() + 1);
                 row.destroy();
             }).bind(this));
-
-            this._timeInfo.label = '';
-            this._distanceInfo.label = '';
         }).bind(this));
 
         query.connect('notify', (function() {
             if (query.isValid())
                 this._instructionStack.visible_child = this._instructionSpinner;
+            else
+                this._clearInstructions();
         }).bind(this));
 
         route.connect('update', (function() {
@@ -203,6 +202,9 @@ const Sidebar = new Lang.Class({
     _clearInstructions: function() {
         let listBox = this._instructionList;
         listBox.forall(listBox.remove.bind(listBox));
+
+        this._timeInfo.label = '';
+        this._distanceInfo.label = '';
     }
 });
 
