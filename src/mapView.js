@@ -28,6 +28,7 @@ const Gtk = imports.gi.Gtk;
 const GtkChamplain = imports.gi.GtkChamplain;
 const Champlain = imports.gi.Champlain;
 const Geocode = imports.gi.GeocodeGlib;
+const GObject = imports.gi.GObject;
 
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
@@ -54,6 +55,25 @@ const MapMinZoom = 2;
 const MapView = new Lang.Class({
     Name: 'MapView',
     Extends: GtkChamplain.Embed,
+    Properties: {
+        'routeVisible': GObject.ParamSpec.boolean('routeVisible',
+                                                   'Route visible',
+                                                   'Visibility of route layers',
+                                                   GObject.ParamFlags.READWRITE,
+                                                   false)
+    },
+
+    get routeVisible() {
+        return this._routeLayer.visible || this._instructionMarkerLayer.visible;
+    },
+
+    set routeVisible(value) {
+        let isValid = Application.routeService.query.isValid();
+
+        this._routeLayer.visible = value && isValid;
+        this._instructionMarkerLayer.visible = value && isValid;
+        this.notify('routeVisible');
+    },
 
     _init: function() {
         this.parent();

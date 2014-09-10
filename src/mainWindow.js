@@ -68,6 +68,9 @@ const MainWindow = new Lang.Class({
         this._sidebar = new Sidebar.Sidebar(this.mapView);
         Application.routeService.route.connect('update',
                                                this._setRevealSidebar.bind(this, true));
+        this._sidebar.bind_property('reveal-child',
+                                    this.mapView, 'routeVisible',
+                                    GObject.BindingFlags.DEFAULT);
 
         this._contextMenu = new ContextMenu.ContextMenu(this.mapView);
 
@@ -279,10 +282,6 @@ const MainWindow = new Lang.Class({
         action.set_state(variant);
 
         let reveal = variant.get_boolean();
-        if (!reveal) {
-            Application.routeService.route.reset();
-            Application.routeService.query.reset();
-        }
         this._sidebar.set_reveal_child(reveal);
     },
 
