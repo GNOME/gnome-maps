@@ -193,10 +193,13 @@ const MapView = new Lang.Class({
     },
 
     showTurnPoint: function(turnPoint) {
-        let instructionMarker = new TurnPointMarker.InstructionMarker({ turnPoint: turnPoint,
-                                                                        mapView: this });
-        this._instructionMarkerLayer.add_marker(instructionMarker);
-        instructionMarker.goToAndSelect(false);
+        if (this._turnPointMarker)
+            this._turnPointMarker.destroy();
+
+        this._turnPointMarker = new TurnPointMarker.TurnPointMarker({ turnPoint: turnPoint,
+                                                                      mapView: this });
+        this._instructionMarkerLayer.add_marker(this._turnPointMarker);
+        this._turnPointMarker.goToAndSelect(false);
     },
 
     showSearchResult: function(place) {

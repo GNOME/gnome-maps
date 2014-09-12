@@ -76,19 +76,6 @@ const TurnPointMarker = new Lang.Class({
     }
 });
 
-const InstructionMarker = new Lang.Class({
-    Name: 'InstructionMarker',
-    Extends: TurnPointMarker,
-
-    _init: function(params) {
-        this.parent(params);
-
-        this.bubble.connect_after('closed', (function() {
-            this.destroy();
-        }).bind(this));
-    }
-});
-
 const DestinationMarker = new Lang.Class({
     Name: 'DestinationMarker',
     Extends: TurnPointMarker,
