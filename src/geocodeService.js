@@ -25,6 +25,7 @@ const Geocode = imports.gi.GeocodeGlib;
 const Lang = imports.lang;
 
 const Application = imports.application;
+const Utils = imports.utils;
 
 const GeocodeService = new Lang.Class({
     Name: 'GeocodeService',
@@ -53,5 +54,24 @@ const GeocodeService = new Lang.Class({
                 callback(null);
             }
         });
+    },
+
+    reverse: function(location, callback) {
+        let reverse = Geocode.Reverse.new_for_location(location);
+
+        Application.application.mark_busy();
+        reverse.resolve_async (null, (function(reverse, res) {
+            Application.application.unmark_busy();
+            try {
+                let place = reverse.resolve_finish(res);
+                callback(place);
+            } catch (e) {
+                Utils.debug("Error finding place at " +
+                            this._latitude + ", " +
+                            this._longitude + ": " +
+                            e.message);
+                callback(null);
+            }
+        }).bind(this));
     }
 });

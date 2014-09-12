@@ -64,7 +64,7 @@ const ContextMenu = new Lang.Class({
                                               longitude: this._longitude,
                                               accuracy: 0 });
 
-        this._reverseGeocode(location, (function(place) {
+        Application.geocodeService.reverse(location, (function(place) {
             this._mapView.showSearchResult(place);
         }).bind(this));
     },
@@ -74,28 +74,10 @@ const ContextMenu = new Lang.Class({
                                               longitude: this._longitude,
                                               accuracy: 0,
                                               description: "" });
-        this._reverseGeocode(location, (function(place) {
+
+        Application.geocodeService.reverse(location, (function(place) {
             location.description = place.name;
             Application.geoclue.overrideLocation(location);
-        }).bind(this));
-    },
-
-    _reverseGeocode: function(location, resultCallback) {
-        let reverse = Geocode.Reverse.new_for_location(location);
-
-        Application.application.mark_busy();
-        reverse.resolve_async (null, (function(reverse, res) {
-            Application.application.unmark_busy();
-            try {
-                let place = reverse.resolve_finish(res);
-
-                resultCallback(place);
-            } catch (e) {
-                log ("Error finding place at " +
-                     this._latitude + ", " +
-                     this._longitude + ": " +
-                     e.message);
-            }
         }).bind(this));
     }
 });
