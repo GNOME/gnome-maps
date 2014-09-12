@@ -79,8 +79,12 @@ const Sidebar = new Lang.Class({
                                         ui.modeBikeToggle,
                                         ui.modeCarToggle);
 
-        this._initRouteEntry(ui.fromEntryGrid, 0);
+        let fromEntry = this._initRouteEntry(ui.fromEntryGrid, 0);
         this._initRouteEntry(ui.toEntryGrid, 1);
+
+        this.bind_property('child-revealed',
+                           fromEntry, 'has_focus',
+                           GObject.BindingFlags.DEFAULT);
 
         ui.viaAddButton.connect('clicked', (function() {
             this._createViaRow(ui.viaGridContainer);
@@ -156,6 +160,8 @@ const Sidebar = new Lang.Class({
                             point, 'place',
                             GObject.BindingFlags.BIDIRECTIONAL);
         Application.routeService.query.addPoint(point, pointIndex);
+
+        return entry;
     },
 
     _initInstructionList: function() {
