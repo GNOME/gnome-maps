@@ -52,12 +52,14 @@ const RouteQuery = new Lang.Class({
         'points': GObject.ParamSpec.object('points',
                                             '',
                                             '',
-                                            GObject.ParamFlags.READWRITE,
+                                           GObject.ParamFlags.READABLE |
+                                           GObject.ParamFlags.WRITABLE,
                                             GObject.Object),
         'transportation': GObject.ParamSpec.int('transportation',
                                                 '',
                                                 '',
-                                                GObject.ParamFlags.READWRITE,
+                                                GObject.ParamFlags.READABLE |
+                                                GObject.ParamFlags.WRITABLE,
                                                 Transportation.CAR,
                                                 Transportation.PEDESTRIAN,
                                                 Transportation.CAR)
@@ -132,7 +134,8 @@ const QueryPoint = new Lang.Class({
         'place': GObject.ParamSpec.object('place',
                                           '',
                                           '',
-                                          GObject.ParamFlags.READWRITE,
+                                          GObject.ParamFlags.READABLE |
+                                          GObject.ParamFlags.WRITABLE,
                                           Geocode.Place),
     },
 

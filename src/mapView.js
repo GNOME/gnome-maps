@@ -59,7 +59,8 @@ const MapView = new Lang.Class({
         'routeVisible': GObject.ParamSpec.boolean('routeVisible',
                                                    'Route visible',
                                                    'Visibility of route layers',
-                                                   GObject.ParamFlags.READWRITE,
+                                                   GObject.ParamFlags.READABLE |
+                                                   GObject.ParamFlags.WRITABLE,
                                                    false)
     },
 

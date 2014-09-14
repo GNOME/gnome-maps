@@ -46,7 +46,8 @@ const PlaceEntry = new Lang.Class({
         'place': GObject.ParamSpec.object('place',
                                           'Place',
                                           'The selected place',
-                                          GObject.ParamFlags.READWRITE,
+                                          GObject.ParamFlags.READABLE |
+                                          GObject.ParamFlags.WRITABLE,
                                           Geocode.Place)
     },
 
