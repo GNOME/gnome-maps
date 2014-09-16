@@ -2,14 +2,15 @@
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
 # Kris Thomsen <mail@kristhomsen.dk>, 2013.
+# Kenneth Nielsen <k.nielsen81@gmail.com>, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-19 22:13+0100\n"
-"PO-Revision-Date: 2014-03-15 13:10+0100\n"
-"Last-Translator: Kris Thomsen <mail@kristhomsen.dk>\n"
+"POT-Creation-Date: 2014-09-16 19:54+0200\n"
+"PO-Revision-Date: 2014-09-16 19:51+0200\n"
+"Last-Translator: Kenneth Nielsen <k.nielsen81@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../data/gnome-maps.appdata.xml.in.h:1
+#: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
@@ -27,17 +28,7 @@ msgstr ""
 "mulighed for hurtigt at finde stedet du leder efter ved at søge efter en by "
 "eller gade, eller et sted hvor du kan mødes med en ven."
 
-#: ../data/gnome-maps.appdata.xml.in.h:2
-msgid ""
-"<li>Search for country, region, city or street.</li> <li>Search for specific "
-"types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
-"near Alexanderplatz, Berlin”.</li>"
-msgstr ""
-"<li>Søg efter land, region, by eller gade.</li> <li>Søg efter specifikke "
-"steder, som f.eks. “Caféer nær Rådhuspladsen, København” eller “Trådløs "
-"forbindelse nær Alexanderplatz, Berlin”</li>"
-
-#: ../data/gnome-maps.appdata.xml.in.h:3
+#: ../data/org.gnome.Maps.appdata.xml.in.h:2
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
@@ -45,17 +36,29 @@ msgstr ""
 "Kort bruger den kollaborative OpenStreetMap-database, skabt af flere "
 "hundrede tusinde mennesker over hele verden."
 
-#. Translators: This is the program name.
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
-#: ../src/mainWindow.js:300 ../src/main-window.ui.h:3
+#. Translators: Search is carried out on OpenStreetMap data using Nominatim.
+#. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
+#. your language to see what words you can use for the translated search.
+#: ../data/org.gnome.Maps.appdata.xml.in.h:6
+msgid ""
+"You can even search for specific types of locations, such as “Pubs near Main "
+"Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
+msgstr ""
+"Du kan endda søge efter specifikke typer af placeringer, såsom \"Pubs near "
+"Main Street, Boston\" eller \"Hotels near Alexanderplatz, Berlin\" (Dansk "
+"endnu ikke understøttet)."
+
+#. Translators: This is the program name. */
+#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
+#: ../src/mainWindow.js:302 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "Kort"
 
-#: ../data/gnome-maps.desktop.in.in.h:2
+#: ../data/org.gnome.Maps.desktop.in.in.h:2
 msgid "A simple maps application"
 msgstr "Et simpelt kortprogram"
 
-#: ../data/gnome-maps.desktop.in.in.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:3
 msgid "Maps;"
 msgstr "Kort;"
 
@@ -143,52 +146,109 @@ msgstr "Hvad er der her?"
 msgid "I’m here!"
 msgstr "Jeg er her!"
 
-#: ../src/mainWindow.js:298
+#: ../src/mainWindow.js:300
 msgid "translator-credits"
 msgstr ""
 "Kris Thomsen\n"
+"Kenneth Nielsen\n"
 "\n"
 "Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
 "Mere info: http://www.dansk-gruppen.dk"
 
-#: ../src/mainWindow.js:301
+#: ../src/mainWindow.js:303
 msgid "A map application for GNOME"
 msgstr "Et kortprogram til GNOME"
 
-#: ../src/main-window.ui.h:1
-msgid "Street"
-msgstr "Gade"
-
 #: ../src/main-window.ui.h:2
-msgid "Satellite"
-msgstr "Satellit"
+msgid "Go to current location"
+msgstr "Gå til nuværende placering"
 
-#. Translators: Accuracy of user location information
-#: ../src/mapLocation.js:164
+#: ../src/main-window.ui.h:3
+msgid "Choose map type"
+msgstr "Vælg korttype"
+
+#: ../src/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr "Slå ruteplan til eller fra"
+
+#: ../src/routeService.js:73
+msgid "No route found."
+msgstr "Ingen rute fundet."
+
+#: ../src/routeService.js:80
+msgid "Route request failed."
+msgstr "Ruteforespørgsel fejlede."
+
+#: ../src/routeService.js:151
+msgid "Start!"
+msgstr "Start!"
+
+#: ../src/searchResultBubble.js:60
+#, javascript-format
+msgid "Country code: %s"
+msgstr "Landekode: %s"
+
+#: ../src/searchResultBubble.js:66
+#, javascript-format
+msgid "Postal code: %s"
+msgstr "Postnummer: %s"
+
+#. Translators: %s is a time expression with the format "%f h" or "%f min" */
+#: ../src/sidebar.js:198
+#, javascript-format
+msgid "Estimated time: %s"
+msgstr "Anslået tid: %s"
+
+#: ../src/user-location-bubble.ui.h:1
+msgid "Current location"
+msgstr "Nuværende placering"
+
+#. To translators: %s can be "Unknown", "Exact" or "%f km²"
+#: ../src/user-location-bubble.ui.h:4
+#, no-c-format
+msgid "Accuracy: %s"
+msgstr "Nøjagtighed: %s"
+
+#. Translators: Accuracy of user location information */
+#: ../src/utils.js:165
 msgid "Unknown"
 msgstr "Ukendt"
 
-#. Translators: Accuracy of user location information
-#: ../src/mapLocation.js:167
+#. Translators: Accuracy of user location information */
+#: ../src/utils.js:168
 msgid "Exact"
 msgstr "Præcis"
 
-#: ../src/mapLocation.js:177
-msgid " km<sup>2</sup>"
-msgstr " km<sup>2</sup>"
+#: ../src/utils.js:178
+#, javascript-format
+msgid "%f km²"
+msgstr "%f km²"
 
-#. Translators: Showing name of place where user currently is and
-#. accuracy of this information (which is translated
-#. separately)
-#.
-#: ../src/userLocation.js:62
-#, c-format
-msgid ""
-"%s\n"
-"Position Accuracy: %s"
-msgstr ""
-"%s\n"
-"Positionsnøjagtighed: %s"
+#: ../src/utils.js:275
+#, javascript-format
+msgid "%f h"
+msgstr "%f t"
 
-#~ msgid " km²"
-#~ msgstr " km²"
+#: ../src/utils.js:277
+#, javascript-format
+msgid "%f min"
+msgstr "%f min"
+
+#: ../src/utils.js:287
+#, javascript-format
+msgid "%f km"
+msgstr "%f km"
+
+#: ../src/utils.js:289
+#, javascript-format
+msgid "%f m"
+msgstr "%f m"
+
+#~ msgid "Street"
+#~ msgstr "Gade"
+
+#~ msgid "Satellite"
+#~ msgstr "Satellit"
+
+#~ msgid " km<sup>2</sup>"
+#~ msgstr " km<sup>2</sup>"
