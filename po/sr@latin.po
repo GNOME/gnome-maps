@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-03-04 00:08+0000\n"
-"PO-Revision-Date: 2014-03-23 08:37+0200\n"
+"POT-Creation-Date: 2014-09-20 07:01+0000\n"
+"PO-Revision-Date: 2014-09-22 11:25+0200\n"
 "Last-Translator: Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
@@ -20,11 +20,7 @@ msgstr ""
 "n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/gnome-maps.appdata.xml.in.h:1
-#| msgid ""
-#| "Maps gives you quick access to maps all across the world. It allows you "
-#| "to quickly find the place you're looking for by searching for a city or "
-#| "street, or locate a place to meet a friend."
+#: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
@@ -34,21 +30,7 @@ msgstr ""
 "i lako pronađete mesto koje tražite tražeći grad ili ulicu, ili da odredite "
 "mesto za susret sa drugarima."
 
-#: ../data/gnome-maps.appdata.xml.in.h:2
-#| msgid ""
-#| "<li>Search for country, region, city or street.</li> <li>Search for "
-#| "specific types of locations, such as \"Pubs near Main Street, Boston\" or "
-#| "\"WiFi Access near Alexanderplatz, Berlin\"</li>"
-msgid ""
-"<li>Search for country, region, city or street.</li> <li>Search for specific "
-"types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
-"near Alexanderplatz, Berlin”.</li>"
-msgstr ""
-"<li>Tražite državu, oblast, grad ili ulicu.</li> <li>Tražite neka posebna "
-"mesta, kao što su „Gradski parkovi u Jagodini“ ili „Slobodan pristup "
-"bežičnom internetu u blizini autobuske stanice u Pirotu“</li>"
-
-#: ../data/gnome-maps.appdata.xml.in.h:3
+#: ../data/org.gnome.Maps.appdata.xml.in.h:2
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
@@ -56,17 +38,32 @@ msgstr ""
 "Ovaj program koristi saradničku bazu podataka „OpenStreetMap“, koju stvaraju "
 "stotine hiljada ljudi širom sveta."
 
+#. Translators: Search is carried out on OpenStreetMap data using Nominatim.
+#. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
+#. your language to see what words you can use for the translated search.
+#: ../data/org.gnome.Maps.appdata.xml.in.h:6
+#| msgid ""
+#| "<li>Search for country, region, city or street.</li> <li>Search for "
+#| "specific types of locations, such as “Pubs near Main Street, Boston” or "
+#| "“Wi-Fi Access near Alexanderplatz, Berlin”.</li>"
+msgid ""
+"You can even search for specific types of locations, such as “Pubs near Main "
+"Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
+msgstr ""
+"Možete čak i da potražite neka posebna mesta, kao što su „Gradski parkovi u "
+"Jagodini“ ili „Hoteli u centru Pirota“."
+
 #. Translators: This is the program name. */
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
-#: ../src/mainWindow.js:372 ../src/main-window.ui.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
+#: ../src/mainWindow.js:302 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "Karte"
 
-#: ../data/gnome-maps.desktop.in.in.h:2
+#: ../data/org.gnome.Maps.desktop.in.in.h:2
 msgid "A simple maps application"
 msgstr "Jednostavan program za karte"
 
-#: ../data/gnome-maps.desktop.in.in.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:3
 msgid "Maps;"
 msgstr "karte;mape;"
 
@@ -83,7 +80,6 @@ msgid "Window position"
 msgstr "Položaj prozora"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:4
-#| msgid "Window position (x and y)."
 msgid "Window position (X and Y)."
 msgstr "Položaj prozora (položeno i uspravno)."
 
@@ -92,7 +88,6 @@ msgid "Window maximized"
 msgstr "Uvećavanje prozora"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:6
-#| msgid "Window maximized state"
 msgid "Window maximization state"
 msgstr "Stanje uvećanja prozora"
 
@@ -129,7 +124,6 @@ msgid "User set last known location"
 msgstr "Korisnik je podesio poslednje poznato mesto"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:14
-#| msgid "Last known location was set manually by user."
 msgid "Whether the last known location was set manually by the user."
 msgstr "Da li je korisnik ručno podesio poslednje poznato mesto."
 
@@ -150,60 +144,118 @@ msgid "Quit"
 msgstr "Izađi"
 
 #: ../src/context-menu.ui.h:1
-#| msgid "What's here?"
 msgid "What’s here?"
 msgstr "Šta je to ovde?"
 
 #: ../src/context-menu.ui.h:2
-#| msgid "I'm here!"
 msgid "I’m here!"
 msgstr "Ja sam ovde!"
 
-#: ../src/mainWindow.js:370
+#: ../src/mainWindow.js:300
 msgid "translator-credits"
 msgstr ""
-"  Miroslav Nikolić\n"
+"  Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
 "\n"
 "http://prevod.org — prevod na srpski jezik"
 
-#: ../src/mainWindow.js:373
+#: ../src/mainWindow.js:303
 msgid "A map application for GNOME"
 msgstr "Gnomov program za karte"
 
-#: ../src/main-window.ui.h:1
-msgid "Street"
-msgstr "Ulica"
-
 #: ../src/main-window.ui.h:2
-msgid "Satellite"
-msgstr "Satelit"
+msgid "Go to current location"
+msgstr "Idite na tekuće mesto"
+
+#: ../src/main-window.ui.h:3
+msgid "Choose map type"
+msgstr "Izaberite vrstu karte"
+
+#: ../src/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr "Prebacite organizatora puta"
+
+#: ../src/routeService.js:73
+msgid "No route found."
+msgstr "Nisam pronašao put."
+
+#: ../src/routeService.js:80
+msgid "Route request failed."
+msgstr "Zahtev puta nije uspeo."
+
+#: ../src/routeService.js:151
+msgid "Start!"
+msgstr "Kreni!"
+
+#: ../src/searchResultBubble.js:60
+#, javascript-format
+msgid "Country code: %s"
+msgstr "Šifra države: %s"
+
+#: ../src/searchResultBubble.js:66
+#, javascript-format
+msgid "Postal code: %s"
+msgstr "Poštanski broj: %s"
+
+#. Translators: %s is a time expression with the format "%f h" or "%f min" */
+#: ../src/sidebar.js:198
+#, javascript-format
+msgid "Estimated time: %s"
+msgstr "Procenjeno vreme: %s"
+
+#: ../src/user-location-bubble.ui.h:1
+msgid "Current location"
+msgstr "Trenutni položaj"
+
+#. To translators: %s can be "Unknown", "Exact" or "%f km²"
+#: ../src/user-location-bubble.ui.h:4
+#, no-c-format
+#| msgid ""
+#| "%s\n"
+#| "Position Accuracy: %s"
+msgid "Accuracy: %s"
+msgstr "Preciznost: %s"
 
 #. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:164
+#: ../src/utils.js:165
 msgid "Unknown"
 msgstr "Nepoznato"
 
 #. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:167
+#: ../src/utils.js:168
 msgid "Exact"
 msgstr "Tačno"
 
-#: ../src/mapLocation.js:177
-msgid " km<sup>2</sup>"
-msgstr " km<sup>2</sup>"
-
-#. Translators: Showing name of place where user currently is and
-#. accuracy of this information (which is translated
-#. separately)
-#. */
-#: ../src/userLocation.js:62
+#: ../src/utils.js:178
 #, javascript-format
-msgid ""
-"%s\n"
-"Position Accuracy: %s"
-msgstr ""
-"%s\n"
-"Preciznost položaja: %s"
+#| msgid " km²"
+msgid "%f km²"
+msgstr "%f km²"
 
-#~ msgid " km²"
-#~ msgstr " km²"
+#: ../src/utils.js:275
+#, javascript-format
+msgid "%f h"
+msgstr "%f h"
+
+#: ../src/utils.js:277
+#, javascript-format
+msgid "%f min"
+msgstr "%f min"
+
+#: ../src/utils.js:287
+#, javascript-format
+msgid "%f km"
+msgstr "%f km"
+
+#: ../src/utils.js:289
+#, javascript-format
+msgid "%f m"
+msgstr "%f m"
+
+#~ msgid "Street"
+#~ msgstr "Ulica"
+
+#~ msgid "Satellite"
+#~ msgstr "Satelit"
+
+#~ msgid " km<sup>2</sup>"
+#~ msgstr " km<sup>2</sup>"
