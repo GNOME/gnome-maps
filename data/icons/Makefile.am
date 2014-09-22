@@ -25,6 +25,12 @@ private_icons =							\
 	hicolor_apps_16x16_maps-point-end.svg			\
 	hicolor_apps_16x16_maps-point-start-symbolic.svg	\
 	hicolor_apps_16x16_maps-point-end-symbolic.svg		\
+	hicolor_apps_16x16_layers-button-symbolic.svg		\
+	hicolor_apps_16x16_route-button-symbolic.svg		\
+	hicolor_apps_16x16_route-pedestrian-symbolic.svg 	\
+	hicolor_apps_16x16_route-transit-symbolic.svg 		\
+	hicolor_apps_16x16_route-bike-symbolic.svg 		\
+	hicolor_apps_16x16_route-car-symbolic.svg 		\
 	hicolor_apps_32x32_maps-pin.svg				\
 	hicolor_apps_22x22_user-location.png			\
 	$(NULL)
