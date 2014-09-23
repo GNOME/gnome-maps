@@ -9,52 +9,53 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-03-08 07:55+0000\n"
-"PO-Revision-Date: 2014-03-08 21:44+0800\n"
-"Last-Translator: Tong Hui <tonghuix@gmail.com>\n"
+"POT-Creation-Date: 2014-09-16 05:35+0000\n"
+"PO-Revision-Date: 2014-09-23 18:50+0800\n"
+"Last-Translator: Yunqiang Su <wzssyqa@gmail.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.6.9\n"
 
-#: ../data/gnome-maps.appdata.xml.in.h:1
+#: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
 "or locate a place to meet a friend."
 msgstr ""
-"地图 应用帮您快速访问世界各地的地图。允许您快速定位到城市、街道或约会地点。"
+"地图应用帮您快速访问世界各地的地图。允许您快速定位到城市、街道或约会地点。"
 
-#: ../data/gnome-maps.appdata.xml.in.h:2
-msgid ""
-"<li>Search for country, region, city or street.</li> <li>Search for specific "
-"types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
-"near Alexanderplatz, Berlin”.</li>"
-msgstr ""
-"<li>搜索国家、地区、城市或街道。</li> <li>搜索特定类型的位置，如“Pubs near "
-"Main Street, Boston”或“Wi-Fi Access near Alexanderplatz, Berlin”(目前仅支持英"
-"文)。</li>"
-
-#: ../data/gnome-maps.appdata.xml.in.h:3
+#: ../data/org.gnome.Maps.appdata.xml.in.h:2
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
 msgstr ""
 "地图应用使用了 OpenStreetMap 数据库，该数据库由全球成千上万的人们协同制作。"
 
+#. Translators: Search is carried out on OpenStreetMap data using Nominatim.
+#. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
+#. your language to see what words you can use for the translated search.
+#: ../data/org.gnome.Maps.appdata.xml.in.h:6
+msgid ""
+"You can even search for specific types of locations, such as “Pubs near Main "
+"Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
+msgstr ""
+"你甚至可以搜索特定类型的位置，比如“Pubs near Main Street, Boston”或“Hotels "
+"near Alexanderplatz, Berlin”。"
+
 #. Translators: This is the program name. */
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
-#: ../src/mainWindow.js:300 ../src/main-window.ui.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
+#: ../src/mainWindow.js:302 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "地图"
 
-#: ../data/gnome-maps.desktop.in.in.h:2
+#: ../data/org.gnome.Maps.desktop.in.in.h:2
 msgid "A simple maps application"
 msgstr "一款简单的地图应用程序"
 
-#: ../data/gnome-maps.desktop.in.in.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:3
 msgid "Maps;"
 msgstr "Maps;地图;"
 
@@ -140,56 +141,115 @@ msgstr "这是哪里？"
 msgid "I’m here!"
 msgstr "我在这！"
 
-#: ../src/mainWindow.js:298
+#: ../src/mainWindow.js:300
 msgid "translator-credits"
 msgstr ""
 "tuhaihe <1132321739qq@gmail.com>, 2013\n"
 "Tong Hui <tonghuix@gmail.com>, 2014"
 
-#: ../src/mainWindow.js:301
+#: ../src/mainWindow.js:303
 msgid "A map application for GNOME"
 msgstr "一款 GNOME 地图应用程序"
 
-#: ../src/main-window.ui.h:1
-msgid "Street"
-msgstr "街道"
-
 #: ../src/main-window.ui.h:2
-msgid "Satellite"
-msgstr "卫星"
+msgid "Go to current location"
+msgstr "转到当前位置"
+
+#: ../src/main-window.ui.h:3
+msgid "Choose map type"
+msgstr "选择地图类型"
+
+#: ../src/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr "切换路线规划器"
+
+#: ../src/routeService.js:73
+msgid "No route found."
+msgstr "没有找到路线。"
+
+#: ../src/routeService.js:80
+msgid "Route request failed."
+msgstr "路线请求失败。"
+
+#: ../src/routeService.js:151
+msgid "Start!"
+msgstr "开始!"
+
+#: ../src/searchResultBubble.js:60
+#, javascript-format
+msgid "Country code: %s"
+msgstr "国家代码：%s"
+
+#: ../src/searchResultBubble.js:66
+#, javascript-format
+msgid "Postal code: %s"
+msgstr "邮政编码：%s"
+
+#. Translators: %s is a time expression with the format "%f h" or "%f min" */
+#: ../src/sidebar.js:198
+#, javascript-format
+msgid "Estimated time: %s"
+msgstr "估计时间：%s"
+
+#: ../src/user-location-bubble.ui.h:1
+msgid "Current location"
+msgstr "当前位置"
+
+#. To translators: %s can be "Unknown", "Exact" or "%f km²"
+#: ../src/user-location-bubble.ui.h:4
+#, no-c-format
+msgid "Accuracy: %s"
+msgstr "位置精度：%s"
 
 #. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:164
+#: ../src/utils.js:165
 msgid "Unknown"
 msgstr "未知"
 
 #. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:167
+#: ../src/utils.js:168
 msgid "Exact"
 msgstr "准确"
 
-#: ../src/mapLocation.js:177
-msgid " km<sup>2</sup>"
-msgstr " km<sup>2</sup>"
-
-#. Translators: Showing name of place where user currently is and
-#. accuracy of this information (which is translated
-#. separately)
-#. */
-#: ../src/userLocation.js:62
+#: ../src/utils.js:178
 #, javascript-format
-msgid ""
-"%s\n"
-"Position Accuracy: %s"
-msgstr ""
-"%s\n"
-"位置精度：%s"
+msgid "%f km²"
+msgstr "%f平方千米"
 
-#~ msgid " km²"
-#~ msgstr " km²"
+#: ../src/utils.js:275
+#, javascript-format
+msgid "%f h"
+msgstr "%f 小时"
 
-#~ msgid "Track user location"
-#~ msgstr "跟踪用户位置"
+#: ../src/utils.js:277
+#, javascript-format
+msgid "%f min"
+msgstr "%f分钟"
+
+#: ../src/utils.js:287
+#, javascript-format
+msgid "%f km"
+msgstr "%f 千米"
+
+#: ../src/utils.js:289
+#, javascript-format
+msgid "%f m"
+msgstr "%f 米"
+
+#~ msgid " km<sup>2</sup>"
+#~ msgstr " km<sup>2</sup>"
+
+#~ msgid "To"
+#~ msgstr "到"
+
+#~ msgid "From"
+#~ msgstr "从"
+
+#~ msgid "Street"
+#~ msgstr "街道"
+
+#~ msgid "Satellite"
+#~ msgstr "卫星"
 
 #~ msgid "Track user location."
 #~ msgstr "跟踪用户位置。"
