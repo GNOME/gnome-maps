@@ -21,8 +21,8 @@
 const Gtk = imports.gi.Gtk;
 const GLib = imports.gi.GLib;
 const GdkPixbuf = imports.gi.GdkPixbuf;
-const GObject = imports.gi.GObject;
 
+const GObject = imports.gi.GObject;
 const Lang = imports.lang;
 const Utils = imports.utils;
 
@@ -37,6 +37,9 @@ const _PLACE_ICON_SIZE = 20;
 const SearchPopup = new Lang.Class({
     Name: 'SearchPopup',
     Extends: Gtk.Popover,
+    Signals : {
+        'selected' : { param_types: [ GObject.TYPE_OBJECT ] }
+    },
 
     _init: function(props) {
         this._numVisible = props.num_visible;
@@ -178,4 +181,3 @@ const SearchPopup = new Lang.Class({
         return description;
     }
 });
-Utils.addSignalMethods(SearchPopup.prototype);

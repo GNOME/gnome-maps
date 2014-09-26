@@ -29,6 +29,10 @@ const Utils = imports.utils;
 const Notification = new Lang.Class({
     Name: 'Notification',
     Extends: Gtk.Revealer,
+    Signals: {
+        'revealed': { },
+        'dismissed': { }
+    },
     Abstract: true,
 
     _init: function() {
@@ -64,7 +68,6 @@ const Notification = new Lang.Class({
         }
     }
 });
-Utils.addSignalMethods(Notification.prototype);
 
 const Plain = new Lang.Class({
     Name: 'Plain',

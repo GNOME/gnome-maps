@@ -80,6 +80,9 @@ const LocationProxy = Gio.DBusProxy.makeProxyWrapper(LocationInterface);
 const Geoclue = new Lang.Class({
     Name: 'Geoclue',
     Extends: GObject.Object,
+    Signals: {
+        'location-changed': { }
+    },
     Properties: {
         'connected': GObject.ParamSpec.boolean('connected',
                                                'Connected',
@@ -194,4 +197,3 @@ const Geoclue = new Lang.Class({
         Utils.debug("Updated location: " + location.description);
     }
 });
-Utils.addSignalMethods(Geoclue.prototype);

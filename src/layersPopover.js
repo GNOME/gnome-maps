@@ -42,4 +42,3 @@ const LayersPopover = new Lang.Class({
         this.add(ui.grid);
     }
 });
-Utils.addSignalMethods(LayersPopover.prototype);

@@ -146,4 +146,3 @@ const Application = new Lang.Class({
         this._mainWindow = null;
     }
 });
-Utils.addSignalMethods(Application.prototype);
