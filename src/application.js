@@ -31,6 +31,7 @@ const GtkClutter = imports.gi.GtkClutter;
 const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
 const GLib = imports.gi.GLib;
+const GData = imports.gi.GData;
 
 const Main = imports.main;
 const Format = imports.format;
@@ -53,6 +54,7 @@ let notificationManager = null;
 let routeService = null;
 let geoclue = null;
 let geocodeService = null;
+let freebase = null;
 
 const Application = new Lang.Class({
     Name: 'Application',
@@ -115,6 +117,7 @@ const Application = new Lang.Class({
         routeService   = new RouteService.GraphHopper();
         geoclue        = new Geoclue.Geoclue();
         geocodeService = new GeocodeService.GeocodeService();
+        freebase       = new GData.FreebaseService();
     },
 
     _createWindow: function() {

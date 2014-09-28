@@ -25,11 +25,13 @@ PKG_PROG_PKG_CONFIG([0.22])
 GIO_MIN_VERSION=2.39.3
 GJS_MIN_VERSION=1.39.0
 GOBJECT_INTROSPECTION_MIN_VERSION=0.10.1
+LIBGDATA_MIN_VERSION=0.16.0
 
 PKG_CHECK_MODULES(GNOME_MAPS, [
     gio-2.0                      >= $GIO_MIN_VERSION
     gjs-1.0                      >= $GJS_MIN_VERSION
     gobject-introspection-1.0    >= $GOBJECT_INTROSPECTION_MIN_VERSION
+    libgdata                     >= $LIBGDATA_MIN_VERSION
 ])
 
 
