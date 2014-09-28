@@ -28,6 +28,7 @@ const Gtk = imports.gi.Gtk;
 const GtkChamplain = imports.gi.GtkChamplain;
 const Champlain = imports.gi.Champlain;
 const Geocode = imports.gi.GeocodeGlib;
+const GData = imports.gi.GData;
 
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
@@ -49,6 +50,11 @@ const MapType = {
 
 const MapMinZoom = 2;
 
+const PoiType = {
+    TOURIST_PLACE:    1,
+    NATURAL_LOCATION: 2
+};
+
 const MapView = new Lang.Class({
     Name: 'MapView',
     Extends: GtkChamplain.Embed,
@@ -58,6 +64,7 @@ const MapView = new Lang.Class({
 
         this.view = this._initView();
         this._initLayers();
+        this._initPoi();
 
         this._factory = Champlain.MapSourceFactory.dup_default();
         this.setMapType(MapType.STREET);
@@ -99,6 +106,10 @@ const MapView = new Lang.Class({
         this._userLocationLayer = new Champlain.MarkerLayer();
         this._userLocationLayer.set_selection_mode(Champlain.SelectionMode.SINGLE);
         this.view.add_layer(this._userLocationLayer);
+
+        this._poiLayer = new Champlain.MarkerLayer();
+        this._poiLayer.set_selection_mode(Champlain.SelectionMode.SINGLE);
+        this.view.add_layer(this._poiLayer);
     },
 
     _connectRouteSignals: function(route) {
@@ -197,6 +208,130 @@ const MapView = new Lang.Class({
         let mapLocation = new MapLocation.MapLocation(place, this);
 
         mapLocation.goTo(true);
+    },
+
+    _initPoi: function() {
+        this._poiLocationInfo = {};
+        this._poiElements = {};
+        this._poiLocationInfo[PoiType.TOURIST_PLACE] = { minZoom: 12,
+                                                         image: Path.ICONS_DIR + "/pin.svg"};
+        this._poiLocationInfo[PoiType.NATURAL_LOCATION] = { minZoom: 7,
+                                                            image: Path.ICONS_DIR + "/pin.svg" };
+    },
+
+    _unsetPoi: function() {
+        this._poiLayer.remove_all();
+        this._poiElements = {};
+        this._highlightedPoiMarker = null;
+    },
+
+    _addPoiItem: function(object, id, locationType) {
+        let nameValue = object.get_property_value('/type/object/name', 0);
+        let geolocationValue = object.get_property_value('/location/location/geolocation', 0);
+        let latValue = null, lonValue = null;
+
+        if (geolocationValue) {
+            let geolocationObject = geolocationValue.get_object();
+            latValue = geolocationObject.get_property_value('/location/geocode/latitude', 0);
+            lonValue = geolocationObject.get_property_value('/location/geocode/longitude', 0);
+        }
+
+        if (nameValue && latValue && lonValue) {
+            let place = new Geocode.Place({
+                place_type : Geocode.PlaceType.POINT_OF_INTEREST,
+                location   : new Geocode.Location({ description : nameValue.get_string(),
+                                                    latitude    : latValue.get_double(),
+                                                    longitude   : lonValue.get_double() }),
+            });
+
+            let marker = new Champlain.Marker();
+            let imageActor = Utils.CreateActorFromImageFile(this._poiLocationInfo[locationType].image);
+            marker.add_child(imageActor);
+            marker.place = place;
+            marker.set_location(place.location.latitude, place.location.longitude);
+            marker.connect('notify::size', Lang.bind(this, function() {
+                marker.set_translation(-Math.floor(marker.get_width() / 2),
+                                       -Math.floor(marker.get_height() / 2),
+                                       0);
+            }));
+
+            this._poiLayer.add_marker(marker);
+            this._poiElements[id] = marker;
+        }
+    },
+
+    _getRadiusForView: function() {
+        let box = this.view.get_bounding_box();
+        let topLeft = new Geocode.Location({ latitude  : box.top,
+                                             longitude : box.left });
+        let bottomRight = new Geocode.Location({ latitude  : box.bottom,
+                                                 longitude : box.right });
+
+        // Return radius in meters
+        return topLeft.get_distance_from(bottomRight) * 1000 / 2;
+    },
+
+    _createQuery: function(locationType) {
+        let searchQuery = new GData.FreebaseSearchQuery();
+
+        searchQuery.open_filter(GData.FreebaseSearchFilterType.ALL);
+        searchQuery.add_location(this._getRadiusForView(),
+                                 this.view.latitude,
+                                 this.view.longitude);
+
+        searchQuery.open_filter(GData.FreebaseSearchFilterType.ANY);
+
+        if (locationType == PoiType.TOURIST_PLACE) {
+            searchQuery.add_filter('type', '/travel/tourist_attraction');
+            searchQuery.add_filter('type', '/architecture/museum');
+        } else if (locationType == PoiType.NATURAL_LOCATION) {
+            searchQuery.add_filter('type', '/geography/mountain');
+            searchQuery.add_filter('type', '/protected_sites/protected_site');
+        } else {
+            return null;
+        }
+
+        searchQuery.close_filter();
+        searchQuery.close_filter();
+
+        return searchQuery;
+    },
+
+    _updatePoiLocation: function(locationType) {
+        if (!Application.freebase)
+            return;
+
+        // Don't show POI on too wide views
+        if (this.view.zoom_level < this._poiLocationInfo[locationType].minZoom)
+            return;
+
+        let searchQuery = this._createQuery(locationType);
+
+        if (!searchQuery)
+            return;
+
+        Application.freebase.search_async(searchQuery, null, Lang.bind(this, function(service, res) {
+            let result = service.query_single_entry_finish(res);
+
+            for (let i = 0; i < result.get_num_items(); i++) {
+                let item = result.get_item(i);
+
+                if (this._poiElements[item.get_mid()])
+                    continue;
+
+                let topicQuery = new GData.FreebaseTopicQuery({q: item.get_mid()});
+
+                service.get_topic_async(topicQuery, null, Lang.bind(this, function(service, res) {
+                    let result = service.query_single_entry_finish(res);
+                    this._addPoiItem(result.dup_object(), item.get_mid(), locationType);
+                }));
+            }
+        }));
+    },
+
+    _updatePoiLayer: function() {
+        for (let type in PoiType)
+            this._updatePoiLocation(PoiType[type]);
     },
 
     _onViewMoved: function() {
