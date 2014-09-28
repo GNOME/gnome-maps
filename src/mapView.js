@@ -186,6 +186,7 @@ const MapView = new Lang.Class({
     },
 
     showNGotoLocation: function(place) {
+        this._unsetPoi();
         let mapLocation = this.showLocation(place);
         mapLocation.goTo(true);
     },
@@ -406,6 +407,14 @@ const MapView = new Lang.Class({
     },
 
     _onViewMoved: function() {
+        if (this._queryPoiTimeoutId)
+            Mainloop.source_remove(this._queryPoiTimeoutId);
+        this._queryPoiTimeoutId = Mainloop.timeout_add_seconds(1, Lang.bind(this, function() {
+            this._updatePoiLayer();
+            this._queryPoiTimeoutId = 0;
+            return false;
+        }));
+
         this.emit('view-moved');
     }
 });
