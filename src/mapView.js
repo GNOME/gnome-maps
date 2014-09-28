@@ -29,6 +29,8 @@ const GtkChamplain = imports.gi.GtkChamplain;
 const Champlain = imports.gi.Champlain;
 const Geocode = imports.gi.GeocodeGlib;
 const GData = imports.gi.GData;
+const Pango = imports.gi.Pango;
+const GLib = imports.gi.GLib;
 
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
@@ -225,9 +227,70 @@ const MapView = new Lang.Class({
         this._highlightedPoiMarker = null;
     },
 
+    _updatePoiImage: function(marker) {
+        let image = new Clutter.Image();
+        let format;
+
+        if (marker.imagePixbuf.get_n_channels() == 3)
+            format = Cogl.PixelFormat.RGB_888;
+        else
+            format = Cogl.PixelFormat.RGBA_8888;
+
+        image.set_data(marker.imagePixbuf.get_pixels(),
+                       format,
+                       marker.imagePixbuf.get_width(),
+                       marker.imagePixbuf.get_height(),
+                       marker.imagePixbuf.get_rowstride());
+
+        this._highlightedPoiImage.set_content(image);
+        this._highlightedPoiImage.height = marker.imagePixbuf.get_height();
+        image.invalidate();
+    },
+
+    _updateHighlightedPoi: function(marker) {
+        if (this._highlightedPoi == marker)
+            return;
+
+        this._highlightedPoi = marker;
+
+        if (!this._highlightedPoiMarker) {
+            this._highlightedPoiImage = new Clutter.Actor({ width: 80, height: 80 });
+            this._highlightedPoiMarker = new Champlain.Label({ ellipsize: Pango.EllipsizeMode.END,
+                                                               image: this._highlightedPoiImage,
+                                                               single_line_mode: false,
+                                                               use_markup: true,
+                                                               wrap: true });
+            this._poiLayer.add_marker(this._highlightedPoiMarker);
+        }
+
+        this._highlightedPoiImage.set_content(null);
+
+        if (marker.imagePixbuf)
+            this._updatePoiImage(marker);
+        else if (marker.imageStream) {
+            GdkPixbuf.Pixbuf.new_from_stream_at_scale_async(marker.imageStream, 80, -1,
+                                                            true, null, (function(stream, res) {
+                marker.imagePixbuf = GdkPixbuf.Pixbuf.new_from_stream_finish(res);
+                this._updatePoiImage(marker);
+            }).bind(this));
+        }
+
+        let markup;
+        markup = "<span size='larger'>" + GLib.markup_escape_text(marker.place.location.description, -1) + "</span>\n";
+
+        if (marker.longText)
+            markup += GLib.markup_escape_text(marker.longText, -1);
+
+        this._highlightedPoiMarker.text = markup;
+        this._highlightedPoiMarker.set_location(marker.place.location.latitude,
+                                                marker.place.location.longitude);
+    },
+
     _addPoiItem: function(object, id, locationType) {
         let nameValue = object.get_property_value('/type/object/name', 0);
         let geolocationValue = object.get_property_value('/location/location/geolocation', 0);
+        let descValue = object.get_property_value('/common/topic/description', 0);
+        let imageValue = object.get_property_value('/common/topic/image', 0);
         let latValue = null, lonValue = null;
 
         if (geolocationValue) {
@@ -249,11 +312,19 @@ const MapView = new Lang.Class({
             marker.add_child(imageActor);
             marker.place = place;
             marker.set_location(place.location.latitude, place.location.longitude);
+            marker.connect('button-press', Lang.bind(this, function(marker) {
+                this._updateHighlightedPoi(marker);
+            }));
             marker.connect('notify::size', Lang.bind(this, function() {
                 marker.set_translation(-Math.floor(marker.get_width() / 2),
                                        -Math.floor(marker.get_height() / 2),
                                        0);
             }));
+
+            if (descValue)
+                marker.longText = descValue.get_string();
+            if (imageValue)
+                marker.imageStream = Application.freebase.get_image(imageValue, null, 512, 512);
 
             this._poiLayer.add_marker(marker);
             this._poiElements[id] = marker;
