@@ -35,10 +35,18 @@ const Soup = imports.gi.Soup;
 
 const _ = imports.gettext.gettext;
 
+const METRIC_SYSTEM = 1;
+const IMPERIAL_SYSTEM = 2;
+
+//List of locales using imperial system according to glibc locale database
+const IMPERIAL_LOCALES = ['unm_US', 'es_US', 'es_PR', 'en_US', 'yi_US'];
+
 let debugInit = false;
 let debugEnabled = false;
 
 let _iconStore = {};
+
+let measurementSystem = null
 
 function debug(str) {
     if (!debugInit) {
@@ -158,6 +166,24 @@ function writeFile(filename, buffer) {
     }
 }
 
+function getMeasurementSystem() {
+    if (measurementSystem)
+        return measurementSystem;
+
+    let locale = GLib.getenv('LC_MEASUREMENT') || GLib.get_language_names()[0];
+
+    // Strip charset
+    if (locale.indexOf('.') !== -1)
+        locale = locale.substring(0, locale.indexOf('.'));
+
+    if (IMPERIAL_LOCALES.indexOf(locale) === -1)
+        measurementSystem = METRIC_SYSTEM;
+    else
+        measurementSystem = IMPERIAL_SYSTEM;
+
+    return measurementSystem;
+}
+
 function getAccuracyDescription(accuracy) {
     switch(accuracy) {
     case Geocode.LOCATION_ACCURACY_UNKNOWN:
@@ -271,13 +297,26 @@ function prettyTime(time) {
 }
 
 function prettyDistance(distance) {
-    let m = Math.floor(distance);
-    let km = Math.floor(m/1000);
-    m = m % 1000;
+    distance = Math.round(distance);
 
-    if (km > 0)
-        return _("%f km").format(km);
-    else if (m > 0)
-        return _("%f m").format(m);
-    return '';
+    if (getMeasurementSystem() === METRIC_SYSTEM){
+        if (distance >= 1000) {
+            distance = Math.round(distance / 1000 * 10) / 10;
+            /* Translators: This is a distance measured in kilometers */
+            return _("%f km").format(distance);
+        } else
+            /* Translators: This is a distance measured in meters */
+            return _("%f m").format(distance);
+    } else {
+        // Convert to feet
+        distance = Math.round(distance * 3.2808399);
+        if (distance >= 1056) {
+            // Convert to miles when distance is more than 0.2 mi
+            distance = Math.round(distance / 5280 * 10) / 10;
+            /* Translators: This is a distance measured in miles */
+            return _("%f mi").format(distance);
+        } else
+            /* Translators: This is a distance measured in feet */
+            return _("%f ft").format(distance);
+    }
 }
