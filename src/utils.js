@@ -167,15 +167,7 @@ function getAccuracyDescription(accuracy) {
         /* Translators: Accuracy of user location information */
         return _("Exact");
     default:
-        let area =  Math.PI * Math.pow(accuracy / 1000, 2);
-
-        debug(accuracy + ' => ' + area);
-        if (area >= 1)
-            area = Math.floor(area);
-        else
-            area = Math.floor(area * 10) / 10;
-
-        return _("%f km²").format(area);
+        return prettyDistance(accuracy);
     }
 }
 
