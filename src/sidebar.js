@@ -99,15 +99,22 @@ const Sidebar = new Lang.Class({
                                         ui.modeBikeToggle,
                                         ui.modeCarToggle);
 
+        let query = Application.routeService.query;
+
+        query.addPoint(0);
         let fromEntry = this._initRouteEntry(ui.fromEntryGrid, 0);
+
+        query.addPoint(1);
         this._initRouteEntry(ui.toEntryGrid, 1);
+
+        this._initQuerySignals(ui.viaGridContainer);
 
         this.bind_property('child-revealed',
                            fromEntry, 'has_focus',
                            GObject.BindingFlags.DEFAULT);
 
         ui.viaAddButton.connect('clicked', (function() {
-            this._createViaRow(ui.viaGridContainer);
+            query.addPoint(-1);
         }).bind(this));
 
         this.add(ui.sidebar);
@@ -143,6 +150,21 @@ const Sidebar = new Lang.Class({
         query.connect('notify::transportation', setToggles);
     },
 
+    _initQuerySignals: function(listbox) {
+        let query = Application.routeService.query;
+
+        // Do nothing for the From and To points.
+        query.connect('point-added', (function(obj, point, index) {
+            if (index !== 0 && index !== query.points.length - 1)
+                this._createViaRow(listbox, index);
+        }).bind(this));
+
+        query.connect('point-removed', (function(obj, point, index) {
+            let row = listbox.get_row_at_index(index - 1);
+            row.destroy();
+        }).bind(this));
+    },
+
     _createPlaceEntry: function() {
         return new PlaceEntry.PlaceEntry({ visible: true,
                                            can_focus: true,
@@ -152,21 +174,19 @@ const Sidebar = new Lang.Class({
                                            parseOnFocusOut: true });
     },
 
-    _createViaRow: function(listbox) {
+    _createViaRow: function(listbox, index) {
         let ui = Utils.getUIObject('route-via-row', [ 'via-grid',
                                                       'via-remove-button',
                                                       'via-entry-grid' ]);
+        let insertIndex = index - 1;
+        let entry = this._createPlaceEntry();
 
-        // Always insert before 'To'
-        let insertIndex = Application.routeService.query.points.length - 1;
+        this._initRouteEntry(ui.viaEntryGrid, index);
         listbox.insert(ui.viaGrid, insertIndex);
-        this._initRouteEntry(ui.viaEntryGrid, insertIndex);
 
         ui.viaRemoveButton.connect('clicked', function() {
             let row = ui.viaGrid.get_parent();
             let pointIndex = row.get_index();
-
-            listbox.remove(row);
             Application.routeService.query.removePoint(pointIndex + 1);
         });
     },
@@ -175,11 +195,10 @@ const Sidebar = new Lang.Class({
         let entry = this._createPlaceEntry();
         container.add(entry);
 
-        let point = new RouteQuery.QueryPoint();
+        let point = Application.routeService.query.points[pointIndex];
         entry.bind_property('place',
                             point, 'place',
                             GObject.BindingFlags.BIDIRECTIONAL);
-        Application.routeService.query.addPoint(point, pointIndex);
 
         return entry;
     },
@@ -193,7 +212,6 @@ const Sidebar = new Lang.Class({
             this._instructionStack.visible_child = this._instructionWindow;
             this._viaGridContainer.get_children().forEach((function(row) {
                 query.removePoint(row.get_index() + 1);
-                row.destroy();
             }).bind(this));
         }).bind(this));
 

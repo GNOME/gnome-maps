@@ -43,7 +43,9 @@ const RouteQuery = new Lang.Class({
     Name: 'RouteQuery',
     Extends: GObject.Object,
     Signals: {
-        'reset': { }
+        'reset': { },
+        'point-added': { param_types: [GObject.TYPE_OBJECT, GObject.TYPE_INT] },
+        'point-removed': { param_types: [GObject.TYPE_OBJECT, GObject.TYPE_INT] }
     },
     Properties: {
         'points': GObject.ParamSpec.object('points',
@@ -83,16 +85,29 @@ const RouteQuery = new Lang.Class({
         this.reset();
     },
 
-    addPoint: function(point, index) {
+    addPoint: function(index) {
+        let point = new QueryPoint();
+
+        if (index === -1)
+            index = this.points.length - 1;
+
         this._points.splice(index, 0, point);
         point.connect('notify::place', (function() {
             this.notify('points');
         }).bind(this));
+        this.emit('point-added', point, index);
+
+        return point;
     },
 
     removePoint: function(index) {
-        this._points.splice(index, 1);
-        this.notify('points');
+        let removedPoints = this._points.splice(index, 1);
+        let point = removedPoints ? removedPoints[0] : null;
+
+        if (point) {
+            this.notify('points');
+            this.emit('point-removed', point, index);
+        }
     },
 
     set transportation(transportation) {
