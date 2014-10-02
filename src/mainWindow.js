@@ -82,10 +82,10 @@ const MainWindow = new Lang.Class({
         this._toggleSidebarButton = ui.toggleSidebarButton;
         this._layersButton = ui.layersButton;
 
+        this._initHeaderbar();
         this._initActions();
         this._initAccelerators();
         this._initSignals();
-        this._initHeaderbar();
         this._restoreWindowGeometry();
 
         ui.grid.attach(this._sidebar, 1, 0, 1, 1);
@@ -133,6 +133,8 @@ const MainWindow = new Lang.Class({
                                                       ['<Primary>plus']);
         this.window.application.set_accels_for_action('win.zoom-out',
                                                       ['<Primary>minus']);
+        this.window.application.set_accels_for_action('win.find',
+                                                      ['<Primary>F']);
     },
 
     _initActions: function() {
@@ -177,6 +179,11 @@ const MainWindow = new Lang.Class({
                 signalHandlers: {
                     activate:  this.mapView.view.zoom_out.bind(this.mapView.view)
                 }
+            }, {
+                properties: { name: 'find' },
+                signalHandlers: {
+                    activate: this._placeEntry.grab_focus.bind(this._placeEntry)
+                }
             },
         ], this);
 
@@ -205,9 +212,9 @@ const MainWindow = new Lang.Class({
     },
 
     _initHeaderbar: function() {
-        let placeEntry = this._createPlaceEntry();
-        this._headerBar.custom_title = placeEntry;
-        placeEntry.has_focus = true;
+        this._placeEntry = this._createPlaceEntry();
+        this._headerBar.custom_title = this._placeEntry;
+        this._placeEntry.has_focus = true;
 
         let app = this.window.application;
         app.bind_property('connected',
@@ -220,7 +227,7 @@ const MainWindow = new Lang.Class({
                           this._toggleSidebarButton, 'sensitive',
                           GObject.BindingFlags.DEFAULT);
         app.bind_property('connected',
-                          placeEntry, 'sensitive',
+                          this._placeEntry, 'sensitive',
                           GObject.BindingFlags.DEFAULT);
     },
 
