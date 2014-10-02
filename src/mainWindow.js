@@ -83,6 +83,7 @@ const MainWindow = new Lang.Class({
         this._layersButton = ui.layersButton;
 
         this._initActions();
+        this._initAccelerators();
         this._initSignals();
         this._initHeaderbar();
         this._restoreWindowGeometry();
@@ -127,6 +128,13 @@ const MainWindow = new Lang.Class({
         return sidebar;
     },
 
+    _initAccelerators: function() {
+        this.window.application.set_accels_for_action('win.zoom-in',
+                                                      ['<Primary>plus']);
+        this.window.application.set_accels_for_action('win.zoom-out',
+                                                      ['<Primary>minus']);
+    },
+
     _initActions: function() {
         Utils.initActions(this.window, [
             {
@@ -159,7 +167,17 @@ const MainWindow = new Lang.Class({
                 signalHandlers: {
                     'change-state': this._onToggleSidebarChangeState
                 }
-            }
+            }, {
+                properties: { name: 'zoom-in' },
+                signalHandlers: {
+                    activate:  this.mapView.view.zoom_in.bind(this.mapView.view)
+                }
+            },{
+                properties: { name: 'zoom-out' },
+                signalHandlers: {
+                    activate:  this.mapView.view.zoom_out.bind(this.mapView.view)
+                }
+            },
         ], this);
 
         let action = this.window.lookup_action('goto-user-location');
@@ -174,9 +192,6 @@ const MainWindow = new Lang.Class({
                             this._onConfigureEvent.bind(this));
         this.window.connect('window-state-event',
                             this._onWindowStateEvent.bind(this));
-        this.window.connect('key-press-event',
-                            this._onKeyPressEvent.bind(this));
-
         this.mapView.view.connect('button-press-event',
                                   this._overlay.grab_focus.bind(this._overlay));
 
@@ -264,22 +279,6 @@ const MainWindow = new Lang.Class({
 
         let maximized = (state & Gdk.WindowState.MAXIMIZED);
         Application.settings.set('window-maximized', maximized);
-    },
-
-    _onKeyPressEvent: function(widget, event) {
-        let state = event.get_state()[1];
-
-        if (state & Gdk.ModifierType.CONTROL_MASK) {
-            let keyval = event.get_keyval()[1];
-
-            if (keyval === Gdk.KEY_plus)
-                this.mapView.view.zoom_in();
-
-            if (keyval === Gdk.KEY_minus)
-                this.mapView.view.zoom_out();
-        }
-
-        return false;
     },
 
     _quit: function() {
