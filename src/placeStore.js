@@ -26,6 +26,7 @@ const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 
 const Application = imports.application;
+const Place = imports.place;
 const Utils = imports.utils;
 
 const _PLACES_STORE_FILE = 'maps-places.json';
@@ -136,31 +137,16 @@ const PlaceStore = new Lang.Class({
 
         try {
             let jsonArray = JSON.parse(buffer);
-            jsonArray.forEach((function(obj) {
-                if (!obj.osm_id)
+            jsonArray.forEach((function({ place, type, added }) {
+                // We expect exception to be thrown in this line when parsing
+                // gnome-maps 3.14 or below place stores since the "place"
+                // key is not present.
+                if (!place.id)
                     return;
 
-                let location = new Geocode.Location({
-                    latitude:    obj.latitude,
-                    longitude:   obj.longitude,
-                    altitude:    obj.altitude,
-                    accuracy:    obj.accuracy,
-                    description: obj.name
-                });
-                let place = Geocode.Place.new_with_location(obj.name,
-                                                            obj.place_type,
-                                                            location);
-                place.osm_id = obj.osm_id;
-                if (obj.bounding_box) {
-                    place.set_bounding_box(new Geocode.BoundingBox({
-                        top: obj.bounding_box.top,
-                        bottom: obj.bounding_box.bottom,
-                        left: obj.bounding_box.left,
-                        right: obj.bounding_box.right
-                    }));
-                }
-                this._setPlace(this.append(), place, obj.type, obj.added);
-                if (obj.type === PlaceType.RECENT)
+                let p = Place.Place.fromJSON(place);
+                this._setPlace(this.append(), p, type, added);
+                if (type === PlaceType.RECENT)
                     this._numRecent++;
             }).bind(this));
         } catch (e) {
@@ -171,32 +157,14 @@ const PlaceStore = new Lang.Class({
     _store: function() {
         let jsonArray = [];
         this.foreach(function(model, path, iter) {
-            let place    = model.get_value(iter, Columns.PLACE),
-                location = place.location,
-                type     = model.get_value(iter, Columns.TYPE),
-                added    = model.get_value(iter, Columns.ADDED);
-
-            let bounding_box = null;
-            if (place.bounding_box !== null) {
-                bounding_box = {
-                    top: place.bounding_box.top,
-                    bottom: place.bounding_box.bottom,
-                    left: place.bounding_box.left,
-                    right: place.bounding_box.right
-                };
-            }
+            let place = model.get_value(iter, Columns.PLACE);
+            let type = model.get_value(iter, Columns.TYPE);
+            let added = model.get_value(iter, Columns.ADDED);
 
             jsonArray.push({
-                osm_id:       place.osm_id,
-                place_type:   place.place_type,
-                name:         place.name,
-                latitude:     location.latitude,
-                longitude:    location.longitude,
-                altitude:     location.altitude,
-                accuracy:     location.accuracy,
-                bounding_box: bounding_box,
-                type:         type,
-                added:        added
+                place: place.toJSON(),
+                type: type,
+                added: added
             });
         });
 
