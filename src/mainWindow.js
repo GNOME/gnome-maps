@@ -117,7 +117,7 @@ const MainWindow = new Lang.Class({
 
     _createSidebar: function() {
         let sidebar = new Sidebar.Sidebar(this.mapView);
-        Application.routeService.route.connect('update',
+        Application.routeService.query.connect('notify',
                                                this._setRevealSidebar.bind(this, true));
         sidebar.bind_property('reveal-child',
                               this.mapView, 'routeVisible',
