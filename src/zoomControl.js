@@ -31,8 +31,8 @@ const ZoomControl = new Lang.Class({
     _init: function (mapView) {
         this.parent({ halign: Gtk.Align.START,
                       valign: Gtk.Align.START,
-                      margin_top: 20,
-                      margin_start: 20,
+                      margin_top: 6,
+                      margin_start: 6,
                       visible: true });
 
         let ui = Utils.getUIObject('zoom-control', ['zoom-control',
