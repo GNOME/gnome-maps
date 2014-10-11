@@ -1,50 +1,50 @@
 NULL =
 
-public_icons_themes =				\
-	hicolor					\
-	HighContrast				\
+public_icons_themes =							\
+	hicolor								\
+	HighContrast							\
 	$(NULL)
 
-public_icons =						\
-	hicolor_apps_16x16_gnome-maps.png		\
-	hicolor_apps_22x22_gnome-maps.png		\
-	hicolor_apps_24x24_gnome-maps.png		\
-	hicolor_apps_32x32_gnome-maps.png		\
-	hicolor_apps_48x48_gnome-maps.png		\
-	hicolor_apps_256x256_gnome-maps.png		\
-	HighContrast_apps_16x16_gnome-maps.png		\
-	HighContrast_apps_22x22_gnome-maps.png		\
-	HighContrast_apps_24x24_gnome-maps.png		\
-	HighContrast_apps_256x256_gnome-maps.png	\
-	HighContrast_apps_32x32_gnome-maps.png		\
-	HighContrast_apps_48x48_gnome-maps.png		\
+public_icons =								\
+	hicolor_apps_16x16_gnome-maps.png				\
+	hicolor_apps_22x22_gnome-maps.png				\
+	hicolor_apps_24x24_gnome-maps.png				\
+	hicolor_apps_32x32_gnome-maps.png				\
+	hicolor_apps_48x48_gnome-maps.png				\
+	hicolor_apps_256x256_gnome-maps.png				\
+	HighContrast_apps_16x16_gnome-maps.png				\
+	HighContrast_apps_22x22_gnome-maps.png				\
+	HighContrast_apps_24x24_gnome-maps.png				\
+	HighContrast_apps_256x256_gnome-maps.png			\
+	HighContrast_apps_32x32_gnome-maps.png				\
+	HighContrast_apps_48x48_gnome-maps.png				\
 	$(NULL)
 
-private_icons =							\
-	hicolor_apps_16x16_maps-point-start.svg			\
-	hicolor_apps_16x16_maps-point-end.svg			\
-	hicolor_apps_16x16_maps-point-start-symbolic.svg	\
-	hicolor_apps_16x16_maps-point-end-symbolic.svg		\
-	hicolor_apps_16x16_layers-button-symbolic.svg		\
-	hicolor_apps_16x16_route-button-symbolic.svg		\
-	hicolor_apps_16x16_route-pedestrian-symbolic.svg 	\
-	hicolor_apps_16x16_route-transit-symbolic.svg 		\
-	hicolor_apps_16x16_route-bike-symbolic.svg 		\
-	hicolor_apps_16x16_route-car-symbolic.svg 		\
-	hicolor_apps_32x32_maps-pin.svg				\
-	hicolor_apps_22x22_user-location.png			\
+private_icons =								\
+	hicolor_apps_16x16_maps-point-start.svg				\
+	hicolor_apps_16x16_maps-point-end.svg				\
+	hicolor_apps_16x16_maps-point-start-symbolic.svg		\
+	hicolor_apps_16x16_maps-point-end-symbolic.svg			\
+	hicolor_apps_16x16_layers-button-symbolic.svg			\
+	hicolor_apps_16x16_route-button-symbolic.svg			\
+	hicolor_apps_16x16_route-pedestrian-symbolic.svg 		\
+	hicolor_apps_16x16_route-transit-symbolic.svg 			\
+	hicolor_apps_16x16_route-bike-symbolic.svg 			\
+	hicolor_apps_16x16_route-car-symbolic.svg 			\
+	hicolor_apps_32x32_maps-pin.svg					\
+	hicolor_apps_22x22_user-location.png				\
 	$(NULL)
 
-noinst_DATA =					\
-	gnome-maps.svg				\
-	gnome-maps-highcontrast.svg				\
+noinst_DATA =								\
+	gnome-maps.svg							\
+	gnome-maps-highcontrast.svg					\
 	$(NULL)
 
-EXTRA_DIST =					\
-	$(public_icons)				\
-	$(private_icons)			\
-	gnome-maps.svg				\
-	gnome-maps-highcontrast.svg				\
+EXTRA_DIST =								\
+	$(public_icons)							\
+	$(private_icons)						\
+	gnome-maps.svg							\
+	gnome-maps-highcontrast.svg					\
 	$(NULL)
 
 ###############################################################################
