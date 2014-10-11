@@ -33,9 +33,6 @@ const TurnPointBubble = new Lang.Class({
     Extends: MapBubble.MapBubble,
 
     _init: function(params) {
-        let icon = params.icon;
-        delete params.icon;
-
         let turnPoint = params.turnPoint;
         delete params.turnPoint;
 
@@ -45,11 +42,7 @@ const TurnPointBubble = new Lang.Class({
                                                           'box-right',
                                                           'image',
                                                           'label-title' ]);
-        if (icon)
-            ui.image.icon_name = icon;
-        else
-            ui.image.resource = turnPoint.iconResource;
-
+        ui.image.icon_name = turnPoint.iconName;
         ui.labelTitle.label = turnPoint.instruction;
 
         this.add(ui.grid);

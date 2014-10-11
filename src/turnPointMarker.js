@@ -36,17 +36,12 @@ const TurnPointMarker = new Lang.Class({
     Name: 'TurnPointMarker',
     Extends: MapMarker.MapMarker,
 
-    get iconName() {
-        switch(this._turnPoint.type) {
-        case Route.TurnPointType.START: return 'maps-point-start';
-        case Route.TurnPointType.END: return 'maps-point-end';
-        case Route.TurnPointType.VIA: return 'maps-point-end';
-        default: return null;
-        }
-    },
-
     get turnPoint() {
         return this._turnPoint;
+    },
+
+    get iconName() {
+        return this._turnPoint.iconName;
     },
 
     _init: function(params) {
@@ -69,8 +64,7 @@ const TurnPointMarker = new Lang.Class({
     },
 
     _createBubble: function() {
-        return new TurnPointBubble.TurnPointBubble({ icon: this.iconName,
-                                                     turnPoint: this.turnPoint,
+        return new TurnPointBubble.TurnPointBubble({ turnPoint: this.turnPoint,
                                                      place: this.place,
                                                      mapView: this._mapView });
     }

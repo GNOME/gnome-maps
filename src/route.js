@@ -85,7 +85,7 @@ const TurnPoint = new Lang.Class({
         this._type = type;
         this.distance = distance;
         this.instruction = instruction;
-        this.iconResource = this._getIconResource();
+        this.iconName = this._getIconName();
     },
 
     get type() {
@@ -98,15 +98,18 @@ const TurnPoint = new Lang.Class({
             || this._type === TurnPointType.END;
     },
 
-    _getIconResource: function() {
+    _getIconName: function() {
         switch(this._type) {
-        case TurnPointType.SHARP_LEFT:   return '/org/gnome/maps/direction-sharpleft';
-        case TurnPointType.LEFT:         return '/org/gnome/maps/direction-left';
-        case TurnPointType.SLIGHT_LEFT:  return '/org/gnome/maps/direction-slightleft';
-        case TurnPointType.CONTINUE:     return '/org/gnome/maps/direction-continue';
-        case TurnPointType.SLIGHT_RIGHT: return '/org/gnome/maps/direction-slightright';
-        case TurnPointType.RIGHT:        return '/org/gnome/maps/direction-right';
-        case TurnPointType.SHARP_RIGHT:  return '/org/gnome/maps/direction-sharpright';
+        case TurnPointType.SHARP_LEFT:   return 'maps-direction-sharpleft-symbolic';
+        case TurnPointType.LEFT:         return 'maps-direction-left-symbolic';
+        case TurnPointType.SLIGHT_LEFT:  return 'maps-direction-slightleft-symbolic';
+        case TurnPointType.CONTINUE:     return 'maps-direction-continue-symbolic';
+        case TurnPointType.SLIGHT_RIGHT: return 'maps-direction-slightright-symbolic';
+        case TurnPointType.RIGHT:        return 'maps-direction-right-symbolic';
+        case TurnPointType.SHARP_RIGHT:  return 'maps-direction-sharpright-symbolic';
+        case TurnPointType.START:        return 'maps-point-start-symbolic';
+        case TurnPointType.VIA:          return 'maps-point-via-symbolic';
+        case TurnPointType.END:          return 'maps-point-end-symbolic';
         default:                         return '';
         }
     }
