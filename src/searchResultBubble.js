@@ -26,6 +26,7 @@ const Lang = imports.lang;
 const _ = imports.gettext.gettext;
 
 const MapBubble = imports.mapBubble;
+const PlaceFormatter = imports.placeFormatter;
 const Utils = imports.utils;
 
 const SearchResultBubble = new Lang.Class({
@@ -44,54 +45,31 @@ const SearchResultBubble = new Lang.Class({
             this.image.pixbuf = pixbuf;
         }).bind(this));
 
-        let title = null;
-        let content = [];
+        let formatter = new PlaceFormatter.PlaceFormatter(place);
+        let infos = [];
 
-        if (this._isBrokenPlace(place)) {
-            // Fallback for places coming from PlaceStore
-            title = place.name;
-        } else {
-            switch (place.place_type) {
-            case Geocode.PlaceType.COUNTRY:
-                title = place.country;
-                if (place.country_code)
-                    content.push(_("Country code: %s").format(place.country_code));
-                break;
+        ui.labelTitle.label = formatter.title;
+        infos = formatter.rows.map(function(row) {
+            row = row.map(function(prop) {
+                switch (prop) {
+                case 'postal_code':
+                    return _("Postal code: %s").format(place[prop]);
+                case 'country_code':
+                    return _("Country code: %s").format(place[prop]);
+                default:
+                    return place[prop];
+                }
+            });
+            return row.join(', ');
+        });
 
-            case Geocode.PlaceType.TOWN:
-                title = place.town;
-                if (place.postal_code)
-                    content.push(_("Postal code: %s").format(place.postal_code));
-                if (place.state)
-                    content.push(place.state + ', ' + place.country);
-                else
-                    content.push(place.country);
-                break;
-
-            //TODO: add specific UIs for the rest of the place types
-            default:
-                title = place.name;
-                break;
-            }
-        }
-
-        ui.labelTitle.label = title;
-
-        content.forEach(function(c) {
-            let label = new Gtk.Label({ label: c,
+        infos.forEach(function(info) {
+            let label = new Gtk.Label({ label: info,
                                         visible: true,
                                         halign: Gtk.Align.START });
             ui.boxContent.pack_start(label, false, true, 0);
         });
 
         this.content.add(ui.boxContent);
-    },
-
-    _isBrokenPlace: function(place) {
-        // Broken places are GeocodePlace objects coming from PlaceStore,
-        // which doesn't save most of the place properties.
-        // See: https://bugzilla.gnome.org/show_bug.cgi?id=726625
-        return !place.country && !place.state && !place.county && !place.town &&
-               !place.street && !place.street_address;
     }
 });
