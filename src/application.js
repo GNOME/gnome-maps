@@ -22,6 +22,7 @@
  */
 
 const GLib = imports.gi.GLib;
+const GObject = imports.gi.GObject;
 const Gettext = imports.gettext;
 const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
@@ -48,10 +49,27 @@ let notificationManager = null;
 let routeService = null;
 let geoclue = null;
 let geocodeService = null;
+let networkMonitor = null;
 
 const Application = new Lang.Class({
     Name: 'Application',
     Extends: Gtk.Application,
+    Properties: {
+        'connected': GObject.ParamSpec.boolean('connected',
+                                               '',
+                                               '',
+                                               GObject.ParamFlags.READABLE |
+                                               GObject.ParamFlags.WRITABLE)
+    },
+
+    set connected(p) {
+        this._connected = p;
+        this.notify('connected');
+    },
+
+    get connected() {
+        return this._connected;
+    },
 
     _init: function() {
         Gettext.bindtextdomain('gnome-maps', Path.LOCALE_DIR);
@@ -61,6 +79,22 @@ const Application = new Lang.Class({
         GLib.set_application_name(_("Maps"));
 
         this.parent({ application_id: 'org.gnome.Maps' });
+        this._connected = false;
+    },
+
+    _checkNetwork: function() {
+        let addr = new Gio.NetworkAddress({ hostname:'tile.openstreetmap.org',
+                                            port:80 });
+
+        networkMonitor.can_reach_async(addr, null, (function(networkMonitor, res) {
+            try {
+                if (networkMonitor.can_reach_finish(res))
+                    this.connected = true;
+            } catch(e) {
+                this.connected = false;
+                Utils.debug('Connection failed: ' + e.message);
+            }
+        }).bind(this));
     },
 
     _onQuitActivate: function() {
@@ -110,6 +144,9 @@ const Application = new Lang.Class({
         routeService   = new RouteService.GraphHopper();
         geoclue        = new Geoclue.Geoclue();
         geocodeService = new GeocodeService.GeocodeService();
+        networkMonitor = Gio.NetworkMonitor.get_default();
+        networkMonitor.connect('network-changed',
+                               this._checkNetwork.bind(this));
     },
 
     _createWindow: function() {
@@ -134,6 +171,7 @@ const Application = new Lang.Class({
 
     vfunc_activate: function() {
         this._createWindow();
+        this._checkNetwork();
         this._mainWindow.window.present();
     },
 
