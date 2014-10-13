@@ -21,7 +21,6 @@
  *         Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
-const Lang = imports.lang;
 const Gdk = imports.gi.Gdk;
 const GLib = imports.gi.GLib;
 const Gio = imports.gi.Gio;

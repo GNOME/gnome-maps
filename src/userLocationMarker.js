@@ -22,17 +22,12 @@
 
 const Champlain = imports.gi.Champlain;
 const Clutter = imports.gi.Clutter;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
 
 const Lang = imports.lang;
-const Mainloop = imports.mainloop;
 
 const MapMarker = imports.mapMarker;
-const Path = imports.path;
 const UserLocationBubble = imports.userLocationBubble;
 const Utils = imports.utils;
-const _ = imports.gettext.gettext;
 
 const AccuracyCircleMarker = new Lang.Class({
     Name: 'AccuracyCircleMarker',

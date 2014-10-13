@@ -22,7 +22,6 @@
 
 const Cairo = imports.gi.cairo;
 const Champlain = imports.gi.Champlain;
-const Geocode = imports.gi.GeocodeGlib;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 

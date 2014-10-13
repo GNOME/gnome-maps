@@ -20,9 +20,6 @@
  * Author: Dario Di Nucci <linkin88mail@gmail.com>
  */
 
-const Geocode = imports.gi.GeocodeGlib;
-const Gtk = imports.gi.Gtk;
-
 const Lang = imports.lang;
 
 const MapBubble = imports.mapBubble;

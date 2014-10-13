@@ -24,7 +24,6 @@
 const Gdk = imports.gi.Gdk;
 const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
-const Champlain = imports.gi.Champlain;
 const GObject = imports.gi.GObject;
 
 const Lang = imports.lang;
@@ -35,7 +34,6 @@ const MapView = imports.mapView;
 const LayersPopover = imports.layersPopover;
 const ContextMenu = imports.contextMenu;
 const PlaceEntry = imports.placeEntry;
-const PlaceStore = imports.placeStore;
 const Sidebar = imports.sidebar;
 const Utils = imports.utils;
 const Config = imports.config;

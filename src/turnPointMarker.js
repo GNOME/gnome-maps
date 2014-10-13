@@ -21,14 +21,11 @@
  */
 
 const Geocode = imports.gi.GeocodeGlib;
-const GObject = imports.gi.GObject;
 
 const Lang = imports.lang;
 
 const Application = imports.application;
 const MapMarker = imports.mapMarker;
-const Path = imports.path;
-const Route = imports.route;
 const TurnPointBubble = imports.turnPointBubble;
 const Utils = imports.utils;
 

@@ -25,8 +25,6 @@ const GObject = imports.gi.GObject;
 
 const Lang = imports.lang;
 
-const Utils = imports.utils;
-
 const Transportation = {
     CAR:        0,
     BIKE:       1,

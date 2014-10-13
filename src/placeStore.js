@@ -21,12 +21,10 @@
 const Geocode = imports.gi.GeocodeGlib;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
-const Gio = imports.gi.Gio;
 const GdkPixbuf = imports.gi.GdkPixbuf;
 const Gtk = imports.gi.Gtk;
 
 const Lang = imports.lang;
-const Mainloop = imports.mainloop;
 
 const Utils = imports.utils;
 const Application = imports.application;

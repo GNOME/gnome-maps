@@ -21,27 +21,19 @@
  */
 
 const Clutter = imports.gi.Clutter;
-const Cogl = imports.gi.Cogl;
-const Gdk = imports.gi.Gdk;
-const GdkPixbuf = imports.gi.GdkPixbuf;
-const Gtk = imports.gi.Gtk;
 const GtkChamplain = imports.gi.GtkChamplain;
 const Champlain = imports.gi.Champlain;
 const Geocode = imports.gi.GeocodeGlib;
 const GObject = imports.gi.GObject;
 
 const Lang = imports.lang;
-const Mainloop = imports.mainloop;
-const Signals = imports.signals;
 
 const Application = imports.application;
 const Utils = imports.utils;
-const Path = imports.path;
 const MapWalker = imports.mapWalker;
 const SearchResultMarker = imports.searchResultMarker;
 const TurnPointMarker = imports.turnPointMarker;
 const UserLocationMarker = imports.userLocationMarker;
-const _ = imports.gettext.gettext;
 
 const MapType = {
     STREET:  Champlain.MAP_SOURCE_OSM_MAPQUEST,

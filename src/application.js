@@ -22,8 +22,6 @@
  */
 
 const Lang = imports.lang;
-const Mainloop = imports.mainloop;
-const Signals = imports.signals;
 const Gettext = imports.gettext;
 const _ = imports.gettext.gettext;
 
@@ -32,12 +30,10 @@ const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
 const GLib = imports.gi.GLib;
 
-const Main = imports.main;
 const Format = imports.format;
 const Geoclue = imports.geoclue;
 const GeocodeService = imports.geocodeService;
 const MainWindow = imports.mainWindow;
-const Notification = imports.notification;
 const NotificationManager = imports.notificationManager;
 const Utils = imports.utils;
 const Path = imports.path;

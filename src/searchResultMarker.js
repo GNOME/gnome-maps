@@ -23,7 +23,6 @@
 const Lang = imports.lang;
 
 const MapMarker = imports.mapMarker;
-const Path = imports.path;
 const SearchResultBubble = imports.searchResultBubble;
 const Utils = imports.utils;
 

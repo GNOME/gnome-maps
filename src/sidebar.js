@@ -21,19 +21,14 @@
  *         Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
  */
 
-const Geocode = imports.gi.GeocodeGlib;
-const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 const _ = imports.gettext.gettext;
 
 const Application = imports.application;
-const PlaceStore = imports.placeStore;
 const PlaceEntry = imports.placeEntry;
-const Route = imports.route;
 const RouteQuery = imports.routeQuery;
-const SearchPopup = imports.searchPopup;
 const Utils = imports.utils;
 
 const Sidebar = new Lang.Class({

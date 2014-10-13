@@ -20,19 +20,14 @@
  * Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
-const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Gio = imports.gi.Gio;
 const Geocode = imports.gi.GeocodeGlib;
 
 const Lang = imports.lang;
-const Mainloop = imports.mainloop;
 
 const Application = imports.application;
 const Utils = imports.utils;
-const Path = imports.path;
-const Signals = imports.signals;
-const _ = imports.gettext.gettext;
 
 const ManagerInterface = '<node> \
 <interface name="org.freedesktop.GeoClue2.Manager"> \

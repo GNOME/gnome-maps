@@ -20,7 +20,6 @@
  * Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
-const Gtk = imports.gi.Gtk;
 const Clutter = imports.gi.Clutter;
 const Geocode = imports.gi.GeocodeGlib;
 
