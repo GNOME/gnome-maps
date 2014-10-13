@@ -52,6 +52,10 @@ const MainWindow = new Lang.Class({
         let ui = Utils.getUIObject('main-window', [ 'app-window',
                                                     'header-bar',
                                                     'grid',
+                                                    'main-stack',
+                                                    'no-network-view',
+                                                    'goto-user-location-button',
+                                                    'toggle-sidebar-button',
                                                     'layers-button']);
         this.window = ui.appWindow;
         this.window.application = app;
@@ -62,28 +66,27 @@ const MainWindow = new Lang.Class({
 
         this.mapView.gotoUserLocation(false);
 
-        this._sidebar = new Sidebar.Sidebar(this.mapView);
-        Application.routeService.route.connect('update',
-                                               this._setRevealSidebar.bind(this, true));
-        this._sidebar.bind_property('reveal-child',
-                                    this.mapView, 'routeVisible',
-                                    GObject.BindingFlags.DEFAULT);
+        this._sidebar = this._createSidebar();
 
         this._contextMenu = new ContextMenu.ContextMenu(this.mapView);
 
         ui.layersButton.popover = new LayersPopover.LayersPopover();
 
-        let placeEntry = this._createPlaceEntry();
-        ui.headerBar.set_custom_title(placeEntry);
-        placeEntry.has_focus = true;
+        this._overlay.add_overlay(new ZoomControl.ZoomControl(this.mapView));
+
+        this._mainStack = ui.mainStack;
+        this._mainStack.add(this._overlay);
+        this._noNetworkView = ui.noNetworkView;
+        this._headerBar = ui.headerBar;
+        this._gotoUserLocationButton = ui.gotoUserLocationButton;
+        this._toggleSidebarButton = ui.toggleSidebarButton;
+        this._layersButton = ui.layersButton;
 
         this._initActions();
         this._initSignals();
+        this._initHeaderbar();
         this._restoreWindowGeometry();
 
-        this._overlay.add_overlay(new ZoomControl.ZoomControl(this.mapView));
-
-        ui.grid.attach(this._overlay, 0, 0, 1, 1);
         ui.grid.attach(this._sidebar, 1, 0, 1, 1);
 
         ui.grid.show_all();
@@ -109,6 +112,19 @@ const MainWindow = new Lang.Class({
         this.mapView.view.connect('button-press-event',
                                   popover.hide.bind(popover));
         return placeEntry;
+    },
+
+    _createSidebar: function() {
+        let sidebar = new Sidebar.Sidebar(this.mapView);
+        Application.routeService.route.connect('update',
+                                               this._setRevealSidebar.bind(this, true));
+        sidebar.bind_property('reveal-child',
+                              this.mapView, 'routeVisible',
+                              GObject.BindingFlags.DEFAULT);
+        this.window.application.bind_property('connected',
+                                              sidebar, 'visible',
+                                              GObject.BindingFlags.DEFAULT);
+        return sidebar;
     },
 
     _initActions: function() {
@@ -163,7 +179,34 @@ const MainWindow = new Lang.Class({
 
         this.mapView.view.connect('button-press-event',
                                   this._overlay.grab_focus.bind(this._overlay));
+
+        this.window.application.connect('notify::connected', (function() {
+            if(this.window.application.connected)
+                this._mainStack.visible_child = this._overlay;
+            else
+                this._mainStack.visible_child = this._noNetworkView;
+        }).bind(this));
         this._viewMovedId = 0;
+    },
+
+    _initHeaderbar: function() {
+        let placeEntry = this._createPlaceEntry();
+        this._headerBar.custom_title = placeEntry;
+        placeEntry.has_focus = true;
+
+        let app = this.window.application;
+        app.bind_property('connected',
+                          this._gotoUserLocationButton, 'sensitive',
+                          GObject.BindingFlags.DEFAULT);
+        app.bind_property('connected',
+                          this._layersButton, 'sensitive',
+                          GObject.BindingFlags.DEFAULT);
+        app.bind_property('connected',
+                          this._toggleSidebarButton, 'sensitive',
+                          GObject.BindingFlags.DEFAULT);
+        app.bind_property('connected',
+                          placeEntry, 'sensitive',
+                          GObject.BindingFlags.DEFAULT);
     },
 
     _saveWindowGeometry: function() {
