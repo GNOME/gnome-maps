@@ -45,7 +45,7 @@ let debugEnabled = false;
 
 let _iconStore = {};
 
-let measurementSystem = null
+let measurementSystem = null;
 
 function debug(str) {
     if (!debugInit) {

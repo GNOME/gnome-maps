@@ -74,7 +74,7 @@ const RouteQuery = new Lang.Class({
 
     get filledPoints() {
         return this.points.filter(function(point) {
-            return point.place
+            return point.place;
         });
     },
 

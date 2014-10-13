@@ -42,7 +42,7 @@ const TurnPointMarker = new Lang.Class({
     },
 
     _init: function(params) {
-        this._turnPoint = params.turnPoint
+        this._turnPoint = params.turnPoint;
         delete params.turnPoint;
 
         params.place = new Geocode.Place({
