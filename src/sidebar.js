@@ -31,6 +31,31 @@ const PlaceEntry = imports.placeEntry;
 const RouteQuery = imports.routeQuery;
 const Utils = imports.utils;
 
+const InstructionRow = new Lang.Class({
+    Name: "InstructionRow",
+    Extends: Gtk.ListBoxRow,
+
+    _init: function(params) {
+        this.turnPoint = params.turnPoint;
+        delete params.turnPoint;
+
+        this.parent(params);
+
+        this.visible = true;
+        let ui = Utils.getUIObject('sidebar', ['instruction-box',
+                                               'direction-image',
+                                               'instruction-label',
+                                               'distance-label']);
+        ui.instructionLabel.label = this.turnPoint.instruction;
+        ui.directionImage.icon_name = this.turnPoint.iconName;
+
+        if (this.turnPoint.distance > 0)
+            ui.distanceLabel.label = Utils.prettyDistance(this.turnPoint.distance);
+
+        this.add(ui.instructionBox);
+    }
+});
+
 const Sidebar = new Lang.Class({
     Name: 'Sidebar',
     Extends: Gtk.Revealer,
@@ -206,30 +231,5 @@ const Sidebar = new Lang.Class({
 
         this._timeInfo.label = '';
         this._distanceInfo.label = '';
-    }
-});
-
-const InstructionRow = new Lang.Class({
-    Name: "InstructionRow",
-    Extends: Gtk.ListBoxRow,
-
-    _init: function(params) {
-        this.turnPoint = params.turnPoint;
-        delete params.turnPoint;
-
-        this.parent(params);
-
-        this.visible = true;
-        let ui = Utils.getUIObject('sidebar', ['instruction-box',
-                                               'direction-image',
-                                               'instruction-label',
-                                               'distance-label']);
-        ui.instructionLabel.label = this.turnPoint.instruction;
-        ui.directionImage.icon_name = this.turnPoint.iconName;
-
-        if (this.turnPoint.distance > 0)
-            ui.distanceLabel.label = Utils.prettyDistance(this.turnPoint.distance);
-
-        this.add(ui.instructionBox);
     }
 });
