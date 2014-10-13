@@ -108,7 +108,7 @@ const TurnPoint = new Lang.Class({
         case TurnPointType.RIGHT:        return 'maps-direction-right-symbolic';
         case TurnPointType.SHARP_RIGHT:  return 'maps-direction-sharpright-symbolic';
         case TurnPointType.START:        return 'maps-point-start-symbolic';
-        case TurnPointType.VIA:          return 'maps-point-via-symbolic';
+        case TurnPointType.VIA:          return 'maps-point-end-symbolic';
         case TurnPointType.END:          return 'maps-point-end-symbolic';
         default:                         return '';
         }
