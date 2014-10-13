@@ -176,7 +176,7 @@ const MapMarker = new Lang.Class({
         this._mapView.onSetMarkerSelected(this);
 
         let markerSelectedSignalId = this._mapView.connect('marker-selected', (function(mapView, selectedMarker) {
-            if (this.get_parent() != selectedMarker.get_parent())
+            if (this.get_parent() !== selectedMarker.get_parent())
                 this.selected = false;
         }).bind(this));
 

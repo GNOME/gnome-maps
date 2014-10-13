@@ -237,7 +237,7 @@ function _load_http_icon(icon, loadCompleteCallback) {
     let soup_session = _get_soup_session();
 
     soup_session.queue_message(msg, function(session, msg) {
-        if (msg.status_code != Soup.KnownStatusCode.OK) {
+        if (msg.status_code !== Soup.KnownStatusCode.OK) {
             log("Failed to load pixbuf: " + msg.reason_phrase);
             return;
         }
