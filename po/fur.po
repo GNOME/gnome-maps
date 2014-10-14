@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-12-18 20:54+0000\n"
-"PO-Revision-Date: 2013-12-22 03:38+0100\n"
+"POT-Creation-Date: 2014-10-10 17:52+0000\n"
+"PO-Revision-Date: 2014-10-15 01:14+0100\n"
 "Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
-#: ../data/gnome-maps.appdata.xml.in.h:1
+#: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
@@ -28,17 +28,7 @@ msgstr ""
 "di corse il puest che ti interesse cirint citât o vie, o cirî un puest dulà "
 "cjatâsi cuntun ami."
 
-#: ../data/gnome-maps.appdata.xml.in.h:2
-msgid ""
-"<li>Search for country, region, city or street.</li> <li>Search for specific "
-"types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
-"near Alexanderplatz, Berlin”.</li>"
-msgstr ""
-"<li>Cîr par stât, regjon, citât o vie.</li> <li>Cîr par specific tipo di "
-"localitât, come \"Ostarie visin Place San Jacum, Udin\" o \"Acès Wi-Fi visin "
-"vie division Osôf, Tumieç.</li>"
-
-#: ../data/gnome-maps.appdata.xml.in.h:3
+#: ../data/org.gnome.Maps.appdata.xml.in.h:2
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
@@ -46,17 +36,32 @@ msgstr ""
 "Mapis al dopre il database colaboratîf OpenStreetMap, fat da centenârs di "
 "miârs di personis ator pal mont."
 
-#. Translators: This is the program name.
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
-#: ../src/mainWindow.js:334 ../src/main-window.ui.h:3
+#. Translators: Search is carried out on OpenStreetMap data using Nominatim.
+#. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
+#. your language to see what words you can use for the translated search.
+#: ../data/org.gnome.Maps.appdata.xml.in.h:6
+#| msgid ""
+#| "<li>Search for country, region, city or street.</li> <li>Search for "
+#| "specific types of locations, such as “Pubs near Main Street, Boston” or "
+#| "“Wi-Fi Access near Alexanderplatz, Berlin”.</li>"
+msgid ""
+"You can even search for specific types of locations, such as “Pubs near Main "
+"Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
+msgstr ""
+"Tu puedis cirî ancje puescj specifics come  \"Ostarie visin Place San Jacum, "
+"Udin\" o \"Hotel visin vie division Osôf, Tumieç\"."
+
+#. Translators: This is the program name. */
+#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
+#: ../src/mainWindow.js:302 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "Mapis"
 
-#: ../data/gnome-maps.desktop.in.in.h:2
+#: ../data/org.gnome.Maps.desktop.in.in.h:2
 msgid "A simple maps application"
 msgstr "Une semplice aplicazion par lis mapis"
 
-#: ../data/gnome-maps.desktop.in.in.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:3
 msgid "Maps;"
 msgstr "Mapis;"
 
@@ -122,6 +127,14 @@ msgstr ""
 "Indiche se l'ultime posizion cognossude a je stade impuestade a man dal "
 "utent."
 
+#: ../data/org.gnome.maps.gschema.xml.in.h:15
+msgid "Number of recent places to store"
+msgstr "Numar di lûcs recents di archiviâ"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:16
+msgid "Number of recently visited places to store."
+msgstr "Numar di lûcs visitâts di recent di archiviâ."
+
 #: ../src/app-menu.ui.h:1
 msgid "About"
 msgstr "Informazions"
@@ -138,45 +151,97 @@ msgstr "Ce isal chi?"
 msgid "I’m here!"
 msgstr "O soi chi!"
 
-#: ../src/mainWindow.js:332
+#: ../src/mainWindow.js:300
 msgid "translator-credits"
 msgstr "Fabio Tomat"
 
-#: ../src/mainWindow.js:335
+#: ../src/mainWindow.js:303
 msgid "A map application for GNOME"
 msgstr "Une aplicazion di GNOME par lis mapis"
 
-#: ../src/main-window.ui.h:1
-msgid "Street"
-msgstr "Vie"
-
 #: ../src/main-window.ui.h:2
-msgid "Satellite"
-msgstr "Satelit"
+msgid "Go to current location"
+msgstr "Va inte posizion atuâl"
 
-#. Translators: Accuracy of user location information
-#: ../src/mapLocation.js:116
+#: ../src/main-window.ui.h:3
+msgid "Choose map type"
+msgstr "Sielç il gjenar di mape"
+
+#: ../src/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr "Ative/Disative planificazion percors"
+
+#: ../src/routeService.js:73
+msgid "No route found."
+msgstr "No soi rivât a cjatât il percors."
+
+#: ../src/routeService.js:80
+msgid "Route request failed."
+msgstr "No soi rivât a domandâ il percors."
+
+#: ../src/routeService.js:151
+msgid "Start!"
+msgstr "Tache!"
+
+#: ../src/searchResultBubble.js:60
+msgid "Country code: %s"
+msgstr "Codiç paîs: %s"
+
+#: ../src/searchResultBubble.js:66
+msgid "Postal code: %s"
+msgstr "Codiç puestâl: %s"
+
+#. Translators: %s is a time expression with the format "%f h" or "%f min" */
+#: ../src/sidebar.js:198
+msgid "Estimated time: %s"
+msgstr "Timp stimât: %s"
+
+#: ../src/user-location-bubble.ui.h:1
+msgid "Current location"
+msgstr "Posizion atuâl"
+
+#. To translators: %s can be "Unknown", "Exact" or "%f km²"
+#: ../src/user-location-bubble.ui.h:4
+#, no-c-format
+#| msgid ""
+#| "%s\n"
+#| "Position Accuracy: %s"
+msgid "Accuracy: %s"
+msgstr "Precision: %s"
+
+#. Translators: Accuracy of user location information */
+#: ../src/utils.js:165
 msgid "Unknown"
 msgstr "No cognossût"
 
-#. Translators: Accuracy of user location information
-#: ../src/mapLocation.js:119
+#. Translators: Accuracy of user location information */
+#: ../src/utils.js:168
 msgid "Exact"
 msgstr "Di precîs"
 
-#: ../src/mapLocation.js:123
-msgid " km²"
-msgstr " km²"
+#: ../src/utils.js:178
+#| msgid " km²"
+msgid "%f km²"
+msgstr "%f km²"
 
-#. Translators: Showing name of place where user currently is and
-#. accuracy of this information (which is translated
-#. separately)
-#.
-#: ../src/userLocation.js:62
-#, c-format
-msgid ""
-"%s\n"
-"Position Accuracy: %s"
-msgstr ""
-"%s\n"
-"Precision de posizion: %s"
+#: ../src/utils.js:275
+msgid "%f h"
+msgstr "%f h"
+
+#: ../src/utils.js:277
+msgid "%f min"
+msgstr "%f min"
+
+#: ../src/utils.js:287
+msgid "%f km"
+msgstr "%f km"
+
+#: ../src/utils.js:289
+msgid "%f m"
+msgstr "%f m"
+
+#~ msgid "Street"
+#~ msgstr "Vie"
+
+#~ msgid "Satellite"
+#~ msgstr "Satelit"
