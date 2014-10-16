@@ -151,6 +151,11 @@ const QueryPoint = new Lang.Class({
                                           Geocode.Place),
     },
 
+    _init: function() {
+        this._place = null;
+        this.parent();
+    },
+
     set place(p) {
         this._place = p;
         this.notify('place');
