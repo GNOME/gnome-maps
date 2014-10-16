@@ -35,15 +35,13 @@ const SearchResultBubble = new Lang.Class({
     _init: function(params) {
         this.parent(params);
 
-        let ui = Utils.getUIObject('search-result-bubble', [ 'grid',
-                                                             'box-right',
-                                                             'image',
-                                                             'label-title' ]);
+        let ui = Utils.getUIObject('search-result-bubble', [ 'box-content',
+                                                             'label-title']);
         let place = this.place;
 
-        Utils.load_icon(this.place.icon, 48, function(pixbuf) {
-            ui.image.pixbuf = pixbuf;
-        });
+        Utils.load_icon(this.place.icon, 48, (function(pixbuf) {
+            this.image.pixbuf = pixbuf;
+        }).bind(this));
 
         let title = null;
         let content = [];
@@ -82,10 +80,10 @@ const SearchResultBubble = new Lang.Class({
             let label = new Gtk.Label({ label: c,
                                         visible: true,
                                         halign: Gtk.Align.START });
-            ui.boxRight.pack_start(label, false, true, 0);
+            ui.boxContent.pack_start(label, false, true, 0);
         });
 
-        this.add(ui.grid);
+        this.content.add(ui.boxContent);
     },
 
     _isBrokenPlace: function(place) {

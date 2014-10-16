@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.18.3 -->
+<interface>
+  <requires lib="gtk+" version="3.12"/>
+  <object class="GtkGrid" id="bubble-main-grid">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_start">10</property>
+    <property name="margin_end">10</property>
+    <property name="margin_top">10</property>
+    <property name="margin_bottom">10</property>
+    <property name="orientation">vertical</property>
+    <child>
+      <object class="GtkImage" id="bubble-image">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="valign">start</property>
+        <property name="margin_top">5</property>
+        <property name="pixel_size">0</property>
+        <property name="icon_size">16</property>
+        <property name="margin-end">15</property>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkGrid" id="bubble-content-area">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+      </object>
+      <packing>
+        <property name="left_attach">1</property>
+        <property name="top_attach">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkGrid" id="bubble-button-area">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="margin-top">10</property>
+        <child>
+          <object class="GtkBox" id="bubble-standard-button-area">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="orientation">horizontal</property>
+            <style>
+              <class name="linked" />
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="left_attach">1</property>
+        <property name="top_attach">1</property>
+      </packing>
+    </child>
+  </object>
+</interface>

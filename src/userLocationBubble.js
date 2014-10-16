@@ -32,9 +32,12 @@ const UserLocationBubble = new Lang.Class({
     _init: function(params) {
         this.parent(params);
 
-        let ui = Utils.getUIObject('user-location-bubble', [ 'grid',
+        let ui = Utils.getUIObject('user-location-bubble', [ 'grid-content',
                                                              'label-accuracy',
                                                              'label-coordinates' ]);
+
+        this.image.icon_name = 'find-location-symbolic';
+        this.image.pixel_size = 48;
 
         let accuracyDescription = Utils.getAccuracyDescription(this.place.location.accuracy);
         ui.labelAccuracy.label = ui.labelAccuracy.label.format(accuracyDescription);
@@ -42,6 +45,6 @@ const UserLocationBubble = new Lang.Class({
                                   + ', '
                                   + this.place.location.longitude.toFixed(5);
 
-        this.add(ui.grid);
+        this.content.add(ui.gridContent);
     }
 });

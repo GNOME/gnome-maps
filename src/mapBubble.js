@@ -21,8 +21,14 @@
  */
 
 const Gtk = imports.gi.Gtk;
-
 const Lang = imports.lang;
+
+const Application = imports.application;
+const Utils = imports.utils;
+
+const Button = {
+    NONE: 0
+};
 
 const MapBubble = new Lang.Class({
     Name: "MapBubble",
@@ -37,12 +43,34 @@ const MapBubble = new Lang.Class({
         params.relative_to = params.mapView;
         delete params.mapView;
 
+        let buttonFlags = params.buttons || Button.NONE;
+        delete params.buttons;
+
         params.modal = false;
 
         this.parent(params);
+        let ui = Utils.getUIObject('map-bubble', [ 'bubble-main-grid',
+                                                   'bubble-image',
+                                                   'bubble-content-area',
+                                                   'bubble-button-area']);
+        this._image = ui.bubbleImage;
+        this._content = ui.bubbleContentArea;
+
+        if (!buttonFlags)
+            ui.bubbleButtonArea.visible = false;
+
+        this.add(ui.bubbleMainGrid);
+    },
+
+    get image() {
+        return this._image;
     },
 
     get place() {
         return this._place;
+    },
+
+    get content() {
+        return this._content;
     }
 });
