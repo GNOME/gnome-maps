@@ -24,7 +24,6 @@ const Cairo = imports.gi.cairo;
 const Champlain = imports.gi.Champlain;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 

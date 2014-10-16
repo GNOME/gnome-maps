@@ -20,10 +20,9 @@
  * Author: Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
  */
 
-const Lang = imports.lang;
-
-const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
+const Gio = imports.gi.Gio;
+const Lang = imports.lang;
 
 const Settings = new Lang.Class({
     Name: "Settings",

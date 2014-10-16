@@ -21,22 +21,21 @@
  *         Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
-const Gdk = imports.gi.Gdk;
 const GLib = imports.gi.GLib;
-const Gtk = imports.gi.Gtk;
 const GObject = imports.gi.GObject;
-
+const Gdk = imports.gi.Gdk;
+const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
-const MapView = imports.mapView;
-const LayersPopover = imports.layersPopover;
+const Config = imports.config;
 const ContextMenu = imports.contextMenu;
+const LayersPopover = imports.layersPopover;
+const MapView = imports.mapView;
 const PlaceEntry = imports.placeEntry;
 const Sidebar = imports.sidebar;
 const Utils = imports.utils;
-const Config = imports.config;
 const ZoomControl = imports.zoomControl;
 
 const _ = imports.gettext.gettext;

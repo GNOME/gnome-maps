@@ -18,12 +18,12 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
-const Gtk = imports.gi.Gtk;
 const GLib = imports.gi.GLib;
-const GdkPixbuf = imports.gi.GdkPixbuf;
-
 const GObject = imports.gi.GObject;
+const GdkPixbuf = imports.gi.GdkPixbuf;
+const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
+
 const Utils = imports.utils;
 
 const Columns = {

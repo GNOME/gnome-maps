@@ -22,10 +22,9 @@
  *         Damián Nohales <damiannohales@gmail.com>
  */
 
-const Clutter = imports.gi.Clutter;
 const Champlain = imports.gi.Champlain;
+const Clutter = imports.gi.Clutter;
 const Geocode = imports.gi.GeocodeGlib;
-
 const Lang = imports.lang;
 
 const Utils = imports.utils;

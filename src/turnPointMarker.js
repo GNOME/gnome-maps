@@ -21,7 +21,6 @@
  */
 
 const Geocode = imports.gi.GeocodeGlib;
-
 const Lang = imports.lang;
 
 const Application = imports.application;

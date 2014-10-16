@@ -21,9 +21,9 @@
  */
 
 const Gtk = imports.gi.Gtk;
-
-const Mainloop = imports.mainloop;
 const Lang = imports.lang;
+const Mainloop = imports.mainloop;
+
 const Utils = imports.utils;
 
 const Notification = new Lang.Class({

@@ -20,8 +20,8 @@
  * Author: Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
  */
 
-const Lang = imports.lang;
 const Champlain = imports.gi.Champlain;
+const Lang = imports.lang;
 
 const Utils = imports.utils;
 

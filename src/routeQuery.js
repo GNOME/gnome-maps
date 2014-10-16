@@ -20,9 +20,8 @@
  * Author: Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
  */
 
-const Geocode = imports.gi.GeocodeGlib;
 const GObject = imports.gi.GObject;
-
+const Geocode = imports.gi.GeocodeGlib;
 const Lang = imports.lang;
 
 const Transportation = {

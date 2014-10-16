@@ -21,25 +21,24 @@
  *         Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
-const Lang = imports.lang;
+const GLib = imports.gi.GLib;
 const Gettext = imports.gettext;
-const _ = imports.gettext.gettext;
-
-const GtkClutter = imports.gi.GtkClutter;
 const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
-const GLib = imports.gi.GLib;
+const GtkClutter = imports.gi.GtkClutter;
+const Lang = imports.lang;
+const _ = imports.gettext.gettext;
 
 const Format = imports.format;
 const Geoclue = imports.geoclue;
 const GeocodeService = imports.geocodeService;
 const MainWindow = imports.mainWindow;
 const NotificationManager = imports.notificationManager;
-const Utils = imports.utils;
 const Path = imports.path;
-const Settings = imports.settings;
 const PlaceStore = imports.placeStore;
 const RouteService = imports.routeService;
+const Settings = imports.settings;
+const Utils = imports.utils;
 
 // used globally
 let application = null;

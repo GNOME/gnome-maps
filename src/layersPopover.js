@@ -19,8 +19,8 @@
  */
 
 const Gtk = imports.gi.Gtk;
-
 const Lang = imports.lang;
+
 const Utils = imports.utils;
 
 const LayersPopover = new Lang.Class({

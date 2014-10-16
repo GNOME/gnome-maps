@@ -21,9 +21,8 @@
  */
 
 const GObject = imports.gi.GObject;
-const Gio = imports.gi.Gio;
 const Geocode = imports.gi.GeocodeGlib;
-
+const Gio = imports.gi.Gio;
 const Lang = imports.lang;
 
 const Application = imports.application;

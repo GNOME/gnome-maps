@@ -20,20 +20,19 @@
  * Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
-const Clutter = imports.gi.Clutter;
-const GtkChamplain = imports.gi.GtkChamplain;
 const Champlain = imports.gi.Champlain;
-const Geocode = imports.gi.GeocodeGlib;
+const Clutter = imports.gi.Clutter;
 const GObject = imports.gi.GObject;
-
+const Geocode = imports.gi.GeocodeGlib;
+const GtkChamplain = imports.gi.GtkChamplain;
 const Lang = imports.lang;
 
 const Application = imports.application;
-const Utils = imports.utils;
 const MapWalker = imports.mapWalker;
 const SearchResultMarker = imports.searchResultMarker;
 const TurnPointMarker = imports.turnPointMarker;
 const UserLocationMarker = imports.userLocationMarker;
+const Utils = imports.utils;
 
 const MapType = {
     STREET:  Champlain.MAP_SOURCE_OSM_MAPQUEST,

@@ -20,9 +20,8 @@
  * Author: Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
  */
 
-const Soup = imports.gi.Soup;
-
 const Lang = imports.lang;
+const Soup = imports.gi.Soup;
 
 function encode(data) {
     if(data === null)

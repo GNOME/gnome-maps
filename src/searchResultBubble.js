@@ -22,12 +22,11 @@
 
 const Geocode = imports.gi.GeocodeGlib;
 const Gtk = imports.gi.Gtk;
-
 const Lang = imports.lang;
+const _ = imports.gettext.gettext;
 
 const MapBubble = imports.mapBubble;
 const Utils = imports.utils;
-const _ = imports.gettext.gettext;
 
 const SearchResultBubble = new Lang.Class({
     Name: "SearchResultBubble",

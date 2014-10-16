@@ -21,9 +21,9 @@
  *         Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
  */
 
-const Gtk = imports.gi.Gtk;
 const GObject = imports.gi.GObject;
 const Geocode = imports.gi.GeocodeGlib;
+const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 
 const Application = imports.application;

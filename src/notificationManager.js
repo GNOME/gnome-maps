@@ -21,9 +21,9 @@
  *         Jonas Danielsson <jonas@threetimestwo.org>
  */
 
-const Notification = imports.notification;
-
 const Lang = imports.lang;
+
+const Notification = imports.notification;
 
 const NotificationManager = new Lang.Class({
     Name: 'NotificationManager',

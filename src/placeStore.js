@@ -18,16 +18,15 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
-const Geocode = imports.gi.GeocodeGlib;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const GdkPixbuf = imports.gi.GdkPixbuf;
+const Geocode = imports.gi.GeocodeGlib;
 const Gtk = imports.gi.Gtk;
-
 const Lang = imports.lang;
 
-const Utils = imports.utils;
 const Application = imports.application;
+const Utils = imports.utils;
 
 const _PLACES_STORE_FILE = 'maps-places.json';
 const _ICON_SIZE = 20;

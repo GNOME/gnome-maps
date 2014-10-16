@@ -22,7 +22,6 @@
 
 const Champlain = imports.gi.Champlain;
 const Clutter = imports.gi.Clutter;
-
 const Lang = imports.lang;
 
 const MapMarker = imports.mapMarker;

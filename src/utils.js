@@ -21,17 +21,16 @@
  *         Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
-const Gdk = imports.gi.Gdk;
+const Clutter = imports.gi.Clutter;
+const Cogl = imports.gi.Cogl;
 const GLib = imports.gi.GLib;
+const Gdk = imports.gi.Gdk;
+const GdkPixbuf = imports.gi.GdkPixbuf;
+const Geocode = imports.gi.GeocodeGlib;
 const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
 const Signals = imports.signals;
-const Geocode = imports.gi.GeocodeGlib;
-const GdkPixbuf = imports.gi.GdkPixbuf;
-const Clutter = imports.gi.Clutter;
-const Cogl = imports.gi.Cogl;
 const Soup = imports.gi.Soup;
-
 const _ = imports.gettext.gettext;
 
 const METRIC_SYSTEM = 1;

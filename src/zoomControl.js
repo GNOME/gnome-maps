@@ -19,9 +19,9 @@
  *         Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
  */
 
+const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 
-const Gtk = imports.gi.Gtk;
 const Utils = imports.utils;
 
 const ZoomControl = new Lang.Class({
