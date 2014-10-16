@@ -95,6 +95,7 @@ const RouteQuery = new Lang.Class({
         point.connect('notify::place', (function() {
             this.notify('points');
         }).bind(this));
+        this.notify('points');
         this.emit('point-added', point, index);
 
         return point;
