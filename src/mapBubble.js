@@ -22,12 +22,14 @@
 
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
+const Mainloop = imports.mainloop;
 
 const Application = imports.application;
 const Utils = imports.utils;
 
 const Button = {
-    NONE: 0
+    NONE: 0,
+    ROUTE: 2
 };
 
 const MapBubble = new Lang.Class({
@@ -46,18 +48,26 @@ const MapBubble = new Lang.Class({
         let buttonFlags = params.buttons || Button.NONE;
         delete params.buttons;
 
+        let routeFrom = params.routeFrom;
+        delete params.routeFrom;
+
         params.modal = false;
 
         this.parent(params);
         let ui = Utils.getUIObject('map-bubble', [ 'bubble-main-grid',
                                                    'bubble-image',
                                                    'bubble-content-area',
-                                                   'bubble-button-area']);
+                                                   'bubble-button-area',
+                                                   'bubble-route-button']);
         this._image = ui.bubbleImage;
         this._content = ui.bubbleContentArea;
 
         if (!buttonFlags)
             ui.bubbleButtonArea.visible = false;
+        else {
+            if (buttonFlags & Button.ROUTE)
+                this._initRouteButton(ui.bubbleRouteButton, routeFrom);
+        }
 
         this.add(ui.bubbleMainGrid);
     },
@@ -72,5 +82,28 @@ const MapBubble = new Lang.Class({
 
     get content() {
         return this._content;
+    },
+
+    _initRouteButton: function(button, routeFrom) {
+        let query = Application.routeService.query;
+        let route = Application.routeService.route;
+        let from = query.points[0];
+        let to = query.points[query.points.length - 1];
+
+        button.visible = true;
+
+        button.connect('clicked', (function() {
+            query.freeze_notify();
+            query.reset();
+            route.reset();
+            if (routeFrom) {
+                from.place = this._place;
+            } else {
+                from.place = Application.geoclue.place;
+                to.place = this._place;
+            }
+            this.destroy();
+            query.thaw_notify();
+        }).bind(this));
     }
 });

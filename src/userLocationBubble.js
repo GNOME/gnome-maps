@@ -30,11 +30,13 @@ const UserLocationBubble = new Lang.Class({
     Extends: MapBubble.MapBubble,
 
     _init: function(params) {
-        this.parent(params);
-
         let ui = Utils.getUIObject('user-location-bubble', [ 'grid-content',
                                                              'label-accuracy',
                                                              'label-coordinates' ]);
+        params.buttons = MapBubble.Button.ROUTE;
+        params.routeFrom = true;
+
+        this.parent(params);
 
         this.image.icon_name = 'find-location-symbolic';
         this.image.pixel_size = 48;

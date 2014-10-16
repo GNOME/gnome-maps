@@ -33,10 +33,11 @@ const SearchResultBubble = new Lang.Class({
     Extends: MapBubble.MapBubble,
 
     _init: function(params) {
-        this.parent(params);
-
         let ui = Utils.getUIObject('search-result-bubble', [ 'box-content',
                                                              'label-title']);
+        params.buttons = MapBubble.Button.ROUTE;
+        this.parent(params);
+
         let place = this.place;
 
         Utils.load_icon(this.place.icon, 48, (function(pixbuf) {
