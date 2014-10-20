@@ -109,7 +109,7 @@ const MainWindow = new Lang.Class({
 
         let popover = placeEntry.popover;
         popover.connect('selected',
-                        this._overlay.grab_focus.bind(this._overlay));
+                        this.mapView.grab_focus.bind(this.mapView));
         this.mapView.view.connect('button-press-event',
                                   popover.hide.bind(popover));
         return placeEntry;
@@ -200,7 +200,7 @@ const MainWindow = new Lang.Class({
         this.window.connect('window-state-event',
                             this._onWindowStateEvent.bind(this));
         this.mapView.view.connect('button-press-event',
-                                  this._overlay.grab_focus.bind(this._overlay));
+                                  this.mapView.grab_focus.bind(this.mapView));
 
         this.window.application.connect('notify::connected', (function() {
             if(this.window.application.connected)

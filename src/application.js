@@ -154,7 +154,7 @@ const Application = new Lang.Class({
             return;
 
         Gtk.IconTheme.get_default().append_search_path(Path.ICONS_DIR);
-        let overlay = new Gtk.Overlay({ visible: true, can_focus: true });
+        let overlay = new Gtk.Overlay({ visible: true, can_focus: false });
         notificationManager = new NotificationManager.NotificationManager(overlay);
         this._mainWindow = new MainWindow.MainWindow(this, overlay);
         this._mainWindow.window.connect('destroy', this._onWindowDestroy.bind(this));
