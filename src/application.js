@@ -83,8 +83,8 @@ const Application = new Lang.Class({
     },
 
     _checkNetwork: function() {
-        let addr = new Gio.NetworkAddress({ hostname:'tile.openstreetmap.org',
-                                            port:80 });
+        let addr = new Gio.NetworkAddress({ hostname: 'tile.openstreetmap.org',
+                                            port: 80 });
 
         networkMonitor.can_reach_async(addr, null, (function(networkMonitor, res) {
             try {
