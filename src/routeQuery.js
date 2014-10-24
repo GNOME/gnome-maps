@@ -121,9 +121,11 @@ const RouteQuery = new Lang.Class({
 
     reset: function() {
         this.transportation = Transportation.CAR;
+        this.freeze_notify();
         this._points.forEach(function(point) {
             point.place = null;
         });
+        this.thaw_notify();
         this.emit('reset');
     },
 
