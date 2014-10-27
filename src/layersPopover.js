@@ -26,19 +26,22 @@ const Utils = imports.utils;
 const LayersPopover = new Lang.Class({
     Name: 'LayersPopover',
     Extends: Gtk.Popover,
+    Template: "resource:///org/gnome/maps/layers-popover.ui",
+    Children: [ 'street-layer-button',
+                'aerial-layer-button' ],
 
+    get _streetLayerButton() {
+        return this.get_template_child(LayersPopover, 'street-layer-button');
+    },
+    get _aerialLayerButton() {
+        return this.get_template_child(LayersPopover, 'aerial-layer-button');
+    },
+    
     _init: function() {
-        let ui = Utils.getUIObject('layers-popover', [ 'grid',
-                                                       'street-layer-button',
-                                                       'aerial-layer-button' ]);
+        this.parent();
 
-        this.parent({ width_request: 200,
-                      no_show_all: true,
-                      visible: false });
-
-        ui.aerialLayerButton.join_group(ui.streetLayerButton);
+        this._aerialLayerButton.join_group(this._streetLayerButton);
 
         this.get_style_context().add_class('maps-popover');
-        this.add(ui.grid);
     }
 });
