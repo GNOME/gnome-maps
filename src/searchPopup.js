@@ -28,8 +28,8 @@ const Utils = imports.utils;
 
 const Columns = {
     ICON:         0,
-    DESCRIPTION:  1,
-    PLACE:        2
+    PLACE:        1,
+    DESCRIPTION:  2
 };
 
 const _PLACE_ICON_SIZE = 20;
@@ -57,8 +57,8 @@ const SearchPopup = new Lang.Class({
 
         let model = new Gtk.ListStore();
         model.set_column_types([GdkPixbuf.Pixbuf,
-                                GObject.TYPE_STRING,
-                                GObject.TYPE_OBJECT]);
+                                GObject.TYPE_OBJECT,
+                                GObject.TYPE_STRING]);
         this._treeView.model = model;
 
         this._treeView.connect('row-activated',
