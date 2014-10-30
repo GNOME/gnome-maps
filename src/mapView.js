@@ -180,6 +180,9 @@ const MapView = new Lang.Class({
         if (this._turnPointMarker)
             this._turnPointMarker.destroy();
 
+        if (turnPoint.isStop())
+            return;
+
         this._turnPointMarker = new TurnPointMarker.TurnPointMarker({ turnPoint: turnPoint,
                                                                       mapView: this });
         this._instructionMarkerLayer.add_marker(this._turnPointMarker);
