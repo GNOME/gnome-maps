@@ -160,17 +160,10 @@ const MapView = new Lang.Class({
     },
 
     _updateUserLocation: function() {
-        if (!Application.geoclue)
+        if (!Application.geoclue || !Application.geoclue.place)
             return;
 
-        let location = Application.geoclue.location;
-
-        if (!location)
-            return;
-
-        let place = Geocode.Place.new_with_location(location.description,
-                                                    Geocode.PlaceType.UNKNOWN,
-                                                    location);
+        let place = Application.geoclue.place;
 
         let previousSelected = this._userLocation && this._userLocation.selected;
         this._userLocation = new UserLocationMarker.UserLocationMarker({ place: place,

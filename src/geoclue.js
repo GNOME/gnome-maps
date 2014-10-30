@@ -125,11 +125,14 @@ const Geoclue = new Lang.Class({
         let lastLocation = Application.settings.get('last-location');
         if (lastLocation.length >= 3) {
             let [lat, lng, accuracy] = lastLocation;
-            this.location = new Geocode.Location({ latitude: lat,
-                                                   longitude: lng,
-                                                   accuracy: accuracy });
             let lastLocationDescription = Application.settings.get('last-location-description');
-            this.location.set_description(lastLocationDescription);
+
+            let location = new Geocode.Location({ latitude: lat,
+                                                  longitude: lng,
+                                                  accuracy: accuracy });
+
+            this.place = new Geocode.Place({ location: location });
+
             this.userSetLocation = Application.settings.get('last-location-user-set');
         }
 
@@ -177,7 +180,7 @@ const Geoclue = new Lang.Class({
     },
 
     _updateLocation: function(location, userSet) {
-        this.location = location;
+        this.place.location = location;
 
         Application.settings.set('last-location', [location.latitude,
                                                    location.longitude,
