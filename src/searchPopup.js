@@ -48,8 +48,8 @@ const SearchPopup = new Lang.Class({
         let ui = Utils.getUIObject('search-popup', ['scrolled-window',
                                                     'stack',
                                                     'spinner',
-                                                    'treeview',]);
-
+                                                    'treeview',
+                                                    'text-column',]);
         this._stack = ui.stack;
         this._scrolledWindow = ui.scrolledWindow;
         this._spinner = ui.spinner;
@@ -63,8 +63,8 @@ const SearchPopup = new Lang.Class({
 
         this._treeView.connect('row-activated',
                                this._onRowActivated.bind(this));
-        this._initList();
-        this.height_request = this._cellHeight * this._numVisible;
+        let cellHeight = ui.textColumn.cell_get_size(null)[3];
+        this.height_request = cellHeight * this._numVisible;
         this._scrolledWindow.set_min_content_height(this.height_request);
 
         this.parent(props);
@@ -72,24 +72,6 @@ const SearchPopup = new Lang.Class({
         this.get_style_context().add_class('maps-popover');
         this.add(this._stack);
         this.hide();
-    },
-
-    _initList: function() {
-        let column = new Gtk.TreeViewColumn();
-
-        this._treeView.append_column(column);
-
-        let cell = new Gtk.CellRendererPixbuf({ xpad: 2 });
-        column.pack_start(cell, false);
-        column.add_attribute(cell, 'pixbuf', Columns.ICON);
-
-        cell = new Gtk.CellRendererText({ xpad: 8,
-                                          ypad: 8 });
-        column.pack_start(cell, true);
-        column.add_attribute(cell, 'markup', Columns.DESCRIPTION);
-
-        this._cellHeight = column.cell_get_size(null)[3];
-        this._cellHeight += cell.get_preferred_height(this._treeView)[0];
     },
 
     _onRowActivated: function(widget, path, column) {
