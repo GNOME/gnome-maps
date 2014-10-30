@@ -28,6 +28,8 @@ const Lang = imports.lang;
 const Application = imports.application;
 const Utils = imports.utils;
 
+const _ = imports.gettext.gettext;
+
 const ManagerInterface = '<node> \
 <interface name="org.freedesktop.GeoClue2.Manager"> \
     <method name="GetClient"> \
@@ -131,7 +133,8 @@ const Geoclue = new Lang.Class({
                                                   longitude: lng,
                                                   accuracy: accuracy });
 
-            this.place = new Geocode.Place({ location: location });
+            this.place = new Geocode.Place({ location: location,
+                                             name: _("Current location") });
 
             this.userSetLocation = Application.settings.get('last-location-user-set');
         }
