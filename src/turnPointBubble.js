@@ -35,11 +35,7 @@ const TurnPointBubble = new Lang.Class({
 
         this.parent(params);
 
-        let ui = Utils.getUIObject('turn-point-bubble', [ 'grid-content',
-                                                          'label-title']);
         this.image.icon_name = turnPoint.iconName;
-        ui.labelTitle.label = turnPoint.instruction;
-
-        this.content.add(ui.gridContent);
+        this.content.hide();
     }
 });
