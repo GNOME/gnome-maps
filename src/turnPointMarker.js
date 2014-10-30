@@ -20,8 +20,10 @@
  * Author: Dario Di Nucci <linkin88mail@gmail.com>
  */
 
+const Clutter = imports.gi.Clutter;
 const Geocode = imports.gi.GeocodeGlib;
 const Lang = imports.lang;
+const Mainloop = imports.mainloop;
 
 const Application = imports.application;
 const MapMarker = imports.mapMarker;
@@ -57,6 +59,27 @@ const TurnPointMarker = new Lang.Class({
     get anchor() {
         return { x: Math.floor(this.width / 2) - 1,
                  y: Math.floor(this.height / 2) - 1 };
+    },
+
+    goToAndSelect: function(animate) {
+        if (!animate) {
+            this.parent(animate);
+        } else {
+            let view = this._mapView.view;
+            let turnPointZoomLevel = 16;
+
+            view.goto_animation_mode = Clutter.AnimationMode.LINEAR;
+            view.goto_duration = 0;
+
+            Utils.once(view, 'animation-completed::go-to', (function() {
+                view.zoom_level = turnPointZoomLevel;
+                view.center_on(this.place.location.latitude,
+                               this.place.location.longitude);
+                this.selected = true;
+            }).bind(this));
+            view.go_to(this.place.location.latitude,
+                       this.place.location.longitude);
+        }
     },
 
     _createBubble: function() {

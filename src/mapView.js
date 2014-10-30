@@ -186,7 +186,7 @@ const MapView = new Lang.Class({
         this._turnPointMarker = new TurnPointMarker.TurnPointMarker({ turnPoint: turnPoint,
                                                                       mapView: this });
         this._instructionMarkerLayer.add_marker(this._turnPointMarker);
-        this._turnPointMarker.goToAndSelect(false);
+        this._turnPointMarker.goToAndSelect(true);
     },
 
     showSearchResult: function(place) {
