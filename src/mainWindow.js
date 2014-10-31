@@ -208,7 +208,6 @@ const MainWindow = new Lang.Class({
             else
                 this._mainStack.visible_child = this._noNetworkView;
         }).bind(this));
-        this._viewMovedId = 0;
     },
 
     _initHeaderbar: function() {
