@@ -33,8 +33,11 @@ const UserLocationBubble = new Lang.Class({
         let ui = Utils.getUIObject('user-location-bubble', [ 'grid-content',
                                                              'label-accuracy',
                                                              'label-coordinates' ]);
-        params.buttons = MapBubble.Button.ROUTE | MapBubble.Button.SHARE;
+        params.buttons = MapBubble.Button.ROUTE |
+                         MapBubble.Button.SHARE |
+                         MapBubble.Button.CHECK_IN;
         params.routeFrom = true;
+        params.checkInMatchPlace = false;
 
         this.parent(params);
 
