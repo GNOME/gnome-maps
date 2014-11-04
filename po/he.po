@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps 3.9.91\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-07 13:47+0300\n"
-"PO-Revision-Date: 2014-09-07 13:47+0300\n"
+"POT-Creation-Date: 2014-11-04 18:48+0200\n"
+"PO-Revision-Date: 2014-11-04 18:54+0200\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
@@ -48,8 +48,8 @@ msgstr ""
 "קרוב לאוניברסיטה, תל אביב”."
 
 #. Translators: This is the program name.
-#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
-#: ../src/mainWindow.js:303 ../src/main-window.ui.h:1
+#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:79
+#: ../src/mainWindow.js:347 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "מפות"
 
@@ -145,11 +145,15 @@ msgstr "מה זה כאן?"
 msgid "I’m here!"
 msgstr "אני כאן!"
 
-#: ../src/mainWindow.js:301
+#: ../src/geoclue.js:137 ../src/user-location-bubble.ui.h:1
+msgid "Current location"
+msgstr "מיקום נוכחי"
+
+#: ../src/mainWindow.js:345
 msgid "translator-credits"
 msgstr "יוסף אור בוצ׳קו <yoseforb@gnome.org>"
 
-#: ../src/mainWindow.js:304
+#: ../src/mainWindow.js:348
 msgid "A map application for GNOME"
 msgstr "יישום מפות עבור GNOME"
 
@@ -165,37 +169,47 @@ msgstr "בחירת סוג המפה"
 msgid "Toggle route planner"
 msgstr "להציג/להסתיר מתכנן מסלול"
 
-#: ../src/routeService.js:73
+#: ../src/main-window.ui.h:5
+msgid "Maps is offline!"
+msgstr "מפות איננו מקוון!"
+
+#: ../src/main-window.ui.h:6
+msgid ""
+"Maps need an active internet connection to function properly, but one can't "
+"be found."
+msgstr "מפות צריך חיבור אינטרנט פעיל על מנת לתפקד כראוי, אך אין אחד בנמצא."
+
+#: ../src/main-window.ui.h:7
+msgid "Check your connection and proxy settings."
+msgstr "יש לבדוק את החיבור שלך ואת הגדרות הפרוקסי."
+
+#: ../src/routeService.js:72
 msgid "No route found."
 msgstr "לא נמצא מסלול."
 
-#: ../src/routeService.js:80
+#: ../src/routeService.js:79
 msgid "Route request failed."
 msgstr "בקשת המסלול נכשלה."
 
-#: ../src/routeService.js:151
+#: ../src/routeService.js:150
 msgid "Start!"
 msgstr "להתחיל!"
 
-#: ../src/searchResultBubble.js:60
+#: ../src/searchResultBubble.js:58
 #, javascript-format
 msgid "Country code: %s"
 msgstr "קוד מדינה: %s"
 
-#: ../src/searchResultBubble.js:66
+#: ../src/searchResultBubble.js:64
 #, javascript-format
 msgid "Postal code: %s"
 msgstr "מיקוד: %s"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:193
+#: ../src/sidebar.js:236
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "זמן משוער: %s"
-
-#: ../src/user-location-bubble.ui.h:1
-msgid "Current location"
-msgstr "מיקום מדינה"
 
 #. To translators: %s can be "Unknown", "Exact" or "%f km²"
 #: ../src/user-location-bubble.ui.h:4
@@ -204,39 +218,51 @@ msgid "Accuracy: %s"
 msgstr "דיוק: ‏%s"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:165
+#: ../src/utils.js:189
 msgid "Unknown"
 msgstr "לא ידוע"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:168
+#: ../src/utils.js:192
 msgid "Exact"
 msgstr "מדויק"
 
-#: ../src/utils.js:178
-#, javascript-format
-msgid "%f km²"
-msgstr "‏%f ק״מ²"
-
-#: ../src/utils.js:275
+#: ../src/utils.js:291
 #, javascript-format
 msgid "%f h"
 msgstr "%f שעות"
 
-#: ../src/utils.js:277
+#: ../src/utils.js:293
 #, javascript-format
 msgid "%f min"
 msgstr "%f דקות"
 
-#: ../src/utils.js:287
+#. Translators: This is a distance measured in kilometers
+#: ../src/utils.js:304
 #, javascript-format
 msgid "%f km"
 msgstr "%f ק״מ"
 
-#: ../src/utils.js:289
+#. Translators: This is a distance measured in meters
+#: ../src/utils.js:307
 #, javascript-format
 msgid "%f m"
 msgstr "%f מ׳"
+
+#. Translators: This is a distance measured in miles
+#: ../src/utils.js:315
+#, javascript-format
+msgid "%f mi"
+msgstr "%f מיל"
+
+#. Translators: This is a distance measured in feet
+#: ../src/utils.js:318
+#, javascript-format
+msgid "%f ft"
+msgstr "%f רגל"
+
+#~ msgid "%f km²"
+#~ msgstr "‏%f ק״מ²"
 
 #~ msgid "To"
 #~ msgstr "אל"
