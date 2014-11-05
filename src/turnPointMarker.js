@@ -69,7 +69,7 @@ const TurnPointMarker = new Lang.Class({
             let turnPointZoomLevel = 16;
 
             view.goto_animation_mode = Clutter.AnimationMode.LINEAR;
-            view.goto_duration = 0;
+            view.goto_animation_duration = 0;
 
             Utils.once(view, 'animation-completed::go-to', (function() {
                 view.zoom_level = turnPointZoomLevel;
