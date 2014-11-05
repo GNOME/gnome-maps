@@ -29,18 +29,11 @@ const LayersPopover = new Lang.Class({
     Template: "resource:///org/gnome/maps/layers-popover.ui",
     Children: [ 'street-layer-button',
                 'aerial-layer-button' ],
-
-    get _streetLayerButton() {
-        return this.get_template_child(LayersPopover, 'street-layer-button');
-    },
-    get _aerialLayerButton() {
-        return this.get_template_child(LayersPopover, 'aerial-layer-button');
-    },
     
     _init: function() {
         this.parent();
 
-        this._aerialLayerButton.join_group(this._streetLayerButton);
+        this.aerial_layer_button.join_group(this.street_layerutton);
 
         this.get_style_context().add_class('maps-popover');
     }
