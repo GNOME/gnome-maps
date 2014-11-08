@@ -3,44 +3,35 @@
 # This file is distributed under the same license as the GNOME Maps package.
 # Erwin Poeze <donnut@outlook.com>, 2013, 2014.
 # Reinout van Schouwen <reinouts@gnome.org>, 2013.
+# Hannie Dumoleyn <hannie@ubuntu-nl.org>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps 3.10\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-03-13 07:56+0000\n"
-"PO-Revision-Date: 2014-03-13 17:38-0000\n"
-"Last-Translator: Erwin Poeze <donnut@outlook.com>\n"
-"Language-Team: Dutch <vertaling@vrijschrift.org>\n"
+"POT-Creation-Date: 2014-11-06 07:49+0000\n"
+"PO-Revision-Date: 2014-11-08 11:13+0100\n"
+"Last-Translator: Hannie Dumoleyn <hannie@ubuntu-nl.org>\n"
+"Language-Team: Dutch <gnome-nl-list@gnome.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Lokalize 1.5\n"
 "X-Project-Style: gnome\n"
 
-#: ../data/gnome-maps.appdata.xml.in.h:1
+#: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
 "or locate a place to meet a friend."
 msgstr ""
 "Kaarten geeft u snelle toegang tot kaarten over de hele wereld. U kunt snel "
-"de plaats waarnaar u op zoek bent vinden door te zoeken naar een stad of de "
+"de plaats waarnaar u op zoek bent vinden door te zoeken naar een stad of "
 "straat, of de plek opzoeken om een vriend te ontmoeten."
 
-#: ../data/gnome-maps.appdata.xml.in.h:2
-msgid ""
-"<li>Search for country, region, city or street.</li> <li>Search for specific "
-"types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
-"near Alexanderplatz, Berlin”.</li>"
-msgstr ""
-"<li>Zoek naar een land, regio, stad of straat.</li> <li>Zoeken naar "
-"specifieke soorten locaties, zoals \"Pubs in de buurt van Main Street, Boston"
-"\" of \"WiFi-toegang in de buurt van Alexanderplatz, Berlijn\"</li>"
-
-#: ../data/gnome-maps.appdata.xml.in.h:3
+#: ../data/org.gnome.Maps.appdata.xml.in.h:2
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
@@ -48,17 +39,33 @@ msgstr ""
 "Kaarten gebruikt de gemeenschappelijk opgebouwde OpenStreetMap-database, "
 "gemaakt door honderdduizenden mensen over de hele wereld."
 
+#. Translators: Search is carried out on OpenStreetMap data using Nominatim.
+#. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
+#. your language to see what words you can use for the translated search.
+#: ../data/org.gnome.Maps.appdata.xml.in.h:6
+#| msgid ""
+#| "<li>Search for country, region, city or street.</li> <li>Search for "
+#| "specific types of locations, such as “Pubs near Main Street, Boston” or "
+#| "“Wi-Fi Access near Alexanderplatz, Berlin”.</li>"
+msgid ""
+"You can even search for specific types of locations, such as “Pubs near Main "
+"Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
+msgstr ""
+"U kunt zelfs zoeken naar specifieke soorten locaties, zoals \"Pubs in de "
+"buurt van Main Street, Boston\" of \"Hotels in de buurt van Alexanderplatz, "
+"Berlijn\"."
+
 #. Translators: This is the program name. */
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
-#: ../src/mainWindow.js:300 ../src/main-window.ui.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
+#: ../src/mainWindow.js:302 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "Kaarten"
 
-#: ../data/gnome-maps.desktop.in.in.h:2
+#: ../data/org.gnome.Maps.desktop.in.in.h:2
 msgid "A simple maps application"
 msgstr "Een eenvoudige kaartentoepassing"
 
-#: ../data/gnome-maps.desktop.in.in.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:3
 msgid "Maps;"
 msgstr "Maps;Kaarten;"
 
@@ -146,50 +153,111 @@ msgstr "Wat bevindt zich hier?"
 msgid "I’m here!"
 msgstr "Ik ben hier!"
 
-#: ../src/mainWindow.js:298
+#: ../src/mainWindow.js:300
 msgid "translator-credits"
 msgstr ""
 "Erwin Poeze <donnut@outlook.com>\n"
 "Reinout van Schouwen <reinouts@gnome.org>"
 
-#: ../src/mainWindow.js:301
+#: ../src/mainWindow.js:303
 msgid "A map application for GNOME"
 msgstr "Een kaartentoepassing voor Gnome"
 
-#: ../src/main-window.ui.h:1
-msgid "Street"
-msgstr "Straat"
-
 #: ../src/main-window.ui.h:2
-msgid "Satellite"
-msgstr "Satelliet"
+msgid "Go to current location"
+msgstr "Ga naar de huidige locatie"
+
+#: ../src/main-window.ui.h:3
+msgid "Choose map type"
+msgstr "Kaarttype kiezen"
+
+#: ../src/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr "Van routeplanner wisselen"
+
+#: ../src/routeService.js:73
+msgid "No route found."
+msgstr "Geen route gevonden."
+
+#: ../src/routeService.js:80
+msgid "Route request failed."
+msgstr "Routeverzoek is mislukt."
+
+#: ../src/routeService.js:151
+msgid "Start!"
+msgstr "Begin!"
+
+#: ../src/searchResultBubble.js:60
+#, javascript-format
+msgid "Country code: %s"
+msgstr "Landcode: %s"
+
+#: ../src/searchResultBubble.js:66
+#, javascript-format
+msgid "Postal code: %s"
+msgstr "Postcode: %s"
+
+#. Translators: %s is a time expression with the format "%f h" or "%f min" */
+#: ../src/sidebar.js:198
+#, javascript-format
+msgid "Estimated time: %s"
+msgstr "Geschatte tijd: %s"
+
+#: ../src/user-location-bubble.ui.h:1
+msgid "Current location"
+msgstr "Huidige locatie"
+
+#. To translators: %s can be "Unknown", "Exact" or "%f km²"
+#: ../src/user-location-bubble.ui.h:4
+#, no-c-format
+#| msgid ""
+#| "%s\n"
+#| "Position Accuracy: %s"
+msgid "Accuracy: %s"
+msgstr "Nauwkeurigheid: %s"
 
 #. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:164
+#: ../src/utils.js:165
 msgid "Unknown"
 msgstr "Onbekend"
 
 #. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:167
+#: ../src/utils.js:168
 msgid "Exact"
 msgstr "Exact"
 
-#: ../src/mapLocation.js:177
-msgid " km<sup>2</sup>"
-msgstr " km<sup>2</sup>"
-
-#. Translators: Showing name of place where user currently is and
-#. accuracy of this information (which is translated
-#. separately)
-#. */
-#: ../src/userLocation.js:62
+# Hier stond: moet worden nagekeken.
+#: ../src/utils.js:178
 #, javascript-format
-msgid ""
-"%s\n"
-"Position Accuracy: %s"
-msgstr ""
-"%s\n"
-"Positienauwkeurigheid: %s"
+#| msgid " km²"
+msgid "%f km²"
+msgstr "%f km²"
 
-#~ msgid " km²"
-#~ msgstr " km²"
+#: ../src/utils.js:275
+#, javascript-format
+msgid "%f h"
+msgstr "%f u"
+
+#: ../src/utils.js:277
+#, javascript-format
+msgid "%f min"
+msgstr "%f min"
+
+#: ../src/utils.js:287
+#, javascript-format
+msgid "%f km"
+msgstr "%f km"
+
+#: ../src/utils.js:289
+#, javascript-format
+msgid "%f m"
+msgstr "%f m"
+
+#~ msgid "Street"
+#~ msgstr "Straat"
+
+#~ msgid "Satellite"
+#~ msgstr "Satelliet"
+
+#~ msgid " km<sup>2</sup>"
+#~ msgstr " km<sup>2</sup>"
