@@ -130,10 +130,9 @@ const Application = new Lang.Class({
         application = this;
         this._initServices();
 
-        Utils.initActions(this, [{
-            properties: { name: 'quit' },
-            signalHandlers: { activate: this._onQuitActivate }
-        }], this);
+        Utils.addActions(this, {
+            'quit': { onActivate: this._onQuitActivate }
+        });
 
         this._initPlaceStore();
         this._initAppMenu();
