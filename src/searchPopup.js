@@ -40,20 +40,18 @@ const SearchPopup = new Lang.Class({
     Signals : {
         'selected' : { param_types: [ GObject.TYPE_OBJECT ] }
     },
+    Template: 'resource:///org/gnome/maps/search-popup.ui',
+    InternalChildren: [ 'scrolledWindow',
+                        'stack',
+                        'spinner',
+                        'treeView',
+                        'textColumn' ],
 
     _init: function(props) {
         this._numVisible = props.num_visible;
         delete props.num_visible;
 
-        let ui = Utils.getUIObject('search-popup', ['scrolled-window',
-                                                    'stack',
-                                                    'spinner',
-                                                    'treeview',
-                                                    'text-column',]);
-        this._stack = ui.stack;
-        this._scrolledWindow = ui.scrolledWindow;
-        this._spinner = ui.spinner;
-        this._treeView = ui.treeview;
+        this.parent(props);
 
         let model = new Gtk.ListStore();
         model.set_column_types([GdkPixbuf.Pixbuf,
@@ -63,14 +61,10 @@ const SearchPopup = new Lang.Class({
 
         this._treeView.connect('row-activated',
                                this._onRowActivated.bind(this));
-        let cellHeight = ui.textColumn.cell_get_size(null)[3];
+        let cellHeight = this._textColumn.cell_get_size(null)[3];
         this.height_request = cellHeight * this._numVisible;
         this._scrolledWindow.set_min_content_height(this.height_request);
 
-        this.parent(props);
-
-        this.get_style_context().add_class('maps-popover');
-        this.add(this._stack);
         this.hide();
     },
 
@@ -109,7 +103,6 @@ const SearchPopup = new Lang.Class({
     },
 
     vfunc_show: function() {
-        this._treeView.columns_autosize();
         this.parent();
     },
 
