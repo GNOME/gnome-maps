@@ -138,54 +138,39 @@ const MainWindow = new Lang.Class({
     },
 
     _initActions: function() {
-        Utils.initActions(this.window, [
-            {
-                properties: { name: 'close' },
-                signalHandlers: { activate: this.window.close.bind(this.window) }
-            }, {
-                properties: { name: 'about' },
-                signalHandlers: { activate: this._onAboutActivate }
-            }, {
-                properties: {
-                    name: 'map-type-menu',
-                    state: GLib.Variant.new('b', false)
-                },
-                signalHandlers: { activate: this._onMapTypeMenuActivate }
-            }, {
-                properties: {
-                    name: 'map-type',
-                    parameter_type: GLib.VariantType.new('s'),
-                    state: GLib.Variant.new('s', 'STREET')
-                },
-                signalHandlers: { activate: this._onMapTypeActivate }
-            }, {
-                properties: { name: 'goto-user-location' },
-                signalHandlers: { activate: this._onGotoUserLocationActivate }
-            }, {
-                properties: {
-                    name: 'toggle-sidebar',
-                    state: GLib.Variant.new_boolean(false)
-                },
-                signalHandlers: {
-                    'change-state': this._onToggleSidebarChangeState
-                }
-            }, {
-                properties: { name: 'zoom-in' },
-                signalHandlers: {
-                    activate:  this.mapView.view.zoom_in.bind(this.mapView.view)
-                }
-            },{
-                properties: { name: 'zoom-out' },
-                signalHandlers: {
-                    activate:  this.mapView.view.zoom_out.bind(this.mapView.view)
-                }
-            }, {
-                properties: { name: 'find' },
-                signalHandlers: {
-                    activate: this._placeEntry.grab_focus.bind(this._placeEntry)
-                }
+        Utils.addActions(this.window, {
+            'close': {
+                onActivate: this.window.close.bind(this.window)
             },
-        ], this);
+            'about': {
+                onActivate: this._onAboutActivate.bind(this)
+            },
+            'map-type-menu': {
+                state: ['b', false],
+                onActivate: this._onMapTypeMenuActivate.bind(this)
+            },
+            'map-type': {
+                paramType: 's',
+                state: ['s', 'STREET'],
+                onActivate: this._onMapTypeActivate.bind(this)
+            },
+            'goto-user-location': {
+                onActivate: this._onGotoUserLocationActivate.bind(this)
+            },
+            'toggle-sidebar': {
+                state: ['b', false],
+                onChangeState: this._onToggleSidebarChangeState.bind(this)
+            },
+            'zoom-in': {
+                onActivate: this.mapView.view.zoom_in.bind(this.mapView.view)
+            },
+            'zoom-out': {
+                onActivate:  this.mapView.view.zoom_out.bind(this.mapView.view)
+            },
+            'find': {
+                onActivate: this._placeEntry.grab_focus.bind(this._placeEntry)
+            }
+        });
 
         let action = this.window.lookup_action('goto-user-location');
         Application.geoclue.bind_property('connected',

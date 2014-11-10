@@ -88,17 +88,34 @@ function clearGtkClutterActorBg(actor) {
                                                        alpha: 0 }));
 }
 
-function initActions(actionMap, simpleActionEntries, context) {
-    simpleActionEntries.forEach(function(entry) {
-        let action = new Gio.SimpleAction(entry.properties);
-
-        for(let signalHandler in entry.signalHandlers) {
-            let callback = entry.signalHandlers[signalHandler];
-            action.connect(signalHandler, callback.bind(context));
-        }
+function addActions(actionMap, entries) {
+    for(let name in entries) {
+        let entry = entries[name];
+        let action = createAction(name, entry);
 
         actionMap.add_action(action);
-    });
+    }
+}
+
+function createAction(name, { state, paramType, onActivate, onChangeState }) {
+    let entry = { name: name };
+
+    if(Array.isArray(state)) {
+        let [type, value] = state;
+        entry.state = new GLib.Variant.new(type, value);
+    }
+
+    if(paramType !== undefined)
+        entry.parameter_type = GLib.VariantType.new(paramType);
+
+    let action = new Gio.SimpleAction(entry);
+
+    if(onActivate)
+        action.connect('activate', onActivate);
+    if(onChangeState)
+        action.connect('change-state', onChangeState);
+
+    return action;
 }
 
 function CreateActorFromIconName(name) {
