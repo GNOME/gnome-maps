@@ -34,6 +34,10 @@ const Utils = imports.utils;
 const InstructionRow = new Lang.Class({
     Name: "InstructionRow",
     Extends: Gtk.ListBoxRow,
+    Template: 'resource:///org/gnome/maps/sidebar-instruction-row.ui',
+    InternalChildren: [ 'directionImage',
+                        'instructionLabel',
+                        'distanceLabel' ],
 
     _init: function(params) {
         this.turnPoint = params.turnPoint;
@@ -41,83 +45,59 @@ const InstructionRow = new Lang.Class({
 
         this.parent(params);
 
-        this.visible = true;
-        let ui = Utils.getUIObject('sidebar', ['instruction-box',
-                                               'direction-image',
-                                               'instruction-label',
-                                               'distance-label']);
-        ui.instructionLabel.label = this.turnPoint.instruction;
-        ui.directionImage.icon_name = this.turnPoint.iconName;
+        this._instructionLabel.label = this.turnPoint.instruction;
+        this._directionImage.icon_name = this.turnPoint.iconName;
 
         if (this.turnPoint.distance > 0)
-            ui.distanceLabel.label = Utils.prettyDistance(this.turnPoint.distance);
-
-        this.add(ui.instructionBox);
+            this._distanceLabel.label = Utils.prettyDistance(this.turnPoint.distance);
     }
 });
 
 const Sidebar = new Lang.Class({
     Name: 'Sidebar',
     Extends: Gtk.Revealer,
+    Template: 'resource:///org/gnome/maps/sidebar.ui',
+    InternalChildren: [ 'viaGridContainer',
+                        'instructionListScrolled',
+                        'instructionStack',
+                        'instructionSpinner',
+                        'instructionList',
+                        'modePedestrianToggle',
+                        'modeBikeToggle',
+                        'modeCarToggle',
+                        'timeInfo',
+                        'distanceInfo',
+                        'fromEntryGrid',
+                        'toEntryGrid',
+                        'viaAddButton' ],
 
     _init: function(mapView) {
-        this.parent({ visible: true,
-                      transition_type: Gtk.RevealerTransitionType.SLIDE_LEFT,
-                      transition_duration: 400, // ms
-                      halign: Gtk.Align.END,
-                      valign: Gtk.Align.FILL
-                    });
-        this.get_style_context().add_class('maps-sidebar');
-
-        let ui = Utils.getUIObject('sidebar', [ 'sidebar',
-                                                'via-grid-container',
-                                                'instruction-list-scrolled',
-                                                'instruction-stack',
-                                                'instruction-spinner',
-                                                'instruction-list',
-                                                'mode-pedestrian-toggle',
-                                                'mode-bike-toggle',
-                                                'mode-car-toggle',
-                                                'time-info',
-                                                'distance-info',
-                                                'from-entry-grid',
-                                                'to-entry-grid',
-                                                'via-add-button']);
+        this.parent();
 
         this._mapView = mapView;
-        this._viaGridContainer = ui.viaGridContainer;
-        this._instructionList = ui.instructionList;
-        this._instructionStack = ui.instructionStack;
-        this._instructionWindow = ui.instructionListScrolled;
-        this._instructionSpinner = ui.instructionSpinner;
-        this._timeInfo = ui.timeInfo;
-        this._distanceInfo = ui.distanceInfo;
 
         this._initInstructionList();
-
-        this._initTransportationToggles(ui.modePedestrianToggle,
-                                        ui.modeBikeToggle,
-                                        ui.modeCarToggle);
+        this._initTransportationToggles(this._modePedestrianToggle,
+                                        this._modeBikeToggle,
+                                        this._modeCarToggle);
 
         let query = Application.routeService.query;
 
         query.addPoint(0);
-        let fromEntry = this._initRouteEntry(ui.fromEntryGrid, 0);
+        let fromEntry = this._initRouteEntry(this._fromEntryGrid, 0);
 
         query.addPoint(1);
-        this._initRouteEntry(ui.toEntryGrid, 1);
+        this._initRouteEntry(this._toEntryGrid, 1);
 
-        this._initQuerySignals(ui.viaGridContainer);
+        this._initQuerySignals(this._viaGridContainer);
 
         this.bind_property('child-revealed',
                            fromEntry, 'has_focus',
                            GObject.BindingFlags.DEFAULT);
 
-        ui.viaAddButton.connect('clicked', (function() {
+        this._viaAddButton.connect('clicked', (function() {
             query.addPoint(-1);
         }).bind(this));
-
-        this.add(ui.sidebar);
     },
 
     _initTransportationToggles: function(pedestrian, bike, car) {
