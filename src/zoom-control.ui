@@ -1,46 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.10 -->
-  <object class= "GtkBox" id="zoom-control">
+  <template class="Gjs_ZoomControl" parent="GtkBin">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="orientation">vertical</property>
-    <style>
-      <class name="linked" />
-    </style>
+    <property name="halign">start</property>
+    <property name="valign">start</property>
+    <property name="margin_top">6</property>
+    <property name="margin_start">6</property>
     <child>
-      <object class="GtkButton" id="zoom-in-button">
-        <property name="name">zoom-in-button</property>
+      <object class="GtkBox" id="zoomControl">
         <property name="visible">True</property>
-        <property name="width-request">34</property>
-        <property name="height-request">34</property>
         <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <style>
+          <class name="linked" />
+        </style>
         <child>
-          <object class="GtkLabel" id="zoom-in-label">
+          <object class="GtkButton" id="zoomInButton">
+            <property name="name">zoom-in-button</property>
             <property name="visible">True</property>
+            <property name="width-request">34</property>
+            <property name="height-request">34</property>
             <property name="can_focus">False</property>
-            <property name="margin">0</property>
-            <property name="label">+</property>
+            <child>
+              <object class="GtkLabel" id="zoomInLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin">0</property>
+                <property name="label">+</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="zoomOutButton">
+            <property name="name">zoom-out-button</property>
+            <property name="visible">True</property>
+            <property name="width-request">34</property>
+            <property name="height-request">34</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkLabel" id="zoomOutLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin">0</property>
+                <property name="label">-</property>
+              </object>
+            </child>
           </object>
         </child>
       </object>
     </child>
-    <child>
-      <object class="GtkButton" id="zoom-out-button">
-        <property name="name">zoom-out-button</property>
-        <property name="visible">True</property>
-        <property name="width-request">34</property>
-        <property name="height-request">34</property>
-        <property name="can_focus">False</property>
-        <child>
-          <object class="GtkLabel" id="zoom-out-label">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="margin">0</property>
-            <property name="label">-</property>
-          </object>
-        </child>
-      </object>
-    </child>
-  </object>
+  </template>
 </interface>

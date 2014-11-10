@@ -27,19 +27,12 @@ const Utils = imports.utils;
 const ZoomControl = new Lang.Class({
     Name: 'ZoomControl',
     Extends: Gtk.Bin,
+    Template: 'resource:///org/gnome/maps/zoom-control.ui',
+    InternalChildren: [ 'zoomInButton',
+                        'zoomOutButton' ],
 
     _init: function (mapView) {
-        this.parent({ halign: Gtk.Align.START,
-                      valign: Gtk.Align.START,
-                      margin_top: 6,
-                      margin_start: 6,
-                      visible: true });
-
-        let ui = Utils.getUIObject('zoom-control', ['zoom-control',
-                                                    'zoom-in-button',
-                                                    'zoom-out-button']);
-        this._zoomInButton = ui.zoomInButton;
-        this._zoomOutButton = ui.zoomOutButton;
+        this.parent();
         this._view = mapView.view;
 
         this._zoomInButton.connect('clicked',
@@ -53,7 +46,6 @@ const ZoomControl = new Lang.Class({
                            this._updateSensitive.bind(this));
         this._view.connect('notify::min-zoom-level',
                            this._updateSensitive.bind(this));
-        this.add(ui.zoomControl);
     },
 
     _updateSensitive: function () {
