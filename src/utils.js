@@ -94,7 +94,26 @@ function addActions(actionMap, entries) {
         let action = createAction(name, entry);
 
         actionMap.add_action(action);
+
+        if(entry.accels)
+            setAccelsForActionMap(actionMap, name, entry.accels);
     }
+}
+
+function setAccelsForActionMap(actionMap, actionName, accels) {
+    let app;
+    let prefix;
+
+    if(actionMap instanceof Gtk.Application) {
+        app = actionMap;
+        prefix = "app";
+    } else if(actionMap instanceof Gtk.Window) {
+        app = actionMap.application;
+        prefix = "win";
+    }
+
+    app.set_accels_for_action(prefix + '.' + actionName,
+                              accels);
 }
 
 function createAction(name, { state, paramType, onActivate, onChangeState }) {

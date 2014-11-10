@@ -84,7 +84,6 @@ const MainWindow = new Lang.Class({
 
         this._initHeaderbar();
         this._initActions();
-        this._initAccelerators();
         this._initSignals();
         this._restoreWindowGeometry();
 
@@ -128,15 +127,6 @@ const MainWindow = new Lang.Class({
         return sidebar;
     },
 
-    _initAccelerators: function() {
-        this.window.application.set_accels_for_action('win.zoom-in',
-                                                      ['<Primary>plus']);
-        this.window.application.set_accels_for_action('win.zoom-out',
-                                                      ['<Primary>minus']);
-        this.window.application.set_accels_for_action('win.find',
-                                                      ['<Primary>F']);
-    },
-
     _initActions: function() {
         Utils.addActions(this.window, {
             'close': {
@@ -162,12 +152,15 @@ const MainWindow = new Lang.Class({
                 onChangeState: this._onToggleSidebarChangeState.bind(this)
             },
             'zoom-in': {
+                accels: ['<Primary>plus'],
                 onActivate: this.mapView.view.zoom_in.bind(this.mapView.view)
             },
             'zoom-out': {
+                accels: ['<Primary>minus'],
                 onActivate:  this.mapView.view.zoom_out.bind(this.mapView.view)
             },
             'find': {
+                accels: ['<Primary>F'],
                 onActivate: this._placeEntry.grab_focus.bind(this._placeEntry)
             }
         });
