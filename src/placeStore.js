@@ -90,10 +90,10 @@ const PlaceStore = new Lang.Class({
     },
 
     addFavorite: function(place) {
-        if (this._exists(place, PlaceType.FAVORITE))
+        if (this.exists(place.osm_id, PlaceType.FAVORITE))
             return;
 
-        if (this._exists(place, PlaceType.RECENT)) {
+        if (this.exists(place.osm_id, PlaceType.RECENT)) {
             this._removeIf((function(model, iter) {
                 let p = model.get_value(iter, Columns.PLACE);
                 return p.osm_id === place.osm_id;
@@ -103,7 +103,7 @@ const PlaceStore = new Lang.Class({
     },
 
     addRecent: function(place) {
-        if (this._exists(place, PlaceType.RECENT)) {
+        if (this.exists(place.osm_id, PlaceType.RECENT)) {
             this._updatePlace(place);
             return;
         }
@@ -192,8 +192,11 @@ const PlaceStore = new Lang.Class({
         this._typeTable[place.osm_id] = type;
     },
 
-    _exists: function(place, type) {
-        return this._typeTable[place.osm_id] === type;
+    exists: function(osmId, type) {
+        if (type)
+            return this._typeTable[osmId] === type;
+        else
+            return this._typeTable[osmId] !== undefined;
     },
 
     _removeIf: function(evalFunc, stop) {
