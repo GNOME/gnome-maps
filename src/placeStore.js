@@ -83,6 +83,11 @@ const PlaceStore = new Lang.Class({
         this.set_sort_column_id(Columns.ADDED, Gtk.SortType.ASCENDING);
     },
 
+    _addPlace: function(place, type) {
+        this._setPlace(this.append(), place, type, new Date().getTime());
+        this._store();
+    },
+
     addFavorite: function(place) {
         if (this._exists(place, PlaceType.FAVORITE))
             return;
@@ -93,7 +98,7 @@ const PlaceStore = new Lang.Class({
                 return p.name === place.name;
             }), true);
         }
-        this._addPlace(place, PlaceType.FAVORITE, new Date().getTime());
+        this._addPlace(place, PlaceType.FAVORITE);
     },
 
     addRecent: function(place) {
@@ -117,7 +122,7 @@ const PlaceStore = new Lang.Class({
                 return false;
             }).bind(this), true);
         }
-        this._addPlace(place, PlaceType.RECENT, new Date().getTime());
+        this._addPlace(place, PlaceType.RECENT);
         this._numRecent++;
     },
 
@@ -150,7 +155,7 @@ const PlaceStore = new Lang.Class({
                         right: obj.bounding_box.right
                     }));
                 }
-                this._addPlace(place, obj.type, obj.added);
+                this._setPlace(this.append(), place, obj.type, obj.added);
                 if (obj.type === PlaceType.RECENT)
                     this._numRecent++;
             }).bind(this));
@@ -195,9 +200,7 @@ const PlaceStore = new Lang.Class({
             log('Failed to write places file!');
     },
 
-    _addPlace: function(place, type, added) {
-        let iter = this.append();
-
+    _setPlace: function(iter, place, type, added) {
         this.set(iter,
                  [Columns.PLACE,
                   Columns.NAME,
@@ -214,7 +217,6 @@ const PlaceStore = new Lang.Class({
             }).bind(this));
         }
         this._typeTable[place.name] = type;
-        this._store();
     },
 
     _exists: function(place, type) {
