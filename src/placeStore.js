@@ -244,7 +244,7 @@ const PlaceStore = new Lang.Class({
             let p = model.get_value(iter, Columns.PLACE);
 
             if (p.osm_id === place.osm_id) {
-                type = model.get_value(iter, Columns.TYPE);
+                let type = model.get_value(iter, Columns.TYPE);
                 this._setPlace(iter, place, type, new Date().getTime());
                 this._store();
                 return;
