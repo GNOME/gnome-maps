@@ -108,7 +108,7 @@ const SearchResultBubble = new Lang.Class({
         }
 
         if (place.wheelchair) {
-            infos.push(_("Wheelchair access: %s").format(place.wheelchair));
+            infos.push(_("Wheelchair access: %s").format(place.wheelchairTranslated));
         }
 
         infos.forEach((function(info) {
