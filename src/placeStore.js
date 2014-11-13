@@ -192,6 +192,19 @@ const PlaceStore = new Lang.Class({
         this._typeTable[place.osm_id] = type;
     },
 
+    get: function(osmId) {
+        let place = null;
+        this.foreach(function(model, path, iter) {
+            let p = model.get_value(iter, Columns.PLACE);
+            if (p.osm_id === osmId) {
+                place = p;
+                return true;
+            }
+            return false;
+        });
+        return place;
+    },
+
     exists: function(osmId, type) {
         if (type)
             return this._typeTable[osmId] === type;
