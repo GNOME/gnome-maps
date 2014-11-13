@@ -131,7 +131,7 @@ const Application = new Lang.Class({
         this._initServices();
 
         Utils.addActions(this, {
-            'quit': { onActivate: this._onQuitActivate }
+            'quit': { onActivate: this._onQuitActivate.bind(this) }
         });
 
         this._initPlaceStore();
