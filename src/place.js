@@ -96,5 +96,71 @@ const Place = new Lang.Class({
 
     get wheelchair() {
         return this._wheelchair;
+    },
+
+    toJSON: function() {
+        let bounding_box = null;
+
+        if (this.bounding_box) {
+            bounding_box = { top: this.bounding_box.top,
+                             bottom: this.bounding_box.bottom,
+                             left: this.bounding_box.left,
+                             right: this.bounding_box.right };
+        }
+
+        let location = { latitude: this.location.latitude,
+                         longitude: this.location.longitude,
+                         altitude: this.location.altitude,
+                         accuracy: this.location.accuracy };
+
+        return { id: this.osm_id,
+                 name: this.name,
+                 bounding_box: bounding_box,
+                 this_type: this.this_type,
+                 location: location,
+                 street_address: this.street_address,
+                 street: this.street,
+                 building: this.building,
+                 postal_code: this.postal_code,
+                 area: this.area,
+                 town: this.town,
+                 state: this.state,
+                 county: this.county,
+                 country: this.country,
+                 country_code: this.contry_code,
+                 continent: this.continent,
+                 population: this.population,
+                 wiki: this.wiki,
+                 wheelchair: this.wheelchair,
+                 openingHours: this.openingHours };
     }
 });
+
+Place.fromJSON = function(obj) {
+    let props = { };
+
+    for (let key in obj) {
+        let prop = obj[key];
+
+        switch(key) {
+            case 'id':
+                props.osm_id = prop;
+                break;
+
+            case 'location':
+                props.location = new Geocode.Location(prop);
+                break;
+
+            case 'bounding_box':
+                if (prop)
+                    props.bounding_box = new Geocode.BoundingBox(prop);
+                break;
+
+            default:
+                if (prop !== null && prop !== undefined)
+                    props[key] = prop;
+                break;
+        }
+    }
+    return new Place(props);
+}
