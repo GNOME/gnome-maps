@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps 3.13.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-06 12:14+0200\n"
-"PO-Revision-Date: 2014-09-06 12:15+0200\n"
+"POT-Creation-Date: 2014-11-13 19:21+0100\n"
+"PO-Revision-Date: 2014-11-13 19:22+0100\n"
 "Last-Translator: Åka Sikrom <a4NOSPAMPLEASETHANKYOU@hush.com>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: \n"
@@ -47,8 +47,8 @@ msgstr ""
 "Street, Boston» eller «Hoteller nær Alexanderplatz, Berlin»."
 
 #. Translators: This is the program name.
-#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
-#: ../src/mainWindow.js:303 ../src/main-window.ui.h:1
+#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:79
+#: ../src/mainWindow.js:325 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "Kart"
 
@@ -146,11 +146,15 @@ msgstr "Hva finnes her?"
 msgid "I’m here!"
 msgstr "Jeg er her!"
 
-#: ../src/mainWindow.js:301
+#: ../src/geoclue.js:137 ../src/user-location-bubble.ui.h:1
+msgid "Current location"
+msgstr "Nåværende lokasjon"
+
+#: ../src/mainWindow.js:323
 msgid "translator-credits"
 msgstr "Kjartan Maraas <kmaraas@gnome.org>"
 
-#: ../src/mainWindow.js:304
+#: ../src/mainWindow.js:326
 msgid "A map application for GNOME"
 msgstr "Et kartprogram for GNOME"
 
@@ -166,37 +170,47 @@ msgstr "Velg type kart"
 msgid "Toggle route planner"
 msgstr "Slå av/på ruteplanlegger"
 
-#: ../src/routeService.js:73
+#: ../src/main-window.ui.h:5
+msgid "Maps is offline!"
+msgstr "Kart er frakoblet!"
+
+#: ../src/main-window.ui.h:6
+msgid ""
+"Maps need an active internet connection to function properly, but one can't "
+"be found."
+msgstr "Kart trenger en aktiv internettforbindelse for å fungere, men ingen ble funnet."
+
+#: ../src/main-window.ui.h:7
+msgid "Check your connection and proxy settings."
+msgstr "Sjekk tilkobling og innstillinger for proxy."
+
+#: ../src/routeService.js:72
 msgid "No route found."
 msgstr "Ingen rute funnet."
 
-#: ../src/routeService.js:80
+#: ../src/routeService.js:79
 msgid "Route request failed."
 msgstr "Forespørsel om rute feilet."
 
-#: ../src/routeService.js:151
+#: ../src/routeService.js:150
 msgid "Start!"
 msgstr "Start!"
 
-#: ../src/searchResultBubble.js:60
+#: ../src/searchResultBubble.js:58
 #, javascript-format
 msgid "Country code: %s"
 msgstr "Landskode: %s"
 
-#: ../src/searchResultBubble.js:66
+#: ../src/searchResultBubble.js:64
 #, javascript-format
 msgid "Postal code: %s"
 msgstr "Postnummer: %s"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:192
+#: ../src/sidebar.js:236
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Estimert tid: %s"
-
-#: ../src/user-location-bubble.ui.h:1
-msgid "Current location"
-msgstr "Nåværende lokasjon"
 
 #. To translators: %s can be "Unknown", "Exact" or "%f km²"
 #: ../src/user-location-bubble.ui.h:4
@@ -205,36 +219,45 @@ msgid "Accuracy: %s"
 msgstr "Nøyaktighet: %s"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:165
+#: ../src/utils.js:223
 msgid "Unknown"
 msgstr "Ukjent"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:168
+#: ../src/utils.js:226
 msgid "Exact"
 msgstr "Nøyaktig"
 
-#: ../src/utils.js:178
-#, javascript-format
-msgid "%f km²"
-msgstr "%f km²"
-
-#: ../src/utils.js:275
+#: ../src/utils.js:325
 #, javascript-format
 msgid "%f h"
 msgstr "%f t"
 
-#: ../src/utils.js:277
+#: ../src/utils.js:327
 #, javascript-format
 msgid "%f min"
 msgstr "%f min"
 
-#: ../src/utils.js:287
+#. Translators: This is a distance measured in kilometers
+#: ../src/utils.js:338
 #, javascript-format
 msgid "%f km"
 msgstr "%f km"
 
-#: ../src/utils.js:289
+#. Translators: This is a distance measured in meters
+#: ../src/utils.js:341
 #, javascript-format
 msgid "%f m"
 msgstr "%f m"
+
+#. Translators: This is a distance measured in miles
+#: ../src/utils.js:349
+#, javascript-format
+msgid "%f mi"
+msgstr "%f mil"
+
+#. Translators: This is a distance measured in feet
+#: ../src/utils.js:352
+#, javascript-format
+msgid "%f ft"
+msgstr "%f fot"
