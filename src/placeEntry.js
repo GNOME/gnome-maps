@@ -61,7 +61,6 @@ const PlaceEntry = new Lang.Class({
         if (p) {
             if (p.name) {
                 this.text = p.name;
-                Application.placeStore.addRecent(p);
             } else
                 this.text = p.location.latitude + ', ' + p.location.longitude;
         } else

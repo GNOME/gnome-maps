@@ -20,12 +20,15 @@
  * Author: Damián Nohales <damiannohales@gmail.com>
  */
 
-const Geocode = imports.gi.GeocodeGlib;
 const Gtk = imports.gi.Gtk;
+const Format = imports.format;
 const Lang = imports.lang;
 const _ = imports.gettext.gettext;
 
+const Application = imports.application;
 const MapBubble = imports.mapBubble;
+const Overpass = imports.overpass;
+const Place = imports.place;
 const PlaceFormatter = imports.placeFormatter;
 const Utils = imports.utils;
 
@@ -34,21 +37,49 @@ const SearchResultBubble = new Lang.Class({
     Extends: MapBubble.MapBubble,
 
     _init: function(params) {
-        let ui = Utils.getUIObject('search-result-bubble', [ 'box-content',
+        let ui = Utils.getUIObject('search-result-bubble', [ 'stack',
+                                                             'box-content',
                                                              'label-title']);
         params.buttons = MapBubble.Button.ROUTE;
         this.parent(params);
-
-        let place = this.place;
 
         Utils.load_icon(this.place.icon, 48, (function(pixbuf) {
             this.image.pixbuf = pixbuf;
         }).bind(this));
 
-        let formatter = new PlaceFormatter.PlaceFormatter(place);
-        let infos = [];
+        this._stack = ui.stack;
+        this._title = ui.labelTitle;
+        this._boxContent = ui.boxContent;
 
-        ui.labelTitle.label = formatter.title;
+        if (Application.placeStore.exists(this.place.osm_id, null)) {
+            let place = Application.placeStore.get(this.place.osm_id);
+            this._populate(place);
+        } else {
+            let overpass = new Overpass.Overpass();
+            overpass.addInfo(this.place, (function(status, code, place) {
+                if (!status)
+                    place = new Place.Place({ place: this.place });
+
+                this._populate(place);
+                Application.placeStore.addRecent(place);
+            }).bind(this));
+        }
+        this.content.add(this._stack);
+    },
+
+    _formatWikiLink: function(wiki) {
+        let tokens = wiki.split(':');
+
+        return Format.vprintf('http://%s.wikipedia.org/wiki/%s', [ tokens[0],
+                                                                   tokens[1] ]);
+    },
+
+    _populate: function(place) {
+        let infos = [];
+        let formatter = new PlaceFormatter.PlaceFormatter(place);
+
+        this._title.label = formatter.title;
+
         infos = formatter.rows.map(function(row) {
             row = row.map(function(prop) {
                 switch (prop) {
@@ -63,13 +94,31 @@ const SearchResultBubble = new Lang.Class({
             return row.join(', ');
         });
 
-        infos.forEach(function(info) {
+        if (place.population)
+            infos.push(_("Population: %s").format(place.population));
+
+        if (place.openingHours)
+            infos.push(_("Opening hours: %s").format(place.openingHours));
+
+        if (place.wiki) {
+            let link = this._formatWikiLink(place.wiki);
+            let href = Format.vprintf('<a href="%s">%s</a>',
+                                      [link, _("Wikipedia article")]);
+            infos.push(href);
+        }
+
+        if (place.wheelchair) {
+            infos.push(_("Wheelchair access: %s").format(place.wheelchair));
+        }
+
+        infos.forEach((function(info) {
             let label = new Gtk.Label({ label: info,
                                         visible: true,
+                                        use_markup: true,
                                         halign: Gtk.Align.START });
-            ui.boxContent.pack_start(label, false, true, 0);
-        });
+            this._boxContent.pack_start(label, false, true, 0);
+        }).bind(this));
 
-        this.content.add(ui.boxContent);
+        this._stack.visible_child = this._boxContent;
     }
 });
