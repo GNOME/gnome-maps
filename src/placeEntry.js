@@ -79,7 +79,7 @@ const PlaceEntry = new Lang.Class({
     },
 
     _init: function(props) {
-        let numVisible = props.num_visible || 10;
+        let numVisible = props.num_visible || 6;
         delete props.num_visible;
         this._mapView = props.mapView;
         delete props.mapView;
@@ -88,13 +88,16 @@ const PlaceEntry = new Lang.Class({
             props.primary_icon_name = null;
         delete props.loupe;
 
+        let maxChars = props.maxChars;
+        delete props.maxChars;
+
         let parseOnFocusOut = props.parseOnFocusOut;
         delete props.parseOnFocusOut;
 
         props.completion = this._createCompletion();
         this.parent(props);
 
-        this._popover = this._createPopover(numVisible);
+        this._popover = this._createPopover(numVisible, maxChars);
 
         this.connect('activate', this._onActivate.bind(this));
         this.connect('search-changed', (function() {
@@ -127,11 +130,11 @@ const PlaceEntry = new Lang.Class({
         return completion;
     },
 
-    _createPopover: function(numVisible) {
+    _createPopover: function(numVisible, maxChars) {
         let popover = new SearchPopup.SearchPopup({ num_visible:   numVisible,
                                                     relative_to:   this,
-                                                    no_show_all:   true,
-                                                    visible:       true });
+                                                    maxChars:      maxChars});
+
         this.connect('size-allocate', (function(widget, allocation) {
             // Magic number to make the alignment pixel perfect.
             let width_request = allocation.width + 20;

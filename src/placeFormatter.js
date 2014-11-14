@@ -56,6 +56,14 @@ const PlaceFormatter = new Lang.Class({
         return this._rows;
     },
 
+    getDetailsString: function() {
+        return this.rows.map((function(row) {
+            return row.map((function(prop) {
+                return this._place[prop];
+            }).bind(this)).join(', ');
+        }).bind(this)).join(', ');
+    },
+
     _update: function() {
         switch (this._place.place_type) {
         case Geocode.PlaceType.COUNTRY:

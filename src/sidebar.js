@@ -171,7 +171,8 @@ const Sidebar = new Lang.Class({
                                            hexpand: true,
                                            receives_default: true,
                                            mapView: this._mapView,
-                                           parseOnFocusOut: true });
+                                           parseOnFocusOut: true,
+                                           maxChars: 15 });
     },
 
     _createViaRow: function(listbox, index) {

@@ -24,15 +24,54 @@ const GdkPixbuf = imports.gi.GdkPixbuf;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 
+const PlaceFormatter = imports.placeFormatter;
 const Utils = imports.utils;
 
-const Columns = {
-    ICON:         0,
-    PLACE:        1,
-    DESCRIPTION:  2
-};
-
 const _PLACE_ICON_SIZE = 20;
+const _ROW_HEIGHT = 50;
+
+const SearchPopupRow = new Lang.Class({
+    Name: 'SearchPopupRow',
+    Extends: Gtk.ListBoxRow,
+    Template: 'resource:///org/gnome/maps/search-popup-row.ui',
+    InternalChildren: [ 'icon',
+                        'name',
+                        'details' ],
+
+    _init: function(params) {
+        this.place = params.place;
+        delete params.place;
+
+        let searchString = params.searchString;
+        delete params.searchString;
+
+        let maxChars = params.maxChars || 40;
+        delete params.maxChars;
+
+        params.height_request = _ROW_HEIGHT;
+        this.parent(params);
+
+        let formatter = new PlaceFormatter.PlaceFormatter(this.place);
+        let title = GLib.markup_escape_text(formatter.title, -1);
+
+        this._name.label = this._boldMatch(title, searchString);
+        this._details.max_width_chars = maxChars;
+        this._details.label = formatter.getDetailsString();
+        this._icon.gicon = this.place.icon;
+    },
+
+    _boldMatch: function(title, string) {
+        string = string.toLowerCase();
+
+        let index = title.toLowerCase().indexOf(string);
+
+        if (index !== -1) {
+            let substring = title.substring(index, index + string.length);
+            title = title.replace(substring, substring.bold());
+        }
+        return title;
+    }
+});
 
 const SearchPopup = new Lang.Class({
     Name: 'SearchPopup',
@@ -40,52 +79,27 @@ const SearchPopup = new Lang.Class({
     Signals : {
         'selected' : { param_types: [ GObject.TYPE_OBJECT ] }
     },
+    Template: 'resource:///org/gnome/maps/search-popup.ui',
+    InternalChildren: [ 'scrolledWindow',
+                        'stack',
+                        'spinner',
+                        'list' ],
 
     _init: function(props) {
-        this._numVisible = props.num_visible;
+        let numVisible = props.num_visible;
         delete props.num_visible;
 
-        let ui = Utils.getUIObject('search-popup', ['scrolled-window',
-                                                    'stack',
-                                                    'spinner',
-                                                    'treeview',
-                                                    'text-column',]);
-        this._stack = ui.stack;
-        this._scrolledWindow = ui.scrolledWindow;
-        this._spinner = ui.spinner;
-        this._treeView = ui.treeview;
-
-        let model = new Gtk.ListStore();
-        model.set_column_types([GdkPixbuf.Pixbuf,
-                                GObject.TYPE_OBJECT,
-                                GObject.TYPE_STRING]);
-        this._treeView.model = model;
-
-        this._treeView.connect('row-activated',
-                               this._onRowActivated.bind(this));
-        let cellHeight = ui.textColumn.cell_get_size(null)[3];
-        this.height_request = cellHeight * this._numVisible;
-        this._scrolledWindow.set_min_content_height(this.height_request);
+        this._maxChars = props.maxChars;
+        delete props.maxChars;
 
         this.parent(props);
 
-        this.get_style_context().add_class('maps-popover');
-        this.add(this._stack);
-        this.hide();
-    },
+        this._list.connect('row-activated', (function(list, row) {
+            if (row)
+                this.emit('selected', row.place);
+        }).bind(this));
 
-    _onRowActivated: function(widget, path, column) {
-        let model = this._treeView.model;
-        let iter_valid, iter;
-
-        if (model === null)
-            return;
-
-        [iter_valid, iter] = model.get_iter(path);
-        if (!iter_valid)
-            return;
-
-        this.emit('selected', model.get_value(iter, Columns.PLACE));
+        this._scrolledWindow.min_content_height = numVisible * _ROW_HEIGHT;
     },
 
     showSpinner: function() {
@@ -105,12 +119,7 @@ const SearchPopup = new Lang.Class({
         if (!this.get_visible())
             this.show();
 
-        this._treeView.grab_focus();
-    },
-
-    vfunc_show: function() {
-        this._treeView.columns_autosize();
-        this.parent();
+        this.grab_focus();
     },
 
     vfunc_hide: function() {
@@ -121,45 +130,18 @@ const SearchPopup = new Lang.Class({
     },
 
     updateResult: function(places, searchString) {
-        let model = this._treeView.get_model();
-
-        model.clear();
+        this._list.forall(function(row) {
+            row.destroy();
+        });
 
         places.forEach((function(place) {
             if (!place.location)
                 return;
-
-            let iter = model.append();
-            let location = place.get_location();
-            let icon = place.icon;
-
-            let description = GLib.markup_escape_text(location.description, -1);
-            description = this._boldMatch(description, searchString);
-
-            model.set(iter,
-                      [Columns.DESCRIPTION,
-                       Columns.PLACE],
-                      [description,
-                       place]);
-
-            if (icon !== null) {
-                Utils.load_icon(icon, _PLACE_ICON_SIZE, function(pixbuf) {
-                    model.set(iter, [Columns.ICON], [pixbuf]);
-                });
-            }
+            let row = new SearchPopupRow({ place: place,
+                                           searchString: searchString,
+                                           maxChars: this._maxChars,
+                                           can_focus: true });
+            this._list.add(row);
         }).bind(this));
-    },
-
-    _boldMatch: function(description, searchString) {
-        searchString = searchString.toLowerCase();
-
-        let index = description.toLowerCase().indexOf(searchString);
-
-        if (index !== -1) {
-            let substring = description.substring(index,
-                                                  index + searchString.length);
-            description = description.replace(substring, substring.bold());
-        }
-        return description;
     }
 });
