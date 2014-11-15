@@ -10,9 +10,9 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-03-12 19:54+0000\n"
-"PO-Revision-Date: 2014-03-13 01:30+0100\n"
-"Last-Translator: Tiago S. <almosthumane@portugalmail.pt>\n"
+"POT-Creation-Date: 2014-10-06 19:01+0000\n"
+"PO-Revision-Date: 2014-10-07 07:07+0100\n"
+"Last-Translator: Pedro Albuquerque <palbuquerque73@gmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.5.4\n"
 
-#: ../data/gnome-maps.appdata.xml.in.h:1
+#: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
@@ -31,17 +31,7 @@ msgstr ""
 "rapidamente o local que procura, pesquisando por uma cidade ou rua, ou "
 "encontre um sítio para um encontro com um amigo."
 
-#: ../data/gnome-maps.appdata.xml.in.h:2
-msgid ""
-"<li>Search for country, region, city or street.</li> <li>Search for specific "
-"types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
-"near Alexanderplatz, Berlin”.</li>"
-msgstr ""
-"<li>Procure por país, região, cidade ou rua.</li> <li>Procure por tipos de "
-"localizações específicas, tais como “Bares perto da Rua Augusta, Lisboa” "
-"ou “Acesso WiFi perto de Alexanderplatz, Berlin”.</li>"
-
-#: ../data/gnome-maps.appdata.xml.in.h:3
+#: ../data/org.gnome.Maps.appdata.xml.in.h:2
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
@@ -49,17 +39,33 @@ msgstr ""
 "A aplicação Mapas utiliza a base de dados colaborativa OpenStreetMap, "
 "construída por centenas de milhares de pessoas por todo o globo."
 
+#. Translators: Search is carried out on OpenStreetMap data using Nominatim.
+#. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
+#. your language to see what words you can use for the translated search.
+#: ../data/org.gnome.Maps.appdata.xml.in.h:6
+#| msgid ""
+#| "<li>Search for country, region, city or street.</li> <li>Search for "
+#| "specific types of locations, such as “Pubs near Main Street, Boston” or "
+#| "“Wi-Fi Access near Alexanderplatz, Berlin”.</li>"
+msgid ""
+"You can even search for specific types of locations, such as “Pubs near Main "
+"Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
+msgstr ""
+"<li>Procure por país, região, cidade ou rua.</li> <li>Procure por tipos de "
+"localizações específicas, tais como “Bares perto da Rua Augusta, Lisboa” ou "
+"“Acesso WiFi perto de Alexanderplatz, Berlin”.</li>"
+
 #. Translators: This is the program name. */
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
-#: ../src/mainWindow.js:300 ../src/main-window.ui.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
+#: ../src/mainWindow.js:302 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "Mapas"
 
-#: ../data/gnome-maps.desktop.in.in.h:2
+#: ../data/org.gnome.Maps.desktop.in.in.h:2
 msgid "A simple maps application"
 msgstr "Uma aplicação simples para visualização de mapas"
 
-#: ../data/gnome-maps.desktop.in.in.h:3
+#: ../data/org.gnome.Maps.desktop.in.in.h:3
 msgid "Maps;"
 msgstr "Mapas;"
 
@@ -149,48 +155,108 @@ msgstr "O que há aqui?"
 msgid "I’m here!"
 msgstr "Estou aqui!"
 
-#: ../src/mainWindow.js:298
+#: ../src/mainWindow.js:300
 msgid "translator-credits"
 msgstr "António Lima <amrlima@gmail.com>"
 
-#: ../src/mainWindow.js:301
+#: ../src/mainWindow.js:303
 msgid "A map application for GNOME"
 msgstr "Uma aplicação de mapas para o GNOME"
 
-#: ../src/main-window.ui.h:1
-msgid "Street"
-msgstr "Rua"
-
 #: ../src/main-window.ui.h:2
-msgid "Satellite"
-msgstr "Satélite"
+msgid "Go to current location"
+msgstr "Ir para a localização atual"
+
+#: ../src/main-window.ui.h:3
+msgid "Choose map type"
+msgstr "Escolher o tipo de mapa"
+
+#: ../src/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr "Alternar o programador de rotas"
+
+#: ../src/routeService.js:73
+msgid "No route found."
+msgstr "Rota não encontrada."
+
+#: ../src/routeService.js:80
+msgid "Route request failed."
+msgstr "Pedido de rota falhou."
+
+#: ../src/routeService.js:151
+msgid "Start!"
+msgstr "Iniciar!"
+
+#: ../src/searchResultBubble.js:60
+#, javascript-format
+msgid "Country code: %s"
+msgstr "Código de país: %s"
+
+#: ../src/searchResultBubble.js:66
+#, javascript-format
+msgid "Postal code: %s"
+msgstr "Código postal: %s"
+
+#. Translators: %s is a time expression with the format "%f h" or "%f min" */
+#: ../src/sidebar.js:198
+#, javascript-format
+msgid "Estimated time: %s"
+msgstr "Tempo estimado: %s"
+
+#: ../src/user-location-bubble.ui.h:1
+msgid "Current location"
+msgstr "Localização atual"
+
+#. To translators: %s can be "Unknown", "Exact" or "%f km²"
+#: ../src/user-location-bubble.ui.h:4
+#, no-c-format
+#| msgid ""
+#| "%s\n"
+#| "Position Accuracy: %s"
+msgid "Accuracy: %s"
+msgstr "Precisão: %s"
 
 #. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:164
+#: ../src/utils.js:165
 msgid "Unknown"
 msgstr "Desconhecida"
 
 #. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:167
+#: ../src/utils.js:168
 msgid "Exact"
 msgstr "Exacta"
 
-#: ../src/mapLocation.js:177
-msgid " km<sup>2</sup>"
-msgstr " km<sup>2</sup>"
-
-#. Translators: Showing name of place where user currently is and
-#. accuracy of this information (which is translated
-#. separately)
-#. */
-#: ../src/userLocation.js:62
+#: ../src/utils.js:178
 #, javascript-format
-msgid ""
-"%s\n"
-"Position Accuracy: %s"
-msgstr ""
-"%s\n"
-"Precisão da Posição: %s"
+#| msgid " km²"
+msgid "%f km²"
+msgstr "%f km²"
 
-#~ msgid " km²"
-#~ msgstr "km²"
+#: ../src/utils.js:275
+#, javascript-format
+msgid "%f h"
+msgstr "%f h"
+
+#: ../src/utils.js:277
+#, javascript-format
+msgid "%f min"
+msgstr "%f min"
+
+#: ../src/utils.js:287
+#, javascript-format
+msgid "%f km"
+msgstr "%f km"
+
+#: ../src/utils.js:289
+#, javascript-format
+msgid "%f m"
+msgstr "%f m"
+
+#~ msgid "Street"
+#~ msgstr "Rua"
+
+#~ msgid "Satellite"
+#~ msgstr "Satélite"
+
+#~ msgid " km<sup>2</sup>"
+#~ msgstr " km<sup>2</sup>"
