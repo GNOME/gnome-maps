@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.18.3 -->
+<interface>
+  <requires lib="gtk+" version="3.12"/>
+  <template class="Gjs_ShareDialog" parent="GtkDialog">
+    <property name="visible">False</property>
+    <property name="can_focus">False</property>
+    <property name="use_header_bar">1</property>
+    <child internal-child="headerbar">
+      <object class="GtkHeaderBar" id="headerBar">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="show_close_button">False</property>
+        <property name="title" translatable="yes">Share location</property>
+        <style>
+          <class name="titlebar"/>
+        </style>
+        <child>
+          <object class="GtkButton" id="cancelButton">
+            <property name="label" translatable="yes">_Cancel</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="use_underline">True</property>
+            <style>
+              <class name="text-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="pack_type">start</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="chooseButton">
+            <property name="label" translatable="yes">_Share</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="can_default">True</property>
+            <property name="has_default">True</property>
+            <property name="receives_default">True</property>
+            <property name="valign">center</property>
+            <property name="use_underline">True</property>
+            <style>
+              <class name="suggested-action"/>
+              <class name="text-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="pack_type">end</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="contentArea">
+        <child>
+          <object class="GtkFrame" id="frame">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="shadow-type">in</property>
+            <property name="margin">10</property>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledWindow">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="hscrollbar_policy">never</property>
+                <child>
+                  <object class="GtkListBox" id="list">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="activate_on_single_click">True</property>
+                    <property name="selection_mode">single</property>
+                    <child>
+                      <object class="GtkListBoxRow" id="weatherRow">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="height_request">40</property>
+                        <child>
+                          <object class="GtkGrid" id="weatherGrid">
+                            <property name="visible">True</property>
+                            <property name="orientation">horizontal</property>
+                            <property name="column_spacing">10</property>
+                            <child>
+                              <object class="GtkImage" id="weatherIcon">
+                                <property name="visible">True</property>
+                                <property name="icon_name">org.gnome.Weather.Application</property>
+                                <property name="pixel_size">32</property>
+                                <property name="halign">start</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">Weather</property>
+                                <property name="margin-end">10</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkListBoxRow" id="clocksRow">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="height_request">40</property>
+                        <child>
+                          <object class="GtkGrid" id="clocksGrid">
+                            <property name="visible">True</property>
+                            <property name="orientation">horizontal</property>
+                            <property name="column_spacing">10</property>
+                            <child>
+                              <object class="GtkImage" id="clocksIcon">
+                                <property name="visible">True</property>
+                                <property name="icon_name">gnome-clocks</property>
+                                <property name="pixel_size">32</property>
+                                <property name="halign">start</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">Clocks</property>
+                                <property name="margin-end">10</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>
