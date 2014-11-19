@@ -20,16 +20,20 @@
  * Author: Damián Nohales <damiannohales@gmail.com>
  */
 
+const Gio = imports.gi.Gio;
+const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
+const ShareDialog = imports.shareDialog;
 const Utils = imports.utils;
 
 const Button = {
     NONE: 0,
-    ROUTE: 2
+    ROUTE: 2,
+    SHARE: 4
 };
 
 const MapBubble = new Lang.Class({
@@ -58,7 +62,8 @@ const MapBubble = new Lang.Class({
                                                    'bubble-image',
                                                    'bubble-content-area',
                                                    'bubble-button-area',
-                                                   'bubble-route-button']);
+                                                   'bubble-route-button',
+                                                   'bubble-share-button' ]);
         this._image = ui.bubbleImage;
         this._content = ui.bubbleContentArea;
 
@@ -67,6 +72,8 @@ const MapBubble = new Lang.Class({
         else {
             if (buttonFlags & Button.ROUTE)
                 this._initRouteButton(ui.bubbleRouteButton, routeFrom);
+            if (buttonFlags & Button.SHARE)
+                this._initShareButton(ui.bubbleShareButton);
         }
 
         this.add(ui.bubbleMainGrid);
@@ -82,6 +89,19 @@ const MapBubble = new Lang.Class({
 
     get content() {
         return this._content;
+    },
+
+    _initShareButton: function(button) {
+        let dialog = new ShareDialog.ShareDialog({ transient_for: this.get_toplevel(),
+                                                   place: this._place });
+        if (!dialog.ensureShares())
+            return;
+
+        button.visible = true;
+        button.connect('clicked', function() {
+            dialog.run();
+            dialog.hide();
+        });
     },
 
     _initRouteButton: function(button, routeFrom) {
