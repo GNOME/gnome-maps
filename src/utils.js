@@ -135,6 +135,37 @@ function createAction(name, { state, paramType, onActivate, onChangeState }) {
     return action;
 }
 
+function _getPlatformData(appId, timestamp) {
+    let context = Gdk.Display.get_default().get_app_launch_context();
+    context.set_timestamp(timestamp);
+    let info = Gio.DesktopAppInfo.new(appId + '.desktop');
+    let id = new GLib.Variant('s', context.get_startup_notify_id(info, []));
+
+    return { 'desktop-startup-id': id };
+}
+
+function activateAction(appId, action, parameter, timestamp) {
+    let objectPath = '/' + appId.replace(/\./g, '/');
+    let platformData = _getPlatformData(appId, timestamp);
+    let wrappedParam = parameter ? [parameter] : [];
+
+    Gio.DBus.session.call(appId,
+                          objectPath,
+                          'org.freedesktop.Application',
+                          'ActivateAction',
+                          new GLib.Variant('(sava{sv})', [action,
+                                                          wrappedParam,
+                                                          platformData]),
+                          null,
+                          Gio.DBusCallFlags.NONE, -1, null, function(c, res) {
+                              try {
+                                  c.call_finish(res);
+                              } catch(e) {
+                                  debug('ActivateApplication: ' + e);
+                              }
+                          });
+}
+
 function CreateActorFromIconName(name) {
     try {
         let theme = Gtk.IconTheme.get_default();
