@@ -40,7 +40,7 @@ const SearchResultBubble = new Lang.Class({
         let ui = Utils.getUIObject('search-result-bubble', [ 'stack',
                                                              'box-content',
                                                              'label-title']);
-        params.buttons = MapBubble.Button.ROUTE;
+        params.buttons = MapBubble.Button.ROUTE | MapBubble.Button.SHARE;
         this.parent(params);
 
         Utils.load_icon(this.place.icon, 48, (function(pixbuf) {
