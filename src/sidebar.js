@@ -189,7 +189,7 @@ const Sidebar = new Lang.Class({
 
         route.connect('reset', (function() {
             this._clearInstructions();
-            this._instructionStack.visible_child = this._instructionWindow;
+            this._instructionStack.visible_child = this._instructionListScrolled;
             this._viaGridContainer.get_children().forEach((function(row) {
                 query.removePoint(row.get_index() + 1);
             }).bind(this));
@@ -204,7 +204,7 @@ const Sidebar = new Lang.Class({
 
         route.connect('update', (function() {
             this._clearInstructions();
-            this._instructionStack.visible_child = this._instructionWindow;
+            this._instructionStack.visible_child = this._instructionListScrolled;
 
             route.turnPoints.forEach((function(turnPoint) {
                 let row = new InstructionRow({ visible: true,
