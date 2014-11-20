@@ -113,22 +113,23 @@ const Sidebar = new Lang.Class({
         this._modeBikeToggle.connect('toggled',
                                      onToggle.bind(this, transport.BIKE));
 
-        let setToggles = function() {
-            switch(query.transportation) {
-            case transport.PEDESTRIAN:
-                this._modePedestrianToggle.active = true;
-                break;
-            case transport.CAR:
-                this._modeCarToggle.active = true;
-                break;
-            case transport.BIKE:
-                this._modeBikeToggle.active = true;
-                break;
-            }
-        };
+        this._syncTransportationToggles();
+        query.connect('notify::transportation',
+                      this._syncTransportationToggles.bind(this));
+    },
 
-        setToggles();
-        query.connect('notify::transportation', setToggles);
+    _syncTransportationToggles: function() {
+        switch(Application.routeService.query.transportation) {
+        case RouteQuery.Transportation.PEDESTRIAN:
+            this._modePedestrianToggle.active = true;
+            break;
+        case RouteQuery.Transportation.CAR:
+            this._modeCarToggle.active = true;
+            break;
+        case RouteQuery.Transportation.BIKE:
+            this._modeBikeToggle.active = true;
+            break;
+        }
     },
 
     _initQuerySignals: function(listbox) {
