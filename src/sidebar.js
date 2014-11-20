@@ -77,9 +77,7 @@ const Sidebar = new Lang.Class({
         this._mapView = mapView;
 
         this._initInstructionList();
-        this._initTransportationToggles(this._modePedestrianToggle,
-                                        this._modeBikeToggle,
-                                        this._modeCarToggle);
+        this._initTransportationToggles();
 
         let query = Application.routeService.query;
 
@@ -100,7 +98,7 @@ const Sidebar = new Lang.Class({
         }).bind(this));
     },
 
-    _initTransportationToggles: function(pedestrian, bike, car) {
+    _initTransportationToggles: function() {
         let query = Application.routeService.query;
         let transport = RouteQuery.Transportation;
 
@@ -108,20 +106,23 @@ const Sidebar = new Lang.Class({
             if (button.active && query.transportation !== mode)
                 query.transportation = mode;
         };
-        pedestrian.connect('toggled', onToggle.bind(this, transport.PEDESTRIAN));
-        car.connect('toggled', onToggle.bind(this, transport.CAR));
-        bike.connect('toggled', onToggle.bind(this, transport.BIKE));
+        this._modePedestrianToggle.connect('toggled',
+                                           onToggle.bind(this, transport.PEDESTRIAN));
+        this._modeCarToggle.connect('toggled',
+                                    onToggle.bind(this, transport.CAR));
+        this._modeBikeToggle.connect('toggled',
+                                     onToggle.bind(this, transport.BIKE));
 
         let setToggles = function() {
             switch(query.transportation) {
             case transport.PEDESTRIAN:
-                pedestrian.active = true;
+                this._modePedestrianToggle.active = true;
                 break;
             case transport.CAR:
-                car.active = true;
+                this._modeCarToggle.active = true;
                 break;
             case transport.BIKE:
-                bike.active = true;
+                this._modeBikeToggle.active = true;
                 break;
             }
         };
