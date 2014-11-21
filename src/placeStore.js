@@ -206,7 +206,7 @@ const PlaceStore = new Lang.Class({
     },
 
     exists: function(osmId, type) {
-        if (type)
+        if (type !== undefined && type !== null)
             return this._typeTable[osmId] === type;
         else
             return this._typeTable[osmId] !== undefined;
