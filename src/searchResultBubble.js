@@ -61,7 +61,8 @@ const SearchResultBubble = new Lang.Class({
                     place = new Place.Place({ place: this.place });
 
                 this._populate(place);
-                Application.placeStore.addRecent(place);
+                Application.placeStore.addPlace(place,
+                                                PlaceStore.PlaceType.RECENT);
             }).bind(this));
         }
         this.content.add(this._stack);

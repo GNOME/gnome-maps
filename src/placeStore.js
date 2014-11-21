@@ -89,9 +89,10 @@ const PlaceStore = new Lang.Class({
         this._store();
     },
 
-    addFavorite: function(place) {
-        if (this.exists(place.osm_id, PlaceType.FAVORITE))
+    _addFavorite: function(place) {
+        if (this.exists(place.osm_id, PlaceType.FAVORITE)) {
             return;
+        }
 
         if (this.exists(place.osm_id, PlaceType.RECENT)) {
             this._removeIf((function(model, iter) {
@@ -102,7 +103,7 @@ const PlaceStore = new Lang.Class({
         this._addPlace(place, PlaceType.FAVORITE);
     },
 
-    addRecent: function(place) {
+    _addRecent: function(place) {
         if (this.exists(place.osm_id, PlaceType.RECENT)) {
             this._updatePlace(place);
             return;
@@ -152,6 +153,13 @@ const PlaceStore = new Lang.Class({
         } catch (e) {
             throw new Error('failed to parse places file');
         }
+    },
+
+    addPlace: function(place, type) {
+        if (type === PlaceType.FAVORITE)
+            this._addFavorite(place, type);
+        else if (type === PlaceType.RECENT)
+            this._addRecent(place, type);
     },
 
     removePlace: function(place, placeType) {
