@@ -10,10 +10,12 @@
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <property name="row-homogeneous">True</property>
+        <property name="margin">5</property>
         <child>
           <object class="GtkImage" id="icon">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="halign">start</property>
             <property name="valign">center</property>
             <property name="margin_end">10</property>
             <property name="pixel_size">32</property>
@@ -29,8 +31,10 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="valign">center</property>
+            <property name="halign">end</property>
+            <property name="hexpand">True</property>
             <property name="margin_start">10</property>
-            <property name="pixel_size">32</property>
+            <property name="pixel_size">16</property>
           </object>
           <packing>
             <property name="left_attach">2</property>
@@ -44,6 +48,7 @@
             <property name="can_focus">False</property>
             <property name="halign">start</property>
             <property name="valign">end</property>
+            <property name="hexpand">True</property>
             <property name="use_markup">True</property>
           </object>
           <packing>
@@ -57,6 +62,7 @@
             <property name="can_focus">False</property>
             <property name="halign">start</property>
             <property name="valign">start</property>
+            <property name="hexpand">True</property>
             <property name="use_markup">True</property>
             <property name="ellipsize">end</property>
             <style>
