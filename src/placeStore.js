@@ -154,6 +154,21 @@ const PlaceStore = new Lang.Class({
         }
     },
 
+    removePlace: function(place, placeType) {
+        if (!this.exists(place.osm_id, placeType))
+            return;
+
+        this._removeIf((function(model, iter) {
+            let p = model.get_value(iter, Columns.PLACE);
+            if (p.osm_id === place.osm_id) {
+                this._typeTable[place.osm_id] = null;
+                return true;
+            }
+            return false;
+        }).bind(this), true);
+        this._store();
+    },
+
     getModelForPlaceType: function(placeType) {
         let filter = new Gtk.TreeModelFilter({ child_model: this });
 
