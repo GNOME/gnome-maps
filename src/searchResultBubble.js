@@ -103,7 +103,7 @@ const SearchResultBubble = new Lang.Class({
         if (place.wiki) {
             let link = this._formatWikiLink(place.wiki);
             let href = Format.vprintf('<a href="%s">%s</a>',
-                                      [link, _("Wikipedia article")]);
+                                      [link, _("Wikipedia")]);
             infos.push(href);
         }
 
