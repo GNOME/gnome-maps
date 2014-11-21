@@ -154,6 +154,17 @@ const PlaceStore = new Lang.Class({
         }
     },
 
+    getModelForPlaceType: function(placeType) {
+        let filter = new Gtk.TreeModelFilter({ child_model: this });
+
+        filter.set_visible_func(function(model, iter) {
+            let type = model.get_value(iter, Columns.TYPE);
+            return (type === placeType);
+        });
+
+        return filter;
+    },
+
     _store: function() {
         let jsonArray = [];
         this.foreach(function(model, path, iter) {
