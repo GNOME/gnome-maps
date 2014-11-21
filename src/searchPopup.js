@@ -18,60 +18,13 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
-const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
-const GdkPixbuf = imports.gi.GdkPixbuf;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 
-const PlaceFormatter = imports.placeFormatter;
-const Utils = imports.utils;
+const PlaceListRow = imports.placeListRow;
 
 const _PLACE_ICON_SIZE = 20;
-const _ROW_HEIGHT = 50;
-
-const SearchPopupRow = new Lang.Class({
-    Name: 'SearchPopupRow',
-    Extends: Gtk.ListBoxRow,
-    Template: 'resource:///org/gnome/maps/search-popup-row.ui',
-    InternalChildren: [ 'icon',
-                        'name',
-                        'details' ],
-
-    _init: function(params) {
-        this.place = params.place;
-        delete params.place;
-
-        let searchString = params.searchString;
-        delete params.searchString;
-
-        let maxChars = params.maxChars || 40;
-        delete params.maxChars;
-
-        params.height_request = _ROW_HEIGHT;
-        this.parent(params);
-
-        let formatter = new PlaceFormatter.PlaceFormatter(this.place);
-        let title = GLib.markup_escape_text(formatter.title, -1);
-
-        this._name.label = this._boldMatch(title, searchString);
-        this._details.max_width_chars = maxChars;
-        this._details.label = formatter.getDetailsString();
-        this._icon.gicon = this.place.icon;
-    },
-
-    _boldMatch: function(title, string) {
-        string = string.toLowerCase();
-
-        let index = title.toLowerCase().indexOf(string);
-
-        if (index !== -1) {
-            let substring = title.substring(index, index + string.length);
-            title = title.replace(substring, substring.bold());
-        }
-        return title;
-    }
-});
 
 const SearchPopup = new Lang.Class({
     Name: 'SearchPopup',
@@ -109,7 +62,7 @@ const SearchPopup = new Lang.Class({
 
         // NOTE: the magic number 3 makes the scrolled window height be exactly
         //       aligned with 6 rows.
-        this._scrolledWindow.min_content_height = numVisible * _ROW_HEIGHT + 3;
+        this._scrolledWindow.min_content_height = numVisible * PlaceListRow.ROW_HEIGHT + 3;
     },
 
     showSpinner: function() {
@@ -147,10 +100,11 @@ const SearchPopup = new Lang.Class({
         places.forEach((function(place) {
             if (!place.location)
                 return;
-            let row = new SearchPopupRow({ place: place,
-                                           searchString: searchString,
-                                           maxChars: this._maxChars,
-                                           can_focus: true });
+
+            let row = new PlaceListRow.PlaceListRow({ place: place,
+                                                      searchString: searchString,
+                                                      maxChars: this._maxChars,
+                                                      can_focus: true });
             this._list.add(row);
         }).bind(this));
     }
