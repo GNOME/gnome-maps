@@ -107,7 +107,9 @@ const SearchPopup = new Lang.Class({
                 row.set_header(null);
         });
 
-        this._scrolledWindow.min_content_height = numVisible * _ROW_HEIGHT;
+        // NOTE: the magic number 3 makes the scrolled window height be exactly
+        //       aligned with 6 rows.
+        this._scrolledWindow.min_content_height = numVisible * _ROW_HEIGHT + 3;
     },
 
     showSpinner: function() {
