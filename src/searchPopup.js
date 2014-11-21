@@ -99,6 +99,14 @@ const SearchPopup = new Lang.Class({
                 this.emit('selected', row.place);
         }).bind(this));
 
+        this._list.set_header_func(function(row, before) {
+            let header = new Gtk.Separator();
+            if (before)
+                row.set_header(header);
+            else
+                row.set_header(null);
+        });
+
         this._scrolledWindow.min_content_height = numVisible * _ROW_HEIGHT;
     },
 
