@@ -148,6 +148,7 @@ const MainWindow = new Lang.Class({
                 onActivate: this._onGotoUserLocationActivate.bind(this)
             },
             'toggle-sidebar': {
+                accels: ['<Primary>D'],
                 state: ['b', false],
                 onChangeState: this._onToggleSidebarChangeState.bind(this)
             },
