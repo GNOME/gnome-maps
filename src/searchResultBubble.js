@@ -30,6 +30,7 @@ const MapBubble = imports.mapBubble;
 const Overpass = imports.overpass;
 const Place = imports.place;
 const PlaceFormatter = imports.placeFormatter;
+const PlaceStore = imports.placeStore;
 const Utils = imports.utils;
 
 const SearchResultBubble = new Lang.Class({
@@ -40,7 +41,10 @@ const SearchResultBubble = new Lang.Class({
         let ui = Utils.getUIObject('search-result-bubble', [ 'stack',
                                                              'box-content',
                                                              'label-title']);
-        params.buttons = MapBubble.Button.ROUTE | MapBubble.Button.SHARE;
+        params.buttons = (MapBubble.Button.ROUTE |
+                          MapBubble.Button.SHARE |
+                          MapBubble.Button.FAVORITE);
+
         this.parent(params);
 
         Utils.load_icon(this.place.icon, 48, (function(pixbuf) {
