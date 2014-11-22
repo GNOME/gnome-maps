@@ -76,6 +76,27 @@
             <property name="pack-type">end</property>
           </packing>
         </child>
+        <child>
+          <object class="GtkMenuButton" id="favorites-button">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Toggle favorites</property>
+            <style>
+              <class name="image-button"/>
+            </style>
+            <child>
+              <object class="GtkImage" id="favorites-button-image">
+                <property name="visible">True</property>
+                <property name="icon-size">1</property>
+                <property name="icon-name">emblem-favorite-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="pack-type">end</property>
+          </packing>
+        </child>
       </object>
     </child>
     <child>

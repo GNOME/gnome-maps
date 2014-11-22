@@ -31,9 +31,11 @@ const Mainloop = imports.mainloop;
 const Application = imports.application;
 const Config = imports.config;
 const ContextMenu = imports.contextMenu;
+const FavoritesPopover = imports.favoritesPopover;
 const LayersPopover = imports.layersPopover;
 const MapView = imports.mapView;
 const PlaceEntry = imports.placeEntry;
+const PlaceStore = imports.placeStore;
 const Sidebar = imports.sidebar;
 const Utils = imports.utils;
 const ZoomControl = imports.zoomControl;
@@ -56,7 +58,8 @@ const MainWindow = new Lang.Class({
                                                     'no-network-view',
                                                     'goto-user-location-button',
                                                     'toggle-sidebar-button',
-                                                    'layers-button']);
+                                                    'layers-button',
+                                                    'favorites-button' ]);
         this.window = ui.appWindow;
         this.window.application = app;
         this._overlay = overlay;
@@ -71,7 +74,7 @@ const MainWindow = new Lang.Class({
         this._contextMenu = new ContextMenu.ContextMenu(this.mapView);
 
         ui.layersButton.popover = new LayersPopover.LayersPopover();
-
+        ui.favoritesButton.popover = new FavoritesPopover.FavoritesPopover({ mapView: this.mapView });
         this._overlay.add_overlay(new ZoomControl.ZoomControl(this.mapView));
 
         this._mainStack = ui.mainStack;
@@ -81,6 +84,7 @@ const MainWindow = new Lang.Class({
         this._gotoUserLocationButton = ui.gotoUserLocationButton;
         this._toggleSidebarButton = ui.toggleSidebarButton;
         this._layersButton = ui.layersButton;
+        this._favoritesButton = ui.favoritesButton;
 
         this._initHeaderbar();
         this._initActions();
@@ -202,6 +206,9 @@ const MainWindow = new Lang.Class({
                           GObject.BindingFlags.DEFAULT);
         app.bind_property('connected',
                           this._toggleSidebarButton, 'sensitive',
+                          GObject.BindingFlags.DEFAULT);
+        app.bind_property('connected',
+                          this._favoritesButton, 'sensitive',
                           GObject.BindingFlags.DEFAULT);
         app.bind_property('connected',
                           this._placeEntry, 'sensitive',
