@@ -27,13 +27,16 @@ const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
+const Place = imports.place;
+const PlaceStore = imports.placeStore;
 const ShareDialog = imports.shareDialog;
 const Utils = imports.utils;
 
 const Button = {
     NONE: 0,
     ROUTE: 2,
-    SHARE: 4
+    SHARE: 4,
+    FAVORITE: 8
 };
 
 const MapBubble = new Lang.Class({
@@ -63,7 +66,8 @@ const MapBubble = new Lang.Class({
                                                    'bubble-content-area',
                                                    'bubble-button-area',
                                                    'bubble-route-button',
-                                                   'bubble-share-button' ]);
+                                                   'bubble-share-button',
+                                                   'bubble-favorite-button']);
         this._image = ui.bubbleImage;
         this._content = ui.bubbleContentArea;
 
@@ -74,6 +78,8 @@ const MapBubble = new Lang.Class({
                 this._initRouteButton(ui.bubbleRouteButton, routeFrom);
             if (buttonFlags & Button.SHARE)
                 this._initShareButton(ui.bubbleShareButton);
+            if (buttonFlags & Button.FAVORITE)
+                this._initFavoriteButton(ui.bubbleFavoriteButton);
         }
 
         this.add(ui.bubbleMainGrid);
@@ -89,6 +95,24 @@ const MapBubble = new Lang.Class({
 
     get content() {
         return this._content;
+    },
+
+    _initFavoriteButton: function(button) {
+        let placeStore = Application.placeStore;
+        let isFavorite = placeStore.exists(this._place.osm_id,
+                                           PlaceStore.PlaceType.FAVORITE);
+        button.visible = true;
+        button.active = isFavorite;
+        button.connect('toggled', (function() {
+            let place = new Place.Place({ place: this._place });
+
+            if (button.active)
+                placeStore.addPlace(place,
+                                    PlaceStore.PlaceType.FAVORITE);
+            else
+                placeStore.removePlace(place,
+                                       PlaceStore.PlaceType.FAVORITE);
+        }).bind(this));
     },
 
     _initShareButton: function(button) {
