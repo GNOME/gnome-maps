@@ -43,7 +43,9 @@ const ShareDialog = new Lang.Class({
     Template: 'resource:///org/gnome/maps/share-dialog.ui',
     InternalChildren: [ 'list',
                         'weatherRow',
+                        'weatherLabel',
                         'clocksRow',
+                        'clocksLabel',
                         'headerBar',
                         'cancelButton',
                         'chooseButton',
@@ -76,14 +78,20 @@ const ShareDialog = new Lang.Class({
     },
 
     ensureShares: function() {
-        let shareWeather = this._checkWeather();
-        let shareClocks = this._checkClocks();
+        let weatherInfo = Gio.DesktopAppInfo.new(_WEATHER_APPID + '.desktop');
+        let clocksInfo = Gio.DesktopAppInfo.new(_CLOCKS_APPID + '.desktop');
+        let shareWeather = this._checkWeather(weatherInfo);
+        let shareClocks = this._checkClocks(clocksInfo);
 
         if (!shareWeather)
             this._weatherRow.hide();
+        else
+            this._weatherLabel.label = weatherInfo.get_name();
 
         if (!shareClocks)
             this._clocksRow.hide();
+        else
+            this._clocksLabel.label = clocksInfo.get_name();
 
         return shareWeather || shareClocks;
     },
@@ -116,16 +124,11 @@ const ShareDialog = new Lang.Class({
         }
     },
 
-    _checkApp: function(appId) {
-        let info = Gio.DesktopAppInfo.new(appId + '.desktop');
-        return info !== null;
+    _checkWeather: function(appInfo) {
+        return (GWeather !== null && appInfo !== null);
     },
 
-    _checkWeather: function() {
-        return (GWeather !== null && this._checkApp(_WEATHER_APPID));
-    },
-
-    _checkClocks: function() {
-        return (GWeather !== null && this._checkApp(_CLOCKS_APPID));
+    _checkClocks: function(appInfo) {
+        return (GWeather !== null && appInfo !== null);
     }
 });
