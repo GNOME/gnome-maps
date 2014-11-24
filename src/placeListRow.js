@@ -23,6 +23,7 @@ const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 
 const PlaceFormatter = imports.placeFormatter;
+const PlaceStore = imports.placeStore;
 
 const ROW_HEIGHT = 50;
 
@@ -32,7 +33,8 @@ const PlaceListRow = new Lang.Class({
     Template: 'resource:///org/gnome/maps/place-list-row.ui',
     InternalChildren: [ 'icon',
                         'name',
-                        'details' ],
+                        'details',
+                        'typeIcon' ],
 
     _init: function(params) {
         this.place = params.place;
@@ -43,6 +45,9 @@ const PlaceListRow = new Lang.Class({
 
         let maxChars = params.maxChars || 40;
         delete params.maxChars;
+
+        let type = params.type;
+        delete params.type;
 
         params.height_request = ROW_HEIGHT;
         this.parent(params);
@@ -55,6 +60,11 @@ const PlaceListRow = new Lang.Class({
         this._details.max_width_chars = maxChars;
         this._details.label = formatter.getDetailsString();
         this._icon.gicon = this.place.icon;
+
+        if (type === PlaceStore.PlaceType.RECENT)
+            this._typeIcon.icon_name = 'document-open-recent-symbolic';
+        else if (type === PlaceStore.PlaceType.FAVORITE)
+            this._typeIcon.icon_name = 'emblem-favorite-symbolic';
     },
 
     _boldMatch: function(title, string) {
