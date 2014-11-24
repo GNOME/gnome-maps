@@ -21,6 +21,7 @@
  *         Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
  */
 
+const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Geocode = imports.gi.GeocodeGlib;
 const Gtk = imports.gi.Gtk;
@@ -94,17 +95,31 @@ const PlaceEntry = new Lang.Class({
         let parseOnFocusOut = props.parseOnFocusOut;
         delete props.parseOnFocusOut;
 
-        props.completion = this._createCompletion();
         this.parent(props);
+
+        this._filter = new Gtk.TreeModelFilter({ child_model: Application.placeStore });
+        this._filter.set_visible_func(this._completionVisibleFunc.bind(this),
+                                      null,
+                                      null);
 
         this._popover = this._createPopover(numVisible, maxChars);
 
-        this.connect('activate', this._onActivate.bind(this));
-        this.connect('search-changed', (function() {
-            this.popover.hide();
+        this._refreshFilter();
 
-            if (this.text.length === 0)
+        this.connect('activate', this._onActivate.bind(this));
+        this.connect('changed', (function() {
+            this._refreshFilter();
+
+            if (this.text.length === 0) {
+                this._popover.hide();
                 this.place = null;
+                return;
+            }
+
+            if (this._filter.iter_n_children(null) > 0)
+                this._popover.showCompletion();
+            else
+                this._popover.hide();
         }).bind(this));
 
         if (parseOnFocusOut) {
@@ -113,21 +128,6 @@ const PlaceEntry = new Lang.Class({
                 return false;
             }).bind(this));
         }
-    },
-
-    _createCompletion: function() {
-        let { completion } = Utils.getUIObject('place-entry',
-                                               ['completion']);
-
-        completion.set_model(Application.placeStore);
-        completion.set_match_func(PlaceStore.completionMatchFunc);
-
-        completion.connect('match-selected', (function(c, model, iter) {
-            this.place = model.get_value(iter, PlaceStore.Columns.PLACE);
-            return true;
-        }).bind(this));
-
-        return completion;
     },
 
     _createPopover: function(numVisible, maxChars) {
@@ -147,6 +147,33 @@ const PlaceEntry = new Lang.Class({
         }).bind(this));
 
         return popover;
+    },
+
+    _refreshFilter: function() {
+        /* Filter model based on input text */
+        this._filter.refilter();
+        this._popover.updateCompletion(this._filter, this.text);
+    },
+
+    _completionVisibleFunc: function(model, iter) {
+        let name = model.get_value(iter, PlaceStore.Columns.NAME);
+        let key = this.text;
+
+        if (key.length === 0)
+            return true;
+
+        if (name === null)
+            return false;
+
+        key = GLib.utf8_normalize(key, -1, GLib.NormalizeMode.ALL);
+        if (key === null)
+            return false;
+
+        name = GLib.utf8_normalize(name, -1, GLib.NormalizeMode.ALL);
+        if (name === null)
+            return false;
+
+        return name.toLowerCase().search(key.toLowerCase()) !== -1;
     },
 
     _validateCoordinates: function(lat, lon) {
