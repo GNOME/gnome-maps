@@ -18,13 +18,25 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
+const Gdk = imports.gi.Gdk;
+const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 
+const PlaceFormatter = imports.placeFormatter;
 const PlaceListRow = imports.placeListRow;
+const PlaceStore = imports.placeStore;
 
 const _PLACE_ICON_SIZE = 20;
+const _ROW_HEIGHT = 50;
+
+const Mode = {
+    IDLE: 0, // Nothing going on
+    ACTIVATED: 1, // Just activated, ignore changes to text
+    COMPLETION: 2, // We are doing completion against placeStore
+    RESULT: 3 // We are displaying results
+};
 
 const SearchPopup = new Lang.Class({
     Name: 'SearchPopup',
@@ -33,7 +45,8 @@ const SearchPopup = new Lang.Class({
         'selected' : { param_types: [ GObject.TYPE_OBJECT ] }
     },
     Template: 'resource:///org/gnome/maps/search-popup.ui',
-    InternalChildren: [ 'scrolledWindow',
+    InternalChildren: [ 'hintRevealer',
+                        'scrolledWindow',
                         'stack',
                         'spinner',
                         'list' ],
@@ -47,10 +60,29 @@ const SearchPopup = new Lang.Class({
 
         this.parent(props);
 
-        this._list.connect('row-activated', (function(list, row) {
-            if (row)
-                this.emit('selected', row.place);
-        }).bind(this));
+        this._entry = this.relative_to;
+
+         this._list.connect('row-activated', (function(list, row) {
+             if (row)
+                 this.emit('selected', row.place);
+         }).bind(this));
+
+        // Make sure we clear all selected rows when the search string change
+        this._entry.connect('changed',
+                            this._list.unselect_all.bind(this._list));
+
+        // Do not show 'press enter to search' when we have
+        // selected rows in completion mode.
+        this._list.connect('selected-rows-changed',
+                           this._onSelectedRowsChanged.bind(this));
+
+        // We need to propagate events to the listbox so that we can
+        // keep typing while selecting a place. But we do not want to
+        // propagate the 'enter' key press if there is a selection.
+        this._entry.connect('key-press-event',
+                            this._propagateKeys.bind(this));
+        this._entry.connect('button-press-event',
+                            this._list.unselect_all.bind(this._list));
 
         this._list.set_header_func(function(row, before) {
             let header = new Gtk.Separator();
@@ -62,9 +94,15 @@ const SearchPopup = new Lang.Class({
 
         let rowHeight = PlaceListRow.ROW_HEIGHT + 6; // For the header
         this._scrolledWindow.min_content_height = numVisible * rowHeight;
+
+        // This silents warning at Maps exit about this widget being
+        // visible but not mapped.
+        this.connect('unmap', function(popover) { popover.hide(); });
     },
 
     showSpinner: function() {
+        this._hintRevealer.reveal_child = false;
+
         this._spinner.start();
         this._stack.set_visible_child(this._spinner);
 
@@ -73,6 +111,9 @@ const SearchPopup = new Lang.Class({
     },
 
     showResult: function() {
+        this._mode = Mode.RESULT;
+        this._hintRevealer.reveal_child = false;
+
         if (this._spinner.active)
             this._spinner.stop();
 
@@ -80,8 +121,21 @@ const SearchPopup = new Lang.Class({
 
         if (!this.get_visible())
             this.show();
+    },
 
-        this.grab_focus();
+    showCompletion: function(filter, searchString) {
+        if (this._mode === Mode.ACTIVATED) {
+            this._mode = Mode.IDLE;
+            return;
+        }
+        this._populateFromFilter(filter, searchString);
+        this._mode = Mode.COMPLETION;
+        this._hintRevealer.reveal_child = true;
+
+        this._stack.set_visible_child(this._scrolledWindow);
+
+        if (!this.get_visible())
+            this.show();
     },
 
     vfunc_hide: function() {
@@ -100,11 +154,94 @@ const SearchPopup = new Lang.Class({
             if (!place.location)
                 return;
 
-            let row = new PlaceListRow.PlaceListRow({ place: place,
-                                                      searchString: searchString,
-                                                      maxChars: this._maxChars,
-                                                      can_focus: true });
-            this._list.add(row);
+            this._addRow(place, null, searchString);
+        }).bind(this));
+    },
+
+    _addRow: function(place, type, searchString) {
+        let row = new PlaceListRow.PlaceListRow({ place: place,
+                                                  searchString: searchString,
+                                                  type: type,
+                                                  maxChars: this._maxChars,
+                                                  can_focus: true });
+        this._list.add(row);
+    },
+
+    _onSelectedRowsChanged: function(list, row) {
+        if (this._mode !== Mode.COMPLETION)
+            return;
+
+        if (this._list.get_selected_rows().length > 0)
+            this._hintRevealer.reveal_child = false;
+        else
+            this._hintRevealer.reveal_child = true;
+    },
+
+    _propagateKeys: function(entry, event) {
+        let row = this._list.get_selected_row();
+        if (!row)
+            row = this._list.get_row_at_index(0);
+        if (!row)
+            return false;
+
+        let length = this._list.get_children().length;
+        let keyval = event.get_keyval()[1];
+
+        if (keyval === Gdk.KEY_Escape) {
+            this.hide();
+            return false;
+        }
+
+        // If we get an 'enter' keypress and we have a selected
+        // row, we do not want to propagate the event.
+        if ((this.visible && row.is_selected()) &&
+            keyval === Gdk.KEY_Return ||
+            keyval === Gdk.KEY_KP_ENTER ||
+            keyval === Gdk.KEY_ISO_Enter) {
+            row.activate();
+            this._mode = Mode.ACTIVATED;
+
+            return true;
+        } else if (keyval === Gdk.KEY_KP_Up || keyval === Gdk.KEY_Up) {
+            this.show();
+
+            if (!row.is_selected()) {
+                let pRow = this._list.get_row_at_index(length - 1);
+                this._list.select_row(pRow);
+                return false;
+            }
+
+            if (row.get_index() > 0) {
+                let pRow = this._list.get_row_at_index(row.get_index() - 1);
+                this._list.select_row(pRow);
+            } else
+                this._list.unselect_all();
+        } else if (keyval === Gdk.KEY_KP_Down || keyval === Gdk.KEY_Down) {
+            this.show();
+
+            if (!row.is_selected()) {
+                this._list.select_row(row);
+                return false;
+            }
+
+            if (row.get_index() != (length - 1)) {
+                let nRow = this._list.get_row_at_index(row.get_index() + 1);
+                this._list.select_row(nRow);
+            } else
+                this._list.unselect_all();
+        }
+        return false;
+    },
+
+    _populateFromFilter: function(filter, searchString) {
+        this._list.forall(function(row) {
+            row.destroy();
+        });
+
+        filter.foreach((function(model, path, iter) {
+            let place = model.get_value(iter, PlaceStore.Columns.PLACE);
+            let type = model.get_value(iter, PlaceStore.Columns.TYPE);
+            this._addRow(place, type, searchString);
         }).bind(this));
     }
 });
