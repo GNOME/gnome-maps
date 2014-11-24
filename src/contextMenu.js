@@ -33,9 +33,8 @@ const ContextMenu = new Lang.Class({
     _init: function(mapView) {
         this._mapView = mapView;
 
-        let ui = Utils.getUIObject('context-menu', ['context-menu',
-                                                    'whats-here-item',
-                                                    'i-am-here-item']);
+        let ui = Utils.getUIObject('context-menu', [ 'context-menu',
+                                                     'whats-here-item' ]);
         this._menu = ui.contextMenu;
 
         this._mapView.view.connect('button-release-event',
@@ -43,9 +42,6 @@ const ContextMenu = new Lang.Class({
 
         ui.whatsHereItem.connect('activate',
                                  this._onWhatsHereActivated.bind(this));
-
-        ui.iAmHereItem.connect('activate',
-                               this._onIAmHereActivated.bind(this));
     },
 
     _onButtonReleaseEvent: function(actor, event) {
@@ -68,17 +64,4 @@ const ContextMenu = new Lang.Class({
             this._mapView.showSearchResult(place);
         }).bind(this));
     },
-
-    _onIAmHereActivated: function() {
-        let location = new Geocode.Location({ latitude: this._latitude,
-                                              longitude: this._longitude,
-                                              accuracy: 0,
-                                              description: "" });
-
-        Application.geocodeService.reverse(location, (function(place) {
-            location.description = place.name;
-            Application.geoclue.overrideLocation(location);
-        }).bind(this));
-    }
 });
-Utils.addSignalMethods(ContextMenu.prototype);
