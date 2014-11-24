@@ -91,20 +91,6 @@ const Geoclue = new Lang.Class({
         return this._connected;
     },
 
-    overrideLocation: function(location) {
-        if (this._clientProxy && this._locationUpdatedId > 0) {
-            this._clientProxy.disconnectSignal(this._locationUpdatedId);
-            this._locationUpdatedId = 0;
-            this._clientProxy.StopRemote(function(result, e) {
-                if (e) {
-                    log ("Failed to connect to GeoClue2 service: " + e.message);
-                }
-            });
-        }
-
-        this._updateLocation(location, true);
-    },
-
     findLocation: function() {
         if (!this._clientProxy)
             return;
@@ -135,8 +121,6 @@ const Geoclue = new Lang.Class({
 
             this.place = new Geocode.Place({ location: location,
                                              name: _("Current location") });
-
-            this.userSetLocation = Application.settings.get('last-location-user-set');
         }
 
         try {
@@ -164,9 +148,6 @@ const Geoclue = new Lang.Class({
         this._clientProxy.DesktopId = "org.gnome.Maps";
         this._clientProxy.RequestedAccuracyLevel = AccuracyLevel.EXACT;
 
-        if (!this.userSetLocation)
-            this.findLocation();
-
         this._connected = true;
         this.notify('connected');
     },
@@ -182,7 +163,7 @@ const Geoclue = new Lang.Class({
         this._updateLocation(location, false);
     },
 
-    _updateLocation: function(location, userSet) {
+    _updateLocation: function(location) {
         this.place.location = location;
 
         Application.settings.set('last-location', [location.latitude,
@@ -190,8 +171,6 @@ const Geoclue = new Lang.Class({
                                                    location.accuracy]);
         if (location.description !== null)
             Application.settings.set('last-location-description', location.description);
-        Application.settings.set('last-location-user-set', userSet);
-        this.userSetLocation = userSet;
 
         this.emit('location-changed');
         Utils.debug("Updated location: " + location.description);
