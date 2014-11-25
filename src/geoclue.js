@@ -56,14 +56,6 @@ const ClientInterface = '<node> \
 </node>';
 const ClientProxy = Gio.DBusProxy.makeProxyWrapper(ClientInterface);
 
-const AccuracyLevel = {
-    COUNTRY: 1,
-    CITY: 4,
-    NEIGHBORHOOD: 5,
-    STREET: 6,
-    EXACT: 8
-};
-
 const LocationInterface = '<node> \
 <interface name="org.freedesktop.GeoClue2.Location"> \
     <property name="Latitude" type="d" access="read"/> \
@@ -74,6 +66,22 @@ const LocationInterface = '<node> \
 </node>';
 const LocationProxy = Gio.DBusProxy.makeProxyWrapper(LocationInterface);
 
+const AccuracyLevel = {
+    COUNTRY: 1,
+    CITY: 4,
+    NEIGHBORHOOD: 5,
+    STREET: 6,
+    EXACT: 8
+};
+
+const State = {
+    ENABLED: 0,
+    DISABLED: 1,
+    MESSAGE: 2
+};
+
+const _NOT_AVAILABLE_MSG = _("Location service not available");
+
 const Geoclue = new Lang.Class({
     Name: 'Geoclue',
     Extends: GObject.Object,
@@ -81,21 +89,23 @@ const Geoclue = new Lang.Class({
         'location-changed': { }
     },
     Properties: {
-        'connected': GObject.ParamSpec.boolean('connected',
-                                               'Connected',
-                                               'Connected to DBus service',
-                                               GObject.ParamFlags.READABLE |
-                                               GObject.ParamFlags.WRITABLE,
-                                               false)
+        'state': GObject.ParamSpec.int('state',
+                                       '',
+                                       '',
+                                       GObject.ParamFlags.READABLE |
+                                       GObject.ParamFlags.WRITABLE,
+                                       State.ENABLED,
+                                       State.MESSAGE,
+                                       State.DISABLED)
     },
 
-    set connected(c) {
-        this._connected = c;
-        this.notify('connected');
+    set state(s) {
+        this._state = s;
+        this.notify('state');
     },
 
-    get connected() {
-        return this._connected;
+    get state() {
+        return this._state;
     },
 
     _init: function() {
@@ -110,13 +120,20 @@ const Geoclue = new Lang.Class({
             this._managerProxy.GetClientRemote(this._onGetClientReady.bind(this));
         } catch (e) {
             Utils.debug("Failed to connect to GeoClue2 service: " + e.message);
-            log('Connection with GeoClue failed, we are not able to find your location!');
+            this._message = _NOT_AVAILABLE_MSG;
+            this.state = State.MESSAGE;
         }
+    },
+
+    readMessage: function() {
+        this.state = State.DISABLED;
+        return this._message;
     },
 
     _onGetClientReady: function(result, e) {
         if (e) {
-            log ("Failed to connect to GeoClue2 service: " + e.message);
+            this._message = _NOT_AVAILABLE_MSG;
+            this.state = State.MESSAGE;
             return;
         }
 
@@ -130,9 +147,18 @@ const Geoclue = new Lang.Class({
 
         this._clientProxy.connectSignal('LocationUpdated',
                                         this._onLocationUpdated.bind(this));
+
+        this._clientProxy.connect('g-properties-changed', (function() {
+            if (this._clientProxy.Active === true)
+                this.state = State.ENABLED;
+            else
+                this.state = State.DISABLED;
+        }).bind(this));
+
         this._clientProxy.StartRemote((function(result, e) {
             if (e) {
-                log ("Failed to connect to GeoClue2 service: " + e.message);
+                this._message = _NOT_AVAILABLE_MSG;
+                this.state = State.MESSAGE;
             }
         }).bind(this));
     },

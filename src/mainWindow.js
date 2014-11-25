@@ -32,6 +32,7 @@ const Application = imports.application;
 const Config = imports.config;
 const ContextMenu = imports.contextMenu;
 const FavoritesPopover = imports.favoritesPopover;
+const Geoclue = imports.geoclue;
 const LayersPopover = imports.layersPopover;
 const MapView = imports.mapView;
 const PlaceEntry = imports.placeEntry;
@@ -199,15 +200,16 @@ const MainWindow = new Lang.Class({
             this._favoritesButton.sensitive = favoritesPopover.rows > 0;
         }).bind(this));
 
-        Application.geoclue.connect('notify::connected', (function() {
-            this._gotoUserLocationButton.sensitive = Application.geoclue.connected;
+        Application.geoclue.connect('notify::state', (function() {
+            let sensitive = Application.geoclue.state !== Geoclue.State.DISABLED;
+            this._gotoUserLocationButton.sensitive = sensitive;
         }).bind(this));
 
         this.window.application.connect('notify::connected', (function() {
             let app = this.window.application;
 
             this._gotoUserLocationButton.sensitive = (app.connected &&
-                                                      Application.geoclue.connected);
+                                                      Application.geoclue.state !== Geoclue.State.Disabled);
             this._layersButton.sensitive = app.connected;
             this._toggleSidebarButton.sensitive = app.connected;
             this._favoritesButton.sensitive = (app.connected &&
@@ -287,7 +289,12 @@ const MainWindow = new Lang.Class({
     },
 
     _onGotoUserLocationActivate: function() {
-        this.mapView.gotoUserLocation(true);
+        if (Application.geoclue.state === Geoclue.State.MESSAGE) {
+            let message = Application.geoclue.readMessage();
+            Application.notificationManager.showMessage(message);
+        } else {
+            this.mapView.gotoUserLocation(true);
+        }
     },
 
     _onMapTypeMenuActivate: function(action) {
