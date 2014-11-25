@@ -169,11 +169,6 @@ const MainWindow = new Lang.Class({
                 onActivate: this._placeEntry.grab_focus.bind(this._placeEntry)
             }
         });
-
-        let action = this.window.lookup_action('goto-user-location');
-        Application.geoclue.bind_property('connected',
-                                          action, 'enabled',
-                                          GObject.BindingFlags.SYNC_CREATE);
     },
 
     _initSignals: function() {
@@ -204,10 +199,15 @@ const MainWindow = new Lang.Class({
             this._favoritesButton.sensitive = favoritesPopover.rows > 0;
         }).bind(this));
 
+        Application.geoclue.connect('notify::connected', (function() {
+            this._gotoUserLocationButton.sensitive = Application.geoclue.connected;
+        }).bind(this));
+
         this.window.application.connect('notify::connected', (function() {
             let app = this.window.application;
 
-            this._gotoUserLocationButton.sensitive = app.connected;
+            this._gotoUserLocationButton.sensitive = (app.connected &&
+                                                      Application.geoclue.connected);
             this._layersButton.sensitive = app.connected;
             this._toggleSidebarButton.sensitive = app.connected;
             this._favoritesButton.sensitive = (app.connected &&
