@@ -143,7 +143,8 @@ const MapBubble = new Lang.Class({
             if (routeFrom) {
                 from.place = this._place;
             } else {
-                from.place = Application.geoclue.place;
+                if (Application.geoclue.place)
+                    from.place = Application.geoclue.place;
                 to.place = this._place;
             }
             this.destroy();
