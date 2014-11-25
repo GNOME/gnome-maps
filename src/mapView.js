@@ -146,6 +146,9 @@ const MapView = new Lang.Class({
     },
 
     gotoUserLocation: function(animate) {
+        if (!this._userLocation)
+            return;
+
         this.emit('going-to-user-location');
         Utils.once(this._userLocation, "gone-to", (function() {
             this.emit('gone-to-user-location');
