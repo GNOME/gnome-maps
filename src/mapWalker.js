@@ -96,7 +96,7 @@ const MapWalker = new Lang.Class({
     },
 
     goTo: function(animate) {
-        Utils.debug('Going to ' + this.place.location.description);
+        Utils.debug('Going to ' + this.place.name);
         this._mapView.emit('going-to');
 
         if (!animate) {
