@@ -45,6 +45,7 @@ const ClientInterface = '<node> \
     <property name="DesktopId" type="s" access="readwrite"/> \
     <property name="RequestedAccuracyLevel" type="u" access="readwrite"/> \
     <property name="DistanceThreshold" type="u" access="readwrite"/> \
+    <property name="Active" type="b" access="read"/> \
     <method name="Start"/> \
     <method name="Stop"/> \
     <signal name="LocationUpdated"> \
@@ -83,32 +84,23 @@ const Geoclue = new Lang.Class({
         'connected': GObject.ParamSpec.boolean('connected',
                                                'Connected',
                                                'Connected to DBus service',
-                                               GObject.ParamFlags.READABLE,
+                                               GObject.ParamFlags.READABLE |
+                                               GObject.ParamFlags.WRITABLE,
                                                false)
+    },
+
+    set connected(c) {
+        this._connected = c;
+        this.notify('connected');
     },
 
     get connected() {
         return this._connected;
     },
 
-    findLocation: function() {
-        if (!this._clientProxy)
-            return;
-
-        this._locationUpdatedId =
-            this._clientProxy.connectSignal("LocationUpdated",
-                                            this._onLocationUpdated.bind(this));
-
-        this._clientProxy.StartRemote(function(result, e) {
-            if (e) {
-                log ("Failed to connect to GeoClue2 service: " + e.message);
-            }
-        });
-    },
-
     _init: function() {
         this.parent();
-        this._connected = false;
+        this.connected = false;
 
         let lastLocation = Application.settings.get('last-location');
         if (lastLocation.length >= 3) {
@@ -148,8 +140,13 @@ const Geoclue = new Lang.Class({
         this._clientProxy.DesktopId = "org.gnome.Maps";
         this._clientProxy.RequestedAccuracyLevel = AccuracyLevel.EXACT;
 
-        this._connected = true;
-        this.notify('connected');
+        this._clientProxy.connectSignal('LocationUpdated',
+                                        this._onLocationUpdated.bind(this));
+        this._clientProxy.StartRemote((function(result, e) {
+            if (e) {
+                log ("Failed to connect to GeoClue2 service: " + e.message);
+            }
+        }).bind(this));
     },
 
     _onLocationUpdated: function(proxy, sender, [oldPath, newPath]) {
@@ -160,7 +157,13 @@ const Geoclue = new Lang.Class({
                                               longitude: geoclueLocation.Longitude,
                                               accuracy: geoclueLocation.Accuracy,
                                               description: geoclueLocation.Description });
-        this._updateLocation(location, false);
+
+        this._updateLocation(location);
+
+        this.connected = this._clientProxy.Active;
+        this._clientProxy.connect('g-properties-changed', (function() {
+            this.connected = this._clientProxy.Active;
+        }).bind(this));
     },
 
     _updateLocation: function(location) {
