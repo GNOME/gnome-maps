@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-09-07 18:56+0000\n"
-"PO-Revision-Date: 2014-09-07 23:08+0200\n"
+"POT-Creation-Date: 2014-11-25 07:50+0000\n"
+"PO-Revision-Date: 2014-11-25 19:50+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -49,8 +49,8 @@ msgstr ""
 "Brno“ nebo „hotely poblíž Alexanderplatz, Berlín“."
 
 #. Translators: This is the program name. */
-#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
-#: ../src/mainWindow.js:303 ../src/main-window.ui.h:1
+#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:79
+#: ../src/mainWindow.js:333 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "Mapy"
 
@@ -146,11 +146,15 @@ msgstr "Co je zde?"
 msgid "I’m here!"
 msgstr "Nacházím se zde!"
 
-#: ../src/mainWindow.js:301
+#: ../src/geoclue.js:137 ../src/user-location-bubble.ui.h:1
+msgid "Current location"
+msgstr "Současné místo"
+
+#: ../src/mainWindow.js:331
 msgid "translator-credits"
 msgstr "Marek Černocký"
 
-#: ../src/mainWindow.js:304
+#: ../src/mainWindow.js:334
 msgid "A map application for GNOME"
 msgstr "Mapová aplikace pro GNOME"
 
@@ -166,37 +170,117 @@ msgstr "Zvolit typ mapy"
 msgid "Toggle route planner"
 msgstr "Přepnout plánovač cesty"
 
-#: ../src/routeService.js:73
+#: ../src/main-window.ui.h:5
+msgid "Toggle favorites"
+msgstr "Přepnout oblíbené"
+
+#: ../src/main-window.ui.h:6
+msgid "Maps is offline!"
+msgstr "Mapy jsou bez připojení!"
+
+#: ../src/main-window.ui.h:7
+msgid ""
+"Maps need an active internet connection to function properly, but one can't "
+"be found."
+msgstr ""
+"Aby Mapy mohly fungovat, potřebují aktivní připojení k Internetu, ale žádné "
+"nenalezly."
+
+#: ../src/main-window.ui.h:8
+msgid "Check your connection and proxy settings."
+msgstr "Zkontrolujte své připojení a nastavení proxy."
+
+#. Translators:
+#. * This means wheelchairs have full unrestricted access.
+#. */
+#: ../src/place.js:112
+msgid "yes"
+msgstr "ano"
+
+#. Translators:
+#. * This means wheelchairs have partial access (e.g some areas
+#. * can be accessed and others not, areas requiring assistance
+#. * by someone pushing up a steep gradient).
+#. */
+#: ../src/place.js:119
+msgid "limited"
+msgstr "částečně"
+
+#. Translators:
+#. * This means wheelchairs have no unrestricted access
+#. * (e.g. stair only access).
+#. */
+#: ../src/place.js:125
+msgid "no"
+msgstr "ne"
+
+#. Translators:
+#. * This means that the way or area is designated or purpose built
+#. * for wheelchairs (e.g. elevators designed for wheelchair access
+#. * only). This is rarely used.
+#. */
+#: ../src/place.js:132
+msgid "designated"
+msgstr "výslovně ano"
+
+#: ../src/routeService.js:72
 msgid "No route found."
 msgstr "Nenalezena žádná cesta."
 
-#: ../src/routeService.js:80
+#: ../src/routeService.js:79
 msgid "Route request failed."
 msgstr "Požadavek na vyhledání cesty selhal."
 
-#: ../src/routeService.js:151
+#: ../src/routeService.js:150
 msgid "Start!"
 msgstr "Start!"
 
-#: ../src/searchResultBubble.js:60
-#, javascript-format
-msgid "Country code: %s"
-msgstr "Kód země: %s"
-
-#: ../src/searchResultBubble.js:66
+#: ../src/searchResultBubble.js:92
 #, javascript-format
 msgid "Postal code: %s"
 msgstr "PSČ: %s"
 
+#: ../src/searchResultBubble.js:94
+#, javascript-format
+msgid "Country code: %s"
+msgstr "Kód země: %s"
+
+#: ../src/searchResultBubble.js:103
+#, javascript-format
+msgid "Population: %s"
+msgstr "Populace: %s"
+
+#: ../src/searchResultBubble.js:106
+#, javascript-format
+msgid "Opening hours: %s"
+msgstr "Otevírací doba: %s"
+
+#: ../src/searchResultBubble.js:111
+msgid "Wikipedia"
+msgstr "Wikipedia"
+
+#: ../src/searchResultBubble.js:116
+#, javascript-format
+msgid "Wheelchair access: %s"
+msgstr "Bezbariérový přístup: %s"
+
+#: ../src/share-dialog.ui.h:1
+msgid "Share location"
+msgstr "Sdílení místa"
+
+#: ../src/share-dialog.ui.h:2
+msgid "_Cancel"
+msgstr "_Zrušit"
+
+#: ../src/share-dialog.ui.h:3
+msgid "_Share"
+msgstr "_Sdílet"
+
 #. Translators: %s is a time expression with the format "%f h" or "%f min" */
-#: ../src/sidebar.js:193
+#: ../src/sidebar.js:237
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Odhadovaný čas: %s"
-
-#: ../src/user-location-bubble.ui.h:1
-msgid "Current location"
-msgstr "Současné místo"
 
 #. To translators: %s can be "Unknown", "Exact" or "%f km²"
 #: ../src/user-location-bubble.ui.h:4
@@ -205,36 +289,45 @@ msgid "Accuracy: %s"
 msgstr "Přesnost: %s"
 
 #. Translators: Accuracy of user location information */
-#: ../src/utils.js:165
+#: ../src/utils.js:254
 msgid "Unknown"
 msgstr "neznámá"
 
 #. Translators: Accuracy of user location information */
-#: ../src/utils.js:168
+#: ../src/utils.js:257
 msgid "Exact"
 msgstr "velmi přesná"
 
-#: ../src/utils.js:178
-#, javascript-format
-msgid "%f km²"
-msgstr "%f km²"
-
-#: ../src/utils.js:275
+#: ../src/utils.js:356
 #, javascript-format
 msgid "%f h"
 msgstr "%f h"
 
-#: ../src/utils.js:277
+#: ../src/utils.js:358
 #, javascript-format
 msgid "%f min"
 msgstr "%f min"
 
-#: ../src/utils.js:287
+#. Translators: This is a distance measured in kilometers */
+#: ../src/utils.js:369
 #, javascript-format
 msgid "%f km"
 msgstr "%f km"
 
-#: ../src/utils.js:289
+#. Translators: This is a distance measured in meters */
+#: ../src/utils.js:372
 #, javascript-format
 msgid "%f m"
 msgstr "%f m"
+
+#. Translators: This is a distance measured in miles */
+#: ../src/utils.js:380
+#, javascript-format
+msgid "%f mi"
+msgstr "%f mi"
+
+#. Translators: This is a distance measured in feet */
+#: ../src/utils.js:383
+#, javascript-format
+msgid "%f ft"
+msgstr "%f ft"
