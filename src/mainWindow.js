@@ -209,7 +209,7 @@ const MainWindow = new Lang.Class({
             let app = this.window.application;
 
             this._gotoUserLocationButton.sensitive = (app.connected &&
-                                                      Application.geoclue.state !== Geoclue.State.Disabled);
+                                                      Application.geoclue.state !== Geoclue.State.DISABLED);
             this._layersButton.sensitive = app.connected;
             this._toggleSidebarButton.sensitive = app.connected;
             this._favoritesButton.sensitive = (app.connected &&
@@ -289,9 +289,9 @@ const MainWindow = new Lang.Class({
     },
 
     _onGotoUserLocationActivate: function() {
-        if (Application.geoclue.state === Geoclue.State.MESSAGE) {
-            let message = Application.geoclue.readMessage();
-            Application.notificationManager.showMessage(message);
+        if (Application.geoclue.state === Geoclue.State.NOTIFICATION) {
+            let notification = Application.geoclue.readNotification();
+            Application.notificationManager.showNotification(notification);
         } else {
             this.mapView.gotoUserLocation(true);
         }

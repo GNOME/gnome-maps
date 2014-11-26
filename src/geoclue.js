@@ -21,11 +21,14 @@
  */
 
 const GObject = imports.gi.GObject;
+const Gdk = imports.gi.Gdk;
 const Geocode = imports.gi.GeocodeGlib;
 const Gio = imports.gi.Gio;
 const Lang = imports.lang;
 
 const Application = imports.application;
+const Notification = imports.notification;
+const Settings = imports.settings;
 const Utils = imports.utils;
 
 const _ = imports.gettext.gettext;
@@ -77,10 +80,35 @@ const AccuracyLevel = {
 const State = {
     ENABLED: 0,
     DISABLED: 1,
-    MESSAGE: 2
+    NOTIFICATION: 2
 };
 
 const _NOT_AVAILABLE_MSG = _("Location service not available");
+const _NOT_AVAILABLE_NOTIFICATION = new Notification.Plain(_NOT_AVAILABLE_MSG);
+
+const LocationServiceNotification = new Lang.Class({
+    Name: 'LocationServiceNotification',
+    Extends: Notification.Notification,
+    
+    _init: function() {
+        this.parent();
+
+        let ui = Utils.getUIObject('location-service-notification',
+                                   [ 'button', 'grid' ]);
+        ui.button.connect('clicked', (function() {
+
+            let privacyInfo = Gio.DesktopAppInfo.new('gnome-privacy-panel.desktop');
+            try {
+                let display = Gdk.Display.get_default();
+                privacyInfo.launch([], display.get_app_launch_context());
+            } catch(e) {
+                Utils.debug('launching privacy panel failed: ' + e);
+            }
+        }).bind(this));
+
+        this._ui.body.add(ui.grid);
+    }
+});
 
 const Geoclue = new Lang.Class({
     Name: 'Geoclue',
@@ -95,7 +123,7 @@ const Geoclue = new Lang.Class({
                                        GObject.ParamFlags.READABLE |
                                        GObject.ParamFlags.WRITABLE,
                                        State.ENABLED,
-                                       State.MESSAGE,
+                                       State.NOTIFICATION,
                                        State.DISABLED)
     },
 
@@ -108,11 +136,47 @@ const Geoclue = new Lang.Class({
         return this._state;
     },
 
+    get serviceNotification() {
+        if (!this._serviceNotification)
+            this._serviceNotification = new LocationServiceNotification();
+
+        return this._serviceNotification;
+    },
+
+
     _init: function() {
         this.parent();
-        this.connected = false;
         this.place = null;
+        this._state = State.DISABLED;
 
+        this._locationSettings = new Settings.Settings('org.gnome.system.location');
+        if (this._locationSettings) {
+            this._locationSettings.connect('changed::enabled',
+                                           this._updateFromSettings.bind(this));
+            this._updateFromSettings();
+        } else {
+            this._initLocationService();
+        }
+    },
+
+    readNotification: function() {
+        this.state = State.DISABLED;
+        return this._notification;
+    },
+
+    _updateFromSettings: function() {
+        if (this._locationSettings.get('enabled')) {
+            if (this._state !== State.ENABLED)
+                this._initLocationService();
+        } else {
+            if (this._state !== State.NOTIFICATION) {
+                this._notification = this.serviceNotification;
+                this.state = State.NOTIFICATION;
+            }
+        }
+    },
+
+    _initLocationService: function() {
         try {
             this._managerProxy = new ManagerProxy(Gio.DBus.system,
                                                   "org.freedesktop.GeoClue2",
@@ -120,20 +184,15 @@ const Geoclue = new Lang.Class({
             this._managerProxy.GetClientRemote(this._onGetClientReady.bind(this));
         } catch (e) {
             Utils.debug("Failed to connect to GeoClue2 service: " + e.message);
-            this._message = _NOT_AVAILABLE_MSG;
-            this.state = State.MESSAGE;
+            this._notification = _NOT_AVAILABLE_NOTIFICAITON;
+            this.state = State.NOTIFICATION;
         }
-    },
-
-    readMessage: function() {
-        this.state = State.DISABLED;
-        return this._message;
     },
 
     _onGetClientReady: function(result, e) {
         if (e) {
-            this._message = _NOT_AVAILABLE_MSG;
-            this.state = State.MESSAGE;
+            this._notification = _NOT_AVAILABLE_NOTIFICAITON;
+            this.state = State.NOTIFICATION;
             return;
         }
 
@@ -145,20 +204,12 @@ const Geoclue = new Lang.Class({
         this._clientProxy.DesktopId = "org.gnome.Maps";
         this._clientProxy.RequestedAccuracyLevel = AccuracyLevel.EXACT;
 
-        this._clientProxy.connectSignal('LocationUpdated',
-                                        this._onLocationUpdated.bind(this));
-
-        this._clientProxy.connect('g-properties-changed', (function() {
-            if (this._clientProxy.Active === true)
-                this.state = State.ENABLED;
-            else
-                this.state = State.DISABLED;
-        }).bind(this));
-
+        this._updatedId = this._clientProxy.connectSignal('LocationUpdated',
+                                                          this._onLocationUpdated.bind(this));
         this._clientProxy.StartRemote((function(result, e) {
             if (e) {
-                this._message = _NOT_AVAILABLE_MSG;
-                this.state = State.MESSAGE;
+                this._notification = _NOT_AVAILABLE_MSG;
+                this.state = State.NOTIFICATION;
             }
         }).bind(this));
     },
@@ -174,9 +225,12 @@ const Geoclue = new Lang.Class({
 
         this._updateLocation(location);
 
-        this.connected = this._clientProxy.Active;
-        this._clientProxy.connect('g-properties-changed', (function() {
-            this.connected = this._clientProxy.Active;
+        this.state = this._clientProxy.Active ? State.ENABLED : State.DISABLED;
+        this._changedId = this._clientProxy.connect('g-properties-changed', (function() {
+            if (this._clientProxy.Active === true)
+                this.state = State.ENABLED;
+            else
+                this.state = State.DISABLED;
         }).bind(this));
     },
 
