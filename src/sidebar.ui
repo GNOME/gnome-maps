@@ -90,87 +90,11 @@
       </object>
     </child>
     <child>
-      <object class="GtkGrid" id="from-grid">
-        <property name="visible">True</property>
-        <property name="orientation">horizontal</property>
-        <property name="margin_top">12</property>
-        <property name="hexpand">False</property>
-        <child>
-          <object class="GtkImage" id="from-image">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="margin-start">15</property>
-            <property name="margin-end">8</property>
-            <property name="width-request">16</property>
-            <property name="icon-name">maps-point-start-symbolic</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkGrid" id="from-entry-grid">
-            <property name="visible">True</property>
-            <property name="hexpand">True</property>
-            <property name="can_focus">False</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="via-add-button">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="valign">center</property>
-            <property name="margin-start">4</property>
-            <property name="margin-end">12</property>
-            <property name="height-request">31</property>
-            <property name="width-request">31</property>
-            <child>
-              <object class="GtkImage" id="via-add-image">
-                <property name="visible">True</property>
-                <property name="icon-name">list-add-symbolic</property>
-              </object>
-            </child>
-          </object>
-        </child>
-      </object>
-    </child>
-    <child>
-      <object class="GtkListBox" id="via-grid-container">
-        <property name="name">via-grid-container</property>
+      <object class="GtkListBox" id="entry-list">
+        <property name="name">sidebar-entry-list</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="selection-mode">GTK_SELECTION_NONE</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkGrid" id="to-grid">
-        <property name="visible">True</property>
-        <property name="orientation">horizontal</property>
-        <property name="vexpand">False</property>
-        <property name="hexpand">False</property>
-        <child>
-          <object class="GtkImage" id="to-image">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="margin-start">15</property>
-            <property name="margin-end">8</property>
-            <property name="width-request">16</property>
-            <property name="icon-name">maps-point-end-symbolic</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkGrid" id="to-entry-grid">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="hexpand">True</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkGrid" id="to-placeholder-grid">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="margin-end">19</property>
-            <property name="height-request">31</property>
-            <property name="width-request">31</property>
-          </object>
-        </child>
       </object>
     </child>
     <child>

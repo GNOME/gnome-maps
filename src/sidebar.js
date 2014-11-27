@@ -27,7 +27,7 @@ const Lang = imports.lang;
 const _ = imports.gettext.gettext;
 
 const Application = imports.application;
-const PlaceEntry = imports.placeEntry;
+const RouteEntry = imports.routeEntry;
 const RouteQuery = imports.routeQuery;
 const Utils = imports.utils;
 
@@ -70,7 +70,7 @@ const Sidebar = new Lang.Class({
         this.get_style_context().add_class('maps-sidebar');
 
         let ui = Utils.getUIObject('sidebar', [ 'sidebar',
-                                                'via-grid-container',
+                                                'entry-list',
                                                 'instruction-list-scrolled',
                                                 'instruction-stack',
                                                 'instruction-spinner',
@@ -79,13 +79,10 @@ const Sidebar = new Lang.Class({
                                                 'mode-bike-toggle',
                                                 'mode-car-toggle',
                                                 'time-info',
-                                                'distance-info',
-                                                'from-entry-grid',
-                                                'to-entry-grid',
-                                                'via-add-button']);
+                                                'distance-info' ]);
 
         this._mapView = mapView;
-        this._viaGridContainer = ui.viaGridContainer;
+        this._entryList = ui.entryList;
         this._instructionList = ui.instructionList;
         this._instructionStack = ui.instructionStack;
         this._instructionWindow = ui.instructionListScrolled;
@@ -98,24 +95,12 @@ const Sidebar = new Lang.Class({
         this._initTransportationToggles(ui.modePedestrianToggle,
                                         ui.modeBikeToggle,
                                         ui.modeCarToggle);
+        this._initQuerySignals();
 
         let query = Application.routeService.query;
 
         query.addPoint(0);
-        let fromEntry = this._initRouteEntry(ui.fromEntryGrid, 0);
-
         query.addPoint(1);
-        this._initRouteEntry(ui.toEntryGrid, 1);
-
-        this._initQuerySignals(ui.viaGridContainer);
-
-        this.bind_property('child-revealed',
-                           fromEntry, 'has_focus',
-                           GObject.BindingFlags.DEFAULT);
-
-        ui.viaAddButton.connect('clicked', (function() {
-            query.addPoint(-1);
-        }).bind(this));
 
         this.add(ui.sidebar);
     },
@@ -150,58 +135,48 @@ const Sidebar = new Lang.Class({
         query.connect('notify::transportation', setToggles);
     },
 
-    _initQuerySignals: function(listbox) {
+    _initQuerySignals: function() {
         let query = Application.routeService.query;
 
-        // Do nothing for the From and To points.
         query.connect('point-added', (function(obj, point, index) {
-            if (index !== 0 && index !== query.points.length - 1)
-                this._createViaRow(listbox, index);
+            this._createRouteEntry(index, point);
         }).bind(this));
 
         query.connect('point-removed', (function(obj, point, index) {
-            let row = listbox.get_row_at_index(index - 1);
+            let row = this._entryList.get_row_at_index(index);
             row.destroy();
         }).bind(this));
     },
 
-    _createPlaceEntry: function() {
-        return new PlaceEntry.PlaceEntry({ visible: true,
-                                           can_focus: true,
-                                           hexpand: true,
-                                           receives_default: true,
-                                           mapView: this._mapView,
-                                           parseOnFocusOut: true,
-                                           maxChars: 15 });
-    },
+    _createRouteEntry: function(index, point) {
+        let type;
+        if (index === 0)
+            type = RouteEntry.Type.FROM;
+        else if (index === this._entryList.get_children().length)
+            type = RouteEntry.Type.TO;
+        else
+            type = RouteEntry.Type.VIA;
 
-    _createViaRow: function(listbox, index) {
-        let ui = Utils.getUIObject('route-via-row', [ 'via-grid',
-                                                      'via-remove-button',
-                                                      'via-entry-grid' ]);
-        let insertIndex = index - 1;
-        let entry = this._createPlaceEntry();
+        let routeEntry = new RouteEntry.RouteEntry({ type: type,
+                                                     point: point,
+                                                     mapView: this._mapView });
+        this._entryList.insert(routeEntry, index);
 
-        this._initRouteEntry(ui.viaEntryGrid, index);
-        listbox.insert(ui.viaGrid, insertIndex);
+        if (type === RouteEntry.Type.FROM) {
+            routeEntry.button.connect('clicked', (function() {
+                let lastIndex = this._entryList.get_children().length;
+                Application.routeService.query.addPoint(lastIndex - 1);
+            }).bind(this));
 
-        ui.viaRemoveButton.connect('clicked', function() {
-            let row = ui.viaGrid.get_parent();
-            let pointIndex = row.get_index();
-            Application.routeService.query.removePoint(pointIndex + 1);
-        });
-    },
-
-    _initRouteEntry: function(container, pointIndex) {
-        let entry = this._createPlaceEntry();
-        container.add(entry);
-
-        let point = Application.routeService.query.points[pointIndex];
-        entry.bind_property('place',
-                            point, 'place',
-                            GObject.BindingFlags.BIDIRECTIONAL);
-
-        return entry;
+            this.bind_property('child-revealed',
+                               routeEntry.entry, 'has_focus',
+                               GObject.BindingFlags.DEFAULT);
+        } else if (type === RouteEntry.Type.VIA) {
+            routeEntry.button.connect('clicked', function() {
+                let row = routeEntry.get_parent();
+                Application.routeService.query.removePoint(row.get_index());
+            });
+        }
     },
 
     _initInstructionList: function() {
@@ -211,9 +186,11 @@ const Sidebar = new Lang.Class({
         route.connect('reset', (function() {
             this._clearInstructions();
             this._instructionStack.visible_child = this._instructionWindow;
-            this._viaGridContainer.get_children().forEach((function(row) {
-                query.removePoint(row.get_index() + 1);
-            }).bind(this));
+
+            let length = this._entryList.get_children().length;
+            for (let index = 1; index < (length - 1); index++) {
+                query.removePoint(index);
+            }
         }).bind(this));
 
         query.connect('notify', (function() {
