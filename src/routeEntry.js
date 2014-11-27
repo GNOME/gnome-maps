@@ -18,6 +18,7 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
+const Gdk = imports.gi.Gdk;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
@@ -55,6 +56,14 @@ const RouteEntry = new Lang.Class({
 
         this.entry = this._createEntry();
         this._entryGrid.add(this.entry);
+
+        // There is no GdkWindow on the widget until it is realized
+        this._icon.connect('realize', function(icon) {
+            if (icon.window.get_cursor())
+                return;
+
+            icon.window.set_cursor(Gdk.Cursor.new(Gdk.CursorType.HAND1));
+        });
 
         switch (this._type) {
         case Type.FROM:

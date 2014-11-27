@@ -21,6 +21,8 @@
  *         Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
  */
 
+const Cairo = imports.cairo;
+const Gdk = imports.gi.Gdk;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
@@ -177,6 +179,8 @@ const Sidebar = new Lang.Class({
                 Application.routeService.query.removePoint(row.get_index());
             });
         }
+
+        this._initRouteDragAndDrop(routeEntry);
     },
 
     _initInstructionList: function() {
@@ -227,5 +231,134 @@ const Sidebar = new Lang.Class({
 
         this._timeInfo.label = '';
         this._distanceInfo.label = '';
+    },
+
+    // Iterate over points and establish the new order of places
+    _reorderRoutePoints: function(srcIndex, destIndex) {
+        let query = Application.routeService.query;
+        let points = query.points;
+        let srcPlace = this._draggedPoint.place;
+
+        // Determine if we are swapping from "above" or "below"
+        let step = (srcIndex < destIndex) ? -1 : 1;
+
+        // Hold off on notifying the changes to query.points until
+        // we have re-arranged the places.
+        query.freeze_notify();
+
+        for (let i = destIndex; i !== (srcIndex + step); i += step) {
+            // swap
+            [points[i].place, srcPlace] = [srcPlace, points[i].place];
+        }
+
+        query.thaw_notify();
+    },
+
+    _onDragDrop: function(row, context, x, y, time) {
+        let query = Application.routeService.query;
+        let srcIndex = query.points.indexOf(this._draggedPoint);
+        let destIndex = row.get_index();
+
+        this._reorderRoutePoints(srcIndex, destIndex);
+        Gtk.drag_finish(context, true, false, time);
+        return true;
+    },
+
+    _dragHighlightRow: function(row) {
+        row.opacity = 0.6;
+    },
+
+    _dragUnhighlightRow: function(row) {
+        row.opacity = 1.0;
+    },
+
+    // Set the opacity of the row we are currently dragging above
+    // to semi transparent.
+    _onDragMotion: function(row, context, x, y, time) {
+        let routeEntry = row.get_child();
+
+        if (this._draggedPoint && this._draggedPoint !== routeEntry.point) {
+            this._dragHighlightRow(row);
+            Gdk.drag_status(context, Gdk.DragAction.MOVE, time);
+        } else
+            Gdk.drag_status(context, 0, time);
+        return true;
+    },
+
+    // Drag ends, show the dragged row again.
+    _onDragEnd: function(context, row) {
+        this._draggedPoint = null;
+
+        // Restore to natural height
+        row.height_request = -1;
+        row.get_child().show();
+    },
+
+    // Drag begins, set the correct drag icon and hide the dragged row.
+    _onDragBegin: function(context, row) {
+        let routeEntry = row.get_child();
+        let dragEntry = this._dragWidget.get_child();
+
+        this._draggedPoint = routeEntry.point;
+
+        // Set a fixed height on the row to prevent the sidebar height
+        // to shrink while dragging a row.
+        let height = row.get_allocated_height();
+        row.height_request = height;
+        row.get_child().hide();
+
+        dragEntry.entry.text = routeEntry.entry.text;
+        Gtk.drag_set_icon_surface(context,
+                                  this._dragWidget.get_surface(), 0, 0);
+    },
+
+    // We add RouteEntry to an OffscreenWindow and paint the background
+    // of the entry to be transparent. We can later use the GtkOffscreenWindow
+    // method get_surface to generate our drag icon.
+    _initDragWidget: function() {
+        let dragEntry = new RouteEntry.RouteEntry({ type: RouteEntry.Type.TO,
+                                                    name: 'dragged-entry',
+                                                    app_paintable: true });
+        this._dragWidget = new Gtk.OffscreenWindow({ visible: true });
+
+        dragEntry.connect('draw', (function(widget, cr) {
+            cr.setSourceRGBA(0.0, 0.0, 0.0, 0.0);
+            cr.setOperator(Cairo.Operator.SOURCE);
+            cr.paint();
+            cr.setOperator(Cairo.Operator.OVER);
+        }).bind(this));
+
+        this._dragWidget.add(dragEntry);
+    },
+
+    // Set up drag and drop between RouteEntrys. The drag source is from a
+    // GtkEventBox that contains the start/end icon next in the entry. And
+    // the drag destination is the ListBox row.
+    _initRouteDragAndDrop: function(routeEntry) {
+        let dragIcon = routeEntry.iconEventBox;
+        let row = routeEntry.get_parent();
+
+        dragIcon.drag_source_set(Gdk.ModifierType.BUTTON1_MASK,
+                                 null,
+                                 Gdk.DragAction.MOVE);
+        dragIcon.drag_source_add_image_targets();
+
+        row.drag_dest_set(Gtk.DestDefaults.MOTION,
+                          null,
+                          Gdk.DragAction.MOVE);
+        row.drag_dest_add_image_targets();
+
+        dragIcon.connect('drag-begin', (function(icon, context) {
+            this._onDragBegin(context, row);
+        }).bind(this));
+        dragIcon.connect('drag-end', (function(icon, context) {
+            this._onDragEnd(context, row);
+        }).bind(this));
+
+        row.connect('drag-leave', this._dragUnhighlightRow.bind(this, row));
+        row.connect('drag-motion', this._onDragMotion.bind(this));
+        row.connect('drag-drop', this._onDragDrop.bind(this));
+
+        this._initDragWidget();
     }
 });
