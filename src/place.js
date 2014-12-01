@@ -44,6 +44,7 @@ const Place = new Lang.Class({
 
         if (params.place) {
             params = { osm_id: params.place.osm_id,
+                       osm_type: params.place.osm_type,
                        name: params.place.name,
                        location: params.place.location,
                        bounding_box: params.place.bounding_box,
@@ -66,6 +67,10 @@ const Place = new Lang.Class({
                 delete params[prop];
 
         this.parent(params);
+    },
+
+    get uniqueID() {
+        return this.osm_type + '-' + this.osm_id;
     },
 
     set population(v) {
@@ -151,6 +156,7 @@ const Place = new Lang.Class({
                          accuracy: this.location.accuracy };
 
         return { id: this.osm_id,
+                 osm_type: this.osm_type,
                  name: this.name,
                  bounding_box: bounding_box,
                  this_type: this.this_type,

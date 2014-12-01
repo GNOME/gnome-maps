@@ -90,21 +90,21 @@ const PlaceStore = new Lang.Class({
     },
 
     _addFavorite: function(place) {
-        if (this.exists(place.osm_id, PlaceType.FAVORITE)) {
+        if (this.exists(place, PlaceType.FAVORITE)) {
             return;
         }
 
-        if (this.exists(place.osm_id, PlaceType.RECENT)) {
+        if (this.exists(place, PlaceType.RECENT)) {
             this._removeIf((function(model, iter) {
                 let p = model.get_value(iter, Columns.PLACE);
-                return p.osm_id === place.osm_id;
-            }), true);
+                return p.uniqueID === place.uniqueID;
+            }).bind(this), true);
         }
         this._addPlace(place, PlaceType.FAVORITE);
     },
 
     _addRecent: function(place) {
-        if (this.exists(place.osm_id, PlaceType.RECENT)) {
+        if (this.exists(place, PlaceType.RECENT)) {
             this._updatePlace(place);
             return;
         }
@@ -117,7 +117,7 @@ const PlaceStore = new Lang.Class({
 
                 if (type === PlaceType.RECENT) {
                     let place = model.get_value(iter, Columns.PLACE);
-                    this._typeTable[place.osm_id] = null;
+                    this._typeTable[place.uniqueID] = null;
                     this._numRecent--;
                     return true;
                 }
@@ -163,13 +163,13 @@ const PlaceStore = new Lang.Class({
     },
 
     removePlace: function(place, placeType) {
-        if (!this.exists(place.osm_id, placeType))
+        if (!this.exists(place, placeType))
             return;
 
         this._removeIf((function(model, iter) {
             let p = model.get_value(iter, Columns.PLACE);
-            if (p.osm_id === place.osm_id) {
-                this._typeTable[place.osm_id] = null;
+            if (p.uniqueID === place.uniqueID) {
+                this._typeTable[place.uniqueID] = null;
                 return true;
             }
             return false;
@@ -223,27 +223,28 @@ const PlaceStore = new Lang.Class({
                 this.set(iter, [Columns.ICON], [pixbuf]);
             }).bind(this));
         }
-        this._typeTable[place.osm_id] = type;
+        this._typeTable[place.uniqueID] = type;
     },
 
-    get: function(osmId) {
-        let place = null;
-        this.foreach(function(model, path, iter) {
+    get: function(place) {
+        let storedPlace = null;
+
+        this.foreach((function(model, path, iter) {
             let p = model.get_value(iter, Columns.PLACE);
-            if (p.osm_id === osmId) {
-                place = p;
+            if (p.uniqueID === place.uniqueID) {
+                storedPlace = p;
                 return true;
             }
             return false;
-        });
-        return place;
+        }).bind(this));
+        return storedPlace;
     },
 
-    exists: function(osmId, type) {
+    exists: function(place, type) {
         if (type !== undefined && type !== null)
-            return this._typeTable[osmId] === type;
+            return this._typeTable[place.uniqueID] === type;
         else
-            return this._typeTable[osmId] !== undefined;
+            return this._typeTable[place.uniqueID] !== undefined;
     },
 
     _removeIf: function(evalFunc, stop) {
@@ -261,7 +262,7 @@ const PlaceStore = new Lang.Class({
         this.foreach((function(model, path, iter) {
             let p = model.get_value(iter, Columns.PLACE);
 
-            if (p.osm_id === place.osm_id) {
+            if (p.uniqueID === place.uniqueID) {
                 let type = model.get_value(iter, Columns.TYPE);
                 this._setPlace(iter, place, type, new Date().getTime());
                 this._store();

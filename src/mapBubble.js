@@ -99,7 +99,7 @@ const MapBubble = new Lang.Class({
 
     _initFavoriteButton: function(button) {
         let placeStore = Application.placeStore;
-        let isFavorite = placeStore.exists(this._place.osm_id,
+        let isFavorite = placeStore.exists(this._place,
                                            PlaceStore.PlaceType.FAVORITE);
         button.visible = true;
         button.active = isFavorite;

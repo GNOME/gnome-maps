@@ -55,8 +55,8 @@ const SearchResultBubble = new Lang.Class({
         this._title = ui.labelTitle;
         this._boxContent = ui.boxContent;
 
-        if (Application.placeStore.exists(this.place.osm_id, null)) {
-            let place = Application.placeStore.get(this.place.osm_id);
+        if (Application.placeStore.exists(this.place, null)) {
+            let place = Application.placeStore.get(this.place);
             this._populate(place);
         } else {
             let overpass = new Overpass.Overpass();
