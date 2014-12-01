@@ -101,19 +101,7 @@ const Geoclue = new Lang.Class({
     _init: function() {
         this.parent();
         this.connected = false;
-
-        let lastLocation = Application.settings.get('last-location');
-        if (lastLocation.length >= 3) {
-            let [lat, lng, accuracy] = lastLocation;
-            let lastLocationDescription = Application.settings.get('last-location-description');
-
-            let location = new Geocode.Location({ latitude: lat,
-                                                  longitude: lng,
-                                                  accuracy: accuracy });
-
-            this.place = new Geocode.Place({ location: location,
-                                             name: _("Current location") });
-        }
+        this.place = null;
 
         try {
             this._managerProxy = new ManagerProxy(Gio.DBus.system,
@@ -167,14 +155,10 @@ const Geoclue = new Lang.Class({
     },
 
     _updateLocation: function(location) {
+        if (!this.place)
+            this.place = new Geocode.Place();
+
         this.place.location = location;
-
-        Application.settings.set('last-location', [location.latitude,
-                                                   location.longitude,
-                                                   location.accuracy]);
-        if (location.description !== null)
-            Application.settings.set('last-location-description', location.description);
-
         this.emit('location-changed');
         Utils.debug("Updated location: " + location.description);
     }
