@@ -63,7 +63,7 @@ const Overpass = new Lang.Class({
     },
 
     addInfo: function(place, callback) {
-        let url = this._getQueryUrl(place.osm_id);
+        let url = this._getQueryUrl(place);
         let uri = new Soup.URI(url);
         let request = new Soup.Message({ method: 'GET',
                                          uri: uri });
@@ -105,17 +105,17 @@ const Overpass = new Lang.Class({
         return newPlace;
     },
 
-    _getQueryUrl: function(osmId) {
+    _getQueryUrl: function(place) {
         return Format.vprintf('%s?data=%s', [ BASE_URL,
-                                              this._generateOverpassQuery(osmId) ]);
+                                              this._generateOverpassQuery(place) ]);
     },
 
-    _generateOverpassQuery: function(osmId) {
+    _generateOverpassQuery: function(place) {
         return Format.vprintf('%s%s%s;%s;%s;',
                               [ this._getKeyValue('timeout', this.timeout),
                                 this._getKeyValue('out', this.outputFormat),
                                 this._getKeyValue('maxsize', this.maxsize),
-                                this._getData(osmId),
+                                this._getData(place),
                                 this._getOutput() ]);
     },
 
@@ -124,8 +124,18 @@ const Overpass = new Lang.Class({
                                            value ]);
     },
 
-    _getData: function(osmId) {
-        return Format.vprintf('node(%s)', [osmId]);
+    _osmTypeString: function(osmType) {
+        switch(osmType) {
+            case Geocode.PlaceOsmType.NODE: return 'node';
+            case Geocode.PlaceOsmType.RELATION: return 'relation';
+            case Geocode.PlaceOsmType.WAY: return 'way';
+            default: return 'node';
+        }
+    },
+
+    _getData: function(place) {
+        return Format.vprintf('%s(%s)', [this._osmTypeString(place.osm_type),
+                                         place.osm_id]);
     },
 
     _getOutput: function() {
