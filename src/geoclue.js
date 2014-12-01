@@ -156,7 +156,7 @@ const Geoclue = new Lang.Class({
 
     _updateLocation: function(location) {
         if (!this.place)
-            this.place = new Geocode.Place();
+            this.place = new Geocode.Place({ name: _("Current location") });
 
         this.place.location = location;
         this.emit('location-changed');
