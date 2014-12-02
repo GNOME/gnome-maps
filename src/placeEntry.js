@@ -24,6 +24,7 @@
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Geocode = imports.gi.GeocodeGlib;
+const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 
@@ -108,6 +109,9 @@ const PlaceEntry = new Lang.Class({
 
         this.connect('activate', this._onActivate.bind(this));
         this.connect('changed', (function() {
+            if (this._cancellable)
+                this._cancellable.cancel();
+
             this._refreshFilter();
 
             if (this.text.length === 0) {
@@ -218,7 +222,8 @@ const PlaceEntry = new Lang.Class({
         let bbox = this._mapView.view.get_bounding_box();
 
         this._popover.showSpinner();
-        Application.geocodeService.search(this.text, bbox, (function(places) {
+        this._cancellable = new Gio.Cancellable();
+        Application.geocodeService.search(this.text, bbox, this._cancellable, (function(places) {
             if (!places) {
                 this.place = null;
                 this._popover.hide();

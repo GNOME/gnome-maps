@@ -60,7 +60,7 @@ const ContextMenu = new Lang.Class({
                                               longitude: this._longitude,
                                               accuracy: 0 });
 
-        Application.geocodeService.reverse(location, (function(place) {
+        Application.geocodeService.reverse(location, null, (function(place) {
             this._mapView.showSearchResult(place);
         }).bind(this));
     },
