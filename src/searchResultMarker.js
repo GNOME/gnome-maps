@@ -42,10 +42,12 @@ const SearchResultMarker = new Lang.Class({
     },
 
     _createBubble: function() {
-        if (this.place.name) {
-            return new SearchResultBubble.SearchResultBubble({ place: this.place,
-                                                               mapView: this._mapView });
-        } else
+        if (!this.place.name)
             return null;
+
+        const Bubble = SearchResultBubble.SearchResultBubble;
+
+        return new Bubble ({ place: this.place,
+                             mapView: this._mapView });
     }
 });

@@ -29,8 +29,8 @@ const Transportation = {
     BIKE:       1,
     PEDESTRIAN: 2,
 
-    toString: function (transportation) {
-        switch(transportation) {
+    toString: function(transportation) {
+        switch (transportation) {
         case Transportation.CAR:        return 'car';
         case Transportation.BIKE:       return 'bike';
         case Transportation.PEDESTRIAN: return 'foot';
@@ -71,8 +71,10 @@ const RouteQuery = new Lang.Class({
     Extends: GObject.Object,
     Signals: {
         'reset': { },
-        'point-added': { param_types: [GObject.TYPE_OBJECT, GObject.TYPE_INT] },
-        'point-removed': { param_types: [GObject.TYPE_OBJECT, GObject.TYPE_INT] }
+        'point-added': { param_types: [ GObject.TYPE_OBJECT,
+                                        GObject.TYPE_INT ] },
+        'point-removed': { param_types: [ GObject.TYPE_OBJECT,
+                                          GObject.TYPE_INT] }
     },
     Properties: {
         'points': GObject.ParamSpec.object('points',

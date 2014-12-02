@@ -86,11 +86,11 @@ const Application = new Lang.Class({
         let addr = new Gio.NetworkAddress({ hostname: 'tile.openstreetmap.org',
                                             port: 80 });
 
-        networkMonitor.can_reach_async(addr, null, (function(networkMonitor, res) {
+        networkMonitor.can_reach_async(addr, null, (function(monitor, res) {
             try {
                 if (networkMonitor.can_reach_finish(res))
                     this.connected = true;
-            } catch(e) {
+            } catch (e) {
                 this.connected = false;
                 Utils.debug('Connection failed: ' + e.message);
             }
@@ -125,7 +125,7 @@ const Application = new Lang.Class({
 
         GtkClutter.init(null);
 
-        Utils.loadStyleSheet(Gio.file_new_for_uri('resource:///org/gnome/maps/application.css'));
+        Utils.loadStyleSheet('resource:///org/gnome/maps/application.css');
 
         application = this;
         this._initServices();
@@ -154,9 +154,11 @@ const Application = new Lang.Class({
 
         Gtk.IconTheme.get_default().append_search_path(Path.ICONS_DIR);
         let overlay = new Gtk.Overlay({ visible: true, can_focus: false });
-        notificationManager = new NotificationManager.NotificationManager(overlay);
+        notificationManager =
+            new NotificationManager.NotificationManager(overlay);
         this._mainWindow = new MainWindow.MainWindow(this, overlay);
-        this._mainWindow.window.connect('destroy', this._onWindowDestroy.bind(this));
+        this._mainWindow.window.connect('destroy',
+                                        this._onWindowDestroy.bind(this));
     },
 
     vfunc_dbus_register: function(connection, path) {

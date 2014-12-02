@@ -56,7 +56,8 @@ const Overpass = new Lang.Class({
         this.outputInfo = params.outputInfo || _DEFAULT_OUTPUT_INFO;
 
         // data sort order : qt(fastest based on geography), ids, asc
-        this.outputSortOrder = params.outputSortOrder || _DEFAULT_OUTPUT_SORT_ORDER;
+        this.outputSortOrder = params.outputSortOrder
+            || _DEFAULT_OUTPUT_SORT_ORDER;
 
         // HTTP Session Variables
         this._session = new Soup.Session();
@@ -78,7 +79,7 @@ const Overpass = new Lang.Class({
                 callback(true,
                          message.status_code,
                          this._createPlace(place, jsonObj));
-            } catch(e) {
+            } catch (e) {
                 callback(false, message.status_code, null);
             }
         }).bind(this));
@@ -106,8 +107,8 @@ const Overpass = new Lang.Class({
     },
 
     _getQueryUrl: function(osmId) {
-        return Format.vprintf('%s?data=%s', [ BASE_URL,
-                                              this._generateOverpassQuery(osmId) ]);
+        let query = this._generateOverpassQuery(osmId);
+        return Format.vprintf('%s?data=%s', [ BASE_URL, query ]);
     },
 
     _generateOverpassQuery: function(osmId) {

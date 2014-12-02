@@ -99,17 +99,20 @@ const TurnPoint = new Lang.Class({
     },
 
     _getIconName: function() {
-        switch(this._type) {
-        case TurnPointType.SHARP_LEFT:   return 'maps-direction-sharpleft-symbolic';
-        case TurnPointType.LEFT:         return 'maps-direction-left-symbolic';
-        case TurnPointType.SLIGHT_LEFT:  return 'maps-direction-slightleft-symbolic';
-        case TurnPointType.CONTINUE:     return 'maps-direction-continue-symbolic';
-        case TurnPointType.SLIGHT_RIGHT: return 'maps-direction-slightright-symbolic';
-        case TurnPointType.RIGHT:        return 'maps-direction-right-symbolic';
-        case TurnPointType.SHARP_RIGHT:  return 'maps-direction-sharpright-symbolic';
-        case TurnPointType.START:        return 'maps-point-start-symbolic';
-        case TurnPointType.VIA:          return 'maps-point-end-symbolic';
-        case TurnPointType.END:          return 'maps-point-end-symbolic';
+        let dir = 'maps-direction-';
+        let point = 'maps-point-';
+
+        switch (this._type) {
+        case TurnPointType.SHARP_LEFT:   return dir   + 'sharpleft-symbolic';
+        case TurnPointType.LEFT:         return dir   + 'left-symbolic';
+        case TurnPointType.SLIGHT_LEFT:  return dir   + 'slightleft-symbolic';
+        case TurnPointType.CONTINUE:     return dir   + 'continue-symbolic';
+        case TurnPointType.SLIGHT_RIGHT: return dir   + 'slightright-symbolic';
+        case TurnPointType.RIGHT:        return dir   + 'right-symbolic';
+        case TurnPointType.SHARP_RIGHT:  return dir   + 'sharpright-symbolic';
+        case TurnPointType.START:        return point + 'start-symbolic';
+        case TurnPointType.VIA:          return point + 'end-symbolic';
+        case TurnPointType.END:          return point + 'end-symbolic';
         default:                         return '';
         }
     }

@@ -29,8 +29,8 @@ const _PLACE_ICON_SIZE = 20;
 const SearchPopup = new Lang.Class({
     Name: 'SearchPopup',
     Extends: Gtk.Popover,
-    Signals : {
-        'selected' : { param_types: [ GObject.TYPE_OBJECT ] }
+    Signals: {
+        'selected': { param_types: [ GObject.TYPE_OBJECT ] }
     },
     Template: 'resource:///org/gnome/maps/search-popup.ui',
     InternalChildren: [ 'scrolledWindow',
@@ -96,15 +96,17 @@ const SearchPopup = new Lang.Class({
             row.destroy();
         });
 
-        places.forEach((function(place) {
-            if (!place.location)
-                return;
+        places.forEach(this._addPlace.bind(this, searchString));
+    },
 
-            let row = new PlaceListRow.PlaceListRow({ place: place,
-                                                      searchString: searchString,
-                                                      maxChars: this._maxChars,
-                                                      can_focus: true });
-            this._list.add(row);
-        }).bind(this));
+    _addPlace: function(searchString, place) {
+        if (!place.location)
+            return;
+
+        let row = new PlaceListRow.PlaceListRow({ place: place,
+                                                  searchString: searchString,
+                                                  maxChars: this._maxChars,
+                                                  can_focus: true });
+        this._list.add(row);
     }
 });

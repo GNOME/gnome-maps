@@ -113,7 +113,10 @@ const SearchResultBubble = new Lang.Class({
         }
 
         if (place.wheelchair) {
-            infos.push(_("Wheelchair access: %s").format(place.wheelchairTranslated));
+            let wheelchair = _("Wheelchair access: %s")
+                    .format(place.wheelchairTranslated);
+
+            infos.push(wheelchair);
         }
 
         infos.forEach((function(info) {

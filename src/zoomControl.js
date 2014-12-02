@@ -28,7 +28,7 @@ const ZoomControl = new Lang.Class({
     Name: 'ZoomControl',
     Extends: Gtk.Bin,
 
-    _init: function (mapView) {
+    _init: function(mapView) {
         this.parent({ halign: Gtk.Align.START,
                       valign: Gtk.Align.START,
                       margin_top: 6,
@@ -56,7 +56,7 @@ const ZoomControl = new Lang.Class({
         this.add(ui.zoomControl);
     },
 
-    _updateSensitive: function () {
+    _updateSensitive: function() {
         let zoomLevel = this._view.zoom_level;
         let maxZoomLevel = this._view.max_zoom_level;
         let minZoomLevel = this._view.min_zoom_level;

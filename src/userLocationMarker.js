@@ -74,14 +74,20 @@ const UserLocationMarker = new Lang.Class({
         this.add_actor(Utils.CreateActorFromIconName('user-location'));
 
         if (this.place.location.accuracy > 0) {
-            this._accuracyMarker = new AccuracyCircleMarker({ place: this.place });
+            this._accuracyMarker =
+                new AccuracyCircleMarker({ place: this.place });
             this._accuracyMarker.refreshGeometry(this._view);
-            this._zoomLevelId = this._view.connect('notify::zoom-level',
-                                                   this._accuracyMarker.refreshGeometry.bind(this._accuracyMarker));
+            this._zoomLevelId =
+                this._view.connect('notify::zoom-level',
+                                   this._onZoomLevelChange.bind(this));
             this.connect('destroy', (function() {
                 this._view.disconnect(this._zoomLevelId);
             }).bind(this));
         }
+    },
+
+    _onZoomLevelChange: function() {
+        this._accuracyMarker.refreshGeometry();
     },
 
     get anchor() {
@@ -90,8 +96,10 @@ const UserLocationMarker = new Lang.Class({
     },
 
     _createBubble: function() {
-        return new UserLocationBubble.UserLocationBubble({ place: this.place,
-                                                           mapView: this._mapView });
+        const Bubble = UserLocationBubble.UserLocationBubble;
+
+        return new Bubble({ place: this.place,
+                            mapView: this._mapView });
     },
 
     addToLayer: function(layer) {

@@ -49,9 +49,10 @@ const InstructionRow = new Lang.Class({
         ui.instructionLabel.label = this.turnPoint.instruction;
         ui.directionImage.icon_name = this.turnPoint.iconName;
 
-        if (this.turnPoint.distance > 0)
-            ui.distanceLabel.label = Utils.prettyDistance(this.turnPoint.distance);
-
+        if (this.turnPoint.distance > 0) {
+            ui.distanceLabel.label
+                = Utils.prettyDistance(this.turnPoint.distance);
+        }
         this.add(ui.instructionBox);
     }
 });
@@ -128,12 +129,13 @@ const Sidebar = new Lang.Class({
             if (button.active && query.transportation !== mode)
                 query.transportation = mode;
         };
-        pedestrian.connect('toggled', onToggle.bind(this, transport.PEDESTRIAN));
+        pedestrian.connect('toggled',
+                           onToggle.bind(this, transport.PEDESTRIAN));
         car.connect('toggled', onToggle.bind(this, transport.CAR));
         bike.connect('toggled', onToggle.bind(this, transport.BIKE));
 
         let setToggles = function() {
-            switch(query.transportation) {
+            switch (query.transportation) {
             case transport.PEDESTRIAN:
                 pedestrian.active = true;
                 break;
@@ -233,12 +235,13 @@ const Sidebar = new Lang.Class({
                 this._instructionList.add(row);
             }).bind(this));
 
-            /* Translators: %s is a time expression with the format "%f h" or "%f min" */
-            this._timeInfo.label = _("Estimated time: %s").format(Utils.prettyTime(route.time));
+            let time = Utils.prettyTime(route.time);
+            // Translators: %s is a time expression in format "%f h" or "%f min"
+            this._timeInfo.label = _("Estimated time: %s").format();
             this._distanceInfo.label = Utils.prettyDistance(route.distance);
         }).bind(this));
 
-        this._instructionList.connect('row-selected',(function(listbox, row) {
+        this._instructionList.connect('row-selected', (function(listbox, row) {
             if (row)
                 this._mapView.showTurnPoint(row.turnPoint);
         }).bind(this));

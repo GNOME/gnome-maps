@@ -44,13 +44,13 @@ const MapWalker = new Lang.Class({
     },
 
     _createBoundingBox: function(place) {
-        if (place.bounding_box !== null) {
-            return new Champlain.BoundingBox({ top: place.bounding_box.top,
-                                               bottom: place.bounding_box.bottom,
-                                               left: place.bounding_box.left,
-                                               right: place.bounding_box.right });
-        } else
+        if (place.bounding_box === null) 
             return null;
+
+        return new Champlain.BoundingBox({ top:    place.bounding_box.top,
+                                           bottom: place.bounding_box.bottom,
+                                           left:   place.bounding_box.left,
+                                           right:  place.bounding_box.right });
     },
 
     // Zoom to the maximal zoom-level that fits the place type
@@ -108,29 +108,35 @@ const MapWalker = new Lang.Class({
             return;
         }
 
-        /* Lets first ensure that both current and destination location are visible
-         * before we start the animated journey towards destination itself. We do this
-         * to create the zoom-out-then-zoom-in effect that many map implementations
-         * do. This not only makes the go-to animation look a lot better visually but
-         * also give user a good idea of where the destination is compared to current
-         * location.
+        /* Lets first ensure that both current and destination location are
+         * visible before we start the animated journey towards destination
+         * itself. We do this to create the zoom-out-then-zoom-in effect that
+         * many map implementations do. This not only makes the go-to animation
+         * look a lot better visually but also give user a good idea of where
+         * the destination is compared to current location.
          */
 
         this._view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_CUBIC;
+        let lat = this._view.get_center_latitude();
+        let lng = this._view.get_center_longitude();
 
-        let fromLocation = new Geocode.Location({ latitude: this._view.get_center_latitude(),
-                                                  longitude: this._view.get_center_longitude() });
+        let fromLocation = new Geocode.Location({ latitude: lat,
+                                                  longitude:  lng });
         this._updateGoToDuration(fromLocation);
 
         Utils.once(this._view, 'animation-completed', (function() {
             Utils.once(this._view, 'animation-completed::go-to', (function() {
                 this.zoomToFit();
-                this._view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_OUT_CUBIC;
+                this._view.goto_animation_mode
+                    = Clutter.AnimationMode.EASE_IN_OUT_CUBIC;
                 this.emit('gone-to');
             }).bind(this));
 
-            this._view.goto_animation_mode = Clutter.AnimationMode.EASE_OUT_CUBIC;
-            this._view.go_to(this.place.location.latitude, this.place.location.longitude);
+            this._view.goto_animation_mode
+                = Clutter.AnimationMode.EASE_OUT_CUBIC;
+
+            this._view.go_to(this.place.location.latitude,
+                             this.place.location.longitude);
         }).bind(this));
 
         this._ensureVisible(fromLocation);
@@ -148,12 +154,12 @@ const MapWalker = new Lang.Class({
                                                      right: -180,
                                                      bottom:  90,
                                                      top:    -90 });
-
-            [fromLocation, this.place.location].forEach(function(location) {
-                visibleBox.left   = Math.min(visibleBox.left,   location.longitude);
-                visibleBox.right  = Math.max(visibleBox.right,  location.longitude);
-                visibleBox.bottom = Math.min(visibleBox.bottom, location.latitude);
-                visibleBox.top    = Math.max(visibleBox.top,    location.latitude);
+            let locations =  [fromLocation, this.place.location];
+            locations.forEach(function({ longitude, latitude }) {
+                visibleBox.left   = Math.min(visibleBox.left,   longitude);
+                visibleBox.right  = Math.max(visibleBox.right,  longitude);
+                visibleBox.bottom = Math.min(visibleBox.bottom, latitude);
+                visibleBox.top    = Math.max(visibleBox.top,    latitude);
             });
         }
 

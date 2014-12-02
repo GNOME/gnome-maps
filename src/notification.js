@@ -75,10 +75,10 @@ const Plain = new Lang.Class({
 
     _init: function(msg) {
         this.parent();
-        let label = new Gtk.Label({ visible : true,
-                                    hexpand : true,
-                                    halign  : Gtk.Align.START,
-                                    label   : msg });
+        let label = new Gtk.Label({ visible: true,
+                                    hexpand: true,
+                                    halign:  Gtk.Align.START,
+                                    label:   msg });
         this._ui.body.add(label);
     }
 });

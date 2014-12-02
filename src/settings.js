@@ -45,6 +45,6 @@ const Settings = new Lang.Class({
     },
 
     set: function(name, value) {
-        this.set_value(name, GLib.Variant.new (this._keyTypes[name], value));
+        this.set_value(name, GLib.Variant.new(this._keyTypes[name], value));
     }
 });

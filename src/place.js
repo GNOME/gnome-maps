@@ -105,7 +105,7 @@ const Place = new Lang.Class({
     },
 
     _translateWheelchair: function(string) {
-        switch(string) {
+        switch (string) {
             /* Translators:
              * This means wheelchairs have full unrestricted access.
              */
@@ -179,24 +179,24 @@ Place.fromJSON = function(obj) {
     for (let key in obj) {
         let prop = obj[key];
 
-        switch(key) {
-            case 'id':
-                props.osm_id = prop;
-                break;
+        switch (key) {
+        case 'id':
+            props.osm_id = prop;
+            break;
 
-            case 'location':
-                props.location = new Geocode.Location(prop);
-                break;
+        case 'location':
+            props.location = new Geocode.Location(prop);
+            break;
 
-            case 'bounding_box':
-                if (prop)
-                    props.bounding_box = new Geocode.BoundingBox(prop);
-                break;
+        case 'bounding_box':
+            if (prop)
+                props.bounding_box = new Geocode.BoundingBox(prop);
+            break;
 
-            default:
-                if (prop !== null && prop !== undefined)
-                    props[key] = prop;
-                break;
+        default:
+            if (prop !== null && prop !== undefined)
+                props[key] = prop;
+            break;
         }
     }
     return new Place(props);

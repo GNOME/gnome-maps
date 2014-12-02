@@ -59,12 +59,11 @@ const PlaceEntry = new Lang.Class({
             return;
 
         if (p) {
-            if (p.name) {
+            if (p.name)
                 this.text = p.name;
-            } else
+            else
                 this.text = p.location.latitude + ', ' + p.location.longitude;
-        } else
-            this.text = '';
+        } else this.text = '';
 
         this._place = p;
         this.notify('place');
@@ -133,7 +132,7 @@ const PlaceEntry = new Lang.Class({
     _createPopover: function(numVisible, maxChars) {
         let popover = new SearchPopup.SearchPopup({ num_visible:   numVisible,
                                                     relative_to:   this,
-                                                    maxChars:      maxChars});
+                                                    maxChars:      maxChars });
 
         this.connect('size-allocate', (function(widget, allocation) {
             // Magic number to make the alignment pixel perfect.
@@ -163,10 +162,10 @@ const PlaceEntry = new Lang.Class({
             if (this._validateCoordinates(latitude, longitude)) {
                 return new Geocode.Location({ latitude: latitude,
                                               longitude: longitude });
-            } else
-                return null;
-        } else
-            return null;
+            }
+        }
+
+        return null;
     },
 
     _parse: function() {

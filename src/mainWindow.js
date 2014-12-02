@@ -74,7 +74,8 @@ const MainWindow = new Lang.Class({
         this._contextMenu = new ContextMenu.ContextMenu(this.mapView);
 
         ui.layersButton.popover = new LayersPopover.LayersPopover();
-        ui.favoritesButton.popover = new FavoritesPopover.FavoritesPopover({ mapView: this.mapView });
+        ui.favoritesButton.popover
+            = new FavoritesPopover.FavoritesPopover({ mapView: this.mapView });
         this._overlay.add_overlay(new ZoomControl.ZoomControl(this.mapView));
 
         this._mainStack = ui.mainStack;
@@ -97,13 +98,14 @@ const MainWindow = new Lang.Class({
     },
 
     _createPlaceEntry: function() {
-        let placeEntry = new PlaceEntry.PlaceEntry({ mapView:       this.mapView,
-                                                     visible:       true,
-                                                     margin_start:  6,
-                                                     margin_end:    6,
-                                                     width_request: 500,
-                                                     loupe:         true
-                                                   });
+        let placeEntry =
+                new PlaceEntry.PlaceEntry({ mapView:       this.mapView,
+                                            visible:       true,
+                                            margin_start:  6,
+                                            margin_end:    6,
+                                            width_request: 500,
+                                            loupe:         true
+                                          });
         placeEntry.connect('notify::place', (function() {
             if (placeEntry.place) {
                 this.mapView.showSearchResult(placeEntry.place);
@@ -119,9 +121,10 @@ const MainWindow = new Lang.Class({
     },
 
     _createSidebar: function() {
+        let query = Application.routeService.query;
         let sidebar = new Sidebar.Sidebar(this.mapView);
-        Application.routeService.query.connect('notify',
-                                               this._setRevealSidebar.bind(this, true));
+        query.connect('notify',
+                      this._setRevealSidebar.bind(this, true));
         sidebar.bind_property('reveal-child',
                               this.mapView, 'routeVisible',
                               GObject.BindingFlags.DEFAULT);
@@ -181,7 +184,7 @@ const MainWindow = new Lang.Class({
                                   this.mapView.grab_focus.bind(this.mapView));
 
         this.window.application.connect('notify::connected', (function() {
-            if(this.window.application.connected)
+            if (this.window.application.connected)
                 this._mainStack.visible_child = this._overlay;
             else
                 this._mainStack.visible_child = this._noNetworkView;
@@ -200,14 +203,15 @@ const MainWindow = new Lang.Class({
         }).bind(this));
 
         Application.geoclue.connect('notify::connected', (function() {
-            this._gotoUserLocationButton.sensitive = Application.geoclue.connected;
+            this._gotoUserLocationButton.sensitive =
+                Application.geoclue.connected;
         }).bind(this));
 
         this.window.application.connect('notify::connected', (function() {
             let app = this.window.application;
 
-            this._gotoUserLocationButton.sensitive = (app.connected &&
-                                                      Application.geoclue.connected);
+            this._gotoUserLocationButton.sensitive =
+                (app.connected && Application.geoclue.connected);
             this._layersButton.sensitive = app.connected;
             this._toggleSidebarButton.sensitive = app.connected;
             this._favoritesButton.sensitive = (app.connected &&
@@ -255,11 +259,15 @@ const MainWindow = new Lang.Class({
             this._configureId = 0;
         }
 
-        this._configureId = Mainloop.timeout_add(_CONFIGURE_ID_TIMEOUT, (function() {
-            this._saveWindowGeometry();
-            this._configureId = 0;
-            return false;
-        }).bind(this));
+        this._configureId =
+            Mainloop.timeout_add(_CONFIGURE_ID_TIMEOUT,
+                                 this._onConfigureIdTimeout.bind(this));
+    },
+
+    _onConfigureIdTimeout: function() {
+        this._saveWindowGeometry();
+        this._configureId = 0;
+        return false;
     },
 
     _onWindowStateEvent: function(widget, event) {
@@ -325,8 +333,8 @@ const MainWindow = new Lang.Class({
             program_name: _("Maps"),
             comments: _("A map application for GNOME"),
             copyright: 'Copyright ' + String.fromCharCode(0x00A9) +
-                       ' 2011' + String.fromCharCode(0x2013) +
-                       '2013 Red Hat, Inc.',
+                ' 2011' + String.fromCharCode(0x2013) +
+                '2013 Red Hat, Inc.',
             license_type: Gtk.License.GPL_2_0,
             logo_icon_name: 'gnome-maps',
             version: Config.PACKAGE_VERSION,

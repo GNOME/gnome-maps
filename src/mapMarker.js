@@ -122,7 +122,8 @@ const MapMarker = new Lang.Class({
             bubble.position = Gtk.PositionType.LEFT;
         else if (pos.x + pos.width / 2 - bubbleSize.width / 2 <= 0)
             bubble.position = Gtk.PositionType.RIGHT;
-        // Avoid bubble to cover header bar if the marker is close to the top map edge
+        // Avoid bubble to cover header bar if the marker is close to the top
+        // map edge
         else if (pos.y - bubbleSize.height <= 0)
             bubble.position = Gtk.PositionType.BOTTOM;
     },
@@ -168,26 +169,30 @@ const MapMarker = new Lang.Class({
         this._hideBubbleOn('notify::size');
 
         // This is done to get just one marker selected at any time regardless
-        // of the layer to which it belongs so we can get only one visible bubble
-        // at any time. We do this for markers in different layers because for
-        // markers in the same layer, ChamplainMarkerLayer single selection mode
-        // does the job.
+        // of the layer to which it belongs so we can get only one visible
+        // bubble at any time. We do this for markers in different layers
+        // because for markers in the same layer, ChamplainMarkerLayer single
+        // selection mode does the job.
         this._mapView.onSetMarkerSelected(this);
 
-        let markerSelectedSignalId = this._mapView.connect('marker-selected', (function(mapView, selectedMarker) {
-            if (this.get_parent() !== selectedMarker.get_parent())
-                this.selected = false;
-        }).bind(this));
+        let markerSelectedSignalId =
+                this._mapView.connect('marker-selected',
+                                      this._onMapMarkerSelected.bind(this));
 
-        let goingToSignalId = this._mapView.connect('going-to',
-                                                    this.set_selected.bind(this, false));
-        let buttonPressSignalId = this._view.connect('button-press-event',
-                                                     this.set_selected.bind(this, false));
-        // Destroy the bubble when the marker is destroyed o removed from a layer
-        let parentSetSignalId = this.connect('parent-set',
-                                             this.set_selected.bind(this, false));
-        let dragMotionSignalId = this.connect('drag-motion',
-                                              this.set_selected.bind(this, false));
+        let goingToSignalId =
+                this._mapView.connect('going-to',
+                                      this.set_selected.bind(this, false));
+        let buttonPressSignalId =
+                this._view.connect('button-press-event',
+                                   this.set_selected.bind(this, false));
+        // Destroy the bubble when the marker is destroyed or removed from a
+        // layer
+        let parentSetSignalId =
+                this.connect('parent-set',
+                             this.set_selected.bind(this, false));
+        let dragMotionSignalId =
+                this.connect('drag-motion',
+                             this.set_selected.bind(this, false));
 
         Utils.once(this.bubble, 'closed', (function() {
             this._mapView.disconnect(markerSelectedSignalId);
@@ -201,6 +206,11 @@ const MapMarker = new Lang.Class({
         }).bind(this));
     },
 
+    _onMapMarkerSelected: function(mapView, selectedMarker) {
+        if (this.get_parent() !== selectedMarker.get_parent())
+            this.selected = false;
+    },
+
     _isInsideView: function() {
         let [tx, ty, tz] = this.get_translation();
         let x = this._view.longitude_to_x(this.longitude);
@@ -208,7 +218,7 @@ const MapMarker = new Lang.Class({
         let mapSize = this._mapView.get_allocation();
 
         return x + tx + this.width > 0 && x + tx < mapSize.width &&
-               y + ty + this.height > 0 && y + ty < mapSize.height;
+            y + ty + this.height > 0 && y + ty < mapSize.height;
     },
 
     showBubble: function() {

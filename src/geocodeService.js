@@ -60,7 +60,7 @@ const GeocodeService = new Lang.Class({
         let reverse = Geocode.Reverse.new_for_location(location);
 
         Application.application.mark_busy();
-        reverse.resolve_async (null, (function(reverse, res) {
+        reverse.resolve_async(null, (function(reverse, res) {
             Application.application.unmark_busy();
             try {
                 let place = reverse.resolve_finish(res);

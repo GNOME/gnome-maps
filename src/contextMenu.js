@@ -63,5 +63,5 @@ const ContextMenu = new Lang.Class({
         Application.geocodeService.reverse(location, (function(place) {
             this._mapView.showSearchResult(place);
         }).bind(this));
-    },
+    }
 });

@@ -24,7 +24,7 @@ const Lang = imports.lang;
 const Soup = imports.gi.Soup;
 
 function encode(data) {
-    if(data === null)
+    if (data === null)
         return null;
 
     return Soup.URI.encode(data.toString(), null);
@@ -35,7 +35,7 @@ const Query = new Lang.Class({
 
     _init: function(obj) {
         this._query = {};
-        for(let key in obj) {
+        for (let key in obj) {
             this.add(key, obj[key]);
         }
     },
@@ -43,10 +43,10 @@ const Query = new Lang.Class({
     // a value === null represents an empty value
     add: function(key, value) {
         // Initialize query field if it isn't already
-        if(!Array.isArray(this._query[key]))
+        if (!Array.isArray(this._query[key]))
             this._query[key] = [];
 
-        if(Array.isArray(value))
+        if (Array.isArray(value))
             this._query[key] = this._query[key].concat(value);
         else
             this._query[key].push(value);
@@ -54,12 +54,12 @@ const Query = new Lang.Class({
 
     toString: function() {
         let vars = [];
-        for(let key in this._query) {
+        for (let key in this._query) {
             let values = this._query[key];
             let encKey = encode(key);
             values.forEach(function(value) {
                 let encValue = encode(value);
-                if(encValue !== null)
+                if (encValue !== null)
                     vars.push([encKey, encValue].join('='));
                 else
                     vars.push(encKey);

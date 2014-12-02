@@ -30,9 +30,10 @@ const UserLocationBubble = new Lang.Class({
     Extends: MapBubble.MapBubble,
 
     _init: function(params) {
-        let ui = Utils.getUIObject('user-location-bubble', [ 'grid-content',
-                                                             'label-accuracy',
-                                                             'label-coordinates' ]);
+        let ui = Utils.getUIObject('user-location-bubble',
+                                   [ 'grid-content',
+                                     'label-accuracy',
+                                     'label-coordinates' ]);
         params.buttons = MapBubble.Button.ROUTE | MapBubble.Button.SHARE;
         params.routeFrom = true;
 
@@ -41,8 +42,10 @@ const UserLocationBubble = new Lang.Class({
         this.image.icon_name = 'find-location-symbolic';
         this.image.pixel_size = 48;
 
-        let accuracyDescription = Utils.getAccuracyDescription(this.place.location.accuracy);
-        ui.labelAccuracy.label = ui.labelAccuracy.label.format(accuracyDescription);
+        let accuracyDescription
+                = Utils.getAccuracyDescription(this.place.location.accuracy);
+        ui.labelAccuracy.label
+            = ui.labelAccuracy.label.format(accuracyDescription);
         ui.labelCoordinates.label = this.place.location.latitude.toFixed(5)
                                   + ', '
                                   + this.place.location.longitude.toFixed(5);

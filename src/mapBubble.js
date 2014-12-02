@@ -116,7 +116,8 @@ const MapBubble = new Lang.Class({
     },
 
     _initShareButton: function(button) {
-        let dialog = new ShareDialog.ShareDialog({ transient_for: this.get_toplevel(),
+        let toplevel = this.get_toplevel();
+        let dialog = new ShareDialog.ShareDialog({ transient_for: toplevel,
                                                    place: this._place });
         if (!dialog.ensureShares())
             return;

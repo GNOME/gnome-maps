@@ -22,7 +22,7 @@
  */
 
 // Google encoded polyline decoder
-// https://developers.google.com/maps/documentation/utilities/polylinealgorithm
+// (https://developers.google.com/maps/documentation/utilities/polylinealgorithm)
 
 const Champlain = imports.gi.Champlain;
 
@@ -41,7 +41,7 @@ function _decodeValue(data, index) {
         shift += 5;
     } while (b >= 0x20);
 
-    // negative values are encoded as two's complement
+    // Negative values are encoded as two's complement
     let ret_val = ((value & 1) ? ~(value >> 1) : (value >> 1));
     return [ret_val, index];
 }
@@ -59,7 +59,7 @@ function decode(data) {
         [latdelta, index] = _decodeValue(data, index);
         [londelta, index] = _decodeValue(data, index);
 
-        // first value is absolute, rest are relative to previous value
+        // First value is absolute, rest are relative to previous value
         lat += latdelta;
         lon += londelta;
         polyline.push(new Champlain.Coordinate({

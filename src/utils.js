@@ -36,7 +36,7 @@ const _ = imports.gettext.gettext;
 const METRIC_SYSTEM = 1;
 const IMPERIAL_SYSTEM = 2;
 
-//List of locales using imperial system according to glibc locale database
+// List of locales using imperial system according to glibc locale database
 const IMPERIAL_LOCALES = ['unm_US', 'es_US', 'es_PR', 'en_US', 'yi_US'];
 
 let debugInit = false;
@@ -72,12 +72,13 @@ function addSignalMethods(proto) {
     proto.once = once.bind(undefined, proto);
 }
 
-function loadStyleSheet(file) {
+function loadStyleSheet(uri) {
     let provider = new Gtk.CssProvider();
-    provider.load_from_file(file);
+    provider.load_from_file(Gio.file_new_for_uri(uri));
+    let priority = Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION;
     Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(),
                                              provider,
-                                             Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+                                             priority);
 }
 
 function clearGtkClutterActorBg(actor) {
@@ -89,13 +90,13 @@ function clearGtkClutterActorBg(actor) {
 }
 
 function addActions(actionMap, entries) {
-    for(let name in entries) {
+    for (let name in entries) {
         let entry = entries[name];
         let action = createAction(name, entry);
 
         actionMap.add_action(action);
 
-        if(entry.accels)
+        if (entry.accels)
             setAccelsForActionMap(actionMap, name, entry.accels);
     }
 }
@@ -104,10 +105,10 @@ function setAccelsForActionMap(actionMap, actionName, accels) {
     let app;
     let prefix;
 
-    if(actionMap instanceof Gtk.Application) {
+    if (actionMap instanceof Gtk.Application) {
         app = actionMap;
         prefix = "app";
-    } else if(actionMap instanceof Gtk.Window) {
+    } else if (actionMap instanceof Gtk.Window) {
         app = actionMap.application;
         prefix = "win";
     }
@@ -117,19 +118,19 @@ function setAccelsForActionMap(actionMap, actionName, accels) {
 function createAction(name, { state, paramType, onActivate, onChangeState }) {
     let entry = { name: name };
 
-    if(Array.isArray(state)) {
+    if (Array.isArray(state)) {
         let [type, value] = state;
         entry.state = new GLib.Variant.new(type, value);
     }
 
-    if(paramType !== undefined)
+    if (paramType !== undefined)
         entry.parameter_type = GLib.VariantType.new(paramType);
 
     let action = new Gio.SimpleAction(entry);
 
-    if(onActivate)
+    if (onActivate)
         action.connect('activate', onActivate);
-    if(onChangeState)
+    if (onChangeState)
         action.connect('change-state', onChangeState);
 
     return action;
@@ -182,7 +183,7 @@ function CreateActorFromIconName(name) {
         actor.set_size(pixbuf.get_width(), pixbuf.get_height());
 
         return actor;
-    } catch(e) {
+    } catch (e) {
         log("Failed to load image: " + e.message);
         return null;
     }
@@ -248,7 +249,7 @@ function getMeasurementSystem() {
 }
 
 function getAccuracyDescription(accuracy) {
-    switch(accuracy) {
+    switch (accuracy) {
     case Geocode.LOCATION_ACCURACY_UNKNOWN:
         /* Translators: Accuracy of user location information */
         return _("Unknown");
@@ -276,7 +277,7 @@ function _load_file_icon(icon, loadCompleteCallback) {
         return;
     }
 
-    if (icon.file.has_uri_scheme ("http") || icon.file.has_uri_scheme ("https")) {
+    if (icon.file.has_uri_scheme("http") || icon.file.has_uri_scheme("https")) {
         _load_http_icon(icon, loadCompleteCallback);
         return;
     }
@@ -290,7 +291,7 @@ function _load_file_icon(icon, loadCompleteCallback) {
 
             _iconStore[icon.file.get_uri()] = pixbuf;
             loadCompleteCallback(pixbuf);
-        } catch(e) {
+        } catch (e) {
             log("Failed to load pixbuf: " + e);
         }
     });
@@ -307,14 +308,14 @@ function _load_http_icon(icon, loadCompleteCallback) {
         }
 
         let contents = msg.response_body.flatten().get_as_bytes();
-        let stream = Gio.MemoryInputStream.new_from_data
-                    (contents.get_data (null));
+        let data = contents.get_data(null);
+        let stream = Gio.MemoryInputStream.new_from_data(data);
         try {
             let pixbuf = GdkPixbuf.Pixbuf.new_from_stream(stream, null);
 
             _iconStore[icon.file.get_uri()] = pixbuf;
             loadCompleteCallback(pixbuf);
-        } catch(e) {
+        } catch (e) {
             log("Failed to load pixbuf: " + e);
         }
     });
@@ -339,7 +340,7 @@ function _load_themed_icon(icon, size, loadCompleteCallback) {
     try {
         let pixbuf = info.load_icon();
         loadCompleteCallback(pixbuf);
-    } catch(e) {
+    } catch (e) {
         log("Failed to load pixbuf: " + e);
     }
 }
@@ -353,7 +354,7 @@ function prettyTime(time) {
 
     let labelledTime = "";
     if (hours > 0)
-        labelledTime += _("%f h").format(hours)+' ';
+        labelledTime += _("%f h").format(hours) + ' ';
     if (minutes > 0)
         labelledTime += _("%f min").format(minutes);
     return labelledTime;
@@ -362,14 +363,15 @@ function prettyTime(time) {
 function prettyDistance(distance) {
     distance = Math.round(distance);
 
-    if (getMeasurementSystem() === METRIC_SYSTEM){
+    if (getMeasurementSystem() === METRIC_SYSTEM) {
         if (distance >= 1000) {
             distance = Math.round(distance / 1000 * 10) / 10;
             /* Translators: This is a distance measured in kilometers */
             return _("%f km").format(distance);
-        } else
+        } else {
             /* Translators: This is a distance measured in meters */
             return _("%f m").format(distance);
+        }
     } else {
         // Convert to feet
         distance = Math.round(distance * 3.2808399);
@@ -378,8 +380,9 @@ function prettyDistance(distance) {
             distance = Math.round(distance / 5280 * 10) / 10;
             /* Translators: This is a distance measured in miles */
             return _("%f mi").format(distance);
-        } else
+        } else {
             /* Translators: This is a distance measured in feet */
             return _("%f ft").format(distance);
+        }
     }
 }

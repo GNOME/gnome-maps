@@ -75,7 +75,8 @@ const FavoritesPopover = new Lang.Class({
             let visible = Math.min(this._rows, _N_VISIBLE);
 
             // + 6 Makes it pixel perfect
-            this._scrolledWindow.min_content_height = visible * (PlaceListRow.ROW_HEIGHT + 6);
+            this._scrolledWindow.min_content_height
+                = visible * (PlaceListRow.ROW_HEIGHT + 6);
             this._revealer.reveal_child = this._rows > _N_VISIBLE;
         }).bind(this));
 

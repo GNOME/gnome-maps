@@ -46,7 +46,7 @@ const GraphHopper = new Lang.Class({
     },
 
     _init: function() {
-        this._session = new Soup.Session({ user_agent : Config.USER_AGENT });
+        this._session = new Soup.Session({ user_agent: Config.USER_AGENT });
         this._key     = "VCIHrHj0pDKb8INLpT4s5hVadNmJ1Q3vi0J4nJYP";
         this._baseURL = "http://graphhopper.com/api/1/route?";
         this._locale  = GLib.get_language_names()[0];
@@ -69,14 +69,16 @@ const GraphHopper = new Lang.Class({
             try {
                 let result = this._parseMessage(message);
                 if (!result) {
-                    Application.notificationManager.showMessage(_("No route found."));
+                    let notification = _("No route found.");
+                    Application.notificationManager.showMessage(notification);
                     this.route.reset();
                 } else {
                     let route = this._createRoute(result.paths[0]);
                     this.route.update(route);
                 }
-            } catch(e) {
-                Application.notificationManager.showMessage(_("Route request failed."));
+            } catch (e) {
+                let notification = _("Route request failed.");
+                Application.notificationManager.showMessage(notification);
                 log(e);
             }
         }).bind(this));
@@ -84,7 +86,8 @@ const GraphHopper = new Lang.Class({
 
     _buildURL: function(points, transportation) {
         let locations = points.map(function(point) {
-            return [point.place.location.latitude, point.place.location.longitude].join(',');
+            return [point.place.location.latitude,
+                    point.place.location.longitude].join(',');
         });
         let vehicle = RouteQuery.Transportation.toString(transportation);
         let query = new HTTP.Query({ type:    'json',
@@ -144,19 +147,22 @@ const GraphHopper = new Lang.Class({
     },
 
     _createTurnPoints: function(path, instructions) {
-        let startPoint = new Route.TurnPoint({ coordinate:  path[0],
-                                               type:        Route.TurnPointType.START,
-                                               distance:    0,
-                                               instruction: _("Start!"),
-                                               time:        0
-                                             });
+        let startPoint
+                = new Route.TurnPoint({ coordinate:  path[0],
+                                        type:        Route.TurnPointType.START,
+                                        distance:    0,
+                                        instruction: _("Start!"),
+                                        time:        0
+                                      });
         let rest = instructions.map(this._createTurnPoint.bind(this, path));
         return [startPoint].concat(rest);
     },
 
     _createTurnPoint: function(path, { text, distance, time, interval, sign }) {
+        let type = this._createTurnPointType(sign);
+
         return new Route.TurnPoint({ coordinate:  path[interval[0]],
-                                     type:        this._createTurnPointType(sign),
+                                     type:        type,
                                      distance:    distance,
                                      instruction: text,
                                      time:        time });

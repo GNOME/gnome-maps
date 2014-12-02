@@ -104,19 +104,22 @@ const Geoclue = new Lang.Class({
         this.place = null;
 
         try {
-            this._managerProxy = new ManagerProxy(Gio.DBus.system,
-                                                  "org.freedesktop.GeoClue2",
-                                                  "/org/freedesktop/GeoClue2/Manager");
-            this._managerProxy.GetClientRemote(this._onGetClientReady.bind(this));
+            this._managerProxy
+                = new ManagerProxy(Gio.DBus.system,
+                                   "org.freedesktop.GeoClue2",
+                                   "/org/freedesktop/GeoClue2/Manager");
+            this._managerProxy
+                .GetClientRemote(this._onGetClientReady.bind(this));
         } catch (e) {
             Utils.debug("Failed to connect to GeoClue2 service: " + e.message);
-            log('Connection with GeoClue failed, we are not able to find your location!');
+            log('Connection with GeoClue failed, '
+                + 'we are not able to find your location!');
         }
     },
 
     _onGetClientReady: function(result, e) {
         if (e) {
-            log ("Failed to connect to GeoClue2 service: " + e.message);
+            log("Failed to connect to GeoClue2 service: " + e.message);
             return;
         }
 
@@ -132,19 +135,22 @@ const Geoclue = new Lang.Class({
                                         this._onLocationUpdated.bind(this));
         this._clientProxy.StartRemote((function(result, e) {
             if (e) {
-                log ("Failed to connect to GeoClue2 service: " + e.message);
+                log("Failed to connect to GeoClue2 service: " + e.message);
             }
         }).bind(this));
     },
 
     _onLocationUpdated: function(proxy, sender, [oldPath, newPath]) {
-        let geoclueLocation = new LocationProxy(Gio.DBus.system,
+        let { Latitude,
+              Longitude,
+              Accuracy,
+              Description } = new LocationProxy(Gio.DBus.system,
                                                 "org.freedesktop.GeoClue2",
                                                 newPath);
-        let location = new Geocode.Location({ latitude: geoclueLocation.Latitude,
-                                              longitude: geoclueLocation.Longitude,
-                                              accuracy: geoclueLocation.Accuracy,
-                                              description: geoclueLocation.Description });
+        let location = new Geocode.Location({ latitude: Latitude,
+                                              longitude: Longitude,
+                                              accuracy: Accuracy,
+                                              description: Description });
 
         this._updateLocation(location);
 

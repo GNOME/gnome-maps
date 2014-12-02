@@ -53,7 +53,7 @@ function completionMatchFunc(completion, key, iter) {
     if (name === null)
         return false;
 
-    name = GLib.utf8_normalize (name, -1, GLib.NormalizeMode.ALL);
+    name = GLib.utf8_normalize(name, -1, GLib.NormalizeMode.ALL);
     if (name === null)
         return false;
 

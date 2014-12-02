@@ -33,7 +33,7 @@ const NotificationManager = new Lang.Class({
         this._cache = {};
     },
 
-    showMessage: function (msg) {
+    showMessage: function(msg) {
         let notification = new Notification.Plain(msg);
         notification.connect('dismissed',
                              notification.destroy.bind(notification));
@@ -42,7 +42,7 @@ const NotificationManager = new Lang.Class({
     },
 
     showNotification: function(notification) {
-        if(notification.get_parent() !== this._overlay) {
+        if (notification.get_parent() !== this._overlay) {
             this._overlay.add_overlay(notification);
 
             notification.connect('dismissed', (function() {
@@ -51,5 +51,5 @@ const NotificationManager = new Lang.Class({
             }).bind(this));
         }
         notification.reveal();
-    },
+    }
 });

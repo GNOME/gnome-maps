@@ -93,7 +93,7 @@ const MapView = new Lang.Class({
 
         view.connect('notify::latitude', this._onViewMoved.bind(this));
         view.connect('notify::longitude', this._onViewMoved.bind(this));
-        // switching map type will set view min-zoom-level from map source
+        // Switching map type will set view min-zoom-level from map source
         view.connect('notify::min-zoom-level', (function() {
             if (view.min_zoom_level < MapMinZoom) {
                 view.min_zoom_level = MapMinZoom;
@@ -103,22 +103,25 @@ const MapView = new Lang.Class({
     },
 
     _initLayers: function() {
-        let strokeColor = new Clutter.Color({ red: 0,
-                                               blue: 255,
-                                               green: 0,
-                                               alpha: 100 });
+        let color = new Clutter.Color({ red: 0,
+                                        blue: 255,
+                                        green: 0,
+                                        alpha: 100 });
         this._routeLayer = new Champlain.PathLayer({ stroke_width: 5.0,
-                                                     stroke_color: strokeColor });
+                                                     stroke_color: color });
         this.view.add_layer(this._routeLayer);
 
         let mode = Champlain.SelectionMode.SINGLE;
-        this._searchResultLayer = new Champlain.MarkerLayer({ selection_mode: mode });
+        this._searchResultLayer =
+            new Champlain.MarkerLayer({ selection_mode: mode });
         this.view.add_layer(this._searchResultLayer);
 
-        this._instructionMarkerLayer = new Champlain.MarkerLayer({ selection_mode: mode });
+        this._instructionMarkerLayer =
+            new Champlain.MarkerLayer({ selection_mode: mode });
         this.view.add_layer(this._instructionMarkerLayer);
 
-        this._userLocationLayer = new Champlain.MarkerLayer({ selection_mode: mode });
+        this._userLocationLayer =
+            new Champlain.MarkerLayer({ selection_mode: mode });
         this.view.add_layer(this._userLocationLayer);
     },
 
@@ -133,7 +136,7 @@ const MapView = new Lang.Class({
         }).bind(this));
 
         query.connect('notify', (function() {
-                this.routeVisible = query.isValid();
+            this.routeVisible = query.isValid();
         }).bind(this));
     },
 
@@ -159,7 +162,8 @@ const MapView = new Lang.Class({
     userLocationVisible: function() {
         let box = this.view.get_bounding_box();
 
-        return box.covers(this._userLocation.latitude, this._userLocation.longitude);
+        return box.covers(this._userLocation.latitude,
+                          this._userLocation.longitude);
     },
 
     _updateUserLocation: function() {
@@ -168,13 +172,14 @@ const MapView = new Lang.Class({
 
         let place = Application.geoclue.place;
 
-        let previousSelected = this._userLocation && this._userLocation.selected;
-        this._userLocation = new UserLocationMarker.UserLocationMarker({ place: place,
-                                                                         mapView: this });
+        let selected = this._userLocation && this._userLocation.selected;
+        this._userLocation
+            = new UserLocationMarker.UserLocationMarker({ place: place,
+                                                          mapView: this });
         this._userLocationLayer.remove_all();
         this._userLocation.addToLayer(this._userLocationLayer);
 
-        this._userLocation.selected = previousSelected;
+        this._userLocation.selected = selected;
 
         this.emit('user-location-changed');
     },
@@ -186,16 +191,18 @@ const MapView = new Lang.Class({
         if (turnPoint.isStop())
             return;
 
-        this._turnPointMarker = new TurnPointMarker.TurnPointMarker({ turnPoint: turnPoint,
-                                                                      mapView: this });
+        this._turnPointMarker =
+            new TurnPointMarker.TurnPointMarker({ turnPoint: turnPoint,
+                                                  mapView: this });
         this._instructionMarkerLayer.add_marker(this._turnPointMarker);
         this._turnPointMarker.goToAndSelect(true);
     },
 
     showSearchResult: function(place) {
         this._searchResultLayer.remove_all();
-        let searchResultMarker = new SearchResultMarker.SearchResultMarker({ place: place,
-                                                                             mapView: this });
+        let searchResultMarker =
+                new SearchResultMarker.SearchResultMarker({ place: place,
+                                                            mapView: this });
 
         this._searchResultLayer.add_marker(searchResultMarker);
         searchResultMarker.goToAndSelect(true);
@@ -211,12 +218,12 @@ const MapView = new Lang.Class({
 
         let [lat, lon] = route.bbox.get_center();
         let place = new Geocode.Place({
-            location     : new Geocode.Location({ latitude  : lat,
-                                                  longitude : lon }),
-            bounding_box : new Geocode.BoundingBox({ top    : route.bbox.top,
-                                                     bottom : route.bbox.bottom,
-                                                     left   : route.bbox.left,
-                                                     right  : route.bbox.right })
+            location:     new Geocode.Location({ latitude:  lat,
+                                                 longitude: lon }),
+            bounding_box: new Geocode.BoundingBox({ top:    route.bbox.top,
+                                                    bottom: route.bbox.bottom,
+                                                    left:   route.bbox.left,
+                                                    right:  route.bbox.right })
         });
 
         this._showDestinationTurnpoints();
@@ -226,19 +233,25 @@ const MapView = new Lang.Class({
     _showDestinationTurnpoints: function() {
         let route = Application.routeService.route;
         let query = Application.routeService.query;
-        let pointIndex = 0;
 
         this._instructionMarkerLayer.remove_all();
-        route.turnPoints.forEach(function(turnPoint) {
-            if (turnPoint.isStop()) {
-                let queryPoint = query.filledPoints[pointIndex];
-                let destinationMarker = new TurnPointMarker.DestinationMarker({ turnPoint: turnPoint,
-                                                                                queryPoint: queryPoint,
-                                                                                mapView: this });
-                this._instructionMarkerLayer.add_marker(destinationMarker);
-                pointIndex++;
-            }
+
+        route.turnPoints.filter(function(turnPoint) {
+            return turnPoint.isStop();
+        }).forEach(function(turnPoint, index) {
+            let queryPoint = query.filledPoints[index];
+            this._showDestinationMarker(turnPoint, queryPoint);
         }, this);
+    },
+
+    _showDestinationMarker: function(turnPoint, queryPoint) {
+        let marker = new TurnPointMarker.DestinationMarker({
+            turnPoint: turnPoint,
+            queryPoint: queryPoint,
+            mapView: this
+        });
+
+        this._instructionMarkerLayer.add_marker(marker);
     },
 
     _onViewMoved: function() {
