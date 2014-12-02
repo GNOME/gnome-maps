@@ -48,7 +48,7 @@ const QueryPoint = new Lang.Class({
                                           '',
                                           GObject.ParamFlags.READABLE |
                                           GObject.ParamFlags.WRITABLE,
-                                          Geocode.Place),
+                                          Geocode.Place)
     },
 
     _init: function() {
@@ -76,11 +76,11 @@ const RouteQuery = new Lang.Class({
     },
     Properties: {
         'points': GObject.ParamSpec.object('points',
-                                            '',
-                                            '',
+                                           '',
+                                           '',
                                            GObject.ParamFlags.READABLE |
                                            GObject.ParamFlags.WRITABLE,
-                                            GObject.Object),
+                                           GObject.Object),
         'transportation': GObject.ParamSpec.int('transportation',
                                                 '',
                                                 '',
