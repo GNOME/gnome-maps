@@ -45,7 +45,7 @@ const MapBubble = new Lang.Class({
     Abstract: true,
 
     _init: function(params) {
-        this._place = params.place;
+        this._place = new Place.Place({ place: params.place });
         delete params.place;
 
         this._mapView = params.mapView;
@@ -104,13 +104,11 @@ const MapBubble = new Lang.Class({
         button.visible = true;
         button.active = isFavorite;
         button.connect('toggled', (function() {
-            let place = new Place.Place({ place: this._place });
-
             if (button.active)
-                placeStore.addPlace(place,
+                placeStore.addPlace(this._place,
                                     PlaceStore.PlaceType.FAVORITE);
             else
-                placeStore.removePlace(place,
+                placeStore.removePlace(this._place,
                                        PlaceStore.PlaceType.FAVORITE);
         }).bind(this));
     },
