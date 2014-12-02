@@ -39,6 +39,33 @@ const Transportation = {
     }
 };
 
+const QueryPoint = new Lang.Class({
+    Name: 'QueryPoint',
+    Extends: GObject.Object,
+    Properties: {
+        'place': GObject.ParamSpec.object('place',
+                                          '',
+                                          '',
+                                          GObject.ParamFlags.READABLE |
+                                          GObject.ParamFlags.WRITABLE,
+                                          Geocode.Place),
+    },
+
+    _init: function() {
+        this._place = null;
+        this.parent();
+    },
+
+    set place(p) {
+        this._place = p;
+        this.notify('place');
+    },
+
+    get place() {
+        return this._place;
+    }
+});
+
 const RouteQuery = new Lang.Class({
     Name: 'RouteQuery',
     Extends: GObject.Object,
@@ -139,32 +166,5 @@ const RouteQuery = new Lang.Class({
     toString: function() {
         return "\nPoints: " + this.points +
                "\nTransportation: " + this.transportation;
-    }
-});
-
-const QueryPoint = new Lang.Class({
-    Name: 'QueryPoint',
-    Extends: GObject.Object,
-    Properties: {
-        'place': GObject.ParamSpec.object('place',
-                                          '',
-                                          '',
-                                          GObject.ParamFlags.READABLE |
-                                          GObject.ParamFlags.WRITABLE,
-                                          Geocode.Place),
-    },
-
-    _init: function() {
-        this._place = null;
-        this.parent();
-    },
-
-    set place(p) {
-        this._place = p;
-        this.notify('place');
-    },
-
-    get place() {
-        return this._place;
     }
 });
