@@ -32,7 +32,7 @@ const GeocodeService = new Lang.Class({
 
     _init: function() { },
 
-    search: function(string, bbox, callback) {
+    search: function(string, bbox, cancellable, callback) {
         let answerCount = Application.settings.get('max-search-results');
         let forward     = Geocode.Forward.new_for_string(string);
 
@@ -46,7 +46,7 @@ const GeocodeService = new Lang.Class({
         }
         forward.bounded = false;
         forward.set_answer_count(answerCount);
-        forward.search_async(null, function(forward, res) {
+        forward.search_async(cancellable, function(forward, res) {
             try {
                 let places = forward.search_finish(res);
                 callback(places);
