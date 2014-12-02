@@ -200,4 +200,4 @@ Place.fromJSON = function(obj) {
         }
     }
     return new Place(props);
-}
+};
