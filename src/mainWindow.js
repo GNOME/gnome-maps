@@ -31,7 +31,9 @@ const Mainloop = imports.mainloop;
 const Application = imports.application;
 const ContextMenu = imports.contextMenu;
 const FavoritesPopover = imports.favoritesPopover;
+const Geoclue = imports.geoclue;
 const LayersPopover = imports.layersPopover;
+const LocationServiceNotification = imports.locationServiceNotification;
 const MapView = imports.mapView;
 const PlaceEntry = imports.placeEntry;
 const PlaceStore = imports.placeStore;
@@ -185,6 +187,13 @@ const MainWindow = new Lang.Class({
         }).bind(this));
     },
 
+    _updateLocationSensitivity: function() {
+        let sensitive = (Application.geoclue.state !== Geoclue.State.INITIAL &&
+                         this.window.application.connected);
+
+        this._gotoUserLocationButton.sensitive = sensitive;
+    },
+
     _initHeaderbar: function() {
         this._placeEntry = this._createPlaceEntry();
         this._headerBar.custom_title = this._placeEntry;
@@ -196,15 +205,12 @@ const MainWindow = new Lang.Class({
             this._favoritesButton.sensitive = favoritesPopover.rows > 0;
         }).bind(this));
 
-        Application.geoclue.connect('notify::connected', (function() {
-            this._gotoUserLocationButton.sensitive = Application.geoclue.connected;
-        }).bind(this));
-
+        Application.geoclue.connect('notify::state',
+                                    this._updateLocationSensitivity.bind(this));
         this.window.application.connect('notify::connected', (function() {
             let app = this.window.application;
 
-            this._gotoUserLocationButton.sensitive = (app.connected &&
-                                                      Application.geoclue.connected);
+            this._updateLocationSensitivity();
             this._layersButton.sensitive = app.connected;
             this._toggleSidebarButton.sensitive = app.connected;
             this._favoritesButton.sensitive = (app.connected &&
@@ -283,8 +289,37 @@ const MainWindow = new Lang.Class({
         return false;
     },
 
+    _getLocationServiceNotification: function() {
+        if (!this._locationServiceNotification) {
+            this._locationServiceNotification =
+                new LocationServiceNotification.LocationServiceNotification();
+        }
+
+        return this._locationServiceNotification;
+    },
+
     _onGotoUserLocationActivate: function() {
-        this.mapView.gotoUserLocation(true);
+        let message;
+        switch(Application.geoclue.state) {
+        case Geoclue.State.FAILED:
+            message = _("Failed to connect to location service");
+            Application.notificationManager.showMessage(message);
+            break;
+
+        case Geoclue.State.TIMEOUT:
+            message = _("Position not found");
+            Application.notificationManager.showMessage(message);
+            break;
+
+        case Geoclue.State.OFF:
+            let notification = this._getLocationServiceNotification();
+            Application.notificationManager.showNotification(notification);
+            break;
+
+        default:
+            this.mapView.gotoUserLocation(true);
+            break;
+        }
     },
 
     _onMapTypeMenuActivate: function(action) {

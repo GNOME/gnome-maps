@@ -24,9 +24,11 @@ const GObject = imports.gi.GObject;
 const Geocode = imports.gi.GeocodeGlib;
 const Gio = imports.gi.Gio;
 const Lang = imports.lang;
+const Mainloop = imports.mainloop;
 
 const Application = imports.application;
 const Place = imports.place;
+const Settings = imports.settings;
 const Utils = imports.utils;
 
 const ManagerInterface = '<node> \
@@ -55,14 +57,6 @@ const ClientInterface = '<node> \
 </node>';
 const ClientProxy = Gio.DBusProxy.makeProxyWrapper(ClientInterface);
 
-const AccuracyLevel = {
-    COUNTRY: 1,
-    CITY: 4,
-    NEIGHBORHOOD: 5,
-    STREET: 6,
-    EXACT: 8
-};
-
 const LocationInterface = '<node> \
 <interface name="org.freedesktop.GeoClue2.Location"> \
     <property name="Latitude" type="d" access="read"/> \
@@ -73,6 +67,25 @@ const LocationInterface = '<node> \
 </node>';
 const LocationProxy = Gio.DBusProxy.makeProxyWrapper(LocationInterface);
 
+const AccuracyLevel = {
+    COUNTRY: 1,
+    CITY: 4,
+    NEIGHBORHOOD: 5,
+    STREET: 6,
+    EXACT: 8
+};
+
+const State = {
+    INITIAL: 0,
+    ON: 1,
+    OFF: 2,
+    FAILED: 3,
+    TIMEOUT: 4
+};
+
+const _TIMEOUT = 5000;
+const _LOCATION_SETTINGS = 'org.gnome.system.location';
+
 const Geoclue = new Lang.Class({
     Name: 'Geoclue',
     Extends: GObject.Object,
@@ -80,28 +93,52 @@ const Geoclue = new Lang.Class({
         'location-changed': { }
     },
     Properties: {
-        'connected': GObject.ParamSpec.boolean('connected',
-                                               'Connected',
-                                               'Connected to DBus service',
-                                               GObject.ParamFlags.READABLE |
-                                               GObject.ParamFlags.WRITABLE,
-                                               false)
+        'state': GObject.ParamSpec.int('state',
+                                       '',
+                                       '',
+                                       GObject.ParamFlags.READABLE |
+                                       GObject.ParamFlags.WRITABLE,
+                                       State.INITIAL,
+                                       State.TIMEOUT,
+                                       State.INITIAL)
     },
 
-    set connected(c) {
-        this._connected = c;
-        this.notify('connected');
+    set state(s) {
+        this._state = s;
+        this.notify('state');
     },
 
-    get connected() {
-        return this._connected;
+    get state() {
+        return this._state;
     },
 
     _init: function() {
         this.parent();
-        this.connected = false;
         this.place = null;
+        this._state = State.INITIAL;
+        this._timeoutId = 0;
 
+        // Check the system Location settings
+        this._locationSettings = Settings.getSettings(_LOCATION_SETTINGS);
+        if (this._locationSettings) {
+            this._locationSettings.connect('changed::enabled',
+                                           this._updateFromSettings.bind(this));
+            this._updateFromSettings();
+        } else {
+            this._initLocationService();
+        }
+    },
+
+    _updateFromSettings: function() {
+        if (this._locationSettings.get('enabled')) {
+            if (this._state !== State.ON)
+                Mainloop.idle_add(this._initLocationService.bind(this));
+        } else {
+            this.state = State.OFF;
+        }
+    },
+
+    _initLocationService: function() {
         try {
             this._managerProxy = new ManagerProxy(Gio.DBus.system,
                                                   "org.freedesktop.GeoClue2",
@@ -109,13 +146,14 @@ const Geoclue = new Lang.Class({
             this._managerProxy.GetClientRemote(this._onGetClientReady.bind(this));
         } catch (e) {
             Utils.debug("Failed to connect to GeoClue2 service: " + e.message);
-            log('Connection with GeoClue failed, we are not able to find your location!');
+            this.state = State.FAILED;
         }
     },
 
     _onGetClientReady: function(result, e) {
         if (e) {
-            log ("Failed to connect to GeoClue2 service: " + e.message);
+            Utils.debug("Failed to connect to GeoClue2 service: " + e.message);
+            this.state = State.FAILED;
             return;
         }
 
@@ -127,12 +165,25 @@ const Geoclue = new Lang.Class({
         this._clientProxy.DesktopId = "org.gnome.Maps";
         this._clientProxy.RequestedAccuracyLevel = AccuracyLevel.EXACT;
 
-        this._clientProxy.connectSignal('LocationUpdated',
-                                        this._onLocationUpdated.bind(this));
-        this._clientProxy.StartRemote((function(result, e) {
-            if (e) {
-                log ("Failed to connect to GeoClue2 service: " + e.message);
+        this._updatedId = this._clientProxy.connectSignal('LocationUpdated',
+                                                          this._onLocationUpdated.bind(this));
+
+        if (this._timeoutId !== 0)
+            Mainloop.source_remove(this._timeoutId);
+
+        this._timeoutId = Mainloop.timeout_add(_TIMEOUT, (function() {
+            if (this.state !== State.ON || this.state !== State.OFF) {
+                this.state = State.TIMEOUT;
+                return true;
             }
+
+            this._timeoutId = 0;
+            return false;
+        }).bind(this));
+
+        this._clientProxy.StartRemote((function(result, e) {
+            if (e)
+                this.state = State.FAILED;
         }).bind(this));
     },
 
@@ -144,13 +195,10 @@ const Geoclue = new Lang.Class({
                                               longitude: geoclueLocation.Longitude,
                                               accuracy: geoclueLocation.Accuracy,
                                               description: geoclueLocation.Description });
-
         this._updateLocation(location);
-
-        this.connected = this._clientProxy.Active;
-        this._clientProxy.connect('g-properties-changed', (function() {
-            this.connected = this._clientProxy.Active;
-        }).bind(this));
+        Mainloop.source_remove(this._timeoutId);
+        this._timeoutId = 0;
+        this.state = State.ON;
     },
 
     _updateLocation: function(location) {
