@@ -28,6 +28,7 @@ const GtkChamplain = imports.gi.GtkChamplain;
 const Lang = imports.lang;
 
 const Application = imports.application;
+const Geoclue = imports.geoclue;
 const MapWalker = imports.mapWalker;
 const Place = imports.place;
 const SearchResultMarker = imports.searchResultMarker;
@@ -78,7 +79,9 @@ const MapView = new Lang.Class({
         this.setMapType(MapType.STREET);
 
         this._updateUserLocation();
-        Application.geoclue.connect("location-changed",
+        Application.geoclue.connect('location-changed',
+                                    this._updateUserLocation.bind(this));
+        Application.geoclue.connect('notify::state',
                                     this._updateUserLocation.bind(this));
 
         this._connectRouteSignals();
@@ -164,8 +167,15 @@ const MapView = new Lang.Class({
     },
 
     _updateUserLocation: function() {
-        if (!Application.geoclue || !Application.geoclue.place)
+        if (!Application.geoclue.place)
             return;
+
+        if (Application.geoclue.state !== Geoclue.State.ON) {
+            if (this._userLocation)
+                this._userLocation.destroy();
+            this._userLocation = null;
+            return;
+        }
 
         let place = Application.geoclue.place;
 
