@@ -45,9 +45,9 @@ const NotificationManager = new Lang.Class({
         if(notification.get_parent() !== this._overlay) {
             this._overlay.add_overlay(notification);
 
-            notification.connect('dismissed', (function() {
+            let dismissId = notification.connect('dismissed', (function() {
                 this._overlay.remove(notification);
-                notification.disconnectAll();
+                notification.disconnect(dismissId);
             }).bind(this));
         }
         notification.reveal();
