@@ -48,7 +48,7 @@ const GraphHopper = new Lang.Class({
     _init: function() {
         this._session = new Soup.Session({ user_agent : Config.USER_AGENT });
         this._key     = "VCIHrHj0pDKb8INLpT4s5hVadNmJ1Q3vi0J4nJYP";
-        this._baseURL = "http://graphhopper.com/api/1/route?";
+        this._baseURL = "https://graphhopper.com/api/1/route?";
         this._locale  = GLib.get_language_names()[0];
         this._route   = new Route.Route();
         this._query   = new RouteQuery.RouteQuery();
