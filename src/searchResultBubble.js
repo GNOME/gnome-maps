@@ -100,7 +100,7 @@ const SearchResultBubble = new Lang.Class({
             infos.push(_("Population: %s").format(place.population));
 
         if (place.openingHours)
-            infos.push(_("Opening hours: %s").format(place.openingHours));
+            infos.push(_("Opening hours: %s").format(place.openingHoursTranslated));
 
         if (place.wiki) {
             let link = this._formatWikiLink(place.wiki);

@@ -25,6 +25,7 @@ const _ = imports.gettext.gettext;
 const Geocode = imports.gi.GeocodeGlib;
 const GLib = imports.gi.GLib;
 const Lang = imports.lang;
+const Translations = imports.translations;
 
 const Place = new Lang.Class({
     Name: 'Place',
@@ -98,6 +99,10 @@ const Place = new Lang.Class({
         return this._openingHours;
     },
 
+    get openingHoursTranslated() {
+        return Translations.translateOpeningHours(this._openingHours);
+    },
+
     set wheelchair(v) {
         this._wheelchair = v;
     },
@@ -140,6 +145,7 @@ const Place = new Lang.Class({
             default: return null;
         }
     },
+
 
     toJSON: function() {
         let bounding_box = null;
