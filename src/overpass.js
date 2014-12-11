@@ -32,7 +32,7 @@ const _DEFAULT_OUTPUT_COUNT = 1e6;
 const _DEFAULT_OUTPUT_INFO = 'body';
 const _DEFAULT_OUTPUT_SORT_ORDER = 'qt';
 
-const BASE_URL = 'http://overpass-api.de/api/interpreter';
+const BASE_URL = 'https://overpass-api.de/api/interpreter';
 
 const Overpass = new Lang.Class({
     Name: 'Overpass',
