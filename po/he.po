@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps 3.9.91\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-24 18:37+0200\n"
-"PO-Revision-Date: 2014-11-24 18:45+0200\n"
-"Last-Translator: Yosef Or Boczko <yoseforb@gnome.org>\n"
+"POT-Creation-Date: 2014-12-12 11:41+0200\n"
+"PO-Revision-Date: 2014-12-12 11:49+0200\n"
+"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
@@ -48,8 +48,8 @@ msgstr ""
 "קרוב לאוניברסיטה, תל אביב”."
 
 #. Translators: This is the program name.
-#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:79
-#: ../src/mainWindow.js:333 ../src/main-window.ui.h:1
+#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:81
+#: ../src/mainWindow.js:325 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "מפות"
 
@@ -86,48 +86,68 @@ msgid "Window maximization state"
 msgstr "Window maximization state"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:7
-msgid "Last known location and accuracy"
-msgstr "Last known location and accuracy"
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:8
-msgid ""
-"Last known location (latitude and longitude in degrees) and accuracy (in "
-"meters)."
-msgstr ""
-"Last known location (latitude and longitude in degrees) and accuracy (in "
-"meters)."
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:9
-msgid "Description of last known location"
-msgstr "Description of last known location"
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:10
-msgid "Description of last known location of user."
-msgstr "Description of last known location of user."
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:11
 msgid "Maximum number of search results"
 msgstr "Maximum number of search results"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:12
+#: ../data/org.gnome.maps.gschema.xml.in.h:8
 msgid "Maximum number of search results from geocode search."
 msgstr "Maximum number of search results from geocode search."
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:13
-msgid "User set last known location"
-msgstr "User set last known location"
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:14
-msgid "Whether the last known location was set manually by the user."
-msgstr "Whether the last known location was set manually by the user."
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:15
+#: ../data/org.gnome.maps.gschema.xml.in.h:9
 msgid "Number of recent places to store"
 msgstr "Number of recent places to store"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:16
+#: ../data/org.gnome.maps.gschema.xml.in.h:10
 msgid "Number of recently visited places to store."
 msgstr "Number of recently visited places to store."
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:11
+msgid "Facebook check-in privacy setting"
+msgstr "Facebook check-in privacy setting"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:12
+msgid ""
+"Latest used Facebook check-in privacy setting. Possible values are: "
+"EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
+msgstr ""
+"Latest used Facebook check-in privacy setting. Possible values are: "
+"EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:13
+msgid "Foursquare check-in privacy setting"
+msgstr "Foursquare check-in privacy setting"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:14
+msgid ""
+"Latest used Foursquare check-in privacy setting. Possible values are: "
+"public, followers or private."
+msgstr ""
+"Latest used Foursquare check-in privacy setting. Possible values are: "
+"public, followers or private."
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:15
+msgid "Foursquare check-in Facebook broadcasting"
+msgstr "Foursquare check-in Facebook broadcasting"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:16
+msgid ""
+"Indicates if Foursquare should broadcast the check-in as a post in the "
+"Facebook account associated with the Foursquare account."
+msgstr ""
+"Indicates if Foursquare should broadcast the check-in as a post in the "
+"Facebook account associated with the Foursquare account."
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:17
+msgid "Foursquare check-in Twitter broadcasting"
+msgstr "Foursquare check-in Twitter broadcasting"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:18
+msgid ""
+"Indicates if Foursquare should broadcast the check-in as a tweet in the "
+"Twitter account associated with the Foursquare account."
+msgstr ""
+"Indicates if Foursquare should broadcast the check-in as a tweet in the "
+"Twitter account associated with the Foursquare account."
 
 #: ../src/app-menu.ui.h:1
 msgid "About"
@@ -137,23 +157,126 @@ msgstr "על אודות"
 msgid "Quit"
 msgstr "יציאה"
 
+#: ../src/check-in-dialog.ui.h:1
+msgid "Visibility"
+msgstr "נראה"
+
+#: ../src/check-in-dialog.ui.h:2
+msgid "Post on Facebook"
+msgstr "לפרסם ב־Facebook"
+
+#: ../src/check-in-dialog.ui.h:3
+msgid "Post on Twitter"
+msgstr "לפרסם ב־Twitter"
+
+#: ../src/check-in-dialog.ui.h:4 ../src/share-dialog.ui.h:2
+msgid "_Cancel"
+msgstr "_ביטול"
+
+#. Translators: Check in is used as a verb
+#: ../src/check-in-dialog.ui.h:5 ../src/map-bubble.ui.h:2
+msgid "C_heck in"
+msgstr "ה_רשמה"
+
+#: ../src/check-in-dialog.ui.h:6
+msgid "Everyone"
+msgstr "כולם"
+
+#: ../src/check-in-dialog.ui.h:7
+msgid "Friends of friends"
+msgstr "חברים של חברים"
+
+#: ../src/check-in-dialog.ui.h:8
+msgid "Just friends"
+msgstr "חברים בלבד"
+
+#: ../src/check-in-dialog.ui.h:9
+msgid "Just me"
+msgstr "רק אני"
+
+#: ../src/check-in-dialog.ui.h:10
+msgid "Public"
+msgstr "ציבורי"
+
+#: ../src/check-in-dialog.ui.h:11
+msgid "Followers"
+msgstr "עוקבים"
+
+#: ../src/check-in-dialog.ui.h:12
+msgid "Private"
+msgstr "פרטי"
+
+#. Translators: %s is the place name that user wanted to check-in
+#: ../src/checkIn.js:137
+#, javascript-format
+msgid "Cannot find \"%s\" in the social service"
+msgstr "לא ניתן למצוא את „%s” בשירות החברתי"
+
+#: ../src/checkIn.js:139
+msgid "Cannot find a suitable place to check-in in this location"
+msgstr "לא ניתן למצוא מקום מתאים להירשם במיקום זה"
+
+#: ../src/checkIn.js:143
+msgid ""
+"Credentials have expired, please open Online Accounts to sign in and enable "
+"this account"
+msgstr "האישורים פגי תוקף, נא לפתוח חשבונות מקוונים להתחברות ולאפשר חשבון זה"
+
+#: ../src/checkIn.js:155 ../src/checkInDialog.js:291
+msgid "An error has occurred"
+msgstr "התרחשה שגיאה"
+
+#: ../src/checkInDialog.js:178
+msgid "Select an account"
+msgstr "בחירת חשבון"
+
+#: ../src/checkInDialog.js:183 ../src/checkInDialog.js:255
+msgid "Loading"
+msgstr "בטעינה"
+
+#: ../src/checkInDialog.js:207
+msgid "Select a place"
+msgstr "בחירת מקום"
+
+#: ../src/checkInDialog.js:212
+msgid ""
+"Maps cannot find the place to check in to with Facebook. Please select one "
+"from this list."
+msgstr "מפות לא מוצא את המקום להירשם עם Facebook. נא לבחור אחד מרשימה זו."
+
+#: ../src/checkInDialog.js:214
+msgid ""
+"Maps cannot find the place to check in to with Foursquare. Please select one "
+"from this list."
+msgstr "מפות לא מוצא את המקום להירשם עם Foursquare. נא לבחור אחד מרשימה זו."
+
+#. Translators: %s is the name of the place to check in.
+#.
+#: ../src/checkInDialog.js:229
+#, javascript-format
+msgid "Check in to %s"
+msgstr "נרשם עבור %s"
+
+#. Translators: %s is the name of the place to check in.
+#.
+#: ../src/checkInDialog.js:239
+#, javascript-format
+msgid "Write an optional message to check in to %s."
+msgstr "כתיבת הודעה אפשרית להרשמה עבור %s."
+
 #: ../src/context-menu.ui.h:1
 msgid "What’s here?"
 msgstr "מה זה כאן?"
 
-#: ../src/context-menu.ui.h:2
-msgid "I’m here!"
-msgstr "אני כאן!"
-
-#: ../src/geoclue.js:137 ../src/user-location-bubble.ui.h:1
+#: ../src/geoclue.js:159 ../src/user-location-bubble.ui.h:1
 msgid "Current location"
 msgstr "מיקום נוכחי"
 
-#: ../src/mainWindow.js:331
+#: ../src/mainWindow.js:323
 msgid "translator-credits"
 msgstr "יוסף אור בוצ׳קו <yoseforb@gnome.org>"
 
-#: ../src/mainWindow.js:334
+#: ../src/mainWindow.js:326
 msgid "A map application for GNOME"
 msgstr "יישום מפות עבור GNOME"
 
@@ -190,7 +313,7 @@ msgstr "יש לבדוק את החיבור שלך ואת הגדרות הפרוק�
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: ../src/place.js:112
+#: ../src/place.js:117
 msgid "yes"
 msgstr "יש"
 
@@ -199,7 +322,7 @@ msgstr "יש"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:119
+#: ../src/place.js:124
 msgid "limited"
 msgstr "מוגבל"
 
@@ -207,7 +330,7 @@ msgstr "מוגבל"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: ../src/place.js:125
+#: ../src/place.js:130
 msgid "no"
 msgstr "אין"
 
@@ -216,7 +339,7 @@ msgstr "אין"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:132
+#: ../src/place.js:137
 msgid "designated"
 msgstr "מובנה"
 
@@ -265,19 +388,19 @@ msgstr "נגישות נכים: %s"
 msgid "Share location"
 msgstr "שיתוף מיקום"
 
-#: ../src/share-dialog.ui.h:2
-msgid "_Cancel"
-msgstr "_ביטול"
-
 #: ../src/share-dialog.ui.h:3
 msgid "_Share"
 msgstr "_שיתוף"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:237
+#: ../src/sidebar.js:218
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "זמן משוער: %s"
+
+#: ../src/social-place-more-results-row.ui.h:1
+msgid "Show more results"
+msgstr "הצגת תוצאות נוספות"
 
 #. To translators: %s can be "Unknown", "Exact" or "%f km²"
 #: ../src/user-location-bubble.ui.h:4
@@ -328,6 +451,31 @@ msgstr "%f מיל"
 #, javascript-format
 msgid "%f ft"
 msgstr "%f רגל"
+
+#~ msgid "Last known location and accuracy"
+#~ msgstr "Last known location and accuracy"
+
+#~ msgid ""
+#~ "Last known location (latitude and longitude in degrees) and accuracy (in "
+#~ "meters)."
+#~ msgstr ""
+#~ "Last known location (latitude and longitude in degrees) and accuracy (in "
+#~ "meters)."
+
+#~ msgid "Description of last known location"
+#~ msgstr "Description of last known location"
+
+#~ msgid "Description of last known location of user."
+#~ msgstr "Description of last known location of user."
+
+#~ msgid "User set last known location"
+#~ msgstr "User set last known location"
+
+#~ msgid "Whether the last known location was set manually by the user."
+#~ msgstr "Whether the last known location was set manually by the user."
+
+#~ msgid "I’m here!"
+#~ msgstr "אני כאן!"
 
 #~ msgid "%f km²"
 #~ msgstr "‏%f ק״מ²"
