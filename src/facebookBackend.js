@@ -23,8 +23,8 @@
 const GFBGraph = imports.gi.GFBGraph;
 const Lang = imports.lang;
 
-const ServiceBackend = imports.socialService.serviceBackend;
-const SocialPlace = imports.socialService.socialPlace;
+const ServiceBackend = imports.serviceBackend;
+const SocialPlace = imports.socialPlace;
 
 const _PLACE_LINK_FORMAT = 'https://www.facebook.com/%s';
 

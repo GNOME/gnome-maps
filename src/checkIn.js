@@ -27,8 +27,8 @@ const Lang = imports.lang;
 const _ = imports.gettext.gettext;
 
 const CheckInDialog = imports.checkInDialog;
-const FacebookBackend = imports.socialService.facebookBackend;
-const FoursquareBackend = imports.socialService.foursquareBackend;
+const FacebookBackend = imports.facebookBackend;
+const FoursquareBackend = imports.foursquareBackend;
 
 const CheckInManager = new Lang.Class({
     Name: 'CheckInManager',

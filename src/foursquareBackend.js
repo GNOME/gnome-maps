@@ -22,9 +22,9 @@
 
 const Lang = imports.lang;
 
-const FoursquareGoaAuthorizer = imports.socialService.foursquareGoaAuthorizer;
-const ServiceBackend = imports.socialService.serviceBackend;
-const SocialPlace = imports.socialService.socialPlace;
+const FoursquareGoaAuthorizer = imports.foursquareGoaAuthorizer;
+const ServiceBackend = imports.serviceBackend;
+const SocialPlace = imports.socialPlace;
 
 const _PLACE_LINK_FORMAT = 'https://foursquare.com/v/foursquare-hq/%s';
 
