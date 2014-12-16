@@ -31,7 +31,7 @@ const Application = imports.application;
 const Geoclue = imports.geoclue;
 const MapWalker = imports.mapWalker;
 const Place = imports.place;
-const SearchResultMarker = imports.searchResultMarker;
+const PlaceMarker = imports.placeMarker;
 const TurnPointMarker = imports.turnPointMarker;
 const UserLocationMarker = imports.userLocationMarker;
 const Utils = imports.utils;
@@ -116,8 +116,8 @@ const MapView = new Lang.Class({
         this.view.add_layer(this._routeLayer);
 
         let mode = Champlain.SelectionMode.SINGLE;
-        this._searchResultLayer = new Champlain.MarkerLayer({ selection_mode: mode });
-        this.view.add_layer(this._searchResultLayer);
+        this._placeLayer = new Champlain.MarkerLayer({ selection_mode: mode });
+        this.view.add_layer(this._placeLayer);
 
         this._instructionMarkerLayer = new Champlain.MarkerLayer({ selection_mode: mode });
         this.view.add_layer(this._instructionMarkerLayer);
@@ -204,14 +204,14 @@ const MapView = new Lang.Class({
     },
 
     showSearchResult: function(place) {
-        this._searchResultLayer.remove_all();
-        let searchResultMarker = new SearchResultMarker.SearchResultMarker({ place: place,
-                                                                             mapView: this });
+        this._placeLayer.remove_all();
+        let placeMarker = new PlaceMarker.PlaceMarker({ place: place,
+                                                        mapView: this });
 
-        this._searchResultLayer.add_marker(searchResultMarker);
-        searchResultMarker.goToAndSelect(true);
+        this._placeLayer.add_marker(placeMarker);
+        placeMarker.goToAndSelect(true);
 
-        return searchResultMarker;
+        return placeMarker;
     },
 
     showRoute: function(route) {

@@ -32,14 +32,14 @@ const PlaceFormatter = imports.placeFormatter;
 const PlaceStore = imports.placeStore;
 const Utils = imports.utils;
 
-const SearchResultBubble = new Lang.Class({
-    Name: "SearchResultBubble",
+const PlaceBubble = new Lang.Class({
+    Name: 'PlaceBubble',
     Extends: MapBubble.MapBubble,
 
     _init: function(params) {
-        let ui = Utils.getUIObject('search-result-bubble', [ 'stack',
-                                                             'box-content',
-                                                             'label-title']);
+        let ui = Utils.getUIObject('place-bubble', [ 'stack',
+                                                     'box-content',
+                                                     'label-title']);
         params.buttons = (MapBubble.Button.ROUTE |
                           MapBubble.Button.SHARE |
                           MapBubble.Button.FAVORITE);
