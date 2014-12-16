@@ -47,7 +47,7 @@ const MapBubble = new Lang.Class({
     Abstract: true,
 
     _init: function(params) {
-        this._place = new Place.Place({ place: params.place });
+        this._place = params.place;
         delete params.place;
 
         this._mapView = params.mapView;
