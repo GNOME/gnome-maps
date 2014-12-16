@@ -190,6 +190,19 @@ const MapView = new Lang.Class({
         this.emit('user-location-changed');
     },
 
+    _gotoBBox: function(bbox) {
+        let [lat, lon] = bbox.get_center();
+        let place = new Place({
+            location: new Geocode.Location({ latitude  : lat,
+                                             longitude : lon }),
+            bounding_box: new Geocode.BoundingBox({ top    : bbox.top,
+                                                    bottom : bbox.bottom,
+                                                    left   : bbox.left,
+                                                    right  : bbox.right })
+        });
+        new MapWalker.MapWalker(place, this).goTo(true);
+    },
+
     showTurnPoint: function(turnPoint) {
         if (this._turnPointMarker)
             this._turnPointMarker.destroy();
@@ -220,18 +233,8 @@ const MapView = new Lang.Class({
 
         route.path.forEach(this._routeLayer.add_node.bind(this._routeLayer));
 
-        let [lat, lon] = route.bbox.get_center();
-        let place = new Place.Place({
-            location     : new Geocode.Location({ latitude  : lat,
-                                                  longitude : lon }),
-            bounding_box : new Geocode.BoundingBox({ top    : route.bbox.top,
-                                                     bottom : route.bbox.bottom,
-                                                     left   : route.bbox.left,
-                                                     right  : route.bbox.right })
-        });
-
         this._showDestinationTurnpoints();
-        new MapWalker.MapWalker(place, this).goTo(true);
+        this._gotoBBox(route.bbox);
     },
 
     _showDestinationTurnpoints: function() {
