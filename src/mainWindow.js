@@ -29,6 +29,7 @@ const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
+const BusyMarker = imports.busyMarker;
 const ContextMenu = imports.contextMenu;
 const FavoritesPopover = imports.favoritesPopover;
 const Geoclue = imports.geoclue;
@@ -84,11 +85,15 @@ const MainWindow = new Lang.Class({
         this._toggleSidebarButton = ui.toggleSidebarButton;
         this._layersButton = ui.layersButton;
         this._favoritesButton = ui.favoritesButton;
+        this._busy = new BusyMarker.BusyMarker();
+        this._overlay.add_overlay(this._busy);
 
         this._initHeaderbar();
         this._initActions();
         this._initSignals();
         this._restoreWindowGeometry();
+
+        this._busySignalId = 0;
 
         ui.grid.attach(this._sidebar, 1, 0, 1, 1);
 
@@ -371,5 +376,25 @@ const MainWindow = new Lang.Class({
         aboutDialog.show();
         aboutDialog.connect('response',
                             aboutDialog.destroy.bind(aboutDialog));
+    },
+
+    markBusy: function() {
+        if (this._busySignalId !== 0)
+            return;
+
+        this._busy.show();
+
+        let stage = this.mapView.view.get_stage();
+        this._busySignalId = stage.connect('captured-event', function() {
+            return true;
+        });
+    },
+
+    unmarkBusy: function() {
+        this._busy.hide();
+
+        let stage = this.mapView.view.get_stage();
+        stage.disconnect(this._busySignalId);
+        this._busySignalId = 0;
     }
 });
