@@ -23,11 +23,11 @@
 const Lang = imports.lang;
 
 const MapMarker = imports.mapMarker;
-const SearchResultBubble = imports.searchResultBubble;
+const PlaceBubble = imports.placeBubble;
 const Utils = imports.utils;
 
-const SearchResultMarker = new Lang.Class({
-    Name: 'SearchResultMarker',
+const PlaceMarker = new Lang.Class({
+    Name: 'PlaceMarker',
     Extends: MapMarker.MapMarker,
 
     _init: function(params) {
@@ -43,8 +43,8 @@ const SearchResultMarker = new Lang.Class({
 
     _createBubble: function() {
         if (this.place.name) {
-            return new SearchResultBubble.SearchResultBubble({ place: this.place,
-                                                               mapView: this._mapView });
+            return new PlaceBubble.PlaceBubble({ place: this.place,
+                                                 mapView: this._mapView });
         } else
             return null;
     }
