@@ -33,7 +33,9 @@ const Format = imports.format;
 const Geoclue = imports.geoclue;
 const GeocodeService = imports.geocodeService;
 const MainWindow = imports.mainWindow;
+const Maps = imports.gi.GnomeMaps;
 const NotificationManager = imports.notificationManager;
+const Place = imports.place;
 const PlaceStore = imports.placeStore;
 const RouteService = imports.routeService;
 const Settings = imports.settings;
@@ -49,6 +51,7 @@ let geoclue = null;
 let geocodeService = null;
 let networkMonitor = null;
 let checkInManager = null;
+let contactStore = null;
 
 const Application = new Lang.Class({
     Name: 'Application',
@@ -93,6 +96,33 @@ const Application = new Lang.Class({
         }).bind(this));
     },
 
+    _showContact: function(id) {
+        contactStore.lookup(id, (function(contact) {
+            this._mainWindow.markBusy();
+            contact.geocode((function() {
+                this._mainWindow.unmarkBusy();
+                this._mainWindow.mapView.showContact(contact);
+            }).bind(this));
+        }).bind(this));
+    },
+
+    _onShowContactActivate: function(action, parameter) {
+        this._createWindow();
+        this._checkNetwork();
+        this._mainWindow.window.present();
+
+        let id = parameter.deep_unpack();
+
+        if (contactStore.state === Maps.ContactStoreState.LOADED) {
+            this. _showContact(id);
+        } else {
+            Utils.once(contactStore, 'notify::state', (function() {
+                if (contactStore.state === Maps.ContactStoreState.LOADED)
+                    this._showContact(id);
+            }).bind(this));
+        }
+    },
+
     _onQuitActivate: function() {
         this._mainWindow.window.destroy();
     },
@@ -126,7 +156,11 @@ const Application = new Lang.Class({
         this._initServices();
 
         Utils.addActions(this, {
-            'quit': { onActivate: this._onQuitActivate.bind(this) }
+            'quit': { onActivate: this._onQuitActivate.bind(this) },
+            'show-contact': {
+                paramType: 's',
+                onActivate: this._onShowContactActivate.bind(this)
+            }
         });
 
         this._initPlaceStore();
@@ -142,6 +176,8 @@ const Application = new Lang.Class({
         networkMonitor.connect('network-changed',
                                this._checkNetwork.bind(this));
         checkInManager = new CheckIn.CheckInManager();
+        contactStore = new Maps.ContactStore();
+        contactStore.load();
     },
 
     _createWindow: function() {

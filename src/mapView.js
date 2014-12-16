@@ -28,6 +28,7 @@ const GtkChamplain = imports.gi.GtkChamplain;
 const Lang = imports.lang;
 
 const Application = imports.application;
+const ContactPlace = imports.contactPlace;
 const Geoclue = imports.geoclue;
 const MapWalker = imports.mapWalker;
 const Place = imports.place;
@@ -192,7 +193,7 @@ const MapView = new Lang.Class({
 
     _gotoBBox: function(bbox) {
         let [lat, lon] = bbox.get_center();
-        let place = new Place({
+        let place = new Place.Place({
             location: new Geocode.Location({ latitude  : lat,
                                              longitude : lon }),
             bounding_box: new Geocode.BoundingBox({ top    : bbox.top,
@@ -214,6 +215,23 @@ const MapView = new Lang.Class({
                                                                       mapView: this });
         this._instructionMarkerLayer.add_marker(this._turnPointMarker);
         this._turnPointMarker.goToAndSelect(true);
+    },
+
+    showContact: function(contact) {
+        let places = contact.get_places();
+        if (places.length === 0)
+            return;
+
+        this._placeLayer.remove_all();
+        places.forEach((function(p) {
+            let place = new ContactPlace.ContactPlace({ place: p,
+                                                        icon: contact.icon });
+            let marker = new PlaceMarker.PlaceMarker({ place: place,
+                                                       mapView: this });
+            this._placeLayer.add_marker(marker);
+        }).bind(this));
+
+        this._gotoBBox(contact.bounding_box);
     },
 
     showSearchResult: function(place) {
