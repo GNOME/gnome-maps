@@ -40,9 +40,6 @@ const IMPERIAL_LOCALES = ['unm_US', 'es_US', 'es_PR', 'en_US', 'yi_US'];
 
 let debugInit = false;
 let debugEnabled = false;
-
-let _iconStore = {};
-
 let measurementSystem = null;
 
 function debug(str) {
@@ -260,37 +257,31 @@ function getAccuracyDescription(accuracy) {
 }
 
 function load_icon(icon, size, loadCompleteCallback) {
-    if (icon instanceof Gio.FileIcon) {
-        _load_file_icon(icon, loadCompleteCallback);
+    if (icon instanceof Gio.FileIcon || icon instanceof Gio.BytesIcon) {
+        _load_icon(icon, loadCompleteCallback);
     } else if (icon instanceof Gio.ThemedIcon) {
         _load_themed_icon(icon, size, loadCompleteCallback);
     }
 }
 
-function _load_file_icon(icon, loadCompleteCallback) {
-    let pixbuf = _iconStore[icon.file.get_uri()];
+function _load_icon(icon, loadCompleteCallback) {
 
-    if (pixbuf) { // check if the icon is cached
-        loadCompleteCallback(pixbuf);
-        return;
-    }
-
-    if (icon.file.has_uri_scheme ("http") || icon.file.has_uri_scheme ("https")) {
-        _load_http_icon(icon, loadCompleteCallback);
-        return;
+    if (icon.file) {
+        if (icon.file.has_uri_scheme ("http") || icon.file.has_uri_scheme ("https")) {
+            _load_http_icon(icon, loadCompleteCallback);
+            return;
+        }
     }
 
     icon.load_async(-1, null, function(icon, res) {
         try {
             let stream = icon.load_finish(res, null)[0];
+            let pixbuf = GdkPixbuf.Pixbuf.new_from_stream(stream, null);
 
-            pixbuf =
-                GdkPixbuf.Pixbuf.new_from_stream(stream, null);
-
-            _iconStore[icon.file.get_uri()] = pixbuf;
             loadCompleteCallback(pixbuf);
         } catch(e) {
             log("Failed to load pixbuf: " + e);
+            loadCompleteCallback(null);
         }
     });
 }
@@ -302,6 +293,7 @@ function _load_http_icon(icon, loadCompleteCallback) {
     soup_session.queue_message(msg, function(session, msg) {
         if (msg.status_code !== Soup.KnownStatusCode.OK) {
             log("Failed to load pixbuf: " + msg.reason_phrase);
+            loadCompleteCallback(null);
             return;
         }
 
@@ -315,6 +307,7 @@ function _load_http_icon(icon, loadCompleteCallback) {
             loadCompleteCallback(pixbuf);
         } catch(e) {
             log("Failed to load pixbuf: " + e);
+            loadCompleteCallback(null);
         }
     });
 }
