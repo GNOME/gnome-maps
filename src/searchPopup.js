@@ -59,6 +59,9 @@ const SearchPopup = new Lang.Class({
         this.parent(props);
 
         this._entry = this.relative_to;
+        this._entry.connect('notify::place', (function() {
+            this._mode = Mode.ACTIVATED;
+        }).bind(this));
 
          this._list.connect('row-activated', (function(list, row) {
              if (row)
@@ -217,7 +220,6 @@ const SearchPopup = new Lang.Class({
             keyval === Gdk.KEY_KP_ENTER ||
             keyval === Gdk.KEY_ISO_Enter) {
             row.activate();
-            this._mode = Mode.ACTIVATED;
 
             return true;
         } else if (keyval === Gdk.KEY_KP_Up || keyval === Gdk.KEY_Up) {
