@@ -117,7 +117,6 @@ const Application = new Lang.Class({
 
     vfunc_startup: function() {
         this.parent();
-        String.prototype.format = Format.format;
 
         GtkClutter.init(null);
 
