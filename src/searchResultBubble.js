@@ -23,7 +23,6 @@
 const Gtk = imports.gi.Gtk;
 const Format = imports.format;
 const Lang = imports.lang;
-const _ = imports.gettext.gettext;
 
 const Application = imports.application;
 const MapBubble = imports.mapBubble;

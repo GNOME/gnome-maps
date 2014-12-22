@@ -39,8 +39,6 @@ const Sidebar = imports.sidebar;
 const Utils = imports.utils;
 const ZoomControl = imports.zoomControl;
 
-const _ = imports.gettext.gettext;
-
 const _CONFIGURE_ID_TIMEOUT = 100; // msecs
 const _WINDOW_MIN_WIDTH = 600;
 const _WINDOW_MIN_HEIGHT = 500;

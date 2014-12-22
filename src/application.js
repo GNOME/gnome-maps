@@ -23,12 +23,10 @@
 
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
-const Gettext = imports.gettext;
 const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
 const GtkClutter = imports.gi.GtkClutter;
 const Lang = imports.lang;
-const _ = imports.gettext.gettext;
 
 const CheckIn = imports.checkIn;
 const Format = imports.format;
@@ -73,8 +71,6 @@ const Application = new Lang.Class({
     },
 
     _init: function() {
-        Gettext.bindtextdomain('gnome-maps', pkg.localedir);
-        Gettext.textdomain('gnome-maps');
         /* Translators: This is the program name. */
         GLib.set_application_name(_("Maps"));
 

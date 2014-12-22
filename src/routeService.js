@@ -24,7 +24,6 @@ const Champlain = imports.gi.Champlain;
 const GLib = imports.gi.GLib;
 const Lang = imports.lang;
 const Soup = imports.gi.Soup;
-const _ = imports.gettext.gettext;
 
 const Application = imports.application;
 const EPAF = imports.epaf;

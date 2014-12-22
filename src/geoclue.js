@@ -29,8 +29,6 @@ const Application = imports.application;
 const Place = imports.place;
 const Utils = imports.utils;
 
-const _ = imports.gettext.gettext;
-
 const ManagerInterface = '<node> \
 <interface name="org.freedesktop.GeoClue2.Manager"> \
     <method name="GetClient"> \

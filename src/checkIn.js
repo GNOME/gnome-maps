@@ -24,7 +24,6 @@ const GObject = imports.gi.GObject;
 const Goa = imports.gi.Goa;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
-const _ = imports.gettext.gettext;
 
 const CheckInDialog = imports.checkInDialog;
 const FacebookBackend = imports.facebookBackend;

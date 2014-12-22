@@ -24,7 +24,6 @@ const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
-const _ = imports.gettext.gettext;
 
 const AccountListBox = imports.accountListBox;
 const Application = imports.application;

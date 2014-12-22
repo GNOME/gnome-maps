@@ -20,8 +20,6 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
-const _ = imports.gettext.gettext;
-
 const Geocode = imports.gi.GeocodeGlib;
 const GLib = imports.gi.GLib;
 const Lang = imports.lang;

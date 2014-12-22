@@ -31,7 +31,6 @@ const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
 const Signals = imports.signals;
 const Soup = imports.gi.Soup;
-const _ = imports.gettext.gettext;
 
 const METRIC_SYSTEM = 1;
 const IMPERIAL_SYSTEM = 2;

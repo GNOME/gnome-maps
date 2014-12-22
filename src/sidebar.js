@@ -26,7 +26,6 @@ const Gdk = imports.gi.Gdk;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
-const _ = imports.gettext.gettext;
 
 const Application = imports.application;
 const RouteEntry = imports.routeEntry;

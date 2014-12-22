@@ -24,6 +24,8 @@
 const Application = imports.application;
 
 function main(args) {
+    pkg.initGettext();
+
     let application = new Application.Application();
     return application.run(args);
 }
