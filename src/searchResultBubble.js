@@ -60,12 +60,9 @@ const SearchResultBubble = new Lang.Class({
             this._populate(place);
         } else {
             let overpass = new Overpass.Overpass();
-            overpass.addInfo(this.place, (function(status, code, place) {
-                if (!status)
-                    place = new Place.Place({ place: this.place });
-
-                this._populate(place);
-                Application.placeStore.addPlace(place,
+            overpass.addInfo(this.place, (function(status, code) {
+                this._populate(this.place);
+                Application.placeStore.addPlace(this.place,
                                                 PlaceStore.PlaceType.RECENT);
             }).bind(this));
         }

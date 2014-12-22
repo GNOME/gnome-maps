@@ -29,6 +29,7 @@ const Lang = imports.lang;
 
 const Application = imports.application;
 const MapWalker = imports.mapWalker;
+const Place = imports.place;
 const SearchResultMarker = imports.searchResultMarker;
 const TurnPointMarker = imports.turnPointMarker;
 const UserLocationMarker = imports.userLocationMarker;
@@ -210,7 +211,7 @@ const MapView = new Lang.Class({
         route.path.forEach(this._routeLayer.add_node.bind(this._routeLayer));
 
         let [lat, lon] = route.bbox.get_center();
-        let place = new Geocode.Place({
+        let place = new Place.Place({
             location     : new Geocode.Location({ latitude  : lat,
                                                   longitude : lon }),
             bounding_box : new Geocode.BoundingBox({ top    : route.bbox.top,

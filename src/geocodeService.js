@@ -25,6 +25,7 @@ const Geocode = imports.gi.GeocodeGlib;
 const Lang = imports.lang;
 
 const Application = imports.application;
+const Place = imports.place;
 const Utils = imports.utils;
 
 const GeocodeService = new Lang.Class({
@@ -49,6 +50,13 @@ const GeocodeService = new Lang.Class({
         forward.search_async(cancellable, function(forward, res) {
             try {
                 let places = forward.search_finish(res);
+
+                if (places !== null) {
+                    places = places.map(function(p) {
+                        return new Place.Place({ place: p });
+                    });
+                }
+
                 callback(places);
             } catch (e) {
                 callback(null);
@@ -63,7 +71,7 @@ const GeocodeService = new Lang.Class({
         reverse.resolve_async(cancellable, (function(reverse, res) {
             Application.application.unmark_busy();
             try {
-                let place = reverse.resolve_finish(res);
+                let place = new Place.Place({ place: reverse.resolve_finish(res) });
                 callback(place);
             } catch (e) {
                 Utils.debug("Error finding place at " +

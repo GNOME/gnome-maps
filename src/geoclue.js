@@ -26,6 +26,7 @@ const Gio = imports.gi.Gio;
 const Lang = imports.lang;
 
 const Application = imports.application;
+const Place = imports.place;
 const Utils = imports.utils;
 
 const _ = imports.gettext.gettext;
@@ -156,7 +157,7 @@ const Geoclue = new Lang.Class({
 
     _updateLocation: function(location) {
         if (!this.place)
-            this.place = new Geocode.Place({ name: _("Current location") });
+            this.place = new Place.Place({ name: _("Current location") });
 
         this.place.location = location;
         this.emit('location-changed');

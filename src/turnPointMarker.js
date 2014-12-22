@@ -27,6 +27,7 @@ const Mainloop = imports.mainloop;
 
 const Application = imports.application;
 const MapMarker = imports.mapMarker;
+const Place = imports.place;
 const TurnPointBubble = imports.turnPointBubble;
 const Utils = imports.utils;
 
@@ -46,7 +47,7 @@ const TurnPointMarker = new Lang.Class({
         this._turnPoint = params.turnPoint;
         delete params.turnPoint;
 
-        params.place = new Geocode.Place({
+        params.place = new Place.Place({
             location: new Geocode.Location({
                 latitude: this._turnPoint.coordinate.get_latitude(),
                 longitude: this._turnPoint.coordinate.get_longitude()
@@ -110,7 +111,7 @@ const DestinationMarker = new Lang.Class({
 
     _onMarkerDrag: function() {
         let query = Application.routeService.query;
-        let place = new Geocode.Place({
+        let place = new Place.Place({
                         location: new Geocode.Location({ latitude: this.latitude.toFixed(5),
                                                          longitude: this.longitude.toFixed(5) }) });
 

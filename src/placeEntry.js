@@ -29,6 +29,7 @@ const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 
 const Application = imports.application;
+const Place = imports.place;
 const PlaceStore = imports.placeStore;
 const SearchPopup = imports.searchPopup;
 const Utils = imports.utils;
@@ -208,7 +209,7 @@ const PlaceEntry = new Lang.Class({
 
         let parsedLocation = this._parseCoordinates(this.text);
         if (parsedLocation) {
-            this.place = new Geocode.Place({ location: parsedLocation });
+            this.place = new Place.Place({ location: parsedLocation });
             return true;
         }
 

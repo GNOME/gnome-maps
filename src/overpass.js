@@ -75,34 +75,31 @@ const Overpass = new Lang.Class({
             }
             try {
                 let jsonObj = JSON.parse(message.response_body.data);
+                this._populatePlace(place, jsonObj);
                 callback(true,
-                         message.status_code,
-                         this._createPlace(place, jsonObj));
+                         message.status_code);
             } catch(e) {
-                callback(false, message.status_code, null);
+                callback(false, message.status_code);
             }
         }).bind(this));
     },
 
-    _createPlace: function(place, overpassData) {
+    _populatePlace: function(place, overpassData) {
         let element = overpassData.elements[0];
-        let newPlace = new Place.Place({ place: place });
 
         if (!(element && element.tags && element.tags.name))
-            return newPlace;
+            return;
 
         if (element.tags.name)
-            newPlace.name = element.tags.name;
+            place.name = element.tags.name;
         if (element.tags.population)
-            newPlace.population = element.tags.population;
+            place.population = element.tags.population;
         if (element.tags.wikipedia)
-            newPlace.wiki = element.tags.wikipedia;
+            place.wiki = element.tags.wikipedia;
         if (element.tags.wheelchair)
-            newPlace.wheelchair = element.tags.wheelchair;
+            place.wheelchair = element.tags.wheelchair;
         if (element.tags.opening_hours)
-            newPlace.openingHours = element.tags.opening_hours;
-
-        return newPlace;
+            place.openingHours = element.tags.opening_hours;
     },
 
     _getQueryUrl: function(place) {
