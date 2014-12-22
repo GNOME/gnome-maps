@@ -23,6 +23,7 @@
 const GLib = imports.gi.GLib;
 const Gio = imports.gi.Gio;
 const Lang = imports.lang;
+const System = imports.system;
 
 const Settings = new Lang.Class({
     Name: "Settings",
@@ -31,8 +32,8 @@ const Settings = new Lang.Class({
     // The GVariant types of the settings
     _keyTypes: {},
 
-    _init: function(schema) {
-        this.parent({ schema_id: schema });
+    _init: function(params) {
+        this.parent(params);
         this.list_keys().forEach((function(key) {
             this._keyTypes[key] = this.get_value(key)
                                       .get_type()
@@ -48,3 +49,29 @@ const Settings = new Lang.Class({
         this.set_value(name, GLib.Variant.new (this._keyTypes[name], value));
     }
 });
+
+function getSettings(schemaId, path) {
+    const GioSSS = Gio.SettingsSchemaSource;
+    let schemaSource;
+
+    if (!pkg.moduledir.startsWith('resource://')) {
+        // Running from the source tree
+        schemaSource = GioSSS.new_from_directory(pkg.pkgdatadir,
+                                                 GioSSS.get_default(),
+                                                 false);
+    } else {
+        schemaSource = GioSSS.get_default();
+    }
+
+    let schemaObj = schemaSource.lookup(schemaId, true);
+    if (!schemaObj) {
+        log('Missing GSettings schema ' + schemaId);
+        System.exit(1);
+    }
+
+    if (path === undefined)
+        return new Settings({ settings_schema: schemaObj });
+    else
+        return new Settings({ settings_schema: schemaObj,
+                              path: path });
+}

@@ -139,7 +139,7 @@ const Application = new Lang.Class({
     },
 
     _initServices: function() {
-        settings       = new Settings.Settings('org.gnome.Maps');
+        settings       = Settings.getSettings('org.gnome.Maps');
         routeService   = new RouteService.GraphHopper();
         geoclue        = new Geoclue.Geoclue();
         geocodeService = new GeocodeService.GeocodeService();
