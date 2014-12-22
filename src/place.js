@@ -23,6 +23,7 @@
 const _ = imports.gettext.gettext;
 
 const Geocode = imports.gi.GeocodeGlib;
+const GLib = imports.gi.GLib;
 const Lang = imports.lang;
 
 const Place = new Lang.Class({
@@ -176,6 +177,23 @@ const Place = new Lang.Class({
                  wiki: this.wiki,
                  wheelchair: this.wheelchair,
                  openingHours: this.openingHours };
+    },
+
+    match: function(searchString) {
+        let name = this.name;
+
+        searchString = GLib.utf8_normalize(searchString, -1, GLib.NormalizeMode.ALL);
+        if (searchString === null)
+            return false;
+
+        if (searchString.length === 0)
+            return true;
+
+        name = GLib.utf8_normalize(name, -1, GLib.NormalizeMode.ALL);
+        if (name === null)
+            return false;
+
+        return name.toLowerCase().search(searchString.toLowerCase()) !== -1;
     }
 });
 

@@ -88,11 +88,7 @@ const FavoritesPopover = new Lang.Class({
         }).bind(this));
 
         this._list.set_filter_func((function(row) {
-            let text = this._entry.text.toLowerCase();
-            let title = row.title.toLowerCase();
-            let length = text.length;
-
-            return (text === title.substring(0, text.length));
+            return row.place.match(this._entry.text);
         }).bind(this));
 
         this._updateList();

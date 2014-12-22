@@ -161,24 +161,12 @@ const PlaceEntry = new Lang.Class({
     },
 
     _completionVisibleFunc: function(model, iter) {
-        let name = model.get_value(iter, PlaceStore.Columns.NAME);
-        let key = this.text;
+        let place = model.get_value(iter, PlaceStore.Columns.PLACE);
 
-        if (key.length === 0)
-            return true;
-
-        if (name === null)
+        if (place !== null)
+            return place.match(this.text);
+        else
             return false;
-
-        key = GLib.utf8_normalize(key, -1, GLib.NormalizeMode.ALL);
-        if (key === null)
-            return false;
-
-        name = GLib.utf8_normalize(name, -1, GLib.NormalizeMode.ALL);
-        if (name === null)
-            return false;
-
-        return name.toLowerCase().search(key.toLowerCase()) !== -1;
     },
 
     _validateCoordinates: function(lat, lon) {
