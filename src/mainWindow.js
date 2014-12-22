@@ -29,7 +29,6 @@ const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
-const Config = imports.config;
 const ContextMenu = imports.contextMenu;
 const FavoritesPopover = imports.favoritesPopover;
 const LayersPopover = imports.layersPopover;
@@ -329,7 +328,7 @@ const MainWindow = new Lang.Class({
                        '2013 Red Hat, Inc.',
             license_type: Gtk.License.GPL_2_0,
             logo_icon_name: 'gnome-maps',
-            version: Config.PACKAGE_VERSION,
+            version: pkg.version,
             website: 'https://live.gnome.org/Apps/Maps',
             wrap_license: true,
 

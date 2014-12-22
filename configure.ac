@@ -5,9 +5,10 @@ AC_INIT([gnome-maps],
         [gnome-maps])
 
 AC_CONFIG_HEADERS([config/config.h])
-AC_CONFIG_SRCDIR([src/main.c])
+AC_CONFIG_SRCDIR([src/main.js])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_AUX_DIR([config])
+AC_PROG_LN_S
 
 m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
 
@@ -32,17 +33,9 @@ PKG_CHECK_MODULES(GNOME_MAPS, [
     gobject-introspection-1.0    >= $GOBJECT_INTROSPECTION_MIN_VERSION
 ])
 
-
-# no stupid static libraries
-AM_DISABLE_STATIC
-# enable libtool
-AC_PROG_LIBTOOL
-# avoid libtool for LTCOMPILE, use it only to link
-
 GLIB_GSETTINGS
 
-GJS_CONSOLE=`$PKG_CONFIG --variable=gjs_console gjs-1.0`
-AC_SUBST(GJS_CONSOLE)
+AC_PATH_PROG([GJS],[gjs])
 
 GLIB_COMPILE_RESOURCES=`$PKG_CONFIG --variable glib_compile_resources gio-2.0`
 AC_SUBST(GLIB_COMPILE_RESOURCES)
@@ -51,7 +44,6 @@ AC_CONFIG_FILES([
     Makefile
     src/Makefile
     data/Makefile
-    data/org.gnome.Maps.desktop.in
     data/icons/Makefile
     po/Makefile.in
 ])

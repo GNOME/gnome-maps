@@ -23,7 +23,7 @@
 
 const Application = imports.application;
 
-function start() {
+function main(args) {
     let application = new Application.Application();
-    return application.run(ARGV);
+    return application.run(args);
 }

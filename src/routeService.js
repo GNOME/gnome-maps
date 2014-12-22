@@ -27,7 +27,6 @@ const Soup = imports.gi.Soup;
 const _ = imports.gettext.gettext;
 
 const Application = imports.application;
-const Config = imports.config;
 const EPAF = imports.epaf;
 const HTTP = imports.http;
 const Route = imports.route;
@@ -46,7 +45,7 @@ const GraphHopper = new Lang.Class({
     },
 
     _init: function() {
-        this._session = new Soup.Session({ user_agent : Config.USER_AGENT });
+        this._session = new Soup.Session({ user_agent : 'gnome-maps/' + pkg.version });
         this._key     = "VCIHrHj0pDKb8INLpT4s5hVadNmJ1Q3vi0J4nJYP";
         this._baseURL = "https://graphhopper.com/api/1/route?";
         this._locale  = GLib.get_language_names()[0];

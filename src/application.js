@@ -36,7 +36,6 @@ const Geoclue = imports.geoclue;
 const GeocodeService = imports.geocodeService;
 const MainWindow = imports.mainWindow;
 const NotificationManager = imports.notificationManager;
-const Path = imports.path;
 const PlaceStore = imports.placeStore;
 const RouteService = imports.routeService;
 const Settings = imports.settings;
@@ -74,9 +73,8 @@ const Application = new Lang.Class({
     },
 
     _init: function() {
-        Gettext.bindtextdomain('gnome-maps', Path.LOCALE_DIR);
+        Gettext.bindtextdomain('gnome-maps', pkg.localedir);
         Gettext.textdomain('gnome-maps');
-        GLib.set_prgname('gnome-maps');
         /* Translators: This is the program name. */
         GLib.set_application_name(_("Maps"));
 
@@ -141,7 +139,7 @@ const Application = new Lang.Class({
     },
 
     _initServices: function() {
-        settings       = new Settings.Settings('org.gnome.maps');
+        settings       = new Settings.Settings('org.gnome.Maps');
         routeService   = new RouteService.GraphHopper();
         geoclue        = new Geoclue.Geoclue();
         geocodeService = new GeocodeService.GeocodeService();
@@ -155,7 +153,8 @@ const Application = new Lang.Class({
         if (this._mainWindow)
             return;
 
-        Gtk.IconTheme.get_default().append_search_path(Path.ICONS_DIR);
+        Gtk.IconTheme.get_default().append_search_path(GLib.build_filenamev([pkg.pkgdatadir,
+                                                                             'icons']));
         let overlay = new Gtk.Overlay({ visible: true, can_focus: false });
         notificationManager = new NotificationManager.NotificationManager(overlay);
         this._mainWindow = new MainWindow.MainWindow(this, overlay);
