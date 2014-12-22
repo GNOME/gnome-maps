@@ -30,7 +30,7 @@ const Application = imports.application;
 const AccountRow = new Lang.Class({
     Name: 'AccountRow',
     Extends: Gtk.ListBoxRow,
-    Template: 'resource:///org/gnome/maps/account-row.ui',
+    Template: 'resource:///org/gnome/Maps/ui/account-row.ui',
     InternalChildren: [ 'providerLabel',
                         'identityLabel',
                         'providerImage',

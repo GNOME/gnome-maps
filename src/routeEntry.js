@@ -35,7 +35,7 @@ const Type = {
 const RouteEntry = new Lang.Class({
     Name: 'RouteEntry',
     Extends: Gtk.Grid,
-    Template: 'resource:///org/gnome/maps/route-entry.ui',
+    Template: 'resource:///org/gnome/Maps/ui/route-entry.ui',
     Children: [ 'iconEventBox' ],
     InternalChildren: [ 'entryGrid',
                         'icon',

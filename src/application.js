@@ -113,7 +113,7 @@ const Application = new Lang.Class({
 
     _initAppMenu: function() {
         let builder = new Gtk.Builder();
-        builder.add_from_resource('/org/gnome/maps/app-menu.ui');
+        builder.add_from_resource('/org/gnome/Maps/ui/app-menu.ui');
 
         let menu = builder.get_object('app-menu');
         this.set_app_menu(menu);
@@ -125,7 +125,7 @@ const Application = new Lang.Class({
 
         GtkClutter.init(null);
 
-        Utils.loadStyleSheet(Gio.file_new_for_uri('resource:///org/gnome/maps/application.css'));
+        Utils.loadStyleSheet(Gio.file_new_for_uri('resource:///org/gnome/Maps/application.css'));
 
         application = this;
         this._initServices();

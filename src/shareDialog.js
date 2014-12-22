@@ -40,7 +40,7 @@ const _NUM_VISIBLE = 6;
 const ShareDialog = new Lang.Class({
     Name: 'ShareDialog',
     Extends: Gtk.Dialog,
-    Template: 'resource:///org/gnome/maps/share-dialog.ui',
+    Template: 'resource:///org/gnome/Maps/ui/share-dialog.ui',
     InternalChildren: [ 'list',
                         'weatherRow',
                         'weatherLabel',

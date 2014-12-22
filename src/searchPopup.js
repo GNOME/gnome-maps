@@ -42,7 +42,7 @@ const SearchPopup = new Lang.Class({
     Signals : {
         'selected' : { param_types: [ GObject.TYPE_OBJECT ] }
     },
-    Template: 'resource:///org/gnome/maps/search-popup.ui',
+    Template: 'resource:///org/gnome/Maps/ui/search-popup.ui',
     InternalChildren: [ 'hintRevealer',
                         'scrolledWindow',
                         'stack',

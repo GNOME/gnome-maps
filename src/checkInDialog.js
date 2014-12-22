@@ -44,7 +44,7 @@ const Response = {
 const CheckInDialog = new Lang.Class({
     Name: 'CheckInDialog',
     Extends: Gtk.Dialog,
-    Template: 'resource:///org/gnome/maps/check-in-dialog.ui',
+    Template: 'resource:///org/gnome/Maps/ui/check-in-dialog.ui',
     InternalChildren: [ 'cancelButton',
                         'okButton',
                         'stack',

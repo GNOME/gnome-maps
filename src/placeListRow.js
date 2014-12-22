@@ -30,7 +30,7 @@ const ROW_HEIGHT = 50;
 const PlaceListRow = new Lang.Class({
     Name: 'PlaceListRow',
     Extends: Gtk.ListBoxRow,
-    Template: 'resource:///org/gnome/maps/place-list-row.ui',
+    Template: 'resource:///org/gnome/Maps/ui/place-list-row.ui',
     InternalChildren: [ 'icon',
                         'name',
                         'details',

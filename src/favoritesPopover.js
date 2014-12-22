@@ -33,7 +33,7 @@ const _ROW_HEIGHT = 50;
 const FavoritesPopover = new Lang.Class({
     Name: 'FavoritesPopover',
     Extends: Gtk.Popover,
-    Template: 'resource:///org/gnome/maps/favorites-popover.ui',
+    Template: 'resource:///org/gnome/Maps/ui/favorites-popover.ui',
     InternalChildren: [ 'mainGrid',
                         'revealer',
                         'entry',

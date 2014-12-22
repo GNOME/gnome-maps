@@ -28,7 +28,7 @@ const Mainloop = imports.mainloop;
 const SocialPlaceRow = new Lang.Class({
     Name: 'SocialPlaceRow',
     Extends: Gtk.ListBoxRow,
-    Template: 'resource:///org/gnome/maps/social-place-row.ui',
+    Template: 'resource:///org/gnome/Maps/ui/social-place-row.ui',
     InternalChildren: [ 'nameLabel',
                         'categoryLabel' ],
 
@@ -49,7 +49,7 @@ const SocialPlaceRow = new Lang.Class({
 const SocialPlaceMoreResultsRow = new Lang.Class({
     Name: 'SocialPlaceMoreResultsRow',
     Extends: Gtk.ListBoxRow,
-    Template: 'resource:///org/gnome/maps/social-place-more-results-row.ui'
+    Template: 'resource:///org/gnome/Maps/ui/social-place-more-results-row.ui'
 });
 
 const SocialPlaceListBox = new Lang.Class({

@@ -196,7 +196,7 @@ function dashedToCamelCase(name) {
 
 function getUIObject(res, ids) {
     let builder = new Gtk.Builder();
-    builder.add_from_resource('/org/gnome/maps/' + res + '.ui');
+    builder.add_from_resource('/org/gnome/Maps/ui/' + res + '.ui');
     let ret = {};
     ids.forEach(function(id) {
         ret[dashedToCamelCase(id)] = builder.get_object(id);
