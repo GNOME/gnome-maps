@@ -3,15 +3,15 @@
 # Copyright (C) 2013-2014 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-maps package.
 #
-#
 # Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2013, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-07 11:49+0200\n"
-"PO-Revision-Date: 2014-07-29 19:23+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"maps&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2014-12-30 07:54+0000\n"
+"PO-Revision-Date: 2014-12-30 15:47+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
 "Language-Team: Basque <librezale@librezale.org>\n"
 "Language: eu\n"
@@ -50,9 +50,9 @@ msgstr ""
 "Bilatu kokaleku mota zehatz bat, adibidez 'Diru-truke bulegoa, Bilbo' edo "
 "'Hotelak kale nagusia, Bilbo'"
 
-#. Translators: This is the program name.
-#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
-#: ../src/mainWindow.js:301 ../src/main-window.ui.h:1
+#. Translators: This is the program name. */
+#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:81
+#: ../src/mainWindow.js:325 ../src/main-window.ui.h:1
 msgid "Maps"
 msgstr "Mapak"
 
@@ -89,49 +89,72 @@ msgid "Window maximization state"
 msgstr "Leihoaren maximizazioaren egoera"
 
 #: ../data/org.gnome.maps.gschema.xml.in.h:7
-msgid "Last known location and accuracy"
-msgstr "Azken kokaleku ezaguna eta zehaztasuna"
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:8
-msgid ""
-"Last known location (latitude and longitude in degrees) and accuracy (in "
-"meters)."
-msgstr ""
-"Azken kokaleku ezaguna (latitudea eta longitudea gradutan) eta zehaztasuna "
-"(metrotan)."
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:9
-msgid "Description of last known location"
-msgstr "Azken kokaleku ezagunaren azalpena."
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:10
-msgid "Description of last known location of user."
-msgstr "Erabiltzailearen azken kokaleku ezagunaren azalpena."
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:11
 msgid "Maximum number of search results"
 msgstr "Bilaketaren emaitzen gehienezko kopurua"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:12
+#: ../data/org.gnome.maps.gschema.xml.in.h:8
 msgid "Maximum number of search results from geocode search."
 msgstr ""
 "Bilaketaren emaitzen gehienezko kopurua geokodifikazioaren bilaketatik."
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:13
-msgid "User set last known location"
-msgstr "Erabiltzaileak ezarritako azken kokaleku ezaguna"
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:14
-msgid "Whether the last known location was set manually by the user."
-msgstr "Azken kokaleku ezaguna erabiltzaileak eskuz ezarri zuen edo ez."
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:15
+#: ../data/org.gnome.maps.gschema.xml.in.h:9
 msgid "Number of recent places to store"
 msgstr "Azken aldiko lekuen kopurua gordetzeko"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:16
+#: ../data/org.gnome.maps.gschema.xml.in.h:10
 msgid "Number of recently visited places to store."
 msgstr "Azken aldian bisitatutako lekuen kopurua gordetzeko."
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:11
+msgid "Facebook check-in privacy setting"
+msgstr "Facebook-en erregistroaren pribatutasunaren ezarpena"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:12
+msgid ""
+"Latest used Facebook check-in privacy setting. Possible values are: "
+"EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
+msgstr ""
+"Facebook-en erregistroaren pribatutasunaren erabilitako azken ezarpena. Balio "
+"erabilgarriak: "
+"'EVERYONE' (edonor), 'FRIENDS_OF_FRIENDS' (lagunen lagunak), 'ALL_FRIENDS' "
+"(lagun guztiak) edo 'SELF' (norbera)."
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:13
+msgid "Foursquare check-in privacy setting"
+msgstr "Foursquare-ren erregistroaren pribatutasunaren ezarpena"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:14
+msgid ""
+"Latest used Foursquare check-in privacy setting. Possible values are: "
+"public, followers or private."
+msgstr ""
+"Foursquare-ren erregistroaren pribatutasunaren erabilitako azken ezarpena. "
+"Balio erabilgarriak: "
+"'public' (publikoa), 'followers' (jarraitzaileak) edo 'private' (pribatua)."
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:15
+msgid "Foursquare check-in Facebook broadcasting"
+msgstr "Foursquare-ren erregistroaren Facebook-eko igorpena"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:16
+msgid ""
+"Indicates if Foursquare should broadcast the check-in as a post in the "
+"Facebook account associated with the Foursquare account."
+msgstr ""
+"Foursquare-k erregistroa Facebook-eko kontuan posta gisa esleitutako "
+"Foursquare kontuarekin igorri behar duen edo ez adierazten du."
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:17
+msgid "Foursquare check-in Twitter broadcasting"
+msgstr "Foursquare-ren erregistroaren Twitter-eko igorpena"
+
+#: ../data/org.gnome.maps.gschema.xml.in.h:18
+msgid ""
+"Indicates if Foursquare should broadcast the check-in as a tweet in the "
+"Twitter account associated with the Foursquare account."
+msgstr ""
+"Foursquare-k erregistroa Twitter-eko kontuan posta gisa esleitutako "
+"Foursquare kontuarekin igorri behar duen edo ez adierazten du."
 
 #: ../src/app-menu.ui.h:1
 msgid "About"
@@ -141,68 +164,331 @@ msgstr "Honi buruz"
 msgid "Quit"
 msgstr "Irten"
 
+#: ../src/check-in-dialog.ui.h:1
+msgid "Visibility"
+msgstr "Ikusgaitasuna"
+
+#: ../src/check-in-dialog.ui.h:2
+msgid "Post on Facebook"
+msgstr "Argitaratu Facebook-en"
+
+#: ../src/check-in-dialog.ui.h:3
+msgid "Post on Twitter"
+msgstr "Argitaratu Twitter-en"
+
+#: ../src/check-in-dialog.ui.h:4 ../src/share-dialog.ui.h:2
+msgid "_Cancel"
+msgstr "_Utzi"
+
+#. Translators: Check in is used as a verb
+#: ../src/check-in-dialog.ui.h:5 ../src/map-bubble.ui.h:2
+msgid "C_heck in"
+msgstr "Erregistratu"
+
+#: ../src/check-in-dialog.ui.h:6
+msgid "Everyone"
+msgstr "Edonor"
+
+#: ../src/check-in-dialog.ui.h:7
+msgid "Friends of friends"
+msgstr "Lagunen lagunak"
+
+#: ../src/check-in-dialog.ui.h:8
+msgid "Just friends"
+msgstr "Lagunak soilik"
+
+#: ../src/check-in-dialog.ui.h:9
+msgid "Just me"
+msgstr "Nik bakarrik"
+
+#: ../src/check-in-dialog.ui.h:10
+msgid "Public"
+msgstr "Publikoa"
+
+#: ../src/check-in-dialog.ui.h:11
+msgid "Followers"
+msgstr "Jarraitzaileak"
+
+#: ../src/check-in-dialog.ui.h:12
+msgid "Private"
+msgstr "Pribatua"
+
+#. Translators: %s is the place name that user wanted to check-in */
+#: ../src/checkIn.js:137
+msgid "Cannot find \"%s\" in the social service"
+msgstr "Ezin da '%s' aurkitu zerbitzu sozialean"
+
+#: ../src/checkIn.js:139
+msgid "Cannot find a suitable place to check-in in this location"
+msgstr "Ezin da leku egokirik aurkitu kokaleku honetan erregistratzeko"
+
+#: ../src/checkIn.js:143
+msgid ""
+"Credentials have expired, please open Online Accounts to sign in and enable "
+"this account"
+msgstr ""
+"Kredentzialak iraungi egin dira. Ireki 'Lineako kontuak' kontu hau "
+"sinatzeko eta gaitzeko"
+
+#: ../src/checkIn.js:155 ../src/checkInDialog.js:291
+msgid "An error has occurred"
+msgstr "Errore bat gertatu da"
+
+#: ../src/checkInDialog.js:178
+msgid "Select an account"
+msgstr "Hautatu kontua"
+
+#: ../src/checkInDialog.js:183 ../src/checkInDialog.js:255
+msgid "Loading"
+msgstr "Kargatzen"
+
+#: ../src/checkInDialog.js:207
+msgid "Select a place"
+msgstr "Hautatu lekua"
+
+#: ../src/checkInDialog.js:212
+msgid ""
+"Maps cannot find the place to check in to with Facebook. Please select one "
+"from this list."
+msgstr ""
+"Mapak ezin du lekua aurkitu Facebook-ekin erregistratzeko. "
+"Hautatu bat zerrendatik."
+
+#: ../src/checkInDialog.js:214
+msgid ""
+"Maps cannot find the place to check in to with Foursquare. Please select one "
+"from this list."
+msgstr ""
+"Mapak ezin du lekua aurkitu Foursquare-rekin erregistratzeko "
+"Hautatu bat zerrendatik."
+
+#. Translators: %s is the name of the place to check in.
+#. */
+#: ../src/checkInDialog.js:229
+msgid "Check in to %s"
+msgstr "%s(e)n erregistratzen"
+
+#. Translators: %s is the name of the place to check in.
+#. */
+#: ../src/checkInDialog.js:239
+msgid "Write an optional message to check in to %s."
+msgstr "Idatzi aukerako mezua '%s'(e)n erregistratzeko."
+
 #: ../src/context-menu.ui.h:1
 msgid "What’s here?"
 msgstr "Zer dago hemen?"
 
-#: ../src/context-menu.ui.h:2
-msgid "I’m here!"
-msgstr "Hemen nago!"
+#: ../src/geoclue.js:160 ../src/user-location-bubble.ui.h:1
+msgid "Current location"
+msgstr "Uneko kokalekua"
 
-#: ../src/mainWindow.js:299
+#: ../src/mainWindow.js:323
 msgid "translator-credits"
 msgstr "Iñaki Larrañaga Murgoitio <dooteo@zundan.com>"
 
-#: ../src/mainWindow.js:302
+#: ../src/mainWindow.js:326
 msgid "A map application for GNOME"
 msgstr "GNOMEren mapen aplikazioa"
 
-#. Translators: Accuracy of user location information
-#: ../src/mapLocation.js:164
-msgid "Unknown"
-msgstr "Ezezaguna"
+#: ../src/main-window.ui.h:2
+msgid "Go to current location"
+msgstr "Joan uneko kokalekura"
 
-#. Translators: Accuracy of user location information
-#: ../src/mapLocation.js:167
-msgid "Exact"
-msgstr "Zehatza"
+#: ../src/main-window.ui.h:3
+msgid "Choose map type"
+msgstr "Aukeratu mapa mota"
 
-#: ../src/mapLocation.js:177
-msgid " km<sup>2</sup>"
-msgstr " km<sup>2</sup>"
+#: ../src/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr "Txandakatu bideratzailea"
 
-#: ../src/routeService.js:76
+#: ../src/main-window.ui.h:5
+msgid "Toggle favorites"
+msgstr "Txandakatu gogokoak"
+
+#: ../src/main-window.ui.h:6
+msgid "Maps is offline!"
+msgstr "Mapa lineaz kanpo dago!"
+
+#: ../src/main-window.ui.h:7
+msgid ""
+"Maps need an active internet connection to function properly, but one can't "
+"be found."
+msgstr ""
+"Mapak interneteko konexio aktiboa behar du ongi funtzionatzeko, baina ez da "
+"bat ere aurkitu."
+
+#: ../src/main-window.ui.h:8
+msgid "Check your connection and proxy settings."
+msgstr "Egiaztatu konexioaren eta proxyaren ezarpenak."
+
+#. Translators:
+#. * This means wheelchairs have full unrestricted access.
+#. */
+#: ../src/place.js:118
+msgid "yes"
+msgstr "bai"
+
+#. Translators:
+#. * This means wheelchairs have partial access (e.g some areas
+#. * can be accessed and others not, areas requiring assistance
+#. * by someone pushing up a steep gradient).
+#. */
+#: ../src/place.js:125
+msgid "limited"
+msgstr "mugatua"
+
+#. Translators:
+#. * This means wheelchairs have no unrestricted access
+#. * (e.g. stair only access).
+#. */
+#: ../src/place.js:131
+msgid "no"
+msgstr "ez"
+
+#. Translators:
+#. * This means that the way or area is designated or purpose built
+#. * for wheelchairs (e.g. elevators designed for wheelchair access
+#. * only). This is rarely used.
+#. */
+#: ../src/place.js:138
+msgid "designated"
+msgstr "zehaztutakoa"
+
+#: ../src/routeService.js:72
 msgid "No route found."
 msgstr "Ez da bideratzailerik aurkitu."
 
-#: ../src/routeService.js:82
+#: ../src/routeService.js:79
 msgid "Route request failed."
 msgstr "Huts egin du bideratzailearen eskaerak."
 
-#: ../src/routeService.js:153
+#: ../src/routeService.js:150
 msgid "Start!"
 msgstr "Hasi!"
 
-#: ../src/sidebar.ui.h:1
-msgid "To"
-msgstr "Nora"
+#: ../src/searchResultBubble.js:89
+msgid "Postal code: %s"
+msgstr "Posta-kodea: %s"
 
-#: ../src/sidebar.ui.h:2
-msgid "From"
-msgstr "Nondik"
+#: ../src/searchResultBubble.js:91
+msgid "Country code: %s"
+msgstr "Estatuaren kodea: %s"
 
-#. Translators: Showing name of place where user currently is and
-#. accuracy of this information (which is translated
-#. separately)
-#.
-#: ../src/userLocation.js:62
-#, c-format
-msgid ""
-"%s\n"
-"Position Accuracy: %s"
-msgstr ""
-"%s\n"
-"Posizioaren zehaztasuna: %s"
+#: ../src/searchResultBubble.js:100
+msgid "Population: %s"
+msgstr "Populazioa: %s"
+
+#: ../src/searchResultBubble.js:103
+msgid "Opening hours: %s"
+msgstr "Irekiera orduak: %s"
+
+#: ../src/searchResultBubble.js:108
+msgid "Wikipedia"
+msgstr "Wikipedia"
+
+#: ../src/searchResultBubble.js:113
+msgid "Wheelchair access: %s"
+msgstr "Gurpil-aulkien sarbidetzak: %s"
+
+#: ../src/share-dialog.ui.h:1
+msgid "Share location"
+msgstr "Partekatu kokalekua"
+
+#: ../src/share-dialog.ui.h:3
+msgid "_Share"
+msgstr "_Partekatu"
+
+#: ../src/search-popup.ui.h:1
+msgid "Press enter to search"
+msgstr "Sakatu Sartu bilatzeko"
+
+#. Translators: %s is a time expression with the format "%f h" or "%f min" */
+#: ../src/sidebar.js:218
+msgid "Estimated time: %s"
+msgstr "Aurreikusitako denbora: %s"
+
+#: ../src/social-place-more-results-row.ui.h:1
+msgid "Show more results"
+msgstr "Erakutsi emaitza gehiago"
+
+#. To translators: %s can be "Unknown", "Exact" or "%f km²"
+#: ../src/user-location-bubble.ui.h:4
+#, no-c-format
+msgid "Accuracy: %s"
+msgstr "Zehaztasuna: %s"
+
+#. Translators: Accuracy of user location information */
+#: ../src/utils.js:254
+msgid "Unknown"
+msgstr "Ezezaguna"
+
+#. Translators: Accuracy of user location information */
+#: ../src/utils.js:257
+msgid "Exact"
+msgstr "Zehatza"
+
+#: ../src/utils.js:356
+msgid "%f h"
+msgstr "%f o"
+
+#: ../src/utils.js:358
+msgid "%f min"
+msgstr "%f min"
+
+#. Translators: This is a distance measured in kilometers */
+#: ../src/utils.js:369
+msgid "%f km"
+msgstr "%f km"
+
+#. Translators: This is a distance measured in meters */
+#: ../src/utils.js:372
+msgid "%f m"
+msgstr "%f m"
+
+#. Translators: This is a distance measured in miles */
+#: ../src/utils.js:380
+msgid "%f mi"
+msgstr "%f mi"
+
+#. Translators: This is a distance measured in feet */
+#: ../src/utils.js:383
+msgid "%f ft"
+msgstr "%f oin"
+
+#~ msgid "Last known location and accuracy"
+#~ msgstr "Azken kokaleku ezaguna eta zehaztasuna"
+
+#~ msgid ""
+#~ "Last known location (latitude and longitude in degrees) and accuracy (in "
+#~ "meters)."
+#~ msgstr ""
+#~ "Azken kokaleku ezaguna (latitudea eta longitudea gradutan) eta "
+#~ "zehaztasuna (metrotan)."
+
+#~ msgid "Description of last known location"
+#~ msgstr "Azken kokaleku ezagunaren azalpena."
+
+#~ msgid "Description of last known location of user."
+#~ msgstr "Erabiltzailearen azken kokaleku ezagunaren azalpena."
+
+#~ msgid "User set last known location"
+#~ msgstr "Erabiltzaileak ezarritako azken kokaleku ezaguna"
+
+#~ msgid "Whether the last known location was set manually by the user."
+#~ msgstr "Azken kokaleku ezaguna erabiltzaileak eskuz ezarri zuen edo ez."
+
+#~ msgid "I’m here!"
+#~ msgstr "Hemen nago!"
+
+#~ msgid " km<sup>2</sup>"
+#~ msgstr " km<sup>2</sup>"
+
+#~ msgid "To"
+#~ msgstr "Nora"
+
+#~ msgid "From"
+#~ msgstr "Nondik"
 
 #~ msgid "Street"
 #~ msgstr "Kalea"
@@ -212,9 +498,6 @@ msgstr ""
 
 #~ msgid " km²"
 #~ msgstr " km²"
-
-#~ msgid "Track user location"
-#~ msgstr "Rastrear la ubicación del usuario"
 
 #~ msgid "Track user location."
 #~ msgstr "Rastrear la ubicación del usuario."
