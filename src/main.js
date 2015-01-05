@@ -21,6 +21,8 @@
  *         Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
+pkg.initGettext();
+pkg.initFormat();
 pkg.require({ 'cairo': '1.0',
               'Champlain': '0.12',
               'Clutter': '1.0',
@@ -43,9 +45,6 @@ pkg.require({ 'cairo': '1.0',
 const Application = imports.application;
 
 function main(args) {
-    pkg.initGettext();
-    pkg.initFormat();
-
     let application = new Application.Application();
     return application.run(args);
 }
