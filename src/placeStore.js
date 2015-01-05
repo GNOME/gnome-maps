@@ -31,6 +31,8 @@ const Utils = imports.utils;
 
 const _PLACES_STORE_FILE = 'maps-places.json';
 const _ICON_SIZE = 20;
+const _ONE_DAY = 1000 * 60 * 60 * 24; // one day in ms
+const _STALE_THRESHOLD = 7; // mark the osm information as stale after a week
 
 const PlaceType = {
     ANY: -1,
@@ -221,6 +223,26 @@ const PlaceStore = new Lang.Class({
             return false;
         }).bind(this));
         return storedPlace;
+    },
+
+    isStale: function(place) {
+        if (!this.exists(place, null))
+            return false;
+
+        let added = null;
+        this.foreach(function(model, path, iter) {
+            let p = model.get_value(iter, Columns.PLACE);
+
+            if (p.uniqueID === place.uniqueID) {
+                let p_type = model.get_value(iter, Columns.TYPE);
+                added = model.get_value(iter, Columns.ADDED);
+            }
+        });
+
+        let now = new Date().getTime();
+        let days = Math.abs(now - added) / _ONE_DAY;
+
+        return (days >= _STALE_THRESHOLD);
     },
 
     exists: function(place, type) {
