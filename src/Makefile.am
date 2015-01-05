@@ -3,7 +3,7 @@ NULL =
 appdir = $(pkgdatadir)
 nodist_app_SCRIPTS = org.gnome.Maps
 
-app_resource_files =
+app_resource_files =							\
 	$(shell $(GLIB_COMPILE_RESOURCES)				\
 		--sourcedir=$(srcdir)					\
 		--generate-dependencies					\
