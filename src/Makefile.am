@@ -42,6 +42,7 @@ CLEANFILES =								\
 
 install-exec-hook:
 	$(MKDIR_P) $(DESTDIR)$(bindir)
+	-rm -f $(DESTDIR)$(bindir)/gnome-maps
 	$(LN_S) $(appdir)/org.gnome.Maps $(DESTDIR)$(bindir)/gnome-maps
 uninstall-hook:
 	-rm -f $(DESTDIR)$(bindir)/gnome-maps
