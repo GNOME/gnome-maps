@@ -21,6 +21,25 @@
  *         Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
+pkg.require({ 'cairo': '1.0',
+              'Champlain': '0.12',
+              'Clutter': '1.0',
+              'Cogl': '1.0',
+              'GeocodeGlib': '1.0',
+              'Gdk': '3.0',
+              'GdkPixbuf': '2.0',
+              'GFBGraph': '0.2',
+              'Gio': '2.0',
+              'GLib': '2.0',
+              'Goa': '1.0',
+              'GObject': '2.0',
+              'Gtk': '3.0',
+              'GtkChamplain': '0.12',
+              'GtkClutter': '1.0',
+              'GWeather': '3.0',
+              'Rest': '0.7',
+              'Soup': '2.4' });
+
 const Application = imports.application;
 
 function main(args) {
