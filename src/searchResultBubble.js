@@ -54,11 +54,20 @@ const SearchResultBubble = new Lang.Class({
         this._title = ui.labelTitle;
         this._boxContent = ui.boxContent;
 
+        let overpass = new Overpass.Overpass();
         if (Application.placeStore.exists(this.place, null)) {
-            let place = Application.placeStore.get(this.place);
-            this._populate(place);
+
+            // If the place is stale, update from Overpass.
+            if (Application.placeStore.isStale(this.place)) {
+                overpass.addInfo(this.place, (function(status, code) {
+                    this._populate(this.place);
+                    Application.placeStore.updatePlace(this.place);
+                }).bind(this));
+            } else {
+                let place = Application.placeStore.get(this.place);
+                this._populate(place);
+            }
         } else {
-            let overpass = new Overpass.Overpass();
             overpass.addInfo(this.place, (function(status, code) {
                 this._populate(this.place);
                 Application.placeStore.addPlace(this.place,
