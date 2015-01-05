@@ -88,7 +88,7 @@ const PlaceStore = new Lang.Class({
 
     _addRecent: function(place) {
         if (this.exists(place, PlaceType.RECENT)) {
-            this._updatePlace(place);
+            this.updatePlace(place);
             return;
         }
 
@@ -241,7 +241,7 @@ const PlaceStore = new Lang.Class({
         }).bind(this));
     },
 
-    _updatePlace: function(place) {
+    updatePlace: function(place) {
         this.foreach((function(model, path, iter) {
             let p = model.get_value(iter, Columns.PLACE);
 
