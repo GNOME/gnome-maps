@@ -38,7 +38,6 @@ pkg.require({ 'cairo': '1.0',
               'Gtk': '3.0',
               'GtkChamplain': '0.12',
               'GtkClutter': '1.0',
-              'GWeather': '3.0',
               'Rest': '0.7',
               'Soup': '2.4' });
 
