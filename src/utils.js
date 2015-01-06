@@ -355,6 +355,8 @@ function prettyTime(time) {
         labelledTime += _("%f h").format(hours)+' ';
     if (minutes > 0)
         labelledTime += _("%f min").format(minutes);
+    if (hours === 0 && minutes === 0)
+        labelledTime = _("%f s").format(seconds);
     return labelledTime;
 }
 
