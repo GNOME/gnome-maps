@@ -55,6 +55,7 @@ const MapMarker = new Lang.Class({
 
         this.connect('notify::size', this._translateMarkerPosition.bind(this));
         this.connect('notify::selected', this._onMarkerSelected.bind(this));
+        this.connect('button-press', this._onButtonPress.bind(this));
 
         // Some markers are draggable, we want to sync the marker location and
         // the location saved in the GeocodePlace
@@ -65,6 +66,14 @@ const MapMarker = new Lang.Class({
         this.bind_property('longitude',
                            this.place.location, 'longitude',
                            GObject.BindingFlags.DEFAULT);
+    },
+
+    _onButtonPress: function(marker, event) {
+        // Zoom in on marker on double-click
+        if (event.get_click_count() > 1) {
+            this._view.zoom_level = this._view.max_zoom_level - 1;
+            this._view.center_on(this.latitude, this.longitude);
+        }
     },
 
     _translateMarkerPosition: function() {
@@ -188,7 +197,6 @@ const MapMarker = new Lang.Class({
                                              this.set_selected.bind(this, false));
         let dragMotionSignalId = this.connect('drag-motion',
                                               this.set_selected.bind(this, false));
-
         Utils.once(this.bubble, 'closed', (function() {
             this._mapView.disconnect(markerSelectedSignalId);
             this._mapView.disconnect(goingToSignalId);
