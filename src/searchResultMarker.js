@@ -33,7 +33,7 @@ const SearchResultMarker = new Lang.Class({
     _init: function(params) {
         this.parent(params);
 
-        this.add_actor(Utils.CreateActorFromIconName('maps-pin'));
+        this.add_actor(Utils.CreateActorFromIconName('maps-pin', 0));
     },
 
     get anchor() {

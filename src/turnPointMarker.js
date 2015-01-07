@@ -106,7 +106,7 @@ const DestinationMarker = new Lang.Class({
             this._onMarkerDrag();
         }).bind(this));
 
-        this.add_actor(Utils.CreateActorFromIconName(this.iconName));
+        this.add_actor(Utils.CreateActorFromIconName(this.iconName, 0));
     },
 
     _onMarkerDrag: function() {
