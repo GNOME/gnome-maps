@@ -38,7 +38,6 @@ private_icons =								\
 	hicolor_apps_16x16_route-transit-symbolic.svg 			\
 	hicolor_apps_16x16_route-bike-symbolic.svg 			\
 	hicolor_apps_16x16_route-car-symbolic.svg 			\
-	hicolor_apps_32x32_maps-pin.svg					\
 	hicolor_apps_22x22_user-location.png				\
 	$(NULL)
 
