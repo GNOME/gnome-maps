@@ -1,10 +1,10 @@
 SUBDIRS = icons
 
-app_resource_files =
+app_resource_files =							\
 	$(shell $(GLIB_COMPILE_RESOURCES)				\
 		--sourcedir=$(srcdir)					\
 		--generate-dependencies					\
-		$(srcdir)/org.gnome.Maps.data.gresource			\
+		$(srcdir)/org.gnome.Maps.data.gresource.xml			\
 	)
 org.gnome.Maps.data.gresource: org.gnome.Maps.data.gresource.xml $(app_resource_files)
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES)				\
