@@ -25,6 +25,7 @@ const Format = imports.format;
 const Lang = imports.lang;
 
 const Application = imports.application;
+const ContactPlace = imports.contactPlace;
 const MapBubble = imports.mapBubble;
 const Overpass = imports.overpass;
 const Place = imports.place;
@@ -41,8 +42,12 @@ const PlaceBubble = new Lang.Class({
                                                      'box-content',
                                                      'label-title']);
         params.buttons = (MapBubble.Button.ROUTE |
-                          MapBubble.Button.SHARE |
-                          MapBubble.Button.FAVORITE);
+                          MapBubble.Button.SHARE);
+
+        // We do not serialize contacts to file, so adding them
+        // as favourites does not makes sense right now.
+        if (!params.place instanceof ContactPlace.ContactPlace)
+            params.buttons |= MapBubble.Button.FAVORITE;
 
         this.parent(params);
 
