@@ -65,6 +65,9 @@ const PlaceListRow = new Lang.Class({
             this._typeIcon.icon_name = 'document-open-recent-symbolic';
         else if (type === PlaceStore.PlaceType.FAVORITE)
             this._typeIcon.icon_name = 'emblem-favorite-symbolic';
+        else if (type === PlaceStore.PlaceType.CONTACT)
+            this._typeIcon.icon_name = 'avatar-default-symbolic';
+
     },
 
     _boldMatch: function(title, string) {
