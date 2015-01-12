@@ -29,13 +29,13 @@ const GtkClutter = imports.gi.GtkClutter;
 const Lang = imports.lang;
 
 const CheckIn = imports.checkIn;
+const ContactPlace = imports.contactPlace;
 const Format = imports.format;
 const Geoclue = imports.geoclue;
 const GeocodeService = imports.geocodeService;
 const MainWindow = imports.mainWindow;
 const Maps = imports.gi.GnomeMaps;
 const NotificationManager = imports.notificationManager;
-const Place = imports.place;
 const PlaceStore = imports.placeStore;
 const RouteService = imports.routeService;
 const Settings = imports.settings;
@@ -127,6 +127,19 @@ const Application = new Lang.Class({
         this._mainWindow.window.destroy();
     },
 
+    _addContacts: function() {
+        contactStore.get_contacts().forEach(function(contact) {
+            contact.geocode(function() {
+                contact.get_places().forEach(function(p) {
+                    Utils.debug('Adding contact address: ' + p.name);
+                    let place = new ContactPlace.ContactPlace({ place: p,
+                                                                contact: contact });
+                    placeStore.addPlace(place, PlaceStore.PlaceType.CONTACT);
+                });
+            });
+        });
+    },
+
     _initPlaceStore: function() {
         placeStore = new PlaceStore.PlaceStore();
         try {
@@ -134,6 +147,15 @@ const Application = new Lang.Class({
         } catch (e) {
             log('Failed to parse Maps places file, ' +
                 'subsequent writes will overwrite the file!');
+        }
+
+        if (contactStore.state === Maps.ContactStoreState.LOADED) {
+            this. _addContacts();
+        } else {
+            Utils.once(contactStore, 'notify::state', (function() {
+                if (contactStore.state === Maps.ContactStoreState.LOADED)
+                    this._addContacts();
+            }).bind(this));
         }
     },
 
