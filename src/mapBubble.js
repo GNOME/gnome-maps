@@ -30,13 +30,13 @@ const Mainloop = imports.mainloop;
 const Application = imports.application;
 const Place = imports.place;
 const PlaceStore = imports.placeStore;
-const ShareDialog = imports.shareDialog;
+const SendToDialog = imports.sendToDialog;
 const Utils = imports.utils;
 
 const Button = {
     NONE: 0,
     ROUTE: 2,
-    SHARE: 4,
+    SEND_TO: 4,
     FAVORITE: 8,
     CHECK_IN: 16
 };
@@ -73,7 +73,7 @@ const MapBubble = new Lang.Class({
                                                    'bubble-content-area',
                                                    'bubble-button-area',
                                                    'bubble-route-button',
-                                                   'bubble-share-button',
+                                                   'bubble-send-to-button',
                                                    'bubble-favorite-button',
                                                    'bubble-check-in-button']);
         this._image = ui.bubbleImage;
@@ -84,8 +84,8 @@ const MapBubble = new Lang.Class({
         else {
             if (buttonFlags & Button.ROUTE)
                 this._initRouteButton(ui.bubbleRouteButton, routeFrom);
-            if (buttonFlags & Button.SHARE)
-                this._initShareButton(ui.bubbleShareButton);
+            if (buttonFlags & Button.SEND_TO)
+                this._initSendToButton(ui.bubbleSendToButton);
             if (buttonFlags & Button.FAVORITE)
                 this._initFavoriteButton(ui.bubbleFavoriteButton);
             if (buttonFlags & Button.CHECK_IN)
@@ -123,10 +123,10 @@ const MapBubble = new Lang.Class({
         }).bind(this));
     },
 
-    _initShareButton: function(button) {
-        let dialog = new ShareDialog.ShareDialog({ transient_for: this.get_toplevel(),
-                                                   place: this._place });
-        if (!dialog.ensureShares())
+    _initSendToButton: function(button) {
+        let dialog = new SendToDialog.SendToDialog({ transient_for: this.get_toplevel(),
+                                                     place: this._place });
+        if (!dialog.ensureApplications())
             return;
 
         button.visible = true;

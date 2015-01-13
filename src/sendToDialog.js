@@ -37,10 +37,10 @@ const Response = {
 
 const _NUM_VISIBLE = 6;
 
-const ShareDialog = new Lang.Class({
-    Name: 'ShareDialog',
+const SendToDialog = new Lang.Class({
+    Name: 'SendToDialog',
     Extends: Gtk.Dialog,
-    Template: 'resource:///org/gnome/Maps/ui/share-dialog.ui',
+    Template: 'resource:///org/gnome/Maps/ui/send-to-dialog.ui',
     InternalChildren: [ 'list',
                         'weatherRow',
                         'weatherLabel',
@@ -77,23 +77,23 @@ const ShareDialog = new Lang.Class({
         });
     },
 
-    ensureShares: function() {
+    ensureApplications: function() {
         let weatherInfo = Gio.DesktopAppInfo.new(_WEATHER_APPID + '.desktop');
         let clocksInfo = Gio.DesktopAppInfo.new(_CLOCKS_APPID + '.desktop');
-        let shareWeather = this._checkWeather(weatherInfo);
-        let shareClocks = this._checkClocks(clocksInfo);
+        let appWeather = this._checkWeather(weatherInfo);
+        let appClocks = this._checkClocks(clocksInfo);
 
-        if (!shareWeather)
+        if (!appWeather)
             this._weatherRow.hide();
         else
             this._weatherLabel.label = weatherInfo.get_name();
 
-        if (!shareClocks)
+        if (!appClocks)
             this._clocksRow.hide();
         else
             this._clocksLabel.label = clocksInfo.get_name();
 
-        return shareWeather || shareClocks;
+        return appWeather || appClocks;
     },
 
     _onChooseButtonClicked: function() {

@@ -34,7 +34,7 @@ const UserLocationBubble = new Lang.Class({
                                                              'label-accuracy',
                                                              'label-coordinates' ]);
         params.buttons = MapBubble.Button.ROUTE |
-                         MapBubble.Button.SHARE |
+                         MapBubble.Button.SEND_TO |
                          MapBubble.Button.CHECK_IN;
         params.routeFrom = true;
         params.checkInMatchPlace = false;
