@@ -26,6 +26,7 @@ const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 
 const Application = imports.application;
+const ContactPlace = imports.contactPlace;
 const Place = imports.place;
 const Utils = imports.utils;
 
@@ -75,6 +76,9 @@ const PlaceStore = new Lang.Class({
     },
 
     _addFavorite: function(place) {
+        if (place instanceof ContactPlace.ContactPlace)
+            return;
+
         if (this.exists(place, PlaceType.FAVORITE)) {
             return;
         }
@@ -89,6 +93,9 @@ const PlaceStore = new Lang.Class({
     },
 
     _addRecent: function(place) {
+        if (place instanceof ContactPlace.ContactPlace)
+            return;
+
         if (this.exists(place, PlaceType.RECENT)) {
             this.updatePlace(place);
             return;
@@ -179,6 +186,9 @@ const PlaceStore = new Lang.Class({
             let place = model.get_value(iter, Columns.PLACE);
             let type = model.get_value(iter, Columns.TYPE);
             let added = model.get_value(iter, Columns.ADDED);
+
+            if (place instanceof ContactPlace.ContactPlace)
+                return;
 
             jsonArray.push({
                 place: place.toJSON(),
