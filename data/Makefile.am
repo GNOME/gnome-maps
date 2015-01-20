@@ -4,7 +4,7 @@ app_resource_files =							\
 	$(shell $(GLIB_COMPILE_RESOURCES)				\
 		--sourcedir=$(srcdir)					\
 		--generate-dependencies					\
-		$(srcdir)/org.gnome.Maps.data.gresource.xml			\
+		$(srcdir)/org.gnome.Maps.data.gresource.xml		\
 	)
 org.gnome.Maps.data.gresource: org.gnome.Maps.data.gresource.xml $(app_resource_files)
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES)				\
@@ -30,7 +30,7 @@ appdata_DATA = $(appdata_in_file:.xml.in=.xml)
 @INTLTOOL_XML_RULE@
 
 org.gnome.Maps.service: org.gnome.Maps.service.in
-	$(AM_V_GEN) sed \
+	$(AM_V_GEN) sed                                                 \
 		-e "s|[@]pkgdatadir@|$(pkgdatadir)|g"			\
 		-e "s|[@]pkglibdir@|$(pkglibdir)|g"			\
 		$< > $@
