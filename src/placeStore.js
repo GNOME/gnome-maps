@@ -38,7 +38,8 @@ const _STALE_THRESHOLD = 7; // mark the osm information as stale after a week
 const PlaceType = {
     ANY: -1,
     RECENT: 0,
-    FAVORITE: 1
+    FAVORITE: 1,
+    CONTACT: 2
 };
 
 const Columns = {
@@ -73,6 +74,14 @@ const PlaceStore = new Lang.Class({
     _addPlace: function(place, type) {
         this._setPlace(this.append(), place, type, new Date().getTime());
         this._store();
+    },
+
+    _addContact: function(place) {
+        if (this.exists(place, PlaceType.CONTACT)) {
+            return;
+        }
+
+        this._addPlace(place, PlaceType.CONTACT);
     },
 
     _addFavorite: function(place) {
@@ -152,6 +161,8 @@ const PlaceStore = new Lang.Class({
             this._addFavorite(place, type);
         else if (type === PlaceType.RECENT)
             this._addRecent(place, type);
+        else if (type === PlaceType.CONTACT)
+            this._addContact(place, type);
     },
 
     removePlace: function(place, placeType) {
