@@ -214,7 +214,7 @@ const MapView = new Lang.Class({
         this._turnPointMarker = new TurnPointMarker.TurnPointMarker({ turnPoint: turnPoint,
                                                                       mapView: this });
         this._instructionMarkerLayer.add_marker(this._turnPointMarker);
-        this._turnPointMarker.goToAndSelect(true);
+        this._turnPointMarker.goTo();
     },
 
     showContact: function(contact) {
@@ -264,9 +264,9 @@ const MapView = new Lang.Class({
         route.turnPoints.forEach(function(turnPoint) {
             if (turnPoint.isStop()) {
                 let queryPoint = query.filledPoints[pointIndex];
-                let destinationMarker = new TurnPointMarker.DestinationMarker({ turnPoint: turnPoint,
-                                                                                queryPoint: queryPoint,
-                                                                                mapView: this });
+                let destinationMarker = new TurnPointMarker.TurnPointMarker({ turnPoint: turnPoint,
+                                                                              queryPoint: queryPoint,
+                                                                              mapView: this });
                 this._instructionMarkerLayer.add_marker(destinationMarker);
                 pointIndex++;
             }

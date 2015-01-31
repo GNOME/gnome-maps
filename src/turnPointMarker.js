@@ -21,6 +21,7 @@
  */
 
 const Clutter = imports.gi.Clutter;
+const Gdk = imports.gi.Gdk;
 const Geocode = imports.gi.GeocodeGlib;
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
@@ -28,22 +29,16 @@ const Mainloop = imports.mainloop;
 const Application = imports.application;
 const MapMarker = imports.mapMarker;
 const Place = imports.place;
-const TurnPointBubble = imports.turnPointBubble;
 const Utils = imports.utils;
 
 const TurnPointMarker = new Lang.Class({
     Name: 'TurnPointMarker',
     Extends: MapMarker.MapMarker,
 
-    get turnPoint() {
-        return this._turnPoint;
-    },
-
-    get iconName() {
-        return this._turnPoint.iconName;
-    },
-
     _init: function(params) {
+        this._queryPoint = params.queryPoint;
+        delete params.queryPoint;
+
         this._turnPoint = params.turnPoint;
         delete params.turnPoint;
 
@@ -53,8 +48,26 @@ const TurnPointMarker = new Lang.Class({
                 longitude: this._turnPoint.coordinate.get_longitude()
             })
         });
-
         this.parent(params);
+
+        let actor;
+        if (this._queryPoint) {
+            this.draggable = true;
+            this.connect('drag-finish', (function() {
+                this._onMarkerDrag();
+            }).bind(this));
+            actor = Utils.CreateActorFromIconName(this._turnPoint.iconName, 0);
+        } else {
+            // A GNOMEish blue color
+            let color = new Gdk.RGBA({ red: 33   / 255,
+                                       green: 93 / 255,
+                                       blue: 156 / 255,
+                                       alpha: 255 });
+            actor = Utils.CreateActorFromIconName('maps-point-end-symbolic',
+                                                  0,
+                                                  color);
+        }
+        this.add_actor(actor);
     },
 
     get anchor() {
@@ -62,58 +75,27 @@ const TurnPointMarker = new Lang.Class({
                  y: Math.floor(this.height / 2) - 1 };
     },
 
-    goToAndSelect: function(animate) {
-        if (!animate) {
-            this.parent(animate);
-        } else {
-            let view = this._mapView.view;
-            let turnPointZoomLevel = 16;
+    goTo: function() {
+        let view = this._mapView.view;
+        let turnPointZoomLevel = 15;
 
-            view.goto_animation_mode = Clutter.AnimationMode.LINEAR;
-            view.goto_duration = 0;
+        view.goto_animation_mode = Clutter.AnimationMode.LINEAR;
+        view.goto_duration = 0;
 
-            Utils.once(view, 'animation-completed::go-to', (function() {
-                view.zoom_level = turnPointZoomLevel;
-                view.center_on(this.place.location.latitude,
-                               this.place.location.longitude);
-                this.selected = true;
-            }).bind(this));
-            view.go_to(this.place.location.latitude,
-                       this.place.location.longitude);
-        }
-    },
-
-    _createBubble: function() {
-        return new TurnPointBubble.TurnPointBubble({ turnPoint: this.turnPoint,
-                                                     place: this.place,
-                                                     mapView: this._mapView });
-    }
-});
-
-const DestinationMarker = new Lang.Class({
-    Name: 'DestinationMarker',
-    Extends: TurnPointMarker,
-
-    _init: function(params) {
-        this._queryPoint = params.queryPoint;
-        delete params.queryPoint;
-
-        this.parent(params);
-
-        this.draggable = true;
-
-        this.connect('drag-finish', (function() {
-            this._onMarkerDrag();
+        Utils.once(view, 'animation-completed', (function() {
+            view.zoom_level = turnPointZoomLevel;
+            view.center_on(this.latitude,
+                           this.longitude);
         }).bind(this));
 
-        this.add_actor(Utils.CreateActorFromIconName(this.iconName, 0));
+        view.go_to(this.latitude, this.longitude);
     },
 
     _onMarkerDrag: function() {
         let query = Application.routeService.query;
         let place = new Place.Place({
-                        location: new Geocode.Location({ latitude: this.latitude.toFixed(5),
-                                                         longitude: this.longitude.toFixed(5) }) });
+            location: new Geocode.Location({ latitude: this.latitude.toFixed(5),
+                                             longitude: this.longitude.toFixed(5) }) });
 
         this._queryPoint.place = place;
     }
