@@ -165,10 +165,17 @@ function activateAction(appId, action, parameter, timestamp) {
                           });
 }
 
-function CreateActorFromIconName(name, size) {
+function CreateActorFromIconName(name, size, color) {
     try {
         let theme = Gtk.IconTheme.get_default();
-        let pixbuf = theme.load_icon(name, size, 0);
+        let pixbuf;
+
+        if (color) {
+            let info = theme.lookup_icon(name, size, 0);
+            pixbuf = info.load_symbolic(color, null, null, null, null, null)[0];
+        } else
+            pixbuf = theme.load_icon(name, size, 0);
+
         let image = new Clutter.Image();
         image.set_data(pixbuf.get_pixels(),
                        Cogl.PixelFormat.RGBA_8888,
