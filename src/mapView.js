@@ -236,6 +236,7 @@ const MapView = new Lang.Class({
 
     showSearchResult: function(place) {
         this._placeLayer.remove_all();
+        this.routeVisible = false;
         let placeMarker = new PlaceMarker.PlaceMarker({ place: place,
                                                         mapView: this });
 
@@ -247,6 +248,8 @@ const MapView = new Lang.Class({
 
     showRoute: function(route) {
         this._routeLayer.remove_all();
+        this._placeLayer.remove_all();
+
         this.routeVisible = true;
 
         route.path.forEach(this._routeLayer.add_node.bind(this._routeLayer));

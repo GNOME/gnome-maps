@@ -128,7 +128,7 @@ const MainWindow = new Lang.Class({
                                                this._setRevealSidebar.bind(this, true));
         sidebar.bind_property('reveal-child',
                               this.mapView, 'routeVisible',
-                              GObject.BindingFlags.DEFAULT);
+                              GObject.BindingFlags.BIDIRECTIONAL);
         this.window.application.bind_property('connected',
                                               sidebar, 'visible',
                                               GObject.BindingFlags.DEFAULT);
