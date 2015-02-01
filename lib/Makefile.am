@@ -19,12 +19,12 @@ AM_CPPFLAGS =								\
 
 maps-enum-types.h: $(libgnome_maps_headers_private)
 	$(AM_V_GEN) ($(GLIB_MKENUMS)					\
-		--template maps-enum-types.h.template			\
+		--template $(srcdir)/maps-enum-types.h.template			\
 		$^ > xgen-$(@F) && mv -f xgen-$(@F) $@)
 
 maps-enum-types.c: $(libgnome_maps_headers_private) maps-enum-types.h
 	$(AM_V_GEN) ($(GLIB_MKENUMS)					\
-		--template maps-enum-types.c.template			\
+		--template $(srcdir)/maps-enum-types.c.template			\
 		$^ > xgen-$(@F) && mv -f xgen-$(@F) $@)
 
 if HAVE_INTROSPECTION
@@ -39,7 +39,7 @@ GnomeMaps_1_0_gir_INCLUDES =						\
 	Champlain-0.12
 GnomeMaps_1_0_gir_PACKAGES = gobject-2.0 geocode-glib-1.0
 GnomeMaps_1_0_gir_FILES = $(libgnome_maps_la_SOURCES)
-GnomeMaps_1_0_gir_CFLAGS = $(MAPS_CFLAGS) -I$(top_srcdir) -I$(top_builddir)
+GnomeMaps_1_0_gir_CFLAGS = $(MAPS_CFLAGS) -I$(top_srcdir) -I$(top_builddir) -I$(srcdir)
 GnomeMaps_1_0_gir_LIBS = libgnome-maps.la
 GnomeMaps_1_0_gir_EXPORT_PACKAGES = gnome-maps-1.0
 GnomeMaps_1_0_gir_SCANNERFLAGS =					\
