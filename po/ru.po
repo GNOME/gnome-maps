@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-01-29 19:54+0000\n"
-"PO-Revision-Date: 2015-01-30 02:45+0300\n"
+"POT-Creation-Date: 2015-02-06 07:59+0000\n"
+"PO-Revision-Date: 2015-02-06 15:00+0300\n"
 "Last-Translator: Stas Solovey <whats_up@tut.by>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -53,7 +53,7 @@ msgstr ""
 
 #. Translators: This is the program name. */
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:75 ../src/mainWindow.js:357
+#: ../src/application.js:78 ../src/mainWindow.js:362
 msgid "Maps"
 msgstr "Карты"
 
@@ -173,12 +173,12 @@ msgstr "Опубликовать в Facebook"
 msgid "Post on Twitter"
 msgstr "Опубликовать в Twitter"
 
-#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/share-dialog.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/send-to-dialog.ui.h:2
 msgid "_Cancel"
 msgstr "_Отмена"
 
 #. Translators: Check in is used as a verb
-#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:5
 msgid "C_heck in"
 msgstr "О_публиковать"
 
@@ -254,17 +254,35 @@ msgstr ""
 msgid "Check your connection and proxy settings."
 msgstr "Проверьте настройки прокси и соединения."
 
+#: ../data/ui/map-bubble.ui.h:1
+msgid "Add to new route"
+msgstr "Добавить к новому маршруту"
+
+#: ../data/ui/map-bubble.ui.h:2
+msgid "Open with another application"
+msgstr "Открыть в другом приложении"
+
+#: ../data/ui/map-bubble.ui.h:3
+msgid "Mark as favorite"
+msgstr "Добавить в избранное"
+
+#: ../data/ui/map-bubble.ui.h:6
+#| msgid "C_heck in"
+msgid "Check in here"
+msgstr "От_метиться здесь"
+
 #: ../data/ui/search-popup.ui.h:1
 msgid "Press enter to search"
 msgstr "Нажмите Enter для поиска"
 
-#: ../data/ui/share-dialog.ui.h:1
-msgid "Share location"
-msgstr "Поделиться местоположением"
+#: ../data/ui/send-to-dialog.ui.h:1
+#| msgid "Current location"
+msgid "Open location"
+msgstr "Открыть местоположение"
 
-#: ../data/ui/share-dialog.ui.h:3
-msgid "_Share"
-msgstr "_Поделиться"
+#: ../data/ui/send-to-dialog.ui.h:3
+msgid "_Open"
+msgstr "_Открыть"
 
 #: ../data/ui/social-place-more-results-row.ui.h:1
 msgid "Show more results"
@@ -344,22 +362,22 @@ msgstr "Поделиться местом %s"
 msgid "Write an optional message to check in to %s."
 msgstr "Дополнительное сообщение к месту %s"
 
-#: ../src/mainWindow.js:305
+#: ../src/mainWindow.js:310
 msgid "Failed to connect to location service"
 msgstr "Не удалось подключиться к сервису местоположения"
 
-#: ../src/mainWindow.js:310
+#: ../src/mainWindow.js:315
 msgid "Position not found"
 msgstr "Позиция не найдена"
 
-#: ../src/mainWindow.js:355
+#: ../src/mainWindow.js:360
 msgid "translator-credits"
 msgstr ""
 "Yuri Myasoedov <ymyasoedov@yandex.ru>, 2013, 2014.\n"
 "Mihail Gurin <mikegurin@yandex.ru>, 2014, 2015.\n"
 "Stas Solovey <whats_up@tut.by>, 2014, 2015."
 
-#: ../src/mainWindow.js:358
+#: ../src/mainWindow.js:363
 msgid "A map application for GNOME"
 msgstr "Приложение карт для GNOME"
 
@@ -408,31 +426,31 @@ msgstr "Сбой при запросе маршрута."
 msgid "Start!"
 msgstr "Старт!"
 
-#: ../src/searchResultBubble.js:97
+#: ../src/placeBubble.js:102
 #, javascript-format
 msgid "Postal code: %s"
 msgstr "Почтовый индекс: %s"
 
-#: ../src/searchResultBubble.js:99
+#: ../src/placeBubble.js:104
 #, javascript-format
 msgid "Country code: %s"
 msgstr "Код страны: %s"
 
-#: ../src/searchResultBubble.js:108
+#: ../src/placeBubble.js:113
 #, javascript-format
 msgid "Population: %s"
 msgstr "Население: %s"
 
-#: ../src/searchResultBubble.js:111
+#: ../src/placeBubble.js:116
 #, javascript-format
 msgid "Opening hours: %s"
 msgstr "Открыто: %s"
 
-#: ../src/searchResultBubble.js:116
+#: ../src/placeBubble.js:121
 msgid "Wikipedia"
 msgstr "Википедия"
 
-#: ../src/searchResultBubble.js:121
+#: ../src/placeBubble.js:126
 #, javascript-format
 msgid "Wheelchair access: %s"
 msgstr "Доступ для инвалидов: %s"
@@ -572,14 +590,14 @@ msgid "%s-%s"
 msgstr "%s-%s"
 
 #. Translators: Accuracy of user location information */
-#: ../src/utils.js:253
+#: ../src/utils.js:257
 msgid "Unknown"
 msgstr "Неизвестная"
 
 # Точность: Максимальная
 # точная не подходит, т. к. получается "точность: точная"
 #. Translators: Accuracy of user location information */
-#: ../src/utils.js:256
+#: ../src/utils.js:260
 msgid "Exact"
 msgstr "Максимальная"
 
@@ -621,3 +639,9 @@ msgstr "%f миль"
 #, javascript-format
 msgid "%f ft"
 msgstr "%f футов"
+
+#~ msgid "Share location"
+#~ msgstr "Поделиться местоположением"
+
+#~ msgid "_Share"
+#~ msgstr "_Поделиться"
