@@ -241,7 +241,7 @@ maps_contact_add_place (MapsContact  *contact,
 GList *
 maps_contact_get_places (MapsContact *contact)
 {
-  g_return_if_fail (MAPS_IS_CONTACT (contact));
+  g_return_val_if_fail (MAPS_IS_CONTACT (contact), NULL);
 
   return contact->priv->places;
 }

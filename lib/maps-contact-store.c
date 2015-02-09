@@ -303,7 +303,7 @@ maps_contact_store_load (MapsContactStore *store)
 GList *
 maps_contact_store_get_contacts (MapsContactStore *store)
 {
-  g_return_if_fail (MAPS_IS_CONTACT_STORE (store));
+  g_return_val_if_fail (MAPS_IS_CONTACT_STORE (store), NULL);
 
   return store->priv->list;
 }
