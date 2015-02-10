@@ -196,8 +196,10 @@ const Geoclue = new Lang.Class({
                                               accuracy: geoclueLocation.Accuracy,
                                               description: geoclueLocation.Description });
         this._updateLocation(location);
-        Mainloop.source_remove(this._timeoutId);
-        this._timeoutId = 0;
+        if (this._timeoutId !== 0) {
+            Mainloop.source_remove(this._timeoutId);
+            this._timeoutId = 0;
+        }
         this.state = State.ON;
     },
 
