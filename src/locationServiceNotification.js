@@ -24,6 +24,8 @@ const Gdk = imports.gi.Gdk;
 const Gio = imports.gi.Gio;
 const Lang = imports.lang;
 
+const Application = imports.application;
+const Geoclue = imports.geoclue;
 const Notification = imports.notification;
 const Utils = imports.utils;
 
@@ -49,6 +51,15 @@ const LocationServiceNotification = new Lang.Class({
             } catch(e) {
                 Utils.debug('launching privacy panel failed: ' + e);
             }
+
+            Application.geoclue.connect('notify::state', (function() {
+                if (!this.parent)
+                    return;
+
+                if (Application.geoclue.state == Geoclue.State.ON)
+                    this.dismiss();
+            }).bind(this));
+
         }).bind(this));
 
         this._ui.body.add(ui.grid);
