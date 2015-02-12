@@ -20,8 +20,9 @@
  */
 
 const Geocode = imports.gi.GeocodeGlib;
-
 const Lang = imports.lang;
+
+const StoredRoute = imports.storedRoute;
 
 const PlaceFormatter = new Lang.Class({
     Name: "PlaceFormatter",
@@ -56,6 +57,9 @@ const PlaceFormatter = new Lang.Class({
     },
 
     getDetailsString: function() {
+        if (this._place instanceof StoredRoute.StoredRoute)
+            return this._place.viaString;
+
         return this.rows.map((function(row) {
             return row.map((function(prop) {
                 return this._place[prop];
