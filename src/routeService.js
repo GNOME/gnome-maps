@@ -22,6 +22,7 @@
 const Champlain = imports.gi.Champlain;
 const GLib = imports.gi.GLib;
 const Lang = imports.lang;
+const Mainloop = imports.mainloop;
 const Soup = imports.gi.Soup;
 
 const Application = imports.application;
@@ -49,6 +50,7 @@ const GraphHopper = new Lang.Class({
         this._locale  = GLib.get_language_names()[0];
         this._route   = new Route.Route();
         this._query   = new RouteQuery.RouteQuery();
+        this.storedRoute = null;
 
         this.query.connect('notify::points', (function() {
             if (this.query.isValid())
@@ -59,7 +61,26 @@ const GraphHopper = new Lang.Class({
         this.parent();
     },
 
+    _updateFromStored: function() {
+        Mainloop.idle_add((function() {
+            if (!this.storedRoute)
+                return;
+
+            this.route.update({ path: this.storedRoute.path,
+                                turnPoints: this.storedRoute.turnPoints,
+                                distance: this.storedRoute.distance,
+                                time: this.storedRoute.time,
+                                bbox: this.storedRoute.bbox });
+            this.storedRoute = null;
+        }).bind(this));
+    },
+
     fetchRoute: function(points, transportationType) {
+        if (this.storedRoute) {
+            this._updateFromStored();
+            return;
+        }
+
         let url = this._buildURL(points, transportationType);
         let msg = Soup.Message.new('GET', url);
         this._session.queue_message(msg, (function(session, message) {
