@@ -105,7 +105,8 @@ const MainWindow = new Lang.Class({
                                                      margin_start:  6,
                                                      margin_end:    6,
                                                      width_request: 500,
-                                                     loupe:         true
+                                                     loupe:         true,
+                                                     matchRoute:    true
                                                    });
         placeEntry.connect('notify::place', (function() {
             if (placeEntry.place) {
