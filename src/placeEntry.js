@@ -92,6 +92,9 @@ const PlaceEntry = new Lang.Class({
         let parseOnFocusOut = props.parseOnFocusOut;
         delete props.parseOnFocusOut;
 
+        this._matchRoute = props.matchRoute || false;
+        delete props.matchRoute;
+
         this.parent(props);
 
         this._filter = new Gtk.TreeModelFilter({ child_model: Application.placeStore });
@@ -162,6 +165,10 @@ const PlaceEntry = new Lang.Class({
 
     _completionVisibleFunc: function(model, iter) {
         let place = model.get_value(iter, PlaceStore.Columns.PLACE);
+        let type = model.get_value(iter, PlaceStore.Columns.TYPE);
+
+        if (!this._matchRoute && type === PlaceStore.PlaceType.FAVORITE_ROUTE)
+            return false;
 
         if (place !== null)
             return place.match(this.text);
