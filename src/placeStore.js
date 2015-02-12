@@ -27,6 +27,7 @@ const Lang = imports.lang;
 const Application = imports.application;
 const ContactPlace = imports.contactPlace;
 const Place = imports.place;
+const StoredRoute = imports.storedRoute;
 const Utils = imports.utils;
 
 const _PLACES_STORE_FILE = 'maps-places.json';
@@ -38,7 +39,8 @@ const PlaceType = {
     ANY: -1,
     RECENT: 0,
     FAVORITE: 1,
-    CONTACT: 2
+    CONTACT: 2,
+    RECENT_ROUTE: 3
 };
 
 const Columns = {
@@ -54,8 +56,10 @@ const PlaceStore = new Lang.Class({
     Extends: Gtk.ListStore,
 
     _init: function() {
-        this.recentLimit = Application.settings.get('recent-places-limit');
-        this._numRecent = 0;
+        this._recentPlacesLimit = Application.settings.get('recent-places-limit');
+        this._recentRoutesLimit = Application.settings.get('recent-routes-limit');
+        this._numRecentPlaces = 0;
+        this._numRecentRoutes = 0;
         this.filename = GLib.build_filenamev([GLib.get_user_data_dir(),
                                               _PLACES_STORE_FILE]);
         this._typeTable = {};
@@ -109,7 +113,7 @@ const PlaceStore = new Lang.Class({
             return;
         }
 
-        if (this._numRecent === this.recentLimit) {
+        if (this._numRecentPlaces === this._recentPlaceLimit) {
             // Since we sort by added, the oldest recent will be
             // the first one we encounter.
             this._removeIf((function(model, iter) {
@@ -118,14 +122,38 @@ const PlaceStore = new Lang.Class({
                 if (type === PlaceType.RECENT) {
                     let place = model.get_value(iter, Columns.PLACE);
                     this._typeTable[place.uniqueID] = null;
-                    this._numRecent--;
+                    this._numRecentPlaces--;
                     return true;
                 }
                 return false;
             }).bind(this), true);
         }
         this._addPlace(place, PlaceType.RECENT);
-        this._numRecent++;
+        this._numRecentPlaces++;
+    },
+
+    _addRecentRoute: function(stored) {
+        if (this.exists(stored, PlaceType.RECENT_ROUTE))
+            return;
+
+        if (stored.containsCurrentLocation)
+            return;
+
+        if (this._numRecentRoutes >= this._recentRoutesLimit) {
+            this._removeIf((function(model, iter) {
+                let type = model.get_value(iter, Columns.TYPE);
+
+                if (type === PlaceType.RECENT_ROUTE) {
+                    let place = model.get_value(iter, Columns.PLACE);
+                    this._typeTable[place.uniqueID] = null;
+                    this._numRecentRoutes--;
+                    return true;
+                }
+                return false;
+            }).bind(this), true);
+        }
+        this._addPlace(stored, PlaceType.RECENT_ROUTE);
+        this._numRecentRoutes++;
     },
 
     load: function() {
@@ -145,10 +173,17 @@ const PlaceStore = new Lang.Class({
                 if (!place.id)
                     return;
 
-                let p = Place.Place.fromJSON(place);
+                let p;
+                if (type === PlaceType.RECENT_ROUTE) {
+                    if (this._numRecentRoutes < this._recentRoutesLimit)
+                        p = StoredRoute.StoredRoute.fromJSON(place);
+                    this._numRecentRoutes++;
+                } else {
+                    p = Place.Place.fromJSON(place);
+                    if (type === PlaceType.RECENT)
+                        this._numRecentPlaces++;
+                }
                 this._setPlace(this.append(), p, type, added);
-                if (type === PlaceType.RECENT)
-                    this._numRecent++;
             }).bind(this));
         } catch (e) {
             throw new Error('failed to parse places file');
@@ -162,6 +197,8 @@ const PlaceStore = new Lang.Class({
             this._addRecent(place, type);
         else if (type === PlaceType.CONTACT)
             this._addContact(place, type);
+        else if (type === PlaceType.RECENT_ROUTE)
+            this._addRecentRoute(place);
     },
 
     removePlace: function(place, placeType) {
@@ -197,7 +234,7 @@ const PlaceStore = new Lang.Class({
             let type = model.get_value(iter, Columns.TYPE);
             let added = model.get_value(iter, Columns.ADDED);
 
-            if (place instanceof ContactPlace.ContactPlace)
+            if (!place || place instanceof ContactPlace.ContactPlace)
                 return;
 
             jsonArray.push({
