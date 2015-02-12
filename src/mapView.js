@@ -33,6 +33,7 @@ const Location = imports.location;
 const MapWalker = imports.mapWalker;
 const Place = imports.place;
 const PlaceMarker = imports.placeMarker;
+const StoredRoute = imports.storedRoute;
 const TurnPointMarker = imports.turnPointMarker;
 const UserLocationMarker = imports.userLocationMarker;
 const Utils = imports.utils;
@@ -237,16 +238,44 @@ const MapView = new Lang.Class({
         this._gotoBBox(contact.bounding_box);
     },
 
+    _showStoredRoute: function(stored) {
+        let query = Application.routeService.query;
+        let route = Application.routeService.route;
+
+        Application.routeService.storedRoute = stored.route;
+
+        let resetId = route.connect('reset', function() {
+            route.disconnect(resetId);
+            query.freeze_notify();
+
+            let storedLast = stored.places.length - 1;
+            query.points[0].place = stored.places[0];
+            query.points[1].place = stored.places[storedLast];
+
+            for (let i = 1; i < storedLast; i++) {
+                let point = query.addPoint(i);
+                point.place = stored.places[i];
+            }
+
+            query.thaw_notify();
+        });
+        route.reset();
+    },
+
     showSearchResult: function(place, animation) {
         this._placeLayer.remove_all();
+
+        if (place instanceof StoredRoute.StoredRoute) {
+            this._showStoredRoute(place);
+            return;
+        }
+
         this.routeVisible = false;
         let placeMarker = new PlaceMarker.PlaceMarker({ place: place,
                                                         mapView: this });
 
         this._placeLayer.add_marker(placeMarker);
         placeMarker.goToAndSelect(animation);
-
-        return placeMarker;
     },
 
     showRoute: function(route) {
