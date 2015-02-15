@@ -1,4 +1,4 @@
-lib_LTLIBRARIES = libgnome-maps.la
+pkglib_LTLIBRARIES = libgnome-maps.la
 
 BUILT_SOURCES =							\
 	maps-enum-types.c						\
@@ -50,7 +50,7 @@ INTROSPECTION_GIRS = GnomeMaps-1.0.gir
 girdir = $(datadir)/gir-1.0
 gir_DATA = $(INTROSPECTION_GIRS)
 
-typelibdir = $(libdir)/girepository-1.0
+typelibdir = $(pkglibdir)/girepository-1.0
 typelib_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
 
 CLEANFILES = $(gir_DATA) $(typelib_DATA) $(BUILT_SOURCES)
