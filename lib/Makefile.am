@@ -12,6 +12,8 @@ libgnome_maps_la_SOURCES =						\
 	$(BUILT_SOURCES)
 
 libgnome_maps_la_LIBADD = $(GNOME_MAPS_LIB_LIBS)
+libgnome_maps_la_LDFLAGS =						\
+	-avoid-version
 
 AM_CPPFLAGS =								\
 	$(GNOME_MAPS_LIB_CFLAGS)					\
