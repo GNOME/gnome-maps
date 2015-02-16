@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps 3.9.91\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-18 00:11+0200\n"
-"PO-Revision-Date: 2015-01-18 00:15+0200\n"
-"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
+"POT-Creation-Date: 2015-02-16 23:07+0200\n"
+"PO-Revision-Date: 2015-02-16 23:06+0200\n"
+"Last-Translator: Yosef Or Boczko <yoseforb@gnome.org>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
@@ -49,7 +49,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:75 ../src/mainWindow.js:322
+#: ../src/application.js:78 ../src/mainWindow.js:362
 msgid "Maps"
 msgstr "מפות"
 
@@ -169,12 +169,12 @@ msgstr "לפרסם ב־Facebook"
 msgid "Post on Twitter"
 msgstr "לפרסם ב־Twitter"
 
-#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/share-dialog.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/send-to-dialog.ui.h:2
 msgid "_Cancel"
 msgstr "_ביטול"
 
 #. Translators: Check in is used as a verb
-#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:5
 msgid "C_heck in"
 msgstr "ה_רשמה"
 
@@ -210,6 +210,14 @@ msgstr "פרטי"
 msgid "What’s here?"
 msgstr "מה זה כאן?"
 
+#: ../data/ui/location-service-notification.ui.h:1
+msgid "Turn on location services to find your location"
+msgstr "הפעלת שירותי איכון למציאת המיקום שלך"
+
+#: ../data/ui/location-service-notification.ui.h:2
+msgid "Location Settings"
+msgstr "הגדרות מיקום"
+
 #: ../data/ui/main-window.ui.h:2
 msgid "Go to current location"
 msgstr "מעבר למיקום הנוכחי"
@@ -240,23 +248,43 @@ msgstr "מפות צריך חיבור אינטרנט פעיל על מנת לתפ�
 msgid "Check your connection and proxy settings."
 msgstr "יש לבדוק את החיבור שלך ואת הגדרות הפרוקסי."
 
+#: ../data/ui/map-bubble.ui.h:1
+msgid "Add to new route"
+msgstr "הוספה למסלול חדש"
+
+#: ../data/ui/map-bubble.ui.h:2
+msgid "Open with another application"
+msgstr "פתיחה באמצעות יישום אחר"
+
+#: ../data/ui/map-bubble.ui.h:3
+msgid "Mark as favorite"
+msgstr "סימון כמועדף"
+
+#: ../data/ui/map-bubble.ui.h:6
+msgid "Check in here"
+msgstr "הרשמה כאן"
+
 #: ../data/ui/search-popup.ui.h:1
 msgid "Press enter to search"
 msgstr "יש להזין כדי לחפש"
 
-#: ../data/ui/share-dialog.ui.h:1
-msgid "Share location"
-msgstr "שיתוף מיקום"
+#: ../data/ui/send-to-dialog.ui.h:1
+msgid "Open location"
+msgstr "פתיחת מיקום"
 
-#: ../data/ui/share-dialog.ui.h:3
-msgid "_Share"
-msgstr "_שיתוף"
+#: ../data/ui/send-to-dialog.ui.h:3
+msgid "_Open"
+msgstr "_פתיחה"
+
+#: ../data/ui/sidebar.ui.h:1
+msgid "Route search by GraphHopper"
+msgstr "חיפוש מסלולים באמצעות GraphHopper"
 
 #: ../data/ui/social-place-more-results-row.ui.h:1
 msgid "Show more results"
 msgstr "הצגת תוצאות נוספות"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:158
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:208
 msgid "Current location"
 msgstr "מיקום נוכחי"
 
@@ -324,11 +352,19 @@ msgstr "נרשם עבור %s"
 msgid "Write an optional message to check in to %s."
 msgstr "כתיבת הודעה אפשרית להרשמה עבור %s."
 
-#: ../src/mainWindow.js:320
+#: ../src/mainWindow.js:310
+msgid "Failed to connect to location service"
+msgstr "ארע כשל בהתחברות לשרת האיכון"
+
+#: ../src/mainWindow.js:315
+msgid "Position not found"
+msgstr "המיקום לא נמצא"
+
+#: ../src/mainWindow.js:360
 msgid "translator-credits"
 msgstr "יוסף אור בוצ׳קו <yoseforb@gnome.org>"
 
-#: ../src/mainWindow.js:323
+#: ../src/mainWindow.js:363
 msgid "A map application for GNOME"
 msgstr "יישום מפות עבור GNOME"
 
@@ -377,31 +413,31 @@ msgstr "בקשת המסלול נכשלה."
 msgid "Start!"
 msgstr "להתחיל!"
 
-#: ../src/searchResultBubble.js:97
+#: ../src/placeBubble.js:102
 #, javascript-format
 msgid "Postal code: %s"
 msgstr "מיקוד: %s"
 
-#: ../src/searchResultBubble.js:99
+#: ../src/placeBubble.js:104
 #, javascript-format
 msgid "Country code: %s"
 msgstr "קוד מדינה: %s"
 
-#: ../src/searchResultBubble.js:108
+#: ../src/placeBubble.js:113
 #, javascript-format
 msgid "Population: %s"
 msgstr "אוכלוסיה: %s"
 
-#: ../src/searchResultBubble.js:111
+#: ../src/placeBubble.js:116
 #, javascript-format
 msgid "Opening hours: %s"
 msgstr "שעות פתיחה: %s"
 
-#: ../src/searchResultBubble.js:116
+#: ../src/placeBubble.js:121
 msgid "Wikipedia"
 msgstr "ויקיפדיה"
 
-#: ../src/searchResultBubble.js:121
+#: ../src/placeBubble.js:126
 #, javascript-format
 msgid "Wheelchair access: %s"
 msgstr "נגישות נכים: %s"
@@ -540,12 +576,12 @@ msgid "%s-%s"
 msgstr "%s – %s"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:253
+#: ../src/utils.js:257
 msgid "Unknown"
 msgstr "לא ידוע"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:256
+#: ../src/utils.js:260
 msgid "Exact"
 msgstr "מדויק"
 
@@ -587,6 +623,12 @@ msgstr "%f מיל"
 #, javascript-format
 msgid "%f ft"
 msgstr "%f רגל"
+
+#~ msgid "Share location"
+#~ msgstr "שיתוף מיקום"
+
+#~ msgid "_Share"
+#~ msgstr "_שיתוף"
 
 #~ msgid "Last known location and accuracy"
 #~ msgstr "Last known location and accuracy"
