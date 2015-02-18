@@ -269,9 +269,9 @@ on_geocode_search_async (GeocodeForward *forward,
       /* Keep the naming, but add location and osm info */
       geocode_place_set_location (data->place, location);
       g_object_set (G_OBJECT (data->place), "osm-type",
-                    geocode_place_get_osm_type (place));
+                    geocode_place_get_osm_type (place), NULL);
       g_object_set (G_OBJECT (data->place), "osm-id",
-                    geocode_place_get_osm_id (place));
+                    geocode_place_get_osm_id (place), NULL);
 
       /* Update the contact bounding box */
       if (contact->priv->bbox == NULL)

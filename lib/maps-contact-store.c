@@ -125,14 +125,14 @@ get_contact (FolksIndividual *individual)
   contact = maps_contact_new ();
 
   g_object_set (G_OBJECT (contact), "name",
-                folks_individual_get_display_name (individual));
+                folks_individual_get_display_name (individual), NULL);
   g_object_set (G_OBJECT (contact), "id",
-                folks_individual_get_id (individual));
+                folks_individual_get_id (individual), NULL);
 
   g_object_get (G_OBJECT (individual), "avatar",
-                &avatar);
+                &avatar, NULL);
   g_object_set (G_OBJECT (contact), "icon",
-                avatar);
+                avatar, NULL);
 
   while (gee_iterator_has_next (iter))
     {
