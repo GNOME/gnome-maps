@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-10-02 07:03+0000\n"
-"PO-Revision-Date: 2014-10-02 20:13+0800\n"
-"Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
+"POT-Creation-Date: 2015-01-30 20:00+0000\n"
+"PO-Revision-Date: 2015-01-31 22:11+0800\n"
+"Last-Translator: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>\n"
 "Language-Team: Chinese (Taiwan) <chinese-l10n@googlegroups.com>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.7.4\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid ""
@@ -47,195 +47,588 @@ msgstr ""
 "near Alexanderplatz, Berlin“"
 
 #. Translators: This is the program name. */
-#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
-#: ../src/mainWindow.js:302 ../src/main-window.ui.h:1
+#: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
+#: ../src/application.js:75 ../src/mainWindow.js:357
 msgid "Maps"
 msgstr "地圖"
 
-#: ../data/org.gnome.Maps.desktop.in.in.h:2
+#: ../data/org.gnome.Maps.desktop.in.h:2
 msgid "A simple maps application"
 msgstr "簡單的地圖應用程式"
 
-#: ../data/org.gnome.Maps.desktop.in.in.h:3
+#: ../data/org.gnome.Maps.desktop.in.h:3
 msgid "Maps;"
 msgstr "Maps;地圖;"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:1
+#: ../data/org.gnome.Maps.gschema.xml.in.h:1
 msgid "Window size"
 msgstr "視窗尺寸"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:2
+#: ../data/org.gnome.Maps.gschema.xml.in.h:2
 msgid "Window size (width and height)."
 msgstr "視窗大小 (寬度與高度)。"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:3
+#: ../data/org.gnome.Maps.gschema.xml.in.h:3
 msgid "Window position"
 msgstr "視窗位置"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:4
+#: ../data/org.gnome.Maps.gschema.xml.in.h:4
 msgid "Window position (X and Y)."
 msgstr "視窗位置 (X 與 Y)。"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:5
+#: ../data/org.gnome.Maps.gschema.xml.in.h:5
 msgid "Window maximized"
 msgstr "視窗已最大化"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:6
+#: ../data/org.gnome.Maps.gschema.xml.in.h:6
 msgid "Window maximization state"
 msgstr "視窗最大化狀態"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:7
-msgid "Last known location and accuracy"
-msgstr "上次知道的位置與準確度"
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:8
-msgid ""
-"Last known location (latitude and longitude in degrees) and accuracy (in "
-"meters)."
-msgstr "上次知道的位置 (緯度與經度) 與準確度 (以公尺計)"
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:9
-msgid "Description of last known location"
-msgstr "上次知道的位置描述"
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:10
-msgid "Description of last known location of user."
-msgstr "上次知道的使用者位置描述。"
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:11
+#: ../data/org.gnome.Maps.gschema.xml.in.h:7
 msgid "Maximum number of search results"
 msgstr "搜尋結果的最大數量"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:12
+#: ../data/org.gnome.Maps.gschema.xml.in.h:8
 msgid "Maximum number of search results from geocode search."
 msgstr "從 geocode 搜尋取得的最大搜尋結果數。"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:13
-msgid "User set last known location"
-msgstr "使用者設定上次知道的位置"
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:14
-msgid "Whether the last known location was set manually by the user."
-msgstr "上次知道的位置是否是由使用者手動設定。"
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:15
+#: ../data/org.gnome.Maps.gschema.xml.in.h:9
 msgid "Number of recent places to store"
 msgstr "要儲存的最近位置數"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:16
+#: ../data/org.gnome.Maps.gschema.xml.in.h:10
 msgid "Number of recently visited places to store."
 msgstr "要儲存的最近到訪位置數。"
 
-#: ../src/app-menu.ui.h:1
+#: ../data/org.gnome.Maps.gschema.xml.in.h:11
+msgid "Facebook check-in privacy setting"
+msgstr "Facebook 打卡隱私權設定值"
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:12
+msgid ""
+"Latest used Facebook check-in privacy setting. Possible values are: "
+"EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
+msgstr ""
+"最近使用的 Facebook 打卡隱私權設定值。可能的數值有：EVERYONE, "
+"FRIENDS_OF_FRIENDS, ALL_FRIENDS 或 SELF。"
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:13
+msgid "Foursquare check-in privacy setting"
+msgstr "Foursquare 打卡隱私權設定值"
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:14
+msgid ""
+"Latest used Foursquare check-in privacy setting. Possible values are: "
+"public, followers or private."
+msgstr ""
+"最近使用的 Foursquare 打卡隱私權設定值。可能的數值有：public, followers 或 "
+"private。"
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:15
+msgid "Foursquare check-in Facebook broadcasting"
+msgstr "Foursquare 打卡 Facebook 廣播"
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:16
+msgid ""
+"Indicates if Foursquare should broadcast the check-in as a post in the "
+"Facebook account associated with the Foursquare account."
+msgstr ""
+"表示 Foursquare 是否應比照與 Facebook 帳號連結的 Foursquare 帳號以貼文方式廣"
+"播此次打卡。"
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:17
+msgid "Foursquare check-in Twitter broadcasting"
+msgstr "Foursquare 打卡 Twitter 廣播"
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:18
+msgid ""
+"Indicates if Foursquare should broadcast the check-in as a tweet in the "
+"Twitter account associated with the Foursquare account."
+msgstr ""
+"表示 Foursquare 是否應比照與 Twitter 帳號連結的 Foursquare 帳號以推文方式廣播"
+"此次打卡。"
+
+#: ../data/ui/app-menu.ui.h:1
 msgid "About"
 msgstr "關於"
 
-#: ../src/app-menu.ui.h:2
+#: ../data/ui/app-menu.ui.h:2
 msgid "Quit"
 msgstr "結束"
 
-#: ../src/context-menu.ui.h:1
+#: ../data/ui/check-in-dialog.ui.h:1
+msgid "Visibility"
+msgstr "可見狀態"
+
+#: ../data/ui/check-in-dialog.ui.h:2
+msgid "Post on Facebook"
+msgstr "張貼到 Facebook"
+
+#: ../data/ui/check-in-dialog.ui.h:3
+msgid "Post on Twitter"
+msgstr "張貼到 Twitter"
+
+#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/share-dialog.ui.h:2
+msgid "_Cancel"
+msgstr "取消(_C)"
+
+#. Translators: Check in is used as a verb
+#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:2
+msgid "C_heck in"
+msgstr "打卡(_H)"
+
+#: ../data/ui/check-in-dialog.ui.h:6
+msgid "Everyone"
+msgstr "每個人"
+
+#: ../data/ui/check-in-dialog.ui.h:7
+msgid "Friends of friends"
+msgstr "朋友的朋友"
+
+#: ../data/ui/check-in-dialog.ui.h:8
+msgid "Just friends"
+msgstr "僅限朋友"
+
+#: ../data/ui/check-in-dialog.ui.h:9
+msgid "Just me"
+msgstr "僅限本人"
+
+#: ../data/ui/check-in-dialog.ui.h:10
+msgid "Public"
+msgstr "公開"
+
+#: ../data/ui/check-in-dialog.ui.h:11
+msgid "Followers"
+msgstr "跟隨"
+
+#: ../data/ui/check-in-dialog.ui.h:12
+msgid "Private"
+msgstr "私人"
+
+#: ../data/ui/context-menu.ui.h:1
 msgid "What’s here?"
 msgstr "這裡有什麼？"
 
-#: ../src/context-menu.ui.h:2
-msgid "I’m here!"
-msgstr "我在這裡！"
+#: ../data/ui/location-service-notification.ui.h:1
+msgid "Turn on location services to find your location"
+msgstr "開啟位置服務以尋找您的位置"
 
-#: ../src/mainWindow.js:300
-msgid "translator-credits"
-msgstr "Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>, 2013"
+#: ../data/ui/location-service-notification.ui.h:2
+msgid "Location Settings"
+msgstr "位置設定值"
 
-#: ../src/mainWindow.js:303
-msgid "A map application for GNOME"
-msgstr "GNOME 的地圖程式"
-
-#: ../src/main-window.ui.h:2
-#| msgid "Current location"
+#: ../data/ui/main-window.ui.h:2
 msgid "Go to current location"
 msgstr "前往目前位置"
 
-#: ../src/main-window.ui.h:3
+#: ../data/ui/main-window.ui.h:3
 msgid "Choose map type"
 msgstr "選擇地圖類型"
 
-#: ../src/main-window.ui.h:4
+#: ../data/ui/main-window.ui.h:4
 msgid "Toggle route planner"
 msgstr "切換路徑規劃器"
 
-#: ../src/routeService.js:73
-msgid "No route found."
-msgstr "找不到路線。"
+#: ../data/ui/main-window.ui.h:5
+msgid "Toggle favorites"
+msgstr "切換喜好"
 
-#: ../src/routeService.js:80
-msgid "Route request failed."
-msgstr "要求路線失敗。"
+#: ../data/ui/main-window.ui.h:6
+msgid "Maps is offline!"
+msgstr "Maps 已離線！"
 
-#: ../src/routeService.js:151
-msgid "Start!"
-msgstr "開始！"
+#: ../data/ui/main-window.ui.h:7
+msgid ""
+"Maps need an active internet connection to function properly, but one can't "
+"be found."
+msgstr "Maps 需要使用網際網路連線才能正常運作，但找不到網際網路。"
 
-#: ../src/searchResultBubble.js:60
-#, javascript-format
-msgid "Country code: %s"
-msgstr "國家代碼：%s"
+#: ../data/ui/main-window.ui.h:8
+msgid "Check your connection and proxy settings."
+msgstr "請檢查您的連線與代理伺服器設定值。"
 
-#: ../src/searchResultBubble.js:66
-#, javascript-format
-msgid "Postal code: %s"
-msgstr "郵遞區號：%s"
+#: ../data/ui/search-popup.ui.h:1
+msgid "Press enter to search"
+msgstr "按下 Enter 開始搜尋"
 
-#. Translators: %s is a time expression with the format "%f h" or "%f min" */
-#: ../src/sidebar.js:198
-#, javascript-format
-msgid "Estimated time: %s"
-msgstr "預估時間：%s"
+#: ../data/ui/share-dialog.ui.h:1
+msgid "Share location"
+msgstr "分享位置"
 
-#: ../src/user-location-bubble.ui.h:1
+#: ../data/ui/share-dialog.ui.h:3
+msgid "_Share"
+msgstr "分享(_S)"
+
+#: ../data/ui/social-place-more-results-row.ui.h:1
+msgid "Show more results"
+msgstr "顯示更多結果"
+
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:206
 msgid "Current location"
 msgstr "目前位置"
 
 #. To translators: %s can be "Unknown", "Exact" or "%f km²"
-#: ../src/user-location-bubble.ui.h:4
+#: ../data/ui/user-location-bubble.ui.h:4
 #, no-c-format
 msgid "Accuracy: %s"
 msgstr "準確度：%s"
 
+#. Translators: %s is the place name that user wanted to check-in */
+#: ../src/checkIn.js:136
+#, javascript-format
+msgid "Cannot find \"%s\" in the social service"
+msgstr "在社群服務中找不到「%s」"
+
+#: ../src/checkIn.js:138
+msgid "Cannot find a suitable place to check-in in this location"
+msgstr "找不到適合的地點來打卡"
+
+#: ../src/checkIn.js:142
+msgid ""
+"Credentials have expired, please open Online Accounts to sign in and enable "
+"this account"
+msgstr "憑證已過期，請開啟線上帳號再次登入並啟用這個帳號"
+
+#: ../src/checkIn.js:154 ../src/checkInDialog.js:290
+msgid "An error has occurred"
+msgstr "發生錯誤"
+
+#: ../src/checkInDialog.js:177
+msgid "Select an account"
+msgstr "選擇一個帳號"
+
+#: ../src/checkInDialog.js:182 ../src/checkInDialog.js:254
+msgid "Loading"
+msgstr "載入中"
+
+#: ../src/checkInDialog.js:206
+msgid "Select a place"
+msgstr "選擇一個地點"
+
+#: ../src/checkInDialog.js:211
+msgid ""
+"Maps cannot find the place to check in to with Facebook. Please select one "
+"from this list."
+msgstr "Maps 找不到可以在 Facebook 中打卡的地點。請從清單中選擇一個。"
+
+#: ../src/checkInDialog.js:213
+msgid ""
+"Maps cannot find the place to check in to with Foursquare. Please select one "
+"from this list."
+msgstr "Maps 找不到可以在 Foursquare 中打卡的地點。請從清單中選擇一個。"
+
+#. Translators: %s is the name of the place to check in.
+#. */
+#: ../src/checkInDialog.js:228
+#, javascript-format
+msgid "Check in to %s"
+msgstr "打卡於：%s"
+
+#. Translators: %s is the name of the place to check in.
+#. */
+#: ../src/checkInDialog.js:238
+#, javascript-format
+msgid "Write an optional message to check in to %s."
+msgstr "寫些關於在 %s 打卡的訊息。"
+
+#: ../src/mainWindow.js:305
+msgid "Failed to connect to location service"
+msgstr "無法連接位置服務"
+
+#: ../src/mainWindow.js:310
+msgid "Position not found"
+msgstr "找不到地點"
+
+#: ../src/mainWindow.js:355
+msgid "translator-credits"
+msgstr "Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>, 2013"
+
+#: ../src/mainWindow.js:358
+msgid "A map application for GNOME"
+msgstr "GNOME 的地圖程式"
+
+#. Translators:
+#. * This means wheelchairs have full unrestricted access.
+#. */
+#: ../src/place.js:121
+msgid "yes"
+msgstr "是"
+
+#. Translators:
+#. * This means wheelchairs have partial access (e.g some areas
+#. * can be accessed and others not, areas requiring assistance
+#. * by someone pushing up a steep gradient).
+#. */
+#: ../src/place.js:128
+msgid "limited"
+msgstr "有限制"
+
+#. Translators:
+#. * This means wheelchairs have no unrestricted access
+#. * (e.g. stair only access).
+#. */
+#: ../src/place.js:134
+msgid "no"
+msgstr "否"
+
+#. Translators:
+#. * This means that the way or area is designated or purpose built
+#. * for wheelchairs (e.g. elevators designed for wheelchair access
+#. * only). This is rarely used.
+#. */
+#: ../src/place.js:141
+msgid "designated"
+msgstr ""
+
+#: ../src/routeService.js:70
+msgid "No route found."
+msgstr "找不到路線。"
+
+#: ../src/routeService.js:77
+msgid "Route request failed."
+msgstr "要求路線失敗。"
+
+#: ../src/routeService.js:148
+msgid "Start!"
+msgstr "開始！"
+
+#: ../src/searchResultBubble.js:97
+#, javascript-format
+msgid "Postal code: %s"
+msgstr "郵遞區號：%s"
+
+#: ../src/searchResultBubble.js:99
+#, javascript-format
+msgid "Country code: %s"
+msgstr "國家代碼：%s"
+
+#: ../src/searchResultBubble.js:108
+#, fuzzy, javascript-format
+msgid "Population: %s"
+msgstr "啟用初始資料母體(_I)"
+
+#: ../src/searchResultBubble.js:111
+#, javascript-format
+msgid "Opening hours: %s"
+msgstr "開放時間：%s"
+
+#: ../src/searchResultBubble.js:116
+msgid "Wikipedia"
+msgstr "維基百科"
+
+#: ../src/searchResultBubble.js:121
+#, javascript-format
+msgid "Wheelchair access: %s"
+msgstr "使用輪椅：%s"
+
+#. Translators: %s is a time expression with the format "%f h" or "%f min" */
+#: ../src/sidebar.js:217
+#, javascript-format
+msgid "Estimated time: %s"
+msgstr "預估時間：%s"
+
+#: ../src/translations.js:56 ../src/translations.js:58
+#, fuzzy
+msgid "around the clock"
+msgstr "時鐘"
+
+#: ../src/translations.js:60
+msgid "from sunrise to sunset"
+msgstr "從日出到日落"
+
+#. Translators:
+#. * This is a format string with two separate time ranges
+#. * such as "Mo-Fr 10:00-19:00 Sa 12:00-16:00"
+#. * The space between the format place holders could be
+#. * substituted with the appropriate separator.
+#. */
+#: ../src/translations.js:79
+#, javascript-format
+msgctxt "time range list"
+msgid "%s %s"
+msgstr "%s %s"
+
+#. Translators:
+#. * This is a format string with three separate time ranges
+#. * such as "Mo-Fr 10:00-19:00 Sa 10:00-17:00 Su 12:00-16:00"
+#. * The space between the format place holders could be
+#. * substituted with the appropriate separator.
+#. */
+#: ../src/translations.js:91
+#, javascript-format
+msgctxt "time range list"
+msgid "%s %s %s"
+msgstr "%s %s %s"
+
+#. Translators:
+#. * This is a format string consisting of a part specifying the days for
+#. * which the specified time is applied and the time interval
+#. * specification as the second argument.
+#. * The space between the format place holders could be substituted with
+#. * the appropriate separator or phrase and the ordering of the arguments
+#. * can be rearranged with the %n#s syntax. */
+#: ../src/translations.js:122
+#, javascript-format
+msgctxt "time range component"
+msgid "%s %s"
+msgstr "%s %s"
+
+#. Translators:
+#. * This represents a format string consisting of two day interval
+#. * specifications.
+#. * For example:
+#. * Mo-Fr,Sa
+#. * where the "Mo-Fr" and "Sa" parts are replaced by the %s
+#. * place holder.
+#. * The separator (,) could be replaced with a translated variant or
+#. * a phrase if appropriate. */
+#: ../src/translations.js:154
+#, javascript-format
+msgctxt "day interval list"
+msgid "%s,%s"
+msgstr "%s,%s"
+
+#. Translators:
+#. * This represents a format string consisting of three day interval
+#. * specifications.
+#. * For example:
+#. * Mo-We,Fr,Su
+#. * where the "Mo-We", "Fr", and "Su" parts are replaced by the
+#. * %s place holder.
+#. * The separator (,) could be replaced with a translated variant or
+#. * a phrase if appropriate. */
+#: ../src/translations.js:168
+#, javascript-format
+msgctxt "day interval list"
+msgid "%s,%s,%s"
+msgstr "%s,%s,%s"
+
+#: ../src/translations.js:187
+msgid "every day"
+msgstr "每天"
+
+#. Translators:
+#. * This represents a range of days with a starting and ending day.
+#. */
+#: ../src/translations.js:199
+#, javascript-format
+msgctxt "day range"
+msgid "%s-%s"
+msgstr "%s-%s"
+
+#: ../src/translations.js:210
+msgid "public holidays"
+msgstr "共通假日"
+
+#: ../src/translations.js:212
+msgid "school holidays"
+msgstr "學校假日"
+
+#. Translators:
+#. * This is a list with two time intervals, such as:
+#. * 09:00-12:00, 13:00-14:00
+#. * The intervals are represented by the %s place holders and
+#. * appropriate white space or connected phrase could be modified by
+#. * the translation. The order of the arguments can be rearranged
+#. * using the %n$s syntax.
+#. */
+#: ../src/translations.js:252
+#, javascript-format
+msgctxt "time interval list"
+msgid "%s, %s"
+msgstr "%s, %s"
+
+#: ../src/translations.js:266
+msgid "not open"
+msgstr "不開放"
+
+#. Translators:
+#. * This is a time interval with a starting and an ending time.
+#. * The time values are represented by the %s place holders and
+#. * appropriate white spacing or connecting phrases can be set by the
+#. * translation as needed. The order of the arguments can be rearranged
+#. * using the %n$s syntax.
+#. */
+#: ../src/translations.js:281
+#, javascript-format
+msgctxt "time interval"
+msgid "%s-%s"
+msgstr "%s-%s"
+
 #. Translators: Accuracy of user location information */
-#: ../src/utils.js:165
+#: ../src/utils.js:253
 msgid "Unknown"
 msgstr "不明"
 
 #. Translators: Accuracy of user location information */
-#: ../src/utils.js:168
+#: ../src/utils.js:256
 msgid "Exact"
 msgstr "準確"
 
-#: ../src/utils.js:178
-#, javascript-format
-msgid "%f km²"
-msgstr "%f km²"
-
-#: ../src/utils.js:275
+#: ../src/utils.js:355
 #, javascript-format
 msgid "%f h"
 msgstr "%f 小時"
 
-#: ../src/utils.js:277
+#: ../src/utils.js:357
 #, javascript-format
 msgid "%f min"
 msgstr "%f 分鐘"
 
-#: ../src/utils.js:287
+#: ../src/utils.js:359
 #, javascript-format
-#| msgid "%f km²"
+msgid "%f s"
+msgstr "%f s"
+
+#. Translators: This is a distance measured in kilometers */
+#: ../src/utils.js:370
+#, javascript-format
 msgid "%f km"
 msgstr "%f 公里"
 
-#: ../src/utils.js:289
+#. Translators: This is a distance measured in meters */
+#: ../src/utils.js:373
 #, javascript-format
 msgid "%f m"
 msgstr "%f 公尺"
+
+#. Translators: This is a distance measured in miles */
+#: ../src/utils.js:381
+#, javascript-format
+msgid "%f mi"
+msgstr "%f 哩"
+
+#. Translators: This is a distance measured in feet */
+#: ../src/utils.js:384
+#, javascript-format
+msgid "%f ft"
+msgstr "%f 呎"
+
+#~ msgid "Last known location and accuracy"
+#~ msgstr "上次知道的位置與準確度"
+
+#~ msgid ""
+#~ "Last known location (latitude and longitude in degrees) and accuracy (in "
+#~ "meters)."
+#~ msgstr "上次知道的位置 (緯度與經度) 與準確度 (以公尺計)"
+
+#~ msgid "Description of last known location"
+#~ msgstr "上次知道的位置描述"
+
+#~ msgid "Description of last known location of user."
+#~ msgstr "上次知道的使用者位置描述。"
+
+#~ msgid "User set last known location"
+#~ msgstr "使用者設定上次知道的位置"
+
+#~ msgid "Whether the last known location was set manually by the user."
+#~ msgstr "上次知道的位置是否是由使用者手動設定。"
+
+#~ msgid "I’m here!"
+#~ msgstr "我在這裡！"
+
+#~ msgid "%f km²"
+#~ msgstr "%f km²"
 
 #~ msgid "To"
 #~ msgstr "終點"
