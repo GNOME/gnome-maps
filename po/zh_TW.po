@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-01-30 20:00+0000\n"
-"PO-Revision-Date: 2015-01-31 22:11+0800\n"
+"POT-Creation-Date: 2015-02-21 10:29+0000\n"
+"PO-Revision-Date: 2015-02-21 20:53+0800\n"
 "Last-Translator: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>\n"
 "Language-Team: Chinese (Taiwan) <chinese-l10n@googlegroups.com>\n"
 "Language: zh_TW\n"
@@ -48,7 +48,7 @@ msgstr ""
 
 #. Translators: This is the program name. */
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:75 ../src/mainWindow.js:357
+#: ../src/application.js:78 ../src/mainWindow.js:362
 msgid "Maps"
 msgstr "地圖"
 
@@ -168,12 +168,12 @@ msgstr "張貼到 Facebook"
 msgid "Post on Twitter"
 msgstr "張貼到 Twitter"
 
-#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/share-dialog.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/send-to-dialog.ui.h:2
 msgid "_Cancel"
 msgstr "取消(_C)"
 
 #. Translators: Check in is used as a verb
-#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:5
 msgid "C_heck in"
 msgstr "打卡(_H)"
 
@@ -247,23 +247,43 @@ msgstr "Maps 需要使用網際網路連線才能正常運作，但找不到網�
 msgid "Check your connection and proxy settings."
 msgstr "請檢查您的連線與代理伺服器設定值。"
 
+#: ../data/ui/map-bubble.ui.h:1
+msgid "Add to new route"
+msgstr "加入新的路線"
+
+#: ../data/ui/map-bubble.ui.h:2
+msgid "Open with another application"
+msgstr "以其他應用程式開啟"
+
+#: ../data/ui/map-bubble.ui.h:3
+msgid "Mark as favorite"
+msgstr "標記為喜好"
+
+#: ../data/ui/map-bubble.ui.h:6
+msgid "Check in here"
+msgstr "在這裡檢查"
+
 #: ../data/ui/search-popup.ui.h:1
 msgid "Press enter to search"
 msgstr "按下 Enter 開始搜尋"
 
-#: ../data/ui/share-dialog.ui.h:1
-msgid "Share location"
-msgstr "分享位置"
+#: ../data/ui/send-to-dialog.ui.h:1
+msgid "Open location"
+msgstr "開啟位置"
 
-#: ../data/ui/share-dialog.ui.h:3
-msgid "_Share"
-msgstr "分享(_S)"
+#: ../data/ui/send-to-dialog.ui.h:3
+msgid "_Open"
+msgstr "開啟(_O)"
+
+#: ../data/ui/sidebar.ui.h:1
+msgid "Route search by GraphHopper"
+msgstr "透過 GraphHopper 搜尋路線"
 
 #: ../data/ui/social-place-more-results-row.ui.h:1
 msgid "Show more results"
 msgstr "顯示更多結果"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:206
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:208
 msgid "Current location"
 msgstr "目前位置"
 
@@ -331,19 +351,19 @@ msgstr "打卡於：%s"
 msgid "Write an optional message to check in to %s."
 msgstr "寫些關於在 %s 打卡的訊息。"
 
-#: ../src/mainWindow.js:305
+#: ../src/mainWindow.js:310
 msgid "Failed to connect to location service"
 msgstr "無法連接位置服務"
 
-#: ../src/mainWindow.js:310
+#: ../src/mainWindow.js:315
 msgid "Position not found"
 msgstr "找不到地點"
 
-#: ../src/mainWindow.js:355
+#: ../src/mainWindow.js:360
 msgid "translator-credits"
 msgstr "Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>, 2013"
 
-#: ../src/mainWindow.js:358
+#: ../src/mainWindow.js:363
 msgid "A map application for GNOME"
 msgstr "GNOME 的地圖程式"
 
@@ -378,7 +398,7 @@ msgstr "否"
 #. */
 #: ../src/place.js:141
 msgid "designated"
-msgstr ""
+msgstr "特定"
 
 #: ../src/routeService.js:70
 msgid "No route found."
@@ -392,31 +412,31 @@ msgstr "要求路線失敗。"
 msgid "Start!"
 msgstr "開始！"
 
-#: ../src/searchResultBubble.js:97
+#: ../src/placeBubble.js:102
 #, javascript-format
 msgid "Postal code: %s"
 msgstr "郵遞區號：%s"
 
-#: ../src/searchResultBubble.js:99
+#: ../src/placeBubble.js:104
 #, javascript-format
 msgid "Country code: %s"
 msgstr "國家代碼：%s"
 
-#: ../src/searchResultBubble.js:108
-#, fuzzy, javascript-format
+#: ../src/placeBubble.js:113
+#, javascript-format
 msgid "Population: %s"
-msgstr "啟用初始資料母體(_I)"
+msgstr "資料母體：%s"
 
-#: ../src/searchResultBubble.js:111
+#: ../src/placeBubble.js:116
 #, javascript-format
 msgid "Opening hours: %s"
 msgstr "開放時間：%s"
 
-#: ../src/searchResultBubble.js:116
+#: ../src/placeBubble.js:121
 msgid "Wikipedia"
 msgstr "維基百科"
 
-#: ../src/searchResultBubble.js:121
+#: ../src/placeBubble.js:126
 #, javascript-format
 msgid "Wheelchair access: %s"
 msgstr "使用輪椅：%s"
@@ -428,9 +448,8 @@ msgid "Estimated time: %s"
 msgstr "預估時間：%s"
 
 #: ../src/translations.js:56 ../src/translations.js:58
-#, fuzzy
 msgid "around the clock"
-msgstr "時鐘"
+msgstr "在時鐘周圍"
 
 #: ../src/translations.js:60
 msgid "from sunrise to sunset"
@@ -556,12 +575,12 @@ msgid "%s-%s"
 msgstr "%s-%s"
 
 #. Translators: Accuracy of user location information */
-#: ../src/utils.js:253
+#: ../src/utils.js:257
 msgid "Unknown"
 msgstr "不明"
 
 #. Translators: Accuracy of user location information */
-#: ../src/utils.js:256
+#: ../src/utils.js:260
 msgid "Exact"
 msgstr "準確"
 
@@ -603,6 +622,12 @@ msgstr "%f 哩"
 #, javascript-format
 msgid "%f ft"
 msgstr "%f 呎"
+
+#~ msgid "Share location"
+#~ msgstr "分享位置"
+
+#~ msgid "_Share"
+#~ msgstr "分享(_S)"
 
 #~ msgid "Last known location and accuracy"
 #~ msgstr "上次知道的位置與準確度"
