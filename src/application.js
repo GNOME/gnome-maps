@@ -131,6 +131,9 @@ const Application = new Lang.Class({
         contactStore.get_contacts().forEach(function(contact) {
             contact.geocode(function() {
                 contact.get_places().forEach(function(p) {
+                    if (!p.location)
+                        return;
+
                     Utils.debug('Adding contact address: ' + p.name);
                     let place = new ContactPlace.ContactPlace({ place: p,
                                                                 contact: contact });
