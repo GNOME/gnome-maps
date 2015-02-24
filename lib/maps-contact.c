@@ -288,7 +288,7 @@ on_geocode_search_async (GeocodeForward *forward,
       else
         geocode_place_set_street (data->place, geocode_place_get_street (place));
 
-      g_list_free (places);
+      g_list_free_full(places, g_object_unref);
     }
 
   contact->priv->geocode_counter++;
