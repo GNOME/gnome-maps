@@ -51,7 +51,7 @@ const GraphHopper = new Lang.Class({
         this._route   = new Route.Route();
         this._query   = new RouteQuery.RouteQuery();
 
-        this.query.connect('notify', (function() {
+        this.query.connect('notify::points', (function() {
             if (this.query.isValid())
                 this.fetchRoute(this.query.filledPoints,
                                 this._query.transportation);
