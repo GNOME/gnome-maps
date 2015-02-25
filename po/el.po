@@ -9,16 +9,16 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-01-16 20:02+0000\n"
-"PO-Revision-Date: 2015-01-18 21:59+0300\n"
-"Last-Translator: Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>\n"
+"POT-Creation-Date: 2015-02-21 10:29+0000\n"
+"PO-Revision-Date: 2015-02-25 23:33+0200\n"
+"Last-Translator: Tom Tryfonidis <tomtryf@gmail.com>\n"
 "Language-Team: team@lists.gnome.gr\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Poedit 1.7.4\n"
 "X-Project-Style: gnome\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
@@ -54,7 +54,7 @@ msgstr ""
 
 #. Translators: This is the program name. */
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:75 ../src/mainWindow.js:322
+#: ../src/application.js:78 ../src/mainWindow.js:362
 msgid "Maps"
 msgstr "Χάρτες"
 
@@ -64,7 +64,7 @@ msgstr "Μια απλή εφαρμογή χαρτών"
 
 #: ../data/org.gnome.Maps.desktop.in.h:3
 msgid "Maps;"
-msgstr "Χάρτες;"
+msgstr "Χάρτες;Maps;"
 
 #: ../data/org.gnome.Maps.gschema.xml.in.h:1
 msgid "Window size"
@@ -177,14 +177,14 @@ msgstr "Αποστολή στο Facebook"
 msgid "Post on Twitter"
 msgstr "Αποστολή στο Twitter"
 
-#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/share-dialog.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/send-to-dialog.ui.h:2
 msgid "_Cancel"
 msgstr "Ά_κυρο"
 
 #. Translators: Check in is used as a verb
-#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:5
 msgid "C_heck in"
-msgstr "Έλε_γχος εισόδου"
+msgstr "C_heck in"
 
 #: ../data/ui/check-in-dialog.ui.h:6
 msgid "Everyone"
@@ -218,6 +218,14 @@ msgstr "Προσωπικό"
 msgid "What’s here?"
 msgstr "Τι είναι εδώ;"
 
+#: ../data/ui/location-service-notification.ui.h:1
+msgid "Turn on location services to find your location"
+msgstr "Ενεργοποίηση υπηρεσιών τοποθεσίας για να βρείτε την τοποθεσία σας"
+
+#: ../data/ui/location-service-notification.ui.h:2
+msgid "Location Settings"
+msgstr "Ρυθμίσεις τοποθεσίας"
+
 #: ../data/ui/main-window.ui.h:2
 msgid "Go to current location"
 msgstr "Μετάβαση στην τρέχουσα τοποθεσία"
@@ -243,30 +251,50 @@ msgid ""
 "Maps need an active internet connection to function properly, but one can't "
 "be found."
 msgstr ""
-"Η εφαρμογή Χάρτες χρειάζεται μια ενεργή σύνδεση στο διαδύκτιο ώστε να "
+"Η εφαρμογή Χάρτες χρειάζεται μια ενεργή σύνδεση στο διαδίκτυο ώστε να "
 "λειτουργήσει σωστά, αλλά δεν υπάρχει μια τέτοια."
 
 #: ../data/ui/main-window.ui.h:8
 msgid "Check your connection and proxy settings."
 msgstr "Ελέξτε τις ρυθμίσεις σύνδεσης και του διαμεσολαβητή."
 
+#: ../data/ui/map-bubble.ui.h:1
+msgid "Add to new route"
+msgstr "Προσθήκη στη νέα διαδρομή"
+
+#: ../data/ui/map-bubble.ui.h:2
+msgid "Open with another application"
+msgstr "Άνοιγμα με άλλη εφαρμογή"
+
+#: ../data/ui/map-bubble.ui.h:3
+msgid "Mark as favorite"
+msgstr "Επισήμανση ως αγαπημένο"
+
+#: ../data/ui/map-bubble.ui.h:6
+msgid "Check in here"
+msgstr "Check in εδώ"
+
 #: ../data/ui/search-popup.ui.h:1
 msgid "Press enter to search"
 msgstr "Πατήστε enter για αναζήτηση"
 
-#: ../data/ui/share-dialog.ui.h:1
-msgid "Share location"
-msgstr "Κοινόχρηστη τοποθεσία"
+#: ../data/ui/send-to-dialog.ui.h:1
+msgid "Open location"
+msgstr "Άνοιγμα τοποθεσίας"
 
-#: ../data/ui/share-dialog.ui.h:3
-msgid "_Share"
-msgstr "_Κοινή χρήση"
+#: ../data/ui/send-to-dialog.ui.h:3
+msgid "_Open"
+msgstr "Ά_νοιγμα "
+
+#: ../data/ui/sidebar.ui.h:1
+msgid "Route search by GraphHopper"
+msgstr "Αναζήτηση διαδρομής από το GraphHopper"
 
 #: ../data/ui/social-place-more-results-row.ui.h:1
 msgid "Show more results"
 msgstr "Εμφάνιση περισσότερων αποτελεσμάτων"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:158
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:208
 msgid "Current location"
 msgstr "Τρέχουσα τοποθεσία"
 
@@ -317,32 +345,40 @@ msgid ""
 "Maps cannot find the place to check in to with Facebook. Please select one "
 "from this list."
 msgstr ""
-"Το Maps δεν μπορεί να βρει τη θέση για έλεγχο εισόδου με το Facebook. "
-"Παρακαλούμε επιλέξτε μία θέση από τον κατάλογο."
+"Οι Χάρτες δεν μπορούν να βρουν τη θέση για check in με το Facebook. "
+"Παρακαλούμε, επιλέξτε μια από τη λίστα."
 
 #: ../src/checkInDialog.js:213
 msgid ""
 "Maps cannot find the place to check in to with Foursquare. Please select one "
 "from this list."
 msgstr ""
-"Το Maps δεν μπορεί να βρει τη θέση για έλεγχο εισόδου με το Foursquare. "
-"Παρακαλούμε επιλέξτε μία θέση από τον κατάλογο."
+"Οι Χάρτες δεν μπορούν να βρουν τη θέση για check in με το Foursquare. "
+"Παρακαλούμε, επιλέξτε μια από τη λίστα."
 
 #. Translators: %s is the name of the place to check in.
 #. */
 #: ../src/checkInDialog.js:228
 #, javascript-format
 msgid "Check in to %s"
-msgstr "Ελέγξτε το %s"
+msgstr "Check in στο %s"
 
 #. Translators: %s is the name of the place to check in.
 #. */
 #: ../src/checkInDialog.js:238
 #, javascript-format
 msgid "Write an optional message to check in to %s."
-msgstr "Γράψτε ένα προαιρετικό μήνυμα για έλεγχο εισόδου στο %s."
+msgstr "Γράψτε ένα προαιρετικό μήνυμα για check in στο %s."
 
-#: ../src/mainWindow.js:320
+#: ../src/mainWindow.js:310
+msgid "Failed to connect to location service"
+msgstr "Αποτυχία σύνδεσης με την υπηρεσία τοποθεσίας"
+
+#: ../src/mainWindow.js:315
+msgid "Position not found"
+msgstr "Η τοποθεσία δεν βρέθηκε"
+
+#: ../src/mainWindow.js:360
 msgid "translator-credits"
 msgstr ""
 "Ελληνική μεταφραστική ομάδα GNOME\n"
@@ -355,7 +391,7 @@ msgstr ""
 "Για περισσότερες πληροφορίες, επισκεφθείτε τη σελίδα\n"
 "http://gnome.gr/"
 
-#: ../src/mainWindow.js:323
+#: ../src/mainWindow.js:363
 msgid "A map application for GNOME"
 msgstr "Μια εφαρμογή χάρτη για το GNOME"
 
@@ -404,31 +440,31 @@ msgstr "Αποτυχία αιτήματος διαδρομής"
 msgid "Start!"
 msgstr "Εκκίνηση!"
 
-#: ../src/searchResultBubble.js:97
+#: ../src/placeBubble.js:102
 #, javascript-format
 msgid "Postal code: %s"
 msgstr "Ταχ. κώδικας: %s"
 
-#: ../src/searchResultBubble.js:99
+#: ../src/placeBubble.js:104
 #, javascript-format
 msgid "Country code: %s"
 msgstr "Κωδικός χώρας: %s"
 
-#: ../src/searchResultBubble.js:108
+#: ../src/placeBubble.js:113
 #, javascript-format
 msgid "Population: %s"
 msgstr "Πληθυσμός: %s"
 
-#: ../src/searchResultBubble.js:111
+#: ../src/placeBubble.js:116
 #, javascript-format
 msgid "Opening hours: %s"
 msgstr "Ώρες λειτουργίας: %s"
 
-#: ../src/searchResultBubble.js:116
+#: ../src/placeBubble.js:121
 msgid "Wikipedia"
 msgstr "Βικιπαιδεία"
 
-#: ../src/searchResultBubble.js:121
+#: ../src/placeBubble.js:126
 #, javascript-format
 msgid "Wheelchair access: %s"
 msgstr "Πρόσβαση αμαξιδίου: %s "
@@ -567,12 +603,12 @@ msgid "%s-%s"
 msgstr "%s-%s"
 
 #. Translators: Accuracy of user location information */
-#: ../src/utils.js:253
+#: ../src/utils.js:257
 msgid "Unknown"
 msgstr "Άγνωστο"
 
 #. Translators: Accuracy of user location information */
-#: ../src/utils.js:256
+#: ../src/utils.js:260
 msgid "Exact"
 msgstr "Ακριβής"
 
@@ -614,6 +650,12 @@ msgstr "%f mi"
 #, javascript-format
 msgid "%f ft"
 msgstr "%f ft"
+
+#~ msgid "Share location"
+#~ msgstr "Κοινόχρηστη τοποθεσία"
+
+#~ msgid "_Share"
+#~ msgstr "_Κοινή χρήση"
 
 #~ msgid "Last known location and accuracy"
 #~ msgstr "Τελευταία γνωστή θέση και ακρίβεια"
