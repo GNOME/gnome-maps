@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-06 12:22+0200\n"
-"PO-Revision-Date: 2015-01-07 19:46+0300\n"
+"POT-Creation-Date: 2015-02-26 02:59+0200\n"
+"PO-Revision-Date: 2015-02-26 03:08+0300\n"
 "Last-Translator: Daniel Korostil <ted.korostiled@gmail.com>\n"
 "Language-Team: linux.org.ua\n"
 "Language: uk\n"
@@ -50,7 +50,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:75 ../src/mainWindow.js:322
+#: ../src/application.js:78 ../src/mainWindow.js:362
 msgid "Maps"
 msgstr "Карти"
 
@@ -170,12 +170,12 @@ msgstr "Допис на Facebook"
 msgid "Post on Twitter"
 msgstr "Допис на Twitter"
 
-#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/share-dialog.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/send-to-dialog.ui.h:2
 msgid "_Cancel"
 msgstr "_Скасувати"
 
 #. Translators: Check in is used as a verb
-#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:5
 msgid "C_heck in"
 msgstr "Від_значитись"
 
@@ -211,6 +211,14 @@ msgstr "Особисто"
 msgid "What’s here?"
 msgstr "Що тут?"
 
+#: ../data/ui/location-service-notification.ui.h:1
+msgid "Turn on location services to find your location"
+msgstr "Увімкнути службу розташування для знаходження місцевості"
+
+#: ../data/ui/location-service-notification.ui.h:2
+msgid "Location Settings"
+msgstr "Параметри розташування"
+
 #: ../data/ui/main-window.ui.h:2
 msgid "Go to current location"
 msgstr "Перейти до поточної місцевості"
@@ -243,23 +251,43 @@ msgstr ""
 msgid "Check your connection and proxy settings."
 msgstr "Перевірте зв'язок і параметри проксі."
 
+#: ../data/ui/map-bubble.ui.h:1
+msgid "Add to new route"
+msgstr "Додати новий маршрут"
+
+#: ../data/ui/map-bubble.ui.h:2
+msgid "Open with another application"
+msgstr "Відкрити іншою програмою"
+
+#: ../data/ui/map-bubble.ui.h:3
+msgid "Mark as favorite"
+msgstr "Зазначити як улюблене"
+
+#: ../data/ui/map-bubble.ui.h:6
+msgid "Check in here"
+msgstr "Відзначитись тут"
+
 #: ../data/ui/search-popup.ui.h:1
 msgid "Press enter to search"
 msgstr "Натисніть Enter для пошуку"
 
-#: ../data/ui/share-dialog.ui.h:1
-msgid "Share location"
-msgstr "Оприлюднити перебування"
+#: ../data/ui/send-to-dialog.ui.h:1
+msgid "Open location"
+msgstr "Відкрити місцевість"
 
-#: ../data/ui/share-dialog.ui.h:3
-msgid "_Share"
-msgstr "_Оприлюднити"
+#: ../data/ui/send-to-dialog.ui.h:3
+msgid "_Open"
+msgstr "_Відкрити"
+
+#: ../data/ui/sidebar.ui.h:1
+msgid "Route search by GraphHopper"
+msgstr "Пошук маршрутів через GraphHopper"
 
 #: ../data/ui/social-place-more-results-row.ui.h:1
 msgid "Show more results"
 msgstr "показати більше результатів"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:158
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:208
 msgid "Current location"
 msgstr "Поточна місцевість"
 
@@ -333,11 +361,19 @@ msgstr "Відзначитись на %s"
 msgid "Write an optional message to check in to %s."
 msgstr "Напишіть довільне повідомлення, щоб відзначитись на %s."
 
-#: ../src/mainWindow.js:320
+#: ../src/mainWindow.js:310
+msgid "Failed to connect to location service"
+msgstr "Не вдалося з'єднатись зі службою розташування"
+
+#: ../src/mainWindow.js:315
+msgid "Position not found"
+msgstr "Позиції не знайдено"
+
+#: ../src/mainWindow.js:360
 msgid "translator-credits"
 msgstr "Daniel Korostil <ted.korostiled@gmail.com>"
 
-#: ../src/mainWindow.js:323
+#: ../src/mainWindow.js:363
 msgid "A map application for GNOME"
 msgstr "Карти для GNOME"
 
@@ -386,31 +422,31 @@ msgstr "Невдалий запит маршруту."
 msgid "Start!"
 msgstr "Нумо!"
 
-#: ../src/searchResultBubble.js:88
+#: ../src/placeBubble.js:102
 #, javascript-format
 msgid "Postal code: %s"
 msgstr "Поштовий код: %s"
 
-#: ../src/searchResultBubble.js:90
+#: ../src/placeBubble.js:104
 #, javascript-format
 msgid "Country code: %s"
 msgstr "Код країни: %s"
 
-#: ../src/searchResultBubble.js:99
+#: ../src/placeBubble.js:113
 #, javascript-format
 msgid "Population: %s"
 msgstr "Населення: %s"
 
-#: ../src/searchResultBubble.js:102
+#: ../src/placeBubble.js:116
 #, javascript-format
 msgid "Opening hours: %s"
 msgstr "Робочий час: %s"
 
-#: ../src/searchResultBubble.js:107
+#: ../src/placeBubble.js:121
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: ../src/searchResultBubble.js:112
+#: ../src/placeBubble.js:126
 #, javascript-format
 msgid "Wheelchair access: %s"
 msgstr "Доступ для возиків: %s"
@@ -549,12 +585,12 @@ msgid "%s-%s"
 msgstr "%s-%s"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:253
+#: ../src/utils.js:257
 msgid "Unknown"
 msgstr "Невідомо"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:256
+#: ../src/utils.js:260
 msgid "Exact"
 msgstr "Уточнити"
 
@@ -568,29 +604,40 @@ msgstr "%f г"
 msgid "%f min"
 msgstr "%f хв"
 
+#: ../src/utils.js:359
+#, javascript-format
+msgid "%f s"
+msgstr "%f с"
+
 #. Translators: This is a distance measured in kilometers
-#: ../src/utils.js:368
+#: ../src/utils.js:370
 #, javascript-format
 msgid "%f km"
 msgstr "%f км"
 
 #. Translators: This is a distance measured in meters
-#: ../src/utils.js:371
+#: ../src/utils.js:373
 #, javascript-format
 msgid "%f m"
 msgstr "%f м"
 
 #. Translators: This is a distance measured in miles
-#: ../src/utils.js:379
+#: ../src/utils.js:381
 #, javascript-format
 msgid "%f mi"
 msgstr "%f миль"
 
 #. Translators: This is a distance measured in feet
-#: ../src/utils.js:382
+#: ../src/utils.js:384
 #, javascript-format
 msgid "%f ft"
 msgstr "%f фут"
+
+#~ msgid "Share location"
+#~ msgstr "Оприлюднити перебування"
+
+#~ msgid "_Share"
+#~ msgstr "_Оприлюднити"
 
 #~ msgid "Last known location and accuracy"
 #~ msgstr "Остання відома місцевість і точність"
