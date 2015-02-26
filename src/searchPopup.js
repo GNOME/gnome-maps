@@ -56,6 +56,7 @@ const SearchPopup = new Lang.Class({
         this._maxChars = props.maxChars;
         delete props.maxChars;
 
+        props.transitions_enabled = false;
         this.parent(props);
 
         this._entry = this.relative_to;

@@ -52,6 +52,7 @@ const MapBubble = new Lang.Class({
 
         this._mapView = params.mapView;
         params.relative_to = params.mapView;
+        params.transitions_enabled = false;
         delete params.mapView;
 
         let buttonFlags = params.buttons || Button.NONE;

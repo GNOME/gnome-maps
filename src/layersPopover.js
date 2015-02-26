@@ -34,6 +34,7 @@ const LayersPopover = new Lang.Class({
 
         this.parent({ width_request: 200,
                       no_show_all: true,
+                      transitions_enabled: false,
                       visible: false });
 
         ui.aerialLayerButton.join_group(ui.streetLayerButton);

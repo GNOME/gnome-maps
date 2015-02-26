@@ -54,6 +54,7 @@ const FavoritesPopover = new Lang.Class({
         this._mapView = params.mapView;
         delete params.mapView;
 
+        params.transitions_enabled = false;
         this.parent(params);
 
         this._rows = 0;
