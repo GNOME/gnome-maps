@@ -37,7 +37,7 @@ PKG_CHECK_MODULES(GNOME_MAPS, [
     gjs-1.0                      >= $GJS_MIN_VERSION
     gobject-introspection-1.0    >= $GOBJECT_INTROSPECTION_MIN_VERSION
     gtk+-3.0                     >= $GTK_MIN_VERSION
-    geoclue                      >= $GEOCLUE_MIN_VERSION
+    geoclue-2.0                  >= $GEOCLUE_MIN_VERSION
 ])
 
 FOLKS_MIN_VERSION=0.10.0
