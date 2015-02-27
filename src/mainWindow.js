@@ -181,8 +181,13 @@ const MainWindow = new Lang.Class({
                             this._onConfigureEvent.bind(this));
         this.window.connect('window-state-event',
                             this._onWindowStateEvent.bind(this));
-        this.mapView.view.connect('button-press-event',
-                                  this.mapView.grab_focus.bind(this.mapView));
+        this.mapView.view.connect('button-press-event', (function() {
+            // Can not call something that will generate clutter events
+            // from a clutter event-handler. So use an idle.
+            Mainloop.idle_add((function() {
+                this.mapView.grab_focus();
+            }).bind(this));
+        }).bind(this));
 
         this.window.application.connect('notify::connected', (function() {
             if(this.window.application.connected)
