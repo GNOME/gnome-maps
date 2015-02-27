@@ -46,7 +46,7 @@ const PlaceBubble = new Lang.Class({
 
         // We do not serialize contacts to file, so adding them
         // as favourites does not makes sense right now.
-        if (!params.place instanceof ContactPlace.ContactPlace)
+        if (!(params.place instanceof ContactPlace.ContactPlace))
             params.buttons |= MapBubble.Button.FAVORITE;
 
         this.parent(params);
