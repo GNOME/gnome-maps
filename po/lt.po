@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-01-17 19:49+0000\n"
-"PO-Revision-Date: 2015-01-17 22:25+0200\n"
+"POT-Creation-Date: 2015-02-28 08:01+0000\n"
+"PO-Revision-Date: 2015-02-28 18:08+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -51,7 +51,7 @@ msgstr ""
 
 #. Translators: This is the program name. */
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:75 ../src/mainWindow.js:322
+#: ../src/application.js:78 ../src/mainWindow.js:367
 msgid "Maps"
 msgstr "Žemėlapiai"
 
@@ -171,12 +171,12 @@ msgstr "Pranešti Facebook"
 msgid "Post on Twitter"
 msgstr "Pranešti Twitter"
 
-#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/share-dialog.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/send-to-dialog.ui.h:2
 msgid "_Cancel"
 msgstr "_Atsisakyti"
 
 #. Translators: Check in is used as a verb
-#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:5
 msgid "C_heck in"
 msgstr "_Nusiųsti"
 
@@ -212,6 +212,14 @@ msgstr "Privatus"
 msgid "What’s here?"
 msgstr "Kas ten?"
 
+#: ../data/ui/location-service-notification.ui.h:1
+msgid "Turn on location services to find your location"
+msgstr "Savo vietai surasti įjunkite vietos tarnybas"
+
+#: ../data/ui/location-service-notification.ui.h:2
+msgid "Location Settings"
+msgstr "Vietos nustatymai"
+
 #: ../data/ui/main-window.ui.h:2
 msgid "Go to current location"
 msgstr "Eiti į dabartinę vietą"
@@ -244,24 +252,45 @@ msgstr ""
 msgid "Check your connection and proxy settings."
 msgstr "Patikrinkite savo prisijungimo ir tarpinio serverio nustatymus."
 
+#: ../data/ui/map-bubble.ui.h:1
+msgid "Add to new route"
+msgstr "Pridėti naują kelią"
+
+#: ../data/ui/map-bubble.ui.h:2
+msgid "Open with another application"
+msgstr "Atverti su kita programa"
+
+#: ../data/ui/map-bubble.ui.h:3
+msgid "Mark as favorite"
+msgstr "Pažymėti kaip mėgiamą"
+
+#: ../data/ui/map-bubble.ui.h:6
+#| msgid "C_heck in"
+msgid "Check in here"
+msgstr "Patikrinkite čia"
+
 #: ../data/ui/search-popup.ui.h:1
 msgid "Press enter to search"
 msgstr "Spauskite enter paieškai"
 
-#: ../data/ui/share-dialog.ui.h:1
+#: ../data/ui/send-to-dialog.ui.h:1
 #| msgid "Current location"
-msgid "Share location"
-msgstr "Viešinti vietą"
+msgid "Open location"
+msgstr "Atverti vietą"
 
-#: ../data/ui/share-dialog.ui.h:3
-msgid "_Share"
-msgstr "_Viešinti"
+#: ../data/ui/send-to-dialog.ui.h:3
+msgid "_Open"
+msgstr "_Atverti"
+
+#: ../data/ui/sidebar.ui.h:1
+msgid "Route search by GraphHopper"
+msgstr "Kelio paieška naudojant GraphHopper"
 
 #: ../data/ui/social-place-more-results-row.ui.h:1
 msgid "Show more results"
 msgstr "Rodyti daugiau rezultatų"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:158
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:208
 msgid "Current location"
 msgstr "Dabartinė vieta"
 
@@ -335,13 +364,22 @@ msgstr "Nusiųsti į %s"
 msgid "Write an optional message to check in to %s."
 msgstr "Parašykite pranešimą nusiuntimui į %s."
 
+#: ../src/mainWindow.js:315
+msgid "Failed to connect to location service"
+msgstr "Nepavyko prisijungti prie vietos tarnybos"
+
 #: ../src/mainWindow.js:320
+#| msgid "No route found."
+msgid "Position not found"
+msgstr "Nerasta padėtis"
+
+#: ../src/mainWindow.js:365
 msgid "translator-credits"
 msgstr ""
 "Išvertė:\n"
 "Aurimas Černius <aurisc4@gmail.com>"
 
-#: ../src/mainWindow.js:323
+#: ../src/mainWindow.js:368
 msgid "A map application for GNOME"
 msgstr "Žemėlapių programa GNOME aplinkai"
 
@@ -390,31 +428,31 @@ msgstr "Nepavyko užklausti kelio."
 msgid "Start!"
 msgstr "Pradėti!"
 
-#: ../src/searchResultBubble.js:97
+#: ../src/placeBubble.js:102
 #, javascript-format
 msgid "Postal code: %s"
 msgstr "Pašto kodas: %s"
 
-#: ../src/searchResultBubble.js:99
+#: ../src/placeBubble.js:104
 #, javascript-format
 msgid "Country code: %s"
 msgstr "Šalies kodas: %s"
 
-#: ../src/searchResultBubble.js:108
+#: ../src/placeBubble.js:113
 #, javascript-format
 msgid "Population: %s"
 msgstr "Gyventojų skaičius: %s"
 
-#: ../src/searchResultBubble.js:111
+#: ../src/placeBubble.js:116
 #, javascript-format
 msgid "Opening hours: %s"
 msgstr "Darbo laikas: %s"
 
-#: ../src/searchResultBubble.js:116
+#: ../src/placeBubble.js:121
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: ../src/searchResultBubble.js:121
+#: ../src/placeBubble.js:126
 #, javascript-format
 msgid "Wheelchair access: %s"
 msgstr "Prieiga invalido vežimėliams: %s"
@@ -553,12 +591,12 @@ msgid "%s-%s"
 msgstr "%s-%s"
 
 #. Translators: Accuracy of user location information */
-#: ../src/utils.js:253
+#: ../src/utils.js:257
 msgid "Unknown"
 msgstr "Nežinomas"
 
 #. Translators: Accuracy of user location information */
-#: ../src/utils.js:256
+#: ../src/utils.js:260
 msgid "Exact"
 msgstr "Tikslus"
 
@@ -592,7 +630,6 @@ msgstr "%f m"
 #. Translators: This is a distance measured in miles */
 #: ../src/utils.js:381
 #, javascript-format
-#| msgid "%f min"
 msgid "%f mi"
 msgstr "%f mi"
 
@@ -602,3 +639,9 @@ msgstr "%f mi"
 msgid "%f ft"
 msgstr "%f pėdos"
 
+#~| msgid "Current location"
+#~ msgid "Share location"
+#~ msgstr "Viešinti vietą"
+
+#~ msgid "_Share"
+#~ msgstr "_Viešinti"
