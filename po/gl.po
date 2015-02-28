@@ -3,20 +3,21 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Fran Diéguez <frandieguez@gnome.org>, 2013.
 # Fran Dieguez <frandieguez@gnome.org>, 2013, 2014, 2015.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-13 00:48+0100\n"
-"PO-Revision-Date: 2015-01-13 00:49+0200\n"
+"POT-Creation-Date: 2015-02-28 22:43+0100\n"
+"PO-Revision-Date: 2015-02-28 22:46+0100\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
-"Language-Team: gnome-l10n-gl@gnome.org\n"
+"Language-Team: Galician <>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Gtranslator 2.91.6\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid ""
@@ -50,7 +51,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:75 ../src/mainWindow.js:322
+#: ../src/application.js:78 ../src/mainWindow.js:367
 msgid "Maps"
 msgstr "Mapas"
 
@@ -170,12 +171,12 @@ msgstr "Enviar a Facebook"
 msgid "Post on Twitter"
 msgstr "Enviar a Twitter"
 
-#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/share-dialog.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/send-to-dialog.ui.h:2
 msgid "_Cancel"
 msgstr "_Cancelar"
 
 #. Translators: Check in is used as a verb
-#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:5
 msgid "C_heck in"
 msgstr "_Rexistrar"
 
@@ -211,6 +212,14 @@ msgstr "Privado"
 msgid "What’s here?"
 msgstr "Que hai aquí?"
 
+#: ../data/ui/location-service-notification.ui.h:1
+msgid "Turn on location services to find your location"
+msgstr "Active os servizos de localización para buscar a súa localización"
+
+#: ../data/ui/location-service-notification.ui.h:2
+msgid "Location Settings"
+msgstr "Preferencias de localización"
+
 #: ../data/ui/main-window.ui.h:2
 msgid "Go to current location"
 msgstr "Ir á localización actual"
@@ -243,23 +252,43 @@ msgstr ""
 msgid "Check your connection and proxy settings."
 msgstr "Comprobe a súa conexión ou preferencias do seu proxy."
 
+#: ../data/ui/map-bubble.ui.h:1
+msgid "Add to new route"
+msgstr "Engadir unha nova ruta"
+
+#: ../data/ui/map-bubble.ui.h:2
+msgid "Open with another application"
+msgstr "Abrir con outro aplicativo"
+
+#: ../data/ui/map-bubble.ui.h:3
+msgid "Mark as favorite"
+msgstr "Marcar como facorito"
+
+#: ../data/ui/map-bubble.ui.h:6
+msgid "Check in here"
+msgstr "Rexistrarse aquí"
+
 #: ../data/ui/search-popup.ui.h:1
 msgid "Press enter to search"
 msgstr "Prema intro para buscar"
 
-#: ../data/ui/share-dialog.ui.h:1
-msgid "Share location"
-msgstr "Compartir localización"
+#: ../data/ui/send-to-dialog.ui.h:1
+msgid "Open location"
+msgstr "Abrir localización"
 
-#: ../data/ui/share-dialog.ui.h:3
-msgid "_Share"
-msgstr "_Compartir"
+#: ../data/ui/send-to-dialog.ui.h:3
+msgid "_Open"
+msgstr "_Abrir"
+
+#: ../data/ui/sidebar.ui.h:1
+msgid "Route search by GraphHopper"
+msgstr "Búsqueda de ruta por GraphHopper"
 
 #: ../data/ui/social-place-more-results-row.ui.h:1
 msgid "Show more results"
 msgstr "Mostrar máis resultados"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:158
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:208
 msgid "Current location"
 msgstr "Localización actual"
 
@@ -334,11 +363,19 @@ msgstr "Rexistrarse en %s"
 msgid "Write an optional message to check in to %s."
 msgstr "Escriba unha mensaxe opcional para rexistrarse en %s."
 
+#: ../src/mainWindow.js:315
+msgid "Failed to connect to location service"
+msgstr "Produciuse un fallo ao conectar co servizo de localización"
+
 #: ../src/mainWindow.js:320
+msgid "Position not found"
+msgstr "Posición non atopada"
+
+#: ../src/mainWindow.js:365
 msgid "translator-credits"
 msgstr "Fran Dieguez <frandieguez@gnome.org>, 2013."
 
-#: ../src/mainWindow.js:323
+#: ../src/mainWindow.js:368
 msgid "A map application for GNOME"
 msgstr "Un aplicativo de mapas para GNOME"
 
@@ -387,31 +424,31 @@ msgstr "Produciuse un fallo na solicitude de ruta."
 msgid "Start!"
 msgstr "Comezar!"
 
-#: ../src/searchResultBubble.js:97
+#: ../src/placeBubble.js:102
 #, javascript-format
 msgid "Postal code: %s"
 msgstr "Código postal: %s"
 
-#: ../src/searchResultBubble.js:99
+#: ../src/placeBubble.js:104
 #, javascript-format
 msgid "Country code: %s"
 msgstr "Código de país: %s"
 
-#: ../src/searchResultBubble.js:108
+#: ../src/placeBubble.js:113
 #, javascript-format
 msgid "Population: %s"
 msgstr "Poboación: %s"
 
-#: ../src/searchResultBubble.js:111
+#: ../src/placeBubble.js:116
 #, javascript-format
 msgid "Opening hours: %s"
 msgstr "Horario de apertura: %s"
 
-#: ../src/searchResultBubble.js:116
+#: ../src/placeBubble.js:121
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: ../src/searchResultBubble.js:121
+#: ../src/placeBubble.js:126
 #, javascript-format
 msgid "Wheelchair access: %s"
 msgstr "Acceso con cadeira de rodas: %s"
@@ -550,12 +587,12 @@ msgid "%s-%s"
 msgstr "%s-%s"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:253
+#: ../src/utils.js:257
 msgid "Unknown"
 msgstr "Descoñecida"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:256
+#: ../src/utils.js:260
 msgid "Exact"
 msgstr "Exacta"
 
@@ -597,6 +634,12 @@ msgstr "%f mi"
 #, javascript-format
 msgid "%f ft"
 msgstr "%f ft"
+
+#~ msgid "Share location"
+#~ msgstr "Compartir localización"
+
+#~ msgid "_Share"
+#~ msgstr "_Compartir"
 
 #~ msgid "Last known location and accuracy"
 #~ msgstr "Última localización e precisión coñecida"
