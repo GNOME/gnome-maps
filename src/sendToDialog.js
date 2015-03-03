@@ -102,9 +102,11 @@ const SendToDialog = new Lang.Class({
             this.response(Response.CANCEL);
 
         if (rows[0] === this._weatherRow || rows[0] === this._clocksRow) {
-            let world = GWeather.Location.get_world();
-            let city = world.find_nearest_city(this._place.location.latitude,
-                                               this._place.location.longitude);
+            let location = this._place.location;
+            let city = GWeather.Location.new_detached(this._place.name,
+                                                      null,
+                                                      location.latitude,
+                                                      location.longitude);
             let appId;
             let action;
             if (rows[0] === this._weatherRow) {
