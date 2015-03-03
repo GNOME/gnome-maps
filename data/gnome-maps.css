@@ -8,7 +8,7 @@
 
 .layer-radio-button {
     background-image: none;
-    padding: 0px;
+    padding: 0;
     border: 2px solid @insensitive_borders;
     -GtkWidget-focus-line-width: 1;
     -GtkWidget-focus-padding: 1;
@@ -21,22 +21,15 @@
 }
 
 .maps-notification {
-    border-radius: 0px 0px 0px 0px;
+    border-radius: 0;
 }
 
-
-#zoom-in-button {
-    font-weight: bold;
-}
-
+#zoom-in-button,
 #zoom-out-button {
     font-weight: bold;
 }
 
-#sidebar-entry-list {
-    background-color: transparent;
-}
-
+#sidebar-entry-list,
 #sidebar-entry-list .list-row:hover {
     background-color: transparent;
 }
@@ -54,10 +47,7 @@
 }
 
 #sidebar-entry-list .transportation-mode-button > GtkImage {
-    padding-left:   7px;
-    padding-right:  7px;
-    padding-top:    4px;
-    padding-bottom: 4px;
+    padding: 4px 7px;
 }
 
 #sidebar {
@@ -78,18 +68,12 @@
     font-weight: bold;
 }
 
+.small-label,
+.bubble-content,
 .bubble-subtitle {
-    font-size: small;
-}
-
-.bubble-content {
     font-size: small;
 }
 
 .maps-check-in GtkTextView {
     font-size: large;
-}
-
-.small-label {
-    font-size: small;
 }
