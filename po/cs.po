@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-01-06 19:49+0000\n"
-"PO-Revision-Date: 2015-02-05 14:06+0100\n"
+"POT-Creation-Date: 2015-03-05 08:02+0000\n"
+"PO-Revision-Date: 2015-03-05 21:27+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -50,7 +50,7 @@ msgstr ""
 
 #. Translators: This is the program name. */
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:75 ../src/mainWindow.js:322
+#: ../src/application.js:78 ../src/mainWindow.js:367
 msgid "Maps"
 msgstr "Mapy"
 
@@ -104,43 +104,53 @@ msgstr "Počet nedávno navštívených míst, která se mají uchovávat."
 
 #: ../data/org.gnome.Maps.gschema.xml.in.h:11
 msgid "Facebook check-in privacy setting"
-msgstr ""
+msgstr "Nastavení soukromí při oznamování polohy na Facebook"
 
 #: ../data/org.gnome.Maps.gschema.xml.in.h:12
 msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
 msgstr ""
+"Poslední použité nastavení soukromí při oznamování polohy na Facebook. Možné "
+"hodnoty jsou: EVERYONE (všem), FRIENDS_OF_FRIENDS (přátelům přátel), "
+"ALL_FRIENDS (všem přátelům) nebo SELF (mě samotnému)."
 
 #: ../data/org.gnome.Maps.gschema.xml.in.h:13
 msgid "Foursquare check-in privacy setting"
-msgstr ""
+msgstr "Nastavení soukromí při oznamování polohy na Foursquare"
 
 #: ../data/org.gnome.Maps.gschema.xml.in.h:14
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
 msgstr ""
+"Poslední použité nastavení soukromí při oznamování polohy na Foursquare. "
+"Možné hodnoty jsou: public (veřejné), followers (následovníci) nebo private "
+"(soukromé)."
 
 #: ../data/org.gnome.Maps.gschema.xml.in.h:15
 msgid "Foursquare check-in Facebook broadcasting"
-msgstr ""
+msgstr "Záslání oznámení polohy z Foursquare na Facebook"
 
 #: ../data/org.gnome.Maps.gschema.xml.in.h:16
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
 msgstr ""
+"Říká, jestli by měl Foursquare zaslat oznámení polohy jako příspěvek na učet "
+"na Facebooku přidružený k účtu na Foursquare."
 
 #: ../data/org.gnome.Maps.gschema.xml.in.h:17
 msgid "Foursquare check-in Twitter broadcasting"
-msgstr ""
+msgstr "Záslání oznámení polohy z Foursquare na Twitter"
 
 #: ../data/org.gnome.Maps.gschema.xml.in.h:18
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
 msgstr ""
+"Říká, jestli by měl Foursquare zaslat oznámení polohy jako příspěvek na učet "
+"na Twitteru přidružený k účtu na Foursquare."
 
 #: ../data/ui/app-menu.ui.h:1
 msgid "About"
@@ -162,14 +172,15 @@ msgstr "Zveřejnit na Facebook"
 msgid "Post on Twitter"
 msgstr "Zveřejnit na Twitter"
 
-#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/share-dialog.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/send-to-dialog.ui.h:2
 msgid "_Cancel"
 msgstr "_Zrušit"
 
+# Překlad výrazu „Check in“ je převzat z českého uživatelského rozhraní Facebooku
 #. Translators: Check in is used as a verb
-#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:5
 msgid "C_heck in"
-msgstr ""
+msgstr "Oznámit polo_hu"
 
 #: ../data/ui/check-in-dialog.ui.h:6
 msgid "Everyone"
@@ -203,6 +214,14 @@ msgstr "soukromé"
 msgid "What’s here?"
 msgstr "Co je zde?"
 
+#: ../data/ui/location-service-notification.ui.h:1
+msgid "Turn on location services to find your location"
+msgstr "Zapnout geolokační službu pro vyhledávání vaší polohy"
+
+#: ../data/ui/location-service-notification.ui.h:2
+msgid "Location Settings"
+msgstr "Nastavení určování polohy"
+
 #: ../data/ui/main-window.ui.h:2
 msgid "Go to current location"
 msgstr "Přejít na současné místo"
@@ -235,23 +254,44 @@ msgstr ""
 msgid "Check your connection and proxy settings."
 msgstr "Zkontrolujte své připojení a nastavení proxy."
 
+#: ../data/ui/map-bubble.ui.h:1
+msgid "Add to new route"
+msgstr "Přidat novou trasu"
+
+#: ../data/ui/map-bubble.ui.h:2
+msgid "Open with another application"
+msgstr "Otevřít pomocí jiné aplikace"
+
+#: ../data/ui/map-bubble.ui.h:3
+msgid "Mark as favorite"
+msgstr "Označit jako oblíbené"
+
+#: ../data/ui/map-bubble.ui.h:6
+msgid "Check in here"
+msgstr "Oznámit tuto polohu"
+
 #: ../data/ui/search-popup.ui.h:1
 msgid "Press enter to search"
 msgstr "Zmáčknutím Enter se začne hledat"
 
-#: ../data/ui/share-dialog.ui.h:1
-msgid "Share location"
-msgstr "Sdílení místo"
+#: ../data/ui/send-to-dialog.ui.h:1
+#| msgid "Current location"
+msgid "Open location"
+msgstr "Otevřít místo"
 
-#: ../data/ui/share-dialog.ui.h:3
-msgid "_Share"
-msgstr "_Sdílet"
+#: ../data/ui/send-to-dialog.ui.h:3
+msgid "_Open"
+msgstr "_Otevřít"
+
+#: ../data/ui/sidebar.ui.h:1
+msgid "Route search by GraphHopper"
+msgstr "Hledání trasy pomocí GraphHopper"
 
 #: ../data/ui/social-place-more-results-row.ui.h:1
 msgid "Show more results"
 msgstr "Zobrazit více výsledků"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:158
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:208
 msgid "Current location"
 msgstr "Současné místo"
 
@@ -270,6 +310,7 @@ msgstr "Na sociální službě nelze nalézt „%s“"
 #: ../src/checkIn.js:138
 msgid "Cannot find a suitable place to check-in in this location"
 msgstr ""
+"Na této poloze se nepodařilo najít žádné vhodné místo pro oznámení polohy"
 
 #: ../src/checkIn.js:142
 msgid ""
@@ -300,32 +341,45 @@ msgid ""
 "Maps cannot find the place to check in to with Facebook. Please select one "
 "from this list."
 msgstr ""
+"Mapy nemohou najít žádné místo pro oznámení polohy na Facebook. Vyberte "
+"prosím nějaké ze seznamu."
 
 #: ../src/checkInDialog.js:213
 msgid ""
 "Maps cannot find the place to check in to with Foursquare. Please select one "
 "from this list."
 msgstr ""
+"Mapy nemohou najít žádné místo pro oznámení polohy na Foursquare. Vyberte "
+"prosím nějaké ze seznamu."
 
 #. Translators: %s is the name of the place to check in.
 #. */
 #: ../src/checkInDialog.js:228
 #, javascript-format
 msgid "Check in to %s"
-msgstr ""
+msgstr "Oznámení polohy na místě %s"
 
 #. Translators: %s is the name of the place to check in.
 #. */
 #: ../src/checkInDialog.js:238
 #, javascript-format
 msgid "Write an optional message to check in to %s."
-msgstr ""
+msgstr "Napište volitně zprávu k oznámení polohy na místě %s."
+
+#: ../src/mainWindow.js:315
+msgid "Failed to connect to location service"
+msgstr "Selhalo připojení ke geolokační službě"
 
 #: ../src/mainWindow.js:320
+#| msgid "No route found."
+msgid "Position not found"
+msgstr "Poloha nebyla nalezena."
+
+#: ../src/mainWindow.js:365
 msgid "translator-credits"
 msgstr "Marek Černocký"
 
-#: ../src/mainWindow.js:323
+#: ../src/mainWindow.js:368
 msgid "A map application for GNOME"
 msgstr "Mapová aplikace pro GNOME"
 
@@ -374,31 +428,31 @@ msgstr "Požadavek na vyhledání cesty selhal."
 msgid "Start!"
 msgstr "Start!"
 
-#: ../src/searchResultBubble.js:88
+#: ../src/placeBubble.js:102
 #, javascript-format
 msgid "Postal code: %s"
 msgstr "PSČ: %s"
 
-#: ../src/searchResultBubble.js:90
+#: ../src/placeBubble.js:104
 #, javascript-format
 msgid "Country code: %s"
 msgstr "Kód země: %s"
 
-#: ../src/searchResultBubble.js:99
+#: ../src/placeBubble.js:113
 #, javascript-format
 msgid "Population: %s"
 msgstr "Populace: %s"
 
-#: ../src/searchResultBubble.js:102
+#: ../src/placeBubble.js:116
 #, javascript-format
 msgid "Opening hours: %s"
 msgstr "Otevírací doba: %s"
 
-#: ../src/searchResultBubble.js:107
+#: ../src/placeBubble.js:121
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: ../src/searchResultBubble.js:112
+#: ../src/placeBubble.js:126
 #, javascript-format
 msgid "Wheelchair access: %s"
 msgstr "Bezbariérový přístup: %s"
@@ -537,12 +591,12 @@ msgid "%s-%s"
 msgstr "%s - %s"
 
 #. Translators: Accuracy of user location information */
-#: ../src/utils.js:253
+#: ../src/utils.js:257
 msgid "Unknown"
 msgstr "neznámá"
 
 #. Translators: Accuracy of user location information */
-#: ../src/utils.js:256
+#: ../src/utils.js:260
 msgid "Exact"
 msgstr "velmi přesná"
 
@@ -584,6 +638,12 @@ msgstr "%f mi"
 #, javascript-format
 msgid "%f ft"
 msgstr "%f ft"
+
+#~ msgid "Share location"
+#~ msgstr "Sdílení místo"
+
+#~ msgid "_Share"
+#~ msgstr "_Sdílet"
 
 #~ msgid "Last known location and accuracy"
 #~ msgstr "Poslední známé místo a přesnost"
