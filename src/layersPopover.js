@@ -16,30 +16,22 @@
  * Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  * Author: Dario Di Nucci <linkin88mail@gmail.com>
+ *         Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
  */
 
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 
-const Utils = imports.utils;
-
 const LayersPopover = new Lang.Class({
     Name: 'LayersPopover',
     Extends: Gtk.Popover,
+    Template: 'resource:///org/gnome/Maps/ui/layers-popover.ui',
+    InternalChildren: [ 'streetLayerButton',
+                        'aerialLayerButton' ],
 
     _init: function() {
-        let ui = Utils.getUIObject('layers-popover', [ 'grid',
-                                                       'street-layer-button',
-                                                       'aerial-layer-button' ]);
+        this.parent();
 
-        this.parent({ width_request: 200,
-                      no_show_all: true,
-                      transitions_enabled: false,
-                      visible: false });
-
-        ui.aerialLayerButton.join_group(ui.streetLayerButton);
-
-        this.get_style_context().add_class('maps-popover');
-        this.add(ui.grid);
+        this._aerialLayerButton.join_group(this._streetLayerButton);
     }
 });
