@@ -112,6 +112,10 @@ const MapView = new Lang.Class({
                                                blue: 255,
                                                green: 0,
                                                alpha: 100 });
+
+        this._userLocationLayer = new Champlain.MarkerLayer({ selection_mode: mode });
+        this.view.add_layer(this._userLocationLayer);
+
         this._routeLayer = new Champlain.PathLayer({ stroke_width: 5.0,
                                                      stroke_color: strokeColor });
         this.view.add_layer(this._routeLayer);
@@ -122,9 +126,6 @@ const MapView = new Lang.Class({
 
         this._instructionMarkerLayer = new Champlain.MarkerLayer({ selection_mode: mode });
         this.view.add_layer(this._instructionMarkerLayer);
-
-        this._userLocationLayer = new Champlain.MarkerLayer({ selection_mode: mode });
-        this.view.add_layer(this._userLocationLayer);
     },
 
     _connectRouteSignals: function() {
