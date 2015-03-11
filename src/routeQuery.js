@@ -141,6 +141,7 @@ const RouteQuery = new Lang.Class({
     set transportation(transportation) {
         this._transportation = transportation;
         this.notify('transportation');
+        this.notify('points');
     },
     get transportation() {
         return this._transportation;
