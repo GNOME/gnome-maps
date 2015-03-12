@@ -57,50 +57,34 @@ const InstructionRow = new Lang.Class({
 const Sidebar = new Lang.Class({
     Name: 'Sidebar',
     Extends: Gtk.Revealer,
+    Template: 'resource:///org/gnome/Maps/ui/sidebar.ui',
+    InternalChildren: [ 'distanceInfo',
+                        'entryList',
+                        'instructionList',
+                        'instructionWindow',
+                        'instructionSpinner',
+                        'instructionStack',
+                        'modeBikeToggle',
+                        'modeCarToggle',
+                        'modePedestrianToggle',
+                        'timeInfo' ],
 
     _init: function(mapView) {
-        this.parent({ visible: true,
-                      transition_type: Gtk.RevealerTransitionType.SLIDE_LEFT,
-                      transition_duration: 400, // ms
-                      halign: Gtk.Align.END,
-                      valign: Gtk.Align.FILL
-                    });
-        this.get_style_context().add_class('maps-sidebar');
-
-        let ui = Utils.getUIObject('sidebar', [ 'sidebar',
-                                                'entry-list',
-                                                'instruction-list-scrolled',
-                                                'instruction-stack',
-                                                'instruction-spinner',
-                                                'instruction-list',
-                                                'mode-pedestrian-toggle',
-                                                'mode-bike-toggle',
-                                                'mode-car-toggle',
-                                                'time-info',
-                                                'distance-info' ]);
+        this.parent({ transition_type: Gtk.RevealerTransitionType.SLIDE_LEFT });
 
         this._mapView = mapView;
-        this._entryList = ui.entryList;
-        this._instructionList = ui.instructionList;
-        this._instructionStack = ui.instructionStack;
-        this._instructionWindow = ui.instructionListScrolled;
-        this._instructionSpinner = ui.instructionSpinner;
-        this._timeInfo = ui.timeInfo;
-        this._distanceInfo = ui.distanceInfo;
 
         this._initInstructionList();
 
-        this._initTransportationToggles(ui.modePedestrianToggle,
-                                        ui.modeBikeToggle,
-                                        ui.modeCarToggle);
+        this._initTransportationToggles(this._modePedestrianToggle,
+                                        this._modeBikeToggle,
+                                        this._modeCarToggle);
         this._initQuerySignals();
 
         let query = Application.routeService.query;
 
         query.addPoint(0);
         query.addPoint(1);
-
-        this.add(ui.sidebar);
     },
 
     _initTransportationToggles: function(pedestrian, bike, car) {
