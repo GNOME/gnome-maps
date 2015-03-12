@@ -35,6 +35,10 @@ const Utils = imports.utils;
 const InstructionRow = new Lang.Class({
     Name: "InstructionRow",
     Extends: Gtk.ListBoxRow,
+    Template: 'resource:///org/gnome/Maps/ui/instruction-row.ui',
+    InternalChildren: [ 'directionImage',
+                        'instructionLabel',
+                        'distanceLabel' ],
 
     _init: function(params) {
         this.turnPoint = params.turnPoint;
@@ -42,18 +46,11 @@ const InstructionRow = new Lang.Class({
 
         this.parent(params);
 
-        this.visible = true;
-        let ui = Utils.getUIObject('sidebar', ['instruction-box',
-                                               'direction-image',
-                                               'instruction-label',
-                                               'distance-label']);
-        ui.instructionLabel.label = this.turnPoint.instruction;
-        ui.directionImage.icon_name = this.turnPoint.iconName;
+        this._instructionLabel.label = this.turnPoint.instruction;
+        this._directionImage.icon_name = this.turnPoint.iconName;
 
         if (this.turnPoint.distance > 0)
-            ui.distanceLabel.label = Utils.prettyDistance(this.turnPoint.distance);
-
-        this.add(ui.instructionBox);
+            this._distanceLabel.label = Utils.prettyDistance(this.turnPoint.distance);
     }
 });
 
