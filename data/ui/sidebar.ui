@@ -2,185 +2,197 @@
 <!-- Generated with glade 3.18.3 -->
 <interface>
   <requires lib="gtk+" version="3.10"/>
-  <object class="GtkGrid" id="sidebar">
-    <property name="name">sidebar</property>
+  <template class="Gjs_Sidebar" parent="GtkRevealer">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="vexpand">True</property>
+    <property name="transition_type">slide-left</property>
+    <property name="transition_duration">400</property>
+    <property name="halign">end</property>
     <property name="valign">fill</property>
-    <property name="column_homogeneous">True</property>
-    <property name="orientation">vertical</property>
-    <property name="width_request">320</property>
-    <property name="row_spacing">2</property>
+    <style>
+      <class name="maps-sidebar"/>
+    </style>
     <child>
-      <object class="GtkBox" id="mode-chooser">
+      <object class="GtkGrid" id="sidebar">
+        <property name="name">sidebar</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="halign">center</property>
-        <property name="margin-top">10</property>
+        <property name="vexpand">True</property>
+        <property name="valign">fill</property>
+        <property name="column_homogeneous">True</property>
+        <property name="orientation">vertical</property>
+        <property name="width_request">320</property>
+        <property name="row_spacing">2</property>
         <child>
-          <object class="GtkRadioButton" id="mode-pedestrian-toggle">
-            <property name="name">mode-pedestrian-toggle</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="draw_indicator">False</property>
-            <property name="height-request">32</property>
-            <property name="width-request">42</property>
-            <child>
-              <object class="GtkImage" id="mode-pedestrian-image">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon-name">route-pedestrian-symbolic</property>
-              </object>
-            </child>
-            <style>
-              <class name="transportation-mode-button"/>
-            </style>
-          </object>
-        </child>
-        <child>
-          <object class="GtkRadioButton" id="mode-bike-toggle">
-            <property name="name">mode-bike-toggle</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="draw_indicator">False</property>
-            <property name="group">mode-pedestrian-toggle</property>
-            <property name="height-request">32</property>
-            <property name="width-request">42</property>
-            <child>
-              <object class="GtkImage" id="mode-bike-image">
-              <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon-name">route-bike-symbolic</property>
-              </object>
-            </child>
-            <style>
-              <class name="transportation-mode-button"/>
-            </style>
-          </object>
-        </child>
-        <child>
-          <object class="GtkRadioButton" id="mode-car-toggle">
-            <property name="name">mode-car-toggle</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="active">True</property>
-            <property name="draw_indicator">False</property>
-            <property name="group">mode-bike-toggle</property>
-            <property name="height-request">32</property>
-            <property name="width-request">42</property>
-            <child>
-              <object class="GtkImage" id="mode-car-image">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon-name">route-car-symbolic</property>
-              </object>
-            </child>
-            <style>
-              <class name="transportation-mode-button"/>
-            </style>
-          </object>
-        </child>
-        <style>
-          <class name="linked"/>
-        </style>
-      </object>
-    </child>
-    <child>
-      <object class="GtkListBox" id="entry-list">
-        <property name="name">sidebar-entry-list</property>
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="selection-mode">GTK_SELECTION_NONE</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkGrid" id="sidebar-route-info-wrapper">
-        <property name="visible">True</property>
-        <property name="hexpand">False</property>
-        <child>
-          <object class="GtkGrid" id="sidebar-route-info">
-            <property name="name">sidebar-route-info</property>
+          <object class="GtkBox" id="mode-chooser">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="margin_start">17</property>
-            <property name="margin_end">17</property>
-            <property name="margin_top">12</property>
-            <property name="hexpand">true</property>
+            <property name="halign">center</property>
+            <property name="margin-top">10</property>
             <child>
-              <object class="GtkLabel" id="time-info">
+              <object class="GtkRadioButton" id="modePedestrianToggle">
+                <property name="name">mode-pedestrian-toggle</property>
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">start</property>
-                <property name="hexpand">true</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="distance-info">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="margin_start">10</property>
-              </object>
-            </child>
-          </object>
-        </child>
-      </object>
-    </child>
-    <child>
-      <object class="GtkFrame" id="instruction-frame">
-        <property name="can_focus">False</property>
-        <property name="margin_top">10</property>
-        <property name="shadow_type">in</property>
-        <child>
-          <object class="GtkStack" id="instruction-stack">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <child>
-              <object class="GtkScrolledWindow" id="instruction-list-scrolled">
-                <property name="name">instruction-list-scrolled</property>
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="valign">fill</property>
-                <property name="vexpand">True</property>
-                <property name="margin">1</property>
-                <property name="hscrollbar_policy">never</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="draw_indicator">False</property>
+                <property name="height-request">32</property>
+                <property name="width-request">42</property>
                 <child>
-                  <object class="GtkListBox" id="instruction-list">
-                    <property name="name">instruction-list</property>
+                  <object class="GtkImage" id="mode-pedestrian-image">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="valign">fill</property>
+                    <property name="icon-name">route-pedestrian-symbolic</property>
+                  </object>
+                </child>
+                <style>
+                  <class name="transportation-mode-button"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkRadioButton" id="modeBikeToggle">
+                <property name="name">mode-bike-toggle</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="draw_indicator">False</property>
+                <property name="group">modePedestrianToggle</property>
+                <property name="height-request">32</property>
+                <property name="width-request">42</property>
+                <child>
+                  <object class="GtkImage" id="mode-bike-image">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="icon-name">route-bike-symbolic</property>
+                  </object>
+                </child>
+                <style>
+                  <class name="transportation-mode-button"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkRadioButton" id="modeCarToggle">
+                <property name="name">mode-car-toggle</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="active">True</property>
+                <property name="draw_indicator">False</property>
+                <property name="group">modeBikeToggle</property>
+                <property name="height-request">32</property>
+                <property name="width-request">42</property>
+                <child>
+                  <object class="GtkImage" id="mode-car-image">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="icon-name">route-car-symbolic</property>
+                  </object>
+                </child>
+                <style>
+                  <class name="transportation-mode-button"/>
+                </style>
+              </object>
+            </child>
+            <style>
+              <class name="linked"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkListBox" id="entryList">
+            <property name="name">sidebar-entry-list</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="selection-mode">GTK_SELECTION_NONE</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkGrid" id="sidebar-route-info-wrapper">
+            <property name="visible">True</property>
+            <property name="hexpand">False</property>
+            <child>
+              <object class="GtkGrid" id="sidebar-route-info">
+                <property name="name">sidebar-route-info</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_start">17</property>
+                <property name="margin_end">17</property>
+                <property name="margin_top">12</property>
+                <property name="hexpand">true</property>
+                <child>
+                  <object class="GtkLabel" id="timeInfo">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="hexpand">true</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="distanceInfo">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_start">10</property>
                   </object>
                 </child>
               </object>
             </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkFrame" id="instruction-frame">
+            <property name="can_focus">False</property>
+            <property name="margin_top">10</property>
+            <property name="shadow_type">in</property>
             <child>
-              <object class="GtkSpinner" id="instruction-spinner">
+              <object class="GtkStack" id="instructionStack">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="active">True</property>
+                <child>
+                  <object class="GtkScrolledWindow" id="instructionWindow">
+                    <property name="name">instruction-window</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="valign">fill</property>
+                    <property name="vexpand">True</property>
+                    <property name="margin">1</property>
+                    <property name="hscrollbar_policy">never</property>
+                    <child>
+                      <object class="GtkListBox" id="instructionList">
+                        <property name="name">instruction-list</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="valign">fill</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkSpinner" id="instructionSpinner">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="active">True</property>
+                  </object>
+                </child>
               </object>
             </child>
           </object>
         </child>
+        <child>
+          <object class="GtkLinkButton" id="linkbutton1">
+            <property name="label" translatable="yes">Route search by GraphHopper</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_action_appearance">False</property>
+            <property name="relief">none</property>
+            <property name="uri">https://graphhopper.com</property>
+            <style>
+              <class name="small-label"/>
+            </style>
+          </object>
+        </child>
       </object>
     </child>
-    <child>
-      <object class="GtkLinkButton" id="linkbutton1">
-        <property name="label" translatable="yes">Route search by GraphHopper</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_action_appearance">False</property>
-        <property name="relief">none</property>
-        <property name="uri">https://graphhopper.com</property>
-        <style>
-          <class name="small-label"/>
-        </style>
-      </object>
-    </child>
-  </object>
+  </template>
 </interface>
