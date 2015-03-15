@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2015-03-08 20:00+0000\n"
-"PO-Revision-Date: 2015-03-08 21:20+0100\n"
+"PO-Revision-Date: 2015-03-15 10:19+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -107,43 +107,51 @@ msgstr "Število nedavno obiskanih mest za shranjevanje."
 
 #: ../data/org.gnome.Maps.gschema.xml.in.h:11
 msgid "Facebook check-in privacy setting"
-msgstr ""
+msgstr "Nastavitve zasebnosti Facebook Objav"
 
 #: ../data/org.gnome.Maps.gschema.xml.in.h:12
 msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
 msgstr ""
+"Nazadnje uporabljena nastavitev zasebnosti Facebook Objav. Dovoljene "
+"vrednosti so: vsi, prijatelji prijateljev, prijatelji ali zame."
 
 #: ../data/org.gnome.Maps.gschema.xml.in.h:13
 msgid "Foursquare check-in privacy setting"
-msgstr ""
+msgstr "Nastavitve zasebnosti oursquare Objav"
 
 #: ../data/org.gnome.Maps.gschema.xml.in.h:14
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
 msgstr ""
+"Nazadnje uporabljena nastavitev zasebnosti Foursquare Objav. Dovoljene "
+"vrednosti so: javno, spremljevalci, zasebno."
 
 #: ../data/org.gnome.Maps.gschema.xml.in.h:15
 msgid "Foursquare check-in Facebook broadcasting"
-msgstr ""
+msgstr "Prikaz Foursquare Objav v Facebooku"
 
 #: ../data/org.gnome.Maps.gschema.xml.in.h:16
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
 msgstr ""
+"Določa, ali naj se objave Foresquare pokažejo tudi kot objave znotraj "
+"povezanega računa Facebook."
 
 #: ../data/org.gnome.Maps.gschema.xml.in.h:17
 msgid "Foursquare check-in Twitter broadcasting"
-msgstr ""
+msgstr "Prikaz Foursquare Objav v Twitterju"
 
 #: ../data/org.gnome.Maps.gschema.xml.in.h:18
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
 msgstr ""
+"Določa, ali naj se objave Foresquare pokažejo tudi kot objave znotraj "
+"povezanega računa Twitter."
 
 #: ../data/ui/app-menu.ui.h:1
 msgid "About"
@@ -196,7 +204,7 @@ msgstr "Javno"
 
 #: ../data/ui/check-in-dialog.ui.h:11
 msgid "Followers"
-msgstr ""
+msgstr "Spremljevalci"
 
 #: ../data/ui/check-in-dialog.ui.h:12
 msgid "Private"
@@ -231,44 +239,40 @@ msgid "Toggle favorites"
 msgstr "Preklop priljubljenih"
 
 #: ../data/ui/main-window.ui.h:6
-#, fuzzy
 msgid "Maps is offline!"
-msgstr "Stik ni povezan v omrežje"
+msgstr "Zemljevid ni povezan v omrežje!"
 
 #: ../data/ui/main-window.ui.h:7
 msgid ""
 "Maps need an active internet connection to function properly, but one can't "
 "be found."
 msgstr ""
+"Zemljevidi potrebujejo za pravilno delovanje dejavno internetno povezavo, ki "
+"pa ni na voljo."
 
 #: ../data/ui/main-window.ui.h:8
 msgid "Check your connection and proxy settings."
 msgstr "Preverite povezavo in nastavitve posredniškega strežnika."
 
 #: ../data/ui/map-bubble.ui.h:1
-#, fuzzy
 msgid "Add to new route"
-msgstr "Dodaj novo mapo v projekt."
+msgstr "Dodaj novo pot"
 
 #: ../data/ui/map-bubble.ui.h:2
-#, fuzzy
 msgid "Open with another application"
-msgstr "Odpri z drugim programom ..."
+msgstr "Odpri z drugim programom"
 
 #: ../data/ui/map-bubble.ui.h:3
-#, fuzzy
 msgid "Mark as favorite"
-msgstr "Označi kot _dohodno pošto"
+msgstr "Označi kot priljubljeno"
 
 #: ../data/ui/map-bubble.ui.h:6
-#, fuzzy
 msgid "Check in here"
-msgstr "Izračunavanje nadzorne vsote v \"%s\""
+msgstr "Prijavi se tu."
 
 #: ../data/ui/search-popup.ui.h:1
-#, fuzzy
 msgid "Press enter to search"
-msgstr "Preiskati je treba še %3d%%"
+msgstr "Pritisnite vnosno tipko za iskanje"
 
 #: ../data/ui/send-to-dialog.ui.h:1
 msgid "Open location"
@@ -279,14 +283,12 @@ msgid "_Open"
 msgstr "_Odpri"
 
 #: ../data/ui/sidebar.ui.h:1
-#, fuzzy
 msgid "Route search by GraphHopper"
-msgstr "Iskanje po imenu datoteke"
+msgstr "Iskanje poti s podporo GraphHopper"
 
 #: ../data/ui/social-place-more-results-row.ui.h:1
-#, fuzzy
 msgid "Show more results"
-msgstr "Pokaži več rezultatov za \"%s\""
+msgstr "Pokaži več zadetkov"
 
 #: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:208
 msgid "Current location"
@@ -300,19 +302,20 @@ msgstr "Raven natančnosti: %s"
 
 #. Translators: %s is the place name that user wanted to check-in */
 #: ../src/checkIn.js:136
-#, fuzzy, javascript-format
+#, javascript-format
 msgid "Cannot find \"%s\" in the social service"
-msgstr "Ni mogoče najti naslova v imeniku"
+msgstr "Ni mogoče najti \"%s\" med razpoložljivimi storitvami"
 
 #: ../src/checkIn.js:138
 msgid "Cannot find a suitable place to check-in in this location"
-msgstr ""
+msgstr "Ni mogoče najti ustreznega mesta za objavo"
 
 #: ../src/checkIn.js:142
 msgid ""
 "Credentials have expired, please open Online Accounts to sign in and enable "
 "this account"
 msgstr ""
+"Poverila so potekla. Ponovna vzpostavitev računa je mogoče med nastavitvami."
 
 #: ../src/checkIn.js:154 ../src/checkInDialog.js:290
 msgid "An error has occurred"
@@ -335,36 +338,38 @@ msgid ""
 "Maps cannot find the place to check in to with Facebook. Please select one "
 "from this list."
 msgstr ""
+"Ni mogoče najti mesta za objavo v Facebooku. Izberite ustrezno mesto iz "
+"seznama."
 
 #: ../src/checkInDialog.js:213
 msgid ""
 "Maps cannot find the place to check in to with Foursquare. Please select one "
 "from this list."
 msgstr ""
+"Ni mogoče najti mesta za objavo v Foursquare. Izberite ustrezno mesto iz "
+"seznama."
 
 #. Translators: %s is the name of the place to check in.
 #. */
 #: ../src/checkInDialog.js:228
-#, fuzzy, javascript-format
+#, javascript-format
 msgid "Check in to %s"
-msgstr "Prijavljanje v {0}."
+msgstr "Prijavi se v %s."
 
 #. Translators: %s is the name of the place to check in.
 #. */
 #: ../src/checkInDialog.js:238
 #, javascript-format
 msgid "Write an optional message to check in to %s."
-msgstr ""
+msgstr "Vpišite sporočilo za objavo v %s."
 
 #: ../src/mainWindow.js:315
-#, fuzzy
 msgid "Failed to connect to location service"
-msgstr "Napaka med povezovanjem s storitvijo računov"
+msgstr "Napaka med povezovanjem s storitvijo določevanja točke GPS"
 
 #: ../src/mainWindow.js:320
-#, fuzzy
 msgid "Position not found"
-msgstr "Gradnika ni mogoče najti: %s"
+msgstr "Položaja ni mogoče določiti"
 
 #: ../src/mainWindow.js:365
 msgid "translator-credits"
@@ -405,7 +410,7 @@ msgstr "ne"
 #. */
 #: ../src/place.js:141
 msgid "designated"
-msgstr ""
+msgstr "podpora invalidom"
 
 #: ../src/routeService.js:70
 msgid "No route found."
@@ -435,18 +440,18 @@ msgid "Population: %s"
 msgstr "Populacija: %s"
 
 #: ../src/placeBubble.js:116
-#, fuzzy, javascript-format
+#, javascript-format
 msgid "Opening hours: %s"
-msgstr "ura,ure"
+msgstr "Delovni čas: %s"
 
 #: ../src/placeBubble.js:121
 msgid "Wikipedia"
 msgstr "Wikipedija"
 
 #: ../src/placeBubble.js:126
-#, fuzzy, javascript-format
+#, javascript-format
 msgid "Wheelchair access: %s"
-msgstr "Vrsta dostopa: %s\n"
+msgstr "Dostop v vozičku: %s"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min" */
 #: ../src/sidebar.js:217
@@ -455,9 +460,8 @@ msgid "Estimated time: %s"
 msgstr "Predviden čas: %s"
 
 #: ../src/translations.js:56 ../src/translations.js:58
-#, fuzzy
 msgid "around the clock"
-msgstr "Vrtenje ure"
+msgstr "neprestano"
 
 #: ../src/translations.js:60
 msgid "from sunrise to sunset"
