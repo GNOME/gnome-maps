@@ -85,8 +85,8 @@ const PlaceBubble = new Lang.Class({
     _formatWikiLink: function(wiki) {
         let tokens = wiki.split(':');
 
-        return Format.vprintf('http://%s.wikipedia.org/wiki/%s', [ tokens[0],
-                                                                   tokens[1] ]);
+        return Format.vprintf('https://%s.wikipedia.org/wiki/%s', [ tokens[0],
+                                                                    tokens[1] ]);
     },
 
     _populate: function(place) {
