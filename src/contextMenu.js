@@ -22,6 +22,7 @@
 
 const Clutter = imports.gi.Clutter;
 const Geocode = imports.gi.GeocodeGlib;
+const Mainloop = imports.mainloop;
 
 const Application = imports.application;
 const Lang = imports.lang;
@@ -51,7 +52,10 @@ const ContextMenu = new Lang.Class({
         this._latitude = this._mapView.view.y_to_latitude(y);
 
         if (button === Clutter.BUTTON_SECONDARY) {
-            this._menu.popup(null, null, null, button, event.get_time());
+            Mainloop.idle_add((function() {
+                // Need idle to avoid Clutter dead-lock on re-entrance
+                this._menu.popup(null, null, null, button, event.get_time());
+            }).bind(this));
         }
     },
 
