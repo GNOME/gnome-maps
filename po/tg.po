@@ -1,24 +1,24 @@
 # Tajik translation for gnome-maps.
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
-# Victor Ibragimov <victor.ibragimov@gmail.com>, 2013.
+# Victor Ibragimov <victor.ibragimov@gmail.com>, 2013, 2014, 2015
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-04-08 19:20+0000\n"
-"PO-Revision-Date: 2014-04-09 11:42+0500\n"
+"POT-Creation-Date: 2015-03-16 19:54+0000\n"
+"PO-Revision-Date: 2015-03-17 09:59+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: Tajik <tg@li.org>\n"
 "Language: tg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.4\n"
+"X-Generator: Poedit 1.6.5\n"
 
-#: ../data/gnome-maps.appdata.xml.in.h:1
+#: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
@@ -28,17 +28,7 @@ msgstr ""
 "Ин барнома ба шумо инчунин имкон медиҳад, ки тавонед шаҳр ё кӯчаи "
 "мехостагиро ёфт кунед ё барои бо дӯстон фохӯрдан маконро муайян кунед."
 
-#: ../data/gnome-maps.appdata.xml.in.h:2
-msgid ""
-"<li>Search for country, region, city or street.</li> <li>Search for specific "
-"types of locations, such as “Pubs near Main Street, Boston” or “Wi-Fi Access "
-"near Alexanderplatz, Berlin”.</li>"
-msgstr ""
-"<li>Кишвар, шаҳр ё кӯчаи мехостагиро ёфт кунед.</li> <li>Маконҳои махсусро, "
-"масалан “Каҳвахонаи Нигина дар назди роҳи асосӣ” ё ”Нуқтаи дастраси WiFi дар "
-"назди боғи Рӯдаки” пайдо кунед.</li>"
-
-#: ../data/gnome-maps.appdata.xml.in.h:3
+#: ../data/org.gnome.Maps.appdata.xml.in.h:2
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
@@ -46,145 +36,643 @@ msgstr ""
 "Харитаҳо пойгоҳи иттилоотии OpenStreetMap-ро, ки бо миллионҳо одам аз тамоми "
 "ҷаҳон ташкил шудааст, истифода мебарад."
 
+#. Translators: Search is carried out on OpenStreetMap data using Nominatim.
+#. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
+#. your language to see what words you can use for the translated search.
+#: ../data/org.gnome.Maps.appdata.xml.in.h:6
+#| msgid ""
+#| "<li>Search for country, region, city or street.</li> <li>Search for "
+#| "specific types of locations, such as “Pubs near Main Street, Boston” or "
+#| "“Wi-Fi Access near Alexanderplatz, Berlin”.</li>"
+msgid ""
+"You can even search for specific types of locations, such as “Pubs near Main "
+"Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
+msgstr ""
+"Шумо ҳатто метавонед навъи маконҳои махсусро, монанди “Қаҳвахонаҳо дар назди "
+"хиёбони Рудакӣ” ё “Меҳмонхонаҳо дар назди хиёбони Рудакӣ, Душанбе” ҷустуҷӯ "
+"кунед."
+
 #. Translators: This is the program name. */
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:55
-#: ../src/mainWindow.js:300 ../src/main-window.ui.h:3
+#: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
+#: ../src/application.js:78 ../src/mainWindow.js:367
 msgid "Maps"
 msgstr "Харитаҳо"
 
-#: ../data/gnome-maps.desktop.in.in.h:2
+#: ../data/org.gnome.Maps.desktop.in.h:2
 msgid "A simple maps application"
 msgstr "Барномаи оддии харитаҳо"
 
-#: ../data/gnome-maps.desktop.in.in.h:3
+#: ../data/org.gnome.Maps.desktop.in.h:3
 msgid "Maps;"
 msgstr "Харитаҳо;"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:1
+#: ../data/org.gnome.Maps.gschema.xml.in.h:1
 msgid "Window size"
 msgstr "Андозаи равзана"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:2
+#: ../data/org.gnome.Maps.gschema.xml.in.h:2
 msgid "Window size (width and height)."
 msgstr "Андозаи равзана (бар ва баландӣ)."
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:3
+#: ../data/org.gnome.Maps.gschema.xml.in.h:3
 msgid "Window position"
 msgstr "Мавқеи равзана"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:4
+#: ../data/org.gnome.Maps.gschema.xml.in.h:4
 msgid "Window position (X and Y)."
 msgstr "Мавқеи равзана (X ва Y)."
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:5
+#: ../data/org.gnome.Maps.gschema.xml.in.h:5
 msgid "Window maximized"
 msgstr "Равзана дар ҳадди аксар"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:6
+#: ../data/org.gnome.Maps.gschema.xml.in.h:6
 msgid "Window maximization state"
 msgstr "Вазъияти ҳадди акcаpёбии равзана"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:7
-msgid "Last known location and accuracy"
-msgstr "Ҷойгиршавии охирин ва дақиқӣ"
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:8
-msgid ""
-"Last known location (latitude and longitude in degrees) and accuracy (in "
-"meters)."
-msgstr "Ҷойгиршавии охирин (арз ва тӯл дар дараҷаҳо) ва дақиқӣ (дар метрҳо)."
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:9
-msgid "Description of last known location"
-msgstr "Тавсифи ҷойгиршавии охирин"
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:10
-msgid "Description of last known location of user."
-msgstr "Тавсифи ҷойгиршавии охирини корбар."
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:11
+#: ../data/org.gnome.Maps.gschema.xml.in.h:7
 msgid "Maximum number of search results"
 msgstr "Миқдори зиёдтарини натиҷаҳои ҷустуҷӯ"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:12
+#: ../data/org.gnome.Maps.gschema.xml.in.h:8
 msgid "Maximum number of search results from geocode search."
 msgstr "Миқдори зиёдтарини натиҷаҳои ҷустуҷӯ аз ҷустуҷӯи рамзи ҷуғрофӣ."
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:13
-msgid "User set last known location"
-msgstr "Ҷойгиршавии охирини таъиншудаи корбар"
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:14
-msgid "Whether the last known location was set manually by the user."
-msgstr ""
-"Интихоби ҷойгиршавии охирини муайяншуда ба таври дастӣ аз ҷониби корбар."
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:15
+#: ../data/org.gnome.Maps.gschema.xml.in.h:9
 msgid "Number of recent places to store"
 msgstr "Миқдори маконҳои охирин барои нигоҳ доштан"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:16
+#: ../data/org.gnome.Maps.gschema.xml.in.h:10
 msgid "Number of recently visited places to store."
-msgstr "Миқдори маконҳои кушодашудаи охирин барои нигоҳ доштан"
+msgstr "Миқдори маконҳои кушодашудаи охирин барои нигоҳ доштан."
 
-#: ../src/app-menu.ui.h:1
+#: ../data/org.gnome.Maps.gschema.xml.in.h:11
+msgid "Facebook check-in privacy setting"
+msgstr "Танзимоти махфияти бақайдгирии Facebook"
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:12
+msgid ""
+"Latest used Facebook check-in privacy setting. Possible values are: "
+"EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
+msgstr ""
+"Танзимоти махфияти бақайдгирии истифодашудаи охирин дар Facebook. Қиматҳои "
+"имконпазир: ҲАР ЯК КАС, ДӮСТОНИ_ДӮСТОН, ҲАМАИ_ДӮСТОН ё ХУД."
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:13
+msgid "Foursquare check-in privacy setting"
+msgstr "Танзимоти махфияти бақайдгирии Foursquare"
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:14
+msgid ""
+"Latest used Foursquare check-in privacy setting. Possible values are: "
+"public, followers or private."
+msgstr ""
+"Танзимоти махфияти бақайдгирии истифодашудаи охирин дар Foursquare. Қиматҳои "
+"имконпазир: иҷтимоӣ, пайравон ё махфият."
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:15
+msgid "Foursquare check-in Facebook broadcasting"
+msgstr "Пахшкунии бақайдгирии Facebook дар Foursquare"
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:16
+msgid ""
+"Indicates if Foursquare should broadcast the check-in as a post in the "
+"Facebook account associated with the Foursquare account."
+msgstr ""
+"Муайянкунии Foursquare барои пахшкунии бақайдгирӣ ҳамчун паём дар ҳисоби "
+"Facebook-и марбут ба ҳисоби Foursquare."
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:17
+msgid "Foursquare check-in Twitter broadcasting"
+msgstr "Пахшкунии бақайдгирии Twitter дар Foursquare"
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:18
+msgid ""
+"Indicates if Foursquare should broadcast the check-in as a tweet in the "
+"Twitter account associated with the Foursquare account."
+msgstr ""
+"Муайянкунии Foursquare барои пахшкунии бақайдгирӣ ҳамчун паём дар ҳисоби "
+"Twitter-и марбут ба ҳисоби Foursquare."
+
+#: ../data/ui/app-menu.ui.h:1
 msgid "About"
 msgstr "Дар бораи барнома"
 
-#: ../src/app-menu.ui.h:2
+#: ../data/ui/app-menu.ui.h:2
 msgid "Quit"
 msgstr "Хуруҷ"
 
-#: ../src/context-menu.ui.h:1
+#: ../data/ui/check-in-dialog.ui.h:1
+msgid "Visibility"
+msgstr "Қобили намоиш"
+
+#: ../data/ui/check-in-dialog.ui.h:2
+msgid "Post on Facebook"
+msgstr "Интишор дар Facebook"
+
+#: ../data/ui/check-in-dialog.ui.h:3
+msgid "Post on Twitter"
+msgstr "Интишор дар Twitter"
+
+#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/send-to-dialog.ui.h:2
+msgid "_Cancel"
+msgstr "_Бекор кардан"
+
+#. Translators: Check in is used as a verb
+#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:5
+msgid "C_heck in"
+msgstr "_Бақайдгирӣ"
+
+#: ../data/ui/check-in-dialog.ui.h:6
+msgid "Everyone"
+msgstr "Ҳар як кас"
+
+#: ../data/ui/check-in-dialog.ui.h:7
+msgid "Friends of friends"
+msgstr "Дӯстони дӯстон"
+
+#: ../data/ui/check-in-dialog.ui.h:8
+msgid "Just friends"
+msgstr "Танҳо дӯстон"
+
+#: ../data/ui/check-in-dialog.ui.h:9
+msgid "Just me"
+msgstr "Танҳо ман"
+
+#: ../data/ui/check-in-dialog.ui.h:10
+msgid "Public"
+msgstr "Ҷамъиятӣ"
+
+#: ../data/ui/check-in-dialog.ui.h:11
+msgid "Followers"
+msgstr "Пайравон"
+
+#: ../data/ui/check-in-dialog.ui.h:12
+msgid "Private"
+msgstr "Махфӣ"
+
+#: ../data/ui/context-menu.ui.h:1
 msgid "What’s here?"
 msgstr "Дар он ҷо чист?"
 
-#: ../src/context-menu.ui.h:2
-msgid "I’m here!"
-msgstr "Ман дар ҳамон ҷоям!"
+#: ../data/ui/location-service-notification.ui.h:1
+msgid "Turn on location services to find your location"
+msgstr "Барои ёфтани ҷойгиршавии худ, хидматҳои ҷойгиршавиро фаъол кунед"
 
-#: ../src/mainWindow.js:298
+#: ../data/ui/location-service-notification.ui.h:2
+msgid "Location Settings"
+msgstr "Танзимоти ҷойгиршавӣ"
+
+#: ../data/ui/main-window.ui.h:2
+msgid "Go to current location"
+msgstr "Гузариш ба ҷойгиршавии ҷорӣ"
+
+#: ../data/ui/main-window.ui.h:3
+msgid "Choose map type"
+msgstr "Интихоби намуди харита"
+
+#: ../data/ui/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr "Фаъолсозии нақшакаши масирҳо"
+
+#: ../data/ui/main-window.ui.h:5
+msgid "Toggle favorites"
+msgstr "Фаъолсозии баргузидаҳо"
+
+#: ../data/ui/main-window.ui.h:6
+msgid "Maps is offline!"
+msgstr "Харитаҳо дар офлайн мебошанд!"
+
+#: ../data/ui/main-window.ui.h:7
+msgid ""
+"Maps need an active internet connection to function properly, but one can't "
+"be found."
+msgstr ""
+"Барои кори комил ба Харитаҳо пайвасти интернети фаъол лозим аст, вале "
+"пайваст ёфт нашуд."
+
+#: ../data/ui/main-window.ui.h:8
+msgid "Check your connection and proxy settings."
+msgstr "Танзимоти прокси ва пайвасти худро санҷед."
+
+#: ../data/ui/map-bubble.ui.h:1
+msgid "Add to new route"
+msgstr "Илова кардан ба масири нав"
+
+#: ../data/ui/map-bubble.ui.h:2
+msgid "Open with another application"
+msgstr "Кушодан бо барномаи дигар"
+
+#: ../data/ui/map-bubble.ui.h:3
+msgid "Mark as favorite"
+msgstr "Қайд кардан ҳамчун баргузида"
+
+#: ../data/ui/map-bubble.ui.h:6
+msgid "Check in here"
+msgstr "Инҷо ба қайд гиред"
+
+#: ../data/ui/search-popup.ui.h:1
+msgid "Press enter to search"
+msgstr "Барои ҷустуҷӯ Enter-ро пахш кунед"
+
+#: ../data/ui/send-to-dialog.ui.h:1
+msgid "Open location"
+msgstr "Кушодани ҷойгиршавӣ"
+
+#: ../data/ui/send-to-dialog.ui.h:3
+msgid "_Open"
+msgstr "_Кушодан"
+
+#: ../data/ui/sidebar.ui.h:1
+msgid "Route search by GraphHopper"
+msgstr "Ҷустуҷӯи масир тавассути GraphHopper"
+
+#: ../data/ui/social-place-more-results-row.ui.h:1
+msgid "Show more results"
+msgstr "Намоиш додани натиҷаҳи дигар"
+
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:208
+msgid "Current location"
+msgstr "Ҷойгиршавии ҷорӣ"
+
+#. To translators: %s can be "Unknown", "Exact" or "%f km²"
+#: ../data/ui/user-location-bubble.ui.h:4
+#, no-c-format
+#| msgid ""
+#| "%s\n"
+#| "Position Accuracy: %s"
+msgid "Accuracy: %s"
+msgstr "Саҳеҳӣ: %s"
+
+#. Translators: %s is the place name that user wanted to check-in */
+#: ../src/checkIn.js:136
+#, javascript-format
+msgid "Cannot find \"%s\" in the social service"
+msgstr "\"%s\" дар хидмати иҷтимоӣ ёфт нашуд"
+
+#: ../src/checkIn.js:138
+msgid "Cannot find a suitable place to check-in in this location"
+msgstr "Барои бақайдгирии ин макон, ҷои мувофиқ ёфт нашуд"
+
+#: ../src/checkIn.js:142
+msgid ""
+"Credentials have expired, please open Online Accounts to sign in and enable "
+"this account"
+msgstr ""
+"Муҳлати маълумоти корбар ба анҷом расид, лутфан барои ворид шудан ва фаъол "
+"кардани ин ҳисоб, ба Ҳисобҳои онлайн ворид шавед"
+
+#: ../src/checkIn.js:154 ../src/checkInDialog.js:290
+msgid "An error has occurred"
+msgstr "Хато ба амал омад"
+
+#: ../src/checkInDialog.js:177
+msgid "Select an account"
+msgstr "Ҳисоберо интихоб кунед"
+
+#: ../src/checkInDialog.js:182 ../src/checkInDialog.js:254
+msgid "Loading"
+msgstr "Дар ҳоли боргирӣ"
+
+#: ../src/checkInDialog.js:206
+msgid "Select a place"
+msgstr "Маконеро интихоб кунед"
+
+#: ../src/checkInDialog.js:211
+msgid ""
+"Maps cannot find the place to check in to with Facebook. Please select one "
+"from this list."
+msgstr ""
+"Ягон макон барои бақайдгирӣ дар Facebook ёфт нашуд. Лутфан, маконеро аз "
+"рӯйхат интихоб намоед."
+
+#: ../src/checkInDialog.js:213
+msgid ""
+"Maps cannot find the place to check in to with Foursquare. Please select one "
+"from this list."
+msgstr ""
+"Ягон макон барои бақайдгирӣ дар Foursquare ёфт нашуд. Лутфан, маконеро аз "
+"рӯйхат интихоб намоед."
+
+#. Translators: %s is the name of the place to check in.
+#. */
+#: ../src/checkInDialog.js:228
+#, javascript-format
+msgid "Check in to %s"
+msgstr "Бақайдгирӣ ба %s"
+
+#. Translators: %s is the name of the place to check in.
+#. */
+#: ../src/checkInDialog.js:238
+#, javascript-format
+msgid "Write an optional message to check in to %s."
+msgstr "Барои бақайдгирӣ ба %s, паёми интихобиро нависед."
+
+#: ../src/mainWindow.js:315
+msgid "Failed to connect to location service"
+msgstr "Пайваст ба хидмати ҷойгиршавӣ иҷро нашуд"
+
+#: ../src/mainWindow.js:320
+msgid "Position not found"
+msgstr "Мавқеъ ёфт нашуд"
+
+#: ../src/mainWindow.js:365
 msgid "translator-credits"
 msgstr "Victor Ibragimov, victor.ibragimov@gmail.com"
 
-#: ../src/mainWindow.js:301
+#: ../src/mainWindow.js:368
 msgid "A map application for GNOME"
 msgstr "Барномаи харитаҳо барои GNOME"
 
-#: ../src/main-window.ui.h:1
-msgid "Street"
-msgstr "Кӯча"
+#. Translators:
+#. * This means wheelchairs have full unrestricted access.
+#. */
+#: ../src/place.js:121
+msgid "yes"
+msgstr "ҳа"
 
-#: ../src/main-window.ui.h:2
-msgid "Satellite"
-msgstr "Радиф"
+#. Translators:
+#. * This means wheelchairs have partial access (e.g some areas
+#. * can be accessed and others not, areas requiring assistance
+#. * by someone pushing up a steep gradient).
+#. */
+#: ../src/place.js:128
+msgid "limited"
+msgstr "маҳдуд"
+
+#. Translators:
+#. * This means wheelchairs have no unrestricted access
+#. * (e.g. stair only access).
+#. */
+#: ../src/place.js:134
+msgid "no"
+msgstr "не"
+
+#. Translators:
+#. * This means that the way or area is designated or purpose built
+#. * for wheelchairs (e.g. elevators designed for wheelchair access
+#. * only). This is rarely used.
+#. */
+#: ../src/place.js:141
+msgid "designated"
+msgstr "муайяншуда"
+
+#: ../src/routeService.js:70
+msgid "No route found."
+msgstr "Ягон масир ёфт нашуд"
+
+#: ../src/routeService.js:77
+msgid "Route request failed."
+msgstr "Дархости масир қатъ шуд."
+
+#: ../src/routeService.js:148
+msgid "Start!"
+msgstr "Оғоз!"
+
+#: ../src/placeBubble.js:102
+#, javascript-format
+msgid "Postal code: %s"
+msgstr "Рамзи почта: %s"
+
+#: ../src/placeBubble.js:104
+#, javascript-format
+msgid "Country code: %s"
+msgstr "Рамзи кишвар: %s"
+
+#: ../src/placeBubble.js:113
+#, javascript-format
+msgid "Population: %s"
+msgstr "Аҳолӣ: %s"
+
+#: ../src/placeBubble.js:116
+#, javascript-format
+msgid "Opening hours: %s"
+msgstr "Соатҳои кушоиш: %s"
+
+#: ../src/placeBubble.js:121
+msgid "Wikipedia"
+msgstr "Wikipedia"
+
+#: ../src/placeBubble.js:126
+#, javascript-format
+msgid "Wheelchair access: %s"
+msgstr "Дастрасӣ бо аробаи маъюбӣ: %s"
+
+#. Translators: %s is a time expression with the format "%f h" or "%f min" */
+#: ../src/sidebar.js:217
+#, javascript-format
+msgid "Estimated time: %s"
+msgstr "Вақти тахминӣ: %s"
+
+#: ../src/translations.js:56 ../src/translations.js:58
+msgid "around the clock"
+msgstr "дар гирди соат"
+
+#: ../src/translations.js:60
+msgid "from sunrise to sunset"
+msgstr "аз тулӯъ то шафақ"
+
+#. Translators:
+#. * This is a format string with two separate time ranges
+#. * such as "Mo-Fr 10:00-19:00 Sa 12:00-16:00"
+#. * The space between the format place holders could be
+#. * substituted with the appropriate separator.
+#. */
+#: ../src/translations.js:79
+#, javascript-format
+msgctxt "time range list"
+msgid "%s %s"
+msgstr "%s %s"
+
+#. Translators:
+#. * This is a format string with three separate time ranges
+#. * such as "Mo-Fr 10:00-19:00 Sa 10:00-17:00 Su 12:00-16:00"
+#. * The space between the format place holders could be
+#. * substituted with the appropriate separator.
+#. */
+#: ../src/translations.js:91
+#, javascript-format
+msgctxt "time range list"
+msgid "%s %s %s"
+msgstr "%s %s %s"
+
+#. Translators:
+#. * This is a format string consisting of a part specifying the days for
+#. * which the specified time is applied and the time interval
+#. * specification as the second argument.
+#. * The space between the format place holders could be substituted with
+#. * the appropriate separator or phrase and the ordering of the arguments
+#. * can be rearranged with the %n#s syntax. */
+#: ../src/translations.js:122
+#, javascript-format
+msgctxt "time range component"
+msgid "%s %s"
+msgstr "%s %s"
+
+#. Translators:
+#. * This represents a format string consisting of two day interval
+#. * specifications.
+#. * For example:
+#. * Mo-Fr,Sa
+#. * where the "Mo-Fr" and "Sa" parts are replaced by the %s
+#. * place holder.
+#. * The separator (,) could be replaced with a translated variant or
+#. * a phrase if appropriate. */
+#: ../src/translations.js:154
+#, javascript-format
+msgctxt "day interval list"
+msgid "%s,%s"
+msgstr "%s,%s"
+
+#. Translators:
+#. * This represents a format string consisting of three day interval
+#. * specifications.
+#. * For example:
+#. * Mo-We,Fr,Su
+#. * where the "Mo-We", "Fr", and "Su" parts are replaced by the
+#. * %s place holder.
+#. * The separator (,) could be replaced with a translated variant or
+#. * a phrase if appropriate. */
+#: ../src/translations.js:168
+#, javascript-format
+msgctxt "day interval list"
+msgid "%s,%s,%s"
+msgstr "%s,%s,%s"
+
+#: ../src/translations.js:187
+msgid "every day"
+msgstr "ҳар рӯз"
+
+#. Translators:
+#. * This represents a range of days with a starting and ending day.
+#. */
+#: ../src/translations.js:199
+#, javascript-format
+msgctxt "day range"
+msgid "%s-%s"
+msgstr "%s-%s"
+
+#: ../src/translations.js:210
+msgid "public holidays"
+msgstr "идҳои ҷамъиятӣ"
+
+#: ../src/translations.js:212
+msgid "school holidays"
+msgstr "идҳои мактабӣ"
+
+#. Translators:
+#. * This is a list with two time intervals, such as:
+#. * 09:00-12:00, 13:00-14:00
+#. * The intervals are represented by the %s place holders and
+#. * appropriate white space or connected phrase could be modified by
+#. * the translation. The order of the arguments can be rearranged
+#. * using the %n$s syntax.
+#. */
+#: ../src/translations.js:252
+#, javascript-format
+msgctxt "time interval list"
+msgid "%s, %s"
+msgstr "%s, %s"
+
+#: ../src/translations.js:266
+msgid "not open"
+msgstr "кушода нест"
+
+#. Translators:
+#. * This is a time interval with a starting and an ending time.
+#. * The time values are represented by the %s place holders and
+#. * appropriate white spacing or connecting phrases can be set by the
+#. * translation as needed. The order of the arguments can be rearranged
+#. * using the %n$s syntax.
+#. */
+#: ../src/translations.js:281
+#, javascript-format
+msgctxt "time interval"
+msgid "%s-%s"
+msgstr "%s-%s"
 
 #. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:164
+#: ../src/utils.js:257
 msgid "Unknown"
 msgstr "Номаълум"
 
 #. Translators: Accuracy of user location information */
-#: ../src/mapLocation.js:167
+#: ../src/utils.js:260
 msgid "Exact"
 msgstr "Дақиқ"
 
-#: ../src/mapLocation.js:177
-msgid " km<sup>2</sup>"
-msgstr " км<sup>2</sup>"
-
-#. Translators: Showing name of place where user currently is and
-#. accuracy of this information (which is translated
-#. separately)
-#. */
-#: ../src/userLocation.js:62
+#: ../src/utils.js:355
 #, javascript-format
-msgid ""
-"%s\n"
-"Position Accuracy: %s"
-msgstr ""
-"%s\n"
-"Дақиқии мавқеъ: %s"
+msgid "%f h"
+msgstr "%f соат"
+
+#: ../src/utils.js:357
+#, javascript-format
+msgid "%f min"
+msgstr "%f дақиқа"
+
+#: ../src/utils.js:359
+#, javascript-format
+msgid "%f s"
+msgstr "%f сония"
+
+#. Translators: This is a distance measured in kilometers */
+#: ../src/utils.js:370
+#, javascript-format
+msgid "%f km"
+msgstr "%f км"
+
+#. Translators: This is a distance measured in meters */
+#: ../src/utils.js:373
+#, javascript-format
+msgid "%f m"
+msgstr "%f м"
+
+#. Translators: This is a distance measured in miles */
+#: ../src/utils.js:381
+#, javascript-format
+msgid "%f mi"
+msgstr "%f мил"
+
+#. Translators: This is a distance measured in feet */
+#: ../src/utils.js:384
+#, javascript-format
+msgid "%f ft"
+msgstr "%f фут"
+
+#~ msgid "Last known location and accuracy"
+#~ msgstr "Ҷойгиршавии охирин ва дақиқӣ"
+
+#~ msgid ""
+#~ "Last known location (latitude and longitude in degrees) and accuracy (in "
+#~ "meters)."
+#~ msgstr ""
+#~ "Ҷойгиршавии охирин (арз ва тӯл дар дараҷаҳо) ва дақиқӣ (дар метрҳо)."
+
+#~ msgid "Description of last known location"
+#~ msgstr "Тавсифи ҷойгиршавии охирин"
+
+#~ msgid "Description of last known location of user."
+#~ msgstr "Тавсифи ҷойгиршавии охирини корбар."
+
+#~ msgid "User set last known location"
+#~ msgstr "Ҷойгиршавии охирини таъиншудаи корбар"
+
+#~ msgid "Whether the last known location was set manually by the user."
+#~ msgstr ""
+#~ "Интихоби ҷойгиршавии охирини муайяншуда ба таври дастӣ аз ҷониби корбар."
+
+#~ msgid "I’m here!"
+#~ msgstr "Ман дар ҳамон ҷоям!"
+
+#~ msgid "Street"
+#~ msgstr "Кӯча"
+
+#~ msgid "Satellite"
+#~ msgstr "Радиф"
+
+#~ msgid " km<sup>2</sup>"
+#~ msgstr " км<sup>2</sup>"
 
 #~ msgid " km²"
 #~ msgstr " км²"
