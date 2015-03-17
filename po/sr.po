@@ -1,15 +1,15 @@
 # Serbian translation for gnome-maps.
-# Courtesy of Prevod.org team (http://prevod.org/) -- 2013—2014.
+# Courtesy of Prevod.org team (http://prevod.org/) -- 2013—2015.
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
-# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2013—2014.
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2013—2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-09-20 07:01+0000\n"
-"PO-Revision-Date: 2014-09-22 11:25+0200\n"
+"POT-Creation-Date: 2015-03-04 08:02+0000\n"
+"PO-Revision-Date: 2015-03-17 22:00+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
@@ -42,10 +42,6 @@ msgstr ""
 #. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
 #. your language to see what words you can use for the translated search.
 #: ../data/org.gnome.Maps.appdata.xml.in.h:6
-#| msgid ""
-#| "<li>Search for country, region, city or street.</li> <li>Search for "
-#| "specific types of locations, such as “Pubs near Main Street, Boston” or "
-#| "“Wi-Fi Access near Alexanderplatz, Berlin”.</li>"
 msgid ""
 "You can even search for specific types of locations, such as “Pubs near Main "
 "Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
@@ -54,202 +50,622 @@ msgstr ""
 "Јагодини“ или „Хотели у центру Пирота“."
 
 #. Translators: This is the program name. */
-#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
-#: ../src/mainWindow.js:302 ../src/main-window.ui.h:1
+#: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
+#: ../src/application.js:78 ../src/mainWindow.js:367
 msgid "Maps"
 msgstr "Карте"
 
-#: ../data/org.gnome.Maps.desktop.in.in.h:2
+#: ../data/org.gnome.Maps.desktop.in.h:2
 msgid "A simple maps application"
 msgstr "Једноставан програм за карте"
 
-#: ../data/org.gnome.Maps.desktop.in.in.h:3
+#: ../data/org.gnome.Maps.desktop.in.h:3
 msgid "Maps;"
 msgstr "карте;мапе;"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:1
+#: ../data/org.gnome.Maps.gschema.xml.in.h:1
 msgid "Window size"
 msgstr "Величина прозора"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:2
+#: ../data/org.gnome.Maps.gschema.xml.in.h:2
 msgid "Window size (width and height)."
 msgstr "Величина прозора (ширина и висина)."
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:3
+#: ../data/org.gnome.Maps.gschema.xml.in.h:3
 msgid "Window position"
 msgstr "Положај прозора"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:4
+#: ../data/org.gnome.Maps.gschema.xml.in.h:4
 msgid "Window position (X and Y)."
 msgstr "Положај прозора (положено и усправно)."
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:5
+#: ../data/org.gnome.Maps.gschema.xml.in.h:5
 msgid "Window maximized"
 msgstr "Увећавање прозора"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:6
+#: ../data/org.gnome.Maps.gschema.xml.in.h:6
 msgid "Window maximization state"
 msgstr "Стање увећања прозора"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:7
-msgid "Last known location and accuracy"
-msgstr "Последње познато место и прецизност"
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:8
-msgid ""
-"Last known location (latitude and longitude in degrees) and accuracy (in "
-"meters)."
-msgstr ""
-"Последње познато место корисника (географска ширина и дужина у степенима) и "
-"прецизност (у метрима)."
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:9
-msgid "Description of last known location"
-msgstr "Опис последњег познатог места"
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:10
-msgid "Description of last known location of user."
-msgstr "Опис последњег познатог места корисника."
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:11
+#: ../data/org.gnome.Maps.gschema.xml.in.h:7
 msgid "Maximum number of search results"
 msgstr "Највећи број резултата претраге"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:12
+#: ../data/org.gnome.Maps.gschema.xml.in.h:8
 msgid "Maximum number of search results from geocode search."
 msgstr "Највећи број резултата претраге за претрагу геокода."
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:13
-msgid "User set last known location"
-msgstr "Корисник је подесио последње познато место"
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:14
-msgid "Whether the last known location was set manually by the user."
-msgstr "Да ли је корисник ручно подесио последње познато место."
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:15
+#: ../data/org.gnome.Maps.gschema.xml.in.h:9
 msgid "Number of recent places to store"
 msgstr "Број скорашњих места за чување"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:16
+#: ../data/org.gnome.Maps.gschema.xml.in.h:10
 msgid "Number of recently visited places to store."
 msgstr "Број недавно посећених места за чување."
 
-#: ../src/app-menu.ui.h:1
+#: ../data/org.gnome.Maps.gschema.xml.in.h:11
+msgid "Facebook check-in privacy setting"
+msgstr "Подешавање провере приватности Фејсбука"
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:12
+msgid ""
+"Latest used Facebook check-in privacy setting. Possible values are: "
+"EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
+msgstr ""
+"Последње подешавање провере приватности Фејсбука. Могуће вредности су: "
+"„EVERYONE“ (свако), „FRIENDS_OF_FRIENDS“ (пријатељи пријатеља), „ALL_FRIENDS“"
+" (сви пријатељи) или „SELF“ (сами)."
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:13
+msgid "Foursquare check-in privacy setting"
+msgstr "Подешавање провере приватности Форсквера"
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:14
+msgid ""
+"Latest used Foursquare check-in privacy setting. Possible values are: "
+"public, followers or private."
+msgstr ""
+"Последње подешавање провере приватности Форсквера. Могуће вредности су: "
+"„public“ (јавно), „followers“ (пратиоци) или „private“ (приватно)."
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:15
+msgid "Foursquare check-in Facebook broadcasting"
+msgstr "Форскверова провера Фејсбуковог емитовања"
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:16
+msgid ""
+"Indicates if Foursquare should broadcast the check-in as a post in the "
+"Facebook account associated with the Foursquare account."
+msgstr ""
+"Указује да ли Форсквер треба да емитује проверу као објаву у налогу Фејсбука "
+"придруженог са налогом Форсквера."
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:17
+msgid "Foursquare check-in Twitter broadcasting"
+msgstr "Форскверова провера Твитеровог емитовања"
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:18
+msgid ""
+"Indicates if Foursquare should broadcast the check-in as a tweet in the "
+"Twitter account associated with the Foursquare account."
+msgstr ""
+"Указује да ли Форсквер треба да емитује проверу као цвркут у налогу Твитера "
+"придруженог са налогом Форсквера."
+
+#: ../data/ui/app-menu.ui.h:1
 msgid "About"
 msgstr "О програму"
 
-#: ../src/app-menu.ui.h:2
+#: ../data/ui/app-menu.ui.h:2
 msgid "Quit"
 msgstr "Изађи"
 
-#: ../src/context-menu.ui.h:1
+#: ../data/ui/check-in-dialog.ui.h:1
+msgid "Visibility"
+msgstr "Видљивост"
+
+#: ../data/ui/check-in-dialog.ui.h:2
+msgid "Post on Facebook"
+msgstr "Објави на Фејсбуку"
+
+#: ../data/ui/check-in-dialog.ui.h:3
+msgid "Post on Twitter"
+msgstr "Објави на Твитеру"
+
+#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/send-to-dialog.ui.h:2
+msgid "_Cancel"
+msgstr "_Откажи"
+
+#. Translators: Check in is used as a verb
+#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:5
+msgid "C_heck in"
+msgstr "_Провери"
+
+#: ../data/ui/check-in-dialog.ui.h:6
+msgid "Everyone"
+msgstr "Свако"
+
+#: ../data/ui/check-in-dialog.ui.h:7
+msgid "Friends of friends"
+msgstr "Пријатељи пријатеља"
+
+#: ../data/ui/check-in-dialog.ui.h:8
+msgid "Just friends"
+msgstr "Само пријатељи"
+
+#: ../data/ui/check-in-dialog.ui.h:9
+msgid "Just me"
+msgstr "Само ја"
+
+#: ../data/ui/check-in-dialog.ui.h:10
+msgid "Public"
+msgstr "Јавно"
+
+#: ../data/ui/check-in-dialog.ui.h:11
+msgid "Followers"
+msgstr "Пратиоци"
+
+#: ../data/ui/check-in-dialog.ui.h:12
+msgid "Private"
+msgstr "Приватно"
+
+#: ../data/ui/context-menu.ui.h:1
 msgid "What’s here?"
 msgstr "Шта је то овде?"
 
-#: ../src/context-menu.ui.h:2
-msgid "I’m here!"
-msgstr "Ја сам овде!"
+#: ../data/ui/location-service-notification.ui.h:1
+msgid "Turn on location services to find your location"
+msgstr "Укључите услуге положаја да нађете ваш положај"
 
-#: ../src/mainWindow.js:300
+#: ../data/ui/location-service-notification.ui.h:2
+msgid "Location Settings"
+msgstr "Подешавања положаја"
+
+#: ../data/ui/main-window.ui.h:2
+msgid "Go to current location"
+msgstr "Идите на текуће место"
+
+#: ../data/ui/main-window.ui.h:3
+msgid "Choose map type"
+msgstr "Изаберите врсту карте"
+
+#: ../data/ui/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr "Пребаците на организатор пута"
+
+#: ../data/ui/main-window.ui.h:5
+msgid "Toggle favorites"
+msgstr "Пребаците на омиљене"
+
+#: ../data/ui/main-window.ui.h:6
+msgid "Maps is offline!"
+msgstr "Програм је ван мреже!"
+
+#: ../data/ui/main-window.ui.h:7
+msgid ""
+"Maps need an active internet connection to function properly, but one can't "
+"be found."
+msgstr ""
+"Потребна је радна интернет веза да би програм исправно радио, али није "
+"доступна."
+
+#: ../data/ui/main-window.ui.h:8
+msgid "Check your connection and proxy settings."
+msgstr "Проверите вашу везу и подешавања посредника."
+
+#: ../data/ui/map-bubble.ui.h:1
+msgid "Add to new route"
+msgstr "Додајте у нови пут"
+
+#: ../data/ui/map-bubble.ui.h:2
+msgid "Open with another application"
+msgstr "Отворите другим програмом"
+
+#: ../data/ui/map-bubble.ui.h:3
+msgid "Mark as favorite"
+msgstr "Означите омиљеним"
+
+#: ../data/ui/map-bubble.ui.h:6
+msgid "Check in here"
+msgstr "Проверите овде"
+
+#: ../data/ui/search-popup.ui.h:1
+msgid "Press enter to search"
+msgstr "Притисните „унеси“ да претражите"
+
+#: ../data/ui/send-to-dialog.ui.h:1
+#| msgid "Current location"
+msgid "Open location"
+msgstr "Отворите место"
+
+#: ../data/ui/send-to-dialog.ui.h:3
+msgid "_Open"
+msgstr "_Отвори"
+
+#: ../data/ui/sidebar.ui.h:1
+msgid "Route search by GraphHopper"
+msgstr "Претрага руте Граф Хопером"
+
+#: ../data/ui/social-place-more-results-row.ui.h:1
+msgid "Show more results"
+msgstr "Прикажите још резултата"
+
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:208
+msgid "Current location"
+msgstr "Тренутни положај"
+
+#. To translators: %s can be "Unknown", "Exact" or "%f km²"
+#: ../data/ui/user-location-bubble.ui.h:4
+#, no-c-format
+msgid "Accuracy: %s"
+msgstr "Тачност: %s"
+
+#. Translators: %s is the place name that user wanted to check-in */
+#: ../src/checkIn.js:136
+#, javascript-format
+msgid "Cannot find \"%s\" in the social service"
+msgstr "Не могу да нађем „%s“ у друштвеним услугама"
+
+#: ../src/checkIn.js:138
+msgid "Cannot find a suitable place to check-in in this location"
+msgstr "Не могу да нађем одговарајуће место за проверу на овом положају"
+
+#: ../src/checkIn.js:142
+msgid ""
+"Credentials have expired, please open Online Accounts to sign in and enable "
+"this account"
+msgstr ""
+"Уверења су истекла, отворите налоге на мрежи да се пријавите и укључите овај "
+"налог"
+
+#: ../src/checkIn.js:154 ../src/checkInDialog.js:290
+msgid "An error has occurred"
+msgstr "Дошло је до грешке"
+
+#: ../src/checkInDialog.js:177
+msgid "Select an account"
+msgstr "Изаберите налог"
+
+#: ../src/checkInDialog.js:182 ../src/checkInDialog.js:254
+msgid "Loading"
+msgstr "Учитавам"
+
+#: ../src/checkInDialog.js:206
+msgid "Select a place"
+msgstr "Изаберите место"
+
+#: ../src/checkInDialog.js:211
+msgid ""
+"Maps cannot find the place to check in to with Facebook. Please select one "
+"from this list."
+msgstr "Не могу да нађем место за проверу Фејсбуком. Изаберите једно са списка."
+
+#: ../src/checkInDialog.js:213
+msgid ""
+"Maps cannot find the place to check in to with Foursquare. Please select one "
+"from this list."
+msgstr ""
+"Не могу да нађем место за проверу Форсквером. Изаберите једно са списка."
+
+#. Translators: %s is the name of the place to check in.
+#. */
+#: ../src/checkInDialog.js:228
+#, javascript-format
+msgid "Check in to %s"
+msgstr "Провери у „%s“"
+
+#. Translators: %s is the name of the place to check in.
+#. */
+#: ../src/checkInDialog.js:238
+#, javascript-format
+msgid "Write an optional message to check in to %s."
+msgstr "Напишите изборну поруку за проверу у „%s“."
+
+#: ../src/mainWindow.js:315
+msgid "Failed to connect to location service"
+msgstr "Нисам успео да се повежем на услугу положаја"
+
+#: ../src/mainWindow.js:320
+#| msgid "No route found."
+msgid "Position not found"
+msgstr "Нисам пронашао положај"
+
+#: ../src/mainWindow.js:365
 msgid "translator-credits"
 msgstr ""
 "  Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "\n"
 "http://prevod.org — превод на српски језик"
 
-#: ../src/mainWindow.js:303
+#: ../src/mainWindow.js:368
 msgid "A map application for GNOME"
 msgstr "Гномов програм за карте"
 
-#: ../src/main-window.ui.h:2
-msgid "Go to current location"
-msgstr "Идите на текуће место"
+#. Translators:
+#. * This means wheelchairs have full unrestricted access.
+#. */
+#: ../src/place.js:121
+msgid "yes"
+msgstr "да"
 
-#: ../src/main-window.ui.h:3
-msgid "Choose map type"
-msgstr "Изаберите врсту карте"
+#. Translators:
+#. * This means wheelchairs have partial access (e.g some areas
+#. * can be accessed and others not, areas requiring assistance
+#. * by someone pushing up a steep gradient).
+#. */
+#: ../src/place.js:128
+msgid "limited"
+msgstr "ограничено"
 
-#: ../src/main-window.ui.h:4
-msgid "Toggle route planner"
-msgstr "Пребаците организатора пута"
+#. Translators:
+#. * This means wheelchairs have no unrestricted access
+#. * (e.g. stair only access).
+#. */
+#: ../src/place.js:134
+msgid "no"
+msgstr "не"
 
-#: ../src/routeService.js:73
+#. Translators:
+#. * This means that the way or area is designated or purpose built
+#. * for wheelchairs (e.g. elevators designed for wheelchair access
+#. * only). This is rarely used.
+#. */
+#: ../src/place.js:141
+msgid "designated"
+msgstr "намењено"
+
+#: ../src/routeService.js:70
 msgid "No route found."
 msgstr "Нисам пронашао пут."
 
-#: ../src/routeService.js:80
+#: ../src/routeService.js:77
 msgid "Route request failed."
 msgstr "Захтев пута није успео."
 
-#: ../src/routeService.js:151
+#: ../src/routeService.js:148
 msgid "Start!"
 msgstr "Крени!"
 
-#: ../src/searchResultBubble.js:60
-#, javascript-format
-msgid "Country code: %s"
-msgstr "Шифра државе: %s"
-
-#: ../src/searchResultBubble.js:66
+#: ../src/placeBubble.js:102
 #, javascript-format
 msgid "Postal code: %s"
 msgstr "Поштански број: %s"
 
+#: ../src/placeBubble.js:104
+#, javascript-format
+msgid "Country code: %s"
+msgstr "Шифра државе: %s"
+
+#: ../src/placeBubble.js:113
+#, javascript-format
+msgid "Population: %s"
+msgstr "Становника: %s"
+
+#: ../src/placeBubble.js:116
+#, javascript-format
+msgid "Opening hours: %s"
+msgstr "Радно време: %s"
+
+#: ../src/placeBubble.js:121
+msgid "Wikipedia"
+msgstr "Википедија"
+
+#: ../src/placeBubble.js:126
+#, javascript-format
+msgid "Wheelchair access: %s"
+msgstr "Приступна рампа: %s"
+
 #. Translators: %s is a time expression with the format "%f h" or "%f min" */
-#: ../src/sidebar.js:198
+#: ../src/sidebar.js:217
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Процењено време: %s"
 
-#: ../src/user-location-bubble.ui.h:1
-msgid "Current location"
-msgstr "Тренутни положај"
+#: ../src/translations.js:56 ../src/translations.js:58
+msgid "around the clock"
+msgstr "у времену"
 
-#. To translators: %s can be "Unknown", "Exact" or "%f km²"
-#: ../src/user-location-bubble.ui.h:4
-#, no-c-format
-#| msgid ""
-#| "%s\n"
-#| "Position Accuracy: %s"
-msgid "Accuracy: %s"
-msgstr "Прецизност: %s"
+#: ../src/translations.js:60
+msgid "from sunrise to sunset"
+msgstr "од јутра до вечери"
+
+#. Translators:
+#. * This is a format string with two separate time ranges
+#. * such as "Mo-Fr 10:00-19:00 Sa 12:00-16:00"
+#. * The space between the format place holders could be
+#. * substituted with the appropriate separator.
+#. */
+#: ../src/translations.js:79
+#, javascript-format
+msgctxt "time range list"
+msgid "%s %s"
+msgstr "%s %s"
+
+#. Translators:
+#. * This is a format string with three separate time ranges
+#. * such as "Mo-Fr 10:00-19:00 Sa 10:00-17:00 Su 12:00-16:00"
+#. * The space between the format place holders could be
+#. * substituted with the appropriate separator.
+#. */
+#: ../src/translations.js:91
+#, javascript-format
+msgctxt "time range list"
+msgid "%s %s %s"
+msgstr "%s %s %s"
+
+#. Translators:
+#. * This is a format string consisting of a part specifying the days for
+#. * which the specified time is applied and the time interval
+#. * specification as the second argument.
+#. * The space between the format place holders could be substituted with
+#. * the appropriate separator or phrase and the ordering of the arguments
+#. * can be rearranged with the %n#s syntax. */
+#: ../src/translations.js:122
+#, javascript-format
+msgctxt "time range component"
+msgid "%s %s"
+msgstr "%s %s"
+
+#. Translators:
+#. * This represents a format string consisting of two day interval
+#. * specifications.
+#. * For example:
+#. * Mo-Fr,Sa
+#. * where the "Mo-Fr" and "Sa" parts are replaced by the %s
+#. * place holder.
+#. * The separator (,) could be replaced with a translated variant or
+#. * a phrase if appropriate. */
+#: ../src/translations.js:154
+#, javascript-format
+msgctxt "day interval list"
+msgid "%s,%s"
+msgstr "%s, %s"
+
+#. Translators:
+#. * This represents a format string consisting of three day interval
+#. * specifications.
+#. * For example:
+#. * Mo-We,Fr,Su
+#. * where the "Mo-We", "Fr", and "Su" parts are replaced by the
+#. * %s place holder.
+#. * The separator (,) could be replaced with a translated variant or
+#. * a phrase if appropriate. */
+#: ../src/translations.js:168
+#, javascript-format
+msgctxt "day interval list"
+msgid "%s,%s,%s"
+msgstr "%s, %s, %s"
+
+#: ../src/translations.js:187
+msgid "every day"
+msgstr "сваког дана"
+
+#. Translators:
+#. * This represents a range of days with a starting and ending day.
+#. */
+#: ../src/translations.js:199
+#, javascript-format
+msgctxt "day range"
+msgid "%s-%s"
+msgstr "%s—%s"
+
+#: ../src/translations.js:210
+msgid "public holidays"
+msgstr "јавни празници"
+
+#: ../src/translations.js:212
+msgid "school holidays"
+msgstr "школски празници"
+
+#. Translators:
+#. * This is a list with two time intervals, such as:
+#. * 09:00-12:00, 13:00-14:00
+#. * The intervals are represented by the %s place holders and
+#. * appropriate white space or connected phrase could be modified by
+#. * the translation. The order of the arguments can be rearranged
+#. * using the %n$s syntax.
+#. */
+#: ../src/translations.js:252
+#, javascript-format
+msgctxt "time interval list"
+msgid "%s, %s"
+msgstr "%s, %s"
+
+#: ../src/translations.js:266
+msgid "not open"
+msgstr "није отворено"
+
+#. Translators:
+#. * This is a time interval with a starting and an ending time.
+#. * The time values are represented by the %s place holders and
+#. * appropriate white spacing or connecting phrases can be set by the
+#. * translation as needed. The order of the arguments can be rearranged
+#. * using the %n$s syntax.
+#. */
+#: ../src/translations.js:281
+#, javascript-format
+msgctxt "time interval"
+msgid "%s-%s"
+msgstr "%s—%s"
 
 #. Translators: Accuracy of user location information */
-#: ../src/utils.js:165
+#: ../src/utils.js:257
 msgid "Unknown"
 msgstr "Непознато"
 
 #. Translators: Accuracy of user location information */
-#: ../src/utils.js:168
+#: ../src/utils.js:260
 msgid "Exact"
 msgstr "Тачно"
 
-#: ../src/utils.js:178
-#, javascript-format
-#| msgid " km²"
-msgid "%f km²"
-msgstr "%f km²"
-
-#: ../src/utils.js:275
+#: ../src/utils.js:355
 #, javascript-format
 msgid "%f h"
 msgstr "%f h"
 
-#: ../src/utils.js:277
+#: ../src/utils.js:357
 #, javascript-format
 msgid "%f min"
 msgstr "%f min"
 
-#: ../src/utils.js:287
+#: ../src/utils.js:359
+#, javascript-format
+msgid "%f s"
+msgstr "%f s"
+
+#. Translators: This is a distance measured in kilometers */
+#: ../src/utils.js:370
 #, javascript-format
 msgid "%f km"
 msgstr "%f km"
 
-#: ../src/utils.js:289
+#. Translators: This is a distance measured in meters */
+#: ../src/utils.js:373
 #, javascript-format
 msgid "%f m"
 msgstr "%f m"
+
+#. Translators: This is a distance measured in miles */
+#: ../src/utils.js:381
+#, javascript-format
+#| msgid "%f min"
+msgid "%f mi"
+msgstr "%f mi"
+
+#. Translators: This is a distance measured in feet */
+#: ../src/utils.js:384
+#, javascript-format
+msgid "%f ft"
+msgstr "%f ft"
+
+#~ msgid "Last known location and accuracy"
+#~ msgstr "Последње познато место и прецизност"
+
+#~ msgid ""
+#~ "Last known location (latitude and longitude in degrees) and accuracy (in "
+#~ "meters)."
+#~ msgstr ""
+#~ "Последње познато место корисника (географска ширина и дужина у степенима) "
+#~ "и прецизност (у метрима)."
+
+#~ msgid "Description of last known location"
+#~ msgstr "Опис последњег познатог места"
+
+#~ msgid "Description of last known location of user."
+#~ msgstr "Опис последњег познатог места корисника."
+
+#~ msgid "User set last known location"
+#~ msgstr "Корисник је подесио последње познато место"
+
+#~ msgid "Whether the last known location was set manually by the user."
+#~ msgstr "Да ли је корисник ручно подесио последње познато место."
+
+#~ msgid "I’m here!"
+#~ msgstr "Ја сам овде!"
+
+#~| msgid " km²"
+#~ msgid "%f km²"
+#~ msgstr "%f km²"
 
 #~ msgid "Street"
 #~ msgstr "Улица"
