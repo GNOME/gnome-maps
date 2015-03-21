@@ -3,15 +3,15 @@
 # Copyright (C) 2013-2014 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-maps package.
 #
-#
 # Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2013, 2014, 2015.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-01-06 20:39+0100\n"
-"PO-Revision-Date: 2015-01-06 20:43+0100\n"
+"POT-Creation-Date: 2015-03-21 12:47+0100\n"
+"PO-Revision-Date: 2015-03-21 12:49+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
 "Language-Team: Basque <librezale@librezale.org>\n"
 "Language: eu\n"
@@ -52,7 +52,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:75 ../src/mainWindow.js:322
+#: ../src/application.js:78 ../src/mainWindow.js:367
 msgid "Maps"
 msgstr "Mapak"
 
@@ -175,12 +175,12 @@ msgstr "Argitaratu Facebook-en"
 msgid "Post on Twitter"
 msgstr "Argitaratu Twitter-en"
 
-#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/share-dialog.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/send-to-dialog.ui.h:2
 msgid "_Cancel"
 msgstr "_Utzi"
 
 #. Translators: Check in is used as a verb
-#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:5
 msgid "C_heck in"
 msgstr "Erregistratu"
 
@@ -216,6 +216,14 @@ msgstr "Pribatua"
 msgid "What’s here?"
 msgstr "Zer dago hemen?"
 
+#: ../data/ui/location-service-notification.ui.h:1
+msgid "Turn on location services to find your location"
+msgstr "Aktibatu kokapen-zerbitzuak zure kokapena aurkitzeko"
+
+#: ../data/ui/location-service-notification.ui.h:2
+msgid "Location Settings"
+msgstr "Kokapenaren ezarpenak"
+
 #: ../data/ui/main-window.ui.h:2
 msgid "Go to current location"
 msgstr "Joan uneko kokalekura"
@@ -248,23 +256,43 @@ msgstr ""
 msgid "Check your connection and proxy settings."
 msgstr "Egiaztatu konexioaren eta proxyaren ezarpenak."
 
+#: ../data/ui/map-bubble.ui.h:1
+msgid "Add to new route"
+msgstr "Gehitu bide berriari"
+
+#: ../data/ui/map-bubble.ui.h:2
+msgid "Open with another application"
+msgstr "Ireki beste aplikazio batekin"
+
+#: ../data/ui/map-bubble.ui.h:3
+msgid "Mark as favorite"
+msgstr "Markatu gogoko gisa"
+
+#: ../data/ui/map-bubble.ui.h:6
+msgid "Check in here"
+msgstr "Erregistratu hemen"
+
 #: ../data/ui/search-popup.ui.h:1
 msgid "Press enter to search"
 msgstr "Sakatu Sartu bilatzeko"
 
-#: ../data/ui/share-dialog.ui.h:1
-msgid "Share location"
-msgstr "Partekatu kokalekua"
+#: ../data/ui/send-to-dialog.ui.h:1
+msgid "Open location"
+msgstr "Ireki kokalekua"
 
-#: ../data/ui/share-dialog.ui.h:3
-msgid "_Share"
-msgstr "_Partekatu"
+#: ../data/ui/send-to-dialog.ui.h:3
+msgid "_Open"
+msgstr "_Ireki"
+
+#: ../data/ui/sidebar.ui.h:1
+msgid "Route search by GraphHopper"
+msgstr "Bidea GraphHopper-ek bilatuta"
 
 #: ../data/ui/social-place-more-results-row.ui.h:1
 msgid "Show more results"
 msgstr "Erakutsi emaitza gehiago"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:158
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:208
 msgid "Current location"
 msgstr "Uneko kokalekua"
 
@@ -338,11 +366,19 @@ msgstr "%s(e)n erregistratzen"
 msgid "Write an optional message to check in to %s."
 msgstr "Idatzi aukerako mezua '%s'(e)n erregistratzeko."
 
+#: ../src/mainWindow.js:315
+msgid "Failed to connect to location service"
+msgstr "Huts egin du kokapen-zerbitzuarekin konektatzean"
+
 #: ../src/mainWindow.js:320
+msgid "Position not found"
+msgstr "Ez da posizioa aurkitu"
+
+#: ../src/mainWindow.js:365
 msgid "translator-credits"
 msgstr "Iñaki Larrañaga Murgoitio <dooteo@zundan.com>"
 
-#: ../src/mainWindow.js:323
+#: ../src/mainWindow.js:368
 msgid "A map application for GNOME"
 msgstr "GNOMEren mapen aplikazioa"
 
@@ -391,31 +427,31 @@ msgstr "Huts egin du bideratzailearen eskaerak."
 msgid "Start!"
 msgstr "Hasi!"
 
-#: ../src/searchResultBubble.js:88
+#: ../src/placeBubble.js:102
 #, c-format
 msgid "Postal code: %s"
 msgstr "Posta-kodea: %s"
 
-#: ../src/searchResultBubble.js:90
+#: ../src/placeBubble.js:104
 #, c-format
 msgid "Country code: %s"
 msgstr "Estatuaren kodea: %s"
 
-#: ../src/searchResultBubble.js:99
+#: ../src/placeBubble.js:113
 #, c-format
 msgid "Population: %s"
 msgstr "Populazioa: %s"
 
-#: ../src/searchResultBubble.js:102
+#: ../src/placeBubble.js:116
 #, c-format
 msgid "Opening hours: %s"
 msgstr "Irekiera orduak: %s"
 
-#: ../src/searchResultBubble.js:107
+#: ../src/placeBubble.js:121
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: ../src/searchResultBubble.js:112
+#: ../src/placeBubble.js:126
 #, c-format
 msgid "Wheelchair access: %s"
 msgstr "Gurpil-aulkien sarbidetzak: %s"
@@ -554,12 +590,12 @@ msgid "%s-%s"
 msgstr "%s-%s"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:253
+#: ../src/utils.js:257
 msgid "Unknown"
 msgstr "Ezezaguna"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:256
+#: ../src/utils.js:260
 msgid "Exact"
 msgstr "Zehatza"
 
@@ -601,6 +637,12 @@ msgstr "%f mi"
 #, c-format
 msgid "%f ft"
 msgstr "%f oin"
+
+#~ msgid "Share location"
+#~ msgstr "Partekatu kokalekua"
+
+#~ msgid "_Share"
+#~ msgstr "_Partekatu"
 
 #~ msgid "Last known location and accuracy"
 #~ msgstr "Azken kokaleku ezaguna eta zehaztasuna"
