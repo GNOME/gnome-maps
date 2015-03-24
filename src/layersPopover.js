@@ -25,13 +25,5 @@ const Lang = imports.lang;
 const LayersPopover = new Lang.Class({
     Name: 'LayersPopover',
     Extends: Gtk.Popover,
-    Template: 'resource:///org/gnome/Maps/ui/layers-popover.ui',
-    InternalChildren: [ 'streetLayerButton',
-                        'aerialLayerButton' ],
-
-    _init: function() {
-        this.parent();
-
-        this._aerialLayerButton.join_group(this._streetLayerButton);
-    }
+    Template: 'resource:///org/gnome/Maps/ui/layers-popover.ui'
 });
