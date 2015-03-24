@@ -48,20 +48,23 @@ const _WINDOW_MIN_HEIGHT = 500;
 
 const MainWindow = new Lang.Class({
     Name: 'MainWindow',
+    Extends: Gtk.ApplicationWindow,
+    Template: 'resource:///org/gnome/Maps/ui/main-window.ui',
+    InternalChildren: [ 'headerBar',
+                        'grid',
+                        'mainStack',
+                        'noNetworkView',
+                        'gotoUserLocationButton',
+                        'toggleSidebarButton',
+                        'layersButton',
+                        'favoritesButton' ],
 
     _init: function(app, overlay) {
+        this.parent();
+
         this._configureId = 0;
-        let ui = Utils.getUIObject('main-window', [ 'app-window',
-                                                    'header-bar',
-                                                    'grid',
-                                                    'main-stack',
-                                                    'no-network-view',
-                                                    'goto-user-location-button',
-                                                    'toggle-sidebar-button',
-                                                    'layers-button',
-                                                    'favorites-button' ]);
-        this.window = ui.appWindow;
-        this.window.application = app;
+
+        this.application = app;
         this._overlay = overlay;
 
         this.mapView = new MapView.MapView();
@@ -73,18 +76,11 @@ const MainWindow = new Lang.Class({
 
         this._contextMenu = new ContextMenu.ContextMenu(this.mapView);
 
-        ui.layersButton.popover = new LayersPopover.LayersPopover();
-        ui.favoritesButton.popover = new FavoritesPopover.FavoritesPopover({ mapView: this.mapView });
+        this._layersButton.popover = new LayersPopover.LayersPopover();
+        this._favoritesButton.popover = new FavoritesPopover.FavoritesPopover({ mapView: this.mapView });
         this._overlay.add_overlay(new ZoomControl.ZoomControl(this.mapView));
 
-        this._mainStack = ui.mainStack;
         this._mainStack.add(this._overlay);
-        this._noNetworkView = ui.noNetworkView;
-        this._headerBar = ui.headerBar;
-        this._gotoUserLocationButton = ui.gotoUserLocationButton;
-        this._toggleSidebarButton = ui.toggleSidebarButton;
-        this._layersButton = ui.layersButton;
-        this._favoritesButton = ui.favoritesButton;
         this._busy = new BusyMarker.BusyMarker();
         this._overlay.add_overlay(this._busy);
 
@@ -95,9 +91,9 @@ const MainWindow = new Lang.Class({
 
         this._busySignalId = 0;
 
-        ui.grid.attach(this._sidebar, 1, 0, 1, 1);
+        this._grid.attach(this._sidebar, 1, 0, 1, 1);
 
-        ui.grid.show_all();
+        this._grid.show_all();
     },
 
     _createPlaceEntry: function() {
@@ -129,16 +125,16 @@ const MainWindow = new Lang.Class({
         sidebar.bind_property('reveal-child',
                               this.mapView, 'routeVisible',
                               GObject.BindingFlags.BIDIRECTIONAL);
-        this.window.application.bind_property('connected',
-                                              sidebar, 'visible',
-                                              GObject.BindingFlags.DEFAULT);
+        this.application.bind_property('connected',
+                                       sidebar, 'visible',
+                                       GObject.BindingFlags.DEFAULT);
         return sidebar;
     },
 
     _initActions: function() {
-        Utils.addActions(this.window, {
+        Utils.addActions(this, {
             'close': {
-                onActivate: this.window.close.bind(this.window)
+                onActivate: this.close.bind(this)
             },
             'about': {
                 onActivate: this._onAboutActivate.bind(this)
@@ -176,11 +172,11 @@ const MainWindow = new Lang.Class({
     },
 
     _initSignals: function() {
-        this.window.connect('delete-event', this._quit.bind(this));
-        this.window.connect('configure-event',
-                            this._onConfigureEvent.bind(this));
-        this.window.connect('window-state-event',
-                            this._onWindowStateEvent.bind(this));
+        this.connect('delete-event', this._quit.bind(this));
+        this.connect('configure-event',
+                     this._onConfigureEvent.bind(this));
+        this.connect('window-state-event',
+                     this._onWindowStateEvent.bind(this));
         this.mapView.view.connect('button-press-event', (function() {
             // Can not call something that will generate clutter events
             // from a clutter event-handler. So use an idle.
@@ -189,8 +185,8 @@ const MainWindow = new Lang.Class({
             }).bind(this));
         }).bind(this));
 
-        this.window.application.connect('notify::connected', (function() {
-            if(this.window.application.connected)
+        this.application.connect('notify::connected', (function() {
+            if (this.application.connected)
                 this._mainStack.visible_child = this._overlay;
             else
                 this._mainStack.visible_child = this._noNetworkView;
@@ -199,7 +195,7 @@ const MainWindow = new Lang.Class({
 
     _updateLocationSensitivity: function() {
         let sensitive = (Application.geoclue.state !== Geoclue.State.INITIAL &&
-                         this.window.application.connected);
+                         this.application.connected);
 
         this._gotoUserLocationButton.sensitive = sensitive;
     },
@@ -217,8 +213,8 @@ const MainWindow = new Lang.Class({
 
         Application.geoclue.connect('notify::state',
                                     this._updateLocationSensitivity.bind(this));
-        this.window.application.connect('notify::connected', (function() {
-            let app = this.window.application;
+        this.application.connect('notify::connected', (function() {
+            let app = this.application;
 
             this._updateLocationSensitivity();
             this._layersButton.sensitive = app.connected;
@@ -230,17 +226,17 @@ const MainWindow = new Lang.Class({
     },
 
     _saveWindowGeometry: function() {
-        let window = this.window.get_window();
+        let window = this.get_window();
         let state = window.get_state();
 
         if (state & Gdk.WindowState.MAXIMIZED)
             return;
 
         // GLib.Variant.new() can handle arrays just fine
-        let size = this.window.get_size();
+        let size = this.get_size();
         Application.settings.set('window-size', size);
 
-        let position = this.window.get_position();
+        let position = this.get_position();
         Application.settings.set('window-position', position);
     },
 
@@ -248,18 +244,18 @@ const MainWindow = new Lang.Class({
         let size = Application.settings.get('window-size');
         if (size.length === 2) {
             let [width, height] = size;
-            this.window.set_default_size(width, height);
+            this.set_default_size(width, height);
         }
 
         let position = Application.settings.get('window-position');
         if (position.length === 2) {
             let [x, y] = position;
 
-            this.window.move(x, y);
+            this.move(x, y);
         }
 
         if (Application.settings.get('window-maximized'))
-            this.window.maximize();
+            this.maximize();
     },
 
     _onConfigureEvent: function(widget, event) {
@@ -351,7 +347,7 @@ const MainWindow = new Lang.Class({
     },
 
     _setRevealSidebar: function(value) {
-        let action = this.window.lookup_action('toggle-sidebar');
+        let action = this.lookup_action('toggle-sidebar');
         action.change_state(GLib.Variant.new_boolean(value));
     },
 
@@ -376,7 +372,7 @@ const MainWindow = new Lang.Class({
             wrap_license: true,
 
             modal: true,
-            transient_for: this.window
+            transient_for: this
         });
         aboutDialog.show();
         aboutDialog.connect('response',

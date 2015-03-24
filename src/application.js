@@ -109,7 +109,7 @@ const Application = new Lang.Class({
     _onShowContactActivate: function(action, parameter) {
         this._createWindow();
         this._checkNetwork();
-        this._mainWindow.window.present();
+        this._mainWindow.present();
 
         let id = parameter.deep_unpack();
 
@@ -124,7 +124,7 @@ const Application = new Lang.Class({
     },
 
     _onQuitActivate: function() {
-        this._mainWindow.window.destroy();
+        this._mainWindow.destroy();
     },
 
     _addContacts: function() {
@@ -214,7 +214,7 @@ const Application = new Lang.Class({
         let overlay = new Gtk.Overlay({ visible: true, can_focus: false });
         notificationManager = new NotificationManager.NotificationManager(overlay);
         this._mainWindow = new MainWindow.MainWindow(this, overlay);
-        this._mainWindow.window.connect('destroy', this._onWindowDestroy.bind(this));
+        this._mainWindow.connect('destroy', this._onWindowDestroy.bind(this));
     },
 
     vfunc_dbus_register: function(connection, path) {
@@ -229,7 +229,7 @@ const Application = new Lang.Class({
     vfunc_activate: function() {
         this._createWindow();
         this._checkNetwork();
-        this._mainWindow.window.present();
+        this._mainWindow.present();
     },
 
     _onWindowDestroy: function(window) {

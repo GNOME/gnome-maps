@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.0 -->
-  <object class="GtkApplicationWindow" id="app-window">
+  <template class="Gjs_MainWindow" parent="GtkApplicationWindow">
     <property name="width-request">600</property>
     <property name="height-request">500</property>
     <property name="window-position">center</property>
     <property name="title" translatable="yes">Maps</property>
     <child type="titlebar">
-      <object class="GtkHeaderBar" id="header-bar">
+      <object class="GtkHeaderBar" id="headerBar">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
         <property name="show-close-button">True</property>
@@ -15,7 +15,7 @@
           <class name="titlebar"/>
         </style>
         <child>
-          <object class="GtkButton" id="goto-user-location-button">
+          <object class="GtkButton" id="gotoUserLocationButton">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="valign">center</property>
@@ -37,7 +37,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkMenuButton" id="layers-button">
+          <object class="GtkMenuButton" id="layersButton">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="valign">center</property>
@@ -55,7 +55,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkToggleButton" id="toggle-sidebar-button">
+          <object class="GtkToggleButton" id="toggleSidebarButton">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="valign">center</property>
@@ -77,7 +77,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkMenuButton" id="favorites-button">
+          <object class="GtkMenuButton" id="favoritesButton">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="valign">center</property>
@@ -104,7 +104,7 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
-          <object class="GtkStack" id="main-stack">
+          <object class="GtkStack" id="mainStack">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="transition-type">crossfade</property>
@@ -115,7 +115,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkGrid" id="no-network-view">
+              <object class="GtkGrid" id="noNetworkView">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
@@ -168,5 +168,5 @@
         </child>
       </object>
     </child>
-  </object>
+  </template>
 </interface>
