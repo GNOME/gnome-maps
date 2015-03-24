@@ -59,6 +59,10 @@ const MainWindow = new Lang.Class({
                         'layersButton',
                         'favoritesButton' ],
 
+    get mapView() {
+        return this._mapView;
+    },
+
     _init: function(params) {
         this._overlay = params.overlay;
         delete params.overlay;
@@ -67,18 +71,18 @@ const MainWindow = new Lang.Class({
 
         this._configureId = 0;
 
-        this.mapView = new MapView.MapView();
-        this._overlay.add(this.mapView);
+        this._mapView = new MapView.MapView();
+        this._overlay.add(this._mapView);
 
-        this.mapView.gotoUserLocation(false);
+        this._mapView.gotoUserLocation(false);
 
         this._sidebar = this._createSidebar();
 
-        this._contextMenu = new ContextMenu.ContextMenu(this.mapView);
+        this._contextMenu = new ContextMenu.ContextMenu(this._mapView);
 
         this._layersButton.popover = new LayersPopover.LayersPopover();
-        this._favoritesButton.popover = new FavoritesPopover.FavoritesPopover({ mapView: this.mapView });
-        this._overlay.add_overlay(new ZoomControl.ZoomControl(this.mapView));
+        this._favoritesButton.popover = new FavoritesPopover.FavoritesPopover({ mapView: this._mapView });
+        this._overlay.add_overlay(new ZoomControl.ZoomControl(this._mapView));
 
         this._mainStack.add(this._overlay);
         this._busy = new BusyMarker.BusyMarker();
@@ -97,7 +101,7 @@ const MainWindow = new Lang.Class({
     },
 
     _createPlaceEntry: function() {
-        let placeEntry = new PlaceEntry.PlaceEntry({ mapView:       this.mapView,
+        let placeEntry = new PlaceEntry.PlaceEntry({ mapView:       this._mapView,
                                                      visible:       true,
                                                      margin_start:  6,
                                                      margin_end:    6,
@@ -106,24 +110,24 @@ const MainWindow = new Lang.Class({
                                                    });
         placeEntry.connect('notify::place', (function() {
             if (placeEntry.place) {
-                this.mapView.showSearchResult(placeEntry.place);
+                this._mapView.showSearchResult(placeEntry.place);
             }
         }).bind(this));
 
         let popover = placeEntry.popover;
         popover.connect('selected',
-                        this.mapView.grab_focus.bind(this.mapView));
-        this.mapView.view.connect('button-press-event',
-                                  popover.hide.bind(popover));
+                        this._mapView.grab_focus.bind(this._mapView));
+        this._mapView.view.connect('button-press-event',
+                                   popover.hide.bind(popover));
         return placeEntry;
     },
 
     _createSidebar: function() {
-        let sidebar = new Sidebar.Sidebar(this.mapView);
+        let sidebar = new Sidebar.Sidebar(this._mapView);
         Application.routeService.query.connect('notify',
                                                this._setRevealSidebar.bind(this, true));
         sidebar.bind_property('reveal-child',
-                              this.mapView, 'routeVisible',
+                              this._mapView, 'routeVisible',
                               GObject.BindingFlags.BIDIRECTIONAL);
         this.application.bind_property('connected',
                                        sidebar, 'visible',
@@ -158,11 +162,11 @@ const MainWindow = new Lang.Class({
             },
             'zoom-in': {
                 accels: ['<Primary>plus'],
-                onActivate: this.mapView.view.zoom_in.bind(this.mapView.view)
+                onActivate: this._mapView.view.zoom_in.bind(this._mapView.view)
             },
             'zoom-out': {
                 accels: ['<Primary>minus'],
-                onActivate:  this.mapView.view.zoom_out.bind(this.mapView.view)
+                onActivate:  this._mapView.view.zoom_out.bind(this._mapView.view)
             },
             'find': {
                 accels: ['<Primary>F'],
@@ -177,11 +181,11 @@ const MainWindow = new Lang.Class({
                      this._onConfigureEvent.bind(this));
         this.connect('window-state-event',
                      this._onWindowStateEvent.bind(this));
-        this.mapView.view.connect('button-press-event', (function() {
+        this._mapView.view.connect('button-press-event', (function() {
             // Can not call something that will generate clutter events
             // from a clutter event-handler. So use an idle.
             Mainloop.idle_add((function() {
-                this.mapView.grab_focus();
+                this._mapView.grab_focus();
             }).bind(this));
         }).bind(this));
 
@@ -323,7 +327,7 @@ const MainWindow = new Lang.Class({
             break;
 
         default:
-            this.mapView.gotoUserLocation(true);
+            this._mapView.gotoUserLocation(true);
             break;
         }
     },
@@ -336,7 +340,7 @@ const MainWindow = new Lang.Class({
     _onMapTypeActivate: function(action, value) {
         action.set_state(value);
         let [mapType, len] = value.get_string();
-        this.mapView.setMapType(MapView.MapType[mapType]);
+        this._mapView.setMapType(MapView.MapType[mapType]);
     },
 
     _onToggleSidebarChangeState: function(action, variant) {
@@ -385,7 +389,7 @@ const MainWindow = new Lang.Class({
 
         this._busy.show();
 
-        let stage = this.mapView.view.get_stage();
+        let stage = this._mapView.view.get_stage();
         this._busySignalId = stage.connect('captured-event', function() {
             return true;
         });
@@ -394,7 +398,7 @@ const MainWindow = new Lang.Class({
     unmarkBusy: function() {
         this._busy.hide();
 
-        let stage = this.mapView.view.get_stage();
+        let stage = this._mapView.view.get_stage();
         stage.disconnect(this._busySignalId);
         this._busySignalId = 0;
     }
