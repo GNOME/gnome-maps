@@ -34,9 +34,11 @@ const ContextMenu = new Lang.Class({
     Template: 'resource:///org/gnome/Maps/ui/context-menu.ui',
     InternalChildren: [ 'whatsHereItem' ],
 
-    _init: function(mapView) {
-        this._mapView = mapView;
-        this.parent();
+    _init: function(params) {
+        this._mapView = params.mapView;
+        delete params.mapView;
+
+        this.parent(params);
 
         this._mapView.view.connect('button-release-event',
                                    this._onButtonReleaseEvent.bind(this));
