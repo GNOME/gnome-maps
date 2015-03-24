@@ -212,7 +212,8 @@ const Application = new Lang.Class({
                                                                              'icons']));
         let overlay = new Gtk.Overlay({ visible: true, can_focus: false });
         notificationManager = new NotificationManager.NotificationManager(overlay);
-        this._mainWindow = new MainWindow.MainWindow(this, overlay);
+        this._mainWindow = new MainWindow.MainWindow({ application: this,
+                                                       overlay: overlay });
         this._mainWindow.connect('destroy', this._onWindowDestroy.bind(this));
     },
 

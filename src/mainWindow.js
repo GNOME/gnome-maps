@@ -58,16 +58,16 @@ const MainWindow = new Lang.Class({
                         'layersButton',
                         'favoritesButton' ],
 
-    _init: function(app, overlay) {
-        this.parent();
+    _init: function(params) {
+        this._overlay = params.overlay;
+        delete params.overlay;
+
+        this.parent(params);
 
         this._configureId = 0;
 
-        this.application = app;
-        this._overlay = overlay;
-
         this.mapView = new MapView.MapView();
-        overlay.add(this.mapView);
+        this._overlay.add(this.mapView);
 
         this.mapView.gotoUserLocation(false);
 
