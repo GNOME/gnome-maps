@@ -77,7 +77,7 @@ const MainWindow = new Lang.Class({
 
         this._sidebar = this._createSidebar();
 
-        this._contextMenu = new ContextMenu.ContextMenu(this._mapView);
+        this._contextMenu = new ContextMenu.ContextMenu({ mapView: this._mapView });
 
         this._layersButton.popover = new LayersPopover.LayersPopover();
         this._favoritesButton.popover = new FavoritesPopover.FavoritesPopover({ mapView: this._mapView });
