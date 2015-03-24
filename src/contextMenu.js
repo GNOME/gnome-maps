@@ -21,6 +21,7 @@
 
 const Clutter = imports.gi.Clutter;
 const Geocode = imports.gi.GeocodeGlib;
+const Gtk = imports.gi.Gtk;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
@@ -29,19 +30,19 @@ const Utils = imports.utils;
 
 const ContextMenu = new Lang.Class({
     Name: 'ContextMenu',
+    Extends: Gtk.Menu,
+    Template: 'resource:///org/gnome/Maps/ui/context-menu.ui',
+    InternalChildren: [ 'whatsHereItem' ],
 
     _init: function(mapView) {
         this._mapView = mapView;
-
-        let ui = Utils.getUIObject('context-menu', [ 'context-menu',
-                                                     'whats-here-item' ]);
-        this._menu = ui.contextMenu;
+        this.parent();
 
         this._mapView.view.connect('button-release-event',
                                    this._onButtonReleaseEvent.bind(this));
 
-        ui.whatsHereItem.connect('activate',
-                                 this._onWhatsHereActivated.bind(this));
+        this._whatsHereItem.connect('activate',
+                                    this._onWhatsHereActivated.bind(this));
     },
 
     _onButtonReleaseEvent: function(actor, event) {
@@ -53,7 +54,7 @@ const ContextMenu = new Lang.Class({
         if (button === Clutter.BUTTON_SECONDARY) {
             Mainloop.idle_add((function() {
                 // Need idle to avoid Clutter dead-lock on re-entrance
-                this._menu.popup(null, null, null, button, event.get_time());
+                this.popup(null, null, null, button, event.get_time());
             }).bind(this));
         }
     },
