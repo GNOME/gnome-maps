@@ -2,14 +2,14 @@
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
 #
-# A S Alam <aalam@users.sf.net>, 2013, 2014.
+# A S Alam <aalam@users.sf.net>, 2013, 2014, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-09-08 18:54+0000\n"
-"PO-Revision-Date: 2014-09-08 20:02-0500\n"
+"POT-Creation-Date: 2015-03-28 08:15+0000\n"
+"PO-Revision-Date: 2015-03-28 20:43-0500\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
 "Language: pa\n"
@@ -26,8 +26,8 @@ msgid ""
 "or locate a place to meet a friend."
 msgstr ""
 "ਨਕਸ਼ਾ (ਮੈਪਸ) ਤੁਹਾਨੂੰ ਸੰਸਾਰ ਭਰ ਦੇ ਨਕਸ਼ੇ ਉਪਲੱਬਧ ਕਰਵਾਉਂਦਾ ਹੈ। ਇਹ ਤੁਹਾਨੂੰ ਤੁਰੰਤ "
-"ਸ਼ਹਿਰ ਜਾਂ ਸੜਕਾਂ ਦੇ ਨਾਂ ਰਾਹੀਂ ਥਾਂ "
-"ਲੱਭਣ ਲਈ ਜਾਂ ਮਿੱਤਰ ਨੂੰ ਮਿਲਣ ਲਈ ਥਾਂ ਪੱਕਾ ਕਰਨ ਲਈ ਮੱਦਦ ਕਰਦੀ ਹੈ।"
+"ਸ਼ਹਿਰ ਜਾਂ ਸੜਕਾਂ ਦੇ ਨਾਂ "
+"ਰਾਹੀਂ ਥਾਂ ਲੱਭਣ ਲਈ ਜਾਂ ਮਿੱਤਰ ਨੂੰ ਮਿਲਣ ਲਈ ਥਾਂ ਪੱਕਾ ਕਰਨ ਲਈ ਮੱਦਦ ਕਰਦੀ ਹੈ।"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:2
 msgid ""
@@ -35,17 +35,13 @@ msgid ""
 "thousands of people across the globe."
 msgstr ""
 "ਨਕਸ਼ਾ (ਮੈਪਸ) ਸਾਂਝਾ OpenStreetMap ਡਾਟਾਬੇਸ ਵਰਤਦਾ ਹੈ, ਜਿਸ ਨੂੰ ਸੰਸਾਰ ਭਰ ਦੇ "
-"ਲੱਖਾਂ-ਕਰੋੜਾਂ ਲੋਕਾਂ ਵਲੋਂ "
-"ਤਿਆਰ ਕੀਤਾ ਗਿਆ ਹੈ।"
+"ਲੱਖਾਂ-ਕਰੋੜਾਂ ਲੋਕਾਂ "
+"ਵਲੋਂ ਤਿਆਰ ਕੀਤਾ ਗਿਆ ਹੈ।"
 
 #. Translators: Search is carried out on OpenStreetMap data using Nominatim.
 #. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
 #. your language to see what words you can use for the translated search.
 #: ../data/org.gnome.Maps.appdata.xml.in.h:6
-#| msgid ""
-#| "<li>Search for country, region, city or street.</li> <li>Search for "
-#| "specific types of locations, such as “Pubs near Main Street, Boston” or "
-#| "“Wi-Fi Access near Alexanderplatz, Berlin”.</li>"
 msgid ""
 "You can even search for specific types of locations, such as “Pubs near Main "
 "Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
@@ -55,200 +51,625 @@ msgstr ""
 "ਜਾਂ \"ਅਲੈਗਜੈਂਡਰਪਲੇਟਜ਼, ਬਰਲਿਨ ਨੇੜੇ ਹੋਟਲ\"।"
 
 #. Translators: This is the program name. */
-#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
-#: ../src/mainWindow.js:303 ../src/main-window.ui.h:1
+#: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
+#: ../src/application.js:78 ../src/mainWindow.js:367
 msgid "Maps"
 msgstr "ਨਕਸ਼ਾ"
 
-#: ../data/org.gnome.Maps.desktop.in.in.h:2
+#: ../data/org.gnome.Maps.desktop.in.h:2
 msgid "A simple maps application"
 msgstr "ਸੌਖੀ ਨਕਸ਼ਾ ਐਪਲੀਕੇਸ਼ਨ"
 
-#: ../data/org.gnome.Maps.desktop.in.in.h:3
+#: ../data/org.gnome.Maps.desktop.in.h:3
 msgid "Maps;"
 msgstr "ਨਕਸ਼ਾ;"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:1
+#: ../data/org.gnome.Maps.gschema.xml.in.h:1
 msgid "Window size"
 msgstr "ਵਿੰਡੋ ਆਕਾਰ"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:2
+#: ../data/org.gnome.Maps.gschema.xml.in.h:2
 msgid "Window size (width and height)."
 msgstr "ਵਿੰਡੋ ਆਕਾਰ (ਚੌੜਾਈ ਅਤੇ ਉਚਾਈ)"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:3
+#: ../data/org.gnome.Maps.gschema.xml.in.h:3
 msgid "Window position"
 msgstr "ਵਿੰਡੋ ਸਥਿਤੀ"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:4
+#: ../data/org.gnome.Maps.gschema.xml.in.h:4
 msgid "Window position (X and Y)."
 msgstr "ਵਿੰਡੋ ਸਥਿਤੀ (X ਅਤੇ Y)।"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:5
+#: ../data/org.gnome.Maps.gschema.xml.in.h:5
 msgid "Window maximized"
 msgstr "ਵਿੰਡੋ ਵੱਧੋ-ਵੱਧ ਕੀਤੀ"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:6
+#: ../data/org.gnome.Maps.gschema.xml.in.h:6
 msgid "Window maximization state"
 msgstr "ਵਿੰਡੋ ਵੱਧੋ-ਵੱਧ ਆਕਾਰ ਸਥਿਤੀ"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:7
-msgid "Last known location and accuracy"
-msgstr "ਆਖਰੀ ਜਾਣਿਆ ਟਿਕਾਣਾ ਤੇ ਸ਼ੁੱਧਤਾ"
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:8
-msgid ""
-"Last known location (latitude and longitude in degrees) and accuracy (in "
-"meters)."
-msgstr ""
-"ਆਖਰੀ ਜਾਣਿਆ ਟਿਕਾਣਾ (ਲੰਬਕਾਰ ਤੇ ਵਿਸਥਾਰ ਡਿਗਰੀਆਂ ਵਿੱਚ) ਤੇ ਸ਼ੁੱਧਤਾ (ਮੀਟਰਾਂ ਵਿੱਚ)"
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:9
-msgid "Description of last known location"
-msgstr "ਆਖਰੀ ਜਾਣੇ ਟਿਕਾਣੇ ਦਾ ਵੇਰਵਾ"
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:10
-msgid "Description of last known location of user."
-msgstr "ਯੂਜ਼ਰ ਦੇ ਆਖਰੀ ਜਾਣੇ ਟਿਕਾਣੇ ਦਾ ਵੇਰਵਾ"
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:11
+#: ../data/org.gnome.Maps.gschema.xml.in.h:7
 msgid "Maximum number of search results"
 msgstr "ਖੋਜ ਨਤੀਜਿਆਂ ਦੀ ਵੱਧ ਤੋਂ ਵੱਧ ਗਿਣਤੀ"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:12
+#: ../data/org.gnome.Maps.gschema.xml.in.h:8
 msgid "Maximum number of search results from geocode search."
 msgstr "ਜੀਓਕੋਡ ਖੋਜ ਤੋਂ ਵੱਧ ਤੋਂ ਵੱਧ ਖੋਜ ਨਤੀਜਿਆਂ ਦੀ ਗਿਣਤੀ ਹੈ।"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:13
-msgid "User set last known location"
-msgstr "ਯੂਜ਼ਰ ਨੇ ਆਖਰੀ ਜਾਣਿਆ ਟਿਕਾਣਾ ਤਹਿ ਕੀਤਾ"
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:14
-msgid "Whether the last known location was set manually by the user."
-msgstr "ਕੀ ਆਖਰੀ ਜਾਣਿਆ ਟਿਕਾਣਾ ਯੂਜ਼ਰ ਵਲੋਂ ਖੁਦ ਤਹਿ ਕੀਤਾ ਸੀ।"
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:15
+#: ../data/org.gnome.Maps.gschema.xml.in.h:9
 msgid "Number of recent places to store"
 msgstr "ਸੰਭਾਲਣ ਲਈ ਤਾਜ਼ਾ ਟਿਕਾਣਿਆਂ ਦੀ ਗਿਣਤੀ।"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:16
+#: ../data/org.gnome.Maps.gschema.xml.in.h:10
 msgid "Number of recently visited places to store."
 msgstr "ਸੰਭਾਲਣ ਲਈ ਤਾਜ਼ਾ ਗਏ ਸਥਾਨਾਂ ਦੀ ਗਿਣਤੀ।"
 
-#: ../src/app-menu.ui.h:1
+#: ../data/org.gnome.Maps.gschema.xml.in.h:11
+msgid "Facebook check-in privacy setting"
+msgstr "ਫੇਸਬੁੱਕ ਚੈਕਇਨ ਪਰਦੇਦਾਰੀ ਸੈਟਿੰਗ"
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:12
+msgid ""
+"Latest used Facebook check-in privacy setting. Possible values are: "
+"EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
+msgstr ""
+"ਤਾਜ਼ਾ ਵਰਤੀ ਗਈ ਫੇਸਬੁੱਕ ਚੈਕਇਨ ਪਰਦੇਦਾਰੀ ਸੈਟਿੰਗ। ਸੰਭਵ ਮੁੱਲ ਹਨ: ਹਰੇਕ, "
+"ਦੋਸਤਾਂ_ਦੇ_ਦੋਸਤ, "
+"ਸਭ_ਦੋਸਤ, ਜਾਂ ਖੁਦ"
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:13
+msgid "Foursquare check-in privacy setting"
+msgstr "ਫੋਰਸਿਕਉਰ ਚੈਕਇਨ ਪਰਦੇਦਾਰੀ ਸੈਟਿੰਗ"
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:14
+msgid ""
+"Latest used Foursquare check-in privacy setting. Possible values are: "
+"public, followers or private."
+msgstr ""
+"ਤਾਜ਼ਾ ਵਰਤੀ ਗਈ ਫੋਰਸਕਿਉਰ ਚੈਕਇਨ ਪਰਦੇਦਾਰੀ ਸੈਟਿੰਗ। ਸੰਭਵ ਮੁੱਲ ਹਨ: ਪਬਲਿਕ, ਫ਼ੋਲਅਰ ਜਾਂ "
+"ਪ੍ਰਾਈਵੇਟ।"
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:15
+msgid "Foursquare check-in Facebook broadcasting"
+msgstr "ਫੋਰਸਕਿਉਰ ਚੈਕਇਨ ਫੇਸਬੁੱਕ ਬਰਾਡਕਾਸਟ"
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:16
+msgid ""
+"Indicates if Foursquare should broadcast the check-in as a post in the "
+"Facebook account associated with the Foursquare account."
+msgstr ""
+"ਦਰਸਾਉਂਦਾ ਹੈ ਕਿ ਜੇ ਫੋਰਸਕਿਉਰ ਨੂੰ ਚੈਕ-ਇਨ ਨੂੰ ਫੋਰਸਕਿਉਰ ਖਾਤੇ ਦੇ ਨਾਲ ਸੰਬੰਧਿਤ "
+"ਫੇਸਬੁੱਕ ਖਾਤੇ ਵਿੱਚ ਪੋਸਟ "
+"ਵਜੋਂ ਬਰਾਡਕਾਸਟ ਕਰਨਾ ਹੁੰਦਾ ਹੈ।"
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:17
+msgid "Foursquare check-in Twitter broadcasting"
+msgstr "ਫੋਰਸਕਿਉਰ ਚੈਕਇਨ ਟਵਿੱਟਰ ਬਰਾਡਕਾਸਟ"
+
+#: ../data/org.gnome.Maps.gschema.xml.in.h:18
+msgid ""
+"Indicates if Foursquare should broadcast the check-in as a tweet in the "
+"Twitter account associated with the Foursquare account."
+msgstr ""
+"ਦਰਸਾਉਂਦਾ ਹੈ ਕਿ ਜੇ ਫੋਰਸਕਿਉਰ ਨੂੰ ਚੈਕ-ਇਨ ਨੂੰ ਫੋਰਸਕਿਉਰ ਖਾਤੇ ਦੇ ਨਾਲ ਸੰਬੰਧਿਤ ਟਵਿੱਟਰ "
+"ਖਾਤੇ ਵਿੱਚ ਟਵਿੱਟ "
+"ਵਜੋਂ ਬਰਾਡਕਾਸਟ ਕਰਨਾ ਹੁੰਦਾ ਹੈ।"
+
+#: ../data/ui/app-menu.ui.h:1
 msgid "About"
 msgstr "ਇਸ ਬਾਰੇ"
 
-#: ../src/app-menu.ui.h:2
+#: ../data/ui/app-menu.ui.h:2
 msgid "Quit"
 msgstr "ਬਾਹਰ"
 
-#: ../src/context-menu.ui.h:1
+#: ../data/ui/check-in-dialog.ui.h:1
+msgid "Visibility"
+msgstr "ਵੇਖਣਯੋਗਤਾ"
+
+#: ../data/ui/check-in-dialog.ui.h:2
+msgid "Post on Facebook"
+msgstr "ਫੇਸਬੁੱਕ ਉੱਤੇ ਪੋਸਟ ਕਰੋ"
+
+#: ../data/ui/check-in-dialog.ui.h:3
+msgid "Post on Twitter"
+msgstr "ਟਵਿੱਟਰ ਉੱਤੇ ਪੋਸਟ ਕਰੋ"
+
+#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/send-to-dialog.ui.h:2
+msgid "_Cancel"
+msgstr "ਰੱਦ ਕਰੋ(_C)"
+
+#. Translators: Check in is used as a verb
+#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:5
+msgid "C_heck in"
+msgstr "ਚੈਕ ਇਨ(_h)"
+
+#: ../data/ui/check-in-dialog.ui.h:6
+msgid "Everyone"
+msgstr "ਹਰੇਕ"
+
+#: ../data/ui/check-in-dialog.ui.h:7
+msgid "Friends of friends"
+msgstr "ਦੋਸਤਾਂ ਦੇ ਦੋਸਤ"
+
+#: ../data/ui/check-in-dialog.ui.h:8
+msgid "Just friends"
+msgstr "ਕੇਵਲ ਦੋਸਤ"
+
+#: ../data/ui/check-in-dialog.ui.h:9
+msgid "Just me"
+msgstr "ਕੇਵਲ ਮੈਂ"
+
+#: ../data/ui/check-in-dialog.ui.h:10
+msgid "Public"
+msgstr "ਪਬਲਿਕ"
+
+#: ../data/ui/check-in-dialog.ui.h:11
+msgid "Followers"
+msgstr "ਫ਼ੌਲਅਰ"
+
+#: ../data/ui/check-in-dialog.ui.h:12
+msgid "Private"
+msgstr "ਪ੍ਰਾਈਵੇਟ"
+
+#: ../data/ui/context-menu.ui.h:1
 msgid "What’s here?"
 msgstr "ਇੱਥੇ ਕੀ ਹੈ?"
 
-#: ../src/context-menu.ui.h:2
-msgid "I’m here!"
-msgstr "ਮੈਂ ਇੱਥੇ ਹਾਂ!"
+#: ../data/ui/location-service-notification.ui.h:1
+msgid "Turn on location services to find your location"
+msgstr "ਆਪਣੇ ਟਿਕਾਣੇ ਨੂੰ ਲੱਭਣ ਲਈ ਟਿਕਾਣਾ ਸੇਵਾਵਾਂ ਨੂੰ ਚਾਲੂ ਕਰੋ"
 
-#: ../src/mainWindow.js:301
+#: ../data/ui/location-service-notification.ui.h:2
+msgid "Location Settings"
+msgstr "ਟਿਕਾਣਾ ਸੈਟਿੰਗ"
+
+#: ../data/ui/main-window.ui.h:2
+msgid "Go to current location"
+msgstr "ਮੌਜੂਦਾ ਟਿਕਾਣੇ ਉੱਤੇ ਜਾਓ"
+
+#: ../data/ui/main-window.ui.h:3
+msgid "Choose map type"
+msgstr "ਨਕਸ਼ਾ ਕਿਸਮ ਚੁਣੋ"
+
+#: ../data/ui/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr "ਰੂਟ ਵਿਉਂਤਕਾਰ ਬਦਲੋ"
+
+#: ../data/ui/main-window.ui.h:5
+msgid "Toggle favorites"
+msgstr "ਪਸੰਦਾਂ ਨੂੰ ਬਦਲੋ"
+
+#: ../data/ui/main-window.ui.h:6
+msgid "Maps is offline!"
+msgstr "ਨਕਸ਼ੇ ਆਫਲਾਈਨ ਹੈ!"
+
+#: ../data/ui/main-window.ui.h:7
+msgid ""
+"Maps need an active internet connection to function properly, but one can't "
+"be found."
+msgstr ""
+"ਨਕਸ਼ੇ ਨੂੰ ਠੀਕ ਤਰ੍ਹਾਂ ਕੰਮ ਕਰਨ ਲਈ ਸਰਗਰਮ ਇੰਟਰਨੈਟ ਕਨੈਕਸ਼ਨ ਦੀ ਦੀ ਲੋੜ ਹੈ, ਪਰ ਇਹ ਮਿਲਿਆ "
+"ਨਹੀਂ।"
+
+#: ../data/ui/main-window.ui.h:8
+msgid "Check your connection and proxy settings."
+msgstr "ਆਪਣੇ ਕਨੈਕਸ਼ਨ ਤੇ ਪਰਾਕਸੀ ਸੈਟਿੰਗ ਦੀ ਜਾਂਚ ਕਰੋ।"
+
+#: ../data/ui/map-bubble.ui.h:1
+msgid "Add to new route"
+msgstr "ਨਵੇਂ ਰੂਟ ਵਿੱਚ ਜੋੜੋ"
+
+#: ../data/ui/map-bubble.ui.h:2
+msgid "Open with another application"
+msgstr "ਹੋਰ ਐਪਲੀਕੇਸ਼ਨ ਨਾਲ ਖੋਲ੍ਹੋ"
+
+#: ../data/ui/map-bubble.ui.h:3
+msgid "Mark as favorite"
+msgstr "ਪਸੰਦ ਵਜੋਂ ਨਿਸ਼ਾਨ ਲਗਾਓ"
+
+#: ../data/ui/map-bubble.ui.h:6
+msgid "Check in here"
+msgstr "ਇੱਥੇ ਚੈਕ ਇਨ ਕਰੋ"
+
+#: ../data/ui/search-popup.ui.h:1
+msgid "Press enter to search"
+msgstr "ਖੋਜ ਕਰਨ ਲਈ ਐਂਟਰ ਦਬਾਉ"
+
+#: ../data/ui/send-to-dialog.ui.h:1
+#| msgid "Current location"
+msgid "Open location"
+msgstr "ਟਿਕਾਣਾ ਖੋਲ੍ਹੋ"
+
+#: ../data/ui/send-to-dialog.ui.h:3
+msgid "_Open"
+msgstr "ਖੋਲ੍ਹੋ(_O)"
+
+#: ../data/ui/sidebar.ui.h:1
+msgid "Route search by GraphHopper"
+msgstr "ਗਰਾਫਹੋਪਰ ਵਲੋਂ ਰੂਟ ਖੋਜ"
+
+#: ../data/ui/social-place-more-results-row.ui.h:1
+msgid "Show more results"
+msgstr "ਹੋਰ ਨਤੀਜੇ ਵੇਖੋ"
+
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:208
+msgid "Current location"
+msgstr "ਮੌਜੂਦਾ ਟਿਕਾਣਾ"
+
+#. To translators: %s can be "Unknown", "Exact" or "%f km²"
+#: ../data/ui/user-location-bubble.ui.h:4
+#, no-c-format
+msgid "Accuracy: %s"
+msgstr "ਸ਼ੁੱਧਤਾ: %s"
+
+#. Translators: %s is the place name that user wanted to check-in */
+#: ../src/checkIn.js:136
+#, javascript-format
+msgid "Cannot find \"%s\" in the social service"
+msgstr "ਸਮਾਜਿਕ ਸੇਵਾ ਵਿੱਚ \"%s\" ਲੱਭਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ"
+
+#: ../src/checkIn.js:138
+msgid "Cannot find a suitable place to check-in in this location"
+msgstr "ਇਹ ਟਿਕਾਣੇ ਵਿੱਚ ਚੈਕ-ਇਨ ਕਰਨ ਲਈ ਢੁੱਕਵਾਂ ਸਥਾਨ ਲੱਭਿਆ ਨੀਹਂ ਜਾ ਸਕਦਾ"
+
+#: ../src/checkIn.js:142
+msgid ""
+"Credentials have expired, please open Online Accounts to sign in and enable "
+"this account"
+msgstr ""
+"ਸਨਦ ਦੀ ਮਿਆਦ ਪੁੱਗੀ, ਕਿਰਪਾ ਕਰਕੇ ਸਾਇਨ ਇਨ ਕਰਨ ਤੇ ਇਹ ਖਾਤੇ ਨੂੰ ਸਮਰੱਥ ਕਰਨ ਲਈ ਆਨਲਾਈਨ "
+"ਖਾਤਿਆਂ ਨੂੰ "
+"ਖੋਲ੍ਹੋ।"
+
+#: ../src/checkIn.js:154 ../src/checkInDialog.js:290
+msgid "An error has occurred"
+msgstr "ਗਲਤੀ ਆਈ"
+
+#: ../src/checkInDialog.js:177
+msgid "Select an account"
+msgstr "ਖਾਤਾ ਚੁਣੋ"
+
+#: ../src/checkInDialog.js:182 ../src/checkInDialog.js:254
+msgid "Loading"
+msgstr "ਲੋਡ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
+
+#: ../src/checkInDialog.js:206
+msgid "Select a place"
+msgstr "ਸਥਾਨ ਚੁਣੋ"
+
+#: ../src/checkInDialog.js:211
+msgid ""
+"Maps cannot find the place to check in to with Facebook. Please select one "
+"from this list."
+msgstr ""
+"ਨਕਸ਼ੇ ਫੇਸਬੁੱਕ ਵਿੱਚ ਚੈਕਇਨ ਕਰਨ ਲਈ ਸਥਾਨ ਲੱਭੀ ਨਹੀਂ ਸਕੇ। ਕਿਰਪਾ ਕਰਕੇ ਇਹ ਸੂਚੀ ਵਿੱਚੋਂ "
+"ਚੁਣੋ।"
+
+#: ../src/checkInDialog.js:213
+msgid ""
+"Maps cannot find the place to check in to with Foursquare. Please select one "
+"from this list."
+msgstr ""
+"ਨਕਸ਼ੇ ਫੋਰਸਕਿਉਰ ਵਿੱਚ ਚੈਕਇਨ ਕਰਨ ਲਈ ਸਥਾਨ ਲੱਭੀ ਨਹੀਂ ਸਕੇ। ਕਿਰਪਾ ਕਰਕੇ ਇਹ ਸੂਚੀ ਵਿੱਚੋਂ "
+"ਚੁਣੋ।"
+
+#. Translators: %s is the name of the place to check in.
+#. */
+#: ../src/checkInDialog.js:228
+#, javascript-format
+msgid "Check in to %s"
+msgstr "%s ਲਈ ਚੈਕ ਇਨ"
+
+#. Translators: %s is the name of the place to check in.
+#. */
+#: ../src/checkInDialog.js:238
+#, javascript-format
+msgid "Write an optional message to check in to %s."
+msgstr "%s ਵਿੱਚ ਚੈਕ ਇਨ ਕਰਨ ਲਈ ਚੋਣਵਾਂ ਸੁਨੇਹਾ ਲਿਖੋ।"
+
+#: ../src/mainWindow.js:315
+msgid "Failed to connect to location service"
+msgstr "ਟਿਕਾਣਾ ਸੇਵਾ ਨਾਲ ਕਨੈਕਟ ਕਰਨ ਲਈ ਫੇਲ੍ਹ ਹੈ"
+
+#: ../src/mainWindow.js:320
+#| msgid "No route found."
+msgid "Position not found"
+msgstr "ਸਥਿਤੀ ਨਹੀਂ ਲੱਭੀ"
+
+#: ../src/mainWindow.js:365
 msgid "translator-credits"
 msgstr ""
 "ਅਮਨਪਰੀਤ ਸਿੰਘ ਆਲਮ\n"
 "ਪੰਜਾਬੀ ਓਪਨਸੋਰਸ ਟੀਮ (POST)"
 
-#: ../src/mainWindow.js:304
+#: ../src/mainWindow.js:368
 msgid "A map application for GNOME"
 msgstr "ਗਨੋਮ ਲਈ ਨਕਸ਼ਾ ਐਪਲੀਕੇਸ਼ਨ"
 
-#: ../src/main-window.ui.h:2
-msgid "Go to current location"
-msgstr "ਮੌਜੂਦਾ ਟਿਕਾਣੇ ਉੱਤੇ ਜਾਓ"
+#. Translators:
+#. * This means wheelchairs have full unrestricted access.
+#. */
+#: ../src/place.js:121
+msgid "yes"
+msgstr "ਹਾਂ"
 
-#: ../src/main-window.ui.h:3
-msgid "Choose map type"
-msgstr "ਨਕਸ਼ਾ ਕਿਸਮ ਚੁਣੋ"
+#. Translators:
+#. * This means wheelchairs have partial access (e.g some areas
+#. * can be accessed and others not, areas requiring assistance
+#. * by someone pushing up a steep gradient).
+#. */
+#: ../src/place.js:128
+msgid "limited"
+msgstr "ਸੀਮਿਤ"
 
-#: ../src/main-window.ui.h:4
-msgid "Toggle route planner"
-msgstr "ਰੂਟ ਵਿਉਂਤਕਾਰ ਬਦਲੋ"
+#. Translators:
+#. * This means wheelchairs have no unrestricted access
+#. * (e.g. stair only access).
+#. */
+#: ../src/place.js:134
+msgid "no"
+msgstr "ਨਹੀਂ"
 
-#: ../src/routeService.js:73
+#. Translators:
+#. * This means that the way or area is designated or purpose built
+#. * for wheelchairs (e.g. elevators designed for wheelchair access
+#. * only). This is rarely used.
+#. */
+#: ../src/place.js:141
+msgid "designated"
+msgstr "ਮਕਸਦ"
+
+#: ../src/routeService.js:70
 msgid "No route found."
 msgstr "ਕੋਈ ਰੂਟ ਨਹੀਂ ਲੱਭਿਆ।"
 
-#: ../src/routeService.js:80
+#: ../src/routeService.js:77
 msgid "Route request failed."
 msgstr "ਰੂਟ ਬੇਨਤੀ ਫੇਲ੍ਹ ਹੋਈ।"
 
-#: ../src/routeService.js:151
+#: ../src/routeService.js:148
 msgid "Start!"
 msgstr "ਸ਼ੁਰੂ!"
 
-#: ../src/searchResultBubble.js:60
-#, javascript-format
-msgid "Country code: %s"
-msgstr "ਦੇਸ਼ ਕੋਡ: %s"
-
-#: ../src/searchResultBubble.js:66
+#: ../src/placeBubble.js:102
 #, javascript-format
 msgid "Postal code: %s"
 msgstr "ਡਾਕ ਕੋਡ: %s"
 
+#: ../src/placeBubble.js:104
+#, javascript-format
+msgid "Country code: %s"
+msgstr "ਦੇਸ਼ ਕੋਡ: %s"
+
+#: ../src/placeBubble.js:113
+#, javascript-format
+msgid "Population: %s"
+msgstr "ਜਨਸੰਖਿਆ: %s"
+
+#: ../src/placeBubble.js:116
+#, javascript-format
+msgid "Opening hours: %s"
+msgstr "ਖੁੱਲ੍ਹਣ ਘੰਟੇ: %s"
+
+#: ../src/placeBubble.js:121
+msgid "Wikipedia"
+msgstr "ਵਿਕਿਪੀਡਿਆ"
+
+#: ../src/placeBubble.js:126
+#, javascript-format
+msgid "Wheelchair access: %s"
+msgstr "ਵੀਲ-ਚੇਅਰ ਪਹੁੰਚ: %s"
+
 #. Translators: %s is a time expression with the format "%f h" or "%f min" */
-#: ../src/sidebar.js:193
+#: ../src/sidebar.js:217
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "ਅੰਦਾਜ਼ਨ ਸਮਾਂ: %s"
 
-#: ../src/user-location-bubble.ui.h:1
-msgid "Current location"
-msgstr "ਮੌਜੂਦਾ ਟਿਕਾਣਾ"
+#: ../src/translations.js:56 ../src/translations.js:58
+msgid "around the clock"
+msgstr "ਚੌਵੀਂ ਘੰਟੇ"
 
-#. To translators: %s can be "Unknown", "Exact" or "%f km²"
-#: ../src/user-location-bubble.ui.h:4
-#, no-c-format
-#| msgid ""
-#| "%s\n"
-#| "Position Accuracy: %s"
-msgid "Accuracy: %s"
-msgstr "ਸ਼ੁੱਧਤਾ: %s"
+#: ../src/translations.js:60
+msgid "from sunrise to sunset"
+msgstr "ਸੂਰਜ ਚੜ੍ਹਨ ਤੋਂ ਸੂਰਜ ਡੁੱਬਣ ਤੱਕ"
+
+#. Translators:
+#. * This is a format string with two separate time ranges
+#. * such as "Mo-Fr 10:00-19:00 Sa 12:00-16:00"
+#. * The space between the format place holders could be
+#. * substituted with the appropriate separator.
+#. */
+#: ../src/translations.js:79
+#, javascript-format
+msgctxt "time range list"
+msgid "%s %s"
+msgstr "%s %s"
+
+#. Translators:
+#. * This is a format string with three separate time ranges
+#. * such as "Mo-Fr 10:00-19:00 Sa 10:00-17:00 Su 12:00-16:00"
+#. * The space between the format place holders could be
+#. * substituted with the appropriate separator.
+#. */
+#: ../src/translations.js:91
+#, javascript-format
+msgctxt "time range list"
+msgid "%s %s %s"
+msgstr "%s %s %s"
+
+#. Translators:
+#. * This is a format string consisting of a part specifying the days for
+#. * which the specified time is applied and the time interval
+#. * specification as the second argument.
+#. * The space between the format place holders could be substituted with
+#. * the appropriate separator or phrase and the ordering of the arguments
+#. * can be rearranged with the %n#s syntax. */
+#: ../src/translations.js:122
+#, javascript-format
+msgctxt "time range component"
+msgid "%s %s"
+msgstr "%s %s"
+
+#. Translators:
+#. * This represents a format string consisting of two day interval
+#. * specifications.
+#. * For example:
+#. * Mo-Fr,Sa
+#. * where the "Mo-Fr" and "Sa" parts are replaced by the %s
+#. * place holder.
+#. * The separator (,) could be replaced with a translated variant or
+#. * a phrase if appropriate. */
+#: ../src/translations.js:154
+#, javascript-format
+msgctxt "day interval list"
+msgid "%s,%s"
+msgstr "%s,%s"
+
+#. Translators:
+#. * This represents a format string consisting of three day interval
+#. * specifications.
+#. * For example:
+#. * Mo-We,Fr,Su
+#. * where the "Mo-We", "Fr", and "Su" parts are replaced by the
+#. * %s place holder.
+#. * The separator (,) could be replaced with a translated variant or
+#. * a phrase if appropriate. */
+#: ../src/translations.js:168
+#, javascript-format
+msgctxt "day interval list"
+msgid "%s,%s,%s"
+msgstr "%s,%s,%s"
+
+#: ../src/translations.js:187
+msgid "every day"
+msgstr "ਹਰ ਰੋਜ਼"
+
+#. Translators:
+#. * This represents a range of days with a starting and ending day.
+#. */
+#: ../src/translations.js:199
+#, javascript-format
+msgctxt "day range"
+msgid "%s-%s"
+msgstr "%s-%s"
+
+#: ../src/translations.js:210
+msgid "public holidays"
+msgstr "ਪਬਲਿਕ ਛੁੱਟੀਆਂ"
+
+#: ../src/translations.js:212
+msgid "school holidays"
+msgstr "ਸਕੂਲ ਛੁੱਟੀਆਂ"
+
+#. Translators:
+#. * This is a list with two time intervals, such as:
+#. * 09:00-12:00, 13:00-14:00
+#. * The intervals are represented by the %s place holders and
+#. * appropriate white space or connected phrase could be modified by
+#. * the translation. The order of the arguments can be rearranged
+#. * using the %n$s syntax.
+#. */
+#: ../src/translations.js:252
+#, javascript-format
+msgctxt "time interval list"
+msgid "%s, %s"
+msgstr "%s, %s"
+
+#: ../src/translations.js:266
+msgid "not open"
+msgstr "ਖੁੱਲ੍ਹਾ ਨਹੀਂ"
+
+#. Translators:
+#. * This is a time interval with a starting and an ending time.
+#. * The time values are represented by the %s place holders and
+#. * appropriate white spacing or connecting phrases can be set by the
+#. * translation as needed. The order of the arguments can be rearranged
+#. * using the %n$s syntax.
+#. */
+#: ../src/translations.js:281
+#, javascript-format
+msgctxt "time interval"
+msgid "%s-%s"
+msgstr "%s-%s"
 
 #. Translators: Accuracy of user location information */
-#: ../src/utils.js:165
+#: ../src/utils.js:257
 msgid "Unknown"
 msgstr "ਅਣਜਾਣ"
 
 #. Translators: Accuracy of user location information */
-#: ../src/utils.js:168
+#: ../src/utils.js:260
 msgid "Exact"
 msgstr "ਠੀਕ-ਠੀਕ"
 
-#: ../src/utils.js:178
-#, javascript-format
-#| msgid " km²"
-msgid "%f km²"
-msgstr "%f km²"
-
-#: ../src/utils.js:275
+#: ../src/utils.js:355
 #, javascript-format
 msgid "%f h"
 msgstr "%f h"
 
-#: ../src/utils.js:277
+#: ../src/utils.js:357
 #, javascript-format
 msgid "%f min"
 msgstr "%f ਮਿੰਟ"
 
-#: ../src/utils.js:287
+#: ../src/utils.js:359
+#, javascript-format
+msgid "%f s"
+msgstr "%f ਸ"
+
+#. Translators: This is a distance measured in kilometers */
+#: ../src/utils.js:370
 #, javascript-format
 msgid "%f km"
 msgstr "%f km"
 
-#: ../src/utils.js:289
+#. Translators: This is a distance measured in meters */
+#: ../src/utils.js:373
 #, javascript-format
 msgid "%f m"
 msgstr "%f m"
+
+#. Translators: This is a distance measured in miles */
+#: ../src/utils.js:381
+#, javascript-format
+#| msgid "%f min"
+msgid "%f mi"
+msgstr "%f ਮੀਲ"
+
+#. Translators: This is a distance measured in feet */
+#: ../src/utils.js:384
+#, javascript-format
+msgid "%f ft"
+msgstr "%f ਫੁੱਟ"
+
+#~ msgid "Last known location and accuracy"
+#~ msgstr "ਆਖਰੀ ਜਾਣਿਆ ਟਿਕਾਣਾ ਤੇ ਸ਼ੁੱਧਤਾ"
+
+#~ msgid ""
+#~ "Last known location (latitude and longitude in degrees) and accuracy (in "
+#~ "meters)."
+#~ msgstr "ਆਖਰੀ ਜਾਣਿਆ ਟਿਕਾਣਾ (ਲੰਬਕਾਰ ਤੇ ਵਿਸਥਾਰ ਡਿਗਰੀਆਂ ਵਿੱਚ) ਤੇ ਸ਼ੁੱਧਤਾ (ਮੀਟਰਾਂ ਵਿੱਚ)"
+
+#~ msgid "Description of last known location"
+#~ msgstr "ਆਖਰੀ ਜਾਣੇ ਟਿਕਾਣੇ ਦਾ ਵੇਰਵਾ"
+
+#~ msgid "Description of last known location of user."
+#~ msgstr "ਯੂਜ਼ਰ ਦੇ ਆਖਰੀ ਜਾਣੇ ਟਿਕਾਣੇ ਦਾ ਵੇਰਵਾ"
+
+#~ msgid "User set last known location"
+#~ msgstr "ਯੂਜ਼ਰ ਨੇ ਆਖਰੀ ਜਾਣਿਆ ਟਿਕਾਣਾ ਤਹਿ ਕੀਤਾ"
+
+#~ msgid "Whether the last known location was set manually by the user."
+#~ msgstr "ਕੀ ਆਖਰੀ ਜਾਣਿਆ ਟਿਕਾਣਾ ਯੂਜ਼ਰ ਵਲੋਂ ਖੁਦ ਤਹਿ ਕੀਤਾ ਸੀ।"
+
+#~ msgid "I’m here!"
+#~ msgstr "ਮੈਂ ਇੱਥੇ ਹਾਂ!"
+
+#~| msgid " km²"
+#~ msgid "%f km²"
+#~ msgstr "%f km²"
 
 #~ msgid "Street"
 #~ msgstr "ਗਲੀ"
