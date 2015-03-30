@@ -2,7 +2,6 @@ NULL =
 
 public_icons_themes =							\
 	hicolor								\
-	HighContrast							\
 	$(NULL)
 
 public_icons =								\
@@ -12,12 +11,7 @@ public_icons =								\
 	hicolor_apps_32x32_gnome-maps.png				\
 	hicolor_apps_48x48_gnome-maps.png				\
 	hicolor_apps_256x256_gnome-maps.png				\
-	HighContrast_apps_16x16_gnome-maps.png				\
-	HighContrast_apps_22x22_gnome-maps.png				\
-	HighContrast_apps_24x24_gnome-maps.png				\
-	HighContrast_apps_256x256_gnome-maps.png			\
-	HighContrast_apps_32x32_gnome-maps.png				\
-	HighContrast_apps_48x48_gnome-maps.png				\
+	hicolor_apps_scalable_gnome-maps-symbolic.svg			\
 	$(NULL)
 
 private_icons =								\
