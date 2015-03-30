@@ -37,14 +37,12 @@ private_icons =								\
 
 noinst_DATA =								\
 	gnome-maps.svg							\
-	gnome-maps-highcontrast.svg					\
 	$(NULL)
 
 EXTRA_DIST =								\
 	$(public_icons)							\
 	$(private_icons)						\
 	gnome-maps.svg							\
-	gnome-maps-highcontrast.svg					\
 	$(NULL)
 
 ###############################################################################
