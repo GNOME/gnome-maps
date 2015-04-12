@@ -14,8 +14,7 @@
  * for more details.
  *
  * You should have received a copy of the GNU General Public License along
- * with GNOME Maps; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * with GNOME Maps; if not, see <http://www.gnu.org/licenses/>.
  *
  * Author: Jussi Kukkonen <jku@goto.fi>
  *         Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
