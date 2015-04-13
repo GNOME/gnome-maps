@@ -11,7 +11,7 @@ public_icons =								\
 	hicolor_apps_32x32_gnome-maps.png				\
 	hicolor_apps_48x48_gnome-maps.png				\
 	hicolor_apps_256x256_gnome-maps.png				\
-	hicolor_apps_scalable_gnome-maps-symbolic.svg			\
+	hicolor_apps_symbolic_gnome-maps-symbolic.svg			\
 	$(NULL)
 
 private_icons =								\
