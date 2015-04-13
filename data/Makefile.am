@@ -19,9 +19,9 @@ apps_DATA = org.gnome.Maps.desktop
 
 @INTLTOOL_DESKTOP_RULE@
 
-gsettings_SCHEMAS = org.gnome.Maps.gschema.xml
-
 @INTLTOOL_XML_RULE@
+
+gsettings_SCHEMAS = org.gnome.Maps.gschema.xml
 @GSETTINGS_RULES@
 
 appdatadir = $(datadir)/appdata
@@ -43,7 +43,6 @@ EXTRA_DIST =								\
 	org.gnome.Maps.service.in					\
 	org.gnome.Maps.data.gresource.xml				\
 	org.gnome.Maps.appdata.xml.in					\
-	org.gnome.Maps.gschema.xml.in					\
 	$(app_resource_files)						\
 	$(NULL)
 
@@ -53,10 +52,8 @@ CLEANFILES =								\
 	org.gnome.Maps.appdata.xml					\
 	org.gnome.Maps.appdata.valid					\
 	$(apps_DATA)							\
-	org.gnome.Maps.gschema.xml					\
 	org.gnome.Maps.gschema.valid					\
 	gschemas.compiled						\
-	$(gsettings_SCHEMAS)						\
 	$(NULL)
 
 # For uninstalled use
