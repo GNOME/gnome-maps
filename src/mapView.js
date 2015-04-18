@@ -21,6 +21,7 @@
 
 const Champlain = imports.gi.Champlain;
 const Clutter = imports.gi.Clutter;
+const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Geocode = imports.gi.GeocodeGlib;
 const GtkChamplain = imports.gi.GtkChamplain;
@@ -29,6 +30,7 @@ const Lang = imports.lang;
 const Application = imports.application;
 const ContactPlace = imports.contactPlace;
 const Geoclue = imports.geoclue;
+const Maps = imports.gi.GnomeMaps;
 const MapWalker = imports.mapWalker;
 const Place = imports.place;
 const PlaceMarker = imports.placeMarker;
@@ -144,11 +146,49 @@ const MapView = new Lang.Class({
         }).bind(this));
     },
 
+    _vectorSource: function() {
+        let id = 'vector-tile-glib';
+        let renderer = new Maps.MapboxRenderer();
+        renderer.load_css(GLib.build_filenamev([pkg.pkgdatadir,
+                                                'gnome-maps.mapcss']));
+
+        let tile = Champlain.NetworkTileSource.new_full(
+            id,
+            'OpenStreetMap Mapbox vector tiles',
+            'Map Data ODBL OpenStreetMap Contributors',
+            'http://creativecommons.org/licenses/by-sa/2.0/',
+            2,
+            17,
+            256,
+            Champlain.MapProjection.MAP_PROJECTION_MERCATOR,
+            'http://vector.mapzen.com/osm/all/#Z#/#X#/#Y#.mapbox',
+            renderer);
+
+        let error = this._factory.create_error_source(256);
+        let file = Champlain.FileCache.new_full(100000000,
+                                                 null,
+                                                 renderer);
+        let mem = Champlain.MemoryCache.new_full (100, renderer);
+        let chain = new Champlain.MapSourceChain();
+
+        chain.push(error);
+        chain.push(tile);
+        chain.push(file);
+        chain.push(mem);
+
+        return chain;
+    },
+
     setMapType: function(mapType) {
         if (this.view.map_source.id === mapType)
             return;
 
-        let source = this._factory.create_cached_source(mapType);
+        let source;
+        if (mapType === MapType.AERIAL)
+            source = this._vectorSource();
+        else
+            source = this._factory.create_cached_source(mapType);
+
         this.view.map_source = source;
     },
 

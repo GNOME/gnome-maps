@@ -12,7 +12,9 @@ org.gnome.Maps.data.gresource: org.gnome.Maps.data.gresource.xml $(app_resource_
 		--sourcedir=$(srcdir) $<
 
 resourcedir = $(pkgdatadir)
-resource_DATA = org.gnome.Maps.data.gresource
+resource_DATA =							\
+	org.gnome.Maps.data.gresource					\
+	gnome-maps.mapcss
 
 appsdir = $(datadir)/applications
 apps_DATA = org.gnome.Maps.desktop
