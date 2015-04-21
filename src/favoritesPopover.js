@@ -27,7 +27,6 @@ const PlaceListRow = imports.placeListRow;
 const PlaceStore = imports.placeStore;
 
 const _N_VISIBLE = 6;
-const _ROW_HEIGHT = 50;
 
 const FavoritesPopover = new Lang.Class({
     Name: 'FavoritesPopover',
@@ -73,9 +72,10 @@ const FavoritesPopover = new Lang.Class({
 
         this.connect('notify::rows', (function() {
             let visible = Math.min(this._rows, _N_VISIBLE);
+            let separators = visible - 1; // separators are 1px
+            let height = (PlaceListRow.ROW_HEIGHT + 6) * visible + separators;
 
-            // + 6 Makes it pixel perfect
-            this._scrolledWindow.min_content_height = visible * (PlaceListRow.ROW_HEIGHT + 6);
+            this._scrolledWindow.min_content_height = height;
             this._revealer.reveal_child = this._rows > _N_VISIBLE;
         }).bind(this));
 
