@@ -21,6 +21,7 @@
 #define __MAPS_MAPBOX_RENDERER_H__
 
 #include <champlain/champlain.h>
+#include <vector-tile-mapbox.h>
 
 G_BEGIN_DECLS
 
@@ -66,10 +67,16 @@ struct _MapsMapboxRendererClass
 GType maps_mapbox_renderer_get_type (void);
 
 MapsMapboxRenderer *maps_mapbox_renderer_new (void);
+MapsMapboxRenderer *maps_mapbox_renderer_new_with_view (ChamplainView *view);
+
 
 void maps_mapbox_renderer_load_css (MapsMapboxRenderer *renderer,
                                     const char *filename,
                                     GError **error);
+
+void maps_mapbox_renderer_set_view (MapsMapboxRenderer *renderer,
+                                    ChamplainView *view);
+
 G_END_DECLS
 
 #endif /* __MAPS_MAPBOX_RENDERER_H__ */

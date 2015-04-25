@@ -8,11 +8,13 @@ libgnome_maps_headers_private =					\
 	maps-contact-store.h						\
 	maps-contact.h							\
 	maps-mapbox-renderer.h						\
+	maps-mapbox-text-layer.h					\
 	maps.h
 
 libgnome_maps_sources =						\
 	maps-contact-store.c						\
 	maps-contact.c							\
+	maps-mapbox-text-layer.c					\
 	maps-mapbox-renderer.c
 
 libgnome_maps_la_SOURCES =						\

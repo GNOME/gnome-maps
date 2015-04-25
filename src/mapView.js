@@ -149,6 +149,8 @@ const MapView = new Lang.Class({
     _vectorSource: function() {
         let id = 'vector-tile-glib';
         let renderer = new Maps.MapboxRenderer();
+        renderer.set_view(this.view);
+
         renderer.load_css(GLib.build_filenamev([pkg.pkgdatadir,
                                                 'gnome-maps.mapcss']));
 

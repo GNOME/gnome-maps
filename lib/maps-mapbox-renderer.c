@@ -21,11 +21,14 @@
 #include <cairo.h>
 
 #include "maps-mapbox-renderer.h"
+#include "maps-mapbox-text-layer.h"
 
 struct _MapsMapboxRendererPrivate
 {
   gchar *data;
   guint size;
+  MapsMapboxTextLayer *layer;
+  ChamplainView *view;
 
   VTileMapCSS *stylesheet;
 };
@@ -33,6 +36,8 @@ struct _MapsMapboxRendererPrivate
 typedef struct _RenderData
 {
   ChamplainTile *tile;
+  MapsMapboxTextLayer *layer;
+  ChamplainView *view;
   ClutterContent *canvas;
   gchar *data;
   guint size;
@@ -84,6 +89,7 @@ maps_mapbox_renderer_init (MapsMapboxRenderer *renderer)
   renderer->priv = maps_mapbox_renderer_get_instance_private (renderer);
   renderer->priv->data = NULL;
   renderer->priv->size = 0;
+  renderer->priv->view = NULL;
 }
 
 
@@ -94,20 +100,30 @@ maps_mapbox_renderer_init (MapsMapboxRenderer *renderer)
  *
  */
 MapsMapboxRenderer *
-maps_mapbox_renderer_new (void)
+maps_mapbox_renderer_new ()
 {
-  return g_object_new (MAPS_TYPE_MAPBOX_RENDERER, NULL);
+  MapsMapboxRenderer *renderer;
+  renderer = g_object_new (MAPS_TYPE_MAPBOX_RENDERER, NULL);
+}
+
+void
+maps_mapbox_renderer_set_view (MapsMapboxRenderer *renderer,
+                               ChamplainView *view)
+{
+  renderer->priv->view = view;
+  renderer->priv->layer = maps_mapbox_text_layer_new ();
+
+  champlain_view_add_layer (view, (ChamplainLayer *) renderer->priv->layer);
 }
 
 void
 maps_mapbox_renderer_load_css (MapsMapboxRenderer *renderer,
-                                    const char *filename,
-                                    GError **error)
+                               const char *filename,
+                               GError **error)
 {
   renderer->priv->stylesheet = vtile_mapcss_new ();
   vtile_mapcss_load (renderer->priv->stylesheet, filename, error);
 }
-
 
 static void
 set_data (ChamplainRenderer *renderer_base, const gchar *data, guint size)
@@ -121,13 +137,6 @@ set_data (ChamplainRenderer *renderer_base, const gchar *data, guint size)
   renderer->priv->size = size;
 }
 
-static void
-on_mapbox_rendered (VTileMapbox *mapbox,
-                    GAsyncResult *res,
-                    RenderData *data)
-{
-
-}
 
 gboolean
 on_canvas_draw (ClutterCanvas *canvas,
@@ -142,6 +151,7 @@ on_canvas_draw (ClutterCanvas *canvas,
   ClutterActor *actor = NULL;
   GError *error = NULL;
   gboolean success;
+  GList *texts, *l;
 
   mapbox = vtile_mapbox_new (data->data,
                              data->size,
@@ -150,14 +160,12 @@ on_canvas_draw (ClutterCanvas *canvas,
 
   vtile_mapbox_set_stylesheet (mapbox, data->stylesheet);
 
-
-  cairo_save (cr);
   cairo_set_operator (cr, CAIRO_OPERATOR_CLEAR);
   cairo_paint (cr);
-  cairo_restore (cr);
   cairo_set_operator (cr, CAIRO_OPERATOR_OVER);
 
   vtile_mapbox_render (mapbox, cr, NULL);
+
 
   actor = clutter_actor_new ();
   clutter_actor_set_size (actor,
@@ -165,9 +173,12 @@ on_canvas_draw (ClutterCanvas *canvas,
                           champlain_tile_get_size (data->tile));
   clutter_actor_set_content (actor, data->canvas);
   g_object_unref (data->canvas);
+  g_object_unref (mapbox);
 
-  /*  clutter_actor_set_offscreen_redirect (actor,
-      CLUTTER_OFFSCREEN_REDIRECT_AUTOMATIC_FOR_OPACITY);  */
+  texts = vtile_mapbox_get_texts (mapbox);
+  for (l = texts; l != NULL; l = l->next) {
+    maps_mapbox_text_layer_add_text (data->layer, data->tile, l->data);
+  }
 
  finish:
   if (actor)
@@ -180,15 +191,6 @@ on_canvas_draw (ClutterCanvas *canvas,
   g_object_unref (data->tile);
   g_free (data->data);
   g_free (data);
-
-  /*
-  sprintf (output, "%d-%d-%d.png\n",
-           champlain_tile_get_x (data->tile),
-           champlain_tile_get_y (data->tile),
-           champlain_tile_get_zoom_level (data->tile));
-  surface = cairo_get_target (cr);
-  cairo_surface_write_to_png (surface, output);
-  */
 
 
   return TRUE;
@@ -213,6 +215,8 @@ render (ChamplainRenderer *renderer_base, ChamplainTile *tile)
   data->size = renderer->priv->size;
   data->stylesheet = renderer->priv->stylesheet;
   data->canvas = clutter_canvas_new ();
+  data->layer = renderer->priv->layer;
+  data->view = renderer->priv->view;
 
   clutter_canvas_set_size ((ClutterCanvas *) data->canvas,
                            champlain_tile_get_size (tile),
