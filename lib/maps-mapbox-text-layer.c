@@ -56,7 +56,8 @@ maps_mapbox_text_layer_init (MapsMapboxTextLayer *self)
   MapsMapboxTextLayerPrivate *priv;
 
   self->priv = maps_mapbox_text_layer_get_instance_private (self);
-  self->priv->objects = g_hash_table_new (g_str_hash, g_str_equal);
+  self->priv->objects = g_hash_table_new_full (g_str_hash, g_str_equal,
+                                               g_free, NULL);
   self->priv->view = NULL;
 }
 
@@ -112,7 +113,8 @@ maps_mapbox_text_layer_add_text (MapsMapboxTextLayer *layer,
   if (g_hash_table_lookup (layer->priv->objects, text->uid)) {
     return;
   } else {
-    g_hash_table_insert (layer->priv->objects, text->uid, text->uid);
+    g_hash_table_insert (layer->priv->objects,
+                         g_strdup (text->uid), "dummy");
   }
 
   canvas = clutter_canvas_new ();
@@ -134,7 +136,6 @@ maps_mapbox_text_layer_add_text (MapsMapboxTextLayer *layer,
 
   clutter_actor_add_child (CLUTTER_ACTOR (layer), actor);
 }
-
 
 /**
  * maps_mapbox_text_layer_remove_all:

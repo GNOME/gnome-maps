@@ -173,25 +173,20 @@ on_canvas_draw (ClutterCanvas *canvas,
                           champlain_tile_get_size (data->tile));
   clutter_actor_set_content (actor, data->canvas);
   g_object_unref (data->canvas);
-  g_object_unref (mapbox);
 
   texts = vtile_mapbox_get_texts (mapbox);
   for (l = texts; l != NULL; l = l->next) {
     maps_mapbox_text_layer_add_text (data->layer, data->tile, l->data);
   }
 
- finish:
-  if (actor)
-    champlain_tile_set_content (data->tile, actor);
-
+  champlain_tile_set_content (data->tile, actor);
   g_signal_emit_by_name (data->tile, "render-complete",
                          data->data, data->size, success);
 
-
+  g_object_unref (mapbox);
   g_object_unref (data->tile);
   g_free (data->data);
   g_free (data);
-
 
   return TRUE;
 }
