@@ -126,6 +126,8 @@ on_stylesheet_changed (GFileMonitor *monitor,
   if (event_type == G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT) {
     vtile_mapcss_load (renderer->priv->stylesheet,
                        g_file_get_path (file), NULL);
+
+    maps_mapbox_text_layer_remove_all (renderer->priv->layer);
     champlain_view_zoom_out (renderer->priv->view);
     champlain_view_zoom_in (renderer->priv->view);
   }
