@@ -127,7 +127,7 @@ maps_mapbox_text_layer_add_text (MapsMapboxTextLayer *layer,
   clutter_actor_set_content (actor, canvas);
   g_object_unref (canvas);
 
-  clutter_actor_get_position (tile, &tile_x, &tile_y);
+  clutter_actor_get_position ((ClutterActor *) tile, &tile_x, &tile_y);
   champlain_view_get_viewport_origin (layer->priv->view, &orig_x, &orig_y);
 
   clutter_actor_set_position (actor,
