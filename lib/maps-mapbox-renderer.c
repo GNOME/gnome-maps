@@ -121,10 +121,14 @@ on_stylesheet_changed (GFileMonitor *monitor,
                        GFile *file,
                        GFile *other_file,
                        GFileMonitorEvent event_type,
-                       VTileMapCSS *stylesheet)
+                       MapsMapboxRenderer *renderer)
 {
-  if (event_type == G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT)
-    vtile_mapcss_load (stylesheet, g_file_get_path (file), NULL);
+  if (event_type == G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT) {
+    vtile_mapcss_load (renderer->priv->stylesheet,
+                       g_file_get_path (file), NULL);
+    champlain_view_zoom_out (renderer->priv->view);
+    champlain_view_zoom_in (renderer->priv->view);
+  }
 }
 
 void
@@ -141,8 +145,7 @@ maps_mapbox_renderer_load_css (MapsMapboxRenderer *renderer,
   file = g_file_new_for_path (filename);
   monitor = g_file_monitor_file (file, G_FILE_MONITOR_NONE, NULL, NULL);
   g_signal_connect (monitor, "changed",
-                    G_CALLBACK (on_stylesheet_changed),
-                    renderer->priv->stylesheet);
+                    G_CALLBACK (on_stylesheet_changed), renderer);
 
 }
 
