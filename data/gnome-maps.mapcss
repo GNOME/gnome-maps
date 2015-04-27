@@ -8,11 +8,15 @@ node {
 node|z5-10[place=country] {
     text-color: #4A90D9;
     text: name;
+    text-halo-radius: 2;
+    text-halo-color:#ffffff;
 }
 
 node|z5-10[place=sea] {
     text-color: #770000;
     text: name;
+    text-halo-radius: 2;
+    text-halo-color:#ffffff;
 }
 
 node|z5-13[place=city] {
@@ -164,25 +168,41 @@ area {
     width: 1;
 }
 
-area|z15-19 {
+area|z17-19[building] {
     text: name;
     text-color: #222233;
-    font-size: 8;
+    text-halo-color: #ffffff;
+    text-halo-radius: 1;
+    font-size: 10;
     font-family: cantarell;
-    font-weight: bold;
+}
+
+area|z16-19[landuse] {
+    text: name;
+    text-color: #222233;
+    text-halo-color: #ffffff;
+    text-halo-radius: 1;
+    font-size: 10;
+    font-family: cantarell;
 }
 
 area[landuse=park], area[landuse=playground], area[landuse=pitch],
-area[leisure=park], area[leasure=playground], area[leisure=pitch] {
+area[leisure=park], area[leasure=playground], area[leisure=pitch],
+area[landuse=grass], area[landuse=garden], area[landuse=golf_course],
+area[landuse=cemetery], area[landuse=meadow], area[landuse=common] {
     fill-color: #ABCA8A;
     color: #ABCA8a;
 }
 
 area[landuse=forest], area[landuse=wood], area[landuse=scrub],
-area[natural=wood] {
+area[natural=wood], area[landuse=nature_reserve] {
     fill-color: #56A900;
     color: #56A900;
     z-index: 1; /* z-index 0 is baseline */
+}
+
+area[landuse=wetland] {
+    fill-color: #7BB26A;
 }
 
 area[water], way[water], area[natural=water] {
@@ -190,9 +210,30 @@ area[water], way[water], area[natural=water] {
     fill-color: #4A90D9;
 }
 
+area[landuse=farmland], area[landuse=farm], area[landuse=farmyard] {
+    fill-color: #c4ca8a;
+    color: #c4ca8a;
+}
+
+
 area[building] {
     color: #777777;
     fill-color: #C7B8A4;
+}
+
+area[landuse=parking] {
+    color: #fff59f;
+    fill-color: #fff59f;
+}
+
+area[landuse=residential], area[landuse=industrial] {
+    fill-color: #e6dbcb;
+    color: #e6dbcb;
+}
+
+area[landuse=quarry] {
+    fill-color: #cdcbcb;
+    color: #cdcbcb;
 }
 
 area[amenity=parking] {
