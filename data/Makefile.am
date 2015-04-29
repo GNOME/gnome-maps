@@ -41,6 +41,7 @@ service_DATA = org.gnome.Maps.service
 EXTRA_DIST =								\
 	org.gnome.Maps.desktop.in					\
 	org.gnome.Maps.service.in					\
+	org.gnome.Maps.gschema.xml					\
 	org.gnome.Maps.data.gresource.xml				\
 	org.gnome.Maps.appdata.xml.in					\
 	$(app_resource_files)						\
