@@ -123,7 +123,7 @@ on_stylesheet_changed (GFileMonitor *monitor,
                        GFileMonitorEvent event_type,
                        MapsMapboxRenderer *renderer)
 {
-  if (event_type == G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT) {
+  if (event_type == G_FILE_MONITOR_EVENT_CHANGED) {
     vtile_mapcss_load (renderer->priv->stylesheet,
                        g_file_get_path (file), NULL);
 
