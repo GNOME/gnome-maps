@@ -35,26 +35,43 @@ canvas {
 }
 
 /* Roads */
+
+/* Generic style for all roads */
+way|z8-17[highway] {
+    color: #d2ccc3;
+    casing-color: #c7b8a4;
+    casing-width: 1;
+}
+
+way|z8-17[highway][is_bridge=yes] {
+    casing-color: #b0a696;
+}
+
+/* type specific way overrides*/
 way|z8-17[highway=motorway],
 way|z8-17[highway=motorway_link] {
-    color: #f57900;
+    color: #ffaf60;
+    casing-color: #f57900;
+}
+
+way|z8-17[highway=motorway][is_bridge=yes] {
+    casing-color: #cc6500;
 }
 
 way|z9-17[highway=trunk],
 way|z9-17[highway=trunk_link],
 way|z9-17[highway=primary],
 way|z9-17[highway=primary_link] {
-    color: #edd400;
+    color: #ffea40;
+    casing-color: #c4af00;
 }
 
-way|z10-17[highway=secondary],
-way|z10-17[highway=secondary_link],
-way|z10-17[highway=tertiary],
-way|z10-17[highway=tertiary_link],
-way|z12-17[highway=unclassified] {
-    color: #d2ccc3;
+way|z9-17[highway=trunk][is_bridge=yes],
+way|z9-17[highway=primary][is_bridge=yes] {
+    casing-color: #d3bc00;
 }
 
+/* Grow roads on zoom */
 way|z9[highway=trunk],
 way|z9[highway=primary] {
     width: 1;
@@ -78,17 +95,12 @@ way|z12[highway=primary_link] {
     width: 3;
 }
 
-way|z11[highway=motorway],
+way|z11-17[highway=motorway],
 way|z12-17[highway=motorway_link],
-way|z12[highway=trunk],
+way|z12-17[highway=trunk],
 way|z12[highway=primary],
 way|z13-17[highway=trunk_link],
 way|z13-17[highway=primary_link] {
-    width: 7;
-}
-
-way|z12-17[highway=motorway],
-way|z13-17[highway=trunk] {
     width: 7;
 }
 
@@ -105,8 +117,8 @@ way|z15[highway=pedestrian],
 way|z15[highway=track],
 way|z15[highway=living_street],
 way|z15[highway=steps] {
-    color: #c7b8a4;
     width: 1;
+    casing-width: 0;
 }
 
 way|z11[highway=secondary],
@@ -124,8 +136,6 @@ way|z16[highway=living_street],
 way|z16[highway=steps] {
     width: 2;
     color: #ffffff;
-    casing-width: 1;
-    casing-color: #c7b8a4;
 }
 
 way|z12[highway=secondary],
@@ -143,8 +153,6 @@ way|z17[highway=living_street],
 way|z17[highway=steps] {
     width: 3;
     color: #ffffff;
-    casing-width: 1;
-    casing-color: #c7b8a4;
 }
 
 way|z13[highway=secondary],
@@ -154,8 +162,6 @@ way|z15[highway=road],
 way|z16[highway=residential] {
     width: 4;
     color: #ffffff;
-    casing-width: 2;
-    casing-color: #c7b8a4;
 }
 
 way|z14-17[highway=secondary],
@@ -165,8 +171,6 @@ way|z16[highway=road],
 way|z17[highway=residential] {
     width: 7;
     color: #ffffff;
-    casing-width: 1;
-    casing-color: #c7b8a4;
 }
 
 way|z11-12[highway=residential] {
@@ -273,11 +277,6 @@ area[amenity=parking] {
 area[highway=pedestrian] {
     color: #dddddd;
     fill-color: #C7B8A4;
-}
-
-way[is_bridge=yes] {
-    color: #333333;
-    width: 2;
 }
 
 way[is_tunnel=yes] {
