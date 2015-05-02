@@ -34,45 +34,62 @@ canvas {
     fill-color: #FAEBD7;
 }
 
-way[highway] {
-    text: name;
-    font-size: 6;
-    font-weight: normal;
-    font-family: cantarell;
-}
-
 /* Roads */
-way|z8-17[highway=motorway] {
+way|z8-17[highway=motorway],
+way|z8-17[highway=motorway_link] {
     color: #f57900;
 }
 
-way|z9-17[highway=trunk], way|z9-17[highway=primary] {
+way|z9-17[highway=trunk],
+way|z9-17[highway=trunk_link],
+way|z9-17[highway=primary],
+way|z9-17[highway=primary_link] {
     color: #edd400;
 }
 
-way|z10-17[highway=secondary], way|z10-17[highway=tertiary],
+way|z10-17[highway=secondary],
+way|z10-17[highway=secondary_link],
+way|z10-17[highway=tertiary],
+way|z10-17[highway=tertiary_link],
 way|z12-17[highway=unclassified] {
     color: #d2ccc3;
 }
 
-way|z9[highway=trunk], way|z9[highway=primary] {
+way|z9[highway=trunk],
+way|z9[highway=primary] {
     width: 1;
 }
 
-way|z9[highway=motorway], way|z10[highway=trunk], way|z10[highway=primary] {
+way|z9[highway=motorway],
+way|z10[motorway_link],
+way|z10[highway=trunk],
+way|z10[highway=primary],
+way|z11[highway=trunk_link],
+way|z11[highway=primary_link] {
     width: 2;
 }
 
-way|z10[highway=motorway], way|z11[highway=trunk], way|z11[highway=primary] {
+way|z10[highway=motorway],
+way|z11[highway=motorway_link],
+way|z11[highway=trunk],
+way|z11[highway=primary],
+way|z12[highway=trunk_link],
+way|z12[highway=primary_link] {
     width: 3;
 }
 
-way|z11[highway=motorway], way|z12[highway=trunk], way|z12[highway=primary] {
-    width: 4;
+way|z11[highway=motorway],
+way|z12-17[highway=motorway_link],
+way|z12[highway=trunk],
+way|z12[highway=primary],
+way|z13-17[highway=trunk_link],
+way|z13-17[highway=primary_link] {
+    width: 7;
 }
 
-way|z12-17[highway=motorway], way|z13-17[highway=trunk] {
-    width: 5;
+way|z12-17[highway=motorway],
+way|z13-17[highway=trunk] {
+    width: 7;
 }
 
 way|z10[highway=secondary],
@@ -146,9 +163,9 @@ way|z15-17[highway=tertiary],
 way|z16-17[highway=unclassified],
 way|z16[highway=road],
 way|z17[highway=residential] {
-    width: 5;
+    width: 7;
     color: #ffffff;
-    casing-width: 3;
+    casing-width: 1;
     casing-color: #c7b8a4;
 }
 
@@ -161,7 +178,7 @@ area {
     fill-color: #FAEBD7;
     width: 1;
 }
-
+/*
 area|z17-19[building] {
     text: name;
     text-color: #222233;
@@ -179,7 +196,7 @@ area|z16-19[landuse] {
     font-size: 10;
     font-family: cantarell;
 }
-
+*/
 area[landuse=park], area[landuse=playground], area[landuse=pitch],
 area[leisure=park], area[leasure=playground], area[leisure=pitch],
 area[landuse=grass], area[landuse=garden], area[landuse=golf_course],
@@ -240,15 +257,30 @@ area[highway=pedestrian] {
     fill-color: #C7B8A4;
 }
 
-/*
 way[is_bridge=yes] {
     color: #333333;
     width: 2;
 }
-*/
 
 way[is_tunnel=yes] {
     color: #EEEEEC;
     width: 2;
     dashes: 3, 3;
+}
+
+/* Railways */
+way[railway=rail] {
+    color: #ffffff;
+    width: 2;
+    casing-color: #777777;
+    casing-width: 1;
+    dashes: 7, 10;
+}
+
+way[railway=tram], way[railway=lightrail] {
+    color: #888a85;
+    casing-color: #888a85;
+    casing-width: 1.5;
+    casing-dashes: 1, 6;
+    width: 2;
 }
