@@ -97,6 +97,36 @@ on_text_draw (ClutterCanvas *canvas,
   return TRUE;
 }
 
+static gboolean
+text_collide (MapsMapboxTextLayer *layer,
+              gfloat tile_x,
+              gfloat tile_y,
+              VTileMapboxText *text)
+{
+  ClutterActorIter iter;
+  ClutterActor *child;
+  gfloat text_x, text_y;
+
+  text_x = tile_x + text->offset_x;
+  text_y = tile_y + text->offset_y;
+
+  clutter_actor_iter_init (&iter, CLUTTER_ACTOR (layer));
+  while (clutter_actor_iter_next (&iter, &child)) {
+    gfloat child_x, child_y;
+    gfloat child_width, child_height;
+
+    clutter_actor_get_position (child, &child_x, &child_y);
+    clutter_actor_get_size (child, &child_width, &child_height);
+
+    if ((text_x < child_x + child_width) &&
+        (text_x + text->width > child_x) &&
+        (text_y < child_y + child_height) &&
+        (text_y + text->height > child_y))
+      return TRUE;
+  }
+
+  return FALSE;
+}
 
 void
 maps_mapbox_text_layer_add_text (MapsMapboxTextLayer *layer,
@@ -107,15 +137,17 @@ maps_mapbox_text_layer_add_text (MapsMapboxTextLayer *layer,
 
   ClutterContent *canvas;
   ClutterActor *actor;
-  guint orig_x, orig_y;
   gfloat tile_x, tile_y;
 
-  if (g_hash_table_lookup (layer->priv->objects, text->uid)) {
+  if (g_hash_table_lookup (layer->priv->objects, text->uid))
     return;
-  } else {
-    g_hash_table_insert (layer->priv->objects,
-                         g_strdup (text->uid), "dummy");
-  }
+
+  clutter_actor_get_position ((ClutterActor *) tile, &tile_x, &tile_y);
+  if (text_collide (layer, tile_x, tile_y, text))
+    return;
+
+  g_hash_table_insert (layer->priv->objects,
+                       g_strdup (text->uid), "dummy");
 
   canvas = clutter_canvas_new ();
   clutter_canvas_set_size (CLUTTER_CANVAS (canvas), text->width, text->height);
@@ -126,9 +158,6 @@ maps_mapbox_text_layer_add_text (MapsMapboxTextLayer *layer,
   clutter_actor_set_size (actor, text->width, text->height);
   clutter_actor_set_content (actor, canvas);
   g_object_unref (canvas);
-
-  clutter_actor_get_position ((ClutterActor *) tile, &tile_x, &tile_y);
-  champlain_view_get_viewport_origin (layer->priv->view, &orig_x, &orig_y);
 
   clutter_actor_set_position (actor,
                               tile_x + text->offset_x,
