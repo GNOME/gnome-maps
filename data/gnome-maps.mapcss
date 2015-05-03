@@ -229,15 +229,16 @@ area[landuse=park], area[landuse=playground], area[landuse=pitch],
 area[leisure=park], area[leasure=playground], area[leisure=pitch],
 area[landuse=grass], area[landuse=garden], area[landuse=golf_course],
 area[landuse=cemetery], area[landuse=meadow], area[landuse=common],
-area[landuse=sports_centre] {
-    fill-color: #ABCA8A;
-    color: #ABCA8a;
+area[landuse=sports_centre], area[landuse=farmland], area[landuse=farm],
+area[landuse=farmyard] {
+    fill-color: #cfe1bd;
+    color: #cfe1bd;
 }
 
 area[landuse=forest], area[landuse=wood], area[landuse=scrub],
 area[natural=wood], area[landuse=nature_reserve] {
-    fill-color: #56A900;
-    color: #56A900;
+    fill-color: #ABCA8a;
+    color: #ABCA8a;
     z-index: 1; /* z-index 0 is baseline */
 }
 
@@ -248,11 +249,6 @@ area[landuse=wetland] {
 area[water], way[water], area[natural=water] {
     color: #4A90D9;
     fill-color: #4A90D9;
-}
-
-area[landuse=farmland], area[landuse=farm], area[landuse=farmyard] {
-    fill-color: #c4ca8a;
-    color: #c4ca8a;
 }
 
 area|z13-16[building] {
