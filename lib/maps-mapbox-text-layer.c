@@ -89,9 +89,7 @@ on_text_draw (ClutterCanvas *canvas,
   cairo_paint (cr);
   cairo_set_operator (cr, CAIRO_OPERATOR_OVER);
 
-  cairo_set_source_surface (cr, text->surface,
-                            -text->surface_offset_x,
-                            -text->surface_offset_y);
+  cairo_set_source_surface (cr, text->surface, 0, 0);
   cairo_paint (cr);
   surface = cairo_get_target (cr);
   g_signal_handlers_disconnect_by_func (canvas, on_text_draw, text);

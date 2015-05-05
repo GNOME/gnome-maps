@@ -179,11 +179,9 @@ on_canvas_draw (ClutterCanvas *canvas,
   gboolean success;
   GList *texts, *l;
 
-  mapbox = vtile_mapbox_new (data->data,
-                             data->size,
-                             width,
+  mapbox = vtile_mapbox_new (width,
                              champlain_tile_get_zoom_level (data->tile));
-
+  vtile_mapbox_load (mapbox, data->data, data->size, NULL);
   vtile_mapbox_set_stylesheet (mapbox, data->stylesheet);
 
   cairo_set_operator (cr, CAIRO_OPERATOR_CLEAR);
@@ -191,7 +189,6 @@ on_canvas_draw (ClutterCanvas *canvas,
   cairo_set_operator (cr, CAIRO_OPERATOR_OVER);
 
   vtile_mapbox_render (mapbox, cr, NULL);
-
 
   actor = clutter_actor_new ();
   clutter_actor_set_size (actor,
