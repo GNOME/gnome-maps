@@ -151,8 +151,16 @@ const MapView = new Lang.Class({
         let renderer = new Maps.MapboxRenderer();
         renderer.set_view(this.view);
 
-        renderer.load_css(GLib.build_filenamev([pkg.pkgdatadir,
-                                                'gnome-maps.mapcss']));
+        renderer.connect('parse-error', (function(renderer, error) {
+            Application.notificationManager.showMessage(error);
+        }).bind(this));
+
+        try {
+            renderer.load_css(GLib.build_filenamev([pkg.pkgdatadir,
+                                                    'gnome-maps.mapcss']));
+        } catch(e) {
+            Application.notificationManager.showMessage(e.message);
+        }
 
         let tile = Champlain.NetworkTileSource.new_full(
             id,

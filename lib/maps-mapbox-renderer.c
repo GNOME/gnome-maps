@@ -23,6 +23,14 @@
 #include "maps-mapbox-renderer.h"
 #include "maps-mapbox-text-layer.h"
 
+enum
+{
+  PARSE_ERROR,
+  LAST_SIGNAL
+};
+
+static guint signals[LAST_SIGNAL] = { 0, };
+
 struct _MapsMapboxRendererPrivate
 {
   gchar *data;
@@ -80,6 +88,22 @@ maps_mapbox_renderer_class_init (MapsMapboxRendererClass *klass)
 
   renderer_class->set_data = set_data;
   renderer_class->render = render;
+
+    /**
+     * MapsMapboxRenderer::parse-error:
+     *
+     * Indicates that the parsing of the style file failed.
+     *
+     */
+  signals[PARSE_ERROR] =
+    g_signal_new ("parse-error",
+                  G_OBJECT_CLASS_TYPE (object_class),
+                  G_SIGNAL_RUN_LAST,
+                  0, NULL, NULL,
+                  g_cclosure_marshal_VOID__OBJECT,
+                  G_TYPE_NONE,
+                  1,
+                  G_TYPE_STRING);
 }
 
 
@@ -124,8 +148,18 @@ on_stylesheet_changed (GFileMonitor *monitor,
                        MapsMapboxRenderer *renderer)
 {
   if (event_type == G_FILE_MONITOR_EVENT_CHANGED) {
-    vtile_mapcss_load (renderer->priv->stylesheet,
-                       g_file_get_path (file), NULL);
+    VTileMapCSS *stylesheet;
+    GError *error = NULL;
+
+    stylesheet = vtile_mapcss_new();
+    if (!vtile_mapcss_load (stylesheet, g_file_get_path (file), &error)) {
+      g_object_unref (stylesheet);
+      g_signal_emit_by_name (renderer, "parse-error",
+                             g_strdup (error->message));
+      return;
+    }
+    g_object_unref (renderer->priv->stylesheet);
+    renderer->priv->stylesheet = stylesheet;
 
     maps_mapbox_text_layer_remove_all (renderer->priv->layer);
     champlain_view_zoom_out (renderer->priv->view);
