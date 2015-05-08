@@ -104,6 +104,13 @@ way|z12[highway=primary],
 way|z13-17[highway=trunk_link],
 way|z13-17[highway=primary_link] {
     width: 7;
+    text: name;
+    text-color: #222233;
+    text-halo-color: white;
+    text-halo-radius: 1;
+    font-size: 6;
+    font-family: cantarell;
+
 }
 
 way|z10[highway=secondary],
@@ -199,22 +206,18 @@ way|z17[highway=residential] {
     font-family: cantarell;
 }
 
-way|z16-17[highway!=residential] {
-    text: name;
-    text-color: #222233;
-    text-halo-color: white;
-    text-halo-radius: 1;
-    font-size: 6;
-    font-family: cantarell;
-}
-
 area {
     color: #000000;
     fill-color: #FAEBD7;
     width: 1;
 }
 
-area|z17-19[building] {
+area|z17-19[building!=apartments],
+area|z17-19[building!=residential],
+area|z17-19[building!=house],
+area|z17-19[building!=detached],
+area|z17-19[building!=dormitory]
+{
     text: name;
     text-color: #222233;
     text-halo-color: white;
@@ -223,7 +226,7 @@ area|z17-19[building] {
     font-family: cantarell;
 }
 
-area|z16-19[landuse] {
+area|z16-19[landuse!=residential] {
     text: name;
     text-color: #222233;
     text-halo-color: white;
