@@ -1,0 +1,52 @@
+area|z16-19[landuse!=residential] {
+    text: name;
+    text-color: #222233;
+    text-halo-color: white;
+    text-halo-radius: 1;
+    font-size: 8;
+    font-family: cantarell;
+}
+
+area[landuse=park], area[landuse=playground], area[landuse=pitch],
+area[leisure=park], area[leasure=playground], area[leisure=pitch],
+area[landuse=grass], area[landuse=garden], area[landuse=golf_course],
+area[landuse=cemetery], area[landuse=meadow], area[landuse=common],
+area[landuse=sports_centre], area[landuse=farmland], area[landuse=farm],
+area[landuse=farmyard], area[landuse=allotments], area[landuse=village_green] {
+    fill-color: #cfe1bd;
+    color: #cfe1bd;
+    z-index: 1;
+}
+
+area[landuse=forest], area[landuse=wood], area[landuse=scrub],
+area[natural=wood], area[landuse=nature_reserve] {
+    fill-color: #ABCA8a;
+    color: #ABCA8a;
+    z-index: 1; /* z-index 0 is baseline */
+}
+
+area[landuse=wetland] {
+    fill-color: #7BB26A;
+}
+
+area[landuse=parking] {
+    color: #fff59f;
+    fill-color: #fff59f;
+    z-index: 1;
+}
+
+area[landuse=residential], area[landuse=industrial] {
+    fill-color: #e6dbcb;
+    color: #e6dbcb;
+}
+
+area[landuse=quarry] {
+    fill-color: #cdcbcb;
+    color: #cdcbcb;
+}
+
+area[amenity=parking] {
+    color: #ffff77;
+    fill-color: #C7B8A4;
+}
+

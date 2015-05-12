@@ -157,7 +157,8 @@ const MapView = new Lang.Class({
 
         try {
             renderer.load_css(GLib.build_filenamev([pkg.pkgdatadir,
-                                                    'gnome-maps.mapcss']));
+                                                    'gnome-maps.mapcss']),
+                              pkg.pkgdatadir);
         } catch(e) {
             Application.notificationManager.showMessage(e.message);
         }

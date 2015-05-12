@@ -170,12 +170,14 @@ on_stylesheet_changed (GFileMonitor *monitor,
 void
 maps_mapbox_renderer_load_css (MapsMapboxRenderer *renderer,
                                const char *filename,
+                               const char *search_path,
                                GError **error)
 {
   GFile *file;
   GFileMonitor *monitor;
 
   renderer->priv->stylesheet = vtile_mapcss_new ();
+  vtile_mapcss_set_search_path (renderer->priv->stylesheet, search_path);
   vtile_mapcss_load (renderer->priv->stylesheet, filename, error);
 
   file = g_file_new_for_path (filename);
@@ -235,6 +237,7 @@ on_canvas_draw (ClutterCanvas *canvas,
   for (l = texts; l != NULL; l = l->next) {
     maps_mapbox_text_layer_add_text (data->layer, data->tile, l->data);
   }
+  g_list_free (texts);
 
   champlain_tile_set_content (data->tile, actor);
   g_signal_emit_by_name (data->tile, "render-complete",

@@ -1,0 +1,194 @@
+/* Generic style for all roads */
+way|z8-17[highway] {
+    color: #d2ccc3;
+    casing-color: #c7b8a4;
+    casing-width: 1;
+}
+
+way|z8-17[highway][is_bridge=yes] {
+    casing-color: #b0a696;
+}
+
+/* type specific way overrides*/
+way|z8-17[highway=motorway],
+way|z8-17[highway=motorway_link] {
+    color: #ffaf60;
+    casing-color: #f57900;
+    z-index: 7;
+}
+
+way|z8-17[highway=motorway][is_bridge=yes] {
+    casing-color: #cc6500;
+}
+
+way|z9-17[highway=trunk],
+way|z9-17[highway=trunk_link],
+way|z9-17[highway=primary],
+way|z9-17[highway=primary_link] {
+    color: #ffea40;
+    casing-color: #c4af00;
+    z-index: 6;
+}
+
+way|z9-17[highway=trunk][is_bridge=yes],
+way|z9-17[highway=primary][is_bridge=yes] {
+    casing-color: #d3bc00;
+}
+
+/* Grow roads on zoom */
+way|z9[highway=trunk],
+way|z9[highway=primary] {
+    width: 1;
+}
+
+way|z9[highway=motorway],
+way|z10[motorway_link],
+way|z10[highway=trunk],
+way|z10[highway=primary],
+way|z11[highway=trunk_link],
+way|z11[highway=primary_link] {
+    width: 2;
+}
+
+way|z10[highway=motorway],
+way|z11[highway=motorway_link],
+way|z11[highway=trunk],
+way|z11[highway=primary],
+way|z12[highway=trunk_link],
+way|z12[highway=primary_link] {
+    width: 3;
+}
+
+way|z11-17[highway=motorway],
+way|z12-17[highway=motorway_link],
+way|z12-17[highway=trunk],
+way|z12[highway=primary],
+way|z13-17[highway=trunk_link],
+way|z13-17[highway=primary_link] {
+    width: 7;
+    text: name;
+    text-color: #222233;
+    text-halo-color: white;
+    text-halo-radius: 1;
+    font-size: 6;
+    font-family: cantarell;
+
+}
+
+way|z10[highway=secondary],
+way|z11[highway=tertiary],
+way|z12[highway=unclassified],
+way|z12[highway=road],
+way|z12-13[highway=residential],
+way|z15[highway=service],
+way|z15[highway=footway],
+way|z15[highway=cycleway],
+way|z15[highway=path],
+way|z15[highway=pedestrian],
+way|z15[highway=track],
+way|z15[highway=living_street],
+way|z15[highway=steps] {
+    width: 1;
+    casing-width: 0;
+    z-index: 1;
+}
+
+way|z11[highway=secondary],
+way|z12[highway=tertiary],
+way|z13[highway=unclassified],
+way|z13[highway=road],
+way|z14[highway=residential],
+way|z16[highway=service],
+way|z16[highway=footway],
+way|z16[highway=cycleway],
+way|z16[highway=path],
+way|z16[highway=pedestrian],
+way|z16[highway=track],
+way|z16[highway=living_street],
+way|z16[highway=steps] {
+    width: 1;
+    color: white;
+    casing-width: 1;
+    z-index: 2;
+}
+
+way|z12[highway=secondary],
+way|z13[highway=tertiary],
+way|z14[highway=unclassified],
+way|z14[highway=road],
+way|z15[highway=residential],
+way|z17[highway=service],
+way|z17[highway=footway],
+way|z17[highway=cycleway],
+way|z17[highway=path],
+way|z17[highway=track],
+way|z17[highway=living_street],
+way|z17[highway=steps] {
+    width: 3;
+    color: white;
+    z-index: 3;
+}
+
+way|z17[highway=pedestrian] {
+   width: 4;
+   color: #dddddd;
+   z-index: 3;
+}
+
+way|z13[highway=secondary],
+way|z14[highway=tertiary],
+way|z15[highway=unclassified],
+way|z15[highway=road],
+way|z16[highway=residential] {
+    width: 4;
+    color: white;
+    z-index: 4;
+}
+
+way|z14-17[highway=secondary],
+way|z15-17[highway=tertiary],
+way|z16-17[highway=unclassified],
+way|z16[highway=road],
+way|z17[highway=residential] {
+    width: 7;
+    color: white;
+    z-index: 5;
+}
+
+way|z11-12[highway=residential] {
+    opacity: 0;
+}
+
+way|z17[highway=residential] {
+    text: name;
+    text-color: #222233;
+    text-halo-color: white;
+    text-halo-radius: 1;
+    font-size: 6;
+    font-family: cantarell;
+}
+
+way[is_tunnel=yes] {
+    color: #EEEEEC;
+    width: 2;
+    dashes: 3, 3;
+}
+
+/* Railways */
+way[railway=rail] {
+    color: white;
+    width: 2;
+    casing-color: #777777;
+    casing-width: 1;
+    dashes: 7, 10;
+}
+
+/*
+way[railway=tram], way[railway=lightrail] {
+    color: #888a85;
+    casing-color: #888a85;
+    casing-width: 1.5;
+    casing-dashes: 1, 6;
+    width: 2;
+}
+*/

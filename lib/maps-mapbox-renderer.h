@@ -72,6 +72,7 @@ MapsMapboxRenderer *maps_mapbox_renderer_new_with_view (ChamplainView *view);
 
 void maps_mapbox_renderer_load_css (MapsMapboxRenderer *renderer,
                                     const char *filename,
+                                    const char *search_path,
                                     GError **error);
 
 void maps_mapbox_renderer_set_view (MapsMapboxRenderer *renderer,

@@ -93,6 +93,7 @@ on_text_draw (ClutterCanvas *canvas,
   cairo_paint (cr);
   surface = cairo_get_target (cr);
   g_signal_handlers_disconnect_by_func (canvas, on_text_draw, text);
+  vtile_mapbox_text_free (text);
 
   return TRUE;
 }
@@ -139,7 +140,7 @@ maps_mapbox_text_layer_add_text (MapsMapboxTextLayer *layer,
   ClutterActor *actor;
   gfloat tile_x, tile_y;
 
-  if (g_hash_table_lookup (layer->priv->objects, text->uid))
+  if (!text->uid || g_hash_table_lookup (layer->priv->objects, text->uid))
     return;
 
   clutter_actor_get_position ((ClutterActor *) tile, &tile_x, &tile_y);
