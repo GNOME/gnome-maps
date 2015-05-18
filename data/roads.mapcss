@@ -83,7 +83,6 @@ way|z12-13[highway=residential],
 way|z15[highway=service],
 way|z15[highway=footway],
 way|z15[highway=cycleway],
-way|z15[highway=path],
 way|z15[highway=pedestrian],
 way|z15[highway=track],
 way|z15[highway=living_street],
@@ -100,7 +99,6 @@ way|z13[highway=road],
 way|z14[highway=residential],
 way|z16[highway=service],
 way|z16[highway=footway],
-way|z16[highway=path],
 way|z16[highway=pedestrian],
 way|z16[highway=track],
 way|z16[highway=living_street],
@@ -118,7 +116,6 @@ way|z14[highway=road],
 way|z15[highway=residential],
 way|z17[highway=service],
 way|z17[highway=footway],
-way|z17[highway=path],
 way|z17[highway=track],
 way|z17[highway=living_street],
 way|z17[highway=steps] {
@@ -151,6 +148,19 @@ way|z17[highway=footway] {
    color: #c7b8a4;
    casing-width: 0;
    z-index: 3;
+}
+
+way|z1-15[highway=path] {
+   width: 0;
+   casing-width: 0;
+}
+
+way|z16-17[highway=path] {
+   width: 1;
+   casing-width: 0;
+   color: #c7b8a4;
+   dashes: 8, 5;
+   z-index: 3;   
 }
 
 way|z17[highway=pedestrian] {
