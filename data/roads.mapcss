@@ -98,9 +98,7 @@ way|z13[highway=unclassified],
 way|z13[highway=road],
 way|z14[highway=residential],
 way|z16[highway=service],
-way|z16[highway=footway],
 way|z16[highway=pedestrian],
-way|z16[highway=track],
 way|z16[highway=living_street],
 way|z16[highway=steps] {
     width: 1;
@@ -115,13 +113,18 @@ way|z14[highway=unclassified],
 way|z14[highway=road],
 way|z15[highway=residential],
 way|z17[highway=service],
-way|z17[highway=footway],
-way|z17[highway=track],
 way|z17[highway=living_street],
 way|z17[highway=steps] {
     width: 3;
     color: white;
     z-index: 3;
+}
+
+way|z16-17[highway=track] {
+  width: 1;
+  casing-width: 1;
+  color: white;
+  z-index: 3;
 }
 
 way|z16[highway=cycleway] {
