@@ -20,6 +20,7 @@
  *         Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
+const Clutter = imports.gi.Clutter;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Gio = imports.gi.Gio;
@@ -172,6 +173,8 @@ const Application = new Lang.Class({
     vfunc_startup: function() {
         this.parent();
 
+	// work-around for the Nvidia proprietary driver not coping with the GDK Clutter backend
+	Clutter.set_windowing_backend('x11');
         GtkClutter.init(null);
 
         Utils.loadStyleSheet(Gio.file_new_for_uri('resource:///org/gnome/Maps/application.css'));
