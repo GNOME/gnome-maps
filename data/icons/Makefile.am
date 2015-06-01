@@ -32,11 +32,12 @@ private_icons =								\
 	hicolor_apps_16x16_route-transit-symbolic.svg 			\
 	hicolor_apps_16x16_route-bike-symbolic.svg 			\
 	hicolor_apps_16x16_route-car-symbolic.svg 			\
-	hicolor_apps_22x22_user-location.png				\
+	hicolor_apps_24x24_user-location.png				\
 	$(NULL)
 
 noinst_DATA =								\
 	gnome-maps.svg							\
+	hicolor_apps_24x24_user-location.svg				\
 	$(NULL)
 
 EXTRA_DIST =								\
