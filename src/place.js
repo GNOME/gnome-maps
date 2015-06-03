@@ -22,6 +22,7 @@
 const Geocode = imports.gi.GeocodeGlib;
 const GLib = imports.gi.GLib;
 const Lang = imports.lang;
+const Location = imports.location;
 const Translations = imports.translations;
 
 const Place = new Lang.Class({
@@ -212,7 +213,7 @@ Place.fromJSON = function(obj) {
                 break;
 
             case 'location':
-                props.location = new Geocode.Location(prop);
+                props.location = new Location.Location(prop);
                 break;
 
             case 'bounding_box':

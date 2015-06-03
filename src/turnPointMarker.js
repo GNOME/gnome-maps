@@ -21,11 +21,11 @@
 
 const Clutter = imports.gi.Clutter;
 const Gdk = imports.gi.Gdk;
-const Geocode = imports.gi.GeocodeGlib;
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
+const Location = imports.location;
 const MapMarker = imports.mapMarker;
 const Place = imports.place;
 const Utils = imports.utils;
@@ -42,7 +42,7 @@ const TurnPointMarker = new Lang.Class({
         delete params.turnPoint;
 
         params.place = new Place.Place({
-            location: new Geocode.Location({
+            location: new Location.Location({
                 latitude: this._turnPoint.coordinate.get_latitude(),
                 longitude: this._turnPoint.coordinate.get_longitude()
             })
@@ -93,8 +93,8 @@ const TurnPointMarker = new Lang.Class({
     _onMarkerDrag: function() {
         let query = Application.routeService.query;
         let place = new Place.Place({
-            location: new Geocode.Location({ latitude: this.latitude.toFixed(5),
-                                             longitude: this.longitude.toFixed(5) }) });
+            location: new Location.Location({ latitude: this.latitude.toFixed(5),
+                                              longitude: this.longitude.toFixed(5) }) });
 
         this._queryPoint.place = place;
     }

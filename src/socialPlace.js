@@ -22,6 +22,7 @@
 const Geocode = imports.gi.GeocodeGlib;
 const GObject = imports.gi.GObject;
 const Lang = imports.lang;
+const Location = imports.location;
 
 const SocialPlace = new Lang.Class({
     Name: 'SocialServiceSocialPlace',
@@ -40,7 +41,7 @@ const SocialPlace = new Lang.Class({
     },
 
     get location() {
-        return new Geocode.Location({ latitude: parseFloat(this.latitude),
-                                      longitude: parseFloat(this.longitude) });
+        return new Location.Location({ latitude: parseFloat(this.latitude),
+                                       longitude: parseFloat(this.longitude) });
     }
 });

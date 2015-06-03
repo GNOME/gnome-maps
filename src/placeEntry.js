@@ -28,12 +28,13 @@ const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 
 const Application = imports.application;
+const Location = imports.location;
 const Place = imports.place;
 const PlaceStore = imports.placeStore;
 const SearchPopup = imports.searchPopup;
 const Utils = imports.utils;
 
-Geocode.Location.prototype.equals = function(location) {
+Location.Location.prototype.equals = function(location) {
     return (location.latitude === this.latitude &&
             location.longitude === this.longitude);
 };
@@ -180,8 +181,8 @@ const PlaceEntry = new Lang.Class({
             let longitude = parseFloat(match[2]);
 
             if (this._validateCoordinates(latitude, longitude)) {
-                return new Geocode.Location({ latitude: latitude,
-                                              longitude: longitude });
+                return new Location.Location({ latitude: latitude,
+                                               longitude: longitude });
             } else
                 return null;
         } else

@@ -20,13 +20,13 @@
  */
 
 const GObject = imports.gi.GObject;
-const Geocode = imports.gi.GeocodeGlib;
 const Gio = imports.gi.Gio;
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
 const Place = imports.place;
+const Location = imports.location;
 const Settings = imports.settings;
 const Utils = imports.utils;
 
@@ -190,10 +190,10 @@ const Geoclue = new Lang.Class({
         let geoclueLocation = new LocationProxy(Gio.DBus.system,
                                                 "org.freedesktop.GeoClue2",
                                                 newPath);
-        let location = new Geocode.Location({ latitude: geoclueLocation.Latitude,
-                                              longitude: geoclueLocation.Longitude,
-                                              accuracy: geoclueLocation.Accuracy,
-                                              description: geoclueLocation.Description });
+        let location = new Location.Location({ latitude: geoclueLocation.Latitude,
+                                               longitude: geoclueLocation.Longitude,
+                                               accuracy: geoclueLocation.Accuracy,
+                                               description: geoclueLocation.Description });
         this._updateLocation(location);
         if (this._timeoutId !== 0) {
             Mainloop.source_remove(this._timeoutId);

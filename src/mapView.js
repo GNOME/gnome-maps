@@ -29,6 +29,7 @@ const Lang = imports.lang;
 const Application = imports.application;
 const ContactPlace = imports.contactPlace;
 const Geoclue = imports.geoclue;
+const Location = imports.location;
 const MapWalker = imports.mapWalker;
 const Place = imports.place;
 const PlaceMarker = imports.placeMarker;
@@ -196,8 +197,8 @@ const MapView = new Lang.Class({
     _gotoBBox: function(bbox) {
         let [lat, lon] = bbox.get_center();
         let place = new Place.Place({
-            location: new Geocode.Location({ latitude  : lat,
-                                             longitude : lon }),
+            location: new Location.Location({ latitude  : lat,
+                                              longitude : lon }),
             bounding_box: new Geocode.BoundingBox({ top    : bbox.top,
                                                     bottom : bbox.bottom,
                                                     left   : bbox.left,

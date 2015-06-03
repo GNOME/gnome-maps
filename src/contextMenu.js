@@ -20,12 +20,12 @@
  */
 
 const Clutter = imports.gi.Clutter;
-const Geocode = imports.gi.GeocodeGlib;
 const Gtk = imports.gi.Gtk;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
 const Lang = imports.lang;
+const Location = imports.location;
 const Utils = imports.utils;
 
 const ContextMenu = new Lang.Class({
@@ -62,9 +62,9 @@ const ContextMenu = new Lang.Class({
     },
 
     _onWhatsHereActivated: function() {
-        let location = new Geocode.Location({ latitude: this._latitude,
-                                              longitude: this._longitude,
-                                              accuracy: 0 });
+        let location = new Location.Location({ latitude: this._latitude,
+                                               longitude: this._longitude,
+                                               accuracy: 0 });
 
         Application.geocodeService.reverse(location, null, (function(place) {
             this._mapView.showSearchResult(place);

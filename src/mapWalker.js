@@ -26,6 +26,7 @@ const Clutter = imports.gi.Clutter;
 const Geocode = imports.gi.GeocodeGlib;
 const Lang = imports.lang;
 
+const Location = imports.location;
 const Utils = imports.utils;
 
 const _MAX_DISTANCE = 19850; // half of Earth's circumference (km)
@@ -117,8 +118,8 @@ const MapWalker = new Lang.Class({
 
         this._view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_CUBIC;
 
-        let fromLocation = new Geocode.Location({ latitude: this._view.get_center_latitude(),
-                                                  longitude: this._view.get_center_longitude() });
+        let fromLocation = new Location.Location({ latitude: this._view.get_center_latitude(),
+                                                   longitude: this._view.get_center_longitude() });
         this._updateGoToDuration(fromLocation);
 
         Utils.once(this._view, 'animation-completed', (function() {
