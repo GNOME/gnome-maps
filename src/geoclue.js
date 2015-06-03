@@ -62,6 +62,7 @@ const LocationInterface = '<node> \
     <property name="Longitude" type="d" access="read"/> \
     <property name="Accuracy" type="d" access="read"/> \
     <property name="Description" type="s" access="read"/> \
+    <property name="Heading" type="d" access="read"/> \
 </interface> \
 </node>';
 const LocationProxy = Gio.DBusProxy.makeProxyWrapper(LocationInterface);
@@ -193,6 +194,7 @@ const Geoclue = new Lang.Class({
         let location = new Location.Location({ latitude: geoclueLocation.Latitude,
                                                longitude: geoclueLocation.Longitude,
                                                accuracy: geoclueLocation.Accuracy,
+                                               heading: geoclueLocation.Heading,
                                                description: geoclueLocation.Description });
         this._updateLocation(location);
         if (this._timeoutId !== 0) {
