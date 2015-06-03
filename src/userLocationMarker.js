@@ -70,7 +70,14 @@ const UserLocationMarker = new Lang.Class({
     _init: function(params) {
         this.parent(params);
 
-        this.add_actor(Utils.CreateActorFromIconName('user-location', 0));
+        if (this.place.location.heading > -1) {
+            let actor = Utils.CreateActorFromIconName('user-location-compass', 0);
+            actor.set_pivot_point(0.5, 0.5);
+            actor.set_rotation_angle(Clutter.RotateAxis.Z_AXIS, this.place.location.heading);
+            this.add_actor(actor);
+        } else {
+            this.add_actor(Utils.CreateActorFromIconName('user-location', 0));
+        }
 
         if (this.place.location.accuracy > 0) {
             this._accuracyMarker = new AccuracyCircleMarker({ place: this.place });
