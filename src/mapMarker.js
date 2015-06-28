@@ -19,8 +19,8 @@
  * Author: Damián Nohales <damiannohales@gmail.com>
  */
 
-const Cairo = imports.gi.cairo;
 const Champlain = imports.gi.Champlain;
+const Gdk = imports.gi.Gdk;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
@@ -113,10 +113,10 @@ const MapMarker = new Lang.Class({
         let y = this._view.latitude_to_y(this.latitude);
         let mapSize = this._mapView.get_allocation();
 
-        let pos = new Cairo.RectangleInt({ x: x + tx - this.bubbleSpacing,
-                                           y: y + ty - this.bubbleSpacing,
-                                           width: this.width + this.bubbleSpacing * 2,
-                                           height: this.height + this.bubbleSpacing * 2 });
+        let pos = new Gdk.Rectangle({ x: x + tx - this.bubbleSpacing,
+                                      y: y + ty - this.bubbleSpacing,
+                                      width: this.width + this.bubbleSpacing * 2,
+                                      height: this.height + this.bubbleSpacing * 2 });
         bubble.pointing_to = pos;
         bubble.position = Gtk.PositionType.TOP;
 
