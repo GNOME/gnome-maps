@@ -70,7 +70,11 @@ const MainWindow = new Lang.Class({
 
         this._configureId = 0;
 
-        this._mapView = new MapView.MapView();
+        this._mapView = new MapView.MapView({
+            mapType: this.application.local_tile_path ?
+                MapView.MapType.LOCAL : MapView.MapType.STREET
+        });
+
         this._overlay.add(this._mapView);
 
         this._mapView.gotoUserLocation(false);
@@ -179,6 +183,7 @@ const MainWindow = new Lang.Class({
         this.connect('delete-event', this._quit.bind(this));
         this.connect('configure-event',
                      this._onConfigureEvent.bind(this));
+
         this.connect('window-state-event',
                      this._onWindowStateEvent.bind(this));
         this._mapView.view.connect('button-press-event', (function() {
@@ -190,7 +195,7 @@ const MainWindow = new Lang.Class({
         }).bind(this));
 
         this.application.connect('notify::connected', (function() {
-            if (this.application.connected)
+            if (this.application.connected || this.application.local_tile_path)
                 this._mainStack.visible_child = this._overlay;
             else
                 this._mainStack.visible_child = this._noNetworkView;
@@ -199,7 +204,8 @@ const MainWindow = new Lang.Class({
 
     _updateLocationSensitivity: function() {
         let sensitive = (Application.geoclue.state !== Geoclue.State.INITIAL &&
-                         this.application.connected);
+                         (this.application.connected ||
+                          this.application.local_tile_path));
 
         this._gotoUserLocationButton.sensitive = sensitive;
     },

@@ -30,6 +30,7 @@ const Application = imports.application;
 const ContactPlace = imports.contactPlace;
 const Geoclue = imports.geoclue;
 const Location = imports.location;
+const Maps = imports.gi.GnomeMaps;
 const MapWalker = imports.mapWalker;
 const Place = imports.place;
 const PlaceMarker = imports.placeMarker;
@@ -39,6 +40,7 @@ const UserLocationMarker = imports.userLocationMarker;
 const Utils = imports.utils;
 
 const MapType = {
+    LOCAL: 'MapsLocalSource',
     STREET:  Champlain.MAP_SOURCE_OSM_MAPQUEST,
     AERIAL:  Champlain.MAP_SOURCE_OSM_AERIAL_MAP,
     CYCLING: Champlain.MAP_SOURCE_OSM_CYCLE_MAP,
@@ -71,14 +73,17 @@ const MapView = new Lang.Class({
         this.notify('routeVisible');
     },
 
-    _init: function() {
+    _init: function(params) {
         this.parent();
+
+        let mapType = params.mapType || MapType.STREET;
+        delete params.mapType;
 
         this.view = this._initView();
         this._initLayers();
 
         this._factory = Champlain.MapSourceFactory.dup_default();
-        this.setMapType(MapType.STREET);
+        this.setMapType(mapType);
 
         this._updateUserLocation();
         Application.geoclue.connect('location-changed',
@@ -150,8 +155,29 @@ const MapView = new Lang.Class({
         if (this.view.map_source.id === mapType)
             return;
 
-        let source = this._factory.create_cached_source(mapType);
-        this.view.map_source = source;
+        if (mapType !== MapType.LOCAL) {
+            let source = this._factory.create_cached_source(mapType);
+            this.view.map_source = source;
+        } else {
+            let renderer = new Champlain.ImageRenderer();
+            let source = new Maps.FileTileSource({
+                path: Application.application.local_tile_path.toString(),
+                renderer: renderer
+            });
+            try {
+                source.prepare();
+
+                this.view.map_source = source;
+                this.view.world = source.world;
+                let [lat, lon] = this.view.world.get_center();
+                this.view.center_on(lat, lon);
+            } catch(e) {
+                this.setMapType(MapType.STREET);
+                Application.application.local_tile_path = false;
+                Application.application.notify('connected');
+                Application.notificationManager.showMessage(e.message);
+            }
+        }
     },
 
     gotoUserLocation: function(animate) {

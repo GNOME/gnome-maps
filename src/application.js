@@ -78,6 +78,20 @@ const Application = new Lang.Class({
 
         this.parent({ application_id: 'org.gnome.Maps' });
         this._connected = false;
+
+        this.add_main_option('local',
+                             0,
+                             GLib.OptionFlags.NONE,
+                             GLib.OptionArg.FILENAME,
+                             _("A path to a local tiles directory structure"),
+                             null);
+
+        this.connect('handle-local-options', (function(app, options) {
+            if (options.contains('local')) {
+                let variant = options.lookup_value('local', null);
+                this.local_tile_path = variant.deep_unpack();
+            }
+        }).bind(this));
     },
 
     _checkNetwork: function() {
