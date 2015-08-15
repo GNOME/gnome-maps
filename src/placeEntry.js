@@ -34,11 +34,6 @@ const PlaceStore = imports.placeStore;
 const SearchPopup = imports.searchPopup;
 const Utils = imports.utils;
 
-Location.Location.prototype.equals = function(location) {
-    return (location.latitude === this.latitude &&
-            location.longitude === this.longitude);
-};
-
 // Matches coordinates string with the format "<lat>, <long>"
 const COORDINATES_REGEX = /^\s*(\-?\d+(?:\.\d+)?)\s*,\s*(\-?\d+(?:\.\d+)?)\s*$/;
 
@@ -58,7 +53,7 @@ const PlaceEntry = new Lang.Class({
         if (!this._place && !p)
             return;
 
-        if (this._place && p && this._place.location.equals(p.location))
+        if (this._place && p && this._loqEquals(this._place, p))
             return;
 
         if (p) {
@@ -133,6 +128,11 @@ const PlaceEntry = new Lang.Class({
                 return false;
             }).bind(this));
         }
+    },
+
+    _locEquals: function(placeA, placeB) {
+        return (placeA.location.latitude === placeB.location.latitude &&
+                placeA.location.longitude === placeB.location.longitude);
     },
 
     _createPopover: function(numVisible, maxChars) {
