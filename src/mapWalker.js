@@ -93,11 +93,9 @@ const MapWalker = new Lang.Class({
         this._mapView.emit('going-to');
 
         if (!animate) {
-            this._view.animate_zoom = false;
-            this.zoomToFit();
-            this._view.animate_zoom = true;
+            this._view.center_on(this.place.location.latitude,
+                                 this.place.location.longitude);
             this.emit('gone-to');
-
             return;
         }
 

@@ -237,14 +237,14 @@ const MapView = new Lang.Class({
         this._gotoBBox(contact.bounding_box);
     },
 
-    showSearchResult: function(place) {
+    showSearchResult: function(place, animation) {
         this._placeLayer.remove_all();
         this.routeVisible = false;
         let placeMarker = new PlaceMarker.PlaceMarker({ place: place,
                                                         mapView: this });
 
         this._placeLayer.add_marker(placeMarker);
-        placeMarker.goToAndSelect(true);
+        placeMarker.goToAndSelect(animation);
 
         return placeMarker;
     },

@@ -109,7 +109,7 @@ const MainWindow = new Lang.Class({
                                                    });
         placeEntry.connect('notify::place', (function() {
             if (placeEntry.place) {
-                this._mapView.showSearchResult(placeEntry.place);
+                this._mapView.showSearchResult(placeEntry.place, true);
             }
         }).bind(this));
 
