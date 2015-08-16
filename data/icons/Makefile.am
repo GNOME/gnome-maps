@@ -46,6 +46,8 @@ EXTRA_DIST =								\
 	$(public_icons)							\
 	$(private_icons)						\
 	gnome-maps.svg							\
+	hicolor_apps_24x24_user-location.svg				\
+	hicolor_apps_24x24_user-location-compass.svg			\
 	$(NULL)
 
 ###############################################################################
