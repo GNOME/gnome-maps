@@ -22,6 +22,7 @@ const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 
+const Application = imports.application;
 const PlaceListRow = imports.placeListRow;
 const PlaceStore = imports.placeStore;
 
@@ -60,6 +61,10 @@ const SearchPopup = new Lang.Class({
 
         this._entry = this.relative_to;
         this._entry.connect('notify::place', (function() {
+            this._mode = Mode.ACTIVATED;
+        }).bind(this));
+
+        Application.routeService.route.connect('updated', (function() {
             this._mode = Mode.ACTIVATED;
         }).bind(this));
 
@@ -127,7 +132,7 @@ const SearchPopup = new Lang.Class({
     },
 
     showCompletion: function() {
-        if (this._mode === Mode.ACTIVATED) {
+        if (this._mode === undefined || this._mode === Mode.ACTIVATED) {
             this._mode = Mode.IDLE;
             return;
         }
