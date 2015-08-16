@@ -25,10 +25,13 @@ const Gdk = imports.gi.Gdk;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
+const Mainloop = imports.mainloop;
 
 const Application = imports.application;
+const PlaceStore  = imports.placeStore;
 const RouteEntry = imports.routeEntry;
 const RouteQuery = imports.routeQuery;
+const StoredRoute = imports.storedRoute;
 const Utils = imports.utils;
 
 const InstructionRow = new Lang.Class({
@@ -129,6 +132,11 @@ const Sidebar = new Lang.Class({
         }).bind(this));
     },
 
+    _cancelStore: function() {
+        Mainloop.source_remove(this._storeRouteTimeoutId);
+        this._storeRouteTimeoutId = 0;
+    },
+
     _createRouteEntry: function(index, point) {
         let type;
         if (index === 0)
@@ -181,11 +189,34 @@ const Sidebar = new Lang.Class({
                 this._instructionStack.visible_child = this._instructionSpinner;
             else
                 this._clearInstructions();
+
+            if (this._storeRouteTimeoutId)
+                this._cancelStore();
+
         }).bind(this));
 
         route.connect('update', (function() {
             this._clearInstructions();
             this._instructionStack.visible_child = this._instructionWindow;
+
+            if (this._storeRouteTimeoutId)
+                this._cancelStore();
+
+            this._storeRouteTimeoutId = Mainloop.timeout_add(5000, (function() {
+                let placeStore = Application.placeStore;
+                let places = query.filledPoints.map(function(point) {
+                    return point.place;
+                });
+                let storedRoute = new StoredRoute.StoredRoute({
+                    route: route,
+                    places: places
+                });
+
+                placeStore.addPlace(storedRoute,
+                                    PlaceStore.PlaceType.RECENT_ROUTE);
+
+                this._storeRouteTimeoutId = 0;
+            }).bind(this));
 
             route.turnPoints.forEach((function(turnPoint) {
                 let row = new InstructionRow({ visible: true,
