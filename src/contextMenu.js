@@ -20,6 +20,8 @@
  */
 
 const Clutter = imports.gi.Clutter;
+const Gdk = imports.gi.Gdk;
+const Geocode = imports.gi.GeocodeGlib;
 const Gtk = imports.gi.Gtk;
 const Mainloop = imports.mainloop;
 
@@ -32,7 +34,8 @@ const ContextMenu = new Lang.Class({
     Name: 'ContextMenu',
     Extends: Gtk.Menu,
     Template: 'resource:///org/gnome/Maps/ui/context-menu.ui',
-    InternalChildren: [ 'whatsHereItem' ],
+    InternalChildren: [ 'whatsHereItem',
+                        'geoURIItem' ],
 
     _init: function(params) {
         this._mapView = params.mapView;
@@ -45,6 +48,8 @@ const ContextMenu = new Lang.Class({
 
         this._whatsHereItem.connect('activate',
                                     this._onWhatsHereActivated.bind(this));
+        this._geoURIItem.connect('activate',
+                                 this._onGeoURIActivated.bind(this));
     },
 
     _onButtonReleaseEvent: function(actor, event) {
@@ -70,4 +75,15 @@ const ContextMenu = new Lang.Class({
             this._mapView.showSearchResult(place, false);
         }).bind(this));
     },
+
+    _onGeoURIActivated: function() {
+        let location = new Location.Location({ latitude: this._latitude,
+                                               longitude: this._longitude,
+                                               accuracy: 0 });
+        let display = Gdk.Display.get_default();
+        let clipboard = Gtk.Clipboard.get_default(display);
+        let uri = location.to_uri(Geocode.LocationURIScheme.GEO);
+
+        clipboard.set_text(uri, uri.length);
+    }
 });
