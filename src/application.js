@@ -187,6 +187,8 @@ const Application = new Lang.Class({
             }
         });
 
+        Gtk.IconTheme.get_default().append_search_path(GLib.build_filenamev([pkg.pkgdatadir,
+                                                                             'icons']));
         this._initPlaceStore();
         this._initAppMenu();
     },
@@ -208,8 +210,6 @@ const Application = new Lang.Class({
         if (this._mainWindow)
             return;
 
-        Gtk.IconTheme.get_default().append_search_path(GLib.build_filenamev([pkg.pkgdatadir,
-                                                                             'icons']));
         let overlay = new Gtk.Overlay({ visible: true, can_focus: false });
         notificationManager = new NotificationManager.NotificationManager(overlay);
         this._mainWindow = new MainWindow.MainWindow({ application: this,
