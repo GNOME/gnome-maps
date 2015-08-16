@@ -134,6 +134,9 @@ const PlaceEntry = new Lang.Class({
     },
 
     _locEquals: function(placeA, placeB) {
+        if (!placeA.location || !placeB.location)
+            return false;
+
         return (placeA.location.latitude === placeB.location.latitude &&
                 placeA.location.longitude === placeB.location.longitude);
     },
