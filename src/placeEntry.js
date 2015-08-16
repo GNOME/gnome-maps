@@ -53,7 +53,7 @@ const PlaceEntry = new Lang.Class({
         if (!this._place && !p)
             return;
 
-        if (this._place && p && this._loqEquals(this._place, p))
+        if (this._place && p && this._locEquals(this._place, p))
             return;
 
         if (p) {
