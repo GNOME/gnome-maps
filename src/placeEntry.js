@@ -195,6 +195,20 @@ const PlaceEntry = new Lang.Class({
             return true;
         }
 
+        if (this.text.startsWith('geo:')) {
+            let location = new Geocode.Location();
+
+            try {
+                location.set_from_uri(this.text);
+                this.place = new Place.Place({ location: location });
+            } catch(e) {
+                let msg = _("Failed to parse Geo URI");
+                Application.notificationManager.showMessage(msg);
+            }
+
+            return true;
+        }
+
         let parsedLocation = this._parseCoordinates(this.text);
         if (parsedLocation) {
             this.place = new Place.Place({ location: parsedLocation });
