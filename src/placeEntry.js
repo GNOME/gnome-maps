@@ -170,7 +170,7 @@ const PlaceEntry = new Lang.Class({
         let place = model.get_value(iter, PlaceStore.Columns.PLACE);
         let type = model.get_value(iter, PlaceStore.Columns.TYPE);
 
-        if (!this._matchRoute && type === PlaceStore.PlaceType.FAVORITE_ROUTE)
+        if (!this._matchRoute && type === PlaceStore.PlaceType.RECENT_ROUTE)
             return false;
 
         if (place !== null)
