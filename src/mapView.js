@@ -251,6 +251,7 @@ const MapView = new Lang.Class({
             let storedLast = stored.places.length - 1;
             query.points[0].place = stored.places[0];
             query.points[1].place = stored.places[storedLast];
+            query.transportation = stored.transportation;
 
             for (let i = 1; i < storedLast; i++) {
                 let point = query.addPoint(i);

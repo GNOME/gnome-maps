@@ -27,6 +27,7 @@ const Lang = imports.lang;
 const Application = imports.application;
 const Place = imports.place;
 const Route = imports.route;
+const RouteQuery = imports.routeQuery;
 
 const StoredRoute = new Lang.Class({
     Name: 'StoredRoute',
@@ -35,6 +36,9 @@ const StoredRoute = new Lang.Class({
     _init: function(params) {
         let route = params.route;
         delete params.route;
+
+        this._transportation = params.transportation || null;
+        delete params.transportation;
 
         this.route = new Route.Route();
         this.route.update({ path: route.path,
@@ -56,8 +60,6 @@ const StoredRoute = new Lang.Class({
             this.places.push(new Place.Place({ place: place }));
         }).bind(this));
 
-        this._icon = Gio.Icon.new_for_string('route-button-symbolic');
-
         this.parent(params);
     },
 
@@ -67,12 +69,31 @@ const StoredRoute = new Lang.Class({
         }).join(' → ');
     },
 
+    get transportation() {
+        return this._transportation;
+    },
+
     get icon() {
-        return this._icon;
+        let transport = RouteQuery.Transportation;
+        let icon = Gio.Icon.new_for_string('route-button-symbolic');
+
+        switch(this._transportation) {
+        case transport.PEDESTRIAN:
+            icon = Gio.Icon.new_for_string('route-pedestrian-symbolic');
+            break;
+        case transport.CAR:
+            icon = Gio.Icon.new_for_string('route-car-symbolic');
+            break;
+        case transport.BIKE:
+            icon = Gio.Icon.new_for_string('route-bike-symbolic');
+            break;
+        }
+
+        return icon;
     },
 
     get uniqueID() {
-        return this.places.map(function(place) {
+        return this._transportation + '-' + this.places.map(function(place) {
             return [place.osm_type, place.osm_id].join('-');
         }).join('-');
     },
@@ -110,6 +131,7 @@ const StoredRoute = new Lang.Class({
         });
 
         return { id: -1,
+                 transportation: this._transportation,
                  route: route,
                  places: places };
     }
@@ -119,11 +141,16 @@ StoredRoute.fromJSON = function(obj) {
     let props;
     let places = [];
     let route;
+    let transportation = null;
 
     for (let key in obj) {
         let prop = obj[key];
 
         switch(key) {
+        case 'transportation':
+            transportation = prop;
+            break;
+
         case 'route':
             route = new Route.Route();
             prop.path = prop.path.map(function(coordinate) {
@@ -156,6 +183,7 @@ StoredRoute.fromJSON = function(obj) {
             break;
         }
     }
-    return new StoredRoute({ route: route,
+    return new StoredRoute({ transportation: transportation,
+                             route: route,
                              places: places });
 };

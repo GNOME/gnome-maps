@@ -60,7 +60,8 @@ const PlaceListRow = new Lang.Class({
         this._details.label = formatter.getDetailsString();
         this._icon.gicon = this.place.icon;
 
-        if (type === PlaceStore.PlaceType.RECENT)
+        if (type === PlaceStore.PlaceType.RECENT ||
+            type === PlaceStore.PlaceType.RECENT_ROUTE)
             this._typeIcon.icon_name = 'document-open-recent-symbolic';
         else if (type === PlaceStore.PlaceType.FAVORITE)
             this._typeIcon.icon_name = 'emblem-favorite-symbolic';

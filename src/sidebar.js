@@ -208,6 +208,7 @@ const Sidebar = new Lang.Class({
                     return point.place;
                 });
                 let storedRoute = new StoredRoute.StoredRoute({
+                    transportation: query.transportation,
                     route: route,
                     places: places
                 });
