@@ -24,7 +24,7 @@ const Lang = imports.lang;
 const PlaceFormatter = imports.placeFormatter;
 const PlaceStore = imports.placeStore;
 
-const ROW_HEIGHT = 50;
+const ROW_HEIGHT = 55;
 
 const PlaceListRow = new Lang.Class({
     Name: 'PlaceListRow',

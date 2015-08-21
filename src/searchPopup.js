@@ -27,7 +27,6 @@ const PlaceListRow = imports.placeListRow;
 const PlaceStore = imports.placeStore;
 
 const _PLACE_ICON_SIZE = 20;
-const _ROW_HEIGHT = 50;
 
 const Mode = {
     IDLE: 0, // Nothing going on
@@ -98,8 +97,8 @@ const SearchPopup = new Lang.Class({
                 row.set_header(null);
         });
 
-        let rowHeight = PlaceListRow.ROW_HEIGHT + 6; // For the header
-        this._scrolledWindow.min_content_height = numVisible * rowHeight;
+        let rowHeight = PlaceListRow.ROW_HEIGHT;
+        this._scrolledWindow.min_content_height = numVisible * rowHeight + 6;
 
         // This silents warning at Maps exit about this widget being
         // visible but not mapped.
