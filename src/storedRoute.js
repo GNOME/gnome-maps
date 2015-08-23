@@ -37,7 +37,7 @@ const StoredRoute = new Lang.Class({
         let route = params.route;
         delete params.route;
 
-        this._transportation = params.transportation || null;
+        this._transportation = params.transportation;
         delete params.transportation;
 
         this.route = new Route.Route();
