@@ -119,7 +119,10 @@ get_contact (FolksIndividual *individual)
 
   iter = gee_iterable_iterator (GEE_ITERABLE (addresses));
   if (!gee_iterator_has_next (iter))
-    return NULL;
+    {
+      g_object_unref (iter);
+      return NULL;
+    }
 
   contact = maps_contact_new ();
 
@@ -186,6 +189,7 @@ get_contact (FolksIndividual *individual)
 
       maps_contact_add_place (contact, place);
     }
+  g_object_unref (iter);
 
   return contact;
 }
@@ -253,6 +257,7 @@ aggregator_quiescent_notify (FolksIndividualAggregator *aggregator,
       if (contact)
         store->priv->list = g_list_prepend (store->priv->list, contact);
     }
+  g_clear_object (&iter);
 
   store->priv->state = MAPS_CONTACT_STORE_STATE_LOADED;
   g_object_notify (G_OBJECT (store), "state");
