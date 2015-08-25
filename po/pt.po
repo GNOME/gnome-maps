@@ -11,10 +11,10 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-06-07 19:18+0000\n"
-"PO-Revision-Date: 2015-06-10 09:52+0100\n"
+"POT-Creation-Date: 2015-08-24 19:25+0000\n"
+"PO-Revision-Date: 2015-08-25 06:29+0100\n"
 "Last-Translator: Pedro Albuquerque <palbuquerque73@gmail.com>\n"
-"Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
+"Language-Team: Português <palbuquerque73@gmail.com>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -54,7 +54,7 @@ msgstr ""
 
 #. Translators: This is the program name. */
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:78 ../src/mainWindow.js:366
+#: ../src/application.js:77 ../src/mainWindow.js:367
 msgid "Maps"
 msgstr "Mapas"
 
@@ -107,10 +107,20 @@ msgid "Number of recently visited places to store."
 msgstr "Número de locais recentemente visitados a armazenar."
 
 #: ../data/org.gnome.Maps.gschema.xml.h:11
+#| msgid "Number of recent places to store"
+msgid "Number of recent routes to store"
+msgstr "Número de rotas recentes a armazenar"
+
+#: ../data/org.gnome.Maps.gschema.xml.h:12
+#| msgid "Number of recently visited places to store."
+msgid "Number of recently visited routes to store."
+msgstr "Número de rotas recentemente visitadas a armazenar."
+
+#: ../data/org.gnome.Maps.gschema.xml.h:13
 msgid "Facebook check-in privacy setting"
 msgstr "Definição de privacidade para o Facebook"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:12
+#: ../data/org.gnome.Maps.gschema.xml.h:14
 msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
@@ -118,11 +128,11 @@ msgstr ""
 "Última definição de privacidade usada para o Facebook. Valores possíveis são "
 "TODOS, AMIGOS_DE_AMIGOS, TODOS_AMIGOS ou EU."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:13
+#: ../data/org.gnome.Maps.gschema.xml.h:15
 msgid "Foursquare check-in privacy setting"
 msgstr "Definição de privacidade para o Foursquare"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:14
+#: ../data/org.gnome.Maps.gschema.xml.h:16
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
@@ -130,11 +140,11 @@ msgstr ""
 "Última definição de privacidade usada para o Foursquare. Valores possíveis "
 "são: público, seguidores ou privado."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:15
+#: ../data/org.gnome.Maps.gschema.xml.h:17
 msgid "Foursquare check-in Facebook broadcasting"
 msgstr "Emissão do Foursquare para o Facebook"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:16
+#: ../data/org.gnome.Maps.gschema.xml.h:18
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
@@ -142,11 +152,11 @@ msgstr ""
 "Indica se o Foursquare deve emitir como publicação na conta do Facebook "
 "associada à conta Foursquare."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:17
+#: ../data/org.gnome.Maps.gschema.xml.h:19
 msgid "Foursquare check-in Twitter broadcasting"
 msgstr "Emissão do Foursquare para o Twitter"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:18
+#: ../data/org.gnome.Maps.gschema.xml.h:20
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
@@ -215,6 +225,11 @@ msgstr "Privado"
 msgid "What’s here?"
 msgstr "O que há aqui?"
 
+#: ../data/ui/context-menu.ui.h:2
+#| msgid "Open location"
+msgid "Copy Location"
+msgstr "Copiar localização"
+
 #: ../data/ui/location-service-notification.ui.h:1
 msgid "Turn on location services to find your location"
 msgstr "Ligue os serviços de localização para saber onde está"
@@ -276,7 +291,6 @@ msgid "Press enter to search"
 msgstr "Prima Enter para procurar"
 
 #: ../data/ui/send-to-dialog.ui.h:1
-#| msgid "Current location"
 msgid "Open location"
 msgstr "Abrir localização"
 
@@ -292,7 +306,7 @@ msgstr "Procura de rota por GraphHopper"
 msgid "Show more results"
 msgstr "Mostrar mais resultados"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:207
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:209
 msgid "Current location"
 msgstr "Localização atual"
 
@@ -301,29 +315,6 @@ msgstr "Localização atual"
 #, no-c-format
 msgid "Accuracy: %s"
 msgstr "Precisão: %s"
-
-#. Translators: %s is the place name that user wanted to check-in */
-#: ../src/checkIn.js:135
-#, javascript-format
-msgid "Cannot find \"%s\" in the social service"
-msgstr "Impossível encontrar \"%s\" no serviço social"
-
-#: ../src/checkIn.js:137
-msgid "Cannot find a suitable place to check-in in this location"
-msgstr ""
-"Impossível encontrar um local adequado para inscrição nesta localização"
-
-#: ../src/checkIn.js:141
-msgid ""
-"Credentials have expired, please open Online Accounts to sign in and enable "
-"this account"
-msgstr ""
-"As credenciais expiraram, por favor, abra as Contas online para iniciar "
-"sessão e ativar esta conta"
-
-#: ../src/checkIn.js:153 ../src/checkInDialog.js:289
-msgid "An error has occurred"
-msgstr "Ocorreu um erro"
 
 #: ../src/checkInDialog.js:176
 msgid "Select an account"
@@ -367,69 +358,46 @@ msgstr "Inscrever-se em %s"
 msgid "Write an optional message to check in to %s."
 msgstr "Escreva uma mensagem opcional para se inscrever em %s."
 
-#: ../src/mainWindow.js:314
+#: ../src/checkInDialog.js:289 ../src/checkIn.js:153
+msgid "An error has occurred"
+msgstr "Ocorreu um erro"
+
+#. Translators: %s is the place name that user wanted to check-in */
+#: ../src/checkIn.js:135
+#, javascript-format
+msgid "Cannot find \"%s\" in the social service"
+msgstr "Impossível encontrar \"%s\" no serviço social"
+
+#: ../src/checkIn.js:137
+msgid "Cannot find a suitable place to check-in in this location"
+msgstr ""
+"Impossível encontrar um local adequado para inscrição nesta localização"
+
+#: ../src/checkIn.js:141
+msgid ""
+"Credentials have expired, please open Online Accounts to sign in and enable "
+"this account"
+msgstr ""
+"As credenciais expiraram, por favor, abra as Contas online para iniciar "
+"sessão e ativar esta conta"
+
+#: ../src/mainWindow.js:315
 msgid "Failed to connect to location service"
 msgstr "Falha ao ligar ao serviço de localização"
 
-#: ../src/mainWindow.js:319
-#| msgid "No route found."
+#: ../src/mainWindow.js:320
 msgid "Position not found"
 msgstr "Posição não encontrada."
 
-#: ../src/mainWindow.js:364
+#: ../src/mainWindow.js:365
 msgid "translator-credits"
 msgstr ""
 "António Lima <amrlima@gmail.com>\n"
 "Pedro Albuquerque <palbuquerque73@gmail.com>"
 
-#: ../src/mainWindow.js:367
+#: ../src/mainWindow.js:368
 msgid "A map application for GNOME"
 msgstr "Uma aplicação de mapas para o GNOME"
-
-#. Translators:
-#. * This means wheelchairs have full unrestricted access.
-#. */
-#: ../src/place.js:120
-msgid "yes"
-msgstr "sim"
-
-#. Translators:
-#. * This means wheelchairs have partial access (e.g some areas
-#. * can be accessed and others not, areas requiring assistance
-#. * by someone pushing up a steep gradient).
-#. */
-#: ../src/place.js:127
-msgid "limited"
-msgstr "limitado"
-
-#. Translators:
-#. * This means wheelchairs have no unrestricted access
-#. * (e.g. stair only access).
-#. */
-#: ../src/place.js:133
-msgid "no"
-msgstr "não"
-
-#. Translators:
-#. * This means that the way or area is designated or purpose built
-#. * for wheelchairs (e.g. elevators designed for wheelchair access
-#. * only). This is rarely used.
-#. */
-#: ../src/place.js:140
-msgid "designated"
-msgstr "designado"
-
-#: ../src/routeService.js:69
-msgid "No route found."
-msgstr "Rota não encontrada."
-
-#: ../src/routeService.js:76
-msgid "Route request failed."
-msgstr "Pedido de rota falhou."
-
-#: ../src/routeService.js:147
-msgid "Start!"
-msgstr "Iniciar!"
 
 #: ../src/placeBubble.js:101
 #, javascript-format
@@ -460,8 +428,57 @@ msgstr "Wikipedia"
 msgid "Wheelchair access: %s"
 msgstr "Acesso para deficientes: %s"
 
+#: ../src/placeEntry.js:215
+msgid "Failed to parse Geo URI"
+msgstr "Falha ao processar URI Geo"
+
+#. Translators:
+#. * This means wheelchairs have full unrestricted access.
+#. */
+#: ../src/place.js:121
+msgid "yes"
+msgstr "sim"
+
+#. Translators:
+#. * This means wheelchairs have partial access (e.g some areas
+#. * can be accessed and others not, areas requiring assistance
+#. * by someone pushing up a steep gradient).
+#. */
+#: ../src/place.js:128
+msgid "limited"
+msgstr "limitado"
+
+#. Translators:
+#. * This means wheelchairs have no unrestricted access
+#. * (e.g. stair only access).
+#. */
+#: ../src/place.js:134
+msgid "no"
+msgstr "não"
+
+#. Translators:
+#. * This means that the way or area is designated or purpose built
+#. * for wheelchairs (e.g. elevators designed for wheelchair access
+#. * only). This is rarely used.
+#. */
+#: ../src/place.js:141
+msgid "designated"
+msgstr "designado"
+
+#: ../src/routeService.js:90
+msgid "No route found."
+msgstr "Rota não encontrada."
+
+#: ../src/routeService.js:97
+msgid "Route request failed."
+msgstr "Pedido de rota falhou."
+
+#: ../src/routeService.js:168
+msgid "Start!"
+msgstr "Iniciar!"
+
 #. Translators: %s is a time expression with the format "%f h" or "%f min" */
-#: ../src/sidebar.js:197
+#: ../src/sidebar.js:229
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Tempo estimado: %s"
@@ -633,7 +650,6 @@ msgstr "%f m"
 #. Translators: This is a distance measured in miles */
 #: ../src/utils.js:380
 #, javascript-format
-#| msgid "%f min"
 msgid "%f mi"
 msgstr "%f mi"
 
