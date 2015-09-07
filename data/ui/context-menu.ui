@@ -4,6 +4,12 @@
   <template class="Gjs_ContextMenu" parent="GtkMenu">
     <property name="visible">False</property>
     <child>
+      <object class="GtkMenuItem" id="routeItem">
+        <property name="name">route-item</property>
+        <property name="visible">True</property>
+      </object>
+    </child>
+    <child>
       <object class="GtkMenuItem" id="whatsHereItem">
         <property name="name">whats-here-item</property>
         <property name="label" translatable="yes">What’s here?</property>

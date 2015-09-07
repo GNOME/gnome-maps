@@ -50,6 +50,10 @@ const ContextMenu = new Lang.Class({
                                     this._onWhatsHereActivated.bind(this));
         this._geoURIItem.connect('activate',
                                  this._onGeoURIActivated.bind(this));
+        this._routeItem.connect('activate',
+                                this._onRouteActivated.bind(this));
+        Application.routeService.query.connect('notify::points',
+                                               this._routingUpdate.bind(this));
     },
 
     _onButtonReleaseEvent: function(actor, event) {
@@ -64,6 +68,12 @@ const ContextMenu = new Lang.Class({
                 this.popup(null, null, null, button, event.get_time());
             }).bind(this));
         }
+    },
+
+    _routingUpdate: function() {
+        let query = Application.routeService.query;
+
+        
     },
 
     _onWhatsHereActivated: function() {
