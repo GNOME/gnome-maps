@@ -30,6 +30,7 @@ const Application = imports.application;
 const ExportViewDialog = imports.exportViewDialog;
 const Lang = imports.lang;
 const Location = imports.location;
+const Place = imports.place;
 const Utils = imports.utils;
 
 const ContextMenu = new Lang.Class({
@@ -38,7 +39,8 @@ const ContextMenu = new Lang.Class({
     Template: 'resource:///org/gnome/Maps/ui/context-menu.ui',
     InternalChildren: [ 'whatsHereItem',
                         'geoURIItem',
-                        'exportItem' ],
+                        'exportItem',
+                        'routeItem' ],
 
     _init: function(params) {
         this._mapView = params.mapView;
@@ -55,6 +57,12 @@ const ContextMenu = new Lang.Class({
                                  this._onGeoURIActivated.bind(this));
         this._exportItem.connect('activate',
                                  this._onExportActivated.bind(this));
+        this._routeItem.connect('activate',
+                                this._onRouteActivated.bind(this));
+        Application.routeService.query.connect('notify::points',
+                                               this._routingUpdate.bind(this));
+        this._routeItem.visible = false;
+        this._routingUpdate();
     },
 
     _onButtonReleaseEvent: function(actor, event) {
@@ -68,6 +76,38 @@ const ContextMenu = new Lang.Class({
                 // Need idle to avoid Clutter dead-lock on re-entrance
                 this.popup(null, null, null, button, event.get_time());
             }).bind(this));
+        }
+    },
+
+    _routingUpdate: function() {
+        let query = Application.routeService.query;
+
+        if (query.points.length === 0)
+            return;
+
+        this._routeItem.visible = true;
+        if (!query.points[0].place) {
+            this._routeItem.label = _("Route from here");
+        } else if (query.filledPoints.length > 1) {
+            this._routeItem.label = _("Add destination");
+        } else {
+            this._routeItem.label = _("Route to here");
+        }
+    },
+
+    _onRouteActivated: function() {
+        let query = Application.routeService.query;
+        let location = new Location.Location({ latitude: this._latitude,
+                                               longitude: this._longitude,
+                                               accuracy: 0 });
+        let place = new Place.Place({ location: location });
+
+        if (!query.points[0].place) {
+            query.points[0].place = place;
+        } else if (query.filledPoints.length > 1) {
+            query.addPoint(-1).place = place;
+        } else {
+            query.points[query.points.length - 1].place = place;
         }
     },
 
