@@ -213,9 +213,10 @@ const Sidebar = new Lang.Class({
                     places: places
                 });
 
-                placeStore.addPlace(storedRoute,
-                                    PlaceStore.PlaceType.RECENT_ROUTE);
-
+                if (!storedRoute.containsNull) {
+                    placeStore.addPlace(storedRoute,
+                                        PlaceStore.PlaceType.RECENT_ROUTE);
+                }
                 this._storeRouteTimeoutId = 0;
             }).bind(this));
 

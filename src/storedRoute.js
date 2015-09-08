@@ -102,6 +102,18 @@ const StoredRoute = new Lang.Class({
         return this._containsCurrentLocation;
     },
 
+    get containsNull() {
+        let hasNull = false;
+
+        for (let p = 0; p < this.places.length; p++) {
+            if (!this.places[p].name) {
+                hasNull = true;
+                break;
+            }
+        }
+        return hasNull;
+    },
+
     toJSON: function() {
         let turnPoints = this.route.turnPoints.map(function(turnPoint) {
             let coordinate = { latitude: turnPoint.coordinate.latitude,
