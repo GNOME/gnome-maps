@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-29 21:25+0200\n"
-"PO-Revision-Date: 2015-08-29 21:27+0200\n"
+"POT-Creation-Date: 2015-09-11 19:22+0200\n"
+"PO-Revision-Date: 2015-09-11 19:23+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -55,7 +55,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:367
+#: ../src/application.js:77 ../src/mainWindow.js:373
 msgid "Maps"
 msgstr "Mapy"
 
@@ -316,6 +316,15 @@ msgstr "Obecne położenie"
 msgid "Accuracy: %s"
 msgstr "Dokładność: %s"
 
+#: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
+#: ../lib/maps-file-tile-source.c:459
+msgid "Failed to find tile structure in directory"
+msgstr "Odnalezienie struktury kafli w katalogu się nie powiodło"
+
+#: ../src/application.js:86
+msgid "A path to a local tiles directory structure"
+msgstr "Ścieżka do lokalnej struktury katalogów kafli"
+
 #: ../src/checkInDialog.js:176
 msgid "Select an account"
 msgstr "Wybór konta"
@@ -380,22 +389,22 @@ msgstr ""
 "Uwierzytelnienie wygasło. Proszę otworzyć Konta online, aby zalogować się "
 "lub włączyć to konto"
 
-#: ../src/mainWindow.js:315
+#: ../src/mainWindow.js:321
 msgid "Failed to connect to location service"
 msgstr "Połączenie z usługą położenia się nie powiodło"
 
-#: ../src/mainWindow.js:320
+#: ../src/mainWindow.js:326
 msgid "Position not found"
 msgstr "Nie odnaleziono pozycji"
 
-#: ../src/mainWindow.js:365
+#: ../src/mainWindow.js:371
 msgid "translator-credits"
 msgstr ""
 "Piotr Drąg <piotrdrag@gmail.com>, 2013-2015\n"
 "Paweł Żołnowski <pawel@zolnowski.name>, 2014-2015\n"
 "Aviary.pl <gnomepl@aviary.pl>, 2013-2015"
 
-#: ../src/mainWindow.js:368
+#: ../src/mainWindow.js:374
 msgid "A map application for GNOME"
 msgstr "Program do wyświetlania map dla środowiska GNOME"
 
@@ -478,7 +487,7 @@ msgid "Start!"
 msgstr "Start!"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:229
+#: ../src/sidebar.js:230
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Przybliżony czas: %s"
