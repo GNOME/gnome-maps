@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-08-19 07:24+0000\n"
-"PO-Revision-Date: 2015-08-19 13:02+0200\n"
+"POT-Creation-Date: 2015-09-11 19:31+0000\n"
+"PO-Revision-Date: 2015-09-11 22:55+0200\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
 "Language: sk\n"
@@ -51,7 +51,7 @@ msgstr ""
 # desktop entry name
 #. Translators: This is the program name. */
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:367
+#: ../src/application.js:77 ../src/mainWindow.js:373
 msgid "Maps"
 msgstr "Mapy"
 
@@ -330,6 +330,15 @@ msgstr "Aktuálne umiestnenie"
 msgid "Accuracy: %s"
 msgstr "Presnosť: %s"
 
+#: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
+#: ../lib/maps-file-tile-source.c:459
+msgid "Failed to find tile structure in directory"
+msgstr "Zlyhalo nájdenie štruktúry dlaždíc v adresári"
+
+#: ../src/application.js:86
+msgid "A path to a local tiles directory structure"
+msgstr "Cesta k štruktúre adresárov miestnych dlaždíc"
+
 #: ../src/checkInDialog.js:176
 msgid "Select an account"
 msgstr "Výber účtu"
@@ -394,19 +403,19 @@ msgstr ""
 "Platnosť poverení vypršala. Prosím, otvorte Účty služieb na prihlásenie a "
 "povolenie tohto účtu"
 
-#: ../src/mainWindow.js:315
+#: ../src/mainWindow.js:321
 msgid "Failed to connect to location service"
 msgstr "Zlyhalo pripojenie k lokalizačnej službe"
 
-#: ../src/mainWindow.js:320
+#: ../src/mainWindow.js:326
 msgid "Position not found"
 msgstr "Pozícia sa nenašla"
 
-#: ../src/mainWindow.js:365
+#: ../src/mainWindow.js:371
 msgid "translator-credits"
 msgstr "Dušan Kazik <prescott66@gmail.com>"
 
-#: ../src/mainWindow.js:368
+#: ../src/mainWindow.js:374
 msgid "A map application for GNOME"
 msgstr "Aplikácia na prezeranie máp pre GNOME"
 
@@ -489,7 +498,7 @@ msgid "Start!"
 msgstr "Začiatok!"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min" */
-#: ../src/sidebar.js:228
+#: ../src/sidebar.js:230
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Odhadovaný čas: %s"
