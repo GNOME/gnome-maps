@@ -471,8 +471,8 @@ gboolean
 maps_file_tile_source_prepare (MapsFileTileSource *tile_source,
                                GError            **error)
 {
-  g_return_if_fail (MAPS_IS_FILE_TILE_SOURCE (tile_source));
-  g_return_if_fail (tile_source->priv->path != NULL);
+  g_return_val_if_fail (MAPS_IS_FILE_TILE_SOURCE (tile_source), FALSE);
+  g_return_val_if_fail (tile_source->priv->path != NULL, FALSE);
 
   ChamplainMapSource *source = (ChamplainMapSource *) tile_source;
   gboolean ret = TRUE;
