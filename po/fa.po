@@ -1,6 +1,6 @@
 # Persian translation for gnome-maps.
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
-# Arash Mousavi <mousavi.arash@gmail.com>, 2013, 2014.
+# Arash Mousavi <mousavi.arash@gmail.com>, 2013, 2014, 2015.
 # Danial Behzadi <dani.behzi@ubuntu.com>, 2014.
 #
 msgid ""
@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps gnome-3-10\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-10-10 17:59+0000\n"
-"PO-Revision-Date: 2014-10-11 00:27+0330\n"
+"POT-Creation-Date: 2015-09-12 07:30+0000\n"
+"PO-Revision-Date: 2015-09-13 01:56+0430\n"
 "Last-Translator: Arash Mousavi <mousavi.arash@gmail.com>\n"
 "Language-Team: Persian\n"
 "Language: fa\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.6.9\n"
+"X-Generator: Poedit 1.8.4\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid ""
@@ -25,9 +25,9 @@ msgid ""
 "quickly find the place you’re looking for by searching for a city or street, "
 "or locate a place to meet a friend."
 msgstr ""
-"«نقشه‌ها» به شما دسترسی سریع به نقشه‌ها در تمام دنیا را می‌دهد. این برنامه شما "
-"را قادر می‌سازد با جست‌وجو برای یک شهر یا خیابان، مکانی را که به دنبالش "
-"می‌گردید بیابید یا مکانی را برای ملاقات با یک دوست مشخّص کنید."
+"«نقشه‌ها» به شما دسترسی سریع به نقشه‌ها در تمام دنیا را می‌دهد. این برنامه شما را "
+"قادر می‌سازد با جست‌وجو برای یک شهر یا خیابان، مکانی را که به دنبالش می‌گردید "
+"بیابید یا مکانی را برای ملاقات با یک دوست مشخّص کنید."
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:2
 msgid ""
@@ -49,204 +49,631 @@ msgstr ""
 "Street, Boston» یا «WiFi Access near Alexanderplatz, Berlin»"
 
 #. Translators: This is the program name. */
-#: ../data/org.gnome.Maps.desktop.in.in.h:1 ../src/application.js:66
-#: ../src/mainWindow.js:302 ../src/main-window.ui.h:1
+#: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
+#: ../src/application.js:77 ../src/mainWindow.js:373
 msgid "Maps"
 msgstr "نقشه‌ها"
 
-#: ../data/org.gnome.Maps.desktop.in.in.h:2
+#: ../data/org.gnome.Maps.desktop.in.h:2
 msgid "A simple maps application"
 msgstr "یک برنامه ساده نقشه"
 
-#: ../data/org.gnome.Maps.desktop.in.in.h:3
+#: ../data/org.gnome.Maps.desktop.in.h:3
 msgid "Maps;"
 msgstr "نقشه;نقشه‌ها;"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:1
+#: ../data/org.gnome.Maps.gschema.xml.h:1
 msgid "Window size"
 msgstr "اندازه پنجره"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:2
+#: ../data/org.gnome.Maps.gschema.xml.h:2
 msgid "Window size (width and height)."
 msgstr "اندازه پنجره (پهنا و ارتفاع)"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:3
+#: ../data/org.gnome.Maps.gschema.xml.h:3
 msgid "Window position"
 msgstr "مکان پنجره"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:4
+#: ../data/org.gnome.Maps.gschema.xml.h:4
 msgid "Window position (X and Y)."
 msgstr "مکان پنجره (X و Y)."
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:5
+#: ../data/org.gnome.Maps.gschema.xml.h:5
 msgid "Window maximized"
 msgstr "پنجره حداکثر شد"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:6
+#: ../data/org.gnome.Maps.gschema.xml.h:6
 msgid "Window maximization state"
 msgstr "وضعیت حداکثر شده پنجره"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:7
-msgid "Last known location and accuracy"
-msgstr "آخرین مکان و دقت شناخته شده"
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:8
-msgid ""
-"Last known location (latitude and longitude in degrees) and accuracy (in "
-"meters)."
-msgstr "آخرین مکان شناخته شده (عرض و طول جغرافیایی به درجه) و دقت (به متر)"
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:9
-msgid "Description of last known location"
-msgstr "توضیحات آخرین مکان شناخته شده"
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:10
-msgid "Description of last known location of user."
-msgstr "توضیحات آخرین مکان شناخته شده کاربر."
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:11
+#: ../data/org.gnome.Maps.gschema.xml.h:7
 msgid "Maximum number of search results"
 msgstr "حداکثر تعداد نتایج جستجو"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:12
+#: ../data/org.gnome.Maps.gschema.xml.h:8
 msgid "Maximum number of search results from geocode search."
 msgstr "حداکثر تعداد نتایج جستجو از طریق جستجو کد جغرافیایی."
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:13
-msgid "User set last known location"
-msgstr "آخرین مکان شناخته شده تنظیم شده توسط کاربر"
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:14
-msgid "Whether the last known location was set manually by the user."
-msgstr "این که آخرین مکان شناخته شده به صورت دستی توسط کاربر تنظیم شده یا نه."
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:15
+#: ../data/org.gnome.Maps.gschema.xml.h:9
 msgid "Number of recent places to store"
 msgstr "تعداد مکان‌های اخیر برای ذخیره"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:16
+#: ../data/org.gnome.Maps.gschema.xml.h:10
 msgid "Number of recently visited places to store."
 msgstr "تعداد مکان‌های اخیر سر زده شده جهت ذخیره"
 
-#: ../src/app-menu.ui.h:1
+#: ../data/org.gnome.Maps.gschema.xml.h:11
+msgid "Number of recent routes to store"
+msgstr "تعداد مسیرهای اخیر جهت ذخیره"
+
+#: ../data/org.gnome.Maps.gschema.xml.h:12
+msgid "Number of recently visited routes to store."
+msgstr "تعداد مسیرهای اخیر سر زده شده جهت ذخیره"
+
+#: ../data/org.gnome.Maps.gschema.xml.h:13
+msgid "Facebook check-in privacy setting"
+msgstr "تنظیمات حریم‌خصوصی check-in فیس‌بوک"
+
+#: ../data/org.gnome.Maps.gschema.xml.h:14
+msgid ""
+"Latest used Facebook check-in privacy setting. Possible values are: EVERYONE, "
+"FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
+msgstr ""
+"آخرین تنظیمات استفاده شده‌ی حریم‌خصوصی check-in فیس‌بوک. مقادیر مجاز عبارتند از: "
+"EVERYONE، FRIENDS_OF_FRIENDS، ALL_FRIENDS و SELF."
+
+#: ../data/org.gnome.Maps.gschema.xml.h:15
+msgid "Foursquare check-in privacy setting"
+msgstr "تنظیمات حریم‌خصوصی check-in سرویس Foursquare"
+
+#: ../data/org.gnome.Maps.gschema.xml.h:16
+msgid ""
+"Latest used Foursquare check-in privacy setting. Possible values are: public, "
+"followers or private."
+msgstr ""
+"آخرین تنظیمات استفاده شده‌ی حریم‌خصوصی check-in سرویس Foursquare. مقادیر مجاز "
+"عبارتند از: public، followers یا private."
+
+#: ../data/org.gnome.Maps.gschema.xml.h:17
+msgid "Foursquare check-in Facebook broadcasting"
+msgstr ""
+
+#: ../data/org.gnome.Maps.gschema.xml.h:18
+msgid ""
+"Indicates if Foursquare should broadcast the check-in as a post in the "
+"Facebook account associated with the Foursquare account."
+msgstr ""
+
+#: ../data/org.gnome.Maps.gschema.xml.h:19
+msgid "Foursquare check-in Twitter broadcasting"
+msgstr ""
+
+#: ../data/org.gnome.Maps.gschema.xml.h:20
+msgid ""
+"Indicates if Foursquare should broadcast the check-in as a tweet in the "
+"Twitter account associated with the Foursquare account."
+msgstr ""
+
+#: ../data/ui/app-menu.ui.h:1
 msgid "About"
 msgstr "درباره"
 
-#: ../src/app-menu.ui.h:2
+#: ../data/ui/app-menu.ui.h:2
 msgid "Quit"
 msgstr "خروج"
 
-#: ../src/context-menu.ui.h:1
+#: ../data/ui/check-in-dialog.ui.h:1
+msgid "Visibility"
+msgstr "قابلیت دیده شدن"
+
+#: ../data/ui/check-in-dialog.ui.h:2
+msgid "Post on Facebook"
+msgstr "پست به فیس‌بوک"
+
+#: ../data/ui/check-in-dialog.ui.h:3
+msgid "Post on Twitter"
+msgstr "پست در توییتر"
+
+#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/send-to-dialog.ui.h:2
+msgid "_Cancel"
+msgstr "_لغو"
+
+#. Translators: Check in is used as a verb
+#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:5
+msgid "C_heck in"
+msgstr "_وارد شدن"
+
+#: ../data/ui/check-in-dialog.ui.h:6
+msgid "Everyone"
+msgstr "همه"
+
+#: ../data/ui/check-in-dialog.ui.h:7
+msgid "Friends of friends"
+msgstr "دوست‌هایِ دوستان"
+
+#: ../data/ui/check-in-dialog.ui.h:8
+msgid "Just friends"
+msgstr "فقط دوستان"
+
+#: ../data/ui/check-in-dialog.ui.h:9
+msgid "Just me"
+msgstr "فقط خودم"
+
+#: ../data/ui/check-in-dialog.ui.h:10
+msgid "Public"
+msgstr "عمومی"
+
+#: ../data/ui/check-in-dialog.ui.h:11
+msgid "Followers"
+msgstr "دنبال‌کنندگان"
+
+#: ../data/ui/check-in-dialog.ui.h:12
+msgid "Private"
+msgstr "خصوصی"
+
+#: ../data/ui/context-menu.ui.h:1
 msgid "What’s here?"
 msgstr "این‌جا چیست؟"
 
-#: ../src/context-menu.ui.h:2
-msgid "I’m here!"
-msgstr "من این‌جا هستم!"
+#: ../data/ui/context-menu.ui.h:2
+msgid "Copy Location"
+msgstr "رونوشت مکان"
 
-#: ../src/mainWindow.js:300
+#: ../data/ui/location-service-notification.ui.h:1
+msgid "Turn on location services to find your location"
+msgstr "روشن کردن سرویس‌های مکانی برای پیدا کردن مکان شما"
+
+#: ../data/ui/location-service-notification.ui.h:2
+msgid "Location Settings"
+msgstr "تنظیمات مکان"
+
+#: ../data/ui/main-window.ui.h:2
+msgid "Go to current location"
+msgstr "به مکان فعلی برو"
+
+#: ../data/ui/main-window.ui.h:3
+msgid "Choose map type"
+msgstr "انتخاب نوع نقشه"
+
+#: ../data/ui/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr "تغییر وضعیت مسیریاب"
+
+#: ../data/ui/main-window.ui.h:5
+msgid "Toggle favorites"
+msgstr "تغییر وضعیت مورد علاقه‌ها"
+
+#: ../data/ui/main-window.ui.h:6
+msgid "Maps is offline!"
+msgstr "نقشه‌ها برون‌خط است!"
+
+#: ../data/ui/main-window.ui.h:7
+msgid ""
+"Maps need an active internet connection to function properly, but one can't be "
+"found."
+msgstr ""
+"«نقشه‌ها» برای عملکرد صحیح نیاز به اتصال فعال اینترنتی دارد، اما قادر به پیدا "
+"کردن اینترنت نیست."
+
+#: ../data/ui/main-window.ui.h:8
+msgid "Check your connection and proxy settings."
+msgstr "تنظیمات پیشکار و وضعیت اتصال خود را بررسی کنید."
+
+#: ../data/ui/map-bubble.ui.h:1
+msgid "Add to new route"
+msgstr "اضافه کردن به مسیر جدید"
+
+#: ../data/ui/map-bubble.ui.h:2
+msgid "Open with another application"
+msgstr "باز کردن با برنامه‌ای دیگر"
+
+#: ../data/ui/map-bubble.ui.h:3
+msgid "Mark as favorite"
+msgstr "انتخاب به عنوان مورد علاقه"
+
+#: ../data/ui/map-bubble.ui.h:6
+msgid "Check in here"
+msgstr ""
+
+#: ../data/ui/search-popup.ui.h:1
+msgid "Press enter to search"
+msgstr "برای جست‌وجو دکمه Enter را فشار دهید"
+
+#: ../data/ui/send-to-dialog.ui.h:1
+msgid "Open location"
+msgstr "باز کردن مکان"
+
+#: ../data/ui/send-to-dialog.ui.h:3
+msgid "_Open"
+msgstr "_بازکردن"
+
+#: ../data/ui/sidebar.ui.h:1
+msgid "Route search by GraphHopper"
+msgstr "جست‌وجو مسیر بوسیله‌ی GraphHopper"
+
+#: ../data/ui/social-place-more-results-row.ui.h:1
+msgid "Show more results"
+msgstr "نمایش نتایج بیشتر"
+
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:209
+msgid "Current location"
+msgstr "مکان فعلی"
+
+#. To translators: %s can be "Unknown", "Exact" or "%f km²"
+#: ../data/ui/user-location-bubble.ui.h:4
+#, no-c-format
+msgid "Accuracy: %s"
+msgstr "دقّت مکان: %s"
+
+#: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
+#: ../lib/maps-file-tile-source.c:459
+msgid "Failed to find tile structure in directory"
+msgstr "پیدا کردن سازه در شاخه شکست خورد"
+
+#: ../src/application.js:86
+msgid "A path to a local tiles directory structure"
+msgstr "یک آدرس محلی به ساختار دایرکتوری حاوی کاشی‌ها"
+
+#: ../src/checkInDialog.js:176
+msgid "Select an account"
+msgstr "انتخاب یک حساب"
+
+#: ../src/checkInDialog.js:181 ../src/checkInDialog.js:253
+msgid "Loading"
+msgstr "بارگیری"
+
+#: ../src/checkInDialog.js:205
+msgid "Select a place"
+msgstr "انتخاب یک محل"
+
+#: ../src/checkInDialog.js:210
+msgid ""
+"Maps cannot find the place to check in to with Facebook. Please select one "
+"from this list."
+msgstr ""
+
+#: ../src/checkInDialog.js:212
+msgid ""
+"Maps cannot find the place to check in to with Foursquare. Please select one "
+"from this list."
+msgstr ""
+
+#. Translators: %s is the name of the place to check in.
+#. */
+#: ../src/checkInDialog.js:227
+#, javascript-format
+msgid "Check in to %s"
+msgstr ""
+
+#. Translators: %s is the name of the place to check in.
+#. */
+#: ../src/checkInDialog.js:237
+#, javascript-format
+msgid "Write an optional message to check in to %s."
+msgstr ""
+
+#: ../src/checkInDialog.js:289 ../src/checkIn.js:153
+msgid "An error has occurred"
+msgstr "خطایی رخ داد"
+
+#. Translators: %s is the place name that user wanted to check-in */
+#: ../src/checkIn.js:135
+#, javascript-format
+msgid "Cannot find \"%s\" in the social service"
+msgstr "نمی‌توان «%s» را در شبکه‌های اجتماعی پیدا کرد"
+
+#: ../src/checkIn.js:137
+msgid "Cannot find a suitable place to check-in in this location"
+msgstr ""
+
+#: ../src/checkIn.js:141
+msgid ""
+"Credentials have expired, please open Online Accounts to sign in and enable "
+"this account"
+msgstr ""
+"اعتبارهای ورود منقضی شده‌اند، لطفا برای فعال‌سازی این حساب، «حساب‌های برخط» را "
+"باز کنید و وارد حساب شوید."
+
+#: ../src/mainWindow.js:321
+msgid "Failed to connect to location service"
+msgstr "اتصال به سرویس مکان‌یابی شکست خورد"
+
+#: ../src/mainWindow.js:326
+msgid "Position not found"
+msgstr "مکان پیدا نشد"
+
+#: ../src/mainWindow.js:371
 msgid "translator-credits"
 msgstr ""
 "دانیال بهزادی <dani.behzi@ubuntu.com>\n"
 "آرش موسوی <mousavi.arash@gmail.com>"
 
-#: ../src/mainWindow.js:303
+#: ../src/mainWindow.js:374
 msgid "A map application for GNOME"
 msgstr "یک برنامه نقشه برای گنوم"
 
-#: ../src/main-window.ui.h:2
-msgid "Go to current location"
-msgstr "به مکان فعلی برو"
-
-#: ../src/main-window.ui.h:3
-msgid "Choose map type"
-msgstr "انتخاب نوع نقشه"
-
-#: ../src/main-window.ui.h:4
-msgid "Toggle route planner"
-msgstr "تغییر وضعیت مسیریاب"
-
-#: ../src/routeService.js:73
-msgid "No route found."
-msgstr "هیچ مسیری پیدا نشد."
-
-#: ../src/routeService.js:80
-msgid "Route request failed."
-msgstr "درخواست مسیر شکست خورد."
-
-#: ../src/routeService.js:151
-msgid "Start!"
-msgstr "شروع!"
-
-#: ../src/searchResultBubble.js:60
-#, javascript-format
-msgid "Country code: %s"
-msgstr "کد کشور: %s"
-
-#: ../src/searchResultBubble.js:66
+#: ../src/placeBubble.js:101
 #, javascript-format
 msgid "Postal code: %s"
 msgstr "کد پستی: %s"
 
+#: ../src/placeBubble.js:103
+#, javascript-format
+msgid "Country code: %s"
+msgstr "کد کشور: %s"
+
+#: ../src/placeBubble.js:112
+#, javascript-format
+msgid "Population: %s"
+msgstr "جمعیت: %s"
+
+#: ../src/placeBubble.js:115
+#, javascript-format
+msgid "Opening hours: %s"
+msgstr "ساعت‌های کار: %s"
+
+#: ../src/placeBubble.js:120
+msgid "Wikipedia"
+msgstr "ویکی‌پدیا"
+
+#: ../src/placeBubble.js:125
+#, javascript-format
+msgid "Wheelchair access: %s"
+msgstr "دسترسی ویل‌چیر: %s"
+
+#: ../src/placeEntry.js:215
+msgid "Failed to parse Geo URI"
+msgstr "پردازش آدرس Geo شکست خورد"
+
+#. Translators:
+#. * This means wheelchairs have full unrestricted access.
+#. */
+#: ../src/place.js:121
+msgid "yes"
+msgstr "بله"
+
+#. Translators:
+#. * This means wheelchairs have partial access (e.g some areas
+#. * can be accessed and others not, areas requiring assistance
+#. * by someone pushing up a steep gradient).
+#. */
+#: ../src/place.js:128
+msgid "limited"
+msgstr "محدود"
+
+#. Translators:
+#. * This means wheelchairs have no unrestricted access
+#. * (e.g. stair only access).
+#. */
+#: ../src/place.js:134
+msgid "no"
+msgstr "خیر"
+
+#. Translators:
+#. * This means that the way or area is designated or purpose built
+#. * for wheelchairs (e.g. elevators designed for wheelchair access
+#. * only). This is rarely used.
+#. */
+#: ../src/place.js:141
+msgid "designated"
+msgstr "تعیین شده"
+
+#: ../src/routeService.js:90
+msgid "No route found."
+msgstr "هیچ مسیری پیدا نشد."
+
+#: ../src/routeService.js:97
+msgid "Route request failed."
+msgstr "درخواست مسیر شکست خورد."
+
+#: ../src/routeService.js:168
+msgid "Start!"
+msgstr "شروع!"
+
 #. Translators: %s is a time expression with the format "%f h" or "%f min" */
-#: ../src/sidebar.js:198
+#: ../src/sidebar.js:230
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "زمان تخمینی: %s"
 
-#: ../src/user-location-bubble.ui.h:1
-msgid "Current location"
-msgstr "مکان فعلی"
+#: ../src/translations.js:55 ../src/translations.js:57
+msgid "around the clock"
+msgstr "حدود ساعت"
 
-#. To translators: %s can be "Unknown", "Exact" or "%f km²"
-#: ../src/user-location-bubble.ui.h:4
-#, no-c-format
-msgid "Accuracy: %s"
-msgstr "دقّت مکان: %s"
+#: ../src/translations.js:59
+msgid "from sunrise to sunset"
+msgstr "از سپیده‌دم تا غروب"
+
+#. Translators:
+#. * This is a format string with two separate time ranges
+#. * such as "Mo-Fr 10:00-19:00 Sa 12:00-16:00"
+#. * The space between the format place holders could be
+#. * substituted with the appropriate separator.
+#. */
+#: ../src/translations.js:78
+#, javascript-format
+msgctxt "time range list"
+msgid "%s %s"
+msgstr "%s %s"
+
+#. Translators:
+#. * This is a format string with three separate time ranges
+#. * such as "Mo-Fr 10:00-19:00 Sa 10:00-17:00 Su 12:00-16:00"
+#. * The space between the format place holders could be
+#. * substituted with the appropriate separator.
+#. */
+#: ../src/translations.js:90
+#, javascript-format
+msgctxt "time range list"
+msgid "%s %s %s"
+msgstr "%s %s %s"
+
+#. Translators:
+#. * This is a format string consisting of a part specifying the days for
+#. * which the specified time is applied and the time interval
+#. * specification as the second argument.
+#. * The space between the format place holders could be substituted with
+#. * the appropriate separator or phrase and the ordering of the arguments
+#. * can be rearranged with the %n#s syntax. */
+#: ../src/translations.js:121
+#, javascript-format
+msgctxt "time range component"
+msgid "%s %s"
+msgstr "%s %s"
+
+#. Translators:
+#. * This represents a format string consisting of two day interval
+#. * specifications.
+#. * For example:
+#. * Mo-Fr,Sa
+#. * where the "Mo-Fr" and "Sa" parts are replaced by the %s
+#. * place holder.
+#. * The separator (,) could be replaced with a translated variant or
+#. * a phrase if appropriate. */
+#: ../src/translations.js:153
+#, javascript-format
+msgctxt "day interval list"
+msgid "%s,%s"
+msgstr "%s,%s"
+
+#. Translators:
+#. * This represents a format string consisting of three day interval
+#. * specifications.
+#. * For example:
+#. * Mo-We,Fr,Su
+#. * where the "Mo-We", "Fr", and "Su" parts are replaced by the
+#. * %s place holder.
+#. * The separator (,) could be replaced with a translated variant or
+#. * a phrase if appropriate. */
+#: ../src/translations.js:167
+#, javascript-format
+msgctxt "day interval list"
+msgid "%s,%s,%s"
+msgstr "%s,%s,%s"
+
+#: ../src/translations.js:186
+msgid "every day"
+msgstr "هر روز"
+
+#. Translators:
+#. * This represents a range of days with a starting and ending day.
+#. */
+#: ../src/translations.js:198
+#, javascript-format
+msgctxt "day range"
+msgid "%s-%s"
+msgstr "%s-%s"
+
+#: ../src/translations.js:209
+msgid "public holidays"
+msgstr "تعطیلات عمومی"
+
+#: ../src/translations.js:211
+msgid "school holidays"
+msgstr "تعطیلات مدرسه"
+
+#. Translators:
+#. * This is a list with two time intervals, such as:
+#. * 09:00-12:00, 13:00-14:00
+#. * The intervals are represented by the %s place holders and
+#. * appropriate white space or connected phrase could be modified by
+#. * the translation. The order of the arguments can be rearranged
+#. * using the %n$s syntax.
+#. */
+#: ../src/translations.js:251
+#, javascript-format
+msgctxt "time interval list"
+msgid "%s, %s"
+msgstr "%s, %s"
+
+#: ../src/translations.js:265
+msgid "not open"
+msgstr "باز نیست"
+
+#. Translators:
+#. * This is a time interval with a starting and an ending time.
+#. * The time values are represented by the %s place holders and
+#. * appropriate white spacing or connecting phrases can be set by the
+#. * translation as needed. The order of the arguments can be rearranged
+#. * using the %n$s syntax.
+#. */
+#: ../src/translations.js:280
+#, javascript-format
+msgctxt "time interval"
+msgid "%s-%s"
+msgstr "%s-%s"
 
 #. Translators: Accuracy of user location information */
-#: ../src/utils.js:191
+#: ../src/utils.js:256
 msgid "Unknown"
 msgstr "ناشناخته"
 
 #. Translators: Accuracy of user location information */
-#: ../src/utils.js:194
+#: ../src/utils.js:259
 msgid "Exact"
 msgstr "دقیق"
 
-#: ../src/utils.js:293
+#: ../src/utils.js:354
 #, javascript-format
 msgid "%f h"
 msgstr "%If ساعت"
 
-#: ../src/utils.js:295
+#: ../src/utils.js:356
 #, javascript-format
 msgid "%f min"
 msgstr "%If دقیقه"
 
+#: ../src/utils.js:358
+#, javascript-format
+msgid "%f s"
+msgstr "%f s"
+
 #. Translators: This is a distance measured in kilometers */
-#: ../src/utils.js:306
+#: ../src/utils.js:369
 #, javascript-format
 msgid "%f km"
 msgstr "%If کیلومتر"
 
 #. Translators: This is a distance measured in meters */
-#: ../src/utils.js:309
+#: ../src/utils.js:372
 #, javascript-format
 msgid "%f m"
 msgstr "%If متر"
 
 #. Translators: This is a distance measured in miles */
-#: ../src/utils.js:317
+#: ../src/utils.js:380
 #, javascript-format
 msgid "%f mi"
 msgstr "%If مایل"
 
 #. Translators: This is a distance measured in feet */
-#: ../src/utils.js:320
+#: ../src/utils.js:383
 #, javascript-format
 msgid "%f ft"
 msgstr "%If فوت"
+
+#~ msgid "Last known location and accuracy"
+#~ msgstr "آخرین مکان و دقت شناخته شده"
+
+#~ msgid ""
+#~ "Last known location (latitude and longitude in degrees) and accuracy (in "
+#~ "meters)."
+#~ msgstr "آخرین مکان شناخته شده (عرض و طول جغرافیایی به درجه) و دقت (به متر)"
+
+#~ msgid "Description of last known location"
+#~ msgstr "توضیحات آخرین مکان شناخته شده"
+
+#~ msgid "Description of last known location of user."
+#~ msgstr "توضیحات آخرین مکان شناخته شده کاربر."
+
+#~ msgid "User set last known location"
+#~ msgstr "آخرین مکان شناخته شده تنظیم شده توسط کاربر"
+
+#~ msgid "Whether the last known location was set manually by the user."
+#~ msgstr "این که آخرین مکان شناخته شده به صورت دستی توسط کاربر تنظیم شده یا نه."
+
+#~ msgid "I’m here!"
+#~ msgstr "من این‌جا هستم!"
 
 #~ msgid "Street"
 #~ msgstr "خیابان"
