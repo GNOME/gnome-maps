@@ -10,11 +10,11 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-08-24 19:25+0000\n"
-"PO-Revision-Date: 2015-08-24 21:29+0200\n"
+"POT-Creation-Date: 2015-09-12 07:30+0000\n"
+"PO-Revision-Date: 2015-09-12 11:30+0200\n"
 "Last-Translator: Guillaume Bernard <translate@filorin.fr>\n"
-"Language-Team: français <gnomefr@traduc.org>\n"
-"Language: French \n"
+"Language-Team: GNOME French team <gnomefr@traduc.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -53,7 +53,7 @@ msgstr ""
 
 #. Translators: This is the program name. */
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:367
+#: ../src/application.js:77 ../src/mainWindow.js:373
 msgid "Maps"
 msgstr "Cartes"
 
@@ -316,6 +316,15 @@ msgstr "Lieu actuel"
 msgid "Accuracy: %s"
 msgstr "Précision de la position : %s"
 
+#: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
+#: ../lib/maps-file-tile-source.c:459
+msgid "Failed to find tile structure in directory"
+msgstr "Impossible de trouver une structure de tuiles dans le répertoire"
+
+#: ../src/application.js:86
+msgid "A path to a local tiles directory structure"
+msgstr "Un chemin vers un répertoire local de structure de tuiles"
+
 #: ../src/checkInDialog.js:176
 msgid "Select an account"
 msgstr "Sélectionner un compte"
@@ -382,21 +391,21 @@ msgstr ""
 "Les informations d'authenfication ont expiré, ouvrez Comptes en ligne pour "
 "vous connecter et activer ce compte"
 
-#: ../src/mainWindow.js:315
+#: ../src/mainWindow.js:321
 msgid "Failed to connect to location service"
 msgstr "Échec à la connexion au service de localisation"
 
-#: ../src/mainWindow.js:320
+#: ../src/mainWindow.js:326
 msgid "Position not found"
 msgstr "Position non trouvée"
 
-#: ../src/mainWindow.js:365
+#: ../src/mainWindow.js:371
 msgid "translator-credits"
 msgstr ""
 "Ouharzoune Mohammed <karim-ouh@hotmail.fr>\n"
 "Claude Paroz <claude@2xlibre.net>"
 
-#: ../src/mainWindow.js:368
+#: ../src/mainWindow.js:374
 msgid "A map application for GNOME"
 msgstr "Une application cartographique pour GNOME"
 
@@ -479,7 +488,7 @@ msgid "Start!"
 msgstr "C'est parti !"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min" */
-#: ../src/sidebar.js:229
+#: ../src/sidebar.js:230
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Temps estimé : %s"
