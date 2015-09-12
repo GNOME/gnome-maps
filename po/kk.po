@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-09-04 07:25+0000\n"
-"PO-Revision-Date: 2015-09-04 21:43+0500\n"
+"POT-Creation-Date: 2015-09-12 07:30+0000\n"
+"PO-Revision-Date: 2015-09-12 18:30+0500\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk@li.org>\n"
 "Language: kk\n"
@@ -51,7 +51,7 @@ msgstr ""
 
 #. Translators: This is the program name. */
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:367
+#: ../src/application.js:77 ../src/mainWindow.js:373
 msgid "Maps"
 msgstr "Карталар"
 
@@ -312,6 +312,15 @@ msgstr "Ағымдағы орналасу"
 msgid "Accuracy: %s"
 msgstr "Дәлдігі: %s"
 
+#: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
+#: ../lib/maps-file-tile-source.c:459
+msgid "Failed to find tile structure in directory"
+msgstr "Бумадан плиткалық құрылымды табу сәтсіз аяқталды"
+
+#: ../src/application.js:86
+msgid "A path to a local tiles directory structure"
+msgstr "Жергілікті плиткалық бумалар құрылымына дейінгі жол"
+
 #: ../src/checkInDialog.js:176
 msgid "Select an account"
 msgstr "Тіркелгіні таңдаңыз"
@@ -376,19 +385,19 @@ msgstr ""
 "Тіркелу деректерінің мерзімі аяқталған, бұл тіркелгіге кіру және оны іске "
 "қосу үшін желілік тіркелгілерді ашыңыз"
 
-#: ../src/mainWindow.js:315
+#: ../src/mainWindow.js:321
 msgid "Failed to connect to location service"
 msgstr "Орналасулар қызметіне байланысу сәтсіз аяқталды"
 
-#: ../src/mainWindow.js:320
+#: ../src/mainWindow.js:326
 msgid "Position not found"
 msgstr "Орны табылмады"
 
-#: ../src/mainWindow.js:365
+#: ../src/mainWindow.js:371
 msgid "translator-credits"
 msgstr "Baurzhan Muftakhidinov <baurthefirst@gmail.com>"
 
-#: ../src/mainWindow.js:368
+#: ../src/mainWindow.js:374
 msgid "A map application for GNOME"
 msgstr "GNOME үшін карталар қолданбасы"
 
@@ -471,7 +480,7 @@ msgid "Start!"
 msgstr "Бастау!"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min" */
-#: ../src/sidebar.js:229
+#: ../src/sidebar.js:230
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Шамамен уақыты: %s"
