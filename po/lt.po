@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-09-03 07:25+0000\n"
-"PO-Revision-Date: 2015-09-03 15:09+0300\n"
+"POT-Creation-Date: 2015-09-12 07:30+0000\n"
+"PO-Revision-Date: 2015-09-12 18:57+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -51,7 +51,7 @@ msgstr ""
 
 #. Translators: This is the program name. */
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:367
+#: ../src/application.js:77 ../src/mainWindow.js:373
 msgid "Maps"
 msgstr "Žemėlapiai"
 
@@ -104,12 +104,10 @@ msgid "Number of recently visited places to store."
 msgstr "Įrašomas paskutinių aplankytų vietų skaičius."
 
 #: ../data/org.gnome.Maps.gschema.xml.h:11
-#| msgid "Number of recent places to store"
 msgid "Number of recent routes to store"
 msgstr "Paskutinių įrašomų kelių skaičius"
 
 #: ../data/org.gnome.Maps.gschema.xml.h:12
-#| msgid "Number of recently visited places to store."
 msgid "Number of recently visited routes to store."
 msgstr "Įrašomas paskutinių aplankytų kelių skaičius."
 
@@ -223,7 +221,6 @@ msgid "What’s here?"
 msgstr "Kas ten?"
 
 #: ../data/ui/context-menu.ui.h:2
-#| msgid "Open location"
 msgid "Copy Location"
 msgstr "Kopijuoti vietą"
 
@@ -313,6 +310,15 @@ msgstr "Dabartinė vieta"
 msgid "Accuracy: %s"
 msgstr "Tikslumas: %s"
 
+#: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
+#: ../lib/maps-file-tile-source.c:459
+msgid "Failed to find tile structure in directory"
+msgstr "Nepavyko kataloge rasti koklių struktūros"
+
+#: ../src/application.js:86
+msgid "A path to a local tiles directory structure"
+msgstr "Kelias iki vietinės koklių katalogo struktūros"
+
 #: ../src/checkInDialog.js:176
 msgid "Select an account"
 msgstr "Pasirinkite paskyrą"
@@ -377,21 +383,21 @@ msgstr ""
 "Įgaliojimai pasibaigė, atverkite internetines paskyra prisijungimui ir "
 "paskyros atnaujinimui"
 
-#: ../src/mainWindow.js:315
+#: ../src/mainWindow.js:321
 msgid "Failed to connect to location service"
 msgstr "Nepavyko prisijungti prie vietos tarnybos"
 
-#: ../src/mainWindow.js:320
+#: ../src/mainWindow.js:326
 msgid "Position not found"
 msgstr "Nerasta padėtis"
 
-#: ../src/mainWindow.js:365
+#: ../src/mainWindow.js:371
 msgid "translator-credits"
 msgstr ""
 "Išvertė:\n"
 "Aurimas Černius <aurisc4@gmail.com>"
 
-#: ../src/mainWindow.js:368
+#: ../src/mainWindow.js:374
 msgid "A map application for GNOME"
 msgstr "Žemėlapių programa GNOME aplinkai"
 
@@ -474,7 +480,7 @@ msgid "Start!"
 msgstr "Pradėti!"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min" */
-#: ../src/sidebar.js:229
+#: ../src/sidebar.js:230
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Įvertintas laikas: %s"
