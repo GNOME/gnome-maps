@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-24 10:44+0200\n"
-"PO-Revision-Date: 2015-08-24 10:44+0200\n"
+"POT-Creation-Date: 2015-09-14 16:17+0200\n"
+"PO-Revision-Date: 2015-09-14 16:18+0200\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
 "Language-Team: gnome-l10n-gl@gnome.org\n"
 "Language: gl\n"
@@ -50,7 +50,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:367
+#: ../src/application.js:77 ../src/mainWindow.js:373
 msgid "Maps"
 msgstr "Mapas"
 
@@ -309,6 +309,15 @@ msgstr "Localización actual"
 msgid "Accuracy: %s"
 msgstr "Precisión: %s"
 
+#: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
+#: ../lib/maps-file-tile-source.c:459
+msgid "Failed to find tile structure in directory"
+msgstr "Produciuse un fallo ao atopar a estrutura de teselas no cartafol"
+
+#: ../src/application.js:86
+msgid "A path to a local tiles directory structure"
+msgstr "Unha ruta a unha estrutura de directorios de teselas locais"
+
 #: ../src/checkInDialog.js:176
 msgid "Select an account"
 msgstr "Seleccione unha conta"
@@ -374,19 +383,19 @@ msgstr ""
 "As súas credenciais expiraron, abra as «Contas en liña» para iniciar sesión "
 "e activar esta conta"
 
-#: ../src/mainWindow.js:315
+#: ../src/mainWindow.js:321
 msgid "Failed to connect to location service"
 msgstr "Produciuse un fallo ao conectar co servizo de localización"
 
-#: ../src/mainWindow.js:320
+#: ../src/mainWindow.js:326
 msgid "Position not found"
 msgstr "Posición non atopada"
 
-#: ../src/mainWindow.js:365
+#: ../src/mainWindow.js:371
 msgid "translator-credits"
 msgstr "Fran Dieguez <frandieguez@gnome.org>, 2013."
 
-#: ../src/mainWindow.js:368
+#: ../src/mainWindow.js:374
 msgid "A map application for GNOME"
 msgstr "Un aplicativo de mapas para GNOME"
 
@@ -469,7 +478,7 @@ msgid "Start!"
 msgstr "Comezar!"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:229
+#: ../src/sidebar.js:230
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Tempo estimado: %s"
