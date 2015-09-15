@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-08-18 07:20+0000\n"
-"PO-Revision-Date: 2015-08-18 13:55+0200\n"
+"POT-Creation-Date: 2015-09-15 07:31+0000\n"
+"PO-Revision-Date: 2015-09-15 11:22+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -51,7 +51,7 @@ msgstr ""
 
 #. Translators: This is the program name. */
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:367
+#: ../src/application.js:77 ../src/mainWindow.js:373
 msgid "Maps"
 msgstr "Mapas"
 
@@ -104,12 +104,10 @@ msgid "Number of recently visited places to store."
 msgstr "Número de lugares visitados recientemente que guardar."
 
 #: ../data/org.gnome.Maps.gschema.xml.h:11
-#| msgid "Number of recent places to store"
 msgid "Number of recent routes to store"
 msgstr "Número de rutas recientes que guardar"
 
 #: ../data/org.gnome.Maps.gschema.xml.h:12
-#| msgid "Number of recently visited places to store."
 msgid "Number of recently visited routes to store."
 msgstr "Número de rutas visitadas recientemente que guardar."
 
@@ -223,7 +221,6 @@ msgid "What’s here?"
 msgstr "¿Qué hay aquí?"
 
 #: ../data/ui/context-menu.ui.h:2
-#| msgid "Open location"
 msgid "Copy Location"
 msgstr "Copiar ubicación"
 
@@ -313,6 +310,15 @@ msgstr "Ubicación actual"
 msgid "Accuracy: %s"
 msgstr "Precisión: %s"
 
+#: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
+#: ../lib/maps-file-tile-source.c:459
+msgid "Failed to find tile structure in directory"
+msgstr "Falló al buscar la estructura de la cuadrícula en la carpeta"
+
+#: ../src/application.js:86
+msgid "A path to a local tiles directory structure"
+msgstr "Una ruta a la estructura de carpetas locales de cuadrículas"
+
 #: ../src/checkInDialog.js:176
 msgid "Select an account"
 msgstr "Seleccionar una cuenta"
@@ -378,19 +384,19 @@ msgstr ""
 "Las credenciales han caducado. Abra las Cuentas en línea para iniciar sesión "
 "y activar esta cuenta."
 
-#: ../src/mainWindow.js:315
+#: ../src/mainWindow.js:321
 msgid "Failed to connect to location service"
 msgstr "Falló al conectar al servicio de ubicación"
 
-#: ../src/mainWindow.js:320
+#: ../src/mainWindow.js:326
 msgid "Position not found"
 msgstr "Posición no encontrada"
 
-#: ../src/mainWindow.js:365
+#: ../src/mainWindow.js:371
 msgid "translator-credits"
 msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2013"
 
-#: ../src/mainWindow.js:368
+#: ../src/mainWindow.js:374
 msgid "A map application for GNOME"
 msgstr "Una aplicación de mapas para GNOME"
 
@@ -473,7 +479,7 @@ msgid "Start!"
 msgstr "Empezar"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min" */
-#: ../src/sidebar.js:228
+#: ../src/sidebar.js:230
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Tiempo estimado: %s"
