@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-08-29 07:25+0000\n"
-"PO-Revision-Date: 2015-09-03 11:24+0200\n"
+"POT-Creation-Date: 2015-09-13 07:32+0000\n"
+"PO-Revision-Date: 2015-09-13 10:24+0200\n"
 "Last-Translator: Claudio Arseni <claudio.arseni@ubuntu.com>\n"
 "Language-Team: tp@lists.linux.it\n"
 "Language: it\n"
@@ -50,7 +50,7 @@ msgstr ""
 
 #. Translators: This is the program name. */
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:367
+#: ../src/application.js:77 ../src/mainWindow.js:373
 msgid "Maps"
 msgstr "Mappe"
 
@@ -103,12 +103,10 @@ msgid "Number of recently visited places to store."
 msgstr "Numero di luoghi visitati di recente di cui tenere traccia."
 
 #: ../data/org.gnome.Maps.gschema.xml.h:11
-#| msgid "Number of recent places to store"
 msgid "Number of recent routes to store"
 msgstr "Numero di percorsi recenti da archiviare"
 
 #: ../data/org.gnome.Maps.gschema.xml.h:12
-#| msgid "Number of recently visited places to store."
 msgid "Number of recently visited routes to store."
 msgstr "Numero di percorsi effettuati di recente di cui tenere traccia."
 
@@ -222,7 +220,6 @@ msgid "What’s here?"
 msgstr "Cosa c'è qui?"
 
 #: ../data/ui/context-menu.ui.h:2
-#| msgid "Open location"
 msgid "Copy Location"
 msgstr "Copia posizione"
 
@@ -312,6 +309,15 @@ msgstr "Posizione attuale"
 msgid "Accuracy: %s"
 msgstr "Precisione: %s"
 
+#: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
+#: ../lib/maps-file-tile-source.c:459
+msgid "Failed to find tile structure in directory"
+msgstr "Impossibile trovare sezioni delle mappe nella directory"
+
+#: ../src/application.js:86
+msgid "A path to a local tiles directory structure"
+msgstr "Un percorso di una directory locale contenente sezioni delle mappe"
+
 #: ../src/checkInDialog.js:176
 msgid "Select an account"
 msgstr "Selezionare un account"
@@ -376,19 +382,19 @@ msgstr ""
 "Credenziali scadute. Aprire «Account online» per accedere e abilitare questo "
 "account"
 
-#: ../src/mainWindow.js:315
+#: ../src/mainWindow.js:321
 msgid "Failed to connect to location service"
 msgstr "Impossibile connettersi al servizio di localizzazione"
 
-#: ../src/mainWindow.js:320
+#: ../src/mainWindow.js:326
 msgid "Position not found"
 msgstr "Posizione non trovata"
 
-#: ../src/mainWindow.js:365
+#: ../src/mainWindow.js:371
 msgid "translator-credits"
 msgstr "Claudio Arseni <claudio.arseni@ubuntu.com>"
 
-#: ../src/mainWindow.js:368
+#: ../src/mainWindow.js:374
 msgid "A map application for GNOME"
 msgstr "Una applicazione di GNOME per le mappe"
 
@@ -471,7 +477,7 @@ msgid "Start!"
 msgstr "Avvia."
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min" */
-#: ../src/sidebar.js:229
+#: ../src/sidebar.js:230
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Tempo stimato: %s"
