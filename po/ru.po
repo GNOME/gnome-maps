@@ -2,19 +2,19 @@
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
 # Mihail Gurin <mikegurin@yandex.ru>, 2014, 2015.
-# Stas Solovey <whats_up@tut.by>, 2014, 2015.
 # Ivan Komaritsyn <vantu5z@mail.ru>, 2015.
 # Yuri Myasoedov <ymyasoedov@yandex.ru>, 2013, 2014, 2015.
+# Stas Solovey <whats_up@tut.by>, 2014, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-08-28 07:24+0000\n"
-"PO-Revision-Date: 2015-08-28 22:18+0300\n"
-"Last-Translator: Yuri Myasoedov <ymyasoedov@yandex.ru>\n"
-"Language-Team: русский <gnome-cyr@gnome.org>\n"
+"POT-Creation-Date: 2015-09-17 07:32+0000\n"
+"PO-Revision-Date: 2015-09-17 14:03+0300\n"
+"Last-Translator: Stas Solovey <whats_up@tut.by>\n"
+"Language-Team: Русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -54,7 +54,7 @@ msgstr ""
 
 #. Translators: This is the program name. */
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:367
+#: ../src/application.js:77 ../src/mainWindow.js:373
 msgid "Maps"
 msgstr "Карты"
 
@@ -107,12 +107,10 @@ msgid "Number of recently visited places to store."
 msgstr "Количество сохранённых недавно посещённых мест."
 
 #: ../data/org.gnome.Maps.gschema.xml.h:11
-#| msgid "Number of recent places to store"
 msgid "Number of recent routes to store"
 msgstr "Количество последних сохранённых маршрутов"
 
 #: ../data/org.gnome.Maps.gschema.xml.h:12
-#| msgid "Number of recently visited places to store."
 msgid "Number of recently visited routes to store."
 msgstr "Количество сохранённых недавно использовавшихся маршрутов."
 
@@ -226,7 +224,6 @@ msgid "What’s here?"
 msgstr "Что здесь?"
 
 #: ../data/ui/context-menu.ui.h:2
-#| msgid "Open location"
 msgid "Copy Location"
 msgstr "Копировать местоположение"
 
@@ -314,6 +311,17 @@ msgstr "Текущее местоположение"
 msgid "Accuracy: %s"
 msgstr "Точность: %s"
 
+# сомнительно, требует проверки
+#: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
+#: ../lib/maps-file-tile-source.c:459
+msgid "Failed to find tile structure in directory"
+msgstr "Не удалось найти плиточную структуру в каталоге"
+
+# сомнительно, требует проверки
+#: ../src/application.js:86
+msgid "A path to a local tiles directory structure"
+msgstr "Путь к локальному каталогу плиточной структуры"
+
 #: ../src/checkInDialog.js:176
 msgid "Select an account"
 msgstr "Выберите учётную запись"
@@ -377,22 +385,22 @@ msgstr ""
 "Истекли полномочия, откройте Сетевые учётные записи, чтобы войти и "
 "активировать эту учётную запись."
 
-#: ../src/mainWindow.js:315
+#: ../src/mainWindow.js:321
 msgid "Failed to connect to location service"
 msgstr "Не удалось подключиться к службе местоположения"
 
-#: ../src/mainWindow.js:320
+#: ../src/mainWindow.js:326
 msgid "Position not found"
 msgstr "Местоположение не найдено"
 
-#: ../src/mainWindow.js:365
+#: ../src/mainWindow.js:371
 msgid "translator-credits"
 msgstr ""
 "Yuri Myasoedov <ymyasoedov@yandex.ru>, 2013, 2014.\n"
 "Mihail Gurin <mikegurin@yandex.ru>, 2014, 2015.\n"
 "Stas Solovey <whats_up@tut.by>, 2014, 2015."
 
-#: ../src/mainWindow.js:368
+#: ../src/mainWindow.js:374
 msgid "A map application for GNOME"
 msgstr "Приложение карт для GNOME"
 
@@ -475,7 +483,7 @@ msgid "Start!"
 msgstr "Старт!"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min" */
-#: ../src/sidebar.js:229
+#: ../src/sidebar.js:230
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Расчётное время: %s"
