@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-09-04 07:25+0000\n"
-"PO-Revision-Date: 2015-09-04 22:07+0900\n"
+"POT-Creation-Date: 2015-09-14 07:39+0000\n"
+"PO-Revision-Date: 2015-09-14 20:56+0900\n"
 "Last-Translator: Seong-ho Cho <shcho@gnome.org>\n"
 "Language-Team: Korean <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
@@ -50,7 +50,7 @@ msgstr ""
 
 #. Translators: This is the program name. */
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:367
+#: ../src/application.js:77 ../src/mainWindow.js:373
 msgid "Maps"
 msgstr "지도"
 
@@ -307,6 +307,15 @@ msgstr "현재 위치"
 msgid "Accuracy: %s"
 msgstr "위치 정확도: %s"
 
+#: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
+#: ../lib/maps-file-tile-source.c:459
+msgid "Failed to find tile structure in directory"
+msgstr "디렉터리에서 타일 구조 찾기에 실패했습니다"
+
+#: ../src/application.js:86
+msgid "A path to a local tiles directory structure"
+msgstr "로컬 타일 디렉터리 구조 경로"
+
 #: ../src/checkInDialog.js:176
 msgid "Select an account"
 msgstr "계정을 선택하십시오"
@@ -371,19 +380,19 @@ msgstr ""
 "인증 기한이 지났습니다. 온라인 계정을 열어 접속한 후 이 계정을 활성화하십시"
 "오."
 
-#: ../src/mainWindow.js:315
+#: ../src/mainWindow.js:321
 msgid "Failed to connect to location service"
 msgstr "위치 서비스 연결에 실패했습니다."
 
-#: ../src/mainWindow.js:320
+#: ../src/mainWindow.js:326
 msgid "Position not found"
 msgstr "위치를 찾을 수 없습니다"
 
-#: ../src/mainWindow.js:365
+#: ../src/mainWindow.js:371
 msgid "translator-credits"
 msgstr "조성호 <shcho@gnome.org>"
 
-#: ../src/mainWindow.js:368
+#: ../src/mainWindow.js:374
 msgid "A map application for GNOME"
 msgstr "그놈용 지도 프로그램"
 
@@ -466,7 +475,7 @@ msgid "Start!"
 msgstr "시작!"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min" */
-#: ../src/sidebar.js:229
+#: ../src/sidebar.js:230
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "예상 시간: %s"
