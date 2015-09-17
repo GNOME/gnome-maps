@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-08-31 07:23+0000\n"
-"PO-Revision-Date: 2015-08-31 18:38+0200\n"
+"POT-Creation-Date: 2015-09-17 07:32+0000\n"
+"PO-Revision-Date: 2015-09-17 16:06+0200\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
@@ -51,7 +51,7 @@ msgstr ""
 
 #. Translators: This is the program name. */
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:367
+#: ../src/application.js:77 ../src/mainWindow.js:373
 msgid "Maps"
 msgstr "Térképek"
 
@@ -104,12 +104,10 @@ msgid "Number of recently visited places to store."
 msgstr "A tárolandó legutóbb látogatott helyek száma."
 
 #: ../data/org.gnome.Maps.gschema.xml.h:11
-#| msgid "Number of recent places to store"
 msgid "Number of recent routes to store"
 msgstr "A tárolandó legutóbbi útvonalak száma"
 
 #: ../data/org.gnome.Maps.gschema.xml.h:12
-#| msgid "Number of recently visited places to store."
 msgid "Number of recently visited routes to store."
 msgstr "A tárolandó legutóbb látogatott útvonalak száma."
 
@@ -223,7 +221,6 @@ msgid "What’s here?"
 msgstr "Mi van itt?"
 
 #: ../data/ui/context-menu.ui.h:2
-#| msgid "Open location"
 msgid "Copy Location"
 msgstr "Hely másolása"
 
@@ -314,6 +311,15 @@ msgstr "Jelenlegi hely"
 msgid "Accuracy: %s"
 msgstr "Pontosság: %s"
 
+#: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
+#: ../lib/maps-file-tile-source.c:459
+msgid "Failed to find tile structure in directory"
+msgstr "Nem sikerült csempeszerkezetet találni a könyvtárban"
+
+#: ../src/application.js:86
+msgid "A path to a local tiles directory structure"
+msgstr "Egy útvonal a helyi csempék könyvtárszerkezetéhez"
+
 #: ../src/checkInDialog.js:176
 msgid "Select an account"
 msgstr "Válasszon egy fiókot"
@@ -378,19 +384,19 @@ msgstr ""
 "A hitelesítési adatok lejártak, nyissa meg az Online fiókokat a "
 "bejelentkezéshez, és engedélyezze ezt a fiókot"
 
-#: ../src/mainWindow.js:315
+#: ../src/mainWindow.js:321
 msgid "Failed to connect to location service"
 msgstr "Nem sikerült kapcsolódni a helymeghatározó szolgáltatáshoz"
 
-#: ../src/mainWindow.js:320
+#: ../src/mainWindow.js:326
 msgid "Position not found"
 msgstr "Pozíció nem található"
 
-#: ../src/mainWindow.js:365
+#: ../src/mainWindow.js:371
 msgid "translator-credits"
 msgstr "Úr Balázs <urbalazs at gmail dot com>"
 
-#: ../src/mainWindow.js:368
+#: ../src/mainWindow.js:374
 msgid "A map application for GNOME"
 msgstr "Térképalkalmazás a GNOME-hoz"
 
@@ -473,7 +479,7 @@ msgid "Start!"
 msgstr "Indulás!"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min" */
-#: ../src/sidebar.js:229
+#: ../src/sidebar.js:230
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Becsült idő: %s"
