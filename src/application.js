@@ -91,6 +91,8 @@ const Application = new Lang.Class({
                 let variant = options.lookup_value('local', null);
                 this.local_tile_path = variant.deep_unpack();
             }
+
+            return -1;
         }).bind(this));
     },
 
