@@ -1,14 +1,14 @@
 # Irish translations for gnome-maps package.
-# Copyright (C) 2013 Free Software Foundation, Inc.
+# Copyright (C) 2013-2015 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-maps package.
-# Seán de Búrca <leftmostcat@gmail.com>, 2013.
+# Seán de Búrca <leftmostcat@gmail.com>, 2013-2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-30 22:31-0600\n"
-"PO-Revision-Date: 2013-08-30 22:37-0600\n"
+"POT-Creation-Date: 2015-10-01 14:40-0600\n"
+"PO-Revision-Date: 2015-10-01 14:52-0600\n"
 "Last-Translator: Seán de Búrca <leftmostcat@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
 "Language: ga\n"
@@ -18,102 +18,620 @@ msgstr ""
 "Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : "
 "4;\n"
 
-#: ../data/gnome-maps.desktop.in.in.h:1 ../src/application.js:53
-#: ../src/mainWindow.js:331 ../src/main-window.ui.h:3
+#: ../data/org.gnome.Maps.appdata.xml.in.h:1
+msgid ""
+"Maps gives you quick access to maps all across the world. It allows you to "
+"quickly find the place you’re looking for by searching for a city or street, "
+"or locate a place to meet a friend."
+msgstr ""
+
+#: ../data/org.gnome.Maps.appdata.xml.in.h:2
+msgid ""
+"Maps uses the collaborative OpenStreetMap database, made by hundreds of "
+"thousands of people across the globe."
+msgstr ""
+
+#. Translators: Search is carried out on OpenStreetMap data using Nominatim.
+#. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
+#. your language to see what words you can use for the translated search.
+#: ../data/org.gnome.Maps.appdata.xml.in.h:6
+msgid ""
+"You can even search for specific types of locations, such as “Pubs near Main "
+"Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
+msgstr ""
+
+#. Translators: This is the program name.
+#: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
+#: ../src/application.js:77 ../src/mainWindow.js:373
 msgid "Maps"
 msgstr "Léarscáileanna"
 
-#: ../data/gnome-maps.desktop.in.in.h:2
+#: ../data/org.gnome.Maps.desktop.in.h:2
 msgid "A simple maps application"
 msgstr "Feidhmchlár simplí léarscáileanna"
 
-#: ../data/gnome-maps.desktop.in.in.h:3
+#: ../data/org.gnome.Maps.desktop.in.h:3
 msgid "Maps;"
 msgstr "Léarscáileanna;"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:1
+#: ../data/org.gnome.Maps.gschema.xml.h:1
 msgid "Window size"
 msgstr "Méid na fuinneoige"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:2
+#: ../data/org.gnome.Maps.gschema.xml.h:2
 msgid "Window size (width and height)."
 msgstr "Méid na fuinneoige (leithead agus airde)."
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:3
+#: ../data/org.gnome.Maps.gschema.xml.h:3
 msgid "Window position"
 msgstr "Ionad na fuinneoige"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:4
-msgid "Window position (x and y)."
+#: ../data/org.gnome.Maps.gschema.xml.h:4
+#, fuzzy
+msgid "Window position (X and Y)."
 msgstr "Ionad na fuinneoige (x agus y)."
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:5
+#: ../data/org.gnome.Maps.gschema.xml.h:5
 msgid "Window maximized"
 msgstr "Uasmhéadaíodh an fhuinneog"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:6
-msgid "Window maximized state"
+#: ../data/org.gnome.Maps.gschema.xml.h:6
+#, fuzzy
+msgid "Window maximization state"
 msgstr "Staid uasmhéadaithe na fuinneoige"
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:7
-msgid "Last known location and accuracy"
-msgstr ""
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:8
-msgid ""
-"Last known location (latitude and longitude in degrees) and accuracy (in "
-"meters)."
-msgstr ""
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:9
-msgid "Description of last known location"
-msgstr ""
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:10
-msgid "Description of last known location of user."
-msgstr ""
-
-#: ../data/org.gnome.maps.gschema.xml.in.h:11
+#: ../data/org.gnome.Maps.gschema.xml.h:7
 msgid "Maximum number of search results"
 msgstr ""
 
-#: ../data/org.gnome.maps.gschema.xml.in.h:12
+#: ../data/org.gnome.Maps.gschema.xml.h:8
 msgid "Maximum number of search results from geocode search."
 msgstr ""
 
-#: ../src/app-menu.ui.h:1
+#: ../data/org.gnome.Maps.gschema.xml.h:9
+msgid "Number of recent places to store"
+msgstr ""
+
+#: ../data/org.gnome.Maps.gschema.xml.h:10
+msgid "Number of recently visited places to store."
+msgstr ""
+
+#: ../data/org.gnome.Maps.gschema.xml.h:11
+msgid "Number of recent routes to store"
+msgstr ""
+
+#: ../data/org.gnome.Maps.gschema.xml.h:12
+msgid "Number of recently visited routes to store."
+msgstr ""
+
+#: ../data/org.gnome.Maps.gschema.xml.h:13
+msgid "Facebook check-in privacy setting"
+msgstr ""
+
+#: ../data/org.gnome.Maps.gschema.xml.h:14
+msgid ""
+"Latest used Facebook check-in privacy setting. Possible values are: "
+"EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
+msgstr ""
+
+#: ../data/org.gnome.Maps.gschema.xml.h:15
+msgid "Foursquare check-in privacy setting"
+msgstr ""
+
+#: ../data/org.gnome.Maps.gschema.xml.h:16
+msgid ""
+"Latest used Foursquare check-in privacy setting. Possible values are: "
+"public, followers or private."
+msgstr ""
+
+#: ../data/org.gnome.Maps.gschema.xml.h:17
+msgid "Foursquare check-in Facebook broadcasting"
+msgstr ""
+
+#: ../data/org.gnome.Maps.gschema.xml.h:18
+msgid ""
+"Indicates if Foursquare should broadcast the check-in as a post in the "
+"Facebook account associated with the Foursquare account."
+msgstr ""
+
+#: ../data/org.gnome.Maps.gschema.xml.h:19
+msgid "Foursquare check-in Twitter broadcasting"
+msgstr ""
+
+#: ../data/org.gnome.Maps.gschema.xml.h:20
+msgid ""
+"Indicates if Foursquare should broadcast the check-in as a tweet in the "
+"Twitter account associated with the Foursquare account."
+msgstr ""
+
+#: ../data/ui/app-menu.ui.h:1
 msgid "About"
 msgstr "Maidir Leis Seo"
 
-#: ../src/app-menu.ui.h:2
+#: ../data/ui/app-menu.ui.h:2
 msgid "Quit"
 msgstr "Scoir"
 
-#: ../src/mainWindow.js:330
+#: ../data/ui/check-in-dialog.ui.h:1
+msgid "Visibility"
+msgstr ""
+
+#: ../data/ui/check-in-dialog.ui.h:2
+msgid "Post on Facebook"
+msgstr ""
+
+#: ../data/ui/check-in-dialog.ui.h:3
+msgid "Post on Twitter"
+msgstr ""
+
+#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/send-to-dialog.ui.h:2
+msgid "_Cancel"
+msgstr "_Cealaigh"
+
+#. Translators: Check in is used as a verb
+#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:5
+msgid "C_heck in"
+msgstr ""
+
+#: ../data/ui/check-in-dialog.ui.h:6
+msgid "Everyone"
+msgstr ""
+
+#: ../data/ui/check-in-dialog.ui.h:7
+msgid "Friends of friends"
+msgstr ""
+
+#: ../data/ui/check-in-dialog.ui.h:8
+msgid "Just friends"
+msgstr ""
+
+#: ../data/ui/check-in-dialog.ui.h:9
+msgid "Just me"
+msgstr ""
+
+#: ../data/ui/check-in-dialog.ui.h:10
+msgid "Public"
+msgstr ""
+
+#: ../data/ui/check-in-dialog.ui.h:11
+msgid "Followers"
+msgstr ""
+
+#: ../data/ui/check-in-dialog.ui.h:12
+msgid "Private"
+msgstr "Príobháideach"
+
+#: ../data/ui/context-menu.ui.h:1
+msgid "What’s here?"
+msgstr "Cad atá anseo?"
+
+#: ../data/ui/context-menu.ui.h:2
+msgid "Copy Location"
+msgstr "Cóipeáil Suíomh"
+
+#: ../data/ui/location-service-notification.ui.h:1
+msgid "Turn on location services to find your location"
+msgstr ""
+
+#: ../data/ui/location-service-notification.ui.h:2
+msgid "Location Settings"
+msgstr "Socruithe Suímh"
+
+#: ../data/ui/main-window.ui.h:2
+msgid "Go to current location"
+msgstr "Téigh go dtí an suíomh reatha"
+
+#: ../data/ui/main-window.ui.h:3
+msgid "Choose map type"
+msgstr "Roghnaigh cineál léarscáile"
+
+#: ../data/ui/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr ""
+
+#: ../data/ui/main-window.ui.h:5
+msgid "Toggle favorites"
+msgstr ""
+
+#: ../data/ui/main-window.ui.h:6
+msgid "Maps is offline!"
+msgstr "Tá Léarscáileanna as líne!"
+
+#: ../data/ui/main-window.ui.h:7
+msgid ""
+"Maps need an active internet connection to function properly, but one can't "
+"be found."
+msgstr ""
+
+#: ../data/ui/main-window.ui.h:8
+msgid "Check your connection and proxy settings."
+msgstr ""
+
+#: ../data/ui/map-bubble.ui.h:1
+msgid "Add to new route"
+msgstr "Cuir le bealach nua"
+
+#: ../data/ui/map-bubble.ui.h:2
+msgid "Open with another application"
+msgstr "Oscail le feidhmchlár eile"
+
+#: ../data/ui/map-bubble.ui.h:3
+msgid "Mark as favorite"
+msgstr ""
+
+#: ../data/ui/map-bubble.ui.h:6
+msgid "Check in here"
+msgstr ""
+
+#: ../data/ui/search-popup.ui.h:1
+msgid "Press enter to search"
+msgstr ""
+
+#: ../data/ui/send-to-dialog.ui.h:1
+msgid "Open location"
+msgstr "Oscail suíomh"
+
+#: ../data/ui/send-to-dialog.ui.h:3
+msgid "_Open"
+msgstr "_Oscail"
+
+#: ../data/ui/sidebar.ui.h:1
+msgid "Route search by GraphHopper"
+msgstr "Cuardach bealaí ag GraphHopper"
+
+#: ../data/ui/social-place-more-results-row.ui.h:1
+msgid "Show more results"
+msgstr "Taispeáin tuilleadh torthaí"
+
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:209
+msgid "Current location"
+msgstr "Suíomh reatha"
+
+#. To translators: %s can be "Unknown", "Exact" or "%f km²"
+#: ../data/ui/user-location-bubble.ui.h:4
+#, no-c-format
+msgid "Accuracy: %s"
+msgstr "Cruinneas: %s"
+
+#: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
+#: ../lib/maps-file-tile-source.c:459
+msgid "Failed to find tile structure in directory"
+msgstr ""
+
+#: ../src/application.js:86
+msgid "A path to a local tiles directory structure"
+msgstr ""
+
+#: ../src/checkInDialog.js:176
+msgid "Select an account"
+msgstr ""
+
+#: ../src/checkInDialog.js:181 ../src/checkInDialog.js:253
+msgid "Loading"
+msgstr "Á luchtú"
+
+#: ../src/checkInDialog.js:205
+msgid "Select a place"
+msgstr "Roghnaigh áit"
+
+#: ../src/checkInDialog.js:210
+msgid ""
+"Maps cannot find the place to check in to with Facebook. Please select one "
+"from this list."
+msgstr ""
+
+#: ../src/checkInDialog.js:212
+msgid ""
+"Maps cannot find the place to check in to with Foursquare. Please select one "
+"from this list."
+msgstr ""
+
+#. Translators: %s is the name of the place to check in.
+#.
+#: ../src/checkInDialog.js:227
+#, javascript-format
+msgid "Check in to %s"
+msgstr ""
+
+#. Translators: %s is the name of the place to check in.
+#.
+#: ../src/checkInDialog.js:237
+#, javascript-format
+msgid "Write an optional message to check in to %s."
+msgstr ""
+
+#: ../src/checkInDialog.js:289 ../src/checkIn.js:153
+msgid "An error has occurred"
+msgstr "Tharla earráid"
+
+#. Translators: %s is the place name that user wanted to check-in
+#: ../src/checkIn.js:135
+#, javascript-format
+msgid "Cannot find \"%s\" in the social service"
+msgstr ""
+
+#: ../src/checkIn.js:137
+msgid "Cannot find a suitable place to check-in in this location"
+msgstr ""
+
+#: ../src/checkIn.js:141
+msgid ""
+"Credentials have expired, please open Online Accounts to sign in and enable "
+"this account"
+msgstr ""
+
+#: ../src/mainWindow.js:321
+msgid "Failed to connect to location service"
+msgstr ""
+
+#: ../src/mainWindow.js:326
+msgid "Position not found"
+msgstr ""
+
+#: ../src/mainWindow.js:371
 msgid "translator-credits"
 msgstr "Seán de Búrca <leftmostcat@gmail.com>"
 
-#: ../src/mainWindow.js:332
+#: ../src/mainWindow.js:374
 msgid "A map application for GNOME"
 msgstr "Feidhmchlár léarscáile do GNOME"
 
-#: ../src/main-window.ui.h:1
-msgid "Street"
-msgstr "Sráid"
-
-#: ../src/main-window.ui.h:2
-msgid "Satellite"
-msgstr "Satailít"
-
-#: ../src/mapLocation.js:121
-msgid " km²"
-msgstr " km²"
-
-#: ../src/userLocation.js:58
+#: ../src/placeBubble.js:101
 #, javascript-format
-msgid ""
-"%s\n"
-"Position Accuracy: %s"
+msgid "Postal code: %s"
+msgstr "Cód poist: %s"
+
+#: ../src/placeBubble.js:103
+#, javascript-format
+msgid "Country code: %s"
+msgstr "Cód tíre: %s"
+
+#: ../src/placeBubble.js:112
+#, javascript-format
+msgid "Population: %s"
+msgstr "Daonra: %s"
+
+#: ../src/placeBubble.js:115
+#, javascript-format
+msgid "Opening hours: %s"
+msgstr "Uaireanta oscailte: %s"
+
+#: ../src/placeBubble.js:120
+msgid "Wikipedia"
+msgstr "Vicipéid"
+
+#: ../src/placeBubble.js:125
+#, javascript-format
+msgid "Wheelchair access: %s"
+msgstr "Bealach isteach do chathaoireacha rothaí: %s"
+
+#: ../src/placeEntry.js:215
+msgid "Failed to parse Geo URI"
 msgstr ""
-"%s\n"
-"Cruinneas Ionaid: %s"
+
+#. Translators:
+#. * This means wheelchairs have full unrestricted access.
+#.
+#: ../src/place.js:121
+msgid "yes"
+msgstr ""
+
+#. Translators:
+#. * This means wheelchairs have partial access (e.g some areas
+#. * can be accessed and others not, areas requiring assistance
+#. * by someone pushing up a steep gradient).
+#.
+#: ../src/place.js:128
+msgid "limited"
+msgstr ""
+
+#. Translators:
+#. * This means wheelchairs have no unrestricted access
+#. * (e.g. stair only access).
+#.
+#: ../src/place.js:134
+msgid "no"
+msgstr ""
+
+#. Translators:
+#. * This means that the way or area is designated or purpose built
+#. * for wheelchairs (e.g. elevators designed for wheelchair access
+#. * only). This is rarely used.
+#.
+#: ../src/place.js:141
+msgid "designated"
+msgstr ""
+
+#: ../src/routeService.js:90
+msgid "No route found."
+msgstr "Bealach gan aimsiú."
+
+#: ../src/routeService.js:97
+msgid "Route request failed."
+msgstr ""
+
+#: ../src/routeService.js:168
+msgid "Start!"
+msgstr "Tosaigh!"
+
+#. Translators: %s is a time expression with the format "%f h" or "%f min"
+#: ../src/sidebar.js:230
+#, javascript-format
+msgid "Estimated time: %s"
+msgstr "Am measta: %s"
+
+#: ../src/translations.js:55 ../src/translations.js:57
+msgid "around the clock"
+msgstr ""
+
+#: ../src/translations.js:59
+msgid "from sunrise to sunset"
+msgstr ""
+
+#. Translators:
+#. * This is a format string with two separate time ranges
+#. * such as "Mo-Fr 10:00-19:00 Sa 12:00-16:00"
+#. * The space between the format place holders could be
+#. * substituted with the appropriate separator.
+#.
+#: ../src/translations.js:78
+#, javascript-format
+msgctxt "time range list"
+msgid "%s %s"
+msgstr "%s %s"
+
+#. Translators:
+#. * This is a format string with three separate time ranges
+#. * such as "Mo-Fr 10:00-19:00 Sa 10:00-17:00 Su 12:00-16:00"
+#. * The space between the format place holders could be
+#. * substituted with the appropriate separator.
+#.
+#: ../src/translations.js:90
+#, javascript-format
+msgctxt "time range list"
+msgid "%s %s %s"
+msgstr "%s %s %s"
+
+#. Translators:
+#. * This is a format string consisting of a part specifying the days for
+#. * which the specified time is applied and the time interval
+#. * specification as the second argument.
+#. * The space between the format place holders could be substituted with
+#. * the appropriate separator or phrase and the ordering of the arguments
+#. * can be rearranged with the %n#s syntax.
+#: ../src/translations.js:121
+#, javascript-format
+msgctxt "time range component"
+msgid "%s %s"
+msgstr "%s %s"
+
+#. Translators:
+#. * This represents a format string consisting of two day interval
+#. * specifications.
+#. * For example:
+#. * Mo-Fr,Sa
+#. * where the "Mo-Fr" and "Sa" parts are replaced by the %s
+#. * place holder.
+#. * The separator (,) could be replaced with a translated variant or
+#. * a phrase if appropriate.
+#: ../src/translations.js:153
+#, javascript-format
+msgctxt "day interval list"
+msgid "%s,%s"
+msgstr "%s,%s"
+
+#. Translators:
+#. * This represents a format string consisting of three day interval
+#. * specifications.
+#. * For example:
+#. * Mo-We,Fr,Su
+#. * where the "Mo-We", "Fr", and "Su" parts are replaced by the
+#. * %s place holder.
+#. * The separator (,) could be replaced with a translated variant or
+#. * a phrase if appropriate.
+#: ../src/translations.js:167
+#, javascript-format
+msgctxt "day interval list"
+msgid "%s,%s,%s"
+msgstr "%s,%s,%s"
+
+#: ../src/translations.js:186
+msgid "every day"
+msgstr "gach lá"
+
+#. Translators:
+#. * This represents a range of days with a starting and ending day.
+#.
+#: ../src/translations.js:198
+#, javascript-format
+msgctxt "day range"
+msgid "%s-%s"
+msgstr "%s-%s"
+
+#: ../src/translations.js:209
+msgid "public holidays"
+msgstr ""
+
+#: ../src/translations.js:211
+msgid "school holidays"
+msgstr ""
+
+#. Translators:
+#. * This is a list with two time intervals, such as:
+#. * 09:00-12:00, 13:00-14:00
+#. * The intervals are represented by the %s place holders and
+#. * appropriate white space or connected phrase could be modified by
+#. * the translation. The order of the arguments can be rearranged
+#. * using the %n$s syntax.
+#.
+#: ../src/translations.js:251
+#, javascript-format
+msgctxt "time interval list"
+msgid "%s, %s"
+msgstr "%s, %s"
+
+#: ../src/translations.js:265
+msgid "not open"
+msgstr ""
+
+#. Translators:
+#. * This is a time interval with a starting and an ending time.
+#. * The time values are represented by the %s place holders and
+#. * appropriate white spacing or connecting phrases can be set by the
+#. * translation as needed. The order of the arguments can be rearranged
+#. * using the %n$s syntax.
+#.
+#: ../src/translations.js:280
+#, javascript-format
+msgctxt "time interval"
+msgid "%s-%s"
+msgstr "%s-%s"
+
+#. Translators: Accuracy of user location information
+#: ../src/utils.js:256
+msgid "Unknown"
+msgstr "Anaithnid"
+
+#. Translators: Accuracy of user location information
+#: ../src/utils.js:259
+msgid "Exact"
+msgstr ""
+
+#: ../src/utils.js:354
+#, javascript-format
+msgid "%f h"
+msgstr "%f u"
+
+#: ../src/utils.js:356
+#, javascript-format
+msgid "%f min"
+msgstr "%f n"
+
+#: ../src/utils.js:358
+#, javascript-format
+msgid "%f s"
+msgstr "%f s"
+
+#. Translators: This is a distance measured in kilometers
+#: ../src/utils.js:369
+#, javascript-format
+msgid "%f km"
+msgstr "%f cm"
+
+#. Translators: This is a distance measured in meters
+#: ../src/utils.js:372
+#, javascript-format
+msgid "%f m"
+msgstr "%f m"
+
+#. Translators: This is a distance measured in miles
+#: ../src/utils.js:380
+#, javascript-format
+msgid "%f mi"
+msgstr "%f mí"
+
+#. Translators: This is a distance measured in feet
+#: ../src/utils.js:383
+#, javascript-format
+msgid "%f ft"
+msgstr "%f tr"
