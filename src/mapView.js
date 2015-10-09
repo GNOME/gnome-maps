@@ -261,7 +261,10 @@ const MapView = new Lang.Class({
             this._placeLayer.add_marker(marker);
         }).bind(this));
 
-        this._gotoBBox(contact.bounding_box);
+        if (places.length > 1)
+            this._gotoBBox(contact.bounding_box);
+        else
+            new MapWalker.MapWalker(places[0], this).goTo(true);
     },
 
     _showStoredRoute: function(stored) {

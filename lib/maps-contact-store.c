@@ -173,7 +173,7 @@ get_contact (FolksIndividual *individual)
       name = g_strdup_printf ("%s (%s)",
                               folks_individual_get_display_name (individual),
                               type);
-      place = geocode_place_new (name, GEOCODE_PLACE_TYPE_UNKNOWN);
+      place = geocode_place_new (name, GEOCODE_PLACE_TYPE_STREET);
       g_free (name);
 
       geocode_place_set_country (place,

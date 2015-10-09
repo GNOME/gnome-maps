@@ -114,6 +114,10 @@ const Application = new Lang.Class({
     _showContact: function(id) {
         contactStore.lookup(id, (function(contact) {
             this._mainWindow.markBusy();
+            if (!contact) {
+                this._mainWindow.unmarkBusy();
+                return;
+            }
             contact.geocode((function() {
                 this._mainWindow.unmarkBusy();
                 this._mainWindow.mapView.showContact(contact);
