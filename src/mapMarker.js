@@ -70,8 +70,10 @@ const MapMarker = new Lang.Class({
     _onButtonPress: function(marker, event) {
         // Zoom in on marker on double-click
         if (event.get_click_count() > 1) {
-            this._view.zoom_level = this._view.max_zoom_level - 1;
-            this._view.center_on(this.latitude, this.longitude);
+            if (this._view.zoom_level < this._view.max_zoom_level - 1) {
+                this._view.zoom_level = this._view.max_zoom_level - 1;
+                this._view.center_on(this.latitude, this.longitude);
+            }
         }
     },
 

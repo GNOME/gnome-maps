@@ -56,9 +56,8 @@ const MapWalker = new Lang.Class({
     // Zoom to the maximal zoom-level that fits the place type
     zoomToFit: function() {
         let zoom;
-
         if (this._boundingBox !== null) {
-            this._view.zoom_level = this._view.max_zoom_level;
+            this._view.zoom_level = this._view.max_zoom_level - 1;
             this._view.ensure_visible(this._boundingBox, false);
         } else {
             switch (this.place.place_type) {
