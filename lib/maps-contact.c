@@ -264,6 +264,7 @@ on_geocode_search_async (GeocodeForward *forward,
       GeocodePlace *place = g_list_nth_data (places, 0);
       GeocodeLocation *location = geocode_place_get_location (place);
       const char *street_address;
+      const char *street;
 
       /* Keep the naming, but add location and osm info */
       geocode_place_set_location (data->place, location);
@@ -282,10 +283,11 @@ on_geocode_search_async (GeocodeForward *forward,
 
       /* Make sure we do not lie about how good our resolution is */
       street_address = geocode_place_get_street_address (place);
+      street = geocode_place_get_street (place);
       if (street_address)
-        geocode_place_set_street_address (data->place, street_address);
-      else
-        geocode_place_set_street (data->place, geocode_place_get_street (place));
+        geocode_place_set_street_address (data->place, street);
+      else if (street)
+        geocode_place_set_street (data->place, street);
 
       g_list_free_full(places, g_object_unref);
     }
