@@ -170,9 +170,16 @@ get_contact (FolksIndividual *individual)
               type = gee_iterator_get (values_iter);
             }
         }
-      name = g_strdup_printf ("%s (%s)",
-                              folks_individual_get_display_name (individual),
-                              type);
+      if (gee_collection_get_size (addresses) > 1)
+        {
+          name = g_strdup_printf ("%s (%s)",
+                                  folks_individual_get_display_name (individual),
+                                  type);
+        }
+      else
+        {
+          name = g_strdup (folks_individual_get_display_name (individual));
+        }
       place = geocode_place_new (name, GEOCODE_PLACE_TYPE_STREET);
       g_free (name);
 
