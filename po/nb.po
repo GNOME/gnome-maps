@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-maps 3.17.x\n"
+"Project-Id-Version: gnome-maps 3.18.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-07 19:51+0200\n"
-"PO-Revision-Date: 2015-09-07 19:52+0200\n"
+"POT-Creation-Date: 2015-10-19 19:26+0200\n"
+"PO-Revision-Date: 2015-10-19 19:27+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: Norwegian bokmål\n"
@@ -49,7 +49,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:367
+#: ../src/application.js:77 ../src/mainWindow.js:373
 msgid "Maps"
 msgstr "Kart"
 
@@ -309,6 +309,15 @@ msgstr "Gjeldende posisjon"
 msgid "Accuracy: %s"
 msgstr "Nøyaktighet: %s"
 
+#: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
+#: ../lib/maps-file-tile-source.c:459
+msgid "Failed to find tile structure in directory"
+msgstr "Klarte ikke å finne flisstruktur i katalogen"
+
+#: ../src/application.js:86
+msgid "A path to a local tiles directory structure"
+msgstr "En sti til en lokal katalogstruktur med fliser "
+
 #: ../src/checkInDialog.js:176
 msgid "Select an account"
 msgstr "Velg en konto"
@@ -373,19 +382,19 @@ msgstr ""
 "Akkreditiver er utgått. Åpne Nettkontoer for å logge inn og bruke denne "
 "kontoen"
 
-#: ../src/mainWindow.js:315
+#: ../src/mainWindow.js:321
 msgid "Failed to connect to location service"
 msgstr "Klarte ikke å koble til posisjonstjeneste"
 
-#: ../src/mainWindow.js:320
+#: ../src/mainWindow.js:326
 msgid "Position not found"
 msgstr "Fant ikke posisjonen"
 
-#: ../src/mainWindow.js:365
+#: ../src/mainWindow.js:371
 msgid "translator-credits"
 msgstr "Kjartan Maraas <kmaraas@gnome.org>"
 
-#: ../src/mainWindow.js:368
+#: ../src/mainWindow.js:374
 msgid "A map application for GNOME"
 msgstr "Et kartprogram for GNOME"
 
@@ -468,7 +477,7 @@ msgid "Start!"
 msgstr "Start!"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:229
+#: ../src/sidebar.js:230
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Estimert tid: %s"
