@@ -26,6 +26,9 @@ const Lang = imports.lang;
 const Application = imports.application;
 const ContactPlace = imports.contactPlace;
 const MapBubble = imports.mapBubble;
+const OSMAccountDialog = imports.osmAccountDialog;
+const OSMEditDialog = imports.osmEditDialog;
+const OSMUtils = imports.osmUtils;
 const Overpass = imports.overpass;
 const Place = imports.place;
 const PlaceFormatter = imports.placeFormatter;
@@ -39,7 +42,9 @@ const PlaceBubble = new Lang.Class({
     _init: function(params) {
         let ui = Utils.getUIObject('place-bubble', [ 'stack',
                                                      'box-content',
-                                                     'label-title']);
+                                                     'grid-content',
+                                                     'label-title',
+                                                     'edit-button']);
         params.buttons = (MapBubble.Button.ROUTE |
                           MapBubble.Button.SEND_TO);
 
@@ -55,6 +60,8 @@ const PlaceBubble = new Lang.Class({
         this._stack = ui.stack;
         this._title = ui.labelTitle;
         this._boxContent = ui.boxContent;
+        this._gridContent = ui.gridContent;
+        this._editButton = ui.editButton;
 
         let overpass = new Overpass.Overpass();
         if (Application.placeStore.exists(this.place, null)) {
@@ -79,6 +86,8 @@ const PlaceBubble = new Lang.Class({
             this._populate(this.place);
         }
         this.content.add(this._stack);
+
+        this._initEditButton(this._editButton);
     },
 
     _formatWikiLink: function(wiki) {
@@ -133,6 +142,49 @@ const PlaceBubble = new Lang.Class({
             this._boxContent.pack_start(label, false, true, 0);
         }).bind(this));
 
-        this._stack.visible_child = this._boxContent;
+        this._stack.visible_child = this._gridContent;
+    },
+
+    // clear the view widgets to be able to re-populate an updated place
+    _clearView: function() {
+        let widgets = this._boxContent.get_children();
+
+        /* remove the dynamically added content, the title label
+           has position 0 in the box */
+        for (let i = 1; i < widgets.length; i++) {
+            this._boxContent.remove(widgets[i]);
+        }
+    },
+
+    _initEditButton: function(button) {
+        button.visible = true;
+        button.connect('clicked', this._onEditClicked.bind(this));
+    },
+
+    _onEditClicked: function() {
+        /* if the user is not alread signed in, show the account dialog */
+        if (!Application.osmEdit.isSignedIn) {
+            let response =
+                Application.osmEdit.showAccountDialog(this.get_toplevel(),
+                                                      true);
+            if (!response === OSMAccountDialog.Response.SIGNED_IN)
+                return;
+        }
+
+        let response =
+            Application.osmEdit.showEditDialog(this.get_toplevel(), this._place);
+
+        switch (response) {
+        case OSMEditDialog.Response.UPLOADED:
+            // update place
+            let object = Application.osmEdit.object;
+            OSMUtils.updatePlaceFromOSMObject(this._place, object);
+            // refresh place view
+            this._clearView();
+            this._populate(this._place);
+            break;
+        default:
+            break;
+        }
     }
 });

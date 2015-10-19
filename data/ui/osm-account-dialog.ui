@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk+" version="3.12"/>
+  <template class="Gjs_OSMAccountDialog" parent="GtkDialog">
+    <property name="can_focus">False</property>
+    <property name="type">popup</property>
+    <property name="type_hint">dialog</property>
+    <property name="width_request">500</property>
+    <property name="title" translatable="yes">OpenStreetMap Account</property>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="contentArea">
+        <child>
+          <object class="GtkStack" id="stack">
+            <property name="visible">True</property>
+            <child>
+              <object class="GtkGrid">
+                <property name="visible">True</property>
+                <property name="row-spacing">10</property>
+                <property name="margin">20</property>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">&lt;span weight="bold" size="x-large"&gt;Sign in to edit maps&lt;/span&gt;</property>
+                    <property name="use_markup">True</property>
+                    <property name="visible">True</property>
+                    <property name="hexpand">True</property>
+                    <property name="halign">GTK_ALIGN_CENTER</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">Help to improve the map, using an
+OpenStreetMap account.</property>
+                    <property name="visible">True</property>
+                    <property name="hexpand">True</property>
+                    <property name="halign">GTK_ALIGN_CENTER</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkGrid">
+                    <property name="visible">True</property>
+                    <property name="column-spacing">10</property>
+                    <property name="row-spacing">10</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Email</property>
+                        <property name="halign">GTK_ALIGN_END</property>
+                        <style>
+                          <class name="dim-label"/>
+                        </style>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="emailEntry">
+                        <property name="visible">True</property>
+                        <property name="hexpand">True</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">0</property>
+                        <property name="width">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Password</property>
+                        <property name="halign">GTK_ALIGN_END</property>
+                        <style>
+                          <class name="dim-label"/>
+                        </style>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="passwordEntry">
+                        <property name="visible">True</property>
+                        <property name="hexpand">True</property>
+                        <property name="input-purpose">GTK_INPUT_PURPOSE_PASSWORD</property>
+                        <property name="visibility">False</property>
+                        <property name="caps-lock-warning">True</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">1</property>
+                        <property name="width">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSpinner" id="signInSpinner">
+                        <property name="visible">False</property>
+                        <property name="height_request">16</property>
+                        <property name="width_request">16</property>
+                        <property name="can_focus">False</property>
+                        <property name="active">True</property>
+                        <property name="halign">GTK_ALIGN_END</property>
+                        <property name="hexpand">True</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="signInButton">
+                        <property name="visible">True</property>
+                        <property name="halign">GTK_ALIGN_END</property>
+                        <property name="label" translatable="yes">Sign In</property>
+                        <property name="sensitive">False</property>
+                        <style>
+                          <class name="suggested-action"/>
+                        </style>
+                      </object>
+                      <packing>
+                        <property name="left_attach">2</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLinkButton" id="signUpLinkButton">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="label" translatable="yes">Don't have an account?</property>
+                    <property name="uri">https://www.openstreetmap.org/user/new?referer=gnome-maps</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="resetPasswordLabel">
+                    <property name="visible">False</property>
+                    <property name="can_focus">True</property>
+                    <property name="label" translatable="yes"
+                      comments="The label should contain the link to the OSM reset password page with a translated title">Sorry, that didn't work. Please try again, or visit
+&lt;a href="https://www.openstreetmap.org/user/forgot-password"&gt;OpenStreetMap&lt;/a&gt; to reset your password.</property>
+                    <property name="use-markup">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">4</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="verificationFailedLabel">
+                    <property name="visible">False</property>
+                    <property name="can_focus">True</property>
+                    <property name="label" translatable="yes">The verification code didn't match, please try again.</property>
+                    <property name="use-markup">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">5</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="name">sign-in</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkGrid" id="verifyGrid">
+                <property name="visible">True</property>
+                <property name="row-spacing">10</property>
+                <property name="margin">20</property>
+                <child>
+                  <object class="WebKitWebView" id="verifyView">
+                    <property name="visible">True</property>
+                    <property name="halign">GTK_ALIGN_FILL</property>
+                    <property name="self-scrolling">True</property>
+                    <property name="height-request">250</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkGrid">
+                    <property name="visible">True</property>
+                    <property name="column-spacing">10</property>
+                    <property name="row-spacing">10</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Enter verification code shown above</property>
+                        <style>
+                          <class name="dim-label"/>
+                        </style>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="verificationEntry">
+                        <property name="visible">True</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="verifyButton">
+                        <property name="visible">True</property>
+                        <property name="sensitive">False</property>
+                        <property name="label" translatable="yes">Verify</property>
+                        <property name="hexpand">False</property>
+                        <property name="halign">GTK_ALIGN_END</property>
+                        <style>
+                          <class name="suggested-action"/>
+                        </style>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="name">verify</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkGrid">
+                <property name="visible">True</property>
+                <property name="row-spacing">10</property>
+                <property name="margin">20</property>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">&lt;span weight="bold" size="x-large"&gt;Signed In&lt;/span&gt;</property>
+                    <property name="use_markup">True</property>
+                    <property name="visible">True</property>
+                    <property name="hexpand">True</property>
+                    <property name="halign">GTK_ALIGN_CENTER</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">Your OpenStreetMap account is active.</property>
+                    <property name="visible">True</property>
+                    <property name="hexpand">True</property>
+                    <property name="halign">GTK_ALIGN_CENTER</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="icon-name">avatar-default-symbolic</property>
+                    <property name="pixel-size">64</property>
+                    <property name="opacity">0.33</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="signedInUserLabel">
+                    <property name="visible">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="signOutButton">
+                    <property name="visible">True</property>
+                    <property name="label" translatable="yes">Sign Out</property>
+                    <property name="halign">GTK_ALIGN_CENTER</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">4</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="name">logged-in</property>
+              </packing>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

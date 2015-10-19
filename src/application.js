@@ -35,6 +35,7 @@ const GeocodeService = imports.geocodeService;
 const MainWindow = imports.mainWindow;
 const Maps = imports.gi.GnomeMaps;
 const NotificationManager = imports.notificationManager;
+const OSMEdit = imports.osmEdit;
 const PlaceStore = imports.placeStore;
 const RouteService = imports.routeService;
 const Settings = imports.settings;
@@ -51,6 +52,7 @@ let geocodeService = null;
 let networkMonitor = null;
 let checkInManager = null;
 let contactStore = null;
+let osmEdit = null;
 
 const Application = new Lang.Class({
     Name: 'Application',
@@ -147,6 +149,10 @@ const Application = new Lang.Class({
         this._mainWindow.destroy();
     },
 
+    _onOsmAccountSetupActivate: function() {
+        osmEdit.showAccountDialog(this._mainWindow, false);
+    },
+
     _addContacts: function() {
         contactStore.get_contacts().forEach(function(contact) {
             contact.geocode(function() {
@@ -205,6 +211,9 @@ const Application = new Lang.Class({
             'show-contact': {
                 paramType: 's',
                 onActivate: this._onShowContactActivate.bind(this)
+            },
+            'osm-account-setup': {
+                onActivate: this._onOsmAccountSetupActivate.bind(this)
             }
         });
 
@@ -225,6 +234,7 @@ const Application = new Lang.Class({
         checkInManager = new CheckIn.CheckInManager();
         contactStore = new Maps.ContactStore();
         contactStore.load();
+        osmEdit = new OSMEdit.OSMEdit();
     },
 
     _createWindow: function() {
