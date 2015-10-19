@@ -9,12 +9,24 @@ libgnome_maps_headers_private =					\
 	maps-contact.h							\
 	mapsintl.h							\
 	maps.h								\
-	maps-file-tile-source.h
+	maps-file-tile-source.h					        \
+	maps-osm.h						        \
+	maps-osm-changeset.h					        \
+	maps-osm-node.h						        \
+	maps-osm-object.h					        \
+	maps-osm-relation.h					        \
+	maps-osm-way.h
 
 libgnome_maps_sources =						\
 	maps-contact-store.c						\
 	maps-contact.c							\
-	maps-file-tile-source.c
+	maps-file-tile-source.c					        \
+	maps-osm.c						        \
+	maps-osm-changeset.c					        \
+	maps-osm-node.c						        \
+	maps-osm-object.c					        \
+	maps-osm-way.c						        \
+	maps-osm-relation.c
 
 libgnome_maps_la_SOURCES =						\
 	$(libgnome_maps_sources)					\

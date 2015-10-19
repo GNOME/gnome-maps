@@ -50,6 +50,7 @@ PKG_CHECK_MODULES(GNOME_MAPS_LIB, [
     folks                        >= $FOLKS_MIN_VERSION
     geocode-glib-1.0             >= $GEOCODE_MIN_VERSION
     champlain-0.12               >= $CHAMPLAIN_MIN_VERSION
+    libxml-2.0
 ])
 AC_SUBST(GNOME_MAPS_LIB_CFLAGS)
 AC_SUBST(GNOME_MAPS_LIB_LIBS)
