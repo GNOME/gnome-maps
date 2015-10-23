@@ -76,7 +76,8 @@ const Application = new Lang.Class({
         /* Translators: This is the program name. */
         GLib.set_application_name(_("Maps"));
 
-        this.parent({ application_id: 'org.gnome.Maps' });
+        this.parent({ application_id: 'org.gnome.Maps',
+                      flags: Gio.ApplicationFlags.HANDLES_OPEN });
         this._connected = false;
 
         this.add_main_option('local',
@@ -250,6 +251,15 @@ const Application = new Lang.Class({
         this._createWindow();
         this._checkNetwork();
         this._mainWindow.present();
+    },
+
+    vfunc_open: function(files) {
+        this.activate();
+        let content_type = Gio.content_type_guess(files[0].get_uri(), null)[0];
+        if (content_type === 'application/vnd.geo+json' ||
+            content_type === 'application/json') {
+            this._mainWindow.mapView.openGeoJSON(files[0]);
+        }
     },
 
     _onWindowDestroy: function(window) {
