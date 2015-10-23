@@ -1,8 +1,6 @@
 'use strict';
 
-module.exports = convert;
-
-var simplify = require('./simplify');
+const simplify = imports.geojsonvt.simplify.simplify;
 
 // converts GeoJSON feature into an intermediate projected JSON vector format with simplification data
 

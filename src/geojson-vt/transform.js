@@ -1,8 +1,5 @@
 'use strict';
 
-exports.tile = transformTile;
-exports.point = transformPoint;
-
 // Transforms the coordinates of each feature in the given tile from
 // mercator-projected space into (extent x extent) tile space.
 function transformTile(tile, extent) {

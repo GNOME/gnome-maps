@@ -1,8 +1,6 @@
 'use strict';
 
-var clip = require('./clip');
-
-module.exports = wrap;
+const clip = imports.geojsonvt.clip.clip;
 
 function wrap(features, buffer, intersectX) {
     var merged = features,

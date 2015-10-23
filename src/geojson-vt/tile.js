@@ -1,7 +1,5 @@
 'use strict';
 
-module.exports = createTile;
-
 function createTile(features, z2, tx, ty, tolerance, noSimplify) {
     var tile = {
         features: [],

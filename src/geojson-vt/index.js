@@ -1,13 +1,11 @@
 'use strict';
 
-module.exports = geojsonvt;
-
-var convert = require('./convert'),     // GeoJSON conversion and preprocessing
-    transform = require('./transform'), // coordinate transformation
-    clip = require('./clip'),           // stripe clipping algorithm
-    wrap = require('./wrap'),           // date line processing
-    createTile = require('./tile');     // final simplified tile generation
-
+const convert = imports.geojsonvt.convert.convert;
+const transform = { tile: imports.geojsonvt.transform.transformTile,
+                    point: imports.geojsonvt.transform.transformPoint };
+const clip = imports.geojsonvt.clip.clip;
+const createTile = imports.geojsonvt.tile.createTile;
+const wrap = imports.geojsonvt.wrap.wrap;
 
 function geojsonvt(data, options) {
     return new GeoJSONVT(data, options);

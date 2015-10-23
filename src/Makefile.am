@@ -6,6 +6,7 @@ nodist_app_SCRIPTS = org.gnome.Maps
 app_resource_files =							\
 	$(shell $(GLIB_COMPILE_RESOURCES)				\
 		--sourcedir=$(srcdir)					\
+		--sourcedir=$(srcdir)/geojson-vt			\
 		--generate-dependencies					\
 		$(srcdir)/org.gnome.Maps.src.gresource.xml		\
 	)
@@ -13,6 +14,7 @@ app_resource_files =							\
 org.gnome.Maps.src.gresource: org.gnome.Maps.src.gresource.xml $(app_resource_files)
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES)				\
 		--target=$@						\
+		--sourcedir=$(srcdir)/geojson-vt			\
 		--sourcedir=$(srcdir) $<
 
 resourcedir = $(pkgdatadir)
@@ -31,6 +33,7 @@ org.gnome.Maps: org.gnome.Maps.in
 EXTRA_DIST =								\
 	org.gnome.Maps.in						\
 	org.gnome.Maps.src.gresource.xml				\
+	geojson-vt/LICENSE						\
 	$(app_resource_files)						\
 	$(service_resource_files)					\
 	$(NULL)
