@@ -1,7 +1,5 @@
 'use strict';
 
-module.exports = simplify;
-
 // calculate simplification data using optimized Douglas-Peucker algorithm
 
 function simplify(points, tolerance) {

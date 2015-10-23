@@ -1,7 +1,5 @@
 'use strict';
 
-module.exports = clip;
-
 /* clip features between two axis-parallel lines:
  *     |        |
  *  ___|___     |     /
