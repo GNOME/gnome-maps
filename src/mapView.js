@@ -29,6 +29,7 @@ const Lang = imports.lang;
 const Application = imports.application;
 const ContactPlace = imports.contactPlace;
 const Geoclue = imports.geoclue;
+const GeoJSONSource = imports.geoJSONSource;
 const Location = imports.location;
 const Maps = imports.gi.GnomeMaps;
 const MapWalker = imports.mapWalker;
@@ -134,6 +135,9 @@ const MapView = new Lang.Class({
 
         this._instructionMarkerLayer = new Champlain.MarkerLayer({ selection_mode: mode });
         this.view.add_layer(this._instructionMarkerLayer);
+
+        this._annotationMarkerLayer = new Champlain.MarkerLayer({ selection_mode: mode });
+        this.view.add_layer(this._annotationMarkerLayer);
     },
 
     _connectRouteSignals: function() {
@@ -177,6 +181,42 @@ const MapView = new Lang.Class({
                 Application.application.notify('connected');
                 Application.notificationManager.showMessage(e.message);
             }
+        }
+    },
+
+    _openGeoJSONInternal: function(file) {
+        if (!this.view.realized)
+            return;
+
+        try {
+            this._annotationMarkerLayer.remove_all();
+            let geoJSONSource = new GeoJSONSource.GeoJSONSource({
+                file: file,
+                mapView: this,
+                markerLayer: this._annotationMarkerLayer
+            });
+            geoJSONSource.parse();
+
+            if (this._annotationSource)
+                this.view.remove_overlay_source(this._annotationSource);
+
+            this._annotationSource = geoJSONSource;
+            this.view.add_overlay_source(this._annotationSource, 255);
+            if (geoJSONSource.bbox.is_valid())
+                this._gotoBBox(geoJSONSource.bbox);
+        } catch(e) {
+            let msg = _("Failed to parse GeoJSON file");
+            Application.notificationManager.showMessage(msg);
+            Utils.debug("failed to parse geojson file: %s".format(e.message));
+        }
+    },
+
+    openGeoJSON: function(file) {
+        if (this.view.realized) {
+            this._openGeoJSONInternal(file);
+        } else {
+            this.view.connect('notify::realized',
+                              this._openGeoJSONInternal.bind(this, file));
         }
     },
 
