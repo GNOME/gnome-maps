@@ -23,6 +23,7 @@
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Gdk = imports.gi.Gdk;
+const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
@@ -95,6 +96,7 @@ const MainWindow = new Lang.Class({
         this._initActions();
         this._initSignals();
         this._restoreWindowGeometry();
+        this._initDND();
 
         this._busySignalId = 0;
 
@@ -137,6 +139,28 @@ const MainWindow = new Lang.Class({
                                        sidebar, 'visible',
                                        GObject.BindingFlags.DEFAULT);
         return sidebar;
+    },
+
+    _initDND: function() {
+        this.drag_dest_set(Gtk.DestDefaults.DROP, null, 0);
+        this.drag_dest_add_uri_targets();
+
+        this.connect('drag-motion', (function(widget, ctx, x, y, time) {
+            return true;
+        }).bind(this));
+
+        this.connect('drag-data-received', (function(widget, ctx, x, y, data, info, time) {
+            let uri = data.get_uris()[0];
+            let content_type = Gio.content_type_guess(uri, null)[0];
+
+            if (content_type === 'application/vnd.geo+json' ||
+                content_type === 'application/json') {
+                this._mapView.openGeoJSON(Gio.file_new_for_uri(uri));
+                Gtk.drag_finish(ctx, true, true, time);
+            } else {
+                Gtk.drag_finish(ctx, false, false, time);
+            }
+        }).bind(this));
     },
 
     _initActions: function() {
