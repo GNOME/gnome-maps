@@ -43,9 +43,7 @@ const PlaceBubble = new Lang.Class({
         params.buttons = (MapBubble.Button.ROUTE |
                           MapBubble.Button.SEND_TO);
 
-        // We do not serialize contacts to file, so adding them
-        // as favourites does not makes sense right now.
-        if (!(params.place instanceof ContactPlace.ContactPlace))
+        if (params.place.store)
             params.buttons |= MapBubble.Button.FAVORITE;
 
         this.parent(params);
@@ -71,12 +69,14 @@ const PlaceBubble = new Lang.Class({
                 let place = Application.placeStore.get(this.place);
                 this._populate(place);
             }
-        } else {
+        } else if (this.place.store) {
             overpass.addInfo(this.place, (function(status, code) {
                 this._populate(this.place);
                 Application.placeStore.addPlace(this.place,
                                                 PlaceStore.PlaceType.RECENT);
             }).bind(this));
+        } else {
+            this._populate(this.place);
         }
         this.content.add(this._stack);
     },

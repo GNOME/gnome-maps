@@ -31,6 +31,7 @@ const ContactPlace = new Lang.Class({
         this._contact = params.contact;
         delete params.contact;
 
+        params.store = false;
         this.parent(params);
     },
 

@@ -39,6 +39,14 @@ const Place = new Lang.Class({
         this._openingHours = params.openingHours;
         delete params.openingHours;
 
+        /* Determines if the place should be added to the place store */
+        if (typeof(params.store) === 'undefined') {
+            this._store = true;
+        } else {
+            this._store = params.store;
+            delete params.store;
+        }
+
         this._wheelchair = params.wheelchair;
         delete params.wheelchair;
 
@@ -67,6 +75,14 @@ const Place = new Lang.Class({
                 delete params[prop];
 
         this.parent(params);
+    },
+
+    set store(v) {
+        this._store = v;
+    },
+
+    get store() {
+        return this._store;
     },
 
     get uniqueID() {

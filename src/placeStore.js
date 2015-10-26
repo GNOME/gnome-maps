@@ -88,7 +88,7 @@ const PlaceStore = new Lang.Class({
     },
 
     _addFavorite: function(place) {
-        if (place instanceof ContactPlace.ContactPlace)
+        if (!place.store)
             return;
 
         if (this.exists(place, PlaceType.FAVORITE)) {
@@ -105,7 +105,7 @@ const PlaceStore = new Lang.Class({
     },
 
     _addRecent: function(place) {
-        if (place instanceof ContactPlace.ContactPlace)
+        if (!place.store)
             return;
 
         if (this.exists(place, PlaceType.RECENT)) {
@@ -234,7 +234,7 @@ const PlaceStore = new Lang.Class({
             let type = model.get_value(iter, Columns.TYPE);
             let added = model.get_value(iter, Columns.ADDED);
 
-            if (!place || place instanceof ContactPlace.ContactPlace)
+            if (!place || !place.store)
                 return;
 
             jsonArray.push({
