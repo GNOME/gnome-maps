@@ -231,6 +231,7 @@ const GeoJSONSource = new Lang.Class({
             cr.paint();
             cr.setOperator(Cairo.Operator.OVER);
             cr.setLineWidth(1);
+            cr.setFillRule(Cairo.FillRule.EVEN_ODD);
 
             tileJSON.features.forEach(function(feature) {
                 if (feature.type === TileFeature.POINT)
