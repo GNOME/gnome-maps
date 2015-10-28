@@ -1,7 +1,6 @@
 # Czech translation for gnome-maps.
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
-#
 # Marek Černocký <marek@manet.cz>, 2013, 2014, 2015.
 #
 msgid ""
@@ -9,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-09-16 19:30+0000\n"
-"PO-Revision-Date: 2015-09-17 09:22+0200\n"
+"POT-Creation-Date: 2015-10-28 09:19+0000\n"
+"PO-Revision-Date: 2015-10-28 11:12+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -49,9 +48,9 @@ msgstr ""
 "Můžete také hledat určité typy míst, jako „restaurace poblíž ulice Kobližná, "
 "Brno“ nebo „hotely poblíž Alexanderplatz, Berlín“."
 
-#. Translators: This is the program name. */
+#. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:373
+#: ../src/application.js:77 ../src/mainWindow.js:397
 msgid "Maps"
 msgstr "Mapy"
 
@@ -303,7 +302,7 @@ msgstr "Hledání trasy pomocí GraphHopper"
 msgid "Show more results"
 msgstr "Zobrazit více výsledků"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:209
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:149
 msgid "Current location"
 msgstr "Současné místo"
 
@@ -318,7 +317,7 @@ msgstr "Přesnost: %s"
 msgid "Failed to find tile structure in directory"
 msgstr "Selhalo vyhledání struktury ve složce"
 
-#: ../src/application.js:86
+#: ../src/application.js:87
 msgid "A path to a local tiles directory structure"
 msgstr "Cesta k místní struktuře složek s dlaždicemi"
 
@@ -351,14 +350,14 @@ msgstr ""
 "prosím nějaké ze seznamu."
 
 #. Translators: %s is the name of the place to check in.
-#. */
+#.
 #: ../src/checkInDialog.js:227
 #, javascript-format
 msgid "Check in to %s"
 msgstr "Oznámení polohy na místě %s"
 
 #. Translators: %s is the name of the place to check in.
-#. */
+#.
 #: ../src/checkInDialog.js:237
 #, javascript-format
 msgid "Write an optional message to check in to %s."
@@ -368,7 +367,7 @@ msgstr "Napište volitně zprávu k oznámení polohy na místě %s."
 msgid "An error has occurred"
 msgstr "Vyskytla se chyba"
 
-#. Translators: %s is the place name that user wanted to check-in */
+#. Translators: %s is the place name that user wanted to check-in
 #: ../src/checkIn.js:135
 #, javascript-format
 msgid "Cannot find \"%s\" in the social service"
@@ -387,21 +386,42 @@ msgstr ""
 "Přihlášení vypršelo. Otevřete prosím Účty on-line, přihlaste se tam a tím "
 "účet zpřístupněte."
 
-#: ../src/mainWindow.js:321
+#: ../src/geoJSONSource.js:102
+msgid "invalid coordinate"
+msgstr "neplatné souřadnice"
+
+#: ../src/geoJSONSource.js:124 ../src/geoJSONSource.js:179
+#: ../src/geoJSONSource.js:194
+msgid "parse error"
+msgstr "chyba zpracování"
+
+#: ../src/geoJSONSource.js:173
+msgid "unknown geometry"
+msgstr "neznámé geometrické údaje"
+
+#: ../src/geoJSONSource.js:207
+msgid "failed to load file"
+msgstr "selhalo načtení souboru"
+
+#: ../src/mainWindow.js:345
 msgid "Failed to connect to location service"
 msgstr "Selhalo připojení ke geolokační službě"
 
-#: ../src/mainWindow.js:326
+#: ../src/mainWindow.js:350
 msgid "Position not found"
 msgstr "Poloha nebyla nalezena."
 
-#: ../src/mainWindow.js:371
+#: ../src/mainWindow.js:395
 msgid "translator-credits"
 msgstr "Marek Černocký"
 
-#: ../src/mainWindow.js:374
+#: ../src/mainWindow.js:398
 msgid "A map application for GNOME"
 msgstr "Mapová aplikace pro GNOME"
+
+#: ../src/mapView.js:208
+msgid "Failed to parse GeoJSON file"
+msgstr "Selhalo zpracování souboru GeoJSON"
 
 #: ../src/placeBubble.js:101
 #, javascript-format
@@ -438,8 +458,8 @@ msgstr "Selhalo zpracování adresy Geo URI"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
-#. */
-#: ../src/place.js:121
+#.
+#: ../src/place.js:137
 msgid "yes"
 msgstr "ano"
 
@@ -447,16 +467,16 @@ msgstr "ano"
 #. * This means wheelchairs have partial access (e.g some areas
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
-#. */
-#: ../src/place.js:128
+#.
+#: ../src/place.js:144
 msgid "limited"
 msgstr "částečně"
 
 #. Translators:
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
-#. */
-#: ../src/place.js:134
+#.
+#: ../src/place.js:150
 msgid "no"
 msgstr "ne"
 
@@ -464,8 +484,8 @@ msgstr "ne"
 #. * This means that the way or area is designated or purpose built
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
-#. */
-#: ../src/place.js:141
+#.
+#: ../src/place.js:157
 msgid "designated"
 msgstr "výslovně ano"
 
@@ -481,7 +501,7 @@ msgstr "Požadavek na vyhledání cesty selhal."
 msgid "Start!"
 msgstr "Start!"
 
-#. Translators: %s is a time expression with the format "%f h" or "%f min" */
+#. Translators: %s is a time expression with the format "%f h" or "%f min"
 #: ../src/sidebar.js:230
 #, javascript-format
 msgid "Estimated time: %s"
@@ -500,7 +520,7 @@ msgstr "za denního světla"
 #. * such as "Mo-Fr 10:00-19:00 Sa 12:00-16:00"
 #. * The space between the format place holders could be
 #. * substituted with the appropriate separator.
-#. */
+#.
 #: ../src/translations.js:78
 #, javascript-format
 msgctxt "time range list"
@@ -512,7 +532,7 @@ msgstr "%s %s"
 #. * such as "Mo-Fr 10:00-19:00 Sa 10:00-17:00 Su 12:00-16:00"
 #. * The space between the format place holders could be
 #. * substituted with the appropriate separator.
-#. */
+#.
 #: ../src/translations.js:90
 #, javascript-format
 msgctxt "time range list"
@@ -525,7 +545,7 @@ msgstr "%s %s %s"
 #. * specification as the second argument.
 #. * The space between the format place holders could be substituted with
 #. * the appropriate separator or phrase and the ordering of the arguments
-#. * can be rearranged with the %n#s syntax. */
+#. * can be rearranged with the %n#s syntax.
 #: ../src/translations.js:121
 #, javascript-format
 msgctxt "time range component"
@@ -540,7 +560,7 @@ msgstr "%s %s"
 #. * where the "Mo-Fr" and "Sa" parts are replaced by the %s
 #. * place holder.
 #. * The separator (,) could be replaced with a translated variant or
-#. * a phrase if appropriate. */
+#. * a phrase if appropriate.
 #: ../src/translations.js:153
 #, javascript-format
 msgctxt "day interval list"
@@ -555,7 +575,7 @@ msgstr "%s, %s"
 #. * where the "Mo-We", "Fr", and "Su" parts are replaced by the
 #. * %s place holder.
 #. * The separator (,) could be replaced with a translated variant or
-#. * a phrase if appropriate. */
+#. * a phrase if appropriate.
 #: ../src/translations.js:167
 #, javascript-format
 msgctxt "day interval list"
@@ -568,7 +588,7 @@ msgstr "každý den"
 
 #. Translators:
 #. * This represents a range of days with a starting and ending day.
-#. */
+#.
 #: ../src/translations.js:198
 #, javascript-format
 msgctxt "day range"
@@ -590,7 +610,7 @@ msgstr "školní prázdniny"
 #. * appropriate white space or connected phrase could be modified by
 #. * the translation. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
-#. */
+#.
 #: ../src/translations.js:251
 #, javascript-format
 msgctxt "time interval list"
@@ -607,19 +627,19 @@ msgstr "zavřeno"
 #. * appropriate white spacing or connecting phrases can be set by the
 #. * translation as needed. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
-#. */
+#.
 #: ../src/translations.js:280
 #, javascript-format
 msgctxt "time interval"
 msgid "%s-%s"
 msgstr "%s - %s"
 
-#. Translators: Accuracy of user location information */
+#. Translators: Accuracy of user location information
 #: ../src/utils.js:256
 msgid "Unknown"
 msgstr "neznámá"
 
-#. Translators: Accuracy of user location information */
+#. Translators: Accuracy of user location information
 #: ../src/utils.js:259
 msgid "Exact"
 msgstr "velmi přesná"
@@ -639,25 +659,25 @@ msgstr "%f min"
 msgid "%f s"
 msgstr "%f s"
 
-#. Translators: This is a distance measured in kilometers */
+#. Translators: This is a distance measured in kilometers
 #: ../src/utils.js:369
 #, javascript-format
 msgid "%f km"
 msgstr "%f km"
 
-#. Translators: This is a distance measured in meters */
+#. Translators: This is a distance measured in meters
 #: ../src/utils.js:372
 #, javascript-format
 msgid "%f m"
 msgstr "%f m"
 
-#. Translators: This is a distance measured in miles */
+#. Translators: This is a distance measured in miles
 #: ../src/utils.js:380
 #, javascript-format
 msgid "%f mi"
 msgstr "%f mi"
 
-#. Translators: This is a distance measured in feet */
+#. Translators: This is a distance measured in feet
 #: ../src/utils.js:383
 #, javascript-format
 msgid "%f ft"
