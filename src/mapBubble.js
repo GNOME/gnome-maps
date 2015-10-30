@@ -75,7 +75,8 @@ const MapBubble = new Lang.Class({
                                                    'bubble-route-button',
                                                    'bubble-send-to-button',
                                                    'bubble-favorite-button',
-                                                   'bubble-check-in-button']);
+                                                   'bubble-check-in-button',
+                                                   'bubble-favorite-button-image']);
         this._image = ui.bubbleImage;
         this._content = ui.bubbleContentArea;
 
@@ -87,7 +88,7 @@ const MapBubble = new Lang.Class({
             if (buttonFlags & Button.SEND_TO)
                 this._initSendToButton(ui.bubbleSendToButton);
             if (buttonFlags & Button.FAVORITE)
-                this._initFavoriteButton(ui.bubbleFavoriteButton);
+                this._initFavoriteButton(ui.bubbleFavoriteButton, ui.bubbleFavoriteButtonImage);
             if (buttonFlags & Button.CHECK_IN)
                 this._initCheckInButton(ui.bubbleCheckInButton, checkInMatchPlace);
         }
@@ -107,19 +108,28 @@ const MapBubble = new Lang.Class({
         return this._content;
     },
 
-    _initFavoriteButton: function(button) {
+    _initFavoriteButton: function(button, image) {
         let placeStore = Application.placeStore;
         let isFavorite = placeStore.exists(this._place,
                                            PlaceStore.PlaceType.FAVORITE);
         button.visible = true;
         button.active = isFavorite;
+
+        if (button.active)
+            image.icon_name = 'starred-symbolic';
+        else
+            image.icon_name = 'non-starred-symbolic';
+
         button.connect('toggled', (function() {
-            if (button.active)
+            if (button.active) {
+                image.icon_name = 'starred-symbolic';
                 placeStore.addPlace(this._place,
                                     PlaceStore.PlaceType.FAVORITE);
-            else
+            } else {
+                image.icon_name = 'non-starred-symbolic';
                 placeStore.removePlace(this._place,
                                        PlaceStore.PlaceType.FAVORITE);
+            }
         }).bind(this));
     },
 
