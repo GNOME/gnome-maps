@@ -342,6 +342,15 @@ function _load_themed_icon(icon, size, loadCompleteCallback) {
     }
 }
 
+function osmTypeToString(osmType) {
+    switch(osmType) {
+        case Geocode.PlaceOsmType.NODE: return 'node';
+        case Geocode.PlaceOsmType.RELATION: return 'relation';
+        case Geocode.PlaceOsmType.WAY: return 'way';
+        default: return 'node';
+    }
+}
+
 function prettyTime(time) {
     let seconds = Math.floor(time / 1000);
     let minutes = Math.floor(seconds / 60);

@@ -17,6 +17,7 @@
  * Author: Jonas Danielson <jonas@threetimestwo.org>
  */
 
+const Gdk = imports.gi.Gdk;
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
@@ -45,6 +46,9 @@ const SendToDialog = new Lang.Class({
                         'weatherLabel',
                         'clocksRow',
                         'clocksLabel',
+                        'browserRow',
+                        'browserLabel',
+                        'browserIcon',
                         'headerBar',
                         'cancelButton',
                         'chooseButton',
@@ -53,6 +57,9 @@ const SendToDialog = new Lang.Class({
     _init: function(params) {
         this._place = params.place;
         delete params.place;
+
+        this._mapView = params.mapView;
+        delete params.mapView;
 
         params.use_header_bar = true;
         this.parent(params);
@@ -79,6 +86,7 @@ const SendToDialog = new Lang.Class({
     ensureApplications: function() {
         let weatherInfo = Gio.DesktopAppInfo.new(_WEATHER_APPID + '.desktop');
         let clocksInfo = Gio.DesktopAppInfo.new(_CLOCKS_APPID + '.desktop');
+        let browserInfo = Gio.AppInfo.get_default_for_uri_scheme('https');
         let appWeather = this._checkWeather(weatherInfo);
         let appClocks = this._checkClocks(clocksInfo);
 
@@ -92,7 +100,31 @@ const SendToDialog = new Lang.Class({
         else
             this._clocksLabel.label = clocksInfo.get_name();
 
-        return appWeather || appClocks;
+        if (!browserInfo) {
+            this._browserRow.hide();
+        } else {
+            this._browserLabel.label = browserInfo.get_name();
+            this._browserIcon.icon_name = browserInfo.get_icon().to_string();
+        }
+
+        return appWeather || appClocks || browserInfo;
+    },
+
+    _getOSMURI: function() {
+        let view = this._mapView.view;
+        let place = this._place;
+
+        let base = 'https://openstreetmap.org';
+        if (this._place.osm_id && this._place.osm_type) {
+            return '%s/%s/%s'.format(base,
+                                     Utils.osmTypeToString(place.osm_type),
+                                     place.osm_id);
+        } else {
+            return '%s?lat=%f&lon=%f&zoom=%d'.format(base,
+                                                     place.location.latitude,
+                                                     place.location.longitude,
+                                                     view.zoom_level);
+        }
     },
 
     _onChooseButtonClicked: function() {
@@ -100,13 +132,14 @@ const SendToDialog = new Lang.Class({
         if (rows.length === 0)
             this.response(Response.CANCEL);
 
+        let timestamp = Gtk.get_current_event_time();
+
         if (rows[0] === this._weatherRow || rows[0] === this._clocksRow) {
             let location = this._place.location;
             let city = GWeather.Location.new_detached(this._place.name,
                                                       null,
                                                       location.latitude,
                                                       location.longitude);
-            let appId;
             let action;
             if (rows[0] === this._weatherRow) {
                 action = 'show-location';
@@ -119,10 +152,23 @@ const SendToDialog = new Lang.Class({
             Utils.activateAction(appId,
                                  action,
                                  new GLib.Variant('v', city.serialize()),
-                                 Gtk.get_current_event_time());
+                                 timestamp);
+        } else if (rows[0] === this._browserRow) {
+            try {
+                let display = Gdk.Display.get_default();
+                let ctx = Gdk.Display.get_default().get_app_launch_context();
+                let screen = display.get_default_screen();
 
-            this.response(Response.SUCCESS);
+                ctx.set_timestamp(timestamp);
+                ctx.set_screen(screen);
+                Gio.app_info_launch_default_for_uri(this._getOSMURI(), ctx);
+            } catch(e) {
+                let msg = _("Failed to open URI");
+                Application.notificationManager.showMessage(msg);
+                Utils.debug('failed to open URI: %s'.format(e.message));
+            }
         }
+        this.response(Response.SUCCESS);
     },
 
     _checkWeather: function(appInfo) {

@@ -23,6 +23,7 @@ const Lang = imports.lang;
 const Soup = imports.gi.Soup;
 
 const Place = imports.place;
+const Utils = imports.utils;
 
 const _DEFAULT_TIMEOUT = 180;
 const _DEFAULT_MAXSIZE = 536870912;
@@ -120,17 +121,8 @@ const Overpass = new Lang.Class({
                                            value ]);
     },
 
-    _osmTypeString: function(osmType) {
-        switch(osmType) {
-            case Geocode.PlaceOsmType.NODE: return 'node';
-            case Geocode.PlaceOsmType.RELATION: return 'relation';
-            case Geocode.PlaceOsmType.WAY: return 'way';
-            default: return 'node';
-        }
-    },
-
     _getData: function(place) {
-        return Format.vprintf('%s(%s)', [this._osmTypeString(place.osm_type),
+        return Format.vprintf('%s(%s)', [Utils.osmTypeToString(place.osm_type),
                                          place.osm_id]);
     },
 

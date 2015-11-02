@@ -126,6 +126,33 @@
                         </child>
                       </object>
                     </child>
+                    <child>
+                      <object class="GtkListBoxRow" id="browserRow">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="height_request">40</property>
+                        <child>
+                          <object class="GtkGrid" id="browserGrid">
+                            <property name="visible">True</property>
+                            <property name="orientation">horizontal</property>
+                            <property name="column_spacing">10</property>
+                            <child>
+                              <object class="GtkImage" id="browserIcon">
+                                <property name="visible">True</property>
+                                <property name="pixel_size">32</property>
+                                <property name="halign">start</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="browserLabel">
+                                <property name="visible">True</property>
+                                <property name="margin-end">10</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>

@@ -135,6 +135,7 @@ const MapBubble = new Lang.Class({
 
     _initSendToButton: function(button) {
         let dialog = new SendToDialog.SendToDialog({ transient_for: this.get_toplevel(),
+                                                     mapView: this._mapView,
                                                      place: this._place });
         if (!dialog.ensureApplications())
             return;
