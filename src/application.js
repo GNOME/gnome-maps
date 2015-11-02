@@ -254,10 +254,20 @@ const Application = new Lang.Class({
     },
 
     _openInternal: function(file) {
-        let content_type = Gio.content_type_guess(file.get_uri(), null)[0];
+        let uri = file.get_uri();
+
+        if (GLib.uri_parse_scheme(uri) === 'geo') {
+            /* we get an uri that looks like geo:///lat,lon, remove slashes */
+            let geoURI = uri.replace(/\//g, '');
+            this._mainWindow.mapView.goToGeoURI(geoURI);
+            return;
+        }
+
+        let content_type = Gio.content_type_guess(uri, null)[0];
         if (content_type === 'application/vnd.geo+json' ||
             content_type === 'application/json') {
             this._mainWindow.mapView.openGeoJSON(file);
+            return;
         }
     },
 

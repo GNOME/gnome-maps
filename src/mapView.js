@@ -208,6 +208,25 @@ const MapView = new Lang.Class({
         }
     },
 
+    goToGeoURI: function(uri) {
+        try {
+            let location = new Location.Location({ heading: -1 });
+            location.set_from_uri(uri);
+
+            let place = new Place.Place({ location: location,
+                                          name: location.description,
+                                          store: false });
+            let marker = new PlaceMarker.PlaceMarker({ place: place,
+                                                       mapView: this });
+            this._placeLayer.add_marker(marker);
+            marker.goToAndSelect(true);
+        } catch(e) {
+            let msg = _("Failed to open GeoURI");
+            Application.notificationManager.showMessage(msg);
+            Utils.debug("failed to open GeoURI: %s".format(e.message));
+        }
+    },
+
     gotoUserLocation: function(animate) {
         if (!this._userLocation)
             return;
