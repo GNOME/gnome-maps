@@ -184,10 +184,7 @@ const MapView = new Lang.Class({
         }
     },
 
-    _openGeoJSONInternal: function(file) {
-        if (!this.view.realized)
-            return;
-
+    openGeoJSON: function(file) {
         try {
             this._annotationMarkerLayer.remove_all();
             let geoJSONSource = new GeoJSONSource.GeoJSONSource({
@@ -208,15 +205,6 @@ const MapView = new Lang.Class({
             let msg = _("Failed to parse GeoJSON file");
             Application.notificationManager.showMessage(msg);
             Utils.debug("failed to parse geojson file: %s".format(e.message));
-        }
-    },
-
-    openGeoJSON: function(file) {
-        if (this.view.realized) {
-            this._openGeoJSONInternal(file);
-        } else {
-            this.view.connect('notify::realized',
-                              this._openGeoJSONInternal.bind(this, file));
         }
     },
 

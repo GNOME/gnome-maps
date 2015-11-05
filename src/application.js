@@ -253,13 +253,23 @@ const Application = new Lang.Class({
         this._mainWindow.present();
     },
 
-    vfunc_open: function(files) {
-        this.activate();
-        let content_type = Gio.content_type_guess(files[0].get_uri(), null)[0];
+    _openInternal: function(file) {
+        let content_type = Gio.content_type_guess(file.get_uri(), null)[0];
         if (content_type === 'application/vnd.geo+json' ||
             content_type === 'application/json') {
-            this._mainWindow.mapView.openGeoJSON(files[0]);
+            this._mainWindow.mapView.openGeoJSON(file);
         }
+    },
+
+    vfunc_open: function(files) {
+        this.activate();
+
+        let mapView = this._mainWindow.mapView;
+        if (mapView.view.realized)
+            this._openInternal(files[0]);
+        else
+            mapView.view.connect('notify::realized',
+                                 this._openInternal.bind(this, files[0]));
     },
 
     _onWindowDestroy: function(window) {
