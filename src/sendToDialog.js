@@ -70,8 +70,14 @@ const SendToDialog = new Lang.Class({
         this._cancelButton.connect('clicked',
                                    this.response.bind(this, Response.CANCEL));
 
-        this._chooseButton.connect('clicked',
-                                   this._onChooseButtonClicked.bind(this));
+        this._chooseButton.connect('clicked', (function() {
+            let row = this._list.get_selected_row();
+            this._activateRow(row);
+        }).bind(this));
+
+        this._list.connect('row-activated', (function(list, row) {
+            this._activateRow(row);
+        }).bind(this));
 
         this._list.set_header_func(function(row, before) {
             let horizontal = Gtk.Orientation.HORIZONTAL;
@@ -127,21 +133,18 @@ const SendToDialog = new Lang.Class({
         }
     },
 
-    _onChooseButtonClicked: function() {
-        let rows = this._list.get_selected_rows();
-        if (rows.length === 0)
-            this.response(Response.CANCEL);
-
+    _activateRow: function(row) {
         let timestamp = Gtk.get_current_event_time();
 
-        if (rows[0] === this._weatherRow || rows[0] === this._clocksRow) {
+        if (row === this._weatherRow || row === this._clocksRow) {
             let location = this._place.location;
             let city = GWeather.Location.new_detached(this._place.name,
                                                       null,
                                                       location.latitude,
                                                       location.longitude);
             let action;
-            if (rows[0] === this._weatherRow) {
+            let appId;
+            if (row === this._weatherRow) {
                 action = 'show-location';
                 appId = _WEATHER_APPID;
             } else {
@@ -153,7 +156,7 @@ const SendToDialog = new Lang.Class({
                                  action,
                                  new GLib.Variant('v', city.serialize()),
                                  timestamp);
-        } else if (rows[0] === this._browserRow) {
+        } else if (row === this._browserRow) {
             try {
                 let display = Gdk.Display.get_default();
                 let ctx = Gdk.Display.get_default().get_app_launch_context();
