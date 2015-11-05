@@ -9,18 +9,19 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-09-14 07:30+0000\n"
-"PO-Revision-Date: 2015-09-14 08:37+0100\n"
-"Last-Translator: Pedro Albuquerque <palbuquerque73@gmail.com>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-maps&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2015-10-28 16:42+0000\n"
+"PO-Revision-Date: 2015-11-05 07:12+0000\n"
+"Last-Translator: <>\n"
 "Language-Team: Português <palbuquerque73@gmail.com>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.6\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Language: pt_PT\n"
+"X-Source-Language: C\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid ""
@@ -48,13 +49,12 @@ msgid ""
 "You can even search for specific types of locations, such as “Pubs near Main "
 "Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
 msgstr ""
-"<li>Procure por país, região, cidade ou rua.</li> <li>Procure por tipos de "
-"localizações específicas, tais como “Bares perto da Rua Augusta, Lisboa” ou "
-"“Hoteis perto de Alexanderplatz, Berlin”.</li>"
+"Procure por tipos de localizações específicas, tais como “Bares perto da Rua "
+"Augusta, Lisboa” ou “Hoteis perto de Alexanderplatz, Berlin”."
 
-#. Translators: This is the program name. */
+#. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:373
+#: ../src/application.js:77 ../src/mainWindow.js:397
 msgid "Maps"
 msgstr "Mapas"
 
@@ -253,7 +253,7 @@ msgstr "Alternar favoritos"
 
 #: ../data/ui/main-window.ui.h:6
 msgid "Maps is offline!"
-msgstr "O Mapas está offline"
+msgstr "O Mapas está offline!"
 
 #: ../data/ui/main-window.ui.h:7
 msgid ""
@@ -303,7 +303,7 @@ msgstr "Procura de rota por GraphHopper"
 msgid "Show more results"
 msgstr "Mostrar mais resultados"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:209
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:149
 msgid "Current location"
 msgstr "Localização atual"
 
@@ -318,7 +318,7 @@ msgstr "Precisão: %s"
 msgid "Failed to find tile structure in directory"
 msgstr "Falha ao localizar estrutura de mosaico na pasta"
 
-#: ../src/application.js:86
+#: ../src/application.js:87
 msgid "A path to a local tiles directory structure"
 msgstr "Um caminho para a estrutura de pasta local de mosaicos"
 
@@ -351,14 +351,14 @@ msgstr ""
 "favor selecione outro na lista."
 
 #. Translators: %s is the name of the place to check in.
-#. */
+#.
 #: ../src/checkInDialog.js:227
 #, javascript-format
 msgid "Check in to %s"
 msgstr "Inscrever-se em %s"
 
 #. Translators: %s is the name of the place to check in.
-#. */
+#.
 #: ../src/checkInDialog.js:237
 #, javascript-format
 msgid "Write an optional message to check in to %s."
@@ -368,7 +368,7 @@ msgstr "Escreva uma mensagem opcional para se inscrever em %s."
 msgid "An error has occurred"
 msgstr "Ocorreu um erro"
 
-#. Translators: %s is the place name that user wanted to check-in */
+#. Translators: %s is the place name that user wanted to check-in
 #: ../src/checkIn.js:135
 #, javascript-format
 msgid "Cannot find \"%s\" in the social service"
@@ -387,23 +387,44 @@ msgstr ""
 "As credenciais expiraram, por favor, abra as Contas online para iniciar "
 "sessão e ativar esta conta"
 
-#: ../src/mainWindow.js:321
+#: ../src/geoJSONSource.js:102
+msgid "invalid coordinate"
+msgstr "coordenadas inválidas"
+
+#: ../src/geoJSONSource.js:124 ../src/geoJSONSource.js:179
+#: ../src/geoJSONSource.js:194
+msgid "parse error"
+msgstr "erro de processamento"
+
+#: ../src/geoJSONSource.js:173
+msgid "unknown geometry"
+msgstr "geometria desconhecida"
+
+#: ../src/geoJSONSource.js:207
+msgid "failed to load file"
+msgstr "falha ao carregar ficheiro"
+
+#: ../src/mainWindow.js:345
 msgid "Failed to connect to location service"
 msgstr "Falha ao ligar ao serviço de localização"
 
-#: ../src/mainWindow.js:326
+#: ../src/mainWindow.js:350
 msgid "Position not found"
-msgstr "Posição não encontrada."
+msgstr "Posição não encontrada"
 
-#: ../src/mainWindow.js:371
+#: ../src/mainWindow.js:395
 msgid "translator-credits"
 msgstr ""
 "António Lima <amrlima@gmail.com>\n"
 "Pedro Albuquerque <palbuquerque73@gmail.com>"
 
-#: ../src/mainWindow.js:374
+#: ../src/mainWindow.js:398
 msgid "A map application for GNOME"
 msgstr "Uma aplicação de mapas para o GNOME"
+
+#: ../src/mapView.js:208
+msgid "Failed to parse GeoJSON file"
+msgstr "Falha ao processar ficheiro GeoJSON"
 
 #: ../src/placeBubble.js:101
 #, javascript-format
@@ -440,8 +461,8 @@ msgstr "Falha ao processar URI Geo"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
-#. */
-#: ../src/place.js:121
+#.
+#: ../src/place.js:137
 msgid "yes"
 msgstr "sim"
 
@@ -449,16 +470,16 @@ msgstr "sim"
 #. * This means wheelchairs have partial access (e.g some areas
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
-#. */
-#: ../src/place.js:128
+#.
+#: ../src/place.js:144
 msgid "limited"
 msgstr "limitado"
 
 #. Translators:
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
-#. */
-#: ../src/place.js:134
+#.
+#: ../src/place.js:150
 msgid "no"
 msgstr "não"
 
@@ -466,8 +487,8 @@ msgstr "não"
 #. * This means that the way or area is designated or purpose built
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
-#. */
-#: ../src/place.js:141
+#.
+#: ../src/place.js:157
 msgid "designated"
 msgstr "designado"
 
@@ -483,7 +504,7 @@ msgstr "Pedido de rota falhou."
 msgid "Start!"
 msgstr "Iniciar!"
 
-#. Translators: %s is a time expression with the format "%f h" or "%f min" */
+#. Translators: %s is a time expression with the format "%f h" or "%f min"
 #: ../src/sidebar.js:230
 #, javascript-format
 msgid "Estimated time: %s"
@@ -502,7 +523,7 @@ msgstr "do nascer ao pôr do Sol"
 #. * such as "Mo-Fr 10:00-19:00 Sa 12:00-16:00"
 #. * The space between the format place holders could be
 #. * substituted with the appropriate separator.
-#. */
+#.
 #: ../src/translations.js:78
 #, javascript-format
 msgctxt "time range list"
@@ -514,7 +535,7 @@ msgstr "%s - %s"
 #. * such as "Mo-Fr 10:00-19:00 Sa 10:00-17:00 Su 12:00-16:00"
 #. * The space between the format place holders could be
 #. * substituted with the appropriate separator.
-#. */
+#.
 #: ../src/translations.js:90
 #, javascript-format
 msgctxt "time range list"
@@ -527,7 +548,7 @@ msgstr "%s - %s - %s"
 #. * specification as the second argument.
 #. * The space between the format place holders could be substituted with
 #. * the appropriate separator or phrase and the ordering of the arguments
-#. * can be rearranged with the %n#s syntax. */
+#. * can be rearranged with the %n#s syntax.
 #: ../src/translations.js:121
 #, javascript-format
 msgctxt "time range component"
@@ -542,7 +563,7 @@ msgstr "%s - %s"
 #. * where the "Mo-Fr" and "Sa" parts are replaced by the %s
 #. * place holder.
 #. * The separator (,) could be replaced with a translated variant or
-#. * a phrase if appropriate. */
+#. * a phrase if appropriate.
 #: ../src/translations.js:153
 #, javascript-format
 msgctxt "day interval list"
@@ -557,7 +578,7 @@ msgstr "%s, %s"
 #. * where the "Mo-We", "Fr", and "Su" parts are replaced by the
 #. * %s place holder.
 #. * The separator (,) could be replaced with a translated variant or
-#. * a phrase if appropriate. */
+#. * a phrase if appropriate.
 #: ../src/translations.js:167
 #, javascript-format
 msgctxt "day interval list"
@@ -570,7 +591,7 @@ msgstr "todos os dias"
 
 #. Translators:
 #. * This represents a range of days with a starting and ending day.
-#. */
+#.
 #: ../src/translations.js:198
 #, javascript-format
 msgctxt "day range"
@@ -592,7 +613,7 @@ msgstr "feriados escolares"
 #. * appropriate white space or connected phrase could be modified by
 #. * the translation. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
-#. */
+#.
 #: ../src/translations.js:251
 #, javascript-format
 msgctxt "time interval list"
@@ -609,19 +630,19 @@ msgstr "fechado"
 #. * appropriate white spacing or connecting phrases can be set by the
 #. * translation as needed. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
-#. */
+#.
 #: ../src/translations.js:280
 #, javascript-format
 msgctxt "time interval"
 msgid "%s-%s"
 msgstr "%s - %s"
 
-#. Translators: Accuracy of user location information */
+#. Translators: Accuracy of user location information
 #: ../src/utils.js:256
 msgid "Unknown"
 msgstr "Desconhecida"
 
-#. Translators: Accuracy of user location information */
+#. Translators: Accuracy of user location information
 #: ../src/utils.js:259
 msgid "Exact"
 msgstr "Exata"
@@ -641,25 +662,25 @@ msgstr "%f min"
 msgid "%f s"
 msgstr "%f seg"
 
-#. Translators: This is a distance measured in kilometers */
+#. Translators: This is a distance measured in kilometers
 #: ../src/utils.js:369
 #, javascript-format
 msgid "%f km"
 msgstr "%f km"
 
-#. Translators: This is a distance measured in meters */
+#. Translators: This is a distance measured in meters
 #: ../src/utils.js:372
 #, javascript-format
 msgid "%f m"
 msgstr "%f m"
 
-#. Translators: This is a distance measured in miles */
+#. Translators: This is a distance measured in miles
 #: ../src/utils.js:380
 #, javascript-format
 msgid "%f mi"
 msgstr "%f mi"
 
-#. Translators: This is a distance measured in feet */
+#. Translators: This is a distance measured in feet
 #: ../src/utils.js:383
 #, javascript-format
 msgid "%f ft"
@@ -691,16 +712,3 @@ msgstr "%f ft"
 
 #~ msgid "I’m here!"
 #~ msgstr "Estou aqui!"
-
-#~| msgid " km²"
-#~ msgid "%f km²"
-#~ msgstr "%f km²"
-
-#~ msgid "Street"
-#~ msgstr "Rua"
-
-#~ msgid "Satellite"
-#~ msgstr "Satélite"
-
-#~ msgid " km<sup>2</sup>"
-#~ msgstr " km<sup>2</sup>"
