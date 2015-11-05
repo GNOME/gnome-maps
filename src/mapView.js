@@ -104,7 +104,6 @@ const MapView = new Lang.Class({
         view.kinetic_mode = true;
 
         view.connect('notify::latitude', this._onViewMoved.bind(this));
-        view.connect('notify::longitude', this._onViewMoved.bind(this));
         // switching map type will set view min-zoom-level from map source
         view.connect('notify::min-zoom-level', (function() {
             if (view.min_zoom_level < MapMinZoom) {
