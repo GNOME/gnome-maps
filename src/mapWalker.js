@@ -78,7 +78,7 @@ const MapWalker = new Lang.Class({
                 break;
 
             default:
-                zoom = 11;
+                zoom = 16;
                 break;
             }
             this._view.zoom_level = zoom;
