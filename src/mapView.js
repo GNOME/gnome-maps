@@ -25,6 +25,7 @@ const GObject = imports.gi.GObject;
 const Geocode = imports.gi.GeocodeGlib;
 const GtkChamplain = imports.gi.GtkChamplain;
 const Lang = imports.lang;
+const Mainloop = imports.mainloop;
 
 const Application = imports.application;
 const ContactPlace = imports.contactPlace;
@@ -47,7 +48,7 @@ const MapType = {
     CYCLING: Champlain.MAP_SOURCE_OSM_CYCLE_MAP,
     TRANSIT: Champlain.MAP_SOURCE_OSM_TRANSPORT_MAP
 };
-
+const _LOCATION_STORE_TIMEOUT = 500;
 const MapMinZoom = 2;
 
 const MapView = new Lang.Class({
@@ -91,7 +92,7 @@ const MapView = new Lang.Class({
                                     this._updateUserLocation.bind(this));
         Application.geoclue.connect('notify::state',
                                     this._updateUserLocation.bind(this));
-
+        this._storeId = 0;
         this._connectRouteSignals();
     },
 
@@ -103,6 +104,7 @@ const MapView = new Lang.Class({
         view.reactive = true;
         view.kinetic_mode = true;
 
+        view.connect('notify::realized', this._goToStoredLocation.bind(this));
         view.connect('notify::latitude', this._onViewMoved.bind(this));
         // switching map type will set view min-zoom-level from map source
         view.connect('notify::min-zoom-level', (function() {
@@ -267,6 +269,24 @@ const MapView = new Lang.Class({
         this.emit('user-location-changed');
     },
 
+    _storeLocation: function() {
+        let box = this.view.get_bounding_box();
+        let lastViewedLocation = [box.top, box.bottom, box.left, box.right];
+        Application.settings.set('last-viewed-location', lastViewedLocation);
+    },
+
+    _goToStoredLocation: function() {
+        if (!this.view.realized)
+            return;
+
+        let box = Application.settings.get('last-viewed-location');
+        let bounding_box = new Champlain.BoundingBox({ top: box[0],
+                                                       bottom: box[1],
+                                                       left: box[2],
+                                                       right: box[3] });
+        this._gotoBBox(bounding_box);
+    },
+
     _gotoBBox: function(bbox) {
         let [lat, lon] = bbox.get_center();
         let place = new Place.Place({
@@ -386,6 +406,13 @@ const MapView = new Lang.Class({
 
     _onViewMoved: function() {
         this.emit('view-moved');
+        if (this._storeId !== 0)
+            return;
+
+        this._storeId = Mainloop.timeout_add(_LOCATION_STORE_TIMEOUT,(function(){
+            this._storeId = 0;
+            this._storeLocation();
+        }).bind(this));
     },
 
     onSetMarkerSelected: function(selectedMarker) {
