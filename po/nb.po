@@ -3,20 +3,21 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Kjartan Maraas <kmaraas@gnome.org>, 2013-2015.
 # Åka Sikrom <a4NOSPAMPLEASETHANKYOU@hush.com>, 2014.
+# haarek <haarektrans@gmail.com>, 2015.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-maps 3.17.x\n"
+"Project-Id-Version: gnome-maps 3.19.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-07 19:51+0200\n"
-"PO-Revision-Date: 2015-09-07 19:52+0200\n"
-"Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
+"POT-Creation-Date: 2015-11-14 14:50+0100\n"
+"PO-Revision-Date: 2015-11-14 14:52+0100\n"
+"Last-Translator: haarek <haarektrans@gmail.com>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: Norwegian bokmål\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.5\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid ""
@@ -24,9 +25,9 @@ msgid ""
 "quickly find the place you’re looking for by searching for a city or street, "
 "or locate a place to meet a friend."
 msgstr ""
-"Kart gir deg rask tilgang til kart for hele verden. Det lar deg finne stedet "
-"du leter etter ved å søke etter en by eller en gate, eller finne et sted å "
-"møte en venn."
+"Kart gir deg rask tilgang til kart for hele verden. Det lar deg raskt finne "
+"stedet du leter etter ved å søke etter en by eller en gate, eller finne et "
+"sted å møte en venn."
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:2
 msgid ""
@@ -49,7 +50,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:367
+#: ../src/application.js:77 ../src/mainWindow.js:397
 msgid "Maps"
 msgstr "Kart"
 
@@ -91,7 +92,7 @@ msgstr "Maksimalt antall søkeresultater"
 
 #: ../data/org.gnome.Maps.gschema.xml.h:8
 msgid "Maximum number of search results from geocode search."
-msgstr "Maksimalt antall søkeresultater fra geocode-søk."
+msgstr "Maksimalt antall søkeresultater fra geokode-søk."
 
 #: ../data/org.gnome.Maps.gschema.xml.h:9
 msgid "Number of recent places to store"
@@ -237,7 +238,7 @@ msgstr "Gå til gjeldende posisjon"
 
 #: ../data/ui/main-window.ui.h:3
 msgid "Choose map type"
-msgstr "Velg type kart"
+msgstr "Velg karttype"
 
 #: ../data/ui/main-window.ui.h:4
 msgid "Toggle route planner"
@@ -299,7 +300,7 @@ msgstr "Rutesøk av GraphHopper"
 msgid "Show more results"
 msgstr "Vis flere resultater"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:209
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:149
 msgid "Current location"
 msgstr "Gjeldende posisjon"
 
@@ -308,6 +309,15 @@ msgstr "Gjeldende posisjon"
 #, no-c-format
 msgid "Accuracy: %s"
 msgstr "Nøyaktighet: %s"
+
+#: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
+#: ../lib/maps-file-tile-source.c:459
+msgid "Failed to find tile structure in directory"
+msgstr "Klarte ikke å finne flisstruktur i katalogen"
+
+#: ../src/application.js:87
+msgid "A path to a local tiles directory structure"
+msgstr "En sti til en lokal katalogstruktur med fliser"
 
 #: ../src/checkInDialog.js:176
 msgid "Select an account"
@@ -349,7 +359,7 @@ msgstr "Sjekk inn på %s"
 #: ../src/checkInDialog.js:237
 #, javascript-format
 msgid "Write an optional message to check in to %s."
-msgstr "Skriv en valgfri melding for å sjekk inn ved %s."
+msgstr "Skriv en valgfri melding for å sjekke inn ved %s."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
 msgid "An error has occurred"
@@ -363,7 +373,7 @@ msgstr "Fant ikke «%s» i sosial tjeneste"
 
 #: ../src/checkIn.js:137
 msgid "Cannot find a suitable place to check-in in this location"
-msgstr "Fant ingen passende steder å sjekke inn"
+msgstr "Fant ingen passende steder å sjekke inn på denne plasseringen"
 
 #: ../src/checkIn.js:141
 msgid ""
@@ -373,21 +383,48 @@ msgstr ""
 "Akkreditiver er utgått. Åpne Nettkontoer for å logge inn og bruke denne "
 "kontoen"
 
-#: ../src/mainWindow.js:315
+#: ../src/geoJSONSource.js:102
+msgid "invalid coordinate"
+msgstr "ugyldig koordinat"
+
+#: ../src/geoJSONSource.js:124 ../src/geoJSONSource.js:179
+#: ../src/geoJSONSource.js:194
+msgid "parse error"
+msgstr "lesefeil"
+
+#: ../src/geoJSONSource.js:173
+msgid "unknown geometry"
+msgstr "ukjent geometri"
+
+#: ../src/geoJSONSource.js:207
+msgid "failed to load file"
+msgstr "klarte ikke å laste fil"
+
+#: ../src/mainWindow.js:345
 msgid "Failed to connect to location service"
 msgstr "Klarte ikke å koble til posisjonstjeneste"
 
-#: ../src/mainWindow.js:320
+#: ../src/mainWindow.js:350
 msgid "Position not found"
 msgstr "Fant ikke posisjonen"
 
-#: ../src/mainWindow.js:365
+#: ../src/mainWindow.js:395
 msgid "translator-credits"
-msgstr "Kjartan Maraas <kmaraas@gnome.org>"
+msgstr ""
+"haarek <haarektrans@gmail.com>, Kjartan Maraas <kmaraas@gnome.org>, Åka "
+"Sikrom <a4NOSPAMPLEASETHANKYOU@hush.com>"
 
-#: ../src/mainWindow.js:368
+#: ../src/mainWindow.js:398
 msgid "A map application for GNOME"
 msgstr "Et kartprogram for GNOME"
+
+#: ../src/mapView.js:204
+msgid "Failed to parse GeoJSON file"
+msgstr "Klarte ikke å tolke GeoJSON-fil"
+
+#: ../src/mapView.js:223
+msgid "Failed to open GeoURI"
+msgstr "Klarte ikke å åpne GeoURI"
 
 #: ../src/placeBubble.js:101
 #, javascript-format
@@ -425,7 +462,7 @@ msgstr "Klarte ikke å tolke Geo-URI"
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: ../src/place.js:121
+#: ../src/place.js:137
 msgid "yes"
 msgstr "ja"
 
@@ -434,7 +471,7 @@ msgstr "ja"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:128
+#: ../src/place.js:144
 msgid "limited"
 msgstr "begrenset tilgang"
 
@@ -442,7 +479,7 @@ msgstr "begrenset tilgang"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: ../src/place.js:134
+#: ../src/place.js:150
 msgid "no"
 msgstr "nei"
 
@@ -451,7 +488,7 @@ msgstr "nei"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:141
+#: ../src/place.js:157
 msgid "designated"
 msgstr "spesialtilpasset"
 
@@ -467,8 +504,12 @@ msgstr "Forespørsel om rute feilet."
 msgid "Start!"
 msgstr "Start!"
 
+#: ../src/sendToDialog.js:169
+msgid "Failed to open URI"
+msgstr "Klarte ikke å åpne URI"
+
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:229
+#: ../src/sidebar.js:230
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Estimert tid: %s"
@@ -610,41 +651,41 @@ msgstr "Ukjent"
 msgid "Exact"
 msgstr "Nøyaktig"
 
-#: ../src/utils.js:354
+#: ../src/utils.js:363
 #, javascript-format
 msgid "%f h"
 msgstr "%f t"
 
-#: ../src/utils.js:356
+#: ../src/utils.js:365
 #, javascript-format
 msgid "%f min"
 msgstr "%f min"
 
-#: ../src/utils.js:358
+#: ../src/utils.js:367
 #, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
 #. Translators: This is a distance measured in kilometers
-#: ../src/utils.js:369
+#: ../src/utils.js:378
 #, javascript-format
 msgid "%f km"
 msgstr "%f km"
 
 #. Translators: This is a distance measured in meters
-#: ../src/utils.js:372
+#: ../src/utils.js:381
 #, javascript-format
 msgid "%f m"
 msgstr "%f m"
 
 #. Translators: This is a distance measured in miles
-#: ../src/utils.js:380
+#: ../src/utils.js:389
 #, javascript-format
 msgid "%f mi"
 msgstr "%f mil"
 
 #. Translators: This is a distance measured in feet
-#: ../src/utils.js:383
+#: ../src/utils.js:392
 #, javascript-format
 msgid "%f ft"
 msgstr "%f fot"
