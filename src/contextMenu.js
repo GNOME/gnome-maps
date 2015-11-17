@@ -19,6 +19,7 @@
  * Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
+const Champlain = imports.gi.Champlain;
 const Clutter = imports.gi.Clutter;
 const Gdk = imports.gi.Gdk;
 const Geocode = imports.gi.GeocodeGlib;
@@ -26,6 +27,7 @@ const Gtk = imports.gi.Gtk;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
+const ExportViewDialog = imports.exportViewDialog;
 const Lang = imports.lang;
 const Location = imports.location;
 const Utils = imports.utils;
@@ -35,7 +37,8 @@ const ContextMenu = new Lang.Class({
     Extends: Gtk.Menu,
     Template: 'resource:///org/gnome/Maps/ui/context-menu.ui',
     InternalChildren: [ 'whatsHereItem',
-                        'geoURIItem' ],
+                        'geoURIItem',
+                        'exportItem' ],
 
     _init: function(params) {
         this._mapView = params.mapView;
@@ -50,6 +53,8 @@ const ContextMenu = new Lang.Class({
                                     this._onWhatsHereActivated.bind(this));
         this._geoURIItem.connect('activate',
                                  this._onGeoURIActivated.bind(this));
+        this._exportItem.connect('activate',
+                                 this._onExportActivated.bind(this));
     },
 
     _onButtonReleaseEvent: function(actor, event) {
@@ -85,5 +90,36 @@ const ContextMenu = new Lang.Class({
         let uri = location.to_uri(Geocode.LocationURIScheme.GEO);
 
         clipboard.set_text(uri, uri.length);
+    },
+
+    _activateExport: function() {
+        let view = this._mapView.view;
+        let surface = view.to_surface(true);
+        let bbox = view.get_bounding_box();
+        let [latitude, longitude] = bbox.get_center();
+
+        let dialog = new ExportViewDialog.ExportViewDialog({
+            transient_for: this.get_toplevel(),
+            surface: surface,
+            latitude: latitude,
+            longitude: longitude,
+            mapView: this._mapView
+        });
+
+        dialog.run();
+        dialog.destroy();
+    },
+
+    _onExportActivated: function() {
+        if (this._mapView.view.state === Champlain.State.DONE) {
+            this._activateExport();
+        } else {
+            let notifyId = this._mapView.view.connect('notify::state', (function() {
+                if (this._mapView.view.state === Champlain.State.DONE) {
+                    this._mapView.view.disconnect(notifyId);
+                    this._activateExport();
+                }
+            }).bind(this));
+        }
     }
 });
