@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-09-17 07:32+0000\n"
-"PO-Revision-Date: 2015-09-17 20:45+0300\n"
+"POT-Creation-Date: 2015-11-06 00:09+0000\n"
+"PO-Revision-Date: 2015-11-18 01:12+0200\n"
 "Last-Translator: Muhammet Kara <muhammetk@gmail.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
 "Language: tr_TR\n"
@@ -50,9 +50,9 @@ msgstr ""
 "Hatta \"Kızılay, Ankara yakınındaki Lokantalar\" ya da \"Ulus, Ankara "
 "yakınındaki Oteller\" gibi belirli türde yerleri bile arayabilirsiniz."
 
-#. Translators: This is the program name. */
+#. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:373
+#: ../src/application.js:77 ../src/mainWindow.js:397
 msgid "Maps"
 msgstr "Haritalar"
 
@@ -283,7 +283,7 @@ msgstr "Buradan yer bildirimi yap"
 
 #: ../data/ui/search-popup.ui.h:1
 msgid "Press enter to search"
-msgstr "Arama yapmak için gir tuşuna basın"
+msgstr "Aramak için Enter'a basın"
 
 #: ../data/ui/send-to-dialog.ui.h:1
 msgid "Open location"
@@ -301,7 +301,7 @@ msgstr "GraphHopper ile rota arama"
 msgid "Show more results"
 msgstr "Daha fazla sonuç göster"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:209
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:149
 msgid "Current location"
 msgstr "Geçerli konum"
 
@@ -316,7 +316,7 @@ msgstr "Doğruluk: %s"
 msgid "Failed to find tile structure in directory"
 msgstr "Dizinde döşeme yapısı bulunamadı"
 
-#: ../src/application.js:86
+#: ../src/application.js:87
 msgid "A path to a local tiles directory structure"
 msgstr "Yerel bir döşeme dizini yapısını gösteren adres (yol)"
 
@@ -349,14 +349,14 @@ msgstr ""
 "bulamıyor. Lütfen bu listeden bir tane seçin."
 
 #. Translators: %s is the name of the place to check in.
-#. */
+#.
 #: ../src/checkInDialog.js:227
 #, javascript-format
 msgid "Check in to %s"
 msgstr "%s için yer bildiriminde bulun"
 
 #. Translators: %s is the name of the place to check in.
-#. */
+#.
 #: ../src/checkInDialog.js:237
 #, javascript-format
 msgid "Write an optional message to check in to %s."
@@ -366,7 +366,7 @@ msgstr "%s'den yer bildiriminde bulunmak için isteğe bağlı bir mesaj girin"
 msgid "An error has occurred"
 msgstr "Bir hata oluştu"
 
-#. Translators: %s is the place name that user wanted to check-in */
+#. Translators: %s is the place name that user wanted to check-in
 #: ../src/checkIn.js:135
 #, javascript-format
 msgid "Cannot find \"%s\" in the social service"
@@ -384,24 +384,50 @@ msgstr ""
 "Oturumun süresi doldu, giriş yapıp bu hesabı etkinleştirmek için lütfen "
 "Çevrimiçi Hesapları açın"
 
-#: ../src/mainWindow.js:321
+#: ../src/geoJSONSource.js:102
+msgid "invalid coordinate"
+msgstr "geçersiz koordinat"
+
+#: ../src/geoJSONSource.js:124 ../src/geoJSONSource.js:179
+#: ../src/geoJSONSource.js:194
+msgid "parse error"
+msgstr "ayrıştırma hatası"
+
+#: ../src/geoJSONSource.js:173
+msgid "unknown geometry"
+msgstr "bilinmeyen geometri"
+
+#: ../src/geoJSONSource.js:207
+msgid "failed to load file"
+msgstr "dosya yükleme başarısız"
+
+#: ../src/mainWindow.js:345
 msgid "Failed to connect to location service"
 msgstr "Konum hizmetine bağlanma başarısız oldu"
 
-#: ../src/mainWindow.js:326
+#: ../src/mainWindow.js:350
 msgid "Position not found"
 msgstr "Konum bulunamadı"
 
-#: ../src/mainWindow.js:371
+#: ../src/mainWindow.js:395
 msgid "translator-credits"
 msgstr ""
 "Muhammet Kara <muhammetk@gmail.com>\n"
 "Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Gökhan Gurbetoğlu <ggurbet@gmail.com>"
 
-#: ../src/mainWindow.js:374
+#: ../src/mainWindow.js:398
 msgid "A map application for GNOME"
 msgstr "GNOME için harita uygulaması"
+
+#: ../src/mapView.js:204
+msgid "Failed to parse GeoJSON file"
+msgstr "GeoJSON dosya ayrıştırması başarısız"
+
+#: ../src/mapView.js:223
+#| msgid "Failed to parse Geo URI"
+msgid "Failed to open GeoURI"
+msgstr "GeoURI açma başarısız"
 
 #: ../src/placeBubble.js:101
 #, javascript-format
@@ -438,8 +464,8 @@ msgstr "Geo URI ayrıştırma başarısız"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
-#. */
-#: ../src/place.js:121
+#.
+#: ../src/place.js:137
 msgid "yes"
 msgstr "evet"
 
@@ -447,16 +473,16 @@ msgstr "evet"
 #. * This means wheelchairs have partial access (e.g some areas
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
-#. */
-#: ../src/place.js:128
+#.
+#: ../src/place.js:144
 msgid "limited"
 msgstr "sınırlı"
 
 #. Translators:
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
-#. */
-#: ../src/place.js:134
+#.
+#: ../src/place.js:150
 msgid "no"
 msgstr "hayır"
 
@@ -464,8 +490,8 @@ msgstr "hayır"
 #. * This means that the way or area is designated or purpose built
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
-#. */
-#: ../src/place.js:141
+#.
+#: ../src/place.js:157
 msgid "designated"
 msgstr "özel olarak belirlenmiş"
 
@@ -481,7 +507,12 @@ msgstr "Rota isteği başarısız oldu."
 msgid "Start!"
 msgstr "Başla!"
 
-#. Translators: %s is a time expression with the format "%f h" or "%f min" */
+#: ../src/sendToDialog.js:169
+#| msgid "Failed to parse Geo URI"
+msgid "Failed to open URI"
+msgstr "URI açma başarısız oldu"
+
+#. Translators: %s is a time expression with the format "%f h" or "%f min"
 #: ../src/sidebar.js:230
 #, javascript-format
 msgid "Estimated time: %s"
@@ -500,7 +531,7 @@ msgstr "gün doğumundan gün batımına"
 #. * such as "Mo-Fr 10:00-19:00 Sa 12:00-16:00"
 #. * The space between the format place holders could be
 #. * substituted with the appropriate separator.
-#. */
+#.
 #: ../src/translations.js:78
 #, javascript-format
 msgctxt "time range list"
@@ -512,7 +543,7 @@ msgstr "%s %s"
 #. * such as "Mo-Fr 10:00-19:00 Sa 10:00-17:00 Su 12:00-16:00"
 #. * The space between the format place holders could be
 #. * substituted with the appropriate separator.
-#. */
+#.
 #: ../src/translations.js:90
 #, javascript-format
 msgctxt "time range list"
@@ -525,7 +556,7 @@ msgstr "%s %s %s"
 #. * specification as the second argument.
 #. * The space between the format place holders could be substituted with
 #. * the appropriate separator or phrase and the ordering of the arguments
-#. * can be rearranged with the %n#s syntax. */
+#. * can be rearranged with the %n#s syntax.
 #: ../src/translations.js:121
 #, javascript-format
 msgctxt "time range component"
@@ -540,7 +571,7 @@ msgstr "%s %s"
 #. * where the "Mo-Fr" and "Sa" parts are replaced by the %s
 #. * place holder.
 #. * The separator (,) could be replaced with a translated variant or
-#. * a phrase if appropriate. */
+#. * a phrase if appropriate.
 #: ../src/translations.js:153
 #, javascript-format
 msgctxt "day interval list"
@@ -555,7 +586,7 @@ msgstr "%s,%s"
 #. * where the "Mo-We", "Fr", and "Su" parts are replaced by the
 #. * %s place holder.
 #. * The separator (,) could be replaced with a translated variant or
-#. * a phrase if appropriate. */
+#. * a phrase if appropriate.
 #: ../src/translations.js:167
 #, javascript-format
 msgctxt "day interval list"
@@ -568,7 +599,7 @@ msgstr "her gün"
 
 #. Translators:
 #. * This represents a range of days with a starting and ending day.
-#. */
+#.
 #: ../src/translations.js:198
 #, javascript-format
 msgctxt "day range"
@@ -590,7 +621,7 @@ msgstr "okul tatilleri"
 #. * appropriate white space or connected phrase could be modified by
 #. * the translation. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
-#. */
+#.
 #: ../src/translations.js:251
 #, javascript-format
 msgctxt "time interval list"
@@ -607,58 +638,58 @@ msgstr "açık değil"
 #. * appropriate white spacing or connecting phrases can be set by the
 #. * translation as needed. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
-#. */
+#.
 #: ../src/translations.js:280
 #, javascript-format
 msgctxt "time interval"
 msgid "%s-%s"
 msgstr "%s-%s"
 
-#. Translators: Accuracy of user location information */
+#. Translators: Accuracy of user location information
 #: ../src/utils.js:256
 msgid "Unknown"
 msgstr "Bilinmiyor"
 
-#. Translators: Accuracy of user location information */
+#. Translators: Accuracy of user location information
 #: ../src/utils.js:259
 msgid "Exact"
 msgstr "Tam"
 
-#: ../src/utils.js:354
+#: ../src/utils.js:363
 #, javascript-format
 msgid "%f h"
 msgstr "%f sa"
 
-#: ../src/utils.js:356
+#: ../src/utils.js:365
 #, javascript-format
 msgid "%f min"
 msgstr "%f dk"
 
-#: ../src/utils.js:358
+#: ../src/utils.js:367
 #, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
-#. Translators: This is a distance measured in kilometers */
-#: ../src/utils.js:369
+#. Translators: This is a distance measured in kilometers
+#: ../src/utils.js:378
 #, javascript-format
 msgid "%f km"
 msgstr "%f km"
 
-#. Translators: This is a distance measured in meters */
-#: ../src/utils.js:372
+#. Translators: This is a distance measured in meters
+#: ../src/utils.js:381
 #, javascript-format
 msgid "%f m"
 msgstr "%f m"
 
-#. Translators: This is a distance measured in miles */
-#: ../src/utils.js:380
+#. Translators: This is a distance measured in miles
+#: ../src/utils.js:389
 #, javascript-format
 msgid "%f mi"
 msgstr "%f mi"
 
-#. Translators: This is a distance measured in feet */
-#: ../src/utils.js:383
+#. Translators: This is a distance measured in feet
+#: ../src/utils.js:392
 #, javascript-format
 msgid "%f ft"
 msgstr "%f ft"
