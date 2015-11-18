@@ -284,10 +284,10 @@ const MapView = new Lang.Class({
                                                        bottom: box[1],
                                                        left: box[2],
                                                        right: box[3] });
-        this._gotoBBox(bounding_box);
+        this._gotoBBox(bounding_box, true);
     },
 
-    _gotoBBox: function(bbox) {
+    _gotoBBox: function(bbox, linear) {
         let [lat, lon] = bbox.get_center();
         let place = new Place.Place({
             location: new Location.Location({ latitude  : lat,
@@ -297,7 +297,7 @@ const MapView = new Lang.Class({
                                                     left   : bbox.left,
                                                     right  : bbox.right })
         });
-        new MapWalker.MapWalker(place, this).goTo(true);
+        new MapWalker.MapWalker(place, this).goTo(true, true);
     },
 
     showTurnPoint: function(turnPoint) {

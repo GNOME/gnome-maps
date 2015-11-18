@@ -87,7 +87,7 @@ const MapWalker = new Lang.Class({
         }
     },
 
-    goTo: function(animate) {
+    goTo: function(animate, linear) {
         Utils.debug('Going to ' + this.place.name);
         this._mapView.emit('going-to');
 
@@ -98,32 +98,41 @@ const MapWalker = new Lang.Class({
             return;
         }
 
-        /* Lets first ensure that both current and destination location are visible
+        let fromLocation = new Location.Location({ latitude: this._view.get_center_latitude(),
+                                                   longitude: this._view.get_center_longitude() });
+        this._updateGoToDuration(fromLocation);
+
+        if (linear) {
+            this._view.goto_animation_mode = Clutter.AnimationMode.LINEAR;
+            Utils.once(this._view, 'animation-completed',
+                       this.zoomToFit.bind(this));
+            this._view.go_to(this.place.location.latitude,
+                             this.place.location.longitude);
+        } else {
+            /* Lets first ensure that both current and destination location are visible
          * before we start the animated journey towards destination itself. We do this
          * to create the zoom-out-then-zoom-in effect that many map implementations
          * do. This not only makes the go-to animation look a lot better visually but
          * also give user a good idea of where the destination is compared to current
          * location.
          */
-
         this._view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_CUBIC;
 
-        let fromLocation = new Location.Location({ latitude: this._view.get_center_latitude(),
-                                                   longitude: this._view.get_center_longitude() });
-        this._updateGoToDuration(fromLocation);
 
-        Utils.once(this._view, 'animation-completed', (function() {
-            Utils.once(this._view, 'animation-completed::go-to', (function() {
-                this.zoomToFit();
-                this._view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_OUT_CUBIC;
-                this.emit('gone-to');
+            Utils.once(this._view, 'animation-completed', (function() {
+                Utils.once(this._view, 'animation-completed::go-to', (function() {
+                    this.zoomToFit();
+                    this._view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_OUT_CUBIC;
+                    this.emit('gone-to');
+                }).bind(this));
+
+                this._view.goto_animation_mode = Clutter.AnimationMode.EASE_OUT_CUBIC;
+                this._view.go_to(this.place.location.latitude,
+                                 this.place.location.longitude);
             }).bind(this));
 
-            this._view.goto_animation_mode = Clutter.AnimationMode.EASE_OUT_CUBIC;
-            this._view.go_to(this.place.location.latitude, this.place.location.longitude);
-        }).bind(this));
-
-        this._ensureVisible(fromLocation);
+            this._ensureVisible(fromLocation);
+        }
     },
 
     _ensureVisible: function(fromLocation) {
