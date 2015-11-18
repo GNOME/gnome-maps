@@ -110,14 +110,13 @@ const MapWalker = new Lang.Class({
                              this.place.location.longitude);
         } else {
             /* Lets first ensure that both current and destination location are visible
-         * before we start the animated journey towards destination itself. We do this
-         * to create the zoom-out-then-zoom-in effect that many map implementations
-         * do. This not only makes the go-to animation look a lot better visually but
-         * also give user a good idea of where the destination is compared to current
-         * location.
-         */
-        this._view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_CUBIC;
-
+             * before we start the animated journey towards destination itself. We do this
+             * to create the zoom-out-then-zoom-in effect that many map implementations
+             * do. This not only makes the go-to animation look a lot better visually but
+             * also give user a good idea of where the destination is compared to current
+             * location.
+             */
+            this._view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_CUBIC;
 
             Utils.once(this._view, 'animation-completed', (function() {
                 Utils.once(this._view, 'animation-completed::go-to', (function() {
