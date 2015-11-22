@@ -297,7 +297,7 @@ const MapView = new Lang.Class({
                                                     left   : bbox.left,
                                                     right  : bbox.right })
         });
-        new MapWalker.MapWalker(place, this).goTo(true, true);
+        new MapWalker.MapWalker(place, this).goTo(true, linear);
     },
 
     showTurnPoint: function(turnPoint) {
