@@ -9,16 +9,16 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-09-17 07:32+0000\n"
-"PO-Revision-Date: 2015-09-17 16:06+0200\n"
-"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
+"POT-Creation-Date: 2015-11-22 21:18+0000\n"
+"PO-Revision-Date: 2015-11-23 08:44+0100\n"
+"Last-Translator: Meskó Balázs <meskobalazs@gmail.com>\n"
 "Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Poedit 1.8.5\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid ""
@@ -49,9 +49,9 @@ msgstr ""
 "Adott típusú helyeket is kereshet, úgymint „Kocsmák a bostoni sétálóutca "
 "közelében” vagy „Szállodák a berlini Alexanderplatz közelében”."
 
-#. Translators: This is the program name. */
+#. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:373
+#: ../src/application.js:77 ../src/mainWindow.js:397
 msgid "Maps"
 msgstr "Térképek"
 
@@ -64,58 +64,66 @@ msgid "Maps;"
 msgstr "Térképek;"
 
 #: ../data/org.gnome.Maps.gschema.xml.h:1
+msgid "last viewed location"
+msgstr "legutóbbi megtekintett hely"
+
+#: ../data/org.gnome.Maps.gschema.xml.h:2
+msgid "Coordinates of last viewed location."
+msgstr "Az utolsó megtekintett hely koordinátái."
+
+#: ../data/org.gnome.Maps.gschema.xml.h:3
 msgid "Window size"
 msgstr "Ablakméret"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:2
+#: ../data/org.gnome.Maps.gschema.xml.h:4
 msgid "Window size (width and height)."
 msgstr "Ablak mérete (szélesség és magasság)."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:3
+#: ../data/org.gnome.Maps.gschema.xml.h:5
 msgid "Window position"
 msgstr "Ablakpozíció"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:4
+#: ../data/org.gnome.Maps.gschema.xml.h:6
 msgid "Window position (X and Y)."
 msgstr "Ablakpozíció (X és Y)."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:5
+#: ../data/org.gnome.Maps.gschema.xml.h:7
 msgid "Window maximized"
 msgstr "Ablak teljes méretű"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:6
+#: ../data/org.gnome.Maps.gschema.xml.h:8
 msgid "Window maximization state"
 msgstr "Az ablak maximalizált állapota"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:7
+#: ../data/org.gnome.Maps.gschema.xml.h:9
 msgid "Maximum number of search results"
 msgstr "A keresési találatok maximális száma"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:8
+#: ../data/org.gnome.Maps.gschema.xml.h:10
 msgid "Maximum number of search results from geocode search."
 msgstr "A keresési találatok maximális száma a geokód keresésből."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:9
+#: ../data/org.gnome.Maps.gschema.xml.h:11
 msgid "Number of recent places to store"
 msgstr "A tárolandó legutóbbi helyek száma"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:10
+#: ../data/org.gnome.Maps.gschema.xml.h:12
 msgid "Number of recently visited places to store."
 msgstr "A tárolandó legutóbb látogatott helyek száma."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:11
+#: ../data/org.gnome.Maps.gschema.xml.h:13
 msgid "Number of recent routes to store"
 msgstr "A tárolandó legutóbbi útvonalak száma"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:12
+#: ../data/org.gnome.Maps.gschema.xml.h:14
 msgid "Number of recently visited routes to store."
 msgstr "A tárolandó legutóbb látogatott útvonalak száma."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:13
+#: ../data/org.gnome.Maps.gschema.xml.h:15
 msgid "Facebook check-in privacy setting"
 msgstr "Facebook bejelentkezés adatvédelmi beállításai"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:14
+#: ../data/org.gnome.Maps.gschema.xml.h:16
 msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
@@ -123,11 +131,11 @@ msgstr ""
 "Legutóbb használt Facebook bejelentkezés adatvédelmi beállításai. Lehetséges "
 "értékek: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS vagy SELF."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:15
+#: ../data/org.gnome.Maps.gschema.xml.h:17
 msgid "Foursquare check-in privacy setting"
 msgstr "Foursquare bejelentkezés adatvédelmi beállításai"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:16
+#: ../data/org.gnome.Maps.gschema.xml.h:18
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
@@ -135,11 +143,11 @@ msgstr ""
 "Legutóbb használt Foursquare bejelentkezés adatvédelmi beállításai. "
 "Lehetséges értékek: public, followers, vagy private."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:17
+#: ../data/org.gnome.Maps.gschema.xml.h:19
 msgid "Foursquare check-in Facebook broadcasting"
 msgstr "Foursquare bejelentkezés Facebook üzenetszórás"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:18
+#: ../data/org.gnome.Maps.gschema.xml.h:20
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
@@ -147,11 +155,11 @@ msgstr ""
 "Jelzi, ha a Foursquare hozzászólásként akarja közzétenni a bejelentkezést a "
 "Foursquare fiókkal társított Facebook fiókban."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:19
+#: ../data/org.gnome.Maps.gschema.xml.h:21
 msgid "Foursquare check-in Twitter broadcasting"
 msgstr "Foursquare bejelentkezés Twitter üzenetszórás"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:20
+#: ../data/org.gnome.Maps.gschema.xml.h:22
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
@@ -301,7 +309,7 @@ msgstr "A GraphHopper által megkeresett útvonal"
 msgid "Show more results"
 msgstr "További találatok megjelenítése"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:209
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:149
 msgid "Current location"
 msgstr "Jelenlegi hely"
 
@@ -316,7 +324,7 @@ msgstr "Pontosság: %s"
 msgid "Failed to find tile structure in directory"
 msgstr "Nem sikerült csempeszerkezetet találni a könyvtárban"
 
-#: ../src/application.js:86
+#: ../src/application.js:87
 msgid "A path to a local tiles directory structure"
 msgstr "Egy útvonal a helyi csempék könyvtárszerkezetéhez"
 
@@ -349,14 +357,14 @@ msgstr ""
 "használatával. Válasszon egyet erről a listáról."
 
 #. Translators: %s is the name of the place to check in.
-#. */
+#.
 #: ../src/checkInDialog.js:227
 #, javascript-format
 msgid "Check in to %s"
 msgstr "Bejelentkezés ide: %s"
 
 #. Translators: %s is the name of the place to check in.
-#. */
+#.
 #: ../src/checkInDialog.js:237
 #, javascript-format
 msgid "Write an optional message to check in to %s."
@@ -366,7 +374,7 @@ msgstr "Opcionális üzenet írása a következőbe való bejelentkezéshez: %s.
 msgid "An error has occurred"
 msgstr "Hiba történt"
 
-#. Translators: %s is the place name that user wanted to check-in */
+#. Translators: %s is the place name that user wanted to check-in
 #: ../src/checkIn.js:135
 #, javascript-format
 msgid "Cannot find \"%s\" in the social service"
@@ -384,21 +392,48 @@ msgstr ""
 "A hitelesítési adatok lejártak, nyissa meg az Online fiókokat a "
 "bejelentkezéshez, és engedélyezze ezt a fiókot"
 
-#: ../src/mainWindow.js:321
+#: ../src/geoJSONSource.js:102
+msgid "invalid coordinate"
+msgstr "érvénytelen koordináta"
+
+#: ../src/geoJSONSource.js:124 ../src/geoJSONSource.js:179
+#: ../src/geoJSONSource.js:194
+msgid "parse error"
+msgstr "feldolgozási hiba"
+
+#: ../src/geoJSONSource.js:173
+msgid "unknown geometry"
+msgstr "ismeretlen geometria"
+
+#: ../src/geoJSONSource.js:207
+msgid "failed to load file"
+msgstr "nem sikerült betölteni a fájlt"
+
+#: ../src/mainWindow.js:345
 msgid "Failed to connect to location service"
 msgstr "Nem sikerült kapcsolódni a helymeghatározó szolgáltatáshoz"
 
-#: ../src/mainWindow.js:326
+#: ../src/mainWindow.js:350
 msgid "Position not found"
 msgstr "Pozíció nem található"
 
-#: ../src/mainWindow.js:371
+#: ../src/mainWindow.js:395
 msgid "translator-credits"
-msgstr "Úr Balázs <urbalazs at gmail dot com>"
+msgstr ""
+"Úr Balázs <urbalazs at gmail dot com>\n"
+"Meskó Balázs <meskobalazs at gmail dot com>"
 
-#: ../src/mainWindow.js:374
+#: ../src/mainWindow.js:398
 msgid "A map application for GNOME"
 msgstr "Térképalkalmazás a GNOME-hoz"
+
+#: ../src/mapView.js:206
+msgid "Failed to parse GeoJSON file"
+msgstr "A GeoJSON fájl feldolgozása nem sikerült"
+
+#: ../src/mapView.js:225
+msgid "Failed to open GeoURI"
+msgstr "A GeoURI megnyitása nem sikerült"
 
 #: ../src/placeBubble.js:101
 #, javascript-format
@@ -435,8 +470,8 @@ msgstr "A Geo URI feldolgozása nem sikerült"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
-#. */
-#: ../src/place.js:121
+#.
+#: ../src/place.js:137
 msgid "yes"
 msgstr "igen"
 
@@ -444,16 +479,16 @@ msgstr "igen"
 #. * This means wheelchairs have partial access (e.g some areas
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
-#. */
-#: ../src/place.js:128
+#.
+#: ../src/place.js:144
 msgid "limited"
 msgstr "korlátozott"
 
 #. Translators:
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
-#. */
-#: ../src/place.js:134
+#.
+#: ../src/place.js:150
 msgid "no"
 msgstr "nem"
 
@@ -461,8 +496,8 @@ msgstr "nem"
 #. * This means that the way or area is designated or purpose built
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
-#. */
-#: ../src/place.js:141
+#.
+#: ../src/place.js:157
 msgid "designated"
 msgstr "kijelölt"
 
@@ -478,7 +513,11 @@ msgstr "Az útvonalkérés nem sikerült."
 msgid "Start!"
 msgstr "Indulás!"
 
-#. Translators: %s is a time expression with the format "%f h" or "%f min" */
+#: ../src/sendToDialog.js:169
+msgid "Failed to open URI"
+msgstr "Az URI megnyitása nem sikerült"
+
+#. Translators: %s is a time expression with the format "%f h" or "%f min"
 #: ../src/sidebar.js:230
 #, javascript-format
 msgid "Estimated time: %s"
@@ -497,7 +536,7 @@ msgstr "napkeltétől napnyugtáig"
 #. * such as "Mo-Fr 10:00-19:00 Sa 12:00-16:00"
 #. * The space between the format place holders could be
 #. * substituted with the appropriate separator.
-#. */
+#.
 #: ../src/translations.js:78
 #, javascript-format
 msgctxt "time range list"
@@ -509,7 +548,7 @@ msgstr "%s, %s"
 #. * such as "Mo-Fr 10:00-19:00 Sa 10:00-17:00 Su 12:00-16:00"
 #. * The space between the format place holders could be
 #. * substituted with the appropriate separator.
-#. */
+#.
 #: ../src/translations.js:90
 #, javascript-format
 msgctxt "time range list"
@@ -522,7 +561,7 @@ msgstr "%s, %s, %s"
 #. * specification as the second argument.
 #. * The space between the format place holders could be substituted with
 #. * the appropriate separator or phrase and the ordering of the arguments
-#. * can be rearranged with the %n#s syntax. */
+#. * can be rearranged with the %n#s syntax.
 #: ../src/translations.js:121
 #, javascript-format
 msgctxt "time range component"
@@ -537,7 +576,7 @@ msgstr "%s %s"
 #. * where the "Mo-Fr" and "Sa" parts are replaced by the %s
 #. * place holder.
 #. * The separator (,) could be replaced with a translated variant or
-#. * a phrase if appropriate. */
+#. * a phrase if appropriate.
 #: ../src/translations.js:153
 #, javascript-format
 msgctxt "day interval list"
@@ -552,7 +591,7 @@ msgstr "%s, %s"
 #. * where the "Mo-We", "Fr", and "Su" parts are replaced by the
 #. * %s place holder.
 #. * The separator (,) could be replaced with a translated variant or
-#. * a phrase if appropriate. */
+#. * a phrase if appropriate.
 #: ../src/translations.js:167
 #, javascript-format
 msgctxt "day interval list"
@@ -565,7 +604,7 @@ msgstr "minden nap"
 
 #. Translators:
 #. * This represents a range of days with a starting and ending day.
-#. */
+#.
 #: ../src/translations.js:198
 #, javascript-format
 msgctxt "day range"
@@ -587,7 +626,7 @@ msgstr "tanszüneti napok"
 #. * appropriate white space or connected phrase could be modified by
 #. * the translation. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
-#. */
+#.
 #: ../src/translations.js:251
 #, javascript-format
 msgctxt "time interval list"
@@ -604,64 +643,61 @@ msgstr "nincs nyitva"
 #. * appropriate white spacing or connecting phrases can be set by the
 #. * translation as needed. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
-#. */
+#.
 #: ../src/translations.js:280
 #, javascript-format
 msgctxt "time interval"
 msgid "%s-%s"
 msgstr "%s-%s"
 
-#. Translators: Accuracy of user location information */
+#. Translators: Accuracy of user location information
 #: ../src/utils.js:256
 msgid "Unknown"
 msgstr "Ismeretlen"
 
-#. Translators: Accuracy of user location information */
+#. Translators: Accuracy of user location information
 #: ../src/utils.js:259
 msgid "Exact"
 msgstr "Pontos"
 
-#: ../src/utils.js:354
+#: ../src/utils.js:363
 #, javascript-format
 msgid "%f h"
 msgstr "%f óra"
 
-#: ../src/utils.js:356
+#: ../src/utils.js:365
 #, javascript-format
 msgid "%f min"
 msgstr "%f perc"
 
-#: ../src/utils.js:358
+#: ../src/utils.js:367
 #, javascript-format
 msgid "%f s"
 msgstr "%f mp"
 
-#. Translators: This is a distance measured in kilometers */
-#: ../src/utils.js:369
+#. Translators: This is a distance measured in kilometers
+#: ../src/utils.js:378
 #, javascript-format
 msgid "%f km"
 msgstr "%f km"
 
-#. Translators: This is a distance measured in meters */
-#: ../src/utils.js:372
+#. Translators: This is a distance measured in meters
+#: ../src/utils.js:381
 #, javascript-format
 msgid "%f m"
 msgstr "%f m"
 
-#. Translators: This is a distance measured in miles */
-#: ../src/utils.js:380
+#. Translators: This is a distance measured in miles
+#: ../src/utils.js:389
 #, javascript-format
 msgid "%f mi"
 msgstr "%f mi"
 
-#. Translators: This is a distance measured in feet */
-#: ../src/utils.js:383
+#. Translators: This is a distance measured in feet
+#: ../src/utils.js:392
 #, javascript-format
 msgid "%f ft"
 msgstr "%f láb"
-
-#~ msgid "Share location"
-#~ msgstr "Hely megosztása"
 
 #~ msgid "_Share"
 #~ msgstr "Meg_osztás"
@@ -675,9 +711,6 @@ msgstr "%f láb"
 #~ msgstr ""
 #~ "Az utolsó ismert hely (szélesség és hosszúság fokban) és pontosság "
 #~ "(méterben)."
-
-#~ msgid "Description of last known location"
-#~ msgstr "Az utolsó ismert hely leírása"
 
 #~ msgid "Description of last known location of user."
 #~ msgstr "A felhasználó utolsó ismert helyének leírása."
