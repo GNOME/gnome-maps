@@ -119,6 +119,28 @@ const GeoJSONSource = new Lang.Class({
         }).bind(this));
     },
 
+    _parsePoint: function(coordinates, properties) {
+        let name = null;
+        if (properties)
+            name = properties.name;
+
+        this._validate(coordinates);
+        this._bbox.extend(coordinates[1],
+                          coordinates[0]);
+
+        let location = new Location.Location({
+            latitude: coordinates[1],
+            longitude: coordinates[0]
+        });
+
+        let place = new Place.Place({ name: name,
+                                      store: false,
+                                      location: location });
+        let placeMarker = new PlaceMarker.PlaceMarker({ place: place,
+                                                        mapView: this._mapView });
+        this._markerLayer.add_marker(placeMarker);
+    },
+
     _parseGeometry: function(geometry, properties) {
         if(!geometry)
             throw new Error(_("parse error"));
@@ -145,28 +167,13 @@ const GeoJSONSource = new Lang.Class({
             break;
 
         case 'Point':
-            let name = null;
-            if (properties)
-                name = properties.name;
-
-            this._validate(geometry.coordinates);
-            this._bbox.extend(geometry.coordinates[1],
-                              geometry.coordinates[0]);
-
-            let location = new Location.Location({
-                latitude: geometry.coordinates[1],
-                longitude: geometry.coordinates[0]
-            });
-
-            let place = new Place.Place({ name: name,
-                                          store: false,
-                                          location: location });
-            let placeMarker = new PlaceMarker.PlaceMarker({ place: place,
-                                                            mapView: this._mapView });
-            this._markerLayer.add_marker(placeMarker);
+            this._parsePoint(geometry.coordinates, properties);
             break;
 
         case 'MultiPoint':
+            geometry.coordinates.forEach((function(coordinate, properties) {
+                this._parsePoint(coordinate,properties);
+            }).bind(this));
             break;
 
         default:
