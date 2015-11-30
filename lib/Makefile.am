@@ -15,7 +15,8 @@ libgnome_maps_headers_private =					\
 	maps-osm-node.h						        \
 	maps-osm-object.h					        \
 	maps-osm-relation.h					        \
-	maps-osm-way.h
+	maps-osm-way.h							\
+	maps-osm-oauth-proxy-call.h
 
 libgnome_maps_sources =						\
 	maps-contact-store.c						\
@@ -26,7 +27,8 @@ libgnome_maps_sources =						\
 	maps-osm-node.c						        \
 	maps-osm-object.c					        \
 	maps-osm-way.c						        \
-	maps-osm-relation.c
+	maps-osm-relation.c						\
+	maps-osm-oauth-proxy-call.c
 
 libgnome_maps_la_SOURCES =						\
 	$(libgnome_maps_sources)					\
@@ -58,7 +60,8 @@ GnomeMaps_1_0_gir_INCLUDES =						\
 	GLib-2.0							\
 	GObject-2.0							\
 	GeocodeGlib-1.0						\
-	Champlain-0.12
+	Champlain-0.12						\
+	Rest-0.7
 GnomeMaps_1_0_gir_PACKAGES = gobject-2.0 geocode-glib-1.0
 GnomeMaps_1_0_gir_FILES = $(libgnome_maps_la_SOURCES)
 GnomeMaps_1_0_gir_CFLAGS = $(MAPS_CFLAGS) -I$(top_srcdir) -I$(top_builddir) -I$(srcdir)
