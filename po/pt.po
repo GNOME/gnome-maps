@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-11-20 21:19+0000\n"
-"PO-Revision-Date: 2015-11-21 09:12+0000\n"
+"POT-Creation-Date: 2015-12-04 21:21+0000\n"
+"PO-Revision-Date: 2015-12-05 08:01+0000\n"
 "Last-Translator: Pedro Albuquerque <palbuquerque73@gmail.com>\n"
 "Language-Team: Português <palbuquerque73@gmail.com>\n"
 "Language: pt\n"
@@ -69,12 +69,10 @@ msgid "Maps;"
 msgstr "Mapas;"
 
 #: ../data/org.gnome.Maps.gschema.xml.h:1
-#| msgid "User set last known location"
 msgid "last viewed location"
 msgstr "última localização vista"
 
 #: ../data/org.gnome.Maps.gschema.xml.h:2
-#| msgid "Description of last known location"
 msgid "Coordinates of last viewed location."
 msgstr "Coordenadas da última localização vista."
 
@@ -194,7 +192,8 @@ msgstr "Publicar no Facebook"
 msgid "Post on Twitter"
 msgstr "Publicar no Twitter"
 
-#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/send-to-dialog.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/export-view-dialog.ui.h:2
+#: ../data/ui/send-to-dialog.ui.h:2
 msgid "_Cancel"
 msgstr "_Cancelar"
 
@@ -238,6 +237,18 @@ msgstr "O que há aqui?"
 #: ../data/ui/context-menu.ui.h:2
 msgid "Copy Location"
 msgstr "Copiar localização"
+
+#: ../data/ui/context-menu.ui.h:3
+msgid "Export As Image"
+msgstr "Exportar como imagem"
+
+#: ../data/ui/export-view-dialog.ui.h:1
+msgid "Export view"
+msgstr "Exportar vista"
+
+#: ../data/ui/export-view-dialog.ui.h:3
+msgid "_Export"
+msgstr "_Exportar"
 
 #: ../data/ui/location-service-notification.ui.h:1
 msgid "Turn on location services to find your location"
@@ -399,20 +410,40 @@ msgstr ""
 "As credenciais expiraram, por favor, abra as Contas online para iniciar "
 "sessão e ativar esta conta"
 
+#: ../src/exportViewDialog.js:152
+msgid "Filesystem is read only"
+msgstr "O sistema de ficheiros é só de leitura"
+
+#: ../src/exportViewDialog.js:154
+msgid "You do not have permission to save there"
+msgstr "Não tem permissão para gravar aí"
+
+#: ../src/exportViewDialog.js:156
+msgid "The directory does not exists"
+msgstr "A pasta não existe"
+
+#: ../src/exportViewDialog.js:158
+msgid "No filename specified"
+msgstr "Sem nome de ficheiro"
+
+#: ../src/exportViewDialog.js:166
+msgid "Unable to export view"
+msgstr "Impossível exportar a vista"
+
 #: ../src/geoJSONSource.js:102
 msgid "invalid coordinate"
 msgstr "coordenadas inválidas"
 
-#: ../src/geoJSONSource.js:124 ../src/geoJSONSource.js:179
-#: ../src/geoJSONSource.js:194
+#: ../src/geoJSONSource.js:146 ../src/geoJSONSource.js:186
+#: ../src/geoJSONSource.js:201
 msgid "parse error"
 msgstr "erro de processamento"
 
-#: ../src/geoJSONSource.js:173
+#: ../src/geoJSONSource.js:180
 msgid "unknown geometry"
 msgstr "geometria desconhecida"
 
-#: ../src/geoJSONSource.js:207
+#: ../src/geoJSONSource.js:214
 msgid "failed to load file"
 msgstr "falha ao carregar ficheiro"
 
