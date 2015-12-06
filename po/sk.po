@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-10-16 07:47+0000\n"
-"PO-Revision-Date: 2015-10-16 10:08+0200\n"
+"POT-Creation-Date: 2015-12-06 09:17+0000\n"
+"PO-Revision-Date: 2015-12-06 13:44+0100\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
 "Language: sk\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid ""
@@ -51,7 +51,7 @@ msgstr ""
 # desktop entry name
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:373
+#: ../src/application.js:77 ../src/mainWindow.js:397
 msgid "Maps"
 msgstr "Mapy"
 
@@ -65,67 +65,76 @@ msgstr "Jednoduchá aplikácia na prezeranie máp"
 msgid "Maps;"
 msgstr "Mapy;"
 
-# summary
 #: ../data/org.gnome.Maps.gschema.xml.h:1
+msgid "last viewed location"
+msgstr "naposledy zobrazené umiestnenie"
+
+# summary
+#: ../data/org.gnome.Maps.gschema.xml.h:2
+msgid "Coordinates of last viewed location."
+msgstr "Súradnice naposledy zobrazeného umiestnenia."
+
+# summary
+#: ../data/org.gnome.Maps.gschema.xml.h:3
 msgid "Window size"
 msgstr "Veľkosť okna"
 
 # description
-#: ../data/org.gnome.Maps.gschema.xml.h:2
+#: ../data/org.gnome.Maps.gschema.xml.h:4
 msgid "Window size (width and height)."
 msgstr "Veľkosť okna (šírka a výška)"
 
 # summary
-#: ../data/org.gnome.Maps.gschema.xml.h:3
+#: ../data/org.gnome.Maps.gschema.xml.h:5
 msgid "Window position"
 msgstr "Pozícia okna"
 
 # description
-#: ../data/org.gnome.Maps.gschema.xml.h:4
+#: ../data/org.gnome.Maps.gschema.xml.h:6
 msgid "Window position (X and Y)."
 msgstr "Pozícia okna (X a Y)."
 
 # summary
-#: ../data/org.gnome.Maps.gschema.xml.h:5
+#: ../data/org.gnome.Maps.gschema.xml.h:7
 msgid "Window maximized"
 msgstr "Maximalizované okno"
 
 # description
-#: ../data/org.gnome.Maps.gschema.xml.h:6
+#: ../data/org.gnome.Maps.gschema.xml.h:8
 msgid "Window maximization state"
 msgstr "Maximalizovaný stav okna"
 
 # summary
-#: ../data/org.gnome.Maps.gschema.xml.h:7
+#: ../data/org.gnome.Maps.gschema.xml.h:9
 msgid "Maximum number of search results"
 msgstr "Maximálny počet výsledkov hľadania"
 
 # description
-#: ../data/org.gnome.Maps.gschema.xml.h:8
+#: ../data/org.gnome.Maps.gschema.xml.h:10
 msgid "Maximum number of search results from geocode search."
 msgstr "Maximálny počet výsledkov hľadania z vyhľadávača geokódov."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:9
+#: ../data/org.gnome.Maps.gschema.xml.h:11
 msgid "Number of recent places to store"
 msgstr "Počet nedávnych miest na uloženie"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:10
+#: ../data/org.gnome.Maps.gschema.xml.h:12
 msgid "Number of recently visited places to store."
 msgstr "Počet nedávno navštívených miest, ktoré sa majú uložiť."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:11
+#: ../data/org.gnome.Maps.gschema.xml.h:13
 msgid "Number of recent routes to store"
 msgstr "Počet nedávnych trás na uloženie"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:12
+#: ../data/org.gnome.Maps.gschema.xml.h:14
 msgid "Number of recently visited routes to store."
 msgstr "Počet nedávno navštívených trás, ktoré sa majú uložiť."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:13
+#: ../data/org.gnome.Maps.gschema.xml.h:15
 msgid "Facebook check-in privacy setting"
 msgstr "Nastavenie súkromia pre oznámenie polohy v sieti Facebook"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:14
+#: ../data/org.gnome.Maps.gschema.xml.h:16
 msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
@@ -134,11 +143,11 @@ msgstr ""
 "Možné hodnoty sú: EVERYONE(ktokoľvek), FRIENDS_OF_FRIENDS(priatelia mojich "
 "priateľov), ALL_FRIENDS(iba moji priatelia) or SELF(iba ja)."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:15
+#: ../data/org.gnome.Maps.gschema.xml.h:17
 msgid "Foursquare check-in privacy setting"
 msgstr "Nastavenie súkromia pre oznámenie polohy v službe Foursquare"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:16
+#: ../data/org.gnome.Maps.gschema.xml.h:18
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
@@ -147,11 +156,11 @@ msgstr ""
 "Foursquare. Možné hodnoty sú: public(verejné), followers(nasledovatelia) "
 "alebo private(súkromné)."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:17
+#: ../data/org.gnome.Maps.gschema.xml.h:19
 msgid "Foursquare check-in Facebook broadcasting"
 msgstr "Vysielanie oznámenia polohy zo služby Foursquare v sieti Facebook"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:18
+#: ../data/org.gnome.Maps.gschema.xml.h:20
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
@@ -159,11 +168,11 @@ msgstr ""
 "Indikuje, či sa má vysielať oznámenie polohy zo služby Foursquare ako "
 "príspevok v účte siete Facebook priradenom k účtu Foursquare."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:19
+#: ../data/org.gnome.Maps.gschema.xml.h:21
 msgid "Foursquare check-in Twitter broadcasting"
 msgstr "Vysielanie oznámenia polohy zo služby Foursquare v sieti Twitter"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:20
+#: ../data/org.gnome.Maps.gschema.xml.h:22
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
@@ -191,7 +200,8 @@ msgstr "Uverejniť na Facebook"
 msgid "Post on Twitter"
 msgstr "Uverejniť na Twitter"
 
-#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/send-to-dialog.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/export-view-dialog.ui.h:2
+#: ../data/ui/send-to-dialog.ui.h:2
 msgid "_Cancel"
 msgstr "_Zrušiť"
 
@@ -235,6 +245,20 @@ msgstr "Čo sa nachádza tu?"
 #: ../data/ui/context-menu.ui.h:2
 msgid "Copy Location"
 msgstr "Skopírovať umiestnenie"
+
+# menu item
+#: ../data/ui/context-menu.ui.h:3
+msgid "Export As Image"
+msgstr "Exportovať ako obrázok"
+
+# dialog title
+#: ../data/ui/export-view-dialog.ui.h:1
+msgid "Export view"
+msgstr "Export zobrazenia"
+
+#: ../data/ui/export-view-dialog.ui.h:3
+msgid "_Export"
+msgstr "_Exporttovať"
 
 #: ../data/ui/location-service-notification.ui.h:1
 msgid "Turn on location services to find your location"
@@ -320,7 +344,7 @@ msgstr "Trasa poskytovaná službou GraphHopper"
 msgid "Show more results"
 msgstr "Zobraziť viac výsledkov"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:209
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:149
 msgid "Current location"
 msgstr "Aktuálne umiestnenie"
 
@@ -335,7 +359,7 @@ msgstr "Presnosť: %s"
 msgid "Failed to find tile structure in directory"
 msgstr "Zlyhalo nájdenie štruktúry dlaždíc v adresári"
 
-#: ../src/application.js:86
+#: ../src/application.js:87
 msgid "A path to a local tiles directory structure"
 msgstr "Cesta k štruktúre adresárov miestnych dlaždíc"
 
@@ -403,21 +427,66 @@ msgstr ""
 "Platnosť poverení vypršala. Prosím, otvorte Účty služieb na prihlásenie a "
 "povolenie tohto účtu"
 
-#: ../src/mainWindow.js:321
+#: ../src/exportViewDialog.js:152
+msgid "Filesystem is read only"
+msgstr "Systém súborov je iba na čítanie"
+
+#: ../src/exportViewDialog.js:154
+msgid "You do not have permission to save there"
+msgstr "Do tohto umiestnenia nemáte oprávnenia na zápis"
+
+#: ../src/exportViewDialog.js:156
+msgid "The directory does not exists"
+msgstr "Adresár neexistuje"
+
+#: ../src/exportViewDialog.js:158
+msgid "No filename specified"
+msgstr "Nie je určený názov súboru"
+
+#: ../src/exportViewDialog.js:166
+msgid "Unable to export view"
+msgstr "Nie je možné exportovať zobrazenie"
+
+#: ../src/geoJSONSource.js:102
+msgid "invalid coordinate"
+msgstr "neplatná súradnica"
+
+#: ../src/geoJSONSource.js:146 ../src/geoJSONSource.js:186
+#: ../src/geoJSONSource.js:201
+msgid "parse error"
+msgstr "chyba analýzy"
+
+#: ../src/geoJSONSource.js:180
+msgid "unknown geometry"
+msgstr "neznáma geometria"
+
+#: ../src/geoJSONSource.js:214
+msgid "failed to load file"
+msgstr "zlyhalo načítanie súboru"
+
+#: ../src/mainWindow.js:345
 msgid "Failed to connect to location service"
 msgstr "Zlyhalo pripojenie k lokalizačnej službe"
 
-#: ../src/mainWindow.js:326
+#: ../src/mainWindow.js:350
 msgid "Position not found"
 msgstr "Pozícia sa nenašla"
 
-#: ../src/mainWindow.js:371
+#: ../src/mainWindow.js:395
 msgid "translator-credits"
 msgstr "Dušan Kazik <prescott66@gmail.com>"
 
-#: ../src/mainWindow.js:374
+#: ../src/mainWindow.js:398
 msgid "A map application for GNOME"
 msgstr "Aplikácia na prezeranie máp pre GNOME"
+
+#: ../src/mapView.js:206
+msgid "Failed to parse GeoJSON file"
+msgstr "Zlyhala analýza súboru GeoJSON"
+
+#: ../src/mapView.js:225
+msgid "Failed to open GeoURI"
+msgstr "Zlyhalo otvorenie GeoURI"
 
 #: ../src/placeBubble.js:101
 #, javascript-format
@@ -455,7 +524,7 @@ msgstr "Zlyhala analýza URI geografickej polohy"
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: ../src/place.js:121
+#: ../src/place.js:137
 msgid "yes"
 msgstr "áno"
 
@@ -464,7 +533,7 @@ msgstr "áno"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:128
+#: ../src/place.js:144
 msgid "limited"
 msgstr "obmedzený"
 
@@ -472,7 +541,7 @@ msgstr "obmedzený"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: ../src/place.js:134
+#: ../src/place.js:150
 msgid "no"
 msgstr "nie"
 
@@ -481,7 +550,7 @@ msgstr "nie"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:141
+#: ../src/place.js:157
 msgid "designated"
 msgstr "vyhradený"
 
@@ -496,6 +565,10 @@ msgstr "Požiadavka na trasu zlyhala."
 #: ../src/routeService.js:168
 msgid "Start!"
 msgstr "Začiatok!"
+
+#: ../src/sendToDialog.js:169
+msgid "Failed to open URI"
+msgstr "Zlyhalo otvorenie URI"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
 #: ../src/sidebar.js:230
@@ -640,50 +713,47 @@ msgstr "Neznáma"
 msgid "Exact"
 msgstr "Presná"
 
-#: ../src/utils.js:354
+#: ../src/utils.js:363
 #, javascript-format
 msgid "%f h"
 msgstr "%f h"
 
-#: ../src/utils.js:356
+#: ../src/utils.js:365
 #, javascript-format
 msgid "%f min"
 msgstr "%f min"
 
-#: ../src/utils.js:358
+#: ../src/utils.js:367
 #, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
 #. Translators: This is a distance measured in kilometers
-#: ../src/utils.js:369
+#: ../src/utils.js:378
 #, javascript-format
 msgid "%f km"
 msgstr "%f km"
 
 #. Translators: This is a distance measured in meters
-#: ../src/utils.js:372
+#: ../src/utils.js:381
 #, javascript-format
 msgid "%f m"
 msgstr "%f m"
 
 #. Translators: This is a distance measured in miles
-#: ../src/utils.js:380
+#: ../src/utils.js:389
 #, javascript-format
 msgid "%f mi"
 msgstr "%f mi"
 
 #. Translators: This is a distance measured in feet
-#: ../src/utils.js:383
+#: ../src/utils.js:392
 #, javascript-format
 msgid "%f ft"
 msgstr "%f ft"
 
 #~ msgid "Copy Geo URI"
 #~ msgstr "Skopírovať URI geografickej polohy"
-
-#~ msgid "Share location"
-#~ msgstr "Sprístupnenie umiestnenia"
 
 #~ msgid "_Share"
 #~ msgstr "_Sprístupniť"
@@ -699,10 +769,6 @@ msgstr "%f ft"
 #~ msgstr ""
 #~ "Posledné známa poloha (zemepisná šírka a zemepisná dĺžka v stupňoch) a "
 #~ "presnosť (v metroch)."
-
-# summary
-#~ msgid "Description of last known location"
-#~ msgstr "Popis poslednej známej polohy"
 
 # description
 #~ msgid "Description of last known location of user."
