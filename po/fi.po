@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-11-20 09:22+0000\n"
-"PO-Revision-Date: 2015-11-20 21:03+0200\n"
+"POT-Creation-Date: 2015-12-07 09:21+0000\n"
+"PO-Revision-Date: 2015-12-07 21:22+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <gnome-fi-laatu@lists.sourceforge.net>\n"
 "Language: fi\n"
@@ -61,12 +61,10 @@ msgid "Maps;"
 msgstr "Maps;Kartta;Kartat;Reitit;Reitti;"
 
 #: ../data/org.gnome.Maps.gschema.xml.h:1
-#| msgid "User set last known location"
 msgid "last viewed location"
 msgstr "viimeksi katsottu sijainti"
 
 #: ../data/org.gnome.Maps.gschema.xml.h:2
-#| msgid "Description of last known location"
 msgid "Coordinates of last viewed location."
 msgstr "Viimeksi katsotun sijainnin koordinaatit"
 
@@ -186,7 +184,8 @@ msgstr "Lähetä Facebookiin"
 msgid "Post on Twitter"
 msgstr "Lähetä Twitteriin"
 
-#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/send-to-dialog.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/export-view-dialog.ui.h:2
+#: ../data/ui/send-to-dialog.ui.h:2
 msgid "_Cancel"
 msgstr "_Peru"
 
@@ -230,6 +229,18 @@ msgstr "Mitä täällä on?"
 #: ../data/ui/context-menu.ui.h:2
 msgid "Copy Location"
 msgstr "Kopioi sijainti"
+
+#: ../data/ui/context-menu.ui.h:3
+msgid "Export As Image"
+msgstr "Vie kuvana"
+
+#: ../data/ui/export-view-dialog.ui.h:1
+msgid "Export view"
+msgstr "Vie näkymä"
+
+#: ../data/ui/export-view-dialog.ui.h:3
+msgid "_Export"
+msgstr "_Vie"
 
 #: ../data/ui/location-service-notification.ui.h:1
 msgid "Turn on location services to find your location"
@@ -390,20 +401,40 @@ msgstr ""
 "Tunnus on vanhentunut. Avaa verkkotilien asetukset kirjautuaksesi ja "
 "käyttääksesi tätä tiliä"
 
+#: ../src/exportViewDialog.js:152
+msgid "Filesystem is read only"
+msgstr "Tiedostojärjestemä on \"vain luku\"-muodossa"
+
+#: ../src/exportViewDialog.js:154
+msgid "You do not have permission to save there"
+msgstr "Oikeutesi eivät riitä tänne tallentamiseen"
+
+#: ../src/exportViewDialog.js:156
+msgid "The directory does not exists"
+msgstr "Kansiota ei ole olemassa"
+
+#: ../src/exportViewDialog.js:158
+msgid "No filename specified"
+msgstr "Tiedostonimeä ei määritetty"
+
+#: ../src/exportViewDialog.js:166
+msgid "Unable to export view"
+msgstr "Näkymän vienti epäonnistui"
+
 #: ../src/geoJSONSource.js:102
 msgid "invalid coordinate"
 msgstr "virheellinen koordinaatti"
 
-#: ../src/geoJSONSource.js:124 ../src/geoJSONSource.js:179
-#: ../src/geoJSONSource.js:194
+#: ../src/geoJSONSource.js:146 ../src/geoJSONSource.js:186
+#: ../src/geoJSONSource.js:201
 msgid "parse error"
 msgstr "jäsentämisvirhe"
 
-#: ../src/geoJSONSource.js:173
+#: ../src/geoJSONSource.js:180
 msgid "unknown geometry"
 msgstr "tuntematon geometria"
 
-#: ../src/geoJSONSource.js:207
+#: ../src/geoJSONSource.js:214
 msgid "failed to load file"
 msgstr "tiedoston lataaminen epäonnistui"
 
