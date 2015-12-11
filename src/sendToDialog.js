@@ -110,7 +110,11 @@ const SendToDialog = new Lang.Class({
             this._browserRow.hide();
         } else {
             this._browserLabel.label = browserInfo.get_name();
-            this._browserIcon.icon_name = browserInfo.get_icon().to_string();
+            try {
+                this._browserIcon.icon_name = browserInfo.get_icon().to_string();
+            } catch(e) {
+                Utils.debug('failed to get browser icon: %s'.format(e.message));
+            }
         }
 
         return appWeather || appClocks || browserInfo;
