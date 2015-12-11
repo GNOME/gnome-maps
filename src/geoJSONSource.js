@@ -29,17 +29,14 @@ const Location = imports.location;
 const Place = imports.place;
 const PlaceMarker = imports.placeMarker;
 const Utils = imports.utils;
+const GeoJSONStyle = imports.geoJSONStyle;
+
 
 const TILE_SIZE = 256;
 
 const TileFeature = { POINT: 1,
                       LINESTRING: 2,
                       POLYGON: 3 };
-
-const PolygonColor = { RED: 0.37,
-                       GREEN: 0.62,
-                       BLUE: 0.87,
-                       ALPHA: 0.25 };
 
 const GeoJSONSource = new Lang.Class({
     Name: 'GeoJSONSource',
@@ -237,17 +234,22 @@ const GeoJSONSource = new Lang.Class({
             cr.setOperator(Cairo.Operator.CLEAR);
             cr.paint();
             cr.setOperator(Cairo.Operator.OVER);
-            cr.setLineWidth(1);
             cr.setFillRule(Cairo.FillRule.EVEN_ODD);
 
             tileJSON.features.forEach(function(feature) {
                 if (feature.type === TileFeature.POINT)
                     return;
 
+                let geoJSONStyleObj = GeoJSONStyle.GeoJSONStyle.parseSimpleStyle(feature.tags);
+
                 feature.geometry.forEach(function(geometry) {
                     let first = true;
                     cr.moveTo(0, 0);
-                    cr.setSourceRGB(0, 0, 0);
+                    cr.setLineWidth(geoJSONStyleObj.lineWidth);
+                    cr.setSourceRGBA(geoJSONStyleObj.color.red,
+                                     geoJSONStyleObj.color.green,
+                                     geoJSONStyleObj.color.blue,
+                                     geoJSONStyleObj.alpha);
 
                     geometry.forEach(function(coord) {
                         if (first) {
@@ -261,10 +263,10 @@ const GeoJSONSource = new Lang.Class({
                 if (feature.type === TileFeature.POLYGON) {
                     cr.closePath();
                     cr.strokePreserve();
-                    cr.setSourceRGBA(PolygonColor.RED,
-                                     PolygonColor.GREEN,
-                                     PolygonColor.BLUE,
-                                     PolygonColor.ALPHA);
+                    cr.setSourceRGBA(geoJSONStyleObj.fillColor.red,
+                                     geoJSONStyleObj.fillColor.green,
+                                     geoJSONStyleObj.fillColor.blue,
+                                     geoJSONStyleObj.fillAlpha);
                     cr.fill();
                 } else {
                     cr.stroke();
