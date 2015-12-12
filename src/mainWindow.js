@@ -67,13 +67,17 @@ const MainWindow = new Lang.Class({
         this._overlay = params.overlay;
         delete params.overlay;
 
+        let opening = params.opening;
+        delete params.opening;
+
         this.parent(params);
 
         this._configureId = 0;
 
         this._mapView = new MapView.MapView({
             mapType: this.application.local_tile_path ?
-                MapView.MapType.LOCAL : MapView.MapType.STREET
+                MapView.MapType.LOCAL : MapView.MapType.STREET,
+            opening: opening
         });
 
         this._overlay.add(this._mapView);

@@ -244,7 +244,8 @@ const Application = new Lang.Class({
         let overlay = new Gtk.Overlay({ visible: true, can_focus: false });
         notificationManager = new NotificationManager.NotificationManager(overlay);
         this._mainWindow = new MainWindow.MainWindow({ application: this,
-                                                       overlay: overlay });
+                                                       overlay: overlay,
+                                                       opening: this._opening });
         this._mainWindow.connect('destroy', this._onWindowDestroy.bind(this));
     },
 
@@ -282,6 +283,7 @@ const Application = new Lang.Class({
     },
 
     vfunc_open: function(files) {
+        this._opening = true;
         this.activate();
 
         let mapView = this._mainWindow.mapView;
