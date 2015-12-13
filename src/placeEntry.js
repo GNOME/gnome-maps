@@ -104,8 +104,6 @@ const PlaceEntry = new Lang.Class({
 
         this._popover = this._createPopover(numVisible, maxChars);
 
-        this._refreshFilter();
-
         this.connect('activate', this._onActivate.bind(this));
         this.connect('changed', (function() {
             if (this._cancellable)

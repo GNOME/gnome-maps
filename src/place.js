@@ -201,6 +201,8 @@ const Place = new Lang.Class({
 
     match: function(searchString) {
         let name = this.name;
+        if (!name)
+            return false;
 
         searchString = GLib.utf8_normalize(searchString, -1, GLib.NormalizeMode.ALL);
         if (searchString === null)
