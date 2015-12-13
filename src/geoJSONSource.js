@@ -218,12 +218,6 @@ const GeoJSONSource = new Lang.Class({
 
     _renderTile: function(tile) {
         let tileJSON = this._tileIndex.getTile(tile.zoom_level, tile.x, tile.y);
-
-        if (!tileJSON) {
-            tile.emit('render-complete', null, 0, false);
-            return;
-        }
-
         let content = new Clutter.Canvas({ width: TILE_SIZE,
                                            height: TILE_SIZE });
         tile.content = new Clutter.Actor({ width: TILE_SIZE,
@@ -231,10 +225,16 @@ const GeoJSONSource = new Lang.Class({
                                            content: content });
 
         content.connect('draw', (function(canvas, cr) {
+            tile.set_surface(cr.getTarget());
             cr.setOperator(Cairo.Operator.CLEAR);
             cr.paint();
             cr.setOperator(Cairo.Operator.OVER);
             cr.setFillRule(Cairo.FillRule.EVEN_ODD);
+
+            if (!tileJSON) {
+                tile.emit('render-complete', null, 0, false);
+                return;
+            }
 
             tileJSON.features.forEach(function(feature) {
                 if (feature.type === TileFeature.POINT)
