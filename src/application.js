@@ -265,6 +265,9 @@ const Application = new Lang.Class({
     },
 
     _openInternal: function(file) {
+        if (!this._mainWindow || !this._mainWindow.mapView.view.realized)
+            return;
+
         let uri = file.get_uri();
 
         if (GLib.uri_parse_scheme(uri) === 'geo') {
