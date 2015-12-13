@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-12-04 21:21+0000\n"
-"PO-Revision-Date: 2015-12-05 08:01+0000\n"
+"POT-Creation-Date: 2015-12-12 21:20+0000\n"
+"PO-Revision-Date: 2015-12-13 08:48+0000\n"
 "Last-Translator: Pedro Albuquerque <palbuquerque73@gmail.com>\n"
 "Language-Team: Português <palbuquerque73@gmail.com>\n"
 "Language: pt\n"
@@ -56,7 +56,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:397
+#: ../src/application.js:79 ../src/mainWindow.js:401
 msgid "Maps"
 msgstr "Mapas"
 
@@ -172,11 +172,23 @@ msgstr ""
 "Indica se o Foursquare deve emitir como tweet na conta do Twitter associada "
 "à conta Foursquare."
 
+#: ../data/org.gnome.Maps.gschema.xml.h:23
+msgid "OpenStreetMap username or e-mail address"
+msgstr "Nome de utilizador OpenStreetMap ou endereço de email"
+
+#: ../data/org.gnome.Maps.gschema.xml.h:24
+msgid "Indicates if the user has signed in to edit OpenStreetMap data."
+msgstr "Indica se o utilizador iniciou sessão para editar dados OpenStreetMap."
+
 #: ../data/ui/app-menu.ui.h:1
+msgid "Setup OpenStreetMap Account"
+msgstr "Configurar conta OpenStreetMap"
+
+#: ../data/ui/app-menu.ui.h:2
 msgid "About"
 msgstr "Sobre"
 
-#: ../data/ui/app-menu.ui.h:2
+#: ../data/ui/app-menu.ui.h:3
 msgid "Quit"
 msgstr "Sair"
 
@@ -306,6 +318,90 @@ msgstr "Marcar como favorito"
 msgid "Check in here"
 msgstr "Inscrever aqui"
 
+#: ../data/ui/osm-account-dialog.ui.h:1
+#| msgid "Select an account"
+msgid "OpenStreetMap Account"
+msgstr "Conta OpenStreetMap"
+
+#: ../data/ui/osm-account-dialog.ui.h:2
+msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"x-large\">Inicie sessão para editar mapas</span>"
+
+#: ../data/ui/osm-account-dialog.ui.h:3
+msgid ""
+"Help to improve the map, using an\n"
+"OpenStreetMap account."
+msgstr ""
+"Ajude a melhorar o mapa, usando\n"
+"uma conta OpenStreetMap."
+
+#: ../data/ui/osm-account-dialog.ui.h:5
+msgid "Email"
+msgstr "Email"
+
+#: ../data/ui/osm-account-dialog.ui.h:6
+msgid "Password"
+msgstr "Senha"
+
+#: ../data/ui/osm-account-dialog.ui.h:7
+msgid "Sign In"
+msgstr "Inicie sessão"
+
+#: ../data/ui/osm-account-dialog.ui.h:8
+#| msgid "Select an account"
+msgid "Don't have an account?"
+msgstr "Não tem uma conta?"
+
+#. The label should contain the link to the OSM reset password page with a translated title
+#: ../data/ui/osm-account-dialog.ui.h:10
+msgid ""
+"Sorry, that didn't work. Please try again, or visit\n"
+"<a href=\"https://www.openstreetmap.org/user/forgot-password"
+"\">OpenStreetMap</a> to reset your password."
+msgstr ""
+"Desculpe, não resultou. Por favor, tente novamente ou visite\n"
+"<a href=\"https://www.openstreetmap.org/user/forgot-password"
+"\">OpenStreetMap</a> para repor a sua senha."
+
+#: ../data/ui/osm-account-dialog.ui.h:12
+msgid "The verification code didn't match, please try again."
+msgstr "O código de verificação não correspondeu, por favor tente novamente."
+
+#: ../data/ui/osm-account-dialog.ui.h:13
+msgid "Enter verification code shown above"
+msgstr "Insira o código de verificação mostrado acima"
+
+#: ../data/ui/osm-account-dialog.ui.h:14
+msgid "Verify"
+msgstr "Verificar"
+
+#: ../data/ui/osm-account-dialog.ui.h:15
+msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
+msgstr "<span weight=\"bold\" size=\"x-large\">Sessão iniciada</span>"
+
+#: ../data/ui/osm-account-dialog.ui.h:16
+msgid "Your OpenStreetMap account is active."
+msgstr "A sua conta OpenStreetMap está ativa."
+
+#: ../data/ui/osm-account-dialog.ui.h:17
+msgid "Sign Out"
+msgstr "Terminar sessão"
+
+#: ../data/ui/osm-edit-dialog.ui.h:1
+#| msgid "Copy Location"
+msgid "Edit Location"
+msgstr "Editar localização"
+
+#: ../data/ui/osm-edit-dialog.ui.h:2
+#| msgid "_Cancel"
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: ../data/ui/osm-edit-dialog.ui.h:3 ../src/osmEditDialog.js:154
+msgid "Next"
+msgstr "Seguinte"
+
 #: ../data/ui/search-popup.ui.h:1
 msgid "Press enter to search"
 msgstr "Prima Enter para procurar"
@@ -341,7 +437,20 @@ msgstr "Precisão: %s"
 msgid "Failed to find tile structure in directory"
 msgstr "Falha ao localizar estrutura de mosaico na pasta"
 
-#: ../src/application.js:87
+#: ../lib/maps-osm.c:56
+#| msgid "Failed to parse Geo URI"
+msgid "Failed to parse XML document"
+msgstr "Falha ao processar documento XML"
+
+#: ../lib/maps-osm.c:252 ../lib/maps-osm.c:405
+msgid "Missing required attributes"
+msgstr "Atributos requeridos em falta"
+
+#: ../lib/maps-osm.c:453
+msgid "Could not find OSM element"
+msgstr "Impossível localizar elemento OSM"
+
+#: ../src/application.js:89
 msgid "A path to a local tiles directory structure"
 msgstr "Um caminho para a estrutura de pasta local de mosaicos"
 
@@ -388,6 +497,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Escreva uma mensagem opcional para se inscrever em %s."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
+#: ../src/osmEditDialog.js:189
 msgid "An error has occurred"
 msgstr "Ocorreu um erro"
 
@@ -430,75 +540,151 @@ msgstr "Sem nome de ficheiro"
 msgid "Unable to export view"
 msgstr "Impossível exportar a vista"
 
-#: ../src/geoJSONSource.js:102
+#: ../src/geoJSONSource.js:99
 msgid "invalid coordinate"
 msgstr "coordenadas inválidas"
 
-#: ../src/geoJSONSource.js:146 ../src/geoJSONSource.js:186
-#: ../src/geoJSONSource.js:201
+#: ../src/geoJSONSource.js:143 ../src/geoJSONSource.js:183
+#: ../src/geoJSONSource.js:198
 msgid "parse error"
 msgstr "erro de processamento"
 
-#: ../src/geoJSONSource.js:180
+#: ../src/geoJSONSource.js:177
 msgid "unknown geometry"
 msgstr "geometria desconhecida"
 
-#: ../src/geoJSONSource.js:214
+#: ../src/geoJSONSource.js:211
 msgid "failed to load file"
 msgstr "falha ao carregar ficheiro"
 
-#: ../src/mainWindow.js:345
+#: ../src/mainWindow.js:349
 msgid "Failed to connect to location service"
 msgstr "Falha ao ligar ao serviço de localização"
 
-#: ../src/mainWindow.js:350
+#: ../src/mainWindow.js:354
 msgid "Position not found"
 msgstr "Posição não encontrada"
 
-#: ../src/mainWindow.js:395
+#: ../src/mainWindow.js:399
 msgid "translator-credits"
 msgstr ""
 "Bruno Ramalhete <bram.512@gmail.com>\n"
 "António Lima <amrlima@gmail.com>\n"
 "Pedro Albuquerque <palbuquerque73@gmail.com>"
 
-#: ../src/mainWindow.js:398
+#: ../src/mainWindow.js:402
 msgid "A map application for GNOME"
 msgstr "Uma aplicação de mapas para o GNOME"
 
-#: ../src/mapView.js:206
+#: ../src/mapView.js:207
 msgid "Failed to parse GeoJSON file"
 msgstr "Falha ao processar ficheiro GeoJSON"
 
-#: ../src/mapView.js:225
+#: ../src/mapView.js:226
 msgid "Failed to open GeoURI"
 msgstr "Falha ao abrir GeoURI"
 
-#: ../src/placeBubble.js:101
+#. setting the status in session.cancel_message still seems
+#. to always give status IO_ERROR
+#: ../src/osmConnection.js:440
+msgid "Incorrect user name or password"
+msgstr "Utilizador ou senha incorretos"
+
+#: ../src/osmConnection.js:442
+msgid "Success"
+msgstr "Sucesso"
+
+#: ../src/osmConnection.js:444
+msgid "Bad request"
+msgstr "Mau pedido"
+
+#: ../src/osmConnection.js:446
+#| msgid "Position not found"
+msgid "Object not found"
+msgstr "Objeto não encontrado"
+
+#: ../src/osmConnection.js:448
+msgid "Conflict, someone else has just modified the object"
+msgstr "Conflito, alguém acabou de modificar o objeto"
+
+#: ../src/osmConnection.js:450
+msgid "Object has been deleted"
+msgstr "O objeto foi eliminado"
+
+#: ../src/osmConnection.js:452
+msgid "Way or relation refers to non-existing children"
+msgstr "Caminho ou relação referem-se a filho não existente"
+
+#.
+#. * specification of OSM edit fields
+#. * name: the label for the edit field (translatable)
+#. * tag: the OSM tag key value
+#. * type: the field type (determines editing field type)
+#. * rewriteFunc: a rewrite function taking a string argument
+#. * (only used for TEXT fields)
+#.
+#: ../src/osmEditDialog.js:71
+msgid "Name"
+msgstr "Nome"
+
+#: ../src/osmEditDialog.js:72 ../src/placeBubble.js:129
+msgid "Wikipedia"
+msgstr "Wikipedia"
+
+#: ../src/osmEditDialog.js:74
+#| msgid "Population: %s"
+msgid "Population"
+msgstr "População"
+
+#: ../src/osmEditDialog.js:76
+#| msgid "Wheelchair access: %s"
+msgid "Wheelchair access"
+msgstr "Acesso para cadeiras de rodas"
+
+#: ../src/osmEditDialog.js:140
+msgid "Done"
+msgstr "Terminado"
+
+#: ../src/osmEditDialog.js:290
+#| msgid "yes"
+msgid "Yes"
+msgstr "Sim"
+
+#: ../src/osmEditDialog.js:291
+msgid "No"
+msgstr "Não"
+
+#: ../src/osmEditDialog.js:292
+#| msgid "limited"
+msgid "Limited"
+msgstr "Limitado"
+
+#: ../src/osmEditDialog.js:293
+#| msgid "designated"
+msgid "Designated"
+msgstr "Designado"
+
+#: ../src/placeBubble.js:110
 #, javascript-format
 msgid "Postal code: %s"
 msgstr "Código postal: %s"
 
-#: ../src/placeBubble.js:103
+#: ../src/placeBubble.js:112
 #, javascript-format
 msgid "Country code: %s"
 msgstr "Código de país: %s"
 
-#: ../src/placeBubble.js:112
+#: ../src/placeBubble.js:121
 #, javascript-format
 msgid "Population: %s"
 msgstr "População: %s"
 
-#: ../src/placeBubble.js:115
+#: ../src/placeBubble.js:124
 #, javascript-format
 msgid "Opening hours: %s"
 msgstr "Horário de funcionamento: %s"
 
-#: ../src/placeBubble.js:120
-msgid "Wikipedia"
-msgstr "Wikipedia"
-
-#: ../src/placeBubble.js:125
+#: ../src/placeBubble.js:134
 #, javascript-format
 msgid "Wheelchair access: %s"
 msgstr "Acesso para deficientes: %s"
@@ -552,7 +738,7 @@ msgstr "Pedido de rota falhou."
 msgid "Start!"
 msgstr "Iniciar!"
 
-#: ../src/sendToDialog.js:169
+#: ../src/sendToDialog.js:173
 msgid "Failed to open URI"
 msgstr "Falha ao abrir URI"
 
