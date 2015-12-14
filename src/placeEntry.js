@@ -105,7 +105,7 @@ const PlaceEntry = new Lang.Class({
         this._popover = this._createPopover(numVisible, maxChars);
 
         this.connect('activate', this._onActivate.bind(this));
-        this.connect('changed', (function() {
+        this.connect('search-changed', (function() {
             if (this._cancellable)
                 this._cancellable.cancel();
 
