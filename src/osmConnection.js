@@ -22,8 +22,6 @@
 
 const _ = imports.gettext.gettext;
 
-const Utils = imports.utils;
-
 const Lang = imports.lang;
 const Maps = imports.gi.GnomeMaps;
 const Rest = imports.gi.Rest;
@@ -50,9 +48,7 @@ const OSMConnection = new Lang.Class({
 
     _init: function(params) {
         this._session = new Soup.Session();
-        /* OAuth proxy used for enrolling access tokens */
-        this._oauthProxy = Rest.OAuthProxy.new(CONSUMER_KEY, CONSUMER_SECRET,
-                                               OAUTH_ENDPOINT_URL, false);
+
         /* OAuth proxy used for making OSM uploads */
         this._callProxy = Rest.OAuthProxy.new(CONSUMER_KEY, CONSUMER_SECRET,
                                               BASE_URL + '/' + API_VERSION,
@@ -225,6 +221,9 @@ const OSMConnection = new Lang.Class({
     },
 
     requestOAuthToken: function(callback) {
+        /* OAuth proxy used for enrolling access tokens */
+        this._oauthProxy = Rest.OAuthProxy.new(CONSUMER_KEY, CONSUMER_SECRET,
+                                               OAUTH_ENDPOINT_URL, false);
         this._oauthProxy.request_token_async('request_token', 'oob', function(p, error, w, u) {
             this._onRequestOAuthToken(error, callback);
         }.bind(this), this._oauthProxy, callback);
