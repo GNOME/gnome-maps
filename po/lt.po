@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-11-18 18:53+0000\n"
-"PO-Revision-Date: 2015-11-20 21:51+0200\n"
+"POT-Creation-Date: 2015-12-17 18:14+0000\n"
+"PO-Revision-Date: 2015-12-20 15:24+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -51,7 +51,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:397
+#: ../src/application.js:79 ../src/mainWindow.js:401
 msgid "Maps"
 msgstr "Žemėlapiai"
 
@@ -64,7 +64,6 @@ msgid "Maps;"
 msgstr "Žemėlapiai;"
 
 #: ../data/org.gnome.Maps.gschema.xml.h:1
-#| msgid "Share location"
 msgid "last viewed location"
 msgstr "paskutinė žiūrėta vieta"
 
@@ -168,11 +167,23 @@ msgstr ""
 "Nurodo, ar Foursquare turėtų pranešti paskutinį nusiuntimą kaip įrašą "
 "Twitter paskyroje, susietoje su Foursquare paskyra."
 
+#: ../data/org.gnome.Maps.gschema.xml.h:23
+msgid "OpenStreetMap username or e-mail address"
+msgstr "OpenStreetMap naudotojo vardas arba el. pašto adresas"
+
+#: ../data/org.gnome.Maps.gschema.xml.h:24
+msgid "Indicates if the user has signed in to edit OpenStreetMap data."
+msgstr "Nurodo ar naudotojas prisijungė OpenStreetMap duomenų redagavimui."
+
 #: ../data/ui/app-menu.ui.h:1
+msgid "Setup OpenStreetMap Account"
+msgstr "Nusistatyti OpenStreetMap paskyrą"
+
+#: ../data/ui/app-menu.ui.h:2
 msgid "About"
 msgstr "Apie"
 
-#: ../data/ui/app-menu.ui.h:2
+#: ../data/ui/app-menu.ui.h:3
 msgid "Quit"
 msgstr "Išeiti"
 
@@ -188,7 +199,8 @@ msgstr "Pranešti Facebook"
 msgid "Post on Twitter"
 msgstr "Pranešti Twitter"
 
-#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/send-to-dialog.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/export-view-dialog.ui.h:2
+#: ../data/ui/send-to-dialog.ui.h:2
 msgid "_Cancel"
 msgstr "_Atsisakyti"
 
@@ -232,6 +244,18 @@ msgstr "Kas ten?"
 #: ../data/ui/context-menu.ui.h:2
 msgid "Copy Location"
 msgstr "Kopijuoti vietą"
+
+#: ../data/ui/context-menu.ui.h:3
+msgid "Export As Image"
+msgstr "Eksportuoti kaip paveikslą"
+
+#: ../data/ui/export-view-dialog.ui.h:1
+msgid "Export view"
+msgstr "Eksportuoti rodinį"
+
+#: ../data/ui/export-view-dialog.ui.h:3
+msgid "_Export"
+msgstr "_Eksportuoti"
 
 #: ../data/ui/location-service-notification.ui.h:1
 msgid "Turn on location services to find your location"
@@ -289,6 +313,87 @@ msgstr "Pažymėti kaip mėgiamą"
 msgid "Check in here"
 msgstr "Patikrinkite čia"
 
+#: ../data/ui/osm-account-dialog.ui.h:1
+msgid "OpenStreetMap Account"
+msgstr "OpenStreetMap paskyra"
+
+#: ../data/ui/osm-account-dialog.ui.h:2
+msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"x-large\">Prisijunkite, kad redaguotumėte "
+"žemėlapius</span>"
+
+#: ../data/ui/osm-account-dialog.ui.h:3
+msgid ""
+"Help to improve the map, using an\n"
+"OpenStreetMap account."
+msgstr ""
+"Padėkite tobulinti žemėlapį, naudodami\n"
+"OpenStreetMap paskyrą."
+
+#: ../data/ui/osm-account-dialog.ui.h:5
+msgid "Email"
+msgstr "El. paštas"
+
+#: ../data/ui/osm-account-dialog.ui.h:6
+msgid "Password"
+msgstr "Slaptažodis"
+
+#: ../data/ui/osm-account-dialog.ui.h:7
+msgid "Sign In"
+msgstr "Prisijungti"
+
+#: ../data/ui/osm-account-dialog.ui.h:8
+msgid "Don't have an account?"
+msgstr "Neturite paskyros?"
+
+#. The label should contain the link to the OSM reset password page with a translated title
+#: ../data/ui/osm-account-dialog.ui.h:10
+msgid ""
+"Sorry, that didn't work. Please try again, or visit\n"
+"<a href=\"https://www.openstreetmap.org/user/forgot-password"
+"\">OpenStreetMap</a> to reset your password."
+msgstr ""
+"Atleiskite, tai nesuveikė. Prašome bandyti dar kartą arba apsilankyti\n"
+"<a href=\"https://www.openstreetmap.org/user/forgot-password"
+"\">OpenStreetMap</a>, kad atstatytumėte savo slaptažodį."
+
+#: ../data/ui/osm-account-dialog.ui.h:12
+msgid "The verification code didn't match, please try again."
+msgstr "Patvirtinimo kodas neatitiko, prašome bandyti dar kartą."
+
+#: ../data/ui/osm-account-dialog.ui.h:13
+msgid "Enter verification code shown above"
+msgstr "Įveskite aukščiau parodytą patvirtinimo kodą"
+
+#: ../data/ui/osm-account-dialog.ui.h:14
+msgid "Verify"
+msgstr "Patvirtinti"
+
+#: ../data/ui/osm-account-dialog.ui.h:15
+msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
+msgstr "<span weight=\"bold\" size=\"x-large\">Prisijungę</span>"
+
+#: ../data/ui/osm-account-dialog.ui.h:16
+msgid "Your OpenStreetMap account is active."
+msgstr "Jūsų OpenStreetMap paskyra yra aktyvi."
+
+#: ../data/ui/osm-account-dialog.ui.h:17
+msgid "Sign Out"
+msgstr "Atsijungti"
+
+#: ../data/ui/osm-edit-dialog.ui.h:1
+msgid "Edit Location"
+msgstr "Redaguoti vietą"
+
+#: ../data/ui/osm-edit-dialog.ui.h:2
+msgid "Cancel"
+msgstr "Atsisakyti"
+
+#: ../data/ui/osm-edit-dialog.ui.h:3 ../src/osmEditDialog.js:154
+msgid "Next"
+msgstr "Kitas"
+
 #: ../data/ui/search-popup.ui.h:1
 msgid "Press enter to search"
 msgstr "Spauskite enter paieškai"
@@ -324,7 +429,19 @@ msgstr "Tikslumas: %s"
 msgid "Failed to find tile structure in directory"
 msgstr "Nepavyko kataloge rasti koklių struktūros"
 
-#: ../src/application.js:87
+#: ../lib/maps-osm.c:56
+msgid "Failed to parse XML document"
+msgstr "Nepavyko perskaityti XML dokumento"
+
+#: ../lib/maps-osm.c:252 ../lib/maps-osm.c:405
+msgid "Missing required attributes"
+msgstr "Trūkta reikiamų požymių"
+
+#: ../lib/maps-osm.c:453
+msgid "Could not find OSM element"
+msgstr "Nepavyko rasti OSM elemento"
+
+#: ../src/application.js:89
 msgid "A path to a local tiles directory structure"
 msgstr "Kelias iki vietinės koklių katalogo struktūros"
 
@@ -371,6 +488,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Parašykite pranešimą nusiuntimui į %s."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
+#: ../src/osmEditDialog.js:189
 msgid "An error has occurred"
 msgstr "Kilo klaida"
 
@@ -392,79 +510,169 @@ msgstr ""
 "Įgaliojimai pasibaigė, atverkite internetines paskyra prisijungimui ir "
 "paskyros atnaujinimui"
 
-#: ../src/geoJSONSource.js:102
+#: ../src/exportViewDialog.js:152
+msgid "Filesystem is read only"
+msgstr "Failų sistema yra tik skaitymui"
+
+#: ../src/exportViewDialog.js:154
+msgid "You do not have permission to save there"
+msgstr "Jūs neturite leidimo ten įrašyti"
+
+#: ../src/exportViewDialog.js:156
+msgid "The directory does not exists"
+msgstr "Katalogo nėra"
+
+#: ../src/exportViewDialog.js:158
+msgid "No filename specified"
+msgstr "Nenurodytas failo pavadinimas"
+
+#: ../src/exportViewDialog.js:166
+msgid "Unable to export view"
+msgstr "Nepavyko eksportuoti rodinio"
+
+#: ../src/geoJSONSource.js:99
 msgid "invalid coordinate"
 msgstr "neteisinga koordinatė"
 
-#: ../src/geoJSONSource.js:124 ../src/geoJSONSource.js:179
-#: ../src/geoJSONSource.js:194
+#: ../src/geoJSONSource.js:143 ../src/geoJSONSource.js:183
+#: ../src/geoJSONSource.js:198
 msgid "parse error"
 msgstr "perskaitymo klaida"
 
-#: ../src/geoJSONSource.js:173
+#: ../src/geoJSONSource.js:177
 msgid "unknown geometry"
 msgstr "nežinoma geometrija"
 
-#: ../src/geoJSONSource.js:207
+#: ../src/geoJSONSource.js:211
 msgid "failed to load file"
 msgstr "nepavyko įkelti failo"
 
-#: ../src/mainWindow.js:345
+#: ../src/mainWindow.js:349
 msgid "Failed to connect to location service"
 msgstr "Nepavyko prisijungti prie vietos tarnybos"
 
-#: ../src/mainWindow.js:350
+#: ../src/mainWindow.js:354
 msgid "Position not found"
 msgstr "Nerasta padėtis"
 
-#: ../src/mainWindow.js:395
+#: ../src/mainWindow.js:399
 msgid "translator-credits"
 msgstr ""
 "Išvertė:\n"
 "Aurimas Černius <aurisc4@gmail.com>"
 
-#: ../src/mainWindow.js:398
+#: ../src/mainWindow.js:402
 msgid "A map application for GNOME"
 msgstr "Žemėlapių programa GNOME aplinkai"
 
-#: ../src/mapView.js:206
+#: ../src/mapView.js:207
 msgid "Failed to parse GeoJSON file"
 msgstr "Nepavyko perskaityti GeoJSON failo"
 
-#: ../src/mapView.js:225
+#: ../src/mapView.js:226
 msgid "Failed to open GeoURI"
 msgstr "Nepavyko atverti GeoURI"
 
-#: ../src/placeBubble.js:101
+#. setting the status in session.cancel_message still seems
+#. to always give status IO_ERROR
+#: ../src/osmConnection.js:440
+msgid "Incorrect user name or password"
+msgstr "Neteisingas naudotojo vardas ar slaptažodis"
+
+#: ../src/osmConnection.js:442
+msgid "Success"
+msgstr "Pavyko"
+
+#: ../src/osmConnection.js:444
+msgid "Bad request"
+msgstr "Bloga užklausa"
+
+#: ../src/osmConnection.js:446
+msgid "Object not found"
+msgstr "Objektas nerastas"
+
+#: ../src/osmConnection.js:448
+msgid "Conflict, someone else has just modified the object"
+msgstr "Konfliktas, kažkas ką tik modifikavo objektą"
+
+#: ../src/osmConnection.js:450
+msgid "Object has been deleted"
+msgstr "Objektas buvo ištrintas"
+
+#: ../src/osmConnection.js:452
+msgid "Way or relation refers to non-existing children"
+msgstr "Kelias ar santykis nurodo į nesantį kūrinį"
+
+#.
+#. * specification of OSM edit fields
+#. * name: the label for the edit field (translatable)
+#. * tag: the OSM tag key value
+#. * type: the field type (determines editing field type)
+#. * rewriteFunc: a rewrite function taking a string argument
+#. * (only used for TEXT fields)
+#.
+#: ../src/osmEditDialog.js:71
+msgid "Name"
+msgstr "Pavadinimas"
+
+#: ../src/osmEditDialog.js:72 ../src/placeBubble.js:129
+msgid "Wikipedia"
+msgstr "Wikipedia"
+
+#: ../src/osmEditDialog.js:74
+msgid "Population"
+msgstr "Gyventojų skaičius"
+
+#: ../src/osmEditDialog.js:76
+msgid "Wheelchair access"
+msgstr "Prieiga neįgaliųjų vežimėliais: %s"
+
+#: ../src/osmEditDialog.js:140
+msgid "Done"
+msgstr "Atlikta"
+
+#: ../src/osmEditDialog.js:290
+msgid "Yes"
+msgstr "Taip"
+
+#: ../src/osmEditDialog.js:291
+msgid "No"
+msgstr "Ne"
+
+#: ../src/osmEditDialog.js:292
+msgid "Limited"
+msgstr "Ribota"
+
+#: ../src/osmEditDialog.js:293
+msgid "Designated"
+msgstr "Su paskirtimi"
+
+#: ../src/placeBubble.js:110
 #, javascript-format
 msgid "Postal code: %s"
 msgstr "Pašto kodas: %s"
 
-#: ../src/placeBubble.js:103
+#: ../src/placeBubble.js:112
 #, javascript-format
 msgid "Country code: %s"
 msgstr "Šalies kodas: %s"
 
-#: ../src/placeBubble.js:112
+#: ../src/placeBubble.js:121
 #, javascript-format
 msgid "Population: %s"
 msgstr "Gyventojų skaičius: %s"
 
-#: ../src/placeBubble.js:115
+#: ../src/placeBubble.js:124
 #, javascript-format
 msgid "Opening hours: %s"
 msgstr "Darbo laikas: %s"
 
-#: ../src/placeBubble.js:120
-msgid "Wikipedia"
-msgstr "Wikipedia"
-
-#: ../src/placeBubble.js:125
+#: ../src/placeBubble.js:134
 #, javascript-format
 msgid "Wheelchair access: %s"
-msgstr "Prieiga invalido vežimėliams: %s"
+msgstr "Prieiga neįgaliųjų vežimėliais: %s"
 
-#: ../src/placeEntry.js:215
+#: ../src/placeEntry.js:213
 msgid "Failed to parse Geo URI"
 msgstr "Nepavyko perskaityti Geo URI"
 
@@ -513,7 +721,7 @@ msgstr "Nepavyko užklausti kelio."
 msgid "Start!"
 msgstr "Pradėti!"
 
-#: ../src/sendToDialog.js:169
+#: ../src/sendToDialog.js:173
 msgid "Failed to open URI"
 msgstr "Nepavyko atverti URI"
 
