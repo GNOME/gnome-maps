@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-11-09 09:21+0000\n"
-"PO-Revision-Date: 2015-11-09 14:54+0100\n"
+"POT-Creation-Date: 2015-12-24 09:19+0000\n"
+"PO-Revision-Date: 2015-12-24 14:23+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -25,9 +25,9 @@ msgid ""
 "quickly find the place you’re looking for by searching for a city or street, "
 "or locate a place to meet a friend."
 msgstr ""
-"Aplikace Mapy poskytuje rychlý přístup k mapám celého světa. Díky ní "
-"můžete rychle najít místo, které hledáte, ať už podle názvu města nebo "
-"ulice, nebo určit místo pro setkání s přáteli."
+"Aplikace Mapy poskytuje rychlý přístup k mapám celého světa. Díky ní můžete "
+"rychle najít místo, které hledáte, ať už podle názvu města nebo ulice, nebo "
+"určit místo pro setkání s přáteli."
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:2
 msgid ""
@@ -50,7 +50,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:397
+#: ../src/application.js:79 ../src/mainWindow.js:401
 msgid "Maps"
 msgstr "Mapy"
 
@@ -63,58 +63,66 @@ msgid "Maps;"
 msgstr "mapa;mapy;"
 
 #: ../data/org.gnome.Maps.gschema.xml.h:1
+msgid "last viewed location"
+msgstr "Poslední zobrazené místo"
+
+#: ../data/org.gnome.Maps.gschema.xml.h:2
+msgid "Coordinates of last viewed location."
+msgstr "Souřadnice naposledy zobrazeného místa."
+
+#: ../data/org.gnome.Maps.gschema.xml.h:3
 msgid "Window size"
 msgstr "Velikost okna"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:2
+#: ../data/org.gnome.Maps.gschema.xml.h:4
 msgid "Window size (width and height)."
 msgstr "Velikost okna (šířka a výška)."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:3
+#: ../data/org.gnome.Maps.gschema.xml.h:5
 msgid "Window position"
 msgstr "Poloha okna"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:4
+#: ../data/org.gnome.Maps.gschema.xml.h:6
 msgid "Window position (X and Y)."
 msgstr "Poloha okna (X a Y)."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:5
+#: ../data/org.gnome.Maps.gschema.xml.h:7
 msgid "Window maximized"
 msgstr "Maximalizace okna"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:6
+#: ../data/org.gnome.Maps.gschema.xml.h:8
 msgid "Window maximization state"
 msgstr "Stav maximalizace okna"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:7
+#: ../data/org.gnome.Maps.gschema.xml.h:9
 msgid "Maximum number of search results"
 msgstr "Maximální počet výsledků hledání"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:8
+#: ../data/org.gnome.Maps.gschema.xml.h:10
 msgid "Maximum number of search results from geocode search."
 msgstr "Maximální počet výsledků hledání z geocode."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:9
+#: ../data/org.gnome.Maps.gschema.xml.h:11
 msgid "Number of recent places to store"
 msgstr "Počet nedávných míst k uchování"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:10
+#: ../data/org.gnome.Maps.gschema.xml.h:12
 msgid "Number of recently visited places to store."
 msgstr "Počet nedávno navštívených míst, která se mají uchovávat."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:11
+#: ../data/org.gnome.Maps.gschema.xml.h:13
 msgid "Number of recent routes to store"
 msgstr "Počet nedávných tras k uchování"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:12
+#: ../data/org.gnome.Maps.gschema.xml.h:14
 msgid "Number of recently visited routes to store."
 msgstr "Počet nedávno navštívených tras, která se mají uchovávat."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:13
+#: ../data/org.gnome.Maps.gschema.xml.h:15
 msgid "Facebook check-in privacy setting"
 msgstr "Nastavení soukromí při oznamování polohy na Facebook"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:14
+#: ../data/org.gnome.Maps.gschema.xml.h:16
 msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
@@ -123,11 +131,11 @@ msgstr ""
 "hodnoty jsou: EVERYONE (všem), FRIENDS_OF_FRIENDS (přátelům přátel), "
 "ALL_FRIENDS (všem přátelům) nebo SELF (mě samotnému)."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:15
+#: ../data/org.gnome.Maps.gschema.xml.h:17
 msgid "Foursquare check-in privacy setting"
 msgstr "Nastavení soukromí při oznamování polohy na Foursquare"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:16
+#: ../data/org.gnome.Maps.gschema.xml.h:18
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
@@ -136,11 +144,11 @@ msgstr ""
 "Možné hodnoty jsou: public (veřejné), followers (následovníci) nebo private "
 "(soukromé)."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:17
+#: ../data/org.gnome.Maps.gschema.xml.h:19
 msgid "Foursquare check-in Facebook broadcasting"
 msgstr "Záslání oznámení polohy z Foursquare na Facebook"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:18
+#: ../data/org.gnome.Maps.gschema.xml.h:20
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
@@ -148,11 +156,11 @@ msgstr ""
 "Říká, jestli by měl Foursquare zaslat oznámení polohy jako příspěvek na učet "
 "na Facebooku přidružený k účtu na Foursquare."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:19
+#: ../data/org.gnome.Maps.gschema.xml.h:21
 msgid "Foursquare check-in Twitter broadcasting"
 msgstr "Záslání oznámení polohy z Foursquare na Twitter"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:20
+#: ../data/org.gnome.Maps.gschema.xml.h:22
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
@@ -160,11 +168,23 @@ msgstr ""
 "Říká, jestli by měl Foursquare zaslat oznámení polohy jako příspěvek na učet "
 "na Twitteru přidružený k účtu na Foursquare."
 
+#: ../data/org.gnome.Maps.gschema.xml.h:23
+msgid "OpenStreetMap username or e-mail address"
+msgstr "Uživatelské jméno nebo e-mailová adresa na OpenStreetMap"
+
+#: ../data/org.gnome.Maps.gschema.xml.h:24
+msgid "Indicates if the user has signed in to edit OpenStreetMap data."
+msgstr "Dává najevo, jestli je uživatel přihlášen k úpravám dat OpenStreetMap."
+
 #: ../data/ui/app-menu.ui.h:1
+msgid "Setup OpenStreetMap Account"
+msgstr "Nastavit účet na OpenStreetMap"
+
+#: ../data/ui/app-menu.ui.h:2
 msgid "About"
 msgstr "O aplikaci"
 
-#: ../data/ui/app-menu.ui.h:2
+#: ../data/ui/app-menu.ui.h:3
 msgid "Quit"
 msgstr "Ukončit"
 
@@ -180,7 +200,8 @@ msgstr "Zveřejnit na Facebook"
 msgid "Post on Twitter"
 msgstr "Zveřejnit na Twitter"
 
-#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/send-to-dialog.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/export-view-dialog.ui.h:2
+#: ../data/ui/send-to-dialog.ui.h:2
 msgid "_Cancel"
 msgstr "_Zrušit"
 
@@ -225,6 +246,18 @@ msgstr "Co je zde?"
 #: ../data/ui/context-menu.ui.h:2
 msgid "Copy Location"
 msgstr "Kopírovat místo"
+
+#: ../data/ui/context-menu.ui.h:3
+msgid "Export As Image"
+msgstr "Exportovat jako obrázek"
+
+#: ../data/ui/export-view-dialog.ui.h:1
+msgid "Export view"
+msgstr "Export zobrazení"
+
+#: ../data/ui/export-view-dialog.ui.h:3
+msgid "_Export"
+msgstr "_Exportovat"
 
 #: ../data/ui/location-service-notification.ui.h:1
 msgid "Turn on location services to find your location"
@@ -282,6 +315,86 @@ msgstr "Označit jako oblíbené"
 msgid "Check in here"
 msgstr "Oznámit tuto polohu"
 
+#: ../data/ui/osm-account-dialog.ui.h:1
+msgid "OpenStreetMap Account"
+msgstr "Účet na OpenStreetMap"
+
+#: ../data/ui/osm-account-dialog.ui.h:2
+msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"x-large\">Přihlaste se pro úpravy map</span>"
+
+#: ../data/ui/osm-account-dialog.ui.h:3
+msgid ""
+"Help to improve the map, using an\n"
+"OpenStreetMap account."
+msgstr ""
+"Pomozte vylepšit mapy pomocí\n"
+"účtu na OpenStreetMap."
+
+#: ../data/ui/osm-account-dialog.ui.h:5
+msgid "Email"
+msgstr "E-mail"
+
+#: ../data/ui/osm-account-dialog.ui.h:6
+msgid "Password"
+msgstr "Heslo"
+
+#: ../data/ui/osm-account-dialog.ui.h:7
+msgid "Sign In"
+msgstr "Přihlásit se"
+
+#: ../data/ui/osm-account-dialog.ui.h:8
+msgid "Don't have an account?"
+msgstr "Nemáte účet?"
+
+#. The label should contain the link to the OSM reset password page with a translated title
+#: ../data/ui/osm-account-dialog.ui.h:10
+msgid ""
+"Sorry, that didn't work. Please try again, or visit\n"
+"<a href=\"https://www.openstreetmap.org/user/forgot-password"
+"\">OpenStreetMap</a> to reset your password."
+msgstr ""
+"Bohužel, ale nefunguje to. Zkuste to prosím znovu nebo navštivte\n"
+"<a href=\"https://www.openstreetmap.org/user/forgot-password"
+"\">OpenStreetMap</a>, abyste si znovu nastavili heslo."
+
+#: ../data/ui/osm-account-dialog.ui.h:12
+msgid "The verification code didn't match, please try again."
+msgstr "Ověřovací kód nesouhlasí, zkuste to prosím znovu."
+
+#: ../data/ui/osm-account-dialog.ui.h:13
+msgid "Enter verification code shown above"
+msgstr "Zadejte ověřovací kód zobrazený výše"
+
+#: ../data/ui/osm-account-dialog.ui.h:14
+msgid "Verify"
+msgstr "Ověřit"
+
+#: ../data/ui/osm-account-dialog.ui.h:15
+msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
+msgstr "<span weight=\"bold\" size=\"x-large\">Jste přihlášen</span>"
+
+#: ../data/ui/osm-account-dialog.ui.h:16
+msgid "Your OpenStreetMap account is active."
+msgstr "Váš účet na OpenStreetMap je aktivní."
+
+#: ../data/ui/osm-account-dialog.ui.h:17
+msgid "Sign Out"
+msgstr "Odhlásit se"
+
+#: ../data/ui/osm-edit-dialog.ui.h:1
+msgid "Edit Location"
+msgstr "Upravit místo"
+
+#: ../data/ui/osm-edit-dialog.ui.h:2
+msgid "Cancel"
+msgstr "Zrušit"
+
+#: ../data/ui/osm-edit-dialog.ui.h:3 ../src/osmEditDialog.js:154
+msgid "Next"
+msgstr "Další"
+
 #: ../data/ui/search-popup.ui.h:1
 msgid "Press enter to search"
 msgstr "Zmáčknutím Enter se začne hledat"
@@ -317,7 +430,19 @@ msgstr "Přesnost: %s"
 msgid "Failed to find tile structure in directory"
 msgstr "Selhalo vyhledání struktury ve složce"
 
-#: ../src/application.js:87
+#: ../lib/maps-osm.c:56
+msgid "Failed to parse XML document"
+msgstr "Selhalo zpracování dokumentu XML"
+
+#: ../lib/maps-osm.c:252 ../lib/maps-osm.c:405
+msgid "Missing required attributes"
+msgstr "Schází vyžadované atributy"
+
+#: ../lib/maps-osm.c:453
+msgid "Could not find OSM element"
+msgstr "Nelze najít prvek OSM"
+
+#: ../src/application.js:89
 msgid "A path to a local tiles directory structure"
 msgstr "Cesta k místní struktuře složek s dlaždicemi"
 
@@ -364,6 +489,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Napište volitně zprávu k oznámení polohy na místě %s."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
+#: ../src/osmEditDialog.js:189
 msgid "An error has occurred"
 msgstr "Vyskytla se chyba"
 
@@ -386,77 +512,167 @@ msgstr ""
 "Přihlášení vypršelo. Otevřete prosím Účty on-line, přihlaste se tam a tím "
 "účet zpřístupněte."
 
-#: ../src/geoJSONSource.js:102
+#: ../src/exportViewDialog.js:152
+msgid "Filesystem is read only"
+msgstr "Souborový systém je jen ke čtení"
+
+#: ../src/exportViewDialog.js:154
+msgid "You do not have permission to save there"
+msgstr "Nemáte oprávnění ukládat do tohoto umístění"
+
+#: ../src/exportViewDialog.js:156
+msgid "The directory does not exists"
+msgstr "Složka neexistuje"
+
+#: ../src/exportViewDialog.js:158
+msgid "No filename specified"
+msgstr "Není zadán název souboru"
+
+#: ../src/exportViewDialog.js:166
+msgid "Unable to export view"
+msgstr "Nelze exportovat zobrazení"
+
+#: ../src/geoJSONSource.js:99
 msgid "invalid coordinate"
 msgstr "neplatné souřadnice"
 
-#: ../src/geoJSONSource.js:124 ../src/geoJSONSource.js:179
-#: ../src/geoJSONSource.js:194
+#: ../src/geoJSONSource.js:143 ../src/geoJSONSource.js:183
+#: ../src/geoJSONSource.js:198
 msgid "parse error"
 msgstr "chyba zpracování"
 
-#: ../src/geoJSONSource.js:173
+#: ../src/geoJSONSource.js:177
 msgid "unknown geometry"
 msgstr "neznámé geometrické údaje"
 
-#: ../src/geoJSONSource.js:207
+#: ../src/geoJSONSource.js:211
 msgid "failed to load file"
 msgstr "selhalo načtení souboru"
 
-#: ../src/mainWindow.js:345
+#: ../src/mainWindow.js:349
 msgid "Failed to connect to location service"
 msgstr "Selhalo připojení ke geolokační službě"
 
-#: ../src/mainWindow.js:350
+#: ../src/mainWindow.js:354
 msgid "Position not found"
 msgstr "Poloha nebyla nalezena."
 
-#: ../src/mainWindow.js:395
+#: ../src/mainWindow.js:399
 msgid "translator-credits"
 msgstr "Marek Černocký"
 
-#: ../src/mainWindow.js:398
+#: ../src/mainWindow.js:402
 msgid "A map application for GNOME"
 msgstr "Mapová aplikace pro GNOME"
 
-#: ../src/mapView.js:204
+#: ../src/mapView.js:207
 msgid "Failed to parse GeoJSON file"
 msgstr "Selhalo zpracování souboru GeoJSON"
 
-#: ../src/mapView.js:223
+#: ../src/mapView.js:226
 msgid "Failed to open GeoURI"
 msgstr "Selhalo otevření adresy GeoURI"
 
-#: ../src/placeBubble.js:101
+#. setting the status in session.cancel_message still seems
+#. to always give status IO_ERROR
+#: ../src/osmConnection.js:440
+msgid "Incorrect user name or password"
+msgstr "Nesprávné uživatelské jméno nebo heslo"
+
+#: ../src/osmConnection.js:442
+msgid "Success"
+msgstr "Úspěšné"
+
+#: ../src/osmConnection.js:444
+msgid "Bad request"
+msgstr "Chybný požadavek"
+
+#: ../src/osmConnection.js:446
+msgid "Object not found"
+msgstr "Objekt nebyl nalezen"
+
+#: ../src/osmConnection.js:448
+msgid "Conflict, someone else has just modified the object"
+msgstr "Došlo ke střetu, někdo jiný objekt právě upravil"
+
+#: ../src/osmConnection.js:450
+msgid "Object has been deleted"
+msgstr "Objekt byl smazán"
+
+#: ../src/osmConnection.js:452
+msgid "Way or relation refers to non-existing children"
+msgstr "Cesta nebo vztah odkazuje na neexistujícího potomka"
+
+#.
+#. * specification of OSM edit fields
+#. * name: the label for the edit field (translatable)
+#. * tag: the OSM tag key value
+#. * type: the field type (determines editing field type)
+#. * rewriteFunc: a rewrite function taking a string argument
+#. * (only used for TEXT fields)
+#.
+#: ../src/osmEditDialog.js:71
+msgid "Name"
+msgstr "Název"
+
+#: ../src/osmEditDialog.js:72 ../src/placeBubble.js:129
+msgid "Wikipedia"
+msgstr "Wikipedia"
+
+#: ../src/osmEditDialog.js:74
+msgid "Population"
+msgstr "Populace"
+
+#: ../src/osmEditDialog.js:76
+msgid "Wheelchair access"
+msgstr "Bezbariérový přístup"
+
+#: ../src/osmEditDialog.js:140
+msgid "Done"
+msgstr "Hotovo"
+
+#: ../src/osmEditDialog.js:290
+msgid "Yes"
+msgstr "ano"
+
+#: ../src/osmEditDialog.js:291
+msgid "No"
+msgstr "ne"
+
+#: ../src/osmEditDialog.js:292
+msgid "Limited"
+msgstr "částečně"
+
+#: ../src/osmEditDialog.js:293
+msgid "Designated"
+msgstr "výslovně ano"
+
+#: ../src/placeBubble.js:110
 #, javascript-format
 msgid "Postal code: %s"
 msgstr "PSČ: %s"
 
-#: ../src/placeBubble.js:103
+#: ../src/placeBubble.js:112
 #, javascript-format
 msgid "Country code: %s"
 msgstr "Kód země: %s"
 
-#: ../src/placeBubble.js:112
+#: ../src/placeBubble.js:121
 #, javascript-format
 msgid "Population: %s"
 msgstr "Populace: %s"
 
-#: ../src/placeBubble.js:115
+#: ../src/placeBubble.js:124
 #, javascript-format
 msgid "Opening hours: %s"
 msgstr "Otevírací doba: %s"
 
-#: ../src/placeBubble.js:120
-msgid "Wikipedia"
-msgstr "Wikipedia"
-
-#: ../src/placeBubble.js:125
+#: ../src/placeBubble.js:134
 #, javascript-format
 msgid "Wheelchair access: %s"
 msgstr "Bezbariérový přístup: %s"
 
-#: ../src/placeEntry.js:215
+#: ../src/placeEntry.js:213
 msgid "Failed to parse Geo URI"
 msgstr "Selhalo zpracování adresy GeoURI"
 
@@ -505,7 +721,7 @@ msgstr "Požadavek na vyhledání cesty selhal."
 msgid "Start!"
 msgstr "Start!"
 
-#: ../src/sendToDialog.js:169
+#: ../src/sendToDialog.js:173
 msgid "Failed to open URI"
 msgstr "Selhalo otevření adresy URI"
 
