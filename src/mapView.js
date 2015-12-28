@@ -161,6 +161,8 @@ const MapView = new Lang.Class({
         if (this.view.map_source.id === mapType)
             return;
 
+        let overlay_sources = this.view.get_overlay_sources();
+
         if (mapType !== MapType.LOCAL) {
             let source = this._factory.create_cached_source(mapType);
             this.view.map_source = source;
@@ -184,6 +186,10 @@ const MapView = new Lang.Class({
                 Application.notificationManager.showMessage(e.message);
             }
         }
+
+        overlay_sources.forEach((function(overlay) {
+            this.view.add_overlay_source(overlay, 255);
+        }).bind(this));
     },
 
     openGeoJSON: function(file) {
