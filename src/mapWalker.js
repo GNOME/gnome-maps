@@ -57,7 +57,7 @@ const MapWalker = new Lang.Class({
     zoomToFit: function() {
         let zoom;
         if (this._boundingBox !== null && this._boundingBox.is_valid()) {
-            this._view.zoom_level = this._view.max_zoom_level - 1;
+            this._view.zoom_level = this._view.max_zoom_level;
             this._view.ensure_visible(this._boundingBox, false);
         } else {
             switch (this.place.place_type) {
@@ -78,7 +78,7 @@ const MapWalker = new Lang.Class({
                 break;
 
             default:
-                zoom = 16;
+                zoom = this._view.max_zoom_level;
                 break;
             }
             this._view.zoom_level = zoom;
