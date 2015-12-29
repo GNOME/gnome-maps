@@ -65,7 +65,7 @@ const MapWalker = new Lang.Class({
                 zoom = 16;
                 break;
 
-            case Geocode.PlaceType.CITY:
+            case Geocode.PlaceType.TOWN:
                 zoom = 11;
                 break;
 
