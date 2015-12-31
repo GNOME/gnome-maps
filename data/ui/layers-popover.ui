@@ -27,8 +27,6 @@
       <packing>
         <property name="left-attach">0</property>
         <property name="top-attach">0</property>
-        <property name="width">1</property>
-        <property name="height">1</property>
       </packing>
     </child>
     <child>
@@ -51,8 +49,35 @@
       <packing>
         <property name="left-attach">0</property>
         <property name="top-attach">1</property>
-        <property name="width">1</property>
-        <property name="height">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkFrame" id="layers-list-box-frame">
+        <property name="visible">false</property>
+        <property name="shadow-type">in</property>
+        <child>
+          <object class="GtkListBox" id="layers-list-box">
+            <property name="name">layers-list-box</property>
+            <property name="visible">true</property>
+            <property name="can_focus">False</property>
+            <property name="selection-mode">none</property>
+          </object>
+        </child>
+      </object>
+      <packing>
+        <property name="left-attach">0</property>
+        <property name="top-attach">2</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="load-layer-button">
+        <property name="visible">True</property>
+        <property name="can-focus">True</property>
+        <property name="label" translatable="yes">Load Map Layer</property>
+      </object>
+      <packing>
+        <property name="left-attach">0</property>
+        <property name="top-attach">3</property>
       </packing>
     </child>
   </object>

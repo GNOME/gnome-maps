@@ -23,6 +23,8 @@ const Champlain = imports.gi.Champlain;
 const Clutter = imports.gi.Clutter;
 const GObject = imports.gi.GObject;
 const Geocode = imports.gi.GeocodeGlib;
+const gettext = imports.gettext;
+const Gio = imports.gi.Gio;
 const GtkChamplain = imports.gi.GtkChamplain;
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
@@ -30,12 +32,13 @@ const Mainloop = imports.mainloop;
 const Application = imports.application;
 const ContactPlace = imports.contactPlace;
 const Geoclue = imports.geoclue;
-const GeoJSONSource = imports.geoJSONSource;
+const GeoJSONShapeLayer = imports.geoJSONShapeLayer;
 const Location = imports.location;
 const Maps = imports.gi.GnomeMaps;
 const MapWalker = imports.mapWalker;
 const Place = imports.place;
 const PlaceMarker = imports.placeMarker;
+const ShapeLayer = imports.shapeLayer;
 const StoredRoute = imports.storedRoute;
 const TurnPointMarker = imports.turnPointMarker;
 const UserLocationMarker = imports.userLocationMarker;
@@ -86,6 +89,8 @@ const MapView = new Lang.Class({
 
         this._factory = Champlain.MapSourceFactory.dup_default();
         this.setMapType(mapType);
+
+        this.shapeLayerStore = new Gio.ListStore(GObject.TYPE_OBJECT);
 
         this._updateUserLocation();
         Application.geoclue.connect('location-changed',
@@ -140,6 +145,8 @@ const MapView = new Lang.Class({
 
         this._annotationMarkerLayer = new Champlain.MarkerLayer({ selection_mode: mode });
         this.view.add_layer(this._annotationMarkerLayer);
+
+        ShapeLayer.SUPPORTED_TYPES.push(GeoJSONShapeLayer.GeoJSONShapeLayer);
     },
 
     _connectRouteSignals: function() {
@@ -187,33 +194,49 @@ const MapView = new Lang.Class({
             }
         }
 
-        overlay_sources.forEach((function(overlay) {
-            this.view.add_overlay_source(overlay, 255);
+        overlay_sources.forEach((function(source) {
+            this.view.add_overlay_source(source, 255);
         }).bind(this));
     },
 
-    openGeoJSON: function(file) {
-        try {
-            this._annotationMarkerLayer.remove_all();
-            let geoJSONSource = new GeoJSONSource.GeoJSONSource({
-                file: file,
-                mapView: this,
-                markerLayer: this._annotationMarkerLayer
-            });
-            geoJSONSource.parse();
+    openShapeLayers: function(files) {
+        let bbox = new Champlain.BoundingBox();
+        let ret = true;
+        files.forEach((function(file){
+            try {
+                let i = this._findShapeLayerIndex(file);
+                let layer = (i > -1) ? this.shapeLayerStore.get_item(i) : null;
+                if (!layer) {
+                    layer = ShapeLayer.newFromFile(file, this);
+                    if (!layer)
+                        throw new Error(_("File type is not supported"));
+                    layer.load();
+                    this.shapeLayerStore.append(layer);
+                }
+                bbox.compose(layer.bbox);
+            } catch (e) {
+                Utils.debug(e);
+                let msg = _("Failed to open layer");
+                Application.notificationManager.showMessage(msg);
+                ret = false;
+            }
+        }).bind(this));
 
-            if (this._annotationSource)
-                this.view.remove_overlay_source(this._annotationSource);
+        this.gotoBBox(bbox);
+        return ret;
+    },
 
-            this._annotationSource = geoJSONSource;
-            this.view.add_overlay_source(this._annotationSource, 255);
-            if (geoJSONSource.bbox.is_valid())
-                this._gotoBBox(geoJSONSource.bbox);
-        } catch(e) {
-            let msg = _("Failed to parse GeoJSON file");
-            Application.notificationManager.showMessage(msg);
-            Utils.debug("failed to parse geojson file: %s".format(e.message));
-        }
+    removeShapeLayer: function(shapeLayer) {
+        shapeLayer.unload();
+        let i = this._findShapeLayerIndex(shapeLayer.file);
+        this.shapeLayerStore.remove(i);
+    },
+
+    _findShapeLayerIndex: function(file) {
+        for (let i = 0; i < this.shapeLayerStore.get_n_items(); i++)
+            if (this.shapeLayerStore.get_item(i).file.equal(file))
+                return i;
+        return -1;
     },
 
     goToGeoURI: function(uri) {
@@ -291,10 +314,15 @@ const MapView = new Lang.Class({
                                                        bottom: box[1],
                                                        left: box[2],
                                                        right: box[3] });
-        this._gotoBBox(bounding_box, true);
+        this.gotoBBox(bounding_box, true);
     },
 
-    _gotoBBox: function(bbox, linear) {
+    gotoBBox: function(bbox, linear) {
+        if (!bbox.is_valid()) {
+            Utils.debug('Bounding box is invalid');
+            return;
+        }
+
         let [lat, lon] = bbox.get_center();
         let place = new Place.Place({
             location: new Location.Location({ latitude  : lat,
@@ -335,7 +363,7 @@ const MapView = new Lang.Class({
         }).bind(this));
 
         if (places.length > 1)
-            this._gotoBBox(contact.bounding_box);
+            this.gotoBBox(contact.bounding_box);
         else
             new MapWalker.MapWalker(places[0], this).goTo(true);
     },
@@ -390,7 +418,7 @@ const MapView = new Lang.Class({
         route.path.forEach(this._routeLayer.add_node.bind(this._routeLayer));
 
         this._showDestinationTurnpoints();
-        this._gotoBBox(route.bbox);
+        this.gotoBBox(route.bbox);
     },
 
     _showDestinationTurnpoints: function() {

@@ -267,24 +267,18 @@ const Application = new Lang.Class({
         this._mainWindow.present();
     },
 
-    _openInternal: function(file) {
+    _openInternal: function(files) {
         if (!this._mainWindow || !this._mainWindow.mapView.view.realized)
             return;
 
-        let uri = file.get_uri();
+        let uri = files[0].get_uri();
 
         if (GLib.uri_parse_scheme(uri) === 'geo') {
             /* we get an uri that looks like geo:///lat,lon, remove slashes */
             let geoURI = uri.replace(/\//g, '');
             this._mainWindow.mapView.goToGeoURI(geoURI);
-            return;
-        }
-
-        let content_type = Gio.content_type_guess(uri, null)[0];
-        if (content_type === 'application/vnd.geo+json' ||
-            content_type === 'application/json') {
-            this._mainWindow.mapView.openGeoJSON(file);
-            return;
+        } else {
+            this._mainWindow.mapView.openShapeLayers(files);
         }
     },
 
@@ -294,10 +288,10 @@ const Application = new Lang.Class({
 
         let mapView = this._mainWindow.mapView;
         if (mapView.view.realized)
-            this._openInternal(files[0]);
+            this._openInternal(files);
         else
             mapView.view.connect('notify::realized',
-                                 this._openInternal.bind(this, files[0]));
+                                 this._openInternal.bind(this, files));
     },
 
     _onWindowDestroy: function(window) {

@@ -88,7 +88,10 @@ const MainWindow = new Lang.Class({
 
         this._contextMenu = new ContextMenu.ContextMenu({ mapView: this._mapView });
 
-        this._layersButton.popover = new LayersPopover.LayersPopover();
+        this.layersPopover = new LayersPopover.LayersPopover({
+            mapView: this._mapView
+        });
+        this._layersButton.popover = this.layersPopover;
         this._favoritesButton.popover = new FavoritesPopover.FavoritesPopover({ mapView: this._mapView });
         this._overlay.add_overlay(new ZoomControl.ZoomControl(this._mapView));
 
@@ -155,16 +158,11 @@ const MainWindow = new Lang.Class({
         }).bind(this));
 
         this.connect('drag-data-received', (function(widget, ctx, x, y, data, info, time) {
-            let uri = data.get_uris()[0];
-            let content_type = Gio.content_type_guess(uri, null)[0];
-
-            if (content_type === 'application/vnd.geo+json' ||
-                content_type === 'application/json') {
-                this._mapView.openGeoJSON(Gio.file_new_for_uri(uri));
+            let files = data.get_uris().map(Gio.file_new_for_uri);
+            if (this._mapView.openShapeLayers(files))
                 Gtk.drag_finish(ctx, true, false, time);
-            } else {
+            else
                 Gtk.drag_finish(ctx, false, false, time);
-            }
         }).bind(this));
     },
 
