@@ -182,7 +182,7 @@ const Application = new Lang.Class({
         }
 
         if (contactStore.state === Maps.ContactStoreState.LOADED) {
-            this. _addContacts();
+            this._addContacts();
         } else {
             Utils.once(contactStore, 'notify::state', (function() {
                 if (contactStore.state === Maps.ContactStoreState.LOADED)
