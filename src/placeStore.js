@@ -113,7 +113,7 @@ const PlaceStore = new Lang.Class({
             return;
         }
 
-        if (this._numRecentPlaces === this._recentPlaceLimit) {
+        if (this._numRecentPlaces === this._recentPlacesLimit) {
             // Since we sort by added, the oldest recent will be
             // the first one we encounter.
             this._removeIf((function(model, iter) {
