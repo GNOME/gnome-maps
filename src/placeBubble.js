@@ -166,7 +166,7 @@ const PlaceBubble = new Lang.Class({
         /* if the user is not alread signed in, show the account dialog */
         if (!osmEdit.isSignedIn) {
             let response = osmEdit.showAccountDialog(this.get_toplevel(), true);
-            if (!response === OSMAccountDialog.Response.SIGNED_IN)
+            if (response !== OSMAccountDialog.Response.SIGNED_IN)
                 return;
         }
 
