@@ -185,6 +185,7 @@ const MainWindow = new Lang.Class({
                 onActivate: this._onMapTypeActivate.bind(this)
             },
             'goto-user-location': {
+                accels: ['<Primary>L'],
                 onActivate: this._onGotoUserLocationActivate.bind(this)
             },
             'toggle-sidebar': {
