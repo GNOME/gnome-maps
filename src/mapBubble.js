@@ -110,25 +110,25 @@ const MapBubble = new Lang.Class({
 
     _initFavoriteButton: function(button, image) {
         let placeStore = Application.placeStore;
-        let isFavorite = placeStore.exists(this._place,
-                                           PlaceStore.PlaceType.FAVORITE);
         button.visible = true;
-        button.active = isFavorite;
 
-        if (button.active)
+        if (placeStore.exists(this._place,
+                              PlaceStore.PlaceType.FAVORITE)) {
             image.icon_name = 'starred-symbolic';
-        else
+        } else {
             image.icon_name = 'non-starred-symbolic';
+        }
 
-        button.connect('toggled', (function() {
-            if (button.active) {
-                image.icon_name = 'starred-symbolic';
-                placeStore.addPlace(this._place,
-                                    PlaceStore.PlaceType.FAVORITE);
-            } else {
+        button.connect('clicked', (function() {
+            if (placeStore.exists(this._place,
+                                  PlaceStore.PlaceType.FAVORITE)) {
                 image.icon_name = 'non-starred-symbolic';
                 placeStore.removePlace(this._place,
                                        PlaceStore.PlaceType.FAVORITE);
+            } else {
+                image.icon_name = 'starred-symbolic';
+                placeStore.addPlace(this._place,
+                                    PlaceStore.PlaceType.FAVORITE);
             }
         }).bind(this));
     },
