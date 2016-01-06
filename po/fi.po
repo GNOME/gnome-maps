@@ -1,15 +1,15 @@
 # Finnish translation for gnome-maps.
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
-# Jiri Grönroos <jiri.gronroos+l10n@iki.fi>, 2013, 2014, 2015.
+# Jiri Grönroos <jiri.gronroos+l10n@iki.fi>, 2013, 2014, 2015, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-12-20 09:22+0000\n"
-"PO-Revision-Date: 2015-12-20 21:26+0200\n"
+"POT-Creation-Date: 2016-01-06 09:17+0000\n"
+"PO-Revision-Date: 2016-01-06 15:06+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <gnome-fi-laatu@lists.sourceforge.net>\n"
 "Language: fi\n"
@@ -48,7 +48,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:79 ../src/mainWindow.js:401
+#: ../src/application.js:79 ../src/mainWindow.js:402
 msgid "Maps"
 msgstr "Kartat"
 
@@ -170,17 +170,21 @@ msgstr "OpenStreetMap-käyttäjätunnus tai -sähköposti"
 
 #: ../data/org.gnome.Maps.gschema.xml.h:24
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
-msgstr ""
+msgstr "Ilmaisee onko käyttäjä kirjautunut muokatakseen OpenStreetMap-tietoja."
 
 #: ../data/ui/app-menu.ui.h:1
+msgid "_Keyboard Shortcuts"
+msgstr "_Pikanäppäimet"
+
+#: ../data/ui/app-menu.ui.h:2
 msgid "Setup OpenStreetMap Account"
 msgstr "Määritä OpenStreetMap-tili"
 
-#: ../data/ui/app-menu.ui.h:2
+#: ../data/ui/app-menu.ui.h:3
 msgid "About"
 msgstr "Tietoja"
 
-#: ../data/ui/app-menu.ui.h:3
+#: ../data/ui/app-menu.ui.h:4 ../data/ui/help-overlay.ui.h:5
 msgid "Quit"
 msgstr "Lopeta"
 
@@ -254,6 +258,38 @@ msgstr "Vie näkymä"
 msgid "_Export"
 msgstr "_Vie"
 
+#: ../data/ui/help-overlay.ui.h:1
+msgid "General"
+msgstr "Yleiset"
+
+#: ../data/ui/help-overlay.ui.h:2
+msgid "Show help"
+msgstr "Näytä ohje"
+
+#: ../data/ui/help-overlay.ui.h:3
+msgid "Search"
+msgstr ""
+
+#: ../data/ui/help-overlay.ui.h:4 ../data/ui/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr "Näytä/piilota reittisuunnittelu"
+
+#: ../data/ui/help-overlay.ui.h:6
+msgid "Map View"
+msgstr "Karttanäkymä"
+
+#: ../data/ui/help-overlay.ui.h:7
+msgid "Zoom in"
+msgstr ""
+
+#: ../data/ui/help-overlay.ui.h:8
+msgid "Zoom out"
+msgstr ""
+
+#: ../data/ui/help-overlay.ui.h:9 ../data/ui/main-window.ui.h:2
+msgid "Go to current location"
+msgstr "Siirry nykyiseen sijaintiin"
+
 #: ../data/ui/location-service-notification.ui.h:1
 msgid "Turn on location services to find your location"
 msgstr "Ota sijaintipalvelut käyttöön selvittääksesi sijaintisi"
@@ -262,17 +298,9 @@ msgstr "Ota sijaintipalvelut käyttöön selvittääksesi sijaintisi"
 msgid "Location Settings"
 msgstr "Sijaintipalvelut"
 
-#: ../data/ui/main-window.ui.h:2
-msgid "Go to current location"
-msgstr "Siirry nykyiseen sijaintiin"
-
 #: ../data/ui/main-window.ui.h:3
 msgid "Choose map type"
 msgstr "Valitse kartan tyyppi"
-
-#: ../data/ui/main-window.ui.h:4
-msgid "Toggle route planner"
-msgstr "Näytä/piilota reittisuunnittelu"
 
 #: ../data/ui/main-window.ui.h:5
 msgid "Toggle favorites"
@@ -311,7 +339,6 @@ msgid "Check in here"
 msgstr "Kirjaudu tänne"
 
 #: ../data/ui/osm-account-dialog.ui.h:1
-#| msgid "Select an account"
 msgid "OpenStreetMap Account"
 msgstr "OpenStreetMap-tili"
 
@@ -342,7 +369,6 @@ msgid "Sign In"
 msgstr "Kirjaudu sisään"
 
 #: ../data/ui/osm-account-dialog.ui.h:8
-#| msgid "Select an account"
 msgid "Don't have an account?"
 msgstr "Oletko vailla tiliä?"
 
@@ -382,12 +408,10 @@ msgid "Sign Out"
 msgstr "Kirjaudu ulos"
 
 #: ../data/ui/osm-edit-dialog.ui.h:1
-#| msgid "Copy Location"
 msgid "Edit Location"
 msgstr "Muokkaa sijaintia"
 
 #: ../data/ui/osm-edit-dialog.ui.h:2
-#| msgid "_Cancel"
 msgid "Cancel"
 msgstr "Peru"
 
@@ -431,7 +455,6 @@ msgid "Failed to find tile structure in directory"
 msgstr ""
 
 #: ../lib/maps-osm.c:56
-#| msgid "Failed to parse Geo URI"
 msgid "Failed to parse XML document"
 msgstr "XML-asiakirjan jäsentäminen epäonnistui"
 
@@ -441,7 +464,7 @@ msgstr ""
 
 #: ../lib/maps-osm.c:453
 msgid "Could not find OSM element"
-msgstr ""
+msgstr "OSM-elementtiä ei löytynyt"
 
 #: ../src/application.js:89
 msgid "A path to a local tiles directory structure"
@@ -549,28 +572,27 @@ msgstr "tuntematon geometria"
 msgid "failed to load file"
 msgstr "tiedoston lataaminen epäonnistui"
 
-#: ../src/mainWindow.js:349
+#: ../src/mainWindow.js:350
 msgid "Failed to connect to location service"
 msgstr "Yhteys sijaintipalveluun epäonnistui"
 
-#: ../src/mainWindow.js:354
+#: ../src/mainWindow.js:355
 msgid "Position not found"
 msgstr "Sijaintia ei löytynyt"
 
-#: ../src/mainWindow.js:399
+#: ../src/mainWindow.js:400
 msgid "translator-credits"
 msgstr "Jiri Grönroos"
 
-#: ../src/mainWindow.js:402
+#: ../src/mainWindow.js:403
 msgid "A map application for GNOME"
 msgstr "Karttasovellus Gnomelle"
 
-#: ../src/mapView.js:207
+#: ../src/mapView.js:213
 msgid "Failed to parse GeoJSON file"
 msgstr "GeoJSON-tiedoston jäsentäminen epäonnistui"
 
-#: ../src/mapView.js:226
-#| msgid "Failed to parse Geo URI"
+#: ../src/mapView.js:232
 msgid "Failed to open GeoURI"
 msgstr "GeoURI:n avaaminen epäonnistui"
 
@@ -589,7 +611,6 @@ msgid "Bad request"
 msgstr "Virheellinen pyyntö"
 
 #: ../src/osmConnection.js:446
-#| msgid "Position not found"
 msgid "Object not found"
 msgstr "Objektia ei löytynyt"
 
@@ -622,12 +643,10 @@ msgid "Wikipedia"
 msgstr "Wikipedia"
 
 #: ../src/osmEditDialog.js:74
-#| msgid "Population: %s"
 msgid "Population"
 msgstr "Asukasluku"
 
 #: ../src/osmEditDialog.js:76
-#| msgid "Wheelchair access: %s"
 msgid "Wheelchair access"
 msgstr "Pääsy pyörätuolilla"
 
@@ -636,7 +655,6 @@ msgid "Done"
 msgstr "Valmis"
 
 #: ../src/osmEditDialog.js:290
-#| msgid "yes"
 msgid "Yes"
 msgstr "Kyllä"
 
@@ -645,12 +663,10 @@ msgid "No"
 msgstr "Ei"
 
 #: ../src/osmEditDialog.js:292
-#| msgid "limited"
 msgid "Limited"
 msgstr "Rajoitettu"
 
 #: ../src/osmEditDialog.js:293
-#| msgid "designated"
 msgid "Designated"
 msgstr "Suunniteltu"
 
@@ -729,7 +745,6 @@ msgid "Start!"
 msgstr "Aloitus!"
 
 #: ../src/sendToDialog.js:173
-#| msgid "Failed to parse Geo URI"
 msgid "Failed to open URI"
 msgstr "URI:n avaaminen epäonnistui"
 
