@@ -150,6 +150,7 @@ const MainWindow = new Lang.Class({
         this.drag_dest_add_uri_targets();
 
         this.connect('drag-motion', (function(widget, ctx, x, y, time) {
+            Gdk.drag_status(ctx, Gdk.DragAction.COPY, time);
             return true;
         }).bind(this));
 
@@ -160,7 +161,7 @@ const MainWindow = new Lang.Class({
             if (content_type === 'application/vnd.geo+json' ||
                 content_type === 'application/json') {
                 this._mapView.openGeoJSON(Gio.file_new_for_uri(uri));
-                Gtk.drag_finish(ctx, true, true, time);
+                Gtk.drag_finish(ctx, true, false, time);
             } else {
                 Gtk.drag_finish(ctx, false, false, time);
             }
