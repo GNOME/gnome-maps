@@ -88,7 +88,9 @@ const MapWalker = new Lang.Class({
     },
 
     goTo: function(animate, linear) {
-        Utils.debug('Going to ' + this.place.name);
+        Utils.debug('Going to ' + [this.place.name,
+                    this.place.location.latitude,
+                    this.place.location.longitude].join(' '));
         this._mapView.emit('going-to');
 
         if (!animate) {
@@ -117,20 +119,21 @@ const MapWalker = new Lang.Class({
              * location.
              */
             this._view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_CUBIC;
+            this._ensureVisible(fromLocation);
 
             Utils.once(this._view, 'animation-completed', (function() {
+                this._view.goto_animation_mode = Clutter.AnimationMode.EASE_OUT_CUBIC;
+                this._view.go_to(this.place.location.latitude,
+                                 this.place.location.longitude);
+
                 Utils.once(this._view, 'animation-completed::go-to', (function() {
                     this.zoomToFit();
                     this._view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_OUT_CUBIC;
                     this.emit('gone-to');
                 }).bind(this));
 
-                this._view.goto_animation_mode = Clutter.AnimationMode.EASE_OUT_CUBIC;
-                this._view.go_to(this.place.location.latitude,
-                                 this.place.location.longitude);
             }).bind(this));
 
-            this._ensureVisible(fromLocation);
         }
     },
 
