@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps 3.19.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-14 14:50+0100\n"
-"PO-Revision-Date: 2015-11-14 14:52+0100\n"
+"POT-Creation-Date: 2016-01-07 23:01+0100\n"
+"PO-Revision-Date: 2016-01-07 23:08+0100\n"
 "Last-Translator: haarek <haarektrans@gmail.com>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: Norwegian bokmål\n"
@@ -50,7 +50,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:397
+#: ../src/application.js:79 ../src/mainWindow.js:402
 msgid "Maps"
 msgstr "Kart"
 
@@ -63,58 +63,66 @@ msgid "Maps;"
 msgstr "Kart;"
 
 #: ../data/org.gnome.Maps.gschema.xml.h:1
+msgid "last viewed location"
+msgstr "sist viste posisjon"
+
+#: ../data/org.gnome.Maps.gschema.xml.h:2
+msgid "Coordinates of last viewed location."
+msgstr "Koordinater for sist viste posisjon."
+
+#: ../data/org.gnome.Maps.gschema.xml.h:3
 msgid "Window size"
 msgstr "Vindustørrelse"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:2
+#: ../data/org.gnome.Maps.gschema.xml.h:4
 msgid "Window size (width and height)."
 msgstr "Vindustørrelse (bredde og høyde)."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:3
+#: ../data/org.gnome.Maps.gschema.xml.h:5
 msgid "Window position"
 msgstr "Vinduposisjon"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:4
+#: ../data/org.gnome.Maps.gschema.xml.h:6
 msgid "Window position (X and Y)."
 msgstr "Vinduposisjon (x og y)."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:5
+#: ../data/org.gnome.Maps.gschema.xml.h:7
 msgid "Window maximized"
 msgstr "Vindu maksimert"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:6
+#: ../data/org.gnome.Maps.gschema.xml.h:8
 msgid "Window maximization state"
 msgstr "Tilstand for maksimering av vindu"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:7
+#: ../data/org.gnome.Maps.gschema.xml.h:9
 msgid "Maximum number of search results"
 msgstr "Maksimalt antall søkeresultater"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:8
+#: ../data/org.gnome.Maps.gschema.xml.h:10
 msgid "Maximum number of search results from geocode search."
 msgstr "Maksimalt antall søkeresultater fra geokode-søk."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:9
+#: ../data/org.gnome.Maps.gschema.xml.h:11
 msgid "Number of recent places to store"
 msgstr "Antall nylige steder å lagre"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:10
+#: ../data/org.gnome.Maps.gschema.xml.h:12
 msgid "Number of recently visited places to store."
 msgstr "Antall nylig besøkte steder som skal lagres."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:11
+#: ../data/org.gnome.Maps.gschema.xml.h:13
 msgid "Number of recent routes to store"
 msgstr "Antall nylige ruter å lagre"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:12
+#: ../data/org.gnome.Maps.gschema.xml.h:14
 msgid "Number of recently visited routes to store."
 msgstr "Antall nylig besøkte ruter som skal lagres."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:13
+#: ../data/org.gnome.Maps.gschema.xml.h:15
 msgid "Facebook check-in privacy setting"
 msgstr "Personvern-innstilling for Facebook-innsjekk"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:14
+#: ../data/org.gnome.Maps.gschema.xml.h:16
 msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
@@ -123,11 +131,11 @@ msgstr ""
 "gyldige: «EVERYONE» (alle), «FRIENDS_OF_FRIENDS» (venners venner), "
 "«ALL_FRIENDS» (alle venner) og «SELF» (bare meg)."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:15
+#: ../data/org.gnome.Maps.gschema.xml.h:17
 msgid "Foursquare check-in privacy setting"
 msgstr "Personvern-innstilling for Foursquare-innsjekk"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:16
+#: ../data/org.gnome.Maps.gschema.xml.h:18
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
@@ -135,11 +143,11 @@ msgstr ""
 "Sist brukt personvern-innstilling for Foursquare-innsjekk. Følgende verdier "
 "er gyldige: «public», «followers» og «private»."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:17
+#: ../data/org.gnome.Maps.gschema.xml.h:19
 msgid "Foursquare check-in Facebook broadcasting"
 msgstr "Facebook-publisering av Foursquare-innsjekk"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:18
+#: ../data/org.gnome.Maps.gschema.xml.h:20
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
@@ -147,11 +155,11 @@ msgstr ""
 "Bestemmer om Foursquare skal publisere innsjekk som innlegg på Facebook-"
 "kontoen som er koblet med aktuell Foursquare-konto."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:19
+#: ../data/org.gnome.Maps.gschema.xml.h:21
 msgid "Foursquare check-in Twitter broadcasting"
 msgstr "Twitter-publisering av Foursquare-innsjekk"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:20
+#: ../data/org.gnome.Maps.gschema.xml.h:22
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
@@ -159,11 +167,27 @@ msgstr ""
 "Bestemmer om Foursquare skal publisere innsjekk som innlegg på Twitter-"
 "kontoen som er koblet med aktuell Foursquare-konto."
 
+#: ../data/org.gnome.Maps.gschema.xml.h:23
+msgid "OpenStreetMap username or e-mail address"
+msgstr ""
+
+#: ../data/org.gnome.Maps.gschema.xml.h:24
+msgid "Indicates if the user has signed in to edit OpenStreetMap data."
+msgstr ""
+
 #: ../data/ui/app-menu.ui.h:1
+msgid "_Keyboard Shortcuts"
+msgstr "_Tastatursnarveier"
+
+#: ../data/ui/app-menu.ui.h:2
+msgid "Setup OpenStreetMap Account"
+msgstr ""
+
+#: ../data/ui/app-menu.ui.h:3
 msgid "About"
 msgstr "Om"
 
-#: ../data/ui/app-menu.ui.h:2
+#: ../data/ui/app-menu.ui.h:4 ../data/ui/help-overlay.ui.h:5
 msgid "Quit"
 msgstr "Avslutt"
 
@@ -179,7 +203,8 @@ msgstr "Post på Facebook"
 msgid "Post on Twitter"
 msgstr "Post på Twitter"
 
-#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/send-to-dialog.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/export-view-dialog.ui.h:2
+#: ../data/ui/send-to-dialog.ui.h:2
 msgid "_Cancel"
 msgstr "_Avbryt"
 
@@ -224,6 +249,50 @@ msgstr "Hva finnes her?"
 msgid "Copy Location"
 msgstr "Kopier posisjon"
 
+#: ../data/ui/context-menu.ui.h:3
+msgid "Export As Image"
+msgstr "Eksporter som et bilde"
+
+#: ../data/ui/export-view-dialog.ui.h:1
+msgid "Export view"
+msgstr "Eksporter visning"
+
+#: ../data/ui/export-view-dialog.ui.h:3
+msgid "_Export"
+msgstr "_Eksporter"
+
+#: ../data/ui/help-overlay.ui.h:1
+msgid "General"
+msgstr "Generelt"
+
+#: ../data/ui/help-overlay.ui.h:2
+msgid "Show help"
+msgstr "Vis hjelp"
+
+#: ../data/ui/help-overlay.ui.h:3
+msgid "Search"
+msgstr "Søk"
+
+#: ../data/ui/help-overlay.ui.h:4 ../data/ui/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr "Slå av/på ruteplanlegger"
+
+#: ../data/ui/help-overlay.ui.h:6
+msgid "Map View"
+msgstr "Kartvisning"
+
+#: ../data/ui/help-overlay.ui.h:7
+msgid "Zoom in"
+msgstr "Zoom inn"
+
+#: ../data/ui/help-overlay.ui.h:8
+msgid "Zoom out"
+msgstr "Zoom ut"
+
+#: ../data/ui/help-overlay.ui.h:9 ../data/ui/main-window.ui.h:2
+msgid "Go to current location"
+msgstr "Gå til gjeldende posisjon"
+
 #: ../data/ui/location-service-notification.ui.h:1
 msgid "Turn on location services to find your location"
 msgstr "Skru på posisjonstjenester for å se hvor du er"
@@ -232,17 +301,9 @@ msgstr "Skru på posisjonstjenester for å se hvor du er"
 msgid "Location Settings"
 msgstr "Posisjonsinnstillinger"
 
-#: ../data/ui/main-window.ui.h:2
-msgid "Go to current location"
-msgstr "Gå til gjeldende posisjon"
-
 #: ../data/ui/main-window.ui.h:3
 msgid "Choose map type"
 msgstr "Velg karttype"
-
-#: ../data/ui/main-window.ui.h:4
-msgid "Toggle route planner"
-msgstr "Slå av/på ruteplanlegger"
 
 #: ../data/ui/main-window.ui.h:5
 msgid "Toggle favorites"
@@ -280,6 +341,80 @@ msgstr "Merk som favoritt"
 msgid "Check in here"
 msgstr "Sjekk inn her"
 
+#: ../data/ui/osm-account-dialog.ui.h:1
+msgid "OpenStreetMap Account"
+msgstr "Konto for OpenStreetMap"
+
+#: ../data/ui/osm-account-dialog.ui.h:2
+msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
+msgstr ""
+
+#: ../data/ui/osm-account-dialog.ui.h:3
+msgid ""
+"Help to improve the map, using an\n"
+"OpenStreetMap account."
+msgstr ""
+
+#: ../data/ui/osm-account-dialog.ui.h:5
+msgid "Email"
+msgstr "E-post"
+
+#: ../data/ui/osm-account-dialog.ui.h:6
+msgid "Password"
+msgstr "Passord"
+
+#: ../data/ui/osm-account-dialog.ui.h:7
+msgid "Sign In"
+msgstr "Logg inn"
+
+#: ../data/ui/osm-account-dialog.ui.h:8
+msgid "Don't have an account?"
+msgstr "Har du ikke en konto?"
+
+#. The label should contain the link to the OSM reset password page with a translated title
+#: ../data/ui/osm-account-dialog.ui.h:10
+msgid ""
+"Sorry, that didn't work. Please try again, or visit\n"
+"<a href=\"https://www.openstreetmap.org/user/forgot-password"
+"\">OpenStreetMap</a> to reset your password."
+msgstr ""
+
+#: ../data/ui/osm-account-dialog.ui.h:12
+msgid "The verification code didn't match, please try again."
+msgstr ""
+
+#: ../data/ui/osm-account-dialog.ui.h:13
+msgid "Enter verification code shown above"
+msgstr ""
+
+#: ../data/ui/osm-account-dialog.ui.h:14
+msgid "Verify"
+msgstr "Verifiser"
+
+#: ../data/ui/osm-account-dialog.ui.h:15
+msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
+msgstr ""
+
+#: ../data/ui/osm-account-dialog.ui.h:16
+msgid "Your OpenStreetMap account is active."
+msgstr ""
+
+#: ../data/ui/osm-account-dialog.ui.h:17
+msgid "Sign Out"
+msgstr "Logg ut"
+
+#: ../data/ui/osm-edit-dialog.ui.h:1
+msgid "Edit Location"
+msgstr "Rediger posisjon"
+
+#: ../data/ui/osm-edit-dialog.ui.h:2
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: ../data/ui/osm-edit-dialog.ui.h:3 ../src/osmEditDialog.js:154
+msgid "Next"
+msgstr "Neste"
+
 #: ../data/ui/search-popup.ui.h:1
 msgid "Press enter to search"
 msgstr "Trykk linjeskift for å søke"
@@ -315,7 +450,20 @@ msgstr "Nøyaktighet: %s"
 msgid "Failed to find tile structure in directory"
 msgstr "Klarte ikke å finne flisstruktur i katalogen"
 
-#: ../src/application.js:87
+#: ../lib/maps-osm.c:56
+#, fuzzy
+msgid "Failed to parse XML document"
+msgstr "Klarte ikke å tolke Geo-URI"
+
+#: ../lib/maps-osm.c:252 ../lib/maps-osm.c:405
+msgid "Missing required attributes"
+msgstr ""
+
+#: ../lib/maps-osm.c:453
+msgid "Could not find OSM element"
+msgstr ""
+
+#: ../src/application.js:89
 msgid "A path to a local tiles directory structure"
 msgstr "En sti til en lokal katalogstruktur med fliser"
 
@@ -362,6 +510,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Skriv en valgfri melding for å sjekke inn ved %s."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
+#: ../src/osmEditDialog.js:189
 msgid "An error has occurred"
 msgstr "Det har oppstått en feil"
 
@@ -373,7 +522,7 @@ msgstr "Fant ikke «%s» i sosial tjeneste"
 
 #: ../src/checkIn.js:137
 msgid "Cannot find a suitable place to check-in in this location"
-msgstr "Fant ingen passende steder å sjekke inn på denne plasseringen"
+msgstr "Fant ingen passende steder å sjekke inn på denne posisjonen"
 
 #: ../src/checkIn.js:141
 msgid ""
@@ -383,79 +532,169 @@ msgstr ""
 "Akkreditiver er utgått. Åpne Nettkontoer for å logge inn og bruke denne "
 "kontoen"
 
-#: ../src/geoJSONSource.js:102
+#: ../src/exportViewDialog.js:152
+msgid "Filesystem is read only"
+msgstr "Filsystemet er skrivebeskyttet"
+
+#: ../src/exportViewDialog.js:154
+msgid "You do not have permission to save there"
+msgstr ""
+
+#: ../src/exportViewDialog.js:156
+msgid "The directory does not exists"
+msgstr ""
+
+#: ../src/exportViewDialog.js:158
+msgid "No filename specified"
+msgstr ""
+
+#: ../src/exportViewDialog.js:166
+msgid "Unable to export view"
+msgstr ""
+
+#: ../src/geoJSONSource.js:99
 msgid "invalid coordinate"
 msgstr "ugyldig koordinat"
 
-#: ../src/geoJSONSource.js:124 ../src/geoJSONSource.js:179
-#: ../src/geoJSONSource.js:194
+#: ../src/geoJSONSource.js:143 ../src/geoJSONSource.js:183
+#: ../src/geoJSONSource.js:198
 msgid "parse error"
 msgstr "lesefeil"
 
-#: ../src/geoJSONSource.js:173
+#: ../src/geoJSONSource.js:177
 msgid "unknown geometry"
 msgstr "ukjent geometri"
 
-#: ../src/geoJSONSource.js:207
+#: ../src/geoJSONSource.js:211
 msgid "failed to load file"
 msgstr "klarte ikke å laste fil"
 
-#: ../src/mainWindow.js:345
+#: ../src/mainWindow.js:350
 msgid "Failed to connect to location service"
 msgstr "Klarte ikke å koble til posisjonstjeneste"
 
-#: ../src/mainWindow.js:350
+#: ../src/mainWindow.js:355
 msgid "Position not found"
 msgstr "Fant ikke posisjonen"
 
-#: ../src/mainWindow.js:395
+#: ../src/mainWindow.js:400
 msgid "translator-credits"
 msgstr ""
 "haarek <haarektrans@gmail.com>, Kjartan Maraas <kmaraas@gnome.org>, Åka "
 "Sikrom <a4NOSPAMPLEASETHANKYOU@hush.com>"
 
-#: ../src/mainWindow.js:398
+#: ../src/mainWindow.js:403
 msgid "A map application for GNOME"
 msgstr "Et kartprogram for GNOME"
 
-#: ../src/mapView.js:204
+#: ../src/mapView.js:213
 msgid "Failed to parse GeoJSON file"
 msgstr "Klarte ikke å tolke GeoJSON-fil"
 
-#: ../src/mapView.js:223
+#: ../src/mapView.js:232
 msgid "Failed to open GeoURI"
 msgstr "Klarte ikke å åpne GeoURI"
 
-#: ../src/placeBubble.js:101
+#. setting the status in session.cancel_message still seems
+#. to always give status IO_ERROR
+#: ../src/osmConnection.js:440
+msgid "Incorrect user name or password"
+msgstr "Feil brukernavn eller passord"
+
+#: ../src/osmConnection.js:442
+msgid "Success"
+msgstr "Suksess"
+
+#: ../src/osmConnection.js:444
+msgid "Bad request"
+msgstr "Ugyldig forespørsel"
+
+#: ../src/osmConnection.js:446
+msgid "Object not found"
+msgstr "Fant ikke objektet"
+
+#: ../src/osmConnection.js:448
+msgid "Conflict, someone else has just modified the object"
+msgstr ""
+
+#: ../src/osmConnection.js:450
+msgid "Object has been deleted"
+msgstr "Objektet er slettet"
+
+#: ../src/osmConnection.js:452
+msgid "Way or relation refers to non-existing children"
+msgstr ""
+
+#.
+#. * specification of OSM edit fields
+#. * name: the label for the edit field (translatable)
+#. * tag: the OSM tag key value
+#. * type: the field type (determines editing field type)
+#. * rewriteFunc: a rewrite function taking a string argument
+#. * (only used for TEXT fields)
+#.
+#: ../src/osmEditDialog.js:71
+msgid "Name"
+msgstr "Navn"
+
+#: ../src/osmEditDialog.js:72 ../src/placeBubble.js:129
+msgid "Wikipedia"
+msgstr "Wikipedia"
+
+#: ../src/osmEditDialog.js:74
+msgid "Population"
+msgstr "Folketall"
+
+#: ../src/osmEditDialog.js:76
+msgid "Wheelchair access"
+msgstr "Rullestolvennlig"
+
+#: ../src/osmEditDialog.js:140
+msgid "Done"
+msgstr "Ferdig"
+
+#: ../src/osmEditDialog.js:290
+msgid "Yes"
+msgstr "Ja"
+
+#: ../src/osmEditDialog.js:291
+msgid "No"
+msgstr "Nei"
+
+#: ../src/osmEditDialog.js:292
+msgid "Limited"
+msgstr "Begrenset"
+
+#: ../src/osmEditDialog.js:293
+msgid "Designated"
+msgstr "Spesialtilpasset"
+
+#: ../src/placeBubble.js:110
 #, javascript-format
 msgid "Postal code: %s"
 msgstr "Postnummer: %s"
 
-#: ../src/placeBubble.js:103
+#: ../src/placeBubble.js:112
 #, javascript-format
 msgid "Country code: %s"
 msgstr "Landskode: %s"
 
-#: ../src/placeBubble.js:112
+#: ../src/placeBubble.js:121
 #, javascript-format
 msgid "Population: %s"
 msgstr "Folketall: %s"
 
-#: ../src/placeBubble.js:115
+#: ../src/placeBubble.js:124
 #, javascript-format
 msgid "Opening hours: %s"
 msgstr "Åpningstider: %s"
 
-#: ../src/placeBubble.js:120
-msgid "Wikipedia"
-msgstr "Wikipedia"
-
-#: ../src/placeBubble.js:125
+#: ../src/placeBubble.js:134
 #, javascript-format
 msgid "Wheelchair access: %s"
 msgstr "Rullestol-vennlig: %s"
 
-#: ../src/placeEntry.js:215
+#: ../src/placeEntry.js:213
 msgid "Failed to parse Geo URI"
 msgstr "Klarte ikke å tolke Geo-URI"
 
@@ -473,7 +712,7 @@ msgstr "ja"
 #.
 #: ../src/place.js:144
 msgid "limited"
-msgstr "begrenset tilgang"
+msgstr "begrenset"
 
 #. Translators:
 #. * This means wheelchairs have no unrestricted access
@@ -504,7 +743,7 @@ msgstr "Forespørsel om rute feilet."
 msgid "Start!"
 msgstr "Start!"
 
-#: ../src/sendToDialog.js:169
+#: ../src/sendToDialog.js:173
 msgid "Failed to open URI"
 msgstr "Klarte ikke å åpne URI"
 
