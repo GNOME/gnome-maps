@@ -55,7 +55,7 @@ const TurnPointMarker = new Lang.Class({
             this.connect('drag-finish', (function() {
                 this._onMarkerDrag();
             }).bind(this));
-            actor = Utils.CreateActorFromIconName(this._turnPoint.iconName, 0);
+            actor = this._actorFromIconName(this._turnPoint.iconName, 0);
         } else {
             // A GNOMEish blue color
             let color = new Gdk.RGBA({ red: 33   / 255,

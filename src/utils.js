@@ -20,8 +20,6 @@
  *         Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
-const Clutter = imports.gi.Clutter;
-const Cogl = imports.gi.Cogl;
 const GLib = imports.gi.GLib;
 const Gdk = imports.gi.Gdk;
 const GdkPixbuf = imports.gi.GdkPixbuf;
@@ -162,35 +160,6 @@ function activateAction(appId, action, parameter, timestamp) {
                                   debug('ActivateApplication: ' + e);
                               }
                           });
-}
-
-function CreateActorFromIconName(name, size, color) {
-    try {
-        let theme = Gtk.IconTheme.get_default();
-        let pixbuf;
-
-        if (color) {
-            let info = theme.lookup_icon(name, size, 0);
-            pixbuf = info.load_symbolic(color, null, null, null, null, null)[0];
-        } else
-            pixbuf = theme.load_icon(name, size, 0);
-
-        let image = new Clutter.Image();
-        image.set_data(pixbuf.get_pixels(),
-                       Cogl.PixelFormat.RGBA_8888,
-                       pixbuf.get_width(),
-                       pixbuf.get_height(),
-                       pixbuf.get_rowstride());
-
-        let actor = new Clutter.Actor();
-        actor.set_content(image);
-        actor.set_size(pixbuf.get_width(), pixbuf.get_height());
-
-        return actor;
-    } catch(e) {
-        log("Failed to load image: " + e.message);
-        return null;
-    }
 }
 
 function dashedToCamelCase(name) {

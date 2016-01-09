@@ -23,7 +23,6 @@ const Lang = imports.lang;
 
 const MapMarker = imports.mapMarker;
 const PlaceBubble = imports.placeBubble;
-const Utils = imports.utils;
 
 const PlaceMarker = new Lang.Class({
     Name: 'PlaceMarker',
@@ -32,7 +31,7 @@ const PlaceMarker = new Lang.Class({
     _init: function(params) {
         this.parent(params);
 
-        this.add_actor(Utils.CreateActorFromIconName('mark-location', 32));
+        this.add_actor(this._actorFromIconName('mark-location', 32));
     },
 
     get anchor() {

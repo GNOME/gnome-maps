@@ -19,7 +19,9 @@
  * Author: Damián Nohales <damiannohales@gmail.com>
  */
 
+const Cairo = imports.cairo;
 const Champlain = imports.gi.Champlain;
+const Clutter = imports.gi.Clutter;
 const Gdk = imports.gi.Gdk;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
@@ -32,6 +34,7 @@ const Utils = imports.utils;
 const MapMarker = new Lang.Class({
     Name: 'MapMarker',
     Extends: Champlain.Marker,
+    Implements: [Champlain.Exportable],
     Abstract: true,
     Signals: {
         'gone-to': { }
@@ -65,6 +68,61 @@ const MapMarker = new Lang.Class({
         this.bind_property('longitude',
                            this.place.location, 'longitude',
                            GObject.BindingFlags.DEFAULT);
+    },
+
+    get surface() {
+        return this._surface;
+    },
+
+    set surface(v) {
+        this._surface = v;
+    },
+
+    vfunc_get_surface: function() {
+        return this._surface;
+    },
+
+    vfunc_set_surface: function(surface) {
+        this._surface = surface;
+    },
+
+    _actorFromIconName: function(name, size, color) {
+        try {
+            let theme = Gtk.IconTheme.get_default();
+            let pixbuf;
+
+            if (color) {
+                let info = theme.lookup_icon(name, size, 0);
+                pixbuf = info.load_symbolic(color, null, null, null,
+                                            null, null)[0];
+            } else {
+                pixbuf = theme.load_icon(name, size, 0);
+            }
+
+            let canvas = new Clutter.Canvas({ width: pixbuf.get_width(),
+                                              height: pixbuf.get_height() });
+
+            canvas.connect('draw', (function(canvas, cr) {
+                cr.setOperator(Cairo.Operator.CLEAR);
+                cr.paint();
+                cr.setOperator(Cairo.Operator.OVER);
+
+                Gdk.cairo_set_source_pixbuf(cr, pixbuf, 0, 0);
+                cr.paint();
+
+                this._surface = cr.getTarget();
+            }).bind(this));
+
+            let actor = new Clutter.Actor();
+            actor.set_content(canvas);
+            actor.set_size(pixbuf.get_width(), pixbuf.get_height());
+            canvas.invalidate();
+
+            return actor;
+        } catch (e) {
+            Utils.debug('Failed to load image: %s'.format(e.message));
+            return null;
+        }
     },
 
     _onButtonPress: function(marker, event) {
