@@ -41,7 +41,7 @@ let debugInit = false;
 let debugEnabled = false;
 let measurementSystem = null;
 
-function debug(str) {
+function debug(msg) {
     if (!debugInit) {
         let env = GLib.getenv('MAPS_DEBUG');
         if (env)
@@ -50,8 +50,11 @@ function debug(str) {
         debugInit = true;
     }
 
-    if (debugEnabled)
-        log('DEBUG: ' + str);
+    if (debugEnabled) {
+        log('DEBUG: ' + msg);
+        if (msg instanceof Error)
+            log(msg.stack);
+    }
 }
 
 // Connect to a signal on an object and disconnect on its first emission.
