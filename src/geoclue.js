@@ -24,7 +24,6 @@ const GClue = imports.gi.Geoclue;
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
-const Application = imports.application;
 const Place = imports.place;
 const Location = imports.location;
 const Settings = imports.settings;

@@ -210,7 +210,8 @@ const Sidebar = new Lang.Class({
                 let storedRoute = new StoredRoute.StoredRoute({
                     transportation: query.transportation,
                     route: route,
-                    places: places
+                    places: places,
+                    geoclue: Application.geoclue
                 });
 
                 if (!storedRoute.containsNull) {

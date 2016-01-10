@@ -24,7 +24,6 @@ const Geocode = imports.gi.GeocodeGlib;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 
-const Application = imports.application;
 const ContactPlace = imports.contactPlace;
 const Place = imports.place;
 const StoredRoute = imports.storedRoute;
@@ -55,9 +54,13 @@ const PlaceStore = new Lang.Class({
     Name: 'PlaceStore',
     Extends: Gtk.ListStore,
 
-    _init: function() {
-        this._recentPlacesLimit = Application.settings.get('recent-places-limit');
-        this._recentRoutesLimit = Application.settings.get('recent-routes-limit');
+    _init: function(params) {
+        this._recentPlacesLimit = params.recentPlacesLimit;
+        delete params.recentPlacesLimit;
+
+        this._recentRoutesLimit = params.recentRoutesLimit;
+        delete params.recentRoutesLimit;
+
         this._numRecentPlaces = 0;
         this._numRecentRoutes = 0;
         this.filename = GLib.build_filenamev([GLib.get_user_data_dir(),
@@ -163,7 +166,6 @@ const PlaceStore = new Lang.Class({
         let buffer = Utils.readFile(this.filename);
         if (buffer === null)
             return;
-
         try {
             let jsonArray = JSON.parse(buffer);
             jsonArray.forEach((function({ place, type, added }) {
@@ -236,7 +238,6 @@ const PlaceStore = new Lang.Class({
 
             if (!place || !place.store)
                 return;
-
             jsonArray.push({
                 place: place.toJSON(),
                 type: type,

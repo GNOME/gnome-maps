@@ -24,7 +24,6 @@ const Champlain = imports.gi.Champlain;
 const Gio = imports.gi.Gio;
 const Lang = imports.lang;
 
-const Application = imports.application;
 const Place = imports.place;
 const Route = imports.route;
 const RouteQuery = imports.routeQuery;
@@ -51,10 +50,18 @@ const StoredRoute = new Lang.Class({
         delete params.places;
         params.name = places[0].name + ' → ' + places[places.length -1].name;
 
+        let geoclue = params.geoclue;
+        delete params.geoclue;
+
         this.places = [];
         this._containsCurrentLocation = false;
+
+        let currentLocation = null;
+        if (geoclue)
+            currentLocation = geoclue.place;
+
         places.forEach((function(place) {
-            if (place === Application.geoclue.place)
+            if (currentLocation && place === currentLocation)
                 this._containsCurrentLocation = true;
 
             this.places.push(new Place.Place({ place: place }));

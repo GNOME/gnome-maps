@@ -170,7 +170,10 @@ const Application = new Lang.Class({
     },
 
     _initPlaceStore: function() {
-        placeStore = new PlaceStore.PlaceStore();
+        placeStore = new PlaceStore.PlaceStore({
+            recentPlacesLimit: settings.get('recent-places-limit'),
+            recentRoutesLimit: settings.get('recent-routes-limit')
+        });
         try {
             placeStore.load();
         } catch (e) {
