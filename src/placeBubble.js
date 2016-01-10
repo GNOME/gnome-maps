@@ -87,7 +87,10 @@ const PlaceBubble = new Lang.Class({
         }
         this.content.add(this._stack);
 
-        this._initEditButton(this._editButton);
+        if (this.place instanceof ContactPlace.ContactPlace)
+            this._editButton.visible = false;
+        else
+            this._initEditButton(this._editButton);
     },
 
     _formatWikiLink: function(wiki) {
