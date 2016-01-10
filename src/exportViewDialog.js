@@ -41,7 +41,8 @@ const ExportViewDialog = new Lang.Class({
                         'cancelButton',
                         'filenameEntry',
                         'fileChooserButton',
-                        'previewArea' ],
+                        'previewArea',
+                        'layersCheckButton' ],
 
     _init: function(params) {
         this._surface = params.surface;
@@ -66,6 +67,9 @@ const ExportViewDialog = new Lang.Class({
                                     this._onFileNameChanged.bind(this));
         this._fileChooserButton.connect('file-set',
                                         this._onFolderChanged.bind(this));
+
+        this._layersCheckButton.connect('toggled',
+                                        this._includeLayersChanged.bind(this));
 
 
         this._folder = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_PICTURES);
@@ -98,7 +102,7 @@ const ExportViewDialog = new Lang.Class({
         cr.paint();
         cr.setOperator(Cairo.Operator.OVER);
 
-        cr.scale(this._scaleFactor, this._scaleFactor)
+        cr.scale(this._scaleFactor, this._scaleFactor);
         cr.setSourceSurface(this._surface, 0, 0);
         cr.paint();
     },
@@ -170,5 +174,12 @@ const ExportViewDialog = new Lang.Class({
             dialog.run();
             dialog.destroy();
         }
+    },
+
+    _includeLayersChanged: function() {
+        let includeLayers = this._layersCheckButton.get_active();
+
+        this._surface = this._mapView.view.to_surface(includeLayers);
+        this._previewArea.queue_draw();
     }
 });
