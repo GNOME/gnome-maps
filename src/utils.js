@@ -334,8 +334,7 @@ function _get_soup_session() {
 
 function _load_themed_icon(icon, size, loadCompleteCallback) {
     let theme = Gtk.IconTheme.get_default();
-    let flags = Gtk.IconLookupFlags.GENERIC_FALLBACK;
-    let info = theme.lookup_by_gicon(icon, size, flags);
+    let info = theme.lookup_by_gicon(icon, size, 0);
 
     try {
         let pixbuf = info.load_icon();
