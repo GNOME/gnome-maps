@@ -34,6 +34,7 @@ const TurnPointType = {
     SHARP_RIGHT:   6,
     END:           7,
     VIA:           8,
+    ROUNDABOUT:    9,
 
     // This one is not in GraphHopper, so choose
     // a reasonably unlikely number for this
@@ -79,12 +80,12 @@ Utils.addSignalMethods(Route.prototype);
 const TurnPoint = new Lang.Class({
     Name: 'TurnPoint',
 
-    _init: function({ coordinate, type, distance, instruction }) {
+    _init: function({ coordinate, type, distance, instruction, turnAngle }) {
         this.coordinate = coordinate;
         this._type = type;
         this.distance = distance;
         this.instruction = instruction;
-        this.iconName = this._getIconName();
+        this.iconName = this._getIconName(turnAngle);
     },
 
     get type() {
@@ -97,7 +98,7 @@ const TurnPoint = new Lang.Class({
             || this._type === TurnPointType.END;
     },
 
-    _getIconName: function() {
+    _getIconName: function(turnAngle) {
         switch(this._type) {
         case TurnPointType.SHARP_LEFT:   return 'maps-direction-sharpleft-symbolic';
         case TurnPointType.LEFT:         return 'maps-direction-left-symbolic';
@@ -109,7 +110,33 @@ const TurnPoint = new Lang.Class({
         case TurnPointType.START:        return 'maps-point-start-symbolic';
         case TurnPointType.VIA:          return 'maps-point-end-symbolic';
         case TurnPointType.END:          return 'maps-point-end-symbolic';
+        case TurnPointType.ROUNDABOUT:   return this._getRoundaboutIconName(turnAngle);
         default:                         return '';
         }
+    },
+
+    _getRoundaboutIconName: function(turnAngle) {
+        /*
+         * To map turnAngle with closest roundabout
+         * turning angle symbol available. The Algorithm
+         * calculates the minimum of absolute difference
+         * between turnAngle and the angle of which map
+         * has turning symbols.
+         */
+        let minDiff = 2 * Math.PI;
+        let angle = 0;
+        if (turnAngle === null)
+            return 'maps-direction-roundabout-symbolic';
+
+        if (turnAngle < 0)
+            turnAngle += 2 * Math.PI;
+
+        for (let x = 0; x < 360; x += 45) {
+            if (Math.abs(turnAngle - (x / 180) * Math.PI) < minDiff) {
+                minDiff = Math.abs(turnAngle - (x / 180) * Math.PI);
+                angle = x;
+            }
+        }
+        return 'maps-direction-roundabout-' + angle + '-symbolic';
     }
 });

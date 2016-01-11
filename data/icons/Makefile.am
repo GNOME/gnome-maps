@@ -25,6 +25,15 @@ private_icons =								\
 	hicolor_apps_32x32_maps-direction-continue-symbolic.svg		\
 	hicolor_apps_32x32_maps-direction-slightright-symbolic.svg	\
 	hicolor_apps_32x32_maps-direction-right-symbolic.svg		\
+	hicolor_apps_32x32_maps-direction-roundabout-symbolic.svg	\
+	hicolor_apps_32x32_maps-direction-roundabout-0-symbolic.svg	\
+	hicolor_apps_32x32_maps-direction-roundabout-45-symbolic.svg    \
+	hicolor_apps_32x32_maps-direction-roundabout-90-symbolic.svg    \
+	hicolor_apps_32x32_maps-direction-roundabout-135-symbolic.svg   \
+	hicolor_apps_32x32_maps-direction-roundabout-180-symbolic.svg   \
+	hicolor_apps_32x32_maps-direction-roundabout-225-symbolic.svg   \
+	hicolor_apps_32x32_maps-direction-roundabout-270-symbolic.svg   \
+	hicolor_apps_32x32_maps-direction-roundabout-315-symbolic.svg	\
 	hicolor_apps_32x32_maps-direction-sharpright-symbolic.svg	\
 	hicolor_apps_16x16_layers-button-symbolic.svg			\
 	hicolor_apps_16x16_route-button-symbolic.svg			\

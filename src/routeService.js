@@ -166,24 +166,26 @@ const GraphHopper = new Lang.Class({
                                                type:        Route.TurnPointType.START,
                                                distance:    0,
                                                instruction: _("Start!"),
-                                               time:        0
+                                               time:        0,
+                                               turnAngle:   0
                                              });
         let rest = instructions.map(this._createTurnPoint.bind(this, path));
         return [startPoint].concat(rest);
     },
 
-    _createTurnPoint: function(path, { text, distance, time, interval, sign }) {
+    _createTurnPoint: function(path, { text, distance, time, interval, sign, turn_angle }) {
         return new Route.TurnPoint({ coordinate:  path[interval[0]],
                                      type:        this._createTurnPointType(sign),
                                      distance:    distance,
                                      instruction: text,
-                                     time:        time });
+                                     time:        time,
+                                     turnAngle:   turn_angle});
     },
 
     _createTurnPointType: function(sign) {
         let type = sign + 3;
         let min  = Route.TurnPointType.SHARP_LEFT;
-        let max  = Route.TurnPointType.VIA;
+        let max  = Route.TurnPointType.ROUNDABOUT;
         if (min <= type && type <= max)
             return type;
         else
