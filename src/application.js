@@ -251,6 +251,11 @@ const Application = new Lang.Class({
                                                        overlay: overlay,
                                                        opening: this._opening });
         this._mainWindow.connect('destroy', this._onWindowDestroy.bind(this));
+        if (GLib.getenv('MAPS_DEBUG') === 'focus') {
+            this._mainWindow.connect('set-focus', function(window, widget) {
+                log('* focus widget: %s'.format(widget));
+            });
+        }
     },
 
     vfunc_dbus_register: function(connection, path) {
