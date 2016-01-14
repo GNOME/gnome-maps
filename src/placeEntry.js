@@ -34,9 +34,6 @@ const PlaceStore = imports.placeStore;
 const SearchPopup = imports.searchPopup;
 const Utils = imports.utils;
 
-// Matches coordinates string with the format "<lat>, <long>"
-const COORDINATES_REGEX = /^\s*(\-?\d+(?:\.\d+)?)\s*,\s*(\-?\d+(?:\.\d+)?)\s*$/;
-
 const PlaceEntry = new Lang.Class({
     Name: 'PlaceEntry',
     Extends: Gtk.SearchEntry,
@@ -177,26 +174,6 @@ const PlaceEntry = new Lang.Class({
             return false;
     },
 
-    _validateCoordinates: function(lat, lon) {
-        return lat <= 90 && lat >= -90 && lon <= 180 && lon >= -180;
-    },
-
-    _parseCoordinates: function(text) {
-        let match = text.match(COORDINATES_REGEX);
-
-        if (match) {
-            let latitude = parseFloat(match[1]);
-            let longitude = parseFloat(match[2]);
-
-            if (this._validateCoordinates(latitude, longitude)) {
-                return new Location.Location({ latitude: latitude,
-                                               longitude: longitude });
-            } else
-                return null;
-        } else
-            return null;
-    },
-
     _parse: function() {
         if (this.text.length === 0) {
             this.place = null;
@@ -217,7 +194,7 @@ const PlaceEntry = new Lang.Class({
             return true;
         }
 
-        let parsedLocation = this._parseCoordinates(this.text);
+        let parsedLocation = Place.Place.parseCoordinates(this.text);
         if (parsedLocation) {
             this.place = new Place.Place({ location: parsedLocation });
             return true;

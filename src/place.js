@@ -25,6 +25,9 @@ const Lang = imports.lang;
 const Location = imports.location;
 const Translations = imports.translations;
 
+// Matches coordinates string with the format "<lat>, <long>"
+const COORDINATES_REGEX = /^\s*(\-?\d+(?:\.\d+)?)\s*,\s*(\-?\d+(?:\.\d+)?)\s*$/;
+
 const Place = new Lang.Class({
     Name: 'Place',
     Extends: Geocode.Place,
@@ -246,4 +249,24 @@ Place.fromJSON = function(obj) {
         }
     }
     return new Place(props);
+};
+
+Place.validateCoordinates = function(lat, lon) {
+    return lat <= 90 && lat >= -90 && lon <= 180 && lon >= -180;
+}
+
+Place.parseCoordinates = function(text) {
+    let match = text.match(COORDINATES_REGEX);
+
+    if (match) {
+        let latitude = parseFloat(match[1]);
+        let longitude = parseFloat(match[2]);
+
+        if (Place.validateCoordinates(latitude, longitude)) {
+            return new Location.Location({ latitude: latitude,
+                                           longitude: longitude });
+        } else
+            return null;
+    } else
+        return null;
 };
