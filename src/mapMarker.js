@@ -39,6 +39,10 @@ const MapMarker = new Lang.Class({
     Signals: {
         'gone-to': { }
     },
+    Properties: {
+        'surface': GObject.ParamSpec.override('surface',
+                                              Champlain.Exportable)
+    },
 
     _init: function(params) {
         this._place = params.place;
