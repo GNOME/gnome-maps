@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-12-15 09:22+0000\n"
-"PO-Revision-Date: 2015-12-15 15:29+0100\n"
+"POT-Creation-Date: 2016-01-15 21:28+0000\n"
+"PO-Revision-Date: 2016-01-16 09:41+0100\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
 "Language: sk\n"
@@ -51,7 +51,7 @@ msgstr ""
 # desktop entry name
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:79 ../src/mainWindow.js:401
+#: ../src/application.js:79 ../src/mainWindow.js:403
 msgid "Maps"
 msgstr "Mapy"
 
@@ -190,14 +190,18 @@ msgstr ""
 "Indikuje, či sa používateľ prihlásil na úpravu údajov služby OpenStreetMap."
 
 #: ../data/ui/app-menu.ui.h:1
+msgid "_Keyboard Shortcuts"
+msgstr "_Klávesové skratky"
+
+#: ../data/ui/app-menu.ui.h:2
 msgid "Setup OpenStreetMap Account"
 msgstr "Nastaviť účet služby OpenStreetMap"
 
-#: ../data/ui/app-menu.ui.h:2
+#: ../data/ui/app-menu.ui.h:3
 msgid "About"
 msgstr "O programe"
 
-#: ../data/ui/app-menu.ui.h:3
+#: ../data/ui/app-menu.ui.h:4 ../data/ui/help-overlay.ui.h:5
 msgid "Quit"
 msgstr "Ukončiť"
 
@@ -273,6 +277,40 @@ msgstr "Export zobrazenia"
 msgid "_Export"
 msgstr "_Exporttovať"
 
+#: ../data/ui/help-overlay.ui.h:1
+msgid "General"
+msgstr "Všeobecné"
+
+#: ../data/ui/help-overlay.ui.h:2
+msgid "Show help"
+msgstr "Zobrazenie pomocníka"
+
+#: ../data/ui/help-overlay.ui.h:3
+msgid "Search"
+msgstr "Vyhľadanie"
+
+# DK:tooltip
+#: ../data/ui/help-overlay.ui.h:4 ../data/ui/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr "Prepne plánovač trasy"
+
+#: ../data/ui/help-overlay.ui.h:6
+msgid "Map View"
+msgstr "Zobrazenie mapy"
+
+#: ../data/ui/help-overlay.ui.h:7
+msgid "Zoom in"
+msgstr "Priblíženie"
+
+#: ../data/ui/help-overlay.ui.h:8
+msgid "Zoom out"
+msgstr "Oddialenie"
+
+# DK:tooltip
+#: ../data/ui/help-overlay.ui.h:9 ../data/ui/main-window.ui.h:2
+msgid "Go to current location"
+msgstr "Prejde na aktuálne umiestnenie"
+
 #: ../data/ui/location-service-notification.ui.h:1
 msgid "Turn on location services to find your location"
 msgstr "Zapnite lokalizačné služby, aby mohlo byť nájdené vaše umiestnenie"
@@ -282,19 +320,9 @@ msgid "Location Settings"
 msgstr "Nastavenia umiestnenia"
 
 # DK:tooltip
-#: ../data/ui/main-window.ui.h:2
-msgid "Go to current location"
-msgstr "Prejde na aktuálne umiestnenie"
-
-# DK:tooltip
 #: ../data/ui/main-window.ui.h:3
 msgid "Choose map type"
 msgstr "Vyberie typ mapy"
-
-# DK:tooltip
-#: ../data/ui/main-window.ui.h:4
-msgid "Toggle route planner"
-msgstr "Prepne plánovač trasy"
 
 # tooltip
 #: ../data/ui/main-window.ui.h:5
@@ -338,7 +366,6 @@ msgid "Check in here"
 msgstr "Oznámi túto polohu"
 
 #: ../data/ui/osm-account-dialog.ui.h:1
-#| msgid "Select an account"
 msgid "OpenStreetMap Account"
 msgstr "Účet služby OpenStreetMap"
 
@@ -439,7 +466,7 @@ msgstr "Trasa poskytovaná službou GraphHopper"
 msgid "Show more results"
 msgstr "Zobraziť viac výsledkov"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:149
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:148
 msgid "Current location"
 msgstr "Aktuálne umiestnenie"
 
@@ -572,57 +599,57 @@ msgstr "neznáma geometria"
 msgid "failed to load file"
 msgstr "zlyhalo načítanie súboru"
 
-#: ../src/mainWindow.js:349
+#: ../src/mainWindow.js:351
 msgid "Failed to connect to location service"
 msgstr "Zlyhalo pripojenie k lokalizačnej službe"
 
-#: ../src/mainWindow.js:354
+#: ../src/mainWindow.js:356
 msgid "Position not found"
 msgstr "Pozícia sa nenašla"
 
-#: ../src/mainWindow.js:399
+#: ../src/mainWindow.js:401
 msgid "translator-credits"
 msgstr "Dušan Kazik <prescott66@gmail.com>"
 
-#: ../src/mainWindow.js:402
+#: ../src/mainWindow.js:404
 msgid "A map application for GNOME"
 msgstr "Aplikácia na prezeranie máp pre GNOME"
 
-#: ../src/mapView.js:207
+#: ../src/mapView.js:213
 msgid "Failed to parse GeoJSON file"
 msgstr "Zlyhala analýza súboru GeoJSON"
 
-#: ../src/mapView.js:226
+#: ../src/mapView.js:232
 msgid "Failed to open GeoURI"
 msgstr "Zlyhalo otvorenie GeoURI"
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: ../src/osmConnection.js:440
+#: ../src/osmConnection.js:439
 msgid "Incorrect user name or password"
 msgstr "Nesprávne používateľské meno alebo heslo"
 
-#: ../src/osmConnection.js:442
+#: ../src/osmConnection.js:441
 msgid "Success"
 msgstr "Úspech"
 
-#: ../src/osmConnection.js:444
+#: ../src/osmConnection.js:443
 msgid "Bad request"
 msgstr "Nesprávna požiadavka"
 
-#: ../src/osmConnection.js:446
+#: ../src/osmConnection.js:445
 msgid "Object not found"
 msgstr "Objekt sa nenašiel"
 
-#: ../src/osmConnection.js:448
+#: ../src/osmConnection.js:447
 msgid "Conflict, someone else has just modified the object"
 msgstr "Nastal konflikt. Niekto iný práve upravil objekt."
 
-#: ../src/osmConnection.js:450
+#: ../src/osmConnection.js:449
 msgid "Object has been deleted"
 msgstr "Objekt bol odstránený"
 
-#: ../src/osmConnection.js:452
+#: ../src/osmConnection.js:451
 msgid "Way or relation refers to non-existing children"
 msgstr "Cesta alebo relácia odkazuje na neexistujúceho potomka"
 
@@ -638,7 +665,7 @@ msgstr "Cesta alebo relácia odkazuje na neexistujúceho potomka"
 msgid "Name"
 msgstr "Názov"
 
-#: ../src/osmEditDialog.js:72 ../src/placeBubble.js:129
+#: ../src/osmEditDialog.js:72 ../src/placeBubble.js:132
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -670,39 +697,39 @@ msgstr "Obmedzený"
 msgid "Designated"
 msgstr "Vyhradený"
 
-#: ../src/placeBubble.js:110
+#: ../src/placeBubble.js:113
 #, javascript-format
 msgid "Postal code: %s"
 msgstr "Smerovacie číslo: %s"
 
-#: ../src/placeBubble.js:112
+#: ../src/placeBubble.js:115
 #, javascript-format
 msgid "Country code: %s"
 msgstr "Kód krajiny: %s"
 
-#: ../src/placeBubble.js:121
+#: ../src/placeBubble.js:124
 #, javascript-format
 msgid "Population: %s"
 msgstr "Obyvateľstvo: %s"
 
-#: ../src/placeBubble.js:124
+#: ../src/placeBubble.js:127
 #, javascript-format
 msgid "Opening hours: %s"
 msgstr "Otváracia doba: %s"
 
-#: ../src/placeBubble.js:134
+#: ../src/placeBubble.js:137
 #, javascript-format
 msgid "Wheelchair access: %s"
 msgstr "Bezbariérový prístup: %s"
 
-#: ../src/placeEntry.js:213
+#: ../src/placeEntry.js:190
 msgid "Failed to parse Geo URI"
 msgstr "Zlyhala analýza URI geografickej polohy"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: ../src/place.js:137
+#: ../src/place.js:140
 msgid "yes"
 msgstr "áno"
 
@@ -711,7 +738,7 @@ msgstr "áno"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:144
+#: ../src/place.js:147
 msgid "limited"
 msgstr "obmedzený"
 
@@ -719,7 +746,7 @@ msgstr "obmedzený"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: ../src/place.js:150
+#: ../src/place.js:153
 msgid "no"
 msgstr "nie"
 
@@ -728,7 +755,7 @@ msgstr "nie"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:157
+#: ../src/place.js:160
 msgid "designated"
 msgstr "vyhradený"
 
@@ -749,7 +776,7 @@ msgid "Failed to open URI"
 msgstr "Zlyhalo otvorenie URI"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:230
+#: ../src/sidebar.js:231
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Odhadovaný čas: %s"
@@ -882,50 +909,50 @@ msgid "%s-%s"
 msgstr "%s-%s"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:256
+#: ../src/utils.js:228
 msgid "Unknown"
 msgstr "Neznáma"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:259
+#: ../src/utils.js:231
 msgid "Exact"
 msgstr "Presná"
 
-#: ../src/utils.js:363
+#: ../src/utils.js:334
 #, javascript-format
 msgid "%f h"
 msgstr "%f h"
 
-#: ../src/utils.js:365
+#: ../src/utils.js:336
 #, javascript-format
 msgid "%f min"
 msgstr "%f min"
 
-#: ../src/utils.js:367
+#: ../src/utils.js:338
 #, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
 #. Translators: This is a distance measured in kilometers
-#: ../src/utils.js:378
+#: ../src/utils.js:349
 #, javascript-format
 msgid "%f km"
 msgstr "%f km"
 
 #. Translators: This is a distance measured in meters
-#: ../src/utils.js:381
+#: ../src/utils.js:352
 #, javascript-format
 msgid "%f m"
 msgstr "%f m"
 
 #. Translators: This is a distance measured in miles
-#: ../src/utils.js:389
+#: ../src/utils.js:360
 #, javascript-format
 msgid "%f mi"
 msgstr "%f mi"
 
 #. Translators: This is a distance measured in feet
-#: ../src/utils.js:392
+#: ../src/utils.js:363
 #, javascript-format
 msgid "%f ft"
 msgstr "%f ft"
