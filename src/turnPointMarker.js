@@ -62,9 +62,9 @@ const TurnPointMarker = new Lang.Class({
                                        green: 93 / 255,
                                        blue: 156 / 255,
                                        alpha: 255 });
-            actor = Utils.CreateActorFromIconName('maps-point-end-symbolic',
-                                                  0,
-                                                  color);
+            actor = this._actorFromIconNAme('maps-point-end-symbolic',
+                                            0,
+                                            color);
         }
         this.add_actor(actor);
     },
