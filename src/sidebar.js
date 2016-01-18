@@ -28,33 +28,12 @@ const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
+const InstructionRow = imports.instructionRow;
 const PlaceStore  = imports.placeStore;
 const RouteEntry = imports.routeEntry;
 const RouteQuery = imports.routeQuery;
 const StoredRoute = imports.storedRoute;
 const Utils = imports.utils;
-
-const InstructionRow = new Lang.Class({
-    Name: "InstructionRow",
-    Extends: Gtk.ListBoxRow,
-    Template: 'resource:///org/gnome/Maps/ui/instruction-row.ui',
-    InternalChildren: [ 'directionImage',
-                        'instructionLabel',
-                        'distanceLabel' ],
-
-    _init: function(params) {
-        this.turnPoint = params.turnPoint;
-        delete params.turnPoint;
-
-        this.parent(params);
-
-        this._instructionLabel.label = this.turnPoint.instruction;
-        this._directionImage.icon_name = this.turnPoint.iconName;
-
-        if (this.turnPoint.distance > 0)
-            this._distanceLabel.label = Utils.prettyDistance(this.turnPoint.distance);
-    }
-});
 
 const Sidebar = new Lang.Class({
     Name: 'Sidebar',
@@ -222,8 +201,8 @@ const Sidebar = new Lang.Class({
             }).bind(this));
 
             route.turnPoints.forEach((function(turnPoint) {
-                let row = new InstructionRow({ visible: true,
-                                               turnPoint: turnPoint });
+                let row = new InstructionRow.InstructionRow({ visible: true,
+                                                              turnPoint: turnPoint });
                 this._instructionList.add(row);
             }).bind(this));
 
