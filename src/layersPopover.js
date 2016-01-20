@@ -108,11 +108,12 @@ const LayersPopover = new Lang.Class({
             transient_for: this.get_parent(),
         });
 
-        if (fileChooser.run() === Gtk.ResponseType.OK)
+        if (fileChooser.run() === Gtk.ResponseType.OK) {
             this._mapView.openShapeLayers(fileChooser.get_files());
+            this.hide();
+        }
 
         fileChooser.destroy();
-        this.hide();
     },
 
     _listBoxCreateWidget: function(shapeLayer) {
