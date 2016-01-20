@@ -70,7 +70,6 @@ const LayersPopover = new Lang.Class({
                                       'street-layer-button',
                                       'aerial-layer-button',
                                       'layers-list-box',
-                                      'layers-list-box-frame',
                                       'load-layer-button' ]);
 
         this.parent({ width_request: 200,
@@ -101,7 +100,7 @@ const LayersPopover = new Lang.Class({
     _onRemoveClicked: function(row, button) {
         this._mapView.removeShapeLayer(row.shapeLayer);
         if (this.ui.layersListBox.get_children().length <= 0)
-            this.ui.layersListBoxFrame.hide();
+            this.ui.layersListBox.hide();
     },
 
     _onLoadLayerClicked: function(button) {
@@ -120,7 +119,7 @@ const LayersPopover = new Lang.Class({
         let row = new ShapeLayerRow({ shapeLayer: shapeLayer });
         row.closeButton.connect('clicked',
                                 this._onRemoveClicked.bind(this, row));
-        this.ui.layersListBoxFrame.show();
+        this.ui.layersListBox.show();
         return row;
     }
 });
