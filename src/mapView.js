@@ -23,7 +23,6 @@ const Champlain = imports.gi.Champlain;
 const Clutter = imports.gi.Clutter;
 const GObject = imports.gi.GObject;
 const Geocode = imports.gi.GeocodeGlib;
-const gettext = imports.gettext;
 const Gio = imports.gi.Gio;
 const GtkChamplain = imports.gi.GtkChamplain;
 const Lang = imports.lang;
