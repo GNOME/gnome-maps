@@ -32,6 +32,7 @@ const Application = imports.application;
 const ContactPlace = imports.contactPlace;
 const Geoclue = imports.geoclue;
 const GeoJSONShapeLayer = imports.geoJSONShapeLayer;
+const KmlShapeLayer = imports.kmlShapeLayer;
 const Location = imports.location;
 const Maps = imports.gi.GnomeMaps;
 const MapWalker = imports.mapWalker;
@@ -164,6 +165,7 @@ const MapView = new Lang.Class({
         this.view.add_layer(this._annotationMarkerLayer);
 
         ShapeLayer.SUPPORTED_TYPES.push(GeoJSONShapeLayer.GeoJSONShapeLayer);
+        ShapeLayer.SUPPORTED_TYPES.push(KmlShapeLayer.KmlShapeLayer);
     },
 
     _connectRouteSignals: function() {
