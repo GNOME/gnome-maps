@@ -1140,8 +1140,3 @@ try{
 	}
 }catch(e){//ie8
 }
-
-if(typeof require == 'function'){
-	exports.DOMImplementation = DOMImplementation;
-	exports.XMLSerializer = XMLSerializer;
-}

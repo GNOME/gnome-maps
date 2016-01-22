@@ -1,6 +1,8 @@
+const XMLReader = imports.xmldom.sax.XMLReader;
+const DOMImplementation = imports.xmldom.dom.DOMImplementation;
+
 function DOMParser(options){
 	this.options = options ||{locator:{}};
-	
 }
 DOMParser.prototype.parseFromString = function(source,mimeType){	
 	var options = this.options;
@@ -171,13 +173,14 @@ DOMHandler.prototype = {
 	 * @link http://www.saxproject.org/apidoc/org/xml/sax/ErrorHandler.html
 	 */
 	warning:function(error) {
-		console.warn('[xmldom warning]\t'+error,_locator(this.locator));
+		log('[xmldom warning]\t'+error);
 	},
 	error:function(error) {
-		console.error('[xmldom error]\t'+error,_locator(this.locator));
+		log('[xmldom error]\t'+error);
+		throw error;
 	},
 	fatalError:function(error) {
-		console.error('[xmldom fatalError]\t'+error,_locator(this.locator));
+		log('[xmldom fatalError]\t'+error);
 	    throw error;
 	}
 }
@@ -240,10 +243,3 @@ function appendElement (hander,node) {
         hander.currentElement.appendChild(node);
     }
 }//appendChild and setAttributeNS are preformance key
-
-if(typeof require == 'function'){
-	var XMLReader = require('./sax').XMLReader;
-	var DOMImplementation = exports.DOMImplementation = require('./dom').DOMImplementation;
-	exports.XMLSerializer = require('./dom').XMLSerializer ;
-	exports.DOMParser = DOMParser;
-}

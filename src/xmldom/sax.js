@@ -579,8 +579,3 @@ function split(source,start){
 		if(match[1])return buf;
 	}
 }
-
-if(typeof require == 'function'){
-	exports.XMLReader = XMLReader;
-}
-
