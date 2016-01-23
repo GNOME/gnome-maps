@@ -90,7 +90,7 @@ const OSMConnection = new Lang.Class({
            OAuth access token enrolled, so, if the currently instanciated
            proxy instance doesn't have a token set, we could safely count on
            it being present in the keyring */
-        if (this._oauthProxy.get_token() === null) {
+        if (this._callProxy.get_token() === null) {
             Secret.password_lookup(SECRET_SCHEMA, {}, null, function(s, res) {
                 this._onPasswordLookedUp(res,
                                          comment,
