@@ -229,7 +229,7 @@ maps_osm_object_foreach_tag (gpointer key, gpointer value, gpointer user_data)
   xmlNodePtr object_node = (xmlNodePtr) user_data;
 
   /* skip tag if it has an empty placeholder value */
-  if (val)
+  if (val && *val)
     {
       xmlNodePtr tag_node;
 
