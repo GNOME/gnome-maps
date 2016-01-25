@@ -77,6 +77,7 @@ const Application = new Lang.Class({
     _init: function() {
         /* Translators: This is the program name. */
         GLib.set_application_name(_("Maps"));
+        GLib.set_prgname('gnome-maps');
 
         this.parent({ application_id: 'org.gnome.Maps',
                       flags: Gio.ApplicationFlags.HANDLES_OPEN });
