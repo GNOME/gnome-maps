@@ -19,6 +19,7 @@
  * Author: Damián Nohales <damiannohales@gmail.com>
  */
 
+const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
 const Format = imports.format;
 const Lang = imports.lang;
@@ -138,6 +139,7 @@ const PlaceBubble = new Lang.Class({
         }
 
         infos.forEach((function(info) {
+            info = GLib.markup_escape_text(info,-1);
             let label = new Gtk.Label({ label: info,
                                         visible: true,
                                         use_markup: true,

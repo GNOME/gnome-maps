@@ -57,7 +57,7 @@ const PlaceListRow = new Lang.Class({
 
         this._name.label = this._boldMatch(markup, searchString);
         this._details.max_width_chars = maxChars;
-        this._details.label = formatter.getDetailsString();
+        this._details.label = GLib.markup_escape_text(formatter.getDetailsString(),-1);
         this._icon.gicon = this.place.icon;
 
         if (type === PlaceStore.PlaceType.RECENT ||
