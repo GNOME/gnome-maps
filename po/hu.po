@@ -3,34 +3,42 @@
 # This file is distributed under the same license as the gnome-maps package.
 #
 # Balázs Úr <urbalazs at gmail dot com>, 2013, 2014, 2015.
-# Gabor Kelemen <kelemeng at gnome dot hu>, 2013, 2015.
+# Gabor Kelemen <kelemeng at gnome dot hu>, 2013, 2015, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-11-22 21:18+0000\n"
-"PO-Revision-Date: 2015-11-23 08:44+0100\n"
-"Last-Translator: Meskó Balázs <meskobalazs@gmail.com>\n"
-"Language-Team: Hungarian <openscope at googlegroups dot com>\n"
+"POT-Creation-Date: 2016-01-24 21:22+0000\n"
+"PO-Revision-Date: 2016-01-26 16:18+0100\n"
+"Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
+"Language-Team: Hungarian <openscope at gmail dot com>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Lokalize 1.5\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
+msgid "GNOME Maps"
+msgstr "GNOME Térképek"
+
+#: ../data/org.gnome.Maps.appdata.xml.in.h:2
+msgid "Find places around the world"
+msgstr "Helyek keresése a világ minden pontján"
+
+#: ../data/org.gnome.Maps.appdata.xml.in.h:3
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
 "or locate a place to meet a friend."
 msgstr ""
-"A Térképek gyors hozzáférést ad térképekhez az egész világról. Lehetővé "
-"teszi a keresett hely gyors megtalálását település vagy utca keresésével, "
-"vagy megtalálni egy a helyet, ahol ismerőseivel találkozhat."
+"A Térképek gyors hozzáférést ad térképekhez, az egész világról. Lehetővé "
+"teszi egy keresett hely gyors megtalálását település vagy utca keresésével, "
+"vagy találni egy a helyet, ahol ismerőseivel találkozhat."
 
-#: ../data/org.gnome.Maps.appdata.xml.in.h:2
+#: ../data/org.gnome.Maps.appdata.xml.in.h:4
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
@@ -41,7 +49,7 @@ msgstr ""
 #. Translators: Search is carried out on OpenStreetMap data using Nominatim.
 #. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
 #. your language to see what words you can use for the translated search.
-#: ../data/org.gnome.Maps.appdata.xml.in.h:6
+#: ../data/org.gnome.Maps.appdata.xml.in.h:8
 msgid ""
 "You can even search for specific types of locations, such as “Pubs near Main "
 "Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
@@ -51,7 +59,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:397
+#: ../src/application.js:79 ../src/mainWindow.js:401
 msgid "Maps"
 msgstr "Térképek"
 
@@ -167,11 +175,29 @@ msgstr ""
 "Jelzi, ha a Foursquare üzenetként akarja közzétenni a bejelentkezést a "
 "Foursquare fiókkal társított Twitter fiókban."
 
+#: ../data/org.gnome.Maps.gschema.xml.h:23
+msgid "OpenStreetMap username or e-mail address"
+msgstr "OpenStreetMap felhasználónév vagy e-mail cím"
+
+#: ../data/org.gnome.Maps.gschema.xml.h:24
+msgid "Indicates if the user has signed in to edit OpenStreetMap data."
+msgstr ""
+"Jelzi, hogy a felhasználó bejelentkezett-e az OpenStreetMap adatok "
+"szerkesztéséhez."
+
 #: ../data/ui/app-menu.ui.h:1
+msgid "_Keyboard Shortcuts"
+msgstr "_Gyorsbillentyűk"
+
+#: ../data/ui/app-menu.ui.h:2
+msgid "Setup OpenStreetMap Account"
+msgstr "OpenStreetMap fiók beállítása"
+
+#: ../data/ui/app-menu.ui.h:3
 msgid "About"
 msgstr "Névjegy"
 
-#: ../data/ui/app-menu.ui.h:2
+#: ../data/ui/app-menu.ui.h:4 ../data/ui/help-overlay.ui.h:5
 msgid "Quit"
 msgstr "Kilépés"
 
@@ -187,7 +213,8 @@ msgstr "Közzététel a Facebookon"
 msgid "Post on Twitter"
 msgstr "Közzététel a Twitteren"
 
-#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/send-to-dialog.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/export-view-dialog.ui.h:2
+#: ../data/ui/send-to-dialog.ui.h:2 ../data/ui/shape-layer-file-chooser.ui.h:2
 msgid "_Cancel"
 msgstr "_Mégse"
 
@@ -232,6 +259,58 @@ msgstr "Mi van itt?"
 msgid "Copy Location"
 msgstr "Hely másolása"
 
+#: ../data/ui/context-menu.ui.h:3
+msgid "Export As Image"
+msgstr "Exportálás képként"
+
+#: ../data/ui/export-view-dialog.ui.h:1
+msgid "Export view"
+msgstr "Exportálási nézet"
+
+#: ../data/ui/export-view-dialog.ui.h:3
+msgid "_Export"
+msgstr "_Exportálás"
+
+#: ../data/ui/export-view-dialog.ui.h:4
+msgid "Include route and markers"
+msgstr "Útvonalak és jelölők megtartása"
+
+#: ../data/ui/help-overlay.ui.h:1
+msgid "General"
+msgstr "Általános"
+
+#: ../data/ui/help-overlay.ui.h:2
+msgid "Show help"
+msgstr "Súgó megjelenítése"
+
+#: ../data/ui/help-overlay.ui.h:3
+msgid "Search"
+msgstr "Keresés"
+
+#: ../data/ui/help-overlay.ui.h:4 ../data/ui/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr "Útvonaltervező ki- és bekapcsolása"
+
+#: ../data/ui/help-overlay.ui.h:6
+msgid "Map View"
+msgstr "Térkép nézet"
+
+#: ../data/ui/help-overlay.ui.h:7
+msgid "Zoom in"
+msgstr "Nagyítás"
+
+#: ../data/ui/help-overlay.ui.h:8
+msgid "Zoom out"
+msgstr "Kicsinyítés"
+
+#: ../data/ui/help-overlay.ui.h:9 ../data/ui/main-window.ui.h:2
+msgid "Go to current location"
+msgstr "Ugrás a jelenlegi helyre"
+
+#: ../data/ui/layers-popover.ui.h:1
+msgid "Load Map Layer"
+msgstr "Térkép réteg betöltése"
+
 #: ../data/ui/location-service-notification.ui.h:1
 msgid "Turn on location services to find your location"
 msgstr ""
@@ -241,17 +320,9 @@ msgstr ""
 msgid "Location Settings"
 msgstr "Helybeállítások"
 
-#: ../data/ui/main-window.ui.h:2
-msgid "Go to current location"
-msgstr "Ugrás a jelenlegi helyre"
-
 #: ../data/ui/main-window.ui.h:3
 msgid "Choose map type"
 msgstr "Térképtípus kiválasztása"
-
-#: ../data/ui/main-window.ui.h:4
-msgid "Toggle route planner"
-msgstr "Útvonaltervező ki- és bekapcsolása"
 
 #: ../data/ui/main-window.ui.h:5
 msgid "Toggle favorites"
@@ -289,6 +360,88 @@ msgstr "Megjelölés kedvencként"
 msgid "Check in here"
 msgstr "Bejelentkezés itt"
 
+#: ../data/ui/osm-account-dialog.ui.h:1
+msgid "OpenStreetMap Account"
+msgstr "OpenStreetMap fiók"
+
+#: ../data/ui/osm-account-dialog.ui.h:2
+msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"x-large\">Jelentkezzen be a térképek "
+"szerkesztéséhez</span>"
+
+#: ../data/ui/osm-account-dialog.ui.h:3
+msgid ""
+"Help to improve the map, using an\n"
+"OpenStreetMap account."
+msgstr ""
+"Segítsen a térkép javításában, egy\n"
+"OpenStreetMap fiók használatával."
+
+#: ../data/ui/osm-account-dialog.ui.h:5
+msgid "Email"
+msgstr "E-mail"
+
+#: ../data/ui/osm-account-dialog.ui.h:6
+msgid "Password"
+msgstr "Jelszó"
+
+#: ../data/ui/osm-account-dialog.ui.h:7
+msgid "Sign In"
+msgstr "Bejelentkezés"
+
+#: ../data/ui/osm-account-dialog.ui.h:8
+msgid "Don't have an account?"
+msgstr "Nincs fiókja?"
+
+#. The label should contain the link to the OSM reset password page with a translated title
+#: ../data/ui/osm-account-dialog.ui.h:10
+msgid ""
+"Sorry, that didn't work. Please try again, or visit\n"
+"<a href=\"https://www.openstreetmap.org/user/forgot-password"
+"\">OpenStreetMap</a> to reset your password."
+msgstr ""
+"Elnézést, ez nem sikerült. Próbálja újra, vagy látogassa meg az\n"
+"<a href=\"https://www.openstreetmap.org/user/forgot-password\">OpenStreetMap<"
+"/a>\n"
+"oldalt a jelszava helyreállításához."
+
+#: ../data/ui/osm-account-dialog.ui.h:12
+msgid "The verification code didn't match, please try again."
+msgstr "Az ellenőrző kód nem egyezik, próbálja újra."
+
+#: ../data/ui/osm-account-dialog.ui.h:13
+msgid "Enter verification code shown above"
+msgstr "Írja be a fent megjelenített ellenőrző kódot"
+
+#: ../data/ui/osm-account-dialog.ui.h:14
+msgid "Verify"
+msgstr "Ellenőrzés"
+
+#: ../data/ui/osm-account-dialog.ui.h:15
+msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
+msgstr "<span weight=\"bold\" size=\"x-large\">Bejelentkezve</span>"
+
+#: ../data/ui/osm-account-dialog.ui.h:16
+msgid "Your OpenStreetMap account is active."
+msgstr "Az OpenStreetMap fiókja aktív."
+
+#: ../data/ui/osm-account-dialog.ui.h:17
+msgid "Sign Out"
+msgstr "Kijelentkezés"
+
+#: ../data/ui/osm-edit-dialog.ui.h:1
+msgid "Edit Location"
+msgstr "Hely szerkesztése"
+
+#: ../data/ui/osm-edit-dialog.ui.h:2
+msgid "Cancel"
+msgstr "Mégse"
+
+#: ../data/ui/osm-edit-dialog.ui.h:3 ../src/osmEditDialog.js:154
+msgid "Next"
+msgstr "Következő"
+
 #: ../data/ui/search-popup.ui.h:1
 msgid "Press enter to search"
 msgstr "Nyomja meg az Entert a kereséshez"
@@ -301,6 +454,10 @@ msgstr "Hely megnyitása"
 msgid "_Open"
 msgstr "_Megnyitás"
 
+#: ../data/ui/shape-layer-file-chooser.ui.h:1
+msgid "Open Layer"
+msgstr "Réteg megnyitása"
+
 #: ../data/ui/sidebar.ui.h:1
 msgid "Route search by GraphHopper"
 msgstr "A GraphHopper által megkeresett útvonal"
@@ -309,7 +466,7 @@ msgstr "A GraphHopper által megkeresett útvonal"
 msgid "Show more results"
 msgstr "További találatok megjelenítése"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:149
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:148
 msgid "Current location"
 msgstr "Jelenlegi hely"
 
@@ -324,7 +481,19 @@ msgstr "Pontosság: %s"
 msgid "Failed to find tile structure in directory"
 msgstr "Nem sikerült csempeszerkezetet találni a könyvtárban"
 
-#: ../src/application.js:87
+#: ../lib/maps-osm.c:56
+msgid "Failed to parse XML document"
+msgstr "Az XML dokumentum feldolgozása sikertelen"
+
+#: ../lib/maps-osm.c:252 ../lib/maps-osm.c:405
+msgid "Missing required attributes"
+msgstr "Szükséges attribútumok hiányoznak"
+
+#: ../lib/maps-osm.c:453
+msgid "Could not find OSM element"
+msgstr "Nem sikerült megtalálni az OSM elemet"
+
+#: ../src/application.js:89
 msgid "A path to a local tiles directory structure"
 msgstr "Egy útvonal a helyi csempék könyvtárszerkezetéhez"
 
@@ -371,6 +540,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Opcionális üzenet írása a következőbe való bejelentkezéshez: %s."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
+#: ../src/osmEditDialog.js:189
 msgid "An error has occurred"
 msgstr "Hiba történt"
 
@@ -392,86 +562,180 @@ msgstr ""
 "A hitelesítési adatok lejártak, nyissa meg az Online fiókokat a "
 "bejelentkezéshez, és engedélyezze ezt a fiókot"
 
-#: ../src/geoJSONSource.js:102
+#: ../src/exportViewDialog.js:156
+msgid "Filesystem is read only"
+msgstr "A fájlrendszer csak olvasható"
+
+#: ../src/exportViewDialog.js:158
+msgid "You do not have permission to save there"
+msgstr "Nincs jogosultsága oda menteni"
+
+#: ../src/exportViewDialog.js:160
+msgid "The directory does not exists"
+msgstr "A könyvtár nem létezik"
+
+#: ../src/exportViewDialog.js:162
+msgid "No filename specified"
+msgstr "Nincs megadva fájlnév"
+
+#: ../src/exportViewDialog.js:170
+msgid "Unable to export view"
+msgstr "A nézet exportálása sikertelen"
+
+#: ../src/geoJSONSource.js:99
 msgid "invalid coordinate"
 msgstr "érvénytelen koordináta"
 
-#: ../src/geoJSONSource.js:124 ../src/geoJSONSource.js:179
-#: ../src/geoJSONSource.js:194
+#: ../src/geoJSONSource.js:143 ../src/geoJSONSource.js:183
+#: ../src/geoJSONSource.js:198
 msgid "parse error"
 msgstr "feldolgozási hiba"
 
-#: ../src/geoJSONSource.js:173
+#: ../src/geoJSONSource.js:177
 msgid "unknown geometry"
 msgstr "ismeretlen geometria"
 
-#: ../src/geoJSONSource.js:207
+#: ../src/geoJSONSource.js:211
 msgid "failed to load file"
 msgstr "nem sikerült betölteni a fájlt"
 
-#: ../src/mainWindow.js:345
+#: ../src/mainWindow.js:349
 msgid "Failed to connect to location service"
 msgstr "Nem sikerült kapcsolódni a helymeghatározó szolgáltatáshoz"
 
-#: ../src/mainWindow.js:350
+#: ../src/mainWindow.js:354
 msgid "Position not found"
 msgstr "Pozíció nem található"
 
-#: ../src/mainWindow.js:395
+#: ../src/mainWindow.js:399
 msgid "translator-credits"
 msgstr ""
 "Úr Balázs <urbalazs at gmail dot com>\n"
 "Meskó Balázs <meskobalazs at gmail dot com>"
 
-#: ../src/mainWindow.js:398
+#: ../src/mainWindow.js:402
 msgid "A map application for GNOME"
 msgstr "Térképalkalmazás a GNOME-hoz"
 
-#: ../src/mapView.js:206
-msgid "Failed to parse GeoJSON file"
-msgstr "A GeoJSON fájl feldolgozása nem sikerült"
+#: ../src/mapView.js:211
+msgid "File type is not supported"
+msgstr "A fájltípus nem támogatott"
 
-#: ../src/mapView.js:225
+#: ../src/mapView.js:218
+msgid "Failed to open layer"
+msgstr "A réteg megnyitása nem sikerült"
+
+#: ../src/mapView.js:254
 msgid "Failed to open GeoURI"
 msgstr "A GeoURI megnyitása nem sikerült"
 
-#: ../src/placeBubble.js:101
+#. setting the status in session.cancel_message still seems
+#. to always give status IO_ERROR
+#: ../src/osmConnection.js:439
+msgid "Incorrect user name or password"
+msgstr "Helytelen felhasználónév vagy jelszó"
+
+#: ../src/osmConnection.js:441
+msgid "Success"
+msgstr "Sikerült"
+
+#: ../src/osmConnection.js:443
+msgid "Bad request"
+msgstr "Rossz kérés"
+
+#: ../src/osmConnection.js:445
+msgid "Object not found"
+msgstr "Nem található objektum"
+
+#: ../src/osmConnection.js:447
+msgid "Conflict, someone else has just modified the object"
+msgstr "Konfliktus, valaki épp most módosította az objektumot"
+
+#: ../src/osmConnection.js:449
+msgid "Object has been deleted"
+msgstr "Az objektum törlésre került"
+
+#: ../src/osmConnection.js:451
+msgid "Way or relation refers to non-existing children"
+msgstr "Út vagy reláció nem létező gyermekekre hivatkozik"
+
+#.
+#. * specification of OSM edit fields
+#. * name: the label for the edit field (translatable)
+#. * tag: the OSM tag key value
+#. * type: the field type (determines editing field type)
+#. * rewriteFunc: a rewrite function taking a string argument
+#. * (only used for TEXT fields)
+#.
+#: ../src/osmEditDialog.js:71
+msgid "Name"
+msgstr "Név"
+
+#: ../src/osmEditDialog.js:72 ../src/placeBubble.js:132
+msgid "Wikipedia"
+msgstr "Wikipédia"
+
+#: ../src/osmEditDialog.js:74
+msgid "Population"
+msgstr "Népesség"
+
+#: ../src/osmEditDialog.js:76
+msgid "Wheelchair access"
+msgstr "Kerekesszékes elérés"
+
+#: ../src/osmEditDialog.js:140
+msgid "Done"
+msgstr "Kész"
+
+#: ../src/osmEditDialog.js:290
+msgid "Yes"
+msgstr "Igen"
+
+#: ../src/osmEditDialog.js:291
+msgid "No"
+msgstr "Nem"
+
+#: ../src/osmEditDialog.js:292
+msgid "Limited"
+msgstr "Korlátozott"
+
+#: ../src/osmEditDialog.js:293
+msgid "Designated"
+msgstr "Kijelölt"
+
+#: ../src/placeBubble.js:113
 #, javascript-format
 msgid "Postal code: %s"
 msgstr "Irányítószám: %s"
 
-#: ../src/placeBubble.js:103
+#: ../src/placeBubble.js:115
 #, javascript-format
 msgid "Country code: %s"
 msgstr "Országkód: %s"
 
-#: ../src/placeBubble.js:112
+#: ../src/placeBubble.js:124
 #, javascript-format
 msgid "Population: %s"
 msgstr "Népesség: %s"
 
-#: ../src/placeBubble.js:115
+#: ../src/placeBubble.js:127
 #, javascript-format
 msgid "Opening hours: %s"
 msgstr "Nyitva tartás: %s"
 
-#: ../src/placeBubble.js:120
-msgid "Wikipedia"
-msgstr "Wikipédia"
-
-#: ../src/placeBubble.js:125
+#: ../src/placeBubble.js:137
 #, javascript-format
 msgid "Wheelchair access: %s"
 msgstr "Kerekesszékes elérés: %s"
 
-#: ../src/placeEntry.js:215
+#: ../src/placeEntry.js:190
 msgid "Failed to parse Geo URI"
 msgstr "A Geo URI feldolgozása nem sikerült"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: ../src/place.js:137
+#: ../src/place.js:140
 msgid "yes"
 msgstr "igen"
 
@@ -480,7 +744,7 @@ msgstr "igen"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:144
+#: ../src/place.js:147
 msgid "limited"
 msgstr "korlátozott"
 
@@ -488,7 +752,7 @@ msgstr "korlátozott"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: ../src/place.js:150
+#: ../src/place.js:153
 msgid "no"
 msgstr "nem"
 
@@ -497,7 +761,7 @@ msgstr "nem"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:157
+#: ../src/place.js:160
 msgid "designated"
 msgstr "kijelölt"
 
@@ -513,12 +777,12 @@ msgstr "Az útvonalkérés nem sikerült."
 msgid "Start!"
 msgstr "Indulás!"
 
-#: ../src/sendToDialog.js:169
+#: ../src/sendToDialog.js:173
 msgid "Failed to open URI"
 msgstr "Az URI megnyitása nem sikerült"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:230
+#: ../src/sidebar.js:210
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Becsült idő: %s"
@@ -651,53 +915,56 @@ msgid "%s-%s"
 msgstr "%s-%s"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:256
+#: ../src/utils.js:228
 msgid "Unknown"
 msgstr "Ismeretlen"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:259
+#: ../src/utils.js:231
 msgid "Exact"
 msgstr "Pontos"
 
-#: ../src/utils.js:363
+#: ../src/utils.js:334
 #, javascript-format
 msgid "%f h"
 msgstr "%f óra"
 
-#: ../src/utils.js:365
+#: ../src/utils.js:336
 #, javascript-format
 msgid "%f min"
 msgstr "%f perc"
 
-#: ../src/utils.js:367
+#: ../src/utils.js:338
 #, javascript-format
 msgid "%f s"
 msgstr "%f mp"
 
 #. Translators: This is a distance measured in kilometers
-#: ../src/utils.js:378
+#: ../src/utils.js:349
 #, javascript-format
 msgid "%f km"
 msgstr "%f km"
 
 #. Translators: This is a distance measured in meters
-#: ../src/utils.js:381
+#: ../src/utils.js:352
 #, javascript-format
 msgid "%f m"
 msgstr "%f m"
 
 #. Translators: This is a distance measured in miles
-#: ../src/utils.js:389
+#: ../src/utils.js:360
 #, javascript-format
 msgid "%f mi"
 msgstr "%f mi"
 
 #. Translators: This is a distance measured in feet
-#: ../src/utils.js:392
+#: ../src/utils.js:363
 #, javascript-format
 msgid "%f ft"
 msgstr "%f láb"
+
+#~ msgid "Failed to parse GeoJSON file"
+#~ msgstr "A GeoJSON fájl feldolgozása nem sikerült"
 
 #~ msgid "_Share"
 #~ msgstr "Meg_osztás"
