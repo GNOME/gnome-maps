@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-01-15 21:28+0000\n"
-"PO-Revision-Date: 2016-01-16 09:41+0100\n"
+"POT-Creation-Date: 2016-01-26 09:24+0000\n"
+"PO-Revision-Date: 2016-01-26 15:00+0100\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
 "Language: sk\n"
@@ -20,6 +20,14 @@ msgstr ""
 "X-Generator: Poedit 1.8.6\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
+msgid "GNOME Maps"
+msgstr "Mapy prostredia GNOME"
+
+#: ../data/org.gnome.Maps.appdata.xml.in.h:2
+msgid "Find places around the world"
+msgstr "Hľadanie miest po celom svete"
+
+#: ../data/org.gnome.Maps.appdata.xml.in.h:3
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
@@ -29,7 +37,7 @@ msgstr ""
 "vám rýchlo nájsť miesto, ktoré hľadáte zadaním vyhľadávaného mesta alebo "
 "ulice, prípadne zistiť polohu, kde sa máte stretnúť s priateľom."
 
-#: ../data/org.gnome.Maps.appdata.xml.in.h:2
+#: ../data/org.gnome.Maps.appdata.xml.in.h:4
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
@@ -40,7 +48,7 @@ msgstr ""
 #. Translators: Search is carried out on OpenStreetMap data using Nominatim.
 #. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
 #. your language to see what words you can use for the translated search.
-#: ../data/org.gnome.Maps.appdata.xml.in.h:6
+#: ../data/org.gnome.Maps.appdata.xml.in.h:8
 msgid ""
 "You can even search for specific types of locations, such as “Pubs near Main "
 "Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
@@ -51,7 +59,7 @@ msgstr ""
 # desktop entry name
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:79 ../src/mainWindow.js:403
+#: ../src/application.js:79 ../src/mainWindow.js:401
 msgid "Maps"
 msgstr "Mapy"
 
@@ -218,7 +226,7 @@ msgid "Post on Twitter"
 msgstr "Uverejniť na Twitter"
 
 #: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/export-view-dialog.ui.h:2
-#: ../data/ui/send-to-dialog.ui.h:2
+#: ../data/ui/send-to-dialog.ui.h:2 ../data/ui/shape-layer-file-chooser.ui.h:2
 msgid "_Cancel"
 msgstr "_Zrušiť"
 
@@ -277,6 +285,10 @@ msgstr "Export zobrazenia"
 msgid "_Export"
 msgstr "_Exporttovať"
 
+#: ../data/ui/export-view-dialog.ui.h:4
+msgid "Include route and markers"
+msgstr "Zahrnúť trasy a značky"
+
 #: ../data/ui/help-overlay.ui.h:1
 msgid "General"
 msgstr "Všeobecné"
@@ -310,6 +322,10 @@ msgstr "Oddialenie"
 #: ../data/ui/help-overlay.ui.h:9 ../data/ui/main-window.ui.h:2
 msgid "Go to current location"
 msgstr "Prejde na aktuálne umiestnenie"
+
+#: ../data/ui/layers-popover.ui.h:1
+msgid "Load Map Layer"
+msgstr "Načítať mapovú vrstvu"
 
 #: ../data/ui/location-service-notification.ui.h:1
 msgid "Turn on location services to find your location"
@@ -458,6 +474,10 @@ msgstr "Otvorenie umiestnenia"
 msgid "_Open"
 msgstr "_Otvoriť"
 
+#: ../data/ui/shape-layer-file-chooser.ui.h:1
+msgid "Open Layer"
+msgstr "Otvorenie vrstvy"
+
 #: ../data/ui/sidebar.ui.h:1
 msgid "Route search by GraphHopper"
 msgstr "Trasa poskytovaná službou GraphHopper"
@@ -562,23 +582,23 @@ msgstr ""
 "Platnosť poverení vypršala. Prosím, otvorte Účty služieb na prihlásenie a "
 "povolenie tohto účtu"
 
-#: ../src/exportViewDialog.js:152
+#: ../src/exportViewDialog.js:156
 msgid "Filesystem is read only"
 msgstr "Systém súborov je iba na čítanie"
 
-#: ../src/exportViewDialog.js:154
+#: ../src/exportViewDialog.js:158
 msgid "You do not have permission to save there"
 msgstr "Do tohto umiestnenia nemáte oprávnenia na zápis"
 
-#: ../src/exportViewDialog.js:156
+#: ../src/exportViewDialog.js:160
 msgid "The directory does not exists"
 msgstr "Adresár neexistuje"
 
-#: ../src/exportViewDialog.js:158
+#: ../src/exportViewDialog.js:162
 msgid "No filename specified"
 msgstr "Nie je určený názov súboru"
 
-#: ../src/exportViewDialog.js:166
+#: ../src/exportViewDialog.js:170
 msgid "Unable to export view"
 msgstr "Nie je možné exportovať zobrazenie"
 
@@ -599,27 +619,31 @@ msgstr "neznáma geometria"
 msgid "failed to load file"
 msgstr "zlyhalo načítanie súboru"
 
-#: ../src/mainWindow.js:351
+#: ../src/mainWindow.js:349
 msgid "Failed to connect to location service"
 msgstr "Zlyhalo pripojenie k lokalizačnej službe"
 
-#: ../src/mainWindow.js:356
+#: ../src/mainWindow.js:354
 msgid "Position not found"
 msgstr "Pozícia sa nenašla"
 
-#: ../src/mainWindow.js:401
+#: ../src/mainWindow.js:399
 msgid "translator-credits"
 msgstr "Dušan Kazik <prescott66@gmail.com>"
 
-#: ../src/mainWindow.js:404
+#: ../src/mainWindow.js:402
 msgid "A map application for GNOME"
 msgstr "Aplikácia na prezeranie máp pre GNOME"
 
-#: ../src/mapView.js:213
-msgid "Failed to parse GeoJSON file"
-msgstr "Zlyhala analýza súboru GeoJSON"
+#: ../src/mapView.js:211
+msgid "File type is not supported"
+msgstr "Typ súboru nie je podporovaný"
 
-#: ../src/mapView.js:232
+#: ../src/mapView.js:218
+msgid "Failed to open layer"
+msgstr "Zlyhalo otvorenie vrstvy"
+
+#: ../src/mapView.js:254
 msgid "Failed to open GeoURI"
 msgstr "Zlyhalo otvorenie GeoURI"
 
@@ -776,7 +800,7 @@ msgid "Failed to open URI"
 msgstr "Zlyhalo otvorenie URI"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:231
+#: ../src/sidebar.js:210
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Odhadovaný čas: %s"
@@ -956,6 +980,9 @@ msgstr "%f mi"
 #, javascript-format
 msgid "%f ft"
 msgstr "%f ft"
+
+#~ msgid "Failed to parse GeoJSON file"
+#~ msgstr "Zlyhala analýza súboru GeoJSON"
 
 #~ msgid "Copy Geo URI"
 #~ msgstr "Skopírovať URI geografickej polohy"
