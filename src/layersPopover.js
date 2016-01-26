@@ -60,47 +60,44 @@ const ShapeLayerFileChooser = new Lang.Class({
 const LayersPopover = new Lang.Class({
     Name: 'LayersPopover',
     Extends: Gtk.Popover,
+    Template: 'resource:///org/gnome/Maps/ui/layers-popover.ui',
+    InternalChildren: [ 'streetLayerButton',
+                        'aerialLayerButton',
+                        'layersListBox',
+                        'loadLayerButton' ],
 
     _init: function(params) {
         this._mapView = params.mapView;
         delete params.mapView;
-
-        this.ui = Utils.getUIObject('layers-popover',
-                                    [ 'grid',
-                                      'street-layer-button',
-                                      'aerial-layer-button',
-                                      'layers-list-box',
-                                      'load-layer-button' ]);
 
         this.parent({ width_request: 200,
                       no_show_all: true,
                       transitions_enabled: false,
                       visible: false });
 
-        this.ui.aerialLayerButton.join_group(this.ui.streetLayerButton);
+        this._aerialLayerButton.join_group(this._streetLayerButton);
 
         this.get_style_context().add_class('maps-popover');
-        this.add(this.ui.grid);
 
-        this.ui.layersListBox.bind_model(this._mapView.shapeLayerStore,
+        this._layersListBox.bind_model(this._mapView.shapeLayerStore,
                                          this._listBoxCreateWidget.bind(this));
-        this.ui.layersListBox.connect('row-activated', (function(lb, row) {
+        this._layersListBox.connect('row-activated', (function(lb, row) {
             this._mapView.gotoBBox(row.shapeLayer.bbox);
         }).bind(this));
 
-        this.ui.layersListBox.set_header_func(function(row, before) {
+        this._layersListBox.set_header_func(function(row, before) {
             let header = before ? new Gtk.Separator() : null;
             row.set_header(header);
         });
 
-        this.ui.loadLayerButton.connect('clicked',
+        this._loadLayerButton.connect('clicked',
                                         this._onLoadLayerClicked.bind(this));
     },
 
     _onRemoveClicked: function(row, button) {
         this._mapView.removeShapeLayer(row.shapeLayer);
-        if (this.ui.layersListBox.get_children().length <= 0)
-            this.ui.layersListBox.hide();
+        if (this._layersListBox.get_children().length <= 0)
+            this._layersListBox.hide();
     },
 
     _onLoadLayerClicked: function(button) {
@@ -120,7 +117,7 @@ const LayersPopover = new Lang.Class({
         let row = new ShapeLayerRow({ shapeLayer: shapeLayer });
         row.closeButton.connect('clicked',
                                 this._onRemoveClicked.bind(this, row));
-        this.ui.layersListBox.show();
+        this._layersListBox.show();
         return row;
     }
 });
