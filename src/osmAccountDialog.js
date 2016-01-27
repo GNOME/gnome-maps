@@ -23,7 +23,7 @@
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
-const WebKit = imports.gi.WebKit;
+const WebKit2 = imports.gi.WebKit2;
 
 const Application = imports.application;
 
@@ -52,7 +52,7 @@ const OSMAccountDialog = new Lang.Class({
     _init: function(params) {
         /* This is a construct-only property and cannot be set by GtkBuilder */
         params.use_header_bar = true;
-        GObject.type_ensure(WebKit.WebView);
+        GObject.type_ensure(WebKit2.WebView);
 
         this._closeOnSignIn = params.closeOnSignIn;
         delete params.closeOnSignIn;
@@ -123,8 +123,8 @@ const OSMAccountDialog = new Lang.Class({
         if (success) {
             /* switch to the verification view and show the verification
                page */
-            this._verifyView.load_html_string(verificationPage,
-                                              'https://www.openstreetmap.org/');
+            this._verifyView.load_html(verificationPage,
+                                       'https://www.openstreetmap.org/');
             this._stack.visible_child_name = 'verify';
         } else {
             /* clear password entry */
