@@ -43,6 +43,7 @@ const ShapeLayer = new Lang.Class({
     _init: function(params) {
         this.parent();
 
+        this._visible = true;
         this._mapView = params.mapView;
         this.file = params.file;
 
@@ -60,6 +61,21 @@ const ShapeLayer = new Lang.Class({
 
     get bbox() {
         return this._mapSource.bbox;
+    },
+
+    get visible() {
+        return this._visible;
+    },
+
+    set visible(v) {
+        if (v && !this._visible) {
+            this._mapView.view.add_overlay_source(this._mapSource, 255);
+            this._markerLayer.show_all_markers();
+        } else if (!v && this._visible) {
+            this._mapView.view.remove_overlay_source(this._mapSource);
+            this._markerLayer.hide_all_markers();
+        }
+        this._visible = v;
     },
 
     getName: function() {

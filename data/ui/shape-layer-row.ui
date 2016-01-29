@@ -13,6 +13,26 @@
           <class name="horizontal"/>
         </style>
         <child>
+          <object class="GtkButton" id="visibleButton">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="tooltip-text" translatable="yes">Toggle visible</property>
+            <child>
+              <object class="GtkImage" id="visibleImage">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon-name">layer-visible-symbolic</property>
+                <property name="pixel_size">16</property>
+              </object>
+            </child>
+            <style>
+              <class name="image-button"/>
+              <class name="flat"/>
+            </style>
+          </object>
+        </child>
+        <child>
           <object class="GtkLabel" id="layerLabel">
             <property name="visible">True</property>
             <property name="hexpand">1</property>

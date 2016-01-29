@@ -27,7 +27,8 @@ const ShapeLayerRow = new Lang.Class({
     Name: 'ShapeLayerRow',
     Extends: Gtk.ListBoxRow,
     Template: 'resource:///org/gnome/Maps/ui/shape-layer-row.ui',
-    Children: ['layerLabel', 'closeButton'],
+    Children: ['closeButton'],
+    InternalChildren: ['layerLabel', 'visibleButton'],
 
     _init: function(params) {
         this.shapeLayer = params.shapeLayer;
@@ -35,8 +36,17 @@ const ShapeLayerRow = new Lang.Class({
 
         this.parent(params);
 
-        this.layerLabel.label = this.shapeLayer.getName();
-        this.layerLabel.tooltip_text = this.shapeLayer.file.get_parse_name();
+        this._layerLabel.label = this.shapeLayer.getName();
+        this._layerLabel.tooltip_text = this.shapeLayer.file.get_parse_name();
+        this._visibleButton.connect('clicked', (function() {
+            let image = this._visibleButton.get_child();
+
+            this.shapeLayer.visible = !this.shapeLayer.visible;
+            if (this.shapeLayer.visible)
+                image.icon_name = 'layer-visible-symbolic';
+            else
+                image.icon_name = 'layer-not-visible-symbolic';
+        }).bind(this));
     }
 });
 
