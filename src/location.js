@@ -42,5 +42,5 @@ const Location = new Lang.Class({
 
     set heading(v) {
         this._heading = v;
-    },
+    }
 });
