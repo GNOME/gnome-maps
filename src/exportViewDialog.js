@@ -171,8 +171,10 @@ const ExportViewDialog = new Lang.Class({
                 secondary_text: details
             });
 
-            dialog.run();
-            dialog.destroy();
+            dialog.connect('response', function() {
+                dialog.destroy();
+            });
+            dialog.show_all();
         }
     },
 

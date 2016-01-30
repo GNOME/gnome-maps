@@ -142,8 +142,10 @@ const MapBubble = new Lang.Class({
 
         button.visible = true;
         button.connect('clicked', function() {
-            dialog.run();
-            dialog.hide();
+            dialog.connect('response', function() {
+                dialog.hide();
+            });
+            dialog.show_all();
         });
     },
 
