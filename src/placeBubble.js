@@ -115,7 +115,7 @@ const PlaceBubble = new Lang.Class({
                 case 'country_code':
                     return _("Country code: %s").format(place[prop]);
                 default:
-                    return place[prop];
+                    return GLib.markup_escape_text(place[prop], -1);
                 }
             });
             return row.join(', ');
@@ -139,7 +139,6 @@ const PlaceBubble = new Lang.Class({
         }
 
         infos.forEach((function(info) {
-            info = GLib.markup_escape_text(info,-1);
             let label = new Gtk.Label({ label: info,
                                         visible: true,
                                         use_markup: true,
