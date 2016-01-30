@@ -5,13 +5,13 @@ public_icons_themes =							\
 	$(NULL)
 
 public_icons =								\
-	hicolor_apps_16x16_gnome-maps.png				\
-	hicolor_apps_22x22_gnome-maps.png				\
-	hicolor_apps_24x24_gnome-maps.png				\
-	hicolor_apps_32x32_gnome-maps.png				\
-	hicolor_apps_48x48_gnome-maps.png				\
-	hicolor_apps_256x256_gnome-maps.png				\
-	hicolor_apps_symbolic_gnome-maps-symbolic.svg			\
+	hicolor_apps_16x16_org.gnome.Maps.png				\
+	hicolor_apps_22x22_org.gnome.Maps.png				\
+	hicolor_apps_24x24_org.gnome.Maps.png				\
+	hicolor_apps_32x32_org.gnome.Maps.png				\
+	hicolor_apps_48x48_org.gnome.Maps.png				\
+	hicolor_apps_256x256_org.gnome.Maps.png			\
+	hicolor_apps_symbolic_org.gnome.Maps-symbolic.svg		\
 	$(NULL)
 
 private_icons =								\
@@ -48,7 +48,7 @@ private_icons =								\
 	$(NULL)
 
 noinst_DATA =								\
-	gnome-maps.svg							\
+	org.gnome.Maps.svg						\
 	hicolor_apps_24x24_user-location.svg				\
 	hicolor_apps_24x24_user-location-compass.svg			\
 	$(NULL)
@@ -56,7 +56,7 @@ noinst_DATA =								\
 EXTRA_DIST =								\
 	$(public_icons)							\
 	$(private_icons)						\
-	gnome-maps.svg							\
+	org.gnome.Maps.svg						\
 	hicolor_apps_24x24_user-location.svg				\
 	hicolor_apps_24x24_user-location-compass.svg			\
 	$(NULL)

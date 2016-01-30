@@ -404,7 +404,7 @@ const MainWindow = new Lang.Class({
                        ' 2011' + String.fromCharCode(0x2013) +
                        '2013 Red Hat, Inc.',
             license_type: Gtk.License.GPL_2_0,
-            logo_icon_name: 'gnome-maps',
+            logo_icon_name: 'org.gnome.Maps',
             version: pkg.version,
             website: 'https://live.gnome.org/Apps/Maps',
             wrap_license: true,
