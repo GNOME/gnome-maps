@@ -414,7 +414,7 @@ const MapView = new Lang.Class({
         route.reset();
     },
 
-    showSearchResult: function(place, animation) {
+    showPlace: function(place, animation) {
         this._placeLayer.remove_all();
 
         if (place instanceof StoredRoute.StoredRoute) {

@@ -84,7 +84,7 @@ const FavoritesPopover = new Lang.Class({
 
         this._list.connect('row-activated', (function(list, row) {
             this.hide();
-            this._mapView.showSearchResult(row.place, true);
+            this._mapView.showPlace(row.place, true);
         }).bind(this));
 
         this._list.set_filter_func((function(row) {
