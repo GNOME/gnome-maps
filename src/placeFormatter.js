@@ -79,25 +79,23 @@ const PlaceFormatter = new Lang.Class({
         case Geocode.PlaceType.STATE:
             if (this._place.state)
                 this._titleProperty = 'state';
-
-            this._addRow(['country']);
             break;
 
         case Geocode.PlaceType.COUNTY:
             if (this._place.county)
                 this._titleProperty = 'county';
-
-            this._addRow(['state', 'country']);
             break;
 
         case Geocode.PlaceType.TOWN:
             if (this._place.town)
                 this._titleProperty = 'town';
 
-            this._addRow(['postal_code']);
-            if (this._place.county !== this._place.state)
+            if (this._place.county)
                 this._addRow(['county']);
-            this._addRow(['state', 'country']);
+            else if (this._place.state)
+                this._addRow(['state']);
+            else if (this._place.area)
+                this._addRow(['area']);
             break;
 
         default:
@@ -107,14 +105,7 @@ const PlaceFormatter = new Lang.Class({
                 this._addRow(['street']);
 
             if (this._place.town !== this._place[this._titleProperty])
-                this._addRow(['area', 'town']);
-            else
-                this._addRow(['area']);
-
-            this._addRow(['postal_code']);
-            if (this._place.county !== this._place.state)
-                this._addRow(['county']);
-            this._addRow(['state', 'country']);
+                this._addRow(['postal_code', 'town']);
             break;
         }
     },
