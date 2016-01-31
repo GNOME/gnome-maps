@@ -45,7 +45,10 @@ const PlaceBubble = new Lang.Class({
                                                      'box-content',
                                                      'grid-content',
                                                      'label-title',
-                                                     'edit-button']);
+                                                     'edit-button',
+                                                     'expand-button',
+                                                     'expanded-content',
+                                                     'content-revealer']);
         params.buttons = (MapBubble.Button.ROUTE |
                           MapBubble.Button.SEND_TO);
 
@@ -63,6 +66,9 @@ const PlaceBubble = new Lang.Class({
         this._boxContent = ui.boxContent;
         this._gridContent = ui.gridContent;
         this._editButton = ui.editButton;
+        this._expandButton = ui.expandButton;
+        this._expandedContent = ui.expandedContent;
+        this._contentRevealer = ui.contentRevealer;
 
         let overpass = new Overpass.Overpass();
         if (Application.placeStore.exists(this.place, null)) {
@@ -91,7 +97,9 @@ const PlaceBubble = new Lang.Class({
         if (this.place instanceof ContactPlace.ContactPlace)
             this._editButton.visible = false;
         else
-            this._initEditButton(this._editButton);
+            this._initEditButton();
+
+        this._initExpandButton();
     },
 
     _formatWikiLink: function(wiki) {
@@ -102,50 +110,68 @@ const PlaceBubble = new Lang.Class({
     },
 
     _populate: function(place) {
-        let infos = [];
+        let content = [];
+        let expandedContent = [];
         let formatter = new PlaceFormatter.PlaceFormatter(place);
 
         this._title.label = formatter.title;
 
-        infos = formatter.rows.map(function(row) {
+        content = formatter.rows.map(function(row) {
             row = row.map(function(prop) {
-                switch (prop) {
-                case 'postal_code':
-                    return _("Postal code: %s").format(place[prop]);
-                case 'country_code':
-                    return _("Country code: %s").format(place[prop]);
-                default:
-                    return GLib.markup_escape_text(place[prop], -1);
-                }
+                return GLib.markup_escape_text(place[prop], -1);
             });
             return row.join(', ');
         });
 
-        if (place.population)
-            infos.push(_("Population: %s").format(place.population));
+        if (place.population) {
+            expandedContent.push({ label: _("Population"),
+                                   info: place.population });
+        }
 
-        if (place.openingHours)
-            infos.push(_("Opening hours: %s").format(place.openingHoursTranslated));
+        if (place.openingHours) {
+            expandedContent.push({ label: _("Opening hours"),
+                                   info: place.openingHoursTranslated });
+        }
+
+        if (place.wheelchair) {
+            expandedContent.push({ label: _("Wheelchair access"),
+                                   info: place.wheelchairTranslated });
+        }
 
         if (place.wiki) {
             let link = this._formatWikiLink(place.wiki);
             let href = Format.vprintf('<a href="%s">%s</a>',
                                       [link, _("Wikipedia")]);
-            infos.push(href);
+            expandedContent.push({ info: href });
         }
 
-        if (place.wheelchair) {
-            infos.push(_("Wheelchair access: %s").format(place.wheelchairTranslated));
-        }
 
-        infos.forEach((function(info) {
-            let label = new Gtk.Label({ label: info,
+        content.forEach((function(row) {
+            let label = new Gtk.Label({ label: row,
                                         visible: true,
                                         use_markup: true,
                                         halign: Gtk.Align.START });
             this._boxContent.pack_start(label, false, true, 0);
         }).bind(this));
 
+        for (let row in expandedContent) {
+            let col = 0;
+
+            if (expandedContent[row].label) {
+                let label = new Gtk.Label({ label: expandedContent[row].label + ':',
+                                            visible: true,
+                                            halign: Gtk.Align.START });
+                this._expandedContent.attach(label, col++, row, 1, 1);
+            }
+
+            let info = new Gtk.Label({ label: expandedContent[row].info.bold(),
+                                       visible: true,
+                                       use_markup: true,
+                                       halign: Gtk.Align.START });
+            this._expandedContent.attach(info, col, row, col == 0 ? 2 : 1, 1);
+        }
+
+        this._expandButton.visible = expandedContent.length > 0;
         this._stack.visible_child = this._gridContent;
     },
 
@@ -160,9 +186,23 @@ const PlaceBubble = new Lang.Class({
         }
     },
 
-    _initEditButton: function(button) {
-        button.visible = true;
-        button.connect('clicked', this._onEditClicked.bind(this));
+    _initEditButton: function() {
+        this._editButton.visible = true;
+        this._editButton.connect('clicked', this._onEditClicked.bind(this));
+    },
+
+    _initExpandButton: function() {
+        let image = this._expandButton.get_child();
+
+        this._expandButton.connect('clicked', (function() {
+            if (this._contentRevealer.child_revealed) {
+                this._contentRevealer.reveal_child = false;
+                image.icon_name = 'pan-up-symbolic';
+            } else {
+                this._contentRevealer.reveal_child = true;
+                image.icon_name = 'pan-down-symbolic';
+            }
+        }).bind(this));
     },
 
     _onEditClicked: function() {
