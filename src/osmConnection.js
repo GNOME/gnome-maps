@@ -220,7 +220,7 @@ const OSMConnection = new Lang.Class({
     },
 
     _getDeleteFunction: function(object, type) {
-        return type + '/' + id;
+        return type + '/' + object.id;
     },
 
     requestOAuthToken: function(callback) {

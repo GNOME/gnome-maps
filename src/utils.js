@@ -281,7 +281,6 @@ function _load_http_icon(icon, loadCompleteCallback) {
         try {
             let pixbuf = GdkPixbuf.Pixbuf.new_from_stream(stream, null);
 
-            _iconStore[icon.file.get_uri()] = pixbuf;
             loadCompleteCallback(pixbuf);
         } catch(e) {
             log("Failed to load pixbuf: " + e);
