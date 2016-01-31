@@ -16,54 +16,107 @@
         <property name="can_focus">False</property>
         <property name="column-spacing">5</property>
         <child>
-          <object class="GtkBox" id="box-content">
+          <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
-            <style>
-              <class name="bubble-content"/>
-            </style>
             <child>
-              <object class="GtkLabel" id="label-title">
+              <object class="GtkGrid">
+                <property name="visible">True</property>
+                <property name="column-spacing">10</property>
+                <child>
+                  <object class="GtkLabel" id="label-title">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="vexpand">True</property>
+                    <style>
+                      <class name="bubble-title"/>
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkGrid">
+                    <property name="margin-left">10</property>
+                    <property name="visible">True</property>
+                    <child>
+                      <object class="GtkButton" id="edit-button">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="valign">GTK_ALIGN_START</property>
+                        <property name="halign">GTK_ALIGN_CENTER</property>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="icon-name">document-edit-symbolic</property>
+                            <property name="pixel_size">16</property>
+                          </object>
+                        </child>
+                        <style>
+                          <class name="image-button"/>
+                          <class name="circular"/>
+                          <class name="flat"/>
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkToggleButton" id="expand-button">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="valign">GTK_ALIGN_START</property>
+                    <property name="halign">GTK_ALIGN_CENTER</property>
+                    <property name="tooltip-text" translatable="yes">Show more information</property>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="icon-name">view-more-symbolic</property>
+                        <property name="pixel_size">16</property>
+                      </object>
+                    </child>
+                    <style>
+                      <class name="image-button"/>
+                      <class name="circular"/>
+                      <class name="flat"/>
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox" id="box-content">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="orientation">vertical</property>
+                <style>
+                  <class name="bubble-content"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkRevealer" id="content-revealer">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="vexpand">True</property>
-                <style>
-                  <class name="bubble-title"/>
-                </style>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="edit-button">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="valign">GTK_ALIGN_START</property>
-            <property name="halign">GTK_ALIGN_CENTER</property>
-            <child>
-              <object class="GtkImage">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon-name">document-edit-symbolic</property>
-                <property name="pixel_size">16</property>
+                <property name="margin-top">5</property>
+                <child>
+                  <object class="GtkGrid" id="expanded-content">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="vexpand">True</property>
+                    <property name="column-spacing">5</property>
+                    <style>
+                      <class name="bubble-content"/>
+                    </style>
+                  </object>
+                </child>
               </object>
             </child>
-            <style>
-              <class name="image-button"/>
-              <class name="circular"/>
-              <class name="flat"/>
-            </style>
           </object>
         </child>
       </object>
