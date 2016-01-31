@@ -50,5 +50,5 @@ const NotificationManager = new Lang.Class({
             }).bind(this));
         }
         notification.reveal();
-    },
+    }
 });
