@@ -75,5 +75,6 @@ AC_CONFIG_FILES([
     data/Makefile
     data/icons/Makefile
     po/Makefile.in
+    scripts/Makefile
 ])
 AC_OUTPUT

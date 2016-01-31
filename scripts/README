@@ -1,0 +1,18 @@
+SCRIPTS
+=======
+
+extractPoiTypesFromID.js
+------------------------
+
+Extracts the POI types (presets) that the iD editor uses to JSON for us to consume.
+
+Run the extractPoiTypesFromID.js script against a checkout of iD (https://github.com/openstreetmap/iD)
+
+$ ./extractPoiTypesFromID.js <path to iD checkout> > osm-types.json
+
+This script would be run by upstream before making a release of gnome-maps if an updated version
+of the iD editor is available with updated OSM types preset and/or new or updated translations
+of those.
+Check the resulting .json file (i.e. check size and possibly diff against the current version).
+Copy the result to data/osm-types.json
+
