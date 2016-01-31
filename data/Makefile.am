@@ -44,6 +44,7 @@ EXTRA_DIST =								\
 	org.gnome.Maps.gschema.xml					\
 	org.gnome.Maps.data.gresource.xml				\
 	org.gnome.Maps.appdata.xml.in					\
+	osm-types.json							\
 	$(app_resource_files)						\
 	$(NULL)
 
