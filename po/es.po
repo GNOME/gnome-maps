@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-01-06 21:21+0000\n"
-"PO-Revision-Date: 2016-01-07 09:07+0100\n"
+"POT-Creation-Date: 2016-01-25 09:21+0000\n"
+"PO-Revision-Date: 2016-01-25 16:27+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -21,6 +21,14 @@ msgstr ""
 "X-Generator: Gtranslator 2.91.6\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
+msgid "GNOME Maps"
+msgstr "Mapas de GNOME"
+
+#: ../data/org.gnome.Maps.appdata.xml.in.h:2
+msgid "Find places around the world"
+msgstr "Encuentre lugares por todo el mundo"
+
+#: ../data/org.gnome.Maps.appdata.xml.in.h:3
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
@@ -30,7 +38,7 @@ msgstr ""
 "encontrar lugares rápidamente buscando por ciudad o por calle, o buscar un "
 "lugar para encontrarse con un amigo."
 
-#: ../data/org.gnome.Maps.appdata.xml.in.h:2
+#: ../data/org.gnome.Maps.appdata.xml.in.h:4
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
@@ -41,7 +49,7 @@ msgstr ""
 #. Translators: Search is carried out on OpenStreetMap data using Nominatim.
 #. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
 #. your language to see what words you can use for the translated search.
-#: ../data/org.gnome.Maps.appdata.xml.in.h:6
+#: ../data/org.gnome.Maps.appdata.xml.in.h:8
 msgid ""
 "You can even search for specific types of locations, such as “Pubs near Main "
 "Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
@@ -51,7 +59,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:79 ../src/mainWindow.js:402
+#: ../src/application.js:79 ../src/mainWindow.js:401
 msgid "Maps"
 msgstr "Mapas"
 
@@ -206,7 +214,7 @@ msgid "Post on Twitter"
 msgstr "Publicar el Twitter"
 
 #: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/export-view-dialog.ui.h:2
-#: ../data/ui/send-to-dialog.ui.h:2
+#: ../data/ui/send-to-dialog.ui.h:2 ../data/ui/shape-layer-file-chooser.ui.h:2
 msgid "_Cancel"
 msgstr "_Cancelar"
 
@@ -263,6 +271,10 @@ msgstr "Exportar vista"
 msgid "_Export"
 msgstr "_Exportar"
 
+#: ../data/ui/export-view-dialog.ui.h:4
+msgid "Include route and markers"
+msgstr "Incluir ruta y marcadores"
+
 #: ../data/ui/help-overlay.ui.h:1
 msgid "General"
 msgstr "General"
@@ -294,6 +306,10 @@ msgstr "Reducir"
 #: ../data/ui/help-overlay.ui.h:9 ../data/ui/main-window.ui.h:2
 msgid "Go to current location"
 msgstr "Ir a la ubicación actual"
+
+#: ../data/ui/layers-popover.ui.h:1
+msgid "Load Map Layer"
+msgstr "Cargar capa de mapa"
 
 #: ../data/ui/location-service-notification.ui.h:1
 msgid "Turn on location services to find your location"
@@ -435,6 +451,10 @@ msgstr "Abrir ubicación"
 msgid "_Open"
 msgstr "_Abrir"
 
+#: ../data/ui/shape-layer-file-chooser.ui.h:1
+msgid "Open Layer"
+msgstr "Abrir capa"
+
 #: ../data/ui/sidebar.ui.h:1
 msgid "Route search by GraphHopper"
 msgstr "Ruta buscada por GraphHopper"
@@ -443,7 +463,7 @@ msgstr "Ruta buscada por GraphHopper"
 msgid "Show more results"
 msgstr "Mostrar más resultados"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:149
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:148
 msgid "Current location"
 msgstr "Ubicación actual"
 
@@ -540,23 +560,23 @@ msgstr ""
 "Las credenciales han caducado. Abra las Cuentas en línea para iniciar sesión "
 "y activar esta cuenta."
 
-#: ../src/exportViewDialog.js:152
+#: ../src/exportViewDialog.js:156
 msgid "Filesystem is read only"
 msgstr "El sistema de archivos es de solo lectura"
 
-#: ../src/exportViewDialog.js:154
+#: ../src/exportViewDialog.js:158
 msgid "You do not have permission to save there"
 msgstr "No tiene permisos para guardar ahí"
 
-#: ../src/exportViewDialog.js:156
+#: ../src/exportViewDialog.js:160
 msgid "The directory does not exists"
 msgstr "La carpeta no existe"
 
-#: ../src/exportViewDialog.js:158
+#: ../src/exportViewDialog.js:162
 msgid "No filename specified"
 msgstr "No se ha especificado un nombre de archivo"
 
-#: ../src/exportViewDialog.js:166
+#: ../src/exportViewDialog.js:170
 msgid "Unable to export view"
 msgstr "No se puede exportar la vista"
 
@@ -577,57 +597,62 @@ msgstr "geometría desconocida"
 msgid "failed to load file"
 msgstr "falló al cargar el archivo"
 
-#: ../src/mainWindow.js:350
+#: ../src/mainWindow.js:349
 msgid "Failed to connect to location service"
 msgstr "Falló al conectar al servicio de ubicación"
 
-#: ../src/mainWindow.js:355
+#: ../src/mainWindow.js:354
 msgid "Position not found"
 msgstr "Posición no encontrada"
 
-#: ../src/mainWindow.js:400
+#: ../src/mainWindow.js:399
 msgid "translator-credits"
 msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2013"
 
-#: ../src/mainWindow.js:403
+#: ../src/mainWindow.js:402
 msgid "A map application for GNOME"
 msgstr "Una aplicación de mapas para GNOME"
 
-#: ../src/mapView.js:213
-msgid "Failed to parse GeoJSON file"
-msgstr "Falló al analizar el archivo GeoJSON"
+#: ../src/mapView.js:211
+msgid "File type is not supported"
+msgstr "Tipo de archivo no soportado"
 
-#: ../src/mapView.js:232
+#: ../src/mapView.js:218
+#| msgid "Failed to open URI"
+msgid "Failed to open layer"
+msgstr "Falló al abrir la capa"
+
+#: ../src/mapView.js:254
 msgid "Failed to open GeoURI"
 msgstr "Falló al abrir el GeoURI"
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: ../src/osmConnection.js:440
+#: ../src/osmConnection.js:439
 msgid "Incorrect user name or password"
 msgstr "Nombre de usuario o contraseña no válidos"
 
-#: ../src/osmConnection.js:442
+#: ../src/osmConnection.js:441
 msgid "Success"
 msgstr "Correcto"
 
-#: ../src/osmConnection.js:444
+#: ../src/osmConnection.js:443
 msgid "Bad request"
 msgstr "Solicitud incorrecta"
 
-#: ../src/osmConnection.js:446
+#: ../src/osmConnection.js:445
 msgid "Object not found"
 msgstr "Objeto no encontrado"
 
-#: ../src/osmConnection.js:448
+#: ../src/osmConnection.js:447
 msgid "Conflict, someone else has just modified the object"
 msgstr "Conflicto, alguien acaba de modificar el objeto"
 
-#: ../src/osmConnection.js:450
+#: ../src/osmConnection.js:449
 msgid "Object has been deleted"
 msgstr "Se ha eliminado el objeto"
 
-#: ../src/osmConnection.js:452
+#: ../src/osmConnection.js:451
 msgid "Way or relation refers to non-existing children"
 msgstr "La vía o la relación se refiere a hijos no existentes"
 
@@ -643,7 +668,7 @@ msgstr "La vía o la relación se refiere a hijos no existentes"
 msgid "Name"
 msgstr "Nombre"
 
-#: ../src/osmEditDialog.js:72 ../src/placeBubble.js:129
+#: ../src/osmEditDialog.js:72 ../src/placeBubble.js:132
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -675,39 +700,39 @@ msgstr "Limitado"
 msgid "Designated"
 msgstr "Designado"
 
-#: ../src/placeBubble.js:110
+#: ../src/placeBubble.js:113
 #, javascript-format
 msgid "Postal code: %s"
 msgstr "Código postal: %s"
 
-#: ../src/placeBubble.js:112
+#: ../src/placeBubble.js:115
 #, javascript-format
 msgid "Country code: %s"
 msgstr "Código del país: %s"
 
-#: ../src/placeBubble.js:121
+#: ../src/placeBubble.js:124
 #, javascript-format
 msgid "Population: %s"
 msgstr "Población: %s"
 
-#: ../src/placeBubble.js:124
+#: ../src/placeBubble.js:127
 #, javascript-format
 msgid "Opening hours: %s"
 msgstr "Horario de apertura: %s"
 
-#: ../src/placeBubble.js:134
+#: ../src/placeBubble.js:137
 #, javascript-format
 msgid "Wheelchair access: %s"
 msgstr "Acceso para sillas de ruedas: %s"
 
-#: ../src/placeEntry.js:213
+#: ../src/placeEntry.js:190
 msgid "Failed to parse Geo URI"
 msgstr "Falló al analizar el URI de Geo"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: ../src/place.js:137
+#: ../src/place.js:140
 msgid "yes"
 msgstr "sí"
 
@@ -716,7 +741,7 @@ msgstr "sí"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:144
+#: ../src/place.js:147
 msgid "limited"
 msgstr "limitado"
 
@@ -724,7 +749,7 @@ msgstr "limitado"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: ../src/place.js:150
+#: ../src/place.js:153
 msgid "no"
 msgstr "no"
 
@@ -733,7 +758,7 @@ msgstr "no"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:157
+#: ../src/place.js:160
 msgid "designated"
 msgstr "designado"
 
@@ -754,7 +779,7 @@ msgid "Failed to open URI"
 msgstr "Falló al abrir el URI"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:230
+#: ../src/sidebar.js:210
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Tiempo estimado: %s"
@@ -887,53 +912,56 @@ msgid "%s-%s"
 msgstr "%s-%s"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:256
+#: ../src/utils.js:228
 msgid "Unknown"
 msgstr "Desconocida"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:259
+#: ../src/utils.js:231
 msgid "Exact"
 msgstr "Exacta"
 
-#: ../src/utils.js:363
+#: ../src/utils.js:334
 #, javascript-format
 msgid "%f h"
 msgstr "%f h"
 
-#: ../src/utils.js:365
+#: ../src/utils.js:336
 #, javascript-format
 msgid "%f min"
 msgstr "%f min"
 
-#: ../src/utils.js:367
+#: ../src/utils.js:338
 #, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
 #. Translators: This is a distance measured in kilometers
-#: ../src/utils.js:378
+#: ../src/utils.js:349
 #, javascript-format
 msgid "%f km"
 msgstr "%f km"
 
 #. Translators: This is a distance measured in meters
-#: ../src/utils.js:381
+#: ../src/utils.js:352
 #, javascript-format
 msgid "%f m"
 msgstr "%f m"
 
 #. Translators: This is a distance measured in miles
-#: ../src/utils.js:389
+#: ../src/utils.js:360
 #, javascript-format
 msgid "%f mi"
 msgstr "%f mi"
 
 #. Translators: This is a distance measured in feet
-#: ../src/utils.js:392
+#: ../src/utils.js:363
 #, javascript-format
 msgid "%f ft"
 msgstr "%f pies"
+
+#~ msgid "Failed to parse GeoJSON file"
+#~ msgstr "Falló al analizar el archivo GeoJSON"
 
 #~ msgid "_Share"
 #~ msgstr "_Compartir"
