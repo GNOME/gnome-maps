@@ -31,7 +31,7 @@ const Application = imports.application;
 const Location = imports.location;
 const Place = imports.place;
 const PlaceStore = imports.placeStore;
-const SearchPopup = imports.searchPopup;
+const PlacePopover = imports.placePopover;
 const Utils = imports.utils;
 
 const PlaceEntry = new Lang.Class({
@@ -137,9 +137,9 @@ const PlaceEntry = new Lang.Class({
     },
 
     _createPopover: function(numVisible, maxChars) {
-        let popover = new SearchPopup.SearchPopup({ num_visible:   numVisible,
-                                                    relative_to:   this,
-                                                    maxChars:      maxChars});
+        let popover = new PlacePopover.PlacePopover({ num_visible:   numVisible,
+                                                      relative_to:   this,
+                                                      maxChars:      maxChars});
 
         this.connect('size-allocate', (function(widget, allocation) {
             // Magic number to make the alignment pixel perfect.
