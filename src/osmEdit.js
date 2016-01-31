@@ -29,6 +29,9 @@ const OSMEditDialog = imports.osmEditDialog;
 const OSMConnection = imports.osmConnection;
 const Utils = imports.utils;
 
+/* minimum zoom level at which to offer adding a location */
+const MIN_ADD_LOCATION_ZOOM_LEVEL = 16;
+
 const OSMEdit = new Lang.Class({
     Name: 'OSMEdit',
     Extends: GObject.Object,
@@ -44,24 +47,33 @@ const OSMEdit = new Lang.Class({
         return this._osmObject;
     },
 
-    showEditDialog: function(parentWindow, place) {
+    createEditDialog: function(parentWindow, place) {
         let dialog = new OSMEditDialog.OSMEditDialog({
             transient_for: parentWindow,
             place: place
         });
-        let response = dialog.run();
-        dialog.destroy();
-        return response;
+
+        return dialog;
     },
 
-    showAccountDialog: function(parentWindow, closeOnSignIn) {
+    createEditNewDialog: function(parentWindow, latitude, longitude) {
+        let dialog = new OSMEditDialog.OSMEditDialog({
+            transient_for: parentWindow,
+            addLocation: true,
+            latitude: latitude,
+            longitude: longitude
+        });
+
+        return dialog;
+    },
+
+    createAccountDialog: function(parentWindow, closeOnSignIn) {
         let dialog = new OSMAccountDialog.OSMAccountDialog({
             transient_for: parentWindow,
             closeOnSignIn: closeOnSignIn
         });
-        let response = dialog.run();
-        dialog.destroy();
-        return response;
+
+        return dialog;
     },
 
     fetchObject: function(place, callback, cancellable) {

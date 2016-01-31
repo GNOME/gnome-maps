@@ -164,7 +164,10 @@ const Application = new Lang.Class({
     },
 
     _onOsmAccountSetupActivate: function() {
-        osmEdit.showAccountDialog(this._mainWindow, false);
+        let dialog = osmEdit.createAccountDialog(this._mainWindow, false);
+
+        dialog.show();
+        dialog.connect('response', dialog.destroy.bind(dialog));
     },
 
     _addContacts: function() {

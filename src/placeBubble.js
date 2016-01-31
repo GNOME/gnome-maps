@@ -225,24 +225,41 @@ const PlaceBubble = new Lang.Class({
         let osmEdit = Application.osmEdit;
         /* if the user is not alread signed in, show the account dialog */
         if (!osmEdit.isSignedIn) {
-            let response = osmEdit.showAccountDialog(this.get_toplevel(), true);
-            if (response !== OSMAccountDialog.Response.SIGNED_IN)
-                return;
+            let dialog = osmEdit.createAccountDialog(this.get_toplevel(), true);
+
+            dialog.show();
+            dialog.connect('response', (function(response) {
+                dialog.destroy();
+                if (response === OSMAccountDialog.Response.SIGNED_IN)
+                    this._edit();
+            }).bind(this));
+
+            return;
         }
 
-        let response = osmEdit.showEditDialog(this.get_toplevel(), this._place);
+        this._edit();
+    },
 
-        switch (response) {
-        case OSMEditDialog.Response.UPLOADED:
-            // update place
-            let object = osmEdit.object;
-            OSMUtils.updatePlaceFromOSMObject(this._place, object);
-            // refresh place view
-            this._clearView();
-            this._populate(this._place);
-            break;
-        default:
-            break;
-        }
+    _edit: function() {
+        let osmEdit = Application.osmEdit;
+        let dialog = osmEdit.createEditDialog(this.get_toplevel(), this._place);
+
+        dialog.show();
+        dialog.connect('response', (function(response) {
+            dialog.destroy();
+
+            switch (response) {
+            case OSMEditDialog.Response.UPLOADED:
+                // update place
+                let object = osmEdit.object;
+                OSMUtils.updatePlaceFromOSMObject(this._place, object);
+                // refresh place view
+                this._clearView();
+                this._populate(this._place);
+                break;
+            default:
+                break;
+            }
+        }).bind(this));
     }
 });

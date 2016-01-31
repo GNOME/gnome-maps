@@ -30,8 +30,12 @@ const Application = imports.application;
 const ExportViewDialog = imports.exportViewDialog;
 const Lang = imports.lang;
 const Location = imports.location;
+const OSMAccountDialog = imports.osmAccountDialog;
+const OSMEdit = imports.osmEdit;
+const OSMEditDialog = imports.osmEditDialog;
 const Place = imports.place;
 const Utils = imports.utils;
+const ZoomInNotification = imports.zoomInNotification;
 
 const ContextMenu = new Lang.Class({
     Name: 'ContextMenu',
@@ -40,6 +44,7 @@ const ContextMenu = new Lang.Class({
     InternalChildren: [ 'whatsHereItem',
                         'geoURIItem',
                         'exportItem',
+                        'addOSMLocationItem',
                         'routeItem' ],
 
     _init: function(params) {
@@ -57,6 +62,8 @@ const ContextMenu = new Lang.Class({
                                  this._onGeoURIActivated.bind(this));
         this._exportItem.connect('activate',
                                  this._onExportActivated.bind(this));
+        this._addOSMLocationItem.connect('activate',
+                                         this._onAddOSMLocationActivated.bind(this));
         this._routeItem.connect('activate',
                                 this._onRouteActivated.bind(this));
         Application.routeService.query.connect('notify::points',
@@ -130,6 +137,51 @@ const ContextMenu = new Lang.Class({
         let uri = location.to_uri(Geocode.LocationURIScheme.GEO);
 
         clipboard.set_text(uri, uri.length);
+    },
+
+    _onAddOSMLocationActivated: function() {
+        let osmEdit = Application.osmEdit;
+        /* if the user is not alread signed in, show the account dialog */
+        if (!osmEdit.isSignedIn) {
+            let dialog = osmEdit.createAccountDialog(this.get_toplevel(), true);
+
+            dialog.show();
+            dialog.connect('response', (function (response) {
+                dialog.destroy();
+                if (response === OSMAccountDialog.Response.SIGNED_IN)
+                    this._addOSMLocation();
+            }).bind(this));
+
+            return;
+        }
+
+        this._addOSMLocation();
+    },
+
+    _addOSMLocation: function() {
+        let osmEdit = Application.osmEdit;
+
+        if (this._mapView.view.get_zoom_level() < OSMEdit.MIN_ADD_LOCATION_ZOOM_LEVEL) {
+            let zoomInNotification =
+                new ZoomInNotification.ZoomInNotification({ longitude: this._longitude,
+                                                            latitude: this._latitude,
+                                                            view: this._mapView.view });
+            Application.notificationManager.showNotification(zoomInNotification);
+            return;
+        }
+
+        let dialog =
+            osmEdit.createEditNewDialog(this.get_toplevel(),
+                                      this._latitude, this._longitude);
+
+        dialog.show();
+        dialog.connect('response', (function (response) {
+            dialog.destroy();
+            if (response === OSMEditDialog.Response.UPLOADED) {
+                Application.notificationManager.showMessage(
+                    _("Location was added to the map, note that it may take a while before it shows on the map and in search results."));
+            }
+        }).bind(this));
     },
 
     _activateExport: function() {
