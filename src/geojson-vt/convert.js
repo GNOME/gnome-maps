@@ -22,6 +22,11 @@ function convert(data, tolerance) {
 }
 
 function convertFeature(features, feature, tolerance) {
+    if (feature.geometry === null) {
+        // ignore features with null geometry
+        return;
+    }
+
     var geom = feature.geometry,
         type = geom.type,
         coords = geom.coordinates,
@@ -95,7 +100,7 @@ function projectPoint(p) {
         x = (p[0] / 360 + 0.5),
         y = (0.5 - 0.25 * Math.log((1 + sin) / (1 - sin)) / Math.PI);
 
-    y = y < -1 ? -1 :
+    y = y < 0 ? 0 :
         y > 1 ? 1 : y;
 
     return [x, y, 0];
