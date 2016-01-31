@@ -119,7 +119,7 @@ const LayersPopover = new Lang.Class({
 
     _onLoadLayerClicked: function(button) {
         let fileChooser = new ShapeLayerFileChooser({
-            transient_for: this.get_parent(),
+            transient_for: this.get_parent()
         });
 
         if (fileChooser.run() === Gtk.ResponseType.OK) {
