@@ -3,3 +3,19 @@ root: true
 
 env:
     es6: true
+
+globals:
+    # Needed until we produce our own eslint-gjs plugin.
+    ARGV: false
+    Debugger: false
+    GjsFileImporter: false
+    InternalError: false
+    Iterator: false
+    StopIteration: false
+    imports: false
+    log: false
+    logError: false
+    print: false
+    printerr: false
+    uneval: false
+    window: false
