@@ -38,6 +38,7 @@ const MainWindow = imports.mainWindow;
 const Maps = imports.gi.GnomeMaps;
 const NotificationManager = imports.notificationManager;
 const OSMEdit = imports.osmEdit;
+const OSMTypeSearchEntry = imports.osmTypeSearchEntry;
 const PlaceStore = imports.placeStore;
 const RouteService = imports.routeService;
 const Settings = imports.settings;
@@ -56,6 +57,9 @@ let checkInManager = null;
 let contactStore = null;
 let osmEdit = null;
 let normalStartup = true;
+
+const _ensuredTypes = [WebKit2.WebView,
+                       OSMTypeSearchEntry.OSMTypeSearchEntry];
 
 const Application = new Lang.Class({
     Name: 'Application',
@@ -83,7 +87,9 @@ const Application = new Lang.Class({
         GLib.set_prgname('gnome-maps');
 
         /* Needed to be able to use in UI files */
-        GObject.type_ensure(WebKit2.WebView);
+        _ensuredTypes.forEach(function(type) {
+            GObject.type_ensure(type);
+        });
 
         this.parent({ application_id: 'org.gnome.Maps',
                       flags: Gio.ApplicationFlags.HANDLES_OPEN });
