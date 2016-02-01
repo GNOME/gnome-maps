@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-01-22 17:09+0000\n"
-"PO-Revision-Date: 2016-01-23 18:31+0100\n"
+"POT-Creation-Date: 2016-02-01 17:36+0000\n"
+"PO-Revision-Date: 2016-02-01 19:42+0100\n"
 "Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -205,7 +205,7 @@ msgstr "OpenStreetMap-Konto einrichten"
 msgid "About"
 msgstr "Info"
 
-#: ../data/ui/app-menu.ui.h:4 ../data/ui/help-overlay.ui.h:5
+#: ../data/ui/app-menu.ui.h:4
 msgid "Quit"
 msgstr "Verlassen"
 
@@ -284,34 +284,47 @@ msgid "Include route and markers"
 msgstr "Route und Markierungen einbeziehen"
 
 #: ../data/ui/help-overlay.ui.h:1
+msgctxt "shortcut window"
 msgid "General"
 msgstr "Allgemein"
 
 #: ../data/ui/help-overlay.ui.h:2
+msgctxt "shortcut window"
 msgid "Show help"
 msgstr "Hilfe anzeigen"
 
 #: ../data/ui/help-overlay.ui.h:3
+msgctxt "shortcut window"
 msgid "Search"
 msgstr "Suchen"
 
-#: ../data/ui/help-overlay.ui.h:4 ../data/ui/main-window.ui.h:4
+#: ../data/ui/help-overlay.ui.h:4
+msgctxt "shortcut window"
 msgid "Toggle route planner"
 msgstr "Routenplaner ein-/ausschalten"
 
+#: ../data/ui/help-overlay.ui.h:5
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Verlassen"
+
 #: ../data/ui/help-overlay.ui.h:6
+msgctxt "shortcut window"
 msgid "Map View"
 msgstr "Kartenansicht"
 
 #: ../data/ui/help-overlay.ui.h:7
+msgctxt "shortcut window"
 msgid "Zoom in"
 msgstr "Vergrößern"
 
 #: ../data/ui/help-overlay.ui.h:8
+msgctxt "shortcut window"
 msgid "Zoom out"
 msgstr "Verkleinern"
 
-#: ../data/ui/help-overlay.ui.h:9 ../data/ui/main-window.ui.h:2
+#: ../data/ui/help-overlay.ui.h:9
+msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Zum aktuellen Ort springen"
 
@@ -327,9 +340,17 @@ msgstr "Schalten Sie die Ortungsdienste ein, um Ihren Ort zu bestimmen"
 msgid "Location Settings"
 msgstr "Einstellungen der Ortungsdienste"
 
+#: ../data/ui/main-window.ui.h:2
+msgid "Go to current location"
+msgstr "Zum aktuellen Ort springen"
+
 #: ../data/ui/main-window.ui.h:3
 msgid "Choose map type"
 msgstr "Wählen Sie den Kartentyp"
+
+#: ../data/ui/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr "Routenplaner ein-/ausschalten"
 
 #: ../data/ui/main-window.ui.h:5
 msgid "Toggle favorites"
@@ -466,6 +487,10 @@ msgstr "Ö_ffnen"
 msgid "Open Layer"
 msgstr "Ebene öffnen"
 
+#: ../data/ui/shape-layer-row.ui.h:1
+msgid "Toggle visible"
+msgstr "Sichtbarkeit umschalten"
+
 #: ../data/ui/sidebar.ui.h:1
 msgid "Route search by GraphHopper"
 msgstr "Routenplanung von GraphHopper"
@@ -501,7 +526,7 @@ msgstr "Erforderliche Attribute fehlen"
 msgid "Could not find OSM element"
 msgstr "OSM-Element kann nicht gefunden werden"
 
-#: ../src/application.js:89
+#: ../src/application.js:90
 msgid "A path to a local tiles directory structure"
 msgstr "Pfad zu einer lokalen Kachel-Ordnerstruktur"
 
@@ -570,6 +595,18 @@ msgid ""
 msgstr ""
 "Die Anmeldedaten sind abgelaufen. Bitte öffnen Sie Online-Konten, um sich "
 "anzumelden und das Konto zu aktivieren."
+
+#: ../src/contextMenu.js:90
+msgid "Route from here"
+msgstr "Route von hier"
+
+#: ../src/contextMenu.js:92
+msgid "Add destination"
+msgstr "Ziel hinzufügen"
+
+#: ../src/contextMenu.js:94
+msgid "Route to here"
+msgstr "Route hierher"
 
 #: ../src/exportViewDialog.js:156
 msgid "Filesystem is read only"
@@ -683,7 +720,7 @@ msgstr "Weg oder Bezug verweist auf nicht existierende Unterobjekte"
 msgid "Name"
 msgstr "Name"
 
-#: ../src/osmEditDialog.js:72 ../src/placeBubble.js:132
+#: ../src/osmEditDialog.js:72 ../src/placeBubble.js:133
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -715,27 +752,27 @@ msgstr "Begrenzt"
 msgid "Designated"
 msgstr "Geeignet"
 
-#: ../src/placeBubble.js:113
+#: ../src/placeBubble.js:114
 #, javascript-format
 msgid "Postal code: %s"
 msgstr "Postleitzahl: %s"
 
-#: ../src/placeBubble.js:115
+#: ../src/placeBubble.js:116
 #, javascript-format
 msgid "Country code: %s"
 msgstr "Länder-Code: %s"
 
-#: ../src/placeBubble.js:124
+#: ../src/placeBubble.js:125
 #, javascript-format
 msgid "Population: %s"
 msgstr "Bevölkerung: %s"
 
-#: ../src/placeBubble.js:127
+#: ../src/placeBubble.js:128
 #, javascript-format
 msgid "Opening hours: %s"
 msgstr "Öffnungszeiten: %s"
 
-#: ../src/placeBubble.js:137
+#: ../src/placeBubble.js:138
 #, javascript-format
 msgid "Wheelchair access: %s"
 msgstr "Barrierefreier Zugang: %s"
