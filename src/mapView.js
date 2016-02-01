@@ -100,6 +100,22 @@ const MapView = new Lang.Class({
         this._connectRouteSignals();
     },
 
+    _initScale: function(view) {
+        this._scale = new Champlain.Scale({ visible: true });
+        this._scale.connect_view(view);
+
+        if (Utils.getMeasurementSystem() === Utils.METRIC_SYSTEM)
+            this._scale.unit = Champlain.Unit.KM;
+        else
+            this._scale.unit = Champlain.Unit.MILES;
+
+        this._scale.set_x_expand(true);
+        this._scale.set_y_expand(true);
+        this._scale.set_x_align(Clutter.ActorAlign.START);
+        this._scale.set_y_align(Clutter.ActorAlign.END);
+        view.add_child(this._scale);
+    },
+
     _initView: function(opening) {
         let view = this.get_view();
         view.zoom_level = 3;
@@ -117,6 +133,8 @@ const MapView = new Lang.Class({
                 view.min_zoom_level = MapMinZoom;
             }
         }).bind(this));
+
+        this._initScale(view);
         return view;
     },
 
@@ -196,6 +214,10 @@ const MapView = new Lang.Class({
         overlay_sources.forEach((function(source) {
             this.view.add_overlay_source(source, 255);
         }).bind(this));
+    },
+
+    toggleScale: function() {
+        this._scale.visible = !this._scale.visible;
     },
 
     openShapeLayers: function(files) {

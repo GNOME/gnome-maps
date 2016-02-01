@@ -200,6 +200,10 @@ const MainWindow = new Lang.Class({
                 accels: ['minus', '<Primary>minus', 'KP_Subtract', '<Primary>KP_Subtract'],
                 onActivate:  this._mapView.view.zoom_out.bind(this._mapView.view)
             },
+            'toggle-scale': {
+                accels: ['<Primary>S'],
+                onActivate:  this._mapView.toggleScale.bind(this._mapView)
+            },
             'find': {
                 accels: ['<Primary>F'],
                 onActivate: this._placeEntry.grab_focus.bind(this._placeEntry)
