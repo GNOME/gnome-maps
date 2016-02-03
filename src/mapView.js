@@ -83,7 +83,7 @@ const MapView = new Lang.Class({
         let mapType = params.mapType || MapType.STREET;
         delete params.mapType;
 
-        this.view = this._initView(params.opening);
+        this.view = this._initView();
         this._initLayers();
 
         this._factory = Champlain.MapSourceFactory.dup_default();
@@ -116,7 +116,7 @@ const MapView = new Lang.Class({
         view.add_child(this._scale);
     },
 
-    _initView: function(opening) {
+    _initView: function() {
         let view = this.get_view();
         view.zoom_level = 3;
         view.min_zoom_level = MapMinZoom;
@@ -124,7 +124,7 @@ const MapView = new Lang.Class({
         view.reactive = true;
         view.kinetic_mode = true;
 
-        if (!opening)
+        if (Application.normalStartup)
             view.connect('notify::realized', this._goToStoredLocation.bind(this));
         view.connect('notify::latitude', this._onViewMoved.bind(this));
         // switching map type will set view min-zoom-level from map source

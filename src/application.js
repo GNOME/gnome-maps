@@ -53,6 +53,7 @@ let networkMonitor = null;
 let checkInManager = null;
 let contactStore = null;
 let osmEdit = null;
+let normalStartup = true;
 
 const Application = new Lang.Class({
     Name: 'Application',
@@ -94,6 +95,7 @@ const Application = new Lang.Class({
             if (options.contains('local')) {
                 let variant = options.lookup_value('local', null);
                 this.local_tile_path = variant.deep_unpack();
+                normalStartup = false;
             }
 
             return -1;
@@ -248,8 +250,7 @@ const Application = new Lang.Class({
         let overlay = new Gtk.Overlay({ visible: true, can_focus: false });
         notificationManager = new NotificationManager.NotificationManager(overlay);
         this._mainWindow = new MainWindow.MainWindow({ application: this,
-                                                       overlay: overlay,
-                                                       opening: this._opening });
+                                                       overlay: overlay });
         this._mainWindow.connect('destroy', this._onWindowDestroy.bind(this));
         if (GLib.getenv('MAPS_DEBUG') === 'focus') {
             this._mainWindow.connect('set-focus', function(window, widget) {
@@ -289,7 +290,7 @@ const Application = new Lang.Class({
     },
 
     vfunc_open: function(files) {
-        this._opening = true;
+        normalStartup = false;
         this.activate();
 
         let mapView = this._mainWindow.mapView;
