@@ -63,35 +63,35 @@ function translateOpeningHours(string) {
         let part1, part2, part3;
 
         switch (splitParts.length) {
-            case 1:
-                return _translateOpeningHoursPart(splitParts[0].trim());
-            case 2:
-                part1 = _translateOpeningHoursPart(splitParts[0].trim());
-                part2 = _translateOpeningHoursPart(splitParts[1].trim());
+        case 1:
+            return _translateOpeningHoursPart(splitParts[0].trim());
+        case 2:
+            part1 = _translateOpeningHoursPart(splitParts[0].trim());
+            part2 = _translateOpeningHoursPart(splitParts[1].trim());
 
-                /* Translators:
-                 * This is a format string with two separate time ranges
-                 * such as "Mo-Fr 10:00-19:00 Sa 12:00-16:00"
-                 * The space between the format place holders could be
-                 * substituted with the appropriate separator.
-                 */
-                return C_("time range list", "%s %s").format(part1, part2);
-            case 3:
-                part1 = _translateOpeningHoursPart(splitParts[0].trim());
-                part2 = _translateOpeningHoursPart(splitParts[1].trim());
-                part3 = _translateOpeningHoursPart(splitParts[2].trim());
+            /* Translators:
+             * This is a format string with two separate time ranges
+             * such as "Mo-Fr 10:00-19:00 Sa 12:00-16:00"
+             * The space between the format place holders could be
+             * substituted with the appropriate separator.
+             */
+            return C_("time range list", "%s %s").format(part1, part2);
+        case 3:
+            part1 = _translateOpeningHoursPart(splitParts[0].trim());
+            part2 = _translateOpeningHoursPart(splitParts[1].trim());
+            part3 = _translateOpeningHoursPart(splitParts[2].trim());
 
-                /* Translators:
-                 * This is a format string with three separate time ranges
-                 * such as "Mo-Fr 10:00-19:00 Sa 10:00-17:00 Su 12:00-16:00"
-                 * The space between the format place holders could be
-                 * substituted with the appropriate separator.
-                 */
+            /* Translators:
+             * This is a format string with three separate time ranges
+             * such as "Mo-Fr 10:00-19:00 Sa 10:00-17:00 Su 12:00-16:00"
+             * The space between the format place holders could be
+             * substituted with the appropriate separator.
+             */
             return C_("time range list", "%s %s %s").format(part1,
                                                             part2,
                                                             part3);
-            default:
-                return string;
+        default:
+            return string;
         }
     }
 
@@ -107,9 +107,9 @@ function _translateOpeningHoursPart(string) {
 
     if (splitString.length == 2) {
         let dayIntervalSpec =
-            _translateOpeningHoursDayIntervalList(splitString[0].trim());
+                _translateOpeningHoursDayIntervalList(splitString[0].trim());
         let timeIntervalSpec =
-            _translateOpeningHoursTimeIntervalList(splitString[1].trim());
+                _translateOpeningHoursTimeIntervalList(splitString[1].trim());
 
         /* Translators:
          * This is a format string consisting of a part specifying the days for
@@ -118,8 +118,8 @@ function _translateOpeningHoursPart(string) {
          * The space between the format place holders could be substituted with
          * the appropriate separator or phrase and the ordering of the arguments
          * can be rearranged with the %n#s syntax. */
-        return C_("time range component", "%s %s").
-                    format(dayIntervalSpec, timeIntervalSpec);
+        return C_("time range component", "%s %s").format(dayIntervalSpec,
+                                                          timeIntervalSpec);
     } else {
         // for an unknown format, just output the raw value
         return string;
@@ -136,39 +136,40 @@ function _translateOpeningHoursDayIntervalList(string) {
     let interval1, interval2, interval3;
 
     switch (splitParts.length) {
-        case 1:
-            return _translateOpeningHoursDayInterval(splitParts[0].trim());
-        case 2:
-            interval1 = _translateOpeningHoursDayInterval(splitParts[0].trim());
-            interval2 = _translateOpeningHoursDayInterval(splitParts[1].trim());
-            /* Translators:
-             * This represents a format string consisting of two day interval
-             * specifications.
-             * For example:
-             * Mo-Fr,Sa
-             * where the "Mo-Fr" and "Sa" parts are replaced by the %s
-             * place holder.
-             * The separator (,) could be replaced with a translated variant or
-             * a phrase if appropriate. */
-            return C_("day interval list", "%s,%s").format(interval1, interval2);
-        case 3:
-            interval1 = _translateOpeningHoursDayInterval(splitParts[0].trim());
-            interval2 = _translateOpeningHoursDayInterval(splitParts[1].trim());
-            interval3 = _translateOpeningHoursDayInterval(splitParts[2].trim());
-            /* Translators:
-             * This represents a format string consisting of three day interval
-             * specifications.
-             * For example:
-             * Mo-We,Fr,Su
-             * where the "Mo-We", "Fr", and "Su" parts are replaced by the
-             * %s place holder.
-             * The separator (,) could be replaced with a translated variant or
-             * a phrase if appropriate. */
-            return C_("day interval list", "%s,%s,%s").
-                format(interval1, interval2, interval3);
-        default:
-            // for other formats, just return the raw string
-            return string;
+    case 1:
+        return _translateOpeningHoursDayInterval(splitParts[0].trim());
+    case 2:
+        interval1 = _translateOpeningHoursDayInterval(splitParts[0].trim());
+        interval2 = _translateOpeningHoursDayInterval(splitParts[1].trim());
+        /* Translators:
+         * This represents a format string consisting of two day interval
+         * specifications.
+         * For example:
+         * Mo-Fr,Sa
+         * where the "Mo-Fr" and "Sa" parts are replaced by the %s
+         * place holder.
+         * The separator (,) could be replaced with a translated variant or
+         * a phrase if appropriate. */
+        return C_("day interval list", "%s,%s").format(interval1, interval2);
+    case 3:
+        interval1 = _translateOpeningHoursDayInterval(splitParts[0].trim());
+        interval2 = _translateOpeningHoursDayInterval(splitParts[1].trim());
+        interval3 = _translateOpeningHoursDayInterval(splitParts[2].trim());
+        /* Translators:
+         * This represents a format string consisting of three day interval
+         * specifications.
+         * For example:
+         * Mo-We,Fr,Su
+         * where the "Mo-We", "Fr", and "Su" parts are replaced by the
+         * %s place holder.
+         * The separator (,) could be replaced with a translated variant or
+         * a phrase if appropriate. */
+        return C_("day interval list", "%s,%s,%s").format(interval1,
+                                                          interval2,
+                                                          interval3);
+    default:
+        // for other formats, just return the raw string
+        return string;
     }
 }
 
@@ -186,21 +187,21 @@ function _translateOpeningHoursDayInterval(string) {
         return _("every day");
 
     switch (splitString.length) {
-        case 1:
-            return _translateOpeningHoursDay(splitString[0].trim());
-        case 2:
-            let from = splitString[0].trim();
-            let to = splitString[1].trim();
+    case 1:
+        return _translateOpeningHoursDay(splitString[0].trim());
+    case 2:
+        let from = splitString[0].trim();
+        let to = splitString[1].trim();
 
-            /* Translators:
-             * This represents a range of days with a starting and ending day.
-             */
-            return C_("day range", "%s-%s").format(
-                _translateOpeningHoursDay(from),
-                _translateOpeningHoursDay(to));
-        default:
-            // unknown format, just return the input
-            return string;
+        /* Translators:
+         * This represents a range of days with a starting and ending day.
+         */
+        return C_("day range", "%s-%s").format(
+            _translateOpeningHoursDay(from),
+            _translateOpeningHoursDay(to));
+    default:
+        // unknown format, just return the input
+        return string;
     }
 }
 
@@ -234,26 +235,26 @@ function _translateOpeningHoursTimeIntervalList(string) {
     let splitString = string.split(',');
 
     switch (splitString.length) {
-        case 1:
-            return _translateOpeningHoursTimeInterval(splitString[0].trim());
-        case 2:
-            let interval1 = splitString[0].trim();
-            let interval2 = splitString[1].trim();
+    case 1:
+        return _translateOpeningHoursTimeInterval(splitString[0].trim());
+    case 2:
+        let interval1 = splitString[0].trim();
+        let interval2 = splitString[1].trim();
 
-            /* Translators:
-             * This is a list with two time intervals, such as:
-             * 09:00-12:00, 13:00-14:00
-             * The intervals are represented by the %s place holders and
-             * appropriate white space or connected phrase could be modified by
-             * the translation. The order of the arguments can be rearranged
-             * using the %n$s syntax.
-             */
-            return C_("time interval list", "%s, %s").format(
-                _translateOpeningHoursTimeInterval(interval1),
-                _translateOpeningHoursTimeInterval(interval2));
-        default:
-            // for other number of components, just return the input
-            return string;
+        /* Translators:
+         * This is a list with two time intervals, such as:
+         * 09:00-12:00, 13:00-14:00
+         * The intervals are represented by the %s place holders and
+         * appropriate white space or connected phrase could be modified by
+         * the translation. The order of the arguments can be rearranged
+         * using the %n$s syntax.
+         */
+        return C_("time interval list", "%s, %s").format(
+            _translateOpeningHoursTimeInterval(interval1),
+            _translateOpeningHoursTimeInterval(interval2));
+    default:
+        // for other number of components, just return the input
+        return string;
     }
 }
 
@@ -298,7 +299,7 @@ function _translateOpeningHoursTime(string) {
 
         // if the parts aren't numbers
         if (h % 1 !== 0 || min % 1 !== 0)
-           return string;
+            return string;
 
         // if the hours or minute components are out of range
         if (h > 24 || h < 0 || min > 59 || min < 0)
