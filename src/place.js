@@ -181,6 +181,7 @@ const Place = new Lang.Class({
 
         return { id: this.osm_id,
                  osm_type: this.osm_type,
+                 place_type: this.place_type,
                  name: this.name,
                  bounding_box: bounding_box,
                  this_type: this.this_type,
