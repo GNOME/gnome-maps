@@ -177,7 +177,7 @@ const PlaceBubble = new Lang.Class({
         let response = osmEdit.showEditDialog(this.get_toplevel(), this._place);
 
         switch (response) {
-        case OSMEditDialog.Response.UPLOADED:
+        case OSMEditDialog.Response.UPLOADED: {
             // update place
             let object = osmEdit.object;
             OSMUtils.updatePlaceFromOSMObject(this._place, object);
@@ -185,6 +185,7 @@ const PlaceBubble = new Lang.Class({
             this._clearView();
             this._populate(this._place);
             break;
+        }
         default:
             break;
         }

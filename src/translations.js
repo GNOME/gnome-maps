@@ -189,7 +189,7 @@ function _translateOpeningHoursDayInterval(string) {
     switch (splitString.length) {
     case 1:
         return _translateOpeningHoursDay(splitString[0].trim());
-    case 2:
+    case 2: {
         let from = splitString[0].trim();
         let to = splitString[1].trim();
 
@@ -199,6 +199,7 @@ function _translateOpeningHoursDayInterval(string) {
         return C_("day range", "%s-%s").format(
             _translateOpeningHoursDay(from),
             _translateOpeningHoursDay(to));
+    }
     default:
         // unknown format, just return the input
         return string;
@@ -237,7 +238,7 @@ function _translateOpeningHoursTimeIntervalList(string) {
     switch (splitString.length) {
     case 1:
         return _translateOpeningHoursTimeInterval(splitString[0].trim());
-    case 2:
+    case 2: {
         let interval1 = splitString[0].trim();
         let interval2 = splitString[1].trim();
 
@@ -252,6 +253,7 @@ function _translateOpeningHoursTimeIntervalList(string) {
         return C_("time interval list", "%s, %s").format(
             _translateOpeningHoursTimeInterval(interval1),
             _translateOpeningHoursTimeInterval(interval2));
+    }
     default:
         // for other number of components, just return the input
         return string;
