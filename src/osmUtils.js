@@ -49,6 +49,7 @@ function getWikipediaOSMArticleFormatFromUrl(url) {
 function updatePlaceFromOSMObject(place, object) {
     place.name = object.get_tag('name');
     place.population = object.get_tag('population');
+    place.website = object.get_tag('website');
     place.wiki = object.get_tag('wikipedia');
     place.openingHours = object.get_tag('opening_hours');
     place.wheelchair = object.get_tag('wheelchair');

@@ -36,6 +36,9 @@ const Place = new Lang.Class({
         this._population = params.population;
         delete params.population;
 
+        this._website = params.website;
+        delete params.website;
+
         this._wiki = params.wiki;
         delete params.wiki;
 
@@ -98,6 +101,14 @@ const Place = new Lang.Class({
 
     get population() {
         return this._population;
+    },
+
+    set website(v) {
+        this._website = v;
+    },
+
+    get website() {
+        return this._website;
     },
 
     set wiki(v) {
@@ -198,6 +209,7 @@ const Place = new Lang.Class({
                  country_code: this.contry_code,
                  continent: this.continent,
                  population: this.population,
+                 website: this.website,
                  wiki: this.wiki,
                  wheelchair: this.wheelchair,
                  openingHours: this.openingHours };

@@ -138,13 +138,17 @@ const PlaceBubble = new Lang.Class({
                                    info: place.wheelchairTranslated });
         }
 
-        if (place.wiki) {
-            let link = this._formatWikiLink(place.wiki);
-            let href = Format.vprintf('<a href="%s">%s</a>',
-                                      [link, _("Wikipedia")]);
-            expandedContent.push({ info: href });
+        if (place.website) {
+            expandedContent.push({ linkText: _("Website"),
+                                   linkUrl: place.website,
+                                   tooltip: place.website });
         }
 
+        if (place.wiki) {
+            let link = this._formatWikiLink(place.wiki);
+            expandedContent.push({ linkText: _("Wikipedia"),
+                                   linkUrl: link});
+        }
 
         content.forEach((function(row) {
             let label = new Gtk.Label({ label: row,
@@ -165,10 +169,23 @@ const PlaceBubble = new Lang.Class({
                 this._expandedContent.attach(label, col++, row, 1, 1);
             }
 
-            let info = new Gtk.Label({ label: expandedContent[row].info,
+            let info;
+
+            if (expandedContent[row].linkUrl) {
+                info = new Gtk.LinkButton({ label: expandedContent[row].linkText,
+                                            visible: true,
+                                            uri: expandedContent[row].linkUrl,
+                                            halign: Gtk.Align.START });
+            } else {
+                info = new Gtk.Label({ label: expandedContent[row].info,
                                        visible: true,
                                        use_markup: true,
                                        halign: Gtk.Align.START });
+            }
+
+            if (expandedContent[row].tooltip)
+                info.tooltip_text = expandedContent[row].tooltip;
+
             this._expandedContent.attach(info, col, row, col == 0 ? 2 : 1, 1);
         }
 
@@ -178,13 +195,13 @@ const PlaceBubble = new Lang.Class({
 
     // clear the view widgets to be able to re-populate an updated place
     _clearView: function() {
-        let widgets = this._boxContent.get_children();
+        this._boxContent.get_children().forEach(function(child) {
+            child.destroy();
+        });
 
-        /* remove the dynamically added content, the title label
-           has position 0 in the box */
-        for (let i = 1; i < widgets.length; i++) {
-            this._boxContent.remove(widgets[i]);
-        }
+        this._expandedContent.get_children().forEach(function(child) {
+            child.destroy();
+        });
     },
 
     _initEditButton: function() {

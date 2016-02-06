@@ -69,6 +69,7 @@ let _osmWikipediaRewriteFunc = function(text) {
  * (only used for TEXT fields)
  */
 const OSM_FIELDS = [{name: _("Name"), tag: 'name', type: EditFieldType.TEXT},
+            {name: _("Website"), tag: 'website', type: EditFieldType.TEXT},
             {name: _("Wikipedia"), tag: 'wikipedia', type: EditFieldType.TEXT,
              rewriteFunc: this._osmWikipediaRewriteFunc},
             {name: _("Population"), tag: 'population',
