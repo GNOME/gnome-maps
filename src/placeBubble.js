@@ -149,6 +149,17 @@ const PlaceBubble = new Lang.Class({
                                    linkUrl: link});
         }
 
+        if (place.phone) {
+            if (Utils.uriSchemeSupported('tel')) {
+                expandedContent.push({ label: _("Phone:"),
+                                       linkText: place.phone,
+                                       linkUrl: 'tel:%s'.format(place.phone) });
+            } else {
+                expandedContent.push({ label: _("Phone:"),
+                                       info: place.phone });
+            }
+        }
+
         content.forEach((function(row) {
             let label = new Gtk.Label({ label: row,
                                         visible: true,

@@ -363,3 +363,20 @@ function prettyDistance(distance) {
             return _("%f ft").format(distance);
     }
 }
+
+function uriSchemeSupported(scheme) {
+    let apps = Gio.AppInfo.get_all();
+    let prefix = 'x-scheme-handler/';
+
+    for (let i in apps) {
+        let types = apps[i].get_supported_types();
+        if (!types)
+            continue;
+
+        for (let j in types) {
+            if (types[j].replace(prefix, '') === scheme)
+                return true;
+        }
+    }
+    return false;
+}

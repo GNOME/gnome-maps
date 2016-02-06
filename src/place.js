@@ -39,6 +39,9 @@ const Place = new Lang.Class({
         this._website = params.website;
         delete params.website;
 
+        this._phone = params.phone;
+        delete params.phone;
+
         this._wiki = params.wiki;
         delete params.wiki;
 
@@ -109,6 +112,14 @@ const Place = new Lang.Class({
 
     get website() {
         return this._website;
+    },
+
+    set phone(v) {
+        this._phone = v;
+    },
+
+    get phone() {
+        return this._phone;
     },
 
     set wiki(v) {
@@ -210,6 +221,7 @@ const Place = new Lang.Class({
                  continent: this.continent,
                  population: this.population,
                  website: this.website,
+                 phone: this.phone,
                  wiki: this.wiki,
                  wheelchair: this.wheelchair,
                  openingHours: this.openingHours };

@@ -96,6 +96,8 @@ const Overpass = new Lang.Class({
             place.population = element.tags.population;
         if (element.tags.website)
             place.website = element.tags.website;
+        if (element.tags.phone)
+            place.phone = element.tags.phone;
         if (element.tags.wikipedia)
             place.wiki = element.tags.wikipedia;
         if (element.tags.wheelchair)

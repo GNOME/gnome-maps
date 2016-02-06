@@ -60,6 +60,20 @@ let _osmWikipediaRewriteFunc = function(text) {
         return text;
 };
 
+/* Reformat a phone number string if it looks like a tel: URI
+ * strip off the leading tel: protocol string and trailing parameters,
+ * following a ;
+ * otherwise return the string unmodified */
+let _osmPhoneRewriteFunc = function(text) {
+    if (GLib.uri_parse_scheme(text) === 'tel') {
+        let afterTel = text.replace('tel:', '');
+
+        return afterTel.split(';')[0];
+    } else {
+        return text;
+    }
+};
+
 /*
  * specification of OSM edit fields
  * name: the label for the edit field (translatable)
@@ -70,6 +84,8 @@ let _osmWikipediaRewriteFunc = function(text) {
  */
 const OSM_FIELDS = [{name: _("Name"), tag: 'name', type: EditFieldType.TEXT},
             {name: _("Website"), tag: 'website', type: EditFieldType.TEXT},
+            {name: _("Phone"), tag: 'phone', type: EditFieldType.TEXT,
+             rewriteFunc: this._osmPhoneRewriteFunc},
             {name: _("Wikipedia"), tag: 'wikipedia', type: EditFieldType.TEXT,
              rewriteFunc: this._osmWikipediaRewriteFunc},
             {name: _("Population"), tag: 'population',
