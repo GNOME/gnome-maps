@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-01-26 09:24+0000\n"
-"PO-Revision-Date: 2016-01-26 15:00+0100\n"
+"POT-Creation-Date: 2016-02-05 21:23+0000\n"
+"PO-Revision-Date: 2016-02-06 10:06+0100\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
 "Language: sk\n"
@@ -59,7 +59,7 @@ msgstr ""
 # desktop entry name
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:79 ../src/mainWindow.js:401
+#: ../src/application.js:80 ../src/mainWindow.js:400
 msgid "Maps"
 msgstr "Mapy"
 
@@ -209,7 +209,7 @@ msgstr "Nastaviť účet služby OpenStreetMap"
 msgid "About"
 msgstr "O programe"
 
-#: ../data/ui/app-menu.ui.h:4 ../data/ui/help-overlay.ui.h:5
+#: ../data/ui/app-menu.ui.h:4
 msgid "Quit"
 msgstr "Ukončiť"
 
@@ -290,38 +290,57 @@ msgid "Include route and markers"
 msgstr "Zahrnúť trasy a značky"
 
 #: ../data/ui/help-overlay.ui.h:1
+msgctxt "shortcut window"
 msgid "General"
 msgstr "Všeobecné"
 
 #: ../data/ui/help-overlay.ui.h:2
+msgctxt "shortcut window"
 msgid "Show help"
 msgstr "Zobrazenie pomocníka"
 
 #: ../data/ui/help-overlay.ui.h:3
+msgctxt "shortcut window"
 msgid "Search"
 msgstr "Vyhľadanie"
 
 # DK:tooltip
-#: ../data/ui/help-overlay.ui.h:4 ../data/ui/main-window.ui.h:4
+#: ../data/ui/help-overlay.ui.h:4
+msgctxt "shortcut window"
 msgid "Toggle route planner"
-msgstr "Prepne plánovač trasy"
+msgstr "Prepnutie plánovača trasy"
+
+#: ../data/ui/help-overlay.ui.h:5
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Ukončenie"
 
 #: ../data/ui/help-overlay.ui.h:6
+msgctxt "shortcut window"
 msgid "Map View"
 msgstr "Zobrazenie mapy"
 
 #: ../data/ui/help-overlay.ui.h:7
+msgctxt "shortcut window"
 msgid "Zoom in"
 msgstr "Priblíženie"
 
 #: ../data/ui/help-overlay.ui.h:8
+msgctxt "shortcut window"
 msgid "Zoom out"
 msgstr "Oddialenie"
 
+# tooltip
+#: ../data/ui/help-overlay.ui.h:9
+msgctxt "shortcut window"
+msgid "Toggle scale"
+msgstr "Prepnutie obľúbených"
+
 # DK:tooltip
-#: ../data/ui/help-overlay.ui.h:9 ../data/ui/main-window.ui.h:2
+#: ../data/ui/help-overlay.ui.h:10
+msgctxt "shortcut window"
 msgid "Go to current location"
-msgstr "Prejde na aktuálne umiestnenie"
+msgstr "Prejdenie na aktuálne umiestnenie"
 
 #: ../data/ui/layers-popover.ui.h:1
 msgid "Load Map Layer"
@@ -336,9 +355,19 @@ msgid "Location Settings"
 msgstr "Nastavenia umiestnenia"
 
 # DK:tooltip
+#: ../data/ui/main-window.ui.h:2
+msgid "Go to current location"
+msgstr "Prejde na aktuálne umiestnenie"
+
+# DK:tooltip
 #: ../data/ui/main-window.ui.h:3
 msgid "Choose map type"
 msgstr "Vyberie typ mapy"
+
+# DK:tooltip
+#: ../data/ui/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr "Prepne plánovač trasy"
 
 # tooltip
 #: ../data/ui/main-window.ui.h:5
@@ -462,6 +491,11 @@ msgstr "Zrušiť"
 msgid "Next"
 msgstr "Ďalej"
 
+# tooltip
+#: ../data/ui/place-bubble.ui.h:1
+msgid "Show more information"
+msgstr "Zobrazí viac informácií"
+
 #: ../data/ui/search-popup.ui.h:1
 msgid "Press enter to search"
 msgstr "Stlačte enter na vyhľadanie"
@@ -477,6 +511,11 @@ msgstr "_Otvoriť"
 #: ../data/ui/shape-layer-file-chooser.ui.h:1
 msgid "Open Layer"
 msgstr "Otvorenie vrstvy"
+
+# tooltip
+#: ../data/ui/shape-layer-row.ui.h:1
+msgid "Toggle visible"
+msgstr "Prepne viditeľné"
 
 #: ../data/ui/sidebar.ui.h:1
 msgid "Route search by GraphHopper"
@@ -513,7 +552,7 @@ msgstr "Chýbajú potrebné atribúty"
 msgid "Could not find OSM element"
 msgstr "Nepodarilo sa nájsť prvok služby OSM"
 
-#: ../src/application.js:89
+#: ../src/application.js:91
 msgid "A path to a local tiles directory structure"
 msgstr "Cesta k štruktúre adresárov miestnych dlaždíc"
 
@@ -582,6 +621,18 @@ msgstr ""
 "Platnosť poverení vypršala. Prosím, otvorte Účty služieb na prihlásenie a "
 "povolenie tohto účtu"
 
+#: ../src/contextMenu.js:90
+msgid "Route from here"
+msgstr "Trasa odtiaľto"
+
+#: ../src/contextMenu.js:92
+msgid "Add destination"
+msgstr "Pridať cieľ"
+
+#: ../src/contextMenu.js:94
+msgid "Route to here"
+msgstr "Trasa sem"
+
 #: ../src/exportViewDialog.js:156
 msgid "Filesystem is read only"
 msgstr "Systém súborov je iba na čítanie"
@@ -619,31 +670,31 @@ msgstr "neznáma geometria"
 msgid "failed to load file"
 msgstr "zlyhalo načítanie súboru"
 
-#: ../src/mainWindow.js:349
+#: ../src/mainWindow.js:348
 msgid "Failed to connect to location service"
 msgstr "Zlyhalo pripojenie k lokalizačnej službe"
 
-#: ../src/mainWindow.js:354
+#: ../src/mainWindow.js:353
 msgid "Position not found"
 msgstr "Pozícia sa nenašla"
 
-#: ../src/mainWindow.js:399
+#: ../src/mainWindow.js:398
 msgid "translator-credits"
 msgstr "Dušan Kazik <prescott66@gmail.com>"
 
-#: ../src/mainWindow.js:402
+#: ../src/mainWindow.js:401
 msgid "A map application for GNOME"
 msgstr "Aplikácia na prezeranie máp pre GNOME"
 
-#: ../src/mapView.js:211
+#: ../src/mapView.js:233
 msgid "File type is not supported"
 msgstr "Typ súboru nie je podporovaný"
 
-#: ../src/mapView.js:218
+#: ../src/mapView.js:240
 msgid "Failed to open layer"
 msgstr "Zlyhalo otvorenie vrstvy"
 
-#: ../src/mapView.js:254
+#: ../src/mapView.js:276
 msgid "Failed to open GeoURI"
 msgstr "Zlyhalo otvorenie GeoURI"
 
@@ -689,7 +740,7 @@ msgstr "Cesta alebo relácia odkazuje na neexistujúceho potomka"
 msgid "Name"
 msgstr "Názov"
 
-#: ../src/osmEditDialog.js:72 ../src/placeBubble.js:132
+#: ../src/osmEditDialog.js:72 ../src/placeBubble.js:144
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -721,30 +772,17 @@ msgstr "Obmedzený"
 msgid "Designated"
 msgstr "Vyhradený"
 
-#: ../src/placeBubble.js:113
-#, javascript-format
-msgid "Postal code: %s"
-msgstr "Smerovacie číslo: %s"
-
-#: ../src/placeBubble.js:115
-#, javascript-format
-msgid "Country code: %s"
-msgstr "Kód krajiny: %s"
-
-#: ../src/placeBubble.js:124
-#, javascript-format
-msgid "Population: %s"
-msgstr "Obyvateľstvo: %s"
-
 #: ../src/placeBubble.js:127
-#, javascript-format
-msgid "Opening hours: %s"
-msgstr "Otváracia doba: %s"
+msgid "Population:"
+msgstr "Obyvateľstvo:"
+
+#: ../src/placeBubble.js:132
+msgid "Opening hours:"
+msgstr "Otváracia doba:"
 
 #: ../src/placeBubble.js:137
-#, javascript-format
-msgid "Wheelchair access: %s"
-msgstr "Bezbariérový prístup: %s"
+msgid "Wheelchair access:"
+msgstr "Bezbariérový prístup:"
 
 #: ../src/placeEntry.js:190
 msgid "Failed to parse Geo URI"
@@ -980,6 +1018,18 @@ msgstr "%f mi"
 #, javascript-format
 msgid "%f ft"
 msgstr "%f ft"
+
+#~ msgid "Postal code: %s"
+#~ msgstr "Smerovacie číslo: %s"
+
+#~ msgid "Country code: %s"
+#~ msgstr "Kód krajiny: %s"
+
+#~ msgid "Population: %s"
+#~ msgstr "Obyvateľstvo: %s"
+
+#~ msgid "Wheelchair access: %s"
+#~ msgstr "Bezbariérový prístup: %s"
 
 #~ msgid "Failed to parse GeoJSON file"
 #~ msgstr "Zlyhala analýza súboru GeoJSON"
