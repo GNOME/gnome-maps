@@ -9,16 +9,16 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-01-30 18:21+0000\n"
-"PO-Revision-Date: 2016-01-30 20:43+0100\n"
-"Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
+"POT-Creation-Date: 2016-02-05 21:23+0000\n"
+"PO-Revision-Date: 2016-02-06 09:47+0100\n"
+"Last-Translator: Meskó Balázs <meskobalazs@gmail.com>\n"
 "Language-Team: Hungarian <openscope at gmail dot com>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.5\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid "GNOME Maps"
@@ -59,7 +59,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:79 ../src/mainWindow.js:401
+#: ../src/application.js:80 ../src/mainWindow.js:400
 msgid "Maps"
 msgstr "Térképek"
 
@@ -197,7 +197,7 @@ msgstr "OpenStreetMap fiók beállítása"
 msgid "About"
 msgstr "Névjegy"
 
-#: ../data/ui/app-menu.ui.h:4 ../data/ui/help-overlay.ui.h:5
+#: ../data/ui/app-menu.ui.h:4
 msgid "Quit"
 msgstr "Kilépés"
 
@@ -276,34 +276,52 @@ msgid "Include route and markers"
 msgstr "Útvonalak és jelölők megtartása"
 
 #: ../data/ui/help-overlay.ui.h:1
+msgctxt "shortcut window"
 msgid "General"
 msgstr "Általános"
 
 #: ../data/ui/help-overlay.ui.h:2
+msgctxt "shortcut window"
 msgid "Show help"
 msgstr "Súgó megjelenítése"
 
 #: ../data/ui/help-overlay.ui.h:3
+msgctxt "shortcut window"
 msgid "Search"
 msgstr "Keresés"
 
-#: ../data/ui/help-overlay.ui.h:4 ../data/ui/main-window.ui.h:4
+#: ../data/ui/help-overlay.ui.h:4
+msgctxt "shortcut window"
 msgid "Toggle route planner"
 msgstr "Útvonaltervező ki- és bekapcsolása"
 
+#: ../data/ui/help-overlay.ui.h:5
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Kilépés"
+
 #: ../data/ui/help-overlay.ui.h:6
+msgctxt "shortcut window"
 msgid "Map View"
 msgstr "Térkép nézet"
 
 #: ../data/ui/help-overlay.ui.h:7
+msgctxt "shortcut window"
 msgid "Zoom in"
 msgstr "Nagyítás"
 
 #: ../data/ui/help-overlay.ui.h:8
+msgctxt "shortcut window"
 msgid "Zoom out"
 msgstr "Kicsinyítés"
 
-#: ../data/ui/help-overlay.ui.h:9 ../data/ui/main-window.ui.h:2
+#: ../data/ui/help-overlay.ui.h:9
+msgctxt "shortcut window"
+msgid "Toggle scale"
+msgstr "Láthatóság ki- és bekapcsolása"
+
+#: ../data/ui/help-overlay.ui.h:10
+msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Ugrás a jelenlegi helyre"
 
@@ -320,9 +338,17 @@ msgstr ""
 msgid "Location Settings"
 msgstr "Helybeállítások"
 
+#: ../data/ui/main-window.ui.h:2
+msgid "Go to current location"
+msgstr "Ugrás a jelenlegi helyre"
+
 #: ../data/ui/main-window.ui.h:3
 msgid "Choose map type"
 msgstr "Térképtípus kiválasztása"
+
+#: ../data/ui/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr "Útvonaltervező ki- és bekapcsolása"
 
 #: ../data/ui/main-window.ui.h:5
 msgid "Toggle favorites"
@@ -442,6 +468,10 @@ msgstr "Mégse"
 msgid "Next"
 msgstr "Következő"
 
+#: ../data/ui/place-bubble.ui.h:1
+msgid "Show more information"
+msgstr "További információk megjelenítése"
+
 #: ../data/ui/search-popup.ui.h:1
 msgid "Press enter to search"
 msgstr "Nyomja meg az Entert a kereséshez"
@@ -497,7 +527,7 @@ msgstr "Szükséges attribútumok hiányoznak"
 msgid "Could not find OSM element"
 msgstr "Nem sikerült megtalálni az OSM elemet"
 
-#: ../src/application.js:90
+#: ../src/application.js:91
 msgid "A path to a local tiles directory structure"
 msgstr "Egy útvonal a helyi csempék könyvtárszerkezetéhez"
 
@@ -615,33 +645,33 @@ msgstr "ismeretlen geometria"
 msgid "failed to load file"
 msgstr "nem sikerült betölteni a fájlt"
 
-#: ../src/mainWindow.js:349
+#: ../src/mainWindow.js:348
 msgid "Failed to connect to location service"
 msgstr "Nem sikerült kapcsolódni a helymeghatározó szolgáltatáshoz"
 
-#: ../src/mainWindow.js:354
+#: ../src/mainWindow.js:353
 msgid "Position not found"
 msgstr "Pozíció nem található"
 
-#: ../src/mainWindow.js:399
+#: ../src/mainWindow.js:398
 msgid "translator-credits"
 msgstr ""
 "Úr Balázs <urbalazs at gmail dot com>\n"
 "Meskó Balázs <meskobalazs at gmail dot com>"
 
-#: ../src/mainWindow.js:402
+#: ../src/mainWindow.js:401
 msgid "A map application for GNOME"
 msgstr "Térképalkalmazás a GNOME-hoz"
 
-#: ../src/mapView.js:211
+#: ../src/mapView.js:233
 msgid "File type is not supported"
 msgstr "A fájltípus nem támogatott"
 
-#: ../src/mapView.js:218
+#: ../src/mapView.js:240
 msgid "Failed to open layer"
 msgstr "A réteg megnyitása nem sikerült"
 
-#: ../src/mapView.js:254
+#: ../src/mapView.js:276
 msgid "Failed to open GeoURI"
 msgstr "A GeoURI megnyitása nem sikerült"
 
@@ -687,7 +717,7 @@ msgstr "Út vagy reláció nem létező gyermekekre hivatkozik"
 msgid "Name"
 msgstr "Név"
 
-#: ../src/osmEditDialog.js:72 ../src/placeBubble.js:133
+#: ../src/osmEditDialog.js:72 ../src/placeBubble.js:144
 msgid "Wikipedia"
 msgstr "Wikipédia"
 
@@ -719,30 +749,17 @@ msgstr "Korlátozott"
 msgid "Designated"
 msgstr "Kijelölt"
 
-#: ../src/placeBubble.js:114
-#, javascript-format
-msgid "Postal code: %s"
-msgstr "Irányítószám: %s"
+#: ../src/placeBubble.js:127
+msgid "Population:"
+msgstr "Népesség:"
 
-#: ../src/placeBubble.js:116
-#, javascript-format
-msgid "Country code: %s"
-msgstr "Országkód: %s"
+#: ../src/placeBubble.js:132
+msgid "Opening hours:"
+msgstr "Nyitva tartás:"
 
-#: ../src/placeBubble.js:125
-#, javascript-format
-msgid "Population: %s"
-msgstr "Népesség: %s"
-
-#: ../src/placeBubble.js:128
-#, javascript-format
-msgid "Opening hours: %s"
-msgstr "Nyitva tartás: %s"
-
-#: ../src/placeBubble.js:138
-#, javascript-format
-msgid "Wheelchair access: %s"
-msgstr "Kerekesszékes elérés: %s"
+#: ../src/placeBubble.js:137
+msgid "Wheelchair access:"
+msgstr "Kerekesszékes elérés:"
 
 #: ../src/placeEntry.js:190
 msgid "Failed to parse Geo URI"
@@ -978,6 +995,18 @@ msgstr "%f mi"
 #, javascript-format
 msgid "%f ft"
 msgstr "%f láb"
+
+#~ msgid "Postal code: %s"
+#~ msgstr "Irányítószám: %s"
+
+#~ msgid "Country code: %s"
+#~ msgstr "Országkód: %s"
+
+#~ msgid "Population: %s"
+#~ msgstr "Népesség: %s"
+
+#~ msgid "Wheelchair access: %s"
+#~ msgstr "Kerekesszékes elérés: %s"
 
 #~ msgid "Failed to parse GeoJSON file"
 #~ msgstr "A GeoJSON fájl feldolgozása nem sikerült"
