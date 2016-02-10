@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-05 21:23+0000\n"
-"PO-Revision-Date: 2016-02-06 10:06+0100\n"
+"POT-Creation-Date: 2016-02-10 09:25+0000\n"
+"PO-Revision-Date: 2016-02-10 17:50+0100\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
 "Language: sk\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.7\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid "GNOME Maps"
@@ -198,12 +198,12 @@ msgstr ""
 "Indikuje, či sa používateľ prihlásil na úpravu údajov služby OpenStreetMap."
 
 #: ../data/ui/app-menu.ui.h:1
-msgid "_Keyboard Shortcuts"
-msgstr "_Klávesové skratky"
+msgid "Set up OpenStreetMap Account"
+msgstr "Nastaviť účet služby OpenStreetMap"
 
 #: ../data/ui/app-menu.ui.h:2
-msgid "Setup OpenStreetMap Account"
-msgstr "Nastaviť účet služby OpenStreetMap"
+msgid "_Keyboard Shortcuts"
+msgstr "_Klávesové skratky"
 
 #: ../data/ui/app-menu.ui.h:3
 msgid "About"
@@ -226,7 +226,7 @@ msgid "Post on Twitter"
 msgstr "Uverejniť na Twitter"
 
 #: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/export-view-dialog.ui.h:2
-#: ../data/ui/send-to-dialog.ui.h:2 ../data/ui/shape-layer-file-chooser.ui.h:2
+#: ../data/ui/send-to-dialog.ui.h:2 ../data/ui/shape-layer-file-chooser.ui.h:3
 msgid "_Cancel"
 msgstr "_Zrušiť"
 
@@ -296,8 +296,8 @@ msgstr "Všeobecné"
 
 #: ../data/ui/help-overlay.ui.h:2
 msgctxt "shortcut window"
-msgid "Show help"
-msgstr "Zobrazenie pomocníka"
+msgid "Show Shortcuts"
+msgstr "Zobrazenie klávesových skratiek"
 
 #: ../data/ui/help-overlay.ui.h:3
 msgctxt "shortcut window"
@@ -487,7 +487,7 @@ msgstr "Úprava umiestnenia"
 msgid "Cancel"
 msgstr "Zrušiť"
 
-#: ../data/ui/osm-edit-dialog.ui.h:3 ../src/osmEditDialog.js:154
+#: ../data/ui/osm-edit-dialog.ui.h:3 ../src/osmEditDialog.js:155
 msgid "Next"
 msgstr "Ďalej"
 
@@ -504,7 +504,7 @@ msgstr "Stlačte enter na vyhľadanie"
 msgid "Open location"
 msgstr "Otvorenie umiestnenia"
 
-#: ../data/ui/send-to-dialog.ui.h:3
+#: ../data/ui/send-to-dialog.ui.h:3 ../data/ui/shape-layer-file-chooser.ui.h:2
 msgid "_Open"
 msgstr "_Otvoriť"
 
@@ -599,7 +599,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Napíšte voliteľnú správu k oznámeniu polohy %s."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:189
+#: ../src/osmEditDialog.js:190
 msgid "An error has occurred"
 msgstr "Vyskytla sa chyba"
 
@@ -740,35 +740,39 @@ msgstr "Cesta alebo relácia odkazuje na neexistujúceho potomka"
 msgid "Name"
 msgstr "Názov"
 
-#: ../src/osmEditDialog.js:72 ../src/placeBubble.js:144
+#: ../src/osmEditDialog.js:72 ../src/placeBubble.js:142
+msgid "Website"
+msgstr "Webová stránka"
+
+#: ../src/osmEditDialog.js:73 ../src/placeBubble.js:149
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: ../src/osmEditDialog.js:74
+#: ../src/osmEditDialog.js:75
 msgid "Population"
 msgstr "Obyvateľstvo"
 
-#: ../src/osmEditDialog.js:76
+#: ../src/osmEditDialog.js:77
 msgid "Wheelchair access"
 msgstr "Bezbariérový prístup"
 
-#: ../src/osmEditDialog.js:140
+#: ../src/osmEditDialog.js:141
 msgid "Done"
 msgstr "Hotovo"
 
-#: ../src/osmEditDialog.js:290
+#: ../src/osmEditDialog.js:291
 msgid "Yes"
 msgstr "Áno"
 
-#: ../src/osmEditDialog.js:291
+#: ../src/osmEditDialog.js:292
 msgid "No"
 msgstr "Nie"
 
-#: ../src/osmEditDialog.js:292
+#: ../src/osmEditDialog.js:293
 msgid "Limited"
 msgstr "Obmedzený"
 
-#: ../src/osmEditDialog.js:293
+#: ../src/osmEditDialog.js:294
 msgid "Designated"
 msgstr "Vyhradený"
 
@@ -791,7 +795,7 @@ msgstr "Zlyhala analýza URI geografickej polohy"
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: ../src/place.js:140
+#: ../src/place.js:151
 msgid "yes"
 msgstr "áno"
 
@@ -800,7 +804,7 @@ msgstr "áno"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:147
+#: ../src/place.js:158
 msgid "limited"
 msgstr "obmedzený"
 
@@ -808,7 +812,7 @@ msgstr "obmedzený"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: ../src/place.js:153
+#: ../src/place.js:164
 msgid "no"
 msgstr "nie"
 
@@ -817,7 +821,7 @@ msgstr "nie"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:160
+#: ../src/place.js:171
 msgid "designated"
 msgstr "vyhradený"
 
@@ -1018,6 +1022,10 @@ msgstr "%f mi"
 #, javascript-format
 msgid "%f ft"
 msgstr "%f ft"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Show help"
+#~ msgstr "Zobrazenie pomocníka"
 
 #~ msgid "Postal code: %s"
 #~ msgstr "Smerovacie číslo: %s"
