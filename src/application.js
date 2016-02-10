@@ -26,6 +26,7 @@ const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
 const GtkClutter = imports.gi.GtkClutter;
 const Lang = imports.lang;
+const WebKit2 = imports.gi.WebKit2;
 
 const CheckIn = imports.checkIn;
 const ContactPlace = imports.contactPlace;
@@ -79,6 +80,9 @@ const Application = new Lang.Class({
         /* Translators: This is the program name. */
         GLib.set_application_name(_("Maps"));
         GLib.set_prgname('gnome-maps');
+
+        /* Needed to be able to use in UI files */
+        GObject.type_ensure(WebKit2.WebView);
 
         this.parent({ application_id: 'org.gnome.Maps',
                       flags: Gio.ApplicationFlags.HANDLES_OPEN });

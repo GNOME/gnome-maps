@@ -52,7 +52,6 @@ const OSMAccountDialog = new Lang.Class({
     _init: function(params) {
         /* This is a construct-only property and cannot be set by GtkBuilder */
         params.use_header_bar = true;
-        GObject.type_ensure(WebKit2.WebView);
 
         this._closeOnSignIn = params.closeOnSignIn;
         delete params.closeOnSignIn;
