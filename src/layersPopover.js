@@ -102,7 +102,7 @@ const LayersPopover = new Lang.Class({
         });
 
         this._loadLayerButton.connect('clicked',
-                                        this._onLoadLayerClicked.bind(this));
+                                      this._onLoadLayerClicked.bind(this));
     },
 
     _onRemoveClicked: function(row, button) {
