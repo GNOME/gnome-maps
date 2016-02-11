@@ -42,6 +42,7 @@ const ShapeLayerRow = new Lang.Class({
             let image = this._visibleButton.get_child();
 
             this.shapeLayer.visible = !this.shapeLayer.visible;
+            this.activatable = this.shapeLayer.visible;
             if (this.shapeLayer.visible)
                 image.icon_name = 'layer-visible-symbolic';
             else
