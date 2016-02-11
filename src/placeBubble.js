@@ -140,8 +140,7 @@ const PlaceBubble = new Lang.Class({
 
         if (place.website) {
             expandedContent.push({ linkText: _("Website"),
-                                   linkUrl: place.website,
-                                   tooltip: place.website });
+                                   linkUrl: place.website });
         }
 
         if (place.wiki) {
@@ -169,23 +168,17 @@ const PlaceBubble = new Lang.Class({
                 this._expandedContent.attach(label, col++, row, 1, 1);
             }
 
-            let info;
-
-            if (expandedContent[row].linkUrl) {
-                info = new Gtk.LinkButton({ label: expandedContent[row].linkText,
-                                            visible: true,
-                                            uri: expandedContent[row].linkUrl,
-                                            halign: Gtk.Align.START });
-            } else {
-                info = new Gtk.Label({ label: expandedContent[row].info,
-                                       visible: true,
+            let info = new Gtk.Label({ visible: true,
                                        use_markup: true,
                                        halign: Gtk.Align.START });
+            if (expandedContent[row].linkUrl) {
+                let text = expandedContent[row].linkText;
+                let uri = expandedContent[row].linkUrl;
+                let a = '<a href="%s" title="%s">%s</a>'.format(uri, uri, text);
+                info.label = a;
+            } else {
+                info.label = expandedContent[row].info;
             }
-
-            if (expandedContent[row].tooltip)
-                info.tooltip_text = expandedContent[row].tooltip;
-
             this._expandedContent.attach(info, col, row, col == 0 ? 2 : 1, 1);
         }
 
