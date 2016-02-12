@@ -110,6 +110,11 @@ const OSM_FIELDS = [
         type: EditFieldType.TEXT,
         rewriteFunc: this._osmWikipediaRewriteFunc},
     {
+        name: _("Opening hours"),
+        tag: 'opening_hours',
+        type: EditFieldType.TEXT
+    },
+    {
         name: _("Population"),
         tag: 'population',
         type: EditFieldType.INTEGER
