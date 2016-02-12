@@ -465,50 +465,50 @@ const OSMEditDialog = new Lang.Class({
         label.show();
     },
 
-    _addOSMEditTextEntry: function(text, tag, value, rewriteFunc) {
-        this._addOSMEditLabel(text);
+    _addOSMEditTextEntry: function(fieldSpec, value) {
+        this._addOSMEditLabel(fieldSpec);
 
         let entry = new Gtk.Entry();
         entry.text = value;
         entry.hexpand = true;
 
         entry.connect('changed', (function() {
-            if (rewriteFunc)
-                entry.text = rewriteFunc(entry.text);
-            this._osmObject.set_tag(tag, entry.text);
+            if (fieldSpec.rewriteFunc)
+                entry.text = fieldSpec.rewriteFunc(entry.text);
+            this._osmObject.set_tag(fieldSpec.tag, entry.text);
             this._nextButton.sensitive = true;
-        }).bind(this, tag, entry));
+        }).bind(this));
 
         this._editorGrid.attach(entry, 1, this._currentRow, 1, 1);
         entry.show();
 
         /* TODO: should we allow deleting the name field? */
-        this._addOSMEditDeleteButton(tag);
+        this._addOSMEditDeleteButton(fieldSpec.tag);
 
         this._currentRow++;
     },
 
-    _addOSMEditIntegerEntry: function(text, tag, value) {
-        this._addOSMEditLabel(text);
+    _addOSMEditIntegerEntry: function(fieldSpec, value) {
+        this._addOSMEditLabel(fieldSpec);
 
         let spinbutton = Gtk.SpinButton.new_with_range(0, 1e9, 1);
         spinbutton.value = value;
         spinbutton.numeric = true;
         spinbutton.hexpand = true;
         spinbutton.connect('changed', (function() {
-            this._osmObject.set_tag(tag, spinbutton.text);
+            this._osmObject.set_tag(fieldSpec.tag, spinbutton.text);
             this._nextButton.sensitive = true;
-        }).bind(this, tag, spinbutton));
+        }).bind(this, fieldSpec.tag, spinbutton));
 
         this._editorGrid.attach(spinbutton, 1, this._currentRow, 1, 1);
         spinbutton.show();
 
-        this._addOSMEditDeleteButton(tag);
+        this._addOSMEditDeleteButton(fieldSpec.tag);
         this._currentRow++;
     },
 
-    _addOSMEditYesNoLimitedDesignated: function(text, tag, value) {
-        this._addOSMEditLabel(text);
+    _addOSMEditYesNoLimitedDesignated: function(fieldSpec, value) {
+        this._addOSMEditLabel(fieldSpec);
 
         let combobox = new Gtk.ComboBoxText();
 
@@ -520,14 +520,14 @@ const OSMEditDialog = new Lang.Class({
         combobox.active_id = value;
         combobox.hexpand = true;
         combobox.connect('changed', (function() {
-        this._osmObject.set_tag(tag, combobox.active_id);
+        this._osmObject.set_tag(fieldSpec.tag, combobox.active_id);
             this._nextButton.sensitive = true;
-        }).bind(this, tag, combobox));
+        }).bind(this, fieldSpec.tag, combobox));
 
         this._editorGrid.attach(combobox, 1, this._currentRow, 1, 1);
         combobox.show();
 
-        this._addOSMEditDeleteButton(tag);
+        this._addOSMEditDeleteButton(fieldSpec.tag);
         this._currentRow++;
     },
 
@@ -545,16 +545,12 @@ const OSMEditDialog = new Lang.Class({
         /* add selectable items */
         for (let i = 0; i < OSM_FIELDS.length; i++) {
             let fieldSpec = OSM_FIELDS[i];
-            let label = fieldSpec.name;
-            let tag = fieldSpec.tag;
-            let value = this._osmObject.get_tag(tag);
-            let type = fieldSpec.type;
-            let rewriteFunc = fieldSpec.rewriteFunc;
+            let value = this._osmObject.get_tag(fieldSpec.tag);
 
             if (value === null) {
                 let button = new Gtk.Button({
                     visible: true, sensitive: true,
-                    label: label
+                    label: fieldSpec.name
                 });
                 button.get_style_context().add_class('menuitem');
                 button.get_style_context().add_class('button');
@@ -562,13 +558,13 @@ const OSMEditDialog = new Lang.Class({
 
                 button.connect('clicked', (function() {
                     this._addFieldButton.active = false;
-                    this._addOSMField(label, tag, '', type, rewriteFunc);
+                    this._addOSMField(fieldSpec, '');
                     /* add a "placeholder" empty OSM tag to keep the add field
                      * menu updated, these tags will be filtered out if nothing
                      * is entered */
-                    this._osmObject.set_tag(tag, '');
+                    this._osmObject.set_tag(fieldSpec.tag, '');
                     this._updateAddFieldMenu();
-                }).bind(this, label, tag, type, rewriteFunc));
+                }).bind(this));
 
                 hasAllFields = false;
                 this._addFieldPopoverGrid.add(button);
@@ -578,16 +574,16 @@ const OSMEditDialog = new Lang.Class({
         this._addFieldButton.sensitive = !hasAllFields;
     },
 
-    _addOSMField: function(label, tag, value, type, rewriteFunc) {
-        switch (type) {
+    _addOSMField: function(fieldSpec, value) {
+        switch (fieldSpec.type) {
         case EditFieldType.TEXT:
-            this._addOSMEditTextEntry(label, tag, value, rewriteFunc);
+            this._addOSMEditTextEntry(fieldSpec, value);
             break;
         case EditFieldType.INTEGER:
-            this._addOSMEditIntegerEntry(label, tag, value);
+            this._addOSMEditIntegerEntry(fieldSpec, value);
             break;
         case EditFieldType.YES_NO_LIMITED_DESIGNATED:
-            this._addOSMEditYesNoLimitedDesignated(label, tag, value);
+            this._addOSMEditYesNoLimitedDesignated(fieldSpec, value);
             break;
         }
     },
@@ -601,14 +597,10 @@ const OSMEditDialog = new Lang.Class({
 
         for (let i = 0; i < OSM_FIELDS.length; i++) {
             let fieldSpec = OSM_FIELDS[i];
-            let name = fieldSpec.name;
-            let tag = fieldSpec.tag;
-            let type = fieldSpec.type;
-            let rewriteFunc = fieldSpec.rewriteFunc;
-            let value = osmObject.get_tag(tag);
+            let value = osmObject.get_tag(fieldSpec.tag);
 
             if (value != null)
-                this._addOSMField(name, tag, value, type, rewriteFunc);
+                this._addOSMField(fieldSpec, value);
         }
 
         this._updateAddFieldMenu();
