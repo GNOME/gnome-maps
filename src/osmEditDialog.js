@@ -87,16 +87,38 @@ let _osmPhoneRewriteFunc = function(text) {
  * rewriteFunc: a rewrite function taking a string argument
  * (only used for TEXT fields)
  */
-const OSM_FIELDS = [{name: _("Name"), tag: 'name', type: EditFieldType.TEXT},
-            {name: _("Website"), tag: 'website', type: EditFieldType.TEXT},
-            {name: _("Phone"), tag: 'phone', type: EditFieldType.TEXT,
-             rewriteFunc: this._osmPhoneRewriteFunc},
-            {name: _("Wikipedia"), tag: 'wikipedia', type: EditFieldType.TEXT,
-             rewriteFunc: this._osmWikipediaRewriteFunc},
-            {name: _("Population"), tag: 'population',
-             type: EditFieldType.INTEGER},
-            {name: _("Wheelchair access"), tag: 'wheelchair',
-             type: EditFieldType.YES_NO_LIMITED_DESIGNATED}];
+const OSM_FIELDS = [
+    {
+        name: _("Name"),
+        tag: 'name',
+        type: EditFieldType.TEXT
+    },
+    {
+        name: _("Website"),
+        tag: 'website',
+        type: EditFieldType.TEXT
+    },
+    {
+        name: _("Phone"),
+        tag: 'phone',
+        type: EditFieldType.TEXT,
+        rewriteFunc: this._osmPhoneRewriteFunc
+    },
+    {
+        name: _("Wikipedia"),
+        tag: 'wikipedia',
+        type: EditFieldType.TEXT,
+        rewriteFunc: this._osmWikipediaRewriteFunc},
+    {
+        name: _("Population"),
+        tag: 'population',
+        type: EditFieldType.INTEGER
+    },
+    {
+        name: _("Wheelchair access"),
+        tag: 'wheelchair',
+        type: EditFieldType.YES_NO_LIMITED_DESIGNATED
+    }];
 
 
 const OSMEditDialog = new Lang.Class({
