@@ -86,6 +86,8 @@ let _osmPhoneRewriteFunc = function(text) {
  * type: the field type (determines editing field type)
  * rewriteFunc: a rewrite function taking a string argument
  * (only used for TEXT fields)
+ * placeHolder: set a text place holder to act as example input
+ * (only used for TEXT fields)
  */
 const OSM_FIELDS = [
     {
@@ -112,7 +114,8 @@ const OSM_FIELDS = [
     {
         name: _("Opening hours"),
         tag: 'opening_hours',
-        type: EditFieldType.TEXT
+        type: EditFieldType.TEXT,
+        placeHolder: 'Mo-Fr 08:00-20:00; Sa-Su 10:00-14:00'
     },
     {
         name: _("Population"),
@@ -471,6 +474,8 @@ const OSMEditDialog = new Lang.Class({
         let entry = new Gtk.Entry();
         entry.text = value;
         entry.hexpand = true;
+        if (fieldSpec.placeHolder)
+            entry.placeholder_text = fieldSpec.placeHolder;
 
         entry.connect('changed', (function() {
             if (fieldSpec.rewriteFunc)
