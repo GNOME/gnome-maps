@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-10 09:25+0000\n"
-"PO-Revision-Date: 2016-02-10 10:53+0100\n"
+"POT-Creation-Date: 2016-02-12 09:23+0000\n"
+"PO-Revision-Date: 2016-02-12 15:42+0100\n"
 "Last-Translator: Meskó Balázs <meskobalazs@gmail.com>\n"
 "Language-Team: Hungarian <openscope at gmail dot com>\n"
 "Language: hu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.5\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid "GNOME Maps"
@@ -59,7 +59,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:80 ../src/mainWindow.js:400
+#: ../src/application.js:86 ../src/mainWindow.js:400
 msgid "Maps"
 msgstr "Térképek"
 
@@ -263,6 +263,10 @@ msgstr "Hely másolása"
 msgid "Export As Image"
 msgstr "Exportálás képként"
 
+#: ../data/ui/context-menu.ui.h:4 ../src/osmEditDialog.js:167
+msgid "Add to OpenStreetMap"
+msgstr "Hozzáadás az OpenStreetMap-hez"
+
 #: ../data/ui/export-view-dialog.ui.h:1
 msgid "Export view"
 msgstr "Exportálási nézet"
@@ -457,14 +461,22 @@ msgid "Sign Out"
 msgstr "Kijelentkezés"
 
 #: ../data/ui/osm-edit-dialog.ui.h:1
-msgid "Edit Location"
-msgstr "Hely szerkesztése"
+msgid "None"
+msgstr "Nincs"
 
 #: ../data/ui/osm-edit-dialog.ui.h:2
+msgid "Recently Used"
+msgstr "Nemrég használt"
+
+#: ../data/ui/osm-edit-dialog.ui.h:3
+msgid "Edit on OpenStreetMap"
+msgstr "Szerkesztés az OpenStreetMap-en"
+
+#: ../data/ui/osm-edit-dialog.ui.h:4
 msgid "Cancel"
 msgstr "Mégse"
 
-#: ../data/ui/osm-edit-dialog.ui.h:3 ../src/osmEditDialog.js:155
+#: ../data/ui/osm-edit-dialog.ui.h:5 ../src/osmEditDialog.js:350
 msgid "Next"
 msgstr "Következő"
 
@@ -472,7 +484,7 @@ msgstr "Következő"
 msgid "Show more information"
 msgstr "További információk megjelenítése"
 
-#: ../data/ui/search-popup.ui.h:1
+#: ../data/ui/place-popover.ui.h:1
 msgid "Press enter to search"
 msgstr "Nyomja meg az Entert a kereséshez"
 
@@ -510,6 +522,14 @@ msgstr "Jelenlegi hely"
 msgid "Accuracy: %s"
 msgstr "Pontosság: %s"
 
+#: ../data/ui/zoom-in-notification.ui.h:1
+msgid "Zoom in to add location!"
+msgstr "Nagyítson a hely hozzáadásához!"
+
+#: ../data/ui/zoom-in-notification.ui.h:2
+msgid "OK"
+msgstr "OK"
+
 #: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
 #: ../lib/maps-file-tile-source.c:459
 msgid "Failed to find tile structure in directory"
@@ -527,7 +547,7 @@ msgstr "Szükséges attribútumok hiányoznak"
 msgid "Could not find OSM element"
 msgstr "Nem sikerült megtalálni az OSM elemet"
 
-#: ../src/application.js:91
+#: ../src/application.js:102
 msgid "A path to a local tiles directory structure"
 msgstr "Egy útvonal a helyi csempék könyvtárszerkezetéhez"
 
@@ -574,7 +594,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Opcionális üzenet írása a következőbe való bejelentkezéshez: %s."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:190
+#: ../src/osmEditDialog.js:387
 msgid "An error has occurred"
 msgstr "Hiba történt"
 
@@ -596,17 +616,25 @@ msgstr ""
 "A hitelesítési adatok lejártak, nyissa meg az Online fiókokat a "
 "bejelentkezéshez, és engedélyezze ezt a fiókot"
 
-#: ../src/contextMenu.js:90
+#: ../src/contextMenu.js:97
 msgid "Route from here"
 msgstr "Útvonal innen"
 
-#: ../src/contextMenu.js:92
+#: ../src/contextMenu.js:99
 msgid "Add destination"
 msgstr "Cél hozzáadása"
 
-#: ../src/contextMenu.js:94
+#: ../src/contextMenu.js:101
 msgid "Route to here"
 msgstr "Útvonal ide"
+
+#: ../src/contextMenu.js:182
+msgid ""
+"Location was added to the map, note that it may take a while before it shows "
+"on the map and in search results."
+msgstr ""
+"A hely hozzáadva a térképhez, de eltarthat egy ideig, amíg megjelenik a "
+"térképen és a keresési találatokban."
 
 #: ../src/exportViewDialog.js:156
 msgid "Filesystem is read only"
@@ -713,43 +741,51 @@ msgstr "Út vagy reláció nem létező gyermekekre hivatkozik"
 #. * rewriteFunc: a rewrite function taking a string argument
 #. * (only used for TEXT fields)
 #.
-#: ../src/osmEditDialog.js:71
+#: ../src/osmEditDialog.js:90
 msgid "Name"
 msgstr "Név"
 
-#: ../src/osmEditDialog.js:72 ../src/placeBubble.js:142
+#: ../src/osmEditDialog.js:91 ../src/placeBubble.js:142
 msgid "Website"
 msgstr "Weboldal"
 
-#: ../src/osmEditDialog.js:73 ../src/placeBubble.js:149
+#: ../src/osmEditDialog.js:92
+msgid "Phone"
+msgstr "Telefon"
+
+#: ../src/osmEditDialog.js:94 ../src/placeBubble.js:148
 msgid "Wikipedia"
 msgstr "Wikipédia"
 
-#: ../src/osmEditDialog.js:75
+#: ../src/osmEditDialog.js:96
 msgid "Population"
 msgstr "Népesség"
 
-#: ../src/osmEditDialog.js:77
+#: ../src/osmEditDialog.js:98
 msgid "Wheelchair access"
 msgstr "Kerekesszékes elérés"
 
-#: ../src/osmEditDialog.js:141
+#: ../src/osmEditDialog.js:218
+msgid "Select Type"
+msgstr "Válasszon egy típust"
+
+#: ../src/osmEditDialog.js:336
 msgid "Done"
 msgstr "Kész"
 
-#: ../src/osmEditDialog.js:291
+#: ../src/osmEditDialog.js:488
 msgid "Yes"
 msgstr "Igen"
 
-#: ../src/osmEditDialog.js:292
+#: ../src/osmEditDialog.js:489
 msgid "No"
 msgstr "Nem"
 
-#: ../src/osmEditDialog.js:293
+#: ../src/osmEditDialog.js:490
 msgid "Limited"
 msgstr "Korlátozott"
 
-#: ../src/osmEditDialog.js:294
+#: ../src/osmEditDialog.js:491
 msgid "Designated"
 msgstr "Kijelölt"
 
@@ -765,6 +801,10 @@ msgstr "Nyitva tartás:"
 msgid "Wheelchair access:"
 msgstr "Kerekesszékes elérés:"
 
+#: ../src/placeBubble.js:154 ../src/placeBubble.js:158
+msgid "Phone:"
+msgstr "Telefon:"
+
 #: ../src/placeEntry.js:190
 msgid "Failed to parse Geo URI"
 msgstr "A Geo URI feldolgozása nem sikerült"
@@ -772,7 +812,7 @@ msgstr "A Geo URI feldolgozása nem sikerült"
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: ../src/place.js:151
+#: ../src/place.js:162
 msgid "yes"
 msgstr "igen"
 
@@ -781,7 +821,7 @@ msgstr "igen"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:158
+#: ../src/place.js:169
 msgid "limited"
 msgstr "korlátozott"
 
@@ -789,7 +829,7 @@ msgstr "korlátozott"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: ../src/place.js:164
+#: ../src/place.js:175
 msgid "no"
 msgstr "nem"
 
@@ -798,7 +838,7 @@ msgstr "nem"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:171
+#: ../src/place.js:182
 msgid "designated"
 msgstr "kijelölt"
 
@@ -999,6 +1039,9 @@ msgstr "%f mi"
 #, javascript-format
 msgid "%f ft"
 msgstr "%f láb"
+
+#~ msgid "Edit Location"
+#~ msgstr "Hely szerkesztése"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Show help"
