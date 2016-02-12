@@ -58,10 +58,16 @@ const ShapeLayerFileChooser = new Lang.Class({
 
     _init: function(params) {
         this.parent(params);
+        let allFilter = new Gtk.FileFilter();
+        allFilter.set_name(_("All Layer Files"));
+        this.add_filter(allFilter);
+        this.set_filter(allFilter);
 
         ShapeLayer.SUPPORTED_TYPES.forEach((function(layerClass) {
             let filter = new Gtk.FileFilter();
-            layerClass.mimeTypes.forEach(filter.add_mime_type.bind(filter));
+            [filter, allFilter].forEach(function(f) {
+                layerClass.mimeTypes.forEach(f.add_mime_type.bind(f));
+            });
             filter.set_name(layerClass.displayName);
             this.add_filter(filter);
         }).bind(this));
