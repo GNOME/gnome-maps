@@ -54,6 +54,8 @@ const EditFieldType = {
     YES_NO_LIMITED_DESIGNATED: 2
 };
 
+const _WIKI_BASE = 'http://wiki.openstreetmap.org/wiki/Key:';
+
 let _osmWikipediaRewriteFunc = function(text) {
     let wikipediaArticleFormatted = OSMUtils.getWikipediaOSMArticleFormatFromUrl(text);
 
@@ -88,6 +90,8 @@ let _osmPhoneRewriteFunc = function(text) {
  * (only used for TEXT fields)
  * placeHolder: set a text place holder to act as example input
  * (only used for TEXT fields)
+ * includeHelp: when true turn the name label to a link to the
+ * OSM wiki for tags.
  */
 const OSM_FIELDS = [
     {
@@ -115,7 +119,8 @@ const OSM_FIELDS = [
         name: _("Opening hours"),
         tag: 'opening_hours',
         type: EditFieldType.TEXT,
-        placeHolder: 'Mo-Fr 08:00-20:00; Sa-Su 10:00-14:00'
+        placeHolder: 'Mo-Fr 08:00-20:00; Sa-Su 10:00-14:00',
+        includeHelp: true
     },
     {
         name: _("Population"),
@@ -460,8 +465,14 @@ const OSMEditDialog = new Lang.Class({
         deleteButton.show();
     },
 
-    _addOSMEditLabel: function(text) {
-        let label = new Gtk.Label({label: text});
+    _addOSMEditLabel: function(fieldSpec) {
+        let text = fieldSpec.name;
+        if (fieldSpec.includeHelp) {
+            let link = _WIKI_BASE + fieldSpec.tag;
+            text = '<a href="%s" title="%s">%s</a>'.format(link, link, text);
+        }
+        let label = new Gtk.Label({ label: text,
+                                    use_markup: true });
         label.halign = Gtk.Align.END;
         label.get_style_context().add_class('dim-label');
         this._editorGrid.attach(label, 0, this._currentRow, 1, 1);
