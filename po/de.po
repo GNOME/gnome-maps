@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-03 19:35+0000\n"
-"PO-Revision-Date: 2016-02-03 21:01+0100\n"
+"POT-Creation-Date: 2016-02-13 16:54+0000\n"
+"PO-Revision-Date: 2016-02-13 21:17+0100\n"
 "Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -64,7 +64,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:80 ../src/mainWindow.js:400
+#: ../src/application.js:86 ../src/mainWindow.js:400
 msgid "Maps"
 msgstr "Karten"
 
@@ -194,12 +194,12 @@ msgstr ""
 "bearbeiten zu können."
 
 #: ../data/ui/app-menu.ui.h:1
-msgid "_Keyboard Shortcuts"
-msgstr "Tasten_kürzel"
+msgid "Set up OpenStreetMap Account"
+msgstr "OpenStreetMap-Konto einrichten"
 
 #: ../data/ui/app-menu.ui.h:2
-msgid "Setup OpenStreetMap Account"
-msgstr "OpenStreetMap-Konto einrichten"
+msgid "_Keyboard Shortcuts"
+msgstr "Tasten_kürzel"
 
 #: ../data/ui/app-menu.ui.h:3
 msgid "About"
@@ -222,7 +222,7 @@ msgid "Post on Twitter"
 msgstr "Auf Twitter veröffentlichen"
 
 #: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/export-view-dialog.ui.h:2
-#: ../data/ui/send-to-dialog.ui.h:2 ../data/ui/shape-layer-file-chooser.ui.h:2
+#: ../data/ui/send-to-dialog.ui.h:2 ../data/ui/shape-layer-file-chooser.ui.h:3
 msgid "_Cancel"
 msgstr "_Abbrechen"
 
@@ -271,6 +271,10 @@ msgstr "Ort kopieren"
 msgid "Export As Image"
 msgstr "Als Bild exportieren"
 
+#: ../data/ui/context-menu.ui.h:4 ../src/osmEditDialog.js:202
+msgid "Add to OpenStreetMap"
+msgstr "Zu OpenStreetMap hinzufügen"
+
 #: ../data/ui/export-view-dialog.ui.h:1
 msgid "Export view"
 msgstr "Ansicht exportieren"
@@ -290,8 +294,8 @@ msgstr "Allgemein"
 
 #: ../data/ui/help-overlay.ui.h:2
 msgctxt "shortcut window"
-msgid "Show help"
-msgstr "Hilfe anzeigen"
+msgid "Show Shortcuts"
+msgstr "Tastenkürzel anzeigen"
 
 #: ../data/ui/help-overlay.ui.h:3
 msgctxt "shortcut window"
@@ -324,11 +328,9 @@ msgid "Zoom out"
 msgstr "Verkleinern"
 
 #: ../data/ui/help-overlay.ui.h:9
-#, fuzzy
-#| msgid "Toggle visible"
 msgctxt "shortcut window"
 msgid "Toggle scale"
-msgstr "Sichtbarkeit umschalten"
+msgstr "Maßstab umschalten"
 
 #: ../data/ui/help-overlay.ui.h:10
 msgctxt "shortcut window"
@@ -467,14 +469,22 @@ msgid "Sign Out"
 msgstr "Abmelden"
 
 #: ../data/ui/osm-edit-dialog.ui.h:1
-msgid "Edit Location"
-msgstr "Ort bearbeiten"
+msgid "None"
+msgstr "Keine"
 
 #: ../data/ui/osm-edit-dialog.ui.h:2
+msgid "Recently Used"
+msgstr "Zuletzt verwendet"
+
+#: ../data/ui/osm-edit-dialog.ui.h:3
+msgid "Edit on OpenStreetMap"
+msgstr "Auf OpenStreetMap bearbeiten"
+
+#: ../data/ui/osm-edit-dialog.ui.h:4
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: ../data/ui/osm-edit-dialog.ui.h:3 ../src/osmEditDialog.js:154
+#: ../data/ui/osm-edit-dialog.ui.h:5 ../src/osmEditDialog.js:385
 msgid "Next"
 msgstr "Nächste"
 
@@ -482,7 +492,7 @@ msgstr "Nächste"
 msgid "Show more information"
 msgstr "Weitere Informationen anzeigen"
 
-#: ../data/ui/search-popup.ui.h:1
+#: ../data/ui/place-popover.ui.h:1
 msgid "Press enter to search"
 msgstr "Drücken Sie zum Suchen die Eingabetaste"
 
@@ -490,7 +500,7 @@ msgstr "Drücken Sie zum Suchen die Eingabetaste"
 msgid "Open location"
 msgstr "Ort öffnen"
 
-#: ../data/ui/send-to-dialog.ui.h:3
+#: ../data/ui/send-to-dialog.ui.h:3 ../data/ui/shape-layer-file-chooser.ui.h:2
 msgid "_Open"
 msgstr "Ö_ffnen"
 
@@ -520,6 +530,14 @@ msgstr "Aktueller Ort"
 msgid "Accuracy: %s"
 msgstr "Genauigkeit: %s"
 
+#: ../data/ui/zoom-in-notification.ui.h:1
+msgid "Zoom in to add location!"
+msgstr "Vergrößern, um einen Ort hinzufügen!"
+
+#: ../data/ui/zoom-in-notification.ui.h:2
+msgid "OK"
+msgstr "OK"
+
 #: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
 #: ../lib/maps-file-tile-source.c:459
 msgid "Failed to find tile structure in directory"
@@ -537,7 +555,7 @@ msgstr "Erforderliche Attribute fehlen"
 msgid "Could not find OSM element"
 msgstr "OSM-Element kann nicht gefunden werden"
 
-#: ../src/application.js:91
+#: ../src/application.js:102
 msgid "A path to a local tiles directory structure"
 msgstr "Pfad zu einer lokalen Kachel-Ordnerstruktur"
 
@@ -584,7 +602,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Schreiben Sie eine optionale Nachricht, um bei %s einzuchecken."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:189
+#: ../src/osmEditDialog.js:422
 msgid "An error has occurred"
 msgstr "Ein Fehler ist aufgetreten"
 
@@ -607,17 +625,25 @@ msgstr ""
 "Die Anmeldedaten sind abgelaufen. Bitte öffnen Sie Online-Konten, um sich "
 "anzumelden und das Konto zu aktivieren."
 
-#: ../src/contextMenu.js:90
+#: ../src/contextMenu.js:97
 msgid "Route from here"
 msgstr "Route von hier"
 
-#: ../src/contextMenu.js:92
+#: ../src/contextMenu.js:99
 msgid "Add destination"
 msgstr "Ziel hinzufügen"
 
-#: ../src/contextMenu.js:94
+#: ../src/contextMenu.js:101
 msgid "Route to here"
 msgstr "Route hierher"
+
+#: ../src/contextMenu.js:182
+msgid ""
+"Location was added to the map, note that it may take a while before it shows "
+"on the map and in search results."
+msgstr ""
+"Der Ort wurde zur Karte hinzugefügt. Beachten Sie, dass es eine Zeit dauern "
+"kann, bis er in der Karte und in den Suchergebnissen erscheint."
 
 #: ../src/exportViewDialog.js:156
 msgid "Filesystem is read only"
@@ -719,47 +745,55 @@ msgstr "Objekt wurde gelöscht"
 msgid "Way or relation refers to non-existing children"
 msgstr "Weg oder Bezug verweist auf nicht existierende Unterobjekte"
 
-#.
-#. * specification of OSM edit fields
-#. * name: the label for the edit field (translatable)
-#. * tag: the OSM tag key value
-#. * type: the field type (determines editing field type)
-#. * rewriteFunc: a rewrite function taking a string argument
-#. * (only used for TEXT fields)
-#.
-#: ../src/osmEditDialog.js:71
+#: ../src/osmEditDialog.js:98
 msgid "Name"
 msgstr "Name"
 
-#: ../src/osmEditDialog.js:72 ../src/placeBubble.js:144
+#: ../src/osmEditDialog.js:103 ../src/placeBubble.js:142
+msgid "Website"
+msgstr "Internet-Seite"
+
+#: ../src/osmEditDialog.js:108
+msgid "Phone"
+msgstr "Telefon"
+
+#: ../src/osmEditDialog.js:114 ../src/placeBubble.js:148
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: ../src/osmEditDialog.js:74
+#: ../src/osmEditDialog.js:119
+msgid "Opening hours"
+msgstr "Öffnungszeiten"
+
+#: ../src/osmEditDialog.js:126
 msgid "Population"
 msgstr "Bevölkerung"
 
-#: ../src/osmEditDialog.js:76
+#: ../src/osmEditDialog.js:131
 msgid "Wheelchair access"
 msgstr "Barrierefreier Zugang"
 
-#: ../src/osmEditDialog.js:140
+#: ../src/osmEditDialog.js:253
+msgid "Select Type"
+msgstr "Typ wählen"
+
+#: ../src/osmEditDialog.js:371
 msgid "Done"
 msgstr "Abgeschlossen"
 
-#: ../src/osmEditDialog.js:290
+#: ../src/osmEditDialog.js:531
 msgid "Yes"
 msgstr "Ja"
 
-#: ../src/osmEditDialog.js:291
+#: ../src/osmEditDialog.js:532
 msgid "No"
 msgstr "Nein"
 
-#: ../src/osmEditDialog.js:292
+#: ../src/osmEditDialog.js:533
 msgid "Limited"
 msgstr "Begrenzt"
 
-#: ../src/osmEditDialog.js:293
+#: ../src/osmEditDialog.js:534
 msgid "Designated"
 msgstr "Geeignet"
 
@@ -775,6 +809,10 @@ msgstr "Öffnungszeiten:"
 msgid "Wheelchair access:"
 msgstr "Barrierefreier Zugang:"
 
+#: ../src/placeBubble.js:154 ../src/placeBubble.js:158
+msgid "Phone:"
+msgstr "Telefon:"
+
 #: ../src/placeEntry.js:190
 msgid "Failed to parse Geo URI"
 msgstr "Geo-Adresse konnte nicht gelesen werden"
@@ -782,7 +820,7 @@ msgstr "Geo-Adresse konnte nicht gelesen werden"
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: ../src/place.js:140
+#: ../src/place.js:162
 msgid "yes"
 msgstr "ja"
 
@@ -791,7 +829,7 @@ msgstr "ja"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:147
+#: ../src/place.js:169
 msgid "limited"
 msgstr "begrenzt"
 
@@ -799,7 +837,7 @@ msgstr "begrenzt"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: ../src/place.js:153
+#: ../src/place.js:175
 msgid "no"
 msgstr "nein"
 
@@ -808,7 +846,7 @@ msgstr "nein"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:160
+#: ../src/place.js:182
 msgid "designated"
 msgstr "geeignet"
 
@@ -1009,6 +1047,13 @@ msgstr "%f mi"
 #, javascript-format
 msgid "%f ft"
 msgstr "%f ft"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Show help"
+#~ msgstr "Hilfe anzeigen"
+
+#~ msgid "Edit Location"
+#~ msgstr "Ort bearbeiten"
 
 #~ msgid "Postal code: %s"
 #~ msgstr "Postleitzahl: %s"
