@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-10 09:25+0000\n"
-"PO-Revision-Date: 2016-02-10 17:50+0100\n"
+"POT-Creation-Date: 2016-02-13 09:24+0000\n"
+"PO-Revision-Date: 2016-02-13 15:06+0100\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
 "Language: sk\n"
@@ -42,8 +42,8 @@ msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
 msgstr ""
-"Aplikácia Mapy používa databázu OpenStreetMap, na ktorej spolupracujú stovky "
-"tisícov ľudí na celej zemeguli."
+"Aplikácia Mapy používa databázu projektu OpenStreetMap, na ktorej "
+"spolupracujú stovky tisícov ľudí z celého sveta."
 
 #. Translators: Search is carried out on OpenStreetMap data using Nominatim.
 #. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
@@ -59,7 +59,7 @@ msgstr ""
 # desktop entry name
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:80 ../src/mainWindow.js:400
+#: ../src/application.js:86 ../src/mainWindow.js:400
 msgid "Maps"
 msgstr "Mapy"
 
@@ -190,16 +190,16 @@ msgstr ""
 
 #: ../data/org.gnome.Maps.gschema.xml.h:23
 msgid "OpenStreetMap username or e-mail address"
-msgstr "Používateľské meno alebo e-mailová adresa služby OpenStreetMap"
+msgstr "Používateľské meno alebo e-mailová adresa projektu OpenStreetMap"
 
 #: ../data/org.gnome.Maps.gschema.xml.h:24
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr ""
-"Indikuje, či sa používateľ prihlásil na úpravu údajov služby OpenStreetMap."
+"Indikuje, či sa používateľ prihlásil na úpravu údajov projektu OpenStreetMap."
 
 #: ../data/ui/app-menu.ui.h:1
 msgid "Set up OpenStreetMap Account"
-msgstr "Nastaviť účet služby OpenStreetMap"
+msgstr "Nastaviť účet projektu OpenStreetMap"
 
 #: ../data/ui/app-menu.ui.h:2
 msgid "_Keyboard Shortcuts"
@@ -275,6 +275,11 @@ msgstr "Skopírovať umiestnenie"
 #: ../data/ui/context-menu.ui.h:3
 msgid "Export As Image"
 msgstr "Exportovať ako obrázok"
+
+# DK:https://bugzilla.gnome.org/show_bug.cgi?id=761995
+#: ../data/ui/context-menu.ui.h:4 ../src/osmEditDialog.js:167
+msgid "Add to OpenStreetMap"
+msgstr "Pridať do projektu OpenStreetMap"
 
 # dialog title
 #: ../data/ui/export-view-dialog.ui.h:1
@@ -412,7 +417,7 @@ msgstr "Oznámi túto polohu"
 
 #: ../data/ui/osm-account-dialog.ui.h:1
 msgid "OpenStreetMap Account"
-msgstr "Účet služby OpenStreetMap"
+msgstr "Účet projektu OpenStreetMap"
 
 #: ../data/ui/osm-account-dialog.ui.h:2
 msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
@@ -425,7 +430,7 @@ msgid ""
 "OpenStreetMap account."
 msgstr ""
 "Pomôžte zlepšiť mapu pomocou\n"
-"účtu služby OpenStreetMap."
+"účtu projektu OpenStreetMap."
 
 #: ../data/ui/osm-account-dialog.ui.h:5
 msgid "Email"
@@ -473,21 +478,29 @@ msgstr "<span weight=\"bold\" size=\"x-large\">Prihlásený</span>"
 
 #: ../data/ui/osm-account-dialog.ui.h:16
 msgid "Your OpenStreetMap account is active."
-msgstr "Váš účet služby OpenStreetMap je aktívny."
+msgstr "Váš účet projektu OpenStreetMap je aktívny."
 
 #: ../data/ui/osm-account-dialog.ui.h:17
 msgid "Sign Out"
 msgstr "Odhlásiť sa"
 
 #: ../data/ui/osm-edit-dialog.ui.h:1
-msgid "Edit Location"
-msgstr "Úprava umiestnenia"
+msgid "None"
+msgstr "Nič"
 
 #: ../data/ui/osm-edit-dialog.ui.h:2
+msgid "Recently Used"
+msgstr "Nedávno použité"
+
+#: ../data/ui/osm-edit-dialog.ui.h:3
+msgid "Edit on OpenStreetMap"
+msgstr "Úprava v projekte OpenStreetMap"
+
+#: ../data/ui/osm-edit-dialog.ui.h:4
 msgid "Cancel"
 msgstr "Zrušiť"
 
-#: ../data/ui/osm-edit-dialog.ui.h:3 ../src/osmEditDialog.js:155
+#: ../data/ui/osm-edit-dialog.ui.h:5 ../src/osmEditDialog.js:350
 msgid "Next"
 msgstr "Ďalej"
 
@@ -496,7 +509,7 @@ msgstr "Ďalej"
 msgid "Show more information"
 msgstr "Zobrazí viac informácií"
 
-#: ../data/ui/search-popup.ui.h:1
+#: ../data/ui/place-popover.ui.h:1
 msgid "Press enter to search"
 msgstr "Stlačte enter na vyhľadanie"
 
@@ -535,6 +548,14 @@ msgstr "Aktuálne umiestnenie"
 msgid "Accuracy: %s"
 msgstr "Presnosť: %s"
 
+#: ../data/ui/zoom-in-notification.ui.h:1
+msgid "Zoom in to add location!"
+msgstr "Priblížením pridajte umiestnenie!"
+
+#: ../data/ui/zoom-in-notification.ui.h:2
+msgid "OK"
+msgstr "OK"
+
 #: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
 #: ../lib/maps-file-tile-source.c:459
 msgid "Failed to find tile structure in directory"
@@ -552,7 +573,7 @@ msgstr "Chýbajú potrebné atribúty"
 msgid "Could not find OSM element"
 msgstr "Nepodarilo sa nájsť prvok služby OSM"
 
-#: ../src/application.js:91
+#: ../src/application.js:102
 msgid "A path to a local tiles directory structure"
 msgstr "Cesta k štruktúre adresárov miestnych dlaždíc"
 
@@ -599,7 +620,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Napíšte voliteľnú správu k oznámeniu polohy %s."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:190
+#: ../src/osmEditDialog.js:387
 msgid "An error has occurred"
 msgstr "Vyskytla sa chyba"
 
@@ -621,17 +642,25 @@ msgstr ""
 "Platnosť poverení vypršala. Prosím, otvorte Účty služieb na prihlásenie a "
 "povolenie tohto účtu"
 
-#: ../src/contextMenu.js:90
+#: ../src/contextMenu.js:97
 msgid "Route from here"
 msgstr "Trasa odtiaľto"
 
-#: ../src/contextMenu.js:92
+#: ../src/contextMenu.js:99
 msgid "Add destination"
 msgstr "Pridať cieľ"
 
-#: ../src/contextMenu.js:94
+#: ../src/contextMenu.js:101
 msgid "Route to here"
 msgstr "Trasa sem"
+
+#: ../src/contextMenu.js:182
+msgid ""
+"Location was added to the map, note that it may take a while before it shows "
+"on the map and in search results."
+msgstr ""
+"Umiestnenie bolo pridané do mapy. Berte na vedomie, že jeho zobrazenie na "
+"mape a vo výsledkoch vyhľadávania môže trvať nejakú dobu."
 
 #: ../src/exportViewDialog.js:156
 msgid "Filesystem is read only"
@@ -736,43 +765,51 @@ msgstr "Cesta alebo relácia odkazuje na neexistujúceho potomka"
 #. * rewriteFunc: a rewrite function taking a string argument
 #. * (only used for TEXT fields)
 #.
-#: ../src/osmEditDialog.js:71
+#: ../src/osmEditDialog.js:90
 msgid "Name"
 msgstr "Názov"
 
-#: ../src/osmEditDialog.js:72 ../src/placeBubble.js:142
+#: ../src/osmEditDialog.js:91 ../src/placeBubble.js:142
 msgid "Website"
 msgstr "Webová stránka"
 
-#: ../src/osmEditDialog.js:73 ../src/placeBubble.js:149
+#: ../src/osmEditDialog.js:92
+msgid "Phone"
+msgstr "Telefón"
+
+#: ../src/osmEditDialog.js:94 ../src/placeBubble.js:148
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: ../src/osmEditDialog.js:75
+#: ../src/osmEditDialog.js:96
 msgid "Population"
 msgstr "Obyvateľstvo"
 
-#: ../src/osmEditDialog.js:77
+#: ../src/osmEditDialog.js:98
 msgid "Wheelchair access"
 msgstr "Bezbariérový prístup"
 
-#: ../src/osmEditDialog.js:141
+#: ../src/osmEditDialog.js:218
+msgid "Select Type"
+msgstr "Výber typu"
+
+#: ../src/osmEditDialog.js:336
 msgid "Done"
 msgstr "Hotovo"
 
-#: ../src/osmEditDialog.js:291
+#: ../src/osmEditDialog.js:488
 msgid "Yes"
 msgstr "Áno"
 
-#: ../src/osmEditDialog.js:292
+#: ../src/osmEditDialog.js:489
 msgid "No"
 msgstr "Nie"
 
-#: ../src/osmEditDialog.js:293
+#: ../src/osmEditDialog.js:490
 msgid "Limited"
 msgstr "Obmedzený"
 
-#: ../src/osmEditDialog.js:294
+#: ../src/osmEditDialog.js:491
 msgid "Designated"
 msgstr "Vyhradený"
 
@@ -788,6 +825,10 @@ msgstr "Otváracia doba:"
 msgid "Wheelchair access:"
 msgstr "Bezbariérový prístup:"
 
+#: ../src/placeBubble.js:154 ../src/placeBubble.js:158
+msgid "Phone:"
+msgstr "Telefón:"
+
 #: ../src/placeEntry.js:190
 msgid "Failed to parse Geo URI"
 msgstr "Zlyhala analýza URI geografickej polohy"
@@ -795,7 +836,7 @@ msgstr "Zlyhala analýza URI geografickej polohy"
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: ../src/place.js:151
+#: ../src/place.js:162
 msgid "yes"
 msgstr "áno"
 
@@ -804,7 +845,7 @@ msgstr "áno"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:158
+#: ../src/place.js:169
 msgid "limited"
 msgstr "obmedzený"
 
@@ -812,7 +853,7 @@ msgstr "obmedzený"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: ../src/place.js:164
+#: ../src/place.js:175
 msgid "no"
 msgstr "nie"
 
@@ -821,7 +862,7 @@ msgstr "nie"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:171
+#: ../src/place.js:182
 msgid "designated"
 msgstr "vyhradený"
 
@@ -1022,6 +1063,9 @@ msgstr "%f mi"
 #, javascript-format
 msgid "%f ft"
 msgstr "%f ft"
+
+#~ msgid "Edit Location"
+#~ msgstr "Úprava umiestnenia"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Show help"
