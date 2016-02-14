@@ -103,28 +103,6 @@ const OSM_FIELDS = [
         hint: _("The official name. This is typically what appears on signs.")
     },
     {
-        name: _("Alternative name"),
-        tag: 'alt_name',
-        type: EditFieldType.TEXT,
-        hint: _("Alternative name by which the place may also be known. \
-Adding this when appropriate can enhance searchability of places and locations.")
-    },
-    {
-        name: _("Local name"),
-        tag: 'loc_name',
-        type: EditFieldType.TEXT,
-        hint: _("Local name, or slang name by which a place might be known by \
-local inhabitants. Adding this when appropriate can enhance searchability of \
-places and locations.")
-    },
-    {
-        name: _("Historical name"),
-        tag: 'old_name',
-        type: EditFieldType.TEXT,
-        hint: _("Older name by which the place was previously known. \
-Adding this when appropriate can enhance searchability of places and locations.")
-    },
-    {
         name: _("Website"),
         tag: 'website',
         type: EditFieldType.TEXT,
