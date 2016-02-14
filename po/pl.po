@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-06 21:47+0100\n"
-"PO-Revision-Date: 2016-02-06 21:48+0100\n"
+"POT-Creation-Date: 2016-02-14 18:14+0100\n"
+"PO-Revision-Date: 2016-02-14 18:15+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -63,7 +63,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:80 ../src/mainWindow.js:400
+#: ../src/application.js:86 ../src/mainWindow.js:400
 msgid "Maps"
 msgstr "Mapy"
 
@@ -190,12 +190,12 @@ msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr "Czy użytkownik jest zalogowany, aby modyfikować dane OpenStreetMap."
 
 #: ../data/ui/app-menu.ui.h:1
-msgid "_Keyboard Shortcuts"
-msgstr "_Skróty klawiszowe"
+msgid "Set up OpenStreetMap Account"
+msgstr "Ustaw konto serwisu OpenStreetMap"
 
 #: ../data/ui/app-menu.ui.h:2
-msgid "Setup OpenStreetMap Account"
-msgstr "Ustaw konto serwisu OpenStreetMap"
+msgid "_Keyboard Shortcuts"
+msgstr "_Skróty klawiszowe"
 
 #: ../data/ui/app-menu.ui.h:3
 msgid "About"
@@ -267,6 +267,10 @@ msgstr "Skopiuj położenie"
 msgid "Export As Image"
 msgstr "Wyeksportuj jako obraz"
 
+#: ../data/ui/context-menu.ui.h:4
+msgid "Add to OpenStreetMap"
+msgstr "Dodaj do serwisu OpenStreetMap"
+
 #: ../data/ui/export-view-dialog.ui.h:1
 msgid "Export view"
 msgstr "Eksport widoku"
@@ -286,8 +290,8 @@ msgstr "Ogólne"
 
 #: ../data/ui/help-overlay.ui.h:2
 msgctxt "shortcut window"
-msgid "Show help"
-msgstr "Wyświetlenie pomocy"
+msgid "Show Shortcuts"
+msgstr "Wyświetlenie skrótów"
 
 #: ../data/ui/help-overlay.ui.h:3
 msgctxt "shortcut window"
@@ -459,14 +463,22 @@ msgid "Sign Out"
 msgstr "Wyloguj"
 
 #: ../data/ui/osm-edit-dialog.ui.h:1
-msgid "Edit Location"
-msgstr "Modyfikacja położenia"
+msgid "None"
+msgstr "Brak"
 
 #: ../data/ui/osm-edit-dialog.ui.h:2
+msgid "Recently Used"
+msgstr "Ostatnio używane"
+
+#: ../data/ui/osm-edit-dialog.ui.h:3
+msgid "Edit on OpenStreetMap"
+msgstr "Modyfikacja w serwisie OpenStreetMap"
+
+#: ../data/ui/osm-edit-dialog.ui.h:4
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: ../data/ui/osm-edit-dialog.ui.h:3 ../src/osmEditDialog.js:154
+#: ../data/ui/osm-edit-dialog.ui.h:5 ../src/osmEditDialog.js:400
 msgid "Next"
 msgstr "Dalej"
 
@@ -474,7 +486,7 @@ msgstr "Dalej"
 msgid "Show more information"
 msgstr "Wyświetla więcej informacji"
 
-#: ../data/ui/search-popup.ui.h:1
+#: ../data/ui/place-popover.ui.h:1
 msgid "Press enter to search"
 msgstr "Naciśnięcie klawisza Enter wyszuka"
 
@@ -512,6 +524,14 @@ msgstr "Obecne położenie"
 msgid "Accuracy: %s"
 msgstr "Dokładność: %s"
 
+#: ../data/ui/zoom-in-notification.ui.h:1
+msgid "Zoom in to add location!"
+msgstr "Należy przybliżyć, aby dodać położenie."
+
+#: ../data/ui/zoom-in-notification.ui.h:2
+msgid "OK"
+msgstr "OK"
+
 #: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
 #: ../lib/maps-file-tile-source.c:459
 msgid "Failed to find tile structure in directory"
@@ -529,7 +549,7 @@ msgstr "Brak wymaganych atrybutów"
 msgid "Could not find OSM element"
 msgstr "Nie można odnaleźć elementu OSM"
 
-#: ../src/application.js:91
+#: ../src/application.js:102
 msgid "A path to a local tiles directory structure"
 msgstr "Ścieżka do lokalnej struktury katalogów kafli"
 
@@ -576,7 +596,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Można napisać wiadomość związaną z zameldowaniem w „%s”."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:189
+#: ../src/osmEditDialog.js:437
 msgid "An error has occurred"
 msgstr "Wystąpił błąd"
 
@@ -598,17 +618,25 @@ msgstr ""
 "Uwierzytelnienie wygasło. Proszę otworzyć Konta online, aby zalogować się "
 "lub włączyć to konto"
 
-#: ../src/contextMenu.js:90
+#: ../src/contextMenu.js:97
 msgid "Route from here"
 msgstr "Trasa stąd"
 
-#: ../src/contextMenu.js:92
+#: ../src/contextMenu.js:99
 msgid "Add destination"
 msgstr "Dodaj cel"
 
-#: ../src/contextMenu.js:94
+#: ../src/contextMenu.js:101
 msgid "Route to here"
 msgstr "Trasa dotąd"
+
+#: ../src/contextMenu.js:182
+msgid ""
+"Location was added to the map, note that it may take a while before it shows "
+"on the map and in search results."
+msgstr ""
+"Dodano położenie do mapy. Proszę zauważyć, że może minąć trochę czasu, zanim "
+"pojawi się ono na mapie i w wynikach wyszukiwania."
 
 #: ../src/exportViewDialog.js:156
 msgid "Filesystem is read only"
@@ -708,49 +736,85 @@ msgstr "Usunięto obiekt"
 msgid "Way or relation refers to non-existing children"
 msgstr "Droga lub związek odnosi się do nieistniejących elementów potomnych"
 
-#.
-#. * specification of OSM edit fields
-#. * name: the label for the edit field (translatable)
-#. * tag: the OSM tag key value
-#. * type: the field type (determines editing field type)
-#. * rewriteFunc: a rewrite function taking a string argument
-#. * (only used for TEXT fields)
-#.
-#: ../src/osmEditDialog.js:71
+#: ../src/osmEditDialog.js:98
 msgid "Name"
 msgstr "Nazwa"
 
-#: ../src/osmEditDialog.js:72 ../src/placeBubble.js:144
+#: ../src/osmEditDialog.js:103 ../src/placeBubble.js:147
+msgid "Website"
+msgstr "Strona WWW"
+
+#: ../src/osmEditDialog.js:108
+msgid "Phone"
+msgstr "Telefon"
+
+#: ../src/osmEditDialog.js:114 ../src/placeBubble.js:153
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: ../src/osmEditDialog.js:74
+#: ../src/osmEditDialog.js:119
+msgid "Opening hours"
+msgstr "Godziny otwarcia"
+
+#: ../src/osmEditDialog.js:126
 msgid "Population"
 msgstr "Liczba mieszkańców"
 
-#: ../src/osmEditDialog.js:76
+#: ../src/osmEditDialog.js:131
 msgid "Wheelchair access"
 msgstr "Dostęp dla osób na wózku"
 
-#: ../src/osmEditDialog.js:140
-msgid "Done"
-msgstr "Gotowe"
-
-#: ../src/osmEditDialog.js:290
+#: ../src/osmEditDialog.js:134 ../src/osmEditDialog.js:143
 msgid "Yes"
 msgstr "Tak"
 
-#: ../src/osmEditDialog.js:291
+#: ../src/osmEditDialog.js:135 ../src/osmEditDialog.js:144
 msgid "No"
 msgstr "Nie"
 
-#: ../src/osmEditDialog.js:292
+#: ../src/osmEditDialog.js:136
 msgid "Limited"
 msgstr "Ograniczony"
 
-#: ../src/osmEditDialog.js:293
+#: ../src/osmEditDialog.js:137
 msgid "Designated"
 msgstr "Specjalnie zaprojektowany"
+
+#: ../src/osmEditDialog.js:140
+msgid "Internet access"
+msgstr "Dostęp do Internetu"
+
+#. Translators:
+#. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
+#.
+#: ../src/osmEditDialog.js:145 ../src/translations.js:341
+msgid "WLAN"
+msgstr "Wi-Fi"
+
+#: ../src/osmEditDialog.js:146
+msgid "Wired"
+msgstr "Przewodowy"
+
+#: ../src/osmEditDialog.js:147
+msgid "Terminal"
+msgstr "Na miejscu"
+
+#: ../src/osmEditDialog.js:148
+msgid "Service"
+msgstr "Obsługa"
+
+#: ../src/osmEditDialog.js:217
+msgctxt "dialog title"
+msgid "Add to OpenStreetMap"
+msgstr "Dodanie do serwisu OpenStreetMap"
+
+#: ../src/osmEditDialog.js:268
+msgid "Select Type"
+msgstr "Wybór typu"
+
+#: ../src/osmEditDialog.js:386
+msgid "Done"
+msgstr "Gotowe"
 
 #: ../src/placeBubble.js:127
 msgid "Population:"
@@ -761,8 +825,16 @@ msgid "Opening hours:"
 msgstr "Godziny otwarcia:"
 
 #: ../src/placeBubble.js:137
+msgid "Internet access:"
+msgstr "Dostęp do Internetu:"
+
+#: ../src/placeBubble.js:142
 msgid "Wheelchair access:"
 msgstr "Dostęp dla osób na wózku:"
+
+#: ../src/placeBubble.js:159 ../src/placeBubble.js:163
+msgid "Phone:"
+msgstr "Telefon:"
 
 #: ../src/placeEntry.js:190
 msgid "Failed to parse Geo URI"
@@ -771,7 +843,10 @@ msgstr "Przetworzenie adresu URI Geo się nie powiodło"
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: ../src/place.js:140
+#. Translators:
+#. * There is public internet access but the particular kind is unknown.
+#.
+#: ../src/place.js:177 ../src/translations.js:330
 msgid "yes"
 msgstr "tak"
 
@@ -780,7 +855,7 @@ msgstr "tak"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:147
+#: ../src/place.js:184
 msgid "limited"
 msgstr "ograniczony"
 
@@ -788,7 +863,11 @@ msgstr "ograniczony"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: ../src/place.js:153
+#. Translators:
+#. * no internet access is offered in a place where
+#. * someone might expect it.
+#.
+#: ../src/place.js:190 ../src/translations.js:336
 msgid "no"
 msgstr "nie"
 
@@ -797,7 +876,7 @@ msgstr "nie"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:160
+#: ../src/place.js:197
 msgid "designated"
 msgstr "specjalnie zaprojektowany"
 
@@ -949,6 +1028,27 @@ msgstr "zamknięte"
 msgctxt "time interval"
 msgid "%s-%s"
 msgstr "%s-%s"
+
+#. Translators:
+#. * This means a a place where you can plug in your laptop with ethernet.
+#.
+#: ../src/translations.js:346
+msgid "wired"
+msgstr "przewodowy"
+
+#. Translators:
+#. * Like internet cafe or library where the computer is given.
+#.
+#: ../src/translations.js:351
+msgid "terminal"
+msgstr "na miejscu"
+
+#. Translators:
+#. * This means there is personnel which helps you in case of problems.
+#.
+#: ../src/translations.js:356
+msgid "service"
+msgstr "obsługa"
 
 #. Translators: Accuracy of user location information
 #: ../src/utils.js:228
