@@ -143,17 +143,6 @@ const PlaceBubble = new Lang.Class({
                                    info: place.wheelchairTranslated });
         }
 
-        if (place.website) {
-            expandedContent.push({ linkText: _("Website"),
-                                   linkUrl: place.website });
-        }
-
-        if (place.wiki) {
-            let link = this._formatWikiLink(place.wiki);
-            expandedContent.push({ linkText: _("Wikipedia"),
-                                   linkUrl: link});
-        }
-
         if (place.phone) {
             if (Utils.uriSchemeSupported('tel')) {
                 expandedContent.push({ label: _("Phone:"),
@@ -163,6 +152,17 @@ const PlaceBubble = new Lang.Class({
                 expandedContent.push({ label: _("Phone:"),
                                        info: place.phone });
             }
+        }
+
+        if (place.website) {
+            expandedContent.push({ linkText: _("Website"),
+                                   linkUrl: place.website });
+        }
+
+        if (place.wiki) {
+            let link = this._formatWikiLink(place.wiki);
+            expandedContent.push({ linkText: _("Wikipedia"),
+                                   linkUrl: link});
         }
 
         content.forEach((function(row) {
