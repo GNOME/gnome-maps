@@ -104,6 +104,8 @@ const Overpass = new Lang.Class({
             place.wheelchair = element.tags.wheelchair;
         if (element.tags.opening_hours)
             place.openingHours = element.tags.opening_hours;
+        if (element.tags.internet_access)
+            place.internetAccess = element.tags.internet_access;
     },
 
     _getQueryUrl: function(place) {

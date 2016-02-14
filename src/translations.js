@@ -321,3 +321,41 @@ function _translateOpeningHoursTime(string) {
         return string;
     }
 }
+
+function translateInternetAccess(string) {
+    switch(string) {
+    /* Translators:
+     * There is public internet access but the particular kind is unknown.
+     */
+    case 'yes': return _("yes");
+
+    /* Translators:
+     * no internet access is offered in a place where
+     * someone might expect it.
+     */
+    case 'no': return _("no");
+
+    /* Translators:
+     * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
+     */
+    case 'wlan': return _("wlan");
+
+    /* Translators:
+     * This means a a place where you can plug in your laptop with ethernet.
+     */
+    case 'wired': return _("wired");
+
+    /* Translators:
+     * Like internet cafe or library where the computer is given.
+     */
+    case 'terminal': return _("terminal");
+
+    /* Translators:
+     * This means there is personnel which helps you in case of problems.
+     */
+    case 'service': return _("service");
+
+    default: return null;
+    }
+}
+

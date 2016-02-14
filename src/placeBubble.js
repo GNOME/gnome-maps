@@ -133,6 +133,11 @@ const PlaceBubble = new Lang.Class({
                                    info: place.openingHoursTranslated });
         }
 
+        if (place.internetAccess) {
+            expandedContent.push({ label: _("Internet access:"),
+                                   info: place.internetAccessTranslated });
+        }
+
         if (place.wheelchair) {
             expandedContent.push({ label: _("Wheelchair access:"),
                                    info: place.wheelchairTranslated });
