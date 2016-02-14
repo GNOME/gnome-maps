@@ -91,6 +91,7 @@ let _osmPhoneRewriteFunc = function(text) {
  * (only used for TEXT fields)
  * includeHelp: when true turn the name label to a link to the
  * OSM wiki for tags.
+ * options: The options for the combo box (only used for COMBO fields)
  */
 const OSM_FIELDS = [
     {
@@ -130,21 +131,21 @@ const OSM_FIELDS = [
         name: _("Wheelchair access"),
         tag: 'wheelchair',
         type: EditFieldType.COMBO,
-        combo: [['yes', _("Yes")],
-                ['no', _("No")],
-                ['limited', _("Limited")],
-                ['designated', _("Designated")]]
+        options: [['yes', _("Yes")],
+                  ['no', _("No")],
+                  ['limited', _("Limited")],
+                  ['designated', _("Designated")]]
     },
     {
         name: _("Internet access"),
         tag: 'internet_access',
         type: EditFieldType.COMBO,
-        combo: [['yes', _("Yes")],
-                ['no', _("No")],
-                ['wlan', _("Wlan")],
-                ['wired', _("Wired")],
-                ['terminal', _("Terminal")],
-                ['service', _("Service")]]
+        options: [['yes', _("Yes")],
+                  ['no', _("No")],
+                  ['wlan', _("Wlan")],
+                  ['wired', _("Wired")],
+                  ['terminal', _("Terminal")],
+                  ['service', _("Service")]]
     }];
 
 
@@ -542,8 +543,8 @@ const OSMEditDialog = new Lang.Class({
 
         let combobox = new Gtk.ComboBoxText();
 
-        fieldSpec.combo.forEach(function(comboField) {
-            combobox.append(comboField[0], comboField[1]);
+        fieldSpec.options.forEach(function(option) {
+            combobox.append(option[0], option[1]);
         });
         combobox.active_id = value;
         combobox.hexpand = true;
