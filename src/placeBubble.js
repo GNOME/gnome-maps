@@ -239,7 +239,7 @@ const PlaceBubble = new Lang.Class({
             let dialog = osmEdit.createAccountDialog(this.get_toplevel(), true);
 
             dialog.show();
-            dialog.connect('response', (function(response) {
+            dialog.connect('response', (function(dialog, response) {
                 dialog.destroy();
                 if (response === OSMAccountDialog.Response.SIGNED_IN)
                     this._edit();
@@ -256,7 +256,7 @@ const PlaceBubble = new Lang.Class({
         let dialog = osmEdit.createEditDialog(this.get_toplevel(), this._place);
 
         dialog.show();
-        dialog.connect('response', (function(response) {
+        dialog.connect('response', (function(dialog, response) {
             dialog.destroy();
 
             switch (response) {

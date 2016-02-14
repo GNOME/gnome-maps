@@ -146,7 +146,7 @@ const ContextMenu = new Lang.Class({
             let dialog = osmEdit.createAccountDialog(this.get_toplevel(), true);
 
             dialog.show();
-            dialog.connect('response', (function (response) {
+            dialog.connect('response', (function(dialog, response) {
                 dialog.destroy();
                 if (response === OSMAccountDialog.Response.SIGNED_IN)
                     this._addOSMLocation();
@@ -175,7 +175,7 @@ const ContextMenu = new Lang.Class({
                                       this._latitude, this._longitude);
 
         dialog.show();
-        dialog.connect('response', (function (response) {
+        dialog.connect('response', (function(dialog, response) {
             dialog.destroy();
             if (response === OSMEditDialog.Response.UPLOADED) {
                 Application.notificationManager.showMessage(
