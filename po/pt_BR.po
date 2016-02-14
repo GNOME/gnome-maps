@@ -11,9 +11,9 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-12 07:37+0000\n"
-"PO-Revision-Date: 2016-02-11 17:38-0300\n"
-"Last-Translator: Fábio Nogueira <fnogueira@gnome.org>\n"
+"POT-Creation-Date: 2016-02-14 10:23+0000\n"
+"PO-Revision-Date: 2016-02-14 15:09-0200\n"
+"Last-Translator: Rafael Fontenelle <rffontenelle@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -37,9 +37,9 @@ msgid ""
 "quickly find the place you’re looking for by searching for a city or street, "
 "or locate a place to meet a friend."
 msgstr ""
-"Mapas oferece a você acesso rápido a mapas ao redor de todo o mundo. "
-"Permite que você localize rapidamente o local que deseja encontrar através "
-"da pesquisa por uma cidade ou rua e a encontrar um local para encontrar um "
+"Mapas oferece a você acesso rápido a mapas ao redor de todo o mundo. Permite "
+"que você localize rapidamente o local que deseja encontrar através da "
+"pesquisa por uma cidade ou rua e a encontrar um local para encontrar um "
 "amigo(a)."
 
 # Contribuições pois os usuários inserem os dados no banco de dados e não criam as tabelas deste --Enrico.
@@ -48,8 +48,8 @@ msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
 msgstr ""
-"Mapas usa o banco de dados colaborativo do OpenStreetMap, com "
-"contribuições de centenas de milhares de pessoas ao redor do planeta."
+"Mapas usa o banco de dados colaborativo do OpenStreetMap, com contribuições "
+"de centenas de milhares de pessoas ao redor do planeta."
 
 # Para assegurar a fidelidade do comando, a alternativa brasileira (Fernando de Noronha) foi pesquisada no serviço e por resultado satisfatório, acrescentada por mim neste aplicativo --Enrico
 #. Translators: Search is carried out on OpenStreetMap data using Nominatim.
@@ -60,9 +60,9 @@ msgid ""
 "You can even search for specific types of locations, such as “Pubs near Main "
 "Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
 msgstr ""
-"Você também pode pesquisar por tipos específicos de localizações, como \"Praias "
-"perto de Fernando de Noronha\" ou \"Universidade perto de Alexanderplatz, "
-"Berlin\"."
+"Você também pode pesquisar por tipos específicos de localizações, como "
+"\"Praias perto de Fernando de Noronha\" ou \"Universidade perto de "
+"Alexanderplatz, Berlin\"."
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
@@ -266,7 +266,7 @@ msgstr "Copiar localização"
 msgid "Export As Image"
 msgstr "Exportar como imagem"
 
-#: ../data/ui/context-menu.ui.h:4 ../src/osmEditDialog.js:167
+#: ../data/ui/context-menu.ui.h:4 ../src/osmEditDialog.js:216
 msgid "Add to OpenStreetMap"
 msgstr "Adicionar ao OpenStreetMap"
 
@@ -476,7 +476,7 @@ msgstr "Editar no OpenStreetMap"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: ../data/ui/osm-edit-dialog.ui.h:5 ../src/osmEditDialog.js:350
+#: ../data/ui/osm-edit-dialog.ui.h:5 ../src/osmEditDialog.js:399
 msgid "Next"
 msgstr "Próximo"
 
@@ -594,7 +594,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Escreva uma mensagem opcional para fazer check-in em %s."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:387
+#: ../src/osmEditDialog.js:436
 msgid "An error has occurred"
 msgstr "Um erro foi encontrado"
 
@@ -635,8 +635,8 @@ msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
 msgstr ""
-"A localização foi adicionada ao mapa; note que pode levar um tempo antes dela "
-"ser mostrada no mapa e em resultados de pesquisa."
+"A localização foi adicionada ao mapa; note que pode levar um tempo antes "
+"dela ser mostrada no mapa e em resultados de pesquisa."
 
 #: ../src/exportViewDialog.js:156
 msgid "Filesystem is read only"
@@ -735,61 +735,77 @@ msgstr "O objeto foi excluído"
 msgid "Way or relation refers to non-existing children"
 msgstr "Caminho ou relacionamento faz referência a filho não existente"
 
-#.
-#. * specification of OSM edit fields
-#. * name: the label for the edit field (translatable)
-#. * tag: the OSM tag key value
-#. * type: the field type (determines editing field type)
-#. * rewriteFunc: a rewrite function taking a string argument
-#. * (only used for TEXT fields)
-#.
-#: ../src/osmEditDialog.js:90
+#: ../src/osmEditDialog.js:97
 msgid "Name"
 msgstr "Nome"
 
-#: ../src/osmEditDialog.js:91 ../src/placeBubble.js:142
+#: ../src/osmEditDialog.js:102 ../src/placeBubble.js:147
 msgid "Website"
 msgstr "Site"
 
-#: ../src/osmEditDialog.js:92
+#: ../src/osmEditDialog.js:107
 msgid "Phone"
 msgstr "Telefone"
 
-#: ../src/osmEditDialog.js:94 ../src/placeBubble.js:148
+#: ../src/osmEditDialog.js:113 ../src/placeBubble.js:153
 msgid "Wikipedia"
 msgstr "Wikipédia"
 
-#: ../src/osmEditDialog.js:96
+#: ../src/osmEditDialog.js:118
+msgid "Opening hours"
+msgstr "Horário de funcionamento"
+
+#: ../src/osmEditDialog.js:125
 msgid "Population"
 msgstr "População"
 
-#: ../src/osmEditDialog.js:98
+#: ../src/osmEditDialog.js:130
 msgid "Wheelchair access"
 msgstr "Acesso a cadeirantes"
 
-#: ../src/osmEditDialog.js:218
-msgid "Select Type"
-msgstr "Selecione um tipo"
-
-#: ../src/osmEditDialog.js:336
-msgid "Done"
-msgstr "Concluído"
-
-#: ../src/osmEditDialog.js:488
+#: ../src/osmEditDialog.js:133 ../src/osmEditDialog.js:142
 msgid "Yes"
 msgstr "Sim"
 
-#: ../src/osmEditDialog.js:489
+#: ../src/osmEditDialog.js:134 ../src/osmEditDialog.js:143
 msgid "No"
 msgstr "Não"
 
-#: ../src/osmEditDialog.js:490
+#: ../src/osmEditDialog.js:135
 msgid "Limited"
 msgstr "Limitado"
 
-#: ../src/osmEditDialog.js:491
+#: ../src/osmEditDialog.js:136
 msgid "Designated"
 msgstr "Designado"
+
+#: ../src/osmEditDialog.js:139
+msgid "Internet access"
+msgstr "Acesso à Internet"
+
+#: ../src/osmEditDialog.js:144
+msgid "Wlan"
+msgstr "WLAN"
+
+#: ../src/osmEditDialog.js:145
+msgid "Wired"
+msgstr "Cabeada"
+
+#: ../src/osmEditDialog.js:146
+msgid "Terminal"
+msgstr "Terminal"
+
+#: ../src/osmEditDialog.js:147
+msgid "Service"
+msgstr "Serviço"
+
+#: ../src/osmEditDialog.js:267
+msgid "Select Type"
+msgstr "Selecione um tipo"
+
+#: ../src/osmEditDialog.js:385
+msgid "Done"
+msgstr "Concluído"
 
 #: ../src/placeBubble.js:127
 msgid "Population:"
@@ -800,10 +816,14 @@ msgid "Opening hours:"
 msgstr "Horário de funcionamento:"
 
 #: ../src/placeBubble.js:137
+msgid "Internet access:"
+msgstr "Acesso à Internet:"
+
+#: ../src/placeBubble.js:142
 msgid "Wheelchair access:"
 msgstr "Acesso a cadeirantes:"
 
-#: ../src/placeBubble.js:154 ../src/placeBubble.js:158
+#: ../src/placeBubble.js:159 ../src/placeBubble.js:163
 msgid "Phone:"
 msgstr "Telefone:"
 
@@ -814,7 +834,10 @@ msgstr "Falha ao analisar o URI geo"
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: ../src/place.js:162
+#. Translators:
+#. * There is public internet access but the particular kind is unknown.
+#.
+#: ../src/place.js:177 ../src/translations.js:330
 msgid "yes"
 msgstr "sim"
 
@@ -823,7 +846,7 @@ msgstr "sim"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:169
+#: ../src/place.js:184
 msgid "limited"
 msgstr "limitado"
 
@@ -831,7 +854,11 @@ msgstr "limitado"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: ../src/place.js:175
+#. Translators:
+#. * no internet access is offered in a place where
+#. * someone might expect it.
+#.
+#: ../src/place.js:190 ../src/translations.js:336
 msgid "no"
 msgstr "não"
 
@@ -840,7 +867,7 @@ msgstr "não"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:182
+#: ../src/place.js:197
 msgid "designated"
 msgstr "designado"
 
@@ -993,6 +1020,34 @@ msgctxt "time interval"
 msgid "%s-%s"
 msgstr "%s-%s"
 
+#. Translators:
+#. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
+#.
+#: ../src/translations.js:341
+msgid "wlan"
+msgstr "wlan"
+
+#. Translators:
+#. * This means a a place where you can plug in your laptop with ethernet.
+#.
+#: ../src/translations.js:346
+msgid "wired"
+msgstr "cabeada"
+
+#. Translators:
+#. * Like internet cafe or library where the computer is given.
+#.
+#: ../src/translations.js:351
+msgid "terminal"
+msgstr "terminal"
+
+#. Translators:
+#. * This means there is personnel which helps you in case of problems.
+#.
+#: ../src/translations.js:356
+msgid "service"
+msgstr "serviço"
+
 #. Translators: Accuracy of user location information
 #: ../src/utils.js:228
 msgid "Unknown"
@@ -1073,8 +1128,8 @@ msgstr "%f pés"
 #~ "Last known location (latitude and longitude in degrees) and accuracy (in "
 #~ "meters)."
 #~ msgstr ""
-#~ "Último localização conhecido (latitude e longitude, em graus) e precisão (em "
-#~ "metros)."
+#~ "Último localização conhecido (latitude e longitude, em graus) e precisão "
+#~ "(em metros)."
 
 #~ msgid "Description of last known location of user."
 #~ msgstr "Descrição do último localização conhecido do usuário."
