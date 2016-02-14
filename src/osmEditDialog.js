@@ -134,6 +134,17 @@ const OSM_FIELDS = [
                 ['no', _("No")],
                 ['limited', _("Limited")],
                 ['designated', _("Designated")]]
+    },
+    {
+        name: _("Internet access"),
+        tag: 'internet_access',
+        type: EditFieldType.COMBO,
+        combo: [['yes', _("Yes")],
+                ['no', _("No")],
+                ['wlan', _("Wlan")],
+                ['wired', _("Wired")],
+                ['terminal', _("Terminal")],
+                ['service', _("Service")]]
     }];
 
 
