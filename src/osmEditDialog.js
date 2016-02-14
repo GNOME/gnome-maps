@@ -183,7 +183,7 @@ Adding this when appropriate can enhance searchability of places and locations."
         type: EditFieldType.COMBO,
         options: [['yes', _("Yes")],
                   ['no', _("No")],
-                  ['wlan', _("WLAN")],
+                  ['wlan', _("Wi-Fi")],
                   ['wired', _("Wired")],
                   ['terminal', _("Terminal")],
                   ['service', _("Service")]]
