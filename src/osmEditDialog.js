@@ -214,7 +214,7 @@ const OSMEditDialog = new Lang.Class({
         this._typeButton.connect('clicked', this._onTypeClicked.bind(this));
 
         if (this._addLocation) {
-            this._headerBar.title = _("Add to OpenStreetMap");
+            this._headerBar.title = C_("dialog title", "Add to OpenStreetMap");
             this._typeLabel.visible = true;
             this._typeButton.visible = true;
 
