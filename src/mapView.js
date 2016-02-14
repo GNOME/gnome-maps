@@ -140,9 +140,9 @@ const MapView = new Lang.Class({
 
     _initLayers: function() {
         let strokeColor = new Clutter.Color({ red: 0,
-                                               blue: 255,
-                                               green: 0,
-                                               alpha: 100 });
+                                              blue: 255,
+                                              green: 0,
+                                              alpha: 100 });
 
         let mode = Champlain.SelectionMode.SINGLE;
 
