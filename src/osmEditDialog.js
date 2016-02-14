@@ -650,6 +650,7 @@ const OSMEditDialog = new Lang.Class({
                 button.get_style_context().add_class('menuitem');
                 button.get_style_context().add_class('button');
                 button.get_style_context().add_class('flat');
+                button.get_child().halign = Gtk.Align.START;
 
                 button.connect('clicked', (function() {
                     this._addFieldButton.active = false;
