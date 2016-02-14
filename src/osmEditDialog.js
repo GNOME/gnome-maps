@@ -50,8 +50,7 @@ const Response = {
 const EditFieldType = {
     TEXT: 0,
     INTEGER: 1,
-    // selection of yes|no|limited|designated
-    YES_NO_LIMITED_DESIGNATED: 2
+    COMBO: 2
 };
 
 const _WIKI_BASE = 'http://wiki.openstreetmap.org/wiki/Key:';
@@ -130,7 +129,11 @@ const OSM_FIELDS = [
     {
         name: _("Wheelchair access"),
         tag: 'wheelchair',
-        type: EditFieldType.YES_NO_LIMITED_DESIGNATED
+        type: EditFieldType.COMBO,
+        combo: [['yes', _("Yes")],
+                ['no', _("No")],
+                ['limited', _("Limited")],
+                ['designated', _("Designated")]]
     }];
 
 
@@ -523,16 +526,14 @@ const OSMEditDialog = new Lang.Class({
         this._currentRow++;
     },
 
-    _addOSMEditYesNoLimitedDesignated: function(fieldSpec, value) {
+    _addOSMEditComboEntry: function(fieldSpec, value) {
         this._addOSMEditLabel(fieldSpec);
 
         let combobox = new Gtk.ComboBoxText();
 
-        combobox.append('yes', _("Yes"));
-        combobox.append('no', _("No"));
-        combobox.append('limited', _("Limited"));
-        combobox.append('designated', _("Designated"));
-
+        fieldSpec.combo.forEach(function(comboField) {
+            combobox.append(comboField[0], comboField[1]);
+        });
         combobox.active_id = value;
         combobox.hexpand = true;
         combobox.connect('changed', (function() {
@@ -598,8 +599,8 @@ const OSMEditDialog = new Lang.Class({
         case EditFieldType.INTEGER:
             this._addOSMEditIntegerEntry(fieldSpec, value);
             break;
-        case EditFieldType.YES_NO_LIMITED_DESIGNATED:
-            this._addOSMEditYesNoLimitedDesignated(fieldSpec, value);
+        case EditFieldType.COMBO:
+            this._addOSMEditComboEntry(fieldSpec, value);
             break;
         }
     },
