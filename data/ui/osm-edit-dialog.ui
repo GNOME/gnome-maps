@@ -332,4 +332,22 @@
       </object>
     </child>
   </object>
+  <object class="GtkPopover" id="hintPopover">
+    <property name="visible">False</property>
+    <property name="position">GTK_POS_BOTTOM</property>
+    <child>
+      <object class="GtkGrid">
+        <property name="visible">True</property>
+        <property name="margin">5</property>
+        <child>
+          <object class="GtkLabel" id="hintLabel">
+            <property name="visible">True</property>
+            <property name="wrap">True</property>
+            <property name="width-chars">20</property>
+            <property name="max-width-chars">40</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
 </interface>

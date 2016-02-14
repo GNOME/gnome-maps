@@ -92,35 +92,48 @@ let _osmPhoneRewriteFunc = function(text) {
  * includeHelp: when true turn the name label to a link to the
  * OSM wiki for tags.
  * options: The options for the combo box (only used for COMBO fields)
+ * hint: a hint text to show in a popover displayed by a hint button
+ * (for TEXT and INTEGER fields)
  */
 const OSM_FIELDS = [
     {
         name: _("Name"),
         tag: 'name',
-        type: EditFieldType.TEXT
+        type: EditFieldType.TEXT,
+        hint: _("The official name. This is typically what appears on signs.")
     },
     {
         name: _("Website"),
         tag: 'website',
-        type: EditFieldType.TEXT
+        type: EditFieldType.TEXT,
+        hint: _("The official website. Try to use the most basic form " +
+                "of a URL i.e. http://example.com instead of " +
+                "http://example.com/index.html.")
     },
     {
         name: _("Phone"),
         tag: 'phone',
         type: EditFieldType.TEXT,
-        rewriteFunc: this._osmPhoneRewriteFunc
+        rewriteFunc: this._osmPhoneRewriteFunc,
+        hint: _("Phone number. Use the international format, " +
+                "starting with a + sign. Beware of local privacy " +
+                "laws, especially for private phone numbers.")
     },
     {
         name: _("Wikipedia"),
         tag: 'wikipedia',
         type: EditFieldType.TEXT,
-        rewriteFunc: this._osmWikipediaRewriteFunc},
+        rewriteFunc: this._osmWikipediaRewriteFunc,
+        hint: _("The format used should include the language code " +
+                "and the article title like ”en:Article title”.")
+    },
     {
         name: _("Opening hours"),
         tag: 'opening_hours',
         type: EditFieldType.TEXT,
         placeHolder: 'Mo-Fr 08:00-20:00; Sa-Su 10:00-14:00',
-        includeHelp: true
+        includeHelp: true,
+        hint: _("See the link in the label for help on format.")
     },
     {
         name: _("Population"),
@@ -167,6 +180,8 @@ const OSMEditDialog = new Lang.Class({
                         'typeValueLabel',
                         'recentTypesLabel',
                         'recentTypesListBox',
+                        'hintPopover',
+                        'hintLabel',
                         'headerBar'],
 
     _init: function(params) {
@@ -494,6 +509,15 @@ const OSMEditDialog = new Lang.Class({
         label.show();
     },
 
+    _showHintPopover: function(entry, hint) {
+        this._hintPopover.visible = !this._hintPopover.visible;
+        if (this._hintPopover.visible) {
+            this._hintPopover.relative_to = entry;
+            this._hintLabel.label = hint;
+            this._hintPopover.visible = true;
+        }
+    },
+
     _addOSMEditTextEntry: function(fieldSpec, value) {
         this._addOSMEditLabel(fieldSpec);
 
@@ -509,6 +533,13 @@ const OSMEditDialog = new Lang.Class({
             this._osmObject.set_tag(fieldSpec.tag, entry.text);
             this._nextButton.sensitive = true;
         }).bind(this));
+
+        if (fieldSpec.hint) {
+            entry.secondary_icon_name = 'dialog-information-symbolic';
+            entry.connect('icon-press', (function(entry, iconPos, event) {
+                this._showHintPopover(entry, fieldSpec.hint);
+            }).bind(this));
+        }
 
         this._editorGrid.attach(entry, 1, this._currentRow, 1, 1);
         entry.show();
@@ -530,6 +561,13 @@ const OSMEditDialog = new Lang.Class({
             this._osmObject.set_tag(fieldSpec.tag, spinbutton.text);
             this._nextButton.sensitive = true;
         }).bind(this, fieldSpec.tag, spinbutton));
+
+        if (fieldSpec.hint) {
+            spinbutton.secondary_icon_name = 'dialog-information-symbolic';
+            spinbutton.connect('icon-press', (function(iconPos, event) {
+                this._showHintPopover(spinbutton, fieldSpec.hint);
+            }).bind(this));
+        }
 
         this._editorGrid.attach(spinbutton, 1, this._currentRow, 1, 1);
         spinbutton.show();
