@@ -339,11 +339,11 @@ function prettyTime(time) {
     return labelledTime;
 }
 
-function prettyDistance(distance) {
+function prettyDistance(distance, noRound) {
     distance = Math.round(distance);
 
     if (getMeasurementSystem() === METRIC_SYSTEM){
-        if (distance >= 1000) {
+        if (distance >= 1000 && !noRound) {
             distance = Math.round(distance / 1000 * 10) / 10;
             /* Translators: This is a distance measured in kilometers */
             return _("%f km").format(distance);
@@ -353,7 +353,7 @@ function prettyDistance(distance) {
     } else {
         // Convert to feet
         distance = Math.round(distance * 3.2808399);
-        if (distance >= 1056) {
+        if (distance >= 1056 && !noRound) {
             // Convert to miles when distance is more than 0.2 mi
             distance = Math.round(distance / 5280 * 10) / 10;
             /* Translators: This is a distance measured in miles */
