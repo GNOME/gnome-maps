@@ -142,7 +142,7 @@ const OSM_FIELDS = [
         type: EditFieldType.COMBO,
         options: [['yes', _("Yes")],
                   ['no', _("No")],
-                  ['wlan', _("Wlan")],
+                  ['wlan', _("WLAN")],
                   ['wired', _("Wired")],
                   ['terminal', _("Terminal")],
                   ['service', _("Service")]]
