@@ -141,6 +141,12 @@ const OSM_FIELDS = [
         type: EditFieldType.INTEGER
     },
     {
+        name: _("Altitude"),
+        tag: 'ele',
+        type: EditFieldType.INTEGER,
+        hint: _("Elevation (height above sea level) of a point in metres.")
+    },
+    {
         name: _("Wheelchair access"),
         tag: 'wheelchair',
         type: EditFieldType.COMBO,

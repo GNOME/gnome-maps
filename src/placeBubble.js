@@ -128,6 +128,12 @@ const PlaceBubble = new Lang.Class({
                                    info: place.population });
         }
 
+        if (place.location.altitude > 0) {
+            let alt  = place.location.altitude;
+            expandedContent.push({ label: _("Altitude:"),
+                                   info: Utils.prettyDistance(alt, true) });
+        }
+
         if (place.openingHours) {
             expandedContent.push({ label: _("Opening hours:"),
                                    info: place.openingHoursTranslated });

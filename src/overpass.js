@@ -106,6 +106,8 @@ const Overpass = new Lang.Class({
             place.openingHours = element.tags.opening_hours;
         if (element.tags.internet_access)
             place.internetAccess = element.tags.internet_access;
+        if (element.tags.ele && place.location)
+            place.location.altitude = parseFloat(element.tags.ele);
     },
 
     _getQueryUrl: function(place) {
