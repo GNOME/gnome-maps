@@ -338,7 +338,7 @@ function translateInternetAccess(string) {
     /* Translators:
      * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
      */
-    case 'wlan': return _("wlan");
+    case 'wlan': return _("WLAN");
 
     /* Translators:
      * This means a a place where you can plug in your laptop with ethernet.
