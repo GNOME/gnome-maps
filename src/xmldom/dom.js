@@ -21,7 +21,7 @@ function _extends(Class,Super){
 		pt.__proto__ = ppt;
 	}
 	if(!(pt instanceof Super)){
-		function t(){};
+		let t = function (){};
 		t.prototype = Super.prototype;
 		t = new t();
 		copy(pt,t);
@@ -152,6 +152,7 @@ function _findNodeIndex(list,node){
 	while(i--){
 		if(list[i] === node){return i}
 	}
+	return null;
 }
 
 function _addNamedNode(el,list,newAttr,oldAttr){
@@ -202,6 +203,7 @@ NamedNodeMap.prototype = {
 				return attr;
 			}
 		}
+		return null;
 	},
 	setNamedItem: function(attr) {
 		var el = attr.ownerElement;
@@ -426,11 +428,12 @@ function _visitNode(node,callback){
 	if(callback(node)){
 		return true;
 	}
-	if(node = node.firstChild){
+	if((node = node.firstChild)){
 		do{
 			if(_visitNode(node,callback)){return true}
-        }while(node=node.nextSibling)
+        }while((node=node.nextSibling))
     }
+	return false;
 }
 
 
@@ -605,6 +608,7 @@ Document.prototype = {
 					return true;
 				}
 			}
+			return false;
 		})
 		return rtv;
 	},
@@ -948,7 +952,7 @@ function serializeToString(node,buf,attributeSorter,isHTML){
 		}else{
 			buf.push('/>');
 		}
-		return;
+		return null;
 	case DOCUMENT_NODE:
 	case DOCUMENT_FRAGMENT_NODE:
 		var child = node.firstChild;
@@ -956,7 +960,7 @@ function serializeToString(node,buf,attributeSorter,isHTML){
 			serializeToString(child,buf,attributeSorter,isHTML);
 			child = child.nextSibling;
 		}
-		return;
+		return null;
 	case ATTRIBUTE_NODE:
 		return buf.push(' ',node.name,'="',node.value.replace(/[<&"]/g,_xmlEncoder),'"');
 	case TEXT_NODE:
@@ -984,7 +988,7 @@ function serializeToString(node,buf,attributeSorter,isHTML){
 			}
 			buf.push(">");
 		}
-		return;
+		return null;
 	case PROCESSING_INSTRUCTION_NODE:
 		return buf.push( "<?",node.target," ",node.data,"?>");
 	case ENTITY_REFERENCE_NODE:
@@ -992,7 +996,7 @@ function serializeToString(node,buf,attributeSorter,isHTML){
 	//case ENTITY_NODE:
 	//case NOTATION_NODE:
 	default:
-		buf.push('??',node.nodeName);
+		return buf.push('??',node.nodeName);
 	}
 }
 function importNode(doc,node,deep){
@@ -1084,6 +1088,23 @@ function __set__(object,key,value){
 	object[key] = value
 }
 //do dynamic
+function getTextContent(node){
+	switch(node.nodeType){
+	case 1:
+	case 11:
+		var buf = [];
+		node = node.firstChild;
+		while(node){
+			if(node.nodeType!==7 && node.nodeType !==8){
+				buf.push(getTextContent(node));
+			}
+			node = node.nextSibling;
+		}
+		return buf.join('');
+	default:
+		return node.nodeValue;
+	}
+}
 try{
 	if(Object.defineProperty){
 		Object.defineProperty(LiveNodeList.prototype,'length',{
@@ -1116,23 +1137,6 @@ try{
 			}
 		})
 		
-		function getTextContent(node){
-			switch(node.nodeType){
-			case 1:
-			case 11:
-				var buf = [];
-				node = node.firstChild;
-				while(node){
-					if(node.nodeType!==7 && node.nodeType !==8){
-						buf.push(getTextContent(node));
-					}
-					node = node.nextSibling;
-				}
-				return buf.join('');
-			default:
-				return node.nodeValue;
-			}
-		}
 		__set__ = function(object,key,value){
 			//console.log(value)
 			object['$$'+key] = value

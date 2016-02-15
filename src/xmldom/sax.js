@@ -574,8 +574,9 @@ function split(source,start){
 	var reg = /'[^']+'|"[^"]+"|[^\s<>\/=]+=?|(\/?\s*>|<)/g;
 	reg.lastIndex = start;
 	reg.exec(source);//skip <
-	while(match = reg.exec(source)){
+	while((match = reg.exec(source))){
 		buf.push(match);
 		if(match[1])return buf;
 	}
+	return null;
 }

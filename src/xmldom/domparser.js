@@ -93,9 +93,9 @@ DOMHandler.prototype = {
 	    
 		this.locator && position(this.locator,el)
 	    for (var i = 0 ; i < len; i++) {
-	        var namespaceURI = attrs.getURI(i);
+	        namespaceURI = attrs.getURI(i);
 	        var value = attrs.getValue(i);
-	        var qName = attrs.getQName(i);
+	        qName = attrs.getQName(i);
 			var attr = doc.createAttributeNS(namespaceURI, qName);
 			if( attr.getOffset){
 				position(attr.getOffset(1),attr)
@@ -140,7 +140,7 @@ DOMHandler.prototype = {
 		this.document.normalize();
 	},
 	setDocumentLocator:function (locator) {
-	    if(this.locator = locator){// && !('lineNumber' in locator)){
+	    if((this.locator = locator)){// && !('lineNumber' in locator)){
 	    	locator.lineNumber = 0;
 	    }
 	},
@@ -188,6 +188,7 @@ function _locator(l){
 	if(l){
 		return '\n@'+(l.systemId ||'')+'#[line:'+l.lineNumber+',col:'+l.columnNumber+']'
 	}
+	return null;
 }
 function _toString(chars,start,length){
 	if(typeof chars == 'string'){
