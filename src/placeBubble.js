@@ -94,7 +94,8 @@ const PlaceBubble = new Lang.Class({
         }
         this.content.add(this._stack);
 
-        if (this.place instanceof ContactPlace.ContactPlace)
+        let osm_id = this.place.osm_id;
+        if (this.place instanceof ContactPlace.ContactPlace || !osm_id)
             this._editButton.visible = false;
         else
             this._initEditButton();
