@@ -87,8 +87,18 @@ const ShapeLayer = new Lang.Class({
     },
 
     load: function() {
+        let [status, buffer] = this.file.load_contents(null);
+        this._fileContents = buffer;
+        if (!status)
+            throw new Error(_("failed to load file"));
+        this._parseContent();
         this._mapView.view.add_layer(this._markerLayer);
         this._mapView.view.add_overlay_source(this._mapSource, 255);
+    },
+
+
+    _parseContent: function() {
+        /* Unimplemented */
     },
 
     unload: function() {

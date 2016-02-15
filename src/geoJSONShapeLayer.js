@@ -30,7 +30,6 @@ const GeoJSONShapeLayer = new Lang.Class({
         this.parent(params);
 
         this._mapSource = new GeoJSONSource.GeoJSONSource({
-            file: this.file,
             mapView: this._mapView,
             markerLayer: this._markerLayer
         });
@@ -45,9 +44,8 @@ const GeoJSONShapeLayer = new Lang.Class({
             return this.parent();
     },
 
-    load: function() {
-        this._mapSource.parse();
-        this.parent();
+    _parseContent: function() {
+        this._mapSource.parse(JSON.parse(this._fileContents));
     }
 });
 

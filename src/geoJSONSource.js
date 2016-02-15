@@ -45,7 +45,6 @@ const GeoJSONSource = new Lang.Class({
     _init: function(params) {
         this.parent();
 
-        this._file = params.file;
         this._mapView = params.mapView;
         this._markerLayer = params.markerLayer;
         this._bbox = new Champlain.BoundingBox();
@@ -54,7 +53,6 @@ const GeoJSONSource = new Lang.Class({
     get bbox() {
         return this._bbox;
     },
-
     vfunc_get_tile_size: function() {
         return TILE_SIZE;
     },
@@ -205,12 +203,7 @@ const GeoJSONSource = new Lang.Class({
         }
     },
 
-    parse: function() {
-        let [status, buffer] = this._file.load_contents(null);
-        if (!status)
-            throw new Error(_("failed to load file"));
-
-        let json = JSON.parse(buffer);
+    parse: function(json) {
         this._parseInternal(json);
         this._tileIndex = Geojsonvt.geojsonvt(json, { extent: TILE_SIZE,
                                                       maxZoom: 20 });
