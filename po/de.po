@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-13 16:54+0000\n"
-"PO-Revision-Date: 2016-02-13 21:17+0100\n"
+"POT-Creation-Date: 2016-02-15 09:21+0000\n"
+"PO-Revision-Date: 2016-02-15 20:30+0100\n"
 "Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -271,7 +271,7 @@ msgstr "Ort kopieren"
 msgid "Export As Image"
 msgstr "Als Bild exportieren"
 
-#: ../data/ui/context-menu.ui.h:4 ../src/osmEditDialog.js:202
+#: ../data/ui/context-menu.ui.h:4
 msgid "Add to OpenStreetMap"
 msgstr "Zu OpenStreetMap hinzufügen"
 
@@ -484,7 +484,7 @@ msgstr "Auf OpenStreetMap bearbeiten"
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: ../data/ui/osm-edit-dialog.ui.h:5 ../src/osmEditDialog.js:385
+#: ../data/ui/osm-edit-dialog.ui.h:5 ../src/osmEditDialog.js:421
 msgid "Next"
 msgstr "Nächste"
 
@@ -602,7 +602,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Schreiben Sie eine optionale Nachricht, um bei %s einzuchecken."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:422
+#: ../src/osmEditDialog.js:458
 msgid "An error has occurred"
 msgstr "Ein Fehler ist aufgetreten"
 
@@ -717,95 +717,173 @@ msgstr "Geo-Adresse konnte nicht geöffnet werden"
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: ../src/osmConnection.js:439
+#: ../src/osmConnection.js:442
 msgid "Incorrect user name or password"
 msgstr "Benutzername oder Passwort falsch"
 
-#: ../src/osmConnection.js:441
+#: ../src/osmConnection.js:444
 msgid "Success"
 msgstr "Erfolg"
 
-#: ../src/osmConnection.js:443
+#: ../src/osmConnection.js:446
 msgid "Bad request"
 msgstr "Fehlerhafte Anfrage"
 
-#: ../src/osmConnection.js:445
+#: ../src/osmConnection.js:448
 msgid "Object not found"
 msgstr "Objekt nicht gefunden"
 
-#: ../src/osmConnection.js:447
+#: ../src/osmConnection.js:450
 msgid "Conflict, someone else has just modified the object"
 msgstr "Konflikt, jemand anderes hat gerade das Objekt geändert"
 
-#: ../src/osmConnection.js:449
+#: ../src/osmConnection.js:452
 msgid "Object has been deleted"
 msgstr "Objekt wurde gelöscht"
 
-#: ../src/osmConnection.js:451
+#: ../src/osmConnection.js:454
 msgid "Way or relation refers to non-existing children"
 msgstr "Weg oder Bezug verweist auf nicht existierende Unterobjekte"
 
-#: ../src/osmEditDialog.js:98
+#: ../src/osmEditDialog.js:100
 msgid "Name"
 msgstr "Name"
 
-#: ../src/osmEditDialog.js:103 ../src/placeBubble.js:142
+#: ../src/osmEditDialog.js:103
+msgid "The official name. This is typically what appears on signs."
+msgstr ""
+"Der offizielle Name, der üblicherweise auf dem Ortseingangsschild erscheint."
+
+#: ../src/osmEditDialog.js:106 ../src/placeBubble.js:164
 msgid "Website"
 msgstr "Internet-Seite"
 
-#: ../src/osmEditDialog.js:108
+#: ../src/osmEditDialog.js:109
+msgid ""
+"The official website. Try to use the most basic form of a URL i.e. http://"
+"example.com instead of http://example.com/index.html."
+msgstr ""
+"Die offizielle Webseite. Verwenden Sie möglichst die Grundform der Adresse, "
+"zum Beispiel http://example.com statt http://example.com/index.html."
+
+#: ../src/osmEditDialog.js:114
 msgid "Phone"
 msgstr "Telefon"
 
-#: ../src/osmEditDialog.js:114 ../src/placeBubble.js:148
+#: ../src/osmEditDialog.js:118
+msgid ""
+"Phone number. Use the international format, starting with a + sign. Beware "
+"of local privacy laws, especially for private phone numbers."
+msgstr ""
+"Die Telefonnummer im internationalen Format, beginnend mit einem Plus-"
+"Zeichen. Denken Sie an den Schutz der Privatsphäre, insbesondere für private "
+"Telefonnummern."
+
+#: ../src/osmEditDialog.js:123 ../src/placeBubble.js:170
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: ../src/osmEditDialog.js:119
+#: ../src/osmEditDialog.js:127
+msgid ""
+"The format used should include the language code and the article title like "
+"”en:Article title”."
+msgstr ""
+"Das verwendete Format sollte den Sprachcode und den Artikel enthalten, zum "
+"Beispiel »de:Titel des Artikels«"
+
+#: ../src/osmEditDialog.js:131
 msgid "Opening hours"
 msgstr "Öffnungszeiten"
 
-#: ../src/osmEditDialog.js:126
+#: ../src/osmEditDialog.js:136
+msgid "See the link in the label for help on format."
+msgstr "Öffnen Sie den Verweis in der Beschriftung für Hilfe zur Formatierung."
+
+#: ../src/osmEditDialog.js:139
 msgid "Population"
 msgstr "Bevölkerung"
 
-#: ../src/osmEditDialog.js:131
+#: ../src/osmEditDialog.js:144
+msgid "Altitude"
+msgstr "Höhe"
+
+#: ../src/osmEditDialog.js:147
+msgid "Elevation (height above sea level) of a point in metres."
+msgstr "Höhe eines Punktes über dem Meeresspiegel in Meter."
+
+#: ../src/osmEditDialog.js:150
 msgid "Wheelchair access"
 msgstr "Barrierefreier Zugang"
 
-#: ../src/osmEditDialog.js:253
-msgid "Select Type"
-msgstr "Typ wählen"
-
-#: ../src/osmEditDialog.js:371
-msgid "Done"
-msgstr "Abgeschlossen"
-
-#: ../src/osmEditDialog.js:531
+#: ../src/osmEditDialog.js:153 ../src/osmEditDialog.js:162
 msgid "Yes"
 msgstr "Ja"
 
-#: ../src/osmEditDialog.js:532
+#: ../src/osmEditDialog.js:154 ../src/osmEditDialog.js:163
 msgid "No"
 msgstr "Nein"
 
-#: ../src/osmEditDialog.js:533
+#: ../src/osmEditDialog.js:155
 msgid "Limited"
 msgstr "Begrenzt"
 
-#: ../src/osmEditDialog.js:534
+#: ../src/osmEditDialog.js:156
 msgid "Designated"
 msgstr "Geeignet"
+
+#: ../src/osmEditDialog.js:159
+msgid "Internet access"
+msgstr "Internetzugang"
+
+#. Translators:
+#. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
+#.
+#: ../src/osmEditDialog.js:164 ../src/translations.js:341
+msgid "Wi-Fi"
+msgstr "Funknetzwerk"
+
+#: ../src/osmEditDialog.js:165
+msgid "Wired"
+msgstr "Kabelgebunden"
+
+#: ../src/osmEditDialog.js:166
+msgid "Terminal"
+msgstr "Terminal"
+
+#: ../src/osmEditDialog.js:167
+msgid "Service"
+msgstr "Dienst"
+
+#: ../src/osmEditDialog.js:238
+msgctxt "dialog title"
+msgid "Add to OpenStreetMap"
+msgstr "Zu OpenStreetMap hinzufügen"
+
+#: ../src/osmEditDialog.js:289
+msgid "Select Type"
+msgstr "Typ wählen"
+
+#: ../src/osmEditDialog.js:407
+msgid "Done"
+msgstr "Abgeschlossen"
 
 #: ../src/placeBubble.js:127
 msgid "Population:"
 msgstr "Bevölkerung:"
 
-#: ../src/placeBubble.js:132
+#: ../src/placeBubble.js:133
+msgid "Altitude:"
+msgstr "Höhe:"
+
+#: ../src/placeBubble.js:138
 msgid "Opening hours:"
 msgstr "Öffnungszeiten:"
 
-#: ../src/placeBubble.js:137
+#: ../src/placeBubble.js:143
+msgid "Internet access:"
+msgstr "Internetzugang:"
+
+#: ../src/placeBubble.js:148
 msgid "Wheelchair access:"
 msgstr "Barrierefreier Zugang:"
 
@@ -820,7 +898,10 @@ msgstr "Geo-Adresse konnte nicht gelesen werden"
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: ../src/place.js:162
+#. Translators:
+#. * There is public internet access but the particular kind is unknown.
+#.
+#: ../src/place.js:177 ../src/translations.js:330
 msgid "yes"
 msgstr "ja"
 
@@ -829,7 +910,7 @@ msgstr "ja"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:169
+#: ../src/place.js:184
 msgid "limited"
 msgstr "begrenzt"
 
@@ -837,7 +918,11 @@ msgstr "begrenzt"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: ../src/place.js:175
+#. Translators:
+#. * no internet access is offered in a place where
+#. * someone might expect it.
+#.
+#: ../src/place.js:190 ../src/translations.js:336
 msgid "no"
 msgstr "nein"
 
@@ -846,7 +931,7 @@ msgstr "nein"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:182
+#: ../src/place.js:197
 msgid "designated"
 msgstr "geeignet"
 
@@ -998,6 +1083,27 @@ msgstr "nicht geöffnet"
 msgctxt "time interval"
 msgid "%s-%s"
 msgstr "%s-%s"
+
+#. Translators:
+#. * This means a a place where you can plug in your laptop with ethernet.
+#.
+#: ../src/translations.js:346
+msgid "wired"
+msgstr "Kabelgebunden"
+
+#. Translators:
+#. * Like internet cafe or library where the computer is given.
+#.
+#: ../src/translations.js:351
+msgid "terminal"
+msgstr "Terminal"
+
+#. Translators:
+#. * This means there is personnel which helps you in case of problems.
+#.
+#: ../src/translations.js:356
+msgid "service"
+msgstr "Dienst"
 
 #. Translators: Accuracy of user location information
 #: ../src/utils.js:228
