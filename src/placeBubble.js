@@ -186,12 +186,15 @@ const PlaceBubble = new Lang.Class({
                 let label = new Gtk.Label({ label: expandedContent[row].label.italics(),
                                             visible: true,
                                             use_markup: true,
+                                            yalign: 0,
                                             halign: Gtk.Align.START });
                 this._expandedContent.attach(label, col++, row, 1, 1);
             }
 
             let info = new Gtk.Label({ visible: true,
                                        use_markup: true,
+                                       max_width_chars: 25,
+                                       wrap: true,
                                        halign: Gtk.Align.START });
             if (expandedContent[row].linkUrl) {
                 let text = expandedContent[row].linkText;
