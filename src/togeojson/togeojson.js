@@ -300,7 +300,7 @@ var toGeoJSON = (function() {
                     if (line.times && line.times.length) times.push(line.times);
                     if (line.heartRates && line.heartRates.length) heartRates.push(line.heartRates);
                 }
-                if (track.length === 0) return;
+                if (track.length === 0) return null;
                 var properties = getProperties(node);
                 if (times.length) properties.coordTimes = track.length === 1 ? times[0] : times;
                 if (heartRates.length) properties.heartRates = track.length === 1 ? heartRates[0] : heartRates;
@@ -315,7 +315,7 @@ var toGeoJSON = (function() {
             }
             function getRoute(node) {
                 var line = getPoints(node, 'rtept');
-                if (!line.line) return;
+                if (!line.line) return null;
                 var routeObj = {
                     type: 'Feature',
                     properties: getProperties(node),
