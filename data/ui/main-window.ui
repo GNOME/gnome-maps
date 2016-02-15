@@ -97,6 +97,27 @@
             <property name="pack-type">end</property>
           </packing>
         </child>
+        <child>
+          <object class="GtkButton" id="printRouteButton">
+            <property name="name">print-route</property>
+            <property name="can-focus">True</property>
+            <property name="tooltip-text" translatable="yes">Print Route</property>
+            <property name="action-name">win.print-route</property>
+            <property name="valign">center</property>
+            <style>
+              <class name="image-button"/>
+            </style>
+            <child>
+              <object class="GtkImage" id="print-route-button-image">
+                <property name="visible">True</property>
+                <property name="icon-name">document-print-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="pack-type">end</property>
+          </packing>
+        </child>
       </object>
     </child>
     <child>

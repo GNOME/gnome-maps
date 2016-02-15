@@ -53,7 +53,7 @@ const Route = new Lang.Class({
         this.turnPoints = turnPoints;
         this.distance = distance;
         this.time = time;
-        this.bbox = bbox || this._createBBox(path);
+        this.bbox = bbox || this.createBBox(path);
 
         this.emit('update');
     },
@@ -67,7 +67,7 @@ const Route = new Lang.Class({
         this.emit('reset');
     },
 
-    _createBBox: function(coordinates) {
+    createBBox: function(coordinates) {
         let bbox = new Champlain.BoundingBox();
         coordinates.forEach(function({ latitude, longitude }) {
             bbox.extend(latitude, longitude);

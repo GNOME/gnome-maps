@@ -38,6 +38,7 @@ const LocationServiceNotification = imports.locationServiceNotification;
 const MapView = imports.mapView;
 const PlaceEntry = imports.placeEntry;
 const PlaceStore = imports.placeStore;
+const PrintOperation = imports.printOperation;
 const Sidebar = imports.sidebar;
 const Utils = imports.utils;
 const ZoomControl = imports.zoomControl;
@@ -57,7 +58,8 @@ const MainWindow = new Lang.Class({
                         'gotoUserLocationButton',
                         'toggleSidebarButton',
                         'layersButton',
-                        'favoritesButton' ],
+                        'favoritesButton',
+                        'printRouteButton' ],
 
     get mapView() {
         return this._mapView;
@@ -202,6 +204,10 @@ const MainWindow = new Lang.Class({
             'find': {
                 accels: ['<Primary>F'],
                 onActivate: this._placeEntry.grab_focus.bind(this._placeEntry)
+            },
+            'print-route': {
+                accels: ['<Primary>P'],
+                onActivate: this._printRouteActivate.bind(this)
             }
         });
     },
@@ -248,6 +254,9 @@ const MainWindow = new Lang.Class({
             this._favoritesButton.sensitive = favoritesPopover.rows > 0;
         }).bind(this));
 
+        this._mapView.bind_property('routeVisible', this._printRouteButton,
+                                    'visible', GObject.BindingFlags.DEFAULT);
+
         Application.geoclue.connect('notify::state',
                                     this._updateLocationSensitivity.bind(this));
         this.application.connect('notify::connected', (function() {
@@ -259,6 +268,7 @@ const MainWindow = new Lang.Class({
             this._favoritesButton.sensitive = (app.connected &&
                                                favoritesPopover.rows > 0);
             this._placeEntry.sensitive = app.connected;
+            this._printRouteButton.sensitive = app.connected;
         }).bind(this));
     },
 
@@ -362,6 +372,12 @@ const MainWindow = new Lang.Class({
         default:
             this._mapView.gotoUserLocation(true);
             break;
+        }
+    },
+
+    _printRouteActivate: function() {
+        if (this._mapView.routeVisible) {
+            let operation = new PrintOperation.PrintOperation({ mainWindow: this });
         }
     },
 
