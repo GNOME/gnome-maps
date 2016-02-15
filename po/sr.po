@@ -8,21 +8,27 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-09-22 07:46+0000\n"
-"PO-Revision-Date: 2015-09-22 15:16+0200\n"
-"Last-Translator: Марко М. Костић (Marko M. Kostić) <marko.m.kostic@gmail."
-"com>\n"
+"POT-Creation-Date: 2016-02-15 19:30+0000\n"
+"PO-Revision-Date: 2016-02-15 22:37+0200\n"
+"Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
-"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Project-Style: gnome\n"
-"X-Generator: Poedit 1.8.4\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
+msgid "GNOME Maps"
+msgstr "Гномове карте"
+
+#: ../data/org.gnome.Maps.appdata.xml.in.h:2
+msgid "Find places around the world"
+msgstr "Нађите места широм света"
+
+#: ../data/org.gnome.Maps.appdata.xml.in.h:3
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
@@ -32,18 +38,18 @@ msgstr ""
 "и лако пронађете место које тражите тражећи град или улицу, или да одредите "
 "место за сусрет са другарима."
 
-#: ../data/org.gnome.Maps.appdata.xml.in.h:2
+#: ../data/org.gnome.Maps.appdata.xml.in.h:4
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
 msgstr ""
-"Овај програм користи сарадничку базу података „OpenStreetMap“, коју стварају "
-"стотине хиљада људи широм света."
+"Овај програм користи сарадничку базу података Слободне карте улица, коју "
+"стварају стотине хиљада људи широм света."
 
 #. Translators: Search is carried out on OpenStreetMap data using Nominatim.
 #. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
 #. your language to see what words you can use for the translated search.
-#: ../data/org.gnome.Maps.appdata.xml.in.h:6
+#: ../data/org.gnome.Maps.appdata.xml.in.h:8
 msgid ""
 "You can even search for specific types of locations, such as “Pubs near Main "
 "Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
@@ -53,7 +59,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:373
+#: ../src/application.js:86 ../src/mainWindow.js:400
 msgid "Maps"
 msgstr "Карте"
 
@@ -66,58 +72,66 @@ msgid "Maps;"
 msgstr "карте;мапе;"
 
 #: ../data/org.gnome.Maps.gschema.xml.h:1
+msgid "last viewed location"
+msgstr "последње виђено место"
+
+#: ../data/org.gnome.Maps.gschema.xml.h:2
+msgid "Coordinates of last viewed location."
+msgstr "Координате последњег виђеног места."
+
+#: ../data/org.gnome.Maps.gschema.xml.h:3
 msgid "Window size"
 msgstr "Величина прозора"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:2
+#: ../data/org.gnome.Maps.gschema.xml.h:4
 msgid "Window size (width and height)."
 msgstr "Величина прозора (ширина и висина)."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:3
+#: ../data/org.gnome.Maps.gschema.xml.h:5
 msgid "Window position"
 msgstr "Положај прозора"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:4
+#: ../data/org.gnome.Maps.gschema.xml.h:6
 msgid "Window position (X and Y)."
 msgstr "Положај прозора (положено и усправно)."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:5
+#: ../data/org.gnome.Maps.gschema.xml.h:7
 msgid "Window maximized"
-msgstr "Увећавање прозора"
+msgstr "Увећање прозора"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:6
+#: ../data/org.gnome.Maps.gschema.xml.h:8
 msgid "Window maximization state"
 msgstr "Стање увећања прозора"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:7
+#: ../data/org.gnome.Maps.gschema.xml.h:9
 msgid "Maximum number of search results"
 msgstr "Највећи број резултата претраге"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:8
+#: ../data/org.gnome.Maps.gschema.xml.h:10
 msgid "Maximum number of search results from geocode search."
 msgstr "Највећи број резултата претраге за претрагу геокода."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:9
+#: ../data/org.gnome.Maps.gschema.xml.h:11
 msgid "Number of recent places to store"
 msgstr "Број скорашњих места за чување"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:10
+#: ../data/org.gnome.Maps.gschema.xml.h:12
 msgid "Number of recently visited places to store."
 msgstr "Број недавно посећених места за чување."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:11
+#: ../data/org.gnome.Maps.gschema.xml.h:13
 msgid "Number of recent routes to store"
 msgstr "Број скорашњих рута које треба сачувати"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:12
+#: ../data/org.gnome.Maps.gschema.xml.h:14
 msgid "Number of recently visited routes to store."
 msgstr "Број скоро посећених рута које треба сачувати."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:13
+#: ../data/org.gnome.Maps.gschema.xml.h:15
 msgid "Facebook check-in privacy setting"
 msgstr "Подешавање провере приватности Фејсбука"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:14
+#: ../data/org.gnome.Maps.gschema.xml.h:16
 msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
@@ -126,11 +140,11 @@ msgstr ""
 "„EVERYONE“ (свако), „FRIENDS_OF_FRIENDS“ (пријатељи пријатеља), "
 "„ALL_FRIENDS“ (сви пријатељи) или „SELF“ (сами)."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:15
+#: ../data/org.gnome.Maps.gschema.xml.h:17
 msgid "Foursquare check-in privacy setting"
 msgstr "Подешавање провере приватности Форсквера"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:16
+#: ../data/org.gnome.Maps.gschema.xml.h:18
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
@@ -138,11 +152,11 @@ msgstr ""
 "Последње подешавање провере приватности Форсквера. Могуће вредности су: "
 "„public“ (јавно), „followers“ (пратиоци) или „private“ (приватно)."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:17
+#: ../data/org.gnome.Maps.gschema.xml.h:19
 msgid "Foursquare check-in Facebook broadcasting"
 msgstr "Форскверова провера Фејсбуковог емитовања"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:18
+#: ../data/org.gnome.Maps.gschema.xml.h:20
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
@@ -150,11 +164,11 @@ msgstr ""
 "Указује да ли Форсквер треба да емитује проверу као објаву у налогу Фејсбука "
 "придруженог са налогом Форсквера."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:19
+#: ../data/org.gnome.Maps.gschema.xml.h:21
 msgid "Foursquare check-in Twitter broadcasting"
 msgstr "Форскверова провера Твитеровог емитовања"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:20
+#: ../data/org.gnome.Maps.gschema.xml.h:22
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
@@ -162,11 +176,28 @@ msgstr ""
 "Указује да ли Форсквер треба да емитује проверу као цвркут у налогу Твитера "
 "придруженог са налогом Форсквера."
 
+#: ../data/org.gnome.Maps.gschema.xml.h:23
+msgid "OpenStreetMap username or e-mail address"
+msgstr "Корисничко име за Слободне карте улица или адреса ел. поште"
+
+#: ../data/org.gnome.Maps.gschema.xml.h:24
+msgid "Indicates if the user has signed in to edit OpenStreetMap data."
+msgstr ""
+"Показује да ли је корисник пријављен да уређује податке Слободне карте улица."
+
 #: ../data/ui/app-menu.ui.h:1
+msgid "Set up OpenStreetMap Account"
+msgstr "Подесите налог Слободне карте улица"
+
+#: ../data/ui/app-menu.ui.h:2
+msgid "_Keyboard Shortcuts"
+msgstr "_Пречице са тастатуре"
+
+#: ../data/ui/app-menu.ui.h:3
 msgid "About"
 msgstr "О програму"
 
-#: ../data/ui/app-menu.ui.h:2
+#: ../data/ui/app-menu.ui.h:4
 msgid "Quit"
 msgstr "Изађи"
 
@@ -182,7 +213,8 @@ msgstr "Објави на Фејсбуку"
 msgid "Post on Twitter"
 msgstr "Објави на Твитеру"
 
-#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/send-to-dialog.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/export-view-dialog.ui.h:2
+#: ../data/ui/send-to-dialog.ui.h:2 ../data/ui/shape-layer-file-chooser.ui.h:3
 msgid "_Cancel"
 msgstr "_Откажи"
 
@@ -226,6 +258,80 @@ msgstr "Шта је то овде?"
 #: ../data/ui/context-menu.ui.h:2
 msgid "Copy Location"
 msgstr "Умножите место"
+
+#: ../data/ui/context-menu.ui.h:3
+msgid "Export As Image"
+msgstr "Извези као слику"
+
+#: ../data/ui/context-menu.ui.h:4
+msgid "Add to OpenStreetMap"
+msgstr "Додај у Слободне карте улица"
+
+#: ../data/ui/export-view-dialog.ui.h:1
+msgid "Export view"
+msgstr "Извезите преглед"
+
+#: ../data/ui/export-view-dialog.ui.h:3
+msgid "_Export"
+msgstr "_Извези"
+
+#: ../data/ui/export-view-dialog.ui.h:4
+msgid "Include route and markers"
+msgstr "Укључи руте и означаваче"
+
+#: ../data/ui/help-overlay.ui.h:1
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Опште"
+
+#: ../data/ui/help-overlay.ui.h:2
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Прикажи пречице"
+
+#: ../data/ui/help-overlay.ui.h:3
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Тражи"
+
+#: ../data/ui/help-overlay.ui.h:4
+msgctxt "shortcut window"
+msgid "Toggle route planner"
+msgstr "Пребаците на организатор пута"
+
+#: ../data/ui/help-overlay.ui.h:5
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Изађи"
+
+#: ../data/ui/help-overlay.ui.h:6
+msgctxt "shortcut window"
+msgid "Map View"
+msgstr "Преглед карте"
+
+#: ../data/ui/help-overlay.ui.h:7
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr "Увећај"
+
+#: ../data/ui/help-overlay.ui.h:8
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr "Умањи"
+
+#: ../data/ui/help-overlay.ui.h:9
+msgctxt "shortcut window"
+msgid "Toggle scale"
+msgstr "Промени размеру"
+
+#: ../data/ui/help-overlay.ui.h:10
+msgctxt "shortcut window"
+msgid "Go to current location"
+msgstr "Идите на текуће место"
+
+#: ../data/ui/layers-popover.ui.h:1
+msgid "Load Map Layer"
+msgstr "Учитај слој карте"
 
 #: ../data/ui/location-service-notification.ui.h:1
 msgid "Turn on location services to find your location"
@@ -283,7 +389,99 @@ msgstr "Означите омиљеним"
 msgid "Check in here"
 msgstr "Проверите овде"
 
-#: ../data/ui/search-popup.ui.h:1
+#: ../data/ui/osm-account-dialog.ui.h:1
+msgid "OpenStreetMap Account"
+msgstr "Налог Слободне карте улица"
+
+#: ../data/ui/osm-account-dialog.ui.h:2
+msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"x-large\">Пријавите се да уређујете карте</span>"
+
+#: ../data/ui/osm-account-dialog.ui.h:3
+msgid ""
+"Help to improve the map, using an\n"
+"OpenStreetMap account."
+msgstr ""
+"Помозите у побољшању карти, користећи\n"
+"налог за Слободне карте улица."
+
+#: ../data/ui/osm-account-dialog.ui.h:5
+msgid "Email"
+msgstr "Ел. пошта"
+
+#: ../data/ui/osm-account-dialog.ui.h:6
+msgid "Password"
+msgstr "Лозинка"
+
+#: ../data/ui/osm-account-dialog.ui.h:7
+msgid "Sign In"
+msgstr "Пријави ме"
+
+#: ../data/ui/osm-account-dialog.ui.h:8
+msgid "Don't have an account?"
+msgstr "Немате налог?"
+
+#. The label should contain the link to the OSM reset password page with a translated title
+#: ../data/ui/osm-account-dialog.ui.h:10
+msgid ""
+"Sorry, that didn't work. Please try again, or visit\n"
+"<a href=\"https://www.openstreetmap.org/user/forgot-password"
+"\">OpenStreetMap</a> to reset your password."
+msgstr ""
+"Извините, ово није успело. Покушајте опет, или посетите\n"
+"<a href=\"https://www.openstreetmap.org/user/forgot-password\">Слободне "
+"карте улица</a> да поново поставите лозинку."
+
+#: ../data/ui/osm-account-dialog.ui.h:12
+msgid "The verification code didn't match, please try again."
+msgstr "Шифра за проверу не одговара, покушајте опет."
+
+#: ../data/ui/osm-account-dialog.ui.h:13
+msgid "Enter verification code shown above"
+msgstr "Унесите горе приказану шифру за проверу"
+
+#: ../data/ui/osm-account-dialog.ui.h:14
+msgid "Verify"
+msgstr "Провери"
+
+#: ../data/ui/osm-account-dialog.ui.h:15
+msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
+msgstr "<span weight=\"bold\" size=\"x-large\">Пријављени сте</span>"
+
+#: ../data/ui/osm-account-dialog.ui.h:16
+msgid "Your OpenStreetMap account is active."
+msgstr "Ваш налог на Слободним картама улица је активан."
+
+#: ../data/ui/osm-account-dialog.ui.h:17
+msgid "Sign Out"
+msgstr "Одјави ме"
+
+#: ../data/ui/osm-edit-dialog.ui.h:1
+msgid "None"
+msgstr "Ништа"
+
+#: ../data/ui/osm-edit-dialog.ui.h:2
+msgid "Recently Used"
+msgstr "Недавно коришћено"
+
+#: ../data/ui/osm-edit-dialog.ui.h:3
+msgid "Edit on OpenStreetMap"
+msgstr "Уреди у Слободним картама улица"
+
+#: ../data/ui/osm-edit-dialog.ui.h:4
+msgid "Cancel"
+msgstr "Откажи"
+
+#: ../data/ui/osm-edit-dialog.ui.h:5 ../src/osmEditDialog.js:421
+msgid "Next"
+msgstr "Следеће"
+
+#: ../data/ui/place-bubble.ui.h:1
+msgid "Show more information"
+msgstr "Прикажи још података"
+
+#: ../data/ui/place-popover.ui.h:1
 msgid "Press enter to search"
 msgstr "Притисните „унеси“ да претражите"
 
@@ -291,19 +489,27 @@ msgstr "Притисните „унеси“ да претражите"
 msgid "Open location"
 msgstr "Отворите место"
 
-#: ../data/ui/send-to-dialog.ui.h:3
+#: ../data/ui/send-to-dialog.ui.h:3 ../data/ui/shape-layer-file-chooser.ui.h:2
 msgid "_Open"
 msgstr "_Отвори"
 
+#: ../data/ui/shape-layer-file-chooser.ui.h:1
+msgid "Open Layer"
+msgstr "Отвори слој"
+
+#: ../data/ui/shape-layer-row.ui.h:1
+msgid "Toggle visible"
+msgstr "Промени видљиве"
+
 #: ../data/ui/sidebar.ui.h:1
 msgid "Route search by GraphHopper"
-msgstr "Претрага руте Граф Хопером"
+msgstr "Претрага пута Граф Хопером"
 
 #: ../data/ui/social-place-more-results-row.ui.h:1
 msgid "Show more results"
 msgstr "Прикажите још резултата"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:209
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:148
 msgid "Current location"
 msgstr "Тренутни положај"
 
@@ -313,12 +519,32 @@ msgstr "Тренутни положај"
 msgid "Accuracy: %s"
 msgstr "Тачност: %s"
 
+#: ../data/ui/zoom-in-notification.ui.h:1
+msgid "Zoom in to add location!"
+msgstr "Увеличајте да додате место!"
+
+#: ../data/ui/zoom-in-notification.ui.h:2
+msgid "OK"
+msgstr "У реду"
+
 #: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
 #: ../lib/maps-file-tile-source.c:459
 msgid "Failed to find tile structure in directory"
-msgstr "Неуспех при тражењу структуре плочица у фасцикли"
+msgstr "Нисам успео да нађем структуру плочица у фасцикли"
 
-#: ../src/application.js:86
+#: ../lib/maps-osm.c:56
+msgid "Failed to parse XML document"
+msgstr "Нисам успео да обрадим ИксМЛ документ"
+
+#: ../lib/maps-osm.c:252 ../lib/maps-osm.c:405
+msgid "Missing required attributes"
+msgstr "Недостају потребни атрибути"
+
+#: ../lib/maps-osm.c:453
+msgid "Could not find OSM element"
+msgstr "Не могу да нађем СКУ елемент"
+
+#: ../src/application.js:102
 msgid "A path to a local tiles directory structure"
 msgstr "Путања до локалне фасцикле са структуром плочица"
 
@@ -363,6 +589,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Напишите изборну поруку за проверу у „%s“."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
+#: ../src/osmEditDialog.js:458
 msgid "An error has occurred"
 msgstr "Дошло је до грешке"
 
@@ -384,15 +611,68 @@ msgstr ""
 "Уверења су истекла, отворите налоге на мрежи да се пријавите и укључите овај "
 "налог"
 
-#: ../src/mainWindow.js:321
+#: ../src/contextMenu.js:97
+msgid "Route from here"
+msgstr "Путуј одавде"
+
+#: ../src/contextMenu.js:99
+msgid "Add destination"
+msgstr "Додај одредиште"
+
+#: ../src/contextMenu.js:101
+msgid "Route to here"
+msgstr "Путуј довде"
+
+#: ../src/contextMenu.js:182
+msgid ""
+"Location was added to the map, note that it may take a while before it shows "
+"on the map and in search results."
+msgstr ""
+"Место је додато на карту, знајте само да ће требати мало времена пре него ли "
+"буде приказано на карти и у резултатима претраге."
+
+#: ../src/exportViewDialog.js:156
+msgid "Filesystem is read only"
+msgstr "Систем датотека је само за читање"
+
+#: ../src/exportViewDialog.js:158
+msgid "You do not have permission to save there"
+msgstr "Немате овлашћења да сачувате тамо"
+
+#: ../src/exportViewDialog.js:160
+msgid "The directory does not exists"
+msgstr "Фасцикла не постоји"
+
+#: ../src/exportViewDialog.js:162
+msgid "No filename specified"
+msgstr "Нисте навели назив датотеке"
+
+#: ../src/exportViewDialog.js:170
+msgid "Unable to export view"
+msgstr "Не могу да извезем преглед"
+
+#: ../src/geoJSONSource.js:97
+msgid "invalid coordinate"
+msgstr "неисправне координате"
+
+#: ../src/geoJSONSource.js:141 ../src/geoJSONSource.js:181
+#: ../src/geoJSONSource.js:196
+msgid "parse error"
+msgstr "грешка обраде"
+
+#: ../src/geoJSONSource.js:175
+msgid "unknown geometry"
+msgstr "непозната геометрија"
+
+#: ../src/mainWindow.js:348
 msgid "Failed to connect to location service"
 msgstr "Нисам успео да се повежем на услугу положаја"
 
-#: ../src/mainWindow.js:326
+#: ../src/mainWindow.js:353
 msgid "Position not found"
 msgstr "Нисам пронашао положај"
 
-#: ../src/mainWindow.js:371
+#: ../src/mainWindow.js:398
 msgid "translator-credits"
 msgstr ""
 "  Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
@@ -400,47 +680,207 @@ msgstr ""
 "\n"
 "http://prevod.org — превод на српски језик"
 
-#: ../src/mainWindow.js:374
+#: ../src/mainWindow.js:401
 msgid "A map application for GNOME"
 msgstr "Гномов програм за карте"
 
-#: ../src/placeBubble.js:101
-#, javascript-format
-msgid "Postal code: %s"
-msgstr "Поштански број: %s"
+#: ../src/mapView.js:237
+msgid "File type is not supported"
+msgstr "Врста датотеке није подржана"
 
-#: ../src/placeBubble.js:103
-#, javascript-format
-msgid "Country code: %s"
-msgstr "Шифра државе: %s"
+#: ../src/mapView.js:244
+msgid "Failed to open layer"
+msgstr "Нисам успео да отворим слој"
 
-#: ../src/placeBubble.js:112
-#, javascript-format
-msgid "Population: %s"
-msgstr "Становника: %s"
+#: ../src/mapView.js:280
+msgid "Failed to open GeoURI"
+msgstr "Нисам успео да отворим Гео путању"
 
-#: ../src/placeBubble.js:115
-#, javascript-format
-msgid "Opening hours: %s"
-msgstr "Радно време: %s"
+#. setting the status in session.cancel_message still seems
+#. to always give status IO_ERROR
+#: ../src/osmConnection.js:442
+msgid "Incorrect user name or password"
+msgstr "Нетачно име корисника или лозинка"
 
-#: ../src/placeBubble.js:120
+#: ../src/osmConnection.js:444
+msgid "Success"
+msgstr "Успело је"
+
+#: ../src/osmConnection.js:446
+msgid "Bad request"
+msgstr "Лош захтев"
+
+#: ../src/osmConnection.js:448
+msgid "Object not found"
+msgstr "Нисам пронашао објекат"
+
+#: ../src/osmConnection.js:450
+msgid "Conflict, someone else has just modified the object"
+msgstr "Сукоб, неко други је управо изменио објекат"
+
+#: ../src/osmConnection.js:452
+msgid "Object has been deleted"
+msgstr "Објекат је избрисан"
+
+#: ../src/osmConnection.js:454
+msgid "Way or relation refers to non-existing children"
+msgstr "Начин или однос упућује на непостојећу децу"
+
+#: ../src/osmEditDialog.js:100
+msgid "Name"
+msgstr "Назив"
+
+#: ../src/osmEditDialog.js:103
+msgid "The official name. This is typically what appears on signs."
+msgstr "Званичан назив. Ово је обично оно што се види на знацима."
+
+#: ../src/osmEditDialog.js:106 ../src/placeBubble.js:165
+msgid "Website"
+msgstr "Веб сајт"
+
+#: ../src/osmEditDialog.js:109
+msgid ""
+"The official website. Try to use the most basic form of a URL i.e. http://"
+"example.com instead of http://example.com/index.html."
+msgstr ""
+"Званична веб страница. Покушајте да користите најосновнији облик адресе нпр. "
+"„http://example.com“ уместо „http://example.com/index.html“."
+
+#: ../src/osmEditDialog.js:114
+msgid "Phone"
+msgstr "Телефон"
+
+#: ../src/osmEditDialog.js:118
+msgid ""
+"Phone number. Use the international format, starting with a + sign. Beware "
+"of local privacy laws, especially for private phone numbers."
+msgstr ""
+"Број телефона. Користите међународни запис, који почиње знаком +. Пазите на "
+"месне законе приватности, нарочито за приватне бројеве телефона."
+
+#: ../src/osmEditDialog.js:123 ../src/placeBubble.js:171
 msgid "Wikipedia"
 msgstr "Википедија"
 
-#: ../src/placeBubble.js:125
-#, javascript-format
-msgid "Wheelchair access: %s"
-msgstr "Приступна рампа: %s"
+#: ../src/osmEditDialog.js:127
+msgid ""
+"The format used should include the language code and the article title like "
+"”en:Article title”."
+msgstr ""
+"Коришћени запис треба да садржи шифру језика и наслов чланка као нпр. „en:"
+"Наслов чланка“."
 
-#: ../src/placeEntry.js:215
+#: ../src/osmEditDialog.js:131
+msgid "Opening hours"
+msgstr "Радно време"
+
+#: ../src/osmEditDialog.js:136
+msgid "See the link in the label for help on format."
+msgstr "Видите везу у натпису за помоћ око записа."
+
+#: ../src/osmEditDialog.js:139
+msgid "Population"
+msgstr "Становника"
+
+#: ../src/osmEditDialog.js:144
+msgid "Altitude"
+msgstr "Надморска висина"
+
+#: ../src/osmEditDialog.js:147
+msgid "Elevation (height above sea level) of a point in metres."
+msgstr "Издигнуће (висина изнад нивоа мора) тачке у метрима."
+
+#: ../src/osmEditDialog.js:150
+msgid "Wheelchair access"
+msgstr "Приступна рампа"
+
+#: ../src/osmEditDialog.js:153 ../src/osmEditDialog.js:162
+msgid "Yes"
+msgstr "Да"
+
+#: ../src/osmEditDialog.js:154 ../src/osmEditDialog.js:163
+msgid "No"
+msgstr "Не"
+
+#: ../src/osmEditDialog.js:155
+msgid "Limited"
+msgstr "Ограничено"
+
+#: ../src/osmEditDialog.js:156
+msgid "Designated"
+msgstr "Намењено"
+
+#: ../src/osmEditDialog.js:159
+msgid "Internet access"
+msgstr "Приступ интернету"
+
+#. Translators:
+#. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
+#.
+#: ../src/osmEditDialog.js:164 ../src/translations.js:341
+msgid "Wi-Fi"
+msgstr "Бежични"
+
+#: ../src/osmEditDialog.js:165
+msgid "Wired"
+msgstr "Жичани"
+
+#: ../src/osmEditDialog.js:166
+msgid "Terminal"
+msgstr "Термнал"
+
+#: ../src/osmEditDialog.js:167
+msgid "Service"
+msgstr "Услуга"
+
+#: ../src/osmEditDialog.js:238
+msgctxt "dialog title"
+msgid "Add to OpenStreetMap"
+msgstr "Додај у Слободне карте улица"
+
+#: ../src/osmEditDialog.js:289
+msgid "Select Type"
+msgstr "Изабери врсту"
+
+#: ../src/osmEditDialog.js:407
+msgid "Done"
+msgstr "Готово"
+
+#: ../src/placeBubble.js:128
+msgid "Population:"
+msgstr "Становника:"
+
+#: ../src/placeBubble.js:134
+msgid "Altitude:"
+msgstr "Надморска висина:"
+
+#: ../src/placeBubble.js:139
+msgid "Opening hours:"
+msgstr "Радно време:"
+
+#: ../src/placeBubble.js:144
+msgid "Internet access:"
+msgstr "Приступ интернету:"
+
+#: ../src/placeBubble.js:149
+msgid "Wheelchair access:"
+msgstr "Приступна рампа:"
+
+#: ../src/placeBubble.js:155 ../src/placeBubble.js:159
+msgid "Phone:"
+msgstr "Телефон:"
+
+#: ../src/placeEntry.js:190
 msgid "Failed to parse Geo URI"
-msgstr "Неуспех при обради Гео УРИ-ја"
+msgstr "Нисам успео да обрадим Гео путању"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: ../src/place.js:121
+#. Translators:
+#. * There is public internet access but the particular kind is unknown.
+#.
+#: ../src/place.js:177 ../src/translations.js:330
 msgid "yes"
 msgstr "да"
 
@@ -449,7 +889,7 @@ msgstr "да"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:128
+#: ../src/place.js:184
 msgid "limited"
 msgstr "ограничено"
 
@@ -457,7 +897,11 @@ msgstr "ограничено"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: ../src/place.js:134
+#. Translators:
+#. * no internet access is offered in a place where
+#. * someone might expect it.
+#.
+#: ../src/place.js:190 ../src/translations.js:336
 msgid "no"
 msgstr "не"
 
@@ -466,7 +910,7 @@ msgstr "не"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:141
+#: ../src/place.js:197
 msgid "designated"
 msgstr "намењено"
 
@@ -482,8 +926,12 @@ msgstr "Захтев пута није успео."
 msgid "Start!"
 msgstr "Крени!"
 
+#: ../src/sendToDialog.js:173
+msgid "Failed to open URI"
+msgstr "Нисам успео да отворим путању"
+
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:230
+#: ../src/sidebar.js:210
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Процењено време: %s"
@@ -615,89 +1063,72 @@ msgctxt "time interval"
 msgid "%s-%s"
 msgstr "%s—%s"
 
+#. Translators:
+#. * This means a a place where you can plug in your laptop with ethernet.
+#.
+#: ../src/translations.js:346
+msgid "wired"
+msgstr "жичани"
+
+#. Translators:
+#. * Like internet cafe or library where the computer is given.
+#.
+#: ../src/translations.js:351
+msgid "terminal"
+msgstr "термнал"
+
+#. Translators:
+#. * This means there is personnel which helps you in case of problems.
+#.
+#: ../src/translations.js:356
+msgid "service"
+msgstr "услуга"
+
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:256
+#: ../src/utils.js:228
 msgid "Unknown"
 msgstr "Непознато"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:259
+#: ../src/utils.js:231
 msgid "Exact"
 msgstr "Тачно"
 
-#: ../src/utils.js:354
+#: ../src/utils.js:334
 #, javascript-format
 msgid "%f h"
 msgstr "%f h"
 
-#: ../src/utils.js:356
+#: ../src/utils.js:336
 #, javascript-format
 msgid "%f min"
 msgstr "%f min"
 
-#: ../src/utils.js:358
+#: ../src/utils.js:338
 #, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
 #. Translators: This is a distance measured in kilometers
-#: ../src/utils.js:369
+#: ../src/utils.js:349
 #, javascript-format
 msgid "%f km"
 msgstr "%f km"
 
 #. Translators: This is a distance measured in meters
-#: ../src/utils.js:372
+#: ../src/utils.js:352
 #, javascript-format
 msgid "%f m"
 msgstr "%f m"
 
 #. Translators: This is a distance measured in miles
-#: ../src/utils.js:380
+#: ../src/utils.js:360
 #, javascript-format
 msgid "%f mi"
 msgstr "%f mi"
 
 #. Translators: This is a distance measured in feet
-#: ../src/utils.js:383
+#: ../src/utils.js:363
 #, javascript-format
 msgid "%f ft"
 msgstr "%f ft"
-
-#~ msgid "Last known location and accuracy"
-#~ msgstr "Последње познато место и прецизност"
-
-#~ msgid ""
-#~ "Last known location (latitude and longitude in degrees) and accuracy (in "
-#~ "meters)."
-#~ msgstr ""
-#~ "Последње познато место корисника (географска ширина и дужина у степенима) "
-#~ "и прецизност (у метрима)."
-
-#~ msgid "Description of last known location"
-#~ msgstr "Опис последњег познатог места"
-
-#~ msgid "Description of last known location of user."
-#~ msgstr "Опис последњег познатог места корисника."
-
-#~ msgid "User set last known location"
-#~ msgstr "Корисник је подесио последње познато место"
-
-#~ msgid "Whether the last known location was set manually by the user."
-#~ msgstr "Да ли је корисник ручно подесио последње познато место."
-
-#~ msgid "I’m here!"
-#~ msgstr "Ја сам овде!"
-
-#~| msgid " km²"
-#~ msgid "%f km²"
-#~ msgstr "%f km²"
-
-#~ msgid "Street"
-#~ msgstr "Улица"
-
-#~ msgid "Satellite"
-#~ msgstr "Сателит"
-
-#~ msgid " km<sup>2</sup>"
-#~ msgstr " km<sup>2</sup>"
