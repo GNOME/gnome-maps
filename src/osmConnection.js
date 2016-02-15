@@ -28,6 +28,8 @@ const Rest = imports.gi.Rest;
 const Secret = imports.gi.Secret;
 const Soup = imports.gi.Soup;
 
+const Utils = imports.utils;
+
 const BASE_URL = 'https://api.openstreetmap.org/api';
 const API_VERSION = '0.6';
 
@@ -231,6 +233,7 @@ const OSMConnection = new Lang.Class({
 
     _onRequestOAuthToken: function(error, callback) {
         if (error) {
+            Utils.debug(error);
             callback(false);
             return;
         }
