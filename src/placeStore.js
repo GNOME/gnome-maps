@@ -177,8 +177,9 @@ const PlaceStore = new Lang.Class({
 
                 let p;
                 if (type === PlaceType.RECENT_ROUTE) {
-                    if (this._numRecentRoutes < this._recentRoutesLimit)
-                        p = StoredRoute.StoredRoute.fromJSON(place);
+                    if (this._numRecentRoutes >= this._recentRoutesLimit)
+                        return;
+                    p = StoredRoute.StoredRoute.fromJSON(place);
                     this._numRecentRoutes++;
                 } else {
                     p = Place.Place.fromJSON(place);
