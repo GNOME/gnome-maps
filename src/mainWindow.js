@@ -364,11 +364,11 @@ const MainWindow = new Lang.Class({
             Application.notificationManager.showMessage(message);
             break;
 
-        case Geoclue.State.OFF:
+        case Geoclue.State.OFF: {
             let notification = this._getLocationServiceNotification();
             Application.notificationManager.showNotification(notification);
             break;
-
+        }
         default:
             this._mapView.gotoUserLocation(true);
             break;
