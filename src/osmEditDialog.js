@@ -647,7 +647,7 @@ const OSMEditDialog = new Lang.Class({
         combobox.active_id = value;
         combobox.hexpand = true;
         combobox.connect('changed', (function() {
-        this._osmObject.set_tag(fieldSpec.tag, combobox.active_id);
+            this._osmObject.set_tag(fieldSpec.tag, combobox.active_id);
             this._nextButton.sensitive = true;
         }).bind(this, fieldSpec.tag, combobox));
 

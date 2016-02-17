@@ -79,11 +79,9 @@ const FoursquareBackend = new Lang.Class({
         this.callAsync(authorizer,
                        'POST',
                        'checkins/add',
-                       {
-                           'shout': checkIn.message,
-                           'venueId': checkIn.place.id,
-                           'broadcast': broadcast
-                       },
+                       { 'shout': checkIn.message,
+                         'venueId': checkIn.place.id,
+                         'broadcast': broadcast },
                        callback,
                        cancellable);
     },
@@ -92,11 +90,9 @@ const FoursquareBackend = new Lang.Class({
         this.callAsync(authorizer,
                        'GET',
                        'venues/search',
-                       {
-                           'll': latitude + ',' + longitude,
-                           'radius': distance,
-                           'intent': 'checkin'
-                       },
+                       { 'll': latitude + ',' + longitude,
+                         'radius': distance,
+                         'intent': 'checkin' },
                        callback,
                        cancellable);
     },

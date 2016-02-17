@@ -67,10 +67,10 @@ const PlacePopover = new Lang.Class({
             this._mode = Mode.ACTIVATED;
         }).bind(this));
 
-         this._list.connect('row-activated', (function(list, row) {
-             if (row)
-                 this.emit('selected', row.place);
-         }).bind(this));
+        this._list.connect('row-activated', (function(list, row) {
+            if (row)
+                this.emit('selected', row.place);
+        }).bind(this));
 
         // Make sure we clear all selected rows when the search string change
         this._entry.connect('changed',

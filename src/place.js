@@ -171,32 +171,37 @@ const Place = new Lang.Class({
 
     _translateWheelchair: function(string) {
         switch(string) {
+        case 'yes':
             /* Translators:
              * This means wheelchairs have full unrestricted access.
              */
-            case 'yes': return _("yes");
+            return _("yes");
 
+        case 'limited':
             /* Translators:
              * This means wheelchairs have partial access (e.g some areas
              * can be accessed and others not, areas requiring assistance
              * by someone pushing up a steep gradient).
              */
-            case 'limited': return _("limited");
+            return _("limited");
 
+        case 'no':
             /* Translators:
              * This means wheelchairs have no unrestricted access
              * (e.g. stair only access).
              */
-            case 'no': return _("no");
+            return _("no");
 
+        case 'designated':
             /* Translators:
              * This means that the way or area is designated or purpose built
              * for wheelchairs (e.g. elevators designed for wheelchair access
              * only). This is rarely used.
              */
-            case 'designated': return _("designated");
+            return _("designated");
 
-            default: return null;
+        default:
+            return null;
         }
     },
 
@@ -270,23 +275,23 @@ Place.fromJSON = function(obj) {
         let prop = obj[key];
 
         switch(key) {
-            case 'id':
-                props.osm_id = prop;
-                break;
+        case 'id':
+            props.osm_id = prop;
+            break;
 
-            case 'location':
-                props.location = new Location.Location(prop);
-                break;
+        case 'location':
+            props.location = new Location.Location(prop);
+            break;
 
-            case 'bounding_box':
-                if (prop)
-                    props.bounding_box = new Geocode.BoundingBox(prop);
-                break;
+        case 'bounding_box':
+            if (prop)
+                props.bounding_box = new Geocode.BoundingBox(prop);
+            break;
 
-            default:
-                if (prop !== null && prop !== undefined)
-                    props[key] = prop;
-                break;
+        default:
+            if (prop !== null && prop !== undefined)
+                props[key] = prop;
+            break;
         }
     }
     return new Place(props);

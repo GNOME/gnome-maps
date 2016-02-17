@@ -76,11 +76,9 @@ const FacebookBackend = new Lang.Class({
         this.callAsync(authorizer,
                        'POST',
                        'me/feed',
-                       {
-                           'message': checkIn.message,
-                           'place': checkIn.place.id,
-                           'privacy_value': checkIn.privacy
-                       },
+                       { 'message': checkIn.message,
+                         'place': checkIn.place.id,
+                         'privacy_value': checkIn.privacy },
                        callback,
                        cancellable);
     },
@@ -89,11 +87,9 @@ const FacebookBackend = new Lang.Class({
         this.callAsync(authorizer,
                        'GET',
                        'search',
-                       {
-                           'type': 'place',
-                           'center': latitude + ',' + longitude,
-                           'distance': distance
-                       },
+                       { 'type': 'place',
+                         'center': latitude + ',' + longitude,
+                         'distance': distance },
                        callback,
                        cancellable);
     },
