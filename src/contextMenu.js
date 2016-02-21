@@ -124,7 +124,12 @@ const ContextMenu = new Lang.Class({
                                                accuracy: 0 });
 
         Application.geocodeService.reverse(location, null, (function(place) {
-            this._mapView.showPlace(place, false);
+            if (place) {
+                this._mapView.showPlace(place, false);
+            } else {
+                let msg = _("Nothing found here!");
+                Application.notificationManager.showMessage(msg);
+            }
         }).bind(this));
     },
 
