@@ -50,7 +50,8 @@ const Response = {
 const EditFieldType = {
     TEXT: 0,
     INTEGER: 1,
-    COMBO: 2
+    COMBO: 2,
+    ADDRESS: 3
 };
 
 const _WIKI_BASE = 'http://wiki.openstreetmap.org/wiki/Key:';
@@ -94,6 +95,8 @@ let _osmPhoneRewriteFunc = function(text) {
  * options: The options for the combo box (only used for COMBO fields)
  * hint: a hint text to show in a popover displayed by a hint button
  * (for TEXT and INTEGER fields)
+ * subtags: Used by a complex composite OSM tag.
+ * rows: Number of rows neded if != 1.
  */
 const OSM_FIELDS = [
     {
@@ -101,6 +104,14 @@ const OSM_FIELDS = [
         tag: 'name',
         type: EditFieldType.TEXT,
         hint: _("The official name. This is typically what appears on signs.")
+    },
+    {
+        name: _("Address"),
+        tag: 'addr',
+        subtags: ['addr:street', 'addr:housenumber',
+                  'addr:postcode', 'addr:city'],
+        type: EditFieldType.ADDRESS,
+        rows: 2
     },
     {
         name: _("Website"),
@@ -166,6 +177,44 @@ const OSM_FIELDS = [
                   ['terminal', _("Terminal")],
                   ['service', _("Service")]]
     }];
+
+const OSMEditAddress = new Lang.Class({
+    Name: 'OSMEditAddress',
+    Extends: Gtk.Grid,
+    Template: 'resource:///org/gnome/Maps/ui/osm-edit-address.ui',
+    Children: [ 'street',
+                'number',
+                'post',
+                'city' ],
+
+    _init: function(params) {
+        let street = params.street;
+        delete params.street;
+
+        let number = params.number;
+        delete params.number;
+
+        let postCode = params.postCode;
+        delete params.postCode;
+
+        let city = params.city;
+        delete params.city;
+
+        this.parent(params);
+
+        if (street)
+            this.street.text = street;
+
+        if (number)
+            this.number.text = number;
+
+        if (postCode)
+            this.post.text = postCode;
+
+        if (city)
+            this.city.text = city;
+    }
+});
 
 
 const OSMEditDialog = new Lang.Class({
@@ -465,38 +514,49 @@ const OSMEditDialog = new Lang.Class({
 
     /* GtkContainer.child_get_property doesn't seem to be usable from GJS */
     _getRowOfDeleteButton: function(button) {
-        for (let row = 1;; row++) {
+        for (let row = 1; row < this._currentRow; row++) {
             let label = this._editorGrid.get_child_at(0, row);
             let deleteButton = this._editorGrid.get_child_at(2, row);
 
             if (deleteButton === button)
                 return row;
-
-            /* if we reached the end of the table */
-            if (label == null)
-                return -1;
         }
 
         return -1;
     },
 
-    _addOSMEditDeleteButton: function(tag) {
+    _addOSMEditDeleteButton: function(fieldSpec) {
         let deleteButton = Gtk.Button.new_from_icon_name('user-trash-symbolic',
                                                          Gtk.IconSize.BUTTON);
         let styleContext = deleteButton.get_style_context();
+        let rows = fieldSpec.rows || 1;
 
         styleContext.add_class('flat');
         this._editorGrid.attach(deleteButton, 2, this._currentRow, 1, 1);
 
         deleteButton.connect('clicked', (function() {
-            this._osmObject.delete_tag(tag);
+            if (fieldSpec.subtstags) {
+                fieldSpec.subtags.forEach((function(key) {
+                    this._osmObject.delete_tag(key);
+                }).bind(this));
+            } else {
+                this._osmObject.delete_tag(fieldSpec.tag);
+            }
 
             let row = this._getRowOfDeleteButton(deleteButton);
             this._editorGrid.remove_row(row);
+            if (rows  === 2) {
+                /* 
+                 * if we should delete the following row (for a widget spanning
+                 * two rows) delete next row (which now has moved up one row)
+                 */
+                this._editorGrid.remove_row(row);
+                this._currentRow--;
+            }
             this._nextButton.sensitive = true;
             this._currentRow--;
             this._updateAddFieldMenu();
-        }).bind(this, tag));
+        }).bind(this));
 
         deleteButton.show();
     },
@@ -551,7 +611,7 @@ const OSMEditDialog = new Lang.Class({
         entry.show();
 
         /* TODO: should we allow deleting the name field? */
-        this._addOSMEditDeleteButton(fieldSpec.tag);
+        this._addOSMEditDeleteButton(fieldSpec);
 
         this._currentRow++;
     },
@@ -578,7 +638,7 @@ const OSMEditDialog = new Lang.Class({
         this._editorGrid.attach(spinbutton, 1, this._currentRow, 1, 1);
         spinbutton.show();
 
-        this._addOSMEditDeleteButton(fieldSpec.tag);
+        this._addOSMEditDeleteButton(fieldSpec);
         this._currentRow++;
     },
 
@@ -600,8 +660,30 @@ const OSMEditDialog = new Lang.Class({
         this._editorGrid.attach(combobox, 1, this._currentRow, 1, 1);
         combobox.show();
 
-        this._addOSMEditDeleteButton(fieldSpec.tag);
+        this._addOSMEditDeleteButton(fieldSpec);
         this._currentRow++;
+    },
+
+    _addOSMEditAddressEntry: function(fieldSpec, value) {
+        this._addOSMEditLabel(fieldSpec);
+
+        let addr = new OSMEditAddress({ street: value[0],
+                                        number: value[1],
+                                        postCode: value[2],
+                                        city: value[3] });
+        let changedFunc = (function(entry, index) {
+            this._osmObject.set_tag(fieldSpec.subtags[index], entry.text);
+            this._nextButton.sensitive = true;
+        }).bind(this);
+
+        addr.street.connect('changed', changedFunc.bind(this, addr.street, 0));
+        addr.number.connect('changed', changedFunc.bind(this, addr.number, 1));
+        addr.post.connect('changed', changedFunc.bind(this, addr.post, 2));
+        addr.city.connect('changed', changedFunc.bind(this, addr.city, 3));
+
+        this._editorGrid.attach(addr, 1, this._currentRow, 1, 2);
+        this._addOSMEditDeleteButton(fieldSpec);
+        this._currentRow += 2;
     },
 
     /* update visible items in the "Add Field" popover */
@@ -618,9 +700,18 @@ const OSMEditDialog = new Lang.Class({
         /* add selectable items */
         for (let i = 0; i < OSM_FIELDS.length; i++) {
             let fieldSpec = OSM_FIELDS[i];
-            let value = this._osmObject.get_tag(fieldSpec.tag);
+            let hasValue = false;
 
-            if (value === null) {
+            if (fieldSpec.subtags) {
+                fieldSpec.subtags.forEach((function(tag) {
+                    if (this._osmObject.get_tag(tag))
+                        hasValue = true;
+                }).bind(this));
+            } else {
+                hasValue = this._osmObject.get_tag(fieldSpec.tag) !== null;
+            }
+
+            if (!hasValue) {
                 let button = new Gtk.Button({
                     visible: true, sensitive: true,
                     label: fieldSpec.name
@@ -636,7 +727,13 @@ const OSMEditDialog = new Lang.Class({
                     /* add a "placeholder" empty OSM tag to keep the add field
                      * menu updated, these tags will be filtered out if nothing
                      * is entered */
-                    this._osmObject.set_tag(fieldSpec.tag, '');
+                    if (fieldSpec.subtags) {
+                        fieldSpec.subtags.forEach((function(tag) {
+                            this._osmObject.set_tag(tag, '');
+                        }).bind(this));
+                    } else {
+                        this._osmObject.set_tag(fieldSpec.tag, '');
+                    }
                     this._updateAddFieldMenu();
                 }).bind(this));
 
@@ -659,6 +756,9 @@ const OSMEditDialog = new Lang.Class({
         case EditFieldType.COMBO:
             this._addOSMEditComboEntry(fieldSpec, value);
             break;
+        case EditFieldType.ADDRESS:
+            this._addOSMEditAddressEntry(fieldSpec, value);
+            break;
         }
     },
 
@@ -671,10 +771,26 @@ const OSMEditDialog = new Lang.Class({
 
         for (let i = 0; i < OSM_FIELDS.length; i++) {
             let fieldSpec = OSM_FIELDS[i];
-            let value = osmObject.get_tag(fieldSpec.tag);
+            let value;
 
-            if (value != null)
-                this._addOSMField(fieldSpec, value);
+            if (fieldSpec.subtags) {
+                let hasAny = false;
+                fieldSpec.subtags.forEach(function(tag) {
+                    if (osmObject.get_tag(tag) != null)
+                        hasAny = true;
+                });
+
+                if (hasAny) {
+                    value = fieldSpec.subtags.map(function(tag) {
+                        return osmObject.get_tag(tag);
+                    });
+                    this._addOSMField(fieldSpec, value);
+                }
+            } else {
+                value = osmObject.get_tag(fieldSpec.tag);
+                if (value != null)
+                    this._addOSMField(fieldSpec, value);
+            }
         }
 
         this._updateAddFieldMenu();
