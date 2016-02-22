@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-15 23:39+0000\n"
-"PO-Revision-Date: 2016-02-16 09:17+0100\n"
+"POT-Creation-Date: 2016-02-22 09:23+0000\n"
+"PO-Revision-Date: 2016-02-22 13:57+0100\n"
 "Last-Translator: Alexandre Franke <alexandre.franke@gmail.com>\n"
 "Language-Team: GNOME French team <gnomefr@traduc.org>\n"
 "Language: fr\n"
@@ -62,7 +62,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:86 ../src/mainWindow.js:400
+#: ../src/application.js:86 ../src/mainWindow.js:416
 msgid "Maps"
 msgstr "Cartes"
 
@@ -73,6 +73,10 @@ msgstr "Une application cartographique simple"
 #: ../data/org.gnome.Maps.desktop.in.h:3
 msgid "Maps;"
 msgstr "Cartes;"
+
+#: ../data/org.gnome.Maps.desktop.in.h:4
+msgid "Allows your location to be shown on the map."
+msgstr "Permet d'afficher votre emplacement sur la carte."
 
 #: ../data/org.gnome.Maps.gschema.xml.h:1
 msgid "last viewed location"
@@ -309,30 +313,35 @@ msgstr "Basculer vers l'itinéraire"
 
 #: ../data/ui/help-overlay.ui.h:5
 msgctxt "shortcut window"
+msgid "Print route"
+msgstr "Imprimer l'itinéraire"
+
+#: ../data/ui/help-overlay.ui.h:6
+msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Quitter"
 
-#: ../data/ui/help-overlay.ui.h:6
+#: ../data/ui/help-overlay.ui.h:7
 msgctxt "shortcut window"
 msgid "Map View"
 msgstr "Afficher la carte"
 
-#: ../data/ui/help-overlay.ui.h:7
+#: ../data/ui/help-overlay.ui.h:8
 msgctxt "shortcut window"
 msgid "Zoom in"
 msgstr "Zoom avant"
 
-#: ../data/ui/help-overlay.ui.h:8
+#: ../data/ui/help-overlay.ui.h:9
 msgctxt "shortcut window"
 msgid "Zoom out"
 msgstr "Zoom arrière"
 
-#: ../data/ui/help-overlay.ui.h:9
+#: ../data/ui/help-overlay.ui.h:10
 msgctxt "shortcut window"
 msgid "Toggle scale"
 msgstr "Afficher/masquer l'échelle"
 
-#: ../data/ui/help-overlay.ui.h:10
+#: ../data/ui/help-overlay.ui.h:11
 msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Aller à ma position actuelle"
@@ -366,10 +375,14 @@ msgid "Toggle favorites"
 msgstr "Basculer les favoris"
 
 #: ../data/ui/main-window.ui.h:6
+msgid "Print Route"
+msgstr "Imprimer l'itinéraire"
+
+#: ../data/ui/main-window.ui.h:7
 msgid "Maps is offline!"
 msgstr "Cartes est hors ligne !"
 
-#: ../data/ui/main-window.ui.h:7
+#: ../data/ui/main-window.ui.h:8
 msgid ""
 "Maps need an active internet connection to function properly, but one can't "
 "be found."
@@ -377,7 +390,7 @@ msgstr ""
 "Cartes a besoin d'une connexion Internet active et fonctionnelle, mais "
 "aucune n'a été trouvée."
 
-#: ../data/ui/main-window.ui.h:8
+#: ../data/ui/main-window.ui.h:9
 msgid "Check your connection and proxy settings."
 msgstr "Vérifiez votre connexion et vos paramètres de proxy."
 
@@ -636,7 +649,11 @@ msgstr "Ajouter une destination"
 msgid "Route to here"
 msgstr "Itinéraire jusqu'à ce point"
 
-#: ../src/contextMenu.js:182
+#: ../src/contextMenu.js:130
+msgid "Nothing found here!"
+msgstr "Rien n'a été trouvé à cet endroit !"
+
+#: ../src/contextMenu.js:187
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -677,21 +694,21 @@ msgstr "erreur d'analyse"
 msgid "unknown geometry"
 msgstr "géométrie inconnue"
 
-#: ../src/mainWindow.js:348
+#: ../src/mainWindow.js:358
 msgid "Failed to connect to location service"
 msgstr "Échec à la connexion au service de localisation"
 
-#: ../src/mainWindow.js:353
+#: ../src/mainWindow.js:363
 msgid "Position not found"
 msgstr "Position non trouvée"
 
-#: ../src/mainWindow.js:398
+#: ../src/mainWindow.js:414
 msgid "translator-credits"
 msgstr ""
 "Ouharzoune Mohammed <karim-ouh@hotmail.fr>\n"
 "Claude Paroz <claude@2xlibre.net>"
 
-#: ../src/mainWindow.js:401
+#: ../src/mainWindow.js:417
 msgid "A map application for GNOME"
 msgstr "Une application cartographique pour GNOME"
 
@@ -927,6 +944,23 @@ msgstr "non"
 #: ../src/place.js:197
 msgid "designated"
 msgstr "réservé"
+
+#: ../src/printLayout.js:225
+#, javascript-format
+msgid "From %s to %s"
+msgstr "De %s à %s"
+
+#: ../src/printOperation.js:47
+msgid "Loading map tiles for printing"
+msgstr "Chargement des tuiles de carte pour l'impression"
+
+#: ../src/printOperation.js:48
+msgid "You can abort printing if this takes too long"
+msgstr "Vous pouvez interrompre l'impression si cela prend trop de temps"
+
+#: ../src/printOperation.js:50
+msgid "Abort printing"
+msgstr "Interrompre l'impression"
 
 #: ../src/routeService.js:90
 msgid "No route found."
