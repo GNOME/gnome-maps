@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-15 09:21+0000\n"
-"PO-Revision-Date: 2016-02-18 16:00+0100\n"
+"POT-Creation-Date: 2016-02-22 09:23+0000\n"
+"PO-Revision-Date: 2016-02-22 18:30+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -59,7 +59,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:86 ../src/mainWindow.js:400
+#: ../src/application.js:86 ../src/mainWindow.js:416
 msgid "Maps"
 msgstr "Mapas"
 
@@ -70,6 +70,10 @@ msgstr "Una sencilla aplicación de mapas"
 #: ../data/org.gnome.Maps.desktop.in.h:3
 msgid "Maps;"
 msgstr "Mapas;"
+
+#: ../data/org.gnome.Maps.desktop.in.h:4
+msgid "Allows your location to be shown on the map."
+msgstr "Permite mostrar su ubicación en el mapa."
 
 #: ../data/org.gnome.Maps.gschema.xml.h:1
 msgid "last viewed location"
@@ -186,7 +190,6 @@ msgstr ""
 "OpenStreetMap."
 
 #: ../data/ui/app-menu.ui.h:1
-#| msgid "Setup OpenStreetMap Account"
 msgid "Set up OpenStreetMap Account"
 msgstr "Configurar cuenta de OpenStreetMap"
 
@@ -265,7 +268,6 @@ msgid "Export As Image"
 msgstr "Exportar como imagen"
 
 #: ../data/ui/context-menu.ui.h:4
-#| msgid "Setup OpenStreetMap Account"
 msgid "Add to OpenStreetMap"
 msgstr "Añadir a OpenStreetMap"
 
@@ -287,7 +289,6 @@ msgid "General"
 msgstr "General"
 
 #: ../data/ui/help-overlay.ui.h:2
-#| msgid "_Keyboard Shortcuts"
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Mostrar atajos"
@@ -304,30 +305,35 @@ msgstr "Conmutar el planificador de rutas"
 
 #: ../data/ui/help-overlay.ui.h:5
 msgctxt "shortcut window"
+msgid "Print route"
+msgstr "Imprimir ruta"
+
+#: ../data/ui/help-overlay.ui.h:6
+msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Salir"
 
-#: ../data/ui/help-overlay.ui.h:6
+#: ../data/ui/help-overlay.ui.h:7
 msgctxt "shortcut window"
 msgid "Map View"
 msgstr "Vista de mapa"
 
-#: ../data/ui/help-overlay.ui.h:7
+#: ../data/ui/help-overlay.ui.h:8
 msgctxt "shortcut window"
 msgid "Zoom in"
 msgstr "Ampliar"
 
-#: ../data/ui/help-overlay.ui.h:8
+#: ../data/ui/help-overlay.ui.h:9
 msgctxt "shortcut window"
 msgid "Zoom out"
 msgstr "Reducir"
 
-#: ../data/ui/help-overlay.ui.h:9
+#: ../data/ui/help-overlay.ui.h:10
 msgctxt "shortcut window"
 msgid "Toggle scale"
 msgstr "Conmutar escalado"
 
-#: ../data/ui/help-overlay.ui.h:10
+#: ../data/ui/help-overlay.ui.h:11
 msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Ir a la ubicación actual"
@@ -361,10 +367,14 @@ msgid "Toggle favorites"
 msgstr "Conmutar favoritos"
 
 #: ../data/ui/main-window.ui.h:6
+msgid "Print Route"
+msgstr "Imprimir ruta"
+
+#: ../data/ui/main-window.ui.h:7
 msgid "Maps is offline!"
 msgstr "Mapas está desconectado"
 
-#: ../data/ui/main-window.ui.h:7
+#: ../data/ui/main-window.ui.h:8
 msgid ""
 "Maps need an active internet connection to function properly, but one can't "
 "be found."
@@ -372,7 +382,7 @@ msgstr ""
 "Mapas necesita una conexión a Internet activa para funcionar correctamente, "
 "pero no se ha encontrado ninguna."
 
-#: ../data/ui/main-window.ui.h:8
+#: ../data/ui/main-window.ui.h:9
 msgid "Check your connection and proxy settings."
 msgstr "Compruebe la configuración de su conexión y de su proxy."
 
@@ -469,7 +479,6 @@ msgid "Recently Used"
 msgstr "Usado recientemente"
 
 #: ../data/ui/osm-edit-dialog.ui.h:3
-#| msgid "Setup OpenStreetMap Account"
 msgid "Edit on OpenStreetMap"
 msgstr "Editar en OpenStreetMap"
 
@@ -524,7 +533,6 @@ msgid "Accuracy: %s"
 msgstr "Precisión: %s"
 
 #: ../data/ui/zoom-in-notification.ui.h:1
-#| msgid "Go to current location"
 msgid "Zoom in to add location!"
 msgstr "Ampliar para añadir una ubicación."
 
@@ -631,11 +639,17 @@ msgstr "Añadir destino"
 msgid "Route to here"
 msgstr "Ruta hasta aquí"
 
-#: ../src/contextMenu.js:182
+#: ../src/contextMenu.js:130
+msgid "Nothing found here!"
+msgstr "No se ha encontrado nada aquí."
+
+#: ../src/contextMenu.js:187
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
 msgstr ""
+"Se ha añadido la ubicación al mapa, tenga en cuenta que puede tardar un rato "
+"antes de mostrarse en el mapa y en los resultados de búsqueda."
 
 #: ../src/exportViewDialog.js:156
 msgid "Filesystem is read only"
@@ -657,48 +671,44 @@ msgstr "No se ha especificado un nombre de archivo"
 msgid "Unable to export view"
 msgstr "No se puede exportar la vista"
 
-#: ../src/geoJSONSource.js:99
+#: ../src/geoJSONSource.js:97
 msgid "invalid coordinate"
 msgstr "coordenada no válida"
 
-#: ../src/geoJSONSource.js:143 ../src/geoJSONSource.js:183
-#: ../src/geoJSONSource.js:198
+#: ../src/geoJSONSource.js:141 ../src/geoJSONSource.js:181
+#: ../src/geoJSONSource.js:196
 msgid "parse error"
 msgstr "error al analizar"
 
-#: ../src/geoJSONSource.js:177
+#: ../src/geoJSONSource.js:175
 msgid "unknown geometry"
 msgstr "geometría desconocida"
 
-#: ../src/geoJSONSource.js:211
-msgid "failed to load file"
-msgstr "falló al cargar el archivo"
-
-#: ../src/mainWindow.js:348
+#: ../src/mainWindow.js:358
 msgid "Failed to connect to location service"
 msgstr "Falló al conectar al servicio de ubicación"
 
-#: ../src/mainWindow.js:353
+#: ../src/mainWindow.js:363
 msgid "Position not found"
 msgstr "Posición no encontrada"
 
-#: ../src/mainWindow.js:398
+#: ../src/mainWindow.js:414
 msgid "translator-credits"
 msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2013"
 
-#: ../src/mainWindow.js:401
+#: ../src/mainWindow.js:417
 msgid "A map application for GNOME"
 msgstr "Una aplicación de mapas para GNOME"
 
-#: ../src/mapView.js:233
+#: ../src/mapView.js:237
 msgid "File type is not supported"
 msgstr "Tipo de archivo no soportado"
 
-#: ../src/mapView.js:240
+#: ../src/mapView.js:244
 msgid "Failed to open layer"
 msgstr "Falló al abrir la capa"
 
-#: ../src/mapView.js:276
+#: ../src/mapView.js:280
 msgid "Failed to open GeoURI"
 msgstr "Falló al abrir el GeoURI"
 
@@ -738,9 +748,9 @@ msgstr "Nombre"
 
 #: ../src/osmEditDialog.js:103
 msgid "The official name. This is typically what appears on signs."
-msgstr ""
+msgstr "El nombre oficial. Esto es lo que normalmente aparece en las firmas."
 
-#: ../src/osmEditDialog.js:106 ../src/placeBubble.js:164
+#: ../src/osmEditDialog.js:106 ../src/placeBubble.js:165
 msgid "Website"
 msgstr "Página web"
 
@@ -749,6 +759,8 @@ msgid ""
 "The official website. Try to use the most basic form of a URL i.e. http://"
 "example.com instead of http://example.com/index.html."
 msgstr ""
+"La página web oficial. Pruebe a usar la forma más sencilla de URL, por "
+"ejemplo http://ejemplo.com en lugar de of http://ejemplo.com/index.html."
 
 #: ../src/osmEditDialog.js:114
 msgid "Phone"
@@ -759,8 +771,11 @@ msgid ""
 "Phone number. Use the international format, starting with a + sign. Beware "
 "of local privacy laws, especially for private phone numbers."
 msgstr ""
+"Número de teléfono. Use el formato internacional, empezando por el signo +. "
+"Tenga en cuenta las leyes de privacidad locales, especialmente en el caso de "
+"números privados."
 
-#: ../src/osmEditDialog.js:123 ../src/placeBubble.js:170
+#: ../src/osmEditDialog.js:123 ../src/placeBubble.js:171
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -769,9 +784,10 @@ msgid ""
 "The format used should include the language code and the article title like "
 "”en:Article title”."
 msgstr ""
+"El formato usado debe incluir el código del idioma y el título del artículo, "
+"similar a «es:Título del artículo»"
 
 #: ../src/osmEditDialog.js:131
-#| msgid "Opening hours:"
 msgid "Opening hours"
 msgstr "Horario de apertura"
 
@@ -835,13 +851,11 @@ msgid "Service"
 msgstr "Servicio"
 
 #: ../src/osmEditDialog.js:238
-#| msgid "Setup OpenStreetMap Account"
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Añadir a OpenStreetMap"
 
 #: ../src/osmEditDialog.js:289
-#| msgid "Select a place"
 msgid "Select Type"
 msgstr "Seleccionar tipo"
 
@@ -849,27 +863,27 @@ msgstr "Seleccionar tipo"
 msgid "Done"
 msgstr "Hecho"
 
-#: ../src/placeBubble.js:127
+#: ../src/placeBubble.js:128
 msgid "Population:"
 msgstr "Población:"
 
-#: ../src/placeBubble.js:133
+#: ../src/placeBubble.js:134
 msgid "Altitude:"
 msgstr "Altitud:"
 
-#: ../src/placeBubble.js:138
+#: ../src/placeBubble.js:139
 msgid "Opening hours:"
 msgstr "Horario de apertura:"
 
-#: ../src/placeBubble.js:143
+#: ../src/placeBubble.js:144
 msgid "Internet access:"
 msgstr "Acceso a Internet:"
 
-#: ../src/placeBubble.js:148
+#: ../src/placeBubble.js:149
 msgid "Wheelchair access:"
 msgstr "Acceso para sillas de ruedas:"
 
-#: ../src/placeBubble.js:154 ../src/placeBubble.js:158
+#: ../src/placeBubble.js:155 ../src/placeBubble.js:159
 msgid "Phone:"
 msgstr "Teléfono:"
 
@@ -917,6 +931,23 @@ msgstr "no"
 msgid "designated"
 msgstr "designado"
 
+#: ../src/printLayout.js:225
+#, javascript-format
+msgid "From %s to %s"
+msgstr "De %s a %s"
+
+#: ../src/printOperation.js:47
+msgid "Loading map tiles for printing"
+msgstr "Cargando mapa para imprimir"
+
+#: ../src/printOperation.js:48
+msgid "You can abort printing if this takes too long"
+msgstr "Puede cancelar la impresión si esto tarda mucho"
+
+#: ../src/printOperation.js:50
+msgid "Abort printing"
+msgstr "Cancelar la impresión"
+
 #: ../src/routeService.js:90
 msgid "No route found."
 msgstr "No se ha encontrado la ruta."
@@ -932,6 +963,10 @@ msgstr "Empezar"
 #: ../src/sendToDialog.js:173
 msgid "Failed to open URI"
 msgstr "Falló al abrir el URI"
+
+#: ../src/shapeLayer.js:93
+msgid "failed to load file"
+msgstr "falló al cargar el archivo"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
 #: ../src/sidebar.js:210
