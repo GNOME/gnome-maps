@@ -78,6 +78,7 @@ const OSMConnection = new Lang.Class({
                                              message.response_body.length);
                 callback(true, message.status_code, object, type, null);
             } catch (e) {
+                Utils.debug(e);
                 callback(false, message.status_code, null, type, e);
             }
         }).bind(this));
