@@ -55,16 +55,16 @@ const TurnPointMarker = new Lang.Class({
             this.connect('drag-finish', (function() {
                 this._onMarkerDrag();
             }).bind(this));
-            actor = this._actorFromIconName(this._turnPoint.iconName, 0);
+            actor = MapMarker.actorFromIconName(this._turnPoint.iconName, 0);
         } else {
             // A GNOMEish blue color
             let color = new Gdk.RGBA({ red: 33   / 255,
                                        green: 93 / 255,
                                        blue: 156 / 255,
                                        alpha: 255 });
-            actor = this._actorFromIconName('maps-point-end-symbolic',
-                                            0,
-                                            color);
+            actor = MapMarker.actorFromIconName('maps-point-end-symbolic',
+                                                0,
+                                                color);
         }
         this.add_actor(actor);
     },
