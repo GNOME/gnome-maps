@@ -30,7 +30,6 @@ const Application = imports.application;
 const InstructionRow = imports.instructionRow;
 const MapMarker = imports.mapMarker;
 const MapView = imports.mapView;
-const TurnPointMarker = imports.turnPointMarker;
 
 /* Following constant has unit as meters */
 const _SHORT_LAYOUT_MAX_DISTANCE = 3000;
@@ -138,18 +137,36 @@ const PrintLayout = new Lang.Class({
         }).bind(this));
     },
 
-    _drawMapView: function(width, height, zoomLevel, locations) {
+    _drawMapView: function(width, height, zoomLevel, turnPoints) {
         let pageNum = this.numPages - 1;
         let x = this._cursorX;
         let y = this._cursorY;
         let factory = Champlain.MapSourceFactory.dup_default();
         let mapSource = factory.create_cached_source(MapView.MapType.STREET);
+        let locations = [];
+        let markerLayer = new Champlain.MarkerLayer();
         let view = new Champlain.View({ width: width,
                                         height: height,
                                         zoom_level: zoomLevel });
         view.set_map_source(mapSource);
+        view.add_layer(markerLayer);
 
         this._addRouteLayer(view);
+
+        turnPoints.forEach(function(turnPoint) {
+            locations.push(turnPoint.coordinate);
+            if (turnPoint.isStop()) {
+                print('turnpoint is stop! %s %f %f'.format(turnPoint.iconName,
+                                                           turnPoint.coordinate.latitude, turnPoint.coordinate.longitude));
+                let actor = MapMarker.actorFromIconName(turnPoint.iconName, 0);
+                let marker = new Champlain.Marker({
+                    latitude: turnPoint.coordinate.latitude,
+                    longitude: turnPoint.coordinate.longitude
+                });
+                marker.add_actor(actor);
+                markerLayer.add_marker(marker);
+            }
+        });
 
         view.ensure_visible(this._route.createBBox(locations), false);
         if (view.state !== Champlain.State.DONE) {
@@ -171,7 +188,7 @@ const PrintLayout = new Lang.Class({
     _createLocationArray: function(startIndex, endIndex) {
         let locationArray = [];
         for (let i = startIndex; i < endIndex; i++) {
-            locationArray.push(this._route.turnPoints[i].coordinate);
+            locationArray.push(this._route.turnPoints[i]);
         }
         return locationArray;
     },
