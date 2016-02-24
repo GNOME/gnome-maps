@@ -207,7 +207,8 @@ const PrintLayout = new Lang.Class({
         let instructionEntry =  new InstructionRow.InstructionRow({
             visible: true,
             turnPoint: turnPoint,
-            hasColor: turnPoint.isStop()
+            hasColor: turnPoint.isStop(),
+            lines: 2
         });
 
         instructionWidget.width_request = width;

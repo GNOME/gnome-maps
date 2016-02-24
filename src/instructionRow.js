@@ -39,7 +39,13 @@ const InstructionRow = new Lang.Class({
         this._hasColor = params.hasColor;
         delete params.hasColor;
 
+        let lines = params.lines;
+        delete params.lines;
+
         this.parent(params);
+
+        if (lines)
+            this._instructionLabel.lines = lines;
 
         this._instructionLabel.label = this.turnPoint.instruction;
 
