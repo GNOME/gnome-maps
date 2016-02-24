@@ -64,17 +64,17 @@ const LongPrintLayout = new Lang.Class({
         let miniMapViewZoomLevel = _MiniMapView.ZOOM_LEVEL;
 
         let dy = 0;
-        let locationsLength = this._route.turnPoints.length;
+        let turnPointsLength = this._route.turnPoints.length;
 
         /* Fixed number of locations are plotted on minimaps which requires a
          * check on instructions bound. Later on this can be made dynamic
          * depending upon factors like total number of instructions, complexity
          * of neighbourhood areas, etc.
          */
-        let nthStartLocation = Math.min(_NUM_MINIMAPS, locationsLength);
-        let startLocations = this._createLocationArray(0, nthStartLocation);
+        let nthStartTurnPoints = Math.min(_NUM_MINIMAPS, turnPointsLength);
+        let startTurnPoints = this._createTurnPointArray(0, nthStartTurnPoints);
         this._drawMapView(miniMapViewWidth, miniMapViewHeight,
-                          miniMapViewZoomLevel, startLocations);
+                          miniMapViewZoomLevel, startTurnPoints);
 
         /* x-cursor is increased temporarily for rendering instructions */
         let tmpX = this._cursorX;
@@ -88,11 +88,11 @@ const LongPrintLayout = new Lang.Class({
         }.bind(this));
         this._cursorX = tmpX;
 
-        let firstEndLocation = Math.max(0, locationsLength - _NUM_MINIMAPS);
-        let endLocations = this._createLocationArray(firstEndLocation,
-                                                     locationsLength);
+        let firstEndTurnPoint = Math.max(0, turnPointsLength - _NUM_MINIMAPS);
+        let endTurnPoints = this._createTurnPointArray(firstEndTurnPoint,
+                                                     turnPointsLength);
         this._cursorY = Math.max(0, this._cursorY - miniMapViewHeight);
         this._drawMapView(miniMapViewWidth, miniMapViewHeight,
-                          miniMapViewZoomLevel, endLocations);
+                          miniMapViewZoomLevel, endTurnPoints);
     }
 });

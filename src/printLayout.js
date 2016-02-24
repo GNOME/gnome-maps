@@ -28,7 +28,6 @@ const PangoCairo = imports.gi.PangoCairo;
 
 const Application = imports.application;
 const InstructionRow = imports.instructionRow;
-const MapMarker = imports.mapMarker;
 const MapView = imports.mapView;
 const TurnPointMarker = imports.turnPointMarker;
 
@@ -125,10 +124,10 @@ const PrintLayout = new Lang.Class({
 
         dy = mapViewHeight + mapViewMargin;
         this._adjustPage(dy);
-        let locationsLength = this._route.turnPoints.length;
-        let allLocations = this._createLocationArray(0, locationsLength);
+        let turnPointsLength = this._route.turnPoints.length;
+        let allTurnPoints = this._createTurnPointArray(0, turnPointsLength);
         this._drawMapView(mapViewWidth, mapViewHeight,
-                          mapViewZoomLevel, allLocations);
+                          mapViewZoomLevel, allTurnPoints);
         this._cursorY += dy;
     },
 
@@ -138,18 +137,35 @@ const PrintLayout = new Lang.Class({
         }).bind(this));
     },
 
-    _drawMapView: function(width, height, zoomLevel, locations) {
+    _createMarker: function(turnPoint) {
+        return new TurnPointMarker.TurnPointMarker({
+            turnPoint: turnPoint,
+            queryPoint: {}
+        });
+    },
+
+    _drawMapView: function(width, height, zoomLevel, turnPoints) {
         let pageNum = this.numPages - 1;
         let x = this._cursorX;
         let y = this._cursorY;
         let factory = Champlain.MapSourceFactory.dup_default();
         let mapSource = factory.create_cached_source(MapView.MapType.STREET);
+        let locations = [];
+        let markerLayer = new Champlain.MarkerLayer();
         let view = new Champlain.View({ width: width,
                                         height: height,
                                         zoom_level: zoomLevel });
         view.set_map_source(mapSource);
+        view.add_layer(markerLayer);
 
         this._addRouteLayer(view);
+
+        turnPoints.forEach((function(turnPoint) {
+            locations.push(turnPoint.coordinate);
+            if (turnPoint.isStop()) {
+                markerLayer.add_marker(this._createMarker(turnPoint));
+            }
+        }).bind(this));
 
         view.ensure_visible(this._route.createBBox(locations), false);
         if (view.state !== Champlain.State.DONE) {
@@ -168,12 +184,12 @@ const PrintLayout = new Lang.Class({
         }
     },
 
-    _createLocationArray: function(startIndex, endIndex) {
-        let locationArray = [];
+    _createTurnPointArray: function(startIndex, endIndex) {
+        let turnPointArray = [];
         for (let i = startIndex; i < endIndex; i++) {
-            locationArray.push(this._route.turnPoints[i].coordinate);
+            turnPointArray.push(this._route.turnPoints[i]);
         }
-        return locationArray;
+        return turnPointArray;
     },
 
     _addRouteLayer: function(view) {
