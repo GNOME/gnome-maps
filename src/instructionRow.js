@@ -36,10 +36,26 @@ const InstructionRow = new Lang.Class({
         this.turnPoint = params.turnPoint;
         delete params.turnPoint;
 
+        this._hasColor = params.hasColor;
+        delete params.hasColor;
+
         this.parent(params);
 
         this._instructionLabel.label = this.turnPoint.instruction;
-        this._directionImage.icon_name = this.turnPoint.iconName;
+
+        /*
+         * The SVG icons for turn point stops  has the color red, but has
+         * the suffix '-symbolic'. So when loading through GtkImage it will have
+         * the proper GtkIconLookupflags to re-color the icon as symbolic.
+         * When we load the PixBuf from the SVG ourself, we get the color.
+         */
+        if (this._hasColor) {
+            let theme = Gtk.IconTheme.get_default();
+            let iconName = this.turnPoint.iconName;
+            this._directionImage.pixbuf = theme.load_icon(iconName, 0, 0);
+        } else {
+            this._directionImage.icon_name = this.turnPoint.iconName;
+        }
 
         if (this.turnPoint.distance > 0)
             this._distanceLabel.label = Utils.prettyDistance(this.turnPoint.distance);
