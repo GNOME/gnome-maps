@@ -47,7 +47,15 @@ function getWikipediaOSMArticleFormatFromUrl(url) {
  * Will also update place in the place store.
  */
 function updatePlaceFromOSMObject(place, object) {
-    place.name = object.get_tag('name');
+    let name = object.get_tag('name');
+
+    if (name) {
+        /* only update the place's name from the OSM object if the OSM object
+         * actually has a name set.
+         * https://bugzilla.gnome.org/show_bug.cgi?id=762569
+         */
+        place.name = name;
+    }
     place.population = object.get_tag('population');
     place.website = object.get_tag('website');
     place.phone = object.get_tag('phone');
