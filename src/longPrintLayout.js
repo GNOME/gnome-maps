@@ -20,6 +20,7 @@
 const Lang = imports.lang;
 
 const PrintLayout = imports.printLayout;
+const Route = imports.route;
 
 const _NUM_MINIMAPS = 5;
 
@@ -46,6 +47,12 @@ const LongPrintLayout = new Lang.Class({
 
         /* (Header + 3 maps) + instructions */
         let totalSurfaces = 4 + this._route.turnPoints.length;
+
+        /* Plus via points */
+        this._route.turnPoints.forEach(function(turnPoint) {
+            if (turnPoint.type === Route.TurnPointType.VIA)
+                totalSurfaces++;
+        });
         params.totalSurfaces = totalSurfaces;
 
         this.parent(params);
@@ -64,35 +71,71 @@ const LongPrintLayout = new Lang.Class({
         let miniMapViewZoomLevel = _MiniMapView.ZOOM_LEVEL;
 
         let dy = 0;
-        let turnPointsLength = this._route.turnPoints.length;
+        let pointsLength = this._route.turnPoints.length;
 
         /* Fixed number of locations are plotted on minimaps which requires a
          * check on instructions bound. Later on this can be made dynamic
          * depending upon factors like total number of instructions, complexity
          * of neighbourhood areas, etc.
+         *
+         * We currently have maps besides the instructions for:
+         *  - the start location
+         *  - via points in the route
+         *  - the end location
+         *
+         * We include _NUM_MINIMAPS instructions per map, and have the map
+         * ensure the bounding box of those instructions.
+         *
+         * For the start location we include _NUM_MINIMAPS number of
+         * instruction, if available,  from start.
+         *
+         * For via points we include _NUM_MINIMAPS / 2 number of instructions
+         * before and _NUM_MINIMAPS / 2 number of instructions after the
+         * via point.
+         *
+         * For the end location we include _NUM_MINIMAPS number of instructions
+         * leading up to the end location.
+         *
          */
-        let nthStartTurnPoints = Math.min(_NUM_MINIMAPS, turnPointsLength);
-        let startTurnPoints = this._createTurnPointArray(0, nthStartTurnPoints);
+        let first = 0;
+        let last = Math.min(_NUM_MINIMAPS, pointsLength);
+        let points = this._createTurnPointArray(first, last);
         this._drawMapView(miniMapViewWidth, miniMapViewHeight,
-                          miniMapViewZoomLevel, startTurnPoints);
+                          miniMapViewZoomLevel, points);
 
         /* x-cursor is increased temporarily for rendering instructions */
         let tmpX = this._cursorX;
-        this._route.turnPoints.forEach(function(turnPoint) {
+        for (let i = 0; i < this._route.turnPoints.length; i++) {
+            let turnPoint = this._route.turnPoints[i];
+
             dy = instructionHeight + instructionMargin;
             this._adjustPage(dy);
             this._cursorX = tmpX + miniMapViewWidth + miniMapViewMargin;
             this._drawInstruction(instructionWidth, instructionHeight,
                                   turnPoint);
             this._cursorY += dy;
-        }.bind(this));
+
+            if (turnPoint.type === Route.TurnPointType.VIA) {
+                let tmpY = this._cursorY;
+
+                first = Math.max(0, (i + 1) - (_NUM_MINIMAPS / 2));
+                last = Math.min((i + 1) + (_NUM_MINIMAPS / 2), pointsLength);
+                points = this._createTurnPointArray(Math.floor(first),
+                                                    Math.floor(last));
+                this._cursorX = tmpX;
+                this._cursorY = Math.max(0, this._cursorY - miniMapViewHeight);
+                this._drawMapView(miniMapViewWidth, miniMapViewHeight,
+                                  miniMapViewZoomLevel, points);
+                this._cursorY = tmpY;
+            }
+        }
         this._cursorX = tmpX;
 
-        let firstEndTurnPoint = Math.max(0, turnPointsLength - _NUM_MINIMAPS);
-        let endTurnPoints = this._createTurnPointArray(firstEndTurnPoint,
-                                                     turnPointsLength);
+        first = Math.max(0, pointsLength - _NUM_MINIMAPS);
+        last = pointsLength;
+        points = this._createTurnPointArray(first, last);
         this._cursorY = Math.max(0, this._cursorY - miniMapViewHeight);
         this._drawMapView(miniMapViewWidth, miniMapViewHeight,
-                          miniMapViewZoomLevel, endTurnPoints);
+                          miniMapViewZoomLevel, points);
     }
 });
