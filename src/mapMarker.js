@@ -51,8 +51,6 @@ const MapMarker = new Lang.Class({
         this._mapView = params.mapView;
         delete params.mapView;
 
-        this._view = this._mapView.view;
-
         params.latitude = this.place.location.latitude;
         params.longitude = this.place.location.longitude;
         params.selectable = true;
@@ -60,18 +58,21 @@ const MapMarker = new Lang.Class({
         this.parent(params);
 
         this.connect('notify::size', this._translateMarkerPosition.bind(this));
-        this.connect('notify::selected', this._onMarkerSelected.bind(this));
-        this.connect('button-press', this._onButtonPress.bind(this));
+        if (this._mapView) {
+            this._view = this._mapView.view;
+            this.connect('notify::selected', this._onMarkerSelected.bind(this));
+            this.connect('button-press', this._onButtonPress.bind(this));
 
-        // Some markers are draggable, we want to sync the marker location and
-        // the location saved in the GeocodePlace
-        this.bind_property('latitude',
-                           this.place.location, 'latitude',
-                           GObject.BindingFlags.DEFAULT);
+            // Some markers are draggable, we want to sync the marker location and
+            // the location saved in the GeocodePlace
+            this.bind_property('latitude',
+                               this.place.location, 'latitude',
+                               GObject.BindingFlags.DEFAULT);
 
-        this.bind_property('longitude',
-                           this.place.location, 'longitude',
-                           GObject.BindingFlags.DEFAULT);
+            this.bind_property('longitude',
+                               this.place.location, 'longitude',
+                               GObject.BindingFlags.DEFAULT);
+        }
     },
 
     get surface() {
