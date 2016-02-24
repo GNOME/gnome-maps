@@ -206,7 +206,8 @@ const PrintLayout = new Lang.Class({
         let instructionWidget = new Gtk.OffscreenWindow({ visible: true });
         let instructionEntry =  new InstructionRow.InstructionRow({
             visible: true,
-            turnPoint: turnPoint
+            turnPoint: turnPoint,
+            hasColor: turnPoint.isStop()
         });
 
         instructionWidget.width_request = width;
