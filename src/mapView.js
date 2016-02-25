@@ -55,6 +55,15 @@ const MapType = {
 const _LOCATION_STORE_TIMEOUT = 500;
 const MapMinZoom = 2;
 
+/*
+ * Due to the mathematics of spherical mericator projection,
+ * the map must be truncated at a latitude less than 90 degrees.
+ */
+const MAX_LATITUDE = 85.05112;
+const MIN_LATITUDE = -85.05112;
+const MAX_LONGITUDE = 180;
+const MIN_LONGITUDE = -180;
+
 const MapView = new Lang.Class({
     Name: 'MapView',
     Extends: GtkChamplain.Embed,

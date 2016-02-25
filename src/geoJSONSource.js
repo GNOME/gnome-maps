@@ -30,6 +30,7 @@ const Place = imports.place;
 const PlaceMarker = imports.placeMarker;
 const Utils = imports.utils;
 const GeoJSONStyle = imports.geoJSONStyle;
+const MapView = imports.mapView;
 
 
 const TILE_SIZE = 256;
@@ -102,6 +103,13 @@ const GeoJSONSource = new Lang.Class({
             this._validate(coordinate);
             this._bbox.extend(coordinate[1], coordinate[0]);
         }).bind(this));
+    },
+
+    _clampBBox: function() {
+        this._bbox.top = Math.min(this._bbox.top, MapView.MAX_LATITUDE);
+        this._bbox.left = Math.max(this._bbox.left, MapView.MIN_LONGITUDE);
+        this._bbox.bottom = Math.max(this._bbox.bottom, MapView.MIN_LATITUDE);
+        this._bbox.right = Math.min(this._bbox.right, MapView.MAX_LONGITUDE);
     },
 
     _parseLineString: function(coordinates) {
@@ -207,6 +215,7 @@ const GeoJSONSource = new Lang.Class({
         this._parseInternal(json);
         this._tileIndex = Geojsonvt.geojsonvt(json, { extent: TILE_SIZE,
                                                       maxZoom: 20 });
+        this._clampBBox();
     },
 
     _renderTile: function(tile) {
