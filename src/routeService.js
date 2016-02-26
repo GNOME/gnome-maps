@@ -162,24 +162,33 @@ const GraphHopper = new Lang.Class({
     },
 
     _createTurnPoints: function(path, instructions) {
-        let startPoint = new Route.TurnPoint({ coordinate:  path[0],
-                                               type:        Route.TurnPointType.START,
-                                               distance:    0,
-                                               instruction: _("Start!"),
-                                               time:        0,
-                                               turnAngle:   0
-                                             });
-        let rest = instructions.map(this._createTurnPoint.bind(this, path));
+        let via = 0;
+        let startPoint = new Route.TurnPoint({
+            coordinate:  path[0],
+            type:        Route.TurnPointType.START,
+            distance:    0,
+            instruction: _("Start!"),
+            time:        0,
+            turnAngle:   0
+        });
+        let rest = instructions.map((function(instr) {
+            let type = this._createTurnPointType(instr.sign);
+            let text = instr.text;
+            if (type === Route.TurnPointType.VIA) {
+                via++;
+                let viaPlace = this.query.filledPoints[via].place;
+                text = viaPlace.name || instr.text;
+            }
+            return new Route.TurnPoint({
+                coordinate:  path[instr.interval[0]],
+                type:        type,
+                distance:    instr.distance,
+                instruction: text,
+                time:        instr.time,
+                turnAngle:   instr.turn_angle
+            });
+        }).bind(this));
         return [startPoint].concat(rest);
-    },
-
-    _createTurnPoint: function(path, { text, distance, time, interval, sign, turn_angle }) {
-        return new Route.TurnPoint({ coordinate:  path[interval[0]],
-                                     type:        this._createTurnPointType(sign),
-                                     distance:    distance,
-                                     instruction: text,
-                                     time:        time,
-                                     turnAngle:   turn_angle});
     },
 
     _createTurnPointType: function(sign) {
