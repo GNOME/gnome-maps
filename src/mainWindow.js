@@ -110,13 +110,13 @@ const MainWindow = new Lang.Class({
     },
 
     _createPlaceEntry: function() {
-        let placeEntry = new PlaceEntry.PlaceEntry({ mapView:       this._mapView,
-                                                     visible:       true,
-                                                     margin_start:  6,
-                                                     margin_end:    6,
-                                                     width_request: 500,
-                                                     loupe:         true,
-                                                     matchRoute:    true
+        let placeEntry = new PlaceEntry.PlaceEntry({ mapView: this._mapView,
+                                                     visible: true,
+                                                     margin_start: 6,
+                                                     margin_end: 6,
+                                                     max_width_chars: 50,
+                                                     loupe: true,
+                                                     matchRoute: true
                                                    });
         placeEntry.connect('notify::place', (function() {
             if (placeEntry.place) {
