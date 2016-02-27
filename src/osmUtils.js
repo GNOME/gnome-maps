@@ -32,7 +32,7 @@ function getWikipediaOSMArticleFormatFromUrl(url) {
     let regex = /https?:\/\/(..)\.wikipedia\.org\/wiki\/(.+)/;
     let match = url.match(regex);
 
-    if (match && match.length == 3) {
+    if (match && match.length === 3) {
         let lang = match[1];
         let article = match[2];
 

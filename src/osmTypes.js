@@ -81,7 +81,7 @@ function findMatches(prefix, maxMatches) {
         /* if the (locale-case-normalized) title matches parts of the search
          * string, or as a convenience for expert mappers, if the search string
          * is prefix of the raw OSM tag value */
-        if (normalizedTitle.indexOf(normalized) != -1
+        if (normalizedTitle.indexOf(normalized) !== -1
             || (prefixLength >= 3 && parts[1].startsWith(prefix))) {
             numMatches++;
             matches.push({key: parts[0], value: parts[1], title: title});
@@ -153,7 +153,7 @@ const RecentTypesStore = new Lang.Class({
         }
 
         /* remove the type if it was already found in the list */
-        if (pos != -1)
+        if (pos !== -1)
             this._recentTypes.splice(pos, 1);
 
         this._recentTypes.unshift({key: key, value: value});

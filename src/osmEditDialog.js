@@ -384,7 +384,7 @@ const OSMEditDialog = new Lang.Class({
             let key = OSMTypes.OSM_TYPE_TAGS[i];
             let value = this._osmObject.get_tag(key);
 
-            if (value != null) {
+            if (value !== null) {
                 numTypeTags++;
                 lastTypeTag = key;
             }
@@ -401,7 +401,7 @@ const OSMEditDialog = new Lang.Class({
 
             /* if the type tag has a value we know of, and possible has
              * translations for */
-            if (typeTitle != null) {
+            if (typeTitle !== null) {
                 this._typeValueLabel.label = typeTitle;
                 this._typeLabel.visible = true;
                 this._typeButton.visible = true;
@@ -771,7 +771,7 @@ const OSMEditDialog = new Lang.Class({
             if (fieldSpec.subtags) {
                 let hasAny = false;
                 fieldSpec.subtags.forEach(function(tag) {
-                    if (osmObject.get_tag(tag) != null)
+                    if (osmObject.get_tag(tag) !== null)
                         hasAny = true;
                 });
 
@@ -783,7 +783,7 @@ const OSMEditDialog = new Lang.Class({
                 }
             } else {
                 value = osmObject.get_tag(fieldSpec.tag);
-                if (value != null)
+                if (value !== null)
                     this._addOSMField(fieldSpec, value);
             }
         }

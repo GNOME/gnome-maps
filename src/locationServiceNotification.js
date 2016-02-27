@@ -55,7 +55,7 @@ const LocationServiceNotification = new Lang.Class({
                 if (!this.parent)
                     return;
 
-                if (Application.geoclue.state == Geoclue.State.ON)
+                if (Application.geoclue.state === Geoclue.State.ON)
                     this.dismiss();
             }).bind(this));
 

@@ -105,7 +105,7 @@ function translateOpeningHours(string) {
 function _translateOpeningHoursPart(string) {
     let splitString = string.split(' ');
 
-    if (splitString.length == 2) {
+    if (splitString.length === 2) {
         let dayIntervalSpec =
             _translateOpeningHoursDayIntervalList(splitString[0].trim());
         let timeIntervalSpec =
@@ -268,7 +268,7 @@ function _translateOpeningHoursTimeInterval(string) {
 
     let splitString = string.split('-');
 
-    if (splitString.length == 2) {
+    if (splitString.length === 2) {
         let from = splitString[0].trim();
         let to = splitString[1].trim();
 
@@ -294,12 +294,11 @@ function _translateOpeningHoursTimeInterval(string) {
 function _translateOpeningHoursTime(string) {
     let splitString = string.split(':');
 
-    if (splitString.length == 2) {
-        let h = splitString[0];
-        let min = splitString[1];
+    if (splitString.length === 2) {
+        let [h, min] = splitString.map(Number);
 
         // if the parts aren't numbers
-        if (h % 1 !== 0 || min % 1 !== 0)
+        if (isNaN(h) || isNaN(min))
             return string;
 
         // if the hours or minute components are out of range
@@ -307,7 +306,7 @@ function _translateOpeningHoursTime(string) {
             return string;
 
         // should translate 24:00 to 00:00 to keep GDateTime happy
-        if (h == 24)
+        if (h === 24)
             h = 0;
 
         // create a dummy DateTime, we are just interested in the hour and

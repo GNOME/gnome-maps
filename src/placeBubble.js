@@ -205,7 +205,7 @@ const PlaceBubble = new Lang.Class({
             } else {
                 info.label = expandedContent[row].info;
             }
-            this._expandedContent.attach(info, col, row, col == 0 ? 2 : 1, 1);
+            this._expandedContent.attach(info, col, row, col === 0 ? 2 : 1, 1);
         }
 
         this._expandButton.visible = expandedContent.length > 0;
