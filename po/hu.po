@@ -9,16 +9,16 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-14 21:59+0000\n"
-"PO-Revision-Date: 2016-02-15 08:57+0100\n"
-"Last-Translator: Meskó Balázs <meskobalazs@gmail.com>\n"
-"Language-Team: Hungarian <openscope at gmail dot com>\n"
+"POT-Creation-Date: 2016-02-26 21:21+0000\n"
+"PO-Revision-Date: 2016-02-28 15:35+0100\n"
+"Last-Translator: Gabor Kelemen <kelemeng at ubuntu dot com>\n"
+"Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Lokalize 1.5\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid "GNOME Maps"
@@ -59,7 +59,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:86 ../src/mainWindow.js:400
+#: ../src/application.js:86 ../src/mainWindow.js:416
 msgid "Maps"
 msgstr "Térképek"
 
@@ -70,6 +70,10 @@ msgstr "Egyszerű térképalkalmazás"
 #: ../data/org.gnome.Maps.desktop.in.h:3
 msgid "Maps;"
 msgstr "Térképek;"
+
+#: ../data/org.gnome.Maps.desktop.in.h:4
+msgid "Allows your location to be shown on the map."
+msgstr "Lehetővé teszi a földrajzi helyének megjelenítését a térképen."
 
 #: ../data/org.gnome.Maps.gschema.xml.h:1
 msgid "last viewed location"
@@ -301,30 +305,35 @@ msgstr "Útvonaltervező ki- és bekapcsolása"
 
 #: ../data/ui/help-overlay.ui.h:5
 msgctxt "shortcut window"
+msgid "Print route"
+msgstr "Útvonal nyomtatása"
+
+#: ../data/ui/help-overlay.ui.h:6
+msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Kilépés"
 
-#: ../data/ui/help-overlay.ui.h:6
+#: ../data/ui/help-overlay.ui.h:7
 msgctxt "shortcut window"
 msgid "Map View"
 msgstr "Térkép nézet"
 
-#: ../data/ui/help-overlay.ui.h:7
+#: ../data/ui/help-overlay.ui.h:8
 msgctxt "shortcut window"
 msgid "Zoom in"
 msgstr "Nagyítás"
 
-#: ../data/ui/help-overlay.ui.h:8
+#: ../data/ui/help-overlay.ui.h:9
 msgctxt "shortcut window"
 msgid "Zoom out"
 msgstr "Kicsinyítés"
 
-#: ../data/ui/help-overlay.ui.h:9
+#: ../data/ui/help-overlay.ui.h:10
 msgctxt "shortcut window"
 msgid "Toggle scale"
 msgstr "Láthatóság ki- és bekapcsolása"
 
-#: ../data/ui/help-overlay.ui.h:10
+#: ../data/ui/help-overlay.ui.h:11
 msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Ugrás a jelenlegi helyre"
@@ -359,10 +368,14 @@ msgid "Toggle favorites"
 msgstr "Kedvencek ki- és bekapcsolása"
 
 #: ../data/ui/main-window.ui.h:6
+msgid "Print Route"
+msgstr "Útvonal nyomtatása"
+
+#: ../data/ui/main-window.ui.h:7
 msgid "Maps is offline!"
 msgstr "A Térképek kapcsolat nélküli!"
 
-#: ../data/ui/main-window.ui.h:7
+#: ../data/ui/main-window.ui.h:8
 msgid ""
 "Maps need an active internet connection to function properly, but one can't "
 "be found."
@@ -370,7 +383,7 @@ msgstr ""
 "A Térképeknek aktív internet-kapcsolat szükséges a megfelelő működéshez, de "
 "az nem található."
 
-#: ../data/ui/main-window.ui.h:8
+#: ../data/ui/main-window.ui.h:9
 msgid "Check your connection and proxy settings."
 msgstr "Ellenőrizze a kapcsolat és a proxy beállításait."
 
@@ -460,6 +473,24 @@ msgstr "Az OpenStreetMap fiókja aktív."
 msgid "Sign Out"
 msgstr "Kijelentkezés"
 
+#: ../data/ui/osm-edit-address.ui.h:1
+msgid "Street"
+msgstr "Utca"
+
+#: ../data/ui/osm-edit-address.ui.h:2
+msgid "House number"
+msgstr "Házszám"
+
+#: ../data/ui/osm-edit-address.ui.h:3
+#| msgid "Postal code: %s"
+msgid "Postal code"
+msgstr "Irányítószám"
+
+#. This is the place name as it would be written in a postal address (typically coming after the postal code)
+#: ../data/ui/osm-edit-address.ui.h:5
+msgid "City"
+msgstr "Város"
+
 #: ../data/ui/osm-edit-dialog.ui.h:1
 msgid "None"
 msgstr "Nincs"
@@ -476,7 +507,7 @@ msgstr "Szerkesztés az OpenStreetMap-en"
 msgid "Cancel"
 msgstr "Mégse"
 
-#: ../data/ui/osm-edit-dialog.ui.h:5 ../src/osmEditDialog.js:421
+#: ../data/ui/osm-edit-dialog.ui.h:5 ../src/osmEditDialog.js:470
 msgid "Next"
 msgstr "Következő"
 
@@ -594,7 +625,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Opcionális üzenet írása a következőbe való bejelentkezéshez: %s."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:458
+#: ../src/osmEditDialog.js:507
 msgid "An error has occurred"
 msgstr "Hiba történt"
 
@@ -628,7 +659,11 @@ msgstr "Cél hozzáadása"
 msgid "Route to here"
 msgstr "Útvonal ide"
 
-#: ../src/contextMenu.js:182
+#: ../src/contextMenu.js:130
+msgid "Nothing found here!"
+msgstr "Itt nincs semmi!"
+
+#: ../src/contextMenu.js:187
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -656,96 +691,96 @@ msgstr "Nincs megadva fájlnév"
 msgid "Unable to export view"
 msgstr "A nézet exportálása sikertelen"
 
-#: ../src/geoJSONSource.js:99
+#: ../src/geoJSONSource.js:98
 msgid "invalid coordinate"
 msgstr "érvénytelen koordináta"
 
-#: ../src/geoJSONSource.js:143 ../src/geoJSONSource.js:183
-#: ../src/geoJSONSource.js:198
+#: ../src/geoJSONSource.js:149 ../src/geoJSONSource.js:189
+#: ../src/geoJSONSource.js:204
 msgid "parse error"
 msgstr "feldolgozási hiba"
 
-#: ../src/geoJSONSource.js:177
+#: ../src/geoJSONSource.js:183
 msgid "unknown geometry"
 msgstr "ismeretlen geometria"
 
-#: ../src/geoJSONSource.js:211
-msgid "failed to load file"
-msgstr "nem sikerült betölteni a fájlt"
-
-#: ../src/mainWindow.js:348
+#: ../src/mainWindow.js:358
 msgid "Failed to connect to location service"
 msgstr "Nem sikerült kapcsolódni a helymeghatározó szolgáltatáshoz"
 
-#: ../src/mainWindow.js:353
+#: ../src/mainWindow.js:363
 msgid "Position not found"
 msgstr "Pozíció nem található"
 
-#: ../src/mainWindow.js:398
+#: ../src/mainWindow.js:414
 msgid "translator-credits"
 msgstr ""
 "Úr Balázs <urbalazs at gmail dot com>\n"
 "Meskó Balázs <meskobalazs at gmail dot com>"
 
-#: ../src/mainWindow.js:401
+#: ../src/mainWindow.js:417
 msgid "A map application for GNOME"
 msgstr "Térképalkalmazás a GNOME-hoz"
 
-#: ../src/mapView.js:233
+#: ../src/mapView.js:246
 msgid "File type is not supported"
 msgstr "A fájltípus nem támogatott"
 
-#: ../src/mapView.js:240
+#: ../src/mapView.js:253
 msgid "Failed to open layer"
 msgstr "A réteg megnyitása nem sikerült"
 
-#: ../src/mapView.js:276
+#: ../src/mapView.js:289
 msgid "Failed to open GeoURI"
 msgstr "A GeoURI megnyitása nem sikerült"
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: ../src/osmConnection.js:439
+#: ../src/osmConnection.js:443
 msgid "Incorrect user name or password"
 msgstr "Helytelen felhasználónév vagy jelszó"
 
-#: ../src/osmConnection.js:441
+#: ../src/osmConnection.js:445
 msgid "Success"
 msgstr "Sikerült"
 
-#: ../src/osmConnection.js:443
+#: ../src/osmConnection.js:447
 msgid "Bad request"
 msgstr "Rossz kérés"
 
-#: ../src/osmConnection.js:445
+#: ../src/osmConnection.js:449
 msgid "Object not found"
 msgstr "Nem található objektum"
 
-#: ../src/osmConnection.js:447
+#: ../src/osmConnection.js:451
 msgid "Conflict, someone else has just modified the object"
 msgstr "Konfliktus, valaki épp most módosította az objektumot"
 
-#: ../src/osmConnection.js:449
+#: ../src/osmConnection.js:453
 msgid "Object has been deleted"
 msgstr "Az objektum törlésre került"
 
-#: ../src/osmConnection.js:451
+#: ../src/osmConnection.js:455
 msgid "Way or relation refers to non-existing children"
 msgstr "Út vagy reláció nem létező gyermekekre hivatkozik"
 
-#: ../src/osmEditDialog.js:100
+#: ../src/osmEditDialog.js:103
 msgid "Name"
 msgstr "Név"
 
-#: ../src/osmEditDialog.js:103
+#: ../src/osmEditDialog.js:106
 msgid "The official name. This is typically what appears on signs."
 msgstr "A hivatalos név. Jellemzően ez jelenik meg a jelzáseken."
 
-#: ../src/osmEditDialog.js:106 ../src/placeBubble.js:164
+#: ../src/osmEditDialog.js:109
+msgid "Address"
+msgstr "Cím"
+
+#: ../src/osmEditDialog.js:117 ../src/placeBubble.js:165
 msgid "Website"
 msgstr "Weboldal"
 
-#: ../src/osmEditDialog.js:109
+#: ../src/osmEditDialog.js:120
 msgid ""
 "The official website. Try to use the most basic form of a URL i.e. http://"
 "example.com instead of http://example.com/index.html."
@@ -753,11 +788,11 @@ msgstr ""
 "A hivatalos honlap. Próbálja meg az URL alapvető formáját használni, pl. "
 "http://pelda.hu a http://pelda.hu/index.html helyett."
 
-#: ../src/osmEditDialog.js:114
+#: ../src/osmEditDialog.js:125
 msgid "Phone"
 msgstr "Telefon"
 
-#: ../src/osmEditDialog.js:118
+#: ../src/osmEditDialog.js:129
 msgid ""
 "Phone number. Use the international format, starting with a + sign. Beware "
 "of local privacy laws, especially for private phone numbers."
@@ -765,11 +800,11 @@ msgstr ""
 "Telefonszám. Használja a nemzetközi formátumot a + jellel. Figyeljen a helyi "
 "adatvédelmi törvényekre, különösen a magántelefonszámokra."
 
-#: ../src/osmEditDialog.js:123 ../src/placeBubble.js:170
+#: ../src/osmEditDialog.js:134 ../src/placeBubble.js:171
 msgid "Wikipedia"
 msgstr "Wikipédia"
 
-#: ../src/osmEditDialog.js:127
+#: ../src/osmEditDialog.js:138
 msgid ""
 "The format used should include the language code and the article title like "
 "”en:Article title”."
@@ -777,103 +812,103 @@ msgstr ""
 "A használt formátumban legyen benne a nyelvi kód és a cikk címe, mint "
 "például „hu:Cikk címe”."
 
-#: ../src/osmEditDialog.js:131
+#: ../src/osmEditDialog.js:142
 msgid "Opening hours"
 msgstr "Nyitva tartás"
 
-#: ../src/osmEditDialog.js:136
+#: ../src/osmEditDialog.js:147
 msgid "See the link in the label for help on format."
 msgstr "Kövesse a címke hivatkozását formázási segítségért."
 
-#: ../src/osmEditDialog.js:139
+#: ../src/osmEditDialog.js:150
 msgid "Population"
 msgstr "Népesség"
 
-#: ../src/osmEditDialog.js:144
+#: ../src/osmEditDialog.js:155
 msgid "Altitude"
 msgstr "Magasság"
 
-#: ../src/osmEditDialog.js:147
+#: ../src/osmEditDialog.js:158
 msgid "Elevation (height above sea level) of a point in metres."
 msgstr "Egy pont tengerszint feletti magassága méterben."
 
-#: ../src/osmEditDialog.js:150
+#: ../src/osmEditDialog.js:161
 msgid "Wheelchair access"
 msgstr "Kerekesszékes elérés"
 
-#: ../src/osmEditDialog.js:153 ../src/osmEditDialog.js:162
+#: ../src/osmEditDialog.js:164 ../src/osmEditDialog.js:173
 msgid "Yes"
 msgstr "Igen"
 
-#: ../src/osmEditDialog.js:154 ../src/osmEditDialog.js:163
+#: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
 msgid "No"
 msgstr "Nem"
 
-#: ../src/osmEditDialog.js:155
+#: ../src/osmEditDialog.js:166
 msgid "Limited"
 msgstr "Korlátozott"
 
-#: ../src/osmEditDialog.js:156
+#: ../src/osmEditDialog.js:167
 msgid "Designated"
 msgstr "Kijelölt"
 
-#: ../src/osmEditDialog.js:159
+#: ../src/osmEditDialog.js:170
 msgid "Internet access"
 msgstr "Internet-hozzáférés"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
 #.
-#: ../src/osmEditDialog.js:164 ../src/translations.js:341
+#: ../src/osmEditDialog.js:175 ../src/translations.js:341
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
 
-#: ../src/osmEditDialog.js:165
+#: ../src/osmEditDialog.js:176
 msgid "Wired"
 msgstr "Vezetékes"
 
-#: ../src/osmEditDialog.js:166
+#: ../src/osmEditDialog.js:177
 msgid "Terminal"
 msgstr "Terminál"
 
-#: ../src/osmEditDialog.js:167
+#: ../src/osmEditDialog.js:178
 msgid "Service"
 msgstr "Szolgáltatás"
 
-#: ../src/osmEditDialog.js:238
+#: ../src/osmEditDialog.js:287
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Hozzáadás az OpenStreetMap-hez"
 
-#: ../src/osmEditDialog.js:289
+#: ../src/osmEditDialog.js:338
 msgid "Select Type"
 msgstr "Válasszon egy típust"
 
-#: ../src/osmEditDialog.js:407
+#: ../src/osmEditDialog.js:456
 msgid "Done"
 msgstr "Kész"
 
-#: ../src/placeBubble.js:127
+#: ../src/placeBubble.js:128
 msgid "Population:"
 msgstr "Népesség:"
 
-#: ../src/placeBubble.js:133
+#: ../src/placeBubble.js:134
 msgid "Altitude:"
 msgstr "Magasság:"
 
-#: ../src/placeBubble.js:138
+#: ../src/placeBubble.js:139
 msgid "Opening hours:"
 msgstr "Nyitva tartás:"
 
-#: ../src/placeBubble.js:143
+#: ../src/placeBubble.js:144
 msgid "Internet access:"
 msgstr "Internet-hozzáférés:"
 
-#: ../src/placeBubble.js:148
+#: ../src/placeBubble.js:149
 msgid "Wheelchair access:"
 msgstr "Kerekesszékes elérés:"
 
-#: ../src/placeBubble.js:154 ../src/placeBubble.js:158
+#: ../src/placeBubble.js:155 ../src/placeBubble.js:159
 msgid "Phone:"
 msgstr "Telefon:"
 
@@ -921,6 +956,23 @@ msgstr "nem"
 msgid "designated"
 msgstr "kijelölt"
 
+#: ../src/printLayout.js:242
+#, javascript-format
+msgid "From %s to %s"
+msgstr "Ettől: %s, eddig: %s"
+
+#: ../src/printOperation.js:47
+msgid "Loading map tiles for printing"
+msgstr "Térképszelvények betöltése nyomtatáshoz"
+
+#: ../src/printOperation.js:48
+msgid "You can abort printing if this takes too long"
+msgstr "Megszakíthatja a nyomtatást, ha ez túl sokáig tart"
+
+#: ../src/printOperation.js:50
+msgid "Abort printing"
+msgstr "Nyomtatás megszakítása"
+
 #: ../src/routeService.js:90
 msgid "No route found."
 msgstr "Nem található útvonal."
@@ -929,13 +981,17 @@ msgstr "Nem található útvonal."
 msgid "Route request failed."
 msgstr "Az útvonalkérés nem sikerült."
 
-#: ../src/routeService.js:168
+#: ../src/routeService.js:170
 msgid "Start!"
 msgstr "Indulás!"
 
 #: ../src/sendToDialog.js:173
 msgid "Failed to open URI"
 msgstr "Az URI megnyitása nem sikerült"
+
+#: ../src/shapeLayer.js:93
+msgid "failed to load file"
+msgstr "nem sikerült betölteni a fájlt"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
 #: ../src/sidebar.js:210
@@ -1147,9 +1203,6 @@ msgstr "%f láb"
 #~ msgid "Show help"
 #~ msgstr "Súgó megjelenítése"
 
-#~ msgid "Postal code: %s"
-#~ msgstr "Irányítószám: %s"
-
 #~ msgid "Country code: %s"
 #~ msgstr "Országkód: %s"
 
@@ -1199,9 +1252,6 @@ msgstr "%f láb"
 
 #~ msgid "From"
 #~ msgstr "Innen"
-
-#~ msgid "Street"
-#~ msgstr "Utca"
 
 #~ msgid "Satellite"
 #~ msgstr "Műhold"
