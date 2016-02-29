@@ -23,6 +23,9 @@ const GObject = imports.gi.GObject;
 const Geocode = imports.gi.GeocodeGlib;
 const Lang = imports.lang;
 
+const Application = imports.application;
+const PlaceStore = imports.placeStore;
+
 const Transportation = {
     CAR:        0,
     BIKE:       1,
@@ -119,6 +122,13 @@ const RouteQuery = new Lang.Class({
 
         this._points.splice(index, 0, point);
         point.connect('notify::place', (function() {
+            let placeStore = Application.placeStore;
+            if (point.place) {
+                if (!placeStore.exists(point.place, null)) {
+                    placeStore.addPlace(point.place,
+                                        PlaceStore.PlaceType.RECENT);
+                }
+            }
             this.notify('points');
         }).bind(this));
         this.notify('points');
