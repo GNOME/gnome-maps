@@ -69,11 +69,19 @@ const MapView = new Lang.Class({
     Extends: GtkChamplain.Embed,
     Properties: {
         'routeVisible': GObject.ParamSpec.boolean('routeVisible',
-                                                   'Route visible',
-                                                   'Visibility of route layers',
-                                                   GObject.ParamFlags.READABLE |
-                                                   GObject.ParamFlags.WRITABLE,
-                                                   false)
+                                                  'Route visible',
+                                                  'Visibility of route layers',
+                                                  GObject.ParamFlags.READABLE |
+                                                  GObject.ParamFlags.WRITABLE,
+                                                  false)
+    },
+    Signals: {
+        'user-location-changed': {},
+        'going-to': {},
+        'going-to-user-location': {},
+        'gone-to-user-location': {},
+        'view-moved': {},
+        'marker-selected': { param_types: [Champlain.Marker] }
     },
 
     get routeVisible() {
@@ -488,4 +496,3 @@ const MapView = new Lang.Class({
         this.emit('marker-selected', selectedMarker);
     }
 });
-Utils.addSignalMethods(MapView.prototype);
