@@ -97,12 +97,15 @@ const PrintOperation = new Lang.Class({
     },
 
     _runPrintOperation: function() {
-        let result = this._operation.run(Gtk.PrintOperationAction.PRINT_DIALOG,
-                                         this._mainWindow, null);
-
-        if (result === Gtk.PrintOperationResult.ERROR) {
-            let error = this._operation.get_error();
-            Utils.debug('Failed to print: %s'.format(error));
+        try {
+            let result = this._operation.run(Gtk.PrintOperationAction.PRINT_DIALOG,
+                                             this._mainWindow, null);
+            if (result === Gtk.PrintOperationResult.ERROR) {
+                let error = this._operation.get_error();
+                Utils.debug('Failed to print: %s'.format(error));
+            }
+        } catch(e) {
+            Utils.debug('Failed to print: %s'.format(e.message));
         }
     }
 });
