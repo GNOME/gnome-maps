@@ -44,8 +44,10 @@ const SendToDialog = new Lang.Class({
     InternalChildren: [ 'list',
                         'weatherRow',
                         'weatherLabel',
+                        'weatherIcon',
                         'clocksRow',
                         'clocksLabel',
+                        'clocksIcon',
                         'browserRow',
                         'browserLabel',
                         'browserIcon',
@@ -96,15 +98,19 @@ const SendToDialog = new Lang.Class({
         let appWeather = this._checkWeather(weatherInfo);
         let appClocks = this._checkClocks(clocksInfo);
 
-        if (!appWeather)
+        if (!appWeather) {
             this._weatherRow.hide();
-        else
+        } else {
             this._weatherLabel.label = weatherInfo.get_name();
+            this._weatherIcon.icon_name = weatherInfo.get_icon().to_string();
+        }
 
-        if (!appClocks)
+        if (!appClocks) {
             this._clocksRow.hide();
-        else
+        } else {
             this._clocksLabel.label = clocksInfo.get_name();
+            this._clocksIcon.icon_name = clocksInfo.get_icon().to_string();
+        }
 
         if (!browserInfo) {
             this._browserRow.hide();
