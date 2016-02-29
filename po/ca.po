@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-23 08:00+0100\n"
+"POT-Creation-Date: 2016-02-29 22:01+0100\n"
 "PO-Revision-Date: 2016-01-22 17:21+0100\n"
 "Last-Translator: Carles Ferrando Garcia <carles.ferrando@gmail.com>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
@@ -58,7 +58,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:79 ../src/mainWindow.js:401
+#: ../src/application.js:86 ../src/mainWindow.js:416
 msgid "Maps"
 msgstr "Mapes"
 
@@ -69,6 +69,10 @@ msgstr "Una aplicació senzilla de mapes"
 #: ../data/org.gnome.Maps.desktop.in.h:3
 msgid "Maps;"
 msgstr "mapes;"
+
+#: ../data/org.gnome.Maps.desktop.in.h:4
+msgid "Allows your location to be shown on the map."
+msgstr ""
 
 #: ../data/org.gnome.Maps.gschema.xml.h:1
 msgid "last viewed location"
@@ -84,7 +88,7 @@ msgstr "Mida de la finestra"
 
 #: ../data/org.gnome.Maps.gschema.xml.h:4
 msgid "Window size (width and height)."
-msgstr "Mida de la finestra (amplada i alçada)"
+msgstr "Mida de la finestra (amplada i alçada)."
 
 #: ../data/org.gnome.Maps.gschema.xml.h:5
 msgid "Window position"
@@ -124,7 +128,7 @@ msgstr "Nombre de rutes recents que s'han d'emmagatzemar"
 
 #: ../data/org.gnome.Maps.gschema.xml.h:14
 msgid "Number of recently visited routes to store."
-msgstr "Nombre de rutes visitats recentment que s'han d'emmagatzemar."
+msgstr "Nombre de rutes visitades recentment que s'han d'emmagatzemar."
 
 #: ../data/org.gnome.Maps.gschema.xml.h:15
 msgid "Facebook check-in privacy setting"
@@ -184,18 +188,19 @@ msgstr ""
 "Indica si l'usuari ha iniciat la sessió per editar les dades d'OpenStreetMap."
 
 #: ../data/ui/app-menu.ui.h:1
-msgid "_Keyboard Shortcuts"
-msgstr "Dreceres de _teclat"
+#, fuzzy
+msgid "Set up OpenStreetMap Account"
+msgstr "Configura el compte d'OpenStreetMap"
 
 #: ../data/ui/app-menu.ui.h:2
-msgid "Setup OpenStreetMap Account"
-msgstr "Configura el compte d'OpenStreetMap"
+msgid "_Keyboard Shortcuts"
+msgstr "Dreceres de _teclat"
 
 #: ../data/ui/app-menu.ui.h:3
 msgid "About"
 msgstr "Quant a"
 
-#: ../data/ui/app-menu.ui.h:4 ../data/ui/help-overlay.ui.h:5
+#: ../data/ui/app-menu.ui.h:4
 msgid "Quit"
 msgstr "Surt"
 
@@ -212,7 +217,7 @@ msgid "Post on Twitter"
 msgstr "Penja al Twitter"
 
 #: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/export-view-dialog.ui.h:2
-#: ../data/ui/send-to-dialog.ui.h:2 ../data/ui/shape-layer-file-chooser.ui.h:2
+#: ../data/ui/send-to-dialog.ui.h:2 ../data/ui/shape-layer-file-chooser.ui.h:3
 msgid "_Cancel"
 msgstr "_Cancel·la"
 
@@ -261,6 +266,11 @@ msgstr "Copia la ubicació"
 msgid "Export As Image"
 msgstr "Exporta com imatge"
 
+#: ../data/ui/context-menu.ui.h:4
+#, fuzzy
+msgid "Add to OpenStreetMap"
+msgstr "Configura el compte d'OpenStreetMap"
+
 #: ../data/ui/export-view-dialog.ui.h:1
 msgid "Export view"
 msgstr "Exporta vista"
@@ -274,34 +284,67 @@ msgid "Include route and markers"
 msgstr ""
 
 #: ../data/ui/help-overlay.ui.h:1
+#, fuzzy
+msgctxt "shortcut window"
 msgid "General"
 msgstr "General"
 
 #: ../data/ui/help-overlay.ui.h:2
-msgid "Show help"
-msgstr "Mostra l'ajuda"
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Dreceres de _teclat"
 
 #: ../data/ui/help-overlay.ui.h:3
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Search"
 msgstr "Cerca"
 
-#: ../data/ui/help-overlay.ui.h:4 ../data/ui/main-window.ui.h:4
+#: ../data/ui/help-overlay.ui.h:4
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Toggle route planner"
 msgstr "Commuta el planificador de rutes"
 
+#: ../data/ui/help-overlay.ui.h:5
+msgctxt "shortcut window"
+msgid "Print route"
+msgstr ""
+
 #: ../data/ui/help-overlay.ui.h:6
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Surt"
+
+#: ../data/ui/help-overlay.ui.h:7
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Map View"
 msgstr "Vista de mapa"
 
-#: ../data/ui/help-overlay.ui.h:7
+#: ../data/ui/help-overlay.ui.h:8
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Zoom in"
 msgstr "Amplia"
 
-#: ../data/ui/help-overlay.ui.h:8
+#: ../data/ui/help-overlay.ui.h:9
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Zoom out"
 msgstr "Redueix"
 
-#: ../data/ui/help-overlay.ui.h:9 ../data/ui/main-window.ui.h:2
+#: ../data/ui/help-overlay.ui.h:10
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Toggle scale"
+msgstr "Commuta els favorits"
+
+#: ../data/ui/help-overlay.ui.h:11
+#, fuzzy
+msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Vés a la ubicació actual"
 
@@ -317,19 +360,31 @@ msgstr "Activeu els serveis d'ubicació per trobar-ne la vostra"
 msgid "Location Settings"
 msgstr "Paràmetres de la ubicació"
 
+#: ../data/ui/main-window.ui.h:2
+msgid "Go to current location"
+msgstr "Vés a la ubicació actual"
+
 #: ../data/ui/main-window.ui.h:3
 msgid "Choose map type"
 msgstr "Trieu el tipus de mapa"
+
+#: ../data/ui/main-window.ui.h:4
+msgid "Toggle route planner"
+msgstr "Commuta el planificador de rutes"
 
 #: ../data/ui/main-window.ui.h:5
 msgid "Toggle favorites"
 msgstr "Commuta els favorits"
 
 #: ../data/ui/main-window.ui.h:6
+msgid "Print Route"
+msgstr ""
+
+#: ../data/ui/main-window.ui.h:7
 msgid "Maps is offline!"
 msgstr "El Mapes està fora de línia!"
 
-#: ../data/ui/main-window.ui.h:7
+#: ../data/ui/main-window.ui.h:8
 msgid ""
 "Maps need an active internet connection to function properly, but one can't "
 "be found."
@@ -337,7 +392,7 @@ msgstr ""
 "El Mapes necessiten una connexió activa a Internet per funcionar "
 "correctament, però no se n'ha pogut trobar cap."
 
-#: ../data/ui/main-window.ui.h:8
+#: ../data/ui/main-window.ui.h:9
 msgid "Check your connection and proxy settings."
 msgstr "Comproveu la connexió i els paràmetres de l'intermediari."
 
@@ -373,7 +428,7 @@ msgid ""
 "OpenStreetMap account."
 msgstr ""
 "Ajuda per millorar el mapa, usant un \n"
-" compte d'OpenStreetMap"
+" compte d'OpenStreetMap."
 
 #: ../data/ui/osm-account-dialog.ui.h:5
 msgid "Email"
@@ -389,7 +444,7 @@ msgstr "Inicia la sessió"
 
 #: ../data/ui/osm-account-dialog.ui.h:8
 msgid "Don't have an account?"
-msgstr "No teniu un compte ?"
+msgstr "No teniu un compte?"
 
 #. The label should contain the link to the OSM reset password page with a translated title
 #: ../data/ui/osm-account-dialog.ui.h:10
@@ -408,7 +463,7 @@ msgstr "El codi de verificació no funciona, torneu-ho a provar."
 
 #: ../data/ui/osm-account-dialog.ui.h:13
 msgid "Enter verification code shown above"
-msgstr "Entreu el codi de verificació mostrat a sobre."
+msgstr "Introduïu el codi de verificació mostrat a sobre."
 
 #: ../data/ui/osm-account-dialog.ui.h:14
 msgid "Verify"
@@ -420,39 +475,80 @@ msgstr "<span weight=\"bold\" size=\"x-large\">Sessió iniciada</span>"
 
 #: ../data/ui/osm-account-dialog.ui.h:16
 msgid "Your OpenStreetMap account is active."
-msgstr "El vostre compte OpenStreetMap està actiu"
+msgstr "El vostre compte OpenStreetMap està actiu."
 
 #: ../data/ui/osm-account-dialog.ui.h:17
 msgid "Sign Out"
 msgstr "Surt de la sessió"
 
+#: ../data/ui/osm-edit-address.ui.h:1
+msgid "Street"
+msgstr ""
+
+#: ../data/ui/osm-edit-address.ui.h:2
+msgid "House number"
+msgstr ""
+
+#: ../data/ui/osm-edit-address.ui.h:3
+#, fuzzy
+msgid "Postal code"
+msgstr "Codi postal: %s"
+
+#. This is the place name as it would be written in a postal address (typically coming after the postal code)
+#: ../data/ui/osm-edit-address.ui.h:5
+msgid "City"
+msgstr ""
+
 #: ../data/ui/osm-edit-dialog.ui.h:1
-msgid "Edit Location"
-msgstr "Edita ubicació"
+msgid "None"
+msgstr ""
 
 #: ../data/ui/osm-edit-dialog.ui.h:2
+msgid "Recently Used"
+msgstr ""
+
+#: ../data/ui/osm-edit-dialog.ui.h:3
+#, fuzzy
+msgid "Edit on OpenStreetMap"
+msgstr "Configura el compte d'OpenStreetMap"
+
+#: ../data/ui/osm-edit-dialog.ui.h:4
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#: ../data/ui/osm-edit-dialog.ui.h:3 ../src/osmEditDialog.js:154
+#: ../data/ui/osm-edit-dialog.ui.h:5 ../src/osmEditDialog.js:470
 msgid "Next"
 msgstr "Següent"
 
-#: ../data/ui/search-popup.ui.h:1
+#: ../data/ui/place-bubble.ui.h:1
+#, fuzzy
+msgid "Show more information"
+msgstr "Mostra més resultats"
+
+#: ../data/ui/place-popover.ui.h:1
 msgid "Press enter to search"
 msgstr "Premeu retorn per cercar"
+
+#: ../data/ui/route-entry.ui.h:1
+msgid "Drag to change order of the route"
+msgstr ""
 
 #: ../data/ui/send-to-dialog.ui.h:1
 msgid "Open location"
 msgstr "Obre la ubicació"
 
-#: ../data/ui/send-to-dialog.ui.h:3
+#: ../data/ui/send-to-dialog.ui.h:3 ../data/ui/shape-layer-file-chooser.ui.h:2
 msgid "_Open"
 msgstr "_Obre"
 
 #: ../data/ui/shape-layer-file-chooser.ui.h:1
 msgid "Open Layer"
 msgstr ""
+
+#: ../data/ui/shape-layer-row.ui.h:1
+#, fuzzy
+msgid "Toggle visible"
+msgstr "Commuta els favorits"
 
 #: ../data/ui/sidebar.ui.h:1
 msgid "Route search by GraphHopper"
@@ -472,6 +568,15 @@ msgstr "Ubicació actual"
 msgid "Accuracy: %s"
 msgstr "Precisió: %s"
 
+#: ../data/ui/zoom-in-notification.ui.h:1
+#, fuzzy
+msgid "Zoom in to add location!"
+msgstr "Vés a la ubicació actual"
+
+#: ../data/ui/zoom-in-notification.ui.h:2
+msgid "OK"
+msgstr ""
+
 #: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
 #: ../lib/maps-file-tile-source.c:459
 msgid "Failed to find tile structure in directory"
@@ -484,13 +589,13 @@ msgstr "S'ha produït un error en analitzar el document XML"
 
 #: ../lib/maps-osm.c:252 ../lib/maps-osm.c:405
 msgid "Missing required attributes"
-msgstr "S'han perdut el atributs requerits"
+msgstr "S'han perdut els atributs requerits"
 
 #: ../lib/maps-osm.c:453
 msgid "Could not find OSM element"
 msgstr "No s'ha trobat l'element OSM"
 
-#: ../src/application.js:89
+#: ../src/application.js:102
 msgid "A path to a local tiles directory structure"
 msgstr "Un camí a l'estructura de caselles locals del directori"
 
@@ -537,7 +642,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Escriviu un missatge opcional per inscriure-us a %s."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:189
+#: ../src/osmEditDialog.js:507
 msgid "An error has occurred"
 msgstr "S'ha produït un error"
 
@@ -559,6 +664,28 @@ msgstr ""
 "Han caducat les credencials. Si us plau, obriu els comptes en línia per "
 "registrar-vos-hi i habilitar el compte"
 
+#: ../src/contextMenu.js:97
+msgid "Route from here"
+msgstr ""
+
+#: ../src/contextMenu.js:99
+msgid "Add destination"
+msgstr ""
+
+#: ../src/contextMenu.js:101
+msgid "Route to here"
+msgstr ""
+
+#: ../src/contextMenu.js:130
+msgid "Nothing found here!"
+msgstr ""
+
+#: ../src/contextMenu.js:187
+msgid ""
+"Location was added to the map, note that it may take a while before it shows "
+"on the map and in search results."
+msgstr ""
+
 #: ../src/exportViewDialog.js:156
 msgid "Filesystem is read only"
 msgstr "El sistema de fitxers és de sols lectura"
@@ -579,153 +706,228 @@ msgstr "No hi ha cap nom de fitxer especificat"
 msgid "Unable to export view"
 msgstr "No està habilitada l'exportació de la vista"
 
-#: ../src/geoJSONSource.js:99
+#: ../src/geoJSONSource.js:98
 msgid "invalid coordinate"
 msgstr "Coordenades invàlides"
 
-#: ../src/geoJSONSource.js:143 ../src/geoJSONSource.js:183
-#: ../src/geoJSONSource.js:198
+#: ../src/geoJSONSource.js:149 ../src/geoJSONSource.js:189
+#: ../src/geoJSONSource.js:204
 msgid "parse error"
 msgstr "Error d'anàlisi"
 
-#: ../src/geoJSONSource.js:177
+#: ../src/geoJSONSource.js:183
 msgid "unknown geometry"
 msgstr "Geometria desconeguda"
 
-#: ../src/geoJSONSource.js:211
-msgid "failed to load file"
-msgstr "S'ha produït un error en carregar el fitxer"
-
-#: ../src/mainWindow.js:349
+#: ../src/mainWindow.js:358
 msgid "Failed to connect to location service"
 msgstr "Ha fallat la connexió amb el servei d'ubicació"
 
-#: ../src/mainWindow.js:354
+#: ../src/mainWindow.js:363
 msgid "Position not found"
 msgstr "No s'ha trobat la posició."
 
-#: ../src/mainWindow.js:399
+#: ../src/mainWindow.js:414
 msgid "translator-credits"
 msgstr ""
 "Gil Forcada <gilforcada@guifi.net>\n"
 "Josep Sanchez Mesegue <papapep@gmx.com>\n"
 "Carles Ferrando <carles.ferrando@gmail.com>"
 
-#: ../src/mainWindow.js:402
+#: ../src/mainWindow.js:417
 msgid "A map application for GNOME"
 msgstr "Una aplicació de mapes pel GNOME"
 
-#: ../src/mapView.js:211
+#: ../src/mapView.js:246
 msgid "File type is not supported"
 msgstr ""
 
-#: ../src/mapView.js:218
+#: ../src/mapView.js:253
 #, fuzzy
 msgid "Failed to open layer"
 msgstr "S'ha produït un error en obrir URI"
 
-#: ../src/mapView.js:254
+#: ../src/mapView.js:289
 msgid "Failed to open GeoURI"
 msgstr "S'ha produït un error en obrir el fitxer GeoURI"
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: ../src/osmConnection.js:439
+#: ../src/osmConnection.js:443
 msgid "Incorrect user name or password"
 msgstr "Nom d'usuari o contrasenya incorrectes"
 
-#: ../src/osmConnection.js:441
+#: ../src/osmConnection.js:445
 msgid "Success"
 msgstr "Èxit"
 
-#: ../src/osmConnection.js:443
+#: ../src/osmConnection.js:447
 msgid "Bad request"
 msgstr "Sol·licitud incorrecta"
 
-#: ../src/osmConnection.js:445
+#: ../src/osmConnection.js:449
 msgid "Object not found"
 msgstr "No s'ha trobat l'objecte"
 
-#: ../src/osmConnection.js:447
+#: ../src/osmConnection.js:451
 msgid "Conflict, someone else has just modified the object"
 msgstr "Conflicte, algú altre acaba de modificar l'objecte"
 
-#: ../src/osmConnection.js:449
+#: ../src/osmConnection.js:453
 msgid "Object has been deleted"
 msgstr "L'objecte ha estat suprimit"
 
-#: ../src/osmConnection.js:451
+#: ../src/osmConnection.js:455
 msgid "Way or relation refers to non-existing children"
 msgstr "La via o relació es refereix a un fill que no existeix"
 
-#.
-#. * specification of OSM edit fields
-#. * name: the label for the edit field (translatable)
-#. * tag: the OSM tag key value
-#. * type: the field type (determines editing field type)
-#. * rewriteFunc: a rewrite function taking a string argument
-#. * (only used for TEXT fields)
-#.
-#: ../src/osmEditDialog.js:71
+#: ../src/osmEditDialog.js:103
 msgid "Name"
 msgstr "Nom"
 
-#: ../src/osmEditDialog.js:72 ../src/placeBubble.js:132
+#: ../src/osmEditDialog.js:106
+msgid "The official name. This is typically what appears on signs."
+msgstr ""
+
+#: ../src/osmEditDialog.js:109
+msgid "Address"
+msgstr ""
+
+#: ../src/osmEditDialog.js:117 ../src/placeBubble.js:165
+msgid "Website"
+msgstr ""
+
+#: ../src/osmEditDialog.js:120
+msgid ""
+"The official website. Try to use the most basic form of a URL i.e. http://"
+"example.com instead of http://example.com/index.html."
+msgstr ""
+
+#: ../src/osmEditDialog.js:125
+msgid "Phone"
+msgstr ""
+
+#: ../src/osmEditDialog.js:129
+msgid ""
+"Phone number. Use the international format, starting with a + sign. Beware "
+"of local privacy laws, especially for private phone numbers."
+msgstr ""
+
+#: ../src/osmEditDialog.js:134 ../src/placeBubble.js:171
 msgid "Wikipedia"
 msgstr "Viquipèdia"
 
-#: ../src/osmEditDialog.js:74
+#: ../src/osmEditDialog.js:138
+msgid ""
+"The format used should include the language code and the article title like "
+"”en:Article title”."
+msgstr ""
+
+#: ../src/osmEditDialog.js:142
+#, fuzzy
+msgid "Opening hours"
+msgstr "Hores d'obertura: %s"
+
+#: ../src/osmEditDialog.js:147
+msgid "See the link in the label for help on format."
+msgstr ""
+
+#: ../src/osmEditDialog.js:150
 msgid "Population"
 msgstr "Població"
 
-#: ../src/osmEditDialog.js:76
+#: ../src/osmEditDialog.js:155
+msgid "Altitude"
+msgstr ""
+
+#: ../src/osmEditDialog.js:158
+msgid "Elevation (height above sea level) of a point in metres."
+msgstr ""
+
+#: ../src/osmEditDialog.js:161
 msgid "Wheelchair access"
 msgstr "Accés amb cadira de rodes"
 
-#: ../src/osmEditDialog.js:140
-msgid "Done"
-msgstr "Fet"
-
-#: ../src/osmEditDialog.js:290
+#: ../src/osmEditDialog.js:164 ../src/osmEditDialog.js:173
 msgid "Yes"
 msgstr "Sí"
 
-#: ../src/osmEditDialog.js:291
+#: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
 msgid "No"
 msgstr "No"
 
-#: ../src/osmEditDialog.js:292
+#: ../src/osmEditDialog.js:166
 msgid "Limited"
 msgstr "Limitat"
 
-#: ../src/osmEditDialog.js:293
+#: ../src/osmEditDialog.js:167
 msgid "Designated"
 msgstr "Designat"
 
-#: ../src/placeBubble.js:113
-#, javascript-format
-msgid "Postal code: %s"
-msgstr "Codi postal: %s"
+#: ../src/osmEditDialog.js:170
+msgid "Internet access"
+msgstr ""
 
-#: ../src/placeBubble.js:115
-#, javascript-format
-msgid "Country code: %s"
-msgstr "Codi de país: %s"
+#. Translators:
+#. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
+#.
+#: ../src/osmEditDialog.js:175 ../src/translations.js:341
+msgid "Wi-Fi"
+msgstr ""
 
-#: ../src/placeBubble.js:124
-#, javascript-format
-msgid "Population: %s"
-msgstr "Població: %s"
+#: ../src/osmEditDialog.js:176
+msgid "Wired"
+msgstr ""
 
-#: ../src/placeBubble.js:127
-#, javascript-format
-msgid "Opening hours: %s"
+#: ../src/osmEditDialog.js:177
+msgid "Terminal"
+msgstr ""
+
+#: ../src/osmEditDialog.js:178
+msgid "Service"
+msgstr ""
+
+#: ../src/osmEditDialog.js:287
+#, fuzzy
+msgctxt "dialog title"
+msgid "Add to OpenStreetMap"
+msgstr "Configura el compte d'OpenStreetMap"
+
+#: ../src/osmEditDialog.js:338
+#, fuzzy
+msgid "Select Type"
+msgstr "Seleccioneu un lloc"
+
+#: ../src/osmEditDialog.js:456
+msgid "Done"
+msgstr "Fet"
+
+#: ../src/placeBubble.js:128
+#, fuzzy
+msgid "Population:"
+msgstr "Població"
+
+#: ../src/placeBubble.js:134
+msgid "Altitude:"
+msgstr ""
+
+#: ../src/placeBubble.js:139
+#, fuzzy
+msgid "Opening hours:"
 msgstr "Hores d'obertura: %s"
 
-#: ../src/placeBubble.js:137
-#, javascript-format
-msgid "Wheelchair access: %s"
-msgstr "Accés amb cadira de rodes: %s"
+#: ../src/placeBubble.js:144
+msgid "Internet access:"
+msgstr ""
+
+#: ../src/placeBubble.js:149
+#, fuzzy
+msgid "Wheelchair access:"
+msgstr "Accés amb cadira de rodes"
+
+#: ../src/placeBubble.js:155 ../src/placeBubble.js:159
+msgid "Phone:"
+msgstr ""
 
 #: ../src/placeEntry.js:190
 msgid "Failed to parse Geo URI"
@@ -734,7 +936,10 @@ msgstr "S'ha produït un error en analitzar Geo URI"
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: ../src/place.js:140
+#. Translators:
+#. * There is public internet access but the particular kind is unknown.
+#.
+#: ../src/place.js:177 ../src/translations.js:330
 msgid "yes"
 msgstr "sí"
 
@@ -743,7 +948,7 @@ msgstr "sí"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:147
+#: ../src/place.js:184
 msgid "limited"
 msgstr "limitat"
 
@@ -751,7 +956,11 @@ msgstr "limitat"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: ../src/place.js:153
+#. Translators:
+#. * no internet access is offered in a place where
+#. * someone might expect it.
+#.
+#: ../src/place.js:190 ../src/translations.js:336
 msgid "no"
 msgstr "no"
 
@@ -760,9 +969,26 @@ msgstr "no"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:160
+#: ../src/place.js:197
 msgid "designated"
 msgstr "designat"
+
+#: ../src/printLayout.js:242
+#, javascript-format
+msgid "From %s to %s"
+msgstr ""
+
+#: ../src/printOperation.js:47
+msgid "Loading map tiles for printing"
+msgstr ""
+
+#: ../src/printOperation.js:48
+msgid "You can abort printing if this takes too long"
+msgstr ""
+
+#: ../src/printOperation.js:50
+msgid "Abort printing"
+msgstr ""
 
 #: ../src/routeService.js:90
 msgid "No route found."
@@ -772,13 +998,17 @@ msgstr "No s'ha trobat cap ruta."
 msgid "Route request failed."
 msgstr "Ha fallat la sol·licitud de cercar la ruta."
 
-#: ../src/routeService.js:168
+#: ../src/routeService.js:170
 msgid "Start!"
 msgstr "Comença"
 
-#: ../src/sendToDialog.js:173
+#: ../src/sendToDialog.js:179
 msgid "Failed to open URI"
 msgstr "S'ha produït un error en obrir URI"
+
+#: ../src/shapeLayer.js:93
+msgid "failed to load file"
+msgstr "S'ha produït un error en carregar el fitxer"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
 #: ../src/sidebar.js:210
@@ -913,6 +1143,27 @@ msgctxt "time interval"
 msgid "%s-%s"
 msgstr "%s-%s"
 
+#. Translators:
+#. * This means a a place where you can plug in your laptop with ethernet.
+#.
+#: ../src/translations.js:346
+msgid "wired"
+msgstr ""
+
+#. Translators:
+#. * Like internet cafe or library where the computer is given.
+#.
+#: ../src/translations.js:351
+msgid "terminal"
+msgstr ""
+
+#. Translators:
+#. * This means there is personnel which helps you in case of problems.
+#.
+#: ../src/translations.js:356
+msgid "service"
+msgstr ""
+
 #. Translators: Accuracy of user location information
 #: ../src/utils.js:228
 msgid "Unknown"
@@ -961,6 +1212,21 @@ msgstr "%f milles"
 #, javascript-format
 msgid "%f ft"
 msgstr "%f peus"
+
+#~ msgid "Show help"
+#~ msgstr "Mostra l'ajuda"
+
+#~ msgid "Edit Location"
+#~ msgstr "Edita ubicació"
+
+#~ msgid "Country code: %s"
+#~ msgstr "Codi de país: %s"
+
+#~ msgid "Population: %s"
+#~ msgstr "Població: %s"
+
+#~ msgid "Wheelchair access: %s"
+#~ msgstr "Accés amb cadira de rodes: %s"
 
 #~ msgid "Failed to parse GeoJSON file"
 #~ msgstr "S'ha produït un error en analitzar el fitxer GeoJSON"
