@@ -136,9 +136,10 @@ const MainWindow = new Lang.Class({
         let sidebar = new Sidebar.Sidebar(this._mapView);
         Application.routeService.query.connect('notify',
                                                this._setRevealSidebar.bind(this, true));
-        sidebar.bind_property('reveal-child',
-                              this._mapView, 'routeVisible',
-                              GObject.BindingFlags.BIDIRECTIONAL);
+
+        this._toggleSidebarButton.bind_property('active',
+                                                this._mapView, 'routeVisible',
+                                                GObject.BindingFlags.BIDIRECTIONAL);
         this.application.bind_property('connected',
                                        sidebar, 'visible',
                                        GObject.BindingFlags.DEFAULT);
