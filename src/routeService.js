@@ -88,14 +88,22 @@ const GraphHopper = new Lang.Class({
                 let result = this._parseMessage(message);
                 if (!result) {
                     Application.notificationManager.showMessage(_("No route found."));
-                    this.route.reset();
+                    if (this.query.latest)
+                        this.query.latest.place = null;
+                    else
+                        this.route.reset();
+
                 } else {
                     let route = this._createRoute(result.paths[0]);
                     this.route.update(route);
                 }
             } catch(e) {
                 Application.notificationManager.showMessage(_("Route request failed."));
-                log(e);
+                Utils.debug(e);
+                if (this.query.latest)
+                    this.query.latest.place = null;
+                else
+                    this.route.reset();
             }
         }).bind(this));
     },

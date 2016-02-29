@@ -108,6 +108,10 @@ const RouteQuery = new Lang.Class({
         });
     },
 
+    get latest() {
+        return this._latest;
+    },
+
     _init: function(args) {
         this.parent(args);
         this._points = [];
@@ -130,16 +134,19 @@ const RouteQuery = new Lang.Class({
                 }
             }
             this.notify('points');
+            this._latest = point;
         }).bind(this));
+        this._latest = point;
         this.notify('points');
         this.emit('point-added', point, index);
-
         return point;
     },
 
     removePoint: function(index) {
         let removedPoints = this._points.splice(index, 1);
         let point = removedPoints ? removedPoints[0] : null;
+        if (point === this._latest)
+            this._latest = null;
 
         if (point) {
             this.notify('points');
@@ -162,6 +169,7 @@ const RouteQuery = new Lang.Class({
         this._points.forEach(function(point) {
             point.place = null;
         });
+        this._latest = null;
         this.thaw_notify();
         this.emit('reset');
     },

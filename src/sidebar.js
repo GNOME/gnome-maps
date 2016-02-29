@@ -155,7 +155,6 @@ const Sidebar = new Lang.Class({
 
         route.connect('reset', (function() {
             this._clearInstructions();
-            this._instructionStack.visible_child = this._instructionWindow;
 
             let length = this._entryList.get_children().length;
             for (let index = 1; index < (length - 1); index++) {
@@ -176,7 +175,6 @@ const Sidebar = new Lang.Class({
 
         route.connect('update', (function() {
             this._clearInstructions();
-            this._instructionStack.visible_child = this._instructionWindow;
 
             if (this._storeRouteTimeoutId)
                 this._cancelStore();
@@ -221,6 +219,7 @@ const Sidebar = new Lang.Class({
         let listBox = this._instructionList;
         listBox.forall(listBox.remove.bind(listBox));
 
+        this._instructionStack.visible_child = this._instructionWindow;
         this._timeInfo.label = '';
         this._distanceInfo.label = '';
     },
