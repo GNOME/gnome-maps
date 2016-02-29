@@ -21,34 +21,51 @@
  */
 
 const Lang = imports.lang;
+const Mainloop = imports.mainloop;
 
 const Notification = imports.notification;
+
+const _TIMEOUT = 5000; /* ms */
 
 const NotificationManager = new Lang.Class({
     Name: 'NotificationManager',
 
     _init: function(overlay) {
         this._overlay = overlay;
-        this._cache = {};
+    },
+
+    _add: function(notification) {
+        this._current = notification;
+        if (!(notification instanceof Notification.Plain)) {
+            let dismissId = notification.connect('dismissed', (function() {
+                this._overlay.remove(notification);
+                notification.disconnect(dismissId);
+                this._current = null;
+            }).bind(this));
+        }
+        this._overlay.add_overlay(notification);
+        Mainloop.timeout_add(_TIMEOUT, notification.dismiss.bind(notification));
+        notification.reveal();
     },
 
     showMessage: function (msg) {
         let notification = new Notification.Plain(msg);
-        notification.connect('dismissed',
-                             notification.destroy.bind(notification));
-        this._overlay.add_overlay(notification);
-        notification.reveal();
+        notification.connect('dismissed', (function() {
+            this._current = null;
+            notification.destroy();
+        }).bind(this));
+        this.showNotification(notification);
     },
 
     showNotification: function(notification) {
-        if(notification.get_parent() !== this._overlay) {
-            this._overlay.add_overlay(notification);
-
-            let dismissId = notification.connect('dismissed', (function() {
-                this._overlay.remove(notification);
-                notification.disconnect(dismissId);
-            }).bind(this));
+        if(notification.get_parent() === this._overlay)
+            return;
+        if (!this._current) {
+            this._add(notification);
+        } else {
+            this._current.dismiss();
+            Mainloop.timeout_add(this._current.transition_duration,
+                                 this._add.bind(this, notification));
         }
-        notification.reveal();
-    },
+    }
 });
