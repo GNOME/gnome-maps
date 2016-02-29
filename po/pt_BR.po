@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-21 16:02+0000\n"
-"PO-Revision-Date: 2016-02-21 13:43-0300\n"
+"POT-Creation-Date: 2016-02-27 21:22+0000\n"
+"PO-Revision-Date: 2016-02-27 19:08-0300\n"
 "Last-Translator: Artur de Aquino Morais <artur.morais93@outlook.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -437,6 +437,23 @@ msgstr "Sua conta do OpenStreetMap está ativa."
 msgid "Sign Out"
 msgstr "Sair"
 
+#: ../data/ui/osm-edit-address.ui.h:1
+msgid "Street"
+msgstr "Rua"
+
+#: ../data/ui/osm-edit-address.ui.h:2
+msgid "House number"
+msgstr "Número da residência"
+
+#: ../data/ui/osm-edit-address.ui.h:3
+msgid "Postal code"
+msgstr "Código postal"
+
+#. This is the place name as it would be written in a postal address (typically coming after the postal code)
+#: ../data/ui/osm-edit-address.ui.h:5
+msgid "City"
+msgstr "Cidade"
+
 #: ../data/ui/osm-edit-dialog.ui.h:1
 msgid "None"
 msgstr "Nenhum"
@@ -453,7 +470,7 @@ msgstr "Editar no OpenStreetMap"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: ../data/ui/osm-edit-dialog.ui.h:5 ../src/osmEditDialog.js:421
+#: ../data/ui/osm-edit-dialog.ui.h:5 ../src/osmEditDialog.js:470
 msgid "Next"
 msgstr "Próximo"
 
@@ -561,7 +578,7 @@ msgstr "Fazer check-in em %s"
 msgid "Write an optional message to check in to %s."
 msgstr "Escreva uma mensagem opcional para fazer check-in em %s."
 
-#: ../src/checkInDialog.js:289 ../src/checkIn.js:153 ../src/osmEditDialog.js:458
+#: ../src/checkInDialog.js:289 ../src/checkIn.js:153 ../src/osmEditDialog.js:507
 msgid "An error has occurred"
 msgstr "Um erro foi encontrado"
 
@@ -619,15 +636,15 @@ msgstr "Nenhum nome de arquivo foi especificado"
 msgid "Unable to export view"
 msgstr "Não foi possível exportar a visão"
 
-#: ../src/geoJSONSource.js:97
+#: ../src/geoJSONSource.js:98
 msgid "invalid coordinate"
 msgstr "coordenada inválida"
 
-#: ../src/geoJSONSource.js:141 ../src/geoJSONSource.js:181 ../src/geoJSONSource.js:196
+#: ../src/geoJSONSource.js:149 ../src/geoJSONSource.js:189 ../src/geoJSONSource.js:204
 msgid "parse error"
 msgstr "erro de análise"
 
-#: ../src/geoJSONSource.js:175
+#: ../src/geoJSONSource.js:183
 msgid "unknown geometry"
 msgstr "geometria desconhecida"
 
@@ -649,153 +666,157 @@ msgstr ""
 msgid "A map application for GNOME"
 msgstr "Um aplicativo de mapas para o GNOME"
 
-#: ../src/mapView.js:237
+#: ../src/mapView.js:246
 msgid "File type is not supported"
 msgstr "Não há suporte ao tipo de arquivo"
 
-#: ../src/mapView.js:244
+#: ../src/mapView.js:253
 msgid "Failed to open layer"
 msgstr "Falha ao abrir camada"
 
-#: ../src/mapView.js:280
+#: ../src/mapView.js:289
 msgid "Failed to open GeoURI"
 msgstr "Falha ao analisar o URI geo"
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: ../src/osmConnection.js:442
+#: ../src/osmConnection.js:443
 msgid "Incorrect user name or password"
 msgstr "Nome de usuário ou senha incorretos"
 
-#: ../src/osmConnection.js:444
+#: ../src/osmConnection.js:445
 msgid "Success"
 msgstr "Sucesso"
 
-#: ../src/osmConnection.js:446
+#: ../src/osmConnection.js:447
 msgid "Bad request"
 msgstr "Solicitação inválida"
 
-#: ../src/osmConnection.js:448
+#: ../src/osmConnection.js:449
 msgid "Object not found"
 msgstr "Objeto não encontrado"
 
-#: ../src/osmConnection.js:450
+#: ../src/osmConnection.js:451
 msgid "Conflict, someone else has just modified the object"
 msgstr "Conflito, alguém acabou de modificar o objeto"
 
-#: ../src/osmConnection.js:452
+#: ../src/osmConnection.js:453
 msgid "Object has been deleted"
 msgstr "O objeto foi excluído"
 
-#: ../src/osmConnection.js:454
+#: ../src/osmConnection.js:455
 msgid "Way or relation refers to non-existing children"
 msgstr "Caminho ou relacionamento faz referência a filho não existente"
 
-#: ../src/osmEditDialog.js:100
+#: ../src/osmEditDialog.js:103
 msgid "Name"
 msgstr "Nome"
 
-#: ../src/osmEditDialog.js:103
+#: ../src/osmEditDialog.js:106
 msgid "The official name. This is typically what appears on signs."
 msgstr "O nome oficial. Isto é tipicamente o que aparece em sinais."
 
-#: ../src/osmEditDialog.js:106 ../src/placeBubble.js:165
+#: ../src/osmEditDialog.js:109
+msgid "Address"
+msgstr "Endereço"
+
+#: ../src/osmEditDialog.js:117 ../src/placeBubble.js:165
 msgid "Website"
 msgstr "Site"
 
-#: ../src/osmEditDialog.js:109
+#: ../src/osmEditDialog.js:120
 msgid "The official website. Try to use the most basic form of a URL i.e. http://example.com instead of http://example.com/index.html."
 msgstr "O site oficial. Tente usar o formulário mais básico de um URL i.e. http://exemplo.com.br em vez de http://exemplo.com.br/index.html."
 
-#: ../src/osmEditDialog.js:114
+#: ../src/osmEditDialog.js:125
 msgid "Phone"
 msgstr "Telefone"
 
-#: ../src/osmEditDialog.js:118
+#: ../src/osmEditDialog.js:129
 msgid "Phone number. Use the international format, starting with a + sign. Beware of local privacy laws, especially for private phone numbers."
 msgstr "Número de telefone. Use o formato internacional, começando com um sinal de +. Cuidado com as leis de privacidade locais, especialmente para números de telefone privado."
 
-#: ../src/osmEditDialog.js:123 ../src/placeBubble.js:171
+#: ../src/osmEditDialog.js:134 ../src/placeBubble.js:171
 msgid "Wikipedia"
 msgstr "Wikipédia"
 
-#: ../src/osmEditDialog.js:127
+#: ../src/osmEditDialog.js:138
 msgid "The format used should include the language code and the article title like ”en:Article title”."
 msgstr "O formato utilizado deve incluir o código do idioma e o título do artigo como \"pt_BR: Título do artigo\"."
 
-#: ../src/osmEditDialog.js:131
+#: ../src/osmEditDialog.js:142
 msgid "Opening hours"
 msgstr "Horário de funcionamento"
 
-#: ../src/osmEditDialog.js:136
+#: ../src/osmEditDialog.js:147
 msgid "See the link in the label for help on format."
 msgstr "Veja o link na etiqueta para obter ajuda sobre o formato."
 
-#: ../src/osmEditDialog.js:139
+#: ../src/osmEditDialog.js:150
 msgid "Population"
 msgstr "População"
 
-#: ../src/osmEditDialog.js:144
+#: ../src/osmEditDialog.js:155
 msgid "Altitude"
 msgstr "Altitude"
 
-#: ../src/osmEditDialog.js:147
+#: ../src/osmEditDialog.js:158
 msgid "Elevation (height above sea level) of a point in metres."
 msgstr "Elevação (altura acima do nível do mar) de um ponto em metros."
 
-#: ../src/osmEditDialog.js:150
+#: ../src/osmEditDialog.js:161
 msgid "Wheelchair access"
 msgstr "Acesso a cadeirantes"
 
-#: ../src/osmEditDialog.js:153 ../src/osmEditDialog.js:162
+#: ../src/osmEditDialog.js:164 ../src/osmEditDialog.js:173
 msgid "Yes"
 msgstr "Sim"
 
-#: ../src/osmEditDialog.js:154 ../src/osmEditDialog.js:163
+#: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
 msgid "No"
 msgstr "Não"
 
-#: ../src/osmEditDialog.js:155
+#: ../src/osmEditDialog.js:166
 msgid "Limited"
 msgstr "Limitado"
 
-#: ../src/osmEditDialog.js:156
+#: ../src/osmEditDialog.js:167
 msgid "Designated"
 msgstr "Designado"
 
-#: ../src/osmEditDialog.js:159
+#: ../src/osmEditDialog.js:170
 msgid "Internet access"
 msgstr "Acesso à Internet"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
 #.
-#: ../src/osmEditDialog.js:164 ../src/translations.js:341
+#: ../src/osmEditDialog.js:175 ../src/translations.js:341
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
 
-#: ../src/osmEditDialog.js:165
+#: ../src/osmEditDialog.js:176
 msgid "Wired"
 msgstr "Cabeada"
 
-#: ../src/osmEditDialog.js:166
+#: ../src/osmEditDialog.js:177
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../src/osmEditDialog.js:167
+#: ../src/osmEditDialog.js:178
 msgid "Service"
 msgstr "Serviço"
 
-#: ../src/osmEditDialog.js:238
+#: ../src/osmEditDialog.js:287
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Adicionar ao OpenStreetMap"
 
-#: ../src/osmEditDialog.js:289
+#: ../src/osmEditDialog.js:338
 msgid "Select Type"
 msgstr "Selecione um tipo"
 
-#: ../src/osmEditDialog.js:407
+#: ../src/osmEditDialog.js:456
 msgid "Done"
 msgstr "Concluído"
 
@@ -867,7 +888,7 @@ msgstr "não"
 msgid "designated"
 msgstr "designado"
 
-#: ../src/printLayout.js:225
+#: ../src/printLayout.js:242
 #, javascript-format
 msgid "From %s to %s"
 msgstr "De %s até %s"
@@ -892,7 +913,7 @@ msgstr "Nenhuma rota encontrada."
 msgid "Route request failed."
 msgstr "Solicitação da rota falhou."
 
-#: ../src/routeService.js:168
+#: ../src/routeService.js:170
 msgid "Start!"
 msgstr "Começar!"
 
@@ -1122,9 +1143,6 @@ msgstr "%f pés"
 #~ msgid "Failed to parse GeoJSON file"
 #~ msgstr "Falha ao analisar arquivo GeoJSON"
 
-#~ msgid "Postal code: %s"
-#~ msgstr "Código postal: %s"
-
 #~ msgid "Country code: %s"
 #~ msgstr "Código do país: %s"
 
@@ -1166,9 +1184,6 @@ msgstr "%f pés"
 
 #~ msgid " km<sup>2</sup>"
 #~ msgstr " km<sup>2</sup>"
-
-#~ msgid "Street"
-#~ msgstr "Rua"
 
 #~ msgid "Satellite"
 #~ msgstr "Satélite"
