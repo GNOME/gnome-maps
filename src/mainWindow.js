@@ -353,21 +353,29 @@ const MainWindow = new Lang.Class({
 
     _onGotoUserLocationActivate: function() {
         let message;
-        switch(Application.geoclue.state) {
-        case Geoclue.State.FAILED:
-            message = _("Failed to connect to location service");
-            Application.notificationManager.showMessage(message);
-            break;
 
-        case Geoclue.State.OFF:
-            let notification = this._getLocationServiceNotification();
-            Application.notificationManager.showNotification(notification);
-            break;
-
-        default:
+        if (Application.geoclue.state === Geoclue.State.ON) {
             this._mapView.gotoUserLocation(true);
-            break;
+            return;
         }
+
+        Application.geoclue.start((function() {
+            switch(Application.geoclue.state) {
+            case Geoclue.State.FAILED:
+                message = _("Failed to connect to location service");
+                Application.notificationManager.showMessage(message);
+                break;
+
+            case Geoclue.State.DENIED:
+                let notification = this._getLocationServiceNotification();
+                Application.notificationManager.showNotification(notification);
+                break;
+
+            default:
+                this._mapView.gotoUserLocation(true);
+                break;
+            }
+        }).bind(this));
     },
 
     _printRouteActivate: function() {

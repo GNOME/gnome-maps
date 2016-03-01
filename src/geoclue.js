@@ -21,6 +21,7 @@
 
 const GObject = imports.gi.GObject;
 const GClue = imports.gi.Geoclue;
+const Gio = imports.gi.Gio;
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
@@ -32,11 +33,9 @@ const Utils = imports.utils;
 const State = {
     INITIAL: 0,
     ON: 1,
-    OFF: 2,
+    DENIED: 2,
     FAILED: 3
 };
-
-const _LOCATION_SETTINGS = 'org.gnome.system.location';
 
 const Geoclue = new Lang.Class({
     Name: 'Geoclue',
@@ -69,57 +68,50 @@ const Geoclue = new Lang.Class({
         this.place = null;
         this._state = State.INITIAL;
 
-        // Check the system Location settings
-        this._locationSettings = Settings.getSettings(_LOCATION_SETTINGS);
-        if (this._locationSettings) {
-            this._locationSettings.connect('changed::enabled',
-                                           this._updateFromSettings.bind(this));
-            this._updateFromSettings();
-        } else {
-            this._initLocationService();
-        }
+        this.start(null);
     },
 
-    _updateFromSettings: function() {
-        if (this._locationSettings.get('enabled')) {
-            if (this._state !== State.ON)
-                Mainloop.idle_add(this._initLocationService.bind(this));
-        } else {
-            this.state = State.OFF;
-        }
-    },
+    start: function(callback) {
+        let id = 'org.gnome.Maps';
+        let level = GClue.AccuracyLevel.EXACT;
 
-    _initLocationService: function() {
-        GClue.Simple.new("org.gnome.Maps",
-                         GClue.AccuracyLevel.EXACT,
-                         null,
-                         this._onSimpleReady.bind(this));
-    },
+        GClue.Simple.new(id, level, null, (function(object, result) {
+            try {
+                this._simple = GClue.Simple.new_finish(result);
+            }
+            catch (e) {
+                Utils.debug("GeoClue2 service: " + e.message);
+                if (e.matches(Gio.DBusError, Gio.DBusError.ACCESS_DENIED))
+                    this.state = State.DENIED;
+                else
+                    this.state = State.FAILED;
+                if (callback)
+                    callback(false);
+                return;
+            }
 
-    _onSimpleReady: function(object, result) {
-        try {
-            this._simple = GClue.Simple.new_finish(result);
-        }
-        catch (e) {
-            Utils.debug("Failed to connect to GeoClue2 service: " + e.message);
-            this.state = State.FAILED;
-            return;
-        }
+            this._simple.connect('notify::location',
+                           this._onLocationNotify.bind(this));
+            this._simple.client.connect('notify::active', (function() {
+                this.state = this._simple.client.active ? State.ON : State.DENIED;
+            }).bind(this));
 
-        this._notifyId = this._simple.connect('notify::location',
-                                              this._onLocationNotify.bind(this));
-        this.state = State.ON;
-
-        this._onLocationNotify(this._simple);
+            this.state = State.ON;
+            this._onLocationNotify(this._simple);
+            if (callback)
+                callback(true);
+        }).bind(this));
     },
 
     _onLocationNotify: function(simple) {
         let geoclueLocation = simple.get_location();
-        let location = new Location.Location({ latitude: geoclueLocation.latitude,
-                                               longitude: geoclueLocation.longitude,
-                                               accuracy: geoclueLocation.accuracy,
-                                               heading: geoclueLocation.heading,
-                                               description: geoclueLocation.description });
+        let location = new Location.Location({
+            latitude: geoclueLocation.latitude,
+            longitude: geoclueLocation.longitude,
+            accuracy: geoclueLocation.accuracy,
+            heading: geoclueLocation.heading,
+            description: geoclueLocation.description
+        });
         this._updateLocation(location);
     },
 
