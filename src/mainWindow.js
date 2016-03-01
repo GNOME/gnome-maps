@@ -359,11 +359,6 @@ const MainWindow = new Lang.Class({
             Application.notificationManager.showMessage(message);
             break;
 
-        case Geoclue.State.TIMEOUT:
-            message = _("Position not found");
-            Application.notificationManager.showMessage(message);
-            break;
-
         case Geoclue.State.OFF:
             let notification = this._getLocationServiceNotification();
             Application.notificationManager.showNotification(notification);

@@ -33,11 +33,9 @@ const State = {
     INITIAL: 0,
     ON: 1,
     OFF: 2,
-    FAILED: 3,
-    TIMEOUT: 4
+    FAILED: 3
 };
 
-const _TIMEOUT = 5000;
 const _LOCATION_SETTINGS = 'org.gnome.system.location';
 
 const Geoclue = new Lang.Class({
@@ -53,7 +51,7 @@ const Geoclue = new Lang.Class({
                                        GObject.ParamFlags.READABLE |
                                        GObject.ParamFlags.WRITABLE,
                                        State.INITIAL,
-                                       State.TIMEOUT,
+                                       State.FAILED,
                                        State.INITIAL)
     },
 
@@ -70,7 +68,6 @@ const Geoclue = new Lang.Class({
         this.parent();
         this.place = null;
         this._state = State.INITIAL;
-        this._timeoutId = 0;
 
         // Check the system Location settings
         this._locationSettings = Settings.getSettings(_LOCATION_SETTINGS);
@@ -93,19 +90,6 @@ const Geoclue = new Lang.Class({
     },
 
     _initLocationService: function() {
-        if (this._timeoutId !== 0)
-            Mainloop.source_remove(this._timeoutId);
-
-        this._timeoutId = Mainloop.timeout_add(_TIMEOUT, (function() {
-            if (this.state !== State.ON || this.state !== State.OFF) {
-                this.state = State.TIMEOUT;
-                return true;
-            }
-
-            this._timeoutId = 0;
-            return false;
-        }).bind(this));
-
         GClue.Simple.new("org.gnome.Maps",
                          GClue.AccuracyLevel.EXACT,
                          null,
@@ -124,10 +108,6 @@ const Geoclue = new Lang.Class({
 
         this._notifyId = this._simple.connect('notify::location',
                                               this._onLocationNotify.bind(this));
-        if (this._timeoutId !== 0) {
-            Mainloop.source_remove(this._timeoutId);
-            this._timeoutId = 0;
-        }
         this.state = State.ON;
 
         this._onLocationNotify(this._simple);
