@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-23 20:00+0100\n"
-"PO-Revision-Date: 2016-02-23 20:00+0200\n"
+"POT-Creation-Date: 2016-03-02 10:18+0100\n"
+"PO-Revision-Date: 2016-03-02 10:18+0200\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
 "Language-Team: gnome-l10n-gl@gnome.org\n"
 "Language: gl\n"
@@ -58,7 +58,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:86 ../src/mainWindow.js:416
+#: ../src/application.js:86 ../src/mainWindow.js:420
 msgid "Maps"
 msgstr "Mapas"
 
@@ -468,6 +468,23 @@ msgstr "A súa conta de OpenStreetMap está activa."
 msgid "Sign Out"
 msgstr "Pechar a sesión"
 
+#: ../data/ui/osm-edit-address.ui.h:1
+msgid "Street"
+msgstr "Rúa"
+
+#: ../data/ui/osm-edit-address.ui.h:2
+msgid "House number"
+msgstr "Número de casa"
+
+#: ../data/ui/osm-edit-address.ui.h:3
+msgid "Postal code"
+msgstr "Código postal"
+
+#. This is the place name as it would be written in a postal address (typically coming after the postal code)
+#: ../data/ui/osm-edit-address.ui.h:5
+msgid "City"
+msgstr "Cidade"
+
 #: ../data/ui/osm-edit-dialog.ui.h:1
 msgid "None"
 msgstr "Ningún"
@@ -484,7 +501,7 @@ msgstr "Editar en OpenStreetMap"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: ../data/ui/osm-edit-dialog.ui.h:5 ../src/osmEditDialog.js:421
+#: ../data/ui/osm-edit-dialog.ui.h:5 ../src/osmEditDialog.js:470
 msgid "Next"
 msgstr "Seguinte"
 
@@ -495,6 +512,10 @@ msgstr "Mostrar máis información"
 #: ../data/ui/place-popover.ui.h:1
 msgid "Press enter to search"
 msgstr "Prema intro para buscar"
+
+#: ../data/ui/route-entry.ui.h:1
+msgid "Drag to change order of the route"
+msgstr "Arrastrar a orde de cambio de ruta"
 
 #: ../data/ui/send-to-dialog.ui.h:1
 msgid "Open location"
@@ -520,7 +541,7 @@ msgstr "Búsqueda de ruta por GraphHopper"
 msgid "Show more results"
 msgstr "Mostrar máis resultados"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:148
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:120
 msgid "Current location"
 msgstr "Localización actual"
 
@@ -602,7 +623,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Escriba unha mensaxe opcional para rexistrarse en %s."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:458
+#: ../src/osmEditDialog.js:507
 msgid "An error has occurred"
 msgstr "Produciuse un erro"
 
@@ -669,90 +690,90 @@ msgstr "Nome de ficheiro non especificado"
 msgid "Unable to export view"
 msgstr "Non foi posíbel exportar a vista"
 
-#: ../src/geoJSONSource.js:97
+#: ../src/geoJSONSource.js:98
 msgid "invalid coordinate"
 msgstr "coordenada non válida"
 
-#: ../src/geoJSONSource.js:141 ../src/geoJSONSource.js:181
-#: ../src/geoJSONSource.js:196
+#: ../src/geoJSONSource.js:149 ../src/geoJSONSource.js:189
+#: ../src/geoJSONSource.js:204
 msgid "parse error"
 msgstr "erro na análise"
 
-#: ../src/geoJSONSource.js:175
+#: ../src/geoJSONSource.js:183
 msgid "unknown geometry"
 msgstr "xeometría descoñecida"
 
-#: ../src/mainWindow.js:358
+#: ../src/mainWindow.js:366
 msgid "Failed to connect to location service"
 msgstr "Produciuse un fallo ao conectar co servizo de localización"
 
-#: ../src/mainWindow.js:363
-msgid "Position not found"
-msgstr "Posición non atopada"
-
-#: ../src/mainWindow.js:414
+#: ../src/mainWindow.js:418
 msgid "translator-credits"
 msgstr "Fran Dieguez <frandieguez@gnome.org>, 2013-2016."
 
-#: ../src/mainWindow.js:417
+#: ../src/mainWindow.js:421
 msgid "A map application for GNOME"
 msgstr "Un aplicativo de mapas para GNOME"
 
-#: ../src/mapView.js:237
+#: ../src/mapView.js:254
 msgid "File type is not supported"
 msgstr "Tipo de ficheiro non admitido"
 
-#: ../src/mapView.js:244
+#: ../src/mapView.js:261
 msgid "Failed to open layer"
 msgstr "Produciuse un fallo ao abrir a capa"
 
-#: ../src/mapView.js:280
+#: ../src/mapView.js:297
 msgid "Failed to open GeoURI"
 msgstr "Produciuse un fallo ao abrir o GeoURI"
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: ../src/osmConnection.js:442
+#: ../src/osmConnection.js:443
 msgid "Incorrect user name or password"
 msgstr "Nome de usuario ou contrasinal non correcto"
 
-#: ../src/osmConnection.js:444
+#: ../src/osmConnection.js:445
 msgid "Success"
 msgstr "Éxito"
 
-#: ../src/osmConnection.js:446
+#: ../src/osmConnection.js:447
 msgid "Bad request"
 msgstr "Solicitude non válida"
 
-#: ../src/osmConnection.js:448
+#: ../src/osmConnection.js:449
 msgid "Object not found"
 msgstr "O obxecto non se atopou"
 
-#: ../src/osmConnection.js:450
+#: ../src/osmConnection.js:451
 msgid "Conflict, someone else has just modified the object"
 msgstr "Conflicto, alguén modificou o obxecto"
 
-#: ../src/osmConnection.js:452
+#: ../src/osmConnection.js:453
 msgid "Object has been deleted"
 msgstr "O obxecto foi eliminado"
 
-#: ../src/osmConnection.js:454
+#: ../src/osmConnection.js:455
 msgid "Way or relation refers to non-existing children"
 msgstr "A forma ou relación refírese aos fillos non existentes"
 
-#: ../src/osmEditDialog.js:100
+#: ../src/osmEditDialog.js:103
 msgid "Name"
 msgstr "Nome"
 
-#: ../src/osmEditDialog.js:103
+#: ../src/osmEditDialog.js:106
 msgid "The official name. This is typically what appears on signs."
 msgstr "O nome oficial. Isto é o aparece normalmente nos sinais."
 
-#: ../src/osmEditDialog.js:106 ../src/placeBubble.js:165
+#: ../src/osmEditDialog.js:109
+msgid "Address"
+msgstr "Enderezo"
+
+#: ../src/osmEditDialog.js:117 ../src/placeBubble.js:165
 msgid "Website"
 msgstr "Sitio web"
 
-#: ../src/osmEditDialog.js:109
+#: ../src/osmEditDialog.js:120
 msgid ""
 "The official website. Try to use the most basic form of a URL i.e. http://"
 "example.com instead of http://example.com/index.html."
@@ -760,11 +781,11 @@ msgstr ""
 "O sitio web oficial. Tente usar o formulario máis básico de URL p.ex. http://"
 "exemplo.gal no lugar de http://exemplo.gal/index.html."
 
-#: ../src/osmEditDialog.js:114
+#: ../src/osmEditDialog.js:125
 msgid "Phone"
 msgstr "Teléfono"
 
-#: ../src/osmEditDialog.js:118
+#: ../src/osmEditDialog.js:129
 msgid ""
 "Phone number. Use the international format, starting with a + sign. Beware "
 "of local privacy laws, especially for private phone numbers."
@@ -772,11 +793,11 @@ msgstr ""
 "Número de teléfono. Use o formato internaciona, comezando polo signo +. Teña "
 "en conta as leis de privacidade locais."
 
-#: ../src/osmEditDialog.js:123 ../src/placeBubble.js:171
+#: ../src/osmEditDialog.js:134 ../src/placeBubble.js:171
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: ../src/osmEditDialog.js:127
+#: ../src/osmEditDialog.js:138
 msgid ""
 "The format used should include the language code and the article title like "
 "”en:Article title”."
@@ -784,79 +805,79 @@ msgstr ""
 "O formato usado debería incluír o código de idioma e o título do artigo como "
 "«gl:Título do artigo»."
 
-#: ../src/osmEditDialog.js:131
+#: ../src/osmEditDialog.js:142
 msgid "Opening hours"
 msgstr "Horas de apertura"
 
-#: ../src/osmEditDialog.js:136
+#: ../src/osmEditDialog.js:147
 msgid "See the link in the label for help on format."
 msgstr "Vexa a ligazón na etiqueta para obter axuda no formatado."
 
-#: ../src/osmEditDialog.js:139
+#: ../src/osmEditDialog.js:150
 msgid "Population"
 msgstr "Poboación"
 
-#: ../src/osmEditDialog.js:144
+#: ../src/osmEditDialog.js:155
 msgid "Altitude"
 msgstr "Altitude"
 
-#: ../src/osmEditDialog.js:147
+#: ../src/osmEditDialog.js:158
 msgid "Elevation (height above sea level) of a point in metres."
 msgstr "Elevación (altura sobre o nivel do mar) do punto en metros."
 
-#: ../src/osmEditDialog.js:150
+#: ../src/osmEditDialog.js:161
 msgid "Wheelchair access"
 msgstr "Acceso con cadeira de rodas"
 
-#: ../src/osmEditDialog.js:153 ../src/osmEditDialog.js:162
+#: ../src/osmEditDialog.js:164 ../src/osmEditDialog.js:173
 msgid "Yes"
 msgstr "Si"
 
-#: ../src/osmEditDialog.js:154 ../src/osmEditDialog.js:163
+#: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
 msgid "No"
 msgstr "Non"
 
-#: ../src/osmEditDialog.js:155
+#: ../src/osmEditDialog.js:166
 msgid "Limited"
 msgstr "limitado"
 
-#: ../src/osmEditDialog.js:156
+#: ../src/osmEditDialog.js:167
 msgid "Designated"
 msgstr "Diseñado"
 
-#: ../src/osmEditDialog.js:159
+#: ../src/osmEditDialog.js:170
 msgid "Internet access"
 msgstr "Acceso a internet"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
 #.
-#: ../src/osmEditDialog.js:164 ../src/translations.js:341
+#: ../src/osmEditDialog.js:175 ../src/translations.js:341
 msgid "Wi-Fi"
 msgstr "Sen fíos"
 
-#: ../src/osmEditDialog.js:165
+#: ../src/osmEditDialog.js:176
 msgid "Wired"
 msgstr "Con fíos"
 
-#: ../src/osmEditDialog.js:166
+#: ../src/osmEditDialog.js:177
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../src/osmEditDialog.js:167
+#: ../src/osmEditDialog.js:178
 msgid "Service"
 msgstr "Servizo"
 
-#: ../src/osmEditDialog.js:238
+#: ../src/osmEditDialog.js:287
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Engadir a OpenStreetMap"
 
-#: ../src/osmEditDialog.js:289
+#: ../src/osmEditDialog.js:338
 msgid "Select Type"
 msgstr "Seleccione tipo"
 
-#: ../src/osmEditDialog.js:407
+#: ../src/osmEditDialog.js:456
 msgid "Done"
 msgstr "Feito"
 
@@ -928,7 +949,7 @@ msgstr "non"
 msgid "designated"
 msgstr "designado"
 
-#: ../src/printLayout.js:225
+#: ../src/printLayout.js:243
 #, javascript-format
 msgid "From %s to %s"
 msgstr "Desde %s a %s"
@@ -949,15 +970,15 @@ msgstr "Abortar impresión"
 msgid "No route found."
 msgstr "Non se atopou a ruta."
 
-#: ../src/routeService.js:97
+#: ../src/routeService.js:101
 msgid "Route request failed."
 msgstr "Produciuse un fallo na solicitude de ruta."
 
-#: ../src/routeService.js:168
+#: ../src/routeService.js:178
 msgid "Start!"
 msgstr "Comezar!"
 
-#: ../src/sendToDialog.js:173
+#: ../src/sendToDialog.js:179
 msgid "Failed to open URI"
 msgstr "Produciuse un fallo ao abrir o URI"
 
@@ -966,7 +987,7 @@ msgid "failed to load file"
 msgstr "produciuse un fallo ao cargar o ficheiro"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:210
+#: ../src/sidebar.js:208
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Tempo estimado: %s"
@@ -1168,8 +1189,8 @@ msgstr "%f mi"
 msgid "%f ft"
 msgstr "%f ft"
 
-#~ msgid "Postal code: %s"
-#~ msgstr "Código postal: %s"
+#~ msgid "Position not found"
+#~ msgstr "Posición non atopada"
 
 #~ msgid "Country code: %s"
 #~ msgstr "Código de país: %s"
@@ -1212,9 +1233,6 @@ msgstr "%f ft"
 
 #~ msgid "From"
 #~ msgstr "Desde"
-
-#~ msgid "Street"
-#~ msgstr "Rúa"
 
 #~ msgid "Satellite"
 #~ msgstr "Satélite"
