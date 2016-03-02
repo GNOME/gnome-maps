@@ -20,7 +20,6 @@
  *         Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
-const Clutter = imports.gi.Clutter;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Gio = imports.gi.Gio;
@@ -219,7 +218,6 @@ const Application = new Lang.Class({
     vfunc_startup: function() {
         this.parent();
 
-        Clutter.set_windowing_backend('x11,wayland,*');
         GtkClutter.init(null);
 
         Utils.loadStyleSheet(Gio.file_new_for_uri('resource:///org/gnome/Maps/application.css'));
