@@ -2,24 +2,32 @@
 # Copyright (C) 2013 THE gnome-maps'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
 # יוסף אור בוצ׳קו <yoseforb@gmail.com>, 2013.
-# Yosef Or Boczko <yoseforb@gnome.org>, 2013, 2014, 2015.
+# Yosef Or Boczko <yoseforb@gnome.org>, 2013, 2014, 2015, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps 3.9.91\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-30 10:20+0300\n"
-"PO-Revision-Date: 2015-08-30 10:21+0300\n"
-"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
+"POT-Creation-Date: 2016-03-02 14:38+0200\n"
+"PO-Revision-Date: 2016-03-02 15:47+0200\n"
+"Last-Translator: Yosef Or Boczko <yoseforb@gnome.org>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural= (n!=1);\n"
-"X-Generator: Gtranslator 2.91.6\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
+msgid "GNOME Maps"
+msgstr "GNOME מפות"
+
+#: ../data/org.gnome.Maps.appdata.xml.in.h:2
+msgid "Find places around the world"
+msgstr "מציאת מקומות מסביב לעולם"
+
+#: ../data/org.gnome.Maps.appdata.xml.in.h:3
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
@@ -28,7 +36,7 @@ msgstr ""
 "מפות נותן לך גישה מהירה למפות על פני כל העולם. הוא מאפשר לך למצוא במהירות את "
 "המקום שאתה מחפש באמצעות חיפוש עיר או רחוב, או לאתר מקום לפגישת חבר."
 
-#: ../data/org.gnome.Maps.appdata.xml.in.h:2
+#: ../data/org.gnome.Maps.appdata.xml.in.h:4
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
@@ -39,7 +47,7 @@ msgstr ""
 #. Translators: Search is carried out on OpenStreetMap data using Nominatim.
 #. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
 #. your language to see what words you can use for the translated search.
-#: ../data/org.gnome.Maps.appdata.xml.in.h:6
+#: ../data/org.gnome.Maps.appdata.xml.in.h:8
 msgid ""
 "You can even search for specific types of locations, such as “Pubs near Main "
 "Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
@@ -49,7 +57,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:367
+#: ../src/application.js:86 ../src/mainWindow.js:420
 msgid "Maps"
 msgstr "מפות"
 
@@ -61,59 +69,71 @@ msgstr "יישום מפות פשוט"
 msgid "Maps;"
 msgstr "מפות;"
 
+#: ../data/org.gnome.Maps.desktop.in.h:4
+msgid "Allows your location to be shown on the map."
+msgstr "מאפשר למיקום שלך להיראות על המפה."
+
 #: ../data/org.gnome.Maps.gschema.xml.h:1
+msgid "last viewed location"
+msgstr "last viewed location"
+
+#: ../data/org.gnome.Maps.gschema.xml.h:2
+msgid "Coordinates of last viewed location."
+msgstr "Coordinates of last viewed location."
+
+#: ../data/org.gnome.Maps.gschema.xml.h:3
 msgid "Window size"
 msgstr "Window size"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:2
+#: ../data/org.gnome.Maps.gschema.xml.h:4
 msgid "Window size (width and height)."
 msgstr "Window size (width and height)."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:3
+#: ../data/org.gnome.Maps.gschema.xml.h:5
 msgid "Window position"
 msgstr "Window position"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:4
+#: ../data/org.gnome.Maps.gschema.xml.h:6
 msgid "Window position (X and Y)."
 msgstr "Window position (X and Y)."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:5
+#: ../data/org.gnome.Maps.gschema.xml.h:7
 msgid "Window maximized"
 msgstr "Window maximized"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:6
+#: ../data/org.gnome.Maps.gschema.xml.h:8
 msgid "Window maximization state"
 msgstr "Window maximization state"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:7
+#: ../data/org.gnome.Maps.gschema.xml.h:9
 msgid "Maximum number of search results"
 msgstr "Maximum number of search results"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:8
+#: ../data/org.gnome.Maps.gschema.xml.h:10
 msgid "Maximum number of search results from geocode search."
 msgstr "Maximum number of search results from geocode search."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:9
+#: ../data/org.gnome.Maps.gschema.xml.h:11
 msgid "Number of recent places to store"
 msgstr "Number of recent places to store"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:10
+#: ../data/org.gnome.Maps.gschema.xml.h:12
 msgid "Number of recently visited places to store."
 msgstr "Number of recently visited places to store."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:11
+#: ../data/org.gnome.Maps.gschema.xml.h:13
 msgid "Number of recent routes to store"
 msgstr "Number of recent routes to store"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:12
+#: ../data/org.gnome.Maps.gschema.xml.h:14
 msgid "Number of recently visited routes to store."
 msgstr "Number of recently visited routes to store."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:13
+#: ../data/org.gnome.Maps.gschema.xml.h:15
 msgid "Facebook check-in privacy setting"
 msgstr "Facebook check-in privacy setting"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:14
+#: ../data/org.gnome.Maps.gschema.xml.h:16
 msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
@@ -121,11 +141,11 @@ msgstr ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:15
+#: ../data/org.gnome.Maps.gschema.xml.h:17
 msgid "Foursquare check-in privacy setting"
 msgstr "Foursquare check-in privacy setting"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:16
+#: ../data/org.gnome.Maps.gschema.xml.h:18
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
@@ -133,11 +153,11 @@ msgstr ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:17
+#: ../data/org.gnome.Maps.gschema.xml.h:19
 msgid "Foursquare check-in Facebook broadcasting"
 msgstr "Foursquare check-in Facebook broadcasting"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:18
+#: ../data/org.gnome.Maps.gschema.xml.h:20
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
@@ -145,11 +165,11 @@ msgstr ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:19
+#: ../data/org.gnome.Maps.gschema.xml.h:21
 msgid "Foursquare check-in Twitter broadcasting"
 msgstr "Foursquare check-in Twitter broadcasting"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:20
+#: ../data/org.gnome.Maps.gschema.xml.h:22
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
@@ -157,11 +177,27 @@ msgstr ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
 
+#: ../data/org.gnome.Maps.gschema.xml.h:23
+msgid "OpenStreetMap username or e-mail address"
+msgstr "OpenStreetMap username or e-mail address"
+
+#: ../data/org.gnome.Maps.gschema.xml.h:24
+msgid "Indicates if the user has signed in to edit OpenStreetMap data."
+msgstr "Indicates if the user has signed in to edit OpenStreetMap data."
+
 #: ../data/ui/app-menu.ui.h:1
+msgid "Set up OpenStreetMap Account"
+msgstr "הגדרת חשבון OpenStreetMap"
+
+#: ../data/ui/app-menu.ui.h:2
+msgid "_Keyboard Shortcuts"
+msgstr "_צירופי מקשים"
+
+#: ../data/ui/app-menu.ui.h:3
 msgid "About"
 msgstr "על אודות"
 
-#: ../data/ui/app-menu.ui.h:2
+#: ../data/ui/app-menu.ui.h:4
 msgid "Quit"
 msgstr "יציאה"
 
@@ -177,7 +213,8 @@ msgstr "לפרסם ב־Facebook"
 msgid "Post on Twitter"
 msgstr "לפרסם ב־Twitter"
 
-#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/send-to-dialog.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/export-view-dialog.ui.h:2
+#: ../data/ui/send-to-dialog.ui.h:2 ../data/ui/shape-layer-file-chooser.ui.h:3
 msgid "_Cancel"
 msgstr "_ביטול"
 
@@ -222,6 +259,85 @@ msgstr "מה זה כאן?"
 msgid "Copy Location"
 msgstr "העתקת מיקום"
 
+#: ../data/ui/context-menu.ui.h:3
+msgid "Export As Image"
+msgstr "ייצוא כתמונה"
+
+#: ../data/ui/context-menu.ui.h:4
+msgid "Add to OpenStreetMap"
+msgstr "הוספה אל OpenStreetMap"
+
+#: ../data/ui/export-view-dialog.ui.h:1
+msgid "Export view"
+msgstr "תצוגת ייצוא"
+
+#: ../data/ui/export-view-dialog.ui.h:3
+msgid "_Export"
+msgstr "_ייצוא"
+
+#: ../data/ui/export-view-dialog.ui.h:4
+msgid "Include route and markers"
+msgstr "לכלול מסלול וסימונים"
+
+#: ../data/ui/help-overlay.ui.h:1
+msgctxt "shortcut window"
+msgid "General"
+msgstr "כללי"
+
+#: ../data/ui/help-overlay.ui.h:2
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "הצגת צירופי מקשים"
+
+#: ../data/ui/help-overlay.ui.h:3
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "חיפוש"
+
+#: ../data/ui/help-overlay.ui.h:4
+msgctxt "shortcut window"
+msgid "Toggle route planner"
+msgstr "הצגה/הסתרת מתכנן מסלול"
+
+#: ../data/ui/help-overlay.ui.h:5
+msgctxt "shortcut window"
+msgid "Print route"
+msgstr "הדפסת מסלול"
+
+#: ../data/ui/help-overlay.ui.h:6
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "יציאה"
+
+#: ../data/ui/help-overlay.ui.h:7
+msgctxt "shortcut window"
+msgid "Map View"
+msgstr "תצוגת מפה"
+
+#: ../data/ui/help-overlay.ui.h:8
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr "התקרבות"
+
+#: ../data/ui/help-overlay.ui.h:9
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr "התרחקות"
+
+#: ../data/ui/help-overlay.ui.h:10
+msgctxt "shortcut window"
+msgid "Toggle scale"
+msgstr "הצגת סרגל קנה מידה"
+
+#: ../data/ui/help-overlay.ui.h:11
+msgctxt "shortcut window"
+msgid "Go to current location"
+msgstr "מעבר למיקום הנוכחי"
+
+#: ../data/ui/layers-popover.ui.h:1
+msgid "Load Map Layer"
+msgstr "טעינת שכבת מפה"
+
 #: ../data/ui/location-service-notification.ui.h:1
 msgid "Turn on location services to find your location"
 msgstr "הפעלת שירותי איכון למציאת המיקום שלך"
@@ -247,16 +363,20 @@ msgid "Toggle favorites"
 msgstr "מועדפים"
 
 #: ../data/ui/main-window.ui.h:6
+msgid "Print Route"
+msgstr "הדפסת מסלול"
+
+#: ../data/ui/main-window.ui.h:7
 msgid "Maps is offline!"
 msgstr "מפות איננו מקוון!"
 
-#: ../data/ui/main-window.ui.h:7
+#: ../data/ui/main-window.ui.h:8
 msgid ""
 "Maps need an active internet connection to function properly, but one can't "
 "be found."
 msgstr "מפות צריך חיבור אינטרנט פעיל על מנת לתפקד כראוי, אך אין אחד בנמצא."
 
-#: ../data/ui/main-window.ui.h:8
+#: ../data/ui/main-window.ui.h:9
 msgid "Check your connection and proxy settings."
 msgstr "יש לבדוק את החיבור שלך ואת הגדרות הפרוקסי."
 
@@ -276,17 +396,136 @@ msgstr "סימון כמועדף"
 msgid "Check in here"
 msgstr "הרשמה כאן"
 
-#: ../data/ui/search-popup.ui.h:1
+#: ../data/ui/osm-account-dialog.ui.h:1
+msgid "OpenStreetMap Account"
+msgstr "חשבון OpenStreetMap"
+
+#: ../data/ui/osm-account-dialog.ui.h:2
+msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
+msgstr "<span weight=\"bold\" size=\"x-large\">התחברות לעריכת מפות</span>"
+
+#: ../data/ui/osm-account-dialog.ui.h:3
+msgid ""
+"Help to improve the map, using an\n"
+"OpenStreetMap account."
+msgstr ""
+"עזרה בשיפור המפה,\n"
+"באמצעות חשבון OpenStreetMap."
+
+#: ../data/ui/osm-account-dialog.ui.h:5
+msgid "Email"
+msgstr "דוא״ל"
+
+#: ../data/ui/osm-account-dialog.ui.h:6
+msgid "Password"
+msgstr "ססמה"
+
+#: ../data/ui/osm-account-dialog.ui.h:7
+msgid "Sign In"
+msgstr "התחברות"
+
+#: ../data/ui/osm-account-dialog.ui.h:8
+msgid "Don't have an account?"
+msgstr "אין לך חשבון?"
+
+#. The label should contain the link to the OSM reset password page with a translated title
+#: ../data/ui/osm-account-dialog.ui.h:10
+msgid ""
+"Sorry, that didn't work. Please try again, or visit\n"
+"<a href=\"https://www.openstreetmap.org/user/forgot-password"
+"\">OpenStreetMap</a> to reset your password."
+msgstr ""
+"אנו מצטערים, זה לא עובד. יש לנסות שוב, או לבקר באתר <a href=\"https://www."
+"openstreetmap.org/user/forgot-password\">OpenStreetMap</a> לאיפוס הססמה שלך."
+
+#: ../data/ui/osm-account-dialog.ui.h:12
+msgid "The verification code didn't match, please try again."
+msgstr "קוד האימות לא מתאים, יש לנסות שוב."
+
+#: ../data/ui/osm-account-dialog.ui.h:13
+msgid "Enter verification code shown above"
+msgstr "יש להזין את קוד האימות המוצע למעלה"
+
+#: ../data/ui/osm-account-dialog.ui.h:14
+msgid "Verify"
+msgstr "אימות"
+
+#: ../data/ui/osm-account-dialog.ui.h:15
+msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
+msgstr "<span weight=\"bold\" size=\"x-large\">התחברות</span>"
+
+#: ../data/ui/osm-account-dialog.ui.h:16
+msgid "Your OpenStreetMap account is active."
+msgstr "חשבון ה־OpenStreetMap שלך פעיל."
+
+#: ../data/ui/osm-account-dialog.ui.h:17
+msgid "Sign Out"
+msgstr "התנתקות"
+
+#: ../data/ui/osm-edit-address.ui.h:1
+msgid "Street"
+msgstr "רחוב"
+
+#: ../data/ui/osm-edit-address.ui.h:2
+msgid "House number"
+msgstr "מספר בית"
+
+#: ../data/ui/osm-edit-address.ui.h:3
+msgid "Postal code"
+msgstr "מיקוד"
+
+#. This is the place name as it would be written in a postal address (typically coming after the postal code)
+#: ../data/ui/osm-edit-address.ui.h:5
+msgid "City"
+msgstr "עיר"
+
+#: ../data/ui/osm-edit-dialog.ui.h:1
+msgid "None"
+msgstr "ללא"
+
+#: ../data/ui/osm-edit-dialog.ui.h:2
+msgid "Recently Used"
+msgstr "בשימוש לאחרונה"
+
+#: ../data/ui/osm-edit-dialog.ui.h:3
+msgid "Edit on OpenStreetMap"
+msgstr "עריכה ב־OpenStreetMap"
+
+#: ../data/ui/osm-edit-dialog.ui.h:4
+msgid "Cancel"
+msgstr "ביטול"
+
+#: ../data/ui/osm-edit-dialog.ui.h:5 ../src/osmEditDialog.js:470
+msgid "Next"
+msgstr "הבא"
+
+#: ../data/ui/place-bubble.ui.h:1
+msgid "Show more information"
+msgstr "הצגת מידע נוסף"
+
+#: ../data/ui/place-popover.ui.h:1
 msgid "Press enter to search"
-msgstr "יש להזין כדי לחפש"
+msgstr "יש ללחות Enter לחיפוש"
+
+#: ../data/ui/route-entry.ui.h:1
+msgid "Drag to change order of the route"
+msgstr "יש לגרור לשינוי סדר המסלול"
 
 #: ../data/ui/send-to-dialog.ui.h:1
 msgid "Open location"
 msgstr "פתיחת מיקום"
 
-#: ../data/ui/send-to-dialog.ui.h:3
+#: ../data/ui/send-to-dialog.ui.h:3 ../data/ui/shape-layer-file-chooser.ui.h:2
 msgid "_Open"
 msgstr "_פתיחה"
+
+#: ../data/ui/shape-layer-file-chooser.ui.h:1
+msgid "Open Layer"
+msgstr "פתיחת שכבה"
+
+#: ../data/ui/shape-layer-row.ui.h:1
+msgid "Toggle visible"
+msgstr "הצגה"
 
 #: ../data/ui/sidebar.ui.h:1
 msgid "Route search by GraphHopper"
@@ -296,7 +535,7 @@ msgstr "חיפוש מסלולים באמצעות GraphHopper"
 msgid "Show more results"
 msgstr "הצגת תוצאות נוספות"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:209
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:120
 msgid "Current location"
 msgstr "מיקום נוכחי"
 
@@ -305,6 +544,35 @@ msgstr "מיקום נוכחי"
 #, no-c-format
 msgid "Accuracy: %s"
 msgstr "דיוק: ‏%s"
+
+#: ../data/ui/zoom-in-notification.ui.h:1
+msgid "Zoom in to add location!"
+msgstr "יש להתקרב על מנת להוסיף מיקום!"
+
+#: ../data/ui/zoom-in-notification.ui.h:2
+msgid "OK"
+msgstr "אישור"
+
+#: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
+#: ../lib/maps-file-tile-source.c:459
+msgid "Failed to find tile structure in directory"
+msgstr "נכשל חיפוש מבנה אריח בתיקייה"
+
+#: ../lib/maps-osm.c:56
+msgid "Failed to parse XML document"
+msgstr "נכשל ניתוח מסמך XML"
+
+#: ../lib/maps-osm.c:252 ../lib/maps-osm.c:405
+msgid "Missing required attributes"
+msgstr "חסרות תכונות דרושות"
+
+#: ../lib/maps-osm.c:453
+msgid "Could not find OSM element"
+msgstr "לא ניתן למצוא יסוד OSM"
+
+#: ../src/application.js:102
+msgid "A path to a local tiles directory structure"
+msgstr "נתיב לתיקייה מבני אריחים מקומיים"
 
 #: ../src/checkInDialog.js:176
 msgid "Select an account"
@@ -345,6 +613,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "כתיבת הודעה אפשרית להרשמה עבור %s."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
+#: ../src/osmEditDialog.js:507
 msgid "An error has occurred"
 msgstr "התרחשה שגיאה"
 
@@ -364,59 +633,276 @@ msgid ""
 "this account"
 msgstr "האישורים פגי תוקף, נא לפתוח חשבונות מקוונים להתחברות ולאפשר חשבון זה"
 
-#: ../src/mainWindow.js:315
+#: ../src/contextMenu.js:97
+msgid "Route from here"
+msgstr "מסלול מכאן"
+
+#: ../src/contextMenu.js:99
+msgid "Add destination"
+msgstr "הוספת ידע"
+
+#: ../src/contextMenu.js:101
+msgid "Route to here"
+msgstr "מסלול לכאן"
+
+#: ../src/contextMenu.js:130
+msgid "Nothing found here!"
+msgstr "לא נמצא כאן דבר!"
+
+#: ../src/contextMenu.js:187
+msgid ""
+"Location was added to the map, note that it may take a while before it shows "
+"on the map and in search results."
+msgstr ""
+"מיקום נוסף למפה, יש לשים לב כי יתכן ויעבור זמן מה לפני שהוא יוצג על המפה "
+"ובתוצאות החיפוש."
+
+#: ../src/exportViewDialog.js:156
+msgid "Filesystem is read only"
+msgstr "מערכת הקבצים היא לקריאה בלבד"
+
+#: ../src/exportViewDialog.js:158
+msgid "You do not have permission to save there"
+msgstr "אין לך הרשאות לשמירה כאן"
+
+#: ../src/exportViewDialog.js:160
+msgid "The directory does not exists"
+msgstr "התיקייה אינה קיימת"
+
+#: ../src/exportViewDialog.js:162
+msgid "No filename specified"
+msgstr "לא צוין שם קובץ"
+
+#: ../src/exportViewDialog.js:170
+msgid "Unable to export view"
+msgstr "לא ניתן לייצא תצוגה"
+
+#: ../src/geoJSONSource.js:98
+msgid "invalid coordinate"
+msgstr "נקודת ציון לא חוקית"
+
+#: ../src/geoJSONSource.js:149 ../src/geoJSONSource.js:189
+#: ../src/geoJSONSource.js:204
+msgid "parse error"
+msgstr "שגיאת ניתוח"
+
+#: ../src/geoJSONSource.js:183
+msgid "unknown geometry"
+msgstr "שגיאה הנדסית"
+
+#: ../src/mainWindow.js:366
 msgid "Failed to connect to location service"
 msgstr "ארע כשל בהתחברות לשרת האיכון"
 
-#: ../src/mainWindow.js:320
-msgid "Position not found"
-msgstr "המיקום לא נמצא"
-
-#: ../src/mainWindow.js:365
+#: ../src/mainWindow.js:418
 msgid "translator-credits"
 msgstr "יוסף אור בוצ׳קו <yoseforb@gnome.org>"
 
-#: ../src/mainWindow.js:368
+#: ../src/mainWindow.js:421
 msgid "A map application for GNOME"
 msgstr "יישום מפות עבור GNOME"
 
-#: ../src/placeBubble.js:101
-#, javascript-format
-msgid "Postal code: %s"
-msgstr "מיקוד: %s"
+#: ../src/mapView.js:254
+msgid "File type is not supported"
+msgstr "סוג הקובץ אינו נתמך"
 
-#: ../src/placeBubble.js:103
-#, javascript-format
-msgid "Country code: %s"
-msgstr "קוד מדינה: %s"
+#: ../src/mapView.js:261
+msgid "Failed to open layer"
+msgstr "אירע כשל בפתיחת שכבה"
 
-#: ../src/placeBubble.js:112
-#, javascript-format
-msgid "Population: %s"
-msgstr "אוכלוסיה: %s"
+#: ../src/mapView.js:297
+msgid "Failed to open GeoURI"
+msgstr "אירע כשל בפתיחת GeoURI"
 
-#: ../src/placeBubble.js:115
-#, javascript-format
-msgid "Opening hours: %s"
-msgstr "שעות פתיחה: %s"
+#. setting the status in session.cancel_message still seems
+#. to always give status IO_ERROR
+#: ../src/osmConnection.js:443
+msgid "Incorrect user name or password"
+msgstr "שם או ססמה לא נכונים"
 
-#: ../src/placeBubble.js:120
+#: ../src/osmConnection.js:445
+msgid "Success"
+msgstr "הצלחה"
+
+#: ../src/osmConnection.js:447
+msgid "Bad request"
+msgstr "בקשה שגויה"
+
+#: ../src/osmConnection.js:449
+msgid "Object not found"
+msgstr "עצם לא נמצא"
+
+#: ../src/osmConnection.js:451
+msgid "Conflict, someone else has just modified the object"
+msgstr "התנגשות, מישהו אחר שינה את העצם זה עתה"
+
+#: ../src/osmConnection.js:453
+msgid "Object has been deleted"
+msgstr "העצם נמחק"
+
+#: ../src/osmConnection.js:455
+msgid "Way or relation refers to non-existing children"
+msgstr "נתיב או יחס מפנה לילדים לא קיימים"
+
+#: ../src/osmEditDialog.js:103
+msgid "Name"
+msgstr "שם"
+
+#: ../src/osmEditDialog.js:106
+msgid "The official name. This is typically what appears on signs."
+msgstr "השם הרשמי. זה בדרך כלל מה שמופיע על השילוטים."
+
+#: ../src/osmEditDialog.js:109
+msgid "Address"
+msgstr "כתובת"
+
+#: ../src/osmEditDialog.js:117 ../src/placeBubble.js:165
+msgid "Website"
+msgstr "אתר אינטרנט"
+
+#: ../src/osmEditDialog.js:120
+msgid ""
+"The official website. Try to use the most basic form of a URL i.e. http://"
+"example.com instead of http://example.com/index.html."
+msgstr ""
+"אתר האינטרנט הרשמי. יש לנסות להשתמש בצורה הבסיסית ביותר של הכתובת. למשל "
+"http://example.com במקום http://example.com/index.html."
+
+#: ../src/osmEditDialog.js:125
+msgid "Phone"
+msgstr "טלפון"
+
+#: ../src/osmEditDialog.js:129
+msgid ""
+"Phone number. Use the international format, starting with a + sign. Beware "
+"of local privacy laws, especially for private phone numbers."
+msgstr ""
+"מספר טלפון. יש להשתמש בתבנית בינלאומית, המתחיל עם סימן פלוס +. יש להיזהר "
+"מחוקי הפרטיות, בפרט עבור מספרי טלפון פרטיים."
+
+#: ../src/osmEditDialog.js:134 ../src/placeBubble.js:171
 msgid "Wikipedia"
 msgstr "ויקיפדיה"
 
-#: ../src/placeBubble.js:125
-#, javascript-format
-msgid "Wheelchair access: %s"
-msgstr "נגישות נכים: %s"
+#: ../src/osmEditDialog.js:138
+msgid ""
+"The format used should include the language code and the article title like "
+"”en:Article title”."
+msgstr ""
+"התבנית בשימוש צריכה לכלול את קוד השפה ואת כותרת הערך. למשל: \"he:כותרת הערך"
+"\"."
 
-#: ../src/placeEntry.js:215
+#: ../src/osmEditDialog.js:142
+msgid "Opening hours"
+msgstr "שעות פתיחה"
+
+#: ../src/osmEditDialog.js:147
+msgid "See the link in the label for help on format."
+msgstr "ניתן לקבל עזרה עבור התבנית בקישור בתווית."
+
+#: ../src/osmEditDialog.js:150
+msgid "Population"
+msgstr "אוכלוסייה"
+
+#: ../src/osmEditDialog.js:155
+msgid "Altitude"
+msgstr "גובה"
+
+#: ../src/osmEditDialog.js:158
+msgid "Elevation (height above sea level) of a point in metres."
+msgstr "גובה (גובה מעל פני הים) של נקודה במטרים."
+
+#: ../src/osmEditDialog.js:161
+msgid "Wheelchair access"
+msgstr "נגישות נכים"
+
+#: ../src/osmEditDialog.js:164 ../src/osmEditDialog.js:173
+msgid "Yes"
+msgstr "יש"
+
+#: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
+msgid "No"
+msgstr "אין"
+
+#: ../src/osmEditDialog.js:166
+msgid "Limited"
+msgstr "מוגבל"
+
+#: ../src/osmEditDialog.js:167
+msgid "Designated"
+msgstr "מובנה"
+
+#: ../src/osmEditDialog.js:170
+msgid "Internet access"
+msgstr "גישה לאינטרנט"
+
+#. Translators:
+#. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
+#.
+#: ../src/osmEditDialog.js:175 ../src/translations.js:341
+msgid "Wi-Fi"
+msgstr "רשת אלחוטית"
+
+#: ../src/osmEditDialog.js:176
+msgid "Wired"
+msgstr "רשת קווית"
+
+#: ../src/osmEditDialog.js:177
+msgid "Terminal"
+msgstr "מסוף"
+
+#: ../src/osmEditDialog.js:178
+msgid "Service"
+msgstr "שרת"
+
+#: ../src/osmEditDialog.js:287
+msgctxt "dialog title"
+msgid "Add to OpenStreetMap"
+msgstr "הוספה ל־OpenStreetMap"
+
+#: ../src/osmEditDialog.js:338
+msgid "Select Type"
+msgstr "בחירת סוג"
+
+#: ../src/osmEditDialog.js:456
+msgid "Done"
+msgstr "בוצה"
+
+#: ../src/placeBubble.js:128
+msgid "Population:"
+msgstr "אוכלוסייה:"
+
+#: ../src/placeBubble.js:134
+msgid "Altitude:"
+msgstr "גובה:"
+
+#: ../src/placeBubble.js:139
+msgid "Opening hours:"
+msgstr "שעות פתיחה:"
+
+#: ../src/placeBubble.js:144
+msgid "Internet access:"
+msgstr "גישת אינטרנט:"
+
+#: ../src/placeBubble.js:149
+msgid "Wheelchair access:"
+msgstr "נגישות נכים:"
+
+#: ../src/placeBubble.js:155 ../src/placeBubble.js:159
+msgid "Phone:"
+msgstr "טלפון:"
+
+#: ../src/placeEntry.js:190
 msgid "Failed to parse Geo URI"
 msgstr "ארע כשל בניתוח כתובת Geo"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: ../src/place.js:121
+#. Translators:
+#. * There is public internet access but the particular kind is unknown.
+#.
+#: ../src/place.js:177 ../src/translations.js:330
 msgid "yes"
 msgstr "יש"
 
@@ -425,7 +911,7 @@ msgstr "יש"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:128
+#: ../src/place.js:184
 msgid "limited"
 msgstr "מוגבל"
 
@@ -433,7 +919,11 @@ msgstr "מוגבל"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: ../src/place.js:134
+#. Translators:
+#. * no internet access is offered in a place where
+#. * someone might expect it.
+#.
+#: ../src/place.js:190 ../src/translations.js:336
 msgid "no"
 msgstr "אין"
 
@@ -442,24 +932,49 @@ msgstr "אין"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:141
+#: ../src/place.js:197
 msgid "designated"
 msgstr "מובנה"
+
+#: ../src/printLayout.js:243
+#, javascript-format
+msgid "From %s to %s"
+msgstr "מ־%s אל %s"
+
+#: ../src/printOperation.js:47
+msgid "Loading map tiles for printing"
+msgstr "טוען אירי מפה להדפסה"
+
+#: ../src/printOperation.js:48
+msgid "You can abort printing if this takes too long"
+msgstr "נתן לבטל ההדפסה אם היא לוקחת יותר מדי זמן"
+
+#: ../src/printOperation.js:50
+msgid "Abort printing"
+msgstr "ביטול הדפסה"
 
 #: ../src/routeService.js:90
 msgid "No route found."
 msgstr "לא נמצא מסלול."
 
-#: ../src/routeService.js:97
+#: ../src/routeService.js:101
 msgid "Route request failed."
 msgstr "בקשת המסלול נכשלה."
 
-#: ../src/routeService.js:168
+#: ../src/routeService.js:178
 msgid "Start!"
 msgstr "להתחיל!"
 
+#: ../src/sendToDialog.js:179
+msgid "Failed to open URI"
+msgstr "ארע כשל בפתיחת הכתובת"
+
+#: ../src/shapeLayer.js:93
+msgid "failed to load file"
+msgstr "אירע כשל בטעינת הקובץ"
+
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:229
+#: ../src/sidebar.js:208
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "זמן משוער: %s"
@@ -591,57 +1106,78 @@ msgctxt "time interval"
 msgid "%s-%s"
 msgstr "%s – %s"
 
+#. Translators:
+#. * This means a a place where you can plug in your laptop with ethernet.
+#.
+#: ../src/translations.js:346
+msgid "wired"
+msgstr "אתרנט"
+
+#. Translators:
+#. * Like internet cafe or library where the computer is given.
+#.
+#: ../src/translations.js:351
+msgid "terminal"
+msgstr "מסוף"
+
+#. Translators:
+#. * This means there is personnel which helps you in case of problems.
+#.
+#: ../src/translations.js:356
+msgid "service"
+msgstr "שרת"
+
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:256
+#: ../src/utils.js:228
 msgid "Unknown"
 msgstr "לא ידוע"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:259
+#: ../src/utils.js:231
 msgid "Exact"
 msgstr "מדויק"
 
-#: ../src/utils.js:354
+#: ../src/utils.js:334
 #, javascript-format
 msgid "%f h"
 msgstr "%f שעות"
 
-#: ../src/utils.js:356
+#: ../src/utils.js:336
 #, javascript-format
 msgid "%f min"
 msgstr "%f דקות"
 
-#: ../src/utils.js:358
+#: ../src/utils.js:338
 #, javascript-format
 msgid "%f s"
 msgstr "%f שניות"
 
 #. Translators: This is a distance measured in kilometers
-#: ../src/utils.js:369
+#: ../src/utils.js:349
 #, javascript-format
 msgid "%f km"
 msgstr "%f ק״מ"
 
 #. Translators: This is a distance measured in meters
-#: ../src/utils.js:372
+#: ../src/utils.js:352
 #, javascript-format
 msgid "%f m"
 msgstr "%f מ׳"
 
 #. Translators: This is a distance measured in miles
-#: ../src/utils.js:380
+#: ../src/utils.js:360
 #, javascript-format
 msgid "%f mi"
 msgstr "%f מיל"
 
 #. Translators: This is a distance measured in feet
-#: ../src/utils.js:383
+#: ../src/utils.js:363
 #, javascript-format
 msgid "%f ft"
 msgstr "%f רגל"
 
-#~ msgid "Share location"
-#~ msgstr "שיתוף מיקום"
+#~ msgid "Country code: %s"
+#~ msgstr "קוד מדינה: %s"
 
 #~ msgid "_Share"
 #~ msgstr "_שיתוף"
@@ -655,9 +1191,6 @@ msgstr "%f רגל"
 #~ msgstr ""
 #~ "Last known location (latitude and longitude in degrees) and accuracy (in "
 #~ "meters)."
-
-#~ msgid "Description of last known location"
-#~ msgstr "Description of last known location"
 
 #~ msgid "Description of last known location of user."
 #~ msgstr "Description of last known location of user."
@@ -682,9 +1215,6 @@ msgstr "%f רגל"
 
 #~ msgid " km<sup>2</sup>"
 #~ msgstr " ק״מ<sup>2</sup>"
-
-#~ msgid "Street"
-#~ msgstr "רחוב"
 
 #~ msgid "Satellite"
 #~ msgstr "לווין"
