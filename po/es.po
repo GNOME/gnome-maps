@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-29 09:20+0000\n"
-"PO-Revision-Date: 2016-02-29 16:00+0100\n"
+"POT-Creation-Date: 2016-03-02 21:27+0000\n"
+"PO-Revision-Date: 2016-03-03 09:52+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -59,7 +59,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:86 ../src/mainWindow.js:416
+#: ../src/application.js:85 ../src/mainWindow.js:420
 msgid "Maps"
 msgstr "Mapas"
 
@@ -479,7 +479,6 @@ msgid "House number"
 msgstr "Número"
 
 #: ../data/ui/osm-edit-address.ui.h:3
-#| msgid "Postal code: %s"
 msgid "Postal code"
 msgstr "Código postal"
 
@@ -516,6 +515,10 @@ msgstr "Mostrar más información"
 msgid "Press enter to search"
 msgstr "Pulse Intro para buscar"
 
+#: ../data/ui/route-entry.ui.h:1
+msgid "Drag to change order of the route"
+msgstr "Arrastre para cambiar el orden de la ruta"
+
 #: ../data/ui/send-to-dialog.ui.h:1
 msgid "Open location"
 msgstr "Abrir ubicación"
@@ -540,7 +543,7 @@ msgstr "Ruta buscada por GraphHopper"
 msgid "Show more results"
 msgstr "Mostrar más resultados"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:148
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:120
 msgid "Current location"
 msgstr "Ubicación actual"
 
@@ -575,7 +578,7 @@ msgstr "Faltan los atributos necesarios"
 msgid "Could not find OSM element"
 msgstr "No se pudo encontrar el elemento OSM"
 
-#: ../src/application.js:102
+#: ../src/application.js:101
 msgid "A path to a local tiles directory structure"
 msgstr "Una ruta a la estructura de carpetas locales de cuadrículas"
 
@@ -702,31 +705,27 @@ msgstr "error al analizar"
 msgid "unknown geometry"
 msgstr "geometría desconocida"
 
-#: ../src/mainWindow.js:358
+#: ../src/mainWindow.js:366
 msgid "Failed to connect to location service"
 msgstr "Falló al conectar al servicio de ubicación"
 
-#: ../src/mainWindow.js:363
-msgid "Position not found"
-msgstr "Posición no encontrada"
-
-#: ../src/mainWindow.js:414
+#: ../src/mainWindow.js:418
 msgid "translator-credits"
 msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2013"
 
-#: ../src/mainWindow.js:417
+#: ../src/mainWindow.js:421
 msgid "A map application for GNOME"
 msgstr "Una aplicación de mapas para GNOME"
 
-#: ../src/mapView.js:246
+#: ../src/mapView.js:254
 msgid "File type is not supported"
 msgstr "Tipo de archivo no soportado"
 
-#: ../src/mapView.js:253
+#: ../src/mapView.js:261
 msgid "Failed to open layer"
 msgstr "Falló al abrir la capa"
 
-#: ../src/mapView.js:289
+#: ../src/mapView.js:297
 msgid "Failed to open GeoURI"
 msgstr "Falló al abrir el GeoURI"
 
@@ -953,7 +952,7 @@ msgstr "no"
 msgid "designated"
 msgstr "designado"
 
-#: ../src/printLayout.js:242
+#: ../src/printLayout.js:243
 #, javascript-format
 msgid "From %s to %s"
 msgstr "De %s a %s"
@@ -974,15 +973,15 @@ msgstr "Cancelar la impresión"
 msgid "No route found."
 msgstr "No se ha encontrado la ruta."
 
-#: ../src/routeService.js:97
+#: ../src/routeService.js:101
 msgid "Route request failed."
 msgstr "Falló al solicitar la ruta."
 
-#: ../src/routeService.js:170
+#: ../src/routeService.js:178
 msgid "Start!"
 msgstr "Empezar"
 
-#: ../src/sendToDialog.js:173
+#: ../src/sendToDialog.js:179
 msgid "Failed to open URI"
 msgstr "Falló al abrir el URI"
 
@@ -991,7 +990,7 @@ msgid "failed to load file"
 msgstr "falló al cargar el archivo"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:210
+#: ../src/sidebar.js:208
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Tiempo estimado: %s"
@@ -1192,6 +1191,9 @@ msgstr "%f mi"
 #, javascript-format
 msgid "%f ft"
 msgstr "%f pies"
+
+#~ msgid "Position not found"
+#~ msgstr "Posición no encontrada"
 
 #~| msgid "Show help"
 #~ msgctxt "shortcut window"
