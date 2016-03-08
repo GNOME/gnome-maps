@@ -33,7 +33,8 @@ const Gio = imports.gi.Gio;
 
 const PRESETS_PATH = 'data/presets/presets';
 const LOCALES_PATH = 'dist/locales';
-const PRESET_TYPES = [ 'amenity',
+const PRESET_TYPES = [ 'aeroway',
+                       'amenity',
                        'leisure',
                        'office',
                        'place',
