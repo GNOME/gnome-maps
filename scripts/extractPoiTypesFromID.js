@@ -116,7 +116,7 @@ function processLocales(basePath) {
 }
 
 function outputJson() {
-    print(JSON.stringify(OUTPUT));
+    print(JSON.stringify(OUTPUT, null, 2));
 }
 
 function main(args) {
