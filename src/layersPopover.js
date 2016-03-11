@@ -122,12 +122,14 @@ const LayersPopover = new Lang.Class({
             transient_for: this.get_parent(),
         });
 
-        if (fileChooser.run() === Gtk.ResponseType.OK) {
-            this._mapView.openShapeLayers(fileChooser.get_files());
-            this.hide();
-        }
-
-        fileChooser.destroy();
+        fileChooser.connect('response', (function(widget, response) {
+            if (response === Gtk.ResponseType.OK) {
+                this._mapView.openShapeLayers(fileChooser.get_files());
+                this.hide();
+            }
+            fileChooser.destroy();
+        }).bind(this));
+        fileChooser.show();
     },
 
     _listBoxCreateWidget: function(shapeLayer) {
