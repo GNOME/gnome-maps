@@ -35,6 +35,9 @@ const IMPERIAL_SYSTEM = 2;
 //List of locales using imperial system according to glibc locale database
 const IMPERIAL_LOCALES = ['unm_US', 'es_US', 'es_PR', 'en_US', 'yi_US'];
 
+// Matches all unicode stand-alone accent characters
+const ACCENTS_REGEX = /[\u0300-\u036F]/g;
+
 let debugInit = false;
 let debugEnabled = false;
 let measurementSystem = null;
@@ -379,4 +382,9 @@ function uriSchemeSupported(scheme) {
         }
     }
     return false;
+}
+
+function normalizeString(string) {
+    let normalized = GLib.utf8_normalize(string, -1, GLib.NormalizeMode.ALL);
+    return normalized.replace(ACCENTS_REGEX, '');
 }

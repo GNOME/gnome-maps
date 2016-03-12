@@ -24,6 +24,7 @@ const GLib = imports.gi.GLib;
 const Lang = imports.lang;
 const Location = imports.location;
 const Translations = imports.translations;
+const Utils = imports.utils;
 
 // Matches coordinates string with the format "<lat>, <long>"
 const COORDINATES_REGEX = /^\s*(\-?\d+(?:\.\d+)?)\s*,\s*(\-?\d+(?:\.\d+)?)\s*$/;
@@ -248,14 +249,14 @@ const Place = new Lang.Class({
         if (!name)
             return false;
 
-        searchString = GLib.utf8_normalize(searchString, -1, GLib.NormalizeMode.ALL);
+        searchString = Utils.normalizeString(searchString);
         if (searchString === null)
             return false;
 
         if (searchString.length === 0)
             return true;
 
-        name = GLib.utf8_normalize(name, -1, GLib.NormalizeMode.ALL);
+        name = Utils.normalizeString(name);
         if (name === null)
             return false;
 

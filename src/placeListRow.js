@@ -23,6 +23,7 @@ const Lang = imports.lang;
 
 const PlaceFormatter = imports.placeFormatter;
 const PlaceStore = imports.placeStore;
+const Utils = imports.utils;
 
 const ROW_HEIGHT = 55;
 
@@ -71,9 +72,10 @@ const PlaceListRow = new Lang.Class({
     },
 
     _boldMatch: function(title, string) {
-        string = string.toLowerCase();
+        let canonicalString = Utils.normalizeString(string).toLowerCase();
+        let canonicalTitle = Utils.normalizeString(title).toLowerCase();
 
-        let index = title.toLowerCase().indexOf(string);
+        let index = canonicalTitle.indexOf(canonicalString);
 
         if (index !== -1) {
             let substring = title.substring(index, index + string.length);
