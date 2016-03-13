@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-28 09:22+0000\n"
-"PO-Revision-Date: 2016-02-28 11:49+0100\n"
+"POT-Creation-Date: 2016-03-13 09:24+0000\n"
+"PO-Revision-Date: 2016-03-13 15:23+0100\n"
 "Last-Translator: Guillaume Bernard <contact.guib@laposte.net>\n"
 "Language-Team: français <gnomefr@traduc.org>\n"
 "Language: fr\n"
@@ -63,7 +63,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:86 ../src/mainWindow.js:416
+#: ../src/application.js:85 ../src/mainWindow.js:420
 msgid "Maps"
 msgstr "Cartes"
 
@@ -525,6 +525,10 @@ msgstr "Montrer plus d'informations"
 msgid "Press enter to search"
 msgstr "Appuyez sur entrée pour rechercher"
 
+#: ../data/ui/route-entry.ui.h:1
+msgid "Drag to change order of the route"
+msgstr "Faites glisser pour modifier l'ordre de l'itinéraire"
+
 #: ../data/ui/send-to-dialog.ui.h:1
 msgid "Open location"
 msgstr "Ouvrir l'emplacement"
@@ -549,7 +553,7 @@ msgstr "Recherche d'itinéraire avec GraphHopper"
 msgid "Show more results"
 msgstr "Montrer plus de résultats"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:148
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:120
 msgid "Current location"
 msgstr "Lieu actuel"
 
@@ -584,7 +588,7 @@ msgstr "Attributs obligatoires manquants"
 msgid "Could not find OSM element"
 msgstr "Impossible de trouver l'élément OSM"
 
-#: ../src/application.js:102
+#: ../src/application.js:101
 msgid "A path to a local tiles directory structure"
 msgstr "Un chemin vers un répertoire local de structure de tuiles"
 
@@ -712,34 +716,30 @@ msgstr "erreur d'analyse"
 msgid "unknown geometry"
 msgstr "géométrie inconnue"
 
-#: ../src/mainWindow.js:358
+#: ../src/mainWindow.js:366
 msgid "Failed to connect to location service"
 msgstr "Échec à la connexion au service de localisation"
 
-#: ../src/mainWindow.js:363
-msgid "Position not found"
-msgstr "Position non trouvée"
-
-#: ../src/mainWindow.js:414
+#: ../src/mainWindow.js:418
 msgid "translator-credits"
 msgstr ""
 "Ouharzoune Mohammed <karim-ouh@hotmail.fr>\n"
 "Claude Paroz <claude@2xlibre.net>\n"
 "Guillaume Bernard <contact.guib@laposte.net>"
 
-#: ../src/mainWindow.js:417
+#: ../src/mainWindow.js:421
 msgid "A map application for GNOME"
 msgstr "Une application cartographique pour GNOME"
 
-#: ../src/mapView.js:246
+#: ../src/mapView.js:254
 msgid "File type is not supported"
 msgstr "Le type de fichier n'est pas pris en charge"
 
-#: ../src/mapView.js:253
+#: ../src/mapView.js:261
 msgid "Failed to open layer"
 msgstr "Échec d'ouverture de la couche"
 
-#: ../src/mapView.js:289
+#: ../src/mapView.js:297
 msgid "Failed to open GeoURI"
 msgstr "Échec d'ouverture de la Geo URI"
 
@@ -968,7 +968,7 @@ msgstr "non"
 msgid "designated"
 msgstr "réservé"
 
-#: ../src/printLayout.js:242
+#: ../src/printLayout.js:243
 #, javascript-format
 msgid "From %s to %s"
 msgstr "De %s à %s"
@@ -989,15 +989,15 @@ msgstr "Interrompre l'impression"
 msgid "No route found."
 msgstr "Aucun itinéraire trouvé."
 
-#: ../src/routeService.js:97
+#: ../src/routeService.js:101
 msgid "Route request failed."
 msgstr "Échec de la recherche d'itinéraire."
 
-#: ../src/routeService.js:170
+#: ../src/routeService.js:178
 msgid "Start!"
 msgstr "C'est parti !"
 
-#: ../src/sendToDialog.js:173
+#: ../src/sendToDialog.js:179
 msgid "Failed to open URI"
 msgstr "Échec d'ouverture de l'URI"
 
@@ -1006,7 +1006,7 @@ msgid "failed to load file"
 msgstr "impossible de charger le fichier"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:210
+#: ../src/sidebar.js:208
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Temps estimé : %s"
@@ -1207,6 +1207,3 @@ msgstr "%f miles"
 #, javascript-format
 msgid "%f ft"
 msgstr "%f pieds"
-
-#~ msgid "Country code: %s"
-#~ msgstr "Code du pays : %s"
