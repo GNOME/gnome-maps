@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-03-01 18:20+0000\n"
-"PO-Revision-Date: 2016-03-01 20:43+0100\n"
+"POT-Creation-Date: 2016-03-15 21:22+0000\n"
+"PO-Revision-Date: 2016-03-15 22:36+0100\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
 "Language: sk\n"
@@ -59,7 +59,7 @@ msgstr ""
 # desktop entry name
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:86 ../src/mainWindow.js:411
+#: ../src/application.js:85 ../src/mainWindow.js:420
 msgid "Maps"
 msgstr "Mapy"
 
@@ -516,22 +516,26 @@ msgid "City"
 msgstr "Obec"
 
 #: ../data/ui/osm-edit-dialog.ui.h:1
+msgid "Type"
+msgstr "Typ"
+
+#: ../data/ui/osm-edit-dialog.ui.h:2
 msgid "None"
 msgstr "Nič"
 
-#: ../data/ui/osm-edit-dialog.ui.h:2
+#: ../data/ui/osm-edit-dialog.ui.h:3
 msgid "Recently Used"
 msgstr "Nedávno použité"
 
-#: ../data/ui/osm-edit-dialog.ui.h:3
+#: ../data/ui/osm-edit-dialog.ui.h:4
 msgid "Edit on OpenStreetMap"
 msgstr "Úprava v projekte OpenStreetMap"
 
-#: ../data/ui/osm-edit-dialog.ui.h:4
+#: ../data/ui/osm-edit-dialog.ui.h:5
 msgid "Cancel"
 msgstr "Zrušiť"
 
-#: ../data/ui/osm-edit-dialog.ui.h:5 ../src/osmEditDialog.js:470
+#: ../data/ui/osm-edit-dialog.ui.h:6 ../src/osmEditDialog.js:470
 msgid "Next"
 msgstr "Ďalej"
 
@@ -573,7 +577,7 @@ msgstr "Trasa poskytovaná službou GraphHopper"
 msgid "Show more results"
 msgstr "Zobraziť viac výsledkov"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:128
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:120
 msgid "Current location"
 msgstr "Aktuálne umiestnenie"
 
@@ -608,7 +612,7 @@ msgstr "Chýbajú potrebné atribúty"
 msgid "Could not find OSM element"
 msgstr "Nepodarilo sa nájsť prvok služby OSM"
 
-#: ../src/application.js:102
+#: ../src/application.js:101
 msgid "A path to a local tiles directory structure"
 msgstr "Cesta k štruktúre adresárov miestnych dlaždíc"
 
@@ -734,27 +738,27 @@ msgstr "chyba analýzy"
 msgid "unknown geometry"
 msgstr "neznáma geometria"
 
-#: ../src/mainWindow.js:358
+#: ../src/mainWindow.js:366
 msgid "Failed to connect to location service"
 msgstr "Zlyhalo pripojenie k lokalizačnej službe"
 
-#: ../src/mainWindow.js:409
+#: ../src/mainWindow.js:418
 msgid "translator-credits"
 msgstr "Dušan Kazik <prescott66@gmail.com>"
 
-#: ../src/mainWindow.js:412
+#: ../src/mainWindow.js:421
 msgid "A map application for GNOME"
 msgstr "Aplikácia na prezeranie máp pre GNOME"
 
-#: ../src/mapView.js:246
+#: ../src/mapView.js:254
 msgid "File type is not supported"
 msgstr "Typ súboru nie je podporovaný"
 
-#: ../src/mapView.js:253
+#: ../src/mapView.js:261
 msgid "Failed to open layer"
 msgstr "Zlyhalo otvorenie vrstvy"
 
-#: ../src/mapView.js:289
+#: ../src/mapView.js:297
 msgid "Failed to open GeoURI"
 msgstr "Zlyhalo otvorenie GeoURI"
 
@@ -948,7 +952,7 @@ msgstr "Zlyhala analýza URI geografickej polohy"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: ../src/place.js:177 ../src/translations.js:330
+#: ../src/place.js:178 ../src/translations.js:330
 msgid "yes"
 msgstr "áno"
 
@@ -957,7 +961,7 @@ msgstr "áno"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:184
+#: ../src/place.js:185
 msgid "limited"
 msgstr "obmedzený"
 
@@ -969,7 +973,7 @@ msgstr "obmedzený"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: ../src/place.js:190 ../src/translations.js:336
+#: ../src/place.js:191 ../src/translations.js:336
 msgid "no"
 msgstr "nie"
 
@@ -978,11 +982,11 @@ msgstr "nie"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:197
+#: ../src/place.js:198
 msgid "designated"
 msgstr "vyhradený"
 
-#: ../src/printLayout.js:242
+#: ../src/printLayout.js:243
 #, javascript-format
 msgid "From %s to %s"
 msgstr "Od %s po %s"
@@ -1174,50 +1178,50 @@ msgid "service"
 msgstr "obsluha"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:228
+#: ../src/utils.js:231
 msgid "Unknown"
 msgstr "Neznáma"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:231
+#: ../src/utils.js:234
 msgid "Exact"
 msgstr "Presná"
 
-#: ../src/utils.js:334
+#: ../src/utils.js:337
 #, javascript-format
 msgid "%f h"
 msgstr "%f h"
 
-#: ../src/utils.js:336
+#: ../src/utils.js:339
 #, javascript-format
 msgid "%f min"
 msgstr "%f min"
 
-#: ../src/utils.js:338
+#: ../src/utils.js:341
 #, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
 #. Translators: This is a distance measured in kilometers
-#: ../src/utils.js:349
+#: ../src/utils.js:352
 #, javascript-format
 msgid "%f km"
 msgstr "%f km"
 
 #. Translators: This is a distance measured in meters
-#: ../src/utils.js:352
+#: ../src/utils.js:355
 #, javascript-format
 msgid "%f m"
 msgstr "%f m"
 
 #. Translators: This is a distance measured in miles
-#: ../src/utils.js:360
+#: ../src/utils.js:363
 #, javascript-format
 msgid "%f mi"
 msgstr "%f mi"
 
 #. Translators: This is a distance measured in feet
-#: ../src/utils.js:363
+#: ../src/utils.js:366
 #, javascript-format
 msgid "%f ft"
 msgstr "%f ft"
