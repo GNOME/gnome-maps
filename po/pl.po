@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-29 19:44+0100\n"
-"PO-Revision-Date: 2016-02-29 19:45+0100\n"
+"POT-Creation-Date: 2016-03-15 23:54+0100\n"
+"PO-Revision-Date: 2016-03-15 23:55+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -63,7 +63,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:86 ../src/mainWindow.js:416
+#: ../src/application.js:85 ../src/mainWindow.js:420
 msgid "Maps"
 msgstr "Mapy"
 
@@ -493,22 +493,26 @@ msgid "City"
 msgstr "Miasto"
 
 #: ../data/ui/osm-edit-dialog.ui.h:1
+msgid "Type"
+msgstr "Typ"
+
+#: ../data/ui/osm-edit-dialog.ui.h:2
 msgid "None"
 msgstr "Brak"
 
-#: ../data/ui/osm-edit-dialog.ui.h:2
+#: ../data/ui/osm-edit-dialog.ui.h:3
 msgid "Recently Used"
 msgstr "Ostatnio używane"
 
-#: ../data/ui/osm-edit-dialog.ui.h:3
+#: ../data/ui/osm-edit-dialog.ui.h:4
 msgid "Edit on OpenStreetMap"
 msgstr "Modyfikacja w serwisie OpenStreetMap"
 
-#: ../data/ui/osm-edit-dialog.ui.h:4
+#: ../data/ui/osm-edit-dialog.ui.h:5
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: ../data/ui/osm-edit-dialog.ui.h:5 ../src/osmEditDialog.js:470
+#: ../data/ui/osm-edit-dialog.ui.h:6 ../src/osmEditDialog.js:470
 msgid "Next"
 msgstr "Dalej"
 
@@ -548,7 +552,7 @@ msgstr "Wyszukiwanie trasy za pomocą oprogramowania GraphHopper"
 msgid "Show more results"
 msgstr "Wyświetl więcej wyników"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:148
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:120
 msgid "Current location"
 msgstr "Obecne położenie"
 
@@ -583,7 +587,7 @@ msgstr "Brak wymaganych atrybutów"
 msgid "Could not find OSM element"
 msgstr "Nie można odnaleźć elementu OSM"
 
-#: ../src/application.js:102
+#: ../src/application.js:101
 msgid "A path to a local tiles directory structure"
 msgstr "Ścieżka do lokalnej struktury katalogów kafli"
 
@@ -709,34 +713,30 @@ msgstr "błąd przetwarzania"
 msgid "unknown geometry"
 msgstr "nieznana geometria"
 
-#: ../src/mainWindow.js:358
+#: ../src/mainWindow.js:366
 msgid "Failed to connect to location service"
 msgstr "Połączenie z usługą położenia się nie powiodło"
 
-#: ../src/mainWindow.js:363
-msgid "Position not found"
-msgstr "Nie odnaleziono pozycji"
-
-#: ../src/mainWindow.js:414
+#: ../src/mainWindow.js:418
 msgid "translator-credits"
 msgstr ""
 "Piotr Drąg <piotrdrag@gmail.com>, 2013-2016\n"
 "Paweł Żołnowski <pawel@zolnowski.name>, 2014-2015\n"
 "Aviary.pl <gnomepl@aviary.pl>, 2013-2016"
 
-#: ../src/mainWindow.js:417
+#: ../src/mainWindow.js:421
 msgid "A map application for GNOME"
 msgstr "Program do wyświetlania map dla środowiska GNOME"
 
-#: ../src/mapView.js:246
+#: ../src/mapView.js:254
 msgid "File type is not supported"
 msgstr "Typ pliku jest nieobsługiwany"
 
-#: ../src/mapView.js:253
+#: ../src/mapView.js:261
 msgid "Failed to open layer"
 msgstr "Otwarcie warstwy się nie powiodło"
 
-#: ../src/mapView.js:289
+#: ../src/mapView.js:297
 msgid "Failed to open GeoURI"
 msgstr "Otwarcie adresu GeoURI się nie powiodło"
 
@@ -930,7 +930,7 @@ msgstr "Przetworzenie adresu URI Geo się nie powiodło"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: ../src/place.js:177 ../src/translations.js:330
+#: ../src/place.js:178 ../src/translations.js:330
 msgid "yes"
 msgstr "tak"
 
@@ -939,7 +939,7 @@ msgstr "tak"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:184
+#: ../src/place.js:185
 msgid "limited"
 msgstr "ograniczony"
 
@@ -951,7 +951,7 @@ msgstr "ograniczony"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: ../src/place.js:190 ../src/translations.js:336
+#: ../src/place.js:191 ../src/translations.js:336
 msgid "no"
 msgstr "nie"
 
@@ -960,11 +960,11 @@ msgstr "nie"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:197
+#: ../src/place.js:198
 msgid "designated"
 msgstr "specjalnie zaprojektowany"
 
-#: ../src/printLayout.js:242
+#: ../src/printLayout.js:243
 #, javascript-format
 msgid "From %s to %s"
 msgstr "Z %s do %s"
@@ -985,15 +985,15 @@ msgstr "Przerwij drukowanie"
 msgid "No route found."
 msgstr "Nie odnaleziono żadnej trasy."
 
-#: ../src/routeService.js:97
+#: ../src/routeService.js:101
 msgid "Route request failed."
 msgstr "Żądanie trasy się nie powiodło."
 
-#: ../src/routeService.js:170
+#: ../src/routeService.js:178
 msgid "Start!"
 msgstr "Start!"
 
-#: ../src/sendToDialog.js:173
+#: ../src/sendToDialog.js:179
 msgid "Failed to open URI"
 msgstr "Otwarcie adresu URI się nie powiodło"
 
@@ -1002,7 +1002,7 @@ msgid "failed to load file"
 msgstr "wczytanie pliku się nie powiodło"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:210
+#: ../src/sidebar.js:208
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Przybliżony czas: %s"
@@ -1156,50 +1156,50 @@ msgid "service"
 msgstr "obsługa"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:228
+#: ../src/utils.js:231
 msgid "Unknown"
 msgstr "Nieznana"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:231
+#: ../src/utils.js:234
 msgid "Exact"
 msgstr "Dokładna"
 
-#: ../src/utils.js:334
+#: ../src/utils.js:337
 #, javascript-format
 msgid "%f h"
 msgstr "%f godz"
 
-#: ../src/utils.js:336
+#: ../src/utils.js:339
 #, javascript-format
 msgid "%f min"
 msgstr "%f min"
 
-#: ../src/utils.js:338
+#: ../src/utils.js:341
 #, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
 #. Translators: This is a distance measured in kilometers
-#: ../src/utils.js:349
+#: ../src/utils.js:352
 #, javascript-format
 msgid "%f km"
 msgstr "%f km"
 
 #. Translators: This is a distance measured in meters
-#: ../src/utils.js:352
+#: ../src/utils.js:355
 #, javascript-format
 msgid "%f m"
 msgstr "%f m"
 
 #. Translators: This is a distance measured in miles
-#: ../src/utils.js:360
+#: ../src/utils.js:363
 #, javascript-format
 msgid "%f mi"
 msgstr "%f mi"
 
 #. Translators: This is a distance measured in feet
-#: ../src/utils.js:363
+#: ../src/utils.js:366
 #, javascript-format
 msgid "%f ft"
 msgstr "%f ft"
