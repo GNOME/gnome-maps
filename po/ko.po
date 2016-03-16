@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-03-01 18:20+0000\n"
-"PO-Revision-Date: 2016-03-02 04:13+0900\n"
+"POT-Creation-Date: 2016-03-15 23:04+0000\n"
+"PO-Revision-Date: 2016-03-16 11:34+0900\n"
 "Last-Translator: Seong-ho Cho <shcho@gnome.org>\n"
-"Language-Team: 한국어 <gnome-kr@googlegroups.com>\n"
+"Language-Team: GNOME Korea <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -58,7 +58,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:86 ../src/mainWindow.js:411
+#: ../src/application.js:85 ../src/mainWindow.js:420
 msgid "Maps"
 msgstr "지도"
 
@@ -75,7 +75,6 @@ msgid "Allows your location to be shown on the map."
 msgstr "사용자 위치를 지도에 표시합니다."
 
 #: ../data/org.gnome.Maps.gschema.xml.h:1
-#| msgid "Open location"
 msgid "last viewed location"
 msgstr "최근 본 위치"
 
@@ -287,7 +286,6 @@ msgid "General"
 msgstr "일반"
 
 #: ../data/ui/help-overlay.ui.h:2
-#| msgid "Show more results"
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "바로 가기 표시"
@@ -298,7 +296,6 @@ msgid "Search"
 msgstr "검색"
 
 #: ../data/ui/help-overlay.ui.h:4
-#| msgid "Toggle route planner"
 msgctxt "shortcut window"
 msgid "Toggle route planner"
 msgstr "경로 계획 도우미 전환"
@@ -309,7 +306,6 @@ msgid "Print route"
 msgstr "경로 인쇄"
 
 #: ../data/ui/help-overlay.ui.h:6
-#| msgid "Quit"
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "끝내기"
@@ -330,13 +326,11 @@ msgid "Zoom out"
 msgstr "축소"
 
 #: ../data/ui/help-overlay.ui.h:10
-#| msgid "Toggle favorites"
 msgctxt "shortcut window"
 msgid "Toggle scale"
 msgstr "축척 바꾸기"
 
 #: ../data/ui/help-overlay.ui.h:11
-#| msgid "Go to current location"
 msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "현재 위치로 이동"
@@ -405,7 +399,6 @@ msgid "Check in here"
 msgstr "이곳을 체크인"
 
 #: ../data/ui/osm-account-dialog.ui.h:1
-#| msgid "Select an account"
 msgid "OpenStreetMap Account"
 msgstr "OpenStreetMap 계정"
 
@@ -435,7 +428,6 @@ msgid "Sign In"
 msgstr "접속"
 
 #: ../data/ui/osm-account-dialog.ui.h:8
-#| msgid "Select an account"
 msgid "Don't have an account?"
 msgstr "계정이 없습니까?"
 
@@ -483,7 +475,6 @@ msgid "House number"
 msgstr "지번"
 
 #: ../data/ui/osm-edit-address.ui.h:3
-#| msgid "Postal code: %s"
 msgid "Postal code"
 msgstr "우편 번호"
 
@@ -493,28 +484,46 @@ msgid "City"
 msgstr "도시"
 
 #: ../data/ui/osm-edit-dialog.ui.h:1
+msgid "Type"
+msgstr "형식"
+
+#: ../data/ui/osm-edit-dialog.ui.h:2
 msgid "None"
 msgstr "없음"
 
-#: ../data/ui/osm-edit-dialog.ui.h:2
+#: ../data/ui/osm-edit-dialog.ui.h:3
+msgid "Add Field"
+msgstr "필드 추가"
+
+#: ../data/ui/osm-edit-dialog.ui.h:4
+msgid "Comment"
+msgstr "설명"
+
+#: ../data/ui/osm-edit-dialog.ui.h:5
+msgid ""
+"Map changes will be visible on all maps that use\n"
+"    OpenStreetMap data."
+msgstr ""
+"OpenStreetMap 데이터를 활용하는 모든 지도에\n"
+"바뀐 지도가 나타납니다."
+
+#: ../data/ui/osm-edit-dialog.ui.h:7
 msgid "Recently Used"
 msgstr "최근 사용"
 
-#: ../data/ui/osm-edit-dialog.ui.h:3
+#: ../data/ui/osm-edit-dialog.ui.h:8
 msgid "Edit on OpenStreetMap"
 msgstr "OpenStreetMap에서 편집"
 
-#: ../data/ui/osm-edit-dialog.ui.h:4
-#| msgid "_Cancel"
+#: ../data/ui/osm-edit-dialog.ui.h:9
 msgid "Cancel"
 msgstr "취소"
 
-#: ../data/ui/osm-edit-dialog.ui.h:5 ../src/osmEditDialog.js:470
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:470
 msgid "Next"
 msgstr "다음"
 
 #: ../data/ui/place-bubble.ui.h:1
-#| msgid "Show more results"
 msgid "Show more information"
 msgstr "더 많은 정보 표시"
 
@@ -539,7 +548,6 @@ msgid "Open Layer"
 msgstr "레이어 열기"
 
 #: ../data/ui/shape-layer-row.ui.h:1
-#| msgid "Toggle favorites"
 msgid "Toggle visible"
 msgstr "보기 상태 전환"
 
@@ -551,7 +559,7 @@ msgstr "그래프 하퍼 경로 검색"
 msgid "Show more results"
 msgstr "더 많은 결과 보기"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:128
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:120
 msgid "Current location"
 msgstr "현재 위치"
 
@@ -562,7 +570,6 @@ msgid "Accuracy: %s"
 msgstr "위치 정확도: %s"
 
 #: ../data/ui/zoom-in-notification.ui.h:1
-#| msgid "Go to current location"
 msgid "Zoom in to add location!"
 msgstr "추가할 위치를 확대합니다!"
 
@@ -576,7 +583,6 @@ msgid "Failed to find tile structure in directory"
 msgstr "디렉터리에서 타일 구조 찾기에 실패했습니다"
 
 #: ../lib/maps-osm.c:56
-#| msgid "Failed to parse Geo URI"
 msgid "Failed to parse XML document"
 msgstr "XML 문서 해석에 실패했습니다"
 
@@ -588,7 +594,7 @@ msgstr "필요한 속성이 빠졌습니다"
 msgid "Could not find OSM element"
 msgstr "OSM 구성 요소를 찾을 수 없습니다"
 
-#: ../src/application.js:102
+#: ../src/application.js:101
 msgid "A path to a local tiles directory structure"
 msgstr "로컬 타일 디렉터리 구조 경로"
 
@@ -714,29 +720,27 @@ msgstr "해석 오류"
 msgid "unknown geometry"
 msgstr "알 수 없는 지형 정보"
 
-#: ../src/mainWindow.js:358
+#: ../src/mainWindow.js:366
 msgid "Failed to connect to location service"
 msgstr "위치 서비스 연결에 실패했습니다."
 
-#: ../src/mainWindow.js:409
+#: ../src/mainWindow.js:418
 msgid "translator-credits"
 msgstr "조성호 <shcho@gnome.org>"
 
-#: ../src/mainWindow.js:412
+#: ../src/mainWindow.js:421
 msgid "A map application for GNOME"
 msgstr "그놈용 지도 프로그램"
 
-#: ../src/mapView.js:246
+#: ../src/mapView.js:254
 msgid "File type is not supported"
 msgstr "파일 형식을 지원하지 않습니다"
 
-#: ../src/mapView.js:253
-#| msgid "Failed to parse Geo URI"
+#: ../src/mapView.js:261
 msgid "Failed to open layer"
 msgstr "레이어 열기에 실패했습니다"
 
-#: ../src/mapView.js:289
-#| msgid "Failed to parse Geo URI"
+#: ../src/mapView.js:297
 msgid "Failed to open GeoURI"
 msgstr "GeoURI 열기에 실패했습니다"
 
@@ -755,7 +759,6 @@ msgid "Bad request"
 msgstr "잘못된 요청"
 
 #: ../src/osmConnection.js:449
-#| msgid "Position not found"
 msgid "Object not found"
 msgstr "객체가 없습니다"
 
@@ -792,8 +795,8 @@ msgid ""
 "The official website. Try to use the most basic form of a URL i.e. http://"
 "example.com instead of http://example.com/index.html."
 msgstr ""
-"공식 웹사이트입니다. http://example.com/index.html 대신 http://example.com"
-"과 같은 식의 기본 URL 형식을 활용하십시오."
+"공식 웹사이트입니다. http://example.com/index.html 대신 http://example.com과 "
+"같은 식의 기본 URL 형식을 활용하십시오."
 
 #: ../src/osmEditDialog.js:125
 msgid "Phone"
@@ -820,7 +823,6 @@ msgstr ""
 "니다."
 
 #: ../src/osmEditDialog.js:142
-#| msgid "Opening hours: %s"
 msgid "Opening hours"
 msgstr "개장 시간"
 
@@ -829,7 +831,6 @@ msgid "See the link in the label for help on format."
 msgstr "형식 도움말을 보려면 레이블의 링크를 살펴보십시오."
 
 #: ../src/osmEditDialog.js:150
-#| msgid "Population: %s"
 msgid "Population"
 msgstr "인구"
 
@@ -842,12 +843,10 @@ msgid "Elevation (height above sea level) of a point in metres."
 msgstr "미터 단위의 높이(해발고도)입니다."
 
 #: ../src/osmEditDialog.js:161
-#| msgid "Wheelchair access: %s"
 msgid "Wheelchair access"
 msgstr "휠체어 접근"
 
 #: ../src/osmEditDialog.js:164 ../src/osmEditDialog.js:173
-#| msgid "yes"
 msgid "Yes"
 msgstr "예"
 
@@ -856,12 +855,10 @@ msgid "No"
 msgstr "아니요"
 
 #: ../src/osmEditDialog.js:166
-#| msgid "limited"
 msgid "Limited"
 msgstr "제한"
 
 #: ../src/osmEditDialog.js:167
-#| msgid "designated"
 msgid "Designated"
 msgstr "지정됨"
 
@@ -894,7 +891,6 @@ msgid "Add to OpenStreetMap"
 msgstr "OpenStreetMap에 추가"
 
 #: ../src/osmEditDialog.js:338
-#| msgid "Select a place"
 msgid "Select Type"
 msgstr "형식 선택"
 
@@ -903,7 +899,6 @@ msgid "Done"
 msgstr "완료"
 
 #: ../src/placeBubble.js:128
-#| msgid "Population: %s"
 msgid "Population:"
 msgstr "인구수:"
 
@@ -912,7 +907,6 @@ msgid "Altitude:"
 msgstr "고도:"
 
 #: ../src/placeBubble.js:139
-#| msgid "Opening hours: %s"
 msgid "Opening hours:"
 msgstr "영업 시간:"
 
@@ -921,7 +915,6 @@ msgid "Internet access:"
 msgstr "인터넷 접속:"
 
 #: ../src/placeBubble.js:149
-#| msgid "Wheelchair access: %s"
 msgid "Wheelchair access:"
 msgstr "휠체어 접근:"
 
@@ -939,7 +932,7 @@ msgstr "지리 URL 해석에 실패했습니다"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: ../src/place.js:177 ../src/translations.js:330
+#: ../src/place.js:178 ../src/translations.js:330
 msgid "yes"
 msgstr "예"
 
@@ -948,7 +941,7 @@ msgstr "예"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:184
+#: ../src/place.js:185
 msgid "limited"
 msgstr "제한함"
 
@@ -960,7 +953,7 @@ msgstr "제한함"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: ../src/place.js:190 ../src/translations.js:336
+#: ../src/place.js:191 ../src/translations.js:336
 msgid "no"
 msgstr "아니요"
 
@@ -969,11 +962,11 @@ msgstr "아니요"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:197
+#: ../src/place.js:198
 msgid "designated"
 msgstr "지정됨"
 
-#: ../src/printLayout.js:242
+#: ../src/printLayout.js:243
 #, javascript-format
 msgid "From %s to %s"
 msgstr "%s에서 %s까지"
@@ -1003,7 +996,6 @@ msgid "Start!"
 msgstr "시작!"
 
 #: ../src/sendToDialog.js:179
-#| msgid "Failed to parse Geo URI"
 msgid "Failed to open URI"
 msgstr "URI 열기에 실패했습니다"
 
@@ -1166,50 +1158,50 @@ msgid "service"
 msgstr "서비스"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:228
+#: ../src/utils.js:231
 msgid "Unknown"
 msgstr "알 수 없음"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:231
+#: ../src/utils.js:234
 msgid "Exact"
 msgstr "정확함"
 
-#: ../src/utils.js:334
+#: ../src/utils.js:337
 #, javascript-format
 msgid "%f h"
 msgstr "%f시간"
 
-#: ../src/utils.js:336
+#: ../src/utils.js:339
 #, javascript-format
 msgid "%f min"
 msgstr "%f분"
 
-#: ../src/utils.js:338
+#: ../src/utils.js:341
 #, javascript-format
 msgid "%f s"
 msgstr "%f초"
 
 #. Translators: This is a distance measured in kilometers
-#: ../src/utils.js:349
+#: ../src/utils.js:352
 #, javascript-format
 msgid "%f km"
 msgstr "%f킬로미터"
 
 #. Translators: This is a distance measured in meters
-#: ../src/utils.js:352
+#: ../src/utils.js:355
 #, javascript-format
 msgid "%f m"
 msgstr "%f미터"
 
 #. Translators: This is a distance measured in miles
-#: ../src/utils.js:360
+#: ../src/utils.js:363
 #, javascript-format
 msgid "%f mi"
 msgstr "%f마일"
 
 #. Translators: This is a distance measured in feet
-#: ../src/utils.js:363
+#: ../src/utils.js:366
 #, javascript-format
 msgid "%f ft"
 msgstr "%f피트"
