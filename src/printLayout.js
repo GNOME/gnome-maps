@@ -276,7 +276,7 @@ const PrintLayout = new Lang.Class({
     },
 
     _formatQueryPlaceName: function(index) {
-        let query = Application.routeService.query;
+        let query = Application.routeQuery;
         if (index === -1)
             index = query.filledPoints.length - 1;
         let name;

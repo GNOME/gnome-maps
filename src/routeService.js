@@ -35,30 +35,20 @@ const Utils = imports.utils;
 const GraphHopper = new Lang.Class({
     Name: 'GraphHopper',
 
-    get query() {
-        return this._query;
-    },
-
     get route() {
         return this._route;
     },
 
-    _init: function() {
+    _init: function(params) {
         this._session = new Soup.Session({ user_agent : 'gnome-maps/' + pkg.version });
         this._key     = "VCIHrHj0pDKb8INLpT4s5hVadNmJ1Q3vi0J4nJYP";
         this._baseURL = "https://graphhopper.com/api/1/route?";
         this._locale  = GLib.get_language_names()[0];
         this._route   = new Route.Route();
-        this._query   = new RouteQuery.RouteQuery();
         this.storedRoute = null;
-
-        this.query.connect('notify::points', (function() {
-            if (this.query.isValid())
-                this.fetchRoute(this.query.filledPoints,
-                                this._query.transportation);
-        }).bind(this));
-
-        this.parent();
+        this._query = params.query;
+        delete params.query;
+        this.parent(params);
     },
 
     _updateFromStored: function() {
@@ -88,8 +78,8 @@ const GraphHopper = new Lang.Class({
                 let result = this._parseMessage(message);
                 if (!result) {
                     Application.notificationManager.showMessage(_("No route found."));
-                    if (this.query.latest)
-                        this.query.latest.place = null;
+                    if (this._query.latest)
+                        this._query.latest.place = null;
                     else
                         this.route.reset();
 
@@ -100,8 +90,8 @@ const GraphHopper = new Lang.Class({
             } catch(e) {
                 Application.notificationManager.showMessage(_("Route request failed."));
                 Utils.debug(e);
-                if (this.query.latest)
-                    this.query.latest.place = null;
+                if (this._query.latest)
+                    this._query.latest.place = null;
                 else
                     this.route.reset();
             }
@@ -184,7 +174,7 @@ const GraphHopper = new Lang.Class({
             let text = instr.text;
             if (type === Route.TurnPointType.VIA) {
                 via++;
-                let viaPlace = this.query.filledPoints[via].place;
+                let viaPlace = this._query.filledPoints[via].place;
                 text = viaPlace.name || instr.text;
             }
             return new Route.TurnPoint({

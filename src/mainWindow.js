@@ -134,9 +134,9 @@ const MainWindow = new Lang.Class({
 
     _createSidebar: function() {
         let sidebar = new Sidebar.Sidebar(this._mapView);
-        Application.routeService.query.connect('notify',
-                                               this._setRevealSidebar.bind(this, true));
 
+        Application.routeQuery.connect('notify',
+                                       this._setRevealSidebar.bind(this, true));
         this._toggleSidebarButton.bind_property('active',
                                                 this._mapView, 'routeVisible',
                                                 GObject.BindingFlags.BIDIRECTIONAL);
