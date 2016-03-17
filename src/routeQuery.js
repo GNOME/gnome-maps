@@ -31,12 +31,14 @@ const Transportation = {
     CAR:        0,
     BIKE:       1,
     PEDESTRIAN: 2,
+    TRANSIT:    3,
 
     toString: function (transportation) {
         switch(transportation) {
         case Transportation.CAR:        return 'car';
         case Transportation.BIKE:       return 'bike';
         case Transportation.PEDESTRIAN: return 'foot';
+        case Transportation.TRANSIT:    return 'transit';
         default:                        return null;
         }
     }
@@ -91,7 +93,8 @@ const RouteQuery = new Lang.Class({
                                                 GObject.ParamFlags.WRITABLE,
                                                 Transportation.CAR,
                                                 Transportation.PEDESTRIAN,
-                                                Transportation.CAR)
+                                                Transportation.CAR,
+                                                Transportation.TRANSIT)
     },
 
     get points() {
