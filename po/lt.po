@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-03-02 19:34+0000\n"
-"PO-Revision-Date: 2016-03-07 21:56+0200\n"
+"POT-Creation-Date: 2016-03-16 10:09+0000\n"
+"PO-Revision-Date: 2016-03-16 15:36+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Poedit 1.8.7\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid "GNOME Maps"
@@ -266,7 +266,6 @@ msgid "Export As Image"
 msgstr "Eksportuoti kaip paveikslą"
 
 #: ../data/ui/context-menu.ui.h:4
-#| msgid "OpenStreetMap Account"
 msgid "Add to OpenStreetMap"
 msgstr "Pridėti prie OpenStreetMap"
 
@@ -288,7 +287,6 @@ msgid "General"
 msgstr "Bendra"
 
 #: ../data/ui/help-overlay.ui.h:2
-#| msgid "_Keyboard Shortcuts"
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Rodyti trumpinius"
@@ -480,7 +478,6 @@ msgid "House number"
 msgstr "Namo numeris"
 
 #: ../data/ui/osm-edit-address.ui.h:3
-#| msgid "Postal code: %s"
 msgid "Postal code"
 msgstr "Pašto kodas"
 
@@ -490,23 +487,42 @@ msgid "City"
 msgstr "Miestas"
 
 #: ../data/ui/osm-edit-dialog.ui.h:1
+msgid "Type"
+msgstr "Tipas"
+
+#: ../data/ui/osm-edit-dialog.ui.h:2
 msgid "None"
 msgstr "Nėra"
 
-#: ../data/ui/osm-edit-dialog.ui.h:2
+#: ../data/ui/osm-edit-dialog.ui.h:3
+msgid "Add Field"
+msgstr "Pridėti lauką"
+
+#: ../data/ui/osm-edit-dialog.ui.h:4
+msgid "Comment"
+msgstr "Komentaras"
+
+#: ../data/ui/osm-edit-dialog.ui.h:5
+msgid ""
+"Map changes will be visible on all maps that use\n"
+"    OpenStreetMap data."
+msgstr ""
+"Žemėlapio pakeitimai bus matomi visuose žemėlapiuose,\n"
+"     kuriuose naudojami OpenStreetMap duomenys."
+
+#: ../data/ui/osm-edit-dialog.ui.h:7
 msgid "Recently Used"
 msgstr "Neseniai naudoti"
 
-#: ../data/ui/osm-edit-dialog.ui.h:3
-#| msgid "Set up OpenStreetMap Account"
+#: ../data/ui/osm-edit-dialog.ui.h:8
 msgid "Edit on OpenStreetMap"
 msgstr "Redaguoti OpenStreetMap"
 
-#: ../data/ui/osm-edit-dialog.ui.h:4
+#: ../data/ui/osm-edit-dialog.ui.h:9
 msgid "Cancel"
 msgstr "Atsisakyti"
 
-#: ../data/ui/osm-edit-dialog.ui.h:5 ../src/osmEditDialog.js:470
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:470
 msgid "Next"
 msgstr "Kitas"
 
@@ -557,7 +573,6 @@ msgid "Accuracy: %s"
 msgstr "Tikslumas: %s"
 
 #: ../data/ui/zoom-in-notification.ui.h:1
-#| msgid "Go to current location"
 msgid "Zoom in to add location!"
 msgstr "Pritraukti vietos pridėjimui!"
 
@@ -814,7 +829,6 @@ msgstr ""
 "pvz. „lt:Straipsnio pavadinimas“."
 
 #: ../src/osmEditDialog.js:142
-#| msgid "Opening hours:"
 msgid "Opening hours"
 msgstr "Darbo laikas"
 
@@ -878,13 +892,11 @@ msgid "Service"
 msgstr "Tarnyba"
 
 #: ../src/osmEditDialog.js:287
-#| msgid "OpenStreetMap Account"
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Pridėti į OpenStreetMap"
 
 #: ../src/osmEditDialog.js:338
-#| msgid "Select a place"
 msgid "Select Type"
 msgstr "Pasirinkite tipą"
 
@@ -926,7 +938,7 @@ msgstr "Nepavyko perskaityti Geo URI"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: ../src/place.js:177 ../src/translations.js:330
+#: ../src/place.js:178 ../src/translations.js:330
 msgid "yes"
 msgstr "taip"
 
@@ -935,7 +947,7 @@ msgstr "taip"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:184
+#: ../src/place.js:185
 msgid "limited"
 msgstr "ribota"
 
@@ -947,7 +959,7 @@ msgstr "ribota"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: ../src/place.js:190 ../src/translations.js:336
+#: ../src/place.js:191 ../src/translations.js:336
 msgid "no"
 msgstr "ne"
 
@@ -956,7 +968,7 @@ msgstr "ne"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:197
+#: ../src/place.js:198
 msgid "designated"
 msgstr "su paskirtimi"
 
@@ -1152,50 +1164,50 @@ msgid "service"
 msgstr "tarnyba"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:228
+#: ../src/utils.js:231
 msgid "Unknown"
 msgstr "Nežinomas"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:231
+#: ../src/utils.js:234
 msgid "Exact"
 msgstr "Tikslus"
 
-#: ../src/utils.js:334
+#: ../src/utils.js:337
 #, javascript-format
 msgid "%f h"
 msgstr "%f val"
 
-#: ../src/utils.js:336
+#: ../src/utils.js:339
 #, javascript-format
 msgid "%f min"
 msgstr "%f min"
 
-#: ../src/utils.js:338
+#: ../src/utils.js:341
 #, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
 #. Translators: This is a distance measured in kilometers
-#: ../src/utils.js:349
+#: ../src/utils.js:352
 #, javascript-format
 msgid "%f km"
 msgstr "%f km"
 
 #. Translators: This is a distance measured in meters
-#: ../src/utils.js:352
+#: ../src/utils.js:355
 #, javascript-format
 msgid "%f m"
 msgstr "%f m"
 
 #. Translators: This is a distance measured in miles
-#: ../src/utils.js:360
+#: ../src/utils.js:363
 #, javascript-format
 msgid "%f mi"
 msgstr "%f mi"
 
 #. Translators: This is a distance measured in feet
-#: ../src/utils.js:363
+#: ../src/utils.js:366
 #, javascript-format
 msgid "%f ft"
 msgstr "%f pėdos"
