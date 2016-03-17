@@ -33,6 +33,11 @@ const PlaceStore  = imports.placeStore;
 const RouteEntry = imports.routeEntry;
 const RouteQuery = imports.routeQuery;
 const StoredRoute = imports.storedRoute;
+const TransitArrivalRow = imports.transitArrivalRow;
+const TransitItineraryRow = imports.transitItineraryRow;
+const TransitLegRow = imports.transitLegRow;
+const TransitMoreRow = imports.transitMoreRow;
+const TransitOptionsPanel = imports.transitOptionsPanel;
 const Utils = imports.utils;
 
 const Sidebar = new Lang.Class({
@@ -48,40 +53,76 @@ const Sidebar = new Lang.Class({
                         'modeBikeToggle',
                         'modeCarToggle',
                         'modePedestrianToggle',
-                        'timeInfo' ],
+                        'modeTransitToggle',
+                        'timeInfo',
+                        'linkButtonStack',
+                        'transitWindow',
+                        'transitRevealer',
+                        //'transitOptionsPanel',
+                        'transitHeader',
+                        'transitListStack',
+                        'transitOverviewListBox',
+                        'transitItineraryHeader',
+                        'transitItineraryListBox',
+                        'transitItineraryBackButton',
+                        'transitItineraryTimeLabel',
+                        'transitItineraryDurationLabel'],
 
     _init: function(mapView) {
         this.parent({ transition_type: Gtk.RevealerTransitionType.SLIDE_LEFT });
 
         this._mapView = mapView;
 
+        this._query = Application.routeQuery;
         this._initInstructionList();
-
         this._initTransportationToggles(this._modePedestrianToggle,
                                         this._modeBikeToggle,
-                                        this._modeCarToggle);
+                                        this._modeCarToggle,
+                                        this._modeTransitToggle);
+
         this._initQuerySignals();
-
-        let query = Application.routeService.query;
-
-        query.addPoint(0);
-        query.addPoint(1);
+        this._query.addPoint(0);
+        this._query.addPoint(1);
+        this._switchRoutingMode(RouteQuery.Transportation.CAR);
+        /* Enable/disable transit mode switch based on the presence of
+         * OpenTripPlanner.
+         * For some reason, setting visible to false in the UI file and
+         * dynamically setting visible false here doesn't work, maybe because
+         * it's part of a radio group? As a workaround, just remove the button
+         * instead.
+         */
+        if (!Application.routingDelegator.openTripPlanner.enabled)
+            this._modeTransitToggle.destroy();
+        /* I could not get the custom GTK+ template widget to init properly
+         * from the UI file, we also need to manually insert the transit
+         * itinerary header widget into the GtkStack to get the correct
+         * animation direction.
+         */
+        this._transitOptionsPanel =
+            new TransitOptionsPanel.TransitOptionsPanel({ visible: true });
+        this._transitHeader.add_named(this._transitOptionsPanel, 'options');
+        this._transitHeader.add_named(this._transitItineraryHeader,
+                                      'itinerary-header');
     },
 
-    _initTransportationToggles: function(pedestrian, bike, car) {
-        let query = Application.routeService.query;
+    _initTransportationToggles: function(pedestrian, bike, car, transit) {
         let transport = RouteQuery.Transportation;
 
         let onToggle = function(mode, button) {
-            if (button.active && query.transportation !== mode)
-                query.transportation = mode;
+            let previousMode = this._query.transportation;
+
+            if (button.active && previousMode !== mode) {
+                this._switchRoutingMode(mode);
+                this._query.transportation = mode;
+            }
         };
         pedestrian.connect('toggled', onToggle.bind(this, transport.PEDESTRIAN));
         car.connect('toggled', onToggle.bind(this, transport.CAR));
         bike.connect('toggled', onToggle.bind(this, transport.BIKE));
+        transit.connect('toggled', onToggle.bind(this, transport.TRANSIT))
 
         let setToggles = function() {
-            switch(query.transportation) {
+            switch(Application.routeQuery.transportation) {
             case transport.PEDESTRIAN:
                 pedestrian.active = true;
                 break;
@@ -91,21 +132,39 @@ const Sidebar = new Lang.Class({
             case transport.BIKE:
                 bike.active = true;
                 break;
+            case transport.TRANSIT:
+                transit.active = true;
+                break;
             }
+
+            this._switchRoutingMode(Application.routeQuery.transportation);
         };
 
-        setToggles();
-        query.connect('notify::transportation', setToggles);
+        setToggles.bind(this)();
+        this._query.connect('notify::transportation', setToggles.bind(this));
+    },
+
+    _switchRoutingMode: function(mode) {
+        if (mode === RouteQuery.Transportation.TRANSIT) {
+            Application.routingDelegator.useTransit = true;
+            this._linkButtonStack.visible_child_name = 'openTripPlanner';
+            this._transitOptionsPanel.reset();
+            this._transitRevealer.reveal_child = true;
+            this._clearInstructions();
+        } else {
+            Application.routingDelegator.useTransit = false;
+            this._linkButtonStack.visible_child_name = 'graphHopper';
+            this._transitRevealer.reveal_child = false;
+            Application.routingDelegator.openTripPlanner.plan.deselectItinerary();
+        }
     },
 
     _initQuerySignals: function() {
-        let query = Application.routeService.query;
-
-        query.connect('point-added', (function(obj, point, index) {
+        this._query.connect('point-added', (function(obj, point, index) {
             this._createRouteEntry(index, point);
         }).bind(this));
 
-        query.connect('point-removed', (function(obj, point, index) {
+        this._query.connect('point-removed', (function(obj, point, index) {
             let row = this._entryList.get_row_at_index(index);
             row.destroy();
         }).bind(this));
@@ -133,40 +192,55 @@ const Sidebar = new Lang.Class({
         if (type === RouteEntry.Type.FROM) {
             routeEntry.button.connect('clicked', (function() {
                 let lastIndex = this._entryList.get_children().length;
-                Application.routeService.query.addPoint(lastIndex - 1);
+                this._query.addPoint(lastIndex - 1);
             }).bind(this));
 
             this.bind_property('child-revealed',
                                routeEntry.entry, 'has_focus',
                                GObject.BindingFlags.DEFAULT);
         } else if (type === RouteEntry.Type.VIA) {
-            routeEntry.button.connect('clicked', function() {
+            routeEntry.button.connect('clicked', (function() {
                 let row = routeEntry.get_parent();
-                Application.routeService.query.removePoint(row.get_index());
-            });
+                this._query.removePoint(row.get_index());
+            }).bind(this));
         }
 
         this._initRouteDragAndDrop(routeEntry);
     },
 
     _initInstructionList: function() {
-        let route = Application.routeService.route;
-        let query = Application.routeService.query;
+        let route = Application.routingDelegator.graphHopper.route;
+        let transitPlan = Application.routingDelegator.openTripPlanner.plan;
 
         route.connect('reset', (function() {
             this._clearInstructions();
 
             let length = this._entryList.get_children().length;
             for (let index = 1; index < (length - 1); index++) {
-                query.removePoint(index);
+                this._query.removePoint(index);
             }
         }).bind(this));
 
-        query.connect('notify', (function() {
-            if (query.isValid())
+        transitPlan.connect('reset', (function() {
+            this._clearTransitOverview();
+            this._showTransitOverview();
+            this._instructionStack.visible_child = this._transitWindow;
+            /* don't remove query points as with the turn-based routing,
+             * since we might get "no route" because of the time selected
+             * and so on */
+        }).bind(this));
+
+        this._query.connect('notify', (function() {
+            if (this._query.isValid()) {
                 this._instructionStack.visible_child = this._instructionSpinner;
-            else
-                this._clearInstructions();
+            } else {
+                if (this._query.transportation === RouteQuery.Transportation.TRANSIT) {
+                    this._clearTransitOverview();
+                    this._showTransitOverview();
+                } else {
+                    this._clearInstructions();
+                }
+            }
 
             if (this._storeRouteTimeoutId)
                 this._cancelStore();
@@ -181,11 +255,11 @@ const Sidebar = new Lang.Class({
 
             this._storeRouteTimeoutId = Mainloop.timeout_add(5000, (function() {
                 let placeStore = Application.placeStore;
-                let places = query.filledPoints.map(function(point) {
+                let places = this._query.filledPoints.map(function(point) {
                     return point.place;
                 });
                 let storedRoute = new StoredRoute.StoredRoute({
-                    transportation: query.transportation,
+                    transportation: this._query.transportation,
                     route: route,
                     places: places,
                     geoclue: Application.geoclue
@@ -213,7 +287,113 @@ const Sidebar = new Lang.Class({
             if (row)
                 this._mapView.showTurnPoint(row.turnPoint);
         }).bind(this));
+
+        transitPlan.connect('update', (function() {
+            this._clearTransitOverview();
+            this._showTransitOverview();
+            this._populateTransitItineraryOverview();
+        }).bind(this));
+
+        /* use list separators for the transit itinerary overview list */
+        this._transitOverviewListBox.set_header_func(function(row, prev) {
+            if (prev)
+                row.set_header(new Gtk.Separator());
+        });
+
+        this._transitOverviewListBox.connect('row-activated',
+                                             this._onItineraryOverviewRowActivated.bind(this));
+        this._transitItineraryBackButton.connect('clicked',
+                                                 this._showTransitOverview.bind(this));
+
     },
+
+    _clearTransitOverview: function() {
+        let listBox = this._transitOverviewListBox;
+        listBox.forall(listBox.remove.bind(listBox));
+
+        this._instructionStack.visible_child = this._transitWindow;
+        this._timeInfo.label = '';
+        this._distanceInfo.label = '';
+    },
+
+    _clearTransitItinerary: function() {
+        let listBox = this._transitItineraryListBox;
+        listBox.forall(listBox.remove.bind(listBox));
+    },
+
+    _showTransitOverview: function() {
+        let plan = Application.routingDelegator.openTripPlanner.plan;
+
+        this._transitListStack.visible_child_name = 'overview';
+        this._transitHeader.visible_child_name = 'options';
+        plan.deselectItinerary();
+    },
+
+    _showTransitItineraryView: function() {
+        this._transitListStack.visible_child_name = 'itinerary';
+        this._transitHeader.visible_child_name = 'itinerary-header';
+    },
+
+    _populateTransitItineraryOverview: function() {
+        let plan = Application.routingDelegator.openTripPlanner.plan;
+
+        plan.itineraries.forEach((function(itinerary) {
+            let row =
+                new TransitItineraryRow.TransitItineraryRow({ visible: true,
+                                                              itinerary: itinerary });
+            this._transitOverviewListBox.add(row);
+        }).bind(this));
+        /* add the "load more" row */
+        this._transitOverviewListBox.add(
+            new TransitMoreRow.TransitMoreRow({ visible: true }));
+
+        /* add an empty list row to get a final separator */
+        this._transitOverviewListBox.add(new Gtk.ListBoxRow({ visible: true }));
+    },
+
+    _onItineraryActivated: function(itinerary) {
+        let plan = Application.routingDelegator.openTripPlanner.plan;
+
+        this._populateTransitItinerary(itinerary);
+        this._showTransitItineraryView();
+        plan.selectItinerary(itinerary);
+    },
+
+    _onMoreActivated: function(row) {
+        row.startLoading();
+        Application.routingDelegator.openTripPlanner.fetchMoreResults();
+    },
+
+    _onItineraryOverviewRowActivated: function(listBox, row) {
+        this._transitOverviewListBox.unselect_all();
+
+        if (row.itinerary)
+            this._onItineraryActivated(row.itinerary);
+        else
+            this._onMoreActivated(row);
+    },
+
+    _populateTransitItinerary: function(itinerary) {
+        this._transitItineraryTimeLabel.label =
+            itinerary.prettyPrintTimeInterval();
+        this._transitItineraryDurationLabel.label =
+            itinerary.prettyPrintDuration();
+
+        this._clearTransitItinerary();
+        for (let i = 0; i < itinerary.legs.length; i++) {
+            let leg = itinerary.legs[i];
+            let row = new TransitLegRow.TransitLegRow({ leg: leg,
+                                                        start: i === 0,
+                                                        mapView: this._mapView });
+            this._transitItineraryListBox.add(row);
+        }
+
+        /* insert the additional arrival row, showing the arrival place and time */
+        this._transitItineraryListBox.add(
+            new TransitArrivalRow.TransitArrivalRow({ itinerary: itinerary,
+                                                      mapView: this._mapView }));
+    },
+
 
     _clearInstructions: function() {
         let listBox = this._instructionList;
@@ -226,8 +406,7 @@ const Sidebar = new Lang.Class({
 
     // Iterate over points and establish the new order of places
     _reorderRoutePoints: function(srcIndex, destIndex) {
-        let query = Application.routeService.query;
-        let points = query.points;
+        let points = this._query.points;
         let srcPlace = this._draggedPoint.place;
 
         // Determine if we are swapping from "above" or "below"
@@ -235,19 +414,18 @@ const Sidebar = new Lang.Class({
 
         // Hold off on notifying the changes to query.points until
         // we have re-arranged the places.
-        query.freeze_notify();
+        this._query.freeze_notify();
 
         for (let i = destIndex; i !== (srcIndex + step); i += step) {
             // swap
             [points[i].place, srcPlace] = [srcPlace, points[i].place];
         }
 
-        query.thaw_notify();
+        this._query.thaw_notify();
     },
 
     _onDragDrop: function(row, context, x, y, time) {
-        let query = Application.routeService.query;
-        let srcIndex = query.points.indexOf(this._draggedPoint);
+        let srcIndex = this._query.points.indexOf(this._draggedPoint);
         let destIndex = row.get_index();
 
         this._reorderRoutePoints(srcIndex, destIndex);
@@ -352,4 +530,4 @@ const Sidebar = new Lang.Class({
 
         this._initDragWidget();
     }
-});
+})
