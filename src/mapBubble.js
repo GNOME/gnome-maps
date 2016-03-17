@@ -150,7 +150,7 @@ const MapBubble = new Lang.Class({
     },
 
     _initRouteButton: function(button, routeFrom) {
-        let query = Application.routeService.query;
+        let query = Application.routeQuery;
         let route = Application.routeService.route;
         let from = query.points[0];
         let to = query.points[query.points.length - 1];

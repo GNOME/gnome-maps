@@ -40,6 +40,7 @@ const OSMEdit = imports.osmEdit;
 const OSMTypeSearchEntry = imports.osmTypeSearchEntry;
 const PlaceStore = imports.placeStore;
 const RouteService = imports.routeService;
+const RouteQuery = imports.routeQuery;
 const Settings = imports.settings;
 const Utils = imports.utils;
 
@@ -56,6 +57,7 @@ let checkInManager = null;
 let contactStore = null;
 let osmEdit = null;
 let normalStartup = true;
+let routeQuery = null;
 
 const _ensuredTypes = [WebKit2.WebView,
                        OSMTypeSearchEntry.OSMTypeSearchEntry];
@@ -244,6 +246,7 @@ const Application = new Lang.Class({
 
     _initServices: function() {
         settings       = Settings.getSettings('org.gnome.Maps');
+        routeQuery     = new RouteQuery.RouteQuery();
         routeService   = new RouteService.GraphHopper();
         geoclue        = new Geoclue.Geoclue();
         geocodeService = new GeocodeService.GeocodeService();

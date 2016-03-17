@@ -91,7 +91,7 @@ const TurnPointMarker = new Lang.Class({
     },
 
     _onMarkerDrag: function() {
-        let query = Application.routeService.query;
+        let query = Application.routeQuery;
         let place = new Place.Place({
             location: new Location.Location({ latitude: this.latitude.toFixed(5),
                                               longitude: this.longitude.toFixed(5) }) });

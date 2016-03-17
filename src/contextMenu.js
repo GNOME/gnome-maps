@@ -65,8 +65,8 @@ const ContextMenu = new Lang.Class({
                                          this._onAddOSMLocationActivated.bind(this));
         this._routeItem.connect('activate',
                                 this._onRouteActivated.bind(this));
-        Application.routeService.query.connect('notify::points',
-                                               this._routingUpdate.bind(this));
+        Application.routeQuery.connect('notify::points',
+                                       this._routingUpdate.bind(this));
         this._routeItem.visible = false;
         this._routingUpdate();
     },
@@ -86,7 +86,7 @@ const ContextMenu = new Lang.Class({
     },
 
     _routingUpdate: function() {
-        let query = Application.routeService.query;
+        let query = Application.routeQuery;
 
         if (query.points.length === 0)
             return;
@@ -102,7 +102,7 @@ const ContextMenu = new Lang.Class({
     },
 
     _onRouteActivated: function() {
-        let query = Application.routeService.query;
+        let query = Application.routeQuery;
         let location = new Location.Location({ latitude: this._latitude,
                                                longitude: this._longitude,
                                                accuracy: 0 });
