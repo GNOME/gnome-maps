@@ -5,10 +5,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-ma"
-"ps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-03-05 09:24+0000\n"
-"PO-Revision-Date: 2016-03-05 13:48+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"maps&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-03-20 09:28+0000\n"
+"PO-Revision-Date: 2016-03-20 21:28+0200\n"
 "Last-Translator: Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>\n"
 "Language-Team: Latvian <lata-l10n@googlegroups.com>\n"
 "Language: lv\n"
@@ -187,7 +187,6 @@ msgstr ""
 "Norāda, vai lietotājs ir ierakstījies, lai rediģētu OpenStreetMap datus."
 
 #: ../data/ui/app-menu.ui.h:1
-#| msgid "Setup OpenStreetMap Account"
 msgid "Set up OpenStreetMap Account"
 msgstr "Izveidot OpenStreetMap kontu"
 
@@ -266,7 +265,6 @@ msgid "Export As Image"
 msgstr "Eksportēt kā attēlu"
 
 #: ../data/ui/context-menu.ui.h:4
-#| msgid "Setup OpenStreetMap Account"
 msgid "Add to OpenStreetMap"
 msgstr "Pievienot OpenStreetMap kartēm"
 
@@ -288,7 +286,6 @@ msgid "General"
 msgstr "Vispārīgi"
 
 #: ../data/ui/help-overlay.ui.h:2
-#| msgid "_Keyboard Shortcuts"
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Rādīt saīsnes"
@@ -490,23 +487,42 @@ msgid "City"
 msgstr "Pilsēta"
 
 #: ../data/ui/osm-edit-dialog.ui.h:1
+msgid "Type"
+msgstr "Tips"
+
+#: ../data/ui/osm-edit-dialog.ui.h:2
 msgid "None"
 msgstr "Nav"
 
-#: ../data/ui/osm-edit-dialog.ui.h:2
+#: ../data/ui/osm-edit-dialog.ui.h:3
+msgid "Add Field"
+msgstr "Pievienot lauku"
+
+#: ../data/ui/osm-edit-dialog.ui.h:4
+msgid "Comment"
+msgstr "Komentārs"
+
+#: ../data/ui/osm-edit-dialog.ui.h:5
+msgid ""
+"Map changes will be visible on all maps that use\n"
+"    OpenStreetMap data."
+msgstr ""
+"Izmaiņas kartē būs redzmas visās kartēs, kas izmanto\n"
+"    OpenStreetMap datus."
+
+#: ../data/ui/osm-edit-dialog.ui.h:7
 msgid "Recently Used"
 msgstr "Nesen lietotie"
 
-#: ../data/ui/osm-edit-dialog.ui.h:3
-#| msgid "Setup OpenStreetMap Account"
+#: ../data/ui/osm-edit-dialog.ui.h:8
 msgid "Edit on OpenStreetMap"
 msgstr "Rediģēt OpenStreetMap karti"
 
-#: ../data/ui/osm-edit-dialog.ui.h:4
+#: ../data/ui/osm-edit-dialog.ui.h:9
 msgid "Cancel"
 msgstr "Atcelt"
 
-#: ../data/ui/osm-edit-dialog.ui.h:5 ../src/osmEditDialog.js:470
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:470
 msgid "Next"
 msgstr "Nākamais"
 
@@ -557,7 +573,6 @@ msgid "Accuracy: %s"
 msgstr "Precizitāte — %s"
 
 #: ../data/ui/zoom-in-notification.ui.h:1
-#| msgid "Go to current location"
 msgid "Zoom in to add location!"
 msgstr "Tuviniet, lai pievienotu atrašanās vietu!"
 
@@ -783,8 +798,8 @@ msgid ""
 "The official website. Try to use the most basic form of a URL i.e. http://"
 "example.com instead of http://example.com/index.html."
 msgstr ""
-"Oficiālā tīmekļa vietne. Mēģiniet izmantot pamata URL, tas ir, "
-"http://example.com, nevis http://example.com/index.html."
+"Oficiālā tīmekļa vietne. Mēģiniet izmantot pamata URL, tas ir, http://"
+"example.com, nevis http://example.com/index.html."
 
 #: ../src/osmEditDialog.js:125
 msgid "Phone"
@@ -807,11 +822,10 @@ msgid ""
 "The format used should include the language code and the article title like "
 "”en:Article title”."
 msgstr ""
-"Formātam vajadzētu iekļaut valodas kodu un raksta virsrakstu, piemēram "
-"“lv:Raksta virsraksts”"
+"Formātam vajadzētu iekļaut valodas kodu un raksta virsrakstu, piemēram “lv:"
+"Raksta virsraksts”"
 
 #: ../src/osmEditDialog.js:142
-#| msgid "Opening hours:"
 msgid "Opening hours"
 msgstr "Darba laiks"
 
@@ -875,13 +889,11 @@ msgid "Service"
 msgstr "Serviss"
 
 #: ../src/osmEditDialog.js:287
-#| msgid "Setup OpenStreetMap Account"
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Pievienot OpenStreetMap kartēm"
 
 #: ../src/osmEditDialog.js:338
-#| msgid "Select a place"
 msgid "Select Type"
 msgstr "Izvēlēties tipu"
 
@@ -923,7 +935,7 @@ msgstr "Neizdevās parsēt Geo URI"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: ../src/place.js:177 ../src/translations.js:330
+#: ../src/place.js:178 ../src/translations.js:330
 msgid "yes"
 msgstr "jā"
 
@@ -932,7 +944,7 @@ msgstr "jā"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:184
+#: ../src/place.js:185
 msgid "limited"
 msgstr "ierobežots"
 
@@ -944,7 +956,7 @@ msgstr "ierobežots"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: ../src/place.js:190 ../src/translations.js:336
+#: ../src/place.js:191 ../src/translations.js:336
 msgid "no"
 msgstr "nē"
 
@@ -953,7 +965,7 @@ msgstr "nē"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:197
+#: ../src/place.js:198
 msgid "designated"
 msgstr "nozīmēts"
 
@@ -1149,50 +1161,51 @@ msgid "service"
 msgstr "serviss"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:228
+#: ../src/utils.js:231
 msgid "Unknown"
 msgstr "Nezināms"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:231
+#: ../src/utils.js:234
 msgid "Exact"
 msgstr "Precīzi"
 
-#: ../src/utils.js:334
+#: ../src/utils.js:337
 #, javascript-format
 msgid "%f h"
 msgstr "%f h"
 
-#: ../src/utils.js:336
+#: ../src/utils.js:339
 #, javascript-format
 msgid "%f min"
 msgstr "%f min"
 
-#: ../src/utils.js:338
+#: ../src/utils.js:341
 #, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
 #. Translators: This is a distance measured in kilometers
-#: ../src/utils.js:349
+#: ../src/utils.js:352
 #, javascript-format
 msgid "%f km"
 msgstr "%f km"
 
 #. Translators: This is a distance measured in meters
-#: ../src/utils.js:352
+#: ../src/utils.js:355
 #, javascript-format
 msgid "%f m"
 msgstr "%f m"
 
 #. Translators: This is a distance measured in miles
-#: ../src/utils.js:360
+#: ../src/utils.js:363
 #, javascript-format
 msgid "%f mi"
 msgstr "%f jūdzes"
 
 #. Translators: This is a distance measured in feet
-#: ../src/utils.js:363
+#: ../src/utils.js:366
 #, javascript-format
 msgid "%f ft"
 msgstr "%f pēdas"
+
