@@ -156,7 +156,7 @@ parse_node_refs (const xmlNode *node_ref_child)
             }
 
           g_hash_table_destroy (attributes);
-    	  }
+        }
     }
 
   return node_refs;
@@ -468,6 +468,7 @@ maps_osm_parse (const char *content, guint length, GError **error)
     }
 
   xmlFreeNode (sub_node);
+  xmlFreeDoc (doc);
 
   return object;
 }
