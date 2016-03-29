@@ -30,6 +30,7 @@ const Mainloop = imports.mainloop;
 
 const Application = imports.application;
 const ContactPlace = imports.contactPlace;
+const Color = imports.color;
 const Geoclue = imports.geoclue;
 const GeoJSONShapeLayer = imports.geoJSONShapeLayer;
 const KmlShapeLayer = imports.kmlShapeLayer;
@@ -40,8 +41,12 @@ const MapSource = imports.mapSource;
 const MapWalker = imports.mapWalker;
 const Place = imports.place;
 const PlaceMarker = imports.placeMarker;
+const RouteQuery = imports.routeQuery;
 const ShapeLayer = imports.shapeLayer;
 const StoredRoute = imports.storedRoute;
+const TransitArrivalMarker = imports.transitArrivalMarker;
+const TransitBoardMarker = imports.transitBoardMarker;
+const TransitWalkMarker = imports.transitWalkMarker;
 const TurnPointMarker = imports.turnPointMarker;
 const UserLocationMarker = imports.userLocationMarker;
 const Utils = imports.utils;
@@ -62,6 +67,24 @@ const MAX_LATITUDE = 85.05112;
 const MIN_LATITUDE = -85.05112;
 const MAX_LONGITUDE = 180;
 const MIN_LONGITUDE = -180;
+
+/* threashhold for route color luminance when we consider it more or less
+ * as white, and draw an outline on the path */
+const OUTLINE_LUMINANCE_THREASHHOLD = 0.9;
+
+// color used for turn-by-turn-based routes (non-transit)
+const TURN_BY_TURN_ROUTE_COLOR = '0000FF';
+
+// line width for route lines
+const ROUTE_LINE_WIDTH = 5;
+
+/* length of filled parts of dashed lines used for walking legs of transit
+ * itineraries
+ */
+const DASHED_ROUTE_LINE_FILLED_LENGTH = 5;
+
+// length of gaps of dashed lines used for walking legs of transit itineraries
+const DASHED_ROUTE_LINE_GAP_LENGTH = 5;
 
 const MapView = new Lang.Class({
     Name: 'MapView',
@@ -84,13 +107,16 @@ const MapView = new Lang.Class({
     },
 
     get routeVisible() {
-        return this._routeLayer.visible || this._instructionMarkerLayer.visible;
+        return this._routeVisible || this._instructionMarkerLayer.visible;
     },
 
     set routeVisible(value) {
         let isValid = Application.routeQuery.isValid();
 
-        this._routeLayer.visible = value && isValid;
+        this._routeVisible = value && isValid;
+        this._routeLayers.forEach((function(routeLayer) {
+            routeLayer.visible = value && isValid;
+        }).bind(this));
         this._instructionMarkerLayer.visible = value && isValid;
         this.notify('routeVisible');
     },
@@ -156,21 +182,43 @@ const MapView = new Lang.Class({
         return view;
     },
 
-    _initLayers: function() {
-        let strokeColor = new Clutter.Color({ red: 0,
-                                              blue: 255,
-                                              green: 0,
-                                              alpha: 100 });
+    /* create and store a route layer, pass true to get a dashed line */
+    _createRouteLayer: function(dashed, lineColor, width) {
+        let red = Color.parseColor(lineColor, 0);
+        let green = Color.parseColor(lineColor, 1);
+        let blue = Color.parseColor(lineColor, 2);
+        // Clutter uses a 0-255 range for color components
+        let strokeColor = new Clutter.Color({ red: red * 255,
+                                              blue: blue * 255,
+                                              green: green * 255,
+                                              alpha: 255 });
+        let routeLayer = new Champlain.PathLayer({ stroke_width: width,
+                                                   stroke_color: strokeColor });
+        if (dashed)
+            routeLayer.set_dash([DASHED_ROUTE_LINE_FILLED_LENGTH,
+                                 DASHED_ROUTE_LINE_GAP_LENGTH]);
 
+        this._routeLayers.push(routeLayer);
+        this.view.add_layer(routeLayer);
+
+        return routeLayer;
+    },
+
+    _clearRouteLayers: function() {
+        this._routeLayers.forEach((function(routeLayer) {
+            routeLayer.remove_all();
+            routeLayer.visible = false;
+            this.view.remove_layer(routeLayer);
+        }).bind(this));
+
+        this._routeLayers = [];
+    },
+
+    _initLayers: function() {
         let mode = Champlain.SelectionMode.SINGLE;
 
         this._userLocationLayer = new Champlain.MarkerLayer({ selection_mode: mode });
         this.view.add_layer(this._userLocationLayer);
-
-        this._routeLayer = new Champlain.PathLayer({ stroke_width: 5.0,
-                                                     stroke_color: strokeColor });
-        this.view.add_layer(this._routeLayer);
-
 
         this._placeLayer = new Champlain.MarkerLayer({ selection_mode: mode });
         this.view.add_layer(this._placeLayer);
@@ -184,15 +232,35 @@ const MapView = new Lang.Class({
         ShapeLayer.SUPPORTED_TYPES.push(GeoJSONShapeLayer.GeoJSONShapeLayer);
         ShapeLayer.SUPPORTED_TYPES.push(KmlShapeLayer.KmlShapeLayer);
         ShapeLayer.SUPPORTED_TYPES.push(GpxShapeLayer.GpxShapeLayer);
+
+        this._routeLayers = [];
+    },
+
+    _ensureInstructionLayerAboveRouteLayers: function() {
+        this.view.remove_layer(this._instructionMarkerLayer);
+        this.view.add_layer(this._instructionMarkerLayer);
     },
 
     _connectRouteSignals: function() {
-        let route = Application.routeService.route;
+        let route = Application.routingDelegator.graphHopper.route;
+        let transitPlan = Application.routingDelegator.openTripPlanner.plan;
         let query = Application.routeQuery;
 
         route.connect('update', this.showRoute.bind(this, route));
         route.connect('reset', (function() {
-            this._routeLayer.remove_all();
+            this._clearRouteLayers();
+            this._instructionMarkerLayer.remove_all();
+        }).bind(this));
+        transitPlan.connect('update', this._showTransitPlan.bind(this, transitPlan));
+        transitPlan.connect('reset', (function() {
+            this._clearRouteLayers();
+            this._instructionMarkerLayer.remove_all();
+        }).bind(this));
+        transitPlan.connect('itinerary-selected', (function(obj, itinerary) {
+            this._showTransitItinerary(itinerary);
+        }).bind(this));
+        transitPlan.connect('itinerary-deselected', (function() {
+            this._clearRouteLayers();
             this._instructionMarkerLayer.remove_all();
         }).bind(this));
 
@@ -396,6 +464,17 @@ const MapView = new Lang.Class({
         this._turnPointMarker.goTo();
     },
 
+    showTransitStop: function(transitStop, transitLeg) {
+        if (this._turnPointMarker)
+            this._turnPointMarker.destroy();
+
+        this._turnPointMarker = new TurnPointMarker.TurnPointMarker({ transitStop: transitStop,
+                                                                      transitLeg: transitLeg,
+                                                                      mapView: this });
+        this._instructionMarkerLayer.add_marker(this._turnPointMarker);
+        this._turnPointMarker.goTo();
+    },
+
     showContact: function(contact) {
         let places = contact.get_places();
         if (places.length === 0)
@@ -458,12 +537,17 @@ const MapView = new Lang.Class({
     },
 
     showRoute: function(route) {
-        this._routeLayer.remove_all();
+        let routeLayer;
+
+        this._clearRouteLayers();
         this._placeLayer.remove_all();
 
+        routeLayer = this._createRouteLayer(false, TURN_BY_TURN_ROUTE_COLOR,
+                                            ROUTE_LINE_WIDTH);
+        route.path.forEach(routeLayer.add_node.bind(routeLayer));
         this.routeVisible = true;
 
-        route.path.forEach(this._routeLayer.add_node.bind(this._routeLayer));
+        this._ensureInstructionLayerAboveRouteLayers();
 
         this._showDestinationTurnpoints();
         this.gotoBBox(route.bbox);
@@ -485,6 +569,85 @@ const MapView = new Lang.Class({
                 pointIndex++;
             }
         }, this);
+    },
+
+    _showTransitItinerary: function(itinerary) {
+        this.gotoBBox(itinerary.bbox);
+        this._clearRouteLayers();
+        this._placeLayer.remove_all();
+        this._instructionMarkerLayer.remove_all();
+
+        itinerary.legs.forEach((function (leg, index) {
+            let dashed = !leg.transit;
+            let color = leg.color;
+            let outlineColor = leg.textColor;
+            let hasOutline = Color.relativeLuminance(color) >
+                             OUTLINE_LUMINANCE_THREASHHOLD;
+            let routeLayer;
+            let outlineRouteLayer;
+
+            /* draw an outline by drawing a background path layer if needed
+             * TODO: maybe we should add support for outlined path layers in
+             * libchamplain */
+            if (hasOutline)
+                outlineRouteLayer = this._createRouteLayer(dashed, outlineColor,
+                                                           ROUTE_LINE_WIDTH + 2);
+            routeLayer = this._createRouteLayer(dashed, color, ROUTE_LINE_WIDTH);
+
+            /* if this is a walking leg and not at the start, "stitch" it
+             * together with the end point of the previous leg, as the walk
+             * route might not reach all the way */
+            if (index > 0 && !leg.transit) {
+                let previousLeg = itinerary.legs[index - 1];
+                let lastPoint = previousLeg.polyline.last();
+
+                routeLayer.add_node(lastPoint);
+            }
+
+            if (hasOutline)
+                leg.polyline.forEach(outlineRouteLayer.add_node.bind(outlineRouteLayer));
+            leg.polyline.forEach(routeLayer.add_node.bind(routeLayer));
+
+            /* like above, "stitch" the route segment with the next one if it's
+             * a walking leg, and not the last one */
+            if (index < itinerary.legs.length - 1 && !leg.transit) {
+                let nextLeg = itinerary.legs[index + 1];
+                let firstPoint = nextLeg.polyline[0];
+
+                routeLayer.add_node(firstPoint);
+            }
+        }).bind(this));
+
+        this._ensureInstructionLayerAboveRouteLayers();
+
+        itinerary.legs.forEach((function (leg, index) {
+            let previousLeg = index === 0 ? null : itinerary.legs[index - 1];
+
+            /* add start marker */
+            let start;
+            if (!leg.transit) {
+                start = new TransitWalkMarker.TransitWalkMarker({ leg: leg,
+                                                                  previousLeg: previousLeg,
+                                                                  mapView: this });
+            } else {
+                start = new TransitBoardMarker.TransitBoardMarker({ leg: leg,
+                                                                    mapView: this });
+            }
+
+            this._instructionMarkerLayer.add_marker(start);
+        }).bind(this));
+
+        /* add arrival marker */
+        let lastLeg = itinerary.legs.last();
+        let arrival = new TransitArrivalMarker.TransitArrivalMarker({ leg: lastLeg,
+                                                                      mapView: this });
+        this._instructionMarkerLayer.add_marker(arrival);
+
+        this.routeVisible = true;
+    },
+
+    _showTransitPlan: function(plan) {
+        this.gotoBBox(plan.bbox);
     },
 
     _onViewMoved: function() {
