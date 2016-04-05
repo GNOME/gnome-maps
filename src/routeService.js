@@ -65,35 +65,60 @@ const GraphHopper = new Lang.Class({
         }).bind(this));
     },
 
+    _queryGraphHopper: function(points, transportationType, callback) {
+        let url = this._buildURL(points, transportationType);
+        let msg = Soup.Message.new('GET', url);
+        this._session.queue_message(msg, (function(session, message) {
+            try {
+                let result = this._parseMessage(message);
+                if (!result)
+                    callback(null, null);
+                else
+                    callback(result, null);
+            } catch (e) {
+                callback(null, e);
+            }
+        }).bind(this));
+    },
+
     fetchRoute: function(points, transportationType) {
         if (this.storedRoute) {
             this._updateFromStored();
             return;
         }
 
-        let url = this._buildURL(points, transportationType);
-        let msg = Soup.Message.new('GET', url);
-        this._session.queue_message(msg, (function(session, message) {
-            try {
-                let result = this._parseMessage(message);
-                if (!result) {
-                    Application.notificationManager.showMessage(_("No route found."));
-                    if (this._query.latest)
-                        this._query.latest.place = null;
-                    else
-                        this.route.reset();
-
-                } else {
-                    let route = this._createRoute(result.paths[0]);
-                    this.route.update(route);
-                }
-            } catch(e) {
+        this._queryGraphHopper(points, transportationType,
+                               (function(result, exception) {
+            if (exception) {
                 Application.notificationManager.showMessage(_("Route request failed."));
                 Utils.debug(e);
                 if (this._query.latest)
                     this._query.latest.place = null;
                 else
                     this.route.reset();
+            } else {
+                if (!result) {
+                    Application.notificationManager.showMessage(_("No route found."));
+                    if (this._query.latest)
+                        this._query.latest.place = null;
+                    else
+                        this.route.reset();
+                } else {
+                    let route = this._createRoute(result.paths[0]);
+                    this.route.update(route);
+                }
+            }
+        }).bind(this));
+    },
+
+    fetchRouteAsync: function(points, transportationType, callback) {
+        this._queryGraphHopper(points, transportationType,
+                               (function(result, exception) {
+            if (result) {
+                let route = this._createRoute(result.paths[0]);
+                callback(route, exception);
+            } else {
+                callback(null, exception);
             }
         }).bind(this));
     },
