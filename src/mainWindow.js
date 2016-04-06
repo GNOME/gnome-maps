@@ -191,7 +191,7 @@ const MainWindow = new Lang.Class({
                 onChangeState: this._onToggleSidebarChangeState.bind(this)
             },
             'zoom-in': {
-                accels: ['plus', '<Primary>plus', 'KP_Add', '<Primary>KP_Add'],
+                accels: ['plus', '<Primary>plus', 'KP_Add', '<Primary>KP_Add', 'equal'],
                 onActivate: this._mapView.view.zoom_in.bind(this._mapView.view)
             },
             'zoom-out': {
@@ -243,11 +243,14 @@ const MainWindow = new Lang.Class({
         this.connect('key-press-event', function(window, event) {
             let focusWidget = window.get_focus();
             let keyval = event.get_keyval()[1];
+            let keys = [Gdk.KEY_plus,
+                        Gdk.KEY_minus,
+                        Gdk.KEY_equal];
 
             if (!(focusWidget instanceof Gtk.Entry))
                 return false;
 
-            if (keyval === Gdk.KEY_plus || keyval === Gdk.KEY_minus)
+            if (keys.indexOf(keyval) !== -1)
                 return focusWidget.event(event);
 
             return false;
