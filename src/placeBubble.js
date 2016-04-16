@@ -199,8 +199,10 @@ const PlaceBubble = new Lang.Class({
                                        halign: Gtk.Align.START });
             if (expandedContent[row].linkUrl) {
                 let text = expandedContent[row].linkText;
-                let uri = expandedContent[row].linkUrl;
-                let a = '<a href="%s" title="%s">%s</a>'.format(uri, uri, text);
+                let uri = GLib.markup_escape_text(expandedContent[row].linkUrl, -1);
+                /* double-escape the tooltip text, as GTK+ treats it as markup */
+                let tooltipText = GLib.markup_escape_text(uri, -1);
+                let a = '<a href="%s" title="%s">%s</a>'.format(uri, tooltipText, text);
                 info.label = a;
             } else {
                 info.label = expandedContent[row].info;
