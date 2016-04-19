@@ -211,6 +211,7 @@ const PrintLayout = new Lang.Class({
             lines: 2
         });
 
+        instructionWidget.get_style_context().add_class('printing-text');
         instructionWidget.width_request = width;
         instructionWidget.height_request = height;
 
