@@ -5,14 +5,15 @@
 # Matthew CHISHOLM <mat.eo416@gmail.com>, 2013.
 # Daniel PUENTES <blatberk@openmailbox.org>, 2015.
 # Nicolas MAIA <nicolasmaia@tutanota.com>, 2015.
-# Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>, 2013, 2015.
+# Baptiste DARTHENAY <baptiste.darthenay@gmail.com>, 2016.
+# Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>, 2013, 2015, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-12-23 21:20+0000\n"
-"PO-Revision-Date: 2015-12-24 01:31+0200\n"
+"POT-Creation-Date: 2016-04-22 08:53+0000\n"
+"PO-Revision-Date: 2016-04-23 03:19+0200\n"
 "Last-Translator: Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>\n"
 "Language-Team: Esperanto <gnome-l10n-eo@lists.launchpad.net>\n"
 "Language: eo\n"
@@ -24,6 +25,14 @@ msgstr ""
 "X-Project-Style: gnome\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
+msgid "GNOME Maps"
+msgstr "GNOME Mapoj"
+
+#: ../data/org.gnome.Maps.appdata.xml.in.h:2
+msgid "Find places around the world"
+msgstr "Trovi lokojn tra la mondo"
+
+#: ../data/org.gnome.Maps.appdata.xml.in.h:3
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
@@ -33,7 +42,7 @@ msgstr ""
 "rapide trovi la lokon, kiun vi serĉas, serĉante urbon aŭ straton, aŭ trovi "
 "lokon por renkonti amikon."
 
-#: ../data/org.gnome.Maps.appdata.xml.in.h:2
+#: ../data/org.gnome.Maps.appdata.xml.in.h:4
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
@@ -44,7 +53,7 @@ msgstr ""
 #. Translators: Search is carried out on OpenStreetMap data using Nominatim.
 #. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
 #. your language to see what words you can use for the translated search.
-#: ../data/org.gnome.Maps.appdata.xml.in.h:6
+#: ../data/org.gnome.Maps.appdata.xml.in.h:8
 msgid ""
 "You can even search for specific types of locations, such as “Pubs near Main "
 "Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
@@ -55,7 +64,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:373
+#: ../src/application.js:85 ../src/mainWindow.js:420
 msgid "Maps"
 msgstr "Mapoj"
 
@@ -67,62 +76,76 @@ msgstr "Simpla mapa aplikaĵo"
 msgid "Maps;"
 msgstr "Mapoj;"
 
+#: ../data/org.gnome.Maps.desktop.in.h:4
+msgid "Allows your location to be shown on the map."
+msgstr "Ebligas montri vian pozicion sur la mapo."
+
 #: ../data/org.gnome.Maps.gschema.xml.h:1
+#| msgid "User set last known location"
+msgid "last viewed location"
+msgstr "laste vidita loko"
+
+#: ../data/org.gnome.Maps.gschema.xml.h:2
+#| msgid "Description of last known location"
+msgid "Coordinates of last viewed location."
+msgstr "Koordinatoj de laste vidita loko."
+
+#: ../data/org.gnome.Maps.gschema.xml.h:3
 msgid "Window size"
 msgstr "Fenestra grando"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:2
+#: ../data/org.gnome.Maps.gschema.xml.h:4
 msgid "Window size (width and height)."
 msgstr "Fenestra grando (larĝo kaj alto)."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:3
+#: ../data/org.gnome.Maps.gschema.xml.h:5
 msgid "Window position"
 msgstr "Fenestra pozicio"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:4
+#: ../data/org.gnome.Maps.gschema.xml.h:6
 msgid "Window position (X and Y)."
 msgstr "Pozicio de fenestro (x kaj y)."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:5
+#: ../data/org.gnome.Maps.gschema.xml.h:7
 msgid "Window maximized"
 msgstr "Fenestro maksimumigita"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:6
+#: ../data/org.gnome.Maps.gschema.xml.h:8
 msgid "Window maximization state"
 msgstr "Maksimumiga stato de fenestro"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:7
+#: ../data/org.gnome.Maps.gschema.xml.h:9
 msgid "Maximum number of search results"
 msgstr "Maksimuma numero da serĉa rezultoj"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:8
+#: ../data/org.gnome.Maps.gschema.xml.h:10
 msgid "Maximum number of search results from geocode search."
 msgstr "Maksimuma numero da serĉa rezultoj de geocode-a serĉo."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:9
+#: ../data/org.gnome.Maps.gschema.xml.h:11
 msgid "Number of recent places to store"
 msgstr "Nombro de lastatempaj lokoj por konservi"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:10
+#: ../data/org.gnome.Maps.gschema.xml.h:12
 msgid "Number of recently visited places to store."
 msgstr "Nombro de lastatempaj lokoj por konservi."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:11
+#: ../data/org.gnome.Maps.gschema.xml.h:13
 #, fuzzy
 msgid "Number of recent routes to store"
 msgstr "Nombro de lastatempaj lokoj por konservi"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:12
+#: ../data/org.gnome.Maps.gschema.xml.h:14
 #, fuzzy
 msgid "Number of recently visited routes to store."
 msgstr "Nombro da lastatempe vizititaj lokoj konservotaj."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:13
+#: ../data/org.gnome.Maps.gschema.xml.h:15
 #, fuzzy
 msgid "Facebook check-in privacy setting"
 msgstr "Privateca agordo de Facebook-enmeto"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:14
+#: ../data/org.gnome.Maps.gschema.xml.h:16
 msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
@@ -130,11 +153,11 @@ msgstr ""
 "Laste uzata privateca agordo de Facebook-enmeto. Eblaj valoroj estas: ĈIUJ, "
 "AMIKOJ_DE_AMIKOJ, ĈIUJ_AMIKOJ aŭ SINMEM."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:15
+#: ../data/org.gnome.Maps.gschema.xml.h:17
 msgid "Foursquare check-in privacy setting"
 msgstr "Privateca agordo de Foursquare-enmeto"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:16
+#: ../data/org.gnome.Maps.gschema.xml.h:18
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
@@ -142,11 +165,11 @@ msgstr ""
 "Laste uzata privateca agordo de Facebook-enmeto. Eblaj valoroj estas: "
 "publika, sekvantoj aŭ privata."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:17
+#: ../data/org.gnome.Maps.gschema.xml.h:19
 msgid "Foursquare check-in Facebook broadcasting"
 msgstr "Elsendo de Foursquare-enmeto al Facebook"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:18
+#: ../data/org.gnome.Maps.gschema.xml.h:20
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
@@ -154,11 +177,11 @@ msgstr ""
 "Indikas ĉu Foursquare elsendu la enmeton kiel publikaĵo en lakonto de "
 "Facebook ligita al la konto de Foursquare."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:19
+#: ../data/org.gnome.Maps.gschema.xml.h:21
 msgid "Foursquare check-in Twitter broadcasting"
 msgstr "Elsendo de Foursquare-enmeto al Twitter"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:20
+#: ../data/org.gnome.Maps.gschema.xml.h:22
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
@@ -166,11 +189,28 @@ msgstr ""
 "Indikas ĉu Foursquare elsendu la enmeton kiel publikaĵo en lakonto de "
 "Twitter ligita al la konto de Foursquare."
 
+#: ../data/org.gnome.Maps.gschema.xml.h:23
+msgid "OpenStreetMap username or e-mail address"
+msgstr "OpenStreetMap-uzantnomo aŭ retpoŝtadreso"
+
+#: ../data/org.gnome.Maps.gschema.xml.h:24
+msgid "Indicates if the user has signed in to edit OpenStreetMap data."
+msgstr ""
+"Indikas ĉu la uzanto estas ensalutita por redakti OpenStreetMap-datumojn."
+
 #: ../data/ui/app-menu.ui.h:1
+msgid "Set up OpenStreetMap Account"
+msgstr "Agordi OpenStreetMap-konton"
+
+#: ../data/ui/app-menu.ui.h:2
+msgid "_Keyboard Shortcuts"
+msgstr "Fulmo_klavo"
+
+#: ../data/ui/app-menu.ui.h:3
 msgid "About"
 msgstr "Pri"
 
-#: ../data/ui/app-menu.ui.h:2
+#: ../data/ui/app-menu.ui.h:4
 msgid "Quit"
 msgstr "Ĉesi"
 
@@ -186,7 +226,8 @@ msgstr "Afiŝi ĉe Facebook"
 msgid "Post on Twitter"
 msgstr "Alfiŝi ĉe Twitter"
 
-#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/send-to-dialog.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/export-view-dialog.ui.h:2
+#: ../data/ui/send-to-dialog.ui.h:2 ../data/ui/shape-layer-file-chooser.ui.h:3
 msgid "_Cancel"
 msgstr "_Nuligi"
 
@@ -229,14 +270,94 @@ msgid "What’s here?"
 msgstr "Kio estas ĉi tie?"
 
 #: ../data/ui/context-menu.ui.h:2
-#| msgid "Open location"
 msgid "Copy Location"
 msgstr "Kopii lokon"
 
-#: ../data/ui/location-service-notification.ui.h:1
+#: ../data/ui/context-menu.ui.h:3
+msgid "Export As Image"
+msgstr "Eksporti kiel bildo"
+
+#: ../data/ui/context-menu.ui.h:4
+msgid "Add to OpenStreetMap"
+msgstr "Aldoni al OpenStreetMap"
+
+#: ../data/ui/export-view-dialog.ui.h:1
+msgid "Export view"
+msgstr "Eksporta vido"
+
+#: ../data/ui/export-view-dialog.ui.h:3
+msgid "_Export"
+msgstr "_Eksporti"
+
+#: ../data/ui/export-view-dialog.ui.h:4
+msgid "Include route and markers"
+msgstr "Inkluzivi kurson kaj markilojn"
+
+#: ../data/ui/help-overlay.ui.h:1
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Ĝenerale"
+
+#: ../data/ui/help-overlay.ui.h:2
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Montri la fulmoklavojn"
+
+#: ../data/ui/help-overlay.ui.h:3
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Serĉo"
+
+#: ../data/ui/help-overlay.ui.h:4
 #, fuzzy
+msgctxt "shortcut window"
+msgid "Toggle route planner"
+msgstr "Baskuligi kursan planilon"
+
+#: ../data/ui/help-overlay.ui.h:5
+msgctxt "shortcut window"
+msgid "Print route"
+msgstr "Printi la kurson"
+
+#: ../data/ui/help-overlay.ui.h:6
+#| msgid "Quit"
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Ĉesi"
+
+#: ../data/ui/help-overlay.ui.h:7
+msgctxt "shortcut window"
+msgid "Map View"
+msgstr "Mapa vido"
+
+#: ../data/ui/help-overlay.ui.h:8
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr "Zomi"
+
+#: ../data/ui/help-overlay.ui.h:9
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr "Malzomi"
+
+#: ../data/ui/help-overlay.ui.h:10
+msgctxt "shortcut window"
+msgid "Toggle scale"
+msgstr "Baskuligi skalon"
+
+#: ../data/ui/help-overlay.ui.h:11
+#| msgid "Go to current location"
+msgctxt "shortcut window"
+msgid "Go to current location"
+msgstr "Iri al aktuala loko"
+
+#: ../data/ui/layers-popover.ui.h:1
+msgid "Load Map Layer"
+msgstr "Ŝarĝi mapan tavolon"
+
+#: ../data/ui/location-service-notification.ui.h:1
 msgid "Turn on location services to find your location"
-msgstr "Ŝalti lokajn servojn por trovi vian lokon"
+msgstr "Enŝalti lokajn servojn por trovi vian lokon"
 
 #: ../data/ui/location-service-notification.ui.h:2
 msgid "Location Settings"
@@ -251,7 +372,6 @@ msgid "Choose map type"
 msgstr "Elekti maptipon"
 
 #: ../data/ui/main-window.ui.h:4
-#, fuzzy
 msgid "Toggle route planner"
 msgstr "Baskuligi kursan planilon"
 
@@ -260,17 +380,21 @@ msgid "Toggle favorites"
 msgstr "Baskuligi ŝataĵojn"
 
 #: ../data/ui/main-window.ui.h:6
+msgid "Print Route"
+msgstr "Printi la kurson"
+
+#: ../data/ui/main-window.ui.h:7
 msgid "Maps is offline!"
 msgstr "Mapoj estas nekonektite!"
 
-#: ../data/ui/main-window.ui.h:7
+#: ../data/ui/main-window.ui.h:8
 #, fuzzy
 msgid ""
 "Maps need an active internet connection to function properly, but one can't "
 "be found."
 msgstr "Mapoj bezonas interretaliron por bone funkcii, sed oni ne trovis ĝin."
 
-#: ../data/ui/main-window.ui.h:8
+#: ../data/ui/main-window.ui.h:9
 msgid "Check your connection and proxy settings."
 msgstr "Kontroli vian konekton kaj agordojn de la prokurilo."
 
@@ -291,18 +415,159 @@ msgstr "Marki kiel ŝatata"
 msgid "Check in here"
 msgstr "Enmeti ĉi tie"
 
-#: ../data/ui/search-popup.ui.h:1
-#, fuzzy
+#: ../data/ui/osm-account-dialog.ui.h:1
+#| msgid "Select an account"
+msgid "OpenStreetMap Account"
+msgstr "OpenStreetMap-konto"
+
+#: ../data/ui/osm-account-dialog.ui.h:2
+msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"x-large\">Ensalutu por redakti mapojn</span>"
+
+#: ../data/ui/osm-account-dialog.ui.h:3
+msgid ""
+"Help to improve the map, using an\n"
+"OpenStreetMap account."
+msgstr ""
+"Helpu plibonigi la mapon uzante\n"
+"OpenStreetMap-konton."
+
+#: ../data/ui/osm-account-dialog.ui.h:5
+msgid "Email"
+msgstr "Retpoŝtadreso"
+
+#: ../data/ui/osm-account-dialog.ui.h:6
+msgid "Password"
+msgstr "Pasvorto"
+
+#: ../data/ui/osm-account-dialog.ui.h:7
+msgid "Sign In"
+msgstr "Ensalutu"
+
+#: ../data/ui/osm-account-dialog.ui.h:8
+msgid "Don't have an account?"
+msgstr "Ĉu vi ne havas konton?"
+
+#. The label should contain the link to the OSM reset password page with a translated title
+#: ../data/ui/osm-account-dialog.ui.h:10
+msgid ""
+"Sorry, that didn't work. Please try again, or visit\n"
+"<a href=\"https://www.openstreetmap.org/user/forgot-password"
+"\">OpenStreetMap</a> to reset your password."
+msgstr ""
+"Bedaŭrinde ne funkciis. Bonvolu provi denove, aŭ viziti\n"
+"<a href=\"https://www.openstreetmap.org/user/forgot-password"
+"\">OpenStreetMap</a> por restarti vian pasvorton."
+
+#: ../data/ui/osm-account-dialog.ui.h:12
+msgid "The verification code didn't match, please try again."
+msgstr "La kontrolkodo ne kongruis, bonvolu denove provi."
+
+#: ../data/ui/osm-account-dialog.ui.h:13
+msgid "Enter verification code shown above"
+msgstr "Bonvolu enigi la ĉi supran kontrolkodon"
+
+#: ../data/ui/osm-account-dialog.ui.h:14
+msgid "Verify"
+msgstr "Kontroli"
+
+#: ../data/ui/osm-account-dialog.ui.h:15
+msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
+msgstr "<span weight=\"bold\" size=\"x-large\">Ensalutita</span>"
+
+#: ../data/ui/osm-account-dialog.ui.h:16
+msgid "Your OpenStreetMap account is active."
+msgstr "Via OpenStreetMap-konto estas aktiva."
+
+#: ../data/ui/osm-account-dialog.ui.h:17
+msgid "Sign Out"
+msgstr "Elsaluti"
+
+#: ../data/ui/osm-edit-address.ui.h:1
+msgid "Street"
+msgstr "Strato"
+
+#: ../data/ui/osm-edit-address.ui.h:2
+msgid "House number"
+msgstr "Domnumero"
+
+#: ../data/ui/osm-edit-address.ui.h:3
+msgid "Postal code"
+msgstr "Poŝtkodo"
+
+#. This is the place name as it would be written in a postal address (typically coming after the postal code)
+#: ../data/ui/osm-edit-address.ui.h:5
+msgid "City"
+msgstr "Urbo"
+
+#: ../data/ui/osm-edit-dialog.ui.h:1
+msgid "Type"
+msgstr "Tipo"
+
+#: ../data/ui/osm-edit-dialog.ui.h:2
+msgid "None"
+msgstr "Neniu"
+
+#: ../data/ui/osm-edit-dialog.ui.h:3
+msgid "Add Field"
+msgstr "Aldoni kampon"
+
+#: ../data/ui/osm-edit-dialog.ui.h:4
+msgid "Comment"
+msgstr "Komento"
+
+#: ../data/ui/osm-edit-dialog.ui.h:5
+msgid ""
+"Map changes will be visible on all maps that use\n"
+"    OpenStreetMap data."
+msgstr ""
+"Mapaj redaktoj videblos en ĉiuj mapoj kiuj uzas\n"
+"    la OpenStreetMap-datumojn."
+
+#: ../data/ui/osm-edit-dialog.ui.h:7
+msgid "Recently Used"
+msgstr "Lastatempaj uzataj"
+
+#: ../data/ui/osm-edit-dialog.ui.h:8
+msgid "Edit on OpenStreetMap"
+msgstr "Redakti en OpenStreetMap"
+
+#: ../data/ui/osm-edit-dialog.ui.h:9
+msgid "Cancel"
+msgstr "Nuligi"
+
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:470
+msgid "Next"
+msgstr "Sekva"
+
+#: ../data/ui/place-bubble.ui.h:1
+msgid "Show more information"
+msgstr "Montri pli da informoj"
+
+#: ../data/ui/place-popover.ui.h:1
 msgid "Press enter to search"
-msgstr "Premu einigi por serĉi"
+msgstr "Premu la enigan klavon por serĉi"
+
+#: ../data/ui/route-entry.ui.h:1
+msgid "Drag to change order of the route"
+msgstr "Ŝovu por ŝangi la ordon de la kurso"
 
 #: ../data/ui/send-to-dialog.ui.h:1
 msgid "Open location"
 msgstr "Malfermi lokon"
 
-#: ../data/ui/send-to-dialog.ui.h:3
+#: ../data/ui/send-to-dialog.ui.h:3 ../data/ui/shape-layer-file-chooser.ui.h:2
 msgid "_Open"
 msgstr "_Malfermi"
+
+#: ../data/ui/shape-layer-file-chooser.ui.h:1
+msgid "Open Layer"
+msgstr "Malfermi tavolon"
+
+#: ../data/ui/shape-layer-row.ui.h:1
+msgid "Toggle visible"
+msgstr "Baskuligi videblecon"
 
 #: ../data/ui/sidebar.ui.h:1
 msgid "Route search by GraphHopper"
@@ -312,7 +577,7 @@ msgstr "Kursa serĉado por GraphHopper"
 msgid "Show more results"
 msgstr "Montri pli da rezultoj"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:209
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:120
 msgid "Current location"
 msgstr "Aktuala loko"
 
@@ -322,12 +587,32 @@ msgstr "Aktuala loko"
 msgid "Accuracy: %s"
 msgstr "Ekzakteco: %s"
 
+#: ../data/ui/zoom-in-notification.ui.h:1
+msgid "Zoom in to add location!"
+msgstr "Zomu por aldoni lokon!"
+
+#: ../data/ui/zoom-in-notification.ui.h:2
+msgid "OK"
+msgstr "En ordo"
+
 #: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
 #: ../lib/maps-file-tile-source.c:459
 msgid "Failed to find tile structure in directory"
 msgstr "Malsukcesis trovi kahelan strukturon en dosierujo"
 
-#: ../src/application.js:86
+#: ../lib/maps-osm.c:56
+msgid "Failed to parse XML document"
+msgstr "Malsukcesis analizi la XML-dokumenton"
+
+#: ../lib/maps-osm.c:252 ../lib/maps-osm.c:405
+msgid "Missing required attributes"
+msgstr "Mankas bezonataj atributoj"
+
+#: ../lib/maps-osm.c:453
+msgid "Could not find OSM element"
+msgstr "Ne sukcesis trovi la OSM-elementon"
+
+#: ../src/application.js:101
 msgid "A path to a local tiles directory structure"
 msgstr "Vojo al loka kahela dosieruja strukturo"
 
@@ -362,21 +647,25 @@ msgstr ""
 #. Translators: %s is the name of the place to check in.
 #.
 #: ../src/checkInDialog.js:227
+#, javascript-format
 msgid "Check in to %s"
 msgstr "Enmeti al %s"
 
 #. Translators: %s is the name of the place to check in.
 #.
 #: ../src/checkInDialog.js:237
+#, javascript-format
 msgid "Write an optional message to check in to %s."
 msgstr "Skribi malnepran mesaĝon por enmeti ĉe %s."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
+#: ../src/osmEditDialog.js:507
 msgid "An error has occurred"
 msgstr "Eraro okazis"
 
 #. Translators: %s is the place name that user wanted to check-in
 #: ../src/checkIn.js:135
+#, javascript-format
 msgid "Cannot find \"%s\" in the social service"
 msgstr "Ne povis trovi na \"%s\" en la socia servo"
 
@@ -393,59 +682,283 @@ msgstr ""
 "La akreditaĵoj finiĝis, bonvole lanĉu Enretajn Kontojn por ensaluti kaj "
 "ebligiĉi tiun konton"
 
-#: ../src/mainWindow.js:321
+#: ../src/contextMenu.js:97
+msgid "Route from here"
+msgstr "Kurso ekde ĉi tie"
+
+#: ../src/contextMenu.js:99
+msgid "Add destination"
+msgstr "Aldoni alvenon"
+
+#: ../src/contextMenu.js:101
+msgid "Route to here"
+msgstr "Kurso ĝis ĉi tie"
+
+#: ../src/contextMenu.js:130
+msgid "Nothing found here!"
+msgstr "Neniu trovita ĉi tie!"
+
+#: ../src/contextMenu.js:187
+msgid ""
+"Location was added to the map, note that it may take a while before it shows "
+"on the map and in search results."
+msgstr ""
+"Loko estis aldonita al la mapo, rimarku ke ĝi povas preni momenton antaŭ ĝi "
+"montras sur la mapo kaj en serĉrezultoj."
+
+#: ../src/exportViewDialog.js:156
+msgid "Filesystem is read only"
+msgstr "Dosiersistemo estas nurlega"
+
+#: ../src/exportViewDialog.js:158
+msgid "You do not have permission to save there"
+msgstr "Vi ne havas la permeson por tie konservi"
+
+#: ../src/exportViewDialog.js:160
+msgid "The directory does not exists"
+msgstr "La dosierujo ne ekzistas"
+
+#: ../src/exportViewDialog.js:162
+msgid "No filename specified"
+msgstr "Dosiernomo ne aldonita"
+
+#: ../src/exportViewDialog.js:170
+msgid "Unable to export view"
+msgstr "Ne eblas eksporti la vidon"
+
+#: ../src/geoJSONSource.js:98
+msgid "invalid coordinate"
+msgstr "nevalida koordinato"
+
+#: ../src/geoJSONSource.js:149 ../src/geoJSONSource.js:189
+#: ../src/geoJSONSource.js:204
+msgid "parse error"
+msgstr "analizeraro"
+
+#: ../src/geoJSONSource.js:183
+msgid "unknown geometry"
+msgstr "nekonata geometrio"
+
+#: ../src/mainWindow.js:366
 msgid "Failed to connect to location service"
 msgstr "Malsukcesis konekti al loka servo"
 
-#: ../src/mainWindow.js:326
-msgid "Position not found"
-msgstr "Ne trovis pozicion"
-
-#: ../src/mainWindow.js:371
+#: ../src/mainWindow.js:418
 msgid "translator-credits"
 msgstr ""
 "Ryan LORTIE\n"
 "Kristjan SCHMIDT\n"
 "Matthew CHISHOLM\n"
 "Daniel PUENTES\n"
-"Nicolas MAIA"
+"Nicolas MAIA\n"
+"Baptiste DARTHENAY"
 
-#: ../src/mainWindow.js:374
+#: ../src/mainWindow.js:421
 msgid "A map application for GNOME"
 msgstr "Mapa aplikaĵo por GNOME"
 
-#: ../src/placeBubble.js:101
-msgid "Postal code: %s"
-msgstr "Poŝtkodo: %s"
+#: ../src/mapView.js:254
+msgid "File type is not supported"
+msgstr "Dosiertipo ne estas subtenata"
 
-#: ../src/placeBubble.js:103
-msgid "Country code: %s"
-msgstr "Landkodo: %s"
+#: ../src/mapView.js:261
+msgid "Failed to open layer"
+msgstr "Malsukcesis malfermi la tavolon"
 
-#: ../src/placeBubble.js:112
-msgid "Population: %s"
-msgstr "Loĝantaro: %s"
+#: ../src/mapView.js:297
+msgid "Failed to open GeoURI"
+msgstr "Malsukcesis malfermi la Geo-URI"
 
-#: ../src/placeBubble.js:115
-msgid "Opening hours: %s"
-msgstr "Horoj de malfermo: %s"
+#. setting the status in session.cancel_message still seems
+#. to always give status IO_ERROR
+#: ../src/osmConnection.js:443
+msgid "Incorrect user name or password"
+msgstr "Malkorekta uzantnomo aŭ pasvorto"
 
-#: ../src/placeBubble.js:120
+#: ../src/osmConnection.js:445
+msgid "Success"
+msgstr "Sukceso"
+
+#: ../src/osmConnection.js:447
+msgid "Bad request"
+msgstr "Malbona peto"
+
+#: ../src/osmConnection.js:449
+msgid "Object not found"
+msgstr "Objekto ne trovita"
+
+#: ../src/osmConnection.js:451
+msgid "Conflict, someone else has just modified the object"
+msgstr "Konflikto, iu alia ĵus redaktis tiun objekton"
+
+#: ../src/osmConnection.js:453
+msgid "Object has been deleted"
+msgstr "La objekto estis forigita"
+
+#: ../src/osmConnection.js:455
+msgid "Way or relation refers to non-existing children"
+msgstr ""
+
+#: ../src/osmEditDialog.js:103
+msgid "Name"
+msgstr "Nomo"
+
+#: ../src/osmEditDialog.js:106
+msgid "The official name. This is typically what appears on signs."
+msgstr "La oficiala nomo. Tio ĉi estas kutime kio aperas sur signoj."
+
+#: ../src/osmEditDialog.js:109
+msgid "Address"
+msgstr "Adreso"
+
+#: ../src/osmEditDialog.js:117 ../src/placeBubble.js:165
+msgid "Website"
+msgstr "Retpaĝo"
+
+#: ../src/osmEditDialog.js:120
+msgid ""
+"The official website. Try to use the most basic form of a URL i.e. http://"
+"example.com instead of http://example.com/index.html."
+msgstr ""
+"La oficiala retejo. Provo uzi la plej baza formo de URL t.e. "
+"http://example.com anstataŭ http://example.com/index.html."
+
+#: ../src/osmEditDialog.js:125
+msgid "Phone"
+msgstr "Telefono"
+
+#: ../src/osmEditDialog.js:129
+#, fuzzy
+msgid ""
+"Phone number. Use the international format, starting with a + sign. Beware "
+"of local privacy laws, especially for private phone numbers."
+msgstr ""
+"Telefona nombro. Uzu la internacian formaton, komencanta kun + signo. Atentu "
+"de lokaj privatecaj leĝoj, precipe por privataj telefonaj nombroj."
+
+#: ../src/osmEditDialog.js:134 ../src/placeBubble.js:171
 msgid "Wikipedia"
 msgstr "Vikipedio"
 
-#: ../src/placeBubble.js:125
-msgid "Wheelchair access: %s"
-msgstr "Rulseĝa aliro: %s"
+#: ../src/osmEditDialog.js:138
+msgid ""
+"The format used should include the language code and the article title like "
+"”en:Article title”."
+msgstr ""
 
-#: ../src/placeEntry.js:215
+#: ../src/osmEditDialog.js:142
+msgid "Opening hours"
+msgstr "Horoj de malfermo"
+
+#: ../src/osmEditDialog.js:147
+#, fuzzy
+msgid "See the link in the label for help on format."
+msgstr "Vidi la ligon en la etikedo por helpo sur formato."
+
+#: ../src/osmEditDialog.js:150
+msgid "Population"
+msgstr "Loĝantaro"
+
+#: ../src/osmEditDialog.js:155
+msgid "Altitude"
+msgstr "Altitudo"
+
+#: ../src/osmEditDialog.js:158
+#, fuzzy
+msgid "Elevation (height above sea level) of a point in metres."
+msgstr "Alteca (alto super mara nivelo) de punkto per metroj."
+
+#: ../src/osmEditDialog.js:161
+msgid "Wheelchair access"
+msgstr "Rulseĝa aliro"
+
+#: ../src/osmEditDialog.js:164 ../src/osmEditDialog.js:173
+msgid "Yes"
+msgstr "Jes"
+
+#: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
+msgid "No"
+msgstr "Ne"
+
+#: ../src/osmEditDialog.js:166
+msgid "Limited"
+msgstr "Limigita"
+
+#: ../src/osmEditDialog.js:167
+msgid "Designated"
+msgstr "Indikita"
+
+#: ../src/osmEditDialog.js:170
+msgid "Internet access"
+msgstr "Interreta aliro"
+
+#. Translators:
+#. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
+#.
+#: ../src/osmEditDialog.js:175 ../src/translations.js:341
+msgid "Wi-Fi"
+msgstr "Sendrata"
+
+#: ../src/osmEditDialog.js:176
+msgid "Wired"
+msgstr "Drata"
+
+#: ../src/osmEditDialog.js:177
+msgid "Terminal"
+msgstr "Terminalo"
+
+#: ../src/osmEditDialog.js:178
+msgid "Service"
+msgstr "Servo"
+
+#: ../src/osmEditDialog.js:287
+msgctxt "dialog title"
+msgid "Add to OpenStreetMap"
+msgstr "Aldoni al OpenStreetMap"
+
+#: ../src/osmEditDialog.js:338
+msgid "Select Type"
+msgstr "Elekti tipon"
+
+#: ../src/osmEditDialog.js:456
+msgid "Done"
+msgstr "Farite"
+
+#: ../src/placeBubble.js:128
+msgid "Population:"
+msgstr "Loĝantaro:"
+
+#: ../src/placeBubble.js:134
+msgid "Altitude:"
+msgstr "Altitudo:"
+
+#: ../src/placeBubble.js:139
+msgid "Opening hours:"
+msgstr "Horoj de malfermo:"
+
+#: ../src/placeBubble.js:144
+msgid "Internet access:"
+msgstr "Interreta aliro:"
+
+#: ../src/placeBubble.js:149
+msgid "Wheelchair access:"
+msgstr "Rulseĝa aliro:"
+
+#: ../src/placeBubble.js:155 ../src/placeBubble.js:159
+msgid "Phone:"
+msgstr "Telefono:"
+
+#: ../src/placeEntry.js:190
 msgid "Failed to parse Geo URI"
 msgstr "Malsukcesis analizi na Geo-URI"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: ../src/place.js:121
+#. Translators:
+#. * There is public internet access but the particular kind is unknown.
+#.
+#: ../src/place.js:178 ../src/translations.js:330
 msgid "yes"
 msgstr "jes"
 
@@ -454,7 +967,7 @@ msgstr "jes"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:128
+#: ../src/place.js:185
 msgid "limited"
 msgstr "limigita"
 
@@ -462,7 +975,11 @@ msgstr "limigita"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: ../src/place.js:134
+#. Translators:
+#. * no internet access is offered in a place where
+#. * someone might expect it.
+#.
+#: ../src/place.js:191 ../src/translations.js:336
 msgid "no"
 msgstr "ne"
 
@@ -471,25 +988,50 @@ msgstr "ne"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:141
-#, fuzzy
+#: ../src/place.js:198
 msgid "designated"
 msgstr "indikita"
+
+#: ../src/printLayout.js:243
+#, javascript-format
+msgid "From %s to %s"
+msgstr "De %s ĝis %s"
+
+#: ../src/printOperation.js:47
+msgid "Loading map tiles for printing"
+msgstr "Ŝarĝante maperojn por printado"
+
+#: ../src/printOperation.js:48
+msgid "You can abort printing if this takes too long"
+msgstr "Vi rajtas ĉesigi printadon se tro daŭras"
+
+#: ../src/printOperation.js:50
+msgid "Abort printing"
+msgstr "Ĉesigi printadon"
 
 #: ../src/routeService.js:90
 msgid "No route found."
 msgstr "Ne trovis kurson."
 
-#: ../src/routeService.js:97
+#: ../src/routeService.js:101
 msgid "Route request failed."
 msgstr "Kurs-peto malsukcesis."
 
-#: ../src/routeService.js:168
+#: ../src/routeService.js:178
 msgid "Start!"
 msgstr "Ek!"
 
+#: ../src/sendToDialog.js:179
+msgid "Failed to open URI"
+msgstr "Malsukcesis malfermi la URI"
+
+#: ../src/shapeLayer.js:93
+msgid "failed to load file"
+msgstr "malsukcesis ŝarĝi la dosieron"
+
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:230
+#: ../src/sidebar.js:208
+#, javascript-format
 msgid "Estimated time: %s"
 msgstr "Antaŭkalkulita tempo: %s"
 
@@ -508,6 +1050,7 @@ msgstr "de sunleviĝo ĝis sunsubiro"
 #. * substituted with the appropriate separator.
 #.
 #: ../src/translations.js:78
+#, javascript-format
 msgctxt "time range list"
 msgid "%s %s"
 msgstr "%s %s"
@@ -519,6 +1062,7 @@ msgstr "%s %s"
 #. * substituted with the appropriate separator.
 #.
 #: ../src/translations.js:90
+#, javascript-format
 msgctxt "time range list"
 msgid "%s %s %s"
 msgstr "%s %s %s"
@@ -531,6 +1075,7 @@ msgstr "%s %s %s"
 #. * the appropriate separator or phrase and the ordering of the arguments
 #. * can be rearranged with the %n#s syntax.
 #: ../src/translations.js:121
+#, javascript-format
 msgctxt "time range component"
 msgid "%s %s"
 msgstr "%s %s"
@@ -545,6 +1090,7 @@ msgstr "%s %s"
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
 #: ../src/translations.js:153
+#, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s"
 msgstr "%s,%s"
@@ -559,6 +1105,7 @@ msgstr "%s,%s"
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
 #: ../src/translations.js:167
+#, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s,%s"
 msgstr "%s,%s,%s"
@@ -571,6 +1118,7 @@ msgstr "ĉiutage"
 #. * This represents a range of days with a starting and ending day.
 #.
 #: ../src/translations.js:198
+#, javascript-format
 msgctxt "day range"
 msgid "%s-%s"
 msgstr "%s-%s"
@@ -592,6 +1140,7 @@ msgstr "lernejaj ferioj"
 #. * using the %n$s syntax.
 #.
 #: ../src/translations.js:251
+#, javascript-format
 msgctxt "time interval list"
 msgid "%s, %s"
 msgstr "%s, %s"
@@ -608,53 +1157,83 @@ msgstr "ne malfermita"
 #. * using the %n$s syntax.
 #.
 #: ../src/translations.js:280
+#, javascript-format
 msgctxt "time interval"
 msgid "%s-%s"
 msgstr "%s-%s"
 
+#. Translators:
+#. * This means a a place where you can plug in your laptop with ethernet.
+#.
+#: ../src/translations.js:346
+msgid "wired"
+msgstr "drata"
+
+#. Translators:
+#. * Like internet cafe or library where the computer is given.
+#.
+#: ../src/translations.js:351
+msgid "terminal"
+msgstr "terminalo"
+
+#. Translators:
+#. * This means there is personnel which helps you in case of problems.
+#.
+#: ../src/translations.js:356
+msgid "service"
+msgstr "servo"
+
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:256
+#: ../src/utils.js:231
 msgid "Unknown"
 msgstr "Nekonate"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:259
+#: ../src/utils.js:234
 msgid "Exact"
 msgstr "Ekzakte"
 
-#: ../src/utils.js:354
+#: ../src/utils.js:337
+#, javascript-format
 msgid "%f h"
 msgstr "%f h"
 
-#: ../src/utils.js:356
+#: ../src/utils.js:339
+#, javascript-format
 msgid "%f min"
 msgstr "%f min"
 
-#: ../src/utils.js:358
+#: ../src/utils.js:341
+#, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
 #. Translators: This is a distance measured in kilometers
-#: ../src/utils.js:369
+#: ../src/utils.js:352
+#, javascript-format
 msgid "%f km"
 msgstr "%f km"
 
 #. Translators: This is a distance measured in meters
-#: ../src/utils.js:372
+#: ../src/utils.js:355
+#, javascript-format
 msgid "%f m"
 msgstr "%f m"
 
 #. Translators: This is a distance measured in miles
-#: ../src/utils.js:380
-#, fuzzy
+#: ../src/utils.js:363
+#, javascript-format
 msgid "%f mi"
 msgstr "%f me"
 
 #. Translators: This is a distance measured in feet
-#: ../src/utils.js:383
-#, fuzzy
+#: ../src/utils.js:366
+#, javascript-format
 msgid "%f ft"
 msgstr "%f ft"
+
+#~ msgid "Country code: %s"
+#~ msgstr "Landkodo: %s"
 
 #~ msgid "Last known location and accuracy"
 #~ msgstr "Laste-sciita loko kaj ekzakto"
@@ -666,23 +1245,14 @@ msgstr "%f ft"
 #~ "Laste-sciita loko (latitudo kaj longitudo en gradoj) kaj ekzakto (en "
 #~ "metroj)."
 
-#~ msgid "Description of last known location"
-#~ msgstr "Priskribo de laste sciita loko"
-
 #~ msgid "Description of last known location of user."
 #~ msgstr "Priskribo de laste sciita loko de la uzanto."
-
-#~ msgid "User set last known location"
-#~ msgstr "Uzanto agordis la laste sciita loko"
 
 #~ msgid "Whether the last known location was set manually by the user."
 #~ msgstr "Ĉu la laste sciatan lokon agordis permane la uzanto"
 
 #~ msgid "I’m here!"
 #~ msgstr "Mi estas ĉi tie!"
-
-#~ msgid "Street"
-#~ msgstr "Strato"
 
 #~ msgid "Satellite"
 #~ msgstr "Satelito"
