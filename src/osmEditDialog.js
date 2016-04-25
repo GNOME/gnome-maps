@@ -26,6 +26,7 @@ const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
+const Soup = imports.gi.Soup;
 
 const Application = imports.application;
 const Maps = imports.gi.GnomeMaps;
@@ -75,7 +76,7 @@ let _osmPhoneRewriteFunc = function(text) {
     if (GLib.uri_parse_scheme(text) === 'tel') {
         let afterTel = text.replace('tel:', '');
 
-        return afterTel.split(';')[0];
+        return Soup.uri_decode(afterTel.split(';')[0]);
     } else {
         return text;
     }
