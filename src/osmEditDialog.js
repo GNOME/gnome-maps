@@ -310,7 +310,8 @@ const OSMEditDialog = new Lang.Class({
         this._updateRecentTypesList();
 
         this._recentTypesListBox.set_header_func(function (row, previous) {
-            row.set_header(new Gtk.Separator());
+            if (previous)
+                row.set_header(new Gtk.Separator());
         });
 
         this._recentTypesListBox.connect('row-activated', (function(listbox, row) {
