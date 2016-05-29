@@ -25,6 +25,7 @@ const Lang = imports.lang;
 
 const Application = imports.application;
 const PlaceStore = imports.placeStore;
+const TransitOptions = imports.transitOptions;
 
 const Transportation = {
     CAR:        0,
@@ -148,11 +149,21 @@ const RouteQuery = new Lang.Class({
             this.notify('points');
     },
 
+    get transitOptions() {
+        return this._transitOptions;
+    },
+
+    set transitOptions(options) {
+        this._transitOptions = options;
+        this.notify('points');
+    },
+
     _init: function(args) {
         this.parent(args);
         this._points = [];
         this._time = null;
         this._date = null;
+        this._transitOptions = new TransitOptions.TransitOptions();
         this.reset();
     },
 
