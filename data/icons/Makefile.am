@@ -43,6 +43,14 @@ private_icons =								\
 	hicolor_apps_16x16_route-transit-symbolic.svg 			\
 	hicolor_apps_16x16_route-bike-symbolic.svg 			\
 	hicolor_apps_16x16_route-car-symbolic.svg 			\
+	hicolor_apps_16x16_route-transit-bus-symbolic.svg		\
+	hicolor_apps_16x16_route-transit-cablecar-symbolic.svg		\
+	hicolor_apps_16x16_route-transit-ferry-symbolic.svg		\
+	hicolor_apps_16x16_route-transit-funicular-symbolic.svg		\
+	hicolor_apps_16x16_route-transit-gondolalift-symbolic.svg	\
+	hicolor_apps_16x16_route-transit-subway-symbolic.svg		\
+	hicolor_apps_16x16_route-transit-train-symbolic.svg		\
+	hicolor_apps_16x16_route-transit-tram-symbolic.svg		\
 	hicolor_apps_24x24_user-location.png				\
 	hicolor_apps_24x24_user-location-compass.png			\
 	$(NULL)
