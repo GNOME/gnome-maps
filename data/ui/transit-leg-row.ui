@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<interface>
+  <requires lib="gtk+" version="3.14"/>
+  <template class="Gjs_TransitLegRow" parent="GtkListBoxRow">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <child>
+      <object class="GtkEventBox" id="eventBox">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <child>
+          <object class="GtkGrid" id="grid">
+            <property name="visible">True</property>
+            <property name="margin-top">0</property>
+            <property name="margin-bottom">0</property>
+            <property name="row-spacing">3</property>
+            <child>
+              <object class="GtkImage" id="modeImage">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="margin-start">12</property>
+                <property name="margin-end">12</property>
+                <property name="halign">GTK_ALIGN_START</property>
+              </object>
+              <packing>
+                <property name="left-attach">0</property>
+                <property name="top-attach">0</property>
+                <property name="height">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="fromLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="halign">GTK_ALIGN_START</property>
+                <property name="max-width-chars">25</property>
+                <property name="ellipsize">PANGO_ELLIPSIZE_END</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkGrid" id="routeGrid">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="halign">GTK_ALIGN_START</property>
+                <property name="hexpand">True</property>
+              </object>
+              <packing>
+                <property name="left-attach">1</property>
+                <property name="top-attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="timeLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="margin-start">6</property>
+                <property name="margin-end">18</property>
+                <property name="hexpand">False</property>
+                <property name="halign">GTK_ALIGN_END</property>
+              </object>
+              <packing>
+                <property name="left-attach">2</property>
+                <property name="top-attach">0</property>
+                <property name="height">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkRevealer" id="detailsRevealer">
+                <property name="visible">True</property>
+                <child>
+                  <object class="GtkGrid">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="margin-left">15</property>
+                    <property name="margin-right">15</property>
+                    <property name="row-spacing">1</property>
+                    <child>
+                      <object class="GtkLabel" id="agencyLabel">
+                        <property name="visible">False</property>
+                        <property name="use-markup">True</property>
+                        <property name="halign">GTK_ALIGN_START</property>
+                        <property name="max_width_chars">30</property>
+                        <property name="ellipsize">PANGO_ELLIPSIZE_END</property>
+                      </object>
+                      <packing>
+                        <property name="top-attach">0</property>
+                        <property name="left-attach">0</property>
+                        <property name="width">3</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSeparator">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="valign">GTK_ALIGN_CENTER</property>
+                      </object>
+                      <packing>
+                        <property name="top-attach">1</property>
+                        <property name="left-attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="collapsButton">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="tooltip-text" translatable="yes">Hide intermediate stops and information</property>
+                        <style>
+                          <class name="small-circular"/>
+                        </style>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="icon-name">go-up-symbolic</property>
+                            <property name="pixel-size">8</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="top-attach">1</property>
+                        <property name="left-attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSeparator">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="valign">GTK_ALIGN_CENTER</property>
+                      </object>
+                      <packing>
+                        <property name="top-attach">1</property>
+                        <property name="left-attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkListBox" id="instructionList">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                      </object>
+                      <packing>
+                        <property name="top-attach">2</property>
+                        <property name="left-attach">0</property>
+                        <property name="width">3</property>
+                      </packing>
+                    </child>
+
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="top-attach">3</property>
+                <property name="left-attach">0</property>
+                <property name="width">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkStack" id="footerStack">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <child>
+                  <object class="GtkGrid">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <child>
+                      <object class="GtkSeparator">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="valign">GTK_ALIGN_CENTER</property>
+                      </object>
+                      <packing>
+                        <property name="top-attach">0</property>
+                        <property name="left-attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="expandButton">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="tooltip-text" translatable="yes">Show intermediate stops and information</property>
+                        <style>
+                          <class name="small-circular"/>
+                        </style>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="icon-name">go-down-symbolic</property>
+                            <property name="pixel-size">8</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="top-attach">0</property>
+                        <property name="left-attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSeparator">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="valign">GTK_ALIGN_CENTER</property>
+                      </object>
+                      <packing>
+                        <property name="top-attach">0</property>
+                        <property name="left-attach">2</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="name">expander</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSeparator">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="hexpand">True</property>
+                    <property name="valign">GTK_ALIGN_CENTER</property>
+                  </object>
+                  <packing>
+                    <property name="name">separator</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="top-attach">4</property>
+                <property name="left-attach">0</property>
+                <property name="width">3</property>
+              </packing>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>
