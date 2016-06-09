@@ -50,9 +50,6 @@ const PlaceEntry = new Lang.Class({
         if (!this._place && !p)
             return;
 
-        if (this._place && p && this._locEquals(this._place, p))
-            return;
-
         if (p) {
             if (p.name) {
                 this.text = p.name;
