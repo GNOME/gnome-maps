@@ -27,29 +27,18 @@ const Location = imports.location;
 const MapMarker = imports.mapMarker;
 const Place = imports.place;
 
-const TransitWalkMarker = new Lang.Class({
-    Name: 'TransitWalkMarker',
+const TransitArrivalMarker = new Lang.Class({
+    Name: 'TransitArrivalMarker',
     Extends: MapMarker.MapMarker,
 
     _init: function(params) {
-        /* if there is a preceeding leg, put the marker at the end of that leg
-         * to avoid gaps, since we will "fill out" the walking leg path line
-         * since sometimes the walking route might not reach exactly to the
-         * transit stop's position
-         */
-        let point;
-        if (params.previousLeg)
-            point = params.previousLeg.polyline[params.previousLeg.polyline.length - 1];
-        else
-            point = params.leg.polyline[0];
+        let lastPoint = params.leg.polyline[params.leg.polyline.length - 1];
+        let location =
+            new Location.Location({ latitude: lastPoint.latitude,
+                                    longitude: lastPoint.longitude
+                                  });
 
         delete params.leg;
-        delete params.previousLeg;
-
-        let location = new Location.Location({ latitude: point.latitude,
-                                               longitude: point.longitude
-                                             });
-
         params.place = new Place.Place({ location: location });
 
         this.parent(params);
@@ -60,7 +49,7 @@ const TransitWalkMarker = new Lang.Class({
                                    alpha: 1.0
                                  });
         let actor =
-            this._actorFromIconName('maps-point-start-symbolic', 0, color);
+            this._actorFromIconName('maps-point-end-symbolic', 0, color);
 
         this.add_actor(actor);
     },
