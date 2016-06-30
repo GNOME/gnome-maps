@@ -137,7 +137,7 @@ const OSM_FIELDS = [
         type: EditFieldType.TEXT,
         rewriteFunc: this._osmWikipediaRewriteFunc,
         hint: _("The format used should include the language code " +
-                "and the article title like ”en:Article title”.")
+                "and the article title like “en:Article title”.")
     },
     {
         name: _("Opening hours"),
