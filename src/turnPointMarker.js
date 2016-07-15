@@ -25,6 +25,7 @@ const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
+const Color = imports.color;
 const Location = imports.location;
 const MapMarker = imports.mapMarker;
 const Place = imports.place;
@@ -41,12 +42,26 @@ const TurnPointMarker = new Lang.Class({
         this._turnPoint = params.turnPoint;
         delete params.turnPoint;
 
+        this._transitStop = params.transitStop;
+        delete params.transitStop;
+
+        this._transitLeg = params.transitLeg;
+        delete params.transitLeg;
+
+        let latitude;
+        let longitude;
+
+        if (this._turnPoint) {
+            latitude = this._turnPoint.coordinate.get_latitude();
+            longitude = this._turnPoint.coordinate.get_longitude();
+        } else {
+            latitude = this._transitStop.coordinate[0];
+            longitude = this._transitStop.coordinate[1];
+        }
+
         params.place = new Place.Place({
-            location: new Location.Location({
-                latitude: this._turnPoint.coordinate.get_latitude(),
-                longitude: this._turnPoint.coordinate.get_longitude()
-            })
-        });
+            location: new Location.Location({ latitude: latitude,
+                                              longitude: longitude }) });
         this.parent(params);
 
         let actor;
@@ -57,16 +72,25 @@ const TurnPointMarker = new Lang.Class({
             }).bind(this));
             actor = this._actorFromIconName(this._turnPoint.iconName, 0);
         } else {
-            // A GNOMEish blue color
-            let color = new Gdk.RGBA({ red: 33   / 255,
-                                       green: 93 / 255,
-                                       blue: 156 / 255,
-                                       alpha: 255 });
+            let color = this._getColor();
             actor = this._actorFromIconName('maps-point-end-symbolic',
                                             0,
                                             color);
         }
         this.add_actor(actor);
+    },
+
+    _getColor: function() {
+        /* Use the route color from the transit leg when representing part of
+         * a transit trip, otherwise let the fallback functionallity of the
+         * utility function use a GNOMEish blue color for turn-by-turn routing.
+         */
+        let color = this._transitLeg ? this._transitLeg.color : null;
+
+        return new Gdk.RGBA({ red: Color.parseColor(color, 0, 33 / 255),
+                              green: Color.parseColor(color, 1, 93 / 255),
+                              blue: Color.parseColor(color, 2, 155 / 255),
+                              alpha: 255 });
     },
 
     get anchor() {
