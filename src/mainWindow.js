@@ -32,6 +32,7 @@ const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
+const MapSource = imports.mapSource;
 const MapView = imports.mapView;
 const SearchPopup = imports.searchPopup;
 const ContextMenu = imports.contextMenu;
@@ -79,6 +80,7 @@ const MainWindow = new Lang.Class({
         this._restoreWindowGeometry();
 
         this._mapOverlay.add_overlay(this._searchPopup);
+        this._mapOverlay.add_overlay(new MapSource.AttributionLogo());
 
         grid.add(this._mapOverlay);
 
