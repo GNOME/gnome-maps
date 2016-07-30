@@ -39,15 +39,14 @@ const Sidebar = imports.sidebar;
 const Utils = imports.utils;
 const Path = imports.path;
 const MapLocation = imports.mapLocation;
+const MapSource = imports.mapSource;
 const UserLocation = imports.userLocation;
 const Geoclue = imports.geoclue;
 const _ = imports.gettext.gettext;
 
 const MapType = {
-    STREET:  Champlain.MAP_SOURCE_OSM_MAPQUEST,
-    AERIAL:  Champlain.MAP_SOURCE_OSM_AERIAL_MAP,
-    CYCLING: Champlain.MAP_SOURCE_OSM_CYCLE_MAP,
-    TRANSIT: Champlain.MAP_SOURCE_OSM_TRANSPORT_MAP
+    STREET: 'MapsStreetSource',
+    AERIAL: 'MapsAerialSource'
 };
 
 const MapView = new Lang.Class({
@@ -78,7 +77,6 @@ const MapView = new Lang.Class({
         this._userLocationLayer.set_selection_mode(Champlain.SelectionMode.SINGLE);
         this.view.add_layer(this._userLocationLayer);
 
-        this._factory = Champlain.MapSourceFactory.dup_default();
         this.setMapType(MapType.STREET);
 
         this._zoomControl = new ZoomControl.ZoomControl(this);
@@ -91,8 +89,10 @@ const MapView = new Lang.Class({
     },
 
     setMapType: function(mapType) {
-        let source = this._factory.create_cached_source(mapType);
-        this.view.set_map_source(source);
+        if (mapType === MapType.AERIAL)
+            this.view.map_source = MapSource.createAerialSource();
+        else
+            this.view.map_source = MapSource.createStreetSource();
     },
 
     geocodeSearch: function(searchString, searchCompleteCallback) {
