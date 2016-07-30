@@ -18,6 +18,7 @@
  */
 
 const Champlain = imports.gi.Champlain;
+const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 
 const Utils = imports.utils;
@@ -54,6 +55,16 @@ function _createTileSource(uri, name) {
           uri_format: uri
         });
 }
+
+const AttributionLogo = new Lang.Class({
+    Name: 'AttributionLogo',
+    Extends: Gtk.Image,
+    Template: 'resource:///org/gnome/Maps/ui/attribution-logo.ui',
+
+    _init: function() {
+        this.parent();
+    }
+});
 
 function _createCachedSource(uri, name) {
     let tileSource = _createTileSource(uri, name);
