@@ -18,6 +18,7 @@
  */
 
 const Champlain = imports.gi.Champlain;
+const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 
 const Utils = imports.utils;
@@ -39,6 +40,21 @@ const _MAX_ZOOM = 19;
 
 const _FILE_CACHE_SIZE_LIMIT = (10 * 1024 * 1024); /* 10Mb */
 const _MEMORY_CACHE_SIZE_LIMIT = 100; /* number of tiles */
+
+const AttributionLogo = new Lang.Class({
+    Name: 'AttributionLogo',
+    Extends: Gtk.Bin,
+
+    _init: function() {
+        this.parent({ halign: Gtk.Align.END,
+                      valign: Gtk.Align.END,
+                      margin_bottom: 6,
+                      margin_end: 6 });
+
+        let ui = Utils.getUIObject('attribution-logo', ['logo']);
+        this.add(ui.logo);
+    }
+});
 
 function _createTileSource(uri, name) {
     return new Champlain.NetworkTileSource(
