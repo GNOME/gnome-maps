@@ -36,6 +36,7 @@ const KmlShapeLayer = imports.kmlShapeLayer;
 const GpxShapeLayer = imports.gpxShapeLayer;
 const Location = imports.location;
 const Maps = imports.gi.GnomeMaps;
+const MapSource = imports.mapSource;
 const MapWalker = imports.mapWalker;
 const Place = imports.place;
 const PlaceMarker = imports.placeMarker;
@@ -47,10 +48,8 @@ const Utils = imports.utils;
 
 const MapType = {
     LOCAL: 'MapsLocalSource',
-    STREET:  Champlain.MAP_SOURCE_OSM_MAPQUEST,
-    AERIAL:  Champlain.MAP_SOURCE_OSM_AERIAL_MAP,
-    CYCLING: Champlain.MAP_SOURCE_OSM_CYCLE_MAP,
-    TRANSIT: Champlain.MAP_SOURCE_OSM_TRANSPORT_MAP
+    STREET: 'MapsStreetSource',
+    AERIAL: 'MapsAerialSource'
 };
 const _LOCATION_STORE_TIMEOUT = 500;
 const MapMinZoom = 2;
@@ -105,7 +104,6 @@ const MapView = new Lang.Class({
         this.view = this._initView();
         this._initLayers();
 
-        this._factory = Champlain.MapSourceFactory.dup_default();
         this.setMapType(mapType);
 
         this.shapeLayerStore = new Gio.ListStore(GObject.TYPE_OBJECT);
@@ -209,8 +207,10 @@ const MapView = new Lang.Class({
         let overlay_sources = this.view.get_overlay_sources();
 
         if (mapType !== MapType.LOCAL) {
-            let source = this._factory.create_cached_source(mapType);
-            this.view.map_source = source;
+            if (mapType === MapType.AERIAL)
+                this.view.map_source = MapSource.createAerialSource();
+            else
+                this.view.map_source = MapSource.createStreetSource();
         } else {
             let renderer = new Champlain.ImageRenderer();
             let source = new Maps.FileTileSource({
