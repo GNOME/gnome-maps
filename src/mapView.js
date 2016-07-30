@@ -37,6 +37,7 @@ const Signals = imports.signals;
 const Application = imports.application;
 const Utils = imports.utils;
 const Path = imports.path;
+const MapSource = imports.mapSource;
 const MapWalker = imports.mapWalker;
 const SearchResultMarker = imports.searchResultMarker;
 const TurnPointMarker = imports.turnPointMarker;
@@ -44,10 +45,8 @@ const UserLocationMarker = imports.userLocationMarker;
 const _ = imports.gettext.gettext;
 
 const MapType = {
-    STREET:  Champlain.MAP_SOURCE_OSM_MAPQUEST,
-    AERIAL:  Champlain.MAP_SOURCE_OSM_AERIAL_MAP,
-    CYCLING: Champlain.MAP_SOURCE_OSM_CYCLE_MAP,
-    TRANSIT: Champlain.MAP_SOURCE_OSM_TRANSPORT_MAP
+    STREET: 'MapsStreetSource',
+    AERIAL: 'MapsAerialSource'
 };
 
 const MapMinZoom = 2;
@@ -82,7 +81,6 @@ const MapView = new Lang.Class({
         this.view = this._initView();
         this._initLayers();
 
-        this._factory = Champlain.MapSourceFactory.dup_default();
         this.setMapType(MapType.STREET);
 
         this._updateUserLocation();
@@ -150,8 +148,10 @@ const MapView = new Lang.Class({
         if (this.view.map_source.id === mapType)
             return;
 
-        let source = this._factory.create_cached_source(mapType);
-        this.view.map_source = source;
+        if (mapType === MapType.AERIAL)
+            this.view.map_source = MapSource.createAerialSource();
+        else
+            this.view.map_source = MapSource.createStreetSource();
     },
 
     gotoUserLocation: function(animate) {
