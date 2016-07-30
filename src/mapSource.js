@@ -18,6 +18,7 @@
  */
 
 const Champlain = imports.gi.Champlain;
+const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 
 const Utils = imports.utils;
@@ -39,6 +40,16 @@ const _MAX_ZOOM = 19;
 
 const _FILE_CACHE_SIZE_LIMIT = (10 * 1024 * 1024); /* 10Mb */
 const _MEMORY_CACHE_SIZE_LIMIT = 100; /* number of tiles */
+
+const AttributionLogo = new Lang.Class({
+    Name: 'AttributionLogo',
+    Extends: Gtk.Image,
+    Template: 'resource:///org/gnome/Maps/ui/attribution-logo.ui',
+
+    _init: function() {
+        this.parent();
+    }
+});
 
 function _createTileSource(uri, name) {
     return new Champlain.NetworkTileSource(
