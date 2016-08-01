@@ -60,7 +60,6 @@ function _createTileSource(uri, name) {
           min_zoom_level: _MIN_ZOOM,
           max_zoom_level: _MAX_ZOOM,
           tile_size: _TILE_SIZE,
-          projection: Champlain.MapProjection.MERCATOR,
           renderer: new Champlain.ImageRenderer(),
           uri_format: uri
         });
