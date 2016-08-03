@@ -29,6 +29,7 @@ const PangoCairo = imports.gi.PangoCairo;
 const Application = imports.application;
 const InstructionRow = imports.instructionRow;
 const MapView = imports.mapView;
+const MapSource = imports.mapSource;
 const TurnPointMarker = imports.turnPointMarker;
 
 /* Following constant has unit as meters */
@@ -148,8 +149,7 @@ const PrintLayout = new Lang.Class({
         let pageNum = this.numPages - 1;
         let x = this._cursorX;
         let y = this._cursorY;
-        let factory = Champlain.MapSourceFactory.dup_default();
-        let mapSource = factory.create_cached_source(MapView.MapType.STREET);
+        let mapSource = MapSource.createStreetSource();
         let locations = [];
         let markerLayer = new Champlain.MarkerLayer();
         let view = new Champlain.View({ width: width,
