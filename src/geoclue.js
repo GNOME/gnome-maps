@@ -34,31 +34,34 @@ const Path = imports.path;
 const Signals = imports.signals;
 const _ = imports.gettext.gettext;
 
-const ManagerInterface = <interface name="org.freedesktop.GeoClue2.Manager">
-    <method name="GetClient">
-        <arg name="client" type="o" direction="out"/>
-    </method>
-</interface>
+const ManagerInterface = '<node><interface name="org.freedesktop.GeoClue2.Manager"> \
+    <method name="GetClient"> \
+        <arg name="client" type="o" direction="out"/> \
+    </method> \
+</interface></node>';
+
 const ManagerProxy = Gio.DBusProxy.makeProxyWrapper(ManagerInterface);
 
-const ClientInterface = <interface name="org.freedesktop.GeoClue2.Client">
-    <property name="Location" type="o" access="read"/>
-    <property name="DistanceThreshold" type="u" access="readwrite"/>
-    <method name="Start"/>
-    <method name="Stop"/>
-    <signal name="LocationUpdated">
-        <arg name="old" type="o"/>
-        <arg name="new" type="o"/>
-    </signal>
-</interface>
+const ClientInterface = '<node><interface name="org.freedesktop.GeoClue2.Client"> \
+    <property name="Location" type="o" access="read"/> \
+    <property name="DistanceThreshold" type="u" access="readwrite"/> \
+    <method name="Start"/> \
+    <method name="Stop"/> \
+    <signal name="LocationUpdated"> \
+        <arg name="old" type="o"/> \
+        <arg name="new" type="o"/> \
+    </signal> \
+</interface></node>';
+
 const ClientProxy = Gio.DBusProxy.makeProxyWrapper(ClientInterface);
 
-const LocationInterface = <interface name="org.freedesktop.GeoClue2.Location">
-    <property name="Latitude" type="d" access="read"/>
-    <property name="Longitude" type="d" access="read"/>
-    <property name="Accuracy" type="d" access="read"/>
-    <property name="Description" type="s" access="read"/>
-</interface>
+const LocationInterface = '<node><interface name="org.freedesktop.GeoClue2.Location"> \
+    <property name="Latitude" type="d" access="read"/> \
+    <property name="Longitude" type="d" access="read"/> \
+    <property name="Accuracy" type="d" access="read"/> \
+    <property name="Description" type="s" access="read"/> \
+</interface></node>';
+
 const LocationProxy = Gio.DBusProxy.makeProxyWrapper(LocationInterface);
 
 const Geoclue = new Lang.Class({
