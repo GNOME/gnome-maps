@@ -49,7 +49,7 @@ const AttributionLogo = new Lang.Class({
         this.parent({ halign: Gtk.Align.END,
                       valign: Gtk.Align.END,
                       margin_bottom: 6,
-                      margin_end: 6 });
+                      margin_right: 6 });
 
         let ui = Utils.getUIObject('attribution-logo', ['logo']);
         this.add(ui.logo);
