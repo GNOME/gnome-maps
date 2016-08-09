@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps 3.9.91\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-02 14:38+0200\n"
-"PO-Revision-Date: 2016-03-02 15:47+0200\n"
-"Last-Translator: Yosef Or Boczko <yoseforb@gnome.org>\n"
+"POT-Creation-Date: 2016-08-09 21:43+0300\n"
+"PO-Revision-Date: 2016-08-09 21:44+0300\n"
+"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
@@ -57,7 +57,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:86 ../src/mainWindow.js:420
+#: ../src/application.js:85 ../src/mainWindow.js:425
 msgid "Maps"
 msgstr "מפות"
 
@@ -480,22 +480,40 @@ msgid "City"
 msgstr "עיר"
 
 #: ../data/ui/osm-edit-dialog.ui.h:1
+msgid "Type"
+msgstr "סוג"
+
+#: ../data/ui/osm-edit-dialog.ui.h:2
 msgid "None"
 msgstr "ללא"
 
-#: ../data/ui/osm-edit-dialog.ui.h:2
+#: ../data/ui/osm-edit-dialog.ui.h:3
+msgid "Add Field"
+msgstr "הוספת שדה"
+
+#: ../data/ui/osm-edit-dialog.ui.h:4
+msgid "Comment"
+msgstr "הערות"
+
+#: ../data/ui/osm-edit-dialog.ui.h:5
+msgid ""
+"Map changes will be visible on all maps that use\n"
+"    OpenStreetMap data."
+msgstr "שינויים במפה יופיעו בכל המפות המשתמשות במידע מ־OpenStreetMap."
+
+#: ../data/ui/osm-edit-dialog.ui.h:7
 msgid "Recently Used"
 msgstr "בשימוש לאחרונה"
 
-#: ../data/ui/osm-edit-dialog.ui.h:3
+#: ../data/ui/osm-edit-dialog.ui.h:8
 msgid "Edit on OpenStreetMap"
 msgstr "עריכה ב־OpenStreetMap"
 
-#: ../data/ui/osm-edit-dialog.ui.h:4
+#: ../data/ui/osm-edit-dialog.ui.h:9
 msgid "Cancel"
 msgstr "ביטול"
 
-#: ../data/ui/osm-edit-dialog.ui.h:5 ../src/osmEditDialog.js:470
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:471
 msgid "Next"
 msgstr "הבא"
 
@@ -570,7 +588,7 @@ msgstr "חסרות תכונות דרושות"
 msgid "Could not find OSM element"
 msgstr "לא ניתן למצוא יסוד OSM"
 
-#: ../src/application.js:102
+#: ../src/application.js:101
 msgid "A path to a local tiles directory structure"
 msgstr "נתיב לתיקייה מבני אריחים מקומיים"
 
@@ -613,7 +631,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "כתיבת הודעה אפשרית להרשמה עבור %s."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:507
+#: ../src/osmEditDialog.js:508
 msgid "An error has occurred"
 msgstr "התרחשה שגיאה"
 
@@ -690,15 +708,19 @@ msgstr "שגיאת ניתוח"
 msgid "unknown geometry"
 msgstr "שגיאה הנדסית"
 
-#: ../src/mainWindow.js:366
+#: ../src/layersPopover.js:62
+msgid "All Layer Files"
+msgstr "כל שכבות הקבצים"
+
+#: ../src/mainWindow.js:371
 msgid "Failed to connect to location service"
 msgstr "ארע כשל בהתחברות לשרת האיכון"
 
-#: ../src/mainWindow.js:418
+#: ../src/mainWindow.js:423
 msgid "translator-credits"
 msgstr "יוסף אור בוצ׳קו <yoseforb@gnome.org>"
 
-#: ../src/mainWindow.js:421
+#: ../src/mainWindow.js:426
 msgid "A map application for GNOME"
 msgstr "יישום מפות עבור GNOME"
 
@@ -744,23 +766,23 @@ msgstr "העצם נמחק"
 msgid "Way or relation refers to non-existing children"
 msgstr "נתיב או יחס מפנה לילדים לא קיימים"
 
-#: ../src/osmEditDialog.js:103
+#: ../src/osmEditDialog.js:104
 msgid "Name"
 msgstr "שם"
 
-#: ../src/osmEditDialog.js:106
+#: ../src/osmEditDialog.js:107
 msgid "The official name. This is typically what appears on signs."
 msgstr "השם הרשמי. זה בדרך כלל מה שמופיע על השילוטים."
 
-#: ../src/osmEditDialog.js:109
+#: ../src/osmEditDialog.js:110
 msgid "Address"
 msgstr "כתובת"
 
-#: ../src/osmEditDialog.js:117 ../src/placeBubble.js:165
+#: ../src/osmEditDialog.js:118 ../src/placeBubble.js:165
 msgid "Website"
 msgstr "אתר אינטרנט"
 
-#: ../src/osmEditDialog.js:120
+#: ../src/osmEditDialog.js:121
 msgid ""
 "The official website. Try to use the most basic form of a URL i.e. http://"
 "example.com instead of http://example.com/index.html."
@@ -768,11 +790,11 @@ msgstr ""
 "אתר האינטרנט הרשמי. יש לנסות להשתמש בצורה הבסיסית ביותר של הכתובת. למשל "
 "http://example.com במקום http://example.com/index.html."
 
-#: ../src/osmEditDialog.js:125
+#: ../src/osmEditDialog.js:126
 msgid "Phone"
 msgstr "טלפון"
 
-#: ../src/osmEditDialog.js:129
+#: ../src/osmEditDialog.js:130
 msgid ""
 "Phone number. Use the international format, starting with a + sign. Beware "
 "of local privacy laws, especially for private phone numbers."
@@ -780,91 +802,90 @@ msgstr ""
 "מספר טלפון. יש להשתמש בתבנית בינלאומית, המתחיל עם סימן פלוס +. יש להיזהר "
 "מחוקי הפרטיות, בפרט עבור מספרי טלפון פרטיים."
 
-#: ../src/osmEditDialog.js:134 ../src/placeBubble.js:171
+#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:171
 msgid "Wikipedia"
 msgstr "ויקיפדיה"
 
-#: ../src/osmEditDialog.js:138
+#: ../src/osmEditDialog.js:139
 msgid ""
 "The format used should include the language code and the article title like "
-"”en:Article title”."
+"“en:Article title”."
 msgstr ""
-"התבנית בשימוש צריכה לכלול את קוד השפה ואת כותרת הערך. למשל: \"he:כותרת הערך"
-"\"."
+"התבנית בשימוש צריכה לכלול את קוד השפה ואת כותרת הערך. למשל: \"he:כותרת הערך."
 
-#: ../src/osmEditDialog.js:142
+#: ../src/osmEditDialog.js:143
 msgid "Opening hours"
 msgstr "שעות פתיחה"
 
-#: ../src/osmEditDialog.js:147
+#: ../src/osmEditDialog.js:148
 msgid "See the link in the label for help on format."
 msgstr "ניתן לקבל עזרה עבור התבנית בקישור בתווית."
 
-#: ../src/osmEditDialog.js:150
+#: ../src/osmEditDialog.js:151
 msgid "Population"
 msgstr "אוכלוסייה"
 
-#: ../src/osmEditDialog.js:155
+#: ../src/osmEditDialog.js:156
 msgid "Altitude"
 msgstr "גובה"
 
-#: ../src/osmEditDialog.js:158
+#: ../src/osmEditDialog.js:159
 msgid "Elevation (height above sea level) of a point in metres."
 msgstr "גובה (גובה מעל פני הים) של נקודה במטרים."
 
-#: ../src/osmEditDialog.js:161
+#: ../src/osmEditDialog.js:162
 msgid "Wheelchair access"
 msgstr "נגישות נכים"
 
-#: ../src/osmEditDialog.js:164 ../src/osmEditDialog.js:173
+#: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
 msgid "Yes"
 msgstr "יש"
 
-#: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
+#: ../src/osmEditDialog.js:166 ../src/osmEditDialog.js:175
 msgid "No"
 msgstr "אין"
 
-#: ../src/osmEditDialog.js:166
+#: ../src/osmEditDialog.js:167
 msgid "Limited"
 msgstr "מוגבל"
 
-#: ../src/osmEditDialog.js:167
+#: ../src/osmEditDialog.js:168
 msgid "Designated"
 msgstr "מובנה"
 
-#: ../src/osmEditDialog.js:170
+#: ../src/osmEditDialog.js:171
 msgid "Internet access"
 msgstr "גישה לאינטרנט"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
 #.
-#: ../src/osmEditDialog.js:175 ../src/translations.js:341
+#: ../src/osmEditDialog.js:176 ../src/translations.js:341
 msgid "Wi-Fi"
 msgstr "רשת אלחוטית"
 
-#: ../src/osmEditDialog.js:176
+#: ../src/osmEditDialog.js:177
 msgid "Wired"
 msgstr "רשת קווית"
 
-#: ../src/osmEditDialog.js:177
+#: ../src/osmEditDialog.js:178
 msgid "Terminal"
 msgstr "מסוף"
 
-#: ../src/osmEditDialog.js:178
+#: ../src/osmEditDialog.js:179
 msgid "Service"
 msgstr "שרת"
 
-#: ../src/osmEditDialog.js:287
+#: ../src/osmEditDialog.js:288
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "הוספה ל־OpenStreetMap"
 
-#: ../src/osmEditDialog.js:338
+#: ../src/osmEditDialog.js:339
 msgid "Select Type"
 msgstr "בחירת סוג"
 
-#: ../src/osmEditDialog.js:456
+#: ../src/osmEditDialog.js:457
 msgid "Done"
 msgstr "בוצה"
 
@@ -902,7 +923,7 @@ msgstr "ארע כשל בניתוח כתובת Geo"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: ../src/place.js:177 ../src/translations.js:330
+#: ../src/place.js:178 ../src/translations.js:330
 msgid "yes"
 msgstr "יש"
 
@@ -911,7 +932,7 @@ msgstr "יש"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:184
+#: ../src/place.js:185
 msgid "limited"
 msgstr "מוגבל"
 
@@ -923,7 +944,7 @@ msgstr "מוגבל"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: ../src/place.js:190 ../src/translations.js:336
+#: ../src/place.js:191 ../src/translations.js:336
 msgid "no"
 msgstr "אין"
 
@@ -932,11 +953,11 @@ msgstr "אין"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:197
+#: ../src/place.js:198
 msgid "designated"
 msgstr "מובנה"
 
-#: ../src/printLayout.js:243
+#: ../src/printLayout.js:244
 #, javascript-format
 msgid "From %s to %s"
 msgstr "מ־%s אל %s"
@@ -1128,50 +1149,50 @@ msgid "service"
 msgstr "שרת"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:228
+#: ../src/utils.js:231
 msgid "Unknown"
 msgstr "לא ידוע"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:231
+#: ../src/utils.js:234
 msgid "Exact"
 msgstr "מדויק"
 
-#: ../src/utils.js:334
+#: ../src/utils.js:337
 #, javascript-format
 msgid "%f h"
 msgstr "%f שעות"
 
-#: ../src/utils.js:336
+#: ../src/utils.js:339
 #, javascript-format
 msgid "%f min"
 msgstr "%f דקות"
 
-#: ../src/utils.js:338
+#: ../src/utils.js:341
 #, javascript-format
 msgid "%f s"
 msgstr "%f שניות"
 
 #. Translators: This is a distance measured in kilometers
-#: ../src/utils.js:349
+#: ../src/utils.js:352
 #, javascript-format
 msgid "%f km"
 msgstr "%f ק״מ"
 
 #. Translators: This is a distance measured in meters
-#: ../src/utils.js:352
+#: ../src/utils.js:355
 #, javascript-format
 msgid "%f m"
 msgstr "%f מ׳"
 
 #. Translators: This is a distance measured in miles
-#: ../src/utils.js:360
+#: ../src/utils.js:363
 #, javascript-format
 msgid "%f mi"
 msgstr "%f מיל"
 
 #. Translators: This is a distance measured in feet
-#: ../src/utils.js:363
+#: ../src/utils.js:366
 #, javascript-format
 msgid "%f ft"
 msgstr "%f רגל"
