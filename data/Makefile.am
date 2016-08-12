@@ -11,6 +11,9 @@ org.gnome.Maps.data.gresource: org.gnome.Maps.data.gresource.xml $(app_resource_
 		--target=$@						\
 		--sourcedir=$(srcdir) $<
 
+tileservicedir = $(pkgdatadir)
+tileservice_DATA = maps-service.json
+
 resourcedir = $(pkgdatadir)
 resource_DATA = org.gnome.Maps.data.gresource
 
@@ -44,6 +47,7 @@ EXTRA_DIST =								\
 	org.gnome.Maps.gschema.xml					\
 	org.gnome.Maps.data.gresource.xml				\
 	org.gnome.Maps.appdata.xml.in					\
+	maps-service.json						\
 	$(app_resource_files)						\
 	$(NULL)
 
