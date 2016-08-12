@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-03-16 09:24+0000\n"
-"PO-Revision-Date: 2016-03-16 18:33+0200\n"
+"POT-Creation-Date: 2016-08-09 18:45+0000\n"
+"PO-Revision-Date: 2016-08-12 16:27+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
-"Language-Team: suomi <gnome-fi-laatu@lists.sourceforge.net>\n"
+"Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -56,7 +56,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:85 ../src/mainWindow.js:420
+#: ../src/application.js:85 ../src/mainWindow.js:425
 msgid "Maps"
 msgstr "Kartat"
 
@@ -519,7 +519,7 @@ msgstr "Muokkaa OpenStreetMapissa"
 msgid "Cancel"
 msgstr "Peru"
 
-#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:470
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:471
 msgid "Next"
 msgstr "Seuraava"
 
@@ -548,10 +548,9 @@ msgid "Open Layer"
 msgstr "Avaa taso"
 
 #: ../data/ui/shape-layer-row.ui.h:1
-#, fuzzy
 #| msgid "Toggle favorites"
 msgid "Toggle visible"
-msgstr "Näytä/piilota suosikit"
+msgstr "Näytä/piilota"
 
 #: ../data/ui/sidebar.ui.h:1
 msgid "Route search by GraphHopper"
@@ -590,7 +589,7 @@ msgstr "XML-asiakirjan jäsentäminen epäonnistui"
 
 #: ../lib/maps-osm.c:252 ../lib/maps-osm.c:405
 msgid "Missing required attributes"
-msgstr ""
+msgstr "Vaaditut attribuutit puuttuvat"
 
 #: ../lib/maps-osm.c:453
 msgid "Could not find OSM element"
@@ -643,7 +642,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Kirjoita valinnainen viesti paikkaan %s kirjautumisen yhteydessä."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:507
+#: ../src/osmEditDialog.js:508
 msgid "An error has occurred"
 msgstr "Tapahtui virhe"
 
@@ -722,15 +721,19 @@ msgstr "jäsentämisvirhe"
 msgid "unknown geometry"
 msgstr "tuntematon geometria"
 
-#: ../src/mainWindow.js:366
+#: ../src/layersPopover.js:62
+msgid "All Layer Files"
+msgstr "Kaikki tasotiedostot"
+
+#: ../src/mainWindow.js:371
 msgid "Failed to connect to location service"
 msgstr "Yhteys sijaintipalveluun epäonnistui"
 
-#: ../src/mainWindow.js:418
+#: ../src/mainWindow.js:423
 msgid "translator-credits"
 msgstr "Jiri Grönroos"
 
-#: ../src/mainWindow.js:421
+#: ../src/mainWindow.js:426
 msgid "A map application for GNOME"
 msgstr "Karttasovellus Gnomelle"
 
@@ -776,23 +779,23 @@ msgstr "Objekti on poistettu"
 msgid "Way or relation refers to non-existing children"
 msgstr ""
 
-#: ../src/osmEditDialog.js:103
+#: ../src/osmEditDialog.js:104
 msgid "Name"
 msgstr "Nimi"
 
-#: ../src/osmEditDialog.js:106
+#: ../src/osmEditDialog.js:107
 msgid "The official name. This is typically what appears on signs."
 msgstr "Virallinen nimi. Tämä on yleensä näkyvillä kyltissä."
 
-#: ../src/osmEditDialog.js:109
+#: ../src/osmEditDialog.js:110
 msgid "Address"
 msgstr "Osoite"
 
-#: ../src/osmEditDialog.js:117 ../src/placeBubble.js:165
+#: ../src/osmEditDialog.js:118 ../src/placeBubble.js:165
 msgid "Website"
 msgstr "Verkkosivusto"
 
-#: ../src/osmEditDialog.js:120
+#: ../src/osmEditDialog.js:121
 msgid ""
 "The official website. Try to use the most basic form of a URL i.e. http://"
 "example.com instead of http://example.com/index.html."
@@ -800,11 +803,11 @@ msgstr ""
 "Virallinen verkkosivusto. Käytä verkkotunnuksen perusmuotoa, eli mieluummin "
 "http://esimerkki.fi kuin http://esimerkki.fi/index.html."
 
-#: ../src/osmEditDialog.js:125
+#: ../src/osmEditDialog.js:126
 msgid "Phone"
 msgstr "Puhelin"
 
-#: ../src/osmEditDialog.js:129
+#: ../src/osmEditDialog.js:130
 msgid ""
 "Phone number. Use the international format, starting with a + sign. Beware "
 "of local privacy laws, especially for private phone numbers."
@@ -813,91 +816,95 @@ msgstr ""
 "mahdolliset paikalliset yksityisyyslait, jotka voivat koskea salaisia "
 "puhelinnumeroita."
 
-#: ../src/osmEditDialog.js:134 ../src/placeBubble.js:171
+#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:171
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: ../src/osmEditDialog.js:138
+#: ../src/osmEditDialog.js:139
+#, fuzzy
+#| msgid ""
+#| "The format used should include the language code and the article title "
+#| "like ”en:Article title”."
 msgid ""
 "The format used should include the language code and the article title like "
-"”en:Article title”."
+"“en:Article title”."
 msgstr ""
 "Käytettävän muotoilun tulisi sisältää kielikoodin ja artikkelin nimen, kuten "
 "\"en:Article title\"."
 
-#: ../src/osmEditDialog.js:142
+#: ../src/osmEditDialog.js:143
 msgid "Opening hours"
 msgstr "Aukioloajat"
 
-#: ../src/osmEditDialog.js:147
+#: ../src/osmEditDialog.js:148
 msgid "See the link in the label for help on format."
 msgstr "Avaa linkki nähdäksesi muotoilua koskevan ohjeen."
 
-#: ../src/osmEditDialog.js:150
+#: ../src/osmEditDialog.js:151
 msgid "Population"
 msgstr "Asukasluku"
 
-#: ../src/osmEditDialog.js:155
+#: ../src/osmEditDialog.js:156
 msgid "Altitude"
 msgstr "Korkeus"
 
-#: ../src/osmEditDialog.js:158
+#: ../src/osmEditDialog.js:159
 msgid "Elevation (height above sea level) of a point in metres."
 msgstr "Sijaintipisteen korkeus merenpinnan yläpuolella metreissä."
 
-#: ../src/osmEditDialog.js:161
+#: ../src/osmEditDialog.js:162
 msgid "Wheelchair access"
 msgstr "Pääsy pyörätuolilla"
 
-#: ../src/osmEditDialog.js:164 ../src/osmEditDialog.js:173
+#: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
 msgid "Yes"
 msgstr "Kyllä"
 
-#: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
+#: ../src/osmEditDialog.js:166 ../src/osmEditDialog.js:175
 msgid "No"
 msgstr "Ei"
 
-#: ../src/osmEditDialog.js:166
+#: ../src/osmEditDialog.js:167
 msgid "Limited"
 msgstr "Rajoitettu"
 
-#: ../src/osmEditDialog.js:167
+#: ../src/osmEditDialog.js:168
 msgid "Designated"
 msgstr "Suunniteltu"
 
-#: ../src/osmEditDialog.js:170
+#: ../src/osmEditDialog.js:171
 msgid "Internet access"
 msgstr "Internet-käyttö"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
 #.
-#: ../src/osmEditDialog.js:175 ../src/translations.js:341
+#: ../src/osmEditDialog.js:176 ../src/translations.js:341
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
 
-#: ../src/osmEditDialog.js:176
+#: ../src/osmEditDialog.js:177
 msgid "Wired"
 msgstr "Kiinteä"
 
-#: ../src/osmEditDialog.js:177
+#: ../src/osmEditDialog.js:178
 msgid "Terminal"
 msgstr "Pääte"
 
-#: ../src/osmEditDialog.js:178
+#: ../src/osmEditDialog.js:179
 msgid "Service"
 msgstr "Palvelu"
 
-#: ../src/osmEditDialog.js:287
+#: ../src/osmEditDialog.js:288
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Lisää OpenStreetMapiin"
 
-#: ../src/osmEditDialog.js:338
+#: ../src/osmEditDialog.js:339
 msgid "Select Type"
 msgstr "Valitse tyyppi"
 
-#: ../src/osmEditDialog.js:456
+#: ../src/osmEditDialog.js:457
 msgid "Done"
 msgstr "Valmis"
 
@@ -969,7 +976,7 @@ msgstr "ei"
 msgid "designated"
 msgstr "suunniteltu esteettömäksi"
 
-#: ../src/printLayout.js:243
+#: ../src/printLayout.js:244
 #, javascript-format
 msgid "From %s to %s"
 msgstr "Alkupisteestä %s päätepisteeseen %s"
