@@ -18,25 +18,22 @@
  */
 
 const Champlain = imports.gi.Champlain;
+const GdkPixbuf = imports.gi.GdkPixbuf;
+const Gio = imports.gi.Gio;
+const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
+const Soup = imports.gi.Soup;
 
+const Config = imports.config;
+const Path = imports.path;
 const Utils = imports.utils;
 
-/*
- * These URIs are used by the libchamplain network tile source.
- * The #X#, #Y#, #Z# coords will get replaced with actual tile numbers.
- */
-const _AERIAL_URI = "https://gis.gnome.org/tiles/satellite/v1/#Z#/#X#/#Y#";
-const _STREET_URI = "https://gis.gnome.org/tiles/street/v1/#Z#/#X#/#Y#";
+let _tileService = null;
+let _attributionImage = null;
 
-/* unique names are needed for file caching */
-const _AERIAL_NAME = "mapbox-satellite-v1";
-const _STREET_NAME = "mapbox-street-v1";
-
-const _TILE_SIZE = 256;
-const _MIN_ZOOM = 0;
-const _MAX_ZOOM = 19;
+const _TILE_SERVICE_URL = 'https://gis.gnome.org/services/v1/service.json';
+const _DEFAULT_SERVICE_FILE = 'maps-service.json';
 
 const _FILE_CACHE_SIZE_LIMIT = (10 * 1024 * 1024); /* 10Mb */
 const _MEMORY_CACHE_SIZE_LIMIT = 100; /* number of tiles */
@@ -50,28 +47,76 @@ const AttributionLogo = new Lang.Class({
                       valign: Gtk.Align.END,
                       margin_bottom: 6,
                       margin_end: 6 });
-
-        let ui = Utils.getUIObject('attribution-logo', ['logo']);
-        this.add(ui.logo);
+        this.add(_attributionImage);
     }
 });
 
-function _createTileSource(uri, name) {
-    return new Champlain.NetworkTileSource(
-        { id: name,
-          name: name,
-          license: null,
-          license_uri: null,
-          min_zoom_level: _MIN_ZOOM,
-          max_zoom_level: _MAX_ZOOM,
-          tile_size: _TILE_SIZE,
-          renderer: new Champlain.ImageRenderer(),
-          uri_format: uri
-        });
+function _updateAttributionImage(source) {
+    if (!_attributionImage)
+        _attributionImage = new Gtk.Image();
+
+    if (!source.attribution_logo || source.attribution_logo === "") {
+        _attributionImage.visible = false;
+        return;
+    }
+
+    let data = GLib.base64_decode(source.attribution_logo);
+    let stream = Gio.MemoryInputStream.new_from_bytes(GLib.Bytes.new(data));
+    _attributionImage.pixbuf = GdkPixbuf.Pixbuf.new_from_stream(stream, null);
+ }
+
+function _createDefaultService() {
+    let filename = GLib.build_filenamev([Path.RESOURCE_DIR,
+                                         _DEFAULT_SERVICE_FILE]);
+    let data = Utils.readFile(filename);
+    _tileService = JSON.parse(data).tiles;
+    return _tileService;
 }
 
-function _createCachedSource(uri, name) {
-    let tileSource = _createTileSource(uri, name);
+function _getTileService() {
+    if (_tileService)
+        return _tileService;
+
+    let user_agent = 'gnome-maps/' +  Config.PACKAGE_VERSION;
+    let session = new Soup.Session({ user_agent : user_agent });
+    let msg = Soup.Message.new('GET', _TILE_SERVICE_URL);
+    try {
+        let stream = Gio.DataInputStream.new(session.send(msg, null));
+
+        let lines = "";
+        while(true) {
+            let [line, _] = stream.read_line_utf8(null);
+            if (line === null)
+                break;
+            lines += line;
+        }
+        _tileService =  JSON.parse(lines).tiles;
+        return _tileService;
+    } catch(e) {
+        Utils.debug(e);
+        return _createDefaultService();
+    }
+}
+
+function _createTileSource(source) {
+    let tileSource = new Champlain.NetworkTileSource({
+        id: source.id,
+        name: source.name,
+        license: source.license,
+        license_uri: source.license_uri,
+        min_zoom_level: source.min_zoom_level,
+        max_zoom_level: source.max_zoom_level,
+        tile_size: source.tile_size,
+        renderer: new Champlain.ImageRenderer(),
+        uri_format: source.uri_format
+    });
+    tileSource.max_conns = source.max_connections;
+    return tileSource;
+ }
+
+function _createCachedSource(source) {
+    let tileSource = _createTileSource(source);
+    _updateAttributionImage(source);
 
     let fileCache = new Champlain.FileCache({
         size_limit: _FILE_CACHE_SIZE_LIMIT,
@@ -102,9 +147,9 @@ function _createCachedSource(uri, name) {
 }
 
 function createAerialSource() {
-    return _createCachedSource(_AERIAL_URI, _AERIAL_NAME);
+    return _createCachedSource(_getTileService().aerial);
 };
 
 function createStreetSource() {
-    return _createCachedSource(_STREET_URI, _STREET_NAME);
+    return _createCachedSource(_getTileService().street);
 };

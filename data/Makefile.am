@@ -13,6 +13,9 @@ gsettings_SCHEMAS = $(gsettingsschema_in_files:.xml.in=.xml)
 @INTLTOOL_XML_NOMERGE_RULE@
 @GSETTINGS_RULES@
 
+tileservicedir = $(pkgdatadir)
+tileservice_DATA = maps-service.json
+
 appdatadir = $(datadir)/appdata
 appdata_in_file = gnome-maps.appdata.xml.in
 appdata_DATA = $(appdata_in_file:.xml.in=.xml)
@@ -22,6 +25,7 @@ EXTRA_DIST= \
     gnome-maps.desktop \
     $(desktop_in_files) \
     $(appdata_in_file) \
+    maps-service.json \
     $(gsettingsschema_in_files)
 
 CLEANFILES = \
