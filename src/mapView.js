@@ -140,6 +140,7 @@ const MapView = new Lang.Class({
         view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_OUT_CUBIC;
         view.reactive = true;
         view.kinetic_mode = true;
+        view.horizontal_wrap = true;
 
         if (Application.normalStartup)
             view.connect('notify::realized', this._goToStoredLocation.bind(this));
