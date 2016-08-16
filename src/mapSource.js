@@ -150,3 +150,7 @@ function createAerialSource() {
 function createStreetSource() {
     return _createCachedSource(_getTileService().street);
 }
+
+function createPrintSource() {
+    return _createCachedSource(_getTileService().print);
+}
