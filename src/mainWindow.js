@@ -34,7 +34,6 @@ const FavoritesPopover = imports.favoritesPopover;
 const Geoclue = imports.geoclue;
 const LayersPopover = imports.layersPopover;
 const LocationServiceNotification = imports.locationServiceNotification;
-const MapSource = imports.mapSource;
 const MapView = imports.mapView;
 const PlaceEntry = imports.placeEntry;
 const PlaceStore = imports.placeStore;
@@ -66,8 +65,6 @@ const MainWindow = new Lang.Class({
 
         this.mapView = new MapView.MapView();
         overlay.add(this.mapView);
-
-        overlay.add_overlay(new MapSource.AttributionLogo());
 
         this.mapView.gotoUserLocation(false);
 
