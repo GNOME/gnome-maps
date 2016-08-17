@@ -35,7 +35,6 @@ const Geoclue = imports.geoclue;
 const LayersPopover = imports.layersPopover;
 const LocationServiceNotification = imports.locationServiceNotification;
 const MapView = imports.mapView;
-const MapSource = imports.mapSource;
 const PlaceEntry = imports.placeEntry;
 const PlaceStore = imports.placeStore;
 const Sidebar = imports.sidebar;
@@ -77,10 +76,6 @@ const MainWindow = new Lang.Class({
         });
 
         this._overlay.add(this._mapView);
-
-        if (!this.application.local_tile_path) {
-            this._overlay.add_overlay(new MapSource.AttributionLogo());
-        }
 
         this._mapView.gotoUserLocation(false);
 
