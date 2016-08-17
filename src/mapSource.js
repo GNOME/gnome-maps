@@ -22,6 +22,7 @@ const GdkPixbuf = imports.gi.GdkPixbuf;
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
+const GtkClutter = imports.gi.GtkClutter;
 const Lang = imports.lang;
 const Soup = imports.gi.Soup;
 
@@ -38,27 +39,47 @@ const _DEFAULT_SERVICE_FILE = 'maps-service.json';
 const _FILE_CACHE_SIZE_LIMIT = (10 * 1024 * 1024); /* 10Mb */
 const _MEMORY_CACHE_SIZE_LIMIT = 100; /* number of tiles */
 
+const _LOGO_PADDING_X = 10;
+const _LOGO_PADDING_Y = 25;
+
 const AttributionLogo = new Lang.Class({
     Name: 'AttributionLogo',
-    Extends: Gtk.Bin,
+    Extends: GtkClutter.Actor,
 
-    _init: function() {
-        this.parent({ halign: Gtk.Align.END,
-                      valign: Gtk.Align.END,
-                      margin_bottom: 6,
-                      margin_end: 6 });
-        this.add(_attributionImage);
+    _init: function(view) {
+        this.parent();
+
+        if (_attributionImage)
+            this.contents = _attributionImage;
+        else
+            return;
+
+        view.connect('notify::width', (function() {
+            this._updatePosition(view);
+        }).bind(this));
+
+        view.connect('notify::height', (function() {
+            this._updatePosition(view);
+        }).bind(this));
+
+        this._updatePosition(view);
+    },
+
+    _updatePosition: function(view) {
+        let width = _attributionImage.pixbuf.width;
+        let height = _attributionImage.pixbuf.height;
+
+        this.set_position(view.width  - width  - _LOGO_PADDING_X,
+                          view.height - height - _LOGO_PADDING_Y);
     }
 });
 
 function _updateAttributionImage(source) {
+    if (!source.attribution_logo || source.attribution_logo === "")
+        return;
+
     if (!_attributionImage)
         _attributionImage = new Gtk.Image();
-
-    if (!source.attribution_logo || source.attribution_logo === "") {
-        _attributionImage.visible = false;
-        return;
-    }
 
     let data = GLib.base64_decode(source.attribution_logo);
     let stream = Gio.MemoryInputStream.new_from_bytes(GLib.Bytes.new(data));

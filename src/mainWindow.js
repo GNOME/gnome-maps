@@ -30,7 +30,6 @@ const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
-const MapSource = imports.mapSource;
 const MapView = imports.mapView;
 const SearchPopup = imports.searchPopup;
 const ContextMenu = imports.contextMenu;
@@ -74,8 +73,6 @@ const MainWindow = new Lang.Class({
         this._restoreWindowGeometry();
 
         this._windowContent.add_overlay(new ZoomControl.ZoomControl(this.mapView));
-        this._windowContent.add_overlay(new MapSource.AttributionLogo());
-
         this._windowContent.show_all();
     },
 

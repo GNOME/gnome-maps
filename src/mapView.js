@@ -100,6 +100,11 @@ const MapView = new Lang.Class({
             this.view.map_source = MapSource.createAerialSource();
         else
             this.view.map_source = MapSource.createStreetSource();
+
+        if (!this._attribution) {
+                this._attribution = new MapSource.AttributionLogo(this.view);
+                this.view.add_child(this._attribution);
+        }
     },
 
     geocodeSearch: function(searchString, searchCompleteCallback) {
