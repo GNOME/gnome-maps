@@ -31,7 +31,6 @@ const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
-const MapSource = imports.mapSource;
 const MapView = imports.mapView;
 const LayersPopover = imports.layersPopover;
 const ContextMenu = imports.contextMenu;
@@ -63,8 +62,6 @@ const MainWindow = new Lang.Class({
 
         this.mapView = new MapView.MapView();
         overlay.add(this.mapView);
-
-        overlay.add_overlay(new MapSource.AttributionLogo());
 
         this.mapView.gotoUserLocation(false);
 
