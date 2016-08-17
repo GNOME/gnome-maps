@@ -35,7 +35,6 @@ const FavoritesPopover = imports.favoritesPopover;
 const Geoclue = imports.geoclue;
 const LayersPopover = imports.layersPopover;
 const LocationServiceNotification = imports.locationServiceNotification;
-const MapSource = imports.mapSource;
 const MapView = imports.mapView;
 const PlaceEntry = imports.placeEntry;
 const PlaceStore = imports.placeStore;
@@ -79,10 +78,6 @@ const MainWindow = new Lang.Class({
                 MapView.MapType.LOCAL : MapView.MapType.STREET });
 
         this._overlay.add(this._mapView);
-
-        if (!this.application.local_tile_path) {
-            this._overlay.add_overlay(new MapSource.AttributionLogo());
-        }
 
         this._mapView.gotoUserLocation(false);
 
