@@ -1,6 +1,6 @@
 # This file is processed by autoconf to create a configure script
 AC_INIT([gnome-maps],
-        [3.20.2],
+        [3.20.3],
         [https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-maps],
         [gnome-maps])
 
