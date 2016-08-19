@@ -1,3 +1,43 @@
+3.21.90 - Aug 19, 2016
+=========================
+
+Hello there!
+
+So we will stop using a redirect from gis.gnome.org to Mapbox tile server.
+Instead we will attempt to download a service.json file from gis.gnome.org.
+This file will tell us where our third-party services are. Starting with
+tile services. This is for two reasons. 1) It is much faster and 2) Mapbox
+didn't like the redirect approach.
+
+Changes since 3.21.4:
+
+- Download a service.json file to get tile server URI among other things.
+- Use GtkClutter for the attribution logo, to get transparency.
+
+Added/updated/fixed translations:
+  - Hungarian
+  - Slovak
+  - Hebrew
+  - Czech
+  - Arabic
+  - Finnish
+  - Brazilian Portuguese
+  - Indonesian
+  - Brittish English
+
+All contributors to this release:
+Andika Triwidada <atriwidada@gnome.org>
+Balázs Úr <urbalazs@gmail.com>
+David King <amigadave@amigadave.com>
+Dušan Kazik <prescott66@gmail.com>
+Gustavo Marques <gutodisse@gmail.com>
+Jiri Grönroos <jiri.gronroos@iki.fi>
+Jonas Danielsson <jonas@threetimestwo.org>
+Marek Cernocky <marek_cernocky@conel.cz>
+Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+Safa Alfulaij <safa1996alfulaij@gmail.com>
+Yosef Or Boczko <yoseforb@src.gnome.org>
+
 3.21.4 - Jul 30, 2016
 =========================
 
