@@ -25,6 +25,7 @@ const Gtk = imports.gi.Gtk;
 const GtkClutter = imports.gi.GtkClutter;
 const Lang = imports.lang;
 const Soup = imports.gi.Soup;
+const System = imports.system;
 
 const Utils = imports.utils;
 
@@ -83,19 +84,30 @@ function _updateAttributionImage(source) {
     let stream = Gio.MemoryInputStream.new_from_bytes(GLib.Bytes.new(data));
     _attributionImage.pixbuf = GdkPixbuf.Pixbuf.new_from_stream(stream, null);
  }
- 
-function _createDefaultService() {
-    let filename = GLib.build_filenamev([pkg.pkgdatadir,
-                                         _DEFAULT_SERVICE_FILE]);
+
+function _getServiceFromFile(filename) {
     let data = Utils.readFile(filename);
+    if (!data) {
+        log('Failed to open service file: ' + filename);
+        System.exit(1);
+    }
     _tileService = JSON.parse(data).tiles;
     return _tileService;
 }
 
+function _createDefaultService() {
+    let filename = GLib.build_filenamev([pkg.pkgdatadir,
+                                         _DEFAULT_SERVICE_FILE]);
+    return _getServiceFromFile(filename);
+}
+
 function _getTileService() {
-    if (_tileService) {
+    if (_tileService)
         return _tileService;
-    }
+
+    let serviceOverride = GLib.getenv('MAPS_SERVICE');
+    if (serviceOverride)
+        return _getServiceFromFile(serviceOverride);
 
     let user_agent = 'gnome-maps/'  + pkg.version;
     let session = new Soup.Session({ user_agent : user_agent });
