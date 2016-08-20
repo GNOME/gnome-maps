@@ -4,23 +4,23 @@
 # This file is distributed under the same license as the gnome-maps package.
 # Marcus Lundblad <ml@update.uu.se>, 2013.
 # Sebastian Rasmussen <sebras@gmail.com>, 2015, 2016.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-03-15 23:04+0000\n"
-"PO-Revision-Date: 2016-03-18 14:29+0100\n"
-"Last-Translator: Sebastian Rasmussen <sebras@gmail.com>\n"
+"POT-Creation-Date: 2016-07-30 21:15+0000\n"
+"PO-Revision-Date: 2016-08-03 17:04+0200\n"
+"Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 1.8.8\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid "GNOME Maps"
@@ -61,7 +61,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:85 ../src/mainWindow.js:420
+#: ../src/application.js:85 ../src/mainWindow.js:425
 msgid "Maps"
 msgstr "Kartor"
 
@@ -525,7 +525,7 @@ msgstr "Redigera i OpenStreetMap"
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:470
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:471
 msgid "Next"
 msgstr "Nästa"
 
@@ -647,7 +647,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Skriv ett valfritt meddelande för att checka in på %s."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:507
+#: ../src/osmEditDialog.js:508
 msgid "An error has occurred"
 msgstr "Ett fel har inträffat"
 
@@ -726,18 +726,22 @@ msgstr "tolkningsfel"
 msgid "unknown geometry"
 msgstr "okänd geometri"
 
-#: ../src/mainWindow.js:366
+#: ../src/layersPopover.js:62
+msgid "All Layer Files"
+msgstr "Alla lagerfiler"
+
+#: ../src/mainWindow.js:371
 msgid "Failed to connect to location service"
 msgstr "Misslyckades att ansluta till platstjänst"
 
-#: ../src/mainWindow.js:418
+#: ../src/mainWindow.js:423
 msgid "translator-credits"
 msgstr ""
 "Marcus Lundblad <ml@update.uu.se>\n"
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>."
 
-#: ../src/mainWindow.js:421
+#: ../src/mainWindow.js:426
 msgid "A map application for GNOME"
 msgstr "Ett kartprogram för GNOME"
 
@@ -783,23 +787,23 @@ msgstr "Objektet har tagits bort"
 msgid "Way or relation refers to non-existing children"
 msgstr "Väg eller relation refererar till obefintliga barn"
 
-#: ../src/osmEditDialog.js:103
+#: ../src/osmEditDialog.js:104
 msgid "Name"
 msgstr "Namn"
 
-#: ../src/osmEditDialog.js:106
+#: ../src/osmEditDialog.js:107
 msgid "The official name. This is typically what appears on signs."
 msgstr "Det officiella namnet. Detta är typiskt vad som visas på skyltar."
 
-#: ../src/osmEditDialog.js:109
+#: ../src/osmEditDialog.js:110
 msgid "Address"
 msgstr "Adress"
 
-#: ../src/osmEditDialog.js:117 ../src/placeBubble.js:165
+#: ../src/osmEditDialog.js:118 ../src/placeBubble.js:165
 msgid "Website"
 msgstr "Webbplats"
 
-#: ../src/osmEditDialog.js:120
+#: ../src/osmEditDialog.js:121
 msgid ""
 "The official website. Try to use the most basic form of a URL i.e. http://"
 "example.com instead of http://example.com/index.html."
@@ -808,11 +812,11 @@ msgstr ""
 "för en URL, d.v.s. http://example.com istället för http://example.com/index."
 "html."
 
-#: ../src/osmEditDialog.js:125
+#: ../src/osmEditDialog.js:126
 msgid "Phone"
 msgstr "Telefon"
 
-#: ../src/osmEditDialog.js:129
+#: ../src/osmEditDialog.js:130
 msgid ""
 "Phone number. Use the international format, starting with a + sign. Beware "
 "of local privacy laws, especially for private phone numbers."
@@ -821,91 +825,91 @@ msgstr ""
 "plustecken. Var uppmärksam på lokala sekretesslagar, speciellt för privata "
 "telefonnummer."
 
-#: ../src/osmEditDialog.js:134 ../src/placeBubble.js:171
+#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:171
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: ../src/osmEditDialog.js:138
+#: ../src/osmEditDialog.js:139
 msgid ""
 "The format used should include the language code and the article title like "
-"”en:Article title”."
+"“en:Article title”."
 msgstr ""
 "Formatet som används bör inkludera språkkoden och artikeltiteln, t.ex. ”sv:"
 "Artikelns titel”."
 
-#: ../src/osmEditDialog.js:142
+#: ../src/osmEditDialog.js:143
 msgid "Opening hours"
 msgstr "Öppettider"
 
-#: ../src/osmEditDialog.js:147
+#: ../src/osmEditDialog.js:148
 msgid "See the link in the label for help on format."
 msgstr "Se länken i etiketten för hjälp om formatet."
 
-#: ../src/osmEditDialog.js:150
+#: ../src/osmEditDialog.js:151
 msgid "Population"
 msgstr "Folkmängd"
 
-#: ../src/osmEditDialog.js:155
+#: ../src/osmEditDialog.js:156
 msgid "Altitude"
 msgstr "Höjd över havet"
 
-#: ../src/osmEditDialog.js:158
+#: ../src/osmEditDialog.js:159
 msgid "Elevation (height above sea level) of a point in metres."
 msgstr "Höjd (höjd över havet) för en plats i meter."
 
-#: ../src/osmEditDialog.js:161
+#: ../src/osmEditDialog.js:162
 msgid "Wheelchair access"
 msgstr "Åtkomst för rullstol"
 
-#: ../src/osmEditDialog.js:164 ../src/osmEditDialog.js:173
+#: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
 msgid "Yes"
 msgstr "Ja"
 
-#: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
+#: ../src/osmEditDialog.js:166 ../src/osmEditDialog.js:175
 msgid "No"
 msgstr "Nej"
 
-#: ../src/osmEditDialog.js:166
+#: ../src/osmEditDialog.js:167
 msgid "Limited"
 msgstr "Begränsad"
 
-#: ../src/osmEditDialog.js:167
+#: ../src/osmEditDialog.js:168
 msgid "Designated"
 msgstr "Avsett för"
 
-#: ../src/osmEditDialog.js:170
+#: ../src/osmEditDialog.js:171
 msgid "Internet access"
 msgstr "Internetåtkomst"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
 #.
-#: ../src/osmEditDialog.js:175 ../src/translations.js:341
+#: ../src/osmEditDialog.js:176 ../src/translations.js:341
 msgid "Wi-Fi"
 msgstr "Trådlöst"
 
-#: ../src/osmEditDialog.js:176
+#: ../src/osmEditDialog.js:177
 msgid "Wired"
 msgstr "Trådbundet"
 
-#: ../src/osmEditDialog.js:177
+#: ../src/osmEditDialog.js:178
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../src/osmEditDialog.js:178
+#: ../src/osmEditDialog.js:179
 msgid "Service"
 msgstr "Tjänst"
 
-#: ../src/osmEditDialog.js:287
+#: ../src/osmEditDialog.js:288
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Lägg till i OpenStreetMap"
 
-#: ../src/osmEditDialog.js:338
+#: ../src/osmEditDialog.js:339
 msgid "Select Type"
 msgstr "Välj typ"
 
-#: ../src/osmEditDialog.js:456
+#: ../src/osmEditDialog.js:457
 msgid "Done"
 msgstr "Klar"
 
@@ -977,7 +981,7 @@ msgstr "nej"
 msgid "designated"
 msgstr "avsett för"
 
-#: ../src/printLayout.js:243
+#: ../src/printLayout.js:244
 #, javascript-format
 msgid "From %s to %s"
 msgstr "Från %s till %s"
