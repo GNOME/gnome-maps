@@ -234,6 +234,24 @@ const MainWindow = new Lang.Class({
             else
                 this._mainStack.visible_child = this._noNetworkView;
         }).bind(this));
+
+        /*
+         * If the currently focused widget is an entry then we will
+         * hijack the key-press to the main window and make sure that
+         * they reach the entry before they can be swallowed as accelerator.
+         */
+        this.connect('key-press-event', function(window, event) {
+            let focusWidget = window.get_focus();
+            let keyval = event.get_keyval()[1];
+
+            if (!(focusWidget instanceof Gtk.Entry))
+                return false;
+
+            if (keyval === Gdk.KEY_plus || keyval === Gdk.KEY_minus)
+                return focusWidget.event(event);
+
+            return false;
+        });
     },
 
     _updateLocationSensitivity: function() {
