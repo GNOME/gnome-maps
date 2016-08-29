@@ -260,7 +260,13 @@ const Place = new Lang.Class({
         if (name === null)
             return false;
 
-        return name.toLowerCase().search(searchString.toLowerCase()) !== -1;
+        /* the search method takes a regex, make sure we have a valid one */
+        try {
+            return name.toLowerCase().search(searchString.toLowerCase()) !== -1;
+        } catch(e) {
+            /* not valid regex */
+            return false;
+        }
     }
 });
 
