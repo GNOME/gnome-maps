@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-03-15 23:04+0000\n"
-"PO-Revision-Date: 2016-03-16 11:34+0900\n"
-"Last-Translator: Seong-ho Cho <shcho@gnome.org>\n"
+"POT-Creation-Date: 2016-08-22 18:54+0000\n"
+"PO-Revision-Date: 2016-09-02 03:11+0900\n"
+"Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
 "Language-Team: GNOME Korea <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Poedit 1.8.7\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid "GNOME Maps"
@@ -519,7 +519,7 @@ msgstr "OpenStreetMap에서 편집"
 msgid "Cancel"
 msgstr "취소"
 
-#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:470
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:471
 msgid "Next"
 msgstr "다음"
 
@@ -641,7 +641,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "%s에 체크인할 추가 메시지를 작성합니다."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:507
+#: ../src/osmEditDialog.js:508
 msgid "An error has occurred"
 msgstr "오류가 발생했습니다"
 
@@ -720,6 +720,10 @@ msgstr "해석 오류"
 msgid "unknown geometry"
 msgstr "알 수 없는 지형 정보"
 
+#: ../src/layersPopover.js:62
+msgid "All Layer Files"
+msgstr "모든 레이어 파일"
+
 #: ../src/mainWindow.js:366
 msgid "Failed to connect to location service"
 msgstr "위치 서비스 연결에 실패했습니다."
@@ -732,15 +736,15 @@ msgstr "조성호 <shcho@gnome.org>"
 msgid "A map application for GNOME"
 msgstr "그놈용 지도 프로그램"
 
-#: ../src/mapView.js:254
+#: ../src/mapView.js:260
 msgid "File type is not supported"
 msgstr "파일 형식을 지원하지 않습니다"
 
-#: ../src/mapView.js:261
+#: ../src/mapView.js:267
 msgid "Failed to open layer"
 msgstr "레이어 열기에 실패했습니다"
 
-#: ../src/mapView.js:297
+#: ../src/mapView.js:303
 msgid "Failed to open GeoURI"
 msgstr "GeoURI 열기에 실패했습니다"
 
@@ -774,23 +778,23 @@ msgstr "객체를 삭제했습니다"
 msgid "Way or relation refers to non-existing children"
 msgstr "길 또는 관계는 '없는 하위 구성 요소'를 참조합니다"
 
-#: ../src/osmEditDialog.js:103
+#: ../src/osmEditDialog.js:104
 msgid "Name"
 msgstr "이름"
 
-#: ../src/osmEditDialog.js:106
+#: ../src/osmEditDialog.js:107
 msgid "The official name. This is typically what appears on signs."
 msgstr "공식 이름입니다. 보통 이정표에 나타납니다."
 
-#: ../src/osmEditDialog.js:109
+#: ../src/osmEditDialog.js:110
 msgid "Address"
 msgstr "주소"
 
-#: ../src/osmEditDialog.js:117 ../src/placeBubble.js:165
+#: ../src/osmEditDialog.js:118 ../src/placeBubble.js:165
 msgid "Website"
 msgstr "웹사이트"
 
-#: ../src/osmEditDialog.js:120
+#: ../src/osmEditDialog.js:121
 msgid ""
 "The official website. Try to use the most basic form of a URL i.e. http://"
 "example.com instead of http://example.com/index.html."
@@ -798,11 +802,11 @@ msgstr ""
 "공식 웹사이트입니다. http://example.com/index.html 대신 http://example.com과 "
 "같은 식의 기본 URL 형식을 활용하십시오."
 
-#: ../src/osmEditDialog.js:125
+#: ../src/osmEditDialog.js:126
 msgid "Phone"
 msgstr "전화번호"
 
-#: ../src/osmEditDialog.js:129
+#: ../src/osmEditDialog.js:130
 msgid ""
 "Phone number. Use the international format, starting with a + sign. Beware "
 "of local privacy laws, especially for private phone numbers."
@@ -810,91 +814,91 @@ msgstr ""
 "전화번호입니다. + 기호로 시작하는 국제 전화번호 형식을 사용하십시오. 개인 전"
 "화번호를 입력할 때 해당 국가의 개인 정보 보호법을 따르십시오."
 
-#: ../src/osmEditDialog.js:134 ../src/placeBubble.js:171
+#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:171
 msgid "Wikipedia"
 msgstr "위키피디아"
 
-#: ../src/osmEditDialog.js:138
+#: ../src/osmEditDialog.js:139
 msgid ""
 "The format used should include the language code and the article title like "
-"”en:Article title”."
+"“en:Article title”."
 msgstr ""
-"사용하는 형식은 \"en:Article title\"과 같이 언어 코드와 게시글 제목이 들어갑"
+"사용하는 형식에는 \"ko:게시글 제목\"처럼 언어 코드 및 게시글 제목을 넣어야합"
 "니다."
 
-#: ../src/osmEditDialog.js:142
+#: ../src/osmEditDialog.js:143
 msgid "Opening hours"
 msgstr "개장 시간"
 
-#: ../src/osmEditDialog.js:147
+#: ../src/osmEditDialog.js:148
 msgid "See the link in the label for help on format."
 msgstr "형식 도움말을 보려면 레이블의 링크를 살펴보십시오."
 
-#: ../src/osmEditDialog.js:150
+#: ../src/osmEditDialog.js:151
 msgid "Population"
 msgstr "인구"
 
-#: ../src/osmEditDialog.js:155
+#: ../src/osmEditDialog.js:156
 msgid "Altitude"
 msgstr "고도"
 
-#: ../src/osmEditDialog.js:158
+#: ../src/osmEditDialog.js:159
 msgid "Elevation (height above sea level) of a point in metres."
 msgstr "미터 단위의 높이(해발고도)입니다."
 
-#: ../src/osmEditDialog.js:161
+#: ../src/osmEditDialog.js:162
 msgid "Wheelchair access"
 msgstr "휠체어 접근"
 
-#: ../src/osmEditDialog.js:164 ../src/osmEditDialog.js:173
+#: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
 msgid "Yes"
 msgstr "예"
 
-#: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
+#: ../src/osmEditDialog.js:166 ../src/osmEditDialog.js:175
 msgid "No"
 msgstr "아니요"
 
-#: ../src/osmEditDialog.js:166
+#: ../src/osmEditDialog.js:167
 msgid "Limited"
 msgstr "제한"
 
-#: ../src/osmEditDialog.js:167
+#: ../src/osmEditDialog.js:168
 msgid "Designated"
 msgstr "지정됨"
 
-#: ../src/osmEditDialog.js:170
+#: ../src/osmEditDialog.js:171
 msgid "Internet access"
 msgstr "인터넷 접속"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
 #.
-#: ../src/osmEditDialog.js:175 ../src/translations.js:341
+#: ../src/osmEditDialog.js:176 ../src/translations.js:341
 msgid "Wi-Fi"
 msgstr "무선 네트워크"
 
-#: ../src/osmEditDialog.js:176
+#: ../src/osmEditDialog.js:177
 msgid "Wired"
 msgstr "유선"
 
-#: ../src/osmEditDialog.js:177
+#: ../src/osmEditDialog.js:178
 msgid "Terminal"
 msgstr "터미널"
 
-#: ../src/osmEditDialog.js:178
+#: ../src/osmEditDialog.js:179
 msgid "Service"
 msgstr "서비스"
 
-#: ../src/osmEditDialog.js:287
+#: ../src/osmEditDialog.js:288
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "OpenStreetMap에 추가"
 
-#: ../src/osmEditDialog.js:338
+#: ../src/osmEditDialog.js:339
 msgid "Select Type"
 msgstr "형식 선택"
 
-#: ../src/osmEditDialog.js:456
+#: ../src/osmEditDialog.js:457
 msgid "Done"
 msgstr "완료"
 
@@ -966,7 +970,7 @@ msgstr "아니요"
 msgid "designated"
 msgstr "지정됨"
 
-#: ../src/printLayout.js:243
+#: ../src/printLayout.js:244
 #, javascript-format
 msgid "From %s to %s"
 msgstr "%s에서 %s까지"
