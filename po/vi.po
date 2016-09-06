@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-04-06 20:42+0000\n"
-"PO-Revision-Date: 2016-04-08 15:39+0700\n"
+"POT-Creation-Date: 2016-09-04 14:04+0000\n"
+"PO-Revision-Date: 2016-09-06 08:13+0700\n"
 "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <gnome-vi-list@gnome.org>\n"
 "Language: vi\n"
@@ -58,7 +58,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:85 ../src/mainWindow.js:420
+#: ../src/application.js:85 ../src/mainWindow.js:441
 msgid "Maps"
 msgstr "Bản đồ"
 
@@ -369,15 +369,15 @@ msgstr "In đường đi"
 
 #: ../data/ui/main-window.ui.h:7
 msgid "Maps is offline!"
-msgstr "Maps đang ngoại tuyến!"
+msgstr "Bản đồ đang ngoại tuyến!"
 
 #: ../data/ui/main-window.ui.h:8
 msgid ""
 "Maps need an active internet connection to function properly, but one can't "
 "be found."
 msgstr ""
-"Maps cần một kết nối mạng internet để các chức năng một cách đúng đắn, nhưng "
-"không tìm thấy kết nối mạng nào."
+"Bản đồ cần một kết nối mạng internet để các chức năng một cách đúng đắn, "
+"nhưng không tìm thấy kết nối mạng nào."
 
 #: ../data/ui/main-window.ui.h:9
 msgid "Check your connection and proxy settings."
@@ -520,7 +520,7 @@ msgstr "Sửa trên OpenStreetMap"
 msgid "Cancel"
 msgstr "Thôi"
 
-#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:470
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:472
 msgid "Next"
 msgstr "Tiếp theo"
 
@@ -642,7 +642,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Ghi một lời nhắn tùy chọn để check in vào %s."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:507
+#: ../src/osmEditDialog.js:509
 msgid "An error has occurred"
 msgstr "Đã có lỗi xảy ra"
 
@@ -721,27 +721,31 @@ msgstr "lỗi phân tích"
 msgid "unknown geometry"
 msgstr "không hiểu dạng hình"
 
-#: ../src/mainWindow.js:366
+#: ../src/layersPopover.js:62
+msgid "All Layer Files"
+msgstr "Mọi tập tin lớp"
+
+#: ../src/mainWindow.js:387
 msgid "Failed to connect to location service"
 msgstr "Gặp lỗi khi kết nối đến dịch vụ vị trí"
 
-#: ../src/mainWindow.js:418
+#: ../src/mainWindow.js:439
 msgid "translator-credits"
 msgstr "Nhóm Việt hóa GNOME <gnome-vi-list@gnome.org>"
 
-#: ../src/mainWindow.js:421
+#: ../src/mainWindow.js:442
 msgid "A map application for GNOME"
 msgstr "Ứng dụng bản đồ dành cho GNOME"
 
-#: ../src/mapView.js:254
+#: ../src/mapView.js:260
 msgid "File type is not supported"
 msgstr "Kiểu tập tin không được hỗ trợ"
 
-#: ../src/mapView.js:261
+#: ../src/mapView.js:267
 msgid "Failed to open layer"
 msgstr "Gặp lỗi khi mở lớp"
 
-#: ../src/mapView.js:297
+#: ../src/mapView.js:303
 msgid "Failed to open GeoURI"
 msgstr "Gặp lỗi khi mở GeoURI"
 
@@ -775,23 +779,23 @@ msgstr "Đối tượng đã bị xóa"
 msgid "Way or relation refers to non-existing children"
 msgstr "Lối hoặc quan hệ chỉ đến một con mà nó không tồn tại"
 
-#: ../src/osmEditDialog.js:103
+#: ../src/osmEditDialog.js:104
 msgid "Name"
 msgstr "Tên"
 
-#: ../src/osmEditDialog.js:106
+#: ../src/osmEditDialog.js:107
 msgid "The official name. This is typically what appears on signs."
 msgstr "Tên chính thức. Đây là cái thường xuất hiện trên chữ ký."
 
-#: ../src/osmEditDialog.js:109
+#: ../src/osmEditDialog.js:110
 msgid "Address"
 msgstr "Địa chỉ"
 
-#: ../src/osmEditDialog.js:117 ../src/placeBubble.js:165
+#: ../src/osmEditDialog.js:118 ../src/placeBubble.js:165
 msgid "Website"
 msgstr "Trang thông tin điện tử"
 
-#: ../src/osmEditDialog.js:120
+#: ../src/osmEditDialog.js:121
 msgid ""
 "The official website. Try to use the most basic form of a URL i.e. http://"
 "example.com instead of http://example.com/index.html."
@@ -799,11 +803,11 @@ msgstr ""
 "Trang thông tin điện tử chính thức. Dùng dạng thức URL cơ bản nhất ví dụ "
 "http://example.com thay cho http://example.com/index.html."
 
-#: ../src/osmEditDialog.js:125
+#: ../src/osmEditDialog.js:126
 msgid "Phone"
 msgstr "Điện thoại"
 
-#: ../src/osmEditDialog.js:129
+#: ../src/osmEditDialog.js:130
 msgid ""
 "Phone number. Use the international format, starting with a + sign. Beware "
 "of local privacy laws, especially for private phone numbers."
@@ -811,91 +815,91 @@ msgstr ""
 "Số điện thoại. Dùng định dạng quốc tế, bắt đầu bằng dấu +. Hãy cẩn thận với "
 "luật riêng tư địa phương, đặc biệt là các số điện thoại riêng."
 
-#: ../src/osmEditDialog.js:134 ../src/placeBubble.js:171
+#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:171
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: ../src/osmEditDialog.js:138
+#: ../src/osmEditDialog.js:139
 msgid ""
 "The format used should include the language code and the article title like "
-"”en:Article title”."
+"“en:Article title”."
 msgstr ""
 "Nên dùng dạng thức có bao gồm mã ngôn ngữ và tiêu đề bài viết như là ”vi:"
 "Tiêu đề bài viết”."
 
-#: ../src/osmEditDialog.js:142
+#: ../src/osmEditDialog.js:143
 msgid "Opening hours"
 msgstr "Giờ mở cửa"
 
-#: ../src/osmEditDialog.js:147
+#: ../src/osmEditDialog.js:148
 msgid "See the link in the label for help on format."
 msgstr "Xem liên kết trong nhãn để nhận được hỗ trợ về định dạng."
 
-#: ../src/osmEditDialog.js:150
+#: ../src/osmEditDialog.js:151
 msgid "Population"
 msgstr "Dân số"
 
-#: ../src/osmEditDialog.js:155
+#: ../src/osmEditDialog.js:156
 msgid "Altitude"
 msgstr "Cao độ"
 
-#: ../src/osmEditDialog.js:158
+#: ../src/osmEditDialog.js:159
 msgid "Elevation (height above sea level) of a point in metres."
 msgstr "Cao độ (độ cao trên mực nước biển) của một điểm tính bằng mét."
 
-#: ../src/osmEditDialog.js:161
+#: ../src/osmEditDialog.js:162
 msgid "Wheelchair access"
 msgstr "Lối vào xe lăn"
 
-#: ../src/osmEditDialog.js:164 ../src/osmEditDialog.js:173
+#: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
 msgid "Yes"
 msgstr "Đồng ý"
 
-#: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
+#: ../src/osmEditDialog.js:166 ../src/osmEditDialog.js:175
 msgid "No"
 msgstr "Không"
 
-#: ../src/osmEditDialog.js:166
+#: ../src/osmEditDialog.js:167
 msgid "Limited"
 msgstr "Bị giới hạn"
 
-#: ../src/osmEditDialog.js:167
+#: ../src/osmEditDialog.js:168
 msgid "Designated"
 msgstr "Đã được thiết kế"
 
-#: ../src/osmEditDialog.js:170
+#: ../src/osmEditDialog.js:171
 msgid "Internet access"
 msgstr "Truy cập mạng Internet"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
 #.
-#: ../src/osmEditDialog.js:175 ../src/translations.js:341
+#: ../src/osmEditDialog.js:176 ../src/translations.js:341
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
 
-#: ../src/osmEditDialog.js:176
+#: ../src/osmEditDialog.js:177
 msgid "Wired"
 msgstr "Có dây"
 
-#: ../src/osmEditDialog.js:177
+#: ../src/osmEditDialog.js:178
 msgid "Terminal"
 msgstr "Thiết bị cuối"
 
-#: ../src/osmEditDialog.js:178
+#: ../src/osmEditDialog.js:179
 msgid "Service"
 msgstr "Dịch vụ"
 
-#: ../src/osmEditDialog.js:287
+#: ../src/osmEditDialog.js:288
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Thêm vào OpenStreetMap"
 
-#: ../src/osmEditDialog.js:338
+#: ../src/osmEditDialog.js:340
 msgid "Select Type"
 msgstr "Chọn kiểu"
 
-#: ../src/osmEditDialog.js:456
+#: ../src/osmEditDialog.js:458
 msgid "Done"
 msgstr "Xong"
 
@@ -967,7 +971,7 @@ msgstr "không"
 msgid "designated"
 msgstr "đã thiết kế"
 
-#: ../src/printLayout.js:243
+#: ../src/printLayout.js:244
 #, javascript-format
 msgid "From %s to %s"
 msgstr "Từ %s đến %s"
@@ -1087,7 +1091,7 @@ msgstr "%s,%s,%s"
 
 #: ../src/translations.js:186
 msgid "every day"
-msgstr "mỗi ngày "
+msgstr "hàng ngày "
 
 #. Translators:
 #. * This represents a range of days with a starting and ending day.
