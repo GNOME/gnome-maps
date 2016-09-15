@@ -276,7 +276,7 @@ const MainWindow = new Lang.Class({
             this._favoritesButton.sensitive = favoritesPopover.rows > 0;
         }).bind(this));
 
-        this._mapView.bind_property('routeVisible', this._printRouteButton,
+        this._mapView.bind_property('routeShowing', this._printRouteButton,
                                     'visible', GObject.BindingFlags.DEFAULT);
 
         Application.geoclue.connect('notify::state',
@@ -401,7 +401,7 @@ const MainWindow = new Lang.Class({
     },
 
     _printRouteActivate: function() {
-        if (this._mapView.routeVisible) {
+        if (this._mapView.routeShowing) {
             let operation = new PrintOperation.PrintOperation({ mainWindow: this });
         }
     },
