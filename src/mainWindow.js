@@ -138,7 +138,7 @@ const MainWindow = new Lang.Class({
         Application.routeQuery.connect('notify',
                                        this._setRevealSidebar.bind(this, true));
         this._toggleSidebarButton.bind_property('active',
-                                                this._mapView, 'routeVisible',
+                                                this._mapView, 'routingOpen',
                                                 GObject.BindingFlags.BIDIRECTIONAL);
         this.application.bind_property('connected',
                                        sidebar, 'visible',
