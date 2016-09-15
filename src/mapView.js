@@ -90,12 +90,20 @@ const MapView = new Lang.Class({
     Name: 'MapView',
     Extends: GtkChamplain.Embed,
     Properties: {
-        'routeVisible': GObject.ParamSpec.boolean('routeVisible',
-                                                  'Route visible',
-                                                  'Visibility of route layers',
+        // this property is true when the routing sidebar is active
+        'routingOpen': GObject.ParamSpec.boolean('routingOpen',
+                                                  'Routing open',
+                                                  'Routing sidebar open',
                                                   GObject.ParamFlags.READABLE |
                                                   GObject.ParamFlags.WRITABLE,
-                                                  false)
+                                                  false),
+        /* this property is true when a route is being shown on the map */
+        'routeShowing': GObject.ParamSpec.boolean('routeShowing',
+                                                 'Route showing',
+                                                 'Showing a route on the map',
+                                                 GObject.ParamFlags.READABLE |
+                                                 GObject.ParamFlags.WRITABLE,
+                                                 false)
     },
     Signals: {
         'user-location-changed': {},
@@ -106,19 +114,30 @@ const MapView = new Lang.Class({
         'marker-selected': { param_types: [Champlain.Marker] }
     },
 
-    get routeVisible() {
-        return this._routeVisible || this._instructionMarkerLayer.visible;
+    get routingOpen() {
+        return this._routingOpen || this._instructionMarkerLayer.visible;
     },
 
-    set routeVisible(value) {
+    set routingOpen(value) {
         let isValid = Application.routeQuery.isValid();
 
-        this._routeVisible = value && isValid;
+        this._routingOpen = value && isValid;
         this._routeLayers.forEach((function(routeLayer) {
             routeLayer.visible = value && isValid;
         }).bind(this));
         this._instructionMarkerLayer.visible = value && isValid;
-        this.notify('routeVisible');
+        if (!value)
+            this.routeShowing = false;
+        this.notify('routingOpen');
+    },
+
+    get routeShowing() {
+        return this._routeShowing;
+    },
+
+    set routeShowing(value) {
+        this._routeShowing = value;
+        this.notify('routeShowing');
     },
 
     _init: function(params) {
@@ -246,26 +265,33 @@ const MapView = new Lang.Class({
         let transitPlan = Application.routingDelegator.openTripPlanner.plan;
         let query = Application.routeQuery;
 
-        route.connect('update', this.showRoute.bind(this, route));
+        route.connect('update', (function() {
+            this.showRoute(route);
+            this.routeShowing = true;
+        }).bind(this));
         route.connect('reset', (function() {
             this._clearRouteLayers();
             this._instructionMarkerLayer.remove_all();
+            this.routeShowing = false;
         }).bind(this));
         transitPlan.connect('update', this._showTransitPlan.bind(this, transitPlan));
         transitPlan.connect('reset', (function() {
             this._clearRouteLayers();
             this._instructionMarkerLayer.remove_all();
+            this.routeShowing = false;
         }).bind(this));
         transitPlan.connect('itinerary-selected', (function(obj, itinerary) {
             this._showTransitItinerary(itinerary);
+            this.routeShowing = true;
         }).bind(this));
         transitPlan.connect('itinerary-deselected', (function() {
             this._clearRouteLayers();
             this._instructionMarkerLayer.remove_all();
+            this.routeShowing = false;
         }).bind(this));
 
         query.connect('notify', (function() {
-                this.routeVisible = query.isValid();
+                this.routingOpen = query.isValid();
         }).bind(this));
     },
 
@@ -528,7 +554,7 @@ const MapView = new Lang.Class({
             return;
         }
 
-        this.routeVisible = false;
+        this.routingOpen = false;
         let placeMarker = new PlaceMarker.PlaceMarker({ place: place,
                                                         mapView: this });
 
@@ -545,7 +571,7 @@ const MapView = new Lang.Class({
         routeLayer = this._createRouteLayer(false, TURN_BY_TURN_ROUTE_COLOR,
                                             ROUTE_LINE_WIDTH);
         route.path.forEach(routeLayer.add_node.bind(routeLayer));
-        this.routeVisible = true;
+        this.routingOpen = true;
 
         this._ensureInstructionLayerAboveRouteLayers();
 
@@ -643,7 +669,7 @@ const MapView = new Lang.Class({
                                                                       mapView: this });
         this._instructionMarkerLayer.add_marker(arrival);
 
-        this.routeVisible = true;
+        this.routingOpen = true;
     },
 
     _showTransitPlan: function(plan) {
