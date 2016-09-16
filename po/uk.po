@@ -5,9 +5,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-22 22:22+0200\n"
-"PO-Revision-Date: 2016-03-22 22:23+0300\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"maps&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-08-22 18:54+0000\n"
+"PO-Revision-Date: 2016-09-16 19:56+0300\n"
 "Last-Translator: Daniel Korostil <ted.korostiled@gmail.com>\n"
 "Language-Team: linux.org.ua\n"
 "Language: uk\n"
@@ -521,7 +522,7 @@ msgstr "Редагувати в OpenStreetMap"
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:470
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:471
 msgid "Next"
 msgstr "Далі"
 
@@ -643,7 +644,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Напишіть довільне повідомлення, щоб відзначитись на %s."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:507
+#: ../src/osmEditDialog.js:508
 msgid "An error has occurred"
 msgstr "Трапилась помилка"
 
@@ -722,6 +723,10 @@ msgstr "помилка розбирання"
 msgid "unknown geometry"
 msgstr "невідома геометрія"
 
+#: ../src/layersPopover.js:62
+msgid "All Layer Files"
+msgstr "Усі файли шарів"
+
 #: ../src/mainWindow.js:366
 msgid "Failed to connect to location service"
 msgstr "Не вдалося з'єднатись зі службою розташування"
@@ -734,15 +739,15 @@ msgstr "Daniel Korostil <ted.korostiled@gmail.com>"
 msgid "A map application for GNOME"
 msgstr "Карти для GNOME"
 
-#: ../src/mapView.js:254
+#: ../src/mapView.js:260
 msgid "File type is not supported"
 msgstr "Тип файла не підтримується"
 
-#: ../src/mapView.js:261
+#: ../src/mapView.js:267
 msgid "Failed to open layer"
 msgstr "Не вдалося відкрити шар"
 
-#: ../src/mapView.js:297
+#: ../src/mapView.js:303
 msgid "Failed to open GeoURI"
 msgstr "Не вдалося відкрити GeoURI"
 
@@ -776,23 +781,23 @@ msgstr "Об'єкт вилучено"
 msgid "Way or relation refers to non-existing children"
 msgstr "Спосіб або відношення не стосується чогось явного"
 
-#: ../src/osmEditDialog.js:103
+#: ../src/osmEditDialog.js:104
 msgid "Name"
 msgstr "Назва"
 
-#: ../src/osmEditDialog.js:106
+#: ../src/osmEditDialog.js:107
 msgid "The official name. This is typically what appears on signs."
 msgstr "Офіційна назва. Це зазвичай перше, що потрапляє на очі."
 
-#: ../src/osmEditDialog.js:109
+#: ../src/osmEditDialog.js:110
 msgid "Address"
 msgstr "Адреса"
 
-#: ../src/osmEditDialog.js:117 ../src/placeBubble.js:165
+#: ../src/osmEditDialog.js:118 ../src/placeBubble.js:165
 msgid "Website"
 msgstr "Сайт"
 
-#: ../src/osmEditDialog.js:120
+#: ../src/osmEditDialog.js:121
 msgid ""
 "The official website. Try to use the most basic form of a URL i.e. http://"
 "example.com instead of http://example.com/index.html."
@@ -800,11 +805,11 @@ msgstr ""
 "Офіційний сайт. Намагайтесь використовувати найосновнішу форму посилання, "
 "наприклад, http://example.com замість http://example.com/index.html."
 
-#: ../src/osmEditDialog.js:125
+#: ../src/osmEditDialog.js:126
 msgid "Phone"
 msgstr "Телефон"
 
-#: ../src/osmEditDialog.js:129
+#: ../src/osmEditDialog.js:130
 msgid ""
 "Phone number. Use the international format, starting with a + sign. Beware "
 "of local privacy laws, especially for private phone numbers."
@@ -813,89 +818,92 @@ msgstr ""
 "плюса (+). Будь обачні з місцевим законами щодо конфіденційності, особливо "
 "особистими номерами."
 
-#: ../src/osmEditDialog.js:134 ../src/placeBubble.js:171
+#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:171
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: ../src/osmEditDialog.js:138
+#: ../src/osmEditDialog.js:139
+#| msgid ""
+#| "The format used should include the language code and the article title "
+#| "like ”en:Article title”."
 msgid ""
 "The format used should include the language code and the article title like "
-"”en:Article title”."
+"“en:Article title”."
 msgstr "Формат слід містити код мови і назву статті, як-от «uk:Назва статті»."
 
-#: ../src/osmEditDialog.js:142
+#: ../src/osmEditDialog.js:143
 msgid "Opening hours"
 msgstr "Робочий час"
 
-#: ../src/osmEditDialog.js:147
+#: ../src/osmEditDialog.js:148
 msgid "See the link in the label for help on format."
 msgstr "Довідку щодо формату можна знати за посилання у мітці."
 
-#: ../src/osmEditDialog.js:150
+#: ../src/osmEditDialog.js:151
 msgid "Population"
 msgstr "Населення"
 
-#: ../src/osmEditDialog.js:155
+#: ../src/osmEditDialog.js:156
 msgid "Altitude"
 msgstr "Висота"
 
-#: ../src/osmEditDialog.js:158
+#: ../src/osmEditDialog.js:159
 msgid "Elevation (height above sea level) of a point in metres."
 msgstr "Висота (над рівнем моря) у метрах."
 
-#: ../src/osmEditDialog.js:161
+#: ../src/osmEditDialog.js:162
 msgid "Wheelchair access"
 msgstr "Доступ для возиків"
 
-#: ../src/osmEditDialog.js:164 ../src/osmEditDialog.js:173
+#: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
 msgid "Yes"
 msgstr "Так"
 
-#: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
+#: ../src/osmEditDialog.js:166 ../src/osmEditDialog.js:175
 msgid "No"
 msgstr "Ні"
 
-#: ../src/osmEditDialog.js:166
+#: ../src/osmEditDialog.js:167
 msgid "Limited"
 msgstr "Обмежено"
 
-#: ../src/osmEditDialog.js:167
+#: ../src/osmEditDialog.js:168
 msgid "Designated"
 msgstr "Вказано"
 
-#: ../src/osmEditDialog.js:170
+#: ../src/osmEditDialog.js:171
 msgid "Internet access"
 msgstr "Доступ до інтернету"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
 #.
-#: ../src/osmEditDialog.js:175 ../src/translations.js:341
+#: ../src/osmEditDialog.js:176 ../src/translations.js:341
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
 
-#: ../src/osmEditDialog.js:176
+#: ../src/osmEditDialog.js:177
 msgid "Wired"
 msgstr "Дріт"
 
-#: ../src/osmEditDialog.js:177
+#: ../src/osmEditDialog.js:178
 msgid "Terminal"
 msgstr "Термінал"
 
-#: ../src/osmEditDialog.js:178
+#: ../src/osmEditDialog.js:179
 msgid "Service"
 msgstr "Служба"
 
-#: ../src/osmEditDialog.js:287
+#: ../src/osmEditDialog.js:288
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Додати до OpenStreetMap"
 
-#: ../src/osmEditDialog.js:338
+#: ../src/osmEditDialog.js:339
 msgid "Select Type"
 msgstr "Виберіть тип"
 
-#: ../src/osmEditDialog.js:456
+#: ../src/osmEditDialog.js:457
 msgid "Done"
 msgstr "Зроблено"
 
@@ -967,7 +975,7 @@ msgstr "ні"
 msgid "designated"
 msgstr "визначено"
 
-#: ../src/printLayout.js:243
+#: ../src/printLayout.js:244
 #, javascript-format
 msgid "From %s to %s"
 msgstr "З %s до %s"
