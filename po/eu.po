@@ -8,9 +8,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-20 14:45+0100\n"
-"PO-Revision-Date: 2016-03-20 17:24+0100\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-ma"
+"ps&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-08-22 18:54+0000\n"
+"PO-Revision-Date: 2016-09-20 12:47+0100\n"
 "Last-Translator: dooteo <dooteo@zundan.com>\n"
 "Language-Team: Basque <librezale@librezale.org>\n"
 "Language: eu\n"
@@ -526,7 +527,7 @@ msgstr "Editatu OpenStreetMap-en"
 msgid "Cancel"
 msgstr "Utzi"
 
-#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:470
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:471
 msgid "Next"
 msgstr "Hurrengoa"
 
@@ -648,7 +649,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Idatzi aukerako mezua '%s'(e)n erregistratzeko."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:507
+#: ../src/osmEditDialog.js:508
 msgid "An error has occurred"
 msgstr "Errore bat gertatu da"
 
@@ -691,8 +692,8 @@ msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
 msgstr ""
-"Kokalekua mapari gehitu zaio. Jakin ezazu denbora bat igaroko dela "
-"mapetan eta bilaketen emaitzetan erakutsi aurretik."
+"Kokalekua mapari gehitu zaio. Jakin ezazu denbora bat igaroko dela mapetan "
+"eta bilaketen emaitzetan erakutsi aurretik."
 
 #: ../src/exportViewDialog.js:156
 msgid "Filesystem is read only"
@@ -727,6 +728,10 @@ msgstr "analisi-errorea"
 msgid "unknown geometry"
 msgstr "geometria ezezaguna"
 
+#: ../src/layersPopover.js:62
+msgid "All Layer Files"
+msgstr "Geruzen fitxategi guztiak"
+
 #: ../src/mainWindow.js:366
 msgid "Failed to connect to location service"
 msgstr "Huts egin du kokapen-zerbitzuarekin konektatzean"
@@ -739,15 +744,15 @@ msgstr "Iñaki Larrañaga Murgoitio <dooteo@zundan.com>"
 msgid "A map application for GNOME"
 msgstr "GNOMEren mapen aplikazioa"
 
-#: ../src/mapView.js:254
+#: ../src/mapView.js:260
 msgid "File type is not supported"
 msgstr "Fitxategi mota ez dago onartuta"
 
-#: ../src/mapView.js:261
+#: ../src/mapView.js:267
 msgid "Failed to open layer"
 msgstr "Huts egin du geruza irekitzean"
 
-#: ../src/mapView.js:297
+#: ../src/mapView.js:303
 msgid "Failed to open GeoURI"
 msgstr "Huts egin du GeoURIa irekitzean"
 
@@ -781,35 +786,35 @@ msgstr "Objektua ezabatua izan da"
 msgid "Way or relation refers to non-existing children"
 msgstr "Bideak edo erlazioak ez dauden umeei egiten diote erreferentzia"
 
-#: ../src/osmEditDialog.js:103
+#: ../src/osmEditDialog.js:104
 msgid "Name"
 msgstr "Izena"
 
-#: ../src/osmEditDialog.js:106
+#: ../src/osmEditDialog.js:107
 msgid "The official name. This is typically what appears on signs."
 msgstr "Izen ofiziala. Saioa hastean agertu ohi izaten da."
 
-#: ../src/osmEditDialog.js:109
+#: ../src/osmEditDialog.js:110
 msgid "Address"
 msgstr "Helbidea"
 
-#: ../src/osmEditDialog.js:117 ../src/placeBubble.js:165
+#: ../src/osmEditDialog.js:118 ../src/placeBubble.js:165
 msgid "Website"
 msgstr "Webgunea"
 
-#: ../src/osmEditDialog.js:120
+#: ../src/osmEditDialog.js:121
 msgid ""
 "The official website. Try to use the most basic form of a URL i.e. http://"
 "example.com instead of http://example.com/index.html."
 msgstr ""
-"Webgune ofiziala. Saiatu URL baten oinarrizko modua erabiltzen. Adib. "
-"http://example.com erabili http://example.com/index.html URLaren ordez."
+"Webgune ofiziala. Saiatu URL baten oinarrizko modua erabiltzen. Adib. http://"
+"example.com erabili http://example.com/index.html URLaren ordez."
 
-#: ../src/osmEditDialog.js:125
+#: ../src/osmEditDialog.js:126
 msgid "Phone"
 msgstr "Telefonoa"
 
-#: ../src/osmEditDialog.js:129
+#: ../src/osmEditDialog.js:130
 msgid ""
 "Phone number. Use the international format, starting with a + sign. Beware "
 "of local privacy laws, especially for private phone numbers."
@@ -818,91 +823,94 @@ msgstr ""
 "Kontutan eduki pribatutasunari buruzko bertako legeak, telefono zenbaki "
 "pribatuei dagokiena bereziki."
 
-#: ../src/osmEditDialog.js:134 ../src/placeBubble.js:171
+#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:171
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: ../src/osmEditDialog.js:138
+#: ../src/osmEditDialog.js:139
+#| msgid ""
+#| "The format used should include the language code and the article title "
+#| "like ”en:Article title”."
 msgid ""
 "The format used should include the language code and the article title like "
-"”en:Article title”."
+"“en:Article title”."
 msgstr ""
-"Erabilitako formatuak hizkuntzaren kodea eta artikuluaren titulua "
-"”eu:Artikuluaren titulua\" gisa eduki beharko lituzke."
+"Erabilitako formatuak hizkuntzaren kodea eta artikuluaren titulua ”eu:"
+"Artikuluaren titulua\" gisa eduki beharko lituzke."
 
-#: ../src/osmEditDialog.js:142
+#: ../src/osmEditDialog.js:143
 msgid "Opening hours"
 msgstr "Irekiera orduak"
 
-#: ../src/osmEditDialog.js:147
+#: ../src/osmEditDialog.js:148
 msgid "See the link in the label for help on format."
 msgstr "Ikusi esteka etiketan formatua ematean laguntzeko."
 
-#: ../src/osmEditDialog.js:150
+#: ../src/osmEditDialog.js:151
 msgid "Population"
 msgstr "Populazioa"
 
-#: ../src/osmEditDialog.js:155
+#: ../src/osmEditDialog.js:156
 msgid "Altitude"
 msgstr "Altitudea"
 
-#: ../src/osmEditDialog.js:158
+#: ../src/osmEditDialog.js:159
 msgid "Elevation (height above sea level) of a point in metres."
 msgstr "Puntu baten elebazioa (itsas-mailaren gaineko altuera) metrotan."
 
-#: ../src/osmEditDialog.js:161
+#: ../src/osmEditDialog.js:162
 msgid "Wheelchair access"
 msgstr "Gurpil-aulkien irisgarritasuna"
 
-#: ../src/osmEditDialog.js:164 ../src/osmEditDialog.js:173
+#: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
 msgid "Yes"
 msgstr "Bai"
 
-#: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
+#: ../src/osmEditDialog.js:166 ../src/osmEditDialog.js:175
 msgid "No"
 msgstr "Ez"
 
-#: ../src/osmEditDialog.js:166
+#: ../src/osmEditDialog.js:167
 msgid "Limited"
 msgstr "Mugatua"
 
-#: ../src/osmEditDialog.js:167
+#: ../src/osmEditDialog.js:168
 msgid "Designated"
 msgstr "Izendatuta"
 
-#: ../src/osmEditDialog.js:170
+#: ../src/osmEditDialog.js:171
 msgid "Internet access"
 msgstr "Interneterako sarbidea"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
 #.
-#: ../src/osmEditDialog.js:175 ../src/translations.js:341
+#: ../src/osmEditDialog.js:176 ../src/translations.js:341
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
 
-#: ../src/osmEditDialog.js:176
+#: ../src/osmEditDialog.js:177
 msgid "Wired"
 msgstr "Hariduna"
 
-#: ../src/osmEditDialog.js:177
+#: ../src/osmEditDialog.js:178
 msgid "Terminal"
 msgstr "Terminala"
 
-#: ../src/osmEditDialog.js:178
+#: ../src/osmEditDialog.js:179
 msgid "Service"
 msgstr "Zerbitzua"
 
-#: ../src/osmEditDialog.js:287
+#: ../src/osmEditDialog.js:288
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Gehitu OpenStreetMap-ari"
 
-#: ../src/osmEditDialog.js:338
+#: ../src/osmEditDialog.js:339
 msgid "Select Type"
 msgstr "Hautatu mota"
 
-#: ../src/osmEditDialog.js:456
+#: ../src/osmEditDialog.js:457
 msgid "Done"
 msgstr "Eginda"
 
@@ -974,7 +982,7 @@ msgstr "ez"
 msgid "designated"
 msgstr "zehaztutakoa"
 
-#: ../src/printLayout.js:243
+#: ../src/printLayout.js:244
 #, javascript-format
 msgid "From %s to %s"
 msgstr "\"%s\"(e)ndik \"%s\"(e)ra"
