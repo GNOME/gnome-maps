@@ -23,6 +23,7 @@ const Mainloop = imports.mainloop;
 
 const Application = imports.application;
 const PrintLayout = imports.printLayout;
+const TransitPrintLayout = imports.transitPrintLayout;
 const Utils = imports.utils;
 
 const _MIN_TIME_TO_ABORT = 3000;
@@ -57,6 +58,8 @@ const PrintOperation = new Lang.Class({
 
     _beginPrint: function(operation, context, data) {
         let route = Application.routingDelegator.graphHopper.route;
+        let selectedTransitItinerary =
+            Application.routingDelegator.openTripPlanner.plan.selectedItinerary;
         let width = context.get_width();
         let height = context.get_height();
 
@@ -67,7 +70,14 @@ const PrintOperation = new Lang.Class({
             return false;
         }).bind(this), null);
 
-        this._layout = PrintLayout.newFromRoute(route, width, height);
+        if (selectedTransitItinerary) {
+            this._layout =
+                new TransitPrintLayout.TransitPrintLayout({ itinerary: selectedTransitItinerary,
+                                                            pageWidth: width,
+                                                            pageHeight: height });
+        } else {
+            this._layout = PrintLayout.newFromRoute(route, width, height);
+        }
         this._layout.render();
     },
 
