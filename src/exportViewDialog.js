@@ -157,7 +157,7 @@ const ExportViewDialog = new Lang.Class({
             else if (e.matches(GLib.FileError, GLib.FileError.ACCES))
                 details = _("You do not have permission to save there");
             else if (e.matches(GLib.FileError, GLib.FileError.NOENT))
-                details = _("The directory does not exists");
+                details = _("The directory does not exist");
             else if (e.matches(GLib.FileError, GLib.FileError.ISDIR))
                 details = _("No filename specified");
 
