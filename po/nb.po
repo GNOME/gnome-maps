@@ -7,10 +7,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-maps 3.19.x\n"
+"Project-Id-Version: gnome-maps 3.23.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-23 20:05+0200\n"
-"PO-Revision-Date: 2016-05-23 20:16+0200\n"
+"POT-Creation-Date: 2016-10-16 12:03+0200\n"
+"PO-Revision-Date: 2016-10-16 12:03+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
@@ -58,7 +58,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:85 ../src/mainWindow.js:420
+#: ../src/application.js:85 ../src/mainWindow.js:441
 msgid "Maps"
 msgstr "Kart"
 
@@ -185,7 +185,7 @@ msgstr "Brukernavn eller e-postadresse for OpenStreetMap"
 
 #: ../data/org.gnome.Maps.gschema.xml.h:24
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
-msgstr ""
+msgstr "Indikerer om bruker har logget inn for å redigere OpenStreeMap data."
 
 #: ../data/ui/app-menu.ui.h:1
 msgid "Set up OpenStreetMap Account"
@@ -406,7 +406,8 @@ msgstr "Konto for OpenStreetMap"
 
 #: ../data/ui/osm-account-dialog.ui.h:2
 msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
-msgstr "<span weight=\"bold\" size=\"x-large\">Logg inn for å redigere kart</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"x-large\">Logg inn for å redigere kart</span>"
 
 #: ../data/ui/osm-account-dialog.ui.h:3
 msgid ""
@@ -440,7 +441,8 @@ msgid ""
 "\">OpenStreetMap</a> to reset your password."
 msgstr ""
 "Beklager, det virket ikke. Vennligst prøv igjen eller besøk\n"
-"<a href=\"https://www.openstreetmap.org/user/forgot-password\">OpenStreetMap</a> for å nullstille passordet ditt."
+"<a href=\"https://www.openstreetmap.org/user/forgot-password"
+"\">OpenStreetMap</a> for å nullstille passordet ditt."
 
 #: ../data/ui/osm-account-dialog.ui.h:12
 msgid "The verification code didn't match, please try again."
@@ -502,7 +504,7 @@ msgstr "Kommentar"
 #: ../data/ui/osm-edit-dialog.ui.h:5
 msgid ""
 "Map changes will be visible on all maps that use\n"
-"    OpenStreetMap data."
+"OpenStreetMap data."
 msgstr ""
 "Endringer på kartet vil vises på alle kart som bruker\n"
 "data fra OpenStreetMap."
@@ -519,7 +521,7 @@ msgstr "Rediger på OpenStreetMap"
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:471
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:472
 msgid "Next"
 msgstr "Neste"
 
@@ -641,7 +643,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Skriv en valgfri melding for å sjekke inn ved %s."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:508
+#: ../src/osmEditDialog.js:509
 msgid "An error has occurred"
 msgstr "Det har oppstått en feil"
 
@@ -683,7 +685,9 @@ msgstr "Ingenting her!"
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
-msgstr "Lokasjonen ble lagt til på kartet. Merk at det kan ta litt tid før den vises på kartet og dukker opp i søkeresultater."
+msgstr ""
+"Lokasjonen ble lagt til på kartet. Merk at det kan ta litt tid før den vises "
+"på kartet og dukker opp i søkeresultater."
 
 #: ../src/exportViewDialog.js:156
 msgid "Filesystem is read only"
@@ -694,7 +698,7 @@ msgid "You do not have permission to save there"
 msgstr "Du har ikke rettigheter til å lagre der"
 
 #: ../src/exportViewDialog.js:160
-msgid "The directory does not exists"
+msgid "The directory does not exist"
 msgstr "Katalogen eksisterer ikke"
 
 #: ../src/exportViewDialog.js:162
@@ -718,29 +722,33 @@ msgstr "lesefeil"
 msgid "unknown geometry"
 msgstr "ukjent geometri"
 
-#: ../src/mainWindow.js:366
+#: ../src/layersPopover.js:62
+msgid "All Layer Files"
+msgstr "Alle lagfiler"
+
+#: ../src/mainWindow.js:387
 msgid "Failed to connect to location service"
 msgstr "Klarte ikke å koble til posisjonstjeneste"
 
-#: ../src/mainWindow.js:418
+#: ../src/mainWindow.js:439
 msgid "translator-credits"
 msgstr ""
 "haarek <haarektrans@gmail.com>, Kjartan Maraas <kmaraas@gnome.org>, Åka "
 "Sikrom <a4NOSPAMPLEASETHANKYOU@hush.com>"
 
-#: ../src/mainWindow.js:421
+#: ../src/mainWindow.js:442
 msgid "A map application for GNOME"
 msgstr "Et kartprogram for GNOME"
 
-#: ../src/mapView.js:254
+#: ../src/mapView.js:260
 msgid "File type is not supported"
 msgstr "Filtypen er ikke støttet"
 
-#: ../src/mapView.js:261
+#: ../src/mapView.js:267
 msgid "Failed to open layer"
 msgstr "Klarte ikke å åpne lag"
 
-#: ../src/mapView.js:297
+#: ../src/mapView.js:303
 msgid "Failed to open GeoURI"
 msgstr "Klarte ikke å åpne GeoURI"
 
@@ -780,7 +788,7 @@ msgstr "Navn"
 
 #: ../src/osmEditDialog.js:107
 msgid "The official name. This is typically what appears on signs."
-msgstr ""
+msgstr "Det offisielle navnet. Dette er typisk det som vises på skilt."
 
 #: ../src/osmEditDialog.js:110
 msgid "Address"
@@ -795,16 +803,21 @@ msgid ""
 "The official website. Try to use the most basic form of a URL i.e. http://"
 "example.com instead of http://example.com/index.html."
 msgstr ""
+"Det offisielle nettstedet. Prøv å bruke den mest grunnleggende formen av en "
+"URL. F.eks. http://eksempel.no i stedet for http://eksempel.no/index.html."
 
 #: ../src/osmEditDialog.js:126
 msgid "Phone"
 msgstr "Telefon"
 
 #: ../src/osmEditDialog.js:130
+#, fuzzy
 msgid ""
 "Phone number. Use the international format, starting with a + sign. Beware "
 "of local privacy laws, especially for private phone numbers."
 msgstr ""
+"Telefonnummer. Bruk det internasjonale formatet som starter med et +-tegn. "
+"Vær observant på lokale lover om "
 
 #: ../src/osmEditDialog.js:135 ../src/placeBubble.js:171
 msgid "Wikipedia"
@@ -813,7 +826,7 @@ msgstr "Wikipedia"
 #: ../src/osmEditDialog.js:139
 msgid ""
 "The format used should include the language code and the article title like "
-"”en:Article title”."
+"“en:Article title”."
 msgstr ""
 
 #: ../src/osmEditDialog.js:143
@@ -884,11 +897,11 @@ msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Legg til på OpenStreetMap"
 
-#: ../src/osmEditDialog.js:339
+#: ../src/osmEditDialog.js:340
 msgid "Select Type"
 msgstr "Velg type"
 
-#: ../src/osmEditDialog.js:457
+#: ../src/osmEditDialog.js:458
 msgid "Done"
 msgstr "Ferdig"
 
@@ -960,7 +973,7 @@ msgstr "nei"
 msgid "designated"
 msgstr "spesialtilpasset"
 
-#: ../src/printLayout.js:243
+#: ../src/printLayout.js:244
 #, javascript-format
 msgid "From %s to %s"
 msgstr "Fra %s til %s"
