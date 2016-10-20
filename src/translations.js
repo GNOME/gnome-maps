@@ -51,9 +51,8 @@ let clockFormat = _desktopSettings.get_string(CLOCK_FORMAT_KEY);
  * http://wiki.openstreetmap.org/wiki/Key:opening_hours
  */
 function translateOpeningHours(string) {
-    if (string === '24/7')
-        return _("around the clock");
-    else if (string === 'Mo-Su 00:00-24:00')
+    if (string === '24/7' || string === 'Mo-Su 00:00-24:00' ||
+        string === '00:00-24:00')
         return _("around the clock");
     else if (string === 'sunrise-sunset')
         return _("from sunrise to sunset");
