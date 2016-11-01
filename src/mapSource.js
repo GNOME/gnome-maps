@@ -25,16 +25,12 @@ const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
 const GtkClutter = imports.gi.GtkClutter;
 const Lang = imports.lang;
-const Soup = imports.gi.Soup;
 const System = imports.system;
 
+const Service = imports.service;
 const Utils = imports.utils;
 
-let _tileService = null;
 let _attributionImage = null;
-
-const _TILE_SERVICE_URL = 'https://gis.gnome.org/services/v1/service.json';
-const _DEFAULT_SERVICE_FILE = 'maps-service.json';
 
 const _FILE_CACHE_SIZE_LIMIT = (10 * 1024 * 1024); /* 10Mb */
 const _MEMORY_CACHE_SIZE_LIMIT = 100; /* number of tiles */
@@ -86,51 +82,6 @@ function _updateAttributionImage(source) {
     _attributionImage.pixbuf = GdkPixbuf.Pixbuf.new_from_stream(stream, null);
 }
 
-function _getServiceFromFile(filename) {
-    let data = Utils.readFile(filename);
-    if (!data) {
-        log('Failed to open service file: ' + filename);
-        System.exit(1);
-    }
-    _tileService = JSON.parse(data).tiles;
-    return _tileService;
-}
-
-function _createDefaultService() {
-    let filename = GLib.build_filenamev([pkg.pkgdatadir,
-                                         _DEFAULT_SERVICE_FILE]);
-    return _getServiceFromFile(filename);
-}
-
-function _getTileService() {
-    if (_tileService)
-        return _tileService;
-
-    let serviceOverride = GLib.getenv('MAPS_SERVICE');
-    if (serviceOverride)
-        return _getServiceFromFile(serviceOverride);
-
-    let user_agent = 'gnome-maps/' + pkg.version;
-    let session = new Soup.Session({ user_agent : user_agent });
-    let msg = Soup.Message.new('GET', _TILE_SERVICE_URL);
-    try {
-        let stream = Gio.DataInputStream.new(session.send(msg, null));
-
-        let lines = "";
-        while(true) {
-            let [line, _] = stream.read_line_utf8(null);
-            if (line === null)
-                break;
-            lines += line;
-        }
-        _tileService = JSON.parse(lines).tiles;
-        return _tileService;
-    } catch(e) {
-        Utils.debug(e);
-        return _createDefaultService();
-    }
-}
-
 function _createTileSource(source) {
     let tileSource = new Champlain.NetworkTileSource({
         id: source.id,
@@ -180,13 +131,13 @@ function _createCachedSource(source) {
 }
 
 function createAerialSource() {
-    return _createCachedSource(_getTileService().aerial);
+    return _createCachedSource(Service.getService().tiles.aerial);
 }
 
 function createStreetSource() {
-    return _createCachedSource(_getTileService().street);
+    return _createCachedSource(Service.getService().tiles.street);
 }
 
 function createPrintSource() {
-    return _createCachedSource(_getTileService().print);
+    return _createCachedSource(Service.getService().tiles.print);
 }
