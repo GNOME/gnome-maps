@@ -132,7 +132,7 @@ const CheckInManager = new Lang.Class({
         case CheckInDialog.Response.FAILURE_NO_PLACES:
             if (matchPlace)
                 /* Translators: %s is the place name that user wanted to check-in */
-                message = _("Cannot find \"%s\" in the social service").format(place.name);
+                message = _("Cannot find “%s” in the social service").format(place.name);
             else
                 message = _("Cannot find a suitable place to check-in in this location");
             break;
