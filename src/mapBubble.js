@@ -158,6 +158,7 @@ const MapBubble = new Lang.Class({
         button.visible = true;
 
         button.connect('clicked', (function() {
+            Application.routingDelegator.useTransit = false;
             query.freeze_notify();
             query.reset();
             route.reset();
