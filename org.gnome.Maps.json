@@ -1,0 +1,188 @@
+{
+    "app-id": "org.gnome.Maps",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "master",
+    "sdk": "org.gnome.Sdk",
+    "command": "gnome-maps",
+    "tags": ["devel"],
+    "desktop-file-name-prefix": "(Development) ",
+    "finish-args": [
+        /* X11 + XShm access */
+        "--share=ipc", "--socket=x11",
+        /* Wayland access */
+        "--socket=wayland",
+        /* OpenGL access */
+        "--device=dri",
+        /* Needs to talk to the network: */
+        "--share=network",
+        /* Evolution data server access */
+        "--talk-name=org.gnome.OnlineAccounts",
+        "--talk-name=org.gnome.evolution.dataserver.AddressBook9",
+        "--talk-name=org.gnome.evolution.dataserver.Calendar7",
+        "--talk-name=org.gnome.evolution.dataserver.Sources5",
+        "--talk-name=org.gnome.evolution.dataserver.Subprocess.Backend.*",
+
+        /* Connectivity check */
+        "--system-talk-name=org.freedesktop.NetworkManager",
+        /* Needed to save OAuth token from OpenStreetMap */
+        "--talk-name=org.freedesktop.secrets",
+        /* Needed to get geo-positioning */
+        "--system-talk-name=org.freedesktop.GeoClue2",
+        /* Needed for dconf to work */
+        "--filesystem=xdg-run/dconf", "--filesystem=~/.config/dconf:ro",
+        "--talk-name=ca.desrt.dconf", "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
+     ],
+    "build-options" : {
+        "cflags": "-O2 -g",
+        "cxxflags": "-O2 -g",
+        "env": {
+            "V": "1"
+        }
+    },
+    "cleanup": ["/include", "/lib/pkgconfig",
+                "/share/pkgconfig", "/share/aclocal",
+                "/man", "/share/man", "/share/gtk-doc",
+                "/share/vala",
+                "*.la", "*.a"],
+    "modules": [
+        {
+            "name": "libical",
+            "cleanup": [ "/lib/cmake"],
+            "cmake": true,
+            "config-opts": [ "-DCMAKE_INSTALL_LIBDIR:PATH=/app/lib",
+                             "-DBUILD_SHARED_LIBS:BOOL=ON" ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/libical/libical/releases/download/v1.0.1/libical-1.0.1.tar.gz",
+                    "sha256": "089ce3c42d97fbd7a5d4b3c70adbdd82115dd306349c1f5c46a8fb3f8c949592"
+                }
+            ]
+        },
+        {
+            "name": "libgee",
+            "build-options" : {
+                "env": {
+                    "PKG_CONFIG_GOBJECT_INTROSPECTION_1_0_GIRDIR": "/app/share/gir-1.0",
+                    "PKG_CONFIG_GOBJECT_INTROSPECTION_1_0_TYPELIBDIR": "/app/lib/girepository-1.0"
+                }
+            },
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "git://git.gnome.org/libgee"
+                }
+            ]
+        },
+        {
+            "name": "gnome-online-accounts",
+            "config-opts": ["--disable-telepathy", "--disable-documentation", "--disable-backend"],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "git://git.gnome.org/gnome-online-accounts"
+                }
+            ]
+        },
+        {
+            "name": "geocode-glib",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "git://git.gnome.org/geocode-glib"
+                }
+            ]
+        },
+        {
+            "name": "libgweather",
+            "config-opts": ["--disable-vala"],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "git://git.gnome.org/libgweather"
+                }
+            ]
+        },
+        {
+            "name": "evolution-data-server",
+            "cleanup": [
+                "/lib/cmake",
+                "/lib/evolution-data-server/*-backends",
+                "/libexec",
+                "/share/dbus-1/services"
+	    ],
+            "config-opts": [
+                "-DENABLE_GTK=OFF",
+                "-DENABLE_GOOGLE_AUTH=OFF",
+                "-DENABLE_UOA=OFF",
+                "-DENABLE_GOOGLE=OFF",
+                "-DENABLE_VALA_BINDINGS=ON",
+                "-DWITH_OPENLDAP=OFF",
+                "-DENABLE_INTROSPECTION=ON",
+                "-DENABLE_INSTALLED_TESTS=OFF",
+                "-DENABLE_GTK_DOC=OFF",
+                "-DENABLE_EXAMPLES=OFF"
+            ],
+            "cmake": true,
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "git://git.gnome.org/evolution-data-server"
+                }
+            ]
+        },
+        {
+            "name": "folks",
+            "cleanup": [ "/bin", "/share/GConf" ],
+            "config-opts": ["--disable-telepathy-backend",
+                            "--disable-ofono-backend",
+                            "--disable-bluez-backend",
+                            "--disable-fatal-warnings"],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "git://git.gnome.org/folks"
+                }
+            ]
+        },
+        {
+            "name": "libchamplain",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "git://git.gnome.org/libchamplain"
+                }
+            ]
+        },
+        {
+            /* we need rest-0.7 so we use a tarball for it */
+            "name": "librest",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://git.gnome.org/browse/librest/snapshot/librest-librest-0.7.12.tar.xz",
+                    "sha256": "570917e570e6e8bf55572eb04902d4cf3975c2629df9df96c21be2059d71dab9"
+                }
+            ]
+        },
+        {
+            "name": "libgfbgraph",
+            "cleanup": [ "/doc/libgfbgraph"],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "git://git.gnome.org/libgfbgraph"
+                }
+            ]
+        },
+        {
+            "name": "gnome-maps",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "git://git.gnome.org/gnome-maps"
+                }
+            ]
+        }
+    ]
+}
