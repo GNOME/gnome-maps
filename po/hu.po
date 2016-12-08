@@ -9,16 +9,16 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-10-13 19:11+0000\n"
-"PO-Revision-Date: 2016-11-04 09:51+0100\n"
-"Last-Translator: Meskó Balázs <meskobalazs@gmail.com>\n"
+"POT-Creation-Date: 2016-11-29 08:56+0000\n"
+"PO-Revision-Date: 2016-12-08 22:47+0100\n"
+"Last-Translator: Gabor Kelemen <kelemeng at ubuntu dot com>\n"
 "Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Lokalize 1.5\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid "GNOME Maps"
@@ -376,8 +376,11 @@ msgid "Maps is offline!"
 msgstr "A Térképek kapcsolat nélküli!"
 
 #: ../data/ui/main-window.ui.h:8
+#| msgid ""
+#| "Maps need an active internet connection to function properly, but one "
+#| "can't be found."
 msgid ""
-"Maps need an active internet connection to function properly, but one can't "
+"Maps need an active internet connection to function properly, but one can’t "
 "be found."
 msgstr ""
 "A Térképeknek aktív internet-kapcsolat szükséges a megfelelő működéshez, de "
@@ -434,13 +437,18 @@ msgid "Sign In"
 msgstr "Bejelentkezés"
 
 #: ../data/ui/osm-account-dialog.ui.h:8
-msgid "Don't have an account?"
+#| msgid "Don't have an account?"
+msgid "Don’t have an account?"
 msgstr "Nincs fiókja?"
 
 #. The label should contain the link to the OSM reset password page with a translated title
 #: ../data/ui/osm-account-dialog.ui.h:10
+#| msgid ""
+#| "Sorry, that didn't work. Please try again, or visit\n"
+#| "<a href=\"https://www.openstreetmap.org/user/forgot-password"
+#| "\">OpenStreetMap</a> to reset your password."
 msgid ""
-"Sorry, that didn't work. Please try again, or visit\n"
+"Sorry, that didn’t work. Please try again, or visit\n"
 "<a href=\"https://www.openstreetmap.org/user/forgot-password"
 "\">OpenStreetMap</a> to reset your password."
 msgstr ""
@@ -450,7 +458,8 @@ msgstr ""
 "oldalt a jelszava helyreállításához."
 
 #: ../data/ui/osm-account-dialog.ui.h:12
-msgid "The verification code didn't match, please try again."
+#| msgid "The verification code didn't match, please try again."
+msgid "The verification code didn’t match, please try again."
 msgstr "Az ellenőrző kód nem egyezik, próbálja újra."
 
 #: ../data/ui/osm-account-dialog.ui.h:13
@@ -655,7 +664,8 @@ msgstr "Hiba történt"
 #. Translators: %s is the place name that user wanted to check-in
 #: ../src/checkIn.js:135
 #, javascript-format
-msgid "Cannot find \"%s\" in the social service"
+#| msgid "Cannot find \"%s\" in the social service"
+msgid "Cannot find “%s” in the social service"
 msgstr "Nem található „%s” a közösségi szolgáltatásban"
 
 #: ../src/checkIn.js:137
@@ -882,7 +892,7 @@ msgstr "Internet-hozzáférés"
 #. Translators:
 #. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
 #.
-#: ../src/osmEditDialog.js:176 ../src/translations.js:341
+#: ../src/osmEditDialog.js:176 ../src/translations.js:340
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
 
@@ -945,7 +955,7 @@ msgstr "A Geo URI feldolgozása nem sikerült"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: ../src/place.js:178 ../src/translations.js:330
+#: ../src/place.js:178 ../src/translations.js:329
 msgid "yes"
 msgstr "igen"
 
@@ -966,7 +976,7 @@ msgstr "korlátozott"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: ../src/place.js:191 ../src/translations.js:336
+#: ../src/place.js:191 ../src/translations.js:335
 msgid "no"
 msgstr "nem"
 
@@ -1022,11 +1032,11 @@ msgstr "nem sikerült betölteni a fájlt"
 msgid "Estimated time: %s"
 msgstr "Becsült idő: %s"
 
-#: ../src/translations.js:55 ../src/translations.js:57
+#: ../src/translations.js:56
 msgid "around the clock"
 msgstr "éjjel-nappal"
 
-#: ../src/translations.js:59
+#: ../src/translations.js:58
 msgid "from sunrise to sunset"
 msgstr "napkeltétől napnyugtáig"
 
@@ -1036,7 +1046,7 @@ msgstr "napkeltétől napnyugtáig"
 #. * The space between the format place holders could be
 #. * substituted with the appropriate separator.
 #.
-#: ../src/translations.js:78
+#: ../src/translations.js:77
 #, javascript-format
 msgctxt "time range list"
 msgid "%s %s"
@@ -1048,7 +1058,7 @@ msgstr "%s, %s"
 #. * The space between the format place holders could be
 #. * substituted with the appropriate separator.
 #.
-#: ../src/translations.js:90
+#: ../src/translations.js:89
 #, javascript-format
 msgctxt "time range list"
 msgid "%s %s %s"
@@ -1061,7 +1071,7 @@ msgstr "%s, %s, %s"
 #. * The space between the format place holders could be substituted with
 #. * the appropriate separator or phrase and the ordering of the arguments
 #. * can be rearranged with the %n#s syntax.
-#: ../src/translations.js:121
+#: ../src/translations.js:120
 #, javascript-format
 msgctxt "time range component"
 msgid "%s %s"
@@ -1076,7 +1086,7 @@ msgstr "%s %s"
 #. * place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: ../src/translations.js:153
+#: ../src/translations.js:152
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s"
@@ -1091,30 +1101,30 @@ msgstr "%s, %s"
 #. * %s place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: ../src/translations.js:167
+#: ../src/translations.js:166
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s,%s"
 msgstr "%s, %s, %s"
 
-#: ../src/translations.js:186
+#: ../src/translations.js:185
 msgid "every day"
 msgstr "minden nap"
 
 #. Translators:
 #. * This represents a range of days with a starting and ending day.
 #.
-#: ../src/translations.js:198
+#: ../src/translations.js:197
 #, javascript-format
 msgctxt "day range"
 msgid "%s-%s"
 msgstr "%s-%s"
 
-#: ../src/translations.js:209
+#: ../src/translations.js:208
 msgid "public holidays"
 msgstr "munkaszüneti napok"
 
-#: ../src/translations.js:211
+#: ../src/translations.js:210
 msgid "school holidays"
 msgstr "tanszüneti napok"
 
@@ -1126,13 +1136,13 @@ msgstr "tanszüneti napok"
 #. * the translation. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: ../src/translations.js:251
+#: ../src/translations.js:250
 #, javascript-format
 msgctxt "time interval list"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: ../src/translations.js:265
+#: ../src/translations.js:264
 msgid "not open"
 msgstr "nincs nyitva"
 
@@ -1143,7 +1153,7 @@ msgstr "nincs nyitva"
 #. * translation as needed. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: ../src/translations.js:280
+#: ../src/translations.js:279
 #, javascript-format
 msgctxt "time interval"
 msgid "%s-%s"
@@ -1152,21 +1162,21 @@ msgstr "%s-%s"
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: ../src/translations.js:346
+#: ../src/translations.js:345
 msgid "wired"
 msgstr "vezetékes"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: ../src/translations.js:351
+#: ../src/translations.js:350
 msgid "terminal"
 msgstr "terminál"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: ../src/translations.js:356
+#: ../src/translations.js:355
 msgid "service"
 msgstr "szolgáltatás"
 
