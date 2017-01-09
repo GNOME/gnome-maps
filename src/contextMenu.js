@@ -20,7 +20,6 @@
  */
 
 const Champlain = imports.gi.Champlain;
-const Clutter = imports.gi.Clutter;
 const Gdk = imports.gi.Gdk;
 const Geocode = imports.gi.GeocodeGlib;
 const Gtk = imports.gi.Gtk;
@@ -53,8 +52,8 @@ const ContextMenu = new Lang.Class({
 
         this.parent(params);
 
-        this._mapView.view.connect('button-release-event',
-                                   this._onButtonReleaseEvent.bind(this));
+        this._mapView.connect('button-release-event',
+                              this._onButtonReleaseEvent.bind(this));
 
         this._whatsHereItem.connect('activate',
                                     this._onWhatsHereActivated.bind(this));
@@ -72,16 +71,16 @@ const ContextMenu = new Lang.Class({
         this._routingUpdate();
     },
 
-    _onButtonReleaseEvent: function(actor, event) {
-        let button = event.get_button();
-        let [x, y] = event.get_coords();
+    _onButtonReleaseEvent: function(widget, event) {
+        let [_, button] = event.get_button();
+        let [_, x, y] = event.get_coords();
         this._longitude = this._mapView.view.x_to_longitude(x);
         this._latitude = this._mapView.view.y_to_latitude(y);
 
-        if (button === Clutter.BUTTON_SECONDARY) {
+        if (button === Gdk.BUTTON_SECONDARY) {
             Mainloop.idle_add((function() {
                 // Need idle to avoid Clutter dead-lock on re-entrance
-                this.popup(null, null, null, button, event.get_time());
+                this.popup_at_pointer(event);
             }).bind(this));
         }
     },
