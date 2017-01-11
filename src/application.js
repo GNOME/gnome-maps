@@ -102,11 +102,20 @@ var Application = new Lang.Class({
                              _("A path to a local tiles directory structure"),
                              null);
 
+        this.add_main_option('version', 'v'.charCodeAt(0), GLib.OptionFlags.NONE, GLib.OptionArg.NONE,
+                             _("Show the version of the program"), null);
+
         this.connect('handle-local-options', (function(app, options) {
             if (options.contains('local')) {
                 let variant = options.lookup_value('local', null);
                 this.local_tile_path = variant.deep_unpack();
                 normalStartup = false;
+            } else if (options.contains('version')) {
+                print(pkg.version);
+                /* quit the invoked process after printing the version number
+                 * leaving the running instance unaffected
+                 */
+                return 0;
             }
 
             return -1;
