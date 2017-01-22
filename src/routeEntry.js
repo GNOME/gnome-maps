@@ -68,16 +68,14 @@ const RouteEntry = new Lang.Class({
         case Type.FROM:
             this._buttonImage.icon_name = 'list-add-symbolic';
             this._icon.icon_name = 'maps-point-start-symbolic';
-            this._button.show();
             break;
         case Type.VIA:
             this._buttonImage.icon_name = 'list-remove-symbolic';
             this._icon.icon_name = 'maps-point-end-symbolic';
-            this._button.show();
             break;
         case Type.TO:
+            this._buttonImage.icon_name = 'route-reverse-symbolic';
             this._icon.icon_name = 'maps-point-end-symbolic';
-            this._button.hide();
             break;
         }
     },

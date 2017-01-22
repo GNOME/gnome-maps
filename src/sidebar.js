@@ -203,6 +203,9 @@ const Sidebar = new Lang.Class({
                 let row = routeEntry.get_parent();
                 this._query.removePoint(row.get_index());
             }).bind(this));
+        } else if (type === RouteEntry.Type.TO) {
+            routeEntry.button.connect('clicked',
+                                      this._reverseRoutePoints.bind(this));
         }
 
         this._initRouteDragAndDrop(routeEntry);
@@ -421,6 +424,25 @@ const Sidebar = new Lang.Class({
             [points[i].place, srcPlace] = [srcPlace, points[i].place];
         }
 
+        this._query.thaw_notify();
+    },
+
+    /* The reason we don't just use the array .reverse() function is that we
+     * need to update the place parameters on the actual point objects in the
+     * array to fire the query notify signal that will iniate an update.
+     */
+    _reverseRoutePoints: function() {
+        let points = this._query.points;
+        let length = points.length;
+
+        this._query.freeze_notify();
+        for (let i = 0; i < length / 2; i++) {
+            let p1 = points[i].place;
+            let p2 = points[length - i - 1].place;
+
+            points[i].place = p2;
+            points[length - i - 1].place = p1;
+        }
         this._query.thaw_notify();
     },
 
