@@ -39,7 +39,7 @@ const NotificationManager = imports.notificationManager;
 const OSMEdit = imports.osmEdit;
 const OSMTypeSearchEntry = imports.osmTypeSearchEntry;
 const PlaceStore = imports.placeStore;
-const RouteService = imports.routeService;
+const RoutingDelegator = imports.routingDelegator;
 const RouteQuery = imports.routeQuery;
 const Settings = imports.settings;
 const Utils = imports.utils;
@@ -49,7 +49,7 @@ let application = null;
 let settings = null;
 let placeStore = null;
 let notificationManager = null;
-let routeService = null;
+let routingDelegator = null;
 let geoclue = null;
 let geocodeService = null;
 let networkMonitor = null;
@@ -245,12 +245,12 @@ const Application = new Lang.Class({
     },
 
     _initServices: function() {
-        settings       = Settings.getSettings('org.gnome.Maps');
-        routeQuery     = new RouteQuery.RouteQuery();
-        routeService   = new RouteService.GraphHopper();
-        geoclue        = new Geoclue.Geoclue();
-        geocodeService = new GeocodeService.GeocodeService();
-        networkMonitor = Gio.NetworkMonitor.get_default();
+        settings         = Settings.getSettings('org.gnome.Maps');
+        routeQuery       = new RouteQuery.RouteQuery();
+        routingDelegator = new RoutingDelegator.RoutingDelegator({ query: routeQuery });
+        geoclue          = new Geoclue.Geoclue();
+        geocodeService   = new GeocodeService.GeocodeService();
+        networkMonitor   = Gio.NetworkMonitor.get_default();
         networkMonitor.connect('network-changed',
                                this._checkNetwork.bind(this));
         checkInManager = new CheckIn.CheckInManager();

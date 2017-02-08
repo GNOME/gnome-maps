@@ -418,9 +418,9 @@ const MapView = new Lang.Class({
 
     _showStoredRoute: function(stored) {
         let query = Application.routeQuery;
-        let route = Application.routeService.route;
+        let route = Application.routingDelegator.graphHopper.route;
 
-        Application.routeService.storedRoute = stored.route;
+        Application.routingDelegator.graphHopper.storedRoute = stored.route;
 
         let resetId = route.connect('reset', function() {
             route.disconnect(resetId);
@@ -470,7 +470,7 @@ const MapView = new Lang.Class({
     },
 
     _showDestinationTurnpoints: function() {
-        let route = Application.routeService.route;
+        let route = Application.routingDelegator.graphHopper.route;
         let query = Application.routeQuery;
         let pointIndex = 0;
 

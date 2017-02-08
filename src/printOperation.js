@@ -56,7 +56,7 @@ const PrintOperation = new Lang.Class({
     },
 
     _beginPrint: function(operation, context, data) {
-        let route = Application.routeService.route;
+        let route = Application.routingDelegator.graphHopper.route;
         let width = context.get_width();
         let height = context.get_height();
 

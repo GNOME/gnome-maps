@@ -63,7 +63,7 @@ const PlacePopover = new Lang.Class({
             this._mode = Mode.ACTIVATED;
         }).bind(this));
 
-        Application.routeService.route.connect('updated', (function() {
+        Application.routingDelegator.graphHopper.route.connect('updated', (function() {
             this._mode = Mode.ACTIVATED;
         }).bind(this));
 
