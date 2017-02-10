@@ -43,6 +43,16 @@ pkg.require({ 'cairo': '1.0',
 const Application = imports.application;
 
 function main(args) {
+    /* Add prototype to get last element of an array.
+     * TODO: if we get more of these, might move initing
+     * to a decicated Prototypes modules.
+     */
+    if (!Array.prototype.last) {
+        Array.prototype.last = function() {
+            return this[this.length - 1];
+        }
+    }
+
     let application = new Application.Application();
     return application.run(args);
 }
