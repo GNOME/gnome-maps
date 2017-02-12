@@ -1,0 +1,152 @@
+<interface>
+  <template class="Gjs_TransitOptionsPanel" parent="GtkGrid">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="no-show-all">True</property>
+    <style>
+      <class name="shaded"/>
+    </style>
+    <child>
+      <object class="GtkComboBoxText" id="transitTimeOptionsComboBox">
+        <property name="visible">True</property>
+        <property name="active_id">leaveNow</property>
+        <property name="margin_start">6</property>
+        <property name="margin_end">6</property>
+        <property name="margin_top">4</property>
+        <property name="margin_bottom">4</property>
+        <items>
+          <item translatable="yes" id="leaveNow">Leave Now</item>
+          <item translatable="yes" id="leaveBy">Leave By</item>
+          <item translatable="yes" id="arriveBy">Arrive By</item>
+        </items>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkEntry" id="transitTimeEntry">
+        <property name="visible">False</property>
+        <property name="width_chars">5</property>
+        <property name="margin_start">3</property>
+        <property name="margin_end">3</property>
+        <property name="margin_top">4</property>
+        <property name="margin_bottom">4</property>
+      </object>
+      <packing>
+        <property name="left_attach">1</property>
+        <property name="top_attach">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkMenuButton" id="transitDateButton">
+        <property name="visible">False</property>
+        <property name="popover">transitDatePopover</property>
+        <property name="margin_start">3</property>
+        <property name="margin_end">3</property>
+        <property name="margin_top">4</property>
+        <property name="margin_bottom">4</property>
+      </object>
+      <packing>
+        <property name="left_attach">2</property>
+        <property name="top_attach">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkMenuButton" id="transitParametersMenuButton">
+        <property name="visible">True</property>
+        <property name="popover">transitParametersPopover</property>
+        <property name="halign">GTK_ALIGN_END</property>
+        <property name="margin_start">3</property>
+        <property name="margin_end">6</property>
+        <property name="margin_top">4</property>
+        <property name="margin_bottom">4</property>
+        <child>
+          <object class="GtkGrid">
+            <property name="visible">True</property>
+            <property name="valign">GTK_ALIGN_CENTER</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">GTK_ALIGN_CENTER</property>
+                <property name="hexpand">True</property>
+                <property name="icon-name">view-more-symbolic</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+      <packing>
+        <property name="left_attach">3</property>
+        <property name="top_attach">0</property>
+      </packing>
+    </child>
+  </template>
+  <object class="GtkPopover" id="transitDatePopover">
+    <property name="visible">False</property>
+    <child>
+      <object class="GtkCalendar" id="transitDateCalendar">
+        <property name="visible">True</property>
+      </object>
+    </child>
+  </object>
+  <object class="GtkPopover" id="transitParametersPopover">
+    <property name="visible">False</property>
+    <child>
+      <object class="GtkGrid">
+        <property name="visible">True</property>
+        <property name="margin">6</property>
+        <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="halign">GTK_ALIGN_START</property>
+            <property name="label" translatable="yes">Show</property>
+            <property name="margin_start">6</property>
+            <style>
+              <class name="dim-label"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="busCheckButton">
+            <property name="visible">True</property>
+            <property name="active">True</property>
+            <property name="label" translatable="yes">Buses</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="tramCheckButton">
+            <property name="visible">True</property>
+            <property name="active">True</property>
+            <property name="label" translatable="yes">Trams</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="trainCheckButton">
+            <property name="visible">True</property>
+            <property name="active">True</property>
+            <property name="label" translatable="yes">Trains</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="subwayCheckButton">
+            <property name="visible">True</property>
+            <property name="active">True</property>
+            <property name="label" translatable="yes">Subway</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="ferryCheckButton">
+            <property name="visible">True</property>
+            <property name="active">True</property>
+            <property name="label" translatable="yes">Ferries</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
+  
