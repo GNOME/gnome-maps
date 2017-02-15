@@ -72,8 +72,8 @@ const ContextMenu = new Lang.Class({
     },
 
     _onButtonReleaseEvent: function(widget, event) {
-        let [_, button] = event.get_button();
-        let [_, x, y] = event.get_coords();
+        let [, button] = event.get_button();
+        let [, x, y] = event.get_coords();
         this._longitude = this._mapView.view.x_to_longitude(x);
         this._latitude = this._mapView.view.y_to_latitude(y);
 
