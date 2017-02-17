@@ -371,13 +371,13 @@ function uriSchemeSupported(scheme) {
     let apps = Gio.AppInfo.get_all();
     let prefix = 'x-scheme-handler/';
 
-    for (let i in apps) {
-        let types = apps[i].get_supported_types();
+    for (let app of apps) {
+        let types = app.get_supported_types();
         if (!types)
             continue;
 
-        for (let j in types) {
-            if (types[j].replace(prefix, '') === scheme)
+        for (let type of types) {
+            if (type.replace(prefix, '') === scheme)
                 return true;
         }
     }

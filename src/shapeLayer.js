@@ -26,8 +26,7 @@ const SUPPORTED_TYPES = [];
 
 function newFromFile(file, mapView) {
     let contentType = Gio.content_type_guess(file.get_uri(), null)[0];
-    for (let i in SUPPORTED_TYPES) {
-        let layerClass = SUPPORTED_TYPES[i];
+    for (let layerClass of SUPPORTED_TYPES) {
         if (layerClass.mimeTypes.indexOf(contentType) > -1) {
             return new layerClass({ file: file, mapView: mapView });
         }

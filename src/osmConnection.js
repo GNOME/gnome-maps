@@ -398,9 +398,9 @@ const OSMConnection = new Lang.Class({
             return null;
 
         let cookieParts = cookie.split(';');
-        for (let index in cookieParts) {
-            let kvPair = cookieParts[index].trim();
-            let kv = kvPair.split('=');
+        for (let cookiePart of cookieParts) {
+            let kvPair = cookiePart.trim().split('=');
+            let kv = kvPair;
 
             if (kv.length !== 2) {
                 continue;
@@ -418,8 +418,7 @@ const OSMConnection = new Lang.Class({
         let regex = /.*authenticity_token.*value=\"([^\"]+)\".*/;
         let lines = messageBody.split('\n');
 
-        for (let i in lines) {
-            let line = lines[i];
+        for (let line of lines) {
             let match = line.match(regex);
 
             if (match && match.length === 2)
