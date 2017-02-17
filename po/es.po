@@ -2,15 +2,15 @@
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2013, 2014, 2015, 2016.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2013, 2014, 2015, 2016, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-11-10 12:59+0000\n"
-"PO-Revision-Date: 2016-12-20 16:42+0100\n"
+"POT-Creation-Date: 2017-02-16 00:19+0000\n"
+"PO-Revision-Date: 2017-02-17 11:52+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -59,7 +59,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:85 ../src/mainWindow.js:441
+#: ../src/application.js:87 ../src/mainWindow.js:441
 msgid "Maps"
 msgstr "Mapas"
 
@@ -375,9 +375,6 @@ msgid "Maps is offline!"
 msgstr "Mapas está desconectado"
 
 #: ../data/ui/main-window.ui.h:8
-#| msgid ""
-#| "Maps need an active internet connection to function properly, but one "
-#| "can't be found."
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -435,16 +432,11 @@ msgid "Sign In"
 msgstr "Iniciar sesión"
 
 #: ../data/ui/osm-account-dialog.ui.h:8
-#| msgid "Don't have an account?"
 msgid "Don’t have an account?"
 msgstr "¿No tiene una cuenta?"
 
 #. The label should contain the link to the OSM reset password page with a translated title
 #: ../data/ui/osm-account-dialog.ui.h:10
-#| msgid ""
-#| "Sorry, that didn't work. Please try again, or visit\n"
-#| "<a href=\"https://www.openstreetmap.org/user/forgot-password"
-#| "\">OpenStreetMap</a> to reset your password."
 msgid ""
 "Sorry, that didn’t work. Please try again, or visit\n"
 "<a href=\"https://www.openstreetmap.org/user/forgot-password"
@@ -455,7 +447,6 @@ msgstr ""
 "\">OpenStreetMap</a> para restablecer su contraseña."
 
 #: ../data/ui/osm-account-dialog.ui.h:12
-#| msgid "The verification code didn't match, please try again."
 msgid "The verification code didn’t match, please try again."
 msgstr "El código de verificación no coincide, inténtelo de nuevo."
 
@@ -513,9 +504,6 @@ msgid "Comment"
 msgstr "Comentario"
 
 #: ../data/ui/osm-edit-dialog.ui.h:5
-#| msgid ""
-#| "Map changes will be visible on all maps that use\n"
-#| "    OpenStreetMap data."
 msgid ""
 "Map changes will be visible on all maps that use\n"
 "OpenStreetMap data."
@@ -571,9 +559,80 @@ msgstr "Conmutar estado visible"
 msgid "Route search by GraphHopper"
 msgstr "Ruta buscada por GraphHopper"
 
+#: ../data/ui/sidebar.ui.h:2
+#| msgid "Route search by GraphHopper"
+msgid "Route search by OpenTripPlanner"
+msgstr "Ruta buscada por OpenTripPlanner"
+
+#: ../data/ui/sidebar.ui.h:3
+msgid ""
+"Routing itineraries for public transit is provided by GNOME\n"
+"using timetable data obtained from transit companies or agencies.\n"
+"The companies and agencies can not be held responsible for the results "
+"shown.\n"
+"GNOME can not guarantee correctness of the itineraries and schedules shown.\n"
+"Names and brands shown are to be considered as registered trademarks when "
+"applicable."
+msgstr ""
+"Los itinerarios de las rutas para viajes públicos los proporciona GNOME\n"
+"usando datos de tablas de tiempos obtenidos de compañías o agencias de "
+"viajes.\n"
+"Las compañías y agencias no son responsables de los resultados mostrados.\n"
+"GNOME no puede garantizar la corrección de los itinerarios y los tiempos "
+"mostrados.\n"
+"Los nombres y las marcas se consideran marcas registradas cuando sea "
+"aplicable."
+
 #: ../data/ui/social-place-more-results-row.ui.h:1
 msgid "Show more results"
 msgstr "Mostrar más resultados"
+
+#: ../data/ui/transit-leg-row.ui.h:1
+msgid "Hide intermediate stops and information"
+msgstr "Ocultar información y paradas intermedias"
+
+#: ../data/ui/transit-leg-row.ui.h:2
+#| msgid "Show more information"
+msgid "Show intermediate stops and information"
+msgstr "Mostrar información y paradas intermedias"
+
+#: ../data/ui/transit-options-panel.ui.h:1
+msgid "Leave Now"
+msgstr "Salir ahora"
+
+#: ../data/ui/transit-options-panel.ui.h:2
+msgid "Leave By"
+msgstr "Salir en"
+
+#: ../data/ui/transit-options-panel.ui.h:3
+msgid "Arrive By"
+msgstr "Llegar por"
+
+#: ../data/ui/transit-options-panel.ui.h:4
+#| msgctxt "shortcut window"
+#| msgid "Show help"
+msgid "Show"
+msgstr "Mostrar"
+
+#: ../data/ui/transit-options-panel.ui.h:5
+msgid "Buses"
+msgstr "Autobuses"
+
+#: ../data/ui/transit-options-panel.ui.h:6
+msgid "Trams"
+msgstr "Tranvías"
+
+#: ../data/ui/transit-options-panel.ui.h:7
+msgid "Trains"
+msgstr "Trenes"
+
+#: ../data/ui/transit-options-panel.ui.h:8
+msgid "Subway"
+msgstr "Metro"
+
+#: ../data/ui/transit-options-panel.ui.h:9
+msgid "Ferries"
+msgstr "Ferris"
 
 #: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:120
 msgid "Current location"
@@ -610,7 +669,7 @@ msgstr "Faltan los atributos necesarios"
 msgid "Could not find OSM element"
 msgstr "No se pudo encontrar el elemento OSM"
 
-#: ../src/application.js:101
+#: ../src/application.js:103
 msgid "A path to a local tiles directory structure"
 msgstr "Una ruta a la estructura de carpetas locales de cuadrículas"
 
@@ -664,7 +723,6 @@ msgstr "Ha ocurrido un error"
 #. Translators: %s is the place name that user wanted to check-in
 #: ../src/checkIn.js:135
 #, javascript-format
-#| msgid "Cannot find \"%s\" in the social service"
 msgid "Cannot find “%s” in the social service"
 msgstr "No se puede encontrar «%s» en la red social"
 
@@ -681,23 +739,23 @@ msgstr ""
 "Las credenciales han caducado. Abra las Cuentas en línea para iniciar sesión "
 "y activar esta cuenta."
 
-#: ../src/contextMenu.js:97
+#: ../src/contextMenu.js:96
 msgid "Route from here"
 msgstr "Ruta desde aquí"
 
-#: ../src/contextMenu.js:99
+#: ../src/contextMenu.js:98
 msgid "Add destination"
 msgstr "Añadir destino"
 
-#: ../src/contextMenu.js:101
+#: ../src/contextMenu.js:100
 msgid "Route to here"
 msgstr "Ruta hasta aquí"
 
-#: ../src/contextMenu.js:130
+#: ../src/contextMenu.js:129
 msgid "Nothing found here!"
 msgstr "No se ha encontrado nada aquí."
 
-#: ../src/contextMenu.js:187
+#: ../src/contextMenu.js:186
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -714,7 +772,6 @@ msgid "You do not have permission to save there"
 msgstr "No tiene permisos para guardar ahí"
 
 #: ../src/exportViewDialog.js:160
-#| msgid "The directory does not exists"
 msgid "The directory does not exist"
 msgstr "La carpeta no existe"
 
@@ -739,6 +796,19 @@ msgstr "error al analizar"
 msgid "unknown geometry"
 msgstr "geometría desconocida"
 
+#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:630
+msgid "Route request failed."
+msgstr "Falló al solicitar la ruta."
+
+#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:614
+#: ../src/openTripPlanner.js:728
+msgid "No route found."
+msgstr "No se ha encontrado la ruta."
+
+#: ../src/graphHopper.js:193
+msgid "Start!"
+msgstr "Empezar"
+
 #: ../src/layersPopover.js:62
 msgid "All Layer Files"
 msgstr "Todos los archivos de capas"
@@ -755,17 +825,21 @@ msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2013"
 msgid "A map application for GNOME"
 msgstr "Una aplicación de mapas para GNOME"
 
-#: ../src/mapView.js:260
+#: ../src/mapView.js:354
 msgid "File type is not supported"
 msgstr "Tipo de archivo no soportado"
 
-#: ../src/mapView.js:267
+#: ../src/mapView.js:361
 msgid "Failed to open layer"
 msgstr "Falló al abrir la capa"
 
-#: ../src/mapView.js:303
+#: ../src/mapView.js:397
 msgid "Failed to open GeoURI"
 msgstr "Falló al abrir el GeoURI"
+
+#: ../src/openTripPlanner.js:626
+msgid "No timetable data found for this route."
+msgstr "No hay datos en la tabla de tiempos para esta ruta."
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
@@ -995,29 +1069,17 @@ msgstr "designado"
 msgid "From %s to %s"
 msgstr "De %s a %s"
 
-#: ../src/printOperation.js:47
+#: ../src/printOperation.js:48
 msgid "Loading map tiles for printing"
 msgstr "Cargando mapa para imprimir"
 
-#: ../src/printOperation.js:48
+#: ../src/printOperation.js:49
 msgid "You can abort printing if this takes too long"
 msgstr "Puede cancelar la impresión si esto tarda mucho"
 
-#: ../src/printOperation.js:50
+#: ../src/printOperation.js:51
 msgid "Abort printing"
 msgstr "Cancelar la impresión"
-
-#: ../src/routeService.js:90
-msgid "No route found."
-msgstr "No se ha encontrado la ruta."
-
-#: ../src/routeService.js:101
-msgid "Route request failed."
-msgstr "Falló al solicitar la ruta."
-
-#: ../src/routeService.js:178
-msgid "Start!"
-msgstr "Empezar"
 
 #: ../src/sendToDialog.js:179
 msgid "Failed to open URI"
@@ -1028,10 +1090,102 @@ msgid "failed to load file"
 msgstr "falló al cargar el archivo"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:208
+#: ../src/sidebar.js:282
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Tiempo estimado: %s"
+
+#. Translators: this a format string indicating arriving at the
+#. * destination of journey with the arrival address and transit
+#. * stop as the format parameter
+#: ../src/transitArrivalRow.js:56
+#, javascript-format
+msgid "Arrive at %s"
+msgstr "Llegar a %s"
+
+#: ../src/transitArrivalRow.js:58
+msgid "Arrive"
+msgstr "Llegar"
+
+#. Translators: this is a format string indicating instructions
+#. * starting a journey at the address given as the parameter
+#.
+#: ../src/transitLegRow.js:74
+#, javascript-format
+msgid "Start at %s"
+msgstr "Empezar en %s"
+
+#. Translators: this indicates starting a journey at a location
+#. * with no set name (such as when the user started routing from
+#. * an arbitrary point on the map)
+#.
+#: ../src/transitLegRow.js:80
+#| msgid "Start!"
+msgid "Start"
+msgstr "Inicio"
+
+#: ../src/transitLegRow.js:108
+msgid "Show walking instructions"
+msgstr "Mostrar instrucciones del camino"
+
+#: ../src/transitLegRow.js:109
+msgid "Hide walking instructions"
+msgstr "Ocultar instrucciones del camino"
+
+#: ../src/transitLegRow.js:134
+#, javascript-format
+msgid "Walk %s"
+msgstr "Caminar %s"
+
+#: ../src/transitMoreRow.js:41
+msgid "Load earlier alternatives"
+msgstr "Cargar alternativas anteriores"
+
+#: ../src/transitMoreRow.js:43
+msgid "Load later alternatives"
+msgstr "Cargar alternativas posteriores"
+
+#: ../src/transitOptionsPanel.js:141
+msgctxt "month-day-date"
+msgid "%b %e"
+msgstr "%b %e"
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time, like:
+#. * "12:00 – 13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: ../src/transitPlan.js:248
+#, javascript-format
+msgid "%s – %s"
+msgstr "%s – %s"
+
+#: ../src/transitPlan.js:271
+#, javascript-format
+#| msgid "%f min"
+msgid "%d minute"
+msgstr "%d minuto"
+
+#: ../src/transitPlan.js:278
+#, javascript-format
+msgid "%d hour"
+msgstr "%d hora"
+
+#: ../src/transitPlan.js:280
+#, javascript-format
+msgid "%d:%0d hour"
+msgstr "%d:%0d hora"
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time in a more compact manner to show in the instruction
+#. * list for an itinerary, like:
+#. * "12:00–13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: ../src/transitPlan.js:598
+#, javascript-format
+msgid "%s–%s"
+msgstr "%s–%s"
 
 #: ../src/translations.js:56
 msgid "around the clock"
@@ -1232,11 +1386,6 @@ msgstr "%f pies"
 
 #~ msgid "Position not found"
 #~ msgstr "Posición no encontrada"
-
-#~| msgid "Show help"
-#~ msgctxt "shortcut window"
-#~ msgid "Show help"
-#~ msgstr "Mostrar la ayuda"
 
 #~ msgid "Edit Location"
 #~ msgstr "Editar ubicación"
