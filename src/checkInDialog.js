@@ -162,9 +162,8 @@ const CheckInDialog = new Lang.Class({
         if (!Application.checkInManager.hasCheckIn)
             this.response(Response.FAILURE_CHECKIN_DISABLED);
         else if (this._account) {
-            for (let i in accounts) {
-                let account = accounts[i];
-                if (this._account.get_account().id === accounts[i].get_account().id)
+            for (let account of accounts) {
+                if (this._account.get_account().id === account.get_account().id)
                     return;
             }
 
