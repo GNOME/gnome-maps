@@ -179,7 +179,6 @@ const PlaceBubble = new Lang.Class({
 
         expandedContent.forEach((function({ label, linkUrl, linkText, info },
                                           row) {
-            let col = 0;
             let widget;
 
             if (label) {
@@ -188,7 +187,7 @@ const PlaceBubble = new Lang.Class({
                                          use_markup: true,
                                          yalign: 0,
                                          halign: Gtk.Align.START });
-                this._expandedContent.attach(widget, col++, row, 1, 1);
+                this._expandedContent.attach(widget, 0, row, 1, 1);
             }
 
             if (linkUrl) {
@@ -207,7 +206,11 @@ const PlaceBubble = new Lang.Class({
                                      wrap: true,
                                      halign: Gtk.Align.START });
 
-            this._expandedContent.attach(widget, col, row, col == 0 ? 2 : 1, 1);
+            if(label)
+                this._expandedContent.attach(widget, 1, row, 1, 1);
+            else
+                // Expand over both columns if this row has no label
+                this._expandedContent.attach(widget, 0, row, 2, 1);
         }).bind(this));
     },
 
