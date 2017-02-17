@@ -110,19 +110,12 @@ const PlaceBubble = new Lang.Class({
                                                                     tokens[1] ]);
     },
 
-    _populate: function(place) {
-        let content = [];
+    /*
+     * Create an array of all content to be showed when expanding the place
+     * bubble
+     */
+    _createExpandedContent: function(place) {
         let expandedContent = [];
-        let formatter = new PlaceFormatter.PlaceFormatter(place);
-
-        this._title.label = formatter.title;
-
-        content = formatter.rows.map(function(row) {
-            row = row.map(function(prop) {
-                return GLib.markup_escape_text(place[prop], -1);
-            });
-            return row.join(', ');
-        });
 
         if (place.population) {
             expandedContent.push({ label: _("Population:"),
@@ -172,44 +165,69 @@ const PlaceBubble = new Lang.Class({
                                    linkUrl: link});
         }
 
-        content.forEach((function(row) {
-            let label = new Gtk.Label({ label: row,
+        return expandedContent;
+    },
+
+    _attachContent: function(content, expandedContent) {
+        content.forEach((function(info) {
+            let label = new Gtk.Label({ label: info,
                                         visible: true,
                                         use_markup: true,
                                         halign: Gtk.Align.START });
             this._boxContent.pack_start(label, false, true, 0);
         }).bind(this));
 
-        for (let row in expandedContent) {
-            let col = 0;
+        expandedContent.forEach((function({ label, linkUrl, linkText, info },
+                                          row) {
+            let widget;
 
-            if (expandedContent[row].label) {
-                let label = new Gtk.Label({ label: expandedContent[row].label.italics(),
-                                            visible: true,
-                                            use_markup: true,
-                                            yalign: 0,
-                                            halign: Gtk.Align.START });
-                this._expandedContent.attach(label, col++, row, 1, 1);
+            if (label) {
+                widget = new Gtk.Label({ label: label.italics(),
+                                         visible: true,
+                                         use_markup: true,
+                                         yalign: 0,
+                                         halign: Gtk.Align.START });
+                this._expandedContent.attach(widget, 0, row, 1, 1);
             }
 
-            let info = new Gtk.Label({ visible: true,
-                                       use_markup: true,
-                                       max_width_chars: 25,
-                                       wrap: true,
-                                       halign: Gtk.Align.START });
-            if (expandedContent[row].linkUrl) {
-                let text = expandedContent[row].linkText;
-                let uri = GLib.markup_escape_text(expandedContent[row].linkUrl, -1);
+            if (linkUrl) {
+                let uri = GLib.markup_escape_text(linkUrl, -1);
                 /* double-escape the tooltip text, as GTK+ treats it as markup */
                 let tooltipText = GLib.markup_escape_text(uri, -1);
-                let a = '<a href="%s" title="%s">%s</a>'.format(uri, tooltipText, text);
-                info.label = a;
-            } else {
-                info.label = expandedContent[row].info;
+                info = '<a href="%s" title="%s">%s</a>'.format(uri,
+                                                               tooltipText,
+                                                               linkText);
             }
-            this._expandedContent.attach(info, col, row, col == 0 ? 2 : 1, 1);
-        }
 
+            widget = new Gtk.Label({ label: info,
+                                     visible: true,
+                                     use_markup: true,
+                                     max_width_chars: 25,
+                                     wrap: true,
+                                     halign: Gtk.Align.START });
+
+            if(label)
+                this._expandedContent.attach(widget, 1, row, 1, 1);
+            else
+                // Expand over both columns if this row has no label
+                this._expandedContent.attach(widget, 0, row, 2, 1);
+        }).bind(this));
+    },
+
+    _populate: function(place) {
+        let formatter = new PlaceFormatter.PlaceFormatter(place);
+
+        let content = formatter.rows.map(function(row) {
+            row = row.map(function(prop) {
+                return GLib.markup_escape_text(place[prop], -1);
+            });
+            return row.join(', ');
+        });
+        let expandedContent = this._createExpandedContent(place);
+
+        this._attachContent(content, expandedContent);
+
+        this._title.label = formatter.title;
         this._expandButton.visible = expandedContent.length > 0;
         this._stack.visible_child = this._gridContent;
     },
