@@ -22,7 +22,7 @@
 const Lang = imports.lang;
 
 const _ = imports.gettext.gettext;
-const N_ = imports.gettext.dgettext;
+const ngettext = imports.gettext.ngettext;
 
 const Champlain = imports.gi.Champlain;
 const Gio = imports.gi.Gio;
@@ -268,16 +268,29 @@ const Itinerary = new Lang.Class({
         let mins = this.duration / 60;
 
         if (mins < 60) {
-            return N_("%d minute", "%d minutes", mins).format(mins);
+            /* translators: this is an indication for a trip duration of
+             * less than an hour, with only the minutes part, using plural forms
+             * as appropriate
+             */
+            return ngettext("%d minute", "%d minutes", mins).format(mins);
         } else {
             let hours = Math.floor(mins / 60);
 
             mins = mins % 60;
 
-            if (mins === 0)
-                return N_("%d hour", "%d hours", hours).format(hours);
-            else
-                return N_("%d:%0d hour", "%d:%02d hours", hours).format(hours, mins);
+            if (mins === 0) {
+                /* translators: this is an indication for a trip duration,
+                 * where the duration is an exact number of hours (i.e. no
+                 * minutes part), using plural forms as appropriate
+                 */
+                return ngettext("%d hour", "%d hours", hours).format(hours);
+            } else {
+                /* translators: this is an indication for a trip duration
+                 * where the duration contains an hour and minute part, it's
+                 * pluralized on the hours part
+                 */
+                return ngettext("%d:%0d hour", "%d:%02d hours", hours).format(hours, mins);
+            }
         }
     },
 
