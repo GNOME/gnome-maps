@@ -6,7 +6,7 @@
 # Benjamin Steinwender <b@stbe.at>, 2014.
 # Christian Kirbach <christian.kirbach@gmail.com>, 2014.
 # Wolfgang Stöggl <c72578@yahoo.de>, 2014-2015.
-# Mario Blättermann <mario.blaettermann@gmail.com>, 2015-2016.
+# Mario Blättermann <mario.blaettermann@gmail.com>, 2015-2017.
 # Bernd Homuth <dev@hmt.im>, 2015.
 # Paul Seyfert <pseyfert@mathphys.fsk.uni-heidelberg.de>, 2016.
 #
@@ -15,16 +15,16 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-11-10 12:59+0000\n"
-"PO-Revision-Date: 2016-11-12 11:39+0100\n"
-"Last-Translator: Paul Seyfert <pseyfert@mathphys.fsk.uni-heidelberg.de>\n"
+"POT-Creation-Date: 2017-02-17 10:54+0000\n"
+"PO-Revision-Date: 2017-02-17 21:54-0500\n"
+"Last-Translator: Florian Heiser <gnu.l10n.de@gmail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.8.8\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid "GNOME Maps"
@@ -65,7 +65,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:85 ../src/mainWindow.js:441
+#: ../src/application.js:87 ../src/mainWindow.js:441
 msgid "Maps"
 msgstr "Karten"
 
@@ -572,9 +572,75 @@ msgstr "Sichtbarkeit umschalten"
 msgid "Route search by GraphHopper"
 msgstr "Routenplanung von GraphHopper"
 
+#: ../data/ui/sidebar.ui.h:2
+msgid "Route search by OpenTripPlanner"
+msgstr "Routenplanung von OpenTripPlanner"
+
+#: ../data/ui/sidebar.ui.h:3
+msgid ""
+"Routing itineraries for public transit is provided by GNOME\n"
+"using timetable data obtained from transit companies or agencies.\n"
+"The companies and agencies can not be held responsible for the results "
+"shown.\n"
+"GNOME can not guarantee correctness of the itineraries and schedules shown.\n"
+"Names and brands shown are to be considered as registered trademarks when "
+"applicable."
+msgstr ""
+"Die Reisedaten für öffentliche Verkehrsmittel werden von GNOME mittels\n"
+"Auswertung der Fahrplandaten der Verkehrsunternehmen oder deren Agenturen\n"
+"bereitgestellt. Die Unternehmen oder Agenturen sind für die\n"
+"angezeigten Ergebnisse nicht verantwortlich.\n"
+"GNOME kann für die Korrektheit der Routen und angezeigten Fahrzeiten\n"
+"nicht garantieren. Die angezeigten Namen und Marken sind als eingetragene\n"
+"Warenzeichen zu betrachten, sofern anwendbar."
+
 #: ../data/ui/social-place-more-results-row.ui.h:1
 msgid "Show more results"
 msgstr "Weitere Ergebnisse anzeigen"
+
+#: ../data/ui/transit-leg-row.ui.h:1
+msgid "Hide intermediate stops and information"
+msgstr "Zwischenstationen und Informationen verbergen"
+
+#: ../data/ui/transit-leg-row.ui.h:2
+msgid "Show intermediate stops and information"
+msgstr "Zwischenstationen und Informationen anzeigen"
+
+#: ../data/ui/transit-options-panel.ui.h:1
+msgid "Leave Now"
+msgstr "Jetzt starten"
+
+#: ../data/ui/transit-options-panel.ui.h:2
+msgid "Leave By"
+msgstr "Abfahrt um"
+
+#: ../data/ui/transit-options-panel.ui.h:3
+msgid "Arrive By"
+msgstr "Ankunft um"
+
+#: ../data/ui/transit-options-panel.ui.h:4
+msgid "Show"
+msgstr "Anzeigen"
+
+#: ../data/ui/transit-options-panel.ui.h:5
+msgid "Buses"
+msgstr "Busse"
+
+#: ../data/ui/transit-options-panel.ui.h:6
+msgid "Trams"
+msgstr "Straßenbahnen"
+
+#: ../data/ui/transit-options-panel.ui.h:7
+msgid "Trains"
+msgstr "Züge"
+
+#: ../data/ui/transit-options-panel.ui.h:8
+msgid "Subway"
+msgstr "U-Bahn"
+
+#: ../data/ui/transit-options-panel.ui.h:9
+msgid "Ferries"
+msgstr "Fähren"
 
 #: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:120
 msgid "Current location"
@@ -611,7 +677,7 @@ msgstr "Erforderliche Attribute fehlen"
 msgid "Could not find OSM element"
 msgstr "OSM-Element kann nicht gefunden werden"
 
-#: ../src/application.js:101
+#: ../src/application.js:103
 msgid "A path to a local tiles directory structure"
 msgstr "Pfad zu einer lokalen Kachel-Ordnerstruktur"
 
@@ -681,23 +747,23 @@ msgstr ""
 "Die Anmeldedaten sind abgelaufen. Bitte öffnen Sie Online-Konten, um sich "
 "anzumelden und das Konto zu aktivieren."
 
-#: ../src/contextMenu.js:97
+#: ../src/contextMenu.js:96
 msgid "Route from here"
 msgstr "Route von hier"
 
-#: ../src/contextMenu.js:99
+#: ../src/contextMenu.js:98
 msgid "Add destination"
 msgstr "Ziel hinzufügen"
 
-#: ../src/contextMenu.js:101
+#: ../src/contextMenu.js:100
 msgid "Route to here"
 msgstr "Route hierher"
 
-#: ../src/contextMenu.js:130
+#: ../src/contextMenu.js:129
 msgid "Nothing found here!"
 msgstr "Hier wurde nichts gefunden!"
 
-#: ../src/contextMenu.js:187
+#: ../src/contextMenu.js:186
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -738,6 +804,19 @@ msgstr "Verarbeitungsfehler"
 msgid "unknown geometry"
 msgstr "﻿Unbekannte Geometrie"
 
+#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:630
+msgid "Route request failed."
+msgstr "Routenanfrage schlug fehl."
+
+#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:614
+#: ../src/openTripPlanner.js:728
+msgid "No route found."
+msgstr "Keine Route gefunden."
+
+#: ../src/graphHopper.js:193
+msgid "Start!"
+msgstr "Start!"
+
 #: ../src/layersPopover.js:62
 msgid "All Layer Files"
 msgstr "Alle Ebenendateien"
@@ -760,17 +839,21 @@ msgstr ""
 msgid "A map application for GNOME"
 msgstr "Eine Karten-Anwendung für GNOME"
 
-#: ../src/mapView.js:260
+#: ../src/mapView.js:354
 msgid "File type is not supported"
 msgstr "Dateityp wird nicht unterstützt"
 
-#: ../src/mapView.js:267
+#: ../src/mapView.js:361
 msgid "Failed to open layer"
 msgstr "Ebene konnte nicht geöffnet werden"
 
-#: ../src/mapView.js:303
+#: ../src/mapView.js:397
 msgid "Failed to open GeoURI"
 msgstr "Geo-Adresse konnte nicht geöffnet werden"
+
+#: ../src/openTripPlanner.js:626
+msgid "No timetable data found for this route."
+msgstr "Für diese Route wurden keine Fahrplandaten gefunden."
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
@@ -1001,29 +1084,17 @@ msgstr "geeignet"
 msgid "From %s to %s"
 msgstr "Von %s nach %s"
 
-#: ../src/printOperation.js:47
+#: ../src/printOperation.js:48
 msgid "Loading map tiles for printing"
 msgstr "Kartenausschnitte zum Drucken werden geladen"
 
-#: ../src/printOperation.js:48
+#: ../src/printOperation.js:49
 msgid "You can abort printing if this takes too long"
 msgstr "Sie können den Druck abbrechen, wenn dies zu lange dauert"
 
-#: ../src/printOperation.js:50
+#: ../src/printOperation.js:51
 msgid "Abort printing"
 msgstr "Drucken abbrechen"
-
-#: ../src/routeService.js:90
-msgid "No route found."
-msgstr "Keine Route gefunden."
-
-#: ../src/routeService.js:101
-msgid "Route request failed."
-msgstr "Routenanfrage schlug fehl."
-
-#: ../src/routeService.js:178
-msgid "Start!"
-msgstr "Start!"
 
 #: ../src/sendToDialog.js:179
 msgid "Failed to open URI"
@@ -1034,10 +1105,100 @@ msgid "failed to load file"
 msgstr "Laden der Datei ist fehlgeschlagen"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:208
+#: ../src/sidebar.js:285
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Geschätzte Zeit: %s"
+
+#. Translators: this a format string indicating arriving at the
+#. * destination of journey with the arrival address and transit
+#. * stop as the format parameter
+#: ../src/transitArrivalRow.js:56
+#, javascript-format
+msgid "Arrive at %s"
+msgstr "Ankunft in %s"
+
+#: ../src/transitArrivalRow.js:58
+msgid "Arrive"
+msgstr "Ankunft"
+
+#. Translators: this is a format string indicating instructions
+#. * starting a journey at the address given as the parameter
+#.
+#: ../src/transitLegRow.js:74
+#, javascript-format
+msgid "Start at %s"
+msgstr "Abfahrt in %s"
+
+#. Translators: this indicates starting a journey at a location
+#. * with no set name (such as when the user started routing from
+#. * an arbitrary point on the map)
+#.
+#: ../src/transitLegRow.js:80
+msgid "Start"
+msgstr "Abfahrt"
+
+#: ../src/transitLegRow.js:108
+msgid "Show walking instructions"
+msgstr "Anweisungen für den Fußweg anzeigen"
+
+#: ../src/transitLegRow.js:109
+msgid "Hide walking instructions"
+msgstr "Anweisungen für den Fußweg verbergen"
+
+#: ../src/transitLegRow.js:134
+#, javascript-format
+msgid "Walk %s"
+msgstr "Fußweg %s"
+
+#: ../src/transitMoreRow.js:41
+msgid "Load earlier alternatives"
+msgstr "Frühere Alternativen laden"
+
+#: ../src/transitMoreRow.js:43
+msgid "Load later alternatives"
+msgstr "Spätere Alternativen laden"
+
+#: ../src/transitOptionsPanel.js:141
+msgctxt "month-day-date"
+msgid "%b %e"
+msgstr "%e. %b"
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time, like:
+#. * "12:00 – 13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: ../src/transitPlan.js:248
+#, javascript-format
+msgid "%s – %s"
+msgstr "%s – %s"
+
+#: ../src/transitPlan.js:271
+#, javascript-format
+msgid "%d minute"
+msgstr "%d min"
+
+#: ../src/transitPlan.js:278
+#, javascript-format
+msgid "%d hour"
+msgstr "%d Stunde"
+
+#: ../src/transitPlan.js:280
+#, javascript-format
+msgid "%d:%0d hour"
+msgstr "%d:%0d Stunden"
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time in a more compact manner to show in the instruction
+#. * list for an itinerary, like:
+#. * "12:00–13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: ../src/transitPlan.js:598
+#, javascript-format
+msgid "%s–%s"
+msgstr "%s–%s"
 
 #: ../src/translations.js:56
 msgid "around the clock"
@@ -1151,7 +1312,7 @@ msgstr "%s, %s"
 
 #: ../src/translations.js:264
 msgid "not open"
-msgstr "nicht geöffnet"
+msgstr "geschlossen"
 
 #. Translators:
 #. * This is a time interval with a starting and an ending time.
@@ -1238,10 +1399,6 @@ msgstr "%f ft"
 
 #~ msgid "Position not found"
 #~ msgstr "Ort nicht gefunden"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Show help"
-#~ msgstr "Hilfe anzeigen"
 
 #~ msgid "Edit Location"
 #~ msgstr "Ort bearbeiten"
