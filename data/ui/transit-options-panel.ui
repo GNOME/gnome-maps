@@ -15,9 +15,9 @@
         <property name="margin_top">4</property>
         <property name="margin_bottom">4</property>
         <items>
-          <item translatable="yes" id="leaveNow">Leave Now</item>
-          <item translatable="yes" id="leaveBy">Leave By</item>
-          <item translatable="yes" id="arriveBy">Arrive By</item>
+          <item translatable="yes" id="leaveNow" comments="Indicates searching for the next available itineraries">Leave Now</item>
+          <item translatable="yes" id="leaveBy" comments="Indicates searching for itineraries leaving at the specified time at the earliest">Leave By</item>
+          <item translatable="yes" id="arriveBy" comments="Indicates searching for itineraries arriving no later than the specified time">Arrive By</item>
         </items>
       </object>
       <packing>
@@ -103,7 +103,7 @@
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="halign">GTK_ALIGN_START</property>
-            <property name="label" translatable="yes">Show</property>
+            <property name="label" translatable="yes" comments="Header indicating selected modes of transit">Show</property>
             <property name="margin_start">6</property>
             <style>
               <class name="dim-label"/>
