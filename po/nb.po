@@ -1,16 +1,17 @@
 # Norwegian bokmål translation of gnome-maps.
 # Copyright (C) 2013 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Kjartan Maraas <kmaraas@gnome.org>, 2013-2016.
+# Kjartan Maraas <kmaraas@gnome.org>, 2013-2017.
 # Åka Sikrom <a4NOSPAMPLEASETHANKYOU@hush.com>, 2014.
 # haarek <haarektrans@gmail.com>, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps 3.23.x\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-16 12:03+0200\n"
-"PO-Revision-Date: 2016-10-16 12:03+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"maps&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2017-02-16 00:19+0000\n"
+"PO-Revision-Date: 2017-02-18 10:36+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
@@ -58,7 +59,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:85 ../src/mainWindow.js:441
+#: ../src/application.js:87 ../src/mainWindow.js:441
 msgid "Maps"
 msgstr "Kart"
 
@@ -374,7 +375,7 @@ msgstr "Kart er frakoblet!"
 
 #: ../data/ui/main-window.ui.h:8
 msgid ""
-"Maps need an active internet connection to function properly, but one can't "
+"Maps need an active internet connection to function properly, but one can’t "
 "be found."
 msgstr ""
 "Kart trenger en aktiv internettforbindelse for å fungere, men ingen ble "
@@ -430,13 +431,13 @@ msgid "Sign In"
 msgstr "Logg inn"
 
 #: ../data/ui/osm-account-dialog.ui.h:8
-msgid "Don't have an account?"
+msgid "Don’t have an account?"
 msgstr "Har du ikke en konto?"
 
 #. The label should contain the link to the OSM reset password page with a translated title
 #: ../data/ui/osm-account-dialog.ui.h:10
 msgid ""
-"Sorry, that didn't work. Please try again, or visit\n"
+"Sorry, that didn’t work. Please try again, or visit\n"
 "<a href=\"https://www.openstreetmap.org/user/forgot-password"
 "\">OpenStreetMap</a> to reset your password."
 msgstr ""
@@ -445,7 +446,7 @@ msgstr ""
 "\">OpenStreetMap</a> for å nullstille passordet ditt."
 
 #: ../data/ui/osm-account-dialog.ui.h:12
-msgid "The verification code didn't match, please try again."
+msgid "The verification code didn’t match, please try again."
 msgstr "Verifiseringskoden var ikke riktig. Vennligst prøv igjen."
 
 #: ../data/ui/osm-account-dialog.ui.h:13
@@ -557,9 +558,69 @@ msgstr "Slå av/på synlige"
 msgid "Route search by GraphHopper"
 msgstr "Rutesøk av GraphHopper"
 
+#: ../data/ui/sidebar.ui.h:2
+msgid "Route search by OpenTripPlanner"
+msgstr "Rutesøk av OpenTripPlanner"
+
+#: ../data/ui/sidebar.ui.h:3
+msgid ""
+"Routing itineraries for public transit is provided by GNOME\n"
+"using timetable data obtained from transit companies or agencies.\n"
+"The companies and agencies can not be held responsible for the results "
+"shown.\n"
+"GNOME can not guarantee correctness of the itineraries and schedules shown.\n"
+"Names and brands shown are to be considered as registered trademarks when "
+"applicable."
+msgstr ""
+
 #: ../data/ui/social-place-more-results-row.ui.h:1
 msgid "Show more results"
 msgstr "Vis flere resultater"
+
+#: ../data/ui/transit-leg-row.ui.h:1
+msgid "Hide intermediate stops and information"
+msgstr ""
+
+#: ../data/ui/transit-leg-row.ui.h:2
+#, fuzzy
+msgid "Show intermediate stops and information"
+msgstr "Vis  informasjon"
+
+#: ../data/ui/transit-options-panel.ui.h:1
+msgid "Leave Now"
+msgstr "Dra nå"
+
+#: ../data/ui/transit-options-panel.ui.h:2
+msgid "Leave By"
+msgstr "Dra før"
+
+#: ../data/ui/transit-options-panel.ui.h:3
+msgid "Arrive By"
+msgstr "Ankom før"
+
+#: ../data/ui/transit-options-panel.ui.h:4
+msgid "Show"
+msgstr "Vis"
+
+#: ../data/ui/transit-options-panel.ui.h:5
+msgid "Buses"
+msgstr "Busser"
+
+#: ../data/ui/transit-options-panel.ui.h:6
+msgid "Trams"
+msgstr "Trikker"
+
+#: ../data/ui/transit-options-panel.ui.h:7
+msgid "Trains"
+msgstr "Tog"
+
+#: ../data/ui/transit-options-panel.ui.h:8
+msgid "Subway"
+msgstr "T-bane"
+
+#: ../data/ui/transit-options-panel.ui.h:9
+msgid "Ferries"
+msgstr "Ferjer"
 
 #: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:120
 msgid "Current location"
@@ -596,7 +657,7 @@ msgstr "Mangler nødvendige attributter"
 msgid "Could not find OSM element"
 msgstr "Fant ikke OSM-element"
 
-#: ../src/application.js:101
+#: ../src/application.js:103
 msgid "A path to a local tiles directory structure"
 msgstr "En sti til en lokal katalogstruktur med fliser"
 
@@ -650,8 +711,8 @@ msgstr "Det har oppstått en feil"
 #. Translators: %s is the place name that user wanted to check-in
 #: ../src/checkIn.js:135
 #, javascript-format
-msgid "Cannot find \"%s\" in the social service"
-msgstr "Fant ikke «%s» i sosial tjeneste"
+msgid "Cannot find “%s” in the social service"
+msgstr "Finner ikke «%s» i sosial tjeneste"
 
 #: ../src/checkIn.js:137
 msgid "Cannot find a suitable place to check-in in this location"
@@ -665,23 +726,23 @@ msgstr ""
 "Akkreditiver er utgått. Åpne Nettkontoer for å logge inn og bruke denne "
 "kontoen"
 
-#: ../src/contextMenu.js:97
+#: ../src/contextMenu.js:96
 msgid "Route from here"
 msgstr "Rute fra denne lokasjonen"
 
-#: ../src/contextMenu.js:99
+#: ../src/contextMenu.js:98
 msgid "Add destination"
 msgstr "Legg til mål"
 
-#: ../src/contextMenu.js:101
+#: ../src/contextMenu.js:100
 msgid "Route to here"
 msgstr "Rute til denne lokasjonen"
 
-#: ../src/contextMenu.js:130
+#: ../src/contextMenu.js:129
 msgid "Nothing found here!"
 msgstr "Ingenting her!"
 
-#: ../src/contextMenu.js:187
+#: ../src/contextMenu.js:186
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -722,6 +783,19 @@ msgstr "lesefeil"
 msgid "unknown geometry"
 msgstr "ukjent geometri"
 
+#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:630
+msgid "Route request failed."
+msgstr "Forespørsel om rute feilet."
+
+#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:614
+#: ../src/openTripPlanner.js:728
+msgid "No route found."
+msgstr "Ingen rute funnet."
+
+#: ../src/graphHopper.js:193
+msgid "Start!"
+msgstr "Start!"
+
 #: ../src/layersPopover.js:62
 msgid "All Layer Files"
 msgstr "Alle lagfiler"
@@ -740,17 +814,21 @@ msgstr ""
 msgid "A map application for GNOME"
 msgstr "Et kartprogram for GNOME"
 
-#: ../src/mapView.js:260
+#: ../src/mapView.js:354
 msgid "File type is not supported"
 msgstr "Filtypen er ikke støttet"
 
-#: ../src/mapView.js:267
+#: ../src/mapView.js:361
 msgid "Failed to open layer"
 msgstr "Klarte ikke å åpne lag"
 
-#: ../src/mapView.js:303
+#: ../src/mapView.js:397
 msgid "Failed to open GeoURI"
 msgstr "Klarte ikke å åpne GeoURI"
+
+#: ../src/openTripPlanner.js:626
+msgid "No timetable data found for this route."
+msgstr "Ingen ruteinformasjon funnet for denne ruten."
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
@@ -811,13 +889,10 @@ msgid "Phone"
 msgstr "Telefon"
 
 #: ../src/osmEditDialog.js:130
-#, fuzzy
 msgid ""
 "Phone number. Use the international format, starting with a + sign. Beware "
 "of local privacy laws, especially for private phone numbers."
-msgstr ""
-"Telefonnummer. Bruk det internasjonale formatet som starter med et +-tegn. "
-"Vær observant på lokale lover om "
+msgstr "Telefonnummer. Bruk det internasjonale formatet som starter med et +-tegn. Vær observant på lokale lover om personvern, spesielt for private telefonnummer."
 
 #: ../src/osmEditDialog.js:135 ../src/placeBubble.js:171
 msgid "Wikipedia"
@@ -876,7 +951,7 @@ msgstr "Internett-tilgang"
 #. Translators:
 #. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
 #.
-#: ../src/osmEditDialog.js:176 ../src/translations.js:341
+#: ../src/osmEditDialog.js:176 ../src/translations.js:340
 msgid "Wi-Fi"
 msgstr "Trådløst"
 
@@ -939,7 +1014,7 @@ msgstr "Klarte ikke å tolke Geo-URI"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: ../src/place.js:178 ../src/translations.js:330
+#: ../src/place.js:178 ../src/translations.js:329
 msgid "yes"
 msgstr "ja"
 
@@ -960,7 +1035,7 @@ msgstr "begrenset"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: ../src/place.js:191 ../src/translations.js:336
+#: ../src/place.js:191 ../src/translations.js:335
 msgid "no"
 msgstr "nei"
 
@@ -978,29 +1053,17 @@ msgstr "spesialtilpasset"
 msgid "From %s to %s"
 msgstr "Fra %s til %s"
 
-#: ../src/printOperation.js:47
+#: ../src/printOperation.js:48
 msgid "Loading map tiles for printing"
 msgstr "Laster kartruter for utskrift"
 
-#: ../src/printOperation.js:48
+#: ../src/printOperation.js:49
 msgid "You can abort printing if this takes too long"
 msgstr "Du kan avbryte utskriften hvis dette tar for lang tid"
 
-#: ../src/printOperation.js:50
+#: ../src/printOperation.js:51
 msgid "Abort printing"
 msgstr "Avbryt utskrift"
-
-#: ../src/routeService.js:90
-msgid "No route found."
-msgstr "Ingen rute funnet."
-
-#: ../src/routeService.js:101
-msgid "Route request failed."
-msgstr "Forespørsel om rute feilet."
-
-#: ../src/routeService.js:178
-msgid "Start!"
-msgstr "Start!"
 
 #: ../src/sendToDialog.js:179
 msgid "Failed to open URI"
@@ -1011,16 +1074,106 @@ msgid "failed to load file"
 msgstr "klarte ikke å laste fil"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:208
+#: ../src/sidebar.js:282
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Estimert tid: %s"
 
-#: ../src/translations.js:55 ../src/translations.js:57
+#. Translators: this a format string indicating arriving at the
+#. * destination of journey with the arrival address and transit
+#. * stop as the format parameter
+#: ../src/transitArrivalRow.js:56
+#, javascript-format
+msgid "Arrive at %s"
+msgstr "Ankom ved %s"
+
+#: ../src/transitArrivalRow.js:58
+msgid "Arrive"
+msgstr "Ankom"
+
+#. Translators: this is a format string indicating instructions
+#. * starting a journey at the address given as the parameter
+#.
+#: ../src/transitLegRow.js:74
+#, javascript-format
+msgid "Start at %s"
+msgstr "Start ved %s"
+
+#. Translators: this indicates starting a journey at a location
+#. * with no set name (such as when the user started routing from
+#. * an arbitrary point on the map)
+#.
+#: ../src/transitLegRow.js:80
+msgid "Start"
+msgstr "Start"
+
+#: ../src/transitLegRow.js:108
+msgid "Show walking instructions"
+msgstr ""
+
+#: ../src/transitLegRow.js:109
+msgid "Hide walking instructions"
+msgstr ""
+
+#: ../src/transitLegRow.js:134
+#, javascript-format
+msgid "Walk %s"
+msgstr "Gå %s"
+
+#: ../src/transitMoreRow.js:41
+msgid "Load earlier alternatives"
+msgstr "Last tidligere alternativer"
+
+#: ../src/transitMoreRow.js:43
+msgid "Load later alternatives"
+msgstr "Last senere alternativer"
+
+#: ../src/transitOptionsPanel.js:141
+msgctxt "month-day-date"
+msgid "%b %e"
+msgstr "%b %e"
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time, like:
+#. * "12:00 – 13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: ../src/transitPlan.js:248
+#, javascript-format
+msgid "%s – %s"
+msgstr "%s – %s"
+
+#: ../src/transitPlan.js:271
+#, javascript-format
+msgid "%d minute"
+msgstr "%d minutt"
+
+#: ../src/transitPlan.js:278
+#, javascript-format
+msgid "%d hour"
+msgstr "%d time"
+
+#: ../src/transitPlan.js:280
+#, javascript-format
+msgid "%d:%0d hour"
+msgstr "%d:%0d time"
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time in a more compact manner to show in the instruction
+#. * list for an itinerary, like:
+#. * "12:00–13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: ../src/transitPlan.js:598
+#, javascript-format
+msgid "%s–%s"
+msgstr "%s–%s"
+
+#: ../src/translations.js:56
 msgid "around the clock"
 msgstr "hele døgnet"
 
-#: ../src/translations.js:59
+#: ../src/translations.js:58
 msgid "from sunrise to sunset"
 msgstr "fra soloppgang til solnedgang"
 
@@ -1030,7 +1183,7 @@ msgstr "fra soloppgang til solnedgang"
 #. * The space between the format place holders could be
 #. * substituted with the appropriate separator.
 #.
-#: ../src/translations.js:78
+#: ../src/translations.js:77
 #, javascript-format
 msgctxt "time range list"
 msgid "%s %s"
@@ -1042,7 +1195,7 @@ msgstr "%s %s"
 #. * The space between the format place holders could be
 #. * substituted with the appropriate separator.
 #.
-#: ../src/translations.js:90
+#: ../src/translations.js:89
 #, javascript-format
 msgctxt "time range list"
 msgid "%s %s %s"
@@ -1055,7 +1208,7 @@ msgstr "%s %s %s"
 #. * The space between the format place holders could be substituted with
 #. * the appropriate separator or phrase and the ordering of the arguments
 #. * can be rearranged with the %n#s syntax.
-#: ../src/translations.js:121
+#: ../src/translations.js:120
 #, javascript-format
 msgctxt "time range component"
 msgid "%s %s"
@@ -1070,7 +1223,7 @@ msgstr "%s %s"
 #. * place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: ../src/translations.js:153
+#: ../src/translations.js:152
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s"
@@ -1085,30 +1238,30 @@ msgstr "%s til %s"
 #. * %s place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: ../src/translations.js:167
+#: ../src/translations.js:166
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s,%s"
 msgstr "%s til %s og %s"
 
-#: ../src/translations.js:186
+#: ../src/translations.js:185
 msgid "every day"
 msgstr "hver dag"
 
 #. Translators:
 #. * This represents a range of days with a starting and ending day.
 #.
-#: ../src/translations.js:198
+#: ../src/translations.js:197
 #, javascript-format
 msgctxt "day range"
 msgid "%s-%s"
 msgstr "%s-%s"
 
-#: ../src/translations.js:209
+#: ../src/translations.js:208
 msgid "public holidays"
 msgstr "offentlige fridager"
 
-#: ../src/translations.js:211
+#: ../src/translations.js:210
 msgid "school holidays"
 msgstr "skoleferie"
 
@@ -1120,13 +1273,13 @@ msgstr "skoleferie"
 #. * the translation. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: ../src/translations.js:251
+#: ../src/translations.js:250
 #, javascript-format
 msgctxt "time interval list"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: ../src/translations.js:265
+#: ../src/translations.js:264
 msgid "not open"
 msgstr "ikke åpen"
 
@@ -1137,7 +1290,7 @@ msgstr "ikke åpen"
 #. * translation as needed. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: ../src/translations.js:280
+#: ../src/translations.js:279
 #, javascript-format
 msgctxt "time interval"
 msgid "%s-%s"
@@ -1146,21 +1299,21 @@ msgstr "%s-%s"
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: ../src/translations.js:346
+#: ../src/translations.js:345
 msgid "wired"
 msgstr "trådbundet"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: ../src/translations.js:351
+#: ../src/translations.js:350
 msgid "terminal"
 msgstr "terminal"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: ../src/translations.js:356
+#: ../src/translations.js:355
 msgid "service"
 msgstr "tjeneste"
 
