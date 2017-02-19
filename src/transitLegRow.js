@@ -127,10 +127,10 @@ const TransitLegRow = new Lang.Class({
                 headsignLabel.label =
                     '<span size="small">%s</span>'.format(this._leg.headsign);
             } else if (!this._leg.transit) {
-                /* Translators: this is a format string indicating walking a certain
-                 * distance, with the distance expression being the %s placeholder
-                 */
                 let label =
+                    /* Translators: this is a format string indicating walking a certain
+                     * distance, with the distance expression being the %s placeholder
+                     */
                     _("Walk %s").format(Utils.prettyDistance(this._leg.distance));
                 headsignLabel.label =
                     '<span size="small">%s</span>'.format(label);

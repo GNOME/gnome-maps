@@ -133,11 +133,11 @@ const TransitOptionsPanel = new Lang.Class({
     },
 
     _updateTransitDateButton: function(date) {
-        /*
-         * Translators: this is a format string giving the equivalent to
-         * "may 29" according to the current locale's convensions.
-         */
         this._transitDateButton.label =
+            /*
+             * Translators: this is a format string giving the equivalent to
+             * "may 29" according to the current locale's convensions.
+             */
             date.format(C_("month-day-date", "%b %e"));
     },
 
