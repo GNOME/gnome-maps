@@ -4,22 +4,22 @@
 # This file is distributed under the same license as the gnome-maps package.
 #
 #
-# Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2013, 2014, 2015, 2016.
+# Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2013, 2014, 2015, 2016, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-ma"
-"ps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-08-22 18:54+0000\n"
-"PO-Revision-Date: 2016-09-20 12:47+0100\n"
-"Last-Translator: dooteo <dooteo@zundan.com>\n"
-"Language-Team: Basque <librezale@librezale.org>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"maps&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2017-02-16 00:19+0000\n"
+"PO-Revision-Date: 2017-02-20 18:11+0100\n"
+"Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
+"Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Lokalize 1.5\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid "GNOME Maps"
@@ -60,7 +60,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:85 ../src/mainWindow.js:420
+#: ../src/application.js:87 ../src/mainWindow.js:441
 msgid "Maps"
 msgstr "Mapak"
 
@@ -379,8 +379,11 @@ msgid "Maps is offline!"
 msgstr "Mapa lineaz kanpo dago!"
 
 #: ../data/ui/main-window.ui.h:8
+#| msgid ""
+#| "Maps need an active internet connection to function properly, but one "
+#| "can't be found."
 msgid ""
-"Maps need an active internet connection to function properly, but one can't "
+"Maps need an active internet connection to function properly, but one can’t "
 "be found."
 msgstr ""
 "Mapak interneteko konexio aktiboa behar du ongi funtzionatzeko, baina ez da "
@@ -436,13 +439,18 @@ msgid "Sign In"
 msgstr "Hasi saioa"
 
 #: ../data/ui/osm-account-dialog.ui.h:8
-msgid "Don't have an account?"
+#| msgid "Don't have an account?"
+msgid "Don’t have an account?"
 msgstr "Ez daukazu konturik?"
 
 #. The label should contain the link to the OSM reset password page with a translated title
 #: ../data/ui/osm-account-dialog.ui.h:10
+#| msgid ""
+#| "Sorry, that didn't work. Please try again, or visit\n"
+#| "<a href=\"https://www.openstreetmap.org/user/forgot-password"
+#| "\">OpenStreetMap</a> to reset your password."
 msgid ""
-"Sorry, that didn't work. Please try again, or visit\n"
+"Sorry, that didn’t work. Please try again, or visit\n"
 "<a href=\"https://www.openstreetmap.org/user/forgot-password"
 "\">OpenStreetMap</a> to reset your password."
 msgstr ""
@@ -451,7 +459,8 @@ msgstr ""
 "\">OpenStreetMap</a> zure pasahitza berrezartzeko."
 
 #: ../data/ui/osm-account-dialog.ui.h:12
-msgid "The verification code didn't match, please try again."
+#| msgid "The verification code didn't match, please try again."
+msgid "The verification code didn’t match, please try again."
 msgstr "Egiaztapen-kodea ez dator bat, saiatu berriro."
 
 #: ../data/ui/osm-account-dialog.ui.h:13
@@ -508,9 +517,12 @@ msgid "Comment"
 msgstr "Iruzkina"
 
 #: ../data/ui/osm-edit-dialog.ui.h:5
+#| msgid ""
+#| "Map changes will be visible on all maps that use\n"
+#| "    OpenStreetMap data."
 msgid ""
 "Map changes will be visible on all maps that use\n"
-"    OpenStreetMap data."
+"OpenStreetMap data."
 msgstr ""
 "Mapen aldaketak ikusgai egongo dira OpenStreetMap-eko\n"
 "datuak erabiltzen dituzten mapa guztietan."
@@ -527,7 +539,7 @@ msgstr "Editatu OpenStreetMap-en"
 msgid "Cancel"
 msgstr "Utzi"
 
-#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:471
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:472
 msgid "Next"
 msgstr "Hurrengoa"
 
@@ -563,9 +575,78 @@ msgstr "Txandakatu ikusgaitasuna"
 msgid "Route search by GraphHopper"
 msgstr "ibilbidea GraphHopper-ek bilatuta"
 
+#: ../data/ui/sidebar.ui.h:2
+#| msgid "Route search by GraphHopper"
+msgid "Route search by OpenTripPlanner"
+msgstr "ibilbidea OpenTripPlanner-ek bilatuta"
+
+#: ../data/ui/sidebar.ui.h:3
+msgid ""
+"Routing itineraries for public transit is provided by GNOME\n"
+"using timetable data obtained from transit companies or agencies.\n"
+"The companies and agencies can not be held responsible for the results "
+"shown.\n"
+"GNOME can not guarantee correctness of the itineraries and schedules shown.\n"
+"Names and brands shown are to be considered as registered trademarks when "
+"applicable."
+msgstr ""
+"Ibilbide publikoen bideak GNOMEk eskaintzen ditu,\n"
+"konpainia eta agentzien zirkulazioetatik lortutako ordutegiaren datuak "
+"erabiliz.\n"
+"Konpainiak eta agentziak ez dira erakutsitako emaitzen arduradun izango.\n"
+"GNOMEk ezin du erakutsitako ibilbideen eta antolamenduen zuzentasunaz "
+"ziurtatu.\n"
+"Erakutsitako izenak eta markak erregistratutako marka gisa hartuko dira "
+"dagokienenean."
+
 #: ../data/ui/social-place-more-results-row.ui.h:1
 msgid "Show more results"
 msgstr "Erakutsi emaitza gehiago"
+
+#: ../data/ui/transit-leg-row.ui.h:1
+msgid "Hide intermediate stops and information"
+msgstr "Ezkutatu bitarteko puntuak eta informazioak"
+
+#: ../data/ui/transit-leg-row.ui.h:2
+#| msgid "Show more information"
+msgid "Show intermediate stops and information"
+msgstr "Erakutsi bitarteko puntuak eta informazioak"
+
+#: ../data/ui/transit-options-panel.ui.h:1
+msgid "Leave Now"
+msgstr "Irten orain"
+
+#: ../data/ui/transit-options-panel.ui.h:2
+msgid "Leave By"
+msgstr "Irten: "
+
+#: ../data/ui/transit-options-panel.ui.h:3
+msgid "Arrive By"
+msgstr "Iritsi: "
+
+#: ../data/ui/transit-options-panel.ui.h:4
+msgid "Show"
+msgstr "Erakutsi"
+
+#: ../data/ui/transit-options-panel.ui.h:5
+msgid "Buses"
+msgstr "Autobusak"
+
+#: ../data/ui/transit-options-panel.ui.h:6
+msgid "Trams"
+msgstr "Tranbia"
+
+#: ../data/ui/transit-options-panel.ui.h:7
+msgid "Trains"
+msgstr "Trenak"
+
+#: ../data/ui/transit-options-panel.ui.h:8
+msgid "Subway"
+msgstr "Metroak"
+
+#: ../data/ui/transit-options-panel.ui.h:9
+msgid "Ferries"
+msgstr "Ferriak"
 
 #: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:120
 msgid "Current location"
@@ -602,7 +683,7 @@ msgstr "Beharrezko atributuak falta dira"
 msgid "Could not find OSM element"
 msgstr "Ezin izan da OSM elementua aurkitu"
 
-#: ../src/application.js:101
+#: ../src/application.js:103
 msgid "A path to a local tiles directory structure"
 msgstr "Lokaleko lauzen direktorioaren egituraren bide-izena"
 
@@ -649,15 +730,16 @@ msgid "Write an optional message to check in to %s."
 msgstr "Idatzi aukerako mezua '%s'(e)n erregistratzeko."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:508
+#: ../src/osmEditDialog.js:509
 msgid "An error has occurred"
 msgstr "Errore bat gertatu da"
 
 #. Translators: %s is the place name that user wanted to check-in
 #: ../src/checkIn.js:135
 #, javascript-format
-msgid "Cannot find \"%s\" in the social service"
-msgstr "Ezin da '%s' aurkitu zerbitzu sozialean"
+#| msgid "Cannot find \"%s\" in the social service"
+msgid "Cannot find “%s” in the social service"
+msgstr "Ezin da “%s“ aurkitu zerbitzu sozialean"
 
 #: ../src/checkIn.js:137
 msgid "Cannot find a suitable place to check-in in this location"
@@ -671,23 +753,23 @@ msgstr ""
 "Kredentzialak iraungi egin dira. Ireki 'Lineako kontuak' kontu hau sinatzeko "
 "eta gaitzeko"
 
-#: ../src/contextMenu.js:97
+#: ../src/contextMenu.js:96
 msgid "Route from here"
 msgstr "Ibilbidea hemendik"
 
-#: ../src/contextMenu.js:99
+#: ../src/contextMenu.js:98
 msgid "Add destination"
 msgstr "Gehitu helmuga"
 
-#: ../src/contextMenu.js:101
+#: ../src/contextMenu.js:100
 msgid "Route to here"
 msgstr "Ibilbidea hona"
 
-#: ../src/contextMenu.js:130
+#: ../src/contextMenu.js:129
 msgid "Nothing found here!"
 msgstr "Ez da ezer aurkitu."
 
-#: ../src/contextMenu.js:187
+#: ../src/contextMenu.js:186
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -704,7 +786,8 @@ msgid "You do not have permission to save there"
 msgstr "Ez duzu baimenik han gordetzeko"
 
 #: ../src/exportViewDialog.js:160
-msgid "The directory does not exists"
+#| msgid "The directory does not exists"
+msgid "The directory does not exist"
 msgstr "Direktorioa ez da existitzen"
 
 #: ../src/exportViewDialog.js:162
@@ -728,33 +811,50 @@ msgstr "analisi-errorea"
 msgid "unknown geometry"
 msgstr "geometria ezezaguna"
 
+#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:630
+msgid "Route request failed."
+msgstr "Huts egin du ibilbidearen eskaerak."
+
+#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:614
+#: ../src/openTripPlanner.js:728
+msgid "No route found."
+msgstr "Ez da ibilbiderik aurkitu."
+
+#: ../src/graphHopper.js:193
+msgid "Start!"
+msgstr "Hasi!"
+
 #: ../src/layersPopover.js:62
 msgid "All Layer Files"
 msgstr "Geruzen fitxategi guztiak"
 
-#: ../src/mainWindow.js:366
+#: ../src/mainWindow.js:387
 msgid "Failed to connect to location service"
 msgstr "Huts egin du kokapen-zerbitzuarekin konektatzean"
 
-#: ../src/mainWindow.js:418
+#: ../src/mainWindow.js:439
 msgid "translator-credits"
 msgstr "Iñaki Larrañaga Murgoitio <dooteo@zundan.com>"
 
-#: ../src/mainWindow.js:421
+#: ../src/mainWindow.js:442
 msgid "A map application for GNOME"
 msgstr "GNOMEren mapen aplikazioa"
 
-#: ../src/mapView.js:260
+#: ../src/mapView.js:354
 msgid "File type is not supported"
 msgstr "Fitxategi mota ez dago onartuta"
 
-#: ../src/mapView.js:267
+#: ../src/mapView.js:361
 msgid "Failed to open layer"
 msgstr "Huts egin du geruza irekitzean"
 
-#: ../src/mapView.js:303
+#: ../src/mapView.js:397
 msgid "Failed to open GeoURI"
 msgstr "Huts egin du GeoURIa irekitzean"
+
+#: ../src/openTripPlanner.js:626
+msgid "No timetable data found for this route."
+msgstr "Ez da ordutegiaren daturik aurkitu ibilbide honetan."
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
@@ -828,9 +928,6 @@ msgid "Wikipedia"
 msgstr "Wikipedia"
 
 #: ../src/osmEditDialog.js:139
-#| msgid ""
-#| "The format used should include the language code and the article title "
-#| "like ”en:Article title”."
 msgid ""
 "The format used should include the language code and the article title like "
 "“en:Article title”."
@@ -885,7 +982,7 @@ msgstr "Interneterako sarbidea"
 #. Translators:
 #. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
 #.
-#: ../src/osmEditDialog.js:176 ../src/translations.js:341
+#: ../src/osmEditDialog.js:176 ../src/translations.js:340
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
 
@@ -906,11 +1003,11 @@ msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Gehitu OpenStreetMap-ari"
 
-#: ../src/osmEditDialog.js:339
+#: ../src/osmEditDialog.js:340
 msgid "Select Type"
 msgstr "Hautatu mota"
 
-#: ../src/osmEditDialog.js:457
+#: ../src/osmEditDialog.js:458
 msgid "Done"
 msgstr "Eginda"
 
@@ -948,7 +1045,7 @@ msgstr "Huts egin du Geo URIa aztertzean"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: ../src/place.js:178 ../src/translations.js:330
+#: ../src/place.js:178 ../src/translations.js:329
 msgid "yes"
 msgstr "bai"
 
@@ -969,7 +1066,7 @@ msgstr "mugatua"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: ../src/place.js:191 ../src/translations.js:336
+#: ../src/place.js:191 ../src/translations.js:335
 msgid "no"
 msgstr "ez"
 
@@ -987,29 +1084,17 @@ msgstr "zehaztutakoa"
 msgid "From %s to %s"
 msgstr "\"%s\"(e)ndik \"%s\"(e)ra"
 
-#: ../src/printOperation.js:47
+#: ../src/printOperation.js:48
 msgid "Loading map tiles for printing"
 msgstr "Mapen lauzak inprimatzeko kargatzen"
 
-#: ../src/printOperation.js:48
+#: ../src/printOperation.js:49
 msgid "You can abort printing if this takes too long"
 msgstr "Inprimatzea bertan behera utz dezakezu denbora gehiegi badarama"
 
-#: ../src/printOperation.js:50
+#: ../src/printOperation.js:51
 msgid "Abort printing"
 msgstr "Utzi inprimatzea bertan behera"
-
-#: ../src/routeService.js:90
-msgid "No route found."
-msgstr "Ez da ibilbiderik aurkitu."
-
-#: ../src/routeService.js:101
-msgid "Route request failed."
-msgstr "Huts egin du ibilbidearen eskaerak."
-
-#: ../src/routeService.js:178
-msgid "Start!"
-msgstr "Hasi!"
 
 #: ../src/sendToDialog.js:179
 msgid "Failed to open URI"
@@ -1020,16 +1105,108 @@ msgid "failed to load file"
 msgstr "huts egin du fitxategia kargatzean"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:208
+#: ../src/sidebar.js:282
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Aurreikusitako denbora: %s"
 
-#: ../src/translations.js:55 ../src/translations.js:57
+#. Translators: this a format string indicating arriving at the
+#. * destination of journey with the arrival address and transit
+#. * stop as the format parameter
+#: ../src/transitArrivalRow.js:56
+#, javascript-format
+msgid "Arrive at %s"
+msgstr "Iritsi: %s"
+
+#: ../src/transitArrivalRow.js:58
+msgid "Arrive"
+msgstr "Iritsi"
+
+#. Translators: this is a format string indicating instructions
+#. * starting a journey at the address given as the parameter
+#.
+#: ../src/transitLegRow.js:74
+#, javascript-format
+msgid "Start at %s"
+msgstr "Hasiera: %s"
+
+#. Translators: this indicates starting a journey at a location
+#. * with no set name (such as when the user started routing from
+#. * an arbitrary point on the map)
+#.
+#: ../src/transitLegRow.js:80
+#| msgid "Start!"
+msgid "Start"
+msgstr "Hasi"
+
+#: ../src/transitLegRow.js:108
+msgid "Show walking instructions"
+msgstr "Erakutsi oinezkoen instrukzioak"
+
+#: ../src/transitLegRow.js:109
+msgid "Hide walking instructions"
+msgstr "Ezkutatu oinezkoen instrukzioak"
+
+#: ../src/transitLegRow.js:134
+#, javascript-format
+msgid "Walk %s"
+msgstr "Oinez: %s"
+
+#: ../src/transitMoreRow.js:41
+msgid "Load earlier alternatives"
+msgstr "Kargatu alternatibak lehenago"
+
+#: ../src/transitMoreRow.js:43
+msgid "Load later alternatives"
+msgstr "Kargatu alternatibak geroago"
+
+#: ../src/transitOptionsPanel.js:141
+msgctxt "month-day-date"
+msgid "%b %e"
+msgstr "%b %e"
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time, like:
+#. * "12:00 – 13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: ../src/transitPlan.js:248
+#, javascript-format
+msgid "%s – %s"
+msgstr "%s – %s"
+
+#: ../src/transitPlan.js:271
+#, javascript-format
+#| msgid "%f min"
+msgid "%d minute"
+msgstr "%d minutu"
+
+#: ../src/transitPlan.js:278
+#, javascript-format
+msgid "%d hour"
+msgstr "%d ordu"
+
+#: ../src/transitPlan.js:280
+#, javascript-format
+msgid "%d:%0d hour"
+msgstr "%d:%0d ordu"
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time in a more compact manner to show in the instruction
+#. * list for an itinerary, like:
+#. * "12:00–13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: ../src/transitPlan.js:598
+#, javascript-format
+msgid "%s–%s"
+msgstr "%s–%s"
+
+#: ../src/translations.js:56
 msgid "around the clock"
 msgstr "erlojuaren inguruan"
 
-#: ../src/translations.js:59
+#: ../src/translations.js:58
 msgid "from sunrise to sunset"
 msgstr "egunsentitik ilunsentira"
 
@@ -1039,7 +1216,7 @@ msgstr "egunsentitik ilunsentira"
 #. * The space between the format place holders could be
 #. * substituted with the appropriate separator.
 #.
-#: ../src/translations.js:78
+#: ../src/translations.js:77
 #, javascript-format
 msgctxt "time range list"
 msgid "%s %s"
@@ -1051,7 +1228,7 @@ msgstr "%s %s"
 #. * The space between the format place holders could be
 #. * substituted with the appropriate separator.
 #.
-#: ../src/translations.js:90
+#: ../src/translations.js:89
 #, javascript-format
 msgctxt "time range list"
 msgid "%s %s %s"
@@ -1064,7 +1241,7 @@ msgstr "%s %s %s"
 #. * The space between the format place holders could be substituted with
 #. * the appropriate separator or phrase and the ordering of the arguments
 #. * can be rearranged with the %n#s syntax.
-#: ../src/translations.js:121
+#: ../src/translations.js:120
 #, javascript-format
 msgctxt "time range component"
 msgid "%s %s"
@@ -1079,7 +1256,7 @@ msgstr "%s %s"
 #. * place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: ../src/translations.js:153
+#: ../src/translations.js:152
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s"
@@ -1094,30 +1271,30 @@ msgstr "%s,%s"
 #. * %s place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: ../src/translations.js:167
+#: ../src/translations.js:166
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s,%s"
 msgstr "%s,%s,%s"
 
-#: ../src/translations.js:186
+#: ../src/translations.js:185
 msgid "every day"
 msgstr "egunero"
 
 #. Translators:
 #. * This represents a range of days with a starting and ending day.
 #.
-#: ../src/translations.js:198
+#: ../src/translations.js:197
 #, javascript-format
 msgctxt "day range"
 msgid "%s-%s"
 msgstr "%s-%s"
 
-#: ../src/translations.js:209
+#: ../src/translations.js:208
 msgid "public holidays"
 msgstr "jaiegunak"
 
-#: ../src/translations.js:211
+#: ../src/translations.js:210
 msgid "school holidays"
 msgstr "eskolako jaiegunak"
 
@@ -1129,13 +1306,13 @@ msgstr "eskolako jaiegunak"
 #. * the translation. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: ../src/translations.js:251
+#: ../src/translations.js:250
 #, javascript-format
 msgctxt "time interval list"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: ../src/translations.js:265
+#: ../src/translations.js:264
 msgid "not open"
 msgstr "ez ireki"
 
@@ -1146,7 +1323,7 @@ msgstr "ez ireki"
 #. * translation as needed. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: ../src/translations.js:280
+#: ../src/translations.js:279
 #, javascript-format
 msgctxt "time interval"
 msgid "%s-%s"
@@ -1155,21 +1332,21 @@ msgstr "%s-%s"
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: ../src/translations.js:346
+#: ../src/translations.js:345
 msgid "wired"
 msgstr "hariduna"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: ../src/translations.js:351
+#: ../src/translations.js:350
 msgid "terminal"
 msgstr "terminala"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: ../src/translations.js:356
+#: ../src/translations.js:355
 msgid "service"
 msgstr "zerbitzua"
 
