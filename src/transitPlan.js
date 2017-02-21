@@ -289,7 +289,7 @@ const Itinerary = new Lang.Class({
                  * where the duration contains an hour and minute part, it's
                  * pluralized on the hours part
                  */
-                return ngettext("%d:%0d hour", "%d:%02d hours", hours).format(hours, mins);
+                return ngettext("%d:%02d hour", "%d:%02d hours", hours).format(hours, mins);
             }
         }
     },
