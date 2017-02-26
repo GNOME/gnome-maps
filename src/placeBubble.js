@@ -105,9 +105,10 @@ const PlaceBubble = new Lang.Class({
 
     _formatWikiLink: function(wiki) {
         let tokens = wiki.split(':');
+        let lang = tokens[0];
+        let article = GLib.markup_escape_text(tokens.splice(1).join(':'), -1);
 
-        return Format.vprintf('https://%s.wikipedia.org/wiki/%s', [ tokens[0],
-                                                                    tokens[1] ]);
+        return Format.vprintf('https://%s.wikipedia.org/wiki/%s', [ lang, article ]);
     },
 
     /*
