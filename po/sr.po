@@ -1,17 +1,17 @@
 # Serbian translation for gnome-maps.
-# Courtesy of Prevod.org team (http://prevod.org/) -- 2013—2016.
+# Courtesy of Prevod.org team (http://prevod.org/) -- 2013—2017.
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
-# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2013—2056.
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2013—2057.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-08-22 18:54+0000\n"
-"PO-Revision-Date: 2016-08-28 07:38+0200\n"
+"POT-Creation-Date: 2017-02-16 00:19+0000\n"
+"PO-Revision-Date: 2017-02-25 08:33+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
-"Language-Team: српски <gnome-sr@googlegroups.org>\n"
+"Language-Team: Serbian <(nothing)>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -59,7 +59,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:85 ../src/mainWindow.js:420
+#: ../src/application.js:87 ../src/mainWindow.js:441
 msgid "Maps"
 msgstr "Карте"
 
@@ -376,8 +376,11 @@ msgid "Maps is offline!"
 msgstr "Програм је ван мреже!"
 
 #: ../data/ui/main-window.ui.h:8
+#| msgid ""
+#| "Maps need an active internet connection to function properly, but one "
+#| "can't be found."
 msgid ""
-"Maps need an active internet connection to function properly, but one can't "
+"Maps need an active internet connection to function properly, but one can’t "
 "be found."
 msgstr ""
 "Потребна је радна интернет веза да би програм исправно радио, али није "
@@ -434,22 +437,28 @@ msgid "Sign In"
 msgstr "Пријави ме"
 
 #: ../data/ui/osm-account-dialog.ui.h:8
-msgid "Don't have an account?"
+#| msgid "Don't have an account?"
+msgid "Don’t have an account?"
 msgstr "Немате налог?"
 
 #. The label should contain the link to the OSM reset password page with a translated title
 #: ../data/ui/osm-account-dialog.ui.h:10
+#| msgid ""
+#| "Sorry, that didn't work. Please try again, or visit\n"
+#| "<a href=\"https://www.openstreetmap.org/user/forgot-password"
+#| "\">OpenStreetMap</a> to reset your password."
 msgid ""
-"Sorry, that didn't work. Please try again, or visit\n"
+"Sorry, that didn’t work. Please try again, or visit\n"
 "<a href=\"https://www.openstreetmap.org/user/forgot-password"
 "\">OpenStreetMap</a> to reset your password."
 msgstr ""
 "Нажалост, то није прорадило. Пробајте поново или посетите\n"
-"<a href=\"https://www.openstreetmap.org/user/forgot-password"
-"\">OpenStreetMap</a> да бисте опоравили вашу лозинку."
+"<a href=\"https://www.openstreetmap.org/user/forgot-password\""
+">OpenStreetMap</a> да бисте опоравили вашу лозинку."
 
 #: ../data/ui/osm-account-dialog.ui.h:12
-msgid "The verification code didn't match, please try again."
+#| msgid "The verification code didn't match, please try again."
+msgid "The verification code didn’t match, please try again."
 msgstr "Потврдни код се не подудара, пробајте поново."
 
 #: ../data/ui/osm-account-dialog.ui.h:13
@@ -506,12 +515,15 @@ msgid "Comment"
 msgstr "Коментар"
 
 #: ../data/ui/osm-edit-dialog.ui.h:5
+#| msgid ""
+#| "Map changes will be visible on all maps that use\n"
+#| "    OpenStreetMap data."
 msgid ""
 "Map changes will be visible on all maps that use\n"
-"    OpenStreetMap data."
+"OpenStreetMap data."
 msgstr ""
 "Измене на карти ће бити видљиве на свим картама\n"
-"    које користе податке са OpenStreetMap пројекта."
+"које користе податке са OpenStreetMap пројекта."
 
 #: ../data/ui/osm-edit-dialog.ui.h:7
 msgid "Recently Used"
@@ -525,7 +537,7 @@ msgstr "Уреди на OpenStreetMap"
 msgid "Cancel"
 msgstr "Откажи"
 
-#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:471
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:472
 msgid "Next"
 msgstr "Следеће"
 
@@ -561,9 +573,74 @@ msgstr "Подеси видљивост"
 msgid "Route search by GraphHopper"
 msgstr "Претрага руте Граф Хопером"
 
+#: ../data/ui/sidebar.ui.h:2
+#, fuzzy
+#| msgid "Route search by GraphHopper"
+msgid "Route search by OpenTripPlanner"
+msgstr "Претрага руте Граф Хопером"
+
+#: ../data/ui/sidebar.ui.h:3
+msgid ""
+"Routing itineraries for public transit is provided by GNOME\n"
+"using timetable data obtained from transit companies or agencies.\n"
+"The companies and agencies can not be held responsible for the results "
+"shown.\n"
+"GNOME can not guarantee correctness of the itineraries and schedules shown.\n"
+"Names and brands shown are to be considered as registered trademarks when "
+"applicable."
+msgstr ""
+
 #: ../data/ui/social-place-more-results-row.ui.h:1
 msgid "Show more results"
 msgstr "Прикажите још резултата"
+
+#: ../data/ui/transit-leg-row.ui.h:1
+msgid "Hide intermediate stops and information"
+msgstr ""
+
+#: ../data/ui/transit-leg-row.ui.h:2
+#, fuzzy
+#| msgid "Show more information"
+msgid "Show intermediate stops and information"
+msgstr "Прикажи још података"
+
+#: ../data/ui/transit-options-panel.ui.h:1
+msgid "Leave Now"
+msgstr ""
+
+#: ../data/ui/transit-options-panel.ui.h:2
+msgid "Leave By"
+msgstr ""
+
+#: ../data/ui/transit-options-panel.ui.h:3
+msgid "Arrive By"
+msgstr ""
+
+#: ../data/ui/transit-options-panel.ui.h:4
+#, fuzzy
+#| msgid "Show help"
+msgid "Show"
+msgstr "Прикажи помоћ"
+
+#: ../data/ui/transit-options-panel.ui.h:5
+msgid "Buses"
+msgstr ""
+
+#: ../data/ui/transit-options-panel.ui.h:6
+msgid "Trams"
+msgstr ""
+
+#: ../data/ui/transit-options-panel.ui.h:7
+msgid "Trains"
+msgstr ""
+
+#: ../data/ui/transit-options-panel.ui.h:8
+msgid "Subway"
+msgstr ""
+
+#: ../data/ui/transit-options-panel.ui.h:9
+msgid "Ferries"
+msgstr ""
 
 #: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:120
 msgid "Current location"
@@ -600,7 +677,7 @@ msgstr "Недостају потребне особине"
 msgid "Could not find OSM element"
 msgstr "Нисам могао да нађем ОСМ елемент"
 
-#: ../src/application.js:101
+#: ../src/application.js:103
 msgid "A path to a local tiles directory structure"
 msgstr "Путања до локалне фасцикле са структуром плочица"
 
@@ -645,14 +722,15 @@ msgid "Write an optional message to check in to %s."
 msgstr "Напишите изборну поруку за проверу у „%s“."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:508
+#: ../src/osmEditDialog.js:509
 msgid "An error has occurred"
 msgstr "Дошло је до грешке"
 
 #. Translators: %s is the place name that user wanted to check-in
 #: ../src/checkIn.js:135
 #, javascript-format
-msgid "Cannot find \"%s\" in the social service"
+#| msgid "Cannot find \"%s\" in the social service"
+msgid "Cannot find “%s” in the social service"
 msgstr "Не могу да нађем „%s“ у друштвеним услугама"
 
 #: ../src/checkIn.js:137
@@ -667,23 +745,23 @@ msgstr ""
 "Уверења су истекла, отворите налоге на мрежи да се пријавите и укључите овај "
 "налог"
 
-#: ../src/contextMenu.js:97
+#: ../src/contextMenu.js:96
 msgid "Route from here"
 msgstr "Пут одавде"
 
-#: ../src/contextMenu.js:99
+#: ../src/contextMenu.js:98
 msgid "Add destination"
 msgstr "Додај одредиште"
 
-#: ../src/contextMenu.js:101
+#: ../src/contextMenu.js:100
 msgid "Route to here"
 msgstr "Пут довде"
 
-#: ../src/contextMenu.js:130
+#: ../src/contextMenu.js:129
 msgid "Nothing found here!"
 msgstr "Ништа није нађено овде!"
 
-#: ../src/contextMenu.js:187
+#: ../src/contextMenu.js:186
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -700,7 +778,8 @@ msgid "You do not have permission to save there"
 msgstr "Немате овлашћење да сачувате ту"
 
 #: ../src/exportViewDialog.js:160
-msgid "The directory does not exists"
+#| msgid "The directory does not exists"
+msgid "The directory does not exist"
 msgstr "Директоријум не постоји"
 
 #: ../src/exportViewDialog.js:162
@@ -724,15 +803,28 @@ msgstr "грешка у обрађивању"
 msgid "unknown geometry"
 msgstr "непозната геометрија"
 
+#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:630
+msgid "Route request failed."
+msgstr "Захтев пута није успео."
+
+#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:614
+#: ../src/openTripPlanner.js:728
+msgid "No route found."
+msgstr "Нисам пронашао пут."
+
+#: ../src/graphHopper.js:193
+msgid "Start!"
+msgstr "Крени!"
+
 #: ../src/layersPopover.js:62
 msgid "All Layer Files"
 msgstr "Све датотеке слоја"
 
-#: ../src/mainWindow.js:366
+#: ../src/mainWindow.js:387
 msgid "Failed to connect to location service"
 msgstr "Нисам успео да се повежем на услугу положаја"
 
-#: ../src/mainWindow.js:418
+#: ../src/mainWindow.js:439
 msgid "translator-credits"
 msgstr ""
 "Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
@@ -740,21 +832,25 @@ msgstr ""
 "\n"
 "http://prevod.org — превод на српски језик"
 
-#: ../src/mainWindow.js:421
+#: ../src/mainWindow.js:442
 msgid "A map application for GNOME"
 msgstr "Гномов програм за карте"
 
-#: ../src/mapView.js:260
+#: ../src/mapView.js:354
 msgid "File type is not supported"
 msgstr "Врста датотеке није подржана"
 
-#: ../src/mapView.js:267
+#: ../src/mapView.js:361
 msgid "Failed to open layer"
 msgstr "Нисам успео да отворим слој"
 
-#: ../src/mapView.js:303
+#: ../src/mapView.js:397
 msgid "Failed to open GeoURI"
 msgstr "Нисам успео да отворим Гео-УРИ"
+
+#: ../src/openTripPlanner.js:626
+msgid "No timetable data found for this route."
+msgstr ""
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
@@ -828,9 +924,6 @@ msgid "Wikipedia"
 msgstr "Википедија"
 
 #: ../src/osmEditDialog.js:139
-#| msgid ""
-#| "The format used should include the language code and the article title "
-#| "like ”en:Article title”."
 msgid ""
 "The format used should include the language code and the article title like "
 "“en:Article title”."
@@ -886,7 +979,7 @@ msgstr "Приступ интернету"
 #. Translators:
 #. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
 #.
-#: ../src/osmEditDialog.js:176 ../src/translations.js:341
+#: ../src/osmEditDialog.js:176 ../src/translations.js:340
 msgid "Wi-Fi"
 msgstr "Бежични"
 
@@ -907,11 +1000,11 @@ msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Додај на OpenStreetMap"
 
-#: ../src/osmEditDialog.js:339
+#: ../src/osmEditDialog.js:340
 msgid "Select Type"
 msgstr "Изабери врсту"
 
-#: ../src/osmEditDialog.js:457
+#: ../src/osmEditDialog.js:458
 msgid "Done"
 msgstr "Готово"
 
@@ -949,7 +1042,7 @@ msgstr "Неуспех при обради Гео путање"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: ../src/place.js:178 ../src/translations.js:330
+#: ../src/place.js:178 ../src/translations.js:329
 msgid "yes"
 msgstr "да"
 
@@ -970,7 +1063,7 @@ msgstr "ограничено"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: ../src/place.js:191 ../src/translations.js:336
+#: ../src/place.js:191 ../src/translations.js:335
 msgid "no"
 msgstr "не"
 
@@ -988,29 +1081,17 @@ msgstr "намењено"
 msgid "From %s to %s"
 msgstr "Од %s до %s"
 
-#: ../src/printOperation.js:47
+#: ../src/printOperation.js:48
 msgid "Loading map tiles for printing"
 msgstr "Учитавам плочице карте за штампање"
 
-#: ../src/printOperation.js:48
+#: ../src/printOperation.js:49
 msgid "You can abort printing if this takes too long"
 msgstr "Можете прекинути штампање ако ово потраје"
 
-#: ../src/printOperation.js:50
+#: ../src/printOperation.js:51
 msgid "Abort printing"
 msgstr "Прекини штампање"
-
-#: ../src/routeService.js:90
-msgid "No route found."
-msgstr "Нисам пронашао пут."
-
-#: ../src/routeService.js:101
-msgid "Route request failed."
-msgstr "Захтев пута није успео."
-
-#: ../src/routeService.js:178
-msgid "Start!"
-msgstr "Крени!"
 
 #: ../src/sendToDialog.js:179
 msgid "Failed to open URI"
@@ -1021,16 +1102,108 @@ msgid "failed to load file"
 msgstr "нисам успео да учитам датотеку"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:208
+#: ../src/sidebar.js:282
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Процењено време: %s"
 
-#: ../src/translations.js:55 ../src/translations.js:57
+#. Translators: this a format string indicating arriving at the
+#. * destination of journey with the arrival address and transit
+#. * stop as the format parameter
+#: ../src/transitArrivalRow.js:56
+#, javascript-format
+msgid "Arrive at %s"
+msgstr ""
+
+#: ../src/transitArrivalRow.js:58
+msgid "Arrive"
+msgstr ""
+
+#. Translators: this is a format string indicating instructions
+#. * starting a journey at the address given as the parameter
+#.
+#: ../src/transitLegRow.js:74
+#, javascript-format
+msgid "Start at %s"
+msgstr ""
+
+#. Translators: this indicates starting a journey at a location
+#. * with no set name (such as when the user started routing from
+#. * an arbitrary point on the map)
+#.
+#: ../src/transitLegRow.js:80
+#| msgid "Start!"
+msgid "Start"
+msgstr "Крени"
+
+#: ../src/transitLegRow.js:108
+msgid "Show walking instructions"
+msgstr ""
+
+#: ../src/transitLegRow.js:109
+msgid "Hide walking instructions"
+msgstr ""
+
+#: ../src/transitLegRow.js:134
+#, javascript-format
+msgid "Walk %s"
+msgstr ""
+
+#: ../src/transitMoreRow.js:41
+msgid "Load earlier alternatives"
+msgstr ""
+
+#: ../src/transitMoreRow.js:43
+msgid "Load later alternatives"
+msgstr ""
+
+#: ../src/transitOptionsPanel.js:141
+msgctxt "month-day-date"
+msgid "%b %e"
+msgstr ""
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time, like:
+#. * "12:00 – 13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: ../src/transitPlan.js:248
+#, javascript-format
+msgid "%s – %s"
+msgstr ""
+
+#: ../src/transitPlan.js:271
+#, fuzzy, javascript-format
+#| msgid "%f min"
+msgid "%d minute"
+msgstr "%f мин."
+
+#: ../src/transitPlan.js:278
+#, javascript-format
+msgid "%d hour"
+msgstr ""
+
+#: ../src/transitPlan.js:280
+#, javascript-format
+msgid "%d:%0d hour"
+msgstr ""
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time in a more compact manner to show in the instruction
+#. * list for an itinerary, like:
+#. * "12:00–13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: ../src/transitPlan.js:598
+#, javascript-format
+msgid "%s–%s"
+msgstr ""
+
+#: ../src/translations.js:56
 msgid "around the clock"
 msgstr "у времену"
 
-#: ../src/translations.js:59
+#: ../src/translations.js:58
 msgid "from sunrise to sunset"
 msgstr "од јутра до вечери"
 
@@ -1040,7 +1213,7 @@ msgstr "од јутра до вечери"
 #. * The space between the format place holders could be
 #. * substituted with the appropriate separator.
 #.
-#: ../src/translations.js:78
+#: ../src/translations.js:77
 #, javascript-format
 msgctxt "time range list"
 msgid "%s %s"
@@ -1052,7 +1225,7 @@ msgstr "%s %s"
 #. * The space between the format place holders could be
 #. * substituted with the appropriate separator.
 #.
-#: ../src/translations.js:90
+#: ../src/translations.js:89
 #, javascript-format
 msgctxt "time range list"
 msgid "%s %s %s"
@@ -1065,7 +1238,7 @@ msgstr "%s %s %s"
 #. * The space between the format place holders could be substituted with
 #. * the appropriate separator or phrase and the ordering of the arguments
 #. * can be rearranged with the %n#s syntax.
-#: ../src/translations.js:121
+#: ../src/translations.js:120
 #, javascript-format
 msgctxt "time range component"
 msgid "%s %s"
@@ -1080,7 +1253,7 @@ msgstr "%s %s"
 #. * place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: ../src/translations.js:153
+#: ../src/translations.js:152
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s"
@@ -1095,30 +1268,30 @@ msgstr "%s, %s"
 #. * %s place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: ../src/translations.js:167
+#: ../src/translations.js:166
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s,%s"
 msgstr "%s, %s, %s"
 
-#: ../src/translations.js:186
+#: ../src/translations.js:185
 msgid "every day"
 msgstr "сваког дана"
 
 #. Translators:
 #. * This represents a range of days with a starting and ending day.
 #.
-#: ../src/translations.js:198
+#: ../src/translations.js:197
 #, javascript-format
 msgctxt "day range"
 msgid "%s-%s"
 msgstr "%s—%s"
 
-#: ../src/translations.js:209
+#: ../src/translations.js:208
 msgid "public holidays"
 msgstr "јавни празници"
 
-#: ../src/translations.js:211
+#: ../src/translations.js:210
 msgid "school holidays"
 msgstr "школски празници"
 
@@ -1130,13 +1303,13 @@ msgstr "школски празници"
 #. * the translation. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: ../src/translations.js:251
+#: ../src/translations.js:250
 #, javascript-format
 msgctxt "time interval list"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: ../src/translations.js:265
+#: ../src/translations.js:264
 msgid "not open"
 msgstr "није отворено"
 
@@ -1147,7 +1320,7 @@ msgstr "није отворено"
 #. * translation as needed. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: ../src/translations.js:280
+#: ../src/translations.js:279
 #, javascript-format
 msgctxt "time interval"
 msgid "%s-%s"
@@ -1156,21 +1329,21 @@ msgstr "%s—%s"
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: ../src/translations.js:346
+#: ../src/translations.js:345
 msgid "wired"
 msgstr "жичани"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: ../src/translations.js:351
+#: ../src/translations.js:350
 msgid "terminal"
 msgstr "интернет кафе"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: ../src/translations.js:356
+#: ../src/translations.js:355
 msgid "service"
 msgstr "услуга"
 
@@ -1225,9 +1398,6 @@ msgstr "%f стопа"
 
 #~ msgid "Position not found"
 #~ msgstr "Нисам пронашао положај"
-
-#~ msgid "Show help"
-#~ msgstr "Прикажи помоћ"
 
 #~ msgid "Edit Location"
 #~ msgstr "Уреди место"
