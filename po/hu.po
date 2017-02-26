@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the gnome-maps package.
 #
 # Balázs Úr <urbalazs at gmail dot com>, 2013, 2014, 2015, 2016.
-# Gabor Kelemen <kelemeng at gnome dot hu>, 2013, 2015, 2016.
+# Gabor Kelemen <kelemeng at gnome dot hu>, 2013, 2015, 2016, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-11-29 08:56+0000\n"
-"PO-Revision-Date: 2016-12-08 22:47+0100\n"
+"POT-Creation-Date: 2017-02-21 21:31+0000\n"
+"PO-Revision-Date: 2017-02-23 00:36+0100\n"
 "Last-Translator: Gabor Kelemen <kelemeng at ubuntu dot com>\n"
 "Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
@@ -34,9 +34,9 @@ msgid ""
 "quickly find the place you’re looking for by searching for a city or street, "
 "or locate a place to meet a friend."
 msgstr ""
-"A Térképek gyors hozzáférést ad térképekhez, az egész világról. Lehetővé "
+"A Térképek gyors hozzáférést ad térképekhez az egész világról. Lehetővé "
 "teszi egy keresett hely gyors megtalálását település vagy utca keresésével, "
-"vagy találni egy a helyet, ahol ismerőseivel találkozhat."
+"vagy találni egy helyet, ahol ismerőseivel találkozhat."
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:4
 msgid ""
@@ -59,7 +59,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:85 ../src/mainWindow.js:441
+#: ../src/application.js:87 ../src/mainWindow.js:441
 msgid "Maps"
 msgstr "Térképek"
 
@@ -376,9 +376,6 @@ msgid "Maps is offline!"
 msgstr "A Térképek kapcsolat nélküli!"
 
 #: ../data/ui/main-window.ui.h:8
-#| msgid ""
-#| "Maps need an active internet connection to function properly, but one "
-#| "can't be found."
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -437,16 +434,11 @@ msgid "Sign In"
 msgstr "Bejelentkezés"
 
 #: ../data/ui/osm-account-dialog.ui.h:8
-#| msgid "Don't have an account?"
 msgid "Don’t have an account?"
 msgstr "Nincs fiókja?"
 
 #. The label should contain the link to the OSM reset password page with a translated title
 #: ../data/ui/osm-account-dialog.ui.h:10
-#| msgid ""
-#| "Sorry, that didn't work. Please try again, or visit\n"
-#| "<a href=\"https://www.openstreetmap.org/user/forgot-password"
-#| "\">OpenStreetMap</a> to reset your password."
 msgid ""
 "Sorry, that didn’t work. Please try again, or visit\n"
 "<a href=\"https://www.openstreetmap.org/user/forgot-password"
@@ -458,7 +450,6 @@ msgstr ""
 "oldalt a jelszava helyreállításához."
 
 #: ../data/ui/osm-account-dialog.ui.h:12
-#| msgid "The verification code didn't match, please try again."
 msgid "The verification code didn’t match, please try again."
 msgstr "Az ellenőrző kód nem egyezik, próbálja újra."
 
@@ -529,7 +520,7 @@ msgstr "Nemrég használt"
 
 #: ../data/ui/osm-edit-dialog.ui.h:8
 msgid "Edit on OpenStreetMap"
-msgstr "Szerkesztés az OpenStreetMap-en"
+msgstr "Szerkesztés az OpenStreetMapen"
 
 #: ../data/ui/osm-edit-dialog.ui.h:9
 msgid "Cancel"
@@ -569,11 +560,81 @@ msgstr "Láthatóság ki- és bekapcsolása"
 
 #: ../data/ui/sidebar.ui.h:1
 msgid "Route search by GraphHopper"
-msgstr "A GraphHopper által megkeresett útvonal"
+msgstr "Útvonalkeresés a GraphHopperrel"
+
+#: ../data/ui/sidebar.ui.h:2
+msgid "Route search by OpenTripPlanner"
+msgstr "Útvonalkeresés az OpenTripPlannerrel"
+
+#: ../data/ui/sidebar.ui.h:3
+msgid ""
+"Routing itineraries for public transit is provided by GNOME\n"
+"using timetable data obtained from transit companies or agencies.\n"
+"The companies and agencies can not be held responsible for the results "
+"shown.\n"
+"GNOME can not guarantee correctness of the itineraries and schedules shown.\n"
+"Names and brands shown are to be considered as registered trademarks when "
+"applicable."
+msgstr ""
+"A GNOME a közlekedési útvonalakat a közlekedési társaságoktól vagy\n"
+"ügynökségektől kapott menetrendadatokból állítja elő. A cégek és\n"
+"ügynökségek nem tekinthetők felelősnek a megjelenített találatokért.\n"
+"A GNOME nem garantálhatja a megjelenített útvonalak és menetrendek "
+"helyességét.\n"
+"A megjelenített nevek és márkák adott esetben bejegyzett védjegyeknek "
+"tekintendők."
 
 #: ../data/ui/social-place-more-results-row.ui.h:1
 msgid "Show more results"
 msgstr "További találatok megjelenítése"
+
+#: ../data/ui/transit-leg-row.ui.h:1
+msgid "Hide intermediate stops and information"
+msgstr "Közbenső megállók és információk elrejtése"
+
+#: ../data/ui/transit-leg-row.ui.h:2
+msgid "Show intermediate stops and information"
+msgstr "Közbenső megállók és információk megjelenítése"
+
+#. Indicates searching for the next available itineraries
+#: ../data/ui/transit-options-panel.ui.h:2
+msgid "Leave Now"
+msgstr "Indulás most"
+
+#. Indicates searching for itineraries leaving at the specified time at the earliest
+#: ../data/ui/transit-options-panel.ui.h:4
+msgid "Leave By"
+msgstr "Indulás ekkor"
+
+#. Indicates searching for itineraries arriving no later than the specified time
+#: ../data/ui/transit-options-panel.ui.h:6
+msgid "Arrive By"
+msgstr "Érkezés ekkor"
+
+#. Header indicating selected modes of transit
+#: ../data/ui/transit-options-panel.ui.h:8
+msgid "Show"
+msgstr "Megjelenítés"
+
+#: ../data/ui/transit-options-panel.ui.h:9
+msgid "Buses"
+msgstr "Buszok"
+
+#: ../data/ui/transit-options-panel.ui.h:10
+msgid "Trams"
+msgstr "Villamosok"
+
+#: ../data/ui/transit-options-panel.ui.h:11
+msgid "Trains"
+msgstr "Vonatok"
+
+#: ../data/ui/transit-options-panel.ui.h:12
+msgid "Subway"
+msgstr "Metró"
+
+#: ../data/ui/transit-options-panel.ui.h:13
+msgid "Ferries"
+msgstr "Kompok"
 
 #: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:120
 msgid "Current location"
@@ -610,7 +671,7 @@ msgstr "Szükséges attribútumok hiányoznak"
 msgid "Could not find OSM element"
 msgstr "Nem sikerült megtalálni az OSM elemet"
 
-#: ../src/application.js:101
+#: ../src/application.js:103
 msgid "A path to a local tiles directory structure"
 msgstr "Egy útvonal a helyi csempék könyvtárszerkezetéhez"
 
@@ -664,7 +725,6 @@ msgstr "Hiba történt"
 #. Translators: %s is the place name that user wanted to check-in
 #: ../src/checkIn.js:135
 #, javascript-format
-#| msgid "Cannot find \"%s\" in the social service"
 msgid "Cannot find “%s” in the social service"
 msgstr "Nem található „%s” a közösségi szolgáltatásban"
 
@@ -680,23 +740,23 @@ msgstr ""
 "A hitelesítési adatok lejártak, nyissa meg az Online fiókokat a "
 "bejelentkezéshez, és engedélyezze ezt a fiókot"
 
-#: ../src/contextMenu.js:97
+#: ../src/contextMenu.js:96
 msgid "Route from here"
 msgstr "Útvonal innen"
 
-#: ../src/contextMenu.js:99
+#: ../src/contextMenu.js:98
 msgid "Add destination"
 msgstr "Cél hozzáadása"
 
-#: ../src/contextMenu.js:101
+#: ../src/contextMenu.js:100
 msgid "Route to here"
 msgstr "Útvonal ide"
 
-#: ../src/contextMenu.js:130
+#: ../src/contextMenu.js:129
 msgid "Nothing found here!"
 msgstr "Itt nincs semmi!"
 
-#: ../src/contextMenu.js:187
+#: ../src/contextMenu.js:186
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -737,6 +797,19 @@ msgstr "feldolgozási hiba"
 msgid "unknown geometry"
 msgstr "ismeretlen geometria"
 
+#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:630
+msgid "Route request failed."
+msgstr "Az útvonalkérés nem sikerült."
+
+#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:614
+#: ../src/openTripPlanner.js:728
+msgid "No route found."
+msgstr "Nem található útvonal."
+
+#: ../src/graphHopper.js:193
+msgid "Start!"
+msgstr "Indulás!"
+
 #: ../src/layersPopover.js:62
 msgid "All Layer Files"
 msgstr "Minden rétegfájl"
@@ -755,17 +828,21 @@ msgstr ""
 msgid "A map application for GNOME"
 msgstr "Térképalkalmazás a GNOME-hoz"
 
-#: ../src/mapView.js:260
+#: ../src/mapView.js:354
 msgid "File type is not supported"
 msgstr "A fájltípus nem támogatott"
 
-#: ../src/mapView.js:267
+#: ../src/mapView.js:361
 msgid "Failed to open layer"
 msgstr "A réteg megnyitása nem sikerült"
 
-#: ../src/mapView.js:303
+#: ../src/mapView.js:397
 msgid "Failed to open GeoURI"
 msgstr "A GeoURI megnyitása nem sikerült"
+
+#: ../src/openTripPlanner.js:626
+msgid "No timetable data found for this route."
+msgstr "Nem található menetrend ehhez az útvonalhoz."
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
@@ -994,29 +1071,17 @@ msgstr "kijelölt"
 msgid "From %s to %s"
 msgstr "Ettől: %s, eddig: %s"
 
-#: ../src/printOperation.js:47
+#: ../src/printOperation.js:48
 msgid "Loading map tiles for printing"
 msgstr "Térképszelvények betöltése nyomtatáshoz"
 
-#: ../src/printOperation.js:48
+#: ../src/printOperation.js:49
 msgid "You can abort printing if this takes too long"
 msgstr "Megszakíthatja a nyomtatást, ha ez túl sokáig tart"
 
-#: ../src/printOperation.js:50
+#: ../src/printOperation.js:51
 msgid "Abort printing"
 msgstr "Nyomtatás megszakítása"
-
-#: ../src/routeService.js:90
-msgid "No route found."
-msgstr "Nem található útvonal."
-
-#: ../src/routeService.js:101
-msgid "Route request failed."
-msgstr "Az útvonalkérés nem sikerült."
-
-#: ../src/routeService.js:178
-msgid "Start!"
-msgstr "Indulás!"
 
 #: ../src/sendToDialog.js:179
 msgid "Failed to open URI"
@@ -1027,10 +1092,127 @@ msgid "failed to load file"
 msgstr "nem sikerült betölteni a fájlt"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:208
+#: ../src/sidebar.js:285
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Becsült idő: %s"
+
+#. Translators: this a format string indicating arriving at the
+#. * destination of journey with the arrival address and transit
+#. * stop as the format parameter
+#: ../src/transitArrivalRow.js:56
+#, javascript-format
+msgid "Arrive at %s"
+msgstr "Érkezés ide: %s"
+
+#: ../src/transitArrivalRow.js:58
+msgid "Arrive"
+msgstr "Érkezés"
+
+#. Translators: this is a format string indicating instructions
+#. * starting a journey at the address given as the parameter
+#.
+#: ../src/transitLegRow.js:74
+#, javascript-format
+msgid "Start at %s"
+msgstr "Indulás innen: %s"
+
+#. Translators: this indicates starting a journey at a location
+#. * with no set name (such as when the user started routing from
+#. * an arbitrary point on the map)
+#.
+#: ../src/transitLegRow.js:80
+msgid "Start"
+msgstr "Indulás"
+
+#: ../src/transitLegRow.js:108
+msgid "Show walking instructions"
+msgstr "Gyaloglási utasítások megjelenítése"
+
+#: ../src/transitLegRow.js:109
+msgid "Hide walking instructions"
+msgstr "Gyaloglási utasítások elrejtése"
+
+#. Translators: this is a format string indicating walking a certain
+#. * distance, with the distance expression being the %s placeholder
+#.
+#: ../src/transitLegRow.js:134
+#, javascript-format
+msgid "Walk %s"
+msgstr "Gyaloglás: %s"
+
+#: ../src/transitMoreRow.js:41
+msgid "Load earlier alternatives"
+msgstr "Korábbi lehetőségek betöltése"
+
+#: ../src/transitMoreRow.js:43
+msgid "Load later alternatives"
+msgstr "Későbbi lehetőségek betöltése"
+
+#.
+#. * Translators: this is a format string giving the equivalent to
+#. * "may 29" according to the current locale's convensions.
+#.
+#: ../src/transitOptionsPanel.js:141
+msgctxt "month-day-date"
+msgid "%b %e"
+msgstr "%b. %e."
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time, like:
+#. * "12:00 – 13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: ../src/transitPlan.js:248
+#, javascript-format
+msgid "%s – %s"
+msgstr "%s – %s"
+
+#. translators: this is an indication for a trip duration of
+#. * less than an hour, with only the minutes part, using plural forms
+#. * as appropriate
+#.
+#: ../src/transitPlan.js:275
+#, javascript-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d perc"
+msgstr[1] "%d perc"
+
+#. translators: this is an indication for a trip duration,
+#. * where the duration is an exact number of hours (i.e. no
+#. * minutes part), using plural forms as appropriate
+#.
+#: ../src/transitPlan.js:286
+#, javascript-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d óra"
+msgstr[1] "%d óra"
+
+#. translators: this is an indication for a trip duration
+#. * where the duration contains an hour and minute part, it's
+#. * pluralized on the hours part
+#.
+#: ../src/transitPlan.js:292
+#, javascript-format
+#| msgid "%d:%0d hour"
+#| msgid_plural "%d:%02d hours"
+msgid "%d:%02d hour"
+msgid_plural "%d:%02d hours"
+msgstr[0] "%d:%02d óra"
+msgstr[1] "%d:%02d óra"
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time in a more compact manner to show in the instruction
+#. * list for an itinerary, like:
+#. * "12:00–13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: ../src/transitPlan.js:611
+#, javascript-format
+msgid "%s–%s"
+msgstr "%s–%s"
 
 #: ../src/translations.js:56
 msgid "around the clock"
@@ -1234,10 +1416,6 @@ msgstr "%f láb"
 
 #~ msgid "Edit Location"
 #~ msgstr "Hely szerkesztése"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Show help"
-#~ msgstr "Súgó megjelenítése"
 
 #~ msgid "Country code: %s"
 #~ msgstr "Országkód: %s"
