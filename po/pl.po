@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-20 00:18+0100\n"
-"PO-Revision-Date: 2017-02-20 00:19+0100\n"
+"POT-Creation-Date: 2017-02-26 21:19+0100\n"
+"PO-Revision-Date: 2017-02-26 21:20+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -592,39 +592,43 @@ msgstr "Ukrywa przystanki pośrednie i informacje"
 msgid "Show intermediate stops and information"
 msgstr "Wyświetla przystanki pośrednie i informacje"
 
-#: ../data/ui/transit-options-panel.ui.h:1
+#. Indicates searching for the next available itineraries
+#: ../data/ui/transit-options-panel.ui.h:2
 msgid "Leave Now"
 msgstr "Wyjście teraz"
 
-#: ../data/ui/transit-options-panel.ui.h:2
+#. Indicates searching for itineraries leaving at the specified time at the earliest
+#: ../data/ui/transit-options-panel.ui.h:4
 msgid "Leave By"
 msgstr "Wyjście przed"
 
-#: ../data/ui/transit-options-panel.ui.h:3
+#. Indicates searching for itineraries arriving no later than the specified time
+#: ../data/ui/transit-options-panel.ui.h:6
 msgid "Arrive By"
 msgstr "Przybycie przed"
 
-#: ../data/ui/transit-options-panel.ui.h:4
+#. Header indicating selected modes of transit
+#: ../data/ui/transit-options-panel.ui.h:8
 msgid "Show"
 msgstr "Wyświetlanie"
 
-#: ../data/ui/transit-options-panel.ui.h:5
+#: ../data/ui/transit-options-panel.ui.h:9
 msgid "Buses"
 msgstr "Autobusy"
 
-#: ../data/ui/transit-options-panel.ui.h:6
+#: ../data/ui/transit-options-panel.ui.h:10
 msgid "Trams"
 msgstr "Tramwaje"
 
-#: ../data/ui/transit-options-panel.ui.h:7
+#: ../data/ui/transit-options-panel.ui.h:11
 msgid "Trains"
 msgstr "Pociągi"
 
-#: ../data/ui/transit-options-panel.ui.h:8
+#: ../data/ui/transit-options-panel.ui.h:12
 msgid "Subway"
 msgstr "Metro"
 
-#: ../data/ui/transit-options-panel.ui.h:9
+#: ../data/ui/transit-options-panel.ui.h:13
 msgid "Ferries"
 msgstr "Promy"
 
@@ -1163,20 +1167,41 @@ msgstr "%e %b"
 msgid "%s – %s"
 msgstr "%s-%s"
 
-#: ../src/transitPlan.js:271
+#. translators: this is an indication for a trip duration of
+#. * less than an hour, with only the minutes part, using plural forms
+#. * as appropriate
+#.
+#: ../src/transitPlan.js:275
 #, javascript-format
 msgid "%d minute"
-msgstr "%d min."
+msgid_plural "%d minutes"
+msgstr[0] "%d minuta"
+msgstr[1] "%d minuty"
+msgstr[2] "%d minut"
 
-#: ../src/transitPlan.js:278
+#. translators: this is an indication for a trip duration,
+#. * where the duration is an exact number of hours (i.e. no
+#. * minutes part), using plural forms as appropriate
+#.
+#: ../src/transitPlan.js:286
 #, javascript-format
 msgid "%d hour"
-msgstr "%d godz."
+msgid_plural "%d hours"
+msgstr[0] "%d godzina"
+msgstr[1] "%d godziny"
+msgstr[2] "%d godzin"
 
-#: ../src/transitPlan.js:280
+#. translators: this is an indication for a trip duration
+#. * where the duration contains an hour and minute part, it's
+#. * pluralized on the hours part
+#.
+#: ../src/transitPlan.js:292
 #, javascript-format
-msgid "%d:%0d hour"
-msgstr "%d∶%0d godz."
+msgid "%d:%02d hour"
+msgid_plural "%d:%02d hours"
+msgstr[0] "%d∶%02d godzina"
+msgstr[1] "%d∶%02d godziny"
+msgstr[2] "%d∶%02d godzin"
 
 #. Translators: this is a format string for showing a departure and
 #. * arrival time in a more compact manner to show in the instruction
@@ -1184,7 +1209,7 @@ msgstr "%d∶%0d godz."
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: ../src/transitPlan.js:598
+#: ../src/transitPlan.js:611
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s-%s"
