@@ -1,18 +1,18 @@
 # French Translation of GNOME Maps.
-# Copyright (C) 2013-2016 Free Software Foundation, Inc.
+# Copyright (C) 2013-2017 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-maps package.
 # Ouharzoune Mohammed <karim-ouh@hotmail.fr>, 2013
-# Claude Paroz <claude@2xlibre.net>, 2013-2016
+# Claude Paroz <claude@2xlibre.net>, 2013-2017
 # Alexandre Franke <alexandre.franke@gmail.com>, 2016.
 # Guillaume Bernard <contact.guib@laposte.net>, 2014, 2015, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-08-22 18:54+0000\n"
-"PO-Revision-Date: 2016-08-28 14:14+0200\n"
+"POT-Creation-Date: 2017-02-24 22:30+0000\n"
+"PO-Revision-Date: 2017-02-25 11:56+0100\n"
 "Last-Translator: Claude Paroz <claude@2xlibre.net>\n"
 "Language-Team: français <gnomefr@traduc.org>\n"
 "Language: fr\n"
@@ -62,7 +62,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:85 ../src/mainWindow.js:420
+#: ../src/application.js:87 ../src/mainWindow.js:441
 msgid "Maps"
 msgstr "Cartes"
 
@@ -384,7 +384,7 @@ msgstr "Cartes est hors ligne !"
 
 #: ../data/ui/main-window.ui.h:8
 msgid ""
-"Maps need an active internet connection to function properly, but one can't "
+"Maps need an active internet connection to function properly, but one can’t "
 "be found."
 msgstr ""
 "Cartes a besoin d'une connexion Internet active et fonctionnelle, mais "
@@ -441,13 +441,13 @@ msgid "Sign In"
 msgstr "S'identifier"
 
 #: ../data/ui/osm-account-dialog.ui.h:8
-msgid "Don't have an account?"
+msgid "Don’t have an account?"
 msgstr "Vous n'avez pas de compte ?"
 
 #. The label should contain the link to the OSM reset password page with a translated title
 #: ../data/ui/osm-account-dialog.ui.h:10
 msgid ""
-"Sorry, that didn't work. Please try again, or visit\n"
+"Sorry, that didn’t work. Please try again, or visit\n"
 "<a href=\"https://www.openstreetmap.org/user/forgot-password"
 "\">OpenStreetMap</a> to reset your password."
 msgstr ""
@@ -456,7 +456,7 @@ msgstr ""
 "\">OpenStreetMap</a> pour réinitialiser votre mot de passe."
 
 #: ../data/ui/osm-account-dialog.ui.h:12
-msgid "The verification code didn't match, please try again."
+msgid "The verification code didn’t match, please try again."
 msgstr "Le code de vérification ne correspond pas, essayez encore une fois."
 
 #: ../data/ui/osm-account-dialog.ui.h:13
@@ -515,10 +515,10 @@ msgstr "Commentaire"
 #: ../data/ui/osm-edit-dialog.ui.h:5
 msgid ""
 "Map changes will be visible on all maps that use\n"
-"    OpenStreetMap data."
+"OpenStreetMap data."
 msgstr ""
 "Les modifications de la carte seront visibles sur toutes\n"
-"    les cartes qui utilisent des données OpenStreetMap."
+"les cartes qui utilisent des données OpenStreetMap."
 
 #: ../data/ui/osm-edit-dialog.ui.h:7
 msgid "Recently Used"
@@ -532,7 +532,7 @@ msgstr "Modifier sur OpenStreetMap"
 msgid "Cancel"
 msgstr "Annuler"
 
-#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:471
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:472
 msgid "Next"
 msgstr "Suivant"
 
@@ -568,9 +568,78 @@ msgstr "Inverser la visibilité"
 msgid "Route search by GraphHopper"
 msgstr "Recherche d'itinéraire avec GraphHopper"
 
+#: ../data/ui/sidebar.ui.h:2
+msgid "Route search by OpenTripPlanner"
+msgstr "Recherche d'itinéraire avec OpenTripPlanner"
+
+#: ../data/ui/sidebar.ui.h:3
+msgid ""
+"Routing itineraries for public transit is provided by GNOME\n"
+"using timetable data obtained from transit companies or agencies.\n"
+"The companies and agencies can not be held responsible for the results "
+"shown.\n"
+"GNOME can not guarantee correctness of the itineraries and schedules shown.\n"
+"Names and brands shown are to be considered as registered trademarks when "
+"applicable."
+msgstr ""
+"Les itinéraires par transport public proposés par GNOME utilisent\n"
+"des tableaux horaires obtenus des compagnies de transport.\n"
+"Ces compagnies ne peuvent être tenues responsables des résultats affichés.\n"
+"GNOME ne peut garantir l'exactitude des itinéraires et horaires présentés.\n"
+"Les noms et marques affichés doivent être considérés comme des marques "
+"déposées, le cas échéant."
+
 #: ../data/ui/social-place-more-results-row.ui.h:1
 msgid "Show more results"
 msgstr "Montrer plus de résultats"
+
+#: ../data/ui/transit-leg-row.ui.h:1
+msgid "Hide intermediate stops and information"
+msgstr "Masquer les arrêts et informations intermédiaires"
+
+#: ../data/ui/transit-leg-row.ui.h:2
+msgid "Show intermediate stops and information"
+msgstr "Afficher les arrêts et informations intermédiaires"
+
+#. Indicates searching for the next available itineraries
+#: ../data/ui/transit-options-panel.ui.h:2
+msgid "Leave Now"
+msgstr "Partir maintenant"
+
+#. Indicates searching for itineraries leaving at the specified time at the earliest
+#: ../data/ui/transit-options-panel.ui.h:4
+msgid "Leave By"
+msgstr "Départ"
+
+#. Indicates searching for itineraries arriving no later than the specified time
+#: ../data/ui/transit-options-panel.ui.h:6
+msgid "Arrive By"
+msgstr "Arrivée"
+
+#. Header indicating selected modes of transit
+#: ../data/ui/transit-options-panel.ui.h:8
+msgid "Show"
+msgstr "Afficher"
+
+#: ../data/ui/transit-options-panel.ui.h:9
+msgid "Buses"
+msgstr "Bus"
+
+#: ../data/ui/transit-options-panel.ui.h:10
+msgid "Trams"
+msgstr "Trams"
+
+#: ../data/ui/transit-options-panel.ui.h:11
+msgid "Trains"
+msgstr "Trains"
+
+#: ../data/ui/transit-options-panel.ui.h:12
+msgid "Subway"
+msgstr "Métros"
+
+#: ../data/ui/transit-options-panel.ui.h:13
+msgid "Ferries"
+msgstr "Bateaux"
 
 #: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:120
 msgid "Current location"
@@ -607,7 +676,7 @@ msgstr "Attributs obligatoires manquants"
 msgid "Could not find OSM element"
 msgstr "Impossible de trouver l'élément OSM"
 
-#: ../src/application.js:101
+#: ../src/application.js:103
 msgid "A path to a local tiles directory structure"
 msgstr "Un chemin vers un répertoire local de structure de tuiles"
 
@@ -654,15 +723,15 @@ msgid "Write an optional message to check in to %s."
 msgstr "Écrire un message optionnel pour votre annonce de localisation à %s."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:508
+#: ../src/osmEditDialog.js:509
 msgid "An error has occurred"
 msgstr "Une erreur est survenue"
 
 #. Translators: %s is the place name that user wanted to check-in
 #: ../src/checkIn.js:135
 #, javascript-format
-msgid "Cannot find \"%s\" in the social service"
-msgstr "Impossible de trouver « %s » sur le service social."
+msgid "Cannot find “%s” in the social service"
+msgstr "Impossible de trouver « %s » sur le réseau social"
 
 #: ../src/checkIn.js:137
 msgid "Cannot find a suitable place to check-in in this location"
@@ -678,23 +747,23 @@ msgstr ""
 "Les informations d'authenfication ont expiré, ouvrez Comptes en ligne pour "
 "vous connecter et activer ce compte"
 
-#: ../src/contextMenu.js:97
+#: ../src/contextMenu.js:96
 msgid "Route from here"
 msgstr "Itinéraire depuis ici"
 
-#: ../src/contextMenu.js:99
+#: ../src/contextMenu.js:98
 msgid "Add destination"
 msgstr "Ajouter une destination"
 
-#: ../src/contextMenu.js:101
+#: ../src/contextMenu.js:100
 msgid "Route to here"
 msgstr "Itinéraire jusqu'à ce point"
 
-#: ../src/contextMenu.js:130
+#: ../src/contextMenu.js:129
 msgid "Nothing found here!"
 msgstr "Rien n'a été trouvé à cet endroit !"
 
-#: ../src/contextMenu.js:187
+#: ../src/contextMenu.js:186
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -711,7 +780,7 @@ msgid "You do not have permission to save there"
 msgstr "Vous n'avez pas la permission d'enregistrer à cet endroit"
 
 #: ../src/exportViewDialog.js:160
-msgid "The directory does not exists"
+msgid "The directory does not exist"
 msgstr "Le dossier n'existe pas"
 
 #: ../src/exportViewDialog.js:162
@@ -735,36 +804,53 @@ msgstr "erreur d'analyse"
 msgid "unknown geometry"
 msgstr "géométrie inconnue"
 
+#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:630
+msgid "Route request failed."
+msgstr "Échec de la recherche d'itinéraire."
+
+#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:614
+#: ../src/openTripPlanner.js:728
+msgid "No route found."
+msgstr "Aucun itinéraire trouvé."
+
+#: ../src/graphHopper.js:193
+msgid "Start!"
+msgstr "C'est parti !"
+
 #: ../src/layersPopover.js:62
 msgid "All Layer Files"
 msgstr "Tous les fichiers calques"
 
-#: ../src/mainWindow.js:366
+#: ../src/mainWindow.js:387
 msgid "Failed to connect to location service"
 msgstr "Échec à la connexion au service de localisation"
 
-#: ../src/mainWindow.js:418
+#: ../src/mainWindow.js:439
 msgid "translator-credits"
 msgstr ""
 "Ouharzoune Mohammed <karim-ouh@hotmail.fr>\n"
 "Claude Paroz <claude@2xlibre.net>\n"
 "Guillaume Bernard <contact.guib@laposte.net>"
 
-#: ../src/mainWindow.js:421
+#: ../src/mainWindow.js:442
 msgid "A map application for GNOME"
 msgstr "Une application cartographique pour GNOME"
 
-#: ../src/mapView.js:260
+#: ../src/mapView.js:354
 msgid "File type is not supported"
 msgstr "Le type de fichier n'est pas pris en charge"
 
-#: ../src/mapView.js:267
+#: ../src/mapView.js:361
 msgid "Failed to open layer"
 msgstr "Échec d'ouverture de la couche"
 
-#: ../src/mapView.js:303
+#: ../src/mapView.js:397
 msgid "Failed to open GeoURI"
 msgstr "Échec d'ouverture de la Geo URI"
+
+#: ../src/openTripPlanner.js:626
+msgid "No timetable data found for this route."
+msgstr "Aucun horaire trouvé pour cet itinéraire."
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
@@ -893,7 +979,7 @@ msgstr "Accès à Internet"
 #. Translators:
 #. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
 #.
-#: ../src/osmEditDialog.js:176 ../src/translations.js:341
+#: ../src/osmEditDialog.js:176 ../src/translations.js:340
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
 
@@ -915,11 +1001,11 @@ msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Ajout à OpenStreetMap"
 
-#: ../src/osmEditDialog.js:339
+#: ../src/osmEditDialog.js:340
 msgid "Select Type"
 msgstr "Sélectionner le type"
 
-#: ../src/osmEditDialog.js:457
+#: ../src/osmEditDialog.js:458
 msgid "Done"
 msgstr "Terminé"
 
@@ -957,7 +1043,7 @@ msgstr "Échec à l'analyse de la Geo URI"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: ../src/place.js:178 ../src/translations.js:330
+#: ../src/place.js:178 ../src/translations.js:329
 msgid "yes"
 msgstr "oui"
 
@@ -978,7 +1064,7 @@ msgstr "limité"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: ../src/place.js:191 ../src/translations.js:336
+#: ../src/place.js:191 ../src/translations.js:335
 msgid "no"
 msgstr "non"
 
@@ -996,29 +1082,17 @@ msgstr "réservé"
 msgid "From %s to %s"
 msgstr "De %s à %s"
 
-#: ../src/printOperation.js:47
+#: ../src/printOperation.js:48
 msgid "Loading map tiles for printing"
 msgstr "Chargement des tuiles de carte pour l'impression"
 
-#: ../src/printOperation.js:48
+#: ../src/printOperation.js:49
 msgid "You can abort printing if this takes too long"
 msgstr "Vous pouvez interrompre l'impression si cela prend trop de temps"
 
-#: ../src/printOperation.js:50
+#: ../src/printOperation.js:51
 msgid "Abort printing"
 msgstr "Interrompre l'impression"
-
-#: ../src/routeService.js:90
-msgid "No route found."
-msgstr "Aucun itinéraire trouvé."
-
-#: ../src/routeService.js:101
-msgid "Route request failed."
-msgstr "Échec de la recherche d'itinéraire."
-
-#: ../src/routeService.js:178
-msgid "Start!"
-msgstr "C'est parti !"
 
 #: ../src/sendToDialog.js:179
 msgid "Failed to open URI"
@@ -1029,16 +1103,131 @@ msgid "failed to load file"
 msgstr "impossible de charger le fichier"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:208
+#: ../src/sidebar.js:285
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Temps estimé : %s"
 
-#: ../src/translations.js:55 ../src/translations.js:57
+#. Translators: this a format string indicating arriving at the
+#. * destination of journey with the arrival address and transit
+#. * stop as the format parameter
+#: ../src/transitArrivalRow.js:56
+#, javascript-format
+msgid "Arrive at %s"
+msgstr "Arrivée à %s"
+
+#: ../src/transitArrivalRow.js:58
+msgid "Arrive"
+msgstr "Arrivée"
+
+#. Translators: this is a format string indicating instructions
+#. * starting a journey at the address given as the parameter
+#.
+#: ../src/transitLegRow.js:74
+#, javascript-format
+msgid "Start at %s"
+msgstr "Départ de %s"
+
+#. Translators: this indicates starting a journey at a location
+#. * with no set name (such as when the user started routing from
+#. * an arbitrary point on the map)
+#.
+#: ../src/transitLegRow.js:80
+msgid "Start"
+msgstr "Départ"
+
+#: ../src/transitLegRow.js:108
+msgid "Show walking instructions"
+msgstr "Montrer les instructions de marche à pied"
+
+#: ../src/transitLegRow.js:109
+msgid "Hide walking instructions"
+msgstr "Masquer les instructions de marche à pied"
+
+#. Translators: this is a format string indicating walking a certain
+#. * distance, with the distance expression being the %s placeholder
+#.
+#: ../src/transitLegRow.js:134
+#, javascript-format
+msgid "Walk %s"
+msgstr "Marcher %s"
+
+#: ../src/transitMoreRow.js:41
+msgid "Load earlier alternatives"
+msgstr "Charger les alternatives précédentes"
+
+#: ../src/transitMoreRow.js:43
+msgid "Load later alternatives"
+msgstr "Charger les alternatives suivantes"
+
+#.
+#. * Translators: this is a format string giving the equivalent to
+#. * "may 29" according to the current locale's convensions.
+#.
+#: ../src/transitOptionsPanel.js:141
+msgctxt "month-day-date"
+msgid "%b %e"
+msgstr "%e %b"
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time, like:
+#. * "12:00 – 13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: ../src/transitPlan.js:248
+#, javascript-format
+msgid "%s – %s"
+msgstr "%s – %s"
+
+#. translators: this is an indication for a trip duration of
+#. * less than an hour, with only the minutes part, using plural forms
+#. * as appropriate
+#.
+#: ../src/transitPlan.js:275
+#, javascript-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d minute"
+msgstr[1] "%d minutes"
+
+#. translators: this is an indication for a trip duration,
+#. * where the duration is an exact number of hours (i.e. no
+#. * minutes part), using plural forms as appropriate
+#.
+#: ../src/transitPlan.js:286
+#, javascript-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d heure"
+msgstr[1] "%d heures"
+
+#. translators: this is an indication for a trip duration
+#. * where the duration contains an hour and minute part, it's
+#. * pluralized on the hours part
+#.
+#: ../src/transitPlan.js:292
+#, javascript-format
+msgid "%d:%02d hour"
+msgid_plural "%d:%02d hours"
+msgstr[0] "%d:%02d heure"
+msgstr[1] "%d:%02d heures"
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time in a more compact manner to show in the instruction
+#. * list for an itinerary, like:
+#. * "12:00–13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: ../src/transitPlan.js:611
+#, javascript-format
+msgid "%s–%s"
+msgstr "%s–%s"
+
+#: ../src/translations.js:56
 msgid "around the clock"
 msgstr "24h/24"
 
-#: ../src/translations.js:59
+#: ../src/translations.js:58
 msgid "from sunrise to sunset"
 msgstr "du lever au coucher du soleil"
 
@@ -1048,7 +1237,7 @@ msgstr "du lever au coucher du soleil"
 #. * The space between the format place holders could be
 #. * substituted with the appropriate separator.
 #.
-#: ../src/translations.js:78
+#: ../src/translations.js:77
 #, javascript-format
 msgctxt "time range list"
 msgid "%s %s"
@@ -1060,7 +1249,7 @@ msgstr "%s %s"
 #. * The space between the format place holders could be
 #. * substituted with the appropriate separator.
 #.
-#: ../src/translations.js:90
+#: ../src/translations.js:89
 #, javascript-format
 msgctxt "time range list"
 msgid "%s %s %s"
@@ -1073,7 +1262,7 @@ msgstr "%s %s %s"
 #. * The space between the format place holders could be substituted with
 #. * the appropriate separator or phrase and the ordering of the arguments
 #. * can be rearranged with the %n#s syntax.
-#: ../src/translations.js:121
+#: ../src/translations.js:120
 #, javascript-format
 msgctxt "time range component"
 msgid "%s %s"
@@ -1088,7 +1277,7 @@ msgstr "%s %s"
 #. * place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: ../src/translations.js:153
+#: ../src/translations.js:152
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s"
@@ -1103,30 +1292,30 @@ msgstr "%s, %s"
 #. * %s place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: ../src/translations.js:167
+#: ../src/translations.js:166
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s,%s"
 msgstr "%s, %s, %s"
 
-#: ../src/translations.js:186
+#: ../src/translations.js:185
 msgid "every day"
 msgstr "tous les jours"
 
 #. Translators:
 #. * This represents a range of days with a starting and ending day.
 #.
-#: ../src/translations.js:198
+#: ../src/translations.js:197
 #, javascript-format
 msgctxt "day range"
 msgid "%s-%s"
 msgstr "%s — %s"
 
-#: ../src/translations.js:209
+#: ../src/translations.js:208
 msgid "public holidays"
 msgstr "congés publics"
 
-#: ../src/translations.js:211
+#: ../src/translations.js:210
 msgid "school holidays"
 msgstr "congés scolaires"
 
@@ -1138,13 +1327,13 @@ msgstr "congés scolaires"
 #. * the translation. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: ../src/translations.js:251
+#: ../src/translations.js:250
 #, javascript-format
 msgctxt "time interval list"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: ../src/translations.js:265
+#: ../src/translations.js:264
 msgid "not open"
 msgstr "fermé"
 
@@ -1155,7 +1344,7 @@ msgstr "fermé"
 #. * translation as needed. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: ../src/translations.js:280
+#: ../src/translations.js:279
 #, javascript-format
 msgctxt "time interval"
 msgid "%s-%s"
@@ -1164,21 +1353,21 @@ msgstr "%s — %s"
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: ../src/translations.js:346
+#: ../src/translations.js:345
 msgid "wired"
 msgstr "filaire"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: ../src/translations.js:351
+#: ../src/translations.js:350
 msgid "terminal"
 msgstr "terminal"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: ../src/translations.js:356
+#: ../src/translations.js:355
 msgid "service"
 msgstr "service"
 
