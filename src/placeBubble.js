@@ -19,6 +19,7 @@
  * Author: Damián Nohales <damiannohales@gmail.com>
  */
 
+const GdkPixbuf = imports.gi.GdkPixbuf;
 const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
 const Format = imports.format;
@@ -35,6 +36,12 @@ const Place = imports.place;
 const PlaceFormatter = imports.placeFormatter;
 const PlaceStore = imports.placeStore;
 const Utils = imports.utils;
+const Wikipedia = imports.wikipedia;
+
+// maximum dimension of thumbnails to fetch from Wikipedia
+const THUMBNAIL_FETCH_SIZE = 128;
+// final scaled size of cropped thumnail
+const THUMBNAIL_FINAL_SIZE = 70;
 
 var PlaceBubble = new Lang.Class({
     Name: 'PlaceBubble',
@@ -104,9 +111,8 @@ var PlaceBubble = new Lang.Class({
     },
 
     _formatWikiLink: function(wiki) {
-        let tokens = wiki.split(':');
-        let lang = tokens[0];
-        let article = GLib.markup_escape_text(tokens.splice(1).join(':'), -1);
+        let lang = Wikipedia.getLanguage(wiki);
+        let article = Wikipedia.getArticle(wiki);
 
         return Format.vprintf('https://%s.wikipedia.org/wiki/%s', [ lang, article ]);
     },
@@ -242,6 +248,40 @@ var PlaceBubble = new Lang.Class({
         }
         this._expandButton.visible = expandedContent.length > 0;
         this._stack.visible_child = this._gridContent;
+
+        if (place.wiki)
+            this._requestWikipediaThumbnail(place.wiki);
+    },
+
+    _requestWikipediaThumbnail: function(wiki) {
+        Wikipedia.fetchArticleThumbnail(wiki, THUMBNAIL_FETCH_SIZE,
+                                        this._onThumbnailComplete.bind(this));
+    },
+
+    _onThumbnailComplete: function(thumbnail) {
+        if (thumbnail) {
+            this.thumbnail.pixbuf = this._cropAndScaleThumbnail(thumbnail);
+            this.iconStack.visible_child_name = 'thumbnail';
+        }
+    },
+
+    // returns a cropped square-shaped thumbnail
+    _cropAndScaleThumbnail: function(thumbnail) {
+        let width = thumbnail.get_width();
+        let height = thumbnail.get_height();
+        let croppedThumbnail;
+
+        if (width > height) {
+            let x = (width - height) / 2;
+            croppedThumbnail = thumbnail.new_subpixbuf(x, 0, height, height);
+        } else {
+            let y = (height - width) / 2;
+            croppedThumbnail = thumbnail.new_subpixbuf(0, y, width, width);
+        }
+
+        return croppedThumbnail.scale_simple(THUMBNAIL_FINAL_SIZE,
+                                             THUMBNAIL_FINAL_SIZE,
+                                             GdkPixbuf.InterpType.BILINEAR);
     },
 
     // clear the view widgets to be able to re-populate an updated place

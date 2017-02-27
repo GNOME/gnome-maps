@@ -70,6 +70,8 @@ var MapBubble = new Lang.Class({
         this.parent(params);
         let ui = Utils.getUIObject('map-bubble', [ 'bubble-main-grid',
                                                    'bubble-image',
+                                                   'bubble-thumbnail',
+                                                   'bubble-icon-stack',
                                                    'bubble-content-area',
                                                    'bubble-button-area',
                                                    'bubble-route-button',
@@ -78,6 +80,8 @@ var MapBubble = new Lang.Class({
                                                    'bubble-check-in-button',
                                                    'bubble-favorite-button-image']);
         this._image = ui.bubbleImage;
+        this._thumbnail = ui.bubbleThumbnail;
+        this._iconStack = ui.bubbleIconStack;
         this._content = ui.bubbleContentArea;
 
         if (!buttonFlags)
@@ -98,6 +102,14 @@ var MapBubble = new Lang.Class({
 
     get image() {
         return this._image;
+    },
+
+    get thumbnail() {
+        return this._thumbnail;
+    },
+
+    get iconStack() {
+        return this._iconStack;
     },
 
     get place() {
