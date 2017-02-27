@@ -7,10 +7,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-02-16 00:19+0000\n"
-"PO-Revision-Date: 2017-02-17 11:52+0100\n"
+"POT-Creation-Date: 2017-02-24 22:30+0000\n"
+"PO-Revision-Date: 2017-02-27 10:01+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -560,7 +560,6 @@ msgid "Route search by GraphHopper"
 msgstr "Ruta buscada por GraphHopper"
 
 #: ../data/ui/sidebar.ui.h:2
-#| msgid "Route search by GraphHopper"
 msgid "Route search by OpenTripPlanner"
 msgstr "Ruta buscada por OpenTripPlanner"
 
@@ -592,45 +591,46 @@ msgid "Hide intermediate stops and information"
 msgstr "Ocultar información y paradas intermedias"
 
 #: ../data/ui/transit-leg-row.ui.h:2
-#| msgid "Show more information"
 msgid "Show intermediate stops and information"
 msgstr "Mostrar información y paradas intermedias"
 
-#: ../data/ui/transit-options-panel.ui.h:1
+#. Indicates searching for the next available itineraries
+#: ../data/ui/transit-options-panel.ui.h:2
 msgid "Leave Now"
 msgstr "Salir ahora"
 
-#: ../data/ui/transit-options-panel.ui.h:2
+#. Indicates searching for itineraries leaving at the specified time at the earliest
+#: ../data/ui/transit-options-panel.ui.h:4
 msgid "Leave By"
 msgstr "Salir en"
 
-#: ../data/ui/transit-options-panel.ui.h:3
+#. Indicates searching for itineraries arriving no later than the specified time
+#: ../data/ui/transit-options-panel.ui.h:6
 msgid "Arrive By"
 msgstr "Llegar por"
 
-#: ../data/ui/transit-options-panel.ui.h:4
-#| msgctxt "shortcut window"
-#| msgid "Show help"
+#. Header indicating selected modes of transit
+#: ../data/ui/transit-options-panel.ui.h:8
 msgid "Show"
 msgstr "Mostrar"
 
-#: ../data/ui/transit-options-panel.ui.h:5
+#: ../data/ui/transit-options-panel.ui.h:9
 msgid "Buses"
 msgstr "Autobuses"
 
-#: ../data/ui/transit-options-panel.ui.h:6
+#: ../data/ui/transit-options-panel.ui.h:10
 msgid "Trams"
 msgstr "Tranvías"
 
-#: ../data/ui/transit-options-panel.ui.h:7
+#: ../data/ui/transit-options-panel.ui.h:11
 msgid "Trains"
 msgstr "Trenes"
 
-#: ../data/ui/transit-options-panel.ui.h:8
+#: ../data/ui/transit-options-panel.ui.h:12
 msgid "Subway"
 msgstr "Metro"
 
-#: ../data/ui/transit-options-panel.ui.h:9
+#: ../data/ui/transit-options-panel.ui.h:13
 msgid "Ferries"
 msgstr "Ferris"
 
@@ -1090,7 +1090,7 @@ msgid "failed to load file"
 msgstr "falló al cargar el archivo"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:282
+#: ../src/sidebar.js:285
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Tiempo estimado: %s"
@@ -1120,7 +1120,6 @@ msgstr "Empezar en %s"
 #. * an arbitrary point on the map)
 #.
 #: ../src/transitLegRow.js:80
-#| msgid "Start!"
 msgid "Start"
 msgstr "Inicio"
 
@@ -1132,6 +1131,9 @@ msgstr "Mostrar instrucciones del camino"
 msgid "Hide walking instructions"
 msgstr "Ocultar instrucciones del camino"
 
+#. Translators: this is a format string indicating walking a certain
+#. * distance, with the distance expression being the %s placeholder
+#.
 #: ../src/transitLegRow.js:134
 #, javascript-format
 msgid "Walk %s"
@@ -1145,6 +1147,10 @@ msgstr "Cargar alternativas anteriores"
 msgid "Load later alternatives"
 msgstr "Cargar alternativas posteriores"
 
+#.
+#. * Translators: this is a format string giving the equivalent to
+#. * "may 29" according to the current locale's convensions.
+#.
 #: ../src/transitOptionsPanel.js:141
 msgctxt "month-day-date"
 msgid "%b %e"
@@ -1160,21 +1166,41 @@ msgstr "%b %e"
 msgid "%s – %s"
 msgstr "%s – %s"
 
-#: ../src/transitPlan.js:271
+#. translators: this is an indication for a trip duration of
+#. * less than an hour, with only the minutes part, using plural forms
+#. * as appropriate
+#.
+#: ../src/transitPlan.js:275
 #, javascript-format
-#| msgid "%f min"
+#| msgid "%d minute"
 msgid "%d minute"
-msgstr "%d minuto"
+msgid_plural "%d minutes"
+msgstr[0] "%d minuto"
+msgstr[1] "%d minutos"
 
-#: ../src/transitPlan.js:278
+#. translators: this is an indication for a trip duration,
+#. * where the duration is an exact number of hours (i.e. no
+#. * minutes part), using plural forms as appropriate
+#.
+#: ../src/transitPlan.js:286
 #, javascript-format
+#| msgid "%d hour"
 msgid "%d hour"
-msgstr "%d hora"
+msgid_plural "%d hours"
+msgstr[0] "%d hora"
+msgstr[1] "%d horas"
 
-#: ../src/transitPlan.js:280
+#. translators: this is an indication for a trip duration
+#. * where the duration contains an hour and minute part, it's
+#. * pluralized on the hours part
+#.
+#: ../src/transitPlan.js:292
 #, javascript-format
-msgid "%d:%0d hour"
-msgstr "%d:%0d hora"
+#| msgid "%d:%0d hour"
+msgid "%d:%02d hour"
+msgid_plural "%d:%02d hours"
+msgstr[0] "%d:%02d hora"
+msgstr[1] "%d:%02d horas"
 
 #. Translators: this is a format string for showing a departure and
 #. * arrival time in a more compact manner to show in the instruction
@@ -1182,7 +1208,7 @@ msgstr "%d:%0d hora"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: ../src/transitPlan.js:598
+#: ../src/transitPlan.js:611
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
