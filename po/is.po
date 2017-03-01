@@ -1,14 +1,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Sveinn í Felli <sv1@fellsnet.is>, 2015.
+# Sveinn í Felli <sv1@fellsnet.is>, 2015, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-09-02 07:22+0000\n"
-"PO-Revision-Date: 2015-09-08 14:28+0000\n"
+"POT-Creation-Date: 2016-10-11 20:44+0000\n"
+"PO-Revision-Date: 2017-03-01 13:57+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
 "Language: is\n"
@@ -19,38 +19,46 @@ msgstr ""
 "X-Generator: Lokalize 1.5\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
+msgid "GNOME Maps"
+msgstr "GNOME-landakort"
+
+#: ../data/org.gnome.Maps.appdata.xml.in.h:2
+msgid "Find places around the world"
+msgstr ""
+
+#: ../data/org.gnome.Maps.appdata.xml.in.h:3
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
 "or locate a place to meet a friend."
 msgstr ""
 "Landakortaforritið gefur aðgang að landakortum hvaðanæva úr heiminum. Það "
-"hjálpar þér að finna staði, til dæmis með því að leita að götu eða bæ, nú eða "
-"með því að skoða kort til að finna góðan stað til að hitta vinina."
+"hjálpar þér að finna staði, til dæmis með því að leita að götu eða bæ, nú "
+"eða með því að skoða kort til að finna góðan stað til að hitta vinina."
 
-#: ../data/org.gnome.Maps.appdata.xml.in.h:2
+#: ../data/org.gnome.Maps.appdata.xml.in.h:4
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
 msgstr ""
-"Landakortaforritið notar OpenStreetMap gagnagrunninn, sem er samvinnuverkefni "
-"hundruða þúsunda manna víðsvegar um heiminn."
+"Landakortaforritið notar OpenStreetMap gagnagrunninn, sem er "
+"samvinnuverkefni hundruða þúsunda manna víðsvegar um heiminn."
 
 #. Translators: Search is carried out on OpenStreetMap data using Nominatim.
 #. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
 #. your language to see what words you can use for the translated search.
-#: ../data/org.gnome.Maps.appdata.xml.in.h:6
+#: ../data/org.gnome.Maps.appdata.xml.in.h:8
 msgid ""
 "You can even search for specific types of locations, such as “Pubs near Main "
 "Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
 msgstr ""
 "Þú getur líka leitað að sérstökum tegundum staðsetninga, eins og “Pöbbar "
-"nálægt Main Street, Boston”, \"Myndbandaleigur á Selfossi\" eða “Hótel nálægt "
-"Alexanderplatz, Berlín”."
+"nálægt Main Street, Boston”, \"Myndbandaleigur á Selfossi\" eða “Hótel "
+"nálægt Alexanderplatz, Berlín”."
 
-#. Translators: This is the program name. */
+#. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:367
+#: ../src/application.js:85 ../src/mainWindow.js:441
 msgid "Maps"
 msgstr "Landakort"
 
@@ -62,101 +70,128 @@ msgstr "Einfalt landakortaforrit"
 msgid "Maps;"
 msgstr "Landakort;"
 
+#: ../data/org.gnome.Maps.desktop.in.h:4
+msgid "Allows your location to be shown on the map."
+msgstr ""
+
 #: ../data/org.gnome.Maps.gschema.xml.h:1
+#| msgid "Open location"
+msgid "last viewed location"
+msgstr "síðasta skoðuð staðsetning"
+
+#: ../data/org.gnome.Maps.gschema.xml.h:2
+msgid "Coordinates of last viewed location."
+msgstr ""
+
+#: ../data/org.gnome.Maps.gschema.xml.h:3
 msgid "Window size"
 msgstr "Gluggastærð"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:2
+#: ../data/org.gnome.Maps.gschema.xml.h:4
 msgid "Window size (width and height)."
 msgstr "Gluggastærð (breidd og hæð)."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:3
+#: ../data/org.gnome.Maps.gschema.xml.h:5
 msgid "Window position"
 msgstr "Staðsetning glugga"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:4
+#: ../data/org.gnome.Maps.gschema.xml.h:6
 msgid "Window position (X and Y)."
 msgstr "Staðsetning glugga (x og y)."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:5
+#: ../data/org.gnome.Maps.gschema.xml.h:7
 msgid "Window maximized"
 msgstr "Gluggi hámarkaður"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:6
+#: ../data/org.gnome.Maps.gschema.xml.h:8
 msgid "Window maximization state"
 msgstr "Staða hámörkunar glugga"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:7
+#: ../data/org.gnome.Maps.gschema.xml.h:9
 msgid "Maximum number of search results"
 msgstr "Hámarksfjöldi leitarniðurstaðna"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:8
+#: ../data/org.gnome.Maps.gschema.xml.h:10
 msgid "Maximum number of search results from geocode search."
 msgstr "Hámarksfjöldi niðurstaðna úr leit með geocode."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:9
+#: ../data/org.gnome.Maps.gschema.xml.h:11
 msgid "Number of recent places to store"
 msgstr "Fjöldi nýlegra staða sem á að geyma"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:10
+#: ../data/org.gnome.Maps.gschema.xml.h:12
 msgid "Number of recently visited places to store."
 msgstr "Fjöldi nýlega heimsóttra staða sem á að geyma."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:11
-#| msgid "Number of recent places to store"
+#: ../data/org.gnome.Maps.gschema.xml.h:13
 msgid "Number of recent routes to store"
 msgstr "Fjöldi nýlegra leiða sem á að geyma"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:12
-#| msgid "Number of recently visited places to store."
+#: ../data/org.gnome.Maps.gschema.xml.h:14
 msgid "Number of recently visited routes to store."
 msgstr "Fjöldi nýlega notaðra leiða sem á að geyma."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:13
+#: ../data/org.gnome.Maps.gschema.xml.h:15
 msgid "Facebook check-in privacy setting"
 msgstr "Persónuleyndarstillingar við innskráningu á Facebook"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:14
+#: ../data/org.gnome.Maps.gschema.xml.h:16
 msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
 msgstr ""
 
-#: ../data/org.gnome.Maps.gschema.xml.h:15
+#: ../data/org.gnome.Maps.gschema.xml.h:17
 msgid "Foursquare check-in privacy setting"
 msgstr "Persónuleyndarstillingar við innskráningu á Foursquare"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:16
+#: ../data/org.gnome.Maps.gschema.xml.h:18
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
 msgstr ""
 
-#: ../data/org.gnome.Maps.gschema.xml.h:17
+#: ../data/org.gnome.Maps.gschema.xml.h:19
 msgid "Foursquare check-in Facebook broadcasting"
 msgstr ""
 
-#: ../data/org.gnome.Maps.gschema.xml.h:18
+#: ../data/org.gnome.Maps.gschema.xml.h:20
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
 msgstr ""
 
-#: ../data/org.gnome.Maps.gschema.xml.h:19
+#: ../data/org.gnome.Maps.gschema.xml.h:21
 msgid "Foursquare check-in Twitter broadcasting"
 msgstr ""
 
-#: ../data/org.gnome.Maps.gschema.xml.h:20
+#: ../data/org.gnome.Maps.gschema.xml.h:22
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
 msgstr ""
 
+#: ../data/org.gnome.Maps.gschema.xml.h:23
+msgid "OpenStreetMap username or e-mail address"
+msgstr ""
+
+#: ../data/org.gnome.Maps.gschema.xml.h:24
+msgid "Indicates if the user has signed in to edit OpenStreetMap data."
+msgstr ""
+
 #: ../data/ui/app-menu.ui.h:1
+msgid "Set up OpenStreetMap Account"
+msgstr "Setja upp OpenStreetMap aðgang"
+
+#: ../data/ui/app-menu.ui.h:2
+msgid "_Keyboard Shortcuts"
+msgstr "Flýtily_klar"
+
+#: ../data/ui/app-menu.ui.h:3
 msgid "About"
 msgstr "Um hugbúnaðinn"
 
-#: ../data/ui/app-menu.ui.h:2
+#: ../data/ui/app-menu.ui.h:4
 msgid "Quit"
 msgstr "Hætta"
 
@@ -172,7 +207,8 @@ msgstr "Senda á Facebook"
 msgid "Post on Twitter"
 msgstr "Senda á Twitter"
 
-#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/send-to-dialog.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/export-view-dialog.ui.h:2
+#: ../data/ui/send-to-dialog.ui.h:2 ../data/ui/shape-layer-file-chooser.ui.h:3
 msgid "_Cancel"
 msgstr "_Hætta við"
 
@@ -214,9 +250,92 @@ msgid "What’s here?"
 msgstr "Hvað er hér?"
 
 #: ../data/ui/context-menu.ui.h:2
-#| msgid "Open location"
 msgid "Copy Location"
 msgstr "Afrita staðsetningu"
+
+#: ../data/ui/context-menu.ui.h:3
+msgid "Export As Image"
+msgstr "Flytja út sem mynd"
+
+#: ../data/ui/context-menu.ui.h:4
+msgid "Add to OpenStreetMap"
+msgstr "Bæta í OpenStreetMap"
+
+#: ../data/ui/export-view-dialog.ui.h:1
+msgid "Export view"
+msgstr "Flytja út sýn"
+
+#: ../data/ui/export-view-dialog.ui.h:3
+msgid "_Export"
+msgstr "_Flytja út"
+
+#: ../data/ui/export-view-dialog.ui.h:4
+msgid "Include route and markers"
+msgstr "Hafa með leið og merkingar"
+
+#: ../data/ui/help-overlay.ui.h:1
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Almennt"
+
+#: ../data/ui/help-overlay.ui.h:2
+#| msgid "Show more results"
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Birta flýtilykla"
+
+#: ../data/ui/help-overlay.ui.h:3
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Leita"
+
+#: ../data/ui/help-overlay.ui.h:4
+#| msgid "Toggle route planner"
+msgctxt "shortcut window"
+msgid "Toggle route planner"
+msgstr "Víxla leiðagerð af/á"
+
+#: ../data/ui/help-overlay.ui.h:5
+msgctxt "shortcut window"
+msgid "Print route"
+msgstr "Prenta leið"
+
+#: ../data/ui/help-overlay.ui.h:6
+#| msgid "Quit"
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Hætta"
+
+#: ../data/ui/help-overlay.ui.h:7
+msgctxt "shortcut window"
+msgid "Map View"
+msgstr "Kortasýn"
+
+#: ../data/ui/help-overlay.ui.h:8
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr "Renna að"
+
+#: ../data/ui/help-overlay.ui.h:9
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr "Renna frá"
+
+#: ../data/ui/help-overlay.ui.h:10
+#| msgid "Toggle favorites"
+msgctxt "shortcut window"
+msgid "Toggle scale"
+msgstr "Víxla á milli kvarða"
+
+#: ../data/ui/help-overlay.ui.h:11
+#| msgid "Go to current location"
+msgctxt "shortcut window"
+msgid "Go to current location"
+msgstr "Fara á núverandi staðsetningu"
+
+#: ../data/ui/layers-popover.ui.h:1
+msgid "Load Map Layer"
+msgstr "Hlaða inn kortalagi"
 
 #: ../data/ui/location-service-notification.ui.h:1
 msgid "Turn on location services to find your location"
@@ -243,10 +362,14 @@ msgid "Toggle favorites"
 msgstr "Víxla Eftirlætum af/á"
 
 #: ../data/ui/main-window.ui.h:6
+msgid "Print Route"
+msgstr "Prenta leið"
+
+#: ../data/ui/main-window.ui.h:7
 msgid "Maps is offline!"
 msgstr "Kortin eru án nettengingar!"
 
-#: ../data/ui/main-window.ui.h:7
+#: ../data/ui/main-window.ui.h:8
 msgid ""
 "Maps need an active internet connection to function properly, but one can't "
 "be found."
@@ -254,7 +377,7 @@ msgstr ""
 "Landakortaforritið þarf virka internet-tengingu til að virka almennilega, en "
 "ekki hefur gengið að finna neina slíka."
 
-#: ../data/ui/main-window.ui.h:8
+#: ../data/ui/main-window.ui.h:9
 msgid "Check your connection and proxy settings."
 msgstr "Athugaðu tengi- og milliþjónastillingarnar þínar."
 
@@ -274,17 +397,159 @@ msgstr "Merkja sem Eftirlæti"
 msgid "Check in here"
 msgstr "Skrá inn hér"
 
-#: ../data/ui/search-popup.ui.h:1
+#: ../data/ui/osm-account-dialog.ui.h:1
+#| msgid "Select an account"
+msgid "OpenStreetMap Account"
+msgstr "OpenStreetMap aðgangur"
+
+#: ../data/ui/osm-account-dialog.ui.h:2
+msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"x-large\">Skrá inn til að breyta kortum</span>"
+
+#: ../data/ui/osm-account-dialog.ui.h:3
+msgid ""
+"Help to improve the map, using an\n"
+"OpenStreetMap account."
+msgstr ""
+
+#: ../data/ui/osm-account-dialog.ui.h:5
+msgid "Email"
+msgstr "Tölvupóstur"
+
+#: ../data/ui/osm-account-dialog.ui.h:6
+msgid "Password"
+msgstr "Lykilorð"
+
+#: ../data/ui/osm-account-dialog.ui.h:7
+msgid "Sign In"
+msgstr "Skrá inn"
+
+#: ../data/ui/osm-account-dialog.ui.h:8
+#| msgid "Select an account"
+msgid "Don't have an account?"
+msgstr "Ertu ekki með aðgang?"
+
+#. The label should contain the link to the OSM reset password page with a translated title
+#: ../data/ui/osm-account-dialog.ui.h:10
+msgid ""
+"Sorry, that didn't work. Please try again, or visit\n"
+"<a href=\"https://www.openstreetmap.org/user/forgot-password"
+"\">OpenStreetMap</a> to reset your password."
+msgstr ""
+
+#: ../data/ui/osm-account-dialog.ui.h:12
+msgid "The verification code didn't match, please try again."
+msgstr ""
+
+#: ../data/ui/osm-account-dialog.ui.h:13
+msgid "Enter verification code shown above"
+msgstr "Settu inn sannvottunarkóðann hér fyrir ofan"
+
+#: ../data/ui/osm-account-dialog.ui.h:14
+msgid "Verify"
+msgstr "Sannreyna"
+
+#: ../data/ui/osm-account-dialog.ui.h:15
+msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
+msgstr "<span weight=\"bold\" size=\"x-large\">Skráð inn</span>"
+
+#: ../data/ui/osm-account-dialog.ui.h:16
+msgid "Your OpenStreetMap account is active."
+msgstr "OpenStreetMap aðgangurinn þinn er virkur."
+
+#: ../data/ui/osm-account-dialog.ui.h:17
+msgid "Sign Out"
+msgstr "Skrá út"
+
+#: ../data/ui/osm-edit-address.ui.h:1
+msgid "Street"
+msgstr "Gata"
+
+#: ../data/ui/osm-edit-address.ui.h:2
+msgid "House number"
+msgstr "Húsnúmer"
+
+#: ../data/ui/osm-edit-address.ui.h:3
+#| msgid "Postal code: %s"
+msgid "Postal code"
+msgstr "Póstnúmer"
+
+#. This is the place name as it would be written in a postal address (typically coming after the postal code)
+#: ../data/ui/osm-edit-address.ui.h:5
+msgid "City"
+msgstr "Borg"
+
+#: ../data/ui/osm-edit-dialog.ui.h:1
+msgid "Type"
+msgstr "Tegund"
+
+#: ../data/ui/osm-edit-dialog.ui.h:2
+msgid "None"
+msgstr "Ekkert"
+
+#: ../data/ui/osm-edit-dialog.ui.h:3
+msgid "Add Field"
+msgstr "Bæta við reit"
+
+#: ../data/ui/osm-edit-dialog.ui.h:4
+msgid "Comment"
+msgstr "Athugasemd"
+
+#: ../data/ui/osm-edit-dialog.ui.h:5
+msgid ""
+"Map changes will be visible on all maps that use\n"
+"    OpenStreetMap data."
+msgstr ""
+"Breytingar á korti verða sýnilegar á öllum kortum sem nota\n"
+"    OpenStreetMap gögn."
+
+#: ../data/ui/osm-edit-dialog.ui.h:7
+msgid "Recently Used"
+msgstr "Nýlega notað"
+
+#: ../data/ui/osm-edit-dialog.ui.h:8
+msgid "Edit on OpenStreetMap"
+msgstr "Breyta í OpenStreetMap"
+
+#: ../data/ui/osm-edit-dialog.ui.h:9
+#| msgid "_Cancel"
+msgid "Cancel"
+msgstr "Hætta við"
+
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:472
+msgid "Next"
+msgstr "Næsta"
+
+#: ../data/ui/place-bubble.ui.h:1
+#| msgid "Show more results"
+msgid "Show more information"
+msgstr "Birta nánari upplýsingar"
+
+#: ../data/ui/place-popover.ui.h:1
 msgid "Press enter to search"
 msgstr "Ýttu á Enter til að leita"
+
+#: ../data/ui/route-entry.ui.h:1
+msgid "Drag to change order of the route"
+msgstr ""
 
 #: ../data/ui/send-to-dialog.ui.h:1
 msgid "Open location"
 msgstr "Opna staðsetningu"
 
-#: ../data/ui/send-to-dialog.ui.h:3
+#: ../data/ui/send-to-dialog.ui.h:3 ../data/ui/shape-layer-file-chooser.ui.h:2
 msgid "_Open"
 msgstr "_Opna"
+
+#: ../data/ui/shape-layer-file-chooser.ui.h:1
+msgid "Open Layer"
+msgstr "Opna lag"
+
+#: ../data/ui/shape-layer-row.ui.h:1
+#| msgid "Toggle favorites"
+msgid "Toggle visible"
+msgstr "Víxla sýnilegu"
 
 #: ../data/ui/sidebar.ui.h:1
 msgid "Route search by GraphHopper"
@@ -294,7 +559,7 @@ msgstr "Leita að leiðum með GraphHopper"
 msgid "Show more results"
 msgstr "Birta fleiri niðurstöður"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:209
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:120
 msgid "Current location"
 msgstr "Núverandi staðsetning"
 
@@ -303,6 +568,37 @@ msgstr "Núverandi staðsetning"
 #, no-c-format
 msgid "Accuracy: %s"
 msgstr "Nákvæmni: %s"
+
+#: ../data/ui/zoom-in-notification.ui.h:1
+#| msgid "Go to current location"
+msgid "Zoom in to add location!"
+msgstr "Renndu að til að bæta við staðsetningu!"
+
+#: ../data/ui/zoom-in-notification.ui.h:2
+msgid "OK"
+msgstr "Í lagi"
+
+#: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
+#: ../lib/maps-file-tile-source.c:459
+msgid "Failed to find tile structure in directory"
+msgstr "Mistókst að finna tíglaskipan í möppu"
+
+#: ../lib/maps-osm.c:56
+#| msgid "Failed to parse Geo URI"
+msgid "Failed to parse XML document"
+msgstr "Gat ekki þáttað XML-skjal"
+
+#: ../lib/maps-osm.c:252 ../lib/maps-osm.c:405
+msgid "Missing required attributes"
+msgstr "Nauðsynleg eigindi vantar"
+
+#: ../lib/maps-osm.c:453
+msgid "Could not find OSM element"
+msgstr "Gat ekki fundið OSM-stak"
+
+#: ../src/application.js:101
+msgid "A path to a local tiles directory structure"
+msgstr ""
 
 #: ../src/checkInDialog.js:176
 msgid "Select an account"
@@ -333,24 +629,25 @@ msgstr ""
 "lista."
 
 #. Translators: %s is the name of the place to check in.
-#. */
+#.
 #: ../src/checkInDialog.js:227
 #, javascript-format
 msgid "Check in to %s"
 msgstr "Skrá inn í %s"
 
 #. Translators: %s is the name of the place to check in.
-#. */
+#.
 #: ../src/checkInDialog.js:237
 #, javascript-format
 msgid "Write an optional message to check in to %s."
 msgstr "Þú getur skrifað skilaboð með innskráningunni í %s."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
+#: ../src/osmEditDialog.js:509
 msgid "An error has occurred"
 msgstr "Villa hefur átt sér stað"
 
-#. Translators: %s is the place name that user wanted to check-in */
+#. Translators: %s is the place name that user wanted to check-in
 #: ../src/checkIn.js:135
 #, javascript-format
 msgid "Cannot find \"%s\" in the social service"
@@ -368,59 +665,287 @@ msgstr ""
 "Auðkennin eru útrunnin, opnaðu \"Aðgangar á neti\" til að skrá þig inn og "
 "virkja þennan aðgang"
 
-#: ../src/mainWindow.js:315
+#: ../src/contextMenu.js:97
+msgid "Route from here"
+msgstr "Leið héðan"
+
+#: ../src/contextMenu.js:99
+msgid "Add destination"
+msgstr "Bæta við áfangastað"
+
+#: ../src/contextMenu.js:101
+msgid "Route to here"
+msgstr "Leið hingað"
+
+#: ../src/contextMenu.js:130
+msgid "Nothing found here!"
+msgstr "Ekkert fannst hér!"
+
+#: ../src/contextMenu.js:187
+msgid ""
+"Location was added to the map, note that it may take a while before it shows "
+"on the map and in search results."
+msgstr ""
+
+#: ../src/exportViewDialog.js:156
+msgid "Filesystem is read only"
+msgstr "Skráakerfi er aðeins til lestrar"
+
+#: ../src/exportViewDialog.js:158
+msgid "You do not have permission to save there"
+msgstr "Þú hefur ekki nægar aðgangsheimildir til að vista þarna"
+
+#: ../src/exportViewDialog.js:160
+msgid "The directory does not exists"
+msgstr "Mappan er ekki til"
+
+#: ../src/exportViewDialog.js:162
+msgid "No filename specified"
+msgstr "Ekkert skráarheiti tilgreint"
+
+#: ../src/exportViewDialog.js:170
+msgid "Unable to export view"
+msgstr "Tókst ekki að flytja út sýnina"
+
+#: ../src/geoJSONSource.js:98
+msgid "invalid coordinate"
+msgstr "ógild hnit"
+
+#: ../src/geoJSONSource.js:149 ../src/geoJSONSource.js:189
+#: ../src/geoJSONSource.js:204
+msgid "parse error"
+msgstr "þáttunarvilla"
+
+#: ../src/geoJSONSource.js:183
+msgid "unknown geometry"
+msgstr "óþekkt gerð rúmfræði"
+
+#: ../src/layersPopover.js:62
+msgid "All Layer Files"
+msgstr "Allar lagaskrár"
+
+#: ../src/mainWindow.js:387
 msgid "Failed to connect to location service"
 msgstr "Tókst ekki að tengjast staðsetningarþjónustu"
 
-#: ../src/mainWindow.js:320
-msgid "Position not found"
-msgstr "Staðsetning fannst ekki"
-
-#: ../src/mainWindow.js:365
+#: ../src/mainWindow.js:439
 msgid "translator-credits"
 msgstr "Sveinn í Felli, sv1@fellsnet.is"
 
-#: ../src/mainWindow.js:368
+#: ../src/mainWindow.js:442
 msgid "A map application for GNOME"
 msgstr "Landakortaforrit fyrir GNOME"
 
-#: ../src/placeBubble.js:101
-#, javascript-format
-msgid "Postal code: %s"
-msgstr "Póstnúmer: %s"
+#: ../src/mapView.js:260
+msgid "File type is not supported"
+msgstr "Það er enginn stuðningur við skráategundina"
 
-#: ../src/placeBubble.js:103
-#, javascript-format
-msgid "Country code: %s"
-msgstr "Landskóði: %s"
+#: ../src/mapView.js:267
+#| msgid "Failed to parse Geo URI"
+msgid "Failed to open layer"
+msgstr "Mistókst að opna lag"
 
-#: ../src/placeBubble.js:112
-#, javascript-format
-msgid "Population: %s"
-msgstr "Fólksfjöldi: %s"
+#: ../src/mapView.js:303
+#| msgid "Failed to parse Geo URI"
+msgid "Failed to open GeoURI"
+msgstr "Mistókst að opna Geo URI-slóð"
 
-#: ../src/placeBubble.js:115
-#, javascript-format
-msgid "Opening hours: %s"
-msgstr "Opnunartímar: %s"
+#. setting the status in session.cancel_message still seems
+#. to always give status IO_ERROR
+#: ../src/osmConnection.js:443
+msgid "Incorrect user name or password"
+msgstr "Rangt notandanafn eða lykilorð"
 
-#: ../src/placeBubble.js:120
+#: ../src/osmConnection.js:445
+msgid "Success"
+msgstr "Tókst"
+
+#: ../src/osmConnection.js:447
+msgid "Bad request"
+msgstr "Óleyfileg beiðni"
+
+#: ../src/osmConnection.js:449
+#| msgid "Position not found"
+msgid "Object not found"
+msgstr "Hluturinn fannst ekki"
+
+#: ../src/osmConnection.js:451
+msgid "Conflict, someone else has just modified the object"
+msgstr "Árekstur, einhver annar er nýbúinn að breyta atriðinu"
+
+#: ../src/osmConnection.js:453
+msgid "Object has been deleted"
+msgstr "Hlutnum hefur verið eytt"
+
+#: ../src/osmConnection.js:455
+msgid "Way or relation refers to non-existing children"
+msgstr ""
+
+#: ../src/osmEditDialog.js:104
+msgid "Name"
+msgstr "Nafn"
+
+#: ../src/osmEditDialog.js:107
+msgid "The official name. This is typically what appears on signs."
+msgstr "Opinbera heitið. Venjulega það sem birt væri á skiltum og þess háttar"
+
+#: ../src/osmEditDialog.js:110
+msgid "Address"
+msgstr "Heimilisfang"
+
+#: ../src/osmEditDialog.js:118 ../src/placeBubble.js:165
+msgid "Website"
+msgstr "Vefsvæði"
+
+#: ../src/osmEditDialog.js:121
+msgid ""
+"The official website. Try to use the most basic form of a URL i.e. http://"
+"example.com instead of http://example.com/index.html."
+msgstr ""
+"Opinbera vefsvæðið. Reyndu að nota grunnform slóðarinnar, t.d. "
+"http://vefur.is í stað http://dæmi.is/index.html."
+
+#: ../src/osmEditDialog.js:126
+msgid "Phone"
+msgstr "Símanúmer"
+
+#: ../src/osmEditDialog.js:130
+msgid ""
+"Phone number. Use the international format, starting with a + sign. Beware "
+"of local privacy laws, especially for private phone numbers."
+msgstr ""
+
+#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:171
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: ../src/placeBubble.js:125
-#, javascript-format
-msgid "Wheelchair access: %s"
-msgstr "Hjólastólaaðgangur: %s"
+#: ../src/osmEditDialog.js:139
+msgid ""
+"The format used should include the language code and the article title like "
+"“en:Article title”."
+msgstr ""
 
-#: ../src/placeEntry.js:215
+#: ../src/osmEditDialog.js:143
+#| msgid "Opening hours: %s"
+msgid "Opening hours"
+msgstr "Opnunartímar"
+
+#: ../src/osmEditDialog.js:148
+msgid "See the link in the label for help on format."
+msgstr ""
+
+#: ../src/osmEditDialog.js:151
+#| msgid "Population: %s"
+msgid "Population"
+msgstr "Fólksfjöldi"
+
+#: ../src/osmEditDialog.js:156
+msgid "Altitude"
+msgstr "Hæð"
+
+#: ../src/osmEditDialog.js:159
+msgid "Elevation (height above sea level) of a point in metres."
+msgstr "Hæð yfir sjávarmáli í metrum."
+
+#: ../src/osmEditDialog.js:162
+#| msgid "Wheelchair access: %s"
+msgid "Wheelchair access"
+msgstr "Hjólastólaaðgangur"
+
+#: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
+#| msgid "yes"
+msgid "Yes"
+msgstr "Já"
+
+#: ../src/osmEditDialog.js:166 ../src/osmEditDialog.js:175
+msgid "No"
+msgstr "Nei"
+
+#: ../src/osmEditDialog.js:167
+#| msgid "limited"
+msgid "Limited"
+msgstr "takmarkað"
+
+#: ../src/osmEditDialog.js:168
+#| msgid "designated"
+msgid "Designated"
+msgstr "uppgefið"
+
+#: ../src/osmEditDialog.js:171
+msgid "Internet access"
+msgstr "Internetaðgangur"
+
+#. Translators:
+#. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
+#.
+#: ../src/osmEditDialog.js:176 ../src/translations.js:341
+msgid "Wi-Fi"
+msgstr "Þráðlaust net"
+
+#: ../src/osmEditDialog.js:177
+msgid "Wired"
+msgstr "Um kapal"
+
+#: ../src/osmEditDialog.js:178
+msgid "Terminal"
+msgstr "Útstöð"
+
+#: ../src/osmEditDialog.js:179
+msgid "Service"
+msgstr "Þjónusta"
+
+#: ../src/osmEditDialog.js:288
+msgctxt "dialog title"
+msgid "Add to OpenStreetMap"
+msgstr "Bæta í OpenStreetMap"
+
+#: ../src/osmEditDialog.js:340
+#| msgid "Select a place"
+msgid "Select Type"
+msgstr "Veldu tegund"
+
+#: ../src/osmEditDialog.js:458
+msgid "Done"
+msgstr "Lokið"
+
+#: ../src/placeBubble.js:128
+#| msgid "Population: %s"
+msgid "Population:"
+msgstr "Fólksfjöldi:"
+
+#: ../src/placeBubble.js:134
+msgid "Altitude:"
+msgstr "Hæð:"
+
+#: ../src/placeBubble.js:139
+#| msgid "Opening hours: %s"
+msgid "Opening hours:"
+msgstr "Opnunartímar:"
+
+#: ../src/placeBubble.js:144
+msgid "Internet access:"
+msgstr "Internetaðgangur:"
+
+#: ../src/placeBubble.js:149
+#| msgid "Wheelchair access: %s"
+msgid "Wheelchair access:"
+msgstr "Hjólastólaaðgangur:"
+
+#: ../src/placeBubble.js:155 ../src/placeBubble.js:159
+msgid "Phone:"
+msgstr "Sími:"
+
+#: ../src/placeEntry.js:190
 msgid "Failed to parse Geo URI"
 msgstr "Gat ekki þáttað Geo URI-slóð"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
-#. */
-#: ../src/place.js:121
+#.
+#. Translators:
+#. * There is public internet access but the particular kind is unknown.
+#.
+#: ../src/place.js:178 ../src/translations.js:330
 msgid "yes"
 msgstr "já"
 
@@ -428,16 +953,20 @@ msgstr "já"
 #. * This means wheelchairs have partial access (e.g some areas
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
-#. */
-#: ../src/place.js:128
+#.
+#: ../src/place.js:185
 msgid "limited"
 msgstr "takmarkað"
 
 #. Translators:
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
-#. */
-#: ../src/place.js:134
+#.
+#. Translators:
+#. * no internet access is offered in a place where
+#. * someone might expect it.
+#.
+#: ../src/place.js:191 ../src/translations.js:336
 msgid "no"
 msgstr "nei"
 
@@ -445,25 +974,51 @@ msgstr "nei"
 #. * This means that the way or area is designated or purpose built
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
-#. */
-#: ../src/place.js:141
+#.
+#: ../src/place.js:198
 msgid "designated"
 msgstr "uppgefið"
+
+#: ../src/printLayout.js:244
+#, javascript-format
+msgid "From %s to %s"
+msgstr "Frá %s til %s"
+
+#: ../src/printOperation.js:47
+msgid "Loading map tiles for printing"
+msgstr ""
+
+#: ../src/printOperation.js:48
+msgid "You can abort printing if this takes too long"
+msgstr ""
+
+#: ../src/printOperation.js:50
+msgid "Abort printing"
+msgstr ""
 
 #: ../src/routeService.js:90
 msgid "No route found."
 msgstr "Engin leið fannst."
 
-#: ../src/routeService.js:97
+#: ../src/routeService.js:101
 msgid "Route request failed."
 msgstr "Leiðarbeiðni mistókst."
 
-#: ../src/routeService.js:168
+#: ../src/routeService.js:178
 msgid "Start!"
 msgstr "Byrja!"
 
-#. Translators: %s is a time expression with the format "%f h" or "%f min" */
-#: ../src/sidebar.js:229
+#: ../src/sendToDialog.js:179
+#| msgid "Failed to parse Geo URI"
+msgid "Failed to open URI"
+msgstr "Gat ekki opnað URI-slóð"
+
+#: ../src/shapeLayer.js:93
+msgid "failed to load file"
+msgstr "mistókst að hlaða inn skrá"
+
+#. Translators: %s is a time expression with the format "%f h" or "%f min"
+#: ../src/sidebar.js:208
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Áætlaður tími: %s"
@@ -481,7 +1036,7 @@ msgstr "frá sólarupprás til sólarlags"
 #. * such as "Mo-Fr 10:00-19:00 Sa 12:00-16:00"
 #. * The space between the format place holders could be
 #. * substituted with the appropriate separator.
-#. */
+#.
 #: ../src/translations.js:78
 #, javascript-format
 msgctxt "time range list"
@@ -493,7 +1048,7 @@ msgstr "%s %s"
 #. * such as "Mo-Fr 10:00-19:00 Sa 10:00-17:00 Su 12:00-16:00"
 #. * The space between the format place holders could be
 #. * substituted with the appropriate separator.
-#. */
+#.
 #: ../src/translations.js:90
 #, javascript-format
 msgctxt "time range list"
@@ -506,7 +1061,7 @@ msgstr "%s %s %s"
 #. * specification as the second argument.
 #. * The space between the format place holders could be substituted with
 #. * the appropriate separator or phrase and the ordering of the arguments
-#. * can be rearranged with the %n#s syntax. */
+#. * can be rearranged with the %n#s syntax.
 #: ../src/translations.js:121
 #, javascript-format
 msgctxt "time range component"
@@ -521,7 +1076,7 @@ msgstr "%s %s"
 #. * where the "Mo-Fr" and "Sa" parts are replaced by the %s
 #. * place holder.
 #. * The separator (,) could be replaced with a translated variant or
-#. * a phrase if appropriate. */
+#. * a phrase if appropriate.
 #: ../src/translations.js:153
 #, javascript-format
 msgctxt "day interval list"
@@ -536,7 +1091,7 @@ msgstr "%s,%s"
 #. * where the "Mo-We", "Fr", and "Su" parts are replaced by the
 #. * %s place holder.
 #. * The separator (,) could be replaced with a translated variant or
-#. * a phrase if appropriate. */
+#. * a phrase if appropriate.
 #: ../src/translations.js:167
 #, javascript-format
 msgctxt "day interval list"
@@ -549,7 +1104,7 @@ msgstr "alla daga"
 
 #. Translators:
 #. * This represents a range of days with a starting and ending day.
-#. */
+#.
 #: ../src/translations.js:198
 #, javascript-format
 msgctxt "day range"
@@ -571,7 +1126,7 @@ msgstr "skólafrídagar"
 #. * appropriate white space or connected phrase could be modified by
 #. * the translation. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
-#. */
+#.
 #: ../src/translations.js:251
 #, javascript-format
 msgctxt "time interval list"
@@ -588,59 +1143,82 @@ msgstr "ekki opið"
 #. * appropriate white spacing or connecting phrases can be set by the
 #. * translation as needed. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
-#. */
+#.
 #: ../src/translations.js:280
 #, javascript-format
 msgctxt "time interval"
 msgid "%s-%s"
 msgstr "%s-%s"
 
-#. Translators: Accuracy of user location information */
-#: ../src/utils.js:256
+#. Translators:
+#. * This means a a place where you can plug in your laptop with ethernet.
+#.
+#: ../src/translations.js:346
+msgid "wired"
+msgstr "um kapal"
+
+#. Translators:
+#. * Like internet cafe or library where the computer is given.
+#.
+#: ../src/translations.js:351
+msgid "terminal"
+msgstr "útstöð"
+
+#. Translators:
+#. * This means there is personnel which helps you in case of problems.
+#.
+#: ../src/translations.js:356
+msgid "service"
+msgstr "þjónusta"
+
+#. Translators: Accuracy of user location information
+#: ../src/utils.js:231
 msgid "Unknown"
 msgstr "Óþekkt"
 
-#. Translators: Accuracy of user location information */
-#: ../src/utils.js:259
+#. Translators: Accuracy of user location information
+#: ../src/utils.js:234
 msgid "Exact"
 msgstr "Nákvæmt"
 
-#: ../src/utils.js:354
+#: ../src/utils.js:337
 #, javascript-format
 msgid "%f h"
 msgstr "%f klst"
 
-#: ../src/utils.js:356
+#: ../src/utils.js:339
 #, javascript-format
 msgid "%f min"
 msgstr "%f mín"
 
-#: ../src/utils.js:358
+#: ../src/utils.js:341
 #, javascript-format
 msgid "%f s"
 msgstr "%f sek"
 
-#. Translators: This is a distance measured in kilometers */
-#: ../src/utils.js:369
+#. Translators: This is a distance measured in kilometers
+#: ../src/utils.js:352
 #, javascript-format
 msgid "%f km"
 msgstr "%f km"
 
-#. Translators: This is a distance measured in meters */
-#: ../src/utils.js:372
+#. Translators: This is a distance measured in meters
+#: ../src/utils.js:355
 #, javascript-format
 msgid "%f m"
 msgstr "%f m"
 
-#. Translators: This is a distance measured in miles */
-#: ../src/utils.js:380
+#. Translators: This is a distance measured in miles
+#: ../src/utils.js:363
 #, javascript-format
 msgid "%f mi"
 msgstr "%f mi"
 
-#. Translators: This is a distance measured in feet */
-#: ../src/utils.js:383
+#. Translators: This is a distance measured in feet
+#: ../src/utils.js:366
 #, javascript-format
 msgid "%f ft"
 msgstr "%f fet"
 
+#~ msgid "Country code: %s"
+#~ msgstr "Landskóði: %s"
