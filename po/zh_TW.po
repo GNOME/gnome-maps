@@ -8,19 +8,19 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-20 21:24+0000\n"
-"PO-Revision-Date: 2016-02-23 11:45+0800\n"
-"Last-Translator: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>\n"
+"POT-Creation-Date: 2016-08-22 18:54+0000\n"
+"PO-Revision-Date: 2016-10-09 22:45+0800\n"
+"Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) <chinese-l10n@googlegroups.com>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 1.8.8\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid "GNOME Maps"
-msgstr "GNOME Maps"
+msgstr "GNOME 地圖"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:2
 msgid "Find places around the world"
@@ -51,12 +51,12 @@ msgid ""
 "You can even search for specific types of locations, such as “Pubs near Main "
 "Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
 msgstr ""
-"您甚至能搜尋指定的位置類型，像是 “Pubs near Main Street, Boston“或是 “Hotels "
-"near Alexanderplatz, Berlin“"
+"您甚至能搜尋指定的位置類型，像是「Pubs near Main Street, Boston」或是"
+"「Hotels near Alexanderplatz, Berlin」等。"
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:86 ../src/mainWindow.js:416
+#: ../src/application.js:85 ../src/mainWindow.js:420
 msgid "Maps"
 msgstr "地圖"
 
@@ -462,23 +462,60 @@ msgstr "您的 OpenStreetMap 帳號已啟用。"
 msgid "Sign Out"
 msgstr "登出"
 
+#: ../data/ui/osm-edit-address.ui.h:1
+msgid "Street"
+msgstr "街道"
+
+#: ../data/ui/osm-edit-address.ui.h:2
+msgid "House number"
+msgstr "門牌號碼"
+
+#: ../data/ui/osm-edit-address.ui.h:3
+msgid "Postal code"
+msgstr "郵遞區號"
+
+#. This is the place name as it would be written in a postal address (typically coming after the postal code)
+#: ../data/ui/osm-edit-address.ui.h:5
+msgid "City"
+msgstr "城市"
+
 #: ../data/ui/osm-edit-dialog.ui.h:1
+msgid "Type"
+msgstr "類型"
+
+#: ../data/ui/osm-edit-dialog.ui.h:2
 msgid "None"
 msgstr "沒有"
 
-#: ../data/ui/osm-edit-dialog.ui.h:2
+#: ../data/ui/osm-edit-dialog.ui.h:3
+msgid "Add Field"
+msgstr "加入欄位"
+
+#: ../data/ui/osm-edit-dialog.ui.h:4
+msgid "Comment"
+msgstr "評註"
+
+#: ../data/ui/osm-edit-dialog.ui.h:5
+msgid ""
+"Map changes will be visible on all maps that use\n"
+"    OpenStreetMap data."
+msgstr ""
+"地圖更動資訊會在所有利用 OpenStreetMap\n"
+"    資料的地圖中出現。"
+
+#: ../data/ui/osm-edit-dialog.ui.h:7
 msgid "Recently Used"
 msgstr "最近使用"
 
-#: ../data/ui/osm-edit-dialog.ui.h:3
+#: ../data/ui/osm-edit-dialog.ui.h:8
 msgid "Edit on OpenStreetMap"
 msgstr "在 OpenStreetMap 編輯"
 
-#: ../data/ui/osm-edit-dialog.ui.h:4
+#: ../data/ui/osm-edit-dialog.ui.h:9
 msgid "Cancel"
 msgstr "取消"
 
-#: ../data/ui/osm-edit-dialog.ui.h:5 ../src/osmEditDialog.js:421
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:471
 msgid "Next"
 msgstr "下一個"
 
@@ -489,6 +526,11 @@ msgstr "顯示更多資訊"
 #: ../data/ui/place-popover.ui.h:1
 msgid "Press enter to search"
 msgstr "按下 Enter 開始搜尋"
+
+#: ../data/ui/route-entry.ui.h:1
+#, fuzzy
+msgid "Drag to change order of the route"
+msgstr "拖曳以修改路徑順序"
 
 #: ../data/ui/send-to-dialog.ui.h:1
 msgid "Open location"
@@ -514,7 +556,7 @@ msgstr "透過 GraphHopper 搜尋路線"
 msgid "Show more results"
 msgstr "顯示更多結果"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:148
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:120
 msgid "Current location"
 msgstr "目前位置"
 
@@ -549,7 +591,7 @@ msgstr "缺少了必要的屬性"
 msgid "Could not find OSM element"
 msgstr "找不到 OSM 元素"
 
-#: ../src/application.js:102
+#: ../src/application.js:101
 msgid "A path to a local tiles directory structure"
 msgstr "本地端拼貼目錄結構的路徑"
 
@@ -592,7 +634,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "寫些關於在 %s 打卡的訊息。"
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:458
+#: ../src/osmEditDialog.js:508
 msgid "An error has occurred"
 msgstr "發生錯誤"
 
@@ -624,7 +666,12 @@ msgstr "加入目的地"
 msgid "Route to here"
 msgstr "到這裡的路線"
 
-#: ../src/contextMenu.js:182
+#: ../src/contextMenu.js:130
+#, fuzzy
+msgid "Nothing found here!"
+msgstr "這裡找不到東西！"
+
+#: ../src/contextMenu.js:187
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -651,90 +698,95 @@ msgstr "沒有指定檔案名稱"
 msgid "Unable to export view"
 msgstr "無法匯出檢視"
 
-#: ../src/geoJSONSource.js:97
+#: ../src/geoJSONSource.js:98
 msgid "invalid coordinate"
 msgstr "無效的坐標"
 
-#: ../src/geoJSONSource.js:141 ../src/geoJSONSource.js:181
-#: ../src/geoJSONSource.js:196
+#: ../src/geoJSONSource.js:149 ../src/geoJSONSource.js:189
+#: ../src/geoJSONSource.js:204
 msgid "parse error"
 msgstr "解析錯誤"
 
-#: ../src/geoJSONSource.js:175
+#: ../src/geoJSONSource.js:183
 msgid "unknown geometry"
 msgstr "不明的位置大小"
 
-#: ../src/mainWindow.js:358
+#: ../src/layersPopover.js:62
+#, fuzzy
+msgid "All Layer Files"
+msgstr "所有圖層檔案"
+
+#: ../src/mainWindow.js:366
 msgid "Failed to connect to location service"
 msgstr "無法連接位置服務"
 
-#: ../src/mainWindow.js:363
-msgid "Position not found"
-msgstr "找不到地點"
-
-#: ../src/mainWindow.js:414
+#: ../src/mainWindow.js:418
 msgid "translator-credits"
 msgstr "Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>, 2013"
 
-#: ../src/mainWindow.js:417
+#: ../src/mainWindow.js:421
 msgid "A map application for GNOME"
 msgstr "GNOME 的地圖程式"
 
-#: ../src/mapView.js:237
+#: ../src/mapView.js:260
 msgid "File type is not supported"
 msgstr "檔案類型不支援"
 
-#: ../src/mapView.js:244
+#: ../src/mapView.js:267
 msgid "Failed to open layer"
 msgstr "無法開啟圖層"
 
-#: ../src/mapView.js:280
+#: ../src/mapView.js:303
 msgid "Failed to open GeoURI"
 msgstr "無法開啟 GeoURI"
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: ../src/osmConnection.js:442
+#: ../src/osmConnection.js:443
 msgid "Incorrect user name or password"
 msgstr "不正確的使用者名稱或密碼"
 
-#: ../src/osmConnection.js:444
+#: ../src/osmConnection.js:445
 msgid "Success"
 msgstr "成功"
 
-#: ../src/osmConnection.js:446
+#: ../src/osmConnection.js:447
 msgid "Bad request"
 msgstr "錯誤的要求"
 
-#: ../src/osmConnection.js:448
+#: ../src/osmConnection.js:449
 msgid "Object not found"
 msgstr "找不到物件"
 
-#: ../src/osmConnection.js:450
+#: ../src/osmConnection.js:451
 msgid "Conflict, someone else has just modified the object"
 msgstr "衝突，有其他人剛剛修改了這個物件"
 
-#: ../src/osmConnection.js:452
+#: ../src/osmConnection.js:453
 msgid "Object has been deleted"
 msgstr "物件已刪除"
 
-#: ../src/osmConnection.js:454
+#: ../src/osmConnection.js:455
 msgid "Way or relation refers to non-existing children"
 msgstr "路徑或關係參照到不存在的子項"
 
-#: ../src/osmEditDialog.js:100
+#: ../src/osmEditDialog.js:104
 msgid "Name"
 msgstr "名稱"
 
-#: ../src/osmEditDialog.js:103
+#: ../src/osmEditDialog.js:107
 msgid "The official name. This is typically what appears on signs."
 msgstr "正式的名稱。這通常會出現在招牌上。"
 
-#: ../src/osmEditDialog.js:106 ../src/placeBubble.js:165
+#: ../src/osmEditDialog.js:110
+msgid "Address"
+msgstr "地址"
+
+#: ../src/osmEditDialog.js:118 ../src/placeBubble.js:165
 msgid "Website"
 msgstr "網站"
 
-#: ../src/osmEditDialog.js:109
+#: ../src/osmEditDialog.js:121
 msgid ""
 "The official website. Try to use the most basic form of a URL i.e. http://"
 "example.com instead of http://example.com/index.html."
@@ -742,11 +794,11 @@ msgstr ""
 "官方網站。嘗試使用最基本形式的 URL ，例如 HTTP://example.com ，而不是 HTTP://"
 "example.com/index.html。"
 
-#: ../src/osmEditDialog.js:114
+#: ../src/osmEditDialog.js:126
 msgid "Phone"
 msgstr "電話"
 
-#: ../src/osmEditDialog.js:118
+#: ../src/osmEditDialog.js:130
 msgid ""
 "Phone number. Use the international format, starting with a + sign. Beware "
 "of local privacy laws, especially for private phone numbers."
@@ -754,89 +806,90 @@ msgstr ""
 "電話號碼。使用國際格式，以 + 號開頭。提防當地的隱私權法律，特別是私人電話號"
 "碼。"
 
-#: ../src/osmEditDialog.js:123 ../src/placeBubble.js:171
+#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:171
 msgid "Wikipedia"
 msgstr "維基百科"
 
-#: ../src/osmEditDialog.js:127
+#: ../src/osmEditDialog.js:139
+#, fuzzy
 msgid ""
 "The format used should include the language code and the article title like "
-"”en:Article title”."
-msgstr "使用的格式應該包括語言代碼和文章標題，像是”en:Article title”。"
+"“en:Article title”."
+msgstr "使用的格式應該包括語言代碼和文章標題，例如「en:Article title」。"
 
-#: ../src/osmEditDialog.js:131
+#: ../src/osmEditDialog.js:143
 msgid "Opening hours"
 msgstr "開放時間"
 
-#: ../src/osmEditDialog.js:136
+#: ../src/osmEditDialog.js:148
 msgid "See the link in the label for help on format."
 msgstr "請參閱標籤的連結以取得格式的求助訊息。"
 
-#: ../src/osmEditDialog.js:139
+#: ../src/osmEditDialog.js:151
 msgid "Population"
 msgstr "資料母體"
 
-#: ../src/osmEditDialog.js:144
+#: ../src/osmEditDialog.js:156
 msgid "Altitude"
 msgstr "海拔高度"
 
-#: ../src/osmEditDialog.js:147
+#: ../src/osmEditDialog.js:159
 msgid "Elevation (height above sea level) of a point in metres."
 msgstr "某一點的高度，以公尺計 (自海平面以上的高度)。"
 
-#: ../src/osmEditDialog.js:150
+#: ../src/osmEditDialog.js:162
 msgid "Wheelchair access"
 msgstr "使用輪椅"
 
-#: ../src/osmEditDialog.js:153 ../src/osmEditDialog.js:162
+#: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
 msgid "Yes"
 msgstr "是"
 
-#: ../src/osmEditDialog.js:154 ../src/osmEditDialog.js:163
+#: ../src/osmEditDialog.js:166 ../src/osmEditDialog.js:175
 msgid "No"
 msgstr "否"
 
-#: ../src/osmEditDialog.js:155
+#: ../src/osmEditDialog.js:167
 msgid "Limited"
 msgstr "有限制"
 
-#: ../src/osmEditDialog.js:156
+#: ../src/osmEditDialog.js:168
 msgid "Designated"
 msgstr "特定"
 
-#: ../src/osmEditDialog.js:159
+#: ../src/osmEditDialog.js:171
 msgid "Internet access"
 msgstr "網際網路存取"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
 #.
-#: ../src/osmEditDialog.js:164 ../src/translations.js:341
+#: ../src/osmEditDialog.js:176 ../src/translations.js:341
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
 
-#: ../src/osmEditDialog.js:165
+#: ../src/osmEditDialog.js:177
 msgid "Wired"
 msgstr "有線"
 
-#: ../src/osmEditDialog.js:166
+#: ../src/osmEditDialog.js:178
 msgid "Terminal"
 msgstr "網路終端"
 
-#: ../src/osmEditDialog.js:167
+#: ../src/osmEditDialog.js:179
 msgid "Service"
 msgstr "服務"
 
-#: ../src/osmEditDialog.js:238
+#: ../src/osmEditDialog.js:288
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "加入 OpenStreetMap"
 
-#: ../src/osmEditDialog.js:289
+#: ../src/osmEditDialog.js:339
 msgid "Select Type"
 msgstr "選擇類型"
 
-#: ../src/osmEditDialog.js:407
+#: ../src/osmEditDialog.js:457
 msgid "Done"
 msgstr "完成"
 
@@ -874,7 +927,7 @@ msgstr "無法分析 Geo URI"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: ../src/place.js:177 ../src/translations.js:330
+#: ../src/place.js:178 ../src/translations.js:330
 msgid "yes"
 msgstr "是"
 
@@ -883,7 +936,7 @@ msgstr "是"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:184
+#: ../src/place.js:185
 msgid "limited"
 msgstr "有限制"
 
@@ -895,7 +948,7 @@ msgstr "有限制"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: ../src/place.js:190 ../src/translations.js:336
+#: ../src/place.js:191 ../src/translations.js:336
 msgid "no"
 msgstr "否"
 
@@ -904,11 +957,11 @@ msgstr "否"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:197
+#: ../src/place.js:198
 msgid "designated"
 msgstr "特定"
 
-#: ../src/printLayout.js:225
+#: ../src/printLayout.js:244
 #, javascript-format
 msgid "From %s to %s"
 msgstr "從 %s 到 %s"
@@ -929,15 +982,15 @@ msgstr "關於列印"
 msgid "No route found."
 msgstr "找不到路線。"
 
-#: ../src/routeService.js:97
+#: ../src/routeService.js:101
 msgid "Route request failed."
 msgstr "要求路線失敗。"
 
-#: ../src/routeService.js:168
+#: ../src/routeService.js:178
 msgid "Start!"
 msgstr "開始！"
 
-#: ../src/sendToDialog.js:173
+#: ../src/sendToDialog.js:179
 msgid "Failed to open URI"
 msgstr "無法開啟 URI"
 
@@ -946,7 +999,7 @@ msgid "failed to load file"
 msgstr "無法載入檔案"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:210
+#: ../src/sidebar.js:208
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "預估時間：%s"
@@ -1100,53 +1153,56 @@ msgid "service"
 msgstr "服務"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:228
+#: ../src/utils.js:231
 msgid "Unknown"
 msgstr "不明"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:231
+#: ../src/utils.js:234
 msgid "Exact"
 msgstr "準確"
 
-#: ../src/utils.js:334
+#: ../src/utils.js:337
 #, javascript-format
 msgid "%f h"
 msgstr "%f 小時"
 
-#: ../src/utils.js:336
+#: ../src/utils.js:339
 #, javascript-format
 msgid "%f min"
 msgstr "%f 分鐘"
 
-#: ../src/utils.js:338
+#: ../src/utils.js:341
 #, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
 #. Translators: This is a distance measured in kilometers
-#: ../src/utils.js:349
+#: ../src/utils.js:352
 #, javascript-format
 msgid "%f km"
 msgstr "%f 公里"
 
 #. Translators: This is a distance measured in meters
-#: ../src/utils.js:352
+#: ../src/utils.js:355
 #, javascript-format
 msgid "%f m"
 msgstr "%f 公尺"
 
 #. Translators: This is a distance measured in miles
-#: ../src/utils.js:360
+#: ../src/utils.js:363
 #, javascript-format
 msgid "%f mi"
 msgstr "%f 哩"
 
 #. Translators: This is a distance measured in feet
-#: ../src/utils.js:363
+#: ../src/utils.js:366
 #, javascript-format
 msgid "%f ft"
 msgstr "%f 呎"
+
+#~ msgid "Position not found"
+#~ msgstr "找不到地點"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Show help"
@@ -1172,9 +1228,6 @@ msgstr "%f 呎"
 
 #~ msgid "Zoom out"
 #~ msgstr "拉遠"
-
-#~ msgid "Postal code: %s"
-#~ msgstr "郵遞區號：%s"
 
 #~ msgid "Country code: %s"
 #~ msgstr "國家代碼：%s"
@@ -1222,9 +1275,6 @@ msgstr "%f 呎"
 
 #~ msgid " km<sup>2</sup>"
 #~ msgstr " km<sup>2</sup>"
-
-#~ msgid "Street"
-#~ msgstr "街道"
 
 #~ msgid "Satellite"
 #~ msgstr "衛星"
