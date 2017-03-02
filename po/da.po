@@ -1,17 +1,17 @@
 # Danish translation for gnome-maps.
-# Copyright (C) 2013, 2016 gnome-maps's COPYRIGHT HOLDER
+# Copyright (C) 2013, 2016-2017 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
 # Kris Thomsen <mail@kristhomsen.dk>, 2013.
 # Kenneth Nielsen <k.nielsen81@gmail.com>, 2014.
 # scootergrisen, 2015.
-# Ask Hjorth Larsen <asklarsen@gmail.com>, 2015, 16.
+# Ask Hjorth Larsen <asklarsen@gmail.com>, 2015, 16, 17.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
-"Report-Msgid-Bugs-To: "
-"http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-11-10 12:59+0000\n"
-"PO-Revision-Date: 2016-09-08 02:58+0200\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"maps&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2017-02-24 22:30+0000\n"
+"PO-Revision-Date: 2017-03-02 11:57+0100\n"
 "Last-Translator: Ask Hjorth Larsen <asklarsen@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -62,7 +62,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:85 ../src/mainWindow.js:441
+#: ../src/application.js:87 ../src/mainWindow.js:441
 msgid "Maps"
 msgstr "Kort"
 
@@ -167,8 +167,8 @@ msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
 msgstr ""
-"Angiver om Foursquare skal poste din indtjekning som opdatering på "
-"Facebook-kontoen, der er tilknyttet denne Foursquare-konto."
+"Angiver om Foursquare skal poste din indtjekning som opdatering på Facebook-"
+"kontoen, der er tilknyttet denne Foursquare-konto."
 
 #: ../data/org.gnome.Maps.gschema.xml.h:21
 msgid "Foursquare check-in Twitter broadcasting"
@@ -443,14 +443,12 @@ msgstr "Har du ikke en konto?"
 #: ../data/ui/osm-account-dialog.ui.h:10
 msgid ""
 "Sorry, that didn’t work. Please try again, or visit\n"
-"<a "
-"href=\"https://www.openstreetmap.org/user/forgot-password\">OpenStreetMap</a> "
-"to reset your password."
+"<a href=\"https://www.openstreetmap.org/user/forgot-password"
+"\">OpenStreetMap</a> to reset your password."
 msgstr ""
 "Beklager - det fungerede ikke. Prøv venligst igen eller besøg\n"
-"<a "
-"href=\"https://www.openstreetmap.org/user/forgot-password\">OpenStreetMap</a> "
-"for at nulstille din adgangskode."
+"<a href=\"https://www.openstreetmap.org/user/forgot-password"
+"\">OpenStreetMap</a> for at nulstille din adgangskode."
 
 #: ../data/ui/osm-account-dialog.ui.h:12
 msgid "The verification code didn’t match, please try again."
@@ -511,16 +509,12 @@ msgid "Comment"
 msgstr "Kommentar"
 
 #: ../data/ui/osm-edit-dialog.ui.h:5
-#, fuzzy
-#| msgid ""
-#| "Map changes will be visible on all maps that use\n"
-#| "    OpenStreetMap data."
 msgid ""
 "Map changes will be visible on all maps that use\n"
 "OpenStreetMap data."
 msgstr ""
 "Kortændringer vil være synlige på alle kort, der\n"
-"    bruger data fra OpenStreetMap."
+"bruger data fra OpenStreetMap."
 
 #: ../data/ui/osm-edit-dialog.ui.h:7
 msgid "Recently Used"
@@ -571,9 +565,79 @@ msgstr "Slå synlighed til/fra"
 msgid "Route search by GraphHopper"
 msgstr "Rutesøgning med GraphHopper"
 
+#: ../data/ui/sidebar.ui.h:2
+msgid "Route search by OpenTripPlanner"
+msgstr "Rutesøgning med OpenTripPlanner"
+
+#: ../data/ui/sidebar.ui.h:3
+msgid ""
+"Routing itineraries for public transit is provided by GNOME\n"
+"using timetable data obtained from transit companies or agencies.\n"
+"The companies and agencies can not be held responsible for the results "
+"shown.\n"
+"GNOME can not guarantee correctness of the itineraries and schedules shown.\n"
+"Names and brands shown are to be considered as registered trademarks when "
+"applicable."
+msgstr ""
+"Rejseplaner for offentlig transport tilbydes af GNOME ved hjælp af\n"
+"køreplaner, som fås fra transportfirmaer. Disse firmaer kan ikke holdes\n"
+"ansvarlige for de viste resultater.\n"
+"\n"
+"GNOME kan ikke garantere, at de viste ruter og køreplaner er korrekte.\n"
+"Viste navne og mærker skal betragtes som registrerede varemærker, når\n"
+"dette er muligt."
+
 #: ../data/ui/social-place-more-results-row.ui.h:1
 msgid "Show more results"
 msgstr "Vis flere resultater"
+
+#: ../data/ui/transit-leg-row.ui.h:1
+msgid "Hide intermediate stops and information"
+msgstr "Skjul mellemliggende stop og oplysninger"
+
+#: ../data/ui/transit-leg-row.ui.h:2
+msgid "Show intermediate stops and information"
+msgstr "Vis mellemliggende stop og oplysninger"
+
+#. Indicates searching for the next available itineraries
+#: ../data/ui/transit-options-panel.ui.h:2
+msgid "Leave Now"
+msgstr "Tag afsted nu"
+
+#. Indicates searching for itineraries leaving at the specified time at the earliest
+#: ../data/ui/transit-options-panel.ui.h:4
+msgid "Leave By"
+msgstr "Afgangstidspunkt"
+
+#. Indicates searching for itineraries arriving no later than the specified time
+#: ../data/ui/transit-options-panel.ui.h:6
+msgid "Arrive By"
+msgstr "Ankomsttidspunkt"
+
+#. Header indicating selected modes of transit
+#: ../data/ui/transit-options-panel.ui.h:8
+msgid "Show"
+msgstr "Vis"
+
+#: ../data/ui/transit-options-panel.ui.h:9
+msgid "Buses"
+msgstr "Busser"
+
+#: ../data/ui/transit-options-panel.ui.h:10
+msgid "Trams"
+msgstr "Sporvogne"
+
+#: ../data/ui/transit-options-panel.ui.h:11
+msgid "Trains"
+msgstr "Tog"
+
+#: ../data/ui/transit-options-panel.ui.h:12
+msgid "Subway"
+msgstr "Metro"
+
+#: ../data/ui/transit-options-panel.ui.h:13
+msgid "Ferries"
+msgstr "Færger"
 
 #: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:120
 msgid "Current location"
@@ -610,7 +674,7 @@ msgstr "Mangler nødvendige attributter"
 msgid "Could not find OSM element"
 msgstr "Kunne ikke finde OSM-element"
 
-#: ../src/application.js:101
+#: ../src/application.js:103
 msgid "A path to a local tiles directory structure"
 msgstr "En sti til en lokal flisemappestruktur"
 
@@ -681,23 +745,23 @@ msgstr ""
 "Akkreditiverne er udløbet; åbn venligst Onlinekonti for at logge ind og slå "
 "denne konto til"
 
-#: ../src/contextMenu.js:97
+#: ../src/contextMenu.js:96
 msgid "Route from here"
 msgstr "Rute herfra"
 
-#: ../src/contextMenu.js:99
+#: ../src/contextMenu.js:98
 msgid "Add destination"
 msgstr "Tilføj destination"
 
-#: ../src/contextMenu.js:101
+#: ../src/contextMenu.js:100
 msgid "Route to here"
 msgstr "Rute hertil"
 
-#: ../src/contextMenu.js:130
+#: ../src/contextMenu.js:129
 msgid "Nothing found here!"
 msgstr "Intet fundet her!"
 
-#: ../src/contextMenu.js:187
+#: ../src/contextMenu.js:186
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -714,8 +778,6 @@ msgid "You do not have permission to save there"
 msgstr "Du har ikke tilladelse til at gemme der"
 
 #: ../src/exportViewDialog.js:160
-#, fuzzy
-#| msgid "The directory does not exists"
 msgid "The directory does not exist"
 msgstr "Mappen findes ikke"
 
@@ -740,6 +802,19 @@ msgstr "fortolkerfejl"
 msgid "unknown geometry"
 msgstr "ukendt geometri"
 
+#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:630
+msgid "Route request failed."
+msgstr "Ruteforespørgsel fejlede."
+
+#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:614
+#: ../src/openTripPlanner.js:728
+msgid "No route found."
+msgstr "Ingen rute fundet."
+
+#: ../src/graphHopper.js:193
+msgid "Start!"
+msgstr "Start!"
+
 #: ../src/layersPopover.js:62
 msgid "All Layer Files"
 msgstr "Alle lagfiler"
@@ -763,17 +838,21 @@ msgstr ""
 msgid "A map application for GNOME"
 msgstr "Et kortprogram til GNOME"
 
-#: ../src/mapView.js:260
+#: ../src/mapView.js:354
 msgid "File type is not supported"
 msgstr "Filtypen understøttes ikke"
 
-#: ../src/mapView.js:267
+#: ../src/mapView.js:361
 msgid "Failed to open layer"
 msgstr "Kunne ikke åbne lag"
 
-#: ../src/mapView.js:303
+#: ../src/mapView.js:397
 msgid "Failed to open GeoURI"
 msgstr "Kunne ikke åbne GeoURI"
+
+#: ../src/openTripPlanner.js:626
+msgid "No timetable data found for this route."
+msgstr "Ingen køreplan fundet for denne rute."
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
@@ -827,8 +906,8 @@ msgstr "Webside"
 
 #: ../src/osmEditDialog.js:121
 msgid ""
-"The official website. Try to use the most basic form of a URL i.e. "
-"http://example.com instead of http://example.com/index.html."
+"The official website. Try to use the most basic form of a URL i.e. http://"
+"example.com instead of http://example.com/index.html."
 msgstr ""
 "Den officielle webside. Prøv at bruge den mest grundlæggende form, dvs. "
 "http://eksempel.dk i stedet for http://eksempel.dk/index.html."
@@ -854,8 +933,8 @@ msgid ""
 "The format used should include the language code and the article title like "
 "“en:Article title”."
 msgstr ""
-"Formatet bør inkludere sprogkoden og artiklens overskrift, f.eks. "
-"\"da:Artikeloverskrift\""
+"Formatet bør inkludere sprogkoden og artiklens overskrift, f.eks. \"da:"
+"Artikeloverskrift\""
 
 #: ../src/osmEditDialog.js:143
 msgid "Opening hours"
@@ -1008,29 +1087,17 @@ msgstr "handicap"
 msgid "From %s to %s"
 msgstr "Fra %s til %s"
 
-#: ../src/printOperation.js:47
+#: ../src/printOperation.js:48
 msgid "Loading map tiles for printing"
 msgstr "Indlæser kortfliser til udskrift"
 
-#: ../src/printOperation.js:48
+#: ../src/printOperation.js:49
 msgid "You can abort printing if this takes too long"
 msgstr "Du kan afbryde udskriften hvis dette varer for længe"
 
-#: ../src/printOperation.js:50
+#: ../src/printOperation.js:51
 msgid "Abort printing"
 msgstr "Afbryd udskrift"
-
-#: ../src/routeService.js:90
-msgid "No route found."
-msgstr "Ingen rute fundet."
-
-#: ../src/routeService.js:101
-msgid "Route request failed."
-msgstr "Ruteforespørgsel fejlede."
-
-#: ../src/routeService.js:178
-msgid "Start!"
-msgstr "Start!"
 
 #: ../src/sendToDialog.js:179
 msgid "Failed to open URI"
@@ -1041,10 +1108,125 @@ msgid "failed to load file"
 msgstr "kunne ikke indlæse fil"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:208
+#: ../src/sidebar.js:285
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Anslået tid: %s"
+
+#. Translators: this a format string indicating arriving at the
+#. * destination of journey with the arrival address and transit
+#. * stop as the format parameter
+#: ../src/transitArrivalRow.js:56
+#, javascript-format
+msgid "Arrive at %s"
+msgstr "Ankomst %s"
+
+#: ../src/transitArrivalRow.js:58
+msgid "Arrive"
+msgstr "Ankomst"
+
+#. Translators: this is a format string indicating instructions
+#. * starting a journey at the address given as the parameter
+#.
+#: ../src/transitLegRow.js:74
+#, javascript-format
+msgid "Start at %s"
+msgstr "Starttidspunkt %s"
+
+#. Translators: this indicates starting a journey at a location
+#. * with no set name (such as when the user started routing from
+#. * an arbitrary point on the map)
+#.
+#: ../src/transitLegRow.js:80
+msgid "Start"
+msgstr "Start"
+
+#: ../src/transitLegRow.js:108
+msgid "Show walking instructions"
+msgstr "Vis gangrute"
+
+#: ../src/transitLegRow.js:109
+msgid "Hide walking instructions"
+msgstr "Skjul gangrute"
+
+#. Translators: this is a format string indicating walking a certain
+#. * distance, with the distance expression being the %s placeholder
+#.
+#: ../src/transitLegRow.js:134
+#, javascript-format
+msgid "Walk %s"
+msgstr "Gå %s"
+
+#: ../src/transitMoreRow.js:41
+msgid "Load earlier alternatives"
+msgstr "Indlæs tidligere alternative ruter"
+
+#: ../src/transitMoreRow.js:43
+msgid "Load later alternatives"
+msgstr "Indlæs senere alternative ruter"
+
+#.
+#. * Translators: this is a format string giving the equivalent to
+#. * "may 29" according to the current locale's convensions.
+#.
+#: ../src/transitOptionsPanel.js:141
+msgctxt "month-day-date"
+msgid "%b %e"
+msgstr "%e. %b"
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time, like:
+#. * "12:00 – 13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: ../src/transitPlan.js:248
+#, javascript-format
+msgid "%s – %s"
+msgstr "%s – %s"
+
+#. translators: this is an indication for a trip duration of
+#. * less than an hour, with only the minutes part, using plural forms
+#. * as appropriate
+#.
+#: ../src/transitPlan.js:275
+#, javascript-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d minut"
+msgstr[1] "%d minutter"
+
+#. translators: this is an indication for a trip duration,
+#. * where the duration is an exact number of hours (i.e. no
+#. * minutes part), using plural forms as appropriate
+#.
+#: ../src/transitPlan.js:286
+#, javascript-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d time"
+msgstr[1] "%d timer"
+
+#. translators: this is an indication for a trip duration
+#. * where the duration contains an hour and minute part, it's
+#. * pluralized on the hours part
+#.
+#: ../src/transitPlan.js:292
+#, javascript-format
+msgid "%d:%02d hour"
+msgid_plural "%d:%02d hours"
+msgstr[0] "%d:%02d time"
+msgstr[1] "%d:%02d timer"
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time in a more compact manner to show in the instruction
+#. * list for an itinerary, like:
+#. * "12:00–13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: ../src/transitPlan.js:611
+#, javascript-format
+msgid "%s–%s"
+msgstr "%s–%s"
 
 #: ../src/translations.js:56
 msgid "around the clock"
@@ -1246,4 +1428,3 @@ msgstr "%f fod"
 
 #~ msgid "Country code: %s"
 #~ msgstr "Landekode: %s"
-
