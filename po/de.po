@@ -13,18 +13,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-02-17 10:54+0000\n"
-"PO-Revision-Date: 2017-02-17 21:54-0500\n"
-"Last-Translator: Florian Heiser <gnu.l10n.de@gmail.com>\n"
+"POT-Creation-Date: 2017-03-02 17:55+0000\n"
+"PO-Revision-Date: 2017-03-05 13:27+0100\n"
+"Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.12\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid "GNOME Maps"
@@ -606,39 +606,43 @@ msgstr "Zwischenstationen und Informationen verbergen"
 msgid "Show intermediate stops and information"
 msgstr "Zwischenstationen und Informationen anzeigen"
 
-#: ../data/ui/transit-options-panel.ui.h:1
+#. Indicates searching for the next available itineraries
+#: ../data/ui/transit-options-panel.ui.h:2
 msgid "Leave Now"
 msgstr "Jetzt starten"
 
-#: ../data/ui/transit-options-panel.ui.h:2
+#. Indicates searching for itineraries leaving at the specified time at the earliest
+#: ../data/ui/transit-options-panel.ui.h:4
 msgid "Leave By"
 msgstr "Abfahrt um"
 
-#: ../data/ui/transit-options-panel.ui.h:3
+#. Indicates searching for itineraries arriving no later than the specified time
+#: ../data/ui/transit-options-panel.ui.h:6
 msgid "Arrive By"
 msgstr "Ankunft um"
 
-#: ../data/ui/transit-options-panel.ui.h:4
+#. Header indicating selected modes of transit
+#: ../data/ui/transit-options-panel.ui.h:8
 msgid "Show"
 msgstr "Anzeigen"
 
-#: ../data/ui/transit-options-panel.ui.h:5
+#: ../data/ui/transit-options-panel.ui.h:9
 msgid "Buses"
 msgstr "Busse"
 
-#: ../data/ui/transit-options-panel.ui.h:6
+#: ../data/ui/transit-options-panel.ui.h:10
 msgid "Trams"
 msgstr "Straßenbahnen"
 
-#: ../data/ui/transit-options-panel.ui.h:7
+#: ../data/ui/transit-options-panel.ui.h:11
 msgid "Trains"
 msgstr "Züge"
 
-#: ../data/ui/transit-options-panel.ui.h:8
+#: ../data/ui/transit-options-panel.ui.h:12
 msgid "Subway"
 msgstr "U-Bahn"
 
-#: ../data/ui/transit-options-panel.ui.h:9
+#: ../data/ui/transit-options-panel.ui.h:13
 msgid "Ferries"
 msgstr "Fähren"
 
@@ -681,19 +685,19 @@ msgstr "OSM-Element kann nicht gefunden werden"
 msgid "A path to a local tiles directory structure"
 msgstr "Pfad zu einer lokalen Kachel-Ordnerstruktur"
 
-#: ../src/checkInDialog.js:176
+#: ../src/checkInDialog.js:175
 msgid "Select an account"
 msgstr "Wählen Sie ein Konto aus"
 
-#: ../src/checkInDialog.js:181 ../src/checkInDialog.js:253
+#: ../src/checkInDialog.js:180 ../src/checkInDialog.js:252
 msgid "Loading"
 msgstr "Wird geladen"
 
-#: ../src/checkInDialog.js:205
+#: ../src/checkInDialog.js:204
 msgid "Select a place"
 msgstr "Wählen Sie einen Ort"
 
-#: ../src/checkInDialog.js:210
+#: ../src/checkInDialog.js:209
 msgid ""
 "Maps cannot find the place to check in to with Facebook. Please select one "
 "from this list."
@@ -701,7 +705,7 @@ msgstr ""
 "Karten konnte keinen geeigneten Platz für einen Check-in in Facebook finden. "
 "Bitte wählen Sie einen aus der Liste."
 
-#: ../src/checkInDialog.js:212
+#: ../src/checkInDialog.js:211
 msgid ""
 "Maps cannot find the place to check in to with Foursquare. Please select one "
 "from this list."
@@ -711,19 +715,19 @@ msgstr ""
 
 #. Translators: %s is the name of the place to check in.
 #.
-#: ../src/checkInDialog.js:227
+#: ../src/checkInDialog.js:226
 #, javascript-format
 msgid "Check in to %s"
 msgstr "Bei %s einchecken"
 
 #. Translators: %s is the name of the place to check in.
 #.
-#: ../src/checkInDialog.js:237
+#: ../src/checkInDialog.js:236
 #, javascript-format
 msgid "Write an optional message to check in to %s."
 msgstr "Schreiben Sie eine optionale Nachricht, um bei %s einzuchecken."
 
-#: ../src/checkInDialog.js:289 ../src/checkIn.js:153
+#: ../src/checkInDialog.js:288 ../src/checkIn.js:153
 #: ../src/osmEditDialog.js:509
 msgid "An error has occurred"
 msgstr "Ein Fehler ist aufgetreten"
@@ -857,31 +861,31 @@ msgstr "Für diese Route wurden keine Fahrplandaten gefunden."
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: ../src/osmConnection.js:443
+#: ../src/osmConnection.js:442
 msgid "Incorrect user name or password"
 msgstr "Benutzername oder Passwort falsch"
 
-#: ../src/osmConnection.js:445
+#: ../src/osmConnection.js:444
 msgid "Success"
 msgstr "Erfolg"
 
-#: ../src/osmConnection.js:447
+#: ../src/osmConnection.js:446
 msgid "Bad request"
 msgstr "Fehlerhafte Anfrage"
 
-#: ../src/osmConnection.js:449
+#: ../src/osmConnection.js:448
 msgid "Object not found"
 msgstr "Objekt nicht gefunden"
 
-#: ../src/osmConnection.js:451
+#: ../src/osmConnection.js:450
 msgid "Conflict, someone else has just modified the object"
 msgstr "Konflikt, jemand anderes hat gerade das Objekt geändert"
 
-#: ../src/osmConnection.js:453
+#: ../src/osmConnection.js:452
 msgid "Object has been deleted"
 msgstr "Objekt wurde gelöscht"
 
-#: ../src/osmConnection.js:455
+#: ../src/osmConnection.js:454
 msgid "Way or relation refers to non-existing children"
 msgstr "Weg oder Bezug verweist auf nicht existierende Unterobjekte"
 
@@ -898,7 +902,7 @@ msgstr ""
 msgid "Address"
 msgstr "Adresse"
 
-#: ../src/osmEditDialog.js:118 ../src/placeBubble.js:165
+#: ../src/osmEditDialog.js:118 ../src/placeBubble.js:158
 msgid "Website"
 msgstr "Internet-Seite"
 
@@ -923,7 +927,7 @@ msgstr ""
 "Zeichen. Denken Sie an den Schutz der Privatsphäre, insbesondere für private "
 "Telefonnummern."
 
-#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:171
+#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:164
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -1011,27 +1015,27 @@ msgstr "Typ wählen"
 msgid "Done"
 msgstr "Abgeschlossen"
 
-#: ../src/placeBubble.js:128
+#: ../src/placeBubble.js:121
 msgid "Population:"
 msgstr "Bevölkerung:"
 
-#: ../src/placeBubble.js:134
+#: ../src/placeBubble.js:127
 msgid "Altitude:"
 msgstr "Höhe:"
 
-#: ../src/placeBubble.js:139
+#: ../src/placeBubble.js:132
 msgid "Opening hours:"
 msgstr "Öffnungszeiten:"
 
-#: ../src/placeBubble.js:144
+#: ../src/placeBubble.js:137
 msgid "Internet access:"
 msgstr "Internetzugang:"
 
-#: ../src/placeBubble.js:149
+#: ../src/placeBubble.js:142
 msgid "Wheelchair access:"
 msgstr "Barrierefreier Zugang:"
 
-#: ../src/placeBubble.js:155 ../src/placeBubble.js:159
+#: ../src/placeBubble.js:148 ../src/placeBubble.js:152
 msgid "Phone:"
 msgstr "Telefon:"
 
@@ -1100,7 +1104,7 @@ msgstr "Drucken abbrechen"
 msgid "Failed to open URI"
 msgstr "Adresse konnte nicht geöffnet werden"
 
-#: ../src/shapeLayer.js:93
+#: ../src/shapeLayer.js:92
 msgid "failed to load file"
 msgstr "Laden der Datei ist fehlgeschlagen"
 
@@ -1146,6 +1150,9 @@ msgstr "Anweisungen für den Fußweg anzeigen"
 msgid "Hide walking instructions"
 msgstr "Anweisungen für den Fußweg verbergen"
 
+#. Translators: this is a format string indicating walking a certain
+#. * distance, with the distance expression being the %s placeholder
+#.
 #: ../src/transitLegRow.js:134
 #, javascript-format
 msgid "Walk %s"
@@ -1159,6 +1166,10 @@ msgstr "Frühere Alternativen laden"
 msgid "Load later alternatives"
 msgstr "Spätere Alternativen laden"
 
+#.
+#. * Translators: this is a format string giving the equivalent to
+#. * "may 29" according to the current locale's convensions.
+#.
 #: ../src/transitOptionsPanel.js:141
 msgctxt "month-day-date"
 msgid "%b %e"
@@ -1174,20 +1185,38 @@ msgstr "%e. %b"
 msgid "%s – %s"
 msgstr "%s – %s"
 
-#: ../src/transitPlan.js:271
+#. translators: this is an indication for a trip duration of
+#. * less than an hour, with only the minutes part, using plural forms
+#. * as appropriate
+#.
+#: ../src/transitPlan.js:275
 #, javascript-format
 msgid "%d minute"
-msgstr "%d min"
+msgid_plural "%d minutes"
+msgstr[0] "%d Minute"
+msgstr[1] "%d Minuten"
 
-#: ../src/transitPlan.js:278
+#. translators: this is an indication for a trip duration,
+#. * where the duration is an exact number of hours (i.e. no
+#. * minutes part), using plural forms as appropriate
+#.
+#: ../src/transitPlan.js:286
 #, javascript-format
 msgid "%d hour"
-msgstr "%d Stunde"
+msgid_plural "%d hours"
+msgstr[0] "%d Stunde"
+msgstr[1] "%d Stunden"
 
-#: ../src/transitPlan.js:280
+#. translators: this is an indication for a trip duration
+#. * where the duration contains an hour and minute part, it's
+#. * pluralized on the hours part
+#.
+#: ../src/transitPlan.js:292
 #, javascript-format
-msgid "%d:%0d hour"
-msgstr "%d:%0d Stunden"
+msgid "%d:%02d hour"
+msgid_plural "%d:%02d hours"
+msgstr[0] "%d:%0d Stunde"
+msgstr[1] "%d:%0d Stunden"
 
 #. Translators: this is a format string for showing a departure and
 #. * arrival time in a more compact manner to show in the instruction
@@ -1195,7 +1224,7 @@ msgstr "%d:%0d Stunden"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: ../src/transitPlan.js:598
+#: ../src/transitPlan.js:611
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
