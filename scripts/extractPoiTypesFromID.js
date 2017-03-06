@@ -89,7 +89,7 @@ function processLocale(dirPath, fileName) {
         let name;
 
         try {
-            name = object.presets.presets[type].name;
+            name = object[lang].presets.presets[type].name;
         } catch (ex) {
             continue;
         }
