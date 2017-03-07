@@ -1,14 +1,14 @@
 # Scottish Gaelic translation for gnome-maps.
 # Copyright (C) 2016 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
-# GunChleoc <fios@foramnagaidhlig.net>, 2016.
+# GunChleoc <fios@foramnagaidhlig.net>, 2016, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps gnome-3-20\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-09-01 19:35+0000\n"
-"PO-Revision-Date: 2016-09-13 13:28+0100\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product"
+"=gnome-maps&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2017-03-01 13:58+0000\n"
+"PO-Revision-Date: 2017-03-07 09:54+0100\n"
 "Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig\n"
 "Language: gd\n"
@@ -34,9 +34,9 @@ msgid ""
 "quickly find the place you’re looking for by searching for a city or street, "
 "or locate a place to meet a friend."
 msgstr ""
-"Bheir Mapaichean dhut inntrigeadh luath dha mhapaichean air feadh an "
-"t-saoghail. Leigidh e leat àite a lorg gu luath a-rèir baile no sràide no an "
-"t-àite a lorg far a bheil thu airson tachairt ri caraid."
+"Bheir Mapaichean dhut inntrigeadh luath dha mhapaichean air feadh an t-"
+"saoghail. Leigidh e leat àite a lorg gu luath a-rèir baile no sràide no an t-"
+"àite a lorg far a bheil thu airson tachairt ri caraid."
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:4
 msgid ""
@@ -60,7 +60,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:85 ../src/mainWindow.js:438
+#: ../src/application.js:85 ../src/mainWindow.js:441
 msgid "Maps"
 msgstr "Mapaichean"
 
@@ -452,8 +452,8 @@ msgid ""
 msgstr ""
 "Tha sinn duilich ach cha do dh'obraich sin. Feuch ris a-rithist no tadhail "
 "air\n"
-"<a href=\"https://www.openstreetmap.org/user/forgot-"
-"password\">OpenStreetMap</a> gus am facal-faire agad ath-shuidheachadh."
+"<a href=\"https://www.openstreetmap.org/user/forgot-password"
+"\">OpenStreetMap</a> gus am facal-faire agad ath-shuidheachadh."
 
 #: ../data/ui/osm-account-dialog.ui.h:12
 msgid "The verification code didn't match, please try again."
@@ -532,7 +532,7 @@ msgstr "Deasaich air OpenStreetMap"
 msgid "Cancel"
 msgstr "Sguir dheth"
 
-#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:471
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:472
 msgid "Next"
 msgstr "Air adhart"
 
@@ -654,7 +654,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Sgrìobh teachdaireachd ma thogras tu gus %s a nochdadh."
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:508
+#: ../src/osmEditDialog.js:509
 msgid "An error has occurred"
 msgstr "Thachair mearachd"
 
@@ -734,15 +734,19 @@ msgstr "mearachd parsaidh"
 msgid "unknown geometry"
 msgstr "geomatras nach aithne dhuinn"
 
-#: ../src/mainWindow.js:384
+#: ../src/layersPopover.js:62
+msgid "All Layer Files"
+msgstr "A h-uile faidhle breatha"
+
+#: ../src/mainWindow.js:387
 msgid "Failed to connect to location service"
 msgstr "Dh'fhàillig an ceangal ris an t-seirbheis ionadan"
 
-#: ../src/mainWindow.js:436
+#: ../src/mainWindow.js:439
 msgid "translator-credits"
 msgstr "GunChleoc <fios@foramnagaidhlig.net>"
 
-#: ../src/mainWindow.js:439
+#: ../src/mainWindow.js:442
 msgid "A map application for GNOME"
 msgstr "Aplacaid mhapaichean airson GNOME"
 
@@ -762,7 +766,8 @@ msgstr "Dh'fhàillig le fosgladh GeoURI"
 #. to always give status IO_ERROR
 #: ../src/osmConnection.js:443
 msgid "Incorrect user name or password"
-msgstr "Chan eil an t-ainm-cleachdaiche no chan eil am facal-faire mar bu chòir"
+msgstr ""
+"Chan eil an t-ainm-cleachdaiche no chan eil am facal-faire mar bu chòir"
 
 #: ../src/osmConnection.js:445
 msgid "Success"
@@ -810,8 +815,8 @@ msgid ""
 "example.com instead of http://example.com/index.html."
 msgstr ""
 "An làrach-lìn oifigeil. Feuch an cleachd thu an dreach as bunasaiche dhen "
-"URL, can http://ball-eisimpleir.com seach http://ball-"
-"eisimpleir.com/index.html."
+"URL, can http://ball-eisimpleir.com seach http://ball-eisimpleir.com/index."
+"html."
 
 #: ../src/osmEditDialog.js:126
 msgid "Phone"
@@ -831,12 +836,15 @@ msgid "Wikipedia"
 msgstr "An Uicipeid"
 
 #: ../src/osmEditDialog.js:139
+#| msgid ""
+#| "The format used should include the language code and the article title "
+#| "like ”en:Article title”."
 msgid ""
 "The format used should include the language code and the article title like "
-"”en:Article title”."
+"“en:Article title”."
 msgstr ""
 "Bu chòir dhan fhòrmat a chleachdas tu an còd cànan agus tiotal na h-aiste a "
-"ghabhail a-steach, can ”gd:Tiotal na h-aiste”."
+"ghabhail a-steach, can “gd:Tiotal na h-aiste”."
 
 #: ../src/osmEditDialog.js:143
 msgid "Opening hours"
@@ -885,7 +893,7 @@ msgstr "Inntrigeadh an eadar-lìn"
 #. Translators:
 #. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
 #.
-#: ../src/osmEditDialog.js:176 ../src/translations.js:341
+#: ../src/osmEditDialog.js:176 ../src/translations.js:340
 msgid "Wi-Fi"
 msgstr "WiFi"
 
@@ -906,11 +914,11 @@ msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Cuir ri OpenStreetMap"
 
-#: ../src/osmEditDialog.js:339
+#: ../src/osmEditDialog.js:340
 msgid "Select Type"
 msgstr "Tagh seòrsa"
 
-#: ../src/osmEditDialog.js:457
+#: ../src/osmEditDialog.js:458
 msgid "Done"
 msgstr "Deiseil"
 
@@ -948,7 +956,7 @@ msgstr "Dh'fhàillig le parsadh a' Geo URI"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: ../src/place.js:178 ../src/translations.js:330
+#: ../src/place.js:178 ../src/translations.js:329
 msgid "yes"
 msgstr "tha inntrigeadh ann"
 
@@ -969,7 +977,7 @@ msgstr "cuingichte"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: ../src/place.js:191 ../src/translations.js:336
+#: ../src/place.js:191 ../src/translations.js:335
 msgid "no"
 msgstr "chan eil inntrigeadh ann"
 
@@ -1025,11 +1033,11 @@ msgstr "dh'fhàillig le luchdadh faidhle"
 msgid "Estimated time: %s"
 msgstr "Tuairmse air an ùine: %s"
 
-#: ../src/translations.js:55 ../src/translations.js:57
+#: ../src/translations.js:56
 msgid "around the clock"
 msgstr "fad an latha"
 
-#: ../src/translations.js:59
+#: ../src/translations.js:58
 msgid "from sunrise to sunset"
 msgstr "o èirigh gu laighe na grèine"
 
@@ -1039,7 +1047,7 @@ msgstr "o èirigh gu laighe na grèine"
 #. * The space between the format place holders could be
 #. * substituted with the appropriate separator.
 #.
-#: ../src/translations.js:78
+#: ../src/translations.js:77
 #, javascript-format
 msgctxt "time range list"
 msgid "%s %s"
@@ -1051,7 +1059,7 @@ msgstr "%s %s"
 #. * The space between the format place holders could be
 #. * substituted with the appropriate separator.
 #.
-#: ../src/translations.js:90
+#: ../src/translations.js:89
 #, javascript-format
 msgctxt "time range list"
 msgid "%s %s %s"
@@ -1064,7 +1072,7 @@ msgstr "%s %s %s"
 #. * The space between the format place holders could be substituted with
 #. * the appropriate separator or phrase and the ordering of the arguments
 #. * can be rearranged with the %n#s syntax.
-#: ../src/translations.js:121
+#: ../src/translations.js:120
 #, javascript-format
 msgctxt "time range component"
 msgid "%s %s"
@@ -1079,7 +1087,7 @@ msgstr "%s %s"
 #. * place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: ../src/translations.js:153
+#: ../src/translations.js:152
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s"
@@ -1094,30 +1102,30 @@ msgstr "%s,%s"
 #. * %s place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: ../src/translations.js:167
+#: ../src/translations.js:166
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s,%s"
 msgstr "%s,%s,%s"
 
-#: ../src/translations.js:186
+#: ../src/translations.js:185
 msgid "every day"
 msgstr "gach latha"
 
 #. Translators:
 #. * This represents a range of days with a starting and ending day.
 #.
-#: ../src/translations.js:198
+#: ../src/translations.js:197
 #, javascript-format
 msgctxt "day range"
 msgid "%s-%s"
 msgstr "%s-%s"
 
-#: ../src/translations.js:209
+#: ../src/translations.js:208
 msgid "public holidays"
 msgstr "saor-làithean poblach"
 
-#: ../src/translations.js:211
+#: ../src/translations.js:210
 msgid "school holidays"
 msgstr "saor-làithean sgoile"
 
@@ -1129,13 +1137,13 @@ msgstr "saor-làithean sgoile"
 #. * the translation. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: ../src/translations.js:251
+#: ../src/translations.js:250
 #, javascript-format
 msgctxt "time interval list"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: ../src/translations.js:265
+#: ../src/translations.js:264
 msgid "not open"
 msgstr "dùinte"
 
@@ -1146,7 +1154,7 @@ msgstr "dùinte"
 #. * translation as needed. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: ../src/translations.js:280
+#: ../src/translations.js:279
 #, javascript-format
 msgctxt "time interval"
 msgid "%s-%s"
@@ -1155,21 +1163,21 @@ msgstr "%s-%s"
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: ../src/translations.js:346
+#: ../src/translations.js:345
 msgid "wired"
 msgstr "le uèir"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: ../src/translations.js:351
+#: ../src/translations.js:350
 msgid "terminal"
 msgstr "tèirmineal"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: ../src/translations.js:356
+#: ../src/translations.js:355
 msgid "service"
 msgstr "seirbheis"
 
