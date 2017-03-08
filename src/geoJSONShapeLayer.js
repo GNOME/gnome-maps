@@ -50,5 +50,6 @@ const GeoJSONShapeLayer = new Lang.Class({
 });
 
 GeoJSONShapeLayer.mimeTypes = ['application/vnd.geo+json',
+                               'application/geo+json',
                                'application/json'];
 GeoJSONShapeLayer.displayName = 'GeoJSON';
