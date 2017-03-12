@@ -337,6 +337,7 @@ const OSMEditDialog = new Lang.Class({
     _onTypeClicked: function() {
         this._cancelButton.visible = false;
         this._backButton.visible = true;
+        this._nextButton.visible = false;
         this._headerBar.title = _("Select Type");
         this._stack.visible_child_name = 'select-type';
     },
@@ -354,6 +355,7 @@ const OSMEditDialog = new Lang.Class({
         /* go back to the editing stack page */
         this._backButton.visible = false;
         this._cancelButton.visible = true;
+        this._nextButton.visible = true;
         this._stack.visible_child_name = 'editor';
         this._headerBar.title = this._originalTitle;
 
@@ -469,6 +471,7 @@ const OSMEditDialog = new Lang.Class({
     _onBackClicked: function() {
         this._backButton.visible = false;
         this._cancelButton.visible = true;
+        this._nextButton.visible = true;
         this._nextButton.label = _("Next");
         this._stack.set_visible_child_name('editor');
         this._isEditing = true;
