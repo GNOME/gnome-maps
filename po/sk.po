@@ -6,10 +6,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-02-16 00:19+0000\n"
-"PO-Revision-Date: 2017-02-18 10:25+0100\n"
+"POT-Creation-Date: 2017-03-07 09:56+0000\n"
+"PO-Revision-Date: 2017-03-12 11:11+0100\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
 "Language: sk\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 1.8.12\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid "GNOME Maps"
@@ -618,39 +618,43 @@ msgstr "Skryje prechodné zastávky a informácie"
 msgid "Show intermediate stops and information"
 msgstr "Zobrazí prechodné zastávky a informácie"
 
-#: ../data/ui/transit-options-panel.ui.h:1
-msgid "Leave Now"
-msgstr ""
-
+#. Indicates searching for the next available itineraries
 #: ../data/ui/transit-options-panel.ui.h:2
-msgid "Leave By"
-msgstr ""
+msgid "Leave Now"
+msgstr "Odchod teraz"
 
-#: ../data/ui/transit-options-panel.ui.h:3
-msgid "Arrive By"
-msgstr ""
-
+#. Indicates searching for itineraries leaving at the specified time at the earliest
 #: ../data/ui/transit-options-panel.ui.h:4
+msgid "Leave By"
+msgstr "Odchod o"
+
+#. Indicates searching for itineraries arriving no later than the specified time
+#: ../data/ui/transit-options-panel.ui.h:6
+msgid "Arrive By"
+msgstr "Príchod o"
+
+#. Header indicating selected modes of transit
+#: ../data/ui/transit-options-panel.ui.h:8
 msgid "Show"
 msgstr "Zobraziť"
 
-#: ../data/ui/transit-options-panel.ui.h:5
+#: ../data/ui/transit-options-panel.ui.h:9
 msgid "Buses"
 msgstr "Autobusy"
 
-#: ../data/ui/transit-options-panel.ui.h:6
+#: ../data/ui/transit-options-panel.ui.h:10
 msgid "Trams"
 msgstr "Električky"
 
-#: ../data/ui/transit-options-panel.ui.h:7
+#: ../data/ui/transit-options-panel.ui.h:11
 msgid "Trains"
 msgstr "Vlaky"
 
-#: ../data/ui/transit-options-panel.ui.h:8
+#: ../data/ui/transit-options-panel.ui.h:12
 msgid "Subway"
 msgstr "Metro"
 
-#: ../data/ui/transit-options-panel.ui.h:9
+#: ../data/ui/transit-options-panel.ui.h:13
 msgid "Ferries"
 msgstr "Trajekty"
 
@@ -693,19 +697,19 @@ msgstr "Nepodarilo sa nájsť prvok služby OSM"
 msgid "A path to a local tiles directory structure"
 msgstr "Cesta k štruktúre adresárov miestnych dlaždíc"
 
-#: ../src/checkInDialog.js:176
+#: ../src/checkInDialog.js:175
 msgid "Select an account"
 msgstr "Výber účtu"
 
-#: ../src/checkInDialog.js:181 ../src/checkInDialog.js:253
+#: ../src/checkInDialog.js:180 ../src/checkInDialog.js:252
 msgid "Loading"
 msgstr "Načítavanie"
 
-#: ../src/checkInDialog.js:205
+#: ../src/checkInDialog.js:204
 msgid "Select a place"
 msgstr "Výber miesta"
 
-#: ../src/checkInDialog.js:210
+#: ../src/checkInDialog.js:209
 msgid ""
 "Maps cannot find the place to check in to with Facebook. Please select one "
 "from this list."
@@ -713,7 +717,7 @@ msgstr ""
 "Aplikácia Mapy nemôže nájsť miesto na oznámenie v sieti Facebook. Prosím, "
 "vyberte nejaké zo zoznamu."
 
-#: ../src/checkInDialog.js:212
+#: ../src/checkInDialog.js:211
 msgid ""
 "Maps cannot find the place to check in to with Foursquare. Please select one "
 "from this list."
@@ -723,19 +727,19 @@ msgstr ""
 
 #. Translators: %s is the name of the place to check in.
 #.
-#: ../src/checkInDialog.js:227
+#: ../src/checkInDialog.js:226
 #, javascript-format
 msgid "Check in to %s"
 msgstr "Oznámiť polohu %s"
 
 #. Translators: %s is the name of the place to check in.
 #.
-#: ../src/checkInDialog.js:237
+#: ../src/checkInDialog.js:236
 #, javascript-format
 msgid "Write an optional message to check in to %s."
 msgstr "Napíšte voliteľnú správu k oznámeniu polohy %s."
 
-#: ../src/checkInDialog.js:289 ../src/checkIn.js:153
+#: ../src/checkInDialog.js:288 ../src/checkIn.js:153
 #: ../src/osmEditDialog.js:509
 msgid "An error has occurred"
 msgstr "Vyskytla sa chyba"
@@ -862,31 +866,31 @@ msgstr "Pre túto trasu sa nenašli žiadne údaje cestovného poriadku."
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: ../src/osmConnection.js:443
+#: ../src/osmConnection.js:442
 msgid "Incorrect user name or password"
 msgstr "Nesprávne používateľské meno alebo heslo"
 
-#: ../src/osmConnection.js:445
+#: ../src/osmConnection.js:444
 msgid "Success"
 msgstr "Úspech"
 
-#: ../src/osmConnection.js:447
+#: ../src/osmConnection.js:446
 msgid "Bad request"
 msgstr "Nesprávna požiadavka"
 
-#: ../src/osmConnection.js:449
+#: ../src/osmConnection.js:448
 msgid "Object not found"
 msgstr "Objekt sa nenašiel"
 
-#: ../src/osmConnection.js:451
+#: ../src/osmConnection.js:450
 msgid "Conflict, someone else has just modified the object"
 msgstr "Nastal konflikt. Niekto iný práve upravil objekt."
 
-#: ../src/osmConnection.js:453
+#: ../src/osmConnection.js:452
 msgid "Object has been deleted"
 msgstr "Objekt bol odstránený"
 
-#: ../src/osmConnection.js:455
+#: ../src/osmConnection.js:454
 msgid "Way or relation refers to non-existing children"
 msgstr "Cesta alebo relácia odkazuje na neexistujúceho potomka"
 
@@ -902,7 +906,7 @@ msgstr "Oficiálny názov. Toto obvykle býva napísané na tabuliach."
 msgid "Address"
 msgstr "Adresa"
 
-#: ../src/osmEditDialog.js:118 ../src/placeBubble.js:165
+#: ../src/osmEditDialog.js:118 ../src/placeBubble.js:159
 msgid "Website"
 msgstr "Webová stránka"
 
@@ -927,7 +931,7 @@ msgstr ""
 "na miestne zákony o ochrane súkromia, obzvlášť pri súkromných telefónnych "
 "číslach."
 
-#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:171
+#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:165
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -1016,27 +1020,27 @@ msgstr "Výber typu"
 msgid "Done"
 msgstr "Hotovo"
 
-#: ../src/placeBubble.js:128
+#: ../src/placeBubble.js:122
 msgid "Population:"
 msgstr "Obyvateľstvo:"
 
-#: ../src/placeBubble.js:134
+#: ../src/placeBubble.js:128
 msgid "Altitude:"
 msgstr "Nadmorská výška:"
 
-#: ../src/placeBubble.js:139
+#: ../src/placeBubble.js:133
 msgid "Opening hours:"
 msgstr "Otváracia doba:"
 
-#: ../src/placeBubble.js:144
+#: ../src/placeBubble.js:138
 msgid "Internet access:"
 msgstr "Prístup na internet:"
 
-#: ../src/placeBubble.js:149
+#: ../src/placeBubble.js:143
 msgid "Wheelchair access:"
 msgstr "Bezbariérový prístup:"
 
-#: ../src/placeBubble.js:155 ../src/placeBubble.js:159
+#: ../src/placeBubble.js:149 ../src/placeBubble.js:153
 msgid "Phone:"
 msgstr "Telefón:"
 
@@ -1105,12 +1109,12 @@ msgstr "Prerušiť tlač"
 msgid "Failed to open URI"
 msgstr "Zlyhalo otvorenie URI"
 
-#: ../src/shapeLayer.js:93
+#: ../src/shapeLayer.js:92
 msgid "failed to load file"
 msgstr "zlyhalo načítanie súboru"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:282
+#: ../src/sidebar.js:285
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Odhadovaný čas: %s"
@@ -1153,10 +1157,13 @@ msgstr "Zobrazí pokyny pre chôdzu"
 msgid "Hide walking instructions"
 msgstr "Skryje pokyny pre chôdzu"
 
+#. Translators: this is a format string indicating walking a certain
+#. * distance, with the distance expression being the %s placeholder
+#.
 #: ../src/transitLegRow.js:134
 #, javascript-format
 msgid "Walk %s"
-msgstr ""
+msgstr "Chôdza %s"
 
 #: ../src/transitMoreRow.js:41
 msgid "Load earlier alternatives"
@@ -1166,6 +1173,10 @@ msgstr "Načítať skoršie alternatívy"
 msgid "Load later alternatives"
 msgstr "Načítať neskoršie alternatívy"
 
+#.
+#. * Translators: this is a format string giving the equivalent to
+#. * "may 29" according to the current locale's convensions.
+#.
 #: ../src/transitOptionsPanel.js:141
 msgctxt "month-day-date"
 msgid "%b %e"
@@ -1181,20 +1192,41 @@ msgstr "%e. %b"
 msgid "%s – %s"
 msgstr "%s – %s"
 
-#: ../src/transitPlan.js:271
+#. translators: this is an indication for a trip duration of
+#. * less than an hour, with only the minutes part, using plural forms
+#. * as appropriate
+#.
+#: ../src/transitPlan.js:275
 #, javascript-format
 msgid "%d minute"
-msgstr ""
+msgid_plural "%d minutes"
+msgstr[0] "%d minút"
+msgstr[1] "%d minúta"
+msgstr[2] "%d minúty"
 
-#: ../src/transitPlan.js:278
+#. translators: this is an indication for a trip duration,
+#. * where the duration is an exact number of hours (i.e. no
+#. * minutes part), using plural forms as appropriate
+#.
+#: ../src/transitPlan.js:286
 #, javascript-format
 msgid "%d hour"
-msgstr ""
+msgid_plural "%d hours"
+msgstr[0] "%d hodín"
+msgstr[1] "%d hodina"
+msgstr[2] "%d hodiny"
 
-#: ../src/transitPlan.js:280
+#. translators: this is an indication for a trip duration
+#. * where the duration contains an hour and minute part, it's
+#. * pluralized on the hours part
+#.
+#: ../src/transitPlan.js:292
 #, javascript-format
-msgid "%d:%0d hour"
-msgstr ""
+msgid "%d:%02d hour"
+msgid_plural "%d:%02d hours"
+msgstr[0] "%d:%02d hodín"
+msgstr[1] "%d:%02d hodina"
+msgstr[2] "%d:%02d hodiny"
 
 #. Translators: this is a format string for showing a departure and
 #. * arrival time in a more compact manner to show in the instruction
@@ -1202,7 +1234,7 @@ msgstr ""
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: ../src/transitPlan.js:598
+#: ../src/transitPlan.js:611
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
