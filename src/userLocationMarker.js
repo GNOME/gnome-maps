@@ -83,9 +83,6 @@ const UserLocationMarker = new Lang.Class({
             this._accuracyMarker.refreshGeometry(this._view);
             this._zoomLevelId = this._view.connect('notify::zoom-level',
                                                    this._accuracyMarker.refreshGeometry.bind(this._accuracyMarker));
-            this.connect('destroy', (function() {
-                this._view.disconnect(this._zoomLevelId);
-            }).bind(this));
         }
     },
 
@@ -104,5 +101,10 @@ const UserLocationMarker = new Lang.Class({
             layer.add_marker(this._accuracyMarker);
 
         layer.add_marker(this);
+    },
+
+    disconnectView: function() {
+        if (this._zoomLevelId)
+            this._view.disconnect(this._zoomLevelId);
     }
 });
