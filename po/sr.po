@@ -6,19 +6,21 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-02-16 00:19+0000\n"
-"PO-Revision-Date: 2017-02-25 08:33+0200\n"
-"Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
+"POT-Creation-Date: 2017-03-12 10:13+0000\n"
+"PO-Revision-Date: 2017-03-12 14:58+0100\n"
+"Last-Translator: Марко М. Костић <marko.m.kostic@gmail.com>\n"
 "Language-Team: Serbian <(nothing)>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
-"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
+"X-Generator: Poedit 1.8.12\n"
+"X-Poedit-Bookmarks: -1,238,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid "GNOME Maps"
@@ -376,9 +378,6 @@ msgid "Maps is offline!"
 msgstr "Програм је ван мреже!"
 
 #: ../data/ui/main-window.ui.h:8
-#| msgid ""
-#| "Maps need an active internet connection to function properly, but one "
-#| "can't be found."
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -437,27 +436,21 @@ msgid "Sign In"
 msgstr "Пријави ме"
 
 #: ../data/ui/osm-account-dialog.ui.h:8
-#| msgid "Don't have an account?"
 msgid "Don’t have an account?"
 msgstr "Немате налог?"
 
 #. The label should contain the link to the OSM reset password page with a translated title
 #: ../data/ui/osm-account-dialog.ui.h:10
-#| msgid ""
-#| "Sorry, that didn't work. Please try again, or visit\n"
-#| "<a href=\"https://www.openstreetmap.org/user/forgot-password"
-#| "\">OpenStreetMap</a> to reset your password."
 msgid ""
 "Sorry, that didn’t work. Please try again, or visit\n"
 "<a href=\"https://www.openstreetmap.org/user/forgot-password"
 "\">OpenStreetMap</a> to reset your password."
 msgstr ""
 "Нажалост, то није прорадило. Пробајте поново или посетите\n"
-"<a href=\"https://www.openstreetmap.org/user/forgot-password\""
-">OpenStreetMap</a> да бисте опоравили вашу лозинку."
+"<a href=\"https://www.openstreetmap.org/user/forgot-password"
+"\">OpenStreetMap</a> да бисте опоравили вашу лозинку."
 
 #: ../data/ui/osm-account-dialog.ui.h:12
-#| msgid "The verification code didn't match, please try again."
 msgid "The verification code didn’t match, please try again."
 msgstr "Потврдни код се не подудара, пробајте поново."
 
@@ -515,9 +508,6 @@ msgid "Comment"
 msgstr "Коментар"
 
 #: ../data/ui/osm-edit-dialog.ui.h:5
-#| msgid ""
-#| "Map changes will be visible on all maps that use\n"
-#| "    OpenStreetMap data."
 msgid ""
 "Map changes will be visible on all maps that use\n"
 "OpenStreetMap data."
@@ -574,10 +564,8 @@ msgid "Route search by GraphHopper"
 msgstr "Претрага руте Граф Хопером"
 
 #: ../data/ui/sidebar.ui.h:2
-#, fuzzy
-#| msgid "Route search by GraphHopper"
 msgid "Route search by OpenTripPlanner"
-msgstr "Претрага руте Граф Хопером"
+msgstr "Претрага руте преко Опен-Трип-Планера"
 
 #: ../data/ui/sidebar.ui.h:3
 msgid ""
@@ -589,6 +577,13 @@ msgid ""
 "Names and brands shown are to be considered as registered trademarks when "
 "applicable."
 msgstr ""
+"Маршруте јавног превоза омогућује Гном коришћењем\n"
+"редова вожњи набављених од превозника или агенција.\n"
+"Ове фирме и агенције се не могу сматрати одговорним за приказане резултате.\n"
+"Гном не може јемчити за тачност приказаних маршрута и заказаних полазака.\n"
+"Приказани називи и робне марке се требају сматрати регистрованим робним "
+"маркама\n"
+"где је то могуће."
 
 #: ../data/ui/social-place-more-results-row.ui.h:1
 msgid "Show more results"
@@ -596,51 +591,51 @@ msgstr "Прикажите још резултата"
 
 #: ../data/ui/transit-leg-row.ui.h:1
 msgid "Hide intermediate stops and information"
-msgstr ""
+msgstr "Сакриј станице и податке на маршрути"
 
 #: ../data/ui/transit-leg-row.ui.h:2
-#, fuzzy
-#| msgid "Show more information"
 msgid "Show intermediate stops and information"
-msgstr "Прикажи још података"
+msgstr "Прикажи станице и податке на маршрути"
 
-#: ../data/ui/transit-options-panel.ui.h:1
-msgid "Leave Now"
-msgstr ""
-
+#. Indicates searching for the next available itineraries
 #: ../data/ui/transit-options-panel.ui.h:2
-msgid "Leave By"
-msgstr ""
+msgid "Leave Now"
+msgstr "Полази сада"
 
-#: ../data/ui/transit-options-panel.ui.h:3
-msgid "Arrive By"
-msgstr ""
-
+#. Indicates searching for itineraries leaving at the specified time at the earliest
 #: ../data/ui/transit-options-panel.ui.h:4
-#, fuzzy
-#| msgid "Show help"
-msgid "Show"
-msgstr "Прикажи помоћ"
+msgid "Leave By"
+msgstr "Полази у"
 
-#: ../data/ui/transit-options-panel.ui.h:5
-msgid "Buses"
-msgstr ""
-
+#. Indicates searching for itineraries arriving no later than the specified time
 #: ../data/ui/transit-options-panel.ui.h:6
-msgid "Trams"
-msgstr ""
+msgid "Arrive By"
+msgstr "Долази у"
 
-#: ../data/ui/transit-options-panel.ui.h:7
-msgid "Trains"
-msgstr ""
-
+#. Header indicating selected modes of transit
 #: ../data/ui/transit-options-panel.ui.h:8
-msgid "Subway"
-msgstr ""
+msgid "Show"
+msgstr "Прикажи"
 
 #: ../data/ui/transit-options-panel.ui.h:9
+msgid "Buses"
+msgstr "Аутобуси"
+
+#: ../data/ui/transit-options-panel.ui.h:10
+msgid "Trams"
+msgstr "Трамваји"
+
+#: ../data/ui/transit-options-panel.ui.h:11
+msgid "Trains"
+msgstr "Возови"
+
+#: ../data/ui/transit-options-panel.ui.h:12
+msgid "Subway"
+msgstr "Подземна"
+
+#: ../data/ui/transit-options-panel.ui.h:13
 msgid "Ferries"
-msgstr ""
+msgstr "Трајекти"
 
 #: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:120
 msgid "Current location"
@@ -681,26 +676,26 @@ msgstr "Нисам могао да нађем ОСМ елемент"
 msgid "A path to a local tiles directory structure"
 msgstr "Путања до локалне фасцикле са структуром плочица"
 
-#: ../src/checkInDialog.js:176
+#: ../src/checkInDialog.js:175
 msgid "Select an account"
 msgstr "Изаберите налог"
 
-#: ../src/checkInDialog.js:181 ../src/checkInDialog.js:253
+#: ../src/checkInDialog.js:180 ../src/checkInDialog.js:252
 msgid "Loading"
 msgstr "Учитавам"
 
-#: ../src/checkInDialog.js:205
+#: ../src/checkInDialog.js:204
 msgid "Select a place"
 msgstr "Изаберите место"
 
-#: ../src/checkInDialog.js:210
+#: ../src/checkInDialog.js:209
 msgid ""
 "Maps cannot find the place to check in to with Facebook. Please select one "
 "from this list."
 msgstr ""
 "Не могу да нађем место за проверу Фејсбуком. Изаберите једно са списка."
 
-#: ../src/checkInDialog.js:212
+#: ../src/checkInDialog.js:211
 msgid ""
 "Maps cannot find the place to check in to with Foursquare. Please select one "
 "from this list."
@@ -709,19 +704,19 @@ msgstr ""
 
 #. Translators: %s is the name of the place to check in.
 #.
-#: ../src/checkInDialog.js:227
+#: ../src/checkInDialog.js:226
 #, javascript-format
 msgid "Check in to %s"
 msgstr "Провери у „%s“"
 
 #. Translators: %s is the name of the place to check in.
 #.
-#: ../src/checkInDialog.js:237
+#: ../src/checkInDialog.js:236
 #, javascript-format
 msgid "Write an optional message to check in to %s."
 msgstr "Напишите изборну поруку за проверу у „%s“."
 
-#: ../src/checkInDialog.js:289 ../src/checkIn.js:153
+#: ../src/checkInDialog.js:288 ../src/checkIn.js:153
 #: ../src/osmEditDialog.js:509
 msgid "An error has occurred"
 msgstr "Дошло је до грешке"
@@ -729,7 +724,6 @@ msgstr "Дошло је до грешке"
 #. Translators: %s is the place name that user wanted to check-in
 #: ../src/checkIn.js:135
 #, javascript-format
-#| msgid "Cannot find \"%s\" in the social service"
 msgid "Cannot find “%s” in the social service"
 msgstr "Не могу да нађем „%s“ у друштвеним услугама"
 
@@ -778,7 +772,6 @@ msgid "You do not have permission to save there"
 msgstr "Немате овлашћење да сачувате ту"
 
 #: ../src/exportViewDialog.js:160
-#| msgid "The directory does not exists"
 msgid "The directory does not exist"
 msgstr "Директоријум не постоји"
 
@@ -850,35 +843,35 @@ msgstr "Нисам успео да отворим Гео-УРИ"
 
 #: ../src/openTripPlanner.js:626
 msgid "No timetable data found for this route."
-msgstr ""
+msgstr "Нема редова вожњи за ову руту."
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: ../src/osmConnection.js:443
+#: ../src/osmConnection.js:442
 msgid "Incorrect user name or password"
 msgstr "Неисправно корисничко име или лозинка"
 
-#: ../src/osmConnection.js:445
+#: ../src/osmConnection.js:444
 msgid "Success"
 msgstr "Успех"
 
-#: ../src/osmConnection.js:447
+#: ../src/osmConnection.js:446
 msgid "Bad request"
 msgstr "Лош захтев"
 
-#: ../src/osmConnection.js:449
+#: ../src/osmConnection.js:448
 msgid "Object not found"
 msgstr "Објекат није нађен"
 
-#: ../src/osmConnection.js:451
+#: ../src/osmConnection.js:450
 msgid "Conflict, someone else has just modified the object"
 msgstr "Сукоб, неко други је управо изменио објекат"
 
-#: ../src/osmConnection.js:453
+#: ../src/osmConnection.js:452
 msgid "Object has been deleted"
 msgstr "Објекат је обрисан"
 
-#: ../src/osmConnection.js:455
+#: ../src/osmConnection.js:454
 msgid "Way or relation refers to non-existing children"
 msgstr "Пут или релација се односи на непостојеће дете"
 
@@ -894,7 +887,7 @@ msgstr "Званични назив. Обично назив који се на�
 msgid "Address"
 msgstr "Адреса"
 
-#: ../src/osmEditDialog.js:118 ../src/placeBubble.js:165
+#: ../src/osmEditDialog.js:118 ../src/placeBubble.js:159
 msgid "Website"
 msgstr "Веб страница"
 
@@ -919,7 +912,7 @@ msgstr ""
 "Обратите пажњу на локалне законе о заштити приватности, нарочито ако су у "
 "питању приватни бројеви телефона."
 
-#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:171
+#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:165
 msgid "Wikipedia"
 msgstr "Википедија"
 
@@ -1008,27 +1001,27 @@ msgstr "Изабери врсту"
 msgid "Done"
 msgstr "Готово"
 
-#: ../src/placeBubble.js:128
+#: ../src/placeBubble.js:122
 msgid "Population:"
 msgstr "Број становника:"
 
-#: ../src/placeBubble.js:134
+#: ../src/placeBubble.js:128
 msgid "Altitude:"
 msgstr "Висина:"
 
-#: ../src/placeBubble.js:139
+#: ../src/placeBubble.js:133
 msgid "Opening hours:"
 msgstr "Радно време:"
 
-#: ../src/placeBubble.js:144
+#: ../src/placeBubble.js:138
 msgid "Internet access:"
 msgstr "Приступ интернету:"
 
-#: ../src/placeBubble.js:149
+#: ../src/placeBubble.js:143
 msgid "Wheelchair access:"
 msgstr "Приступ инвалидима:"
 
-#: ../src/placeBubble.js:155 ../src/placeBubble.js:159
+#: ../src/placeBubble.js:149 ../src/placeBubble.js:153
 msgid "Phone:"
 msgstr "Телефон:"
 
@@ -1097,12 +1090,12 @@ msgstr "Прекини штампање"
 msgid "Failed to open URI"
 msgstr "Нисам успео да отворим путању"
 
-#: ../src/shapeLayer.js:93
+#: ../src/shapeLayer.js:92
 msgid "failed to load file"
 msgstr "нисам успео да учитам датотеку"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:282
+#: ../src/sidebar.js:285
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Процењено време: %s"
@@ -1113,11 +1106,11 @@ msgstr "Процењено време: %s"
 #: ../src/transitArrivalRow.js:56
 #, javascript-format
 msgid "Arrive at %s"
-msgstr ""
+msgstr "Долази у %s"
 
 #: ../src/transitArrivalRow.js:58
 msgid "Arrive"
-msgstr ""
+msgstr "Долази"
 
 #. Translators: this is a format string indicating instructions
 #. * starting a journey at the address given as the parameter
@@ -1125,42 +1118,48 @@ msgstr ""
 #: ../src/transitLegRow.js:74
 #, javascript-format
 msgid "Start at %s"
-msgstr ""
+msgstr "Креће у %s"
 
 #. Translators: this indicates starting a journey at a location
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
 #: ../src/transitLegRow.js:80
-#| msgid "Start!"
 msgid "Start"
 msgstr "Крени"
 
 #: ../src/transitLegRow.js:108
 msgid "Show walking instructions"
-msgstr ""
+msgstr "Прикажи упутства за пешачење"
 
 #: ../src/transitLegRow.js:109
 msgid "Hide walking instructions"
-msgstr ""
+msgstr "Сакриј упутства за пешачење"
 
+#. Translators: this is a format string indicating walking a certain
+#. * distance, with the distance expression being the %s placeholder
+#.
 #: ../src/transitLegRow.js:134
 #, javascript-format
 msgid "Walk %s"
-msgstr ""
+msgstr "Пешачите %s"
 
 #: ../src/transitMoreRow.js:41
 msgid "Load earlier alternatives"
-msgstr ""
+msgstr "Учитај старије алтернативе"
 
 #: ../src/transitMoreRow.js:43
 msgid "Load later alternatives"
-msgstr ""
+msgstr "Учитај новије алтернативе"
 
+#.
+#. * Translators: this is a format string giving the equivalent to
+#. * "may 29" according to the current locale's convensions.
+#.
 #: ../src/transitOptionsPanel.js:141
 msgctxt "month-day-date"
 msgid "%b %e"
-msgstr ""
+msgstr "%e. %b"
 
 #. Translators: this is a format string for showing a departure and
 #. * arrival time, like:
@@ -1170,23 +1169,46 @@ msgstr ""
 #: ../src/transitPlan.js:248
 #, javascript-format
 msgid "%s – %s"
-msgstr ""
+msgstr "%s – %s"
 
-#: ../src/transitPlan.js:271
-#, fuzzy, javascript-format
-#| msgid "%f min"
+#. translators: this is an indication for a trip duration of
+#. * less than an hour, with only the minutes part, using plural forms
+#. * as appropriate
+#.
+#: ../src/transitPlan.js:275
+#, javascript-format
 msgid "%d minute"
-msgstr "%f мин."
+msgid_plural "%d minutes"
+msgstr[0] "%d минут"
+msgstr[1] "%d минута"
+msgstr[2] "%d минута"
+msgstr[3] "%d минут"
 
-#: ../src/transitPlan.js:278
+#. translators: this is an indication for a trip duration,
+#. * where the duration is an exact number of hours (i.e. no
+#. * minutes part), using plural forms as appropriate
+#.
+#: ../src/transitPlan.js:286
 #, javascript-format
 msgid "%d hour"
-msgstr ""
+msgid_plural "%d hours"
+msgstr[0] "%d сат"
+msgstr[1] "%d сата"
+msgstr[2] "%d сати"
+msgstr[3] "%d сат"
 
-#: ../src/transitPlan.js:280
+#. translators: this is an indication for a trip duration
+#. * where the duration contains an hour and minute part, it's
+#. * pluralized on the hours part
+#.
+#: ../src/transitPlan.js:292
 #, javascript-format
-msgid "%d:%0d hour"
-msgstr ""
+msgid "%d:%02d hour"
+msgid_plural "%d:%02d hours"
+msgstr[0] "%d:%02d сат"
+msgstr[1] "%d:%02d сата"
+msgstr[2] "%d:%02d сати"
+msgstr[3] "%d:%02d сат"
 
 #. Translators: this is a format string for showing a departure and
 #. * arrival time in a more compact manner to show in the instruction
@@ -1194,10 +1216,10 @@ msgstr ""
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: ../src/transitPlan.js:598
+#: ../src/transitPlan.js:611
 #, javascript-format
 msgid "%s–%s"
-msgstr ""
+msgstr "%s–%s"
 
 #: ../src/translations.js:56
 msgid "around the clock"
