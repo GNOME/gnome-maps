@@ -44,16 +44,26 @@ const CheckInManager = new Lang.Class({
     _init: function() {
         this.parent();
 
-        this._goaClient = Goa.Client.new_sync(null);
+        try {
+            this._goaClient = Goa.Client.new_sync(null);
+        } catch (e) {
+            log('Error creating GOA client: %s'.format(e.message));
+        }
+
         this._accounts = [];
         this._authorizers = {};
         this._backends = {};
 
         this._initBackends();
 
-        this._goaClient.connect('account-added', this._refreshGoaAccounts.bind(this));
-        this._goaClient.connect('account-changed', this._refreshGoaAccounts.bind(this));
-        this._goaClient.connect('account-removed', this._refreshGoaAccounts.bind(this));
+        if (this._goaClient) {
+            this._goaClient.connect('account-added',
+                                    this._refreshGoaAccounts.bind(this));
+            this._goaClient.connect('account-changed',
+                                    this._refreshGoaAccounts.bind(this));
+            this._goaClient.connect('account-removed',
+                                    this._refreshGoaAccounts.bind(this));
+        }
 
         this._refreshGoaAccounts();
     },
@@ -67,6 +77,8 @@ const CheckInManager = new Lang.Class({
     },
 
     _refreshGoaAccounts: function() {
+        if (!this._goaClient)
+            return;
         let accounts = this._goaClient.get_accounts();
         this._accounts = [];
         this._accountsCount = 0;
