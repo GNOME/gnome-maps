@@ -82,7 +82,7 @@ const TransitItineraryRow = new Lang.Class({
             grid.attach(new Gtk.Image({ icon_name: leg.iconName, visible: true }),
                         0, 0, 1, 1);
             grid.attach(new TransitRouteLabel.TransitRouteLabel({ leg: leg,
-                                                                  compact: useContractedLabels,
+                                                                  compact: useCompact,
                                                                   visible: true }),
                         1, 0, 1, 1);
 
