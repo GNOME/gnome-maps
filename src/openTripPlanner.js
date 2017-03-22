@@ -611,12 +611,20 @@ const OpenTripPlanner = new Lang.Class({
                         }).bind(this));
 
                         if (itineraries.length === 0) {
-                            Application.notificationManager.showMessage(_("No route found."));
                             /* don't reset query points, unlike for turn-based
                              * routing, since options and timeing might influence
                              * results */
-                            this._extendPrevious = false;
-                            this.plan.reset();
+                            if (this._extendPrevious) {
+                                let message = this._query.arriveBy ?
+                                              _("No earlier alternatives found.") :
+                                              _("No later alternatives found.");
+                                Application.notificationManager.showMessage(message);
+                                this._extendPrevious = false;
+                                this.plan.noMoreResults();
+                            } else {
+                                Application.notificationManager.showMessage(_("No route found."));
+                                this.plan.reset();
+                            }
                         } else {
                             this._recalculateItineraries(itineraries);
                         }
