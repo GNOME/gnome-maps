@@ -90,6 +90,7 @@ const Plan = new Lang.Class({
     Signals: {
         'update': {},
         'reset': {},
+        'no-more-results': {},
         'itinerary-selected': { param_types: [GObject.TYPE_OBJECT] },
         'itinerary-deselected': {}
     },
@@ -118,6 +119,10 @@ const Plan = new Lang.Class({
         this.bbox = null;
         this._selectedItinerary = null;
         this.emit('reset');
+    },
+
+    noMoreResults: function() {
+        this.emit('no-more-results');
     },
 
     selectItinerary: function(itinerary) {
