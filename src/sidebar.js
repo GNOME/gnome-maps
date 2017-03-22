@@ -233,6 +233,13 @@ const Sidebar = new Lang.Class({
              * and so on */
         }).bind(this));
 
+        transitPlan.connect('no-more-results', (function() {
+            // remove the "load more" row, keep the empty row since it gives the separator
+            let numRows = this._transitOverviewListBox.get_children().length;
+            let loadMoreRow = this._transitOverviewListBox.get_row_at_index(numRows - 2);
+            this._transitOverviewListBox.remove(loadMoreRow);
+        }).bind(this));
+
         this._query.connect('notify', (function() {
             if (this._query.isValid()) {
                 this._instructionStack.visible_child = this._instructionSpinner;
