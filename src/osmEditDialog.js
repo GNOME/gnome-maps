@@ -24,6 +24,7 @@ const _ = imports.gettext.gettext;
 
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
+const GnomeDesktop = imports.gi.GnomeDesktop;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 const Soup = imports.gi.Soup;
@@ -213,6 +214,36 @@ const OSM_FIELDS = [
                   ['no', _("No")]]
     }];
 
+const OSM_NAME_FIELDS = [
+    {
+        name: _("Alternative name"),
+        tag: 'alt_name',
+        type: EditFieldType.TEXT,
+        hint: _("Alternative name by which the feature is known.")
+    },
+    {
+        name: _("Old name"),
+        tag: 'old_name',
+        type: EditFieldType.TEXT,
+        hint: _("Older or historical name.")
+    },
+    {
+        name: _("English name"),
+        tag: 'name:en',
+        type: EditFieldType.TEXT,
+        hint: _("Name of feature in English.")
+    },
+    {
+        /* Translators: this placeholder string should be replaced by a string
+         * representing the translated equivalent to "English name" where
+         * "English" would be replaced by the name of the language translated
+         * into. This tag will be targetted at the user's actual language.
+         */
+        name: _("name-in-localized-language"),
+        tag: 'name:localized',
+        type: EditFieldType.TEXT
+    }];
+
 const OSMEditAddress = new Lang.Class({
     Name: 'OSMEditAddress',
     Extends: Gtk.Grid,
@@ -261,6 +292,7 @@ const OSMEditDialog = new Lang.Class({
                         'nextButton',
                         'stack',
                         'editorGrid',
+                        'nameVariantsGrid',
                         'commentTextView',
                         'addFieldPopoverGrid',
                         'addFieldButton',
@@ -595,7 +627,31 @@ const OSMEditDialog = new Lang.Class({
         deleteButton.show();
     },
 
-    _addOSMEditLabel: function(fieldSpec) {
+    _onNameVariantsClicked: function() {
+        this._cancelButton.visible = false;
+        this._backButton.visible = true;
+        this._nextButton.visible = false;
+        this._headerBar.title = _("Edit Name Variants");
+        this._stack.visible_child_name = 'name-variants';
+    },
+
+    _addOSMEditNameVariantsButton: function() {
+        let nameVariantsButton = Gtk.Button.new_from_icon_name('go-next-symbolic',
+                                                               Gtk.IconSize.BUTTON);
+        let styleContext = nameVariantsButton.get_style_context();
+
+        nameVariantsButton.tooltip_text = _("Edit name variants");
+        styleContext.add_class('flat');
+        this._editorGrid.attach(nameVariantsButton, 2, this._currentRow, 1, 1);
+
+        nameVariantsButton.connect('clicked', (function() {
+            this._onNameVariantsClicked();
+        }).bind(this));
+
+        nameVariantsButton.show();
+    },
+
+    _createOSMEditLabel: function(fieldSpec) {
         let text = fieldSpec.name;
         if (fieldSpec.includeHelp) {
             let link = _WIKI_BASE + fieldSpec.tag;
@@ -605,6 +661,20 @@ const OSMEditDialog = new Lang.Class({
                                     use_markup: true });
         label.halign = Gtk.Align.END;
         label.get_style_context().add_class('dim-label');
+
+        return label;
+    },
+
+    _addOSMEditNameVariantLabel: function(fieldSpec, row) {
+        let label = this._createOSMEditLabel(fieldSpec);
+
+        this._nameVariantsGrid.attach(label, 0, row, 1, 1);
+        label.show();
+    },
+
+    _addOSMEditLabel: function(fieldSpec) {
+        let label = this._createOSMEditLabel(fieldSpec);
+
         this._editorGrid.attach(label, 0, this._currentRow, 1, 1);
         label.show();
     },
@@ -618,11 +688,12 @@ const OSMEditDialog = new Lang.Class({
         }
     },
 
-    _addOSMEditTextEntry: function(fieldSpec, value) {
-        this._addOSMEditLabel(fieldSpec);
-
+    _createOSMEditTextEntry: function(fieldSpec, value) {
         let entry = new Gtk.Entry();
-        entry.text = value;
+
+        if (value)
+            entry.text = value;
+
         entry.hexpand = true;
         if (fieldSpec.placeHolder)
             entry.placeholder_text = fieldSpec.placeHolder;
@@ -641,12 +712,29 @@ const OSMEditDialog = new Lang.Class({
             }).bind(this));
         }
 
+        return entry;
+    },
+
+    _addOSMEditNameVariantTextEntry: function(fieldSpec, value, row) {
+        let entry = this._createOSMEditTextEntry(fieldSpec, value);
+
+        this._addOSMEditNameVariantLabel(fieldSpec, row);
+        this._nameVariantsGrid.attach(entry, 1, row, 1, 1);
+        entry.show();
+    },
+
+    _addOSMEditTextEntry: function(fieldSpec, value) {
+        let entry = this._createOSMEditTextEntry(fieldSpec, value);
+
+        this._addOSMEditLabel(fieldSpec);
         this._editorGrid.attach(entry, 1, this._currentRow, 1, 1);
         entry.show();
         entry.grab_focus();
 
-        /* TODO: should we allow deleting the name field? */
-        this._addOSMEditDeleteButton(fieldSpec);
+        if (fieldSpec.tag === 'name')
+            this._addOSMEditNameVariantsButton();
+        else
+            this._addOSMEditDeleteButton(fieldSpec);
 
         this._currentRow++;
     },
@@ -801,6 +889,17 @@ const OSMEditDialog = new Lang.Class({
         }
     },
 
+    /* Get a localized title for the "name in user's language" item,
+     * generate it programmatically if no translation is available
+     */
+    _getLocalizedNameTitle: function(title, language) {
+        Utils.debug('get localized name for: ' + language);
+        if (title === 'name-in-localized-language')
+            return GnomeDesktop.get_language_from_locale(language, 'C') + ' name';
+        else
+            return title;
+    },
+
     _loadOSMData: function(osmObject) {
         this._osmObject = osmObject;
 
@@ -829,6 +928,34 @@ const OSMEditDialog = new Lang.Class({
                 value = osmObject.get_tag(fieldSpec.tag);
                 if (value != null)
                     this._addOSMField(fieldSpec, value);
+            }
+        }
+
+        for (let i = 0; i < OSM_NAME_FIELDS.length; i++) {
+            let fieldSpec = OSM_NAME_FIELDS[i];
+
+            if (fieldSpec.type === EditFieldType.TEXT) {
+                // special handling for the locale-dependent name tag
+                if (fieldSpec.tag === 'name:localized') {
+                    let language = OSMUtils.getLanguageCode();
+
+                    if (language === 'en' || language === 'C') {
+                        /* skip the localized name for English (or fallback) locale
+                         * since we already have a hard-coded English name
+                         */
+                        continue;
+                    } else {
+                        // re-write the field-spec
+                        fieldSpec.tag = 'name:' + language;
+                        fieldSpec.name = this._getLocalizedNameTitle(fieldSpec.name,
+                                                                     language);
+                    }
+                }
+                let value = osmObject.get_tag(fieldSpec.tag);
+
+                this._addOSMEditNameVariantTextEntry(fieldSpec, value, i);
+            } else {
+                Utils.debug('Only simple text input fields are supported for name variants');
             }
         }
 
