@@ -20,9 +20,12 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
+const GLib = imports.gi.GLib;
 const Soup = imports.gi.Soup;
 
 const Application = imports.application;
+
+let languageCode = null;
 
 /*
  * Gets a Wikipedia article in OSM tag format (i.e. lang:Article title)
@@ -64,4 +67,25 @@ function updatePlaceFromOSMObject(place, object) {
     place.wheelchair = object.get_tag('wheelchair');
 
     Application.placeStore.updatePlace(place);
+}
+
+/**
+ * Get the bare ISO 639 language code of the preferred locale.
+ */
+function getLanguageCode() {
+    if (languageCode)
+        return languageCode;
+
+    let locale = GLib.get_language_names()[0];
+
+    // strip charset
+    if (locale.indexOf('.') !== -1)
+        locale = locale.substring(0, locale.indexOf('.'));
+
+    // strip country
+    if (locale.indexOf('_') !== -1)
+        locale = locale.substring(0, locale.indexOf('_'));
+
+    languageCode = locale;
+    return languageCode;
 }
