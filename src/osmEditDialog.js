@@ -55,7 +55,7 @@ const EditFieldType = {
     ADDRESS: 3
 };
 
-const _WIKI_BASE = 'http://wiki.openstreetmap.org/wiki/Key:';
+const _WIKI_BASE = 'https://wiki.openstreetmap.org/wiki/Key:';
 
 let _osmWikipediaRewriteFunc = function(text) {
     let wikipediaArticleFormatted = OSMUtils.getWikipediaOSMArticleFormatFromUrl(text);
