@@ -85,7 +85,6 @@ const Application = new Lang.Class({
     _init: function() {
         /* Translators: This is the program name. */
         GLib.set_application_name(_("Maps"));
-        GLib.set_prgname('gnome-maps');
 
         /* Needed to be able to use in UI files */
         _ensuredTypes.forEach(function(type) {
