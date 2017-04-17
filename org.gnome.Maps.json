@@ -7,28 +7,19 @@
     "tags": ["devel"],
     "desktop-file-name-prefix": "(Development) ",
     "finish-args": [
-        /* X11 + XShm access */
         "--share=ipc", "--socket=x11",
-        /* Wayland access */
         "--socket=wayland",
-        /* OpenGL access */
         "--device=dri",
-        /* Needs to talk to the network: */
         "--share=network",
-        /* Evolution data server access */
         "--talk-name=org.gnome.OnlineAccounts",
         "--talk-name=org.gnome.evolution.dataserver.AddressBook9",
         "--talk-name=org.gnome.evolution.dataserver.Calendar7",
         "--talk-name=org.gnome.evolution.dataserver.Sources5",
         "--talk-name=org.gnome.evolution.dataserver.Subprocess.Backend.*",
 
-        /* Connectivity check */
         "--system-talk-name=org.freedesktop.NetworkManager",
-        /* Needed to save OAuth token from OpenStreetMap */
         "--talk-name=org.freedesktop.secrets",
-        /* Needed to get geo-positioning */
         "--system-talk-name=org.freedesktop.GeoClue2",
-        /* Needed for dconf to work */
         "--filesystem=xdg-run/dconf", "--filesystem=~/.config/dconf:ro",
         "--talk-name=ca.desrt.dconf", "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
      ],
@@ -155,7 +146,6 @@
             ]
         },
         {
-            /* we need rest-0.7 so we use a tarball for it */
             "name": "librest",
             "sources": [
                 {
