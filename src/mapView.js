@@ -296,10 +296,12 @@ const MapView = new Lang.Class({
     },
 
     setMapType: function(mapType) {
-        if (this.view.map_source.id === mapType)
+        if (this._mapType === mapType)
             return;
 
         let overlay_sources = this.view.get_overlay_sources();
+
+        this._mapType = mapType;
 
         if (mapType !== MapType.LOCAL) {
             if (mapType === MapType.AERIAL)

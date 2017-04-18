@@ -20,6 +20,7 @@
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 
+const MapView = imports.mapView;
 const ShapeLayer = imports.shapeLayer;
 const Utils = imports.utils;
 
@@ -109,6 +110,21 @@ const LayersPopover = new Lang.Class({
 
         this._loadLayerButton.connect('clicked',
                                       this._onLoadLayerClicked.bind(this));
+
+        this._streetLayerButton.connect('clicked', (function () {
+            this._mapView.setMapType(MapView.MapType.STREET);
+        }).bind(this));
+
+        this._aerialLayerButton.connect('clicked', (function () {
+            this._mapView.setMapType(MapView.MapType.AERIAL);
+        }).bind(this));
+    },
+
+    setMapType: function(mapType) {
+        if (mapType === MapView.MapType.STREET)
+            this._streetLayerButton.active = true;
+        else if (mapType === MapView.MapType.AERIAL)
+            this._aerialLayerButton.active = true;
     },
 
     _onRemoveClicked: function(row, button) {

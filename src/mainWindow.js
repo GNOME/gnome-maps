@@ -176,10 +176,13 @@ const MainWindow = new Lang.Class({
                 state: ['b', false],
                 onActivate: this._onMapTypeMenuActivate.bind(this)
             },
-            'map-type': {
-                paramType: 's',
-                state: ['s', 'STREET'],
-                onActivate: this._onMapTypeActivate.bind(this)
+            'switch-to-street-view': {
+                accels: ['<Primary>1', '<Primary>KP_1'],
+                onActivate: this._onStreetViewActivate.bind(this)
+            },
+            'switch-to-aearial-view': {
+                accels: ['<Primary>2', '<Primary>KP_2'],
+                onActivate: this._onAerialViewActivate.bind(this)
             },
             'goto-user-location': {
                 accels: ['<Primary>L'],
@@ -411,10 +414,14 @@ const MainWindow = new Lang.Class({
         action.set_state(GLib.Variant.new('b', !state));
     },
 
-    _onMapTypeActivate: function(action, value) {
-        action.set_state(value);
-        let [mapType, len] = value.get_string();
-        this._mapView.setMapType(MapView.MapType[mapType]);
+    _onStreetViewActivate: function() {
+        this._mapView.setMapType(MapView.MapType.STREET);
+        this.layersPopover.setMapType(MapView.MapType.STREET);
+    },
+
+    _onAerialViewActivate: function() {
+        this._mapView.setMapType(MapView.MapType.AERIAL);
+        this.layersPopover.setMapType(MapView.MapType.AERIAL);
     },
 
     _onToggleSidebarChangeState: function(action, variant) {
