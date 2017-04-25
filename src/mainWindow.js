@@ -39,6 +39,7 @@ const MapView = imports.mapView;
 const PlaceEntry = imports.placeEntry;
 const PlaceStore = imports.placeStore;
 const PrintOperation = imports.printOperation;
+const ShapeLayer = imports.shapeLayer;
 const Sidebar = imports.sidebar;
 const Utils = imports.utils;
 const ZoomControl = imports.zoomControl;
@@ -46,6 +47,29 @@ const ZoomControl = imports.zoomControl;
 const _CONFIGURE_ID_TIMEOUT = 100; // msecs
 const _WINDOW_MIN_WIDTH = 600;
 const _WINDOW_MIN_HEIGHT = 500;
+
+const ShapeLayerFileChooser = new Lang.Class({
+    Name: 'ShapeLayerFileChooser',
+    Extends: Gtk.FileChooserDialog,
+    Template: 'resource:///org/gnome/Maps/ui/shape-layer-file-chooser.ui',
+
+    _init: function(params) {
+        this.parent(params);
+        let allFilter = new Gtk.FileFilter();
+        allFilter.set_name(_("All Layer Files"));
+        this.add_filter(allFilter);
+        this.set_filter(allFilter);
+
+        ShapeLayer.SUPPORTED_TYPES.forEach((function(layerClass) {
+            let filter = new Gtk.FileFilter();
+            [filter, allFilter].forEach(function(f) {
+                layerClass.mimeTypes.forEach(f.add_mime_type.bind(f));
+            });
+            filter.set_name(layerClass.displayName);
+            this.add_filter(filter);
+        }).bind(this));
+    }
+});
 
 const MainWindow = new Lang.Class({
     Name: 'MainWindow',
@@ -212,6 +236,10 @@ const MainWindow = new Lang.Class({
             'print-route': {
                 accels: ['<Primary>P'],
                 onActivate: this._printRouteActivate.bind(this)
+            },
+            'open-shape-layer': {
+                accels: ['<Primary>O'],
+                onActivate: this._onOpenShapeLayer.bind(this)
             }
         });
     },
@@ -462,6 +490,21 @@ const MainWindow = new Lang.Class({
         aboutDialog.show();
         aboutDialog.connect('response',
                             aboutDialog.destroy.bind(aboutDialog));
+    },
+
+    _onOpenShapeLayer: function() {
+        let fileChooser = new ShapeLayerFileChooser({
+            transient_for: this,
+        });
+
+        fileChooser.connect('response', (function(widget, response) {
+            if (response === Gtk.ResponseType.OK) {
+                this._mapView.openShapeLayers(fileChooser.get_files());
+                this.layersPopover.popdown();
+            }
+            fileChooser.destroy();
+        }).bind(this));
+        fileChooser.show();
     },
 
     markBusy: function() {

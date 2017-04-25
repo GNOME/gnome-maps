@@ -52,29 +52,6 @@ const ShapeLayerRow = new Lang.Class({
     }
 });
 
-const ShapeLayerFileChooser = new Lang.Class({
-    Name: 'ShapeLayerFileChooser',
-    Extends: Gtk.FileChooserDialog,
-    Template: 'resource:///org/gnome/Maps/ui/shape-layer-file-chooser.ui',
-
-    _init: function(params) {
-        this.parent(params);
-        let allFilter = new Gtk.FileFilter();
-        allFilter.set_name(_("All Layer Files"));
-        this.add_filter(allFilter);
-        this.set_filter(allFilter);
-
-        ShapeLayer.SUPPORTED_TYPES.forEach((function(layerClass) {
-            let filter = new Gtk.FileFilter();
-            [filter, allFilter].forEach(function(f) {
-                layerClass.mimeTypes.forEach(f.add_mime_type.bind(f));
-            });
-            filter.set_name(layerClass.displayName);
-            this.add_filter(filter);
-        }).bind(this));
-    }
-});
-
 const LayersPopover = new Lang.Class({
     Name: 'LayersPopover',
     Extends: Gtk.Popover,
@@ -108,9 +85,6 @@ const LayersPopover = new Lang.Class({
             row.set_header(header);
         });
 
-        this._loadLayerButton.connect('clicked',
-                                      this._onLoadLayerClicked.bind(this));
-
         this._streetLayerButton.connect('clicked', (function () {
             this._mapView.setMapType(MapView.MapType.STREET);
         }).bind(this));
@@ -131,21 +105,6 @@ const LayersPopover = new Lang.Class({
         this._mapView.removeShapeLayer(row.shapeLayer);
         if (this._layersListBox.get_children().length <= 0)
             this._layersListBox.hide();
-    },
-
-    _onLoadLayerClicked: function(button) {
-        let fileChooser = new ShapeLayerFileChooser({
-            transient_for: this.get_parent(),
-        });
-
-        fileChooser.connect('response', (function(widget, response) {
-            if (response === Gtk.ResponseType.OK) {
-                this._mapView.openShapeLayers(fileChooser.get_files());
-                this.hide();
-            }
-            fileChooser.destroy();
-        }).bind(this));
-        fileChooser.show();
     },
 
     _listBoxCreateWidget: function(shapeLayer) {
