@@ -21,6 +21,7 @@
 
 const Lang = imports.lang;
 
+const Champlain = imports.gi.Champlain;
 const GLib = imports.gi.GLib;
 const Soup = imports.gi.Soup;
 
@@ -280,15 +281,19 @@ const OpenTripPlanner = new Lang.Class({
             } else if (stopIndex === 0) {
                 this._fetchWalkingRoute([points[0], stopPoint],
                                         (function(route) {
-                    stop.dist = route.distance;
+                    /* if we couldn't find an exact walking route, go with the
+                     * "as the crow flies" distance */
+                    if (route)
+                        stop.dist = route.distance;
                     this._selectBestStopRecursive(stops, index + 1, stopIndex,
-                                              callback);
+                                                  callback);
                 }).bind(this));
             } else if (stopIndex === points.length - 1) {
                 this._fetchWalkingRoute([stopPoint, points.last()], (function(route) {
-                    stop.dist = route.distance;
+                    if (route)
+                        stop.dist = route.distance;
                     this._selectBestStopRecursive(stops, index + 1, stopIndex,
-                                              callback);
+                                                  callback);
                 }).bind(this));
             } else {
                 /* for intermediate stops just return the one geographically
@@ -731,20 +736,41 @@ const OpenTripPlanner = new Lang.Class({
         }
     },
 
+    // create a straight-line "as the crow flies" polyline between two places
+    _createStraightPolyline: function(fromLoc, toLoc) {
+        return [new Champlain.Coordinate({ latitude: fromLoc.latitude,
+                                           longitude: fromLoc.longitude }),
+                new Champlain.Coordinate({ latitude: toLoc.latitude,
+                                           longitude: toLoc.longitude })];
+    },
+
+    /* Creates a new walking leg given start and end places, and a route
+     * obtained from GraphHopper. If the route is undefined (which happens if
+     * GraphHopper failed to obtain a walking route, approximate it with a
+     * straight line. */
     _createWalkingLeg: function(from, to, fromName, toName, route) {
         let fromLocation = from.place.location;
         let toLocation = to.place.location;
         let fromCoordinate = [fromLocation.latitude, fromLocation.longitude];
         let toCoordinate = [toLocation.latitude, toLocation.longitude];
+        let polyline = route ? route.path :
+                               this._createStraightPolyline(fromLocation, toLocation);
+        let distance = route ? route.distance :
+                               fromLocation.get_distance_from(toLocation) * 1000;
+        /* as an estimate for approximated straight-line walking legs,
+         * assume a speed of 1 m/s to allow some extra time */
+        let duration = route ? route.time / 1000 : distance;
+        let walkingInstructions = route ? route.turnPoints : null;
+
         return new TransitPlan.Leg({ fromCoordinate: fromCoordinate,
                                      toCoordinate: toCoordinate,
                                      from: fromName,
                                      to: toName,
                                      isTransit: false,
-                                     polyline: route.path,
-                                     duration: route.time / 1000,
-                                     distance: route.distance,
-                                     walkingInstructions: route.turnPoints });
+                                     polyline: polyline,
+                                     duration: duration,
+                                     distance: distance,
+                                     walkingInstructions: walkingInstructions });
     },
 
     /* fetches walking route and stores the route for the given coordinate
