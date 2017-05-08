@@ -66,8 +66,8 @@ maps_contact_store_dispose (GObject *object)
 {
   MapsContactStore *store = (MapsContactStore *) object;
 
-  g_list_free (store->priv->list);
-  g_object_unref (store->priv->aggregator);
+  g_clear_pointer (&store->priv->list, g_list_free);
+  g_clear_object (&store->priv->aggregator);
 
   G_OBJECT_CLASS (maps_contact_store_parent_class)->dispose (object);
 }
