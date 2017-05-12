@@ -124,8 +124,8 @@ const TransitLegRow = new Lang.Class({
                                                 ellipsize: Pango.EllipsizeMode.END,
                                                 halign: Gtk.Align.START });
             if (this._leg.transit && this._leg.headsign) {
-                headsignLabel.label =
-                    '<span size="small">%s</span>'.format(this._leg.headsign);
+                let label = GLib.markup_escape_text(this._leg.headsign, -1);
+                headsignLabel.label = '<span size="small">%s</span>'.format(label);
             } else if (!this._leg.transit) {
                 let label =
                     /* Translators: this is a format string indicating walking a certain
