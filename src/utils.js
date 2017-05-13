@@ -349,10 +349,10 @@ function prettyDistance(distance, noRound) {
         if (distance >= 1000 && !noRound) {
             distance = Math.round(distance / 1000 * 10) / 10;
             /* Translators: This is a distance measured in kilometers */
-            return _("%f km").format(distance);
+            return _("%s km").format(distance.toLocaleString());
         } else
             /* Translators: This is a distance measured in meters */
-            return _("%f m").format(distance);
+            return _("%s m").format(distance.toLocaleString());
     } else {
         // Convert to feet
         distance = Math.round(distance * 3.2808399);
@@ -360,10 +360,10 @@ function prettyDistance(distance, noRound) {
             // Convert to miles when distance is more than 0.2 mi
             distance = Math.round(distance / 5280 * 10) / 10;
             /* Translators: This is a distance measured in miles */
-            return _("%f mi").format(distance);
+            return _("%s mi").format(distance.toLocaleString());
         } else
             /* Translators: This is a distance measured in feet */
-            return _("%f ft").format(distance);
+            return _("%s ft").format(distance.toLocaleString());
     }
 }
 
