@@ -22,11 +22,16 @@
 
 const Champlain = imports.gi.Champlain;
 const Gio = imports.gi.Gio;
+const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 
 const Place = imports.place;
 const Route = imports.route;
 const RouteQuery = imports.routeQuery;
+
+// directional override markers
+const _RLM = '\u200F';
+const _LRM = '\u200E';
 
 var StoredRoute = new Lang.Class({
     Name: 'StoredRoute',
@@ -46,9 +51,15 @@ var StoredRoute = new Lang.Class({
                             time: route.time,
                             bbox: route.bbox });
 
+        this._rtl = Gtk.get_locale_direction() === Gtk.TextDirection.RTL;
+
         let places = params.places;
         delete params.places;
-        params.name = places[0].name + ' → ' + places[places.length -1].name;
+        let directionMarker = this._rtl ? _RLM : _LRM;
+        let arrow = this._rtl ? '←' : '→';
+        params.name = directionMarker + places[0].name + directionMarker +
+                      arrow + directionMarker + places[places.length -1].name;
+
 
         let geoclue = params.geoclue;
         delete params.geoclue;
@@ -71,9 +82,11 @@ var StoredRoute = new Lang.Class({
     },
 
     get viaString() {
+        let directionMarker = this._rtl ? _RLM : _LRM;
+        let arrow = this._rtl ? '←' : '→';
         return this.places.map(function(place) {
-            return place.name;
-        }).join(' → ');
+            return directionMarker + place.name;
+        }).join(directionMarker + arrow);
     },
 
     get transportation() {
