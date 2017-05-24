@@ -63,6 +63,7 @@ const TransitOptionsPanel = new Lang.Class({
         this._transitTimeOptionsComboBox.active_id = 'leaveNow';
         this._timeSelected = false;
         this._dateSelected = false;
+        this._lastOptions = new TransitOptions.TransitOptions();
     },
 
     _initTransitOptions: function() {
@@ -194,7 +195,11 @@ const TransitOptionsPanel = new Lang.Class({
     _onTransitParametersToggled: function() {
         if (!this._transitParametersMenuButton.active) {
             let options = this._createTransitOptions();
-            this._query.transitOptions = options;
+
+            if (!TransitOptions.equals(options, this._lastOptions)) {
+                this._query.transitOptions = options;
+                this._lastOptions = options;
+            }
         }
     }
  });
