@@ -52,3 +52,22 @@ const TransitOptions = new Lang.Class({
         return this._transitTypes;
     }
 });
+
+/* return true if the passed in options objects are equal, either both
+ * accept any transit type, or both contains the same set of types, otherwise
+ * return false
+ */
+function equals(first, second) {
+    if (first.showAllTransitTypes && second.showAllTransitTypes) {
+        return true;
+    } else if (first.transitTypes.length !== second.transitTypes.length) {
+        return false;
+    } else {
+        for (let type of first.transitTypes) {
+            if (second.transitTypes.indexOf(type) === -1)
+                return false;
+        }
+
+        return true;
+    }
+}
