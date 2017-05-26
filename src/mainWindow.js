@@ -191,7 +191,7 @@ const MainWindow = new Lang.Class({
                 onChangeState: this._onToggleSidebarChangeState.bind(this)
             },
             'zoom-in': {
-                accels: ['plus', '<Primary>plus', 'KP_Add', '<Primary>KP_Add', 'equal'],
+                accels: ['plus', '<Primary>plus', 'KP_Add', '<Primary>KP_Add', 'equal', '<Primary>equal'],
                 onActivate: this._mapView.view.zoom_in.bind(this._mapView.view)
             },
             'zoom-out': {
