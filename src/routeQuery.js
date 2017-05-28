@@ -167,7 +167,14 @@ const RouteQuery = new Lang.Class({
         this._time = null;
         this._date = null;
         this._transitOptions = new TransitOptions.TransitOptions();
+        this._initTransportation();
         this.reset();
+    },
+
+    _initTransportation: function() {
+        let transportationType = Application.settings.get_enum('transportation-type');
+
+        this.transportation = transportationType;
     },
 
     addPoint: function(index) {
@@ -207,6 +214,7 @@ const RouteQuery = new Lang.Class({
     },
 
     set transportation(transportation) {
+        Application.settings.set_enum('transportation-type', transportation);
         this._transportation = transportation;
         this.notify('transportation');
         this.notify('points');
@@ -216,7 +224,6 @@ const RouteQuery = new Lang.Class({
     },
 
     reset: function() {
-        this.transportation = Transportation.CAR;
         this.freeze_notify();
         this._points.forEach(function(point) {
             point.place = null;
