@@ -75,6 +75,14 @@ const Sidebar = new Lang.Class({
 
         this._query = Application.routeQuery;
         this._initInstructionList();
+
+        /* I could not get the custom GTK+ template widget to init properly
+         * from the UI file, we also need to manually insert the transit
+         * itinerary header widget into the GtkStack to get the correct
+         * animation direction.
+         */
+        this._transitOptionsPanel =
+            new TransitOptionsPanel.TransitOptionsPanel({ visible: true });
         this._initTransportationToggles(this._modePedestrianToggle,
                                         this._modeBikeToggle,
                                         this._modeCarToggle,
@@ -83,7 +91,7 @@ const Sidebar = new Lang.Class({
         this._initQuerySignals();
         this._query.addPoint(0);
         this._query.addPoint(1);
-        this._switchRoutingMode(RouteQuery.Transportation.CAR);
+        this._switchRoutingMode(Application.routeQuery.transportation);
         /* Enable/disable transit mode switch based on the presence of
          * OpenTripPlanner.
          * For some reason, setting visible to false in the UI file and
@@ -93,13 +101,7 @@ const Sidebar = new Lang.Class({
          */
         if (!Application.routingDelegator.openTripPlanner.enabled)
             this._modeTransitToggle.destroy();
-        /* I could not get the custom GTK+ template widget to init properly
-         * from the UI file, we also need to manually insert the transit
-         * itinerary header widget into the GtkStack to get the correct
-         * animation direction.
-         */
-        this._transitOptionsPanel =
-            new TransitOptionsPanel.TransitOptionsPanel({ visible: true });
+
         this._transitHeader.add_named(this._transitOptionsPanel, 'options');
         this._transitHeader.add_named(this._transitItineraryHeader,
                                       'itinerary-header');
