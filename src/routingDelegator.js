@@ -23,6 +23,9 @@
 
  const GraphHopper = imports.graphHopper;
  const OpenTripPlanner = imports.openTripPlanner;
+ const RouteQuery = imports.routeQuery;
+
+ const _FALLBACK_TRANSPORTATION = RouteQuery.Transportation.PEDESTRIAN;
 
  const RoutingDelegator = new Lang.Class({
     Name: 'RoutingDelegator',
@@ -39,6 +42,14 @@
             new OpenTripPlanner.OpenTripPlanner({ query: this._query,
                                                   graphHopper: this._graphHopper });
         this._query.connect('notify::points', this._onQueryChanged.bind(this));
+
+        /* if the query is set to transit mode when it's not available, revert
+         * to a fallback mode
+         */
+        if (this._query.transportation === RouteQuery.Transportation.TRANSIT &&
+            !this._openTripPlanner.enabled) {
+            this._query.transportation = _FALLBACK_TRANSPORTATION;
+        }
     },
 
     get graphHopper() {
