@@ -358,3 +358,30 @@ function translateInternetAccess(string) {
     }
 }
 
+function translateReligion(string) {
+    switch(string) {
+    case 'animist': return _("Animism");
+    case 'bahai': return_("Bahá'í");
+    case 'buddhist': return _("Buddhism");
+    case 'caodaism': return _("Caodaism");
+    case 'christian': return _("Christianity");
+    case 'confucian': return _("Confucianism");
+    case 'hindu': return _("Hinduism");
+    case 'jain': return _("Jainism");
+    case 'jewish': return _("Judaism");
+    case 'muslim': return _("Islam");
+    case 'multifaith': return _("Multiple Religions");
+    case 'pagan': return _("Paganism");
+    case 'pastafarian': return _("Pastafarianism");
+    case 'scientologist': return _("Scientology");
+    case 'shinto': return _("Shinto");
+    case 'sikh': return _("Sikhism");
+    case 'spiritualist': return _("Spiritualism");
+    case 'taoist': return _("Taoism");
+    case 'unitarian_universalist': return _("Unitarian Universalism");
+    case 'voodoo': return _("Voodoo");
+    case 'yazidi': return _("Yazidism");
+    case 'zoroastrian': return _("Zoroastrianism");
+    default: return null;
+    }
+}

@@ -52,6 +52,9 @@ const Place = new Lang.Class({
         this._internetAccess = params.internetAccess;
         delete params.internetAccess;
 
+        this._religion = params.religion;
+        delete params.religion;
+
         /* Determines if the place should be added to the place store */
         if (typeof(params.store) === 'undefined') {
             this._store = true;
@@ -158,6 +161,18 @@ const Place = new Lang.Class({
         return Translations.translateInternetAccess(this._internetAccess);
     },
 
+    set religion(v) {
+        this._religion = v;
+    },
+
+    get religion() {
+        return this._religion;
+    },
+
+    get religionTranslated() {
+        return Translations.translateReligion(this._religion);
+    },
+
     set wheelchair(v) {
         this._wheelchair = v;
     },
@@ -241,7 +256,8 @@ const Place = new Lang.Class({
                  wiki: this.wiki,
                  wheelchair: this.wheelchair,
                  openingHours: this.openingHours,
-                 internetAccess: this.internetAccess };
+                 internetAccess: this.internetAccess,
+                 religion: this.religion };
     },
 
     match: function(searchString) {
