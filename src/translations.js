@@ -385,3 +385,11 @@ function translateReligion(string) {
     default: return null;
     }
 }
+
+function translateYesNo(string) {
+    switch(string) {
+    case 'yes': return _("yes");
+    case 'no': return _("no");
+    default: return null;
+    }
+}

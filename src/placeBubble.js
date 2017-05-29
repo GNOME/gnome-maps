@@ -144,6 +144,11 @@ const PlaceBubble = new Lang.Class({
                                    info: place.religionTranslated });
         }
 
+        if (place.toilets) {
+            expandedContent.push({ label: _("Toilets:"),
+                                   info: place.toiletsTranslated });
+        }
+
         if (place.wheelchair) {
             expandedContent.push({ label: _("Wheelchair access:"),
                                    info: place.wheelchairTranslated });

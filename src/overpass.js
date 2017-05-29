@@ -110,6 +110,8 @@ const Overpass = new Lang.Class({
             place.location.altitude = parseFloat(element.tags.ele);
         if (element.tags.religion)
             place.religion = element.tags.religion
+        if (element.tags.toilets)
+            place.toilets = element.tags.toilets;
     },
 
     _getQueryUrl: function(place) {
