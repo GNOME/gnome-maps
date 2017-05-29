@@ -204,6 +204,13 @@ const OSM_FIELDS = [
                   ['voodoo', _("Voodoo")],
                   ['yazidi', _("Yazidism")],
                   ['zoroastrian', _("Zoroastrianism")]]
+    },
+    {
+        name: _("Toilets"),
+        tag: 'toilets',
+        type: EditFieldType.COMBO,
+        options: [['yes', _("Yes")],
+                  ['no', _("No")]]
     }];
 
 const OSMEditAddress = new Lang.Class({
