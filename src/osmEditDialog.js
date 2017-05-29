@@ -177,6 +177,33 @@ const OSM_FIELDS = [
                   ['wired', _("Wired")],
                   ['terminal', _("Terminal")],
                   ['service', _("Service")]]
+    },
+    {
+        name: _("Religion"),
+        tag: 'religion',
+        type: EditFieldType.COMBO,
+        options: [['animist', _("Animism")],
+                  ['bahai', _("Bahá'í")],
+                  ['buddhist', _("Buddhism")],
+                  ['caodaism', _("Caodaism")],
+                  ['christian', _("Christianity")],
+                  ['confucian', _("Confucianism")],
+                  ['hindu', _("Hinduism")],
+                  ['jain', _("Jainism")],
+                  ['jewish', _("Judaism")],
+                  ['muslim', _("Islam")],
+                  ['multifaith', _("Multiple Religions")],
+                  ['pagan', _("Paganism")],
+                  ['pastafarian', _("Pastafarianism")],
+                  ['scientologist', _("Scientology")],
+                  ['shinto', _("Shinto")],
+                  ['sikh', _("Sikhism")],
+                  ['spiritualist', _("Spiritualism")],
+                  ['taoist', _("Taoism")],
+                  ['unitarian_universalist', _("Unitarian Universalism")],
+                  ['voodoo', _("Voodoo")],
+                  ['yazidi', _("Yazidism")],
+                  ['zoroastrian', _("Zoroastrianism")]]
     }];
 
 const OSMEditAddress = new Lang.Class({
