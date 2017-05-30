@@ -165,11 +165,6 @@ const PlaceBubble = new Lang.Class({
             }
         }
 
-        if (place.website) {
-            expandedContent.push({ linkText: _("Website"),
-                                   linkUrl: place.website });
-        }
-
         if (place.wiki) {
             let link = this._formatWikiLink(place.wiki);
             expandedContent.push({ linkText: _("Wikipedia"),
@@ -238,7 +233,13 @@ const PlaceBubble = new Lang.Class({
 
         this._attachContent(content, expandedContent);
 
-        this._title.label = formatter.title;
+        let title = GLib.markup_escape_text(formatter.title, -1);
+        if (place.website) {
+            let uri = GLib.markup_escape_text(place.website, -1);
+            this._title.label = '<a href="%s">%s</a>'.format(uri, title);
+        } else {
+            this._title.label = title;
+        }
         this._expandButton.visible = expandedContent.length > 0;
         this._stack.visible_child = this._gridContent;
     },
