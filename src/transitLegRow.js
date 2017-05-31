@@ -37,8 +37,7 @@ const TransitLegRow = new Lang.Class({
     Name: 'TransitLegRow',
     Extends: Gtk.ListBoxRow,
     Template: 'resource:///org/gnome/Maps/ui/transit-leg-row.ui',
-    InternalChildren: ['grid',
-                       'modeImage',
+    InternalChildren: ['modeImage',
                        'fromLabel',
                        'routeGrid',
                        'timeLabel',
@@ -179,13 +178,16 @@ const TransitLegRow = new Lang.Class({
         let [isButton, button] = event.get_button();
         let type = event.get_event_type();
 
-        if (isButton && button === 1 && !this._isExpanded &&
-            type === Gdk.EventType.BUTTON_PRESS) {
-            this._mapView.view.zoom_level = 16;
-            this._mapView.view.center_on(this._leg.fromCoordinate[0],
-                                         this._leg.fromCoordinate[1]);
-            if (this._hasIntructions())
-                this._expand();
+        if (isButton && button === 1 && type === Gdk.EventType.BUTTON_PRESS) {
+            if (this._isExpanded) {
+                this._collaps();
+            } else {
+                this._mapView.view.zoom_level = 16;
+                this._mapView.view.center_on(this._leg.fromCoordinate[0],
+                                             this._leg.fromCoordinate[1]);
+                if (this._hasIntructions())
+                    this._expand();
+            }
         }
     },
 
