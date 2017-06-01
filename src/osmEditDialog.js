@@ -496,6 +496,7 @@ const OSMEditDialog = new Lang.Class({
         this._backButton.visible = true;
         this._cancelButton.visible = false;
         this._isEditing = false;
+        this._commentTextView.grab_focus();
     },
 
     _onCancelClicked: function() {
@@ -642,6 +643,7 @@ const OSMEditDialog = new Lang.Class({
 
         this._editorGrid.attach(entry, 1, this._currentRow, 1, 1);
         entry.show();
+        entry.grab_focus();
 
         /* TODO: should we allow deleting the name field? */
         this._addOSMEditDeleteButton(fieldSpec);
@@ -670,6 +672,7 @@ const OSMEditDialog = new Lang.Class({
 
         this._editorGrid.attach(spinbutton, 1, this._currentRow, 1, 1);
         spinbutton.show();
+        spinbutton.grab_focus();
 
         this._addOSMEditDeleteButton(fieldSpec);
         this._currentRow++;
@@ -692,6 +695,7 @@ const OSMEditDialog = new Lang.Class({
 
         this._editorGrid.attach(combobox, 1, this._currentRow, 1, 1);
         combobox.show();
+        combobox.grab_focus();
 
         this._addOSMEditDeleteButton(fieldSpec);
         this._currentRow++;
@@ -716,6 +720,7 @@ const OSMEditDialog = new Lang.Class({
 
         let rows = fieldSpec.rows || 1;
         this._editorGrid.attach(addr, 1, this._currentRow, 1, rows);
+        addr.street.grab_focus();
         this._addOSMEditDeleteButton(fieldSpec);
         this._currentRow += rows;
     },
