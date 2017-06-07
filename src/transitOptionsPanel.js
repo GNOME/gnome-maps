@@ -170,7 +170,7 @@ const TransitOptionsPanel = new Lang.Class({
         let busSelected = this._busCheckButton.active;
         let tramSelected = this._tramCheckButton.active;
         let trainSelected = this._trainCheckButton.active;
-      let subwaySelected = this._subwayCheckButton.active;
+        let subwaySelected = this._subwayCheckButton.active;
         let ferrySelected = this._ferryCheckButton.active;
 
         if (busSelected && tramSelected && trainSelected && subwaySelected &&
