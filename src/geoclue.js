@@ -121,6 +121,8 @@ const Geoclue = new Lang.Class({
 
         this.place.location = location;
         this.emit('location-changed');
-        Utils.debug("Updated location: " + location.description);
+        Utils.debug("Updated location: " + location.description +
+                    " (" + location.latitude + ", " + location.longitude +
+                    ", accuracy = " + location.accuracy + " m)");
     }
 });
