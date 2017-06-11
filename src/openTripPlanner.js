@@ -598,6 +598,25 @@ const OpenTripPlanner = new Lang.Class({
             this.plan.reset();
     },
 
+    /* Indicate that no routes where found, either shows the "No route found"
+     * notification, or in case of loading additional (later/earlier) results,
+     * indicate no such where found, so that the sidebar can disable the
+     * "load more" functionallity as appropriate.
+     */
+    _noRouteFound: function() {
+        if (this._extendPrevious) {
+            let message = this._query.arriveBy ?
+                          _("No earlier alternatives found.") :
+                          _("No later alternatives found.");
+            Application.notificationManager.showMessage(message);
+            this._extendPrevious = false;
+            this.plan.noMoreResults();
+        } else {
+            Application.notificationManager.showMessage(_("No route found."));
+            this._reset();
+        }
+    },
+
     _fetchRoute: function() {
         this._fetchRouters((function(success) {
             if (success) {
@@ -619,17 +638,7 @@ const OpenTripPlanner = new Lang.Class({
                             /* don't reset query points, unlike for turn-based
                              * routing, since options and timeing might influence
                              * results */
-                            if (this._extendPrevious) {
-                                let message = this._query.arriveBy ?
-                                              _("No earlier alternatives found.") :
-                                              _("No later alternatives found.");
-                                Application.notificationManager.showMessage(message);
-                                this._extendPrevious = false;
-                                this.plan.noMoreResults();
-                            } else {
-                                Application.notificationManager.showMessage(_("No route found."));
-                                this.plan.reset();
-                            }
+                            this._noRouteFound();
                         } else {
                             this._recalculateItineraries(itineraries);
                         }
@@ -738,8 +747,7 @@ const OpenTripPlanner = new Lang.Class({
                 this._extendPrevious = false;
                 this.plan.update(newItineraries);
             } else {
-                Application.notificationManager.showMessage(_("No route found."));
-                this._reset();
+                this._noRouteFound();
             }
         }
     },
