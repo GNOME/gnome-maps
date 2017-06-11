@@ -610,11 +610,12 @@ const OSMEditDialog = new Lang.Class({
     },
 
     _showHintPopover: function(entry, hint) {
-        this._hintPopover.visible = !this._hintPopover.visible;
         if (this._hintPopover.visible) {
+            this._hintPopover.popdown();
+        } else {
             this._hintPopover.relative_to = entry;
             this._hintLabel.label = hint;
-            this._hintPopover.visible = true;
+            this._hintPopover.popup();
         }
     },
 
