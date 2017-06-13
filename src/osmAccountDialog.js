@@ -86,8 +86,7 @@ const OSMAccountDialog = new Lang.Class({
         let email = this._emailEntry.text;
         let password = this._passwordEntry.text;
 
-        /* make sign in button sensitive if credential have been entered
-            TODO: should we try to validate email addresses? */
+        // make sign in button sensitive if credential have been entered
         this._signInButton.sensitive =
             email && email.length > 0 && password && password.length > 0;
     },
