@@ -56,9 +56,6 @@ const SearchPopover = new Lang.Class({
         } else
             row = this._list.get_row_at_index(0);
 
-        if (!row)
-            return false;
-
         let length = this._list.get_children().length;
         let keyval = event.get_keyval()[1];
 
@@ -67,6 +64,9 @@ const SearchPopover = new Lang.Class({
             this.hide();
             return false;
         }
+
+        if (!row)
+            return false;
 
         // If we get an 'enter' keypress and we have a selected
         // row, we do not want to propagate the event.

@@ -214,7 +214,7 @@ const PlaceEntry = new Lang.Class({
         Application.geocodeService.search(this.text, bbox, this._cancellable, (function(places) {
             if (!places) {
                 this.place = null;
-                this._popover.hide();
+                this._popover.showNoResult();
                 return;
             }
             this._popover.updateResult(places, this.text);

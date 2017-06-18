@@ -46,7 +46,8 @@ const PlacePopover = new Lang.Class({
                         'scrolledWindow',
                         'stack',
                         'spinner',
-                        'list' ],
+                        'list',
+                        'noResultsLabel' ],
 
     _init: function(props) {
         let numVisible = props.num_visible;
@@ -120,6 +121,15 @@ const PlacePopover = new Lang.Class({
 
         if (!this.visible)
             this.show();
+    },
+
+    showNoResult: function() {
+        this._mode = Mode.IDLE;
+
+        if (this._spinner.active)
+            this._spinner.stop();
+
+        this._stack.visible_child = this._noResultsLabel;
     },
 
     showCompletion: function() {
