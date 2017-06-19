@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-05-31 21:32+0000\n"
-"PO-Revision-Date: 2017-06-02 10:12+0200\n"
+"POT-Creation-Date: 2017-06-10 15:00+0000\n"
+"PO-Revision-Date: 2017-06-19 13:26+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -523,7 +523,7 @@ msgstr "Editar en OpenStreetMap"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:509
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:510
 msgid "Next"
 msgstr "Siguiente"
 
@@ -716,7 +716,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Escribir un mensaje opcional para registrarse en %s."
 
 #: ../src/checkInDialog.js:288 ../src/checkIn.js:165
-#: ../src/osmEditDialog.js:546
+#: ../src/osmEditDialog.js:547
 msgid "An error has occurred"
 msgstr "Ha ocurrido un error"
 
@@ -796,12 +796,12 @@ msgstr "error al analizar"
 msgid "unknown geometry"
 msgstr "geometría desconocida"
 
-#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:635
+#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:643
 msgid "Route request failed."
 msgstr "Falló al solicitar la ruta."
 
-#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:619
-#: ../src/openTripPlanner.js:733
+#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:630
+#: ../src/openTripPlanner.js:741
 msgid "No route found."
 msgstr "No se ha encontrado la ruta."
 
@@ -837,7 +837,17 @@ msgstr "Falló al abrir la capa"
 msgid "Failed to open GeoURI"
 msgstr "Falló al abrir el GeoURI"
 
-#: ../src/openTripPlanner.js:631
+#: ../src/openTripPlanner.js:624
+#| msgid "Load earlier alternatives"
+msgid "No earlier alternatives found."
+msgstr "No hay alternativas anteriores."
+
+#: ../src/openTripPlanner.js:625
+#| msgid "Load later alternatives"
+msgid "No later alternatives found."
+msgstr "No hay alternativas posteriores."
+
+#: ../src/openTripPlanner.js:639
 msgid "No timetable data found for this route."
 msgstr "No hay datos en la tabla de tiempos para esta ruta."
 
@@ -1196,7 +1206,7 @@ msgid "failed to load file"
 msgstr "falló al cargar el archivo"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:285
+#: ../src/sidebar.js:292
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Tiempo estimado: %s"
@@ -1216,7 +1226,7 @@ msgstr "Llegar"
 #. Translators: this is a format string indicating instructions
 #. * starting a journey at the address given as the parameter
 #.
-#: ../src/transitLegRow.js:74
+#: ../src/transitLegRow.js:73
 #, javascript-format
 msgid "Start at %s"
 msgstr "Empezar en %s"
@@ -1225,22 +1235,22 @@ msgstr "Empezar en %s"
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: ../src/transitLegRow.js:80
+#: ../src/transitLegRow.js:79
 msgid "Start"
 msgstr "Inicio"
 
-#: ../src/transitLegRow.js:108
+#: ../src/transitLegRow.js:107
 msgid "Show walking instructions"
 msgstr "Mostrar instrucciones del camino"
 
-#: ../src/transitLegRow.js:109
+#: ../src/transitLegRow.js:108
 msgid "Hide walking instructions"
 msgstr "Ocultar instrucciones del camino"
 
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
 #.
-#: ../src/transitLegRow.js:134
+#: ../src/transitLegRow.js:133
 #, javascript-format
 msgid "Walk %s"
 msgstr "Caminar %s"
@@ -1267,7 +1277,7 @@ msgstr "%b %e"
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: ../src/transitPlan.js:248
+#: ../src/transitPlan.js:253
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -1276,7 +1286,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: ../src/transitPlan.js:275
+#: ../src/transitPlan.js:280
 #, javascript-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -1287,7 +1297,7 @@ msgstr[1] "%d minutos"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: ../src/transitPlan.js:286
+#: ../src/transitPlan.js:291
 #, javascript-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -1298,7 +1308,7 @@ msgstr[1] "%d horas"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: ../src/transitPlan.js:292
+#: ../src/transitPlan.js:297
 #, javascript-format
 msgid "%d:%02d hour"
 msgid_plural "%d:%02d hours"
@@ -1311,7 +1321,7 @@ msgstr[1] "%d:%02d horas"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: ../src/transitPlan.js:611
+#: ../src/transitPlan.js:616
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
