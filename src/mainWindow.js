@@ -50,7 +50,7 @@ const _WINDOW_MIN_HEIGHT = 500;
 
 const ShapeLayerFileChooser = new Lang.Class({
     Name: 'ShapeLayerFileChooser',
-    Extends: Gtk.FileChooserDialog,
+    Extends: Gtk.FileChooserNative,
     Template: 'resource:///org/gnome/Maps/ui/shape-layer-file-chooser.ui',
 
     _init: function(params) {
@@ -498,7 +498,7 @@ const MainWindow = new Lang.Class({
         });
 
         fileChooser.connect('response', (function(widget, response) {
-            if (response === Gtk.ResponseType.OK) {
+            if (response === Gtk.ResponseType.ACCEPT) {
                 this._mapView.openShapeLayers(fileChooser.get_files());
                 this.layersPopover.popdown();
             }
