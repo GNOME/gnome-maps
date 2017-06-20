@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-06-10 15:00+0000\n"
-"PO-Revision-Date: 2017-06-14 00:43+0200\n"
+"POT-Creation-Date: 2017-06-19 19:53+0000\n"
+"PO-Revision-Date: 2017-06-20 09:41+0200\n"
 "Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
@@ -58,7 +58,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:87 ../src/mainWindow.js:441
+#: ../src/application.js:87 ../src/mainWindow.js:476
 msgid "Maps"
 msgstr "Mapis"
 
@@ -187,6 +187,10 @@ msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr ""
 "Al indiche se l'utent al è jentrât te session par modificâ dâts "
 "OpenStreetMap."
+
+#: ../data/org.gnome.Maps.gschema.xml.h:25
+msgid "Last used transportation type for routing"
+msgstr "L'ultin gjenar di traspuart doprât par spostâsi"
 
 #: ../data/ui/app-menu.ui.h:1
 msgid "Set up OpenStreetMap Account"
@@ -336,6 +340,21 @@ msgstr "Cambiâ scjale"
 msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Va te posizion atuâl"
+
+#: ../data/ui/help-overlay.ui.h:12
+msgctxt "shortcut window"
+msgid "Switch to street view"
+msgstr "Passe ae viodude stradâl"
+
+#: ../data/ui/help-overlay.ui.h:13
+msgctxt "shortcut window"
+msgid "Switch to aerial view"
+msgstr "Passe ae viodude aerie"
+
+#: ../data/ui/help-overlay.ui.h:14
+msgctxt "shortcut window"
+msgid "Open shape layer"
+msgstr "Vierç strât sagome"
 
 #: ../data/ui/layers-popover.ui.h:1
 msgid "Load Map Layer"
@@ -794,12 +813,11 @@ msgstr "erôr tal analizâ"
 msgid "unknown geometry"
 msgstr "Gjeometrie no valide"
 
-#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:643
+#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:652
 msgid "Route request failed."
 msgstr "Richieste dal percors falide."
 
-#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:630
-#: ../src/openTripPlanner.js:741
+#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:615
 msgid "No route found."
 msgstr "Percors no cjatât."
 
@@ -807,43 +825,43 @@ msgstr "Percors no cjatât."
 msgid "Start!"
 msgstr "Invie!"
 
-#: ../src/layersPopover.js:62
+#: ../src/mainWindow.js:59
 msgid "All Layer Files"
 msgstr "Ducj i file di strât"
 
-#: ../src/mainWindow.js:387
+#: ../src/mainWindow.js:418
 msgid "Failed to connect to location service"
 msgstr "Impussibil conetisi al servizi di localizazion"
 
-#: ../src/mainWindow.js:439
+#: ../src/mainWindow.js:474
 msgid "translator-credits"
 msgstr "Fabio Tomat"
 
-#: ../src/mainWindow.js:442
+#: ../src/mainWindow.js:477
 msgid "A map application for GNOME"
 msgstr "Une aplicazion di GNOME par lis mapis"
 
-#: ../src/mapView.js:354
+#: ../src/mapView.js:356
 msgid "File type is not supported"
 msgstr "Gjenar di file no supuartât"
 
-#: ../src/mapView.js:361
+#: ../src/mapView.js:363
 msgid "Failed to open layer"
 msgstr "Impussibil vierzi il strât"
 
-#: ../src/mapView.js:397
+#: ../src/mapView.js:399
 msgid "Failed to open GeoURI"
 msgstr "Impussibil vierzi il GeoURI"
 
-#: ../src/openTripPlanner.js:624
+#: ../src/openTripPlanner.js:609
 msgid "No earlier alternatives found."
 msgstr "Nissune alternative plui adore cjatade."
 
-#: ../src/openTripPlanner.js:625
+#: ../src/openTripPlanner.js:610
 msgid "No later alternatives found."
 msgstr "Nissune alternative plui tart cjatade."
 
-#: ../src/openTripPlanner.js:639
+#: ../src/openTripPlanner.js:648
 msgid "No timetable data found for this route."
 msgstr "Nissun dât di oraris cjatât par chest percors."
 
@@ -1202,7 +1220,7 @@ msgid "failed to load file"
 msgstr "impussibil cjariâ il file"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:292
+#: ../src/sidebar.js:294
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Timp stimât: %s"
