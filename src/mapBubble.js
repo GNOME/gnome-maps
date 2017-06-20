@@ -151,17 +151,15 @@ const MapBubble = new Lang.Class({
 
     _initRouteButton: function(button, routeFrom) {
         let query = Application.routeQuery;
-        let route = Application.routingDelegator.graphHopper.route;
         let from = query.points[0];
         let to = query.points[query.points.length - 1];
 
         button.visible = true;
 
         button.connect('clicked', (function() {
-            Application.routingDelegator.useTransit = false;
             query.freeze_notify();
             query.reset();
-            route.reset();
+            Application.routingDelegator.reset();
             if (routeFrom) {
                 from.place = this._place;
             } else {
