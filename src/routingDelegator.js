@@ -64,6 +64,13 @@
         this._transitRouting = useTransit;
     },
 
+    reset: function() {
+        if (this._transitRouting)
+            this._openTripPlanner.plan.reset();
+        else
+            this._graphHopper.route.reset();
+    },
+
     _onQueryChanged: function() {
         if (this._query.isValid()) {
             if (this._transitRouting) {
