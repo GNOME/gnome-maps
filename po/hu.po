@@ -9,16 +9,16 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-06-13 22:46+0000\n"
-"PO-Revision-Date: 2017-06-17 11:44+0200\n"
-"Last-Translator: Gabor Kelemen <kelemeng at ubuntu dot com>\n"
+"POT-Creation-Date: 2017-06-20 19:45+0000\n"
+"PO-Revision-Date: 2017-06-21 21:34+0200\n"
+"Last-Translator: Meskó Balázs <meskobalazs@fedoraproject.org>\n"
 "Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Poedit 2.0.1\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid "GNOME Maps"
@@ -59,7 +59,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:87 ../src/mainWindow.js:441
+#: ../src/application.js:87 ../src/mainWindow.js:476
 msgid "Maps"
 msgstr "Térképek"
 
@@ -188,6 +188,10 @@ msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr ""
 "Jelzi, hogy a felhasználó bejelentkezett-e az OpenStreetMap adatok "
 "szerkesztéséhez."
+
+#: ../data/org.gnome.Maps.gschema.xml.h:25
+msgid "Last used transportation type for routing"
+msgstr "Legutóbb útvonaltervezéshez használt közlekedéstípus"
 
 #: ../data/ui/app-menu.ui.h:1
 msgid "Set up OpenStreetMap Account"
@@ -337,6 +341,21 @@ msgstr "Láthatóság ki- és bekapcsolása"
 msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Ugrás a jelenlegi helyre"
+
+#: ../data/ui/help-overlay.ui.h:12
+msgctxt "shortcut window"
+msgid "Switch to street view"
+msgstr "Váltás utcanézetre"
+
+#: ../data/ui/help-overlay.ui.h:13
+msgctxt "shortcut window"
+msgid "Switch to aerial view"
+msgstr "Váltás légifelvételre"
+
+#: ../data/ui/help-overlay.ui.h:14
+msgctxt "shortcut window"
+msgid "Open shape layer"
+msgstr "Alak réteg megnyitása"
 
 #: ../data/ui/layers-popover.ui.h:1
 msgid "Load Map Layer"
@@ -537,6 +556,10 @@ msgstr "További információk megjelenítése"
 #: ../data/ui/place-popover.ui.h:1
 msgid "Press enter to search"
 msgstr "Nyomja meg az Entert a kereséshez"
+
+#: ../data/ui/place-popover.ui.h:2
+msgid "No results found"
+msgstr "Nincs találat"
 
 #: ../data/ui/route-entry.ui.h:1
 msgid "Drag to change order of the route"
@@ -809,33 +832,33 @@ msgstr "Nem található útvonal."
 msgid "Start!"
 msgstr "Indulás!"
 
-#: ../src/layersPopover.js:62
+#: ../src/mainWindow.js:59
 msgid "All Layer Files"
 msgstr "Minden rétegfájl"
 
-#: ../src/mainWindow.js:387
+#: ../src/mainWindow.js:418
 msgid "Failed to connect to location service"
 msgstr "Nem sikerült kapcsolódni a helymeghatározó szolgáltatáshoz"
 
-#: ../src/mainWindow.js:439
+#: ../src/mainWindow.js:474
 msgid "translator-credits"
 msgstr ""
 "Úr Balázs <urbalazs at gmail dot com>\n"
-"Meskó Balázs <meskobalazs at gmail dot com>"
+"Meskó Balázs <meskobalazs at fedoraproject dot org>"
 
-#: ../src/mainWindow.js:442
+#: ../src/mainWindow.js:477
 msgid "A map application for GNOME"
 msgstr "Térképalkalmazás a GNOME-hoz"
 
-#: ../src/mapView.js:354
+#: ../src/mapView.js:356
 msgid "File type is not supported"
 msgstr "A fájltípus nem támogatott"
 
-#: ../src/mapView.js:361
+#: ../src/mapView.js:363
 msgid "Failed to open layer"
 msgstr "A réteg megnyitása nem sikerült"
 
-#: ../src/mapView.js:397
+#: ../src/mapView.js:399
 msgid "Failed to open GeoURI"
 msgstr "A GeoURI megnyitása nem sikerült"
 
@@ -1205,7 +1228,7 @@ msgid "failed to load file"
 msgstr "nem sikerült betölteni a fájlt"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:292
+#: ../src/sidebar.js:294
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Becsült idő: %s"
