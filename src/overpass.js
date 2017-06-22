@@ -112,6 +112,8 @@ const Overpass = new Lang.Class({
             place.religion = element.tags.religion
         if (element.tags.toilets)
             place.toilets = element.tags.toilets;
+        if (element.tags.note)
+            place.note = element.tags.note;
     },
 
     _getQueryUrl: function(place) {

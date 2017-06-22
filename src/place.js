@@ -58,6 +58,9 @@ const Place = new Lang.Class({
         this._toilets = params.toilets;
         delete params.toilets;
 
+        this._note = params.note;
+        delete params.note;
+
         /* Determines if the place should be added to the place store */
         if (typeof(params.store) === 'undefined') {
             this._store = true;
@@ -188,6 +191,14 @@ const Place = new Lang.Class({
         return Translations.translateYesNo(this._toilets);
     },
 
+    set note(v) {
+        this._note = v;
+    },
+
+    get note() {
+        return this._note;
+    },
+
     set wheelchair(v) {
         this._wheelchair = v;
     },
@@ -273,7 +284,8 @@ const Place = new Lang.Class({
                  openingHours: this.openingHours,
                  internetAccess: this.internetAccess,
                  religion: this.religion,
-                 toilets: this.toilets };
+                 toilets: this.toilets,
+                 note: this.note };
     },
 
     match: function(searchString) {
