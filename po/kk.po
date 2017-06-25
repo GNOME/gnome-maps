@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-06-10 15:00+0000\n"
-"PO-Revision-Date: 2017-06-17 17:26+0500\n"
+"POT-Creation-Date: 2017-06-22 15:13+0000\n"
+"PO-Revision-Date: 2017-06-25 19:26+0500\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk@li.org>\n"
 "Language: kk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 1.8.12\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
@@ -60,7 +60,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:87 ../src/mainWindow.js:441
+#: ../src/application.js:87 ../src/mainWindow.js:476
 msgid "Maps"
 msgstr "Карталар"
 
@@ -190,6 +190,10 @@ msgstr "OpenStreetMap пайдаланушы аты немесе эл. пошт�
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr ""
 "Пайдаланушы OpenStreetMap деректерін түзету үшін кірген ба, соны анықтайды."
+
+#: ../data/org.gnome.Maps.gschema.xml.h:25
+msgid "Last used transportation type for routing"
+msgstr "Бағдарды құрастыру кезінде соңғы қолданылған көлік түрі"
 
 #: ../data/ui/app-menu.ui.h:1
 msgid "Set up OpenStreetMap Account"
@@ -339,6 +343,21 @@ msgstr "Масштабты іске қосу/сөндіру"
 msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Ағымдағы орналасуға өту"
+
+#: ../data/ui/help-overlay.ui.h:12
+msgctxt "shortcut window"
+msgid "Switch to street view"
+msgstr "Көше көрінісіне ауысу"
+
+#: ../data/ui/help-overlay.ui.h:13
+msgctxt "shortcut window"
+msgid "Switch to aerial view"
+msgstr "Ауадан көрінісіне ауысу"
+
+#: ../data/ui/help-overlay.ui.h:14
+msgctxt "shortcut window"
+msgid "Open shape layer"
+msgstr "Қабатты (shape) ашу"
 
 #: ../data/ui/layers-popover.ui.h:1
 msgid "Load Map Layer"
@@ -518,6 +537,7 @@ msgid "Recently Used"
 msgstr "Жақында қолданылған"
 
 #: ../data/ui/osm-edit-dialog.ui.h:8
+msgctxt "dialog title"
 msgid "Edit on OpenStreetMap"
 msgstr "OpenStreetMap ішінде түзету"
 
@@ -530,12 +550,20 @@ msgid "Next"
 msgstr "Келесі"
 
 #: ../data/ui/place-bubble.ui.h:1
+msgid "Edit on OpenStreetMap"
+msgstr "OpenStreetMap ішінде түзету"
+
+#: ../data/ui/place-bubble.ui.h:2
 msgid "Show more information"
 msgstr "Көбірек ақпарат шығару"
 
 #: ../data/ui/place-popover.ui.h:1
 msgid "Press enter to search"
 msgstr "Іздеу үшін enter басыңыз"
+
+#: ../data/ui/place-popover.ui.h:2
+msgid "No results found"
+msgstr "Нәтижелер табылмады"
 
 #: ../data/ui/route-entry.ui.h:1
 msgid "Drag to change order of the route"
@@ -797,12 +825,11 @@ msgstr "талдау қатесі"
 msgid "unknown geometry"
 msgstr "геометрия белгісіз"
 
-#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:643
+#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:652
 msgid "Route request failed."
 msgstr "Бағдар сұранымы сәтсіз."
 
-#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:630
-#: ../src/openTripPlanner.js:741
+#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:615
 msgid "No route found."
 msgstr "Бағдар табылмады."
 
@@ -810,43 +837,43 @@ msgstr "Бағдар табылмады."
 msgid "Start!"
 msgstr "Бастау!"
 
-#: ../src/layersPopover.js:62
+#: ../src/mainWindow.js:59
 msgid "All Layer Files"
 msgstr "Барлық қабаттар файлдары"
 
-#: ../src/mainWindow.js:387
+#: ../src/mainWindow.js:418
 msgid "Failed to connect to location service"
 msgstr "Орналасулар қызметіне байланысу сәтсіз аяқталды"
 
-#: ../src/mainWindow.js:439
+#: ../src/mainWindow.js:474
 msgid "translator-credits"
 msgstr "Baurzhan Muftakhidinov <baurthefirst@gmail.com>"
 
-#: ../src/mainWindow.js:442
+#: ../src/mainWindow.js:477
 msgid "A map application for GNOME"
 msgstr "GNOME үшін карталар қолданбасы"
 
-#: ../src/mapView.js:354
+#: ../src/mapView.js:356
 msgid "File type is not supported"
 msgstr "Файл түріне қолдау жоқ"
 
-#: ../src/mapView.js:361
+#: ../src/mapView.js:363
 msgid "Failed to open layer"
 msgstr "Қабатты ашу сәтсіз аяқталды"
 
-#: ../src/mapView.js:397
+#: ../src/mapView.js:399
 msgid "Failed to open GeoURI"
 msgstr "GeoURI ашу сәтсіз аяқталды"
 
-#: ../src/openTripPlanner.js:624
+#: ../src/openTripPlanner.js:609
 msgid "No earlier alternatives found."
 msgstr "Ертерек балама нұсқалары табылмады."
 
-#: ../src/openTripPlanner.js:625
+#: ../src/openTripPlanner.js:610
 msgid "No later alternatives found."
 msgstr "Кейінірек балама нұсқалары табылмады."
 
-#: ../src/openTripPlanner.js:639
+#: ../src/openTripPlanner.js:648
 msgid "No timetable data found for this route."
 msgstr "Бұл бағдар үшін кесте жоспары табылмады."
 
@@ -892,7 +919,7 @@ msgstr "Ресми аты. Әдетте бұл белгілерде көрсет
 msgid "Address"
 msgstr "Адресі"
 
-#: ../src/osmEditDialog.js:118 ../src/placeBubble.js:169
+#: ../src/osmEditDialog.js:118
 msgid "Website"
 msgstr "Веб сайт"
 
@@ -916,7 +943,7 @@ msgstr ""
 "Телефон нөмірі. +таңбасынан басталатын халықаралық пішімді қолданыңыз. "
 "Жергілікті жекелік заңдарды ескертіңіз, әсіресе, жеке нөмірлер үшін."
 
-#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:175
+#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:170
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -1204,7 +1231,7 @@ msgid "failed to load file"
 msgstr "файлды жүктеу сәтсіз"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:292
+#: ../src/sidebar.js:294
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Шамамен уақыты: %s"
