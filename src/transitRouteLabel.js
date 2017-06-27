@@ -69,28 +69,8 @@ const TransitRouteLabel = new Lang.Class({
         /* for compact (overview) mode, try to shorten the label if the route
          * name was more than 6 characters
          */
-        if (compact && label.length > 6) {
-            if (leg.route.startsWith(leg.agencyName)) {
-                /* if the agency name is a prefix of the route name, display the
-                 * agency name in the overview, this way we get a nice "transition"
-                 * into the expanded route showing the full route name
-                 */
-                label = leg.agencyName;
-            } else if (leg.tripShortName &&
-                       (leg.agencyName.length < leg.tripShortName.length)) {
-                /* if the agency name is shorter than the trip short name,
-                 * which can sometimes be a more "internal" number, like a
-                 * "train number", which is less known by the general public,
-                 * prefer the agency name */
-                label = leg.agencyName;
-            } else if (leg.tripShortName && leg.tripShortName.length <= 6) {
-                /* if the above conditions are unmet, use the trip short name
-                 * as a fallback if it was shorter than the original route name */
-                label = leg.tripShortName;
-            }
-            /* if none of the above is true, use the original route name,
-             * and rely on label ellipsization */
-        }
+        if (compact && label.length > 6)
+            label = leg.compactRoute;
 
         if (compact) {
             /* restrict number of characters shown in the label when compact mode
