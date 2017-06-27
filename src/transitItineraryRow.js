@@ -55,10 +55,11 @@ const TransitItineraryRow = new Lang.Class({
          * overflowing the sidebar width
          */
         let useCompact = length > 2;
-        /* don't show the route labels when there are more than 5 legs in an
-         * itinerary
+        /* don't show the route labels if too much space is consumed,
+         * the constant 28 here was empiracally tested out...
          */
-        let useContractedLabels = length > 5;
+        let estimatedSpace = this._calculateEstimatedSpace();
+        let useContractedLabels = estimatedSpace > 28;
 
         this._itinerary.legs.forEach((function(leg, i) {
             this._summaryGrid.add(this._createLeg(leg, useCompact,
@@ -67,6 +68,27 @@ const TransitItineraryRow = new Lang.Class({
                 this._summaryGrid.add(new Gtk.Label({ visible: true,
                                                       label: '-' }));
         }).bind(this));
+    },
+
+    /* calculate an estimated relative space-consuption for rendering,
+     * this is done based on route label character lengths and a fixed
+     * "placeholder" amount for mode icons and separators, since doing an
+     * exact pixel-correct calculation would be hard depeding on fonts and
+     * themes
+     */
+    _calculateEstimatedSpace: function() {
+        let length = this._itinerary.legs.length;
+        /* assume mode icons and the separators consume about twice the space of
+         * characters
+         */
+        let space = 4 * length - 2;
+
+        this._itinerary.legs.forEach(function(leg) {
+            if (leg.transit)
+                space += leg.compactRoute.length;
+        });
+
+        return space;
     },
 
     _createLeg: function(leg, useCompact, useContractedLabels) {
