@@ -85,6 +85,7 @@ var TransitLegRow = new Lang.Class({
         if (this._leg.transit) {
             let routeLabel = new TransitRouteLabel.TransitRouteLabel({
                                     leg: this._leg,
+                                    print: this._print
                                  });
 
             this._routeGrid.add(routeLabel);
