@@ -196,6 +196,8 @@ const TransitPrintLayout = new Lang.Class({
         widget.width_request = width;
         widget.height_request = height;
 
+        widget.get_style_context().add_class('printing-text');
+
         // Paint the background of the row to be transparent
         widget.connect('draw', (function(widget, cr) {
             cr.setSourceRGBA(0.0, 0.0, 0.0, 0.0);
