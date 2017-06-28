@@ -388,3 +388,9 @@ function normalizeString(string) {
     let normalized = GLib.utf8_normalize(string, -1, GLib.NormalizeMode.ALL);
     return normalized.replace(ACCENTS_REGEX, '');
 }
+
+function isUsingDarkThemeVariant() {
+    let gtkSettings = Gtk.Settings.get_default();
+
+    return gtkSettings.gtk_application_prefer_dark_theme;
+}
