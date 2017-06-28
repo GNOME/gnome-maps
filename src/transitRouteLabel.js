@@ -26,11 +26,16 @@ const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
 
 const Color = imports.color;
+const Utils = imports.utils;
 
 /* threashhold for route color luminance when we consider it more or less
  * as white, and draw an outline around the label
  */
 const OUTLINE_LUMINANCE_THREASHHOLD = 0.9;
+/* the threashhold when using a dark theme, when the color is darker draw an
+ * outline around the label
+ */
+const DARK_OUTLINE_LUMINANCE_THREASHHOLD = 0.1;
 
 var TransitRouteLabel = new Lang.Class({
     Name: 'TransitRouteLabel',
@@ -40,19 +45,22 @@ var TransitRouteLabel = new Lang.Class({
     _init: function(params) {
         let leg = params.leg;
         let compact = params.compact;
+        let print = params.print;
 
         delete params.leg;
         delete params.compact;
+        delete params.print;
         this.parent(params);
 
-        this._setLabel(leg, compact);
+        this._setLabel(leg, compact, print);
         this.connect('draw', this._onDraw.bind(this));
     },
 
-    _setLabel: function(leg, compact) {
+    _setLabel: function(leg, compact, print) {
         let color = leg.color;
         let textColor = leg.textColor;
         let label = leg.route;
+        let usingDarkTheme = Utils.isUsingDarkThemeVariant() && !print;
 
         textColor = Color.getContrastingForegroundColor(color, textColor);
 
@@ -63,8 +71,13 @@ var TransitRouteLabel = new Lang.Class({
         this._fgGreen = Color.parseColor(textColor, 1);
         this._fgBlue = Color.parseColor(textColor, 2);
 
-        if (Color.relativeLuminance(color) > OUTLINE_LUMINANCE_THREASHHOLD)
+
+        if ((!usingDarkTheme &&
+             Color.relativeLuminance(color) > OUTLINE_LUMINANCE_THREASHHOLD) ||
+            (usingDarkTheme &&
+             Color.relativeLuminance(color) < DARK_OUTLINE_LUMINANCE_THREASHHOLD)) {
             this._hasOutline = true;
+        }
 
         /* for compact (overview) mode, try to shorten the label if the route
          * name was more than 6 characters
