@@ -75,6 +75,8 @@ const Utils = imports.utils;
  * will result in walking legs which use "as the crow flies" routes for walking.
  * It will also clean up the results by pruning out pointless transit legs, such
  * as taking transit very short distances when almost reaching the target.
+ *
+ * API docs for OpenTripPlanner can be found at: http://dev.opentripplanner.org/apidoc/1.0.0/
  */
 
 /* timeout after which the routers data is considered stale and we will force
