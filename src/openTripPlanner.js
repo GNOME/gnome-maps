@@ -475,6 +475,69 @@ const OpenTripPlanner = new Lang.Class({
         return date.format('%F');
     },
 
+    // create parameter map for the request, given query and options
+    _createParams: function(stops) {
+        let params = { fromPlace: stops[0].id,
+                       toPlace: stops.last().id };
+        let intermediatePlaces = [];
+
+        for (let i = 1; i < stops.length - 1; i++) {
+            intermediatePlaces.push(stops[i].id);
+        }
+        if (intermediatePlaces.length > 0)
+            params.intermediatePlaces = intermediatePlaces;
+
+        params.numItineraries = 5;
+        params.showIntermediateStops = true;
+
+        let time = this._query.time;
+        let date = this._query.date;
+
+        if (this._extendPrevious) {
+            let itineraries = this.plan.itineraries;
+            let lastItinerary = itineraries.last();
+            let time;
+            let offset;
+
+            if (this._query.arriveBy) {
+                time = lastItinerary.transitArrivalTime -
+                       GAP_BEFORE_MORE_RESULTS * 1000;
+                offset = lastItinerary.transitArrivalTimezoneOffset;
+            } else {
+                time = lastItinerary.transitDepartureTime +
+                       GAP_BEFORE_MORE_RESULTS * 1000;
+                offset = lastItinerary.transitDepartureTimezoneOffset;
+            }
+
+            params.time = this._formatTime(time, offset);
+            params.date = this._formatDate(time, offset);
+        } else {
+            if (time) {
+                params.time = time;
+                /* it seems OTP doesn't like just setting a time, so if the query
+                 * doesn't specify a date, go with today's date
+                 */
+                if (!date) {
+                    let dateTime = GLib.DateTime.new_now_local();
+
+                    params.date = dateTime.format('%F');
+                }
+            }
+
+            if (date)
+                params.date = date;
+        }
+
+        if (this._query.arriveBy)
+            params.arriveBy = true;
+
+        let options = this._query.transitOptions;
+        if (options && !options.showAllTransitTypes)
+            params.mode = this._getModes(options);
+
+        return params;
+    },
+
     _fetchRoutesForRouter: function(router, callback) {
         this._fetchTransitStops(router, (function(stops) {
             let points = this._query.filledPoints;
@@ -495,64 +558,7 @@ const OpenTripPlanner = new Lang.Class({
                 return;
             }
 
-            let params = { fromPlace: stops[0].id,
-                           toPlace: stops.last().id };
-            let intermediatePlaces = [];
-
-            for (let i = 1; i < stops.length - 1; i++) {
-                intermediatePlaces.push(stops[i].id);
-            }
-            if (intermediatePlaces.length > 0)
-                params.intermediatePlaces = intermediatePlaces;
-
-            params.numItineraries = 5;
-            params.showIntermediateStops = true;
-
-            let time = this._query.time;
-            let date = this._query.date;
-
-            if (this._extendPrevious) {
-                let itineraries = this.plan.itineraries;
-                let lastItinerary = itineraries.last();
-                let time;
-                let offset;
-
-                if (this._query.arriveBy) {
-                    time = lastItinerary.transitArrivalTime -
-                           GAP_BEFORE_MORE_RESULTS * 1000;
-                    offset = lastItinerary.transitArrivalTimezoneOffset;
-                } else {
-                    time = lastItinerary.transitDepartureTime +
-                           GAP_BEFORE_MORE_RESULTS * 1000;
-                    offset = lastItinerary.transitDepartureTimezoneOffset;
-                }
-
-                params.time = this._formatTime(time, offset);
-                params.date = this._formatDate(time, offset);
-            } else {
-                if (time) {
-                    params.time = time;
-                    /* it seems OTP doesn't like just setting a time, so if the query
-                     * doesn't specify a date, go with today's date
-                     */
-                    if (!date) {
-                        let dateTime = GLib.DateTime.new_now_local();
-
-                        params.date = dateTime.format('%F');
-                    }
-                }
-
-                if (date)
-                    params.date = date;
-            }
-
-            if (this._query.arriveBy)
-                params.arriveBy = true;
-
-            let options = this._query.transitOptions;
-            if (options && !options.showAllTransitTypes)
-                params.mode = this._getModes(options);
-
+            let params = this._createParams(stops);
             let query = new HTTP.Query(params);
             let uri = new Soup.URI(this._getRouterUrl(router) + '/plan?' +
                                    query.toString());
