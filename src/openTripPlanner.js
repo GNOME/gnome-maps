@@ -489,6 +489,11 @@ const OpenTripPlanner = new Lang.Class({
 
         params.numItineraries = 5;
         params.showIntermediateStops = true;
+        /* set walking speed for transfers to a slightly lower value to
+         * compensate for running OTP with only transit data, giving straight-
+         * line walking paths
+         */
+        params.walkSpeed = 1.0;
 
         let time = this._query.time;
         let date = this._query.date;
