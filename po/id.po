@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-06-01 21:03+0000\n"
-"PO-Revision-Date: 2017-06-07 15:03+0700\n"
-"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
+"POT-Creation-Date: 2017-07-03 21:00+0000\n"
+"PO-Revision-Date: 2017-07-10 17:02+0700\n"
+"Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>\n"
 "Language-Team: Indonesian <gnome@i15n.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 2.0.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
@@ -60,7 +60,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:87 ../src/mainWindow.js:441
+#: ../src/application.js:87 ../src/mainWindow.js:476
 msgid "Maps"
 msgstr "Peta"
 
@@ -190,6 +190,10 @@ msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr ""
 "Menandakan apakah pengguna telah masuk untuk menyunting data OpenStreetMap."
 
+#: ../data/org.gnome.Maps.gschema.xml.h:25
+msgid "Last used transportation type for routing"
+msgstr "Jenis transportasi terakhir yang digunakan untuk rute"
+
 #: ../data/ui/app-menu.ui.h:1
 msgid "Set up OpenStreetMap Account"
 msgstr "Menyiapkan Akun OpenStreetMap"
@@ -224,7 +228,7 @@ msgid "_Cancel"
 msgstr "_Batal"
 
 #. Translators: Check in is used as a verb
-#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:5
+#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:8
 msgid "C_heck in"
 msgstr "C_heck in"
 
@@ -339,6 +343,21 @@ msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Pergi ke lokasi saat ini"
 
+#: ../data/ui/help-overlay.ui.h:12
+msgctxt "shortcut window"
+msgid "Switch to street view"
+msgstr "Beralih ke tampilan jalan"
+
+#: ../data/ui/help-overlay.ui.h:13
+msgctxt "shortcut window"
+msgid "Switch to aerial view"
+msgstr "Beralih ke tampilan udara"
+
+#: ../data/ui/help-overlay.ui.h:14
+msgctxt "shortcut window"
+msgid "Open shape layer"
+msgstr "Buka layer shape"
+
 #: ../data/ui/layers-popover.ui.h:1
 msgid "Load Map Layer"
 msgstr "Muat Layer Peta"
@@ -351,31 +370,36 @@ msgstr "Nyalakan layanan lokasi untuk menemukan lokasi Anda"
 msgid "Location Settings"
 msgstr "Pengaturan Lokasi"
 
-#: ../data/ui/main-window.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:3
 msgid "Go to current location"
 msgstr "Pergi ke lokasi saat ini"
 
-#: ../data/ui/main-window.ui.h:3
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:5
 msgid "Choose map type"
 msgstr "Pilih tipe peta"
 
-#: ../data/ui/main-window.ui.h:4
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:7
 msgid "Toggle route planner"
 msgstr "Jungkitkan perencana rute"
 
-#: ../data/ui/main-window.ui.h:5
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:9
 msgid "Toggle favorites"
 msgstr "Jungkitkan favorit"
 
-#: ../data/ui/main-window.ui.h:6
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:11
 msgid "Print Route"
 msgstr "Cetak Rute"
 
-#: ../data/ui/main-window.ui.h:7
+#: ../data/ui/main-window.ui.h:12
 msgid "Maps is offline!"
 msgstr "Peta luring!"
 
-#: ../data/ui/main-window.ui.h:8
+#: ../data/ui/main-window.ui.h:13
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -383,23 +407,27 @@ msgstr ""
 "Peta perlu suatu koneksi internet aktif untuk berfungsi dengan benar, tapi "
 "tidak ditemukan satupun."
 
-#: ../data/ui/main-window.ui.h:9
+#: ../data/ui/main-window.ui.h:14
 msgid "Check your connection and proxy settings."
 msgstr "Periksalah pengaturan proksi dan koneksi Anda."
 
-#: ../data/ui/map-bubble.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:2
 msgid "Add to new route"
 msgstr "Tambah ke rute baru"
 
-#: ../data/ui/map-bubble.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:4
 msgid "Open with another application"
 msgstr "Buka dengan aplikasi lain"
 
-#: ../data/ui/map-bubble.ui.h:3
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:6
 msgid "Mark as favorite"
 msgstr "Tandai sebagai favorit"
 
-#: ../data/ui/map-bubble.ui.h:6
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:10
 msgid "Check in here"
 msgstr "Check in di sini"
 
@@ -517,6 +545,7 @@ msgid "Recently Used"
 msgstr "Baru-baru Ini Dipakai"
 
 #: ../data/ui/osm-edit-dialog.ui.h:8
+msgctxt "dialog title"
 msgid "Edit on OpenStreetMap"
 msgstr "Sunting pada OpenStreetMap"
 
@@ -528,7 +557,13 @@ msgstr "Batal"
 msgid "Next"
 msgstr "Selanjutnya"
 
-#: ../data/ui/place-bubble.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/place-bubble.ui.h:2
+msgid "Edit on OpenStreetMap"
+msgstr "Sunting pada OpenStreetMap"
+
+#. Translators: This is a tooltip
+#: ../data/ui/place-bubble.ui.h:4
 msgid "Show more information"
 msgstr "Tampilkan lebih banyak informasi"
 
@@ -536,7 +571,12 @@ msgstr "Tampilkan lebih banyak informasi"
 msgid "Press enter to search"
 msgstr "Tekan enter untuk mencari"
 
-#: ../data/ui/route-entry.ui.h:1
+#: ../data/ui/place-popover.ui.h:2
+msgid "No results found"
+msgstr "Hasil tak ditemukan"
+
+#. Translators: This is a tooltip
+#: ../data/ui/route-entry.ui.h:2
 msgid "Drag to change order of the route"
 msgstr "Seret untuk mengubah urutan rute"
 
@@ -552,7 +592,8 @@ msgstr "_Buka"
 msgid "Open Layer"
 msgstr "Buka Layer"
 
-#: ../data/ui/shape-layer-row.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/shape-layer-row.ui.h:2
 msgid "Toggle visible"
 msgstr "Jungkitkan kenampakan"
 
@@ -587,11 +628,13 @@ msgstr ""
 msgid "Show more results"
 msgstr "Tampilkan lebih banyak hasil"
 
-#: ../data/ui/transit-leg-row.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/transit-leg-row.ui.h:2
 msgid "Hide intermediate stops and information"
 msgstr "Sembunyikan informasi dan perhentian antara"
 
-#: ../data/ui/transit-leg-row.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/transit-leg-row.ui.h:4
 msgid "Show intermediate stops and information"
 msgstr "Tampilkan berhenti menengah dan informasi"
 
@@ -797,12 +840,11 @@ msgstr "galat penguraian"
 msgid "unknown geometry"
 msgstr "geometri tak dikenal"
 
-#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:635
+#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:665
 msgid "Route request failed."
 msgstr "Permintaan rute gagal."
 
-#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:619
-#: ../src/openTripPlanner.js:733
+#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:628
 msgid "No route found."
 msgstr "Rute tak ditemukan."
 
@@ -810,37 +852,45 @@ msgstr "Rute tak ditemukan."
 msgid "Start!"
 msgstr "Mulai!"
 
-#: ../src/layersPopover.js:62
+#: ../src/mainWindow.js:59
 msgid "All Layer Files"
 msgstr "Semua Berkas Lapisan"
 
-#: ../src/mainWindow.js:387
+#: ../src/mainWindow.js:418
 msgid "Failed to connect to location service"
 msgstr "Gagal menyambung ke layanan lokasi"
 
-#: ../src/mainWindow.js:439
+#: ../src/mainWindow.js:474
 msgid "translator-credits"
 msgstr ""
 "Andika Triwidada <andika@gmail.com>, 2013-2016\n"
 "Kukuh Syafaat <syafaatkukuh@gmail.com>, 2017"
 
-#: ../src/mainWindow.js:442
+#: ../src/mainWindow.js:477
 msgid "A map application for GNOME"
 msgstr "Aplikasi peta bagi GNOME"
 
-#: ../src/mapView.js:354
+#: ../src/mapView.js:356
 msgid "File type is not supported"
 msgstr "Tipe berkas tak didukung"
 
-#: ../src/mapView.js:361
+#: ../src/mapView.js:363
 msgid "Failed to open layer"
 msgstr "Gagal membuka layer"
 
-#: ../src/mapView.js:397
+#: ../src/mapView.js:399
 msgid "Failed to open GeoURI"
 msgstr "Gagal membuka GeoURI"
 
-#: ../src/openTripPlanner.js:631
+#: ../src/openTripPlanner.js:622
+msgid "No earlier alternatives found."
+msgstr "Tidak ditemukan alternatif sebelumnya."
+
+#: ../src/openTripPlanner.js:623
+msgid "No later alternatives found."
+msgstr "Tidak ada alternatif lain yang ditemukan."
+
+#: ../src/openTripPlanner.js:661
 msgid "No timetable data found for this route."
 msgstr "Tidak ada data jadwal yang ditemukan untuk rute ini."
 
@@ -886,7 +936,7 @@ msgstr "Nama resmi. Ini biasanya apa yang tertulis pada rambu."
 msgid "Address"
 msgstr "Alamat"
 
-#: ../src/osmEditDialog.js:118 ../src/placeBubble.js:169
+#: ../src/osmEditDialog.js:118
 msgid "Website"
 msgstr "Situs web"
 
@@ -910,7 +960,7 @@ msgstr ""
 "Nomor telepon. Gunakan format internasional, diawali dengan tanda +. Hati-"
 "hati dengan perundangan privasi lokal, khususnya untuk nomor telepon pribadi."
 
-#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:175
+#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:170
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -1198,7 +1248,7 @@ msgid "failed to load file"
 msgstr "gagal memuat berkas"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:285
+#: ../src/sidebar.js:294
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Perkiraan waktu: %s"
@@ -1218,7 +1268,7 @@ msgstr "Tiba"
 #. Translators: this is a format string indicating instructions
 #. * starting a journey at the address given as the parameter
 #.
-#: ../src/transitLegRow.js:74
+#: ../src/transitLegRow.js:73
 #, javascript-format
 msgid "Start at %s"
 msgstr "Mulai dari %s"
@@ -1227,22 +1277,22 @@ msgstr "Mulai dari %s"
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: ../src/transitLegRow.js:80
+#: ../src/transitLegRow.js:79
 msgid "Start"
 msgstr "Mulai"
 
-#: ../src/transitLegRow.js:108
+#: ../src/transitLegRow.js:107
 msgid "Show walking instructions"
 msgstr "Tampilkan petunjuk berjalan"
 
-#: ../src/transitLegRow.js:109
+#: ../src/transitLegRow.js:108
 msgid "Hide walking instructions"
 msgstr "Sembunyikan petunjuk berjalan"
 
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
 #.
-#: ../src/transitLegRow.js:134
+#: ../src/transitLegRow.js:133
 #, javascript-format
 msgid "Walk %s"
 msgstr "Berjalan %s"
@@ -1269,7 +1319,7 @@ msgstr "%e %b"
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: ../src/transitPlan.js:248
+#: ../src/transitPlan.js:253
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -1278,7 +1328,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: ../src/transitPlan.js:275
+#: ../src/transitPlan.js:280
 #, javascript-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -1288,7 +1338,7 @@ msgstr[0] "%d menit"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: ../src/transitPlan.js:286
+#: ../src/transitPlan.js:291
 #, javascript-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -1298,7 +1348,7 @@ msgstr[0] "%d jam"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: ../src/transitPlan.js:292
+#: ../src/transitPlan.js:297
 #, javascript-format
 msgid "%d:%02d hour"
 msgid_plural "%d:%02d hours"
@@ -1310,7 +1360,7 @@ msgstr[0] "%d:%02d jam"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: ../src/transitPlan.js:611
+#: ../src/transitPlan.js:649
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
