@@ -183,7 +183,7 @@ const OSM_FIELDS = [
         tag: 'religion',
         type: EditFieldType.COMBO,
         options: [['animist', _("Animism")],
-                  ['bahai', _("Bahá'í")],
+                  ['bahai', _("Bahá’í")],
                   ['buddhist', _("Buddhism")],
                   ['caodaism', _("Caodaism")],
                   ['christian', _("Christianity")],
@@ -216,7 +216,7 @@ const OSM_FIELDS = [
         name: _("Note"),
         tag: 'note',
         type: EditFieldType.TEXT,
-        hint: _("Information used to inform other mappers about non-obvious information about an element, the author's intent when creating it, or hints for further improvement.")
+        hint: _("Information used to inform other mappers about non-obvious information about an element, the author’s intent when creating it, or hints for further improvement.")
     }];
 
 const OSMEditAddress = new Lang.Class({
