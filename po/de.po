@@ -15,16 +15,16 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-06-29 20:20+0000\n"
-"PO-Revision-Date: 2017-07-03 16:42+0200\n"
-"Last-Translator: Wolfgang Stoeggl <c72578@yahoo.de>\n"
+"POT-Creation-Date: 2017-07-24 21:57+0000\n"
+"PO-Revision-Date: 2017-07-30 21:43+0200\n"
+"Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.3\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid "GNOME Maps"
@@ -564,7 +564,7 @@ msgstr "Auf OpenStreetMap bearbeiten"
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:510
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:516
 msgid "Next"
 msgstr "Nächste"
 
@@ -771,7 +771,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Schreiben Sie eine optionale Nachricht, um bei %s einzuchecken."
 
 #: ../src/checkInDialog.js:288 ../src/checkIn.js:165
-#: ../src/osmEditDialog.js:547
+#: ../src/osmEditDialog.js:553
 msgid "An error has occurred"
 msgstr "Ein Fehler ist aufgetreten"
 
@@ -851,11 +851,11 @@ msgstr "Verarbeitungsfehler"
 msgid "unknown geometry"
 msgstr "﻿Unbekannte Geometrie"
 
-#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:654
+#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:665
 msgid "Route request failed."
 msgstr "Routenanfrage schlug fehl."
 
-#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:617
+#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:628
 msgid "No route found."
 msgstr "Keine Route gefunden."
 
@@ -897,15 +897,15 @@ msgstr "Ebene konnte nicht geöffnet werden"
 msgid "Failed to open GeoURI"
 msgstr "Geo-Adresse konnte nicht geöffnet werden"
 
-#: ../src/openTripPlanner.js:611
+#: ../src/openTripPlanner.js:622
 msgid "No earlier alternatives found."
 msgstr "Keine früheren Alternativen gefunden."
 
-#: ../src/openTripPlanner.js:612
+#: ../src/openTripPlanner.js:623
 msgid "No later alternatives found."
 msgstr "Keine späteren Alternativen gefunden."
 
-#: ../src/openTripPlanner.js:650
+#: ../src/openTripPlanner.js:661
 msgid "No timetable data found for this route."
 msgstr "Für diese Route wurden keine Fahrplandaten gefunden."
 
@@ -1063,7 +1063,7 @@ msgid "Animism"
 msgstr "Animismus"
 
 #: ../src/osmEditDialog.js:186
-msgid "Bahá'í"
+msgid "Bahá’í"
 msgstr "Bahaitum"
 
 #: ../src/osmEditDialog.js:187 ../src/translations.js:365
@@ -1150,16 +1150,30 @@ msgstr "Zarathustrismus"
 msgid "Toilets"
 msgstr "Toiletten"
 
-#: ../src/osmEditDialog.js:322
+#: ../src/osmEditDialog.js:216
+msgid "Note"
+msgstr "Notiz"
+
+#: ../src/osmEditDialog.js:219
+msgid ""
+"Information used to inform other mappers about non-obvious information about "
+"an element, the author’s intent when creating it, or hints for further "
+"improvement."
+msgstr ""
+"Notiz, die anderen Kartennutzern nicht-offensichtliche Hinweise zu einem "
+"Element, die Absicht des Autors bei der Erstellung, oder Hinweise zur "
+"weiteren Verbesserung zur Verfügung stellt."
+
+#: ../src/osmEditDialog.js:328
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Zu OpenStreetMap hinzufügen"
 
-#: ../src/osmEditDialog.js:375
+#: ../src/osmEditDialog.js:381
 msgid "Select Type"
 msgstr "Typ wählen"
 
-#: ../src/osmEditDialog.js:494
+#: ../src/osmEditDialog.js:500
 msgid "Done"
 msgstr "Abgeschlossen"
 
@@ -1205,7 +1219,7 @@ msgstr "Geo-Adresse konnte nicht gelesen werden"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: ../src/place.js:208 ../src/translations.js:329 ../src/translations.js:391
+#: ../src/place.js:219 ../src/translations.js:329 ../src/translations.js:391
 msgid "yes"
 msgstr "ja"
 
@@ -1214,7 +1228,7 @@ msgstr "ja"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:215
+#: ../src/place.js:226
 msgid "limited"
 msgstr "begrenzt"
 
@@ -1226,7 +1240,7 @@ msgstr "begrenzt"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: ../src/place.js:221 ../src/translations.js:335 ../src/translations.js:392
+#: ../src/place.js:232 ../src/translations.js:335 ../src/translations.js:392
 msgid "no"
 msgstr "nein"
 
@@ -1235,7 +1249,7 @@ msgstr "nein"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:228
+#: ../src/place.js:239
 msgid "designated"
 msgstr "geeignet"
 
