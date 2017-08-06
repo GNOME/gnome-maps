@@ -50,6 +50,9 @@ const ContextMenu = new Lang.Class({
         this._mapView = params.mapView;
         delete params.mapView;
 
+        this._mainWindow = params.mainWindow;
+        delete params.mainWindow;
+
         this.parent(params);
 
         this._mapView.connect('button-release-event',
@@ -147,7 +150,7 @@ const ContextMenu = new Lang.Class({
         let osmEdit = Application.osmEdit;
         /* if the user is not alread signed in, show the account dialog */
         if (!osmEdit.isSignedIn) {
-            let dialog = osmEdit.createAccountDialog(this.get_toplevel(), true);
+            let dialog = osmEdit.createAccountDialog(this._mainWindow, true);
 
             dialog.show();
             dialog.connect('response', (function(dialog, response) {
@@ -175,7 +178,7 @@ const ContextMenu = new Lang.Class({
         }
 
         let dialog =
-            osmEdit.createEditNewDialog(this.get_toplevel(),
+            osmEdit.createEditNewDialog(this._mainWindow,
                                       this._latitude, this._longitude);
 
         dialog.show();
@@ -195,7 +198,8 @@ const ContextMenu = new Lang.Class({
         let [latitude, longitude] = bbox.get_center();
 
         let dialog = new ExportViewDialog.ExportViewDialog({
-            transient_for: this.get_toplevel(),
+            transient_for: this._mainWindow,
+            modal: true,
             surface: surface,
             latitude: latitude,
             longitude: longitude,
