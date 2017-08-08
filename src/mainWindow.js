@@ -271,21 +271,34 @@ const MainWindow = new Lang.Class({
          * hijack the key-press to the main window and make sure that
          * they reach the entry before they can be swallowed as accelerator.
          */
-        this.connect('key-press-event', function(window, event) {
+        this.connect('key-press-event', (function(window, event) {
             let focusWidget = window.get_focus();
             let keyval = event.get_keyval()[1];
-            let keys = [Gdk.KEY_plus,
-                        Gdk.KEY_minus,
+            let keys = [Gdk.KEY_plus, Gdk.KEY_KP_Add,
+                        Gdk.KEY_minus, Gdk.KEY_KP_Subtract,
                         Gdk.KEY_equal];
+            let isPassThroughKey = keys.indexOf(keyval) !== -1;
 
-            if (!(focusWidget instanceof Gtk.Entry))
-                return false;
+            /* if no entry is focused, and the key is not one we should treat
+             * as a zoom accelerator when no entry is focused, focus the
+             * main search entry in the headebar to propaget the keypress there
+             */
+            if (!(focusWidget instanceof Gtk.Entry) && !isPassThroughKey) {
+                /* if the search entry does not handle the event, pass it on
+                 * instead of activating the entry
+                 */
+                if (this._placeEntry.handle_event(event) === Gdk.EVENT_PROPAGATE)
+                    return false;
 
-            if (keys.indexOf(keyval) !== -1)
+                this._placeEntry.has_focus = true;
+                focusWidget = this._placeEntry;
+            }
+
+            if (focusWidget instanceof Gtk.Entry)
                 return focusWidget.event(event);
 
             return false;
-        });
+        }).bind(this));
     },
 
     _updateLocationSensitivity: function() {
@@ -299,7 +312,6 @@ const MainWindow = new Lang.Class({
     _initHeaderbar: function() {
         this._placeEntry = this._createPlaceEntry();
         this._headerBar.custom_title = this._placeEntry;
-        this._placeEntry.has_focus = true;
 
         let favoritesPopover = this._favoritesButton.popover;
         this._favoritesButton.sensitive = favoritesPopover.rows > 0;
