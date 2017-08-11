@@ -1,19 +1,20 @@
 # Turkish translation for gnome-maps.
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
-# Emin Tufan Çetin <etcetin@gmail.com>, 2013.
 # Gökhan Gurbetoğlu <ggurbet@gmail.com>, 2014, 2015.
 # Muhammet Kara <muhammetk@gmail.com>, 2013, 2014, 2015, 2016.
 # Osman Karagöz <osmank3@gmail.com>, 2017.
+# Çağatay Yiğit Şahin <cyigitsahin@outlook.com>, 2017.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2013, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-11-10 12:59+0000\n"
-"PO-Revision-Date: 2017-01-29 23:18+0300\n"
-"Last-Translator: Osman Karagöz <osmank3@gmail.com>\n"
+"POT-Creation-Date: 2017-07-27 12:24+0000\n"
+"PO-Revision-Date: 2017-07-28 19:25+0300\n"
+"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -46,7 +47,7 @@ msgid ""
 "thousands of people across the globe."
 msgstr ""
 "Haritalar dünya çapında yüzbinlerce insan tarafından hazırlanan "
-"OpenStreetMap ile ortak veritabanını kullanır."
+"OpenStreetMap ile ortak veri tabanını kullanır."
 
 #. Translators: Search is carried out on OpenStreetMap data using Nominatim.
 #. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
@@ -61,7 +62,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:85 ../src/mainWindow.js:441
+#: ../src/application.js:87 ../src/mainWindow.js:476
 msgid "Maps"
 msgstr "Haritalar"
 
@@ -166,7 +167,7 @@ msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
 msgstr ""
-"Foursquare'in yer bildirimlerini, Foursquare hesabına bağlı olan Facebook "
+"Foursquare’in yer bildirimlerini, Foursquare hesabına bağlı olan Facebook "
 "hesabında bir gönderi olarak yayınlayıp yayınlamayacağını belirtir."
 
 #: ../data/org.gnome.Maps.gschema.xml.h:21
@@ -178,7 +179,7 @@ msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
 msgstr ""
-"Foursquare'in yer bildirimlerini, Foursquare hesabına bağlı olan Twitter "
+"Foursquare’in yer bildirimlerini, Foursquare hesabına bağlı olan Twitter "
 "hesabında bir tvit olarak yayınlayıp yayınlamayacağını belirtir."
 
 #: ../data/org.gnome.Maps.gschema.xml.h:23
@@ -190,6 +191,10 @@ msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr ""
 "Kullanıcının OpenStreetMap verilerini düzenlemek için oturup açıp açmamış "
 "olduğunu belirtir."
+
+#: ../data/org.gnome.Maps.gschema.xml.h:25
+msgid "Last used transportation type for routing"
+msgstr "Yönlendirme için son kullanılan ulaşım şekli"
 
 #: ../data/ui/app-menu.ui.h:1
 msgid "Set up OpenStreetMap Account"
@@ -213,11 +218,11 @@ msgstr "Görünürlük"
 
 #: ../data/ui/check-in-dialog.ui.h:2
 msgid "Post on Facebook"
-msgstr "Facebook'a Gönder"
+msgstr "Facebook’a Gönder"
 
 #: ../data/ui/check-in-dialog.ui.h:3
 msgid "Post on Twitter"
-msgstr "Twitter'a Gönder"
+msgstr "Twitter’a Gönder"
 
 #: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/export-view-dialog.ui.h:2
 #: ../data/ui/send-to-dialog.ui.h:2 ../data/ui/shape-layer-file-chooser.ui.h:3
@@ -225,7 +230,7 @@ msgid "_Cancel"
 msgstr "_İptal"
 
 #. Translators: Check in is used as a verb
-#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:5
+#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:8
 msgid "C_heck in"
 msgstr "_Yer bildirimi"
 
@@ -239,11 +244,11 @@ msgstr "Arkadaşların arkadaşları"
 
 #: ../data/ui/check-in-dialog.ui.h:8
 msgid "Just friends"
-msgstr "Sadece arkadaşlar"
+msgstr "Yalnızca arkadaşlar"
 
 #: ../data/ui/check-in-dialog.ui.h:9
 msgid "Just me"
-msgstr "Sadece ben"
+msgstr "Yalnızca ben"
 
 #: ../data/ui/check-in-dialog.ui.h:10
 msgid "Public"
@@ -271,7 +276,7 @@ msgstr "Resim Olarak Dışa Aktar"
 
 #: ../data/ui/context-menu.ui.h:4
 msgid "Add to OpenStreetMap"
-msgstr "OpenStreetMap'e Ekle"
+msgstr "OpenStreetMap’e Ekle"
 
 #: ../data/ui/export-view-dialog.ui.h:1
 msgid "Export view"
@@ -340,6 +345,21 @@ msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Geçerli konuma git"
 
+#: ../data/ui/help-overlay.ui.h:12
+msgctxt "shortcut window"
+msgid "Switch to street view"
+msgstr "Sokak görünümüne geç"
+
+#: ../data/ui/help-overlay.ui.h:13
+msgctxt "shortcut window"
+msgid "Switch to aerial view"
+msgstr "Kuş bakışı görünüme geç"
+
+#: ../data/ui/help-overlay.ui.h:14
+msgctxt "shortcut window"
+msgid "Open shape layer"
+msgstr "Şekil katmanını aç"
+
 #: ../data/ui/layers-popover.ui.h:1
 msgid "Load Map Layer"
 msgstr "Harita Katmanı Yükle"
@@ -352,58 +372,64 @@ msgstr "Konumunuzu bulmak için konum hizmetlerini etkinleştirin"
 msgid "Location Settings"
 msgstr "Konum Ayarları"
 
-#: ../data/ui/main-window.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:3
 msgid "Go to current location"
 msgstr "Geçerli konuma git"
 
-#: ../data/ui/main-window.ui.h:3
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:5
 msgid "Choose map type"
 msgstr "Harita türü seç"
 
-#: ../data/ui/main-window.ui.h:4
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:7
 msgid "Toggle route planner"
 msgstr "Rota planlayıcıyı aç/kapat"
 
-#: ../data/ui/main-window.ui.h:5
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:9
 msgid "Toggle favorites"
 msgstr "Gözdeleri aç/kapat"
 
-#: ../data/ui/main-window.ui.h:6
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:11
 msgid "Print Route"
 msgstr "Rotayı Yazdır"
 
-#: ../data/ui/main-window.ui.h:7
+#: ../data/ui/main-window.ui.h:12
 msgid "Maps is offline!"
-msgstr "Haritalar çevrimdışı!"
+msgstr "Haritalar çevrim dışı!"
 
-#: ../data/ui/main-window.ui.h:8
-#| msgid ""
-#| "Maps need an active internet connection to function properly, but one "
-#| "can't be found."
+#: ../data/ui/main-window.ui.h:13
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
 msgstr ""
-"Haritaların çalışması için mevcut bir internet bağlantısı gerekli, ancak "
-"bağlantı yok."
+"Haritaların çalışması için kullanılabilir bir internet bağlantısı gerekli, "
+"ancak bağlantı yok."
 
-#: ../data/ui/main-window.ui.h:9
+#: ../data/ui/main-window.ui.h:14
 msgid "Check your connection and proxy settings."
-msgstr "Bağlantı ve vekil sunucu ayarlarınızı kontrol edin."
+msgstr "Bağlantı ve vekil sunucu ayarlarınızı denetleyin."
 
-#: ../data/ui/map-bubble.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:2
 msgid "Add to new route"
 msgstr "Yeni rotaya ekle"
 
-#: ../data/ui/map-bubble.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:4
 msgid "Open with another application"
 msgstr "Başka bir uygulamayla birlikte aç"
 
-#: ../data/ui/map-bubble.ui.h:3
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:6
 msgid "Mark as favorite"
 msgstr "Favori olarak işaretle"
 
-#: ../data/ui/map-bubble.ui.h:6
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:10
 msgid "Check in here"
 msgstr "Buradan yer bildirimi yap"
 
@@ -438,30 +464,24 @@ msgid "Sign In"
 msgstr "Oturum Aç"
 
 #: ../data/ui/osm-account-dialog.ui.h:8
-#| msgid "Don't have an account?"
 msgid "Don’t have an account?"
 msgstr "Hesabınız yok mu?"
 
 #. The label should contain the link to the OSM reset password page with a translated title
 #: ../data/ui/osm-account-dialog.ui.h:10
-#| msgid ""
-#| "Sorry, that didn't work. Please try again, or visit\n"
-#| "<a href=\"https://www.openstreetmap.org/user/forgot-password"
-#| "\">OpenStreetMap</a> to reset your password."
 msgid ""
 "Sorry, that didn’t work. Please try again, or visit\n"
 "<a href=\"https://www.openstreetmap.org/user/forgot-password"
 "\">OpenStreetMap</a> to reset your password."
 msgstr ""
-"Üzgünüm, işe yaramadı. Lütfen tekrar deneyin ya da parolanızı sıfırlamak "
+"Üzgünüm, işe yaramadı. Lütfen yeniden deneyin ya da parolanızı sıfırlamak "
 "için\n"
 "<a href=\"https://www.openstreetmap.org/user/forgot-password"
-"\">OpenStreetMap</a>'i ziyaret edin."
+"\">OpenStreetMap</a>’i ziyaret edin."
 
 #: ../data/ui/osm-account-dialog.ui.h:12
-#| msgid "The verification code didn't match, please try again."
 msgid "The verification code didn’t match, please try again."
-msgstr "Doğrulama kodu eşleşmedi, lütfen tekrar deneyin."
+msgstr "Doğrulama kodu eşleşmedi, lütfen yeniden deneyin."
 
 #: ../data/ui/osm-account-dialog.ui.h:13
 msgid "Enter verification code shown above"
@@ -517,9 +537,6 @@ msgid "Comment"
 msgstr "Yorum"
 
 #: ../data/ui/osm-edit-dialog.ui.h:5
-#| msgid ""
-#| "Map changes will be visible on all maps that use\n"
-#| "    OpenStreetMap data."
 msgid ""
 "Map changes will be visible on all maps that use\n"
 "OpenStreetMap data."
@@ -532,26 +549,38 @@ msgid "Recently Used"
 msgstr "Sok Kullanılan"
 
 #: ../data/ui/osm-edit-dialog.ui.h:8
+msgctxt "dialog title"
 msgid "Edit on OpenStreetMap"
-msgstr "OpenStreetMap'te Düzenle"
+msgstr "OpenStreetMap’te Düzenle"
 
 #: ../data/ui/osm-edit-dialog.ui.h:9
 msgid "Cancel"
 msgstr "İptal"
 
-#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:472
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:516
 msgid "Next"
 msgstr "İleri"
 
-#: ../data/ui/place-bubble.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/place-bubble.ui.h:2
+msgid "Edit on OpenStreetMap"
+msgstr "OpenStreetMap’te Düzenle"
+
+#. Translators: This is a tooltip
+#: ../data/ui/place-bubble.ui.h:4
 msgid "Show more information"
-msgstr "Daha fazla bilgi göster"
+msgstr "Daha çok bilgi göster"
 
 #: ../data/ui/place-popover.ui.h:1
 msgid "Press enter to search"
-msgstr "Aramak için Enter'a basın"
+msgstr "Aramak için Enter’a basın"
 
-#: ../data/ui/route-entry.ui.h:1
+#: ../data/ui/place-popover.ui.h:2
+msgid "No results found"
+msgstr "Hiçbir sonuç bulunamadı."
+
+#. Translators: This is a tooltip
+#: ../data/ui/route-entry.ui.h:2
 msgid "Drag to change order of the route"
 msgstr "Rota sıralamasını değiştirmek için sürükle"
 
@@ -567,7 +596,8 @@ msgstr "_Aç"
 msgid "Open Layer"
 msgstr "Katman Aç"
 
-#: ../data/ui/shape-layer-row.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/shape-layer-row.ui.h:2
 msgid "Toggle visible"
 msgstr "Görünürlüğü aç/kapat"
 
@@ -575,9 +605,81 @@ msgstr "Görünürlüğü aç/kapat"
 msgid "Route search by GraphHopper"
 msgstr "GraphHopper ile rota arama"
 
+#: ../data/ui/sidebar.ui.h:2
+msgid "Route search by OpenTripPlanner"
+msgstr "OpenTripPlanner ile rota arama"
+
+#: ../data/ui/sidebar.ui.h:3
+msgid ""
+"Routing itineraries for public transit is provided by GNOME\n"
+"using timetable data obtained from transit companies or agencies.\n"
+"The companies and agencies can not be held responsible for the results "
+"shown.\n"
+"GNOME can not guarantee correctness of the itineraries and schedules shown.\n"
+"Names and brands shown are to be considered as registered trademarks when "
+"applicable."
+msgstr ""
+"Toplu taşıma için rota kılavuzları GNOME tarafından toplu taşıma şirketleri\n"
+"veya kuruluşlarından elde edilen tarife verileri kullanılarak "
+"sağlanmaktadır.\n"
+"Şirketler ve kuruluşlar gösterilen sonuçlar için sorumlu tutulamazlar.\n"
+"GNOME gösterilen kılavuzların ve çizelgelerin doğruluğunu garanti edemez.\n"
+"Adlar ve markalar mümkün olduğunda tescilli marka olarak "
+"değerlendirilmelidir."
+
 #: ../data/ui/social-place-more-results-row.ui.h:1
 msgid "Show more results"
-msgstr "Daha fazla sonuç göster"
+msgstr "Daha çok sonuç göster"
+
+#. Translators: This is a tooltip
+#: ../data/ui/transit-leg-row.ui.h:2
+msgid "Hide intermediate stops and information"
+msgstr "Ara durakları ve bilgiyi gizle"
+
+#. Translators: This is a tooltip
+#: ../data/ui/transit-leg-row.ui.h:4
+msgid "Show intermediate stops and information"
+msgstr "Ara durakları ve bilgiyi göster"
+
+#. Indicates searching for the next available itineraries
+#: ../data/ui/transit-options-panel.ui.h:2
+msgid "Leave Now"
+msgstr "Şimdi Çık"
+
+#. Indicates searching for itineraries leaving at the specified time at the earliest
+#: ../data/ui/transit-options-panel.ui.h:4
+msgid "Leave By"
+msgstr "İtibaren Çık"
+
+#. Indicates searching for itineraries arriving no later than the specified time
+#: ../data/ui/transit-options-panel.ui.h:6
+msgid "Arrive By"
+msgstr "Öncesinde Var"
+
+#. Header indicating selected modes of transit
+#: ../data/ui/transit-options-panel.ui.h:8
+msgid "Show"
+msgstr "Göster"
+
+#: ../data/ui/transit-options-panel.ui.h:9
+msgid "Buses"
+msgstr "Otobüsler"
+
+#: ../data/ui/transit-options-panel.ui.h:10
+msgid "Trams"
+msgstr "Tramvaylar"
+
+#: ../data/ui/transit-options-panel.ui.h:11
+msgid "Trains"
+msgstr "Trenler"
+
+#: ../data/ui/transit-options-panel.ui.h:12
+msgid "Subway"
+msgstr "Metrolar"
+
+#: ../data/ui/transit-options-panel.ui.h:13
+msgid "Ferries"
+msgstr "Feribotlar"
 
 #: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:120
 msgid "Current location"
@@ -614,23 +716,23 @@ msgstr "Gerekli öznitelikler eksik"
 msgid "Could not find OSM element"
 msgstr "OSM ögesi bulunamadı"
 
-#: ../src/application.js:101
+#: ../src/application.js:102
 msgid "A path to a local tiles directory structure"
 msgstr "Yerel bir döşeme dizini yapısını gösteren adres (yol)"
 
-#: ../src/checkInDialog.js:176
+#: ../src/checkInDialog.js:175
 msgid "Select an account"
-msgstr "Bir hesap seçin"
+msgstr "Bir hesap seç"
 
-#: ../src/checkInDialog.js:181 ../src/checkInDialog.js:253
+#: ../src/checkInDialog.js:180 ../src/checkInDialog.js:252
 msgid "Loading"
 msgstr "Yükleniyor"
 
-#: ../src/checkInDialog.js:205
+#: ../src/checkInDialog.js:204
 msgid "Select a place"
-msgstr "Bir yer seçin"
+msgstr "Bir yer seç"
 
-#: ../src/checkInDialog.js:210
+#: ../src/checkInDialog.js:209
 msgid ""
 "Maps cannot find the place to check in to with Facebook. Please select one "
 "from this list."
@@ -638,7 +740,7 @@ msgstr ""
 "Haritalar Facebook ile yer bildiriminde bulunabilmek için konumu bulamıyor. "
 "Lütfen bu listeden bir tane seçin."
 
-#: ../src/checkInDialog.js:212
+#: ../src/checkInDialog.js:211
 msgid ""
 "Maps cannot find the place to check in to with Foursquare. Please select one "
 "from this list."
@@ -648,59 +750,58 @@ msgstr ""
 
 #. Translators: %s is the name of the place to check in.
 #.
-#: ../src/checkInDialog.js:227
+#: ../src/checkInDialog.js:226
 #, javascript-format
 msgid "Check in to %s"
 msgstr "%s için yer bildiriminde bulun"
 
 #. Translators: %s is the name of the place to check in.
 #.
-#: ../src/checkInDialog.js:237
+#: ../src/checkInDialog.js:236
 #, javascript-format
 msgid "Write an optional message to check in to %s."
-msgstr "%s'den yer bildiriminde bulunmak için isteğe bağlı bir mesaj girin"
+msgstr "%s’den yer bildiriminde bulunmak için isteğe bağlı bir mesaj girin"
 
-#: ../src/checkInDialog.js:289 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:509
+#: ../src/checkInDialog.js:288 ../src/checkIn.js:165
+#: ../src/osmEditDialog.js:553
 msgid "An error has occurred"
 msgstr "Bir hata oluştu"
 
 #. Translators: %s is the place name that user wanted to check-in
-#: ../src/checkIn.js:135
+#: ../src/checkIn.js:147
 #, javascript-format
-#| msgid "Cannot find \"%s\" in the social service"
 msgid "Cannot find “%s” in the social service"
 msgstr "Sosyal hizmette “%s” bulunamıyor"
 
-#: ../src/checkIn.js:137
+#: ../src/checkIn.js:149
 msgid "Cannot find a suitable place to check-in in this location"
 msgstr "Bu konumda yer bildirimi yapılabilecek uygun bir yer bulunamıyor"
 
-#: ../src/checkIn.js:141
+#: ../src/checkIn.js:153
 msgid ""
 "Credentials have expired, please open Online Accounts to sign in and enable "
 "this account"
 msgstr ""
 "Oturumun süresi doldu, giriş yapıp bu hesabı etkinleştirmek için lütfen "
-"Çevrimiçi Hesapları açın"
+"Çevrim İçi Hesapları açın"
 
-#: ../src/contextMenu.js:97
+#: ../src/contextMenu.js:96
 msgid "Route from here"
 msgstr "Buradan rota"
 
-#: ../src/contextMenu.js:99
+#: ../src/contextMenu.js:98
 msgid "Add destination"
 msgstr "Hedef ekle"
 
-#: ../src/contextMenu.js:101
+#: ../src/contextMenu.js:100
 msgid "Route to here"
 msgstr "Buraya rota"
 
-#: ../src/contextMenu.js:130
+#: ../src/contextMenu.js:129
 msgid "Nothing found here!"
 msgstr "Burada bişey bulunamadı!"
 
-#: ../src/contextMenu.js:187
+#: ../src/contextMenu.js:186
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -741,15 +842,27 @@ msgstr "ayrıştırma hatası"
 msgid "unknown geometry"
 msgstr "bilinmeyen geometri"
 
-#: ../src/layersPopover.js:62
+#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:665
+msgid "Route request failed."
+msgstr "Rota isteği başarısız oldu."
+
+#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:628
+msgid "No route found."
+msgstr "Hiçbir rota bulunamadı."
+
+#: ../src/graphHopper.js:193
+msgid "Start!"
+msgstr "Başla!"
+
+#: ../src/mainWindow.js:59
 msgid "All Layer Files"
 msgstr "Tüm Katman Dosyaları"
 
-#: ../src/mainWindow.js:387
+#: ../src/mainWindow.js:418
 msgid "Failed to connect to location service"
 msgstr "Konum hizmetine bağlanma başarısız oldu"
 
-#: ../src/mainWindow.js:439
+#: ../src/mainWindow.js:474
 msgid "translator-credits"
 msgstr ""
 "Muhammet Kara <muhammetk@gmail.com>\n"
@@ -757,49 +870,61 @@ msgstr ""
 "Gökhan Gurbetoğlu <ggurbet@gmail.com>\n"
 "Osman Karagöz <osmank3@gmail.com>"
 
-#: ../src/mainWindow.js:442
+#: ../src/mainWindow.js:477
 msgid "A map application for GNOME"
 msgstr "GNOME için harita uygulaması"
 
-#: ../src/mapView.js:260
+#: ../src/mapView.js:356
 msgid "File type is not supported"
 msgstr "Dosya türü desteklenmiyor"
 
-#: ../src/mapView.js:267
+#: ../src/mapView.js:363
 msgid "Failed to open layer"
 msgstr "Katman açma başarısız oldu"
 
-#: ../src/mapView.js:303
+#: ../src/mapView.js:399
 msgid "Failed to open GeoURI"
 msgstr "GeoURI açma başarısız"
 
+#: ../src/openTripPlanner.js:622
+msgid "No earlier alternatives found."
+msgstr "Daha erken alternatif bulunamadı."
+
+#: ../src/openTripPlanner.js:623
+msgid "No later alternatives found."
+msgstr "Daha geç alternatif bulunamadı."
+
+#: ../src/openTripPlanner.js:661
+msgid "No timetable data found for this route."
+msgstr "Bu rota için tarife verisi bulunamadı"
+
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: ../src/osmConnection.js:443
+#: ../src/osmConnection.js:442
 msgid "Incorrect user name or password"
 msgstr "Hatalı kullanıcı adı veya parola"
 
-#: ../src/osmConnection.js:445
+#: ../src/osmConnection.js:444
 msgid "Success"
 msgstr "Başarılı"
 
-#: ../src/osmConnection.js:447
+#: ../src/osmConnection.js:446
 msgid "Bad request"
 msgstr "Geçersiz istek"
 
-#: ../src/osmConnection.js:449
+#: ../src/osmConnection.js:448
 msgid "Object not found"
 msgstr "Nesne bulunamadı"
 
-#: ../src/osmConnection.js:451
+#: ../src/osmConnection.js:450
 msgid "Conflict, someone else has just modified the object"
 msgstr "Çakışma; nesneyi az önce bir başkası değiştirdi"
 
-#: ../src/osmConnection.js:453
+#: ../src/osmConnection.js:452
 msgid "Object has been deleted"
 msgstr "Nesne silindi"
 
-#: ../src/osmConnection.js:455
+#: ../src/osmConnection.js:454
 msgid "Way or relation refers to non-existing children"
 msgstr "Yol ya da ilişki, var olmayan alt nesneye başvuruyor"
 
@@ -815,7 +940,7 @@ msgstr "Resmi ad. Genellikle tabelalarda yer alan addır."
 msgid "Address"
 msgstr "Adres"
 
-#: ../src/osmEditDialog.js:118 ../src/placeBubble.js:165
+#: ../src/osmEditDialog.js:118
 msgid "Website"
 msgstr "Web sitesi"
 
@@ -840,7 +965,7 @@ msgstr ""
 "Özellikle kişisel telefon numaraları konusunda, yerel kişisel gizlilik "
 "yasalarına dikkat edin."
 
-#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:171
+#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:170
 msgid "Wikipedia"
 msgstr "Vikipedi"
 
@@ -878,10 +1003,12 @@ msgid "Wheelchair access"
 msgstr "Tekerlekli sandalye erişimi"
 
 #: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
+#: ../src/osmEditDialog.js:212
 msgid "Yes"
 msgstr "Evet"
 
 #: ../src/osmEditDialog.js:166 ../src/osmEditDialog.js:175
+#: ../src/osmEditDialog.js:213
 msgid "No"
 msgstr "Hayır"
 
@@ -890,7 +1017,6 @@ msgid "Limited"
 msgstr "Sınırlı"
 
 #: ../src/osmEditDialog.js:168
-#| msgid "designated"
 msgid "Designated"
 msgstr "Belirlenmiş"
 
@@ -917,41 +1043,158 @@ msgstr "Terminal"
 msgid "Service"
 msgstr "Hizmet"
 
-#: ../src/osmEditDialog.js:288
+#: ../src/osmEditDialog.js:182
+msgid "Religion"
+msgstr "Din"
+
+#: ../src/osmEditDialog.js:185 ../src/translations.js:363
+msgid "Animism"
+msgstr "Animizm"
+
+#: ../src/osmEditDialog.js:186
+msgid "Bahá’í"
+msgstr "Bahâîlik"
+
+#: ../src/osmEditDialog.js:187 ../src/translations.js:365
+msgid "Buddhism"
+msgstr "Budizm"
+
+#: ../src/osmEditDialog.js:188 ../src/translations.js:366
+msgid "Caodaism"
+msgstr "Kaodaizm"
+
+#: ../src/osmEditDialog.js:189 ../src/translations.js:367
+msgid "Christianity"
+msgstr "Hristiyanlık"
+
+#: ../src/osmEditDialog.js:190 ../src/translations.js:368
+msgid "Confucianism"
+msgstr "Konfüçyüsçülük"
+
+#: ../src/osmEditDialog.js:191 ../src/translations.js:369
+msgid "Hinduism"
+msgstr "Hinduizm"
+
+#: ../src/osmEditDialog.js:192 ../src/translations.js:370
+msgid "Jainism"
+msgstr "Jainizm"
+
+#: ../src/osmEditDialog.js:193 ../src/translations.js:371
+msgid "Judaism"
+msgstr "Musevilik"
+
+#: ../src/osmEditDialog.js:194 ../src/translations.js:372
+msgid "Islam"
+msgstr "İslam"
+
+#: ../src/osmEditDialog.js:195 ../src/translations.js:373
+msgid "Multiple Religions"
+msgstr "Çoklu Dinler"
+
+#: ../src/osmEditDialog.js:196 ../src/translations.js:374
+msgid "Paganism"
+msgstr "Paganizm"
+
+#: ../src/osmEditDialog.js:197 ../src/translations.js:375
+msgid "Pastafarianism"
+msgstr "Pastafaryanizm"
+
+#: ../src/osmEditDialog.js:198 ../src/translations.js:376
+msgid "Scientology"
+msgstr "Scientology"
+
+#: ../src/osmEditDialog.js:199 ../src/translations.js:377
+msgid "Shinto"
+msgstr "Şinto"
+
+#: ../src/osmEditDialog.js:200 ../src/translations.js:378
+msgid "Sikhism"
+msgstr "Sihizm"
+
+#: ../src/osmEditDialog.js:201 ../src/translations.js:379
+msgid "Spiritualism"
+msgstr "Ruhiyatçılık"
+
+#: ../src/osmEditDialog.js:202 ../src/translations.js:380
+msgid "Taoism"
+msgstr "Taoculuk"
+
+#: ../src/osmEditDialog.js:203 ../src/translations.js:381
+msgid "Unitarian Universalism"
+msgstr "Üniteryen Üniversalizm"
+
+#: ../src/osmEditDialog.js:204 ../src/translations.js:382
+msgid "Voodoo"
+msgstr "Vudu"
+
+#: ../src/osmEditDialog.js:205 ../src/translations.js:383
+msgid "Yazidism"
+msgstr "Yezidilik"
+
+#: ../src/osmEditDialog.js:206 ../src/translations.js:384
+msgid "Zoroastrianism"
+msgstr "Zoroastrianizm"
+
+#: ../src/osmEditDialog.js:209
+msgid "Toilets"
+msgstr "Tuvaletler"
+
+#: ../src/osmEditDialog.js:216
+msgid "Note"
+msgstr "Not"
+
+#: ../src/osmEditDialog.js:219
+msgid ""
+"Information used to inform other mappers about non-obvious information about "
+"an element, the author’s intent when creating it, or hints for further "
+"improvement."
+msgstr ""
+"Bir ögeyle ilgili bariz olmayan bilgiler, yazarın onu yaratırkenki niyeti "
+"veya ileriki geliştirmeler için ipuçlarıyla ilgili diğer haritacıları "
+"bilgilendirmek için kullanılan bilgiler."
+
+#: ../src/osmEditDialog.js:328
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
-msgstr "OpenStreetMap'e Ekle"
+msgstr "OpenStreetMap’e Ekle"
 
-#: ../src/osmEditDialog.js:340
-#| msgid "Select a place"
+#: ../src/osmEditDialog.js:381
 msgid "Select Type"
-msgstr "Tür seçin"
+msgstr "Tür Seç"
 
-#: ../src/osmEditDialog.js:458
+#: ../src/osmEditDialog.js:500
 msgid "Done"
 msgstr "Bitti"
 
-#: ../src/placeBubble.js:128
+#: ../src/placeBubble.js:122
 msgid "Population:"
 msgstr "Nüfus:"
 
-#: ../src/placeBubble.js:134
+#: ../src/placeBubble.js:128
 msgid "Altitude:"
 msgstr "Rakım:"
 
-#: ../src/placeBubble.js:139
+#: ../src/placeBubble.js:133
 msgid "Opening hours:"
 msgstr "Açılış saatleri:"
 
-#: ../src/placeBubble.js:144
+#: ../src/placeBubble.js:138
 msgid "Internet access:"
 msgstr "İnternet erişimi:"
 
-#: ../src/placeBubble.js:149
+#: ../src/placeBubble.js:143
+msgid "Religion:"
+msgstr "Din:"
+
+#: ../src/placeBubble.js:148
+msgid "Toilets:"
+msgstr "Tuvaletler:"
+
+#: ../src/placeBubble.js:153
 msgid "Wheelchair access:"
 msgstr "Tekerlekli sandalye erişimi:"
 
-#: ../src/placeBubble.js:155 ../src/placeBubble.js:159
+#: ../src/placeBubble.js:159 ../src/placeBubble.js:163
 msgid "Phone:"
 msgstr "Telefon:"
 
@@ -965,7 +1208,7 @@ msgstr "Geo URI ayrıştırma başarısız"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: ../src/place.js:178 ../src/translations.js:329
+#: ../src/place.js:219 ../src/translations.js:329 ../src/translations.js:391
 msgid "yes"
 msgstr "evet"
 
@@ -974,7 +1217,7 @@ msgstr "evet"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:185
+#: ../src/place.js:226
 msgid "limited"
 msgstr "sınırlı"
 
@@ -986,7 +1229,7 @@ msgstr "sınırlı"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: ../src/place.js:191 ../src/translations.js:335
+#: ../src/place.js:232 ../src/translations.js:335 ../src/translations.js:392
 msgid "no"
 msgstr "hayır"
 
@@ -995,52 +1238,152 @@ msgstr "hayır"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:198
+#: ../src/place.js:239
 msgid "designated"
 msgstr "özel olarak belirlenmiş"
 
 #: ../src/printLayout.js:244
 #, javascript-format
 msgid "From %s to %s"
-msgstr "%s'ten %s'e"
+msgstr "%s’ten %s’e"
 
-#: ../src/printOperation.js:47
+#: ../src/printOperation.js:48
 msgid "Loading map tiles for printing"
 msgstr "Harita parçası yazmak için yükleniyor"
 
-#: ../src/printOperation.js:48
+#: ../src/printOperation.js:49
 msgid "You can abort printing if this takes too long"
 msgstr "Eğer bu uzun zaman alırsa yazdırmaktan vazgeçebilirsiniz"
 
-#: ../src/printOperation.js:50
+#: ../src/printOperation.js:51
 msgid "Abort printing"
 msgstr "Yazdırmayı iptal et"
-
-#: ../src/routeService.js:90
-msgid "No route found."
-msgstr "Hiçbir rota bulunamadı."
-
-#: ../src/routeService.js:101
-msgid "Route request failed."
-msgstr "Rota isteği başarısız oldu."
-
-#: ../src/routeService.js:178
-msgid "Start!"
-msgstr "Başla!"
 
 #: ../src/sendToDialog.js:179
 msgid "Failed to open URI"
 msgstr "URI açma başarısız oldu"
 
-#: ../src/shapeLayer.js:93
+#: ../src/shapeLayer.js:92
 msgid "failed to load file"
 msgstr "dosya yükleme başarısız"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:208
+#: ../src/sidebar.js:294
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Tahmini süre: %s"
+
+#. Translators: this a format string indicating arriving at the
+#. * destination of journey with the arrival address and transit
+#. * stop as the format parameter
+#: ../src/transitArrivalRow.js:56
+#, javascript-format
+msgid "Arrive at %s"
+msgstr "%s’te var"
+
+#: ../src/transitArrivalRow.js:58
+msgid "Arrive"
+msgstr "Var"
+
+#. Translators: this is a format string indicating instructions
+#. * starting a journey at the address given as the parameter
+#.
+#: ../src/transitLegRow.js:73
+#, javascript-format
+msgid "Start at %s"
+msgstr "%s’te başla"
+
+#. Translators: this indicates starting a journey at a location
+#. * with no set name (such as when the user started routing from
+#. * an arbitrary point on the map)
+#.
+#: ../src/transitLegRow.js:79
+msgid "Start"
+msgstr "Başla"
+
+#: ../src/transitLegRow.js:107
+msgid "Show walking instructions"
+msgstr "Yürüme yönergelerini göster"
+
+#: ../src/transitLegRow.js:108
+msgid "Hide walking instructions"
+msgstr "Yürüme yönergelerini gizle"
+
+#. Translators: this is a format string indicating walking a certain
+#. * distance, with the distance expression being the %s placeholder
+#.
+#: ../src/transitLegRow.js:133
+#, javascript-format
+msgid "Walk %s"
+msgstr "%s yürü"
+
+#: ../src/transitMoreRow.js:41
+msgid "Load earlier alternatives"
+msgstr "Daha erken alternatifleri yükle"
+
+#: ../src/transitMoreRow.js:43
+msgid "Load later alternatives"
+msgstr "Daha geç alternatifleri yükle"
+
+#.
+#. * Translators: this is a format string giving the equivalent to
+#. * "may 29" according to the current locale's convensions.
+#.
+#: ../src/transitOptionsPanel.js:142
+msgctxt "month-day-date"
+msgid "%b %e"
+msgstr "%e %b"
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time, like:
+#. * "12:00 – 13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: ../src/transitPlan.js:253
+#, javascript-format
+msgid "%s – %s"
+msgstr "%s – %s"
+
+#. translators: this is an indication for a trip duration of
+#. * less than an hour, with only the minutes part, using plural forms
+#. * as appropriate
+#.
+#: ../src/transitPlan.js:280
+#, javascript-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d dakika"
+
+#. translators: this is an indication for a trip duration,
+#. * where the duration is an exact number of hours (i.e. no
+#. * minutes part), using plural forms as appropriate
+#.
+#: ../src/transitPlan.js:291
+#, javascript-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d saat"
+
+#. translators: this is an indication for a trip duration
+#. * where the duration contains an hour and minute part, it's
+#. * pluralized on the hours part
+#.
+#: ../src/transitPlan.js:297
+#, javascript-format
+msgid "%d:%02d hour"
+msgid_plural "%d:%02d hours"
+msgstr[0] "%d:%02d saat"
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time in a more compact manner to show in the instruction
+#. * list for an itinerary, like:
+#. * "12:00–13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: ../src/transitPlan.js:649
+#, javascript-format
+msgid "%s–%s"
+msgstr "%s–%s"
 
 #: ../src/translations.js:56
 msgid "around the clock"
@@ -1218,26 +1561,38 @@ msgstr "%f s"
 #. Translators: This is a distance measured in kilometers
 #: ../src/utils.js:352
 #, javascript-format
-msgid "%f km"
-msgstr "%f km"
+msgid "%s km"
+msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
 #: ../src/utils.js:355
 #, javascript-format
-msgid "%f m"
-msgstr "%f m"
+msgid "%s m"
+msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
 #: ../src/utils.js:363
 #, javascript-format
-msgid "%f mi"
-msgstr "%f mi"
+msgid "%s mi"
+msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
 #: ../src/utils.js:366
 #, javascript-format
-msgid "%f ft"
-msgstr "%f ft"
+msgid "%s ft"
+msgstr "%s ft"
+
+#~ msgid "%f km"
+#~ msgstr "%f km"
+
+#~ msgid "%f m"
+#~ msgstr "%f m"
+
+#~ msgid "%f mi"
+#~ msgstr "%f mi"
+
+#~ msgid "%f ft"
+#~ msgstr "%f ft"
 
 #~ msgid "Failed to parse GeoJSON file"
 #~ msgstr "GeoJSON dosya ayrıştırması başarısız"
