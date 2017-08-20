@@ -750,7 +750,7 @@ const OSMEditDialog = new Lang.Class({
 
             if (fieldSpec.subtags) {
                 fieldSpec.subtags.forEach((function(tag) {
-                    if (this._osmObject.get_tag(tag))
+                    if (this._osmObject.get_tag(tag) !== null)
                         hasValue = true;
                 }).bind(this));
             } else {
