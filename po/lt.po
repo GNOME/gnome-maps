@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-06-10 15:00+0000\n"
-"PO-Revision-Date: 2017-06-17 21:27+0300\n"
+"POT-Creation-Date: 2017-07-24 21:57+0000\n"
+"PO-Revision-Date: 2017-08-22 23:36+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -59,7 +59,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:87 ../src/mainWindow.js:441
+#: ../src/application.js:87 ../src/mainWindow.js:476
 msgid "Maps"
 msgstr "Žemėlapiai"
 
@@ -187,6 +187,10 @@ msgstr "OpenStreetMap naudotojo vardas arba el. pašto adresas"
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr "Nurodo ar naudotojas prisijungė OpenStreetMap duomenų redagavimui."
 
+#: ../data/org.gnome.Maps.gschema.xml.h:25
+msgid "Last used transportation type for routing"
+msgstr "Paskutinis transporto tipas, naudotas keliui"
+
 #: ../data/ui/app-menu.ui.h:1
 msgid "Set up OpenStreetMap Account"
 msgstr "Nusistatyti OpenStreetMap paskyrą"
@@ -221,7 +225,7 @@ msgid "_Cancel"
 msgstr "_Atsisakyti"
 
 #. Translators: Check in is used as a verb
-#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:5
+#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:8
 msgid "C_heck in"
 msgstr "_Nusiųsti"
 
@@ -336,6 +340,22 @@ msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Eiti į dabartinę vietą"
 
+#: ../data/ui/help-overlay.ui.h:12
+msgctxt "shortcut window"
+msgid "Switch to street view"
+msgstr "Perjungti į gatvės vaizdą"
+
+#: ../data/ui/help-overlay.ui.h:13
+msgctxt "shortcut window"
+msgid "Switch to aerial view"
+msgstr "Perjungti į vaizdą iš oro"
+
+#: ../data/ui/help-overlay.ui.h:14
+#| msgid "Open Layer"
+msgctxt "shortcut window"
+msgid "Open shape layer"
+msgstr "Atverti formos sluoksnį"
+
 #: ../data/ui/layers-popover.ui.h:1
 msgid "Load Map Layer"
 msgstr "Įkelti žemėlapio sluoksnį"
@@ -348,31 +368,36 @@ msgstr "Savo vietai surasti įjunkite vietos tarnybas"
 msgid "Location Settings"
 msgstr "Vietos nustatymai"
 
-#: ../data/ui/main-window.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:3
 msgid "Go to current location"
 msgstr "Eiti į dabartinę vietą"
 
-#: ../data/ui/main-window.ui.h:3
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:5
 msgid "Choose map type"
 msgstr "Pasirinkite žemėlapio tipą"
 
-#: ../data/ui/main-window.ui.h:4
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:7
 msgid "Toggle route planner"
 msgstr "Perjungti maršruto planavimą"
 
-#: ../data/ui/main-window.ui.h:5
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:9
 msgid "Toggle favorites"
 msgstr "Perjungti mėgiamiausius"
 
-#: ../data/ui/main-window.ui.h:6
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:11
 msgid "Print Route"
 msgstr "Spausdinti kelią"
 
-#: ../data/ui/main-window.ui.h:7
+#: ../data/ui/main-window.ui.h:12
 msgid "Maps is offline!"
 msgstr "Žemėlapiai atsijungę nuo interneto"
 
-#: ../data/ui/main-window.ui.h:8
+#: ../data/ui/main-window.ui.h:13
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -380,23 +405,27 @@ msgstr ""
 "Žemėlapių tvarkingam veikimui reikia aktyvaus interneto ryšio, bet tokio "
 "nėra."
 
-#: ../data/ui/main-window.ui.h:9
+#: ../data/ui/main-window.ui.h:14
 msgid "Check your connection and proxy settings."
 msgstr "Patikrinkite savo prisijungimo ir tarpinio serverio nustatymus."
 
-#: ../data/ui/map-bubble.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:2
 msgid "Add to new route"
 msgstr "Pridėti naują maršrutą"
 
-#: ../data/ui/map-bubble.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:4
 msgid "Open with another application"
 msgstr "Atverti su kita programa"
 
-#: ../data/ui/map-bubble.ui.h:3
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:6
 msgid "Mark as favorite"
 msgstr "Pažymėti kaip mėgiamą"
 
-#: ../data/ui/map-bubble.ui.h:6
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:10
 msgid "Check in here"
 msgstr "Patikrinkite čia"
 
@@ -515,6 +544,8 @@ msgid "Recently Used"
 msgstr "Neseniai naudoti"
 
 #: ../data/ui/osm-edit-dialog.ui.h:8
+#| msgid "Edit on OpenStreetMap"
+msgctxt "dialog title"
 msgid "Edit on OpenStreetMap"
 msgstr "Redaguoti OpenStreetMap"
 
@@ -522,11 +553,17 @@ msgstr "Redaguoti OpenStreetMap"
 msgid "Cancel"
 msgstr "Atsisakyti"
 
-#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:510
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:516
 msgid "Next"
 msgstr "Kitas"
 
-#: ../data/ui/place-bubble.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/place-bubble.ui.h:2
+msgid "Edit on OpenStreetMap"
+msgstr "Redaguoti OpenStreetMap"
+
+#. Translators: This is a tooltip
+#: ../data/ui/place-bubble.ui.h:4
 msgid "Show more information"
 msgstr "Rodyti daugiau informacijos"
 
@@ -534,7 +571,13 @@ msgstr "Rodyti daugiau informacijos"
 msgid "Press enter to search"
 msgstr "Spauskite enter paieškai"
 
-#: ../data/ui/route-entry.ui.h:1
+#: ../data/ui/place-popover.ui.h:2
+#| msgid "No route found."
+msgid "No results found"
+msgstr "Nerasta rezultatų"
+
+#. Translators: This is a tooltip
+#: ../data/ui/route-entry.ui.h:2
 msgid "Drag to change order of the route"
 msgstr "Tempkite kelio eilės tvarkai keisti"
 
@@ -550,7 +593,8 @@ msgstr "_Atverti"
 msgid "Open Layer"
 msgstr "Atverti sluoksnį"
 
-#: ../data/ui/shape-layer-row.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/shape-layer-row.ui.h:2
 msgid "Toggle visible"
 msgstr "Perjungti matomus"
 
@@ -584,11 +628,13 @@ msgstr ""
 msgid "Show more results"
 msgstr "Rodyti daugiau rezultatų"
 
-#: ../data/ui/transit-leg-row.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/transit-leg-row.ui.h:2
 msgid "Hide intermediate stops and information"
 msgstr "Slėpti tarpines stoteles ir informaciją"
 
-#: ../data/ui/transit-leg-row.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/transit-leg-row.ui.h:4
 msgid "Show intermediate stops and information"
 msgstr "Rodyti tarpines stoteles ir informaciją"
 
@@ -714,7 +760,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Parašykite pranešimą nusiuntimui į %s."
 
 #: ../src/checkInDialog.js:288 ../src/checkIn.js:165
-#: ../src/osmEditDialog.js:547
+#: ../src/osmEditDialog.js:553
 msgid "An error has occurred"
 msgstr "Kilo klaida"
 
@@ -793,12 +839,11 @@ msgstr "perskaitymo klaida"
 msgid "unknown geometry"
 msgstr "nežinoma geometrija"
 
-#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:643
+#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:665
 msgid "Route request failed."
 msgstr "Nepavyko užklausti maršruto."
 
-#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:630
-#: ../src/openTripPlanner.js:741
+#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:628
 msgid "No route found."
 msgstr "Maršrutas nerastas."
 
@@ -806,47 +851,45 @@ msgstr "Maršrutas nerastas."
 msgid "Start!"
 msgstr "Pradėti!"
 
-#: ../src/layersPopover.js:62
+#: ../src/mainWindow.js:59
 msgid "All Layer Files"
 msgstr "Visi sluoksnių failai"
 
-#: ../src/mainWindow.js:387
+#: ../src/mainWindow.js:418
 msgid "Failed to connect to location service"
 msgstr "Nepavyko prisijungti prie vietos tarnybos"
 
-#: ../src/mainWindow.js:439
+#: ../src/mainWindow.js:474
 msgid "translator-credits"
 msgstr ""
 "Išvertė:\n"
 "Aurimas Černius <aurisc4@gmail.com>"
 
-#: ../src/mainWindow.js:442
+#: ../src/mainWindow.js:477
 msgid "A map application for GNOME"
 msgstr "Žemėlapių programa GNOME aplinkai"
 
-#: ../src/mapView.js:354
+#: ../src/mapView.js:356
 msgid "File type is not supported"
 msgstr "Failo tipas yra nepalaikomas"
 
-#: ../src/mapView.js:361
+#: ../src/mapView.js:363
 msgid "Failed to open layer"
 msgstr "Nepavyko atverti sluoksnio"
 
-#: ../src/mapView.js:397
+#: ../src/mapView.js:399
 msgid "Failed to open GeoURI"
 msgstr "Nepavyko atverti GeoURI"
 
-#: ../src/openTripPlanner.js:624
-#| msgid "Load earlier alternatives"
+#: ../src/openTripPlanner.js:622
 msgid "No earlier alternatives found."
 msgstr "Nerasta ankstesnių alternatyvų."
 
-#: ../src/openTripPlanner.js:625
-#| msgid "Load later alternatives"
+#: ../src/openTripPlanner.js:623
 msgid "No later alternatives found."
 msgstr "Nerasta vėlesnių alternatyvų."
 
-#: ../src/openTripPlanner.js:639
+#: ../src/openTripPlanner.js:661
 msgid "No timetable data found for this route."
 msgstr "Šiam maršrutui nerasta tvarkaraščio duomenų."
 
@@ -892,7 +935,7 @@ msgstr "Oficialus pavadinimas. Jis dažniausiai matomas ženkluose."
 msgid "Address"
 msgstr "Adresas"
 
-#: ../src/osmEditDialog.js:118 ../src/placeBubble.js:169
+#: ../src/osmEditDialog.js:118
 msgid "Website"
 msgstr "Tinklalapis"
 
@@ -917,7 +960,7 @@ msgstr ""
 "Atsižvelkite į vietinius privatumo įstatymus, ypač dės asmeninių telefono "
 "numerių."
 
-#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:175
+#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:170
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -1003,8 +1046,9 @@ msgid "Animism"
 msgstr "Animizmas"
 
 #: ../src/osmEditDialog.js:186
-msgid "Bahá'í"
-msgstr "Bahá'í"
+#| msgid "Bahá'í"
+msgid "Bahá’í"
+msgstr "Bahá’í"
 
 #: ../src/osmEditDialog.js:187 ../src/translations.js:365
 msgid "Buddhism"
@@ -1090,16 +1134,30 @@ msgstr "Zoroastrianizmas"
 msgid "Toilets"
 msgstr "Tualetai"
 
-#: ../src/osmEditDialog.js:322
+#: ../src/osmEditDialog.js:216
+msgid "Note"
+msgstr "Pastaba"
+
+#: ../src/osmEditDialog.js:219
+msgid ""
+"Information used to inform other mappers about non-obvious information about "
+"an element, the author’s intent when creating it, or hints for further "
+"improvement."
+msgstr ""
+"Informacija, naudojama kitiems žemėlapių naudotojams informuoti apie "
+"neakivaizdžią informaciją, susijusią su elementu, autoriaus tikslą jį "
+"kuriant arba patarimus tolimesniam patobulinimui."
+
+#: ../src/osmEditDialog.js:328
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Pridėti į OpenStreetMap"
 
-#: ../src/osmEditDialog.js:375
+#: ../src/osmEditDialog.js:381
 msgid "Select Type"
 msgstr "Pasirinkite tipą"
 
-#: ../src/osmEditDialog.js:494
+#: ../src/osmEditDialog.js:500
 msgid "Done"
 msgstr "Atlikta"
 
@@ -1145,7 +1203,7 @@ msgstr "Nepavyko perskaityti Geo URI"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: ../src/place.js:208 ../src/translations.js:329 ../src/translations.js:391
+#: ../src/place.js:219 ../src/translations.js:329 ../src/translations.js:391
 msgid "yes"
 msgstr "taip"
 
@@ -1154,7 +1212,7 @@ msgstr "taip"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:215
+#: ../src/place.js:226
 msgid "limited"
 msgstr "ribota"
 
@@ -1166,7 +1224,7 @@ msgstr "ribota"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: ../src/place.js:221 ../src/translations.js:335 ../src/translations.js:392
+#: ../src/place.js:232 ../src/translations.js:335 ../src/translations.js:392
 msgid "no"
 msgstr "ne"
 
@@ -1175,7 +1233,7 @@ msgstr "ne"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:228
+#: ../src/place.js:239
 msgid "designated"
 msgstr "su paskirtimi"
 
@@ -1205,7 +1263,7 @@ msgid "failed to load file"
 msgstr "nepavyko įkelti failo"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:292
+#: ../src/sidebar.js:294
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Įvertintas laikas: %s"
@@ -1323,7 +1381,7 @@ msgstr[2] "%d:%02d valandų"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: ../src/transitPlan.js:616
+#: ../src/transitPlan.js:649
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
