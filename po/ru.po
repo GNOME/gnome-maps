@@ -5,23 +5,24 @@
 # Ivan Komaritsyn <vantu5z@mail.ru>, 2015.
 # Yuri Myasoedov <ymyasoedov@yandex.ru>, 2013, 2014, 2015.
 # Stas Solovey <whats_up@tut.by>, 2014, 2015, 2016.
+# Роман Верменко <dargodet@gmail.com>, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-03-02 17:55+0000\n"
-"PO-Revision-Date: 2017-03-16 16:18+0400\n"
+"POT-Creation-Date: 2017-08-24 07:30+0000\n"
+"PO-Revision-Date: 2017-08-26 00:00+0400\n"
 "Last-Translator: Yuri Myasoedov <ymyasoedov@yandex.ru>\n"
-"Language-Team: Русский <gnome-cyr@gnome.org>\n"
+"Language-Team: русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.2\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid "GNOME Maps"
@@ -62,7 +63,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:87 ../src/mainWindow.js:441
+#: ../src/application.js:87 ../src/mainWindow.js:476
 msgid "Maps"
 msgstr "Карты"
 
@@ -192,6 +193,10 @@ msgstr ""
 "Указывает, выполнил ли пользователь вход для редактирования данных "
 "OpenStreetMap."
 
+#: ../data/org.gnome.Maps.gschema.xml.h:25
+msgid "Last used transportation type for routing"
+msgstr "Последний тип транспорта, использовавшийся для маршрута"
+
 #: ../data/ui/app-menu.ui.h:1
 msgid "Set up OpenStreetMap Account"
 msgstr "Настроить учётную запись OpenStreetMap"
@@ -226,7 +231,7 @@ msgid "_Cancel"
 msgstr "_Отменить"
 
 #. Translators: Check in is used as a verb
-#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:5
+#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:8
 msgid "C_heck in"
 msgstr "О_тметиться"
 
@@ -341,6 +346,21 @@ msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Перейти к текущему местоположению"
 
+#: ../data/ui/help-overlay.ui.h:12
+msgctxt "shortcut window"
+msgid "Switch to street view"
+msgstr "Переключиться на просмотр улиц"
+
+#: ../data/ui/help-overlay.ui.h:13
+msgctxt "shortcut window"
+msgid "Switch to aerial view"
+msgstr "Переключиться на вид сверху"
+
+#: ../data/ui/help-overlay.ui.h:14
+msgctxt "shortcut window"
+msgid "Open shape layer"
+msgstr "Открыть слой"
+
 #: ../data/ui/layers-popover.ui.h:1
 msgid "Load Map Layer"
 msgstr "Загрузить слой карты"
@@ -353,53 +373,62 @@ msgstr "Включите сервисы местоположения для оп
 msgid "Location Settings"
 msgstr "Параметры местоположения"
 
-#: ../data/ui/main-window.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:3
 msgid "Go to current location"
 msgstr "Перейти к текущему местоположению"
 
-#: ../data/ui/main-window.ui.h:3
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:5
 msgid "Choose map type"
 msgstr "Выберите тип карты"
 
-#: ../data/ui/main-window.ui.h:4
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:7
 msgid "Toggle route planner"
 msgstr "Включить или выключить планировщик маршрута"
 
-#: ../data/ui/main-window.ui.h:5
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:9
 msgid "Toggle favorites"
 msgstr "Включить или выключить избранные места"
 
-#: ../data/ui/main-window.ui.h:6
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:11
 msgid "Print Route"
 msgstr "Печать маршрута"
 
-#: ../data/ui/main-window.ui.h:7
+#: ../data/ui/main-window.ui.h:12
 msgid "Maps is offline!"
 msgstr "Приложение работает в автономном режиме!"
 
-#: ../data/ui/main-window.ui.h:8
+#: ../data/ui/main-window.ui.h:13
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
 msgstr "Приложению требуется соединение с Интернетом, но оно отсутствует."
 
-#: ../data/ui/main-window.ui.h:9
+#: ../data/ui/main-window.ui.h:14
 msgid "Check your connection and proxy settings."
 msgstr "Проверьте настройки прокси и соединения."
 
-#: ../data/ui/map-bubble.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:2
 msgid "Add to new route"
 msgstr "Добавить к новому маршруту"
 
-#: ../data/ui/map-bubble.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:4
 msgid "Open with another application"
 msgstr "Открыть в другом приложении"
 
-#: ../data/ui/map-bubble.ui.h:3
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:6
 msgid "Mark as favorite"
 msgstr "Добавить в избранное"
 
-#: ../data/ui/map-bubble.ui.h:6
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:10
 msgid "Check in here"
 msgstr "Отметиться здесь"
 
@@ -518,6 +547,7 @@ msgid "Recently Used"
 msgstr "Недавно использованные"
 
 #: ../data/ui/osm-edit-dialog.ui.h:8
+msgctxt "dialog title"
 msgid "Edit on OpenStreetMap"
 msgstr "Изменить на OpenStreetMap"
 
@@ -525,11 +555,17 @@ msgstr "Изменить на OpenStreetMap"
 msgid "Cancel"
 msgstr "Отменить"
 
-#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:472
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:516
 msgid "Next"
 msgstr "Далее"
 
-#: ../data/ui/place-bubble.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/place-bubble.ui.h:2
+msgid "Edit on OpenStreetMap"
+msgstr "Изменить на OpenStreetMap"
+
+#. Translators: This is a tooltip
+#: ../data/ui/place-bubble.ui.h:4
 msgid "Show more information"
 msgstr "Показать подробную информацию"
 
@@ -537,7 +573,12 @@ msgstr "Показать подробную информацию"
 msgid "Press enter to search"
 msgstr "Нажмите Enter для поиска"
 
-#: ../data/ui/route-entry.ui.h:1
+#: ../data/ui/place-popover.ui.h:2
+msgid "No results found"
+msgstr "Результатов не найдено"
+
+#. Translators: This is a tooltip
+#: ../data/ui/route-entry.ui.h:2
 msgid "Drag to change order of the route"
 msgstr "Перетащите, чтобы изменить порядок маршрута"
 
@@ -553,7 +594,8 @@ msgstr "_Открыть"
 msgid "Open Layer"
 msgstr "Открыть слой"
 
-#: ../data/ui/shape-layer-row.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/shape-layer-row.ui.h:2
 msgid "Toggle visible"
 msgstr "Включить или выключить видимый"
 
@@ -587,11 +629,13 @@ msgstr ""
 msgid "Show more results"
 msgstr "Показать больше результатов"
 
-#: ../data/ui/transit-leg-row.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/transit-leg-row.ui.h:2
 msgid "Hide intermediate stops and information"
 msgstr "Скрывать промежуточные остановки и информацию"
 
-#: ../data/ui/transit-leg-row.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/transit-leg-row.ui.h:4
 msgid "Show intermediate stops and information"
 msgstr "Показывать промежуточные остановки и информацию"
 
@@ -672,7 +716,7 @@ msgid "Could not find OSM element"
 msgstr "Не удалось найти элемент OSM"
 
 # сомнительно, требует проверки
-#: ../src/application.js:103
+#: ../src/application.js:102
 msgid "A path to a local tiles directory structure"
 msgstr "Путь к локальному каталогу плиточной структуры"
 
@@ -717,22 +761,22 @@ msgstr "Отметиться в %s"
 msgid "Write an optional message to check in to %s."
 msgstr "Напишите необязательное сообщение для отметки в %s."
 
-#: ../src/checkInDialog.js:288 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:509
+#: ../src/checkInDialog.js:288 ../src/checkIn.js:165
+#: ../src/osmEditDialog.js:553
 msgid "An error has occurred"
 msgstr "Произошла ошибка"
 
 #. Translators: %s is the place name that user wanted to check-in
-#: ../src/checkIn.js:135
+#: ../src/checkIn.js:147
 #, javascript-format
 msgid "Cannot find “%s” in the social service"
 msgstr "Не удалось найти «%s» в социальной сети"
 
-#: ../src/checkIn.js:137
+#: ../src/checkIn.js:149
 msgid "Cannot find a suitable place to check-in in this location"
 msgstr "Не удалось найти подходящее место, чтобы отметиться здесь"
 
-#: ../src/checkIn.js:141
+#: ../src/checkIn.js:153
 msgid ""
 "Credentials have expired, please open Online Accounts to sign in and enable "
 "this account"
@@ -797,12 +841,11 @@ msgstr "ошибка разбора"
 msgid "unknown geometry"
 msgstr "неизвестная геометрия"
 
-#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:630
+#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:665
 msgid "Route request failed."
 msgstr "Сбой при запросе маршрута."
 
-#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:614
-#: ../src/openTripPlanner.js:728
+#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:628
 msgid "No route found."
 msgstr "Маршрут не найден."
 
@@ -810,15 +853,15 @@ msgstr "Маршрут не найден."
 msgid "Start!"
 msgstr "Старт!"
 
-#: ../src/layersPopover.js:62
+#: ../src/mainWindow.js:59
 msgid "All Layer Files"
 msgstr "Все файлы слоёв"
 
-#: ../src/mainWindow.js:387
+#: ../src/mainWindow.js:418
 msgid "Failed to connect to location service"
 msgstr "Не удалось подключиться к службе местоположения"
 
-#: ../src/mainWindow.js:439
+#: ../src/mainWindow.js:474
 msgid "translator-credits"
 msgstr ""
 "Yuri Myasoedov <ymyasoedov@yandex.ru>, 2013, 2014.\n"
@@ -826,23 +869,31 @@ msgstr ""
 "Stas Solovey <whats_up@tut.by>, 2014, 2015, 2016.\n"
 "Aleksey Kabanov <ak099@mail.ru>, 2015"
 
-#: ../src/mainWindow.js:442
+#: ../src/mainWindow.js:477
 msgid "A map application for GNOME"
 msgstr "Приложение карт для GNOME"
 
-#: ../src/mapView.js:354
+#: ../src/mapView.js:356
 msgid "File type is not supported"
 msgstr "Тип файла не поддерживается"
 
-#: ../src/mapView.js:361
+#: ../src/mapView.js:363
 msgid "Failed to open layer"
 msgstr "Не удалось открыть слой"
 
-#: ../src/mapView.js:397
+#: ../src/mapView.js:399
 msgid "Failed to open GeoURI"
 msgstr "Не удалось открыть геолокационный URI"
 
-#: ../src/openTripPlanner.js:626
+#: ../src/openTripPlanner.js:622
+msgid "No earlier alternatives found."
+msgstr "Не найдено более ранних вариантов."
+
+#: ../src/openTripPlanner.js:623
+msgid "No later alternatives found."
+msgstr "Не найдено более поздних вариантов."
+
+#: ../src/openTripPlanner.js:661
 msgid "No timetable data found for this route."
 msgstr "Для этого маршрута не найдено расписаний."
 
@@ -888,7 +939,7 @@ msgstr "Официальное название. Обычно то, что на�
 msgid "Address"
 msgstr "Адрес"
 
-#: ../src/osmEditDialog.js:118 ../src/placeBubble.js:158
+#: ../src/osmEditDialog.js:118
 msgid "Website"
 msgstr "Веб-сайт"
 
@@ -911,7 +962,7 @@ msgid ""
 msgstr ""
 "Номер телефона. Используйте международный формат, начинающийся со знака «+»."
 
-#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:164
+#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:170
 msgid "Wikipedia"
 msgstr "Википедия"
 
@@ -948,10 +999,12 @@ msgid "Wheelchair access"
 msgstr "Доступ для инвалидных колясок"
 
 #: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
+#: ../src/osmEditDialog.js:212
 msgid "Yes"
 msgstr "Да"
 
 #: ../src/osmEditDialog.js:166 ../src/osmEditDialog.js:175
+#: ../src/osmEditDialog.js:213
 msgid "No"
 msgstr "Нет"
 
@@ -986,40 +1039,158 @@ msgstr "Терминал"
 msgid "Service"
 msgstr "Служебный"
 
-#: ../src/osmEditDialog.js:288
+#: ../src/osmEditDialog.js:182
+msgid "Religion"
+msgstr "Религия"
+
+#: ../src/osmEditDialog.js:185 ../src/translations.js:363
+msgid "Animism"
+msgstr "Анимизм"
+
+#: ../src/osmEditDialog.js:186
+msgid "Bahá’í"
+msgstr "Бахаи"
+
+#: ../src/osmEditDialog.js:187 ../src/translations.js:365
+msgid "Buddhism"
+msgstr "Буддизм"
+
+#: ../src/osmEditDialog.js:188 ../src/translations.js:366
+msgid "Caodaism"
+msgstr "Каодаизм"
+
+#: ../src/osmEditDialog.js:189 ../src/translations.js:367
+msgid "Christianity"
+msgstr "Христианство"
+
+#: ../src/osmEditDialog.js:190 ../src/translations.js:368
+msgid "Confucianism"
+msgstr "Конфуцианство"
+
+#: ../src/osmEditDialog.js:191 ../src/translations.js:369
+msgid "Hinduism"
+msgstr "Индуизм"
+
+#: ../src/osmEditDialog.js:192 ../src/translations.js:370
+msgid "Jainism"
+msgstr "Джайнизм"
+
+#: ../src/osmEditDialog.js:193 ../src/translations.js:371
+msgid "Judaism"
+msgstr "Иудаизм"
+
+#: ../src/osmEditDialog.js:194 ../src/translations.js:372
+msgid "Islam"
+msgstr "Ислам"
+
+#: ../src/osmEditDialog.js:195 ../src/translations.js:373
+msgid "Multiple Religions"
+msgstr "Несколько религий"
+
+#: ../src/osmEditDialog.js:196 ../src/translations.js:374
+msgid "Paganism"
+msgstr "Язычество"
+
+#: ../src/osmEditDialog.js:197 ../src/translations.js:375
+msgid "Pastafarianism"
+msgstr "Пастафарианство"
+
+#: ../src/osmEditDialog.js:198 ../src/translations.js:376
+msgid "Scientology"
+msgstr "Саентология"
+
+#: ../src/osmEditDialog.js:199 ../src/translations.js:377
+msgid "Shinto"
+msgstr "Синто"
+
+#: ../src/osmEditDialog.js:200 ../src/translations.js:378
+msgid "Sikhism"
+msgstr "Сикхизм"
+
+#: ../src/osmEditDialog.js:201 ../src/translations.js:379
+msgid "Spiritualism"
+msgstr "Спиритизм"
+
+#: ../src/osmEditDialog.js:202 ../src/translations.js:380
+msgid "Taoism"
+msgstr "Даосизм"
+
+#: ../src/osmEditDialog.js:203 ../src/translations.js:381
+msgid "Unitarian Universalism"
+msgstr "Унитарный универсализм"
+
+#: ../src/osmEditDialog.js:204 ../src/translations.js:382
+msgid "Voodoo"
+msgstr "Шаманство"
+
+#: ../src/osmEditDialog.js:205 ../src/translations.js:383
+msgid "Yazidism"
+msgstr "Езидизм"
+
+#: ../src/osmEditDialog.js:206 ../src/translations.js:384
+msgid "Zoroastrianism"
+msgstr "Зороастризм"
+
+#: ../src/osmEditDialog.js:209
+msgid "Toilets"
+msgstr "Туалеты"
+
+#: ../src/osmEditDialog.js:216
+msgid "Note"
+msgstr "Заметка"
+
+#: ../src/osmEditDialog.js:219
+msgid ""
+"Information used to inform other mappers about non-obvious information about "
+"an element, the author’s intent when creating it, or hints for further "
+"improvement."
+msgstr ""
+"Информация, используемая для информирования других картографов о неочевидной "
+"информации об элементе, намерении автора при его создании или о намеках на "
+"дальнейшее совершенствование."
+
+#: ../src/osmEditDialog.js:328
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Добавить в OpenStreetMap"
 
-#: ../src/osmEditDialog.js:340
+#: ../src/osmEditDialog.js:381
 msgid "Select Type"
 msgstr "Выберите тип"
 
-#: ../src/osmEditDialog.js:458
+#: ../src/osmEditDialog.js:500
 msgid "Done"
 msgstr "Готово"
 
-#: ../src/placeBubble.js:121
+#: ../src/placeBubble.js:122
 msgid "Population:"
 msgstr "Население:"
 
-#: ../src/placeBubble.js:127
+#: ../src/placeBubble.js:128
 msgid "Altitude:"
 msgstr "Высота:"
 
-#: ../src/placeBubble.js:132
+#: ../src/placeBubble.js:133
 msgid "Opening hours:"
 msgstr "Часы работы:"
 
-#: ../src/placeBubble.js:137
+#: ../src/placeBubble.js:138
 msgid "Internet access:"
 msgstr "Доступ к Интернету:"
 
-#: ../src/placeBubble.js:142
+#: ../src/placeBubble.js:143
+msgid "Religion:"
+msgstr "Религия:"
+
+#: ../src/placeBubble.js:148
+msgid "Toilets:"
+msgstr "Туалеты:"
+
+#: ../src/placeBubble.js:153
 msgid "Wheelchair access:"
 msgstr "Доступ для инвалидных колясок:"
 
-#: ../src/placeBubble.js:148 ../src/placeBubble.js:152
+#: ../src/placeBubble.js:159 ../src/placeBubble.js:163
 msgid "Phone:"
 msgstr "Телефон:"
 
@@ -1033,7 +1204,7 @@ msgstr "Не удалось разобрать геолокационный URI"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: ../src/place.js:178 ../src/translations.js:329
+#: ../src/place.js:219 ../src/translations.js:329 ../src/translations.js:391
 msgid "yes"
 msgstr "есть"
 
@@ -1042,7 +1213,7 @@ msgstr "есть"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:185
+#: ../src/place.js:226
 msgid "limited"
 msgstr "ограниченный"
 
@@ -1054,7 +1225,7 @@ msgstr "ограниченный"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: ../src/place.js:191 ../src/translations.js:335
+#: ../src/place.js:232 ../src/translations.js:335 ../src/translations.js:392
 msgid "no"
 msgstr "нет"
 
@@ -1063,7 +1234,7 @@ msgstr "нет"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:198
+#: ../src/place.js:239
 msgid "designated"
 msgstr "специализированный"
 
@@ -1093,7 +1264,7 @@ msgid "failed to load file"
 msgstr "не удалось загрузить файл"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:285
+#: ../src/sidebar.js:294
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Расчётное время: %s"
@@ -1113,7 +1284,7 @@ msgstr "Прибытие"
 #. Translators: this is a format string indicating instructions
 #. * starting a journey at the address given as the parameter
 #.
-#: ../src/transitLegRow.js:74
+#: ../src/transitLegRow.js:73
 #, javascript-format
 msgid "Start at %s"
 msgstr "Отправление в %s"
@@ -1122,22 +1293,22 @@ msgstr "Отправление в %s"
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: ../src/transitLegRow.js:80
+#: ../src/transitLegRow.js:79
 msgid "Start"
 msgstr "Отправление"
 
-#: ../src/transitLegRow.js:108
+#: ../src/transitLegRow.js:107
 msgid "Show walking instructions"
 msgstr "Показывать информацию для пешего маршрута"
 
-#: ../src/transitLegRow.js:109
+#: ../src/transitLegRow.js:108
 msgid "Hide walking instructions"
 msgstr "Скрывать информацию для пешего маршрута"
 
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
 #.
-#: ../src/transitLegRow.js:134
+#: ../src/transitLegRow.js:133
 #, javascript-format
 msgid "Walk %s"
 msgstr "Пешком %s"
@@ -1154,7 +1325,7 @@ msgstr "Загрузить следующие варианты"
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: ../src/transitOptionsPanel.js:141
+#: ../src/transitOptionsPanel.js:142
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e %b"
@@ -1164,7 +1335,7 @@ msgstr "%e %b"
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: ../src/transitPlan.js:248
+#: ../src/transitPlan.js:253
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -1173,7 +1344,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: ../src/transitPlan.js:275
+#: ../src/transitPlan.js:280
 #, javascript-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -1185,7 +1356,7 @@ msgstr[2] "%d минут"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: ../src/transitPlan.js:286
+#: ../src/transitPlan.js:291
 #, javascript-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -1197,7 +1368,7 @@ msgstr[2] "%d часов"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: ../src/transitPlan.js:292
+#: ../src/transitPlan.js:297
 #, javascript-format
 msgid "%d:%02d hour"
 msgid_plural "%d:%02d hours"
@@ -1211,7 +1382,7 @@ msgstr[2] "%d:%02d часов"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: ../src/transitPlan.js:611
+#: ../src/transitPlan.js:649
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -1395,26 +1566,38 @@ msgstr "%f сек"
 #. Translators: This is a distance measured in kilometers
 #: ../src/utils.js:352
 #, javascript-format
-msgid "%f km"
-msgstr "%f км"
+msgid "%s km"
+msgstr "%s км"
 
 #. Translators: This is a distance measured in meters
 #: ../src/utils.js:355
 #, javascript-format
-msgid "%f m"
-msgstr "%f м"
+msgid "%s m"
+msgstr "%s м"
 
 #. Translators: This is a distance measured in miles
 #: ../src/utils.js:363
 #, javascript-format
-msgid "%f mi"
-msgstr "%f миль"
+msgid "%s mi"
+msgstr "%s миль"
 
 #. Translators: This is a distance measured in feet
 #: ../src/utils.js:366
 #, javascript-format
-msgid "%f ft"
-msgstr "%f футов"
+msgid "%s ft"
+msgstr "%s футов"
+
+#~ msgid "%f km"
+#~ msgstr "%f км"
+
+#~ msgid "%f m"
+#~ msgstr "%f м"
+
+#~ msgid "%f mi"
+#~ msgstr "%f миль"
+
+#~ msgid "%f ft"
+#~ msgstr "%f футов"
 
 #~| msgid "Copy Location"
 #~ msgid "Edit Location"
