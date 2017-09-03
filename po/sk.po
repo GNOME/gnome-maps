@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-06-22 15:13+0000\n"
-"PO-Revision-Date: 2017-07-13 20:42+0200\n"
+"POT-Creation-Date: 2017-07-24 21:57+0000\n"
+"PO-Revision-Date: 2017-09-03 12:41+0200\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
 "Language: sk\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Generator: Poedit 2.0.2\n"
+"X-Generator: Poedit 2.0.3\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid "GNOME Maps"
@@ -203,7 +203,7 @@ msgstr ""
 
 #: ../data/org.gnome.Maps.gschema.xml.h:25
 msgid "Last used transportation type for routing"
-msgstr ""
+msgstr "Naposledy použitý typ dopravy pre plánovanie trasy"
 
 #: ../data/ui/app-menu.ui.h:1
 msgid "Set up OpenStreetMap Account"
@@ -239,7 +239,7 @@ msgid "_Cancel"
 msgstr "_Zrušiť"
 
 #. Translators: Check in is used as a verb
-#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:5
+#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:8
 msgid "C_heck in"
 msgstr "Oznámiť _polohu"
 
@@ -363,12 +363,12 @@ msgstr "Prejdenie na aktuálne umiestnenie"
 #: ../data/ui/help-overlay.ui.h:12
 msgctxt "shortcut window"
 msgid "Switch to street view"
-msgstr ""
+msgstr "Prepnutie na pohľad ulíc"
 
 #: ../data/ui/help-overlay.ui.h:13
 msgctxt "shortcut window"
 msgid "Switch to aerial view"
-msgstr ""
+msgstr "Prepnutie na letecký pohľad"
 
 #: ../data/ui/help-overlay.ui.h:14
 msgctxt "shortcut window"
@@ -388,35 +388,40 @@ msgid "Location Settings"
 msgstr "Nastavenia umiestnenia"
 
 # DK:tooltip
-#: ../data/ui/main-window.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:3
 msgid "Go to current location"
 msgstr "Prejde na aktuálne umiestnenie"
 
 # DK:tooltip
-#: ../data/ui/main-window.ui.h:3
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:5
 msgid "Choose map type"
 msgstr "Vyberie typ mapy"
 
 # DK:tooltip
-#: ../data/ui/main-window.ui.h:4
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:7
 msgid "Toggle route planner"
 msgstr "Prepne plánovač trasy"
 
 # tooltip
-#: ../data/ui/main-window.ui.h:5
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:9
 msgid "Toggle favorites"
 msgstr "Prepne obľúbené"
 
 # tooltip
-#: ../data/ui/main-window.ui.h:6
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:11
 msgid "Print Route"
 msgstr "Vytlačí trasu"
 
-#: ../data/ui/main-window.ui.h:7
+#: ../data/ui/main-window.ui.h:12
 msgid "Maps is offline!"
 msgstr "Aplikácia Mapy je bez pripojenia!"
 
-#: ../data/ui/main-window.ui.h:8
+#: ../data/ui/main-window.ui.h:13
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -424,27 +429,31 @@ msgstr ""
 "Aby mohla aplikácia Mapy pracovať správne, vyžaduje sa aktívne internetové "
 "pripojenie, ale žiadne nie je dostupné."
 
-#: ../data/ui/main-window.ui.h:9
+#: ../data/ui/main-window.ui.h:14
 msgid "Check your connection and proxy settings."
 msgstr "Skontrolujte vaše nastavenia pripojenia a sprostredkovateľa proxy."
 
 # tooltip
-#: ../data/ui/map-bubble.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:2
 msgid "Add to new route"
 msgstr "Pridá do novej trasy"
 
 # tooltip
-#: ../data/ui/map-bubble.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:4
 msgid "Open with another application"
 msgstr "Otvorí pomocou inej aplikácie"
 
 # tooltip
-#: ../data/ui/map-bubble.ui.h:3
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:6
 msgid "Mark as favorite"
 msgstr "Označí ako obľúbené"
 
 # tooltip
-#: ../data/ui/map-bubble.ui.h:6
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:10
 msgid "Check in here"
 msgstr "Oznámi túto polohu"
 
@@ -571,16 +580,18 @@ msgstr "Úprava v projekte OpenStreetMap"
 msgid "Cancel"
 msgstr "Zrušiť"
 
-#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:510
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:516
 msgid "Next"
 msgstr "Ďalej"
 
-#: ../data/ui/place-bubble.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/place-bubble.ui.h:2
 msgid "Edit on OpenStreetMap"
 msgstr "Úprava v projekte OpenStreetMap"
 
 # tooltip
-#: ../data/ui/place-bubble.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/place-bubble.ui.h:4
 msgid "Show more information"
 msgstr "Zobrazí viac informácií"
 
@@ -592,7 +603,8 @@ msgstr "Stlačte enter na vyhľadanie"
 msgid "No results found"
 msgstr "Nenašli sa žiadne výsledky"
 
-#: ../data/ui/route-entry.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/route-entry.ui.h:2
 msgid "Drag to change order of the route"
 msgstr "Potiahnutím zmeníte poradie trasy"
 
@@ -609,7 +621,8 @@ msgid "Open Layer"
 msgstr "Otvorenie vrstvy"
 
 # tooltip
-#: ../data/ui/shape-layer-row.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/shape-layer-row.ui.h:2
 msgid "Toggle visible"
 msgstr "Prepne viditeľné"
 
@@ -644,12 +657,14 @@ msgid "Show more results"
 msgstr "Zobraziť viac výsledkov"
 
 # tooltip
-#: ../data/ui/transit-leg-row.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/transit-leg-row.ui.h:2
 msgid "Hide intermediate stops and information"
 msgstr "Skryje prechodné zastávky a informácie"
 
 # tooltip
-#: ../data/ui/transit-leg-row.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/transit-leg-row.ui.h:4
 msgid "Show intermediate stops and information"
 msgstr "Zobrazí prechodné zastávky a informácie"
 
@@ -775,7 +790,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Napíšte voliteľnú správu k oznámeniu polohy %s."
 
 #: ../src/checkInDialog.js:288 ../src/checkIn.js:165
-#: ../src/osmEditDialog.js:547
+#: ../src/osmEditDialog.js:553
 msgid "An error has occurred"
 msgstr "Vyskytla sa chyba"
 
@@ -854,11 +869,11 @@ msgstr "chyba analýzy"
 msgid "unknown geometry"
 msgstr "neznáma geometria"
 
-#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:652
+#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:665
 msgid "Route request failed."
 msgstr "Požiadavka na trasu zlyhala."
 
-#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:615
+#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:628
 msgid "No route found."
 msgstr "Nenašla sa žiadna trasa."
 
@@ -894,15 +909,15 @@ msgstr "Zlyhalo otvorenie vrstvy"
 msgid "Failed to open GeoURI"
 msgstr "Zlyhalo otvorenie GeoURI"
 
-#: ../src/openTripPlanner.js:609
+#: ../src/openTripPlanner.js:622
 msgid "No earlier alternatives found."
 msgstr "Nenašli sa žiadne skoršie alternatívy."
 
-#: ../src/openTripPlanner.js:610
+#: ../src/openTripPlanner.js:623
 msgid "No later alternatives found."
 msgstr "Nenašli sa žiadne neskoršie alternatívy."
 
-#: ../src/openTripPlanner.js:648
+#: ../src/openTripPlanner.js:661
 msgid "No timetable data found for this route."
 msgstr "Pre túto trasu sa nenašli žiadne údaje cestovného poriadku."
 
@@ -1056,107 +1071,121 @@ msgstr "Náboženstvo"
 
 #: ../src/osmEditDialog.js:185 ../src/translations.js:363
 msgid "Animism"
-msgstr ""
+msgstr "Animizmus"
 
 #: ../src/osmEditDialog.js:186
-msgid "Bahá'í"
-msgstr ""
+msgid "Bahá’í"
+msgstr "Baháizmus"
 
 #: ../src/osmEditDialog.js:187 ../src/translations.js:365
 msgid "Buddhism"
-msgstr ""
+msgstr "Budhizmus"
 
 #: ../src/osmEditDialog.js:188 ../src/translations.js:366
 msgid "Caodaism"
-msgstr ""
+msgstr "Kaodaizmus"
 
 #: ../src/osmEditDialog.js:189 ../src/translations.js:367
 msgid "Christianity"
-msgstr ""
+msgstr "Kresťanstvo"
 
 #: ../src/osmEditDialog.js:190 ../src/translations.js:368
 msgid "Confucianism"
-msgstr ""
+msgstr "Konfucianizmus"
 
 #: ../src/osmEditDialog.js:191 ../src/translations.js:369
 msgid "Hinduism"
-msgstr ""
+msgstr "Hinduizmus"
 
 #: ../src/osmEditDialog.js:192 ../src/translations.js:370
 msgid "Jainism"
-msgstr ""
+msgstr "Jainizmus"
 
 #: ../src/osmEditDialog.js:193 ../src/translations.js:371
 msgid "Judaism"
-msgstr ""
+msgstr "Judaizmus"
 
 #: ../src/osmEditDialog.js:194 ../src/translations.js:372
 msgid "Islam"
-msgstr ""
+msgstr "islam"
 
 #: ../src/osmEditDialog.js:195 ../src/translations.js:373
 msgid "Multiple Religions"
-msgstr ""
+msgstr "Viacero náboženstiev"
 
 #: ../src/osmEditDialog.js:196 ../src/translations.js:374
 msgid "Paganism"
-msgstr ""
+msgstr "Paganizmus"
 
 #: ../src/osmEditDialog.js:197 ../src/translations.js:375
 msgid "Pastafarianism"
-msgstr ""
+msgstr "Pastafarianizmus"
 
 #: ../src/osmEditDialog.js:198 ../src/translations.js:376
 msgid "Scientology"
-msgstr ""
+msgstr "Scientológia"
 
 #: ../src/osmEditDialog.js:199 ../src/translations.js:377
 msgid "Shinto"
-msgstr ""
+msgstr "Šintoizmus"
 
 #: ../src/osmEditDialog.js:200 ../src/translations.js:378
 msgid "Sikhism"
-msgstr ""
+msgstr "Sikhizmus"
 
 #: ../src/osmEditDialog.js:201 ../src/translations.js:379
 msgid "Spiritualism"
-msgstr ""
+msgstr "Spiritualizmus"
 
 #: ../src/osmEditDialog.js:202 ../src/translations.js:380
 msgid "Taoism"
-msgstr ""
+msgstr "Taoizmus"
 
 #: ../src/osmEditDialog.js:203 ../src/translations.js:381
 msgid "Unitarian Universalism"
-msgstr ""
+msgstr "Centralistický univerzalizmus"
 
 #: ../src/osmEditDialog.js:204 ../src/translations.js:382
 msgid "Voodoo"
-msgstr ""
+msgstr "Vúdú"
 
 #: ../src/osmEditDialog.js:205 ../src/translations.js:383
 msgid "Yazidism"
-msgstr ""
+msgstr "Yazidizmus"
 
 #: ../src/osmEditDialog.js:206 ../src/translations.js:384
 msgid "Zoroastrianism"
-msgstr ""
+msgstr "Zoroastrianizmus"
 
 #: ../src/osmEditDialog.js:209
 msgid "Toilets"
 msgstr "Toalety"
 
+#: ../src/osmEditDialog.js:216
+msgid "Note"
+msgstr "Poznámka"
+
+#: ../src/osmEditDialog.js:219
+msgid ""
+"Information used to inform other mappers about non-obvious information about "
+"an element, the author’s intent when creating it, or hints for further "
+"improvement."
+msgstr ""
+"Informácie slúžiace ostatným mapovačom na informovanie o neobvyklých "
+"informáciách o súčasti, účeli autora počas tvorby, alebo radách pre "
+"neskoršie vylepšenia."
+
 # DK:https://bugzilla.gnome.org/show_bug.cgi?id=761995
-#: ../src/osmEditDialog.js:322
+#: ../src/osmEditDialog.js:328
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Pridanie do projektu OpenStreetMap"
 
-#: ../src/osmEditDialog.js:375
+#: ../src/osmEditDialog.js:381
 msgid "Select Type"
 msgstr "Výber typu"
 
-#: ../src/osmEditDialog.js:494
+#: ../src/osmEditDialog.js:500
 msgid "Done"
 msgstr "Hotovo"
 
@@ -1202,7 +1231,7 @@ msgstr "Zlyhala analýza URI geografickej polohy"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: ../src/place.js:208 ../src/translations.js:329 ../src/translations.js:391
+#: ../src/place.js:219 ../src/translations.js:329 ../src/translations.js:391
 msgid "yes"
 msgstr "áno"
 
@@ -1211,7 +1240,7 @@ msgstr "áno"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:215
+#: ../src/place.js:226
 msgid "limited"
 msgstr "obmedzený"
 
@@ -1223,7 +1252,7 @@ msgstr "obmedzený"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: ../src/place.js:221 ../src/translations.js:335 ../src/translations.js:392
+#: ../src/place.js:232 ../src/translations.js:335 ../src/translations.js:392
 msgid "no"
 msgstr "nie"
 
@@ -1232,7 +1261,7 @@ msgstr "nie"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:228
+#: ../src/place.js:239
 msgid "designated"
 msgstr "vyhradený"
 
@@ -1382,7 +1411,7 @@ msgstr[2] "%d:%02d hodiny"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: ../src/transitPlan.js:616
+#: ../src/transitPlan.js:649
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
