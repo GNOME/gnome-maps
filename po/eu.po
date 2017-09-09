@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-03-02 17:55+0000\n"
-"PO-Revision-Date: 2017-03-02 19:45+0100\n"
+"POT-Creation-Date: 2017-07-24 21:57+0000\n"
+"PO-Revision-Date: 2017-08-27 20:25+0200\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -60,7 +60,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:87 ../src/mainWindow.js:441
+#: ../src/application.js:87 ../src/mainWindow.js:476
 msgid "Maps"
 msgstr "Mapak"
 
@@ -193,6 +193,10 @@ msgstr ""
 "OpenStreetMap-eko datuak editatzeko erabiltzaileak sinatu duen edo ez "
 "adierazten du."
 
+#: ../data/org.gnome.Maps.gschema.xml.h:25
+msgid "Last used transportation type for routing"
+msgstr "Erabilitako azken garraio mota bidea egiteko"
+
 #: ../data/ui/app-menu.ui.h:1
 msgid "Set up OpenStreetMap Account"
 msgstr "Konfiguratu OpenStreetMap-eko kontua"
@@ -227,7 +231,7 @@ msgid "_Cancel"
 msgstr "_Utzi"
 
 #. Translators: Check in is used as a verb
-#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:5
+#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:8
 msgid "C_heck in"
 msgstr "Erregistratu"
 
@@ -342,6 +346,22 @@ msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Joan uneko kokalekura"
 
+#: ../data/ui/help-overlay.ui.h:12
+msgctxt "shortcut window"
+msgid "Switch to street view"
+msgstr "Aldatu kaleen ikuspegira"
+
+#: ../data/ui/help-overlay.ui.h:13
+msgctxt "shortcut window"
+msgid "Switch to aerial view"
+msgstr "Aldatu aireko ikuspegira"
+
+#: ../data/ui/help-overlay.ui.h:14
+#| msgid "Open Layer"
+msgctxt "shortcut window"
+msgid "Open shape layer"
+msgstr "Ireki formen geruza"
+
 #: ../data/ui/layers-popover.ui.h:1
 msgid "Load Map Layer"
 msgstr "Kargatu maparen geruza"
@@ -354,31 +374,36 @@ msgstr "Aktibatu kokapen-zerbitzuak zure kokapena aurkitzeko"
 msgid "Location Settings"
 msgstr "Kokapenaren ezarpenak"
 
-#: ../data/ui/main-window.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:3
 msgid "Go to current location"
 msgstr "Joan uneko kokalekura"
 
-#: ../data/ui/main-window.ui.h:3
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:5
 msgid "Choose map type"
 msgstr "Aukeratu mapa mota"
 
-#: ../data/ui/main-window.ui.h:4
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:7
 msgid "Toggle route planner"
 msgstr "Txandakatu ibilbidearen antolatzailea"
 
-#: ../data/ui/main-window.ui.h:5
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:9
 msgid "Toggle favorites"
 msgstr "Txandakatu gogokoak"
 
-#: ../data/ui/main-window.ui.h:6
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:11
 msgid "Print Route"
 msgstr "Inprimatu ibilbidea"
 
-#: ../data/ui/main-window.ui.h:7
+#: ../data/ui/main-window.ui.h:12
 msgid "Maps is offline!"
 msgstr "Mapa lineaz kanpo dago!"
 
-#: ../data/ui/main-window.ui.h:8
+#: ../data/ui/main-window.ui.h:13
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -386,23 +411,27 @@ msgstr ""
 "Mapak interneteko konexio aktiboa behar du ongi funtzionatzeko, baina ez da "
 "bat ere aurkitu."
 
-#: ../data/ui/main-window.ui.h:9
+#: ../data/ui/main-window.ui.h:14
 msgid "Check your connection and proxy settings."
 msgstr "Egiaztatu konexioaren eta proxyaren ezarpenak."
 
-#: ../data/ui/map-bubble.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:2
 msgid "Add to new route"
 msgstr "Gehitu ibilbide berriari"
 
-#: ../data/ui/map-bubble.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:4
 msgid "Open with another application"
 msgstr "Ireki beste aplikazio batekin"
 
-#: ../data/ui/map-bubble.ui.h:3
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:6
 msgid "Mark as favorite"
 msgstr "Markatu gogoko gisa"
 
-#: ../data/ui/map-bubble.ui.h:6
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:10
 msgid "Check in here"
 msgstr "Erregistratu hemen"
 
@@ -520,6 +549,8 @@ msgid "Recently Used"
 msgstr "Erabili berriak"
 
 #: ../data/ui/osm-edit-dialog.ui.h:8
+#| msgid "Edit on OpenStreetMap"
+msgctxt "dialog title"
 msgid "Edit on OpenStreetMap"
 msgstr "Editatu OpenStreetMap-en"
 
@@ -527,11 +558,17 @@ msgstr "Editatu OpenStreetMap-en"
 msgid "Cancel"
 msgstr "Utzi"
 
-#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:472
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:516
 msgid "Next"
 msgstr "Hurrengoa"
 
-#: ../data/ui/place-bubble.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/place-bubble.ui.h:2
+msgid "Edit on OpenStreetMap"
+msgstr "Editatu OpenStreetMap-en"
+
+#. Translators: This is a tooltip
+#: ../data/ui/place-bubble.ui.h:4
 msgid "Show more information"
 msgstr "Erakutsi informazio gehiago"
 
@@ -539,7 +576,13 @@ msgstr "Erakutsi informazio gehiago"
 msgid "Press enter to search"
 msgstr "Sakatu Sartu bilatzeko"
 
-#: ../data/ui/route-entry.ui.h:1
+#: ../data/ui/place-popover.ui.h:2
+#| msgid "No route found."
+msgid "No results found"
+msgstr "Ez da emaitzarik aurkitu"
+
+#. Translators: This is a tooltip
+#: ../data/ui/route-entry.ui.h:2
 msgid "Drag to change order of the route"
 msgstr "Arrastatu ibilbidearen ordena aldatzeko"
 
@@ -555,7 +598,8 @@ msgstr "_Ireki"
 msgid "Open Layer"
 msgstr "Ireki geruza"
 
-#: ../data/ui/shape-layer-row.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/shape-layer-row.ui.h:2
 msgid "Toggle visible"
 msgstr "Txandakatu ikusgaitasuna"
 
@@ -590,11 +634,13 @@ msgstr ""
 msgid "Show more results"
 msgstr "Erakutsi emaitza gehiago"
 
-#: ../data/ui/transit-leg-row.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/transit-leg-row.ui.h:2
 msgid "Hide intermediate stops and information"
 msgstr "Ezkutatu bitarteko puntuak eta informazioak"
 
-#: ../data/ui/transit-leg-row.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/transit-leg-row.ui.h:4
 msgid "Show intermediate stops and information"
 msgstr "Erakutsi bitarteko puntuak eta informazioak"
 
@@ -673,7 +719,7 @@ msgstr "Beharrezko atributuak falta dira"
 msgid "Could not find OSM element"
 msgstr "Ezin izan da OSM elementua aurkitu"
 
-#: ../src/application.js:103
+#: ../src/application.js:102
 msgid "A path to a local tiles directory structure"
 msgstr "Lokaleko lauzen direktorioaren egituraren bide-izena"
 
@@ -719,22 +765,22 @@ msgstr "%s(e)n erregistratzen"
 msgid "Write an optional message to check in to %s."
 msgstr "Idatzi aukerako mezua '%s'(e)n erregistratzeko."
 
-#: ../src/checkInDialog.js:288 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:509
+#: ../src/checkInDialog.js:288 ../src/checkIn.js:165
+#: ../src/osmEditDialog.js:553
 msgid "An error has occurred"
 msgstr "Errore bat gertatu da"
 
 #. Translators: %s is the place name that user wanted to check-in
-#: ../src/checkIn.js:135
+#: ../src/checkIn.js:147
 #, javascript-format
 msgid "Cannot find “%s” in the social service"
 msgstr "Ezin da “%s“ aurkitu zerbitzu sozialean"
 
-#: ../src/checkIn.js:137
+#: ../src/checkIn.js:149
 msgid "Cannot find a suitable place to check-in in this location"
 msgstr "Ezin da leku egokirik aurkitu kokaleku honetan erregistratzeko"
 
-#: ../src/checkIn.js:141
+#: ../src/checkIn.js:153
 msgid ""
 "Credentials have expired, please open Online Accounts to sign in and enable "
 "this account"
@@ -799,12 +845,11 @@ msgstr "analisi-errorea"
 msgid "unknown geometry"
 msgstr "geometria ezezaguna"
 
-#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:630
+#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:665
 msgid "Route request failed."
 msgstr "Huts egin du ibilbidearen eskaerak."
 
-#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:614
-#: ../src/openTripPlanner.js:728
+#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:628
 msgid "No route found."
 msgstr "Ez da ibilbiderik aurkitu."
 
@@ -812,35 +857,45 @@ msgstr "Ez da ibilbiderik aurkitu."
 msgid "Start!"
 msgstr "Hasi!"
 
-#: ../src/layersPopover.js:62
+#: ../src/mainWindow.js:59
 msgid "All Layer Files"
 msgstr "Geruzen fitxategi guztiak"
 
-#: ../src/mainWindow.js:387
+#: ../src/mainWindow.js:418
 msgid "Failed to connect to location service"
 msgstr "Huts egin du kokapen-zerbitzuarekin konektatzean"
 
-#: ../src/mainWindow.js:439
+#: ../src/mainWindow.js:474
 msgid "translator-credits"
 msgstr "Iñaki Larrañaga Murgoitio <dooteo@zundan.com>"
 
-#: ../src/mainWindow.js:442
+#: ../src/mainWindow.js:477
 msgid "A map application for GNOME"
 msgstr "GNOMEren mapen aplikazioa"
 
-#: ../src/mapView.js:354
+#: ../src/mapView.js:356
 msgid "File type is not supported"
 msgstr "Fitxategi mota ez dago onartuta"
 
-#: ../src/mapView.js:361
+#: ../src/mapView.js:363
 msgid "Failed to open layer"
 msgstr "Huts egin du geruza irekitzean"
 
-#: ../src/mapView.js:397
+#: ../src/mapView.js:399
 msgid "Failed to open GeoURI"
 msgstr "Huts egin du GeoURIa irekitzean"
 
-#: ../src/openTripPlanner.js:626
+#: ../src/openTripPlanner.js:622
+#| msgid "Load earlier alternatives"
+msgid "No earlier alternatives found."
+msgstr "Ez da aurreragoko ordezkorik aurkitu."
+
+#: ../src/openTripPlanner.js:623
+#| msgid "Load later alternatives"
+msgid "No later alternatives found."
+msgstr "Ez da ondorengoko ordezkorik aurkitu."
+
+#: ../src/openTripPlanner.js:661
 msgid "No timetable data found for this route."
 msgstr "Ez da ordutegiaren daturik aurkitu ibilbide honetan."
 
@@ -886,7 +941,7 @@ msgstr "Izen ofiziala. Saioa hastean agertu ohi izaten da."
 msgid "Address"
 msgstr "Helbidea"
 
-#: ../src/osmEditDialog.js:118 ../src/placeBubble.js:158
+#: ../src/osmEditDialog.js:118
 msgid "Website"
 msgstr "Webgunea"
 
@@ -911,7 +966,7 @@ msgstr ""
 "Kontutan eduki pribatutasunari buruzko bertako legeak, telefono zenbaki "
 "pribatuei dagokiena bereziki."
 
-#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:164
+#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:170
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -948,10 +1003,12 @@ msgid "Wheelchair access"
 msgstr "Gurpil-aulkien irisgarritasuna"
 
 #: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
+#: ../src/osmEditDialog.js:212
 msgid "Yes"
 msgstr "Bai"
 
 #: ../src/osmEditDialog.js:166 ../src/osmEditDialog.js:175
+#: ../src/osmEditDialog.js:213
 msgid "No"
 msgstr "Ez"
 
@@ -986,40 +1043,160 @@ msgstr "Terminala"
 msgid "Service"
 msgstr "Zerbitzua"
 
-#: ../src/osmEditDialog.js:288
+#: ../src/osmEditDialog.js:182
+msgid "Religion"
+msgstr "Erlijioa"
+
+#: ../src/osmEditDialog.js:185 ../src/translations.js:363
+msgid "Animism"
+msgstr "Animismoa"
+
+#: ../src/osmEditDialog.js:186
+msgid "Bahá’í"
+msgstr "Bahá’í"
+
+#: ../src/osmEditDialog.js:187 ../src/translations.js:365
+msgid "Buddhism"
+msgstr "Budismoa"
+
+#: ../src/osmEditDialog.js:188 ../src/translations.js:366
+msgid "Caodaism"
+msgstr "Caodaismoa"
+
+#: ../src/osmEditDialog.js:189 ../src/translations.js:367
+msgid "Christianity"
+msgstr "Kristautasuna"
+
+#: ../src/osmEditDialog.js:190 ../src/translations.js:368
+msgid "Confucianism"
+msgstr "Konfuzianismoa"
+
+#: ../src/osmEditDialog.js:191 ../src/translations.js:369
+msgid "Hinduism"
+msgstr "Hinduismoa"
+
+#: ../src/osmEditDialog.js:192 ../src/translations.js:370
+msgid "Jainism"
+msgstr "Jainismoa"
+
+#: ../src/osmEditDialog.js:193 ../src/translations.js:371
+msgid "Judaism"
+msgstr "Judaismoa"
+
+#: ../src/osmEditDialog.js:194 ../src/translations.js:372
+msgid "Islam"
+msgstr "Islama"
+
+#: ../src/osmEditDialog.js:195 ../src/translations.js:373
+msgid "Multiple Religions"
+msgstr "Hainbat erlijio"
+
+#: ../src/osmEditDialog.js:196 ../src/translations.js:374
+msgid "Paganism"
+msgstr "Paganismoa"
+
+#: ../src/osmEditDialog.js:197 ../src/translations.js:375
+msgid "Pastafarianism"
+msgstr "Pastafarianismoa"
+
+#: ../src/osmEditDialog.js:198 ../src/translations.js:376
+msgid "Scientology"
+msgstr "Zientziologia"
+
+#: ../src/osmEditDialog.js:199 ../src/translations.js:377
+msgid "Shinto"
+msgstr "Shinto"
+
+#: ../src/osmEditDialog.js:200 ../src/translations.js:378
+msgid "Sikhism"
+msgstr "Sikhismoa"
+
+#: ../src/osmEditDialog.js:201 ../src/translations.js:379
+msgid "Spiritualism"
+msgstr "Espiritualismoa"
+
+#: ../src/osmEditDialog.js:202 ../src/translations.js:380
+msgid "Taoism"
+msgstr "Taoismoa"
+
+#: ../src/osmEditDialog.js:203 ../src/translations.js:381
+#, fuzzy
+msgid "Unitarian Universalism"
+msgstr "Bateragarria unibertsalismo"
+
+#: ../src/osmEditDialog.js:204 ../src/translations.js:382
+msgid "Voodoo"
+msgstr "Voodoo"
+
+#: ../src/osmEditDialog.js:205 ../src/translations.js:383
+msgid "Yazidism"
+msgstr "Yazidismoa"
+
+#: ../src/osmEditDialog.js:206 ../src/translations.js:384
+msgid "Zoroastrianism"
+msgstr "Zoroastrianismoa"
+
+#: ../src/osmEditDialog.js:209
+msgid "Toilets"
+msgstr "Komunak"
+
+#: ../src/osmEditDialog.js:216
+msgid "Note"
+msgstr "Oharra"
+
+#: ../src/osmEditDialog.js:219
+msgid ""
+"Information used to inform other mappers about non-obvious information about "
+"an element, the author’s intent when creating it, or hints for further "
+"improvement."
+msgstr ""
+"Mapen beste sortzaileei elementu bati buruzko hain garbia ez den "
+"informazioari "
+"buruz, egilearen asmoa hura sortzean edo argibideak hobekuntza gehiagorako "
+"jakinarazteko informazioa."
+
+#: ../src/osmEditDialog.js:328
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Gehitu OpenStreetMap-ari"
 
-#: ../src/osmEditDialog.js:340
+#: ../src/osmEditDialog.js:381
 msgid "Select Type"
 msgstr "Hautatu mota"
 
-#: ../src/osmEditDialog.js:458
+#: ../src/osmEditDialog.js:500
 msgid "Done"
 msgstr "Eginda"
 
-#: ../src/placeBubble.js:121
+#: ../src/placeBubble.js:122
 msgid "Population:"
 msgstr "Populazioa:"
 
-#: ../src/placeBubble.js:127
+#: ../src/placeBubble.js:128
 msgid "Altitude:"
 msgstr "Altitudea:"
 
-#: ../src/placeBubble.js:132
+#: ../src/placeBubble.js:133
 msgid "Opening hours:"
 msgstr "Irekiera orduak:"
 
-#: ../src/placeBubble.js:137
+#: ../src/placeBubble.js:138
 msgid "Internet access:"
 msgstr "Interneterako sarbidea:"
 
-#: ../src/placeBubble.js:142
+#: ../src/placeBubble.js:143
+msgid "Religion:"
+msgstr "Erlijioa:"
+
+#: ../src/placeBubble.js:148
+msgid "Toilets:"
+msgstr "Komunak:"
+
+#: ../src/placeBubble.js:153
 msgid "Wheelchair access:"
 msgstr "Gurpil-aulkien irisgarritasuna:"
 
-#: ../src/placeBubble.js:148 ../src/placeBubble.js:152
+#: ../src/placeBubble.js:159 ../src/placeBubble.js:163
 msgid "Phone:"
 msgstr "Telefonoa:"
 
@@ -1033,7 +1210,7 @@ msgstr "Huts egin du Geo URIa aztertzean"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: ../src/place.js:178 ../src/translations.js:329
+#: ../src/place.js:219 ../src/translations.js:329 ../src/translations.js:391
 msgid "yes"
 msgstr "bai"
 
@@ -1042,7 +1219,7 @@ msgstr "bai"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:185
+#: ../src/place.js:226
 msgid "limited"
 msgstr "mugatua"
 
@@ -1054,7 +1231,7 @@ msgstr "mugatua"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: ../src/place.js:191 ../src/translations.js:335
+#: ../src/place.js:232 ../src/translations.js:335 ../src/translations.js:392
 msgid "no"
 msgstr "ez"
 
@@ -1063,7 +1240,7 @@ msgstr "ez"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:198
+#: ../src/place.js:239
 msgid "designated"
 msgstr "zehaztutakoa"
 
@@ -1093,7 +1270,7 @@ msgid "failed to load file"
 msgstr "huts egin du fitxategia kargatzean"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:285
+#: ../src/sidebar.js:294
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Aurreikusitako denbora: %s"
@@ -1113,7 +1290,7 @@ msgstr "Iritsi"
 #. Translators: this is a format string indicating instructions
 #. * starting a journey at the address given as the parameter
 #.
-#: ../src/transitLegRow.js:74
+#: ../src/transitLegRow.js:73
 #, javascript-format
 msgid "Start at %s"
 msgstr "Hasiera: %s"
@@ -1122,22 +1299,22 @@ msgstr "Hasiera: %s"
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: ../src/transitLegRow.js:80
+#: ../src/transitLegRow.js:79
 msgid "Start"
 msgstr "Hasi"
 
-#: ../src/transitLegRow.js:108
+#: ../src/transitLegRow.js:107
 msgid "Show walking instructions"
 msgstr "Erakutsi oinezkoen instrukzioak"
 
-#: ../src/transitLegRow.js:109
+#: ../src/transitLegRow.js:108
 msgid "Hide walking instructions"
 msgstr "Ezkutatu oinezkoen instrukzioak"
 
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
 #.
-#: ../src/transitLegRow.js:134
+#: ../src/transitLegRow.js:133
 #, javascript-format
 msgid "Walk %s"
 msgstr "Oinez: %s"
@@ -1154,7 +1331,7 @@ msgstr "Kargatu alternatibak geroago"
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: ../src/transitOptionsPanel.js:141
+#: ../src/transitOptionsPanel.js:142
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%b %e"
@@ -1164,7 +1341,7 @@ msgstr "%b %e"
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: ../src/transitPlan.js:248
+#: ../src/transitPlan.js:253
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -1173,9 +1350,8 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: ../src/transitPlan.js:275
+#: ../src/transitPlan.js:280
 #, javascript-format
-#| msgid "%d minute"
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "minutu %d"
@@ -1185,9 +1361,8 @@ msgstr[1] "%d minutu"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: ../src/transitPlan.js:286
+#: ../src/transitPlan.js:291
 #, javascript-format
-#| msgid "%d hour"
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "ordu %d"
@@ -1197,9 +1372,8 @@ msgstr[1] "%d ordu"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: ../src/transitPlan.js:292
+#: ../src/transitPlan.js:297
 #, javascript-format
-#| msgid "%d:%0d hour"
 msgid "%d:%02d hour"
 msgid_plural "%d:%02d hours"
 msgstr[0] "%d:%0d ordu"
@@ -1211,7 +1385,7 @@ msgstr[1] "%d:%0d ordu"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: ../src/transitPlan.js:611
+#: ../src/transitPlan.js:649
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -1392,26 +1566,38 @@ msgstr "%f s"
 #. Translators: This is a distance measured in kilometers
 #: ../src/utils.js:352
 #, javascript-format
-msgid "%f km"
-msgstr "%f km"
+msgid "%s km"
+msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
 #: ../src/utils.js:355
 #, javascript-format
-msgid "%f m"
-msgstr "%f m"
+msgid "%s m"
+msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
 #: ../src/utils.js:363
 #, javascript-format
-msgid "%f mi"
-msgstr "%f mi"
+msgid "%s mi"
+msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
 #: ../src/utils.js:366
 #, javascript-format
-msgid "%f ft"
-msgstr "%f oin"
+msgid "%s ft"
+msgstr "%s ft"
+
+#~ msgid "%f km"
+#~ msgstr "%f km"
+
+#~ msgid "%f m"
+#~ msgstr "%f m"
+
+#~ msgid "%f mi"
+#~ msgstr "%f mi"
+
+#~ msgid "%f ft"
+#~ msgstr "%f oin"
 
 #~ msgid "Country code: %s"
 #~ msgstr "Estatuaren kodea: %s"
