@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-02-21 21:31+0000\n"
-"PO-Revision-Date: 2017-02-22 22:47+0100\n"
+"POT-Creation-Date: 2017-07-24 21:57+0000\n"
+"PO-Revision-Date: 2017-09-10 13:01+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.0.3\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid "GNOME Maps"
@@ -61,7 +61,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:87 ../src/mainWindow.js:441
+#: ../src/application.js:87 ../src/mainWindow.js:476
 msgid "Maps"
 msgstr "Kartor"
 
@@ -190,6 +190,10 @@ msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr ""
 "Indikerar om användaren har loggat in för att redigera OpenStreetMap-data."
 
+#: ../data/org.gnome.Maps.gschema.xml.h:25
+msgid "Last used transportation type for routing"
+msgstr "Senaste transporttyp för rutter"
+
 #: ../data/ui/app-menu.ui.h:1
 msgid "Set up OpenStreetMap Account"
 msgstr "Konfigurera OpenStreetMap-konto"
@@ -224,7 +228,7 @@ msgid "_Cancel"
 msgstr "_Avbryt"
 
 #. Translators: Check in is used as a verb
-#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:5
+#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:8
 msgid "C_heck in"
 msgstr "_Checka in"
 
@@ -339,6 +343,21 @@ msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Gå till aktuell plats"
 
+#: ../data/ui/help-overlay.ui.h:12
+msgctxt "shortcut window"
+msgid "Switch to street view"
+msgstr "Växla till gatuvy"
+
+#: ../data/ui/help-overlay.ui.h:13
+msgctxt "shortcut window"
+msgid "Switch to aerial view"
+msgstr "Växla till fågelvy"
+
+#: ../data/ui/help-overlay.ui.h:14
+msgctxt "shortcut window"
+msgid "Open shape layer"
+msgstr "Öppna shape-lager"
+
 #: ../data/ui/layers-popover.ui.h:1
 msgid "Load Map Layer"
 msgstr "Läs in kartlager"
@@ -351,31 +370,36 @@ msgstr "Slå på platstjänster för att hitta din plats"
 msgid "Location Settings"
 msgstr "Platsinställningar"
 
-#: ../data/ui/main-window.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:3
 msgid "Go to current location"
 msgstr "Gå till aktuell plats"
 
-#: ../data/ui/main-window.ui.h:3
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:5
 msgid "Choose map type"
 msgstr "Välj karttyp"
 
-#: ../data/ui/main-window.ui.h:4
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:7
 msgid "Toggle route planner"
 msgstr "Ruttplanerare på/av"
 
-#: ../data/ui/main-window.ui.h:5
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:9
 msgid "Toggle favorites"
 msgstr "Slå på/av favoriter"
 
-#: ../data/ui/main-window.ui.h:6
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:11
 msgid "Print Route"
 msgstr "Skriv ut rutt"
 
-#: ../data/ui/main-window.ui.h:7
+#: ../data/ui/main-window.ui.h:12
 msgid "Maps is offline!"
 msgstr "Kartor är frånkopplad!"
 
-#: ../data/ui/main-window.ui.h:8
+#: ../data/ui/main-window.ui.h:13
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -383,23 +407,27 @@ msgstr ""
 "Kartor behöver en aktiv internetanslutning för att fungera korrekt, men en "
 "sådan kan ej hittas."
 
-#: ../data/ui/main-window.ui.h:9
+#: ../data/ui/main-window.ui.h:14
 msgid "Check your connection and proxy settings."
 msgstr "Kontrollera din anslutning och proxyinställningar."
 
-#: ../data/ui/map-bubble.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:2
 msgid "Add to new route"
 msgstr "Lägg till ny rutt"
 
-#: ../data/ui/map-bubble.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:4
 msgid "Open with another application"
 msgstr "Öppna med annat program"
 
-#: ../data/ui/map-bubble.ui.h:3
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:6
 msgid "Mark as favorite"
 msgstr "Markera som favorit"
 
-#: ../data/ui/map-bubble.ui.h:6
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:10
 msgid "Check in here"
 msgstr "Checka in här"
 
@@ -518,6 +546,7 @@ msgid "Recently Used"
 msgstr "Senast använda"
 
 #: ../data/ui/osm-edit-dialog.ui.h:8
+msgctxt "dialog title"
 msgid "Edit on OpenStreetMap"
 msgstr "Redigera i OpenStreetMap"
 
@@ -525,11 +554,17 @@ msgstr "Redigera i OpenStreetMap"
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:472
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:516
 msgid "Next"
 msgstr "Nästa"
 
-#: ../data/ui/place-bubble.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/place-bubble.ui.h:2
+msgid "Edit on OpenStreetMap"
+msgstr "Redigera i OpenStreetMap"
+
+#. Translators: This is a tooltip
+#: ../data/ui/place-bubble.ui.h:4
 msgid "Show more information"
 msgstr "Visa fler resultat"
 
@@ -537,7 +572,12 @@ msgstr "Visa fler resultat"
 msgid "Press enter to search"
 msgstr "Tryck på retur för att söka"
 
-#: ../data/ui/route-entry.ui.h:1
+#: ../data/ui/place-popover.ui.h:2
+msgid "No results found"
+msgstr "Inga resultat hittades"
+
+#. Translators: This is a tooltip
+#: ../data/ui/route-entry.ui.h:2
 msgid "Drag to change order of the route"
 msgstr "Dra för att ändra ruttens ordning"
 
@@ -553,7 +593,8 @@ msgstr "_Öppna"
 msgid "Open Layer"
 msgstr "Öppna lager"
 
-#: ../data/ui/shape-layer-row.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/shape-layer-row.ui.h:2
 msgid "Toggle visible"
 msgstr "Slå på/av favoriter"
 
@@ -587,11 +628,13 @@ msgstr ""
 msgid "Show more results"
 msgstr "Visa fler resultat"
 
-#: ../data/ui/transit-leg-row.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/transit-leg-row.ui.h:2
 msgid "Hide intermediate stops and information"
 msgstr "Dölj mellanliggande stopp och information"
 
-#: ../data/ui/transit-leg-row.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/transit-leg-row.ui.h:4
 msgid "Show intermediate stops and information"
 msgstr "Visa mellanliggande stopp och information"
 
@@ -670,23 +713,23 @@ msgstr "Saknar nödvändiga attribut"
 msgid "Could not find OSM element"
 msgstr "Kunde inte hitta OSM-element"
 
-#: ../src/application.js:103
+#: ../src/application.js:102
 msgid "A path to a local tiles directory structure"
 msgstr "En sökväg till en lokal katalogstruktur med kartrutor"
 
-#: ../src/checkInDialog.js:176
+#: ../src/checkInDialog.js:175
 msgid "Select an account"
 msgstr "Välj ett konto"
 
-#: ../src/checkInDialog.js:181 ../src/checkInDialog.js:253
+#: ../src/checkInDialog.js:180 ../src/checkInDialog.js:252
 msgid "Loading"
 msgstr "Läser in"
 
-#: ../src/checkInDialog.js:205
+#: ../src/checkInDialog.js:204
 msgid "Select a place"
 msgstr "Välj en plats"
 
-#: ../src/checkInDialog.js:210
+#: ../src/checkInDialog.js:209
 msgid ""
 "Maps cannot find the place to check in to with Facebook. Please select one "
 "from this list."
@@ -694,7 +737,7 @@ msgstr ""
 "Kartor kan inte hitta platsen att checka in på med Facebook. Välj en från "
 "denna lista."
 
-#: ../src/checkInDialog.js:212
+#: ../src/checkInDialog.js:211
 msgid ""
 "Maps cannot find the place to check in to with Foursquare. Please select one "
 "from this list."
@@ -704,34 +747,34 @@ msgstr ""
 
 #. Translators: %s is the name of the place to check in.
 #.
-#: ../src/checkInDialog.js:227
+#: ../src/checkInDialog.js:226
 #, javascript-format
 msgid "Check in to %s"
 msgstr "Checka in på %s"
 
 #. Translators: %s is the name of the place to check in.
 #.
-#: ../src/checkInDialog.js:237
+#: ../src/checkInDialog.js:236
 #, javascript-format
 msgid "Write an optional message to check in to %s."
 msgstr "Skriv ett valfritt meddelande för att checka in på %s."
 
-#: ../src/checkInDialog.js:289 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:509
+#: ../src/checkInDialog.js:288 ../src/checkIn.js:165
+#: ../src/osmEditDialog.js:553
 msgid "An error has occurred"
 msgstr "Ett fel har inträffat"
 
 #. Translators: %s is the place name that user wanted to check-in
-#: ../src/checkIn.js:135
+#: ../src/checkIn.js:147
 #, javascript-format
 msgid "Cannot find “%s” in the social service"
 msgstr "Kan inte hitta ”%s” i den sociala tjänsten"
 
-#: ../src/checkIn.js:137
+#: ../src/checkIn.js:149
 msgid "Cannot find a suitable place to check-in in this location"
 msgstr "Kan inte hitta en lämplig plats att checka in på denna plats"
 
-#: ../src/checkIn.js:141
+#: ../src/checkIn.js:153
 msgid ""
 "Credentials have expired, please open Online Accounts to sign in and enable "
 "this account"
@@ -796,12 +839,11 @@ msgstr "tolkningsfel"
 msgid "unknown geometry"
 msgstr "okänd geometri"
 
-#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:630
+#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:665
 msgid "Route request failed."
 msgstr "Ruttbegäran misslyckades."
 
-#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:614
-#: ../src/openTripPlanner.js:728
+#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:628
 msgid "No route found."
 msgstr "Hittade ingen rutt."
 
@@ -809,68 +851,77 @@ msgstr "Hittade ingen rutt."
 msgid "Start!"
 msgstr "Starta!"
 
-#: ../src/layersPopover.js:62
+#: ../src/mainWindow.js:59
 msgid "All Layer Files"
 msgstr "Alla lagerfiler"
 
-#: ../src/mainWindow.js:387
+#: ../src/mainWindow.js:418
 msgid "Failed to connect to location service"
 msgstr "Misslyckades att ansluta till platstjänst"
 
-#: ../src/mainWindow.js:439
+#: ../src/mainWindow.js:474
 msgid "translator-credits"
 msgstr ""
 "Marcus Lundblad <ml@update.uu.se>\n"
+"Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>."
 
-#: ../src/mainWindow.js:442
+#: ../src/mainWindow.js:477
 msgid "A map application for GNOME"
 msgstr "Ett kartprogram för GNOME"
 
-#: ../src/mapView.js:354
+#: ../src/mapView.js:356
 msgid "File type is not supported"
 msgstr "Filtypen stöds inte"
 
-#: ../src/mapView.js:361
+#: ../src/mapView.js:363
 msgid "Failed to open layer"
 msgstr "Misslyckades med att öppna lager"
 
-#: ../src/mapView.js:397
+#: ../src/mapView.js:399
 msgid "Failed to open GeoURI"
 msgstr "Misslyckades med att öppna GeoURI"
 
-#: ../src/openTripPlanner.js:626
+#: ../src/openTripPlanner.js:622
+msgid "No earlier alternatives found."
+msgstr "Inga tidigare alternativ hittades."
+
+#: ../src/openTripPlanner.js:623
+msgid "No later alternatives found."
+msgstr "Inga senare alternativ hittades."
+
+#: ../src/openTripPlanner.js:661
 msgid "No timetable data found for this route."
 msgstr "Inga tidtabellsdata hittades för denna rutt."
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: ../src/osmConnection.js:443
+#: ../src/osmConnection.js:442
 msgid "Incorrect user name or password"
 msgstr "Felaktigt användarnamn eller lösenord"
 
-#: ../src/osmConnection.js:445
+#: ../src/osmConnection.js:444
 msgid "Success"
 msgstr "Framgång"
 
-#: ../src/osmConnection.js:447
+#: ../src/osmConnection.js:446
 msgid "Bad request"
 msgstr "Felaktig begäran"
 
-#: ../src/osmConnection.js:449
+#: ../src/osmConnection.js:448
 msgid "Object not found"
 msgstr "Objekt hittades ej"
 
-#: ../src/osmConnection.js:451
+#: ../src/osmConnection.js:450
 msgid "Conflict, someone else has just modified the object"
 msgstr "Konflikt, någon annan har precis modifierat objektet"
 
-#: ../src/osmConnection.js:453
+#: ../src/osmConnection.js:452
 msgid "Object has been deleted"
 msgstr "Objektet har tagits bort"
 
-#: ../src/osmConnection.js:455
+#: ../src/osmConnection.js:454
 msgid "Way or relation refers to non-existing children"
 msgstr "Väg eller relation refererar till obefintliga barn"
 
@@ -886,7 +937,7 @@ msgstr "Det officiella namnet. Detta är typiskt vad som visas på skyltar."
 msgid "Address"
 msgstr "Adress"
 
-#: ../src/osmEditDialog.js:118 ../src/placeBubble.js:165
+#: ../src/osmEditDialog.js:118
 msgid "Website"
 msgstr "Webbplats"
 
@@ -912,7 +963,7 @@ msgstr ""
 "plustecken. Var uppmärksam på lokala sekretesslagar, speciellt för privata "
 "telefonnummer."
 
-#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:171
+#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:170
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -949,10 +1000,12 @@ msgid "Wheelchair access"
 msgstr "Åtkomst för rullstol"
 
 #: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
+#: ../src/osmEditDialog.js:212
 msgid "Yes"
 msgstr "Ja"
 
 #: ../src/osmEditDialog.js:166 ../src/osmEditDialog.js:175
+#: ../src/osmEditDialog.js:213
 msgid "No"
 msgstr "Nej"
 
@@ -987,40 +1040,158 @@ msgstr "Terminal"
 msgid "Service"
 msgstr "Tjänst"
 
-#: ../src/osmEditDialog.js:288
+#: ../src/osmEditDialog.js:182
+msgid "Religion"
+msgstr "Religion"
+
+#: ../src/osmEditDialog.js:185 ../src/translations.js:363
+msgid "Animism"
+msgstr "Animism"
+
+#: ../src/osmEditDialog.js:186
+msgid "Bahá’í"
+msgstr "Bahá’í"
+
+#: ../src/osmEditDialog.js:187 ../src/translations.js:365
+msgid "Buddhism"
+msgstr "Buddhism"
+
+#: ../src/osmEditDialog.js:188 ../src/translations.js:366
+msgid "Caodaism"
+msgstr "Cao đai"
+
+#: ../src/osmEditDialog.js:189 ../src/translations.js:367
+msgid "Christianity"
+msgstr "Kristendom"
+
+#: ../src/osmEditDialog.js:190 ../src/translations.js:368
+msgid "Confucianism"
+msgstr "Konfucianism"
+
+#: ../src/osmEditDialog.js:191 ../src/translations.js:369
+msgid "Hinduism"
+msgstr "Hinduism"
+
+#: ../src/osmEditDialog.js:192 ../src/translations.js:370
+msgid "Jainism"
+msgstr "Jainism"
+
+#: ../src/osmEditDialog.js:193 ../src/translations.js:371
+msgid "Judaism"
+msgstr "Judendom"
+
+#: ../src/osmEditDialog.js:194 ../src/translations.js:372
+msgid "Islam"
+msgstr "Islam"
+
+#: ../src/osmEditDialog.js:195 ../src/translations.js:373
+msgid "Multiple Religions"
+msgstr "Flera religioner"
+
+#: ../src/osmEditDialog.js:196 ../src/translations.js:374
+msgid "Paganism"
+msgstr "Paganism"
+
+#: ../src/osmEditDialog.js:197 ../src/translations.js:375
+msgid "Pastafarianism"
+msgstr "Pastafarianism"
+
+#: ../src/osmEditDialog.js:198 ../src/translations.js:376
+msgid "Scientology"
+msgstr "Scientologi"
+
+#: ../src/osmEditDialog.js:199 ../src/translations.js:377
+msgid "Shinto"
+msgstr "Shinto"
+
+#: ../src/osmEditDialog.js:200 ../src/translations.js:378
+msgid "Sikhism"
+msgstr "Sikhism"
+
+#: ../src/osmEditDialog.js:201 ../src/translations.js:379
+msgid "Spiritualism"
+msgstr "Spiritualism"
+
+#: ../src/osmEditDialog.js:202 ../src/translations.js:380
+msgid "Taoism"
+msgstr "Taoism"
+
+#: ../src/osmEditDialog.js:203 ../src/translations.js:381
+msgid "Unitarian Universalism"
+msgstr "Unitaristisk universalism"
+
+#: ../src/osmEditDialog.js:204 ../src/translations.js:382
+msgid "Voodoo"
+msgstr "Voodoo"
+
+#: ../src/osmEditDialog.js:205 ../src/translations.js:383
+msgid "Yazidism"
+msgstr "Yazidism"
+
+#: ../src/osmEditDialog.js:206 ../src/translations.js:384
+msgid "Zoroastrianism"
+msgstr "Zoroastrism"
+
+#: ../src/osmEditDialog.js:209
+msgid "Toilets"
+msgstr "Toaletter"
+
+#: ../src/osmEditDialog.js:216
+msgid "Note"
+msgstr "Anteckning"
+
+#: ../src/osmEditDialog.js:219
+msgid ""
+"Information used to inform other mappers about non-obvious information about "
+"an element, the author’s intent when creating it, or hints for further "
+"improvement."
+msgstr ""
+"Information som används för att informera andra karterare om icke uppenbar "
+"information om ett element, personens avsikt då det skapades, eller tips på "
+"hur det kan förbättras ytterligare."
+
+#: ../src/osmEditDialog.js:328
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Lägg till i OpenStreetMap"
 
-#: ../src/osmEditDialog.js:340
+#: ../src/osmEditDialog.js:381
 msgid "Select Type"
 msgstr "Välj typ"
 
-#: ../src/osmEditDialog.js:458
+#: ../src/osmEditDialog.js:500
 msgid "Done"
 msgstr "Klar"
 
-#: ../src/placeBubble.js:128
+#: ../src/placeBubble.js:122
 msgid "Population:"
-msgstr "Folkmängd"
+msgstr "Folkmängd:"
 
-#: ../src/placeBubble.js:134
+#: ../src/placeBubble.js:128
 msgid "Altitude:"
 msgstr "Höjd över havet:"
 
-#: ../src/placeBubble.js:139
+#: ../src/placeBubble.js:133
 msgid "Opening hours:"
 msgstr "Öppettider:"
 
-#: ../src/placeBubble.js:144
+#: ../src/placeBubble.js:138
 msgid "Internet access:"
 msgstr "Internetåtkomst:"
 
-#: ../src/placeBubble.js:149
+#: ../src/placeBubble.js:143
+msgid "Religion:"
+msgstr "Religion:"
+
+#: ../src/placeBubble.js:148
+msgid "Toilets:"
+msgstr "Toaletter:"
+
+#: ../src/placeBubble.js:153
 msgid "Wheelchair access:"
 msgstr "Åtkomst för rullstol:"
 
-#: ../src/placeBubble.js:155 ../src/placeBubble.js:159
+#: ../src/placeBubble.js:159 ../src/placeBubble.js:163
 msgid "Phone:"
 msgstr "Telefon:"
 
@@ -1034,7 +1205,7 @@ msgstr "Misslyckades med att tolka geo-URI"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: ../src/place.js:178 ../src/translations.js:329
+#: ../src/place.js:219 ../src/translations.js:329 ../src/translations.js:391
 msgid "yes"
 msgstr "ja"
 
@@ -1043,7 +1214,7 @@ msgstr "ja"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:185
+#: ../src/place.js:226
 msgid "limited"
 msgstr "begränsad"
 
@@ -1055,7 +1226,7 @@ msgstr "begränsad"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: ../src/place.js:191 ../src/translations.js:335
+#: ../src/place.js:232 ../src/translations.js:335 ../src/translations.js:392
 msgid "no"
 msgstr "nej"
 
@@ -1064,7 +1235,7 @@ msgstr "nej"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:198
+#: ../src/place.js:239
 msgid "designated"
 msgstr "avsett för"
 
@@ -1089,12 +1260,12 @@ msgstr "Avbryt utskrift"
 msgid "Failed to open URI"
 msgstr "Misslyckades med att öppna URI"
 
-#: ../src/shapeLayer.js:93
+#: ../src/shapeLayer.js:92
 msgid "failed to load file"
 msgstr "misslyckades med att läsa in fil"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:285
+#: ../src/sidebar.js:294
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Uppskattad tid: %s"
@@ -1114,7 +1285,7 @@ msgstr "Anländ"
 #. Translators: this is a format string indicating instructions
 #. * starting a journey at the address given as the parameter
 #.
-#: ../src/transitLegRow.js:74
+#: ../src/transitLegRow.js:73
 #, javascript-format
 msgid "Start at %s"
 msgstr "Starta från %s"
@@ -1123,22 +1294,22 @@ msgstr "Starta från %s"
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: ../src/transitLegRow.js:80
+#: ../src/transitLegRow.js:79
 msgid "Start"
 msgstr "Starta"
 
-#: ../src/transitLegRow.js:108
+#: ../src/transitLegRow.js:107
 msgid "Show walking instructions"
 msgstr "Visa gånginstruktioner"
 
-#: ../src/transitLegRow.js:109
+#: ../src/transitLegRow.js:108
 msgid "Hide walking instructions"
 msgstr "Dölj gånginstruktioner"
 
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
 #.
-#: ../src/transitLegRow.js:134
+#: ../src/transitLegRow.js:133
 #, javascript-format
 msgid "Walk %s"
 msgstr "Gå %s"
@@ -1155,7 +1326,7 @@ msgstr "Läs in senare alternativ"
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: ../src/transitOptionsPanel.js:141
+#: ../src/transitOptionsPanel.js:142
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e %b"
@@ -1165,7 +1336,7 @@ msgstr "%e %b"
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: ../src/transitPlan.js:248
+#: ../src/transitPlan.js:253
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -1174,7 +1345,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: ../src/transitPlan.js:275
+#: ../src/transitPlan.js:280
 #, javascript-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -1185,7 +1356,7 @@ msgstr[1] "%d minuter"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: ../src/transitPlan.js:286
+#: ../src/transitPlan.js:291
 #, javascript-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -1196,7 +1367,7 @@ msgstr[1] "%d timmar"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: ../src/transitPlan.js:292
+#: ../src/transitPlan.js:297
 #, javascript-format
 msgid "%d:%02d hour"
 msgid_plural "%d:%02d hours"
@@ -1209,7 +1380,7 @@ msgstr[1] "%d:%02d timmar"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: ../src/transitPlan.js:611
+#: ../src/transitPlan.js:649
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -1390,26 +1561,38 @@ msgstr "%f s"
 #. Translators: This is a distance measured in kilometers
 #: ../src/utils.js:352
 #, javascript-format
-msgid "%f km"
-msgstr "%f km"
+msgid "%s km"
+msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
 #: ../src/utils.js:355
 #, javascript-format
-msgid "%f m"
-msgstr "%f m"
+msgid "%s m"
+msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
 #: ../src/utils.js:363
 #, javascript-format
-msgid "%f mi"
-msgstr "%f engelska mil"
+msgid "%s mi"
+msgstr "%s miles"
 
 #. Translators: This is a distance measured in feet
 #: ../src/utils.js:366
 #, javascript-format
-msgid "%f ft"
-msgstr "%f fot"
+msgid "%s ft"
+msgstr "%s fot"
+
+#~ msgid "%f km"
+#~ msgstr "%f km"
+
+#~ msgid "%f m"
+#~ msgstr "%f m"
+
+#~ msgid "%f mi"
+#~ msgstr "%f engelska mil"
+
+#~ msgid "%f ft"
+#~ msgstr "%f fot"
 
 #~ msgid "Position not found"
 #~ msgstr "Plats hittades ej"
