@@ -25,7 +25,7 @@ const Geocode = imports.gi.GeocodeGlib;
 const Lang = imports.lang;
 
 /* Adds heading to Geocode.Location */
-const Location = new Lang.Class({
+var Location = new Lang.Class({
     Name: 'Location',
     Extends: Geocode.Location,
 

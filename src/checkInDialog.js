@@ -30,7 +30,7 @@ const CheckIn = imports.checkIn;
 const SocialPlaceListBox = imports.socialPlaceListBox;
 const SocialPlaceMatcher = imports.socialPlaceMatcher;
 
-const Response = {
+var Response = {
     SUCCESS: 0,
     CANCELLED: 1,
     FAILURE_NO_PLACES: 2,
@@ -39,7 +39,7 @@ const Response = {
     FAILURE_CHECKIN_DISABLED: 5
 };
 
-const CheckInDialog = new Lang.Class({
+var CheckInDialog = new Lang.Class({
     Name: 'CheckInDialog',
     Extends: Gtk.Dialog,
     Template: 'resource:///org/gnome/Maps/ui/check-in-dialog.ui',

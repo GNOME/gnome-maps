@@ -25,7 +25,7 @@ const _ = imports.gettext.gettext;
 
 const Gtk = imports.gi.Gtk;
 
-const TransitStopRow = new Lang.Class({
+var TransitStopRow = new Lang.Class({
     Name: 'TransitStopRow',
     Extends: Gtk.ListBoxRow,
     Template: 'resource:///org/gnome/Maps/ui/transit-stop-row.ui',

@@ -24,7 +24,7 @@ const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
-const SocialPlaceRow = new Lang.Class({
+var SocialPlaceRow = new Lang.Class({
     Name: 'SocialPlaceRow',
     Extends: Gtk.ListBoxRow,
     Template: 'resource:///org/gnome/Maps/ui/social-place-row.ui',
@@ -45,13 +45,13 @@ const SocialPlaceRow = new Lang.Class({
     }
 });
 
-const SocialPlaceMoreResultsRow = new Lang.Class({
+var SocialPlaceMoreResultsRow = new Lang.Class({
     Name: 'SocialPlaceMoreResultsRow',
     Extends: Gtk.ListBoxRow,
     Template: 'resource:///org/gnome/Maps/ui/social-place-more-results-row.ui'
 });
 
-const SocialPlaceListBox = new Lang.Class({
+var SocialPlaceListBox = new Lang.Class({
     Name: 'SocialPlaceListBox',
     Extends: Gtk.ListBox,
     Signals: {

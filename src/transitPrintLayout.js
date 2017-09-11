@@ -60,7 +60,7 @@ const _Instruction = {
     SCALE_MARGIN: 0.01
 };
 
-const TransitPrintLayout = new Lang.Class({
+var TransitPrintLayout = new Lang.Class({
     Name: 'TransitPrintLayout',
     Extends: PrintLayout.PrintLayout,
 

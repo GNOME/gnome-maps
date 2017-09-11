@@ -36,7 +36,7 @@ const OSMTypeSearchEntry = imports.osmTypeSearchEntry;
 const OSMUtils = imports.osmUtils;
 const Utils = imports.utils;
 
-const Response = {
+var Response = {
     UPLOADED: 0,
     DELETED: 1,
     CANCELLED: 2,
@@ -57,7 +57,7 @@ const EditFieldType = {
 
 const _WIKI_BASE = 'https://wiki.openstreetmap.org/wiki/Key:';
 
-let _osmWikipediaRewriteFunc = function(text) {
+var _osmWikipediaRewriteFunc = function(text) {
     let wikipediaArticleFormatted = OSMUtils.getWikipediaOSMArticleFormatFromUrl(text);
 
     /* if the entered text is a Wikipedia link,
@@ -72,7 +72,7 @@ let _osmWikipediaRewriteFunc = function(text) {
  * strip off the leading tel: protocol string and trailing parameters,
  * following a ;
  * otherwise return the string unmodified */
-let _osmPhoneRewriteFunc = function(text) {
+var _osmPhoneRewriteFunc = function(text) {
     if (GLib.uri_parse_scheme(text) === 'tel') {
         let afterTel = text.replace('tel:', '');
 
@@ -258,7 +258,7 @@ const OSMEditAddress = new Lang.Class({
 });
 
 
-const OSMEditDialog = new Lang.Class({
+var OSMEditDialog = new Lang.Class({
     Name: 'OSMEditDialog',
     Extends: Gtk.Dialog,
     Template: 'resource:///org/gnome/Maps/ui/osm-edit-dialog.ui',

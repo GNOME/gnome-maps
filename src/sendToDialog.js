@@ -30,14 +30,14 @@ const Utils = imports.utils;
 const _WEATHER_APPID = 'org.gnome.Weather.Application';
 const _CLOCKS_APPID = 'org.gnome.clocks';
 
-const Response = {
+var Response = {
     SUCCESS: 0,
     CANCEL: 1
 };
 
 const _NUM_VISIBLE = 6;
 
-const SendToDialog = new Lang.Class({
+var SendToDialog = new Lang.Class({
     Name: 'SendToDialog',
     Extends: Gtk.Dialog,
     Template: 'resource:///org/gnome/Maps/ui/send-to-dialog.ui',

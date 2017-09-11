@@ -26,14 +26,14 @@ const Lang = imports.lang;
 
 const Utils = imports.utils;
 
-const Response = {
+var Response = {
     SUCCESS: 0,
     CANCEL: 1
 };
 
 const _PREVIEW_WIDTH = 150;
 
-const ExportViewDialog = new Lang.Class({
+var ExportViewDialog = new Lang.Class({
     Name: 'ExportViewDialog',
     Extends: Gtk.Dialog,
     Template: 'resource:///org/gnome/Maps/ui/export-view-dialog.ui',

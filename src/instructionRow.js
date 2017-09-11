@@ -24,7 +24,7 @@ const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 const Utils = imports.utils;
 
-const InstructionRow = new Lang.Class({
+var InstructionRow = new Lang.Class({
     Name: "InstructionRow",
     Extends: Gtk.ListBoxRow,
     Template: 'resource:///org/gnome/Maps/ui/instruction-row.ui',

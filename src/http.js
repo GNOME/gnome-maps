@@ -29,7 +29,7 @@ function encode(data) {
     return Soup.URI.encode(data.toString(), null);
 }
 
-const Query = new Lang.Class({
+var Query = new Lang.Class({
     Name: 'Query',
 
     _init: function(obj) {

@@ -27,7 +27,7 @@ const Gtk = imports.gi.Gtk;
 
 const Application = imports.application;
 
-const TransitMoreRow = new Lang.Class({
+var TransitMoreRow = new Lang.Class({
     Name: 'TransitMoreRow',
     Extends: Gtk.ListBoxRow,
     Template: 'resource:///org/gnome/Maps/ui/transit-more-row.ui',

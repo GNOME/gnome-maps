@@ -20,7 +20,7 @@
 
 const Lang = imports.lang;
 
-const GeoJSONStyle = new Lang.Class({
+var GeoJSONStyle = new Lang.Class({
     Name: 'GeoJSONStyle',
 
     _init: function(params) {

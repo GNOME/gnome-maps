@@ -105,7 +105,7 @@ function lookupType(key, value) {
         return null;
 }
 
-const RecentTypesStore = new Lang.Class({
+var RecentTypesStore = new Lang.Class({
     Name: 'RecentTypesStore',
 
     _init: function() {
@@ -165,4 +165,4 @@ const RecentTypesStore = new Lang.Class({
     }
 });
 
-const recentTypesStore = new RecentTypesStore();
+var recentTypesStore = new RecentTypesStore();

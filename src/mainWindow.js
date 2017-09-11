@@ -48,7 +48,7 @@ const _CONFIGURE_ID_TIMEOUT = 100; // msecs
 const _WINDOW_MIN_WIDTH = 600;
 const _WINDOW_MIN_HEIGHT = 500;
 
-const ShapeLayerFileChooser = new Lang.Class({
+var ShapeLayerFileChooser = new Lang.Class({
     Name: 'ShapeLayerFileChooser',
     Extends: Gtk.FileChooserNative,
     Template: 'resource:///org/gnome/Maps/ui/shape-layer-file-chooser.ui',
@@ -71,7 +71,7 @@ const ShapeLayerFileChooser = new Lang.Class({
     }
 });
 
-const MainWindow = new Lang.Class({
+var MainWindow = new Lang.Class({
     Name: 'MainWindow',
     Extends: Gtk.ApplicationWindow,
     Template: 'resource:///org/gnome/Maps/ui/main-window.ui',

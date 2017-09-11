@@ -24,7 +24,7 @@ const Lang = imports.lang;
 
 const Utils = imports.utils;
 
-const TurnPointType = {
+var TurnPointType = {
     SHARP_LEFT:    0,
     LEFT:          1,
     SLIGHT_LEFT:   2,
@@ -41,7 +41,7 @@ const TurnPointType = {
     START:         10000
 };
 
-const Route = new Lang.Class({
+var Route = new Lang.Class({
     Name: 'Route',
 
     _init: function() {
@@ -77,7 +77,7 @@ const Route = new Lang.Class({
 });
 Utils.addSignalMethods(Route.prototype);
 
-const TurnPoint = new Lang.Class({
+var TurnPoint = new Lang.Class({
     Name: 'TurnPoint',
 
     _init: function({ coordinate, type, distance, instruction, turnAngle }) {

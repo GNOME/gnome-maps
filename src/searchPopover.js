@@ -27,7 +27,7 @@ const Lang = imports.lang;
 
 /* Abstract search result popover that progagates keypress events from a
    focus-taking internal widget to the spawning search entry widget */
-const SearchPopover = new Lang.Class({
+var SearchPopover = new Lang.Class({
     Name: 'SearchPopover',
     Extends: Gtk.Popover,
     Abstract: true,

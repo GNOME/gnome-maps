@@ -32,7 +32,7 @@ const Route = imports.route;
 const RouteQuery = imports.routeQuery;
 const Utils = imports.utils;
 
-const GraphHopper = new Lang.Class({
+var GraphHopper = new Lang.Class({
     Name: 'GraphHopper',
 
     get route() {

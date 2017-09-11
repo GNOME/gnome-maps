@@ -23,7 +23,7 @@ const Lang = imports.lang;
 
 const Place = imports.place;
 
-const ContactPlace = new Lang.Class({
+var ContactPlace = new Lang.Class({
     Name: 'ContactPlace',
     Extends: Place.Place,
 

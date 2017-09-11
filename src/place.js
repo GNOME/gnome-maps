@@ -29,7 +29,7 @@ const Utils = imports.utils;
 // Matches coordinates string with the format "<lat>, <long>"
 const COORDINATES_REGEX = /^\s*(\-?\d+(?:\.\d+)?)\s*,\s*(\-?\d+(?:\.\d+)?)\s*$/;
 
-const Place = new Lang.Class({
+var Place = new Lang.Class({
     Name: 'Place',
     Extends: Geocode.Place,
 

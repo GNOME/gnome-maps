@@ -24,7 +24,7 @@ const Lang = imports.lang;
 
 const _FOURSQUARE_API_VERSION = '20140226';
 
-const FoursquareGoaAuthorizer = new Lang.Class({
+var FoursquareGoaAuthorizer = new Lang.Class({
     Name: 'FoursquareGoaAuthorizer',
 
     _init: function(params) {

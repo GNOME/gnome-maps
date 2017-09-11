@@ -30,9 +30,9 @@ const OSMConnection = imports.osmConnection;
 const Utils = imports.utils;
 
 /* minimum zoom level at which to offer adding a location */
-const MIN_ADD_LOCATION_ZOOM_LEVEL = 16;
+var MIN_ADD_LOCATION_ZOOM_LEVEL = 16;
 
-const OSMEdit = new Lang.Class({
+var OSMEdit = new Lang.Class({
     Name: 'OSMEdit',
     Extends: GObject.Object,
 

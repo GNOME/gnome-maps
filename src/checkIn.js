@@ -28,7 +28,7 @@ const CheckInDialog = imports.checkInDialog;
 const FacebookBackend = imports.facebookBackend;
 const FoursquareBackend = imports.foursquareBackend;
 
-const CheckInManager = new Lang.Class({
+var CheckInManager = new Lang.Class({
     Name: 'CheckInManager',
     Extends: GObject.Object,
     Signals: {
@@ -170,7 +170,7 @@ const CheckInManager = new Lang.Class({
     }
 });
 
-const CheckIn = new Lang.Class({
+var CheckIn = new Lang.Class({
     Name: 'CheckIn',
 
     _init: function() {

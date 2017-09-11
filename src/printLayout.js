@@ -74,7 +74,7 @@ function newFromRoute(route, pageWidth, pageHeight) {
     }
 }
 
-const PrintLayout = new Lang.Class({
+var PrintLayout = new Lang.Class({
     Name: 'PrintLayout',
     Extends: GObject.Object,
     Abstract: true,

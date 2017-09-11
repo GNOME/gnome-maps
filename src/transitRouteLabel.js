@@ -32,7 +32,7 @@ const Color = imports.color;
  */
 const OUTLINE_LUMINANCE_THREASHHOLD = 0.9;
 
-const TransitRouteLabel = new Lang.Class({
+var TransitRouteLabel = new Lang.Class({
     Name: 'TransitRouteLabel',
     Extends: Gtk.Label,
     Template: 'resource:///org/gnome/Maps/ui/transit-route-label.ui',

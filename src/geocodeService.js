@@ -28,7 +28,7 @@ const Application = imports.application;
 const Place = imports.place;
 const Utils = imports.utils;
 
-const GeocodeService = new Lang.Class({
+var GeocodeService = new Lang.Class({
     Name: 'GeocodeService',
 
     _init: function() { },

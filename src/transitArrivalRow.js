@@ -26,7 +26,7 @@ const _ = imports.gettext.gettext;
 const Gdk = imports.gi.Gdk;
 const Gtk = imports.gi.Gtk;
 
-const TransitArrivalRow = new Lang.Class({
+var TransitArrivalRow = new Lang.Class({
     Name: 'TransitArrivalRow',
     Extends: Gtk.ListBoxRow,
     Template: 'resource:///org/gnome/Maps/ui/transit-arrival-row.ui',

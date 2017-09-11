@@ -24,7 +24,7 @@ const ShapeLayer = imports.shapeLayer;
 const Togeojson = imports.togeojson.togeojson;
 const Domparser = imports.xmldom.domparser;
 
-const GpxShapeLayer = new Lang.Class({
+var GpxShapeLayer = new Lang.Class({
     Name: 'GpxShapeLayer',
     Extends: ShapeLayer.ShapeLayer,
 

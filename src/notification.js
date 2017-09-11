@@ -25,7 +25,7 @@ const Mainloop = imports.mainloop;
 
 const Utils = imports.utils;
 
-const Notification = new Lang.Class({
+var Notification = new Lang.Class({
     Name: 'Notification',
     Extends: Gtk.Revealer,
     Signals: {
@@ -68,7 +68,7 @@ const Notification = new Lang.Class({
     }
 });
 
-const Plain = new Lang.Class({
+var Plain = new Lang.Class({
     Name: 'Plain',
     Extends: Notification,
 

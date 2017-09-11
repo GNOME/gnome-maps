@@ -28,7 +28,7 @@ const PlaceStore = imports.placeStore;
 
 const _N_VISIBLE = 6;
 
-const FavoritesPopover = new Lang.Class({
+var FavoritesPopover = new Lang.Class({
     Name: 'FavoritesPopover',
     Extends: Gtk.Popover,
     Template: 'resource:///org/gnome/Maps/ui/favorites-popover.ui',

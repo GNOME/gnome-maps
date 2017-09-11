@@ -24,7 +24,7 @@ const Lang = imports.lang;
 const MapBubble = imports.mapBubble;
 const Utils = imports.utils;
 
-const UserLocationBubble = new Lang.Class({
+var UserLocationBubble = new Lang.Class({
     Name: "UserLocationBubble",
     Extends: MapBubble.MapBubble,
 
