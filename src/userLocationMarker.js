@@ -26,7 +26,7 @@ const Lang = imports.lang;
 const MapMarker = imports.mapMarker;
 const UserLocationBubble = imports.userLocationBubble;
 
-const AccuracyCircleMarker = new Lang.Class({
+var AccuracyCircleMarker = new Lang.Class({
     Name: 'AccuracyCircleMarker',
     Extends: Champlain.Point,
 
@@ -62,7 +62,7 @@ const AccuracyCircleMarker = new Lang.Class({
     }
 });
 
-const UserLocationMarker = new Lang.Class({
+var UserLocationMarker = new Lang.Class({
     Name: 'UserLocationMarker',
     Extends: MapMarker.MapMarker,
 

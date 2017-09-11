@@ -34,7 +34,7 @@ const PlaceStore = imports.placeStore;
 const PlacePopover = imports.placePopover;
 const Utils = imports.utils;
 
-const PlaceEntry = new Lang.Class({
+var PlaceEntry = new Lang.Class({
     Name: 'PlaceEntry',
     Extends: Gtk.SearchEntry,
     Properties: {

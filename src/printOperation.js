@@ -28,7 +28,7 @@ const Utils = imports.utils;
 
 const _MIN_TIME_TO_ABORT = 3000;
 
-const PrintOperation = new Lang.Class({
+var PrintOperation = new Lang.Class({
     Name: 'PrintOperation',
 
     _init: function(params) {

@@ -26,7 +26,7 @@ const Notification = imports.notification;
 const OSMEdit = imports.osmEdit;
 const Utils = imports.utils;
 
-const ZoomInNotification = Lang.Class({
+var ZoomInNotification = Lang.Class({
     Name: 'ZoomInNotification',
     Extends: Notification.Notification,
 

@@ -30,14 +30,14 @@ const Location = imports.location;
 const Settings = imports.settings;
 const Utils = imports.utils;
 
-const State = {
+var State = {
     INITIAL: 0,
     ON: 1,
     DENIED: 2,
     FAILED: 3
 };
 
-const Geoclue = new Lang.Class({
+var Geoclue = new Lang.Class({
     Name: 'Geoclue',
     Extends: GObject.Object,
     Signals: {

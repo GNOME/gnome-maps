@@ -22,7 +22,7 @@
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 
-const OSMTypeListRow = new Lang.Class({
+var OSMTypeListRow = new Lang.Class({
     Name: 'OSMTypeListRow',
     Extends: Gtk.ListBoxRow,
     Template: 'resource:///org/gnome/Maps/ui/osm-type-list-row.ui',

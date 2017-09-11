@@ -22,7 +22,7 @@ const Lang = imports.lang;
 const GeoJSONSource = imports.geoJSONSource;
 const ShapeLayer = imports.shapeLayer;
 
-const GeoJSONShapeLayer = new Lang.Class({
+var GeoJSONShapeLayer = new Lang.Class({
     Name: 'GeoJSONShapeLayer',
     Extends: ShapeLayer.ShapeLayer,
 

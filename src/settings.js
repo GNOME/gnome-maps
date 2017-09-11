@@ -24,7 +24,7 @@ const Gio = imports.gi.Gio;
 const Lang = imports.lang;
 const System = imports.system;
 
-const Settings = new Lang.Class({
+var Settings = new Lang.Class({
     Name: "Settings",
     Extends: Gio.Settings,
 

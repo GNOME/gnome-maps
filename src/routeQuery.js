@@ -27,7 +27,7 @@ const Application = imports.application;
 const PlaceStore = imports.placeStore;
 const TransitOptions = imports.transitOptions;
 
-const Transportation = {
+var Transportation = {
     CAR:        0,
     BIKE:       1,
     PEDESTRIAN: 2,
@@ -44,7 +44,7 @@ const Transportation = {
     }
 };
 
-const QueryPoint = new Lang.Class({
+var QueryPoint = new Lang.Class({
     Name: 'QueryPoint',
     Extends: GObject.Object,
     Properties: {
@@ -71,7 +71,7 @@ const QueryPoint = new Lang.Class({
     }
 });
 
-const RouteQuery = new Lang.Class({
+var RouteQuery = new Lang.Class({
     Name: 'RouteQuery',
     Extends: GObject.Object,
     Signals: {

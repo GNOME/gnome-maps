@@ -33,7 +33,7 @@ const TransitRouteLabel = imports.transitRouteLabel;
 const TransitStopRow = imports.transitStopRow;
 const Utils = imports.utils;
 
-const TransitLegRow = new Lang.Class({
+var TransitLegRow = new Lang.Class({
     Name: 'TransitLegRow',
     Extends: Gtk.ListBoxRow,
     Template: 'resource:///org/gnome/Maps/ui/transit-leg-row.ui',

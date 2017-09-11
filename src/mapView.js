@@ -51,7 +51,7 @@ const TurnPointMarker = imports.turnPointMarker;
 const UserLocationMarker = imports.userLocationMarker;
 const Utils = imports.utils;
 
-const MapType = {
+var MapType = {
     LOCAL: 'MapsLocalSource',
     STREET: 'MapsStreetSource',
     AERIAL: 'MapsAerialSource'
@@ -63,10 +63,10 @@ const MapMinZoom = 2;
  * Due to the mathematics of spherical mericator projection,
  * the map must be truncated at a latitude less than 90 degrees.
  */
-const MAX_LATITUDE = 85.05112;
-const MIN_LATITUDE = -85.05112;
-const MAX_LONGITUDE = 180;
-const MIN_LONGITUDE = -180;
+var MAX_LATITUDE = 85.05112;
+var MIN_LATITUDE = -85.05112;
+var MAX_LONGITUDE = 180;
+var MIN_LONGITUDE = -180;
 
 /* threashhold for route color luminance when we consider it more or less
  * as white, and draw an outline on the path */
@@ -86,7 +86,7 @@ const DASHED_ROUTE_LINE_FILLED_LENGTH = 5;
 // length of gaps of dashed lines used for walking legs of transit itineraries
 const DASHED_ROUTE_LINE_GAP_LENGTH = 5;
 
-const MapView = new Lang.Class({
+var MapView = new Lang.Class({
     Name: 'MapView',
     Extends: GtkChamplain.Embed,
     Properties: {

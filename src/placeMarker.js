@@ -24,7 +24,7 @@ const Lang = imports.lang;
 const MapMarker = imports.mapMarker;
 const PlaceBubble = imports.placeBubble;
 
-const PlaceMarker = new Lang.Class({
+var PlaceMarker = new Lang.Class({
     Name: 'PlaceMarker',
     Extends: MapMarker.MapMarker,
 

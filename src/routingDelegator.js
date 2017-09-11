@@ -27,7 +27,7 @@
 
  const _FALLBACK_TRANSPORTATION = RouteQuery.Transportation.PEDESTRIAN;
 
- const RoutingDelegator = new Lang.Class({
+ var RoutingDelegator = new Lang.Class({
     Name: 'RoutingDelegator',
 
     _init: function(params) {

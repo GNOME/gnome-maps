@@ -40,7 +40,7 @@ const ACTOR_SIZE = 20;
  */
 const OUTLINE_LUMINANCE_THREASHHOLD = 0.9;
 
-const TransitBoardMarker = new Lang.Class({
+var TransitBoardMarker = new Lang.Class({
     Name: 'TransitBoardMarker',
     Extends: MapMarker.MapMarker,
 

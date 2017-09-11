@@ -21,7 +21,7 @@
 
 const Lang = imports.lang;
 
-const TransitOptions = new Lang.Class({
+var TransitOptions = new Lang.Class({
     Name: 'TransitOptions',
 
     _init: function() {

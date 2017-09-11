@@ -45,7 +45,7 @@ const SECRET_SCHEMA = new Secret.Schema("org.gnome.Maps",
     }
 );
 
-const OSMConnection = new Lang.Class({
+var OSMConnection = new Lang.Class({
     Name: 'OSMConnection',
 
     _init: function(params) {

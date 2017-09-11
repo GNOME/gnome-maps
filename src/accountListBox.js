@@ -26,7 +26,7 @@ const Lang = imports.lang;
 
 const Application = imports.application;
 
-const AccountRow = new Lang.Class({
+var AccountRow = new Lang.Class({
     Name: 'AccountRow',
     Extends: Gtk.ListBoxRow,
     Template: 'resource:///org/gnome/Maps/ui/account-row.ui',
@@ -50,7 +50,7 @@ const AccountRow = new Lang.Class({
     }
 });
 
-const AccountListBox = new Lang.Class({
+var AccountListBox = new Lang.Class({
     Name: 'AccountListBox',
     Extends: Gtk.ListBox,
     Signals: {

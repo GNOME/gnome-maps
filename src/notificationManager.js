@@ -27,7 +27,7 @@ const Notification = imports.notification;
 
 const _TIMEOUT = 5000; /* ms */
 
-const NotificationManager = new Lang.Class({
+var NotificationManager = new Lang.Class({
     Name: 'NotificationManager',
 
     _init: function(overlay) {

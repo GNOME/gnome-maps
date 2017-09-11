@@ -35,7 +35,7 @@ const Mode = {
     RESULT: 3 // We are displaying results
 };
 
-const PlacePopover = new Lang.Class({
+var PlacePopover = new Lang.Class({
     Name: 'PlacePopover',
     Extends: SearchPopover.SearchPopover,
     Signals : {

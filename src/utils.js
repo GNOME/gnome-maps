@@ -29,8 +29,8 @@ const Gtk = imports.gi.Gtk;
 const Signals = imports.signals;
 const Soup = imports.gi.Soup;
 
-const METRIC_SYSTEM = 1;
-const IMPERIAL_SYSTEM = 2;
+var METRIC_SYSTEM = 1;
+var IMPERIAL_SYSTEM = 2;
 
 //List of locales using imperial system according to glibc locale database
 const IMPERIAL_LOCALES = ['unm_US', 'es_US', 'es_PR', 'en_US', 'yi_US'];

@@ -27,7 +27,7 @@ const SocialPlace = imports.socialPlace;
 
 const _PLACE_LINK_FORMAT = 'https://www.facebook.com/%s';
 
-const FacebookBackend = new Lang.Class({
+var FacebookBackend = new Lang.Class({
     Name: 'SocialServiceFacebookBackend',
     Extends: ServiceBackend.ServiceBackend,
 

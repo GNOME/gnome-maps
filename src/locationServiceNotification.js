@@ -30,7 +30,7 @@ const Utils = imports.utils;
 
 const _PRIVACY_PANEL = 'gnome-privacy-panel.desktop';
 
-const LocationServiceNotification = new Lang.Class({
+var LocationServiceNotification = new Lang.Class({
     Name: 'LocationServiceNotification',
     Extends: Notification.Notification,
 

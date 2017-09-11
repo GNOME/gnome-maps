@@ -32,7 +32,7 @@ const PlaceStore = imports.placeStore;
 const SendToDialog = imports.sendToDialog;
 const Utils = imports.utils;
 
-const Button = {
+var Button = {
     NONE: 0,
     ROUTE: 2,
     SEND_TO: 4,
@@ -40,7 +40,7 @@ const Button = {
     CHECK_IN: 16
 };
 
-const MapBubble = new Lang.Class({
+var MapBubble = new Lang.Class({
     Name: "MapBubble",
     Extends: Gtk.Popover,
     Abstract: true,

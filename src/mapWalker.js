@@ -33,7 +33,7 @@ const _MAX_DISTANCE = 19850; // half of Earth's circumference (km)
 const _MIN_ANIMATION_DURATION = 2000; // msec
 const _MAX_ANIMATION_DURATION = 5000; // msec
 
-const MapWalker = new Lang.Class({
+var MapWalker = new Lang.Class({
     Name: 'MapWalker',
 
     _init: function(place, mapView) {

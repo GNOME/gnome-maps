@@ -41,7 +41,7 @@ let clockFormat = _desktopSettings.get_string(CLOCK_FORMAT_KEY);
  * These constants corresponds to the routeType attribute of transit legs
  * in original GTFS specification.
  */
-const RouteType = {
+var RouteType = {
     NON_TRANSIT: -1,
     TRAM:        0,
     SUBWAY:      1,
@@ -84,7 +84,7 @@ function _printTimeWithTZOffset(time, offset) {
 const DEFAULT_ROUTE_COLOR = '000000';
 const DEFAULT_ROUTE_TEXT_COLOR = 'ffffff';
 
-const Plan = new Lang.Class({
+var Plan = new Lang.Class({
     Name: 'Plan',
     Extends: GObject.Object,
     Signals: {
@@ -144,7 +144,7 @@ const Plan = new Lang.Class({
     }
 });
 
-const Itinerary = new Lang.Class({
+var Itinerary = new Lang.Class({
     Name: 'Itinerary',
     Extends: GObject.Object,
 
@@ -349,7 +349,7 @@ const Itinerary = new Lang.Class({
     }
 });
 
-const Leg = new Lang.Class({
+var Leg = new Lang.Class({
     Name: 'Leg',
 
     _init: function(params) {
@@ -666,7 +666,7 @@ const Leg = new Lang.Class({
     }
 });
 
-const Stop = new Lang.Class({
+var Stop = new Lang.Class({
     Name: 'Stop',
 
     _init: function(params) {

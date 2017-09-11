@@ -39,7 +39,7 @@ const TileFeature = { POINT: 1,
                       LINESTRING: 2,
                       POLYGON: 3 };
 
-const GeoJSONSource = new Lang.Class({
+var GeoJSONSource = new Lang.Class({
     Name: 'GeoJSONSource',
     Extends: Champlain.TileSource,
 

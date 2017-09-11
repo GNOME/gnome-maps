@@ -40,7 +40,7 @@ const TransitMoreRow = imports.transitMoreRow;
 const TransitOptionsPanel = imports.transitOptionsPanel;
 const Utils = imports.utils;
 
-const Sidebar = new Lang.Class({
+var Sidebar = new Lang.Class({
     Name: 'Sidebar',
     Extends: Gtk.Revealer,
     Template: 'resource:///org/gnome/Maps/ui/sidebar.ui',

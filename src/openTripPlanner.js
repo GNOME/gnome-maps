@@ -122,7 +122,7 @@ const NUM_STOPS_TO_TRY = 5;
 // gap to use when fetching additional routes
 const GAP_BEFORE_MORE_RESULTS = 120;
 
-const OpenTripPlanner = new Lang.Class({
+var OpenTripPlanner = new Lang.Class({
     Name: 'OpenTripPlanner',
 
     _init: function(params) {

@@ -25,9 +25,9 @@ const PlaceFormatter = imports.placeFormatter;
 const PlaceStore = imports.placeStore;
 const Utils = imports.utils;
 
-const ROW_HEIGHT = 55;
+var ROW_HEIGHT = 55;
 
-const PlaceListRow = new Lang.Class({
+var PlaceListRow = new Lang.Class({
     Name: 'PlaceListRow',
     Extends: Gtk.ListBoxRow,
     Template: 'resource:///org/gnome/Maps/ui/place-list-row.ui',
