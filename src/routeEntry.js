@@ -25,13 +25,13 @@ const Lang = imports.lang;
 const Application = imports.application;
 const PlaceEntry = imports.placeEntry;
 
-const Type = {
+var Type = {
     FROM: 0,
     TO: 1,
     VIA: 2
 };
 
-const RouteEntry = new Lang.Class({
+var RouteEntry = new Lang.Class({
     Name: 'RouteEntry',
     Extends: Gtk.Grid,
     Template: 'resource:///org/gnome/Maps/ui/route-entry.ui',

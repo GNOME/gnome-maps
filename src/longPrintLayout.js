@@ -37,7 +37,7 @@ const _MiniMapView = {
     ZOOM_LEVEL: 18
 };
 
-const LongPrintLayout = new Lang.Class({
+var LongPrintLayout = new Lang.Class({
     Name: 'LongPrintLayout',
     Extends: PrintLayout.PrintLayout,
 

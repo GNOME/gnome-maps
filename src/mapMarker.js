@@ -31,7 +31,7 @@ const Mainloop = imports.mainloop;
 const MapWalker = imports.mapWalker;
 const Utils = imports.utils;
 
-const MapMarker = new Lang.Class({
+var MapMarker = new Lang.Class({
     Name: 'MapMarker',
     Extends: Champlain.Marker,
     Implements: [Champlain.Exportable],

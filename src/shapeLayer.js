@@ -22,7 +22,7 @@ const Gio = imports.gi.Gio;
 const GObject = imports.gi.GObject;
 const Lang = imports.lang;
 
-const SUPPORTED_TYPES = [];
+var SUPPORTED_TYPES = [];
 
 function newFromFile(file, mapView) {
     let contentType = Gio.content_type_guess(file.get_uri(), null)[0];
@@ -34,7 +34,7 @@ function newFromFile(file, mapView) {
     return null;
 }
 
-const ShapeLayer = new Lang.Class({
+var ShapeLayer = new Lang.Class({
     Name: 'ShapeLayer',
     Extends: GObject.Object,
     Abstract: true,

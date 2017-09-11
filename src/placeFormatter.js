@@ -24,7 +24,7 @@ const Lang = imports.lang;
 
 const StoredRoute = imports.storedRoute;
 
-const PlaceFormatter = new Lang.Class({
+var PlaceFormatter = new Lang.Class({
     Name: "PlaceFormatter",
 
     _init: function(place) {

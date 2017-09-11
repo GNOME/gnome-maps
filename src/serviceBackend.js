@@ -23,7 +23,7 @@ const Lang = imports.lang;
 
 const Utils = imports.utils;
 
-const ServiceBackend = new Lang.Class({
+var ServiceBackend = new Lang.Class({
     Name: 'SocialServiceServiceBackend',
     Abstract: true,
 

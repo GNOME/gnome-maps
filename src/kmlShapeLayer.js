@@ -24,7 +24,7 @@ const ShapeLayer = imports.shapeLayer;
 const Togeojson = imports.togeojson.togeojson;
 const Domparser = imports.xmldom.domparser;
 
-const KmlShapeLayer = new Lang.Class({
+var KmlShapeLayer = new Lang.Class({
     Name: 'KmlShapeLayer',
     Extends: ShapeLayer.ShapeLayer,
 

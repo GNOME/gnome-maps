@@ -34,7 +34,7 @@ const _DEFAULT_OUTPUT_SORT_ORDER = 'qt';
 
 const BASE_URL = 'https://overpass-api.de/api/interpreter';
 
-const Overpass = new Lang.Class({
+var Overpass = new Lang.Class({
     Name: 'Overpass',
 
     _init: function(params) {

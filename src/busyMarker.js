@@ -20,7 +20,7 @@
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 
-const BusyMarker = new Lang.Class({
+var BusyMarker = new Lang.Class({
     Name: 'BusyMarker',
     Extends: Gtk.Frame,
     Template: 'resource:///org/gnome/Maps/ui/busy-marker.ui'

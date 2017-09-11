@@ -45,24 +45,24 @@ const Settings = imports.settings;
 const Utils = imports.utils;
 
 // used globally
-let application = null;
-let settings = null;
-let placeStore = null;
-let notificationManager = null;
-let routingDelegator = null;
-let geoclue = null;
-let geocodeService = null;
-let networkMonitor = null;
-let checkInManager = null;
-let contactStore = null;
-let osmEdit = null;
-let normalStartup = true;
-let routeQuery = null;
+var application = null;
+var settings = null;
+var placeStore = null;
+var notificationManager = null;
+var routingDelegator = null;
+var geoclue = null;
+var geocodeService = null;
+var networkMonitor = null;
+var checkInManager = null;
+var contactStore = null;
+var osmEdit = null;
+var normalStartup = true;
+var routeQuery = null;
 
 const _ensuredTypes = [WebKit2.WebView,
                        OSMTypeSearchEntry.OSMTypeSearchEntry];
 
-const Application = new Lang.Class({
+var Application = new Lang.Class({
     Name: 'Application',
     Extends: Gtk.Application,
     Properties: {

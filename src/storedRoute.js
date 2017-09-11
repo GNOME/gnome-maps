@@ -28,7 +28,7 @@ const Place = imports.place;
 const Route = imports.route;
 const RouteQuery = imports.routeQuery;
 
-const StoredRoute = new Lang.Class({
+var StoredRoute = new Lang.Class({
     Name: 'StoredRoute',
     Extends: Place.Place,
 

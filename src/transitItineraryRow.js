@@ -25,7 +25,7 @@ const Gtk = imports.gi.Gtk;
 
 const TransitRouteLabel = imports.transitRouteLabel;
 
-const TransitItineraryRow = new Lang.Class({
+var TransitItineraryRow = new Lang.Class({
     Name: 'TransitItineraryRow',
     Extends: Gtk.ListBoxRow,
     Template: 'resource:///org/gnome/Maps/ui/transit-itinerary-row.ui',

@@ -27,7 +27,7 @@ const SocialPlace = imports.socialPlace;
 
 const _PLACE_LINK_FORMAT = 'https://foursquare.com/v/foursquare-hq/%s';
 
-const FoursquareBackend = new Lang.Class({
+var FoursquareBackend = new Lang.Class({
     Name: 'SocialServiceFoursquareBackend',
     Extends: ServiceBackend.ServiceBackend,
 

@@ -36,7 +36,7 @@ const PlaceFormatter = imports.placeFormatter;
 const PlaceStore = imports.placeStore;
 const Utils = imports.utils;
 
-const PlaceBubble = new Lang.Class({
+var PlaceBubble = new Lang.Class({
     Name: 'PlaceBubble',
     Extends: MapBubble.MapBubble,
 

@@ -34,7 +34,7 @@ const _ICON_SIZE = 20;
 const _ONE_DAY = 1000 * 60 * 60 * 24; // one day in ms
 const _STALE_THRESHOLD = 7; // mark the osm information as stale after a week
 
-const PlaceType = {
+var PlaceType = {
     ANY: -1,
     RECENT: 0,
     FAVORITE: 1,
@@ -42,7 +42,7 @@ const PlaceType = {
     RECENT_ROUTE: 3
 };
 
-const Columns = {
+var Columns = {
     PLACE_ICON: 0,
     PLACE: 1,
     NAME: 2,
@@ -50,7 +50,7 @@ const Columns = {
     ADDED: 4
 };
 
-const PlaceStore = new Lang.Class({
+var PlaceStore = new Lang.Class({
     Name: 'PlaceStore',
     Extends: Gtk.ListStore,
 

@@ -28,7 +28,7 @@ const Utils = imports.utils;
 
 const MAX_MATCHES = 10;
 
-const OSMTypeSearchEntry = new Lang.Class({
+var OSMTypeSearchEntry = new Lang.Class({
     Name: 'OSMTypeSearchEntry',
     Extends: Gtk.SearchEntry,
     Template: 'resource:///org/gnome/Maps/ui/osm-type-search-entry.ui',

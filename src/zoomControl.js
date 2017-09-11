@@ -23,7 +23,7 @@ const Lang = imports.lang;
 
 const Utils = imports.utils;
 
-const ZoomControl = new Lang.Class({
+var ZoomControl = new Lang.Class({
     Name: 'ZoomControl',
     Extends: Gtk.Bin,
     Template: 'resource:///org/gnome/Maps/ui/zoom-control.ui',

@@ -28,7 +28,7 @@ const _Instruction = {
     SCALE_MARGIN: 0.01
 };
 
-const ShortPrintLayout = new Lang.Class({
+var ShortPrintLayout = new Lang.Class({
     Name: 'ShortPrintLayout',
     Extends: PrintLayout.PrintLayout,
 

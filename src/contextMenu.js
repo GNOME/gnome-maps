@@ -36,7 +36,7 @@ const Place = imports.place;
 const Utils = imports.utils;
 const ZoomInNotification = imports.zoomInNotification;
 
-const ContextMenu = new Lang.Class({
+var ContextMenu = new Lang.Class({
     Name: 'ContextMenu',
     Extends: Gtk.Menu,
     Template: 'resource:///org/gnome/Maps/ui/context-menu.ui',

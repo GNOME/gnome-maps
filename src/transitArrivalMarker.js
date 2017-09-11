@@ -27,7 +27,7 @@ const Location = imports.location;
 const MapMarker = imports.mapMarker;
 const Place = imports.place;
 
-const TransitArrivalMarker = new Lang.Class({
+var TransitArrivalMarker = new Lang.Class({
     Name: 'TransitArrivalMarker',
     Extends: MapMarker.MapMarker,
 

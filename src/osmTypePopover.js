@@ -26,7 +26,7 @@ const Lang = imports.lang;
 const OSMTypeListRow = imports.osmTypeListRow;
 const SearchPopover = imports.searchPopover;
 
-const OSMTypePopover = new Lang.Class({
+var OSMTypePopover = new Lang.Class({
     Name: 'OSMTypePopover',
     Extends: SearchPopover.SearchPopover,
     InternalChildren: ['list'],

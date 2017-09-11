@@ -24,7 +24,7 @@ const GObject = imports.gi.GObject;
 const Lang = imports.lang;
 const Location = imports.location;
 
-const SocialPlace = new Lang.Class({
+var SocialPlace = new Lang.Class({
     Name: 'SocialServiceSocialPlace',
     Extends: GObject.Object,
 

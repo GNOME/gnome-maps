@@ -35,7 +35,7 @@ const CLOCK_FORMAT_KEY = 'clock-format';
 let _desktopSettings = new Gio.Settings({ schema_id: 'org.gnome.desktop.interface' });
 let clockFormat = _desktopSettings.get_string(CLOCK_FORMAT_KEY);
 
-const TransitOptionsPanel = new Lang.Class({
+var TransitOptionsPanel = new Lang.Class({
     Name: 'TransitOptionsPanel',
     Extends: Gtk.Grid,
     Template: 'resource:///org/gnome/Maps/ui/transit-options-panel.ui',

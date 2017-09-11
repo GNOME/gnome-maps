@@ -31,7 +31,7 @@ const MapMarker = imports.mapMarker;
 const Place = imports.place;
 const Utils = imports.utils;
 
-const TurnPointMarker = new Lang.Class({
+var TurnPointMarker = new Lang.Class({
     Name: 'TurnPointMarker',
     Extends: MapMarker.MapMarker,
 

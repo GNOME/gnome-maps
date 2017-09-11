@@ -24,7 +24,7 @@ const MapView = imports.mapView;
 const ShapeLayer = imports.shapeLayer;
 const Utils = imports.utils;
 
-const ShapeLayerRow = new Lang.Class({
+var ShapeLayerRow = new Lang.Class({
     Name: 'ShapeLayerRow',
     Extends: Gtk.ListBoxRow,
     Template: 'resource:///org/gnome/Maps/ui/shape-layer-row.ui',
@@ -52,7 +52,7 @@ const ShapeLayerRow = new Lang.Class({
     }
 });
 
-const LayersPopover = new Lang.Class({
+var LayersPopover = new Lang.Class({
     Name: 'LayersPopover',
     Extends: Gtk.Popover,
     Template: 'resource:///org/gnome/Maps/ui/layers-popover.ui',

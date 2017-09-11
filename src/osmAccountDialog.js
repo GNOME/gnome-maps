@@ -27,11 +27,11 @@ const WebKit2 = imports.gi.WebKit2;
 
 const Application = imports.application;
 
-const Response = {
+var Response = {
     SIGNED_IN: 0
 };
 
-const OSMAccountDialog = new Lang.Class({
+var OSMAccountDialog = new Lang.Class({
     Name: 'OSMAccountDialog',
     Extends: Gtk.Dialog,
     Template: 'resource:///org/gnome/Maps/ui/osm-account-dialog.ui',
