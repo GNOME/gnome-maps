@@ -83,6 +83,9 @@ const Sidebar = new Lang.Class({
          */
         this._transitOptionsPanel =
             new TransitOptionsPanel.TransitOptionsPanel({ visible: true });
+        this._transitHeader.add_named(this._transitOptionsPanel, 'options');
+        this._transitHeader.add_named(this._transitItineraryHeader,
+                                      'itinerary-header');
         this._initTransportationToggles(this._modePedestrianToggle,
                                         this._modeBikeToggle,
                                         this._modeCarToggle,
@@ -101,10 +104,6 @@ const Sidebar = new Lang.Class({
          */
         if (!Application.routingDelegator.openTripPlanner.enabled)
             this._modeTransitToggle.destroy();
-
-        this._transitHeader.add_named(this._transitOptionsPanel, 'options');
-        this._transitHeader.add_named(this._transitItineraryHeader,
-                                      'itinerary-header');
     },
 
     _initTransportationToggles: function(pedestrian, bike, car, transit) {
