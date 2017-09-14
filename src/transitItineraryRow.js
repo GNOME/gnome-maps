@@ -92,17 +92,19 @@ var TransitItineraryRow = new Lang.Class({
     },
 
     _createLeg: function(leg, useCompact, useContractedLabels) {
+        let icon = new Gtk.Image({ icon_name: leg.iconName, visible: true });
+
+        icon.get_style_context().add_class('sidebar-icon');
+
         if (!leg.transit || useContractedLabels) {
             /* if this is a non-transit leg (walking), or in case we should
              * display only a mode icon (to save space), insert a sole icon */
-            return new Gtk.Image({ icon_name: leg.iconName,
-                                   visible: true })
+            return icon;
         } else {
             /* for transit legs put besides a short route label */
             let grid = new Gtk.Grid({ visible: true, column_spacing: 2 });
 
-            grid.attach(new Gtk.Image({ icon_name: leg.iconName, visible: true }),
-                        0, 0, 1, 1);
+            grid.attach(icon, 0, 0, 1, 1);
             grid.attach(new TransitRouteLabel.TransitRouteLabel({ leg: leg,
                                                                   compact: useCompact,
                                                                   visible: true }),
