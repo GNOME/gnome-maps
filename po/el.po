@@ -10,16 +10,16 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-03-02 17:55+0000\n"
-"PO-Revision-Date: 2017-04-08 21:01+0300\n"
-"Last-Translator: Tom Tryfonidis <tomtryf@gnome.org>\n"
+"POT-Creation-Date: 2017-09-22 09:22+0000\n"
+"PO-Revision-Date: 2017-09-04 22:41+0200\n"
+"Last-Translator: Efstathios Iosifidis <iosifidis@opensuse.org>\n"
 "Language-Team: Ελληνικά <opensuse-translation-el@opensuse.org>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Project-Style: gnome\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
@@ -63,7 +63,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:87 ../src/mainWindow.js:441
+#: ../src/application.js:87 ../src/mainWindow.js:489
 msgid "Maps"
 msgstr "Χάρτες"
 
@@ -196,6 +196,10 @@ msgstr ""
 "Υποδεικνύει αν ο χρήστης έχει συνδεθεί για να επεξεργαστεί τα δεδομένα του "
 "OpenStreetMap."
 
+#: ../data/org.gnome.Maps.gschema.xml.h:25
+msgid "Last used transportation type for routing"
+msgstr "Τελευταία χρησιμοποιημένος τύπος μεταφορικών μέσων για δρομολόγια"
+
 #: ../data/ui/app-menu.ui.h:1
 msgid "Set up OpenStreetMap Account"
 msgstr "Ρύθμιση λογαριασμού OpenStreetMap"
@@ -230,7 +234,7 @@ msgid "_Cancel"
 msgstr "Ά_κυρο"
 
 #. Translators: Check in is used as a verb
-#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:5
+#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:8
 msgid "C_heck in"
 msgstr "C_heck in"
 
@@ -345,6 +349,21 @@ msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Μετάβαση στην τρέχουσα τοποθεσία"
 
+#: ../data/ui/help-overlay.ui.h:12
+msgctxt "shortcut window"
+msgid "Switch to street view"
+msgstr "Εναλλαγή σε προβολή δρόμου"
+
+#: ../data/ui/help-overlay.ui.h:13
+msgctxt "shortcut window"
+msgid "Switch to aerial view"
+msgstr "Εναλλαγή σε εναέρια προβολή"
+
+#: ../data/ui/help-overlay.ui.h:14
+msgctxt "shortcut window"
+msgid "Open shape layer"
+msgstr "Άνοιγμα στρώσης σχήματος"
+
 #: ../data/ui/layers-popover.ui.h:1
 msgid "Load Map Layer"
 msgstr "Φόρτωση στρώσης χάρτη"
@@ -357,31 +376,36 @@ msgstr "Ενεργοποίηση υπηρεσιών τοποθεσίας για 
 msgid "Location Settings"
 msgstr "Ρυθμίσεις τοποθεσίας"
 
-#: ../data/ui/main-window.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:3
 msgid "Go to current location"
 msgstr "Μετάβαση στην τρέχουσα τοποθεσία"
 
-#: ../data/ui/main-window.ui.h:3
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:5
 msgid "Choose map type"
 msgstr "Επιλογή τύπου χάρτη"
 
-#: ../data/ui/main-window.ui.h:4
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:7
 msgid "Toggle route planner"
 msgstr "Εναλλαγή οργανωτή διαδρομής"
 
-#: ../data/ui/main-window.ui.h:5
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:9
 msgid "Toggle favorites"
 msgstr "Εναλλαγή αγαπημένων"
 
-#: ../data/ui/main-window.ui.h:6
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:11
 msgid "Print Route"
 msgstr "Εκτύπωση διαδρομής"
 
-#: ../data/ui/main-window.ui.h:7
+#: ../data/ui/main-window.ui.h:12
 msgid "Maps is offline!"
 msgstr "Οι Χάρτες είναι εκτός σύνδεσης!"
 
-#: ../data/ui/main-window.ui.h:8
+#: ../data/ui/main-window.ui.h:13
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -389,23 +413,27 @@ msgstr ""
 "Η εφαρμογή Χάρτες χρειάζεται μια ενεργή σύνδεση στο διαδίκτυο ώστε να "
 "λειτουργήσει σωστά, αλλά δε βρέθηκε κάποια."
 
-#: ../data/ui/main-window.ui.h:9
+#: ../data/ui/main-window.ui.h:14
 msgid "Check your connection and proxy settings."
 msgstr "Ελέγξτε τις ρυθμίσεις της σύνδεσης και του διαμεσολαβητή σας."
 
-#: ../data/ui/map-bubble.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:2
 msgid "Add to new route"
 msgstr "Προσθήκη σε νέα διαδρομή"
 
-#: ../data/ui/map-bubble.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:4
 msgid "Open with another application"
 msgstr "Άνοιγμα με άλλη εφαρμογή"
 
-#: ../data/ui/map-bubble.ui.h:3
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:6
 msgid "Mark as favorite"
 msgstr "Επισήμανση ως αγαπημένο"
 
-#: ../data/ui/map-bubble.ui.h:6
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:10
 msgid "Check in here"
 msgstr "Check in εδώ"
 
@@ -525,6 +553,7 @@ msgid "Recently Used"
 msgstr "Πρόσφατα χρησιμοποιημένα"
 
 #: ../data/ui/osm-edit-dialog.ui.h:8
+msgctxt "dialog title"
 msgid "Edit on OpenStreetMap"
 msgstr "Επεξεργασία στο OpenStreetMap"
 
@@ -532,11 +561,17 @@ msgstr "Επεξεργασία στο OpenStreetMap"
 msgid "Cancel"
 msgstr "Ακύρωση"
 
-#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:472
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:516
 msgid "Next"
 msgstr "Επόμενο"
 
-#: ../data/ui/place-bubble.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/place-bubble.ui.h:2
+msgid "Edit on OpenStreetMap"
+msgstr "Επεξεργασία στο OpenStreetMap"
+
+#. Translators: This is a tooltip
+#: ../data/ui/place-bubble.ui.h:4
 msgid "Show more information"
 msgstr "Εμφάνιση περισσότερων πληροφοριών"
 
@@ -544,7 +579,12 @@ msgstr "Εμφάνιση περισσότερων πληροφοριών"
 msgid "Press enter to search"
 msgstr "Πατήστε enter για αναζήτηση"
 
-#: ../data/ui/route-entry.ui.h:1
+#: ../data/ui/place-popover.ui.h:2
+msgid "No results found"
+msgstr "Δεν βρέθηκαν αποτελέσματα"
+
+#. Translators: This is a tooltip
+#: ../data/ui/route-entry.ui.h:2
 msgid "Drag to change order of the route"
 msgstr "Σύρετε για να αλλάξετε την σειρά στη διαδρομή"
 
@@ -560,7 +600,8 @@ msgstr "Ά_νοιγμα "
 msgid "Open Layer"
 msgstr "Άνοιγμα στρώσης"
 
-#: ../data/ui/shape-layer-row.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/shape-layer-row.ui.h:2
 msgid "Toggle visible"
 msgstr "Εναλλαγή ορατότητας"
 
@@ -596,11 +637,13 @@ msgstr ""
 msgid "Show more results"
 msgstr "Εμφάνιση περισσότερων αποτελεσμάτων"
 
-#: ../data/ui/transit-leg-row.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/transit-leg-row.ui.h:2
 msgid "Hide intermediate stops and information"
 msgstr "Απόκρυψη ενδιάμεσων στάσεων και πληροφοριών"
 
-#: ../data/ui/transit-leg-row.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/transit-leg-row.ui.h:4
 msgid "Show intermediate stops and information"
 msgstr "Εμφάνιση ενδιάμεσων στάσεων και πληροφοριών"
 
@@ -679,7 +722,7 @@ msgstr "Λείπουν απαιτούμενα γνωρίσματα"
 msgid "Could not find OSM element"
 msgstr "Αποτυχία εύρεσης στοιχείου OSM"
 
-#: ../src/application.js:103
+#: ../src/application.js:102
 msgid "A path to a local tiles directory structure"
 msgstr "Η τοποθεσία μιας τοπικής δομής πλακιδίων"
 
@@ -725,24 +768,24 @@ msgstr "Check in στο %s"
 msgid "Write an optional message to check in to %s."
 msgstr "Γράψτε ένα προαιρετικό μήνυμα για check in στο %s."
 
-#: ../src/checkInDialog.js:288 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:509
+#: ../src/checkInDialog.js:288 ../src/checkIn.js:165
+#: ../src/osmEditDialog.js:553
 msgid "An error has occurred"
 msgstr "Συνέβη κάποιο σφάλμα."
 
 #. Translators: %s is the place name that user wanted to check-in
-#: ../src/checkIn.js:135
+#: ../src/checkIn.js:147
 #, javascript-format
 msgid "Cannot find “%s” in the social service"
 msgstr "Αδύνατη η εύρεση του «%s» στην κοινωνική υπηρεσία."
 
-#: ../src/checkIn.js:137
+#: ../src/checkIn.js:149
 msgid "Cannot find a suitable place to check-in in this location"
 msgstr ""
 "Αδύνατη η εύρεση μιας κατάλληλης θέσης για έλεγχο εισόδου σε αυτήν την "
 "τοποθεσία."
 
-#: ../src/checkIn.js:141
+#: ../src/checkIn.js:153
 msgid ""
 "Credentials have expired, please open Online Accounts to sign in and enable "
 "this account"
@@ -750,23 +793,23 @@ msgstr ""
 "Τα διαπιστευτήρια έχουν λήξει, παρακαλούμε ανοίξτε τους διαδικτυακούς "
 "λογαριασμούς για να εισέλθετε και να ενεργοποιήσετε αυτόν τον λογαριασμό."
 
-#: ../src/contextMenu.js:96
+#: ../src/contextMenu.js:99
 msgid "Route from here"
 msgstr "Διαδρομή από εδώ"
 
-#: ../src/contextMenu.js:98
+#: ../src/contextMenu.js:101
 msgid "Add destination"
 msgstr "Προσθήκη προορισμού"
 
-#: ../src/contextMenu.js:100
+#: ../src/contextMenu.js:103
 msgid "Route to here"
 msgstr "Διαδρομή προς εδώ"
 
-#: ../src/contextMenu.js:129
+#: ../src/contextMenu.js:132
 msgid "Nothing found here!"
 msgstr "Δεν βρέθηκε τίποτα εδώ!"
 
-#: ../src/contextMenu.js:186
+#: ../src/contextMenu.js:189
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -807,12 +850,11 @@ msgstr "σφάλμα ανάλυσης"
 msgid "unknown geometry"
 msgstr "άγνωστη γεωμετρία"
 
-#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:630
+#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:665
 msgid "Route request failed."
 msgstr "Αποτυχία αιτήματος διαδρομής"
 
-#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:614
-#: ../src/openTripPlanner.js:728
+#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:628
 msgid "No route found."
 msgstr "Δεν βρέθηκε διαδρομή."
 
@@ -820,15 +862,15 @@ msgstr "Δεν βρέθηκε διαδρομή."
 msgid "Start!"
 msgstr "Εκκίνηση!"
 
-#: ../src/layersPopover.js:62
+#: ../src/mainWindow.js:59
 msgid "All Layer Files"
 msgstr "Όλα τα αρχεία στρώσεων"
 
-#: ../src/mainWindow.js:387
+#: ../src/mainWindow.js:431
 msgid "Failed to connect to location service"
 msgstr "Αποτυχία σύνδεσης με την υπηρεσία τοποθεσίας"
 
-#: ../src/mainWindow.js:439
+#: ../src/mainWindow.js:487
 msgid "translator-credits"
 msgstr ""
 "Ελληνική μεταφραστική ομάδα GNOME\n"
@@ -842,23 +884,31 @@ msgstr ""
 "Για περισσότερες πληροφορίες, επισκεφθείτε τη σελίδα\n"
 "http://gnome.gr/"
 
-#: ../src/mainWindow.js:442
+#: ../src/mainWindow.js:490
 msgid "A map application for GNOME"
 msgstr "Μια εφαρμογή χάρτη για το GNOME"
 
-#: ../src/mapView.js:354
+#: ../src/mapView.js:356
 msgid "File type is not supported"
 msgstr "Δεν υποστηρίζεται ο τύπος αρχείου"
 
-#: ../src/mapView.js:361
+#: ../src/mapView.js:363
 msgid "Failed to open layer"
 msgstr "Αποτυχία ανοίγματος στρώσης"
 
-#: ../src/mapView.js:397
+#: ../src/mapView.js:399
 msgid "Failed to open GeoURI"
 msgstr "Αποτυχία ανοίγματος GeoURI"
 
-#: ../src/openTripPlanner.js:626
+#: ../src/openTripPlanner.js:622
+msgid "No earlier alternatives found."
+msgstr "Δεν βρέθηκαν νεότερες εναλλακτικές."
+
+#: ../src/openTripPlanner.js:623
+msgid "No later alternatives found."
+msgstr "Δεν βρέθηκαν τελευταίες εναλλακτικές"
+
+#: ../src/openTripPlanner.js:661
 msgid "No timetable data found for this route."
 msgstr "Δεν βρέθηκε δρομολόγιο γι' αυτή τη διαδρομή."
 
@@ -904,7 +954,7 @@ msgstr "Το επίσημο όνομα. Αυτό φαίνεται συνήθως
 msgid "Address"
 msgstr "Διεύθυνση"
 
-#: ../src/osmEditDialog.js:118 ../src/placeBubble.js:158
+#: ../src/osmEditDialog.js:118
 msgid "Website"
 msgstr "Ιστότοπος"
 
@@ -929,7 +979,7 @@ msgstr ""
 "σύμβολο +. Προσέχετε τους τοπικούς νόμους περί ιδιωτικότητας, ειδικά για "
 "απόρρητα τηλεφωνικά νούμερα"
 
-#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:164
+#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:170
 msgid "Wikipedia"
 msgstr "Βικιπαιδεία"
 
@@ -966,10 +1016,12 @@ msgid "Wheelchair access"
 msgstr "Πρόσβαση αμαξιδίου"
 
 #: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
+#: ../src/osmEditDialog.js:212
 msgid "Yes"
 msgstr "Ναι"
 
 #: ../src/osmEditDialog.js:166 ../src/osmEditDialog.js:175
+#: ../src/osmEditDialog.js:213
 msgid "No"
 msgstr "Όχι"
 
@@ -1004,40 +1056,158 @@ msgstr "Υπολογιστής"
 msgid "Service"
 msgstr "Υπηρεσία"
 
-#: ../src/osmEditDialog.js:288
+#: ../src/osmEditDialog.js:182
+msgid "Religion"
+msgstr "Θρησκεία"
+
+#: ../src/osmEditDialog.js:185 ../src/translations.js:363
+msgid "Animism"
+msgstr "Ανιμισμός"
+
+#: ../src/osmEditDialog.js:186
+msgid "Bahá’í"
+msgstr "Μπαχάι"
+
+#: ../src/osmEditDialog.js:187 ../src/translations.js:365
+msgid "Buddhism"
+msgstr "Βουδισμός"
+
+#: ../src/osmEditDialog.js:188 ../src/translations.js:366
+msgid "Caodaism"
+msgstr "Καοδαϊσμός"
+
+#: ../src/osmEditDialog.js:189 ../src/translations.js:367
+msgid "Christianity"
+msgstr "Χριστιανισμός"
+
+#: ../src/osmEditDialog.js:190 ../src/translations.js:368
+msgid "Confucianism"
+msgstr "Κομφουκιανισμός"
+
+#: ../src/osmEditDialog.js:191 ../src/translations.js:369
+msgid "Hinduism"
+msgstr "Ινδουϊσμός"
+
+#: ../src/osmEditDialog.js:192 ../src/translations.js:370
+msgid "Jainism"
+msgstr "Τζαϊνισμός"
+
+#: ../src/osmEditDialog.js:193 ../src/translations.js:371
+msgid "Judaism"
+msgstr "Ιουδαϊσμός"
+
+#: ../src/osmEditDialog.js:194 ../src/translations.js:372
+msgid "Islam"
+msgstr "Ισλαμισμός"
+
+#: ../src/osmEditDialog.js:195 ../src/translations.js:373
+msgid "Multiple Religions"
+msgstr "Πολλαπλές θρησκείες"
+
+#: ../src/osmEditDialog.js:196 ../src/translations.js:374
+msgid "Paganism"
+msgstr "Παγανισμός"
+
+#: ../src/osmEditDialog.js:197 ../src/translations.js:375
+msgid "Pastafarianism"
+msgstr "Πασαφιανισμός"
+
+#: ../src/osmEditDialog.js:198 ../src/translations.js:376
+msgid "Scientology"
+msgstr "Σαηεντολογία"
+
+#: ../src/osmEditDialog.js:199 ../src/translations.js:377
+msgid "Shinto"
+msgstr "Σιντό"
+
+#: ../src/osmEditDialog.js:200 ../src/translations.js:378
+msgid "Sikhism"
+msgstr "Σιχισμός"
+
+#: ../src/osmEditDialog.js:201 ../src/translations.js:379
+msgid "Spiritualism"
+msgstr "Πνευματισμός"
+
+#: ../src/osmEditDialog.js:202 ../src/translations.js:380
+msgid "Taoism"
+msgstr "Ταοϊσμός"
+
+#: ../src/osmEditDialog.js:203 ../src/translations.js:381
+msgid "Unitarian Universalism"
+msgstr "Ουνιταριανός Ουνιβερσαλισμός"
+
+#: ../src/osmEditDialog.js:204 ../src/translations.js:382
+msgid "Voodoo"
+msgstr "Βουντού"
+
+#: ../src/osmEditDialog.js:205 ../src/translations.js:383
+msgid "Yazidism"
+msgstr "Γιαζιδισμός"
+
+#: ../src/osmEditDialog.js:206 ../src/translations.js:384
+msgid "Zoroastrianism"
+msgstr "Ζωροαστριανισμός"
+
+#: ../src/osmEditDialog.js:209
+msgid "Toilets"
+msgstr "Τουαλέτες"
+
+#: ../src/osmEditDialog.js:216
+msgid "Note"
+msgstr "Σημείωση"
+
+#: ../src/osmEditDialog.js:219
+msgid ""
+"Information used to inform other mappers about non-obvious information about "
+"an element, the author’s intent when creating it, or hints for further "
+"improvement."
+msgstr ""
+"Πληροφορίες που χρησιμοποιούνται για την ενημέρωση άλλων χαρτογράφων σχετικά "
+"με τις μη προφανείς πληροφορίες σχετικά με ένα στοιχείο, την πρόθεση του "
+"δημιουργού κατά τη δημιουργία του, ή συμβουλές για περαιτέρω βελτίωση."
+
+#: ../src/osmEditDialog.js:328
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Προσθήκη στο OpenStreetMap"
 
-#: ../src/osmEditDialog.js:340
+#: ../src/osmEditDialog.js:381
 msgid "Select Type"
 msgstr "Επιλογή τύπου"
 
-#: ../src/osmEditDialog.js:458
+#: ../src/osmEditDialog.js:500
 msgid "Done"
 msgstr "Έτοιμο"
 
-#: ../src/placeBubble.js:121
+#: ../src/placeBubble.js:122
 msgid "Population:"
 msgstr "Πληθυσμός:"
 
-#: ../src/placeBubble.js:127
+#: ../src/placeBubble.js:128
 msgid "Altitude:"
 msgstr "Υψόμετρο:"
 
-#: ../src/placeBubble.js:132
+#: ../src/placeBubble.js:133
 msgid "Opening hours:"
 msgstr "Ώρες λειτουργίας:"
 
-#: ../src/placeBubble.js:137
+#: ../src/placeBubble.js:138
 msgid "Internet access:"
 msgstr "Πρόσβαση στο διαδίκτυο:"
 
-#: ../src/placeBubble.js:142
+#: ../src/placeBubble.js:143
+msgid "Religion:"
+msgstr "Θρησκεία:"
+
+#: ../src/placeBubble.js:148
+msgid "Toilets:"
+msgstr "Τουαλέτες:"
+
+#: ../src/placeBubble.js:153
 msgid "Wheelchair access:"
 msgstr "Πρόσβαση αμαξιδίου:"
 
-#: ../src/placeBubble.js:148 ../src/placeBubble.js:152
+#: ../src/placeBubble.js:159 ../src/placeBubble.js:163
 msgid "Phone:"
 msgstr "Τηλέφωνο:"
 
@@ -1051,7 +1221,7 @@ msgstr "Αποτυχία ανάλυσης Geo URI"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: ../src/place.js:178 ../src/translations.js:329
+#: ../src/place.js:219 ../src/translations.js:329 ../src/translations.js:391
 msgid "yes"
 msgstr "ναι"
 
@@ -1060,7 +1230,7 @@ msgstr "ναι"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:185
+#: ../src/place.js:226
 msgid "limited"
 msgstr "περιορισμένη"
 
@@ -1072,7 +1242,7 @@ msgstr "περιορισμένη"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: ../src/place.js:191 ../src/translations.js:335
+#: ../src/place.js:232 ../src/translations.js:335 ../src/translations.js:392
 msgid "no"
 msgstr "όχι"
 
@@ -1081,7 +1251,7 @@ msgstr "όχι"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:198
+#: ../src/place.js:239
 msgid "designated"
 msgstr "υποδεικνυόμενο"
 
@@ -1111,7 +1281,7 @@ msgid "failed to load file"
 msgstr "αδυναμία φόρτωσης αρχείου"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:285
+#: ../src/sidebar.js:293
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Εκτιμώμενος χρόνος: %s"
@@ -1131,7 +1301,7 @@ msgstr "Άφιξη"
 #. Translators: this is a format string indicating instructions
 #. * starting a journey at the address given as the parameter
 #.
-#: ../src/transitLegRow.js:74
+#: ../src/transitLegRow.js:73
 #, javascript-format
 msgid "Start at %s"
 msgstr "Έναρξη από %s"
@@ -1140,7 +1310,7 @@ msgstr "Έναρξη από %s"
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: ../src/transitLegRow.js:80
+#: ../src/transitLegRow.js:79
 msgid "Start"
 msgstr "Έναρξη"
 
@@ -1172,7 +1342,7 @@ msgstr "Φόρτωση τελευταίων εναλλακτικών"
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: ../src/transitOptionsPanel.js:141
+#: ../src/transitOptionsPanel.js:142
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e %b"
@@ -1182,7 +1352,7 @@ msgstr "%e %b"
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: ../src/transitPlan.js:248
+#: ../src/transitPlan.js:253
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -1191,9 +1361,8 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: ../src/transitPlan.js:275
+#: ../src/transitPlan.js:280
 #, javascript-format
-#| msgid "%f min"
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "%d λεπτό"
@@ -1203,7 +1372,7 @@ msgstr[1] "%d λεπτά"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: ../src/transitPlan.js:286
+#: ../src/transitPlan.js:291
 #, javascript-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -1214,7 +1383,7 @@ msgstr[1] "%d ώρες"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: ../src/transitPlan.js:292
+#: ../src/transitPlan.js:297
 #, javascript-format
 msgid "%d:%02d hour"
 msgid_plural "%d:%02d hours"
@@ -1227,7 +1396,7 @@ msgstr[1] "%d:%02d ώρες"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: ../src/transitPlan.js:611
+#: ../src/transitPlan.js:649
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -1408,26 +1577,38 @@ msgstr "%f s"
 #. Translators: This is a distance measured in kilometers
 #: ../src/utils.js:352
 #, javascript-format
-msgid "%f km"
-msgstr "%f km"
+msgid "%s km"
+msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
 #: ../src/utils.js:355
 #, javascript-format
-msgid "%f m"
-msgstr "%f m"
+msgid "%s m"
+msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
 #: ../src/utils.js:363
 #, javascript-format
-msgid "%f mi"
-msgstr "%f mi"
+msgid "%s mi"
+msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
 #: ../src/utils.js:366
 #, javascript-format
-msgid "%f ft"
-msgstr "%f ft"
+msgid "%s ft"
+msgstr "%s ft"
+
+#~ msgid "%f km"
+#~ msgstr "%f km"
+
+#~ msgid "%f m"
+#~ msgstr "%f m"
+
+#~ msgid "%f mi"
+#~ msgstr "%f mi"
+
+#~ msgid "%f ft"
+#~ msgstr "%f ft"
 
 #~ msgid "Position not found"
 #~ msgstr "Η τοποθεσία δεν βρέθηκε"
