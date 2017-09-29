@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-12 17:50+0200\n"
-"PO-Revision-Date: 2017-05-12 18:04+0200\n"
+"POT-Creation-Date: 2017-09-29 17:50+0200\n"
+"PO-Revision-Date: 2017-09-29 16:01+0200\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
 "Language: ar\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Virtaal 1.0.0-beta1\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid "GNOME Maps"
@@ -33,8 +33,8 @@ msgid ""
 "quickly find the place you’re looking for by searching for a city or street, "
 "or locate a place to meet a friend."
 msgstr ""
-"يمكّنك تطبيق الخرائط من مطالعة خرائط العالم أجمع، فهو يمكّنك من العثور على "
-"ما تريد بالبحث عن مدينة أو اسم شارع أو مكان ستجمتع فيه مع صديقك."
+"يمكّنك تطبيق الخرائط من مطالعة خرائط العالم أجمع، فهو يمكّنك من العثور على ما "
+"تريد بالبحث عن مدينة أو اسم شارع أو مكان ستجمتع فيه مع صديقك."
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:4
 msgid ""
@@ -57,7 +57,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:87 ../src/mainWindow.js:441
+#: ../src/application.js:87 ../src/mainWindow.js:489
 msgid "Maps"
 msgstr "الخرائط"
 
@@ -185,6 +185,10 @@ msgstr "اسم مستخدم أو عنوان البريد الإلكترونيّ 
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr "يشير في حال كان المستخدم قد ولج لتحرير بيانات «خريطة الشارع المفتوحة»."
 
+#: ../data/org.gnome.Maps.gschema.xml.h:25
+msgid "Last used transportation type for routing"
+msgstr ""
+
 #: ../data/ui/app-menu.ui.h:1
 msgid "Set up OpenStreetMap Account"
 msgstr "أعدّ حساب «خريطة الشارع المفتوحة»"
@@ -219,7 +223,7 @@ msgid "_Cancel"
 msgstr "أل_غِ"
 
 #. Translators: Check in is used as a verb
-#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:5
+#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:8
 msgid "C_heck in"
 msgstr "اد_خل"
 
@@ -334,6 +338,21 @@ msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "اذهب إلى المكان الحالي"
 
+#: ../data/ui/help-overlay.ui.h:12
+msgctxt "shortcut window"
+msgid "Switch to street view"
+msgstr "انتقل إلى منظور الشارع"
+
+#: ../data/ui/help-overlay.ui.h:13
+msgctxt "shortcut window"
+msgid "Switch to aerial view"
+msgstr "انتقل إلى منظور جوي"
+
+#: ../data/ui/help-overlay.ui.h:14
+msgctxt "shortcut window"
+msgid "Open shape layer"
+msgstr "افتح طبقة الشكل"
+
 #: ../data/ui/layers-popover.ui.h:1
 msgid "Load Map Layer"
 msgstr "حمّل طبقة خريطة"
@@ -346,31 +365,36 @@ msgstr "فعّل خدمات التموضع لتجد مكانك"
 msgid "Location Settings"
 msgstr "إعدادات التموضع"
 
-#: ../data/ui/main-window.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:3
 msgid "Go to current location"
 msgstr "اذهب إلى المكان الحالي"
 
-#: ../data/ui/main-window.ui.h:3
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:5
 msgid "Choose map type"
 msgstr "اختر نوع الخريطة"
 
-#: ../data/ui/main-window.ui.h:4
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:7
 msgid "Toggle route planner"
 msgstr "اعرض/أخفِ مخطّط المسارات"
 
-#: ../data/ui/main-window.ui.h:5
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:9
 msgid "Toggle favorites"
 msgstr "اعرض/أخفِ المفضّلة"
 
-#: ../data/ui/main-window.ui.h:6
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:11
 msgid "Print Route"
 msgstr "اطبع المسار"
 
-#: ../data/ui/main-window.ui.h:7
+#: ../data/ui/main-window.ui.h:12
 msgid "Maps is offline!"
 msgstr "تطبيق الخرائط يعمل بلا اتصال!"
 
-#: ../data/ui/main-window.ui.h:8
+#: ../data/ui/main-window.ui.h:13
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -378,23 +402,27 @@ msgstr ""
 "يحتاج تطبيق الخرائط إلى اتصال إنترنت نشط ليعمل كما ينبغي، لكنه لم يعثر على "
 "واحد."
 
-#: ../data/ui/main-window.ui.h:9
+#: ../data/ui/main-window.ui.h:14
 msgid "Check your connection and proxy settings."
 msgstr "افحص إعدادات اتصالك ووكيلك."
 
-#: ../data/ui/map-bubble.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:2
 msgid "Add to new route"
 msgstr "أضفه إلى مسار جديد"
 
-#: ../data/ui/map-bubble.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:4
 msgid "Open with another application"
 msgstr "افتح بتطبيق آخر"
 
-#: ../data/ui/map-bubble.ui.h:3
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:6
 msgid "Mark as favorite"
 msgstr "علّمه كمفضّل"
 
-#: ../data/ui/map-bubble.ui.h:6
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:10
 msgid "Check in here"
 msgstr "ادخل هنا"
 
@@ -511,6 +539,7 @@ msgid "Recently Used"
 msgstr "المستخدمة حديثًا"
 
 #: ../data/ui/osm-edit-dialog.ui.h:8
+msgctxt "dialog title"
 msgid "Edit on OpenStreetMap"
 msgstr "حرر على «خريطة الشارع المفتوحة»"
 
@@ -518,11 +547,17 @@ msgstr "حرر على «خريطة الشارع المفتوحة»"
 msgid "Cancel"
 msgstr "ألغِ"
 
-#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:475
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:516
 msgid "Next"
 msgstr "التالي"
 
-#: ../data/ui/place-bubble.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/place-bubble.ui.h:2
+msgid "Edit on OpenStreetMap"
+msgstr "حرر على «خريطة الشارع المفتوحة»"
+
+#. Translators: This is a tooltip
+#: ../data/ui/place-bubble.ui.h:4
 msgid "Show more information"
 msgstr "اعرض معلومات أكثر"
 
@@ -530,7 +565,12 @@ msgstr "اعرض معلومات أكثر"
 msgid "Press enter to search"
 msgstr "اضغط Enter للبحث"
 
-#: ../data/ui/route-entry.ui.h:1
+#: ../data/ui/place-popover.ui.h:2
+msgid "No results found"
+msgstr "لا نتائج"
+
+#. Translators: This is a tooltip
+#: ../data/ui/route-entry.ui.h:2
 msgid "Drag to change order of the route"
 msgstr "اسحب لتغيير المسار"
 
@@ -546,7 +586,8 @@ msgstr "ا_فتح"
 msgid "Open Layer"
 msgstr "افتح طبقة"
 
-#: ../data/ui/shape-layer-row.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/shape-layer-row.ui.h:2
 msgid "Toggle visible"
 msgstr "اعرض/أخفِ"
 
@@ -578,11 +619,13 @@ msgstr ""
 msgid "Show more results"
 msgstr "اعرض نتائج أكثر"
 
-#: ../data/ui/transit-leg-row.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/transit-leg-row.ui.h:2
 msgid "Hide intermediate stops and information"
 msgstr "أخف الخطوات البينية و المعلومات"
 
-#: ../data/ui/transit-leg-row.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/transit-leg-row.ui.h:4
 msgid "Show intermediate stops and information"
 msgstr "اعرض الخطوات البينية و المعلومات"
 
@@ -661,7 +704,7 @@ msgstr "الصفات المطلوبة ناقصة"
 msgid "Could not find OSM element"
 msgstr "تعذر إيجاد عنصر OSM"
 
-#: ../src/application.js:103
+#: ../src/application.js:102
 msgid "A path to a local tiles directory structure"
 msgstr "مسار يشير إلى دليل محليّ لبنية قطع خرائط"
 
@@ -708,7 +751,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "اكتب رسالة اختيارية للدخول إلى %s."
 
 #: ../src/checkInDialog.js:288 ../src/checkIn.js:165
-#: ../src/osmEditDialog.js:512
+#: ../src/osmEditDialog.js:553
 msgid "An error has occurred"
 msgstr "حدث خطأ ما"
 
@@ -730,23 +773,23 @@ msgstr ""
 "انتهت صلاحية معلومات الولوج، من فضلك افتح الحساب الشبكية لتلج وتفعّل هذا "
 "الحساب"
 
-#: ../src/contextMenu.js:96
+#: ../src/contextMenu.js:99
 msgid "Route from here"
 msgstr "المسار من هنا"
 
-#: ../src/contextMenu.js:98
+#: ../src/contextMenu.js:101
 msgid "Add destination"
 msgstr "أضف مقصدا"
 
-#: ../src/contextMenu.js:100
+#: ../src/contextMenu.js:103
 msgid "Route to here"
 msgstr "المسار إلى هنا"
 
-#: ../src/contextMenu.js:129
+#: ../src/contextMenu.js:132
 msgid "Nothing found here!"
 msgstr "لم أجد شيئا هنا!"
 
-#: ../src/contextMenu.js:186
+#: ../src/contextMenu.js:189
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -787,12 +830,11 @@ msgstr "خطأ في التحليل"
 msgid "unknown geometry"
 msgstr "الهندسة مجهولة"
 
-#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:630
+#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:665
 msgid "Route request failed."
 msgstr "فشل طلب المسار."
 
-#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:614
-#: ../src/openTripPlanner.js:728
+#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:628
 msgid "No route found."
 msgstr "لا مسار."
 
@@ -800,38 +842,46 @@ msgstr "لا مسار."
 msgid "Start!"
 msgstr "ابدأ!"
 
-#: ../src/layersPopover.js:62
+#: ../src/mainWindow.js:59
 msgid "All Layer Files"
 msgstr "كل ملفات الطبقات"
 
-#: ../src/mainWindow.js:387
+#: ../src/mainWindow.js:431
 msgid "Failed to connect to location service"
 msgstr "فشل الاتصال بخدمة التموضع"
 
-#: ../src/mainWindow.js:439
+#: ../src/mainWindow.js:487
 msgid "translator-credits"
 msgstr ""
 "فريق عربآيز للترجمة http://www.arabeyes.org:\n"
 "خالد حسني\t<khaledhosny@eglug.org>\n"
 "صفا الفليج\t<safa1996alfulaij@gmail.com>"
 
-#: ../src/mainWindow.js:442
+#: ../src/mainWindow.js:490
 msgid "A map application for GNOME"
 msgstr "تطبيق خرائط لجنوم"
 
-#: ../src/mapView.js:354
+#: ../src/mapView.js:356
 msgid "File type is not supported"
 msgstr "نوع الملفات غير مدعوم"
 
-#: ../src/mapView.js:361
+#: ../src/mapView.js:363
 msgid "Failed to open layer"
 msgstr "فشل فتح الطبقة"
 
-#: ../src/mapView.js:397
+#: ../src/mapView.js:399
 msgid "Failed to open GeoURI"
 msgstr "فشل فتح العنوان الجغرافي"
 
-#: ../src/openTripPlanner.js:626
+#: ../src/openTripPlanner.js:622
+msgid "No earlier alternatives found."
+msgstr "لم يُعثر على بدائل سابقة."
+
+#: ../src/openTripPlanner.js:623
+msgid "No later alternatives found."
+msgstr "لم يُعثر على بدائل لاحقة."
+
+#: ../src/openTripPlanner.js:661
 msgid "No timetable data found for this route."
 msgstr "لم يُعثر على بيانات المواعيد لهذا المسار."
 
@@ -877,7 +927,7 @@ msgstr "الاسم الرسمي. غالبا ما يكون على العلاما�
 msgid "Address"
 msgstr "العنوان"
 
-#: ../src/osmEditDialog.js:118 ../src/placeBubble.js:159
+#: ../src/osmEditDialog.js:118
 msgid "Website"
 msgstr "موقع الوِب"
 
@@ -901,7 +951,7 @@ msgstr ""
 "رقم الهاتف. استخدم الصيغة العالمية، مبتدءًا الرقم بعلامة +. انتبه لحقوق "
 "الخصوصية في الدول، خصوصا تلك الخاصة بأرقام الهواتف الخاصة."
 
-#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:165
+#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:170
 msgid "Wikipedia"
 msgstr "ويكيبيديا"
 
@@ -937,10 +987,12 @@ msgid "Wheelchair access"
 msgstr "دخول الكراسي ذات العجلات"
 
 #: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
+#: ../src/osmEditDialog.js:212
 msgid "Yes"
 msgstr "مسموح"
 
 #: ../src/osmEditDialog.js:166 ../src/osmEditDialog.js:175
+#: ../src/osmEditDialog.js:213
 msgid "No"
 msgstr "ممنوع"
 
@@ -975,16 +1027,125 @@ msgstr "طرفيّة"
 msgid "Service"
 msgstr "خدمة"
 
-#: ../src/osmEditDialog.js:288
+#: ../src/osmEditDialog.js:182
+msgid "Religion"
+msgstr "الدين"
+
+#: ../src/osmEditDialog.js:185 ../src/translations.js:363
+msgid "Animism"
+msgstr "إحيائية"
+
+#: ../src/osmEditDialog.js:186
+msgid "Bahá’í"
+msgstr "بهائية"
+
+#: ../src/osmEditDialog.js:187 ../src/translations.js:365
+msgid "Buddhism"
+msgstr "بوذية"
+
+#: ../src/osmEditDialog.js:188 ../src/translations.js:366
+msgid "Caodaism"
+msgstr "كاو دائية"
+
+#: ../src/osmEditDialog.js:189 ../src/translations.js:367
+msgid "Christianity"
+msgstr "مسيحية"
+
+#: ../src/osmEditDialog.js:190 ../src/translations.js:368
+msgid "Confucianism"
+msgstr "كونفشيوسية"
+
+#: ../src/osmEditDialog.js:191 ../src/translations.js:369
+msgid "Hinduism"
+msgstr "هندوسية"
+
+#: ../src/osmEditDialog.js:192 ../src/translations.js:370
+msgid "Jainism"
+msgstr "جاينية"
+
+#: ../src/osmEditDialog.js:193 ../src/translations.js:371
+msgid "Judaism"
+msgstr "يهودية"
+
+#: ../src/osmEditDialog.js:194 ../src/translations.js:372
+msgid "Islam"
+msgstr "إسلام"
+
+#: ../src/osmEditDialog.js:195 ../src/translations.js:373
+msgid "Multiple Religions"
+msgstr "ديانات متعددة"
+
+#: ../src/osmEditDialog.js:196 ../src/translations.js:374
+msgid "Paganism"
+msgstr "وثنية"
+
+#: ../src/osmEditDialog.js:197 ../src/translations.js:375
+msgid "Pastafarianism"
+msgstr "باستافارية"
+
+#: ../src/osmEditDialog.js:198 ../src/translations.js:376
+msgid "Scientology"
+msgstr "سينتولوجيا"
+
+#: ../src/osmEditDialog.js:199 ../src/translations.js:377
+msgid "Shinto"
+msgstr "شنتو"
+
+#: ../src/osmEditDialog.js:200 ../src/translations.js:378
+msgid "Sikhism"
+msgstr "سيخية"
+
+#: ../src/osmEditDialog.js:201 ../src/translations.js:379
+msgid "Spiritualism"
+msgstr "روحانية"
+
+#: ../src/osmEditDialog.js:202 ../src/translations.js:380
+msgid "Taoism"
+msgstr "طاوية"
+
+#: ../src/osmEditDialog.js:203 ../src/translations.js:381
+msgid "Unitarian Universalism"
+msgstr "توحيدية كونية"
+
+#: ../src/osmEditDialog.js:204 ../src/translations.js:382
+msgid "Voodoo"
+msgstr "فودو"
+
+#: ../src/osmEditDialog.js:205 ../src/translations.js:383
+msgid "Yazidism"
+msgstr "يزدية"
+
+#: ../src/osmEditDialog.js:206 ../src/translations.js:384
+msgid "Zoroastrianism"
+msgstr "زرادشتية"
+
+#: ../src/osmEditDialog.js:209
+msgid "Toilets"
+msgstr "حمامات"
+
+#: ../src/osmEditDialog.js:216
+msgid "Note"
+msgstr "ملاحظة"
+
+#: ../src/osmEditDialog.js:219
+msgid ""
+"Information used to inform other mappers about non-obvious information about "
+"an element, the author’s intent when creating it, or hints for further "
+"improvement."
+msgstr ""
+"معلومات تعلم الخرائطيين الآخرين عن معلومات غير بديهية عن عنصر ما، أو غرض "
+"المؤلف عند إنشائه، أو ملاحظات تساعد في تحسينه."
+
+#: ../src/osmEditDialog.js:328
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "أضف إلى «خريطة الشارع المفتوحة»"
 
-#: ../src/osmEditDialog.js:341
+#: ../src/osmEditDialog.js:381
 msgid "Select Type"
 msgstr "اختر نوعًا"
 
-#: ../src/osmEditDialog.js:460
+#: ../src/osmEditDialog.js:500
 msgid "Done"
 msgstr "تمّ"
 
@@ -1005,10 +1166,18 @@ msgid "Internet access:"
 msgstr "الوصول إلى الإنترنت:"
 
 #: ../src/placeBubble.js:143
+msgid "Religion:"
+msgstr "الدين:"
+
+#: ../src/placeBubble.js:148
+msgid "Toilets:"
+msgstr "حمامات:"
+
+#: ../src/placeBubble.js:153
 msgid "Wheelchair access:"
 msgstr "دخول الكراسي ذات العجلات:"
 
-#: ../src/placeBubble.js:149 ../src/placeBubble.js:153
+#: ../src/placeBubble.js:159 ../src/placeBubble.js:163
 msgid "Phone:"
 msgstr "الهاتف:"
 
@@ -1022,7 +1191,7 @@ msgstr "فشل تحليل العنوان الجغرافي"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: ../src/place.js:178 ../src/translations.js:329
+#: ../src/place.js:219 ../src/translations.js:329 ../src/translations.js:391
 msgid "yes"
 msgstr "مسموح"
 
@@ -1031,7 +1200,7 @@ msgstr "مسموح"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:185
+#: ../src/place.js:226
 msgid "limited"
 msgstr "محدود"
 
@@ -1043,7 +1212,7 @@ msgstr "محدود"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: ../src/place.js:191 ../src/translations.js:335
+#: ../src/place.js:232 ../src/translations.js:335 ../src/translations.js:392
 msgid "no"
 msgstr "ممنوع"
 
@@ -1052,7 +1221,7 @@ msgstr "ممنوع"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:198
+#: ../src/place.js:239
 msgid "designated"
 msgstr "محدّد"
 
@@ -1082,7 +1251,7 @@ msgid "failed to load file"
 msgstr "فشل تحميل الملف"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:285
+#: ../src/sidebar.js:293
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "الوقت المقدّر: %s"
@@ -1102,7 +1271,7 @@ msgstr "تصل"
 #. Translators: this is a format string indicating instructions
 #. * starting a journey at the address given as the parameter
 #.
-#: ../src/transitLegRow.js:74
+#: ../src/transitLegRow.js:73
 #, javascript-format
 msgid "Start at %s"
 msgstr "ابدأ من %s"
@@ -1111,7 +1280,7 @@ msgstr "ابدأ من %s"
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: ../src/transitLegRow.js:80
+#: ../src/transitLegRow.js:79
 msgid "Start"
 msgstr "ابدأ"
 
@@ -1143,7 +1312,7 @@ msgstr "حمّل البدائل اللاحقة"
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: ../src/transitOptionsPanel.js:141
+#: ../src/transitOptionsPanel.js:142
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e %B"
@@ -1153,7 +1322,7 @@ msgstr "%e %B"
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: ../src/transitPlan.js:248
+#: ../src/transitPlan.js:253
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -1162,7 +1331,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: ../src/transitPlan.js:275
+#: ../src/transitPlan.js:280
 #, javascript-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -1177,7 +1346,7 @@ msgstr[5] "%d دقيقة"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: ../src/transitPlan.js:286
+#: ../src/transitPlan.js:291
 #, javascript-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -1192,7 +1361,7 @@ msgstr[5] "%d ساعة"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: ../src/transitPlan.js:292
+#: ../src/transitPlan.js:297
 #, javascript-format
 msgid "%d:%02d hour"
 msgid_plural "%d:%02d hours"
@@ -1209,7 +1378,7 @@ msgstr[5] "%d:%02d ساعة"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: ../src/transitPlan.js:611
+#: ../src/transitPlan.js:649
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -1390,26 +1559,38 @@ msgstr "%f ثا"
 #. Translators: This is a distance measured in kilometers
 #: ../src/utils.js:352
 #, javascript-format
-msgid "%f km"
-msgstr "%f كم"
+msgid "%s km"
+msgstr "%s كم"
 
 #. Translators: This is a distance measured in meters
 #: ../src/utils.js:355
 #, javascript-format
-msgid "%f m"
-msgstr "%f م"
+msgid "%s m"
+msgstr "%s م"
 
 #. Translators: This is a distance measured in miles
 #: ../src/utils.js:363
 #, javascript-format
-msgid "%f mi"
-msgstr "%f ميل"
+msgid "%s mi"
+msgstr "%s ميل"
 
 #. Translators: This is a distance measured in feet
 #: ../src/utils.js:366
 #, javascript-format
-msgid "%f ft"
-msgstr "%f قدم"
+msgid "%s ft"
+msgstr "%s قدم"
+
+#~ msgid "%f km"
+#~ msgstr "%f كم"
+
+#~ msgid "%f m"
+#~ msgstr "%f م"
+
+#~ msgid "%f mi"
+#~ msgstr "%f ميل"
+
+#~ msgid "%f ft"
+#~ msgstr "%f قدم"
 
 #~ msgid "Edit Location"
 #~ msgstr "حرّر المكان"
