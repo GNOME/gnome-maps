@@ -23,6 +23,7 @@ const Lang = imports.lang;
 
 const Gdk = imports.gi.Gdk;
 
+const Color = imports.color;
 const Location = imports.location;
 const MapMarker = imports.mapMarker;
 const Place = imports.place;
@@ -43,6 +44,9 @@ var TransitWalkMarker = new Lang.Class({
         else
             point = params.leg.polyline[0];
 
+        let bgColor = params.leg.color ? params.leg.color :
+                                         TransitPlan.DEFAULT_ROUTE_COLOR;
+
         delete params.leg;
         delete params.previousLeg;
 
@@ -54,9 +58,12 @@ var TransitWalkMarker = new Lang.Class({
 
         this.parent(params);
 
-        let color = new Gdk.RGBA({ red: 0,
-                                   green: 0,
-                                   blue: 0,
+        let bgRed = Color.parseColor(bgColor, 0);
+        let bgGreen = Color.parseColor(bgColor, 1);
+        let bgBlue = Color.parseColor(bgColor, 2);
+        let color = new Gdk.RGBA({ red: bgRed,
+                                   green: bgGreen,
+                                   blue: bgBlue,
                                    alpha: 1.0
                                  });
         let actor =
