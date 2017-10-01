@@ -30,6 +30,7 @@ const Color = imports.color;
 const Location = imports.location;
 const MapMarker = imports.mapMarker;
 const Place = imports.place;
+const TransitPlan = imports.transitPlan;
 const Utils = imports.utils;
 
 const ICON_SIZE = 12;
@@ -69,11 +70,11 @@ var TransitBoardMarker = new Lang.Class({
      */
     _createActor: function(leg) {
         try {
-            let bgColor = leg.color ? leg.color : '000000';
+            let bgColor = leg.color ? leg.color : TransitPlan.DEFAULT_ROUTE_COLOR;
             let fgColor =
                 Color.getContrastingForegroundColor(bgColor, leg.textColor ?
                                                              leg.textColor :
-                                                             'ffffff');
+                                                             TransitPlan.DEFAULT_ROUTE_TEXT_COLOR);
             let hasOutline =
                 Color.relativeLuminance(bgColor) > OUTLINE_LUMINANCE_THREASHHOLD;
             let bgRed = Color.parseColor(bgColor, 0);
