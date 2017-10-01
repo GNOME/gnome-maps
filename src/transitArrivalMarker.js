@@ -23,6 +23,7 @@ const Lang = imports.lang;
 
 const Gdk = imports.gi.Gdk;
 
+const Color = imports.color;
 const Location = imports.location;
 const MapMarker = imports.mapMarker;
 const Place = imports.place;
@@ -37,15 +38,20 @@ var TransitArrivalMarker = new Lang.Class({
             new Location.Location({ latitude: lastPoint.latitude,
                                     longitude: lastPoint.longitude
                                   });
+        let bgColor = params.leg.color ? params.leg.color :
+                                         TransitPlan.DEFAULT_ROUTE_COLOR;
 
         delete params.leg;
         params.place = new Place.Place({ location: location });
 
         this.parent(params);
 
-        let color = new Gdk.RGBA({ red: 0,
-                                   green: 0,
-                                   blue: 0,
+        let bgRed = Color.parseColor(bgColor, 0);
+        let bgGreen = Color.parseColor(bgColor, 1);
+        let bgBlue = Color.parseColor(bgColor, 2);
+        let color = new Gdk.RGBA({ red: bgRed,
+                                   green: bgGreen,
+                                   blue: bgBlue,
                                    alpha: 1.0
                                  });
         let actor =
