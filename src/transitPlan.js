@@ -81,8 +81,8 @@ function _printTimeWithTZOffset(time, offset) {
         return date.format('%r');
 }
 
-const DEFAULT_ROUTE_COLOR = '4c4c4c';
-const DEFAULT_ROUTE_TEXT_COLOR = 'ffffff';
+var DEFAULT_ROUTE_COLOR = '4c4c4c';
+var DEFAULT_ROUTE_TEXT_COLOR = 'ffffff';
 
 var Plan = new Lang.Class({
     Name: 'Plan',
