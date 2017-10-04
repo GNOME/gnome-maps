@@ -114,18 +114,7 @@ var Application = new Lang.Class({
     },
 
     _checkNetwork: function() {
-        let addr = new Gio.NetworkAddress({ hostname: 'tile.openstreetmap.org',
-                                            port: 80 });
-
-        networkMonitor.can_reach_async(addr, null, (function(networkMonitor, res) {
-            try {
-                if (networkMonitor.can_reach_finish(res))
-                    this.connected = true;
-            } catch(e) {
-                this.connected = false;
-                Utils.debug('Connection failed: ' + e.message);
-            }
-        }).bind(this));
+        this.connected = networkMonitor.connectivity === Gio.NetworkConnectivity.FULL;
     },
 
     _showContact: function(id) {
