@@ -20,6 +20,9 @@
 
 const Lang = imports.lang;
 
+const DEFAULT_LINE_WIDTH = 5;
+const DEFAULT_COLOR = 'AE274A';
+
 var GeoJSONStyle = new Lang.Class({
     Name: 'GeoJSONStyle',
 
@@ -28,7 +31,7 @@ var GeoJSONStyle = new Lang.Class({
         if (params.lineWidth || params.lineWidth === 0)
             this.lineWidth = params.lineWidth;
         else
-            this.lineWidth = 1;
+            this.lineWidth = DEFAULT_LINE_WIDTH;
 
         if (params.alpha || params.alpha === 0)
             this.alpha = params.alpha;
@@ -40,9 +43,7 @@ var GeoJSONStyle = new Lang.Class({
         else
             this.fillAlpha = 0.25;
 
-        this.color = this._hexToColor(params.color) || { red: 0,
-                                                         green: 0,
-                                                         blue: 0 };        
+        this.color = this._hexToColor(params.color || DEFAULT_COLOR);
         this.fillColor =  this._hexToColor(params.fillColor) || { red: 0.37,
                                                                   green: 0.62,
                                                                   blue: 0.87 };
