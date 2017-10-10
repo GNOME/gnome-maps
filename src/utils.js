@@ -394,3 +394,10 @@ function isUsingDarkThemeVariant() {
 
     return gtkSettings.gtk_application_prefer_dark_theme;
 }
+
+function isUsingHighContrastTheme() {
+    let gtkSettings = Gtk.Settings.get_default();
+    let themeName = gtkSettings.gtk_theme_name;
+
+    return themeName === 'HighContrast' || themeName === 'HighContrastInverse';
+}
