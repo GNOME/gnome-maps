@@ -82,8 +82,8 @@ var ExportViewDialog = new Lang.Class({
     },
 
     _getName: function() {
-        return 'Maps at %f, %f.png'.format(this._latitude.toFixed(2),
-                                           this._longitude.toFixed(2));
+        return _("Maps at %f, %f.png").format(this._latitude.toFixed(2),
+                                              this._longitude.toFixed(2));
     },
 
     _setupPreviewArea: function() {
