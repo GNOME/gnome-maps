@@ -37,6 +37,10 @@ const OUTLINE_LUMINANCE_THREASHHOLD = 0.9;
  */
 const DARK_OUTLINE_LUMINANCE_THREASHHOLD = 0.1;
 
+// fallback high contrast colors
+const HIGH_CONTRAST_COLOR = '000000';
+const HIGH_CONTRAST_TEXT_COLOR = 'ffffff';
+
 var TransitRouteLabel = new Lang.Class({
     Name: 'TransitRouteLabel',
     Extends: Gtk.Label,
@@ -61,8 +65,18 @@ var TransitRouteLabel = new Lang.Class({
         let textColor = leg.textColor;
         let label = leg.route;
         let usingDarkTheme = Utils.isUsingDarkThemeVariant() && !print;
+        let usingHighContrastTheme = Utils.isUsingHighContrastTheme();
 
         textColor = Color.getContrastingForegroundColor(color, textColor);
+
+        /* if using the high contrast theme and a label is set, fallback to
+         * hight-contrasting colors, if no label, assume the route color is
+         * more relevant and keep it also for high contrast
+         */
+        if (usingHighContrastTheme && label) {
+            color = HIGH_CONTRAST_COLOR;
+            textColor = HIGH_CONTRAST_TEXT_COLOR;
+        }
 
         this._bgRed = Color.parseColor(color, 0);
         this._bgGreen = Color.parseColor(color, 1);
@@ -70,7 +84,6 @@ var TransitRouteLabel = new Lang.Class({
         this._fgRed = Color.parseColor(textColor, 0);
         this._fgGreen = Color.parseColor(textColor, 1);
         this._fgBlue = Color.parseColor(textColor, 2);
-
 
         if ((!usingDarkTheme &&
              Color.relativeLuminance(color) > OUTLINE_LUMINANCE_THREASHHOLD) ||
