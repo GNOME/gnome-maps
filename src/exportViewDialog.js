@@ -82,6 +82,10 @@ var ExportViewDialog = new Lang.Class({
     },
 
     _getName: function() {
+        /* Translators: This is a format string for a PNG filename for an
+         * exported image with coordinates. The .png extension should be kept
+         * intact in the translated string.
+         */
         return _("Maps at %f, %f.png").format(this._latitude.toFixed(2),
                                               this._longitude.toFixed(2));
     },
