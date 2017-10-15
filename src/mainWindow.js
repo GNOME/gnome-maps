@@ -483,14 +483,13 @@ var MainWindow = new Lang.Class({
                        'Andreas Nilsson <nisses.mail@home.se>' ],
             authors: [ 'Zeeshan Ali (Khattak) <zeeshanak@gnome.org>',
                        'Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>',
-                       'Jonas Danielsson <jonas@threetimestwo.org>'],
+                       'Jonas Danielsson <jonas@threetimestwo.org>',
+                       'Marcus Lundblad <ml@update.uu.se>'],
             translator_credits: _("translator-credits"),
             /* Translators: This is the program name. */
             program_name: _("Maps"),
             comments: _("A map application for GNOME"),
-            copyright: 'Copyright ' + String.fromCharCode(0x00A9) +
-                       ' 2011' + String.fromCharCode(0x2013) +
-                       '2013 Red Hat, Inc.',
+            copyright: _("Copyright © 2011 – 2017 Red Hat, Inc. and The GNOME Maps authors"),
             license_type: Gtk.License.GPL_2_0,
             logo_icon_name: 'org.gnome.Maps',
             version: pkg.version,
