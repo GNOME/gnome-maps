@@ -70,6 +70,25 @@ var ContextMenu = GObject.registerClass({
                                        this._routingUpdate.bind(this));
         this._routeItem.visible = false;
         this._routingUpdate();
+        this._initLongPress();
+    }
+
+    _initLongPress() {
+        this._longPressGesture =
+            new Gtk.GestureLongPress({ widget: this._mapView, 'touch-only': true });
+        this._longPressGesture.connect('pressed', this._onLongPress.bind(this));
+    }
+
+    _onLongPress(gesture, x, y) {
+        this._longitude = this._mapView.view.x_to_longitude(x);
+        this._latitude = this._mapView.view.y_to_latitude(y);
+        Mainloop.idle_add(() => {
+            let rect = new Gdk.Rectangle({ x: 0, y: 0, width: x, height: y });
+
+            this.popup_at_rect(this._mapView.window, rect,
+                               Gdk.Gravity.SOUTH_EAST, Gdk.Gravity.NORTH_WEST,
+                               null);
+        });
     }
 
     _onButtonReleaseEvent(widget, event) {
