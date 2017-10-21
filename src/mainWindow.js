@@ -49,6 +49,8 @@ const _CONFIGURE_ID_TIMEOUT = 100; // msecs
 const _WINDOW_MIN_WIDTH = 600;
 const _WINDOW_MIN_HEIGHT = 500;
 
+const SWIPE_EDGE_THREASHHOLD = 20;
+
 var ShapeLayerFileChooser = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/shape-layer-file-chooser.ui'
 }, class ShapeLayerFileChooser extends Gtk.FileChooserNative {
@@ -129,12 +131,56 @@ var MainWindow = GObject.registerClass({
         this._initSignals();
         this._restoreWindowGeometry();
         this._initDND();
+        this._initGestures();
 
         this._busySignalId = 0;
 
         this._grid.attach(this._sidebar, 1, 0, 1, 1);
 
         this._grid.show_all();
+    }
+
+    _initGestures() {
+        this._swipeInGesture =
+            new Gtk.GestureSwipe({ widget: this.mapView, 'touch-only': true });
+        this._panInGesture = new Gtk.GesturePan({ widget: this.mapView,
+                                                'touch-only': true,
+                                                orientation: Gtk.Orientation.HORIZONTAL });
+        this._swipeOutGesture =
+            new Gtk.GestureSwipe({ widget: this._sidebar, 'touch-only': true });
+        this._panOutGesture = new Gtk.GesturePan({ widget: this._sidebar,
+                                                   'touch-only': true,
+                                                   orientation: Gtk.Orientation.HORIZONTAL });
+
+        // restrict to horizontal swiping by grouping with a horizontal pan
+        this._swipeInGesture.group(this._panInGesture);
+        this._swipeInGesture.connect('swipe', this._onSwipeIn.bind(this));
+        this._swipeInGesture.connect('begin', this._onSwipeInBegin.bind(this));
+        this._swipeOutGesture.connect('swipe', this._onSwipeOut.bind(this));
+    }
+
+    _onSwipeInBegin(gesture, sequence) {
+        let rtl = Gtk.get_locale_direction() === Gtk.TextDirection.RTL;
+        Utils.debug('swipe begin');
+        let [_, x, y] = gesture.get_point(sequence);
+        Utils.debug('point: ' + x + ',' + y);
+        this._recognizeEdgeSwipe = rtl ?
+                                   x < SWIPE_EDGE_THREASHHOLD :
+                                   x > this.mapView.get_allocated_width() - SWIPE_EDGE_THREASHHOLD;
+        Utils.debug('recognized: ' + this._recognizeEdgeSwipe);
+    }
+
+    _onSwipeIn(gesture, velocityX, velocityY) {
+        Utils.debug('swipe: ' + velocityX + ', ' + velocityY);
+        if (this._recognizeEdgeSwipe)
+            this._setRevealSidebar(true);
+    }
+
+    _onSwipeOut(gesture, velocityX, velocityY) {
+        let rtl = Gtk.get_locale_direction() === Gtk.TextDirection.RTL;
+
+        if ((rtl && velocityX < 0) || (!rtl && velocityX > 0))
+            this._setRevealSidebar(false);
     }
 
     _createPlaceEntry() {
