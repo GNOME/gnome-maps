@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-07-24 21:57+0000\n"
-"PO-Revision-Date: 2017-08-02 01:02+0200\n"
+"POT-Creation-Date: 2017-10-25 19:52+0000\n"
+"PO-Revision-Date: 2017-10-29 18:34+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
-"Language-Team: čeština <gnome-cs-list@gnome.org>>\n"
+"Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -58,7 +58,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:87 ../src/mainWindow.js:476
+#: ../src/application.js:87 ../src/mainWindow.js:490
 msgid "Maps"
 msgstr "Mapy"
 
@@ -353,7 +353,6 @@ msgid "Switch to aerial view"
 msgstr "Přepnout na letecký pohled"
 
 #: ../data/ui/help-overlay.ui.h:14
-#| msgid "Open Layer"
 msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "Otevřít uživatelskou vrstvu"
@@ -714,6 +713,10 @@ msgstr "Nelze najít prvek OSM"
 msgid "A path to a local tiles directory structure"
 msgstr "Cesta k místní struktuře složek s dlaždicemi"
 
+#: ../src/application.js:106
+msgid "Show the version of the program"
+msgstr "Zobrazit verzi programu"
+
 #: ../src/checkInDialog.js:175
 msgid "Select an account"
 msgstr "Výběr účtu"
@@ -780,23 +783,23 @@ msgstr ""
 "Přihlášení vypršelo. Otevřete prosím Účty on-line, přihlaste se tam a tím "
 "účet zpřístupněte."
 
-#: ../src/contextMenu.js:96
+#: ../src/contextMenu.js:99
 msgid "Route from here"
 msgstr "Trasa odtud"
 
-#: ../src/contextMenu.js:98
+#: ../src/contextMenu.js:101
 msgid "Add destination"
 msgstr "Přidat cíl"
 
-#: ../src/contextMenu.js:100
+#: ../src/contextMenu.js:103
 msgid "Route to here"
 msgstr "Trasa sem"
 
-#: ../src/contextMenu.js:129
+#: ../src/contextMenu.js:132
 msgid "Nothing found here!"
 msgstr "Zde nebylo nic nalezeno!"
 
-#: ../src/contextMenu.js:186
+#: ../src/contextMenu.js:189
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -804,23 +807,32 @@ msgstr ""
 "Místo bylo přidáno do mapy, ale vezměte na vědomí, že může chvíli trvat, než "
 "se zobrazí na mapě a ve výsledcích hledání."
 
-#: ../src/exportViewDialog.js:156
+#. Translators: This is a format string for a PNG filename for an
+#. * exported image with coordinates. The .png extension should be kept
+#. * intact in the translated string.
+#.
+#: ../src/exportViewDialog.js:89
+#, javascript-format
+msgid "Maps at %f, %f.png"
+msgstr "Mapa na souřadnicích %f, %f.png"
+
+#: ../src/exportViewDialog.js:160
 msgid "Filesystem is read only"
 msgstr "Souborový systém je jen ke čtení"
 
-#: ../src/exportViewDialog.js:158
+#: ../src/exportViewDialog.js:162
 msgid "You do not have permission to save there"
 msgstr "Nemáte oprávnění ukládat do tohoto umístění"
 
-#: ../src/exportViewDialog.js:160
+#: ../src/exportViewDialog.js:164
 msgid "The directory does not exist"
 msgstr "Složka neexistuje"
 
-#: ../src/exportViewDialog.js:162
+#: ../src/exportViewDialog.js:166
 msgid "No filename specified"
 msgstr "Není zadán název souboru"
 
-#: ../src/exportViewDialog.js:170
+#: ../src/exportViewDialog.js:174
 msgid "Unable to export view"
 msgstr "Nelze exportovat zobrazení"
 
@@ -853,17 +865,21 @@ msgstr "Start!"
 msgid "All Layer Files"
 msgstr "Všechny soubory s vrstvami"
 
-#: ../src/mainWindow.js:418
+#: ../src/mainWindow.js:431
 msgid "Failed to connect to location service"
 msgstr "Selhalo připojení ke geolokační službě"
 
-#: ../src/mainWindow.js:474
+#: ../src/mainWindow.js:488
 msgid "translator-credits"
 msgstr "Marek Černocký <marek@manet.cz>"
 
-#: ../src/mainWindow.js:477
+#: ../src/mainWindow.js:491
 msgid "A map application for GNOME"
 msgstr "Mapová aplikace pro GNOME"
+
+#: ../src/mainWindow.js:492
+msgid "Copyright © 2011 – 2017 Red Hat, Inc. and The GNOME Maps authors"
+msgstr "Copyright © 2011 — 2017 Red Hat, Inc. a autoři Map GNOME"
 
 #: ../src/mapView.js:356
 msgid "File type is not supported"
@@ -1257,7 +1273,7 @@ msgid "failed to load file"
 msgstr "selhalo načtení souboru"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:294
+#: ../src/sidebar.js:293
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Odhadovaný čas: %s"
@@ -1290,18 +1306,18 @@ msgstr "Start v %s"
 msgid "Start"
 msgstr "Start"
 
-#: ../src/transitLegRow.js:107
+#: ../src/transitLegRow.js:108
 msgid "Show walking instructions"
 msgstr "Zobrazit pokyny pro pěší"
 
-#: ../src/transitLegRow.js:108
+#: ../src/transitLegRow.js:109
 msgid "Hide walking instructions"
 msgstr "Skrýt pokyny pro pěší"
 
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
 #.
-#: ../src/transitLegRow.js:133
+#: ../src/transitLegRow.js:134
 #, javascript-format
 msgid "Walk %s"
 msgstr "Chůze %s"
