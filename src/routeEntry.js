@@ -58,7 +58,7 @@ var RouteEntry = new Lang.Class({
 
         // There is no GdkWindow on the widget until it is realized
         this._icon.connect('realize', function(icon) {
-            if (icon.window.get_cursor())
+            if (icon.window && icon.window.get_cursor())
                 return;
 
             icon.window.set_cursor(Gdk.Cursor.new(Gdk.CursorType.HAND1));
