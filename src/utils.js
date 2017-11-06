@@ -256,7 +256,7 @@ function _load_icon(icon, loadCompleteCallback) {
 
     icon.load_async(-1, null, function(icon, res) {
         try {
-            let stream = icon.load_finish(res, null)[0];
+            let stream = icon.load_finish(res)[0];
             let pixbuf = GdkPixbuf.Pixbuf.new_from_stream(stream, null);
 
             loadCompleteCallback(pixbuf);
