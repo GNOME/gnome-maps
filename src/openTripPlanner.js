@@ -1157,9 +1157,9 @@ var OpenTripPlanner = new Lang.Class({
         let polyline = EPAF.decode(leg.legGeometry.points);
         let intermediateStops =
             this._createIntermediateStops(leg);
-        let color = this._isValidHexColor(leg.routeColor) ?
+        let color = leg.routeColor && this._isValidHexColor(leg.routeColor) ?
                     leg.routeColor : null;
-        let textColor = this._isValidHexColor(leg.routeTextColor) ?
+        let textColor = leg.routeTextColor && this._isValidHexColor(leg.routeTextColor) ?
                         leg.routeTextColor : null;
 
         /* instroduce an extra stop at the end (in additional to the
