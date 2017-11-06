@@ -166,6 +166,7 @@ var RouteQuery = new Lang.Class({
         this._points = [];
         this._time = null;
         this._date = null;
+        this._arriveBy = false;
         this._transitOptions = new TransitOptions.TransitOptions();
         this._initTransportation();
         this.reset();
