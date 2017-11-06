@@ -74,8 +74,9 @@ var PlacePopover = new Lang.Class({
          }).bind(this));
 
         // Make sure we clear all selected rows when the search string change
-        this._entry.connect('changed',
-                            this._list.unselect_all.bind(this._list));
+        this._entry.connect('changed', (function() {
+            this._list.unselect_all();
+        }).bind(this));
 
         // Do not show 'press enter to search' when we have
         // selected rows in completion mode.
