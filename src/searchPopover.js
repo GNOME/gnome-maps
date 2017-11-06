@@ -42,8 +42,9 @@ var SearchPopover = new Lang.Class({
         // propagate the 'enter' key press if there is a selection.
         this._entry.connect('key-press-event',
                             this._propagateKeys.bind(this));
-        this._entry.connect('button-press-event',
-                            this._list.unselect_all.bind(this._list));
+        this._entry.connect('button-press-event', (function() {
+            this._list.unselect_all();
+        }).bind(this));
     },
 
     _propagateKeys: function(entry, event) {
