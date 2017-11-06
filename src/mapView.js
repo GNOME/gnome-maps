@@ -634,9 +634,14 @@ var MapView = new Lang.Class({
                 routeLayer.add_node(lastPoint);
             }
 
-            if (hasOutline)
-                leg.polyline.forEach(outlineRouteLayer.add_node.bind(outlineRouteLayer));
-            leg.polyline.forEach(routeLayer.add_node.bind(routeLayer));
+            if (hasOutline) {
+                leg.polyline.forEach((function (polyline) {
+                    outlineRouteLayer.add_node(polyline);
+                }));
+            }
+            leg.polyline.forEach((function (polyline) {
+                routeLayer.add_node(polyline);
+            }));
 
             /* like above, "stitch" the route segment with the next one if it's
              * a walking leg, and not the last one */
