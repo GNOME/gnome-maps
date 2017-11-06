@@ -91,7 +91,7 @@ var TransitBoardMarker = new Lang.Class({
             let theme = Gtk.IconTheme.get_default();
             let info = theme.lookup_icon(leg.iconName, ICON_SIZE,
                                          Gtk.IconLookupFlags.FORCE_SIZE);
-            let pixbuf = info.load_symbolic(fgRGBA, null, null, null, null, null)[0];
+            let pixbuf = info.load_symbolic(fgRGBA, null, null, null)[0];
             let canvas = new Clutter.Canvas({ width: ACTOR_SIZE,
                                               height: ACTOR_SIZE });
 
