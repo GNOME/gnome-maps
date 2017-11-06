@@ -98,8 +98,7 @@ var MapMarker = new Lang.Class({
 
             if (color) {
                 let info = theme.lookup_icon(name, size, 0);
-                pixbuf = info.load_symbolic(color, null, null, null,
-                                            null, null)[0];
+                pixbuf = info.load_symbolic(color, null, null, null)[0];
             } else {
                 pixbuf = theme.load_icon(name, size, 0);
             }
@@ -252,15 +251,20 @@ var MapMarker = new Lang.Class({
                 this.selected = false;
         }).bind(this));
 
-        let goingToSignalId = this._mapView.connect('going-to',
-                                                    this.set_selected.bind(this, false));
-        let buttonPressSignalId = this._view.connect('button-press-event',
-                                                     this.set_selected.bind(this, false));
+        let goingToSignalId = this._mapView.connect('going-to', (function() {
+            this.set_selected(false);
+        }).bind(this));
+        let buttonPressSignalId =
+            this._view.connect('button-press-event', (function() {
+                this.set_selected(false);
+            }).bind(this));
         // Destroy the bubble when the marker is destroyed o removed from a layer
-        let parentSetSignalId = this.connect('parent-set',
-                                             this.set_selected.bind(this, false));
-        let dragMotionSignalId = this.connect('drag-motion',
-                                              this.set_selected.bind(this, false));
+        let parentSetSignalId = this.connect('parent-set', (function() {
+            this.set_selected(false);
+        }).bind(this));
+        let dragMotionSignalId = this.connect('drag-motion', (function() {
+            this.set_selected(false);
+        }).bind(this));
         Utils.once(this.bubble, 'closed', (function() {
             this._mapView.disconnect(markerSelectedSignalId);
             this._mapView.disconnect(goingToSignalId);
