@@ -95,9 +95,7 @@ var PlaceEntry = new Lang.Class({
         this.parent(props);
 
         this._filter = new Gtk.TreeModelFilter({ child_model: Application.placeStore });
-        this._filter.set_visible_func(this._completionVisibleFunc.bind(this),
-                                      null,
-                                      null);
+        this._filter.set_visible_func(this._completionVisibleFunc.bind(this));
 
         this._popover = this._createPopover(numVisible, maxChars);
 
