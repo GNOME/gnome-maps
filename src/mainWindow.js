@@ -63,7 +63,9 @@ var ShapeLayerFileChooser = new Lang.Class({
         ShapeLayer.SUPPORTED_TYPES.forEach((function(layerClass) {
             let filter = new Gtk.FileFilter();
             [filter, allFilter].forEach(function(f) {
-                layerClass.mimeTypes.forEach(f.add_mime_type.bind(f));
+                layerClass.mimeTypes.forEach(function(type) {
+                    f.add_mime_type(type);
+                });
             });
             filter.set_name(layerClass.displayName);
             this.add_filter(filter);
@@ -150,10 +152,12 @@ var MainWindow = new Lang.Class({
         }).bind(this));
 
         let popover = placeEntry.popover;
-        popover.connect('selected',
-                        this._mapView.grab_focus.bind(this._mapView));
-        this._mapView.view.connect('button-press-event',
-                                   popover.hide.bind(popover));
+        popover.connect('selected', (function() {
+            this._mapView.grab_focus();
+        }).bind(this));
+        this._mapView.view.connect('button-press-event', (function () {
+            popover.hide();
+        }));
         return placeEntry;
     },
 
@@ -500,8 +504,9 @@ var MainWindow = new Lang.Class({
             transient_for: this
         });
         aboutDialog.show();
-        aboutDialog.connect('response',
-                            aboutDialog.destroy.bind(aboutDialog));
+        aboutDialog.connect('response', (function() {
+            aboutDialog.destroy();
+        }));
     },
 
     _onOpenShapeLayer: function() {
