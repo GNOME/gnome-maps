@@ -69,10 +69,6 @@ var MapWalker = new Lang.Class({
                 zoom = 11;
                 break;
 
-            case Geocode.PlaceType.REGION:
-                zoom = 10;
-                break;
-
             case Geocode.PlaceType.COUNTRY:
                 zoom = 6;
                 break;
