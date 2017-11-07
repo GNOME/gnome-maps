@@ -39,8 +39,9 @@ const IMPERIAL_LOCALES = ['unm_US', 'es_US', 'es_PR', 'en_US', 'yi_US'];
 const ACCENTS_REGEX = /[\u0300-\u036F]/g;
 
 let debugInit = false;
-let debugEnabled = false;
 let measurementSystem = null;
+
+var debugEnabled = false;
 
 function debug(msg) {
     if (!debugInit) {
