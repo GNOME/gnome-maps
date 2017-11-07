@@ -42,7 +42,8 @@ var Query = new Lang.Class({
     // a value === null represents an empty value
     add: function(key, value) {
         // Initialize query field if it isn't already
-        if(!Array.isArray(this._query[key]))
+        let queryValue = this._query[key];
+        if(!Array.isArray(queryValue))
             this._query[key] = [];
 
         if(Array.isArray(value))
