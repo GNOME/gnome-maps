@@ -46,7 +46,7 @@ function _getLevenshteinDistance(a, b) {
 
     for (j = 1; j <= b.length; j++)
         for (i = 1; i <= a.length; i++)
-            if (a[i] === b[j])
+            if (a[i - 1] === b[j - 1])
                 d[i][j] = d[i-1][j-1];
             else
                 d[i][j] = Math.min(d[i-1][j] + 1,
