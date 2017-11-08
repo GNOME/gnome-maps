@@ -57,7 +57,13 @@ var FacebookBackend = new Lang.Class({
     },
 
     isInvalidCall: function(restCall, data) {
-        return !data || data.error;
+        if (!data) {
+            return true;
+        } else if (data.error) {
+            return true;
+        } else {
+            return false;
+        }
     },
 
     getCallResultCode: function(restCall, data) {
