@@ -482,8 +482,11 @@ var MainWindow = GObject.registerClass({
     }
 
     _onAerialViewActivate() {
-        this._mapView.setMapType(MapView.MapType.AERIAL);
-        this.layersPopover.setMapType(MapView.MapType.AERIAL);
+        // don't attempt to switch to aerial if we don't have tiles for it
+        if (Service.getService().tiles.aerial) {
+            this._mapView.setMapType(MapView.MapType.AERIAL);
+            this.layersPopover.setMapType(MapView.MapType.AERIAL);
+        }
     }
 
     _onToggleSidebarChangeState(action, variant) {
