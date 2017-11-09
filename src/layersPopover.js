@@ -21,6 +21,7 @@ const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 
 const MapView = imports.mapView;
+const Service = imports.service;
 const ShapeLayer = imports.shapeLayer;
 const Utils = imports.utils;
 
@@ -83,13 +84,19 @@ var LayersPopover = GObject.registerClass({
             row.set_header(header);
         });
 
-        this._streetLayerButton.connect('clicked', () => {
-            this._mapView.setMapType(MapView.MapType.STREET);
-        });
+        // disable the map type switch buttons if aerial is unavailable
+        if (Service.getService().tiles.aerial) {
+            this._streetLayerButton.connect('clicked', () => {
+                this._mapView.setMapType(MapView.MapType.STREET);
+            });
 
-        this._aerialLayerButton.connect('clicked', () => {
-            this._mapView.setMapType(MapView.MapType.AERIAL);
-        });
+            this._aerialLayerButton.connect('clicked', () => {
+                this._mapView.setMapType(MapView.MapType.AERIAL);
+            });
+        } else {
+            this._streetLayerButton.visible = false;
+            this._aerialLayerButton.visible = false;
+        }
     }
 
     setMapType(mapType) {
