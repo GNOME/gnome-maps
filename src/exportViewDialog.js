@@ -60,8 +60,9 @@ var ExportViewDialog = new Lang.Class({
         params.use_header_bar = true;
         this.parent(params);
 
-        this._cancelButton.connect('clicked',
-                                   this.response.bind(this, Response.CANCEL));
+        this._cancelButton.connect('clicked', (function() {
+            this.response(Response.CANCEL);
+        }).bind(this));
         this._exportButton.connect('clicked', this._exportView.bind(this));
         this._filenameEntry.connect('changed',
                                     this._onFileNameChanged.bind(this));
