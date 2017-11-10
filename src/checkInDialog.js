@@ -77,28 +77,22 @@ var CheckInDialog = new Lang.Class({
         this.error = null;
 
         this._cancellable = new Gio.Cancellable();
-        this._cancellable.connect((function() {
-            this.response(Response.CANCELLED);
-        }).bind(this));
+        this._cancellable.connect(() => this.response(Response.CANCELLED));
 
-        this.connect('delete-event', (function() {
-            this._cancellable.cancel();
-        }).bind(this));
+        this.connect('delete-event', () => this._cancellable.cancel());
 
-        Application.checkInManager.connect('accounts-refreshed', this._onAccountRefreshed.bind(this));
+        Application.checkInManager.connect('accounts-refreshed',
+                                           () => this._onAccountRefreshed());
 
         this._initHeaderBar();
         this._initWidgets();
     },
 
     _initHeaderBar: function() {
-        this._cancelButton.connect('clicked', (function() {
-            this._cancellable.cancel();
-        }).bind(this));
+        this._cancelButton.connect('clicked',
+                                   () => this._cancellable.cancel());
 
-        this._okButton.connect('clicked', (function() {
-            this._startCheckInStep();
-        }).bind(this));
+        this._okButton.connect('clicked', () => this._startCheckInStep());
     },
 
     _initWidgets: function() {
@@ -125,15 +119,15 @@ var CheckInDialog = new Lang.Class({
                                   this._foursquareOptionsBroadcastTwitterCheckButton,
                                   'active', Gio.SettingsBindFlags.DEFAULT);
 
-        this._accountListBox.connect('account-selected', (function(list, account) {
+        this._accountListBox.connect('account-selected', (list, account) => {
             this._account = account;
             this._startPlaceStep();
-        }).bind(this));
+        });
 
-        this._placeListBox.connect('place-selected', (function(list, place) {
+        this._placeListBox.connect('place-selected', (list, place) => {
             this._checkIn.place = place;
             this._startMessageStep();
-        }).bind(this));
+        });
     },
 
     vfunc_show: function() {
@@ -150,9 +144,9 @@ var CheckInDialog = new Lang.Class({
             this._account = Application.checkInManager.accounts[0];
             this._startPlaceStep();
         } else {
-            Mainloop.idle_add((function() {
+            Mainloop.idle_add(() => {
                 this.response(Response.FAILURE_CHECKIN_DISABLED);
-            }).bind(this));
+            });
         }
     },
 

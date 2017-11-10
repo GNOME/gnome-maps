@@ -63,12 +63,12 @@ var PrintOperation = new Lang.Class({
         let width = context.get_width();
         let height = context.get_height();
 
-        Mainloop.timeout_add(_MIN_TIME_TO_ABORT, (function() {
+        Mainloop.timeout_add(_MIN_TIME_TO_ABORT, () => {
             if (this._operation.get_status() !== Gtk.PrintStatus.FINISHED) {
                 this._abortDialog.show();
             }
             return false;
-        }).bind(this), null);
+        }, null);
 
         if (selectedTransitItinerary) {
             this._layout =
@@ -100,10 +100,10 @@ var PrintOperation = new Lang.Class({
 
     _drawPage: function(operation, context, page_num, data) {
         let cr = context.get_cairo_context();
-        this._layout.surfaceObjects[page_num].forEach((function(so) {
+        this._layout.surfaceObjects[page_num].forEach((so) => {
             cr.setSourceSurface(so.surface, so.x, so.y);
             cr.paint();
-        }).bind(this));
+        });
     },
 
     _runPrintOperation: function() {

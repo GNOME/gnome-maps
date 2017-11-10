@@ -61,13 +61,13 @@ var TransitItineraryRow = new Lang.Class({
         let estimatedSpace = this._calculateEstimatedSpace();
         let useContractedLabels = estimatedSpace > 28;
 
-        this._itinerary.legs.forEach((function(leg, i) {
+        this._itinerary.legs.forEach((leg, i) => {
             this._summaryGrid.add(this._createLeg(leg, useCompact,
                                                   useContractedLabels));
             if (i !== length - 1)
                 this._summaryGrid.add(new Gtk.Label({ visible: true,
                                                       label: '-' }));
-        }).bind(this));
+        });
     },
 
     /* calculate an estimated relative space-consuption for rendering,

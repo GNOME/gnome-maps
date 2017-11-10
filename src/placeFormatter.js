@@ -60,11 +60,11 @@ var PlaceFormatter = new Lang.Class({
         if (this._place instanceof StoredRoute.StoredRoute)
             return this._place.viaString;
 
-        return this.rows.map((function(row) {
-            return row.map((function(prop) {
+        return this.rows.map((row) => {
+            return row.map((prop) => {
                 return this._place[prop];
-            }).bind(this)).join(', ');
-        }).bind(this)).join(', ');
+            }).join(', ');
+        }).join(', ');
     },
 
     _update: function() {
@@ -111,9 +111,7 @@ var PlaceFormatter = new Lang.Class({
     },
 
     _addRow: function(properties) {
-        properties = properties.filter((function(prop) {
-            return this._place[prop] ? true : false;
-        }).bind(this));
+        properties = properties.filter((prop) => this._place[prop] ? true : false);
 
         if (properties.length > 0)
             this._rows.push(properties);

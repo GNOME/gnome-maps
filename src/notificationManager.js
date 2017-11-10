@@ -37,11 +37,11 @@ var NotificationManager = new Lang.Class({
     _add: function(notification) {
         this._current = notification;
         if (!(notification instanceof Notification.Plain)) {
-            let dismissId = notification.connect('dismissed', (function() {
+            let dismissId = notification.connect('dismissed', () => {
                 this._overlay.remove(notification);
                 notification.disconnect(dismissId);
                 this._current = null;
-            }).bind(this));
+            });
         }
         this._overlay.add_overlay(notification);
         Mainloop.timeout_add(_TIMEOUT, notification.dismiss.bind(notification));
@@ -50,10 +50,10 @@ var NotificationManager = new Lang.Class({
 
     showMessage: function (msg) {
         let notification = new Notification.Plain(msg);
-        notification.connect('dismissed', (function() {
+        notification.connect('dismissed', () => {
             this._current = null;
             notification.destroy();
-        }).bind(this));
+        });
         this.showNotification(notification);
     },
 

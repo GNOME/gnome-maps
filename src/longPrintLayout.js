@@ -49,7 +49,7 @@ var LongPrintLayout = new Lang.Class({
         let totalSurfaces = 4 + this._route.turnPoints.length;
 
         /* Plus via points */
-        this._route.turnPoints.forEach(function(turnPoint) {
+        this._route.turnPoints.forEach((turnPoint) => {
             if (turnPoint.type === Route.TurnPointType.VIA)
                 totalSurfaces++;
         });

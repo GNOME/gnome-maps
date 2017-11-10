@@ -109,7 +109,7 @@ var MapMarker = new Lang.Class({
             let canvas = new Clutter.Canvas({ width: pixbuf.get_width(),
                                               height: pixbuf.get_height() });
 
-            canvas.connect('draw', (function(canvas, cr) {
+            canvas.connect('draw', (canvas, cr) => {
                 cr.setOperator(Cairo.Operator.CLEAR);
                 cr.paint();
                 cr.setOperator(Cairo.Operator.OVER);
@@ -118,7 +118,7 @@ var MapMarker = new Lang.Class({
                 cr.paint();
 
                 this._surface = cr.getTarget();
-            }).bind(this));
+            });
 
             let actor = new Clutter.Actor();
             actor.set_content(canvas);
@@ -204,7 +204,7 @@ var MapMarker = new Lang.Class({
 
     _hideBubbleOn: function(signal, duration) {
         let sourceId = null;
-        let signalId = this._view.connect(signal, (function() {
+        let signalId = this._view.connect(signal, () => {
             if (sourceId)
                 Mainloop.source_remove(sourceId);
             else
@@ -219,23 +219,23 @@ var MapMarker = new Lang.Class({
                 sourceId = Mainloop.timeout_add(duration, callback);
             else
                 sourceId = Mainloop.idle_add(callback);
-        }).bind(this));
+        });
 
-        Utils.once(this.bubble, 'closed', (function() {
+        Utils.once(this.bubble, 'closed', () => {
             // We still listening for the signal to refresh
             // the existent timeout
             if (!sourceId)
                 this._view.disconnect(signalId);
-        }).bind(this));
+        });
 
-        Utils.once(this, 'notify::selected', (function() {
+        Utils.once(this, 'notify::selected', () => {
             // When the marker gets deselected, we need to ensure
             // that the timeout callback is not called anymore.
             if (sourceId) {
                 Mainloop.source_remove(sourceId);
                 this._view.disconnect(signalId);
             }
-        }).bind(this));
+        });
     },
 
     _initBubbleSignals: function() {
@@ -249,26 +249,26 @@ var MapMarker = new Lang.Class({
         // does the job.
         this._mapView.onSetMarkerSelected(this);
 
-        let markerSelectedSignalId = this._mapView.connect('marker-selected', (function(mapView, selectedMarker) {
+        let markerSelectedSignalId = this._mapView.connect('marker-selected', (mapView, selectedMarker) => {
             if (this.get_parent() !== selectedMarker.get_parent())
                 this.selected = false;
-        }).bind(this));
+        });
 
-        let goingToSignalId = this._mapView.connect('going-to', (function() {
+        let goingToSignalId = this._mapView.connect('going-to', () => {
             this.set_selected(false);
-        }).bind(this));
+        });
         let buttonPressSignalId =
-            this._view.connect('button-press-event', (function() {
+            this._view.connect('button-press-event', () => {
                 this.set_selected(false);
-            }).bind(this));
+            });
         // Destroy the bubble when the marker is destroyed o removed from a layer
-        let parentSetSignalId = this.connect('parent-set', (function() {
+        let parentSetSignalId = this.connect('parent-set', () => {
             this.set_selected(false);
-        }).bind(this));
-        let dragMotionSignalId = this.connect('drag-motion', (function() {
+        });
+        let dragMotionSignalId = this.connect('drag-motion', () => {
             this.set_selected(false);
-        }).bind(this));
-        Utils.once(this.bubble, 'closed', (function() {
+        });
+        Utils.once(this.bubble, 'closed', () => {
             this._mapView.disconnect(markerSelectedSignalId);
             this._mapView.disconnect(goingToSignalId);
             this._view.disconnect(buttonPressSignalId);
@@ -277,7 +277,7 @@ var MapMarker = new Lang.Class({
 
             this._bubble.destroy();
             delete this._bubble;
-        }).bind(this));
+        });
     },
 
     _isInsideView: function() {
@@ -324,17 +324,12 @@ var MapMarker = new Lang.Class({
     },
 
     goTo: function(animate) {
-        Utils.once(this.walker, 'gone-to', (function() {
-            this.emit('gone-to');
-        }).bind(this));
-
+        Utils.once(this.walker, 'gone-to', () => this.emit('gone-to'));
         this.walker.goTo(animate);
     },
 
     goToAndSelect: function(animate) {
-        Utils.once(this, 'gone-to', (function() {
-            this.selected = true;
-        }).bind(this));
+        Utils.once(this, 'gone-to', () => this.selected = true);
 
         this.goTo(animate);
     },

@@ -70,7 +70,7 @@ var ServiceBackend = new Lang.Class({
 
         Utils.debug(this.name + ': ' + func);
 
-        restCall.invoke_async(cancellable, (function(call, result) {
+        restCall.invoke_async(cancellable, (call, result) => {
             let data = JSON.parse(call.get_payload());
             let account = this.getAuthorizerAccount(authorizer);
 
@@ -93,7 +93,7 @@ var ServiceBackend = new Lang.Class({
                                           message: this.getCallResultMessage(call, data) });
             else
                 callback(account, data, null);
-        }).bind(this));
+        });
     },
 
     performCheckIn: function(authorizer, checkIn, callback, cancellable) {
@@ -110,12 +110,12 @@ var ServiceBackend = new Lang.Class({
                              latitude,
                              longitude,
                              distance,
-                             (function(account, data, error) {
+                             (account, data, error) => {
                                  if (!error)
                                      callback(account, this.createPlaces(data), error);
                                  else
                                      callback(account, [], error);
-                             }).bind(this),
+                             },
                              cancellable);
     },
 

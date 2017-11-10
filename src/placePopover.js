@@ -60,30 +60,26 @@ var PlacePopover = new Lang.Class({
         this.parent(props);
 
         this._entry = this.relative_to;
-        this._entry.connect('notify::place', (function() {
-            this._mode = Mode.ACTIVATED;
-        }).bind(this));
+        this._entry.connect('notify::place', () => this._mode = Mode.ACTIVATED);
 
-        Application.routingDelegator.graphHopper.route.connect('updated', (function() {
+        Application.routingDelegator.graphHopper.route.connect('updated', () => {
             this._mode = Mode.ACTIVATED;
-        }).bind(this));
+        });
 
-         this._list.connect('row-activated', (function(list, row) {
-             if (row)
-                 this.emit('selected', row.place);
-         }).bind(this));
+        this._list.connect('row-activated', (list, row) => {
+            if (row)
+                this.emit('selected', row.place);
+        });
 
         // Make sure we clear all selected rows when the search string change
-        this._entry.connect('changed', (function() {
-            this._list.unselect_all();
-        }).bind(this));
+        this._entry.connect('changed', () => this._list.unselect_all());
 
         // Do not show 'press enter to search' when we have
         // selected rows in completion mode.
         this._list.connect('selected-rows-changed',
                            this._updateHint.bind(this));
 
-        this._list.set_header_func(function(row, before) {
+        this._list.set_header_func((row, before) => {
             let header = new Gtk.Separator();
             if (before)
                 row.set_header(header);
@@ -96,7 +92,7 @@ var PlacePopover = new Lang.Class({
 
         // This silents warning at Maps exit about this widget being
         // visible but not mapped.
-        this.connect('unmap', function(popover) { popover.hide(); });
+        this.connect('unmap', (popover) => popover.hide());
     },
 
     showSpinner: function() {
@@ -152,29 +148,35 @@ var PlacePopover = new Lang.Class({
         this.parent();
     },
 
+<<<<<<< HEAD
     updateResult: function(places, searchString) {
-        this._list.forall(function(row) {
-            row.destroy();
-        });
+        this._list.forall((row) => { row.destroy(); });
+=======
+    updateResult(places, searchString) {
+        this._list.forall((row) => row.destroy());
+>>>>>>> 336ab5c6... fixup! WIP: Use ES6 arrow notation
 
-        places.forEach((function(place) {
+        places.forEach((place) => {
             if (!place.location)
                 return;
 
             this._addRow(place, null, searchString);
-        }).bind(this));
+        });
     },
 
+<<<<<<< HEAD
     updateCompletion: function(filter, searchString) {
-        this._list.forall(function(row) {
-            row.destroy();
-        });
+        this._list.forall((row) => { row.destroy(); });
+=======
+    updateCompletion(filter, searchString) {
+        this._list.forall((row) => row.destroy());
+>>>>>>> 336ab5c6... fixup! WIP: Use ES6 arrow notation
 
-        filter.foreach((function(model, path, iter) {
+        filter.foreach((model, path, iter) => {
             let place = model.get_value(iter, PlaceStore.Columns.PLACE);
             let type = model.get_value(iter, PlaceStore.Columns.TYPE);
             this._addRow(place, type, searchString);
-        }).bind(this));
+        });
     },
 
     _addRow: function(place, type, searchString) {

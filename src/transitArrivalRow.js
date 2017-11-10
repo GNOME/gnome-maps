@@ -65,10 +65,10 @@ var TransitArrivalRow = new Lang.Class({
         if (this._print)
             this._arrivalLabel.max_width_chars = -1;
 
-        this._eventBox.connect('event', (function(widget, event) {
+        this._eventBox.connect('event', (widget, event) => {
             this._onEvent(event, lastLeg.toCoordinate);
             return true;
-        }).bind(this));
+        });
     },
 
     _onEvent: function(event, coord) {

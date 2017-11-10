@@ -62,14 +62,14 @@ var SocialPlaceListBox = new Lang.Class({
         params.activate_on_single_click = true;
         this.parent(params);
 
-        this.connect('row-activated', (function(list, row) {
+        this.connect('row-activated', (list, row) => {
             if (!row.place) {
                 // "Show more results" row activated
                 row.destroy();
                 this._showBadMatches();
             } else
                 this.emit('place-selected', row.place);
-        }).bind(this));
+        });
     },
 
     get matches() {

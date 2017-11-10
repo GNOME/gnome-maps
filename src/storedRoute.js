@@ -71,12 +71,12 @@ var StoredRoute = new Lang.Class({
         if (geoclue)
             currentLocation = geoclue.place;
 
-        places.forEach((function(place) {
+        places.forEach((place) => {
             if (currentLocation && place === currentLocation)
                 this._containsCurrentLocation = true;
 
             this.places.push(new Place.Place({ place: place }));
-        }).bind(this));
+        });
 
         this.parent(params);
     },
@@ -185,13 +185,13 @@ StoredRoute.fromJSON = function(obj) {
 
         case 'route':
             route = new Route.Route();
-            prop.path = prop.path.map(function(coordinate) {
+            prop.path = prop.path.map((coordinate) => {
                 let lat = coordinate.latitude;
                 let lon = coordinate.longitude;
                 return new Champlain.Coordinate({ latitude: lat,
                                                   longitude: lon });
             });
-            prop.turnPoints = prop.turnPoints.map(function(turnPoint) {
+            prop.turnPoints = prop.turnPoints.map((turnPoint) => {
                 let lat = turnPoint.coordinate.latitude;
                 let lon = turnPoint.coordinate.longitude;
 
@@ -209,9 +209,7 @@ StoredRoute.fromJSON = function(obj) {
             break;
 
         case 'places':
-            prop.forEach(function(p) {
-                places.push(Place.Place.fromJSON(p));
-            });
+            prop.forEach((p) => places.push(Place.Place.fromJSON(p)));
             break;
         }
     }

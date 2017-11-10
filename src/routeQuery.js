@@ -185,7 +185,7 @@ var RouteQuery = new Lang.Class({
             index = this.points.length - 1;
 
         this._points.splice(index, 0, point);
-        point.connect('notify::place', (function() {
+        point.connect('notify::place', () => {
             let placeStore = Application.placeStore;
             if (point.place) {
                 if (!placeStore.exists(point.place, null)) {
@@ -195,7 +195,7 @@ var RouteQuery = new Lang.Class({
             }
             this.notify('points');
             this._latest = point;
-        }).bind(this));
+        });
         this._latest = point;
         this.notify('points');
         this.emit('point-added', point, index);

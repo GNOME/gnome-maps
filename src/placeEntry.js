@@ -100,7 +100,7 @@ var PlaceEntry = new Lang.Class({
         this._popover = this._createPopover(numVisible, maxChars);
 
         this.connect('activate', this._onActivate.bind(this));
-        this.connect('search-changed', (function() {
+        this.connect('search-changed', () => {
             if (this._cancellable)
                 this._cancellable.cancel();
 
@@ -116,13 +116,13 @@ var PlaceEntry = new Lang.Class({
                 this._popover.showCompletion();
             else
                 this._popover.hide();
-        }).bind(this));
+        });
 
         if (parseOnFocusOut) {
-            this.connect('focus-out-event', (function() {
+            this.connect('focus-out-event', () => {
                 this._parse();
                 return false;
-            }).bind(this));
+            });
         }
     },
 
@@ -139,16 +139,16 @@ var PlaceEntry = new Lang.Class({
                                                       relative_to:   this,
                                                       maxChars:      maxChars});
 
-        this.connect('size-allocate', (function(widget, allocation) {
+        this.connect('size-allocate', (widget, allocation) => {
             // Magic number to make the alignment pixel perfect.
             let width_request = allocation.width + 20;
             popover.width_request = width_request;
-        }).bind(this));
+        });
 
-        popover.connect('selected', (function(widget, place) {
+        popover.connect('selected', (widget, place) => {
             this.place = place;
             popover.hide();
-        }).bind(this));
+        });
 
         return popover;
     },
@@ -209,7 +209,7 @@ var PlaceEntry = new Lang.Class({
 
         this._popover.showSpinner();
         this._cancellable = new Gio.Cancellable();
-        Application.geocodeService.search(this.text, bbox, this._cancellable, (function(places) {
+        Application.geocodeService.search(this.text, bbox, this._cancellable, (places) => {
             if (!places) {
                 this.place = null;
                 this._popover.showNoResult();
@@ -217,6 +217,6 @@ var PlaceEntry = new Lang.Class({
             }
             this._popover.updateResult(places, this.text);
             this._popover.showResult();
-        }).bind(this));
+        });
     }
 });

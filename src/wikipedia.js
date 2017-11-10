@@ -68,7 +68,7 @@ function fetchArticleThumbnail(wiki, size, callback) {
         return;
     }
 
-    session.queue_message(msg, function (session, msg) {
+    session.queue_message(msg, (session, msg) => {
         if (msg.status_code !== Soup.KnownStatusCode.OK) {
             log("Failed to request thumbnail: " + msg.reason_phrase);
             callback(null);
@@ -106,7 +106,7 @@ function _fetchThumbnailImage(wiki, size, source, callback) {
     let msg = new Soup.Message({ method: 'GET', uri: uri });
     let session = _getSoupSession();
 
-    session.queue_message(msg, function (session, msg) {
+    session.queue_message(msg, (session, msg) => {
         if (msg.status_code !== Soup.KnownStatusCode.OK) {
             log("Failed to download thumbnail: " + msg.reason_phrase);
             callback(null);

@@ -60,10 +60,10 @@ var Notification = new Lang.Class({
         // if there is an actual change in revealed state.
         if (state !== this.child_revealed) {
             this.set_reveal_child(state);
-            Mainloop.timeout_add(this.transition_duration, (function() {
+            Mainloop.timeout_add(this.transition_duration, () => {
                 this.emit(signal);
                 return false;
-            }).bind(this));
+            });
         }
     }
 });

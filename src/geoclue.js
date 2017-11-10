@@ -75,7 +75,7 @@ var Geoclue = new Lang.Class({
         let id = 'org.gnome.Maps';
         let level = GClue.AccuracyLevel.EXACT;
 
-        GClue.Simple.new(id, level, null, (function(object, result) {
+        GClue.Simple.new(id, level, null, (object, result) => {
             try {
                 this._simple = GClue.Simple.new_finish(result);
             }
@@ -91,16 +91,16 @@ var Geoclue = new Lang.Class({
             }
 
             this._simple.connect('notify::location',
-                           this._onLocationNotify.bind(this));
-            this._simple.client.connect('notify::active', (function() {
+                                 () => this._onLocationNotify(this._simple));
+            this._simple.client.connect('notify::active', () => {
                 this.state = this._simple.client.active ? State.ON : State.DENIED;
-            }).bind(this));
+            });
 
             this.state = State.ON;
             this._onLocationNotify(this._simple);
             if (callback)
                 callback(true);
-        }).bind(this));
+        });
     },
 
     _onLocationNotify: function(simple) {

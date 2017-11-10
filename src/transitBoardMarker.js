@@ -96,7 +96,7 @@ var TransitBoardMarker = new Lang.Class({
                                               height: ACTOR_SIZE });
 
 
-            canvas.connect('draw', (function(canvas, cr) {
+            canvas.connect('draw', (canvas, cr) => {
                 cr.setOperator(Cairo.Operator.CLEAR);
                 cr.paint();
                 cr.setOperator(Cairo.Operator.OVER);
@@ -118,7 +118,7 @@ var TransitBoardMarker = new Lang.Class({
                 }
 
                 this._surface = cr.getTarget();
-            }).bind(this));
+            });
 
             let actor = new Clutter.Actor();
 

@@ -63,16 +63,16 @@ var ShapeLayerFileChooser = new Lang.Class({
         this.set_filter(allFilter);
         this.title = _("Open Shape Layer");
 
-        ShapeLayer.SUPPORTED_TYPES.forEach((function(layerClass) {
+        ShapeLayer.SUPPORTED_TYPES.forEach((layerClass) => {
             let filter = new Gtk.FileFilter();
-            [filter, allFilter].forEach(function(f) {
-                layerClass.mimeTypes.forEach(function(type) {
+            [filter, allFilter].forEach((f) => {
+                layerClass.mimeTypes.forEach((type) => {
                     f.add_mime_type(type);
                 });
             });
             filter.set_name(layerClass.displayName);
             this.add_filter(filter);
-        }).bind(this));
+        });
     }
 });
 
@@ -149,27 +149,22 @@ var MainWindow = new Lang.Class({
                                                      loupe: true,
                                                      matchRoute: true
                                                    });
-        placeEntry.connect('notify::place', (function() {
+        placeEntry.connect('notify::place', () => {
             if (placeEntry.place) {
                 this._mapView.showPlace(placeEntry.place, true);
             }
-        }).bind(this));
+        });
 
         let popover = placeEntry.popover;
-        popover.connect('selected', (function() {
-            this._mapView.grab_focus();
-        }).bind(this));
-        this._mapView.view.connect('button-press-event', (function () {
-            popover.hide();
-        }));
+        popover.connect('selected', () => this._mapView.grab_focus());
+        this._mapView.view.connect('button-press-event', () => popover.hide());
         return placeEntry;
     },
 
     _createSidebar: function() {
         let sidebar = new Sidebar.Sidebar(this._mapView);
 
-        Application.routeQuery.connect('notify',
-                                       this._setRevealSidebar.bind(this, true));
+        Application.routeQuery.connect('notify', () => this._setRevealSidebar(true));
         this._toggleSidebarButton.bind_property('active',
                                                 this._mapView, 'routingOpen',
                                                 GObject.BindingFlags.BIDIRECTIONAL);
@@ -183,72 +178,72 @@ var MainWindow = new Lang.Class({
         this.drag_dest_set(Gtk.DestDefaults.DROP, null, 0);
         this.drag_dest_add_uri_targets();
 
-        this.connect('drag-motion', (function(widget, ctx, x, y, time) {
+        this.connect('drag-motion', (widget, ctx, x, y, time) => {
             Gdk.drag_status(ctx, Gdk.DragAction.COPY, time);
             return true;
-        }).bind(this));
+        });
 
-        this.connect('drag-data-received', (function(widget, ctx, x, y, data, info, time) {
+        this.connect('drag-data-received', (widget, ctx, x, y, data, info, time) => {
             let files = data.get_uris().map(Gio.file_new_for_uri);
             if (this._mapView.openShapeLayers(files))
                 Gtk.drag_finish(ctx, true, false, time);
             else
                 Gtk.drag_finish(ctx, false, false, time);
-        }).bind(this));
+        });
     },
 
     _initActions: function() {
         Utils.addActions(this, {
             'close': {
-                onActivate: this.close.bind(this)
+                onActivate: () => this.close()
             },
             'about': {
-                onActivate: this._onAboutActivate.bind(this)
+                onActivate: () => this._onAboutActivate()
             },
             'map-type-menu': {
                 state: ['b', false],
-                onActivate: this._onMapTypeMenuActivate.bind(this)
+                onActivate: () => this._onMapTypeMenuActivate()
             },
             'switch-to-street-view': {
                 accels: ['<Primary>1', '<Primary>KP_1'],
-                onActivate: this._onStreetViewActivate.bind(this)
+                onActivate: () => this._onStreetViewActivate()
             },
             'switch-to-aearial-view': {
                 accels: ['<Primary>2', '<Primary>KP_2'],
-                onActivate: this._onAerialViewActivate.bind(this)
+                onActivate: () => this._onAerialViewActivate()
             },
             'goto-user-location': {
                 accels: ['<Primary>L'],
-                onActivate: this._onGotoUserLocationActivate.bind(this)
+                onActivate: () => this._onGotoUserLocationActivate()
             },
             'toggle-sidebar': {
                 accels: ['<Primary>D'],
                 state: ['b', false],
-                onChangeState: this._onToggleSidebarChangeState.bind(this)
+                onChangeState: (a, v) => this._onToggleSidebarChangeState(a, v)
             },
             'zoom-in': {
                 accels: ['plus', '<Primary>plus', 'KP_Add', '<Primary>KP_Add', 'equal', '<Primary>equal'],
-                onActivate: this._mapView.view.zoom_in.bind(this._mapView.view)
+                onActivate: () => this._mapView.view.zoom_in()
             },
             'zoom-out': {
                 accels: ['minus', '<Primary>minus', 'KP_Subtract', '<Primary>KP_Subtract'],
-                onActivate:  this._mapView.view.zoom_out.bind(this._mapView.view)
+                onActivate:  () => this._mapView.view.zoom_out()
             },
             'toggle-scale': {
                 accels: ['<Primary>S'],
-                onActivate:  this._mapView.toggleScale.bind(this._mapView)
+                onActivate:  () => this._mapView.toggleScale()
             },
             'find': {
                 accels: ['<Primary>F'],
-                onActivate: this._placeEntry.grab_focus.bind(this._placeEntry)
+                onActivate: () => this._placeEntry.grab_focus()
             },
             'print-route': {
                 accels: ['<Primary>P'],
-                onActivate: this._printRouteActivate.bind(this)
+                onActivate: () => this._printRouteActivate()
             },
             'open-shape-layer': {
                 accels: ['<Primary>O'],
-                onActivate: this._onOpenShapeLayer.bind(this)
+                onActivate: () => this._onOpenShapeLayer()
             }
         });
     },
@@ -260,27 +255,25 @@ var MainWindow = new Lang.Class({
 
         this.connect('window-state-event',
                      this._onWindowStateEvent.bind(this));
-        this._mapView.view.connect('button-press-event', (function() {
+        this._mapView.view.connect('button-press-event', () => {
             // Can not call something that will generate clutter events
             // from a clutter event-handler. So use an idle.
-            Mainloop.idle_add((function() {
-                this._mapView.grab_focus();
-            }).bind(this));
-        }).bind(this));
+            Mainloop.idle_add(() => this._mapView.grab_focus());
+        });
 
-        this.application.connect('notify::connected', (function() {
+        this.application.connect('notify::connected', () => {
             if (this.application.connected || this.application.local_tile_path)
                 this._mainStack.visible_child = this._overlay;
             else
                 this._mainStack.visible_child = this._noNetworkView;
-        }).bind(this));
+        });
 
         /*
          * If the currently focused widget is an entry then we will
          * hijack the key-press to the main window and make sure that
          * they reach the entry before they can be swallowed as accelerator.
          */
-        this.connect('key-press-event', (function(window, event) {
+        this.connect('key-press-event', (window, event) => {
             let focusWidget = window.get_focus();
             let keyval = event.get_keyval()[1];
             let keys = [Gdk.KEY_plus, Gdk.KEY_KP_Add,
@@ -307,7 +300,7 @@ var MainWindow = new Lang.Class({
                 return focusWidget.event(event);
 
             return false;
-        }).bind(this));
+        });
 
         this._mapView.view.connect('notify::zoom-level',
                                    this._updateZoomButtonsSensitivity.bind(this));
@@ -347,16 +340,16 @@ var MainWindow = new Lang.Class({
 
         let favoritesPopover = this._favoritesButton.popover;
         this._favoritesButton.sensitive = favoritesPopover.rows > 0;
-        favoritesPopover.connect('notify::rows', (function() {
+        favoritesPopover.connect('notify::rows', () => {
             this._favoritesButton.sensitive = favoritesPopover.rows > 0;
-        }).bind(this));
+        });
 
         this._mapView.bind_property('routeShowing', this._printRouteButton,
                                     'visible', GObject.BindingFlags.DEFAULT);
 
         Application.geoclue.connect('notify::state',
                                     this._updateLocationSensitivity.bind(this));
-        this.application.connect('notify::connected', (function() {
+        this.application.connect('notify::connected', () => {
             let app = this.application;
 
             this._updateLocationSensitivity();
@@ -366,7 +359,7 @@ var MainWindow = new Lang.Class({
                                                favoritesPopover.rows > 0);
             this._placeEntry.sensitive = app.connected;
             this._printRouteButton.sensitive = app.connected;
-        }).bind(this));
+        });
     },
 
     _saveWindowGeometry: function() {
@@ -408,11 +401,11 @@ var MainWindow = new Lang.Class({
             this._configureId = 0;
         }
 
-        this._configureId = Mainloop.timeout_add(_CONFIGURE_ID_TIMEOUT, (function() {
+        this._configureId = Mainloop.timeout_add(_CONFIGURE_ID_TIMEOUT, () => {
             this._saveWindowGeometry();
             this._configureId = 0;
             return false;
-        }).bind(this));
+        });
     },
 
     _onWindowStateEvent: function(widget, event) {
@@ -456,7 +449,7 @@ var MainWindow = new Lang.Class({
             return;
         }
 
-        Application.geoclue.start((function() {
+        Application.geoclue.start(() => {
             switch(Application.geoclue.state) {
             case Geoclue.State.FAILED:
                 message = _("Failed to connect to location service");
@@ -472,7 +465,7 @@ var MainWindow = new Lang.Class({
                 this._mapView.gotoUserLocation(true);
                 break;
             }
-        }).bind(this));
+        });
     },
 
     _printRouteActivate: function() {
@@ -544,9 +537,7 @@ var MainWindow = new Lang.Class({
         copyrightLabel.show();
 
         aboutDialog.show();
-        aboutDialog.connect('response', (function() {
-            aboutDialog.destroy();
-        }));
+        aboutDialog.connect('response', () => aboutDialog.destroy());
     },
 
     _getAttribution: function() {
@@ -578,13 +569,13 @@ var MainWindow = new Lang.Class({
             transient_for: this,
         });
 
-        fileChooser.connect('response', (function(widget, response) {
+        fileChooser.connect('response', (widget, response) => {
             if (response === Gtk.ResponseType.ACCEPT) {
                 this._mapView.openShapeLayers(fileChooser.get_files());
                 this.layersPopover.popdown();
             }
             fileChooser.destroy();
-        }).bind(this));
+        });
         fileChooser.show();
     },
 
@@ -595,9 +586,7 @@ var MainWindow = new Lang.Class({
         this._busy.show();
 
         let stage = this._mapView.view.get_stage();
-        this._busySignalId = stage.connect('captured-event', function() {
-            return true;
-        });
+        this._busySignalId = stage.connect('captured-event', () => true);
     },
 
     unmarkBusy: function() {

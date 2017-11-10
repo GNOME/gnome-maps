@@ -52,7 +52,7 @@ var GraphHopper = new Lang.Class({
     },
 
     _updateFromStored: function() {
-        Mainloop.idle_add((function() {
+        Mainloop.idle_add(() => {
             if (!this.storedRoute)
                 return;
 
@@ -62,13 +62,13 @@ var GraphHopper = new Lang.Class({
                                 time: this.storedRoute.time,
                                 bbox: this.storedRoute.bbox });
             this.storedRoute = null;
-        }).bind(this));
+        });
     },
 
     _queryGraphHopper: function(points, transportationType, callback) {
         let url = this._buildURL(points, transportationType);
         let msg = Soup.Message.new('GET', url);
-        this._session.queue_message(msg, (function(session, message) {
+        this._session.queue_message(msg, (session, message) => {
             try {
                 let result = this._parseMessage(message);
                 if (!result)
@@ -78,7 +78,7 @@ var GraphHopper = new Lang.Class({
             } catch (e) {
                 callback(null, e);
             }
-        }).bind(this));
+        });
     },
 
     fetchRoute: function(points, transportationType) {
@@ -88,7 +88,7 @@ var GraphHopper = new Lang.Class({
         }
 
         this._queryGraphHopper(points, transportationType,
-                               (function(result, exception) {
+                               (result, exception) => {
             if (exception) {
                 Application.notificationManager.showMessage(_("Route request failed."));
                 Utils.debug(e);
@@ -108,19 +108,19 @@ var GraphHopper = new Lang.Class({
                     this.route.update(route);
                 }
             }
-        }).bind(this));
+        });
     },
 
     fetchRouteAsync: function(points, transportationType, callback) {
         this._queryGraphHopper(points, transportationType,
-                               (function(result, exception) {
+                               (result, exception) => {
             if (result) {
                 let route = this._createRoute(result.paths[0]);
                 callback(route, exception);
             } else {
                 callback(null, exception);
             }
-        }).bind(this));
+        });
     },
 
     _buildURL: function(points, transportation) {
@@ -157,7 +157,7 @@ var GraphHopper = new Lang.Class({
         if (!Array.isArray(result.paths)) {
             Utils.debug("No route found");
             if (result.info && Array.isArray(result.info.errors)) {
-                result.info.errors.forEach(function({ message, details }) {
+                result.info.errors.forEach(({ message, details }) => {
                     Utils.debug("Message: " + message);
                     Utils.debug("Details: " + details);
                 });
@@ -194,7 +194,7 @@ var GraphHopper = new Lang.Class({
             time:        0,
             turnAngle:   0
         });
-        let rest = instructions.map((function(instr) {
+        let rest = instructions.map((instr) => {
             let type = this._createTurnPointType(instr.sign);
             let text = instr.text;
             if (type === Route.TurnPointType.VIA) {
@@ -210,7 +210,7 @@ var GraphHopper = new Lang.Class({
                 time:        instr.time,
                 turnAngle:   instr.turn_angle
             });
-        }).bind(this));
+        });
         return [startPoint].concat(rest);
     },
 

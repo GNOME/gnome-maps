@@ -78,15 +78,15 @@ var GeoJSONSource = new Lang.Class({
         if (tile.get_state() === Champlain.State.DONE)
             return;
 
-        tile.connect('render-complete', (function(tile, data, size, error) {
+        tile.connect('render-complete', (tile, data, size, error) => {
             if(!error) {
                 tile.set_state(Champlain.State.DONE);
                 tile.display_content();
             } else if(this.next_source)
                 this.next_source.fill_tile(tile);
-        }).bind(this));
+        });
 
-        Mainloop.idle_add(this._renderTile.bind(this, tile));
+        Mainloop.idle_add(() => this._renderTile(tile));
     },
 
     _validate: function([lon, lat]) {
@@ -99,10 +99,10 @@ var GeoJSONSource = new Lang.Class({
     },
 
     _compose: function(coordinates) {
-        coordinates.forEach((function(coordinate) {
+        coordinates.forEach((coordinate) => {
             this._validate(coordinate);
             this._bbox.extend(coordinate[1], coordinate[0]);
-        }).bind(this));
+        });
     },
 
     _clampBBox: function() {
@@ -117,9 +117,7 @@ var GeoJSONSource = new Lang.Class({
     },
 
     _parsePolygon: function(coordinates) {
-        coordinates.forEach((function(coordinate) {
-            this._compose(coordinate);
-        }).bind(this));
+        coordinates.forEach((coordinate) => this._compose(coordinate));
     },
 
     _parsePoint: function(coordinates, properties) {
@@ -154,9 +152,9 @@ var GeoJSONSource = new Lang.Class({
             break;
 
         case 'MultiLineString':
-            geometry.coordinates.forEach((function(coordinate) {
+            geometry.coordinates.forEach((coordinate) => {
                 this._parseLineString(coordinate);
-            }).bind(this));
+            });
             break;
 
         case 'Polygon':
@@ -164,9 +162,9 @@ var GeoJSONSource = new Lang.Class({
             break;
 
         case 'MultiPolygon':
-            geometry.coordinates.forEach((function(coordinate) {
+            geometry.coordinates.forEach((coordinate) => {
                 this._parsePolygon(coordinate);
-            }).bind(this));
+            });
             break;
 
         case 'Point':
@@ -174,9 +172,9 @@ var GeoJSONSource = new Lang.Class({
             break;
 
         case 'MultiPoint':
-            geometry.coordinates.forEach((function(coordinate, properties) {
+            geometry.coordinates.forEach((coordinate, properties) => {
                 this._parsePoint(coordinate,properties);
-            }).bind(this));
+            });
             break;
 
         default:
@@ -190,9 +188,9 @@ var GeoJSONSource = new Lang.Class({
 
         switch(root.type) {
         case 'FeatureCollection':
-            root.features.forEach((function(feature) {
+            root.features.forEach((feature) => {
                 this._parseGeometry(feature.geometry, feature.properties);
-            }).bind(this));
+            });
             break;
 
         case 'Feature':
@@ -203,7 +201,7 @@ var GeoJSONSource = new Lang.Class({
             if (!root.geometries)
                 throw new Error(_("parse error"));
 
-            root.geometries.forEach(this._parseGeometry.bind(this));
+            root.geometries.forEach((g) => this._parseGeometry(g));
             break;
 
         default:
@@ -226,7 +224,7 @@ var GeoJSONSource = new Lang.Class({
                                            height: TILE_SIZE,
                                            content: content });
 
-        content.connect('draw', (function(canvas, cr) {
+        content.connect('draw', (canvas, cr) => {
             tile.set_surface(cr.getTarget());
             cr.setOperator(Cairo.Operator.CLEAR);
             cr.paint();
@@ -238,13 +236,13 @@ var GeoJSONSource = new Lang.Class({
                 return;
             }
 
-            tileJSON.features.forEach(function(feature) {
+            tileJSON.features.forEach((feature) => {
                 if (feature.type === TileFeature.POINT)
                     return;
 
                 let geoJSONStyleObj = GeoJSONStyle.GeoJSONStyle.parseSimpleStyle(feature.tags);
 
-                feature.geometry.forEach(function(geometry) {
+                feature.geometry.forEach((geometry) => {
                     let first = true;
                     cr.moveTo(0, 0);
                     cr.setLineWidth(geoJSONStyleObj.lineWidth);
@@ -276,7 +274,7 @@ var GeoJSONSource = new Lang.Class({
             });
 
             tile.emit('render-complete', null, 0, false);
-        }).bind(this));
+        });
 
         content.invalidate();
     }

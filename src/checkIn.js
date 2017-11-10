@@ -84,7 +84,7 @@ var CheckInManager = new Lang.Class({
         this._accountsCount = 0;
         this._authorizers = {};
 
-        accounts.forEach((function(object) {
+        accounts.forEach((object) => {
             if (!object.get_account())
                 return;
 
@@ -95,7 +95,7 @@ var CheckInManager = new Lang.Class({
             this._accounts.push(object);
 
             this._authorizers[accountId] = this._getBackend(object).createAuthorizer(object);
-        }).bind(this));
+        });
 
         this.emit('accounts-refreshed');
         this.notify('hasCheckIn');

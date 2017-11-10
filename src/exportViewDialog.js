@@ -60,17 +60,11 @@ var ExportViewDialog = new Lang.Class({
         params.use_header_bar = true;
         this.parent(params);
 
-        this._cancelButton.connect('clicked', (function() {
-            this.response(Response.CANCEL);
-        }).bind(this));
-        this._exportButton.connect('clicked', this._exportView.bind(this));
-        this._filenameEntry.connect('changed',
-                                    this._onFileNameChanged.bind(this));
-        this._fileChooserButton.connect('file-set',
-                                        this._onFolderChanged.bind(this));
-
-        this._layersCheckButton.connect('toggled',
-                                        this._includeLayersChanged.bind(this));
+        this._cancelButton.connect('clicked', () => this.response(Response.CANCEL));
+        this._exportButton.connect('clicked', () => this._exportView());
+        this._filenameEntry.connect('changed', () => this._onFileNameChanged());
+        this._fileChooserButton.connect('file-set', () => this._onFolderChanged());
+        this._layersCheckButton.connect('toggled', () => this._includeLayersChanged());
 
 
         this._folder = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_PICTURES);
@@ -99,7 +93,8 @@ var ExportViewDialog = new Lang.Class({
         let height = surfaceHeight * this._scaleFactor;
 
         this._previewArea.set_size_request(width, height);
-        this._previewArea.connect('draw', this._drawPreview.bind(this));
+        this._previewArea.connect('draw',
+                                  (w, cr) => this._drawPreview(w, cr));
     },
 
     _drawPreview: function(widget, cr) {
@@ -176,9 +171,7 @@ var ExportViewDialog = new Lang.Class({
                 secondary_text: details
             });
 
-            dialog.connect('response', function() {
-                dialog.destroy();
-            });
+            dialog.connect('response', () => dialog.destroy());
             dialog.show_all();
         }
     },

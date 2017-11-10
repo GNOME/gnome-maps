@@ -33,11 +33,11 @@ var Settings = new Lang.Class({
 
     _init: function(params) {
         this.parent(params);
-        this.list_keys().forEach((function(key) {
+        this.list_keys().forEach((key) => {
             this._keyTypes[key] = this.get_value(key)
                                       .get_type()
                                       .dup_string();
-        }).bind(this));
+        });
     },
 
     get: function(name) {

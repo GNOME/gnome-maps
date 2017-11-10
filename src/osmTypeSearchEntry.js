@@ -39,11 +39,11 @@ var OSMTypeSearchEntry = new Lang.Class({
         this._popover =
             new OSMTypePopover.OSMTypePopover({relative_to: this});
 
-        this.connect('size-allocate', (function(widget, allocation) {
+        this.connect('size-allocate', (widget, allocation) => {
             /* Magic number to make the alignment pixel perfect. */
             let width_request = allocation.width + 20;
             this._popover.width_request = width_request;
-        }).bind(this));
+        });
 
         this.connect('search-changed', this._onSearchChanged.bind(this));
         this.connect('activate', this._onSearchChanged.bind(this));

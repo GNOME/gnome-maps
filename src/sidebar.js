@@ -161,14 +161,14 @@ var Sidebar = new Lang.Class({
     },
 
     _initQuerySignals: function() {
-        this._query.connect('point-added', (function(obj, point, index) {
+        this._query.connect('point-added', (obj, point, index) => {
             this._createRouteEntry(index, point);
-        }).bind(this));
+        });
 
-        this._query.connect('point-removed', (function(obj, point, index) {
+        this._query.connect('point-removed', (obj, point, index) => {
             let row = this._entryList.get_row_at_index(index);
             row.destroy();
-        }).bind(this));
+        });
     },
 
     _cancelStore: function() {
@@ -191,20 +191,20 @@ var Sidebar = new Lang.Class({
         this._entryList.insert(routeEntry, index);
 
         if (type === RouteEntry.Type.FROM) {
-            routeEntry.button.connect('clicked', (function() {
+            routeEntry.button.connect('clicked', () => {
                 let lastIndex = this._entryList.get_children().length;
                 this._query.addPoint(lastIndex - 1);
-            }).bind(this));
+            });
 
-            this.connect('notify::child-revealed', (function(){
+            this.connect('notify::child-revealed', () => {
                 if (this.child_revealed)
                     routeEntry.entry.grab_focus_without_selecting();
-            }).bind(this));
+            });
         } else if (type === RouteEntry.Type.VIA) {
-            routeEntry.button.connect('clicked', (function() {
+            routeEntry.button.connect('clicked', () => {
                 let row = routeEntry.get_parent();
                 this._query.removePoint(row.get_index());
-            }).bind(this));
+            });
         } else if (type === RouteEntry.Type.TO) {
             routeEntry.button.connect('clicked',
                                       this._reverseRoutePoints.bind(this));
@@ -217,32 +217,32 @@ var Sidebar = new Lang.Class({
         let route = Application.routingDelegator.graphHopper.route;
         let transitPlan = Application.routingDelegator.openTripPlanner.plan;
 
-        route.connect('reset', (function() {
+        route.connect('reset', () => {
             this._clearInstructions();
 
             let length = this._entryList.get_children().length;
             for (let index = 1; index < (length - 1); index++) {
                 this._query.removePoint(index);
             }
-        }).bind(this));
+        });
 
-        transitPlan.connect('reset', (function() {
+        transitPlan.connect('reset', () => {
             this._clearTransitOverview();
             this._showTransitOverview();
             this._instructionStack.visible_child = this._transitWindow;
             /* don't remove query points as with the turn-based routing,
              * since we might get "no route" because of the time selected
              * and so on */
-        }).bind(this));
+        });
 
-        transitPlan.connect('no-more-results', (function() {
+        transitPlan.connect('no-more-results', () => {
             // remove the "load more" row, keep the empty row since it gives the separator
             let numRows = this._transitOverviewListBox.get_children().length;
             let loadMoreRow = this._transitOverviewListBox.get_row_at_index(numRows - 2);
             this._transitOverviewListBox.remove(loadMoreRow);
-        }).bind(this));
+        });
 
-        this._query.connect('notify', (function() {
+        this._query.connect('notify', () => {
             if (this._query.isValid()) {
                 this._instructionStack.visible_child = this._instructionSpinner;
             } else {
@@ -257,15 +257,15 @@ var Sidebar = new Lang.Class({
             if (this._storeRouteTimeoutId)
                 this._cancelStore();
 
-        }).bind(this));
+        });
 
-        route.connect('update', (function() {
+        route.connect('update', () => {
             this._clearInstructions();
 
             if (this._storeRouteTimeoutId)
                 this._cancelStore();
 
-            this._storeRouteTimeoutId = Mainloop.timeout_add(5000, (function() {
+            this._storeRouteTimeoutId = Mainloop.timeout_add(5000, () => {
                 let placeStore = Application.placeStore;
                 let places = this._query.filledPoints.map(function(point) {
                     return point.place;
@@ -282,32 +282,32 @@ var Sidebar = new Lang.Class({
                                         PlaceStore.PlaceType.RECENT_ROUTE);
                 }
                 this._storeRouteTimeoutId = 0;
-            }).bind(this));
+            });
 
-            route.turnPoints.forEach((function(turnPoint) {
+            route.turnPoints.forEach((turnPoint) => {
                 let row = new InstructionRow.InstructionRow({ visible: true,
                                                               turnPoint: turnPoint });
                 this._instructionList.add(row);
-            }).bind(this));
+            });
 
             /* Translators: %s is a time expression with the format "%f h" or "%f min" */
             this._timeInfo.label = _("Estimated time: %s").format(Utils.prettyTime(route.time));
             this._distanceInfo.label = Utils.prettyDistance(route.distance);
-        }).bind(this));
+        });
 
-        this._instructionList.connect('row-selected',(function(listbox, row) {
+        this._instructionList.connect('row-selected', (listbox, row) => {
             if (row)
                 this._mapView.showTurnPoint(row.turnPoint);
-        }).bind(this));
+        });
 
-        transitPlan.connect('update', (function() {
+        transitPlan.connect('update', () => {
             this._clearTransitOverview();
             this._showTransitOverview();
             this._populateTransitItineraryOverview();
-        }).bind(this));
+        });
 
         /* use list separators for the transit itinerary overview list */
-        this._transitOverviewListBox.set_header_func(function(row, prev) {
+        this._transitOverviewListBox.set_header_func((row, prev) => {
             if (prev)
                 row.set_header(new Gtk.Separator());
         });
@@ -349,12 +349,12 @@ var Sidebar = new Lang.Class({
     _populateTransitItineraryOverview: function() {
         let plan = Application.routingDelegator.openTripPlanner.plan;
 
-        plan.itineraries.forEach((function(itinerary) {
+        plan.itineraries.forEach((itinerary) => {
             let row =
                 new TransitItineraryRow.TransitItineraryRow({ visible: true,
                                                               itinerary: itinerary });
             this._transitOverviewListBox.add(row);
-        }).bind(this));
+        });
         /* add the "load more" row */
         this._transitOverviewListBox.add(
             new TransitMoreRow.TransitMoreRow({ visible: true }));
@@ -521,12 +521,12 @@ var Sidebar = new Lang.Class({
                                                     app_paintable: true });
         this._dragWidget = new Gtk.OffscreenWindow({ visible: true });
 
-        dragEntry.connect('draw', (function(widget, cr) {
+        dragEntry.connect('draw', (widget, cr) => {
             cr.setSourceRGBA(0.0, 0.0, 0.0, 0.0);
             cr.setOperator(Cairo.Operator.SOURCE);
             cr.paint();
             cr.setOperator(Cairo.Operator.OVER);
-        }).bind(this));
+        });
 
         this._dragWidget.add(dragEntry);
     },
@@ -548,12 +548,8 @@ var Sidebar = new Lang.Class({
                           Gdk.DragAction.MOVE);
         row.drag_dest_add_image_targets();
 
-        dragIcon.connect('drag-begin', (function(icon, context) {
-            this._onDragBegin(context, row);
-        }).bind(this));
-        dragIcon.connect('drag-end', (function(icon, context) {
-            this._onDragEnd(context, row);
-        }).bind(this));
+        dragIcon.connect('drag-begin', (icon, context) => this._onDragBegin(context, row));
+        dragIcon.connect('drag-end', (icon, context) => this._onDragEnd(context, row));
 
         row.connect('drag-leave', this._dragUnhighlightRow.bind(this, row));
         row.connect('drag-motion', this._onDragMotion.bind(this));

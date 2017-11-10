@@ -39,7 +39,7 @@ var ZoomInNotification = Lang.Class({
         let ui = Utils.getUIObject('zoom-in-notification', [ 'grid',
                                                              'okButton' ]);
 
-        ui.okButton.connect('clicked', this._onZoomIn.bind(this));
+        ui.okButton.connect('clicked', () => this._onZoomIn());
         this._ui.body.add(ui.grid);
     },
 

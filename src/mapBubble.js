@@ -131,7 +131,7 @@ var MapBubble = new Lang.Class({
             image.icon_name = 'non-starred-symbolic';
         }
 
-        button.connect('clicked', (function() {
+        button.connect('clicked', () => {
             if (placeStore.exists(this._place,
                                   PlaceStore.PlaceType.FAVORITE)) {
                 image.icon_name = 'non-starred-symbolic';
@@ -142,7 +142,7 @@ var MapBubble = new Lang.Class({
                 placeStore.addPlace(this._place,
                                     PlaceStore.PlaceType.FAVORITE);
             }
-        }).bind(this));
+        });
     },
 
     _initSendToButton: function(button) {
@@ -154,10 +154,8 @@ var MapBubble = new Lang.Class({
             return;
 
         button.visible = true;
-        button.connect('clicked', function() {
-            dialog.connect('response', function() {
-                dialog.hide();
-            });
+        button.connect('clicked', () => {
+            dialog.connect('response', () => dialog.hide());
             dialog.show_all();
         });
     },
@@ -169,7 +167,7 @@ var MapBubble = new Lang.Class({
 
         button.visible = true;
 
-        button.connect('clicked', (function() {
+        button.connect('clicked', () => {
             query.freeze_notify();
             query.reset();
             Application.routingDelegator.reset();
@@ -182,7 +180,7 @@ var MapBubble = new Lang.Class({
             }
             this.destroy();
             query.thaw_notify();
-        }).bind(this));
+        });
     },
 
     _initCheckInButton: function(button, matchPlace) {
@@ -191,10 +189,10 @@ var MapBubble = new Lang.Class({
                                                  GObject.BindingFlags.DEFAULT |
                                                  GObject.BindingFlags.SYNC_CREATE);
 
-        button.connect('clicked', (function() {
+        button.connect('clicked', () => {
             Application.checkInManager.showCheckInDialog(this.get_toplevel(),
                                                          this.place,
                                                          matchPlace);
-        }).bind(this));
+        });
     }
 });

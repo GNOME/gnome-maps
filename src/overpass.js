@@ -68,7 +68,7 @@ var Overpass = new Lang.Class({
         let request = new Soup.Message({ method: 'GET',
                                          uri: uri });
 
-        this._session.queue_message(request, (function(obj, message) {
+        this._session.queue_message(request, (obj, message) => {
             if (message.status_code !== Soup.KnownStatusCode.OK) {
                 callback(false, message.status_code, null);
                 return;
@@ -81,7 +81,7 @@ var Overpass = new Lang.Class({
             } catch(e) {
                 callback(false, message.status_code);
             }
-        }).bind(this));
+        });
     },
 
     _populatePlace: function(place, overpassData) {

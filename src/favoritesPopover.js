@@ -70,26 +70,26 @@ var FavoritesPopover = new Lang.Class({
             row.set_header(header);
         });
 
-        this.connect('notify::rows', (function() {
+        this.connect('notify::rows', () => {
             let visible = Math.min(this._rows, _N_VISIBLE);
             let separators = visible - 1; // separators are 1px
             let height = (PlaceListRow.ROW_HEIGHT + 6) * visible + separators;
 
             this._scrolledWindow.min_content_height = height;
             this._revealer.reveal_child = this._rows > _N_VISIBLE;
-        }).bind(this));
+        });
 
         this._entry.connect('changed',
-                            this._list.invalidate_filter.bind(this._list));
+                            () => this._list.invalidate_filter(this._list));
 
-        this._list.connect('row-activated', (function(list, row) {
+        this._list.connect('row-activated', (list, row) => {
             this.hide();
             this._mapView.showPlace(row.place, true);
-        }).bind(this));
+        });
 
-        this._list.set_filter_func((function(row) {
+        this._list.set_filter_func((row) => {
             return row.place.match(this._entry.text);
-        }).bind(this));
+        });
 
         this._updateList();
     },
@@ -106,12 +106,10 @@ var FavoritesPopover = new Lang.Class({
     },
 
     _updateList: function() {
-        this._list.forall(function(row) {
-            row.destroy();
-        });
+        this._list.forall((row) => row.destroy());
 
         let rows = 0;
-        this._model.foreach((function(model, path, iter) {
+        this._model.foreach((model, path, iter) => {
             let place = model.get_value(iter, PlaceStore.Columns.PLACE);
 
             let row = new PlaceListRow.PlaceListRow({ place: place,
@@ -119,7 +117,7 @@ var FavoritesPopover = new Lang.Class({
                                                       can_focus: true });
             this._list.add(row);
             rows++;
-        }).bind(this));
+        });
 
         this.rows = rows;
     }

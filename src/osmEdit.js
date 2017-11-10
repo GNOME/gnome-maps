@@ -106,9 +106,9 @@ var OSMEdit = new Lang.Class({
     },
 
     _openChangeset: function(object, type, comment, action, callback) {
-        this._osmConnection.openChangeset(comment, (function(success, status, changesetId) {
+        this._osmConnection.openChangeset(comment, (success, status, changesetId) => {
             this._onChangesetOpened(success, status, changesetId, object, type, action, callback);
-        }).bind(this));
+        });
     },
 
     _onObjectUploaded: function(success, status, response, changesetId, callback) {
@@ -120,9 +120,9 @@ var OSMEdit = new Lang.Class({
 
     _uploadObject: function(object, type, changesetId, callback) {
         this._osmObject = object;
-        this._osmConnection.uploadObject(object, type, changesetId, (function(success, status, response) {
+        this._osmConnection.uploadObject(object, type, changesetId, (success, status, response) => {
             this._onObjectUploaded(success, status, response, changesetId, callback);
-        }).bind(this));
+        });
     },
 
     deleteObject: function(object, type, comment, callback) {
@@ -139,9 +139,9 @@ var OSMEdit = new Lang.Class({
 
     _deleteObject: function(object, type, changesetId, callback) {
         this._osmObject = object;
-        this._osmConnection.deleteObject(object, type, changesetId, (function(success, status, response) {
+        this._osmConnection.deleteObject(object, type, changesetId, (success, status, response) => {
             this._onObjectDeleted(success, status, response, changesetId, callback);
-        }).bind(this));
+        });
     },
 
     _closeChangeset: function(changesetId, callback) {
@@ -149,12 +149,12 @@ var OSMEdit = new Lang.Class({
     },
 
     performOAuthSignIn: function(username, password, callback) {
-        this._osmConnection.requestOAuthToken(function(success) {
+        this._osmConnection.requestOAuthToken((success) => {
             if (success)
                 this._onOAuthTokenRequested(username, password, callback);
             else
                 callback(false, null);
-        }.bind(this));
+        });
     },
 
     _onOAuthTokenRequested: function(username, password, callback) {
@@ -164,9 +164,9 @@ var OSMEdit = new Lang.Class({
     },
 
     requestOAuthAccessToken: function(code, callback) {
-        this._osmConnection.requestOAuthAccessToken(code, (function(success, token) {
+        this._osmConnection.requestOAuthAccessToken(code, (success, token) => {
             this._onOAuthAccessTokenRequested(success, callback);
-        }).bind(this));
+        });
     },
 
     _onOAuthAccessTokenRequested: function(success, callback) {

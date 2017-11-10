@@ -40,7 +40,7 @@ var LocationServiceNotification = new Lang.Class({
         let ui = Utils.getUIObject('location-service-notification',
                                    [ 'button', 'grid' ]);
 
-        ui.button.connect('clicked', (function() {
+        ui.button.connect('clicked', () => {
             let privacyInfo = Gio.DesktopAppInfo.new(_PRIVACY_PANEL);
 
             try {
@@ -51,15 +51,14 @@ var LocationServiceNotification = new Lang.Class({
                 Utils.debug('launching privacy panel failed: ' + e);
             }
 
-            Application.geoclue.connect('notify::state', (function() {
+            Application.geoclue.connect('notify::state', () => {
                 if (!this.parent)
                     return;
 
                 if (Application.geoclue.state == Geoclue.State.ON)
                     this.dismiss();
-            }).bind(this));
-
-        }).bind(this));
+            });
+        });
 
         this._ui.body.add(ui.grid);
     }

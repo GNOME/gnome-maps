@@ -117,19 +117,17 @@ var MapWalker = new Lang.Class({
             this._view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_CUBIC;
             this._ensureVisible(fromLocation);
 
-            Utils.once(this._view, 'animation-completed', (function() {
+            Utils.once(this._view, 'animation-completed', () => {
                 this._view.goto_animation_mode = Clutter.AnimationMode.EASE_OUT_CUBIC;
                 this._view.go_to(this.place.location.latitude,
                                  this.place.location.longitude);
 
-                Utils.once(this._view, 'animation-completed::go-to', (function() {
+                Utils.once(this._view, 'animation-completed::go-to', () => {
                     this.zoomToFit();
                     this._view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_OUT_CUBIC;
                     this.emit('gone-to');
-                }).bind(this));
-
-            }).bind(this));
-
+                });
+            });
         }
     },
 
@@ -146,7 +144,7 @@ var MapWalker = new Lang.Class({
                                                      bottom:  90,
                                                      top:    -90 });
 
-            [fromLocation, this.place.location].forEach(function(location) {
+            [fromLocation, this.place.location].forEach((location) => {
                 visibleBox.left   = Math.min(visibleBox.left,   location.longitude);
                 visibleBox.right  = Math.max(visibleBox.right,  location.longitude);
                 visibleBox.bottom = Math.min(visibleBox.bottom, location.latitude);

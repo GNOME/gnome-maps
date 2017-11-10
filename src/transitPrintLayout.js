@@ -125,14 +125,14 @@ var TransitPrintLayout = new Lang.Class({
         else
             view.ensure_visible(leg.bbox, false);
         if (view.state !== Champlain.State.DONE) {
-            let notifyId = view.connect('notify::state', (function() {
+            let notifyId = view.connect('notify::state', () => {
                 if (view.state === Champlain.State.DONE) {
                     view.disconnect(notifyId);
                     let surface = view.to_surface(true);
                     if (surface)
                         this._addSurface(surface, x, y, pageNum);
                 }
-            }).bind(this));
+            });
         } else {
             let surface = view.to_surface(true);
             if (surface)
@@ -173,7 +173,7 @@ var TransitPrintLayout = new Lang.Class({
             routeLayer.add_node(lastPoint);
         }
 
-        leg.polyline.forEach(function(node) { routeLayer.add_node(node) });
+        leg.polyline.forEach((node) => routeLayer.add_node(node));
 
         /* like above, "stitch" the route segment with the next one if it's
          * a walking leg, and not the last one
@@ -199,20 +199,20 @@ var TransitPrintLayout = new Lang.Class({
         widget.get_style_context().add_class('printing-text');
 
         // Paint the background of the row to be transparent
-        widget.connect('draw', (function(widget, cr) {
+        widget.connect('draw', (widget, cr) => {
             cr.setSourceRGBA(0.0, 0.0, 0.0, 0.0);
             cr.setOperator(Cairo.Operator.SOURCE);
             cr.paint();
             cr.setOperator(Cairo.Operator.OVER);
-        }).bind(this));
+        });
 
         widget.queue_draw();
         offscreenWindow.add(widget);
         offscreenWindow.set_valign(Gtk.Align.START);
-        offscreenWindow.connect('damage-event', (function (widget) {
+        offscreenWindow.connect('damage-event', (widget) => {
             let surface = widget.get_surface();
             this._addSurface(surface, x, y, pageNum);
-        }).bind(this));
+        });
     },
 
     _drawInstruction: function(width, height, leg, start) {

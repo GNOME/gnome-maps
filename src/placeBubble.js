@@ -64,9 +64,7 @@ var PlaceBubble = new Lang.Class({
 
         this.parent(params);
 
-        Utils.load_icon(this.place.icon, 48, (function(pixbuf) {
-            this.image.pixbuf = pixbuf;
-        }).bind(this));
+        Utils.load_icon(this.place.icon, 48, (pixbuf) => this.image.pixbuf = pixbuf);
 
         this._stack = ui.stack;
         this._title = ui.labelTitle;
@@ -82,20 +80,20 @@ var PlaceBubble = new Lang.Class({
 
             // If the place is stale, update from Overpass.
             if (Application.placeStore.isStale(this.place)) {
-                overpass.addInfo(this.place, (function(status, code) {
+                overpass.addInfo(this.place, (status, code) => {
                     this._populate(this.place);
                     Application.placeStore.updatePlace(this.place);
-                }).bind(this));
+                });
             } else {
                 let place = Application.placeStore.get(this.place);
                 this._populate(place);
             }
         } else if (this.place.store) {
-            overpass.addInfo(this.place, (function(status, code) {
+            overpass.addInfo(this.place, (status, code) => {
                 this._populate(this.place);
                 Application.placeStore.addPlace(this.place,
                                                 PlaceStore.PlaceType.RECENT);
-            }).bind(this));
+            });
         } else {
             this._populate(this.place);
         }
@@ -181,16 +179,15 @@ var PlaceBubble = new Lang.Class({
     },
 
     _attachContent: function(content, expandedContent) {
-        content.forEach((function(info) {
+        content.forEach((info) => {
             let label = new Gtk.Label({ label: info,
                                         visible: true,
                                         use_markup: true,
                                         halign: Gtk.Align.START });
             this._boxContent.pack_start(label, false, true, 0);
-        }).bind(this));
+        });
 
-        expandedContent.forEach((function({ label, linkUrl, linkText, info },
-                                          row) {
+        expandedContent.forEach(({ label, linkUrl, linkText, info }, row) => {
             let widget;
 
             if (label) {
@@ -223,13 +220,13 @@ var PlaceBubble = new Lang.Class({
             else
                 // Expand over both columns if this row has no label
                 this._expandedContent.attach(widget, 0, row, 2, 1);
-        }).bind(this));
+        });
     },
 
     _populate: function(place) {
         let formatter = new PlaceFormatter.PlaceFormatter(place);
 
-        let content = formatter.rows.map(function(row) {
+        let content = formatter.rows.map((row) => {
             row = row.map(function(prop) {
                 return GLib.markup_escape_text(place[prop], -1);
             });
@@ -286,13 +283,8 @@ var PlaceBubble = new Lang.Class({
 
     // clear the view widgets to be able to re-populate an updated place
     _clearView: function() {
-        this._boxContent.get_children().forEach(function(child) {
-            child.destroy();
-        });
-
-        this._expandedContent.get_children().forEach(function(child) {
-            child.destroy();
-        });
+        this._boxContent.get_children().forEach((child) => child.destroy());
+        this._expandedContent.get_children().forEach((child) => child.destroy());
     },
 
     _initEditButton: function() {
@@ -315,11 +307,11 @@ var PlaceBubble = new Lang.Class({
             let dialog = osmEdit.createAccountDialog(this.get_toplevel(), true);
 
             dialog.show();
-            dialog.connect('response', (function(dialog, response) {
+            dialog.connect('response', (dialog, response) => {
                 dialog.destroy();
                 if (response === OSMAccountDialog.Response.SIGNED_IN)
                     this._edit();
-            }).bind(this));
+            });
 
             return;
         }
@@ -332,7 +324,7 @@ var PlaceBubble = new Lang.Class({
         let dialog = osmEdit.createEditDialog(this.get_toplevel(), this._place);
 
         dialog.show();
-        dialog.connect('response', (function(dialog, response) {
+        dialog.connect('response', (dialog, response) => {
             dialog.destroy();
 
             switch (response) {
@@ -347,6 +339,6 @@ var PlaceBubble = new Lang.Class({
             default:
                 break;
             }
-        }).bind(this));
+        });
     }
 });

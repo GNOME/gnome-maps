@@ -61,11 +61,10 @@ var AccountListBox = new Lang.Class({
         params.activate_on_single_click = true;
         this.parent(params);
 
-        Application.checkInManager.connect('accounts-refreshed', this.refresh.bind(this));
+        Application.checkInManager.connect('accounts-refreshed', () => this.refresh());
 
-        this.connect('row-activated', (function(list, row) {
-            this.emit('account-selected', row.account);
-        }).bind(this));
+        this.connect('row-activated',
+                     (list, row) => this.emit('account-selected', row.account));
 
         this.refresh();
     },
@@ -77,8 +76,6 @@ var AccountListBox = new Lang.Class({
             row.destroy();
         });
 
-        accounts.forEach((function(account) {
-            this.add(new AccountRow({ account: account }));
-        }).bind(this));
+        accounts.forEach((account) => this.add(new AccountRow({ account: account })));
     }
 });

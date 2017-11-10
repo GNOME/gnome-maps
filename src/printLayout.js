@@ -133,9 +133,7 @@ var PrintLayout = new Lang.Class({
     },
 
     _initSignals: function() {
-        this.connect('render-complete', (function() {
-            this.renderFinished = true;
-        }).bind(this));
+        this.connect('render-complete', () => this.renderFinished = true);
     },
 
     _createMarker: function(turnPoint) {
@@ -160,23 +158,23 @@ var PrintLayout = new Lang.Class({
 
         this._addRouteLayer(view);
 
-        turnPoints.forEach((function(turnPoint) {
+        turnPoints.forEach((turnPoint) => {
             locations.push(turnPoint.coordinate);
             if (turnPoint.isStop()) {
                 markerLayer.add_marker(this._createMarker(turnPoint));
             }
-        }).bind(this));
+        });
 
         view.ensure_visible(this._route.createBBox(locations), false);
         if (view.state !== Champlain.State.DONE) {
-            let notifyId = view.connect('notify::state', (function() {
+            let notifyId = view.connect('notify::state', () => {
                 if (view.state === Champlain.State.DONE) {
                     view.disconnect(notifyId);
                     let surface = view.to_surface(true);
                     if (surface)
                         this._addSurface(surface, x, y, pageNum);
                 }
-            }).bind(this));
+            });
         } else {
             let surface = view.to_surface(true);
             if (surface)
@@ -196,7 +194,7 @@ var PrintLayout = new Lang.Class({
         let routeLayer = new Champlain.PathLayer({ stroke_width: _STROKE_WIDTH,
                                                    stroke_color: _STROKE_COLOR });
         view.add_layer(routeLayer);
-        this._route.path.forEach(function(node) { routeLayer.add_node(node); });
+        this._route.path.forEach((node) => routeLayer.add_node(node));
     },
 
     _drawInstruction: function(width, height, turnPoint) {
@@ -216,20 +214,20 @@ var PrintLayout = new Lang.Class({
         instructionWidget.height_request = height;
 
         /* Paint the background of the entry to be transparent */
-        instructionEntry.connect('draw', (function(widget, cr) {
+        instructionEntry.connect('draw', (widget, cr) => {
             cr.setSourceRGBA(0.0, 0.0, 0.0, 0.0);
             cr.setOperator(Cairo.Operator.SOURCE);
             cr.paint();
             cr.setOperator(Cairo.Operator.OVER);
-        }).bind(this));
+        });
 
         instructionEntry.queue_draw();
         instructionWidget.add(instructionEntry);
         instructionWidget.set_valign(Gtk.Align.START);
-        instructionWidget.connect('damage-event', (function(widget) {
+        instructionWidget.connect('damage-event', (widget) => {
             let surface = widget.get_surface();
             this._addSurface(surface, x, y, pageNum);
-        }).bind(this));
+        });
     },
 
     _drawHeader: function(width, height) {

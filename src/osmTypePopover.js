@@ -42,20 +42,16 @@ var OSMTypePopover = new Lang.Class({
     _init: function(props) {
         this.parent(props);
 
-        this._list.connect('row-activated', (function(list, row) {
+        this._list.connect('row-activated', (list, row) => {
             if (row)
                 this.emit('selected', row.key, row.value, row.title);
-        }).bind(this));
+        });
     },
 
     showMatches: function(matches) {
-        this._list.forall(function(row) {
-            row.destroy();
-        });
+        this._list.forall((row) => row.destroy());
 
-        matches.forEach((function(type) {
-            this._addRow(type);
-        }).bind(this));
+        matches.forEach((type) => this._addRow(type));
         this.show();
     },
 

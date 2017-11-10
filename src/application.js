@@ -87,9 +87,7 @@ var Application = new Lang.Class({
         GLib.set_application_name(_("Maps"));
 
         /* Needed to be able to use in UI files */
-        _ensuredTypes.forEach(function(type) {
-            GObject.type_ensure(type);
-        });
+        _ensuredTypes.forEach((type) => GObject.type_ensure(type));
 
         this.parent({ application_id: 'org.gnome.Maps',
                       flags: Gio.ApplicationFlags.HANDLES_OPEN });
@@ -105,7 +103,7 @@ var Application = new Lang.Class({
         this.add_main_option('version', 'v'.charCodeAt(0), GLib.OptionFlags.NONE, GLib.OptionArg.NONE,
                              _("Show the version of the program"), null);
 
-        this.connect('handle-local-options', (function(app, options) {
+        this.connect('handle-local-options', (app, options) => {
             if (options.contains('local')) {
                 let variant = options.lookup_value('local', null);
                 this.local_tile_path = variant.deep_unpack();
@@ -119,7 +117,7 @@ var Application = new Lang.Class({
             }
 
             return -1;
-        }).bind(this));
+        });
     },
 
     _checkNetwork: function() {
@@ -127,17 +125,17 @@ var Application = new Lang.Class({
     },
 
     _showContact: function(id) {
-        contactStore.lookup(id, (function(contact) {
+        contactStore.lookup(id, (contact) => {
             this._mainWindow.markBusy();
             if (!contact) {
                 this._mainWindow.unmarkBusy();
                 return;
             }
-            contact.geocode((function() {
+            contact.geocode(() => {
                 this._mainWindow.unmarkBusy();
                 this._mainWindow.mapView.showContact(contact);
-            }).bind(this));
-        }).bind(this));
+            });
+        });
     },
 
     _onShowContactActivate: function(action, parameter) {
@@ -150,10 +148,10 @@ var Application = new Lang.Class({
         if (contactStore.state === Maps.ContactStoreState.LOADED) {
             this. _showContact(id);
         } else {
-            Utils.once(contactStore, 'notify::state', (function() {
+            Utils.once(contactStore, 'notify::state', () => {
                 if (contactStore.state === Maps.ContactStoreState.LOADED)
                     this._showContact(id);
-            }).bind(this));
+            });
         }
     },
 
@@ -165,13 +163,13 @@ var Application = new Lang.Class({
         let dialog = osmEdit.createAccountDialog(this._mainWindow, false);
 
         dialog.show();
-        dialog.connect('response', dialog.destroy.bind(dialog));
+        dialog.connect('response', () => dialog.destroy());
     },
 
     _addContacts: function() {
-        contactStore.get_contacts().forEach(function(contact) {
+        contactStore.get_contacts().forEach((contact) => {
             contact.geocode(function() {
-                contact.get_places().forEach(function(p) {
+                contact.get_places().forEach((p) => {
                     if (!p.location)
                         return;
 
@@ -199,10 +197,10 @@ var Application = new Lang.Class({
         if (contactStore.state === Maps.ContactStoreState.LOADED) {
             this._addContacts();
         } else {
-            Utils.once(contactStore, 'notify::state', (function() {
+            Utils.once(contactStore, 'notify::state', () => {
                 if (contactStore.state === Maps.ContactStoreState.LOADED)
                     this._addContacts();
-            }).bind(this));
+            });
         }
     },
 
@@ -264,9 +262,9 @@ var Application = new Lang.Class({
         notificationManager = new NotificationManager.NotificationManager(overlay);
         this._mainWindow = new MainWindow.MainWindow({ application: this,
                                                        overlay: overlay });
-        this._mainWindow.connect('destroy', this._onWindowDestroy.bind(this));
+        this._mainWindow.connect('destroy', () => this._onWindowDestroy());
         if (GLib.getenv('MAPS_DEBUG') === 'focus') {
-            this._mainWindow.connect('set-focus', function(window, widget) {
+            this._mainWindow.connect('set-focus', (window, widget) => {
                 log('* focus widget: %s'.format(widget));
             });
         }

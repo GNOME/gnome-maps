@@ -39,7 +39,7 @@ var ShapeLayerRow = new Lang.Class({
 
         this._layerLabel.label = this.shapeLayer.getName();
         this._layerLabel.tooltip_text = this.shapeLayer.file.get_parse_name();
-        this._visibleButton.connect('clicked', (function() {
+        this._visibleButton.connect('clicked', () => {
             let image = this._visibleButton.get_child();
 
             this.shapeLayer.visible = !this.shapeLayer.visible;
@@ -48,7 +48,7 @@ var ShapeLayerRow = new Lang.Class({
                 image.icon_name = 'layer-visible-symbolic';
             else
                 image.icon_name = 'layer-not-visible-symbolic';
-        }).bind(this));
+        });
     }
 });
 
@@ -75,23 +75,23 @@ var LayersPopover = new Lang.Class({
         this.get_style_context().add_class('maps-popover');
 
         this._layersListBox.bind_model(this._mapView.shapeLayerStore,
-                                         this._listBoxCreateWidget.bind(this));
-        this._layersListBox.connect('row-activated', (function(lb, row) {
+                                       this._listBoxCreateWidget.bind(this));
+        this._layersListBox.connect('row-activated', (lb, row) => {
             this._mapView.gotoBBox(row.shapeLayer.bbox);
-        }).bind(this));
+        });
 
-        this._layersListBox.set_header_func(function(row, before) {
+        this._layersListBox.set_header_func((row, before) => {
             let header = before ? new Gtk.Separator() : null;
             row.set_header(header);
         });
 
-        this._streetLayerButton.connect('clicked', (function () {
+        this._streetLayerButton.connect('clicked', () => {
             this._mapView.setMapType(MapView.MapType.STREET);
-        }).bind(this));
+        });
 
-        this._aerialLayerButton.connect('clicked', (function () {
+        this._aerialLayerButton.connect('clicked', () => {
             this._mapView.setMapType(MapView.MapType.AERIAL);
-        }).bind(this));
+        });
     },
 
     setMapType: function(mapType) {
@@ -101,7 +101,7 @@ var LayersPopover = new Lang.Class({
             this._aerialLayerButton.active = true;
     },
 
-    _onRemoveClicked: function(row, button) {
+    _onRemoveClicked: function(row) {
         this._mapView.removeShapeLayer(row.shapeLayer);
         if (this._layersListBox.get_children().length <= 0)
             this._layersListBox.hide();
@@ -110,7 +110,7 @@ var LayersPopover = new Lang.Class({
     _listBoxCreateWidget: function(shapeLayer) {
         let row = new ShapeLayerRow({ shapeLayer: shapeLayer });
         row.closeButton.connect('clicked',
-                                this._onRemoveClicked.bind(this, row));
+                                () => this._onRemoveClicked(row));
         this._layersListBox.show();
         return row;
     }

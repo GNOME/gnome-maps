@@ -308,22 +308,18 @@ var OSMEditDialog = new Lang.Class({
         this._typeSearch.can_focus = true;
 
         let typeSearchPopover = this._typeSearch.popover;
-        typeSearchPopover.connect('selected', this._onTypeSelected.bind(this));
+        typeSearchPopover.connect('selected', () => this._onTypeSelected());
 
         this._cancellable = new Gio.Cancellable();
-        this._cancellable.connect((function() {
-            this.response(Response.CANCELLED);
-        }).bind(this));
+        this._cancellable.connect(() => this.response(Response.CANCELLED));
 
-        this.connect('delete-event', (function() {
-            this._cancellable.cancel();
-        }).bind(this));
+        this.connect('delete-event', () => this._cancellable.cancel());
 
         this._isEditing = false;
-        this._nextButton.connect('clicked', this._onNextClicked.bind(this));
-        this._cancelButton.connect('clicked', this._onCancelClicked.bind(this));
-        this._backButton.connect('clicked', this._onBackClicked.bind(this));
-        this._typeButton.connect('clicked', this._onTypeClicked.bind(this));
+        this._nextButton.connect('clicked', () => this._onNextClicked());
+        this._cancelButton.connect('clicked', () => this._onCancelClicked());
+        this._backButton.connect('clicked', () => this._onBackClicked());
+        this._typeButton.connect('clicked', () => this._onTypeClicked());
 
         if (this._addLocation) {
             this._headerBar.title = C_("dialog title", "Add to OpenStreetMap");
@@ -351,14 +347,14 @@ var OSMEditDialog = new Lang.Class({
         this._originalTitle = this._headerBar.title;
         this._updateRecentTypesList();
 
-        this._recentTypesListBox.set_header_func(function (row, previous) {
+        this._recentTypesListBox.set_header_func((row, previous) => {
             if (previous)
                 row.set_header(new Gtk.Separator());
         });
 
-        this._recentTypesListBox.connect('row-activated', (function(listbox, row) {
+        this._recentTypesListBox.connect('row-activated', (listbox, row) => {
             this._onTypeSelected(null, row._key, row._value, row._title);
-        }).bind(this));
+        });
     },
 
     _onNextClicked: function() {
@@ -413,9 +409,7 @@ var OSMEditDialog = new Lang.Class({
 
     _updateType: function(key, value) {
         /* clear out any previous type-related OSM tags */
-        OSMTypes.OSM_TYPE_TAGS.forEach((function (tag) {
-            this._osmObject.delete_tag(tag);
-        }).bind(this));
+        OSMTypes.OSM_TYPE_TAGS.forEach((tag) => this._osmObject.delete_tag(tag));
 
         this._osmObject.set_tag(key, value);
     },
@@ -582,11 +576,9 @@ var OSMEditDialog = new Lang.Class({
         styleContext.add_class('flat');
         this._editorGrid.attach(deleteButton, 2, this._currentRow, 1, 1);
 
-        deleteButton.connect('clicked', (function() {
+        deleteButton.connect('clicked', () => {
             if (fieldSpec.subtags) {
-                fieldSpec.subtags.forEach((function(key) {
-                    this._osmObject.delete_tag(key);
-                }).bind(this));
+                fieldSpec.subtags.forEach((key) => this._osmObject.delete_tag(key));
             } else {
                 this._osmObject.delete_tag(fieldSpec.tag);
             }
@@ -598,7 +590,7 @@ var OSMEditDialog = new Lang.Class({
             }
             this._nextButton.sensitive = true;
             this._updateAddFieldMenu();
-        }).bind(this));
+        });
 
         deleteButton.show();
     },
@@ -636,18 +628,18 @@ var OSMEditDialog = new Lang.Class({
         if (fieldSpec.placeHolder)
             entry.placeholder_text = fieldSpec.placeHolder;
 
-        entry.connect('changed', (function() {
+        entry.connect('changed', () => {
             if (fieldSpec.rewriteFunc)
                 entry.text = fieldSpec.rewriteFunc(entry.text);
             this._osmObject.set_tag(fieldSpec.tag, entry.text);
             this._nextButton.sensitive = true;
-        }).bind(this));
+        });
 
         if (fieldSpec.hint) {
             entry.secondary_icon_name = 'dialog-information-symbolic';
-            entry.connect('icon-press', (function(entry, iconPos, event) {
+            entry.connect('icon-press', (entry, iconPos, event) => {
                 this._showHintPopover(entry, fieldSpec.hint);
-            }).bind(this));
+            });
         }
 
         this._editorGrid.attach(entry, 1, this._currentRow, 1, 1);
@@ -667,16 +659,16 @@ var OSMEditDialog = new Lang.Class({
         spinbutton.value = value;
         spinbutton.numeric = true;
         spinbutton.hexpand = true;
-        spinbutton.connect('changed', (function() {
+        spinbutton.connect('changed', () => {
             this._osmObject.set_tag(fieldSpec.tag, spinbutton.text);
             this._nextButton.sensitive = true;
-        }).bind(this, fieldSpec.tag, spinbutton));
+        });
 
         if (fieldSpec.hint) {
             spinbutton.secondary_icon_name = 'dialog-information-symbolic';
-            spinbutton.connect('icon-press', (function(iconPos, event) {
+            spinbutton.connect('icon-press', (iconPos, event) => {
                 this._showHintPopover(spinbutton, fieldSpec.hint);
-            }).bind(this));
+            });
         }
 
         this._editorGrid.attach(spinbutton, 1, this._currentRow, 1, 1);
@@ -697,10 +689,10 @@ var OSMEditDialog = new Lang.Class({
         });
         combobox.active_id = value;
         combobox.hexpand = true;
-        combobox.connect('changed', (function() {
-        this._osmObject.set_tag(fieldSpec.tag, combobox.active_id);
+        combobox.connect('changed', () => {
+            this._osmObject.set_tag(fieldSpec.tag, combobox.active_id);
             this._nextButton.sensitive = true;
-        }).bind(this, fieldSpec.tag, combobox));
+        });
 
         this._editorGrid.attach(combobox, 1, this._currentRow, 1, 1);
         combobox.show();
@@ -751,10 +743,10 @@ var OSMEditDialog = new Lang.Class({
             let hasValue = false;
 
             if (fieldSpec.subtags) {
-                fieldSpec.subtags.forEach((function(tag) {
+                fieldSpec.subtags.forEach((tag) => {
                     if (this._osmObject.get_tag(tag) !== null)
                         hasValue = true;
-                }).bind(this));
+                });
             } else {
                 hasValue = this._osmObject.get_tag(fieldSpec.tag) !== null;
             }
@@ -769,21 +761,21 @@ var OSMEditDialog = new Lang.Class({
                 button.get_style_context().add_class('flat');
                 button.get_child().halign = Gtk.Align.START;
 
-                button.connect('clicked', (function() {
+                button.connect('clicked', () => {
                     this._addFieldButton.active = false;
                     this._addOSMField(fieldSpec, '');
                     /* add a "placeholder" empty OSM tag to keep the add field
                      * menu updated, these tags will be filtered out if nothing
                      * is entered */
                     if (fieldSpec.subtags) {
-                        fieldSpec.subtags.forEach((function(tag) {
+                        fieldSpec.subtags.forEach((tag) => {
                             this._osmObject.set_tag(tag, '');
-                        }).bind(this));
+                        });
                     } else {
                         this._osmObject.set_tag(fieldSpec.tag, '');
                     }
                     this._updateAddFieldMenu();
-                }).bind(this));
+                });
 
                 hasAllFields = false;
                 this._addFieldPopoverGrid.add(button);

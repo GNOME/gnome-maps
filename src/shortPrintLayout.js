@@ -51,11 +51,11 @@ var ShortPrintLayout = new Lang.Class({
         let instructionMargin = _Instruction.SCALE_MARGIN * this._pageHeight;
         let dy = 0;
 
-        this._route.turnPoints.forEach(function(turnPoint) {
+        this._route.turnPoints.forEach((turnPoint) => {
             dy = instructionHeight + instructionMargin;
             this._adjustPage(dy);
             this._drawInstruction(instructionWidth, instructionHeight, turnPoint);
             this._cursorY += dy;
-        }.bind(this));
+        });
     }
 });

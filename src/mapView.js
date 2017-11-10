@@ -122,9 +122,7 @@ var MapView = new Lang.Class({
         let isValid = Application.routeQuery.isValid();
 
         this._routingOpen = value && isValid;
-        this._routeLayers.forEach((function(routeLayer) {
-            routeLayer.visible = value && isValid;
-        }).bind(this));
+        this._routeLayers.forEach((routeLayer) => routeLayer.visible = value && isValid);
         this._instructionMarkerLayer.visible = value && isValid;
         if (!value)
             this.routeShowing = false;
@@ -153,7 +151,6 @@ var MapView = new Lang.Class({
 
         this.shapeLayerStore = new Gio.ListStore(GObject.TYPE_OBJECT);
 
-        this._updateUserLocation();
         Application.geoclue.connect('location-changed',
                                     this._updateUserLocation.bind(this));
         Application.geoclue.connect('notify::state',
@@ -191,11 +188,11 @@ var MapView = new Lang.Class({
             view.connect('notify::realized', this._goToStoredLocation.bind(this));
         view.connect('notify::latitude', this._onViewMoved.bind(this));
         // switching map type will set view min-zoom-level from map source
-        view.connect('notify::min-zoom-level', (function() {
+        view.connect('notify::min-zoom-level', () => {
             if (view.min_zoom_level < MapMinZoom) {
                 view.min_zoom_level = MapMinZoom;
             }
-        }).bind(this));
+        });
 
         this._initScale(view);
         return view;
@@ -224,11 +221,11 @@ var MapView = new Lang.Class({
     },
 
     _clearRouteLayers: function() {
-        this._routeLayers.forEach((function(routeLayer) {
+        this._routeLayers.forEach((routeLayer) => {
             routeLayer.remove_all();
             routeLayer.visible = false;
             this.view.remove_layer(routeLayer);
-        }).bind(this));
+        });
 
         this._routeLayers = [];
     },
@@ -265,34 +262,33 @@ var MapView = new Lang.Class({
         let transitPlan = Application.routingDelegator.openTripPlanner.plan;
         let query = Application.routeQuery;
 
-        route.connect('update', (function() {
+        route.connect('update', () => {
             this.showRoute(route);
             this.routeShowing = true;
-        }).bind(this));
-        route.connect('reset', (function() {
+        });
+        route.connect('reset', () => {
             this._clearRouteLayers();
             this._instructionMarkerLayer.remove_all();
             this.routeShowing = false;
-        }).bind(this));
-        transitPlan.connect('update', this._showTransitPlan.bind(this, transitPlan));
-        transitPlan.connect('reset', (function() {
+        });
+        transitPlan.connect('update', () => this._showTransitPlan(transitPlan));
+        transitPlan.connect('reset', () => {
             this._clearRouteLayers();
             this._instructionMarkerLayer.remove_all();
             this.routeShowing = false;
-        }).bind(this));
-        transitPlan.connect('itinerary-selected', (function(obj, itinerary) {
+        });
+        transitPlan.connect('itinerary-selected', (obj, itinerary) => {
             this._showTransitItinerary(itinerary);
             this.routeShowing = true;
-        }).bind(this));
-        transitPlan.connect('itinerary-deselected', (function() {
+        });
+        transitPlan.connect('itinerary-deselected', () => {
             this._clearRouteLayers();
             this._instructionMarkerLayer.remove_all();
             this.routeShowing = false;
-        }).bind(this));
+        });
 
-        query.connect('notify', (function() {
-                this.routingOpen = query.isValid();
-        }).bind(this));
+
+        query.connect('notify', () => this.routingOpen = query.isValid());
     },
 
     setMapType: function(mapType) {
@@ -334,9 +330,7 @@ var MapView = new Lang.Class({
             }
         }
 
-        overlay_sources.forEach((function(source) {
-            this.view.add_overlay_source(source, 255);
-        }).bind(this));
+        overlay_sources.forEach((source) => this.view.add_overlay_source(source, 255));
     },
 
     toggleScale: function() {
@@ -346,7 +340,7 @@ var MapView = new Lang.Class({
     openShapeLayers: function(files) {
         let bbox = new Champlain.BoundingBox();
         let ret = true;
-        files.forEach((function(file){
+        files.forEach((file) => {
             try {
                 let i = this._findShapeLayerIndex(file);
                 let layer = (i > -1) ? this.shapeLayerStore.get_item(i) : null;
@@ -364,7 +358,7 @@ var MapView = new Lang.Class({
                 Application.notificationManager.showMessage(msg);
                 ret = false;
             }
-        }).bind(this));
+        });
 
         this.gotoBBox(bbox);
         return ret;
@@ -407,9 +401,8 @@ var MapView = new Lang.Class({
             return;
 
         this.emit('going-to-user-location');
-        Utils.once(this._userLocation, "gone-to", (function() {
-            this.emit('gone-to-user-location');
-        }).bind(this));
+        Utils.once(this._userLocation, "gone-to",
+                   () => this.emit('gone-to-user-location'));
         this._userLocation.goTo(animate);
     },
 
@@ -511,13 +504,13 @@ var MapView = new Lang.Class({
             return;
 
         this._placeLayer.remove_all();
-        places.forEach((function(p) {
+        places.forEach((p) => {
             let place = new ContactPlace.ContactPlace({ place: p,
                                                         contact: contact });
             let marker = new PlaceMarker.PlaceMarker({ place: place,
                                                        mapView: this });
             this._placeLayer.add_marker(marker);
-        }).bind(this));
+        });
 
         if (places.length > 1)
             this.gotoBBox(contact.bounding_box);
@@ -574,9 +567,7 @@ var MapView = new Lang.Class({
 
         routeLayer = this._createRouteLayer(false, TURN_BY_TURN_ROUTE_COLOR,
                                             ROUTE_LINE_WIDTH);
-        route.path.forEach((function (polyline) {
-            routeLayer.add_node(polyline);
-        }).bind(this));
+        route.path.forEach((polyline) => routeLayer.add_node(polyline));
         this.routingOpen = true;
 
         this._ensureInstructionLayerAboveRouteLayers();
@@ -591,7 +582,7 @@ var MapView = new Lang.Class({
         let pointIndex = 0;
 
         this._instructionMarkerLayer.remove_all();
-        route.turnPoints.forEach(function(turnPoint) {
+        route.turnPoints.forEach((turnPoint) => {
             if (turnPoint.isStop()) {
                 let queryPoint = query.filledPoints[pointIndex];
                 let destinationMarker = new TurnPointMarker.TurnPointMarker({ turnPoint: turnPoint,
@@ -609,7 +600,7 @@ var MapView = new Lang.Class({
         this._placeLayer.remove_all();
         this._instructionMarkerLayer.remove_all();
 
-        itinerary.legs.forEach((function (leg, index) {
+        itinerary.legs.forEach((leg, index) => {
             let dashed = !leg.transit;
             let color = leg.color;
             let outlineColor = leg.textColor;
@@ -653,11 +644,11 @@ var MapView = new Lang.Class({
 
                 routeLayer.add_node(firstPoint);
             }
-        }).bind(this));
+        });
 
         this._ensureInstructionLayerAboveRouteLayers();
 
-        itinerary.legs.forEach((function (leg, index) {
+        itinerary.legs.forEach((leg, index) => {
             let previousLeg = index === 0 ? null : itinerary.legs[index - 1];
 
             /* add start marker */
@@ -672,7 +663,7 @@ var MapView = new Lang.Class({
             }
 
             this._instructionMarkerLayer.add_marker(start);
-        }).bind(this));
+        });
 
         /* add arrival marker */
         let lastLeg = itinerary.legs.last();
@@ -692,10 +683,10 @@ var MapView = new Lang.Class({
         if (this._storeId !== 0)
             return;
 
-        this._storeId = Mainloop.timeout_add(_LOCATION_STORE_TIMEOUT,(function(){
+        this._storeId = Mainloop.timeout_add(_LOCATION_STORE_TIMEOUT, () => {
             this._storeId = 0;
             this._storeLocation();
-        }).bind(this));
+        });
     },
 
     onSetMarkerSelected: function(selectedMarker) {

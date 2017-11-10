@@ -47,14 +47,12 @@ var GeocodeService = new Lang.Class({
         }
         forward.bounded = false;
         forward.set_answer_count(answerCount);
-        forward.search_async(cancellable, function(forward, res) {
+        forward.search_async(cancellable, (forward, res) => {
             try {
                 let places = forward.search_finish(res);
 
                 if (places !== null) {
-                    places = places.map(function(p) {
-                        return new Place.Place({ place: p });
-                    });
+                    places = places.map((p) => new Place.Place({ place: p }));
                 }
 
                 callback(places);
@@ -68,7 +66,7 @@ var GeocodeService = new Lang.Class({
         let reverse = Geocode.Reverse.new_for_location(location);
 
         Application.application.mark_busy();
-        reverse.resolve_async(cancellable, (function(reverse, res) {
+        reverse.resolve_async(cancellable, (reverse, res) => {
             Application.application.unmark_busy();
             try {
                 let place = new Place.Place({ place: reverse.resolve_finish(res) });
@@ -80,6 +78,6 @@ var GeocodeService = new Lang.Class({
                             e.message);
                 callback(null);
             }
-        }).bind(this));
+        });
     }
 });

@@ -67,9 +67,7 @@ var TurnPointMarker = new Lang.Class({
         let actor;
         if (this._queryPoint) {
             this.draggable = true;
-            this.connect('drag-finish', (function() {
-                this._onMarkerDrag();
-            }).bind(this));
+            this.connect('drag-finish', () => this._onMarkerDrag());
             actor = this._actorFromIconName(this._turnPoint.iconName, 0);
         } else {
             let color = this._getColor();
@@ -105,11 +103,11 @@ var TurnPointMarker = new Lang.Class({
         view.goto_animation_mode = Clutter.AnimationMode.LINEAR;
         view.goto_duration = 0;
 
-        Utils.once(view, 'animation-completed', (function() {
+        Utils.once(view, 'animation-completed', () => {
             view.zoom_level = turnPointZoomLevel;
             view.center_on(this.latitude,
                            this.longitude);
-        }).bind(this));
+        });
 
         view.go_to(this.latitude, this.longitude);
     },

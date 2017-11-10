@@ -50,13 +50,8 @@ var AttributionLogo = new Lang.Class({
         else
             return;
 
-        view.connect('notify::width', (function() {
-            this._updatePosition(view);
-        }).bind(this));
-
-        view.connect('notify::height', (function() {
-            this._updatePosition(view);
-        }).bind(this));
+        view.connect('notify::width', () => this._updatePosition(view));
+        view.connect('notify::height', () => this._updatePosition(view));
 
         this._updatePosition(view);
     },

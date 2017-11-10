@@ -70,18 +70,16 @@ var SendToDialog = new Lang.Class({
         this._headerBar.subtitle = this._place.name;
 
         this._cancelButton.connect('clicked',
-                                   this.response.bind(this, Response.CANCEL));
+                                   () => this.response(Response.CANCEL));
 
-        this._chooseButton.connect('clicked', (function() {
+        this._chooseButton.connect('clicked', () => {
             let row = this._list.get_selected_row();
             this._activateRow(row);
-        }).bind(this));
+        });
 
-        this._list.connect('row-activated', (function(list, row) {
-            this._activateRow(row);
-        }).bind(this));
+        this._list.connect('row-activated', (list, row) => this._activateRow(row));
 
-        this._list.set_header_func(function(row, before) {
+        this._list.set_header_func((row, before) => {
             let horizontal = Gtk.Orientation.HORIZONTAL;
 
             if (before)

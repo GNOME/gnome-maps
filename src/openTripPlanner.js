@@ -195,7 +195,7 @@ var OpenTripPlanner = new Lang.Class({
             let request = new Soup.Message({ method: 'GET', uri: uri });
 
             request.request_headers.append('Accept', 'application/json');
-            this._session.queue_message(request, (function(obj, message) {
+            this._session.queue_message(request, (obj, message) => {
                 if (message.status_code !== Soup.Status.OK) {
                     callback(false);
                     return;
@@ -209,14 +209,14 @@ var OpenTripPlanner = new Lang.Class({
                     Utils.debug('Failed to parse router information');
                     callback(false);
                 }
-            }).bind(this));
+            });
         }
     },
 
     _getRoutersForPlace: function(place) {
         let routers = [];
 
-        this._routers.routerInfo.forEach((function(routerInfo) {
+        this._routers.routerInfo.forEach((routerInfo) => {
             /* TODO: only check bounding rectangle for now
              * should we try to do a finer-grained check using the bounding
              * polygon (if OTP gives one for the routers).
@@ -228,7 +228,7 @@ var OpenTripPlanner = new Lang.Class({
                 place.location.longitude >= routerInfo.lowerLeftLongitude &&
                 place.location.longitude <= routerInfo.upperRightLongitude)
                 routers.push(routerInfo.routerId);
-        }));
+        });
 
         return routers;
     },
@@ -261,9 +261,9 @@ var OpenTripPlanner = new Lang.Class({
     },
 
     _getModes: function(options) {
-        let modes = options.transitTypes.map((function(transitType) {
+        let modes = options.transitTypes.map((transitType) => {
             return this._getMode(transitType);
-        }).bind(this));
+        });
 
         return modes.join(',');
     },
@@ -282,21 +282,21 @@ var OpenTripPlanner = new Lang.Class({
                                               callback);
             } else if (stopIndex === 0) {
                 this._fetchWalkingRoute([points[0], stopPoint],
-                                        (function(route) {
+                                        (route) => {
                     /* if we couldn't find an exact walking route, go with the
                      * "as the crow flies" distance */
                     if (route)
                         stop.dist = route.distance;
                     this._selectBestStopRecursive(stops, index + 1, stopIndex,
                                                   callback);
-                }).bind(this));
+                });
             } else if (stopIndex === points.length - 1) {
-                this._fetchWalkingRoute([stopPoint, points.last()], (function(route) {
+                this._fetchWalkingRoute([stopPoint, points.last()], (route) => {
                     if (route)
                         stop.dist = route.distance;
                     this._selectBestStopRecursive(stops, index + 1, stopIndex,
                                                   callback);
-                }).bind(this));
+                });
             } else {
                 /* for intermediate stops just return the one geographically
                  * closest */
@@ -308,9 +308,7 @@ var OpenTripPlanner = new Lang.Class({
              * distances */
             stops.sort(this._sortTransitStops);
             Utils.debug('refined stops: ');
-            stops.forEach(function(stop) {
-                Utils.debug(JSON.stringify(stop, '', 2));
-            });
+            stops.forEach((stop) => Utils.debug(JSON.stringify(stop, '', 2)));
             callback(stops[0]);
         }
     },
@@ -333,7 +331,7 @@ var OpenTripPlanner = new Lang.Class({
         let request = new Soup.Message({ method: 'GET', uri: uri });
 
         request.request_headers.append('Accept', 'application/json');
-        this._session.queue_message(request, (function(obj, message) {
+        this._session.queue_message(request, (obj, message) => {
             if (message.status_code !== Soup.Status.OK) {
                 Utils.debug('Failed to get routes for stop');
                 this._reset();
@@ -343,7 +341,7 @@ var OpenTripPlanner = new Lang.Class({
                 Utils.debug('Routes for stop: ' + stop + ': ' + JSON.stringify(routes));
                 callback(routes);
             }
-        }).bind(this));
+        });
     },
 
     _routeMatchesSelectedModes: function(route) {
@@ -372,7 +370,7 @@ var OpenTripPlanner = new Lang.Class({
         if (index < stops.length) {
             let stop = stops[index];
 
-            this._fetchRoutesForStop(router, stop, (function(routes) {
+            this._fetchRoutesForStop(router, stop, (routes) => {
                 for (let i = 0; i < routes.length; i++) {
                     let route = routes[i];
 
@@ -383,7 +381,7 @@ var OpenTripPlanner = new Lang.Class({
                 }
                 this._filterStopsRecursive(router, stops, index + 1,
                                            filteredStops, callback);
-            }).bind(this));
+            });
         } else {
             callback(filteredStops);
         }
@@ -407,7 +405,7 @@ var OpenTripPlanner = new Lang.Class({
             let request = new Soup.Message({ method: 'GET', uri: uri });
 
             request.request_headers.append('Accept', 'application/json');
-            this._session.queue_message(request, (function(obj, message) {
+            this._session.queue_message(request, (obj, message) => {
                 if (message.status_code !== Soup.Status.OK) {
                     Utils.debug('Failed to get stop for search point ' + point);
                     this._reset();
@@ -425,13 +423,13 @@ var OpenTripPlanner = new Lang.Class({
                         stops = stops.splice(0, NUM_STOPS_TO_TRY);
 
                         Utils.debug('stops: ' + JSON.stringify(stops, '', 2));
-                        this._selectBestStop(stops, index, (function(stop) {
+                        this._selectBestStop(stops, index, (stop) => {
                             result.push(stop);
                             this._fetchTransitStopsRecursive(router, index + 1,
                                                              result, callback);
-                        }).bind(this));
+                        });
                     } else {
-                        this._filterStops(router, stops, (function(filteredStops) {
+                        this._filterStops(router, stops, (filteredStops) => {
                             filteredStops.sort(this._sortTransitStops);
                             filteredStops = filteredStops.splice(0, NUM_STOPS_TO_TRY);
 
@@ -441,15 +439,15 @@ var OpenTripPlanner = new Lang.Class({
                                 return;
                             }
 
-                            this._selectBestStop(filteredStops, index, (function(stop) {
+                            this._selectBestStop(filteredStops, index, (stop) => {
                                 result.push(stop);
                                 this._fetchTransitStopsRecursive(router, index + 1,
                                                                  result, callback);
-                            }).bind(this));
-                        }).bind(this));
+                            });
+                        });
                     }
                 }
-            }).bind(this));
+            });
         } else {
             callback(result);
         }
@@ -544,7 +542,7 @@ var OpenTripPlanner = new Lang.Class({
     },
 
     _fetchRoutesForRouter: function(router, callback) {
-        this._fetchTransitStops(router, (function(stops) {
+        this._fetchTransitStops(router, (stops) => {
             let points = this._query.filledPoints;
 
             if (!stops) {
@@ -570,7 +568,7 @@ var OpenTripPlanner = new Lang.Class({
             let request = new Soup.Message({ method: 'GET', uri: uri });
 
             request.request_headers.append('Accept', 'application/json');
-            this._session.queue_message(request, (function(obj, message) {
+            this._session.queue_message(request, (obj, message) => {
                 if (message.status_code !== Soup.Status.OK) {
                     Utils.debug('Failed to get route plan from router ' +
                                 routers[index] + ' ' + message);
@@ -578,22 +576,22 @@ var OpenTripPlanner = new Lang.Class({
                 } else {
                     callback(JSON.parse(message.response_body.data));
                 }
-            }).bind(this));
-        }).bind(this));
+            });
+        });
     },
 
     _fetchRoutesRecursive: function(routers, index, result, callback) {
         if (index < routers.length) {
             let router = routers[index];
 
-            this._fetchRoutesForRouter(router, (function(response) {
+            this._fetchRoutesForRouter(router, (response) => {
                 if (response) {
                     Utils.debug('plan: ' + JSON.stringify(response, '', 2));
                     result.push(response);
                 }
 
                 this._fetchRoutesRecursive(routers, index + 1, result, callback);
-            }).bind(this));
+            });
         } else {
             callback(result);
         }
@@ -631,21 +629,21 @@ var OpenTripPlanner = new Lang.Class({
     },
 
     _fetchRoute: function() {
-        this._fetchRouters((function(success) {
+        this._fetchRouters((success) => {
             if (success) {
                 let points = this._query.filledPoints;
                 let routers = this._getRoutersForPoints(points);
 
                 if (routers.length > 0) {
-                    this._fetchRoutes(routers, (function(routes) {
+                    this._fetchRoutes(routers, (routes) => {
                         let itineraries = [];
-                        routes.forEach((function(plan) {
+                        routes.forEach((plan) => {
                             if (plan.plan && plan.plan.itineraries) {
                                 itineraries =
                                     itineraries.concat(
                                         this._createItineraries(plan.plan.itineraries));
                             }
-                        }).bind(this));
+                        });
 
                         if (itineraries.length === 0) {
                             /* don't reset query points, unlike for turn-based
@@ -655,7 +653,7 @@ var OpenTripPlanner = new Lang.Class({
                         } else {
                             this._recalculateItineraries(itineraries);
                         }
-                    }).bind(this));
+                    });
 
                 } else {
                     Application.notificationManager.showMessage(_("No timetable data found for this route."));
@@ -665,7 +663,7 @@ var OpenTripPlanner = new Lang.Class({
                 Application.notificationManager.showMessage(_("Route request failed."));
                 this._reset();
             }
-        }).bind(this));
+        });
     },
 
     _isOnlyWalkingItinerary: function(itinerary) {
@@ -676,10 +674,10 @@ var OpenTripPlanner = new Lang.Class({
         // filter out itineraries with only walking
         let newItineraries = [];
 
-        itineraries.forEach((function(itinerary) {
+        itineraries.forEach((itinerary) => {
             if (!this._isOnlyWalkingItinerary(itinerary))
                 newItineraries.push(itinerary);
-        }).bind(this));
+        });
 
         /* TODO: should we always calculate a walking itinerary to put at the
          * top if the total distance is below some threashhold?
@@ -717,10 +715,10 @@ var OpenTripPlanner = new Lang.Class({
 
     _recalculateItinerariesRecursive: function(itineraries, index) {
         if (index < itineraries.length) {
-            this._recalculateItinerary(itineraries[index], (function(itinerary) {
+            this._recalculateItinerary(itineraries[index], (itinerary) => {
                 itineraries[index] = itinerary;
                 this._recalculateItinerariesRecursive(itineraries, index + 1);
-            }).bind(this));
+            });
         } else {
             /* filter out itineraries where there are intermediate walking legs
              * that are too narrow time-wise, this is nessesary since running
@@ -732,16 +730,14 @@ var OpenTripPlanner = new Lang.Class({
              */
             let filteredItineraries = [];
 
-            itineraries.forEach((function(itinerary) {
+            itineraries.forEach((itinerary) => {
                 if (this._isItineraryRealistic(itinerary) &&
                     !this._isOnlyWalkingItinerary(itinerary))
                     filteredItineraries.push(itinerary);
-            }).bind(this));
+            });
 
             if (filteredItineraries.length > 0) {
-                filteredItineraries.forEach((function(itinerary) {
-                    itinerary.adjustTimings();
-                }).bind(this));
+                filteredItineraries.forEach((itinerary) => itinerary.adjustTimings());
 
                 /* sort itineraries, by departure time ascending if querying
                  * by leaving time, by arrival time descending when querying
@@ -815,11 +811,10 @@ var OpenTripPlanner = new Lang.Class({
         if (!route) {
             this._graphHopper.fetchRouteAsync(points,
                                               RouteQuery.Transportation.PEDESTRIAN,
-                                              (function(newRoute)
-            {
+                                              (newRoute) => {
                 this._walkingRoutes[index] = newRoute;
                 callback(newRoute);
-            }).bind(this));
+            });
         } else {
             callback(route);
         }
@@ -834,7 +829,7 @@ var OpenTripPlanner = new Lang.Class({
              * leg is a non-transit (walking), recalculate the route in its entire
              * using walking
              */
-            this._fetchWalkingRoute(this._query.filledPoints, (function(route) {
+            this._fetchWalkingRoute(this._query.filledPoints, (route) => {
                 let leg = this._createWalkingLeg(from, to, from.place.name,
                                                  to.place.name, route);
                 let newItinerary =
@@ -842,7 +837,7 @@ var OpenTripPlanner = new Lang.Class({
                                                duration: route.time / 1000,
                                                legs: [leg]});
                 callback(newItinerary);
-            }).bind(this));
+            });
         } else if (itinerary.legs.length === 1 && itinerary.legs[0].transit) {
             // special case if there is extactly one transit leg
             let leg = itinerary.legs[0];
@@ -860,28 +855,28 @@ var OpenTripPlanner = new Lang.Class({
                 /* add an extra walking leg to both the beginning and end of the
                  * itinerary
                  */
-                this._fetchWalkingRoute([from, startLeg], (function(firstRoute) {
+                this._fetchWalkingRoute([from, startLeg], (firstRoute) => {
                     let firstLeg =
                         this._createWalkingLeg(from, startLeg, from.place.name,
                                                leg.from, firstRoute);
-                    this._fetchWalkingRoute([endLeg, to], (function(lastRoute) {
+                    this._fetchWalkingRoute([endLeg, to], (lastRoute) => {
                         let lastLeg = this._createWalkingLeg(endLeg, to, leg.to,
                                                              to.place.name,
                                                              lastRoute);
                         itinerary.legs.unshift(firstLeg);
                         itinerary.legs.push(lastLeg);
                         callback(itinerary);
-                    }).bind(this));
-                }).bind(this));
+                    });
+                });
             } else if (endWalkDistance >= MIN_WALK_ROUTING_DISTANCE) {
                 // add an extra walking leg to the end of the itinerary
-                this._fetchWalkingRoute([endLeg, to], (function(lastRoute) {
+                this._fetchWalkingRoute([endLeg, to], (lastRoute) => {
                     let lastLeg =
                         this._createWalkingLeg(endLeg, to, leg.to,
                                                to.place.name, lastRoute);
                     itinerary.legs.push(lastLeg);
                     callback(itinerary);
-                }).bind(this));
+                });
             } else {
                 /* if only there's only a walking leg to be added to the start
                  * let the recursive routine dealing with multi-leg itineraries
@@ -955,14 +950,14 @@ var OpenTripPlanner = new Lang.Class({
                         itinerary.legs.splice(index + 1, index + 1);
                     }
 
-                    this._fetchWalkingRoute([from, to], (function(route) {
+                    this._fetchWalkingRoute([from, to], (route) => {
                         let newLeg =
                             this._createWalkingLeg(from, to, from.place.name,
                                                    toName, route);
                         itinerary.legs[index] = newLeg;
                         this._recalculateItineraryRecursive(itinerary, index + 1,
                                                             callback);
-                    }).bind(this));
+                    });
                 } else {
                     /* introduce an additional walking leg calculated
                      * by GH in case the OTP starting point as far enough from
@@ -974,7 +969,7 @@ var OpenTripPlanner = new Lang.Class({
                     let distance = fromLoc.get_distance_from(toLoc) * 1000;
 
                     if (distance >= MIN_WALK_ROUTING_DISTANCE) {
-                        this._fetchWalkingRoute([from, to], (function(route) {
+                        this._fetchWalkingRoute([from, to], (route) => {
                             let newLeg =
                                 this._createWalkingLeg(from, to, from.place.name,
                                                        leg.from, route);
@@ -985,7 +980,7 @@ var OpenTripPlanner = new Lang.Class({
                             this._recalculateItineraryRecursive(itinerary,
                                                                 index + 2,
                                                                 callback);
-                        }).bind(this));
+                        });
                     } else {
                         this._recalculateItineraryRecursive(itinerary, index + 1,
                                                             callback);
@@ -1035,7 +1030,7 @@ var OpenTripPlanner = new Lang.Class({
                         insertIndex = index;
                     }
                     let from = this._createQueryPointForCoord(finalTransitLeg.fromCoordinate);
-                    this._fetchWalkingRoute([from, to], (function(route) {
+                    this._fetchWalkingRoute([from, to], (route) => {
                         let newLeg =
                             this._createWalkingLeg(from, to,
                                                    finalTransitLeg.from,
@@ -1044,7 +1039,7 @@ var OpenTripPlanner = new Lang.Class({
                         this._recalculateItineraryRecursive(itinerary,
                                                             insertIndex + 1,
                                                             callback);
-                    }).bind(this));
+                    });
                 } else {
                     /* introduce an additional walking leg calculated by GH in
                      * case the OTP end point as far enough from the original
@@ -1056,7 +1051,7 @@ var OpenTripPlanner = new Lang.Class({
                     let distance = fromLoc.get_distance_from(toLoc) * 1000;
 
                     if (distance >= MIN_WALK_ROUTING_DISTANCE) {
-                        this._fetchWalkingRoute([from, to], (function(route) {
+                        this._fetchWalkingRoute([from, to], (route) => {
                             let newLeg =
                                 this._createWalkingLeg(from, to, leg.to,
                                                        to.place.name, route);
@@ -1067,7 +1062,7 @@ var OpenTripPlanner = new Lang.Class({
                             this._recalculateItineraryRecursive(itinerary,
                                                                  index + 2,
                                                                  callback);
-                        }).bind(this));
+                        });
                     } else {
                         this._recalculateItineraryRecursive(itinerary, index + 1,
                                                             callback);
@@ -1092,14 +1087,14 @@ var OpenTripPlanner = new Lang.Class({
                         itinerary.legs.splice(index + 1, index + 1);
                     }
 
-                    this._fetchWalkingRoute([from, to], (function(route) {
+                    this._fetchWalkingRoute([from, to], (route) => {
                         let newLeg = this._createWalkingLeg(from, to, leg.from,
                                                             leg.to, route);
                         itinerary.legs[index] = newLeg;
                         this._recalculateItineraryRecursive(itinerary,
                                                             index + 1,
                                                             callback);
-                    }).bind(this));
+                    });
                 } else {
                     this._recalculateItineraryRecursive(itinerary, index + 1,
                                                         callback);
@@ -1122,9 +1117,7 @@ var OpenTripPlanner = new Lang.Class({
     },
 
     _createItineraries: function(itineraries) {
-        return itineraries.map((function(itinerary) {
-                                    return this._createItinerary(itinerary);
-                                }).bind(this));
+        return itineraries.map((itinerary) => this._createItinerary(itinerary));
     },
 
     _createItinerary: function(itinerary) {
@@ -1137,9 +1130,7 @@ var OpenTripPlanner = new Lang.Class({
     },
 
     _createLegs: function(legs) {
-        return legs.map((function(leg) {
-            return this._createLeg(leg);
-        }).bind(this));
+        return legs.map((leg) => this._createLeg(leg));
     },
 
     /* check if a string is a valid hex RGB string */
@@ -1197,9 +1188,7 @@ var OpenTripPlanner = new Lang.Class({
 
     _createIntermediateStops: function(leg) {
         let stops = leg.intermediateStops;
-        return stops.map((function(stop) {
-            return this._createIntermediateStop(stop, leg);
-        }).bind(this));
+        return stops.map((stop) => this._createIntermediateStop(stop, leg));
     },
 
     _createIntermediateStop: function(stop, leg) {

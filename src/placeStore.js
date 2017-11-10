@@ -99,10 +99,10 @@ var PlaceStore = new Lang.Class({
         }
 
         if (this.exists(place, PlaceType.RECENT)) {
-            this._removeIf((function(model, iter) {
+            this._removeIf((model, iter) => {
                 let p = model.get_value(iter, Columns.PLACE);
                 return p.uniqueID === place.uniqueID;
-            }).bind(this), true);
+            }, true);
         }
         this._addPlace(place, PlaceType.FAVORITE);
     },
@@ -119,7 +119,7 @@ var PlaceStore = new Lang.Class({
         if (this._numRecentPlaces === this._recentPlacesLimit) {
             // Since we sort by added, the oldest recent will be
             // the first one we encounter.
-            this._removeIf((function(model, iter) {
+            this._removeIf((model, iter) => {
                 let type = model.get_value(iter, Columns.TYPE);
 
                 if (type === PlaceType.RECENT) {
@@ -129,7 +129,7 @@ var PlaceStore = new Lang.Class({
                     return true;
                 }
                 return false;
-            }).bind(this), true);
+            }, true);
         }
         this._addPlace(place, PlaceType.RECENT);
         this._numRecentPlaces++;
@@ -143,7 +143,7 @@ var PlaceStore = new Lang.Class({
             return;
 
         if (this._numRecentRoutes >= this._recentRoutesLimit) {
-            this._removeIf((function(model, iter) {
+            this._removeIf((model, iter) => {
                 let type = model.get_value(iter, Columns.TYPE);
 
                 if (type === PlaceType.RECENT_ROUTE) {
@@ -153,7 +153,7 @@ var PlaceStore = new Lang.Class({
                     return true;
                 }
                 return false;
-            }).bind(this), true);
+            }, true);
         }
         this._addPlace(stored, PlaceType.RECENT_ROUTE);
         this._numRecentRoutes++;
@@ -168,7 +168,7 @@ var PlaceStore = new Lang.Class({
             return;
         try {
             let jsonArray = JSON.parse(buffer);
-            jsonArray.forEach((function({ place, type, added }) {
+            jsonArray.forEach(({ place, type, added }) => {
                 // We expect exception to be thrown in this line when parsing
                 // gnome-maps 3.14 or below place stores since the "place"
                 // key is not present.
@@ -187,7 +187,7 @@ var PlaceStore = new Lang.Class({
                         this._numRecentPlaces++;
                 }
                 this._setPlace(this.append(), p, type, added);
-            }).bind(this));
+            });
         } catch (e) {
             throw new Error('failed to parse places file');
         }
@@ -208,21 +208,21 @@ var PlaceStore = new Lang.Class({
         if (!this.exists(place, placeType))
             return;
 
-        this._removeIf((function(model, iter) {
+        this._removeIf((model, iter) => {
             let p = model.get_value(iter, Columns.PLACE);
             if (p.uniqueID === place.uniqueID) {
                 this._typeTable[place.uniqueID] = null;
                 return true;
             }
             return false;
-        }).bind(this), true);
+        }, true);
         this._store();
     },
 
     getModelForPlaceType: function(placeType) {
         let filter = new Gtk.TreeModelFilter({ child_model: this });
 
-        filter.set_visible_func(function(model, iter) {
+        filter.set_visible_func((model, iter) => {
             let type = model.get_value(iter, Columns.TYPE);
             return (type === placeType);
         });
@@ -232,7 +232,7 @@ var PlaceStore = new Lang.Class({
 
     _store: function() {
         let jsonArray = [];
-        this.foreach(function(model, path, iter) {
+        this.foreach((model, path, iter) => {
             let place = model.get_value(iter, Columns.PLACE);
             let type = model.get_value(iter, Columns.TYPE);
             let added = model.get_value(iter, Columns.ADDED);
@@ -263,9 +263,9 @@ var PlaceStore = new Lang.Class({
                   added]);
 
         if (place.icon !== null) {
-            Utils.load_icon(place.icon, _ICON_SIZE, (function(pixbuf) {
+            Utils.load_icon(place.icon, _ICON_SIZE, (pixbuf) => {
                 this.set(iter, [Columns.ICON], [pixbuf]);
-            }).bind(this));
+            });
         }
         this._typeTable[place.uniqueID] = type;
     },
@@ -273,14 +273,14 @@ var PlaceStore = new Lang.Class({
     get: function(place) {
         let storedPlace = null;
 
-        this.foreach((function(model, path, iter) {
+        this.foreach((model, path, iter) => {
             let p = model.get_value(iter, Columns.PLACE);
             if (p.uniqueID === place.uniqueID) {
                 storedPlace = p;
                 return true;
             }
             return false;
-        }).bind(this));
+        });
         return storedPlace;
     },
 
@@ -289,7 +289,7 @@ var PlaceStore = new Lang.Class({
             return false;
 
         let added = null;
-        this.foreach(function(model, path, iter) {
+        this.foreach((model, path, iter) => {
             let p = model.get_value(iter, Columns.PLACE);
 
             if (p.uniqueID === place.uniqueID) {
@@ -312,18 +312,18 @@ var PlaceStore = new Lang.Class({
     },
 
     _removeIf: function(evalFunc, stop) {
-        this.foreach((function(model, path, iter) {
+        this.foreach((model, path, iter) => {
             if (evalFunc(model, iter)) {
                 this.remove(iter);
                 if (stop)
                     return true;
             }
             return false;
-        }).bind(this));
+        });
     },
 
     updatePlace: function(place) {
-        this.foreach((function(model, path, iter) {
+        this.foreach((model, path, iter) => {
             let p = model.get_value(iter, Columns.PLACE);
 
             if (p.uniqueID === place.uniqueID) {
@@ -332,6 +332,6 @@ var PlaceStore = new Lang.Class({
                 this._store();
                 return;
             }
-        }).bind(this));
+        });
     }
 });

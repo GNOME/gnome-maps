@@ -81,10 +81,8 @@ var ContextMenu = new Lang.Class({
         this._latitude = this._mapView.view.y_to_latitude(y);
 
         if (button === Gdk.BUTTON_SECONDARY) {
-            Mainloop.idle_add((function() {
-                // Need idle to avoid Clutter dead-lock on re-entrance
-                this.popup_at_pointer(event);
-            }).bind(this));
+            // Need idle to avoid Clutter dead-lock on re-entrance
+            Mainloop.idle_add(() => this.popup_at_pointer(event));
         }
     },
 
@@ -125,14 +123,14 @@ var ContextMenu = new Lang.Class({
                                                longitude: this._longitude,
                                                accuracy: 0 });
 
-        Application.geocodeService.reverse(location, null, (function(place) {
+        Application.geocodeService.reverse(location, null, (place) => {
             if (place) {
                 this._mapView.showPlace(place, false);
             } else {
                 let msg = _("Nothing found here!");
                 Application.notificationManager.showMessage(msg);
             }
-        }).bind(this));
+        });
     },
 
     _onGeoURIActivated: function() {
@@ -153,11 +151,11 @@ var ContextMenu = new Lang.Class({
             let dialog = osmEdit.createAccountDialog(this._mainWindow, true);
 
             dialog.show();
-            dialog.connect('response', (function(dialog, response) {
+            dialog.connect('response', (dialog, response) => {
                 dialog.destroy();
                 if (response === OSMAccountDialog.Response.SIGNED_IN)
                     this._addOSMLocation();
-            }).bind(this));
+            });
 
             return;
         }
@@ -182,13 +180,13 @@ var ContextMenu = new Lang.Class({
                                       this._latitude, this._longitude);
 
         dialog.show();
-        dialog.connect('response', (function(dialog, response) {
+        dialog.connect('response', (dialog, response) => {
             dialog.destroy();
             if (response === OSMEditDialog.Response.UPLOADED) {
                 Application.notificationManager.showMessage(
                     _("Location was added to the map, note that it may take a while before it shows on the map and in search results."));
             }
-        }).bind(this));
+        });
     },
 
     _activateExport: function() {
@@ -206,9 +204,7 @@ var ContextMenu = new Lang.Class({
             mapView: this._mapView
         });
 
-        dialog.connect('response', function() {
-            dialog.destroy();
-        });
+        dialog.connect('response', () => dialog.destroy());
         dialog.show_all();
     },
 
@@ -216,12 +212,12 @@ var ContextMenu = new Lang.Class({
         if (this._mapView.view.state === Champlain.State.DONE) {
             this._activateExport();
         } else {
-            let notifyId = this._mapView.view.connect('notify::state', (function() {
+            let notifyId = this._mapView.view.connect('notify::state', () => {
                 if (this._mapView.view.state === Champlain.State.DONE) {
                     this._mapView.view.disconnect(notifyId);
                     this._activateExport();
                 }
-            }).bind(this));
+            });
         }
     }
 });

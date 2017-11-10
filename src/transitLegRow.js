@@ -150,19 +150,19 @@ var TransitLegRow = new Lang.Class({
         this._expandButton.connect('clicked', this._expand.bind(this));
         this._collapsButton.connect('clicked', this._collaps.bind(this));
 
-        this._instructionList.connect('row-selected', (function(listbox, row) {
+        this._instructionList.connect('row-selected', (listbox, row) => {
             if (row) {
                 if (row.turnPoint)
                     this._mapView.showTurnPoint(row.turnPoint);
                 else
                     this._mapView.showTransitStop(row.stop, this._leg);
             }
-        }).bind(this));
+        });
 
-        this._eventBox.connect('event', (function(widget, event) {
+        this._eventBox.connect('event', (widget, event) => {
             this._handleEventBox(event);
             return true;
-        }).bind(this));
+        });
 
         this._isExpanded = false;
 

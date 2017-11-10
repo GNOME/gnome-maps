@@ -63,11 +63,11 @@ var OSMConnection = new Lang.Class({
         let uri = new Soup.URI(url);
         let request = new Soup.Message({ method: 'GET', uri: uri });
 
-        cancellable.connect((function() {
+        cancellable.connect(() => {
             this._session.cancel_message(request, Soup.STATUS_CANCELLED);
-        }).bind(this));
+        });
 
-        this._session.queue_message(request, (function(obj, message) {
+        this._session.queue_message(request, (obj, message) => {
             if (message.status_code !== Soup.Status.OK) {
                 callback(false, message.status_code, null, type, null);
                 return;
@@ -81,7 +81,7 @@ var OSMConnection = new Lang.Class({
                 Utils.debug(e);
                 callback(false, message.status_code, null, type, e);
             }
-        }).bind(this));
+        });
     },
 
     _getQueryUrl: function(type, id) {
@@ -94,11 +94,11 @@ var OSMConnection = new Lang.Class({
            proxy instance doesn't have a token set, we could safely count on
            it being present in the keyring */
         if (this._callProxy.get_token() === null) {
-            Secret.password_lookup(SECRET_SCHEMA, {}, null, function(s, res) {
+            Secret.password_lookup(SECRET_SCHEMA, {}, null, (s, res) => {
                 this._onPasswordLookedUp(res,
                                          comment,
                                          callback);
-            }.bind(this));
+            });
         } else {
             this._doOpenChangeset(comment, callback);
         }
@@ -128,9 +128,8 @@ var OSMConnection = new Lang.Class({
         call.set_method('PUT');
         call.set_function('/changeset/create');
 
-        call.invoke_async(null, (function(call, res, userdata) {
-                    this._onChangesetOpened(call, callback);
-                                }).bind(this));
+        call.invoke_async(null, (call, res, userdata) =>
+                                { this._onChangesetOpened(call, callback); });
     },
 
     _onChangesetOpened: function(call, callback) {
@@ -152,9 +151,8 @@ var OSMConnection = new Lang.Class({
         call.set_method('PUT');
         call.set_function(this._getCreateOrUpdateFunction(object, type));
 
-        call.invoke_async(null, (function(call, res, userdata) {
-                    this._onObjectUploaded(call, callback);
-                                }).bind(this));
+        call.invoke_async(null, (call, res, userdata) =>
+                                { this._onObjectUploaded(call, callback); });
     },
 
     _onObjectUploaded: function(call, callback) {
@@ -175,9 +173,8 @@ var OSMConnection = new Lang.Class({
         call.set_method('DELETE');
         call.set_function(this._getDeleteFunction(object, type));
 
-        call.invoke_async(null, (function(call, res, userdata) {
-                    this._onObjectDeleted(call, callback);
-                                }).bind(this));
+        call.invoke_async(null, (call, res, userdata) =>
+                                { this._onObjectDeleted(call, callback); });
     },
 
     _onObjectDeleted: function(call, callback) {
@@ -194,9 +191,8 @@ var OSMConnection = new Lang.Class({
         call.set_method('PUT');
         call.set_function(this._getCloseChangesetFunction(changesetId));
 
-        call.invoke_async(null, (function(call, res, userdata) {
-                    this._onChangesetClosed(call, callback);
-                                }).bind(this));
+        call.invoke_async(null, (call, res, userdata) =>
+                                { this._onChangesetClosed(call, callback); });
     },
 
     _onChangesetClosed: function(call, callback) {
@@ -227,9 +223,9 @@ var OSMConnection = new Lang.Class({
         /* OAuth proxy used for enrolling access tokens */
         this._oauthProxy = Rest.OAuthProxy.new(CONSUMER_KEY, CONSUMER_SECRET,
                                                OAUTH_ENDPOINT_URL, false);
-        this._oauthProxy.request_token_async('request_token', 'oob', function(p, error, w, u) {
+        this._oauthProxy.request_token_async('request_token', 'oob', (p, error, w, u) => {
             this._onRequestOAuthToken(error, callback);
-        }.bind(this), this._oauthProxy, callback);
+        }, this._oauthProxy, callback);
     },
 
     _onRequestOAuthToken: function(error, callback) {
@@ -250,9 +246,9 @@ var OSMConnection = new Lang.Class({
         let uri = new Soup.URI(loginUrl);
         let msg = new Soup.Message({method: 'GET', uri: uri});
 
-        this._session.queue_message(msg, (function(obj, message) {
+        this._session.queue_message(msg, (obj, message) => {
             this._onLoginFormReceived(message, username, password, callback);
-        }).bind(this));
+        });
     },
 
     _onLoginFormReceived: function(message, username, password, callback) {
@@ -289,12 +285,12 @@ var OSMConnection = new Lang.Class({
         requestHeaders.append('Cookie', '_osm_session=' + sessionId);
         msg.flags |= Soup.MessageFlags.NO_REDIRECT;
 
-        this._session.queue_message(msg, (function(obj, message) {
+        this._session.queue_message(msg, (obj, message) => {
             if (message.status_code === Soup.Status.MOVED_TEMPORARILY)
                 this._fetchAuthorizeForm(username, sessionId, callback);
             else
                 callback(false, null);
-        }).bind(this));
+        });
 
     },
 
@@ -307,14 +303,14 @@ var OSMConnection = new Lang.Class({
         msg.request_headers.append('Cookie',
                                    '_osm_session=' + sessionId +
                                    '; _osm_username=' + username);
-        this._session.queue_message(msg, (function(obj, message) {
+        this._session.queue_message(msg, (obj, message) => {
             if (message.status_code === Soup.Status.OK) {
                 let token = this._extractToken(message.response_body.data);
                 this._postAuthorizeForm(username, sessionId, token, callback);
             } else {
                 callback(false, null);
             }
-        }).bind(this));
+        });
     },
 
     _postAuthorizeForm: function(username, sessionId, token, callback) {
@@ -334,18 +330,18 @@ var OSMConnection = new Lang.Class({
                               '_osm_session=' + sessionId +
                               '; _osm_username=' + username);
 
-        this._session.queue_message(msg, (function(obj, message) {
+        this._session.queue_message(msg, (obj, message) => {
             if (msg.status_code === Soup.Status.OK) {
                 callback(true, message.response_body.data);
             } else
                 callback(false, null);
-        }).bind(this));
+        });
     },
 
     requestOAuthAccessToken: function(code, callback) {
-        this._oauthProxy.access_token_async('access_token', code, function(p, error, w, data) {
+        this._oauthProxy.access_token_async('access_token', code, (p, error, w, data) => {
             this._onAccessOAuthToken(error, callback);
-        }.bind(this), this._oauthProxy, callback);
+        }, this._oauthProxy, callback);
     },
 
     _onAccessOAuthToken: function(error, callback) {
@@ -363,9 +359,9 @@ var OSMConnection = new Lang.Class({
                               "OSM OAuth access token and secret",
                               this._oauthProxy.token + ":" +
                               this._oauthProxy.token_secret, null,
-                              function(source, result, userData) {
+                              (source, result, userData) => {
                                 this._onPasswordStored(result, callback);
-                              }.bind(this));
+                              });
     },
 
     _onPasswordStored: function(result, callback) {
