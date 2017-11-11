@@ -7,10 +7,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-maps 3.26.x\n"
+"Project-Id-Version: gnome-maps 3.27.x\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-09-11 20:24+0000\n"
-"PO-Revision-Date: 2017-11-08 19:59+0100\n"
+"POT-Creation-Date: 2017-11-08 18:59+0000\n"
+"PO-Revision-Date: 2017-11-11 19:34+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
@@ -59,7 +59,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:87 ../src/mainWindow.js:489
+#: ../src/application.js:87 ../src/mainWindow.js:490
 msgid "Maps"
 msgstr "Kart"
 
@@ -190,7 +190,7 @@ msgstr "Indikerer om bruker har logget inn for å redigere OpenStreeMap data."
 
 #: ../data/org.gnome.Maps.gschema.xml.h:25
 msgid "Last used transportation type for routing"
-msgstr ""
+msgstr "Sist brukte transporttype for ruting"
 
 #: ../data/ui/app-menu.ui.h:1
 msgid "Set up OpenStreetMap Account"
@@ -614,6 +614,11 @@ msgid ""
 "Names and brands shown are to be considered as registered trademarks when "
 "applicable."
 msgstr ""
+"Rutetabeller for offentlig transport tilbys av GNOME\n"
+"gjennom bruk av rutedata som hentes fra transportfirma eller byråer.\n"
+"Firmaene eller byråene kan ikke holdes ansvarlig for resultatet som vises.\n"
+"GNOME kan ikke garantere riktighet for rutetabellene og tidsplanene.\n"
+"Navn og merker som vises skal anses som registrerte varemerker når det er relevant."
 
 #: ../data/ui/social-place-more-results-row.ui.h:1
 msgid "Show more results"
@@ -708,6 +713,10 @@ msgstr "Fant ikke OSM-element"
 msgid "A path to a local tiles directory structure"
 msgstr "En sti til en lokal katalogstruktur med fliser"
 
+#: ../src/application.js:106
+msgid "Show the version of the program"
+msgstr "Vis programmets versjon"
+
 #: ../src/checkInDialog.js:175
 msgid "Select an account"
 msgstr "Velg en konto"
@@ -797,23 +806,32 @@ msgstr ""
 "Lokasjonen ble lagt til på kartet. Merk at det kan ta litt tid før den vises "
 "på kartet og dukker opp i søkeresultater."
 
-#: ../src/exportViewDialog.js:156
+#. Translators: This is a format string for a PNG filename for an
+#. * exported image with coordinates. The .png extension should be kept
+#. * intact in the translated string.
+#.
+#: ../src/exportViewDialog.js:89
+#, javascript-format
+msgid "Maps at %f, %f.png"
+msgstr "Kart fra %f, %f.png"
+
+#: ../src/exportViewDialog.js:160
 msgid "Filesystem is read only"
 msgstr "Filsystemet er skrivebeskyttet"
 
-#: ../src/exportViewDialog.js:158
+#: ../src/exportViewDialog.js:162
 msgid "You do not have permission to save there"
 msgstr "Du har ikke rettigheter til å lagre der"
 
-#: ../src/exportViewDialog.js:160
+#: ../src/exportViewDialog.js:164
 msgid "The directory does not exist"
 msgstr "Katalogen eksisterer ikke"
 
-#: ../src/exportViewDialog.js:162
+#: ../src/exportViewDialog.js:166
 msgid "No filename specified"
 msgstr "Filnavn ikke oppgitt"
 
-#: ../src/exportViewDialog.js:170
+#: ../src/exportViewDialog.js:174
 msgid "Unable to export view"
 msgstr "Kan ikke eksportere visning"
 
@@ -850,15 +868,19 @@ msgstr "Alle lagfiler"
 msgid "Failed to connect to location service"
 msgstr "Klarte ikke å koble til posisjonstjeneste"
 
-#: ../src/mainWindow.js:487
+#: ../src/mainWindow.js:488
 msgid "translator-credits"
 msgstr ""
 "haarek <haarektrans@gmail.com>, Kjartan Maraas <kmaraas@gnome.org>, Åka "
 "Sikrom <a4NOSPAMPLEASETHANKYOU@hush.com>"
 
-#: ../src/mainWindow.js:490
+#: ../src/mainWindow.js:491
 msgid "A map application for GNOME"
 msgstr "Et kartprogram for GNOME"
+
+#: ../src/mainWindow.js:492
+msgid "Copyright © 2011 – 2017 Red Hat, Inc. and The GNOME Maps authors"
+msgstr "Opphavsrett © 2011 - 2017 Red Hat, Inc. og GNOME kart utviklerene"
 
 #: ../src/mapView.js:356
 msgid "File type is not supported"
@@ -1044,7 +1066,7 @@ msgstr "Buddisme"
 
 #: ../src/osmEditDialog.js:188 ../src/translations.js:366
 msgid "Caodaism"
-msgstr ""
+msgstr "Caodaisme"
 
 #: ../src/osmEditDialog.js:189 ../src/translations.js:367
 msgid "Christianity"
@@ -1080,7 +1102,7 @@ msgstr "Paganisme"
 
 #: ../src/osmEditDialog.js:197 ../src/translations.js:375
 msgid "Pastafarianism"
-msgstr ""
+msgstr "Pastafarianisme"
 
 #: ../src/osmEditDialog.js:198 ../src/translations.js:376
 msgid "Scientology"
@@ -1112,11 +1134,11 @@ msgstr "Voodo"
 
 #: ../src/osmEditDialog.js:205 ../src/translations.js:383
 msgid "Yazidism"
-msgstr ""
+msgstr "Jesidisme"
 
 #: ../src/osmEditDialog.js:206 ../src/translations.js:384
 msgid "Zoroastrianism"
-msgstr ""
+msgstr "Zoroastrisme"
 
 #: ../src/osmEditDialog.js:209
 msgid "Toilets"
@@ -1248,7 +1270,7 @@ msgid "failed to load file"
 msgstr "klarte ikke å laste fil"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:294
+#: ../src/sidebar.js:293
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Estimert tid: %s"
@@ -1281,18 +1303,18 @@ msgstr "Start ved %s"
 msgid "Start"
 msgstr "Start"
 
-#: ../src/transitLegRow.js:107
+#: ../src/transitLegRow.js:108
 msgid "Show walking instructions"
 msgstr "Vis instruksjoner for fotgjengere"
 
-#: ../src/transitLegRow.js:108
+#: ../src/transitLegRow.js:109
 msgid "Hide walking instructions"
 msgstr "Skjul instruksjoner for fotgjengere"
 
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
 #.
-#: ../src/transitLegRow.js:133
+#: ../src/transitLegRow.js:134
 #, javascript-format
 msgid "Walk %s"
 msgstr "Gå %s"
