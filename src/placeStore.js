@@ -305,7 +305,7 @@ var PlaceStore = new Lang.Class({
     },
 
     exists: function(place, type) {
-        if (type !== undefined && type !== null && this._typeTable[place.uniqueID])
+        if (type !== undefined && type !== null && this._typeTable[place.uniqueID] !== undefined)
             return this._typeTable[place.uniqueID] === type;
         else
             return this._typeTable[place.uniqueID] !== undefined;
