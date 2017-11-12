@@ -574,7 +574,9 @@ var MapView = new Lang.Class({
 
         routeLayer = this._createRouteLayer(false, TURN_BY_TURN_ROUTE_COLOR,
                                             ROUTE_LINE_WIDTH);
-        route.path.forEach(routeLayer.add_node.bind(routeLayer));
+        route.path.forEach((function (polyline) {
+            routeLayer.add_node(polyline);
+        }).bind(this));
         this.routingOpen = true;
 
         this._ensureInstructionLayerAboveRouteLayers();
