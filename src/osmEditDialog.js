@@ -22,6 +22,7 @@
 
 const _ = imports.gettext.gettext;
 
+const Geocode = imports.gi.GeocodeGlib;
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
@@ -337,6 +338,7 @@ var OSMEditDialog = new Lang.Class({
             newNode.set_tag('name', '');
             this._loadOSMData(newNode);
             this._isEditing = true;
+            this._osmType = Geocode.PlaceOsmType.NODE;
         } else {
             this._osmType = this._place.osmType;
             Application.osmEdit.fetchObject(this._place,
