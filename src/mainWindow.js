@@ -39,6 +39,7 @@ const MapView = imports.mapView;
 const PlaceEntry = imports.placeEntry;
 const PlaceStore = imports.placeStore;
 const PrintOperation = imports.printOperation;
+const Service = imports.service;
 const ShapeLayer = imports.shapeLayer;
 const Sidebar = imports.sidebar;
 const Utils = imports.utils;
@@ -493,7 +494,6 @@ var MainWindow = new Lang.Class({
             /* Translators: This is the program name. */
             program_name: _("Maps"),
             comments: _("A map application for GNOME"),
-            copyright: _("Copyright © 2011 – 2017 Red Hat, Inc. and The GNOME Maps authors"),
             license_type: Gtk.License.GPL_2_0,
             logo_icon_name: 'org.gnome.Maps',
             version: pkg.version,
@@ -503,10 +503,48 @@ var MainWindow = new Lang.Class({
             modal: true,
             transient_for: this
         });
+
+        let copyright = _("Copyright © 2011 – 2017 Red Hat, Inc. and The GNOME Maps authors");
+        let attribution = this._getAttribution();
+
+        copyright += '\n' + attribution;
+
+        /* HACK: we need to poke into gtkaboutdialog internals
+         * to set the copyright with markup like attribution requires
+         */
+
+        let copyrightLabel = aboutDialog.get_template_child(Gtk.AboutDialog, 'copyright_label');
+        copyrightLabel.set_markup('<span size="small">' + copyright + '</span>');
+        copyrightLabel.show();
+
         aboutDialog.show();
         aboutDialog.connect('response', (function() {
             aboutDialog.destroy();
         }));
+    },
+
+    _getAttribution: function() {
+        let tileProviderInfo = Service.getService().tileProviderInfo;
+        let attribution = _("Map data by %s and contributors").format('<a href="https://www.openstreetmap.org">OpenStreetMap</a>');
+
+        if (tileProviderInfo) {
+            let tileProviderString;
+            if (tileProviderInfo.url) {
+                tileProviderString = '<a href="' + tileProviderInfo.url + '">' +
+                                     tileProviderInfo.name + '</a>';
+            } else {
+                tileProviderString = tileProviderInfo.name;
+            }
+            attribution += '\n';
+            /* Translators: this is an attribution string giving credit to the
+             * tile provider where the %s placeholder is replaced by either
+             * the bare name of the tile provider, or a linkified URL if one
+             * is available
+             */
+            attribution += _("Map tiles provided by %s").format(tileProviderString);
+        }
+
+        return attribution;
     },
 
     _onOpenShapeLayer: function() {
