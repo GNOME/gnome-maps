@@ -19,31 +19,29 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Lang = imports.lang;
-
 const _ = imports.gettext.gettext;
 
+const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 
 const Application = imports.application;
 
-var TransitMoreRow = new Lang.Class({
-    Name: 'TransitMoreRow',
-    Extends: Gtk.ListBoxRow,
+var TransitMoreRow = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/transit-more-row.ui',
     InternalChildren: ['stack',
-                       'label'],
+                       'label']
+}, class TransitMoreRow extends Gtk.ListBoxRow {
 
-    _init: function(params) {
-        this.parent(params);
+    _init(params) {
+        super._init(params);
 
         if (Application.routeQuery.arriveBy)
             this._label.label = _("Load earlier alternatives");
         else
             this._label.label = _("Load later alternatives");
-    },
+    }
 
-    startLoading: function() {
+    startLoading() {
         this._stack.visible_child_name = 'spinner';
     }
 });

@@ -19,8 +19,6 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Lang = imports.lang;
-
 const _ = imports.gettext.gettext;
 const ngettext = imports.gettext.ngettext;
 
@@ -84,58 +82,57 @@ function _printTimeWithTZOffset(time, offset) {
 var DEFAULT_ROUTE_COLOR = '4c4c4c';
 var DEFAULT_ROUTE_TEXT_COLOR = 'ffffff';
 
-var Plan = new Lang.Class({
-    Name: 'Plan',
-    Extends: GObject.Object,
+var Plan = GObject.registerClass({
     Signals: {
         'update': {},
         'reset': {},
         'no-more-results': {},
         'itinerary-selected': { param_types: [GObject.TYPE_OBJECT] },
         'itinerary-deselected': {}
-    },
+    }
+}, class Plan extends GObject.Object {
 
-    _init: function(params) {
-        this.parent(params);
+    _init(params) {
+        super._init(params);
         this.reset();
-    },
+    }
 
     get itineraries() {
         return this._itineraries;
-    },
+    }
 
     get selectedItinerary() {
         return this._selectedItinerary;
-    },
+    }
 
-    update: function(itineraries) {
+    update(itineraries) {
         this._itineraries = itineraries;
         this.bbox = this._createBBox();
         this.emit('update');
-    },
+    }
 
-    reset: function() {
+    reset() {
         this._itineraries = [];
         this.bbox = null;
         this._selectedItinerary = null;
         this.emit('reset');
-    },
+    }
 
-    noMoreResults: function() {
+    noMoreResults() {
         this.emit('no-more-results');
-    },
+    }
 
-    selectItinerary: function(itinerary) {
+    selectItinerary(itinerary) {
         this._selectedItinerary = itinerary;
         this.emit('itinerary-selected', itinerary);
-    },
+    }
 
-    deselectItinerary: function() {
+    deselectItinerary() {
         this._selectedItinerary = null;
         this.emit('itinerary-deselected');
-    },
+    }
 
-    _createBBox: function() {
+    _createBBox() {
         let bbox = new Champlain.BoundingBox();
         this._itineraries.forEach(function(itinerary) {
             bbox.compose(itinerary.bbox);
@@ -144,11 +141,10 @@ var Plan = new Lang.Class({
     }
 });
 
-var Itinerary = new Lang.Class({
-    Name: 'Itinerary',
-    Extends: GObject.Object,
+var Itinerary = GObject.registerClass(
+class Itinerary extends GObject.Object {
 
-    _init: function(params) {
+    _init(params) {
         this._duration = params.duration;
         delete params.duration;
 
@@ -164,36 +160,36 @@ var Itinerary = new Lang.Class({
         this._legs = params.legs;
         delete params.legs;
 
-        this.parent(params);
+        super._init(params);
 
         this.bbox = this._createBBox();
-    },
+    }
 
     get duration() {
         return this._duration;
-    },
+    }
 
     get departure() {
         return this._departure;
-    },
+    }
 
     get arrival() {
         return this._arrival;
-    },
+    }
 
     get transfers() {
         return this._transfers;
-    },
+    }
 
     get legs() {
         return this._legs;
-    },
+    }
 
     /* adjust timings of the legs of the itinerary, using the real duration of
      * walking legs, also sets the timezone offsets according to adjacent
      * transit legs
      */
-    _adjustLegTimings: function() {
+    _adjustLegTimings() {
         if (this.legs.length === 1 && !this.legs[0].transit) {
             /* if there is only one leg, and it's a walking one, just need to
              * adjust the arrival time
@@ -232,9 +228,9 @@ var Itinerary = new Lang.Class({
                 }
             }
         }
-    },
+    }
 
-    _createBBox: function() {
+    _createBBox() {
         let bbox = new Champlain.BoundingBox();
 
         this._legs.forEach(function(leg) {
@@ -242,9 +238,9 @@ var Itinerary = new Lang.Class({
         });
 
         return bbox;
-    },
+    }
 
-    prettyPrintTimeInterval: function() {
+    prettyPrintTimeInterval() {
         /* Translators: this is a format string for showing a departure and
          * arrival time, like:
          * "12:00 – 13:03" where the placeholder %s are the actual times,
@@ -252,24 +248,24 @@ var Itinerary = new Lang.Class({
          */
         return _("%s \u2013 %s").format(this._getDepartureTime(),
                                         this._getArrivalTime());
-    },
+    }
 
-    _getDepartureTime: function() {
+    _getDepartureTime() {
         /* take the itinerary departure time and offset using the timezone
          * offset of the first leg */
         return _printTimeWithTZOffset(this.departure,
                                       this.legs[0].agencyTimezoneOffset);
-    },
+    }
 
-    _getArrivalTime: function() {
+    _getArrivalTime() {
         /* take the itinerary departure time and offset using the timezone
          * offset of the last leg */
         let lastLeg = this.legs[this.legs.length - 1];
         return _printTimeWithTZOffset(this.arrival,
                                       lastLeg.agencyTimezoneOffset);
-    },
+    }
 
-    prettyPrintDuration: function() {
+    prettyPrintDuration() {
         let mins = this.duration / 60;
 
         if (mins < 60) {
@@ -297,16 +293,16 @@ var Itinerary = new Lang.Class({
                 return ngettext("%d:%02d hour", "%d:%02d hours", hours).format(hours, mins);
             }
         }
-    },
+    }
 
-    adjustTimings: function() {
+    adjustTimings() {
         this._adjustLegTimings();
         this._departure = this._legs[0].departure;
         this._arrival = this._legs[this._legs.length - 1].arrival;
         this._duration = (this._arrival - this._departure) / 1000;
-    },
+    }
 
-    _getTransitDepartureLeg: function() {
+    _getTransitDepartureLeg() {
         for (let i = 0; i < this._legs.length; i++) {
             let leg = this._legs[i];
 
@@ -315,9 +311,9 @@ var Itinerary = new Lang.Class({
         }
 
         throw new Error('no transit leg found');
-    },
+    }
 
-    _getTransitArrivalLeg: function() {
+    _getTransitArrivalLeg() {
         for (let i = this._legs.length - 1; i >= 0; i--) {
             let leg = this._legs[i];
 
@@ -326,22 +322,22 @@ var Itinerary = new Lang.Class({
         }
 
         throw new Error('no transit leg found');
-    },
+    }
 
     /* gets the departure time of the first transit leg */
     get transitDepartureTime() {
         return this._getTransitDepartureLeg().departure;
-    },
+    }
 
     /* gets the timezone offset of the first transit leg */
     get transitDepartureTimezoneOffset() {
         return this._getTransitDepartureLeg().timezoneOffset;
-    },
+    }
 
     /* gets the arrival time of the final transit leg */
     get transitArrivalTime() {
         return this._getTransitArrivalLeg().arrival;
-    },
+    }
 
     /* gets the timezone offset of the final transit leg */
     get transitArrivalTimezoneOffset() {
@@ -349,10 +345,9 @@ var Itinerary = new Lang.Class({
     }
 });
 
-var Leg = new Lang.Class({
-    Name: 'Leg',
+var Leg = class Leg {
 
-    _init: function(params) {
+    constructor(params) {
         this._route = params.route;
         delete params.route;
 
@@ -416,16 +411,14 @@ var Leg = new Lang.Class({
         this._tripShortName = params.tripShortName;
         delete params.tripShortName;
 
-        this.parent(params);
-
         this.bbox = this._createBBox();
 
         this._compactRoute = null;
-    },
+    }
 
     get route() {
         return this._route;
-    },
+    }
 
     // try to get a shortened route name, suitable for overview rendering
     get compactRoute() {
@@ -456,101 +449,101 @@ var Leg = new Lang.Class({
         }
 
         return this._compactRoute;
-    },
+    }
 
     get routeType() {
         return this._routeType;
-    },
+    }
 
     get departure() {
         return this._departure;
-    },
+    }
 
     set departure(departure) {
         this._departure = departure;
-    },
+    }
 
     get arrival() {
         return this._arrival;
-    },
+    }
 
     get timezoneOffset() {
         return this._agencyTimezoneOffset;
-    },
+    }
 
     set arrival(arrival) {
         this._arrival = arrival;
-    },
+    }
 
     get polyline() {
         return this._polyline;
-    },
+    }
 
     get fromCoordinate() {
         return this._fromCoordinate;
-    },
+    }
 
     get toCoordinate() {
         return this._toCoordinate;
-    },
+    }
 
     get from() {
         return this._from;
-    },
+    }
 
     get to() {
         return this._to;
-    },
+    }
 
     get intermediateStops() {
         return this._intermediateStops;
-    },
+    }
 
     get headsign() {
         return this._headsign;
-    },
+    }
 
     get transit() {
         return this._isTransit;
-    },
+    }
 
     get distance() {
         return this._distance;
-    },
+    }
 
     get duration() {
         return this._duration;
-    },
+    }
 
     get agencyName() {
         return this._agencyName;
-    },
+    }
 
     get agencyUrl() {
         return this._agencyUrl;
-    },
+    }
 
     get agencyTimezoneOffset() {
         return this._agencyTimezoneOffset;
-    },
+    }
 
     set agencyTimezoneOffset(tzOffset) {
         this._agencyTimezoneOffset = tzOffset;
-    },
+    }
 
     get color() {
         return this._color || DEFAULT_ROUTE_COLOR;
-    },
+    }
 
     get textColor() {
         return this._textColor || DEFAULT_ROUTE_TEXT_COLOR;
-    },
+    }
 
     get tripShortName() {
         return this._tripShortName;
-    },
+    }
 
-    _createBBox: function() {
+    _createBBox() {
         let bbox = new Champlain.BoundingBox();
 
         this.polyline.forEach(function({ latitude, longitude }) {
@@ -558,7 +551,7 @@ var Leg = new Lang.Class({
         });
 
         return bbox;
-    },
+    }
 
     get iconName() {
         if (this._isTransit) {
@@ -624,11 +617,11 @@ var Leg = new Lang.Class({
         } else {
             return 'route-pedestrian-symbolic';
         }
-    },
+    }
 
     get walkingInstructions() {
         return this._walkingInstructions;
-    },
+    }
 
     /* Pretty print timing for a transit leg, set params.isStart: true when
      * printing for the starting leg of an itinerary.
@@ -636,7 +629,7 @@ var Leg = new Lang.Class({
      * otherwise the departure and arrival time of the leg (i.e. transit ride
      * or an in-between walking section) will be printed.
      */
-    prettyPrintTime: function(params) {
+    prettyPrintTime(params) {
         if (!this.transit && params.isStart) {
             return this.prettyPrintDepartureTime();
         } else {
@@ -649,27 +642,26 @@ var Leg = new Lang.Class({
             return _("%s\u2013%s").format(this.prettyPrintDepartureTime(),
                                           this.prettyPrintArrivalTime());
         }
-    },
+    }
 
-    prettyPrintDepartureTime: function() {
+    prettyPrintDepartureTime() {
         /* take the itinerary departure time and offset using the timezone
          * offset of the first leg
          */
         return _printTimeWithTZOffset(this.departure, this.agencyTimezoneOffset);
-    },
+    }
 
-    prettyPrintArrivalTime: function() {
+    prettyPrintArrivalTime() {
         /* take the itinerary departure time and offset using the timezone
          * offset of the last leg
          */
         return _printTimeWithTZOffset(this.arrival, this.agencyTimezoneOffset);
     }
-});
+};
 
-var Stop = new Lang.Class({
-    Name: 'Stop',
+var Stop = class Stop {
 
-    _init: function(params) {
+    constructor(params) {
         this._name = params.name;
         delete params.name;
 
@@ -684,17 +676,17 @@ var Stop = new Lang.Class({
 
         this._coordinate = params.coordinate;
         delete params.coordinate;
-    },
+    }
 
     get name() {
         return this._name;
-    },
+    }
 
     get coordinate() {
         return this._coordinate;
-    },
+    }
 
-    prettyPrint: function(params) {
+    prettyPrint(params) {
         if (params.isFinal) {
             /* take the stop arrival time and offset using the timezone
              * offset of the last leg
@@ -709,7 +701,7 @@ var Stop = new Lang.Class({
                                           this._agencyTimezoneOffset);
         }
     }
-});
+};
 
 function sortItinerariesByDepartureAsc(first, second) {
     return first.departure > second.departure;

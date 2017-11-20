@@ -19,12 +19,11 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Lang = imports.lang;
-
 const _ = imports.gettext.gettext;
 
 const Gdk = imports.gi.Gdk;
 const GLib = imports.gi.GLib;
+const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Pango = imports.gi.Pango;
 
@@ -33,9 +32,7 @@ const TransitRouteLabel = imports.transitRouteLabel;
 const TransitStopRow = imports.transitStopRow;
 const Utils = imports.utils;
 
-var TransitLegRow = new Lang.Class({
-    Name: 'TransitLegRow',
-    Extends: Gtk.ListBoxRow,
+var TransitLegRow = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/transit-leg-row.ui',
     InternalChildren: ['modeImage',
                        'fromLabel',
@@ -47,9 +44,10 @@ var TransitLegRow = new Lang.Class({
                        'agencyLabel',
                        'collapsButton',
                        'instructionList',
-                       'eventBox'],
+                       'eventBox']
+}, class TransitLegRow extends Gtk.ListBoxRow {
 
-    _init: function(params) {
+    _init(params) {
         this._leg = params.leg;
         delete params.leg;
 
@@ -62,7 +60,7 @@ var TransitLegRow = new Lang.Class({
         this._print = params.print;
         delete params.print;
 
-        this.parent(params);
+        super._init(params);
 
         this._modeImage.icon_name = this._leg.iconName;
         if (this._start) {
@@ -172,10 +170,10 @@ var TransitLegRow = new Lang.Class({
         // allow more space for the departure label when printing
         if (this._print)
             this._fromLabel.max_width_chars = -1;
-    },
+    }
 
     // Handle events received on the EventBox for expanding when clicking
-    _handleEventBox: function(event) {
+    _handleEventBox(event) {
         let [isButton, button] = event.get_button();
         let type = event.get_event_type();
 
@@ -190,9 +188,9 @@ var TransitLegRow = new Lang.Class({
                     this._expand();
             }
         }
-    },
+    }
 
-    _expand: function() {
+    _expand() {
         this._footerStack.visible_child_name = 'separator';
         this._detailsRevealer.reveal_child = true;
         /* collaps the time label down to just show the start time when
@@ -201,20 +199,20 @@ var TransitLegRow = new Lang.Class({
          */
         this._timeLabel.label = this._leg.prettyPrintDepartureTime();
         this._isExpanded = true;
-    },
+    }
 
-    _collaps: function() {
+    _collaps() {
         this._footerStack.visible_child_name = 'expander';
         this._detailsRevealer.reveal_child = false;
         this._timeLabel.label = this._leg.prettyPrintTime({ isStart: this._start });
         this._isExpanded = false;
-    },
+    }
 
-    _hasIntructions: function() {
+    _hasIntructions() {
         return this._leg.transit || this._leg.walkingInstructions;
-    },
+    }
 
-    _populateInstructions: function() {
+    _populateInstructions() {
         if (this._leg.transit) {
             let stops = this._leg.intermediateStops;
             for (let index = 0; index < stops.length; index++) {

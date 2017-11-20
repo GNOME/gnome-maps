@@ -17,7 +17,7 @@
  * Author: Amisha Singla <amishas157@gmail.com>
  */
 
-const Lang = imports.lang;
+const GObject = imports.gi.GObject;
 
 const PrintLayout = imports.printLayout;
 const Route = imports.route;
@@ -37,11 +37,10 @@ const _MiniMapView = {
     ZOOM_LEVEL: 18
 };
 
-var LongPrintLayout = new Lang.Class({
-    Name: 'LongPrintLayout',
-    Extends: PrintLayout.PrintLayout,
+var LongPrintLayout = GObject.registerClass(
+class LongPrintLayout extends PrintLayout.PrintLayout {
 
-    _init: function(params) {
+    _init(params) {
         this._route = params.route;
         delete params.route;
 
@@ -55,11 +54,11 @@ var LongPrintLayout = new Lang.Class({
         });
         params.totalSurfaces = totalSurfaces;
 
-        this.parent(params);
-    },
+        super._init(params);
+    }
 
-    render: function() {
-        this.parent();
+    render() {
+        super.render();
 
         let instructionWidth = _Instruction.SCALE_X * this._pageWidth;
         let instructionHeight = _Instruction.SCALE_Y * this._pageHeight;

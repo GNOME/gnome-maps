@@ -19,7 +19,6 @@
 
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 
 const Application = imports.application;
 const PlaceListRow = imports.placeListRow;
@@ -35,9 +34,7 @@ const Mode = {
     RESULT: 3 // We are displaying results
 };
 
-var PlacePopover = new Lang.Class({
-    Name: 'PlacePopover',
-    Extends: SearchPopover.SearchPopover,
+var PlacePopover = GObject.registerClass({
     Signals : {
         'selected' : { param_types: [ GObject.TYPE_OBJECT ] }
     },
@@ -48,8 +45,9 @@ var PlacePopover = new Lang.Class({
                         'spinner',
                         'list',
                         'noResultsLabel' ],
+}, class PlacePopover extends SearchPopover.SearchPopover {
 
-    _init: function(props) {
+    _init(props) {
         let numVisible = props.num_visible;
         delete props.num_visible;
 
@@ -57,12 +55,12 @@ var PlacePopover = new Lang.Class({
         delete props.maxChars;
 
         props.transitions_enabled = false;
-        this.parent(props);
+        super._init(props);
 
         this._entry = this.relative_to;
         this._entry.connect('notify::place', () => this._mode = Mode.ACTIVATED);
 
-        Application.routingDelegator.graphHopper.route.connect('updated', () => {
+        Application.routingDelegator.graphHopper.route.connect('update', () => {
             this._mode = Mode.ACTIVATED;
         });
 
@@ -93,18 +91,18 @@ var PlacePopover = new Lang.Class({
         // This silents warning at Maps exit about this widget being
         // visible but not mapped.
         this.connect('unmap', (popover) => popover.hide());
-    },
+    }
 
-    showSpinner: function() {
+    showSpinner() {
         this._spinner.start();
         this._stack.visible_child = this._spinner;
         this._updateHint();
 
         if (!this.visible)
             this.show();
-    },
+    }
 
-    showResult: function() {
+    showResult() {
         this._mode = Mode.RESULT;
 
         if (this._spinner.active)
@@ -118,18 +116,18 @@ var PlacePopover = new Lang.Class({
 
         if (!this.visible)
             this.show();
-    },
+    }
 
-    showNoResult: function() {
+    showNoResult() {
         this._mode = Mode.IDLE;
 
         if (this._spinner.active)
             this._spinner.stop();
 
         this._stack.visible_child = this._noResultsLabel;
-    },
+    }
 
-    showCompletion: function() {
+    showCompletion() {
         if (this._mode === undefined || this._mode === Mode.ACTIVATED) {
             this._mode = Mode.IDLE;
             return;
@@ -141,20 +139,15 @@ var PlacePopover = new Lang.Class({
 
         if (!this.visible)
             this.show();
-    },
+    }
 
-    vfunc_hide: function() {
+    vfunc_hide() {
         this._hintRevealer.reveal_child = false;
-        this.parent();
-    },
+        super.vfunc_hide();
+    }
 
-<<<<<<< HEAD
-    updateResult: function(places, searchString) {
-        this._list.forall((row) => { row.destroy(); });
-=======
     updateResult(places, searchString) {
         this._list.forall((row) => row.destroy());
->>>>>>> 336ab5c6... fixup! WIP: Use ES6 arrow notation
 
         places.forEach((place) => {
             if (!place.location)
@@ -162,33 +155,28 @@ var PlacePopover = new Lang.Class({
 
             this._addRow(place, null, searchString);
         });
-    },
+    }
 
-<<<<<<< HEAD
-    updateCompletion: function(filter, searchString) {
-        this._list.forall((row) => { row.destroy(); });
-=======
     updateCompletion(filter, searchString) {
         this._list.forall((row) => row.destroy());
->>>>>>> 336ab5c6... fixup! WIP: Use ES6 arrow notation
 
         filter.foreach((model, path, iter) => {
             let place = model.get_value(iter, PlaceStore.Columns.PLACE);
             let type = model.get_value(iter, PlaceStore.Columns.TYPE);
             this._addRow(place, type, searchString);
         });
-    },
+    }
 
-    _addRow: function(place, type, searchString) {
+    _addRow(place, type, searchString) {
         let row = new PlaceListRow.PlaceListRow({ place: place,
                                                   searchString: searchString,
                                                   type: type,
                                                   maxChars: this._maxChars,
                                                   can_focus: true });
         this._list.add(row);
-    },
+    }
 
-    _updateHint: function() {
+    _updateHint() {
         if (this._stack.visible_child === this._spinner) {
             this._hintRevealer.reveal_child = false;
             return;

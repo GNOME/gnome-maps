@@ -19,10 +19,9 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Lang = imports.lang;
-
 const Cairo = imports.cairo;
 const GLib = imports.gi.GLib;
+const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 
 const Color = imports.color;
@@ -41,12 +40,11 @@ const DARK_OUTLINE_LUMINANCE_THREASHHOLD = 0.1;
 const HIGH_CONTRAST_COLOR = '000000';
 const HIGH_CONTRAST_TEXT_COLOR = 'ffffff';
 
-var TransitRouteLabel = new Lang.Class({
-    Name: 'TransitRouteLabel',
-    Extends: Gtk.Label,
+var TransitRouteLabel = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/transit-route-label.ui',
+}, class TransitRouteLabel extends Gtk.Label {
 
-    _init: function(params) {
+    _init(params) {
         let leg = params.leg;
         let compact = params.compact;
         let print = params.print;
@@ -54,13 +52,13 @@ var TransitRouteLabel = new Lang.Class({
         delete params.leg;
         delete params.compact;
         delete params.print;
-        this.parent(params);
+        super._init(params);
 
         this._setLabel(leg, compact, print);
         this.connect('draw', this._onDraw.bind(this));
-    },
+    }
 
-    _setLabel: function(leg, compact, print) {
+    _setLabel(leg, compact, print) {
         let color = leg.color;
         let textColor = leg.textColor;
         let label = leg.route;
@@ -111,13 +109,13 @@ var TransitRouteLabel = new Lang.Class({
         this.label = '<span foreground="#%s">%s</span>'.format(
                                         textColor,
                                         GLib.markup_escape_text(label, -1));
-    },
+    }
 
     /* I didn't find any easy/obvious way to override widget background color
      * and getting rounded corner just using CSS styles, so doing a custom
      * Cairo drawing of a "roundrect"
      */
-    _onDraw: function(widget, cr) {
+    _onDraw(widget, cr) {
         let width = widget.get_allocated_width();
         let height = widget.get_allocated_height();
         let radius = this._hasOutline ? 5 : 3;

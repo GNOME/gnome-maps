@@ -17,11 +17,11 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
+const _ = imports.gettext.gettext;
+
 const Gdk = imports.gi.Gdk;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
-const _ = imports.gettext.gettext;
 
 const Application = imports.application;
 const PlaceEntry = imports.placeEntry;
@@ -32,17 +32,16 @@ var Type = {
     VIA: 2
 };
 
-var RouteEntry = new Lang.Class({
-    Name: 'RouteEntry',
-    Extends: Gtk.Grid,
+var RouteEntry = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/route-entry.ui',
     Children: [ 'iconEventBox' ],
     InternalChildren: [ 'entryGrid',
                         'icon',
                         'button',
-                        'buttonImage' ],
+                        'buttonImage' ]
+}, class RouteEntry extends Gtk.Grid {
 
-    _init: function(params) {
+    _init(params) {
         this._type = params.type;
         delete params.type;
 
@@ -52,7 +51,7 @@ var RouteEntry = new Lang.Class({
         this._mapView = params.mapView || null;
         delete params.mapView;
 
-        this.parent(params);
+        super._init(params);
 
         this.entry = this._createEntry();
         this._entryGrid.add(this.entry);
@@ -85,17 +84,17 @@ var RouteEntry = new Lang.Class({
             this._button.tooltip_text = _("Reverse route");
             break;
         }
-    },
+    }
 
     get button() {
         return this._button;
-    },
+    }
 
     get point() {
         return this._point;
-    },
+    }
 
-    _createEntry: function() {
+    _createEntry() {
         let entry = new PlaceEntry.PlaceEntry({ visible: true,
                                                 can_focus: true,
                                                 hexpand: true,

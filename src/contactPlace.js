@@ -19,25 +19,23 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
-const Lang = imports.lang;
+const GObject = imports.gi.GObject;
 
 const Place = imports.place;
 
-var ContactPlace = new Lang.Class({
-    Name: 'ContactPlace',
-    Extends: Place.Place,
-
-    _init: function(params) {
+var ContactPlace = GObject.registerClass(
+class ContactPlace extends Place.Place {
+    _init(params) {
         this._contact = params.contact;
         delete params.contact;
 
         params.store = false;
-        this.parent(params);
-    },
+        super._init(params);
+    }
 
     get icon() {
         return this._contact.icon;
-    },
+    }
 
     get uniqueID() {
         return [this.name,

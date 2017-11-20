@@ -25,7 +25,6 @@ const GObject = imports.gi.GObject;
 const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
 const GtkClutter = imports.gi.GtkClutter;
-const Lang = imports.lang;
 const WebKit2 = imports.gi.WebKit2;
 
 const CheckIn = imports.checkIn;
@@ -62,9 +61,7 @@ var routeQuery = null;
 const _ensuredTypes = [WebKit2.WebView,
                        OSMTypeSearchEntry.OSMTypeSearchEntry];
 
-var Application = new Lang.Class({
-    Name: 'Application',
-    Extends: Gtk.Application,
+var Application = GObject.registerClass({
     Properties: {
         'connected': GObject.ParamSpec.boolean('connected',
                                                '',
@@ -72,24 +69,25 @@ var Application = new Lang.Class({
                                                GObject.ParamFlags.READABLE |
                                                GObject.ParamFlags.WRITABLE)
     },
+}, class Application extends Gtk.Application {
 
     set connected(p) {
         this._connected = p;
         this.notify('connected');
-    },
+    }
 
     get connected() {
         return this._connected;
-    },
+    }
 
-    _init: function() {
+    _init() {
         /* Translators: This is the program name. */
         GLib.set_application_name(_("Maps"));
 
         /* Needed to be able to use in UI files */
         _ensuredTypes.forEach((type) => GObject.type_ensure(type));
 
-        this.parent({ application_id: 'org.gnome.Maps',
+        super._init({ application_id: 'org.gnome.Maps',
                       flags: Gio.ApplicationFlags.HANDLES_OPEN });
         this._connected = false;
 
@@ -118,13 +116,13 @@ var Application = new Lang.Class({
 
             return -1;
         });
-    },
+    }
 
-    _checkNetwork: function() {
+    _checkNetwork() {
         this.connected = networkMonitor.connectivity === Gio.NetworkConnectivity.FULL;
-    },
+    }
 
-    _showContact: function(id) {
+    _showContact(id) {
         contactStore.lookup(id, (contact) => {
             this._mainWindow.markBusy();
             if (!contact) {
@@ -136,9 +134,9 @@ var Application = new Lang.Class({
                 this._mainWindow.mapView.showContact(contact);
             });
         });
-    },
+    }
 
-    _onShowContactActivate: function(action, parameter) {
+    _onShowContactActivate(action, parameter) {
         this._createWindow();
         this._checkNetwork();
         this._mainWindow.present();
@@ -153,20 +151,20 @@ var Application = new Lang.Class({
                     this._showContact(id);
             });
         }
-    },
+    }
 
-    _onQuitActivate: function() {
+    _onQuitActivate() {
         this._mainWindow.destroy();
-    },
+    }
 
-    _onOsmAccountSetupActivate: function() {
+    _onOsmAccountSetupActivate() {
         let dialog = osmEdit.createAccountDialog(this._mainWindow, false);
 
         dialog.show();
         dialog.connect('response', () => dialog.destroy());
-    },
+    }
 
-    _addContacts: function() {
+    _addContacts() {
         contactStore.get_contacts().forEach((contact) => {
             contact.geocode(function() {
                 contact.get_places().forEach((p) => {
@@ -180,9 +178,9 @@ var Application = new Lang.Class({
                 });
             });
         });
-    },
+    }
 
-    _initPlaceStore: function() {
+    _initPlaceStore() {
         placeStore = new PlaceStore.PlaceStore({
             recentPlacesLimit: settings.get('recent-places-limit'),
             recentRoutesLimit: settings.get('recent-routes-limit')
@@ -202,18 +200,18 @@ var Application = new Lang.Class({
                     this._addContacts();
             });
         }
-    },
+    }
 
-    _initAppMenu: function() {
+    _initAppMenu() {
         let builder = new Gtk.Builder();
         builder.add_from_resource('/org/gnome/Maps/ui/app-menu.ui');
 
         let menu = builder.get_object('app-menu');
         this.set_app_menu(menu);
-    },
+    }
 
-    vfunc_startup: function() {
-        this.parent();
+    vfunc_startup() {
+        super.vfunc_startup();
 
         GtkClutter.init(null);
 
@@ -237,9 +235,9 @@ var Application = new Lang.Class({
                                                                              'icons']));
         this._initPlaceStore();
         this._initAppMenu();
-    },
+    }
 
-    _initServices: function() {
+    _initServices() {
         settings         = Settings.getSettings('org.gnome.Maps');
         routeQuery       = new RouteQuery.RouteQuery();
         routingDelegator = new RoutingDelegator.RoutingDelegator({ query: routeQuery });
@@ -252,9 +250,9 @@ var Application = new Lang.Class({
         contactStore = new Maps.ContactStore();
         contactStore.load();
         osmEdit = new OSMEdit.OSMEdit();
-    },
+    }
 
-    _createWindow: function() {
+    _createWindow() {
         if (this._mainWindow)
             return;
 
@@ -268,24 +266,24 @@ var Application = new Lang.Class({
                 log('* focus widget: %s'.format(widget));
             });
         }
-    },
+    }
 
-    vfunc_dbus_register: function(connection, path) {
-        this.parent(connection, path);
+    vfunc_dbus_register(connection, path) {
+        super.vfunc_dbus_register(connection, path);
         return true;
-    },
+    }
 
-    vfunc_dbus_unregister: function(connection, path) {
-        this.parent(connection, path);
-    },
+    vfunc_dbus_unregister(connection, path) {
+        super.vfunc_dbus_register(connection, path);
+    }
 
-    vfunc_activate: function() {
+    vfunc_activate() {
         this._createWindow();
         this._checkNetwork();
         this._mainWindow.present();
-    },
+    }
 
-    _openInternal: function(files) {
+    _openInternal(files) {
         if (!this._mainWindow || !this._mainWindow.mapView.view.realized)
             return;
 
@@ -298,9 +296,9 @@ var Application = new Lang.Class({
         } else {
             this._mainWindow.mapView.openShapeLayers(files);
         }
-    },
+    }
 
-    vfunc_open: function(files) {
+    vfunc_open(files) {
         normalStartup = false;
         this.activate();
 
@@ -310,9 +308,9 @@ var Application = new Lang.Class({
         else
             mapView.view.connect('notify::realized',
                                  this._openInternal.bind(this, files));
-    },
+    }
 
-    _onWindowDestroy: function(window) {
+    _onWindowDestroy(window) {
         this._mainWindow = null;
     }
 });

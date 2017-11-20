@@ -25,15 +25,12 @@ const Clutter = imports.gi.Clutter;
 const Gdk = imports.gi.Gdk;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
 const MapWalker = imports.mapWalker;
 const Utils = imports.utils;
 
-var MapMarker = new Lang.Class({
-    Name: 'MapMarker',
-    Extends: Champlain.Marker,
+var MapMarker = GObject.registerClass({
     Implements: [Champlain.Exportable],
     Abstract: true,
     Signals: {
@@ -42,9 +39,10 @@ var MapMarker = new Lang.Class({
     Properties: {
         'surface': GObject.ParamSpec.override('surface',
                                               Champlain.Exportable)
-    },
+    }
+}, class MapMarker extends Champlain.Marker {
 
-    _init: function(params) {
+    _init(params) {
         this._place = params.place;
         delete params.place;
 
@@ -55,7 +53,7 @@ var MapMarker = new Lang.Class({
         params.longitude = this.place.location.longitude;
         params.selectable = true;
 
-        this.parent(params);
+        super._init(params);
 
         this.connect('notify::size', this._translateMarkerPosition.bind(this));
         if (this._mapView) {
@@ -76,25 +74,25 @@ var MapMarker = new Lang.Class({
             this._view.connect('notify::longitude', this._onViewUpdated.bind(this));
             this._view.connect('notify::zoom-level', this._onViewUpdated.bind(this));
         }
-    },
+    }
 
     get surface() {
         return this._surface;
-    },
+    }
 
     set surface(v) {
         this._surface = v;
-    },
+    }
 
-    vfunc_get_surface: function() {
+    vfunc_get_surface() {
         return this._surface;
-    },
+    }
 
-    vfunc_set_surface: function(surface) {
+    vfunc_set_surface(surface) {
         this._surface = surface;
-    },
+    }
 
-    _actorFromIconName: function(name, size, color) {
+    _actorFromIconName(name, size, color) {
         try {
             let theme = Gtk.IconTheme.get_default();
             let pixbuf;
@@ -130,9 +128,9 @@ var MapMarker = new Lang.Class({
             Utils.debug('Failed to load image: %s'.format(e.message));
             return null;
         }
-    },
+    }
 
-    _onButtonPress: function(marker, event) {
+    _onButtonPress(marker, event) {
         // Zoom in on marker on double-click
         if (event.get_click_count() > 1) {
             if (this._view.zoom_level < this._view.max_zoom_level) {
@@ -140,11 +138,11 @@ var MapMarker = new Lang.Class({
                 this._view.center_on(this.latitude, this.longitude);
             }
         }
-    },
+    }
 
-    _translateMarkerPosition: function() {
+    _translateMarkerPosition() {
         this.set_translation(-this.anchor.x, -this.anchor.y, 0);
-    },
+    }
 
     /**
      * Returns: The anchor point for the marker icon, relative to the
@@ -152,29 +150,29 @@ var MapMarker = new Lang.Class({
      */
     get anchor() {
         return { x: 0, y: 0 };
-    },
+    }
 
     get bubbleSpacing() {
         return 0;
-    },
+    }
 
     get place() {
         return this._place;
-    },
+    }
 
     get bubble() {
         if (this._bubble === undefined)
             this._bubble = this._createBubble();
 
         return this._bubble;
-    },
+    }
 
-    _createBubble: function() {
+    _createBubble() {
         // Markers has no associated bubble by default
         return null;
-    },
+    }
 
-    _positionBubble: function(bubble) {
+    _positionBubble(bubble) {
         let [tx, ty, tz] = this.get_translation();
         let x = this._view.longitude_to_x(this.longitude);
         let y = this._view.latitude_to_y(this.latitude);
@@ -200,9 +198,9 @@ var MapMarker = new Lang.Class({
         // Avoid bubble to cover header bar if the marker is close to the top map edge
         else if (pos.y - bubbleSize.height <= 0)
             bubble.position = Gtk.PositionType.BOTTOM;
-    },
+    }
 
-    _hideBubbleOn: function(signal, duration) {
+    _hideBubbleOn(signal, duration) {
         let sourceId = null;
         let signalId = this._view.connect(signal, () => {
             if (sourceId)
@@ -236,9 +234,9 @@ var MapMarker = new Lang.Class({
                 this._view.disconnect(signalId);
             }
         });
-    },
+    }
 
-    _initBubbleSignals: function() {
+    _initBubbleSignals() {
         this._hideBubbleOn('notify::zoom-level', 500);
         this._hideBubbleOn('notify::size');
 
@@ -278,9 +276,9 @@ var MapMarker = new Lang.Class({
             this._bubble.destroy();
             delete this._bubble;
         });
-    },
+    }
 
-    _isInsideView: function() {
+    _isInsideView() {
         let [tx, ty, tz] = this.get_translation();
         let x = this._view.longitude_to_x(this.longitude);
         let y = this._view.latitude_to_y(this.latitude);
@@ -288,53 +286,53 @@ var MapMarker = new Lang.Class({
 
         return x + tx + this.width > 0 && x + tx < mapSize.width &&
                y + ty + this.height > 0 && y + ty < mapSize.height;
-    },
+    }
 
-    _onViewUpdated: function() {
+    _onViewUpdated() {
         if (this.bubble) {
             if (this._isInsideView())
                 this._positionBubble(this.bubble);
             else
                 this.bubble.hide();
         }
-    },
+    }
 
-    showBubble: function() {
+    showBubble() {
         if (this.bubble && !this.bubble.visible && this._isInsideView()) {
             this._initBubbleSignals();
             this.bubble.show();
             this._positionBubble(this.bubble);
         }
-    },
+    }
 
-    hideBubble: function() {
+    hideBubble() {
         if (this._bubble)
             this._bubble.hide();
-    },
+    }
 
     get walker() {
         if (this._walker === undefined)
             this._walker = new MapWalker.MapWalker(this.place, this._mapView);
 
         return this._walker;
-    },
+    }
 
-    zoomToFit: function() {
+    zoomToFit() {
         this.walker.zoomToFit();
-    },
+    }
 
-    goTo: function(animate) {
+    goTo(animate) {
         Utils.once(this.walker, 'gone-to', () => this.emit('gone-to'));
         this.walker.goTo(animate);
-    },
+    }
 
-    goToAndSelect: function(animate) {
+    goToAndSelect(animate) {
         Utils.once(this, 'gone-to', () => this.selected = true);
 
         this.goTo(animate);
-    },
+    }
 
-    _onMarkerSelected: function() {
+    _onMarkerSelected() {
         if (this.selected)
             this.showBubble();
         else

@@ -19,19 +19,16 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Lang = imports.lang;
+var TransitOptions = class TransitOptions {
 
-var TransitOptions = new Lang.Class({
-    Name: 'TransitOptions',
-
-    _init: function() {
+    constructor() {
         this._showAllTransitTypes = true;
         this._transitTypes = [];
-    },
+    }
 
     get showAllTransitTypes() {
         return this._showAllTransitTypes;
-    },
+    }
 
     /* When set to true, show any mode of transportation, else only show modes
      * added with addTransitType()
@@ -39,19 +36,19 @@ var TransitOptions = new Lang.Class({
     set showAllTransitTypes(showAllTransitTypes) {
         this._showAllTransitTypes = showAllTransitTypes;
         this._transitTypes = [];
-    },
+    }
 
     /* Add an explicit transport mode to show
      */
-    addTransitType: function(transitType) {
+    addTransitType(transitType) {
         this._showAllTransitTypes = false;
         this._transitTypes.push(transitType);
-    },
+    }
 
     get transitTypes() {
         return this._transitTypes;
     }
-});
+};
 
 /* return true if the passed in options objects are equal, either both
  * accept any transit type, or both contains the same set of types, otherwise

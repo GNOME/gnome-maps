@@ -19,37 +19,35 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Lang = imports.lang;
-
+const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 
 const TransitRouteLabel = imports.transitRouteLabel;
 
-var TransitItineraryRow = new Lang.Class({
-    Name: 'TransitItineraryRow',
-    Extends: Gtk.ListBoxRow,
+var TransitItineraryRow = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/transit-itinerary-row.ui',
     InternalChildren: ['timeLabel',
                        'durationLabel',
-                       'summaryGrid'],
+                       'summaryGrid']
+}, class TransitItineraryRow extends Gtk.ListBoxRow {
 
-    _init: function(params) {
+    _init(params) {
         this._itinerary = params.itinerary;
         delete params.itinerary;
 
-        this.parent(params);
+        super._init(params);
 
         this._timeLabel.label = this._itinerary.prettyPrintTimeInterval();
         this._durationLabel.label = this._itinerary.prettyPrintDuration();
 
         this._populateSummary();
-    },
+    }
 
     get itinerary() {
         return this._itinerary;
-    },
+    }
 
-    _populateSummary: function() {
+    _populateSummary() {
         let length = this._itinerary.legs.length;
         /* use compacted route labels when more than 2 legs, to avoid
          * overflowing the sidebar width
@@ -68,7 +66,7 @@ var TransitItineraryRow = new Lang.Class({
                 this._summaryGrid.add(new Gtk.Label({ visible: true,
                                                       label: '-' }));
         });
-    },
+    }
 
     /* calculate an estimated relative space-consuption for rendering,
      * this is done based on route label character lengths and a fixed
@@ -76,7 +74,7 @@ var TransitItineraryRow = new Lang.Class({
      * exact pixel-correct calculation would be hard depeding on fonts and
      * themes
      */
-    _calculateEstimatedSpace: function() {
+    _calculateEstimatedSpace() {
         let length = this._itinerary.legs.length;
         /* assume mode icons and the separators consume about twice the space of
          * characters
@@ -89,9 +87,9 @@ var TransitItineraryRow = new Lang.Class({
         });
 
         return space;
-    },
+    }
 
-    _createLeg: function(leg, useCompact, useContractedLabels) {
+    _createLeg(leg, useCompact, useContractedLabels) {
         let icon = new Gtk.Image({ icon_name: leg.iconName, visible: true });
 
         icon.get_style_context().add_class('sidebar-icon');

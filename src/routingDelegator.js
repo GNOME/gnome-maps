@@ -19,22 +19,16 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
- const Lang = imports.lang;
+const GraphHopper = imports.graphHopper;
+const OpenTripPlanner = imports.openTripPlanner;
+const RouteQuery = imports.routeQuery;
 
- const GraphHopper = imports.graphHopper;
- const OpenTripPlanner = imports.openTripPlanner;
- const RouteQuery = imports.routeQuery;
+const _FALLBACK_TRANSPORTATION = RouteQuery.Transportation.PEDESTRIAN;
 
- const _FALLBACK_TRANSPORTATION = RouteQuery.Transportation.PEDESTRIAN;
+var RoutingDelegator = class RoutingDelegator {
 
- var RoutingDelegator = new Lang.Class({
-    Name: 'RoutingDelegator',
-
-    _init: function(params) {
+    constructor(params) {
         this._query = params.query;
-        delete params.query;
-
-        this.parent(params);
 
         this._transitRouting = false;
         this._graphHopper = new GraphHopper.GraphHopper({ query: this._query });
@@ -50,28 +44,28 @@
             !this._openTripPlanner.enabled) {
             this._query.transportation = _FALLBACK_TRANSPORTATION;
         }
-    },
+    }
 
     get graphHopper() {
         return this._graphHopper;
-    },
+    }
 
     get openTripPlanner() {
         return this._openTripPlanner;
-    },
+    }
 
     set useTransit(useTransit) {
         this._transitRouting = useTransit;
-    },
+    }
 
-    reset: function() {
+    reset() {
         if (this._transitRouting)
             this._openTripPlanner.plan.reset();
         else
             this._graphHopper.route.reset();
-    },
+    }
 
-    _onQueryChanged: function() {
+    _onQueryChanged() {
         if (this._query.isValid()) {
             if (this._transitRouting) {
                 this._openTripPlanner.fetchFirstResults();
@@ -81,4 +75,4 @@
             }
         }
     }
- });
+};

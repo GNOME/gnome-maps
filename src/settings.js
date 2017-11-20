@@ -21,30 +21,28 @@
 
 const GLib = imports.gi.GLib;
 const Gio = imports.gi.Gio;
-const Lang = imports.lang;
+const GObject = imports.gi.GObject;
 const System = imports.system;
 
-var Settings = new Lang.Class({
-    Name: "Settings",
-    Extends: Gio.Settings,
+var Settings = GObject.registerClass(
+class Settings extends Gio.Settings {
 
-    // The GVariant types of the settings
-    _keyTypes: {},
-
-    _init: function(params) {
-        this.parent(params);
+    _init(params) {
+        super._init(params);
+        // The GVariant types of the settings
+        this._keyTypes = {};
         this.list_keys().forEach((key) => {
             this._keyTypes[key] = this.get_value(key)
                                       .get_type()
                                       .dup_string();
         });
-    },
+    }
 
-    get: function(name) {
+    get(name) {
         return this.get_value(name).deep_unpack();
-    },
+    }
 
-    set: function(name, value) {
+    set(name, value) {
         this.set_value(name, GLib.Variant.new (this._keyTypes[name], value));
     }
 });

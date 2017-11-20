@@ -19,7 +19,6 @@
 
 const Format = imports.format;
 const Geocode = imports.gi.GeocodeGlib;
-const Lang = imports.lang;
 const Soup = imports.gi.Soup;
 
 const Place = imports.place;
@@ -34,10 +33,9 @@ const _DEFAULT_OUTPUT_SORT_ORDER = 'qt';
 
 const BASE_URL = 'https://overpass-api.de/api/interpreter';
 
-var Overpass = new Lang.Class({
-    Name: 'Overpass',
+var Overpass = class Overpass {
 
-    _init: function(params) {
+    constructor(params) {
         params = params || { };
 
         // maximum allowed runtime for the query in seconds
@@ -60,9 +58,9 @@ var Overpass = new Lang.Class({
 
         // HTTP Session Variables
         this._session = new Soup.Session();
-    },
+    }
 
-    addInfo: function(place, callback) {
+    addInfo(place, callback) {
         let url = this._getQueryUrl(place);
         let uri = new Soup.URI(url);
         let request = new Soup.Message({ method: 'GET',
@@ -82,9 +80,9 @@ var Overpass = new Lang.Class({
                 callback(false, message.status_code);
             }
         });
-    },
+    }
 
-    _populatePlace: function(place, overpassData) {
+    _populatePlace(place, overpassData) {
         let element = overpassData.elements[0];
 
         if (!(element && element.tags && element.tags.name))
@@ -114,35 +112,35 @@ var Overpass = new Lang.Class({
             place.toilets = element.tags.toilets;
         if (element.tags.note)
             place.note = element.tags.note;
-    },
+    }
 
-    _getQueryUrl: function(place) {
+    _getQueryUrl(place) {
         return Format.vprintf('%s?data=%s', [ BASE_URL,
                                               this._generateOverpassQuery(place) ]);
-    },
+    }
 
-    _generateOverpassQuery: function(place) {
+    _generateOverpassQuery(place) {
         return Format.vprintf('%s%s%s;%s;%s;',
                               [ this._getKeyValue('timeout', this.timeout),
                                 this._getKeyValue('out', this.outputFormat),
                                 this._getKeyValue('maxsize', this.maxsize),
                                 this._getData(place),
                                 this._getOutput() ]);
-    },
+    }
 
-    _getKeyValue: function(key, value) {
+    _getKeyValue(key, value) {
         return Format.vprintf('[%s:%s]', [ key,
                                            value ]);
-    },
+    }
 
-    _getData: function(place) {
+    _getData(place) {
         return Format.vprintf('%s(%s)', [Utils.osmTypeToString(place.osm_type),
                                          place.osm_id]);
-    },
+    }
 
-    _getOutput: function() {
+    _getOutput() {
         return Format.vprintf('out %s %s %s', [ this.outputInfo,
                                                 this.outputSortOrder,
                                                 this.outputCount ]);
     }
-});
+};

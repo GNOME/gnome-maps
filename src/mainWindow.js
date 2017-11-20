@@ -27,7 +27,6 @@ const GObject = imports.gi.GObject;
 const Gdk = imports.gi.Gdk;
 const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
@@ -50,13 +49,12 @@ const _CONFIGURE_ID_TIMEOUT = 100; // msecs
 const _WINDOW_MIN_WIDTH = 600;
 const _WINDOW_MIN_HEIGHT = 500;
 
-var ShapeLayerFileChooser = new Lang.Class({
-    Name: 'ShapeLayerFileChooser',
-    Extends: Gtk.FileChooserNative,
-    Template: 'resource:///org/gnome/Maps/ui/shape-layer-file-chooser.ui',
+var ShapeLayerFileChooser = GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/shape-layer-file-chooser.ui'
+}, class ShapeLayerFileChooser extends Gtk.FileChooserNative {
 
-    _init: function(params) {
-        this.parent(params);
+    _init(params) {
+        super._init(params);
         let allFilter = new Gtk.FileFilter();
         allFilter.set_name(_("All Layer Files"));
         this.add_filter(allFilter);
@@ -76,9 +74,7 @@ var ShapeLayerFileChooser = new Lang.Class({
     }
 });
 
-var MainWindow = new Lang.Class({
-    Name: 'MainWindow',
-    Extends: Gtk.ApplicationWindow,
+var MainWindow = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/main-window.ui',
     InternalChildren: [ 'headerBar',
                         'grid',
@@ -90,17 +86,18 @@ var MainWindow = new Lang.Class({
                         'favoritesButton',
                         'printRouteButton',
                         'zoomInButton',
-                        'zoomOutButton' ],
+                        'zoomOutButton' ]
+}, class MainWindow extends Gtk.ApplicationWindow {
 
     get mapView() {
         return this._mapView;
-    },
+    }
 
-    _init: function(params) {
+    _init(params) {
         this._overlay = params.overlay;
         delete params.overlay;
 
-        this.parent(params);
+        super._init(params);
 
         this._configureId = 0;
 
@@ -138,9 +135,9 @@ var MainWindow = new Lang.Class({
         this._grid.attach(this._sidebar, 1, 0, 1, 1);
 
         this._grid.show_all();
-    },
+    }
 
-    _createPlaceEntry: function() {
+    _createPlaceEntry() {
         let placeEntry = new PlaceEntry.PlaceEntry({ mapView: this._mapView,
                                                      visible: true,
                                                      margin_start: 35,
@@ -159,9 +156,9 @@ var MainWindow = new Lang.Class({
         popover.connect('selected', () => this._mapView.grab_focus());
         this._mapView.view.connect('button-press-event', () => popover.hide());
         return placeEntry;
-    },
+    }
 
-    _createSidebar: function() {
+    _createSidebar() {
         let sidebar = new Sidebar.Sidebar(this._mapView);
 
         Application.routeQuery.connect('notify', () => this._setRevealSidebar(true));
@@ -172,9 +169,9 @@ var MainWindow = new Lang.Class({
                                        sidebar, 'visible',
                                        GObject.BindingFlags.DEFAULT);
         return sidebar;
-    },
+    }
 
-    _initDND: function() {
+    _initDND() {
         this.drag_dest_set(Gtk.DestDefaults.DROP, null, 0);
         this.drag_dest_add_uri_targets();
 
@@ -190,9 +187,9 @@ var MainWindow = new Lang.Class({
             else
                 Gtk.drag_finish(ctx, false, false, time);
         });
-    },
+    }
 
-    _initActions: function() {
+    _initActions() {
         Utils.addActions(this, {
             'close': {
                 onActivate: () => this.close()
@@ -246,9 +243,9 @@ var MainWindow = new Lang.Class({
                 onActivate: () => this._onOpenShapeLayer()
             }
         });
-    },
+    }
 
-    _initSignals: function() {
+    _initSignals() {
         this.connect('delete-event', this._quit.bind(this));
         this.connect('configure-event',
                      this._onConfigureEvent.bind(this));
@@ -308,9 +305,9 @@ var MainWindow = new Lang.Class({
                                    this._updateZoomButtonsSensitivity.bind(this));
         this._mapView.view.connect('notify::min-zoom-level',
                                    this._updateZoomButtonsSensitivity.bind(this));
-    },
+    }
 
-    _updateZoomButtonsSensitivity: function() {
+    _updateZoomButtonsSensitivity() {
         let zoomLevel = this._mapView.view.zoom_level;
         let maxZoomLevel = this._mapView.view.max_zoom_level;
         let minZoomLevel = this._mapView.view.min_zoom_level;
@@ -324,17 +321,17 @@ var MainWindow = new Lang.Class({
             this._zoomOutButton.set_sensitive(false);
         else
             this._zoomOutButton.set_sensitive(true);
-    },
+    }
 
-    _updateLocationSensitivity: function() {
+    _updateLocationSensitivity() {
         let sensitive = (Application.geoclue.state !== Geoclue.State.INITIAL &&
                          (this.application.connected ||
                           this.application.local_tile_path));
 
         this._gotoUserLocationButton.sensitive = sensitive;
-    },
+    }
 
-    _initHeaderbar: function() {
+    _initHeaderbar() {
         this._placeEntry = this._createPlaceEntry();
         this._headerBar.custom_title = this._placeEntry;
 
@@ -360,9 +357,9 @@ var MainWindow = new Lang.Class({
             this._placeEntry.sensitive = app.connected;
             this._printRouteButton.sensitive = app.connected;
         });
-    },
+    }
 
-    _saveWindowGeometry: function() {
+    _saveWindowGeometry() {
         let window = this.get_window();
         let state = window.get_state();
 
@@ -375,9 +372,9 @@ var MainWindow = new Lang.Class({
 
         let position = this.get_position();
         Application.settings.set('window-position', position);
-    },
+    }
 
-    _restoreWindowGeometry: function() {
+    _restoreWindowGeometry() {
         let size = Application.settings.get('window-size');
         if (size.length === 2) {
             let [width, height] = size;
@@ -393,9 +390,9 @@ var MainWindow = new Lang.Class({
 
         if (Application.settings.get('window-maximized'))
             this.maximize();
-    },
+    }
 
-    _onConfigureEvent: function(widget, event) {
+    _onConfigureEvent(widget, event) {
         if (this._configureId !== 0) {
             Mainloop.source_remove(this._configureId);
             this._configureId = 0;
@@ -406,9 +403,9 @@ var MainWindow = new Lang.Class({
             this._configureId = 0;
             return false;
         });
-    },
+    }
 
-    _onWindowStateEvent: function(widget, event) {
+    _onWindowStateEvent(widget, event) {
         let window = widget.get_window();
         let state = window.get_state();
 
@@ -417,9 +414,9 @@ var MainWindow = new Lang.Class({
 
         let maximized = (state & Gdk.WindowState.MAXIMIZED);
         Application.settings.set('window-maximized', maximized);
-    },
+    }
 
-    _quit: function() {
+    _quit() {
         // remove configure event handler if still there
         if (this._configureId !== 0) {
             Mainloop.source_remove(this._configureId);
@@ -430,18 +427,18 @@ var MainWindow = new Lang.Class({
         this._saveWindowGeometry();
 
         return false;
-    },
+    }
 
-    _getLocationServiceNotification: function() {
+    _getLocationServiceNotification() {
         if (!this._locationServiceNotification) {
             this._locationServiceNotification =
                 new LocationServiceNotification.LocationServiceNotification();
         }
 
         return this._locationServiceNotification;
-    },
+    }
 
-    _onGotoUserLocationActivate: function() {
+    _onGotoUserLocationActivate() {
         let message;
 
         if (Application.geoclue.state === Geoclue.State.ON) {
@@ -466,42 +463,42 @@ var MainWindow = new Lang.Class({
                 break;
             }
         });
-    },
+    }
 
-    _printRouteActivate: function() {
+    _printRouteActivate() {
         if (this._mapView.routeShowing) {
             let operation = new PrintOperation.PrintOperation({ mainWindow: this });
         }
-    },
+    }
 
-    _onMapTypeMenuActivate: function(action) {
+    _onMapTypeMenuActivate(action) {
         let state = action.get_state().get_boolean();
         action.set_state(GLib.Variant.new('b', !state));
-    },
+    }
 
-    _onStreetViewActivate: function() {
+    _onStreetViewActivate() {
         this._mapView.setMapType(MapView.MapType.STREET);
         this.layersPopover.setMapType(MapView.MapType.STREET);
-    },
+    }
 
-    _onAerialViewActivate: function() {
+    _onAerialViewActivate() {
         this._mapView.setMapType(MapView.MapType.AERIAL);
         this.layersPopover.setMapType(MapView.MapType.AERIAL);
-    },
+    }
 
-    _onToggleSidebarChangeState: function(action, variant) {
+    _onToggleSidebarChangeState(action, variant) {
         action.set_state(variant);
 
         let reveal = variant.get_boolean();
         this._sidebar.set_reveal_child(reveal);
-    },
+    }
 
-    _setRevealSidebar: function(value) {
+    _setRevealSidebar(value) {
         let action = this.lookup_action('toggle-sidebar');
         action.change_state(GLib.Variant.new_boolean(value));
-    },
+    }
 
-    _onAboutActivate: function() {
+    _onAboutActivate() {
         let aboutDialog = new Gtk.AboutDialog({
             artists: [ 'Jakub Steiner <jimmac@gmail.com>',
                        'Andreas Nilsson <nisses.mail@home.se>' ],
@@ -538,9 +535,9 @@ var MainWindow = new Lang.Class({
 
         aboutDialog.show();
         aboutDialog.connect('response', () => aboutDialog.destroy());
-    },
+    }
 
-    _getAttribution: function() {
+    _getAttribution() {
         let tileProviderInfo = Service.getService().tileProviderInfo;
         let attribution = _("Map data by %s and contributors").format('<a href="https://www.openstreetmap.org">OpenStreetMap</a>');
 
@@ -562,9 +559,9 @@ var MainWindow = new Lang.Class({
         }
 
         return attribution;
-    },
+    }
 
-    _onOpenShapeLayer: function() {
+    _onOpenShapeLayer() {
         let fileChooser = new ShapeLayerFileChooser({
             transient_for: this,
         });
@@ -577,9 +574,9 @@ var MainWindow = new Lang.Class({
             fileChooser.destroy();
         });
         fileChooser.show();
-    },
+    }
 
-    markBusy: function() {
+    markBusy() {
         if (this._busySignalId !== 0)
             return;
 
@@ -587,9 +584,9 @@ var MainWindow = new Lang.Class({
 
         let stage = this._mapView.view.get_stage();
         this._busySignalId = stage.connect('captured-event', () => true);
-    },
+    }
 
-    unmarkBusy: function() {
+    unmarkBusy() {
         this._busy.hide();
 
         let stage = this._mapView.view.get_stage();

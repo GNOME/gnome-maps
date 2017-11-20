@@ -22,12 +22,12 @@
 const Champlain = imports.gi.Champlain;
 const Gdk = imports.gi.Gdk;
 const Geocode = imports.gi.GeocodeGlib;
+const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
 const ExportViewDialog = imports.exportViewDialog;
-const Lang = imports.lang;
 const Location = imports.location;
 const OSMAccountDialog = imports.osmAccountDialog;
 const OSMEdit = imports.osmEdit;
@@ -36,24 +36,22 @@ const Place = imports.place;
 const Utils = imports.utils;
 const ZoomInNotification = imports.zoomInNotification;
 
-var ContextMenu = new Lang.Class({
-    Name: 'ContextMenu',
-    Extends: Gtk.Menu,
+var ContextMenu = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/context-menu.ui',
     InternalChildren: [ 'whatsHereItem',
                         'geoURIItem',
                         'exportItem',
                         'addOSMLocationItem',
                         'routeItem' ],
-
-    _init: function(params) {
+}, class ContextMenu extends Gtk.Menu {
+    _init(params) {
         this._mapView = params.mapView;
         delete params.mapView;
 
         this._mainWindow = params.mainWindow;
         delete params.mainWindow;
 
-        this.parent(params);
+        super._init(params);
 
         this._mapView.connect('button-release-event',
                               this._onButtonReleaseEvent.bind(this));
@@ -72,9 +70,9 @@ var ContextMenu = new Lang.Class({
                                        this._routingUpdate.bind(this));
         this._routeItem.visible = false;
         this._routingUpdate();
-    },
+    }
 
-    _onButtonReleaseEvent: function(widget, event) {
+    _onButtonReleaseEvent(widget, event) {
         let [, button] = event.get_button();
         let [, x, y] = event.get_coords();
         this._longitude = this._mapView.view.x_to_longitude(x);
@@ -84,9 +82,9 @@ var ContextMenu = new Lang.Class({
             // Need idle to avoid Clutter dead-lock on re-entrance
             Mainloop.idle_add(() => this.popup_at_pointer(event));
         }
-    },
+    }
 
-    _routingUpdate: function() {
+    _routingUpdate() {
         let query = Application.routeQuery;
 
         if (query.points.length === 0)
@@ -100,9 +98,9 @@ var ContextMenu = new Lang.Class({
         } else {
             this._routeItem.label = _("Route to here");
         }
-    },
+    }
 
-    _onRouteActivated: function() {
+    _onRouteActivated() {
         let query = Application.routeQuery;
         let location = new Location.Location({ latitude: this._latitude,
                                                longitude: this._longitude,
@@ -116,9 +114,9 @@ var ContextMenu = new Lang.Class({
         } else {
             query.points[query.points.length - 1].place = place;
         }
-    },
+    }
 
-    _onWhatsHereActivated: function() {
+    _onWhatsHereActivated() {
         let location = new Location.Location({ latitude: this._latitude,
                                                longitude: this._longitude,
                                                accuracy: 0 });
@@ -131,9 +129,9 @@ var ContextMenu = new Lang.Class({
                 Application.notificationManager.showMessage(msg);
             }
         });
-    },
+    }
 
-    _onGeoURIActivated: function() {
+    _onGeoURIActivated() {
         let location = new Location.Location({ latitude: this._latitude,
                                                longitude: this._longitude,
                                                accuracy: 0 });
@@ -142,9 +140,9 @@ var ContextMenu = new Lang.Class({
         let uri = location.to_uri(Geocode.LocationURIScheme.GEO);
 
         clipboard.set_text(uri, uri.length);
-    },
+    }
 
-    _onAddOSMLocationActivated: function() {
+    _onAddOSMLocationActivated() {
         let osmEdit = Application.osmEdit;
         /* if the user is not alread signed in, show the account dialog */
         if (!osmEdit.isSignedIn) {
@@ -161,9 +159,9 @@ var ContextMenu = new Lang.Class({
         }
 
         this._addOSMLocation();
-    },
+    }
 
-    _addOSMLocation: function() {
+    _addOSMLocation() {
         let osmEdit = Application.osmEdit;
 
         if (this._mapView.view.get_zoom_level() < OSMEdit.MIN_ADD_LOCATION_ZOOM_LEVEL) {
@@ -187,9 +185,9 @@ var ContextMenu = new Lang.Class({
                     _("Location was added to the map, note that it may take a while before it shows on the map and in search results."));
             }
         });
-    },
+    }
 
-    _activateExport: function() {
+    _activateExport() {
         let view = this._mapView.view;
         let surface = view.to_surface(true);
         let bbox = view.get_bounding_box();
@@ -206,9 +204,9 @@ var ContextMenu = new Lang.Class({
 
         dialog.connect('response', () => dialog.destroy());
         dialog.show_all();
-    },
+    }
 
-    _onExportActivated: function() {
+    _onExportActivated() {
         if (this._mapView.view.state === Champlain.State.DONE) {
             this._activateExport();
         } else {

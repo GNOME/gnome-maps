@@ -21,21 +21,18 @@
 
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
-const Mainloop = imports.mainloop;
 
-var SocialPlaceRow = new Lang.Class({
-    Name: 'SocialPlaceRow',
-    Extends: Gtk.ListBoxRow,
+var SocialPlaceRow = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/social-place-row.ui',
     InternalChildren: [ 'nameLabel',
-                        'categoryLabel' ],
+                        'categoryLabel' ]
+}, class SocialPlaceRow extends Gtk.ListBoxRow {
 
-    _init: function(params) {
+    _init(params) {
         this.place = params.place;
         delete params.place;
 
-        this.parent(params);
+        super._init(params);
 
         this._nameLabel.label = this.place.name;
         if (this.place.category)
@@ -45,22 +42,19 @@ var SocialPlaceRow = new Lang.Class({
     }
 });
 
-var SocialPlaceMoreResultsRow = new Lang.Class({
-    Name: 'SocialPlaceMoreResultsRow',
-    Extends: Gtk.ListBoxRow,
+var SocialPlaceMoreResultsRow = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/social-place-more-results-row.ui'
-});
+}, class SocialPlaceMoreResultsRow extends Gtk.ListBoxRow {});
 
-var SocialPlaceListBox = new Lang.Class({
-    Name: 'SocialPlaceListBox',
-    Extends: Gtk.ListBox,
+var SocialPlaceListBox = GObject.registerClass({
     Signals: {
         'place-selected': { param_types: [GObject.TYPE_OBJECT] }
-    },
+    }
+}, class SocialPlaceListBox extends Gtk.ListBox {
 
-    _init: function(params) {
+    _init(params) {
         params.activate_on_single_click = true;
-        this.parent(params);
+        super._init(params);
 
         this.connect('row-activated', (list, row) => {
             if (!row.place) {
@@ -70,11 +64,11 @@ var SocialPlaceListBox = new Lang.Class({
             } else
                 this.emit('place-selected', row.place);
         });
-    },
+    }
 
     get matches() {
         return this._matches;
-    },
+    }
 
     set matches(matches) {
         this.forall(function(row) {
@@ -93,17 +87,17 @@ var SocialPlaceListBox = new Lang.Class({
             if (this._matches.badMatches.length > 0)
                 this._addMoreResults();
         }
-    },
+    }
 
-    _showBadMatches: function() {
+    _showBadMatches() {
         this._matches.badMatches.forEach(this._addPlace.bind(this));
-    },
+    }
 
-    _addPlace: function(place) {
+    _addPlace(place) {
         this.add(new SocialPlaceRow({ place: place }));
-    },
+    }
 
-    _addMoreResults: function() {
+    _addMoreResults() {
         this.add(new SocialPlaceMoreResultsRow({}));
     }
 });

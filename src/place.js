@@ -21,7 +21,7 @@
 
 const Geocode = imports.gi.GeocodeGlib;
 const GLib = imports.gi.GLib;
-const Lang = imports.lang;
+const GObject = imports.gi.GObject;
 const Location = imports.location;
 const Translations = imports.translations;
 const Utils = imports.utils;
@@ -29,11 +29,10 @@ const Utils = imports.utils;
 // Matches coordinates string with the format "<lat>, <long>"
 const COORDINATES_REGEX = /^\s*(\-?\d+(?:\.\d+)?)\s*,\s*(\-?\d+(?:\.\d+)?)\s*$/;
 
-var Place = new Lang.Class({
-    Name: 'Place',
-    Extends: Geocode.Place,
+var Place = GObject.registerClass(
+class Place extends Geocode.Place {
 
-    _init: function(params) {
+    _init(params) {
         this._population = params.population;
         delete params.population;
 
@@ -96,122 +95,122 @@ var Place = new Lang.Class({
             if (!params[prop])
                 delete params[prop];
 
-        this.parent(params);
-    },
+        super._init(params);
+    }
 
     set store(v) {
         this._store = v;
-    },
+    }
 
     get store() {
         return this._store;
-    },
+    }
 
     get uniqueID() {
         return this.osm_type + '-' + this.osm_id;
-    },
+    }
 
     set population(v) {
         this._population = v;
-    },
+    }
 
     get population() {
         return this._population;
-    },
+    }
 
     set website(v) {
         this._website = v;
-    },
+    }
 
     get website() {
         return this._website;
-    },
+    }
 
     set phone(v) {
         this._phone = v;
-    },
+    }
 
     get phone() {
         return this._phone;
-    },
+    }
 
     set wiki(v) {
         this._wiki = v;
-    },
+    }
 
     get wiki() {
         return this._wiki;
-    },
+    }
 
     set openingHours(v) {
         this._openingHours = v;
-    },
+    }
 
     get openingHours() {
         return this._openingHours;
-    },
+    }
 
     set internetAccess(v) {
         this._internetAccess = v;
-    },
+    }
 
     get openingHoursTranslated() {
         return Translations.translateOpeningHours(this._openingHours);
-    },
+    }
 
     get internetAccess() {
         return this._internetAccess;
-    },
+    }
 
     get internetAccessTranslated() {
         return Translations.translateInternetAccess(this._internetAccess);
-    },
+    }
 
     set religion(v) {
         this._religion = v;
-    },
+    }
 
     get religion() {
         return this._religion;
-    },
+    }
 
     get religionTranslated() {
         return Translations.translateReligion(this._religion);
-    },
+    }
 
     set toilets(v) {
         this._toilets = v;
-    },
+    }
 
     get toilets() {
         return this._toilets;
-    },
+    }
 
     get toiletsTranslated() {
         return Translations.translateYesNo(this._toilets);
-    },
+    }
 
     set note(v) {
         this._note = v;
-    },
+    }
 
     get note() {
         return this._note;
-    },
+    }
 
     set wheelchair(v) {
         this._wheelchair = v;
-    },
+    }
 
     get wheelchair() {
         return this._wheelchair;
-    },
+    }
 
     get wheelchairTranslated() {
         return this._translateWheelchair(this._wheelchair);
-    },
+    }
 
-    _translateWheelchair: function(string) {
+    _translateWheelchair(string) {
         switch(string) {
             /* Translators:
              * This means wheelchairs have full unrestricted access.
@@ -240,10 +239,10 @@ var Place = new Lang.Class({
 
             default: return null;
         }
-    },
+    }
 
 
-    toJSON: function() {
+    toJSON() {
         let bounding_box = null;
 
         if (this.bounding_box) {
@@ -286,9 +285,9 @@ var Place = new Lang.Class({
                  religion: this.religion,
                  toilets: this.toilets,
                  note: this.note };
-    },
+    }
 
-    match: function(searchString) {
+    match(searchString) {
         let name = this.name;
         if (!name)
             return false;

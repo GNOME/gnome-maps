@@ -19,27 +19,26 @@
  * Author: Damián Nohales <damiannohales@gmail.com>
  */
 
-const Lang = imports.lang;
+const GObject = imports.gi.GObject;
 
 const MapMarker = imports.mapMarker;
 const PlaceBubble = imports.placeBubble;
 
-var PlaceMarker = new Lang.Class({
-    Name: 'PlaceMarker',
-    Extends: MapMarker.MapMarker,
+var PlaceMarker = GObject.registerClass(
+class PlaceMarker extends MapMarker.MapMarker {
 
-    _init: function(params) {
-        this.parent(params);
+    _init(params) {
+        super._init(params);
 
         this.add_actor(this._actorFromIconName('mark-location', 32));
-    },
+    }
 
     get anchor() {
         return { x: Math.floor(this.width / 2),
                  y: this.height - 3 };
-    },
+    }
 
-    _createBubble: function() {
+    _createBubble() {
         if (this.place.name) {
             return new PlaceBubble.PlaceBubble({ place: this.place,
                                                  mapView: this._mapView });

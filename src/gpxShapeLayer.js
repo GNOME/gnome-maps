@@ -17,27 +17,26 @@
  * Author: Hashem Nasarat <hashem@riseup.net>
  */
 
-const Lang = imports.lang;
+const GObject = imports.gi.GObject;
 
 const GeoJSONSource = imports.geoJSONSource;
 const ShapeLayer = imports.shapeLayer;
 const Togeojson = imports.togeojson.togeojson;
 const Domparser = imports.xmldom.domparser;
 
-var GpxShapeLayer = new Lang.Class({
-    Name: 'GpxShapeLayer',
-    Extends: ShapeLayer.ShapeLayer,
+var GpxShapeLayer = GObject.registerClass(
+class GpxShapeLayer extends ShapeLayer.ShapeLayer {
 
-    _init: function(params) {
-        this.parent(params);
+    constructor(params) {
+        super.construct(params);
 
         this._mapSource = new GeoJSONSource.GeoJSONSource({
             mapView: this._mapView,
             markerLayer: this._markerLayer
         });
-    },
+    }
 
-    _parseContent: function() {
+    _parseContent() {
         let s = this._fileContents.toString();
         let parser = new Domparser.DOMParser();
         let json = Togeojson.toGeoJSON.gpx(parser.parseFromString(s));
@@ -47,3 +46,6 @@ var GpxShapeLayer = new Lang.Class({
 
 GpxShapeLayer.mimeTypes = ['application/gpx+xml' ];
 GpxShapeLayer.displayName = 'GPX';
+GpxShapeLayer.createInstance = function(params) {
+    return new GpxShapeLayer(params);
+};

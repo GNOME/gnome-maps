@@ -23,17 +23,15 @@
 const Gdk = imports.gi.Gdk;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 
 /* Abstract search result popover that progagates keypress events from a
    focus-taking internal widget to the spawning search entry widget */
-var SearchPopover = new Lang.Class({
-    Name: 'SearchPopover',
-    Extends: Gtk.Popover,
-    Abstract: true,
+var SearchPopover = GObject.registerClass({
+    Abstract: true
+}, class SearchPopover extends Gtk.Popover {
 
-    _init: function(props) {
-        this.parent(props);
+    _init(props) {
+        super._init(props);
 
         this._entry = this.relative_to;
 
@@ -43,9 +41,9 @@ var SearchPopover = new Lang.Class({
         this._entry.connect('key-press-event',
                             this._propagateKeys.bind(this));
         this._entry.connect('button-press-event', () => this._list.unselect_all());
-    },
+    }
 
-    _propagateKeys: function(entry, event) {
+    _propagateKeys(entry, event) {
         let keyval = event.get_keyval()[1];
 
         if (keyval === Gdk.KEY_Escape) {
@@ -98,10 +96,10 @@ var SearchPopover = new Lang.Class({
         }
 
         return Gdk.EVENT_PROPAGATE;
-    },
+    }
 
     /* Selects given row and ensures that it is visible. */
-    _selectRow: function(row) {
+    _selectRow(row) {
         this._list.select_row(row);
         let adjustment = this._list.get_adjustment();
         if (adjustment) {

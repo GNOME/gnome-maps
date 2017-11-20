@@ -21,16 +21,15 @@
 
 const Champlain = imports.gi.Champlain;
 const Clutter = imports.gi.Clutter;
-const Lang = imports.lang;
+const GObject = imports.gi.GObject;
 
 const MapMarker = imports.mapMarker;
 const UserLocationBubble = imports.userLocationBubble;
 
-var AccuracyCircleMarker = new Lang.Class({
-    Name: 'AccuracyCircleMarker',
-    Extends: Champlain.Point,
+var AccuracyCircleMarker = GObject.registerClass(
+class AccuracyCirleMarker extends Champlain.Point {
 
-    _init: function(params) {
+    _init(params) {
         this.place = params.place;
         delete params.place;
 
@@ -42,10 +41,10 @@ var AccuracyCircleMarker = new Lang.Class({
         params.longitude = this.place.location.longitude;
         params.reactive = false;
 
-        this.parent(params);
-    },
+        super._init(params);
+    }
 
-    refreshGeometry: function(view) {
+    refreshGeometry(view) {
         let zoom = view.zoom_level;
         let source = view.map_source;
         let metersPerPixel = source.get_meters_per_pixel(zoom,
@@ -62,12 +61,11 @@ var AccuracyCircleMarker = new Lang.Class({
     }
 });
 
-var UserLocationMarker = new Lang.Class({
-    Name: 'UserLocationMarker',
-    Extends: MapMarker.MapMarker,
+var UserLocationMarker = GObject.registerClass(
+class UserLocationMarker extends MapMarker.MapMarker {
 
-    _init: function(params) {
-        this.parent(params);
+    _init(params) {
+        super._init(params);
 
         if (this.place.location.heading > -1) {
             let actor = this._actorFromIconName('user-location-compass', 0);
@@ -84,26 +82,26 @@ var UserLocationMarker = new Lang.Class({
             this._zoomLevelId = this._view.connect('notify::zoom-level',
                                                    this._accuracyMarker.refreshGeometry.bind(this._accuracyMarker));
         }
-    },
+    }
 
     get anchor() {
         return { x: Math.floor(this.width / 2),
                  y: Math.floor(this.height / 2) };
-    },
+    }
 
-    _createBubble: function() {
+    _createBubble() {
         return new UserLocationBubble.UserLocationBubble({ place: this.place,
                                                            mapView: this._mapView });
-    },
+    }
 
-    addToLayer: function(layer) {
+    addToLayer(layer) {
         if (this._accuracyMarker)
             layer.add_marker(this._accuracyMarker);
 
         layer.add_marker(this);
-    },
+    }
 
-    disconnectView: function() {
+    disconnectView() {
         if (this._zoomLevelId)
             this._view.disconnect(this._zoomLevelId);
     }

@@ -21,7 +21,7 @@
 
 const Clutter = imports.gi.Clutter;
 const Gdk = imports.gi.Gdk;
-const Lang = imports.lang;
+const GObject = imports.gi.GObject;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
@@ -31,11 +31,10 @@ const MapMarker = imports.mapMarker;
 const Place = imports.place;
 const Utils = imports.utils;
 
-var TurnPointMarker = new Lang.Class({
-    Name: 'TurnPointMarker',
-    Extends: MapMarker.MapMarker,
+var TurnPointMarker = GObject.registerClass(
+class TurnPointMarker extends MapMarker.MapMarker {
 
-    _init: function(params) {
+    _init(params) {
         this._queryPoint = params.queryPoint;
         delete params.queryPoint;
 
@@ -62,7 +61,7 @@ var TurnPointMarker = new Lang.Class({
         params.place = new Place.Place({
             location: new Location.Location({ latitude: latitude,
                                               longitude: longitude }) });
-        this.parent(params);
+        super._init(params);
 
         let actor;
         if (this._queryPoint) {
@@ -76,9 +75,9 @@ var TurnPointMarker = new Lang.Class({
                                             color);
         }
         this.add_actor(actor);
-    },
+    }
 
-    _getColor: function() {
+    _getColor() {
         /* Use the route color from the transit leg when representing part of
          * a transit trip, otherwise let the fallback functionallity of the
          * utility function use a GNOMEish blue color for turn-by-turn routing.
@@ -89,14 +88,14 @@ var TurnPointMarker = new Lang.Class({
                               green: Color.parseColor(color, 1, 93 / 255),
                               blue: Color.parseColor(color, 2, 155 / 255),
                               alpha: 255 });
-    },
+    }
 
     get anchor() {
         return { x: Math.floor(this.width / 2) - 1,
                  y: Math.floor(this.height / 2) - 1 };
-    },
+    }
 
-    goTo: function() {
+    goTo() {
         let view = this._mapView.view;
         let turnPointZoomLevel = 15;
 
@@ -110,9 +109,9 @@ var TurnPointMarker = new Lang.Class({
         });
 
         view.go_to(this.latitude, this.longitude);
-    },
+    }
 
-    _onMarkerDrag: function() {
+    _onMarkerDrag() {
         let query = Application.routeQuery;
         let place = new Place.Place({
             location: new Location.Location({ latitude: this.latitude.toFixed(5),

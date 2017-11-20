@@ -17,25 +17,24 @@
  * Author: Dario Di Nucci <linkin88mail@gmail.com>
  */
 
+const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 
 const MapView = imports.mapView;
 const ShapeLayer = imports.shapeLayer;
 const Utils = imports.utils;
 
-var ShapeLayerRow = new Lang.Class({
-    Name: 'ShapeLayerRow',
-    Extends: Gtk.ListBoxRow,
+var ShapeLayerRow = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/shape-layer-row.ui',
     Children: ['closeButton'],
-    InternalChildren: ['layerLabel', 'visibleButton'],
+    InternalChildren: ['layerLabel', 'visibleButton']
+}, class ShapeLayerRow extends Gtk.ListBoxRow {
 
-    _init: function(params) {
+    _init(params) {
         this.shapeLayer = params.shapeLayer;
         delete params.shapeLayer;
 
-        this.parent(params);
+        super._init(params);
 
         this._layerLabel.label = this.shapeLayer.getName();
         this._layerLabel.tooltip_text = this.shapeLayer.file.get_parse_name();
@@ -52,20 +51,19 @@ var ShapeLayerRow = new Lang.Class({
     }
 });
 
-var LayersPopover = new Lang.Class({
-    Name: 'LayersPopover',
-    Extends: Gtk.Popover,
+var LayersPopover = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/layers-popover.ui',
     InternalChildren: [ 'streetLayerButton',
                         'aerialLayerButton',
                         'layersListBox',
-                        'loadLayerButton' ],
+                        'loadLayerButton' ]
+}, class LayersPopover extends Gtk.Popover {
 
-    _init: function(params) {
+    _init(params) {
         this._mapView = params.mapView;
         delete params.mapView;
 
-        this.parent({ width_request: 200,
+        super._init({ width_request: 200,
                       no_show_all: true,
                       transitions_enabled: false,
                       visible: false });
@@ -92,22 +90,22 @@ var LayersPopover = new Lang.Class({
         this._aerialLayerButton.connect('clicked', () => {
             this._mapView.setMapType(MapView.MapType.AERIAL);
         });
-    },
+    }
 
-    setMapType: function(mapType) {
+    setMapType(mapType) {
         if (mapType === MapView.MapType.STREET)
             this._streetLayerButton.active = true;
         else if (mapType === MapView.MapType.AERIAL)
             this._aerialLayerButton.active = true;
-    },
+    }
 
-    _onRemoveClicked: function(row) {
+    _onRemoveClicked(row) {
         this._mapView.removeShapeLayer(row.shapeLayer);
         if (this._layersListBox.get_children().length <= 0)
             this._layersListBox.hide();
-    },
+    }
 
-    _listBoxCreateWidget: function(shapeLayer) {
+    _listBoxCreateWidget(shapeLayer) {
         let row = new ShapeLayerRow({ shapeLayer: shapeLayer });
         row.closeButton.connect('clicked',
                                 () => this._onRemoveClicked(row));

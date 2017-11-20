@@ -19,31 +19,30 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Lang = imports.lang;
+const GObject = imports.gi.GObject;
 
 const Application = imports.application;
 const Notification = imports.notification;
 const OSMEdit = imports.osmEdit;
 const Utils = imports.utils;
 
-var ZoomInNotification = Lang.Class({
-    Name: 'ZoomInNotification',
-    Extends: Notification.Notification,
+var ZoomInNotification = GObject.registerClass(
+class ZoomInNotification extends Notification.Notification {
 
-    _init: function(props) {
+    _init(props) {
         this._latitude = props.latitude;
         this._longitude = props.longitude;
         this._view = props.view;
-        this.parent();
+        super._init();
 
         let ui = Utils.getUIObject('zoom-in-notification', [ 'grid',
                                                              'okButton' ]);
 
         ui.okButton.connect('clicked', () => this._onZoomIn());
         this._ui.body.add(ui.grid);
-    },
+    }
 
-    _onZoomIn: function() {
+    _onZoomIn() {
         this._view.zoom_level = OSMEdit.MIN_ADD_LOCATION_ZOOM_LEVEL;
 
         /* center on the position first selected */

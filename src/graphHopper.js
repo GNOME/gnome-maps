@@ -21,7 +21,6 @@
 
 const Champlain = imports.gi.Champlain;
 const GLib = imports.gi.GLib;
-const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 const Soup = imports.gi.Soup;
 
@@ -32,14 +31,13 @@ const Route = imports.route;
 const RouteQuery = imports.routeQuery;
 const Utils = imports.utils;
 
-var GraphHopper = new Lang.Class({
-    Name: 'GraphHopper',
+var GraphHopper = class GraphHopper {
 
     get route() {
         return this._route;
-    },
+    }
 
-    _init: function(params) {
+    constructor(params) {
         this._session = new Soup.Session({ user_agent : 'gnome-maps/' + pkg.version });
         this._key     = "VCIHrHj0pDKb8INLpT4s5hVadNmJ1Q3vi0J4nJYP";
         this._baseURL = "https://graphhopper.com/api/1/route?";
@@ -47,11 +45,9 @@ var GraphHopper = new Lang.Class({
         this._route   = new Route.Route();
         this.storedRoute = null;
         this._query = params.query;
-        delete params.query;
-        this.parent(params);
-    },
+    }
 
-    _updateFromStored: function() {
+    _updateFromStored() {
         Mainloop.idle_add(() => {
             if (!this.storedRoute)
                 return;
@@ -63,9 +59,9 @@ var GraphHopper = new Lang.Class({
                                 bbox: this.storedRoute.bbox });
             this.storedRoute = null;
         });
-    },
+    }
 
-    _queryGraphHopper: function(points, transportationType, callback) {
+    _queryGraphHopper(points, transportationType, callback) {
         let url = this._buildURL(points, transportationType);
         let msg = Soup.Message.new('GET', url);
         this._session.queue_message(msg, (session, message) => {
@@ -79,9 +75,9 @@ var GraphHopper = new Lang.Class({
                 callback(null, e);
             }
         });
-    },
+    }
 
-    fetchRoute: function(points, transportationType) {
+    fetchRoute(points, transportationType) {
         if (this.storedRoute) {
             this._updateFromStored();
             return;
@@ -109,9 +105,9 @@ var GraphHopper = new Lang.Class({
                 }
             }
         });
-    },
+    }
 
-    fetchRouteAsync: function(points, transportationType, callback) {
+    fetchRouteAsync(points, transportationType, callback) {
         this._queryGraphHopper(points, transportationType,
                                (result, exception) => {
             if (result) {
@@ -121,9 +117,9 @@ var GraphHopper = new Lang.Class({
                 callback(null, exception);
             }
         });
-    },
+    }
 
-    _buildURL: function(points, transportation) {
+    _buildURL(points, transportation) {
         let locations = points.map(function(point) {
             return [point.place.location.latitude, point.place.location.longitude].join(',');
         });
@@ -138,9 +134,9 @@ var GraphHopper = new Lang.Class({
         let url = this._baseURL + query.toString();
         Utils.debug("Sending route request to: " + url);
         return url;
-    },
+    }
 
-    _parseMessage: function({ status_code, response_body, uri }) {
+    _parseMessage({ status_code, response_body, uri }) {
         if (status_code === 500) {
             log("Internal server error.\n"
                 + "This is most likely a bug in GraphHopper");
@@ -166,9 +162,9 @@ var GraphHopper = new Lang.Class({
         }
 
         return result;
-    },
+    }
 
-    _createRoute: function(route) {
+    _createRoute(route) {
         let path       = EPAF.decode(route.points);
         let turnPoints = this._createTurnPoints(path, route.instructions);
         let bbox       = new Champlain.BoundingBox();
@@ -182,9 +178,9 @@ var GraphHopper = new Lang.Class({
                  distance:   route.distance,
                  time:       route.time,
                  bbox:       bbox };
-    },
+    }
 
-    _createTurnPoints: function(path, instructions) {
+    _createTurnPoints(path, instructions) {
         let via = 0;
         let startPoint = new Route.TurnPoint({
             coordinate:  path[0],
@@ -212,9 +208,9 @@ var GraphHopper = new Lang.Class({
             });
         });
         return [startPoint].concat(rest);
-    },
+    }
 
-    _createTurnPointType: function(sign) {
+    _createTurnPointType(sign) {
         let type = sign + 3;
         let min  = Route.TurnPointType.SHARP_LEFT;
         let max  = Route.TurnPointType.ROUNDABOUT;
@@ -223,4 +219,4 @@ var GraphHopper = new Lang.Class({
         else
             return undefined;
     }
-});
+};

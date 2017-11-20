@@ -19,8 +19,8 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
+const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 
 const OSMTypePopover = imports.osmTypePopover;
 const OSMTypes = imports.osmTypes;
@@ -28,13 +28,12 @@ const Utils = imports.utils;
 
 const MAX_MATCHES = 10;
 
-var OSMTypeSearchEntry = new Lang.Class({
-    Name: 'OSMTypeSearchEntry',
-    Extends: Gtk.SearchEntry,
-    Template: 'resource:///org/gnome/Maps/ui/osm-type-search-entry.ui',
+var OSMTypeSearchEntry = GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/osm-type-search-entry.ui'
+}, class OSMTypeSearchEntry extends Gtk.SearchEntry {
 
-    _init: function(props) {
-        this.parent(props);
+    _init(props) {
+        super._init(props);
 
         this._popover =
             new OSMTypePopover.OSMTypePopover({relative_to: this});
@@ -47,13 +46,13 @@ var OSMTypeSearchEntry = new Lang.Class({
 
         this.connect('search-changed', this._onSearchChanged.bind(this));
         this.connect('activate', this._onSearchChanged.bind(this));
-    },
+    }
 
     get popover() {
         return this._popover;
-    },
+    }
 
-    _onSearchChanged: function() {
+    _onSearchChanged() {
         if (this.text.length === 0) {
             this._popover.hide();
             return;

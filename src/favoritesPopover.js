@@ -20,7 +20,6 @@
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 
 const Application = imports.application;
 const PlaceListRow = imports.placeListRow;
@@ -28,9 +27,7 @@ const PlaceStore = imports.placeStore;
 
 const _N_VISIBLE = 6;
 
-var FavoritesPopover = new Lang.Class({
-    Name: 'FavoritesPopover',
-    Extends: Gtk.Popover,
+var FavoritesPopover = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/favorites-popover.ui',
     InternalChildren: [ 'mainGrid',
                         'revealer',
@@ -44,16 +41,17 @@ var FavoritesPopover = new Lang.Class({
                                         GObject.ParamFlags.READABLE |
                                         GObject.ParamFlags.WRITABLE,
                                         0, GLib.MAXINT32, 0)
-    },
+    }
+}, class FavoritesPopover extends Gtk.Popover {
 
-    _init: function(params) {
+    _init(params) {
         params = params || { };
 
         this._mapView = params.mapView;
         delete params.mapView;
 
         params.transitions_enabled = false;
-        this.parent(params);
+        super._init(params);
 
         this._rows = 0;
 
@@ -92,20 +90,20 @@ var FavoritesPopover = new Lang.Class({
         });
 
         this._updateList();
-    },
+    }
 
     set rows(rows) {
         if (rows !== this._rows) {
             this._rows = rows;
             this.notify('rows');
         }
-    },
+    }
 
     get rows() {
         return this._rows;
-    },
+    }
 
-    _updateList: function() {
+    _updateList() {
         this._list.forall((row) => row.destroy());
 
         let rows = 0;

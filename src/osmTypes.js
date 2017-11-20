@@ -21,7 +21,6 @@
 
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
-const Lang = imports.lang;
 
 const Utils = imports.utils;
 
@@ -105,21 +104,19 @@ function lookupType(key, value) {
         return null;
 }
 
-var RecentTypesStore = new Lang.Class({
-    Name: 'RecentTypesStore',
+var RecentTypesStore = class RecentTypesStore {
 
-    _init: function() {
-        this.parent();
+    constructor() {
         this._filename = GLib.build_filenamev([GLib.get_user_data_dir(),
                                               _RECENT_TYPES_STORE_FILE]);
         this._load();
-    },
+    }
 
     get recentTypes() {
         return this._recentTypes;
-    },
+    }
 
-    _load: function() {
+    _load() {
         if (!GLib.file_test(this._filename, GLib.FileTest.EXISTS)) {
             this._recentTypes = [];
             return;
@@ -132,16 +129,16 @@ var RecentTypesStore = new Lang.Class({
         }
 
         this._recentTypes = JSON.parse(buffer);
-    },
+    }
 
-    _save: function() {
+    _save() {
         let buffer = JSON.stringify(this._recentTypes);
         if (!Utils.writeFile(this._filename, buffer))
             log('Failed to write recent types file!');
-    },
+    }
 
     /* push a type key/value as the most recently used type */
-    pushType: function(key, value) {
+    pushType(key, value) {
         /* find out if the type is already stored */
         let pos = -1;
         for (let i = 0; i < this._recentTypes.length; i++) {
@@ -163,6 +160,6 @@ var RecentTypesStore = new Lang.Class({
 
         this._save();
     }
-});
+};
 
 var recentTypesStore = new RecentTypesStore();

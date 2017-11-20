@@ -22,9 +22,9 @@ const Clutter = imports.gi.Clutter;
 const GdkPixbuf = imports.gi.GdkPixbuf;
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
+const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const GtkClutter = imports.gi.GtkClutter;
-const Lang = imports.lang;
 const System = imports.system;
 
 const Service = imports.service;
@@ -38,12 +38,11 @@ const _MEMORY_CACHE_SIZE_LIMIT = 100; /* number of tiles */
 const _LOGO_PADDING_X = 10;
 const _LOGO_PADDING_Y = 25;
 
-var AttributionLogo = new Lang.Class({
-    Name: 'AttributionLogo',
-        Extends: GtkClutter.Actor,
+var AttributionLogo = GObject.registerClass({},
+class AttributionLogo extends GtkClutter.Actor {
 
-    _init: function(view) {
-        this.parent();
+    _init(view) {
+        super._init();
 
         if (_attributionImage)
             this.contents = _attributionImage;
@@ -54,15 +53,15 @@ var AttributionLogo = new Lang.Class({
         view.connect('notify::height', () => this._updatePosition(view));
 
         this._updatePosition(view);
-    },
+    }
 
-    _updatePosition: function(view) {
+    _updatePosition(view) {
         let width = _attributionImage.pixbuf.width;
         let height = _attributionImage.pixbuf.height;
 
         this.set_position(view.width  - width  - _LOGO_PADDING_X,
                           view.height - height - _LOGO_PADDING_Y);
-    },
+    }
 });
 
 function _updateAttributionImage(source) {

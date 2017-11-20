@@ -22,7 +22,6 @@ const Champlain = imports.gi.Champlain;
 const Clutter = imports.gi.Clutter;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 const Pango = imports.gi.Pango;
 const PangoCairo = imports.gi.PangoCairo;
 
@@ -74,15 +73,14 @@ function newFromRoute(route, pageWidth, pageHeight) {
     }
 }
 
-var PrintLayout = new Lang.Class({
-    Name: 'PrintLayout',
-    Extends: GObject.Object,
+var PrintLayout = GObject.registerClass({
     Abstract: true,
     Signals: {
         'render-complete': { }
-    },
+    }
+}, class PrintLayout extends GObject.Object {
 
-    _init: function(params) {
+    _init(params) {
         this._pageWidth = params.pageWidth;
         delete params.pageWidth;
 
@@ -92,16 +90,16 @@ var PrintLayout = new Lang.Class({
         this._totalSurfaces = params.totalSurfaces;
         delete params.totalSurfaces;
 
-        this.parent();
+        super._init(params);
 
         this.numPages = 0;
         this.surfaceObjects = [];
         this._surfacesRendered = 0;
         this.renderFinished = false;
         this._initSignals();
-    },
+    }
 
-    render: function() {
+    render() {
         let headerWidth = _Header.SCALE_X * this._pageWidth;
         let headerHeight = _Header.SCALE_Y * this._pageHeight;
         let headerMargin = _Header.SCALE_MARGIN * this._pageHeight;
@@ -130,20 +128,20 @@ var PrintLayout = new Lang.Class({
         this._drawMapView(mapViewWidth, mapViewHeight,
                           mapViewZoomLevel, allTurnPoints);
         this._cursorY += dy;
-    },
+    }
 
-    _initSignals: function() {
+    _initSignals() {
         this.connect('render-complete', () => this.renderFinished = true);
-    },
+    }
 
-    _createMarker: function(turnPoint) {
+    _createMarker(turnPoint) {
         return new TurnPointMarker.TurnPointMarker({
             turnPoint: turnPoint,
             queryPoint: {}
         });
-    },
+    }
 
-    _drawMapView: function(width, height, zoomLevel, turnPoints) {
+    _drawMapView(width, height, zoomLevel, turnPoints) {
         let pageNum = this.numPages - 1;
         let x = this._cursorX;
         let y = this._cursorY;
@@ -180,24 +178,24 @@ var PrintLayout = new Lang.Class({
             if (surface)
                 this._addSurface(surface, x, y, pageNum);
         }
-    },
+    }
 
-    _createTurnPointArray: function(startIndex, endIndex) {
+    _createTurnPointArray(startIndex, endIndex) {
         let turnPointArray = [];
         for (let i = startIndex; i < endIndex; i++) {
             turnPointArray.push(this._route.turnPoints[i]);
         }
         return turnPointArray;
-    },
+    }
 
-    _addRouteLayer: function(view) {
+    _addRouteLayer(view) {
         let routeLayer = new Champlain.PathLayer({ stroke_width: _STROKE_WIDTH,
                                                    stroke_color: _STROKE_COLOR });
         view.add_layer(routeLayer);
         this._route.path.forEach((node) => routeLayer.add_node(node));
-    },
+    }
 
-    _drawInstruction: function(width, height, turnPoint) {
+    _drawInstruction(width, height, turnPoint) {
         let pageNum = this.numPages - 1;
         let x = this._cursorX;
         let y = this._cursorY;
@@ -228,9 +226,9 @@ var PrintLayout = new Lang.Class({
             let surface = widget.get_surface();
             this._addSurface(surface, x, y, pageNum);
         });
-    },
+    }
 
-    _drawHeader: function(width, height) {
+    _drawHeader(width, height) {
         let pageNum = this.numPages - 1;
         let x = this._cursorX;
         let y = this._cursorY;
@@ -252,28 +250,28 @@ var PrintLayout = new Lang.Class({
         cr.fill();
 
         this._addSurface(surface, x, y, pageNum);
-    },
+    }
 
-    _addSurface: function(surface, x, y, pageNum) {
+    _addSurface(surface, x, y, pageNum) {
         this.surfaceObjects[pageNum].push({ surface: surface, x: x, y: y });
         this._surfacesRendered++;
         if (this._surfacesRendered === this._totalSurfaces)
             this.emit('render-complete');
-    },
+    }
 
-    _adjustPage: function(dy) {
+    _adjustPage(dy) {
         if (this._cursorY + dy > this._pageHeight)
             this._createNewPage();
-    },
+    }
 
-    _createNewPage: function() {
+    _createNewPage() {
         this.numPages++;
         this.surfaceObjects[this.numPages - 1] = [];
         this._cursorX = 0;
         this._cursorY = 0;
-    },
+    }
 
-    _formatQueryPlaceName: function(index) {
+    _formatQueryPlaceName(index) {
         let query = Application.routeQuery;
         if (index === -1)
             index = query.filledPoints.length - 1;

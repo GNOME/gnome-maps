@@ -20,7 +20,7 @@
  */
 
 const Champlain = imports.gi.Champlain;
-const Lang = imports.lang;
+const GObject = imports.gi.GObject;
 
 const Utils = imports.utils;
 
@@ -41,14 +41,19 @@ var TurnPointType = {
     START:         10000
 };
 
-var Route = new Lang.Class({
-    Name: 'Route',
+var Route = GObject.registerClass({
+    Signals: {
+        'update': {},
+        'reset': {}
+    }
+}, class Route extends GObject.Object {
 
-    _init: function() {
+    _init() {
+        super._init();
         this.reset();
-    },
+    }
 
-    update: function({ path, turnPoints, distance, time, bbox }) {
+    update({ path, turnPoints, distance, time, bbox }) {
         this.path = path;
         this.turnPoints = turnPoints;
         this.distance = distance;
@@ -56,18 +61,18 @@ var Route = new Lang.Class({
         this.bbox = bbox || this.createBBox(path);
 
         this.emit('update');
-    },
+    }
 
-    reset: function() {
+    reset() {
         this.path = [];
         this.turnPoints = [];
         this.distance = 0;
         this.time = 0;
         this.bbox = null;
         this.emit('reset');
-    },
+    }
 
-    createBBox: function(coordinates) {
+    createBBox(coordinates) {
         let bbox = new Champlain.BoundingBox();
         coordinates.forEach(function({ latitude, longitude }) {
             bbox.extend(latitude, longitude);
@@ -75,30 +80,28 @@ var Route = new Lang.Class({
         return bbox;
     }
 });
-Utils.addSignalMethods(Route.prototype);
 
-var TurnPoint = new Lang.Class({
-    Name: 'TurnPoint',
+var TurnPoint = class TurnPoint {
 
-    _init: function({ coordinate, type, distance, instruction, turnAngle }) {
+    constructor({ coordinate, type, distance, instruction, turnAngle }) {
         this.coordinate = coordinate;
         this._type = type;
         this.distance = distance;
         this.instruction = instruction;
         this.iconName = this._getIconName(turnAngle);
-    },
+    }
 
     get type() {
         return this._type;
-    },
+    }
 
-    isStop: function() {
+    isStop() {
         return this._type === TurnPointType.START
             || this._type === TurnPointType.VIA
             || this._type === TurnPointType.END;
-    },
+    }
 
-    _getIconName: function(turnAngle) {
+    _getIconName(turnAngle) {
         switch(this._type) {
         case TurnPointType.SHARP_LEFT:   return 'maps-direction-sharpleft-symbolic';
         case TurnPointType.LEFT:         return 'maps-direction-left-symbolic';
@@ -113,9 +116,9 @@ var TurnPoint = new Lang.Class({
         case TurnPointType.ROUNDABOUT:   return this._getRoundaboutIconName(turnAngle);
         default:                         return '';
         }
-    },
+    }
 
-    _getRoundaboutIconName: function(turnAngle) {
+    _getRoundaboutIconName(turnAngle) {
         /*
          * To map turnAngle with closest roundabout
          * turning angle symbol available. The Algorithm
@@ -139,4 +142,4 @@ var TurnPoint = new Lang.Class({
         }
         return 'maps-direction-roundabout-' + angle + '-symbolic';
     }
-});
+};

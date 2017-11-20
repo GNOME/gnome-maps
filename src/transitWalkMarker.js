@@ -19,20 +19,18 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Lang = imports.lang;
-
 const Gdk = imports.gi.Gdk;
+const GObject = imports.gi.GObject;
 
 const Color = imports.color;
 const Location = imports.location;
 const MapMarker = imports.mapMarker;
 const Place = imports.place;
 
-var TransitWalkMarker = new Lang.Class({
-    Name: 'TransitWalkMarker',
-    Extends: MapMarker.MapMarker,
+var TransitWalkMarker = GObject.registerClass(
+class TransitWalkMarker extends MapMarker.MapMarker {
 
-    _init: function(params) {
+    _init(params) {
         /* if there is a preceeding leg, put the marker at the end of that leg
          * to avoid gaps, since we will "fill out" the walking leg path line
          * since sometimes the walking route might not reach exactly to the
@@ -56,7 +54,7 @@ var TransitWalkMarker = new Lang.Class({
 
         params.place = new Place.Place({ location: location });
 
-        this.parent(params);
+        super._init(params);
 
         let bgRed = Color.parseColor(bgColor, 0);
         let bgGreen = Color.parseColor(bgColor, 1);
@@ -70,7 +68,7 @@ var TransitWalkMarker = new Lang.Class({
             this._actorFromIconName('maps-point-start-symbolic', 0, color);
 
         this.add_actor(actor);
-    },
+    }
 
     get anchor() {
         return { x: Math.floor(this.width / 2) - 1,

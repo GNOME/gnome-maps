@@ -22,8 +22,8 @@
 
 const Champlain = imports.gi.Champlain;
 const Gio = imports.gi.Gio;
+const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 
 const Place = imports.place;
 const Route = imports.route;
@@ -33,11 +33,10 @@ const RouteQuery = imports.routeQuery;
 const _RLM = '\u200F';
 const _LRM = '\u200E';
 
-var StoredRoute = new Lang.Class({
-    Name: 'StoredRoute',
-    Extends: Place.Place,
+var StoredRoute = GObject.registerClass(
+class StoredRoute extends Place.Place {
 
-    _init: function(params) {
+    _init(params) {
         let route = params.route;
         delete params.route;
 
@@ -78,8 +77,8 @@ var StoredRoute = new Lang.Class({
             this.places.push(new Place.Place({ place: place }));
         });
 
-        this.parent(params);
-    },
+        super._init(params);
+    }
 
     get viaString() {
         let directionMarker = this._rtl ? _RLM : _LRM;
@@ -87,11 +86,11 @@ var StoredRoute = new Lang.Class({
         return this.places.map(function(place) {
             return directionMarker + place.name;
         }).join(directionMarker + arrow);
-    },
+    }
 
     get transportation() {
         return this._transportation;
-    },
+    }
 
     get icon() {
         let transport = RouteQuery.Transportation;
@@ -110,17 +109,17 @@ var StoredRoute = new Lang.Class({
         }
 
         return icon;
-    },
+    }
 
     get uniqueID() {
         return this._transportation + '-' + this.places.map(function(place) {
             return [place.osm_type, place.osm_id].join('-');
         }).join('-');
-    },
+    }
 
     get containsCurrentLocation() {
         return this._containsCurrentLocation;
-    },
+    }
 
     get containsNull() {
         let hasNull = false;
@@ -132,9 +131,9 @@ var StoredRoute = new Lang.Class({
             }
         }
         return hasNull;
-    },
+    }
 
-    toJSON: function() {
+    toJSON() {
         let turnPoints = this.route.turnPoints.map(function(turnPoint) {
             let coordinate = { latitude: turnPoint.coordinate.latitude,
                                longitude: turnPoint.coordinate.longitude };

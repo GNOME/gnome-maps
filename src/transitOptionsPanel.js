@@ -21,8 +21,8 @@
 
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
+const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 
 const Application = imports.application;
 const Time = imports.time;
@@ -35,9 +35,7 @@ const CLOCK_FORMAT_KEY = 'clock-format';
 let _desktopSettings = new Gio.Settings({ schema_id: 'org.gnome.desktop.interface' });
 let clockFormat = _desktopSettings.get_string(CLOCK_FORMAT_KEY);
 
-var TransitOptionsPanel = new Lang.Class({
-    Name: 'TransitOptionsPanel',
-    Extends: Gtk.Grid,
+var TransitOptionsPanel = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/transit-options-panel.ui',
     InternalChildren: ['transitTimeOptionsComboBox',
                        'transitTimeEntry',
@@ -48,15 +46,16 @@ var TransitOptionsPanel = new Lang.Class({
                        'tramCheckButton',
                        'trainCheckButton',
                        'subwayCheckButton',
-                       'ferryCheckButton'],
+                       'ferryCheckButton']
+}, class TransitOptionsPanel extends Gtk.Grid {
 
-    _init: function(params) {
+    _init(params) {
         this._query = Application.routeQuery;
-        this.parent(params);
+        super._init(params);
         this._initTransitOptions();
-    },
+    }
 
-    reset: function() {
+    reset() {
         /* reset to indicate departure now and forget any previous manually
          * set time and date
          */
@@ -64,9 +63,9 @@ var TransitOptionsPanel = new Lang.Class({
         this._timeSelected = false;
         this._dateSelected = false;
         this._lastOptions = new TransitOptions.TransitOptions();
-    },
+    }
 
-    _initTransitOptions: function() {
+    _initTransitOptions() {
         this._transitTimeOptionsComboBox.connect('changed',
             this._onTransitTimeOptionsComboboxChanged.bind(this));
         this._transitTimeEntry.connect('activate',
@@ -82,9 +81,9 @@ var TransitOptionsPanel = new Lang.Class({
             this._onTransitDateButtonToogled.bind(this));
         this._transitParametersMenuButton.connect('toggled',
             this._onTransitParametersToggled.bind(this))
-    },
+    }
 
-    _onTransitTimeOptionsComboboxChanged: function() {
+    _onTransitTimeOptionsComboboxChanged() {
         if (this._transitTimeOptionsComboBox.active_id === 'leaveNow') {
             this._transitTimeEntry.visible = false;
             this._transitDateButton.visible = false;
@@ -109,16 +108,16 @@ var TransitOptionsPanel = new Lang.Class({
                 this._query.arriveBy = false;
             }
         }
-    },
+    }
 
-    _updateTransitTimeEntry: function(time) {
+    _updateTransitTimeEntry(time) {
         if (clockFormat === '24h')
             this._transitTimeEntry.text = time.format('%R');
         else
             this._transitTimeEntry.text = time.format('%r');
-    },
+    }
 
-    _onTransitTimeEntryActivated: function() {
+    _onTransitTimeEntryActivated() {
         let timeString = this._transitTimeEntry.text;
 
         if (timeString && timeString.length > 0) {
@@ -131,18 +130,18 @@ var TransitOptionsPanel = new Lang.Class({
                 this._timeSelected = timeString;
             }
         }
-    },
+    }
 
-    _updateTransitDateButton: function(date) {
+    _updateTransitDateButton(date) {
         this._transitDateButton.label =
             /*
              * Translators: this is a format string giving the equivalent to
              * "may 29" according to the current locale's convensions.
              */
             date.format(C_("month-day-date", "%b %e"));
-    },
+    }
 
-    _onTransitDateCalenderDaySelected: function() {
+    _onTransitDateCalenderDaySelected() {
         let calendar = this._transitDateButton.popover.get_child();
         let year = calendar.year;
         let month = calendar.month + 1;
@@ -158,14 +157,14 @@ var TransitOptionsPanel = new Lang.Class({
             /* remember that the user has already selected a date */
             this._dateSelected = date;
         }
-    },
+    }
 
-    _onTransitDateButtonToogled: function() {
+    _onTransitDateButtonToogled() {
         if (!this._transitDateButton.active)
             this._onTransitDateCalenderDaySelected();
-    },
+    }
 
-    _createTransitOptions: function() {
+    _createTransitOptions() {
         let options = new TransitOptions.TransitOptions();
         let busSelected = this._busCheckButton.active;
         let tramSelected = this._tramCheckButton.active;
@@ -190,9 +189,9 @@ var TransitOptionsPanel = new Lang.Class({
         }
 
         return options;
-    },
+    }
 
-    _onTransitParametersToggled: function() {
+    _onTransitParametersToggled() {
         if (!this._transitParametersMenuButton.active) {
             let options = this._createTransitOptions();
 

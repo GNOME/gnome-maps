@@ -22,7 +22,6 @@
 
 const _ = imports.gettext.gettext;
 
-const Lang = imports.lang;
 const Maps = imports.gi.GnomeMaps;
 const Rest = imports.gi.Rest;
 const Secret = imports.gi.Secret;
@@ -45,10 +44,9 @@ const SECRET_SCHEMA = new Secret.Schema("org.gnome.Maps",
     }
 );
 
-var OSMConnection = new Lang.Class({
-    Name: 'OSMConnection',
+var OSMConnection = class OSMConnection {
 
-    _init: function(params) {
+    constructor() {
         this._session = new Soup.Session();
 
         /* OAuth proxy used for making OSM uploads */
@@ -56,9 +54,9 @@ var OSMConnection = new Lang.Class({
                                               BASE_URL + '/' + API_VERSION,
                                               false);
         Maps.osm_init();
-    },
+    }
 
-    getOSMObject: function(type, id, callback, cancellable) {
+    getOSMObject(type, id, callback, cancellable) {
         let url = this._getQueryUrl(type, id);
         let uri = new Soup.URI(url);
         let request = new Soup.Message({ method: 'GET', uri: uri });
@@ -82,13 +80,13 @@ var OSMConnection = new Lang.Class({
                 callback(false, message.status_code, null, type, e);
             }
         });
-    },
+    }
 
-    _getQueryUrl: function(type, id) {
+    _getQueryUrl(type, id) {
         return BASE_URL + '/' + API_VERSION + '/' + type + '/' + id;
-    },
+    }
 
-    openChangeset: function(comment, callback) {
+    openChangeset(comment, callback) {
         /* we assume that this would only be called if there's already been an
            OAuth access token enrolled, so, if the currently instanciated
            proxy instance doesn't have a token set, we could safely count on
@@ -102,9 +100,9 @@ var OSMConnection = new Lang.Class({
         } else {
             this._doOpenChangeset(comment, callback);
         }
-    },
+    }
 
-    _onPasswordLookedUp: function(result, comment, callback) {
+    _onPasswordLookedUp(result, comment, callback) {
         let password = Secret.password_lookup_finish(result);
 
         if (password) {
@@ -117,9 +115,9 @@ var OSMConnection = new Lang.Class({
         } else {
             callback(false, null, null);
         }
-    },
+    }
 
-    _doOpenChangeset: function(comment, callback) {
+    _doOpenChangeset(comment, callback) {
         let changeset =
             Maps.OSMChangeset.new(comment, 'gnome-maps ' + pkg.version);
         let xml = changeset.serialize();
@@ -130,9 +128,9 @@ var OSMConnection = new Lang.Class({
 
         call.invoke_async(null, (call, res, userdata) =>
                                 { this._onChangesetOpened(call, callback); });
-    },
+    }
 
-    _onChangesetOpened: function(call, callback) {
+    _onChangesetOpened(call, callback) {
         if (call.get_status_code() !== Soup.Status.OK) {
             callback(false, call.get_status_code(), null);
             return;
@@ -140,9 +138,9 @@ var OSMConnection = new Lang.Class({
 
         let changesetId = parseInt(call.get_payload());
         callback(true, call.get_status_code(), changesetId);
-    },
+    }
 
-    uploadObject: function(object, type, changeset, callback) {
+    uploadObject(object, type, changeset, callback) {
         object.changeset = changeset;
 
         let xml = object.serialize();
@@ -153,18 +151,18 @@ var OSMConnection = new Lang.Class({
 
         call.invoke_async(null, (call, res, userdata) =>
                                 { this._onObjectUploaded(call, callback); });
-    },
+    }
 
-    _onObjectUploaded: function(call, callback) {
+    _onObjectUploaded(call, callback) {
         if (call.get_status_code() !== Soup.Status.OK) {
             callback(false, call.get_status_code(), null);
             return;
         }
 
         callback(true, call.get_status_code(), call.get_payload());
-    },
+    }
 
-    deleteObject: function(object, type, changeset, callback) {
+    deleteObject(object, type, changeset, callback) {
         object.changeset = changeset;
 
         let xml = object.serialize();
@@ -175,60 +173,60 @@ var OSMConnection = new Lang.Class({
 
         call.invoke_async(null, (call, res, userdata) =>
                                 { this._onObjectDeleted(call, callback); });
-    },
+    }
 
-    _onObjectDeleted: function(call, callback) {
+    _onObjectDeleted(call, callback) {
         if (call.get_status_code() !== Soup.Status.OK) {
             callback(false, call.get_status_code(), null);
             return;
         }
 
         callback(true, call.get_status_code(), call.get_payload());
-    },
+    }
 
-    closeChangeset: function(changesetId, callback) {
+    closeChangeset(changesetId, callback) {
         let call = this._callProxy.new_call();
         call.set_method('PUT');
         call.set_function(this._getCloseChangesetFunction(changesetId));
 
         call.invoke_async(null, (call, res, userdata) =>
                                 { this._onChangesetClosed(call, callback); });
-    },
+    }
 
-    _onChangesetClosed: function(call, callback) {
+    _onChangesetClosed(call, callback) {
         if (call.get_status_code() !== Soup.Status.OK) {
             callback(false, call.get_status_code(), null);
             return;
         }
 
         callback(true, call.get_status_code(), call.get_payload());
-    },
+    }
 
-    _getCloseChangesetFunction: function(changesetId) {
+    _getCloseChangesetFunction(changesetId) {
         return '/changeset/' + changesetId + '/close';
-    },
+    }
 
-    _getCreateOrUpdateFunction: function(object, type) {
+    _getCreateOrUpdateFunction(object, type) {
         if (object.id)
             return type + '/' + object.id;
         else
             return type + '/create';
-    },
+    }
 
-    _getDeleteFunction: function(object, type) {
+    _getDeleteFunction(object, type) {
         return type + '/' + id;
-    },
+    }
 
-    requestOAuthToken: function(callback) {
+    requestOAuthToken(callback) {
         /* OAuth proxy used for enrolling access tokens */
         this._oauthProxy = Rest.OAuthProxy.new(CONSUMER_KEY, CONSUMER_SECRET,
                                                OAUTH_ENDPOINT_URL, false);
         this._oauthProxy.request_token_async('request_token', 'oob', (p, error, w, u) => {
             this._onRequestOAuthToken(error, callback);
         }, this._oauthProxy, callback);
-    },
+    }
 
-    _onRequestOAuthToken: function(error, callback) {
+    _onRequestOAuthToken(error, callback) {
         if (error) {
             Utils.debug(error);
             callback(false);
@@ -238,9 +236,9 @@ var OSMConnection = new Lang.Class({
         this._oauthToken = this._oauthProxy.get_token();
         this._oauthTokenSecret = this._oauthProxy.get_token_secret();
         callback(true);
-    },
+    }
 
-    authorizeOAuthToken: function(username, password, callback) {
+    authorizeOAuthToken(username, password, callback) {
         /* get login session ID */
         let loginUrl = LOGIN_URL + '?cookie_test=true';
         let uri = new Soup.URI(loginUrl);
@@ -249,9 +247,9 @@ var OSMConnection = new Lang.Class({
         this._session.queue_message(msg, (obj, message) => {
             this._onLoginFormReceived(message, username, password, callback);
         });
-    },
+    }
 
-    _onLoginFormReceived: function(message, username, password, callback) {
+    _onLoginFormReceived(message, username, password, callback) {
         if (message.status_code !== Soup.Status.OK) {
             callback(false);
             return;
@@ -268,9 +266,9 @@ var OSMConnection = new Lang.Class({
         }
 
         this._login(username, password, osmSessionID, osmSessionToken, callback);
-    },
+    }
 
-    _login: function(username, password, sessionId, token, callback) {
+    _login(username, password, sessionId, token, callback) {
         /* post login form */
         let msg = Soup.form_request_new_from_hash('POST', LOGIN_URL,
                                                   {username: username,
@@ -292,9 +290,9 @@ var OSMConnection = new Lang.Class({
                 callback(false, null);
         });
 
-    },
+    }
 
-    _fetchAuthorizeForm: function(username, sessionId, callback) {
+    _fetchAuthorizeForm(username, sessionId, callback) {
         let auth = '/authorize?oauth_token=';
         let authorizeUrl = OAUTH_ENDPOINT_URL + auth + this._oauthToken;
         let uri = new Soup.URI(authorizeUrl);
@@ -311,9 +309,9 @@ var OSMConnection = new Lang.Class({
                 callback(false, null);
             }
         });
-    },
+    }
 
-    _postAuthorizeForm: function(username, sessionId, token, callback) {
+    _postAuthorizeForm(username, sessionId, token, callback) {
         let authorizeUrl = OAUTH_ENDPOINT_URL + '/authorize';
         let msg = Soup.form_request_new_from_hash('POST', authorizeUrl, {
             oauth_token: this._oauthToken,
@@ -336,15 +334,15 @@ var OSMConnection = new Lang.Class({
             } else
                 callback(false, null);
         });
-    },
+    }
 
-    requestOAuthAccessToken: function(code, callback) {
+    requestOAuthAccessToken(code, callback) {
         this._oauthProxy.access_token_async('access_token', code, (p, error, w, data) => {
             this._onAccessOAuthToken(error, callback);
         }, this._oauthProxy, callback);
-    },
+    }
 
-    _onAccessOAuthToken: function(error, callback) {
+    _onAccessOAuthToken(error, callback) {
         if (error) {
             callback(false);
             return;
@@ -362,16 +360,16 @@ var OSMConnection = new Lang.Class({
                               (source, result, userData) => {
                                 this._onPasswordStored(result, callback);
                               });
-    },
+    }
 
-    _onPasswordStored: function(result, callback) {
+    _onPasswordStored(result, callback) {
         let res = false;
         if (result)
             res = Secret.password_store_finish(result);
         callback(res);
-    },
+    }
 
-    signOut: function() {
+    signOut() {
         /* clear token on call proxy, so it will use a new token if the user
            signs in again (with a new access token) during this running
            session */
@@ -380,14 +378,14 @@ var OSMConnection = new Lang.Class({
 
         Secret.password_clear(SECRET_SCHEMA, {}, null,
             this._onPasswordCleared.bind(this));
-    },
+    }
 
-    _onPasswordCleared: function(source, result) {
+    _onPasswordCleared(source, result) {
         Secret.password_clear_finish(result);
-    },
+    }
 
     /* extract the session ID from the login form response headers */
-    _extractOSMSessionID: function(responseHeaders) {
+    _extractOSMSessionID(responseHeaders) {
         let cookie = responseHeaders.get('Set-Cookie');
 
         if (cookie === null)
@@ -406,11 +404,11 @@ var OSMConnection = new Lang.Class({
         }
 
         return null;
-    },
+    }
 
     /* extract the authenticity token from the hidden input field of the login
        form */
-    _extractToken: function(messageBody) {
+    _extractToken(messageBody) {
         let regex = /.*authenticity_token.*value=\"([^\"]+)\".*/;
         let lines = messageBody.split('\n');
 
@@ -423,7 +421,7 @@ var OSMConnection = new Lang.Class({
 
         return null;
     }
-});
+};
 
 /*
  * Gets a status message (usually for an error case)

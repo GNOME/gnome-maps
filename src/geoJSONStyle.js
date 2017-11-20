@@ -18,16 +18,11 @@
  * Author: Alaf Azam <alafazam@gmail.com>
  */
 
-const Lang = imports.lang;
-
 const DEFAULT_LINE_WIDTH = 5;
 const DEFAULT_COLOR = '69B1FF';
 
-var GeoJSONStyle = new Lang.Class({
-    Name: 'GeoJSONStyle',
-
-    _init: function(params) {
-
+var GeoJSONStyle = class GeoJSONStyle {
+    constructor(params) {
         if (params.lineWidth || params.lineWidth === 0)
             this.lineWidth = params.lineWidth;
         else
@@ -47,9 +42,9 @@ var GeoJSONStyle = new Lang.Class({
         this.fillColor =  this._hexToColor(params.fillColor) || { red: 0.37,
                                                                   green: 0.62,
                                                                   blue: 0.87 };
-    },
+    }
 
-    _hexToColor: function(colorString) {
+    _hexToColor(colorString) {
         let color = null;
         
         if (!colorString)
@@ -81,7 +76,7 @@ var GeoJSONStyle = new Lang.Class({
 
         return color;
     }
-});
+};
 
 GeoJSONStyle.parseSimpleStyle = function(tags) {
     return  new GeoJSONStyle({ alpha: tags['stroke-opacity'],

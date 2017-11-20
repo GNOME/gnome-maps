@@ -19,23 +19,22 @@
  * Author: Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
  */
 
+const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
 const Utils = imports.utils;
 
-var Notification = new Lang.Class({
-    Name: 'Notification',
-    Extends: Gtk.Revealer,
+var Notification = GObject.registerClass({
     Signals: {
         'revealed': { },
         'dismissed': { }
     },
-    Abstract: true,
+    Abstract: true
+}, class Notification extends Gtk.Revealer {
 
-    _init: function() {
-        this.parent({ visible: true,
+    _init() {
+        super._init({ visible: true,
                       halign: Gtk.Align.CENTER,
                       valign: Gtk.Align.START });
 
@@ -45,17 +44,17 @@ var Notification = new Lang.Class({
 
         this._ui.dismissButton.connect('clicked', this.dismiss.bind(this));
         this.add(this._ui.frame);
-    },
+    }
 
-    reveal: function() {
+    reveal() {
         this._setRevealAndEmit(true, 'revealed');
-    },
+    }
 
-    dismiss: function() {
+    dismiss() {
         this._setRevealAndEmit(false, 'dismissed');
-    },
+    }
 
-    _setRevealAndEmit: function(state, signal) {
+    _setRevealAndEmit(state, signal) {
         // We only want to send a dismissed / shown -signal
         // if there is an actual change in revealed state.
         if (state !== this.child_revealed) {
@@ -68,12 +67,11 @@ var Notification = new Lang.Class({
     }
 });
 
-var Plain = new Lang.Class({
-    Name: 'Plain',
-    Extends: Notification,
+var Plain = GObject.registerClass(
+class Plain extends Notification {
 
-    _init: function(msg) {
-        this.parent();
+    _init(msg) {
+        super._init();
         let label = new Gtk.Label({ visible : true,
                                     hexpand : true,
                                     halign  : Gtk.Align.START,

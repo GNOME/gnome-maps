@@ -20,7 +20,8 @@
 const Champlain = imports.gi.Champlain;
 const Gio = imports.gi.Gio;
 const GObject = imports.gi.GObject;
-const Lang = imports.lang;
+
+const GeoJSONShapeLayer = imports.geoJSONShapeLayer;
 
 var SUPPORTED_TYPES = [];
 
@@ -28,20 +29,18 @@ function newFromFile(file, mapView) {
     let contentType = Gio.content_type_guess(file.get_uri(), null)[0];
     for (let layerClass of SUPPORTED_TYPES) {
         if (layerClass.mimeTypes.indexOf(contentType) > -1) {
-            return new layerClass({ file: file, mapView: mapView });
+            return layerClass.createInstance({ file: file, mapView: mapView });
         }
     }
     return null;
 }
 
-var ShapeLayer = new Lang.Class({
-    Name: 'ShapeLayer',
-    Extends: GObject.Object,
-    Abstract: true,
+var ShapeLayer = GObject.registerClass({
+    Abstract: true
+}, class ShapeLayer extends GObject.Object {
 
-    _init: function(params) {
-        this.parent();
-
+    _init(params) {
+        super._init();
         this._visible = true;
         this._mapView = params.mapView;
         this.file = params.file;
@@ -56,15 +55,15 @@ var ShapeLayer = new Lang.Class({
             selection_mode: Champlain.SelectionMode.SINGLE
         });
         this._mapSource = null;
-    },
+    }
 
     get bbox() {
         return this._mapSource.bbox;
-    },
+    }
 
     get visible() {
         return this._visible;
-    },
+    }
 
     set visible(v) {
         if (v && !this._visible) {
@@ -75,17 +74,17 @@ var ShapeLayer = new Lang.Class({
             this._markerLayer.hide_all_markers();
         }
         this._visible = v;
-    },
+    }
 
-    getName: function() {
+    getName() {
         /*
          * Remove file extension and use that in lieu of a fileformat-specific
          * display name.
          */
         return this.filename.replace(/\.[^\.]+$/, '');
-    },
+    }
 
-    load: function() {
+    load() {
         let [status, buffer] = this.file.load_contents(null);
         this._fileContents = buffer;
         if (!status)
@@ -93,14 +92,14 @@ var ShapeLayer = new Lang.Class({
         this._parseContent();
         this._mapView.view.add_layer(this._markerLayer);
         this._mapView.view.add_overlay_source(this._mapSource, 255);
-    },
+    }
 
 
-    _parseContent: function() {
+    _parseContent() {
         /* Unimplemented */
-    },
+    }
 
-    unload: function() {
+    unload() {
         this._mapView.view.remove_layer(this._markerLayer);
         this._mapView.view.remove_overlay_source(this._mapSource);
     }

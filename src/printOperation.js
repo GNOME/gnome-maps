@@ -18,7 +18,6 @@
  */
 
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
@@ -28,10 +27,9 @@ const Utils = imports.utils;
 
 const _MIN_TIME_TO_ABORT = 3000;
 
-var PrintOperation = new Lang.Class({
-    Name: 'PrintOperation',
+var PrintOperation = class PrintOperation {
 
-    _init: function(params) {
+    constructor(params) {
         this._mainWindow = params.mainWindow;
         delete params.mainWindow;
 
@@ -54,9 +52,9 @@ var PrintOperation = new Lang.Class({
                                                      this.onAbortDialogResponse.bind(this));
 
         this._runPrintOperation();
-    },
+    }
 
-    _beginPrint: function(operation, context, data) {
+    _beginPrint(operation, context, data) {
         let route = Application.routingDelegator.graphHopper.route;
         let selectedTransitItinerary =
             Application.routingDelegator.openTripPlanner.plan.selectedItinerary;
@@ -79,34 +77,34 @@ var PrintOperation = new Lang.Class({
             this._layout = PrintLayout.newFromRoute(route, width, height);
         }
         this._layout.render();
-    },
+    }
 
-    onAbortDialogResponse: function(dialog, response) {
+    onAbortDialogResponse(dialog, response) {
         if (response === Gtk.ResponseType.DELETE_EVENT ||
             response === Gtk.ResponseType.CANCEL) {
             this._abortDialog.disconnect(this._responseId);
             this._operation.cancel();
             this._abortDialog.close();
         }
-    },
+    }
 
-    _paginate: function(operation, context) {
+    _paginate(operation, context) {
         if (this._layout.renderFinished) {
             operation.set_n_pages(this._layout.numPages);
             this._abortDialog.close();
         }
         return this._layout.renderFinished;
-    },
+    }
 
-    _drawPage: function(operation, context, page_num, data) {
+    _drawPage(operation, context, page_num, data) {
         let cr = context.get_cairo_context();
         this._layout.surfaceObjects[page_num].forEach((so) => {
             cr.setSourceSurface(so.surface, so.x, so.y);
             cr.paint();
         });
-    },
+    }
 
-    _runPrintOperation: function() {
+    _runPrintOperation() {
         try {
             let result = this._operation.run(Gtk.PrintOperationAction.PRINT_DIALOG,
                                              this._mainWindow);
@@ -118,4 +116,4 @@ var PrintOperation = new Lang.Class({
             Utils.debug('Failed to print: %s'.format(e.message));
         }
     }
-});
+};

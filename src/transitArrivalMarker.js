@@ -19,20 +19,18 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Lang = imports.lang;
-
 const Gdk = imports.gi.Gdk;
+const GObject = imports.gi.GObject;
 
 const Color = imports.color;
 const Location = imports.location;
 const MapMarker = imports.mapMarker;
 const Place = imports.place;
 
-var TransitArrivalMarker = new Lang.Class({
-    Name: 'TransitArrivalMarker',
-    Extends: MapMarker.MapMarker,
+var TransitArrivalMarker = GObject.registerClass(
+class TransitArrivalMarker extends MapMarker.MapMarker {
 
-    _init: function(params) {
+    _init(params) {
         let lastPoint = params.leg.polyline[params.leg.polyline.length - 1];
         let location =
             new Location.Location({ latitude: lastPoint.latitude,
@@ -44,7 +42,7 @@ var TransitArrivalMarker = new Lang.Class({
         delete params.leg;
         params.place = new Place.Place({ location: location });
 
-        this.parent(params);
+        super._init(params);
 
         let bgRed = Color.parseColor(bgColor, 0);
         let bgGreen = Color.parseColor(bgColor, 1);
@@ -58,7 +56,7 @@ var TransitArrivalMarker = new Lang.Class({
             this._actorFromIconName('maps-point-end-symbolic', 0, color);
 
         this.add_actor(actor);
-    },
+    }
 
     get anchor() {
         return { x: Math.floor(this.width / 2) - 1,

@@ -21,7 +21,6 @@
 
 const GObject = imports.gi.GObject;
 const Geocode = imports.gi.GeocodeGlib;
-const Lang = imports.lang;
 
 const Application = imports.application;
 const PlaceStore = imports.placeStore;
@@ -44,9 +43,7 @@ var Transportation = {
     }
 };
 
-var QueryPoint = new Lang.Class({
-    Name: 'QueryPoint',
-    Extends: GObject.Object,
+var QueryPoint = GObject.registerClass({
     Properties: {
         'place': GObject.ParamSpec.object('place',
                                           '',
@@ -54,26 +51,25 @@ var QueryPoint = new Lang.Class({
                                           GObject.ParamFlags.READABLE |
                                           GObject.ParamFlags.WRITABLE,
                                           Geocode.Place)
-    },
+    }
+}, class QueryPoint extends GObject.Object {
 
-    _init: function() {
+    _init() {
         this._place = null;
-        this.parent();
-    },
+        super._init();
+    }
 
     set place(p) {
         this._place = p;
         this.notify('place');
-    },
+    }
 
     get place() {
         return this._place;
     }
 });
 
-var RouteQuery = new Lang.Class({
-    Name: 'RouteQuery',
-    Extends: GObject.Object,
+var RouteQuery = GObject.registerClass({
     Signals: {
         'reset': { },
         'point-added': { param_types: [GObject.TYPE_OBJECT, GObject.TYPE_INT] },
@@ -95,40 +91,41 @@ var RouteQuery = new Lang.Class({
                                                 Transportation.PEDESTRIAN,
                                                 Transportation.CAR,
                                                 Transportation.TRANSIT)
-    },
+    }
+}, class RouteQuery extends GObject.Object {
 
     get points() {
         return this._points;
-    },
+    }
 
     set points(points) {
         this._points = points;
         this.notify('points');
-    },
+    }
 
     get filledPoints() {
         return this.points.filter(function(point) {
             return point.place;
         });
-    },
+    }
 
     get latest() {
         return this._latest;
-    },
+    }
 
     get time() {
         return this._time;
-    },
+    }
 
     /* time to leave or arrive, null implies "Leave now" */
     set time(time) {
         this._time = time;
         this.notify('points');
-    },
+    }
 
     get date() {
         return this._date;
-    },
+    }
 
     /* date to leave or arrive */
     set date(date) {
@@ -138,11 +135,11 @@ var RouteQuery = new Lang.Class({
          * triggering an update */
         if (date)
             this.notify('points');
-    },
+    }
 
     get arriveBy() {
         return this._arriveBy;
-    },
+    }
 
     /* when set to true, the set time and date means arrive by the specified
      * time */
@@ -150,19 +147,19 @@ var RouteQuery = new Lang.Class({
         this._arriveBy = arriveBy;
         if (this._time)
             this.notify('points');
-    },
+    }
 
     get transitOptions() {
         return this._transitOptions;
-    },
+    }
 
     set transitOptions(options) {
         this._transitOptions = options;
         this.notify('points');
-    },
+    }
 
-    _init: function(args) {
-        this.parent(args);
+    _init(args) {
+        super._init(args);
         this._points = [];
         this._time = null;
         this._date = null;
@@ -170,15 +167,15 @@ var RouteQuery = new Lang.Class({
         this._transitOptions = new TransitOptions.TransitOptions();
         this._initTransportation();
         this.reset();
-    },
+    }
 
-    _initTransportation: function() {
+    _initTransportation() {
         let transportationType = Application.settings.get_enum('transportation-type');
 
         this.transportation = transportationType;
-    },
+    }
 
-    addPoint: function(index) {
+    addPoint(index) {
         let point = new QueryPoint();
 
         if (index === -1)
@@ -200,9 +197,9 @@ var RouteQuery = new Lang.Class({
         this.notify('points');
         this.emit('point-added', point, index);
         return point;
-    },
+    }
 
-    removePoint: function(index) {
+    removePoint(index) {
         let removedPoints = this._points.splice(index, 1);
         let point = removedPoints ? removedPoints[0] : null;
         if (point === this._latest)
@@ -212,19 +209,20 @@ var RouteQuery = new Lang.Class({
             this.notify('points');
             this.emit('point-removed', point, index);
         }
-    },
+    }
 
     set transportation(transportation) {
         Application.settings.set_enum('transportation-type', transportation);
         this._transportation = transportation;
         this.notify('transportation');
         this.notify('points');
-    },
+    }
+
     get transportation() {
         return this._transportation;
-    },
+    }
 
-    reset: function() {
+    reset() {
         this.freeze_notify();
         this._points.forEach(function(point) {
             point.place = null;
@@ -232,16 +230,16 @@ var RouteQuery = new Lang.Class({
         this._latest = null;
         this.thaw_notify();
         this.emit('reset');
-    },
+    }
 
-    isValid: function() {
+    isValid() {
         if (this.filledPoints.length >= 2)
             return true;
         else
             return false;
-    },
+    }
 
-    toString: function() {
+    toString() {
         return "\nPoints: " + this.points +
                "\nTransportation: " + this.transportation;
     }

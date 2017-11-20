@@ -20,19 +20,18 @@
  *         Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
  */
 
+const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 const Utils = imports.utils;
 
-var InstructionRow = new Lang.Class({
-    Name: "InstructionRow",
-    Extends: Gtk.ListBoxRow,
+var InstructionRow = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/instruction-row.ui',
     InternalChildren: [ 'directionImage',
                         'instructionLabel',
-                        'distanceLabel' ],
+                        'distanceLabel' ]
+}, class InstructionRow extends Gtk.ListBoxRow {
 
-    _init: function(params) {
+    _init(params) {
         this.turnPoint = params.turnPoint;
         delete params.turnPoint;
 
@@ -42,7 +41,7 @@ var InstructionRow = new Lang.Class({
         let lines = params.lines;
         delete params.lines;
 
-        this.parent(params);
+        super._init(params);
 
         if (lines)
             this._instructionLabel.lines = lines;

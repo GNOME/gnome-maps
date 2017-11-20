@@ -20,32 +20,29 @@
  */
 
 const Rest = imports.gi.Rest;
-const Lang = imports.lang;
 
 const _FOURSQUARE_API_VERSION = '20140226';
 
-var FoursquareGoaAuthorizer = new Lang.Class({
-    Name: 'FoursquareGoaAuthorizer',
-
-    _init: function(params) {
+var FoursquareGoaAuthorizer = class FoursquareGoaAuthorizer {
+    constructor(params) {
         if (!params.goaObject) {
             logError('FoursquareGoaAuthorizer requires goaObject parameter');
             return;
         }
 
         this.goaObject = params.goaObject;
-    },
+    }
 
     get goaObject() {
         return this._goaObject;
-    },
+    }
 
     set goaObject(object) {
         this._goaObject = object;
         this._accessToken = null;
-    },
+    }
 
-    _refreshAccessToken: function(cancellable) {
+    _refreshAccessToken(cancellable) {
         if (this._accessToken)
             return true;
 
@@ -57,21 +54,21 @@ var FoursquareGoaAuthorizer = new Lang.Class({
         }
 
         return false;
-    },
+    }
 
-    processCall: function(restCall) {
+    processCall(restCall) {
         this._refreshAccessToken(null);
         restCall.add_param('oauth_token', this._accessToken);
         restCall.add_param('v', _FOURSQUARE_API_VERSION);
-    },
+    }
 
-    processMessage: function(soupMessage) {
+    processMessage(soupMessage) {
         this._refreshAccessToken(null);
         let uri = soupMessage.get_uri();
         uri.set_query(uri, 'oauth_token' + this._accessToken + '&v=' + _FOURSQUARE_API_VERSION);
-    },
+    }
 
-    refreshAuthorization: function(cancellable) {
+    refreshAuthorization(cancellable) {
         let ensureCredentialsResult = this.goaObject.get_account().call_ensure_credentials_sync(cancellable);
         if (ensureCredentialsResult[0]) {
             this._accessToken = null;
@@ -80,7 +77,7 @@ var FoursquareGoaAuthorizer = new Lang.Class({
 
         return false;
     }
-});
+};
 
 function newRestCall(authorizer)
 {

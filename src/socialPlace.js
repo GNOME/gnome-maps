@@ -19,17 +19,13 @@
  * Author: Damián Nohales <damiannohales@gmail.com>
  */
 
-const Geocode = imports.gi.GeocodeGlib;
 const GObject = imports.gi.GObject;
-const Lang = imports.lang;
 const Location = imports.location;
 
-var SocialPlace = new Lang.Class({
-    Name: 'SocialServiceSocialPlace',
-    Extends: GObject.Object,
-
-    _init: function(params) {
-        this.parent();
+var SocialPlace = GObject.registerClass(
+class SocialPlace extends GObject.Object {
+    _init(params) {
+        super._init();
 
         this.id = params.id;
         this.name = params.name;
@@ -38,7 +34,7 @@ var SocialPlace = new Lang.Class({
         this.category = params.category;
         this.link = params.link;
         this.originalData = params.originalData;
-    },
+    }
 
     get location() {
         return new Location.Location({ latitude: parseFloat(this.latitude),

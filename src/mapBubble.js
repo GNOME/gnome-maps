@@ -23,7 +23,6 @@ const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
@@ -40,12 +39,10 @@ var Button = {
     CHECK_IN: 16
 };
 
-var MapBubble = new Lang.Class({
-    Name: "MapBubble",
-    Extends: Gtk.Popover,
-    Abstract: true,
+var MapBubble = GObject.registerClass({ Abstract: true },
+class MapBubble extends Gtk.Popover {
 
-    _init: function(params) {
+    _init(params) {
         this._place = params.place;
         delete params.place;
 
@@ -67,7 +64,7 @@ var MapBubble = new Lang.Class({
 
         params.modal = false;
 
-        this.parent(params);
+        super._init(params);
         let ui = Utils.getUIObject('map-bubble', [ 'bubble-main-grid',
                                                    'bubble-image',
                                                    'bubble-thumbnail',
@@ -98,29 +95,29 @@ var MapBubble = new Lang.Class({
         }
 
         this.add(ui.bubbleMainGrid);
-    },
+    }
 
     get image() {
         return this._image;
-    },
+    }
 
     get thumbnail() {
         return this._thumbnail;
-    },
+    }
 
     get iconStack() {
         return this._iconStack;
-    },
+    }
 
     get place() {
         return this._place;
-    },
+    }
 
     get content() {
         return this._content;
-    },
+    }
 
-    _initFavoriteButton: function(button, image) {
+    _initFavoriteButton(button, image) {
         let placeStore = Application.placeStore;
         button.visible = true;
 
@@ -143,9 +140,9 @@ var MapBubble = new Lang.Class({
                                     PlaceStore.PlaceType.FAVORITE);
             }
         });
-    },
+    }
 
-    _initSendToButton: function(button) {
+    _initSendToButton(button) {
         let dialog = new SendToDialog.SendToDialog({ transient_for: this.get_toplevel(),
                                                      modal: true,
                                                      mapView: this._mapView,
@@ -158,9 +155,9 @@ var MapBubble = new Lang.Class({
             dialog.connect('response', () => dialog.hide());
             dialog.show_all();
         });
-    },
+    }
 
-    _initRouteButton: function(button, routeFrom) {
+    _initRouteButton(button, routeFrom) {
         let query = Application.routeQuery;
         let from = query.points[0];
         let to = query.points[query.points.length - 1];
@@ -181,9 +178,9 @@ var MapBubble = new Lang.Class({
             this.destroy();
             query.thaw_notify();
         });
-    },
+    }
 
-    _initCheckInButton: function(button, matchPlace) {
+    _initCheckInButton(button, matchPlace) {
         Application.checkInManager.bind_property('hasCheckIn',
                                                  button, 'visible',
                                                  GObject.BindingFlags.DEFAULT |

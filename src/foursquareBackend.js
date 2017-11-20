@@ -19,7 +19,7 @@
  * Author: Damián Nohales <damiannohales@gmail.com>
  */
 
-const Lang = imports.lang;
+const GObject = imports.gi.GObject;
 
 const FoursquareGoaAuthorizer = imports.foursquareGoaAuthorizer;
 const ServiceBackend = imports.serviceBackend;
@@ -27,47 +27,46 @@ const SocialPlace = imports.socialPlace;
 
 const _PLACE_LINK_FORMAT = 'https://foursquare.com/v/foursquare-hq/%s';
 
-var FoursquareBackend = new Lang.Class({
-    Name: 'SocialServiceFoursquareBackend',
-    Extends: ServiceBackend.ServiceBackend,
+var FoursquareBackend = GObject.registerClass(
+class SocialServiceFoursquareBackend extends ServiceBackend.ServiceBackend {
 
     get name() {
         return 'foursquare';
-    },
+    }
 
-    createRestCall: function(authorizer) {
+    createRestCall(authorizer) {
         return FoursquareGoaAuthorizer.newRestCall(authorizer);
-    },
+    }
 
-    refreshAuthorization: function(authorizer, cancellable) {
+    refreshAuthorization(authorizer, cancellable) {
         return authorizer.refreshAuthorization(cancellable);
-    },
+    }
 
-    getAuthorizerAccount: function(authorizer) {
+    getAuthorizerAccount(authorizer) {
         return authorizer.goaObject;
-    },
+    }
 
-    createAuthorizer: function(account) {
+    createAuthorizer(account) {
         return new FoursquareGoaAuthorizer.FoursquareGoaAuthorizer({ goaObject: account });
-    },
+    }
 
-    isTokenInvalid: function(restCall, data) {
+    isTokenInvalid(restCall, data) {
         return data.meta.code === 401 || data.meta.code === 403;
-    },
+    }
 
-    isInvalidCall: function(restCall, data) {
+    isInvalidCall(restCall, data) {
         return !data || data.meta.code !== 200;
-    },
+    }
 
-    getCallResultCode: function(restCall, data) {
+    getCallResultCode(restCall, data) {
         return data ? data.meta.code : restCall.get_status_code();
-    },
+    }
 
-    getCallResultMessage: function(restCall, data) {
+    getCallResultMessage(restCall, data) {
         return data ? data.meta.errorDetail : restCall.get_status_message();
-    },
+    }
 
-    _realPerformCheckIn: function(authorizer, checkIn, callback, cancellable) {
+    _realPerformCheckIn(authorizer, checkIn, callback, cancellable) {
         let broadcast = checkIn.privacy;
 
         if (checkIn.broadcastFacebook)
@@ -86,9 +85,9 @@ var FoursquareBackend = new Lang.Class({
                        },
                        callback,
                        cancellable);
-    },
+    }
 
-    _realFindPlaces: function(authorizer, latitude, longitude, distance, callback, cancellable) {
+    _realFindPlaces(authorizer, latitude, longitude, distance, callback, cancellable) {
         this.callAsync(authorizer,
                        'GET',
                        'venues/search',
@@ -99,9 +98,9 @@ var FoursquareBackend = new Lang.Class({
                        },
                        callback,
                        cancellable);
-    },
+    }
 
-    createPlaces: function(rawData) {
+    createPlaces(rawData) {
         return rawData.response.venues.map(function(place) {
             let link = _PLACE_LINK_FORMAT.format(place.id);
 

@@ -25,7 +25,6 @@ const GObject = imports.gi.GObject;
 const Geocode = imports.gi.GeocodeGlib;
 const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 
 const Application = imports.application;
 const Location = imports.location;
@@ -34,9 +33,7 @@ const PlaceStore = imports.placeStore;
 const PlacePopover = imports.placePopover;
 const Utils = imports.utils;
 
-var PlaceEntry = new Lang.Class({
-    Name: 'PlaceEntry',
-    Extends: Gtk.SearchEntry,
+var PlaceEntry = GObject.registerClass({
     Properties: {
         'place': GObject.ParamSpec.object('place',
                                           'Place',
@@ -44,7 +41,8 @@ var PlaceEntry = new Lang.Class({
                                           GObject.ParamFlags.READABLE |
                                           GObject.ParamFlags.WRITABLE,
                                           Geocode.Place)
-    },
+    }
+}, class PlaceEntry extends Gtk.SearchEntry {
 
     set place(p) {
         if (!this._place && !p)
@@ -63,17 +61,17 @@ var PlaceEntry = new Lang.Class({
 
         this._place = p;
         this.notify('place');
-    },
+    }
 
     get place() {
         return this._place;
-    },
+    }
 
     get popover() {
         return this._popover;
-    },
+    }
 
-    _init: function(props) {
+    _init(props) {
         let numVisible = props.num_visible || 6;
         delete props.num_visible;
         this._mapView = props.mapView;
@@ -92,7 +90,7 @@ var PlaceEntry = new Lang.Class({
         this._matchRoute = props.matchRoute || false;
         delete props.matchRoute;
 
-        this.parent(props);
+        super._init(props);
 
         this._filter = new Gtk.TreeModelFilter({ child_model: Application.placeStore });
         this._filter.set_visible_func(this._completionVisibleFunc.bind(this));
@@ -124,17 +122,17 @@ var PlaceEntry = new Lang.Class({
                 return false;
             });
         }
-    },
+    }
 
-    _locEquals: function(placeA, placeB) {
+    _locEquals(placeA, placeB) {
         if (!placeA.location || !placeB.location)
             return false;
 
         return (placeA.location.latitude === placeB.location.latitude &&
                 placeA.location.longitude === placeB.location.longitude);
-    },
+    }
 
-    _createPopover: function(numVisible, maxChars) {
+    _createPopover(numVisible, maxChars) {
         let popover = new PlacePopover.PlacePopover({ num_visible:   numVisible,
                                                       relative_to:   this,
                                                       maxChars:      maxChars});
@@ -151,15 +149,15 @@ var PlaceEntry = new Lang.Class({
         });
 
         return popover;
-    },
+    }
 
-    _refreshFilter: function() {
+    _refreshFilter() {
         /* Filter model based on input text */
         this._filter.refilter();
         this._popover.updateCompletion(this._filter, this.text);
-    },
+    }
 
-    _completionVisibleFunc: function(model, iter) {
+    _completionVisibleFunc(model, iter) {
         let place = model.get_value(iter, PlaceStore.Columns.PLACE);
         let type = model.get_value(iter, PlaceStore.Columns.TYPE);
 
@@ -170,9 +168,9 @@ var PlaceEntry = new Lang.Class({
             return place.match(this.text);
         else
             return false;
-    },
+    }
 
-    _parse: function() {
+    _parse() {
         if (this.text.length === 0) {
             this.place = null;
             return true;
@@ -199,9 +197,9 @@ var PlaceEntry = new Lang.Class({
         }
 
         return false;
-    },
+    }
 
-    _onActivate: function() {
+    _onActivate() {
         if (this._parse())
             return;
 

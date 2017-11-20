@@ -19,7 +19,6 @@
  * Author: Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
  */
 
-const Lang = imports.lang;
 const Soup = imports.gi.Soup;
 
 function encode(data) {
@@ -29,18 +28,17 @@ function encode(data) {
     return Soup.URI.encode(data.toString(), null);
 }
 
-var Query = new Lang.Class({
-    Name: 'Query',
+var Query = class Query {
 
-    _init: function(obj) {
+    constructor(obj) {
         this._query = {};
         for(let key in obj) {
             this.add(key, obj[key]);
         }
-    },
+    }
 
     // a value === null represents an empty value
-    add: function(key, value) {
+    add(key, value) {
         // Initialize query field if it isn't already
         let queryValue = this._query[key];
         if(!Array.isArray(queryValue))
@@ -50,9 +48,9 @@ var Query = new Lang.Class({
             this._query[key] = this._query[key].concat(value);
         else
             this._query[key].push(value);
-    },
+    }
 
-    toString: function() {
+    toString() {
         let vars = [];
         for(let key in this._query) {
             let values = this._query[key];
@@ -67,4 +65,4 @@ var Query = new Lang.Class({
         }
         return vars.join('&');
     }
-});
+};

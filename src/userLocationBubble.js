@@ -19,16 +19,15 @@
  * Author: Damián Nohales <damiannohales@gmail.com>
  */
 
-const Lang = imports.lang;
+const GObject = imports.gi.GObject;
 
 const MapBubble = imports.mapBubble;
 const Utils = imports.utils;
 
-var UserLocationBubble = new Lang.Class({
-    Name: "UserLocationBubble",
-    Extends: MapBubble.MapBubble,
+var UserLocationBubble = GObject.registerClass(
+class UserLocationBubble extends MapBubble.MapBubble {
 
-    _init: function(params) {
+    _init(params) {
         let ui = Utils.getUIObject('user-location-bubble', [ 'grid-content',
                                                              'label-accuracy',
                                                              'label-coordinates' ]);
@@ -38,7 +37,7 @@ var UserLocationBubble = new Lang.Class({
         params.routeFrom = true;
         params.checkInMatchPlace = false;
 
-        this.parent(params);
+        super._init(params);
 
         this.image.icon_name = 'find-location-symbolic';
         this.image.pixel_size = 48;

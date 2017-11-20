@@ -22,7 +22,6 @@
 
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 const WebKit2 = imports.gi.WebKit2;
 
 const Application = imports.application;
@@ -31,9 +30,7 @@ var Response = {
     SIGNED_IN: 0
 };
 
-var OSMAccountDialog = new Lang.Class({
-    Name: 'OSMAccountDialog',
-    Extends: Gtk.Dialog,
+var OSMAccountDialog = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/osm-account-dialog.ui',
     InternalChildren: ['stack',
                        'emailEntry',
@@ -48,15 +45,16 @@ var OSMAccountDialog = new Lang.Class({
                        'verificationFailedLabel',
                        'signedInUserLabel',
                        'signOutButton'],
+}, class OSMAccountDialog extends Gtk.Dialog {
 
-    _init: function(params) {
+    _init(params) {
         /* This is a construct-only property and cannot be set by GtkBuilder */
         params.use_header_bar = true;
 
         this._closeOnSignIn = params.closeOnSignIn;
         delete params.closeOnSignIn;
 
-        this.parent(params);
+        super._init(params);
 
         this._emailEntry.connect('changed',
                                  this._onCredentialsChanged.bind(this));
@@ -80,31 +78,31 @@ var OSMAccountDialog = new Lang.Class({
             this._signedInUserLabel.label = Application.osmEdit.username;
             this._stack.visible_child_name = 'logged-in';
         }
-    },
+    }
 
-    _onCredentialsChanged: function() {
+    _onCredentialsChanged() {
         let email = this._emailEntry.text;
         let password = this._passwordEntry.text;
 
         // make sign in button sensitive if credential have been entered
         this._signInButton.sensitive =
             email && email.length > 0 && password && password.length > 0;
-    },
+    }
 
-    _onSignInButtonClicked: function() {
+    _onSignInButtonClicked() {
         this._performSignIn();
-    },
+    }
 
-    _onPasswordActivated: function() {
+    _onPasswordActivated() {
         /* if username and password was entered, proceed with sign-in */
         let email = this._emailEntry.text;
         let password = this._passwordEntry.text;
 
         if (email && email.length > 0 && password && password.length > 0)
             this._performSignIn();
-    },
+    }
 
-    _performSignIn: function() {
+    _performSignIn() {
         /* turn on signing in spinner and desensisize credential entries */
         this._signInSpinner.visible = true;
         this._signInButton.sensitive = false;
@@ -115,9 +113,9 @@ var OSMAccountDialog = new Lang.Class({
         Application.osmEdit.performOAuthSignIn(this._emailEntry.text,
                                                this._passwordEntry.text,
                                                this._onOAuthSignInPerformed.bind(this));
-    },
+    }
 
-    _onOAuthSignInPerformed: function(success, verificationPage) {
+    _onOAuthSignInPerformed(success, verificationPage) {
         if (success) {
             /* switch to the verification view and show the verification
                page */
@@ -135,13 +133,13 @@ var OSMAccountDialog = new Lang.Class({
         /* re-sensisize credential entries */
         this._emailEntry.sensitive = true;
         this._passwordEntry.sensitive = true;
-    },
+    }
 
-    _onVerifyButtonClicked: function() {
+    _onVerifyButtonClicked() {
         this._performVerification();
-    },
+    }
 
-    _performVerification: function() {
+    _performVerification() {
         /* allow copying the leading space between the "The verification is"
            label and the code */
         let verificationCode = this._verificationEntry.text.trim();
@@ -155,23 +153,23 @@ var OSMAccountDialog = new Lang.Class({
 
         Application.osmEdit.requestOAuthAccessToken(verificationCode,
                                                     this._onOAuthAccessTokenRequested.bind(this));
-    },
+    }
 
-    _onVerificationEntryChanged: function() {
+    _onVerificationEntryChanged() {
         this._verifyButton.sensitive =
             this._verificationEntry.text &&
             this._verificationEntry.text.length > 0;
-    },
+    }
 
-    _onVerificationEntryActivated: function() {
+    _onVerificationEntryActivated() {
         /* proceed with verfication if a code has been entered */
         let verificationCode = this._verificationEntry.text;
 
         if (verificationCode && verificationCode.length > 0)
             this._performVerification();
-    },
+    }
 
-    _onOAuthAccessTokenRequested: function(success) {
+    _onOAuthAccessTokenRequested(success) {
         if (success) {
             /* update the username label */
             this._signedInUserLabel.label = Application.osmEdit.username;
@@ -197,9 +195,9 @@ var OSMAccountDialog = new Lang.Class({
         }
         /* reset verification code entry */
         this._verificationEntry.text = '';
-    },
+    }
 
-    _onSignOutButtonClicked: function() {
+    _onSignOutButtonClicked() {
         Application.osmEdit.signOut();
         this._stack.visible_child_name = 'sign-in';
     }

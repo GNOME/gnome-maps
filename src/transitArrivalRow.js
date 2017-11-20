@@ -19,23 +19,21 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Lang = imports.lang;
-
 const _ = imports.gettext.gettext;
 
 const Gdk = imports.gi.Gdk;
+const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 
-var TransitArrivalRow = new Lang.Class({
-    Name: 'TransitArrivalRow',
-    Extends: Gtk.ListBoxRow,
+var TransitArrivalRow = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/transit-arrival-row.ui',
     InternalChildren: ['arrivalLabel',
                        'timeLabel',
                        'eventBox',
-                       'separator'],
+                       'separator']
+}, class TransitArrivalRow extends Gtk.ListBoxRow {
 
-    _init: function(params) {
+    _init(params) {
         this._itinerary = params.itinerary;
         delete params.itinerary;
 
@@ -45,7 +43,7 @@ var TransitArrivalRow = new Lang.Class({
         this._print = params.print;
         delete params.print;
 
-        this.parent(params);
+        super._init(params);
 
         let lastLeg = this._itinerary.legs[this._itinerary.legs.length - 1];
 
@@ -69,9 +67,9 @@ var TransitArrivalRow = new Lang.Class({
             this._onEvent(event, lastLeg.toCoordinate);
             return true;
         });
-    },
+    }
 
-    _onEvent: function(event, coord) {
+    _onEvent(event, coord) {
         let [isButton, button] = event.get_button();
         let type = event.get_event_type();
 

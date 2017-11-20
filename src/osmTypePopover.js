@@ -21,14 +21,11 @@
 
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 
 const OSMTypeListRow = imports.osmTypeListRow;
 const SearchPopover = imports.searchPopover;
 
-var OSMTypePopover = new Lang.Class({
-    Name: 'OSMTypePopover',
-    Extends: SearchPopover.SearchPopover,
+var OSMTypePopover = GObject.registerClass({
     InternalChildren: ['list'],
     Template: 'resource:///org/gnome/Maps/ui/osm-type-popover.ui',
     Signals : {
@@ -37,25 +34,26 @@ var OSMTypePopover = new Lang.Class({
         'selected' : { param_types: [ GObject.TYPE_STRING,
                                       GObject.TYPE_STRING,
                                       GObject.TYPE_STRING ] }
-    },
+    }
+}, class OSMTypePopover extends SearchPopover.SearchPopover {
 
-    _init: function(props) {
-        this.parent(props);
+    _init(props) {
+        super._init(props);
 
         this._list.connect('row-activated', (list, row) => {
             if (row)
                 this.emit('selected', row.key, row.value, row.title);
         });
-    },
+    }
 
-    showMatches: function(matches) {
+    showMatches(matches) {
         this._list.forall((row) => row.destroy());
 
         matches.forEach((type) => this._addRow(type));
         this.show();
-    },
+    }
 
-    _addRow: function(type) {
+    _addRow(type) {
         let row = new OSMTypeListRow.OSMTypeListRow({ type: type,
                                                       can_focus: true });
         this._list.add(row);

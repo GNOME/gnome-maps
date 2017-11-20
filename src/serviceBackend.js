@@ -19,42 +19,42 @@
  * Author: Damián Nohales <damiannohales@gmail.com>
  */
 
-const Lang = imports.lang;
+const GObject = imports.gi.GObject;
 
 const Utils = imports.utils;
 
-var ServiceBackend = new Lang.Class({
-    Name: 'SocialServiceServiceBackend',
-    Abstract: true,
+var ServiceBackend = GObject.registerClass({
+    Abstract: true
+}, class ServiceBackend extends GObject.Object {
 
     //Abstract
-    get name() { },
+    get name() { }
 
     //Abstract
-    createRestCall: function(authorizer) { },
+    createRestCall(authorizer) { }
 
     //Abstract
-    refreshAuthorization: function(authorizer, cancellable) { },
+    refreshAuthorization(authorizer, cancellable) { }
 
     //Abstract
-    getAuthorizerAccount: function(authorizer) { },
+    getAuthorizerAccount(authorizer) { }
 
     //Abstract
-    createAuthorizer: function(account) { },
+    createAuthorizer(account) { }
 
     //Abstract
-    isTokenInvalid: function(restCall, parsedPayload) { },
+    isTokenInvalid(restCall, parsedPayload) { }
 
     //Abstract
-    isInvalidCall: function(restCall, parsedPayload) { },
+    isInvalidCall(restCall, parsedPayload) { }
 
     //Abstract
-    getCallResultCode: function(restCall, parsedPayload) { },
+    getCallResultCode(restCall, parsedPayload) { }
 
     //Abstract
-    getCallResultMessage: function(restCall, parsedPayload) { },
+    getCallResultMessage(restCall, parsedPayload) { }
 
-    callAsync: function(authorizer, method, func, params, callback, cancellable, mustRefreshToken) {
+    callAsync(authorizer, method, func, params, callback, cancellable, mustRefreshToken) {
         mustRefreshToken = mustRefreshToken || true;
         cancellable = cancellable || null;
 
@@ -94,17 +94,17 @@ var ServiceBackend = new Lang.Class({
             else
                 callback(account, data, null);
         });
-    },
+    }
 
-    performCheckIn: function(authorizer, checkIn, callback, cancellable) {
+    performCheckIn(authorizer, checkIn, callback, cancellable) {
         callback = callback || function() {};
         this._realPerformCheckIn(authorizer, checkIn, callback, cancellable);
-    },
+    }
 
     //Abstract
-    _realPerformCheckIn: function(authorizer, checkIn, callback, cancellable) { },
+    _realPerformCheckIn(authorizer, checkIn, callback, cancellable) { }
 
-    findPlaces: function(authorizer, latitude, longitude, distance, callback, cancellable) {
+    findPlaces(authorizer, latitude, longitude, distance, callback, cancellable) {
         callback = callback || function() {};
         this._realFindPlaces(authorizer,
                              latitude,
@@ -117,11 +117,11 @@ var ServiceBackend = new Lang.Class({
                                      callback(account, [], error);
                              },
                              cancellable);
-    },
+    }
 
     //Abstract
-    _realFindPlaces: function(authorizer, latitude, longitude, distance, callback, cancellable) { },
+    _realFindPlaces(authorizer, latitude, longitude, distance, callback, cancellable) { }
 
     //Abstract
-    createPlaces: function(rawData) { }
+    createPlaces(rawData) { }
 });

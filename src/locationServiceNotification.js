@@ -21,7 +21,7 @@
 
 const Gdk = imports.gi.Gdk;
 const Gio = imports.gi.Gio;
-const Lang = imports.lang;
+const GObject = imports.gi.GObject;
 
 const Application = imports.application;
 const Geoclue = imports.geoclue;
@@ -30,12 +30,11 @@ const Utils = imports.utils;
 
 const _PRIVACY_PANEL = 'gnome-privacy-panel.desktop';
 
-var LocationServiceNotification = new Lang.Class({
-    Name: 'LocationServiceNotification',
-    Extends: Notification.Notification,
+var LocationServiceNotification = GObject.registerClass(
+class LocationServiceNotification extends Notification.Notification {
 
-    _init: function() {
-        this.parent();
+    _init() {
+        super._init();
 
         let ui = Utils.getUIObject('location-service-notification',
                                    [ 'button', 'grid' ]);

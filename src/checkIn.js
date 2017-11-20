@@ -22,15 +22,12 @@
 const GObject = imports.gi.GObject;
 const Goa = imports.gi.Goa;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 
 const CheckInDialog = imports.checkInDialog;
 const FacebookBackend = imports.facebookBackend;
 const FoursquareBackend = imports.foursquareBackend;
 
-var CheckInManager = new Lang.Class({
-    Name: 'CheckInManager',
-    Extends: GObject.Object,
+var CheckInManager = GObject.registerClass({
     Signals: {
         'accounts-refreshed': { }
     },
@@ -39,10 +36,10 @@ var CheckInManager = new Lang.Class({
                                                 '',
                                                 '',
                                                 GObject.ParamFlags.READABLE)
-    },
-
-    _init: function() {
-        this.parent();
+    }
+}, class CheckInManager extends GObject.Object {
+    _init() {
+        super._init();
 
         try {
             this._goaClient = Goa.Client.new_sync(null);
@@ -66,17 +63,17 @@ var CheckInManager = new Lang.Class({
         }
 
         this._refreshGoaAccounts();
-    },
+    }
 
-    _initBackends: function() {
+    _initBackends() {
         let facebookBackend = new FacebookBackend.FacebookBackend();
         this._backends[facebookBackend.name] = facebookBackend;
 
         let foursquareBackend = new FoursquareBackend.FoursquareBackend();
         this._backends[foursquareBackend.name] = foursquareBackend;
-    },
+    }
 
-    _refreshGoaAccounts: function() {
+    _refreshGoaAccounts() {
         if (!this._goaClient)
             return;
         let accounts = this._goaClient.get_accounts();
@@ -99,39 +96,39 @@ var CheckInManager = new Lang.Class({
 
         this.emit('accounts-refreshed');
         this.notify('hasCheckIn');
-    },
+    }
 
     get client() {
         return this._goaClient;
-    },
+    }
 
     get accounts() {
         return this._accounts;
-    },
+    }
 
     get hasCheckIn() {
         return this._accounts.length > 0;
-    },
+    }
 
-    _getAuthorizer: function(account) {
+    _getAuthorizer(account) {
         return this._authorizers[account.get_account().id];
-    },
+    }
 
-    _getBackend: function(account) {
+    _getBackend(account) {
         return this._backends[account.get_account().provider_type];
-    },
+    }
 
-    performCheckIn: function(account, checkIn, callback, cancellable) {
+    performCheckIn(account, checkIn, callback, cancellable) {
         this._getBackend(account)
             .performCheckIn(this._getAuthorizer(account), checkIn, callback, cancellable);
-    },
+    }
 
-    findPlaces: function(account, latitude, longitude, distance, callback, cancellable) {
+    findPlaces(account, latitude, longitude, distance, callback, cancellable) {
         this._getBackend(account)
             .findPlaces(this._getAuthorizer(account), latitude, longitude, distance, callback, cancellable);
-    },
+    }
 
-    showCheckInDialog: function(parentWindow, place, matchPlace) {
+    showCheckInDialog(parentWindow, place, matchPlace) {
         let dialog = new CheckInDialog.CheckInDialog({ transient_for: parentWindow,
                                                        matchPlace: matchPlace,
                                                        place: place });
@@ -170,14 +167,12 @@ var CheckInManager = new Lang.Class({
     }
 });
 
-var CheckIn = new Lang.Class({
-    Name: 'CheckIn',
-
-    _init: function() {
+var CheckIn = class {
+    _init() {
         this.message = null;
         this.place = null;
         this.privacy = null;
         this.broadcastFacebook = false;
         this.broadcastTwitter = false;
     }
-});
+};

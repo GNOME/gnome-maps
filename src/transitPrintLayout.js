@@ -19,12 +19,11 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Lang = imports.lang;
-
 const Cairo = imports.cairo;
 const Champlain = imports.gi.Champlain;
 const Clutter = imports.gi.Clutter;
 const Gdk = imports.gi.Gdk;
+const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 
 const MapSource = imports.mapSource;
@@ -60,20 +59,19 @@ const _Instruction = {
     SCALE_MARGIN: 0.01
 };
 
-var TransitPrintLayout = new Lang.Class({
-    Name: 'TransitPrintLayout',
-    Extends: PrintLayout.PrintLayout,
+var TransitPrintLayout = GObject.registerClass(
+class TransitPrintLayout extends PrintLayout.PrintLayout {
 
-    _init: function(params) {
+    _init(params) {
         this._itinerary = params.itinerary;
         delete params.itinerary;
 
         params.totalSurfaces = this._getNumberOfSurfaces();
 
-        this.parent(params);
-    },
+        super._init(params);
+    }
 
-    _getNumberOfSurfaces: function() {
+    _getNumberOfSurfaces() {
         // always one fixed surface for the title label
         let numSurfaces = 1;
 
@@ -88,9 +86,9 @@ var TransitPrintLayout = new Lang.Class({
         numSurfaces++;
 
         return numSurfaces;
-    },
+    }
 
-    _drawMapView: function(width, height, zoomLevel, index) {
+    _drawMapView(width, height, zoomLevel, index) {
         let pageNum = this.numPages - 1;
         let x = this._cursorX;
         let y = this._cursorY;
@@ -138,22 +136,22 @@ var TransitPrintLayout = new Lang.Class({
             if (surface)
                 this._addSurface(surface, x, y, pageNum);
         }
-    },
+    }
 
-    _createStartMarker: function(leg, previousLeg) {
+    _createStartMarker(leg, previousLeg) {
         return new TransitWalkMarker.TransitWalkMarker({ leg: leg,
                                                          previousLeg: previousLeg });
-    },
+    }
 
-    _createBoardMarker: function(leg) {
+    _createBoardMarker(leg) {
         return new TransitBoardMarker.TransitBoardMarker({ leg: leg });
-    },
+    }
 
-    _createArrivalMarker: function(leg) {
+    _createArrivalMarker(leg) {
         return new TransitArrivalMarker.TransitArrivalMarker({ leg: leg });
-    },
+    }
 
-    _addRouteLayer: function(view, index) {
+    _addRouteLayer(view, index) {
         let routeLayer = new Champlain.PathLayer({ stroke_width: _STROKE_WIDTH,
                                                    stroke_color: _STROKE_COLOR });
         let leg = this._itinerary.legs[index];
@@ -184,9 +182,9 @@ var TransitPrintLayout = new Lang.Class({
 
             routeLayer.add_node(firstPoint);
         }
-    },
+    }
 
-    _renderWidget: function(widget, width, height) {
+    _renderWidget(widget, width, height) {
         let pageNum = this.numPages - 1;
         let x = this._cursorX;
         let y = this._cursorY;
@@ -213,9 +211,9 @@ var TransitPrintLayout = new Lang.Class({
             let surface = widget.get_surface();
             this._addSurface(surface, x, y, pageNum);
         });
-    },
+    }
 
-    _drawInstruction: function(width, height, leg, start) {
+    _drawInstruction(width, height, leg, start) {
         let legRow = new TransitLegRow.TransitLegRow({
             visible: true,
             leg: leg,
@@ -224,9 +222,9 @@ var TransitPrintLayout = new Lang.Class({
         });
 
         this._renderWidget(legRow, width, height);
-    },
+    }
 
-    _drawArrival: function(width, height) {
+    _drawArrival(width, height) {
         let arrivalRow = new TransitArrivalRow.TransitArrivalRow({
             visible: true,
             itinerary: this._itinerary,
@@ -234,14 +232,14 @@ var TransitPrintLayout = new Lang.Class({
         });
 
         this._renderWidget(arrivalRow, width, height);
-    },
+    }
 
-    _legHasMiniMap: function(index) {
+    _legHasMiniMap(index) {
         let leg = this._itinerary.legs[index];
         return !leg.transit;
-    },
+    }
 
-    render: function() {
+    render() {
         let headerWidth = _Header.SCALE_X * this._pageWidth;
         let headerHeight = _Header.SCALE_Y * this._pageHeight;
         let headerMargin = _Header.SCALE_MARGIN * this._pageHeight;

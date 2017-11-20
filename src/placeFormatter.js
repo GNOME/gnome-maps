@@ -20,24 +20,22 @@
  */
 
 const Geocode = imports.gi.GeocodeGlib;
-const Lang = imports.lang;
 
 const StoredRoute = imports.storedRoute;
 
-var PlaceFormatter = new Lang.Class({
-    Name: "PlaceFormatter",
+var PlaceFormatter = class PlaceFormatter {
 
-    _init: function(place) {
+    constructor(place) {
         this._place = place;
         this._rows = [];
         this._titleProperty = 'name';
 
         this._update();
-    },
+    }
 
     get place() {
         return this._place;
-    },
+    }
 
     get title() {
         let title;
@@ -50,13 +48,13 @@ var PlaceFormatter = new Lang.Class({
             title = this.place[this._titleProperty];
 
         return title;
-    },
+    }
 
     get rows() {
         return this._rows;
-    },
+    }
 
-    getDetailsString: function() {
+    getDetailsString() {
         if (this._place instanceof StoredRoute.StoredRoute)
             return this._place.viaString;
 
@@ -65,9 +63,9 @@ var PlaceFormatter = new Lang.Class({
                 return this._place[prop];
             }).join(', ');
         }).join(', ');
-    },
+    }
 
-    _update: function() {
+    _update() {
         switch (this._place.place_type) {
         case Geocode.PlaceType.COUNTRY:
             if (this._place.country)
@@ -108,12 +106,12 @@ var PlaceFormatter = new Lang.Class({
                 this._addRow(['postal_code', 'town']);
             break;
         }
-    },
+    }
 
-    _addRow: function(properties) {
+    _addRow(properties) {
         properties = properties.filter((prop) => this._place[prop] ? true : false);
 
         if (properties.length > 0)
             this._rows.push(properties);
     }
-});
+};

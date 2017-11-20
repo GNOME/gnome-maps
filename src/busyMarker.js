@@ -18,10 +18,8 @@
  */
 
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
+const GObject = imports.gi.GObject;
 
-var BusyMarker = new Lang.Class({
-    Name: 'BusyMarker',
-    Extends: Gtk.Frame,
+var BusyMarker = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/busy-marker.ui'
-});
+}, class BusyMarker extends Gtk.Frame {});

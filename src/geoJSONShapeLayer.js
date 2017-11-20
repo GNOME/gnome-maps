@@ -17,34 +17,33 @@
  * Author: Hashem Nasarat <hashem@riseup.net>
  */
 
-const Lang = imports.lang;
+const GObject = imports.gi.GObject;
 
 const GeoJSONSource = imports.geoJSONSource;
 const ShapeLayer = imports.shapeLayer;
 
-var GeoJSONShapeLayer = new Lang.Class({
-    Name: 'GeoJSONShapeLayer',
-    Extends: ShapeLayer.ShapeLayer,
+var GeoJSONShapeLayer = GObject.registerClass(
+class GeoJSONShapeLayer extends ShapeLayer.ShapeLayer {
 
-    _init: function(params) {
-        this.parent(params);
+    _init(params) {
+        super._init(params);
 
         this._mapSource = new GeoJSONSource.GeoJSONSource({
             mapView: this._mapView,
             markerLayer: this._markerLayer
         });
-    },
+    }
 
-    getName: function() {
+    getName() {
         /* Special Case since this file extension contains 2 periods */
         let suffix = '.geo.json';
         if (this.filename.endsWith(suffix))
             return this.filename.replace(new RegExp(suffix + '$'), '');
         else
-            return this.parent();
-    },
+            return super.getName();
+    }
 
-    _parseContent: function() {
+    _parseContent() {
         this._mapSource.parse(JSON.parse(this._fileContents));
     }
 });
@@ -53,3 +52,6 @@ GeoJSONShapeLayer.mimeTypes = ['application/vnd.geo+json',
                                'application/geo+json',
                                'application/json'];
 GeoJSONShapeLayer.displayName = 'GeoJSON';
+GeoJSONShapeLayer.createInstance = function(params) {
+    return new GeoJSONShapeLayer(params);
+};

@@ -25,7 +25,6 @@ const GObject = imports.gi.GObject;
 const Geocode = imports.gi.GeocodeGlib;
 const Gio = imports.gi.Gio;
 const GtkChamplain = imports.gi.GtkChamplain;
-const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
@@ -86,9 +85,7 @@ const DASHED_ROUTE_LINE_FILLED_LENGTH = 5;
 // length of gaps of dashed lines used for walking legs of transit itineraries
 const DASHED_ROUTE_LINE_GAP_LENGTH = 5;
 
-var MapView = new Lang.Class({
-    Name: 'MapView',
-    Extends: GtkChamplain.Embed,
+var MapView = GObject.registerClass({
     Properties: {
         // this property is true when the routing sidebar is active
         'routingOpen': GObject.ParamSpec.boolean('routingOpen',
@@ -113,10 +110,11 @@ var MapView = new Lang.Class({
         'view-moved': {},
         'marker-selected': { param_types: [Champlain.Marker] }
     },
+}, class MapView extends GtkChamplain.Embed {
 
     get routingOpen() {
         return this._routingOpen || this._instructionMarkerLayer.visible;
-    },
+    }
 
     set routingOpen(value) {
         let isValid = Application.routeQuery.isValid();
@@ -127,19 +125,19 @@ var MapView = new Lang.Class({
         if (!value)
             this.routeShowing = false;
         this.notify('routingOpen');
-    },
+    }
 
     get routeShowing() {
         return this._routeShowing;
-    },
+    }
 
     set routeShowing(value) {
         this._routeShowing = value;
         this.notify('routeShowing');
-    },
+    }
 
-    _init: function(params) {
-        this.parent();
+    _init(params) {
+        super._init();
 
         let mapType = params.mapType || MapType.STREET;
         delete params.mapType;
@@ -157,9 +155,9 @@ var MapView = new Lang.Class({
                                     this._updateUserLocation.bind(this));
         this._storeId = 0;
         this._connectRouteSignals();
-    },
+    }
 
-    _initScale: function(view) {
+    _initScale(view) {
         this._scale = new Champlain.Scale({ visible: true });
         this._scale.connect_view(view);
 
@@ -173,9 +171,9 @@ var MapView = new Lang.Class({
         this._scale.set_x_align(Clutter.ActorAlign.START);
         this._scale.set_y_align(Clutter.ActorAlign.END);
         view.add_child(this._scale);
-    },
+    }
 
-    _initView: function() {
+    _initView() {
         let view = this.get_view();
         view.zoom_level = 3;
         view.min_zoom_level = MapMinZoom;
@@ -196,10 +194,10 @@ var MapView = new Lang.Class({
 
         this._initScale(view);
         return view;
-    },
+    }
 
     /* create and store a route layer, pass true to get a dashed line */
-    _createRouteLayer: function(dashed, lineColor, width) {
+    _createRouteLayer(dashed, lineColor, width) {
         let red = Color.parseColor(lineColor, 0);
         let green = Color.parseColor(lineColor, 1);
         let blue = Color.parseColor(lineColor, 2);
@@ -218,9 +216,9 @@ var MapView = new Lang.Class({
         this.view.add_layer(routeLayer);
 
         return routeLayer;
-    },
+    }
 
-    _clearRouteLayers: function() {
+    _clearRouteLayers() {
         this._routeLayers.forEach((routeLayer) => {
             routeLayer.remove_all();
             routeLayer.visible = false;
@@ -228,9 +226,9 @@ var MapView = new Lang.Class({
         });
 
         this._routeLayers = [];
-    },
+    }
 
-    _initLayers: function() {
+    _initLayers() {
         let mode = Champlain.SelectionMode.SINGLE;
 
         this._userLocationLayer = new Champlain.MarkerLayer({ selection_mode: mode });
@@ -250,14 +248,14 @@ var MapView = new Lang.Class({
         ShapeLayer.SUPPORTED_TYPES.push(GpxShapeLayer.GpxShapeLayer);
 
         this._routeLayers = [];
-    },
+    }
 
-    _ensureInstructionLayerAboveRouteLayers: function() {
+    _ensureInstructionLayerAboveRouteLayers() {
         this.view.remove_layer(this._instructionMarkerLayer);
         this.view.add_layer(this._instructionMarkerLayer);
-    },
+    }
 
-    _connectRouteSignals: function() {
+    _connectRouteSignals() {
         let route = Application.routingDelegator.graphHopper.route;
         let transitPlan = Application.routingDelegator.openTripPlanner.plan;
         let query = Application.routeQuery;
@@ -287,11 +285,10 @@ var MapView = new Lang.Class({
             this.routeShowing = false;
         });
 
-
         query.connect('notify', () => this.routingOpen = query.isValid());
-    },
+    }
 
-    setMapType: function(mapType) {
+    setMapType(mapType) {
         if (this._mapType && this._mapType === mapType)
             return;
 
@@ -331,13 +328,13 @@ var MapView = new Lang.Class({
         }
 
         overlay_sources.forEach((source) => this.view.add_overlay_source(source, 255));
-    },
+    }
 
-    toggleScale: function() {
+    toggleScale() {
         this._scale.visible = !this._scale.visible;
-    },
+    }
 
-    openShapeLayers: function(files) {
+    openShapeLayers(files) {
         let bbox = new Champlain.BoundingBox();
         let ret = true;
         files.forEach((file) => {
@@ -362,22 +359,22 @@ var MapView = new Lang.Class({
 
         this.gotoBBox(bbox);
         return ret;
-    },
+    }
 
-    removeShapeLayer: function(shapeLayer) {
+    removeShapeLayer(shapeLayer) {
         shapeLayer.unload();
         let i = this._findShapeLayerIndex(shapeLayer.file);
         this.shapeLayerStore.remove(i);
-    },
+    }
 
-    _findShapeLayerIndex: function(file) {
+    _findShapeLayerIndex(file) {
         for (let i = 0; i < this.shapeLayerStore.get_n_items(); i++)
             if (this.shapeLayerStore.get_item(i).file.equal(file))
                 return i;
         return -1;
-    },
+    }
 
-    goToGeoURI: function(uri) {
+    goToGeoURI(uri) {
         try {
             let location = new Location.Location({ heading: -1 });
             location.set_from_uri(uri);
@@ -394,9 +391,9 @@ var MapView = new Lang.Class({
             Application.notificationManager.showMessage(msg);
             Utils.debug("failed to open GeoURI: %s".format(e.message));
         }
-    },
+    }
 
-    gotoUserLocation: function(animate) {
+    gotoUserLocation(animate) {
         if (!this._userLocation)
             return;
 
@@ -404,15 +401,15 @@ var MapView = new Lang.Class({
         Utils.once(this._userLocation, "gone-to",
                    () => this.emit('gone-to-user-location'));
         this._userLocation.goTo(animate);
-    },
+    }
 
-    userLocationVisible: function() {
+    userLocationVisible() {
         let box = this.view.get_bounding_box();
 
         return box.covers(this._userLocation.latitude, this._userLocation.longitude);
-    },
+    }
 
-    _updateUserLocation: function() {
+    _updateUserLocation() {
         if (!Application.geoclue.place)
             return;
 
@@ -436,15 +433,15 @@ var MapView = new Lang.Class({
         this._userLocation.selected = previousSelected;
 
         this.emit('user-location-changed');
-    },
+    }
 
-    _storeLocation: function() {
+    _storeLocation() {
         let box = this.view.get_bounding_box();
         let lastViewedLocation = [box.top, box.bottom, box.left, box.right];
         Application.settings.set('last-viewed-location', lastViewedLocation);
-    },
+    }
 
-    _goToStoredLocation: function() {
+    _goToStoredLocation() {
         if (!this.view.realized)
             return;
 
@@ -454,9 +451,9 @@ var MapView = new Lang.Class({
                                                        left: box[2],
                                                        right: box[3] });
         this.gotoBBox(bounding_box, true);
-    },
+    }
 
-    gotoBBox: function(bbox, linear) {
+    gotoBBox(bbox, linear) {
         if (!bbox.is_valid()) {
             Utils.debug('Bounding box is invalid');
             return;
@@ -472,9 +469,9 @@ var MapView = new Lang.Class({
                                                     right  : bbox.right })
         });
         new MapWalker.MapWalker(place, this).goTo(true, linear);
-    },
+    }
 
-    showTurnPoint: function(turnPoint) {
+    showTurnPoint(turnPoint) {
         if (this._turnPointMarker)
             this._turnPointMarker.destroy();
 
@@ -485,9 +482,9 @@ var MapView = new Lang.Class({
                                                                       mapView: this });
         this._instructionMarkerLayer.add_marker(this._turnPointMarker);
         this._turnPointMarker.goTo();
-    },
+    }
 
-    showTransitStop: function(transitStop, transitLeg) {
+    showTransitStop(transitStop, transitLeg) {
         if (this._turnPointMarker)
             this._turnPointMarker.destroy();
 
@@ -496,9 +493,9 @@ var MapView = new Lang.Class({
                                                                       mapView: this });
         this._instructionMarkerLayer.add_marker(this._turnPointMarker);
         this._turnPointMarker.goTo();
-    },
+    }
 
-    showContact: function(contact) {
+    showContact(contact) {
         let places = contact.get_places();
         if (places.length === 0)
             return;
@@ -516,9 +513,9 @@ var MapView = new Lang.Class({
             this.gotoBBox(contact.bounding_box);
         else
             new MapWalker.MapWalker(places[0], this).goTo(true);
-    },
+    }
 
-    _showStoredRoute: function(stored) {
+    _showStoredRoute(stored) {
         let query = Application.routeQuery;
         let route = Application.routingDelegator.graphHopper.route;
 
@@ -541,9 +538,9 @@ var MapView = new Lang.Class({
             query.thaw_notify();
         });
         route.reset();
-    },
+    }
 
-    showPlace: function(place, animation) {
+    showPlace(place, animation) {
         this._placeLayer.remove_all();
 
         if (place instanceof StoredRoute.StoredRoute) {
@@ -557,9 +554,9 @@ var MapView = new Lang.Class({
 
         this._placeLayer.add_marker(placeMarker);
         placeMarker.goToAndSelect(animation);
-    },
+    }
 
-    showRoute: function(route) {
+    showRoute(route) {
         let routeLayer;
 
         this._clearRouteLayers();
@@ -574,9 +571,9 @@ var MapView = new Lang.Class({
 
         this._showDestinationTurnpoints();
         this.gotoBBox(route.bbox);
-    },
+    }
 
-    _showDestinationTurnpoints: function() {
+    _showDestinationTurnpoints() {
         let route = Application.routingDelegator.graphHopper.route;
         let query = Application.routeQuery;
         let pointIndex = 0;
@@ -592,9 +589,9 @@ var MapView = new Lang.Class({
                 pointIndex++;
             }
         }, this);
-    },
+    }
 
-    _showTransitItinerary: function(itinerary) {
+    _showTransitItinerary(itinerary) {
         this.gotoBBox(itinerary.bbox);
         this._clearRouteLayers();
         this._placeLayer.remove_all();
@@ -672,13 +669,13 @@ var MapView = new Lang.Class({
         this._instructionMarkerLayer.add_marker(arrival);
 
         this.routingOpen = true;
-    },
+    }
 
-    _showTransitPlan: function(plan) {
+    _showTransitPlan(plan) {
         this.gotoBBox(plan.bbox);
-    },
+    }
 
-    _onViewMoved: function() {
+    _onViewMoved() {
         this.emit('view-moved');
         if (this._storeId !== 0)
             return;
@@ -687,9 +684,9 @@ var MapView = new Lang.Class({
             this._storeId = 0;
             this._storeLocation();
         });
-    },
+    }
 
-    onSetMarkerSelected: function(selectedMarker) {
+    onSetMarkerSelected(selectedMarker) {
         this.emit('marker-selected', selectedMarker);
     }
 });

@@ -22,7 +22,6 @@ const GObject = imports.gi.GObject;
 const GdkPixbuf = imports.gi.GdkPixbuf;
 const Geocode = imports.gi.GeocodeGlib;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 
 const ContactPlace = imports.contactPlace;
 const Place = imports.place;
@@ -50,11 +49,10 @@ var Columns = {
     ADDED: 4
 };
 
-var PlaceStore = new Lang.Class({
-    Name: 'PlaceStore',
-    Extends: Gtk.ListStore,
+var PlaceStore = GObject.registerClass(
+class PlaceStore extends Gtk.ListStore {
 
-    _init: function(params) {
+    _init(params) {
         this._recentPlacesLimit = params.recentPlacesLimit;
         delete params.recentPlacesLimit;
 
@@ -67,7 +65,7 @@ var PlaceStore = new Lang.Class({
                                               _PLACES_STORE_FILE]);
         this._typeTable = {};
 
-        this.parent();
+        super._init(params);
         this.set_column_types([GdkPixbuf.Pixbuf,
                                GObject.TYPE_OBJECT,
                                GObject.TYPE_STRING,
@@ -75,22 +73,22 @@ var PlaceStore = new Lang.Class({
                                GObject.TYPE_DOUBLE]);
 
         this.set_sort_column_id(Columns.ADDED, Gtk.SortType.ASCENDING);
-    },
+    }
 
-    _addPlace: function(place, type) {
+    _addPlace(place, type) {
         this._setPlace(this.append(), place, type, new Date().getTime());
         this._store();
-    },
+    }
 
-    _addContact: function(place) {
+    _addContact(place) {
         if (this.exists(place, PlaceType.CONTACT)) {
             return;
         }
 
         this._addPlace(place, PlaceType.CONTACT);
-    },
+    }
 
-    _addFavorite: function(place) {
+    _addFavorite(place) {
         if (!place.store)
             return;
 
@@ -105,9 +103,9 @@ var PlaceStore = new Lang.Class({
             }, true);
         }
         this._addPlace(place, PlaceType.FAVORITE);
-    },
+    }
 
-    _addRecent: function(place) {
+    _addRecent(place) {
         if (!place.store)
             return;
 
@@ -133,9 +131,9 @@ var PlaceStore = new Lang.Class({
         }
         this._addPlace(place, PlaceType.RECENT);
         this._numRecentPlaces++;
-    },
+    }
 
-    _addRecentRoute: function(stored) {
+    _addRecentRoute(stored) {
         if (this.exists(stored, PlaceType.RECENT_ROUTE))
             return;
 
@@ -157,9 +155,9 @@ var PlaceStore = new Lang.Class({
         }
         this._addPlace(stored, PlaceType.RECENT_ROUTE);
         this._numRecentRoutes++;
-    },
+    }
 
-    load: function() {
+    load() {
         if (!GLib.file_test(this.filename, GLib.FileTest.EXISTS))
             return;
 
@@ -191,9 +189,9 @@ var PlaceStore = new Lang.Class({
         } catch (e) {
             throw new Error('failed to parse places file');
         }
-    },
+    }
 
-    addPlace: function(place, type) {
+    addPlace(place, type) {
         if (type === PlaceType.FAVORITE)
             this._addFavorite(place, type);
         else if (type === PlaceType.RECENT)
@@ -202,9 +200,9 @@ var PlaceStore = new Lang.Class({
             this._addContact(place, type);
         else if (type === PlaceType.RECENT_ROUTE)
             this._addRecentRoute(place);
-    },
+    }
 
-    removePlace: function(place, placeType) {
+    removePlace(place, placeType) {
         if (!this.exists(place, placeType))
             return;
 
@@ -217,9 +215,9 @@ var PlaceStore = new Lang.Class({
             return false;
         }, true);
         this._store();
-    },
+    }
 
-    getModelForPlaceType: function(placeType) {
+    getModelForPlaceType(placeType) {
         let filter = new Gtk.TreeModelFilter({ child_model: this });
 
         filter.set_visible_func((model, iter) => {
@@ -228,9 +226,9 @@ var PlaceStore = new Lang.Class({
         });
 
         return filter;
-    },
+    }
 
-    _store: function() {
+    _store() {
         let jsonArray = [];
         this.foreach((model, path, iter) => {
             let place = model.get_value(iter, Columns.PLACE);
@@ -249,9 +247,9 @@ var PlaceStore = new Lang.Class({
         let buffer = JSON.stringify(jsonArray);
         if (!Utils.writeFile(this.filename, buffer))
             log('Failed to write places file!');
-    },
+    }
 
-    _setPlace: function(iter, place, type, added) {
+    _setPlace(iter, place, type, added) {
         this.set(iter,
                  [Columns.PLACE,
                   Columns.NAME,
@@ -268,9 +266,9 @@ var PlaceStore = new Lang.Class({
             });
         }
         this._typeTable[place.uniqueID] = type;
-    },
+    }
 
-    get: function(place) {
+    get(place) {
         let storedPlace = null;
 
         this.foreach((model, path, iter) => {
@@ -282,9 +280,9 @@ var PlaceStore = new Lang.Class({
             return false;
         });
         return storedPlace;
-    },
+    }
 
-    isStale: function(place) {
+    isStale(place) {
         if (!this.exists(place, null))
             return false;
 
@@ -302,16 +300,16 @@ var PlaceStore = new Lang.Class({
         let days = Math.abs(now - added) / _ONE_DAY;
 
         return (days >= _STALE_THRESHOLD);
-    },
+    }
 
-    exists: function(place, type) {
+    exists(place, type) {
         if (type !== undefined && type !== null && this._typeTable[place.uniqueID] !== undefined)
             return this._typeTable[place.uniqueID] === type;
         else
             return this._typeTable[place.uniqueID] !== undefined;
-    },
+    }
 
-    _removeIf: function(evalFunc, stop) {
+    _removeIf(evalFunc, stop) {
         this.foreach((model, path, iter) => {
             if (evalFunc(model, iter)) {
                 this.remove(iter);
@@ -320,9 +318,9 @@ var PlaceStore = new Lang.Class({
             }
             return false;
         });
-    },
+    }
 
-    updatePlace: function(place) {
+    updatePlace(place) {
         this.foreach((model, path, iter) => {
             let p = model.get_value(iter, Columns.PLACE);
 

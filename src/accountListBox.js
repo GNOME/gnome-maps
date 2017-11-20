@@ -21,25 +21,23 @@
 
 const Gio = imports.gi.Gio;
 const Goa = imports.gi.Goa;
+const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 
 const Application = imports.application;
 
-var AccountRow = new Lang.Class({
-    Name: 'AccountRow',
-    Extends: Gtk.ListBoxRow,
+var AccountRow = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/account-row.ui',
     InternalChildren: [ 'providerLabel',
                         'identityLabel',
                         'providerImage',
                         'attentionNeededImage' ],
-
-    _init: function(params) {
+}, class AccountRow extends Gtk.ListBoxRow {
+    _init(params) {
         this.account = params.account;
         delete params.account;
 
-        this.parent(params);
+        super._init(params);
 
         let account = this.account.get_account();
 
@@ -50,16 +48,14 @@ var AccountRow = new Lang.Class({
     }
 });
 
-var AccountListBox = new Lang.Class({
-    Name: 'AccountListBox',
-    Extends: Gtk.ListBox,
+var AccountListBox = GObject.registerClass({
     Signals: {
         'account-selected': { param_types: [Goa.Object] }
     },
-
-    _init: function(params) {
+}, class AccountListBox extends Gtk.ListBox {
+    _init(params) {
         params.activate_on_single_click = true;
-        this.parent(params);
+        super._init(params);
 
         Application.checkInManager.connect('accounts-refreshed', () => this.refresh());
 
@@ -67,9 +63,9 @@ var AccountListBox = new Lang.Class({
                      (list, row) => this.emit('account-selected', row.account));
 
         this.refresh();
-    },
+    }
 
-    refresh: function() {
+    refresh() {
         let accounts = Application.checkInManager.accounts;
 
         this.forall(function(row) {

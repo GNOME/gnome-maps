@@ -22,18 +22,13 @@
  */
 
 const Geocode = imports.gi.GeocodeGlib;
-const Lang = imports.lang;
 
 const Application = imports.application;
 const Place = imports.place;
 const Utils = imports.utils;
 
-var GeocodeService = new Lang.Class({
-    Name: 'GeocodeService',
-
-    _init: function() { },
-
-    search: function(string, bbox, cancellable, callback) {
+var GeocodeService = class GeocodeService {
+    search(string, bbox, cancellable, callback) {
         let answerCount = Application.settings.get('max-search-results');
         let forward     = Geocode.Forward.new_for_string(string);
 
@@ -60,9 +55,9 @@ var GeocodeService = new Lang.Class({
                 callback(null);
             }
         });
-    },
+    }
 
-    reverse: function(location, cancellable, callback) {
+    reverse(location, cancellable, callback) {
         let reverse = Geocode.Reverse.new_for_location(location);
 
         Application.application.mark_busy();
@@ -80,4 +75,4 @@ var GeocodeService = new Lang.Class({
             }
         });
     }
-});
+};

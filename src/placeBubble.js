@@ -21,9 +21,9 @@
 
 const GdkPixbuf = imports.gi.GdkPixbuf;
 const GLib = imports.gi.GLib;
+const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Format = imports.format;
-const Lang = imports.lang;
 
 const Application = imports.application;
 const ContactPlace = imports.contactPlace;
@@ -43,11 +43,10 @@ const THUMBNAIL_FETCH_SIZE = 128;
 // final scaled size of cropped thumnail
 const THUMBNAIL_FINAL_SIZE = 70;
 
-var PlaceBubble = new Lang.Class({
-    Name: 'PlaceBubble',
-    Extends: MapBubble.MapBubble,
+var PlaceBubble = GObject.registerClass(
+class PlaceBubble extends MapBubble.MapBubble {
 
-    _init: function(params) {
+    _init(params) {
         let ui = Utils.getUIObject('place-bubble', [ 'stack',
                                                      'box-content',
                                                      'grid-content',
@@ -62,7 +61,7 @@ var PlaceBubble = new Lang.Class({
         if (params.place.store)
             params.buttons |= MapBubble.Button.FAVORITE;
 
-        this.parent(params);
+        super._init(params);
 
         Utils.load_icon(this.place.icon, 48, (pixbuf) => this.image.pixbuf = pixbuf);
 
@@ -106,20 +105,20 @@ var PlaceBubble = new Lang.Class({
             this._initEditButton();
 
         this._initExpandButton();
-    },
+    }
 
-    _formatWikiLink: function(wiki) {
+    _formatWikiLink(wiki) {
         let lang = Wikipedia.getLanguage(wiki);
         let article = Wikipedia.getArticle(wiki);
 
         return Format.vprintf('https://%s.wikipedia.org/wiki/%s', [ lang, article ]);
-    },
+    }
 
     /*
      * Create an array of all content to be showed when expanding the place
      * bubble
      */
-    _createExpandedContent: function(place) {
+    _createExpandedContent(place) {
         let expandedContent = [];
 
         if (place.population) {
@@ -176,9 +175,9 @@ var PlaceBubble = new Lang.Class({
         }
 
         return expandedContent;
-    },
+    }
 
-    _attachContent: function(content, expandedContent) {
+    _attachContent(content, expandedContent) {
         content.forEach((info) => {
             let label = new Gtk.Label({ label: info,
                                         visible: true,
@@ -221,9 +220,9 @@ var PlaceBubble = new Lang.Class({
                 // Expand over both columns if this row has no label
                 this._expandedContent.attach(widget, 0, row, 2, 1);
         });
-    },
+    }
 
-    _populate: function(place) {
+    _populate(place) {
         let formatter = new PlaceFormatter.PlaceFormatter(place);
 
         let content = formatter.rows.map((row) => {
@@ -248,22 +247,22 @@ var PlaceBubble = new Lang.Class({
 
         if (place.wiki)
             this._requestWikipediaThumbnail(place.wiki);
-    },
+    }
 
-    _requestWikipediaThumbnail: function(wiki) {
+    _requestWikipediaThumbnail(wiki) {
         Wikipedia.fetchArticleThumbnail(wiki, THUMBNAIL_FETCH_SIZE,
                                         this._onThumbnailComplete.bind(this));
-    },
+    }
 
-    _onThumbnailComplete: function(thumbnail) {
+    _onThumbnailComplete(thumbnail) {
         if (thumbnail) {
             this.thumbnail.pixbuf = this._cropAndScaleThumbnail(thumbnail);
             this.iconStack.visible_child_name = 'thumbnail';
         }
-    },
+    }
 
     // returns a cropped square-shaped thumbnail
-    _cropAndScaleThumbnail: function(thumbnail) {
+    _cropAndScaleThumbnail(thumbnail) {
         let width = thumbnail.get_width();
         let height = thumbnail.get_height();
         let croppedThumbnail;
@@ -279,28 +278,28 @@ var PlaceBubble = new Lang.Class({
         return croppedThumbnail.scale_simple(THUMBNAIL_FINAL_SIZE,
                                              THUMBNAIL_FINAL_SIZE,
                                              GdkPixbuf.InterpType.BILINEAR);
-    },
+    }
 
     // clear the view widgets to be able to re-populate an updated place
-    _clearView: function() {
+    _clearView() {
         this._boxContent.get_children().forEach((child) => child.destroy());
         this._expandedContent.get_children().forEach((child) => child.destroy());
-    },
+    }
 
-    _initEditButton: function() {
+    _initEditButton() {
         this._editButton.visible = true;
         this._editButton.connect('clicked', this._onEditClicked.bind(this));
-    },
+    }
 
-    _initExpandButton: function() {
+    _initExpandButton() {
         let image = this._expandButton.get_child();
 
         this._expandButton.connect('clicked', (function() {
             this._revealer.reveal_child = !this._revealer.child_revealed;
         }).bind(this));
-    },
+    }
 
-    _onEditClicked: function() {
+    _onEditClicked() {
         let osmEdit = Application.osmEdit;
         /* if the user is not alread signed in, show the account dialog */
         if (!osmEdit.isSignedIn) {
@@ -317,9 +316,9 @@ var PlaceBubble = new Lang.Class({
         }
 
         this._edit();
-    },
+    }
 
-    _edit: function() {
+    _edit() {
         let osmEdit = Application.osmEdit;
         let dialog = osmEdit.createEditDialog(this.get_toplevel(), this._place);
 

@@ -20,9 +20,9 @@
 const Gdk = imports.gi.Gdk;
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
+const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const GWeather = imports.gi.GWeather;
-const Lang = imports.lang;
 
 const Application = imports.application;
 const Utils = imports.utils;
@@ -37,9 +37,7 @@ var Response = {
 
 const _NUM_VISIBLE = 6;
 
-var SendToDialog = new Lang.Class({
-    Name: 'SendToDialog',
-    Extends: Gtk.Dialog,
+var SendToDialog = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/send-to-dialog.ui',
     InternalChildren: [ 'list',
                         'weatherRow',
@@ -54,9 +52,10 @@ var SendToDialog = new Lang.Class({
                         'headerBar',
                         'cancelButton',
                         'chooseButton',
-                        'scrolledWindow' ],
+                        'scrolledWindow' ]
+}, class SendToDialog extends Gtk.Dialog {
 
-    _init: function(params) {
+    _init(params) {
         this._place = params.place;
         delete params.place;
 
@@ -64,7 +63,7 @@ var SendToDialog = new Lang.Class({
         delete params.mapView;
 
         params.use_header_bar = true;
-        this.parent(params);
+        super._init(params);
 
         this._scrolledWindow.min_content_height = 40 * _NUM_VISIBLE;
         this._headerBar.subtitle = this._place.name;
@@ -87,9 +86,9 @@ var SendToDialog = new Lang.Class({
             else
                 row.set_header(null);
         });
-    },
+    }
 
-    ensureApplications: function() {
+    ensureApplications() {
         let weatherInfo = Gio.DesktopAppInfo.new(_WEATHER_APPID + '.desktop');
         let clocksInfo = Gio.DesktopAppInfo.new(_CLOCKS_APPID + '.desktop');
         let browserInfo = Gio.AppInfo.get_default_for_uri_scheme('https');
@@ -122,9 +121,9 @@ var SendToDialog = new Lang.Class({
         }
 
         return appWeather || appClocks || browserInfo;
-    },
+    }
 
-    _getOSMURI: function() {
+    _getOSMURI() {
         let view = this._mapView.view;
         let place = this._place;
 
@@ -139,9 +138,9 @@ var SendToDialog = new Lang.Class({
                                                      place.location.longitude,
                                                      view.zoom_level);
         }
-    },
+    }
 
-    _activateRow: function(row) {
+    _activateRow(row) {
         let timestamp = Gtk.get_current_event_time();
 
         if (row === this._weatherRow || row === this._clocksRow) {
@@ -180,13 +179,13 @@ var SendToDialog = new Lang.Class({
             }
         }
         this.response(Response.SUCCESS);
-    },
+    }
 
-    _checkWeather: function(appInfo) {
+    _checkWeather(appInfo) {
         return (GWeather !== null && appInfo !== null);
-    },
+    }
 
-    _checkClocks: function(appInfo) {
+    _checkClocks(appInfo) {
         return (GWeather !== null && appInfo !== null);
     }
 });

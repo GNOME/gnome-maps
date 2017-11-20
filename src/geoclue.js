@@ -22,7 +22,6 @@
 const GObject = imports.gi.GObject;
 const GClue = imports.gi.Geoclue;
 const Gio = imports.gi.Gio;
-const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
 const Place = imports.place;
@@ -37,9 +36,7 @@ var State = {
     FAILED: 3
 };
 
-var Geoclue = new Lang.Class({
-    Name: 'Geoclue',
-    Extends: GObject.Object,
+var Geoclue = GObject.registerClass({
     Signals: {
         'location-changed': { }
     },
@@ -53,25 +50,26 @@ var Geoclue = new Lang.Class({
                                        State.FAILED,
                                        State.INITIAL)
     },
+}, class Geoclue extends GObject.Object {
 
     set state(s) {
         this._state = s;
         this.notify('state');
-    },
+    }
 
     get state() {
         return this._state;
-    },
+    }
 
-    _init: function() {
-        this.parent();
+    _init() {
+        super._init();
         this.place = null;
         this._state = State.INITIAL;
 
         this.start(null);
-    },
+    }
 
-    start: function(callback) {
+    start(callback) {
         let id = 'org.gnome.Maps';
         let level = GClue.AccuracyLevel.EXACT;
 
@@ -101,9 +99,9 @@ var Geoclue = new Lang.Class({
             if (callback)
                 callback(true);
         });
-    },
+    }
 
-    _onLocationNotify: function(simple) {
+    _onLocationNotify(simple) {
         let geoclueLocation = simple.get_location();
         let location = new Location.Location({
             latitude: geoclueLocation.latitude,
@@ -113,9 +111,9 @@ var Geoclue = new Lang.Class({
             description: geoclueLocation.description
         });
         this._updateLocation(location);
-    },
+    }
 
-    _updateLocation: function(location) {
+    _updateLocation(location) {
         if (!this.place)
             this.place = new Place.Place({ name: _("Current location") });
 

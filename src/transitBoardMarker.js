@@ -19,11 +19,10 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Lang = imports.lang;
-
 const Cairo = imports.cairo;
 const Clutter = imports.gi.Clutter;
 const Gdk = imports.gi.Gdk;
+const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 
 const Color = imports.color;
@@ -41,11 +40,10 @@ const ACTOR_SIZE = 20;
  */
 const OUTLINE_LUMINANCE_THREASHHOLD = 0.9;
 
-var TransitBoardMarker = new Lang.Class({
-    Name: 'TransitBoardMarker',
-    Extends: MapMarker.MapMarker,
+var TransitBoardMarker = GObject.registerClass(
+class TransitBoardMarker extends MapMarker.MapMarker {
 
-    _init: function(params) {
+    _init(params) {
         let firstPoint = params.leg.polyline[0];
         let location = new Location.Location({ latitude: firstPoint.latitude,
                                                longitude: firstPoint.longitude
@@ -54,10 +52,10 @@ var TransitBoardMarker = new Lang.Class({
 
         delete params.leg;
         params.place = new Place.Place({ location: location });
-        this.parent(params);
+        super._init(params);
 
         this.add_actor(this._createActor(leg));
-    },
+    }
 
     /* Creates a Clutter actor for the given transit leg, showing the
      * corresponding transit type icon and rendered inside a circle using the
@@ -68,7 +66,7 @@ var TransitBoardMarker = new Lang.Class({
      * background color above a threashold to improve readability against the
      * map background.
      */
-    _createActor: function(leg) {
+    _createActor(leg) {
         try {
             let bgColor = leg.color ? leg.color : TransitPlan.DEFAULT_ROUTE_COLOR;
             let fgColor =
@@ -131,7 +129,7 @@ var TransitBoardMarker = new Lang.Class({
             Utils.debug('Failed to load image: %s'.format(e.message));
             return null;
         }
-    },
+    }
 
     get anchor() {
         return { x: Math.floor(this.width / 2) - 1,

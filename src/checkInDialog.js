@@ -20,8 +20,8 @@
  */
 
 const Gio = imports.gi.Gio;
+const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
 const AccountListBox = imports.accountListBox;
@@ -39,9 +39,7 @@ var Response = {
     FAILURE_CHECKIN_DISABLED: 5
 };
 
-var CheckInDialog = new Lang.Class({
-    Name: 'CheckInDialog',
-    Extends: Gtk.Dialog,
+var CheckInDialog = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/check-in-dialog.ui',
     InternalChildren: [ 'cancelButton',
                         'okButton',
@@ -59,8 +57,8 @@ var CheckInDialog = new Lang.Class({
                         'foursquareOptionsPrivacyComboBox',
                         'foursquareOptionsBroadcastFacebookCheckButton',
                         'foursquareOptionsBroadcastTwitterCheckButton' ],
-
-    _init: function(params) {
+}, class CheckInDialog extends Gtk.Dialog {
+    _init(params) {
         this._place = params.place;
         delete params.place;
 
@@ -70,7 +68,7 @@ var CheckInDialog = new Lang.Class({
         // This is a construct-only property and cannot be set by GtkBuilder
         params.use_header_bar = true;
 
-        this.parent(params);
+        super._init(params);
 
         this._account = null;
         this._checkIn = new CheckIn.CheckIn();
@@ -86,16 +84,16 @@ var CheckInDialog = new Lang.Class({
 
         this._initHeaderBar();
         this._initWidgets();
-    },
+    }
 
-    _initHeaderBar: function() {
+    _initHeaderBar() {
         this._cancelButton.connect('clicked',
                                    () => this._cancellable.cancel());
 
         this._okButton.connect('clicked', () => this._startCheckInStep());
-    },
+    }
 
-    _initWidgets: function() {
+    _initWidgets() {
         // Limitations in Gjs means we can't do this in UI files yet
         this._accountListBox = new AccountListBox.AccountListBox({ visible: true });
         this._accountFrame.add(this._accountListBox);
@@ -128,14 +126,14 @@ var CheckInDialog = new Lang.Class({
             this._checkIn.place = place;
             this._startMessageStep();
         });
-    },
+    }
 
-    vfunc_show: function() {
+    vfunc_show() {
         this._startup();
-        this.parent();
-    },
+        super.vfunc_show();
+    }
 
-    _startup: function() {
+    _startup() {
         let accounts = Application.checkInManager.accounts;
 
         if (accounts.length > 1)
@@ -148,9 +146,9 @@ var CheckInDialog = new Lang.Class({
                 this.response(Response.FAILURE_CHECKIN_DISABLED);
             });
         }
-    },
+    }
 
-    _onAccountRefreshed: function() {
+    _onAccountRefreshed() {
         let accounts = Application.checkInManager.accounts;
 
         if (!Application.checkInManager.hasCheckIn)
@@ -163,14 +161,14 @@ var CheckInDialog = new Lang.Class({
 
             this.response(Response.FAILURE_ACCOUNT_DISABLED);
         }
-    },
+    }
 
-    _startAccountStep: function() {
+    _startAccountStep() {
         this.set_title(_("Select an account"));
         this._stack.set_visible_child_name('account');
-    },
+    }
 
-    _startPlaceStep: function() {
+    _startPlaceStep() {
         this.set_title(_("Loading"));
         this._stack.set_visible_child_name('loading');
 
@@ -180,9 +178,9 @@ var CheckInDialog = new Lang.Class({
                                               100,
                                               this._onFindPlacesFinished.bind(this),
                                               this._cancellable);
-    },
+    }
 
-    _onFindPlacesFinished: function(account, places, error) {
+    _onFindPlacesFinished(account, places, error) {
         if (!error) {
             if (places.length === 0) {
                 this.response(Response.FAILURE_NO_PLACES);
@@ -212,9 +210,9 @@ var CheckInDialog = new Lang.Class({
             this.error = error;
             this.response(Response.FAILURE_GET_PLACES);
         }
-    },
+    }
 
-    _startMessageStep: function() {
+    _startMessageStep() {
         /* Translators: %s is the name of the place to check in.
          */
         this.set_title(_("Check in to %s").format(this._checkIn.place.name));
@@ -240,9 +238,9 @@ var CheckInDialog = new Lang.Class({
                 optionsGrids[provider].show();
             else
                 optionsGrids[provider].hide();
-    },
+    }
 
-    _startCheckInStep: function() {
+    _startCheckInStep() {
         this.set_title(_("Loading"));
         this._stack.set_visible_child_name('loading');
 
@@ -268,9 +266,9 @@ var CheckInDialog = new Lang.Class({
                                                   this._checkIn,
                                                   this._onPerformCheckInFinished.bind(this),
                                                   this._cancellable);
-    },
+    }
 
-    _onPerformCheckInFinished: function (account, data, error) {
+    _onPerformCheckInFinished(account, data, error) {
         if (!error)
             this.response(Response.SUCCESS);
         else {

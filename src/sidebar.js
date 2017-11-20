@@ -24,7 +24,6 @@ const Cairo = imports.cairo;
 const Gdk = imports.gi.Gdk;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
@@ -40,9 +39,7 @@ const TransitMoreRow = imports.transitMoreRow;
 const TransitOptionsPanel = imports.transitOptionsPanel;
 const Utils = imports.utils;
 
-var Sidebar = new Lang.Class({
-    Name: 'Sidebar',
-    Extends: Gtk.Revealer,
+var Sidebar = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/sidebar.ui',
     InternalChildren: [ 'distanceInfo',
                         'entryList',
@@ -66,10 +63,11 @@ var Sidebar = new Lang.Class({
                         'transitItineraryListBox',
                         'transitItineraryBackButton',
                         'transitItineraryTimeLabel',
-                        'transitItineraryDurationLabel'],
+                        'transitItineraryDurationLabel']
+}, class Sidebar extends Gtk.Revealer {
 
-    _init: function(mapView) {
-        this.parent({ transition_type: Gtk.RevealerTransitionType.SLIDE_LEFT });
+    _init(mapView) {
+        super._init({ transition_type: Gtk.RevealerTransitionType.SLIDE_LEFT });
 
         this._mapView = mapView;
 
@@ -104,9 +102,9 @@ var Sidebar = new Lang.Class({
          */
         if (!Application.routingDelegator.openTripPlanner.enabled)
             this._modeTransitToggle.destroy();
-    },
+    }
 
-    _initTransportationToggles: function(pedestrian, bike, car, transit) {
+    _initTransportationToggles(pedestrian, bike, car, transit) {
         let transport = RouteQuery.Transportation;
 
         let onToggle = function(mode, button) {
@@ -143,9 +141,9 @@ var Sidebar = new Lang.Class({
 
         setToggles.bind(this)();
         this._query.connect('notify::transportation', setToggles.bind(this));
-    },
+    }
 
-    _switchRoutingMode: function(mode) {
+    _switchRoutingMode(mode) {
         if (mode === RouteQuery.Transportation.TRANSIT) {
             Application.routingDelegator.useTransit = true;
             this._linkButtonStack.visible_child_name = 'openTripPlanner';
@@ -158,9 +156,9 @@ var Sidebar = new Lang.Class({
             this._transitRevealer.reveal_child = false;
             Application.routingDelegator.openTripPlanner.plan.deselectItinerary();
         }
-    },
+    }
 
-    _initQuerySignals: function() {
+    _initQuerySignals() {
         this._query.connect('point-added', (obj, point, index) => {
             this._createRouteEntry(index, point);
         });
@@ -169,14 +167,14 @@ var Sidebar = new Lang.Class({
             let row = this._entryList.get_row_at_index(index);
             row.destroy();
         });
-    },
+    }
 
-    _cancelStore: function() {
+    _cancelStore() {
         Mainloop.source_remove(this._storeRouteTimeoutId);
         this._storeRouteTimeoutId = 0;
-    },
+    }
 
-    _createRouteEntry: function(index, point) {
+    _createRouteEntry(index, point) {
         let type;
         if (index === 0)
             type = RouteEntry.Type.FROM;
@@ -211,9 +209,9 @@ var Sidebar = new Lang.Class({
         }
 
         this._initRouteDragAndDrop(routeEntry);
-    },
+    }
 
-    _initInstructionList: function() {
+    _initInstructionList() {
         let route = Application.routingDelegator.graphHopper.route;
         let transitPlan = Application.routingDelegator.openTripPlanner.plan;
 
@@ -317,36 +315,36 @@ var Sidebar = new Lang.Class({
         this._transitItineraryBackButton.connect('clicked',
                                                  this._showTransitOverview.bind(this));
 
-    },
+    }
 
-    _clearTransitOverview: function() {
+    _clearTransitOverview() {
         let listBox = this._transitOverviewListBox;
         listBox.forall(listBox.remove.bind(listBox));
 
         this._instructionStack.visible_child = this._transitWindow;
         this._timeInfo.label = '';
         this._distanceInfo.label = '';
-    },
+    }
 
-    _clearTransitItinerary: function() {
+    _clearTransitItinerary() {
         let listBox = this._transitItineraryListBox;
         listBox.forall(listBox.remove.bind(listBox));
-    },
+    }
 
-    _showTransitOverview: function() {
+    _showTransitOverview() {
         let plan = Application.routingDelegator.openTripPlanner.plan;
 
         this._transitListStack.visible_child_name = 'overview';
         this._transitHeader.visible_child_name = 'options';
         plan.deselectItinerary();
-    },
+    }
 
-    _showTransitItineraryView: function() {
+    _showTransitItineraryView() {
         this._transitListStack.visible_child_name = 'itinerary';
         this._transitHeader.visible_child_name = 'itinerary-header';
-    },
+    }
 
-    _populateTransitItineraryOverview: function() {
+    _populateTransitItineraryOverview() {
         let plan = Application.routingDelegator.openTripPlanner.plan;
 
         plan.itineraries.forEach((itinerary) => {
@@ -361,31 +359,31 @@ var Sidebar = new Lang.Class({
 
         /* add an empty list row to get a final separator */
         this._transitOverviewListBox.add(new Gtk.ListBoxRow({ visible: true }));
-    },
+    }
 
-    _onItineraryActivated: function(itinerary) {
+    _onItineraryActivated(itinerary) {
         let plan = Application.routingDelegator.openTripPlanner.plan;
 
         this._populateTransitItinerary(itinerary);
         this._showTransitItineraryView();
         plan.selectItinerary(itinerary);
-    },
+    }
 
-    _onMoreActivated: function(row) {
+    _onMoreActivated(row) {
         row.startLoading();
         Application.routingDelegator.openTripPlanner.fetchMoreResults();
-    },
+    }
 
-    _onItineraryOverviewRowActivated: function(listBox, row) {
+    _onItineraryOverviewRowActivated(listBox, row) {
         this._transitOverviewListBox.unselect_all();
 
         if (row.itinerary)
             this._onItineraryActivated(row.itinerary);
         else
             this._onMoreActivated(row);
-    },
+    }
 
-    _populateTransitItinerary: function(itinerary) {
+    _populateTransitItinerary(itinerary) {
         this._transitItineraryTimeLabel.label =
             itinerary.prettyPrintTimeInterval();
         this._transitItineraryDurationLabel.label =
@@ -404,20 +402,20 @@ var Sidebar = new Lang.Class({
         this._transitItineraryListBox.add(
             new TransitArrivalRow.TransitArrivalRow({ itinerary: itinerary,
                                                       mapView: this._mapView }));
-    },
+    }
 
 
-    _clearInstructions: function() {
+    _clearInstructions() {
         let listBox = this._instructionList;
         listBox.forall(listBox.remove.bind(listBox));
 
         this._instructionStack.visible_child = this._instructionWindow;
         this._timeInfo.label = '';
         this._distanceInfo.label = '';
-    },
+    }
 
     // Iterate over points and establish the new order of places
-    _reorderRoutePoints: function(srcIndex, destIndex) {
+    _reorderRoutePoints(srcIndex, destIndex) {
         let points = this._query.points;
         let srcPlace = this._draggedPoint.place;
 
@@ -434,13 +432,13 @@ var Sidebar = new Lang.Class({
         }
 
         this._query.thaw_notify();
-    },
+    }
 
     /* The reason we don't just use the array .reverse() function is that we
      * need to update the place parameters on the actual point objects in the
      * array to fire the query notify signal that will iniate an update.
      */
-    _reverseRoutePoints: function() {
+    _reverseRoutePoints() {
         let points = this._query.points;
         let length = points.length;
 
@@ -453,28 +451,28 @@ var Sidebar = new Lang.Class({
             points[length - i - 1].place = p1;
         }
         this._query.thaw_notify();
-    },
+    }
 
-    _onDragDrop: function(row, context, x, y, time) {
+    _onDragDrop(row, context, x, y, time) {
         let srcIndex = this._query.points.indexOf(this._draggedPoint);
         let destIndex = row.get_index();
 
         this._reorderRoutePoints(srcIndex, destIndex);
         Gtk.drag_finish(context, true, false, time);
         return true;
-    },
+    }
 
-    _dragHighlightRow: function(row) {
+    _dragHighlightRow(row) {
         row.opacity = 0.6;
-    },
+    }
 
-    _dragUnhighlightRow: function(row) {
+    _dragUnhighlightRow(row) {
         row.opacity = 1.0;
-    },
+    }
 
     // Set the opacity of the row we are currently dragging above
     // to semi transparent.
-    _onDragMotion: function(row, context, x, y, time) {
+    _onDragMotion(row, context, x, y, time) {
         let routeEntry = row.get_child();
 
         if (this._draggedPoint && this._draggedPoint !== routeEntry.point) {
@@ -483,19 +481,19 @@ var Sidebar = new Lang.Class({
         } else
             Gdk.drag_status(context, 0, time);
         return true;
-    },
+    }
 
     // Drag ends, show the dragged row again.
-    _onDragEnd: function(context, row) {
+    _onDragEnd(context, row) {
         this._draggedPoint = null;
 
         // Restore to natural height
         row.height_request = -1;
         row.get_child().show();
-    },
+    }
 
     // Drag begins, set the correct drag icon and hide the dragged row.
-    _onDragBegin: function(context, row) {
+    _onDragBegin(context, row) {
         let routeEntry = row.get_child();
         let dragEntry = this._dragWidget.get_child();
 
@@ -510,12 +508,12 @@ var Sidebar = new Lang.Class({
         dragEntry.entry.text = routeEntry.entry.text;
         Gtk.drag_set_icon_surface(context,
                                   this._dragWidget.get_surface(), 0, 0);
-    },
+    }
 
     // We add RouteEntry to an OffscreenWindow and paint the background
     // of the entry to be transparent. We can later use the GtkOffscreenWindow
     // method get_surface to generate our drag icon.
-    _initDragWidget: function() {
+    _initDragWidget() {
         let dragEntry = new RouteEntry.RouteEntry({ type: RouteEntry.Type.TO,
                                                     name: 'dragged-entry',
                                                     app_paintable: true });
@@ -529,12 +527,12 @@ var Sidebar = new Lang.Class({
         });
 
         this._dragWidget.add(dragEntry);
-    },
+    }
 
     // Set up drag and drop between RouteEntrys. The drag source is from a
     // GtkEventBox that contains the start/end icon next in the entry. And
     // the drag destination is the ListBox row.
-    _initRouteDragAndDrop: function(routeEntry) {
+    _initRouteDragAndDrop(routeEntry) {
         let dragIcon = routeEntry.iconEventBox;
         let row = routeEntry.get_parent();
 
@@ -557,4 +555,4 @@ var Sidebar = new Lang.Class({
 
         this._initDragWidget();
     }
-})
+});

@@ -21,8 +21,8 @@ const Cairo = imports.cairo;
 const Gdk = imports.gi.Gdk;
 const GLib = imports.gi.GLib;
 const Gio = imports.gi.Gio;
+const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 
 const Utils = imports.utils;
 
@@ -33,9 +33,7 @@ var Response = {
 
 const _PREVIEW_WIDTH = 150;
 
-var ExportViewDialog = new Lang.Class({
-    Name: 'ExportViewDialog',
-    Extends: Gtk.Dialog,
+var ExportViewDialog = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/export-view-dialog.ui',
     InternalChildren: [ 'exportButton',
                         'cancelButton',
@@ -43,8 +41,8 @@ var ExportViewDialog = new Lang.Class({
                         'fileChooserButton',
                         'previewArea',
                         'layersCheckButton' ],
-
-    _init: function(params) {
+}, class ExportViewDialog extends Gtk.Dialog {
+    _init(params) {
         this._surface = params.surface;
         delete params.surface;
 
@@ -58,7 +56,7 @@ var ExportViewDialog = new Lang.Class({
         delete params.mapView;
 
         params.use_header_bar = true;
-        this.parent(params);
+        super._init(params);
 
         this._cancelButton.connect('clicked', () => this.response(Response.CANCEL));
         this._exportButton.connect('clicked', () => this._exportView());
@@ -74,18 +72,18 @@ var ExportViewDialog = new Lang.Class({
         this._filenameEntry.text = this._fileName = this._getName();
         this._fileChooserButton.set_current_folder(this._folder);
         this._setupPreviewArea();
-    },
+    }
 
-    _getName: function() {
+    _getName() {
         /* Translators: This is a format string for a PNG filename for an
          * exported image with coordinates. The .png extension should be kept
          * intact in the translated string.
          */
         return _("Maps at %f, %f.png").format(this._latitude.toFixed(2),
                                               this._longitude.toFixed(2));
-    },
+    }
 
-    _setupPreviewArea: function() {
+    _setupPreviewArea() {
         let [surfaceWidth, surfaceHeight] = this._mapView.view.get_size();
 
         let width = _PREVIEW_WIDTH;
@@ -95,9 +93,9 @@ var ExportViewDialog = new Lang.Class({
         this._previewArea.set_size_request(width, height);
         this._previewArea.connect('draw',
                                   (w, cr) => this._drawPreview(w, cr));
-    },
+    }
 
-    _drawPreview: function(widget, cr) {
+    _drawPreview(widget, cr) {
         cr.setOperator(Cairo.Operator.CLEAR);
         cr.paint();
         cr.setOperator(Cairo.Operator.OVER);
@@ -105,9 +103,9 @@ var ExportViewDialog = new Lang.Class({
         cr.scale(this._scaleFactor, this._scaleFactor);
         cr.setSourceSurface(this._surface, 0, 0);
         cr.paint();
-    },
+    }
 
-    _onFileNameChanged: function() {
+    _onFileNameChanged() {
         let name = GLib.filename_from_utf8(this._filenameEntry.text, -1)[0];
         name = name.toString();
         if (!name) {
@@ -122,9 +120,9 @@ var ExportViewDialog = new Lang.Class({
         } catch(e) {
             this._exportButton.sensitive = false;
         }
-    },
+    }
 
-    _onFolderChanged: function() {
+    _onFolderChanged() {
         let folder = this._fileChooserButton.get_filename();
 
         if (!GLib.file_test(folder, GLib.FileTest.IS_DIR)) {
@@ -138,9 +136,9 @@ var ExportViewDialog = new Lang.Class({
 
         this._exportButton.sensitive = true;
         this._folder = folder;
-    },
+    }
 
-    _exportView: function() {
+    _exportView() {
         let [width, height] = this._mapView.view.get_size();
         let pixbuf = Gdk.pixbuf_get_from_surface(this._surface, 0, 0, width, height);
         let path = GLib.build_filenamev([this._folder, this._fileName]);
@@ -174,9 +172,9 @@ var ExportViewDialog = new Lang.Class({
             dialog.connect('response', () => dialog.destroy());
             dialog.show_all();
         }
-    },
+    }
 
-    _includeLayersChanged: function() {
+    _includeLayersChanged() {
         let includeLayers = this._layersCheckButton.get_active();
 
         this._surface = this._mapView.view.to_surface(includeLayers);

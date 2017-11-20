@@ -24,7 +24,7 @@
 const Champlain = imports.gi.Champlain;
 const Clutter = imports.gi.Clutter;
 const Geocode = imports.gi.GeocodeGlib;
-const Lang = imports.lang;
+const GObject = imports.gi.GObject;
 
 const Location = imports.location;
 const Utils = imports.utils;
@@ -33,17 +33,21 @@ const _MAX_DISTANCE = 19850; // half of Earth's circumference (km)
 const _MIN_ANIMATION_DURATION = 2000; // msec
 const _MAX_ANIMATION_DURATION = 5000; // msec
 
-var MapWalker = new Lang.Class({
-    Name: 'MapWalker',
+var MapWalker = GObject.registerClass({
+    Signals: {
+        'gone-to': { }
+    }
+}, class MapWalker extends GObject.Object {
 
-    _init: function(place, mapView) {
+    _init(place, mapView) {
         this.place = place;
         this._mapView = mapView;
         this._view = mapView.view;
         this._boundingBox = this._createBoundingBox(this.place);
-    },
+        super._init();
+    }
 
-    _createBoundingBox: function(place) {
+    _createBoundingBox(place) {
         if (place.bounding_box !== null) {
             return new Champlain.BoundingBox({ top: place.bounding_box.top,
                                                bottom: place.bounding_box.bottom,
@@ -51,10 +55,10 @@ var MapWalker = new Lang.Class({
                                                right: place.bounding_box.right });
         } else
             return null;
-    },
+    }
 
     // Zoom to the maximal zoom-level that fits the place type
-    zoomToFit: function() {
+    zoomToFit() {
         let zoom;
         if (this._boundingBox !== null && this._boundingBox.is_valid()) {
             this._view.zoom_level = this._view.max_zoom_level;
@@ -81,9 +85,9 @@ var MapWalker = new Lang.Class({
             this._view.center_on(this.place.location.latitude,
                                  this.place.location.longitude);
         }
-    },
+    }
 
-    goTo: function(animate, linear) {
+    goTo(animate, linear) {
         Utils.debug('Going to ' + [this.place.name,
                     this.place.location.latitude,
                     this.place.location.longitude].join(' '));
@@ -129,9 +133,9 @@ var MapWalker = new Lang.Class({
                 });
             });
         }
-    },
+    }
 
-    _ensureVisible: function(fromLocation) {
+    _ensureVisible(fromLocation) {
         let visibleBox = null;
 
         if (this._boundingBox !== null && this._boundingBox.is_valid()) {
@@ -153,9 +157,9 @@ var MapWalker = new Lang.Class({
         }
 
         this._view.ensure_visible(visibleBox, true);
-    },
+    }
 
-    _boxCovers: function(coverBox) {
+    _boxCovers(coverBox) {
         if (this._boundingBox === null)
             return false;
 
@@ -172,9 +176,9 @@ var MapWalker = new Lang.Class({
             return false;
 
         return true;
-    },
+    }
 
-    _updateGoToDuration: function(fromLocation) {
+    _updateGoToDuration(fromLocation) {
         let toLocation = this.place.location;
 
         let distance = fromLocation.get_distance_from(toLocation);
@@ -189,4 +193,3 @@ var MapWalker = new Lang.Class({
         this._view.goto_animation_duration = duration / 2;
     }
 });
-Utils.addSignalMethods(MapWalker.prototype);

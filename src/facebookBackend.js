@@ -20,43 +20,41 @@
  */
 
 const GFBGraph = imports.gi.GFBGraph;
-const Lang = imports.lang;
+const GObject = imports.gi.GObject;
 
 const ServiceBackend = imports.serviceBackend;
 const SocialPlace = imports.socialPlace;
 
 const _PLACE_LINK_FORMAT = 'https://www.facebook.com/%s';
 
-var FacebookBackend = new Lang.Class({
-    Name: 'SocialServiceFacebookBackend',
-    Extends: ServiceBackend.ServiceBackend,
-
+var FacebookBackend = GObject.registerClass(
+class FacebookBackend extends ServiceBackend.ServiceBackend {
     get name() {
         return 'facebook';
-    },
+    }
 
-    createRestCall: function(authorizer) {
+    createRestCall(authorizer) {
         return GFBGraph.new_rest_call(authorizer);
-    },
+    }
 
-    refreshAuthorization: function(authorizer, cancellable) {
+    refreshAuthorization(authorizer, cancellable) {
         return authorizer.refresh_authorization(cancellable);
-    },
+    }
 
-    getAuthorizerAccount: function(authorizer) {
+    getAuthorizerAccount(authorizer) {
         return authorizer.goa_object;
-    },
+    }
 
-    createAuthorizer: function(account) {
+    createAuthorizer(account) {
         return new GFBGraph.GoaAuthorizer({ goa_object: account });
-    },
+    }
 
-    isTokenInvalid: function(restCall, data) {
+    isTokenInvalid(restCall, data) {
         return data.error &&
                (data.error.code === 2500 || data.error.code === 104 || data.error.code === 190);
-    },
+    }
 
-    isInvalidCall: function(restCall, data) {
+    isInvalidCall(restCall, data) {
         if (!data) {
             return true;
         } else if (data.error) {
@@ -64,21 +62,21 @@ var FacebookBackend = new Lang.Class({
         } else {
             return false;
         }
-    },
+    }
 
-    getCallResultCode: function(restCall, data) {
+    getCallResultCode(restCall, data) {
         return data ?
             (data.error ? data.error.code : null) :
             restCall.get_status_code();
-    },
+    }
 
-    getCallResultMessage: function(restCall, data) {
+    getCallResultMessage(restCall, data) {
         return data ?
             (data.error ? data.error.message : null) :
             restCall.get_status_message();
-    },
+    }
 
-    _realPerformCheckIn: function(authorizer, checkIn, callback, cancellable) {
+    _realPerformCheckIn(authorizer, checkIn, callback, cancellable) {
         this.callAsync(authorizer,
                        'POST',
                        'me/feed',
@@ -89,9 +87,9 @@ var FacebookBackend = new Lang.Class({
                        },
                        callback,
                        cancellable);
-    },
+    }
 
-    _realFindPlaces: function(authorizer, latitude, longitude, distance, callback, cancellable) {
+    _realFindPlaces(authorizer, latitude, longitude, distance, callback, cancellable) {
         this.callAsync(authorizer,
                        'GET',
                        'search',
@@ -102,9 +100,9 @@ var FacebookBackend = new Lang.Class({
                        },
                        callback,
                        cancellable);
-    },
+    }
 
-    createPlaces: function(rawData) {
+    createPlaces(rawData) {
         return rawData.data.map(function(place) {
             let link = _PLACE_LINK_FORMAT.format(place.id);
 

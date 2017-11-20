@@ -18,8 +18,8 @@
  */
 
 const GLib = imports.gi.GLib;
+const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 
 const PlaceFormatter = imports.placeFormatter;
 const PlaceStore = imports.placeStore;
@@ -27,16 +27,15 @@ const Utils = imports.utils;
 
 var ROW_HEIGHT = 55;
 
-var PlaceListRow = new Lang.Class({
-    Name: 'PlaceListRow',
-    Extends: Gtk.ListBoxRow,
+var PlaceListRow = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/place-list-row.ui',
     InternalChildren: [ 'icon',
                         'name',
                         'details',
                         'typeIcon' ],
+}, class PlaceListRow extends Gtk.ListBoxRow {
 
-    _init: function(params) {
+    _init(params) {
         this.place = params.place;
         delete params.place;
 
@@ -50,7 +49,7 @@ var PlaceListRow = new Lang.Class({
         delete params.type;
 
         params.height_request = ROW_HEIGHT;
-        this.parent(params);
+        super._init(params);
 
         let formatter = new PlaceFormatter.PlaceFormatter(this.place);
         this.title = formatter.title;
@@ -69,9 +68,9 @@ var PlaceListRow = new Lang.Class({
         else if (type === PlaceStore.PlaceType.CONTACT)
             this._typeIcon.icon_name = 'avatar-default-symbolic';
 
-    },
+    }
 
-    _boldMatch: function(title, string) {
+    _boldMatch(title, string) {
         let canonicalString = Utils.normalizeString(string).toLowerCase();
         let canonicalTitle = Utils.normalizeString(title).toLowerCase();
 

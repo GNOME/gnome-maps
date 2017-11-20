@@ -17,7 +17,7 @@
  * Author: Amisha Singla <amishas157@gmail.com>
  */
 
-const Lang = imports.lang;
+const GObject = imports.gi.GObject;
 
 const PrintLayout = imports.printLayout;
 
@@ -28,11 +28,9 @@ const _Instruction = {
     SCALE_MARGIN: 0.01
 };
 
-var ShortPrintLayout = new Lang.Class({
-    Name: 'ShortPrintLayout',
-    Extends: PrintLayout.PrintLayout,
-
-    _init: function(params) {
+var ShortPrintLayout = GObject.registerClass(
+class ShortPrintLayout extends PrintLayout.PrintLayout {
+    _init(params) {
         this._route = params.route;
         delete params.route;
 
@@ -40,11 +38,11 @@ var ShortPrintLayout = new Lang.Class({
         let totalSurfaces = 2 + this._route.turnPoints.length;
         params.totalSurfaces = totalSurfaces;
 
-        this.parent(params);
-    },
+        super._init(params);
+    }
 
-    render: function() {
-        this.parent();
+    render() {
+        super.render();
 
         let instructionWidth = _Instruction.SCALE_X * this._pageWidth;
         let instructionHeight = _Instruction.SCALE_Y * this._pageHeight;

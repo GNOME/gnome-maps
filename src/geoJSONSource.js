@@ -21,7 +21,7 @@
 const Cairo = imports.cairo;
 const Champlain = imports.gi.Champlain;
 const Clutter = imports.gi.Clutter;
-const Lang = imports.lang;
+const GObject = imports.gi.GObject;
 const Mainloop = imports.mainloop;
 
 const Geojsonvt = imports.geojsonvt.geojsonvt;
@@ -39,42 +39,42 @@ const TileFeature = { POINT: 1,
                       LINESTRING: 2,
                       POLYGON: 3 };
 
-var GeoJSONSource = new Lang.Class({
-    Name: 'GeoJSONSource',
-    Extends: Champlain.TileSource,
+var GeoJSONSource = GObject.registerClass(
+class GeoJSONSource extends Champlain.TileSource {
 
-    _init: function(params) {
-        this.parent();
+    _init(params) {
+        super._init();
 
         this._mapView = params.mapView;
         this._markerLayer = params.markerLayer;
         this._bbox = new Champlain.BoundingBox();
-    },
+    }
 
     get bbox() {
         return this._bbox;
-    },
-    vfunc_get_tile_size: function() {
+    }
+
+    vfunc_get_tile_size() {
         return TILE_SIZE;
-    },
+    }
 
-    vfunc_get_max_zoom_level: function() {
+    vfunc_get_max_zoom_level() {
         return 20;
-    },
+    }
 
-    vfunc_get_min_zoom_level: function() {
+    vfunc_get_min_zoom_level() {
         return 0;
-    },
+    }
 
-    vfunc_get_id: function() {
+    vfunc_get_id() {
         return 'GeoJSONSource';
-    },
+    }
 
-    vfunc_get_name: function() {
+    vfunc_get_name() {
         return 'GeoJSONSource';
-    },
+    }
 
-    vfunc_fill_tile: function(tile) {
+    vfunc_fill_tile(tile) {
         if (tile.get_state() === Champlain.State.DONE)
             return;
 
@@ -87,40 +87,40 @@ var GeoJSONSource = new Lang.Class({
         });
 
         Mainloop.idle_add(() => this._renderTile(tile));
-    },
+    }
 
-    _validate: function([lon, lat]) {
+    _validate([lon, lat]) {
         if ((-180 <= lon && lon <= 180) &&
             (-90  <= lat && lat <= 90)) {
             return;
         }
 
         throw new Error(_("invalid coordinate"));
-    },
+    }
 
-    _compose: function(coordinates) {
+    _compose(coordinates) {
         coordinates.forEach((coordinate) => {
             this._validate(coordinate);
             this._bbox.extend(coordinate[1], coordinate[0]);
         });
-    },
+    }
 
-    _clampBBox: function() {
+    _clampBBox() {
         this._bbox.top = Math.min(this._bbox.top, MapView.MAX_LATITUDE);
         this._bbox.left = Math.max(this._bbox.left, MapView.MIN_LONGITUDE);
         this._bbox.bottom = Math.max(this._bbox.bottom, MapView.MIN_LATITUDE);
         this._bbox.right = Math.min(this._bbox.right, MapView.MAX_LONGITUDE);
-    },
+    }
 
-    _parseLineString: function(coordinates) {
+    _parseLineString(coordinates) {
         this._compose(coordinates);
-    },
+    }
 
-    _parsePolygon: function(coordinates) {
+    _parsePolygon(coordinates) {
         coordinates.forEach((coordinate) => this._compose(coordinate));
-    },
+    }
 
-    _parsePoint: function(coordinates, properties) {
+    _parsePoint(coordinates, properties) {
         let name = null;
         if (properties)
             name = properties.name;
@@ -140,9 +140,9 @@ var GeoJSONSource = new Lang.Class({
         let placeMarker = new PlaceMarker.PlaceMarker({ place: place,
                                                         mapView: this._mapView });
         this._markerLayer.add_marker(placeMarker);
-    },
+    }
 
-    _parseGeometry: function(geometry, properties) {
+    _parseGeometry(geometry, properties) {
         if(!geometry)
             throw new Error(_("parse error"));
 
@@ -180,9 +180,9 @@ var GeoJSONSource = new Lang.Class({
         default:
             throw new Error(_("unknown geometry"));
         }
-    },
+    }
 
-    _parseInternal: function(root) {
+    _parseInternal(root) {
         if (!root || !root.type)
             throw new Error(_("parse error"));
 
@@ -207,16 +207,16 @@ var GeoJSONSource = new Lang.Class({
         default:
             this._parseGeometry(root);
         }
-    },
+    }
 
-    parse: function(json) {
+    parse(json) {
         this._parseInternal(json);
         this._tileIndex = Geojsonvt.geojsonvt(json, { extent: TILE_SIZE,
                                                       maxZoom: 20 });
         this._clampBBox();
-    },
+    }
 
-    _renderTile: function(tile) {
+    _renderTile(tile) {
         let tileJSON = this._tileIndex.getTile(tile.zoom_level, tile.x, tile.y);
         let content = new Clutter.Canvas({ width: TILE_SIZE,
                                            height: TILE_SIZE });

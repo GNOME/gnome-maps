@@ -25,8 +25,8 @@ const _ = imports.gettext.gettext;
 const Geocode = imports.gi.GeocodeGlib;
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
+const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 const Soup = imports.gi.Soup;
 
 const Application = imports.application;
@@ -220,16 +220,15 @@ const OSM_FIELDS = [
         hint: _("Information used to inform other mappers about non-obvious information about an element, the author’s intent when creating it, or hints for further improvement.")
     }];
 
-const OSMEditAddress = new Lang.Class({
-    Name: 'OSMEditAddress',
-    Extends: Gtk.Grid,
+const OSMEditAddress = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/osm-edit-address.ui',
     Children: [ 'street',
                 'number',
                 'post',
                 'city' ],
+}, class OSMEditAddress extends Gtk.Grid {
 
-    _init: function(params) {
+    _init(params) {
         let street = params.street;
         delete params.street;
 
@@ -242,7 +241,7 @@ const OSMEditAddress = new Lang.Class({
         let city = params.city;
         delete params.city;
 
-        this.parent(params);
+        super._init(params);
 
         if (street)
             this.street.text = street;
@@ -259,9 +258,7 @@ const OSMEditAddress = new Lang.Class({
 });
 
 
-var OSMEditDialog = new Lang.Class({
-    Name: 'OSMEditDialog',
-    Extends: Gtk.Dialog,
+var OSMEditDialog = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/osm-edit-dialog.ui',
     InternalChildren: [ 'cancelButton',
                         'backButton',
@@ -280,8 +277,9 @@ var OSMEditDialog = new Lang.Class({
                         'hintPopover',
                         'hintLabel',
                         'headerBar'],
+}, class OSMEditDialog extends Gtk.Dialog {
 
-    _init: function(params) {
+    _init(params) {
         this._place = params.place;
         delete params.place;
 
@@ -297,7 +295,7 @@ var OSMEditDialog = new Lang.Class({
         /* This is a construct-only property and cannot be set by GtkBuilder */
         params.use_header_bar = true;
 
-        this.parent(params);
+        super._init(params);
 
         /* I could not get this widget working from within the widget template
          * this results in a segfault. The widget definition is left in-place,
@@ -355,9 +353,9 @@ var OSMEditDialog = new Lang.Class({
         this._recentTypesListBox.connect('row-activated', (listbox, row) => {
             this._onTypeSelected(null, row._key, row._value, row._title);
         });
-    },
+    }
 
-    _onNextClicked: function() {
+    _onNextClicked() {
         if (this._isEditing) {
             this._switchToUpload();
         } else {
@@ -370,17 +368,17 @@ var OSMEditDialog = new Lang.Class({
                                              this._osmType, comment,
                                              this._onObjectUploaded.bind(this));
         }
-    },
+    }
 
-    _onTypeClicked: function() {
+    _onTypeClicked() {
         this._cancelButton.visible = false;
         this._backButton.visible = true;
         this._nextButton.visible = false;
         this._headerBar.title = _("Select Type");
         this._stack.visible_child_name = 'select-type';
-    },
+    }
 
-    _onTypeSelected: function(popover, key, value, title) {
+    _onTypeSelected(popover, key, value, title) {
         this._typeValueLabel.label = title;
         this._updateType(key, value);
 
@@ -405,18 +403,18 @@ var OSMEditDialog = new Lang.Class({
         this._nextButton.sensitive = true;
 
         this._updateRecentTypesList();
-    },
+    }
 
-    _updateType: function(key, value) {
+    _updateType(key, value) {
         /* clear out any previous type-related OSM tags */
         OSMTypes.OSM_TYPE_TAGS.forEach((tag) => this._osmObject.delete_tag(tag));
 
         this._osmObject.set_tag(key, value);
-    },
+    }
 
     /* update visibility and enable the type selection button if the object has
      * a well-known type (based on a known set of tags) */
-    _updateTypeButton: function() {
+    _updateTypeButton() {
         let numTypeTags = 0;
         let lastTypeTag = null;
 
@@ -447,9 +445,9 @@ var OSMEditDialog = new Lang.Class({
                 this._typeButton.visible = true;
             }
         }
-    },
+    }
 
-    _updateRecentTypesList: function() {
+    _updateRecentTypesList() {
         let recentTypes = OSMTypes.recentTypesStore.recentTypes;
 
         if (recentTypes.length > 0) {
@@ -489,9 +487,9 @@ var OSMEditDialog = new Lang.Class({
             this._recentTypesLabel.visible = false;
             this._recentTypesListBox.visible = false;
         }
-    },
+    }
 
-    _switchToUpload: function() {
+    _switchToUpload() {
         this._stack.set_visible_child_name('upload');
         this._nextButton.label = _("Done");
         this._cancelButton.visible = false;
@@ -499,13 +497,13 @@ var OSMEditDialog = new Lang.Class({
         this._cancelButton.visible = false;
         this._isEditing = false;
         this._commentTextView.grab_focus();
-    },
+    }
 
-    _onCancelClicked: function() {
+    _onCancelClicked() {
         this.response(Response.CANCELLED);
-    },
+    }
 
-    _onBackClicked: function() {
+    _onBackClicked() {
         this._backButton.visible = false;
         this._cancelButton.visible = true;
         this._nextButton.visible = true;
@@ -515,27 +513,27 @@ var OSMEditDialog = new Lang.Class({
         this._commentTextView.buffer.text = '';
         this._typeSearch.text = '';
         this._headerBar.title = this._originalTitle;
-    },
+    }
 
-    _onObjectFetched: function(success, status, osmObject, osmType, error) {
+    _onObjectFetched(success, status, osmObject, osmType, error) {
         if (success) {
             this._isEditing = true;
             this._loadOSMData(osmObject);
         } else {
             this._showError(status, error);
         }
-    },
+    }
 
-    _onObjectUploaded: function(success, status) {
+    _onObjectUploaded(success, status) {
         if (success) {
             this.response(Response.UPLOADED);
         } else {
             this._showError(status);
             this.response(Response.ERROR);
         }
-    },
+    }
 
-    _showError: function(status, error) {
+    _showError(status, error) {
         /* set error message from specific error if available, otherwise use
          * a generic error message for the HTTP status code */
         let statusMessage =
@@ -552,10 +550,10 @@ var OSMEditDialog = new Lang.Class({
         messageDialog.run();
         messageDialog.destroy();
         this.response(Response.ERROR);
-    },
+    }
 
     /* GtkContainer.child_get_property doesn't seem to be usable from GJS */
-    _getRowOfDeleteButton: function(button) {
+    _getRowOfDeleteButton(button) {
         for (let row = 1; row < this._currentRow; row++) {
             let label = this._editorGrid.get_child_at(0, row);
             let deleteButton = this._editorGrid.get_child_at(2, row);
@@ -565,9 +563,9 @@ var OSMEditDialog = new Lang.Class({
         }
 
         return -1;
-    },
+    }
 
-    _addOSMEditDeleteButton: function(fieldSpec) {
+    _addOSMEditDeleteButton(fieldSpec) {
         let deleteButton = Gtk.Button.new_from_icon_name('user-trash-symbolic',
                                                          Gtk.IconSize.BUTTON);
         let styleContext = deleteButton.get_style_context();
@@ -593,9 +591,9 @@ var OSMEditDialog = new Lang.Class({
         });
 
         deleteButton.show();
-    },
+    }
 
-    _addOSMEditLabel: function(fieldSpec) {
+    _addOSMEditLabel(fieldSpec) {
         let text = fieldSpec.name;
         if (fieldSpec.includeHelp) {
             let link = _WIKI_BASE + fieldSpec.tag;
@@ -607,9 +605,9 @@ var OSMEditDialog = new Lang.Class({
         label.get_style_context().add_class('dim-label');
         this._editorGrid.attach(label, 0, this._currentRow, 1, 1);
         label.show();
-    },
+    }
 
-    _showHintPopover: function(entry, hint) {
+    _showHintPopover(entry, hint) {
         if (this._hintPopover.visible) {
             this._hintPopover.popdown();
         } else {
@@ -617,9 +615,9 @@ var OSMEditDialog = new Lang.Class({
             this._hintLabel.label = hint;
             this._hintPopover.popup();
         }
-    },
+    }
 
-    _addOSMEditTextEntry: function(fieldSpec, value) {
+    _addOSMEditTextEntry(fieldSpec, value) {
         this._addOSMEditLabel(fieldSpec);
 
         let entry = new Gtk.Entry();
@@ -650,9 +648,9 @@ var OSMEditDialog = new Lang.Class({
         this._addOSMEditDeleteButton(fieldSpec);
 
         this._currentRow++;
-    },
+    }
 
-    _addOSMEditIntegerEntry: function(fieldSpec, value) {
+    _addOSMEditIntegerEntry(fieldSpec, value) {
         this._addOSMEditLabel(fieldSpec);
 
         let spinbutton = Gtk.SpinButton.new_with_range(0, 1e9, 1);
@@ -677,9 +675,9 @@ var OSMEditDialog = new Lang.Class({
 
         this._addOSMEditDeleteButton(fieldSpec);
         this._currentRow++;
-    },
+    }
 
-    _addOSMEditComboEntry: function(fieldSpec, value) {
+    _addOSMEditComboEntry(fieldSpec, value) {
         this._addOSMEditLabel(fieldSpec);
 
         let combobox = new Gtk.ComboBoxText();
@@ -700,9 +698,9 @@ var OSMEditDialog = new Lang.Class({
 
         this._addOSMEditDeleteButton(fieldSpec);
         this._currentRow++;
-    },
+    }
 
-    _addOSMEditAddressEntry: function(fieldSpec, value) {
+    _addOSMEditAddressEntry(fieldSpec, value) {
         this._addOSMEditLabel(fieldSpec);
 
         let addr = new OSMEditAddress({ street: value[0],
@@ -724,10 +722,10 @@ var OSMEditDialog = new Lang.Class({
         addr.street.grab_focus();
         this._addOSMEditDeleteButton(fieldSpec);
         this._currentRow += rows;
-    },
+    }
 
     /* update visible items in the "Add Field" popover */
-    _updateAddFieldMenu: function() {
+    _updateAddFieldMenu() {
         /* clear old items */
         let children = this._addFieldPopoverGrid.get_children();
         let hasAllFields = true;
@@ -783,9 +781,9 @@ var OSMEditDialog = new Lang.Class({
         }
 
         this._addFieldButton.sensitive = !hasAllFields;
-    },
+    }
 
-    _addOSMField: function(fieldSpec, value) {
+    _addOSMField(fieldSpec, value) {
         switch (fieldSpec.type) {
         case EditFieldType.TEXT:
             this._addOSMEditTextEntry(fieldSpec, value);
@@ -800,9 +798,9 @@ var OSMEditDialog = new Lang.Class({
             this._addOSMEditAddressEntry(fieldSpec, value);
             break;
         }
-    },
+    }
 
-    _loadOSMData: function(osmObject) {
+    _loadOSMData(osmObject) {
         this._osmObject = osmObject;
 
         /* keeps track of the current insertion row in the grid for editing

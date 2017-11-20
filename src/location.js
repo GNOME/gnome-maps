@@ -22,25 +22,24 @@
  */
 
 const Geocode = imports.gi.GeocodeGlib;
-const Lang = imports.lang;
+const GObject = imports.gi.GObject;
 
 /* Adds heading to Geocode.Location */
-var Location = new Lang.Class({
-    Name: 'Location',
-    Extends: Geocode.Location,
+var Location = GObject.registerClass(
+class Location extends Geocode.Location {
 
-    _init: function(params) {
+    _init(params) {
         this._heading = params.heading;
         delete params.heading;
 
-        this.parent(params);
-    },
+        super._init(params);
+    }
 
     get heading() {
         return this._heading;
-    },
+    }
 
     set heading(v) {
         this._heading = v;
-    },
+    }
 });
