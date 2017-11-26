@@ -27,7 +27,7 @@ apps_DATA = org.gnome.Maps.desktop
 gsettings_SCHEMAS = org.gnome.Maps.gschema.xml
 @GSETTINGS_RULES@
 
-appdatadir = $(datadir)/appdata
+appdatadir = $(datadir)/metainfo
 appdata_in_file = org.gnome.Maps.appdata.xml.in
 appdata_DATA = $(appdata_in_file:.xml.in=.xml)
 @INTLTOOL_XML_RULE@
