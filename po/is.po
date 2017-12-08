@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-09-11 20:24+0000\n"
-"PO-Revision-Date: 2017-10-03 16:31+0000\n"
+"POT-Creation-Date: 2017-10-03 16:33+0000\n"
+"PO-Revision-Date: 2017-12-08 08:17+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
 "Language: is\n"
@@ -139,6 +139,8 @@ msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
 msgstr ""
+"Síðast notuðu persónuleyndarstillingar við innskráningu á Facebook. Möguleg "
+"gildi eru: ALLIR, VINIR_VINA, ALLIR_VINIR eða SJÁLF(UR)."
 
 #: ../data/org.gnome.Maps.gschema.xml.h:17
 msgid "Foursquare check-in privacy setting"
@@ -149,26 +151,32 @@ msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
 msgstr ""
+"Síðast notuðu persónuleyndarstillingar við innskráningu á Foursquare. Möguleg "
+"gildi eru: opinbert, fylgjendur eða einka."
 
 #: ../data/org.gnome.Maps.gschema.xml.h:19
 msgid "Foursquare check-in Facebook broadcasting"
-msgstr ""
+msgstr "Tilkynning á Facebook við innskráningu á Foursquare"
 
 #: ../data/org.gnome.Maps.gschema.xml.h:20
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
 msgstr ""
+"Gefur til kynna hvort Foursquare eigi að senda tilkynningu um innskráningu "
+"inn á Facebook-aðganginn sem tengist viðkomandi Foursquare-reikningi."
 
 #: ../data/org.gnome.Maps.gschema.xml.h:21
 msgid "Foursquare check-in Twitter broadcasting"
-msgstr ""
+msgstr "Tilkynning á Twitter við innskráningu á Foursquare"
 
 #: ../data/org.gnome.Maps.gschema.xml.h:22
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
 msgstr ""
+"Gefur til kynna hvort Foursquare eigi að senda tíst um innskráningu inn á "
+"Twitter-aðganginn sem tengist viðkomandi Foursquare-reikningi."
 
 #: ../data/org.gnome.Maps.gschema.xml.h:23
 msgid "OpenStreetMap username or e-mail address"
@@ -182,7 +190,7 @@ msgstr ""
 
 #: ../data/org.gnome.Maps.gschema.xml.h:25
 msgid "Last used transportation type for routing"
-msgstr ""
+msgstr "Síðast notaða gerð samgangna fyrir leiðaval"
 
 #: ../data/ui/app-menu.ui.h:1
 msgid "Set up OpenStreetMap Account"
@@ -344,7 +352,6 @@ msgid "Switch to aerial view"
 msgstr "Skipta yfir í loftmyndasýn"
 
 #: ../data/ui/help-overlay.ui.h:14
-#| msgid "Open Layer"
 msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "Opna lag með lögunum"
@@ -391,9 +398,6 @@ msgid "Maps is offline!"
 msgstr "Kortin eru án nettengingar!"
 
 #: ../data/ui/main-window.ui.h:13
-#| msgid ""
-#| "Maps need an active internet connection to function properly, but one "
-#| "can't be found."
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -455,7 +459,6 @@ msgid "Sign In"
 msgstr "Skrá inn"
 
 #: ../data/ui/osm-account-dialog.ui.h:8
-#| msgid "Don't have an account?"
 msgid "Don’t have an account?"
 msgstr "Ertu ekki með aðgang?"
 
@@ -528,9 +531,6 @@ msgid "Comment"
 msgstr "Athugasemd"
 
 #: ../data/ui/osm-edit-dialog.ui.h:5
-#| msgid ""
-#| "Map changes will be visible on all maps that use\n"
-#| "    OpenStreetMap data."
 msgid ""
 "Map changes will be visible on all maps that use\n"
 "OpenStreetMap data."
@@ -543,7 +543,6 @@ msgid "Recently Used"
 msgstr "Nýlega notað"
 
 #: ../data/ui/osm-edit-dialog.ui.h:8
-#| msgid "Edit on OpenStreetMap"
 msgctxt "dialog title"
 msgid "Edit on OpenStreetMap"
 msgstr "Breyta í OpenStreetMap"
@@ -571,7 +570,6 @@ msgid "Press enter to search"
 msgstr "Ýttu á Enter til að leita"
 
 #: ../data/ui/place-popover.ui.h:2
-#| msgid "No route found."
 msgid "No results found"
 msgstr "Engar niðurstöður fundust"
 
@@ -602,7 +600,6 @@ msgid "Route search by GraphHopper"
 msgstr "Leita að leiðum með GraphHopper"
 
 #: ../data/ui/sidebar.ui.h:2
-#| msgid "Route search by GraphHopper"
 msgid "Route search by OpenTripPlanner"
 msgstr "Leita að leiðum með OpenTripPlanner"
 
@@ -634,7 +631,6 @@ msgstr "Fela biðstöðvar á leiðinni og upplýsingar"
 
 #. Translators: This is a tooltip
 #: ../data/ui/transit-leg-row.ui.h:4
-#| msgid "Show more information"
 msgid "Show intermediate stops and information"
 msgstr "Sýna biðstöðvar á leiðinni og upplýsingar"
 
@@ -767,7 +763,6 @@ msgstr "Villa hefur átt sér stað"
 #. Translators: %s is the place name that user wanted to check-in
 #: ../src/checkIn.js:147
 #, javascript-format
-#| msgid "Cannot find \"%s\" in the social service"
 msgid "Cannot find “%s” in the social service"
 msgstr "Finn ekki \"%s\" á samfélagsmiðilsþjónustunni"
 
@@ -804,8 +799,8 @@ msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
 msgstr ""
-"Staðsetningunni var bætt á kortið, athugaðu að nokkur tími getur liðið þangað "
-"til hún fer að sjást á kortinu eða koma upp í leitarniðurstöðum."
+"Staðsetningunni var bætt á kortið, athugaðu að nokkur tími getur liðið "
+"þangað til hún fer að sjást á kortinu eða koma upp í leitarniðurstöðum."
 
 #: ../src/exportViewDialog.js:156
 msgid "Filesystem is read only"
@@ -816,7 +811,6 @@ msgid "You do not have permission to save there"
 msgstr "Þú hefur ekki nægar aðgangsheimildir til að vista þarna"
 
 #: ../src/exportViewDialog.js:160
-#| msgid "The directory does not exists"
 msgid "The directory does not exist"
 msgstr "Mappan er ekki til"
 
@@ -886,7 +880,6 @@ msgid "No earlier alternatives found."
 msgstr "Engir fyrri möguleikar fundust."
 
 #: ../src/openTripPlanner.js:623
-#| msgid "No route found."
 msgid "No later alternatives found."
 msgstr "Engir síðari möguleikar fundust."
 
@@ -970,8 +963,8 @@ msgid ""
 "The format used should include the language code and the article title like "
 "“en:Article title”."
 msgstr ""
-"Sniðið ætti að innihalda tungumálskóða og titil greinar, til dæmis \"is:Heiti "
-"greinar\"."
+"Sniðið ætti að innihalda tungumálskóða og titil greinar, til dæmis \"is:"
+"Heiti greinar\"."
 
 #: ../src/osmEditDialog.js:143
 msgid "Opening hours"
@@ -1045,7 +1038,7 @@ msgstr "Trúarbrögð"
 
 #: ../src/osmEditDialog.js:185 ../src/translations.js:363
 msgid "Animism"
-msgstr ""
+msgstr "Andatrú"
 
 #: ../src/osmEditDialog.js:186
 msgid "Bahá’í"
@@ -1057,7 +1050,7 @@ msgstr "Búddismi"
 
 #: ../src/osmEditDialog.js:188 ../src/translations.js:366
 msgid "Caodaism"
-msgstr ""
+msgstr "Kao-Daí"
 
 #: ../src/osmEditDialog.js:189 ../src/translations.js:367
 msgid "Christianity"
@@ -1065,7 +1058,7 @@ msgstr "Kristindómur"
 
 #: ../src/osmEditDialog.js:190 ../src/translations.js:368
 msgid "Confucianism"
-msgstr ""
+msgstr "Konfúsíusismi"
 
 #: ../src/osmEditDialog.js:191 ../src/translations.js:369
 msgid "Hinduism"
@@ -1073,7 +1066,7 @@ msgstr "Hindúismi"
 
 #: ../src/osmEditDialog.js:192 ../src/translations.js:370
 msgid "Jainism"
-msgstr ""
+msgstr "Jaínismi"
 
 #: ../src/osmEditDialog.js:193 ../src/translations.js:371
 msgid "Judaism"
@@ -1085,7 +1078,7 @@ msgstr "Íslam"
 
 #: ../src/osmEditDialog.js:195 ../src/translations.js:373
 msgid "Multiple Religions"
-msgstr ""
+msgstr "Margra trúarbragða"
 
 #: ../src/osmEditDialog.js:196 ../src/translations.js:374
 msgid "Paganism"
@@ -1093,7 +1086,7 @@ msgstr "Heiðni"
 
 #: ../src/osmEditDialog.js:197 ../src/translations.js:375
 msgid "Pastafarianism"
-msgstr ""
+msgstr "Pastafaríanismi"
 
 #: ../src/osmEditDialog.js:198 ../src/translations.js:376
 msgid "Scientology"
@@ -1117,7 +1110,7 @@ msgstr "Taóismi"
 
 #: ../src/osmEditDialog.js:203 ../src/translations.js:381
 msgid "Unitarian Universalism"
-msgstr ""
+msgstr "Alþjóðlegur únítarismi"
 
 #: ../src/osmEditDialog.js:204 ../src/translations.js:382
 msgid "Voodoo"
@@ -1125,11 +1118,11 @@ msgstr "Vúdú"
 
 #: ../src/osmEditDialog.js:205 ../src/translations.js:383
 msgid "Yazidism"
-msgstr ""
+msgstr "Jasismi"
 
 #: ../src/osmEditDialog.js:206 ../src/translations.js:384
 msgid "Zoroastrianism"
-msgstr ""
+msgstr "Sóróismi"
 
 #: ../src/osmEditDialog.js:209
 msgid "Toilets"
@@ -1145,6 +1138,9 @@ msgid ""
 "an element, the author’s intent when creating it, or hints for further "
 "improvement."
 msgstr ""
+"Upplýsingar sem notaðar eru til að gefa öðrum kortahönnuðum ekki-augljósar "
+"ábendingar um tiltekið atriði, markmið höfundar þegar hann útbjó atriði, eða "
+"ábendingar um hvernig hægt yrði að þróa/bæta það."
 
 #: ../src/osmEditDialog.js:328
 msgctxt "dialog title"
@@ -1261,7 +1257,7 @@ msgid "failed to load file"
 msgstr "mistókst að hlaða inn skrá"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:294
+#: ../src/sidebar.js:293
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Áætlaður tími: %s"
@@ -1291,7 +1287,6 @@ msgstr "Byrja í %s"
 #. * an arbitrary point on the map)
 #.
 #: ../src/transitLegRow.js:79
-#| msgid "Start!"
 msgid "Start"
 msgstr "Upphaf"
 
@@ -1344,7 +1339,6 @@ msgstr "%s – %s"
 #.
 #: ../src/transitPlan.js:280
 #, javascript-format
-#| msgid "%f min"
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "%d mínúta"
