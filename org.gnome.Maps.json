@@ -88,7 +88,8 @@
         },
         {
             "name": "libgweather",
-            "config-opts": ["--disable-vala"],
+            "buildsystem": "meson",
+            "config-opts": ["--libdir=/app/lib"],
             "sources": [
                 {
                     "type": "git",
