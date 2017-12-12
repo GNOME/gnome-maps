@@ -43,7 +43,6 @@ const Service = imports.service;
 const ShapeLayer = imports.shapeLayer;
 const Sidebar = imports.sidebar;
 const Utils = imports.utils;
-const ZoomControl = imports.zoomControl;
 
 const _CONFIGURE_ID_TIMEOUT = 100; // msecs
 const _WINDOW_MIN_WIDTH = 600;
@@ -86,7 +85,9 @@ var MainWindow = new Lang.Class({
                         'toggleSidebarButton',
                         'layersButton',
                         'favoritesButton',
-                        'printRouteButton' ],
+                        'printRouteButton',
+                        'zoomInButton',
+                        'zoomOutButton' ],
 
     get mapView() {
         return this._mapView;
@@ -118,7 +119,6 @@ var MainWindow = new Lang.Class({
         });
         this._layersButton.popover = this.layersPopover;
         this._favoritesButton.popover = new FavoritesPopover.FavoritesPopover({ mapView: this._mapView });
-        this._overlay.add_overlay(new ZoomControl.ZoomControl(this._mapView));
 
         this._mainStack.add(this._overlay);
         this._busy = new BusyMarker.BusyMarker();
@@ -305,6 +305,29 @@ var MainWindow = new Lang.Class({
 
             return false;
         }).bind(this));
+
+        this._mapView.view.connect('notify::zoom-level',
+                                   this._updateZoomButtonsSensitivity.bind(this));
+        this._mapView.view.connect('notify::max-zoom-level',
+                                   this._updateZoomButtonsSensitivity.bind(this));
+        this._mapView.view.connect('notify::min-zoom-level',
+                                   this._updateZoomButtonsSensitivity.bind(this));
+    },
+
+    _updateZoomButtonsSensitivity: function() {
+        let zoomLevel = this._mapView.view.zoom_level;
+        let maxZoomLevel = this._mapView.view.max_zoom_level;
+        let minZoomLevel = this._mapView.view.min_zoom_level;
+
+        if (zoomLevel >= maxZoomLevel)
+            this._zoomInButton.set_sensitive(false);
+        else
+            this._zoomInButton.set_sensitive(true);
+
+        if (zoomLevel <= minZoomLevel)
+            this._zoomOutButton.set_sensitive(false);
+        else
+            this._zoomOutButton.set_sensitive(true);
     },
 
     _updateLocationSensitivity: function() {
