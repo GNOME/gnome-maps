@@ -72,6 +72,9 @@ var MapMarker = new Lang.Class({
             this.bind_property('longitude',
                                this.place.location, 'longitude',
                                GObject.BindingFlags.DEFAULT);
+            this._view.connect('notify::latitude', this._onViewUpdated.bind(this));
+            this._view.connect('notify::longitude', this._onViewUpdated.bind(this));
+            this._view.connect('notify::zoom-level', this._onViewUpdated.bind(this));
         }
     },
 
@@ -285,6 +288,15 @@ var MapMarker = new Lang.Class({
 
         return x + tx + this.width > 0 && x + tx < mapSize.width &&
                y + ty + this.height > 0 && y + ty < mapSize.height;
+    },
+
+    _onViewUpdated: function() {
+        if (this.bubble) {
+            if (this._isInsideView())
+                this._positionBubble(this.bubble);
+            else
+                this.bubble.hide();
+        }
     },
 
     showBubble: function() {
