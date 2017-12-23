@@ -247,14 +247,6 @@ function load_icon(icon, size, loadCompleteCallback) {
 }
 
 function _load_icon(icon, loadCompleteCallback) {
-
-    if (icon.file) {
-        if (icon.file.has_uri_scheme ("http") || icon.file.has_uri_scheme ("https")) {
-            _load_http_icon(icon, loadCompleteCallback);
-            return;
-        }
-    }
-
     icon.load_async(-1, null, function(icon, res) {
         try {
             let stream = icon.load_finish(res)[0];
@@ -266,43 +258,6 @@ function _load_icon(icon, loadCompleteCallback) {
             loadCompleteCallback(null);
         }
     });
-}
-
-function _load_http_icon(icon, loadCompleteCallback) {
-    let msg = Soup.form_request_new_from_hash('GET', icon.file.get_uri(), {});
-    let soup_session = _get_soup_session();
-
-    soup_session.queue_message(msg, function(session, msg) {
-        if (msg.status_code !== Soup.KnownStatusCode.OK) {
-            log("Failed to load pixbuf: " + msg.reason_phrase);
-            loadCompleteCallback(null);
-            return;
-        }
-
-        let contents = msg.response_body.flatten().get_as_bytes();
-        let stream = Gio.MemoryInputStream.new_from_data
-                    (contents.get_data (null));
-        try {
-            let pixbuf = GdkPixbuf.Pixbuf.new_from_stream(stream, null);
-
-            _iconStore[icon.file.get_uri()] = pixbuf;
-            loadCompleteCallback(pixbuf);
-        } catch(e) {
-            log("Failed to load pixbuf: " + e);
-            loadCompleteCallback(null);
-        }
-    });
-}
-
-let soup_session = null;
-function _get_soup_session() {
-    if (soup_session === null) {
-        debug("Creating soup session...");
-        soup_session = new Soup.Session ();
-        debug("Created soup session");
-    }
-
-    return soup_session;
 }
 
 function _load_themed_icon(icon, size, loadCompleteCallback) {
