@@ -109,7 +109,7 @@ var PrintOperation = new Lang.Class({
     _runPrintOperation: function() {
         try {
             let result = this._operation.run(Gtk.PrintOperationAction.PRINT_DIALOG,
-                                             this._mainWindow, null);
+                                             this._mainWindow);
             if (result === Gtk.PrintOperationResult.ERROR) {
                 let error = this._operation.get_error();
                 Utils.debug('Failed to print: %s'.format(error));
