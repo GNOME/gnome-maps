@@ -196,7 +196,7 @@ var PrintLayout = new Lang.Class({
         let routeLayer = new Champlain.PathLayer({ stroke_width: _STROKE_WIDTH,
                                                    stroke_color: _STROKE_COLOR });
         view.add_layer(routeLayer);
-        this._route.path.forEach(routeLayer.add_node.bind(routeLayer));
+        this._route.path.forEach(function(node) { routeLayer.add_node(node); });
     },
 
     _drawInstruction: function(width, height, turnPoint) {
