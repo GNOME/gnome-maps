@@ -173,7 +173,7 @@ var TransitPrintLayout = new Lang.Class({
             routeLayer.add_node(lastPoint);
         }
 
-        leg.polyline.forEach(routeLayer.add_node.bind(routeLayer));
+        leg.polyline.forEach(function(node) { routeLayer.add_node(node) });
 
         /* like above, "stitch" the route segment with the next one if it's
          * a walking leg, and not the last one
