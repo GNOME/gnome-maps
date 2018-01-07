@@ -26,7 +26,6 @@ const GdkPixbuf = imports.gi.GdkPixbuf;
 const Geocode = imports.gi.GeocodeGlib;
 const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
-const Signals = imports.signals;
 const Soup = imports.gi.Soup;
 
 var METRIC_SYSTEM = 1;
@@ -65,11 +64,6 @@ function once(obj, signal, callback) {
         obj.disconnect(id);
         callback();
     });
-}
-
-function addSignalMethods(proto) {
-    Signals.addSignalMethods(proto);
-    proto.once = once.bind(undefined, proto);
 }
 
 function loadStyleSheet(file) {
