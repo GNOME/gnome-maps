@@ -21,6 +21,7 @@ const Gdk = imports.gi.Gdk;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
+const _ = imports.gettext.gettext;
 
 const Application = imports.application;
 const PlaceEntry = imports.placeEntry;
@@ -68,14 +69,20 @@ var RouteEntry = new Lang.Class({
         case Type.FROM:
             this._buttonImage.icon_name = 'list-add-symbolic';
             this._icon.icon_name = 'maps-point-start-symbolic';
+            /* Translators: this is add via location tooltip */
+            this._button.tooltip_text = _("Add via location");
             break;
         case Type.VIA:
             this._buttonImage.icon_name = 'list-remove-symbolic';
             this._icon.icon_name = 'maps-point-end-symbolic';
+            /* Translators: this is remove via location tooltip */
+            this._button.tooltip_text = _("Remove via location");
             break;
         case Type.TO:
             this._buttonImage.icon_name = 'route-reverse-symbolic';
             this._icon.icon_name = 'maps-point-end-symbolic';
+            /* Translators: this is reverse route tooltip */
+            this._button.tooltip_text = _("Reverse route");
             break;
         }
     },
