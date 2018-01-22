@@ -20,6 +20,8 @@
  *         Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
+const _ = imports.gettext.gettext;
+
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Gdk = imports.gi.Gdk;
@@ -59,6 +61,7 @@ var ShapeLayerFileChooser = new Lang.Class({
         allFilter.set_name(_("All Layer Files"));
         this.add_filter(allFilter);
         this.set_filter(allFilter);
+        this.title = _("Open Shape Layer");
 
         ShapeLayer.SUPPORTED_TYPES.forEach((function(layerClass) {
             let filter = new Gtk.FileFilter();
