@@ -196,9 +196,10 @@ var Sidebar = new Lang.Class({
                 this._query.addPoint(lastIndex - 1);
             }).bind(this));
 
-            this.bind_property('child-revealed',
-                               routeEntry.entry, 'has_focus',
-                               GObject.BindingFlags.DEFAULT);
+            this.connect('notify::child-revealed', (function(){
+                if (this.child_revealed)
+                    routeEntry.entry.grab_focus_without_selecting();
+            }).bind(this));
         } else if (type === RouteEntry.Type.VIA) {
             routeEntry.button.connect('clicked', (function() {
                 let row = routeEntry.get_parent();
