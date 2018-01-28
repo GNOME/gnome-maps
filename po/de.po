@@ -9,15 +9,16 @@
 # Mario Blättermann <mario.blaettermann@gmail.com>, 2015-2017.
 # Bernd Homuth <dev@hmt.im>, 2015.
 # Paul Seyfert <pseyfert@mathphys.fsk.uni-heidelberg.de>, 2016.
+# Tim Sabsch <tim@sabsch.com>, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-12-20 21:41+0000\n"
-"PO-Revision-Date: 2017-12-28 12:03+0100\n"
-"Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
+"POT-Creation-Date: 2018-01-22 20:52+0000\n"
+"PO-Revision-Date: 2018-01-28 12:18+0100\n"
+"Last-Translator: Tim Sabsch <tim@sabsch.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -143,7 +144,8 @@ msgstr "Anzahl der zu speichernden kürzlich besuchten Plätze."
 msgid "Facebook check-in privacy setting"
 msgstr "Privatsphäreneinstellungen für Facebook-Check-in"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:16
+#. Translators: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS, and SELF are constant names, and should not be translated
+#: ../data/org.gnome.Maps.gschema.xml.h:17
 msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
@@ -152,11 +154,11 @@ msgstr ""
 "Mögliche Werte sind: EVERYONE (jeder), FRIENDS_OF_FRIENDS (Freunde von "
 "Freunden), ALL_FRIENDS (alle Freunde) oder SELF (selbst)."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:17
+#: ../data/org.gnome.Maps.gschema.xml.h:18
 msgid "Foursquare check-in privacy setting"
 msgstr "Privatsphäreneinstellungen für Foursquare-Check-in"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:18
+#: ../data/org.gnome.Maps.gschema.xml.h:19
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
@@ -164,11 +166,11 @@ msgstr ""
 "Zuletzt verwendete Privatsphäreneinstellungen für Foursquare-Check-in. "
 "Mögliche Werte sind: Öffentlich, Anhänger oder Privat."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:19
+#: ../data/org.gnome.Maps.gschema.xml.h:20
 msgid "Foursquare check-in Facebook broadcasting"
 msgstr "Mitteilung eines Foursquare-Check-ins via Facebook"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:20
+#: ../data/org.gnome.Maps.gschema.xml.h:21
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
@@ -176,11 +178,11 @@ msgstr ""
 "Legt fest, ob Foursquare einen Check-in als Nachricht in einem verbundenen "
 "Facebook-Konto veröffentlicht."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:21
+#: ../data/org.gnome.Maps.gschema.xml.h:22
 msgid "Foursquare check-in Twitter broadcasting"
 msgstr "Mitteilung eines Foursquare-Check-ins via Twitter"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:22
+#: ../data/org.gnome.Maps.gschema.xml.h:23
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
@@ -188,17 +190,17 @@ msgstr ""
 "Legt fest, ob Foursquare einen Check-in als Nachricht in einem verbundenen "
 "Twitter-Konto veröffentlicht."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:23
+#: ../data/org.gnome.Maps.gschema.xml.h:24
 msgid "OpenStreetMap username or e-mail address"
 msgstr "Benutzername oder E-Mail-Adresse für OpenStreetMap"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:24
+#: ../data/org.gnome.Maps.gschema.xml.h:25
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr ""
 "Zeigt an, dass sich der Benutzer angemeldet hat, um OpenStreetMap-Daten "
 "bearbeiten zu können."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:25
+#: ../data/org.gnome.Maps.gschema.xml.h:26
 msgid "Last used transportation type for routing"
 msgstr "Für die Route zuletzt benutzte Beförderungsart"
 
@@ -366,9 +368,10 @@ msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "Formebene öffnen"
 
-#: ../data/ui/layers-popover.ui.h:1
-msgid "Load Map Layer"
-msgstr "Kartenebene laden"
+#. Translators: This string uses ellipsis character
+#: ../data/ui/layers-popover.ui.h:2
+msgid "Open Shape Layer&#x2026;"
+msgstr "Formebene öffnen …"
 
 #: ../data/ui/location-service-notification.ui.h:1
 msgid "Turn on location services to find your location"
@@ -596,11 +599,10 @@ msgstr "Drücken Sie zum Suchen die Eingabetaste"
 msgid "No results found"
 msgstr "Keine Ergebnisse gefunden"
 
-# Was soll hier »order« bedeuten? Die Richtung oder den Verlauf?
 #. Translators: This is a tooltip
 #: ../data/ui/route-entry.ui.h:2
 msgid "Drag to change order of the route"
-msgstr "Ziehen, um die Route zu ändern"
+msgstr "Ziehen, um die Reihenfolge der Routenziele zu ändern"
 
 #: ../data/ui/send-to-dialog.ui.h:1
 msgid "Open location"
@@ -611,8 +613,8 @@ msgid "_Open"
 msgstr "Ö_ffnen"
 
 #: ../data/ui/shape-layer-file-chooser.ui.h:1
-msgid "Open Layer"
-msgstr "Ebene öffnen"
+msgid "Open Shape Layer"
+msgstr "Formebene öffnen"
 
 #. Translators: This is a tooltip
 #: ../data/ui/shape-layer-row.ui.h:2
@@ -902,7 +904,8 @@ msgstr ""
 "Benjamin Steinwender <b@stbe.at>\n"
 "Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Bernd Homuth <dev@hmt.im>\n"
-"Paul Seyfert <pseyfert@mathphys.fsk.uni-heidelberg.de>"
+"Paul Seyfert <pseyfert@mathphys.fsk.uni-heidelberg.de>\n"
+"Tim Sabsch <tim@sabsch.com>"
 
 #: ../src/mainWindow.js:519
 msgid "A map application for GNOME"
@@ -1029,7 +1032,7 @@ msgid ""
 "“en:Article title”."
 msgstr ""
 "Das verwendete Format sollte den Sprachcode und den Artikel enthalten, zum "
-"Beispiel »de:Titel des Artikels«"
+"Beispiel »de:Titel des Artikels«."
 
 #: ../src/osmEditDialog.js:144
 msgid "Opening hours"
@@ -1311,6 +1314,21 @@ msgstr "Sie können den Druck abbrechen, wenn dies zu lange dauert"
 #: ../src/printOperation.js:51
 msgid "Abort printing"
 msgstr "Drucken abbrechen"
+
+#. Translators: this is add via location tooltip
+#: ../src/routeEntry.js:73
+msgid "Add via location"
+msgstr "Zwischenstopp hinzufügen"
+
+#. Translators: this is remove via location tooltip
+#: ../src/routeEntry.js:79
+msgid "Remove via location"
+msgstr "Zwischenstopp entfernen"
+
+#. Translators: this is reverse route tooltip
+#: ../src/routeEntry.js:85
+msgid "Reverse route"
+msgstr "Route umkehren"
 
 #: ../src/sendToDialog.js:179
 msgid "Failed to open URI"
@@ -1599,41 +1617,47 @@ msgstr "Unbekannt"
 msgid "Exact"
 msgstr "Genau"
 
-#: ../src/utils.js:338
+#: ../src/utils.js:293
 #, javascript-format
 msgid "%f h"
 msgstr "%f h"
 
-#: ../src/utils.js:340
+#: ../src/utils.js:295
 #, javascript-format
 msgid "%f min"
 msgstr "%f min"
 
-#: ../src/utils.js:342
+#: ../src/utils.js:297
 #, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
 #. Translators: This is a distance measured in kilometers
-#: ../src/utils.js:353
+#: ../src/utils.js:308
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: ../src/utils.js:356
+#: ../src/utils.js:311
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: ../src/utils.js:364
+#: ../src/utils.js:319
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: ../src/utils.js:367
+#: ../src/utils.js:322
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
+
+#~ msgid "Load Map Layer"
+#~ msgstr "Kartenebene laden"
+
+#~ msgid "Open Layer"
+#~ msgstr "Ebene öffnen"
