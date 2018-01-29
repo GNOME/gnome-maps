@@ -21,7 +21,7 @@
 const Lang = imports.lang;
 
 const DEFAULT_LINE_WIDTH = 5;
-const DEFAULT_COLOR = 'AE274A';
+const DEFAULT_COLOR = '69B1FF';
 
 var GeoJSONStyle = new Lang.Class({
     Name: 'GeoJSONStyle',
