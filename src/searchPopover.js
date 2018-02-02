@@ -48,66 +48,68 @@ var SearchPopover = new Lang.Class({
     },
 
     _propagateKeys: function(entry, event) {
-        let row;
-
-        if (this.visible) {
-            row = this._list.get_selected_row();
-            if (!row)
-                row = this._list.get_row_at_index(0);
-        } else
-            row = this._list.get_row_at_index(0);
-
-        let length = this._list.get_children().length;
         let keyval = event.get_keyval()[1];
 
         if (keyval === Gdk.KEY_Escape) {
-            this._list.unselect_all();
             this.hide();
-            return false;
+            this._list.unselect_all();
+            return Gdk.EVENT_STOP;
         }
 
-        if (!row)
-            return false;
-
-        // If we get an 'enter' keypress and we have a selected
-        // row, we do not want to propagate the event.
-        if ((this.visible && row.is_selected()) &&
-            keyval === Gdk.KEY_Return ||
+        if (keyval === Gdk.KEY_Return ||
             keyval === Gdk.KEY_KP_ENTER ||
             keyval === Gdk.KEY_ISO_Enter) {
-            row.activate();
 
-            return true;
-        } else if (keyval === Gdk.KEY_KP_Up || keyval === Gdk.KEY_Up) {
-            this.show();
-
-            if (!row.is_selected()) {
-                let pRow = this._list.get_row_at_index(length - 1);
-                this._list.select_row(pRow);
-                return false;
+            // If we get an 'enter' keypress and we have a selected
+            // row, we do not want to propagate the event.
+            let row = this._list.get_selected_row();
+            if (this.visible && row) {
+                row.activate();
+                return Gdk.EVENT_STOP;
+            } else {
+                return Gdk.EVENT_PROPAGATE;
             }
-
-            if (row.get_index() > 0) {
-                let pRow = this._list.get_row_at_index(row.get_index() - 1);
-                this._list.select_row(pRow);
-            } else
-                this._list.unselect_all();
-        } else if (keyval === Gdk.KEY_KP_Down || keyval === Gdk.KEY_Down) {
-            this.show();
-
-            if (!row.is_selected()) {
-                this._list.select_row(row);
-                return true;
-            }
-
-            if (row.get_index() !== (length - 1)) {
-                let nRow = this._list.get_row_at_index(row.get_index() + 1);
-                this._list.select_row(nRow);
-            } else
-                this._list.unselect_all();
-            return true;
         }
-        return false;
+
+        if (keyval === Gdk.KEY_KP_Up ||
+            keyval === Gdk.KEY_Up ||
+            keyval === Gdk.KEY_KP_Down ||
+            keyval === Gdk.KEY_Down) {
+
+            let length = this._list.get_children().length;
+            if (length === 0) {
+                return Gdk.EVENT_PROPAGATE;
+            }
+
+            let direction = (keyval === Gdk.KEY_KP_Up || keyval === Gdk.KEY_Up) ? -1 : 1;
+            let row = this._list.get_selected_row();
+            let idx;
+            if (!row) {
+                idx = (direction === 1) ? 0 :  length - 1;
+            } else {
+                idx = row.get_index() + direction;
+            }
+            let inBounds = 0 <= idx && idx < length;
+            if (inBounds) {
+                this.show();
+                this._selectRow(this._list.get_row_at_index(idx));
+            } else {
+                this._list.unselect_all();
+            }
+            return Gdk.EVENT_STOP;
+        }
+
+        return Gdk.EVENT_PROPAGATE;
+    },
+
+    /* Selects given row and ensures that it is visible. */
+    _selectRow: function(row) {
+        this._list.select_row(row);
+        let adjustment = this._list.get_adjustment();
+        if (adjustment) {
+            let allocation = row.get_allocation();
+            adjustment.clamp_page(allocation.y, allocation.y + allocation.height);
+        }
     }
 });
 
