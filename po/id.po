@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-11-22 17:12+0000\n"
-"PO-Revision-Date: 2017-11-28 16:25+0700\n"
+"POT-Creation-Date: 2018-01-22 21:05+0000\n"
+"PO-Revision-Date: 2018-01-31 12:00+0700\n"
 "Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>\n"
 "Language-Team: Indonesian <gnome@i15n.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.0.6\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
@@ -60,7 +60,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:87 ../src/mainWindow.js:495
+#: ../src/application.js:87 ../src/mainWindow.js:521
 msgid "Maps"
 msgstr "Peta"
 
@@ -136,7 +136,8 @@ msgstr "Banyaknya rute baru-baru ini dikunjungi yang akan disimpan."
 msgid "Facebook check-in privacy setting"
 msgstr "Pengaturan privasi check-in Facebook"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:16
+#. Translators: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS, and SELF are constant names, and should not be translated
+#: ../data/org.gnome.Maps.gschema.xml.h:17
 msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
@@ -144,11 +145,11 @@ msgstr ""
 "Pengaturan privasi check in Facebook yang terakhir dipakai. Nilai yang "
 "mungkin adalah: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS, atau SELF."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:17
+#: ../data/org.gnome.Maps.gschema.xml.h:18
 msgid "Foursquare check-in privacy setting"
 msgstr "Pengaturan privasi check-in Foursquare"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:18
+#: ../data/org.gnome.Maps.gschema.xml.h:19
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
@@ -157,11 +158,11 @@ msgstr ""
 "mungkin adalah: public (umum), followers (para pengikut), atau private "
 "(pribadi)"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:19
+#: ../data/org.gnome.Maps.gschema.xml.h:20
 msgid "Foursquare check-in Facebook broadcasting"
 msgstr "Penyiaran Facebook untuk check in Foursquare"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:20
+#: ../data/org.gnome.Maps.gschema.xml.h:21
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
@@ -169,11 +170,11 @@ msgstr ""
 "Menandakan apakah Foursquare mesti menyiarkan check in sebagai sebuah "
 "kiriman dalam akun Facebook yang dikaitkan dengan akun Foursquare."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:21
+#: ../data/org.gnome.Maps.gschema.xml.h:22
 msgid "Foursquare check-in Twitter broadcasting"
 msgstr "Penyiaran Twitter untuk check in Foursquare"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:22
+#: ../data/org.gnome.Maps.gschema.xml.h:23
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
@@ -181,16 +182,16 @@ msgstr ""
 "Menandakan apakah Foursquare mesti menyiarkan check in sebagai sebuah twit "
 "dalam akun Twitter yang dikaitkan dengan akun Foursquare."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:23
+#: ../data/org.gnome.Maps.gschema.xml.h:24
 msgid "OpenStreetMap username or e-mail address"
 msgstr "Nama pengguna atau alamat surel OpenStreetMap"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:24
+#: ../data/org.gnome.Maps.gschema.xml.h:25
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr ""
 "Menandakan apakah pengguna telah masuk untuk menyunting data OpenStreetMap."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:25
+#: ../data/org.gnome.Maps.gschema.xml.h:26
 msgid "Last used transportation type for routing"
 msgstr "Jenis transportasi terakhir yang digunakan untuk rute"
 
@@ -358,9 +359,10 @@ msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "Buka layer shape"
 
-#: ../data/ui/layers-popover.ui.h:1
-msgid "Load Map Layer"
-msgstr "Muat Layer Peta"
+#. Translators: This string uses ellipsis character
+#: ../data/ui/layers-popover.ui.h:2
+msgid "Open Shape Layer&#x2026;"
+msgstr "Buka Layer Shape&#x2026;"
 
 #: ../data/ui/location-service-notification.ui.h:1
 msgid "Turn on location services to find your location"
@@ -382,24 +384,34 @@ msgstr "Pilih tipe peta"
 
 #. Translators: This is a tooltip
 #: ../data/ui/main-window.ui.h:7
+msgid "Zoom out"
+msgstr "Perkecil"
+
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:9
+msgid "Zoom in"
+msgstr "Perbesar"
+
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:11
 msgid "Toggle route planner"
 msgstr "Jungkitkan perencana rute"
 
 #. Translators: This is a tooltip
-#: ../data/ui/main-window.ui.h:9
+#: ../data/ui/main-window.ui.h:13
 msgid "Toggle favorites"
 msgstr "Jungkitkan favorit"
 
 #. Translators: This is a tooltip
-#: ../data/ui/main-window.ui.h:11
+#: ../data/ui/main-window.ui.h:15
 msgid "Print Route"
 msgstr "Cetak Rute"
 
-#: ../data/ui/main-window.ui.h:12
+#: ../data/ui/main-window.ui.h:16
 msgid "Maps is offline!"
 msgstr "Peta luring!"
 
-#: ../data/ui/main-window.ui.h:13
+#: ../data/ui/main-window.ui.h:17
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -407,7 +419,7 @@ msgstr ""
 "Peta perlu suatu koneksi internet aktif untuk berfungsi dengan benar, tapi "
 "tidak ditemukan satupun."
 
-#: ../data/ui/main-window.ui.h:14
+#: ../data/ui/main-window.ui.h:18
 msgid "Check your connection and proxy settings."
 msgstr "Periksalah pengaturan proksi dan koneksi Anda."
 
@@ -588,9 +600,9 @@ msgstr "Buka lokasi"
 msgid "_Open"
 msgstr "_Buka"
 
-#: ../data/ui/shape-layer-file-chooser.ui.h:1
-msgid "Open Layer"
-msgstr "Buka Layer"
+#: ../data/ui/shape-layer-file-chooser.ui.h:1 ../src/mainWindow.js:64
+msgid "Open Shape Layer"
+msgstr "Buka Layer Shape"
 
 #. Translators: This is a tooltip
 #: ../data/ui/shape-layer-row.ui.h:2
@@ -865,29 +877,29 @@ msgstr "Rute tak ditemukan."
 msgid "Start!"
 msgstr "Mulai!"
 
-#: ../src/mainWindow.js:60
+#: ../src/mainWindow.js:61
 msgid "All Layer Files"
 msgstr "Semua Berkas Lapisan"
 
-#: ../src/mainWindow.js:436
+#: ../src/mainWindow.js:462
 msgid "Failed to connect to location service"
 msgstr "Gagal menyambung ke layanan lokasi"
 
-#: ../src/mainWindow.js:493
+#: ../src/mainWindow.js:519
 msgid "translator-credits"
 msgstr ""
 "Andika Triwidada <andika@gmail.com>, 2013-2016\n"
-"Kukuh Syafaat <syafaatkukuh@gmail.com>, 2017"
+"Kukuh Syafaat <syafaatkukuh@gmail.com>, 2017, 2018."
 
-#: ../src/mainWindow.js:496
+#: ../src/mainWindow.js:522
 msgid "A map application for GNOME"
 msgstr "Aplikasi peta bagi GNOME"
 
-#: ../src/mainWindow.js:507
+#: ../src/mainWindow.js:533
 msgid "Copyright © 2011 – 2017 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Hak Cipta © 2011 – 2017 Red Hat, Inc. dan Penulis GNOME Maps"
 
-#: ../src/mainWindow.js:528
+#: ../src/mainWindow.js:554
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Data peta oleh %s dan kontributor"
@@ -897,7 +909,7 @@ msgstr "Data peta oleh %s dan kontributor"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: ../src/mainWindow.js:544
+#: ../src/mainWindow.js:570
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Ubin peta disediakan oleh %s"
@@ -992,7 +1004,7 @@ msgstr ""
 "Nomor telepon. Gunakan format internasional, diawali dengan tanda +. Hati-"
 "hati dengan perundangan privasi lokal, khususnya untuk nomor telepon pribadi."
 
-#: ../src/osmEditDialog.js:136 ../src/placeBubble.js:170
+#: ../src/osmEditDialog.js:136 ../src/placeBubble.js:176
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -1192,35 +1204,35 @@ msgstr "Pilih Tipe"
 msgid "Done"
 msgstr "Selesai"
 
-#: ../src/placeBubble.js:122
+#: ../src/placeBubble.js:128
 msgid "Population:"
 msgstr "Populasi:"
 
-#: ../src/placeBubble.js:128
+#: ../src/placeBubble.js:134
 msgid "Altitude:"
 msgstr "Ketinggian:"
 
-#: ../src/placeBubble.js:133
+#: ../src/placeBubble.js:139
 msgid "Opening hours:"
 msgstr "Jam buka:"
 
-#: ../src/placeBubble.js:138
+#: ../src/placeBubble.js:144
 msgid "Internet access:"
 msgstr "Akses internet:"
 
-#: ../src/placeBubble.js:143
+#: ../src/placeBubble.js:149
 msgid "Religion:"
 msgstr "Agama:"
 
-#: ../src/placeBubble.js:148
+#: ../src/placeBubble.js:154
 msgid "Toilets:"
 msgstr "Toilet:"
 
-#: ../src/placeBubble.js:153
+#: ../src/placeBubble.js:159
 msgid "Wheelchair access:"
 msgstr "Akses kursi roda:"
 
-#: ../src/placeBubble.js:159 ../src/placeBubble.js:163
+#: ../src/placeBubble.js:165 ../src/placeBubble.js:169
 msgid "Phone:"
 msgstr "Telepon:"
 
@@ -1284,6 +1296,21 @@ msgstr "Anda dapat menggugurkan pencetakan bila ini makan waktu terlalu lama"
 #: ../src/printOperation.js:51
 msgid "Abort printing"
 msgstr "Gugurkan pencetakan"
+
+#. Translators: this is add via location tooltip
+#: ../src/routeEntry.js:73
+msgid "Add via location"
+msgstr "Tambah lewat lokasi"
+
+#. Translators: this is remove via location tooltip
+#: ../src/routeEntry.js:79
+msgid "Remove via location"
+msgstr "Hapus lewat lokasi"
+
+#. Translators: this is reverse route tooltip
+#: ../src/routeEntry.js:85
+msgid "Reverse route"
+msgstr "Rute sebaliknya"
 
 #: ../src/sendToDialog.js:179
 msgid "Failed to open URI"
@@ -1569,41 +1596,47 @@ msgstr "Tak diketahui"
 msgid "Exact"
 msgstr "Eksak"
 
-#: ../src/utils.js:338
+#: ../src/utils.js:293
 #, javascript-format
 msgid "%f h"
 msgstr "%f j"
 
-#: ../src/utils.js:340
+#: ../src/utils.js:295
 #, javascript-format
 msgid "%f min"
 msgstr "%f men"
 
-#: ../src/utils.js:342
+#: ../src/utils.js:297
 #, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
 #. Translators: This is a distance measured in kilometers
-#: ../src/utils.js:353
+#: ../src/utils.js:308
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: ../src/utils.js:356
+#: ../src/utils.js:311
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: ../src/utils.js:364
+#: ../src/utils.js:319
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mil"
 
 #. Translators: This is a distance measured in feet
-#: ../src/utils.js:367
+#: ../src/utils.js:322
 #, javascript-format
 msgid "%s ft"
 msgstr "%s kaki"
+
+#~ msgid "Load Map Layer"
+#~ msgstr "Muat Layer Peta"
+
+#~ msgid "Open Layer"
+#~ msgstr "Buka Layer"
