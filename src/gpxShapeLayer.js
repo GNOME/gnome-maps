@@ -28,7 +28,7 @@ var GpxShapeLayer = GObject.registerClass(
 class GpxShapeLayer extends ShapeLayer.ShapeLayer {
 
     _init(params) {
-        super.construct(params);
+        super._init(params);
 
         this._mapSource = new GeoJSONSource.GeoJSONSource({
             mapView: this._mapView,
