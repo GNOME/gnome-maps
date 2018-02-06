@@ -27,7 +27,7 @@ const Domparser = imports.xmldom.domparser;
 var GpxShapeLayer = GObject.registerClass(
 class GpxShapeLayer extends ShapeLayer.ShapeLayer {
 
-    constructor(params) {
+    _init(params) {
         super.construct(params);
 
         this._mapSource = new GeoJSONSource.GeoJSONSource({
