@@ -93,6 +93,10 @@ var MainWindow = GObject.registerClass({
         return this._mapView;
     }
 
+    get overlay() {
+        return this._headerBar.custom_title;
+    }
+
     _init(params) {
         this._overlay = params.overlay;
         delete params.overlay;
@@ -332,8 +336,10 @@ var MainWindow = GObject.registerClass({
     }
 
     _initHeaderbar() {
+        let overlay = new Gtk.Overlay({ visible: true });
         this._placeEntry = this._createPlaceEntry();
-        this._headerBar.custom_title = this._placeEntry;
+        overlay.add(this._placeEntry);
+        this._headerBar.custom_title = overlay;
 
         let favoritesPopover = this._favoritesButton.popover;
         this._favoritesButton.sensitive = favoritesPopover.rows > 0;
