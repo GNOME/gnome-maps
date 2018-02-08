@@ -257,9 +257,9 @@ var Application = GObject.registerClass({
             return;
 
         let overlay = new Gtk.Overlay({ visible: true, can_focus: false });
-        notificationManager = new NotificationManager.NotificationManager(overlay);
         this._mainWindow = new MainWindow.MainWindow({ application: this,
                                                        overlay: overlay });
+        notificationManager = new NotificationManager.NotificationManager(this._mainWindow.overlay);
         this._mainWindow.connect('destroy', () => this._onWindowDestroy());
         if (GLib.getenv('MAPS_DEBUG') === 'focus') {
             this._mainWindow.connect('set-focus', (window, widget) => {
