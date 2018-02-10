@@ -5,15 +5,15 @@
 # Muhammet Kara <muhammetk@gmail.com>, 2013, 2014, 2015, 2016.
 # Osman Karagöz <osmank3@gmail.com>, 2017.
 # Çağatay Yiğit Şahin <cyigitsahin@outlook.com>, 2017.
-# Emin Tufan Çetin <etcetin@gmail.com>, 2013, 2017.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2013, 2017, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-12-20 21:41+0000\n"
-"PO-Revision-Date: 2017-12-22 19:17+0300\n"
+"POT-Creation-Date: 2018-01-18 20:35+0000\n"
+"PO-Revision-Date: 2018-01-21 12:03+0300\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -138,7 +138,8 @@ msgstr "Saklanacak yakın zamanda ziyaret edilen rotaların sayısı."
 msgid "Facebook check-in privacy setting"
 msgstr "Facebook yer bildirimi gizlilik ayarı"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:16
+#. Translators: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS, and SELF are constant names, and should not be translated
+#: ../data/org.gnome.Maps.gschema.xml.h:17
 msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
@@ -146,11 +147,11 @@ msgstr ""
 "Son kullanılan Facebook yer bildirimi gizlilik ayarı. Olası değerler: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:17
+#: ../data/org.gnome.Maps.gschema.xml.h:18
 msgid "Foursquare check-in privacy setting"
 msgstr "Foursquare yer bildirimi gizlilik ayarı"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:18
+#: ../data/org.gnome.Maps.gschema.xml.h:19
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
@@ -158,11 +159,11 @@ msgstr ""
 "Son kullanılan Foursquare yer bildirimi ayarı. Olası değerler: herkese açık, "
 "takipçiler veya gizli."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:19
+#: ../data/org.gnome.Maps.gschema.xml.h:20
 msgid "Foursquare check-in Facebook broadcasting"
 msgstr "Foursquare yer bildirimi için Facebook yayını"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:20
+#: ../data/org.gnome.Maps.gschema.xml.h:21
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
@@ -170,11 +171,11 @@ msgstr ""
 "Foursquare’in yer bildirimlerini, Foursquare hesabına bağlı olan Facebook "
 "hesabında bir gönderi olarak yayınlayıp yayınlamayacağını belirtir."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:21
+#: ../data/org.gnome.Maps.gschema.xml.h:22
 msgid "Foursquare check-in Twitter broadcasting"
 msgstr "Foursquare yer bildirimi için Twitter yayını"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:22
+#: ../data/org.gnome.Maps.gschema.xml.h:23
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
@@ -182,17 +183,17 @@ msgstr ""
 "Foursquare’in yer bildirimlerini, Foursquare hesabına bağlı olan Twitter "
 "hesabında bir tvit olarak yayınlayıp yayınlamayacağını belirtir."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:23
+#: ../data/org.gnome.Maps.gschema.xml.h:24
 msgid "OpenStreetMap username or e-mail address"
 msgstr "OpenStreetMap kullanıcı adı ya da e-posta adresi"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:24
+#: ../data/org.gnome.Maps.gschema.xml.h:25
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr ""
 "Kullanıcının OpenStreetMap verilerini düzenlemek için oturup açıp açmamış "
 "olduğunu belirtir."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:25
+#: ../data/org.gnome.Maps.gschema.xml.h:26
 msgid "Last used transportation type for routing"
 msgstr "Yönlendirme için son kullanılan ulaşım şekli"
 
@@ -384,15 +385,11 @@ msgstr "Harita türü seç"
 
 #. Translators: This is a tooltip
 #: ../data/ui/main-window.ui.h:7
-#| msgctxt "shortcut window"
-#| msgid "Zoom out"
 msgid "Zoom out"
 msgstr "Uzaklaştırın"
 
 #. Translators: This is a tooltip
 #: ../data/ui/main-window.ui.h:9
-#| msgctxt "shortcut window"
-#| msgid "Zoom in"
 msgid "Zoom in"
 msgstr "Yakınlaştırın"
 
@@ -1305,6 +1302,23 @@ msgstr "Eğer bu uzun zaman alırsa yazdırmaktan vazgeçebilirsiniz"
 msgid "Abort printing"
 msgstr "Yazdırmayı iptal et"
 
+#. Translators: this is add via location tooltip
+#: ../src/routeEntry.js:73
+#| msgid "last viewed location"
+msgid "Add via location"
+msgstr "Ara konum ekle"
+
+#. Translators: this is remove via location tooltip
+#: ../src/routeEntry.js:79
+#| msgid "Open location"
+msgid "Remove via location"
+msgstr "Ara konumu kaldır"
+
+#. Translators: this is reverse route tooltip
+#: ../src/routeEntry.js:85
+msgid "Reverse route"
+msgstr "Rotayı tersine çevir"
+
 #: ../src/sendToDialog.js:179
 msgid "Failed to open URI"
 msgstr "URI açma başarısız oldu"
@@ -1589,41 +1603,41 @@ msgstr "Bilinmiyor"
 msgid "Exact"
 msgstr "Tam"
 
-#: ../src/utils.js:338
+#: ../src/utils.js:293
 #, javascript-format
 msgid "%f h"
 msgstr "%f sa"
 
-#: ../src/utils.js:340
+#: ../src/utils.js:295
 #, javascript-format
 msgid "%f min"
 msgstr "%f dk"
 
-#: ../src/utils.js:342
+#: ../src/utils.js:297
 #, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
 #. Translators: This is a distance measured in kilometers
-#: ../src/utils.js:353
+#: ../src/utils.js:308
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: ../src/utils.js:356
+#: ../src/utils.js:311
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: ../src/utils.js:364
+#: ../src/utils.js:319
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: ../src/utils.js:367
+#: ../src/utils.js:322
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
