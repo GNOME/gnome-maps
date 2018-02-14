@@ -98,14 +98,15 @@ class TurnPointMarker extends MapMarker.MapMarker {
     goTo() {
         let view = this._mapView.view;
         let turnPointZoomLevel = 15;
+        let latitude = this.latitude;
+        let longitude = this.longitude;
 
         view.goto_animation_mode = Clutter.AnimationMode.LINEAR;
         view.goto_duration = 0;
 
         Utils.once(view, 'animation-completed', () => {
             view.zoom_level = turnPointZoomLevel;
-            view.center_on(this.latitude,
-                           this.longitude);
+            view.center_on(latitude, longitude);
         });
 
         view.go_to(this.latitude, this.longitude);
