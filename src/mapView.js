@@ -424,10 +424,8 @@ var MapView = GObject.registerClass({
         }
 
         let place = Application.geoclue.place;
-
         let previousSelected = this._userLocation && this._userLocation.selected;
-        if (this._userLocation)
-            this._userLocation.disconnectView();
+
         this._userLocation = new UserLocationMarker.UserLocationMarker({ place: place,
                                                                          mapView: this });
         this._userLocationLayer.remove_all();
