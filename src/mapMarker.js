@@ -38,7 +38,19 @@ var MapMarker = GObject.registerClass({
     },
     Properties: {
         'surface': GObject.ParamSpec.override('surface',
-                                              Champlain.Exportable)
+                                              Champlain.Exportable),
+        'view-latitude': GObject.ParamSpec.double('view-latitude', '', '',
+                                                  GObject.ParamFlags.READABLE |
+                                                  GObject.ParamFlags.WRITABLE,
+                                                  -90, 90, 0),
+        'view-longitude': GObject.ParamSpec.double('view-longitude', '', '',
+                                                   GObject.ParamFlags.READABLE |
+                                                   GObject.ParamFlags.WRITABLE,
+                                                   -180, 180, 0),
+        'view-zoom-level': GObject.ParamSpec.int('view-zoom-level', '', '',
+                                                 GObject.ParamFlags.READABLE |
+                                                 GObject.ParamFlags.WRITABLE,
+                                                 0, 20, 3)
     }
 }, class MapMarker extends Champlain.Marker {
 
@@ -70,9 +82,15 @@ var MapMarker = GObject.registerClass({
             this.bind_property('longitude',
                                this.place.location, 'longitude',
                                GObject.BindingFlags.DEFAULT);
-            this._view.connect('notify::latitude', this._onViewUpdated.bind(this));
-            this._view.connect('notify::longitude', this._onViewUpdated.bind(this));
-            this._view.connect('notify::zoom-level', this._onViewUpdated.bind(this));
+            this._view.bind_property('latitude', this, 'view-latitude',
+                                     GObject.BindingFlags.DEFAULT);
+            this._view.bind_property('longitude', this, 'view-longitude',
+                                     GObject.BindingFlags.DEFAULT);
+            this._view.bind_property('zoom-level', this, 'view-zoom-level',
+                                     GObject.BindingFlags.DEFAULT);
+            this.connect('notify::view-latitude', this._onViewUpdated.bind(this));
+            this.connect('notify::view-longitude', this._onViewUpdated.bind(this));
+            this.connect('notify::view-zoom-level', this._onViewUpdated.bind(this));
         }
     }
 
