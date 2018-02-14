@@ -267,12 +267,14 @@ var MapView = GObject.registerClass({
         route.connect('reset', () => {
             this._clearRouteLayers();
             this._instructionMarkerLayer.remove_all();
+            this._turnPointMarker = null;
             this.routeShowing = false;
         });
         transitPlan.connect('update', () => this._showTransitPlan(transitPlan));
         transitPlan.connect('reset', () => {
             this._clearRouteLayers();
             this._instructionMarkerLayer.remove_all();
+            this._turnPointMarker = null;
             this.routeShowing = false;
         });
         transitPlan.connect('itinerary-selected', (obj, itinerary) => {
@@ -282,6 +284,7 @@ var MapView = GObject.registerClass({
         transitPlan.connect('itinerary-deselected', () => {
             this._clearRouteLayers();
             this._instructionMarkerLayer.remove_all();
+            this._turnPointMarker = null;
             this.routeShowing = false;
         });
 
@@ -475,6 +478,7 @@ var MapView = GObject.registerClass({
         if (this._turnPointMarker)
             this._turnPointMarker.destroy();
 
+        this._turnPointMarker = null;
         if (turnPoint.isStop())
             return;
 
@@ -579,6 +583,7 @@ var MapView = GObject.registerClass({
         let pointIndex = 0;
 
         this._instructionMarkerLayer.remove_all();
+        this._turnPointMarker = null;
         route.turnPoints.forEach((turnPoint) => {
             if (turnPoint.isStop()) {
                 let queryPoint = query.filledPoints[pointIndex];
@@ -596,6 +601,7 @@ var MapView = GObject.registerClass({
         this._clearRouteLayers();
         this._placeLayer.remove_all();
         this._instructionMarkerLayer.remove_all();
+        this._turnPointMarker = null;
 
         itinerary.legs.forEach((leg, index) => {
             let dashed = !leg.transit;
