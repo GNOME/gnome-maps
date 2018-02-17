@@ -79,8 +79,8 @@ class UserLocationMarker extends MapMarker.MapMarker {
         if (this.place.location.accuracy > 0) {
             this._accuracyMarker = new AccuracyCircleMarker({ place: this.place });
             this._accuracyMarker.refreshGeometry(this._view);
-            this._zoomLevelId = this._view.connect('notify::view-zoom-level',
-                                                   this._accuracyMarker.refreshGeometry.bind(this._accuracyMarker));
+            this.connect('notify::view-zoom-level',
+                         () => this._accuracyMarker.refreshGeometry(this._view));
         }
     }
 
