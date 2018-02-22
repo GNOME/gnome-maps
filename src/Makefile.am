@@ -34,6 +34,8 @@ EXTRA_DIST =								\
 	org.gnome.Maps.in						\
 	org.gnome.Maps.src.gresource.xml				\
 	geojson-vt/LICENSE						\
+	togeojson/LICENSE						\
+	xmldom/LICENSE							\
 	$(app_resource_files)						\
 	$(service_resource_files)					\
 	$(NULL)
