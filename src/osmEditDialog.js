@@ -306,7 +306,9 @@ var OSMEditDialog = GObject.registerClass({
         this._typeSearch.can_focus = true;
 
         let typeSearchPopover = this._typeSearch.popover;
-        typeSearchPopover.connect('selected', () => this._onTypeSelected());
+        typeSearchPopover.connect('selected', (o, k, v, t) => {
+            this._onTypeSelected(o, k, v, t);
+        });
 
         this._cancellable = new Gio.Cancellable();
         this._cancellable.connect(() => this.response(Response.CANCELLED));
