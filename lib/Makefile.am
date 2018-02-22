@@ -4,6 +4,10 @@ BUILT_SOURCES =							\
 	maps-enum-types.c						\
 	maps-enum-types.h
 
+EXTRA_DIST =								\
+	maps-enum-types.c.template					\
+	maps-enum-types.h.template
+
 libgnome_maps_headers_private =					\
 	maps-contact-store.h						\
 	maps-contact.h							\
