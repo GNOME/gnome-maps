@@ -36,7 +36,9 @@ libgnome_maps_sources =						\
 
 libgnome_maps_la_SOURCES =						\
 	$(libgnome_maps_sources)					\
-	$(libgnome_maps_headers_private)				\
+	$(libgnome_maps_headers_private)
+
+nodist_libgnome_maps_la_SOURCES =					\
 	$(BUILT_SOURCES)
 
 libgnome_maps_la_LIBADD = $(GNOME_MAPS_LIB_LIBS)
