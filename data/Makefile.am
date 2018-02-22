@@ -42,6 +42,10 @@ servicedir = $(datadir)/dbus-1/services
 service_DATA = org.gnome.Maps.service
 
 EXTRA_DIST =								\
+	media/maptype-aerial.png					\
+	media/maptype-street.png					\
+	media/maps-point-end-symbolic.svg				\
+	media/maps-point-start-symbolic.svg				\
 	org.gnome.Maps.desktop.in					\
 	org.gnome.Maps.service.in					\
 	org.gnome.Maps.gschema.xml					\
