@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-12-20 21:41+0000\n"
-"PO-Revision-Date: 2018-01-09 20:17+0200\n"
+"POT-Creation-Date: 2018-01-22 20:52+0000\n"
+"PO-Revision-Date: 2018-02-23 15:04+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.3\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid "GNOME Maps"
@@ -78,7 +78,7 @@ msgstr "viimeksi katsottu sijainti"
 
 #: ../data/org.gnome.Maps.gschema.xml.h:2
 msgid "Coordinates of last viewed location."
-msgstr "Viimeksi katsotun sijainnin koordinaatit"
+msgstr "Viimeksi katsotun sijainnin koordinaatit."
 
 #: ../data/org.gnome.Maps.gschema.xml.h:3
 msgid "Window size"
@@ -132,7 +132,8 @@ msgstr "Äskettäin käytyjen reittien varastoitava lukumäärä."
 msgid "Facebook check-in privacy setting"
 msgstr "Facebook-paikkakirjautumisen yksityisyysasetus"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:16
+#. Translators: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS, and SELF are constant names, and should not be translated
+#: ../data/org.gnome.Maps.gschema.xml.h:17
 msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
@@ -140,11 +141,11 @@ msgstr ""
 "Viimeisin käytetty Facebook-paikkakirjautumisen yksityisyysasetus. "
 "Mahdolliset arvot ovat: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS tai SELF."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:17
+#: ../data/org.gnome.Maps.gschema.xml.h:18
 msgid "Foursquare check-in privacy setting"
 msgstr "Foursquare-paikkakirjautumisen yksityisyysasetus"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:18
+#: ../data/org.gnome.Maps.gschema.xml.h:19
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
@@ -152,11 +153,11 @@ msgstr ""
 "Viimeisin käytetty Foursquare-paikkakirjautumisen yksityisyysasetus. "
 "Mahdolliset arvot ovat: public, followers tai private."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:19
+#: ../data/org.gnome.Maps.gschema.xml.h:20
 msgid "Foursquare check-in Facebook broadcasting"
 msgstr "Foursquare-paikkakirjautumisen lähetys Facebookiin"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:20
+#: ../data/org.gnome.Maps.gschema.xml.h:21
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
@@ -164,11 +165,11 @@ msgstr ""
 "Ilmaisee pitäisikö Foursquaren välittää paikkakirjautuminen viestinä "
 "Foursquare-tiliin liitetylle Facebook-tilille."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:21
+#: ../data/org.gnome.Maps.gschema.xml.h:22
 msgid "Foursquare check-in Twitter broadcasting"
 msgstr "Foursquare-paikkakirjautumisen lähetys Twitteriin"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:22
+#: ../data/org.gnome.Maps.gschema.xml.h:23
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
@@ -176,15 +177,15 @@ msgstr ""
 "Ilmaisee pitäisikö Foursquaren välittää paikkakirjautuminen twiittinä "
 "Foursquare-tiliin liitetylle Twitter-tilille."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:23
+#: ../data/org.gnome.Maps.gschema.xml.h:24
 msgid "OpenStreetMap username or e-mail address"
 msgstr "OpenStreetMap-käyttäjätunnus tai -sähköposti"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:24
+#: ../data/org.gnome.Maps.gschema.xml.h:25
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr "Ilmaisee onko käyttäjä kirjautunut muokatakseen OpenStreetMap-tietoja."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:25
+#: ../data/org.gnome.Maps.gschema.xml.h:26
 msgid "Last used transportation type for routing"
 msgstr "Reitityksessä viimeksi käytetty matkatapa"
 
@@ -352,9 +353,10 @@ msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "Avaa muototaso"
 
-#: ../data/ui/layers-popover.ui.h:1
-msgid "Load Map Layer"
-msgstr "Lataa karttataso"
+#. Translators: This string uses ellipsis character
+#: ../data/ui/layers-popover.ui.h:2
+msgid "Open Shape Layer&#x2026;"
+msgstr "Avaa muototaso&#x2026;"
 
 #: ../data/ui/location-service-notification.ui.h:1
 msgid "Turn on location services to find your location"
@@ -594,8 +596,8 @@ msgid "_Open"
 msgstr "_Avaa"
 
 #: ../data/ui/shape-layer-file-chooser.ui.h:1
-msgid "Open Layer"
-msgstr "Avaa taso"
+msgid "Open Shape Layer"
+msgstr "Avaa muototaso"
 
 #. Translators: This is a tooltip
 #: ../data/ui/shape-layer-row.ui.h:2
@@ -796,7 +798,7 @@ msgstr "Reitti täältä"
 
 #: ../src/contextMenu.js:101
 msgid "Add destination"
-msgstr "Lisää kohde"
+msgstr "Lisää välipiste"
 
 #: ../src/contextMenu.js:103
 msgid "Route to here"
@@ -919,11 +921,11 @@ msgstr "GeoURI:n avaaminen epäonnistui"
 
 #: ../src/openTripPlanner.js:622
 msgid "No earlier alternatives found."
-msgstr "Aiempia vaihtoehtoja ei löytynyt"
+msgstr "Aiempia vaihtoehtoja ei löytynyt."
 
 #: ../src/openTripPlanner.js:623
 msgid "No later alternatives found."
-msgstr "Myöhempiä vaihtoehtoja ei löytynyt"
+msgstr "Myöhempiä vaihtoehtoja ei löytynyt."
 
 #: ../src/openTripPlanner.js:661
 msgid "No timetable data found for this route."
@@ -992,7 +994,7 @@ msgid ""
 "Phone number. Use the international format, starting with a + sign. Beware "
 "of local privacy laws, especially for private phone numbers."
 msgstr ""
-"Puhelinnumero. Käytä kansainvälistä muotoa, alota +-merkillä. Ota huomioon "
+"Puhelinnumero. Käytä kansainvälistä muotoa, aloita +-merkillä. Ota huomioon "
 "mahdolliset paikalliset yksityisyyslait, jotka voivat koskea salaisia "
 "puhelinnumeroita."
 
@@ -1288,6 +1290,21 @@ msgstr "Voit perua tulostuksen, jos siinä kestää liian kauan"
 msgid "Abort printing"
 msgstr "Peru tulostus"
 
+#. Translators: this is add via location tooltip
+#: ../src/routeEntry.js:73
+msgid "Add via location"
+msgstr "Lisää välisijainti"
+
+#. Translators: this is remove via location tooltip
+#: ../src/routeEntry.js:79
+msgid "Remove via location"
+msgstr "Poista välisijainti"
+
+#. Translators: this is reverse route tooltip
+#: ../src/routeEntry.js:85
+msgid "Reverse route"
+msgstr "Käänteinen reitti"
+
 #: ../src/sendToDialog.js:179
 msgid "Failed to open URI"
 msgstr "URI:n avaaminen epäonnistui"
@@ -1575,44 +1592,50 @@ msgstr "Tuntematon"
 msgid "Exact"
 msgstr "Tarkka"
 
-#: ../src/utils.js:338
+#: ../src/utils.js:293
 #, javascript-format
 msgid "%f h"
 msgstr "%f t"
 
-#: ../src/utils.js:340
+#: ../src/utils.js:295
 #, javascript-format
 msgid "%f min"
 msgstr "%f min"
 
-#: ../src/utils.js:342
+#: ../src/utils.js:297
 #, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
 #. Translators: This is a distance measured in kilometers
-#: ../src/utils.js:353
+#: ../src/utils.js:308
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: ../src/utils.js:356
+#: ../src/utils.js:311
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: ../src/utils.js:364
+#: ../src/utils.js:319
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: ../src/utils.js:367
+#: ../src/utils.js:322
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
+
+#~ msgid "Load Map Layer"
+#~ msgstr "Lataa karttataso"
+
+#~ msgid "Open Layer"
+#~ msgstr "Avaa taso"
 
 #~ msgid "%f km"
 #~ msgstr "%f km"
@@ -1625,9 +1648,6 @@ msgstr "%s ft"
 
 #~ msgid "%f ft"
 #~ msgstr "%f ft"
-
-#~ msgid "Edit Location"
-#~ msgstr "Muokkaa sijaintia"
 
 #~ msgid "Position not found"
 #~ msgstr "Sijaintia ei löytynyt"
