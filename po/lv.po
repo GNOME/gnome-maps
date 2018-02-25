@@ -1,14 +1,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>, 2013, 2014, 2016, 2017.
+# Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>, 2013, 2014, 2016, 2017, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-m"
 "aps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-07-24 21:57+0000\n"
-"PO-Revision-Date: 2017-08-28 12:44+0200\n"
+"POT-Creation-Date: 2018-01-22 20:52+0000\n"
+"PO-Revision-Date: 2018-02-25 11:26+0200\n"
 "Last-Translator: Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>\n"
 "Language-Team: Latvian <lata-l10n@googlegroups.com>\n"
 "Language: lv\n"
@@ -57,7 +57,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:87 ../src/mainWindow.js:476
+#: ../src/application.js:87 ../src/mainWindow.js:518
 msgid "Maps"
 msgstr "Kartes"
 
@@ -133,7 +133,8 @@ msgstr "Saglabājamo nesen apmeklēto maršrutu skaits"
 msgid "Facebook check-in privacy setting"
 msgstr "Facebook vietas reģistrēšanas privātuma iestatījumi"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:16
+#. Translators: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS, and SELF are constant names, and should not be translated
+#: ../data/org.gnome.Maps.gschema.xml.h:17
 msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
@@ -141,11 +142,11 @@ msgstr ""
 "Pēdējie izmantotie Facebook vietas reģistrēšanas privātuma iestatījumi. "
 "Iespējamās vērtības: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS vai SELF."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:17
+#: ../data/org.gnome.Maps.gschema.xml.h:18
 msgid "Foursquare check-in privacy setting"
 msgstr "Foursquare vietas reģistrēšanas privātuma iestatījumi"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:18
+#: ../data/org.gnome.Maps.gschema.xml.h:19
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
@@ -153,11 +154,11 @@ msgstr ""
 "Pēdējie izmantotie Foursquare vietas reģistrēšanas privātuma iestatījumi. "
 "Iespējamās vērtības: public, followers vai private."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:19
+#: ../data/org.gnome.Maps.gschema.xml.h:20
 msgid "Foursquare check-in Facebook broadcasting"
 msgstr "Foursquare vietas reģistrēšanas Facebook apziņošana"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:20
+#: ../data/org.gnome.Maps.gschema.xml.h:21
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
@@ -165,11 +166,11 @@ msgstr ""
 "Norāda, vai Foursquare vajadzētu apziņot vietas reģistrēšanu kā ziņu tajā "
 "Facebook kontā, kurš ir saistīts ar Foursquare kontu."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:21
+#: ../data/org.gnome.Maps.gschema.xml.h:22
 msgid "Foursquare check-in Twitter broadcasting"
 msgstr "Foursquare vietas reģistrēšanas Twitter apziņošana"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:22
+#: ../data/org.gnome.Maps.gschema.xml.h:23
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
@@ -177,16 +178,16 @@ msgstr ""
 "Norāda, vai Foursquare vajadzētu apziņot vietas reģistrēšanu kā ziņu tajā "
 "Twitter kontā, kurš ir saistīts ar Foursquare kontu."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:23
+#: ../data/org.gnome.Maps.gschema.xml.h:24
 msgid "OpenStreetMap username or e-mail address"
 msgstr "OpenStreetMap lietotājvārds vai e-pasta adrese"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:24
+#: ../data/org.gnome.Maps.gschema.xml.h:25
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr ""
 "Norāda, vai lietotājs ir ierakstījies, lai rediģētu OpenStreetMap datus."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:25
+#: ../data/org.gnome.Maps.gschema.xml.h:26
 msgid "Last used transportation type for routing"
 msgstr "Pēdējais izmantotais transportēšanas tips maršrutēšanai"
 
@@ -350,14 +351,16 @@ msgid "Switch to aerial view"
 msgstr "Pārslēgties uz aeiro skatu"
 
 #: ../data/ui/help-overlay.ui.h:14
-#| msgid "Open Layer"
 msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "Atvērt formu slāni"
 
-#: ../data/ui/layers-popover.ui.h:1
-msgid "Load Map Layer"
-msgstr "Ielādēt kartes slāni"
+#. Translators: This string uses ellipsis character
+#: ../data/ui/layers-popover.ui.h:2
+#| msgctxt "shortcut window"
+#| msgid "Open shape layer"
+msgid "Open Shape Layer&#x2026;"
+msgstr "Atvērt formu slāni&#x2026;"
 
 #: ../data/ui/location-service-notification.ui.h:1
 msgid "Turn on location services to find your location"
@@ -380,24 +383,38 @@ msgstr "Izvēlieties kartes veidu"
 
 #. Translators: This is a tooltip
 #: ../data/ui/main-window.ui.h:7
+#| msgctxt "shortcut window"
+#| msgid "Zoom out"
+msgid "Zoom out"
+msgstr "Tālināt"
+
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:9
+#| msgctxt "shortcut window"
+#| msgid "Zoom in"
+msgid "Zoom in"
+msgstr "Tuvināt"
+
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:11
 msgid "Toggle route planner"
 msgstr "Pārslēgt maršruta plānotāju"
 
 #. Translators: This is a tooltip
-#: ../data/ui/main-window.ui.h:9
+#: ../data/ui/main-window.ui.h:13
 msgid "Toggle favorites"
 msgstr "Pārslēgt izlasi"
 
 #. Translators: This is a tooltip
-#: ../data/ui/main-window.ui.h:11
+#: ../data/ui/main-window.ui.h:15
 msgid "Print Route"
 msgstr "Drukāt maršrutu"
 
-#: ../data/ui/main-window.ui.h:12
+#: ../data/ui/main-window.ui.h:16
 msgid "Maps is offline!"
 msgstr "Kartes ir nesaistē!"
 
-#: ../data/ui/main-window.ui.h:13
+#: ../data/ui/main-window.ui.h:17
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -405,7 +422,7 @@ msgstr ""
 "Lai varētu strādāt, Kartēm vajag aktīvu savienojumu ar internetu, bet tādu "
 "nevar atrast."
 
-#: ../data/ui/main-window.ui.h:14
+#: ../data/ui/main-window.ui.h:18
 msgid "Check your connection and proxy settings."
 msgstr "Pārbaudiet savu savienojumu un starpnieka iestatījumus."
 
@@ -544,7 +561,6 @@ msgid "Recently Used"
 msgstr "Nesen lietotie"
 
 #: ../data/ui/osm-edit-dialog.ui.h:8
-#| msgid "Edit on OpenStreetMap"
 msgctxt "dialog title"
 msgid "Edit on OpenStreetMap"
 msgstr "Rediģēt OpenStreetMap karti"
@@ -553,7 +569,7 @@ msgstr "Rediģēt OpenStreetMap karti"
 msgid "Cancel"
 msgstr "Atcelt"
 
-#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:516
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:518
 msgid "Next"
 msgstr "Nākamais"
 
@@ -572,7 +588,6 @@ msgid "Press enter to search"
 msgstr "Spiediet “Enter”, lai meklētu"
 
 #: ../data/ui/place-popover.ui.h:2
-#| msgid "No route found."
 msgid "No results found"
 msgstr "Nav atrastu rezultātu"
 
@@ -590,8 +605,10 @@ msgid "_Open"
 msgstr "_Atvērt"
 
 #: ../data/ui/shape-layer-file-chooser.ui.h:1
-msgid "Open Layer"
-msgstr "Atvērt slāni"
+#| msgctxt "shortcut window"
+#| msgid "Open shape layer"
+msgid "Open Shape Layer"
+msgstr "Atvērt formu slāni"
 
 #. Translators: This is a tooltip
 #: ../data/ui/shape-layer-row.ui.h:2
@@ -716,6 +733,10 @@ msgstr "Nevarēja atrast OSM elementu"
 msgid "A path to a local tiles directory structure"
 msgstr "Ceļš uz lokālo flīžu direktorijas struktūru"
 
+#: ../src/application.js:106
+msgid "Show the version of the program"
+msgstr "Rādīt programmas versiju"
+
 #: ../src/checkInDialog.js:175
 msgid "Select an account"
 msgstr "Izvēlēties kontu"
@@ -759,7 +780,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "Ja vēlaties, reģistrējoties %s, ierakstiet ziņojumu."
 
 #: ../src/checkInDialog.js:288 ../src/checkIn.js:165
-#: ../src/osmEditDialog.js:553
+#: ../src/osmEditDialog.js:555
 msgid "An error has occurred"
 msgstr "Gadījās kļūda"
 
@@ -781,23 +802,23 @@ msgstr ""
 "Pilnvaras termiņš ir beidzies, atveriet tiešsaistes kontus, lai ierakstītos "
 "un ieslēgtu šo kontu"
 
-#: ../src/contextMenu.js:96
+#: ../src/contextMenu.js:99
 msgid "Route from here"
 msgstr "Maršruts no šejienes"
 
-#: ../src/contextMenu.js:98
+#: ../src/contextMenu.js:101
 msgid "Add destination"
 msgstr "Pievienot galamērķi"
 
-#: ../src/contextMenu.js:100
+#: ../src/contextMenu.js:103
 msgid "Route to here"
 msgstr "Maršruts uz šejieni"
 
-#: ../src/contextMenu.js:129
+#: ../src/contextMenu.js:132
 msgid "Nothing found here!"
 msgstr "Šeit nekas nav atrasts!"
 
-#: ../src/contextMenu.js:186
+#: ../src/contextMenu.js:189
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -805,23 +826,32 @@ msgstr ""
 "Atrašanās vieta tika pievienota kartei. Ņemiet vērā, ka varētu paiet kāds "
 "laiks, pirms izmaiņas parādās kartē un meklēšanas rezultātos."
 
-#: ../src/exportViewDialog.js:156
+#. Translators: This is a format string for a PNG filename for an
+#. * exported image with coordinates. The .png extension should be kept
+#. * intact in the translated string.
+#.
+#: ../src/exportViewDialog.js:90
+#, javascript-format
+msgid "Maps at %f, %f.png"
+msgstr "Kartes pie %f, %f.png"
+
+#: ../src/exportViewDialog.js:161
 msgid "Filesystem is read only"
 msgstr "Datņu sistēma ir tikai lasāma"
 
-#: ../src/exportViewDialog.js:158
+#: ../src/exportViewDialog.js:163
 msgid "You do not have permission to save there"
 msgstr "Jums nav tiesību tur saglabāt"
 
-#: ../src/exportViewDialog.js:160
+#: ../src/exportViewDialog.js:165
 msgid "The directory does not exist"
 msgstr "Direktorija nepastāv"
 
-#: ../src/exportViewDialog.js:162
+#: ../src/exportViewDialog.js:167
 msgid "No filename specified"
 msgstr "Nav norādīts datnes nosaukums"
 
-#: ../src/exportViewDialog.js:170
+#: ../src/exportViewDialog.js:175
 msgid "Unable to export view"
 msgstr "Nevar eksportēt skatu"
 
@@ -854,17 +884,36 @@ msgstr "Sākt!"
 msgid "All Layer Files"
 msgstr "Visu slāņu datnes"
 
-#: ../src/mainWindow.js:418
+#: ../src/mainWindow.js:459
 msgid "Failed to connect to location service"
 msgstr "Neizdevās savienoties ar pozīcijas noteikšanas pakalpojumu"
 
-#: ../src/mainWindow.js:474
+#: ../src/mainWindow.js:516
 msgid "translator-credits"
 msgstr "Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>"
 
-#: ../src/mainWindow.js:477
+#: ../src/mainWindow.js:519
 msgid "A map application for GNOME"
 msgstr "GNOME karšu lietotne"
+
+#: ../src/mainWindow.js:530
+msgid "Copyright © 2011 – 2017 Red Hat, Inc. and The GNOME Maps authors"
+msgstr "Autortiesības © 2011 – 2017 Red Hat, Inc. un GNOME “Kartes” autori"
+
+#: ../src/mainWindow.js:551
+#, javascript-format
+msgid "Map data by %s and contributors"
+msgstr "Kartes datus nodrošina %s un atbalstītāji"
+
+#. Translators: this is an attribution string giving credit to the
+#. * tile provider where the %s placeholder is replaced by either
+#. * the bare name of the tile provider, or a linkified URL if one
+#. * is available
+#.
+#: ../src/mainWindow.js:567
+#, javascript-format
+msgid "Map tiles provided by %s"
+msgstr "Karšu fragmentus nodrošina %s"
 
 #: ../src/mapView.js:356
 msgid "File type is not supported"
@@ -879,12 +928,10 @@ msgid "Failed to open GeoURI"
 msgstr "Neizdevās atvērt GeoURI"
 
 #: ../src/openTripPlanner.js:622
-#| msgid "Load earlier alternatives"
 msgid "No earlier alternatives found."
 msgstr "Nav atrastu vecāku alternatīvu."
 
 #: ../src/openTripPlanner.js:623
-#| msgid "Load later alternatives"
 msgid "No later alternatives found."
 msgstr "Nav atrastu jaunāku alternatīvu."
 
@@ -922,23 +969,23 @@ msgstr "Objekts tika izdzēsts"
 msgid "Way or relation refers to non-existing children"
 msgstr "Ceļš vai relācija norāda uz neeksistējošu bērnu"
 
-#: ../src/osmEditDialog.js:104
+#: ../src/osmEditDialog.js:105
 msgid "Name"
 msgstr "Nosaukums"
 
-#: ../src/osmEditDialog.js:107
+#: ../src/osmEditDialog.js:108
 msgid "The official name. This is typically what appears on signs."
 msgstr "Oficiālais nosaukums. Tas parasti ir redzams uz zīmēm."
 
-#: ../src/osmEditDialog.js:110
+#: ../src/osmEditDialog.js:111
 msgid "Address"
 msgstr "Adrese"
 
-#: ../src/osmEditDialog.js:118
+#: ../src/osmEditDialog.js:119
 msgid "Website"
 msgstr "Tīmekļa vietne"
 
-#: ../src/osmEditDialog.js:121
+#: ../src/osmEditDialog.js:122
 msgid ""
 "The official website. Try to use the most basic form of a URL i.e. http://"
 "example.com instead of http://example.com/index.html."
@@ -946,11 +993,11 @@ msgstr ""
 "Oficiālā tīmekļa vietne. Mēģiniet izmantot pamata URL, tas ir, http://"
 "example.com, nevis http://example.com/index.html."
 
-#: ../src/osmEditDialog.js:126
+#: ../src/osmEditDialog.js:127
 msgid "Phone"
 msgstr "Tālrunis"
 
-#: ../src/osmEditDialog.js:130
+#: ../src/osmEditDialog.js:131
 msgid ""
 "Phone number. Use the international format, starting with a + sign. Beware "
 "of local privacy laws, especially for private phone numbers."
@@ -958,11 +1005,11 @@ msgstr ""
 "Tālruņa numurs. Izmantojiet starptautisko formātu, sākot ar + zīmi. Ņemiet "
 "vērā lokālos privātuma likumus, sevišķi privātiem tālruņu numuriem."
 
-#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:170
+#: ../src/osmEditDialog.js:136 ../src/placeBubble.js:176
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: ../src/osmEditDialog.js:139
+#: ../src/osmEditDialog.js:140
 msgid ""
 "The format used should include the language code and the article title like "
 "“en:Article title”."
@@ -970,226 +1017,226 @@ msgstr ""
 "Formātam vajadzētu iekļaut valodas kodu un raksta virsrakstu, piemēram “lv:"
 "Raksta virsraksts”"
 
-#: ../src/osmEditDialog.js:143
+#: ../src/osmEditDialog.js:144
 msgid "Opening hours"
 msgstr "Darba laiks"
 
-#: ../src/osmEditDialog.js:148
+#: ../src/osmEditDialog.js:149
 msgid "See the link in the label for help on format."
 msgstr "Skatiet saiti etiķetē, lai saņemtu palīdzību par formātu."
 
-#: ../src/osmEditDialog.js:151
+#: ../src/osmEditDialog.js:152
 msgid "Population"
 msgstr "Iedzīvotāju skaits"
 
-#: ../src/osmEditDialog.js:156
+#: ../src/osmEditDialog.js:157
 msgid "Altitude"
 msgstr "Augstums"
 
-#: ../src/osmEditDialog.js:159
+#: ../src/osmEditDialog.js:160
 msgid "Elevation (height above sea level) of a point in metres."
 msgstr "Punkta augstums (virs jūras līmeņa) metros."
 
-#: ../src/osmEditDialog.js:162
+#: ../src/osmEditDialog.js:163
 msgid "Wheelchair access"
 msgstr "Piekļuve ar ratiņkrēsliem"
 
-#: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
-#: ../src/osmEditDialog.js:212
+#: ../src/osmEditDialog.js:166 ../src/osmEditDialog.js:175
+#: ../src/osmEditDialog.js:213
 msgid "Yes"
 msgstr "Jā"
 
-#: ../src/osmEditDialog.js:166 ../src/osmEditDialog.js:175
-#: ../src/osmEditDialog.js:213
+#: ../src/osmEditDialog.js:167 ../src/osmEditDialog.js:176
+#: ../src/osmEditDialog.js:214
 msgid "No"
 msgstr "Nē"
 
-#: ../src/osmEditDialog.js:167
+#: ../src/osmEditDialog.js:168
 msgid "Limited"
 msgstr "Ierobežots"
 
-#: ../src/osmEditDialog.js:168
+#: ../src/osmEditDialog.js:169
 msgid "Designated"
 msgstr "Nozīmēts"
 
-#: ../src/osmEditDialog.js:171
+#: ../src/osmEditDialog.js:172
 msgid "Internet access"
 msgstr "Pieeja internetam"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
 #.
-#: ../src/osmEditDialog.js:176 ../src/translations.js:340
+#: ../src/osmEditDialog.js:177 ../src/translations.js:340
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
 
-#: ../src/osmEditDialog.js:177
+#: ../src/osmEditDialog.js:178
 msgid "Wired"
 msgstr "Vadu"
 
-#: ../src/osmEditDialog.js:178
+#: ../src/osmEditDialog.js:179
 msgid "Terminal"
 msgstr "Terminālis"
 
-#: ../src/osmEditDialog.js:179
+#: ../src/osmEditDialog.js:180
 msgid "Service"
 msgstr "Serviss"
 
-#: ../src/osmEditDialog.js:182
+#: ../src/osmEditDialog.js:183
 msgid "Religion"
 msgstr "Reliģija"
 
-#: ../src/osmEditDialog.js:185 ../src/translations.js:363
+#: ../src/osmEditDialog.js:186 ../src/translations.js:363
 msgid "Animism"
 msgstr "Animisms"
 
-#: ../src/osmEditDialog.js:186
+#: ../src/osmEditDialog.js:187
 msgid "Bahá’í"
 msgstr "Bahāisms"
 
-#: ../src/osmEditDialog.js:187 ../src/translations.js:365
+#: ../src/osmEditDialog.js:188 ../src/translations.js:365
 msgid "Buddhism"
 msgstr "Budisms"
 
-#: ../src/osmEditDialog.js:188 ../src/translations.js:366
+#: ../src/osmEditDialog.js:189 ../src/translations.js:366
 msgid "Caodaism"
 msgstr "Kaodaisms"
 
-#: ../src/osmEditDialog.js:189 ../src/translations.js:367
+#: ../src/osmEditDialog.js:190 ../src/translations.js:367
 msgid "Christianity"
 msgstr "Kristietība"
 
-#: ../src/osmEditDialog.js:190 ../src/translations.js:368
+#: ../src/osmEditDialog.js:191 ../src/translations.js:368
 msgid "Confucianism"
 msgstr "Konfūcisms"
 
-#: ../src/osmEditDialog.js:191 ../src/translations.js:369
+#: ../src/osmEditDialog.js:192 ../src/translations.js:369
 msgid "Hinduism"
 msgstr "Hinduisms"
 
-#: ../src/osmEditDialog.js:192 ../src/translations.js:370
+#: ../src/osmEditDialog.js:193 ../src/translations.js:370
 msgid "Jainism"
 msgstr "Džainisms"
 
-#: ../src/osmEditDialog.js:193 ../src/translations.js:371
+#: ../src/osmEditDialog.js:194 ../src/translations.js:371
 msgid "Judaism"
 msgstr "Jūdaisms"
 
-#: ../src/osmEditDialog.js:194 ../src/translations.js:372
+#: ../src/osmEditDialog.js:195 ../src/translations.js:372
 msgid "Islam"
 msgstr "Islāms"
 
-#: ../src/osmEditDialog.js:195 ../src/translations.js:373
+#: ../src/osmEditDialog.js:196 ../src/translations.js:373
 msgid "Multiple Religions"
 msgstr "Vairākas reliģijas"
 
-#: ../src/osmEditDialog.js:196 ../src/translations.js:374
+#: ../src/osmEditDialog.js:197 ../src/translations.js:374
 msgid "Paganism"
 msgstr "Pagānisms"
 
-#: ../src/osmEditDialog.js:197 ../src/translations.js:375
+#: ../src/osmEditDialog.js:198 ../src/translations.js:375
 msgid "Pastafarianism"
 msgstr "Pastafarisms"
 
-#: ../src/osmEditDialog.js:198 ../src/translations.js:376
+#: ../src/osmEditDialog.js:199 ../src/translations.js:376
 msgid "Scientology"
 msgstr "Scientoloģija"
 
-#: ../src/osmEditDialog.js:199 ../src/translations.js:377
+#: ../src/osmEditDialog.js:200 ../src/translations.js:377
 msgid "Shinto"
 msgstr "Sintoisms"
 
-#: ../src/osmEditDialog.js:200 ../src/translations.js:378
+#: ../src/osmEditDialog.js:201 ../src/translations.js:378
 msgid "Sikhism"
 msgstr "Sikhisms"
 
-#: ../src/osmEditDialog.js:201 ../src/translations.js:379
+#: ../src/osmEditDialog.js:202 ../src/translations.js:379
 msgid "Spiritualism"
 msgstr "Spirituālisms"
 
-#: ../src/osmEditDialog.js:202 ../src/translations.js:380
+#: ../src/osmEditDialog.js:203 ../src/translations.js:380
 msgid "Taoism"
 msgstr "Daoisms"
 
-#: ../src/osmEditDialog.js:203 ../src/translations.js:381
+#: ../src/osmEditDialog.js:204 ../src/translations.js:381
 msgid "Unitarian Universalism"
 msgstr "Unitārais universālisms"
 
-#: ../src/osmEditDialog.js:204 ../src/translations.js:382
+#: ../src/osmEditDialog.js:205 ../src/translations.js:382
 msgid "Voodoo"
 msgstr "Vudu"
 
-#: ../src/osmEditDialog.js:205 ../src/translations.js:383
+#: ../src/osmEditDialog.js:206 ../src/translations.js:383
 msgid "Yazidism"
 msgstr "Jadīdisms"
 
-#: ../src/osmEditDialog.js:206 ../src/translations.js:384
+#: ../src/osmEditDialog.js:207 ../src/translations.js:384
 msgid "Zoroastrianism"
 msgstr "Zoroastrisms"
 
-#: ../src/osmEditDialog.js:209
+#: ../src/osmEditDialog.js:210
 msgid "Toilets"
 msgstr "Tualetes"
 
-#: ../src/osmEditDialog.js:216
+#: ../src/osmEditDialog.js:217
 msgid "Note"
 msgstr "Piezīme"
 
-#: ../src/osmEditDialog.js:219
+#: ../src/osmEditDialog.js:220
 msgid ""
 "Information used to inform other mappers about non-obvious information about "
 "an element, the author’s intent when creating it, or hints for further "
 "improvement."
 msgstr ""
-"Informācija, ko izmantot citiem kartētajiem par ne acīmredzamu informāciju"
-" par elementu, autora nodomu to veidojot vai norādēm turpmākai uzlabošanai."
+"Informācija, ko izmantot citiem kartētajiem par ne acīmredzamu informāciju "
+"par elementu, autora nodomu to veidojot vai norādēm turpmākai uzlabošanai."
 
-#: ../src/osmEditDialog.js:328
+#: ../src/osmEditDialog.js:329
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Pievienot OpenStreetMap kartēm"
 
-#: ../src/osmEditDialog.js:381
+#: ../src/osmEditDialog.js:383
 msgid "Select Type"
 msgstr "Izvēlēties tipu"
 
-#: ../src/osmEditDialog.js:500
+#: ../src/osmEditDialog.js:502
 msgid "Done"
 msgstr "Pabeigts"
 
-#: ../src/placeBubble.js:122
+#: ../src/placeBubble.js:128
 msgid "Population:"
 msgstr "Iedzīvotāju skaits:"
 
-#: ../src/placeBubble.js:128
+#: ../src/placeBubble.js:134
 msgid "Altitude:"
 msgstr "Augstums:"
 
-#: ../src/placeBubble.js:133
+#: ../src/placeBubble.js:139
 msgid "Opening hours:"
 msgstr "Darba laiks:"
 
-#: ../src/placeBubble.js:138
+#: ../src/placeBubble.js:144
 msgid "Internet access:"
 msgstr "Pieeja internetam:"
 
-#: ../src/placeBubble.js:143
+#: ../src/placeBubble.js:149
 msgid "Religion:"
 msgstr "Reliģija:"
 
-#: ../src/placeBubble.js:148
+#: ../src/placeBubble.js:154
 msgid "Toilets:"
 msgstr "Tualetes:"
 
-#: ../src/placeBubble.js:153
+#: ../src/placeBubble.js:159
 msgid "Wheelchair access:"
 msgstr "Piekļuve ar ratiņkrēsliem:"
 
-#: ../src/placeBubble.js:159 ../src/placeBubble.js:163
+#: ../src/placeBubble.js:165 ../src/placeBubble.js:169
 msgid "Phone:"
 msgstr "Tālrunis:"
 
-#: ../src/placeEntry.js:190
+#: ../src/placeEntry.js:188
 msgid "Failed to parse Geo URI"
 msgstr "Neizdevās parsēt Geo URI"
 
@@ -1250,6 +1297,23 @@ msgstr "Jūs varat pārtraukt drukāšanu, ja tas aizņem pārāk daudz laika"
 msgid "Abort printing"
 msgstr "Par drukāšanu"
 
+#. Translators: this is add via location tooltip
+#: ../src/routeEntry.js:73
+#| msgid "last viewed location"
+msgid "Add via location"
+msgstr "Pievienot “caur vietu”"
+
+#. Translators: this is remove via location tooltip
+#: ../src/routeEntry.js:79
+#| msgid "Open location"
+msgid "Remove via location"
+msgstr "Izņemt “caur vietu”"
+
+#. Translators: this is reverse route tooltip
+#: ../src/routeEntry.js:85
+msgid "Reverse route"
+msgstr "Apgriezt maršrutu pretēji"
+
 #: ../src/sendToDialog.js:179
 msgid "Failed to open URI"
 msgstr "Neizdevās atvērt URI"
@@ -1259,7 +1323,7 @@ msgid "failed to load file"
 msgstr "neizdevās ielādēt datni"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:294
+#: ../src/sidebar.js:293
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Novērtētais laiks — %s"
@@ -1292,18 +1356,18 @@ msgstr "Sākt %s"
 msgid "Start"
 msgstr "Sākums"
 
-#: ../src/transitLegRow.js:107
+#: ../src/transitLegRow.js:108
 msgid "Show walking instructions"
 msgstr "Rādīt iešanas norādes"
 
-#: ../src/transitLegRow.js:108
+#: ../src/transitLegRow.js:109
 msgid "Hide walking instructions"
 msgstr "Slēpt iešanas norādes"
 
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
 #.
-#: ../src/transitLegRow.js:133
+#: ../src/transitLegRow.js:134
 #, javascript-format
 msgid "Walk %s"
 msgstr "Iet %s"
@@ -1531,53 +1595,59 @@ msgid "service"
 msgstr "serviss"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:231
+#: ../src/utils.js:232
 msgid "Unknown"
 msgstr "Nezināms"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:234
+#: ../src/utils.js:235
 msgid "Exact"
 msgstr "Precīzi"
 
-#: ../src/utils.js:337
+#: ../src/utils.js:293
 #, javascript-format
 msgid "%f h"
 msgstr "%f h"
 
-#: ../src/utils.js:339
+#: ../src/utils.js:295
 #, javascript-format
 msgid "%f min"
 msgstr "%f min"
 
-#: ../src/utils.js:341
+#: ../src/utils.js:297
 #, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
 #. Translators: This is a distance measured in kilometers
-#: ../src/utils.js:352
+#: ../src/utils.js:308
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: ../src/utils.js:355
+#: ../src/utils.js:311
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: ../src/utils.js:363
+#: ../src/utils.js:319
 #, javascript-format
 msgid "%s mi"
 msgstr "%s jūdzes"
 
 #. Translators: This is a distance measured in feet
-#: ../src/utils.js:366
+#: ../src/utils.js:322
 #, javascript-format
 msgid "%s ft"
 msgstr "%s pēdas"
+
+#~ msgid "Load Map Layer"
+#~ msgstr "Ielādēt kartes slāni"
+
+#~ msgid "Open Layer"
+#~ msgstr "Atvērt slāni"
 
 #~ msgid "%f km"
 #~ msgstr "%f km"
