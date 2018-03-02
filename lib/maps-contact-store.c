@@ -309,7 +309,7 @@ maps_contact_store_load (MapsContactStore *store)
  * maps_contact_store_get_contacts:
  * @store: A #MapsContactStore object
  *
- * Returns: (element-type MapsContact) (transfer container): a list of #MapsContact,
+ * Returns: (element-type MapsContact) (transfer none): a list of #MapsContact,
  */
 GList *
 maps_contact_store_get_contacts (MapsContactStore *store)
