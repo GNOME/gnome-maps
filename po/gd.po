@@ -1,14 +1,14 @@
 # Scottish Gaelic translation for gnome-maps.
 # Copyright (C) 2016 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
-# GunChleoc <fios@foramnagaidhlig.net>, 2016, 2017.
+# GunChleoc <fios@foramnagaidhlig.net>, 2016, 2017, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps gnome-3-20\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product"
 "=gnome-maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-03-01 13:58+0000\n"
-"PO-Revision-Date: 2017-03-07 09:54+0100\n"
+"POT-Creation-Date: 2017-09-11 20:24+0000\n"
+"PO-Revision-Date: 2018-03-02 10:29+0100\n"
 "Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig\n"
 "Language: gd\n"
@@ -54,13 +54,13 @@ msgid ""
 "You can even search for specific types of locations, such as “Pubs near Main "
 "Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
 msgstr ""
-"'S urrainn dut fiù 's lorg airson ionadan sònraichte, can “Taighean-seinnse "
+"’S urrainn dut fiù ’s lorg airson ionadan sònraichte, can “Taighean-seinnse "
 "faisg air Sràid nam Prionnsachan, Dùn Èideann” no “Taighean-òsta faisg air "
 "Sràid Sauchiehall, Glaschu”."
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:85 ../src/mainWindow.js:441
+#: ../src/application.js:87 ../src/mainWindow.js:489
 msgid "Maps"
 msgstr "Mapaichean"
 
@@ -74,7 +74,7 @@ msgstr "Maps;mapaichean;"
 
 #: ../data/org.gnome.Maps.desktop.in.h:4
 msgid "Allows your location to be shown on the map."
-msgstr "Faodaidh far a bheil thu a nochdadh air a' mhapa le seo."
+msgstr "Faodaidh far a bheil thu a nochdadh air a’ mhapa le seo."
 
 #: ../data/org.gnome.Maps.gschema.xml.h:1
 msgid "last viewed location"
@@ -90,7 +90,7 @@ msgstr "Meud na h-uinneige"
 
 #: ../data/org.gnome.Maps.gschema.xml.h:4
 msgid "Window size (width and height)."
-msgstr "Meud na h-uinneige (leud 's àirde)."
+msgstr "Meud na h-uinneige (leud ’s àirde)."
 
 #: ../data/org.gnome.Maps.gschema.xml.h:5
 msgid "Window position"
@@ -118,12 +118,12 @@ msgstr "An àireamh as motha de thoraidhean luirg o lorg geocode."
 
 #: ../data/org.gnome.Maps.gschema.xml.h:11
 msgid "Number of recent places to store"
-msgstr "Àireamh dhe dh'ionadan o chionn ghoirid ri an sàbhaladh"
+msgstr "Àireamh dhe dh’ionadan o chionn ghoirid ri an sàbhaladh"
 
 #: ../data/org.gnome.Maps.gschema.xml.h:12
 msgid "Number of recently visited places to store."
 msgstr ""
-"Àireamh dhe dh'ionadan air an deach tadhal o chionn ghoirid ri an sàbhaladh"
+"Àireamh dhe dh’ionadan air an deach tadhal o chionn ghoirid ri an sàbhaladh"
 
 #: ../data/org.gnome.Maps.gschema.xml.h:13
 msgid "Number of recent routes to store"
@@ -170,7 +170,7 @@ msgid ""
 "Facebook account associated with the Foursquare account."
 msgstr ""
 "Innsidh seo am bu còir Foursquare na nochd thu air a chraoladh mar phost sa "
-"chunntas Facebook a tha co-cheangailte ris a' chunntas Foursquare gus nach "
+"chunntas Facebook a tha co-cheangailte ris a’ chunntas Foursquare gus nach "
 "bu chòir."
 
 #: ../data/org.gnome.Maps.gschema.xml.h:21
@@ -183,7 +183,7 @@ msgid ""
 "Twitter account associated with the Foursquare account."
 msgstr ""
 "Innsidh seo am bu còir Foursquare na nochd thu air a chraoladh mar tweet sa "
-"chunntas Twitter a tha co-cheangailte ris a' chunntas Foursquare gus nach bu "
+"chunntas Twitter a tha co-cheangailte ris a’ chunntas Foursquare gus nach bu "
 "chòir."
 
 #: ../data/org.gnome.Maps.gschema.xml.h:23
@@ -196,13 +196,17 @@ msgstr ""
 "Innsidh seo an do clàraich an cleachdaiche a-steach gus dàta OpenStreetMap a "
 "dheasachadh gus nach do chlàraich."
 
+#: ../data/org.gnome.Maps.gschema.xml.h:25
+msgid "Last used transportation type for routing"
+msgstr ""
+
 #: ../data/ui/app-menu.ui.h:1
 msgid "Set up OpenStreetMap Account"
 msgstr "Suidhich cunntas OpenStreetMap"
 
 #: ../data/ui/app-menu.ui.h:2
 msgid "_Keyboard Shortcuts"
-msgstr "Ath-ghoiridean a' _mheur-chlàir"
+msgstr "Ath-ghoiridean a’ _mheur-chlàir"
 
 #: ../data/ui/app-menu.ui.h:3
 msgid "About"
@@ -230,7 +234,7 @@ msgid "_Cancel"
 msgstr "_Sguir dheth"
 
 #. Translators: Check in is used as a verb
-#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:5
+#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:8
 msgid "C_heck in"
 msgstr "Noc_hd air"
 
@@ -323,7 +327,7 @@ msgstr "Fàg an-seo"
 #: ../data/ui/help-overlay.ui.h:7
 msgctxt "shortcut window"
 msgid "Map View"
-msgstr "Sealladh a' mhapa"
+msgstr "Sealladh a’ mhapa"
 
 #: ../data/ui/help-overlay.ui.h:8
 msgctxt "shortcut window"
@@ -345,9 +349,26 @@ msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Rach dhan ionad làithreach"
 
+#: ../data/ui/help-overlay.ui.h:12
+msgctxt "shortcut window"
+msgid "Switch to street view"
+msgstr ""
+
+#: ../data/ui/help-overlay.ui.h:13
+msgctxt "shortcut window"
+msgid "Switch to aerial view"
+msgstr ""
+
+#: ../data/ui/help-overlay.ui.h:14
+#, fuzzy
+#| msgid "Open Layer"
+msgctxt "shortcut window"
+msgid "Open shape layer"
+msgstr "Fosgail breath"
+
 #: ../data/ui/layers-popover.ui.h:1
 msgid "Load Map Layer"
-msgstr "Luchdaich breath a' mhapa"
+msgstr "Luchdaich breath a’ mhapa"
 
 #: ../data/ui/location-service-notification.ui.h:1
 msgid "Turn on location services to find your location"
@@ -357,55 +378,68 @@ msgstr "Cuir seirbheisean ionaid air gus lorg far a bheil thu"
 msgid "Location Settings"
 msgstr "Roghainnean ionaid"
 
-#: ../data/ui/main-window.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:3
 msgid "Go to current location"
 msgstr "Rach dhan ionad làithreach"
 
-#: ../data/ui/main-window.ui.h:3
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:5
 msgid "Choose map type"
-msgstr "Tagh seòrsa a' mhapa"
+msgstr "Tagh seòrsa a’ mhapa"
 
-#: ../data/ui/main-window.ui.h:4
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:7
 msgid "Toggle route planner"
 msgstr "Toglaich am planadair shlighean"
 
-#: ../data/ui/main-window.ui.h:5
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:9
 msgid "Toggle favorites"
 msgstr "Toglaich na h-annsachdan"
 
-#: ../data/ui/main-window.ui.h:6
+#. Translators: This is a tooltip
+#: ../data/ui/main-window.ui.h:11
 msgid "Print Route"
 msgstr "Clò-bhuail an t-slighe"
 
-#: ../data/ui/main-window.ui.h:7
+#: ../data/ui/main-window.ui.h:12
 msgid "Maps is offline!"
 msgstr "Tha Mapaichean far loidhne!"
 
-#: ../data/ui/main-window.ui.h:8
+#: ../data/ui/main-window.ui.h:13
+#, fuzzy
+#| msgid ""
+#| "Maps need an active internet connection to function properly, but one "
+#| "can't be found."
 msgid ""
-"Maps need an active internet connection to function properly, but one can't "
+"Maps need an active internet connection to function properly, but one can’t "
 "be found."
 msgstr ""
 "Tha Mapaichean feumach air ceangal dhan eadar-lìon gus obrachadh mar bu "
 "chòir ach cha deach gin a lorg."
 
-#: ../data/ui/main-window.ui.h:9
+#: ../data/ui/main-window.ui.h:14
 msgid "Check your connection and proxy settings."
-msgstr "Thoir sùil air roghainnean a' cheangail 's a' phrogsaidh agad."
+msgstr "Thoir sùil air roghainnean a’ cheangail ’s a’ phrogsaidh agad."
 
-#: ../data/ui/map-bubble.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:2
 msgid "Add to new route"
 msgstr "Cuir ri slighe ùr"
 
-#: ../data/ui/map-bubble.ui.h:2
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:4
 msgid "Open with another application"
 msgstr "Fosgail le aplacaid eile"
 
-#: ../data/ui/map-bubble.ui.h:3
-msgid "Mark as favorite"
-msgstr "Comharraich 'na h-annsachd"
-
+#. Translators: This is a tooltip
 #: ../data/ui/map-bubble.ui.h:6
+msgid "Mark as favorite"
+msgstr "Comharraich ’na h-annsachd"
+
+#. Translators: This is a tooltip
+#: ../data/ui/map-bubble.ui.h:10
 msgid "Check in here"
 msgstr "Nochd seo"
 
@@ -424,7 +458,7 @@ msgid ""
 "Help to improve the map, using an\n"
 "OpenStreetMap account."
 msgstr ""
-"Cuidich gus piseach a thoirt air a' mhapa\n"
+"Cuidich gus piseach a thoirt air a’ mhapa\n"
 "le cunntas OpenStreetMap."
 
 #: ../data/ui/osm-account-dialog.ui.h:5
@@ -440,23 +474,30 @@ msgid "Sign In"
 msgstr "Clàraich a-steach"
 
 #: ../data/ui/osm-account-dialog.ui.h:8
-msgid "Don't have an account?"
+#, fuzzy
+#| msgid "Don't have an account?"
+msgid "Don’t have an account?"
 msgstr "Nach eil cunntas agad?"
 
 #. The label should contain the link to the OSM reset password page with a translated title
 #: ../data/ui/osm-account-dialog.ui.h:10
+#| msgid ""
+#| "Sorry, that didn't work. Please try again, or visit\n"
+#| "<a href=\"https://www.openstreetmap.org/user/forgot-password"
+#| "\">OpenStreetMap</a> to reset your password."
 msgid ""
-"Sorry, that didn't work. Please try again, or visit\n"
+"Sorry, that didn’t work. Please try again, or visit\n"
 "<a href=\"https://www.openstreetmap.org/user/forgot-password"
 "\">OpenStreetMap</a> to reset your password."
 msgstr ""
-"Tha sinn duilich ach cha do dh'obraich sin. Feuch ris a-rithist no tadhail "
+"Tha sinn duilich ach cha do dh’obraich sin. Feuch ris a-rithist no tadhail "
 "air\n"
-"<a href=\"https://www.openstreetmap.org/user/forgot-password"
-"\">OpenStreetMap</a> gus am facal-faire agad ath-shuidheachadh."
+"<a href=\"https://www.openstreetmap.org/user/forgot-"
+"password\">OpenStreetMap</a> gus am facal-faire agad ath-shuidheachadh."
 
 #: ../data/ui/osm-account-dialog.ui.h:12
-msgid "The verification code didn't match, please try again."
+#| msgid "The verification code didn't match, please try again."
+msgid "The verification code didn’t match, please try again."
 msgstr "Cha robh an còd dearbhaidh mar bu chòir, am feuch thu ris a-rithist?"
 
 #: ../data/ui/osm-account-dialog.ui.h:13
@@ -513,18 +554,23 @@ msgid "Comment"
 msgstr "Beachd"
 
 #: ../data/ui/osm-edit-dialog.ui.h:5
+#| msgid ""
+#| "Map changes will be visible on all maps that use\n"
+#| "    OpenStreetMap data."
 msgid ""
 "Map changes will be visible on all maps that use\n"
-"    OpenStreetMap data."
+"OpenStreetMap data."
 msgstr ""
-"Chithear atharraichean a' mhapa air a h-uile mapa a chleachdas\n"
-"    dàta OpenStreetMap."
+"Chithear atharraichean a’ mhapa air a h-uile mapa a chleachdas\n"
+"dàta OpenStreetMap."
 
 #: ../data/ui/osm-edit-dialog.ui.h:7
 msgid "Recently Used"
 msgstr "Air an cleachdadh o chionn ghoirid"
 
 #: ../data/ui/osm-edit-dialog.ui.h:8
+#| msgid "Edit on OpenStreetMap"
+msgctxt "dialog title"
 msgid "Edit on OpenStreetMap"
 msgstr "Deasaich air OpenStreetMap"
 
@@ -532,11 +578,17 @@ msgstr "Deasaich air OpenStreetMap"
 msgid "Cancel"
 msgstr "Sguir dheth"
 
-#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:472
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:516
 msgid "Next"
 msgstr "Air adhart"
 
-#: ../data/ui/place-bubble.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/place-bubble.ui.h:2
+msgid "Edit on OpenStreetMap"
+msgstr "Deasaich air OpenStreetMap"
+
+#. Translators: This is a tooltip
+#: ../data/ui/place-bubble.ui.h:4
 msgid "Show more information"
 msgstr "Seall barrachd fiosrachaidh"
 
@@ -544,7 +596,13 @@ msgstr "Seall barrachd fiosrachaidh"
 msgid "Press enter to search"
 msgstr "Brùth air Enter airson lorg"
 
-#: ../data/ui/route-entry.ui.h:1
+#: ../data/ui/place-popover.ui.h:2
+#| msgid "No route found."
+msgid "No results found"
+msgstr "Cha deach toradh a lorg"
+
+#. Translators: This is a tooltip
+#: ../data/ui/route-entry.ui.h:2
 msgid "Drag to change order of the route"
 msgstr "Slaod gus òrdugh na slighe atharrachadh"
 
@@ -560,7 +618,8 @@ msgstr "F_osgail"
 msgid "Open Layer"
 msgstr "Fosgail breath"
 
-#: ../data/ui/shape-layer-row.ui.h:1
+#. Translators: This is a tooltip
+#: ../data/ui/shape-layer-row.ui.h:2
 msgid "Toggle visible"
 msgstr "Toglaich an fhaicsinneachd"
 
@@ -568,9 +627,76 @@ msgstr "Toglaich an fhaicsinneachd"
 msgid "Route search by GraphHopper"
 msgstr "Lorg shlighean le GraphHopper"
 
+#: ../data/ui/sidebar.ui.h:2
+#| msgid "Route search by GraphHopper"
+msgid "Route search by OpenTripPlanner"
+msgstr "Lorg shlighean le OpenTripPlanner"
+
+#: ../data/ui/sidebar.ui.h:3
+msgid ""
+"Routing itineraries for public transit is provided by GNOME\n"
+"using timetable data obtained from transit companies or agencies.\n"
+"The companies and agencies can not be held responsible for the results "
+"shown.\n"
+"GNOME can not guarantee correctness of the itineraries and schedules shown.\n"
+"Names and brands shown are to be considered as registered trademarks when "
+"applicable."
+msgstr ""
+
 #: ../data/ui/social-place-more-results-row.ui.h:1
 msgid "Show more results"
 msgstr "Seall barrachd toraidhean"
+
+#. Translators: This is a tooltip
+#: ../data/ui/transit-leg-row.ui.h:2
+msgid "Hide intermediate stops and information"
+msgstr ""
+
+#. Translators: This is a tooltip
+#: ../data/ui/transit-leg-row.ui.h:4
+#| msgid "Show more information"
+msgid "Show intermediate stops and information"
+msgstr ""
+
+#. Indicates searching for the next available itineraries
+#: ../data/ui/transit-options-panel.ui.h:2
+msgid "Leave Now"
+msgstr ""
+
+#. Indicates searching for itineraries leaving at the specified time at the earliest
+#: ../data/ui/transit-options-panel.ui.h:4
+msgid "Leave By"
+msgstr ""
+
+#. Indicates searching for itineraries arriving no later than the specified time
+#: ../data/ui/transit-options-panel.ui.h:6
+msgid "Arrive By"
+msgstr ""
+
+#. Header indicating selected modes of transit
+#: ../data/ui/transit-options-panel.ui.h:8
+msgid "Show"
+msgstr ""
+
+#: ../data/ui/transit-options-panel.ui.h:9
+msgid "Buses"
+msgstr ""
+
+#: ../data/ui/transit-options-panel.ui.h:10
+msgid "Trams"
+msgstr ""
+
+#: ../data/ui/transit-options-panel.ui.h:11
+msgid "Trains"
+msgstr ""
+
+#: ../data/ui/transit-options-panel.ui.h:12
+msgid "Subway"
+msgstr ""
+
+#: ../data/ui/transit-options-panel.ui.h:13
+msgid "Ferries"
+msgstr ""
 
 #: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:120
 msgid "Current location"
@@ -597,7 +723,7 @@ msgstr "Cha deach leinn structar leacagan a lorg sa phasgan"
 
 #: ../lib/maps-osm.c:56
 msgid "Failed to parse XML document"
-msgstr "Dh'fhàillig le parsadh na sgrìobhainn XML"
+msgstr "Dh’fhàillig le parsadh na sgrìobhainn XML"
 
 #: ../lib/maps-osm.c:252 ../lib/maps-osm.c:405
 msgid "Missing required attributes"
@@ -607,23 +733,23 @@ msgstr "Tha roghainnean riatanach a dhìth"
 msgid "Could not find OSM element"
 msgstr "Cha deach leinn eileamaid OSM a lorg"
 
-#: ../src/application.js:101
+#: ../src/application.js:102
 msgid "A path to a local tiles directory structure"
 msgstr "Slighe gu structar pasgain leacagan ionadail"
 
-#: ../src/checkInDialog.js:176
+#: ../src/checkInDialog.js:175
 msgid "Select an account"
 msgstr "Tagh cunntas"
 
-#: ../src/checkInDialog.js:181 ../src/checkInDialog.js:253
+#: ../src/checkInDialog.js:180 ../src/checkInDialog.js:252
 msgid "Loading"
-msgstr "'Ga luchdadh"
+msgstr "’Ga luchdadh"
 
-#: ../src/checkInDialog.js:205
+#: ../src/checkInDialog.js:204
 msgid "Select a place"
 msgstr "Tagh àite"
 
-#: ../src/checkInDialog.js:210
+#: ../src/checkInDialog.js:209
 msgid ""
 "Maps cannot find the place to check in to with Facebook. Please select one "
 "from this list."
@@ -631,7 +757,7 @@ msgstr ""
 "Cha deach le Mapaichean àite a lorg gus a nochdadh air Facebook. Tagh fear "
 "on liosta seo."
 
-#: ../src/checkInDialog.js:212
+#: ../src/checkInDialog.js:211
 msgid ""
 "Maps cannot find the place to check in to with Foursquare. Please select one "
 "from this list."
@@ -641,65 +767,66 @@ msgstr ""
 
 #. Translators: %s is the name of the place to check in.
 #.
-#: ../src/checkInDialog.js:227
+#: ../src/checkInDialog.js:226
 #, javascript-format
 msgid "Check in to %s"
 msgstr "Nochd %s"
 
 #. Translators: %s is the name of the place to check in.
 #.
-#: ../src/checkInDialog.js:237
+#: ../src/checkInDialog.js:236
 #, javascript-format
 msgid "Write an optional message to check in to %s."
 msgstr "Sgrìobh teachdaireachd ma thogras tu gus %s a nochdadh."
 
-#: ../src/checkInDialog.js:289 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:509
+#: ../src/checkInDialog.js:288 ../src/checkIn.js:165
+#: ../src/osmEditDialog.js:553
 msgid "An error has occurred"
 msgstr "Thachair mearachd"
 
 #. Translators: %s is the place name that user wanted to check-in
-#: ../src/checkIn.js:135
+#: ../src/checkIn.js:147
 #, javascript-format
-msgid "Cannot find \"%s\" in the social service"
-msgstr "Cha b' urrainn dhuinn \"%s\" a lorg san t-seirbheis sòisealta"
+#| msgid "Cannot find \"%s\" in the social service"
+msgid "Cannot find “%s” in the social service"
+msgstr "Cha b’ urrainn dhuinn “%s” a lorg san t-seirbheis sòisealta"
 
-#: ../src/checkIn.js:137
+#: ../src/checkIn.js:149
 msgid "Cannot find a suitable place to check-in in this location"
 msgstr ""
-"Cha b' urrainn dhuinn àite iomchaidh a lorg gus an t-ionad seo a nochdadh"
+"Cha b’ urrainn dhuinn àite iomchaidh a lorg gus an t-ionad seo a nochdadh"
 
-#: ../src/checkIn.js:141
+#: ../src/checkIn.js:153
 msgid ""
 "Credentials have expired, please open Online Accounts to sign in and enable "
 "this account"
 msgstr ""
-"Dh'fhalbh an ùine air an teisteas, fosgail na cunntasan air loidhne gus "
+"Dh’fhalbh an ùine air an teisteas, fosgail na cunntasan air loidhne gus "
 "clàradh a-steach agus an cunntas seo a chur an comas"
 
-#: ../src/contextMenu.js:97
+#: ../src/contextMenu.js:99
 msgid "Route from here"
 msgstr "Slighe on a sheo"
 
-#: ../src/contextMenu.js:99
+#: ../src/contextMenu.js:101
 msgid "Add destination"
 msgstr "Cuir ceann-uidhe ris"
 
-#: ../src/contextMenu.js:101
+#: ../src/contextMenu.js:103
 msgid "Route to here"
 msgstr "Slighe dhan a sheo"
 
-#: ../src/contextMenu.js:130
+#: ../src/contextMenu.js:132
 msgid "Nothing found here!"
 msgstr "Cha deach dad a lorg an-seo!"
 
-#: ../src/contextMenu.js:187
+#: ../src/contextMenu.js:189
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
 msgstr ""
-"Chaidh an t-ionad a chur ris a' mhapa. Thoir an aire gun doir e greis mhath "
-"mus nochd e air a' mhapa agus ann an toraidhean luirg."
+"Chaidh an t-ionad a chur ris a’ mhapa. Thoir an aire gun doir e greis mhath "
+"mus nochd e air a’ mhapa agus ann an toraidhean luirg."
 
 #: ../src/exportViewDialog.js:156
 msgid "Filesystem is read only"
@@ -710,7 +837,8 @@ msgid "You do not have permission to save there"
 msgstr "Chan eil cead agad gus rud a shàbhaladh an-seo"
 
 #: ../src/exportViewDialog.js:160
-msgid "The directory does not exists"
+#| msgid "The directory does not exists"
+msgid "The directory does not exist"
 msgstr "Chan eil am pasgan ann"
 
 #: ../src/exportViewDialog.js:162
@@ -719,7 +847,7 @@ msgstr "Cha deach ainm-faidhle a shònrachadh"
 
 #: ../src/exportViewDialog.js:170
 msgid "Unable to export view"
-msgstr "Cha b' urrainn dhuinn an sealladh às-phortadh"
+msgstr "Cha b’ urrainn dhuinn an sealladh às-phortadh"
 
 #: ../src/geoJSONSource.js:98
 msgid "invalid coordinate"
@@ -734,64 +862,89 @@ msgstr "mearachd parsaidh"
 msgid "unknown geometry"
 msgstr "geomatras nach aithne dhuinn"
 
-#: ../src/layersPopover.js:62
+#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:665
+msgid "Route request failed."
+msgstr "Dh’fhàillig le iarrtas slighe."
+
+#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:628
+msgid "No route found."
+msgstr "Cha deach slighe a lorg."
+
+#: ../src/graphHopper.js:193
+msgid "Start!"
+msgstr "Tòisich!"
+
+#: ../src/mainWindow.js:59
 msgid "All Layer Files"
 msgstr "A h-uile faidhle breatha"
 
-#: ../src/mainWindow.js:387
+#: ../src/mainWindow.js:431
 msgid "Failed to connect to location service"
-msgstr "Dh'fhàillig an ceangal ris an t-seirbheis ionadan"
+msgstr "Dh’fhàillig an ceangal ris an t-seirbheis ionadan"
 
-#: ../src/mainWindow.js:439
+#: ../src/mainWindow.js:487
 msgid "translator-credits"
 msgstr "GunChleoc <fios@foramnagaidhlig.net>"
 
-#: ../src/mainWindow.js:442
+#: ../src/mainWindow.js:490
 msgid "A map application for GNOME"
 msgstr "Aplacaid mhapaichean airson GNOME"
 
-#: ../src/mapView.js:260
+#: ../src/mapView.js:356
 msgid "File type is not supported"
 msgstr "Cha chuirear taic ris an t-seòrsa faidhle"
 
-#: ../src/mapView.js:267
+#: ../src/mapView.js:363
 msgid "Failed to open layer"
-msgstr "Dh'fhàillig le fosgladh na breatha"
+msgstr "Dh’fhàillig le fosgladh na breatha"
 
-#: ../src/mapView.js:303
+#: ../src/mapView.js:399
 msgid "Failed to open GeoURI"
-msgstr "Dh'fhàillig le fosgladh GeoURI"
+msgstr "Dh’fhàillig le fosgladh GeoURI"
+
+#: ../src/openTripPlanner.js:622
+msgid "No earlier alternatives found."
+msgstr ""
+
+#: ../src/openTripPlanner.js:623
+#| msgid "No route found."
+msgid "No later alternatives found."
+msgstr ""
+
+#: ../src/openTripPlanner.js:661
+msgid "No timetable data found for this route."
+msgstr ""
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: ../src/osmConnection.js:443
+#: ../src/osmConnection.js:442
 msgid "Incorrect user name or password"
 msgstr ""
 "Chan eil an t-ainm-cleachdaiche no chan eil am facal-faire mar bu chòir"
 
-#: ../src/osmConnection.js:445
+#: ../src/osmConnection.js:444
 msgid "Success"
 msgstr "Shoirbhich leis"
 
-#: ../src/osmConnection.js:447
+#: ../src/osmConnection.js:446
 msgid "Bad request"
 msgstr "Droch iarrtas"
 
-#: ../src/osmConnection.js:449
+#: ../src/osmConnection.js:448
 msgid "Object not found"
 msgstr "Cha deach an t-oibseact a lorg"
 
-#: ../src/osmConnection.js:451
+#: ../src/osmConnection.js:450
 msgid "Conflict, someone else has just modified the object"
 msgstr "Còmhstri, tha cuideigin eile dìreach air an t-oibseact atharrachadh"
 
-#: ../src/osmConnection.js:453
+#: ../src/osmConnection.js:452
 msgid "Object has been deleted"
 msgstr "Chaidh an t-oibseact a sguabadh às"
 
-#: ../src/osmConnection.js:455
+#: ../src/osmConnection.js:454
 msgid "Way or relation refers to non-existing children"
-msgstr "Tha an t-slighe no an dàimh a' toirt iomradh air clann nach eil ann"
+msgstr "Tha an t-slighe no an dàimh a’ toirt iomradh air clann nach eil ann"
 
 #: ../src/osmEditDialog.js:104
 msgid "Name"
@@ -805,7 +958,7 @@ msgstr "Ainm oifigeil. Seo na nochdas air sanasan mar as trice."
 msgid "Address"
 msgstr "Seòladh"
 
-#: ../src/osmEditDialog.js:118 ../src/placeBubble.js:165
+#: ../src/osmEditDialog.js:118
 msgid "Website"
 msgstr "Làrach-lìn"
 
@@ -827,18 +980,15 @@ msgid ""
 "Phone number. Use the international format, starting with a + sign. Beware "
 "of local privacy laws, especially for private phone numbers."
 msgstr ""
-"An àireamh fòn. Cleachd am fòrmat eadar-nàiseanta, a' tòiseachadh le samhla "
+"An àireamh fòn. Cleachd am fòrmat eadar-nàiseanta, a’ tòiseachadh le samhla "
 "+. Thoir an aire air laghan prìobhaideachd ionadail, gu h-àraidh a thaobh "
 "àireamhan prìobhaideach."
 
-#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:171
+#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:170
 msgid "Wikipedia"
 msgstr "An Uicipeid"
 
 #: ../src/osmEditDialog.js:139
-#| msgid ""
-#| "The format used should include the language code and the article title "
-#| "like ”en:Article title”."
 msgid ""
 "The format used should include the language code and the article title like "
 "“en:Article title”."
@@ -864,17 +1014,19 @@ msgstr "Àirde"
 
 #: ../src/osmEditDialog.js:159
 msgid "Elevation (height above sea level) of a point in metres."
-msgstr "Meatair a dh'àirde (os cionn na mara) aig puing."
+msgstr "Meatair a dh’àirde (os cionn na mara) aig puing."
 
 #: ../src/osmEditDialog.js:162
 msgid "Wheelchair access"
 msgstr "Inntrigeadh cathrach-cuibhle"
 
 #: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
+#: ../src/osmEditDialog.js:212
 msgid "Yes"
 msgstr "Tha inntrigeadh ann"
 
 #: ../src/osmEditDialog.js:166 ../src/osmEditDialog.js:175
+#: ../src/osmEditDialog.js:213
 msgid "No"
 msgstr "Chan eil inntrigeadh ann"
 
@@ -909,46 +1061,161 @@ msgstr "Tèirmineal"
 msgid "Service"
 msgstr "Seirbheis"
 
-#: ../src/osmEditDialog.js:288
+#: ../src/osmEditDialog.js:182
+msgid "Religion"
+msgstr "Creideamh"
+
+#: ../src/osmEditDialog.js:185 ../src/translations.js:363
+msgid "Animism"
+msgstr ""
+
+#: ../src/osmEditDialog.js:186
+msgid "Bahá’í"
+msgstr "Bahá’í"
+
+#: ../src/osmEditDialog.js:187 ../src/translations.js:365
+msgid "Buddhism"
+msgstr ""
+
+#: ../src/osmEditDialog.js:188 ../src/translations.js:366
+msgid "Caodaism"
+msgstr ""
+
+#: ../src/osmEditDialog.js:189 ../src/translations.js:367
+msgid "Christianity"
+msgstr ""
+
+#: ../src/osmEditDialog.js:190 ../src/translations.js:368
+msgid "Confucianism"
+msgstr ""
+
+#: ../src/osmEditDialog.js:191 ../src/translations.js:369
+msgid "Hinduism"
+msgstr ""
+
+#: ../src/osmEditDialog.js:192 ../src/translations.js:370
+msgid "Jainism"
+msgstr ""
+
+#: ../src/osmEditDialog.js:193 ../src/translations.js:371
+msgid "Judaism"
+msgstr ""
+
+#: ../src/osmEditDialog.js:194 ../src/translations.js:372
+msgid "Islam"
+msgstr ""
+
+#: ../src/osmEditDialog.js:195 ../src/translations.js:373
+msgid "Multiple Religions"
+msgstr ""
+
+#: ../src/osmEditDialog.js:196 ../src/translations.js:374
+msgid "Paganism"
+msgstr ""
+
+#: ../src/osmEditDialog.js:197 ../src/translations.js:375
+msgid "Pastafarianism"
+msgstr ""
+
+#: ../src/osmEditDialog.js:198 ../src/translations.js:376
+msgid "Scientology"
+msgstr ""
+
+#: ../src/osmEditDialog.js:199 ../src/translations.js:377
+msgid "Shinto"
+msgstr ""
+
+#: ../src/osmEditDialog.js:200 ../src/translations.js:378
+msgid "Sikhism"
+msgstr ""
+
+#: ../src/osmEditDialog.js:201 ../src/translations.js:379
+msgid "Spiritualism"
+msgstr ""
+
+#: ../src/osmEditDialog.js:202 ../src/translations.js:380
+msgid "Taoism"
+msgstr ""
+
+#: ../src/osmEditDialog.js:203 ../src/translations.js:381
+msgid "Unitarian Universalism"
+msgstr ""
+
+#: ../src/osmEditDialog.js:204 ../src/translations.js:382
+msgid "Voodoo"
+msgstr ""
+
+#: ../src/osmEditDialog.js:205 ../src/translations.js:383
+msgid "Yazidism"
+msgstr ""
+
+#: ../src/osmEditDialog.js:206 ../src/translations.js:384
+msgid "Zoroastrianism"
+msgstr ""
+
+#: ../src/osmEditDialog.js:209
+msgid "Toilets"
+msgstr ""
+
+#: ../src/osmEditDialog.js:216
+msgid "Note"
+msgstr "An aire"
+
+#: ../src/osmEditDialog.js:219
+msgid ""
+"Information used to inform other mappers about non-obvious information about "
+"an element, the author’s intent when creating it, or hints for further "
+"improvement."
+msgstr ""
+
+#: ../src/osmEditDialog.js:328
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Cuir ri OpenStreetMap"
 
-#: ../src/osmEditDialog.js:340
+#: ../src/osmEditDialog.js:381
 msgid "Select Type"
 msgstr "Tagh seòrsa"
 
-#: ../src/osmEditDialog.js:458
+#: ../src/osmEditDialog.js:500
 msgid "Done"
 msgstr "Deiseil"
 
-#: ../src/placeBubble.js:128
+#: ../src/placeBubble.js:122
 msgid "Population:"
 msgstr "Sluagh:"
 
-#: ../src/placeBubble.js:134
+#: ../src/placeBubble.js:128
 msgid "Altitude:"
 msgstr "Àirde:"
 
-#: ../src/placeBubble.js:139
+#: ../src/placeBubble.js:133
 msgid "Opening hours:"
 msgstr "Uairean fosglaidh:"
 
-#: ../src/placeBubble.js:144
+#: ../src/placeBubble.js:138
 msgid "Internet access:"
 msgstr "Inntrigeadh an eadar-lìn:"
 
-#: ../src/placeBubble.js:149
+#: ../src/placeBubble.js:143
+msgid "Religion:"
+msgstr "Creideamh:"
+
+#: ../src/placeBubble.js:148
+msgid "Toilets:"
+msgstr "Taighean-beaga:"
+
+#: ../src/placeBubble.js:153
 msgid "Wheelchair access:"
 msgstr "Inntrigeadh cathrach-cuibhle:"
 
-#: ../src/placeBubble.js:155 ../src/placeBubble.js:159
+#: ../src/placeBubble.js:159 ../src/placeBubble.js:163
 msgid "Phone:"
 msgstr "Fòn:"
 
 #: ../src/placeEntry.js:190
 msgid "Failed to parse Geo URI"
-msgstr "Dh'fhàillig le parsadh a' Geo URI"
+msgstr "Dh’fhàillig le parsadh a’ Geo URI"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
@@ -956,7 +1223,7 @@ msgstr "Dh'fhàillig le parsadh a' Geo URI"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: ../src/place.js:178 ../src/translations.js:329
+#: ../src/place.js:219 ../src/translations.js:329 ../src/translations.js:391
 msgid "yes"
 msgstr "tha inntrigeadh ann"
 
@@ -965,7 +1232,7 @@ msgstr "tha inntrigeadh ann"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:185
+#: ../src/place.js:226
 msgid "limited"
 msgstr "cuingichte"
 
@@ -977,7 +1244,7 @@ msgstr "cuingichte"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: ../src/place.js:191 ../src/translations.js:335
+#: ../src/place.js:232 ../src/translations.js:335 ../src/translations.js:392
 msgid "no"
 msgstr "chan eil inntrigeadh ann"
 
@@ -986,7 +1253,7 @@ msgstr "chan eil inntrigeadh ann"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:198
+#: ../src/place.js:239
 msgid "designated"
 msgstr "ainmichte"
 
@@ -995,43 +1262,154 @@ msgstr "ainmichte"
 msgid "From %s to %s"
 msgstr "O %s gu %s"
 
-#: ../src/printOperation.js:47
-msgid "Loading map tiles for printing"
-msgstr "A' luchdadh leacagan a' mhapa a chum clò-bhualaidh"
-
 #: ../src/printOperation.js:48
-msgid "You can abort printing if this takes too long"
-msgstr "'S urrainn dhut sgur dhen chlò-bhualadh ma bheir e ro fhada"
+msgid "Loading map tiles for printing"
+msgstr "A’ luchdadh leacagan a’ mhapa a chum clò-bhualaidh"
 
-#: ../src/printOperation.js:50
+#: ../src/printOperation.js:49
+msgid "You can abort printing if this takes too long"
+msgstr "’S urrainn dhut sgur dhen chlò-bhualadh ma bheir e ro fhada"
+
+#: ../src/printOperation.js:51
 msgid "Abort printing"
 msgstr "Sguir dhen chlò-bhualadh"
 
-#: ../src/routeService.js:90
-msgid "No route found."
-msgstr "Cha deach slighe a lorg."
-
-#: ../src/routeService.js:101
-msgid "Route request failed."
-msgstr "Dh'fhàillig le iarrtas slighe."
-
-#: ../src/routeService.js:178
-msgid "Start!"
-msgstr "Tòisich!"
-
 #: ../src/sendToDialog.js:179
 msgid "Failed to open URI"
-msgstr "Dh'fhàillig le fosgladh URI"
+msgstr "Dh’fhàillig le fosgladh URI"
 
-#: ../src/shapeLayer.js:93
+#: ../src/shapeLayer.js:92
 msgid "failed to load file"
-msgstr "dh'fhàillig le luchdadh faidhle"
+msgstr "dh’fhàillig le luchdadh faidhle"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:208
+#: ../src/sidebar.js:294
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Tuairmse air an ùine: %s"
+
+#. Translators: this a format string indicating arriving at the
+#. * destination of journey with the arrival address and transit
+#. * stop as the format parameter
+#: ../src/transitArrivalRow.js:56
+#, javascript-format
+msgid "Arrive at %s"
+msgstr ""
+
+#: ../src/transitArrivalRow.js:58
+msgid "Arrive"
+msgstr ""
+
+#. Translators: this is a format string indicating instructions
+#. * starting a journey at the address given as the parameter
+#.
+#: ../src/transitLegRow.js:73
+#, javascript-format
+msgid "Start at %s"
+msgstr ""
+
+#. Translators: this indicates starting a journey at a location
+#. * with no set name (such as when the user started routing from
+#. * an arbitrary point on the map)
+#.
+#: ../src/transitLegRow.js:79
+#| msgid "Start!"
+msgid "Start"
+msgstr "Toiseach"
+
+#: ../src/transitLegRow.js:107
+msgid "Show walking instructions"
+msgstr ""
+
+#: ../src/transitLegRow.js:108
+msgid "Hide walking instructions"
+msgstr ""
+
+#. Translators: this is a format string indicating walking a certain
+#. * distance, with the distance expression being the %s placeholder
+#.
+#: ../src/transitLegRow.js:133
+#, javascript-format
+msgid "Walk %s"
+msgstr ""
+
+#: ../src/transitMoreRow.js:41
+msgid "Load earlier alternatives"
+msgstr ""
+
+#: ../src/transitMoreRow.js:43
+msgid "Load later alternatives"
+msgstr ""
+
+#.
+#. * Translators: this is a format string giving the equivalent to
+#. * "may 29" according to the current locale's convensions.
+#.
+#: ../src/transitOptionsPanel.js:142
+msgctxt "month-day-date"
+msgid "%b %e"
+msgstr ""
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time, like:
+#. * "12:00 – 13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: ../src/transitPlan.js:253
+#, javascript-format
+msgid "%s – %s"
+msgstr ""
+
+#. translators: this is an indication for a trip duration of
+#. * less than an hour, with only the minutes part, using plural forms
+#. * as appropriate
+#.
+#: ../src/transitPlan.js:280
+#, javascript-format
+#| msgid "%f min"
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] "%d mhionaid"
+msgstr[1] "%d mhionaid"
+msgstr[2] "%d mionaidean"
+msgstr[3] "%d mionaid"
+
+#. translators: this is an indication for a trip duration,
+#. * where the duration is an exact number of hours (i.e. no
+#. * minutes part), using plural forms as appropriate
+#.
+#: ../src/transitPlan.js:291
+#, javascript-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d uair a thìde"
+msgstr[1] "%d uair a thìde"
+msgstr[2] "%d uairean a thìde"
+msgstr[3] "%d uair a thìde"
+
+#. translators: this is an indication for a trip duration
+#. * where the duration contains an hour and minute part, it's
+#. * pluralized on the hours part
+#.
+#: ../src/transitPlan.js:297
+#, javascript-format
+msgid "%d:%02d hour"
+msgid_plural "%d:%02d hours"
+msgstr[0] "%d:%02d uair a thìde"
+msgstr[1] "%d:%02d uair a thìde"
+msgstr[2] "%d:%02d uairean a thìde"
+msgstr[3] "%d:%02d uair a thìde"
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time in a more compact manner to show in the instruction
+#. * list for an itinerary, like:
+#. * "12:00–13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: ../src/transitPlan.js:649
+#, javascript-format
+msgid "%s–%s"
+msgstr "%s–%s"
 
 #: ../src/translations.js:56
 msgid "around the clock"
@@ -1209,23 +1587,35 @@ msgstr "%f d"
 #. Translators: This is a distance measured in kilometers
 #: ../src/utils.js:352
 #, javascript-format
-msgid "%f km"
-msgstr "%f km"
+msgid "%s km"
+msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
 #: ../src/utils.js:355
 #, javascript-format
-msgid "%f m"
-msgstr "%f m"
+msgid "%s m"
+msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
 #: ../src/utils.js:363
 #, javascript-format
-msgid "%f mi"
-msgstr "%f mì"
+msgid "%s mi"
+msgstr "%s mì"
 
 #. Translators: This is a distance measured in feet
 #: ../src/utils.js:366
 #, javascript-format
-msgid "%f ft"
-msgstr "%f troigh"
+msgid "%s ft"
+msgstr "%s troigh"
+
+#~ msgid "%f km"
+#~ msgstr "%f km"
+
+#~ msgid "%f m"
+#~ msgstr "%f m"
+
+#~ msgid "%f mi"
+#~ msgstr "%f mì"
+
+#~ msgid "%f ft"
+#~ msgstr "%f troigh"
