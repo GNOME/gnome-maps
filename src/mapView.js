@@ -142,6 +142,7 @@ var MapView = GObject.registerClass({
         let mapType = params.mapType || MapType.STREET;
         delete params.mapType;
 
+        this._storeId = 0;
         this.view = this._initView();
         this._initLayers();
 
@@ -153,7 +154,6 @@ var MapView = GObject.registerClass({
                                     this._updateUserLocation.bind(this));
         Application.geoclue.connect('notify::state',
                                     this._updateUserLocation.bind(this));
-        this._storeId = 0;
         this._connectRouteSignals();
     }
 
