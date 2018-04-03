@@ -22,6 +22,9 @@
 
 const Mainloop = imports.mainloop;
 
+const Gdk = imports.gi.Gdk;
+const Gtk = imports.gi.Gtk;
+
 const Notification = imports.notification;
 
 const _TIMEOUT = 5000; /* ms */
@@ -30,6 +33,9 @@ var NotificationManager = class NotificationManager {
 
     constructor(overlay) {
         this._overlay = overlay;
+        this._placeholderMenu =
+            new Gtk.Popover({ relative_to: this._overlay,
+                              transitions_enabled: false });
     }
 
     _add(notification) {
@@ -41,15 +47,31 @@ var NotificationManager = class NotificationManager {
                 this._current = null;
             });
         }
-        this._overlay.add_overlay(notification);
+        /* Don't add the notification to the overlay, since they won't work
+         * on Wayland...
+         *
+         * this._overlay.add_overlay(notification);
+        */
+        let oldNotification = this._placeholderMenu.get_child();
+        let rect = new Gdk.Rectangle({ x: this._overlay.window.get_width() / 2,
+                                       y: 0, width: 0, height: 0 });
+
+        if (oldNotification)
+            this._placeholderMenu.remove(oldNotification);
+        this._placeholderMenu.add(notification);
+        this._placeholderMenu.pointing_to = rect;
+        this._placeholderMenu.popup();
         let timeoutId = Mainloop.timeout_add(_TIMEOUT, () => {
             timeoutId = 0;
             notification.dismiss();
+            this._placeholderMenu.remove(notification);
+            this._placeholderMenu.hide();
         });
         notification.connect('destroy', () => {
             if (timeoutId !== 0)
                 Mainloop.source_remove(timeoutId);
         });
+        notification.connect('dismissed', () => this._placeholderMenu.hide());
         notification.reveal();
     }
 
