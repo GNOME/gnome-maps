@@ -72,6 +72,7 @@ var MapMarker = GObject.registerClass({
             this._view = this._mapView.view;
             this.connect('notify::selected', this._onMarkerSelected.bind(this));
             this.connect('button-press', this._onButtonPress.bind(this));
+            this.connect('touch-event', this._onTouchEvent.bind(this));
 
             // Some markers are draggable, we want to sync the marker location and
             // the location saved in the GeocodePlace
@@ -156,6 +157,13 @@ var MapMarker = GObject.registerClass({
                 this._view.center_on(this.latitude, this.longitude);
             }
         }
+    }
+
+    _onTouchEvent(marker, event) {
+        if (event.type() == Clutter.EventType.TOUCH_BEGIN)
+            this.selected = true;
+
+        return Clutter.EVENT_STOP;
     }
 
     _translateMarkerPosition() {
@@ -270,6 +278,9 @@ var MapMarker = GObject.registerClass({
                 this.selected = false;
         });
 
+        let viewTouchEventSignalId =
+            this._view.connect('touch-event', () => this.set_selected(false));
+
         let goingToSignalId = this._mapView.connect('going-to', () => {
             this.set_selected(false);
         });
@@ -288,6 +299,7 @@ var MapMarker = GObject.registerClass({
             this._mapView.disconnect(markerSelectedSignalId);
             this._mapView.disconnect(goingToSignalId);
             this._view.disconnect(buttonPressSignalId);
+            this._view.disconnect(viewTouchEventSignalId);
             this.disconnect(parentSetSignalId);
             this.disconnect(dragMotionSignalId);
 
