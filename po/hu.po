@@ -7,10 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2018-01-22 20:52+0000\n"
-"PO-Revision-Date: 2018-01-24 18:30+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
+"POT-Creation-Date: 2018-03-26 15:40+0000\n"
+"PO-Revision-Date: 2018-04-11 13:34+0200\n"
 "Last-Translator: Meskó Balázs <meskobalazs@fedoraproject.org>\n"
 "Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
@@ -18,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
 msgid "GNOME Maps"
@@ -59,7 +58,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:87 ../src/mainWindow.js:518
+#: ../src/application.js:85 ../src/mainWindow.js:511
 msgid "Maps"
 msgstr "Térképek"
 
@@ -360,8 +359,8 @@ msgstr "Alak réteg megnyitása"
 
 #. Translators: This string uses ellipsis character
 #: ../data/ui/layers-popover.ui.h:2
-msgid "Open Shape Layer&#x2026;"
-msgstr "Alak réteg megnyitása&#x2026;"
+msgid "Open Shape Layer…"
+msgstr "Alak réteg megnyitása…"
 
 #: ../data/ui/location-service-notification.ui.h:1
 msgid "Turn on location services to find your location"
@@ -567,7 +566,7 @@ msgstr "Szerkesztés az OpenStreetMapen"
 msgid "Cancel"
 msgstr "Mégse"
 
-#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:518
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:512
 msgid "Next"
 msgstr "Következő"
 
@@ -602,7 +601,7 @@ msgstr "Hely megnyitása"
 msgid "_Open"
 msgstr "_Megnyitás"
 
-#: ../data/ui/shape-layer-file-chooser.ui.h:1
+#: ../data/ui/shape-layer-file-chooser.ui.h:1 ../src/mainWindow.js:62
 msgid "Open Shape Layer"
 msgstr "Alak réteg megnyitása"
 
@@ -691,7 +690,7 @@ msgstr "Metró"
 msgid "Ferries"
 msgstr "Kompok"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:120
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:118
 msgid "Current location"
 msgstr "Jelenlegi hely"
 
@@ -726,27 +725,27 @@ msgstr "Szükséges attribútumok hiányoznak"
 msgid "Could not find OSM element"
 msgstr "Nem sikerült megtalálni az OSM elemet"
 
-#: ../src/application.js:102
+#: ../src/application.js:98
 msgid "A path to a local tiles directory structure"
 msgstr "Egy útvonal a helyi csempék könyvtárszerkezetéhez"
 
-#: ../src/application.js:106
+#: ../src/application.js:102
 msgid "Show the version of the program"
 msgstr "A program verziószámának megjelenítése"
 
-#: ../src/checkInDialog.js:175
+#: ../src/checkInDialog.js:167
 msgid "Select an account"
 msgstr "Válasszon egy fiókot"
 
-#: ../src/checkInDialog.js:180 ../src/checkInDialog.js:252
+#: ../src/checkInDialog.js:172 ../src/checkInDialog.js:244
 msgid "Loading"
 msgstr "Betöltés"
 
-#: ../src/checkInDialog.js:204
+#: ../src/checkInDialog.js:196
 msgid "Select a place"
 msgstr "Válasszon egy helyet"
 
-#: ../src/checkInDialog.js:209
+#: ../src/checkInDialog.js:201
 msgid ""
 "Maps cannot find the place to check in to with Facebook. Please select one "
 "from this list."
@@ -754,7 +753,7 @@ msgstr ""
 "A Térképek nem találja a helyet, ahova bejelentkezhet a Facebook "
 "használatával. Válasszon egyet erről a listáról."
 
-#: ../src/checkInDialog.js:211
+#: ../src/checkInDialog.js:203
 msgid ""
 "Maps cannot find the place to check in to with Foursquare. Please select one "
 "from this list."
@@ -764,34 +763,34 @@ msgstr ""
 
 #. Translators: %s is the name of the place to check in.
 #.
-#: ../src/checkInDialog.js:226
+#: ../src/checkInDialog.js:218
 #, javascript-format
 msgid "Check in to %s"
 msgstr "Bejelentkezés ide: %s"
 
 #. Translators: %s is the name of the place to check in.
 #.
-#: ../src/checkInDialog.js:236
+#: ../src/checkInDialog.js:228
 #, javascript-format
 msgid "Write an optional message to check in to %s."
 msgstr "Opcionális üzenet írása a következőbe való bejelentkezéshez: %s."
 
-#: ../src/checkInDialog.js:288 ../src/checkIn.js:165
-#: ../src/osmEditDialog.js:555
+#: ../src/checkInDialog.js:280 ../src/checkIn.js:162
+#: ../src/osmEditDialog.js:549
 msgid "An error has occurred"
 msgstr "Hiba történt"
 
 #. Translators: %s is the place name that user wanted to check-in
-#: ../src/checkIn.js:147
+#: ../src/checkIn.js:144
 #, javascript-format
 msgid "Cannot find “%s” in the social service"
 msgstr "Nem található „%s” a közösségi szolgáltatásban"
 
-#: ../src/checkIn.js:149
+#: ../src/checkIn.js:146
 msgid "Cannot find a suitable place to check-in in this location"
 msgstr "Nem található megfelelő hely a bejelentkezéshez ezen a helyen"
 
-#: ../src/checkIn.js:153
+#: ../src/checkIn.js:150
 msgid ""
 "Credentials have expired, please open Online Accounts to sign in and enable "
 "this account"
@@ -799,23 +798,23 @@ msgstr ""
 "A hitelesítési adatok lejártak, nyissa meg az Online fiókokat a "
 "bejelentkezéshez, és engedélyezze ezt a fiókot"
 
-#: ../src/contextMenu.js:99
+#: ../src/contextMenu.js:95
 msgid "Route from here"
 msgstr "Útvonal innen"
 
-#: ../src/contextMenu.js:101
+#: ../src/contextMenu.js:97
 msgid "Add destination"
 msgstr "Cél hozzáadása"
 
-#: ../src/contextMenu.js:103
+#: ../src/contextMenu.js:99
 msgid "Route to here"
 msgstr "Útvonal ide"
 
-#: ../src/contextMenu.js:132
+#: ../src/contextMenu.js:128
 msgid "Nothing found here!"
 msgstr "Itt nincs semmi!"
 
-#: ../src/contextMenu.js:189
+#: ../src/contextMenu.js:185
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -827,28 +826,28 @@ msgstr ""
 #. * exported image with coordinates. The .png extension should be kept
 #. * intact in the translated string.
 #.
-#: ../src/exportViewDialog.js:90
+#: ../src/exportViewDialog.js:82
 #, javascript-format
 msgid "Maps at %f, %f.png"
 msgstr "Térképek itt: %f, %f.png"
 
-#: ../src/exportViewDialog.js:161
+#: ../src/exportViewDialog.js:154
 msgid "Filesystem is read only"
 msgstr "A fájlrendszer csak olvasható"
 
-#: ../src/exportViewDialog.js:163
+#: ../src/exportViewDialog.js:156
 msgid "You do not have permission to save there"
 msgstr "Nincs jogosultsága oda menteni"
 
-#: ../src/exportViewDialog.js:165
+#: ../src/exportViewDialog.js:158
 msgid "The directory does not exist"
 msgstr "A könyvtár nem létezik"
 
-#: ../src/exportViewDialog.js:167
+#: ../src/exportViewDialog.js:160
 msgid "No filename specified"
 msgstr "Nincs megadva fájlnév"
 
-#: ../src/exportViewDialog.js:175
+#: ../src/exportViewDialog.js:168
 msgid "Unable to export view"
 msgstr "A nézet exportálása sikertelen"
 
@@ -856,24 +855,24 @@ msgstr "A nézet exportálása sikertelen"
 msgid "invalid coordinate"
 msgstr "érvénytelen koordináta"
 
-#: ../src/geoJSONSource.js:149 ../src/geoJSONSource.js:189
-#: ../src/geoJSONSource.js:204
+#: ../src/geoJSONSource.js:147 ../src/geoJSONSource.js:187
+#: ../src/geoJSONSource.js:202
 msgid "parse error"
 msgstr "feldolgozási hiba"
 
-#: ../src/geoJSONSource.js:183
+#: ../src/geoJSONSource.js:181
 msgid "unknown geometry"
 msgstr "ismeretlen geometria"
 
-#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:665
+#: ../src/graphHopper.js:89 ../src/openTripPlanner.js:656
 msgid "Route request failed."
 msgstr "Az útvonalkérés nem sikerült."
 
-#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:628
+#: ../src/graphHopper.js:97 ../src/openTripPlanner.js:619
 msgid "No route found."
 msgstr "Nem található útvonal."
 
-#: ../src/graphHopper.js:193
+#: ../src/graphHopper.js:189
 msgid "Start!"
 msgstr "Indulás!"
 
@@ -881,25 +880,25 @@ msgstr "Indulás!"
 msgid "All Layer Files"
 msgstr "Minden rétegfájl"
 
-#: ../src/mainWindow.js:459
+#: ../src/mainWindow.js:452
 msgid "Failed to connect to location service"
 msgstr "Nem sikerült kapcsolódni a helymeghatározó szolgáltatáshoz"
 
-#: ../src/mainWindow.js:516
+#: ../src/mainWindow.js:509
 msgid "translator-credits"
 msgstr ""
 "Úr Balázs <urbalazs at gmail dot com>\n"
 "Meskó Balázs <mesko.balazs at fsf dot hu>"
 
-#: ../src/mainWindow.js:519
+#: ../src/mainWindow.js:512
 msgid "A map application for GNOME"
 msgstr "Térképalkalmazás a GNOME-hoz"
 
-#: ../src/mainWindow.js:530
+#: ../src/mainWindow.js:523
 msgid "Copyright © 2011 – 2017 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 – 2017 Red Hat, Inc. és a GNOME Térképek szerzői"
 
-#: ../src/mainWindow.js:551
+#: ../src/mainWindow.js:542
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Térképadatok: %s és közreműködők"
@@ -909,62 +908,62 @@ msgstr "Térképadatok: %s és közreműködők"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: ../src/mainWindow.js:567
+#: ../src/mainWindow.js:558
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "A térképcsempéket a(z) %s szolgáltatja"
 
-#: ../src/mapView.js:356
+#: ../src/mapView.js:350
 msgid "File type is not supported"
 msgstr "A fájltípus nem támogatott"
 
-#: ../src/mapView.js:363
+#: ../src/mapView.js:357
 msgid "Failed to open layer"
 msgstr "A réteg megnyitása nem sikerült"
 
-#: ../src/mapView.js:399
+#: ../src/mapView.js:393
 msgid "Failed to open GeoURI"
 msgstr "A GeoURI megnyitása nem sikerült"
 
-#: ../src/openTripPlanner.js:622
+#: ../src/openTripPlanner.js:613
 msgid "No earlier alternatives found."
 msgstr "Nem található korábbi lehetőség."
 
-#: ../src/openTripPlanner.js:623
+#: ../src/openTripPlanner.js:614
 msgid "No later alternatives found."
 msgstr "Nem található későbbi lehetőség."
 
-#: ../src/openTripPlanner.js:661
+#: ../src/openTripPlanner.js:652
 msgid "No timetable data found for this route."
 msgstr "Nem található menetrend ehhez az útvonalhoz."
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: ../src/osmConnection.js:442
+#: ../src/osmConnection.js:436
 msgid "Incorrect user name or password"
 msgstr "Helytelen felhasználónév vagy jelszó"
 
-#: ../src/osmConnection.js:444
+#: ../src/osmConnection.js:438
 msgid "Success"
 msgstr "Sikerült"
 
-#: ../src/osmConnection.js:446
+#: ../src/osmConnection.js:440
 msgid "Bad request"
 msgstr "Rossz kérés"
 
-#: ../src/osmConnection.js:448
+#: ../src/osmConnection.js:442
 msgid "Object not found"
 msgstr "Nem található objektum"
 
-#: ../src/osmConnection.js:450
+#: ../src/osmConnection.js:444
 msgid "Conflict, someone else has just modified the object"
 msgstr "Konfliktus, valaki épp most módosította az objektumot"
 
-#: ../src/osmConnection.js:452
+#: ../src/osmConnection.js:446
 msgid "Object has been deleted"
 msgstr "Az objektum törlésre került"
 
-#: ../src/osmConnection.js:454
+#: ../src/osmConnection.js:448
 msgid "Way or relation refers to non-existing children"
 msgstr "Út vagy reláció nem létező gyermekekre hivatkozik"
 
@@ -1004,7 +1003,7 @@ msgstr ""
 "Telefonszám. Használja a nemzetközi formátumot a + jellel. Figyeljen a helyi "
 "adatvédelmi törvényekre, különösen a magántelefonszámokra."
 
-#: ../src/osmEditDialog.js:136 ../src/placeBubble.js:176
+#: ../src/osmEditDialog.js:136 ../src/placeBubble.js:173
 msgid "Wikipedia"
 msgstr "Wikipédia"
 
@@ -1190,52 +1189,52 @@ msgstr ""
 "Más térképezőknek szánt információ, egy elem nem egyértelmű "
 "tulajdonságairól, a szerző szándékáról, vagy tippek a további finomításokhoz."
 
-#: ../src/osmEditDialog.js:329
+#: ../src/osmEditDialog.js:325
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Hozzáadás az OpenStreetMaphez"
 
-#: ../src/osmEditDialog.js:383
+#: ../src/osmEditDialog.js:379
 msgid "Select Type"
 msgstr "Válasszon egy típust"
 
-#: ../src/osmEditDialog.js:502
+#: ../src/osmEditDialog.js:496
 msgid "Done"
 msgstr "Kész"
 
-#: ../src/placeBubble.js:128
+#: ../src/placeBubble.js:125
 msgid "Population:"
 msgstr "Népesség:"
 
-#: ../src/placeBubble.js:134
+#: ../src/placeBubble.js:131
 msgid "Altitude:"
 msgstr "Magasság:"
 
-#: ../src/placeBubble.js:139
+#: ../src/placeBubble.js:136
 msgid "Opening hours:"
 msgstr "Nyitva tartás:"
 
-#: ../src/placeBubble.js:144
+#: ../src/placeBubble.js:141
 msgid "Internet access:"
 msgstr "Internet-hozzáférés:"
 
-#: ../src/placeBubble.js:149
+#: ../src/placeBubble.js:146
 msgid "Religion:"
 msgstr "Vallás:"
 
-#: ../src/placeBubble.js:154
+#: ../src/placeBubble.js:151
 msgid "Toilets:"
 msgstr "Toalett:"
 
-#: ../src/placeBubble.js:159
+#: ../src/placeBubble.js:156
 msgid "Wheelchair access:"
 msgstr "Kerekesszékes elérés:"
 
-#: ../src/placeBubble.js:165 ../src/placeBubble.js:169
+#: ../src/placeBubble.js:162 ../src/placeBubble.js:166
 msgid "Phone:"
 msgstr "Telefon:"
 
-#: ../src/placeEntry.js:188
+#: ../src/placeEntry.js:186
 msgid "Failed to parse Geo URI"
 msgstr "A Geo URI feldolgozása nem sikerült"
 
@@ -1245,7 +1244,7 @@ msgstr "A Geo URI feldolgozása nem sikerült"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: ../src/place.js:219 ../src/translations.js:329 ../src/translations.js:391
+#: ../src/place.js:218 ../src/translations.js:329 ../src/translations.js:391
 msgid "yes"
 msgstr "igen"
 
@@ -1254,7 +1253,7 @@ msgstr "igen"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:226
+#: ../src/place.js:225
 msgid "limited"
 msgstr "korlátozott"
 
@@ -1266,7 +1265,7 @@ msgstr "korlátozott"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: ../src/place.js:232 ../src/translations.js:335 ../src/translations.js:392
+#: ../src/place.js:231 ../src/translations.js:335 ../src/translations.js:392
 msgid "no"
 msgstr "nem"
 
@@ -1275,52 +1274,52 @@ msgstr "nem"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:239
+#: ../src/place.js:238
 msgid "designated"
 msgstr "kijelölt"
 
-#: ../src/printLayout.js:244
+#: ../src/printLayout.js:240
 #, javascript-format
 msgid "From %s to %s"
 msgstr "Ettől: %s, eddig: %s"
 
-#: ../src/printOperation.js:48
+#: ../src/printOperation.js:46
 msgid "Loading map tiles for printing"
 msgstr "Térképszelvények betöltése nyomtatáshoz"
 
-#: ../src/printOperation.js:49
+#: ../src/printOperation.js:47
 msgid "You can abort printing if this takes too long"
 msgstr "Megszakíthatja a nyomtatást, ha ez túl sokáig tart"
 
-#: ../src/printOperation.js:51
+#: ../src/printOperation.js:49
 msgid "Abort printing"
 msgstr "Nyomtatás megszakítása"
 
 #. Translators: this is add via location tooltip
-#: ../src/routeEntry.js:73
+#: ../src/routeEntry.js:72
 msgid "Add via location"
 msgstr "Hozzáadás hely szerint"
 
 #. Translators: this is remove via location tooltip
-#: ../src/routeEntry.js:79
+#: ../src/routeEntry.js:78
 msgid "Remove via location"
 msgstr "Eltávolítás hely szerint"
 
 #. Translators: this is reverse route tooltip
-#: ../src/routeEntry.js:85
+#: ../src/routeEntry.js:84
 msgid "Reverse route"
 msgstr "Fordított útvonal"
 
-#: ../src/sendToDialog.js:179
+#: ../src/sendToDialog.js:176
 msgid "Failed to open URI"
 msgstr "Az URI megnyitása nem sikerült"
 
-#: ../src/shapeLayer.js:92
+#: ../src/shapeLayer.js:91
 msgid "failed to load file"
 msgstr "nem sikerült betölteni a fájlt"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:293
+#: ../src/sidebar.js:292
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Becsült idő: %s"
@@ -1328,19 +1327,19 @@ msgstr "Becsült idő: %s"
 #. Translators: this a format string indicating arriving at the
 #. * destination of journey with the arrival address and transit
 #. * stop as the format parameter
-#: ../src/transitArrivalRow.js:56
+#: ../src/transitArrivalRow.js:54
 #, javascript-format
 msgid "Arrive at %s"
 msgstr "Érkezés ide: %s"
 
-#: ../src/transitArrivalRow.js:58
+#: ../src/transitArrivalRow.js:56
 msgid "Arrive"
 msgstr "Érkezés"
 
 #. Translators: this is a format string indicating instructions
 #. * starting a journey at the address given as the parameter
 #.
-#: ../src/transitLegRow.js:73
+#: ../src/transitLegRow.js:71
 #, javascript-format
 msgid "Start at %s"
 msgstr "Indulás innen: %s"
@@ -1349,31 +1348,31 @@ msgstr "Indulás innen: %s"
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: ../src/transitLegRow.js:79
+#: ../src/transitLegRow.js:77
 msgid "Start"
 msgstr "Indulás"
 
-#: ../src/transitLegRow.js:108
+#: ../src/transitLegRow.js:106
 msgid "Show walking instructions"
 msgstr "Gyaloglási utasítások megjelenítése"
 
-#: ../src/transitLegRow.js:109
+#: ../src/transitLegRow.js:107
 msgid "Hide walking instructions"
 msgstr "Gyaloglási utasítások elrejtése"
 
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
 #.
-#: ../src/transitLegRow.js:134
+#: ../src/transitLegRow.js:132
 #, javascript-format
 msgid "Walk %s"
 msgstr "Gyaloglás: %s"
 
-#: ../src/transitMoreRow.js:41
+#: ../src/transitMoreRow.js:39
 msgid "Load earlier alternatives"
 msgstr "Korábbi lehetőségek betöltése"
 
-#: ../src/transitMoreRow.js:43
+#: ../src/transitMoreRow.js:41
 msgid "Load later alternatives"
 msgstr "Későbbi lehetőségek betöltése"
 
@@ -1381,7 +1380,7 @@ msgstr "Későbbi lehetőségek betöltése"
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: ../src/transitOptionsPanel.js:142
+#: ../src/transitOptionsPanel.js:141
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%b. %e."
@@ -1391,7 +1390,7 @@ msgstr "%b. %e."
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: ../src/transitPlan.js:253
+#: ../src/transitPlan.js:249
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -1400,7 +1399,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: ../src/transitPlan.js:280
+#: ../src/transitPlan.js:276
 #, javascript-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -1411,7 +1410,7 @@ msgstr[1] "%d perc"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: ../src/transitPlan.js:291
+#: ../src/transitPlan.js:287
 #, javascript-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -1422,7 +1421,7 @@ msgstr[1] "%d óra"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: ../src/transitPlan.js:297
+#: ../src/transitPlan.js:293
 #, javascript-format
 msgid "%d:%02d hour"
 msgid_plural "%d:%02d hours"
@@ -1435,7 +1434,7 @@ msgstr[1] "%d:%02d óra"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: ../src/transitPlan.js:649
+#: ../src/transitPlan.js:642
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -1589,53 +1588,56 @@ msgid "service"
 msgstr "szolgáltatás"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:232
+#: ../src/utils.js:226
 msgid "Unknown"
 msgstr "Ismeretlen"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:235
+#: ../src/utils.js:229
 msgid "Exact"
 msgstr "Pontos"
 
-#: ../src/utils.js:293
+#: ../src/utils.js:287
 #, javascript-format
 msgid "%f h"
 msgstr "%f óra"
 
-#: ../src/utils.js:295
+#: ../src/utils.js:289
 #, javascript-format
 msgid "%f min"
 msgstr "%f perc"
 
-#: ../src/utils.js:297
+#: ../src/utils.js:291
 #, javascript-format
 msgid "%f s"
 msgstr "%f mp"
 
 #. Translators: This is a distance measured in kilometers
-#: ../src/utils.js:308
+#: ../src/utils.js:302
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: ../src/utils.js:311
+#: ../src/utils.js:305
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: ../src/utils.js:319
+#: ../src/utils.js:313
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: ../src/utils.js:322
+#: ../src/utils.js:316
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
+
+#~ msgid "Open Shape Layer&#x2026;"
+#~ msgstr "Alak réteg megnyitása&#x2026;"
 
 #~ msgid "Load Map Layer"
 #~ msgstr "Térkép réteg betöltése"
