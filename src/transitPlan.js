@@ -88,7 +88,8 @@ var Plan = GObject.registerClass({
         'reset': {},
         'no-more-results': {},
         'itinerary-selected': { param_types: [GObject.TYPE_OBJECT] },
-        'itinerary-deselected': {}
+        'itinerary-deselected': {},
+        'error': { param_types: [GObject.TYPE_STRING] }
     }
 }, class Plan extends GObject.Object {
 
@@ -130,6 +131,10 @@ var Plan = GObject.registerClass({
     deselectItinerary() {
         this._selectedItinerary = null;
         this.emit('itinerary-deselected');
+    }
+
+    error(msg) {
+        this.emit('error', msg);
     }
 
     _createBBox() {
