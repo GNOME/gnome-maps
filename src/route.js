@@ -44,7 +44,8 @@ var TurnPointType = {
 var Route = GObject.registerClass({
     Signals: {
         'update': {},
-        'reset': {}
+        'reset': {},
+        'error': { param_types: [GObject.TYPE_STRING] }
     }
 }, class Route extends GObject.Object {
 
@@ -70,6 +71,10 @@ var Route = GObject.registerClass({
         this.time = 0;
         this.bbox = null;
         this.emit('reset');
+    }
+
+    error(msg) {
+        this.emit('error', msg);
     }
 
     createBBox(coordinates) {
