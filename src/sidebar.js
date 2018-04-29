@@ -47,6 +47,7 @@ var Sidebar = GObject.registerClass({
                         'instructionWindow',
                         'instructionSpinner',
                         'instructionStack',
+                        'errorLabel',
                         'modeBikeToggle',
                         'modeCarToggle',
                         'modePedestrianToggle',
@@ -149,13 +150,13 @@ var Sidebar = GObject.registerClass({
             this._linkButtonStack.visible_child_name = 'openTripPlanner';
             this._transitOptionsPanel.reset();
             this._transitRevealer.reveal_child = true;
-            this._clearInstructions();
         } else {
             Application.routingDelegator.useTransit = false;
             this._linkButtonStack.visible_child_name = 'graphHopper';
             this._transitRevealer.reveal_child = false;
             Application.routingDelegator.openTripPlanner.plan.deselectItinerary();
         }
+        this._clearInstructions();
     }
 
     _initQuerySignals() {
@@ -243,7 +244,7 @@ var Sidebar = GObject.registerClass({
         this._query.connect('notify', () => {
             if (this._query.isValid()) {
                 this._instructionStack.visible_child = this._instructionSpinner;
-            } else {
+            } else if (this._instructionStack.visible_child !== this._errorLabel) {
                 if (this._query.transportation === RouteQuery.Transportation.TRANSIT) {
                     this._clearTransitOverview();
                     this._showTransitOverview();
@@ -315,6 +316,14 @@ var Sidebar = GObject.registerClass({
         this._transitItineraryBackButton.connect('clicked',
                                                  this._showTransitOverview.bind(this));
 
+        // connect error handlers
+        route.connect('error', (route, msg) => this._showError(msg));
+        transitPlan.connect('error', (plan, msg) => this._showError(msg));
+    }
+
+    _showError(msg) {
+        this._instructionStack.visible_child = this._errorLabel;
+        this._errorLabel.label = msg;
     }
 
     _clearTransitOverview() {
