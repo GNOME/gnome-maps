@@ -24,7 +24,6 @@ const GLib = imports.gi.GLib;
 const Mainloop = imports.mainloop;
 const Soup = imports.gi.Soup;
 
-const Application = imports.application;
 const EPAF = imports.epaf;
 const HTTP = imports.http;
 const Route = imports.route;
@@ -86,19 +85,19 @@ var GraphHopper = class GraphHopper {
         this._queryGraphHopper(points, transportationType,
                                (result, exception) => {
             if (exception) {
-                Application.notificationManager.showMessage(_("Route request failed."));
                 Utils.debug(e);
                 if (this._query.latest)
                     this._query.latest.place = null;
                 else
                     this.route.reset();
+                this.route.error(_("Route request failed."));
             } else {
                 if (!result) {
-                    Application.notificationManager.showMessage(_("No route found."));
                     if (this._query.latest)
                         this._query.latest.place = null;
                     else
                         this.route.reset();
+                    this.route.error(_("No route found."));
                 } else {
                     let route = this._createRoute(result.paths[0]);
                     this.route.update(route);
