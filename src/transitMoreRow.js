@@ -44,4 +44,15 @@ var TransitMoreRow = GObject.registerClass({
     startLoading() {
         this._stack.visible_child_name = 'spinner';
     }
+
+    showNoMore() {
+        this.activatable = false;
+        this._label.get_style_context().add_class('dim-label');
+        this._stack.visible_child_name = 'label';
+
+        if (Application.routeQuery.arriveBy)
+            this._label.label = _("No earlier alternatives found.");
+        else
+            this._label.label = _("No later alternatives found.");
+    }
 });

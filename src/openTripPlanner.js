@@ -23,7 +23,6 @@ const Champlain = imports.gi.Champlain;
 const GLib = imports.gi.GLib;
 const Soup = imports.gi.Soup;
 
-const Application = imports.application;
 const EPAF = imports.epaf;
 const HTTP = imports.http;
 const Location = imports.location;
@@ -603,16 +602,12 @@ var OpenTripPlanner = class OpenTripPlanner {
     }
 
     /* Indicate that no routes where found, either shows the "No route found"
-     * notification, or in case of loading additional (later/earlier) results,
+     * message, or in case of loading additional (later/earlier) results,
      * indicate no such where found, so that the sidebar can disable the
      * "load more" functionallity as appropriate.
      */
     _noRouteFound() {
         if (this._extendPrevious) {
-            let message = this._query.arriveBy ?
-                          _("No earlier alternatives found.") :
-                          _("No later alternatives found.");
-            Application.notificationManager.showMessage(message);
             this._extendPrevious = false;
             this.plan.noMoreResults();
         } else {

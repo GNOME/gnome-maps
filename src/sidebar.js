@@ -235,10 +235,10 @@ var Sidebar = GObject.registerClass({
         });
 
         transitPlan.connect('no-more-results', () => {
-            // remove the "load more" row, keep the empty row since it gives the separator
+            // set the "load more" row to indicate no more results
             let numRows = this._transitOverviewListBox.get_children().length;
             let loadMoreRow = this._transitOverviewListBox.get_row_at_index(numRows - 2);
-            this._transitOverviewListBox.remove(loadMoreRow);
+            loadMoreRow.showNoMore();
         });
 
         this._query.connect('notify', () => {
