@@ -126,7 +126,8 @@ var ContextMenu = GObject.registerClass({
                 this._mapView.showPlace(place, false);
             } else {
                 let msg = _("Nothing found here!");
-                Application.notificationManager.showMessage(msg);
+
+                Utils.showDialog(msg, Gtk.MessageType.INFO, this._mainWindow);
             }
         });
     }
@@ -181,8 +182,8 @@ var ContextMenu = GObject.registerClass({
         dialog.connect('response', (dialog, response) => {
             dialog.destroy();
             if (response === OSMEditDialog.Response.UPLOADED) {
-                Application.notificationManager.showMessage(
-                    _("Location was added to the map, note that it may take a while before it shows on the map and in search results."));
+                Utils.showDialog(_("Location was added to the map, note that it may take a while before it shows on the map and in search results."),
+                                 Gtk.MessageType.INFO, this._mainWindow);
             }
         });
     }
