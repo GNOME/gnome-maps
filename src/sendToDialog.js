@@ -24,7 +24,6 @@ const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const GWeather = imports.gi.GWeather;
 
-const Application = imports.application;
 const Utils = imports.utils;
 
 const _WEATHER_APPID = 'org.gnome.Weather.Application';
@@ -173,8 +172,8 @@ var SendToDialog = GObject.registerClass({
                 ctx.set_screen(screen);
                 Gio.app_info_launch_default_for_uri(this._getOSMURI(), ctx);
             } catch(e) {
-                let msg = _("Failed to open URI");
-                Application.notificationManager.showMessage(msg);
+                Utils.showDialog(_("Failed to open URI"), Gtk.MessageType.ERROR,
+                                 this.get_toplevel());
                 Utils.debug('failed to open URI: %s'.format(e.message));
             }
         }
