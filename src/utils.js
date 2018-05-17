@@ -351,3 +351,16 @@ function isUsingHighContrastTheme() {
 
     return themeName === 'HighContrast' || themeName === 'HighContrastInverse';
 }
+
+function showDialog(msg, type, transientFor) {
+    let messageDialog =
+        new Gtk.MessageDialog({ transient_for: transientFor,
+                                destroy_with_parent: true,
+                                message_type: type,
+                                buttons: Gtk.ButtonsType.OK,
+                                modal: true,
+                                text: msg });
+
+    messageDialog.connect('response', () => messageDialog.destroy());
+    messageDialog.show_all();
+}
