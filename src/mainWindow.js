@@ -450,7 +450,7 @@ var MainWindow = GObject.registerClass({
             switch(Application.geoclue.state) {
             case Geoclue.State.FAILED:
                 message = _("Failed to connect to location service");
-                Application.notificationManager.showMessage(message);
+                Utils.showDialog(message, Gtk.MessageType.ERROR, this);
                 break;
 
             case Geoclue.State.DENIED:
