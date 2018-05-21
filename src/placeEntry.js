@@ -184,7 +184,7 @@ var PlaceEntry = GObject.registerClass({
                 this.place = new Place.Place({ location: location });
             } catch(e) {
                 let msg = _("Failed to parse Geo URI");
-                Application.notificationManager.showMessage(msg);
+                Utils.showDialog(msg, Gtk.MessageType.ERROR, this.get_toplevel());
             }
 
             return true;
