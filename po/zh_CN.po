@@ -3,34 +3,42 @@
 # This file is distributed under the same license as the gnome-maps package.
 # tuhaihe <1132321739qq@gmail.com>, 2013.
 # Tong Hui <tonghuix@gmail.com>, 2014.
-# Jeff Bai <jeffbai@aosc.xyz>, 2015.
 # YunQiang Su <wzssyqa@gmail.com>, 2015.
+# Jeff Bai <jeffbai@aosc.xyz>, 2015, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-11-10 21:17+0000\n"
-"PO-Revision-Date: 2015-11-14 20:30+0800\n"
-"Last-Translator: YunQiang Su <wzssyqa@gmail.com>\n"
+"POT-Creation-Date: 2016-04-13 08:46+0000\n"
+"PO-Revision-Date: 2016-04-13 14:06-0600\n"
+"Last-Translator: Jeff Bai <jeffbai@aosc.xyz>\n"
 "Language-Team: 汉语 <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Poedit 1.8.7.1\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../data/org.gnome.Maps.appdata.xml.in.h:1
+msgid "GNOME Maps"
+msgstr "GNOME 地图"
+
+#: ../data/org.gnome.Maps.appdata.xml.in.h:2
+msgid "Find places around the world"
+msgstr "查找世界各地的地点"
+
+#: ../data/org.gnome.Maps.appdata.xml.in.h:3
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
 "or locate a place to meet a friend."
 msgstr ""
-"地图应用帮您快速访问世界各地的地图。允许您快速定位到城市、街道或约会地点。"
+"地图应用帮你快速访问世界各地的地图。允许你快速定位到城市、街道或约会地点。"
 
-#: ../data/org.gnome.Maps.appdata.xml.in.h:2
+#: ../data/org.gnome.Maps.appdata.xml.in.h:4
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
@@ -40,7 +48,7 @@ msgstr ""
 #. Translators: Search is carried out on OpenStreetMap data using Nominatim.
 #. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
 #. your language to see what words you can use for the translated search.
-#: ../data/org.gnome.Maps.appdata.xml.in.h:6
+#: ../data/org.gnome.Maps.appdata.xml.in.h:8
 msgid ""
 "You can even search for specific types of locations, such as “Pubs near Main "
 "Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
@@ -50,7 +58,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:77 ../src/mainWindow.js:373
+#: ../src/application.js:85 ../src/mainWindow.js:420
 msgid "Maps"
 msgstr "地图"
 
@@ -62,59 +70,71 @@ msgstr "一款简单的地图应用程序"
 msgid "Maps;"
 msgstr "Maps;地图;"
 
+#: ../data/org.gnome.Maps.desktop.in.h:4
+msgid "Allows your location to be shown on the map."
+msgstr "允许将你的位置显示在地图上。"
+
 #: ../data/org.gnome.Maps.gschema.xml.h:1
+msgid "last viewed location"
+msgstr "最近查看的位置"
+
+#: ../data/org.gnome.Maps.gschema.xml.h:2
+msgid "Coordinates of last viewed location."
+msgstr "最近查看位置的座标。"
+
+#: ../data/org.gnome.Maps.gschema.xml.h:3
 msgid "Window size"
 msgstr "窗口大小"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:2
+#: ../data/org.gnome.Maps.gschema.xml.h:4
 msgid "Window size (width and height)."
-msgstr "窗口大小(宽度和高度)。"
+msgstr "窗口大小（宽度和高度）。"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:3
+#: ../data/org.gnome.Maps.gschema.xml.h:5
 msgid "Window position"
 msgstr "窗口位置"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:4
+#: ../data/org.gnome.Maps.gschema.xml.h:6
 msgid "Window position (X and Y)."
-msgstr "窗口位置(水平和竖直)。"
+msgstr "窗口位置（X 和 Y 座标）。"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:5
+#: ../data/org.gnome.Maps.gschema.xml.h:7
 msgid "Window maximized"
 msgstr "窗口最大化"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:6
+#: ../data/org.gnome.Maps.gschema.xml.h:8
 msgid "Window maximization state"
 msgstr "窗口最大化状态"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:7
+#: ../data/org.gnome.Maps.gschema.xml.h:9
 msgid "Maximum number of search results"
 msgstr "搜索结果的最大数量"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:8
+#: ../data/org.gnome.Maps.gschema.xml.h:10
 msgid "Maximum number of search results from geocode search."
 msgstr "来自 geocode 搜索结果的最大数量。"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:9
+#: ../data/org.gnome.Maps.gschema.xml.h:11
 msgid "Number of recent places to store"
 msgstr "存储最近地点的数量"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:10
+#: ../data/org.gnome.Maps.gschema.xml.h:12
 msgid "Number of recently visited places to store."
 msgstr "存储最近拜访过地点的数量。"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:11
+#: ../data/org.gnome.Maps.gschema.xml.h:13
 msgid "Number of recent routes to store"
 msgstr "存储最近路线的数量"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:12
+#: ../data/org.gnome.Maps.gschema.xml.h:14
 msgid "Number of recently visited routes to store."
 msgstr "存储最近使用过路线的数量。"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:13
+#: ../data/org.gnome.Maps.gschema.xml.h:15
 msgid "Facebook check-in privacy setting"
 msgstr "Facebook 签到隐私设置"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:14
+#: ../data/org.gnome.Maps.gschema.xml.h:16
 msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
@@ -122,11 +142,11 @@ msgstr ""
 "最近使用的 Facebook 签到隐私设置。可能的值有：EVERYONE, FRIENDS_OF_FRIENDS, "
 "ALL_FRIENDS 或 SELF。"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:15
+#: ../data/org.gnome.Maps.gschema.xml.h:17
 msgid "Foursquare check-in privacy setting"
 msgstr "Foursquare 签到隐私设置"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:16
+#: ../data/org.gnome.Maps.gschema.xml.h:18
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
@@ -134,11 +154,11 @@ msgstr ""
 "最近使用的 Foursquare 签到隐私设置。可能的值有：public, followers 或 "
 "private。"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:17
+#: ../data/org.gnome.Maps.gschema.xml.h:19
 msgid "Foursquare check-in Facebook broadcasting"
 msgstr "Foursquare 签到同步到 Facebook"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:18
+#: ../data/org.gnome.Maps.gschema.xml.h:20
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
@@ -146,11 +166,11 @@ msgstr ""
 "表示 Foursquare 是否把签到当成消息发布到 Foursquare 已经关联的 Facebook 帐号"
 "上。"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:19
+#: ../data/org.gnome.Maps.gschema.xml.h:21
 msgid "Foursquare check-in Twitter broadcasting"
 msgstr "Foursquare 签到同步到 Twitter"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:20
+#: ../data/org.gnome.Maps.gschema.xml.h:22
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
@@ -158,11 +178,27 @@ msgstr ""
 "表示 Foursquare 是否把签到当成推文发布到 Foursquare 已经关联的 Twitter 帐号"
 "上。"
 
+#: ../data/org.gnome.Maps.gschema.xml.h:23
+msgid "OpenStreetMap username or e-mail address"
+msgstr "OpenStreetMap 用户名或电子邮件地址"
+
+#: ../data/org.gnome.Maps.gschema.xml.h:24
+msgid "Indicates if the user has signed in to edit OpenStreetMap data."
+msgstr "显示用户是否已登录以更改 OpenStreetMap 数据。"
+
 #: ../data/ui/app-menu.ui.h:1
+msgid "Set up OpenStreetMap Account"
+msgstr "设置 OpenStreetMap 帐号。"
+
+#: ../data/ui/app-menu.ui.h:2
+msgid "_Keyboard Shortcuts"
+msgstr "键盘快捷键(_K)"
+
+#: ../data/ui/app-menu.ui.h:3
 msgid "About"
 msgstr "关于"
 
-#: ../data/ui/app-menu.ui.h:2
+#: ../data/ui/app-menu.ui.h:4
 msgid "Quit"
 msgstr "退出"
 
@@ -178,7 +214,8 @@ msgstr "发到 Facebook"
 msgid "Post on Twitter"
 msgstr "发到 Twitter"
 
-#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/send-to-dialog.ui.h:2
+#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/export-view-dialog.ui.h:2
+#: ../data/ui/send-to-dialog.ui.h:2 ../data/ui/shape-layer-file-chooser.ui.h:3
 msgid "_Cancel"
 msgstr "取消(_C)"
 
@@ -223,9 +260,88 @@ msgstr "这是哪里？"
 msgid "Copy Location"
 msgstr "复制位置信息"
 
+#: ../data/ui/context-menu.ui.h:3
+msgid "Export As Image"
+msgstr "导出为图像"
+
+#: ../data/ui/context-menu.ui.h:4
+msgid "Add to OpenStreetMap"
+msgstr "添加到 OpenStreetMap"
+
+#: ../data/ui/export-view-dialog.ui.h:1
+msgid "Export view"
+msgstr "导出视图"
+
+#: ../data/ui/export-view-dialog.ui.h:3
+msgid "_Export"
+msgstr "导出(_E)"
+
+#: ../data/ui/export-view-dialog.ui.h:4
+msgid "Include route and markers"
+msgstr "包含路线和标记"
+
+#: ../data/ui/help-overlay.ui.h:1
+msgctxt "shortcut window"
+msgid "General"
+msgstr "常规"
+
+#: ../data/ui/help-overlay.ui.h:2
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "显示快捷键"
+
+#: ../data/ui/help-overlay.ui.h:3
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "搜索"
+
+#: ../data/ui/help-overlay.ui.h:4
+msgctxt "shortcut window"
+msgid "Toggle route planner"
+msgstr "开关路线规划器"
+
+#: ../data/ui/help-overlay.ui.h:5
+msgctxt "shortcut window"
+msgid "Print route"
+msgstr "打印路线"
+
+#: ../data/ui/help-overlay.ui.h:6
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "退出"
+
+#: ../data/ui/help-overlay.ui.h:7
+msgctxt "shortcut window"
+msgid "Map View"
+msgstr "地图视图"
+
+#: ../data/ui/help-overlay.ui.h:8
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr "放大"
+
+#: ../data/ui/help-overlay.ui.h:9
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr "缩小"
+
+#: ../data/ui/help-overlay.ui.h:10
+msgctxt "shortcut window"
+msgid "Toggle scale"
+msgstr "开关缩放"
+
+#: ../data/ui/help-overlay.ui.h:11
+msgctxt "shortcut window"
+msgid "Go to current location"
+msgstr "前往当前位置"
+
+#: ../data/ui/layers-popover.ui.h:1
+msgid "Load Map Layer"
+msgstr "载入地图图层"
+
 #: ../data/ui/location-service-notification.ui.h:1
 msgid "Turn on location services to find your location"
-msgstr "开启位置服务来获取您的位置"
+msgstr "开启位置服务来获取你的位置"
 
 #: ../data/ui/location-service-notification.ui.h:2
 msgid "Location Settings"
@@ -248,18 +364,22 @@ msgid "Toggle favorites"
 msgstr "切换喜爱"
 
 #: ../data/ui/main-window.ui.h:6
+msgid "Print Route"
+msgstr "打印路线"
+
+#: ../data/ui/main-window.ui.h:7
 msgid "Maps is offline!"
 msgstr "地图应用处于离线！"
 
-#: ../data/ui/main-window.ui.h:7
+#: ../data/ui/main-window.ui.h:8
 msgid ""
 "Maps need an active internet connection to function properly, but one can't "
 "be found."
 msgstr "地图应用需要有效的网络连接才能正常运行，但是未发现有效连接。"
 
-#: ../data/ui/main-window.ui.h:8
+#: ../data/ui/main-window.ui.h:9
 msgid "Check your connection and proxy settings."
-msgstr "请检查您的网络连接和代理设置。"
+msgstr "请检查你的网络连接和代理设置。"
 
 #: ../data/ui/map-bubble.ui.h:1
 msgid "Add to new route"
@@ -277,17 +397,153 @@ msgstr "标记为喜爱"
 msgid "Check in here"
 msgstr "在这里签到"
 
-#: ../data/ui/search-popup.ui.h:1
+#: ../data/ui/osm-account-dialog.ui.h:1
+msgid "OpenStreetMap Account"
+msgstr "OpenStreetMap 帐号"
+
+#: ../data/ui/osm-account-dialog.ui.h:2
+msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
+msgstr "<span weight=\"bold\" size=\"x-large\">登录以编辑地图</span>"
+
+#: ../data/ui/osm-account-dialog.ui.h:3
+msgid ""
+"Help to improve the map, using an\n"
+"OpenStreetMap account."
+msgstr "登录到 OpenStreetMap 帐号以帮助我们改进地图。"
+
+#: ../data/ui/osm-account-dialog.ui.h:5
+msgid "Email"
+msgstr "电子邮件"
+
+#: ../data/ui/osm-account-dialog.ui.h:6
+msgid "Password"
+msgstr "密码"
+
+#: ../data/ui/osm-account-dialog.ui.h:7
+msgid "Sign In"
+msgstr "登录"
+
+#: ../data/ui/osm-account-dialog.ui.h:8
+msgid "Don't have an account?"
+msgstr "没有帐号？"
+
+#. The label should contain the link to the OSM reset password page with a translated title
+#: ../data/ui/osm-account-dialog.ui.h:10
+msgid ""
+"Sorry, that didn't work. Please try again, or visit\n"
+"<a href=\"https://www.openstreetmap.org/user/forgot-password"
+"\">OpenStreetMap</a> to reset your password."
+msgstr ""
+"抱歉，登录信息无效。请重试，或访问\n"
+"<a href=\"https://www.openstreetmap.org/user/forgot-password"
+"\">OpenStreetMap</a> 以重置你的密码。"
+
+#: ../data/ui/osm-account-dialog.ui.h:12
+msgid "The verification code didn't match, please try again."
+msgstr "验证码不匹配，请重试。"
+
+#: ../data/ui/osm-account-dialog.ui.h:13
+msgid "Enter verification code shown above"
+msgstr "输入上面显示的验证码"
+
+#: ../data/ui/osm-account-dialog.ui.h:14
+msgid "Verify"
+msgstr "验证"
+
+#: ../data/ui/osm-account-dialog.ui.h:15
+msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
+msgstr "<span weight=\"bold\" size=\"x-large\">已登录</span>"
+
+#: ../data/ui/osm-account-dialog.ui.h:16
+msgid "Your OpenStreetMap account is active."
+msgstr "你的 OpenStreetMap 帐号处于活动状态。"
+
+#: ../data/ui/osm-account-dialog.ui.h:17
+msgid "Sign Out"
+msgstr "注销"
+
+#: ../data/ui/osm-edit-address.ui.h:1
+msgid "Street"
+msgstr "街道"
+
+#: ../data/ui/osm-edit-address.ui.h:2
+msgid "House number"
+msgstr "固话号码"
+
+#: ../data/ui/osm-edit-address.ui.h:3
+msgid "Postal code"
+msgstr "邮政编码"
+
+#. This is the place name as it would be written in a postal address (typically coming after the postal code)
+#: ../data/ui/osm-edit-address.ui.h:5
+msgid "City"
+msgstr "城市"
+
+#: ../data/ui/osm-edit-dialog.ui.h:1
+msgid "Type"
+msgstr "类型"
+
+#: ../data/ui/osm-edit-dialog.ui.h:2
+msgid "None"
+msgstr "无"
+
+#: ../data/ui/osm-edit-dialog.ui.h:3
+msgid "Add Field"
+msgstr "添加输入框"
+
+#: ../data/ui/osm-edit-dialog.ui.h:4
+msgid "Comment"
+msgstr "备注"
+
+#: ../data/ui/osm-edit-dialog.ui.h:5
+msgid ""
+"Map changes will be visible on all maps that use\n"
+"    OpenStreetMap data."
+msgstr "地图更改将在所有使用 OpenStreetMap 数据的地图上可见。"
+
+#: ../data/ui/osm-edit-dialog.ui.h:7
+msgid "Recently Used"
+msgstr "最近使用"
+
+#: ../data/ui/osm-edit-dialog.ui.h:8
+msgid "Edit on OpenStreetMap"
+msgstr "于 OpenStreetMap 更改"
+
+#: ../data/ui/osm-edit-dialog.ui.h:9
+msgid "Cancel"
+msgstr "取消"
+
+#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:470
+msgid "Next"
+msgstr "下一步"
+
+#: ../data/ui/place-bubble.ui.h:1
+msgid "Show more information"
+msgstr "显示更多信息"
+
+#: ../data/ui/place-popover.ui.h:1
 msgid "Press enter to search"
 msgstr "按下 Enter 开始搜索"
+
+#: ../data/ui/route-entry.ui.h:1
+msgid "Drag to change order of the route"
+msgstr "拖动以改变路线顺序"
 
 #: ../data/ui/send-to-dialog.ui.h:1
 msgid "Open location"
 msgstr "打开位置"
 
-#: ../data/ui/send-to-dialog.ui.h:3
+#: ../data/ui/send-to-dialog.ui.h:3 ../data/ui/shape-layer-file-chooser.ui.h:2
 msgid "_Open"
 msgstr "打开(_O)"
+
+#: ../data/ui/shape-layer-file-chooser.ui.h:1
+msgid "Open Layer"
+msgstr "打开图层"
+
+#: ../data/ui/shape-layer-row.ui.h:1
+msgid "Toggle visible"
+msgstr "切换可见性"
 
 #: ../data/ui/sidebar.ui.h:1
 msgid "Route search by GraphHopper"
@@ -297,7 +553,7 @@ msgstr "通过 GraphHopper 搜索路线"
 msgid "Show more results"
 msgstr "显示更多结果"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:209
+#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:120
 msgid "Current location"
 msgstr "当前位置"
 
@@ -307,12 +563,32 @@ msgstr "当前位置"
 msgid "Accuracy: %s"
 msgstr "位置精度：%s"
 
+#: ../data/ui/zoom-in-notification.ui.h:1
+msgid "Zoom in to add location!"
+msgstr "放大以添加位置！"
+
+#: ../data/ui/zoom-in-notification.ui.h:2
+msgid "OK"
+msgstr "确定"
+
 #: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
 #: ../lib/maps-file-tile-source.c:459
 msgid "Failed to find tile structure in directory"
 msgstr "未在目录中找到地图区块结构"
 
-#: ../src/application.js:86
+#: ../lib/maps-osm.c:56
+msgid "Failed to parse XML document"
+msgstr "解析 XML 文档失败"
+
+#: ../lib/maps-osm.c:252 ../lib/maps-osm.c:405
+msgid "Missing required attributes"
+msgstr "缺少必须的属性"
+
+#: ../lib/maps-osm.c:453
+msgid "Could not find OSM element"
+msgstr "无法找到 OSM 元素"
+
+#: ../src/application.js:101
 msgid "A path to a local tiles directory structure"
 msgstr "指向本地区块目录结构的路径"
 
@@ -355,6 +631,7 @@ msgid "Write an optional message to check in to %s."
 msgstr "编写附加信息来签到 %s 。"
 
 #: ../src/checkInDialog.js:289 ../src/checkIn.js:153
+#: ../src/osmEditDialog.js:507
 msgid "An error has occurred"
 msgstr "发生错误"
 
@@ -374,71 +651,285 @@ msgid ""
 "this account"
 msgstr "证书已过期，请打开在线账户登录并启用此帐户"
 
-#: ../src/mainWindow.js:321
+#: ../src/contextMenu.js:97
+msgid "Route from here"
+msgstr "从此处计算路线"
+
+#: ../src/contextMenu.js:99
+msgid "Add destination"
+msgstr "添加目的地"
+
+#: ../src/contextMenu.js:101
+msgid "Route to here"
+msgstr "计算到此处的路线"
+
+#: ../src/contextMenu.js:130
+msgid "Nothing found here!"
+msgstr "未找到结果！"
+
+#: ../src/contextMenu.js:187
+msgid ""
+"Location was added to the map, note that it may take a while before it shows "
+"on the map and in search results."
+msgstr ""
+"此位置已添加到地图，请注意在此地点显示地图上和搜索结果中之前需要一段时间。"
+
+#: ../src/exportViewDialog.js:156
+msgid "Filesystem is read only"
+msgstr "只读文件系统"
+
+#: ../src/exportViewDialog.js:158
+msgid "You do not have permission to save there"
+msgstr "你没有在此处保存的权限"
+
+#: ../src/exportViewDialog.js:160
+msgid "The directory does not exists"
+msgstr "目录不存在"
+
+#: ../src/exportViewDialog.js:162
+msgid "No filename specified"
+msgstr "未指定文件名"
+
+#: ../src/exportViewDialog.js:170
+msgid "Unable to export view"
+msgstr "无法导出视图"
+
+#: ../src/geoJSONSource.js:98
+msgid "invalid coordinate"
+msgstr "无效坐标"
+
+#: ../src/geoJSONSource.js:149 ../src/geoJSONSource.js:189
+#: ../src/geoJSONSource.js:204
+msgid "parse error"
+msgstr "解析错误"
+
+#: ../src/geoJSONSource.js:183
+msgid "unknown geometry"
+msgstr "未知几何方位"
+
+#: ../src/mainWindow.js:366
 msgid "Failed to connect to location service"
 msgstr "无法连接到位置服务"
 
-#: ../src/mainWindow.js:326
-msgid "Position not found"
-msgstr "没有找到位置。"
-
-#: ../src/mainWindow.js:371
+#: ../src/mainWindow.js:418
 msgid "translator-credits"
 msgstr ""
 "tuhaihe <1132321739qq@gmail.com>, 2013\n"
 "Tong Hui <tonghuix@gmail.com>, 2014\n"
-"Deane Chen <wsxy162@gmail.com>, 2015"
+"Deane Chen <wsxy162@gmail.com>, 2015\n"
+"Jeff Bai <jeffbai@aosc.xyz>, 2016"
 
-#: ../src/mainWindow.js:374
+#: ../src/mainWindow.js:421
 msgid "A map application for GNOME"
 msgstr "一款 GNOME 地图应用程序"
 
-#: ../src/placeBubble.js:101
-#, javascript-format
-msgid "Postal code: %s"
-msgstr "邮政编码：%s"
+#: ../src/mapView.js:254
+msgid "File type is not supported"
+msgstr "不支持此文件类型"
 
-#: ../src/placeBubble.js:103
-#, javascript-format
-msgid "Country code: %s"
-msgstr "国家代码：%s"
+#: ../src/mapView.js:261
+msgid "Failed to open layer"
+msgstr "打开图层失败"
 
-#: ../src/placeBubble.js:112
-#, javascript-format
-msgid "Population: %s"
-msgstr "人口总数：%s"
+#: ../src/mapView.js:297
+msgid "Failed to open GeoURI"
+msgstr "打开 GeoURI 失败"
 
-#: ../src/placeBubble.js:115
-#, javascript-format
-msgid "Opening hours: %s"
-msgstr "开始时间：%s"
+#. setting the status in session.cancel_message still seems
+#. to always give status IO_ERROR
+#: ../src/osmConnection.js:443
+msgid "Incorrect user name or password"
+msgstr "用户名或密码有误"
 
-#: ../src/placeBubble.js:120
+#: ../src/osmConnection.js:445
+msgid "Success"
+msgstr "成功"
+
+#: ../src/osmConnection.js:447
+msgid "Bad request"
+msgstr "无效请求"
+
+#: ../src/osmConnection.js:449
+msgid "Object not found"
+msgstr "未找到对象。"
+
+#: ../src/osmConnection.js:451
+msgid "Conflict, someone else has just modified the object"
+msgstr "冲突，其他人刚刚修改了此对象"
+
+#: ../src/osmConnection.js:453
+msgid "Object has been deleted"
+msgstr "对象已被删除"
+
+#: ../src/osmConnection.js:455
+msgid "Way or relation refers to non-existing children"
+msgstr "路径或关联指向不存在的子项。"
+
+#: ../src/osmEditDialog.js:103
+msgid "Name"
+msgstr "名称"
+
+#: ../src/osmEditDialog.js:106
+msgid "The official name. This is typically what appears on signs."
+msgstr "官方名称。一般为路牌上显示的名称。"
+
+#: ../src/osmEditDialog.js:109
+msgid "Address"
+msgstr "地址"
+
+#: ../src/osmEditDialog.js:117 ../src/placeBubble.js:165
+msgid "Website"
+msgstr "网站"
+
+#: ../src/osmEditDialog.js:120
+msgid ""
+"The official website. Try to use the most basic form of a URL i.e. http://"
+"example.com instead of http://example.com/index.html."
+msgstr ""
+"官方网站。请尝试使用 URI 的最简形式，比如 http://example.com，而非 http://"
+"example.com/index.html。"
+
+#: ../src/osmEditDialog.js:125
+msgid "Phone"
+msgstr "电话"
+
+#: ../src/osmEditDialog.js:129
+msgid ""
+"Phone number. Use the international format, starting with a + sign. Beware "
+"of local privacy laws, especially for private phone numbers."
+msgstr ""
+"电话号码。请使用国际格式并以 + 符号开头。请注意遵守隐私法律，尤其是私人号码。"
+
+#: ../src/osmEditDialog.js:134 ../src/placeBubble.js:171
 msgid "Wikipedia"
 msgstr "维基百科"
 
-#: ../src/placeBubble.js:125
-#, javascript-format
-msgid "Wheelchair access: %s"
-msgstr "轮椅通道：%s"
+#: ../src/osmEditDialog.js:138
+msgid ""
+"The format used should include the language code and the article title like "
+"”en:Article title”."
+msgstr "格式应包含语言代号和文章标题，例如“zh:文章标题”。"
 
-#: ../src/placeEntry.js:215
+#: ../src/osmEditDialog.js:142
+msgid "Opening hours"
+msgstr "营业时间"
+
+#: ../src/osmEditDialog.js:147
+msgid "See the link in the label for help on format."
+msgstr "查看标签上的链接以获取关于格式的帮助。"
+
+#: ../src/osmEditDialog.js:150
+msgid "Population"
+msgstr "人口"
+
+#: ../src/osmEditDialog.js:155
+msgid "Altitude"
+msgstr "海拔高度"
+
+#: ../src/osmEditDialog.js:158
+msgid "Elevation (height above sea level) of a point in metres."
+msgstr "某点的海拔高度（海平面之上的高度），按米计。"
+
+#: ../src/osmEditDialog.js:161
+msgid "Wheelchair access"
+msgstr "轮椅通道"
+
+#: ../src/osmEditDialog.js:164 ../src/osmEditDialog.js:173
+msgid "Yes"
+msgstr "有"
+
+#: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
+msgid "No"
+msgstr "无"
+
+#: ../src/osmEditDialog.js:166
+msgid "Limited"
+msgstr "受限"
+
+#: ../src/osmEditDialog.js:167
+msgid "Designated"
+msgstr "专用"
+
+#: ../src/osmEditDialog.js:170
+msgid "Internet access"
+msgstr "互联网连接"
+
+#. Translators:
+#. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
+#.
+#: ../src/osmEditDialog.js:175 ../src/translations.js:341
+msgid "Wi-Fi"
+msgstr "Wi-Fi"
+
+#: ../src/osmEditDialog.js:176
+msgid "Wired"
+msgstr "有线网络"
+
+#: ../src/osmEditDialog.js:177
+msgid "Terminal"
+msgstr "终端"
+
+#: ../src/osmEditDialog.js:178
+msgid "Service"
+msgstr "服务台"
+
+#: ../src/osmEditDialog.js:287
+msgctxt "dialog title"
+msgid "Add to OpenStreetMap"
+msgstr "添加到 OpenStreetMap"
+
+#: ../src/osmEditDialog.js:338
+msgid "Select Type"
+msgstr "选择类型"
+
+#: ../src/osmEditDialog.js:456
+msgid "Done"
+msgstr "完成"
+
+#: ../src/placeBubble.js:128
+msgid "Population:"
+msgstr "人口："
+
+#: ../src/placeBubble.js:134
+msgid "Altitude:"
+msgstr "海拔："
+
+#: ../src/placeBubble.js:139
+msgid "Opening hours:"
+msgstr "营业时间："
+
+#: ../src/placeBubble.js:144
+msgid "Internet access:"
+msgstr "互联网连接："
+
+#: ../src/placeBubble.js:149
+msgid "Wheelchair access:"
+msgstr "轮椅通道："
+
+#: ../src/placeBubble.js:155 ../src/placeBubble.js:159
+msgid "Phone:"
+msgstr "电话："
+
+#: ../src/placeEntry.js:190
 msgid "Failed to parse Geo URI"
 msgstr "解析 Geo URI 失败"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: ../src/place.js:121
+#. Translators:
+#. * There is public internet access but the particular kind is unknown.
+#.
+#: ../src/place.js:178 ../src/translations.js:330
 msgid "yes"
-msgstr "是"
+msgstr "有"
 
 #. Translators:
 #. * This means wheelchairs have partial access (e.g some areas
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:128
+#: ../src/place.js:185
 msgid "limited"
 msgstr "有限制"
 
@@ -446,33 +937,62 @@ msgstr "有限制"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: ../src/place.js:134
+#. Translators:
+#. * no internet access is offered in a place where
+#. * someone might expect it.
+#.
+#: ../src/place.js:191 ../src/translations.js:336
 msgid "no"
-msgstr "否"
+msgstr "无"
 
 #. Translators:
 #. * This means that the way or area is designated or purpose built
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:141
+#: ../src/place.js:198
 msgid "designated"
 msgstr "无障碍设施"
 
+#: ../src/printLayout.js:243
+#, javascript-format
+msgid "From %s to %s"
+msgstr "从 %s 到 %s"
+
+#: ../src/printOperation.js:47
+msgid "Loading map tiles for printing"
+msgstr "正在载入地图标题以供打印"
+
+#: ../src/printOperation.js:48
+msgid "You can abort printing if this takes too long"
+msgstr "如耗时过长你可以中止打印"
+
+#: ../src/printOperation.js:50
+msgid "Abort printing"
+msgstr "中止打印"
+
 #: ../src/routeService.js:90
 msgid "No route found."
-msgstr "没有找到路线。"
+msgstr "未找到路线。"
 
-#: ../src/routeService.js:97
+#: ../src/routeService.js:101
 msgid "Route request failed."
 msgstr "路线请求失败。"
 
-#: ../src/routeService.js:168
+#: ../src/routeService.js:178
 msgid "Start!"
 msgstr "开始!"
 
+#: ../src/sendToDialog.js:179
+msgid "Failed to open URI"
+msgstr "打开 URI 失败"
+
+#: ../src/shapeLayer.js:93
+msgid "failed to load file"
+msgstr "载入文件失败"
+
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:230
+#: ../src/sidebar.js:208
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "估计时间：%s"
@@ -535,7 +1055,7 @@ msgstr "%s %s"
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s"
-msgstr "%s,%s"
+msgstr "%s，%s"
 
 #. Translators:
 #. * This represents a format string consisting of three day interval
@@ -550,7 +1070,7 @@ msgstr "%s,%s"
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s,%s"
-msgstr "%s,%s,%s"
+msgstr "%s，%s，%s"
 
 #: ../src/translations.js:186
 msgid "every day"
@@ -563,7 +1083,7 @@ msgstr "每天"
 #, javascript-format
 msgctxt "day range"
 msgid "%s-%s"
-msgstr "%s-%s"
+msgstr "%s 至 %s"
 
 #: ../src/translations.js:209
 msgid "public holidays"
@@ -604,75 +1124,81 @@ msgctxt "time interval"
 msgid "%s-%s"
 msgstr "%s-%s"
 
+#. Translators:
+#. * This means a a place where you can plug in your laptop with ethernet.
+#.
+#: ../src/translations.js:346
+msgid "wired"
+msgstr "有线网络"
+
+#. Translators:
+#. * Like internet cafe or library where the computer is given.
+#.
+#: ../src/translations.js:351
+msgid "terminal"
+msgstr "终端"
+
+#. Translators:
+#. * This means there is personnel which helps you in case of problems.
+#.
+#: ../src/translations.js:356
+msgid "service"
+msgstr "服务台"
+
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:256
+#: ../src/utils.js:231
 msgid "Unknown"
 msgstr "未知"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:259
+#: ../src/utils.js:234
 msgid "Exact"
 msgstr "准确"
 
-#: ../src/utils.js:354
+#: ../src/utils.js:337
 #, javascript-format
 msgid "%f h"
 msgstr "%f 小时"
 
-#: ../src/utils.js:356
+#: ../src/utils.js:339
 #, javascript-format
 msgid "%f min"
 msgstr "%f 分钟"
 
-#: ../src/utils.js:358
+#: ../src/utils.js:341
 #, javascript-format
 msgid "%f s"
 msgstr "%f 秒"
 
 #. Translators: This is a distance measured in kilometers
-#: ../src/utils.js:369
+#: ../src/utils.js:352
 #, javascript-format
 msgid "%f km"
 msgstr "%f 千米"
 
 #. Translators: This is a distance measured in meters
-#: ../src/utils.js:372
+#: ../src/utils.js:355
 #, javascript-format
 msgid "%f m"
 msgstr "%f 米"
 
 #. Translators: This is a distance measured in miles
-#: ../src/utils.js:380
+#: ../src/utils.js:363
 #, javascript-format
 msgid "%f mi"
 msgstr "%f 英里"
 
 #. Translators: This is a distance measured in feet
-#: ../src/utils.js:383
+#: ../src/utils.js:366
 #, javascript-format
 msgid "%f ft"
 msgstr "%f 英尺"
 
-#~ msgid "invalid coordinate"
-#~ msgstr "无效坐标"
-
-#~ msgid "parse error"
-#~ msgstr "解析错误"
-
-#~ msgid "unknown geometry"
-#~ msgstr "未知几何方位"
-
-#~ msgid "failed to load file"
-#~ msgstr "载入文件失败"
+#~ msgid "Country code: %s"
+#~ msgstr "国家代码：%s"
 
 #~ msgid "Failed to parse GeoJSON file"
 #~ msgstr "解析 GeoJSON 文件失败"
-
-#~ msgid "Failed to open GeoURI"
-#~ msgstr "打开 GeoURI 失败"
-
-#~ msgid "Failed to open URI"
-#~ msgstr "打开 URI 失败"
 
 #~ msgid "Last known location and accuracy"
 #~ msgstr "最近已知的位置和精度"
@@ -682,14 +1208,8 @@ msgstr "%f 英尺"
 #~ "meters)."
 #~ msgstr "最近已知的位置(经纬度)和精度(米)。"
 
-#~ msgid "Description of last known location"
-#~ msgstr "最近已知的位置描述"
-
 #~ msgid "Description of last known location of user."
 #~ msgstr "对最近已知的用户位置的描述。"
-
-#~ msgid "User set last known location"
-#~ msgstr "由用户设置 最近已知的位置"
 
 #~ msgid "Whether the last known location was set manually by the user."
 #~ msgstr "最近已知的位置 是否是用户手动设置的。"
@@ -708,9 +1228,6 @@ msgstr "%f 英尺"
 
 #~ msgid "From"
 #~ msgstr "从"
-
-#~ msgid "Street"
-#~ msgstr "街道"
 
 #~ msgid "Satellite"
 #~ msgstr "卫星"
