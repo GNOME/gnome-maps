@@ -142,6 +142,9 @@ var MapView = GObject.registerClass({
         let mapType = params.mapType || MapType.STREET;
         delete params.mapType;
 
+        this._mainWindow = params.mainWindow;
+        delete params.mainWindow;
+
         this._storeId = 0;
         this.view = this._initView();
         this._initLayers();
@@ -326,7 +329,7 @@ var MapView = GObject.registerClass({
                 this.setMapType(MapType.STREET);
                 Application.application.local_tile_path = false;
                 Application.application.notify('connected');
-                Application.notificationManager.showMessage(e.message);
+                Utils.showDialog(e.message, Gtk.MessageType.ERROR, this._mainWindow);
             }
         }
 
@@ -355,7 +358,7 @@ var MapView = GObject.registerClass({
             } catch (e) {
                 Utils.debug(e);
                 let msg = _("Failed to open layer");
-                Application.notificationManager.showMessage(msg);
+                Utils.showDialog(msg, Gtk.MessageType.ERROR, this._mainWindow);
                 ret = false;
             }
         });
@@ -391,7 +394,7 @@ var MapView = GObject.registerClass({
             marker.goToAndSelect(true);
         } catch(e) {
             let msg = _("Failed to open GeoURI");
-            Application.notificationManager.showMessage(msg);
+            Utils.showDialog(msg, Gtk.MessageType.ERROR, this._mainWindow);
             Utils.debug("failed to open GeoURI: %s".format(e.message));
         }
     }
