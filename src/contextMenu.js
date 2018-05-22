@@ -34,7 +34,7 @@ const OSMEdit = imports.osmEdit;
 const OSMEditDialog = imports.osmEditDialog;
 const Place = imports.place;
 const Utils = imports.utils;
-const ZoomInNotification = imports.zoomInNotification;
+const ZoomInDialog = imports.zoomInDialog;
 
 var ContextMenu = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/context-menu.ui',
@@ -166,11 +166,15 @@ var ContextMenu = GObject.registerClass({
         let osmEdit = Application.osmEdit;
 
         if (this._mapView.view.get_zoom_level() < OSMEdit.MIN_ADD_LOCATION_ZOOM_LEVEL) {
-            let zoomInNotification =
-                new ZoomInNotification.ZoomInNotification({ longitude: this._longitude,
-                                                            latitude: this._latitude,
-                                                            view: this._mapView.view });
-            Application.notificationManager.showNotification(zoomInNotification);
+            let zoomInDialog =
+                new ZoomInDialog.ZoomInDialog({ longitude: this._longitude,
+                                                latitude: this._latitude,
+                                                view: this._mapView.view,
+                                                transient_for: this._mainWindow,
+                                                modal: true });
+
+            zoomInDialog.connect('response', () => zoomInDialog.destroy());
+            zoomInDialog.show_all();
             return;
         }
 
