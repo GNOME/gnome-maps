@@ -35,7 +35,7 @@ const ContextMenu = imports.contextMenu;
 const FavoritesPopover = imports.favoritesPopover;
 const Geoclue = imports.geoclue;
 const LayersPopover = imports.layersPopover;
-const LocationServiceNotification = imports.locationServiceNotification;
+const LocationServiceDialog = imports.locationServiceDialog;
 const MapView = imports.mapView;
 const PlaceEntry = imports.placeEntry;
 const PlaceStore = imports.placeStore;
@@ -430,15 +430,6 @@ var MainWindow = GObject.registerClass({
         return false;
     }
 
-    _getLocationServiceNotification() {
-        if (!this._locationServiceNotification) {
-            this._locationServiceNotification =
-                new LocationServiceNotification.LocationServiceNotification();
-        }
-
-        return this._locationServiceNotification;
-    }
-
     _onGotoUserLocationActivate() {
         let message;
 
@@ -455,8 +446,13 @@ var MainWindow = GObject.registerClass({
                 break;
 
             case Geoclue.State.DENIED:
-                let notification = this._getLocationServiceNotification();
-                Application.notificationManager.showNotification(notification);
+                let dialog = new LocationServiceDialog.LocationServiceDialog({
+                    visible: true,
+                    transient_for: this,
+                    modal: true });
+
+                dialog.connect('response', () => dialog.destroy());
+                dialog.show_all();
                 break;
 
             default:
