@@ -34,7 +34,6 @@ const Geoclue = imports.geoclue;
 const GeocodeService = imports.geocodeService;
 const MainWindow = imports.mainWindow;
 const Maps = imports.gi.GnomeMaps;
-const NotificationManager = imports.notificationManager;
 const OSMEdit = imports.osmEdit;
 const OSMTypeSearchEntry = imports.osmTypeSearchEntry;
 const PlaceStore = imports.placeStore;
@@ -47,7 +46,6 @@ const Utils = imports.utils;
 var application = null;
 var settings = null;
 var placeStore = null;
-var notificationManager = null;
 var routingDelegator = null;
 var geoclue = null;
 var geocodeService = null;
@@ -257,7 +255,6 @@ var Application = GObject.registerClass({
             return;
 
         let overlay = new Gtk.Overlay({ visible: true, can_focus: false });
-        notificationManager = new NotificationManager.NotificationManager(overlay);
         this._mainWindow = new MainWindow.MainWindow({ application: this,
                                                        overlay: overlay });
         this._mainWindow.connect('destroy', () => this._onWindowDestroy());
