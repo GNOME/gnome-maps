@@ -1,13 +1,16 @@
 {
-    "app-id": "org.gnome.Maps",
-    "runtime": "org.gnome.Platform",
-    "runtime-version": "master",
-    "sdk": "org.gnome.Sdk",
-    "command": "gnome-maps",
-    "tags": ["devel"],
-    "desktop-file-name-prefix": "(Development) ",
-    "finish-args": [
-        "--share=ipc", "--socket=x11",
+    "app-id" : "org.gnome.Maps",
+    "runtime" : "org.gnome.Platform",
+    "runtime-version" : "master",
+    "sdk" : "org.gnome.Sdk",
+    "command" : "gnome-maps",
+    "tags" : [
+        "devel"
+    ],
+    "desktop-file-name-prefix" : "(Development) ",
+    "finish-args" : [
+        "--share=ipc",
+        "--socket=x11",
         "--socket=wayland",
         "--device=dri",
         "--share=network",
@@ -19,93 +22,114 @@
         "--system-talk-name=org.freedesktop.NetworkManager",
         "--talk-name=org.freedesktop.secrets",
         "--system-talk-name=org.freedesktop.GeoClue2",
-        "--filesystem=xdg-run/dconf", "--filesystem=~/.config/dconf:ro",
-        "--talk-name=ca.desrt.dconf", "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
-     ],
+        "--filesystem=xdg-run/dconf",
+        "--filesystem=~/.config/dconf:ro",
+        "--talk-name=ca.desrt.dconf",
+        "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
+    ],
     "build-options" : {
-        "cflags": "-O2 -g",
-        "cxxflags": "-O2 -g",
-        "env": {
-            "V": "1"
+        "cflags" : "-O2 -g",
+        "cxxflags" : "-O2 -g",
+        "env" : {
+            "V" : "1"
         }
     },
-    "cleanup": ["/include", "/lib/pkgconfig",
-                "/share/pkgconfig", "/share/aclocal",
-                "/man", "/share/man", "/share/gtk-doc",
-                "/share/vala",
-                "*.la", "*.a"],
-    "modules": [
+    "cleanup" : [
+        "/include",
+        "/lib/pkgconfig",
+        "/share/pkgconfig",
+        "/share/aclocal",
+        "/man",
+        "/share/man",
+        "/share/gtk-doc",
+        "/share/vala",
+        "*.la",
+        "*.a"
+    ],
+    "modules" : [
         {
-            "name": "libical",
-            "cleanup": [ "/lib/cmake"],
-            "cmake": true,
-            "config-opts": [ "-DCMAKE_INSTALL_LIBDIR:PATH=/app/lib",
-                             "-DBUILD_SHARED_LIBS:BOOL=ON" ],
-            "sources": [
+            "name" : "libical",
+            "cleanup" : [
+                "/lib/cmake"
+            ],
+            "cmake" : true,
+            "config-opts" : [
+                "-DCMAKE_INSTALL_LIBDIR:PATH=/app/lib",
+                "-DBUILD_SHARED_LIBS:BOOL=ON"
+            ],
+            "sources" : [
                 {
-                    "type": "archive",
-                    "url": "https://github.com/libical/libical/releases/download/v2.0.0/libical-2.0.0.tar.gz",
-                    "sha256": "654c11f759c19237be39f6ad401d917e5a05f36f1736385ed958e60cf21456da"
+                    "type" : "archive",
+                    "url" : "https://github.com/libical/libical/releases/download/v2.0.0/libical-2.0.0.tar.gz",
+                    "sha256" : "654c11f759c19237be39f6ad401d917e5a05f36f1736385ed958e60cf21456da"
                 }
             ]
         },
         {
-            "name": "libgee",
+            "name" : "libgee",
             "build-options" : {
-                "env": {
-                    "PKG_CONFIG_GOBJECT_INTROSPECTION_1_0_GIRDIR": "/app/share/gir-1.0",
-                    "PKG_CONFIG_GOBJECT_INTROSPECTION_1_0_TYPELIBDIR": "/app/lib/girepository-1.0"
+                "env" : {
+                    "PKG_CONFIG_GOBJECT_INTROSPECTION_1_0_GIRDIR" : "/app/share/gir-1.0",
+                    "PKG_CONFIG_GOBJECT_INTROSPECTION_1_0_TYPELIBDIR" : "/app/lib/girepository-1.0"
                 }
             },
-            "sources": [
+            "sources" : [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/libgee"
+                    "type" : "git",
+                    "url" : "git://git.gnome.org/libgee"
                 }
             ]
         },
         {
-            "name": "gnome-online-accounts",
-            "config-opts": ["--disable-telepathy", "--disable-documentation", "--disable-backend"],
-            "sources": [
+            "name" : "gnome-online-accounts",
+            "config-opts" : [
+                "--disable-telepathy",
+                "--disable-documentation",
+                "--disable-backend"
+            ],
+            "sources" : [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/gnome-online-accounts"
+                    "type" : "git",
+                    "url" : "git://git.gnome.org/gnome-online-accounts"
                 }
             ]
         },
         {
-            "name": "geocode-glib",
-            "buildsystem": "meson",
-            "builddir": true,
-            "config-opts": [ "--libdir=/app/lib" ],
-            "sources": [
+            "name" : "geocode-glib",
+            "buildsystem" : "meson",
+            "builddir" : true,
+            "config-opts" : [
+                "--libdir=/app/lib"
+            ],
+            "sources" : [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/geocode-glib"
+                    "type" : "git",
+                    "url" : "git://git.gnome.org/geocode-glib"
                 }
             ]
         },
         {
-            "name": "libgweather",
-            "buildsystem": "meson",
-            "config-opts": ["--libdir=/app/lib"],
-            "sources": [
+            "name" : "libgweather",
+            "buildsystem" : "meson",
+            "config-opts" : [
+                "--libdir=/app/lib"
+            ],
+            "sources" : [
                 {
-                    "type": "git",
-                    "url": "https://gitlab.gnome.org/GNOME/libgweather.git"
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/GNOME/libgweather.git"
                 }
             ]
         },
         {
-            "name": "evolution-data-server",
-            "cleanup": [
+            "name" : "evolution-data-server",
+            "cleanup" : [
                 "/lib/cmake",
                 "/lib/evolution-data-server/*-backends",
                 "/libexec",
                 "/share/dbus-1/services"
-	    ],
-            "config-opts": [
+            ],
+            "config-opts" : [
                 "-DENABLE_GTK=OFF",
                 "-DENABLE_GOOGLE_AUTH=OFF",
                 "-DENABLE_UOA=OFF",
@@ -117,65 +141,72 @@
                 "-DENABLE_GTK_DOC=OFF",
                 "-DENABLE_EXAMPLES=OFF"
             ],
-            "cmake": true,
-            "sources": [
+            "cmake" : true,
+            "sources" : [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/evolution-data-server"
+                    "type" : "git",
+                    "url" : "git://git.gnome.org/evolution-data-server"
                 }
             ]
         },
         {
-            "name": "folks",
-            "cleanup": [ "/bin", "/share/GConf" ],
-            "config-opts": ["--disable-telepathy-backend",
-                            "--disable-ofono-backend",
-                            "--disable-bluez-backend",
-                            "--disable-fatal-warnings"],
-            "sources": [
+            "name" : "folks",
+            "cleanup" : [
+                "/bin",
+                "/share/GConf"
+            ],
+            "config-opts" : [
+                "--disable-telepathy-backend",
+                "--disable-ofono-backend",
+                "--disable-bluez-backend",
+                "--disable-fatal-warnings"
+            ],
+            "sources" : [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/folks"
+                    "type" : "git",
+                    "url" : "git://git.gnome.org/folks"
                 }
             ]
         },
         {
-            "name": "libchamplain",
-            "sources": [
+            "name" : "libchamplain",
+            "sources" : [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/libchamplain"
+                    "type" : "git",
+                    "url" : "git://git.gnome.org/libchamplain"
                 }
             ]
         },
         {
-            "name": "librest",
-            "sources": [
+            "name" : "librest",
+            "sources" : [
                 {
-                    "type": "archive",
-                    "url": "https://git.gnome.org/browse/librest/snapshot/librest-0.8.1.tar.xz",
-                    "sha256": "8ae2d5b993b568d87fb33767cdf43dc81aa36371351e9154680372e1536fb594"
+                    "type" : "archive",
+                    "url" : "https://git.gnome.org/browse/librest/snapshot/librest-0.8.1.tar.xz",
+                    "sha256" : "8ae2d5b993b568d87fb33767cdf43dc81aa36371351e9154680372e1536fb594"
                 }
             ]
         },
         {
-            "name": "libgfbgraph",
-            "cleanup": [ "/doc/libgfbgraph"],
-            "sources": [
+            "name" : "libgfbgraph",
+            "cleanup" : [
+                "/doc/libgfbgraph"
+            ],
+            "sources" : [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/libgfbgraph"
+                    "type" : "git",
+                    "url" : "git://git.gnome.org/libgfbgraph"
                 }
             ]
         },
         {
-            "name": "gnome-maps",
-            "buildsystem": "meson",
-            "builddir": true,
-            "sources": [
+            "name" : "gnome-maps",
+            "buildsystem" : "meson",
+            "builddir" : true,
+            "sources" : [
                 {
-                    "type": "git",
-                    "url": "git://git.gnome.org/gnome-maps"
+                    "type" : "git",
+                    "url" : "git://git.gnome.org/gnome-maps"
                 }
             ]
         }
