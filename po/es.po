@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2018-03-27 19:43+0000\n"
-"PO-Revision-Date: 2018-04-25 12:50+0200\n"
+"POT-Creation-Date: 2018-06-18 20:31+0000\n"
+"PO-Revision-Date: 2018-06-21 09:54+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -58,7 +58,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:8
-#: src/application.js:85 src/mainWindow.js:511
+#: src/application.js:83 src/mainWindow.js:511
 msgid "Maps"
 msgstr "Mapas"
 
@@ -365,15 +365,19 @@ msgstr "Abrir capa de formas"
 
 #. Translators: This string uses ellipsis character
 #: data/ui/layers-popover.ui:71
-#| msgid "Open Shape Layer"
 msgid "Open Shape Layer…"
 msgstr "Abrir capa de formas…"
 
-#: data/ui/location-service-notification.ui:13
+#: data/ui/location-service-dialog.ui:16
 msgid "Turn on location services to find your location"
 msgstr "Activar los servicios de ubicación para encontrar su posición"
 
-#: data/ui/location-service-notification.ui:20
+#: data/ui/location-service-dialog.ui:28 data/ui/osm-edit-dialog.ui:283
+#: data/ui/zoom-in-dialog.ui:28
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: data/ui/location-service-dialog.ui:38
 msgid "Location Settings"
 msgstr "Configuración de la ubicación"
 
@@ -566,10 +570,6 @@ msgctxt "dialog title"
 msgid "Edit on OpenStreetMap"
 msgstr "Editar en OpenStreetMap"
 
-#: data/ui/osm-edit-dialog.ui:283
-msgid "Cancel"
-msgstr "Cancelar"
-
 #: data/ui/osm-edit-dialog.ui:310 src/osmEditDialog.js:512
 msgid "Next"
 msgstr "Siguiente"
@@ -614,15 +614,15 @@ msgstr "Abrir capa de formas"
 msgid "Toggle visible"
 msgstr "Conmutar estado visible"
 
-#: data/ui/sidebar.ui:266
+#: data/ui/sidebar.ui:275
 msgid "Route search by GraphHopper"
 msgstr "Ruta buscada por GraphHopper"
 
-#: data/ui/sidebar.ui:287
+#: data/ui/sidebar.ui:296
 msgid "Route search by OpenTripPlanner"
 msgstr "Ruta buscada por OpenTripPlanner"
 
-#: data/ui/sidebar.ui:360
+#: data/ui/sidebar.ui:369
 msgid ""
 "Routing itineraries for public transit is provided by GNOME\n"
 "using timetable data obtained from transit companies or agencies.\n"
@@ -704,13 +704,14 @@ msgstr "Ubicación actual"
 msgid "Accuracy: %s"
 msgstr "Precisión: %s"
 
-#: data/ui/zoom-in-notification.ui:12
+#: data/ui/zoom-in-dialog.ui:16
 msgid "Zoom in to add location!"
 msgstr "Ampliar para añadir una ubicación."
 
-#: data/ui/zoom-in-notification.ui:19
-msgid "OK"
-msgstr "Aceptar"
+#: data/ui/zoom-in-dialog.ui:38
+#| msgid "Zoom in"
+msgid "Zoom In"
+msgstr "Ampliar"
 
 #: lib/maps-file-tile-source.c:303 lib/maps-file-tile-source.c:379
 #: lib/maps-file-tile-source.c:459
@@ -729,11 +730,11 @@ msgstr "Faltan los atributos necesarios"
 msgid "Could not find OSM element"
 msgstr "No se pudo encontrar el elemento OSM"
 
-#: src/application.js:98
+#: src/application.js:96
 msgid "A path to a local tiles directory structure"
 msgstr "Una ruta a la estructura de carpetas locales de cuadrículas"
 
-#: src/application.js:102
+#: src/application.js:100
 msgid "Show the version of the program"
 msgstr "Mostrar la versión del programa"
 
@@ -818,7 +819,7 @@ msgstr "Ruta hasta aquí"
 msgid "Nothing found here!"
 msgstr "No se ha encontrado nada aquí."
 
-#: src/contextMenu.js:185
+#: src/contextMenu.js:189
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -867,15 +868,15 @@ msgstr "error al analizar"
 msgid "unknown geometry"
 msgstr "geometría desconocida"
 
-#: src/graphHopper.js:89 src/openTripPlanner.js:656
+#: src/graphHopper.js:93 src/openTripPlanner.js:652
 msgid "Route request failed."
 msgstr "Falló al solicitar la ruta."
 
-#: src/graphHopper.js:97 src/openTripPlanner.js:619
+#: src/graphHopper.js:100 src/openTripPlanner.js:615
 msgid "No route found."
 msgstr "No se ha encontrado la ruta."
 
-#: src/graphHopper.js:189
+#: src/graphHopper.js:188
 msgid "Start!"
 msgstr "Empezar"
 
@@ -883,7 +884,7 @@ msgstr "Empezar"
 msgid "All Layer Files"
 msgstr "Todos los archivos de capas"
 
-#: src/mainWindow.js:452
+#: src/mainWindow.js:444
 msgid "Failed to connect to location service"
 msgstr "Falló al conectar al servicio de ubicación"
 
@@ -914,27 +915,19 @@ msgstr "Datos de mapas por %s y colaboradores"
 msgid "Map tiles provided by %s"
 msgstr "Cuadrículas de mapas proporcionadas por %s"
 
-#: src/mapView.js:350
+#: src/mapView.js:353
 msgid "File type is not supported"
 msgstr "Tipo de archivo no soportado"
 
-#: src/mapView.js:357
+#: src/mapView.js:360
 msgid "Failed to open layer"
 msgstr "Falló al abrir la capa"
 
-#: src/mapView.js:393
+#: src/mapView.js:396
 msgid "Failed to open GeoURI"
 msgstr "Falló al abrir el GeoURI"
 
-#: src/openTripPlanner.js:613
-msgid "No earlier alternatives found."
-msgstr "No hay alternativas anteriores."
-
-#: src/openTripPlanner.js:614
-msgid "No later alternatives found."
-msgstr "No hay alternativas posteriores."
-
-#: src/openTripPlanner.js:652
+#: src/openTripPlanner.js:648
 msgid "No timetable data found for this route."
 msgstr "No hay datos en la tabla de tiempos para esta ruta."
 
@@ -1311,7 +1304,7 @@ msgstr "Quitar ubicación de la vía"
 msgid "Reverse route"
 msgstr "Ruta inversa"
 
-#: src/sendToDialog.js:176
+#: src/sendToDialog.js:175
 msgid "Failed to open URI"
 msgstr "Falló al abrir el URI"
 
@@ -1320,7 +1313,7 @@ msgid "failed to load file"
 msgstr "falló al cargar el archivo"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:292
+#: src/sidebar.js:293
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Tiempo estimado: %s"
@@ -1377,6 +1370,14 @@ msgstr "Cargar alternativas anteriores"
 msgid "Load later alternatives"
 msgstr "Cargar alternativas posteriores"
 
+#: src/transitMoreRow.js:54
+msgid "No earlier alternatives found."
+msgstr "No hay alternativas anteriores."
+
+#: src/transitMoreRow.js:56
+msgid "No later alternatives found."
+msgstr "No hay alternativas posteriores."
+
 #.
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
@@ -1391,7 +1392,7 @@ msgstr "%b %e"
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:249
+#: src/transitPlan.js:254
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -1400,7 +1401,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: src/transitPlan.js:276
+#: src/transitPlan.js:281
 #, javascript-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -1411,7 +1412,7 @@ msgstr[1] "%d minutos"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: src/transitPlan.js:287
+#: src/transitPlan.js:292
 #, javascript-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -1422,7 +1423,7 @@ msgstr[1] "%d horas"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: src/transitPlan.js:293
+#: src/transitPlan.js:298
 #, javascript-format
 msgid "%d:%02d hour"
 msgid_plural "%d:%02d hours"
@@ -1435,7 +1436,7 @@ msgstr[1] "%d:%02d horas"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:642
+#: src/transitPlan.js:647
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -1636,6 +1637,9 @@ msgstr "%s mi"
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
+
+#~ msgid "OK"
+#~ msgstr "Aceptar"
 
 #~| msgctxt "shortcut window"
 #~| msgid "Open shape layer"
