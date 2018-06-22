@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2018-03-27 19:43+0000\n"
-"PO-Revision-Date: 2018-04-21 01:39+0200\n"
+"POT-Creation-Date: 2018-06-18 20:31+0000\n"
+"PO-Revision-Date: 2018-06-22 18:24+0300\n"
 "Last-Translator: Efstathios Iosifidis <iosifidis@opensuse.org>\n"
 "Language-Team: Ελληνικά <>\n"
 "Language: el\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 2.0.7\n"
 "X-Project-Style: gnome\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
@@ -62,7 +62,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:8
-#: src/application.js:85 src/mainWindow.js:511
+#: src/application.js:83 src/mainWindow.js:511
 msgid "Maps"
 msgstr "Χάρτες"
 
@@ -372,15 +372,19 @@ msgstr "Άνοιγμα στρώσης σχήματος"
 
 #. Translators: This string uses ellipsis character
 #: data/ui/layers-popover.ui:71
-#| msgid "Open Shape Layer"
 msgid "Open Shape Layer…"
 msgstr "Άνοιγμα στρώσης σχήματος…"
 
-#: data/ui/location-service-notification.ui:13
+#: data/ui/location-service-dialog.ui:16
 msgid "Turn on location services to find your location"
 msgstr "Ενεργοποίηση υπηρεσιών τοποθεσίας για να βρείτε την τοποθεσία σας"
 
-#: data/ui/location-service-notification.ui:20
+#: data/ui/location-service-dialog.ui:28 data/ui/osm-edit-dialog.ui:283
+#: data/ui/zoom-in-dialog.ui:28
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#: data/ui/location-service-dialog.ui:38
 msgid "Location Settings"
 msgstr "Ρυθμίσεις τοποθεσίας"
 
@@ -575,10 +579,6 @@ msgctxt "dialog title"
 msgid "Edit on OpenStreetMap"
 msgstr "Επεξεργασία στο OpenStreetMap"
 
-#: data/ui/osm-edit-dialog.ui:283
-msgid "Cancel"
-msgstr "Ακύρωση"
-
 #: data/ui/osm-edit-dialog.ui:310 src/osmEditDialog.js:512
 msgid "Next"
 msgstr "Επόμενο"
@@ -623,15 +623,15 @@ msgstr "Άνοιγμα στρώσης σχήματος"
 msgid "Toggle visible"
 msgstr "Εναλλαγή ορατότητας"
 
-#: data/ui/sidebar.ui:266
+#: data/ui/sidebar.ui:275
 msgid "Route search by GraphHopper"
 msgstr "Αναζήτηση διαδρομής από το GraphHopper"
 
-#: data/ui/sidebar.ui:287
+#: data/ui/sidebar.ui:296
 msgid "Route search by OpenTripPlanner"
 msgstr "Αναζήτηση διαδρομής από το OpenTripPlanner"
 
-#: data/ui/sidebar.ui:360
+#: data/ui/sidebar.ui:369
 msgid ""
 "Routing itineraries for public transit is provided by GNOME\n"
 "using timetable data obtained from transit companies or agencies.\n"
@@ -714,13 +714,13 @@ msgstr "Τρέχουσα τοποθεσία"
 msgid "Accuracy: %s"
 msgstr "Ακρίβεια: %s"
 
-#: data/ui/zoom-in-notification.ui:12
+#: data/ui/zoom-in-dialog.ui:16
 msgid "Zoom in to add location!"
 msgstr "Εστιάστε για να προσθέσετε μια τοποθεσία!"
 
-#: data/ui/zoom-in-notification.ui:19
-msgid "OK"
-msgstr "Εντάξει"
+#: data/ui/zoom-in-dialog.ui:38
+msgid "Zoom In"
+msgstr "Μεγέθυνση"
 
 #: lib/maps-file-tile-source.c:303 lib/maps-file-tile-source.c:379
 #: lib/maps-file-tile-source.c:459
@@ -739,11 +739,11 @@ msgstr "Λείπουν απαιτούμενα γνωρίσματα"
 msgid "Could not find OSM element"
 msgstr "Αποτυχία εύρεσης στοιχείου OSM"
 
-#: src/application.js:98
+#: src/application.js:96
 msgid "A path to a local tiles directory structure"
 msgstr "Η τοποθεσία μιας τοπικής δομής πλακιδίων"
 
-#: src/application.js:102
+#: src/application.js:100
 msgid "Show the version of the program"
 msgstr "Εμφάνιση της έκδοσης του προγράμματος"
 
@@ -778,12 +778,14 @@ msgstr ""
 #. Translators: %s is the name of the place to check in.
 #.
 #: src/checkInDialog.js:218
+#, javascript-format
 msgid "Check in to %s"
 msgstr "Check in στο %s"
 
 #. Translators: %s is the name of the place to check in.
 #.
 #: src/checkInDialog.js:228
+#, javascript-format
 msgid "Write an optional message to check in to %s."
 msgstr "Γράψτε ένα προαιρετικό μήνυμα για check in στο %s."
 
@@ -793,6 +795,7 @@ msgstr "Συνέβη κάποιο σφάλμα."
 
 #. Translators: %s is the place name that user wanted to check-in
 #: src/checkIn.js:144
+#, javascript-format
 msgid "Cannot find “%s” in the social service"
 msgstr "Αδύνατη η εύρεση του «%s» στην κοινωνική υπηρεσία."
 
@@ -826,7 +829,7 @@ msgstr "Διαδρομή προς εδώ"
 msgid "Nothing found here!"
 msgstr "Δεν βρέθηκε τίποτα εδώ!"
 
-#: src/contextMenu.js:185
+#: src/contextMenu.js:189
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -839,6 +842,7 @@ msgstr ""
 #. * intact in the translated string.
 #.
 #: src/exportViewDialog.js:82
+#, javascript-format
 msgid "Maps at %f, %f.png"
 msgstr "Χάρτες στο %f, %f.png"
 
@@ -874,15 +878,15 @@ msgstr "σφάλμα ανάλυσης"
 msgid "unknown geometry"
 msgstr "άγνωστη γεωμετρία"
 
-#: src/graphHopper.js:89 src/openTripPlanner.js:656
+#: src/graphHopper.js:93 src/openTripPlanner.js:652
 msgid "Route request failed."
 msgstr "Αποτυχία αιτήματος διαδρομής"
 
-#: src/graphHopper.js:97 src/openTripPlanner.js:619
+#: src/graphHopper.js:100 src/openTripPlanner.js:615
 msgid "No route found."
 msgstr "Δεν βρέθηκε διαδρομή."
 
-#: src/graphHopper.js:189
+#: src/graphHopper.js:188
 msgid "Start!"
 msgstr "Εκκίνηση!"
 
@@ -890,7 +894,7 @@ msgstr "Εκκίνηση!"
 msgid "All Layer Files"
 msgstr "Όλα τα αρχεία στρώσεων"
 
-#: src/mainWindow.js:452
+#: src/mainWindow.js:444
 msgid "Failed to connect to location service"
 msgstr "Αποτυχία σύνδεσης με την υπηρεσία τοποθεσίας"
 
@@ -919,6 +923,7 @@ msgstr ""
 "GNOME"
 
 #: src/mainWindow.js:542
+#, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Δεδομένα χαρτών από %s και τους συνεισφέροντες"
 
@@ -928,30 +933,23 @@ msgstr "Δεδομένα χαρτών από %s και τους συνεισφέ
 #. * is available
 #.
 #: src/mainWindow.js:558
+#, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Τα πλακίδια των χαρτών παρέχονται από %s"
 
-#: src/mapView.js:350
+#: src/mapView.js:353
 msgid "File type is not supported"
 msgstr "Δεν υποστηρίζεται ο τύπος αρχείου"
 
-#: src/mapView.js:357
+#: src/mapView.js:360
 msgid "Failed to open layer"
 msgstr "Αποτυχία ανοίγματος στρώσης"
 
-#: src/mapView.js:393
+#: src/mapView.js:396
 msgid "Failed to open GeoURI"
 msgstr "Αποτυχία ανοίγματος GeoURI"
 
-#: src/openTripPlanner.js:613
-msgid "No earlier alternatives found."
-msgstr "Δεν βρέθηκαν νεότερες εναλλακτικές."
-
-#: src/openTripPlanner.js:614
-msgid "No later alternatives found."
-msgstr "Δεν βρέθηκαν τελευταίες εναλλακτικές"
-
-#: src/openTripPlanner.js:652
+#: src/openTripPlanner.js:648
 msgid "No timetable data found for this route."
 msgstr "Δεν βρέθηκε δρομολόγιο γι' αυτή τη διαδρομή."
 
@@ -1297,6 +1295,7 @@ msgid "designated"
 msgstr "υποδεικνυόμενο"
 
 #: src/printLayout.js:240
+#, javascript-format
 msgid "From %s to %s"
 msgstr "Από %s σε %s"
 
@@ -1327,7 +1326,7 @@ msgstr "Αφαίρεση μέσω της τοποθεσίας"
 msgid "Reverse route"
 msgstr "Αντίστροφη διαδρομή"
 
-#: src/sendToDialog.js:176
+#: src/sendToDialog.js:175
 msgid "Failed to open URI"
 msgstr "Αποτυχία ανοίγματος του URI"
 
@@ -1336,7 +1335,8 @@ msgid "failed to load file"
 msgstr "αδυναμία φόρτωσης αρχείου"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:292
+#: src/sidebar.js:293
+#, javascript-format
 msgid "Estimated time: %s"
 msgstr "Εκτιμώμενος χρόνος: %s"
 
@@ -1344,6 +1344,7 @@ msgstr "Εκτιμώμενος χρόνος: %s"
 #. * destination of journey with the arrival address and transit
 #. * stop as the format parameter
 #: src/transitArrivalRow.js:54
+#, javascript-format
 msgid "Arrive at %s"
 msgstr "Άφιξη στο %s"
 
@@ -1355,6 +1356,7 @@ msgstr "Άφιξη"
 #. * starting a journey at the address given as the parameter
 #.
 #: src/transitLegRow.js:71
+#, javascript-format
 msgid "Start at %s"
 msgstr "Έναρξη από %s"
 
@@ -1378,6 +1380,7 @@ msgstr "Απόκρυψη οδηγιών περπατήματος"
 #. * distance, with the distance expression being the %s placeholder
 #.
 #: src/transitLegRow.js:132
+#, javascript-format
 msgid "Walk %s"
 msgstr "Περπάτημα %s"
 
@@ -1388,6 +1391,14 @@ msgstr "Φόρτωση νεοτέρων εναλλακτικών"
 #: src/transitMoreRow.js:41
 msgid "Load later alternatives"
 msgstr "Φόρτωση τελευταίων εναλλακτικών"
+
+#: src/transitMoreRow.js:54
+msgid "No earlier alternatives found."
+msgstr "Δεν βρέθηκαν νεότερες εναλλακτικές."
+
+#: src/transitMoreRow.js:56
+msgid "No later alternatives found."
+msgstr "Δεν βρέθηκαν τελευταίες εναλλακτικές"
 
 #.
 #. * Translators: this is a format string giving the equivalent to
@@ -1403,7 +1414,8 @@ msgstr "%e %b"
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:249
+#: src/transitPlan.js:254
+#, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
 
@@ -1411,7 +1423,8 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: src/transitPlan.js:276
+#: src/transitPlan.js:281
+#, javascript-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "%d λεπτό"
@@ -1421,7 +1434,8 @@ msgstr[1] "%d λεπτά"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: src/transitPlan.js:287
+#: src/transitPlan.js:292
+#, javascript-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "%d ώρα"
@@ -1431,7 +1445,8 @@ msgstr[1] "%d ώρες"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: src/transitPlan.js:293
+#: src/transitPlan.js:298
+#, javascript-format
 msgid "%d:%02d hour"
 msgid_plural "%d:%02d hours"
 msgstr[0] "%d:%02d ώρα"
@@ -1443,7 +1458,8 @@ msgstr[1] "%d:%02d ώρες"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:642
+#: src/transitPlan.js:647
+#, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
 
@@ -1462,6 +1478,7 @@ msgstr "από την ανατολή μέχρι τη δύση του ήλιου"
 #. * substituted with the appropriate separator.
 #.
 #: src/translations.js:77
+#, javascript-format
 msgctxt "time range list"
 msgid "%s %s"
 msgstr "%s %s"
@@ -1473,6 +1490,7 @@ msgstr "%s %s"
 #. * substituted with the appropriate separator.
 #.
 #: src/translations.js:89
+#, javascript-format
 msgctxt "time range list"
 msgid "%s %s %s"
 msgstr "%s %s %s"
@@ -1485,6 +1503,7 @@ msgstr "%s %s %s"
 #. * the appropriate separator or phrase and the ordering of the arguments
 #. * can be rearranged with the %n#s syntax.
 #: src/translations.js:120
+#, javascript-format
 msgctxt "time range component"
 msgid "%s %s"
 msgstr "%s %s"
@@ -1499,6 +1518,7 @@ msgstr "%s %s"
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
 #: src/translations.js:152
+#, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s"
 msgstr "%s,%s"
@@ -1513,6 +1533,7 @@ msgstr "%s,%s"
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
 #: src/translations.js:166
+#, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s,%s"
 msgstr "%s,%s,%s"
@@ -1525,6 +1546,7 @@ msgstr "κάθε ημέρα"
 #. * This represents a range of days with a starting and ending day.
 #.
 #: src/translations.js:197
+#, javascript-format
 msgctxt "day range"
 msgid "%s-%s"
 msgstr "%s-%s"
@@ -1546,6 +1568,7 @@ msgstr "σχολικές αργίες"
 #. * using the %n$s syntax.
 #.
 #: src/translations.js:250
+#, javascript-format
 msgctxt "time interval list"
 msgid "%s, %s"
 msgstr "%s, %s"
@@ -1562,6 +1585,7 @@ msgstr "δεν είναι ανοικτό"
 #. * using the %n$s syntax.
 #.
 #: src/translations.js:279
+#, javascript-format
 msgctxt "time interval"
 msgid "%s-%s"
 msgstr "%s-%s"
@@ -1598,36 +1622,46 @@ msgid "Exact"
 msgstr "Ακριβής"
 
 #: src/utils.js:287
+#, javascript-format
 msgid "%f h"
 msgstr "%f h"
 
 #: src/utils.js:289
+#, javascript-format
 msgid "%f min"
 msgstr "%f min"
 
 #: src/utils.js:291
+#, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
 #. Translators: This is a distance measured in kilometers
 #: src/utils.js:302
+#, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
 #: src/utils.js:305
+#, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
 #: src/utils.js:313
+#, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
 #: src/utils.js:316
+#, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
+
+#~ msgid "OK"
+#~ msgstr "Εντάξει"
 
 #~| msgctxt "shortcut window"
 #~| msgid "Open shape layer"
