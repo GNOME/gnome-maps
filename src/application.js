@@ -122,13 +122,13 @@ var Application = GObject.registerClass({
 
     _showContact(id) {
         contactStore.lookup(id, (contact) => {
-            this._mainWindow.markBusy();
+            this.mark_busy();
             if (!contact) {
-                this._mainWindow.unmarkBusy();
+                this.unmark_busy();
                 return;
             }
             contact.geocode(() => {
-                this._mainWindow.unmarkBusy();
+                this.unmark_busy();
                 this._mainWindow.mapView.showContact(contact);
             });
         });
