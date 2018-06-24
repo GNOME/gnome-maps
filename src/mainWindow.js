@@ -30,7 +30,6 @@ const Gtk = imports.gi.Gtk;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
-const BusyMarker = imports.busyMarker;
 const ContextMenu = imports.contextMenu;
 const FavoritesPopover = imports.favoritesPopover;
 const Geoclue = imports.geoclue;
@@ -79,6 +78,7 @@ var MainWindow = GObject.registerClass({
     InternalChildren: [ 'headerBar',
                         'grid',
                         'mainStack',
+                        'mainGrid',
                         'noNetworkView',
                         'gotoUserLocationButton',
                         'toggleSidebarButton',
@@ -94,9 +94,6 @@ var MainWindow = GObject.registerClass({
     }
 
     _init(params) {
-        this._overlay = params.overlay;
-        delete params.overlay;
-
         super._init(params);
 
         this._configureId = 0;
@@ -106,7 +103,7 @@ var MainWindow = GObject.registerClass({
                 MapView.MapType.LOCAL : MapView.MapType.STREET,
             mainWindow: this });
 
-        this._overlay.add(this._mapView);
+        this._mainGrid.add(this._mapView);
 
         this._mapView.gotoUserLocation(false);
 
@@ -121,17 +118,12 @@ var MainWindow = GObject.registerClass({
         this._layersButton.popover = this.layersPopover;
         this._favoritesButton.popover = new FavoritesPopover.FavoritesPopover({ mapView: this._mapView });
 
-        this._mainStack.add(this._overlay);
-        this._busy = new BusyMarker.BusyMarker();
-        this._overlay.add_overlay(this._busy);
 
         this._initHeaderbar();
         this._initActions();
         this._initSignals();
         this._restoreWindowGeometry();
         this._initDND();
-
-        this._busySignalId = 0;
 
         this._grid.attach(this._sidebar, 1, 0, 1, 1);
 
@@ -261,7 +253,7 @@ var MainWindow = GObject.registerClass({
 
         this.application.connect('notify::connected', () => {
             if (this.application.connected || this.application.local_tile_path)
-                this._mainStack.visible_child = this._overlay;
+                this._mainStack.visible_child = this._mainGrid;
             else
                 this._mainStack.visible_child = this._noNetworkView;
         });
@@ -574,23 +566,5 @@ var MainWindow = GObject.registerClass({
             fileChooser.destroy();
         });
         fileChooser.show();
-    }
-
-    markBusy() {
-        if (this._busySignalId !== 0)
-            return;
-
-        this._busy.show();
-
-        let stage = this._mapView.view.get_stage();
-        this._busySignalId = stage.connect('captured-event', () => true);
-    }
-
-    unmarkBusy() {
-        this._busy.hide();
-
-        let stage = this._mapView.view.get_stage();
-        stage.disconnect(this._busySignalId);
-        this._busySignalId = 0;
     }
 });

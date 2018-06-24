@@ -80,7 +80,6 @@ var Application = GObject.registerClass({
 
     _init() {
         /* Translators: This is the program name. */
-        GLib.set_application_name(_("Maps"));
 
         /* Needed to be able to use in UI files */
         _ensuredTypes.forEach((type) => GObject.type_ensure(type));
@@ -254,9 +253,7 @@ var Application = GObject.registerClass({
         if (this._mainWindow)
             return;
 
-        let overlay = new Gtk.Overlay({ visible: true, can_focus: false });
-        this._mainWindow = new MainWindow.MainWindow({ application: this,
-                                                       overlay: overlay });
+        this._mainWindow = new MainWindow.MainWindow({ application: this });
         this._mainWindow.connect('destroy', () => this._onWindowDestroy());
         if (GLib.getenv('MAPS_DEBUG') === 'focus') {
             this._mainWindow.connect('set-focus', (window, widget) => {
