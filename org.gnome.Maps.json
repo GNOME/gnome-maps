@@ -137,16 +137,19 @@
                 "-DENABLE_GOOGLE=OFF",
                 "-DENABLE_VALA_BINDINGS=ON",
                 "-DWITH_OPENLDAP=OFF",
+                "-DWITH_LIBDB=OFF",
                 "-DENABLE_INTROSPECTION=ON",
                 "-DENABLE_INSTALLED_TESTS=OFF",
                 "-DENABLE_GTK_DOC=OFF",
-                "-DENABLE_EXAMPLES=OFF"
+                "-DENABLE_EXAMPLES=OFF",
+                "-DENABLE_VALA_BINDINGS=ON",
+                "-DENABLE_INTROSPECTION=ON"
             ],
             "cmake" : true,
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "git://git.gnome.org/evolution-data-server"
+                    "url" : "https://gitlab.gnome.org/GNOME/evolution-data-server.git"
                 }
             ]
         },
