@@ -25,6 +25,7 @@ const Gtk = imports.gi.Gtk;
 
 const Application = imports.application;
 const PlaceEntry = imports.placeEntry;
+const RouteQuery = imports.routeQuery;
 
 var Type = {
     FROM: 0,
@@ -66,10 +67,15 @@ var RouteEntry = GObject.registerClass({
 
         switch (this._type) {
         case Type.FROM:
+            let query = Application.routeQuery;
             this._buttonImage.icon_name = 'list-add-symbolic';
             this._icon.icon_name = 'maps-point-start-symbolic';
             /* Translators: this is add via location tooltip */
             this._button.tooltip_text = _("Add via location");
+            query.connect('notify::points', () => {
+                this._button.sensitive = query.points.length < RouteQuery.MAX_QUERY_POINTS;
+            });
+
             break;
         case Type.VIA:
             this._buttonImage.icon_name = 'list-remove-symbolic';
