@@ -1,7 +1,7 @@
 {
     "app-id" : "org.gnome.Maps",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "master",
+    "runtime-version" : "3.28",
     "sdk" : "org.gnome.Sdk",
     "command" : "gnome-maps",
     "tags" : [
@@ -68,10 +68,10 @@
         {
             "name" : "libgee",
             "build-options" : {
-                "env" : {
-                    "PKG_CONFIG_GOBJECT_INTROSPECTION_1_0_GIRDIR" : "/app/share/gir-1.0",
-                    "PKG_CONFIG_GOBJECT_INTROSPECTION_1_0_TYPELIBDIR" : "/app/lib/girepository-1.0"
-                }
+                "make-install-args" : [
+                    "girdir=/app/share/gir-1.0",
+                    "typelibdir=/app/lib/girepository-1.0"
+                ]
             },
             "sources" : [
                 {
@@ -99,7 +99,8 @@
             "buildsystem" : "meson",
             "builddir" : true,
             "config-opts" : [
-                "--libdir=/app/lib"
+                "--libdir=/app/lib",
+                "-Denable-gtk-doc=false"
             ],
             "sources" : [
                 {
@@ -136,10 +137,13 @@
                 "-DENABLE_GOOGLE=OFF",
                 "-DENABLE_VALA_BINDINGS=ON",
                 "-DWITH_OPENLDAP=OFF",
+                "-DWITH_LIBDB=OFF",
                 "-DENABLE_INTROSPECTION=ON",
                 "-DENABLE_INSTALLED_TESTS=OFF",
                 "-DENABLE_GTK_DOC=OFF",
-                "-DENABLE_EXAMPLES=OFF"
+                "-DENABLE_EXAMPLES=OFF",
+                "-DENABLE_VALA_BINDINGS=ON",
+                "-DENABLE_INTROSPECTION=ON"
             ],
             "cmake" : true,
             "sources" : [
@@ -182,8 +186,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://git.gnome.org/browse/librest/snapshot/librest-0.8.1.tar.xz",
-                    "sha256" : "8ae2d5b993b568d87fb33767cdf43dc81aa36371351e9154680372e1536fb594"
+                    "url" : "https://gitlab.gnome.org/GNOME/librest/-/archive/0.8.1/librest-0.8.1.tar.gz",
+                    "sha256" : "2bdd1be07a9150b1c6ceea6e01dedf2efcff564381cae0cd6c7330403efe59d7"
                 }
             ]
         },
