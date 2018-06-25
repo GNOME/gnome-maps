@@ -26,6 +26,8 @@ const Application = imports.application;
 const PlaceStore = imports.placeStore;
 const TransitOptions = imports.transitOptions;
 
+const MAX_QUERY_POINTS = 10;
+
 var Transportation = {
     CAR:        0,
     BIKE:       1,
@@ -99,6 +101,8 @@ var RouteQuery = GObject.registerClass({
     }
 
     set points(points) {
+        if (points.length > MAX_QUERY_POINTS)
+            throw new Error('Too many query points');
         this._points = points;
         this.notify('points');
     }
@@ -176,6 +180,8 @@ var RouteQuery = GObject.registerClass({
     }
 
     addPoint(index) {
+        if (this._points.length >= MAX_QUERY_POINTS)
+            throw new Error('Too many query points');
         let point = new QueryPoint();
 
         if (index === -1)
