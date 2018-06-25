@@ -33,6 +33,7 @@ const OSMAccountDialog = imports.osmAccountDialog;
 const OSMEdit = imports.osmEdit;
 const OSMEditDialog = imports.osmEditDialog;
 const Place = imports.place;
+const RouteQuery = imports.routeQuery;
 const Utils = imports.utils;
 const ZoomInDialog = imports.zoomInDialog;
 
@@ -86,6 +87,8 @@ var ContextMenu = GObject.registerClass({
 
     _routingUpdate() {
         let query = Application.routeQuery;
+
+        this._routeItem.sensitive = query.points.length < RouteQuery.MAX_QUERY_POINTS;
 
         if (query.points.length === 0)
             return;
