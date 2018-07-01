@@ -71,7 +71,8 @@ var TransitRouteLabel = GObject.registerClass({
          * hight-contrasting colors, if no label, assume the route color is
          * more relevant and keep it also for high contrast
          */
-        if (usingHighContrastTheme && label) {
+        if (usingHighContrastTheme && ((compact && leg.compactRoute) ||
+                                       (!compact && label))) {
             color = HIGH_CONTRAST_COLOR;
             textColor = HIGH_CONTRAST_TEXT_COLOR;
         }
