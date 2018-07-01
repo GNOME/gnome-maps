@@ -7,17 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2018-04-19 20:44+0000\n"
-"PO-Revision-Date: 2018-05-16 08:10+0200\n"
-"Last-Translator: Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>\n"
+"POT-Creation-Date: 2018-06-18 20:31+0000\n"
+"PO-Revision-Date: 2018-06-19 00:21+0300\n"
+"Last-Translator: Florentina Mușat <florentina.musat.28 [at] gmail [dot] "
+"com>\n"
 "Language-Team: Gnome Romanian Translation Team\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
-"20)) ? 1 : 2);;\n"
-"X-Generator: Virtaal 0.7.1\n"
+"20)) ? 1 : 2);\n"
+"X-Generator: Poedit 2.0.8\n"
 "X-Project-Style: gnome\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
@@ -59,7 +60,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:8
-#: src/application.js:85 src/mainWindow.js:514
+#: src/application.js:83 src/mainWindow.js:511
 msgid "Maps"
 msgstr "Hărți"
 
@@ -369,11 +370,16 @@ msgstr "Deschide stratul formei"
 msgid "Open Shape Layer…"
 msgstr "Deschide stratul formei…"
 
-#: data/ui/location-service-notification.ui:13
+#: data/ui/location-service-dialog.ui:16
 msgid "Turn on location services to find your location"
 msgstr "Pornește serviciile de localizare pentru a vă găsi locația"
 
-#: data/ui/location-service-notification.ui:20
+#: data/ui/location-service-dialog.ui:28 data/ui/osm-edit-dialog.ui:283
+#: data/ui/zoom-in-dialog.ui:28
+msgid "Cancel"
+msgstr "Anulează"
+
+#: data/ui/location-service-dialog.ui:38
 msgid "Location Settings"
 msgstr "Configurări de locație"
 
@@ -567,10 +573,6 @@ msgctxt "dialog title"
 msgid "Edit on OpenStreetMap"
 msgstr "Editare pe OpenStreetMap"
 
-#: data/ui/osm-edit-dialog.ui:283
-msgid "Cancel"
-msgstr "Anulează"
-
 #: data/ui/osm-edit-dialog.ui:310 src/osmEditDialog.js:512
 msgid "Next"
 msgstr "Următorul"
@@ -615,15 +617,15 @@ msgstr "Deschide stratul formei"
 msgid "Toggle visible"
 msgstr "Comută vizibilitatea"
 
-#: data/ui/sidebar.ui:266
+#: data/ui/sidebar.ui:275
 msgid "Route search by GraphHopper"
 msgstr "Caută rute prin GraphHopper"
 
-#: data/ui/sidebar.ui:287
+#: data/ui/sidebar.ui:296
 msgid "Route search by OpenTripPlanner"
 msgstr "Căută rute prin OpenTripPlanner"
 
-#: data/ui/sidebar.ui:360
+#: data/ui/sidebar.ui:369
 msgid ""
 "Routing itineraries for public transit is provided by GNOME\n"
 "using timetable data obtained from transit companies or agencies.\n"
@@ -705,13 +707,13 @@ msgstr "Locația curentă"
 msgid "Accuracy: %s"
 msgstr "Acuratețe: %s"
 
-#: data/ui/zoom-in-notification.ui:12
+#: data/ui/zoom-in-dialog.ui:16
 msgid "Zoom in to add location!"
 msgstr "Măriți pentru a adăuga locația!"
 
-#: data/ui/zoom-in-notification.ui:19
-msgid "OK"
-msgstr "OK"
+#: data/ui/zoom-in-dialog.ui:38
+msgid "Zoom In"
+msgstr "Mărește"
 
 #: lib/maps-file-tile-source.c:303 lib/maps-file-tile-source.c:379
 #: lib/maps-file-tile-source.c:459
@@ -730,11 +732,11 @@ msgstr "Lipsesc atributele necesare"
 msgid "Could not find OSM element"
 msgstr "Nu s-a putut găsi elementul OSM"
 
-#: src/application.js:98
+#: src/application.js:96
 msgid "A path to a local tiles directory structure"
 msgstr "O cale către o structură locală de directoare pentru fragmente"
 
-#: src/application.js:102
+#: src/application.js:100
 msgid "Show the version of the program"
 msgstr "Arată versiunea programului"
 
@@ -819,7 +821,7 @@ msgstr "Rută până aici"
 msgid "Nothing found here!"
 msgstr "Nimic nu a fost găsit aici!"
 
-#: src/contextMenu.js:185
+#: src/contextMenu.js:189
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -868,15 +870,15 @@ msgstr "eroare de parsare"
 msgid "unknown geometry"
 msgstr "geometrie necunoscută"
 
-#: src/graphHopper.js:89 src/openTripPlanner.js:656
+#: src/graphHopper.js:93 src/openTripPlanner.js:652
 msgid "Route request failed."
 msgstr "Cererea rutei a eșuat."
 
-#: src/graphHopper.js:97 src/openTripPlanner.js:619
+#: src/graphHopper.js:100 src/openTripPlanner.js:615
 msgid "No route found."
 msgstr "Nu s-au găsit rute."
 
-#: src/graphHopper.js:189
+#: src/graphHopper.js:188
 msgid "Start!"
 msgstr "Pornește!"
 
@@ -884,25 +886,25 @@ msgstr "Pornește!"
 msgid "All Layer Files"
 msgstr "Toate fișierele strat"
 
-#: src/mainWindow.js:452
+#: src/mainWindow.js:444
 msgid "Failed to connect to location service"
 msgstr "Nu s-a reușit conectarea la serviciul de localizare"
 
-#: src/mainWindow.js:512
+#: src/mainWindow.js:509
 msgid "translator-credits"
 msgstr ""
 "Mădălin Șerbănescu <ciber_ady [at] yahoo [dot] com>, 2018\n"
 "Florentina Mușat <florentina.musat.28 [at] gmail [dot] com>, 2018"
 
-#: src/mainWindow.js:515
+#: src/mainWindow.js:512
 msgid "A map application for GNOME"
 msgstr "O aplicație cu hărți pentru GNOME"
 
-#: src/mainWindow.js:526
+#: src/mainWindow.js:523
 msgid "Copyright © 2011 – 2017 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Drepturi de autor © 2011 – 2017 Red Hat, Inc și autorii GNOME Hărți"
 
-#: src/mainWindow.js:545
+#: src/mainWindow.js:542
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Datele hărții ale %s și contribuitorii"
@@ -912,32 +914,24 @@ msgstr "Datele hărții ale %s și contribuitorii"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:561
+#: src/mainWindow.js:558
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Fragmente de hărți furnizate de %s"
 
-#: src/mapView.js:350
+#: src/mapView.js:353
 msgid "File type is not supported"
 msgstr "Tipul de fișier nu este suportat"
 
-#: src/mapView.js:357
+#: src/mapView.js:360
 msgid "Failed to open layer"
 msgstr "Nu s-a putut deschide stratul"
 
-#: src/mapView.js:393
+#: src/mapView.js:396
 msgid "Failed to open GeoURI"
 msgstr "Nu s-a putut deschide GeoURI"
 
-#: src/openTripPlanner.js:613
-msgid "No earlier alternatives found."
-msgstr "Nu s-au găsit alternative anterioare."
-
-#: src/openTripPlanner.js:614
-msgid "No later alternatives found."
-msgstr "Nu s-au găsit alternative de mai târziu."
-
-#: src/openTripPlanner.js:652
+#: src/openTripPlanner.js:648
 msgid "No timetable data found for this route."
 msgstr "Nu s-au găsit date în orar pentru această rută."
 
@@ -1314,7 +1308,7 @@ msgstr "Elimină via locație"
 msgid "Reverse route"
 msgstr "Inversează ruta"
 
-#: src/sendToDialog.js:176
+#: src/sendToDialog.js:175
 msgid "Failed to open URI"
 msgstr "Nu s-a putut deschide URI-ul"
 
@@ -1323,7 +1317,7 @@ msgid "failed to load file"
 msgstr "nu s-a putut încărca fișierul"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:292
+#: src/sidebar.js:293
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Timp estimat: %s"
@@ -1380,6 +1374,14 @@ msgstr "Încarcă alternativele de dinainte"
 msgid "Load later alternatives"
 msgstr "Încarcă alternativele de mai târziu"
 
+#: src/transitMoreRow.js:54
+msgid "No earlier alternatives found."
+msgstr "Nu s-au găsit alternative anterioare."
+
+#: src/transitMoreRow.js:56
+msgid "No later alternatives found."
+msgstr "Nu s-au găsit alternative de mai târziu."
+
 #.
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
@@ -1394,7 +1396,7 @@ msgstr "%e %b"
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:249
+#: src/transitPlan.js:254
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -1403,7 +1405,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: src/transitPlan.js:276
+#: src/transitPlan.js:281
 #, javascript-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -1415,7 +1417,7 @@ msgstr[2] "%d de minute"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: src/transitPlan.js:287
+#: src/transitPlan.js:292
 #, javascript-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -1427,7 +1429,7 @@ msgstr[2] "%d de ore"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: src/transitPlan.js:293
+#: src/transitPlan.js:298
 #, javascript-format
 msgid "%d:%02d hour"
 msgid_plural "%d:%02d hours"
@@ -1441,7 +1443,7 @@ msgstr[2] "%d:%02d de ore"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:642
+#: src/transitPlan.js:647
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -1642,3 +1644,6 @@ msgstr "%s mi"
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
+
+#~ msgid "OK"
+#~ msgstr "OK"
