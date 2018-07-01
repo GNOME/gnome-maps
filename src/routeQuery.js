@@ -26,7 +26,7 @@ const Application = imports.application;
 const PlaceStore = imports.placeStore;
 const TransitOptions = imports.transitOptions;
 
-const MAX_QUERY_POINTS = 10;
+var MAX_QUERY_POINTS = 10;
 
 var Transportation = {
     CAR:        0,
