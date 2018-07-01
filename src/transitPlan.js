@@ -447,6 +447,10 @@ var Leg = class Leg {
             /* if the above conditions are unmet, use the trip short name
              * as a fallback if it was shorter than the original route name */
             this._compactRoute = this._tripShortName;
+        } else if (this._color) {
+            /* as a fallback when the route has a defined color,
+             * use an empty compact label to get a colored badge */
+            this._compactRoute = '';
         } else {
             /* if none of the above is true, use the original route name,
              * and rely on label ellipsization */
