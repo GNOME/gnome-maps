@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2018-03-27 19:43+0000\n"
-"PO-Revision-Date: 2018-05-21 00:14+0200\n"
+"POT-Creation-Date: 2018-06-25 19:30+0000\n"
+"PO-Revision-Date: 2018-08-09 21:24+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
 msgid "GNOME Maps"
@@ -60,7 +60,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:8
-#: src/application.js:85 src/mainWindow.js:511
+#: src/application.js:83 src/mainWindow.js:511
 msgid "Maps"
 msgstr "Kartor"
 
@@ -369,11 +369,16 @@ msgstr "Öppna formlager"
 msgid "Open Shape Layer…"
 msgstr "Öppna formlager…"
 
-#: data/ui/location-service-notification.ui:13
+#: data/ui/location-service-dialog.ui:16
 msgid "Turn on location services to find your location"
 msgstr "Slå på platstjänster för att hitta din plats"
 
-#: data/ui/location-service-notification.ui:20
+#: data/ui/location-service-dialog.ui:28 data/ui/osm-edit-dialog.ui:283
+#: data/ui/zoom-in-dialog.ui:28
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: data/ui/location-service-dialog.ui:38
 msgid "Location Settings"
 msgstr "Platsinställningar"
 
@@ -567,10 +572,6 @@ msgctxt "dialog title"
 msgid "Edit on OpenStreetMap"
 msgstr "Redigera i OpenStreetMap"
 
-#: data/ui/osm-edit-dialog.ui:283
-msgid "Cancel"
-msgstr "Avbryt"
-
 #: data/ui/osm-edit-dialog.ui:310 src/osmEditDialog.js:512
 msgid "Next"
 msgstr "Nästa"
@@ -615,15 +616,15 @@ msgstr "Öppna formlager"
 msgid "Toggle visible"
 msgstr "Slå på/av favoriter"
 
-#: data/ui/sidebar.ui:266
+#: data/ui/sidebar.ui:275
 msgid "Route search by GraphHopper"
 msgstr "Ruttsökning utförd av GraphHopper"
 
-#: data/ui/sidebar.ui:287
+#: data/ui/sidebar.ui:296
 msgid "Route search by OpenTripPlanner"
 msgstr "Ruttsökning utförd av OpenTripPlanner"
 
-#: data/ui/sidebar.ui:360
+#: data/ui/sidebar.ui:369
 msgid ""
 "Routing itineraries for public transit is provided by GNOME\n"
 "using timetable data obtained from transit companies or agencies.\n"
@@ -704,13 +705,13 @@ msgstr "Aktuell plats"
 msgid "Accuracy: %s"
 msgstr "Noggrannhet: %s"
 
-#: data/ui/zoom-in-notification.ui:12
+#: data/ui/zoom-in-dialog.ui:16
 msgid "Zoom in to add location!"
 msgstr "Zooma in för att lägga till plats!"
 
-#: data/ui/zoom-in-notification.ui:19
-msgid "OK"
-msgstr "OK"
+#: data/ui/zoom-in-dialog.ui:38
+msgid "Zoom In"
+msgstr "Zooma in"
 
 #: lib/maps-file-tile-source.c:303 lib/maps-file-tile-source.c:379
 #: lib/maps-file-tile-source.c:459
@@ -729,11 +730,11 @@ msgstr "Saknar nödvändiga attribut"
 msgid "Could not find OSM element"
 msgstr "Kunde inte hitta OSM-element"
 
-#: src/application.js:98
+#: src/application.js:96
 msgid "A path to a local tiles directory structure"
 msgstr "En sökväg till en lokal katalogstruktur med kartrutor"
 
-#: src/application.js:102
+#: src/application.js:100
 msgid "Show the version of the program"
 msgstr "Visa programmets version"
 
@@ -817,7 +818,7 @@ msgstr "Rutt hit"
 msgid "Nothing found here!"
 msgstr "Ingenting hittades här!"
 
-#: src/contextMenu.js:185
+#: src/contextMenu.js:189
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -866,15 +867,15 @@ msgstr "tolkningsfel"
 msgid "unknown geometry"
 msgstr "okänd geometri"
 
-#: src/graphHopper.js:89 src/openTripPlanner.js:656
+#: src/graphHopper.js:93 src/openTripPlanner.js:652
 msgid "Route request failed."
 msgstr "Ruttbegäran misslyckades."
 
-#: src/graphHopper.js:97 src/openTripPlanner.js:619
+#: src/graphHopper.js:100 src/openTripPlanner.js:615
 msgid "No route found."
 msgstr "Hittade ingen rutt."
 
-#: src/graphHopper.js:189
+#: src/graphHopper.js:188
 msgid "Start!"
 msgstr "Starta!"
 
@@ -882,7 +883,7 @@ msgstr "Starta!"
 msgid "All Layer Files"
 msgstr "Alla lagerfiler"
 
-#: src/mainWindow.js:452
+#: src/mainWindow.js:444
 msgid "Failed to connect to location service"
 msgstr "Misslyckades att ansluta till platstjänst"
 
@@ -917,27 +918,19 @@ msgstr "Kartdata från %s och bidragsgivare"
 msgid "Map tiles provided by %s"
 msgstr "Kartrutor tillhandahållna av %s"
 
-#: src/mapView.js:350
+#: src/mapView.js:353
 msgid "File type is not supported"
 msgstr "Filtypen stöds inte"
 
-#: src/mapView.js:357
+#: src/mapView.js:360
 msgid "Failed to open layer"
 msgstr "Misslyckades med att öppna lager"
 
-#: src/mapView.js:393
+#: src/mapView.js:396
 msgid "Failed to open GeoURI"
 msgstr "Misslyckades med att öppna GeoURI"
 
-#: src/openTripPlanner.js:613
-msgid "No earlier alternatives found."
-msgstr "Inga tidigare alternativ hittades."
-
-#: src/openTripPlanner.js:614
-msgid "No later alternatives found."
-msgstr "Inga senare alternativ hittades."
-
-#: src/openTripPlanner.js:652
+#: src/openTripPlanner.js:648
 msgid "No timetable data found for this route."
 msgstr "Inga tidtabellsdata hittades för denna rutt."
 
@@ -1315,7 +1308,7 @@ msgstr "Ta bort position att passera"
 msgid "Reverse route"
 msgstr "Vänd rutt"
 
-#: src/sendToDialog.js:176
+#: src/sendToDialog.js:175
 msgid "Failed to open URI"
 msgstr "Misslyckades med att öppna URI"
 
@@ -1324,7 +1317,7 @@ msgid "failed to load file"
 msgstr "misslyckades med att läsa in fil"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:292
+#: src/sidebar.js:293
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Uppskattad tid: %s"
@@ -1381,6 +1374,14 @@ msgstr "Läs in tidigare alternativ"
 msgid "Load later alternatives"
 msgstr "Läs in senare alternativ"
 
+#: src/transitMoreRow.js:54
+msgid "No earlier alternatives found."
+msgstr "Inga tidigare alternativ hittades."
+
+#: src/transitMoreRow.js:56
+msgid "No later alternatives found."
+msgstr "Inga senare alternativ hittades."
+
 #.
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
@@ -1395,7 +1396,7 @@ msgstr "%e %b"
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:249
+#: src/transitPlan.js:254
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -1404,7 +1405,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: src/transitPlan.js:276
+#: src/transitPlan.js:281
 #, javascript-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -1415,7 +1416,7 @@ msgstr[1] "%d minuter"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: src/transitPlan.js:287
+#: src/transitPlan.js:292
 #, javascript-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -1426,7 +1427,7 @@ msgstr[1] "%d timmar"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: src/transitPlan.js:293
+#: src/transitPlan.js:298
 #, javascript-format
 msgid "%d:%02d hour"
 msgid_plural "%d:%02d hours"
@@ -1439,7 +1440,7 @@ msgstr[1] "%d:%02d timmar"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:642
+#: src/transitPlan.js:647
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -1640,6 +1641,9 @@ msgstr "%s miles"
 #, javascript-format
 msgid "%s ft"
 msgstr "%s fot"
+
+#~ msgid "OK"
+#~ msgstr "OK"
 
 #~ msgid "Open Shape Layer&#x2026;"
 #~ msgstr "Öppna formlager&#x2026;"
