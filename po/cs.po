@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2018-03-27 19:43+0000\n"
-"PO-Revision-Date: 2018-04-03 13:34+0200\n"
+"POT-Creation-Date: 2018-06-25 19:30+0000\n"
+"PO-Revision-Date: 2018-08-14 09:40+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -57,7 +57,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:8
-#: src/application.js:85 src/mainWindow.js:511
+#: src/application.js:83 src/mainWindow.js:511
 msgid "Maps"
 msgstr "Mapy"
 
@@ -368,11 +368,16 @@ msgstr "Otevřít uživatelskou vrstvu"
 msgid "Open Shape Layer…"
 msgstr "Otevřít uživatelskou vrstvu…"
 
-#: data/ui/location-service-notification.ui:13
+#: data/ui/location-service-dialog.ui:16
 msgid "Turn on location services to find your location"
 msgstr "Zapnout geolokační službu pro vyhledávání vaší polohy"
 
-#: data/ui/location-service-notification.ui:20
+#: data/ui/location-service-dialog.ui:28 data/ui/osm-edit-dialog.ui:283
+#: data/ui/zoom-in-dialog.ui:28
+msgid "Cancel"
+msgstr "Zrušit"
+
+#: data/ui/location-service-dialog.ui:38
 msgid "Location Settings"
 msgstr "Nastavení určování polohy"
 
@@ -565,10 +570,6 @@ msgctxt "dialog title"
 msgid "Edit on OpenStreetMap"
 msgstr "Úpravit v OpenStreetMap"
 
-#: data/ui/osm-edit-dialog.ui:283
-msgid "Cancel"
-msgstr "Zrušit"
-
 #: data/ui/osm-edit-dialog.ui:310 src/osmEditDialog.js:512
 msgid "Next"
 msgstr "Další"
@@ -613,15 +614,15 @@ msgstr "Otevřít uživatelskou vrstvu"
 msgid "Toggle visible"
 msgstr "Přepnout viditelnost"
 
-#: data/ui/sidebar.ui:266
+#: data/ui/sidebar.ui:275
 msgid "Route search by GraphHopper"
 msgstr "Hledání trasy pomocí GraphHopper"
 
-#: data/ui/sidebar.ui:287
+#: data/ui/sidebar.ui:296
 msgid "Route search by OpenTripPlanner"
 msgstr "Hledání trasy pomocí OpenTripPlanner"
 
-#: data/ui/sidebar.ui:360
+#: data/ui/sidebar.ui:369
 msgid ""
 "Routing itineraries for public transit is provided by GNOME\n"
 "using timetable data obtained from transit companies or agencies.\n"
@@ -700,13 +701,13 @@ msgstr "Současné místo"
 msgid "Accuracy: %s"
 msgstr "Přesnost: %s"
 
-#: data/ui/zoom-in-notification.ui:12
+#: data/ui/zoom-in-dialog.ui:16
 msgid "Zoom in to add location!"
 msgstr "Přiblížit pro přidání místa!"
 
-#: data/ui/zoom-in-notification.ui:19
-msgid "OK"
-msgstr "Budiž"
+#: data/ui/zoom-in-dialog.ui:38
+msgid "Zoom In"
+msgstr "Přiblížit"
 
 #: lib/maps-file-tile-source.c:303 lib/maps-file-tile-source.c:379
 #: lib/maps-file-tile-source.c:459
@@ -725,11 +726,11 @@ msgstr "Schází vyžadované atributy"
 msgid "Could not find OSM element"
 msgstr "Nelze najít prvek OSM"
 
-#: src/application.js:98
+#: src/application.js:96
 msgid "A path to a local tiles directory structure"
 msgstr "Cesta k místní struktuře složek s dlaždicemi"
 
-#: src/application.js:102
+#: src/application.js:100
 msgid "Show the version of the program"
 msgstr "Zobrazit verzi programu"
 
@@ -814,7 +815,7 @@ msgstr "Trasa sem"
 msgid "Nothing found here!"
 msgstr "Zde nebylo nic nalezeno!"
 
-#: src/contextMenu.js:185
+#: src/contextMenu.js:189
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -863,15 +864,15 @@ msgstr "chyba zpracování"
 msgid "unknown geometry"
 msgstr "neznámé geometrické údaje"
 
-#: src/graphHopper.js:89 src/openTripPlanner.js:656
+#: src/graphHopper.js:93 src/openTripPlanner.js:652
 msgid "Route request failed."
 msgstr "Požadavek na vyhledání cesty selhal."
 
-#: src/graphHopper.js:97 src/openTripPlanner.js:619
+#: src/graphHopper.js:100 src/openTripPlanner.js:615
 msgid "No route found."
 msgstr "Nenalezena žádná cesta."
 
-#: src/graphHopper.js:189
+#: src/graphHopper.js:188
 msgid "Start!"
 msgstr "Start!"
 
@@ -879,7 +880,7 @@ msgstr "Start!"
 msgid "All Layer Files"
 msgstr "Všechny soubory s vrstvami"
 
-#: src/mainWindow.js:452
+#: src/mainWindow.js:444
 msgid "Failed to connect to location service"
 msgstr "Selhalo připojení ke geolokační službě"
 
@@ -910,27 +911,19 @@ msgstr "Mapová data od %s a přispěvatelů"
 msgid "Map tiles provided by %s"
 msgstr "Mapové dlaždice poskytuje %s"
 
-#: src/mapView.js:350
+#: src/mapView.js:353
 msgid "File type is not supported"
 msgstr "Typ souboru není podporován"
 
-#: src/mapView.js:357
+#: src/mapView.js:360
 msgid "Failed to open layer"
 msgstr "Selhalo otevření vrstvy"
 
-#: src/mapView.js:393
+#: src/mapView.js:396
 msgid "Failed to open GeoURI"
 msgstr "Selhalo otevření adresy GeoURI"
 
-#: src/openTripPlanner.js:613
-msgid "No earlier alternatives found."
-msgstr "Nebyla nalezena žádná dřívější varianta."
-
-#: src/openTripPlanner.js:614
-msgid "No later alternatives found."
-msgstr "Nebyla nalezena žádná pozdější varianta."
-
-#: src/openTripPlanner.js:652
+#: src/openTripPlanner.js:648
 msgid "No timetable data found for this route."
 msgstr "Pro tuto trasu nebyly nalezeny žádné časové údaje."
 
@@ -1306,7 +1299,7 @@ msgstr "Odebrat podle místa"
 msgid "Reverse route"
 msgstr "Otočit trasu"
 
-#: src/sendToDialog.js:176
+#: src/sendToDialog.js:175
 msgid "Failed to open URI"
 msgstr "Selhalo otevření adresy URI"
 
@@ -1315,7 +1308,7 @@ msgid "failed to load file"
 msgstr "selhalo načtení souboru"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:292
+#: src/sidebar.js:293
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Odhadovaný čas: %s"
@@ -1372,6 +1365,14 @@ msgstr "Načíst dřívější variantu"
 msgid "Load later alternatives"
 msgstr "Načíst pozdější variantu"
 
+#: src/transitMoreRow.js:54
+msgid "No earlier alternatives found."
+msgstr "Nebyla nalezena žádná dřívější varianta."
+
+#: src/transitMoreRow.js:56
+msgid "No later alternatives found."
+msgstr "Nebyla nalezena žádná pozdější varianta."
+
 #.
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
@@ -1386,7 +1387,7 @@ msgstr "%-d. %B"
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:249
+#: src/transitPlan.js:254
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -1395,7 +1396,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: src/transitPlan.js:276
+#: src/transitPlan.js:281
 #, javascript-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -1407,7 +1408,7 @@ msgstr[2] "%d minut"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: src/transitPlan.js:287
+#: src/transitPlan.js:292
 #, javascript-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -1419,7 +1420,7 @@ msgstr[2] "%d hodin"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: src/transitPlan.js:293
+#: src/transitPlan.js:298
 #, javascript-format
 msgid "%d:%02d hour"
 msgid_plural "%d:%02d hours"
@@ -1433,7 +1434,7 @@ msgstr[2] "%d∶%02d hod"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:642
+#: src/transitPlan.js:647
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s – %s"
@@ -1634,6 +1635,3 @@ msgstr "%s mi"
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
-
-#~ msgid "Open Shape Layer&#x2026;"
-#~ msgstr "Otevřít uživatelskou vrstvu…"
