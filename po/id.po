@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps gnome-3-28\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2018-03-27 19:43+0000\n"
-"PO-Revision-Date: 2018-04-23 13:06+0700\n"
+"POT-Creation-Date: 2018-06-18 20:31+0000\n"
+"PO-Revision-Date: 2018-06-23 21:22+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome@i15n.org>\n"
 "Language: id\n"
@@ -59,7 +59,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:8
-#: src/application.js:85 src/mainWindow.js:511
+#: src/application.js:83 src/mainWindow.js:511
 msgid "Maps"
 msgstr "Peta"
 
@@ -369,11 +369,16 @@ msgstr "Buka layer shape"
 msgid "Open Shape Layer…"
 msgstr "Buka Layer Shape…"
 
-#: data/ui/location-service-notification.ui:13
+#: data/ui/location-service-dialog.ui:16
 msgid "Turn on location services to find your location"
 msgstr "Nyalakan layanan lokasi untuk menemukan lokasi Anda"
 
-#: data/ui/location-service-notification.ui:20
+#: data/ui/location-service-dialog.ui:28 data/ui/osm-edit-dialog.ui:283
+#: data/ui/zoom-in-dialog.ui:28
+msgid "Cancel"
+msgstr "Batal"
+
+#: data/ui/location-service-dialog.ui:38
 msgid "Location Settings"
 msgstr "Pengaturan Lokasi"
 
@@ -566,10 +571,6 @@ msgctxt "dialog title"
 msgid "Edit on OpenStreetMap"
 msgstr "Sunting pada OpenStreetMap"
 
-#: data/ui/osm-edit-dialog.ui:283
-msgid "Cancel"
-msgstr "Batal"
-
 #: data/ui/osm-edit-dialog.ui:310 src/osmEditDialog.js:512
 msgid "Next"
 msgstr "Selanjutnya"
@@ -614,15 +615,15 @@ msgstr "Buka Layer Shape"
 msgid "Toggle visible"
 msgstr "Jungkitkan kenampakan"
 
-#: data/ui/sidebar.ui:266
+#: data/ui/sidebar.ui:275
 msgid "Route search by GraphHopper"
 msgstr "Pencarian rute oleh GraphHopper"
 
-#: data/ui/sidebar.ui:287
+#: data/ui/sidebar.ui:296
 msgid "Route search by OpenTripPlanner"
 msgstr "Pencarian rute oleh OpenTripPlanner"
 
-#: data/ui/sidebar.ui:360
+#: data/ui/sidebar.ui:369
 msgid ""
 "Routing itineraries for public transit is provided by GNOME\n"
 "using timetable data obtained from transit companies or agencies.\n"
@@ -704,13 +705,13 @@ msgstr "Lokasi saat ini"
 msgid "Accuracy: %s"
 msgstr "Akurasi: %s"
 
-#: data/ui/zoom-in-notification.ui:12
+#: data/ui/zoom-in-dialog.ui:16
 msgid "Zoom in to add location!"
 msgstr "Perbesar untuk menambah lokasi!"
 
-#: data/ui/zoom-in-notification.ui:19
-msgid "OK"
-msgstr "OK"
+#: data/ui/zoom-in-dialog.ui:38
+msgid "Zoom In"
+msgstr "Perbesar"
 
 #: lib/maps-file-tile-source.c:303 lib/maps-file-tile-source.c:379
 #: lib/maps-file-tile-source.c:459
@@ -729,11 +730,11 @@ msgstr "Atribut yang diperlukan kurang"
 msgid "Could not find OSM element"
 msgstr "Tak bisa temukan elemen OSM"
 
-#: src/application.js:98
+#: src/application.js:96
 msgid "A path to a local tiles directory structure"
 msgstr "Suatu path ke sebuah struktur direktori ubin lokal"
 
-#: src/application.js:102
+#: src/application.js:100
 msgid "Show the version of the program"
 msgstr "Tampilkan versi program"
 
@@ -818,7 +819,7 @@ msgstr "Rute ke sini"
 msgid "Nothing found here!"
 msgstr "Tak ada yang ditemukan di sini!"
 
-#: src/contextMenu.js:185
+#: src/contextMenu.js:189
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -867,15 +868,15 @@ msgstr "galat penguraian"
 msgid "unknown geometry"
 msgstr "geometri tak dikenal"
 
-#: src/graphHopper.js:89 src/openTripPlanner.js:656
+#: src/graphHopper.js:93 src/openTripPlanner.js:652
 msgid "Route request failed."
 msgstr "Permintaan rute gagal."
 
-#: src/graphHopper.js:97 src/openTripPlanner.js:619
+#: src/graphHopper.js:100 src/openTripPlanner.js:615
 msgid "No route found."
 msgstr "Rute tak ditemukan."
 
-#: src/graphHopper.js:189
+#: src/graphHopper.js:188
 msgid "Start!"
 msgstr "Mulai!"
 
@@ -883,7 +884,7 @@ msgstr "Mulai!"
 msgid "All Layer Files"
 msgstr "Semua Berkas Lapisan"
 
-#: src/mainWindow.js:452
+#: src/mainWindow.js:444
 msgid "Failed to connect to location service"
 msgstr "Gagal menyambung ke layanan lokasi"
 
@@ -916,27 +917,19 @@ msgstr "Data peta oleh %s dan kontributor"
 msgid "Map tiles provided by %s"
 msgstr "Ubin peta disediakan oleh %s"
 
-#: src/mapView.js:350
+#: src/mapView.js:353
 msgid "File type is not supported"
 msgstr "Tipe berkas tak didukung"
 
-#: src/mapView.js:357
+#: src/mapView.js:360
 msgid "Failed to open layer"
 msgstr "Gagal membuka layer"
 
-#: src/mapView.js:393
+#: src/mapView.js:396
 msgid "Failed to open GeoURI"
 msgstr "Gagal membuka GeoURI"
 
-#: src/openTripPlanner.js:613
-msgid "No earlier alternatives found."
-msgstr "Tidak ditemukan alternatif sebelumnya."
-
-#: src/openTripPlanner.js:614
-msgid "No later alternatives found."
-msgstr "Tidak ada alternatif lain yang ditemukan."
-
-#: src/openTripPlanner.js:652
+#: src/openTripPlanner.js:648
 msgid "No timetable data found for this route."
 msgstr "Tidak ada data jadwal yang ditemukan untuk rute ini."
 
@@ -1312,7 +1305,7 @@ msgstr "Hapus lewat lokasi"
 msgid "Reverse route"
 msgstr "Rute sebaliknya"
 
-#: src/sendToDialog.js:176
+#: src/sendToDialog.js:175
 msgid "Failed to open URI"
 msgstr "Gagal membuka URI"
 
@@ -1321,7 +1314,7 @@ msgid "failed to load file"
 msgstr "gagal memuat berkas"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:292
+#: src/sidebar.js:293
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Perkiraan waktu: %s"
@@ -1378,6 +1371,14 @@ msgstr "Memuat alternatif sebelumnya"
 msgid "Load later alternatives"
 msgstr "Memuat alternatif kemudian"
 
+#: src/transitMoreRow.js:54
+msgid "No earlier alternatives found."
+msgstr "Tidak ditemukan alternatif sebelumnya."
+
+#: src/transitMoreRow.js:56
+msgid "No later alternatives found."
+msgstr "Tidak ada alternatif lain yang ditemukan."
+
 #.
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
@@ -1392,7 +1393,7 @@ msgstr "%e %b"
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:249
+#: src/transitPlan.js:254
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -1401,7 +1402,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: src/transitPlan.js:276
+#: src/transitPlan.js:281
 #, javascript-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -1411,7 +1412,7 @@ msgstr[0] "%d menit"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: src/transitPlan.js:287
+#: src/transitPlan.js:292
 #, javascript-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -1421,7 +1422,7 @@ msgstr[0] "%d jam"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: src/transitPlan.js:293
+#: src/transitPlan.js:298
 #, javascript-format
 msgid "%d:%02d hour"
 msgid_plural "%d:%02d hours"
@@ -1433,7 +1434,7 @@ msgstr[0] "%d:%02d jam"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:642
+#: src/transitPlan.js:647
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -1634,3 +1635,6 @@ msgstr "%s mil"
 #, javascript-format
 msgid "%s ft"
 msgstr "%s kaki"
+
+#~ msgid "OK"
+#~ msgstr "OK"
