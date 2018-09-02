@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2018-03-27 19:43+0000\n"
-"PO-Revision-Date: 2018-04-16 14:57+0200\n"
+"POT-Creation-Date: 2018-08-21 08:05+0000\n"
+"PO-Revision-Date: 2018-09-02 20:02+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
 msgid "GNOME Maps"
@@ -58,7 +58,7 @@ msgstr ""
 
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:8
-#: src/application.js:85 src/mainWindow.js:511
+#: src/mainWindow.js:503
 msgid "Maps"
 msgstr "Karte"
 
@@ -335,7 +335,7 @@ msgstr "Približi"
 #: data/ui/help-overlay.ui:66
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr "Umanji"
+msgstr "Udalji"
 
 #: data/ui/help-overlay.ui:73
 msgctxt "shortcut window"
@@ -367,11 +367,16 @@ msgstr "Otvori sloj karte"
 msgid "Open Shape Layer…"
 msgstr "Otvori sloj karte…"
 
-#: data/ui/location-service-notification.ui:13
+#: data/ui/location-service-dialog.ui:16
 msgid "Turn on location services to find your location"
 msgstr "Uključite uslugu lociranja kako bi pronašli svoju lokaciju"
 
-#: data/ui/location-service-notification.ui:20
+#: data/ui/location-service-dialog.ui:28 data/ui/osm-edit-dialog.ui:283
+#: data/ui/zoom-in-dialog.ui:28
+msgid "Cancel"
+msgstr "Odustani"
+
+#: data/ui/location-service-dialog.ui:38
 msgid "Location Settings"
 msgstr "Postavke lokacije"
 
@@ -410,11 +415,11 @@ msgstr "Uklj/Isklj omiljene"
 msgid "Print Route"
 msgstr "Ispiši rutu"
 
-#: data/ui/main-window.ui:202
+#: data/ui/main-window.ui:207
 msgid "Maps is offline!"
 msgstr "Karta je nedostupna!"
 
-#: data/ui/main-window.ui:212
+#: data/ui/main-window.ui:217
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -422,7 +427,7 @@ msgstr ""
 "Karta treba aktivni internet povezivanje kako bi ispravno funkcionirala, ali "
 "se ne može nijedan pronaći."
 
-#: data/ui/main-window.ui:221
+#: data/ui/main-window.ui:226
 msgid "Check your connection and proxy settings."
 msgstr "Provjerite vaše povezivanje i proxy postavke."
 
@@ -564,10 +569,6 @@ msgctxt "dialog title"
 msgid "Edit on OpenStreetMap"
 msgstr "Uredi na OpenStreetMap"
 
-#: data/ui/osm-edit-dialog.ui:283
-msgid "Cancel"
-msgstr "Odustani"
-
 #: data/ui/osm-edit-dialog.ui:310 src/osmEditDialog.js:512
 msgid "Next"
 msgstr "Sljedeće"
@@ -603,7 +604,7 @@ msgstr "Otvori lokaciju"
 msgid "_Open"
 msgstr "_Otvori"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:62
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:61
 msgid "Open Shape Layer"
 msgstr "Otvori sloj karte"
 
@@ -612,15 +613,15 @@ msgstr "Otvori sloj karte"
 msgid "Toggle visible"
 msgstr "Uklj/Isklj vidljivost"
 
-#: data/ui/sidebar.ui:266
+#: data/ui/sidebar.ui:275
 msgid "Route search by GraphHopper"
 msgstr "Ruta se traži pomoću GraphHopper"
 
-#: data/ui/sidebar.ui:287
+#: data/ui/sidebar.ui:296
 msgid "Route search by OpenTripPlanner"
 msgstr "Ruta se traži pomoću OpenTripPlanner"
 
-#: data/ui/sidebar.ui:360
+#: data/ui/sidebar.ui:369
 msgid ""
 "Routing itineraries for public transit is provided by GNOME\n"
 "using timetable data obtained from transit companies or agencies.\n"
@@ -701,13 +702,13 @@ msgstr "Trenutna lokacija"
 msgid "Accuracy: %s"
 msgstr "Točnost: %s"
 
-#: data/ui/zoom-in-notification.ui:12
+#: data/ui/zoom-in-dialog.ui:16
 msgid "Zoom in to add location!"
 msgstr "Uvećaj za dodavanje lokacije!"
 
-#: data/ui/zoom-in-notification.ui:19
-msgid "OK"
-msgstr "U REDU"
+#: data/ui/zoom-in-dialog.ui:38
+msgid "Zoom In"
+msgstr "Približi"
 
 #: lib/maps-file-tile-source.c:303 lib/maps-file-tile-source.c:379
 #: lib/maps-file-tile-source.c:459
@@ -726,11 +727,11 @@ msgstr "Nedostaju potrebna svojstva"
 msgid "Could not find OSM element"
 msgstr "Nemoguć pronalazak OSM elementa"
 
-#: src/application.js:98
+#: src/application.js:95
 msgid "A path to a local tiles directory structure"
 msgstr "Putanja do lokalne strukture bloka u direktoriju"
 
-#: src/application.js:102
+#: src/application.js:99
 msgid "Show the version of the program"
 msgstr "Prikaži inačicu programa"
 
@@ -798,23 +799,23 @@ msgstr ""
 "Vjerodajnice su istekle, otvorite mrežne račune za prijavu i omogućavanje "
 "ovog računa"
 
-#: src/contextMenu.js:95
+#: src/contextMenu.js:98
 msgid "Route from here"
 msgstr "Početak rute"
 
-#: src/contextMenu.js:97
+#: src/contextMenu.js:100
 msgid "Add destination"
 msgstr "Dodaj odredište"
 
-#: src/contextMenu.js:99
+#: src/contextMenu.js:102
 msgid "Route to here"
 msgstr "Završetak rute"
 
-#: src/contextMenu.js:128
+#: src/contextMenu.js:131
 msgid "Nothing found here!"
 msgstr "Ništa nije pronađeno ovdje!"
 
-#: src/contextMenu.js:185
+#: src/contextMenu.js:192
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -863,39 +864,39 @@ msgstr "greška obrade"
 msgid "unknown geometry"
 msgstr "nepoznata geometrija"
 
-#: src/graphHopper.js:89 src/openTripPlanner.js:656
+#: src/graphHopper.js:93 src/openTripPlanner.js:652
 msgid "Route request failed."
 msgstr "Zahtjev rute neuspio."
 
-#: src/graphHopper.js:97 src/openTripPlanner.js:619
+#: src/graphHopper.js:100 src/openTripPlanner.js:615
 msgid "No route found."
 msgstr "Ruta nije pronađena."
 
-#: src/graphHopper.js:189
+#: src/graphHopper.js:188
 msgid "Start!"
 msgstr "Kreni!"
 
-#: src/mainWindow.js:59
+#: src/mainWindow.js:58
 msgid "All Layer Files"
 msgstr "Sve datoteke sloja"
 
-#: src/mainWindow.js:452
+#: src/mainWindow.js:436
 msgid "Failed to connect to location service"
 msgstr "Neuspjelo povezivanje s uslugom lociranja"
 
-#: src/mainWindow.js:509
+#: src/mainWindow.js:501
 msgid "translator-credits"
 msgstr "gogo https://launchpad.net/~trebelnik-stefina"
 
-#: src/mainWindow.js:512
+#: src/mainWindow.js:504
 msgid "A map application for GNOME"
 msgstr "Aplikacija karata za GNOME"
 
-#: src/mainWindow.js:523
+#: src/mainWindow.js:515
 msgid "Copyright © 2011 – 2017 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Autorsko pravo © 2011 – 2017 Red Hat, Inc. i autori GNOME karta"
 
-#: src/mainWindow.js:542
+#: src/mainWindow.js:534
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Podatke karte omogućili %s i doprinositelji"
@@ -905,32 +906,24 @@ msgstr "Podatke karte omogućili %s i doprinositelji"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:558
+#: src/mainWindow.js:550
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Blokove karte je omogućio %s"
 
-#: src/mapView.js:350
+#: src/mapView.js:353
 msgid "File type is not supported"
 msgstr "Vrsta datoteke nije podržana"
 
-#: src/mapView.js:357
+#: src/mapView.js:360
 msgid "Failed to open layer"
 msgstr "Neuspjelo otvaranje sloja"
 
-#: src/mapView.js:393
+#: src/mapView.js:396
 msgid "Failed to open GeoURI"
 msgstr "Neuspjelo otvaranje GeoURI-ja"
 
-#: src/openTripPlanner.js:613
-msgid "No earlier alternatives found."
-msgstr "Nema pronađenih ranijih alternativa."
-
-#: src/openTripPlanner.js:614
-msgid "No later alternatives found."
-msgstr "Nema pronađenih kasnijih alternativa."
-
-#: src/openTripPlanner.js:652
+#: src/openTripPlanner.js:648
 msgid "No timetable data found for this route."
 msgstr "Nema pronađenih podataka rasporeda za ovu rutu."
 
@@ -1292,21 +1285,21 @@ msgid "Abort printing"
 msgstr "Prekini ispisivanje"
 
 #. Translators: this is add via location tooltip
-#: src/routeEntry.js:72
+#: src/routeEntry.js:74
 msgid "Add via location"
 msgstr "Dodaj pomoću lokacije"
 
 #. Translators: this is remove via location tooltip
-#: src/routeEntry.js:78
+#: src/routeEntry.js:84
 msgid "Remove via location"
 msgstr "Ukloni pomoću lokacije"
 
 #. Translators: this is reverse route tooltip
-#: src/routeEntry.js:84
+#: src/routeEntry.js:90
 msgid "Reverse route"
 msgstr "Obrni rutu"
 
-#: src/sendToDialog.js:176
+#: src/sendToDialog.js:175
 msgid "Failed to open URI"
 msgstr "Neuspjelo otvaranje URI-ja"
 
@@ -1315,7 +1308,7 @@ msgid "failed to load file"
 msgstr "neuspješno učitavanje datoteke"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:292
+#: src/sidebar.js:293
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Vrijeme dolaska: %s"
@@ -1372,6 +1365,14 @@ msgstr "Učitaj ranije alternative"
 msgid "Load later alternatives"
 msgstr "Učitaj kasnije alternative"
 
+#: src/transitMoreRow.js:54
+msgid "No earlier alternatives found."
+msgstr "Nema pronađenih ranijih alternativa."
+
+#: src/transitMoreRow.js:56
+msgid "No later alternatives found."
+msgstr "Nema pronađenih kasnijih alternativa."
+
 #.
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
@@ -1386,7 +1387,7 @@ msgstr "%e %b"
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:249
+#: src/transitPlan.js:254
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -1395,7 +1396,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: src/transitPlan.js:276
+#: src/transitPlan.js:281
 #, javascript-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -1407,7 +1408,7 @@ msgstr[2] "%d minuta"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: src/transitPlan.js:287
+#: src/transitPlan.js:292
 #, javascript-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -1419,7 +1420,7 @@ msgstr[2] "%d sati"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: src/transitPlan.js:293
+#: src/transitPlan.js:298
 #, javascript-format
 msgid "%d:%02d hour"
 msgid_plural "%d:%02d hours"
@@ -1433,7 +1434,7 @@ msgstr[2] "%d:%02d sati"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:642
+#: src/transitPlan.js:651
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -1634,6 +1635,9 @@ msgstr "%s mi"
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
+
+#~ msgid "OK"
+#~ msgstr "U REDU"
 
 #~ msgid "Open Shape Layer&#x2026;"
 #~ msgstr "Otvori sloj karte&#x2026;"
