@@ -1,5 +1,5 @@
 project('gnome-maps', 'c',
-	version: '3.29.92',
+	version: '3.30.0',
 	license: 'GPL2+'
 )
 
