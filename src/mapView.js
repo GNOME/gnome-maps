@@ -178,7 +178,12 @@ var MapView = GObject.registerClass({
 
     _initView() {
         let view = this.get_view();
-        view.zoom_level = 3;
+
+        // Start all the way zoomed out and centered on (0, 0)
+        // This way you can see the whole map on startup
+        view.zoom_level = MapMinZoom;
+        view.center_on(0, 0);
+
         view.min_zoom_level = MapMinZoom;
         view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_OUT_CUBIC;
         view.reactive = true;
