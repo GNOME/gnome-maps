@@ -554,17 +554,17 @@ var MainWindow = GObject.registerClass({
     }
 
     _onOpenShapeLayer() {
-        let fileChooser = new ShapeLayerFileChooser({
+        this._fileChooser = new ShapeLayerFileChooser({
             transient_for: this,
         });
 
-        fileChooser.connect('response', (widget, response) => {
+        this._fileChooser.connect('response', (widget, response) => {
             if (response === Gtk.ResponseType.ACCEPT) {
-                this._mapView.openShapeLayers(fileChooser.get_files());
+                this._mapView.openShapeLayers(this._fileChooser.get_files());
                 this.layersPopover.popdown();
             }
-            fileChooser.destroy();
+            this._fileChooser.destroy();
         });
-        fileChooser.show();
+        this._fileChooser.show();
     }
 });
