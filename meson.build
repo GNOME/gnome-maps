@@ -1,5 +1,5 @@
 project('gnome-maps', 'c',
-	version: '3.30.0',
+	version: '3.31.1',
 	license: 'GPL2+'
 )
 
@@ -57,4 +57,3 @@ meson.add_install_script(
   datadir,
   bindir
 )
-
