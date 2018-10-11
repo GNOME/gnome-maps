@@ -150,10 +150,6 @@ var Application = GObject.registerClass({
         }
     }
 
-    _onQuitActivate() {
-        this._mainWindow.destroy();
-    }
-
     _onOsmAccountSetupActivate() {
         let dialog = osmEdit.createAccountDialog(this._mainWindow, false);
 
@@ -199,14 +195,6 @@ var Application = GObject.registerClass({
         }
     }
 
-    _initAppMenu() {
-        let builder = new Gtk.Builder();
-        builder.add_from_resource('/org/gnome/Maps/ui/app-menu.ui');
-
-        let menu = builder.get_object('app-menu');
-        this.set_app_menu(menu);
-    }
-
     vfunc_startup() {
         super.vfunc_startup();
 
@@ -218,7 +206,6 @@ var Application = GObject.registerClass({
         this._initServices();
 
         Utils.addActions(this, {
-            'quit': { onActivate: this._onQuitActivate.bind(this) },
             'show-contact': {
                 paramType: 's',
                 onActivate: this._onShowContactActivate.bind(this)
@@ -231,7 +218,6 @@ var Application = GObject.registerClass({
         Gtk.IconTheme.get_default().append_search_path(GLib.build_filenamev([pkg.pkgdatadir,
                                                                              'icons']));
         this._initPlaceStore();
-        this._initAppMenu();
     }
 
     _initServices() {
