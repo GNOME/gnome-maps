@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.0 -->
+  <menu id="hamburgerMenu">
+    <section>
+      <item>
+        <attribute name="action">app.osm-account-setup</attribute>
+        <attribute name="label" translatable="yes">Set up OpenStreetMap Account</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
+        <attribute name="action">win.show-help-overlay</attribute>
+      </item>
+      <item>
+        <attribute name="action">win.about</attribute>
+        <attribute name="label" translatable="yes">About Maps</attribute>
+      </item>
+    </section>
+  </menu>
   <template class="Gjs_MainWindow" parent="GtkApplicationWindow">
     <property name="width-request">600</property>
     <property name="height-request">500</property>
@@ -93,6 +111,27 @@
               </object>
             </child>
           </object>
+        </child>
+        <child>
+          <object class="GtkMenuButton">
+            <property name="visible">True</property>
+            <property name="halign">end</property>
+            <property name="valign">center</property>
+            <property name="menu-model">hamburgerMenu</property>
+            <style>
+              <class name="image-button"/>
+            </style>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="icon-size">1</property>
+                <property name="icon-name">open-menu-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="pack-type">end</property>
+          </packing>
         </child>
         <child>
           <object class="GtkToggleButton" id="toggleSidebarButton">
