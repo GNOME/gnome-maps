@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2018-06-25 19:30+0000\n"
-"PO-Revision-Date: 2018-08-14 09:40+0200\n"
+"POT-Creation-Date: 2018-10-15 16:19+0000\n"
+"PO-Revision-Date: 2018-10-18 12:17+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -56,8 +56,8 @@ msgstr ""
 "Brno“ nebo „hotely poblíž Alexanderplatz, Berlín“."
 
 #. Translators: This is the program name.
-#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:8
-#: src/application.js:83 src/mainWindow.js:511
+#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
+#: src/mainWindow.js:503
 msgid "Maps"
 msgstr "Mapy"
 
@@ -197,22 +197,6 @@ msgstr "Dává najevo, jestli je uživatel přihlášen k úpravám dat OpenStre
 #: data/org.gnome.Maps.gschema.xml:72
 msgid "Last used transportation type for routing"
 msgstr "Poslední použitý typ dopravy pro hledání trasy"
-
-#: data/ui/app-menu.ui:7
-msgid "Set up OpenStreetMap Account"
-msgstr "Nastavit účet na OpenStreetMap"
-
-#: data/ui/app-menu.ui:12
-msgid "_Keyboard Shortcuts"
-msgstr "_Klávesové zkratky"
-
-#: data/ui/app-menu.ui:17
-msgid "About"
-msgstr "O aplikaci"
-
-#: data/ui/app-menu.ui:21
-msgid "Quit"
-msgstr "Ukončit"
 
 #: data/ui/check-in-dialog.ui:250 data/ui/check-in-dialog.ui:299
 msgid "Visibility"
@@ -381,46 +365,58 @@ msgstr "Zrušit"
 msgid "Location Settings"
 msgstr "Nastavení určování polohy"
 
+#: data/ui/main-window.ui:8
+msgid "Set up OpenStreetMap Account"
+msgstr "Nastavit účet na OpenStreetMap"
+
+#: data/ui/main-window.ui:13
+msgid "_Keyboard Shortcuts"
+msgstr "_Klávesové zkratky"
+
+#: data/ui/main-window.ui:18
+msgid "About Maps"
+msgstr "O aplikaci Mapy"
+
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:23
+#: data/ui/main-window.ui:41
 msgid "Go to current location"
 msgstr "Přejít na současné místo"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:44
+#: data/ui/main-window.ui:62
 msgid "Choose map type"
 msgstr "Zvolit typ mapy"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:69
+#: data/ui/main-window.ui:87
 msgid "Zoom out"
 msgstr "Oddálit"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:85
+#: data/ui/main-window.ui:103
 msgid "Zoom in"
 msgstr "Přiblížit"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:103
+#: data/ui/main-window.ui:142
 msgid "Toggle route planner"
 msgstr "Přepnout plánovač trasy"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:124
+#: data/ui/main-window.ui:163
 msgid "Toggle favorites"
 msgstr "Přepnout oblíbené"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:144
+#: data/ui/main-window.ui:183
 msgid "Print Route"
 msgstr "Tisk trasy"
 
-#: data/ui/main-window.ui:202
+#: data/ui/main-window.ui:246
 msgid "Maps is offline!"
 msgstr "Mapy jsou bez připojení!"
 
-#: data/ui/main-window.ui:212
+#: data/ui/main-window.ui:256
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -428,7 +424,7 @@ msgstr ""
 "Aby Mapy mohly fungovat, potřebují aktivní připojení k Internetu, ale žádné "
 "nenalezly."
 
-#: data/ui/main-window.ui:221
+#: data/ui/main-window.ui:265
 msgid "Check your connection and proxy settings."
 msgstr "Zkontrolujte své připojení a nastavení proxy."
 
@@ -605,7 +601,7 @@ msgstr "Otevřít místo"
 msgid "_Open"
 msgstr "_Otevřít"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:62
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:61
 msgid "Open Shape Layer"
 msgstr "Otevřít uživatelskou vrstvu"
 
@@ -726,11 +722,11 @@ msgstr "Schází vyžadované atributy"
 msgid "Could not find OSM element"
 msgstr "Nelze najít prvek OSM"
 
-#: src/application.js:96
+#: src/application.js:95
 msgid "A path to a local tiles directory structure"
 msgstr "Cesta k místní struktuře složek s dlaždicemi"
 
-#: src/application.js:100
+#: src/application.js:99
 msgid "Show the version of the program"
 msgstr "Zobrazit verzi programu"
 
@@ -799,23 +795,23 @@ msgstr ""
 "Přihlášení vypršelo. Otevřete prosím Účty on-line, přihlaste se tam a tím "
 "účet zpřístupněte."
 
-#: src/contextMenu.js:95
+#: src/contextMenu.js:98
 msgid "Route from here"
 msgstr "Trasa odtud"
 
-#: src/contextMenu.js:97
+#: src/contextMenu.js:100
 msgid "Add destination"
 msgstr "Přidat cíl"
 
-#: src/contextMenu.js:99
+#: src/contextMenu.js:102
 msgid "Route to here"
 msgstr "Trasa sem"
 
-#: src/contextMenu.js:128
+#: src/contextMenu.js:131
 msgid "Nothing found here!"
 msgstr "Zde nebylo nic nalezeno!"
 
-#: src/contextMenu.js:189
+#: src/contextMenu.js:192
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -876,27 +872,27 @@ msgstr "Nenalezena žádná cesta."
 msgid "Start!"
 msgstr "Start!"
 
-#: src/mainWindow.js:59
+#: src/mainWindow.js:58
 msgid "All Layer Files"
 msgstr "Všechny soubory s vrstvami"
 
-#: src/mainWindow.js:444
+#: src/mainWindow.js:436
 msgid "Failed to connect to location service"
 msgstr "Selhalo připojení ke geolokační službě"
 
-#: src/mainWindow.js:509
+#: src/mainWindow.js:501
 msgid "translator-credits"
 msgstr "Marek Černocký <marek@manet.cz>"
 
-#: src/mainWindow.js:512
+#: src/mainWindow.js:504
 msgid "A map application for GNOME"
 msgstr "Mapová aplikace pro GNOME"
 
-#: src/mainWindow.js:523
+#: src/mainWindow.js:515
 msgid "Copyright © 2011 – 2017 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 — 2017 Red Hat, Inc. a autoři Map GNOME"
 
-#: src/mainWindow.js:542
+#: src/mainWindow.js:534
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Mapová data od %s a přispěvatelů"
@@ -906,20 +902,20 @@ msgstr "Mapová data od %s a přispěvatelů"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:558
+#: src/mainWindow.js:550
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Mapové dlaždice poskytuje %s"
 
-#: src/mapView.js:353
+#: src/mapView.js:358
 msgid "File type is not supported"
 msgstr "Typ souboru není podporován"
 
-#: src/mapView.js:360
+#: src/mapView.js:365
 msgid "Failed to open layer"
 msgstr "Selhalo otevření vrstvy"
 
-#: src/mapView.js:396
+#: src/mapView.js:401
 msgid "Failed to open GeoURI"
 msgstr "Selhalo otevření adresy GeoURI"
 
@@ -1285,17 +1281,17 @@ msgid "Abort printing"
 msgstr "Zrušit tisk"
 
 #. Translators: this is add via location tooltip
-#: src/routeEntry.js:72
+#: src/routeEntry.js:74
 msgid "Add via location"
 msgstr "Přidat podle místa"
 
 #. Translators: this is remove via location tooltip
-#: src/routeEntry.js:78
+#: src/routeEntry.js:84
 msgid "Remove via location"
 msgstr "Odebrat podle místa"
 
 #. Translators: this is reverse route tooltip
-#: src/routeEntry.js:84
+#: src/routeEntry.js:90
 msgid "Reverse route"
 msgstr "Otočit trasu"
 
@@ -1434,7 +1430,7 @@ msgstr[2] "%d∶%02d hod"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:647
+#: src/transitPlan.js:651
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s – %s"
