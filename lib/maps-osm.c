@@ -74,9 +74,9 @@ parse_tag (const xmlAttr *attrs, GHashTable *tags)
   for (cur_attr = attrs; cur_attr; cur_attr = cur_attr->next)
     {
       if (g_str_equal (cur_attr->name, "k"))
-        key = cur_attr->children->content, "";
+        key = (char *) cur_attr->children->content, "";
       else if (g_str_equal (cur_attr->name, "v"))
-        value = cur_attr->children->content, "";
+        value = (char *) cur_attr->children->content, "";
       else
         g_warning ("Unexpected tag property: %s\n", cur_attr->name);
     }
@@ -170,7 +170,7 @@ get_sub_node (xmlDoc *doc)
   xmlXPathObject * xpath_obj;
 
   xpath_ctx = xmlXPathNewContext (doc);
-  xpath_obj = xmlXPathEvalExpression ("/osm/node|/osm/way|/osm/relation",
+  xpath_obj = xmlXPathEvalExpression ((xmlChar *) "/osm/node|/osm/way|/osm/relation",
                                       xpath_ctx);
 
   if (xpath_obj && xpath_obj->nodesetval && xpath_obj->nodesetval->nodeNr > 0)

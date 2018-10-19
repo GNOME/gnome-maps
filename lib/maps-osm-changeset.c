@@ -152,9 +152,9 @@ maps_osm_changeset_create_tag_node (const char *key, const char * value)
 {
   xmlNodePtr node;
 
-  node = xmlNewNode (NULL, "tag");
-  xmlNewProp (node, "k", key);
-  xmlNewProp (node, "v", value);
+  node = xmlNewNode (NULL, (xmlChar *) "tag");
+  xmlNewProp (node, (xmlChar *) "k", (xmlChar *) key);
+  xmlNewProp (node, (xmlChar *) "v", (xmlChar *) value);
 
   return node;
 }
@@ -170,9 +170,9 @@ maps_osm_changeset_serialize (const MapsOSMChangeset *changeset)
   xmlChar *result;
   int size;
 
-  doc = xmlNewDoc ("1.0");
-  osm_node = xmlNewNode (NULL, "osm");
-  changeset_node = xmlNewNode (NULL, "changeset");
+  doc = xmlNewDoc ((xmlChar *) "1.0");
+  osm_node = xmlNewNode (NULL, (xmlChar *) "osm");
+  changeset_node = xmlNewNode (NULL, (xmlChar *) "changeset");
   comment_node =
     maps_osm_changeset_create_tag_node ("comment", changeset->priv->comment);
   created_by_node =
@@ -186,5 +186,5 @@ maps_osm_changeset_serialize (const MapsOSMChangeset *changeset)
   xmlDocDumpMemory (doc, &result, &size);
   xmlFreeDoc (doc);
 
-  return result;
+  return (char *) result;
 }

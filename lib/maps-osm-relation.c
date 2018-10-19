@@ -78,16 +78,16 @@ maps_osm_relation_member_type_to_string (guint type)
 static xmlNodePtr
 maps_osm_relation_get_member_node (const MapsOSMRelationMember *member)
 {
-  xmlNodePtr node = xmlNewNode (NULL, "member");
+  xmlNodePtr node = xmlNewNode (NULL, (xmlChar *) "member");
   char buf[16];
   
   if (member->role)
-    xmlNewProp (node, "role", g_strdup (member->role));
+    xmlNewProp (node, (xmlChar *) "role", (xmlChar *) g_strdup (member->role));
 
-  xmlNewProp (node, "type",
-              maps_osm_relation_member_type_to_string (member->type));
+  xmlNewProp (node, (xmlChar *) "type",
+              (xmlChar *) maps_osm_relation_member_type_to_string (member->type));
   g_snprintf (buf, 16, "%" G_GUINT64_FORMAT, member->ref);
-  xmlNewProp (node, "ref", buf);
+  xmlNewProp (node, (xmlChar *) "ref", (xmlChar *) buf);
 
   return node;
 }
