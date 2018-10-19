@@ -234,7 +234,7 @@ maps_osm_object_foreach_tag (gpointer key, gpointer value, gpointer user_data)
       xmlNodePtr tag_node;
 
       tag_node = xmlNewNode (NULL, (xmlChar *) "tag");
-      xmlNewProp (tag_node, (xmlChar *) "k", (xmlChar *) key);
+      xmlNewProp (tag_node, (xmlChar *) "k", (xmlChar *) name);
       xmlNewProp (tag_node, (xmlChar *) "v", (xmlChar *) val);
       xmlAddChild (object_node, tag_node);
     }

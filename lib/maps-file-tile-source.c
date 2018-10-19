@@ -544,7 +544,6 @@ tile_loaded_cb (GFile        *file,
                 CallbackData *user_data)
 {
   ChamplainMapSource *map_source = user_data->map_source;
-  ChamplainTileSource *tile_source = CHAMPLAIN_TILE_SOURCE (map_source);
   ChamplainMapSource *next_source = champlain_map_source_get_next_source (map_source);
   ChamplainTile *tile = user_data->tile;
   CallbackData *data;
