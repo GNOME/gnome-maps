@@ -577,7 +577,6 @@ load_next:
 
   goto cleanup;
 
-finish:
   champlain_tile_set_fade_in (tile, TRUE);
   champlain_tile_set_state (tile, CHAMPLAIN_STATE_DONE);
   champlain_tile_display_content (tile);
