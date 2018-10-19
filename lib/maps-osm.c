@@ -66,7 +66,6 @@ parse_tag (const xmlAttr *attrs, GHashTable *tags)
   const xmlAttr *cur_attr;
   char *key;
   char *value;
-  char *result;
 
   key = NULL;
   value = NULL;
@@ -230,8 +229,6 @@ parse_node (const xmlNodePtr node, GError **error)
   const char *lon_string;
   double lon;
   
-  const xmlAttr *cur_attr;
-
   GHashTable *tags;
   GHashTable *attributes;
 
