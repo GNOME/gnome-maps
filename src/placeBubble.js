@@ -20,6 +20,7 @@
  */
 
 const GdkPixbuf = imports.gi.GdkPixbuf;
+const Geocode = imports.gi.GeocodeGlib;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
@@ -43,8 +44,16 @@ const THUMBNAIL_FETCH_SIZE = 128;
 // final scaled size of cropped thumnail
 const THUMBNAIL_FINAL_SIZE = 70;
 
-var PlaceBubble = GObject.registerClass(
-class PlaceBubble extends MapBubble.MapBubble {
+var PlaceBubble = GObject.registerClass({
+    Properties: {
+        'overpass-place': GObject.ParamSpec.object('overpass-place',
+                                                   'Overpass Place',
+                                                   'The place as filled in by Overpass',
+                                                   GObject.ParamFlags.READABLE |
+                                                   GObject.ParamFlags.WRITABLE,
+                                                   Geocode.Place)
+    }
+}, class PlaceBubble extends MapBubble.MapBubble {
 
     _init(params) {
         let ui = Utils.getUIObject('place-bubble', [ 'stack',
@@ -75,24 +84,25 @@ class PlaceBubble extends MapBubble.MapBubble {
         this._revealer = ui.contentRevealer;
 
         let overpass = new Overpass.Overpass();
+
+        /* use a property binding from the Overpass instance to avoid
+         * accessing accessing this object after the underlying GObject has
+         * been finalized */
+        overpass.bind_property('place', this, 'overpass-place',
+                               GObject.BindingFlags.DEFAULT);
+        this.connect('notify::overpass-place', () => this._onInfoAdded());
+
         if (Application.placeStore.exists(this.place, null)) {
 
             // If the place is stale, update from Overpass.
             if (Application.placeStore.isStale(this.place)) {
-                overpass.addInfo(this.place, (status, code) => {
-                    this._populate(this.place);
-                    Application.placeStore.updatePlace(this.place);
-                });
+                overpass.addInfo(this.place);
             } else {
                 let place = Application.placeStore.get(this.place);
                 this._populate(place);
             }
         } else if (this.place.store) {
-            overpass.addInfo(this.place, (status, code) => {
-                this._populate(this.place);
-                Application.placeStore.addPlace(this.place,
-                                                PlaceStore.PlaceType.RECENT);
-            });
+            overpass.addInfo(this.place);
         } else {
             this._populate(this.place);
         }
@@ -105,6 +115,14 @@ class PlaceBubble extends MapBubble.MapBubble {
             this._initEditButton();
 
         this._initExpandButton();
+    }
+
+    _onInfoAdded() {
+        this._populate(this.place);
+        if (Application.placeStore.exists(this.place, null))
+            Application.placeStore.updatePlace(this.place);
+        else
+            Application.placeStore.addPlace(this.place, PlaceStore.PlaceType.RECENT);
     }
 
     _formatWikiLink(wiki) {
