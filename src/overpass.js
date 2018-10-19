@@ -19,6 +19,7 @@
 
 const Format = imports.format;
 const Geocode = imports.gi.GeocodeGlib;
+const GObject = imports.gi.GObject;
 const Soup = imports.gi.Soup;
 
 const Place = imports.place;
@@ -33,10 +34,21 @@ const _DEFAULT_OUTPUT_SORT_ORDER = 'qt';
 
 const BASE_URL = 'https://overpass-api.de/api/interpreter';
 
-var Overpass = class Overpass {
+var Overpass = GObject.registerClass({
+    Properties: {
+        'place': GObject.ParamSpec.object('place',
+                                          'Place',
+                                          'Place with added information',
+                                          GObject.ParamFlags.READABLE |
+                                          GObject.ParamFlags.WRITABLE,
+                                          Geocode.Place)
+    }
+}, class Overpass extends GObject.Object {
 
-    constructor(params) {
+    _init(params) {
         params = params || { };
+
+        super._init();
 
         // maximum allowed runtime for the query in seconds
         this.timeout = params.timeout || _DEFAULT_TIMEOUT;
@@ -60,7 +72,7 @@ var Overpass = class Overpass {
         this._session = new Soup.Session();
     }
 
-    addInfo(place, callback) {
+    addInfo(place) {
         let url = this._getQueryUrl(place);
         let uri = new Soup.URI(url);
         let request = new Soup.Message({ method: 'GET',
@@ -68,16 +80,16 @@ var Overpass = class Overpass {
 
         this._session.queue_message(request, (obj, message) => {
             if (message.status_code !== Soup.KnownStatusCode.OK) {
-                callback(false, message.status_code, null);
+                Utils.debug('Failed to fetch Overpass result: ' + message.status_code);
                 return;
             }
             try {
                 let jsonObj = JSON.parse(message.response_body.data);
                 this._populatePlace(place, jsonObj);
-                callback(true,
-                         message.status_code);
+                this.place = place;
+                this.notify('place');
             } catch(e) {
-                callback(false, message.status_code);
+                Utils.debug('Failed to parse Overpass result');
             }
         });
     }
@@ -143,4 +155,4 @@ var Overpass = class Overpass {
                                                 this.outputSortOrder,
                                                 this.outputCount ]);
     }
-};
+});
