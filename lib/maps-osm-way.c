@@ -50,8 +50,8 @@ maps_osm_way_create_node_xml_node (guint64 ref)
   char buf[16];
 
   g_snprintf (buf, 16, "%" G_GUINT64_FORMAT, ref);
-  nd = xmlNewNode (NULL, "nd");
-  xmlNewProp (nd, "ref", buf);
+  nd = xmlNewNode (NULL, (xmlChar *) "nd");
+  xmlNewProp (nd, (xmlChar *) "ref", (xmlChar *) buf);
 
   return nd;
 }

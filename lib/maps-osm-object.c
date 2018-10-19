@@ -233,9 +233,9 @@ maps_osm_object_foreach_tag (gpointer key, gpointer value, gpointer user_data)
     {
       xmlNodePtr tag_node;
 
-      tag_node = xmlNewNode (NULL, "tag");
-      xmlNewProp (tag_node, "k", key);
-      xmlNewProp (tag_node, "v", val);
+      tag_node = xmlNewNode (NULL, (xmlChar *) "tag");
+      xmlNewProp (tag_node, (xmlChar *) "k", (xmlChar *) key);
+      xmlNewProp (tag_node, (xmlChar *) "v", (xmlChar *) val);
       xmlAddChild (object_node, tag_node);
     }
 }
@@ -244,8 +244,8 @@ static void
 maps_osm_object_foreach_type_attr (gpointer key, gpointer value,
                                    gpointer user_data)
 {
-  const char *name = (const char *) key;
-  const char *val = (const char *) value;
+  const xmlChar *name = (const xmlChar *) key;
+  const xmlChar *val = (const xmlChar *) value;
   xmlNodePtr object_node = (xmlNodePtr) user_data;
 
   xmlNewProp (object_node, name, val);
@@ -262,32 +262,32 @@ maps_osm_object_to_xml (const MapsOSMObject *object)
   GHashTable *type_attrs;
   xmlNodePtr type_sub_nodes;
 
-  doc = xmlNewDoc ("1.0");
-  osm_node = xmlNewNode (NULL, "osm");
+  doc = xmlNewDoc ((xmlChar *) "1.0");
+  osm_node = xmlNewNode (NULL, (xmlChar *) "osm");
   priv = (MapsOSMObjectPrivate *) maps_osm_object_get_instance_private (object);
   type = MAPS_OSMOBJECT_GET_CLASS (object)->get_xml_tag_name ();
-  object_node = xmlNewNode (NULL, type);
+  object_node = xmlNewNode (NULL, (const xmlChar *) type);
 
   /* add common OSM attributes */
   if (priv->id != 0)
     {
       char buf[32];
       g_snprintf (buf, 32, "%" G_GUINT64_FORMAT, priv->id);
-      xmlNewProp (object_node, "id", buf);
+      xmlNewProp (object_node, (xmlChar *) "id", (xmlChar *) buf);
     }
     
   if (priv->version != 0)
     {
       char buf[16];
       g_snprintf (buf, 16, "%d", priv->version);
-      xmlNewProp (object_node, "version", buf);
+      xmlNewProp (object_node, (xmlChar *) "version", (xmlChar *) buf);
     }
     
   if (priv->changeset != 0)
     {
       char buf[32];
       g_snprintf (buf, 32, "%" G_GUINT64_FORMAT, priv->changeset);
-      xmlNewProp (object_node, "changeset", buf);
+      xmlNewProp (object_node, (xmlChar *) "changeset", (xmlChar *) buf);
     }
 
   /* add OSM tags */
@@ -327,5 +327,5 @@ maps_osm_object_serialize (const MapsOSMObject *object)
   xmlDocDumpMemory (doc, &result, &size);
   xmlFreeDoc (doc);
   
-  return result;
+  return (char *) result;
 }
