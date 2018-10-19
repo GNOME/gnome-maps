@@ -224,8 +224,8 @@ maps_osm_object_delete_tag (MapsOSMObject *object, const char *key)
 static void
 maps_osm_object_foreach_tag (gpointer key, gpointer value, gpointer user_data)
 {
-  const char *name = (const char *) key;
-  const char *val = (const char *) value;
+  const xmlChar *name = (const xmlChar *) key;
+  const xmlChar *val = (const xmlChar *) value;
   xmlNodePtr object_node = (xmlNodePtr) user_data;
 
   /* skip tag if it has an empty placeholder value */
@@ -234,8 +234,8 @@ maps_osm_object_foreach_tag (gpointer key, gpointer value, gpointer user_data)
       xmlNodePtr tag_node;
 
       tag_node = xmlNewNode (NULL, (xmlChar *) "tag");
-      xmlNewProp (tag_node, (xmlChar *) "k", (xmlChar *) name);
-      xmlNewProp (tag_node, (xmlChar *) "v", (xmlChar *) val);
+      xmlNewProp (tag_node, (xmlChar *) "k", name);
+      xmlNewProp (tag_node, (xmlChar *) "v", val);
       xmlAddChild (object_node, tag_node);
     }
 }
