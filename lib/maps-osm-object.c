@@ -193,7 +193,7 @@ maps_osm_object_init (MapsOSMObject *object)
 const char *
 maps_osm_object_get_tag (const MapsOSMObject *object, const char *key)
 {
-  MapsOSMObjectPrivate *priv = maps_osm_object_get_instance_private (object);
+  MapsOSMObjectPrivate *priv = maps_osm_object_get_instance_private ((MapsOSMObject *) object);
 
   g_return_val_if_fail (key != NULL, NULL);
 
@@ -264,8 +264,8 @@ maps_osm_object_to_xml (const MapsOSMObject *object)
 
   doc = xmlNewDoc ((xmlChar *) "1.0");
   osm_node = xmlNewNode (NULL, (xmlChar *) "osm");
-  priv = (MapsOSMObjectPrivate *) maps_osm_object_get_instance_private (object);
-  type = MAPS_OSMOBJECT_GET_CLASS (object)->get_xml_tag_name ();
+  priv = (MapsOSMObjectPrivate *) maps_osm_object_get_instance_private ((MapsOSMObject *) object);
+  type = MAPS_OSMOBJECT_GET_CLASS ((MapsOSMObject *) object)->get_xml_tag_name ();
   object_node = xmlNewNode (NULL, (const xmlChar *) type);
 
   /* add common OSM attributes */
@@ -294,7 +294,7 @@ maps_osm_object_to_xml (const MapsOSMObject *object)
   g_hash_table_foreach (priv->tags, maps_osm_object_foreach_tag, object_node);
   
   /* add type-specific attributes */
-  type_attrs = MAPS_OSMOBJECT_GET_CLASS (object)->get_xml_attributes (object);
+  type_attrs = MAPS_OSMOBJECT_GET_CLASS ((MapsOSMObject *) object)->get_xml_attributes (object);
   if (type_attrs)
     {
       g_hash_table_foreach (type_attrs, maps_osm_object_foreach_type_attr,
@@ -304,7 +304,7 @@ maps_osm_object_to_xml (const MapsOSMObject *object)
  
   /* add type-specific sub-nodes */
   type_sub_nodes =
-    MAPS_OSMOBJECT_GET_CLASS (object)->get_xml_child_nodes (object);
+    MAPS_OSMOBJECT_GET_CLASS ((MapsOSMObject *) object)->get_xml_child_nodes (object);
   if (type_sub_nodes)
     xmlAddChildList (object_node, type_sub_nodes);
 

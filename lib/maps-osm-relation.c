@@ -95,7 +95,7 @@ maps_osm_relation_get_member_node (const MapsOSMRelationMember *member)
 static xmlNodePtr
 maps_osm_relation_get_xml_child_nodes (const MapsOSMObject *object)
 {
-  MapsOSMRelation *relation = MAPS_OSMRELATION (object);
+  MapsOSMRelation *relation = MAPS_OSMRELATION ((MapsOSMObject *) object);
   xmlNodePtr nodes = NULL;
   const GList *members = relation->priv->members;
   

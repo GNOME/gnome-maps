@@ -59,7 +59,7 @@ maps_osm_way_create_node_xml_node (guint64 ref)
 static xmlNodePtr
 maps_osm_way_get_xml_child_nodes(const MapsOSMObject *object)
 {
-  const MapsOSMWay *way = MAPS_OSMWAY (object);
+  const MapsOSMWay *way = MAPS_OSMWAY ((MapsOSMObject *) object);
   int i;
   xmlNodePtr result;
   xmlNodePtr next;

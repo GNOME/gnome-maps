@@ -92,7 +92,7 @@ maps_osm_node_get_xml_tag_name (void)
 static GHashTable *
 maps_osm_node_get_xml_attributes (const MapsOSMObject *object)
 {
-  const MapsOSMNode *node = MAPS_OSMNODE (object);
+  const MapsOSMNode *node = MAPS_OSMNODE ((MapsOSMObject *) object);
   GHashTable *attributes;
   char buf[G_ASCII_DTOSTR_BUF_SIZE];
   
