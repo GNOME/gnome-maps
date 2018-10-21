@@ -140,8 +140,8 @@ var LayersPopover = GObject.registerClass({
         let z = this._mapView.view.zoom_level - 1;
         if(z < 0) z = 0;
         let size = source.get_tile_size();
-        let x = source.get_x(z, this._mapView.view.longitude);
-        let y = source.get_y(z, this._mapView.view.latitude);
+        let x = Math.floor(source.get_x(z, this._mapView.view.longitude) / size);
+        let y = Math.floor(source.get_y(z, this._mapView.view.latitude) / size);
 
         // If the view hasn't moved enough that the tile is different,
         // then don't bother changing anything
@@ -153,10 +153,7 @@ var LayersPopover = GObject.registerClass({
         }
         previewInfo.lastLocation = {x, y, z};
 
-        let tile = Champlain.Tile.new_full(Math.floor(x / size),
-                                           Math.floor(y / size),
-                                           size, z);
-        source.fill_tile(tile);
+        let tile = Champlain.Tile.new_full(x, y, size, z);
 
         tile.connect("render-complete", () => {
             // Make sure we're still at the same location
@@ -173,6 +170,8 @@ var LayersPopover = GObject.registerClass({
                 widget.set_from_pixbuf(pixbuf);
             }
         });
+
+        source.fill_tile(tile);
     }
 
     setMapType(mapType) {
