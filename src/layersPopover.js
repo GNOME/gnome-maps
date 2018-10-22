@@ -156,7 +156,10 @@ var LayersPopover = GObject.registerClass({
 
         let tile = Champlain.Tile.new_full(x, y, size, z);
 
-        tile.connect("render-complete", () => {
+        tile.connect("render-complete", (a, b, c, error) => {
+            if (error)
+                return; // oh well
+
             // Make sure we're still at the same location
             // This is especially important on slow connections
             if (previewInfo.lastLocation.x == x &&
