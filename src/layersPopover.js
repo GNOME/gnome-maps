@@ -17,13 +17,19 @@
  * Author: Dario Di Nucci <linkin88mail@gmail.com>
  */
 
+const Champlain = imports.gi.Champlain;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
+const Gdk = imports.gi.Gdk;
 
+const MapSource = imports.mapSource;
 const MapView = imports.mapView;
 const Service = imports.service;
 const ShapeLayer = imports.shapeLayer;
 const Utils = imports.utils;
+
+const PREVIEW_WIDTH = 180;
+const PREVIEW_HEIGHT = 80;
 
 var ShapeLayerRow = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/shape-layer-row.ui',
@@ -56,6 +62,8 @@ var LayersPopover = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/layers-popover.ui',
     InternalChildren: [ 'streetLayerButton',
                         'aerialLayerButton',
+                        'streetLayerImage',
+                        'aerialLayerImage',
                         'layersListBox',
                         'loadLayerButton' ]
 }, class LayersPopover extends Gtk.Popover {
@@ -84,6 +92,19 @@ var LayersPopover = GObject.registerClass({
             row.set_header(header);
         });
 
+        this._layerPreviews = {
+            street: {
+                source: MapSource.createStreetSource(),
+                widget: this._streetLayerImage,
+                lastLocation: { x: -1, y: -1, z: -1 }
+            },
+            aerial: {
+                source: MapSource.createAerialSource(),
+                widget: this._aerialLayerImage,
+                lastLocation: { x: -1, y: -1, z: -1 }
+            }
+        };
+
         // disable the map type switch buttons if aerial is unavailable
         if (Service.getService().tiles.aerial) {
             this._streetLayerButton.connect('clicked', () => {
@@ -93,10 +114,65 @@ var LayersPopover = GObject.registerClass({
             this._aerialLayerButton.connect('clicked', () => {
                 this._mapView.setMapType(MapView.MapType.AERIAL);
             });
+
+            this._mapView.view.connect("notify::zoom-level",
+                                       this._setLayerPreviews.bind(this));
+            this._mapView.view.connect("notify::latitude",
+                                       this._setLayerPreviews.bind(this));
+            this._mapView.view.connect("notify::longitude",
+                                       this._setLayerPreviews.bind(this));
         } else {
             this._streetLayerButton.visible = false;
             this._aerialLayerButton.visible = false;
         }
+    }
+
+    _setLayerPreviews() {
+        this._setLayerPreviewImage("street");
+        this._setLayerPreviewImage("aerial");
+    }
+
+    _setLayerPreviewImage(layer) {
+        let previewInfo = this._layerPreviews[layer];
+        let source = previewInfo.source;
+        let widget = previewInfo.widget;
+
+        let z = this._mapView.view.zoom_level - 1;
+        if (z < 0)
+            z = 0;
+        let size = source.get_tile_size();
+        let x = Math.floor(source.get_x(z, this._mapView.view.longitude) / size);
+        let y = Math.floor(source.get_y(z, this._mapView.view.latitude) / size);
+
+        // If the view hasn't moved enough that the tile is different,
+        // then don't bother changing anything
+        if (previewInfo.lastLocation.x == x &&
+            previewInfo.lastLocation.y == y &&
+            previewInfo.lastLocation.z == z) {
+
+            return;
+        }
+        previewInfo.lastLocation = {x, y, z};
+
+        let tile = Champlain.Tile.new_full(x, y, size, z);
+
+        tile.connect("render-complete", () => {
+            // Make sure we're still at the same location
+            // This is especially important on slow connections
+            if (previewInfo.lastLocation.x == x &&
+                previewInfo.lastLocation.y == y &&
+                previewInfo.lastLocation.z == z) {
+
+                let pixbuf = Gdk.pixbuf_get_from_surface(tile.surface,
+                                                    (size - PREVIEW_WIDTH) / 2,
+                                                    (size - PREVIEW_HEIGHT) / 2,
+                                                    PREVIEW_WIDTH,
+                                                    PREVIEW_HEIGHT);
+                widget.set_from_pixbuf(pixbuf);
+            }
+        });
+
+        source.fill_tile(tile);
     }
 
     setMapType(mapType) {
