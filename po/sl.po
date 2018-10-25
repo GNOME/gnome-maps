@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2018-07-30 08:43+0000\n"
-"PO-Revision-Date: 2018-07-30 22:21+0200\n"
+"POT-Creation-Date: 2018-10-20 11:24+0000\n"
+"PO-Revision-Date: 2018-10-25 18:41+0200\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
 msgid "GNOME Maps"
@@ -60,7 +60,7 @@ msgstr ""
 "»Hotel blizu avtobusne postaje v Mariboru«.>"
 
 #. Translators: This is the program name.
-#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:8
+#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
 #: src/mainWindow.js:503
 msgid "Maps"
 msgstr "Zemljevidi"
@@ -199,22 +199,6 @@ msgstr "Kaže, ali je uporabnik prijavljen za urejanje podatkov OpenStreetMap."
 #: data/org.gnome.Maps.gschema.xml:72
 msgid "Last used transportation type for routing"
 msgstr "Nazadnje uporabljena vrsta transporta za vodenje"
-
-#: data/ui/app-menu.ui:7
-msgid "Set up OpenStreetMap Account"
-msgstr "Nastavi račun OpenStreetMap"
-
-#: data/ui/app-menu.ui:12
-msgid "_Keyboard Shortcuts"
-msgstr "_Tipkovne bližnjice"
-
-#: data/ui/app-menu.ui:17
-msgid "About"
-msgstr "O programu"
-
-#: data/ui/app-menu.ui:21
-msgid "Quit"
-msgstr "Izhod"
 
 #: data/ui/check-in-dialog.ui:250 data/ui/check-in-dialog.ui:299
 msgid "Visibility"
@@ -382,46 +366,58 @@ msgstr "Prekliči"
 msgid "Location Settings"
 msgstr "Nastavitve mesta"
 
+#: data/ui/main-window.ui:8
+msgid "Set up OpenStreetMap Account"
+msgstr "Nastavi račun OpenStreetMap"
+
+#: data/ui/main-window.ui:13
+msgid "_Keyboard Shortcuts"
+msgstr "_Tipkovne bližnjice"
+
+#: data/ui/main-window.ui:18
+msgid "About Maps"
+msgstr "O programu"
+
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:23
+#: data/ui/main-window.ui:41
 msgid "Go to current location"
 msgstr "Skoči na trenutno mesto"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:44
+#: data/ui/main-window.ui:62
 msgid "Choose map type"
 msgstr "Trenutna vrsta zemljevida"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:69
+#: data/ui/main-window.ui:87
 msgid "Zoom out"
 msgstr "Oddalji"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:85
+#: data/ui/main-window.ui:103
 msgid "Zoom in"
 msgstr "Približaj"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:103
+#: data/ui/main-window.ui:142
 msgid "Toggle route planner"
 msgstr "Preklopi plan poti"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:124
+#: data/ui/main-window.ui:163
 msgid "Toggle favorites"
 msgstr "Preklop priljubljenih"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:144
+#: data/ui/main-window.ui:183
 msgid "Print Route"
 msgstr "Natisni pot"
 
-#: data/ui/main-window.ui:207
+#: data/ui/main-window.ui:246
 msgid "Maps is offline!"
 msgstr "Zemljevid ni povezan v omrežje!"
 
-#: data/ui/main-window.ui:217
+#: data/ui/main-window.ui:256
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -429,7 +425,7 @@ msgstr ""
 "Program Zemljevidi zahtevajo za pravilno delovanje dejavno internetno "
 "povezavo, ki pa trenutno ni na voljo."
 
-#: data/ui/main-window.ui:226
+#: data/ui/main-window.ui:265
 msgid "Check your connection and proxy settings."
 msgstr "Preverite povezavo in nastavitve posredniškega strežnika."
 
@@ -722,11 +718,11 @@ msgstr "Določanje pravilne zgradbe v mapi je spodletelo."
 msgid "Failed to parse XML document"
 msgstr "Razčlenjevanje dokumenta XML je spodletelo"
 
-#: lib/maps-osm.c:252 lib/maps-osm.c:405
+#: lib/maps-osm.c:249 lib/maps-osm.c:402
 msgid "Missing required attributes"
 msgstr "Manjkajo zahtevani atributi"
 
-#: lib/maps-osm.c:453
+#: lib/maps-osm.c:450
 msgid "Could not find OSM element"
 msgstr "Ni mogoče najti predmeta OSM"
 
@@ -917,15 +913,15 @@ msgstr "Podatke zemljevida objavljajo %s in drugi sodelujoči"
 msgid "Map tiles provided by %s"
 msgstr "Podatke zemljevida objavlja %s"
 
-#: src/mapView.js:353
+#: src/mapView.js:358
 msgid "File type is not supported"
 msgstr "Vrsta datoteke ni podprta"
 
-#: src/mapView.js:360
+#: src/mapView.js:365
 msgid "Failed to open layer"
 msgstr "Odpiranje plasti je spodletelo"
 
-#: src/mapView.js:396
+#: src/mapView.js:401
 msgid "Failed to open GeoURI"
 msgstr "Odpiranje naslova URI Geo je spodletelo."
 
@@ -1000,7 +996,7 @@ msgstr ""
 "+ ...) Upoštevajte tudi krajevna določila zasebnosti, še posebej za zasebne "
 "telefonske številke."
 
-#: src/osmEditDialog.js:136 src/placeBubble.js:173
+#: src/osmEditDialog.js:136 src/placeBubble.js:191
 msgid "Wikipedia"
 msgstr "Wikipedija"
 
@@ -1197,35 +1193,35 @@ msgstr "Izbor vrste"
 msgid "Done"
 msgstr "Končano"
 
-#: src/placeBubble.js:125
+#: src/placeBubble.js:143
 msgid "Population:"
 msgstr "Populacija:"
 
-#: src/placeBubble.js:131
+#: src/placeBubble.js:149
 msgid "Altitude:"
 msgstr "Nadmorska višina:"
 
-#: src/placeBubble.js:136
+#: src/placeBubble.js:154
 msgid "Opening hours:"
 msgstr "Odpiralne ure:"
 
-#: src/placeBubble.js:141
+#: src/placeBubble.js:159
 msgid "Internet access:"
 msgstr "Internetni dostop:"
 
-#: src/placeBubble.js:146
+#: src/placeBubble.js:164
 msgid "Religion:"
 msgstr "Religija:"
 
-#: src/placeBubble.js:151
+#: src/placeBubble.js:169
 msgid "Toilets:"
 msgstr "Stranišča:"
 
-#: src/placeBubble.js:156
+#: src/placeBubble.js:174
 msgid "Wheelchair access:"
 msgstr "Invalidom prijazno:"
 
-#: src/placeBubble.js:162 src/placeBubble.js:166
+#: src/placeBubble.js:180 src/placeBubble.js:184
 msgid "Phone:"
 msgstr "Telefon:"
 
@@ -1644,6 +1640,9 @@ msgstr "%s mi"
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
+
+#~ msgid "Quit"
+#~ msgstr "Izhod"
 
 #~ msgid "OK"
 #~ msgstr "V redu"
