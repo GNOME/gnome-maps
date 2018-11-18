@@ -73,9 +73,9 @@ parse_tag (const xmlAttr *attrs, GHashTable *tags)
   for (cur_attr = attrs; cur_attr; cur_attr = cur_attr->next)
     {
       if (g_str_equal (cur_attr->name, "k"))
-        key = (char *) cur_attr->children->content, "";
+        key = (char *) cur_attr->children->content;
       else if (g_str_equal (cur_attr->name, "v"))
-        value = (char *) cur_attr->children->content, "";
+        value = (char *) cur_attr->children->content;
       else
         g_warning ("Unexpected tag property: %s\n", cur_attr->name);
     }
