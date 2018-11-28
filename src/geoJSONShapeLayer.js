@@ -18,6 +18,7 @@
  */
 
 const GObject = imports.gi.GObject;
+const ByteArray = imports.byteArray;
 
 const GeoJSONSource = imports.geoJSONSource;
 const ShapeLayer = imports.shapeLayer;
@@ -44,7 +45,7 @@ class GeoJSONShapeLayer extends ShapeLayer.ShapeLayer {
     }
 
     _parseContent() {
-        this._mapSource.parse(JSON.parse(this._fileContents));
+        this._mapSource.parse(JSON.parse(ByteArray.toString(this._fileContents)));
     }
 });
 
