@@ -22,7 +22,6 @@ const GObject = imports.gi.GObject;
 const GdkPixbuf = imports.gi.GdkPixbuf;
 const Geocode = imports.gi.GeocodeGlib;
 const Gtk = imports.gi.Gtk;
-const ByteArray = imports.byteArray;
 
 const ContactPlace = imports.contactPlace;
 const Place = imports.place;
@@ -166,7 +165,7 @@ class PlaceStore extends Gtk.ListStore {
         if (buffer === null)
             return;
         try {
-            let jsonArray = JSON.parse(ByteArray.toString(buffer));
+            let jsonArray = JSON.parse(buffer);
             jsonArray.forEach(({ place, type, added }) => {
                 // We expect exception to be thrown in this line when parsing
                 // gnome-maps 3.14 or below place stores since the "place"

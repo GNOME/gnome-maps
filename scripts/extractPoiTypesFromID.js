@@ -30,7 +30,6 @@
  */
 
 const Gio = imports.gi.Gio;
-const ByteArray = imports.byteArray;
 
 const PRESETS_PATH = 'data/presets/presets';
 const LOCALES_PATH = 'dist/locales';
@@ -83,7 +82,7 @@ function processTypes(basePath) {
 function processLocale(dirPath, fileName) {
     let file = Gio.File.new_for_path(dirPath + '/' + fileName);
     let [status, buffer] = file.load_contents(null);
-    let object = JSON.parse(ByteArray.toString(buffer));
+    let object = JSON.parse(buffer);
     let lang = fileName.substring(0, fileName.indexOf('.json'));
 
     for (let type in OUTPUT) {

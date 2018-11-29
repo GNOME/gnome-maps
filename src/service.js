@@ -22,7 +22,6 @@
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const Soup = imports.gi.Soup;
-const ByteArray = imports.byteArray;
 
 const Utils = imports.utils;
 
@@ -37,7 +36,7 @@ function _getServiceFromFile(filename) {
         log('Failed to open service file: ' + filename);
         System.exit(1);
     }
-    _service = JSON.parse(ByteArray.toString(data));
+    _service = JSON.parse(data);
     return _service;
 }
 
