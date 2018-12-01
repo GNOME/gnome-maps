@@ -36,7 +36,7 @@ function _getServiceFromFile(filename) {
         log('Failed to open service file: ' + filename);
         System.exit(1);
     }
-    _service = JSON.parse(data);
+    _service = JSON.parse(Utils.getBufferText(data));
     return _service;
 }
 
