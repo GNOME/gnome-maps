@@ -165,7 +165,7 @@ class PlaceStore extends Gtk.ListStore {
         if (buffer === null)
             return;
         try {
-            let jsonArray = JSON.parse(buffer);
+            let jsonArray = JSON.parse(Utils.getBufferText(buffer));
             jsonArray.forEach(({ place, type, added }) => {
                 // We expect exception to be thrown in this line when parsing
                 // gnome-maps 3.14 or below place stores since the "place"

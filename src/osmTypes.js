@@ -29,7 +29,7 @@ const _NUM_RECENT_TYPES = 10;
 
 const _file = Gio.file_new_for_uri('resource://org/gnome/Maps/osm-types.json');
 const [_status, _buffer] = _file.load_contents(null);
-const OSM_TYPE_MAP = JSON.parse(_buffer);
+const OSM_TYPE_MAP = JSON.parse(Utils.getBufferText(_buffer));
 
 /* Lists the OSM tags we base our notion of location types on */
 var OSM_TYPE_TAGS = ['aeroway', 'amenity', 'leisure', 'office', 'place', 'shop', 'tourism' ];
@@ -128,7 +128,7 @@ var RecentTypesStore = class RecentTypesStore {
             return;
         }
 
-        this._recentTypes = JSON.parse(buffer);
+        this._recentTypes = JSON.parse(Utils.getBufferText(buffer));
     }
 
     _save() {
