@@ -27,6 +27,7 @@ const Geocode = imports.gi.GeocodeGlib;
 const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
 const Soup = imports.gi.Soup;
+const ByteArray = imports.byteArray;
 
 var METRIC_SYSTEM = 1;
 var IMPERIAL_SYSTEM = 2;
@@ -363,4 +364,15 @@ function showDialog(msg, type, transientFor) {
 
     messageDialog.connect('response', () => messageDialog.destroy());
     messageDialog.show_all();
+}
+
+/* Gets a string from either a ByteArray or Uint8Array. This is for
+compatibility between two different Gjs versions, see discussion at
+https://gitlab.gnome.org/GNOME/gnome-maps/merge_requests/19 */
+function getBufferText(buffer) {
+    if (buffer instanceof Uint8Array) {
+        return ByteArray.toString(buffer);
+    } else {
+        return buffer.toString();
+    }
 }

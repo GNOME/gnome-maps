@@ -31,6 +31,8 @@
 
 const Gio = imports.gi.Gio;
 
+const Utils = imports.utils;
+
 const PRESETS_PATH = 'data/presets/presets';
 const LOCALES_PATH = 'dist/locales';
 const PRESET_TYPES = [ 'aeroway',
@@ -46,7 +48,7 @@ const OUTPUT = {};
 function parseJson(dirPath, fileName) {
     let file = Gio.File.new_for_path(dirPath + '/' + fileName);
     let [status, buffer] = file.load_contents(null);
-    let {tags, name} = JSON.parse(buffer);
+    let {tags, name} = JSON.parse(Utils.getBufferText(buffer));
 
     for (let key in tags) {
         let value = tags[key];
@@ -82,7 +84,7 @@ function processTypes(basePath) {
 function processLocale(dirPath, fileName) {
     let file = Gio.File.new_for_path(dirPath + '/' + fileName);
     let [status, buffer] = file.load_contents(null);
-    let object = JSON.parse(buffer);
+    let object = JSON.parse(Utils.getBufferText(buffer));
     let lang = fileName.substring(0, fileName.indexOf('.json'));
 
     for (let type in OUTPUT) {
