@@ -84,7 +84,7 @@ maps_contact_store_class_init (MapsContactStoreClass *klass)
   /**
    * MapsContactStore:state:
    *
-   * The type of the contact.
+   * The current loading state of the contact store.
    */
   pspec = g_param_spec_enum ("state",
                              "State",

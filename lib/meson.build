@@ -56,7 +56,7 @@ libmaps = shared_library(
 
 gnome.generate_gir(
 	libmaps,
-	sources: sources + [maps_enums[0], headers_private],
+	sources: sources + [maps_enums, headers_private],
 	nsversion: maps_gir_version,
 	namespace: maps_gir_name,
 	identifier_prefix: maps_ns,
