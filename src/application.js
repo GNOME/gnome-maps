@@ -212,6 +212,10 @@ var Application = GObject.registerClass({
             },
             'osm-account-setup': {
                 onActivate: this._onOsmAccountSetupActivate.bind(this)
+            },
+            'quit': {
+                onActivate: () => this.quit(),
+                accels: ['<Primary>Q']
             }
         });
 
