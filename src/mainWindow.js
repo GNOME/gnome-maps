@@ -184,9 +184,6 @@ var MainWindow = GObject.registerClass({
 
     _initActions() {
         Utils.addActions(this, {
-            'close': {
-                onActivate: () => this.close()
-            },
             'about': {
                 onActivate: () => this._onAboutActivate()
             },
