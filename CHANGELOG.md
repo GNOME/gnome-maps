@@ -9,10 +9,10 @@ Added/updated/fixed translations
   - Spanish
 
 All contributors to this release
-Daniel Mustieles <daniel.mustieles.contractor@bbva.com>
-Jakub Steiner <jimmac@gmail.com>
-James Westman <flyingpimonster@flyingpimonster.net>
-Marcus Lundblad <ml@update.uu.se>
+  - Daniel Mustieles <daniel.mustieles.contractor@bbva.com>
+  - Jakub Steiner <jimmac@gmail.com>
+  - James Westman <flyingpimonster@flyingpimonster.net>
+  - Marcus Lundblad <ml@update.uu.se>
 
 3.31.2 - Nov 12, 2018
 =========================
@@ -32,15 +32,15 @@ Added/updated/fixed translations
   - Czech
 
 All contributors to this release
-Anish Sheela <aneesh.nl@gmail.com>
-Carmen Bianca BAKKER <carmen@carmenbianca.eu>
-Charles Monzat <charles.monzat@numericable.fr>
-Debarshi Ray <debarshir@gnome.org>
-Dušan Kazik <prescott66@gmail.com>
-Marcus Lundblad <ml@update.uu.se>
-Marek Cernocky <marek_cernocky@conel.cz>
-Matej Urbančič <mateju@svn.gnome.org>
-Piotr Drąg <piotrdrag@gmail.com>
+  - Anish Sheela <aneesh.nl@gmail.com>
+  - Carmen Bianca BAKKER <carmen@carmenbianca.eu>
+  - Charles Monzat <charles.monzat@numericable.fr>
+  - Debarshi Ray <debarshir@gnome.org>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Cernocky <marek_cernocky@conel.cz>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Piotr Drąg <piotrdrag@gmail.com>
 
 3.31.1 - Oct 8, 2018
 =========================
@@ -55,11 +55,11 @@ Added/updated/fixed translations
   - Russian
 
 All contributors to this release
-FlyingPiMonster <flyingpimonster@flyingpimonster.net>
-Jakub Steiner <jimmac@gmail.com>
-Marcus Lundblad <ml@update.uu.se>
-Stas Solovey <whats_up@tut.by>
-Марко Костић <marko.m.kostic@gmail.com>
+  - FlyingPiMonster <flyingpimonster@flyingpimonster.net>
+  - Jakub Steiner <jimmac@gmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Stas Solovey <whats_up@tut.by>
+  - Марко Костић <marko.m.kostic@gmail.com>
 
 3.30.0 - Sep 3, 2018
 =========================
@@ -75,14 +75,14 @@ Added/updated/fixed translations
   - Korean
 
 All contributors to this release
-Ask Hjorth Larsen <asklarsen@gmail.com>
-Balázs Meskó <meskobalazs@fedoraproject.org>
-Fran Dieguez <frandieguez@gnome.org>
-Gianvito Cavasoli <gianvito@gmx.it>
-gogo <trebelnik2@gmail.com>
-Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>
-Seong-ho Cho <shcho@gnome.org>
-Trần Ngọc Quân <vnwildman@gmail.com>
+  - Ask Hjorth Larsen <asklarsen@gmail.com>
+  - Balázs Meskó <meskobalazs@fedoraproject.org>
+  - Fran Dieguez <frandieguez@gnome.org>
+  - Gianvito Cavasoli <gianvito@gmx.it>
+  - gogo <trebelnik2@gmail.com>
+  - Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>
+  - Seong-ho Cho <shcho@gnome.org>
+  - Trần Ngọc Quân <vnwildman@gmail.com>
 
 3.29.92 - Aug 27, 2018
 =========================
@@ -98,12 +98,12 @@ Added/updated/fixed translations
   - Czech
 
 All contributors to this release
-Baurzhan Muftakhidinov <baurthefirst@gmail.com>
-Jiri Grönroos <jiri.gronroos@iki.fi>
-Kukuh Syafaat <kukuhsyafaat@gnome.org>
-Marcus Lundblad <ml@update.uu.se>
-Marek Cernocky <marek_cernocky@conel.cz>
-Sveinn í Felli <sv1@fellsnet.is>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Kukuh Syafaat <kukuhsyafaat@gnome.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Cernocky <marek_cernocky@conel.cz>
+  - Sveinn í Felli <sv1@fellsnet.is>
 
 3.29.91 - Aug 13, 2018
 =========================
@@ -121,14 +121,14 @@ Added/updated/fixed translations
   - Slovenian
 
 All contributors to this release
-Anders Jonsson <anders.jonsson@norsjovallen.se>
-Aurimas Černius <aurisc4@gmail.com>
-Claude Paroz <claude@2xlibre.net>
-Emin Tufan Çetin <etcetin@gmail.com>
-Jordan Petridis <jordanpetridis@protonmail.com>
-Mario Blättermann <mario.blaettermann@gmail.com>
-Matej Urbančič <mateju@svn.gnome.org>
-Piotr Drąg <piotrdrag@gmail.com>
+  - Anders Jonsson <anders.jonsson@norsjovallen.se>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Claude Paroz <claude@2xlibre.net>
+  - Emin Tufan Çetin <etcetin@gmail.com>
+  - Jordan Petridis <jordanpetridis@protonmail.com>
+  - Mario Blättermann <mario.blaettermann@gmail.com>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Piotr Drąg <piotrdrag@gmail.com>
 
 3.29.90 - Jul 30, 2018
 =========================
@@ -140,9 +140,9 @@ Added/updated/fixed translations
   - French
 
 All contributors to this release
-Charles Monzat <charles.monzat@numericable.fr>
-Jordan Petridis <jordanpetridis@protonmail.com>
-Marcus Lundblad <ml@update.uu.se>
+  - Charles Monzat <charles.monzat@numericable.fr>
+  - Jordan Petridis <jordanpetridis@protonmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
 
 3.29.4 - Jul 16, 2018
 =========================
@@ -163,16 +163,16 @@ Added/updated/fixed translations
   - Spanish
 
 All contributors to this release
-Alberto Fanjul <albertofanjul@gmail.com>
-Bruno Lopes da Silva <brunolopesbldsb@gmail.com>
-Daniel Mustieles <daniel.mustieles.contractor@bbva.com>
-Daniel Șerbănescu <daniel@serbanescu.dk>
-Efstathios Iosifidis <eiosifidis@gnome.org>
-Fabio Tomat <f.t.public@gmail.com>
-Marcus Lundblad <ml@update.uu.se>
-Pere Orga <pere@orga.cat>
-Vinayak Aggarwal <f20170008@goa.bits-pilani.ac.in>
-Yi-Jyun Pan <pan93412@gmail.com>
+  - Alberto Fanjul <albertofanjul@gmail.com>
+  - Bruno Lopes da Silva <brunolopesbldsb@gmail.com>
+  - Daniel Mustieles <daniel.mustieles.contractor@bbva.com>
+  - Daniel Șerbănescu <daniel@serbanescu.dk>
+  - Efstathios Iosifidis <eiosifidis@gnome.org>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Pere Orga <pere@orga.cat>
+  - Vinayak Aggarwal <f20170008@goa.bits-pilani.ac.in>
+  - Yi-Jyun Pan <pan93412@gmail.com>
 
 3.29.3 - Jun 19, 2018
 =========================
@@ -189,12 +189,12 @@ Added/updated/fixed translations
   - Chinese (China)
 
 All contributors to this release:
-Cédric Valmary <cvalmary@yahoo.fr>
-Enrico Nicoletto <liverig@gmail.com>
-Marcus Lundblad <ml@update.uu.se>
-Mingcong Bai <jeffbai@aosc.xyz>
-nick richards <nick.richards@gmail.com>
-Yi-Jyun Pan <pan93412@gmail.com>
+  - Cédric Valmary <cvalmary@yahoo.fr>
+  - Enrico Nicoletto <liverig@gmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Mingcong Bai <jeffbai@aosc.xyz>
+  - nick richards <nick.richards@gmail.com>
+  - Yi-Jyun Pan <pan93412@gmail.com>
 
 3.29.2 - May 21, 2018
 =========================
@@ -212,17 +212,17 @@ Added/updated/fixed translations
   - Turkish
 
 All contributors to this release:
-Anders Jonsson <anders.jonsson@norsjovallen.se>
-Daniel Mustieles <daniel.mustieles.contractor@bbva.com>
-Daniel Șerbănescu <daniel@serbanescu.dk>
-Efstathios Iosifidis <eiosifidis@gnome.org>
-Fabio Tomat <f.t.public@gmail.com>
-Kukuh Syafaat <kukuhsyafaat@gnome.org>
-Mandy Wang <wangmychn@gmail.com>
-Marcus Lundblad <ml@update.uu.se>
-Matej Urbančič <mateju@svn.gnome.org>
-Milo Casagrande <milo@ubuntu.com>
-Muhammet Kara <muhammetk@gmail.com>
+  - Anders Jonsson <anders.jonsson@norsjovallen.se>
+  - Daniel Mustieles <daniel.mustieles.contractor@bbva.com>
+  - Daniel Șerbănescu <daniel@serbanescu.dk>
+  - Efstathios Iosifidis <eiosifidis@gnome.org>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Kukuh Syafaat <kukuhsyafaat@gnome.org>
+  - Mandy Wang <wangmychn@gmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Milo Casagrande <milo@ubuntu.com>
+  - Muhammet Kara <muhammetk@gmail.com>
 
 3.29.1 - Apr 16, 2018
 =========================
@@ -255,23 +255,23 @@ Added/updated/fixed translations
   - Russian
 
 All contributors to this release:
-Anders Jonsson <anders.jonsson@norsjovallen.se>
-Andika Triwidada <atriwidada@gnome.org>
-Aurimas Černius <aurisc4@gmail.com>
-Balázs Meskó <meskobalazs@fedoraproject.org>
-Charles Monzat <superboa@hotmail.fr>
-Daniel Șerbănescu <daniel@serbanescu.dk>
-gogo <trebelnik2@gmail.com>
-Justin van Steijn <jvs@fsfe.org>
-Marcus Lundblad <ml@update.uu.se>
-Marek Cernocky <marek_cernocky@conel.cz>
-Mario Blättermann <mario.blaettermann@gmail.com>
-Matej Urbančič <mateju@svn.gnome.org>
-Piotr Drąg <piotrdrag@gmail.com>
-Rafael Fontenelle <rafaelff@gnome.org>
-Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>
-Stas Solovey <whats_up@tut.by>
-Марко Костић <marko.m.kostic@gmail.com>
+  - Anders Jonsson <anders.jonsson@norsjovallen.se>
+  - Andika Triwidada <atriwidada@gnome.org>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Balázs Meskó <meskobalazs@fedoraproject.org>
+  - Charles Monzat <superboa@hotmail.fr>
+  - Daniel Șerbănescu <daniel@serbanescu.dk>
+  - gogo <trebelnik2@gmail.com>
+  - Justin van Steijn <jvs@fsfe.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Cernocky <marek_cernocky@conel.cz>
+  - Mario Blättermann <mario.blaettermann@gmail.com>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Rafael Fontenelle <rafaelff@gnome.org>
+  - Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>
+  - Stas Solovey <whats_up@tut.by>
+  - Марко Костић <marko.m.kostic@gmail.com>
 
 3.28.0 - Mar 12, 2018
 =========================
@@ -289,13 +289,13 @@ Added/updated/fixed translations
   - Danish
 
 All contributors to this release:
-Anders Jonsson <anders.jonsson@norsjovallen.se>
-Ask Hjorth Larsen <asklarsen@gmail.com>
-Efstathios Iosifidis <eiosifidis@gnome.org>
-Gianvito Cavasoli <gianvito@gmx.it>
-Marcus Lundblad <ml@update.uu.se>
-Марко Костић <marko.m.kostic@gmail.com>
-Милош Поповић <gpopac@gmail.com>
+  - Anders Jonsson <anders.jonsson@norsjovallen.se>
+  - Ask Hjorth Larsen <asklarsen@gmail.com>
+  - Efstathios Iosifidis <eiosifidis@gnome.org>
+  - Gianvito Cavasoli <gianvito@gmx.it>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Марко Костић <marko.m.kostic@gmail.com>
+  - Милош Поповић <gpopac@gmail.com>
 
 3.27.92 - Mar 5, 2018
 =========================
@@ -326,25 +326,25 @@ Added/updated/fixed translations
   - Polish
 
 All contributors to this release:
-Alain Lojewski <allomervan@gmail.com>
-Aurimas Černius <aurisc4@gmail.com>
-Baurzhan Muftakhidinov <baurthefirst@gmail.com>
-Dušan Kazik <prescott66@gmail.com>
-Emin Tufan Çetin <etcetin@gmail.com>
-Fran Dieguez <frandieguez@gnome.org>
-Furkan Ahmet Kara <furkanahmetkara.fk@gmail.com>
-Gun Chleoc <fios@foramnagaidhlig.net>
-gogo <trebelnik2@gmail.com>
-Jiri Grönroos <jiri.gronroos@iki.fi>
-Kwangseob Jeong <myddpp@gmail.com>
-Marcus Lundblad <ml@update.uu.se>
-Marek Cernocky <marek_cernocky@conel.cz>
-Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
-Piotr Drąg <piotrdrag@gmail.com>
-Rafael Fontenelle <rafaelff@gnome.org>
-Rūdolfs Mazurs <rudolfsm@src.gnome.org>
-Simon McVittie <smcv@debian.org>
-Trần Ngọc Quân <vnwildman@gmail.com>
+  - Alain Lojewski <allomervan@gmail.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Emin Tufan Çetin <etcetin@gmail.com>
+  - Fran Dieguez <frandieguez@gnome.org>
+  - Furkan Ahmet Kara <furkanahmetkara.fk@gmail.com>
+  - Gun Chleoc <fios@foramnagaidhlig.net>
+  - gogo <trebelnik2@gmail.com>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Kwangseob Jeong <myddpp@gmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Cernocky <marek_cernocky@conel.cz>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Rafael Fontenelle <rafaelff@gnome.org>
+  - Rūdolfs Mazurs <rudolfsm@src.gnome.org>
+  - Simon McVittie <smcv@debian.org>
+  - Trần Ngọc Quân <vnwildman@gmail.com>
 
 3.27.90 - Feb 5, 2018
 =========================
@@ -369,18 +369,18 @@ Added/updated/fixed translations
   - Finnish
 
 All contributors to this release:
-Balázs Meskó <meskobalazs@fedoraproject.org>
-Balázs Úr <balazs@urbalazs.hu>
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Fabio Tomat <f.t.public@gmail.com>
-Gil Forcada <gforcada@gnome.org>
-Jiri Grönroos <jiri.gronroos@iki.fi>
-Jordi Mas <jmas@softcatala.org>
-Kukuh Syafaat <syafaatkukuh@gmail.com>
-Marcus Lundblad <ml@update.uu.se>
-Tim Sabsch <tim@sabsch.com>
-Tomasz Miąsko <tomasz.miasko@gmail.com>
-Vibhanshu Vaibhav <ayush.vibhanshu@gmail.com>
+  - Balázs Meskó <meskobalazs@fedoraproject.org>
+  - Balázs Úr <balazs@urbalazs.hu>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Gil Forcada <gforcada@gnome.org>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Jordi Mas <jmas@softcatala.org>
+  - Kukuh Syafaat <syafaatkukuh@gmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Tim Sabsch <tim@sabsch.com>
+  - Tomasz Miąsko <tomasz.miasko@gmail.com>
+  - Vibhanshu Vaibhav <ayush.vibhanshu@gmail.com>
 
 3.27.4 - Jan 8, 2018
 =========================
@@ -404,16 +404,16 @@ Added/updated/fixed translations
   - Friulian
 
 All contributors to this release:
-Anders Jonsson <anders.jonsson@norsjovallen.se>
-Andreas Nilsson <anilsson@redhat.com>
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Emin Tufan Çetin <etcetin@gmail.com>
-Fabio Tomat <f.t.public@gmail.com>
-Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>
-Marcus Lundblad <ml@update.uu.se>
-Marek Černocký <marek@manet.cz>
-Mario Blättermann <mario.blaettermann@gmail.com>
-Марко Костић <marko.m.kostic@gmail.com>
+  - Anders Jonsson <anders.jonsson@norsjovallen.se>
+  - Andreas Nilsson <anilsson@redhat.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Emin Tufan Çetin <etcetin@gmail.com>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Černocký <marek@manet.cz>
+  - Mario Blättermann <mario.blaettermann@gmail.com>
+  - Марко Костић <marko.m.kostic@gmail.com>
 
 3.27.3 - Dec 11, 2017
 =========================
@@ -429,11 +429,11 @@ Added/updated/fixed translations
   - Czech
 
 All contributors to this release:
-Jeremy Bicha <jbicha@ubuntu.com>
-Kukuh Syafaat <syafaatkukuh@gmail.com>
-Marcus Lundblad <ml@update.uu.se>
-Marek Cernocky <marek_cernocky@conel.cz>
-Sveinn í Felli <sv1@fellsnet.is>
+  - Jeremy Bicha <jbicha@ubuntu.com>
+  - Kukuh Syafaat <syafaatkukuh@gmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Cernocky <marek_cernocky@conel.cz>
+  - Sveinn í Felli <sv1@fellsnet.is>
 
 3.27.2 - Nov 13, 2017
 =========================
@@ -453,15 +453,15 @@ Added/updated/fixed translations
   - German
 
 All contributors to this release:
-Dušan Kazik <prescott66@gmail.com>
-Dylan McCall <dylan@dylanmccall.com>
-Fabio Tomat <f.t.public@gmail.com>
-gogo <trebelnik2@gmail.com>
-Kjartan Maraas <kmaraas@gnome.org>
-Marcus Lundblad <ml@update.uu.se>
-Marek Cernocky <marek_cernocky@conel.cz>
-Mario Blättermann <mario.blaettermann@gmail.com>
-Solomon Nadar <solomonsunder@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Dylan McCall <dylan@dylanmccall.com>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - gogo <trebelnik2@gmail.com>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Cernocky <marek_cernocky@conel.cz>
+  - Mario Blättermann <mario.blaettermann@gmail.com>
+  - Solomon Nadar <solomonsunder@gmail.com>
 
 3.27.1 - Oct 16, 2017
 =========================
@@ -485,13 +485,13 @@ Added/updated/fixed translations
   - Greek
 
 All contributors to this release:
-Anup Agarwal <108anup@gmail.com>
-Efstathios Iosifidis <eiosifidis@gnome.org>
-Khaled Hosny <khaledhosny@eglug.org>
-Marcus Lundblad <ml@update.uu.se>
-Piotr Drąg <piotrdrag@gmail.com>
-Sveinn í Felli <sv1@fellsnet.is>
-Xavi Ivars <xavi.ivars@gmail.com>
+  - Anup Agarwal <108anup@gmail.com>
+  - Efstathios Iosifidis <eiosifidis@gnome.org>
+  - Khaled Hosny <khaledhosny@eglug.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Sveinn í Felli <sv1@fellsnet.is>
+  - Xavi Ivars <xavi.ivars@gmail.com>
 
 3.26.0 - Sep 11, 2017
 =========================
@@ -506,13 +506,13 @@ Added/updated/fixed translations:
   - Dutch
 
 All contributors to this release:
-Anders Jonsson <anders.jonsson@norsjovallen.se>
-Ask Hjorth Larsen <asklarsen@gmail.com>
-Bruce Cowan <bruce@bcowan.me.uk>
-Gianvito Cavasoli <gianvito@gmx.it>
-hanniedu <hannie@ubuntu-nl.org>
-Inaki Larranaga Murgoitio <dooteo@zundan.com>
-Jordi Mas <jmas@softcatala.org>
+  - Anders Jonsson <anders.jonsson@norsjovallen.se>
+  - Ask Hjorth Larsen <asklarsen@gmail.com>
+  - Bruce Cowan <bruce@bcowan.me.uk>
+  - Gianvito Cavasoli <gianvito@gmx.it>
+  - hanniedu <hannie@ubuntu-nl.org>
+  - Inaki Larranaga Murgoitio <dooteo@zundan.com>
+  - Jordi Mas <jmas@softcatala.org>
 
 3.25.92 - Sep 4, 2017
 =========================
@@ -539,20 +539,20 @@ Added/updated/fixed translations:
   - Lithuanian
 
 All contributors to this release:
-Ask Hjorth Larsen <asklarsen@gmail.com>
-Aurimas Černius <aurisc4@gmail.com>
-Cheng-Chia Tseng <pswo10680@gmail.com>
-Claude Paroz <claude@2xlibre.net>
-Dušan Kazik <prescott66@gmail.com>
-Jamerson Albuquerque Tiossi <jamersontiossi@yahoo.com.br>
-Jiri Grönroos <jiri.gronroos@iki.fi>
-Marcus Lundblad <ml@update.uu.se>
-Rūdolfs Mazurs <rudolfsm@src.gnome.org>
-Seong-ho Cho <shcho@gnome.org>
-Trần Ngọc Quân <vnwildman@gmail.com>
-Yuri Myasoedov <ymyasoedov@yandex.ru>
-Марко Костић <marko.m.kostic@gmail.com>
-Милош Поповић <gpopac@gmail.com>
+  - Ask Hjorth Larsen <asklarsen@gmail.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Cheng-Chia Tseng <pswo10680@gmail.com>
+  - Claude Paroz <claude@2xlibre.net>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Jamerson Albuquerque Tiossi <jamersontiossi@yahoo.com.br>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Rūdolfs Mazurs <rudolfsm@src.gnome.org>
+  - Seong-ho Cho <shcho@gnome.org>
+  - Trần Ngọc Quân <vnwildman@gmail.com>
+  - Yuri Myasoedov <ymyasoedov@yandex.ru>
+  - Марко Костић <marko.m.kostic@gmail.com>
+  - Милош Поповић <gpopac@gmail.com>
 
 3.25.91 - Aug 21, 2017
 =========================
@@ -569,12 +569,12 @@ Added/updated/fixed translations:
   - Polish
 
 All contributors to this release:
-Çağatay Yiğit Şahin <cyigitsahin@outlook.com>
-Fran Dieguez <frandieguez@gnome.org>
-Kukuh Syafaat <syafaatkukuh@gmail.com>
-Marcus Lundblad <ml@update.uu.se>
-Pawan Chitrakar <chautari@gmail.com>
-Piotr Drąg <piotrdrag@gmail.com>
+  - Çağatay Yiğit Şahin <cyigitsahin@outlook.com>
+  - Fran Dieguez <frandieguez@gnome.org>
+  - Kukuh Syafaat <syafaatkukuh@gmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Pawan Chitrakar <chautari@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
 
 3.25.90 - Aug 7, 2017
 =========================
@@ -594,18 +594,18 @@ Added/updated/fixed translations:
   - Hungarian
 
 All contributors to this release:
-Balázs Meskó <meskobalazs@fedoraproject.org>
-Baurzhan Muftakhidinov <baurthefirst@gmail.com>
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Fabio Tomat <f.t.public@gmail.com>
-gogo <trebelnik2@gmail.com>
-Jordi Mas <jmas@softcatala.org>
-Marcus Lundblad <ml@update.uu.se>
-Marek Cernocky <marek_cernocky@conel.cz>
-Mario Blättermann <mario.blaettermann@gmail.com>
-Matej Urbančič <mateju@svn.gnome.org>
-Piotr Drąg <piotrdrag@gmail.com>
-Robert Ancell <robert.ancell@canonical.com>
+  - Balázs Meskó <meskobalazs@fedoraproject.org>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - gogo <trebelnik2@gmail.com>
+  - Jordi Mas <jmas@softcatala.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Cernocky <marek_cernocky@conel.cz>
+  - Mario Blättermann <mario.blaettermann@gmail.com>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Robert Ancell <robert.ancell@canonical.com>
 
 3.25.4 - Jul 20, 2017
 =========================
@@ -626,21 +626,21 @@ Added/updated/fixed translations:
   - Slovak
 
 All contributors to this release:
-Balázs Meskó <meskobalazs@fedoraproject.org>
-Baurzhan Muftakhidinov <baurthefirst@gmail.com>
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Dušan Kazik <prescott66@gmail.com>
-Elias Entrup <elias-git@flump.de>
-Fabio Tomat <f.t.public@gmail.com>
-Hashem Nasarat <hashem@riseup.net>
-Jordi Mas <jmas@softcatala.org>
-Kukuh Syafaat <syafaatkukuh@gmail.com>
-Marcus Lundblad <ml@update.uu.se>
-Nayan Deshmukh <nayan26deshmukh@gmail.com>
-Piotr Drąg <piotrdrag@gmail.com>
-Robert Ancell <robert.ancell@canonical.com>
-Wolfgang Stöggl <c72578@yahoo.de>
-Zeeshan Ali <zeenix@gmail.com>
+  - Balázs Meskó <meskobalazs@fedoraproject.org>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Elias Entrup <elias-git@flump.de>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Hashem Nasarat <hashem@riseup.net>
+  - Jordi Mas <jmas@softcatala.org>
+  - Kukuh Syafaat <syafaatkukuh@gmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Nayan Deshmukh <nayan26deshmukh@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Robert Ancell <robert.ancell@canonical.com>
+  - Wolfgang Stöggl <c72578@yahoo.de>
+  - Zeeshan Ali <zeenix@gmail.com>
 
 3.25.3 - Jun 19, 2017
 =========================
@@ -667,18 +667,18 @@ Added/updated/fixed translations:
   - Lithuanian
 
 All contributors to this release:
-Aurimas Černius <aurisc4@gmail.com>
-Balázs Meskó <meskobalazs@fedoraproject.org>
-Baurzhan Muftakhidinov <baurthefirst@gmail.com>
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Debarshi Ray <debarshir@gnome.org>
-Fabio Tomat <f.t.public@gmail.com>
-Kukuh Syafaat <syafaatkukuh@gmail.com>
-Marcus Lundblad <ml@update.uu.se>
-Mario Blättermann <mario.blaettermann@gmail.com>
-Piotr Drąg <piotrdrag@gmail.com>
-Robert Ancell <robert.ancell@canonical.com>
-Valentin Blot <gnome-devel@valentinblot.org>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Balázs Meskó <meskobalazs@fedoraproject.org>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Debarshi Ray <debarshir@gnome.org>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Kukuh Syafaat <syafaatkukuh@gmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Mario Blättermann <mario.blaettermann@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Robert Ancell <robert.ancell@canonical.com>
+  - Valentin Blot <gnome-devel@valentinblot.org>
 
 3.25.2 - May 22, 2017
 =========================
@@ -693,10 +693,10 @@ Added/updated/fixed translations:
   - Slovenian
 
 All contributors to this release:
-Jordi Mas <jmas@softcatala.org>
-Khaled Hosny <khaledhosny@eglug.org>
-Marcus Lundblad <ml@update.uu.se>
-Matej Urbančič <mateju@svn.gnome.org>
+  - Jordi Mas <jmas@softcatala.org>
+  - Khaled Hosny <khaledhosny@eglug.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Matej Urbančič <mateju@svn.gnome.org>
 
 3.25.1 - Apr 24, 2017
 =========================
@@ -705,7 +705,7 @@ Changes since 3.25.1:
   - Fix JSON formatting for Flatpak manifest
 
 All contributors to this release:
-Marcus Lundblad <ml@update.uu.se>
+  - Marcus Lundblad <ml@update.uu.se>
 
 3.24.1 - Apr 10, 2017
 =========================
@@ -723,12 +723,12 @@ Added/updated/fixed translations:
   - Norwegian bokmål
 
 All contributors to this release:
-gogo <trebelnik2@gmail.com>
-Kjartan Maraas <kmaraas@gnome.org>
-Marcus Lundblad <ml@update.uu.se>
-Piotr Drąg <piotrdrag@gmail.com>
-RyuzakiKK <aasonykk@gmail.com>
-Tom Tryfonidis <tomtryf@gnome.org>
+  - gogo <trebelnik2@gmail.com>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - RyuzakiKK <aasonykk@gmail.com>
+  - Tom Tryfonidis <tomtryf@gnome.org>
 
 3.24.0 - Mar 20, 2017
 =========================
@@ -745,13 +745,13 @@ Added/updated/fixed translations:
   - Japanese
 
 All contributors to this release:
-Dušan Kazik <prescott66@gmail.com>
-Gianvito Cavasoli <gianvito@gmx.it>
-Marcus Lundblad <ml@update.uu.se>
-Osman Karagöz <osmank3@gmail.com>
-Rūdolfs Mazurs <rudolfsm@src.gnome.org>
-sujiniku <sujinikusityuu@gmail.com>
-Yuri Myasoedov <ymyasoedov@yandex.ru>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Gianvito Cavasoli <gianvito@gmx.it>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Osman Karagöz <osmank3@gmail.com>
+  - Rūdolfs Mazurs <rudolfsm@src.gnome.org>
+  - sujiniku <sujinikusityuu@gmail.com>
+  - Yuri Myasoedov <ymyasoedov@yandex.ru>
 
 3.23.92 - Mar 13, 2017
 =========================
@@ -780,23 +780,23 @@ Added/updated/fixed translations:
   - Serbian
 
 All contributors to this release:
-Anders Jonsson <anders.jonsson@norsjovallen.se>
-Ask Hjorth Larsen <asklarsen@gmail.com>
-Aurimas Černius <aurisc4@gmail.com>
-Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
-Cheng-Chia Tseng <pswo10680@gmail.com>
-GunChleoc <fios@foramnagaidhlig.net>
-Inaki Larranaga Murgoitio <dooteo@zundan.com>
-Jiri Grönroos <jiri.gronroos@iki.fi>
-Jordi Mas <jmas@softcatala.org>
-Kukuh Syafaat <syafaatkukuh@gmail.com>
-Marcus Lundblad <ml@update.uu.se>
-Marek Cernocky <marek_cernocky@conel.cz>
-Mario Blättermann <mario.blaettermann@gmail.com>
-Matej Urbančič <mateju@svn.gnome.org>
-Seong-ho Cho <shcho@gnome.org>
-Sveinn í Felli <sv1@fellsnet.is>
-Марко М. Костић <marko.m.kostic@gmail.com>
+  - Anders Jonsson <anders.jonsson@norsjovallen.se>
+  - Ask Hjorth Larsen <asklarsen@gmail.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
+  - Cheng-Chia Tseng <pswo10680@gmail.com>
+  - GunChleoc <fios@foramnagaidhlig.net>
+  - Inaki Larranaga Murgoitio <dooteo@zundan.com>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Jordi Mas <jmas@softcatala.org>
+  - Kukuh Syafaat <syafaatkukuh@gmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Cernocky <marek_cernocky@conel.cz>
+  - Mario Blättermann <mario.blaettermann@gmail.com>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Seong-ho Cho <shcho@gnome.org>
+  - Sveinn í Felli <sv1@fellsnet.is>
+  - Марко М. Костић <marko.m.kostic@gmail.com>
 
 3.23.91 - Feb 27, 2017
 =========================
@@ -827,27 +827,27 @@ Added/updated/fixed translations:
   - French
 
 All contributors to this release:
-Anders Jonsson <anders.jonsson@norsjovallen.se>
-Andreas Nilsson <anilsson@redhat.com>
-Ask Hjorth Larsen <asklarsen@gmail.com>
-Balázs Meskó <meskobalazs@fedoraproject.org>
-Baurzhan Muftakhidinov <baurthefirst@gmail.com>
-Claude Paroz <claude@2xlibre.net>
-Daniel Korostil <ted.korostiled@gmail.com>
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Dušan Kazik <prescott66@gmail.com>
-Fabio Tomat <f.t.public@gmail.com>
-Fran Dieguez <fran@openhost.es>
-Inaki Larranaga Murgoitio <dooteo@zundan.com>
-Jiri Grönroos <jiri.gronroos@iki.fi>
-Kjartan Maraas <kmaraas@gnome.org>
-Marcus Lundblad <ml@update.uu.se>
-Mario Blättermann <mario.blaettermann@gmail.com>
-Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
-Philip Chimento <philip.chimento@gmail.com>
-Piotr Drąg <piotrdrag@gmail.com>
-Rafael Fontenelle <rafaelff@gnome.org>
-Мирослав Николић <miroslavnikolic@rocketmail.com>
+  - Anders Jonsson <anders.jonsson@norsjovallen.se>
+  - Andreas Nilsson <anilsson@redhat.com>
+  - Ask Hjorth Larsen <asklarsen@gmail.com>
+  - Balázs Meskó <meskobalazs@fedoraproject.org>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Claude Paroz <claude@2xlibre.net>
+  - Daniel Korostil <ted.korostiled@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Fran Dieguez <fran@openhost.es>
+  - Inaki Larranaga Murgoitio <dooteo@zundan.com>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Mario Blättermann <mario.blaettermann@gmail.com>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Philip Chimento <philip.chimento@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Rafael Fontenelle <rafaelff@gnome.org>
+  - Мирослав Николић <miroslavnikolic@rocketmail.com>
 
 3.23.90 - Feb 13, 2017
 =========================
@@ -858,10 +858,10 @@ Added/updated/fixed translations:
   - Indonesian
 
 All contributors to this release:
-Dingzhong Chen <wsxy162@gmail.com>
-Dušan Kazik <prescott66@gmail.com>
-Kukuh Syafaat <syafaatkukuh@gmail.com>
-Marcus Lundblad <ml@update.uu.se>
+  - Dingzhong Chen <wsxy162@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Kukuh Syafaat <syafaatkukuh@gmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
 
 3.23.4 - Jan 16, 2017
 =========================
@@ -874,9 +874,9 @@ Added/updated/fixed translations:
   - Spanish
 
 All contributors to this release:
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Jiri Grönroos <jiri.gronroos@iki.fi>
-Marcus Lundblad <ml@update.uu.se>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Marcus Lundblad <ml@update.uu.se>
 
 3.23.3 - Dec 12, 2016
 =========================
@@ -891,12 +891,12 @@ Added/updated/fixed translations:
   - Hungarian
 
 All contributors to this release:
-Anders Jonsson <anders.jonsson@norsjovallen.se>
-Baurzhan Muftakhidinov <baurthefirst@gmail.com>
-Christian Hergert <chergert@redhat.com>
-Gábor Kelemen <kelemeng@openscope.org>
-Marcus Lundblad <ml@update.uu.se>
-Stas Solovey <whats_up@tut.by>
+  - Anders Jonsson <anders.jonsson@norsjovallen.se>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Christian Hergert <chergert@redhat.com>
+  - Gábor Kelemen <kelemeng@openscope.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Stas Solovey <whats_up@tut.by>
 
 3.23.2 - Nov 21, 2016
 =========================
@@ -912,11 +912,11 @@ Added/updated/fixed translations:
   - Polish
 
 All contributors to this release:
-Balázs Meskó <meskobalazs@gmail.com>
-Fabio Tomat <f.t.public@gmail.com>
-Marek Černocký <marek@manet.cz>
-Paul Seyfert <pseyfert@mathphys.fsk.uni-heidelberg.de>
-Piotr Drąg <piotrdrag@gmail.com>
+  - Balázs Meskó <meskobalazs@gmail.com>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Marek Černocký <marek@manet.cz>
+  - Paul Seyfert <pseyfert@mathphys.fsk.uni-heidelberg.de>
+  - Piotr Drąg <piotrdrag@gmail.com>
 
 3.23.1 - Oct 24, 2016
 =========================
@@ -930,8 +930,8 @@ Added/updated/fixed translations:
   - Norwegian bokmål
 
 All contributors to this release:
-Kjartan Maraas <kmaraas@gnome.org>
-Marcus Lundblad <ml@update.uu.se>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Marcus Lundblad <ml@update.uu.se>
 
 3.22.1 - Oct 10, 2016
 =========================
@@ -940,7 +940,7 @@ Added/updated/fixed translations:
   - Basque
 
 All contributors to this release:
-Inaki Larranaga Murgoitio <dooteo@zundan.com>
+  - Inaki Larranaga Murgoitio <dooteo@zundan.com>
 
 3.22.0 - Sep 18, 2016
 =========================
@@ -952,10 +952,10 @@ Added/updated/fixed translations:
   - Ukrainian
 
 All contributors to this release:
-Arash Mousavi <mousavi.arash@gmail.com>
-Daniel Korostil <ted.korostiled@gmail.com>
-Gianvito Cavasoli <gianvito@gmx.it>
-GunChleoc <fios@foramnagaidhlig.net>
+  - Arash Mousavi <mousavi.arash@gmail.com>
+  - Daniel Korostil <ted.korostiled@gmail.com>
+  - Gianvito Cavasoli <gianvito@gmx.it>
+  - GunChleoc <fios@foramnagaidhlig.net>
 
 3.21.92 - Sep 12, 2016
 =========================
@@ -977,17 +977,17 @@ Added/updated/fixed translations:
   - Korean
 
 All contributors to this release:
-Ask Hjorth Larsen <asklarsen@gmail.com>
-Aurimas Černius <aurisc4@gmail.com>
-Baurzhan Muftakhidinov <baurthefirst@gmail.com>
-Fran Dieguez <fran.dieguez@mabishu.com>
-Marcus Lundblad <ml@update.uu.se>
-Piotr Drąg <piotrdrag@gmail.com>
-Razvan Brinzea <razvan.brinzea@gmail.com>
-Rūdolfs Mazurs <rudolfsm@src.gnome.org>
-Seong-ho Cho <shcho@gnome.org>
-Tom Tryfonidis <tomtryf@gnome.org>
-Trần Ngọc Quân <vnwildman@gmail.com>
+  - Ask Hjorth Larsen <asklarsen@gmail.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Fran Dieguez <fran.dieguez@mabishu.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Razvan Brinzea <razvan.brinzea@gmail.com>
+  - Rūdolfs Mazurs <rudolfsm@src.gnome.org>
+  - Seong-ho Cho <shcho@gnome.org>
+  - Tom Tryfonidis <tomtryf@gnome.org>
+  - Trần Ngọc Quân <vnwildman@gmail.com>
 
 3.21.91 - Aug 29, 2016
 =========================
@@ -1003,11 +1003,11 @@ Added/updated/fixed translations:
   - Polish
 
 All contributors to this release:
-Alexandre Franke <alexandre.franke@gmail.com>
-Jonas Danielsson <jonas@threetimestwo.org>
-Matej Urbančič <mateju@svn.gnome.org>
-Piotr Drąg <piotrdrag@gmail.com>
-Мирослав Николић <miroslavnikolic@rocketmail.com>
+  - Alexandre Franke <alexandre.franke@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Мирослав Николић <miroslavnikolic@rocketmail.com>
 
 3.21.90 - Aug 19, 2016
 =========================
@@ -1037,17 +1037,17 @@ Added/updated/fixed translations:
   - Brittish English
 
 All contributors to this release:
-Andika Triwidada <atriwidada@gnome.org>
-Balázs Úr <urbalazs@gmail.com>
-David King <amigadave@amigadave.com>
-Dušan Kazik <prescott66@gmail.com>
-Gustavo Marques <gutodisse@gmail.com>
-Jiri Grönroos <jiri.gronroos@iki.fi>
-Jonas Danielsson <jonas@threetimestwo.org>
-Marek Cernocky <marek_cernocky@conel.cz>
-Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
-Safa Alfulaij <safa1996alfulaij@gmail.com>
-Yosef Or Boczko <yoseforb@src.gnome.org>
+  - Andika Triwidada <atriwidada@gnome.org>
+  - Balázs Úr <urbalazs@gmail.com>
+  - David King <amigadave@amigadave.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Gustavo Marques <gutodisse@gmail.com>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Marek Cernocky <marek_cernocky@conel.cz>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Safa Alfulaij <safa1996alfulaij@gmail.com>
+  - Yosef Or Boczko <yoseforb@src.gnome.org>
 
 3.21.4 - Jul 30, 2016
 =========================
@@ -1088,22 +1088,22 @@ Added/updated/fixed translations:
   - Friulian
 
 All contributors to this release:
-Anders Jonsson <anders.jonsson@norsjovallen.se>
-Andika Triwidada <atriwidada@gnome.org>
-A S Alam <aalam@users.sf.net>
-Cédric Valmary <cvalmary@yahoo.fr>
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Fabio Tomat <f.t.public@gmail.com>
-Jonas Danielsson <jonas@threetimestwo.org>
-Jordi Mas <jmas@softcatala.org>
-Kjartan Maraas <kmaraas@gnome.org>
-Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>
-Marcus Lundblad <ml@update.uu.se>
-Matej Urbančič <mateju@svn.gnome.org>
-Muhammet Kara <muhammetk@gmail.com>
-Nayan Deshmukh <nayan26deshmukh@gmail.com>
-Piotr Drąg <piotrdrag@gmail.com>
-Tiago Santos <tiagofsantos81@sapo.pt>
+  - Anders Jonsson <anders.jonsson@norsjovallen.se>
+  - Andika Triwidada <atriwidada@gnome.org>
+  - A S Alam <aalam@users.sf.net>
+  - Cédric Valmary <cvalmary@yahoo.fr>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Jordi Mas <jmas@softcatala.org>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Muhammet Kara <muhammetk@gmail.com>
+  - Nayan Deshmukh <nayan26deshmukh@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Tiago Santos <tiagofsantos81@sapo.pt>
 
 3.20.1 - April 11, 2016
 =========================
@@ -1122,15 +1122,15 @@ Added/updated/fixed translations:
   - Arabic
 
 All contributors to this release:
-Arash Mousavi <mousavi.arash@gmail.com>
-Daniel Korostil <ted.korostiled@gmail.com>
-Fabio Tomat <f.t.public@gmail.com>
-Jonas Danielsson <jonas@threetimestwo.org>
-Jordi Mas <jmas@softcatala.org>
-Khaled Hosny <khaledhosny@eglug.org>
-Marcus Lundblad <ml@update.uu.se>
-Tom Tryfonidis <tomtryf@gnome.org>
-Trần Ngọc Quân <vnwildman@gmail.com>
+  - Arash Mousavi <mousavi.arash@gmail.com>
+  - Daniel Korostil <ted.korostiled@gmail.com>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Jordi Mas <jmas@softcatala.org>
+  - Khaled Hosny <khaledhosny@eglug.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Tom Tryfonidis <tomtryf@gnome.org>
+  - Trần Ngọc Quân <vnwildman@gmail.com>
 
 3.20.0 - March 21, 2016
 =========================
@@ -1162,32 +1162,32 @@ Added/updated/fixed translations:
   - Greek
 
 All contributors to this release:
-Antonio Fernandes C. Neto <fernandesn@gnome.org>
-Ask Hjorth Larsen <asklarsen@gmail.com>
-Aurimas Černius <aurisc4@gmail.com>
-Balázs Meskó <meskobalazs@gmail.com>
-Baurzhan Muftakhidinov <baurthefirst@gmail.com>
-Bernd Homuth <dev@hmt.im>
-Claude Paroz <claude@2xlibre.net>
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Dušan Kazik <prescott66@gmail.com>
-Fran Dieguez <fran.dieguez@mabishu.com>
-Gianvito Cavasoli <gianvito@gmx.it>
-Inaki Larranaga Murgoitio <dooteo@zundan.com>
-Jiri Grönroos <jiri.gronroos@iki.fi>
-Jordi Mas <jmas@softcatala.org>
-Marcus Lundblad <ml@update.uu.se>
-Marek Černocký <marek@manet.cz>
-Mario Blättermann <mario.blaettermann@gmail.com>
-Piotr Drąg <piotrdrag@gmail.com>
-Rūdolfs Mazurs <rudolfsm@src.gnome.org>
-Sebastian Rasmussen <sebras@gmail.com>
-Seong-ho Cho <shcho@gnome.org>
-Stas Solovey <whats_up@tut.by>
-Tom Tryfonidis <tomtryf@gnome.org>
-Yuri Myasoedov <ymyasoedov@yandex.ru>
-Марко Костић <marko.m.kostic@gmail.com>
-Милош Поповић <gpopac@gmail.com>
+  - Antonio Fernandes C. Neto <fernandesn@gnome.org>
+  - Ask Hjorth Larsen <asklarsen@gmail.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Balázs Meskó <meskobalazs@gmail.com>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Bernd Homuth <dev@hmt.im>
+  - Claude Paroz <claude@2xlibre.net>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Fran Dieguez <fran.dieguez@mabishu.com>
+  - Gianvito Cavasoli <gianvito@gmx.it>
+  - Inaki Larranaga Murgoitio <dooteo@zundan.com>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Jordi Mas <jmas@softcatala.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Černocký <marek@manet.cz>
+  - Mario Blättermann <mario.blaettermann@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Rūdolfs Mazurs <rudolfsm@src.gnome.org>
+  - Sebastian Rasmussen <sebras@gmail.com>
+  - Seong-ho Cho <shcho@gnome.org>
+  - Stas Solovey <whats_up@tut.by>
+  - Tom Tryfonidis <tomtryf@gnome.org>
+  - Yuri Myasoedov <ymyasoedov@yandex.ru>
+  - Марко Костић <marko.m.kostic@gmail.com>
+  - Милош Поповић <gpopac@gmail.com>
 
 
 3.19.91 - March 14, 2016
@@ -1219,27 +1219,27 @@ Added/updated/fixed translations:
   - French
 
 All contributors to this release:
-Artur de Aquino Morais <aamorais93.estudos@gmail.com>
-Aurimas Černius <aurisc4@gmail.com>
-Baurzhan Muftakhidinov <baurthefirst@gmail.com>
-Cédric Valmary <cvalmary@yahoo.fr>
-Claude Paroz <claude@2xlibre.net>
-Daniel Korostil <ted.korostiled@gmail.com>
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Dušan Kazik <prescott66@gmail.com>
-Fabio Tomat <f.t.public@gmail.com>
-Fran Dieguez <fran.dieguez@mabishu.com>
-Gábor Kelemen <kelemeng@openscope.org>
-Jiri Grönroos <jiri.gronroos@iki.fi>
-Jonas Danielsson <jonas@threetimestwo.org>
-Mario Blättermann <mario.blaettermann@gmail.com>
-Marius Stanciu <stanciumarius94@gmail.com>
-Razvan Brinzea <razvan.brinzea@gmail.com>
-Rūdolfs Mazurs <rudolfsm@src.gnome.org>
-Seong-ho Cho <shcho@gnome.org>
-Yosef Or Boczko <yoseforb@src.gnome.org>
-Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
-Марко М. Костић <marko.m.kostic@gmail.com>
+  - Artur de Aquino Morais <aamorais93.estudos@gmail.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Cédric Valmary <cvalmary@yahoo.fr>
+  - Claude Paroz <claude@2xlibre.net>
+  - Daniel Korostil <ted.korostiled@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Fran Dieguez <fran.dieguez@mabishu.com>
+  - Gábor Kelemen <kelemeng@openscope.org>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Mario Blättermann <mario.blaettermann@gmail.com>
+  - Marius Stanciu <stanciumarius94@gmail.com>
+  - Razvan Brinzea <razvan.brinzea@gmail.com>
+  - Rūdolfs Mazurs <rudolfsm@src.gnome.org>
+  - Seong-ho Cho <shcho@gnome.org>
+  - Yosef Or Boczko <yoseforb@src.gnome.org>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+  - Марко М. Костић <marko.m.kostic@gmail.com>
 
 3.19.91 - March 1, 2016
 ==========================
@@ -1308,34 +1308,34 @@ Added/updated/fixed translations:
   - French
 
 All contributors to this release:
-Alaf Azam <alafazam@gmail.com>
-Alexandre Franke <alexandre.franke@gmail.com>
-Amisha Singla <amishas157@gmail.com>
-Balázs Meskó <meskobalazs@gmail.com>
-Baurzhan Muftakhidinov <baurthefirst@gmail.com>
-Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
-Codreanu Andrei <andrei.codreanu94@gmail.com>
-Cosimo Cecchi <cosimoc@gnome.org>
-Damián Nohales <damiannohales@gmail.com>
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Debarshi Ray <debarshir@gnome.org>
-Dušan Kazik <prescott66@gmail.com>
-Gábor Kelemen <kelemeng@openscope.org>
-Hashem Nasarat <hashem@riseup.net>
-Ivailo Panamski <ipanamski@gmail.com>
-Jiri Grönroos <jiri.gronroos@iki.fi>
-Jonas Danielsson <jonas@threetimestwo.org>
-Jordi Mas <jmas@softcatala.org>
-Marcus Lundblad <ml@update.uu.se>
-Mario Blättermann <mario.blaettermann@gmail.com>
-Matej Urbančič <mateju@svn.gnome.org>
-Piotr Drąg <piotrdrag@gmail.com>
-Rafael Fontenelle <rffontenelle@gmail.com>
-Richard Hughes <richard@hughsie.com>
-Rūdolfs Mazurs <rudolfsm@src.gnome.org>
-Stas Solovey <whats_up@tut.by>
-Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
-Мирослав Николић <miroslavnikolic@rocketmail.com>
+  - Alaf Azam <alafazam@gmail.com>
+  - Alexandre Franke <alexandre.franke@gmail.com>
+  - Amisha Singla <amishas157@gmail.com>
+  - Balázs Meskó <meskobalazs@gmail.com>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
+  - Codreanu Andrei <andrei.codreanu94@gmail.com>
+  - Cosimo Cecchi <cosimoc@gnome.org>
+  - Damián Nohales <damiannohales@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Debarshi Ray <debarshir@gnome.org>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Gábor Kelemen <kelemeng@openscope.org>
+  - Hashem Nasarat <hashem@riseup.net>
+  - Ivailo Panamski <ipanamski@gmail.com>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Jordi Mas <jmas@softcatala.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Mario Blättermann <mario.blaettermann@gmail.com>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Rafael Fontenelle <rffontenelle@gmail.com>
+  - Richard Hughes <richard@hughsie.com>
+  - Rūdolfs Mazurs <rudolfsm@src.gnome.org>
+  - Stas Solovey <whats_up@tut.by>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+  - Мирослав Николић <miroslavnikolic@rocketmail.com>
 
 
 3.19.4 - Januari 18, 2016
@@ -1375,26 +1375,26 @@ Added/updated/fixed translations:
   - Norwegian bokmål
 
 All contributors to this release
-Alaf Azam <alafazam@gmail.com>
-Alex Anthony <alex.anthony28991@gmail.com>
-Amisha Singla <amishas157@gmail.com>
-Aurimas Černius <aurisc4@gmail.com>
-Baurzhan Muftakhidinov <baurthefirst@gmail.com>
-Damián Nohales <damiannohales@gmail.com>
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Dušan Kazik <prescott66@gmail.com>
-Enrico Nicoletto <liverig@gmail.com>
-Hashem Nasarat <hashem@riseup.net>
-Jiri Grönroos <jiri.gronroos@iki.fi>
-Jonas Danielsson <jonas@threetimestwo.org>
-Karanbir Chahal <karanbleep@gmail.com>
-Kjartan Maraas <kmaraas@gnome.org>
-Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>
-Marcus Lundblad <ml@update.uu.se>
-Marek Černocký <marek@manet.cz>
-Mario Blättermann <mario.blaettermann@gmail.com>
-Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
-Prashant Tyagi <prashanttyagi221295@gmail.com>
+  - Alaf Azam <alafazam@gmail.com>
+  - Alex Anthony <alex.anthony28991@gmail.com>
+  - Amisha Singla <amishas157@gmail.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Damián Nohales <damiannohales@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Enrico Nicoletto <liverig@gmail.com>
+  - Hashem Nasarat <hashem@riseup.net>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Karanbir Chahal <karanbleep@gmail.com>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Černocký <marek@manet.cz>
+  - Mario Blättermann <mario.blaettermann@gmail.com>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Prashant Tyagi <prashanttyagi221295@gmail.com>
 
 
 3.19.3 - December 13, 2015
@@ -1421,21 +1421,21 @@ Added/updated/fixed translations:
 
 All contributors to this release:
 alafazam <alafazam@gmail.com>
-Alaf Azam <alafazam@gmail.com>
-Balázs Meskó <meskobalazs@gmail.com>
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Dušan Kazik <prescott66@gmail.com>
-Hashem Nasarat <hashem@riseup.net>
-Jiri Grönroos <jiri.gronroos@iki.fi>
-Jonas Danielsson <jonas@threetimestwo.org>
-Kalev Lember <klember@redhat.com>
-Marcus Lundblad <ml@update.uu.se>
-Marek Černocký <marek@manet.cz>
-Martin Srebotnjak <miles@filmsi.net>
-Matej Urbančič <mateju@svn.gnome.org>
-Pedro Albuquerque <palbuquerque73@gmail.com>
-Piotr Drąg <piotrdrag@gmail.com>
-Tom Tryfonidis <tomtryf@gmail.com>
+  - Alaf Azam <alafazam@gmail.com>
+  - Balázs Meskó <meskobalazs@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Hashem Nasarat <hashem@riseup.net>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kalev Lember <klember@redhat.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Černocký <marek@manet.cz>
+  - Martin Srebotnjak <miles@filmsi.net>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Pedro Albuquerque <palbuquerque73@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Tom Tryfonidis <tomtryf@gmail.com>
 
 3.19.2 - November 23, 2015
 ==========================
@@ -1462,20 +1462,20 @@ Added/updated/fixed translations:
   - German
   
 All contributors to this release:
-alafazam <alafazam@gmail.com>
-Amisha <amishas157@gmail.com>
-Aurimas Černius <aurisc4@gmail.com>
-Benjamin Steinwender <b@stbe.at>
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Jiri Grönroos <jiri.gronroos@iki.fi>
-Jonas Danielsson <jonas@threetimestwo.org>
-Kjartan Maraas <kmaraas@gnome.org>
-Marcus Lundblad <ml@update.uu.se>
-Marek Černocký <marek@manet.cz>
-Mingye Wang (Arthur2e5) <arthur200126@gmail.com>
-Muhammet Kara <muhammetk@gmail.com>
-Pedro Albuquerque <palbuquerque73@gmail.com>
-Piotr Drąg <piotrdrag@gmail.com>
+  - alafazam <alafazam@gmail.com>
+  - Amisha <amishas157@gmail.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Benjamin Steinwender <b@stbe.at>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Černocký <marek@manet.cz>
+  - Mingye Wang (Arthur2e5) <arthur200126@gmail.com>
+  - Muhammet Kara <muhammetk@gmail.com>
+  - Pedro Albuquerque <palbuquerque73@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
 
 
 3.19.1 - October 26, 2015
@@ -1497,10 +1497,10 @@ Piotr Drąg <piotrdrag@gmail.com>
    - Slovak
 
 All contributors to this release:
-Dušan Kazik <prescott66@gmail.com>
-Inaki Larranaga Murgoitio <dooteo@zundan.com>
-Jonas Danielsson <jonas@threetimestwo.org>
-Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Inaki Larranaga Murgoitio <dooteo@zundan.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
 
 Changes since 3.18.1:
 
@@ -1515,9 +1515,9 @@ Changes since 3.18.0.1:
    - Irish
 
 All contributors to this release:
-Jonas Danielsson <jonas@threetimestwo.org>
-Marcus Lundblad <ml@update.uu.se>
-Seán de Búrca <leftmostcat@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Seán de Búrca <leftmostcat@gmail.com>
 
 3.18.0.1 - September 25, 2015
 ======================
@@ -1533,12 +1533,12 @@ Changes since 3.18.0:
    - Serbian Latin
 
 All contributors to this release:
-Anders Jonsson <anders.jonsson@norsjovallen.se>
-Ask Hjorth Larsen <asklarsen@gmail.com>
-Jonas Danielsson <jonas@threetimestwo.org>
-Tom Tryfonidis <tomtryf@gmail.com>
-Марко Костић <marko.m.kostic@gmail.com>
-Милош Поповић <gpopac@gmail.com>
+  - Anders Jonsson <anders.jonsson@norsjovallen.se>
+  - Ask Hjorth Larsen <asklarsen@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Tom Tryfonidis <tomtryf@gmail.com>
+  - Марко Костић <marko.m.kostic@gmail.com>
+  - Милош Поповић <gpopac@gmail.com>
 
 
 3.18.0 - September 20, 2015
@@ -1558,15 +1558,15 @@ Changes since 3.17.92:
    - Turkish
 
 All contributors to this release:
-Arash Mousavi <mousavi.arash@gmail.com>
-Balázs Úr <urbalazs@gmail.com>
-Claudio Arseni <claudio.arseni@gmail.com>
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Enrico Nicoletto <liverig@gmail.com>
-Marek Černocký <marek@manet.cz>
-Muhammet Kara <muhammetk@gmail.com>
-Seong-ho Cho <shcho@gnome.org>
-Stas Solovey <whats_up@tut.by>
+  - Arash Mousavi <mousavi.arash@gmail.com>
+  - Balázs Úr <urbalazs@gmail.com>
+  - Claudio Arseni <claudio.arseni@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Enrico Nicoletto <liverig@gmail.com>
+  - Marek Černocký <marek@manet.cz>
+  - Muhammet Kara <muhammetk@gmail.com>
+  - Seong-ho Cho <shcho@gnome.org>
+  - Stas Solovey <whats_up@tut.by>
 
 3.17.92 - September 14, 2015
 ======================
@@ -1600,29 +1600,29 @@ Changes since 3.17.91:
    - German
 
 All contributors to this release:
-Andika Triwidada <andika@gmail.com>
-Arash Mousavi <mousavi.arash@gmail.com>
-Aurimas Černius <aurisc4@gmail.com>
-Balázs Úr <urbalazs@gmail.com>
-Baurzhan Muftakhidinov <baurthefirst@gmail.com>
-Benjamin Steinwender <b@stbe.at>
-Bernd Homuth <dev@hmt.im>
-Claude Paroz <claude@2xlibre.net>
-Claudio Arseni <claudio.arseni@gmail.com>
-Dušan Kazik <prescott66@gmail.com>
-Fran Dieguez <fran@openhost.es>
-Hajime Taira <htaira@redhat.com>
-Jiri Grönroos <jiri.gronroos+l10n@iki.fi>
-Jonas Danielsson <jonas@threetimestwo.org>
-Kjartan Maraas <kmaraas@gnome.org>
-Martin Srebotnjak <miles@filmsi.net>
-Muhammet Kara <muhammetk@gmail.com>
-Pedro Albuquerque <palbuquerque73@gmail.com>
-Piotr Drąg <piotrdrag@gmail.com>
-Seong-ho Cho <shcho@gnome.org>
-Sveinn í Felli <sv1@fellsnet.is>
-Ting-Wei Lan <lantw@src.gnome.org>
-Yosef Or Boczko <yoseforb@src.gnome.org>
+  - Andika Triwidada <andika@gmail.com>
+  - Arash Mousavi <mousavi.arash@gmail.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Balázs Úr <urbalazs@gmail.com>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Benjamin Steinwender <b@stbe.at>
+  - Bernd Homuth <dev@hmt.im>
+  - Claude Paroz <claude@2xlibre.net>
+  - Claudio Arseni <claudio.arseni@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Fran Dieguez <fran@openhost.es>
+  - Hajime Taira <htaira@redhat.com>
+  - Jiri Grönroos <jiri.gronroos+l10n@iki.fi>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Martin Srebotnjak <miles@filmsi.net>
+  - Muhammet Kara <muhammetk@gmail.com>
+  - Pedro Albuquerque <palbuquerque73@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Seong-ho Cho <shcho@gnome.org>
+  - Sveinn í Felli <sv1@fellsnet.is>
+  - Ting-Wei Lan <lantw@src.gnome.org>
+  - Yosef Or Boczko <yoseforb@src.gnome.org>
 
 3.17.91 - Aaugust 29, 2015
 ======================
@@ -1641,14 +1641,14 @@ Changes since 3.17.90.1
     - Greek
 
 All contributors to this release:
-Alexandre Franke <alexandre.franke@gmail.com>
-Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
-Fran Dieguez <fran@openhost.es>
-Jonas Danielsson <jonas@threetimestwo.org>
-Kalev Lember <klember@redhat.com>
-Pedro Albuquerque <palbuquerque73@gmail.com>
-Tom Tryfonidis <tomtryf@gmail.com>
-Yuri Myasoedov <ymyasoedov@yandex.ru>
+  - Alexandre Franke <alexandre.franke@gmail.com>
+  - Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
+  - Fran Dieguez <fran@openhost.es>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kalev Lember <klember@redhat.com>
+  - Pedro Albuquerque <palbuquerque73@gmail.com>
+  - Tom Tryfonidis <tomtryf@gmail.com>
+  - Yuri Myasoedov <ymyasoedov@yandex.ru>
 
 3.17.90.1 - Aaugust 22, 2015
 ======================
@@ -1664,10 +1664,10 @@ Changes since 3.17.90
     - Spanish
 
 All contributors to this release:
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Dušan Kazik <prescott66@gmail.com>
-Jonas Danielsson <jonas@threetimestwo.org>
-Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
 
 3.17.90 - Aaugust 16, 2015
 ======================
@@ -1692,20 +1692,20 @@ Changes since 3.17.1
     - Friulian
 
 All contributors to this release
-Cédric Valmary <cvalmary@yahoo.fr>
-Damián Nohales <damiannohales@gmail.com>
-Daniel Martinez <dmartinez@src.gnome.org>
-Dean Chen <wsxy162@gmail.com>
-Fabio Tomat <f.t.public@gmail.com>
-Jakub Steiner <jimmac@gmail.com>
-Jonas Danielsson <jonas.danielsson@threetimestwo.org>
-Jonas Danielsson <jonas@threetimestwo.org>
-Jordi Mas <jmas@softcatala.org>
-Marcus Lundblad <ml@update.uu.se>
-Pedro Albuquerque <palbuquerque73@gmail.com>
-Piotr Drąg <piotrdrag@gmail.com>
-Sveinn í Felli <sv1@fellsnet.is>
-Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+  - Cédric Valmary <cvalmary@yahoo.fr>
+  - Damián Nohales <damiannohales@gmail.com>
+  - Daniel Martinez <dmartinez@src.gnome.org>
+  - Dean Chen <wsxy162@gmail.com>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Jakub Steiner <jimmac@gmail.com>
+  - Jonas Danielsson <jonas.danielsson@threetimestwo.org>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Jordi Mas <jmas@softcatala.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Pedro Albuquerque <palbuquerque73@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Sveinn í Felli <sv1@fellsnet.is>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
 
 
 3.17.1 - April 29, 2015
@@ -1718,9 +1718,9 @@ Changes since 3.16.1
 - Improve height of favorites popover
 
 All contributors to this release:
-Jonas Danielsson <jonas@threetimestwo.org>
-Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
-Emmanuele Bassi <ebassi@gnome.org>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Emmanuele Bassi <ebassi@gnome.org>
 
 3.16.1 - April 13, 2015
 =======================
@@ -1736,13 +1736,13 @@ Changes since 3.16.0
     - Punjabi
 
 All contributors to this release:
-Andreas Nilsson <anilsson@redhat.com>
-A S Alam <aalam@users.sf.net>
-Jakub Steiner <jimmac@gmail.com>
-Jonas Danielsson <jonas@threetimestwo.org>
-Jordi Mas <jmas@softcatala.org>
-Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>
-Txus Ordorika <txusinho@gmail.com>
+  - Andreas Nilsson <anilsson@redhat.com>
+  - A S Alam <aalam@users.sf.net>
+  - Jakub Steiner <jimmac@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Jordi Mas <jmas@softcatala.org>
+  - Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>
+  - Txus Ordorika <txusinho@gmail.com>
 
 
 3.16.0 - Mar 22, 2015
@@ -1761,13 +1761,13 @@ Changes since 3.15.92
    - Italian
 
 All contributors to this release:
-Andika Triwidada <andika@gmail.com>
-Benjamin Steinwender <b@stbe.at>
-Claudio Arseni <claudio.arseni@gmail.com>
-Inaki Larranaga Murgoitio <dooteo@zundan.com>
-Marcus Lundblad <ml@update.uu.se>
-Victor Ibragimov <victor.ibragimov@gmail.com>
-Мирослав Николић <miroslavnikolic@rocketmail.com>
+  - Andika Triwidada <andika@gmail.com>
+  - Benjamin Steinwender <b@stbe.at>
+  - Claudio Arseni <claudio.arseni@gmail.com>
+  - Inaki Larranaga Murgoitio <dooteo@zundan.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Victor Ibragimov <victor.ibragimov@gmail.com>
+  - Мирослав Николић <miroslavnikolic@rocketmail.com>
 
 3.15.92 - Mar 16, 2015
 =======================
@@ -1794,20 +1794,20 @@ Changes since 3.15.91:
    - Korean
 
 All contributors to this release:
-Ask Hjorth Larsen <asklarsen@gmail.com>
-Baurzhan Muftakhidinov <baurthefirst@gmail.com>
-Gábor Kelemen <kelemeng@openscope.org>
-Giovanni Campagna <scampa.giovanni@gmail.com>
-hanniedu <lafeber-dumoleyn2@zonnet.nl>
-Jiri Grönroos <jiri.gronroos+l10n@iki.fi>
-Jonas Danielsson <jonas@threetimestwo.org>
-Marek Černocký <marek@manet.cz>
-Matej Urbančič <mateju@svn.gnome.org>
-Miguel Vaello Martínez <miguel.vaellomartinez@gmail.com>
-Muhammet Kara <muhammetk@gmail.com>
-Paweł Żołnowski <pawel@zolnowski.name>
-Samir Ribic <samir.ribic@etf.unsa.ba>
-Seong-ho Cho <shcho@gnome.org>
+  - Ask Hjorth Larsen <asklarsen@gmail.com>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Gábor Kelemen <kelemeng@openscope.org>
+  - Giovanni Campagna <scampa.giovanni@gmail.com>
+  - hanniedu <lafeber-dumoleyn2@zonnet.nl>
+  - Jiri Grönroos <jiri.gronroos+l10n@iki.fi>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Marek Černocký <marek@manet.cz>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Miguel Vaello Martínez <miguel.vaellomartinez@gmail.com>
+  - Muhammet Kara <muhammetk@gmail.com>
+  - Paweł Żołnowski <pawel@zolnowski.name>
+  - Samir Ribic <samir.ribic@etf.unsa.ba>
+  - Seong-ho Cho <shcho@gnome.org>
 
 3.15.91 - Mar 1, 2015
 =======================
@@ -1834,19 +1834,19 @@ Changes since 3.15.90.2:
    - Hungarian
 
 All contributors to this release:
-Aurimas Černius <aurisc4@gmail.com>
-Balázs Úr <urbalazs@gmail.com>
-Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
-Daniel Korostil <ted.korostiled@gmail.com>
-Diogo Campos <diogocamposwd@gmail.com>
-Dominique Leuenberger <dimstar@opensuse.org>
-Dušan Kazik <prescott66@gmail.com>
-Fran Dieguez <fran.dieguez@mabishu.com>
-Guillaume Bernard <translate@filorin.fr>
-Jonas Danielsson <jonas@threetimestwo.org>
-Sebastian Rasmussen <sebras@gmail.com>
-Stas Solovey <whats_up@tut.by>
-Γιάννης Κουτσούκος <giankoyt@gmail.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Balázs Úr <urbalazs@gmail.com>
+  - Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
+  - Daniel Korostil <ted.korostiled@gmail.com>
+  - Diogo Campos <diogocamposwd@gmail.com>
+  - Dominique Leuenberger <dimstar@opensuse.org>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Fran Dieguez <fran.dieguez@mabishu.com>
+  - Guillaume Bernard <translate@filorin.fr>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Sebastian Rasmussen <sebras@gmail.com>
+  - Stas Solovey <whats_up@tut.by>
+  - Γιάννης Κουτσούκος <giankoyt@gmail.com>
 
 
 3.15.90.2 - Feb 17, 2015
@@ -1857,7 +1857,7 @@ Changes since 3.15.91:
 - Fix build for clang/FreeBSD
 
 All contributors to this releas:
-Ting-Wei Lan <lantw@src.gnome.org>
+  - Ting-Wei Lan <lantw@src.gnome.org>
 
 3.15.90.1 - Feb 15, 2015
 =======================
@@ -1896,18 +1896,18 @@ Changes since 3.15.4:
    - Esperanto
 
 All contributors to this release:
-Aurimas Černius <aurisc4@gmail.com>
-Benjamin Steinwender <b@stbe.at>
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Dimitris Spingos <dmtrs32@gmail.com>
-Dušan Kazik <prescott66@gmail.com>
-Jonas Danielsson <jonas@threetimestwo.org>
-Kjartan Maraas <kmaraas@gnome.org>
-Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>
-Marek Černocký <marek@manet.cz>
-Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
-Stas Solovey <whats_up@tut.by>
-Yosef Or Boczko <yoseforb@src.gnome.org>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Benjamin Steinwender <b@stbe.at>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Dimitris Spingos <dmtrs32@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>
+  - Marek Černocký <marek@manet.cz>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Stas Solovey <whats_up@tut.by>
+  - Yosef Or Boczko <yoseforb@src.gnome.org>
 
 3.15.4 - Jan 16, 2014
 =======================
@@ -1936,23 +1936,23 @@ Changes since 3.15.3.2:
     - German
 
 All contributors to this release:
-Andika Triwidada <andika@gmail.com>
-Balázs Úr <urbalazs@gmail.com>
-Bastien Nocera <hadess@hadess.net>
-Christian Kirbach <Christian.Kirbach@gmail.com>
-Damián Nohales <damiannohales@gmail.com>
-Daniel Korostil <ted.korostiled@gmail.com>
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Dimitris Spingos <dmtrs32@gmail.com>
-Fabio Tomat <f.t.public@gmail.com>
-Fran Dieguez <fran.dieguez@mabishu.com>
-Inaki Larranaga Murgoitio <dooteo@zundan.com>
-Jonas Danielsson <jonas@threetimestwo.org>
-Marcus Lundblad <ml@update.uu.se>
-Marek Černocký <marek@manet.cz>
-Rafael Ferreira <rafael.f.f1@gmail.com>
-Ricardo  Barbosa <barbosa.cisco@gmail.com>
-Stas Solovey <whats_up@tut.by>
+  - Andika Triwidada <andika@gmail.com>
+  - Balázs Úr <urbalazs@gmail.com>
+  - Bastien Nocera <hadess@hadess.net>
+  - Christian Kirbach <Christian.Kirbach@gmail.com>
+  - Damián Nohales <damiannohales@gmail.com>
+  - Daniel Korostil <ted.korostiled@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Dimitris Spingos <dmtrs32@gmail.com>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Fran Dieguez <fran.dieguez@mabishu.com>
+  - Inaki Larranaga Murgoitio <dooteo@zundan.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Černocký <marek@manet.cz>
+  - Rafael Ferreira <rafael.f.f1@gmail.com>
+  - Ricardo  Barbosa <barbosa.cisco@gmail.com>
+  - Stas Solovey <whats_up@tut.by>
 
 3.15.3.2 - Dec 19, 2014
 =======================
@@ -1964,8 +1964,8 @@ Changes since 3.15.3.1:
     - Spanish
 
 All contributors to this release:
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Jonas Danielsson <jonas@threetimestwo.org>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
 
 3.15.3.1 - Dec 18, 2014
 =======================
@@ -1977,8 +1977,8 @@ Changes since 3.15.3:
     - Spanish
 
 All contributors to this release:
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Jonas Danielsson <jonas@threetimestwo.org>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
 
 3.15.2 - Dec 15, 2014
 =======================
@@ -2001,16 +2001,16 @@ Changes since 3.15.2:
 
 All contributors to this release:
 
-Balázs Úr <urbalazs@gmail.com>
-Damián Nohales <damiannohales@gmail.com>
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Daniel Șerbănescu <daniel@serbanescu.dk>
-Jonas Danielsson <jonas@threetimestwo.org>
-Kjartan Maraas <kmaraas@gnome.org>
-Marcus Lundblad <ml@update.uu.se>
-Marek Černocký <marek@manet.cz>
-Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
-Yosef Or Boczko <yoseforb@src.gnome.org>
+  - Balázs Úr <urbalazs@gmail.com>
+  - Damián Nohales <damiannohales@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Daniel Șerbănescu <daniel@serbanescu.dk>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Černocký <marek@manet.cz>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Yosef Or Boczko <yoseforb@src.gnome.org>
 
 
 3.15.2 - Nov 24, 2014
@@ -2045,22 +2045,22 @@ Changes since 3.14.1:
 
 All contributors to this release:
 
-amishas157 <amishas157@gmail.com>
-Ankita Patil <patil.ankita.r@gmail.com>
-Arash Mousavi <mousavi.arash@gmail.com>
-Baurzhan Muftakhidinov <baurthefirst@gmail.com>
-Damián Nohales <damiannohales@gmail.com>
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Efstathios Iosifidis <iefstathios@gmail.com>
-Jonas Danielsson <jonas@threetimestwo.org>
-Kjartan Maraas <kmaraas@gnome.org>
-Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
-Pedro Albuquerque <palbuquerque73@gmail.com>
-rishirajsinghjhelumi <rishiakhnoor@gmail.com>
-Rūdolfs Mazurs <rudolfsm@src.gnome.org>
-Shipra <bangashipra@gmail.com>
-Stas Solovey <whats_up@tut.by>
-Yosef Or Boczko <yoseforb@src.gnome.org>
+  - amishas157 <amishas157@gmail.com>
+  - Ankita Patil <patil.ankita.r@gmail.com>
+  - Arash Mousavi <mousavi.arash@gmail.com>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Damián Nohales <damiannohales@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Efstathios Iosifidis <iefstathios@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Pedro Albuquerque <palbuquerque73@gmail.com>
+  - rishirajsinghjhelumi <rishiakhnoor@gmail.com>
+  - Rūdolfs Mazurs <rudolfsm@src.gnome.org>
+  - Shipra <bangashipra@gmail.com>
+  - Stas Solovey <whats_up@tut.by>
+  - Yosef Or Boczko <yoseforb@src.gnome.org>
 
 
 3.14.1 - Oct 10, 2014
@@ -2077,11 +2077,11 @@ Changes since 3.14.0:
 
 All contributor to this release:
 
-Claudio Arseni <claudio.arseni@gmail.com>
-Jonas Danielsson <jonas@threetimestwo.org>
-Iris Gou <gouyingqiyanxuan321@gmail.com>
-Kalev Lember <kalevlember@gmail.com>
-Cheng-Chia Tseng <pswo10680@gmail.com>
+  - Claudio Arseni <claudio.arseni@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Iris Gou <gouyingqiyanxuan321@gmail.com>
+  - Kalev Lember <kalevlember@gmail.com>
+  - Cheng-Chia Tseng <pswo10680@gmail.com>
 
 3.14.0 - Sep 22, 2014
 =======================
@@ -2099,13 +2099,13 @@ Changes since 3.13.92:
 
 All contributor to this release:
 
-Kenneth Nielsen <k.nielsen81@gmail.com>
-Jiri Grönroos <jiri.gronroos+l10n@iki.fi>
-Pawan Chitrakar <chautari@gmail.com>
-Muhammet Kara <muhammetk@gmail.com>
-Daniel Korostil <ted.korostiled@gmail.com>
-Paweł Żołnowski <pawel@zolnowski.name>
-Мирослав Николић <miroslavnikolic@rocketmail.com>
+  - Kenneth Nielsen <k.nielsen81@gmail.com>
+  - Jiri Grönroos <jiri.gronroos+l10n@iki.fi>
+  - Pawan Chitrakar <chautari@gmail.com>
+  - Muhammet Kara <muhammetk@gmail.com>
+  - Daniel Korostil <ted.korostiled@gmail.com>
+  - Paweł Żołnowski <pawel@zolnowski.name>
+  - Мирослав Николић <miroslavnikolic@rocketmail.com>
 
 3.13.92 - Sep 16, 2014
 =======================
@@ -2149,30 +2149,30 @@ make sure we do not still segfault there!
 
 All contributor to this release:
 
-Andika Triwidada <andika@gmail.com>
-A S Alam <aalam@users.sf.net>
-Aurimas Černius <aurisc4@gmail.com>
-Balázs Úr <urbalazs@gmail.com>
-Carles Ferrando <carles.ferrando@gmail.com>
-Christian Kirbach <Christian.Kirbach@gmail.com>
-Damián Nohales <damiannohales@gmail.com>
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Dušan Kazik <prescott66@gmail.com>
-Enrico Nicoletto <liverig@gmail.com>
-Fran Diéguez <fran.dieguez@mabishu.com>
-Gil Forcada <gforcada@gnome.org>
-Guillaume Bernard <filorin@gmx.com>
-Jonas Danielsson <jonas@threetimestwo.org>
-Kjartan Maraas <kmaraas@gnome.org>
-Marek Černocký <marek@manet.cz>
-Maria  Mavridou <mavridou@gmail.com>
-Martin Srebotnjak <miles@filmsi.net>
-Mattias Eriksson <snaggen@gmail.com>
-Nilamdyuti Goswami <ngoswami@redhat.com>
-Seong-ho Cho <shcho@gnome.org>
-Ville-Pekka Vainio <vpvainio@iki.fi>
-Yosef Or Boczko <yoseforb@src.gnome.org>
-Yuri Myasoedov <ymyasoedov@yandex.ru>
+  - Andika Triwidada <andika@gmail.com>
+  - A S Alam <aalam@users.sf.net>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Balázs Úr <urbalazs@gmail.com>
+  - Carles Ferrando <carles.ferrando@gmail.com>
+  - Christian Kirbach <Christian.Kirbach@gmail.com>
+  - Damián Nohales <damiannohales@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Enrico Nicoletto <liverig@gmail.com>
+  - Fran Diéguez <fran.dieguez@mabishu.com>
+  - Gil Forcada <gforcada@gnome.org>
+  - Guillaume Bernard <filorin@gmx.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Marek Černocký <marek@manet.cz>
+  - Maria  Mavridou <mavridou@gmail.com>
+  - Martin Srebotnjak <miles@filmsi.net>
+  - Mattias Eriksson <snaggen@gmail.com>
+  - Nilamdyuti Goswami <ngoswami@redhat.com>
+  - Seong-ho Cho <shcho@gnome.org>
+  - Ville-Pekka Vainio <vpvainio@iki.fi>
+  - Yosef Or Boczko <yoseforb@src.gnome.org>
+  - Yuri Myasoedov <ymyasoedov@yandex.ru>
 
 3.13.91 - Sep 2, 2014
 =======================
@@ -2205,31 +2205,31 @@ Changes since 3.13.4:
 
 All contributor to this release:
 
-Anders Jonsson <anders.jonsson@norsjovallen.se>
-Andreas Nilsson <anilsson@redhat.com>
-Aurimas Černius <aurisc4@gmail.com>
-Carles Ferrando <carles.ferrando@gmail.com>
-Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
-Damián Nohales <damiannohales@gmail.com>
-Daniel Mustieles <dnaiel.mustieles@gmail.com>
-Dario Di Nucci <linkin88mail@gmail.com>
-Dominique Leuenberger <dimstar@opensuse.org>
-Elad Alfassa <elad@fedoraproject.org>
-Enrico Nicoletto <liverig@gmail.com>
-Fran Diéguez <fran.dieguez@mabishu.com>
-Gil Forcada <gforcada@gnome.org>
-Hajime Taira <htaira@redhat.com>
-Inaki Larranaga Murgoitio <dooteo@zundan.com>
-Jonas Danielsson <jonas@threetimestwo.org>
-Kjartan Maraas <kmaraas@gnome.org>
-Marek Černocký <marek@manet.cz>
-Maria  Mavridou <mavridou@gmail.com>
-MarMav <mavridou@gmail.com>
-Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
-ngoswami <ngoswami@redhat.com>
-Olav Vitters <olav@vitters.nl>
-Piotr Drąg <piotrdrag@gmail.com>
-Yosef Or Boczko <yoseforb@src.gnome.org>
+  - Anders Jonsson <anders.jonsson@norsjovallen.se>
+  - Andreas Nilsson <anilsson@redhat.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Carles Ferrando <carles.ferrando@gmail.com>
+  - Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
+  - Damián Nohales <damiannohales@gmail.com>
+  - Daniel Mustieles <dnaiel.mustieles@gmail.com>
+  - Dario Di Nucci <linkin88mail@gmail.com>
+  - Dominique Leuenberger <dimstar@opensuse.org>
+  - Elad Alfassa <elad@fedoraproject.org>
+  - Enrico Nicoletto <liverig@gmail.com>
+  - Fran Diéguez <fran.dieguez@mabishu.com>
+  - Gil Forcada <gforcada@gnome.org>
+  - Hajime Taira <htaira@redhat.com>
+  - Inaki Larranaga Murgoitio <dooteo@zundan.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Marek Černocký <marek@manet.cz>
+  - Maria  Mavridou <mavridou@gmail.com>
+  - MarMav <mavridou@gmail.com>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - ngoswami <ngoswami@redhat.com>
+  - Olav Vitters <olav@vitters.nl>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Yosef Or Boczko <yoseforb@src.gnome.org>
 
 3.13.4 - Jul 19, 2014
 =======================
@@ -2246,13 +2246,13 @@ Changes since 3.13.3:
 
 All contributor to this release:
 
-Balázs Úr <urbalazs@src.gnome.org>
-Daniel Mustieles <dnaiel.mustieles@gmail.com>
-Enrico Nicoletto <liverig@gmail.com>
-Jonas Danielsson <jonas@threetimestwo.org>
-MarMav <mavridou@gmail.com>
-Yosef Or Boczko <yoseforb@src.gnome.org>
-Yuri Myasoedov <ymyasoedov@yandex.ru>
+  - Balázs Úr <urbalazs@src.gnome.org>
+  - Daniel Mustieles <dnaiel.mustieles@gmail.com>
+  - Enrico Nicoletto <liverig@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - MarMav <mavridou@gmail.com>
+  - Yosef Or Boczko <yoseforb@src.gnome.org>
+  - Yuri Myasoedov <ymyasoedov@yandex.ru>
 
 3.13.3 - Jun 24, 2014
 =======================
@@ -2270,14 +2270,14 @@ Changes since 3.13.2:
 
 All contributors to this release:
 
-Aurimas Černius <aurisc4@gmail.com>
-Damián Nohales <damiannohales@gmail.com>
-Daniel Mustieles <dnaiel.mustieles@gmail.com>
-Jonas Danielsson <jonas@threetimestwo.org>
-Martin Srebotnjak <miles@filmsi.net>
-Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
-Piotr Drąg <piotrdrag@gmail.com>
-Richard Hughes <richard@hughsie.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Damián Nohales <damiannohales@gmail.com>
+  - Daniel Mustieles <dnaiel.mustieles@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Martin Srebotnjak <miles@filmsi.net>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Richard Hughes <richard@hughsie.com>
 
 
 3.13.2 - May 27, 2014
@@ -2303,21 +2303,21 @@ Changes since 3.12.0:
 
 All contributors to this release:
 
-Carles Ferrando <carles.ferrando@gmail.com>
-Daniel Șerbănescu <cyber19rider@gmail.com>
-Dario Di Nucci <linkin88mail@gmail.com>
-Dušan Kazik <prescott66@gmail.com>
-Erwin Poeze <donnut@look.com>
-Ikuya Awashiro <ikuya@fruitsbasket.info>
-Jonas Danielsson <jonas@threetimestwo.org>
-marablack3 <marablack3@gmail.com>
-Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
-Piotr Drąg <piotrdrag@gmail.com>
-Richard Hughes <richard@hughsie.com>
-rishirajsinghjhelumi <rishiakhnoor@gmail.com>
-Seong-ho Cho <shcho@gnome.org>
-Victor Ibragimov <victor.ibragimov@gmail.com>
-Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+  - Carles Ferrando <carles.ferrando@gmail.com>
+  - Daniel Șerbănescu <cyber19rider@gmail.com>
+  - Dario Di Nucci <linkin88mail@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Erwin Poeze <donnut@look.com>
+  - Ikuya Awashiro <ikuya@fruitsbasket.info>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - marablack3 <marablack3@gmail.com>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Richard Hughes <richard@hughsie.com>
+  - rishirajsinghjhelumi <rishiakhnoor@gmail.com>
+  - Seong-ho Cho <shcho@gnome.org>
+  - Victor Ibragimov <victor.ibragimov@gmail.com>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
 
 
 3.12.0 - Mar 24, 2014
@@ -2340,17 +2340,17 @@ Changes since 3.11.92:
 
 All contributors to this release:
 
-Claudio Arseni <claudio.arseni@ubuntu.com>
-Мирослав Николић <miroslavnikolic@rocketmail.com>
-Benjamin Steinwender <b@stbe.at>
-Inaki Larranaga Murgoitio <dooteo@zundan.com>
-Matej Urbančič <mateju@svn.gnome.org>
-Praveen Illa <mail2ipn@gmail.com>
-Daniel Martinez <dmartinez@src.gnome.org>
-Ask H. Larsen <asklarsen@gmail.com>
-A S Alam <apreet.alam@gmail.com>
-Paweł Żołnowski <pawel@zolnowski.name>
-Seong-ho Cho <darkcircle.0426@gmail.com>
+  - Claudio Arseni <claudio.arseni@ubuntu.com>
+  - Мирослав Николић <miroslavnikolic@rocketmail.com>
+  - Benjamin Steinwender <b@stbe.at>
+  - Inaki Larranaga Murgoitio <dooteo@zundan.com>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Praveen Illa <mail2ipn@gmail.com>
+  - Daniel Martinez <dmartinez@src.gnome.org>
+  - Ask H. Larsen <asklarsen@gmail.com>
+  - A S Alam <apreet.alam@gmail.com>
+  - Paweł Żołnowski <pawel@zolnowski.name>
+  - Seong-ho Cho <darkcircle.0426@gmail.com>
 
 
 3.11.92 - Mar 17, 2014
@@ -2382,29 +2382,29 @@ Changes since 3.11.91:
 
 All contributors to this release:
 
-Andika Triwidada <andika@gmail.com>
-Aurimas Černius <aurisc4@gmail.com>
-Balázs Úr <urbalazs@src.gnome.org>
-Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
-Claude Paroz <claude@2xlibre.net>
-Damián Nohales <damiannohaes@gmail.com>
-Daniel Korostil <ted.korostiled@gmail.com>
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Dario Di Nucci <linkin88mail@gmail.com>
-Duarte Loreto <happyguy_pt@hotmail.com>
-Fran Diéguez <fran.dieguez@mabishu.com>
-Gil Forcada <gforcada@gnome.org>
-Jonas Danielsson <jonas@threetimestwo.org>
-Kjartan Maraas <kmaraas@gnome.org>
-Marek Černocký <marek@manet.cz>
-Rafael Ferreira <rafael.f.f1@gmail.com>
-Rūdolfs Mazurs <rudolfsm@src.gnome.org>
-Seong-ho Cho <darkcircle.0426@gmail.com>
-Tiagosdot <almosthumane@portugalmail.pt>
-Ville-Pekka Vainio <vpvainio@iki.fi>
-Wylmer Wang <wantinghard@gmail.com>
-Yaron Shahrabani <sh.yaron@gmail.com>
-Yuri Myasoedov <ymyasoedov@yandex.ru>
+  - Andika Triwidada <andika@gmail.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Balázs Úr <urbalazs@src.gnome.org>
+  - Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
+  - Claude Paroz <claude@2xlibre.net>
+  - Damián Nohales <damiannohaes@gmail.com>
+  - Daniel Korostil <ted.korostiled@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Dario Di Nucci <linkin88mail@gmail.com>
+  - Duarte Loreto <happyguy_pt@hotmail.com>
+  - Fran Diéguez <fran.dieguez@mabishu.com>
+  - Gil Forcada <gforcada@gnome.org>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Marek Černocký <marek@manet.cz>
+  - Rafael Ferreira <rafael.f.f1@gmail.com>
+  - Rūdolfs Mazurs <rudolfsm@src.gnome.org>
+  - Seong-ho Cho <darkcircle.0426@gmail.com>
+  - Tiagosdot <almosthumane@portugalmail.pt>
+  - Ville-Pekka Vainio <vpvainio@iki.fi>
+  - Wylmer Wang <wantinghard@gmail.com>
+  - Yaron Shahrabani <sh.yaron@gmail.com>
+  - Yuri Myasoedov <ymyasoedov@yandex.ru>
 
 3.11.91 - Mar 2, 2014
 =======================
@@ -2423,12 +2423,12 @@ Changes since 3.11.90:
 
 All contributors to this release:
 
-Jonas Danielsson <jonas@threetimestwo.org>
-Khaled Hosny <khaledhosny@eglug.org>
-Marcus Lundblad <ml@update.uu.se>
-Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
-Pau Iranzo <paugnu@gmail.com>
-Ville-Pekka Vainio <vpvainio@iki.fi>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Khaled Hosny <khaledhosny@eglug.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Pau Iranzo <paugnu@gmail.com>
+  - Ville-Pekka Vainio <vpvainio@iki.fi>
 
 3.11.90 - Feb 18, 2014
 =======================
@@ -2446,13 +2446,13 @@ Changes since 3.11.5.1:
 
 All contributors to this release:
 
-Claude Paroz <claude@2xlibre.net>
-Daniel Korostil <ted.korostiled@gmail.com>
-Jonas Danielsson <jonas@threetimestwo.org>
-Jorge Pérez Pérez <jorgtum@gmail.com>
-Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
-ngoswami <ngoswami@redhat.com>
-Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+  - Claude Paroz <claude@2xlibre.net>
+  - Daniel Korostil <ted.korostiled@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Jorge Pérez Pérez <jorgtum@gmail.com>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - ngoswami <ngoswami@redhat.com>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
 
 3.11.5.1 - Feb 05, 2014
 =======================
@@ -2463,8 +2463,8 @@ Changes since 3.11.5:
 
 All contributors to this release:
 
-Ting-Wei Lan <lantw44@gmail.com>
-Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+  - Ting-Wei Lan <lantw44@gmail.com>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
 
 3.11.5 - Feb 04, 2014
 =====================
@@ -2504,23 +2504,23 @@ Dependency-related changes:
 
 All contributors to this release:
 
-Andreas Nilsson <anilsson@redhat.com>
-Aurimas Černius <aurisc4@gmail.com>
-Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
-Colin Walters <walters@verbum.org>
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Fran Diéguez <fran.dieguez@mabishu.com>
-Jonas Danielsson <jonas@threetimestwo.org>
-Kjartan Maraas <kmaraas@gnome.org>
-Marek Černocký <marek@manet.cz>
-Matej Urbančič <mateju@svn.gnome.org>
-Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
-Piotr Drąg <piotrdrag@gmail.com>
-Rafael Ferreira <rafael.f.f1@gmail.com>
-Tong Hui <tonghuix@gmmail.com>
-Victor Ibragimov <victor.ibragimov@gmail.com>
-Yosef Or Boczko <yoseforb@src.gnome.org>
-Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+  - Andreas Nilsson <anilsson@redhat.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
+  - Colin Walters <walters@verbum.org>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Fran Diéguez <fran.dieguez@mabishu.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Marek Černocký <marek@manet.cz>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Rafael Ferreira <rafael.f.f1@gmail.com>
+  - Tong Hui <tonghuix@gmmail.com>
+  - Victor Ibragimov <victor.ibragimov@gmail.com>
+  - Yosef Or Boczko <yoseforb@src.gnome.org>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
 
 3.11.4.1 - Jan 14, 2014
 =======================
@@ -2531,9 +2531,9 @@ Changes since 3.11.4:
 
 All contributors to this release:
 
-Jonas Danielsson <jonas@threetimestwo.org>
-Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
-Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
 
 3.11.4 - Jan 14, 2014
 =====================
@@ -2552,14 +2552,14 @@ Changes since 3.11.2:
 
 All contributors to this release:
 
-Balasankar C <c.balasankar@gmail.com>
-Benjamin Steinwender <b@stbe.at>
-Dušan Kazik <prescott66@gmail.com>
-Fabio Tomat <f.t.public@gmail.com>
-Jonas Danielsson <jonas@threetimestwo.org>
-Marek Černocký <marek@manet.cz>
-Matthew Chisholm <mat.eo416@gmail.com>
-Shankar Prasad <prasad.mvs@gmail.com>
+  - Balasankar C <c.balasankar@gmail.com>
+  - Benjamin Steinwender <b@stbe.at>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Marek Černocký <marek@manet.cz>
+  - Matthew Chisholm <mat.eo416@gmail.com>
+  - Shankar Prasad <prasad.mvs@gmail.com>
 
 3.11.2 - Nov 19, 2013
 =====================
@@ -2594,33 +2594,33 @@ Changes since 3.10.0:
 
 All contributors to this release:
 
-Anish A <aneesh.nl@gmail.com>
-Arash Mousavi <mousavi.arash@gmail.com>
-Aurimas Černius <aurisc4@gmail.com>
-Carles Ferrando <carles.ferrando@gmail.com>
-Claudio Arseni <claudio.arseni@ubuntu.com>
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Dawid Loubser <dawid.loubser@ibi.co.za>
-Efstathios Iosifidis <iosifidis@opensuse.org>
-Emin Tufan Çetin <etcetin@gmail.con>
-Fran Diéguez <fran.dieguez@mabishu.com>
-Friedel Wolff <friedel@translate.org.za>
-Inaki Larranaga Murgoitio <dooteo@zundan.com>
-Jonas Danielsson <jonas@threetimestwo.org>
-Kenneth Nielsen <k.nielsen81@gmail.com>
-Khaled Hosny <khaledhosny@eglug.org>
-Kjartan Maraas <kmaraas@gnome.org>
-Marcus Lundblad <ml@update.uu.se>
-Matej Urbančič <mateju@svn.gnome.org>
-Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
-Philip Withnall <philip@tecnocode.co.uk>
-Praveen Illa <mail2ipn@gmail.com>
-Rafael Ferreira <rafael.f.f1@gmail.com>
-Reinout van Schouwen <reinouts@gnome.org>
-Tim Lunn <tim@feathertop.org>
-Victor Ibragimov <victor.ibragimov@gmail.com>
-Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
-tuhaihe <1132321739qq@gmail.com>
+  - Anish A <aneesh.nl@gmail.com>
+  - Arash Mousavi <mousavi.arash@gmail.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Carles Ferrando <carles.ferrando@gmail.com>
+  - Claudio Arseni <claudio.arseni@ubuntu.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Dawid Loubser <dawid.loubser@ibi.co.za>
+  - Efstathios Iosifidis <iosifidis@opensuse.org>
+  - Emin Tufan Çetin <etcetin@gmail.con>
+  - Fran Diéguez <fran.dieguez@mabishu.com>
+  - Friedel Wolff <friedel@translate.org.za>
+  - Inaki Larranaga Murgoitio <dooteo@zundan.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kenneth Nielsen <k.nielsen81@gmail.com>
+  - Khaled Hosny <khaledhosny@eglug.org>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Philip Withnall <philip@tecnocode.co.uk>
+  - Praveen Illa <mail2ipn@gmail.com>
+  - Rafael Ferreira <rafael.f.f1@gmail.com>
+  - Reinout van Schouwen <reinouts@gnome.org>
+  - Tim Lunn <tim@feathertop.org>
+  - Victor Ibragimov <victor.ibragimov@gmail.com>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+  - tuhaihe <1132321739qq@gmail.com>
 
 3.10.0 - Sep 23, 2013
 =====================
@@ -2641,18 +2641,18 @@ Changes since 3.9.92:
 
 All contributors to this release:
 
-António Lima <amrlima@gmail.com>
-Benjamin Steinwender <b@stbe.at>
-Daniel Korostil <ted.korostiled@gmail.com>
-Jiro Matsuzawa <jmatsuzawa@gnome.org>
-Josep Sanchez Mesegue <papapep@gmx.com>
-Khaled Hosny <khaledhosny@eglug.org>
-Kjartan Maraas <kmaraas@gnome.org>
-Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>
-Mattias Põldaru <mahfiaz@gmail.com>
-Nilamdyuti Goswami <ngoswami@redhat.com>
-Priit Laes <plaes@plaes.org>
-Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+  - António Lima <amrlima@gmail.com>
+  - Benjamin Steinwender <b@stbe.at>
+  - Daniel Korostil <ted.korostiled@gmail.com>
+  - Jiro Matsuzawa <jmatsuzawa@gnome.org>
+  - Josep Sanchez Mesegue <papapep@gmx.com>
+  - Khaled Hosny <khaledhosny@eglug.org>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>
+  - Mattias Põldaru <mahfiaz@gmail.com>
+  - Nilamdyuti Goswami <ngoswami@redhat.com>
+  - Priit Laes <plaes@plaes.org>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
 
 3.9.92 - Sep 16, 2013
 =====================
@@ -2695,39 +2695,39 @@ Changes since 3.9.91:
 
 All contributors to this release:
 
-Alexandre Franke <alexandre.franke@gmail.com>
-Andika Triwidada <andika@gmail.com>
-A S Alam <apreet.alam@gmail.com>
-Aurimas Černius <aurisc4@gmail.com>
-Balázs Úr <urbalazs@src.gnome.org>
-Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
-Claudio Arseni <claudio.arseni@ubuntu.com>
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Dušan Kazik <prescott66@gmail.com>
-Enrico Nicoletto <liverig@gmail.com>
-Fran Diéguez <fran.dieguez@mabishu.com>
-Gabor Kelemen <kelemeng@gnome.hu>
-Jonas Danielsson <jonas.danielsson@lundinova.se>
-Kalev Lember <kalevlember@gmail.com>
-Kjartan Maraas <kmaraas@gnome.org>
-Kris Thomsen <lakristho@gmail.com>
-Marek Černocký <marek@manet.cz>
-Martin Srebotnjak <miles@filmsi.net>
-Matej Urbančič <mateju@svn.gnome.org>
-Nilamdyuti Goswami <ngoswami@redhat.com>
-Philip Withnall <philip@tecnocode.co.uk>
-Piotr Drąg <piotrdrag@gmail.com>
-Reinout van Schouwen <reinouts@gnome.org>
-Rūdolfs Mazurs <rudolfsm@src.gnome.org>
-Seong-ho Cho <darkcircle.0426@gmail.com>
-Timo Jyrinki <timo@debian.org>
-Tobias Endrigkeit <tobiasendrigkeit@outlook.com>
-Victor Ibragimov <victor.ibragimov@gmail.com>
-Ville-Pekka Vainio <vpvainio@iki.fi>
-Yosef Or Boczko <yoseforb@gmail.com>
-Yuri Myasoedov <omerta13@yandex.ru>
-Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
-Мирослав Николић <miroslavnikolic@rocketmail.com>
+  - Alexandre Franke <alexandre.franke@gmail.com>
+  - Andika Triwidada <andika@gmail.com>
+  - A S Alam <apreet.alam@gmail.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Balázs Úr <urbalazs@src.gnome.org>
+  - Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
+  - Claudio Arseni <claudio.arseni@ubuntu.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Enrico Nicoletto <liverig@gmail.com>
+  - Fran Diéguez <fran.dieguez@mabishu.com>
+  - Gabor Kelemen <kelemeng@gnome.hu>
+  - Jonas Danielsson <jonas.danielsson@lundinova.se>
+  - Kalev Lember <kalevlember@gmail.com>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Kris Thomsen <lakristho@gmail.com>
+  - Marek Černocký <marek@manet.cz>
+  - Martin Srebotnjak <miles@filmsi.net>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Nilamdyuti Goswami <ngoswami@redhat.com>
+  - Philip Withnall <philip@tecnocode.co.uk>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Reinout van Schouwen <reinouts@gnome.org>
+  - Rūdolfs Mazurs <rudolfsm@src.gnome.org>
+  - Seong-ho Cho <darkcircle.0426@gmail.com>
+  - Timo Jyrinki <timo@debian.org>
+  - Tobias Endrigkeit <tobiasendrigkeit@outlook.com>
+  - Victor Ibragimov <victor.ibragimov@gmail.com>
+  - Ville-Pekka Vainio <vpvainio@iki.fi>
+  - Yosef Or Boczko <yoseforb@gmail.com>
+  - Yuri Myasoedov <omerta13@yandex.ru>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+  - Мирослав Николић <miroslavnikolic@rocketmail.com>
 
 3.9.91 - Sep 03, 2013
 =====================
@@ -2765,22 +2765,22 @@ Dependency-related changes:
 
 All contributors to this release:
 
-Andreas Nilsson <anilsson@redhat.com>
-Balázs Úr <urbalazs@src.gnome.org>
-Daniel Korostil <ted.korostiled@gmail.com>
-Daniel Mustieles <daniel.mustieles@gmail.com>
-Enrico Nicoletto <liverig@gmail.com>
-Fran Diéguez <fran.dieguez@mabishu.com>
-Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
-Jonas Danielsson <jonas@threetimestwo.org>
-Kalev Lember <kalevlember@gmail.com>
-Marek Černocký <marek@manet.cz>
-Matej Urbančič <mateju@svn.gnome.org>
-Piotr Drąg <piotrdrag@gmail.com>
-Ryan Lortie <desrt@desrt.ca>
-Seán de Búrca <leftmostcat@gmail.com>
-Victor Ibragimov <victor.ibragimov@gmail.com>
-Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+  - Andreas Nilsson <anilsson@redhat.com>
+  - Balázs Úr <urbalazs@src.gnome.org>
+  - Daniel Korostil <ted.korostiled@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Enrico Nicoletto <liverig@gmail.com>
+  - Fran Diéguez <fran.dieguez@mabishu.com>
+  - Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kalev Lember <kalevlember@gmail.com>
+  - Marek Černocký <marek@manet.cz>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Ryan Lortie <desrt@desrt.ca>
+  - Seán de Búrca <leftmostcat@gmail.com>
+  - Victor Ibragimov <victor.ibragimov@gmail.com>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
 
 3.9.90.2 - Aug 23, 2013
 =======================
@@ -2792,8 +2792,8 @@ Changes since 3.9.90.1:
 
 All contributors to this release:
 
-Piotr Drąg <piotrdrag@gmail.com>
-Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
 
 3.9.90.1 - Aug 20, 2013
 =======================
@@ -2819,14 +2819,14 @@ Dependency-related changes:
 
 All contributors to this release:
 
-Andrea Veri <av@gnome.org>
-Jonas Danielsson <jonas@threetimestwo.org>
-Kenneth Nielsen <k.nielsen81@gmail.com>
-Kris Thomsen <lakristho@gmail.com>
-Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
-tuhaihe <1132321739qq@gmail.com>
-Yosef Or Boczko <yoseforb@gmail.com>
-Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+  - Andrea Veri <av@gnome.org>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kenneth Nielsen <k.nielsen81@gmail.com>
+  - Kris Thomsen <lakristho@gmail.com>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - tuhaihe <1132321739qq@gmail.com>
+  - Yosef Or Boczko <yoseforb@gmail.com>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
 
 3.9.5 - Jul 31, 2013
 ====================
