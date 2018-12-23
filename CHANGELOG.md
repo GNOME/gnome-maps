@@ -1,0 +1,2855 @@
+3.31.4 - Jan 7, 2019
+=========================
+
+Changes since 3.31.3
+ - Fix keyboard shortcut for quitting that was broken since
+   the application menu was moved to the headerbar
+ - Update GJS build dependency
+
+Added/updated/fixed translations
+ - Turkish
+ - Swedish
+ - Friulian
+ - Greek
+
+All contributors to this release
+  - Anders Jonsson <anders.jonsson@norsjovallen.se>
+  - Efstathios Iosifidis <eiosifidis@gnome.org>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Sabri Ünal <yakushabb@gmail.com>
+
+3.31.3 - Dec 10, 2018
+=========================
+
+Changes since 3.31.2
+  - Fix loading contact's adresses with newer GJS
+  - Fix some array-related GJS deprecation warnings
+
+Added/updated/fixed translations
+  - Spanish
+
+All contributors to this release
+  - Daniel Mustieles <daniel.mustieles.contractor@bbva.com>
+  - Jakub Steiner <jimmac@gmail.com>
+  - James Westman <flyingpimonster@flyingpimonster.net>
+  - Marcus Lundblad <ml@update.uu.se>
+
+3.31.2 - Nov 12, 2018
+=========================
+
+Changes since 3.31.1
+  - Move app menu to the headerbar
+  - Fix a crash that occured sometimes when activating "What's here?" from
+    the context menu
+  - Fix compiler warnings
+
+Added/updated/fixed translations
+  - Esperanto
+  - French
+  - Slovak
+  - Malayalam
+  - Slovenian
+  - Czech
+
+All contributors to this release
+  - Anish Sheela <aneesh.nl@gmail.com>
+  - Carmen Bianca BAKKER <carmen@carmenbianca.eu>
+  - Charles Monzat <charles.monzat@numericable.fr>
+  - Debarshi Ray <debarshir@gnome.org>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Cernocky <marek_cernocky@conel.cz>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Piotr Drąg <piotrdrag@gmail.com>
+
+3.31.1 - Oct 8, 2018
+=========================
+
+Changes since 3.30.0
+  - Updated application icon
+  - Start all way zoomed out on first run
+  - Fix shape layer file chooser not showing up
+
+Added/updated/fixed translations
+  - Serbian
+  - Russian
+
+All contributors to this release
+  - FlyingPiMonster <flyingpimonster@flyingpimonster.net>
+  - Jakub Steiner <jimmac@gmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Stas Solovey <whats_up@tut.by>
+  - Марко Костић <marko.m.kostic@gmail.com>
+
+3.30.0 - Sep 3, 2018
+=========================
+
+Added/updated/fixed translations
+  - Danish
+  - Croatian
+  - Latvian
+  - Hungarian
+  - Vietnamese
+  - Italian
+  - Galician
+  - Korean
+
+All contributors to this release
+  - Ask Hjorth Larsen <asklarsen@gmail.com>
+  - Balázs Meskó <meskobalazs@fedoraproject.org>
+  - Fran Dieguez <frandieguez@gnome.org>
+  - Gianvito Cavasoli <gianvito@gmx.it>
+  - gogo <trebelnik2@gmail.com>
+  - Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>
+  - Seong-ho Cho <shcho@gnome.org>
+  - Trần Ngọc Quân <vnwildman@gmail.com>
+
+3.29.92 - Aug 27, 2018
+=========================
+
+Changes since 3.29.91
+  - Updated POI definitions and translations for OSM editing
+
+Added/updated/fixed translations
+  - Indonesian
+  - Finnish
+  - Kazakh
+  - Icelandic
+  - Czech
+
+All contributors to this release
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Kukuh Syafaat <kukuhsyafaat@gnome.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Cernocky <marek_cernocky@conel.cz>
+  - Sveinn í Felli <sv1@fellsnet.is>
+
+3.29.91 - Aug 13, 2018
+=========================
+
+Changes since 3.29.90
+  - Don't spin up CI environments for master and tags
+
+Added/updated/fixed translations
+  - Turkish
+  - Lithuanian
+  - Swedish
+  - French
+  - German
+  - Polish
+  - Slovenian
+
+All contributors to this release
+  - Anders Jonsson <anders.jonsson@norsjovallen.se>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Claude Paroz <claude@2xlibre.net>
+  - Emin Tufan Çetin <etcetin@gmail.com>
+  - Jordan Petridis <jordanpetridis@protonmail.com>
+  - Mario Blättermann <mario.blaettermann@gmail.com>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Piotr Drąg <piotrdrag@gmail.com>
+
+3.29.90 - Jul 30, 2018
+=========================
+
+Changes since 3.29.4
+  - Add a Flatpak CI build/test job
+
+Added/updated/fixed translations
+  - French
+
+All contributors to this release
+  - Charles Monzat <charles.monzat@numericable.fr>
+  - Jordan Petridis <jordanpetridis@protonmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+
+3.29.4 - Jul 16, 2018
+=========================
+
+Changes since 3.29.3
+  - Use g_application_mark_busy() instead of the home-brewed busy marker
+  - Limit the number of via points in routing queries to 10 to avoid hitting
+    a limit in GraphHopper and also to better fit the UI
+  - Various Flatpak updates
+
+Added/updated/fixed translations
+  - Brazilian Portuguese
+  - Catalan
+  - Romanian
+  - Friulian
+  - Greek
+  - Chinese (Taiwan)
+  - Spanish
+
+All contributors to this release
+  - Alberto Fanjul <albertofanjul@gmail.com>
+  - Bruno Lopes da Silva <brunolopesbldsb@gmail.com>
+  - Daniel Mustieles <daniel.mustieles.contractor@bbva.com>
+  - Daniel Șerbănescu <daniel@serbanescu.dk>
+  - Efstathios Iosifidis <eiosifidis@gnome.org>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Pere Orga <pere@orga.cat>
+  - Vinayak Aggarwal <f20170008@goa.bits-pilani.ac.in>
+  - Yi-Jyun Pan <pan93412@gmail.com>
+
+3.29.3 - Jun 19, 2018
+=========================
+
+Changes since 3.29.1
+  - Stop using notifications on top of the map view as it doesn't
+    work on Wayland
+  - Add OARS tags
+
+Added/updated/fixed translations
+  - Chinese (Taiwan)
+  - Occitan
+  - Brazilian Portuguese
+  - Chinese (China)
+
+All contributors to this release:
+  - Cédric Valmary <cvalmary@yahoo.fr>
+  - Enrico Nicoletto <liverig@gmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Mingcong Bai <jeffbai@aosc.xyz>
+  - nick richards <nick.richards@gmail.com>
+  - Yi-Jyun Pan <pan93412@gmail.com>
+
+3.29.2 - May 21, 2018
+=========================
+
+Added/updated/fixed translations
+  - Chinese (China)
+  - Swedish
+  - Romanian
+  - Indonesian
+  - Italian
+  - Spanish
+  - Slovenian
+  - Greek
+  - Friulian
+  - Turkish
+
+All contributors to this release:
+  - Anders Jonsson <anders.jonsson@norsjovallen.se>
+  - Daniel Mustieles <daniel.mustieles.contractor@bbva.com>
+  - Daniel Șerbănescu <daniel@serbanescu.dk>
+  - Efstathios Iosifidis <eiosifidis@gnome.org>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Kukuh Syafaat <kukuhsyafaat@gnome.org>
+  - Mandy Wang <wangmychn@gmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Milo Casagrande <milo@ubuntu.com>
+  - Muhammet Kara <muhammetk@gmail.com>
+
+3.29.1 - Apr 16, 2018
+=========================
+
+Changes since 3.28.0
+  - Switch to build with Meson (also dropped support for building with
+    Autotools)
+  - Disable UI for switching between street and aerial view if the service
+    definition lacks aerial tile definitions (allows using a tile server not
+    supplying aerial tiles)
+  - Enable selecting map markers using touch
+
+Added/updated/fixed translations
+  - Croatian
+  - German
+  - Hungarian
+  - Czech
+  - Latvian
+  - Lithuanian
+  - Serbian
+  - Dutch
+  - Slovenian
+  - Croatian
+  - Swedish
+  - Brazilian Portuguese
+  - Indonesian
+  - French
+  - Polish
+  - Romanian
+  - Russian
+
+All contributors to this release:
+  - Anders Jonsson <anders.jonsson@norsjovallen.se>
+  - Andika Triwidada <atriwidada@gnome.org>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Balázs Meskó <meskobalazs@fedoraproject.org>
+  - Charles Monzat <superboa@hotmail.fr>
+  - Daniel Șerbănescu <daniel@serbanescu.dk>
+  - gogo <trebelnik2@gmail.com>
+  - Justin van Steijn <jvs@fsfe.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Cernocky <marek_cernocky@conel.cz>
+  - Mario Blättermann <mario.blaettermann@gmail.com>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Rafael Fontenelle <rafaelff@gnome.org>
+  - Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>
+  - Stas Solovey <whats_up@tut.by>
+  - Марко Костић <marko.m.kostic@gmail.com>
+
+3.28.0 - Mar 12, 2018
+=========================
+
+Changes since 3.27.92
+  - Change license of two files to GPL 2 or later (as was the original
+    intension and what the project as a whole is using)
+
+Added/updated/fixed translations
+  - Swedish
+  - Serbian (latin)
+  - Serbian
+  - Italian
+  - Greek
+  - Danish
+
+All contributors to this release:
+  - Anders Jonsson <anders.jonsson@norsjovallen.se>
+  - Ask Hjorth Larsen <asklarsen@gmail.com>
+  - Efstathios Iosifidis <eiosifidis@gnome.org>
+  - Gianvito Cavasoli <gianvito@gmx.it>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Марко Костић <marko.m.kostic@gmail.com>
+  - Милош Поповић <gpopac@gmail.com>
+
+3.27.92 - Mar 5, 2018
+=========================
+
+Changes since 3.27.90
+  - Updated POI definitions for OpenStreetMap editing
+  - Fix a segmentation fault at exit
+  - Fix missing generated files and third-party licenses in the distributed
+    release archive
+  - Fix layout of shortcuts help overlay to better fit smaller screens
+
+Added/updated/fixed translations
+  - Lithuanian
+  - Kazakh
+  - Scottish Gaelic
+  - Vietnamese
+  - Slovak
+  - Korean
+  - Latvian
+  - Finnish
+  - Dutch
+  - Turkish
+  - Czech
+  - Croatian
+  - Galician
+  - Brazilian Portuguese
+  - French
+  - Polish
+
+All contributors to this release:
+  - Alain Lojewski <allomervan@gmail.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Emin Tufan Çetin <etcetin@gmail.com>
+  - Fran Dieguez <frandieguez@gnome.org>
+  - Furkan Ahmet Kara <furkanahmetkara.fk@gmail.com>
+  - Gun Chleoc <fios@foramnagaidhlig.net>
+  - gogo <trebelnik2@gmail.com>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Kwangseob Jeong <myddpp@gmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Cernocky <marek_cernocky@conel.cz>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Rafael Fontenelle <rafaelff@gnome.org>
+  - Rūdolfs Mazurs <rudolfsm@src.gnome.org>
+  - Simon McVittie <smcv@debian.org>
+  - Trần Ngọc Quân <vnwildman@gmail.com>
+
+3.27.90 - Feb 5, 2018
+=========================
+
+Changes since 3.27.90
+  - Use moder JS features (ES6), classes (with GObject.registerClass())
+    and arrow notation (=> () ) for binding anonymous functions
+  - Change default line with and color for layer lines in loaded layers to make
+    them more visible
+  - Don't select text in place entries in the routing sidebar when auto-completing
+  - Bugfixes for keyboard navigation in search entry completion popover
+  - Add additional tooltips for buttons in the routing sidebar
+  - Decrease height of OSM login dialog
+
+Added/updated/fixed translations
+  - Friulian
+  - Catalan
+  - Indonesian
+  - German
+  - Spanish
+  - Hungarian
+  - Finnish
+
+All contributors to this release:
+  - Balázs Meskó <meskobalazs@fedoraproject.org>
+  - Balázs Úr <balazs@urbalazs.hu>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Gil Forcada <gforcada@gnome.org>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Jordi Mas <jmas@softcatala.org>
+  - Kukuh Syafaat <syafaatkukuh@gmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Tim Sabsch <tim@sabsch.com>
+  - Tomasz Miąsko <tomasz.miasko@gmail.com>
+  - Vibhanshu Vaibhav <ayush.vibhanshu@gmail.com>
+
+3.27.4 - Jan 8, 2018
+=========================
+
+Changes since 3.27.3
+  - Show thumnails from Wikipedia in the place bubbles when availability
+  - Make the place bubble popovers follow the map when the view scrolls (i.e.
+    when using the keyboard shortcuts to scroll)
+  - Move the zoom control buttons to the headerbar to mitigate an issue with
+    Clutter and overlay GTK+ widgets on Wayland
+  - Adapt libgweather dependency to use gitlab.gnome.org for building Flatpaks
+
+Added/updated/fixed translations
+  - German
+  - Serbian
+  - Swedish
+  - Esperanto
+  - Turkish
+  - Czech
+  - Spanish
+  - Friulian
+
+All contributors to this release:
+  - Anders Jonsson <anders.jonsson@norsjovallen.se>
+  - Andreas Nilsson <anilsson@redhat.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Emin Tufan Çetin <etcetin@gmail.com>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Černocký <marek@manet.cz>
+  - Mario Blättermann <mario.blaettermann@gmail.com>
+  - Марко Костић <marko.m.kostic@gmail.com>
+
+3.27.3 - Dec 11, 2017
+=========================
+
+Changes since 3.27.3
+  - Show tile provider and OSM attribution in the About dialog
+  - Install appstream metadata to non-deprecated location
+  - Update Flatpak manifest to build libgweather with Meson
+
+Added/updated/fixed translations
+  - Icelandic
+  - Indonesian
+  - Czech
+
+All contributors to this release:
+  - Jeremy Bicha <jbicha@ubuntu.com>
+  - Kukuh Syafaat <syafaatkukuh@gmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Cernocky <marek_cernocky@conel.cz>
+  - Sveinn í Felli <sv1@fellsnet.is>
+
+3.27.2 - Nov 13, 2017
+=========================
+
+Changes since 3.27.1
+  - Fix Maps to be available as an option for "Open with another application"
+    for geo shape layer files
+  - Fix JS warnings about redundant function arguments and similar things
+
+Added/updated/fixed translations
+  - Norwegian bokmål
+  - Hindi
+  - Croatian
+  - Friulian
+  - Czech
+  - Slovak
+  - German
+
+All contributors to this release:
+  - Dušan Kazik <prescott66@gmail.com>
+  - Dylan McCall <dylan@dylanmccall.com>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - gogo <trebelnik2@gmail.com>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Cernocky <marek_cernocky@conel.cz>
+  - Mario Blättermann <mario.blaettermann@gmail.com>
+  - Solomon Nadar <solomonsunder@gmail.com>
+
+3.27.1 - Oct 16, 2017
+=========================
+
+Changes since 3.26.0
+  - Use sidebar icon style for icons in the routing results
+  - Improve the look of route labels for public transit trips when using the
+    dark theme
+  - Add --version command line option
+  - Fix network detection when running as a Flatpak
+  - Update appdata screenshots
+  - Show stored routes according to locale direction
+  - Avoid a GTK+ warning on startup
+  - Export symbols from modules using var instead of const to comply with ES6
+    and avoid a warning on newer GJS versions
+
+Added/updated/fixed translations
+  - Polish
+  - Icelandic
+  - Arabic
+  - Greek
+
+All contributors to this release:
+  - Anup Agarwal <108anup@gmail.com>
+  - Efstathios Iosifidis <eiosifidis@gnome.org>
+  - Khaled Hosny <khaledhosny@eglug.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Sveinn í Felli <sv1@fellsnet.is>
+  - Xavi Ivars <xavi.ivars@gmail.com>
+
+3.26.0 - Sep 11, 2017
+=========================
+
+Added/updated/fixed translations:
+  - Basque
+  - Catalan
+  - Swedish
+  - Italian
+  - Danish
+  - Brittish English
+  - Dutch
+
+All contributors to this release:
+  - Anders Jonsson <anders.jonsson@norsjovallen.se>
+  - Ask Hjorth Larsen <asklarsen@gmail.com>
+  - Bruce Cowan <bruce@bcowan.me.uk>
+  - Gianvito Cavasoli <gianvito@gmx.it>
+  - hanniedu <hannie@ubuntu-nl.org>
+  - Inaki Larranaga Murgoitio <dooteo@zundan.com>
+  - Jordi Mas <jmas@softcatala.org>
+
+3.25.92 - Sep 4, 2017
+=========================
+
+Changes since 3.25.91
+  - Don't focus the search entry on start (prevents showing the on-screen
+    keyboard at start on touch devices)
+  - Make OSM edit and export image dialogs modal (fixes positioning on Wayland)
+  - Update OSM POI definitions and translations
+
+Added/updated/fixed translations:
+  - Slovak
+  - Korean
+  - Vietnamese
+  - Finnish
+  - Serbian (latin)
+  - Serbian
+  - Latvian
+  - Chinese (Taiwan)
+  - Danish
+  - Russian
+  - French
+  - Brazilian Portuguese
+  - Lithuanian
+
+All contributors to this release:
+  - Ask Hjorth Larsen <asklarsen@gmail.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Cheng-Chia Tseng <pswo10680@gmail.com>
+  - Claude Paroz <claude@2xlibre.net>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Jamerson Albuquerque Tiossi <jamersontiossi@yahoo.com.br>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Rūdolfs Mazurs <rudolfsm@src.gnome.org>
+  - Seong-ho Cho <shcho@gnome.org>
+  - Trần Ngọc Quân <vnwildman@gmail.com>
+  - Yuri Myasoedov <ymyasoedov@yandex.ru>
+  - Марко Костић <marko.m.kostic@gmail.com>
+  - Милош Поповић <gpopac@gmail.com>
+
+3.25.91 - Aug 21, 2017
+=========================
+
+Changes since 3.25.90
+  - Fix loading layer files when running as Flatpak
+  - Don't allow adding more than one instance of address on OSM objects
+
+Added/updated/fixed translations:
+  - Indonesian
+  - Galician
+  - Turkish
+  - Nepali
+  - Polish
+
+All contributors to this release:
+  - Çağatay Yiğit Şahin <cyigitsahin@outlook.com>
+  - Fran Dieguez <frandieguez@gnome.org>
+  - Kukuh Syafaat <syafaatkukuh@gmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Pawan Chitrakar <chautari@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
+
+3.25.90 - Aug 7, 2017
+=========================
+
+Changes since 3.25.4
+  - Allow viewing and editing OSM editor notes when editing objects
+
+Added/updated/fixed translations:
+  - Slovenian
+  - Friulian
+  - Spanish
+  - Kazakh
+  - Croatian
+  - German
+  - Catalan
+  - Czech
+  - Hungarian
+
+All contributors to this release:
+  - Balázs Meskó <meskobalazs@fedoraproject.org>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - gogo <trebelnik2@gmail.com>
+  - Jordi Mas <jmas@softcatala.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Cernocky <marek_cernocky@conel.cz>
+  - Mario Blättermann <mario.blaettermann@gmail.com>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Robert Ancell <robert.ancell@canonical.com>
+
+3.25.4 - Jul 20, 2017
+=========================
+
+Changes since 3.25.3
+  - Show feedback when no search results were found
+  - Update Flatpak manifest for build changes in geocode-glib
+  - Various bugfixes
+
+Added/updated/fixed translations:
+  - Friulian
+  - Hungarian
+  - Spanish
+  - Kazakh
+  - German
+  - Catalan
+  - Indonesian
+  - Slovak
+
+All contributors to this release:
+  - Balázs Meskó <meskobalazs@fedoraproject.org>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Elias Entrup <elias-git@flump.de>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Hashem Nasarat <hashem@riseup.net>
+  - Jordi Mas <jmas@softcatala.org>
+  - Kukuh Syafaat <syafaatkukuh@gmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Nayan Deshmukh <nayan26deshmukh@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Robert Ancell <robert.ancell@canonical.com>
+  - Wolfgang Stöggl <c72578@yahoo.de>
+  - Zeeshan Ali <zeenix@gmail.com>
+
+3.25.3 - Jun 19, 2017
+=========================
+
+Changes since 3.25.2
+  - Added keyboard shortcuts for switching between street and aerial view
+  - Added keyboard shortcut for opening layer files
+  - Remember the last used mode of transportation for routing (also now default
+    to walking on first run)
+  - For transit results, don't reset previous list when no later or earlier
+    alternatives are found
+  - Also print coordinates in debug printout from GeoClue
+  - Show and support editing for additional OpenStreetMap tags (religion and
+    information on availability of toilets)
+
+Added/updated/fixed translations:
+  - Friulian
+  - German
+  - Spanish
+  - Indonesian
+  - Polish
+  - Hungarian
+  - Kazakh
+  - Lithuanian
+
+All contributors to this release:
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Balázs Meskó <meskobalazs@fedoraproject.org>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Debarshi Ray <debarshir@gnome.org>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Kukuh Syafaat <syafaatkukuh@gmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Mario Blättermann <mario.blaettermann@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Robert Ancell <robert.ancell@canonical.com>
+  - Valentin Blot <gnome-devel@valentinblot.org>
+
+3.25.2 - May 22, 2017
+=========================
+
+Changes since 3.25.2
+  - Fix OpenStreetMap editing in Flatpaks (update librest build dependency)
+  - Use localized format when showing distances
+
+Added/updated/fixed translations:
+  - Arabic
+  - Catalan
+  - Slovenian
+
+All contributors to this release:
+  - Jordi Mas <jmas@softcatala.org>
+  - Khaled Hosny <khaledhosny@eglug.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Matej Urbančič <mateju@svn.gnome.org>
+
+3.25.1 - Apr 24, 2017
+=========================
+
+Changes since 3.25.1:
+  - Fix JSON formatting for Flatpak manifest
+
+All contributors to this release:
+  - Marcus Lundblad <ml@update.uu.se>
+
+3.24.1 - Apr 10, 2017
+=========================
+
+Changes since 3.24.0:
+  - Fix rendering of compacted route labels for transit routing
+  - Don't show the “Next” button when selecting POI types when editing
+    OpenStreetMap objects
+  - Use HTTPS Wikipedia links
+
+Added/updated/fixed translations:
+  - Croatian
+  - Greek
+  - Polish
+  - Norwegian bokmål
+
+All contributors to this release:
+  - gogo <trebelnik2@gmail.com>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - RyuzakiKK <aasonykk@gmail.com>
+  - Tom Tryfonidis <tomtryf@gnome.org>
+
+3.24.0 - Mar 20, 2017
+=========================
+
+Changes since 3.23.92:
+  - Fix running when gnome-online-accounts isn't available.
+
+Added/updated/fixed translations:
+  - Russian
+  - Turkish
+  - Slovak
+  - Latvian
+  - Italian
+  - Japanese
+
+All contributors to this release:
+  - Dušan Kazik <prescott66@gmail.com>
+  - Gianvito Cavasoli <gianvito@gmx.it>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Osman Karagöz <osmank3@gmail.com>
+  - Rūdolfs Mazurs <rudolfsm@src.gnome.org>
+  - sujiniku <sujinikusityuu@gmail.com>
+  - Yuri Myasoedov <ymyasoedov@yandex.ru>
+
+3.23.92 - Mar 13, 2017
+=========================
+
+Changes since 3.23.91:
+  - Fix rendering Wikipedia links to articles containing a colon.
+  - Updated OpenStreetMap POI definitions for editing.
+  - Handle application/geo+json mime type for GeoJSON layer files.
+
+Added/updated/fixed translations:
+  - Finnish
+  - Swedish
+  - Chinese (Taiwan)
+  - Icelandic
+  - Danish
+  - Slovenian
+  - Basque
+  - Korean
+  - Lithuanian
+  - German
+  - Catalan
+  - Indonesian
+  - Scottish Gaelic
+  - Czech
+  - Slovak
+  - Serbian
+
+All contributors to this release:
+  - Anders Jonsson <anders.jonsson@norsjovallen.se>
+  - Ask Hjorth Larsen <asklarsen@gmail.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
+  - Cheng-Chia Tseng <pswo10680@gmail.com>
+  - GunChleoc <fios@foramnagaidhlig.net>
+  - Inaki Larranaga Murgoitio <dooteo@zundan.com>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Jordi Mas <jmas@softcatala.org>
+  - Kukuh Syafaat <syafaatkukuh@gmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Cernocky <marek_cernocky@conel.cz>
+  - Mario Blättermann <mario.blaettermann@gmail.com>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Seong-ho Cho <shcho@gnome.org>
+  - Sveinn í Felli <sv1@fellsnet.is>
+  - Марко М. Костић <marko.m.kostic@gmail.com>
+
+3.23.91 - Feb 27, 2017
+=========================
+
+Changes since 3.23.90:
+  - Support for public transit routing (enabled when service definition contains
+    a URL for an OpenTripPlanner server, or by debug environment variable).
+  - Add a button to reverse a route.
+  - Stop using "for in" loops to traverse arrays.
+  - Fixes for ES6 (GJS 1.48).
+
+Added/updated/fixed translations:
+  - Kazakh
+  - Danish
+  - Spanish
+  - German
+  - Slovak
+  - Norwegian bokmål
+  - Finnish
+  - Polish
+  - Basque
+  - Friulian
+  - Brazilian Portuguese
+  - Ukrainian
+  - Galician
+  - Serbian
+  - Hungarian
+  - French
+
+All contributors to this release:
+  - Anders Jonsson <anders.jonsson@norsjovallen.se>
+  - Andreas Nilsson <anilsson@redhat.com>
+  - Ask Hjorth Larsen <asklarsen@gmail.com>
+  - Balázs Meskó <meskobalazs@fedoraproject.org>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Claude Paroz <claude@2xlibre.net>
+  - Daniel Korostil <ted.korostiled@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Fran Dieguez <fran@openhost.es>
+  - Inaki Larranaga Murgoitio <dooteo@zundan.com>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Mario Blättermann <mario.blaettermann@gmail.com>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Philip Chimento <philip.chimento@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Rafael Fontenelle <rafaelff@gnome.org>
+  - Мирослав Николић <miroslavnikolic@rocketmail.com>
+
+3.23.90 - Feb 13, 2017
+=========================
+
+Added/updated/fixed translations:
+  - Slovak
+  - Chinese (China)
+  - Indonesian
+
+All contributors to this release:
+  - Dingzhong Chen <wsxy162@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Kukuh Syafaat <syafaatkukuh@gmail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+
+3.23.4 - Jan 16, 2017
+=========================
+
+Changes since 3.23.4:
+  - Removed usage of deprecated gtk_menu_popup() function.
+
+Added/updated/fixed translations:
+  - Finnish
+  - Spanish
+
+All contributors to this release:
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Marcus Lundblad <ml@update.uu.se>
+
+3.23.3 - Dec 12, 2016
+=========================
+
+Changes since 3.23.2:
+  - Enable easy building as a flatpak from within GNOME Builder.
+
+Added/updated/fixed translations:
+  - Russian
+  - Kazakh
+  - Swedish
+  - Hungarian
+
+All contributors to this release:
+  - Anders Jonsson <anders.jonsson@norsjovallen.se>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Christian Hergert <chergert@redhat.com>
+  - Gábor Kelemen <kelemeng@openscope.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Stas Solovey <whats_up@tut.by>
+
+3.23.2 - Nov 21, 2016
+=========================
+
+Changes since 3.23.1:
+  - Use Unicode in translatable strings
+
+Added/updated/fixed translations:
+  - Friulian
+  - Czech
+  - Hungarian
+  - German
+  - Polish
+
+All contributors to this release:
+  - Balázs Meskó <meskobalazs@gmail.com>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Marek Černocký <marek@manet.cz>
+  - Paul Seyfert <pseyfert@mathphys.fsk.uni-heidelberg.de>
+  - Piotr Drąg <piotrdrag@gmail.com>
+
+3.23.1 - Oct 24, 2016
+=========================
+
+Changes since 3.22.1:
+  - Fixed a typo and a formatting issue
+  - Handle a plain 00:00-24:00 opening hour
+    specification as being "always open" for POIs
+
+Added/updated/fixed translations:
+  - Norwegian bokmål
+
+All contributors to this release:
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Marcus Lundblad <ml@update.uu.se>
+
+3.22.1 - Oct 10, 2016
+=========================
+
+Added/updated/fixed translations:
+  - Basque
+
+All contributors to this release:
+  - Inaki Larranaga Murgoitio <dooteo@zundan.com>
+
+3.22.0 - Sep 18, 2016
+=========================
+
+Added/updated/fixed translations:
+  - Persian
+  - Italian
+  - Scottish Gaelic
+  - Ukrainian
+
+All contributors to this release:
+  - Arash Mousavi <mousavi.arash@gmail.com>
+  - Daniel Korostil <ted.korostiled@gmail.com>
+  - Gianvito Cavasoli <gianvito@gmx.it>
+  - GunChleoc <fios@foramnagaidhlig.net>
+
+3.21.92 - Sep 12, 2016
+=========================
+
+Changes since 3.21.91:
+   - Added = accelerator for zoom-in
+   - Fix rendering of website links containing HTML markup characters
+   - Updated/added POI definitions for OpenStreetMap editing
+
+Added/updated/fixed translations:
+  - Greek
+  - Danish
+  - Polish
+  - Galician
+  - Latvian
+  - Vietnamese
+  - Lithuanian
+  - Kazakh
+  - Korean
+
+All contributors to this release:
+  - Ask Hjorth Larsen <asklarsen@gmail.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Fran Dieguez <fran.dieguez@mabishu.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Razvan Brinzea <razvan.brinzea@gmail.com>
+  - Rūdolfs Mazurs <rudolfsm@src.gnome.org>
+  - Seong-ho Cho <shcho@gnome.org>
+  - Tom Tryfonidis <tomtryf@gnome.org>
+  - Trần Ngọc Quân <vnwildman@gmail.com>
+
+3.21.91 - Aug 29, 2016
+=========================
+
+Changes since 3.21.90:
+   - Fix bug where you could not type + or - in the searchbar
+   - Added Amisha, Marcus and Mattias as maintainers in the doap file
+
+Added/updated/fixed translations:
+  - French
+  - Serbian
+  - Slovenian
+  - Polish
+
+All contributors to this release:
+  - Alexandre Franke <alexandre.franke@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Мирослав Николић <miroslavnikolic@rocketmail.com>
+
+3.21.90 - Aug 19, 2016
+=========================
+
+Hello there!
+
+So we will stop using a redirect from gis.gnome.org to Mapbox tile server.
+Instead we will attempt to download a service.json file from gis.gnome.org.
+This file will tell us where our third-party services are. Starting with
+tile services. This is for two reasons. 1) It is much faster and 2) Mapbox
+didn't like the redirect approach.
+
+Changes since 3.21.4:
+
+- Download a service.json file to get tile server URI among other things.
+- Use GtkClutter for the attribution logo, to get transparency.
+
+Added/updated/fixed translations:
+  - Hungarian
+  - Slovak
+  - Hebrew
+  - Czech
+  - Arabic
+  - Finnish
+  - Brazilian Portuguese
+  - Indonesian
+  - Brittish English
+
+All contributors to this release:
+  - Andika Triwidada <atriwidada@gnome.org>
+  - Balázs Úr <urbalazs@gmail.com>
+  - David King <amigadave@amigadave.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Gustavo Marques <gutodisse@gmail.com>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Marek Cernocky <marek_cernocky@conel.cz>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Safa Alfulaij <safa1996alfulaij@gmail.com>
+  - Yosef Or Boczko <yoseforb@src.gnome.org>
+
+3.21.4 - Jul 30, 2016
+=========================
+
+Hi!
+
+This is an important release! With this release we switch from using
+the MapQuest open API for fetching tiles. And instead we start using
+Mapbox API. Using an community API key from Mapbox.
+
+Mapbox is a company with a commitment to Open source. And provides
+infrastructure that will allow us to do more with Maps. We are accessing
+the Mapbox API through a GNOME proxy that will allow us to easier switch
+our tile provider/URI in the future.
+
+Big thanks to Mattias Bengtsson who made this solution happen.
+
+Thank you, and sorry for our outage.
+
+Changes since 3.20.1:
+
+- Change tile URIs to use Mapbox, through proxy
+- Fix escaping of tel: URIs
+- Adapt colors of instuction when printing routes
+
+Added/updated/fixed translations:
+  - Esperanto
+  - Slovenian
+  - Occitan
+  - Polish
+  - Portuguese
+  - Turkish
+  - Catalan
+  - Norwegian bokmål
+  - Indonesian
+  - Punjabi
+  - Spanish
+  - Friulian
+
+All contributors to this release:
+  - Anders Jonsson <anders.jonsson@norsjovallen.se>
+  - Andika Triwidada <atriwidada@gnome.org>
+  - A S Alam <aalam@users.sf.net>
+  - Cédric Valmary <cvalmary@yahoo.fr>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Jordi Mas <jmas@softcatala.org>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Muhammet Kara <muhammetk@gmail.com>
+  - Nayan Deshmukh <nayan26deshmukh@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Tiago Santos <tiagofsantos81@sapo.pt>
+
+3.20.1 - April 11, 2016
+=========================
+
+Changes since 3.20.0:
+
+- Bump dependencies on libchamplain and gjs
+- Fox memory leak in osmEdit
+
+Added/updated/fixed translations:
+  - Ukrainian
+  - Friulian
+  - Greek
+  - Vietnamese
+  - Persian
+  - Arabic
+
+All contributors to this release:
+  - Arash Mousavi <mousavi.arash@gmail.com>
+  - Daniel Korostil <ted.korostiled@gmail.com>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Jordi Mas <jmas@softcatala.org>
+  - Khaled Hosny <khaledhosny@eglug.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Tom Tryfonidis <tomtryf@gnome.org>
+  - Trần Ngọc Quân <vnwildman@gmail.com>
+
+3.20.0 - March 21, 2016
+=========================
+
+Changes since 3.20.0:
+
+- Fix marking of translatable strings
+
+Added/updated/fixed translations:
+  - Slovak
+  - German
+  - Polish
+  - Catalan
+  - Spanish
+  - Czech
+  - Hungarian
+  - Finnish
+  - Korean
+  - Kazakh
+  - Brazilian Portuguese
+  - Russian
+  - Lithuanian
+  - Swedish
+  - Galician
+  - Serbian
+  - Serbian Latin
+  - French
+  - Danish
+  - Greek
+
+All contributors to this release:
+  - Antonio Fernandes C. Neto <fernandesn@gnome.org>
+  - Ask Hjorth Larsen <asklarsen@gmail.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Balázs Meskó <meskobalazs@gmail.com>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Bernd Homuth <dev@hmt.im>
+  - Claude Paroz <claude@2xlibre.net>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Fran Dieguez <fran.dieguez@mabishu.com>
+  - Gianvito Cavasoli <gianvito@gmx.it>
+  - Inaki Larranaga Murgoitio <dooteo@zundan.com>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Jordi Mas <jmas@softcatala.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Černocký <marek@manet.cz>
+  - Mario Blättermann <mario.blaettermann@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Rūdolfs Mazurs <rudolfsm@src.gnome.org>
+  - Sebastian Rasmussen <sebras@gmail.com>
+  - Seong-ho Cho <shcho@gnome.org>
+  - Stas Solovey <whats_up@tut.by>
+  - Tom Tryfonidis <tomtryf@gnome.org>
+  - Yuri Myasoedov <ymyasoedov@yandex.ru>
+  - Марко Костић <marko.m.kostic@gmail.com>
+  - Милош Поповић <gpopac@gmail.com>
+
+
+3.19.91 - March 14, 2016
+==========================
+
+Changes since 3.19.91:
+- Rework geoclue interaction
+- Ellipsize route instructions in print layout
+- Add 'aeroway' type to OSM editting
+- Make auto-complete accent insensitive
+
+Added/updated/fixed translations:
+  - Slovak
+  - Brazilian Poruguese
+  - Galician
+  - Hebrew
+  - Spanish
+  - Korean
+  - Ukrainian
+  - Occitan
+  - Hungarian
+  - German
+  - Kazakh
+  - Latvian
+  - Finnish
+  - Friulian
+  - Serbian
+  - Lithuanian
+  - French
+
+All contributors to this release:
+  - Artur de Aquino Morais <aamorais93.estudos@gmail.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Cédric Valmary <cvalmary@yahoo.fr>
+  - Claude Paroz <claude@2xlibre.net>
+  - Daniel Korostil <ted.korostiled@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Fran Dieguez <fran.dieguez@mabishu.com>
+  - Gábor Kelemen <kelemeng@openscope.org>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Mario Blättermann <mario.blaettermann@gmail.com>
+  - Marius Stanciu <stanciumarius94@gmail.com>
+  - Razvan Brinzea <razvan.brinzea@gmail.com>
+  - Rūdolfs Mazurs <rudolfsm@src.gnome.org>
+  - Seong-ho Cho <shcho@gnome.org>
+  - Yosef Or Boczko <yoseforb@src.gnome.org>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+  - Марко М. Костић <marko.m.kostic@gmail.com>
+
+3.19.91 - March 1, 2016
+==========================
+
+Changes since 3.19.90:
+ - Handle case when nothing was found when reverse
+   geocoding through context menu
+ - Make sure we validate bounding boxes from geoJSON layer
+ - Add markers to route when printing
+ - Add via points to route when printing
+ - Add ability to add and edit addresses on OpenStreetMap
+ - Allow Maps to shrink more by not using a fixed width
+   for the searchbar
+ - Add tooltip to icon next to route entry to help
+   discoverbility of drag and drop re-oredering.
+
+Added/updated/fixed translations:
+  - Galician
+  - Dutch
+  - Polish
+  - German
+  - Spanish
+  - Serbian
+  - Slovak
+  - Brazilian Portuguese
+  - French
+  - Chinese (Taiwan)
+  - Czech
+  - Hingarian
+  - Catalan
+
+3.19.90 - February 16, 2016
+==========================
+
+Changes since 3.19.4:
+- Added icon to toggle visibility of a shape layer
+- Improve travel animations
+- Add a scale ruler to the bottom left corner
+- Include less information by default in map bubbles
+- Add expandable area on map bubbles
+- Add context menu item for adding location to OpenStreetMap
+- Enable editting of opening hours on OpenStreetMap
+- Add internet access tag to map bubbles
+- Add ele altitude tag to map bubbles
+- Add website to map bubbles
+- Add phone nunber to map bubbles
+- Add support for KML and GPX shape files
+- Add support for printing a route with instructions
+
+Added/updated/fixed translations:
+  - Russian
+  - Finnish
+  - Catalan
+  - German
+  - Slovak
+  - Hungarian
+  - Spanish
+  - Slovenian
+  - Latvian
+  - Polish
+  - Kazakh
+  - Chinese (Taiwan)
+  - Brazilian Portuguese
+  - Bulgarian
+  - Serbian
+  - French
+
+All contributors to this release:
+  - Alaf Azam <alafazam@gmail.com>
+  - Alexandre Franke <alexandre.franke@gmail.com>
+  - Amisha Singla <amishas157@gmail.com>
+  - Balázs Meskó <meskobalazs@gmail.com>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
+  - Codreanu Andrei <andrei.codreanu94@gmail.com>
+  - Cosimo Cecchi <cosimoc@gnome.org>
+  - Damián Nohales <damiannohales@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Debarshi Ray <debarshir@gnome.org>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Gábor Kelemen <kelemeng@openscope.org>
+  - Hashem Nasarat <hashem@riseup.net>
+  - Ivailo Panamski <ipanamski@gmail.com>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Jordi Mas <jmas@softcatala.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Mario Blättermann <mario.blaettermann@gmail.com>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Rafael Fontenelle <rffontenelle@gmail.com>
+  - Richard Hughes <richard@hughsie.com>
+  - Rūdolfs Mazurs <rudolfsm@src.gnome.org>
+  - Stas Solovey <whats_up@tut.by>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+  - Мирослав Николић <miroslavnikolic@rocketmail.com>
+
+
+3.19.4 - Januari 18, 2016
+==========================
+
+First release of the year, and what a release!
+We have so many new contributors, it really warms your heart.
+And a lot of new stuff added, see below for details!
+
+Changes since 3.19.3:
+- Addded a keybinding help overlay (F1 to activate)
+- Fix zoom behaviour to be more aggresive
+- Fix bug with cancel login in OpenStreetMap account dialog
+- Add keyboard shortcut for going to current location (<Primary>L)
+- Fix layout of OpenStreetMap edit
+- Fix bug that made it impossible to sign-in to OpenStreetMap if you
+  first inputed the wrong credentials
+- Fix drag-and-drop to be more acceptive and responsive
+- Make sure we can export our markers to PNG
+- Give user the choice of exporting markers or not
+- Add GUI for loading and managing shape layers such as GeoJSON or
+  in the future(?) KML
+- Add roundabout support to route
+- Use a regular GtkButton for marking favorites
+
+Added/updated/fixed translations:
+  - Spanish
+  - Kazakh
+  - Slovak
+  - Spanish
+  - Lithuanian
+  - Finnish
+  - Esperanto
+  - Czech
+  - German
+  - Brazilian Portuguese
+  - Norwegian bokmål
+
+All contributors to this release
+  - Alaf Azam <alafazam@gmail.com>
+  - Alex Anthony <alex.anthony28991@gmail.com>
+  - Amisha Singla <amishas157@gmail.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Damián Nohales <damiannohales@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Enrico Nicoletto <liverig@gmail.com>
+  - Hashem Nasarat <hashem@riseup.net>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Karanbir Chahal <karanbleep@gmail.com>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Černocký <marek@manet.cz>
+  - Mario Blättermann <mario.blaettermann@gmail.com>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Prashant Tyagi <prashanttyagi221295@gmail.com>
+
+
+3.19.3 - December 13, 2015
+==========================
+
+Changes since 3.19.2:
+
+- Added export to image to context menu
+- Added support for MultiPoint in GeoJSON
+- Fixed bug in send-to-dialog when default browser has
+  no icon
+- Added support for MapBox simplestyle for GeoJSON
+- Added support for editing locations in OpenStreetMap
+
+Added/updated/fixed translations:
+  - Hungarian
+  - Spanish
+  - Czech
+  - Greek
+  - Poruguese
+  - Slovak
+  - Finnish
+  - Slovenian
+
+All contributors to this release:
+alafazam <alafazam@gmail.com>
+  - Alaf Azam <alafazam@gmail.com>
+  - Balázs Meskó <meskobalazs@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Hashem Nasarat <hashem@riseup.net>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kalev Lember <klember@redhat.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Černocký <marek@manet.cz>
+  - Martin Srebotnjak <miles@filmsi.net>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Pedro Albuquerque <palbuquerque73@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Tom Tryfonidis <tomtryf@gmail.com>
+
+3.19.2 - November 23, 2015
+==========================
+
+- Fix GeoJSON filling of polygons in polygons
+- Add simpler keyboard shortcuts for zoom
+- Fix width of send-to dialog
+- Add open with browser to send-to dialog that will
+  open a location on OpenStreetMap web
+- Handle the 'geo' URI scheme, this will allow
+  us to handle geu: URIs in for instance the browser or
+  in Polari
+- Go to latest visited view on start up
+
+Added/updated/fixed translations:
+  - Czech
+  - Portuguese
+  - zh_CN
+  - Norwegian bokmål
+  - Spanish
+  - Turkish
+  - Finnish
+  - Lithuanian
+  - German
+  
+All contributors to this release:
+  - alafazam <alafazam@gmail.com>
+  - Amisha <amishas157@gmail.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Benjamin Steinwender <b@stbe.at>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Jiri Grönroos <jiri.gronroos@iki.fi>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Černocký <marek@manet.cz>
+  - Mingye Wang (Arthur2e5) <arthur200126@gmail.com>
+  - Muhammet Kara <muhammetk@gmail.com>
+  - Pedro Albuquerque <palbuquerque73@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
+
+
+3.19.1 - October 26, 2015
+======================
+
+- Fix bugs in contact address lookup
+   - No more warnings if address has no street address
+   - Do not attempt to classify type of address if only one(1)
+
+- Use new convenience library for GeoClue
+
+- Add support for opening and displaying GeoJSON files.
+  - https://en.wikipedia.org/wiki/GeoJSON
+  - This is with help of the Mapbox geojson-vt javascript code
+    found at: https://github.com/mapbox/geojson-vt
+
+- Added/updated/fixed translations:
+   - Basque
+   - Slovak
+
+All contributors to this release:
+  - Dušan Kazik <prescott66@gmail.com>
+  - Inaki Larranaga Murgoitio <dooteo@zundan.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+
+Changes since 3.18.1:
+
+3.18.1 - October 10, 2015
+======================
+
+Changes since 3.18.0.1:
+
+- Fix bugs in zooming to a location or contact
+- Fix styling of dialog header buttons
+- Added/updated/fixed translations:
+   - Irish
+
+All contributors to this release:
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Seán de Búrca <leftmostcat@gmail.com>
+
+3.18.0.1 - September 25, 2015
+======================
+
+Changes since 3.18.0:
+
+- Fix bug that prevented Maps from launching
+- Added/updated/fixed translations:
+   - Danish
+   - Swedish
+   - Greek
+   - Serbian
+   - Serbian Latin
+
+All contributors to this release:
+  - Anders Jonsson <anders.jonsson@norsjovallen.se>
+  - Ask Hjorth Larsen <asklarsen@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Tom Tryfonidis <tomtryf@gmail.com>
+  - Марко Костић <marko.m.kostic@gmail.com>
+  - Милош Поповић <gpopac@gmail.com>
+
+
+3.18.0 - September 20, 2015
+======================
+
+Changes since 3.17.92:
+
+- Added/updated/fixed translations:
+   - Spanish
+   - Italian
+   - Brazilian Portuguese
+   - Persian
+   - Korean
+   - Czech
+   - Russian
+   - Hungarian
+   - Turkish
+
+All contributors to this release:
+  - Arash Mousavi <mousavi.arash@gmail.com>
+  - Balázs Úr <urbalazs@gmail.com>
+  - Claudio Arseni <claudio.arseni@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Enrico Nicoletto <liverig@gmail.com>
+  - Marek Černocký <marek@manet.cz>
+  - Muhammet Kara <muhammetk@gmail.com>
+  - Seong-ho Cho <shcho@gnome.org>
+  - Stas Solovey <whats_up@tut.by>
+
+3.17.92 - September 14, 2015
+======================
+
+Changes since 3.17.91:
+
+- Add --local switch to use local, offline, tiles
+  from a structured directory
+
+- Added/updated/fixed translations:
+   - Polish
+   - Indonesian
+   - Hebrew
+   - Hungarian
+   - Italian
+   - Lithuanian
+   - Kazakh
+   - Korean
+   - German
+   - Turkish
+   - Norwegian bokmål
+   - Icelandic
+   - Slovenian
+   - Finnish
+   - Slovak
+   - French
+   - Persian
+   - Japanese
+   - Portuguese
+   - Galician
+   - German
+
+All contributors to this release:
+  - Andika Triwidada <andika@gmail.com>
+  - Arash Mousavi <mousavi.arash@gmail.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Balázs Úr <urbalazs@gmail.com>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Benjamin Steinwender <b@stbe.at>
+  - Bernd Homuth <dev@hmt.im>
+  - Claude Paroz <claude@2xlibre.net>
+  - Claudio Arseni <claudio.arseni@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Fran Dieguez <fran@openhost.es>
+  - Hajime Taira <htaira@redhat.com>
+  - Jiri Grönroos <jiri.gronroos+l10n@iki.fi>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Martin Srebotnjak <miles@filmsi.net>
+  - Muhammet Kara <muhammetk@gmail.com>
+  - Pedro Albuquerque <palbuquerque73@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Seong-ho Cho <shcho@gnome.org>
+  - Sveinn í Felli <sv1@fellsnet.is>
+  - Ting-Wei Lan <lantw@src.gnome.org>
+  - Yosef Or Boczko <yoseforb@src.gnome.org>
+
+3.17.91 - Aaugust 29, 2015
+======================
+
+Changes since 3.17.90.1
+
+- Fix memory leaks in contacts handling
+- Make sure car routes gets correct icon
+
+- Added/updated/fixed translations:
+    - Galician
+    - French
+    - Portuguese
+    - Chinese (Taiwan)
+    - Russian
+    - Greek
+
+All contributors to this release:
+  - Alexandre Franke <alexandre.franke@gmail.com>
+  - Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
+  - Fran Dieguez <fran@openhost.es>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kalev Lember <klember@redhat.com>
+  - Pedro Albuquerque <palbuquerque73@gmail.com>
+  - Tom Tryfonidis <tomtryf@gmail.com>
+  - Yuri Myasoedov <ymyasoedov@yandex.ru>
+
+3.17.90.1 - Aaugust 22, 2015
+======================
+
+Changes since 3.17.90
+
+- Fix up search popup list
+- Fix storing of transportation type of route
+- Some bugfixes
+
+- Added/updated/fixed translations:
+    - Slovak
+    - Spanish
+
+All contributors to this release:
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+
+3.17.90 - Aaugust 16, 2015
+======================
+
+Changes since 3.17.1
+
+- Add new user-location icon
+- Add directional user-location icon
+- Show heading from Geoclue
+- Do not animate on 'what is here?'
+- Add support for Geo URI (RFC5870) in searchbar
+- Add 'Copy Geo URI' context menu item
+- Store and complete against recent routes
+
+- Added/updated/fixed translations:
+    - zh_CN
+    - Aragonese
+    - Occitan
+    - Portuguese
+    - Icelandic
+    - Catalan
+    - Friulian
+
+All contributors to this release
+  - Cédric Valmary <cvalmary@yahoo.fr>
+  - Damián Nohales <damiannohales@gmail.com>
+  - Daniel Martinez <dmartinez@src.gnome.org>
+  - Dean Chen <wsxy162@gmail.com>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Jakub Steiner <jimmac@gmail.com>
+  - Jonas Danielsson <jonas.danielsson@threetimestwo.org>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Jordi Mas <jmas@softcatala.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Pedro Albuquerque <palbuquerque73@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Sveinn í Felli <sv1@fellsnet.is>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+
+
+3.17.1 - April 29, 2015
+======================
+
+Changes since 3.16.1
+
+- Switch to template for more UI files
+- Do not use intltool to translate GSettings schema
+- Improve height of favorites popover
+
+All contributors to this release:
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Emmanuele Bassi <ebassi@gnome.org>
+
+3.16.1 - April 13, 2015
+=======================
+
+Changes since 3.16.0
+
+- Provide a symbolic variant of the app icon
+- Add new appdata screenshots
+
+- Added/updated/fixed translations:
+    - Catalan
+    - Esperanto
+    - Punjabi
+
+All contributors to this release:
+  - Andreas Nilsson <anilsson@redhat.com>
+  - A S Alam <aalam@users.sf.net>
+  - Jakub Steiner <jimmac@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Jordi Mas <jmas@softcatala.org>
+  - Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>
+  - Txus Ordorika <txusinho@gmail.com>
+
+
+3.16.0 - Mar 22, 2015
+=======================
+
+Changes since 3.15.92
+
+- Fix links for Wikipedia
+
+- Added/updated/fixed translations:
+   - Tajik
+   - Serbian
+   - German
+   - Indonesian
+   - Basque
+   - Italian
+
+All contributors to this release:
+  - Andika Triwidada <andika@gmail.com>
+  - Benjamin Steinwender <b@stbe.at>
+  - Claudio Arseni <claudio.arseni@gmail.com>
+  - Inaki Larranaga Murgoitio <dooteo@zundan.com>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Victor Ibragimov <victor.ibragimov@gmail.com>
+  - Мирослав Николић <miroslavnikolic@rocketmail.com>
+
+3.15.92 - Mar 16, 2015
+=======================
+
+
+Changes since 3.15.91:
+- Use proper location instead of nearest city when sending location
+  to Weather
+- Fix bug with layer ordering that made it impossible to drag routes
+  under accuracy circle
+- Fix Clutter/GTK event re-entrant dead-lock on right click
+
+- Added/updated/fixed translations:
+   - Hungarian
+   - Dutch
+   - Czech
+   - Slovenian
+   - Kazakh
+   - Polish
+   - Turkish
+   - Finnish
+   - Bosnian
+   - Danish
+   - Korean
+
+All contributors to this release:
+  - Ask Hjorth Larsen <asklarsen@gmail.com>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Gábor Kelemen <kelemeng@openscope.org>
+  - Giovanni Campagna <scampa.giovanni@gmail.com>
+  - hanniedu <lafeber-dumoleyn2@zonnet.nl>
+  - Jiri Grönroos <jiri.gronroos+l10n@iki.fi>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Marek Černocký <marek@manet.cz>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Miguel Vaello Martínez <miguel.vaellomartinez@gmail.com>
+  - Muhammet Kara <muhammetk@gmail.com>
+  - Paweł Żołnowski <pawel@zolnowski.name>
+  - Samir Ribic <samir.ribic@etf.unsa.ba>
+  - Seong-ho Cho <shcho@gnome.org>
+
+3.15.91 - Mar 1, 2015
+=======================
+
+Changes since 3.15.90.2:
+
+- Fix leak in libmaps geocode
+- Only add contacts that properly geocode to a location
+- Fix bug that fetched a route twice for each request
+- Fix event handling of clutter and GTK+ that lead to deadlock
+  and freeze when you clicked the map
+- Fix being able to mark search results as favorites
+
+- Added/updated/fixed translations:
+   - Slovak
+   - Russian
+   - Chinese (Taiwan)
+   - Swedish
+   - Brazilian Portugese
+   - Greek
+   - Ukrainian
+   - Lithuanian
+   - Galician
+   - Hungarian
+
+All contributors to this release:
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Balázs Úr <urbalazs@gmail.com>
+  - Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
+  - Daniel Korostil <ted.korostiled@gmail.com>
+  - Diogo Campos <diogocamposwd@gmail.com>
+  - Dominique Leuenberger <dimstar@opensuse.org>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Fran Dieguez <fran.dieguez@mabishu.com>
+  - Guillaume Bernard <translate@filorin.fr>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Sebastian Rasmussen <sebras@gmail.com>
+  - Stas Solovey <whats_up@tut.by>
+  - Γιάννης Κουτσούκος <giankoyt@gmail.com>
+
+
+3.15.90.2 - Feb 17, 2015
+=======================
+
+Changes since 3.15.91:
+
+- Fix build for clang/FreeBSD
+
+All contributors to this releas:
+  - Ting-Wei Lan <lantw@src.gnome.org>
+
+3.15.90.1 - Feb 15, 2015
+=======================
+
+Changes since 3.15.90:
+
+- Install Maps C library into pkglibdir
+
+3.15.90 - Feb 15, 2015
+=======================
+
+Changes since 3.15.4:
+
+- Show notification with link to privacy panel
+  when location service is off
+
+- Only show user location marker when location service
+  is enabled
+
+- Added a 'show-location' activation action, to show
+  contacts in Maps.
+
+- Add contacts with geocodable addresses to the placeStore
+  to allow completion in search
+
+- Added/updated/fixed translations:
+   - Lithuanian
+   - Hebrew
+   - Greek
+   - Slovak
+   - Russian
+   - Spanish
+   - German
+   - Czech
+   - Norweigian bokmål
+   - Esperanto
+
+All contributors to this release:
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Benjamin Steinwender <b@stbe.at>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Dimitris Spingos <dmtrs32@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>
+  - Marek Černocký <marek@manet.cz>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Stas Solovey <whats_up@tut.by>
+  - Yosef Or Boczko <yoseforb@src.gnome.org>
+
+3.15.4 - Jan 16, 2014
+=======================
+
+Changes since 3.15.3.2:
+
+- Smarter filtering in favorites menu
+- Make opening hours translatable
+- Convert to "package.js" application convention
+- Add runtime dependency checks
+- Refresh place meta data if stale
+- Switch to new full color mark-location icon
+- Zoom in and center map marker on double-click
+- Added/updated/fixed translations:
+    - Hungarian
+    - Friulian
+    - Indonesian
+    - Basque
+    - Greek
+    - Czech
+    - Ukrainian
+    - Brazilian Portuguese
+    - Galician
+    - Spanish
+    - Russian
+    - German
+
+All contributors to this release:
+  - Andika Triwidada <andika@gmail.com>
+  - Balázs Úr <urbalazs@gmail.com>
+  - Bastien Nocera <hadess@hadess.net>
+  - Christian Kirbach <Christian.Kirbach@gmail.com>
+  - Damián Nohales <damiannohales@gmail.com>
+  - Daniel Korostil <ted.korostiled@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Dimitris Spingos <dmtrs32@gmail.com>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Fran Dieguez <fran.dieguez@mabishu.com>
+  - Inaki Larranaga Murgoitio <dooteo@zundan.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Černocký <marek@manet.cz>
+  - Rafael Ferreira <rafael.f.f1@gmail.com>
+  - Ricardo  Barbosa <barbosa.cisco@gmail.com>
+  - Stas Solovey <whats_up@tut.by>
+
+3.15.3.2 - Dec 19, 2014
+=======================
+
+Changes since 3.15.3.1:
+
+- Fix bug with completion popup
+- Added/updated/fixed translations:
+    - Spanish
+
+All contributors to this release:
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+
+3.15.3.1 - Dec 18, 2014
+=======================
+
+Changes since 3.15.3:
+
+- Use search popover for completion
+- Added/updated/fixed translations:
+    - Spanish
+
+All contributors to this release:
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+
+3.15.2 - Dec 15, 2014
+=======================
+
+Changes since 3.15.2:
+
+- Remove 'I am here' menu item from context menu
+- Improve geoclue interaction somewhat
+- Use Overpass API to add meta data to map bubbles
+- Use HTTPS for GraphHopper service
+- Add drag-n-drop to route entries
+- Add check-in possibility to user location bubble (Facebook/Foursquare)
+- Added/updated/fixed translations:
+   - Hebrew
+   - Czech
+   - Norwegian bokmål
+   - Spanish
+   - Hungarian
+   - Romanian
+
+All contributors to this release:
+
+  - Balázs Úr <urbalazs@gmail.com>
+  - Damián Nohales <damiannohales@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Daniel Șerbănescu <daniel@serbanescu.dk>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Marek Černocký <marek@manet.cz>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Yosef Or Boczko <yoseforb@src.gnome.org>
+
+
+3.15.2 - Nov 24, 2014
+=======================
+
+Changes since 3.14.1:
+
+- Add support for imperial units
+- Use proper GtkButtons for zoom control
+- Add a 'No network view' to show when Maps is disconnected
+- Added <Ctrl-f> accelrator to grab focus on search
+- Added <Ctrl-d> accelerator to open route planner.
+- Added route button to MapBubble
+- Enable panning by keyboard
+- Add extra info to search result bubbles:
+   - Popuplation
+   - Wikipedia
+   - Opening hours
+   - Wheelchair accesability
+- Improve the UI of the search result popover
+- Add 'share' button to MapBubbles to allow user to
+  share location to weather and clocks.
+- Add favorites handling to main window and MapBubbles.
+- Added/updated/fixed translations:
+   - Persian
+   - Latvian
+   - Kazakh
+   - Spanish
+   - Hebrew
+   - Russian
+   - Greek
+
+All contributors to this release:
+
+  - amishas157 <amishas157@gmail.com>
+  - Ankita Patil <patil.ankita.r@gmail.com>
+  - Arash Mousavi <mousavi.arash@gmail.com>
+  - Baurzhan Muftakhidinov <baurthefirst@gmail.com>
+  - Damián Nohales <damiannohales@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Efstathios Iosifidis <iefstathios@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Pedro Albuquerque <palbuquerque73@gmail.com>
+  - rishirajsinghjhelumi <rishiakhnoor@gmail.com>
+  - Rūdolfs Mazurs <rudolfsm@src.gnome.org>
+  - Shipra <bangashipra@gmail.com>
+  - Stas Solovey <whats_up@tut.by>
+  - Yosef Or Boczko <yoseforb@src.gnome.org>
+
+
+3.14.1 - Oct 10, 2014
+=======================
+
+Changes since 3.14.0:
+
+- Fix issue where icons did not recolor on dark theme
+- Added/updated/fixed translations:
+   - Italian
+   - Chinese (Taiwan)
+   - zh_CN
+   - Nepali
+
+All contributor to this release:
+
+  - Claudio Arseni <claudio.arseni@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Iris Gou <gouyingqiyanxuan321@gmail.com>
+  - Kalev Lember <kalevlember@gmail.com>
+  - Cheng-Chia Tseng <pswo10680@gmail.com>
+
+3.14.0 - Sep 22, 2014
+=======================
+
+Changes since 3.13.92:
+
+- Added/updated/fixed translations:
+   - Turkish
+   - Nepali
+   - Finnish
+   - Danish
+   - Polish
+   - Ukrainian
+   - Serbian
+
+All contributor to this release:
+
+  - Kenneth Nielsen <k.nielsen81@gmail.com>
+  - Jiri Grönroos <jiri.gronroos+l10n@iki.fi>
+  - Pawan Chitrakar <chautari@gmail.com>
+  - Muhammet Kara <muhammetk@gmail.com>
+  - Daniel Korostil <ted.korostiled@gmail.com>
+  - Paweł Żołnowski <pawel@zolnowski.name>
+  - Мирослав Николић <miroslavnikolic@rocketmail.com>
+
+3.13.92 - Sep 16, 2014
+=======================
+
+Changes since 3.13.91:
+
+Please help out and test this! Make sure that building it
+works fine on your workstation and report a bug if not!
+
+Click around in the instruction list of a found route to
+make sure we do not still segfault there!
+
+- Improve sidebar alignments
+- Fix default transportation mode bug
+- Make coordinates in entry editable
+- Do not forget route on sidebar hide
+- Hopefully a fix for non-consistent build error
+- Hopefully a fix for elusive segfault in sidebar
+- Default focus on entry in sidebar reveal
+- Fix for theme problem with instruction list
+- Added/updated/fixed translations:
+   - Assamese
+   - Galician
+   - Hebrew
+   - Spanish
+   - Brazilian Portugese
+   - Indonesian
+   - Greek
+   - Russian
+   - German
+   - Norwegian bokmål
+   - Catalan
+   - Catalan (Valencian)
+   - Czech
+   - Punjabi
+   - Korean
+   - Slovak
+   - Lithuanian
+   - Hungarian
+   - Slovenian
+
+All contributor to this release:
+
+  - Andika Triwidada <andika@gmail.com>
+  - A S Alam <aalam@users.sf.net>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Balázs Úr <urbalazs@gmail.com>
+  - Carles Ferrando <carles.ferrando@gmail.com>
+  - Christian Kirbach <Christian.Kirbach@gmail.com>
+  - Damián Nohales <damiannohales@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Enrico Nicoletto <liverig@gmail.com>
+  - Fran Diéguez <fran.dieguez@mabishu.com>
+  - Gil Forcada <gforcada@gnome.org>
+  - Guillaume Bernard <filorin@gmx.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Marek Černocký <marek@manet.cz>
+  - Maria  Mavridou <mavridou@gmail.com>
+  - Martin Srebotnjak <miles@filmsi.net>
+  - Mattias Eriksson <snaggen@gmail.com>
+  - Nilamdyuti Goswami <ngoswami@redhat.com>
+  - Seong-ho Cho <shcho@gnome.org>
+  - Ville-Pekka Vainio <vpvainio@iki.fi>
+  - Yosef Or Boczko <yoseforb@src.gnome.org>
+  - Yuri Myasoedov <ymyasoedov@yandex.ru>
+
+3.13.91 - Sep 2, 2014
+=======================
+
+Changes since 3.13.4:
+
+- Add high contrast icon of logo
+- Use kinetic scroll mode
+- Set correct desktopId for geoclue
+- Send correct argv/argc to GApplication
+- Fix bug where selecting from completion
+  nullified placeEntry
+- Add content rich map markers and map bubbles
+  based on GtkPopover
+- Add tooltips to GtkHeaderButtons
+- Add support for via points in routing
+- Added/updated/fixed translations:
+  - Brazilian Portuguese
+  - Spanish
+  - Traditional Chinese
+  - Japanese
+  - Greek
+  - Hebrew
+  - Galician
+  - Norwegian bokmål
+  - Czech
+  - Catalan (Valencian)
+  - Lithuanian
+  - Assamese
+
+All contributor to this release:
+
+  - Anders Jonsson <anders.jonsson@norsjovallen.se>
+  - Andreas Nilsson <anilsson@redhat.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Carles Ferrando <carles.ferrando@gmail.com>
+  - Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
+  - Damián Nohales <damiannohales@gmail.com>
+  - Daniel Mustieles <dnaiel.mustieles@gmail.com>
+  - Dario Di Nucci <linkin88mail@gmail.com>
+  - Dominique Leuenberger <dimstar@opensuse.org>
+  - Elad Alfassa <elad@fedoraproject.org>
+  - Enrico Nicoletto <liverig@gmail.com>
+  - Fran Diéguez <fran.dieguez@mabishu.com>
+  - Gil Forcada <gforcada@gnome.org>
+  - Hajime Taira <htaira@redhat.com>
+  - Inaki Larranaga Murgoitio <dooteo@zundan.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Marek Černocký <marek@manet.cz>
+  - Maria  Mavridou <mavridou@gmail.com>
+  - MarMav <mavridou@gmail.com>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - ngoswami <ngoswami@redhat.com>
+  - Olav Vitters <olav@vitters.nl>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Yosef Or Boczko <yoseforb@src.gnome.org>
+
+3.13.4 - Jul 19, 2014
+=======================
+
+Changes since 3.13.3:
+
+- Fix sidebar margin for LTR
+- Added/updated/fixed translations:
+  - Hebrew
+  - Russian
+  - Spanish
+  - Hungarian
+  - Brazilian Portuguese
+
+All contributor to this release:
+
+  - Balázs Úr <urbalazs@src.gnome.org>
+  - Daniel Mustieles <dnaiel.mustieles@gmail.com>
+  - Enrico Nicoletto <liverig@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - MarMav <mavridou@gmail.com>
+  - Yosef Or Boczko <yoseforb@src.gnome.org>
+  - Yuri Myasoedov <ymyasoedov@yandex.ru>
+
+3.13.3 - Jun 24, 2014
+=======================
+
+Changes since 3.13.2:
+
+- Added sidebar for route searching
+- Fix styling of popovers
+- Fix cleanup for make dist
+- Fixup AppData file
+- Added/updated/fixed translations:
+  - Slovenian
+  - Spanish
+  - Lithuanian
+
+All contributors to this release:
+
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Damián Nohales <damiannohales@gmail.com>
+  - Daniel Mustieles <dnaiel.mustieles@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Martin Srebotnjak <miles@filmsi.net>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Richard Hughes <richard@hughsie.com>
+
+
+3.13.2 - May 27, 2014
+=======================
+
+Changes since 3.12.0:
+
+- New popover based UI for layers menu.
+- Added in app notifications.
+- Make clicking the map grab focus to be able to remove on-screen keyboard
+  on tablets.
+- Maps now DBus activatable.
+- Handle GeoClue2 service not available.
+- Added/updated/fixed translations:
+  - Dutch
+  - Slovak
+  - Tajik
+  - Japanese
+  - Greek
+  - Romanian
+  - Korean
+  - Catalan (Valencian)
+
+All contributors to this release:
+
+  - Carles Ferrando <carles.ferrando@gmail.com>
+  - Daniel Șerbănescu <cyber19rider@gmail.com>
+  - Dario Di Nucci <linkin88mail@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Erwin Poeze <donnut@look.com>
+  - Ikuya Awashiro <ikuya@fruitsbasket.info>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - marablack3 <marablack3@gmail.com>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Richard Hughes <richard@hughsie.com>
+  - rishirajsinghjhelumi <rishiakhnoor@gmail.com>
+  - Seong-ho Cho <shcho@gnome.org>
+  - Victor Ibragimov <victor.ibragimov@gmail.com>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+
+
+3.12.0 - Mar 24, 2014
+=======================
+
+Changes since 3.11.92:
+
+- Added/updated/fixed translations:
+  - Korean
+  - Polish
+  - Punjabi
+  - Danish
+  - Aragonese
+  - Telugu
+  - Slovenian
+  - Basque
+  - German
+  - Serbian
+  - Italian
+
+All contributors to this release:
+
+  - Claudio Arseni <claudio.arseni@ubuntu.com>
+  - Мирослав Николић <miroslavnikolic@rocketmail.com>
+  - Benjamin Steinwender <b@stbe.at>
+  - Inaki Larranaga Murgoitio <dooteo@zundan.com>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Praveen Illa <mail2ipn@gmail.com>
+  - Daniel Martinez <dmartinez@src.gnome.org>
+  - Ask H. Larsen <asklarsen@gmail.com>
+  - A S Alam <apreet.alam@gmail.com>
+  - Paweł Żołnowski <pawel@zolnowski.name>
+  - Seong-ho Cho <darkcircle.0426@gmail.com>
+
+
+3.11.92 - Mar 17, 2014
+=======================
+
+Changes since 3.11.91:
+
+- Enable keyboard navigation in search results popover.
+- Make clicking the map grab focus and dismiss on screen keyboard.
+- Added/updated/fixed translations:
+  - Finnish
+  - Hebrew
+  - Ukrainian
+  - French
+  - Indonesian
+  - Portuguese
+  - Catalan
+  - Russian
+  - Traditional Chinese (Hong Kong and Taiwan)
+  - Lithuanian
+  - Chinese (China)
+  - Latvian
+  - Czech
+  - Galician
+  - Brazilian
+  - Spanish
+  - Norwegian bokmål
+  - Hungarian
+
+All contributors to this release:
+
+  - Andika Triwidada <andika@gmail.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Balázs Úr <urbalazs@src.gnome.org>
+  - Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
+  - Claude Paroz <claude@2xlibre.net>
+  - Damián Nohales <damiannohaes@gmail.com>
+  - Daniel Korostil <ted.korostiled@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Dario Di Nucci <linkin88mail@gmail.com>
+  - Duarte Loreto <happyguy_pt@hotmail.com>
+  - Fran Diéguez <fran.dieguez@mabishu.com>
+  - Gil Forcada <gforcada@gnome.org>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Marek Černocký <marek@manet.cz>
+  - Rafael Ferreira <rafael.f.f1@gmail.com>
+  - Rūdolfs Mazurs <rudolfsm@src.gnome.org>
+  - Seong-ho Cho <darkcircle.0426@gmail.com>
+  - Tiagosdot <almosthumane@portugalmail.pt>
+  - Ville-Pekka Vainio <vpvainio@iki.fi>
+  - Wylmer Wang <wantinghard@gmail.com>
+  - Yaron Shahrabani <sh.yaron@gmail.com>
+  - Yuri Myasoedov <ymyasoedov@yandex.ru>
+
+3.11.91 - Mar 2, 2014
+=======================
+
+Changes since 3.11.90:
+
+- Update about dialog.
+- Fix a bug that could put Maps in an endless loop.
+- Fix a 'make distcheck' bug.
+- Use markup for superscripts.
+- Added/updated/fixed translations:
+  - Arabic
+  - Catalan
+  - Finnish
+  - Swedish
+
+All contributors to this release:
+
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Khaled Hosny <khaledhosny@eglug.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Pau Iranzo <paugnu@gmail.com>
+  - Ville-Pekka Vainio <vpvainio@iki.fi>
+
+3.11.90 - Feb 18, 2014
+=======================
+
+Changes since 3.11.5.1:
+
+- Make the search results show in a GtkPopover.
+- Fix a bug where search result spinner sometimes wouldn't be centered.
+- Add Jonas Danielsson to maintainer's list.
+- Added/updated/fixed translations:
+  - Assamese
+  - Ukrainian
+  - French
+  - Aragonese
+
+All contributors to this release:
+
+  - Claude Paroz <claude@2xlibre.net>
+  - Daniel Korostil <ted.korostiled@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Jorge Pérez Pérez <jorgtum@gmail.com>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - ngoswami <ngoswami@redhat.com>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+
+3.11.5.1 - Feb 05, 2014
+=======================
+
+Changes since 3.11.5:
+
+- Fix some compiler warnings.
+
+All contributors to this release:
+
+  - Ting-Wei Lan <lantw44@gmail.com>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+
+3.11.5 - Feb 04, 2014
+=====================
+
+Changes since 3.11.4.1:
+
+- Much smoother goto animations.
+- Avoid a redundant zoom-out at end of goto animations by making
+  use of new geocode-glib and libchamplain API.
+- Make Maps work against geoclue 2.1.x and latest gtk+.
+- If accuracy area is less than 1, show 'exact' instead of '0 km2'.
+- Explicitly specify desired accuracy level to geoclue.
+- Update website URL in AppData file.
+- Make gnome-maps executable a real binary.
+- Update recent added time on re-visits.
+- Fix a compiler warning.
+- Added/updated/fixed translations:
+  - Brazilian Portuguese
+  - Chinese simplified
+  - Czech
+  - Galician
+  - Hebrew
+  - Lithuanian
+  - Norwegian
+  - Slovenian
+  - Spanish
+  - Tajik
+  - Telugu
+  - Traditional Chinese (Hong Kong and Taiwan)
+
+Dependency-related changes:
+
+- Require gio-2.0 >= 2.39.3
+- Require gjs-1.0 >= 1.39.0
+- Require geocode-glib >= 3.11.5 (runtime-only)
+- Require libchamplain >= 0.12.6 (runtime-only)
+
+All contributors to this release:
+
+  - Andreas Nilsson <anilsson@redhat.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
+  - Colin Walters <walters@verbum.org>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Fran Diéguez <fran.dieguez@mabishu.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Marek Černocký <marek@manet.cz>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Rafael Ferreira <rafael.f.f1@gmail.com>
+  - Tong Hui <tonghuix@gmmail.com>
+  - Victor Ibragimov <victor.ibragimov@gmail.com>
+  - Yosef Or Boczko <yoseforb@src.gnome.org>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+
+3.11.4.1 - Jan 14, 2014
+=======================
+
+Changes since 3.11.4:
+
+- Provide completion for search based on recently used search results.
+
+All contributors to this release:
+
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+
+3.11.4 - Jan 14, 2014
+=====================
+
+Changes since 3.11.2:
+
+- Set saner minimum zoom level on the map view.
+- Added/updated/fixed translations:
+  - Czech
+  - Malayalam
+  - Kannada
+  - Slovak
+  - Friulian
+  - German
+  - Esperanto
+
+All contributors to this release:
+
+  - Balasankar C <c.balasankar@gmail.com>
+  - Benjamin Steinwender <b@stbe.at>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Fabio Tomat <f.t.public@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Marek Černocký <marek@manet.cz>
+  - Matthew Chisholm <mat.eo416@gmail.com>
+  - Shankar Prasad <prasad.mvs@gmail.com>
+
+3.11.2 - Nov 19, 2013
+=====================
+
+Changes since 3.10.0:
+
+- Default focus on search entry.
+- Clearer dconf key descriptions.
+- Use Unicode quotation marks and apostrophes.
+- Added/updated/fixed translations:
+  - Afrikaans
+  - Arabic
+  - Basque
+  - Brazilian Portuguese
+  - Catalan (Valencian)
+  - Chinese simplified
+  - Danish
+  - Dutch
+  - Galician
+  - Greek
+  - Italian
+  - Lithuanian
+  - Malayalam
+  - Norwegian bokmål
+  - Persian
+  - Slovenian
+  - Spanish
+  - Swedish
+  - Tajik
+  - Telugu
+  - Turkish
+
+All contributors to this release:
+
+  - Anish A <aneesh.nl@gmail.com>
+  - Arash Mousavi <mousavi.arash@gmail.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Carles Ferrando <carles.ferrando@gmail.com>
+  - Claudio Arseni <claudio.arseni@ubuntu.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Dawid Loubser <dawid.loubser@ibi.co.za>
+  - Efstathios Iosifidis <iosifidis@opensuse.org>
+  - Emin Tufan Çetin <etcetin@gmail.con>
+  - Fran Diéguez <fran.dieguez@mabishu.com>
+  - Friedel Wolff <friedel@translate.org.za>
+  - Inaki Larranaga Murgoitio <dooteo@zundan.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kenneth Nielsen <k.nielsen81@gmail.com>
+  - Khaled Hosny <khaledhosny@eglug.org>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Marcus Lundblad <ml@update.uu.se>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - Philip Withnall <philip@tecnocode.co.uk>
+  - Praveen Illa <mail2ipn@gmail.com>
+  - Rafael Ferreira <rafael.f.f1@gmail.com>
+  - Reinout van Schouwen <reinouts@gnome.org>
+  - Tim Lunn <tim@feathertop.org>
+  - Victor Ibragimov <victor.ibragimov@gmail.com>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+  - tuhaihe <1132321739qq@gmail.com>
+
+3.10.0 - Sep 23, 2013
+=====================
+
+Changes since 3.9.92:
+
+- Added/updated/fixed translations:
+  - Arabic
+  - Assamese
+  - Catalan
+  - Esperanto
+  - Estonian
+  - German
+  - Japanese
+  - Norwegian bokmål
+  - Portuguese
+  - Ukranian
+
+All contributors to this release:
+
+  - António Lima <amrlima@gmail.com>
+  - Benjamin Steinwender <b@stbe.at>
+  - Daniel Korostil <ted.korostiled@gmail.com>
+  - Jiro Matsuzawa <jmatsuzawa@gnome.org>
+  - Josep Sanchez Mesegue <papapep@gmx.com>
+  - Khaled Hosny <khaledhosny@eglug.org>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>
+  - Mattias Põldaru <mahfiaz@gmail.com>
+  - Nilamdyuti Goswami <ngoswami@redhat.com>
+  - Priit Laes <plaes@plaes.org>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+
+3.9.92 - Sep 16, 2013
+=====================
+
+Changes since 3.9.91:
+
+- Fix issue of Maps not updating user's location at first time launch.
+- Fix the awkward looking and slow goto animation and make it linear and fast.
+- Don't point to inexistent directories in gnome-maps script.
+- Mark two forgotten strings for translation.
+- Add some comments for translators.
+  - Assamese
+  - Basque
+  - Brazilian Portuguese
+  - British English
+  - Czech
+  - Danish
+  - Dutch
+  - Finnish
+  - Finnish
+  - French
+  - Galician
+  - German
+  - Hungarian
+  - Indonesian
+  - Italian
+  - Korean
+  - Latvian
+  - Lithuanian
+  - Norwegian bokmål
+  - Polish
+  - Punjabi
+  - Russian
+  - Serbian
+  - Slovak
+  - Slovenian
+  - Spanish
+  - Tajik
+  - Traditional Chinese
+
+All contributors to this release:
+
+  - Alexandre Franke <alexandre.franke@gmail.com>
+  - Andika Triwidada <andika@gmail.com>
+  - A S Alam <apreet.alam@gmail.com>
+  - Aurimas Černius <aurisc4@gmail.com>
+  - Balázs Úr <urbalazs@src.gnome.org>
+  - Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>
+  - Claudio Arseni <claudio.arseni@ubuntu.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Dušan Kazik <prescott66@gmail.com>
+  - Enrico Nicoletto <liverig@gmail.com>
+  - Fran Diéguez <fran.dieguez@mabishu.com>
+  - Gabor Kelemen <kelemeng@gnome.hu>
+  - Jonas Danielsson <jonas.danielsson@lundinova.se>
+  - Kalev Lember <kalevlember@gmail.com>
+  - Kjartan Maraas <kmaraas@gnome.org>
+  - Kris Thomsen <lakristho@gmail.com>
+  - Marek Černocký <marek@manet.cz>
+  - Martin Srebotnjak <miles@filmsi.net>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Nilamdyuti Goswami <ngoswami@redhat.com>
+  - Philip Withnall <philip@tecnocode.co.uk>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Reinout van Schouwen <reinouts@gnome.org>
+  - Rūdolfs Mazurs <rudolfsm@src.gnome.org>
+  - Seong-ho Cho <darkcircle.0426@gmail.com>
+  - Timo Jyrinki <timo@debian.org>
+  - Tobias Endrigkeit <tobiasendrigkeit@outlook.com>
+  - Victor Ibragimov <victor.ibragimov@gmail.com>
+  - Ville-Pekka Vainio <vpvainio@iki.fi>
+  - Yosef Or Boczko <yoseforb@gmail.com>
+  - Yuri Myasoedov <omerta13@yandex.ru>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+  - Мирослав Николић <miroslavnikolic@rocketmail.com>
+
+3.9.91 - Sep 03, 2013
+=====================
+
+Changes since 3.9.90.2:
+
+- Provide an AppData file for GNOME software center.
+- Improved search results popup:
+  - Add a scroll window to not fill screen with results.
+  - Show place icons when available for user to be able to differentiate
+    between results.
+  - Show a spinner when search is on going.
+  - Show matched part of results in bold fonts.
+- Add a context menu with two options:
+  - "What's here?": Finds the name of the place at cursor position.
+  - "I'm here": Corrects/changes Maps' idea of where user is currently.
+- Gracefully handle markup in search results.
+- Fix build against latest gnome-common.
+- Added/updated/fixed translations:
+  - Brazilian Portuguese
+  - Czech
+  - Esperanto
+  - Galician
+  - Hungarian
+  - Irish
+  - Polish
+  - Slovenian
+  - Spanish
+  - Tajik
+  - UK
+
+Dependency-related changes:
+
+- Adapt to, and depend on GeoClue >= 1.99.3.
+
+All contributors to this release:
+
+  - Andreas Nilsson <anilsson@redhat.com>
+  - Balázs Úr <urbalazs@src.gnome.org>
+  - Daniel Korostil <ted.korostiled@gmail.com>
+  - Daniel Mustieles <daniel.mustieles@gmail.com>
+  - Enrico Nicoletto <liverig@gmail.com>
+  - Fran Diéguez <fran.dieguez@mabishu.com>
+  - Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kalev Lember <kalevlember@gmail.com>
+  - Marek Černocký <marek@manet.cz>
+  - Matej Urbančič <mateju@svn.gnome.org>
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Ryan Lortie <desrt@desrt.ca>
+  - Seán de Búrca <leftmostcat@gmail.com>
+  - Victor Ibragimov <victor.ibragimov@gmail.com>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+
+3.9.90.2 - Aug 23, 2013
+=======================
+
+Changes since 3.9.90.1:
+
+- Drop usage of Geoclue library as its going to be dropped in Geoclue 1.99.2.
+- Update Polish translation.
+
+All contributors to this release:
+
+  - Piotr Drąg <piotrdrag@gmail.com>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+
+3.9.90.1 - Aug 20, 2013
+=======================
+
+Brown paperbag release for also updating version in configure/build.
+
+3.9.90 - Aug 20, 2013
+=====================
+
+Changes since 3.9.5:
+
+- Search results are shown in a popup menu rather than as markers on the map.
+- Draw window decorations client-side, following the new GNOME3 trend.
+- The user location button is no longer a toggle.
+- Add buttons and key bindings for zooming in and out.
+- Added/updated/fixed translations:
+  - Chinese simplified
+  - Danish
+
+Dependency-related changes:
+
+- Adapt to, and depend on GeoClue >= 1.99.1.
+
+All contributors to this release:
+
+  - Andrea Veri <av@gnome.org>
+  - Jonas Danielsson <jonas@threetimestwo.org>
+  - Kenneth Nielsen <k.nielsen81@gmail.com>
+  - Kris Thomsen <lakristho@gmail.com>
+  - Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
+  - tuhaihe <1132321739qq@gmail.com>
+  - Yosef Or Boczko <yoseforb@gmail.com>
+  - Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
+
+3.9.5 - Jul 31, 2013
+====================
+
+First public release.
