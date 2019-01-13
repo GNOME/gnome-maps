@@ -91,7 +91,7 @@ class PlaceStore extends Gtk.ListStore {
     _addFavorite(place) {
         if (!place.store)
             return;
-
+        
         if (this.exists(place, PlaceType.FAVORITE)) {
             return;
         }
@@ -170,8 +170,8 @@ class PlaceStore extends Gtk.ListStore {
                 // We expect exception to be thrown in this line when parsing
                 // gnome-maps 3.14 or below place stores since the "place"
                 // key is not present.
-                if (!place.id)
-                    return;
+                //if (!place.id)
+                //    return;
 
                 let p;
                 if (type === PlaceType.RECENT_ROUTE) {

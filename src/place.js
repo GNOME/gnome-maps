@@ -107,7 +107,9 @@ class Place extends Geocode.Place {
     }
 
     get uniqueID() {
-        return this.osm_type + '-' + this.osm_id;
+        if (this.osm_type)
+            return this.osm_type + '-' + this.osm_id;
+        return 'user-defined' + this.location.longitude + '-' + this.location.latitude;
     }
 
     set population(v) {
