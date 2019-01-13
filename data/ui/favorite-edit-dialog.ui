@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk+" version="3.12"/>
+  <template class="Gjs_FavoriteEditDialog" parent="GtkDialog">
+    <property name="can_focus">False</property>
+    <property name="type">popup</property>
+    <property name="type_hint">dialog</property>
+    <property name="width_request">500</property>
+    <property name="height_request">200</property>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="contentArea">
+        <child>
+          <object class="GtkStack" id="stack">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="homogeneous">True</property>
+            <property name="transition_type">crossfade</property>
+            <child>
+              <object class="GtkGrid" id="loadingGrid">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkSpinner" id="loadingSpinner">
+                    <property name="height_request">32</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
+                    <property name="vexpand">True</property>
+                    <property name="active">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="name">loading</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkGrid">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="orientation">vertical</property>
+                <property name="margin">20</property>
+                <child>
+                  <object class="GtkGrid" id="editorGrid">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="row-spacing">12</property>
+                    <property name="column-spacing">6</property>
+                    <property name="margin-bottom">12</property>
+                    <child>
+                      <object class="GtkLabel" id="typeLabel">
+                        <property name="visible">False</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Type</property>
+                        <property name="halign">GTK_ALIGN_END</property>
+                        <style>
+                          <class name="dim-label"/>
+                        </style>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="typeButton">
+                        <property name="visible">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
+                        <child>
+                          <object class="GtkGrid">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="row-spacing">5</property>
+                            <property name="column-spacing">5</property>
+                            <child>
+                              <object class="GtkLabel" id="typeValueLabel">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="label" translatable="yes">None</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkImage">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="halign">GTK_ALIGN_END</property>
+                                <property name="hexpand">True</property>
+                                <property name="icon-name">go-next-symbolic</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkGrid">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="vexpand">True</property>
+                    <property name="valign">GTK_ALIGN_END</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="name">editor</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkGrid" id="uploadGrid">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_start">15</property>
+                <property name="margin_end">15</property>
+                <property name="margin_top">15</property>
+                <property name="margin_bottom">15</property>
+                <property name="row-spacing">5</property>
+                <child>
+                  <object class="GtkLabel" id="commentLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Comment</property>
+                    <property name="halign">GTK_ALIGN_START</property>
+                    <style>
+                      <class name="dim-label"/>
+                    </style>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkFrame">
+                    <property name="visible">True</property>
+                    <child>
+                      <object class="GtkTextView" id="commentTextView">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="uploadInfoLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Map changes will be visible on all maps that use
+OpenStreetMap data.</property>
+                    <property name="halign">GTK_ALIGN_START</property>
+                    <style>
+                      <class name="dim-label"/>
+                    </style>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">3</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="name">upload</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkGrid" id="typeSearchGrid">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_start">60</property>
+                <property name="margin_end">60</property>
+                <property name="margin_top">15</property>
+                <property name="margin_bottom">30</property>
+                <property name="row-spacing">5</property>
+                <!--
+                <child>
+                  <object class="Gjs_OSMTypeSearchEntry" id="typeSearchEntry">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="hexpand">True</property>
+                    <property name="margin_start">10</property>
+                    <property name="margin_end">10</property>
+                    <property name="margin_bottom">10</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+                -->
+                <child>
+                  <object class="GtkLabel" id="recentTypesLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Recently Used</property>
+                    <property name="halign">GTK_ALIGN_START</property>
+                    <style>
+                      <class name="dim-label"/>
+                    </style>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkListBox" id="recentTypesListBox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="selection-mode">none</property>
+                    <style>
+                      <class name="frame"/>
+                    </style>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">2</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="name">select-type</property>
+              </packing>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child type="titlebar">
+      <object class="GtkHeaderBar" id="headerBar">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="show-close-button">False</property>
+        <property name="title" translatable="yes" context="dialog title">Edit on OpenStreetMap</property>
+        <child>
+          <object class="GtkButton" id="cancelButton">
+            <property name="label" translatable="yes">Cancel</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+          </object>
+          <packing>
+            <property name="pack-type">start</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="backButton">
+            <property name="visible">False</property>
+            <property name="can_focus">True</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon-name">go-previous-symbolic</property>
+                <property name="pixel_size">16</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="pack-type">start</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="saveButton">
+            <property name="label" translatable="yes">Save</property>
+            <property name="visible">True</property>
+            <property name="sensitive">False</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <style>
+              <class name="default"/>
+            </style>
+          </object>
+          <packing>
+            <property name="pack-type">end</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </template>
+  <object class="GtkPopover" id="addFieldPopover">
+    <property name="visible">False</property>
+    <child>
+      <object class="GtkGrid" id="addFieldPopoverGrid">
+        <property name="visible">True</property>
+        <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
+      </object>
+    </child>
+  </object>
+  <object class="GtkPopover" id="hintPopover">
+    <property name="visible">False</property>
+    <property name="position">GTK_POS_BOTTOM</property>
+    <child>
+      <object class="GtkGrid">
+        <property name="visible">True</property>
+        <property name="margin">5</property>
+        <child>
+          <object class="GtkLabel" id="hintLabel">
+            <property name="visible">True</property>
+            <property name="wrap">True</property>
+            <property name="width-chars">20</property>
+            <property name="max-width-chars">40</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
