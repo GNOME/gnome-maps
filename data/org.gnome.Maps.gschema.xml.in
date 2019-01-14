@@ -1,11 +1,11 @@
-<schemalist gettext-domain="gnome-maps">
-  <enum id="org.gnome.maps.TransportationType">
+<schemalist gettext-domain="@gettext-package@">
+  <enum id="@schema-id@.TransportationType">
     <value value="0" nick="car"/>
     <value value="1" nick="bike"/>
     <value value="2" nick="pedestrian"/>
     <value value="3" nick="transit"/>
   </enum>
-  <schema id="org.gnome.Maps" path="/org/gnome/maps/">
+  <schema id="@schema-id@" path="@schema-path@">
     <key type="ad" name="last-viewed-location">
       <default>[0.0,0.0,0.0,0.0]</default>
       <summary>last viewed location</summary>
@@ -67,7 +67,7 @@
       <summary>OpenStreetMap username or e-mail address</summary>
       <description>Indicates if the user has signed in to edit OpenStreetMap data.</description>
     </key>
-    <key name="transportation-type" enum="org.gnome.maps.TransportationType">
+    <key name="transportation-type" enum="@schema-id@.TransportationType">
       <default>'pedestrian'</default>
       <summary>Last used transportation type for routing</summary>
     </key>

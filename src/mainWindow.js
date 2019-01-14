@@ -111,13 +111,15 @@ var MainWindow = GObject.registerClass({
 
         this._contextMenu = new ContextMenu.ContextMenu({ mapView: this._mapView,
                                                           mainWindow: this });
-
+        
         this.layersPopover = new LayersPopover.LayersPopover({
             mapView: this._mapView
         });
         this._layersButton.popover = this.layersPopover;
         this._favoritesButton.popover = new FavoritesPopover.FavoritesPopover({ mapView: this._mapView });
-
+        if (pkg.profile == 'development') {
+            this.get_style_context().add_class('devel');
+        }
 
         this._initHeaderbar();
         this._initActions();
@@ -500,7 +502,7 @@ var MainWindow = GObject.registerClass({
             program_name: _("Maps"),
             comments: _("A map application for GNOME"),
             license_type: Gtk.License.GPL_2_0,
-            logo_icon_name: 'org.gnome.Maps',
+            logo_icon_name: pkg.name,
             version: pkg.version,
             website: 'https://live.gnome.org/Apps/Maps',
             wrap_license: true,

@@ -38,7 +38,7 @@ const CONSUMER_SECRET = 'AO9BhDl9sJ33DjaZgQmYcNIuM3ZSml4xtugai6gE';
 const OAUTH_ENDPOINT_URL = 'https://www.openstreetmap.org/oauth';
 const LOGIN_URL = 'https://www.openstreetmap.org/login';
 
-const SECRET_SCHEMA = new Secret.Schema("org.gnome.Maps",
+const SECRET_SCHEMA = new Secret.Schema(pkg.name,
     Secret.SchemaFlags.NONE,
     {
     }

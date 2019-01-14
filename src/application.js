@@ -84,7 +84,7 @@ var Application = GObject.registerClass({
         /* Needed to be able to use in UI files */
         _ensuredTypes.forEach((type) => GObject.type_ensure(type));
 
-        super._init({ application_id: 'org.gnome.Maps',
+        super._init({ application_id: pkg.name,
                       flags: Gio.ApplicationFlags.HANDLES_OPEN });
         this._connected = false;
 
@@ -225,7 +225,7 @@ var Application = GObject.registerClass({
     }
 
     _initServices() {
-        settings         = Settings.getSettings('org.gnome.Maps');
+        settings         = Settings.getSettings(pkg.name);
         routeQuery       = new RouteQuery.RouteQuery();
         routingDelegator = new RoutingDelegator.RoutingDelegator({ query: routeQuery });
         geoclue          = new Geoclue.Geoclue();
