@@ -159,7 +159,6 @@ var ContextMenu = GObject.registerClass({
         let dialog = new FavoriteEditDialog.FavoriteEditDialog({
             transient_for: this._mainWindow,
             modal: true,
-            markLocation: true,
             latitude: this._latitude,
             longitude: this._longitude
         });
