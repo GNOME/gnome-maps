@@ -28,7 +28,8 @@ const OSMEdit = imports.osmEdit;
 var ZoomInDialog = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/zoom-in-dialog.ui',
     InternalChildren: [ 'cancelButton',
-                        'zoomInButton'],
+                        'zoomInButton',
+                        'descriptionLabel'],
 }, class ZoomInDialog extends Gtk.Dialog {
 
     _init(params) {
@@ -38,11 +39,15 @@ var ZoomInDialog = GObject.registerClass({
         delete params.longitude;
         this._view = params.view;
         delete params.view;
+        let description = params.description;
+        delete params.description;
 
         /* This is a construct-only property and cannot be set by GtkBuilder */
         params.use_header_bar = true;
 
         super._init(params);
+
+        this._descriptionLabel.label = description;
 
         this._zoomInButton.connect('clicked', () => this._onZoomIn());
         this._cancelButton.connect('clicked', () => this._onCancel());

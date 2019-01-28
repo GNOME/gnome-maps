@@ -38,7 +38,6 @@ const PlaceStore = imports.placeStore;
 const RouteQuery = imports.routeQuery;
 const Utils = imports.utils;
 const ZoomInDialog = imports.zoomInDialog;
-const ZoomInFavoriteDialog = imports.zoomInFavoriteDialog;
 
 var ContextMenu = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/context-menu.ui',
@@ -144,11 +143,12 @@ var ContextMenu = GObject.registerClass({
     _onCreateFavoriteActivated() {
         if (this._mapView.view.get_zoom_level() < FavoriteEditDialog.MIN_ADD_LOCATION_ZOOM_LEVEL) {
             let zoomInDialog =
-                new ZoomInFavoriteDialog.ZoomInFavoriteDialog({
+                new ZoomInDialog.ZoomInDialog({
                     longitude: this._longitude,
                     latitude: this._latitude,
                     view: this._mapView.view,
                     transient_for: this._mainWindow,
+                    description: 'Zoom in to mark a location as favorite!',
                     modal: true
                 });
             zoomInDialog.connect('response', () => zoomInDialog.destroy());
@@ -209,7 +209,8 @@ var ContextMenu = GObject.registerClass({
                                                 latitude: this._latitude,
                                                 view: this._mapView.view,
                                                 transient_for: this._mainWindow,
-                                                modal: true });
+                                                description: 'Zoom in to add location!',
+                                                modal: true, });
 
             zoomInDialog.connect('response', () => zoomInDialog.destroy());
             zoomInDialog.show_all();
