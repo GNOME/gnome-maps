@@ -40,7 +40,7 @@ const Utils = imports.utils;
  * based routing for the walking portions, thus it's based on an asynchronous
  * recursive pattern. The reason for running OpenTripPlanner with only transit
  * data is that prior experiments has shown that OpenTripPlanner with full OSM
- * data doesn't scale well beyong single cities, and GraphHopper has already
+ * data doesn't scale well beyond single cities, and GraphHopper has already
  * given us good results before.
  *
  * There is two entry points for obtaining routes, one which is called by the
@@ -106,7 +106,7 @@ const MAX_WALK_OPTIMIZATION_DISTANCE_DIFFERENCE = 500;
 const MIN_INTERMEDIATE_WALKING_SLACK = 60;
 
 /* maximum walking distance, filter out itineraries containing walking legs
- * whith longer walking after refined by GraphHopper
+ * with longer walking after refined by GraphHopper
  */
 const MAX_WALKING_DISTANCE = 2000;
 
