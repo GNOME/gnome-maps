@@ -21,6 +21,7 @@ const GObject = imports.gi.GObject;
 
 const GeoJSONSource = imports.geoJSONSource;
 const ShapeLayer = imports.shapeLayer;
+const Utils = imports.utils;
 const Togeojson = imports.togeojson.togeojson;
 const Domparser = imports.xmldom.domparser;
 
@@ -36,7 +37,7 @@ class KmlShapeLayer extends ShapeLayer.ShapeLayer {
     }
 
     _parseContent() {
-        let s = this._fileContents.toString();
+        let s = Utils.getBufferText(this._fileContents);
         let parser = new Domparser.DOMParser();
         let json = Togeojson.toGeoJSON.kml(parser.parseFromString(s));
         this._mapSource.parse(json);
