@@ -86,7 +86,7 @@ class GeoJSONSource extends Champlain.TileSource {
                 this.next_source.fill_tile(tile);
         });
 
-        Mainloop.idle_add(() => this._renderTile(tile));
+        Mainloop.idle_add(() => this._renderTile(tile), tile);
     }
 
     _validate([lon, lat]) {
