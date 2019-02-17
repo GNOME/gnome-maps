@@ -1,21 +1,21 @@
 # Chinese (Taiwan) translation for gnome-maps.
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# pan93412 <pan93412@gmail.com>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2018-06-18 20:31+0000\n"
-"PO-Revision-Date: 2018-06-22 21:40+0800\n"
+"POT-Creation-Date: 2019-01-14 19:43+0000\n"
+"PO-Revision-Date: 2019-02-17 23:15+0800\n"
 "Last-Translator: pan93412 <pan93412@gmail.com>\n"
-"Language-Team: Chinese (Taiwan) <chinese-l10n@googlegroups.com>\n"
+"Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.8\n"
+"X-Generator: Lokalize 18.12.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
@@ -55,8 +55,8 @@ msgstr ""
 "「Hotels near Alexanderplatz, Berlin」等。"
 
 #. Translators: This is the program name.
-#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:8
-#: src/application.js:83 src/mainWindow.js:511
+#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
+#: src/mainWindow.js:500
 msgid "Maps"
 msgstr "地圖"
 
@@ -194,22 +194,6 @@ msgstr "指示使用者是否已登入可編輯 OpenStreetMap 資料。"
 #: data/org.gnome.Maps.gschema.xml:72
 msgid "Last used transportation type for routing"
 msgstr "上次路線規劃時使用的交通類型"
-
-#: data/ui/app-menu.ui:7
-msgid "Set up OpenStreetMap Account"
-msgstr "設定 OpenStreetMap 帳號"
-
-#: data/ui/app-menu.ui:12
-msgid "_Keyboard Shortcuts"
-msgstr "鍵盤捷徑鍵(_K)"
-
-#: data/ui/app-menu.ui:17
-msgid "About"
-msgstr "關於"
-
-#: data/ui/app-menu.ui:21
-msgid "Quit"
-msgstr "結束"
 
 #: data/ui/check-in-dialog.ui:250 data/ui/check-in-dialog.ui:299
 msgid "Visibility"
@@ -377,52 +361,65 @@ msgstr "取消"
 msgid "Location Settings"
 msgstr "位置設定值"
 
+#: data/ui/main-window.ui:8
+msgid "Set up OpenStreetMap Account"
+msgstr "設定 OpenStreetMap 帳號"
+
+#: data/ui/main-window.ui:13
+msgid "_Keyboard Shortcuts"
+msgstr "鍵盤捷徑鍵(_K)"
+
+#: data/ui/main-window.ui:18
+#| msgid "About"
+msgid "About Maps"
+msgstr "關於地圖"
+
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:23
+#: data/ui/main-window.ui:41
 msgid "Go to current location"
 msgstr "前往目前位置"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:44
+#: data/ui/main-window.ui:62
 msgid "Choose map type"
 msgstr "選擇地圖類型"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:69
+#: data/ui/main-window.ui:87
 msgid "Zoom out"
 msgstr "拉遠"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:85
+#: data/ui/main-window.ui:103
 msgid "Zoom in"
 msgstr "拉近"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:103
+#: data/ui/main-window.ui:142
 msgid "Toggle route planner"
 msgstr "切換路徑規劃器"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:124
+#: data/ui/main-window.ui:163
 msgid "Toggle favorites"
 msgstr "切換喜好"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:144
+#: data/ui/main-window.ui:183
 msgid "Print Route"
 msgstr "列印路線"
 
-#: data/ui/main-window.ui:202
+#: data/ui/main-window.ui:246
 msgid "Maps is offline!"
 msgstr "Maps 已離線！"
 
-#: data/ui/main-window.ui:212
+#: data/ui/main-window.ui:256
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
 msgstr "Maps 需要使用網際網路連線才能正常運作，但找不到網際網路。"
 
-#: data/ui/main-window.ui:221
+#: data/ui/main-window.ui:265
 msgid "Check your connection and proxy settings."
 msgstr "請檢查您的連線與代理伺服器設定值。"
 
@@ -598,7 +595,7 @@ msgstr "開啟位置"
 msgid "_Open"
 msgstr "開啟(_O)"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:62
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:61
 msgid "Open Shape Layer"
 msgstr "開啟形狀圖層"
 
@@ -711,19 +708,19 @@ msgstr "無法在目錄中找到拼貼結構"
 msgid "Failed to parse XML document"
 msgstr "無法解析 XML 文件"
 
-#: lib/maps-osm.c:252 lib/maps-osm.c:405
+#: lib/maps-osm.c:249 lib/maps-osm.c:402
 msgid "Missing required attributes"
 msgstr "缺少了必要的屬性"
 
-#: lib/maps-osm.c:453
+#: lib/maps-osm.c:450
 msgid "Could not find OSM element"
 msgstr "找不到 OSM 元素"
 
-#: src/application.js:96
+#: src/application.js:95
 msgid "A path to a local tiles directory structure"
 msgstr "本地端拼貼目錄結構的路徑"
 
-#: src/application.js:100
+#: src/application.js:99
 msgid "Show the version of the program"
 msgstr "顯示程式版本"
 
@@ -785,28 +782,27 @@ msgid ""
 "this account"
 msgstr "憑證已過期，請開啟線上帳號再次登入並啟用這個帳號"
 
-#: src/contextMenu.js:95
+#: src/contextMenu.js:98
 msgid "Route from here"
 msgstr "從這裡開始的路線"
 
-#: src/contextMenu.js:97
+#: src/contextMenu.js:100
 msgid "Add destination"
 msgstr "加入目的地"
 
-#: src/contextMenu.js:99
+#: src/contextMenu.js:102
 msgid "Route to here"
 msgstr "到這裡的路線"
 
-#: src/contextMenu.js:128
+#: src/contextMenu.js:131
 msgid "Nothing found here!"
 msgstr "這裡找不到東西！"
 
-#: src/contextMenu.js:189
+#: src/contextMenu.js:192
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
-msgstr ""
-"位置已加到地圖上，請注意在顯示在地圖上與搜尋結果中之前可能需要一段時間。"
+msgstr "位置已加到地圖上，請注意在顯示在地圖上與搜尋結果中之前可能需要一段時間。"
 
 #. Translators: This is a format string for a PNG filename for an
 #. * exported image with coordinates. The .png extension should be kept
@@ -861,27 +857,28 @@ msgstr "找不到路線。"
 msgid "Start!"
 msgstr "開始！"
 
-#: src/mainWindow.js:59
+#: src/mainWindow.js:58
 msgid "All Layer Files"
 msgstr "所有圖層檔案"
 
-#: src/mainWindow.js:444
+#: src/mainWindow.js:433
 msgid "Failed to connect to location service"
 msgstr "無法連接位置服務"
 
-#: src/mainWindow.js:509
+#: src/mainWindow.js:498
 msgid "translator-credits"
 msgstr "Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>, 2013"
 
-#: src/mainWindow.js:512
+#: src/mainWindow.js:501
 msgid "A map application for GNOME"
 msgstr "GNOME 的地圖程式"
 
-#: src/mainWindow.js:523
-msgid "Copyright © 2011 – 2017 Red Hat, Inc. and The GNOME Maps authors"
-msgstr "版權所有 © 2011 – 2017 Red Hat, Inc. 和 GNOME 地圖作者群"
+#: src/mainWindow.js:512
+#| msgid "Copyright © 2011 – 2017 Red Hat, Inc. and The GNOME Maps authors"
+msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
+msgstr "版權所有 © 2011 – 2019 Red Hat, Inc. 和 GNOME 地圖作者群"
 
-#: src/mainWindow.js:542
+#: src/mainWindow.js:531
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "來自 %s 與貢獻者的地圖資料"
@@ -891,20 +888,20 @@ msgstr "來自 %s 與貢獻者的地圖資料"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:558
+#: src/mainWindow.js:547
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "由 %s 提供的地圖圖塊"
 
-#: src/mapView.js:353
+#: src/mapView.js:358
 msgid "File type is not supported"
 msgstr "檔案類型不支援"
 
-#: src/mapView.js:360
+#: src/mapView.js:365
 msgid "Failed to open layer"
 msgstr "無法開啟圖層"
 
-#: src/mapView.js:396
+#: src/mapView.js:401
 msgid "Failed to open GeoURI"
 msgstr "無法開啟 GeoURI"
 
@@ -978,7 +975,7 @@ msgstr ""
 "電話號碼。使用國際格式，以 + 號開頭。提防當地的隱私權法律，特別是私人電話號"
 "碼。"
 
-#: src/osmEditDialog.js:136 src/placeBubble.js:173
+#: src/osmEditDialog.js:136 src/placeBubble.js:191
 msgid "Wikipedia"
 msgstr "維基百科"
 
@@ -1156,8 +1153,7 @@ msgid ""
 "Information used to inform other mappers about non-obvious information about "
 "an element, the author’s intent when creating it, or hints for further "
 "improvement."
-msgstr ""
-"用來通知其他製圖者關於元件、建立時作者的目的、與更多資訊提示的不明顯資訊。"
+msgstr "用來通知其他製圖者關於元件、建立時作者的目的、與更多資訊提示的不明顯資訊。"
 
 #: src/osmEditDialog.js:325
 msgctxt "dialog title"
@@ -1172,35 +1168,35 @@ msgstr "選擇類型"
 msgid "Done"
 msgstr "完成"
 
-#: src/placeBubble.js:125
+#: src/placeBubble.js:143
 msgid "Population:"
 msgstr "人口："
 
-#: src/placeBubble.js:131
+#: src/placeBubble.js:149
 msgid "Altitude:"
 msgstr "海拔高度："
 
-#: src/placeBubble.js:136
+#: src/placeBubble.js:154
 msgid "Opening hours:"
 msgstr "開放時間："
 
-#: src/placeBubble.js:141
+#: src/placeBubble.js:159
 msgid "Internet access:"
 msgstr "網際網路存取"
 
-#: src/placeBubble.js:146
+#: src/placeBubble.js:164
 msgid "Religion:"
 msgstr "宗教："
 
-#: src/placeBubble.js:151
+#: src/placeBubble.js:169
 msgid "Toilets:"
 msgstr "廁所："
 
-#: src/placeBubble.js:156
+#: src/placeBubble.js:174
 msgid "Wheelchair access:"
 msgstr "使用輪椅："
 
-#: src/placeBubble.js:162 src/placeBubble.js:166
+#: src/placeBubble.js:180 src/placeBubble.js:184
 msgid "Phone:"
 msgstr "電話："
 
@@ -1266,17 +1262,17 @@ msgid "Abort printing"
 msgstr "關於列印"
 
 #. Translators: this is add via location tooltip
-#: src/routeEntry.js:72
+#: src/routeEntry.js:74
 msgid "Add via location"
 msgstr "透過位置增加"
 
 #. Translators: this is remove via location tooltip
-#: src/routeEntry.js:78
+#: src/routeEntry.js:84
 msgid "Remove via location"
 msgstr "透過位置移除"
 
 #. Translators: this is reverse route tooltip
-#: src/routeEntry.js:84
+#: src/routeEntry.js:90
 msgid "Reverse route"
 msgstr "反向路線"
 
@@ -1409,7 +1405,7 @@ msgstr[0] "%d:%02d 小時"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:647
+#: src/transitPlan.js:651
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -1563,53 +1559,56 @@ msgid "service"
 msgstr "服務"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:226
+#: src/utils.js:227
 msgid "Unknown"
 msgstr "不明"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:229
+#: src/utils.js:230
 msgid "Exact"
 msgstr "準確"
 
-#: src/utils.js:287
+#: src/utils.js:288
 #, javascript-format
 msgid "%f h"
 msgstr "%f 小時"
 
-#: src/utils.js:289
+#: src/utils.js:290
 #, javascript-format
 msgid "%f min"
 msgstr "%f 分鐘"
 
-#: src/utils.js:291
+#: src/utils.js:292
 #, javascript-format
 msgid "%f s"
 msgstr "%f 秒"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:302
+#: src/utils.js:303
 #, javascript-format
 msgid "%s km"
 msgstr "%s 公里"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:305
+#: src/utils.js:306
 #, javascript-format
 msgid "%s m"
 msgstr "%s 公尺"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:313
+#: src/utils.js:314
 #, javascript-format
 msgid "%s mi"
 msgstr "%s 英哩"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:316
+#: src/utils.js:317
 #, javascript-format
 msgid "%s ft"
 msgstr "%s 英呎"
+
+#~ msgid "Quit"
+#~ msgstr "結束"
 
 #~ msgid "OK"
 #~ msgstr "確定"
