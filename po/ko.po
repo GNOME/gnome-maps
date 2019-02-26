@@ -3,20 +3,21 @@
 # This file is distributed under the same license as the gnome-maps package.
 # Seong-ho Cho <shcho@gnome.org>, 2013-2018.
 # Kwangseob Jeong <myddpp@gmail.com>, 2018.
+# Jeeyong Um <conr2d@gmail.com>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2018-06-25 19:30+0000\n"
-"PO-Revision-Date: 2018-08-29 13:08+0900\n"
-"Last-Translator: Seong-ho Cho <shcho@gnome.org>\n"
+"POT-Creation-Date: 2019-01-14 19:43+0000\n"
+"PO-Revision-Date: 2019-02-23 17:27+0900\n"
+"Last-Translator: Jeeyong Um <conr2d@gmail.com>\n"
 "Language-Team: GNOME Korea <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
 msgid "GNOME Maps"
@@ -56,8 +57,8 @@ msgstr ""
 "지정된 형식의 위치도 검색할 수 있습니다."
 
 #. Translators: This is the program name.
-#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:8
-#: src/application.js:83 src/mainWindow.js:511
+#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
+#: src/mainWindow.js:500
 msgid "Maps"
 msgstr "지도"
 
@@ -195,22 +196,6 @@ msgstr ""
 #: data/org.gnome.Maps.gschema.xml:72
 msgid "Last used transportation type for routing"
 msgstr "최근 확인한 경로 안내 대중교통"
-
-#: data/ui/app-menu.ui:7
-msgid "Set up OpenStreetMap Account"
-msgstr "OpenStreetMap 계정 설정"
-
-#: data/ui/app-menu.ui:12
-msgid "_Keyboard Shortcuts"
-msgstr "키보드 바로 가기 키(_K)"
-
-#: data/ui/app-menu.ui:17
-msgid "About"
-msgstr "정보"
-
-#: data/ui/app-menu.ui:21
-msgid "Quit"
-msgstr "끝내기"
 
 #: data/ui/check-in-dialog.ui:250 data/ui/check-in-dialog.ui:299
 msgid "Visibility"
@@ -378,53 +363,65 @@ msgstr "취소"
 msgid "Location Settings"
 msgstr "위치 정보 설정"
 
+#: data/ui/main-window.ui:8
+msgid "Set up OpenStreetMap Account"
+msgstr "OpenStreetMap 계정 설정"
+
+#: data/ui/main-window.ui:13
+msgid "_Keyboard Shortcuts"
+msgstr "키보드 바로 가기 키(_K)"
+
+#: data/ui/main-window.ui:18
+msgid "About Maps"
+msgstr "지도 정보"
+
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:23
+#: data/ui/main-window.ui:41
 msgid "Go to current location"
 msgstr "현재 위치로 이동"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:44
+#: data/ui/main-window.ui:62
 msgid "Choose map type"
 msgstr "지도 형식을 선택하세요"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:69
+#: data/ui/main-window.ui:87
 msgid "Zoom out"
 msgstr "축소"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:85
+#: data/ui/main-window.ui:103
 msgid "Zoom in"
 msgstr "확대"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:103
+#: data/ui/main-window.ui:142
 msgid "Toggle route planner"
 msgstr "경로 계획 도우미 토글"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:124
+#: data/ui/main-window.ui:163
 msgid "Toggle favorites"
 msgstr "즐겨찾기 토글"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:144
+#: data/ui/main-window.ui:183
 msgid "Print Route"
 msgstr "경로 인쇄"
 
-#: data/ui/main-window.ui:202
+#: data/ui/main-window.ui:246
 msgid "Maps is offline!"
 msgstr "맵은 오프라인 상태입니다!"
 
-#: data/ui/main-window.ui:212
+#: data/ui/main-window.ui:256
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
 msgstr ""
 "지도가 제대로 동작하려면 인터넷에 연결해야하지만, 연결을 찾을 수 없습니다."
 
-#: data/ui/main-window.ui:221
+#: data/ui/main-window.ui:265
 msgid "Check your connection and proxy settings."
 msgstr "연결 및 프록시 설정을 확인하십시오."
 
@@ -601,7 +598,7 @@ msgstr "위치 열기"
 msgid "_Open"
 msgstr "열기(_O)"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:62
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:61
 msgid "Open Shape Layer"
 msgstr "도형 레이어 열기"
 
@@ -714,19 +711,19 @@ msgstr "디렉터리에서 타일 구조 찾기에 실패했습니다"
 msgid "Failed to parse XML document"
 msgstr "XML 문서 해석에 실패했습니다"
 
-#: lib/maps-osm.c:252 lib/maps-osm.c:405
+#: lib/maps-osm.c:249 lib/maps-osm.c:402
 msgid "Missing required attributes"
 msgstr "필요한 속성이 빠졌습니다"
 
-#: lib/maps-osm.c:453
+#: lib/maps-osm.c:450
 msgid "Could not find OSM element"
 msgstr "OSM 구성 요소를 찾을 수 없습니다"
 
-#: src/application.js:96
+#: src/application.js:95
 msgid "A path to a local tiles directory structure"
 msgstr "로컬 타일 디렉터리 구조 경로"
 
-#: src/application.js:100
+#: src/application.js:99
 msgid "Show the version of the program"
 msgstr "프로그램 버전 보기"
 
@@ -793,23 +790,23 @@ msgid ""
 msgstr ""
 "인증 기한이 지났습니다. 온라인 계정을 열어 접속한 후 이 계정을 활성화하십시오"
 
-#: src/contextMenu.js:95
+#: src/contextMenu.js:98
 msgid "Route from here"
 msgstr "여기서부터 경로 표시"
 
-#: src/contextMenu.js:97
+#: src/contextMenu.js:100
 msgid "Add destination"
 msgstr "목적지 추가"
 
-#: src/contextMenu.js:99
+#: src/contextMenu.js:102
 msgid "Route to here"
 msgstr "여기까지 경로 표시"
 
-#: src/contextMenu.js:128
+#: src/contextMenu.js:131
 msgid "Nothing found here!"
 msgstr "여기에 아무것도 없습니다!"
 
-#: src/contextMenu.js:189
+#: src/contextMenu.js:192
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -870,27 +867,30 @@ msgstr "경로가 없습니다."
 msgid "Start!"
 msgstr "시작!"
 
-#: src/mainWindow.js:59
+#: src/mainWindow.js:58
 msgid "All Layer Files"
 msgstr "모든 레이어 파일"
 
-#: src/mainWindow.js:444
+#: src/mainWindow.js:433
 msgid "Failed to connect to location service"
 msgstr "위치 서비스 연결에 실패했습니다"
 
-#: src/mainWindow.js:509
+#: src/mainWindow.js:498
 msgid "translator-credits"
-msgstr "조성호 <shcho@gnome.org>"
+msgstr ""
+"조성호 <shcho@gnome.org>\n"
+"정광섭 <myddpp@gmail.com>\n"
+"엄지용 <conr2d@gmail.com>"
 
-#: src/mainWindow.js:512
+#: src/mainWindow.js:501
 msgid "A map application for GNOME"
 msgstr "그놈용 지도 프로그램"
 
-#: src/mainWindow.js:523
-msgid "Copyright © 2011 – 2017 Red Hat, Inc. and The GNOME Maps authors"
-msgstr "Copyright © 2011 – 2017 Red Hat, Inc. and The GNOME Maps authors"
+#: src/mainWindow.js:512
+msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
+msgstr "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 
-#: src/mainWindow.js:542
+#: src/mainWindow.js:531
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "%s와(과) 기여자의 지도 데이터"
@@ -900,20 +900,20 @@ msgstr "%s와(과) 기여자의 지도 데이터"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:558
+#: src/mainWindow.js:547
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "%s에서 제공한 지도 타일"
 
-#: src/mapView.js:353
+#: src/mapView.js:358
 msgid "File type is not supported"
 msgstr "파일 형식을 지원하지 않습니다"
 
-#: src/mapView.js:360
+#: src/mapView.js:365
 msgid "Failed to open layer"
 msgstr "레이어 열기에 실패했습니다"
 
-#: src/mapView.js:396
+#: src/mapView.js:401
 msgid "Failed to open GeoURI"
 msgstr "GeoURI 열기에 실패했습니다"
 
@@ -987,7 +987,7 @@ msgstr ""
 "전화번호입니다. + 기호로 시작하는 국제 전화번호 형식을 사용하십시오. 개인 전"
 "화번호를 입력할 때 해당 국가의 개인 정보 보호법을 따르십시오."
 
-#: src/osmEditDialog.js:136 src/placeBubble.js:173
+#: src/osmEditDialog.js:136 src/placeBubble.js:191
 msgid "Wikipedia"
 msgstr "위키피디아"
 
@@ -1184,35 +1184,35 @@ msgstr "형식 선택"
 msgid "Done"
 msgstr "완료"
 
-#: src/placeBubble.js:125
+#: src/placeBubble.js:143
 msgid "Population:"
 msgstr "인구수:"
 
-#: src/placeBubble.js:131
+#: src/placeBubble.js:149
 msgid "Altitude:"
 msgstr "고도:"
 
-#: src/placeBubble.js:136
+#: src/placeBubble.js:154
 msgid "Opening hours:"
 msgstr "영업 시간:"
 
-#: src/placeBubble.js:141
+#: src/placeBubble.js:159
 msgid "Internet access:"
 msgstr "인터넷 접속:"
 
-#: src/placeBubble.js:146
+#: src/placeBubble.js:164
 msgid "Religion:"
 msgstr "종교시설:"
 
-#: src/placeBubble.js:151
+#: src/placeBubble.js:169
 msgid "Toilets:"
 msgstr "화장실:"
 
-#: src/placeBubble.js:156
+#: src/placeBubble.js:174
 msgid "Wheelchair access:"
 msgstr "휠체어 접근:"
 
-#: src/placeBubble.js:162 src/placeBubble.js:166
+#: src/placeBubble.js:180 src/placeBubble.js:184
 msgid "Phone:"
 msgstr "전화번호:"
 
@@ -1278,17 +1278,17 @@ msgid "Abort printing"
 msgstr "인쇄 취소"
 
 #. Translators: this is add via location tooltip
-#: src/routeEntry.js:72
+#: src/routeEntry.js:74
 msgid "Add via location"
 msgstr "현재 위치 추가"
 
 #. Translators: this is remove via location tooltip
-#: src/routeEntry.js:78
+#: src/routeEntry.js:84
 msgid "Remove via location"
 msgstr "현재 위치 제거"
 
 #. Translators: this is reverse route tooltip
-#: src/routeEntry.js:84
+#: src/routeEntry.js:90
 msgid "Reverse route"
 msgstr "역경로"
 
@@ -1421,7 +1421,7 @@ msgstr[0] "%d:%02d시간"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:647
+#: src/transitPlan.js:651
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -1575,53 +1575,56 @@ msgid "service"
 msgstr "서비스"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:226
+#: src/utils.js:227
 msgid "Unknown"
 msgstr "알 수 없음"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:229
+#: src/utils.js:230
 msgid "Exact"
 msgstr "정확함"
 
-#: src/utils.js:287
+#: src/utils.js:288
 #, javascript-format
 msgid "%f h"
 msgstr "%f시간"
 
-#: src/utils.js:289
+#: src/utils.js:290
 #, javascript-format
 msgid "%f min"
 msgstr "%f분"
 
-#: src/utils.js:291
+#: src/utils.js:292
 #, javascript-format
 msgid "%f s"
 msgstr "%f초"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:302
+#: src/utils.js:303
 #, javascript-format
 msgid "%s km"
 msgstr "%s 킬로미터"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:305
+#: src/utils.js:306
 #, javascript-format
 msgid "%s m"
 msgstr "%s 미터"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:313
+#: src/utils.js:314
 #, javascript-format
 msgid "%s mi"
 msgstr "%s 마일"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:316
+#: src/utils.js:317
 #, javascript-format
 msgid "%s ft"
 msgstr "%s 피트"
+
+#~ msgid "Quit"
+#~ msgstr "끝내기"
 
 #~ msgid "Open Shape Layer&#x2026;"
 #~ msgstr "도형 레이어 열기&#x2026;"
