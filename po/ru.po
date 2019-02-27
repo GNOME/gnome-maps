@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2018-08-21 08:05+0000\n"
-"PO-Revision-Date: 2018-09-09 22:41+0300\n"
+"POT-Creation-Date: 2019-01-14 19:43+0000\n"
+"PO-Revision-Date: 2019-02-27 22:10+0300\n"
 "Last-Translator: Stas Solovey <whats_up@tut.by>\n"
 "Language-Team: русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
 msgid "GNOME Maps"
@@ -61,8 +61,8 @@ msgstr ""
 "или «Гостиницы около Александерплац, Берлин»."
 
 #. Translators: This is the program name.
-#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:8
-#: src/mainWindow.js:503
+#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
+#: src/mainWindow.js:500
 msgid "Maps"
 msgstr "Карты"
 
@@ -202,22 +202,6 @@ msgstr ""
 #: data/org.gnome.Maps.gschema.xml:72
 msgid "Last used transportation type for routing"
 msgstr "Последний тип транспорта, использовавшийся для маршрута"
-
-#: data/ui/app-menu.ui:7
-msgid "Set up OpenStreetMap Account"
-msgstr "Настроить учётную запись OpenStreetMap"
-
-#: data/ui/app-menu.ui:12
-msgid "_Keyboard Shortcuts"
-msgstr "_Комбинации клавиш"
-
-#: data/ui/app-menu.ui:17
-msgid "About"
-msgstr "О приложении"
-
-#: data/ui/app-menu.ui:21
-msgid "Quit"
-msgstr "Завершить"
 
 #: data/ui/check-in-dialog.ui:250 data/ui/check-in-dialog.ui:299
 msgid "Visibility"
@@ -385,52 +369,64 @@ msgstr "Отменить"
 msgid "Location Settings"
 msgstr "Параметры местоположения"
 
+#: data/ui/main-window.ui:8
+msgid "Set up OpenStreetMap Account"
+msgstr "Настроить учётную запись OpenStreetMap"
+
+#: data/ui/main-window.ui:13
+msgid "_Keyboard Shortcuts"
+msgstr "_Комбинации клавиш"
+
+#: data/ui/main-window.ui:18
+msgid "About Maps"
+msgstr "О приложении"
+
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:23
+#: data/ui/main-window.ui:41
 msgid "Go to current location"
 msgstr "Перейти к текущему местоположению"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:44
+#: data/ui/main-window.ui:62
 msgid "Choose map type"
 msgstr "Выберите тип карты"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:69
+#: data/ui/main-window.ui:87
 msgid "Zoom out"
 msgstr "Отдалить"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:85
+#: data/ui/main-window.ui:103
 msgid "Zoom in"
 msgstr "Приблизить"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:103
+#: data/ui/main-window.ui:142
 msgid "Toggle route planner"
 msgstr "Включить или выключить планировщик маршрута"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:124
+#: data/ui/main-window.ui:163
 msgid "Toggle favorites"
 msgstr "Включить или выключить избранные места"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:144
+#: data/ui/main-window.ui:183
 msgid "Print Route"
 msgstr "Печать маршрута"
 
-#: data/ui/main-window.ui:207
+#: data/ui/main-window.ui:246
 msgid "Maps is offline!"
 msgstr "Приложение работает в автономном режиме!"
 
-#: data/ui/main-window.ui:217
+#: data/ui/main-window.ui:256
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
 msgstr "Приложению требуется соединение с Интернетом, но оно отсутствует."
 
-#: data/ui/main-window.ui:226
+#: data/ui/main-window.ui:265
 msgid "Check your connection and proxy settings."
 msgstr "Проверьте настройки прокси и соединения."
 
@@ -724,11 +720,11 @@ msgstr "Не удалось найти плиточную структуру в 
 msgid "Failed to parse XML document"
 msgstr "Не удалось разобрать документ XML"
 
-#: lib/maps-osm.c:252 lib/maps-osm.c:405
+#: lib/maps-osm.c:249 lib/maps-osm.c:402
 msgid "Missing required attributes"
 msgstr "Пропущены обязательные атрибуты"
 
-#: lib/maps-osm.c:453
+#: lib/maps-osm.c:450
 msgid "Could not find OSM element"
 msgstr "Не удалось найти элемент OSM"
 
@@ -885,25 +881,25 @@ msgstr "Старт!"
 msgid "All Layer Files"
 msgstr "Все файлы слоёв"
 
-#: src/mainWindow.js:436
+#: src/mainWindow.js:433
 msgid "Failed to connect to location service"
 msgstr "Не удалось подключиться к службе местоположения"
 
-#: src/mainWindow.js:501
+#: src/mainWindow.js:498
 msgid "translator-credits"
 msgstr ""
 "Yuri Myasoedov <ymyasoedov@yandex.ru>, 2013, 2014.\n"
-"Stas Solovey <whats_up@tut.by>, 2014-2018."
+"Stas Solovey <whats_up@tut.by>, 2014-2019."
 
-#: src/mainWindow.js:504
+#: src/mainWindow.js:501
 msgid "A map application for GNOME"
 msgstr "Приложение карт для GNOME"
 
-#: src/mainWindow.js:515
-msgid "Copyright © 2011 – 2017 Red Hat, Inc. and The GNOME Maps authors"
-msgstr "Авторское право © 2011 – 2017 Red Hat, Inc. и авторы GNOME Maps"
+#: src/mainWindow.js:512
+msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
+msgstr "Авторское право © 2011 – 2019 Red Hat, Inc. и авторы GNOME Maps"
 
-#: src/mainWindow.js:534
+#: src/mainWindow.js:531
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Картографические данные %s и участников"
@@ -913,20 +909,20 @@ msgstr "Картографические данные %s и участников
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:550
+#: src/mainWindow.js:547
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Картографические слои предоставлены %s"
 
-#: src/mapView.js:353
+#: src/mapView.js:358
 msgid "File type is not supported"
 msgstr "Тип файла не поддерживается"
 
-#: src/mapView.js:360
+#: src/mapView.js:365
 msgid "Failed to open layer"
 msgstr "Не удалось открыть слой"
 
-#: src/mapView.js:396
+#: src/mapView.js:401
 msgid "Failed to open GeoURI"
 msgstr "Не удалось открыть геолокационный URI"
 
@@ -999,7 +995,7 @@ msgid ""
 msgstr ""
 "Номер телефона. Используйте международный формат, начинающийся со знака «+»."
 
-#: src/osmEditDialog.js:136 src/placeBubble.js:173
+#: src/osmEditDialog.js:136 src/placeBubble.js:191
 msgid "Wikipedia"
 msgstr "Википедия"
 
@@ -1197,35 +1193,35 @@ msgstr "Выберите тип"
 msgid "Done"
 msgstr "Готово"
 
-#: src/placeBubble.js:125
+#: src/placeBubble.js:143
 msgid "Population:"
 msgstr "Население:"
 
-#: src/placeBubble.js:131
+#: src/placeBubble.js:149
 msgid "Altitude:"
 msgstr "Высота:"
 
-#: src/placeBubble.js:136
+#: src/placeBubble.js:154
 msgid "Opening hours:"
 msgstr "Часы работы:"
 
-#: src/placeBubble.js:141
+#: src/placeBubble.js:159
 msgid "Internet access:"
 msgstr "Доступ к Интернету:"
 
-#: src/placeBubble.js:146
+#: src/placeBubble.js:164
 msgid "Religion:"
 msgstr "Религия:"
 
-#: src/placeBubble.js:151
+#: src/placeBubble.js:169
 msgid "Toilets:"
 msgstr "Туалеты:"
 
-#: src/placeBubble.js:156
+#: src/placeBubble.js:174
 msgid "Wheelchair access:"
 msgstr "Доступ для инвалидных колясок:"
 
-#: src/placeBubble.js:162 src/placeBubble.js:166
+#: src/placeBubble.js:180 src/placeBubble.js:184
 msgid "Phone:"
 msgstr "Телефон:"
 
@@ -1595,55 +1591,58 @@ msgid "service"
 msgstr "служебный"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:226
+#: src/utils.js:227
 msgid "Unknown"
 msgstr "Неизвестная"
 
 # Точность: Максимальная
 # точная не подходит, т. к. получается "точность: точная"
 #. Translators: Accuracy of user location information
-#: src/utils.js:229
+#: src/utils.js:230
 msgid "Exact"
 msgstr "Максимальная"
 
-#: src/utils.js:287
+#: src/utils.js:288
 #, javascript-format
 msgid "%f h"
 msgstr "%f ч"
 
-#: src/utils.js:289
+#: src/utils.js:290
 #, javascript-format
 msgid "%f min"
 msgstr "%f мин"
 
-#: src/utils.js:291
+#: src/utils.js:292
 #, javascript-format
 msgid "%f s"
 msgstr "%f сек"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:302
+#: src/utils.js:303
 #, javascript-format
 msgid "%s km"
 msgstr "%s км"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:305
+#: src/utils.js:306
 #, javascript-format
 msgid "%s m"
 msgstr "%s м"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:313
+#: src/utils.js:314
 #, javascript-format
 msgid "%s mi"
 msgstr "%s миль"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:316
+#: src/utils.js:317
 #, javascript-format
 msgid "%s ft"
 msgstr "%s футов"
+
+#~ msgid "Quit"
+#~ msgstr "Завершить"
 
 #~ msgid "Open Shape Layer&#x2026;"
 #~ msgstr "Открыть слой фигур&#x2026;"
