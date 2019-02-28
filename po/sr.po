@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2018-09-15 21:17+0000\n"
-"PO-Revision-Date: 2018-09-29 12:25+0200\n"
+"POT-Creation-Date: 2019-01-29 21:31+0000\n"
+"PO-Revision-Date: 2019-02-28 14:29+0100\n"
 "Last-Translator: Марко М. Костић <marko.m.kostic@gmail.com>\n"
 "Language-Team: Serbian <(nothing)>\n"
 "Language: sr\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2\n"
 "X-Poedit-Bookmarks: -1,238,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
@@ -60,8 +60,8 @@ msgstr ""
 "Јагодини“ или „Хотели у центру Пирота“."
 
 #. Translators: This is the program name.
-#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:8
-#: src/mainWindow.js:503
+#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
+#: src/mainWindow.js:500
 msgid "Maps"
 msgstr "Карте"
 
@@ -202,22 +202,6 @@ msgstr ""
 #: data/org.gnome.Maps.gschema.xml:72
 msgid "Last used transportation type for routing"
 msgstr "Последња врста превоза коришћена за проналажење пута"
-
-#: data/ui/app-menu.ui:7
-msgid "Set up OpenStreetMap Account"
-msgstr "Подеси OpenStreetMap налог"
-
-#: data/ui/app-menu.ui:12
-msgid "_Keyboard Shortcuts"
-msgstr "Пречице на _тастатури"
-
-#: data/ui/app-menu.ui:17
-msgid "About"
-msgstr "О програму"
-
-#: data/ui/app-menu.ui:21
-msgid "Quit"
-msgstr "Изађи"
 
 #: data/ui/check-in-dialog.ui:250 data/ui/check-in-dialog.ui:299
 msgid "Visibility"
@@ -368,7 +352,7 @@ msgid "Open shape layer"
 msgstr "Отвори слој облика"
 
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:71
+#: data/ui/layers-popover.ui:69
 msgid "Open Shape Layer…"
 msgstr "Отвори слој облика…"
 
@@ -385,46 +369,58 @@ msgstr "Откажи"
 msgid "Location Settings"
 msgstr "Подешавања положаја"
 
+#: data/ui/main-window.ui:8
+msgid "Set up OpenStreetMap Account"
+msgstr "Подеси OpenStreetMap налог"
+
+#: data/ui/main-window.ui:13
+msgid "_Keyboard Shortcuts"
+msgstr "Пречице на _тастатури"
+
+#: data/ui/main-window.ui:18
+msgid "About Maps"
+msgstr "О Картама"
+
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:23
+#: data/ui/main-window.ui:41
 msgid "Go to current location"
 msgstr "Идите на текуће место"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:44
+#: data/ui/main-window.ui:62
 msgid "Choose map type"
 msgstr "Изаберите врсту карте"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:69
+#: data/ui/main-window.ui:87
 msgid "Zoom out"
 msgstr "Умањи"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:85
+#: data/ui/main-window.ui:103
 msgid "Zoom in"
 msgstr "Увећај"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:103
+#: data/ui/main-window.ui:142
 msgid "Toggle route planner"
 msgstr "Пребаците на планирање пута"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:124
+#: data/ui/main-window.ui:163
 msgid "Toggle favorites"
 msgstr "Пребаците на омиљене"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:144
+#: data/ui/main-window.ui:183
 msgid "Print Route"
 msgstr "Штампај пут"
 
-#: data/ui/main-window.ui:207
+#: data/ui/main-window.ui:246
 msgid "Maps is offline!"
 msgstr "Програм је ван мреже!"
 
-#: data/ui/main-window.ui:217
+#: data/ui/main-window.ui:256
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -432,7 +428,7 @@ msgstr ""
 "Потребна је радна интернет веза да би програм исправно радио, али није "
 "доступна."
 
-#: data/ui/main-window.ui:226
+#: data/ui/main-window.ui:265
 msgid "Check your connection and proxy settings."
 msgstr "Проверите вашу везу и подешавања посредника."
 
@@ -725,11 +721,11 @@ msgstr "Неуспех при тражењу структуре плочица �
 msgid "Failed to parse XML document"
 msgstr "Нисам успео да обрадим ИксМЛ документ"
 
-#: lib/maps-osm.c:252 lib/maps-osm.c:405
+#: lib/maps-osm.c:249 lib/maps-osm.c:402
 msgid "Missing required attributes"
 msgstr "Недостају потребне особине"
 
-#: lib/maps-osm.c:453
+#: lib/maps-osm.c:450
 msgid "Could not find OSM element"
 msgstr "Нисам могао да нађем ОСМ елемент"
 
@@ -885,11 +881,11 @@ msgstr "Крени!"
 msgid "All Layer Files"
 msgstr "Све датотеке слоја"
 
-#: src/mainWindow.js:436
+#: src/mainWindow.js:433
 msgid "Failed to connect to location service"
 msgstr "Нисам успео да се повежем на услугу положаја"
 
-#: src/mainWindow.js:501
+#: src/mainWindow.js:498
 msgid "translator-credits"
 msgstr ""
 "Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
@@ -898,15 +894,15 @@ msgstr ""
 "\n"
 "http://prevod.org — превод на српски језик"
 
-#: src/mainWindow.js:504
+#: src/mainWindow.js:501
 msgid "A map application for GNOME"
 msgstr "Гномов програм за карте"
 
-#: src/mainWindow.js:515
-msgid "Copyright © 2011 – 2017 Red Hat, Inc. and The GNOME Maps authors"
-msgstr "Право на копирање © 2011 – 2017 Red Hat, Inc. и творци Гномових Карти"
+#: src/mainWindow.js:512
+msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
+msgstr "Право на копирање © 2011 – 2019 Red Hat, Inc. и творци Гномових Карти"
 
-#: src/mainWindow.js:534
+#: src/mainWindow.js:531
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Подаци о картама са платформе %s и од доприносилаца"
@@ -916,20 +912,20 @@ msgstr "Подаци о картама са платформе %s и од доп
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:550
+#: src/mainWindow.js:547
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Плочице за карту су преузете са %s"
 
-#: src/mapView.js:353
+#: src/mapView.js:358
 msgid "File type is not supported"
 msgstr "Врста датотеке није подржана"
 
-#: src/mapView.js:360
+#: src/mapView.js:365
 msgid "Failed to open layer"
 msgstr "Нисам успео да отворим слој"
 
-#: src/mapView.js:396
+#: src/mapView.js:401
 msgid "Failed to open GeoURI"
 msgstr "Нисам успео да отворим Гео-УРИ"
 
@@ -1004,7 +1000,7 @@ msgstr ""
 "Обратите пажњу на локалне законе о заштити приватности, нарочито ако су у "
 "питању приватни бројеви телефона."
 
-#: src/osmEditDialog.js:136 src/placeBubble.js:173
+#: src/osmEditDialog.js:136 src/placeBubble.js:191
 msgid "Wikipedia"
 msgstr "Википедија"
 
@@ -1202,35 +1198,35 @@ msgstr "Изабери врсту"
 msgid "Done"
 msgstr "Готово"
 
-#: src/placeBubble.js:125
+#: src/placeBubble.js:143
 msgid "Population:"
 msgstr "Број становника:"
 
-#: src/placeBubble.js:131
+#: src/placeBubble.js:149
 msgid "Altitude:"
 msgstr "Висина:"
 
-#: src/placeBubble.js:136
+#: src/placeBubble.js:154
 msgid "Opening hours:"
 msgstr "Радно време:"
 
-#: src/placeBubble.js:141
+#: src/placeBubble.js:159
 msgid "Internet access:"
 msgstr "Приступ интернету:"
 
-#: src/placeBubble.js:146
+#: src/placeBubble.js:164
 msgid "Religion:"
 msgstr "Вероисповест:"
 
-#: src/placeBubble.js:151
+#: src/placeBubble.js:169
 msgid "Toilets:"
 msgstr "Тоалети:"
 
-#: src/placeBubble.js:156
+#: src/placeBubble.js:174
 msgid "Wheelchair access:"
 msgstr "Приступ инвалидима:"
 
-#: src/placeBubble.js:162 src/placeBubble.js:166
+#: src/placeBubble.js:180 src/placeBubble.js:184
 msgid "Phone:"
 msgstr "Телефон:"
 
@@ -1602,53 +1598,56 @@ msgid "service"
 msgstr "услуга"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:226
+#: src/utils.js:227
 msgid "Unknown"
 msgstr "Непознато"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:229
+#: src/utils.js:230
 msgid "Exact"
 msgstr "Тачно"
 
-#: src/utils.js:287
+#: src/utils.js:288
 #, javascript-format
 msgid "%f h"
 msgstr "%f ч"
 
-#: src/utils.js:289
+#: src/utils.js:290
 #, javascript-format
 msgid "%f min"
 msgstr "%f мин."
 
-#: src/utils.js:291
+#: src/utils.js:292
 #, javascript-format
 msgid "%f s"
 msgstr "%f сек."
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:302
+#: src/utils.js:303
 #, javascript-format
 msgid "%s km"
 msgstr "%s километара"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:305
+#: src/utils.js:306
 #, javascript-format
 msgid "%s m"
 msgstr "%s метара"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:313
+#: src/utils.js:314
 #, javascript-format
 msgid "%s mi"
 msgstr "%s миља"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:316
+#: src/utils.js:317
 #, javascript-format
 msgid "%s ft"
 msgstr "%s стопа"
+
+#~ msgid "Quit"
+#~ msgstr "Изађи"
 
 #~ msgid "OK"
 #~ msgstr "У реду"
