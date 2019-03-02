@@ -80,6 +80,7 @@ var Application = GObject.registerClass({
 
     _init() {
         /* Translators: This is the program name. */
+        GLib.set_application_name(_("Maps"));
 
         /* Needed to be able to use in UI files */
         _ensuredTypes.forEach((type) => GObject.type_ensure(type));
