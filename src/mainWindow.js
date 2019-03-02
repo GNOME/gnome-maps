@@ -128,6 +128,14 @@ var MainWindow = GObject.registerClass({
         this._grid.attach(this._sidebar, 1, 0, 1, 1);
 
         this._grid.show_all();
+
+        /* for some reason, setting the title of the window through the .ui
+         * template does not work anymore (maybe has something to do with
+         * setting a custom title on the headerbar). Setting it programmatically
+         * here works though. And yields a proper label in the gnome-shell
+         * overview.
+         */
+        this.title = _("Maps");
     }
 
     _createPlaceEntry() {
