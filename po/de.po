@@ -9,22 +9,22 @@
 # Mario Blättermann <mario.blaettermann@gmail.com>, 2015-2018.
 # Bernd Homuth <dev@hmt.im>, 2015.
 # Paul Seyfert <pseyfert@mathphys.fsk.uni-heidelberg.de>, 2016.
-# Tim Sabsch <tim@sabsch.com>, 2018.
+# Tim Sabsch <tim@sabsch.com>, 2018-2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2018-06-25 19:30+0000\n"
-"PO-Revision-Date: 2018-08-04 19:35+0200\n"
-"Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
+"POT-Creation-Date: 2019-01-14 19:43+0000\n"
+"PO-Revision-Date: 2019-03-02 22:38+0100\n"
+"Last-Translator: Tim Sabsch <tim@sabsch.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.9\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
 msgid "GNOME Maps"
@@ -64,8 +64,8 @@ msgstr ""
 "Main Street, Boston« oder »Hotels in der Nähe vom Alexanderplatz, Berlin«."
 
 #. Translators: This is the program name.
-#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:8
-#: src/application.js:83 src/mainWindow.js:511
+#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
+#: src/mainWindow.js:500
 msgid "Maps"
 msgstr "Karten"
 
@@ -208,22 +208,6 @@ msgstr ""
 #: data/org.gnome.Maps.gschema.xml:72
 msgid "Last used transportation type for routing"
 msgstr "Für die Route zuletzt benutzte Beförderungsart"
-
-#: data/ui/app-menu.ui:7
-msgid "Set up OpenStreetMap Account"
-msgstr "OpenStreetMap-Konto einrichten"
-
-#: data/ui/app-menu.ui:12
-msgid "_Keyboard Shortcuts"
-msgstr "Tasten_kürzel"
-
-#: data/ui/app-menu.ui:17
-msgid "About"
-msgstr "Info"
-
-#: data/ui/app-menu.ui:21
-msgid "Quit"
-msgstr "Verlassen"
 
 #: data/ui/check-in-dialog.ui:250 data/ui/check-in-dialog.ui:299
 msgid "Visibility"
@@ -391,46 +375,58 @@ msgstr "Abbrechen"
 msgid "Location Settings"
 msgstr "Einstellungen der Ortungsdienste"
 
+#: data/ui/main-window.ui:8
+msgid "Set up OpenStreetMap Account"
+msgstr "OpenStreetMap-Konto einrichten"
+
+#: data/ui/main-window.ui:13
+msgid "_Keyboard Shortcuts"
+msgstr "Tasten_kürzel"
+
+#: data/ui/main-window.ui:18
+msgid "About Maps"
+msgstr "Info zu Karten"
+
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:23
+#: data/ui/main-window.ui:41
 msgid "Go to current location"
 msgstr "Zum aktuellen Ort springen"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:44
+#: data/ui/main-window.ui:62
 msgid "Choose map type"
 msgstr "Wählen Sie den Kartentyp"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:69
+#: data/ui/main-window.ui:87
 msgid "Zoom out"
 msgstr "Verkleinern"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:85
+#: data/ui/main-window.ui:103
 msgid "Zoom in"
 msgstr "Vergrößern"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:103
+#: data/ui/main-window.ui:142
 msgid "Toggle route planner"
 msgstr "Routenplaner ein-/ausschalten"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:124
+#: data/ui/main-window.ui:163
 msgid "Toggle favorites"
 msgstr "Favoriten umschalten"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:144
+#: data/ui/main-window.ui:183
 msgid "Print Route"
 msgstr "Route drucken"
 
-#: data/ui/main-window.ui:202
+#: data/ui/main-window.ui:246
 msgid "Maps is offline!"
 msgstr "Karten ist vom Internet getrennt!"
 
-#: data/ui/main-window.ui:212
+#: data/ui/main-window.ui:256
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -438,7 +434,7 @@ msgstr ""
 "Karten erfordert eine bestehende Internetverbindung, um richtig arbeiten zu "
 "können. Es besteht aber keine."
 
-#: data/ui/main-window.ui:221
+#: data/ui/main-window.ui:265
 msgid "Check your connection and proxy settings."
 msgstr "Prüfen Sie Ihre Verbindung und die Proxy-Einstellungen."
 
@@ -618,7 +614,7 @@ msgstr "Ort öffnen"
 msgid "_Open"
 msgstr "Ö_ffnen"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:62
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:61
 msgid "Open Shape Layer"
 msgstr "Formebene öffnen"
 
@@ -733,19 +729,19 @@ msgstr "Es konnte keine Kachel-Struktur im Ordner gefunden werden"
 msgid "Failed to parse XML document"
 msgstr "XML-Dokument konnte nicht ausgewertet werden"
 
-#: lib/maps-osm.c:252 lib/maps-osm.c:405
+#: lib/maps-osm.c:249 lib/maps-osm.c:402
 msgid "Missing required attributes"
 msgstr "Erforderliche Attribute fehlen"
 
-#: lib/maps-osm.c:453
+#: lib/maps-osm.c:450
 msgid "Could not find OSM element"
 msgstr "OSM-Element kann nicht gefunden werden"
 
-#: src/application.js:96
+#: src/application.js:95
 msgid "A path to a local tiles directory structure"
 msgstr "Pfad zu einer lokalen Kachel-Ordnerstruktur"
 
-#: src/application.js:100
+#: src/application.js:99
 msgid "Show the version of the program"
 msgstr "Die Versionsnummer des Programms anzeigen"
 
@@ -814,23 +810,23 @@ msgstr ""
 "Die Anmeldedaten sind abgelaufen. Bitte öffnen Sie Online-Konten, um sich "
 "anzumelden und das Konto zu aktivieren."
 
-#: src/contextMenu.js:95
+#: src/contextMenu.js:98
 msgid "Route from here"
 msgstr "Route von hier"
 
-#: src/contextMenu.js:97
+#: src/contextMenu.js:100
 msgid "Add destination"
 msgstr "Ziel hinzufügen"
 
-#: src/contextMenu.js:99
+#: src/contextMenu.js:102
 msgid "Route to here"
 msgstr "Route hierher"
 
-#: src/contextMenu.js:128
+#: src/contextMenu.js:131
 msgid "Nothing found here!"
 msgstr "Hier wurde nichts gefunden!"
 
-#: src/contextMenu.js:189
+#: src/contextMenu.js:192
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -891,15 +887,15 @@ msgstr "Keine Route gefunden."
 msgid "Start!"
 msgstr "Start!"
 
-#: src/mainWindow.js:59
+#: src/mainWindow.js:58
 msgid "All Layer Files"
 msgstr "Alle Ebenendateien"
 
-#: src/mainWindow.js:444
+#: src/mainWindow.js:433
 msgid "Failed to connect to location service"
 msgstr "Es konnte keine Verbindung zum Ortungsdienst hergestellt werden"
 
-#: src/mainWindow.js:509
+#: src/mainWindow.js:498
 msgid "translator-credits"
 msgstr ""
 "Christian Kirbach <Christian.Kirbach@gmail.com>\n"
@@ -910,15 +906,15 @@ msgstr ""
 "Paul Seyfert <pseyfert@mathphys.fsk.uni-heidelberg.de>\n"
 "Tim Sabsch <tim@sabsch.com>"
 
-#: src/mainWindow.js:512
+#: src/mainWindow.js:501
 msgid "A map application for GNOME"
 msgstr "Eine Karten-Anwendung für GNOME"
 
-#: src/mainWindow.js:523
-msgid "Copyright © 2011 – 2017 Red Hat, Inc. and The GNOME Maps authors"
-msgstr "Copyright © 2011 – 2017 Red Hat, Inc. und die Autoren von GNOME Karten"
+#: src/mainWindow.js:512
+msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
+msgstr "Copyright © 2011 – 2019 Red Hat, Inc. und die Autoren von GNOME Karten"
 
-#: src/mainWindow.js:542
+#: src/mainWindow.js:531
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Kartendaten bereitgestellt von %s und weiteren Mitwirkenden"
@@ -928,20 +924,20 @@ msgstr "Kartendaten bereitgestellt von %s und weiteren Mitwirkenden"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:558
+#: src/mainWindow.js:547
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Kartenausschnitte bereitgestellt von %s"
 
-#: src/mapView.js:353
+#: src/mapView.js:358
 msgid "File type is not supported"
 msgstr "Dateityp wird nicht unterstützt"
 
-#: src/mapView.js:360
+#: src/mapView.js:365
 msgid "Failed to open layer"
 msgstr "Ebene konnte nicht geöffnet werden"
 
-#: src/mapView.js:396
+#: src/mapView.js:401
 msgid "Failed to open GeoURI"
 msgstr "Geo-Adresse konnte nicht geöffnet werden"
 
@@ -1017,7 +1013,7 @@ msgstr ""
 "Zeichen. Denken Sie an den Schutz der Privatsphäre, insbesondere für private "
 "Telefonnummern."
 
-#: src/osmEditDialog.js:136 src/placeBubble.js:173
+#: src/osmEditDialog.js:136 src/placeBubble.js:191
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -1215,35 +1211,35 @@ msgstr "Typ wählen"
 msgid "Done"
 msgstr "Abgeschlossen"
 
-#: src/placeBubble.js:125
+#: src/placeBubble.js:143
 msgid "Population:"
 msgstr "Bevölkerung:"
 
-#: src/placeBubble.js:131
+#: src/placeBubble.js:149
 msgid "Altitude:"
 msgstr "Höhe:"
 
-#: src/placeBubble.js:136
+#: src/placeBubble.js:154
 msgid "Opening hours:"
 msgstr "Öffnungszeiten:"
 
-#: src/placeBubble.js:141
+#: src/placeBubble.js:159
 msgid "Internet access:"
 msgstr "Internetzugang:"
 
-#: src/placeBubble.js:146
+#: src/placeBubble.js:164
 msgid "Religion:"
 msgstr "Religion:"
 
-#: src/placeBubble.js:151
+#: src/placeBubble.js:169
 msgid "Toilets:"
 msgstr "Toiletten:"
 
-#: src/placeBubble.js:156
+#: src/placeBubble.js:174
 msgid "Wheelchair access:"
 msgstr "Barrierefreier Zugang:"
 
-#: src/placeBubble.js:162 src/placeBubble.js:166
+#: src/placeBubble.js:180 src/placeBubble.js:184
 msgid "Phone:"
 msgstr "Telefon:"
 
@@ -1309,17 +1305,17 @@ msgid "Abort printing"
 msgstr "Drucken abbrechen"
 
 #. Translators: this is add via location tooltip
-#: src/routeEntry.js:72
+#: src/routeEntry.js:74
 msgid "Add via location"
 msgstr "Zwischenstopp hinzufügen"
 
 #. Translators: this is remove via location tooltip
-#: src/routeEntry.js:78
+#: src/routeEntry.js:84
 msgid "Remove via location"
 msgstr "Zwischenstopp entfernen"
 
 #. Translators: this is reverse route tooltip
-#: src/routeEntry.js:84
+#: src/routeEntry.js:90
 msgid "Reverse route"
 msgstr "Route umkehren"
 
@@ -1455,7 +1451,7 @@ msgstr[1] "%d:%0d Stunden"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:647
+#: src/transitPlan.js:651
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -1609,50 +1605,53 @@ msgid "service"
 msgstr "Dienst"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:226
+#: src/utils.js:227
 msgid "Unknown"
 msgstr "Unbekannt"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:229
+#: src/utils.js:230
 msgid "Exact"
 msgstr "Genau"
 
-#: src/utils.js:287
+#: src/utils.js:288
 #, javascript-format
 msgid "%f h"
 msgstr "%f h"
 
-#: src/utils.js:289
+#: src/utils.js:290
 #, javascript-format
 msgid "%f min"
 msgstr "%f min"
 
-#: src/utils.js:291
+#: src/utils.js:292
 #, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:302
+#: src/utils.js:303
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:305
+#: src/utils.js:306
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:313
+#: src/utils.js:314
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:316
+#: src/utils.js:317
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
+
+#~ msgid "Quit"
+#~ msgstr "Verlassen"
