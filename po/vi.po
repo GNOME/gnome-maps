@@ -1,14 +1,14 @@
 # Vietnamese translations for Maps package
 # Bản dịch Tiếng Việt dành cho gói Maps.
 # This file is distributed under the same license as the Maps package.
-# Trần Ngọc Quân <vnwildman@gmail.com>, 2016, 2017, 2018.
+# Trần Ngọc Quân <vnwildman@gmail.com>, 2016, 2017, 2018, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2018-08-30 12:07+0000\n"
-"PO-Revision-Date: 2018-08-31 15:23+0700\n"
+"POT-Creation-Date: 2019-03-03 03:47+0000\n"
+"PO-Revision-Date: 2019-03-03 14:27+0700\n"
 "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <gnome-vi-list@gnome.org>\n"
 "Language: vi\n"
@@ -56,8 +56,15 @@ msgstr ""
 "Street, Boston” hay “Hotels near Alexanderplatz, Berlin”."
 
 #. Translators: This is the program name.
-#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:8
-#: src/mainWindow.js:503
+#. for some reason, setting the title of the window through the .ui
+#. * template does not work anymore (maybe has something to do with
+#. * setting a custom title on the headerbar). Setting it programmatically
+#. * here works though. And yields a proper label in the gnome-shell
+#. * overview.
+#.
+#. Translators: This is the program name.
+#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
+#: src/application.js:83 src/mainWindow.js:138 src/mainWindow.js:508
 msgid "Maps"
 msgstr "Bản đồ"
 
@@ -195,22 +202,6 @@ msgstr "Biểu thị nếu người dùng đã đăng nhập vào sửa dữ li�
 #: data/org.gnome.Maps.gschema.xml:72
 msgid "Last used transportation type for routing"
 msgstr "Kiểu phương tiện vận tải dùng cuối cùng để tìm đường"
-
-#: data/ui/app-menu.ui:7
-msgid "Set up OpenStreetMap Account"
-msgstr "Cài đặt tài khoản OpenStreetMap"
-
-#: data/ui/app-menu.ui:12
-msgid "_Keyboard Shortcuts"
-msgstr "_Phím tắt"
-
-#: data/ui/app-menu.ui:17
-msgid "About"
-msgstr "Giới thiệu"
-
-#: data/ui/app-menu.ui:21
-msgid "Quit"
-msgstr "Thoát"
 
 #: data/ui/check-in-dialog.ui:250 data/ui/check-in-dialog.ui:299
 msgid "Visibility"
@@ -361,7 +352,7 @@ msgid "Open shape layer"
 msgstr "Mở lớp hình dạng"
 
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:71
+#: data/ui/layers-popover.ui:69
 msgid "Open Shape Layer…"
 msgstr "Mở lớp hình dạng…"
 
@@ -378,46 +369,58 @@ msgstr "Thôi"
 msgid "Location Settings"
 msgstr "Cài đặt vị trí"
 
+#: data/ui/main-window.ui:8
+msgid "Set up OpenStreetMap Account"
+msgstr "Cài đặt tài khoản OpenStreetMap"
+
+#: data/ui/main-window.ui:13
+msgid "_Keyboard Shortcuts"
+msgstr "_Phím tắt"
+
+#: data/ui/main-window.ui:18
+msgid "About Maps"
+msgstr "Giới thiệu Bản đồ"
+
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:23
+#: data/ui/main-window.ui:41
 msgid "Go to current location"
 msgstr "Đến vị trí hiện tại"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:44
+#: data/ui/main-window.ui:62
 msgid "Choose map type"
 msgstr "Chọn kiểu bản đồ"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:69
+#: data/ui/main-window.ui:87
 msgid "Zoom out"
 msgstr "Thu nhỏ"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:85
+#: data/ui/main-window.ui:103
 msgid "Zoom in"
 msgstr "Phóng to"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:103
+#: data/ui/main-window.ui:142
 msgid "Toggle route planner"
 msgstr "Bật/tắt bộ lập kế hoạch đường đi"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:124
+#: data/ui/main-window.ui:163
 msgid "Toggle favorites"
 msgstr "Chuyển đến chỗ đánh dấu"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:144
+#: data/ui/main-window.ui:183
 msgid "Print Route"
 msgstr "In đường đi"
 
-#: data/ui/main-window.ui:207
+#: data/ui/main-window.ui:246
 msgid "Maps is offline!"
 msgstr "Bản đồ đang ngoại tuyến!"
 
-#: data/ui/main-window.ui:217
+#: data/ui/main-window.ui:256
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -425,7 +428,7 @@ msgstr ""
 "Bản đồ cần được kết nối mạng internet để các chức năng một cách đúng đắn, "
 "nhưng không tìm thấy kết nối mạng nào."
 
-#: data/ui/main-window.ui:226
+#: data/ui/main-window.ui:265
 msgid "Check your connection and proxy settings."
 msgstr "Kiểm tra lại kết nối và cài đặt ủy nhiệm của bạn."
 
@@ -718,19 +721,19 @@ msgstr "Gặp lỗi khi tìm cấu trúc lát gạch trong thư mục"
 msgid "Failed to parse XML document"
 msgstr "Gặp lỗi khi phân tích cú pháp XML"
 
-#: lib/maps-osm.c:252 lib/maps-osm.c:405
+#: lib/maps-osm.c:249 lib/maps-osm.c:402
 msgid "Missing required attributes"
 msgstr "Thiếu các thuộc tính cần thiết"
 
-#: lib/maps-osm.c:453
+#: lib/maps-osm.c:450
 msgid "Could not find OSM element"
 msgstr "Không thể tìm thấy phần tử OSM"
 
-#: src/application.js:95
+#: src/application.js:96
 msgid "A path to a local tiles directory structure"
 msgstr "Một đường dẫn đến cấu trúc thư mục lát gạch"
 
-#: src/application.js:99
+#: src/application.js:100
 msgid "Show the version of the program"
 msgstr "Hiển thị phiên bản của chương trình"
 
@@ -879,23 +882,23 @@ msgstr "Bắt đầu!"
 msgid "All Layer Files"
 msgstr "Mọi tập tin lớp"
 
-#: src/mainWindow.js:436
+#: src/mainWindow.js:441
 msgid "Failed to connect to location service"
 msgstr "Gặp lỗi khi kết nối đến dịch vụ vị trí"
 
-#: src/mainWindow.js:501
+#: src/mainWindow.js:506
 msgid "translator-credits"
 msgstr "Nhóm Việt hóa GNOME <gnome-vi-list@gnome.org>"
 
-#: src/mainWindow.js:504
+#: src/mainWindow.js:509
 msgid "A map application for GNOME"
 msgstr "Ứng dụng bản đồ dành cho GNOME"
 
-#: src/mainWindow.js:515
-msgid "Copyright © 2011 – 2017 Red Hat, Inc. and The GNOME Maps authors"
-msgstr "Bản quyền © 2011 – 2017 Red Hat, Inc. và các tác giả Bản đồ GNOME"
+#: src/mainWindow.js:520
+msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
+msgstr "Bản quyền © 2011 – 2019 Red Hat, Inc. và các tác giả Bản đồ GNOME"
 
-#: src/mainWindow.js:534
+#: src/mainWindow.js:539
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Dữ liệu bản đồ bởi %s và những người đóng góp"
@@ -905,20 +908,20 @@ msgstr "Dữ liệu bản đồ bởi %s và những người đóng góp"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:550
+#: src/mainWindow.js:555
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Tiêu đề bản đồ cung cấp bởi %s"
 
-#: src/mapView.js:353
+#: src/mapView.js:358
 msgid "File type is not supported"
 msgstr "Kiểu tập tin không được hỗ trợ"
 
-#: src/mapView.js:360
+#: src/mapView.js:365
 msgid "Failed to open layer"
 msgstr "Gặp lỗi khi mở lớp"
 
-#: src/mapView.js:396
+#: src/mapView.js:401
 msgid "Failed to open GeoURI"
 msgstr "Gặp lỗi khi mở GeoURI"
 
@@ -992,7 +995,7 @@ msgstr ""
 "Số điện thoại. Dùng định dạng quốc tế, bắt đầu bằng dấu +. Hãy cẩn thận với "
 "luật riêng tư địa phương, đặc biệt là các số điện thoại riêng."
 
-#: src/osmEditDialog.js:136 src/placeBubble.js:173
+#: src/osmEditDialog.js:136 src/placeBubble.js:191
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -1190,35 +1193,35 @@ msgstr "Chọn kiểu"
 msgid "Done"
 msgstr "Xong"
 
-#: src/placeBubble.js:125
+#: src/placeBubble.js:143
 msgid "Population:"
 msgstr "Dân số:"
 
-#: src/placeBubble.js:131
+#: src/placeBubble.js:149
 msgid "Altitude:"
 msgstr "Cao độ:"
 
-#: src/placeBubble.js:136
+#: src/placeBubble.js:154
 msgid "Opening hours:"
 msgstr "Giờ mở cửa:"
 
-#: src/placeBubble.js:141
+#: src/placeBubble.js:159
 msgid "Internet access:"
 msgstr "Truy cập Internet:"
 
-#: src/placeBubble.js:146
+#: src/placeBubble.js:164
 msgid "Religion:"
 msgstr "Tôn giáo:"
 
-#: src/placeBubble.js:151
+#: src/placeBubble.js:169
 msgid "Toilets:"
 msgstr "Nhà vệ sinh:"
 
-#: src/placeBubble.js:156
+#: src/placeBubble.js:174
 msgid "Wheelchair access:"
 msgstr "Lối vào xe lăn:"
 
-#: src/placeBubble.js:162 src/placeBubble.js:166
+#: src/placeBubble.js:180 src/placeBubble.js:184
 msgid "Phone:"
 msgstr "Điện thoại:"
 
@@ -1581,53 +1584,56 @@ msgid "service"
 msgstr "dịch vụ"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:226
+#: src/utils.js:227
 msgid "Unknown"
 msgstr "Chưa biết"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:229
+#: src/utils.js:230
 msgid "Exact"
 msgstr "Trích"
 
-#: src/utils.js:287
+#: src/utils.js:288
 #, javascript-format
 msgid "%f h"
 msgstr "%f giờ"
 
-#: src/utils.js:289
+#: src/utils.js:290
 #, javascript-format
 msgid "%f min"
 msgstr "%f phút"
 
-#: src/utils.js:291
+#: src/utils.js:292
 #, javascript-format
 msgid "%f s"
 msgstr "%f giây"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:302
+#: src/utils.js:303
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:305
+#: src/utils.js:306
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:313
+#: src/utils.js:314
 #, javascript-format
 msgid "%s mi"
 msgstr "%s dặm"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:316
+#: src/utils.js:317
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
+
+#~ msgid "Quit"
+#~ msgstr "Thoát"
 
 #~ msgid "Open Shape Layer&#x2026;"
 #~ msgstr "Mở lớp hình dạng&#x2026;"
