@@ -504,38 +504,20 @@ var Sidebar = GObject.registerClass({
     // Drag begins, set the correct drag icon and hide the dragged row.
     _onDragBegin(context, row) {
         let routeEntry = row.get_child();
-        let dragEntry = this._dragWidget.get_child();
+        let width = row.get_allocated_width();
+        let height = row.get_allocated_height();
+        let surface = new Cairo.ImageSurface(Cairo.Format.ARGB32, width, height);
+        let cr = new Cairo.Context(surface)
 
+        row.draw(cr);
         this._draggedPoint = routeEntry.point;
 
         // Set a fixed height on the row to prevent the sidebar height
         // to shrink while dragging a row.
-        let height = row.get_allocated_height();
         row.height_request = height;
         row.get_child().hide();
 
-        dragEntry.entry.text = routeEntry.entry.text;
-        Gtk.drag_set_icon_surface(context,
-                                  this._dragWidget.get_surface(), 0, 0);
-    }
-
-    // We add RouteEntry to an OffscreenWindow and paint the background
-    // of the entry to be transparent. We can later use the GtkOffscreenWindow
-    // method get_surface to generate our drag icon.
-    _initDragWidget() {
-        let dragEntry = new RouteEntry.RouteEntry({ type: RouteEntry.Type.TO,
-                                                    name: 'dragged-entry',
-                                                    app_paintable: true });
-        this._dragWidget = new Gtk.OffscreenWindow({ visible: true });
-
-        dragEntry.connect('draw', (widget, cr) => {
-            cr.setSourceRGBA(0.0, 0.0, 0.0, 0.0);
-            cr.setOperator(Cairo.Operator.SOURCE);
-            cr.paint();
-            cr.setOperator(Cairo.Operator.OVER);
-        });
-
-        this._dragWidget.add(dragEntry);
+        Gtk.drag_set_icon_surface(context, surface);
     }
 
     // Set up drag and drop between RouteEntrys. The drag source is from a
@@ -561,7 +543,5 @@ var Sidebar = GObject.registerClass({
         row.connect('drag-leave', this._dragUnhighlightRow.bind(this, row));
         row.connect('drag-motion', this._onDragMotion.bind(this));
         row.connect('drag-drop', this._onDragDrop.bind(this));
-
-        this._initDragWidget();
     }
 });
