@@ -20,6 +20,7 @@
 const Cairo = imports.cairo;
 const Champlain = imports.gi.Champlain;
 const Clutter = imports.gi.Clutter;
+const Gdk = imports.gi.Gdk;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Pango = imports.gi.Pango;
@@ -30,6 +31,7 @@ const InstructionRow = imports.instructionRow;
 const MapView = imports.mapView;
 const MapSource = imports.mapSource;
 const TurnPointMarker = imports.turnPointMarker;
+const Utils = imports.utils;
 
 /* Following constant has unit as meters */
 const _SHORT_LAYOUT_MAX_DISTANCE = 3000;
@@ -97,6 +99,8 @@ var PrintLayout = GObject.registerClass({
         this._surfacesRendered = 0;
         this.renderFinished = false;
         this._initSignals();
+
+        this._rtl = Gtk.get_locale_direction() === Gtk.TextDirection.RTL;
     }
 
     render() {
@@ -199,33 +203,63 @@ var PrintLayout = GObject.registerClass({
         let pageNum = this.numPages - 1;
         let x = this._cursorX;
         let y = this._cursorY;
-        let instructionWidget = new Gtk.OffscreenWindow({ visible: true });
-        let instructionEntry =  new InstructionRow.InstructionRow({
-            visible: true,
-            turnPoint: turnPoint,
-            hasColor: turnPoint.isStop(),
-            lines: 2
-        });
+        let surface = new Cairo.ImageSurface(Cairo.Format.ARGB32, width, height);
+        let cr = new Cairo.Context(surface);
+        let theme = Gtk.IconTheme.get_default();
+        let iconName = turnPoint.iconName;
 
-        instructionWidget.get_style_context().add_class('printing-text');
-        instructionWidget.width_request = width;
-        instructionWidget.height_request = height;
+        if (iconName) {
+            let pixbuf = theme.load_icon(iconName, height, 0);
+            let iconWidth = pixbuf.width;
+            let iconHeight = pixbuf.height;
 
-        /* Paint the background of the entry to be transparent */
-        instructionEntry.connect('draw', (widget, cr) => {
-            cr.setSourceRGBA(0.0, 0.0, 0.0, 0.0);
-            cr.setOperator(Cairo.Operator.SOURCE);
+            Gdk.cairo_set_source_pixbuf(cr, pixbuf,
+                                        this._rtl ?
+                                        width - height + (height - iconWidth) / 2 :
+                                        (height - iconWidth) / 2,
+                                        (height - iconWidth) / 2);
             cr.paint();
-            cr.setOperator(Cairo.Operator.OVER);
-        });
+        }
 
-        instructionEntry.queue_draw();
-        instructionWidget.add(instructionEntry);
-        instructionWidget.set_valign(Gtk.Align.START);
-        instructionWidget.connect('damage-event', (widget) => {
-            let surface = widget.get_surface();
-            this._addSurface(surface, x, y, pageNum);
-        });
+        // draw the instruction text
+        let layout = PangoCairo.create_layout(cr);
+        let desc = Pango.FontDescription.from_string("sans");
+
+        layout.set_text(turnPoint.instruction, -1);
+        layout.set_height(Pango.units_from_double(height));
+        /* reserve a square (height × height) for the icon and a rectangle
+         * double that width for the distanace text */
+        layout.set_width(Pango.units_from_double(width - height * 3));
+        layout.set_font_description(desc);
+        layout.set_alignment(Pango.Alignment.LEFT);
+        cr.moveTo(this._rtl ? height * 2 : height, 0);
+        PangoCairo.layout_path(cr, layout);
+        cr.setSourceRGB(0.0, 0.0, 0.0);
+        cr.fill();
+
+        // draw the distance text
+        if (turnPoint.distance > 0) {
+            let layout = PangoCairo.create_layout(cr);
+
+            layout.set_text(Utils.prettyDistance(turnPoint.distance), -1);
+            layout.set_height(Pango.units_from_double(height));
+            layout.set_width(Pango.units_from_double(height * 2));
+            layout.set_font_description(desc);
+            /* for some reason, this needs to be explicitly LEFT-aligned
+             * for RTL locales */
+            layout.set_alignment(this._rtl ?
+                                 Pango.Alignment.LEFT : Pango.Alignment.RIGHT);
+
+            let [pWidth, pHeight] = layout.get_pixel_size();
+
+            // position distance label vertically centered
+            cr.moveTo(this._rtl ? 0 : width - height * 2, (height - pHeight) / 2);
+            PangoCairo.layout_path(cr, layout);
+            cr.setSourceRGB(0.0, 0.0, 0.0);
+            cr.fill();
+        }
+
+        this._addSurface(surface, x, y, pageNum);
     }
 
     _drawHeader(width, height) {
