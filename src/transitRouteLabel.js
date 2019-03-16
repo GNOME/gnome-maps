@@ -25,6 +25,7 @@ const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 
 const Color = imports.color;
+const Gfx = imports.gfx;
 const Utils = imports.utils;
 
 /* threashhold for route color luminance when we consider it more or less
@@ -77,12 +78,8 @@ var TransitRouteLabel = GObject.registerClass({
             textColor = HIGH_CONTRAST_TEXT_COLOR;
         }
 
-        this._bgRed = Color.parseColor(color, 0);
-        this._bgGreen = Color.parseColor(color, 1);
-        this._bgBlue = Color.parseColor(color, 2);
-        this._fgRed = Color.parseColor(textColor, 0);
-        this._fgGreen = Color.parseColor(textColor, 1);
-        this._fgBlue = Color.parseColor(textColor, 2);
+        this._color = color;
+        this._textColor = textColor;
 
         if ((!usingDarkTheme &&
              Color.relativeLuminance(color) > OUTLINE_LUMINANCE_THREASHHOLD) ||
@@ -119,23 +116,10 @@ var TransitRouteLabel = GObject.registerClass({
     _onDraw(widget, cr) {
         let width = widget.get_allocated_width();
         let height = widget.get_allocated_height();
-        let radius = this._hasOutline ? 5 : 3;
 
-        cr.newSubPath();
-        cr.arc(width - radius, radius, radius, -Math.PI / 2, 0);
-        cr.arc(width - radius, height - radius, radius, 0 , Math.PI / 2);
-        cr.arc(radius, height - radius, radius, Math.PI / 2, Math.PI);
-        cr.arc(radius, radius, radius, Math.PI, 3 * Math.PI / 2);
-        cr.closePath();
-
-        cr.setSourceRGB(this._bgRed, this._bgGreen, this._bgBlue);
-        cr.fillPreserve();
-
-        if (this._hasOutline) {
-            cr.setSourceRGB(this._fgRed, this._fgGreen, this._fgBlue);
-            cr.setLineWidth(1);
-            cr.stroke();
-        }
+        Gfx.drawColoredBagde(cr, this._color,
+                             this._hasOutline ? this._textColor : null,
+                             0, 0, width, height);
 
         return false;
     }
