@@ -19,11 +19,11 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const _ = imports.gettext.gettext;
-
 const Gdk = imports.gi.Gdk;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
+
+const Transit = imports.transit;
 
 var TransitArrivalRow = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/transit-arrival-row.ui',
@@ -47,15 +47,7 @@ var TransitArrivalRow = GObject.registerClass({
 
         let lastLeg = this._itinerary.legs[this._itinerary.legs.length - 1];
 
-        if (lastLeg.to) {
-            /* Translators: this a format string indicating arriving at the
-             * destination of journey with the arrival address and transit
-             * stop as the format parameter */
-            this._arrivalLabel.label = _("Arrive at %s").format(lastLeg.to);
-        } else {
-            this._arrivalLabel.label = _("Arrive");
-        }
-
+        this._arrivalLabel.label = Transit.getArrivalLabel(lastLeg);
         this._timeLabel.label = lastLeg.prettyPrintArrivalTime();
         this._separator.visible = !this._print;
 
