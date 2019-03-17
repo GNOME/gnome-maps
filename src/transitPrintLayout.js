@@ -25,9 +25,12 @@ const Clutter = imports.gi.Clutter;
 const Gdk = imports.gi.Gdk;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
+const Pango = imports.gi.Pango;
 
+const Gfx = imports.gfx;
 const MapSource = imports.mapSource;
 const PrintLayout = imports.printLayout;
+const Transit = imports.transit;
 const TransitArrivalMarker = imports.transitArrivalMarker;
 const TransitArrivalRow = imports.transitArrivalRow;
 const TransitBoardMarker = imports.transitBoardMarker;
@@ -220,18 +223,39 @@ class TransitPrintLayout extends PrintLayout.PrintLayout {
             start: start,
             print: true
         });
+        let pageNum = this.numPages - 1;
+        let x = this._cursorX;
+        let y = this._cursorY;
+        let surface = new Cairo.ImageSurface(Cairo.Format.ARGB32, width, height);
+        let cr = new Cairo.Context(surface);
 
-        this._renderWidget(legRow, width, height);
+        this._drawIcon(cr, leg.iconName, width, height);
+
+        this._addSurface(surface, x, y, pageNum);
     }
 
     _drawArrival(width, height) {
-        let arrivalRow = new TransitArrivalRow.TransitArrivalRow({
-            visible: true,
-            itinerary: this._itinerary,
-            print: true
-        });
+        let pageNum = this.numPages - 1;
+        let x = this._cursorX;
+        let y = this._cursorY;
+        let surface = new Cairo.ImageSurface(Cairo.Format.ARGB32, width, height);
+        let cr = new Cairo.Context(surface);
+        let lastLeg = this._itinerary.legs[this._itinerary.legs.length - 1];
 
-        this._renderWidget(arrivalRow, width, height);
+        this._drawIcon(cr, 'maps-point-end-symbolic', width, height);
+        // draw the arrival text
+        this._drawTextVerticallyCentered(cr, Transit.getArrivalLabel(lastLeg),
+                                         width - height * 3,
+                                         height, this._rtl ? height * 2 : height,
+                                         Pango.Alignment.LEFT);
+        // draw arrival time
+        this._drawTextVerticallyCentered(cr, lastLeg.prettyPrintArrivalTime(),
+                                         height * 2, height,
+                                         this._rtl ? 0 : width - height * 2 - 1,
+                                         this._rtl ? Pango.Alignment.LEFT :
+                                                     Pango.Alignment.RIGHT);
+
+        this._addSurface(surface, x, y, pageNum);
     }
 
     _legHasMiniMap(index) {
