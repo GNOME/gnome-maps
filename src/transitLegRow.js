@@ -28,6 +28,7 @@ const Gtk = imports.gi.Gtk;
 const Pango = imports.gi.Pango;
 
 const InstructionRow = imports.instructionRow;
+const Transit = imports.transit;
 const TransitRouteLabel = imports.transitRouteLabel;
 const TransitStopRow = imports.transitStopRow;
 const Utils = imports.utils;
@@ -63,22 +64,7 @@ var TransitLegRow = GObject.registerClass({
         super._init(params);
 
         this._modeImage.icon_name = this._leg.iconName;
-        if (this._start) {
-            if (this._leg.from) {
-                /* Translators: this is a format string indicating instructions
-                 * starting a journey at the address given as the parameter
-                 */
-                this._fromLabel.label = _("Start at %s").format(this._leg.from);
-            } else {
-                /* Translators: this indicates starting a journey at a location
-                 * with no set name (such as when the user started routing from
-                 * an arbitrary point on the map)
-                 */
-                this._fromLabel.label = _("Start");
-            }
-        } else {
-            this._fromLabel.label = this._leg.from;
-        }
+        this._fromLabel.label = Transit.getFromLabel(this._leg, this._start);
 
         if (this._leg.transit) {
             let routeLabel = new TransitRouteLabel.TransitRouteLabel({
@@ -121,19 +107,10 @@ var TransitLegRow = GObject.registerClass({
                                                 max_width_chars: maxWidthChars,
                                                 ellipsize: Pango.EllipsizeMode.END,
                                                 halign: Gtk.Align.START });
-            if (this._leg.transit && this._leg.headsign) {
-                let label = GLib.markup_escape_text(this._leg.headsign, -1);
-                headsignLabel.label = '<span size="small">%s</span>'.format(label);
-            } else if (!this._leg.transit) {
-                let label =
-                    /* Translators: this is a format string indicating walking a certain
-                     * distance, with the distance expression being the %s placeholder
-                     */
-                    _("Walk %s").format(Utils.prettyDistance(this._leg.distance));
-                headsignLabel.label =
-                    '<span size="small">%s</span>'.format(label);
-            }
+            let label =
+                GLib.markup_escape_text(Transit.getHeadsignLabel(this._leg), -1);
 
+            headsignLabel.label = '<span size="small">%s</span>'.format(label);
             headsignLabel.get_style_context().add_class('dim-label');
             this._routeGrid.add(headsignLabel);
         }
