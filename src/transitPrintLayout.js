@@ -25,9 +25,13 @@ const Clutter = imports.gi.Clutter;
 const Gdk = imports.gi.Gdk;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
+const Pango = imports.gi.Pango;
 
+const Color = imports.color;
+const Gfx = imports.gfx;
 const MapSource = imports.mapSource;
 const PrintLayout = imports.printLayout;
+const Transit = imports.transit;
 const TransitArrivalMarker = imports.transitArrivalMarker;
 const TransitArrivalRow = imports.transitArrivalRow;
 const TransitBoardMarker = imports.transitBoardMarker;
@@ -58,6 +62,9 @@ const _Instruction = {
     SCALE_Y: 0.1,
     SCALE_MARGIN: 0.01
 };
+
+// luminance threashhold for drawing outline around route label badges
+const OUTLINE_LUMINANCE_THREASHHOLD = 0.9;
 
 var TransitPrintLayout = GObject.registerClass(
 class TransitPrintLayout extends PrintLayout.PrintLayout {
@@ -214,24 +221,94 @@ class TransitPrintLayout extends PrintLayout.PrintLayout {
     }
 
     _drawInstruction(width, height, leg, start) {
-        let legRow = new TransitLegRow.TransitLegRow({
-            visible: true,
-            leg: leg,
-            start: start,
-            print: true
-        });
+        let pageNum = this.numPages - 1;
+        let x = this._cursorX;
+        let y = this._cursorY;
+        let surface = new Cairo.ImageSurface(Cairo.Format.ARGB32, width, height);
+        let cr = new Cairo.Context(surface);
+        let timeWidth = !leg.transit && start ? height : height * 2;
+        let fromText = Transit.getFromLabel(leg, start);
+        let routeWidth = 0;
 
-        this._renderWidget(legRow, width, height);
+        this._drawIcon(cr, leg.iconName, width, height);
+        this._drawText(cr, fromText, this._rtl ? timeWidth : height, 0,
+                       width - height - timeWidth, height / 2, Pango.Alignment.LEFT);
+
+        if (leg.transit) {
+            let color = leg.color;
+            let textColor = leg.textColor;
+            let hasOutline = Color.relativeLuminance(color) > OUTLINE_LUMINANCE_THREASHHOLD;
+            let routeText =
+                this._createTextLayout(cr, leg.route, width - height - timeWidth,
+                                       height / 2, Pango.Alignment.LEFT);
+            let [pWidth, pHeight] = routeText.get_pixel_size();
+            let routePadding = 3;
+            let routeHeight = pHeight + routePadding * 2;
+            routeWidth = Math.max(pWidth, pHeight) + routePadding * 2;
+            let routeX = this._rtl ? width - height - routeWidth - 1 : height;
+            let routeY = height / 2 + ((height / 2) - routeHeight) / 2;
+
+
+            textColor = Color.getContrastingForegroundColor(color, textColor);
+            Gfx.drawColoredBagde(cr, color, hasOutline ? textColor : null,
+                                 routeX, routeY, routeWidth, routeHeight);
+            this._drawTextLayoutWithColor(cr, routeText, routeX + routePadding,
+                                          routeY + routePadding,
+                                          routeWidth - routePadding * 2,
+                                          routeHeight - routePadding * 2,
+                                          textColor, Pango.Alignment.CENTER);
+
+            // introduce some additional padding before the headsign label
+            routeWidth += routePadding;
+        }
+
+        let headsign = Transit.getHeadsignLabel(leg);
+
+        if (headsign) {
+            let headsignLayout = this._createTextLayout(cr, headsign,
+                                                        width - height - timeWidth,
+                                                        height / 2,
+                                                        Pango.Alignment.LEFT);
+            let [pWidth, pHeight] = headsignLayout.get_pixel_size();
+            this._drawTextLayoutWithColor(cr, headsignLayout,
+                                          this._rtl ? timeWidth : height + routeWidth,
+                                          height / 2 + (height / 2 - pHeight) / 2,
+                                          width - height - timeWidth - routeWidth,
+                                          height / 2, '888888',
+                                          this._rtl ? Pango.Alignment.RIGHT :
+                                                      Pango.Alignment.LEFT);
+        }
+        this._drawTextVerticallyCentered(cr, leg.prettyPrintTime({ start: start }),
+                                         timeWidth, height,
+                                         this._rtl ? 0 : width - timeWidth - 1,
+                                         this._rtl ? Pango.Alignment.LEFT :
+                                                     Pango.Alignment.RIGHT);
+
+        this._addSurface(surface, x, y, pageNum);
     }
 
     _drawArrival(width, height) {
-        let arrivalRow = new TransitArrivalRow.TransitArrivalRow({
-            visible: true,
-            itinerary: this._itinerary,
-            print: true
-        });
+        let pageNum = this.numPages - 1;
+        let x = this._cursorX;
+        let y = this._cursorY;
+        let surface = new Cairo.ImageSurface(Cairo.Format.ARGB32, width, height);
+        let cr = new Cairo.Context(surface);
+        let lastLeg = this._itinerary.legs[this._itinerary.legs.length - 1];
 
-        this._renderWidget(arrivalRow, width, height);
+        this._drawIcon(cr, 'maps-point-end-symbolic', width, height);
+        // draw the arrival text
+        this._drawTextVerticallyCentered(cr, Transit.getArrivalLabel(lastLeg),
+                                         width - height * 2,
+                                         height, this._rtl ? height * 2 : height,
+                                         Pango.Alignment.LEFT);
+        // draw arrival time
+        this._drawTextVerticallyCentered(cr, lastLeg.prettyPrintArrivalTime(),
+                                         height, height,
+                                         this._rtl ? 0 : width - height - 1,
+                                         this._rtl ? Pango.Alignment.LEFT :
+                                                     Pango.Alignment.RIGHT);
+
+        this._addSurface(surface, x, y, pageNum);
     }
 
     _legHasMiniMap(index) {
