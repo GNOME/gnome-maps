@@ -220,8 +220,15 @@ class TransitPrintLayout extends PrintLayout.PrintLayout {
             start: start,
             print: true
         });
+        let pageNum = this.numPages - 1;
+        let x = this._cursorX;
+        let y = this._cursorY;
+        let surface = new Cairo.ImageSurface(Cairo.Format.ARGB32, width, height);
+        let cr = new Cairo.Context(surface);
 
-        this._renderWidget(legRow, width, height);
+        this._drawIcon(cr, leg.iconName, width, height);
+
+        this._addSurface(surface, x, y, pageNum);
     }
 
     _drawArrival(width, height) {
