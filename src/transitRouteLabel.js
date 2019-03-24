@@ -48,22 +48,20 @@ var TransitRouteLabel = GObject.registerClass({
     _init(params) {
         let leg = params.leg;
         let compact = params.compact;
-        let print = params.print;
 
         delete params.leg;
         delete params.compact;
-        delete params.print;
         super._init(params);
 
-        this._setLabel(leg, compact, print);
+        this._setLabel(leg, compact);
         this.connect('draw', this._onDraw.bind(this));
     }
 
-    _setLabel(leg, compact, print) {
+    _setLabel(leg, compact) {
         let color = leg.color;
         let textColor = leg.textColor;
         let label = leg.route;
-        let usingDarkTheme = Utils.isUsingDarkThemeVariant() && !print;
+        let usingDarkTheme = Utils.isUsingDarkThemeVariant();
         let usingHighContrastTheme = Utils.isUsingHighContrastTheme();
 
         textColor = Color.getContrastingForegroundColor(color, textColor);
