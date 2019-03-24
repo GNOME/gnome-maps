@@ -58,9 +58,6 @@ var TransitLegRow = GObject.registerClass({
         this._mapView = params.mapView;
         delete params.mapView;
 
-        this._print = params.print;
-        delete params.print;
-
         super._init(params);
 
         this._modeImage.icon_name = this._leg.iconName;
@@ -69,7 +66,6 @@ var TransitLegRow = GObject.registerClass({
         if (this._leg.transit) {
             let routeLabel = new TransitRouteLabel.TransitRouteLabel({
                                     leg: this._leg,
-                                    print: this._print
                                  });
 
             this._routeGrid.add(routeLabel);
@@ -95,16 +91,14 @@ var TransitLegRow = GObject.registerClass({
 
         if (!this._leg.transit || this._leg.headsign) {
             /* Restrict headsign label to 20 characters to avoid horizontally
-             * overflowing the sidebar, make an exception for printing where
-             * we allow it use the available space.
+             * overflowing the sidebar.
              */
-            let maxWidthChars = this._print ? -1 : 20;
             let headsignLabel = new Gtk.Label({ visible: true,
                                                 can_focus: false,
                                                 use_markup: true,
                                                 hexpand: true,
                                                 margin_start: 3,
-                                                max_width_chars: maxWidthChars,
+                                                max_width_chars: 20,
                                                 ellipsize: Pango.EllipsizeMode.END,
                                                 halign: Gtk.Align.START });
             let label =
@@ -140,13 +134,6 @@ var TransitLegRow = GObject.registerClass({
         });
 
         this._isExpanded = false;
-
-        // hide expand/collaps row in printing mode
-        this._footerStack.visible = !this._print;
-
-        // allow more space for the departure label when printing
-        if (this._print)
-            this._fromLabel.max_width_chars = -1;
     }
 
     // Handle events received on the EventBox for expanding when clicking
