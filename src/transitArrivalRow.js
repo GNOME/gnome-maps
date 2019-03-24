@@ -40,20 +40,12 @@ var TransitArrivalRow = GObject.registerClass({
         this._mapView = params.mapView;
         delete params.mapView;
 
-        this._print = params.print;
-        delete params.print;
-
         super._init(params);
 
         let lastLeg = this._itinerary.legs[this._itinerary.legs.length - 1];
 
         this._arrivalLabel.label = Transit.getArrivalLabel(lastLeg);
         this._timeLabel.label = lastLeg.prettyPrintArrivalTime();
-        this._separator.visible = !this._print;
-
-        /* allow more space for the label when printing */
-        if (this._print)
-            this._arrivalLabel.max_width_chars = -1;
 
         this._eventBox.connect('event', (widget, event) => {
             this._onEvent(event, lastLeg.toCoordinate);
