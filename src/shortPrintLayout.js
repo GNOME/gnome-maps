@@ -24,7 +24,7 @@ const PrintLayout = imports.printLayout;
 /* All following constants are ratios of surface size to page size */
 const _Instruction = {
     SCALE_X: 1.0,
-    SCALE_Y: 0.05,
+    SCALE_Y: 0.07,
     SCALE_MARGIN: 0.01
 };
 
