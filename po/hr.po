@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2018-08-21 08:05+0000\n"
-"PO-Revision-Date: 2018-09-02 20:02+0200\n"
+"POT-Creation-Date: 2019-03-12 21:18+0000\n"
+"PO-Revision-Date: 2019-03-26 18:02+0100\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
 msgid "GNOME Maps"
@@ -57,8 +57,15 @@ msgstr ""
 "placa, Zagreb\" ili \"Hoteli blizu Straduna, Dubrovnik\"."
 
 #. Translators: This is the program name.
-#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:8
-#: src/mainWindow.js:503
+#. for some reason, setting the title of the window through the .ui
+#. * template does not work anymore (maybe has something to do with
+#. * setting a custom title on the headerbar). Setting it programmatically
+#. * here works though. And yields a proper label in the gnome-shell
+#. * overview.
+#.
+#. Translators: This is the program name.
+#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
+#: src/application.js:83 src/mainWindow.js:138 src/mainWindow.js:508
 msgid "Maps"
 msgstr "Karte"
 
@@ -197,22 +204,6 @@ msgstr ""
 #: data/org.gnome.Maps.gschema.xml:72
 msgid "Last used transportation type for routing"
 msgstr "Posljednja korištena vrsta prijevoza za određivanje rute"
-
-#: data/ui/app-menu.ui:7
-msgid "Set up OpenStreetMap Account"
-msgstr "Postavi OpenStreetMap račun"
-
-#: data/ui/app-menu.ui:12
-msgid "_Keyboard Shortcuts"
-msgstr "_Prečaci tipkovnice"
-
-#: data/ui/app-menu.ui:17
-msgid "About"
-msgstr "O programu"
-
-#: data/ui/app-menu.ui:21
-msgid "Quit"
-msgstr "Zatvori"
 
 #: data/ui/check-in-dialog.ui:250 data/ui/check-in-dialog.ui:299
 msgid "Visibility"
@@ -363,7 +354,7 @@ msgid "Open shape layer"
 msgstr "Otvori sloj karte"
 
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:71
+#: data/ui/layers-popover.ui:69
 msgid "Open Shape Layer…"
 msgstr "Otvori sloj karte…"
 
@@ -380,46 +371,58 @@ msgstr "Odustani"
 msgid "Location Settings"
 msgstr "Postavke lokacije"
 
+#: data/ui/main-window.ui:8
+msgid "Set up OpenStreetMap Account"
+msgstr "Postavi OpenStreetMap račun"
+
+#: data/ui/main-window.ui:13
+msgid "_Keyboard Shortcuts"
+msgstr "_Prečaci tipkovnice"
+
+#: data/ui/main-window.ui:18
+msgid "About Maps"
+msgstr "O Kartama"
+
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:23
+#: data/ui/main-window.ui:41
 msgid "Go to current location"
 msgstr "Idi na trenutnu lokaciju"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:44
+#: data/ui/main-window.ui:62
 msgid "Choose map type"
 msgstr "Odaberi vrstu karte"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:69
+#: data/ui/main-window.ui:87
 msgid "Zoom out"
 msgstr "Udalji"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:85
+#: data/ui/main-window.ui:103
 msgid "Zoom in"
 msgstr "Približi"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:103
+#: data/ui/main-window.ui:142
 msgid "Toggle route planner"
 msgstr "Uklj/Isklj planiranje rute"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:124
+#: data/ui/main-window.ui:163
 msgid "Toggle favorites"
 msgstr "Uklj/Isklj omiljene"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:144
+#: data/ui/main-window.ui:183
 msgid "Print Route"
 msgstr "Ispiši rutu"
 
-#: data/ui/main-window.ui:207
+#: data/ui/main-window.ui:246
 msgid "Maps is offline!"
 msgstr "Karta je nedostupna!"
 
-#: data/ui/main-window.ui:217
+#: data/ui/main-window.ui:256
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -427,7 +430,7 @@ msgstr ""
 "Karta treba aktivni internet povezivanje kako bi ispravno funkcionirala, ali "
 "se ne može nijedan pronaći."
 
-#: data/ui/main-window.ui:226
+#: data/ui/main-window.ui:265
 msgid "Check your connection and proxy settings."
 msgstr "Provjerite vaše povezivanje i proxy postavke."
 
@@ -719,19 +722,19 @@ msgstr "Neuspješna pretraga strukture pločice u direktoriju"
 msgid "Failed to parse XML document"
 msgstr "Neuspješna obrada XML dokumenta"
 
-#: lib/maps-osm.c:252 lib/maps-osm.c:405
+#: lib/maps-osm.c:249 lib/maps-osm.c:402
 msgid "Missing required attributes"
 msgstr "Nedostaju potrebna svojstva"
 
-#: lib/maps-osm.c:453
+#: lib/maps-osm.c:450
 msgid "Could not find OSM element"
 msgstr "Nemoguć pronalazak OSM elementa"
 
-#: src/application.js:95
+#: src/application.js:96
 msgid "A path to a local tiles directory structure"
 msgstr "Putanja do lokalne strukture bloka u direktoriju"
 
-#: src/application.js:99
+#: src/application.js:100
 msgid "Show the version of the program"
 msgstr "Prikaži inačicu programa"
 
@@ -880,23 +883,23 @@ msgstr "Kreni!"
 msgid "All Layer Files"
 msgstr "Sve datoteke sloja"
 
-#: src/mainWindow.js:436
+#: src/mainWindow.js:441
 msgid "Failed to connect to location service"
 msgstr "Neuspjelo povezivanje s uslugom lociranja"
 
-#: src/mainWindow.js:501
+#: src/mainWindow.js:506
 msgid "translator-credits"
 msgstr "gogo https://launchpad.net/~trebelnik-stefina"
 
-#: src/mainWindow.js:504
+#: src/mainWindow.js:509
 msgid "A map application for GNOME"
 msgstr "Aplikacija karata za GNOME"
 
-#: src/mainWindow.js:515
-msgid "Copyright © 2011 – 2017 Red Hat, Inc. and The GNOME Maps authors"
-msgstr "Autorsko pravo © 2011 – 2017 Red Hat, Inc. i autori GNOME karta"
+#: src/mainWindow.js:520
+msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
+msgstr "Autorsko pravo © 2011 – 2019 Red Hat, Inc. i autori GNOME karta"
 
-#: src/mainWindow.js:534
+#: src/mainWindow.js:539
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Podatke karte omogućili %s i doprinositelji"
@@ -906,20 +909,20 @@ msgstr "Podatke karte omogućili %s i doprinositelji"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:550
+#: src/mainWindow.js:555
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Blokove karte je omogućio %s"
 
-#: src/mapView.js:353
+#: src/mapView.js:358
 msgid "File type is not supported"
 msgstr "Vrsta datoteke nije podržana"
 
-#: src/mapView.js:360
+#: src/mapView.js:365
 msgid "Failed to open layer"
 msgstr "Neuspjelo otvaranje sloja"
 
-#: src/mapView.js:396
+#: src/mapView.js:401
 msgid "Failed to open GeoURI"
 msgstr "Neuspjelo otvaranje GeoURI-ja"
 
@@ -993,7 +996,7 @@ msgstr ""
 "Broj telefona. Koristite međunarodni format, započinjući s + znakom. Ne "
 "zaboravite lokalne zakone, osobito za privatne telefonske linije."
 
-#: src/osmEditDialog.js:136 src/placeBubble.js:173
+#: src/osmEditDialog.js:136 src/placeBubble.js:191
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -1191,35 +1194,35 @@ msgstr "Odaberi vrstu"
 msgid "Done"
 msgstr "Završeno"
 
-#: src/placeBubble.js:125
+#: src/placeBubble.js:143
 msgid "Population:"
 msgstr "Populacija:"
 
-#: src/placeBubble.js:131
+#: src/placeBubble.js:149
 msgid "Altitude:"
 msgstr "Visina:"
 
-#: src/placeBubble.js:136
+#: src/placeBubble.js:154
 msgid "Opening hours:"
 msgstr "Vrijeme otvaranja:"
 
-#: src/placeBubble.js:141
+#: src/placeBubble.js:159
 msgid "Internet access:"
 msgstr "Pristup internetu:"
 
-#: src/placeBubble.js:146
+#: src/placeBubble.js:164
 msgid "Religion:"
 msgstr "Religija:"
 
-#: src/placeBubble.js:151
+#: src/placeBubble.js:169
 msgid "Toilets:"
 msgstr "Toaleti:"
 
-#: src/placeBubble.js:156
+#: src/placeBubble.js:174
 msgid "Wheelchair access:"
 msgstr "Pristup za invalidska kolica:"
 
-#: src/placeBubble.js:162 src/placeBubble.js:166
+#: src/placeBubble.js:180 src/placeBubble.js:184
 msgid "Phone:"
 msgstr "Telefon:"
 
@@ -1588,53 +1591,56 @@ msgid "service"
 msgstr "usluga"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:226
+#: src/utils.js:227
 msgid "Unknown"
 msgstr "Napoznato"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:229
+#: src/utils.js:230
 msgid "Exact"
 msgstr "Točno"
 
-#: src/utils.js:287
+#: src/utils.js:288
 #, javascript-format
 msgid "%f h"
 msgstr "%f sat"
 
-#: src/utils.js:289
+#: src/utils.js:290
 #, javascript-format
 msgid "%f min"
 msgstr "%f min"
 
-#: src/utils.js:291
+#: src/utils.js:292
 #, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:302
+#: src/utils.js:303
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:305
+#: src/utils.js:306
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:313
+#: src/utils.js:314
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:316
+#: src/utils.js:317
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
+
+#~ msgid "Quit"
+#~ msgstr "Zatvori"
 
 #~ msgid "OK"
 #~ msgstr "U REDU"
