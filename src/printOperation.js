@@ -62,7 +62,7 @@ var PrintOperation = class PrintOperation {
         let height = context.get_height();
 
         Mainloop.timeout_add(_MIN_TIME_TO_ABORT, () => {
-            if (this._operation.get_status() !== Gtk.PrintStatus.FINISHED) {
+            if (!this._layout.renderFinished) {
                 this._abortDialog.show();
             }
             return false;
