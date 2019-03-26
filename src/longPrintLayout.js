@@ -27,7 +27,7 @@ const _NUM_MINIMAPS = 5;
 /* All following constants are ratios of surface size to page size */
 const _Instruction = {
     SCALE_X: 0.57,
-    SCALE_Y: 0.05,
+    SCALE_Y: 0.07,
     SCALE_MARGIN: 0.01
 };
 const _MiniMapView = {
