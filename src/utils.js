@@ -75,14 +75,6 @@ function loadStyleSheet(file) {
                                              Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 }
 
-function clearGtkClutterActorBg(actor) {
-    let widget = actor.get_widget();
-    widget.override_background_color(0, new Gdk.RGBA({ red: 0,
-                                                       green: 0,
-                                                       blue: 0,
-                                                       alpha: 0 }));
-}
-
 function addActions(actionMap, entries) {
     for(let name in entries) {
         let entry = entries[name];
