@@ -39,7 +39,7 @@ const _SHORT_LAYOUT_MAX_DISTANCE = 3000;
 const _STROKE_COLOR = new Clutter.Color({ red: 0,
                                           blue: 255,
                                           green: 0,
-                                          alpha: 100 });
+                                          alpha: 255 });
 const _STROKE_WIDTH = 5.0;
 
 /* All following constants are ratios of surface size to page size */
