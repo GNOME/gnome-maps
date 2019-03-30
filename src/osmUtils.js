@@ -63,5 +63,10 @@ function updatePlaceFromOSMObject(place, object) {
     place.openingHours = object.get_tag('opening_hours');
     place.wheelchair = object.get_tag('wheelchair');
 
+    let altitude = object.get_tag('ele');
+
+    if (altitude > 0)
+        place.location.altitude = altitude;
+
     Application.placeStore.updatePlace(place);
 }
