@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-01-14 19:43+0000\n"
+"POT-Creation-Date: 2019-03-26 17:04+0000\n"
 "PO-Revision-Date: 2019-02-13 11:43+0100\n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -61,19 +61,21 @@ msgstr ""
 "understøttet)."
 
 #. Translators: This is the program name.
+#. for some reason, setting the title of the window through the .ui
+#. * template does not work anymore (maybe has something to do with
+#. * setting a custom title on the headerbar). Setting it programmatically
+#. * here works though. And yields a proper label in the gnome-shell
+#. * overview.
+#.
+#. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
-#: src/mainWindow.js:500
+#: src/application.js:83 src/mainWindow.js:138 src/mainWindow.js:508
 msgid "Maps"
 msgstr "Kort"
 
 #: data/org.gnome.Maps.desktop.in:5
 msgid "A simple maps application"
 msgstr "Et simpelt kortprogram"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Maps.desktop.in:8
-msgid "org.gnome.Maps"
-msgstr "org.gnome.Maps"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Maps.desktop.in:14
@@ -174,8 +176,8 @@ msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
 msgstr ""
-"Angiver om Foursquare skal poste din indtjekning som opdatering på Facebook-"
-"kontoen, der er tilknyttet denne Foursquare-konto."
+"Angiver om Foursquare skal poste din indtjekning som opdatering på "
+"Facebook-kontoen, der er tilknyttet denne Foursquare-konto."
 
 #: data/org.gnome.Maps.gschema.xml:62
 msgid "Foursquare check-in Twitter broadcasting"
@@ -353,7 +355,7 @@ msgid "Open shape layer"
 msgstr "Åbn formlag"
 
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:71
+#: data/ui/layers-popover.ui:69
 msgid "Open Shape Layer…"
 msgstr "Åbn formlag …"
 
@@ -490,12 +492,14 @@ msgstr "Har du ikke en konto?"
 #: data/ui/osm-account-dialog.ui:159
 msgid ""
 "Sorry, that didn’t work. Please try again, or visit\n"
-"<a href=\"https://www.openstreetmap.org/user/forgot-password"
-"\">OpenStreetMap</a> to reset your password."
+"<a "
+"href=\"https://www.openstreetmap.org/user/forgot-password\">OpenStreetMap</a> "
+"to reset your password."
 msgstr ""
 "Beklager - det fungerede ikke. Prøv venligst igen eller besøg\n"
-"<a href=\"https://www.openstreetmap.org/user/forgot-password"
-"\">OpenStreetMap</a> for at nulstille din adgangskode."
+"<a "
+"href=\"https://www.openstreetmap.org/user/forgot-password\">OpenStreetMap</a> "
+"for at nulstille din adgangskode."
 
 #: data/ui/osm-account-dialog.ui:172
 msgid "The verification code didn’t match, please try again."
@@ -731,11 +735,11 @@ msgstr "Mangler nødvendige attributter"
 msgid "Could not find OSM element"
 msgstr "Kunne ikke finde OSM-element"
 
-#: src/application.js:95
+#: src/application.js:96
 msgid "A path to a local tiles directory structure"
 msgstr "En sti til en lokal flisemappestruktur"
 
-#: src/application.js:99
+#: src/application.js:100
 msgid "Show the version of the program"
 msgstr "Vis programmets version"
 
@@ -886,11 +890,11 @@ msgstr "Start!"
 msgid "All Layer Files"
 msgstr "Alle lagfiler"
 
-#: src/mainWindow.js:433
+#: src/mainWindow.js:441
 msgid "Failed to connect to location service"
 msgstr "Kunne ikke forbinde til lokaliseringstjeneste"
 
-#: src/mainWindow.js:498
+#: src/mainWindow.js:506
 msgid "translator-credits"
 msgstr ""
 "Kris Thomsen\n"
@@ -898,18 +902,19 @@ msgstr ""
 "scootergrisen\n"
 "Ask Hjorth Larsen\n"
 "\n"
-"Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
-"Mere info: http://www.dansk-gruppen.dk"
+"Dansk-gruppen\n"
+"Websted <http://dansk-gruppen.dk>\n"
+"E-mail <dansk@dansk-gruppen.dk>"
 
-#: src/mainWindow.js:501
+#: src/mainWindow.js:509
 msgid "A map application for GNOME"
 msgstr "Et kortprogram til GNOME"
 
-#: src/mainWindow.js:512
+#: src/mainWindow.js:520
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Ophavsret © 2011 – 2019 Red Hat, Inc. og udviklerne af GNOME Kort"
 
-#: src/mainWindow.js:531
+#: src/mainWindow.js:539
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Kortdata af %s og bidragydere"
@@ -919,7 +924,7 @@ msgstr "Kortdata af %s og bidragydere"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:547
+#: src/mainWindow.js:555
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Kortfelter leveret af %s"
@@ -992,8 +997,8 @@ msgstr "Webside"
 
 #: src/osmEditDialog.js:122
 msgid ""
-"The official website. Try to use the most basic form of a URL i.e. http://"
-"example.com instead of http://example.com/index.html."
+"The official website. Try to use the most basic form of a URL i.e. "
+"http://example.com instead of http://example.com/index.html."
 msgstr ""
 "Den officielle webside. Prøv at bruge den mest grundlæggende form, dvs. "
 "http://eksempel.dk i stedet for http://eksempel.dk/index.html."
@@ -1019,8 +1024,8 @@ msgid ""
 "The format used should include the language code and the article title like "
 "“en:Article title”."
 msgstr ""
-"Formatet bør inkludere sprogkoden og artiklens overskrift, f.eks. “da:"
-"Artikeloverskrift”"
+"Formatet bør inkludere sprogkoden og artiklens overskrift, f.eks. "
+"“da:Artikeloverskrift”"
 
 #: src/osmEditDialog.js:144
 msgid "Opening hours"
@@ -1653,6 +1658,9 @@ msgstr "%s miles"
 msgid "%s ft"
 msgstr "%s fod"
 
+#~ msgid "org.gnome.Maps"
+#~ msgstr "org.gnome.Maps"
+
 #~ msgid "Quit"
 #~ msgstr "Afslut"
 
@@ -1682,3 +1690,4 @@ msgstr "%s fod"
 
 #~ msgid "Country code: %s"
 #~ msgstr "Landekode: %s"
+
