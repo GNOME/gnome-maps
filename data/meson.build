@@ -13,7 +13,7 @@ install_data(
 
 desktop = app_id + '.desktop'
 
-custom_target('desktop-file',
+desktop_file = custom_target('desktop-file',
   input: desktop + '.in',
   output: desktop,
   install: true,
@@ -52,5 +52,16 @@ configure_file(
 	install: true,
 	install_dir: join_paths(datadir, 'dbus-1', 'services')
 )
+
+desktop_file_validate = find_program('desktop-file-validate', required: false)
+if desktop_file_validate.found()
+	test(
+		'validate-desktop',
+		desktop_file_validate,
+		args: [
+			desktop_file.full_path()
+		]
+	)
+endif
 
 subdir('icons')
