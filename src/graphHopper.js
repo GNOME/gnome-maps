@@ -85,7 +85,7 @@ var GraphHopper = class GraphHopper {
         this._queryGraphHopper(points, transportationType,
                                (result, exception) => {
             if (exception) {
-                Utils.debug(exception);
+                Utils.debug(e);
                 if (this._query.latest)
                     this._query.latest.place = null;
                 else
@@ -189,7 +189,7 @@ var GraphHopper = class GraphHopper {
             time:        0,
             turnAngle:   0
         });
-        let rest = this._foldInstructions(instructions).map((instr) => {
+        let rest = instructions.map((instr) => {
             let type = this._createTurnPointType(instr.sign);
             let text = instr.text;
             if (type === Route.TurnPointType.VIA) {
@@ -207,27 +207,6 @@ var GraphHopper = class GraphHopper {
             });
         });
         return [startPoint].concat(rest);
-    }
-
-    _foldInstructions(instructions) {
-        let currInstruction = instructions[0];
-        let res = [];
-
-        for (let i = 1; i < instructions.length; i++) {
-            let newInstruction = instructions[i];
-            let newSign = newInstruction.sign;
-            let newStreetname = newInstruction.street_name;
-
-            if ((newSign === 0 || newSign === -7 || newSign === 7) &&
-                newStreetname === currInstruction.street_name) {
-                currInstruction.distance += newInstruction.distance;
-            } else {
-                res.push(currInstruction);
-                currInstruction = instructions[i];
-            }
-        }
-
-        return res;
     }
 
     _createTurnPointType(sign) {
