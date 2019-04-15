@@ -30,6 +30,25 @@ const Route = imports.route;
 const RouteQuery = imports.routeQuery;
 const Utils = imports.utils;
 
+/**
+ * Directional sign from the GraphHopper API.
+ * https://github.com/graphhopper/graphhopper/blob/master/docs/web/api-doc.md
+ */
+var Sign = {
+    KEEP_LEFT: -7,
+    TURN_SHARP_LEFT: -3,
+    TURN_LEFT: -2,
+    TURN_SLIGHT_LEFT: -1,
+    CONTINUE_ON_STREET: 0,
+    TURN_SLIGHT_RIGHT: 1,
+    TURN_RIGHT: 2,
+    TURN_SHARP_RIGHT: 3,
+    FINISH: 4,
+    REACHED_VIA: 5,
+    USE_ROUNDABOUT: 6,
+    KEEP_RIGHT: 7
+}
+
 var GraphHopper = class GraphHopper {
 
     get route() {
@@ -218,8 +237,13 @@ var GraphHopper = class GraphHopper {
             let newSign = newInstruction.sign;
             let newStreetname = newInstruction.street_name;
 
-            if ((newSign === 0 || newSign === -7 || newSign === 7) &&
-                newStreetname === currInstruction.street_name) {
+            /* if the direction is to continue straight, or keep left or keep
+             * right on the same street/road number, fold the instruction into
+             * the previous one
+             */
+            if (newSign === Sign.CONTINUE_ON_STREET ||
+                ((newSign === Sign.KEEP_LEFT || newSign === Sign.KEEP_RIGHT) &&
+                 newStreetname === currInstruction.street_name)) {
                 currInstruction.distance += newInstruction.distance;
             } else {
                 res.push(currInstruction);
