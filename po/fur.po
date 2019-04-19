@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-01-14 19:43+0000\n"
-"PO-Revision-Date: 2019-02-04 16:11+0100\n"
+"POT-Creation-Date: 2019-03-26 17:04+0000\n"
+"PO-Revision-Date: 2019-04-19 14:31+0200\n"
 "Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.2.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
@@ -55,20 +55,26 @@ msgstr ""
 "Tu puedis ancje cirî par specifics gjenars di puescj, come \"Pubs near Main "
 "Street, Boston\" o \"Hotels near Alexanderplatz, Berlin”."
 
+#: data/org.gnome.Maps.appdata.xml.in:54
+msgid "The GNOME Project"
+msgstr "Il progjet GNOME"
+
+#. Translators: This is the program name.
+#. for some reason, setting the title of the window through the .ui
+#. * template does not work anymore (maybe has something to do with
+#. * setting a custom title on the headerbar). Setting it programmatically
+#. * here works though. And yields a proper label in the gnome-shell
+#. * overview.
+#.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
-#: src/mainWindow.js:500
+#: src/application.js:83 src/mainWindow.js:138 src/mainWindow.js:508
 msgid "Maps"
 msgstr "Mapis"
 
 #: data/org.gnome.Maps.desktop.in:5
 msgid "A simple maps application"
 msgstr "Une semplice aplicazion par lis mapiss"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Maps.desktop.in:8
-msgid "org.gnome.Maps"
-msgstr "org.gnome.Maps"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Maps.desktop.in:14
@@ -347,7 +353,7 @@ msgid "Open shape layer"
 msgstr "Vierç strât sagome"
 
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:71
+#: data/ui/layers-popover.ui:69
 msgid "Open Shape Layer…"
 msgstr "Vierç strât sagome…"
 
@@ -724,11 +730,11 @@ msgstr "E mancjin i atribûts necessaris"
 msgid "Could not find OSM element"
 msgstr "Impussibil cjatâ l'element OSM"
 
-#: src/application.js:95
+#: src/application.js:96
 msgid "A path to a local tiles directory structure"
 msgstr "Un percors par une struture de cartele locâl des piastrelis"
 
-#: src/application.js:99
+#: src/application.js:100
 msgid "Show the version of the program"
 msgstr "Mostre la version dal program"
 
@@ -877,24 +883,23 @@ msgstr "Invie!"
 msgid "All Layer Files"
 msgstr "Ducj i file di strât"
 
-#: src/mainWindow.js:433
+#: src/mainWindow.js:441
 msgid "Failed to connect to location service"
 msgstr "Impussibil conetisi al servizi di localizazion"
 
-#: src/mainWindow.js:498
+#: src/mainWindow.js:506
 msgid "translator-credits"
 msgstr "Fabio Tomat"
 
-#: src/mainWindow.js:501
+#: src/mainWindow.js:509
 msgid "A map application for GNOME"
 msgstr "Une aplicazion di GNOME par lis mapis"
 
-#: src/mainWindow.js:512
-#| msgid "Copyright © 2011 – 2017 Red Hat, Inc. and The GNOME Maps authors"
+#: src/mainWindow.js:520
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 – 2019 Red Hat, Inc. e i autôrs di GNOME Mapis"
 
-#: src/mainWindow.js:531
+#: src/mainWindow.js:539
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Dâts mape di %s e colaboradôrs"
@@ -904,7 +909,7 @@ msgstr "Dâts mape di %s e colaboradôrs"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:547
+#: src/mainWindow.js:555
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Tassei mape furnîts di %s"
@@ -1631,6 +1636,9 @@ msgstr "%s mi"
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
+
+#~ msgid "org.gnome.Maps"
+#~ msgstr "org.gnome.Maps"
 
 #~ msgid "Quit"
 #~ msgstr "Jes"
