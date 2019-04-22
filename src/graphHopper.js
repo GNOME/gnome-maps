@@ -228,6 +228,21 @@ var GraphHopper = class GraphHopper {
         return [startPoint].concat(rest);
     }
 
+    _splitStreetNames(names) {
+        return names.split(',').map(n => n.trim());
+    }
+
+    /**
+     * Returns names found in both the arrays names1 and names2
+     */
+    _namesIntersection(names1, names2) {
+        return names1.filter(Set.prototype.has, new Set(names2));
+    }
+
+    _concatStreetNames(names) {
+        return names.join(', ');
+    }
+
     _foldInstructions(instructions) {
         let currInstruction = instructions[0];
         let res = [];
@@ -235,21 +250,29 @@ var GraphHopper = class GraphHopper {
         for (let i = 1; i < instructions.length; i++) {
             let newInstruction = instructions[i];
             let newSign = newInstruction.sign;
-            let newStreetname = newInstruction.street_name;
+            let currStreetnames = this._splitStreetNames(currInstruction.street_name);
+            let newStreetnames = this._splitStreetNames(newInstruction.street_name);
+            let namesIntersect =
+                this._namesIntersection(currStreetnames, newStreetnames);
 
             /* if the direction is to continue straight, or keep left or keep
-             * right on the same street/road number, fold the instruction into
+             * right on the same subset of street/road numbers, fold the instruction into
              * the previous one
              */
-            if (newSign === Sign.CONTINUE_ON_STREET ||
-                ((newSign === Sign.KEEP_LEFT || newSign === Sign.KEEP_RIGHT) &&
-                 newStreetname === currInstruction.street_name)) {
+            if ((newSign === Sign.CONTINUE_ON_STREET ||
+                 newSign === Sign.KEEP_LEFT || newSign === Sign.KEEP_RIGHT) &&
+                namesIntersect.length > 0) {
                 currInstruction.distance += newInstruction.distance;
+                currInstruction.street_name =
+                    this._concatStreetNames(namesIntersect);
             } else {
                 res.push(currInstruction);
-                currInstruction = instructions[i];
+                currInstruction = newInstruction;
             }
         }
+
+        // push finish instruction
+        res.push(instructions[instructions.length - 1]);
 
         return res;
     }
