@@ -33,6 +33,7 @@ const Format = imports.format;
 const Geoclue = imports.geoclue;
 const GeocodeService = imports.geocodeService;
 const MainWindow = imports.mainWindow;
+const MapboxGeocode = imports.mapboxGeocode;
 const Maps = imports.gi.GnomeMaps;
 const OSMEdit = imports.osmEdit;
 const OSMTypeSearchEntry = imports.osmTypeSearchEntry;
@@ -49,6 +50,7 @@ var placeStore = null;
 var routingDelegator = null;
 var geoclue = null;
 var geocodeService = null;
+var mapboxGeocode = null;
 var networkMonitor = null;
 var checkInManager = null;
 var contactStore = null;
@@ -231,6 +233,7 @@ var Application = GObject.registerClass({
         routingDelegator = new RoutingDelegator.RoutingDelegator({ query: routeQuery });
         geoclue          = new Geoclue.Geoclue();
         geocodeService   = new GeocodeService.GeocodeService();
+        mapboxGeocode    = new MapboxGeocode.MapboxGeocode();
         networkMonitor   = Gio.NetworkMonitor.get_default();
         networkMonitor.connect('network-changed',
                                this._checkNetwork.bind(this));
