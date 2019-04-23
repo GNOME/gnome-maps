@@ -27,6 +27,7 @@ const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
 
 const Application = imports.application;
+const GeocodeFactory = imports.geocode;
 const Location = imports.location;
 const Place = imports.place;
 const PlaceStore = imports.placeStore;
@@ -177,7 +178,7 @@ var PlaceEntry = GObject.registerClass({
         }
 
         if (this.text.startsWith('geo:')) {
-            let location = new Geocode.Location();
+            let location = new GeocodeGlib.Location();
 
             try {
                 location.set_from_uri(this.text);
@@ -206,8 +207,14 @@ var PlaceEntry = GObject.registerClass({
         let bbox = this._mapView.view.get_bounding_box();
 
         this._popover.showSpinner();
+
         this._cancellable = new Gio.Cancellable();
-        Application.geocodeService.search(this.text, bbox, this._cancellable, (places) => {
+        GeocodeFactory.getGeocoder().search(this.text,
+                                            this._mapView.view.latitude,
+                                            this._mapView.view.longitude,
+                                            this._cancellable,
+                                            (places, error) => {
+
             if (!places) {
                 this.place = null;
                 this._popover.showNoResult();
