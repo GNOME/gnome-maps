@@ -22,13 +22,14 @@
 
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
-const Geocode = imports.gi.GeocodeGlib;
+const GeocodeGlib = imports.gi.GeocodeGlib;
 const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
 
 const Application = imports.application;
 const GeocodeFactory = imports.geocode;
 const Location = imports.location;
+const PhotonGeocode = imports.photonGeocode;
 const Place = imports.place;
 const PlaceStore = imports.placeStore;
 const PlacePopover = imports.placePopover;
@@ -41,7 +42,7 @@ var PlaceEntry = GObject.registerClass({
                                           'The selected place',
                                           GObject.ParamFlags.READABLE |
                                           GObject.ParamFlags.WRITABLE,
-                                          Geocode.Place)
+                                          GeocodeGlib.Place)
     }
 }, class PlaceEntry extends Gtk.SearchEntry {
 
@@ -178,7 +179,7 @@ var PlaceEntry = GObject.registerClass({
         }
 
         if (this.text.startsWith('geo:')) {
-            let location = new Geocode.Location();
+            let location = new GeocodeGlib.Location();
 
             try {
                 location.set_from_uri(this.text);
@@ -207,6 +208,7 @@ var PlaceEntry = GObject.registerClass({
         let bbox = this._mapView.view.get_bounding_box();
 
         this._popover.showSpinner();
+
         this._cancellable = new Gio.Cancellable();
         GeocodeFactory.getGeocoder().search(this.text,
                                             this._mapView.view.latitude,
