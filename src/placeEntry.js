@@ -28,6 +28,7 @@ const Gtk = imports.gi.Gtk;
 
 const Application = imports.application;
 const Location = imports.location;
+const PhotonGeocode = imports.photonGeocode;
 const Place = imports.place;
 const PlaceStore = imports.placeStore;
 const PlacePopover = imports.placePopover;
@@ -206,8 +207,14 @@ var PlaceEntry = GObject.registerClass({
         let bbox = this._mapView.view.get_bounding_box();
 
         this._popover.showSpinner();
+
         this._cancellable = new Gio.Cancellable();
-        Application.geocodeService.search(this.text, bbox, this._cancellable, (places) => {
+        Application.photonGeocode.search(this.text,
+                                         this._mapView.view.latitude,
+                                         this._mapView.view.longitude,
+                                         this._cancellable,
+                                         (places, error) => {
+            Utils.debug('places: ' + places);
             if (!places) {
                 this.place = null;
                 this._popover.showNoResult();
