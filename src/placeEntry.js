@@ -41,7 +41,7 @@ var PlaceEntry = GObject.registerClass({
                                           'The selected place',
                                           GObject.ParamFlags.READABLE |
                                           GObject.ParamFlags.WRITABLE,
-                                          Geocode.Place)
+                                          GeocodeGlib.Place)
     }
 }, class PlaceEntry extends Gtk.SearchEntry {
 
@@ -178,7 +178,7 @@ var PlaceEntry = GObject.registerClass({
         }
 
         if (this.text.startsWith('geo:')) {
-            let location = new Geocode.Location();
+            let location = new GeocodeGlib.Location();
 
             try {
                 location.set_from_uri(this.text);
@@ -207,6 +207,7 @@ var PlaceEntry = GObject.registerClass({
         let bbox = this._mapView.view.get_bounding_box();
 
         this._popover.showSpinner();
+
         this._cancellable = new Gio.Cancellable();
         GeocodeFactory.getGeocoder().search(this.text,
                                             this._mapView.view.latitude,
