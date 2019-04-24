@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps gnome-3-28\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-01-29 21:31+0000\n"
-"PO-Revision-Date: 2019-02-01 15:15+0700\n"
+"POT-Creation-Date: 2019-03-26 17:04+0000\n"
+"PO-Revision-Date: 2019-04-24 18:56+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome@i15n.org>\n"
 "Language: id\n"
@@ -57,20 +57,26 @@ msgstr ""
 "\"Pub dekat Main Street, Boston\" atau \"Hotel dekat Alexanderplatz, Berlin"
 "\"."
 
+#: data/org.gnome.Maps.appdata.xml.in:54
+msgid "The GNOME Project"
+msgstr "Proyek GNOME"
+
+#. Translators: This is the program name.
+#. for some reason, setting the title of the window through the .ui
+#. * template does not work anymore (maybe has something to do with
+#. * setting a custom title on the headerbar). Setting it programmatically
+#. * here works though. And yields a proper label in the gnome-shell
+#. * overview.
+#.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
-#: src/mainWindow.js:500
+#: src/application.js:83 src/mainWindow.js:138 src/mainWindow.js:508
 msgid "Maps"
 msgstr "Peta"
 
 #: data/org.gnome.Maps.desktop.in:5
 msgid "A simple maps application"
 msgstr "Aplikasi peta sederhana"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Maps.desktop.in:8
-msgid "org.gnome.Maps"
-msgstr "org.gnome.Maps"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Maps.desktop.in:14
@@ -726,11 +732,11 @@ msgstr "Atribut yang diperlukan kurang"
 msgid "Could not find OSM element"
 msgstr "Tak bisa temukan elemen OSM"
 
-#: src/application.js:95
+#: src/application.js:96
 msgid "A path to a local tiles directory structure"
 msgstr "Suatu path ke sebuah struktur direktori ubin lokal"
 
-#: src/application.js:99
+#: src/application.js:100
 msgid "Show the version of the program"
 msgstr "Tampilkan versi program"
 
@@ -880,25 +886,25 @@ msgstr "Mulai!"
 msgid "All Layer Files"
 msgstr "Semua Berkas Lapisan"
 
-#: src/mainWindow.js:433
+#: src/mainWindow.js:441
 msgid "Failed to connect to location service"
 msgstr "Gagal menyambung ke layanan lokasi"
 
-#: src/mainWindow.js:498
+#: src/mainWindow.js:506
 msgid "translator-credits"
 msgstr ""
 "Andika Triwidada <andika@gmail.com>, 2013-2016, 2018.\n"
 "Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2018, 2019."
 
-#: src/mainWindow.js:501
+#: src/mainWindow.js:509
 msgid "A map application for GNOME"
 msgstr "Aplikasi peta bagi GNOME"
 
-#: src/mainWindow.js:512
+#: src/mainWindow.js:520
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Hak Cipta © 2011 – 2019 Red Hat, Inc. dan Penulis GNOME Peta"
 
-#: src/mainWindow.js:531
+#: src/mainWindow.js:539
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Data peta oleh %s dan kontributor"
@@ -908,7 +914,7 @@ msgstr "Data peta oleh %s dan kontributor"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:547
+#: src/mainWindow.js:555
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Ubin peta disediakan oleh %s"
@@ -1634,6 +1640,9 @@ msgstr "%s mil"
 #, javascript-format
 msgid "%s ft"
 msgstr "%s kaki"
+
+#~ msgid "org.gnome.Maps"
+#~ msgstr "org.gnome.Maps"
 
 #~ msgid "Quit"
 #~ msgstr "Keluar"
