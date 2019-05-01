@@ -120,11 +120,8 @@ var ContextMenu = GObject.registerClass({
     }
 
     _onWhatsHereActivated() {
-        let location = new Location.Location({ latitude: this._latitude,
-                                               longitude: this._longitude,
-                                               accuracy: 0 });
-
-        Application.geocodeService.reverse(location, null, (place) => {
+        Application.photonGeocode.reverse(this._latitude, this._longitude,
+                                          (place) => {
             if (place) {
                 this._mapView.showPlace(place, false);
             } else {
