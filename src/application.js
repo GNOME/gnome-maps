@@ -47,7 +47,6 @@ var settings = null;
 var placeStore = null;
 var routingDelegator = null;
 var geoclue = null;
-var geocodeService = null;
 var networkMonitor = null;
 var checkInManager = null;
 var contactStore = null;
