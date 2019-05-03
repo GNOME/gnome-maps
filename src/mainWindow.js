@@ -536,6 +536,7 @@ var MainWindow = GObject.registerClass({
 
     _getAttribution() {
         let tileProviderInfo = Service.getService().tileProviderInfo;
+        let photonGeocode = Service.getService().photonGeocode;
         let attribution = _("Map data by %s and contributors").format('<a href="https://www.openstreetmap.org">OpenStreetMap</a>');
 
         if (tileProviderInfo) {
@@ -553,6 +554,31 @@ var MainWindow = GObject.registerClass({
              * is available
              */
             attribution += _("Map tiles provided by %s").format(tileProviderString);
+        }
+
+        if (photonGeocode) {
+            let photonProviderString;
+            if (photonGeocode.attributionUrl) {
+                photonProviderString =
+                    '<a href="' + photonGeocode.attributionUrl + '">' +
+                    photonGeocode.attribution + '</a>';
+            } else {
+                photonProviderString = photonGeocode.attribution;
+            }
+
+            attribution += '\n';
+            /* Translators: this is an attribution string giving credit to the
+             * search provider where the first %s placeholder is replaced by either
+             * the bare name of the tile provider, or a linkified URL if one
+             * is available, and the second %s placeholder is replaced by the
+             * URL to the Photon geocoder project page. These placeholders
+             * can be swapped, if needed using the %n$s positional syntax
+             * (i.e. "%2$s ... %1$s ..." for positioning the project URL
+             * before the provider).
+             */
+            attribution += _("Search provided by %s using %s").
+                format(photonProviderString,
+                       '<a href="https://github.com/Komoot/photon">Photon</a>');
         }
 
         return attribution;
