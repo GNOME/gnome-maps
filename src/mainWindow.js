@@ -33,6 +33,7 @@ const Application = imports.application;
 const ContextMenu = imports.contextMenu;
 const FavoritesPopover = imports.favoritesPopover;
 const Geoclue = imports.geoclue;
+const GeocodeFactory = imports.geocode;
 const LayersPopover = imports.layersPopover;
 const LocationServiceDialog = imports.locationServiceDialog;
 const MapView = imports.mapView;
@@ -536,6 +537,7 @@ var MainWindow = GObject.registerClass({
 
     _getAttribution() {
         let tileProviderInfo = Service.getService().tileProviderInfo;
+        let photonGeocode = Service.getService().photonGeocode;
         let attribution = _("Map data by %s and contributors").format('<a href="https://www.openstreetmap.org">OpenStreetMap</a>');
 
         if (tileProviderInfo) {
@@ -554,6 +556,35 @@ var MainWindow = GObject.registerClass({
              */
             attribution += _("Map tiles provided by %s").format(tileProviderString);
         }
+
+        let provider = GeocodeFactory.getGeocoder().attribution;
+        let providerUrl = GeocodeFactory.getGeocoder().attributionUrl;
+        let geocoderName = GeocodeFactory.getGeocoder().name;
+        let geocoderUrl = GeocodeFactory.getGeocoder().url;
+
+        let providerString;
+        if (providerUrl) {
+            providerString =
+                '<a href="' + providerUrl + '">' + provider + '</a>';
+        } else {
+            providerString = provider;
+        }
+
+        let geocoderLink =
+            '<a href="%s">%s</a>'.format(geocoderUrl, geocoderName);
+
+        attribution += '\n';
+        /* Translators: this is an attribution string giving credit to the
+         * search provider where the first %s placeholder is replaced by either
+         * the bare name of the geocoder provider, or a linkified URL if one
+         * is available, and the second %s placeholder is replaced by the
+         * URL to the geocoder project page. These placeholders
+         * can be swapped, if needed using the %n$s positional syntax
+         * (i.e. "%2$s ... %1$s ..." for positioning the project URL
+         * before the provider).
+         */
+        attribution += _("Search provided by %s using %s").
+            format(providerString, geocoderLink);
 
         return attribution;
     }
