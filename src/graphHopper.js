@@ -251,6 +251,9 @@ var GraphHopper = class GraphHopper {
             }
         }
 
+        // push finish instruction
+        res.push(instructions[instructions.length - 1]);
+
         return res;
     }
 
