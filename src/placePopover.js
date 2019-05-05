@@ -30,8 +30,7 @@ const _PLACE_ICON_SIZE = 20;
 const Mode = {
     IDLE: 0, // Nothing going on
     ACTIVATED: 1, // Just activated, ignore changes to text
-    COMPLETION: 2, // We are doing completion against placeStore
-    RESULT: 3 // We are displaying results
+    RESULT: 2 // We are displaying results
 };
 
 var PlacePopover = GObject.registerClass({
@@ -67,9 +66,6 @@ var PlacePopover = GObject.registerClass({
             if (row)
                 this.emit('selected', row.place);
         });
-
-        // Make sure we clear all selected rows when the search string change
-        this._entry.connect('changed', () => this._list.unselect_all());
 
         this._list.set_header_func((row, before) => {
             let header = new Gtk.Separator();
@@ -120,38 +116,28 @@ var PlacePopover = GObject.registerClass({
         this._stack.visible_child = this._noResultsLabel;
     }
 
-    showCompletion() {
-        if (this._mode === undefined || this._mode === Mode.ACTIVATED) {
-            this._mode = Mode.IDLE;
-            return;
-        }
-
-        this._mode = Mode.COMPLETION;
-        this._stack.visible_child = this._scrolledWindow;
-
-        if (!this.visible)
-            this.show();
-    }
-
     updateResult(places, searchString) {
-        this._list.forall((row) => row.destroy());
+        let i = 0;
 
-        places.forEach((place) => {
-            if (!place.location)
-                return;
+        places.forEach((p) => {
+            let row = this._list.get_row_at_index(i);
 
-            this._addRow(place, null, searchString);
+            // update existing row, if there is one, otherwise create new
+            if (row)
+                row.update(p.place, p.type, searchString);
+            else
+                this._addRow(p.place, p.type, searchString);
+
+            i++;
         });
-    }
 
-    updateCompletion(filter, searchString) {
-        this._list.forall((row) => row.destroy());
+        // remove remaining rows
+        let row = this._list.get_row_at_index(i);
 
-        filter.foreach((model, path, iter) => {
-            let place = model.get_value(iter, PlaceStore.Columns.PLACE);
-            let type = model.get_value(iter, PlaceStore.Columns.TYPE);
-            this._addRow(place, type, searchString);
-        });
+        while (row) {
+            row.destroy();
+            row = this._list.get_row_at_index(i);
+        }
     }
 
     _addRow(place, type, searchString) {
