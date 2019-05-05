@@ -34,6 +34,9 @@ const PlaceStore = imports.placeStore;
 const PlacePopover = imports.placePopover;
 const Utils = imports.utils;
 
+// minimum number of characters to start completion, TODO: how to handle ideographs?
+const MIN_CHARS_COMPLETION = 3;
+
 var PlaceEntry = GObject.registerClass({
     Properties: {
         'place': GObject.ParamSpec.object('place',
@@ -103,18 +106,27 @@ var PlaceEntry = GObject.registerClass({
             if (this._cancellable)
                 this._cancellable.cancel();
 
-            this._refreshFilter();
+            //this._refreshFilter();
 
             if (this.text.length === 0) {
                 this._popover.hide();
                 this.place = null;
                 return;
+            } else if (this.text.length >= MIN_CHARS_COMPLETION) {
+                // if no previous search has been performed, show spinner
+                if (!this._previousSearch ||
+                    this._previousSearch.length < MIN_CHARS_COMPLETION)
+                    this._popover.showSpinner();
+                this._doSearch();
+                return;
             }
 
+            /*
             if (this._filter.iter_n_children(null) > 0)
                 this._popover.showCompletion();
             else
                 this._popover.hide();
+            */
         });
 
         if (parseOnFocusOut) {
@@ -207,8 +219,12 @@ var PlaceEntry = GObject.registerClass({
         let bbox = this._mapView.view.get_bounding_box();
 
         this._popover.showSpinner();
+        this._doSearch();
+    }
 
+    _doSearch() {
         this._cancellable = new Gio.Cancellable();
+        this._previousSearch = this.text;
         Application.photonGeocode.search(this.text,
                                          this._mapView.view.latitude,
                                          this._mapView.view.longitude,
