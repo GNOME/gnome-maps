@@ -27,13 +27,6 @@ const SearchPopover = imports.searchPopover;
 
 const _PLACE_ICON_SIZE = 20;
 
-const Mode = {
-    IDLE: 0, // Nothing going on
-    ACTIVATED: 1, // Just activated, ignore changes to text
-    COMPLETION: 2, // We are doing completion against placeStore
-    RESULT: 3 // We are displaying results
-};
-
 var PlacePopover = GObject.registerClass({
     Signals : {
         'selected' : { param_types: [ GObject.TYPE_OBJECT ] }
@@ -57,19 +50,11 @@ var PlacePopover = GObject.registerClass({
         super._init(props);
 
         this._entry = this.relative_to;
-        this._entry.connect('notify::place', () => this._mode = Mode.ACTIVATED);
-
-        Application.routingDelegator.graphHopper.route.connect('update', () => {
-            this._mode = Mode.ACTIVATED;
-        });
 
         this._list.connect('row-activated', (list, row) => {
             if (row)
                 this.emit('selected', row.place);
         });
-
-        // Make sure we clear all selected rows when the search string change
-        this._entry.connect('changed', () => this._list.unselect_all());
 
         this._list.set_header_func((row, before) => {
             let header = new Gtk.Separator();
@@ -96,8 +81,6 @@ var PlacePopover = GObject.registerClass({
     }
 
     showResult() {
-        this._mode = Mode.RESULT;
-
         if (this._spinner.active)
             this._spinner.stop();
 
@@ -112,46 +95,34 @@ var PlacePopover = GObject.registerClass({
     }
 
     showNoResult() {
-        this._mode = Mode.IDLE;
-
         if (this._spinner.active)
             this._spinner.stop();
 
         this._stack.visible_child = this._noResultsLabel;
     }
 
-    showCompletion() {
-        if (this._mode === undefined || this._mode === Mode.ACTIVATED) {
-            this._mode = Mode.IDLE;
-            return;
-        }
-
-        this._mode = Mode.COMPLETION;
-        this._stack.visible_child = this._scrolledWindow;
-
-        if (!this.visible)
-            this.show();
-    }
-
     updateResult(places, searchString) {
-        this._list.forall((row) => row.destroy());
+        let i = 0;
 
-        places.forEach((place) => {
-            if (!place.location)
-                return;
+        places.forEach((p) => {
+            let row = this._list.get_row_at_index(i);
 
-            this._addRow(place, null, searchString);
+            // update existing row, if there is one, otherwise create new
+            if (row)
+                row.update(p.place, p.type, searchString);
+            else
+                this._addRow(p.place, p.type, searchString);
+
+            i++;
         });
-    }
 
-    updateCompletion(filter, searchString) {
-        this._list.forall((row) => row.destroy());
+        // remove remaining rows
+        let row = this._list.get_row_at_index(i);
 
-        filter.foreach((model, path, iter) => {
-            let place = model.get_value(iter, PlaceStore.Columns.PLACE);
-            let type = model.get_value(iter, PlaceStore.Columns.TYPE);
-            this._addRow(place, type, searchString);
-        });
+        while (row) {
+            row.destroy();
+            row = this._list.get_row_at_index(i);
+        }
     }
 
     _addRow(place, type, searchString) {
