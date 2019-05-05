@@ -68,9 +68,6 @@ var PlacePopover = GObject.registerClass({
                 this.emit('selected', row.place);
         });
 
-        // Make sure we clear all selected rows when the search string change
-        this._entry.connect('changed', () => this._list.unselect_all());
-
         this._list.set_header_func((row, before) => {
             let header = new Gtk.Separator();
             if (before)
@@ -137,10 +134,10 @@ var PlacePopover = GObject.registerClass({
         this._list.forall((row) => row.destroy());
 
         places.forEach((place) => {
-            if (!place.location)
+            if (!place.place.location)
                 return;
 
-            this._addRow(place, null, searchString);
+            this._addRow(place.place, place.type, searchString);
         });
     }
 
