@@ -137,10 +137,10 @@ var PlacePopover = GObject.registerClass({
         this._list.forall((row) => row.destroy());
 
         places.forEach((place) => {
-            if (!place.location)
+            if (!place.place.location)
                 return;
 
-            this._addRow(place, null, searchString);
+            this._addRow(place.place, place.type, searchString);
         });
     }
 
