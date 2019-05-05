@@ -34,6 +34,9 @@ const PlaceStore = imports.placeStore;
 const PlacePopover = imports.placePopover;
 const Utils = imports.utils;
 
+// minimum number of characters to start completion, TODO: how to handle ideographs?
+const MIN_CHARS_COMPLETION = 3;
+
 var PlaceEntry = GObject.registerClass({
     Properties: {
         'place': GObject.ParamSpec.object('place',
@@ -54,11 +57,13 @@ var PlaceEntry = GObject.registerClass({
 
         if (p) {
             if (p.name) {
-                this.text = p.name;
+                this._placeText = p.name;
             } else
-                this.text = p.location.latitude + ', ' + p.location.longitude;
+                this._placeText = p.location.latitude + ', ' + p.location.longitude;
         } else
-            this.text = '';
+            this._placeText = '';
+
+        this.text = this._placeText;
 
         this._place = p;
         this.notify('place');
@@ -98,24 +103,12 @@ var PlaceEntry = GObject.registerClass({
 
         this._popover = this._createPopover(numVisible, maxChars);
 
-        this.connect('activate', this._onActivate.bind(this));
-        this.connect('search-changed', () => {
-            if (this._cancellable)
-                this._cancellable.cancel();
+        this.connect('search-changed', this._onSearchChanged.bind(this));
 
-            this._refreshFilter();
+        this._cache = {};
 
-            if (this.text.length === 0) {
-                this._popover.hide();
-                this.place = null;
-                return;
-            }
-
-            if (this._filter.iter_n_children(null) > 0)
-                this._popover.showCompletion();
-            else
-                this._popover.hide();
-        });
+        // clear cache when view moves, as result are location-dependent
+        this._mapView.view.connect('notify::latitude', () => this._cache = {});
 
         if (parseOnFocusOut) {
             this.connect('focus-out-event', () => {
@@ -123,6 +116,47 @@ var PlaceEntry = GObject.registerClass({
                 return false;
             });
         }
+    }
+
+    _onSearchChanged() {
+        if (this._parse())
+            return;
+
+        // wait for an ongoing search
+        if (this._cancellable)
+            return;
+
+        //this._refreshFilter();
+
+        if (this.text.length < MIN_CHARS_COMPLETION) {
+            this._popover.hide();
+            if (this.text.length === 0)
+                this.place = null;
+            this._previousSearch = null;
+        } else if (this.text.length >= MIN_CHARS_COMPLETION &&
+                   this.text !== this._placeText) {
+            let cachedResults = this._cache[this.text];
+
+            if (cachedResults) {
+                this._updateResults(cachedResults);
+            } else {
+                // if no previous search has been performed, show spinner
+                if (!this._previousSearch ||
+                    this._previousSearch.length < MIN_CHARS_COMPLETION ||
+                    this._placeText) {
+                    this._popover.showSpinner();
+                }
+                this._placeText = '';
+                this._doSearch();
+            }
+        }
+
+        /*
+        if (this._filter.iter_n_children(null) > 0)
+            this._popover.showCompletion();
+        else
+            this._popover.hide();
+        */
     }
 
     _locEquals(placeA, placeB) {
@@ -172,10 +206,7 @@ var PlaceEntry = GObject.registerClass({
     }
 
     _parse() {
-        if (this.text.length === 0) {
-            this.place = null;
-            return true;
-        }
+        let parsed = false;
 
         if (this.text.startsWith('geo:')) {
             let location = new Geocode.Location();
@@ -188,40 +219,51 @@ var PlaceEntry = GObject.registerClass({
                 Utils.showDialog(msg, Gtk.MessageType.ERROR, this.get_toplevel());
             }
 
-            return true;
+            parsed = true;
         }
 
         let parsedLocation = Place.Place.parseCoordinates(this.text);
         if (parsedLocation) {
             this.place = new Place.Place({ location: parsedLocation });
-            return true;
+            parsed = true;
         }
 
-        return false;
+        if (parsed && this._cancellable)
+            this._cancellable.cancel();
+
+        return parsed;
     }
 
-    _onActivate() {
-        if (this._parse())
-            return;
-
-        let bbox = this._mapView.view.get_bounding_box();
-
-        this._popover.showSpinner();
-
+    _doSearch() {
+        if (this._cancellable)
+            this._cancellable.cancel();
         this._cancellable = new Gio.Cancellable();
+        this._previousSearch = this.text;
         Application.photonGeocode.search(this.text,
                                          this._mapView.view.latitude,
                                          this._mapView.view.longitude,
                                          this._cancellable,
                                          (places, error) => {
             Utils.debug('places: ' + places);
-            if (!places) {
+            this._cancellable = null;
+            this._updateResults(places);
+
+            // cache results for later
+            this._cache[this.text] = places;
+
+            // if search input has been updated, trigger a refresh
+            if (this.text !== this._previousSearch)
+                this._onSearchChanged();
+        });
+    }
+
+    _updateResults(places) {
+        if (!places) {
                 this.place = null;
                 this._popover.showNoResult();
                 return;
-            }
-            this._popover.updateResult(places, this.text);
-            this._popover.showResult();
-        });
+        }
+        this._popover.updateResult(places, this.text);
+        this._popover.showResult();
     }
 });
