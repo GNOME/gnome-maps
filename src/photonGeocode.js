@@ -55,6 +55,9 @@ var PhotonGeocode = class {
 
         this._session.queue_message(msg, (session, message) => {
             cancellable.disconnect(handler);
+            if (cancellable.is_cancelled())
+                return;
+
             try {
                 Utils.debug('message: ' + message.response_body.data);
                 let result = this._parseMessage(message.response_body.data);
