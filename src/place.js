@@ -26,8 +26,8 @@ const Location = imports.location;
 const Translations = imports.translations;
 const Utils = imports.utils;
 
-// Matches coordinates string with the format "<lat>, <long>"
-const COORDINATES_REGEX = (
+// Matches coordinates string in 'Decimal Degrees' format
+const DECIMAL_COORDINATES_REGEX = (
     /^\s*(\-?\d+(?:\.\d+)?)°?\s*,\s*(\-?\d+(?:\.\d+)?)°?\s*$/
 );
 
@@ -348,18 +348,24 @@ Place.validateCoordinates = function(lat, lon) {
     return lat <= 90 && lat >= -90 && lon <= 180 && lon >= -180;
 }
 
-Place.parseCoordinates = function(text) {
-    let match = text.match(COORDINATES_REGEX);
+Place.parseDecimalCoordinates = function(text) {
+    let match = text.match(DECIMAL_COORDINATES_REGEX);
 
     if (match) {
         let latitude = parseFloat(match[1]);
         let longitude = parseFloat(match[2]);
 
-        if (Place.validateCoordinates(latitude, longitude)) {
-            return new Location.Location({ latitude: latitude,
-                                           longitude: longitude });
-        } else
-            return null;
+        return [latitude, longitude];
+    } else
+        return null;
+};
+
+Place.parseCoordinates = function(text) {
+    let coords = Place.parseDecimalCoordinates(text);
+
+    if (coords && Place.validateCoordinates(coords[0], coords[1])) {
+        return new Location.Location({ latitude: coords[0],
+                                       longitude: coords[1] });
     } else
         return null;
 };
