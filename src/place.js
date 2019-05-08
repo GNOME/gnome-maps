@@ -26,8 +26,17 @@ const Location = imports.location;
 const Translations = imports.translations;
 const Utils = imports.utils;
 
-// Matches coordinates string with the format "<lat>, <long>"
-const COORDINATES_REGEX = /^\s*(\-?\d+(?:\.\d+)?)\s*,\s*(\-?\d+(?:\.\d+)?)\s*$/;
+// Matches coordinates string in 'Decimal Degrees' format
+const DECIMAL_COORDINATES_REGEX = (
+    /^\s*(\-?\d+(?:\.\d+)?)°?\s*,\s*(\-?\d+(?:\.\d+)?)°?\s*$/
+);
+
+// Matches coordinates string in 'Degrees, Minutes, Seconds' format
+const DMS_COORDINATES_REGEX = new RegExp(
+    /^\s*(\d+)°?\s*(\d+)['′]?\s*(\d+(?:.\d+)?)["″]?\s*(N|S)\s*,/.source
+    + /\s*(\d+)°?\s*(\d+)['′]?\s*(\d+(?:.\d+)?)["″]?\s*(W|E)\s*$/.source,
+    "i"
+);
 
 var Place = GObject.registerClass(
 class Place extends Geocode.Place {
@@ -344,20 +353,55 @@ Place.fromJSON = function(obj) {
 
 Place.validateCoordinates = function(lat, lon) {
     return lat <= 90 && lat >= -90 && lon <= 180 && lon >= -180;
-}
+};
 
-Place.parseCoordinates = function(text) {
-    let match = text.match(COORDINATES_REGEX);
+Place.parseDecimalCoordinates = function(text) {
+    let match = text.match(DECIMAL_COORDINATES_REGEX);
 
     if (match) {
         let latitude = parseFloat(match[1]);
         let longitude = parseFloat(match[2]);
 
-        if (Place.validateCoordinates(latitude, longitude)) {
-            return new Location.Location({ latitude: latitude,
-                                           longitude: longitude });
-        } else
-            return null;
-    } else
+        return [latitude, longitude];
+    } else {
         return null;
+    }
+};
+
+Place.parseDmsCoordinates = function(text) {
+    let match = text.match(DMS_COORDINATES_REGEX);
+
+    if (match) {
+        let degrees = parseFloat(match[1]);
+        let minutes = parseFloat(match[2]);
+        let seconds = parseFloat(match[3]);
+        let latitude = degrees + minutes / 60 + seconds / 3600;
+
+        if (match[4].toUpperCase() === "S")
+            latitude *= -1;
+
+        degrees = parseFloat(match[5]);
+        minutes = parseFloat(match[6]);
+        seconds = parseFloat(match[7]);
+        let longitude = degrees + minutes / 60 + seconds / 3600;
+
+        if (match[8].toUpperCase() === "W")
+            longitude *= -1;
+
+        return [latitude, longitude];
+    } else {
+        return null;
+    }
+};
+
+Place.parseCoordinates = function(text) {
+    let coords = Place.parseDecimalCoordinates(text) ||
+        Place.parseDmsCoordinates(text);
+
+    if (coords && Place.validateCoordinates(coords[0], coords[1])) {
+        return new Location.Location({ latitude: coords[0],
+                                       longitude: coords[1] });
+    } else {
+        return null;
+    }
 };
