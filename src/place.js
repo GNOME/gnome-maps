@@ -27,7 +27,9 @@ const Translations = imports.translations;
 const Utils = imports.utils;
 
 // Matches coordinates string with the format "<lat>, <long>"
-const COORDINATES_REGEX = /^\s*(\-?\d+(?:\.\d+)?)\s*,\s*(\-?\d+(?:\.\d+)?)\s*$/;
+const COORDINATES_REGEX = (
+    /^\s*(\-?\d+(?:\.\d+)?)°?\s*,\s*(\-?\d+(?:\.\d+)?)°?\s*$/
+);
 
 var Place = GObject.registerClass(
 class Place extends Geocode.Place {
