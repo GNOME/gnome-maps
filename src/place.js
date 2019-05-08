@@ -353,7 +353,7 @@ Place.fromJSON = function(obj) {
 
 Place.validateCoordinates = function(lat, lon) {
     return lat <= 90 && lat >= -90 && lon <= 180 && lon >= -180;
-}
+};
 
 Place.parseDecimalCoordinates = function(text) {
     let match = text.match(DECIMAL_COORDINATES_REGEX);
