@@ -25,7 +25,7 @@ function encode(data) {
     if(data === null)
         return null;
 
-    return Soup.URI.encode(data.toString(), null);
+    return Soup.URI.encode(data.toString(), '&');
 }
 
 var Query = class Query {
