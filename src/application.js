@@ -234,6 +234,8 @@ var Application = GObject.registerClass({
         networkMonitor   = Gio.NetworkMonitor.get_default();
         networkMonitor.connect('network-changed',
                                this._checkNetwork.bind(this));
+        networkMonitor.connect('notify::connectivity',
+                               this._checkNetwork.bind(this));
         checkInManager = new CheckIn.CheckInManager();
         contactStore = new Maps.ContactStore();
         contactStore.load();
