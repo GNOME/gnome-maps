@@ -147,11 +147,12 @@
                 "-DENABLE_VALA_BINDINGS=ON",
                 "-DENABLE_INTROSPECTION=ON"
             ],
-            "cmake" : true,
+            "buildsystem" : "cmake",
             "sources" : [
                 {
-                    "type" : "git",
-                    "url" : "https://gitlab.gnome.org/GNOME/evolution-data-server.git"
+                    "type" : "archive",
+                    "url" : "https://ftp.gnome.org/pub/gnome/sources/evolution-data-server/3.32/evolution-data-server-3.32.2.tar.xz",
+                    "sha256": "7ea7491065fd0382f2268cf6bf95331a75dfda587d5940deb47f9e74be1ab3c9"
                 }
             ]
         },
