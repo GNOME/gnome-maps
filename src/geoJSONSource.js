@@ -28,12 +28,10 @@ const Geojsonvt = imports.geojsonvt.geojsonvt;
 const Location = imports.location;
 const Place = imports.place;
 const PlaceMarker = imports.placeMarker;
+const Service = imports.service;
 const Utils = imports.utils;
 const GeoJSONStyle = imports.geoJSONStyle;
 const MapView = imports.mapView;
-
-
-const TILE_SIZE = 256;
 
 const TileFeature = { POINT: 1,
                       LINESTRING: 2,
@@ -48,6 +46,7 @@ class GeoJSONSource extends Champlain.TileSource {
         this._mapView = params.mapView;
         this._markerLayer = params.markerLayer;
         this._bbox = new Champlain.BoundingBox();
+        this._tileSize = Service.getService().tiles.street.tile_size;
     }
 
     get bbox() {
@@ -55,7 +54,7 @@ class GeoJSONSource extends Champlain.TileSource {
     }
 
     vfunc_get_tile_size() {
-        return TILE_SIZE;
+        return this._tileSize;
     }
 
     vfunc_get_max_zoom_level() {
@@ -211,17 +210,17 @@ class GeoJSONSource extends Champlain.TileSource {
 
     parse(json) {
         this._parseInternal(json);
-        this._tileIndex = Geojsonvt.geojsonvt(json, { extent: TILE_SIZE,
+        this._tileIndex = Geojsonvt.geojsonvt(json, { extent: this._tileSize,
                                                       maxZoom: 20 });
         this._clampBBox();
     }
 
     _renderTile(tile) {
         let tileJSON = this._tileIndex.getTile(tile.zoom_level, tile.x, tile.y);
-        let content = new Clutter.Canvas({ width: TILE_SIZE,
-                                           height: TILE_SIZE });
-        tile.content = new Clutter.Actor({ width: TILE_SIZE,
-                                           height: TILE_SIZE,
+        let content = new Clutter.Canvas({ width: this._tileSize,
+                                           height: this._tileSize });
+        tile.content = new Clutter.Actor({ width: this._tileSize,
+                                           height: this._tileSize,
                                            content: content });
 
         content.connect('draw', (canvas, cr) => {
