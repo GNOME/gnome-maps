@@ -39,8 +39,7 @@ var PlacePopover = GObject.registerClass({
         'selected' : { param_types: [ GObject.TYPE_OBJECT ] }
     },
     Template: 'resource:///org/gnome/Maps/ui/place-popover.ui',
-    InternalChildren: [ 'hintRevealer',
-                        'scrolledWindow',
+    InternalChildren: [ 'scrolledWindow',
                         'stack',
                         'spinner',
                         'list',
@@ -72,11 +71,6 @@ var PlacePopover = GObject.registerClass({
         // Make sure we clear all selected rows when the search string change
         this._entry.connect('changed', () => this._list.unselect_all());
 
-        // Do not show 'press enter to search' when we have
-        // selected rows in completion mode.
-        this._list.connect('selected-rows-changed',
-                           this._updateHint.bind(this));
-
         this._list.set_header_func((row, before) => {
             let header = new Gtk.Separator();
             if (before)
@@ -96,7 +90,6 @@ var PlacePopover = GObject.registerClass({
     showSpinner() {
         this._spinner.start();
         this._stack.visible_child = this._spinner;
-        this._updateHint();
 
         if (!this.visible)
             this.show();
@@ -135,15 +128,9 @@ var PlacePopover = GObject.registerClass({
 
         this._mode = Mode.COMPLETION;
         this._stack.visible_child = this._scrolledWindow;
-        this._updateHint();
 
         if (!this.visible)
             this.show();
-    }
-
-    vfunc_hide() {
-        this._hintRevealer.reveal_child = false;
-        super.vfunc_hide();
     }
 
     updateResult(places, searchString) {
@@ -174,17 +161,5 @@ var PlacePopover = GObject.registerClass({
                                                   maxChars: this._maxChars,
                                                   can_focus: true });
         this._list.add(row);
-    }
-
-    _updateHint() {
-        if (this._stack.visible_child === this._spinner) {
-            this._hintRevealer.reveal_child = false;
-            return;
-        }
-
-        if (this._list.get_selected_rows().length > 0)
-            this._hintRevealer.reveal_child = false;
-        else
-            this._hintRevealer.reveal_child = true;
     }
 });
