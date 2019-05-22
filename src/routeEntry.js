@@ -106,7 +106,6 @@ var RouteEntry = GObject.registerClass({
                                                 hexpand: true,
                                                 receives_default: true,
                                                 mapView: this._mapView,
-                                                parseOnFocusOut: true,
                                                 maxChars: 15 });
         if (this._point) {
             entry.bind_property('place',
