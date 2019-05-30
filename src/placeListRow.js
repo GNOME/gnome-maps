@@ -36,13 +36,13 @@ var PlaceListRow = GObject.registerClass({
 }, class PlaceListRow extends Gtk.ListBoxRow {
 
     _init(params) {
-        this.place = params.place;
+        let place = params.place;
         delete params.place;
 
         let searchString = params.searchString || '';
         delete params.searchString;
 
-        let maxChars = params.maxChars || 40;
+        this._maxChars = params.maxChars || 40;
         delete params.maxChars;
 
         let type = params.type;
@@ -50,15 +50,19 @@ var PlaceListRow = GObject.registerClass({
 
         params.height_request = ROW_HEIGHT;
         super._init(params);
+        this.update(place, type, searchString);
+    }
 
+    update(place, type, searchString) {
+        this.place = place;
         let formatter = new PlaceFormatter.PlaceFormatter(this.place);
         this.title = formatter.title;
         let markup = GLib.markup_escape_text(formatter.title, -1);
 
         this._name.label = this._boldMatch(markup, searchString);
-        this._details.max_width_chars = maxChars;
+        this._details.max_width_chars = this._maxChars;
         this._details.label = GLib.markup_escape_text(formatter.getDetailsString(),-1);
-        this._icon.gicon = this.place.icon;
+        this._icon.gicon = place.icon;
 
         if (type === PlaceStore.PlaceType.RECENT ||
             type === PlaceStore.PlaceType.RECENT_ROUTE)
@@ -67,7 +71,8 @@ var PlaceListRow = GObject.registerClass({
             this._typeIcon.icon_name = 'starred-symbolic';
         else if (type === PlaceStore.PlaceType.CONTACT)
             this._typeIcon.icon_name = 'avatar-default-symbolic';
-
+        else
+            this._typeIcon.icon_name = null;
     }
 
     _boldMatch(title, string) {
