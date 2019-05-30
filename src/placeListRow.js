@@ -42,21 +42,24 @@ var PlaceListRow = GObject.registerClass({
         let searchString = params.searchString || '';
         delete params.searchString;
 
-        let maxChars = params.maxChars || 40;
+        this._maxChars = params.maxChars || 40;
         delete params.maxChars;
 
-        let type = params.type;
+        this.type = params.type;
         delete params.type;
 
         params.height_request = ROW_HEIGHT;
         super._init(params);
+        this.update(this.place, this.type, searchString);
+    }
 
-        let formatter = new PlaceFormatter.PlaceFormatter(this.place);
+    update(place, type, searchString) {
+        let formatter = new PlaceFormatter.PlaceFormatter(place);
         this.title = formatter.title;
         let markup = GLib.markup_escape_text(formatter.title, -1);
 
         this._name.label = this._boldMatch(markup, searchString);
-        this._details.max_width_chars = maxChars;
+        this._details.max_width_chars = this._maxChars;
         this._details.label = GLib.markup_escape_text(formatter.getDetailsString(),-1);
         this._icon.gicon = this.place.icon;
 
@@ -67,7 +70,6 @@ var PlaceListRow = GObject.registerClass({
             this._typeIcon.icon_name = 'starred-symbolic';
         else if (type === PlaceStore.PlaceType.CONTACT)
             this._typeIcon.icon_name = 'avatar-default-symbolic';
-
     }
 
     _boldMatch(title, string) {
