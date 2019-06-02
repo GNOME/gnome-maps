@@ -26,6 +26,7 @@ const GdkPixbuf = imports.gi.GdkPixbuf;
 const Geocode = imports.gi.GeocodeGlib;
 const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
+const GWeather = imports.gi.GWeather;
 const Soup = imports.gi.Soup;
 const ByteArray = imports.byteArray;
 
@@ -368,3 +369,10 @@ function getBufferText(buffer) {
         return buffer.toString();
     }
 }
+
+function getCountryCodeForCoordinates(lat, lon) {
+    let location = GWeather.Location.new_detached('', null, lat, lon);
+
+    return location.get_country();
+}
+
