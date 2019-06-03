@@ -23,7 +23,9 @@ const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const GWeather = imports.gi.GWeather;
+const Soup = imports.gi.Soup;
 
+const PlaceFormatter = imports.placeFormatter;
 const Utils = imports.utils;
 
 const _WEATHER_APPID = 'org.gnome.Weather.Application';
@@ -45,12 +47,13 @@ var SendToDialog = GObject.registerClass({
                         'clocksRow',
                         'clocksLabel',
                         'clocksIcon',
-                        'browserRow',
-                        'browserLabel',
-                        'browserIcon',
                         'headerBar',
                         'cancelButton',
                         'chooseButton',
+                        'summaryLabel',
+                        'summaryUrl',
+                        'copyButton',
+                        'emailButton',
                         'scrolledWindow' ]
 }, class SendToDialog extends Gtk.Dialog {
 
@@ -85,12 +88,18 @@ var SendToDialog = GObject.registerClass({
             else
                 row.set_header(null);
         });
+
+        this._summaryLabel.label = this._getSummary();
+        let osmuri = GLib.markup_escape_text(this._getOSMURI(), -1);
+        this._summaryUrl.label = "<a href='%s'>%s</a>".format(osmuri, osmuri);
+
+        this._copyButton.connect('clicked', () => this._copySummary());
+        this._emailButton.connect('clicked', () => this._emailSummary());
     }
 
     ensureApplications() {
         let weatherInfo = Gio.DesktopAppInfo.new(_WEATHER_APPID + '.desktop');
         let clocksInfo = Gio.DesktopAppInfo.new(_CLOCKS_APPID + '.desktop');
-        let browserInfo = Gio.AppInfo.get_default_for_uri_scheme('https');
         let appWeather = this._checkWeather(weatherInfo);
         let appClocks = this._checkClocks(clocksInfo);
 
@@ -108,18 +117,29 @@ var SendToDialog = GObject.registerClass({
             this._clocksIcon.icon_name = clocksInfo.get_icon().to_string();
         }
 
-        if (!browserInfo) {
-            this._browserRow.hide();
-        } else {
-            this._browserLabel.label = browserInfo.get_name();
-            try {
-                this._browserIcon.icon_name = browserInfo.get_icon().to_string();
-            } catch(e) {
-                Utils.debug('failed to get browser icon: %s'.format(e.message));
-            }
+        return appWeather || appClocks;
+    }
+
+    _getSummary(markup) {
+        /* Gets a summary of the place (usually name, address, and coordinates,
+        whichever are available). Does not include OSM URL. */
+
+        let place = this._place;
+        let lines = [];
+
+        let formatter = new PlaceFormatter.PlaceFormatter(place);
+
+        lines.push(formatter.title);
+
+        let details = formatter.getDetailsString();
+        if (details) {
+            lines.push(details);
         }
 
-        return appWeather || appClocks || browserInfo;
+        lines.push('%f, %f'.format(place.location.latitude,
+                                   place.location.longitude));
+
+        return lines.join("\n");
     }
 
     _getOSMURI() {
@@ -139,10 +159,41 @@ var SendToDialog = GObject.registerClass({
         }
     }
 
-    _activateRow(row) {
-        let timestamp = Gtk.get_current_event_time();
+    _copySummary() {
+        let summary = "%s\n%s".format(this._getSummary(), this._getOSMURI());
 
+        let display = Gdk.Display.get_default();
+        let clipboard = Gtk.Clipboard.get_default(display);
+        clipboard.set_text(summary, -1);
+        this.response(Response.SUCCESS);
+    }
+    _emailSummary() {
+        let title = new PlaceFormatter.PlaceFormatter(this._place).title;
+        let summary = "%s\n%s".format(this._getSummary(), this._getOSMURI());
+        let uri = "mailto:?subject=%s&body=%s".format(Soup.URI.encode(title, null),
+                                                      Soup.URI.encode(summary, null));
+
+        try {
+          let timestamp = Gtk.get_current_event_time();
+          let display = Gdk.Display.get_default();
+          let ctx = Gdk.Display.get_default().get_app_launch_context();
+          let screen = display.get_default_screen();
+
+          ctx.set_timestamp(timestamp);
+          ctx.set_screen(screen);
+          Gio.app_info_launch_default_for_uri(uri, ctx);
+        } catch(e) {
+          Utils.showDialog(_("Failed to open URI"), Gtk.MessageType.ERROR,
+                           this.get_toplevel());
+          Utils.debug('failed to open URI: %s'.format(e.message));
+        }
+
+        this.response(Response.SUCCESS);
+    }
+
+    _activateRow(row) {
         if (row === this._weatherRow || row === this._clocksRow) {
+            let timestamp = Gtk.get_current_event_time();
             let location = this._place.location;
             let city = GWeather.Location.new_detached(this._place.name,
                                                       null,
@@ -162,20 +213,6 @@ var SendToDialog = GObject.registerClass({
                                  action,
                                  new GLib.Variant('v', city.serialize()),
                                  timestamp);
-        } else if (row === this._browserRow) {
-            try {
-                let display = Gdk.Display.get_default();
-                let ctx = Gdk.Display.get_default().get_app_launch_context();
-                let screen = display.get_default_screen();
-
-                ctx.set_timestamp(timestamp);
-                ctx.set_screen(screen);
-                Gio.app_info_launch_default_for_uri(this._getOSMURI(), ctx);
-            } catch(e) {
-                Utils.showDialog(_("Failed to open URI"), Gtk.MessageType.ERROR,
-                                 this.get_toplevel());
-                Utils.debug('failed to open URI: %s'.format(e.message));
-            }
         }
         this.response(Response.SUCCESS);
     }
