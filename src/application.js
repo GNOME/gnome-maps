@@ -159,19 +159,29 @@ var Application = GObject.registerClass({
     }
 
     _addContacts() {
-        contactStore.get_contacts().forEach((contact) => {
-            contact.geocode(function() {
+        let contacts = contactStore.get_contacts();
+
+        this._addContactsRecursive(contacts, 0);
+    }
+
+    _addContactsRecursive(contacts, index) {
+        if (index < contacts.length) {
+            let contact = contacts[index];
+
+            contact.geocode(() => {
                 contact.get_places().forEach((p) => {
                     if (!p.location)
-                        return;
+                        return
 
                     Utils.debug('Adding contact address: ' + p.name);
                     let place = new ContactPlace.ContactPlace({ place: p,
                                                                 contact: contact });
                     placeStore.addPlace(place, PlaceStore.PlaceType.CONTACT);
                 });
+
+                this._addContactsRecursive(contacts, index + 1);
             });
-        });
+        }
     }
 
     _initPlaceStore() {
