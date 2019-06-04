@@ -154,10 +154,10 @@ var SendToDialog = GObject.registerClass({
                                      Utils.osmTypeToString(place.osm_type),
                                      place.osm_id);
         } else {
-            return '%s?lat=%f&lon=%f&zoom=%d'.format(base,
-                                                     place.location.latitude,
-                                                     place.location.longitude,
-                                                     view.zoom_level);
+            return '%s?mlat=%f&mlon=%f&zoom=%d'.format(base,
+                                                       place.location.latitude,
+                                                       place.location.longitude,
+                                                       view.zoom_level);
         }
     }
 
