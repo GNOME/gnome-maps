@@ -97,29 +97,34 @@ var SendToDialog = GObject.registerClass({
             this._copyButton.connect('clicked', () => this._copySummary());
             this._emailButton.connect('clicked', () => this._emailSummary());
         });
-    }
 
-    ensureApplications() {
-        let weatherInfo = Gio.DesktopAppInfo.new(_WEATHER_APPID + '.desktop');
-        let clocksInfo = Gio.DesktopAppInfo.new(_CLOCKS_APPID + '.desktop');
-        let appWeather = this._checkWeather(weatherInfo);
-        let appClocks = this._checkClocks(clocksInfo);
+        if (GWeather) {
+            let world = GWeather.Location.get_world();
+            let location = this._place.location;
+            this._city = world.find_nearest_city(location.latitude,
+                                                 location.longitude);
+            /* Translators: The first string is the name of the city, the
+            second string is the name of the app to add it to */
+            let label = _("Add %s to %s");
 
-        if (!appWeather) {
-            this._weatherRow.hide();
-        } else {
-            this._weatherLabel.label = weatherInfo.get_name();
-            this._weatherIcon.icon_name = weatherInfo.get_icon().to_string();
+            let weatherInfo = Gio.DesktopAppInfo.new(_WEATHER_APPID + '.desktop');
+            if (!weatherInfo) {
+                this._weatherRow.hide();
+            } else {
+                this._weatherLabel.label = label.format(this._city.get_name(),
+                                                        weatherInfo.get_name());
+                this._weatherIcon.icon_name = weatherInfo.get_icon().to_string();
+            }
+
+            let clocksInfo = Gio.DesktopAppInfo.new(_CLOCKS_APPID + '.desktop');
+            if (!clocksInfo) {
+                this._clocksRow.hide();
+            } else {
+                this._clocksLabel.label = label.format(this._city.get_name(),
+                                                       clocksInfo.get_name());
+                this._clocksIcon.icon_name = clocksInfo.get_icon().to_string();
+            }
         }
-
-        if (!appClocks) {
-            this._clocksRow.hide();
-        } else {
-            this._clocksLabel.label = clocksInfo.get_name();
-            this._clocksIcon.icon_name = clocksInfo.get_icon().to_string();
-        }
-
-        return appWeather || appClocks;
     }
 
     _getSummary(markup) {
@@ -197,11 +202,7 @@ var SendToDialog = GObject.registerClass({
     _activateRow(row) {
         if (row === this._weatherRow || row === this._clocksRow) {
             let timestamp = Gtk.get_current_event_time();
-            let location = this._place.location;
-            let city = GWeather.Location.new_detached(this._place.name,
-                                                      null,
-                                                      location.latitude,
-                                                      location.longitude);
+
             let action;
             let appId;
             if (row === this._weatherRow) {
@@ -214,17 +215,9 @@ var SendToDialog = GObject.registerClass({
 
             Utils.activateAction(appId,
                                  action,
-                                 new GLib.Variant('v', city.serialize()),
+                                 new GLib.Variant('v', this._city.serialize()),
                                  timestamp);
         }
         this.response(Response.SUCCESS);
-    }
-
-    _checkWeather(appInfo) {
-        return (GWeather !== null && appInfo !== null);
-    }
-
-    _checkClocks(appInfo) {
-        return (GWeather !== null && appInfo !== null);
     }
 });
