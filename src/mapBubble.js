@@ -147,9 +147,6 @@ class MapBubble extends Gtk.Popover {
                                                      modal: true,
                                                      mapView: this._mapView,
                                                      place: this._place });
-        if (!dialog.ensureApplications())
-            return;
-
         button.visible = true;
         button.connect('clicked', () => {
             dialog.connect('response', () => dialog.hide());
