@@ -28,7 +28,7 @@ const Soup = imports.gi.Soup;
 const PlaceFormatter = imports.placeFormatter;
 const Utils = imports.utils;
 
-const _WEATHER_APPID = 'org.gnome.Weather.Application';
+const _WEATHER_APPID = 'org.gnome.Weather';
 const _CLOCKS_APPID = 'org.gnome.clocks';
 
 var Response = {
