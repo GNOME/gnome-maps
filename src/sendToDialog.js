@@ -18,6 +18,7 @@
  */
 
 const Gdk = imports.gi.Gdk;
+const Geocode = imports.gi.GeocodeGlib;
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
@@ -25,6 +26,7 @@ const Gtk = imports.gi.Gtk;
 const GWeather = imports.gi.GWeather;
 const Soup = imports.gi.Soup;
 
+const Application = imports.application;
 const PlaceFormatter = imports.placeFormatter;
 const Utils = imports.utils;
 
@@ -125,6 +127,19 @@ var SendToDialog = GObject.registerClass({
                 this._clocksIcon.icon_name = clocksInfo.get_icon().to_string();
             }
         }
+
+        /* Other apps that can launch geo: URIs */
+        let contentType = Gio.content_type_from_mime_type("x-scheme-handler/geo");
+        let thisId = Application.application.application_id + ".desktop";
+        let apps = Gio.app_info_get_all_for_type(contentType);
+        for (var app of apps) {
+            if (app.get_id() == thisId)
+                return;
+            if (!app.should_show())
+                return;
+
+            this._list.add(new OpenWithRow({ appinfo: app }));
+        }
     }
 
     _getSummary(markup) {
@@ -182,14 +197,7 @@ var SendToDialog = GObject.registerClass({
                                                       Soup.URI.encode(summary, null));
 
         try {
-          let timestamp = Gtk.get_current_event_time();
-          let display = Gdk.Display.get_default();
-          let ctx = Gdk.Display.get_default().get_app_launch_context();
-          let screen = display.get_default_screen();
-
-          ctx.set_timestamp(timestamp);
-          ctx.set_screen(screen);
-          Gio.app_info_launch_default_for_uri(uri, ctx);
+          Gio.app_info_launch_default_for_uri(uri, this._getAppLaunchContext());
         } catch(e) {
           Utils.showDialog(_("Failed to open URI"), Gtk.MessageType.ERROR,
                            this.get_toplevel());
@@ -197,6 +205,18 @@ var SendToDialog = GObject.registerClass({
         }
 
         this.response(Response.SUCCESS);
+    }
+
+    _getAppLaunchContext() {
+        let timestamp = Gtk.get_current_event_time();
+        let display = Gdk.Display.get_default();
+        let ctx = Gdk.Display.get_default().get_app_launch_context();
+        let screen = display.get_default_screen();
+
+        ctx.set_timestamp(timestamp);
+        ctx.set_screen(screen);
+
+        return ctx;
     }
 
     _activateRow(row) {
@@ -217,7 +237,26 @@ var SendToDialog = GObject.registerClass({
                                  action,
                                  new GLib.Variant('v', this._city.serialize()),
                                  timestamp);
+        } else if (row instanceof OpenWithRow) {
+            let uri = this._place.location.to_uri(Geocode.LocationURIScheme.GEO);
+            row.appinfo.launch_uris([ uri ], this._getAppLaunchContext());
         }
         this.response(Response.SUCCESS);
+    }
+});
+
+var OpenWithRow = GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/open-with-row.ui',
+    InternalChildren: [ 'label',
+                        'icon' ],
+}, class OpenWithRow extends Gtk.ListBoxRow {
+    _init(params) {
+        this.appinfo = params.appinfo;
+        delete params.appinfo;
+
+        super._init(params);
+
+        this._label.label = _("Open with %s").format(this.appinfo.get_name());
+        this._icon.gicon = this.appinfo.get_icon();
     }
 });
