@@ -41,6 +41,18 @@ var TurnPointType = {
     START:         10000
 };
 
+/* countries/terrotories driving on the left
+ * source: https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic
+ */
+const LHT_COUNTRIES = new Set(['AG', 'AU', 'BB', 'BD', 'BN', 'BS', 'BT', 'BW',
+                               'CY', 'DO', 'FJ', 'GB', 'GD', 'GY', 'HK', 'ID',
+                               'IE', 'IN', 'JM', 'JP', 'KE', 'KI', 'KN', 'LC',
+                               'LK', 'LS', 'MO', 'MT', 'MU', 'MV', 'MW', 'MY',
+                               'MZ', 'NA', 'NP', 'NR', 'NZ', 'PG', 'PK', 'SB',
+                               'SC', 'SG', 'SR', 'SZ', 'TH', 'TL', 'TO', 'TT',
+                               'TV', 'TZ', 'UG', 'VC', 'VI', 'WS', 'ZA', 'ZM',
+                               'ZW']);
+
 var Route = GObject.registerClass({
     Signals: {
         'update': {},
@@ -145,6 +157,17 @@ var TurnPoint = class TurnPoint {
                 angle = x;
             }
         }
-        return 'maps-direction-roundabout-' + angle + '-symbolic';
+        // use mirrored icon for left-hand traffic when angle is not zero
+        return 'maps-direction-roundabout-' + angle +
+               (angle !== 0 && this._isLefthandTraffic() ? '-lht' : '') +
+               '-symbolic';
+    }
+
+    _isLefthandTraffic() {
+        let country =
+            Utils.getCountryCodeForCoordinates(this.coordinate.latitude,
+                                               this.coordinate.longitude);
+
+        return LHT_COUNTRIES.has(country);
     }
 };
