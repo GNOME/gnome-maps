@@ -149,7 +149,8 @@ var SendToDialog = GObject.registerClass({
 
         let formatter = new PlaceFormatter.PlaceFormatter(place);
 
-        lines.push(formatter.title);
+        if (!place.isCurrentLocation)
+            lines.push(formatter.title);
 
         let details = formatter.getDetailsString();
         if (details) {

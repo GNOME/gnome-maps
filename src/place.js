@@ -42,6 +42,9 @@ var Place = GObject.registerClass(
 class Place extends Geocode.Place {
 
     _init(params) {
+        this._isCurrentLocation = params.isCurrentLocation;
+        delete params.isCurrentLocation;
+
         this._population = params.population;
         delete params.population;
 
@@ -117,6 +120,10 @@ class Place extends Geocode.Place {
 
     get uniqueID() {
         return this.osm_type + '-' + this.osm_id;
+    }
+
+    get isCurrentLocation() {
+        return this._isCurrentLocation;
     }
 
     set population(v) {
