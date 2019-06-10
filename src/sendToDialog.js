@@ -38,7 +38,7 @@ var Response = {
     CANCEL: 1
 };
 
-const _NUM_VISIBLE = 6;
+const _NUM_VISIBLE = 4;
 
 var SendToDialog = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/send-to-dialog.ui',
@@ -49,9 +49,7 @@ var SendToDialog = GObject.registerClass({
                         'clocksRow',
                         'clocksLabel',
                         'clocksIcon',
-                        'headerBar',
                         'cancelButton',
-                        'chooseButton',
                         'summaryLabel',
                         'summaryUrl',
                         'copyButton',
@@ -70,15 +68,10 @@ var SendToDialog = GObject.registerClass({
         super._init(params);
 
         this._scrolledWindow.min_content_height = 40 * _NUM_VISIBLE;
-        this._headerBar.subtitle = this._place.name;
+        this.get_header_bar().subtitle = this._place.name;
 
         this._cancelButton.connect('clicked',
                                    () => this.response(Response.CANCEL));
-
-        this._chooseButton.connect('clicked', () => {
-            let row = this._list.get_selected_row();
-            this._activateRow(row);
-        });
 
         this._list.connect('row-activated', (list, row) => this._activateRow(row));
 
@@ -111,7 +104,7 @@ var SendToDialog = GObject.registerClass({
 
             let weatherInfo = Gio.DesktopAppInfo.new(_WEATHER_APPID + '.desktop');
             if (!weatherInfo) {
-                this._weatherRow.hide();
+                this._list.remove(this._weatherRow);
             } else {
                 this._weatherLabel.label = label.format(this._city.get_name(),
                                                         weatherInfo.get_name());
@@ -120,7 +113,7 @@ var SendToDialog = GObject.registerClass({
 
             let clocksInfo = Gio.DesktopAppInfo.new(_CLOCKS_APPID + '.desktop');
             if (!clocksInfo) {
-                this._clocksRow.hide();
+                this._list.remove(this._clocksRow);
             } else {
                 this._clocksLabel.label = label.format(this._city.get_name(),
                                                        clocksInfo.get_name());
@@ -139,6 +132,11 @@ var SendToDialog = GObject.registerClass({
                 return;
 
             this._list.add(new OpenWithRow({ appinfo: app }));
+        }
+
+        /* Hide the list box if it is empty */
+        if (this._list.get_children().length == 0) {
+            this._scrolledWindow.hide();
         }
     }
 
