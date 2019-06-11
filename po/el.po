@@ -9,16 +9,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-01-14 19:43+0000\n"
-"PO-Revision-Date: 2019-02-17 02:43+0200\n"
-"Last-Translator: Efstathios Iosifidis <iosifidis@opensuse.org>\n"
+"POT-Creation-Date: 2019-06-10 19:40+0000\n"
+"PO-Revision-Date: 2019-06-11 13:55+0300\n"
+"Last-Translator: Efstathios Iosifidis <eiosifidis@gnome.org>\n"
 "Language-Team: Ελληνικά <>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.8.7.1\n"
 "X-Project-Style: gnome\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
@@ -60,20 +60,26 @@ msgstr ""
 "όπως “Λέσχες κοντά στην Σταδίου, Αθήνα” ή “Ξενοδοχεία κοντά στην Ομόνοια, "
 "Αθήνα”."
 
+#: data/org.gnome.Maps.appdata.xml.in:59
+msgid "The GNOME Project"
+msgstr "Το έργο GNOME"
+
+#. Translators: This is the program name.
+#. for some reason, setting the title of the window through the .ui
+#. * template does not work anymore (maybe has something to do with
+#. * setting a custom title on the headerbar). Setting it programmatically
+#. * here works though. And yields a proper label in the gnome-shell
+#. * overview.
+#.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
-#: src/mainWindow.js:500
+#: src/application.js:81 src/mainWindow.js:139 src/mainWindow.js:509
 msgid "Maps"
 msgstr "Χάρτες"
 
 #: data/org.gnome.Maps.desktop.in:5
 msgid "A simple maps application"
 msgstr "Μια απλή εφαρμογή χαρτών"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Maps.desktop.in:8
-msgid "org.gnome.Maps"
-msgstr "org.gnome.Maps"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Maps.desktop.in:14
@@ -355,7 +361,7 @@ msgid "Open shape layer"
 msgstr "Άνοιγμα στρώσης σχήματος"
 
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:71
+#: data/ui/layers-popover.ui:69
 msgid "Open Shape Layer…"
 msgstr "Άνοιγμα στρώσης σχήματος…"
 
@@ -589,11 +595,7 @@ msgstr "Επεξεργασία στο OpenStreetMap"
 msgid "Show more information"
 msgstr "Εμφάνιση περισσότερων πληροφοριών"
 
-#: data/ui/place-popover.ui:24
-msgid "Press enter to search"
-msgstr "Πατήστε enter για αναζήτηση"
-
-#: data/ui/place-popover.ui:72
+#: data/ui/place-popover.ui:54
 msgid "No results found"
 msgstr "Δεν βρέθηκαν αποτελέσματα"
 
@@ -610,7 +612,7 @@ msgstr "Άνοιγμα τοποθεσίας"
 msgid "_Open"
 msgstr "Ά_νοιγμα "
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:61
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:62
 msgid "Open Shape Layer"
 msgstr "Άνοιγμα στρώσης σχήματος"
 
@@ -735,11 +737,11 @@ msgstr "Λείπουν απαιτούμενα γνωρίσματα"
 msgid "Could not find OSM element"
 msgstr "Αποτυχία εύρεσης στοιχείου OSM"
 
-#: src/application.js:95
+#: src/application.js:94
 msgid "A path to a local tiles directory structure"
 msgstr "Η τοποθεσία μιας τοπικής δομής πλακιδίων"
 
-#: src/application.js:99
+#: src/application.js:98
 msgid "Show the version of the program"
 msgstr "Εμφάνιση της έκδοσης του προγράμματος"
 
@@ -774,12 +776,14 @@ msgstr ""
 #. Translators: %s is the name of the place to check in.
 #.
 #: src/checkInDialog.js:218
+#, javascript-format
 msgid "Check in to %s"
 msgstr "Check in στο %s"
 
 #. Translators: %s is the name of the place to check in.
 #.
 #: src/checkInDialog.js:228
+#, javascript-format
 msgid "Write an optional message to check in to %s."
 msgstr "Γράψτε ένα προαιρετικό μήνυμα για check in στο %s."
 
@@ -789,6 +793,7 @@ msgstr "Συνέβη κάποιο σφάλμα."
 
 #. Translators: %s is the place name that user wanted to check-in
 #: src/checkIn.js:144
+#, javascript-format
 msgid "Cannot find “%s” in the social service"
 msgstr "Αδύνατη η εύρεση του «%s» στην κοινωνική υπηρεσία."
 
@@ -806,23 +811,23 @@ msgstr ""
 "Τα διαπιστευτήρια έχουν λήξει, παρακαλούμε ανοίξτε τους διαδικτυακούς "
 "λογαριασμούς για να εισέλθετε και να ενεργοποιήσετε αυτόν τον λογαριασμό."
 
-#: src/contextMenu.js:98
+#: src/contextMenu.js:99
 msgid "Route from here"
 msgstr "Διαδρομή από εδώ"
 
-#: src/contextMenu.js:100
+#: src/contextMenu.js:101
 msgid "Add destination"
 msgstr "Προσθήκη προορισμού"
 
-#: src/contextMenu.js:102
+#: src/contextMenu.js:103
 msgid "Route to here"
 msgstr "Διαδρομή προς εδώ"
 
-#: src/contextMenu.js:131
+#: src/contextMenu.js:129
 msgid "Nothing found here!"
 msgstr "Δεν βρέθηκε τίποτα εδώ!"
 
-#: src/contextMenu.js:192
+#: src/contextMenu.js:190
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -835,6 +840,7 @@ msgstr ""
 #. * intact in the translated string.
 #.
 #: src/exportViewDialog.js:82
+#, javascript-format
 msgid "Maps at %f, %f.png"
 msgstr "Χάρτες στο %f, %f.png"
 
@@ -858,39 +864,39 @@ msgstr "Δεν ορίσθηκε όνομα αρχείου"
 msgid "Unable to export view"
 msgstr "Αδυναμία εξαγωγής προβολής"
 
-#: src/geoJSONSource.js:98
+#: src/geoJSONSource.js:97
 msgid "invalid coordinate"
 msgstr "μη έγκυρη συντεταγμένη"
 
-#: src/geoJSONSource.js:147 src/geoJSONSource.js:187 src/geoJSONSource.js:202
+#: src/geoJSONSource.js:146 src/geoJSONSource.js:186 src/geoJSONSource.js:201
 msgid "parse error"
 msgstr "σφάλμα ανάλυσης"
 
-#: src/geoJSONSource.js:181
+#: src/geoJSONSource.js:180
 msgid "unknown geometry"
 msgstr "άγνωστη γεωμετρία"
 
-#: src/graphHopper.js:93 src/openTripPlanner.js:652
+#: src/graphHopper.js:112 src/openTripPlanner.js:652
 msgid "Route request failed."
 msgstr "Αποτυχία αιτήματος διαδρομής"
 
-#: src/graphHopper.js:100 src/openTripPlanner.js:615
+#: src/graphHopper.js:119 src/openTripPlanner.js:615
 msgid "No route found."
 msgstr "Δεν βρέθηκε διαδρομή."
 
-#: src/graphHopper.js:188
+#: src/graphHopper.js:207
 msgid "Start!"
 msgstr "Εκκίνηση!"
 
-#: src/mainWindow.js:58
+#: src/mainWindow.js:59
 msgid "All Layer Files"
 msgstr "Όλα τα αρχεία στρώσεων"
 
-#: src/mainWindow.js:433
+#: src/mainWindow.js:442
 msgid "Failed to connect to location service"
 msgstr "Αποτυχία σύνδεσης με την υπηρεσία τοποθεσίας"
 
-#: src/mainWindow.js:498
+#: src/mainWindow.js:507
 msgid "translator-credits"
 msgstr ""
 "Ελληνική μεταφραστική ομάδα GNOME\n"
@@ -904,18 +910,18 @@ msgstr ""
 "Για περισσότερες πληροφορίες, επισκεφθείτε τη σελίδα\n"
 "http://gnome.gr/"
 
-#: src/mainWindow.js:501
+#: src/mainWindow.js:510
 msgid "A map application for GNOME"
 msgstr "Μια εφαρμογή χάρτη για το GNOME"
 
-#: src/mainWindow.js:512
-#| msgid "Copyright © 2011 – 2017 Red Hat, Inc. and The GNOME Maps authors"
+#: src/mainWindow.js:521
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr ""
 "Πνευματικά δικαιώματα © 2011 – 2019 Red Hat, Inc. και συγγραφείς του Χάρτες "
 "GNOME"
 
-#: src/mainWindow.js:531
+#: src/mainWindow.js:541
+#, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Δεδομένα χαρτών από %s και τους συνεισφέροντες"
 
@@ -924,9 +930,24 @@ msgstr "Δεδομένα χαρτών από %s και τους συνεισφέ
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:547
+#: src/mainWindow.js:557
+#, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Τα πλακίδια των χαρτών παρέχονται από %s"
+
+#. Translators: this is an attribution string giving credit to the
+#. * search provider where the first %s placeholder is replaced by either
+#. * the bare name of the geocoder provider, or a linkified URL if one
+#. * is available, and the second %s placeholder is replaced by the
+#. * URL to the geocoder project page. These placeholders
+#. * can be swapped, if needed using the %n$s positional syntax
+#. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
+#. * before the provider).
+#.
+#: src/mainWindow.js:586
+#, javascript-format
+msgid "Search provided by %s using %s"
+msgstr "Η αναζήτηση παρέχεται από το %s με τη χρήση του %s"
 
 #: src/mapView.js:358
 msgid "File type is not supported"
@@ -1209,6 +1230,10 @@ msgstr "Επιλογή τύπου"
 msgid "Done"
 msgstr "Έτοιμο"
 
+#: src/photonParser.js:103
+msgid "Unnamed place"
+msgstr "Άγνωστο μέρος"
+
 #: src/placeBubble.js:143
 msgid "Population:"
 msgstr "Πληθυσμός:"
@@ -1241,7 +1266,7 @@ msgstr "Πρόσβαση αμαξιδίου:"
 msgid "Phone:"
 msgstr "Τηλέφωνο:"
 
-#: src/placeEntry.js:186
+#: src/placeEntry.js:209
 msgid "Failed to parse Geo URI"
 msgstr "Αποτυχία ανάλυσης Geo URI"
 
@@ -1251,7 +1276,7 @@ msgstr "Αποτυχία ανάλυσης Geo URI"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/place.js:218 src/translations.js:329 src/translations.js:391
+#: src/place.js:227 src/translations.js:329 src/translations.js:391
 msgid "yes"
 msgstr "ναι"
 
@@ -1260,7 +1285,7 @@ msgstr "ναι"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/place.js:225
+#: src/place.js:234
 msgid "limited"
 msgstr "περιορισμένη"
 
@@ -1272,7 +1297,7 @@ msgstr "περιορισμένη"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/place.js:231 src/translations.js:335 src/translations.js:392
+#: src/place.js:240 src/translations.js:335 src/translations.js:392
 msgid "no"
 msgstr "όχι"
 
@@ -1281,11 +1306,12 @@ msgstr "όχι"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/place.js:238
+#: src/place.js:247
 msgid "designated"
 msgstr "υποδεικνυόμενο"
 
-#: src/printLayout.js:240
+#: src/printLayout.js:312
+#, javascript-format
 msgid "From %s to %s"
 msgstr "Από %s σε %s"
 
@@ -1326,24 +1352,15 @@ msgstr "αδυναμία φόρτωσης αρχείου"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
 #: src/sidebar.js:293
+#, javascript-format
 msgid "Estimated time: %s"
 msgstr "Εκτιμώμενος χρόνος: %s"
-
-#. Translators: this a format string indicating arriving at the
-#. * destination of journey with the arrival address and transit
-#. * stop as the format parameter
-#: src/transitArrivalRow.js:54
-msgid "Arrive at %s"
-msgstr "Άφιξη στο %s"
-
-#: src/transitArrivalRow.js:56
-msgid "Arrive"
-msgstr "Άφιξη"
 
 #. Translators: this is a format string indicating instructions
 #. * starting a journey at the address given as the parameter
 #.
-#: src/transitLegRow.js:71
+#: src/transit.js:37
+#, javascript-format
 msgid "Start at %s"
 msgstr "Έναρξη από %s"
 
@@ -1351,24 +1368,37 @@ msgstr "Έναρξη από %s"
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: src/transitLegRow.js:77
+#: src/transit.js:43
 msgid "Start"
 msgstr "Έναρξη"
-
-#: src/transitLegRow.js:106
-msgid "Show walking instructions"
-msgstr "Εμφάνιση οδηγιών περπατήματος"
-
-#: src/transitLegRow.js:107
-msgid "Hide walking instructions"
-msgstr "Απόκρυψη οδηγιών περπατήματος"
 
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
 #.
-#: src/transitLegRow.js:132
+#: src/transit.js:61
+#, javascript-format
 msgid "Walk %s"
 msgstr "Περπάτημα %s"
+
+#. Translators: this a format string indicating arriving at the
+#. * destination of journey with the arrival address and transit
+#. * stop as the format parameter
+#: src/transit.js:75
+#, javascript-format
+msgid "Arrive at %s"
+msgstr "Άφιξη στο %s"
+
+#: src/transit.js:77
+msgid "Arrive"
+msgstr "Άφιξη"
+
+#: src/transitLegRow.js:88
+msgid "Show walking instructions"
+msgstr "Εμφάνιση οδηγιών περπατήματος"
+
+#: src/transitLegRow.js:89
+msgid "Hide walking instructions"
+msgstr "Απόκρυψη οδηγιών περπατήματος"
 
 #: src/transitMoreRow.js:39
 msgid "Load earlier alternatives"
@@ -1401,6 +1431,7 @@ msgstr "%e %b"
 #. * these could be rearranged if needed.
 #.
 #: src/transitPlan.js:254
+#, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
 
@@ -1409,6 +1440,7 @@ msgstr "%s – %s"
 #. * as appropriate
 #.
 #: src/transitPlan.js:281
+#, javascript-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "%d λεπτό"
@@ -1419,6 +1451,7 @@ msgstr[1] "%d λεπτά"
 #. * minutes part), using plural forms as appropriate
 #.
 #: src/transitPlan.js:292
+#, javascript-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "%d ώρα"
@@ -1429,6 +1462,7 @@ msgstr[1] "%d ώρες"
 #. * pluralized on the hours part
 #.
 #: src/transitPlan.js:298
+#, javascript-format
 msgid "%d:%02d hour"
 msgid_plural "%d:%02d hours"
 msgstr[0] "%d:%02d ώρα"
@@ -1441,6 +1475,7 @@ msgstr[1] "%d:%02d ώρες"
 #. * these could be rearranged if needed.
 #.
 #: src/transitPlan.js:651
+#, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
 
@@ -1459,6 +1494,7 @@ msgstr "από την ανατολή μέχρι τη δύση του ήλιου"
 #. * substituted with the appropriate separator.
 #.
 #: src/translations.js:77
+#, javascript-format
 msgctxt "time range list"
 msgid "%s %s"
 msgstr "%s %s"
@@ -1470,6 +1506,7 @@ msgstr "%s %s"
 #. * substituted with the appropriate separator.
 #.
 #: src/translations.js:89
+#, javascript-format
 msgctxt "time range list"
 msgid "%s %s %s"
 msgstr "%s %s %s"
@@ -1482,6 +1519,7 @@ msgstr "%s %s %s"
 #. * the appropriate separator or phrase and the ordering of the arguments
 #. * can be rearranged with the %n#s syntax.
 #: src/translations.js:120
+#, javascript-format
 msgctxt "time range component"
 msgid "%s %s"
 msgstr "%s %s"
@@ -1496,6 +1534,7 @@ msgstr "%s %s"
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
 #: src/translations.js:152
+#, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s"
 msgstr "%s,%s"
@@ -1510,6 +1549,7 @@ msgstr "%s,%s"
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
 #: src/translations.js:166
+#, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s,%s"
 msgstr "%s,%s,%s"
@@ -1522,6 +1562,7 @@ msgstr "κάθε ημέρα"
 #. * This represents a range of days with a starting and ending day.
 #.
 #: src/translations.js:197
+#, javascript-format
 msgctxt "day range"
 msgid "%s-%s"
 msgstr "%s-%s"
@@ -1543,6 +1584,7 @@ msgstr "σχολικές αργίες"
 #. * using the %n$s syntax.
 #.
 #: src/translations.js:250
+#, javascript-format
 msgctxt "time interval list"
 msgid "%s, %s"
 msgstr "%s, %s"
@@ -1559,6 +1601,7 @@ msgstr "δεν είναι ανοικτό"
 #. * using the %n$s syntax.
 #.
 #: src/translations.js:279
+#, javascript-format
 msgctxt "time interval"
 msgid "%s-%s"
 msgstr "%s-%s"
@@ -1585,46 +1628,59 @@ msgid "service"
 msgstr "εξυπηρέτηση"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:227
+#: src/utils.js:220
 msgid "Unknown"
 msgstr "Άγνωστο"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:230
+#: src/utils.js:223
 msgid "Exact"
 msgstr "Ακριβής"
 
-#: src/utils.js:288
+#: src/utils.js:281
+#, javascript-format
 msgid "%f h"
 msgstr "%f h"
 
-#: src/utils.js:290
+#: src/utils.js:283
+#, javascript-format
 msgid "%f min"
 msgstr "%f min"
 
-#: src/utils.js:292
+#: src/utils.js:285
+#, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:303
+#: src/utils.js:296
+#, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:306
+#: src/utils.js:299
+#, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:314
+#: src/utils.js:307
+#, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:317
+#: src/utils.js:310
+#, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
+
+#~ msgid "org.gnome.Maps"
+#~ msgstr "org.gnome.Maps"
+
+#~ msgid "Press enter to search"
+#~ msgstr "Πατήστε enter για αναζήτηση"
 
 #~ msgid "Quit"
 #~ msgstr "Έξοδος"
