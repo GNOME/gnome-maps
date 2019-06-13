@@ -22,6 +22,8 @@
 const Geocode = imports.gi.GeocodeGlib;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
+
+const Application = imports.application;
 const Location = imports.location;
 const Translations = imports.translations;
 const Utils = imports.utils;
@@ -37,6 +39,9 @@ const DMS_COORDINATES_REGEX = new RegExp(
     + /\s*(\d+)°?\s*(\d+)['′]?\s*(\d+(?:.\d+)?)["″]?\s*(W|E)\s*$/.source,
     "i"
 );
+
+const OSM_OBJECT_URL_REGEX =
+    new RegExp(/https?:\/\/(www\.)?openstreetmap\.org\/(node|way|relation)\/(\d+)\/?$/);
 
 var Place = GObject.registerClass(
 class Place extends Geocode.Place {
@@ -419,3 +424,28 @@ Place.parseCoordinates = function(text) {
         return null;
     }
 };
+
+function matchOSMURL(text) {
+    reurn text.match(OSM_OBJECT_URL_REGEX);
+}
+
+function parseOSMURL(text, callback, cancellable) {
+    let [,, type, id] = text.match(OSM);
+    let location = new Location.Location();
+    let place = new Place( { location: location,
+                             osm_type: type,
+                             osm_id:   id });
+
+    Application.osmEdit.fetchObject(place,
+                                    (sucess, status, osmObject, osmType) => {
+        if (sucess) {
+            location.latitude = osmObject.get_tag('lat');
+            location.longitude = osmObject.get_tag('lon');
+
+            callback(place);
+        } else {
+            callback(null);
+        }
+    }, cancellable);
+}
+
