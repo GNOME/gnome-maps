@@ -19,10 +19,14 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
+const _ = imports.gettext.gettext;
+
 const Geocode = imports.gi.GeocodeGlib;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
+
 const Location = imports.location;
+const Overpass = imports.overpass;
 const Translations = imports.translations;
 const Utils = imports.utils;
 
@@ -37,6 +41,12 @@ const DMS_COORDINATES_REGEX = new RegExp(
     + /\s*(\d+)°?\s*(\d+)['′]?\s*(\d+(?:.\d+)?)["″]?\s*(W|E)\s*$/.source,
     "i"
 );
+
+const OSM_OBJECT_URL_REGEX =
+    new RegExp(/https?:\/\/(www\.)?openstreetmap\.org\/(node|way|relation)\/(\d+)\/?$/);
+
+const OSM_COORD_URL_REGEX =
+    new RegExp(/https?:\/\/(www\.)?openstreetmap\.org\/?\?(\&?mlat=(\d+(?:\.\d+)?))?(\&mlon=(\d+(?:\.\d+)?))?(\&zoom=(\d+))?(\#map=(\d+)\/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?))?/);
 
 var Place = GObject.registerClass(
 class Place extends Geocode.Place {
@@ -434,3 +444,66 @@ Place.parseCoordinates = function(text) {
         return null;
     }
 };
+
+let overpass = null;
+
+function parseHttpURL(text, callback) {
+    let match = text.match(OSM_OBJECT_URL_REGEX);
+
+    if (match) {
+        let [,, type, id] = match;
+        let storedPlace = imports.application.placeStore.existsWithOsmTypeAndId(type, id);
+
+        if (storedPlace) {
+            callback(storedPlace, null);
+            return;
+        }
+
+        if (overpass === null)
+            overpass = new Overpass.Overpass();
+
+        overpass.fetchPlace(type, id, (place) => {
+            if (place)
+                callback(place, null);
+            else
+                callback(null, _("Place not found in OpenStreetMap"));
+        });
+    }
+
+    match = text.match(OSM_COORD_URL_REGEX);
+
+    if (match) {
+        let [,,,mlat,,mlon,,zoom,,mapZoom,mapLat, mapLon] = match;
+        let lat;
+        let lon;
+        let z;
+
+        if (mapZoom && mapLat && mapLon) {
+            lat = mapLat;
+            lon = mapLon;
+            z = mapZoom;
+        } else if (mlat && mlon) {
+            lat = mlat;
+            lon = mlon;
+            if (zoom)
+                z = zoom;
+        } else {
+            callback(null, _("OpenStreetMap URL is not valid"));
+            return;
+        }
+
+        if (!Place.validateCoordinates(lat, lon)) {
+            callback(null, _("Coordinates in URL are not valid"));
+            return;
+        }
+
+        let location = new Location.Location({ latitude: lat, longitude: lon });
+        let place = new Place({ location: location });
+
+        if (z)
+            place.initialZoom = z;
+
+        callback(place, null);
+    }
+}
+
