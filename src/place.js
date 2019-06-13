@@ -38,6 +38,9 @@ const DMS_COORDINATES_REGEX = new RegExp(
     "i"
 );
 
+const OSM_OBJECT_URL_REGEX =
+    new RegExp(/https?:\/\/(www\.)?openstreetmap\.org\/(node|way|relation)\/(\d+)/);
+
 var Place = GObject.registerClass(
 class Place extends Geocode.Place {
 
@@ -412,3 +415,7 @@ Place.parseCoordinates = function(text) {
         return null;
     }
 };
+
+function matchOSMURL(text) {
+
+}
