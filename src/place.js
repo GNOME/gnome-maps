@@ -22,7 +22,9 @@
 const Geocode = imports.gi.GeocodeGlib;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
+
 const Location = imports.location;
+const Overpass = imports.overpass;
 const Translations = imports.translations;
 const Utils = imports.utils;
 
@@ -37,6 +39,9 @@ const DMS_COORDINATES_REGEX = new RegExp(
     + /\s*(\d+)°?\s*(\d+)['′]?\s*(\d+(?:.\d+)?)["″]?\s*(W|E)\s*$/.source,
     "i"
 );
+
+const OSM_OBJECT_URL_REGEX =
+    new RegExp(/https?:\/\/(www\.)?openstreetmap\.org\/(node|way|relation)\/(\d+)\/?$/);
 
 var Place = GObject.registerClass(
 class Place extends Geocode.Place {
@@ -419,3 +424,19 @@ Place.parseCoordinates = function(text) {
         return null;
     }
 };
+
+function matchOSMURL(text) {
+    return text.match(OSM_OBJECT_URL_REGEX);
+}
+
+let overpass = null;
+
+function parseOSMURL(text, callback) {
+    let [,, type, id] = text.match(OSM_OBJECT_URL_REGEX);
+
+    if (overpass === null)
+        overpass = new Overpass.Overpass();
+
+    overpass.fetchPlace(type, id, (place) => callback(place));
+}
+
