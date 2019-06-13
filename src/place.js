@@ -19,10 +19,14 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
+const _ = imports.gettext.gettext;
+
 const Geocode = imports.gi.GeocodeGlib;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
+
 const Location = imports.location;
+const Overpass = imports.overpass;
 const Translations = imports.translations;
 const Utils = imports.utils;
 
@@ -37,6 +41,12 @@ const DMS_COORDINATES_REGEX = new RegExp(
     + /\s*(\d+)°?\s*(\d+)['′]?\s*(\d+(?:.\d+)?)["″]?\s*(W|E)\s*$/.source,
     "i"
 );
+
+const OSM_OBJECT_URL_REGEX =
+    new RegExp(/https?:\/\/(www\.)?openstreetmap\.org\/(node|way|relation)\/(\d+)\/?$/);
+
+const OSM_COORD_URL_REGEX =
+    new RegExp(/https?:\/\/(www.)?openstreetmap\.org\/\?m?lat=^\s*(\-?\d+(?:\.\d+)?)\s*\&m?lon=^\s*(\-?\d+(?:\.\d+)?)\s/);
 
 var Place = GObject.registerClass(
 class Place extends Geocode.Place {
@@ -434,3 +444,30 @@ Place.parseCoordinates = function(text) {
         return null;
     }
 };
+
+function matchOSMURL(text) {
+    return text.match(OSM_OBJECT_URL_REGEX);
+}
+
+let overpass = null;
+
+function parseHttpURL(text, callback) {
+    let [,, type, id] = text.match(OSM_OBJECT_URL_REGEX);
+    let storedPlace = imports.placeStore.existsWithOsmTypeAndId(type, id);
+
+    if (storedPlace) {
+        callback(storedPlace, null);
+        return;
+    }
+
+    if (overpass === null)
+        overpass = new Overpass.Overpass();
+
+    overpass.fetchPlace(type, id, (place) => {
+        if (place)
+            callback(place, null);
+        else
+            callback(null, _("Place not found in OpenStreetMap"));
+    });
+}
+
