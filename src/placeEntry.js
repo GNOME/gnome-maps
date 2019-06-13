@@ -175,12 +175,6 @@ var PlaceEntry = GObject.registerClass({
         return popover;
     }
 
-    _refreshFilter() {
-        /* Filter model based on input text */
-        this._filter.refilter();
-        this._popover.updateCompletion(this._filter, this.text);
-    }
-
     _completionVisibleFunc(model, iter) {
         let place = model.get_value(iter, PlaceStore.Columns.PLACE);
         let type = model.get_value(iter, PlaceStore.Columns.TYPE);
