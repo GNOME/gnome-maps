@@ -44,14 +44,15 @@ var TurnPointType = {
 /* countries/terrotories driving on the left
  * source: https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic
  */
-const LHT_COUNTRIES = new Set(['AG', 'AI', 'AU', 'BB', 'BD', 'BM', 'BN', 'BS', 'BT', 'BW',
-                               'CY', 'DM', 'FJ', 'FK', 'GB', 'GB', 'GD', 'GY', 'HK',
-                               'ID', 'IE', 'IM', 'IN', 'JE', 'JM', 'JP', 'KE', 'KI',
-                               'KN', 'KY', 'LC', 'LK', 'LS', 'MO', 'MS', 'MT', 'MU', 'MV',
-                               'MW', 'MY', 'MZ', 'NA', 'NP', 'NR', 'NZ', 'PG', 'PN',
-                               'PK', 'SB', 'SC', 'SG', 'SH', 'SR', 'SZ', 'TC', 'TH', 'TL',
-                               'TO', 'TT', 'TV', 'TZ', 'UG', 'VC', 'VG', 'VI', 'WS',
-                               'ZA', 'ZM', 'ZW']);
+const LHT_COUNTRIES = new Set(['AG', 'AI', 'AU', 'BB', 'BD', 'BM', 'BN', 'BS',
+                               'BT', 'BW', 'CY', 'DM', 'FJ', 'FK', 'GB', 'GB',
+                               'GD', 'GY', 'HK', 'ID', 'IE', 'IM', 'IN', 'JE',
+                               'JM', 'JP', 'KE', 'KI', 'KN', 'KY', 'LC', 'LK',
+                               'LS', 'MO', 'MS', 'MT', 'MU', 'MV', 'MW', 'MY',
+                               'MZ', 'NA', 'NP', 'NR', 'NZ', 'PG', 'PN', 'PK',
+                               'SB', 'SC', 'SG', 'SH', 'SR', 'SZ', 'TC', 'TH',
+                               'TL', 'TO', 'TT', 'TV', 'TZ', 'UG', 'VC', 'VG',
+                               'VI', 'WS', 'ZA', 'ZM', 'ZW']);
 
 var Route = GObject.registerClass({
     Signals: {
