@@ -87,7 +87,7 @@ var SendToDialog = GObject.registerClass({
         this.connect('show', () => {
             this._summaryLabel.label = this._getSummary();
             let osmuri = GLib.markup_escape_text(this._getOSMURI(), -1);
-            this._summaryUrl.label = "<a href='%s'>%s</a>".format(osmuri, osmuri);
+            this._summaryUrl.label = '<a href="%s">%s</a>'.format(osmuri, osmuri);
 
             this._copyButton.connect('clicked', () => this._copySummary());
             this._emailButton.connect('clicked', () => this._emailSummary());
@@ -122,17 +122,17 @@ var SendToDialog = GObject.registerClass({
         }
 
         /* Other apps that can launch geo: URIs */
-        let contentType = Gio.content_type_from_mime_type("x-scheme-handler/geo");
-        let thisId = Application.application.application_id + ".desktop";
+        let contentType = Gio.content_type_from_mime_type('x-scheme-handler/geo');
+        let thisId = Application.application.application_id + '.desktop';
         let apps = Gio.app_info_get_all_for_type(contentType);
-        for (var app of apps) {
+        apps.forEach((app) => {
             if (app.get_id() == thisId)
                 return;
             if (!app.should_show())
                 return;
 
             this._list.add(new OpenWithRow({ appinfo: app }));
-        }
+        });
 
         /* Hide the list box if it is empty */
         if (this._list.get_children().length == 0) {
@@ -160,7 +160,7 @@ var SendToDialog = GObject.registerClass({
         lines.push('%f, %f'.format(place.location.latitude,
                                    place.location.longitude));
 
-        return lines.join("\n");
+        return lines.join('\n');
     }
 
     _getOSMURI() {
@@ -181,7 +181,7 @@ var SendToDialog = GObject.registerClass({
     }
 
     _copySummary() {
-        let summary = "%s\n%s".format(this._getSummary(), this._getOSMURI());
+        let summary = '%s\n%s'.format(this._getSummary(), this._getOSMURI());
 
         let display = Gdk.Display.get_default();
         let clipboard = Gtk.Clipboard.get_default(display);
@@ -192,7 +192,7 @@ var SendToDialog = GObject.registerClass({
     _emailSummary() {
         let title = new PlaceFormatter.PlaceFormatter(this._place).title;
         let summary = "%s\n%s".format(this._getSummary(), this._getOSMURI());
-        let uri = "mailto:?subject=%s&body=%s".format(Soup.URI.encode(title, null),
+        let uri = 'mailto:?subject=%s&body=%s'.format(Soup.URI.encode(title, null),
                                                       Soup.URI.encode(summary, null));
 
         try {
