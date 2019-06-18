@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps 3.16\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-01-14 19:43+0000\n"
-"PO-Revision-Date: 2019-02-24 16:53+0100\n"
+"POT-Creation-Date: 2019-06-15 11:02+0000\n"
+"PO-Revision-Date: 2019-06-18 10:08+0200\n"
 "Last-Translator: Nathan Follens <nthn@unseen.is>\n"
 "Language-Team: Dutch <gnome-nl-list@gnome.org>\n"
 "Language: nl\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 "X-Project-Style: gnome\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
@@ -62,20 +62,26 @@ msgstr ""
 "buurt van Main Street, Boston’ of ‘WiFi-toegang in de buurt van "
 "Alexanderplatz, Berlijn’."
 
+#: data/org.gnome.Maps.appdata.xml.in:59
+msgid "The GNOME Project"
+msgstr "Het Gnome-project"
+
+#. Translators: This is the program name.
+#. for some reason, setting the title of the window through the .ui
+#. * template does not work anymore (maybe has something to do with
+#. * setting a custom title on the headerbar). Setting it programmatically
+#. * here works though. And yields a proper label in the gnome-shell
+#. * overview.
+#.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
-#: src/mainWindow.js:500
+#: src/application.js:81 src/mainWindow.js:139 src/mainWindow.js:509
 msgid "Maps"
 msgstr "Kaarten"
 
 #: data/org.gnome.Maps.desktop.in:5
 msgid "A simple maps application"
 msgstr "Een eenvoudige kaartentoepassing"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Maps.desktop.in:8
-msgid "org.gnome.Maps"
-msgstr "org.gnome.Maps"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Maps.desktop.in:14
@@ -217,7 +223,7 @@ msgid "Post on Twitter"
 msgstr "Posten op Twitter"
 
 #: data/ui/check-in-dialog.ui:388 data/ui/export-view-dialog.ui:20
-#: data/ui/send-to-dialog.ui:21 data/ui/shape-layer-file-chooser.ui:22
+#: data/ui/send-to-dialog.ui:13 data/ui/shape-layer-file-chooser.ui:22
 msgid "_Cancel"
 msgstr "_Annuleren"
 
@@ -353,7 +359,7 @@ msgid "Open shape layer"
 msgstr "Vormlaag openen"
 
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:71
+#: data/ui/layers-popover.ui:69
 msgid "Open Shape Layer…"
 msgstr "Vormlaag openen…"
 
@@ -440,8 +446,8 @@ msgstr "Aan nieuwe route toevoegen"
 
 #. Translators: This is a tooltip
 #: data/ui/map-bubble.ui:62
-msgid "Open with another application"
-msgstr "Openen met een andere toepassing"
+msgid "Share location"
+msgstr "Locatie delen"
 
 #. Translators: This is a tooltip
 #: data/ui/map-bubble.ui:79
@@ -585,11 +591,7 @@ msgstr "Bewerken op OpenStreetMap"
 msgid "Show more information"
 msgstr "Meer informatie tonen"
 
-#: data/ui/place-popover.ui:24
-msgid "Press enter to search"
-msgstr "Druk op enter om te zoeken"
-
-#: data/ui/place-popover.ui:72
+#: data/ui/place-popover.ui:54
 msgid "No results found"
 msgstr "Geen resultaten gevonden"
 
@@ -598,17 +600,25 @@ msgstr "Geen resultaten gevonden"
 msgid "Drag to change order of the route"
 msgstr "Verslepen om de volgorde van de route te wijzigen"
 
-#: data/ui/send-to-dialog.ui:15
-msgid "Open location"
+#: data/ui/send-to-dialog.ui:10
+msgid "Open Location"
 msgstr "Locatie openen"
 
-#: data/ui/send-to-dialog.ui:35 data/ui/shape-layer-file-chooser.ui:12
-msgid "_Open"
-msgstr "_Openen"
+#: data/ui/send-to-dialog.ui:70
+msgid "Copy"
+msgstr "Kopiëren"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:61
+#: data/ui/send-to-dialog.ui:76
+msgid "Send To…"
+msgstr "Versturen naar…"
+
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:62
 msgid "Open Shape Layer"
 msgstr "Vormlaag openen"
+
+#: data/ui/shape-layer-file-chooser.ui:12
+msgid "_Open"
+msgstr "_Openen"
 
 #. Translators: This is a tooltip
 #: data/ui/shape-layer-row.ui:19
@@ -731,11 +741,11 @@ msgstr "Benodigde eigenschappen ontbreken"
 msgid "Could not find OSM element"
 msgstr "Kon OSM-element niet vinden"
 
-#: src/application.js:95
+#: src/application.js:94
 msgid "A path to a local tiles directory structure"
 msgstr "Een pad naar een mappenstructuur met lokale tegels"
 
-#: src/application.js:99
+#: src/application.js:98
 msgid "Show the version of the program"
 msgstr "De versie van het programma tonen"
 
@@ -803,23 +813,23 @@ msgstr ""
 "De aanmeldgegevens zijn verlopen, gelieve Online-accounts te openen om u aan "
 "te melden en dit account in te schakelen"
 
-#: src/contextMenu.js:98
+#: src/contextMenu.js:99
 msgid "Route from here"
 msgstr "Route vanaf hier"
 
-#: src/contextMenu.js:100
+#: src/contextMenu.js:101
 msgid "Add destination"
 msgstr "Bestemming toevoegen"
 
-#: src/contextMenu.js:102
+#: src/contextMenu.js:103
 msgid "Route to here"
 msgstr "Route naar hier"
 
-#: src/contextMenu.js:131
+#: src/contextMenu.js:129
 msgid "Nothing found here!"
 msgstr "Niets gevonden hier!"
 
-#: src/contextMenu.js:192
+#: src/contextMenu.js:190
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -856,39 +866,39 @@ msgstr "Geen bestandsnaam opgegeven"
 msgid "Unable to export view"
 msgstr "Kon weergave niet exporteren"
 
-#: src/geoJSONSource.js:98
+#: src/geoJSONSource.js:97
 msgid "invalid coordinate"
 msgstr "ongeldige coördinaat"
 
-#: src/geoJSONSource.js:147 src/geoJSONSource.js:187 src/geoJSONSource.js:202
+#: src/geoJSONSource.js:146 src/geoJSONSource.js:186 src/geoJSONSource.js:201
 msgid "parse error"
 msgstr "ontleedfout"
 
-#: src/geoJSONSource.js:181
+#: src/geoJSONSource.js:180
 msgid "unknown geometry"
 msgstr "onbekende afmetingen"
 
-#: src/graphHopper.js:93 src/openTripPlanner.js:652
+#: src/graphHopper.js:112 src/openTripPlanner.js:652
 msgid "Route request failed."
 msgstr "Routeaanvraag is mislukt."
 
-#: src/graphHopper.js:100 src/openTripPlanner.js:615
+#: src/graphHopper.js:119 src/openTripPlanner.js:615
 msgid "No route found."
 msgstr "Geen route gevonden."
 
-#: src/graphHopper.js:188
+#: src/graphHopper.js:207
 msgid "Start!"
 msgstr "Start!"
 
-#: src/mainWindow.js:58
+#: src/mainWindow.js:59
 msgid "All Layer Files"
 msgstr "Alle laagbestanden"
 
-#: src/mainWindow.js:433
+#: src/mainWindow.js:442
 msgid "Failed to connect to location service"
 msgstr "Verbinden met locatiedienst is mislukt"
 
-#: src/mainWindow.js:498
+#: src/mainWindow.js:507
 msgid "translator-credits"
 msgstr ""
 "Erwin Poeze <donnut@outlook.com>\n"
@@ -899,15 +909,15 @@ msgstr ""
 "\n"
 "Meer info over Gnome-NL http://nl.gnome.org"
 
-#: src/mainWindow.js:501
+#: src/mainWindow.js:510
 msgid "A map application for GNOME"
 msgstr "Een kaartentoepassing voor Gnome"
 
-#: src/mainWindow.js:512
+#: src/mainWindow.js:521
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 – 2019 Red Hat, Inc. en de auteurs van Gnome Maps"
 
-#: src/mainWindow.js:531
+#: src/mainWindow.js:541
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Kaartgegevens door %s en bijdragers"
@@ -917,10 +927,24 @@ msgstr "Kaartgegevens door %s en bijdragers"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:547
+#: src/mainWindow.js:557
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Kaarttegels geleverd door %s"
+
+#. Translators: this is an attribution string giving credit to the
+#. * search provider where the first %s placeholder is replaced by either
+#. * the bare name of the geocoder provider, or a linkified URL if one
+#. * is available, and the second %s placeholder is replaced by the
+#. * URL to the geocoder project page. These placeholders
+#. * can be swapped, if needed using the %n$s positional syntax
+#. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
+#. * before the provider).
+#.
+#: src/mainWindow.js:586
+#, javascript-format
+msgid "Search provided by %s using %s"
+msgstr "Zoekfunctionaliteit aangeboden door %s met %s"
 
 #: src/mapView.js:358
 msgid "File type is not supported"
@@ -1204,6 +1228,10 @@ msgstr "Een type kiezen"
 msgid "Done"
 msgstr "Klaar"
 
+#: src/photonParser.js:103
+msgid "Unnamed place"
+msgstr "Naamloze plaats"
+
 #: src/placeBubble.js:143
 msgid "Population:"
 msgstr "Populatie:"
@@ -1236,7 +1264,7 @@ msgstr "Rolstoeltoegankelijk:"
 msgid "Phone:"
 msgstr "Telefoon:"
 
-#: src/placeEntry.js:186
+#: src/placeEntry.js:203
 msgid "Failed to parse Geo URI"
 msgstr "Kon GeoURI niet ontleden"
 
@@ -1246,7 +1274,7 @@ msgstr "Kon GeoURI niet ontleden"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/place.js:218 src/translations.js:329 src/translations.js:391
+#: src/place.js:234 src/translations.js:329 src/translations.js:391
 msgid "yes"
 msgstr "ja"
 
@@ -1255,7 +1283,7 @@ msgstr "ja"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/place.js:225
+#: src/place.js:241
 msgid "limited"
 msgstr "beperkt toegankelijk"
 
@@ -1267,7 +1295,7 @@ msgstr "beperkt toegankelijk"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/place.js:231 src/translations.js:335 src/translations.js:392
+#: src/place.js:247 src/translations.js:335 src/translations.js:392
 msgid "no"
 msgstr "nee"
 
@@ -1276,11 +1304,11 @@ msgstr "nee"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/place.js:238
+#: src/place.js:254
 msgid "designated"
 msgstr "aangewezen"
 
-#: src/printLayout.js:240
+#: src/printLayout.js:312
 #, javascript-format
 msgid "From %s to %s"
 msgstr "Van %s naar %s"
@@ -1312,9 +1340,21 @@ msgstr "‘Via’ verwijderen"
 msgid "Reverse route"
 msgstr "Route omkeren"
 
-#: src/sendToDialog.js:175
+#. Translators: The first string is the name of the city, the
+#. second string is the name of the app to add it to
+#: src/sendToDialog.js:103
+#, javascript-format
+msgid "Add %s to %s"
+msgstr "%s toevoegen aan %s"
+
+#: src/sendToDialog.js:201
 msgid "Failed to open URI"
 msgstr "URI openen mislukt"
+
+#: src/sendToDialog.js:258
+#, javascript-format
+msgid "Open with %s"
+msgstr "Openen met %s"
 
 #: src/shapeLayer.js:91
 msgid "failed to load file"
@@ -1326,22 +1366,10 @@ msgstr "bestand laden mislukt"
 msgid "Estimated time: %s"
 msgstr "Geschatte tijdsduur: %s"
 
-#. Translators: this a format string indicating arriving at the
-#. * destination of journey with the arrival address and transit
-#. * stop as the format parameter
-#: src/transitArrivalRow.js:54
-#, javascript-format
-msgid "Arrive at %s"
-msgstr "Kom aan tegen %s"
-
-#: src/transitArrivalRow.js:56
-msgid "Arrive"
-msgstr "Kom aan"
-
 #. Translators: this is a format string indicating instructions
 #. * starting a journey at the address given as the parameter
 #.
-#: src/transitLegRow.js:71
+#: src/transit.js:37
 #, javascript-format
 msgid "Start at %s"
 msgstr "Vertrek om %s"
@@ -1350,25 +1378,37 @@ msgstr "Vertrek om %s"
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: src/transitLegRow.js:77
+#: src/transit.js:43
 msgid "Start"
 msgstr "Start"
-
-#: src/transitLegRow.js:106
-msgid "Show walking instructions"
-msgstr "Wandelinstructies tonen"
-
-#: src/transitLegRow.js:107
-msgid "Hide walking instructions"
-msgstr "Wandelinstructies verbergen"
 
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
 #.
-#: src/transitLegRow.js:132
+#: src/transit.js:61
 #, javascript-format
 msgid "Walk %s"
 msgstr "Wandel %s"
+
+#. Translators: this a format string indicating arriving at the
+#. * destination of journey with the arrival address and transit
+#. * stop as the format parameter
+#: src/transit.js:75
+#, javascript-format
+msgid "Arrive at %s"
+msgstr "Kom aan tegen %s"
+
+#: src/transit.js:77
+msgid "Arrive"
+msgstr "Kom aan"
+
+#: src/transitLegRow.js:88
+msgid "Show walking instructions"
+msgstr "Wandelinstructies tonen"
+
+#: src/transitLegRow.js:89
+msgid "Hide walking instructions"
+msgstr "Wandelinstructies verbergen"
 
 #: src/transitMoreRow.js:39
 msgid "Load earlier alternatives"
@@ -1598,53 +1638,62 @@ msgid "service"
 msgstr "dienst"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:227
+#: src/utils.js:220
 msgid "Unknown"
 msgstr "Onbekend"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:230
+#: src/utils.js:223
 msgid "Exact"
 msgstr "Exact"
 
-#: src/utils.js:288
+#: src/utils.js:281
 #, javascript-format
 msgid "%f h"
 msgstr "%f h"
 
-#: src/utils.js:290
+#: src/utils.js:283
 #, javascript-format
 msgid "%f min"
 msgstr "%f min"
 
-#: src/utils.js:292
+#: src/utils.js:285
 #, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:303
+#: src/utils.js:296
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:306
+#: src/utils.js:299
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:314
+#: src/utils.js:307
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:317
+#: src/utils.js:310
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
+
+#~ msgid "org.gnome.Maps"
+#~ msgstr "org.gnome.Maps"
+
+#~ msgid "Open with another application"
+#~ msgstr "Openen met een andere toepassing"
+
+#~ msgid "Press enter to search"
+#~ msgstr "Druk op enter om te zoeken"
 
 #~ msgid "Quit"
 #~ msgstr "Afsluiten"
