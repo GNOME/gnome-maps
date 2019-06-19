@@ -72,6 +72,9 @@ class Place extends Geocode.Place {
         this._note = params.note;
         delete params.note;
 
+        this._initialZoom = params.initialZoom;
+        delete params.initialZoom;
+
         /* Determines if the place should be added to the place store */
         if (typeof(params.store) === 'undefined') {
             this._store = true;
@@ -224,6 +227,10 @@ class Place extends Geocode.Place {
 
     get wheelchairTranslated() {
         return this._translateWheelchair(this._wheelchair);
+    }
+
+    get initialZoom() {
+        return this._initialZoom;
     }
 
     _translateWheelchair(string) {
