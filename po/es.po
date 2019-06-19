@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-06-10 19:40+0000\n"
-"PO-Revision-Date: 2019-06-11 12:48+0200\n"
+"POT-Creation-Date: 2019-06-15 11:02+0000\n"
+"PO-Revision-Date: 2019-06-19 09:36+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -218,7 +218,7 @@ msgid "Post on Twitter"
 msgstr "Publicar el Twitter"
 
 #: data/ui/check-in-dialog.ui:388 data/ui/export-view-dialog.ui:20
-#: data/ui/send-to-dialog.ui:21 data/ui/shape-layer-file-chooser.ui:22
+#: data/ui/send-to-dialog.ui:13 data/ui/shape-layer-file-chooser.ui:22
 msgid "_Cancel"
 msgstr "_Cancelar"
 
@@ -441,8 +441,9 @@ msgstr "Añadir a la ruta nueva"
 
 #. Translators: This is a tooltip
 #: data/ui/map-bubble.ui:62
-msgid "Open with another application"
-msgstr "Abrir con otra aplicación"
+#| msgid "Open location"
+msgid "Share location"
+msgstr "Compartir ubicación"
 
 #. Translators: This is a tooltip
 #: data/ui/map-bubble.ui:79
@@ -595,17 +596,26 @@ msgstr "No se han encontrado resultados"
 msgid "Drag to change order of the route"
 msgstr "Arrastre para cambiar el orden de la ruta"
 
-#: data/ui/send-to-dialog.ui:15
-msgid "Open location"
+#: data/ui/send-to-dialog.ui:10
+#| msgid "Open location"
+msgid "Open Location"
 msgstr "Abrir ubicación"
 
-#: data/ui/send-to-dialog.ui:35 data/ui/shape-layer-file-chooser.ui:12
-msgid "_Open"
-msgstr "_Abrir"
+#: data/ui/send-to-dialog.ui:70
+msgid "Copy"
+msgstr "Copiar"
+
+#: data/ui/send-to-dialog.ui:76
+msgid "Send To…"
+msgstr "Enviar a…"
 
 #: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:62
 msgid "Open Shape Layer"
 msgstr "Abrir capa de formas"
+
+#: data/ui/shape-layer-file-chooser.ui:12
+msgid "_Open"
+msgstr "_Abrir"
 
 #. Translators: This is a tooltip
 #: data/ui/shape-layer-row.ui:19
@@ -1243,7 +1253,7 @@ msgstr "Acceso para sillas de ruedas:"
 msgid "Phone:"
 msgstr "Teléfono:"
 
-#: src/placeEntry.js:209
+#: src/placeEntry.js:203
 msgid "Failed to parse Geo URI"
 msgstr "Falló al analizar el URI de Geo"
 
@@ -1253,7 +1263,7 @@ msgstr "Falló al analizar el URI de Geo"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/place.js:227 src/translations.js:329 src/translations.js:391
+#: src/place.js:234 src/translations.js:329 src/translations.js:391
 msgid "yes"
 msgstr "sí"
 
@@ -1262,7 +1272,7 @@ msgstr "sí"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/place.js:234
+#: src/place.js:241
 msgid "limited"
 msgstr "limitado"
 
@@ -1274,7 +1284,7 @@ msgstr "limitado"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/place.js:240 src/translations.js:335 src/translations.js:392
+#: src/place.js:247 src/translations.js:335 src/translations.js:392
 msgid "no"
 msgstr "no"
 
@@ -1283,7 +1293,7 @@ msgstr "no"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/place.js:247
+#: src/place.js:254
 msgid "designated"
 msgstr "designado"
 
@@ -1319,9 +1329,22 @@ msgstr "Quitar ubicación de la vía"
 msgid "Reverse route"
 msgstr "Ruta inversa"
 
-#: src/sendToDialog.js:175
+#. Translators: The first string is the name of the city, the
+#. second string is the name of the app to add it to
+#: src/sendToDialog.js:103
+#, javascript-format
+#| msgid "From %s to %s"
+msgid "Add %s to %s"
+msgstr "Añadir %s a %s"
+
+#: src/sendToDialog.js:201
 msgid "Failed to open URI"
 msgstr "Falló al abrir el URI"
+
+#: src/sendToDialog.js:258
+#, javascript-format
+msgid "Open with %s"
+msgstr "Abrir con %s"
 
 #: src/shapeLayer.js:91
 msgid "failed to load file"
@@ -1652,6 +1675,9 @@ msgstr "%s mi"
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
+
+#~ msgid "Open with another application"
+#~ msgstr "Abrir con otra aplicación"
 
 #~ msgid "Press enter to search"
 #~ msgstr "Pulse Intro para buscar"
