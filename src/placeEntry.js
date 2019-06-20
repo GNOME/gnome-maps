@@ -20,6 +20,8 @@
  *         Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
  */
 
+const _ = imports.gettext.gettext;
+
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Geocode = imports.gi.GeocodeGlib;
@@ -211,6 +213,24 @@ var PlaceEntry = GObject.registerClass({
         if (parsedLocation) {
             this.place = new Place.Place({ location: parsedLocation });
             parsed = true;
+        }
+
+        if (Place.matchOSMURL(this.text)) {
+            if (this._cancellable)
+                this._cancellable.cancel();
+            this._cancellable = null;
+            Place.parseOSMURL(this.text, (place) => {
+                if (place)
+                    this.place = place;
+                else
+                    Utils.showDialog(_("Object not found in OpenStreetMap"),
+                                     Gtk.MessageType.ERROR, this.get_toplevel());
+            });
+
+            /* don't cancel ongoing search, as we have started an async
+             * operation looking up the OSM object
+             */
+            return true;
         }
 
         if (parsed && this._cancellable)
