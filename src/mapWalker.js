@@ -59,27 +59,29 @@ var MapWalker = GObject.registerClass({
 
     // Zoom to the maximal zoom-level that fits the place type
     zoomToFit() {
-        let zoom;
         if (this._boundingBox !== null && this._boundingBox.is_valid()) {
             this._view.zoom_level = this._view.max_zoom_level;
             this._view.ensure_visible(this._boundingBox, false);
         } else {
-            switch (this.place.place_type) {
-            case Geocode.PlaceType.STREET:
-                zoom = 16;
-                break;
+            let zoom;
 
-            case Geocode.PlaceType.TOWN:
-                zoom = 11;
-                break;
-
-            case Geocode.PlaceType.COUNTRY:
-                zoom = 6;
-                break;
-
-            default:
-                zoom = this._view.max_zoom_level;
-                break;
+            if (this.place.initialZoom) {
+                zoom = this.place.initialZoom;
+            } else {
+                switch (this.place.place_type) {
+                    case Geocode.PlaceType.STREET:
+                        zoom = 16;
+                        break;
+                    case Geocode.PlaceType.TOWN:
+                        zoom = 11;
+                        break;
+                    case Geocode.PlaceType.COUNTRY:
+                        zoom = 6;
+                        break;
+                    default:
+                        zoom = this._view.max_zoom_level;
+                        break;
+                }
             }
             this._view.zoom_level = zoom;
             this._view.center_on(this.place.location.latitude,
