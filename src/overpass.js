@@ -22,6 +22,7 @@ const Geocode = imports.gi.GeocodeGlib;
 const GObject = imports.gi.GObject;
 const Soup = imports.gi.Soup;
 
+const PhotonParser = imports.photonParser;
 const Place = imports.place;
 const Utils = imports.utils;
 
@@ -73,7 +74,8 @@ var Overpass = GObject.registerClass({
     }
 
     addInfo(place) {
-        let url = this._getQueryUrl(place);
+        let url = this._getQueryUrl(Utils.osmTypeToString(place.osm_type),
+                                    place.osm_id);
         let uri = new Soup.URI(url);
         let request = new Soup.Message({ method: 'GET',
                                          uri: uri });
@@ -94,10 +96,109 @@ var Overpass = GObject.registerClass({
         });
     }
 
+    fetchPlace(osmType, osmId, callback) {
+        let url = this._getQueryUrl(osmType, osmId);
+        let uri = new Soup.URI(url);
+        let request = new Soup.Message({ method: 'GET',
+                                         uri: uri });
+
+        this._session.queue_message(request, (obj, message) => {
+            if (message.status_code !== Soup.KnownStatusCode.OK) {
+                Utils.debug('Failed to fetch Overpass result: ' + message.status_code);
+                callback(null);
+            }
+            try {
+                let jsonObj = JSON.parse(message.response_body.data);
+                let place = this._createPlace(jsonObj, osmType, osmId);
+                callback(place);
+            } catch(e) {
+                Utils.debug('Failed to parse Overpass result');
+                callback(null);
+            }
+        })
+    }
+
+    _createPlace(overpassData, osmType, osmId) {
+        Utils.debug('overpass result: ' + JSON.stringify(overpassData, '', 2));
+        let element = overpassData.elements[0];
+
+        if (!(element && element.tags))
+            return null;
+
+        let [lat, lon] = this._getCoordsFromElement(element);
+        let photonProperties =
+            this._getPhotonProperties(element.tags, osmType, osmId);
+        let place = PhotonParser.parsePlace(lat, lon, photonProperties);
+
+        this._populatePlace(place, overpassData);
+        place.prefilled = true;
+
+        return place;
+    }
+
+    _getCoordsFromElement(element) {
+        if (element.type === 'node')
+            return [element.lat, element.lon];
+        else
+            return [element.center.lat, element.center.lon];
+    }
+
+    _getPhotonProperties(tags, osmType, osmId) {
+        let properties = {};
+
+        properties.osm_type = this._getPhotonOsmType(osmType);
+        properties.osm_id = osmId;
+
+        if (tags.name)
+            properties.name = tags.name;
+
+        if (tags['addr:street'])
+            properties.street = tags['addr:street'];
+        if (tags['addr:housenumber'])
+            properties.housenumber = tags['addr:housenumber'];
+        if (tags['addr:postcode'])
+            properties.postcode = tags['addr:postcode'];
+        if (tags['addr:city'])
+            properties.city = tags['addr:city'];
+
+        if (tags.place)
+            this._setOsmKeyAndValue(properties, tags, 'place');
+        else if (tags.amenity)
+            this._setOsmKeyAndValue(properties, tags, 'amenity');
+        else if (tags.leisure)
+            this._setOsmKeyAndValue(properties, tags, 'leisure');
+        else if (tags.shop)
+            this._setOsmKeyAndValue(properties, tags, 'shop');
+        else if (tags.highway)
+            this._setOsmKeyAndValue(properties, tags, 'highway');
+        else if (tags.railway)
+            this._setOsmKeyAndValue(properties, tags, 'railway');
+        else if (tags.aeroway)
+            this._setOsmKeyAndValue(properties, tags, 'aeroway');
+        else if (tags.building)
+            this._setOsmKeyAndValue(properties, tags, 'building');
+
+        return properties;
+    }
+
+    _getPhotonOsmType(osmType) {
+        switch (osmType) {
+            case 'node': return 'N';
+            case 'way': return 'W';
+            case 'relation': return 'R';
+            default: return null;
+        }
+    }
+
+    _setOsmKeyAndValue(properties, tags, tag) {
+        properties.osm_key = tag;
+        properties.osm_value = tags[tag];
+    }
+
     _populatePlace(place, overpassData) {
         let element = overpassData.elements[0];
 
-        if (!(element && element.tags && element.tags.name))
+        if (!(element && element.tags))
             return;
 
         if (element.tags.name)
@@ -126,17 +227,18 @@ var Overpass = GObject.registerClass({
             place.note = element.tags.note;
     }
 
-    _getQueryUrl(place) {
-        return Format.vprintf('%s?data=%s', [ BASE_URL,
-                                              this._generateOverpassQuery(place) ]);
+    _getQueryUrl(osmType, osmId) {
+        return Format.vprintf('%s?data=%s', [BASE_URL,
+                                             this._generateOverpassQuery(osmType,
+                                                                          osmId)]);
     }
 
-    _generateOverpassQuery(place) {
+    _generateOverpassQuery(osmType, osmId) {
         return Format.vprintf('%s%s%s;%s;%s;',
                               [ this._getKeyValue('timeout', this.timeout),
                                 this._getKeyValue('out', this.outputFormat),
                                 this._getKeyValue('maxsize', this.maxsize),
-                                this._getData(place),
+                                this._getData(osmType, osmId),
                                 this._getOutput() ]);
     }
 
@@ -145,14 +247,13 @@ var Overpass = GObject.registerClass({
                                            value ]);
     }
 
-    _getData(place) {
-        return Format.vprintf('%s(%s)', [Utils.osmTypeToString(place.osm_type),
-                                         place.osm_id]);
+    _getData(osmType, osmId) {
+        return Format.vprintf('%s(%s)', [osmType, osmId]);
     }
 
     _getOutput() {
-        return Format.vprintf('out %s %s %s', [ this.outputInfo,
-                                                this.outputSortOrder,
-                                                this.outputCount ]);
+        return Format.vprintf('out center %s %s %s', [ this.outputInfo,
+                                                       this.outputSortOrder,
+                                                       this.outputCount ]);
     }
 });
