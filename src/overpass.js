@@ -73,7 +73,8 @@ var Overpass = GObject.registerClass({
     }
 
     addInfo(place) {
-        let url = this._getQueryUrl(place);
+        let url = this._getQueryUrl(Utils.osmTypeToString(place.osm_type),
+                                    place.osm_id);
         let uri = new Soup.URI(url);
         let request = new Soup.Message({ method: 'GET',
                                          uri: uri });
@@ -94,10 +95,36 @@ var Overpass = GObject.registerClass({
         });
     }
 
+    fetchPlace(osmType, osmId, callback) {
+        let url = this._getQueryUrl(osmType, osmId);
+        let uri = new Soup.URI(url);
+        let request = new Soup.Message({ method: 'GET',
+                                         uri: uri });
+
+        this._session.queue_message(request, (obj, message) => {
+            if (message.status_code !== Soup.KnownStatusCode.OK) {
+                Utils.debug('Failed to fetch Overpass result: ' + message.status_code);
+                callback(null);
+            }
+            try {
+                let jsonObj = JSON.parse(message.response_body.data);
+                let place = this._createPlace(jsonObj);
+                callback(place);
+            } catch(e) {
+                Utils.debug('Failed to parse Overpass result');
+                callback(null);
+            }
+        })
+    }
+
+    _createPlace(jsonObj) {
+        Utils.debug('overpass result: ' + JSON.stringify(jsonObj, '', 2));
+    }
+
     _populatePlace(place, overpassData) {
         let element = overpassData.elements[0];
 
-        if (!(element && element.tags && element.tags.name))
+        if (!(element && element.tags))
             return;
 
         if (element.tags.name)
@@ -126,17 +153,18 @@ var Overpass = GObject.registerClass({
             place.note = element.tags.note;
     }
 
-    _getQueryUrl(place) {
-        return Format.vprintf('%s?data=%s', [ BASE_URL,
-                                              this._generateOverpassQuery(place) ]);
+    _getQueryUrl(osmType, osmId) {
+        return Format.vprintf('%s?data=%s', [BASE_URL,
+                                             this._generateOverpassQuery(osmType,
+                                                                          osmId)]);
     }
 
-    _generateOverpassQuery(place) {
+    _generateOverpassQuery(osmType, osmId) {
         return Format.vprintf('%s%s%s;%s;%s;',
                               [ this._getKeyValue('timeout', this.timeout),
                                 this._getKeyValue('out', this.outputFormat),
                                 this._getKeyValue('maxsize', this.maxsize),
-                                this._getData(place),
+                                this._getData(osmType, osmId),
                                 this._getOutput() ]);
     }
 
@@ -145,14 +173,13 @@ var Overpass = GObject.registerClass({
                                            value ]);
     }
 
-    _getData(place) {
-        return Format.vprintf('%s(%s)', [Utils.osmTypeToString(place.osm_type),
-                                         place.osm_id]);
+    _getData(osmType, osmId) {
+        return Format.vprintf('%s(%s)', [osmType, osmId]);
     }
 
     _getOutput() {
-        return Format.vprintf('out %s %s %s', [ this.outputInfo,
-                                                this.outputSortOrder,
-                                                this.outputCount ]);
+        return Format.vprintf('out center %s %s %s', [ this.outputInfo,
+                                                       this.outputSortOrder,
+                                                       this.outputCount ]);
     }
 });
