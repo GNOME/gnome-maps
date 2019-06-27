@@ -75,6 +75,13 @@ class Place extends Geocode.Place {
         this._initialZoom = params.initialZoom;
         delete params.initialZoom;
 
+        /* set to true if the instance is pre-filled with Overpass data,
+         * at the time of creation, as will be the case when loading a place
+         * from an OSM object URL
+         */
+        this._prefilled = params.prefilled;
+        delete params.prefilled;
+
         /* Determines if the place should be added to the place store */
         if (typeof(params.store) === 'undefined') {
             this._store = true;
@@ -231,6 +238,14 @@ class Place extends Geocode.Place {
 
     get initialZoom() {
         return this._initialZoom;
+    }
+
+    get prefilled() {
+        return this._prefilled;
+    }
+
+    set prefilled(prefilled) {
+        this._prefilled = prefilled;
     }
 
     _translateWheelchair(string) {
