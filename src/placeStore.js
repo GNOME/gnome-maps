@@ -309,6 +309,10 @@ class PlaceStore extends Gtk.ListStore {
             return this._typeTable[place.uniqueID] !== undefined;
     }
 
+    existsWithOsmTypeAndId(osmType, osmId) {
+        return this._typeTable[osmType + '-' + osmId];
+    }
+
     _removeIf(evalFunc, stop) {
         this.foreach((model, path, iter) => {
             if (evalFunc(model, iter)) {
