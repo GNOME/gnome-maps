@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2018-09-15 21:17+0000\n"
-"PO-Revision-Date: 2019-02-21 08:42+0000\n"
+"POT-Creation-Date: 2019-03-26 17:04+0000\n"
+"PO-Revision-Date: 2019-07-06 07:57+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
 "Language: is\n"
@@ -56,19 +56,21 @@ msgstr ""
 "nálægt Alexanderplatz, Berlín”."
 
 #. Translators: This is the program name.
-#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:8
-#: src/mainWindow.js:503
+#. for some reason, setting the title of the window through the .ui
+#. * template does not work anymore (maybe has something to do with
+#. * setting a custom title on the headerbar). Setting it programmatically
+#. * here works though. And yields a proper label in the gnome-shell
+#. * overview.
+#.
+#. Translators: This is the program name.
+#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
+#: src/application.js:83 src/mainWindow.js:138 src/mainWindow.js:508
 msgid "Maps"
 msgstr "Landakort"
 
 #: data/org.gnome.Maps.desktop.in:5
 msgid "A simple maps application"
 msgstr "Einfalt landakortaforrit"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Maps.desktop.in:8
-msgid "org.gnome.Maps"
-msgstr "org.gnome.Maps"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Maps.desktop.in:14
@@ -197,22 +199,6 @@ msgstr ""
 #: data/org.gnome.Maps.gschema.xml:72
 msgid "Last used transportation type for routing"
 msgstr "Síðast notaða gerð samgangna fyrir leiðaval"
-
-#: data/ui/app-menu.ui:7
-msgid "Set up OpenStreetMap Account"
-msgstr "Setja upp OpenStreetMap aðgang"
-
-#: data/ui/app-menu.ui:12
-msgid "_Keyboard Shortcuts"
-msgstr "Flýtily_klar"
-
-#: data/ui/app-menu.ui:17
-msgid "About"
-msgstr "Um hugbúnaðinn"
-
-#: data/ui/app-menu.ui:21
-msgid "Quit"
-msgstr "Hætta"
 
 #: data/ui/check-in-dialog.ui:250 data/ui/check-in-dialog.ui:299
 msgid "Visibility"
@@ -363,7 +349,7 @@ msgid "Open shape layer"
 msgstr "Opna lag með lögunum"
 
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:71
+#: data/ui/layers-popover.ui:69
 msgid "Open Shape Layer…"
 msgstr "Opna lag með lögunum…"
 
@@ -380,46 +366,59 @@ msgstr "Hætta við"
 msgid "Location Settings"
 msgstr "Staðsetningarstillingar"
 
+#: data/ui/main-window.ui:8
+msgid "Set up OpenStreetMap Account"
+msgstr "Setja upp OpenStreetMap aðgang"
+
+#: data/ui/main-window.ui:13
+msgid "_Keyboard Shortcuts"
+msgstr "Flýtily_klar"
+
+#: data/ui/main-window.ui:18
+#| msgid "About"
+msgid "About Maps"
+msgstr "Um hugbúnaðinn"
+
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:23
+#: data/ui/main-window.ui:41
 msgid "Go to current location"
 msgstr "Fara á núverandi staðsetningu"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:44
+#: data/ui/main-window.ui:62
 msgid "Choose map type"
 msgstr "Veldu tegund landakorts"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:69
+#: data/ui/main-window.ui:87
 msgid "Zoom out"
 msgstr "Renna frá"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:85
+#: data/ui/main-window.ui:103
 msgid "Zoom in"
 msgstr "Renna að"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:103
+#: data/ui/main-window.ui:142
 msgid "Toggle route planner"
 msgstr "Víxla leiðagerð af/á"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:124
+#: data/ui/main-window.ui:163
 msgid "Toggle favorites"
 msgstr "Víxla Eftirlætum af/á"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:144
+#: data/ui/main-window.ui:183
 msgid "Print Route"
 msgstr "Prenta leið"
 
-#: data/ui/main-window.ui:207
+#: data/ui/main-window.ui:246
 msgid "Maps is offline!"
 msgstr "Kortin eru án nettengingar!"
 
-#: data/ui/main-window.ui:217
+#: data/ui/main-window.ui:256
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -427,7 +426,7 @@ msgstr ""
 "Landakortaforritið þarf virka internet-tengingu til að virka almennilega, en "
 "ekki hefur gengið að finna neina slíka."
 
-#: data/ui/main-window.ui:226
+#: data/ui/main-window.ui:265
 msgid "Check your connection and proxy settings."
 msgstr "Athugaðu tengi- og milliþjónastillingarnar þínar."
 
@@ -706,7 +705,6 @@ msgid "Zoom in to add location!"
 msgstr "Renndu að til að bæta við staðsetningu!"
 
 #: data/ui/zoom-in-dialog.ui:38
-#| msgid "Zoom in"
 msgid "Zoom In"
 msgstr "Renna að"
 
@@ -719,19 +717,19 @@ msgstr "Mistókst að finna tíglaskipan í möppu"
 msgid "Failed to parse XML document"
 msgstr "Gat ekki þáttað XML-skjal"
 
-#: lib/maps-osm.c:252 lib/maps-osm.c:405
+#: lib/maps-osm.c:249 lib/maps-osm.c:402
 msgid "Missing required attributes"
 msgstr "Nauðsynleg eigindi vantar"
 
-#: lib/maps-osm.c:453
+#: lib/maps-osm.c:450
 msgid "Could not find OSM element"
 msgstr "Gat ekki fundið OSM-stak"
 
-#: src/application.js:95
+#: src/application.js:96
 msgid "A path to a local tiles directory structure"
 msgstr "Slóð á möppuuppbyggingu fyrir kortaflísar á tölvunni"
 
-#: src/application.js:99
+#: src/application.js:100
 msgid "Show the version of the program"
 msgstr "Sýna útgáfu forrits"
 
@@ -880,23 +878,24 @@ msgstr "Byrja!"
 msgid "All Layer Files"
 msgstr "Allar lagaskrár"
 
-#: src/mainWindow.js:436
+#: src/mainWindow.js:441
 msgid "Failed to connect to location service"
 msgstr "Tókst ekki að tengjast staðsetningarþjónustu"
 
-#: src/mainWindow.js:501
+#: src/mainWindow.js:506
 msgid "translator-credits"
 msgstr "Sveinn í Felli, sv1@fellsnet.is"
 
-#: src/mainWindow.js:504
+#: src/mainWindow.js:509
 msgid "A map application for GNOME"
 msgstr "Landakortaforrit fyrir GNOME"
 
-#: src/mainWindow.js:515
-msgid "Copyright © 2011 – 2017 Red Hat, Inc. and The GNOME Maps authors"
-msgstr "Höfundarréttur © 2011 – 2017 Red Hat, Inc. og höfundar GNOME Maps"
+#: src/mainWindow.js:520
+#| msgid "Copyright © 2011 – 2017 Red Hat, Inc. and The GNOME Maps authors"
+msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
+msgstr "Höfundarréttur © 2011 – 2019 Red Hat, Inc. og höfundar GNOME Maps"
 
-#: src/mainWindow.js:534
+#: src/mainWindow.js:539
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Kortagögn frá %s og meðhöfundum"
@@ -906,20 +905,20 @@ msgstr "Kortagögn frá %s og meðhöfundum"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:550
+#: src/mainWindow.js:555
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Kortatíglar gefnir út af %s"
 
-#: src/mapView.js:353
+#: src/mapView.js:358
 msgid "File type is not supported"
 msgstr "Það er enginn stuðningur við skráategundina"
 
-#: src/mapView.js:360
+#: src/mapView.js:365
 msgid "Failed to open layer"
 msgstr "Mistókst að opna lag"
 
-#: src/mapView.js:396
+#: src/mapView.js:401
 msgid "Failed to open GeoURI"
 msgstr "Mistókst að opna Geo URI-slóð"
 
@@ -994,7 +993,7 @@ msgstr ""
 "meðvitaður um reglur þær sem í gildi eru á svæðinu, sérstaklega varðandi "
 "persónulega friðhelgi."
 
-#: src/osmEditDialog.js:136 src/placeBubble.js:173
+#: src/osmEditDialog.js:136 src/placeBubble.js:191
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -1193,35 +1192,35 @@ msgstr "Veldu tegund"
 msgid "Done"
 msgstr "Lokið"
 
-#: src/placeBubble.js:125
+#: src/placeBubble.js:143
 msgid "Population:"
 msgstr "Fólksfjöldi:"
 
-#: src/placeBubble.js:131
+#: src/placeBubble.js:149
 msgid "Altitude:"
 msgstr "Hæð:"
 
-#: src/placeBubble.js:136
+#: src/placeBubble.js:154
 msgid "Opening hours:"
 msgstr "Opnunartímar:"
 
-#: src/placeBubble.js:141
+#: src/placeBubble.js:159
 msgid "Internet access:"
 msgstr "Internetaðgangur:"
 
-#: src/placeBubble.js:146
+#: src/placeBubble.js:164
 msgid "Religion:"
 msgstr "Trúarbrögð:"
 
-#: src/placeBubble.js:151
+#: src/placeBubble.js:169
 msgid "Toilets:"
 msgstr "Snyrtingar:"
 
-#: src/placeBubble.js:156
+#: src/placeBubble.js:174
 msgid "Wheelchair access:"
 msgstr "Hjólastólaaðgangur:"
 
-#: src/placeBubble.js:162 src/placeBubble.js:166
+#: src/placeBubble.js:180 src/placeBubble.js:184
 msgid "Phone:"
 msgstr "Sími:"
 
@@ -1587,53 +1586,59 @@ msgid "service"
 msgstr "þjónusta"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:226
+#: src/utils.js:227
 msgid "Unknown"
 msgstr "Óþekkt"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:229
+#: src/utils.js:230
 msgid "Exact"
 msgstr "Nákvæmt"
 
-#: src/utils.js:287
+#: src/utils.js:288
 #, javascript-format
 msgid "%f h"
 msgstr "%f klst"
 
-#: src/utils.js:289
+#: src/utils.js:290
 #, javascript-format
 msgid "%f min"
 msgstr "%f mín"
 
-#: src/utils.js:291
+#: src/utils.js:292
 #, javascript-format
 msgid "%f s"
 msgstr "%f sek"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:302
+#: src/utils.js:303
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:305
+#: src/utils.js:306
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:313
+#: src/utils.js:314
 #, javascript-format
 msgid "%s mi"
 msgstr "%s míl"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:316
+#: src/utils.js:317
 #, javascript-format
 msgid "%s ft"
 msgstr "%s fet"
+
+#~ msgid "org.gnome.Maps"
+#~ msgstr "org.gnome.Maps"
+
+#~ msgid "Quit"
+#~ msgstr "Hætta"
 
 #~ msgid "OK"
 #~ msgstr "Í lagi"
