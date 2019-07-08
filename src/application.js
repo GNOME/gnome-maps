@@ -280,11 +280,14 @@ var Application = GObject.registerClass({
             return;
 
         let uri = files[0].get_uri();
+        let scheme = GLib.uri_parse_scheme(uri);
 
-        if (GLib.uri_parse_scheme(uri) === 'geo') {
+        if (scheme === 'geo') {
             /* we get an uri that looks like geo:///lat,lon, remove slashes */
             let geoURI = uri.replace(/\//g, '');
             this._mainWindow.mapView.goToGeoURI(geoURI);
+        } else if (scheme === 'http' || scheme === 'https') {
+            this._mainWindow.mapView.goToHttpURL(uri);
         } else {
             this._mainWindow.mapView.openShapeLayers(files);
         }
