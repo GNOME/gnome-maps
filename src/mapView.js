@@ -24,6 +24,7 @@ const Clutter = imports.gi.Clutter;
 const GObject = imports.gi.GObject;
 const Geocode = imports.gi.GeocodeGlib;
 const Gio = imports.gi.Gio;
+const Gtk = imports.gi.Gtk;
 const GtkChamplain = imports.gi.GtkChamplain;
 const Mainloop = imports.mainloop;
 
@@ -402,6 +403,20 @@ var MapView = GObject.registerClass({
             Utils.showDialog(msg, Gtk.MessageType.ERROR, this._mainWindow);
             Utils.debug("failed to open GeoURI: %s".format(e.message));
         }
+    }
+
+    goToHttpURL(url) {
+        Place.parseHttpURL(url, (place, error) => {
+            if (place) {
+                let marker = new PlaceMarker.PlaceMarker({ place: place,
+                                                           mapView: this });
+
+                this._placeLayer.add_marker(marker);
+                marker.goToAndSelect(true);
+            } else {
+                Utils.showDialog(error, Gtk.MessageType.ERROR, this._mainWindow);
+            }
+        });
     }
 
     gotoUserLocation(animate) {
