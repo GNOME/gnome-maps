@@ -134,6 +134,7 @@ function _parsePlaceType(properties) {
                 case 'city':
                 case 'town':
                 case 'village':
+                case 'hamlet':
                     return Geocode.PlaceType.TOWN;
                 case 'suburb':
                     return Geocode.PlaceType.SUBURB;
