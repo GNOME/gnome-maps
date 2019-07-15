@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps gnome-3-28\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-06-13 19:06+0000\n"
-"PO-Revision-Date: 2019-06-14 17:11+0700\n"
+"POT-Creation-Date: 2019-07-12 12:37+0000\n"
+"PO-Revision-Date: 2019-07-15 14:52+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome@i15n.org>\n"
 "Language: id\n"
@@ -57,22 +57,6 @@ msgstr ""
 "Anda bahkan dapat mencari lokasi dengan tipe tertentu, seperti misalnya "
 "\"Pub dekat Main Street, Boston\" atau \"Hotel dekat Alexanderplatz, Berlin"
 "\"."
-
-#: data/org.gnome.Maps.appdata.xml.in:48
-msgid ""
-"Show live-updated thumbnails for the street/aerial layer switcher, instead "
-"of (outdated) hard-code thumbnails"
-msgstr ""
-"Tampilkan gambar mini yang diperbarui secara langsung untuk pengalih lapisan "
-"jalan/udara, bukan gambar mini kode lama"
-
-#: data/org.gnome.Maps.appdata.xml.in:49
-msgid "Move app menu to the headerbar"
-msgstr "Pindahkan menu aplikasi ke bilah tajuk"
-
-#: data/org.gnome.Maps.appdata.xml.in:50
-msgid "Updated application icon"
-msgstr "Ikon aplikasi yang dimutakhirkan"
 
 #: data/org.gnome.Maps.appdata.xml.in:59
 msgid "The GNOME Project"
@@ -954,15 +938,15 @@ msgstr "Ubin peta disediakan oleh %s"
 msgid "Search provided by %s using %s"
 msgstr "Pencarian disediakan oleh %s menggunakan %s"
 
-#: src/mapView.js:358
+#: src/mapView.js:359
 msgid "File type is not supported"
 msgstr "Tipe berkas tak didukung"
 
-#: src/mapView.js:365
+#: src/mapView.js:366
 msgid "Failed to open layer"
 msgstr "Gagal membuka layer"
 
-#: src/mapView.js:401
+#: src/mapView.js:402
 msgid "Failed to open GeoURI"
 msgstr "Gagal membuka GeoURI"
 
@@ -1270,7 +1254,7 @@ msgstr "Akses kursi roda:"
 msgid "Phone:"
 msgstr "Telepon:"
 
-#: src/placeEntry.js:209
+#: src/placeEntry.js:205
 msgid "Failed to parse Geo URI"
 msgstr "Gagal mengurai URI Geo"
 
@@ -1280,7 +1264,7 @@ msgstr "Gagal mengurai URI Geo"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/place.js:234 src/translations.js:329 src/translations.js:391
+#: src/place.js:268 src/translations.js:329 src/translations.js:391
 msgid "yes"
 msgstr "ya"
 
@@ -1289,7 +1273,7 @@ msgstr "ya"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/place.js:241
+#: src/place.js:275
 msgid "limited"
 msgstr "terbatas"
 
@@ -1301,7 +1285,7 @@ msgstr "terbatas"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/place.js:247 src/translations.js:335 src/translations.js:392
+#: src/place.js:281 src/translations.js:335 src/translations.js:392
 msgid "no"
 msgstr "tidak"
 
@@ -1310,9 +1294,25 @@ msgstr "tidak"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/place.js:254
+#: src/place.js:288
 msgid "designated"
 msgstr "ditugaskan"
+
+#: src/place.js:475
+msgid "Place not found in OpenStreetMap"
+msgstr "Tempat tidak ditemukan pada OpenStreetMap"
+
+#: src/place.js:495
+msgid "OpenStreetMap URL is not valid"
+msgstr "URL OpenStreetMap tak valid"
+
+#: src/place.js:500
+msgid "Coordinates in URL are not valid"
+msgstr "Koordinat dalam URL tak valid"
+
+#: src/place.js:521
+msgid "URL is not supported"
+msgstr "URL tak didukung"
 
 #: src/printLayout.js:312
 #, javascript-format
@@ -1691,6 +1691,19 @@ msgstr "%s mil"
 #, javascript-format
 msgid "%s ft"
 msgstr "%s kaki"
+
+#~ msgid ""
+#~ "Show live-updated thumbnails for the street/aerial layer switcher, "
+#~ "instead of (outdated) hard-code thumbnails"
+#~ msgstr ""
+#~ "Tampilkan gambar mini yang diperbarui secara langsung untuk pengalih "
+#~ "lapisan jalan/udara, bukan gambar mini kode lama"
+
+#~ msgid "Move app menu to the headerbar"
+#~ msgstr "Pindahkan menu aplikasi ke bilah tajuk"
+
+#~ msgid "Updated application icon"
+#~ msgstr "Ikon aplikasi yang dimutakhirkan"
 
 #~ msgid "Press enter to search"
 #~ msgstr "Tekan enter untuk mencari"
