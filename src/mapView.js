@@ -180,11 +180,6 @@ var MapView = GObject.registerClass({
     _initView() {
         let view = this.get_view();
 
-        // Start all the way zoomed out and centered on (0, 0)
-        // This way you can see the whole map on startup
-        view.zoom_level = MapMinZoom;
-        view.center_on(0, 0);
-
         view.min_zoom_level = MapMinZoom;
         view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_OUT_CUBIC;
         view.reactive = true;
@@ -192,7 +187,7 @@ var MapView = GObject.registerClass({
         view.horizontal_wrap = true;
 
         if (Application.normalStartup)
-            view.connect('notify::realized', this._goToStoredLocation.bind(this));
+            this._goToStoredLocation(view);
         view.connect('notify::latitude', this._onViewMoved.bind(this));
         // switching map type will set view min-zoom-level from map source
         view.connect('notify::min-zoom-level', () => {
@@ -460,21 +455,27 @@ var MapView = GObject.registerClass({
     }
 
     _storeLocation() {
-        let box = this.view.get_bounding_box();
-        let lastViewedLocation = [box.top, box.bottom, box.left, box.right];
-        Application.settings.set('last-viewed-location', lastViewedLocation);
+        Application.settings.set('zoom-level', this.view.zoom_level);
+        let location = [this.view.latitude, this.view.longitude];
+        Application.settings.set('last-viewed-location', location);
     }
 
-    _goToStoredLocation() {
-        if (!this.view.realized)
-            return;
+    _goToStoredLocation(view) {
+        let location = Application.settings.get('last-viewed-location');
 
-        let box = Application.settings.get('last-viewed-location');
-        let bounding_box = new Champlain.BoundingBox({ top: box[0],
-                                                       bottom: box[1],
-                                                       left: box[2],
-                                                       right: box[3] });
-        this.gotoBBox(bounding_box, true);
+        if (location.length === 2) {
+            view.zoom_level = Application.settings.get('zoom-level');
+            view.center_on(location[0], location[1]);
+        } else {
+            /* bounding box. for backwards compatibility, not used anymore */
+            let bbox = new Champlain.BoundingBox({ top: location[0],
+                                                   bottom: location[1],
+                                                   left: location[2],
+                                                   right: location[3] });
+            view.connect("notify::realized", () => {
+                this.gotoBBox(bbox, true);
+            });
+        }
     }
 
     gotoBBox(bbox, linear) {
