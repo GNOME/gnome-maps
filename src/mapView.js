@@ -180,11 +180,6 @@ var MapView = GObject.registerClass({
     _initView() {
         let view = this.get_view();
 
-        // Start all the way zoomed out and centered on (0, 0)
-        // This way you can see the whole map on startup
-        view.zoom_level = MapMinZoom;
-        view.center_on(0, 0);
-
         view.min_zoom_level = MapMinZoom;
         view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_OUT_CUBIC;
         view.reactive = true;
@@ -460,21 +455,28 @@ var MapView = GObject.registerClass({
     }
 
     _storeLocation() {
-        let box = this.view.get_bounding_box();
-        let lastViewedLocation = [box.top, box.bottom, box.left, box.right];
-        Application.settings.set('last-viewed-location', lastViewedLocation);
+        Application.settings.set('zoom-level', this.view.zoom_level);
+        let location = [this.view.latitude, this.view.longitude];
+        Application.settings.set('last-viewed-location', location);
     }
 
     _goToStoredLocation() {
         if (!this.view.realized)
             return;
 
-        let box = Application.settings.get('last-viewed-location');
-        let bounding_box = new Champlain.BoundingBox({ top: box[0],
-                                                       bottom: box[1],
-                                                       left: box[2],
-                                                       right: box[3] });
-        this.gotoBBox(bounding_box, true);
+        let location = Application.settings.get('last-viewed-location');
+
+        if (location.length === 2) {
+            this.view.zoom_level = Application.settings.get('zoom-level');
+            this.view.center_on(location[0], location[1]);
+        } else {
+            /* bounding box. for backwards compatibility, not used anymore */
+            let bounding_box = new Champlain.BoundingBox({ top: location[0],
+                                                           bottom: location[1],
+                                                           left: location[2],
+                                                           right: location[3] });
+            this.gotoBBox(bounding_box, true);
+        }
     }
 
     gotoBBox(bbox, linear) {
