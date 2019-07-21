@@ -49,20 +49,25 @@
     ],
     "modules" : [
         {
-            "name" : "libical",
-            "cleanup" : [
-                "/lib/cmake"
+            "name": "libical",
+            "cleanup": [
+              "/lib/cmake"
             ],
-            "cmake" : true,
-            "config-opts" : [
-                "-DCMAKE_INSTALL_LIBDIR:PATH=/app/lib",
-                "-DBUILD_SHARED_LIBS:BOOL=ON"
+            "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DCMAKE_INSTALL_LIBDIR=lib",
+                "-DBUILD_SHARED_LIBS:BOOL=ON",
+                "-DICAL_GLIB=true",
+                "-DGOBJECT_INTROSPECTION=true",
+                "-DICAL_GLIB_VAPI=true",
+                "-DICAL_BUILD_DOCS=false"
             ],
-            "sources" : [
+            "sources": [
                 {
-                    "type" : "archive",
-                    "url" : "https://github.com/libical/libical/releases/download/v2.0.0/libical-2.0.0.tar.gz",
-                    "sha256" : "654c11f759c19237be39f6ad401d917e5a05f36f1736385ed958e60cf21456da"
+                    "type": "archive",
+                    "url": "https://github.com/libical/libical/releases/download/v3.0.5/libical-3.0.5.tar.gz",
+                    "sha256": "7ad550c8c49c9b9983658e3ab3e68b1eee2439ec17b169a6b1e6ecb5274e78e6"
                 }
             ]
         },
@@ -150,9 +155,8 @@
             "buildsystem" : "cmake",
             "sources" : [
                 {
-                    "type" : "archive",
-                    "url" : "https://ftp.gnome.org/pub/gnome/sources/evolution-data-server/3.32/evolution-data-server-3.32.2.tar.xz",
-                    "sha256": "7ea7491065fd0382f2268cf6bf95331a75dfda587d5940deb47f9e74be1ab3c9"
+                    "type" : "git",
+                    "url": "https://gitlab.gnome.org/GNOME/evolution-data-server.git"
                 }
             ]
         },
@@ -169,9 +173,8 @@
             ],
             "sources" : [
                 {
-                    "type" : "archive",
-                    "url" : "https://ftp.gnome.org/pub/gnome/sources/folks/0.12/folks-0.12.1.tar.xz",
-                    "sha256": "3ca9f2d50fdf5a7a3d3f59c49bd54ceaf8d8181938762370e07535f86d36d475"
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/GNOME/folks.git"
                 }
             ]
         },
