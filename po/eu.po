@@ -9,8 +9,8 @@
 msgid ""
 msgstr "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-01-14 19:43+0000\n"
-"PO-Revision-Date: 2019-03-10 06:00+0100\n"
+"POT-Creation-Date: 2019-07-12 12:37+0000\n"
+"PO-Revision-Date: 2019-07-23 06:00+0100\n"
 "Last-Translator: Asier Sarasua Garmendia <asier.sarasua@gmail.com>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -49,20 +49,26 @@ msgid ""
 "Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
 msgstr "Bilatu kokaleku mota zehatz bat, adibidez 'Diru-truke bulegoa, Bilbo' edo 'Hotelak kale nagusia, Bilbo'"
 
+#: data/org.gnome.Maps.appdata.xml.in:59
+msgid "The GNOME Project"
+msgstr "GNOME proiektua"
+
+#. Translators: This is the program name.
+#. for some reason, setting the title of the window through the .ui
+#. * template does not work anymore (maybe has something to do with
+#. * setting a custom title on the headerbar). Setting it programmatically
+#. * here works though. And yields a proper label in the gnome-shell
+#. * overview.
+#.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
-#: src/mainWindow.js:500
+#: src/application.js:81 src/mainWindow.js:139 src/mainWindow.js:509
 msgid "Maps"
 msgstr "Mapak"
 
 #: data/org.gnome.Maps.desktop.in:5
 msgid "A simple maps application"
 msgstr "Mapen aplikazio xume bat"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Maps.desktop.in:8
-msgid "org.gnome.Maps"
-msgstr "org.gnome.Maps"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Maps.desktop.in:14
@@ -107,11 +113,11 @@ msgstr "Leihoaren maximizazioaren egoera"
 
 #: data/org.gnome.Maps.gschema.xml:31
 msgid "Maximum number of search results"
-msgstr "Bilaketaren emaitzen gehienezko kopurua"
+msgstr "Bilaketaren emaitzen gehieneko kopurua"
 
 #: data/org.gnome.Maps.gschema.xml:32
 msgid "Maximum number of search results from geocode search."
-msgstr "Bilaketaren emaitzen gehienezko kopurua geokodifikazioaren bilaketatik."
+msgstr "Bilaketaren emaitzen gehieneko kopurua geokodifikazioaren bilaketatik."
 
 #: data/org.gnome.Maps.gschema.xml:36
 msgid "Number of recent places to store"
@@ -195,7 +201,7 @@ msgid "Post on Twitter"
 msgstr "Argitaratu Twitter-en"
 
 #: data/ui/check-in-dialog.ui:388 data/ui/export-view-dialog.ui:20
-#: data/ui/send-to-dialog.ui:21 data/ui/shape-layer-file-chooser.ui:22
+#: data/ui/send-to-dialog.ui:13 data/ui/shape-layer-file-chooser.ui:22
 msgid "_Cancel"
 msgstr "_Utzi"
 
@@ -331,7 +337,7 @@ msgid "Open shape layer"
 msgstr "Ireki formen geruza"
 
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:71
+#: data/ui/layers-popover.ui:69
 msgid "Open Shape Layer…"
 msgstr "Ireki formen geruza..."
 
@@ -416,8 +422,8 @@ msgstr "Gehitu ibilbide berriari"
 
 #. Translators: This is a tooltip
 #: data/ui/map-bubble.ui:62
-msgid "Open with another application"
-msgstr "Ireki beste aplikazio batekin"
+msgid "Share location"
+msgstr "Partekatu kokalekua"
 
 #. Translators: This is a tooltip
 #: data/ui/map-bubble.ui:79
@@ -556,11 +562,7 @@ msgstr "Editatu OpenStreetMap-en"
 msgid "Show more information"
 msgstr "Erakutsi informazio gehiago"
 
-#: data/ui/place-popover.ui:24
-msgid "Press enter to search"
-msgstr "Sakatu Sartu bilatzeko"
-
-#: data/ui/place-popover.ui:72
+#: data/ui/place-popover.ui:54
 msgid "No results found"
 msgstr "Ez da emaitzarik aurkitu"
 
@@ -569,17 +571,25 @@ msgstr "Ez da emaitzarik aurkitu"
 msgid "Drag to change order of the route"
 msgstr "Arrastatu ibilbidearen ordena aldatzeko"
 
-#: data/ui/send-to-dialog.ui:15
-msgid "Open location"
+#: data/ui/send-to-dialog.ui:10
+msgid "Open Location"
 msgstr "Ireki kokalekua"
 
-#: data/ui/send-to-dialog.ui:35 data/ui/shape-layer-file-chooser.ui:12
-msgid "_Open"
-msgstr "_Ireki"
+#: data/ui/send-to-dialog.ui:70
+msgid "Copy"
+msgstr "Kopiatu"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:61
+#: data/ui/send-to-dialog.ui:76
+msgid "Send To…"
+msgstr "Bidali hona..."
+
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:62
 msgid "Open Shape Layer"
 msgstr "Ireki formen geruza"
+
+#: data/ui/shape-layer-file-chooser.ui:12
+msgid "_Open"
+msgstr "_Ireki"
 
 #. Translators: This is a tooltip
 #: data/ui/shape-layer-row.ui:19
@@ -697,11 +707,11 @@ msgstr "Beharrezko atributuak falta dira"
 msgid "Could not find OSM element"
 msgstr "Ezin izan da OSM elementua aurkitu"
 
-#: src/application.js:95
+#: src/application.js:94
 msgid "A path to a local tiles directory structure"
 msgstr "Lokaleko lauzen direktorioaren egituraren bide-izena"
 
-#: src/application.js:99
+#: src/application.js:98
 msgid "Show the version of the program"
 msgstr "Erakutsi programaren bertsioa"
 
@@ -763,23 +773,23 @@ msgid ""
 "this account"
 msgstr "Kredentzialak iraungi egin dira. Ireki 'Lineako kontuak' kontu hau sinatzeko eta gaitzeko"
 
-#: src/contextMenu.js:98
+#: src/contextMenu.js:99
 msgid "Route from here"
 msgstr "Ibilbidea hemendik"
 
-#: src/contextMenu.js:100
+#: src/contextMenu.js:101
 msgid "Add destination"
 msgstr "Gehitu helmuga"
 
-#: src/contextMenu.js:102
+#: src/contextMenu.js:103
 msgid "Route to here"
 msgstr "Ibilbidea hona"
 
-#: src/contextMenu.js:131
+#: src/contextMenu.js:129
 msgid "Nothing found here!"
 msgstr "Ez da ezer aurkitu."
 
-#: src/contextMenu.js:192
+#: src/contextMenu.js:190
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -814,51 +824,51 @@ msgstr "Ez da fitxategi-izenik zehaztu"
 msgid "Unable to export view"
 msgstr "Ezin da ikuspegia esportatu"
 
-#: src/geoJSONSource.js:98
+#: src/geoJSONSource.js:97
 msgid "invalid coordinate"
 msgstr "baliogabeko koordenatua"
 
-#: src/geoJSONSource.js:147 src/geoJSONSource.js:187 src/geoJSONSource.js:202
+#: src/geoJSONSource.js:146 src/geoJSONSource.js:186 src/geoJSONSource.js:201
 msgid "parse error"
 msgstr "analisi-errorea"
 
-#: src/geoJSONSource.js:181
+#: src/geoJSONSource.js:180
 msgid "unknown geometry"
 msgstr "geometria ezezaguna"
 
-#: src/graphHopper.js:93 src/openTripPlanner.js:652
+#: src/graphHopper.js:112 src/openTripPlanner.js:652
 msgid "Route request failed."
 msgstr "Huts egin du ibilbidearen eskaerak."
 
-#: src/graphHopper.js:100 src/openTripPlanner.js:615
+#: src/graphHopper.js:119 src/openTripPlanner.js:615
 msgid "No route found."
 msgstr "Ez da ibilbiderik aurkitu."
 
-#: src/graphHopper.js:188
+#: src/graphHopper.js:207
 msgid "Start!"
 msgstr "Hasi!"
 
-#: src/mainWindow.js:58
+#: src/mainWindow.js:59
 msgid "All Layer Files"
 msgstr "Geruzen fitxategi guztiak"
 
-#: src/mainWindow.js:433
+#: src/mainWindow.js:442
 msgid "Failed to connect to location service"
 msgstr "Huts egin du kokapen-zerbitzuarekin konektatzean"
 
-#: src/mainWindow.js:498
+#: src/mainWindow.js:507
 msgid "translator-credits"
 msgstr "Asier Sarasua Garmendia <asier.sarasua@gmail.com>"
 
-#: src/mainWindow.js:501
+#: src/mainWindow.js:510
 msgid "A map application for GNOME"
 msgstr "GNOMEren mapen aplikazioa"
 
-#: src/mainWindow.js:512
+#: src/mainWindow.js:521
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 – 2019 Red Hat, Inc. eta GNOME Maps egileak"
 
-#: src/mainWindow.js:531
+#: src/mainWindow.js:541
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Maparen datuen sortzaileak: %s eta laguntzaileak"
@@ -868,20 +878,34 @@ msgstr "Maparen datuen sortzaileak: %s eta laguntzaileak"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:547
+#: src/mainWindow.js:557
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Mapa-lauzen hornitzaileak: %s"
 
-#: src/mapView.js:358
+#. Translators: this is an attribution string giving credit to the
+#. * search provider where the first %s placeholder is replaced by either
+#. * the bare name of the geocoder provider, or a linkified URL if one
+#. * is available, and the second %s placeholder is replaced by the
+#. * URL to the geocoder project page. These placeholders
+#. * can be swapped, if needed using the %n$s positional syntax
+#. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
+#. * before the provider).
+#.
+#: src/mainWindow.js:586
+#, javascript-format
+msgid "Search provided by %s using %s"
+msgstr "%s motorrak hornitutako bilaketa %s bidez"
+
+#: src/mapView.js:359
 msgid "File type is not supported"
 msgstr "Fitxategi mota ez dago onartuta"
 
-#: src/mapView.js:365
+#: src/mapView.js:366
 msgid "Failed to open layer"
 msgstr "Huts egin du geruza irekitzean"
 
-#: src/mapView.js:401
+#: src/mapView.js:402
 msgid "Failed to open GeoURI"
 msgstr "Huts egin du GeoURIa irekitzean"
 
@@ -1144,6 +1168,10 @@ msgstr "Hautatu mota"
 msgid "Done"
 msgstr "Eginda"
 
+#: src/photonParser.js:103
+msgid "Unnamed place"
+msgstr "Izenik gabeko tokia"
+
 #: src/placeBubble.js:143
 msgid "Population:"
 msgstr "Populazioa:"
@@ -1176,7 +1204,7 @@ msgstr "Gurpil-aulkien irisgarritasuna:"
 msgid "Phone:"
 msgstr "Telefonoa:"
 
-#: src/placeEntry.js:186
+#: src/placeEntry.js:205
 msgid "Failed to parse Geo URI"
 msgstr "Huts egin du Geo URIa aztertzean"
 
@@ -1186,7 +1214,7 @@ msgstr "Huts egin du Geo URIa aztertzean"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/place.js:218 src/translations.js:329 src/translations.js:391
+#: src/place.js:268 src/translations.js:329 src/translations.js:391
 msgid "yes"
 msgstr "bai"
 
@@ -1195,7 +1223,7 @@ msgstr "bai"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/place.js:225
+#: src/place.js:275
 msgid "limited"
 msgstr "mugatua"
 
@@ -1207,7 +1235,7 @@ msgstr "mugatua"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/place.js:231 src/translations.js:335 src/translations.js:392
+#: src/place.js:281 src/translations.js:335 src/translations.js:392
 msgid "no"
 msgstr "ez"
 
@@ -1216,11 +1244,27 @@ msgstr "ez"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/place.js:238
+#: src/place.js:288
 msgid "designated"
 msgstr "zehaztutakoa"
 
-#: src/printLayout.js:240
+#: src/place.js:475
+msgid "Place not found in OpenStreetMap"
+msgstr "OpenStreetMap zerbitzuan aurkitu ez den tokia"
+
+#: src/place.js:495
+msgid "OpenStreetMap URL is not valid"
+msgstr "OpenStreetMap URLa ez da baliozkoa"
+
+#: src/place.js:500
+msgid "Coordinates in URL are not valid"
+msgstr "URLaren koordenatuak ez dira baliozkoak"
+
+#: src/place.js:521
+msgid "URL is not supported"
+msgstr "URLa ez da onartzen"
+
+#: src/printLayout.js:312
 #, javascript-format
 msgid "From %s to %s"
 msgstr "\"%s\"(e)ndik \"%s\"(e)ra"
@@ -1252,9 +1296,21 @@ msgstr "Kendu bidearen kokalekua"
 msgid "Reverse route"
 msgstr "Alderantzikatu ibilbidea"
 
-#: src/sendToDialog.js:175
+#. Translators: The first string is the name of the city, the
+#. second string is the name of the app to add it to
+#: src/sendToDialog.js:103
+#, javascript-format
+msgid "Add %s to %s"
+msgstr "Gehitu %s honi: %s"
+
+#: src/sendToDialog.js:201
 msgid "Failed to open URI"
 msgstr "Huts egin du URIa irekitzean"
+
+#: src/sendToDialog.js:258
+#, javascript-format
+msgid "Open with %s"
+msgstr "Ireki honekin: %s"
 
 #: src/shapeLayer.js:91
 msgid "failed to load file"
@@ -1266,22 +1322,10 @@ msgstr "huts egin du fitxategia kargatzean"
 msgid "Estimated time: %s"
 msgstr "Aurreikusitako denbora: %s"
 
-#. Translators: this a format string indicating arriving at the
-#. * destination of journey with the arrival address and transit
-#. * stop as the format parameter
-#: src/transitArrivalRow.js:54
-#, javascript-format
-msgid "Arrive at %s"
-msgstr "Iritsi: %s"
-
-#: src/transitArrivalRow.js:56
-msgid "Arrive"
-msgstr "Iritsi"
-
 #. Translators: this is a format string indicating instructions
 #. * starting a journey at the address given as the parameter
 #.
-#: src/transitLegRow.js:71
+#: src/transit.js:37
 #, javascript-format
 msgid "Start at %s"
 msgstr "Hasiera: %s"
@@ -1290,25 +1334,37 @@ msgstr "Hasiera: %s"
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: src/transitLegRow.js:77
+#: src/transit.js:43
 msgid "Start"
 msgstr "Hasiera"
-
-#: src/transitLegRow.js:106
-msgid "Show walking instructions"
-msgstr "Erakutsi oinezkoen instrukzioak"
-
-#: src/transitLegRow.js:107
-msgid "Hide walking instructions"
-msgstr "Ezkutatu oinezkoen instrukzioak"
 
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
 #.
-#: src/transitLegRow.js:132
+#: src/transit.js:61
 #, javascript-format
 msgid "Walk %s"
 msgstr "Oinez: %s"
+
+#. Translators: this a format string indicating arriving at the
+#. * destination of journey with the arrival address and transit
+#. * stop as the format parameter
+#: src/transit.js:75
+#, javascript-format
+msgid "Arrive at %s"
+msgstr "Iritsi: %s"
+
+#: src/transit.js:77
+msgid "Arrive"
+msgstr "Iritsi"
+
+#: src/transitLegRow.js:88
+msgid "Show walking instructions"
+msgstr "Erakutsi oinezkoen instrukzioak"
+
+#: src/transitLegRow.js:89
+msgid "Hide walking instructions"
+msgstr "Ezkutatu oinezkoen instrukzioak"
 
 #: src/transitMoreRow.js:39
 msgid "Load earlier alternatives"
@@ -1538,53 +1594,62 @@ msgid "service"
 msgstr "zerbitzua"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:227
+#: src/utils.js:220
 msgid "Unknown"
 msgstr "Ezezaguna"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:230
+#: src/utils.js:223
 msgid "Exact"
 msgstr "Zehatza"
 
-#: src/utils.js:288
+#: src/utils.js:281
 #, javascript-format
 msgid "%f h"
 msgstr "%f o"
 
-#: src/utils.js:290
+#: src/utils.js:283
 #, javascript-format
 msgid "%f min"
 msgstr "%f min"
 
-#: src/utils.js:292
+#: src/utils.js:285
 #, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:303
+#: src/utils.js:296
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:306
+#: src/utils.js:299
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:314
+#: src/utils.js:307
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:317
+#: src/utils.js:310
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
+
+#~ msgid "org.gnome.Maps"
+#~ msgstr "org.gnome.Maps"
+
+#~ msgid "Open with another application"
+#~ msgstr "Ireki beste aplikazio batekin"
+
+#~ msgid "Press enter to search"
+#~ msgstr "Sakatu Sartu bilatzeko"
 
 #~ msgid "Quit"
 #~ msgstr "Irten"
