@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-06-15 11:02+0000\n"
-"PO-Revision-Date: 2019-06-19 09:36+0200\n"
+"POT-Creation-Date: 2019-07-12 12:37+0000\n"
+"PO-Revision-Date: 2019-07-24 10:33+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
-"Language-Team: es <gnome-es-list@gnome.org>\n"
-"Language: es\n"
+"Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
+"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 3.32.0\n"
+"X-Generator: Gtranslator 3.32.1\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
 msgid "GNOME Maps"
@@ -441,7 +441,6 @@ msgstr "Añadir a la ruta nueva"
 
 #. Translators: This is a tooltip
 #: data/ui/map-bubble.ui:62
-#| msgid "Open location"
 msgid "Share location"
 msgstr "Compartir ubicación"
 
@@ -597,7 +596,6 @@ msgid "Drag to change order of the route"
 msgstr "Arrastre para cambiar el orden de la ruta"
 
 #: data/ui/send-to-dialog.ui:10
-#| msgid "Open location"
 msgid "Open Location"
 msgstr "Abrir ubicación"
 
@@ -936,15 +934,15 @@ msgstr "Cuadrículas de mapas proporcionadas por %s"
 msgid "Search provided by %s using %s"
 msgstr "Búsqueda proporcionada por %s usando %s"
 
-#: src/mapView.js:358
+#: src/mapView.js:359
 msgid "File type is not supported"
 msgstr "Tipo de archivo no soportado"
 
-#: src/mapView.js:365
+#: src/mapView.js:366
 msgid "Failed to open layer"
 msgstr "Falló al abrir la capa"
 
-#: src/mapView.js:401
+#: src/mapView.js:402
 msgid "Failed to open GeoURI"
 msgstr "Falló al abrir el GeoURI"
 
@@ -1253,7 +1251,7 @@ msgstr "Acceso para sillas de ruedas:"
 msgid "Phone:"
 msgstr "Teléfono:"
 
-#: src/placeEntry.js:203
+#: src/placeEntry.js:205
 msgid "Failed to parse Geo URI"
 msgstr "Falló al analizar el URI de Geo"
 
@@ -1263,7 +1261,7 @@ msgstr "Falló al analizar el URI de Geo"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/place.js:234 src/translations.js:329 src/translations.js:391
+#: src/place.js:268 src/translations.js:329 src/translations.js:391
 msgid "yes"
 msgstr "sí"
 
@@ -1272,7 +1270,7 @@ msgstr "sí"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/place.js:241
+#: src/place.js:275
 msgid "limited"
 msgstr "limitado"
 
@@ -1284,7 +1282,7 @@ msgstr "limitado"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/place.js:247 src/translations.js:335 src/translations.js:392
+#: src/place.js:281 src/translations.js:335 src/translations.js:392
 msgid "no"
 msgstr "no"
 
@@ -1293,9 +1291,28 @@ msgstr "no"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/place.js:254
+#: src/place.js:288
 msgid "designated"
 msgstr "designado"
+
+#: src/place.js:475
+#| msgid "Edit on OpenStreetMap"
+msgid "Place not found in OpenStreetMap"
+msgstr "Lugar no encontrado en OpenStreetMap"
+
+#: src/place.js:495
+#| msgid "OpenStreetMap Account"
+msgid "OpenStreetMap URL is not valid"
+msgstr "El URL de OpenStreetMap no es válido"
+
+#: src/place.js:500
+msgid "Coordinates in URL are not valid"
+msgstr "Las coordenadas del URL no son válidas"
+
+#: src/place.js:521
+#| msgid "File type is not supported"
+msgid "URL is not supported"
+msgstr "URL no soportado"
 
 #: src/printLayout.js:312
 #, javascript-format
@@ -1333,7 +1350,6 @@ msgstr "Ruta inversa"
 #. second string is the name of the app to add it to
 #: src/sendToDialog.js:103
 #, javascript-format
-#| msgid "From %s to %s"
 msgid "Add %s to %s"
 msgstr "Añadir %s a %s"
 
