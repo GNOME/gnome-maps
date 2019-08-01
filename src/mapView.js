@@ -152,6 +152,9 @@ var MapView = GObject.registerClass({
 
         this.setMapType(mapType);
 
+        if (Application.normalStartup)
+            this._goToStoredLocation();
+
         this.shapeLayerStore = new Gio.ListStore(GObject.TYPE_OBJECT);
 
         Application.geoclue.connect('location-changed',
@@ -186,8 +189,6 @@ var MapView = GObject.registerClass({
         view.kinetic_mode = true;
         view.horizontal_wrap = true;
 
-        if (Application.normalStartup)
-            this._goToStoredLocation(view);
         view.connect('notify::latitude', this._onViewMoved.bind(this));
         // switching map type will set view min-zoom-level from map source
         view.connect('notify::min-zoom-level', () => {
@@ -460,20 +461,20 @@ var MapView = GObject.registerClass({
         Application.settings.set('last-viewed-location', location);
     }
 
-    _goToStoredLocation(view) {
+    _goToStoredLocation() {
         let location = Application.settings.get('last-viewed-location');
 
         if (location.length === 2) {
-            view.zoom_level = Application.settings.get('zoom-level');
-            view.center_on(location[0], location[1]);
+            this.view.zoom_level = Application.settings.get('zoom-level');
+            this.view.center_on(location[0], location[1]);
         } else {
             /* bounding box. for backwards compatibility, not used anymore */
             let bbox = new Champlain.BoundingBox({ top: location[0],
                                                    bottom: location[1],
                                                    left: location[2],
                                                    right: location[3] });
-            view.connect("notify::realized", () => {
-                if (view.realized)
+            this.view.connect("notify::realized", () => {
+                if (this.view.realized)
                     this.gotoBBox(bbox, true);
             });
         }
