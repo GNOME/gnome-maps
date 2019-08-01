@@ -140,7 +140,7 @@ var MapView = GObject.registerClass({
     _init(params) {
         super._init();
 
-        let mapType = params.mapType || MapType.STREET;
+        let mapType = params.mapType || this._getStoredMapType();
         delete params.mapType;
 
         this._mainWindow = params.mainWindow;
@@ -296,6 +296,19 @@ var MapView = GObject.registerClass({
         query.connect('notify', () => this.routingOpen = query.isValid());
     }
 
+    _getStoredMapType() {
+        let mapType = Application.settings.get('map-type');
+
+        // make sure it's a valid map type
+        for (let type in MapType) {
+            if (mapType === MapType[type]) {
+                return mapType;
+            }
+        }
+
+        return MapType.STREET;
+    }
+
     setMapType(mapType) {
         if (this._mapType && this._mapType === mapType)
             return;
@@ -314,6 +327,8 @@ var MapView = GObject.registerClass({
                 this._attribution = new MapSource.AttributionLogo(this.view);
                 this.view.add_child(this._attribution);
             }
+
+            Application.settings.set('map-type', mapType);
         } else {
             let renderer = new Champlain.ImageRenderer();
             let source = new Maps.FileTileSource({

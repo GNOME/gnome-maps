@@ -101,7 +101,7 @@ var MainWindow = GObject.registerClass({
 
         this._mapView = new MapView.MapView({
             mapType: this.application.local_tile_path ?
-                MapView.MapType.LOCAL : MapView.MapType.STREET,
+                MapView.MapType.LOCAL : undefined,
             mainWindow: this });
 
         this._mainGrid.add(this._mapView);
