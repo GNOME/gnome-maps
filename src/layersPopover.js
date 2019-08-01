@@ -125,6 +125,8 @@ var LayersPopover = GObject.registerClass({
             this._streetLayerButton.visible = false;
             this._aerialLayerButton.visible = false;
         }
+
+        this.setMapType(this._mapView.getMapType());
     }
 
     _setLayerPreviews() {
