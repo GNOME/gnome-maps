@@ -57,9 +57,6 @@ var PlaceEntry = GObject.registerClass({
         if (!this._place && !p)
             return;
 
-        if (this._place && p && this._locEquals(this._place, p))
-            return;
-
         if (p) {
             if (p.name) {
                 this._placeText = p.name;
@@ -148,14 +145,6 @@ var PlaceEntry = GObject.registerClass({
                 this.place = null;
             this._previousSearch = null;
         }
-    }
-
-    _locEquals(placeA, placeB) {
-        if (!placeA.location || !placeB.location)
-            return false;
-
-        return (placeA.location.latitude === placeB.location.latitude &&
-                placeA.location.longitude === placeB.location.longitude);
     }
 
     _createPopover(numVisible, maxChars) {
