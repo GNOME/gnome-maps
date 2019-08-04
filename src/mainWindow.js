@@ -212,6 +212,10 @@ var MainWindow = GObject.registerClass({
                 accels: ['<Primary>L'],
                 onActivate: () => this._onGotoUserLocationActivate()
             },
+            'goto-antipode-location': {
+                accels: ['<Primary>A'],
+                onActivate: () => this._mapView.gotoAntipode()
+            },
             'toggle-sidebar': {
                 accels: ['<Primary>D'],
                 state: ['b', false],

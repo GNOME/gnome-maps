@@ -444,6 +444,18 @@ var MapView = GObject.registerClass({
         this._userLocation.goTo(animate);
     }
 
+    gotoAntipode() {
+        let lat = -this.view.latitude;
+        let lon = this.view.longitude > 0 ?
+                  this.view.longitude - 180 : this.view.longitude + 180;
+        let place =
+            new Place.Place({ location: new Location.Location({ latitude: lat,
+                                                                longitude: lon }),
+                              initialZoom: this.view.zoom_level });
+
+        new MapWalker.MapWalker(place, this).goTo(true);
+    }
+
     userLocationVisible() {
         let box = this.view.get_bounding_box();
 
