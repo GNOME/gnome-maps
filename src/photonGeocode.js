@@ -40,8 +40,6 @@ var PhotonGeocode = class {
     search(string, latitude, longitude, cancellable, callback) {
         let url = this._buildURL(string, latitude, longitude);
         let msg = Soup.Message.new('GET', url);
-        Utils.debug('URL: ' + url);
-
         let handler = cancellable.connect(() => {
             this._session.cancel_message(msg, Soup.Status.CANCELLED);
         });
@@ -68,7 +66,6 @@ var PhotonGeocode = class {
     reverse(latitude, longitude, callback) {
         let url = this._buildURL(null, latitude, longitude);
         let msg = Soup.Message.new('GET', url);
-        Utils.debug('URL: ' + url);
 
         Application.application.mark_busy();
         this._session.queue_message(msg, (session, message) => {
