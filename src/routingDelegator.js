@@ -20,7 +20,7 @@
  */
 
 const GraphHopper = imports.graphHopper;
-const OpenTripPlanner = imports.openTripPlanner;
+const OpenTripPlanner = imports.transitplugins.openTripPlanner;
 const RouteQuery = imports.routeQuery;
 
 const _FALLBACK_TRANSPORTATION = RouteQuery.Transportation.PEDESTRIAN;
