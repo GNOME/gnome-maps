@@ -23,6 +23,7 @@ const Champlain = imports.gi.Champlain;
 const GLib = imports.gi.GLib;
 const Soup = imports.gi.Soup;
 
+const Application = imports.application;
 const EPAF = imports.epaf;
 const HTTP = imports.http;
 const Location = imports.location;
@@ -128,7 +129,6 @@ var OpenTripPlanner = class OpenTripPlanner {
          */
         this._routersUpdatedTimestamp = 0;
         this._query = params.query;
-        this._graphHopper = params.graphHopper;
         this._plan = new TransitPlan.Plan();
         this._baseUrl = this._getBaseUrl();
         this._walkingRoutes = [];
@@ -797,7 +797,7 @@ var OpenTripPlanner = class OpenTripPlanner {
         let route = this._walkingRoutes[index];
 
         if (!route) {
-            this._graphHopper.fetchRouteAsync(points,
+            Application.routingDelegator.graphHopper.fetchRouteAsync(points,
                                               RouteQuery.Transportation.PEDESTRIAN,
                                               (newRoute) => {
                 this._walkingRoutes[index] = newRoute;
