@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-06-15 11:02+0000\n"
-"PO-Revision-Date: 2019-06-27 15:30+0200\n"
+"POT-Creation-Date: 2019-08-02 06:11+0000\n"
+"PO-Revision-Date: 2019-08-18 21:29+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
 msgid "GNOME Maps"
@@ -97,59 +97,75 @@ msgid "Coordinates of last viewed location."
 msgstr "Koordinater för senast visade plats."
 
 #: data/org.gnome.Maps.gschema.xml:16
+msgid "zoom"
+msgstr "zoom"
+
+#: data/org.gnome.Maps.gschema.xml:17
+msgid "Zoom level"
+msgstr "Zoomnivå"
+
+#: data/org.gnome.Maps.gschema.xml:21
+msgid "Map type"
+msgstr "Karttyp"
+
+#: data/org.gnome.Maps.gschema.xml:22
+msgid "The type of map to display (street, aerial, etc.)"
+msgstr "Typen av karta att visa (vägkarta, flygfoto o.s.v.)"
+
+#: data/org.gnome.Maps.gschema.xml:26
 msgid "Window size"
 msgstr "Fönsterstorlek"
 
-#: data/org.gnome.Maps.gschema.xml:17
+#: data/org.gnome.Maps.gschema.xml:27
 msgid "Window size (width and height)."
 msgstr "Fönsterstorlek (bredd och höjd)."
 
-#: data/org.gnome.Maps.gschema.xml:21
+#: data/org.gnome.Maps.gschema.xml:31
 msgid "Window position"
 msgstr "Fönsterposition"
 
-#: data/org.gnome.Maps.gschema.xml:22
+#: data/org.gnome.Maps.gschema.xml:32
 msgid "Window position (X and Y)."
 msgstr "Fönsterposition (X och Y)."
 
-#: data/org.gnome.Maps.gschema.xml:26
+#: data/org.gnome.Maps.gschema.xml:36
 msgid "Window maximized"
 msgstr "Fönster maximerat"
 
-#: data/org.gnome.Maps.gschema.xml:27
+#: data/org.gnome.Maps.gschema.xml:37
 msgid "Window maximization state"
 msgstr "Tillstånd för maximerat fönster"
 
-#: data/org.gnome.Maps.gschema.xml:31
+#: data/org.gnome.Maps.gschema.xml:41
 msgid "Maximum number of search results"
 msgstr "Maximalt antal sökresultat"
 
-#: data/org.gnome.Maps.gschema.xml:32
+#: data/org.gnome.Maps.gschema.xml:42
 msgid "Maximum number of search results from geocode search."
 msgstr "Maximalt antal sökresultat från geocode-sökning."
 
-#: data/org.gnome.Maps.gschema.xml:36
+#: data/org.gnome.Maps.gschema.xml:46
 msgid "Number of recent places to store"
 msgstr "Antal senaste platser att lagra"
 
-#: data/org.gnome.Maps.gschema.xml:37
+#: data/org.gnome.Maps.gschema.xml:47
 msgid "Number of recently visited places to store."
 msgstr "Antal senast besökta platser att lagra."
 
-#: data/org.gnome.Maps.gschema.xml:41
+#: data/org.gnome.Maps.gschema.xml:51
 msgid "Number of recent routes to store"
 msgstr "Antal senaste rutter att lagra"
 
-#: data/org.gnome.Maps.gschema.xml:42
+#: data/org.gnome.Maps.gschema.xml:52
 msgid "Number of recently visited routes to store."
 msgstr "Antal senast besökta rutter att lagra."
 
-#: data/org.gnome.Maps.gschema.xml:46
+#: data/org.gnome.Maps.gschema.xml:56
 msgid "Facebook check-in privacy setting"
 msgstr "Sekretessinställning för Facebook-incheckning"
 
 #. Translators: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS, and SELF are constant names, and should not be translated
-#: data/org.gnome.Maps.gschema.xml:48
+#: data/org.gnome.Maps.gschema.xml:58
 msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
@@ -157,11 +173,11 @@ msgstr ""
 "Senaste använda sekretessinställning för Facebook-incheckning. Möjliga "
 "värden är: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS eller SELF."
 
-#: data/org.gnome.Maps.gschema.xml:52
+#: data/org.gnome.Maps.gschema.xml:62
 msgid "Foursquare check-in privacy setting"
 msgstr "Sekretessinställning för Foursquare-incheckning"
 
-#: data/org.gnome.Maps.gschema.xml:53
+#: data/org.gnome.Maps.gschema.xml:63
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
@@ -169,11 +185,11 @@ msgstr ""
 "Senast använda sekretessinställning för Foursquare-incheckning. Möjliga "
 "värden är: public, followers eller private."
 
-#: data/org.gnome.Maps.gschema.xml:57
+#: data/org.gnome.Maps.gschema.xml:67
 msgid "Foursquare check-in Facebook broadcasting"
 msgstr "Utsändning av Foursquare-incheckning till Facebook"
 
-#: data/org.gnome.Maps.gschema.xml:58
+#: data/org.gnome.Maps.gschema.xml:68
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
@@ -181,11 +197,11 @@ msgstr ""
 "Indikerar om Foursquare ska sända ut incheckningar som en postning på "
 "Facebook-kontot associerat med Foursquare-kontot."
 
-#: data/org.gnome.Maps.gschema.xml:62
+#: data/org.gnome.Maps.gschema.xml:72
 msgid "Foursquare check-in Twitter broadcasting"
 msgstr "Utsändning av Foursquare-incheckning till Twitter"
 
-#: data/org.gnome.Maps.gschema.xml:63
+#: data/org.gnome.Maps.gschema.xml:73
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
@@ -193,16 +209,16 @@ msgstr ""
 "Indikerar om Foursquare ska sända ut incheckningar som en postning på "
 "Twitter-kontot associerat med Foursquare-kontot."
 
-#: data/org.gnome.Maps.gschema.xml:67
+#: data/org.gnome.Maps.gschema.xml:77
 msgid "OpenStreetMap username or e-mail address"
 msgstr "Användarnamn hos OpenStreetMap eller e-postadress"
 
-#: data/org.gnome.Maps.gschema.xml:68
+#: data/org.gnome.Maps.gschema.xml:78
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr ""
 "Indikerar om användaren har loggat in för att redigera OpenStreetMap-data."
 
-#: data/org.gnome.Maps.gschema.xml:72
+#: data/org.gnome.Maps.gschema.xml:82
 msgid "Last used transportation type for routing"
 msgstr "Senaste transporttyp för rutter"
 
@@ -938,15 +954,15 @@ msgstr "Kartrutor tillhandahållna av %s"
 msgid "Search provided by %s using %s"
 msgstr "Sökning tillhandahålls av %s med %s"
 
-#: src/mapView.js:358
+#: src/mapView.js:374
 msgid "File type is not supported"
 msgstr "Filtypen stöds inte"
 
-#: src/mapView.js:365
+#: src/mapView.js:381
 msgid "Failed to open layer"
 msgstr "Misslyckades med att öppna lager"
 
-#: src/mapView.js:401
+#: src/mapView.js:417
 msgid "Failed to open GeoURI"
 msgstr "Misslyckades med att öppna GeoURI"
 
@@ -1256,7 +1272,7 @@ msgstr "Åtkomst för rullstol:"
 msgid "Phone:"
 msgstr "Telefon:"
 
-#: src/placeEntry.js:203
+#: src/placeEntry.js:205
 msgid "Failed to parse Geo URI"
 msgstr "Misslyckades med att tolka geo-URI"
 
@@ -1266,7 +1282,7 @@ msgstr "Misslyckades med att tolka geo-URI"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/place.js:234 src/translations.js:329 src/translations.js:391
+#: src/place.js:268 src/translations.js:329 src/translations.js:391
 msgid "yes"
 msgstr "ja"
 
@@ -1275,7 +1291,7 @@ msgstr "ja"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/place.js:241
+#: src/place.js:275
 msgid "limited"
 msgstr "begränsad"
 
@@ -1287,7 +1303,7 @@ msgstr "begränsad"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/place.js:247 src/translations.js:335 src/translations.js:392
+#: src/place.js:281 src/translations.js:335 src/translations.js:392
 msgid "no"
 msgstr "nej"
 
@@ -1296,9 +1312,25 @@ msgstr "nej"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/place.js:254
+#: src/place.js:288
 msgid "designated"
 msgstr "avsett för"
+
+#: src/place.js:475
+msgid "Place not found in OpenStreetMap"
+msgstr "Platsen hittades inte i OpenStreetMap"
+
+#: src/place.js:495
+msgid "OpenStreetMap URL is not valid"
+msgstr "OpenStreetMap-URL:en är felaktig"
+
+#: src/place.js:500
+msgid "Coordinates in URL are not valid"
+msgstr "Koordinaterna i URL:en är felaktiga"
+
+#: src/place.js:521
+msgid "URL is not supported"
+msgstr "URL:en stöds inte"
 
 #: src/printLayout.js:312
 #, javascript-format
