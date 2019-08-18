@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-01-14 19:43+0000\n"
-"PO-Revision-Date: 2018-07-01 13:24+0200\n"
+"POT-Creation-Date: 2019-08-02 06:11+0000\n"
+"PO-Revision-Date: 2019-08-18 07:36+0200\n"
 "Last-Translator: Pere Orga <pere@orga.cat>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "Language: ca\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Project-Style: gnome\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
@@ -59,9 +59,20 @@ msgstr ""
 "També podeu cercar per tipus d'ubicacions en concret, com ara «Bars a prop "
 "de la plaça Catalunya, Barcelona» o «Hotels a prop d'Alexanderplatz, Berlín»."
 
+#: data/org.gnome.Maps.appdata.xml.in:59
+msgid "The GNOME Project"
+msgstr "El projecte GNOME"
+
+#. Translators: This is the program name.
+#. for some reason, setting the title of the window through the .ui
+#. * template does not work anymore (maybe has something to do with
+#. * setting a custom title on the headerbar). Setting it programmatically
+#. * here works though. And yields a proper label in the gnome-shell
+#. * overview.
+#.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
-#: src/mainWindow.js:500
+#: src/application.js:81 src/mainWindow.js:139 src/mainWindow.js:509
 msgid "Maps"
 msgstr "Mapes"
 
@@ -69,15 +80,10 @@ msgstr "Mapes"
 msgid "A simple maps application"
 msgstr "Una aplicació senzilla de mapes"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Maps.desktop.in:8
-msgid "org.gnome.Maps"
-msgstr "org.gnome.Maps"
-
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Maps.desktop.in:14
 msgid "Maps;"
-msgstr "mapes;"
+msgstr "Mapes;"
 
 #: data/org.gnome.Maps.desktop.in:17
 msgid "Allows your location to be shown on the map."
@@ -92,59 +98,75 @@ msgid "Coordinates of last viewed location."
 msgstr "Coordenades de l'última ubicació vista."
 
 #: data/org.gnome.Maps.gschema.xml:16
+msgid "zoom"
+msgstr "ampliació"
+
+#: data/org.gnome.Maps.gschema.xml:17
+msgid "Zoom level"
+msgstr "Nivell d'ampliació"
+
+#: data/org.gnome.Maps.gschema.xml:21
+msgid "Map type"
+msgstr "Tipus de mapa"
+
+#: data/org.gnome.Maps.gschema.xml:22
+msgid "The type of map to display (street, aerial, etc.)"
+msgstr "Tipus de mapa a mostrar (carrer, aeri, etc.)"
+
+#: data/org.gnome.Maps.gschema.xml:26
 msgid "Window size"
 msgstr "Mida de la finestra"
 
-#: data/org.gnome.Maps.gschema.xml:17
+#: data/org.gnome.Maps.gschema.xml:27
 msgid "Window size (width and height)."
 msgstr "Mida de la finestra (amplada i alçada)."
 
-#: data/org.gnome.Maps.gschema.xml:21
+#: data/org.gnome.Maps.gschema.xml:31
 msgid "Window position"
 msgstr "Posició de la finestra"
 
-#: data/org.gnome.Maps.gschema.xml:22
+#: data/org.gnome.Maps.gschema.xml:32
 msgid "Window position (X and Y)."
 msgstr "Posició de la finestra (x i y)."
 
-#: data/org.gnome.Maps.gschema.xml:26
+#: data/org.gnome.Maps.gschema.xml:36
 msgid "Window maximized"
 msgstr "Finestra maximitzada"
 
-#: data/org.gnome.Maps.gschema.xml:27
+#: data/org.gnome.Maps.gschema.xml:37
 msgid "Window maximization state"
 msgstr "Estat de la finestra maximitzada"
 
-#: data/org.gnome.Maps.gschema.xml:31
+#: data/org.gnome.Maps.gschema.xml:41
 msgid "Maximum number of search results"
 msgstr "Nombre màxim de resultats de cerca"
 
-#: data/org.gnome.Maps.gschema.xml:32
+#: data/org.gnome.Maps.gschema.xml:42
 msgid "Maximum number of search results from geocode search."
 msgstr "Nombre màxim de resultats de cerca en fer-la per geocodi."
 
-#: data/org.gnome.Maps.gschema.xml:36
+#: data/org.gnome.Maps.gschema.xml:46
 msgid "Number of recent places to store"
 msgstr "Nombre de llocs recents que s'ha d'emmagatzemar"
 
-#: data/org.gnome.Maps.gschema.xml:37
+#: data/org.gnome.Maps.gschema.xml:47
 msgid "Number of recently visited places to store."
 msgstr "Nombre de llocs visitats recentment que s'ha d'emmagatzemar."
 
-#: data/org.gnome.Maps.gschema.xml:41
+#: data/org.gnome.Maps.gschema.xml:51
 msgid "Number of recent routes to store"
 msgstr "Nombre de rutes recents que s'han d'emmagatzemar"
 
-#: data/org.gnome.Maps.gschema.xml:42
+#: data/org.gnome.Maps.gschema.xml:52
 msgid "Number of recently visited routes to store."
 msgstr "Nombre de rutes visitades recentment que s'han d'emmagatzemar."
 
-#: data/org.gnome.Maps.gschema.xml:46
+#: data/org.gnome.Maps.gschema.xml:56
 msgid "Facebook check-in privacy setting"
 msgstr "Paràmetre de privacitat de registre al Facebook"
 
 #. Translators: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS, and SELF are constant names, and should not be translated
-#: data/org.gnome.Maps.gschema.xml:48
+#: data/org.gnome.Maps.gschema.xml:58
 msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
@@ -152,11 +174,11 @@ msgstr ""
 "Darrer paràmetre de privacitat de registre utilitzat al Facebook. Els valors "
 "possibles són TOTHOM, AMICS D'AMICS, TOTS ELS AMICS o UN MATEIX."
 
-#: data/org.gnome.Maps.gschema.xml:52
+#: data/org.gnome.Maps.gschema.xml:62
 msgid "Foursquare check-in privacy setting"
 msgstr "Paràmetre de privacitat de registre al Foursquare"
 
-#: data/org.gnome.Maps.gschema.xml:53
+#: data/org.gnome.Maps.gschema.xml:63
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
@@ -164,11 +186,11 @@ msgstr ""
 "Darrer paràmetre de privacitat de registre utilitzat al Foursquare. Els "
 "valors possibles són públic, seguidors o privat."
 
-#: data/org.gnome.Maps.gschema.xml:57
+#: data/org.gnome.Maps.gschema.xml:67
 msgid "Foursquare check-in Facebook broadcasting"
 msgstr "Difusió al Facebook del registre de Foursquare"
 
-#: data/org.gnome.Maps.gschema.xml:58
+#: data/org.gnome.Maps.gschema.xml:68
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
@@ -176,11 +198,11 @@ msgstr ""
 "Indica si Foursquare hauria de difondre el registre com a apunt al compte de "
 "Facebook associat al compte de Foursquare."
 
-#: data/org.gnome.Maps.gschema.xml:62
+#: data/org.gnome.Maps.gschema.xml:72
 msgid "Foursquare check-in Twitter broadcasting"
 msgstr "Difusió al Twitter del registre de Foursquare"
 
-#: data/org.gnome.Maps.gschema.xml:63
+#: data/org.gnome.Maps.gschema.xml:73
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
@@ -188,16 +210,16 @@ msgstr ""
 "Indica si Foursquare hauria de difondre el registre com a piulada al compte "
 "de Twitter associat al compte de Foursquare."
 
-#: data/org.gnome.Maps.gschema.xml:67
+#: data/org.gnome.Maps.gschema.xml:77
 msgid "OpenStreetMap username or e-mail address"
 msgstr "Nom d'usuari d'OpenStreetMap o correu electrònic"
 
-#: data/org.gnome.Maps.gschema.xml:68
+#: data/org.gnome.Maps.gschema.xml:78
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr ""
 "Indica si l'usuari ha iniciat la sessió per editar les dades d'OpenStreetMap."
 
-#: data/org.gnome.Maps.gschema.xml:72
+#: data/org.gnome.Maps.gschema.xml:82
 msgid "Last used transportation type for routing"
 msgstr "Darrer tipus de transport usat per itineraris"
 
@@ -214,7 +236,7 @@ msgid "Post on Twitter"
 msgstr "Penja al Twitter"
 
 #: data/ui/check-in-dialog.ui:388 data/ui/export-view-dialog.ui:20
-#: data/ui/send-to-dialog.ui:21 data/ui/shape-layer-file-chooser.ui:22
+#: data/ui/send-to-dialog.ui:13 data/ui/shape-layer-file-chooser.ui:22
 msgid "_Cancel"
 msgstr "_Cancel·la"
 
@@ -351,7 +373,7 @@ msgid "Open shape layer"
 msgstr "Obre la capa de forma"
 
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:71
+#: data/ui/layers-popover.ui:69
 msgid "Open Shape Layer…"
 msgstr "Obre la capa de forma…"
 
@@ -438,8 +460,8 @@ msgstr "Afegeix a la ruta nova"
 
 #. Translators: This is a tooltip
 #: data/ui/map-bubble.ui:62
-msgid "Open with another application"
-msgstr "Obre amb una altra aplicació"
+msgid "Share location"
+msgstr "Comparteix la ubicació"
 
 #. Translators: This is a tooltip
 #: data/ui/map-bubble.ui:79
@@ -584,11 +606,7 @@ msgstr "Editeu a l'OpenStreetMap"
 msgid "Show more information"
 msgstr "Mostra més informació"
 
-#: data/ui/place-popover.ui:24
-msgid "Press enter to search"
-msgstr "Premeu retorn per cercar"
-
-#: data/ui/place-popover.ui:72
+#: data/ui/place-popover.ui:54
 msgid "No results found"
 msgstr "No s'ha trobat cap resultat"
 
@@ -597,17 +615,25 @@ msgstr "No s'ha trobat cap resultat"
 msgid "Drag to change order of the route"
 msgstr "Arrossegueu per canviar l'ordre de la ruta"
 
-#: data/ui/send-to-dialog.ui:15
-msgid "Open location"
-msgstr "Obre la ubicació"
+#: data/ui/send-to-dialog.ui:10
+msgid "Open Location"
+msgstr "Obre ubicació"
 
-#: data/ui/send-to-dialog.ui:35 data/ui/shape-layer-file-chooser.ui:12
-msgid "_Open"
-msgstr "_Obre"
+#: data/ui/send-to-dialog.ui:70
+msgid "Copy"
+msgstr "Copia"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:61
+#: data/ui/send-to-dialog.ui:76
+msgid "Send To…"
+msgstr "Envia a…"
+
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:62
 msgid "Open Shape Layer"
 msgstr "Obre la capa de forma"
+
+#: data/ui/shape-layer-file-chooser.ui:12
+msgid "_Open"
+msgstr "_Obre"
 
 #. Translators: This is a tooltip
 #: data/ui/shape-layer-row.ui:19
@@ -728,11 +754,11 @@ msgstr "S'han perdut els atributs requerits"
 msgid "Could not find OSM element"
 msgstr "No s'ha trobat l'element OSM"
 
-#: src/application.js:95
+#: src/application.js:94
 msgid "A path to a local tiles directory structure"
 msgstr "Un camí a l'estructura de caselles locals del directori"
 
-#: src/application.js:99
+#: src/application.js:98
 msgid "Show the version of the program"
 msgstr "Mostra la versió del programa"
 
@@ -800,23 +826,23 @@ msgstr ""
 "Han caducat les credencials. Obriu els comptes en línia per registrar-vos-hi "
 "i habilitar el compte"
 
-#: src/contextMenu.js:98
+#: src/contextMenu.js:99
 msgid "Route from here"
 msgstr "Comenceu la ruta des d'aquí"
 
-#: src/contextMenu.js:100
+#: src/contextMenu.js:101
 msgid "Add destination"
 msgstr "Afegiu una destinació"
 
-#: src/contextMenu.js:102
+#: src/contextMenu.js:103
 msgid "Route to here"
 msgstr "Continueu la ruta fins aquí"
 
-#: src/contextMenu.js:131
+#: src/contextMenu.js:129
 msgid "Nothing found here!"
 msgstr "No s'ha trobat res aquí."
 
-#: src/contextMenu.js:192
+#: src/contextMenu.js:190
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -853,39 +879,39 @@ msgstr "No hi ha cap nom de fitxer especificat"
 msgid "Unable to export view"
 msgstr "No està habilitada l'exportació de la vista"
 
-#: src/geoJSONSource.js:98
+#: src/geoJSONSource.js:97
 msgid "invalid coordinate"
 msgstr "coordenades invàlides"
 
-#: src/geoJSONSource.js:147 src/geoJSONSource.js:187 src/geoJSONSource.js:202
+#: src/geoJSONSource.js:146 src/geoJSONSource.js:186 src/geoJSONSource.js:201
 msgid "parse error"
 msgstr "error d'anàlisi"
 
-#: src/geoJSONSource.js:181
+#: src/geoJSONSource.js:180
 msgid "unknown geometry"
 msgstr "geometria desconeguda"
 
-#: src/graphHopper.js:93 src/openTripPlanner.js:652
+#: src/graphHopper.js:112 src/openTripPlanner.js:652
 msgid "Route request failed."
 msgstr "Ha fallat la sol·licitud de cercar la ruta."
 
-#: src/graphHopper.js:100 src/openTripPlanner.js:615
+#: src/graphHopper.js:119 src/openTripPlanner.js:615
 msgid "No route found."
 msgstr "No s'ha trobat cap ruta."
 
-#: src/graphHopper.js:188
+#: src/graphHopper.js:207
 msgid "Start!"
 msgstr "Comença"
 
-#: src/mainWindow.js:58
+#: src/mainWindow.js:59
 msgid "All Layer Files"
 msgstr "Tots els fitxers de capa"
 
-#: src/mainWindow.js:433
+#: src/mainWindow.js:442
 msgid "Failed to connect to location service"
 msgstr "Ha fallat la connexió amb el servei d'ubicació"
 
-#: src/mainWindow.js:498
+#: src/mainWindow.js:507
 msgid "translator-credits"
 msgstr ""
 "Gil Forcada <gilforcada@guifi.net>\n"
@@ -893,16 +919,16 @@ msgstr ""
 "Carles Ferrando <carles.ferrando@gmail.com>\n"
 "Pere Orga <pere@orga.cat>"
 
-#: src/mainWindow.js:501
+#: src/mainWindow.js:510
 msgid "A map application for GNOME"
 msgstr "Una aplicació de mapes pel GNOME"
 
-#: src/mainWindow.js:512
+#: src/mainWindow.js:521
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr ""
 "Copyright © 2011 – 2019 Red Hat, Inc. i els altres autors del Mapes del GNOME"
 
-#: src/mainWindow.js:531
+#: src/mainWindow.js:541
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Dades del mapa de %s i col·laboradors"
@@ -912,20 +938,34 @@ msgstr "Dades del mapa de %s i col·laboradors"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:547
+#: src/mainWindow.js:557
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Caselles de mapa proporcionades per %s"
 
-#: src/mapView.js:358
+#. Translators: this is an attribution string giving credit to the
+#. * search provider where the first %s placeholder is replaced by either
+#. * the bare name of the geocoder provider, or a linkified URL if one
+#. * is available, and the second %s placeholder is replaced by the
+#. * URL to the geocoder project page. These placeholders
+#. * can be swapped, if needed using the %n$s positional syntax
+#. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
+#. * before the provider).
+#.
+#: src/mainWindow.js:586
+#, javascript-format
+msgid "Search provided by %s using %s"
+msgstr "Cerca proveïda per %s utilitzant %s"
+
+#: src/mapView.js:374
 msgid "File type is not supported"
 msgstr "Aquest tipus de fitxer no està suportat"
 
-#: src/mapView.js:365
+#: src/mapView.js:381
 msgid "Failed to open layer"
 msgstr "S'ha produït un error en obrir la capa"
 
-#: src/mapView.js:401
+#: src/mapView.js:417
 msgid "Failed to open GeoURI"
 msgstr "S'ha produït un error en obrir el fitxer GeoURI"
 
@@ -1030,7 +1070,7 @@ msgstr "Altitud"
 
 #: src/osmEditDialog.js:160
 msgid "Elevation (height above sea level) of a point in metres."
-msgstr "Elevació (alçada sobre el nivell del mar) d'un punt en metres."
+msgstr "Elevació (altura sobre el nivell del mar) d'un punt en metres."
 
 #: src/osmEditDialog.js:163
 msgid "Wheelchair access"
@@ -1198,6 +1238,10 @@ msgstr "Seleccioneu el tipus"
 msgid "Done"
 msgstr "Fet"
 
+#: src/photonParser.js:103
+msgid "Unnamed place"
+msgstr "Ubicació sense nom"
+
 #: src/placeBubble.js:143
 msgid "Population:"
 msgstr "Població:"
@@ -1230,7 +1274,7 @@ msgstr "Accés amb cadira de rodes:"
 msgid "Phone:"
 msgstr "Telèfon:"
 
-#: src/placeEntry.js:186
+#: src/placeEntry.js:205
 msgid "Failed to parse Geo URI"
 msgstr "S'ha produït un error en analitzar l'URI Geo"
 
@@ -1240,7 +1284,7 @@ msgstr "S'ha produït un error en analitzar l'URI Geo"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/place.js:218 src/translations.js:329 src/translations.js:391
+#: src/place.js:268 src/translations.js:329 src/translations.js:391
 msgid "yes"
 msgstr "sí"
 
@@ -1249,7 +1293,7 @@ msgstr "sí"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/place.js:225
+#: src/place.js:275
 msgid "limited"
 msgstr "limitat"
 
@@ -1261,7 +1305,7 @@ msgstr "limitat"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/place.js:231 src/translations.js:335 src/translations.js:392
+#: src/place.js:281 src/translations.js:335 src/translations.js:392
 msgid "no"
 msgstr "no"
 
@@ -1270,11 +1314,27 @@ msgstr "no"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/place.js:238
+#: src/place.js:288
 msgid "designated"
 msgstr "designat"
 
-#: src/printLayout.js:240
+#: src/place.js:475
+msgid "Place not found in OpenStreetMap"
+msgstr "Lloc no trobat a l'OpenStreetMap"
+
+#: src/place.js:495
+msgid "OpenStreetMap URL is not valid"
+msgstr "L'URL de l'OpenStreetMap no és vàlid"
+
+#: src/place.js:500
+msgid "Coordinates in URL are not valid"
+msgstr "Les coordenades a l'URL no són vàlides"
+
+#: src/place.js:521
+msgid "URL is not supported"
+msgstr "L'URL no és compatible"
+
+#: src/printLayout.js:312
 #, javascript-format
 msgid "From %s to %s"
 msgstr "Des de %s a %s"
@@ -1306,9 +1366,22 @@ msgstr "Suprimeix a través de la ubicació"
 msgid "Reverse route"
 msgstr "Ruta inversa"
 
-#: src/sendToDialog.js:175
+#. Translators: The first string is the name of the city, the
+#. second string is the name of the app to add it to
+#: src/sendToDialog.js:103
+#, javascript-format
+#| msgid "From %s to %s"
+msgid "Add %s to %s"
+msgstr "Afegeix %s a %s"
+
+#: src/sendToDialog.js:201
 msgid "Failed to open URI"
 msgstr "S'ha produït un error en obrir l'URI"
+
+#: src/sendToDialog.js:258
+#, javascript-format
+msgid "Open with %s"
+msgstr "Obre amb %s"
 
 #: src/shapeLayer.js:91
 msgid "failed to load file"
@@ -1320,22 +1393,10 @@ msgstr "S'ha produït un error en carregar el fitxer"
 msgid "Estimated time: %s"
 msgstr "Temps estimat: %s"
 
-#. Translators: this a format string indicating arriving at the
-#. * destination of journey with the arrival address and transit
-#. * stop as the format parameter
-#: src/transitArrivalRow.js:54
-#, javascript-format
-msgid "Arrive at %s"
-msgstr "Arribeu a %s"
-
-#: src/transitArrivalRow.js:56
-msgid "Arrive"
-msgstr "Arribeu"
-
 #. Translators: this is a format string indicating instructions
 #. * starting a journey at the address given as the parameter
 #.
-#: src/transitLegRow.js:71
+#: src/transit.js:37
 #, javascript-format
 msgid "Start at %s"
 msgstr "Comenceu a %s"
@@ -1344,25 +1405,37 @@ msgstr "Comenceu a %s"
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: src/transitLegRow.js:77
+#: src/transit.js:43
 msgid "Start"
 msgstr "Comença"
-
-#: src/transitLegRow.js:106
-msgid "Show walking instructions"
-msgstr "Mostra les instruccions a peu"
-
-#: src/transitLegRow.js:107
-msgid "Hide walking instructions"
-msgstr "Oculta les instruccions a peu"
 
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
 #.
-#: src/transitLegRow.js:132
+#: src/transit.js:61
 #, javascript-format
 msgid "Walk %s"
 msgstr "Camineu %s"
+
+#. Translators: this a format string indicating arriving at the
+#. * destination of journey with the arrival address and transit
+#. * stop as the format parameter
+#: src/transit.js:75
+#, javascript-format
+msgid "Arrive at %s"
+msgstr "Arribeu a %s"
+
+#: src/transit.js:77
+msgid "Arrive"
+msgstr "Arribeu"
+
+#: src/transitLegRow.js:88
+msgid "Show walking instructions"
+msgstr "Mostra les instruccions a peu"
+
+#: src/transitLegRow.js:89
+msgid "Hide walking instructions"
+msgstr "Oculta les instruccions a peu"
 
 #: src/transitMoreRow.js:39
 msgid "Load earlier alternatives"
@@ -1592,53 +1665,62 @@ msgid "service"
 msgstr "servei"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:227
+#: src/utils.js:220
 msgid "Unknown"
 msgstr "Desconeguda"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:230
+#: src/utils.js:223
 msgid "Exact"
 msgstr "Exacte"
 
-#: src/utils.js:288
+#: src/utils.js:281
 #, javascript-format
 msgid "%f h"
 msgstr "%f h"
 
-#: src/utils.js:290
+#: src/utils.js:283
 #, javascript-format
 msgid "%f min"
 msgstr "%f min"
 
-#: src/utils.js:292
+#: src/utils.js:285
 #, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:303
+#: src/utils.js:296
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:306
+#: src/utils.js:299
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:314
+#: src/utils.js:307
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:317
+#: src/utils.js:310
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
+
+#~ msgid "org.gnome.Maps"
+#~ msgstr "org.gnome.Maps"
+
+#~ msgid "Open with another application"
+#~ msgstr "Obre amb una altra aplicació"
+
+#~ msgid "Press enter to search"
+#~ msgstr "Premeu retorn per cercar"
 
 #~ msgid "Quit"
 #~ msgstr "Surt"
