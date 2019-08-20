@@ -30,7 +30,6 @@ const Location = imports.location;
 const Place = imports.place;
 const RouteQuery = imports.routeQuery;
 const Service = imports.service;
-const TransitPlan = imports.transitPlan;
 const Utils = imports.utils;
 
 /**
@@ -128,8 +127,8 @@ var OpenTripPlanner = class OpenTripPlanner {
          * a download when first request
          */
         this._routersUpdatedTimestamp = 0;
+        this._plan = Application.routingDelegator.transitRouter.plan;
         this._query = params.query;
-        this._plan = new TransitPlan.Plan();
         this._baseUrl = this._getBaseUrl();
         this._walkingRoutes = [];
         this._extendPrevious = false;
