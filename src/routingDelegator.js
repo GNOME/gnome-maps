@@ -20,7 +20,7 @@
  */
 
 const GraphHopper = imports.graphHopper;
-const OpenTripPlanner = imports.transitplugins.openTripPlanner;
+const TransitRouter = imports.transitRouter;
 const RouteQuery = imports.routeQuery;
 
 const _FALLBACK_TRANSPORTATION = RouteQuery.Transportation.PEDESTRIAN;
@@ -32,16 +32,14 @@ var RoutingDelegator = class RoutingDelegator {
 
         this._transitRouting = false;
         this._graphHopper = new GraphHopper.GraphHopper({ query: this._query });
-        this._openTripPlanner =
-            new OpenTripPlanner.OpenTripPlanner({ query: this._query,
-                                                  graphHopper: this._graphHopper });
+        this._transitRouter = new TransitRouter.TransitRouter({ query: this._query });
         this._query.connect('notify::points', this._onQueryChanged.bind(this));
 
         /* if the query is set to transit mode when it's not available, revert
          * to a fallback mode
          */
         if (this._query.transportation === RouteQuery.Transportation.TRANSIT &&
-            !this._openTripPlanner.enabled) {
+            !this._transitRouter.enabled) {
             this._query.transportation = _FALLBACK_TRANSPORTATION;
         }
     }
@@ -50,8 +48,8 @@ var RoutingDelegator = class RoutingDelegator {
         return this._graphHopper;
     }
 
-    get openTripPlanner() {
-        return this._openTripPlanner;
+    get transitRouter() {
+        return this._transitRouter;
     }
 
     set useTransit(useTransit) {
@@ -60,7 +58,7 @@ var RoutingDelegator = class RoutingDelegator {
 
     reset() {
         if (this._transitRouting)
-            this._openTripPlanner.plan.reset();
+            this._transitRouter.plan.reset();
         else
             this._graphHopper.route.reset();
     }
@@ -68,7 +66,7 @@ var RoutingDelegator = class RoutingDelegator {
     _onQueryChanged() {
         if (this._query.isValid()) {
             if (this._transitRouting) {
-                this._openTripPlanner.fetchFirstResults();
+                this._transitRouter.fetchFirstResults();
             } else {
                 this._graphHopper.fetchRoute(this._query.filledPoints,
                                              this._query.transportation);
