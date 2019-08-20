@@ -95,13 +95,13 @@ var Sidebar = GObject.registerClass({
         this._query.addPoint(1);
         this._switchRoutingMode(Application.routeQuery.transportation);
         /* Enable/disable transit mode switch based on the presence of
-         * OpenTripPlanner.
+         * public transit providers.
          * For some reason, setting visible to false in the UI file and
          * dynamically setting visible false here doesn't work, maybe because
          * it's part of a radio group? As a workaround, just remove the button
          * instead.
          */
-        if (!Application.routingDelegator.openTripPlanner.enabled)
+        if (!Application.routingDelegator.transitRouter.enabled)
             this._modeTransitToggle.destroy();
     }
 
@@ -154,7 +154,7 @@ var Sidebar = GObject.registerClass({
             Application.routingDelegator.useTransit = false;
             this._linkButtonStack.visible_child_name = 'graphHopper';
             this._transitRevealer.reveal_child = false;
-            Application.routingDelegator.openTripPlanner.plan.deselectItinerary();
+            Application.routingDelegator.transitRouter.plan.deselectItinerary();
         }
         this._clearInstructions();
     }
@@ -214,7 +214,7 @@ var Sidebar = GObject.registerClass({
 
     _initInstructionList() {
         let route = Application.routingDelegator.graphHopper.route;
-        let transitPlan = Application.routingDelegator.openTripPlanner.plan;
+        let transitPlan = Application.routingDelegator.transitRouter.plan;
 
         route.connect('reset', () => {
             this._clearInstructions();
@@ -341,7 +341,7 @@ var Sidebar = GObject.registerClass({
     }
 
     _showTransitOverview() {
-        let plan = Application.routingDelegator.openTripPlanner.plan;
+        let plan = Application.routingDelegator.transitRouter.plan;
 
         this._transitListStack.visible_child_name = 'overview';
         this._transitHeader.visible_child_name = 'options';
@@ -354,7 +354,7 @@ var Sidebar = GObject.registerClass({
     }
 
     _populateTransitItineraryOverview() {
-        let plan = Application.routingDelegator.openTripPlanner.plan;
+        let plan = Application.routingDelegator.transitRouter.plan;
 
         plan.itineraries.forEach((itinerary) => {
             let row =
@@ -371,7 +371,7 @@ var Sidebar = GObject.registerClass({
     }
 
     _onItineraryActivated(itinerary) {
-        let plan = Application.routingDelegator.openTripPlanner.plan;
+        let plan = Application.routingDelegator.transitRouter.plan;
 
         this._populateTransitItinerary(itinerary);
         this._showTransitItineraryView();
@@ -380,7 +380,7 @@ var Sidebar = GObject.registerClass({
 
     _onMoreActivated(row) {
         row.startLoading();
-        Application.routingDelegator.openTripPlanner.fetchMoreResults();
+        Application.routingDelegator.transitRouter.fetchMoreResults();
     }
 
     _onItineraryOverviewRowActivated(listBox, row) {
