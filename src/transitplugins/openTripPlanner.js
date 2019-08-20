@@ -130,7 +130,8 @@ var OpenTripPlanner = class OpenTripPlanner {
         this._routersUpdatedTimestamp = 0;
         this._plan = Application.routingDelegator.transitRouter.plan;
         this._query = Application.routeQuery;
-        this._baseUrl = this._getBaseUrl();
+        this._baseUrl = params.baseUrl;
+        Utils.debug('baseUrl: ' + this._baseUrl);
         this._walkingRoutes = [];
         this._extendPrevious = false;
     }
@@ -151,23 +152,6 @@ var OpenTripPlanner = class OpenTripPlanner {
     fetchMoreResults() {
         this._extendPrevious = true;
         this._fetchRoute();
-    }
-
-    _getBaseUrl() {
-        let debugUrl = GLib.getenv('OTP_BASE_URL');
-
-        if (debugUrl) {
-            return debugUrl;
-        } else {
-            let otp = Service.getService().openTripPlanner
-
-            if (otp && otp.baseUrl) {
-                return otp.baseUrl;
-            } else {
-                Utils.debug('No OpenTripPlanner URL defined in service file');
-                return null;
-            }
-        }
     }
 
     _getRouterUrl(router) {
