@@ -30,7 +30,6 @@ const Location = imports.location;
 const Place = imports.place;
 const RouteQuery = imports.routeQuery;
 const Service = imports.service;
-const TransitPlan = imports.transitPlan;
 const Utils = imports.utils;
 
 /**
