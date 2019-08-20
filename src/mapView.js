@@ -262,7 +262,7 @@ var MapView = GObject.registerClass({
 
     _connectRouteSignals() {
         let route = Application.routingDelegator.graphHopper.route;
-        let transitPlan = Application.routingDelegator.openTripPlanner.plan;
+        let transitPlan = Application.routingDelegator.transitRouter.plan;
         let query = Application.routeQuery;
 
         route.connect('update', () => {
