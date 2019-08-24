@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-05-22 05:00+0000\n"
-"PO-Revision-Date: 2019-06-01 16:51+0200\n"
+"POT-Creation-Date: 2019-08-02 06:11+0000\n"
+"PO-Revision-Date: 2019-08-24 21:12+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
@@ -69,7 +69,7 @@ msgstr "A GNOME projekt"
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
-#: src/application.js:83 src/mainWindow.js:138 src/mainWindow.js:508
+#: src/application.js:81 src/mainWindow.js:139 src/mainWindow.js:509
 msgid "Maps"
 msgstr "Térképek"
 
@@ -95,59 +95,77 @@ msgid "Coordinates of last viewed location."
 msgstr "Az utolsó megtekintett hely koordinátái."
 
 #: data/org.gnome.Maps.gschema.xml:16
+msgid "zoom"
+msgstr "nagyítás"
+
+#: data/org.gnome.Maps.gschema.xml:17
+msgid "Zoom level"
+msgstr "Nagyítási szint"
+
+#: data/org.gnome.Maps.gschema.xml:21
+#| msgctxt "shortcut window"
+#| msgid "Map View"
+msgid "Map type"
+msgstr "Térképtípus"
+
+#: data/org.gnome.Maps.gschema.xml:22
+msgid "The type of map to display (street, aerial, etc.)"
+msgstr "A megjelenítendő térkép típusa (utca, légi, stb.)"
+
+#: data/org.gnome.Maps.gschema.xml:26
 msgid "Window size"
 msgstr "Ablakméret"
 
-#: data/org.gnome.Maps.gschema.xml:17
+#: data/org.gnome.Maps.gschema.xml:27
 msgid "Window size (width and height)."
 msgstr "Ablak mérete (szélesség és magasság)."
 
-#: data/org.gnome.Maps.gschema.xml:21
+#: data/org.gnome.Maps.gschema.xml:31
 msgid "Window position"
 msgstr "Ablakpozíció"
 
-#: data/org.gnome.Maps.gschema.xml:22
+#: data/org.gnome.Maps.gschema.xml:32
 msgid "Window position (X and Y)."
 msgstr "Ablakpozíció (X és Y)."
 
-#: data/org.gnome.Maps.gschema.xml:26
+#: data/org.gnome.Maps.gschema.xml:36
 msgid "Window maximized"
 msgstr "Ablak teljes méretű"
 
-#: data/org.gnome.Maps.gschema.xml:27
+#: data/org.gnome.Maps.gschema.xml:37
 msgid "Window maximization state"
 msgstr "Az ablak maximalizált állapota"
 
-#: data/org.gnome.Maps.gschema.xml:31
+#: data/org.gnome.Maps.gschema.xml:41
 msgid "Maximum number of search results"
 msgstr "A keresési találatok maximális száma"
 
-#: data/org.gnome.Maps.gschema.xml:32
+#: data/org.gnome.Maps.gschema.xml:42
 msgid "Maximum number of search results from geocode search."
 msgstr "A keresési találatok maximális száma a geokód keresésből."
 
-#: data/org.gnome.Maps.gschema.xml:36
+#: data/org.gnome.Maps.gschema.xml:46
 msgid "Number of recent places to store"
 msgstr "A tárolandó legutóbbi helyek száma"
 
-#: data/org.gnome.Maps.gschema.xml:37
+#: data/org.gnome.Maps.gschema.xml:47
 msgid "Number of recently visited places to store."
 msgstr "A tárolandó legutóbb látogatott helyek száma."
 
-#: data/org.gnome.Maps.gschema.xml:41
+#: data/org.gnome.Maps.gschema.xml:51
 msgid "Number of recent routes to store"
 msgstr "A tárolandó legutóbbi útvonalak száma"
 
-#: data/org.gnome.Maps.gschema.xml:42
+#: data/org.gnome.Maps.gschema.xml:52
 msgid "Number of recently visited routes to store."
 msgstr "A tárolandó legutóbb látogatott útvonalak száma."
 
-#: data/org.gnome.Maps.gschema.xml:46
+#: data/org.gnome.Maps.gschema.xml:56
 msgid "Facebook check-in privacy setting"
 msgstr "Facebook bejelentkezés adatvédelmi beállításai"
 
 #. Translators: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS, and SELF are constant names, and should not be translated
-#: data/org.gnome.Maps.gschema.xml:48
+#: data/org.gnome.Maps.gschema.xml:58
 msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
@@ -155,11 +173,11 @@ msgstr ""
 "Legutóbb használt Facebook bejelentkezés adatvédelmi beállításai. Lehetséges "
 "értékek: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS vagy SELF."
 
-#: data/org.gnome.Maps.gschema.xml:52
+#: data/org.gnome.Maps.gschema.xml:62
 msgid "Foursquare check-in privacy setting"
 msgstr "Foursquare bejelentkezés adatvédelmi beállításai"
 
-#: data/org.gnome.Maps.gschema.xml:53
+#: data/org.gnome.Maps.gschema.xml:63
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
@@ -167,11 +185,11 @@ msgstr ""
 "Legutóbb használt Foursquare bejelentkezés adatvédelmi beállításai. "
 "Lehetséges értékek: public, followers, vagy private."
 
-#: data/org.gnome.Maps.gschema.xml:57
+#: data/org.gnome.Maps.gschema.xml:67
 msgid "Foursquare check-in Facebook broadcasting"
 msgstr "Foursquare bejelentkezés Facebook üzenetszórás"
 
-#: data/org.gnome.Maps.gschema.xml:58
+#: data/org.gnome.Maps.gschema.xml:68
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
@@ -179,11 +197,11 @@ msgstr ""
 "Jelzi, ha a Foursquare hozzászólásként akarja közzétenni a bejelentkezést a "
 "Foursquare fiókkal társított Facebook fiókban."
 
-#: data/org.gnome.Maps.gschema.xml:62
+#: data/org.gnome.Maps.gschema.xml:72
 msgid "Foursquare check-in Twitter broadcasting"
 msgstr "Foursquare bejelentkezés Twitter üzenetszórás"
 
-#: data/org.gnome.Maps.gschema.xml:63
+#: data/org.gnome.Maps.gschema.xml:73
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
@@ -191,17 +209,17 @@ msgstr ""
 "Jelzi, ha a Foursquare üzenetként akarja közzétenni a bejelentkezést a "
 "Foursquare fiókkal társított Twitter fiókban."
 
-#: data/org.gnome.Maps.gschema.xml:67
+#: data/org.gnome.Maps.gschema.xml:77
 msgid "OpenStreetMap username or e-mail address"
 msgstr "OpenStreetMap felhasználónév vagy e-mail cím"
 
-#: data/org.gnome.Maps.gschema.xml:68
+#: data/org.gnome.Maps.gschema.xml:78
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr ""
 "Jelzi, hogy a felhasználó bejelentkezett-e az OpenStreetMap adatok "
 "szerkesztéséhez."
 
-#: data/org.gnome.Maps.gschema.xml:72
+#: data/org.gnome.Maps.gschema.xml:82
 msgid "Last used transportation type for routing"
 msgstr "Legutóbb útvonaltervezéshez használt közlekedéstípus"
 
@@ -218,7 +236,7 @@ msgid "Post on Twitter"
 msgstr "Közzététel a Twitteren"
 
 #: data/ui/check-in-dialog.ui:388 data/ui/export-view-dialog.ui:20
-#: data/ui/send-to-dialog.ui:21 data/ui/shape-layer-file-chooser.ui:22
+#: data/ui/send-to-dialog.ui:13 data/ui/shape-layer-file-chooser.ui:22
 msgid "_Cancel"
 msgstr "_Mégse"
 
@@ -442,8 +460,9 @@ msgstr "Hozzáadás új útvonalhoz"
 
 #. Translators: This is a tooltip
 #: data/ui/map-bubble.ui:62
-msgid "Open with another application"
-msgstr "Megnyitás egy másik alkalmazással"
+#| msgid "Open location"
+msgid "Share location"
+msgstr "Hely megosztása"
 
 #. Translators: This is a tooltip
 #: data/ui/map-bubble.ui:79
@@ -589,11 +608,7 @@ msgstr "Szerkesztés az OpenStreetMapen"
 msgid "Show more information"
 msgstr "További információk megjelenítése"
 
-#: data/ui/place-popover.ui:24
-msgid "Press enter to search"
-msgstr "Nyomja meg az Entert a kereséshez"
-
-#: data/ui/place-popover.ui:72
+#: data/ui/place-popover.ui:54
 msgid "No results found"
 msgstr "Nincs találat"
 
@@ -602,17 +617,26 @@ msgstr "Nincs találat"
 msgid "Drag to change order of the route"
 msgstr "Húzza az útvonal sorrendjének módosításához"
 
-#: data/ui/send-to-dialog.ui:15
-msgid "Open location"
+#: data/ui/send-to-dialog.ui:10
+#| msgid "Open location"
+msgid "Open Location"
 msgstr "Hely megnyitása"
 
-#: data/ui/send-to-dialog.ui:35 data/ui/shape-layer-file-chooser.ui:12
-msgid "_Open"
-msgstr "_Megnyitás"
+#: data/ui/send-to-dialog.ui:70
+msgid "Copy"
+msgstr "Másolás"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:61
+#: data/ui/send-to-dialog.ui:76
+msgid "Send To…"
+msgstr "Küldés neki…"
+
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:62
 msgid "Open Shape Layer"
 msgstr "Alak réteg megnyitása"
+
+#: data/ui/shape-layer-file-chooser.ui:12
+msgid "_Open"
+msgstr "_Megnyitás"
 
 #. Translators: This is a tooltip
 #: data/ui/shape-layer-row.ui:19
@@ -733,11 +757,11 @@ msgstr "Szükséges attribútumok hiányoznak"
 msgid "Could not find OSM element"
 msgstr "Nem sikerült megtalálni az OSM elemet"
 
-#: src/application.js:96
+#: src/application.js:94
 msgid "A path to a local tiles directory structure"
 msgstr "Egy útvonal a helyi csempék könyvtárszerkezetéhez"
 
-#: src/application.js:100
+#: src/application.js:98
 msgid "Show the version of the program"
 msgstr "A program verziószámának megjelenítése"
 
@@ -805,23 +829,23 @@ msgstr ""
 "A hitelesítési adatok lejártak, nyissa meg az Online fiókokat a "
 "bejelentkezéshez, és engedélyezze ezt a fiókot"
 
-#: src/contextMenu.js:98
+#: src/contextMenu.js:99
 msgid "Route from here"
 msgstr "Útvonal innen"
 
-#: src/contextMenu.js:100
+#: src/contextMenu.js:101
 msgid "Add destination"
 msgstr "Cél hozzáadása"
 
-#: src/contextMenu.js:102
+#: src/contextMenu.js:103
 msgid "Route to here"
 msgstr "Útvonal ide"
 
-#: src/contextMenu.js:131
+#: src/contextMenu.js:129
 msgid "Nothing found here!"
 msgstr "Itt nincs semmi!"
 
-#: src/contextMenu.js:192
+#: src/contextMenu.js:190
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -882,29 +906,29 @@ msgstr "Nem található útvonal."
 msgid "Start!"
 msgstr "Indulás!"
 
-#: src/mainWindow.js:58
+#: src/mainWindow.js:59
 msgid "All Layer Files"
 msgstr "Minden rétegfájl"
 
-#: src/mainWindow.js:441
+#: src/mainWindow.js:442
 msgid "Failed to connect to location service"
 msgstr "Nem sikerült kapcsolódni a helymeghatározó szolgáltatáshoz"
 
-#: src/mainWindow.js:506
+#: src/mainWindow.js:507
 msgid "translator-credits"
 msgstr ""
 "Úr Balázs <urbalazs at gmail dot com>\n"
 "Meskó Balázs <mesko.balazs at fsf dot hu>"
 
-#: src/mainWindow.js:509
+#: src/mainWindow.js:510
 msgid "A map application for GNOME"
 msgstr "Térképalkalmazás a GNOME-hoz"
 
-#: src/mainWindow.js:520
+#: src/mainWindow.js:521
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 – 2019 Red Hat, Inc. és a GNOME Térképek szerzői"
 
-#: src/mainWindow.js:539
+#: src/mainWindow.js:541
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Térképadatok: %s és közreműködők"
@@ -914,20 +938,34 @@ msgstr "Térképadatok: %s és közreműködők"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:555
+#: src/mainWindow.js:557
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "A térképcsempéket a(z) %s szolgáltatja"
 
-#: src/mapView.js:358
+#. Translators: this is an attribution string giving credit to the
+#. * search provider where the first %s placeholder is replaced by either
+#. * the bare name of the geocoder provider, or a linkified URL if one
+#. * is available, and the second %s placeholder is replaced by the
+#. * URL to the geocoder project page. These placeholders
+#. * can be swapped, if needed using the %n$s positional syntax
+#. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
+#. * before the provider).
+#.
+#: src/mainWindow.js:586
+#, javascript-format
+msgid "Search provided by %s using %s"
+msgstr "A keresést a(z) %s biztosította %s használatával"
+
+#: src/mapView.js:374
 msgid "File type is not supported"
 msgstr "A fájltípus nem támogatott"
 
-#: src/mapView.js:365
+#: src/mapView.js:381
 msgid "Failed to open layer"
 msgstr "A réteg megnyitása nem sikerült"
 
-#: src/mapView.js:401
+#: src/mapView.js:417
 msgid "Failed to open GeoURI"
 msgstr "A GeoURI megnyitása nem sikerült"
 
@@ -1198,6 +1236,10 @@ msgstr "Válasszon egy típust"
 msgid "Done"
 msgstr "Kész"
 
+#: src/photonParser.js:103
+msgid "Unnamed place"
+msgstr "Névtelen hely"
+
 #: src/placeBubble.js:143
 msgid "Population:"
 msgstr "Népesség:"
@@ -1230,7 +1272,7 @@ msgstr "Kerekesszékes elérés:"
 msgid "Phone:"
 msgstr "Telefon:"
 
-#: src/placeEntry.js:186
+#: src/placeEntry.js:205
 msgid "Failed to parse Geo URI"
 msgstr "A Geo URI feldolgozása nem sikerült"
 
@@ -1240,7 +1282,7 @@ msgstr "A Geo URI feldolgozása nem sikerült"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/place.js:227 src/translations.js:329 src/translations.js:391
+#: src/place.js:268 src/translations.js:329 src/translations.js:391
 msgid "yes"
 msgstr "igen"
 
@@ -1249,7 +1291,7 @@ msgstr "igen"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/place.js:234
+#: src/place.js:275
 msgid "limited"
 msgstr "korlátozott"
 
@@ -1261,7 +1303,7 @@ msgstr "korlátozott"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/place.js:240 src/translations.js:335 src/translations.js:392
+#: src/place.js:281 src/translations.js:335 src/translations.js:392
 msgid "no"
 msgstr "nem"
 
@@ -1270,9 +1312,28 @@ msgstr "nem"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/place.js:247
+#: src/place.js:288
 msgid "designated"
 msgstr "kijelölt"
+
+#: src/place.js:475
+#| msgid "Edit on OpenStreetMap"
+msgid "Place not found in OpenStreetMap"
+msgstr "A hely nem található az OpenStreetMapen"
+
+#: src/place.js:495
+#| msgid "OpenStreetMap Account"
+msgid "OpenStreetMap URL is not valid"
+msgstr "Az OpenStreetMap URL nem érvényes"
+
+#: src/place.js:500
+msgid "Coordinates in URL are not valid"
+msgstr "Az URL-ben lévő koordináták nem érvényesek"
+
+#: src/place.js:521
+#| msgid "File type is not supported"
+msgid "URL is not supported"
+msgstr "Az URL nem támogatott"
 
 #: src/printLayout.js:312
 #, javascript-format
@@ -1306,9 +1367,22 @@ msgstr "Eltávolítás hely szerint"
 msgid "Reverse route"
 msgstr "Fordított útvonal"
 
-#: src/sendToDialog.js:175
+#. Translators: The first string is the name of the city, the
+#. second string is the name of the app to add it to
+#: src/sendToDialog.js:103
+#, javascript-format
+#| msgid "From %s to %s"
+msgid "Add %s to %s"
+msgstr "%s hozzáadása ehhez: %s"
+
+#: src/sendToDialog.js:201
 msgid "Failed to open URI"
 msgstr "Az URI megnyitása nem sikerült"
+
+#: src/sendToDialog.js:258
+#, javascript-format
+msgid "Open with %s"
+msgstr "Megnyitás %s használatával"
 
 #: src/shapeLayer.js:91
 msgid "failed to load file"
@@ -1592,50 +1666,50 @@ msgid "service"
 msgstr "szolgáltatás"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:219
+#: src/utils.js:220
 msgid "Unknown"
 msgstr "Ismeretlen"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:222
+#: src/utils.js:223
 msgid "Exact"
 msgstr "Pontos"
 
-#: src/utils.js:280
+#: src/utils.js:281
 #, javascript-format
 msgid "%f h"
 msgstr "%f óra"
 
-#: src/utils.js:282
+#: src/utils.js:283
 #, javascript-format
 msgid "%f min"
 msgstr "%f perc"
 
-#: src/utils.js:284
+#: src/utils.js:285
 #, javascript-format
 msgid "%f s"
 msgstr "%f mp"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:295
+#: src/utils.js:296
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:298
+#: src/utils.js:299
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:306
+#: src/utils.js:307
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:309
+#: src/utils.js:310
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
