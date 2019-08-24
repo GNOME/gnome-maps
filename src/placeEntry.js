@@ -57,6 +57,13 @@ var PlaceEntry = GObject.registerClass({
         if (!this._place && !p)
             return;
 
+        /* if this entry belongs to a routing query entry, don't notify when
+         * setting the same place, otherwise it will trigger twice when
+         * initiating from the context menu
+         */
+        if (!this._matchRoute && this._place && p && this._locEquals(this._place, p))
+            return;
+
         if (p) {
             if (p.name) {
                 this._placeText = p.name;
@@ -145,6 +152,14 @@ var PlaceEntry = GObject.registerClass({
                 this.place = null;
             this._previousSearch = null;
         }
+    }
+
+    _locEquals(placeA, placeB) {
+        if (!placeA.location || !placeB.location)
+            return false;
+
+        return (placeA.location.latitude === placeB.location.latitude &&
+                placeA.location.longitude === placeB.location.longitude);
     }
 
     _createPopover(numVisible, maxChars) {
