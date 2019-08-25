@@ -548,12 +548,12 @@ tile_loaded_cb (GFile        *file,
   ChamplainTile *tile = user_data->tile;
   CallbackData *data;
   ChamplainRenderer *renderer;
-  char *content;
+  guint8 *content;
   gsize length;
 
   g_slice_free (CallbackData, user_data);
 
-  if (!g_file_load_contents_finish (file, res, &content, &length, NULL, NULL))
+  if (!g_file_load_contents_finish (file, res, (char **) &content, &length, NULL, NULL))
     {
       goto load_next;
     }
