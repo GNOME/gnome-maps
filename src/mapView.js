@@ -496,8 +496,20 @@ var MapView = GObject.registerClass({
         let location = Application.settings.get('last-viewed-location');
 
         if (location.length === 2) {
-            this.view.zoom_level = Application.settings.get('zoom-level');
-            this.view.center_on(location[0], location[1]);
+            let [lat, lon] = location;
+            let zoom = Application.settings.get('zoom-level');
+
+            if (zoom >= this.view.min_zoom_level &&
+                zoom <= this.view.max_zoom_level)
+                this.view.zoom_level = Application.settings.get('zoom-level');
+            else
+                Utils.debug('Invalid initial zoom level: ' + zoom);
+
+            if (lat >= MIN_LATITUDE && lat <= MAX_LATITUDE &&
+                lon >= MIN_LONGITUDE && lon <= MAX_LONGITUDE)
+                this.view.center_on(location[0], location[1]);
+            else
+                Utils.debug('Invalid initial coordinates: ' + lat + ', ' + lon);
         } else {
             /* bounding box. for backwards compatibility, not used anymore */
             let bbox = new Champlain.BoundingBox({ top: location[0],
