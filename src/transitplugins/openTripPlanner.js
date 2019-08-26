@@ -128,8 +128,8 @@ var OpenTripPlanner = class OpenTripPlanner {
          * a download when first request
          */
         this._routersUpdatedTimestamp = 0;
-        this._query = params.query;
-        this._plan = new TransitPlan.Plan();
+        this._plan = Application.routingDelegator.transitRouter.plan;
+        this._query = Application.routeQuery;
         this._baseUrl = this._getBaseUrl();
         this._walkingRoutes = [];
         this._extendPrevious = false;
