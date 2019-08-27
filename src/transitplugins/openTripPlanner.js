@@ -612,7 +612,7 @@ var OpenTripPlanner = class OpenTripPlanner {
             this.plan.noMoreResults();
         } else {
             this._reset();
-            this.plan.error(_("No route found."));
+            this.plan.noRouteFound();
         }
     }
 
@@ -645,11 +645,11 @@ var OpenTripPlanner = class OpenTripPlanner {
 
                 } else {
                     this._reset();
-                    this.plan.error(_("No timetable data found for this route."));
+                    this.plan.noTimetable();
                 }
             } else {
                 this._reset();
-                this.plan.error(_("Route request failed."));
+                this.plan.requestFailed();
             }
         });
     }
