@@ -137,6 +137,18 @@ var Plan = GObject.registerClass({
         this.emit('error', msg);
     }
 
+    noRouteFound() {
+        this.emit('error', _("No route found."));
+    }
+
+    noTimetable() {
+        this.emit('error', _("No timetable data found for this route."));
+    }
+
+    requestFailed() {
+        this.emit('error', _("Route request failed."));
+    }
+
     _createBBox() {
         let bbox = new Champlain.BoundingBox();
         this._itineraries.forEach(function(itinerary) {
