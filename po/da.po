@@ -3,24 +3,21 @@
 # This file is distributed under the same license as the gnome-maps package.
 # Kris Thomsen <mail@kristhomsen.dk>, 2013.
 # Kenneth Nielsen <k.nielsen81@gmail.com>, 2014.
-# scootergrisen, 2015.
+# scootergrisen, 2015, 2019.
 # Ask Hjorth Larsen <asklarsen@gmail.com>, 2015, 16, 17, 18.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-03-26 17:04+0000\n"
-"PO-Revision-Date: 2019-02-13 11:43+0100\n"
-"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
+"POT-Creation-Date: 2019-07-12 12:37+0000\n"
+"PO-Revision-Date: 2019-07-17 23:41+0200\n"
+"Last-Translator: scootergrisen\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Language: da_DK\n"
-"X-Source-Language: C\n"
-"X-Generator: Poedit 2.0.6\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
 msgid "GNOME Maps"
@@ -60,6 +57,10 @@ msgstr ""
 "Street, Boston” eller “Hotels near Alexanderplatz, Berlin” (Dansk endnu ikke "
 "understøttet)."
 
+#: data/org.gnome.Maps.appdata.xml.in:59
+msgid "The GNOME Project"
+msgstr "GNOME-projektet"
+
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
 #. * template does not work anymore (maybe has something to do with
@@ -69,7 +70,7 @@ msgstr ""
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
-#: src/application.js:83 src/mainWindow.js:138 src/mainWindow.js:508
+#: src/application.js:81 src/mainWindow.js:139 src/mainWindow.js:509
 msgid "Maps"
 msgstr "Kort"
 
@@ -176,8 +177,8 @@ msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
 msgstr ""
-"Angiver om Foursquare skal poste din indtjekning som opdatering på "
-"Facebook-kontoen, der er tilknyttet denne Foursquare-konto."
+"Angiver om Foursquare skal poste din indtjekning som opdatering på Facebook-"
+"kontoen, der er tilknyttet denne Foursquare-konto."
 
 #: data/org.gnome.Maps.gschema.xml:62
 msgid "Foursquare check-in Twitter broadcasting"
@@ -188,7 +189,7 @@ msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
 msgstr ""
-"Angiver om Foursquare skal poste din indtjekning som tweet i Twitterkontoen, "
+"Angiver om Foursquare skal poste din indtjekning som tweet i Twitter-kontoen, "
 "der er tilknyttet denne Foursquare-konto."
 
 #: data/org.gnome.Maps.gschema.xml:67
@@ -217,7 +218,7 @@ msgid "Post on Twitter"
 msgstr "Post på Twitter"
 
 #: data/ui/check-in-dialog.ui:388 data/ui/export-view-dialog.ui:20
-#: data/ui/send-to-dialog.ui:21 data/ui/shape-layer-file-chooser.ui:22
+#: data/ui/send-to-dialog.ui:13 data/ui/shape-layer-file-chooser.ui:22
 msgid "_Cancel"
 msgstr "_Annullér"
 
@@ -282,7 +283,6 @@ msgstr "_Eksportér"
 msgid "Include route and markers"
 msgstr "Inkludér rute og markører"
 
-# Hmm.  Konteksten er ikke helt klar og kan ikke rigtig genenmskues fra kildefilen.
 #: data/ui/help-overlay.ui:14
 msgctxt "shortcut window"
 msgid "General"
@@ -301,7 +301,7 @@ msgstr "Søg"
 #: data/ui/help-overlay.ui:32
 msgctxt "shortcut window"
 msgid "Toggle route planner"
-msgstr "Slå ruteplan til eller fra"
+msgstr "Slå ruteplan til/fra"
 
 #: data/ui/help-overlay.ui:39
 msgctxt "shortcut window"
@@ -313,7 +313,6 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Afslut"
 
-# kunne også være kortoversigt eller noget andet
 #: data/ui/help-overlay.ui:55
 msgctxt "shortcut window"
 msgid "Map View"
@@ -407,7 +406,7 @@ msgstr "Zoom ind"
 #. Translators: This is a tooltip
 #: data/ui/main-window.ui:142
 msgid "Toggle route planner"
-msgstr "Slå ruteplan til eller fra"
+msgstr "Slå ruteplan til/fra"
 
 #. Translators: This is a tooltip
 #: data/ui/main-window.ui:163
@@ -442,8 +441,9 @@ msgstr "Føj til ny rute"
 
 #. Translators: This is a tooltip
 #: data/ui/map-bubble.ui:62
-msgid "Open with another application"
-msgstr "Åbn med andet program"
+#| msgid "Open location"
+msgid "Share location"
+msgstr "Del placering"
 
 #. Translators: This is a tooltip
 #: data/ui/map-bubble.ui:79
@@ -492,14 +492,12 @@ msgstr "Har du ikke en konto?"
 #: data/ui/osm-account-dialog.ui:159
 msgid ""
 "Sorry, that didn’t work. Please try again, or visit\n"
-"<a "
-"href=\"https://www.openstreetmap.org/user/forgot-password\">OpenStreetMap</a> "
-"to reset your password."
+"<a href=\"https://www.openstreetmap.org/user/forgot-password"
+"\">OpenStreetMap</a> to reset your password."
 msgstr ""
 "Beklager - det fungerede ikke. Prøv venligst igen eller besøg\n"
-"<a "
-"href=\"https://www.openstreetmap.org/user/forgot-password\">OpenStreetMap</a> "
-"for at nulstille din adgangskode."
+"<a href=\"https://www.openstreetmap.org/user/forgot-password"
+"\">OpenStreetMap</a> for at nulstille din adgangskode."
 
 #: data/ui/osm-account-dialog.ui:172
 msgid "The verification code didn’t match, please try again."
@@ -583,18 +581,14 @@ msgstr "Næste"
 #. Translators: This is a tooltip
 #: data/ui/place-bubble.ui:49
 msgid "Edit on OpenStreetMap"
-msgstr "Retigér på OpenStreetMap"
+msgstr "Redigér på OpenStreetMap"
 
 #. Translators: This is a tooltip
 #: data/ui/place-bubble.ui:73
 msgid "Show more information"
 msgstr "Vis flere oplysninger"
 
-#: data/ui/place-popover.ui:24
-msgid "Press enter to search"
-msgstr "Tryk enter for at søge"
-
-#: data/ui/place-popover.ui:72
+#: data/ui/place-popover.ui:54
 msgid "No results found"
 msgstr "Ingen resultater fundet"
 
@@ -603,17 +597,26 @@ msgstr "Ingen resultater fundet"
 msgid "Drag to change order of the route"
 msgstr "Træk for at ændre rækkefølge for ruten"
 
-#: data/ui/send-to-dialog.ui:15
-msgid "Open location"
+#: data/ui/send-to-dialog.ui:10
+#| msgid "Open location"
+msgid "Open Location"
 msgstr "Åbn placering"
 
-#: data/ui/send-to-dialog.ui:35 data/ui/shape-layer-file-chooser.ui:12
-msgid "_Open"
-msgstr "_Åbn"
+#: data/ui/send-to-dialog.ui:70
+msgid "Copy"
+msgstr "Kopiér"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:61
+#: data/ui/send-to-dialog.ui:76
+msgid "Send To…"
+msgstr "Send til …"
+
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:62
 msgid "Open Shape Layer"
 msgstr "Åbn formlag"
+
+#: data/ui/shape-layer-file-chooser.ui:12
+msgid "_Open"
+msgstr "_Åbn"
 
 # velsagtens af lag eller rute
 #. Translators: This is a tooltip
@@ -735,11 +738,11 @@ msgstr "Mangler nødvendige attributter"
 msgid "Could not find OSM element"
 msgstr "Kunne ikke finde OSM-element"
 
-#: src/application.js:96
+#: src/application.js:94
 msgid "A path to a local tiles directory structure"
 msgstr "En sti til en lokal flisemappestruktur"
 
-#: src/application.js:100
+#: src/application.js:98
 msgid "Show the version of the program"
 msgstr "Vis programmets version"
 
@@ -809,23 +812,23 @@ msgstr ""
 "Akkreditiverne er udløbet; åbn venligst Onlinekonti for at logge ind og slå "
 "denne konto til"
 
-#: src/contextMenu.js:98
+#: src/contextMenu.js:99
 msgid "Route from here"
 msgstr "Rute herfra"
 
-#: src/contextMenu.js:100
+#: src/contextMenu.js:101
 msgid "Add destination"
 msgstr "Tilføj destination"
 
-#: src/contextMenu.js:102
+#: src/contextMenu.js:103
 msgid "Route to here"
 msgstr "Rute hertil"
 
-#: src/contextMenu.js:131
+#: src/contextMenu.js:129
 msgid "Nothing found here!"
 msgstr "Intet fundet her!"
 
-#: src/contextMenu.js:192
+#: src/contextMenu.js:190
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -862,39 +865,39 @@ msgstr "Intet filnavn angivet"
 msgid "Unable to export view"
 msgstr "Kan ikke eksportere visning"
 
-#: src/geoJSONSource.js:98
+#: src/geoJSONSource.js:97
 msgid "invalid coordinate"
 msgstr "ugyldig koordinat"
 
-#: src/geoJSONSource.js:147 src/geoJSONSource.js:187 src/geoJSONSource.js:202
+#: src/geoJSONSource.js:146 src/geoJSONSource.js:186 src/geoJSONSource.js:201
 msgid "parse error"
 msgstr "fortolkerfejl"
 
-#: src/geoJSONSource.js:181
+#: src/geoJSONSource.js:180
 msgid "unknown geometry"
 msgstr "ukendt geometri"
 
-#: src/graphHopper.js:93 src/openTripPlanner.js:652
+#: src/graphHopper.js:112 src/openTripPlanner.js:652
 msgid "Route request failed."
 msgstr "Ruteforespørgsel fejlede."
 
-#: src/graphHopper.js:100 src/openTripPlanner.js:615
+#: src/graphHopper.js:119 src/openTripPlanner.js:615
 msgid "No route found."
 msgstr "Ingen rute fundet."
 
-#: src/graphHopper.js:188
+#: src/graphHopper.js:207
 msgid "Start!"
 msgstr "Start!"
 
-#: src/mainWindow.js:58
+#: src/mainWindow.js:59
 msgid "All Layer Files"
 msgstr "Alle lagfiler"
 
-#: src/mainWindow.js:441
+#: src/mainWindow.js:442
 msgid "Failed to connect to location service"
 msgstr "Kunne ikke forbinde til lokaliseringstjeneste"
 
-#: src/mainWindow.js:506
+#: src/mainWindow.js:507
 msgid "translator-credits"
 msgstr ""
 "Kris Thomsen\n"
@@ -906,15 +909,15 @@ msgstr ""
 "Websted http://dansk-gruppen.dk\n"
 "E-mail <dansk@dansk-gruppen.dk>"
 
-#: src/mainWindow.js:509
+#: src/mainWindow.js:510
 msgid "A map application for GNOME"
 msgstr "Et kortprogram til GNOME"
 
-#: src/mainWindow.js:520
+#: src/mainWindow.js:521
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Ophavsret © 2011 – 2019 Red Hat, Inc. og udviklerne af GNOME Kort"
 
-#: src/mainWindow.js:539
+#: src/mainWindow.js:541
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Kortdata af %s og bidragydere"
@@ -924,20 +927,34 @@ msgstr "Kortdata af %s og bidragydere"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:555
+#: src/mainWindow.js:557
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Kortfelter leveret af %s"
 
-#: src/mapView.js:358
+#. Translators: this is an attribution string giving credit to the
+#. * search provider where the first %s placeholder is replaced by either
+#. * the bare name of the geocoder provider, or a linkified URL if one
+#. * is available, and the second %s placeholder is replaced by the
+#. * URL to the geocoder project page. These placeholders
+#. * can be swapped, if needed using the %n$s positional syntax
+#. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
+#. * before the provider).
+#.
+#: src/mainWindow.js:586
+#, javascript-format
+msgid "Search provided by %s using %s"
+msgstr "Søgning leveret af %s med %s"
+
+#: src/mapView.js:359
 msgid "File type is not supported"
 msgstr "Filtypen understøttes ikke"
 
-#: src/mapView.js:365
+#: src/mapView.js:366
 msgid "Failed to open layer"
 msgstr "Kunne ikke åbne lag"
 
-#: src/mapView.js:401
+#: src/mapView.js:402
 msgid "Failed to open GeoURI"
 msgstr "Kunne ikke åbne GeoURI"
 
@@ -997,8 +1014,8 @@ msgstr "Webside"
 
 #: src/osmEditDialog.js:122
 msgid ""
-"The official website. Try to use the most basic form of a URL i.e. "
-"http://example.com instead of http://example.com/index.html."
+"The official website. Try to use the most basic form of a URL i.e. http://"
+"example.com instead of http://example.com/index.html."
 msgstr ""
 "Den officielle webside. Prøv at bruge den mest grundlæggende form, dvs. "
 "http://eksempel.dk i stedet for http://eksempel.dk/index.html."
@@ -1024,8 +1041,8 @@ msgid ""
 "The format used should include the language code and the article title like "
 "“en:Article title”."
 msgstr ""
-"Formatet bør inkludere sprogkoden og artiklens overskrift, f.eks. "
-"“da:Artikeloverskrift”"
+"Formatet bør inkludere sprogkoden og artiklens overskrift, f.eks. “da:"
+"Artikeloverskrift”"
 
 #: src/osmEditDialog.js:144
 msgid "Opening hours"
@@ -1215,6 +1232,10 @@ msgstr "Vælg type"
 msgid "Done"
 msgstr "Færdig"
 
+#: src/photonParser.js:103
+msgid "Unnamed place"
+msgstr "Unavngivet placering"
+
 #: src/placeBubble.js:143
 msgid "Population:"
 msgstr "Befolkning:"
@@ -1247,7 +1268,7 @@ msgstr "Rullestolsadgang:"
 msgid "Phone:"
 msgstr "Telefon:"
 
-#: src/placeEntry.js:186
+#: src/placeEntry.js:205
 msgid "Failed to parse Geo URI"
 msgstr "Fortolkning af Geo-URI mislykkedes"
 
@@ -1257,7 +1278,7 @@ msgstr "Fortolkning af Geo-URI mislykkedes"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/place.js:218 src/translations.js:329 src/translations.js:391
+#: src/place.js:268 src/translations.js:329 src/translations.js:391
 msgid "yes"
 msgstr "ja"
 
@@ -1266,7 +1287,7 @@ msgstr "ja"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/place.js:225
+#: src/place.js:275
 msgid "limited"
 msgstr "begrænset"
 
@@ -1278,7 +1299,7 @@ msgstr "begrænset"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/place.js:231 src/translations.js:335 src/translations.js:392
+#: src/place.js:281 src/translations.js:335 src/translations.js:392
 msgid "no"
 msgstr "nej"
 
@@ -1287,11 +1308,30 @@ msgstr "nej"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/place.js:238
+#: src/place.js:288
 msgid "designated"
 msgstr "handicap"
 
-#: src/printLayout.js:240
+#: src/place.js:475
+#| msgid "Edit on OpenStreetMap"
+msgid "Place not found in OpenStreetMap"
+msgstr "Placering ikke fundet i OpenStreetMap"
+
+#: src/place.js:495
+#| msgid "OpenStreetMap Account"
+msgid "OpenStreetMap URL is not valid"
+msgstr "OpenStreetMap-URL er ikke gyldig"
+
+#: src/place.js:500
+msgid "Coordinates in URL are not valid"
+msgstr "Koordinater i URL er ikke gyldige"
+
+#: src/place.js:521
+#| msgid "File type is not supported"
+msgid "URL is not supported"
+msgstr "URL understøttes ikke"
+
+#: src/printLayout.js:312
 #, javascript-format
 msgid "From %s to %s"
 msgstr "Fra %s til %s"
@@ -1323,9 +1363,22 @@ msgstr "Fjern via sted"
 msgid "Reverse route"
 msgstr "Vend ruten om"
 
-#: src/sendToDialog.js:175
+#. Translators: The first string is the name of the city, the
+#. second string is the name of the app to add it to
+#: src/sendToDialog.js:103
+#, javascript-format
+#| msgid "From %s to %s"
+msgid "Add %s to %s"
+msgstr "Tilføj %s til %s"
+
+#: src/sendToDialog.js:201
 msgid "Failed to open URI"
 msgstr "Kunne ikke åbne URI"
+
+#: src/sendToDialog.js:258
+#, javascript-format
+msgid "Open with %s"
+msgstr "Åbn med %s"
 
 #: src/shapeLayer.js:91
 msgid "failed to load file"
@@ -1337,22 +1390,10 @@ msgstr "kunne ikke indlæse fil"
 msgid "Estimated time: %s"
 msgstr "Anslået tid: %s"
 
-#. Translators: this a format string indicating arriving at the
-#. * destination of journey with the arrival address and transit
-#. * stop as the format parameter
-#: src/transitArrivalRow.js:54
-#, javascript-format
-msgid "Arrive at %s"
-msgstr "Ankomst %s"
-
-#: src/transitArrivalRow.js:56
-msgid "Arrive"
-msgstr "Ankomst"
-
 #. Translators: this is a format string indicating instructions
 #. * starting a journey at the address given as the parameter
 #.
-#: src/transitLegRow.js:71
+#: src/transit.js:37
 #, javascript-format
 msgid "Start at %s"
 msgstr "Starttidspunkt %s"
@@ -1361,25 +1402,37 @@ msgstr "Starttidspunkt %s"
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: src/transitLegRow.js:77
+#: src/transit.js:43
 msgid "Start"
 msgstr "Start"
-
-#: src/transitLegRow.js:106
-msgid "Show walking instructions"
-msgstr "Vis gangrute"
-
-#: src/transitLegRow.js:107
-msgid "Hide walking instructions"
-msgstr "Skjul gangrute"
 
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
 #.
-#: src/transitLegRow.js:132
+#: src/transit.js:61
 #, javascript-format
 msgid "Walk %s"
 msgstr "Gå %s"
+
+#. Translators: this a format string indicating arriving at the
+#. * destination of journey with the arrival address and transit
+#. * stop as the format parameter
+#: src/transit.js:75
+#, javascript-format
+msgid "Arrive at %s"
+msgstr "Ankomst %s"
+
+#: src/transit.js:77
+msgid "Arrive"
+msgstr "Ankomst"
+
+#: src/transitLegRow.js:88
+msgid "Show walking instructions"
+msgstr "Vis gangrute"
+
+#: src/transitLegRow.js:89
+msgid "Hide walking instructions"
+msgstr "Skjul gangrute"
 
 #: src/transitMoreRow.js:39
 msgid "Load earlier alternatives"
@@ -1610,53 +1663,59 @@ msgid "service"
 msgstr "tjeneste"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:227
+#: src/utils.js:220
 msgid "Unknown"
 msgstr "Ukendt"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:230
+#: src/utils.js:223
 msgid "Exact"
 msgstr "Præcis"
 
-#: src/utils.js:288
+#: src/utils.js:281
 #, javascript-format
 msgid "%f h"
 msgstr "%f t"
 
-#: src/utils.js:290
+#: src/utils.js:283
 #, javascript-format
 msgid "%f min"
 msgstr "%f min"
 
-#: src/utils.js:292
+#: src/utils.js:285
 #, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:303
+#: src/utils.js:296
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:306
+#: src/utils.js:299
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:314
+#: src/utils.js:307
 #, javascript-format
 msgid "%s mi"
 msgstr "%s miles"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:317
+#: src/utils.js:310
 #, javascript-format
 msgid "%s ft"
 msgstr "%s fod"
+
+#~ msgid "Open with another application"
+#~ msgstr "Åbn med andet program"
+
+#~ msgid "Press enter to search"
+#~ msgstr "Tryk enter for at søge"
 
 #~ msgid "org.gnome.Maps"
 #~ msgstr "org.gnome.Maps"
@@ -1690,4 +1749,3 @@ msgstr "%s fod"
 
 #~ msgid "Country code: %s"
 #~ msgstr "Landekode: %s"
-
