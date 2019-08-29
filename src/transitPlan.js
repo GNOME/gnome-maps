@@ -167,6 +167,10 @@ var Plan = GObject.registerClass({
         this.emit('error', _("Route request failed."));
     }
 
+    noProvider() {
+        this.emit('error', _("No provider found for this route."));
+    }
+
     _createBBox() {
         let bbox = new Champlain.BoundingBox();
         this._itineraries.forEach(function(itinerary) {
