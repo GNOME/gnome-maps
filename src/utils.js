@@ -213,6 +213,15 @@ function getMeasurementSystem() {
     return measurementSystem;
 }
 
+/**
+ * Get the higest priority bare lange currently in use.
+ */
+function getLanguage() {
+    let locale = GLib.get_language_names()[0];
+    // the last item returned is the "bare" language
+    return GLib.get_locale_variants(locale).slice(-1)[0];
+}
+
 function getAccuracyDescription(accuracy) {
     switch(accuracy) {
     case Geocode.LOCATION_ACCURACY_UNKNOWN:
