@@ -149,9 +149,7 @@ var PhotonGeocode = class {
 
     _readService() {
         let photon = Service.getService().photonGeocode;
-        let locale = GLib.get_language_names()[0];
-        // the last item returned is the "bare" language
-        let language = GLib.get_locale_variants(locale).slice(-1)[0];
+        let language = Utils.getLanguage();
         let supportedLanguages;
 
         if (photon) {
