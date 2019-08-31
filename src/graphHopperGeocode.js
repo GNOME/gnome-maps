@@ -144,9 +144,7 @@ var GraphHopperGeocode = class {
 
     _readService() {
         let graphHopperGeocode = Service.getService().graphHopperGeocode;
-        let locale = GLib.get_language_names()[0];
-        // the last item returned is the "bare" language
-        this._language = GLib.get_locale_variants(locale).slice(-1)[0];
+        this._language = Utils.getLanguage();
 
         if (graphHopperGeocode) {
             this._baseUrl = graphHopperGeocode.baseUrl;
