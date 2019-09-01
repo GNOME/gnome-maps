@@ -147,12 +147,12 @@ var Sidebar = GObject.registerClass({
     _switchRoutingMode(mode) {
         if (mode === RouteQuery.Transportation.TRANSIT) {
             Application.routingDelegator.useTransit = true;
-            this._linkButtonStack.visible_child_name = 'openTripPlanner';
+            this._linkButtonStack.visible_child_name = 'transit';
             this._transitOptionsPanel.reset();
             this._transitRevealer.reveal_child = true;
         } else {
             Application.routingDelegator.useTransit = false;
-            this._linkButtonStack.visible_child_name = 'graphHopper';
+            this._linkButtonStack.visible_child_name = 'turnByTurn';
             this._transitRevealer.reveal_child = false;
             Application.routingDelegator.transitRouter.plan.deselectItinerary();
         }
