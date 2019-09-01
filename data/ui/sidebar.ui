@@ -271,7 +271,7 @@
         <child>
           <object class="GtkStack" id="linkButtonStack">
             <child>
-              <object class="GtkLinkButton" id="graphHopperLinkButton">
+              <object class="GtkLinkButton">
                 <property name="label" translatable="yes">Route search by GraphHopper</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -284,7 +284,7 @@
                 </style>
               </object>
               <packing>
-                <property name="name">graphHopper</property>
+                <property name="name">turnByTurn</property>
               </packing>
             </child>
             <child>
@@ -292,7 +292,7 @@
                 <property name="visible">True</property>
                 <property name="halign">GTK_ALIGN_END</property>
                 <child>
-                  <object class="GtkLinkButton" id="openTripPlannerLinkButton">
+                  <object class="GtkLinkButton">
                     <property name="label" translatable="yes">Route search by OpenTripPlanner</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
@@ -346,7 +346,7 @@
                 </child>
               </object>
               <packing>
-                <property name="name">openTripPlanner</property>
+                <property name="name">transit</property>
               </packing>
             </child>
           </object>
