@@ -64,7 +64,8 @@ var Sidebar = GObject.registerClass({
                         'transitItineraryListBox',
                         'transitItineraryBackButton',
                         'transitItineraryTimeLabel',
-                        'transitItineraryDurationLabel']
+                        'transitItineraryDurationLabel',
+                        'transitAttributionLabel']
 }, class Sidebar extends Gtk.Revealer {
 
     _init(mapView) {
@@ -232,6 +233,7 @@ var Sidebar = GObject.registerClass({
             /* don't remove query points as with the turn-based routing,
              * since we might get "no route" because of the time selected
              * and so on */
+            this._transitAttributionLabel.label = '';
         });
 
         transitPlan.connect('no-more-results', () => {
@@ -248,6 +250,7 @@ var Sidebar = GObject.registerClass({
                 if (this._query.transportation === RouteQuery.Transportation.TRANSIT) {
                     this._clearTransitOverview();
                     this._showTransitOverview();
+                    this._transitAttributionLabel.label = '';
                 } else {
                     this._clearInstructions();
                 }
@@ -300,6 +303,7 @@ var Sidebar = GObject.registerClass({
         });
 
         transitPlan.connect('update', () => {
+            this._updateTransitAttribution();
             this._clearTransitOverview();
             this._showTransitOverview();
             this._populateTransitItineraryOverview();
@@ -338,6 +342,24 @@ var Sidebar = GObject.registerClass({
     _clearTransitItinerary() {
         let listBox = this._transitItineraryListBox;
         listBox.forall(listBox.remove.bind(listBox));
+    }
+
+    _updateTransitAttribution() {
+        let plan = Application.routingDelegator.transitRouter.plan;
+
+        if (plan.attribution) {
+            let attributionLabel =
+                _("Itineraries provided by %s").format(plan.attribution);
+            if (plan.attributionUrl) {
+                this._transitAttributionLabel.label =
+                    '<a href="%s">%s</a>'.format([plan.attributionUrl],
+                                                 attributionLabel);
+            } else {
+                this._transitAttributionLabel.label = attributionLabel;
+            }
+        } else {
+            this._transitAttributionLabel.label = '';
+        }
     }
 
     _showTransitOverview() {
