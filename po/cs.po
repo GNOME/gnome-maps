@@ -7,16 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-08-02 06:11+0000\n"
-"PO-Revision-Date: 2019-08-14 15:36+0200\n"
-"Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
+"POT-Creation-Date: 2019-09-01 21:38+0000\n"
+"PO-Revision-Date: 2019-09-02 01:51+0200\n"
+"Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-DamnedLies-Scope: partial\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
 msgid "GNOME Maps"
@@ -68,7 +69,7 @@ msgstr "Projekt GNOME"
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
-#: src/application.js:81 src/mainWindow.js:139 src/mainWindow.js:509
+#: src/application.js:81 src/mainWindow.js:139 src/mainWindow.js:513
 msgid "Maps"
 msgstr "Mapy"
 
@@ -93,24 +94,9 @@ msgstr "Poslední zobrazené místo"
 msgid "Coordinates of last viewed location."
 msgstr "Souřadnice naposledy zobrazeného místa."
 
-#: data/org.gnome.Maps.gschema.xml:16
-msgid "zoom"
-msgstr ""
-
-#: data/org.gnome.Maps.gschema.xml:17
-msgid "Zoom level"
-msgstr ""
-
 #: data/org.gnome.Maps.gschema.xml:21
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Map View"
 msgid "Map type"
-msgstr "Zobrazení mapy"
-
-#: data/org.gnome.Maps.gschema.xml:22
-msgid "The type of map to display (street, aerial, etc.)"
-msgstr ""
+msgstr "Typ mapy"
 
 #: data/org.gnome.Maps.gschema.xml:26
 msgid "Window size"
@@ -460,10 +446,8 @@ msgstr "Přidat novou trasu"
 
 #. Translators: This is a tooltip
 #: data/ui/map-bubble.ui:62
-#, fuzzy
-#| msgid "Open location"
 msgid "Share location"
-msgstr "Otevřít místo"
+msgstr "Sdílet místo"
 
 #. Translators: This is a tooltip
 #: data/ui/map-bubble.ui:79
@@ -617,18 +601,16 @@ msgid "Drag to change order of the route"
 msgstr "Posloupnost trasy můžete změnit přetažením"
 
 #: data/ui/send-to-dialog.ui:10
-#, fuzzy
-#| msgid "Open location"
 msgid "Open Location"
 msgstr "Otevřít místo"
 
 #: data/ui/send-to-dialog.ui:70
 msgid "Copy"
-msgstr ""
+msgstr "Kopírovat"
 
 #: data/ui/send-to-dialog.ui:76
 msgid "Send To…"
-msgstr ""
+msgstr "Poslat do…"
 
 #: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:62
 msgid "Open Shape Layer"
@@ -909,23 +891,23 @@ msgstr "Start!"
 msgid "All Layer Files"
 msgstr "Všechny soubory s vrstvami"
 
-#: src/mainWindow.js:442
+#: src/mainWindow.js:446
 msgid "Failed to connect to location service"
 msgstr "Selhalo připojení ke geolokační službě"
 
-#: src/mainWindow.js:507
+#: src/mainWindow.js:511
 msgid "translator-credits"
 msgstr "Marek Černocký <marek@manet.cz>"
 
-#: src/mainWindow.js:510
+#: src/mainWindow.js:514
 msgid "A map application for GNOME"
 msgstr "Mapová aplikace pro GNOME"
 
-#: src/mainWindow.js:521
+#: src/mainWindow.js:525
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 - 2019 Red Hat, Inc. a autoři Map GNOME"
 
-#: src/mainWindow.js:541
+#: src/mainWindow.js:545
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Mapová data od %s a přispěvatelů"
@@ -935,7 +917,7 @@ msgstr "Mapová data od %s a přispěvatelů"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:557
+#: src/mainWindow.js:561
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Mapové dlaždice poskytuje %s"
@@ -949,10 +931,10 @@ msgstr "Mapové dlaždice poskytuje %s"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:586
+#: src/mainWindow.js:590
 #, javascript-format
 msgid "Search provided by %s using %s"
-msgstr ""
+msgstr "Hledání zprostředkuje %s pomocí %s"
 
 #: src/mapView.js:374
 msgid "File type is not supported"
@@ -1236,7 +1218,7 @@ msgstr "Hotovo"
 
 #: src/photonParser.js:103
 msgid "Unnamed place"
-msgstr ""
+msgstr "Místo bez názvu"
 
 #: src/placeBubble.js:143
 msgid "Population:"
@@ -1270,7 +1252,7 @@ msgstr "Bezbariérový přístup:"
 msgid "Phone:"
 msgstr "Telefon:"
 
-#: src/placeEntry.js:205
+#: src/placeEntry.js:209
 msgid "Failed to parse Geo URI"
 msgstr "Selhalo zpracování adresy GeoURI"
 
@@ -1315,26 +1297,20 @@ msgid "designated"
 msgstr "výslovně ano"
 
 #: src/place.js:475
-#, fuzzy
-#| msgid "Edit on OpenStreetMap"
 msgid "Place not found in OpenStreetMap"
-msgstr "Úpravy v OpenStreetMap"
+msgstr "Místo nebylo v OpenStreetMap nalezeno"
 
 #: src/place.js:495
-#, fuzzy
-#| msgid "OpenStreetMap Account"
 msgid "OpenStreetMap URL is not valid"
-msgstr "Účet na OpenStreetMap"
+msgstr "Adresa URL do OpenStreetMap není platná"
 
 #: src/place.js:500
 msgid "Coordinates in URL are not valid"
-msgstr ""
+msgstr "Souřadnice v adrese URL nejsou platné"
 
 #: src/place.js:521
-#, fuzzy
-#| msgid "File type is not supported"
 msgid "URL is not supported"
-msgstr "Typ souboru není podporován"
+msgstr "Tato adreasa URL není podporovaná"
 
 #: src/printLayout.js:312
 #, javascript-format
@@ -1371,10 +1347,9 @@ msgstr "Otočit trasu"
 #. Translators: The first string is the name of the city, the
 #. second string is the name of the app to add it to
 #: src/sendToDialog.js:103
-#, fuzzy, javascript-format
-#| msgid "From %s to %s"
+#, javascript-format
 msgid "Add %s to %s"
-msgstr "Od %s do %s"
+msgstr "Přidat %s do %s"
 
 #: src/sendToDialog.js:201
 msgid "Failed to open URI"
@@ -1383,7 +1358,7 @@ msgstr "Selhalo otevření adresy URI"
 #: src/sendToDialog.js:258
 #, javascript-format
 msgid "Open with %s"
-msgstr ""
+msgstr "Otevřít pomocí %s"
 
 #: src/shapeLayer.js:91
 msgid "failed to load file"
@@ -1717,12 +1692,3 @@ msgstr "%s mi"
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
-
-#~ msgid "org.gnome.Maps"
-#~ msgstr "org.gnome.Maps"
-
-#~ msgid "Open with another application"
-#~ msgstr "Otevřít pomocí jiné aplikace"
-
-#~ msgid "Press enter to search"
-#~ msgstr "Zmáčknutím Enter se začne hledat"
