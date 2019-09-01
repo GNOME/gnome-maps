@@ -292,16 +292,11 @@
                 <property name="visible">True</property>
                 <property name="halign">GTK_ALIGN_END</property>
                 <child>
-                  <object class="GtkLinkButton">
-                    <property name="label" translatable="yes">Route search by OpenTripPlanner</property>
+                  <object class="GtkLabel" id="transitAttributionLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="use_action_appearance">False</property>
-                    <property name="relief">none</property>
-                    <!-- opentripplanner.org uses an SSL cert only valid for github
-                         domains... -->
-                    <property name="uri">http://www.opentripplanner.org</property>
+                    <property name="use_markup">True</property>
                     <style>
                       <class name="small-label"/>
                     </style>
