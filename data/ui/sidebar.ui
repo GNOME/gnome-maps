@@ -309,7 +309,7 @@
                 <child>
                   <object class="GtkMenuButton">
                     <property name="visible">True</property>
-                    <property name="popover">openTripPlannerDisclaimerPopover</property>
+                    <property name="popover">transitDisclaimerPopover</property>
                     <property name="halign">GTK_ALIGN_END</property>
                     <property name="margin-top">5</property>
                     <property name="margin-bottom">5</property>
@@ -349,7 +349,7 @@
       </object>
     </child>
   </template>
-  <object class="GtkPopover" id="openTripPlannerDisclaimerPopover">
+  <object class="GtkPopover" id="transitDisclaimerPopover">
     <property name="visible">False</property>
     <child>
       <object class="GtkGrid">
@@ -361,9 +361,8 @@
             <property name="margin-bottom">5</property>
             <property name="margin-start">5</property>
             <property name="margin-end">5</property>
-            <property name="label" translatable="yes">Routing itineraries for public transit is provided by GNOME
-using timetable data obtained from transit companies or agencies.
-The companies and agencies can not be held responsible for the results shown.
+            <property name="label" translatable="yes">Routing itineraries for public transit is provided by third-party
+services.
 GNOME can not guarantee correctness of the itineraries and schedules shown.
 Names and brands shown are to be considered as registered trademarks when applicable.</property>
           </object>
