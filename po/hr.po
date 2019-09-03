@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-07-12 12:37+0000\n"
-"PO-Revision-Date: 2019-07-19 23:54+0200\n"
+"POT-Creation-Date: 2019-08-27 20:37+0000\n"
+"PO-Revision-Date: 2019-09-03 18:46+0200\n"
 "Last-Translator: gogo <linux.hr@protonmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
@@ -69,7 +69,7 @@ msgstr "GNOME projekt"
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
-#: src/application.js:81 src/mainWindow.js:139 src/mainWindow.js:509
+#: src/application.js:81 src/mainWindow.js:139 src/mainWindow.js:513
 msgid "Maps"
 msgstr "Karte"
 
@@ -95,59 +95,75 @@ msgid "Coordinates of last viewed location."
 msgstr "Koordinate posljednje pogledane lokacije."
 
 #: data/org.gnome.Maps.gschema.xml:16
+msgid "zoom"
+msgstr "uvećanje"
+
+#: data/org.gnome.Maps.gschema.xml:17
+msgid "Zoom level"
+msgstr "Razina uvećanja"
+
+#: data/org.gnome.Maps.gschema.xml:21
+msgid "Map type"
+msgstr "Vrsta karte"
+
+#: data/org.gnome.Maps.gschema.xml:22
+msgid "The type of map to display (street, aerial, etc.)"
+msgstr "Vrsta prikazane karte (ulice, područje, itd.)"
+
+#: data/org.gnome.Maps.gschema.xml:26
 msgid "Window size"
 msgstr "Veličina prozora"
 
-#: data/org.gnome.Maps.gschema.xml:17
+#: data/org.gnome.Maps.gschema.xml:27
 msgid "Window size (width and height)."
 msgstr "Veličina prozora (širina i visina)."
 
-#: data/org.gnome.Maps.gschema.xml:21
+#: data/org.gnome.Maps.gschema.xml:31
 msgid "Window position"
 msgstr "Položaj prozora"
 
-#: data/org.gnome.Maps.gschema.xml:22
+#: data/org.gnome.Maps.gschema.xml:32
 msgid "Window position (X and Y)."
 msgstr "Položaj prozora (x-os i y-os)"
 
-#: data/org.gnome.Maps.gschema.xml:26
+#: data/org.gnome.Maps.gschema.xml:36
 msgid "Window maximized"
 msgstr "Prozor uvećan"
 
-#: data/org.gnome.Maps.gschema.xml:27
+#: data/org.gnome.Maps.gschema.xml:37
 msgid "Window maximization state"
 msgstr "Stanje uvećanja prozora"
 
-#: data/org.gnome.Maps.gschema.xml:31
+#: data/org.gnome.Maps.gschema.xml:41
 msgid "Maximum number of search results"
 msgstr "Najveći broj rezultata pretrage"
 
-#: data/org.gnome.Maps.gschema.xml:32
+#: data/org.gnome.Maps.gschema.xml:42
 msgid "Maximum number of search results from geocode search."
 msgstr "Najveći broj rezultata pretrage iz geokôd pretrage."
 
-#: data/org.gnome.Maps.gschema.xml:36
+#: data/org.gnome.Maps.gschema.xml:46
 msgid "Number of recent places to store"
 msgstr "Broj nedavnih mjesta za spremanje"
 
-#: data/org.gnome.Maps.gschema.xml:37
+#: data/org.gnome.Maps.gschema.xml:47
 msgid "Number of recently visited places to store."
 msgstr "Broj nedavno posjećenih mjesta za spremanje."
 
-#: data/org.gnome.Maps.gschema.xml:41
+#: data/org.gnome.Maps.gschema.xml:51
 msgid "Number of recent routes to store"
 msgstr "Broj nedavnih ruta za spremanje"
 
-#: data/org.gnome.Maps.gschema.xml:42
+#: data/org.gnome.Maps.gschema.xml:52
 msgid "Number of recently visited routes to store."
 msgstr "Broj nedavno posjećenih ruta za spremanje."
 
-#: data/org.gnome.Maps.gschema.xml:46
+#: data/org.gnome.Maps.gschema.xml:56
 msgid "Facebook check-in privacy setting"
 msgstr "Postavke privatnosti Facebook provjere"
 
 #. Translators: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS, and SELF are constant names, and should not be translated
-#: data/org.gnome.Maps.gschema.xml:48
+#: data/org.gnome.Maps.gschema.xml:58
 msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
@@ -155,11 +171,11 @@ msgstr ""
 "Posljednje korištene postavke privatnosti Facebook provjere. Moguće "
 "vrijednosti su: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS ili SELF."
 
-#: data/org.gnome.Maps.gschema.xml:52
+#: data/org.gnome.Maps.gschema.xml:62
 msgid "Foursquare check-in privacy setting"
 msgstr "Postavke privatnosti Foursquare provjere"
 
-#: data/org.gnome.Maps.gschema.xml:53
+#: data/org.gnome.Maps.gschema.xml:63
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
@@ -167,11 +183,11 @@ msgstr ""
 "Posljednje korištene postavke privatnosti Foursquare provjere. Moguće "
 "vrijednosti su: public, followers ili private."
 
-#: data/org.gnome.Maps.gschema.xml:57
+#: data/org.gnome.Maps.gschema.xml:67
 msgid "Foursquare check-in Facebook broadcasting"
 msgstr "Foursquare emitira provjeru na Facebook"
 
-#: data/org.gnome.Maps.gschema.xml:58
+#: data/org.gnome.Maps.gschema.xml:68
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
@@ -179,11 +195,11 @@ msgstr ""
 "Označava treba li Foursquare emitirati provjeru kao objavu na Facebook "
 "računu pridruženu s Foursquare računom."
 
-#: data/org.gnome.Maps.gschema.xml:62
+#: data/org.gnome.Maps.gschema.xml:72
 msgid "Foursquare check-in Twitter broadcasting"
 msgstr "Foursquare emitira provjeru na Twitter"
 
-#: data/org.gnome.Maps.gschema.xml:63
+#: data/org.gnome.Maps.gschema.xml:73
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
@@ -191,16 +207,16 @@ msgstr ""
 "Označava treba li Foursquare emitirati provjeru kao objavu na Twitter računu "
 "pridruženu s Foursquare računom."
 
-#: data/org.gnome.Maps.gschema.xml:67
+#: data/org.gnome.Maps.gschema.xml:77
 msgid "OpenStreetMap username or e-mail address"
 msgstr "OpenStreetMap korisničko ime ili adresa e-pošte"
 
-#: data/org.gnome.Maps.gschema.xml:68
+#: data/org.gnome.Maps.gschema.xml:78
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr ""
 "Označava je li se korisnik prijavio za uređivanje OpenStreetMap karata."
 
-#: data/org.gnome.Maps.gschema.xml:72
+#: data/org.gnome.Maps.gschema.xml:82
 msgid "Last used transportation type for routing"
 msgstr "Posljednja korištena vrsta prijevoza za određivanje rute"
 
@@ -886,23 +902,23 @@ msgstr "Kreni!"
 msgid "All Layer Files"
 msgstr "Sve datoteke sloja"
 
-#: src/mainWindow.js:442
+#: src/mainWindow.js:446
 msgid "Failed to connect to location service"
 msgstr "Neuspjelo povezivanje s uslugom lociranja"
 
-#: src/mainWindow.js:507
+#: src/mainWindow.js:511
 msgid "translator-credits"
 msgstr "gogo https://launchpad.net/~trebelnik-stefina"
 
-#: src/mainWindow.js:510
+#: src/mainWindow.js:514
 msgid "A map application for GNOME"
 msgstr "Aplikacija karata za GNOME"
 
-#: src/mainWindow.js:521
+#: src/mainWindow.js:525
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Autorsko pravo © 2011 – 2019 Red Hat, Inc. i autori GNOME karta"
 
-#: src/mainWindow.js:541
+#: src/mainWindow.js:545
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Podatke karte omogućili %s i doprinositelji"
@@ -912,7 +928,7 @@ msgstr "Podatke karte omogućili %s i doprinositelji"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:557
+#: src/mainWindow.js:561
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Blokove karte je omogućio %s"
@@ -926,20 +942,20 @@ msgstr "Blokove karte je omogućio %s"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:586
+#: src/mainWindow.js:590
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Pretragu je omogućio %s koristeći %s"
 
-#: src/mapView.js:359
+#: src/mapView.js:374
 msgid "File type is not supported"
 msgstr "Vrsta datoteke nije podržana"
 
-#: src/mapView.js:366
+#: src/mapView.js:381
 msgid "Failed to open layer"
 msgstr "Neuspjelo otvaranje sloja"
 
-#: src/mapView.js:402
+#: src/mapView.js:417
 msgid "Failed to open GeoURI"
 msgstr "Neuspjelo otvaranje GeoURI-ja"
 
@@ -1247,7 +1263,7 @@ msgstr "Pristup za invalidska kolica:"
 msgid "Phone:"
 msgstr "Telefon:"
 
-#: src/placeEntry.js:205
+#: src/placeEntry.js:209
 msgid "Failed to parse Geo URI"
 msgstr "Neuspješna obrada Geo URI-ja"
 
