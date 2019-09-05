@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-07-12 12:37+0000\n"
-"PO-Revision-Date: 2019-07-22 00:46-0300\n"
+"POT-Creation-Date: 2019-08-27 20:37+0000\n"
+"PO-Revision-Date: 2019-09-05 03:14-0300\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -82,7 +82,7 @@ msgstr "O Projeto GNOME"
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
-#: src/application.js:81 src/mainWindow.js:139 src/mainWindow.js:509
+#: src/application.js:81 src/mainWindow.js:139 src/mainWindow.js:513
 msgid "Maps"
 msgstr "Mapas"
 
@@ -108,59 +108,77 @@ msgid "Coordinates of last viewed location."
 msgstr "Coordenadas do última localização vista."
 
 #: data/org.gnome.Maps.gschema.xml:16
+msgid "zoom"
+msgstr "ampliação"
+
+#: data/org.gnome.Maps.gschema.xml:17
+msgid "Zoom level"
+msgstr "Nível de ampliação"
+
+#: data/org.gnome.Maps.gschema.xml:21
+#| msgctxt "shortcut window"
+#| msgid "Map View"
+msgid "Map type"
+msgstr "Tipo do mapa"
+
+#: data/org.gnome.Maps.gschema.xml:22
+msgid "The type of map to display (street, aerial, etc.)"
+msgstr "O tipo do mapa para exibir (rual, aérea, etc.)"
+
+#: data/org.gnome.Maps.gschema.xml:26
 msgid "Window size"
 msgstr "Tamanho da janela"
 
-#: data/org.gnome.Maps.gschema.xml:17
+#: data/org.gnome.Maps.gschema.xml:27
 msgid "Window size (width and height)."
 msgstr "Tamanho da janela (largura e altura)."
 
-#: data/org.gnome.Maps.gschema.xml:21
+#: data/org.gnome.Maps.gschema.xml:31
 msgid "Window position"
 msgstr "Posição da janela"
 
-#: data/org.gnome.Maps.gschema.xml:22
+#: data/org.gnome.Maps.gschema.xml:32
 msgid "Window position (X and Y)."
 msgstr "A posição da janela (X e Y)."
 
-#: data/org.gnome.Maps.gschema.xml:26
+#: data/org.gnome.Maps.gschema.xml:36
 msgid "Window maximized"
 msgstr "Janela maximizada"
 
-#: data/org.gnome.Maps.gschema.xml:27
+#: data/org.gnome.Maps.gschema.xml:37
 msgid "Window maximization state"
 msgstr "O estado de janela maximizada"
 
-#: data/org.gnome.Maps.gschema.xml:31
+#: data/org.gnome.Maps.gschema.xml:41
 msgid "Maximum number of search results"
 msgstr "Número máximo de resultados de pesquisa"
 
-#: data/org.gnome.Maps.gschema.xml:32
+#: data/org.gnome.Maps.gschema.xml:42
 msgid "Maximum number of search results from geocode search."
 msgstr "Número máximo de resultados da pesquisa por geocódigo."
 
-#: data/org.gnome.Maps.gschema.xml:36
+#: data/org.gnome.Maps.gschema.xml:46
 msgid "Number of recent places to store"
 msgstr "Número de lugares recentes para armazenar"
 
-#: data/org.gnome.Maps.gschema.xml:37
+#: data/org.gnome.Maps.gschema.xml:47
 msgid "Number of recently visited places to store."
 msgstr "Número de lugares visitados recentemente para armazenar."
 
-#: data/org.gnome.Maps.gschema.xml:41
+#: data/org.gnome.Maps.gschema.xml:51
 msgid "Number of recent routes to store"
 msgstr "Número de rotas recentes para armazenar"
 
-#: data/org.gnome.Maps.gschema.xml:42
+#: data/org.gnome.Maps.gschema.xml:52
 msgid "Number of recently visited routes to store."
 msgstr "Número de rotas visitadas recentemente para armazenar."
 
-#: data/org.gnome.Maps.gschema.xml:46
+#: data/org.gnome.Maps.gschema.xml:56
 msgid "Facebook check-in privacy setting"
 msgstr "Configurações de privacidade de check-in do Facebook"
 
 #. Translators: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS, and SELF are constant names, and should not be translated
-#: data/org.gnome.Maps.gschema.xml:48
+#: data/org.gnome.Maps.gschema.xml:58
 msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
@@ -168,11 +186,11 @@ msgstr ""
 "Ultima configuração de privacidade de check-in usada no Facebook. Valores "
 "possíveis são: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS ou SELF."
 
-#: data/org.gnome.Maps.gschema.xml:52
+#: data/org.gnome.Maps.gschema.xml:62
 msgid "Foursquare check-in privacy setting"
 msgstr "Configurações de privacidade de check-in do quadrante"
 
-#: data/org.gnome.Maps.gschema.xml:53
+#: data/org.gnome.Maps.gschema.xml:63
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
@@ -180,11 +198,11 @@ msgstr ""
 "Ultima configuração de privacidade de check-in do quadrante usada. Valores "
 "possíveis são: público, seguidores ou privado."
 
-#: data/org.gnome.Maps.gschema.xml:57
+#: data/org.gnome.Maps.gschema.xml:67
 msgid "Foursquare check-in Facebook broadcasting"
 msgstr "Publicação no Facebook de check-in no Foursquare"
 
-#: data/org.gnome.Maps.gschema.xml:58
+#: data/org.gnome.Maps.gschema.xml:68
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
@@ -192,11 +210,11 @@ msgstr ""
 "Indica se Foursquare deveria publicar o check-in como um postagem na conta "
 "Facebook associada com a conta Foursquare."
 
-#: data/org.gnome.Maps.gschema.xml:62
+#: data/org.gnome.Maps.gschema.xml:72
 msgid "Foursquare check-in Twitter broadcasting"
 msgstr "Publicação no Twitter de check-in no Foursquare"
 
-#: data/org.gnome.Maps.gschema.xml:63
+#: data/org.gnome.Maps.gschema.xml:73
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
@@ -204,15 +222,15 @@ msgstr ""
 "Indica se Foursquare deveria publicar o check-in como um tweet na conta "
 "Twitter associada com a conta Foursquare."
 
-#: data/org.gnome.Maps.gschema.xml:67
+#: data/org.gnome.Maps.gschema.xml:77
 msgid "OpenStreetMap username or e-mail address"
 msgstr "Nome de usuário do OpenStreetMap ou endereço de e-mail"
 
-#: data/org.gnome.Maps.gschema.xml:68
+#: data/org.gnome.Maps.gschema.xml:78
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr "Indica se o usuário ingressou para editar dados do OpenStreetMap."
 
-#: data/org.gnome.Maps.gschema.xml:72
+#: data/org.gnome.Maps.gschema.xml:82
 msgid "Last used transportation type for routing"
 msgstr "Último tipo de transporte usado para rotas"
 
@@ -452,7 +470,6 @@ msgstr "Adicionar à nova rota"
 
 #. Translators: This is a tooltip
 #: data/ui/map-bubble.ui:62
-#| msgid "Open location"
 msgid "Share location"
 msgstr "Compartilhar localização"
 
@@ -608,7 +625,6 @@ msgid "Drag to change order of the route"
 msgstr "Arraste para alterar a ordem da rota"
 
 #: data/ui/send-to-dialog.ui:10
-#| msgid "Open location"
 msgid "Open Location"
 msgstr "Abrir localização"
 
@@ -904,26 +920,26 @@ msgstr "Começar!"
 msgid "All Layer Files"
 msgstr "Todas os arquivos de camadas"
 
-#: src/mainWindow.js:442
+#: src/mainWindow.js:446
 msgid "Failed to connect to location service"
 msgstr "Falha ao conectar ao serviço de localização"
 
-#: src/mainWindow.js:507
+#: src/mainWindow.js:511
 msgid "translator-credits"
 msgstr ""
 "Enrico Nicoletto <liverig@gmail.com>, 2013-2016, 2018.\n"
 "Fábio Nogueira <fnogueira@gnome.org>, 2016.\n"
 "Rafael Fontenelle <rafaelff@gnome.org>, 2013-2018."
 
-#: src/mainWindow.js:510
+#: src/mainWindow.js:514
 msgid "A map application for GNOME"
 msgstr "Um aplicativo de mapas para o GNOME"
 
-#: src/mainWindow.js:521
+#: src/mainWindow.js:525
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 – 2019 Red Hat, Inc. e os autores do GNOME Mapas"
 
-#: src/mainWindow.js:541
+#: src/mainWindow.js:545
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Dados de mapas por %s e contribuidores"
@@ -933,7 +949,7 @@ msgstr "Dados de mapas por %s e contribuidores"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:557
+#: src/mainWindow.js:561
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Ladrilhos de mapas fornecidos por %s"
@@ -947,20 +963,20 @@ msgstr "Ladrilhos de mapas fornecidos por %s"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:586
+#: src/mainWindow.js:590
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Pesquisa fornecida por %s usando %s"
 
-#: src/mapView.js:359
+#: src/mapView.js:374
 msgid "File type is not supported"
 msgstr "Não há suporte ao tipo de arquivo"
 
-#: src/mapView.js:366
+#: src/mapView.js:381
 msgid "Failed to open layer"
 msgstr "Falha ao abrir camada"
 
-#: src/mapView.js:402
+#: src/mapView.js:417
 msgid "Failed to open GeoURI"
 msgstr "Falha ao analisar o URI geo"
 
@@ -1269,7 +1285,7 @@ msgstr "Acesso a cadeirantes:"
 msgid "Phone:"
 msgstr "Telefone:"
 
-#: src/placeEntry.js:205
+#: src/placeEntry.js:209
 msgid "Failed to parse Geo URI"
 msgstr "Falha ao analisar o URI geo"
 
@@ -1314,12 +1330,10 @@ msgid "designated"
 msgstr "designado"
 
 #: src/place.js:475
-#| msgid "Edit on OpenStreetMap"
 msgid "Place not found in OpenStreetMap"
 msgstr "Lugar não encontrado no OpenStreetMap"
 
 #: src/place.js:495
-#| msgid "OpenStreetMap Account"
 msgid "OpenStreetMap URL is not valid"
 msgstr "A URL do OpenStreetMap não é válida"
 
@@ -1328,7 +1342,6 @@ msgid "Coordinates in URL are not valid"
 msgstr "As coordenadas na URL não são válidas"
 
 #: src/place.js:521
-#| msgid "File type is not supported"
 msgid "URL is not supported"
 msgstr "Não há suporte à URL"
 
@@ -1368,7 +1381,6 @@ msgstr "Rota reversa"
 #. second string is the name of the app to add it to
 #: src/sendToDialog.js:103
 #, javascript-format
-#| msgid "From %s to %s"
 msgid "Add %s to %s"
 msgstr "Adicionar %s para %s"
 
