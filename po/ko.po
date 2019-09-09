@@ -1,23 +1,23 @@
 # Korean translation for gnome-maps.
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
-# Seong-ho Cho <shcho@gnome.org>, 2013-2018.
+# Seong-ho Cho <shcho@gnome.org>, 2013-2019.
 # Kwangseob Jeong <myddpp@gmail.com>, 2018.
 # Jeeyong Um <conr2d@gmail.com>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-01-14 19:43+0000\n"
-"PO-Revision-Date: 2019-02-23 17:27+0900\n"
-"Last-Translator: Jeeyong Um <conr2d@gmail.com>\n"
+"POT-Creation-Date: 2019-08-27 20:37+0000\n"
+"PO-Revision-Date: 2019-09-09 09:06+0900\n"
+"Last-Translator: Seong-ho Cho <shcho@gnome.org>\n"
 "Language-Team: GNOME Korea <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
 msgid "GNOME Maps"
@@ -56,20 +56,26 @@ msgstr ""
 "“보스턴 번화가 근처의 술집” 또는 “베를린 알렉산더플라츠 근처의 호텔”과 같은 "
 "지정된 형식의 위치도 검색할 수 있습니다."
 
+#: data/org.gnome.Maps.appdata.xml.in:59
+msgid "The GNOME Project"
+msgstr "그놈 프로젝트"
+
+#. Translators: This is the program name.
+#. for some reason, setting the title of the window through the .ui
+#. * template does not work anymore (maybe has something to do with
+#. * setting a custom title on the headerbar). Setting it programmatically
+#. * here works though. And yields a proper label in the gnome-shell
+#. * overview.
+#.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
-#: src/mainWindow.js:500
+#: src/application.js:81 src/mainWindow.js:139 src/mainWindow.js:513
 msgid "Maps"
 msgstr "지도"
 
 #: data/org.gnome.Maps.desktop.in:5
 msgid "A simple maps application"
 msgstr "간단한 지도 프로그램"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Maps.desktop.in:8
-msgid "org.gnome.Maps"
-msgstr "org.gnome.Maps"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Maps.desktop.in:14
@@ -89,59 +95,75 @@ msgid "Coordinates of last viewed location."
 msgstr "최근 살펴본 위치의 좌표."
 
 #: data/org.gnome.Maps.gschema.xml:16
+msgid "zoom"
+msgstr "확대"
+
+#: data/org.gnome.Maps.gschema.xml:17
+msgid "Zoom level"
+msgstr "확대 수준"
+
+#: data/org.gnome.Maps.gschema.xml:21
+msgid "Map type"
+msgstr "지도 형식"
+
+#: data/org.gnome.Maps.gschema.xml:22
+msgid "The type of map to display (street, aerial, etc.)"
+msgstr "지도 표시 형식(거리, 항공 등)"
+
+#: data/org.gnome.Maps.gschema.xml:26
 msgid "Window size"
 msgstr "창 크기"
 
-#: data/org.gnome.Maps.gschema.xml:17
+#: data/org.gnome.Maps.gschema.xml:27
 msgid "Window size (width and height)."
 msgstr "창 크기(너비 및 높이)."
 
-#: data/org.gnome.Maps.gschema.xml:21
+#: data/org.gnome.Maps.gschema.xml:31
 msgid "Window position"
 msgstr "창 위치"
 
-#: data/org.gnome.Maps.gschema.xml:22
+#: data/org.gnome.Maps.gschema.xml:32
 msgid "Window position (X and Y)."
 msgstr "창 위치(가로 및 세로)."
 
-#: data/org.gnome.Maps.gschema.xml:26
+#: data/org.gnome.Maps.gschema.xml:36
 msgid "Window maximized"
 msgstr "창 최대화"
 
-#: data/org.gnome.Maps.gschema.xml:27
+#: data/org.gnome.Maps.gschema.xml:37
 msgid "Window maximization state"
 msgstr "창 최대화 상태"
 
-#: data/org.gnome.Maps.gschema.xml:31
+#: data/org.gnome.Maps.gschema.xml:41
 msgid "Maximum number of search results"
 msgstr "최대 검색 결과 수"
 
-#: data/org.gnome.Maps.gschema.xml:32
+#: data/org.gnome.Maps.gschema.xml:42
 msgid "Maximum number of search results from geocode search."
 msgstr "지오코드 검색 결과의 최대 결과 갯수."
 
-#: data/org.gnome.Maps.gschema.xml:36
+#: data/org.gnome.Maps.gschema.xml:46
 msgid "Number of recent places to store"
 msgstr "최근 위치를 저장할 갯수"
 
-#: data/org.gnome.Maps.gschema.xml:37
+#: data/org.gnome.Maps.gschema.xml:47
 msgid "Number of recently visited places to store."
 msgstr "최근 방문할 위치를 저장할 갯수."
 
-#: data/org.gnome.Maps.gschema.xml:41
+#: data/org.gnome.Maps.gschema.xml:51
 msgid "Number of recent routes to store"
 msgstr "최근 경로를 저장할 갯수"
 
-#: data/org.gnome.Maps.gschema.xml:42
+#: data/org.gnome.Maps.gschema.xml:52
 msgid "Number of recently visited routes to store."
 msgstr "최근 방문 경로를 저장할 갯수."
 
-#: data/org.gnome.Maps.gschema.xml:46
+#: data/org.gnome.Maps.gschema.xml:56
 msgid "Facebook check-in privacy setting"
 msgstr "페이스북 체크인 개인 정보 설정"
 
 #. Translators: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS, and SELF are constant names, and should not be translated
-#: data/org.gnome.Maps.gschema.xml:48
+#: data/org.gnome.Maps.gschema.xml:58
 msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
@@ -149,11 +171,11 @@ msgstr ""
 "최근 사용한 페이스북 체크인 개인 정보 설정입니다. 가능한 값은 다음과 같습니"
 "다: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS, SELF."
 
-#: data/org.gnome.Maps.gschema.xml:52
+#: data/org.gnome.Maps.gschema.xml:62
 msgid "Foursquare check-in privacy setting"
 msgstr "포스퀘어 체크인 개인 정보 설정"
 
-#: data/org.gnome.Maps.gschema.xml:53
+#: data/org.gnome.Maps.gschema.xml:63
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
@@ -161,11 +183,11 @@ msgstr ""
 "최근에 사용한 포스퀘어 체크인 개인 정보 설정입니다. 가능한 값은 다음과 같습니"
 "다: 공개, 팔로워, 비공개."
 
-#: data/org.gnome.Maps.gschema.xml:57
+#: data/org.gnome.Maps.gschema.xml:67
 msgid "Foursquare check-in Facebook broadcasting"
 msgstr "페이스북에 포스퀘어 체크인 게시글 보내기"
 
-#: data/org.gnome.Maps.gschema.xml:58
+#: data/org.gnome.Maps.gschema.xml:68
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
@@ -173,27 +195,27 @@ msgstr ""
 "포스퀘어 계정에 연동한 페이스북 계정으로 체크인 게시글을 올릴 경우 표시합니"
 "다."
 
-#: data/org.gnome.Maps.gschema.xml:62
+#: data/org.gnome.Maps.gschema.xml:72
 msgid "Foursquare check-in Twitter broadcasting"
 msgstr "트위터 포스퀘어 체크인 트윗 보내기"
 
-#: data/org.gnome.Maps.gschema.xml:63
+#: data/org.gnome.Maps.gschema.xml:73
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
 msgstr ""
 "포스퀘어 계정에 연동한 트위터 계정으로 체크인 트윗을 올릴 경우 표시합니다."
 
-#: data/org.gnome.Maps.gschema.xml:67
+#: data/org.gnome.Maps.gschema.xml:77
 msgid "OpenStreetMap username or e-mail address"
 msgstr "OpenStreetMap 사용자 이름 및 전자메일 주소"
 
-#: data/org.gnome.Maps.gschema.xml:68
+#: data/org.gnome.Maps.gschema.xml:78
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr ""
 "사용자가 OpenStreetMap 데이터를 편집하려고 접속했는지 여부를 나타냅니다."
 
-#: data/org.gnome.Maps.gschema.xml:72
+#: data/org.gnome.Maps.gschema.xml:82
 msgid "Last used transportation type for routing"
 msgstr "최근 확인한 경로 안내 대중교통"
 
@@ -210,7 +232,7 @@ msgid "Post on Twitter"
 msgstr "트위터에 게시"
 
 #: data/ui/check-in-dialog.ui:388 data/ui/export-view-dialog.ui:20
-#: data/ui/send-to-dialog.ui:21 data/ui/shape-layer-file-chooser.ui:22
+#: data/ui/send-to-dialog.ui:13 data/ui/shape-layer-file-chooser.ui:22
 msgid "_Cancel"
 msgstr "취소(_C)"
 
@@ -346,7 +368,7 @@ msgid "Open shape layer"
 msgstr "도형 레이어 열기"
 
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:71
+#: data/ui/layers-popover.ui:69
 msgid "Open Shape Layer…"
 msgstr "도형 레이어 열기…"
 
@@ -432,8 +454,8 @@ msgstr "새 경로에 추가"
 
 #. Translators: This is a tooltip
 #: data/ui/map-bubble.ui:62
-msgid "Open with another application"
-msgstr "다른 프로그램으로 열기"
+msgid "Share location"
+msgstr "위치 공유"
 
 #. Translators: This is a tooltip
 #: data/ui/map-bubble.ui:79
@@ -577,11 +599,7 @@ msgstr "OpenStreetMap에서 편집"
 msgid "Show more information"
 msgstr "더 많은 정보 표시"
 
-#: data/ui/place-popover.ui:24
-msgid "Press enter to search"
-msgstr "검색할 단어를 입력하십시오"
-
-#: data/ui/place-popover.ui:72
+#: data/ui/place-popover.ui:54
 msgid "No results found"
 msgstr "결과가 없습니다"
 
@@ -590,17 +608,25 @@ msgstr "결과가 없습니다"
 msgid "Drag to change order of the route"
 msgstr "경로를 바꾸려면 끌어다놓으십시오"
 
-#: data/ui/send-to-dialog.ui:15
-msgid "Open location"
+#: data/ui/send-to-dialog.ui:10
+msgid "Open Location"
 msgstr "위치 열기"
 
-#: data/ui/send-to-dialog.ui:35 data/ui/shape-layer-file-chooser.ui:12
-msgid "_Open"
-msgstr "열기(_O)"
+#: data/ui/send-to-dialog.ui:70
+msgid "Copy"
+msgstr "복사"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:61
+#: data/ui/send-to-dialog.ui:76
+msgid "Send To…"
+msgstr "보내기…"
+
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:62
 msgid "Open Shape Layer"
 msgstr "도형 레이어 열기"
+
+#: data/ui/shape-layer-file-chooser.ui:12
+msgid "_Open"
+msgstr "열기(_O)"
 
 #. Translators: This is a tooltip
 #: data/ui/shape-layer-row.ui:19
@@ -719,11 +745,11 @@ msgstr "필요한 속성이 빠졌습니다"
 msgid "Could not find OSM element"
 msgstr "OSM 구성 요소를 찾을 수 없습니다"
 
-#: src/application.js:95
+#: src/application.js:94
 msgid "A path to a local tiles directory structure"
 msgstr "로컬 타일 디렉터리 구조 경로"
 
-#: src/application.js:99
+#: src/application.js:98
 msgid "Show the version of the program"
 msgstr "프로그램 버전 보기"
 
@@ -790,23 +816,23 @@ msgid ""
 msgstr ""
 "인증 기한이 지났습니다. 온라인 계정을 열어 접속한 후 이 계정을 활성화하십시오"
 
-#: src/contextMenu.js:98
+#: src/contextMenu.js:99
 msgid "Route from here"
 msgstr "여기서부터 경로 표시"
 
-#: src/contextMenu.js:100
+#: src/contextMenu.js:101
 msgid "Add destination"
 msgstr "목적지 추가"
 
-#: src/contextMenu.js:102
+#: src/contextMenu.js:103
 msgid "Route to here"
 msgstr "여기까지 경로 표시"
 
-#: src/contextMenu.js:131
+#: src/contextMenu.js:129
 msgid "Nothing found here!"
 msgstr "여기에 아무것도 없습니다!"
 
-#: src/contextMenu.js:192
+#: src/contextMenu.js:190
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -843,54 +869,54 @@ msgstr "파일 이름을 지정하지 않았습니다"
 msgid "Unable to export view"
 msgstr "보기 화면을 내보낼 수 없습니다"
 
-#: src/geoJSONSource.js:98
+#: src/geoJSONSource.js:97
 msgid "invalid coordinate"
 msgstr "잘못된 좌표"
 
-#: src/geoJSONSource.js:147 src/geoJSONSource.js:187 src/geoJSONSource.js:202
+#: src/geoJSONSource.js:146 src/geoJSONSource.js:186 src/geoJSONSource.js:201
 msgid "parse error"
 msgstr "해석 오류"
 
-#: src/geoJSONSource.js:181
+#: src/geoJSONSource.js:180
 msgid "unknown geometry"
 msgstr "알 수 없는 지형 정보"
 
-#: src/graphHopper.js:93 src/openTripPlanner.js:652
+#: src/graphHopper.js:112 src/openTripPlanner.js:652
 msgid "Route request failed."
 msgstr "경로 요청에 실패했습니다."
 
-#: src/graphHopper.js:100 src/openTripPlanner.js:615
+#: src/graphHopper.js:119 src/openTripPlanner.js:615
 msgid "No route found."
 msgstr "경로가 없습니다."
 
-#: src/graphHopper.js:188
+#: src/graphHopper.js:207
 msgid "Start!"
 msgstr "시작!"
 
-#: src/mainWindow.js:58
+#: src/mainWindow.js:59
 msgid "All Layer Files"
 msgstr "모든 레이어 파일"
 
-#: src/mainWindow.js:433
+#: src/mainWindow.js:446
 msgid "Failed to connect to location service"
 msgstr "위치 서비스 연결에 실패했습니다"
 
-#: src/mainWindow.js:498
+#: src/mainWindow.js:511
 msgid "translator-credits"
 msgstr ""
 "조성호 <shcho@gnome.org>\n"
 "정광섭 <myddpp@gmail.com>\n"
 "엄지용 <conr2d@gmail.com>"
 
-#: src/mainWindow.js:501
+#: src/mainWindow.js:514
 msgid "A map application for GNOME"
 msgstr "그놈용 지도 프로그램"
 
-#: src/mainWindow.js:512
+#: src/mainWindow.js:525
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 
-#: src/mainWindow.js:531
+#: src/mainWindow.js:545
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "%s와(과) 기여자의 지도 데이터"
@@ -900,20 +926,34 @@ msgstr "%s와(과) 기여자의 지도 데이터"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:547
+#: src/mainWindow.js:561
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "%s에서 제공한 지도 타일"
 
-#: src/mapView.js:358
+#. Translators: this is an attribution string giving credit to the
+#. * search provider where the first %s placeholder is replaced by either
+#. * the bare name of the geocoder provider, or a linkified URL if one
+#. * is available, and the second %s placeholder is replaced by the
+#. * URL to the geocoder project page. These placeholders
+#. * can be swapped, if needed using the %n$s positional syntax
+#. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
+#. * before the provider).
+#.
+#: src/mainWindow.js:590
+#, javascript-format
+msgid "Search provided by %s using %s"
+msgstr "%s에서 %s을(를) 활용한 검색 기능 제공함"
+
+#: src/mapView.js:374
 msgid "File type is not supported"
 msgstr "파일 형식을 지원하지 않습니다"
 
-#: src/mapView.js:365
+#: src/mapView.js:381
 msgid "Failed to open layer"
 msgstr "레이어 열기에 실패했습니다"
 
-#: src/mapView.js:401
+#: src/mapView.js:417
 msgid "Failed to open GeoURI"
 msgstr "GeoURI 열기에 실패했습니다"
 
@@ -1184,6 +1224,10 @@ msgstr "형식 선택"
 msgid "Done"
 msgstr "완료"
 
+#: src/photonParser.js:103
+msgid "Unnamed place"
+msgstr "이름 없는 장소"
+
 #: src/placeBubble.js:143
 msgid "Population:"
 msgstr "인구수:"
@@ -1216,7 +1260,7 @@ msgstr "휠체어 접근:"
 msgid "Phone:"
 msgstr "전화번호:"
 
-#: src/placeEntry.js:186
+#: src/placeEntry.js:209
 msgid "Failed to parse Geo URI"
 msgstr "지리 URL 해석에 실패했습니다"
 
@@ -1226,7 +1270,7 @@ msgstr "지리 URL 해석에 실패했습니다"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/place.js:218 src/translations.js:329 src/translations.js:391
+#: src/place.js:268 src/translations.js:329 src/translations.js:391
 msgid "yes"
 msgstr "예"
 
@@ -1235,7 +1279,7 @@ msgstr "예"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/place.js:225
+#: src/place.js:275
 msgid "limited"
 msgstr "제한함"
 
@@ -1247,7 +1291,7 @@ msgstr "제한함"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/place.js:231 src/translations.js:335 src/translations.js:392
+#: src/place.js:281 src/translations.js:335 src/translations.js:392
 msgid "no"
 msgstr "아니요"
 
@@ -1256,11 +1300,27 @@ msgstr "아니요"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/place.js:238
+#: src/place.js:288
 msgid "designated"
 msgstr "지정됨"
 
-#: src/printLayout.js:240
+#: src/place.js:475
+msgid "Place not found in OpenStreetMap"
+msgstr "OpenStreetMap에 해당 위치가 없습니다"
+
+#: src/place.js:495
+msgid "OpenStreetMap URL is not valid"
+msgstr "OpenStreetMap URL이 올바르지 않습니다"
+
+#: src/place.js:500
+msgid "Coordinates in URL are not valid"
+msgstr "URL 좌표가 올바르지 않습니다"
+
+#: src/place.js:521
+msgid "URL is not supported"
+msgstr "URL을 지원하지 않습니다"
+
+#: src/printLayout.js:312
 #, javascript-format
 msgid "From %s to %s"
 msgstr "%s에서 %s까지"
@@ -1292,9 +1352,21 @@ msgstr "현재 위치 제거"
 msgid "Reverse route"
 msgstr "역경로"
 
-#: src/sendToDialog.js:175
+#. Translators: The first string is the name of the city, the
+#. second string is the name of the app to add it to
+#: src/sendToDialog.js:103
+#, javascript-format
+msgid "Add %s to %s"
+msgstr "%s을(를) %s에 추가"
+
+#: src/sendToDialog.js:201
 msgid "Failed to open URI"
 msgstr "URI 열기에 실패했습니다"
+
+#: src/sendToDialog.js:258
+#, javascript-format
+msgid "Open with %s"
+msgstr "%s 프로그램으로 열기"
 
 #: src/shapeLayer.js:91
 msgid "failed to load file"
@@ -1306,22 +1378,10 @@ msgstr "파일 불러오기에 실패했습니다"
 msgid "Estimated time: %s"
 msgstr "예상 시간: %s"
 
-#. Translators: this a format string indicating arriving at the
-#. * destination of journey with the arrival address and transit
-#. * stop as the format parameter
-#: src/transitArrivalRow.js:54
-#, javascript-format
-msgid "Arrive at %s"
-msgstr "%s에 도착"
-
-#: src/transitArrivalRow.js:56
-msgid "Arrive"
-msgstr "도"
-
 #. Translators: this is a format string indicating instructions
 #. * starting a journey at the address given as the parameter
 #.
-#: src/transitLegRow.js:71
+#: src/transit.js:37
 #, javascript-format
 msgid "Start at %s"
 msgstr "%s에 시작"
@@ -1330,25 +1390,37 @@ msgstr "%s에 시작"
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: src/transitLegRow.js:77
+#: src/transit.js:43
 msgid "Start"
 msgstr "시작"
-
-#: src/transitLegRow.js:106
-msgid "Show walking instructions"
-msgstr "도보 안내 표시"
-
-#: src/transitLegRow.js:107
-msgid "Hide walking instructions"
-msgstr "도보 안내 숨김"
 
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
 #.
-#: src/transitLegRow.js:132
+#: src/transit.js:61
 #, javascript-format
 msgid "Walk %s"
 msgstr "%s 걷기"
+
+#. Translators: this a format string indicating arriving at the
+#. * destination of journey with the arrival address and transit
+#. * stop as the format parameter
+#: src/transit.js:75
+#, javascript-format
+msgid "Arrive at %s"
+msgstr "%s에 도착"
+
+#: src/transit.js:77
+msgid "Arrive"
+msgstr "도"
+
+#: src/transitLegRow.js:88
+msgid "Show walking instructions"
+msgstr "도보 안내 표시"
+
+#: src/transitLegRow.js:89
+msgid "Hide walking instructions"
+msgstr "도보 안내 숨김"
 
 #: src/transitMoreRow.js:39
 msgid "Load earlier alternatives"
@@ -1575,53 +1647,62 @@ msgid "service"
 msgstr "서비스"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:227
+#: src/utils.js:220
 msgid "Unknown"
 msgstr "알 수 없음"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:230
+#: src/utils.js:223
 msgid "Exact"
 msgstr "정확함"
 
-#: src/utils.js:288
+#: src/utils.js:281
 #, javascript-format
 msgid "%f h"
 msgstr "%f시간"
 
-#: src/utils.js:290
+#: src/utils.js:283
 #, javascript-format
 msgid "%f min"
 msgstr "%f분"
 
-#: src/utils.js:292
+#: src/utils.js:285
 #, javascript-format
 msgid "%f s"
 msgstr "%f초"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:303
+#: src/utils.js:296
 #, javascript-format
 msgid "%s km"
 msgstr "%s 킬로미터"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:306
+#: src/utils.js:299
 #, javascript-format
 msgid "%s m"
 msgstr "%s 미터"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:314
+#: src/utils.js:307
 #, javascript-format
 msgid "%s mi"
 msgstr "%s 마일"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:317
+#: src/utils.js:310
 #, javascript-format
 msgid "%s ft"
 msgstr "%s 피트"
+
+#~ msgid "org.gnome.Maps"
+#~ msgstr "org.gnome.Maps"
+
+#~ msgid "Open with another application"
+#~ msgstr "다른 프로그램으로 열기"
+
+#~ msgid "Press enter to search"
+#~ msgstr "검색할 단어를 입력하십시오"
 
 #~ msgid "Quit"
 #~ msgstr "끝내기"
