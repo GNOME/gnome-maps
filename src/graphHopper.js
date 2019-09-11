@@ -54,6 +54,10 @@ var GraphHopper = class GraphHopper {
     get route() {
         return this._route;
     }
+ 
+    get routeQueryPoints() {
+        return this._routeQueryPoints;
+    }
 
     constructor(params) {
         this._session = new Soup.Session({ user_agent : 'gnome-maps/' + pkg.version });
@@ -63,6 +67,7 @@ var GraphHopper = class GraphHopper {
         this._route   = new Route.Route();
         this.storedRoute = null;
         this._query = params.query;
+        this._routeQueryPoints = null;
     }
 
     _updateFromStored() {
@@ -96,6 +101,7 @@ var GraphHopper = class GraphHopper {
     }
 
     fetchRoute(points, transportationType) {
+        this._routeQueryPoints = points;
         if (this.storedRoute) {
             this._updateFromStored();
             return;
@@ -111,6 +117,7 @@ var GraphHopper = class GraphHopper {
                     this.route.reset();
                 this.route.error(_("Route request failed."));
             } else {
+                // Utils.debug(result);
                 if (!result) {
                     if (this._query.latest)
                         this._query.latest.place = null;
@@ -206,7 +213,8 @@ var GraphHopper = class GraphHopper {
             distance:    0,
             instruction: _("Start!"),
             time:        0,
-            turnAngle:   0
+            turnAngle:   0,
+            street_name: instructions[0].street_name
         });
         let rest = this._foldInstructions(instructions).map((instr) => {
             let type = this._createTurnPointType(instr.sign);
@@ -222,7 +230,8 @@ var GraphHopper = class GraphHopper {
                 distance:    instr.distance,
                 instruction: text,
                 time:        instr.time,
-                turnAngle:   instr.turn_angle
+                turnAngle:   instr.turn_angle,
+                street_name:    instr.street_name
             });
         });
         return [startPoint].concat(rest);

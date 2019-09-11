@@ -101,12 +101,13 @@ var Route = GObject.registerClass({
 
 var TurnPoint = class TurnPoint {
 
-    constructor({ coordinate, type, distance, instruction, turnAngle }) {
+    constructor({ coordinate, type, distance, instruction, turnAngle, street_name }) {
         this.coordinate = coordinate;
         this._type = type;
         this.distance = distance;
         this.instruction = instruction;
         this.iconName = this._getIconName(turnAngle);
+        this.street_name = street_name;
     }
 
     get type() {

@@ -51,6 +51,12 @@ var PrintOperation = class PrintOperation {
         this._responseId = this._abortDialog.connect('response',
                                                      this.onAbortDialogResponse.bind(this));
 
+        let printSettings = new Gtk.PrintSettings();
+        printSettings.set(
+            Gtk.PRINT_SETTINGS_OUTPUT_BASENAME,
+            this._createFileName()
+        );
+        this._operation.set_print_settings(printSettings);
         this._runPrintOperation();
     }
 
@@ -115,5 +121,32 @@ var PrintOperation = class PrintOperation {
         } catch(e) {
             Utils.debug('Failed to print: %s'.format(e.message));
         }
+    }
+
+    _createFileName() {
+        let route = Application.routingDelegator.graphHopper.route;
+        let routeTurnPoints = Application.routingDelegator.graphHopper.route.turnPoints;
+        /*Utils.debug(routeTurnPoints);*/
+
+        // Turn Point length - 1 is the arrival point, and has street_name = ""
+        let startStreetName = routeTurnPoints[0].street_name || "";
+        let endStreetName = "";
+        // Loop from last element to 2nd element
+        for(let i = routeTurnPoints.length; i-- > 1 ; ) {
+            if (routeTurnPoints[i].street_name !== "") {
+                endStreetName = routeTurnPoints[i].street_name;
+                break;
+            }
+        }
+
+        if (startStreetName !== "" && endStreetName !== "") {
+            return `Route from ${startStreetName} to ${endStreetName}`;
+        }
+        let routeQueryPoints = Application.routingDelegator.graphHopper.routeQueryPoints;
+        /*Utils.debug(routeQueryPoints);*/
+        let startLocation = routeQueryPoints[0]._place.location;
+        let endLocation = routeQueryPoints[routeQueryPoints.length - 1]._place.location;
+        
+        return `Route from (${startLocation.latitude.toFixed(2)}, ${startLocation.longitude.toFixed(2)}) to (${endLocation.latitude.toFixed(2)}, ${endLocation.longitude.toFixed(2)})`;
     }
 };
