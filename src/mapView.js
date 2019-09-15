@@ -468,22 +468,19 @@ var MapView = GObject.registerClass({
 
         if (Application.geoclue.state !== Geoclue.State.ON) {
             if (this._userLocation)
-                this._userLocation.destroy();
-            this._userLocation = null;
+                this._userLocation.visible = false;
             return;
         }
 
-        let place = Application.geoclue.place;
-        let previousSelected = this._userLocation && this._userLocation.selected;
+        if (!this._userLocation) {
+            let place = Application.geoclue.place;
+            this._userLocation = new UserLocationMarker.UserLocationMarker({ place: place,
+                                                                             mapView: this });
+            this._userLocationLayer.remove_all();
+            this._userLocation.addToLayer(this._userLocationLayer);
+        }
 
-        if (this._userLocation)
-            this._userLocation.destroy();
-        this._userLocation = new UserLocationMarker.UserLocationMarker({ place: place,
-                                                                         mapView: this });
-        this._userLocationLayer.remove_all();
-        this._userLocation.addToLayer(this._userLocationLayer);
-
-        this._userLocation.selected = previousSelected;
+        this._userLocation.visible = true;
 
         this.emit('user-location-changed');
     }

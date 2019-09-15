@@ -67,21 +67,12 @@ class UserLocationMarker extends MapMarker.MapMarker {
     _init(params) {
         super._init(params);
 
-        if (this.place.location.heading > -1) {
-            let actor = this._actorFromIconName('user-location-compass', 0);
-            actor.set_pivot_point(0.5, 0.5);
-            actor.set_rotation_angle(Clutter.RotateAxis.Z_AXIS, this.place.location.heading);
-            this.add_actor(actor);
-        } else {
-            this.add_actor(this._actorFromIconName('user-location', 0));
-        }
+        this.place.connect('notify::location', this._updateLocation.bind(this));
+        this._updateLocation();
 
-        if (this.place.location.accuracy > 0) {
-            this._accuracyMarker = new AccuracyCircleMarker({ place: this.place });
-            this._accuracyMarker.refreshGeometry(this._view);
-            this.connect('notify::view-zoom-level',
-                         () => this._accuracyMarker.refreshGeometry(this._view));
-        }
+        this.connect('hide', () => {
+            this.bubble.hide();
+        });
     }
 
     get anchor() {
@@ -92,6 +83,31 @@ class UserLocationMarker extends MapMarker.MapMarker {
     _createBubble() {
         return new UserLocationBubble.UserLocationBubble({ place: this.place,
                                                            mapView: this._mapView });
+    }
+
+    _updateLocation() {
+        if (this._actor)
+            this._actor.destroy();
+        if (this._accuracyMarker)
+            this._accuracyMarker.destroy();
+
+        if (this.place.location.heading > -1) {
+            this._actor = this._actorFromIconName('user-location-compass', 0);
+            this._actor.set_pivot_point(0.5, 0.5);
+            this._actor.set_rotation_angle(Clutter.RotateAxis.Z_AXIS, this.place.location.heading);
+        } else {
+            this._actor = this._actorFromIconName('user-location', 0);
+        }
+        this.add_actor(this._actor);
+
+        if (this.place.location.accuracy > 0) {
+            this._accuracyMarker = new AccuracyCircleMarker({ place: this.place });
+            this._accuracyMarker.refreshGeometry(this._view);
+            this.connect('notify::view-zoom-level',
+                         () => this._accuracyMarker.refreshGeometry(this._view));
+        }
+
+        this.bubble.updateLocation();
     }
 
     addToLayer(layer) {

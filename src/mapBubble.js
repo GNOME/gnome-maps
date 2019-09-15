@@ -143,13 +143,13 @@ class MapBubble extends Gtk.Popover {
     }
 
     _initSendToButton(button) {
-        let dialog = new SendToDialog.SendToDialog({ transient_for: this.get_toplevel(),
-                                                     modal: true,
-                                                     mapView: this._mapView,
-                                                     place: this._place });
         button.visible = true;
         button.connect('clicked', () => {
-            dialog.connect('response', () => dialog.hide());
+            let dialog = new SendToDialog.SendToDialog({ transient_for: this.get_toplevel(),
+                                                         modal: true,
+                                                         mapView: this._mapView,
+                                                         place: this._place });
+            dialog.connect('response', () => dialog.destroy());
             dialog.show();
         });
     }
