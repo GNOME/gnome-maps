@@ -19,6 +19,8 @@
  * Author: Damián Nohales <damiannohales@gmail.com>
  */
 
+const _ = imports.gettext.gettext;
+
 const GObject = imports.gi.GObject;
 
 const MapBubble = imports.mapBubble;
@@ -28,9 +30,9 @@ var UserLocationBubble = GObject.registerClass(
 class UserLocationBubble extends MapBubble.MapBubble {
 
     _init(params) {
-        let ui = Utils.getUIObject('user-location-bubble', [ 'grid-content',
-                                                             'label-accuracy',
-                                                             'label-coordinates' ]);
+        this._ui = Utils.getUIObject('user-location-bubble', [ 'grid-content',
+                                                               'label-accuracy',
+                                                               'label-coordinates' ]);
         params.buttons = MapBubble.Button.ROUTE |
                          MapBubble.Button.SEND_TO |
                          MapBubble.Button.CHECK_IN;
@@ -42,12 +44,18 @@ class UserLocationBubble extends MapBubble.MapBubble {
         this.image.icon_name = 'find-location-symbolic';
         this.image.pixel_size = 48;
 
-        let accuracyDescription = Utils.getAccuracyDescription(this.place.location.accuracy);
-        ui.labelAccuracy.label = ui.labelAccuracy.label.format(accuracyDescription);
-        ui.labelCoordinates.label = this.place.location.latitude.toFixed(5)
-                                  + ', '
-                                  + this.place.location.longitude.toFixed(5);
+        this.updateLocation();
+        this.content.add(this._ui.gridContent);
+    }
 
-        this.content.add(ui.gridContent);
+    updateLocation() {
+        /* Called by the UserLocationMarker when its location changes */
+
+        let accuracyDescription = Utils.getAccuracyDescription(this.place.location.accuracy);
+        /* Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m) */
+        this._ui.labelAccuracy.label = _("Accuracy: %s").format(accuracyDescription);
+        this._ui.labelCoordinates.label = this.place.location.latitude.toFixed(5)
+                                          + ', '
+                                          + this.place.location.longitude.toFixed(5);
     }
 });
