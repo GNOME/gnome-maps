@@ -271,7 +271,7 @@
         <child>
           <object class="GtkStack" id="linkButtonStack">
             <child>
-              <object class="GtkLinkButton" id="graphHopperLinkButton">
+              <object class="GtkLinkButton">
                 <property name="label" translatable="yes">Route search by GraphHopper</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -284,7 +284,7 @@
                 </style>
               </object>
               <packing>
-                <property name="name">graphHopper</property>
+                <property name="name">turnByTurn</property>
               </packing>
             </child>
             <child>
@@ -292,16 +292,11 @@
                 <property name="visible">True</property>
                 <property name="halign">GTK_ALIGN_END</property>
                 <child>
-                  <object class="GtkLinkButton" id="openTripPlannerLinkButton">
-                    <property name="label" translatable="yes">Route search by OpenTripPlanner</property>
+                  <object class="GtkLabel" id="transitAttributionLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="use_action_appearance">False</property>
-                    <property name="relief">none</property>
-                    <!-- opentripplanner.org uses an SSL cert only valid for github
-                         domains... -->
-                    <property name="uri">http://www.opentripplanner.org</property>
+                    <property name="use_markup">True</property>
                     <style>
                       <class name="small-label"/>
                     </style>
@@ -314,7 +309,7 @@
                 <child>
                   <object class="GtkMenuButton">
                     <property name="visible">True</property>
-                    <property name="popover">openTripPlannerDisclaimerPopover</property>
+                    <property name="popover">transitDisclaimerPopover</property>
                     <property name="halign">GTK_ALIGN_END</property>
                     <property name="margin-top">5</property>
                     <property name="margin-bottom">5</property>
@@ -346,7 +341,7 @@
                 </child>
               </object>
               <packing>
-                <property name="name">openTripPlanner</property>
+                <property name="name">transit</property>
               </packing>
             </child>
           </object>
@@ -354,7 +349,7 @@
       </object>
     </child>
   </template>
-  <object class="GtkPopover" id="openTripPlannerDisclaimerPopover">
+  <object class="GtkPopover" id="transitDisclaimerPopover">
     <property name="visible">False</property>
     <child>
       <object class="GtkGrid">
@@ -366,10 +361,12 @@
             <property name="margin-bottom">5</property>
             <property name="margin-start">5</property>
             <property name="margin-end">5</property>
-            <property name="label" translatable="yes">Routing itineraries for public transit is provided by GNOME
-using timetable data obtained from transit companies or agencies.
-The companies and agencies can not be held responsible for the results shown.
+            <property name="label" translatable="yes">Routing itineraries for public transit is provided by third-party
+services.
 GNOME can not guarantee correctness of the itineraries and schedules shown.
+Note that some providers might not include all available modes of transportation,
+e.g. a national provider might not include airlines, and a local provider could
+miss regional trains.
 Names and brands shown are to be considered as registered trademarks when applicable.</property>
           </object>
         </child>

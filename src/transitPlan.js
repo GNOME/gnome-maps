@@ -96,6 +96,8 @@ var Plan = GObject.registerClass({
     _init(params) {
         super._init(params);
         this.reset();
+        this._attribution = null;
+        this._attributionUrl = null;
     }
 
     get itineraries() {
@@ -104,6 +106,22 @@ var Plan = GObject.registerClass({
 
     get selectedItinerary() {
         return this._selectedItinerary;
+    }
+
+    get attribution() {
+        return this._attribution;
+    }
+
+    set attribution(attribution) {
+        this._attribution = attribution;
+    }
+
+    get attributionUrl() {
+        return this._attributionUrl;
+    }
+
+    set attributionUrl(attributionUrl) {
+        this._attributionUrl = attributionUrl;
     }
 
     update(itineraries) {
@@ -116,6 +134,8 @@ var Plan = GObject.registerClass({
         this._itineraries = [];
         this.bbox = null;
         this._selectedItinerary = null;
+        this._attribution = null;
+        this._attributionUrl = null;
         this.emit('reset');
     }
 
@@ -135,6 +155,22 @@ var Plan = GObject.registerClass({
 
     error(msg) {
         this.emit('error', msg);
+    }
+
+    noRouteFound() {
+        this.emit('error', _("No route found."));
+    }
+
+    noTimetable() {
+        this.emit('error', _("No timetable data found for this route."));
+    }
+
+    requestFailed() {
+        this.emit('error', _("Route request failed."));
+    }
+
+    noProvider() {
+        this.emit('error', _("No provider found for this route."));
     }
 
     _createBBox() {

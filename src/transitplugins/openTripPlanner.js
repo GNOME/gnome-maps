@@ -23,6 +23,7 @@ const Champlain = imports.gi.Champlain;
 const GLib = imports.gi.GLib;
 const Soup = imports.gi.Soup;
 
+const Application = imports.application;
 const EPAF = imports.epaf;
 const HTTP = imports.http;
 const Location = imports.location;
@@ -127,10 +128,9 @@ var OpenTripPlanner = class OpenTripPlanner {
          * a download when first request
          */
         this._routersUpdatedTimestamp = 0;
-        this._query = params.query;
-        this._graphHopper = params.graphHopper;
-        this._plan = new TransitPlan.Plan();
-        this._baseUrl = this._getBaseUrl();
+        this._plan = Application.routingDelegator.transitRouter.plan;
+        this._query = Application.routeQuery;
+        this._baseUrl = params.baseUrl;
         this._walkingRoutes = [];
         this._extendPrevious = false;
     }
@@ -151,23 +151,6 @@ var OpenTripPlanner = class OpenTripPlanner {
     fetchMoreResults() {
         this._extendPrevious = true;
         this._fetchRoute();
-    }
-
-    _getBaseUrl() {
-        let debugUrl = GLib.getenv('OTP_BASE_URL');
-
-        if (debugUrl) {
-            return debugUrl;
-        } else {
-            let otp = Service.getService().openTripPlanner
-
-            if (otp && otp.baseUrl) {
-                return otp.baseUrl;
-            } else {
-                Utils.debug('No OpenTripPlanner URL defined in service file');
-                return null;
-            }
-        }
     }
 
     _getRouterUrl(router) {
@@ -612,7 +595,7 @@ var OpenTripPlanner = class OpenTripPlanner {
             this.plan.noMoreResults();
         } else {
             this._reset();
-            this.plan.error(_("No route found."));
+            this.plan.noRouteFound();
         }
     }
 
@@ -645,11 +628,11 @@ var OpenTripPlanner = class OpenTripPlanner {
 
                 } else {
                     this._reset();
-                    this.plan.error(_("No timetable data found for this route."));
+                    this.plan.noTimetable();
                 }
             } else {
                 this._reset();
-                this.plan.error(_("Route request failed."));
+                this.plan.requestFailed();
             }
         });
     }
@@ -797,7 +780,7 @@ var OpenTripPlanner = class OpenTripPlanner {
         let route = this._walkingRoutes[index];
 
         if (!route) {
-            this._graphHopper.fetchRouteAsync(points,
+            Application.routingDelegator.graphHopper.fetchRouteAsync(points,
                                               RouteQuery.Transportation.PEDESTRIAN,
                                               (newRoute) => {
                 this._walkingRoutes[index] = newRoute;

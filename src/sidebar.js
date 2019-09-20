@@ -64,7 +64,8 @@ var Sidebar = GObject.registerClass({
                         'transitItineraryListBox',
                         'transitItineraryBackButton',
                         'transitItineraryTimeLabel',
-                        'transitItineraryDurationLabel']
+                        'transitItineraryDurationLabel',
+                        'transitAttributionLabel']
 }, class Sidebar extends Gtk.Revealer {
 
     _init(mapView) {
@@ -95,13 +96,13 @@ var Sidebar = GObject.registerClass({
         this._query.addPoint(1);
         this._switchRoutingMode(Application.routeQuery.transportation);
         /* Enable/disable transit mode switch based on the presence of
-         * OpenTripPlanner.
+         * public transit providers.
          * For some reason, setting visible to false in the UI file and
          * dynamically setting visible false here doesn't work, maybe because
          * it's part of a radio group? As a workaround, just remove the button
          * instead.
          */
-        if (!Application.routingDelegator.openTripPlanner.enabled)
+        if (!Application.routingDelegator.transitRouter.enabled)
             this._modeTransitToggle.destroy();
     }
 
@@ -147,14 +148,14 @@ var Sidebar = GObject.registerClass({
     _switchRoutingMode(mode) {
         if (mode === RouteQuery.Transportation.TRANSIT) {
             Application.routingDelegator.useTransit = true;
-            this._linkButtonStack.visible_child_name = 'openTripPlanner';
+            this._linkButtonStack.visible_child_name = 'transit';
             this._transitOptionsPanel.reset();
             this._transitRevealer.reveal_child = true;
         } else {
             Application.routingDelegator.useTransit = false;
-            this._linkButtonStack.visible_child_name = 'graphHopper';
+            this._linkButtonStack.visible_child_name = 'turnByTurn';
             this._transitRevealer.reveal_child = false;
-            Application.routingDelegator.openTripPlanner.plan.deselectItinerary();
+            Application.routingDelegator.transitRouter.plan.deselectItinerary();
         }
         this._clearInstructions();
     }
@@ -214,7 +215,7 @@ var Sidebar = GObject.registerClass({
 
     _initInstructionList() {
         let route = Application.routingDelegator.graphHopper.route;
-        let transitPlan = Application.routingDelegator.openTripPlanner.plan;
+        let transitPlan = Application.routingDelegator.transitRouter.plan;
 
         route.connect('reset', () => {
             this._clearInstructions();
@@ -232,6 +233,7 @@ var Sidebar = GObject.registerClass({
             /* don't remove query points as with the turn-based routing,
              * since we might get "no route" because of the time selected
              * and so on */
+            this._transitAttributionLabel.label = '';
         });
 
         transitPlan.connect('no-more-results', () => {
@@ -248,6 +250,7 @@ var Sidebar = GObject.registerClass({
                 if (this._query.transportation === RouteQuery.Transportation.TRANSIT) {
                     this._clearTransitOverview();
                     this._showTransitOverview();
+                    this._transitAttributionLabel.label = '';
                 } else {
                     this._clearInstructions();
                 }
@@ -300,6 +303,7 @@ var Sidebar = GObject.registerClass({
         });
 
         transitPlan.connect('update', () => {
+            this._updateTransitAttribution();
             this._clearTransitOverview();
             this._showTransitOverview();
             this._populateTransitItineraryOverview();
@@ -340,8 +344,26 @@ var Sidebar = GObject.registerClass({
         listBox.forall(listBox.remove.bind(listBox));
     }
 
+    _updateTransitAttribution() {
+        let plan = Application.routingDelegator.transitRouter.plan;
+
+        if (plan.attribution) {
+            let attributionLabel =
+                _("Itineraries provided by %s").format(plan.attribution);
+            if (plan.attributionUrl) {
+                this._transitAttributionLabel.label =
+                    '<a href="%s">%s</a>'.format([plan.attributionUrl],
+                                                 attributionLabel);
+            } else {
+                this._transitAttributionLabel.label = attributionLabel;
+            }
+        } else {
+            this._transitAttributionLabel.label = '';
+        }
+    }
+
     _showTransitOverview() {
-        let plan = Application.routingDelegator.openTripPlanner.plan;
+        let plan = Application.routingDelegator.transitRouter.plan;
 
         this._transitListStack.visible_child_name = 'overview';
         this._transitHeader.visible_child_name = 'options';
@@ -354,7 +376,7 @@ var Sidebar = GObject.registerClass({
     }
 
     _populateTransitItineraryOverview() {
-        let plan = Application.routingDelegator.openTripPlanner.plan;
+        let plan = Application.routingDelegator.transitRouter.plan;
 
         plan.itineraries.forEach((itinerary) => {
             let row =
@@ -371,7 +393,7 @@ var Sidebar = GObject.registerClass({
     }
 
     _onItineraryActivated(itinerary) {
-        let plan = Application.routingDelegator.openTripPlanner.plan;
+        let plan = Application.routingDelegator.transitRouter.plan;
 
         this._populateTransitItinerary(itinerary);
         this._showTransitItineraryView();
@@ -380,7 +402,7 @@ var Sidebar = GObject.registerClass({
 
     _onMoreActivated(row) {
         row.startLoading();
-        Application.routingDelegator.openTripPlanner.fetchMoreResults();
+        Application.routingDelegator.transitRouter.fetchMoreResults();
     }
 
     _onItineraryOverviewRowActivated(listBox, row) {

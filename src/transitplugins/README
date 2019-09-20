@@ -1,0 +1,67 @@
+This directory contains implementations of transit routing provider plugins.
+Each plugin should contain an ES6 class implementing the plugin.
+
+Each implementation implements two methods:
+
+fetchFirstResults():
+
+This is invoked when the singleton routing query has been updated and would
+query itineraries from it's source, and on success populate the TransitPlan
+singleton with an itinerary list and call plan.update(), or on error call
+one of the pre-defined error methods on the plan, or trigger a custom error
+with plan.error().
+
+fetchMoreResults():
+
+This is invoked when to fetch additional (later or earlier) results.
+Would on success add additional itineraries and call plan.update(), or on
+error call plan.noMoreResults().
+
+Providers are configured via the downloaded service file using a JSON element
+like:
+
+"transitProviders": [
+    {
+        "provider": {
+            "name": "Description of provider 1",
+            "plugin": "OpenTripPlanner",
+            "attribution": "Provider 1",
+            "attributionUrl": "http://provider1.example.com",
+            "priority": 10,
+            "areas": [
+                {
+                    "priority": 10,
+                    "countries": [ "UT" ]
+                }
+            ],
+            "params": {
+               "baseUrl": "http://otp.provider1.example.com/otp"
+            }
+        }
+    },
+    {
+        "provider": {
+            "name": "Provider 2",
+            "plugin": "OpenTripPlanner",
+            "attribution": "Provider 2",
+            "attributionUrl": "https://provider2.example.com",
+            "areas": [
+                {
+                    "bbox": [48.28,0.81,49.73,4.11]
+                }
+            ],
+            "params": {
+                "baseUrl": "https://provider2.example.com/otp"
+            }
+        }
+    }
+ ]
+
+ Each provider can have an optional priority, to allow more specific provider
+ (e.g. one serving a single city) within the area of a more general one.
+ Single sub-areas of a provider can also override the general provider priority.
+ This can be used to allow areas of provider to "shadow" neighboring providers
+ while keeping the the neighboring provider as the preferred one when used
+ exclusively for its region.
+ Custom parameters, if specified, will be passed as the "params" object the
+ constructor() of the plugin implementation.
