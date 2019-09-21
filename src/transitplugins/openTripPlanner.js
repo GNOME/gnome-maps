@@ -48,15 +48,8 @@ const Utils = imports.utils;
  * routing delegator when the query is being modified (fetchFirstResults()),
  * and the other being called when requesting additional results (later or
  * earlier alternatives depending on search criteria) (fetchMoreResults())
- * These call into an entry point function "_fatchRoute()" which first calls
- * out to the function "_fetchRouters()" which calls out to the server to update
- * the cached router list if needed (routers are the OpenTripPlanner terminology
- * for an isolated graph, routing can not occur between graphs).
- * In the callback from _fetchRouters, an array of suitable routers (covering
- * start and end coordinates for the desired route) is processed.
- * "_fetchRoutes()" is called, which will do asynchronous recursive call for
- * each router obtained earlier.
- * "_fetchRoutesForRouter()" is called on each router, which in turn
+ * These call into an entry point function "_fatchRoute()".
+ * "_fetchRoutes()" is called, which in turn
  * asyncronously calls "_fetchTransitStops()" to get closest transit stop for
  * each of the query point, this function will involve OpenTripPlanner calls to
  * find stops within a search circle around the coordinate and then calls out
@@ -76,11 +69,6 @@ const Utils = imports.utils;
  *
  * API docs for OpenTripPlanner can be found at: http://dev.opentripplanner.org/apidoc/1.0.0/
  */
-
-/* timeout after which the routers data is considered stale and we will force
- * a reload (24 hours)
- */
-const ROUTERS_TIMEOUT = 24 * 60 * 60 * 1000;
 
 /* minimum distance when an explicit walk route will be requested to suppliment
  * the transit route
@@ -124,13 +112,10 @@ var OpenTripPlanner = class OpenTripPlanner {
 
     constructor(params) {
         this._session = new Soup.Session();
-        /* initially set routers as updated far back in the past to force
-         * a download when first request
-         */
-        this._routersUpdatedTimestamp = 0;
         this._plan = Application.routingDelegator.transitRouter.plan;
         this._query = Application.routeQuery;
         this._baseUrl = params.baseUrl;
+        this._router = params.router || 'default';
         this._walkingRoutes = [];
         this._extendPrevious = false;
     }
@@ -153,69 +138,8 @@ var OpenTripPlanner = class OpenTripPlanner {
         this._fetchRoute();
     }
 
-    _getRouterUrl(router) {
-        if (!router || router.length === 0)
-            router = 'default';
-
-        return this._baseUrl + '/routers/' + router;
-    }
-
-    _fetchRouters(callback) {
-        let currentTime = (new Date()).getTime();
-
-        if (currentTime - this._routersUpdatedTimestamp < ROUTERS_TIMEOUT) {
-            callback(true);
-        } else {
-            let uri = new Soup.URI(this._baseUrl + '/routers');
-            let request = new Soup.Message({ method: 'GET', uri: uri });
-
-            request.request_headers.append('Accept', 'application/json');
-            this._session.queue_message(request, (obj, message) => {
-                if (message.status_code !== Soup.Status.OK) {
-                    callback(false);
-                    return;
-                }
-
-                try {
-                    this._routers = JSON.parse(message.response_body.data);
-                    this._routersUpdatedTimestamp = (new Date()).getTime();
-                    callback(true);
-                } catch (e) {
-                    Utils.debug('Failed to parse router information');
-                    callback(false);
-                }
-            });
-        }
-    }
-
-    _getRoutersForPlace(place) {
-        let routers = [];
-
-        this._routers.routerInfo.forEach((routerInfo) => {
-            /* TODO: only check bounding rectangle for now
-             * should we try to do a finer-grained check using the bounding
-             * polygon (if OTP gives one for the routers).
-             * And should we add some margins to allow routing from just outside
-             * a network (walking distance)?
-             */
-            if (place.location.latitude >= routerInfo.lowerLeftLatitude &&
-                place.location.latitude <= routerInfo.upperRightLatitude &&
-                place.location.longitude >= routerInfo.lowerLeftLongitude &&
-                place.location.longitude <= routerInfo.upperRightLongitude)
-                routers.push(routerInfo.routerId);
-        });
-
-        return routers;
-    }
-
-    /* Note: this is theoretically slow (O(n*m)), but we will have filtered
-     * possible routers for the starting and ending query point, so they should
-     * be short (in many cases just one element)
-     */
-    _routerIntersection(routers1, routers2) {
-        return routers1.filter(function(n) {
-            return routers2.indexOf(n) != -1;
-        });
+    _getRouterUrl() {
+        return this._baseUrl + '/routers/' + this._router;
     }
 
     _getMode(routeType) {
@@ -299,10 +223,10 @@ var OpenTripPlanner = class OpenTripPlanner {
         return s1.dist > s2.dist;
     }
 
-    _fetchRoutesForStop(router, stop, callback) {
+    _fetchRoutesForStop(stop, callback) {
         let query = new HTTP.Query();
-        let uri = new Soup.URI(this._getRouterUrl(router) +
-                               '/index/stops/' + stop.id + '/routes');
+        let uri = new Soup.URI(this._getRouterUrl() + '/index/stops/' +
+                               stop.id + '/routes');
         let request = new Soup.Message({ method: 'GET', uri: uri });
 
         request.request_headers.append('Accept', 'application/json');
@@ -341,11 +265,11 @@ var OpenTripPlanner = class OpenTripPlanner {
         return false;
     }
 
-    _filterStopsRecursive(router, stops, index, filteredStops, callback) {
+    _filterStopsRecursive(stops, index, filteredStops, callback) {
         if (index < stops.length) {
             let stop = stops[index];
 
-            this._fetchRoutesForStop(router, stop, (routes) => {
+            this._fetchRoutesForStop(stop, (routes) => {
                 for (let i = 0; i < routes.length; i++) {
                     let route = routes[i];
 
@@ -354,19 +278,19 @@ var OpenTripPlanner = class OpenTripPlanner {
                         break;
                     }
                 }
-                this._filterStopsRecursive(router, stops, index + 1,
-                                           filteredStops, callback);
+                this._filterStopsRecursive(stops, index + 1, filteredStops,
+                                           callback);
             });
         } else {
             callback(filteredStops);
         }
     }
 
-    _filterStops(router, stops, callback) {
-        this._filterStopsRecursive(router, stops, 0, [], callback);
+    _filterStops(stops, callback) {
+        this._filterStopsRecursive(stops, 0, [], callback);
     }
 
-    _fetchTransitStopsRecursive(router, index, result, callback) {
+    _fetchTransitStopsRecursive(index, result, callback) {
         let points = this._query.filledPoints;
 
         if (index < points.length) {
@@ -375,7 +299,7 @@ var OpenTripPlanner = class OpenTripPlanner {
                            lon: point.place.location.longitude,
                            radius: STOP_SEARCH_RADIUS };
             let query = new HTTP.Query(params);
-            let uri = new Soup.URI(this._getRouterUrl(router) +
+            let uri = new Soup.URI(this._getRouterUrl() +
                                    '/index/stops?' + query.toString());
             let request = new Soup.Message({ method: 'GET', uri: uri });
 
@@ -400,11 +324,11 @@ var OpenTripPlanner = class OpenTripPlanner {
                         Utils.debug('stops: ' + JSON.stringify(stops, '', 2));
                         this._selectBestStop(stops, index, (stop) => {
                             result.push(stop);
-                            this._fetchTransitStopsRecursive(router, index + 1,
-                                                             result, callback);
+                            this._fetchTransitStopsRecursive(index + 1, result,
+                                                             callback);
                         });
                     } else {
-                        this._filterStops(router, stops, (filteredStops) => {
+                        this._filterStops(stops, (filteredStops) => {
                             filteredStops.sort(this._sortTransitStops);
                             filteredStops = filteredStops.splice(0, NUM_STOPS_TO_TRY);
 
@@ -416,7 +340,7 @@ var OpenTripPlanner = class OpenTripPlanner {
 
                             this._selectBestStop(filteredStops, index, (stop) => {
                                 result.push(stop);
-                                this._fetchTransitStopsRecursive(router, index + 1,
+                                this._fetchTransitStopsRecursive(index + 1,
                                                                  result, callback);
                             });
                         });
@@ -428,8 +352,8 @@ var OpenTripPlanner = class OpenTripPlanner {
         }
     }
 
-    _fetchTransitStops(router, callback) {
-        this._fetchTransitStopsRecursive(router, 0, [], callback);
+    _fetchTransitStops(callback) {
+        this._fetchTransitStopsRecursive(0, [], callback);
     }
 
     // get a time suitably formatted for the OpenTripPlanner query param
@@ -516,8 +440,8 @@ var OpenTripPlanner = class OpenTripPlanner {
         return params;
     }
 
-    _fetchRoutesForRouter(router, callback) {
-        this._fetchTransitStops(router, (stops) => {
+    _fetchRoutes(callback) {
+        this._fetchTransitStops((stops) => {
             let points = this._query.filledPoints;
 
             if (!stops) {
@@ -538,7 +462,7 @@ var OpenTripPlanner = class OpenTripPlanner {
 
             let params = this._createParams(stops);
             let query = new HTTP.Query(params);
-            let uri = new Soup.URI(this._getRouterUrl(router) + '/plan?' +
+            let uri = new Soup.URI(this._getRouterUrl() + '/plan?' +
                                    query.toString());
             let request = new Soup.Message({ method: 'GET', uri: uri });
 
@@ -546,34 +470,13 @@ var OpenTripPlanner = class OpenTripPlanner {
             this._session.queue_message(request, (obj, message) => {
                 if (message.status_code !== Soup.Status.OK) {
                     Utils.debug('Failed to get route plan from router ' +
-                                routers[index] + ' ' + message);
+                                this._router + ' ' + message);
                     callback(null);
                 } else {
                     callback(JSON.parse(message.response_body.data));
                 }
             });
         });
-    }
-
-    _fetchRoutesRecursive(routers, index, result, callback) {
-        if (index < routers.length) {
-            let router = routers[index];
-
-            this._fetchRoutesForRouter(router, (response) => {
-                if (response) {
-                    Utils.debug('plan: ' + JSON.stringify(response, '', 2));
-                    result.push(response);
-                }
-
-                this._fetchRoutesRecursive(routers, index + 1, result, callback);
-            });
-        } else {
-            callback(result);
-        }
-    }
-
-    _fetchRoutes(routers, callback) {
-        this._fetchRoutesRecursive(routers, 0, [], callback);
     }
 
     _reset() {
@@ -600,39 +503,25 @@ var OpenTripPlanner = class OpenTripPlanner {
     }
 
     _fetchRoute() {
-        this._fetchRouters((success) => {
-            if (success) {
-                let points = this._query.filledPoints;
-                let routers = this._getRoutersForPoints(points);
+        let points = this._query.filledPoints;
 
-                if (routers.length > 0) {
-                    this._fetchRoutes(routers, (routes) => {
-                        let itineraries = [];
-                        routes.forEach((plan) => {
-                            if (plan.plan && plan.plan.itineraries) {
-                                itineraries =
-                                    itineraries.concat(
-                                        this._createItineraries(plan.plan.itineraries));
-                            }
-                        });
+        this._fetchRoutes((route) => {
+            let itineraries = [];
+            let plan = route.plan;
 
-                        if (itineraries.length === 0) {
-                            /* don't reset query points, unlike for turn-based
-                             * routing, since options and timeing might influence
-                             * results */
-                            this._noRouteFound();
-                        } else {
-                            this._recalculateItineraries(itineraries);
-                        }
-                    });
+            if (plan && plan.itineraries) {
+                itineraries =
+                    itineraries.concat(
+                        this._createItineraries(plan.itineraries));
+            }
 
-                } else {
-                    this._reset();
-                    this.plan.noTimetable();
-                }
+            if (itineraries.length === 0) {
+                /* don't reset query points, unlike for turn-based
+                 * routing, since options and timeing might influence
+                 * results */
+                this._noRouteFound();
             } else {
-                this._reset();
-                this.plan.requestFailed();
+                this._recalculateItineraries(itineraries);
             }
         });
     }
@@ -1074,17 +963,6 @@ var OpenTripPlanner = class OpenTripPlanner {
         } else {
             callback(itinerary);
         }
-    }
-
-    _getRoutersForPoints(points) {
-        let startRouters = this._getRoutersForPlace(points[0].place);
-        let endRouters =
-            this._getRoutersForPlace(points.last().place);
-
-        let intersectingRouters =
-            this._routerIntersection(startRouters, endRouters);
-
-        return intersectingRouters;
     }
 
     _createItineraries(itineraries) {
