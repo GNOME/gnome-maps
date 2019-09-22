@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-07-12 12:37+0000\n"
-"PO-Revision-Date: 2019-07-28 09:41+0200\n"
+"POT-Creation-Date: 2019-09-10 19:50+0000\n"
+"PO-Revision-Date: 2019-09-22 07:59+0200\n"
 "Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
@@ -55,7 +55,7 @@ msgstr ""
 "Tu puedis ancje cirî par specifics gjenars di puescj, come \"Pubs near Main "
 "Street, Boston\" o \"Hotels near Alexanderplatz, Berlin”."
 
-#: data/org.gnome.Maps.appdata.xml.in:59
+#: data/org.gnome.Maps.appdata.xml.in:92
 msgid "The GNOME Project"
 msgstr "Il progjet GNOME"
 
@@ -68,7 +68,7 @@ msgstr "Il progjet GNOME"
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
-#: src/application.js:81 src/mainWindow.js:139 src/mainWindow.js:509
+#: src/application.js:81 src/mainWindow.js:139 src/mainWindow.js:513
 msgid "Maps"
 msgstr "Mapis"
 
@@ -94,59 +94,75 @@ msgid "Coordinates of last viewed location."
 msgstr "Coordinadis de ultime posizion viodude."
 
 #: data/org.gnome.Maps.gschema.xml:16
+msgid "zoom"
+msgstr "ingrandiment"
+
+#: data/org.gnome.Maps.gschema.xml:17
+msgid "Zoom level"
+msgstr "Nivel di ingrandiment"
+
+#: data/org.gnome.Maps.gschema.xml:21
+msgid "Map type"
+msgstr "Gjenar di mape"
+
+#: data/org.gnome.Maps.gschema.xml:22
+msgid "The type of map to display (street, aerial, etc.)"
+msgstr "Il gjenar di mape di mostrâ (stradâl, aerie, ...)"
+
+#: data/org.gnome.Maps.gschema.xml:26
 msgid "Window size"
 msgstr "Dimension barcon"
 
-#: data/org.gnome.Maps.gschema.xml:17
+#: data/org.gnome.Maps.gschema.xml:27
 msgid "Window size (width and height)."
 msgstr "Dimension barcon (largjece e altece)."
 
-#: data/org.gnome.Maps.gschema.xml:21
+#: data/org.gnome.Maps.gschema.xml:31
 msgid "Window position"
 msgstr "Posizion barcon"
 
-#: data/org.gnome.Maps.gschema.xml:22
+#: data/org.gnome.Maps.gschema.xml:32
 msgid "Window position (X and Y)."
 msgstr "Posizion barcon (X e Y)."
 
-#: data/org.gnome.Maps.gschema.xml:26
+#: data/org.gnome.Maps.gschema.xml:36
 msgid "Window maximized"
 msgstr "Barcon massimizât"
 
-#: data/org.gnome.Maps.gschema.xml:27
+#: data/org.gnome.Maps.gschema.xml:37
 msgid "Window maximization state"
 msgstr "Stat massimizât dal barcon"
 
-#: data/org.gnome.Maps.gschema.xml:31
+#: data/org.gnome.Maps.gschema.xml:41
 msgid "Maximum number of search results"
 msgstr "Massim numar di risultâts di ricercje"
 
-#: data/org.gnome.Maps.gschema.xml:32
+#: data/org.gnome.Maps.gschema.xml:42
 msgid "Maximum number of search results from geocode search."
 msgstr "Massim numar di risultâts de ricercje da codifiche gjeografiche. "
 
-#: data/org.gnome.Maps.gschema.xml:36
+#: data/org.gnome.Maps.gschema.xml:46
 msgid "Number of recent places to store"
 msgstr "Numar di lûcs resints di archiviâ"
 
-#: data/org.gnome.Maps.gschema.xml:37
+#: data/org.gnome.Maps.gschema.xml:47
 msgid "Number of recently visited places to store."
 msgstr "Numar di lûcs resints viodûts di tegnî di cont."
 
-#: data/org.gnome.Maps.gschema.xml:41
+#: data/org.gnome.Maps.gschema.xml:51
 msgid "Number of recent routes to store"
 msgstr "Numar di stradis resintis di archiviâ"
 
-#: data/org.gnome.Maps.gschema.xml:42
+#: data/org.gnome.Maps.gschema.xml:52
 msgid "Number of recently visited routes to store."
 msgstr "Numar di stradis resintis viodudis di tegnî di cont."
 
-#: data/org.gnome.Maps.gschema.xml:46
+#: data/org.gnome.Maps.gschema.xml:56
 msgid "Facebook check-in privacy setting"
 msgstr "Impostazions privacy dai check-in su Facebook"
 
 #. Translators: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS, and SELF are constant names, and should not be translated
-#: data/org.gnome.Maps.gschema.xml:48
+#: data/org.gnome.Maps.gschema.xml:58
 msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
@@ -154,11 +170,11 @@ msgstr ""
 "Ultime impostazion pe privacy dai check-in su Facebook doprade. I valôrs "
 "pussibii a son: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS o SELF."
 
-#: data/org.gnome.Maps.gschema.xml:52
+#: data/org.gnome.Maps.gschema.xml:62
 msgid "Foursquare check-in privacy setting"
 msgstr "Impostazions pe privacy dai check-in su Foursquare"
 
-#: data/org.gnome.Maps.gschema.xml:53
+#: data/org.gnome.Maps.gschema.xml:63
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
@@ -166,11 +182,11 @@ msgstr ""
 "Ultime impostazion pe privacy dai check-in doprade. I valôrs pussibii a son: "
 "public, followers o private."
 
-#: data/org.gnome.Maps.gschema.xml:57
+#: data/org.gnome.Maps.gschema.xml:67
 msgid "Foursquare check-in Facebook broadcasting"
 msgstr "Trasmission a Facebook dai check-in di Foursquare"
 
-#: data/org.gnome.Maps.gschema.xml:58
+#: data/org.gnome.Maps.gschema.xml:68
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
@@ -178,11 +194,11 @@ msgstr ""
 "Indiche se Foursquare al à di inviâ il check-in come un post tal account "
 "Facebook associât cun l'account di Foursquare."
 
-#: data/org.gnome.Maps.gschema.xml:62
+#: data/org.gnome.Maps.gschema.xml:72
 msgid "Foursquare check-in Twitter broadcasting"
 msgstr "Trasmission a Twitter dai check-in di Foursquare"
 
-#: data/org.gnome.Maps.gschema.xml:63
+#: data/org.gnome.Maps.gschema.xml:73
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
@@ -190,17 +206,17 @@ msgstr ""
 "Indiche se Foursquare al à di inviâ il check-in come un tweet tal account "
 "Twitter associât cun l'account di Foursquare."
 
-#: data/org.gnome.Maps.gschema.xml:67
+#: data/org.gnome.Maps.gschema.xml:77
 msgid "OpenStreetMap username or e-mail address"
 msgstr "Non utent o direzion e-mail OpenStreetMap"
 
-#: data/org.gnome.Maps.gschema.xml:68
+#: data/org.gnome.Maps.gschema.xml:78
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr ""
 "Al indiche se l'utent al è jentrât te session par modificâ dâts "
 "OpenStreetMap."
 
-#: data/org.gnome.Maps.gschema.xml:72
+#: data/org.gnome.Maps.gschema.xml:82
 msgid "Last used transportation type for routing"
 msgstr "L'ultin gjenar di traspuart doprât par spostâsi"
 
@@ -887,23 +903,23 @@ msgstr "Invie!"
 msgid "All Layer Files"
 msgstr "Ducj i file di strât"
 
-#: src/mainWindow.js:442
+#: src/mainWindow.js:446
 msgid "Failed to connect to location service"
 msgstr "Impussibil conetisi al servizi di localizazion"
 
-#: src/mainWindow.js:507
+#: src/mainWindow.js:511
 msgid "translator-credits"
 msgstr "Fabio Tomat"
 
-#: src/mainWindow.js:510
+#: src/mainWindow.js:514
 msgid "A map application for GNOME"
 msgstr "Une aplicazion di GNOME par lis mapis"
 
-#: src/mainWindow.js:521
+#: src/mainWindow.js:525
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 – 2019 Red Hat, Inc. e i autôrs di GNOME Mapis"
 
-#: src/mainWindow.js:541
+#: src/mainWindow.js:545
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Dâts mape di %s e colaboradôrs"
@@ -913,7 +929,7 @@ msgstr "Dâts mape di %s e colaboradôrs"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:557
+#: src/mainWindow.js:561
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Tassei mape furnîts di %s"
@@ -927,20 +943,20 @@ msgstr "Tassei mape furnîts di %s"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:586
+#: src/mainWindow.js:590
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Ricercje furnide di %s doprant %s"
 
-#: src/mapView.js:359
+#: src/mapView.js:374
 msgid "File type is not supported"
 msgstr "Gjenar di file no supuartât"
 
-#: src/mapView.js:366
+#: src/mapView.js:381
 msgid "Failed to open layer"
 msgstr "Impussibil vierzi il strât"
 
-#: src/mapView.js:402
+#: src/mapView.js:417
 msgid "Failed to open GeoURI"
 msgstr "Impussibil vierzi il GeoURI"
 
@@ -1249,7 +1265,7 @@ msgstr "Acès disabii:"
 msgid "Phone:"
 msgstr "Telefon:"
 
-#: src/placeEntry.js:205
+#: src/placeEntry.js:209
 msgid "Failed to parse Geo URI"
 msgstr "Impussibil analizâ il Geo URI"
 
