@@ -116,6 +116,7 @@ var OpenTripPlanner = class OpenTripPlanner {
         this._query = Application.routeQuery;
         this._baseUrl = params.baseUrl;
         this._router = params.router || 'default';
+        this._onlyTransitData = params.onlyTransitData || false;
         this._walkingRoutes = [];
         this._extendPrevious = false;
     }
@@ -372,25 +373,13 @@ var OpenTripPlanner = class OpenTripPlanner {
         return date.format('%F');
     }
 
-    // create parameter map for the request, given query and options
-    _createParams(stops) {
-        let params = { fromPlace: stops[0].id,
-                       toPlace: stops.last().id };
-        let intermediatePlaces = [];
+    _getPlaceParamFromLocation(location) {
+        return location.latitude + ',' + location.longitude;
+    }
 
-        for (let i = 1; i < stops.length - 1; i++) {
-            intermediatePlaces.push(stops[i].id);
-        }
-        if (intermediatePlaces.length > 0)
-            params.intermediatePlaces = intermediatePlaces;
-
+    _addCommonParams(params) {
         params.numItineraries = 5;
         params.showIntermediateStops = true;
-        /* set walking speed for transfers to a slightly lower value to
-         * compensate for running OTP with only transit data, giving straight-
-         * line walking paths
-         */
-        params.walkSpeed = 1.0;
 
         let time = this._query.time;
         let date = this._query.date;
@@ -436,47 +425,100 @@ var OpenTripPlanner = class OpenTripPlanner {
         let options = this._query.transitOptions;
         if (options && !options.showAllTransitTypes)
             params.mode = this._getModes(options);
+    }
+
+    _createParamsWithLocations() {
+        let points = this._query.filledPoints;
+        let params = {
+            fromPlace: this._getPlaceParamFromLocation(points[0].place.location),
+            toPlace: this._getPlaceParamFromLocation(points[points.length - 1].place.location) };
+        let intermediatePlaces = [];
+
+        for (let i = 1; i < points.length - 1; i++) {
+            let location = points[i].location;
+            intermediatePlaces.push(this._getPlaceParamFromLocation(location));
+        }
+        if (intermediatePlaces)
+            params.intermediatePlaces = intermediatePlaces;
+
+        this._addCommonParams(params);
 
         return params;
     }
 
-    _fetchRoutes(callback) {
-        this._fetchTransitStops((stops) => {
-            let points = this._query.filledPoints;
+    // create parameter map for the request, given query and options
+    _createParamsWithStops(stops) {
+        let params = { fromPlace: stops[0].id,
+                       toPlace: stops.last().id };
+        let intermediatePlaces = [];
 
-            if (!stops) {
+        for (let i = 1; i < stops.length - 1; i++) {
+            intermediatePlaces.push(stops[i].id);
+        }
+        if (intermediatePlaces.length > 0)
+            params.intermediatePlaces = intermediatePlaces;
+
+        /* set walking speed for transfers to a slightly lower value to
+         * compensate for running OTP with only transit data, giving straight-
+         * line walking paths
+         */
+        params.walkSpeed = 1.0;
+
+        this._addCommonParams(params);
+
+        return params;
+    }
+
+    _fetchPlan(params, callback) {
+        let query = new HTTP.Query(params);
+        let uri = new Soup.URI(this._getRouterUrl() + '/plan?' +
+                               query.toString());
+        let request = new Soup.Message({ method: 'GET', uri: uri });
+
+        Utils.debug('uri: ' + this._getRouterUrl() + '/plan?' + query.toString());
+
+        request.request_headers.append('Accept', 'application/json');
+        this._session.queue_message(request, (obj, message) => {
+            if (message.status_code !== Soup.Status.OK) {
+                Utils.debug('Failed to get route plan from router ' +
+                            this._router + ' ' + message);
                 callback(null);
-                return;
+            } else {
+                callback(JSON.parse(message.response_body.data));
             }
-
-            /* if there's only a start and end stop (no intermediate stops)
-             * and those stops are identical, reject the routing, since this
-             * means there would be no point in transit, and OTP would give
-             * some bizarre option like boarding transit, go one stop and then
-             * transfer to go back the same route
-             */
-            if (stops.length === 2 && stops[0].id === stops[1].id) {
-                callback(null);
-                return;
-            }
-
-            let params = this._createParams(stops);
-            let query = new HTTP.Query(params);
-            let uri = new Soup.URI(this._getRouterUrl() + '/plan?' +
-                                   query.toString());
-            let request = new Soup.Message({ method: 'GET', uri: uri });
-
-            request.request_headers.append('Accept', 'application/json');
-            this._session.queue_message(request, (obj, message) => {
-                if (message.status_code !== Soup.Status.OK) {
-                    Utils.debug('Failed to get route plan from router ' +
-                                this._router + ' ' + message);
-                    callback(null);
-                } else {
-                    callback(JSON.parse(message.response_body.data));
-                }
-            });
         });
+    }
+
+    _fetchRoutes(callback) {
+        if (this._onlyTransitData) {
+            this._fetchTransitStops((stops) => {
+                let points = this._query.filledPoints;
+
+                if (!stops) {
+                    callback(null);
+                    return;
+                }
+
+                /* if there's only a start and end stop (no intermediate stops)
+                 * and those stops are identical, reject the routing, since this
+                 * means there would be no point in transit, and OTP would give
+                 * some bizarre option like boarding transit, go one stop and then
+                 * transfer to go back the same route
+                 */
+                if (stops.length === 2 && stops[0].id === stops[1].id) {
+                    callback(null);
+                    return;
+                }
+
+                let params = this._createParamsWithStops(stops);
+
+                this._fetchPlan(params, callback);
+            });
+        } else {
+            let params = this._createParamsWithLocations();
+
+            this._fetchPlan(params, callback);
+        }
     }
 
     _reset() {
