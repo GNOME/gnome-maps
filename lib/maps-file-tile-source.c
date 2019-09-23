@@ -476,6 +476,7 @@ maps_file_tile_source_prepare (MapsFileTileSource *tile_source,
 
   ChamplainMapSource *source = (ChamplainMapSource *) tile_source;
   gboolean ret = TRUE;
+  guint tile_size = champlain_map_source_get_tile_size (source);
 
   if (!get_zoom_levels (tile_source, error)) {
     ret = FALSE;
@@ -490,16 +491,20 @@ maps_file_tile_source_prepare (MapsFileTileSource *tile_source,
   tile_source->priv->world = champlain_bounding_box_new ();
   tile_source->priv->world->left = champlain_map_source_get_longitude (source,
                                                     tile_source->priv->min_zoom,
-                                                    tile_source->priv->min_x * 256);
+                                                    tile_source->priv->min_x *
+                                                    tile_size);
   tile_source->priv->world->right = champlain_map_source_get_longitude (source,
                                                      tile_source->priv->min_zoom,
-                                                     tile_source->priv->max_x * 256);
+                                                     tile_source->priv->max_x *
+                                                     tile_size);
   tile_source->priv->world->top = champlain_map_source_get_latitude (source,
                                                      tile_source->priv->min_zoom,
-                                                     tile_source->priv->min_y * 256);
+                                                     tile_source->priv->min_y *
+                                                     tile_size);
   tile_source->priv->world->bottom = champlain_map_source_get_latitude (source,
                                                   tile_source->priv->min_zoom,
-                                                  tile_source->priv->max_y * 256);
+                                                  tile_source->priv->max_y *
+                                                  tile_size);
  out:
   return ret;
 }
