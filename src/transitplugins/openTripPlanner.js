@@ -19,6 +19,8 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
+const _ = imports.gettext.gettext;
+
 const Champlain = imports.gi.Champlain;
 const GLib = imports.gi.GLib;
 const Soup = imports.gi.Soup;
@@ -28,6 +30,7 @@ const EPAF = imports.epaf;
 const HTTP = imports.http;
 const Location = imports.location;
 const Place = imports.place;
+const Route = imports.route;
 const RouteQuery = imports.routeQuery;
 const Service = imports.service;
 const TransitPlan = imports.transitPlan;
@@ -36,20 +39,17 @@ const Utils = imports.utils;
 /**
  * This module implements the interface for communicating with an OpenTripPlanner
  * server instance.
- * The code is somwhat intricate, because it assumes running OpenTripPlanner with
- * only transit data and relies on calling out to GraphHopper to do turn-by-turn-
- * based routing for the walking portions, thus it's based on an asynchronous
- * recursive pattern. The reason for running OpenTripPlanner with only transit
- * data is that prior experiments has shown that OpenTripPlanner with full OSM
- * data doesn't scale well beyong single cities, and GraphHopper has already
- * given us good results before.
+ * The code is somewhat intricate since it supports instances of OpenTripPlanner
+ * running both with and without OSM data to complement the transit timetable
+ * data with turn-by-turn (walking) routing.
  *
  * There is two entry points for obtaining routes, one which is called by the
  * routing delegator when the query is being modified (fetchFirstResults()),
  * and the other being called when requesting additional results (later or
  * earlier alternatives depending on search criteria) (fetchMoreResults())
  * These call into an entry point function "_fatchRoute()".
- * "_fetchRoutes()" is called, which in turn
+ * "_fetchRoutes()" is called.
+ * In the case where there is no OSM data (onlyTransitData is true), it
  * asyncronously calls "_fetchTransitStops()" to get closest transit stop for
  * each of the query point, this function will involve OpenTripPlanner calls to
  * find stops within a search circle around the coordinate and then calls out
@@ -116,6 +116,7 @@ var OpenTripPlanner = class OpenTripPlanner {
         this._query = Application.routeQuery;
         this._baseUrl = params.baseUrl;
         this._router = params.router || 'default';
+        this._onlyTransitData = params.onlyTransitData || false;
         this._walkingRoutes = [];
         this._extendPrevious = false;
     }
@@ -163,6 +164,11 @@ var OpenTripPlanner = class OpenTripPlanner {
         let modes = options.transitTypes.map((transitType) => {
             return this._getMode(transitType);
         });
+
+        /* should always include walk when setting explicit modes,
+         * otherwise only routes ending close to a stop would work
+         */
+        modes.push('WALK');
 
         return modes.join(',');
     }
@@ -372,25 +378,13 @@ var OpenTripPlanner = class OpenTripPlanner {
         return date.format('%F');
     }
 
-    // create parameter map for the request, given query and options
-    _createParams(stops) {
-        let params = { fromPlace: stops[0].id,
-                       toPlace: stops.last().id };
-        let intermediatePlaces = [];
+    _getPlaceParamFromLocation(location) {
+        return location.latitude + ',' + location.longitude;
+    }
 
-        for (let i = 1; i < stops.length - 1; i++) {
-            intermediatePlaces.push(stops[i].id);
-        }
-        if (intermediatePlaces.length > 0)
-            params.intermediatePlaces = intermediatePlaces;
-
+    _addCommonParams(params) {
         params.numItineraries = 5;
         params.showIntermediateStops = true;
-        /* set walking speed for transfers to a slightly lower value to
-         * compensate for running OTP with only transit data, giving straight-
-         * line walking paths
-         */
-        params.walkSpeed = 1.0;
 
         let time = this._query.time;
         let date = this._query.date;
@@ -436,47 +430,106 @@ var OpenTripPlanner = class OpenTripPlanner {
         let options = this._query.transitOptions;
         if (options && !options.showAllTransitTypes)
             params.mode = this._getModes(options);
+    }
+
+    _createParamsWithLocations() {
+        let points = this._query.filledPoints;
+        let params = {
+            fromPlace: this._getPlaceParamFromLocation(points[0].place.location),
+            toPlace: this._getPlaceParamFromLocation(points[points.length - 1].place.location) };
+        let intermediatePlaces = [];
+
+        for (let i = 1; i < points.length - 1; i++) {
+            let location = points[i].place.location;
+            intermediatePlaces.push(this._getPlaceParamFromLocation(location));
+        }
+        if (intermediatePlaces)
+            params.intermediatePlaces = intermediatePlaces;
+
+        params.maxWalkDistance = 2500;
+        this._addCommonParams(params);
 
         return params;
     }
 
-    _fetchRoutes(callback) {
-        this._fetchTransitStops((stops) => {
-            let points = this._query.filledPoints;
+    // create parameter map for the request, given query and options
+    _createParamsWithStops(stops) {
+        let params = { fromPlace: stops[0].id,
+                       toPlace: stops.last().id };
+        let intermediatePlaces = [];
 
-            if (!stops) {
+        for (let i = 1; i < stops.length - 1; i++) {
+            intermediatePlaces.push(stops[i].id);
+        }
+        if (intermediatePlaces.length > 0)
+            params.intermediatePlaces = intermediatePlaces;
+
+        /* set walking speed for transfers to a slightly lower value to
+         * compensate for running OTP with only transit data, giving straight-
+         * line walking paths
+         */
+        params.walkSpeed = 1.0;
+
+        this._addCommonParams(params);
+
+        return params;
+    }
+
+    _fetchPlan(params, callback) {
+        let query = new HTTP.Query(params);
+        let uri = new Soup.URI(this._getRouterUrl() + '/plan?' +
+                               query.toString());
+        let request = new Soup.Message({ method: 'GET', uri: uri });
+
+        request.request_headers.append('Accept', 'application/json');
+        this._session.queue_message(request, (obj, message) => {
+            if (message.status_code !== Soup.Status.OK) {
+                Utils.debug('Failed to get route plan from router ' +
+                            this._router + ' ' + message);
                 callback(null);
-                return;
-            }
+            } else {
+                try {
+                    let result = JSON.parse(message.response_body.data);
 
-            /* if there's only a start and end stop (no intermediate stops)
-             * and those stops are identical, reject the routing, since this
-             * means there would be no point in transit, and OTP would give
-             * some bizarre option like boarding transit, go one stop and then
-             * transfer to go back the same route
-             */
-            if (stops.length === 2 && stops[0].id === stops[1].id) {
-                callback(null);
-                return;
-            }
-
-            let params = this._createParams(stops);
-            let query = new HTTP.Query(params);
-            let uri = new Soup.URI(this._getRouterUrl() + '/plan?' +
-                                   query.toString());
-            let request = new Soup.Message({ method: 'GET', uri: uri });
-
-            request.request_headers.append('Accept', 'application/json');
-            this._session.queue_message(request, (obj, message) => {
-                if (message.status_code !== Soup.Status.OK) {
-                    Utils.debug('Failed to get route plan from router ' +
-                                this._router + ' ' + message);
+                    callback(result);
+                } catch (e) {
+                    Utils.debug('Error parsing result: ' + e);
                     callback(null);
-                } else {
-                    callback(JSON.parse(message.response_body.data));
                 }
-            });
+            }
         });
+    }
+
+    _fetchRoutes(callback) {
+        if (this._onlyTransitData) {
+            this._fetchTransitStops((stops) => {
+                let points = this._query.filledPoints;
+
+                if (!stops) {
+                    callback(null);
+                    return;
+                }
+
+                /* if there's only a start and end stop (no intermediate stops)
+                 * and those stops are identical, reject the routing, since this
+                 * means there would be no point in transit, and OTP would give
+                 * some bizarre option like boarding transit, go one stop and then
+                 * transfer to go back the same route
+                 */
+                if (stops.length === 2 && stops[0].id === stops[1].id) {
+                    callback(null);
+                    return;
+                }
+
+                let params = this._createParamsWithStops(stops);
+
+                this._fetchPlan(params, callback);
+            });
+        } else {
+            let params = this._createParamsWithLocations();
+
+            this._fetchPlan(params, callback);
+        }
     }
 
     _reset() {
@@ -510,6 +563,8 @@ var OpenTripPlanner = class OpenTripPlanner {
                 let itineraries = [];
                 let plan = route.plan;
 
+                Utils.debug('route: ' + JSON.stringify(route, null, 2));
+
                 if (plan && plan.itineraries) {
                     itineraries =
                         itineraries.concat(
@@ -522,7 +577,10 @@ var OpenTripPlanner = class OpenTripPlanner {
                      * results */
                     this._noRouteFound();
                 } else {
-                    this._recalculateItineraries(itineraries);
+                    if (this._onlyTransitData)
+                        this._recalculateItineraries(itineraries);
+                    else
+                        this._updateWithNewItineraries(itineraries);
                 }
             } else {
                 this._noRouteFound();
@@ -577,6 +635,30 @@ var OpenTripPlanner = class OpenTripPlanner {
         return true;
     }
 
+    /**
+     * Update plan with new itineraries, setting the new itineraries if it's
+     * the first fetch for a query, or extending the existing ones if it's
+     * a request to load more
+     */
+    _updateWithNewItineraries(itineraries) {
+        /* sort itineraries, by departure time ascending if querying
+         * by leaving time, by arrival time descending when querying
+         * by arriving time
+         */
+        if (this._query.arriveBy)
+            itineraries.sort(TransitPlan.sortItinerariesByArrivalDesc);
+        else
+            itineraries.sort(TransitPlan.sortItinerariesByDepartureAsc);
+
+        let newItineraries =
+            this._extendPrevious ? this.plan.itineraries.concat(itineraries) :
+                                   itineraries;
+
+        // reset the "load more results" flag
+        this._extendPrevious = false;
+        this.plan.update(newItineraries);
+    }
+
     _recalculateItinerariesRecursive(itineraries, index) {
         if (index < itineraries.length) {
             this._recalculateItinerary(itineraries[index], (itinerary) => {
@@ -602,23 +684,7 @@ var OpenTripPlanner = class OpenTripPlanner {
 
             if (filteredItineraries.length > 0) {
                 filteredItineraries.forEach((itinerary) => itinerary.adjustTimings());
-
-                /* sort itineraries, by departure time ascending if querying
-                 * by leaving time, by arrival time descending when querying
-                 * by arriving time
-                 */
-                if (this._query.arriveBy)
-                    filteredItineraries.sort(TransitPlan.sortItinerariesByArrivalDesc);
-                else
-                    filteredItineraries.sort(TransitPlan.sortItinerariesByDepartureAsc);
-
-                let newItineraries = this._extendPrevious ?
-                                     this.plan.itineraries.concat(filteredItineraries) :
-                                     filteredItineraries;
-
-                // reset the "load more results" flag
-                this._extendPrevious = false;
-                this.plan.update(newItineraries);
+                this._updateWithNewItineraries(filteredItineraries);
             } else {
                 this._noRouteFound();
             }
@@ -983,7 +1049,7 @@ var OpenTripPlanner = class OpenTripPlanner {
     }
 
     _createLegs(legs) {
-        return legs.map((leg) => this._createLeg(leg));
+        return legs.map((leg, index, legs) => this._createLeg(leg, index, legs));
     }
 
     /* check if a string is a valid hex RGB string */
@@ -997,14 +1063,51 @@ var OpenTripPlanner = class OpenTripPlanner {
         return false;
     }
 
-    _createLeg(leg) {
+    _createLeg(leg, index, legs) {
         let polyline = EPAF.decode(leg.legGeometry.points);
-        let intermediateStops =
-            this._createIntermediateStops(leg);
         let color = leg.routeColor && this._isValidHexColor(leg.routeColor) ?
                     leg.routeColor : null;
         let textColor = leg.routeTextColor && this._isValidHexColor(leg.routeTextColor) ?
                         leg.routeTextColor : null;
+        let first = index === 0;
+        let last = index === legs.length - 1;
+        let from = first ? this._query.filledPoints[0].place.name : leg.from.name;
+        let to = last ? this._query.filledPoints.last().place.name : leg.to.name;
+
+        let result = new TransitPlan.Leg({ departure:            leg.from.departure,
+                                           arrival:              leg.to.arrival,
+                                           from:                 from,
+                                           to:                   to,
+                                           headsign:             leg.headsign,
+                                           fromCoordinate:       [leg.from.lat,
+                                                                  leg.from.lon],
+                                           toCoordinate:         [leg.to.lat,
+                                                                  leg.to.lon],
+                                           route:                leg.route,
+                                           routeType:            leg.routeType,
+                                           polyline:             polyline,
+                                           isTransit:            leg.transitLeg,
+                                           distance:             leg.distance,
+                                           duration:             leg.duration,
+                                           agencyName:           leg.agencyName,
+                                           agencyUrl:            leg.agencyUrl,
+                                           agencyTimezoneOffset: leg.agencyTimeZoneOffset,
+                                           color:                color,
+                                           textColor:            textColor,
+                                           tripShortName:        leg.tripShortName });
+
+        if (leg.transitLeg)
+            result.intermediateStops = this._createIntermediateStops(leg);
+        else if (!this._onlyTransitData)
+            result.walkingInstructions = this._createTurnpoints(leg, polyline);
+
+        return result;
+    }
+
+    _createIntermediateStops(leg) {
+        let stops = leg.intermediateStops;
+        let intermediateStops =
+            stops.map((stop) => this._createIntermediateStop(stop, leg));
 
         /* instroduce an extra stop at the end (in additional to the
          * intermediate stops we get from OTP
@@ -1014,34 +1117,7 @@ var OpenTripPlanner = class OpenTripPlanner {
                                                       agencyTimezoneOffset: leg.agencyTimeZoneOffset,
                                                       coordinate: [leg.to.lat,
                                                                    leg.to.lon] }));
-
-        return new TransitPlan.Leg({ departure:            leg.from.departure,
-                                     arrival:              leg.to.arrival,
-                                     from:                 leg.from.name,
-                                     to:                   leg.to.name,
-                                     headsign:             leg.headsign,
-                                     intermediateStops:    intermediateStops,
-                                     fromCoordinate:       [leg.from.lat,
-                                                            leg.from.lon],
-                                     toCoordinate:         [leg.to.lat,
-                                                            leg.to.lon],
-                                     route:                leg.route,
-                                     routeType:            leg.routeType,
-                                     polyline:             polyline,
-                                     isTransit:            leg.transitLeg,
-                                     distance:             leg.distance,
-                                     duration:             leg.duration,
-                                     agencyName:           leg.agencyName,
-                                     agencyUrl:            leg.agencyUrl,
-                                     agencyTimezoneOffset: leg.agencyTimeZoneOffset,
-                                     color:                color,
-                                     textColor:            textColor,
-                                     tripShortName:        leg.tripShortName });
-    }
-
-    _createIntermediateStops(leg) {
-        let stops = leg.intermediateStops;
-        return stops.map((stop) => this._createIntermediateStop(stop, leg));
+        return intermediateStops;
     }
 
     _createIntermediateStop(stop, leg) {
@@ -1050,5 +1126,155 @@ var OpenTripPlanner = class OpenTripPlanner {
                                       departure:  stop.departure,
                                       agencyTimezoneOffset: leg.agencyTimeZoneOffset,
                                       coordinate: [stop.lat, stop.lon] });
+    }
+
+    /**
+     * Create a turnpoints list on the same format we use with GraphHopper
+     * from OpenTripPlanner walking steps
+     */
+    _createTurnpoints(leg, polyline) {
+        if (leg.steps) {
+            let steps = leg.steps;
+            let startPoint = new Route.TurnPoint({
+                coordinate:  polyline[0],
+                type:        Route.TurnPointType.START,
+                distance:    0,
+                instruction: _("Start!"),
+                time:        0,
+                turnAngle:   0
+            });
+            let turnpoints = [startPoint];
+            steps.forEach((step) => {
+                turnpoints.push(this._createTurnpoint(step));
+            });
+
+            let endPoint = new Route.TurnPoint({
+                coordinate: polyline.last(),
+                type:       Route.TurnPoint.END,
+                distance:   0,
+                instruction:_("Arrive")
+            });
+
+            turnpoints.push(endPoint);
+
+            return turnpoints;
+        } else {
+            return null;
+        }
+    }
+
+    _createTurnpoint(step) {
+        let coordinate = new Champlain.Coordinate({ latitude: step.lat,
+                                                    longitude: step.lon });
+        let turnpoint = new Route.TurnPoint({
+            coordinate: coordinate,
+            type: this._getTurnpointType(step),
+            distance: step.distance,
+            instruction: this._getTurnpointInstruction(step)
+        });
+
+        return turnpoint;
+    }
+
+    _getTurnpointType(step) {
+        switch (step.relativeDirection) {
+            case 'DEPART':
+            case 'CONTINUE':
+                return Route.TurnPointType.CONTINUE;
+            case 'LEFT':
+                return Route.TurnPointType.LEFT;
+            case 'SLIGHTLY_LEFT':
+                return Route.TurnPointType.SLIGHT_LEFT;
+            case 'HARD_LEFT':
+                return Route.TurnPointType.SHARP_LEFT;
+            case 'RIGHT':
+                return Route.TurnPointType.RIGHT;
+            case 'SLIGHTLY_RIGHT':
+                return Route.TurnPointType.SLIGHT_RIGHT;
+            case 'HARD_RIGHT':
+                return Route.TurnPointType.SHARP_RIGHT;
+            case 'CIRCLE_CLOCKWISE':
+            case 'CIRCLE_COUNTERCLOCKWISE':
+                return Route.TurnPointType.ROUNDABOUT;
+            case 'ELEVATOR':
+                return Route.TurnPointType.ELEVATOR;
+            case 'UTURN_LEFT':
+                return Route.TurnPointType.UTURN_LEFT;
+            case 'UTURN_RIGHT':
+                return Route.TurnPointType.UTURN_RIGHT;
+            default:
+                return null;
+        }
+    }
+
+    _getTurnpointInstruction(step) {
+        let street = !step.bogusName ? step.streetName : null;
+        switch (step.relativeDirection) {
+            case 'DEPART':
+            case 'CONTINUE':
+                if (street)
+                    return _("Continue on %s").format(street);
+                else
+                    return _("Continue");
+            case 'LEFT':
+                if (street)
+                    return _("Turn left on %s").format(street);
+                else
+                    return _("Turn left");
+            case 'SLIGHTLY_LEFT':
+                if (street)
+                    return _("Turn slightly left on %s").format(street);
+                else
+                    return _("Turn slightly left");
+            case 'HARD_LEFT':
+                if (street)
+                    return _("Turn sharp left on %s").format(street);
+                else
+                    return _("Turn sharp left");
+            case 'RIGHT':
+                if (street)
+                    return _("Turn right on %s").format(street);
+                else
+                    return _("Turn right");
+            case 'SLIGHTLY_RIGHT':
+                if (street)
+                    return _("Turn slightly right on %s").format(street);
+                else
+                    return _("Turn slightly right");
+            case 'HARD_RIGHT':
+                if (street)
+                    return _("Turn sharp right on %s").format(street);
+                else
+                    return _("Turn sharp right");
+            case 'CIRCLE_CLOCKWISE':
+            case 'CIRCLE_COUNTERCLOCKWISE': {
+                let exit = step.exit;
+
+                if (exit)
+                    return _("In the roundaboat, take exit %s").format(exit);
+                else if (street)
+                    return _("In the roundabout, take exit to %s").format(street);
+                else
+                    return _("Take the roundabout");
+            }
+            case 'ELEVATOR': {
+                if (street)
+                    return _("Take the elevator and get off at %s").format(street);
+                else
+                    return _("Take the elevator");
+            }
+            case 'UTURN_LEFT':
+                if (street)
+                    return _("Make a left u-turn onto %s").format(street);
+                else
+                    return _("Make a left u-turn");
+            case 'UTURN_RIGHT':
+                if (street)
+                    return _("Make a right u-turn onto %s").format(street);
+                else
+                    return _("Make a rigth u-turn");
+            default:
+                return '';
+        }
     }
 };
