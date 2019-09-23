@@ -116,6 +116,7 @@ var OpenTripPlanner = class OpenTripPlanner {
         this._query = Application.routeQuery;
         this._baseUrl = params.baseUrl;
         this._router = params.router || 'default';
+        this._onlyTransitData = params.onlyTransitData || false;
         this._walkingRoutes = [];
         this._extendPrevious = false;
     }
@@ -372,25 +373,13 @@ var OpenTripPlanner = class OpenTripPlanner {
         return date.format('%F');
     }
 
-    // create parameter map for the request, given query and options
-    _createParams(stops) {
-        let params = { fromPlace: stops[0].id,
-                       toPlace: stops.last().id };
-        let intermediatePlaces = [];
+    _getPlaceParamFromLocation(location) {
+        return location.latitude + ',' + location.longitude;
+    }
 
-        for (let i = 1; i < stops.length - 1; i++) {
-            intermediatePlaces.push(stops[i].id);
-        }
-        if (intermediatePlaces.length > 0)
-            params.intermediatePlaces = intermediatePlaces;
-
+    _addCommonParams(params) {
         params.numItineraries = 5;
         params.showIntermediateStops = true;
-        /* set walking speed for transfers to a slightly lower value to
-         * compensate for running OTP with only transit data, giving straight-
-         * line walking paths
-         */
-        params.walkSpeed = 1.0;
 
         let time = this._query.time;
         let date = this._query.date;
@@ -436,47 +425,107 @@ var OpenTripPlanner = class OpenTripPlanner {
         let options = this._query.transitOptions;
         if (options && !options.showAllTransitTypes)
             params.mode = this._getModes(options);
+    }
+
+    _createParamsWithLocations() {
+        let points = this._query.filledPoints;
+        let params = {
+            fromPlace: this._getPlaceParamFromLocation(points[0].place.location),
+            toPlace: this._getPlaceParamFromLocation(points[points.length - 1].place.location) };
+        let intermediatePlaces = [];
+
+        for (let i = 1; i < points.length - 1; i++) {
+            let location = points[i].location;
+            intermediatePlaces.push(this._getPlaceParamFromLocation(location));
+        }
+        if (intermediatePlaces)
+            params.intermediatePlaces = intermediatePlaces;
+
+        this._addCommonParams(params);
 
         return params;
     }
 
-    _fetchRoutes(callback) {
-        this._fetchTransitStops((stops) => {
-            let points = this._query.filledPoints;
+    // create parameter map for the request, given query and options
+    _createParamsWithStops(stops) {
+        let params = { fromPlace: stops[0].id,
+                       toPlace: stops.last().id };
+        let intermediatePlaces = [];
 
-            if (!stops) {
+        for (let i = 1; i < stops.length - 1; i++) {
+            intermediatePlaces.push(stops[i].id);
+        }
+        if (intermediatePlaces.length > 0)
+            params.intermediatePlaces = intermediatePlaces;
+
+        /* set walking speed for transfers to a slightly lower value to
+         * compensate for running OTP with only transit data, giving straight-
+         * line walking paths
+         */
+        params.walkSpeed = 1.0;
+
+        this._addCommonParams(params);
+
+        return params;
+    }
+
+    _fetchPlan(params, callback) {
+        let query = new HTTP.Query(params);
+        let uri = new Soup.URI(this._getRouterUrl() + '/plan?' +
+                               query.toString());
+        let request = new Soup.Message({ method: 'GET', uri: uri });
+
+        Utils.debug('uri: ' + this._getRouterUrl() + '/plan?' + query.toString());
+
+        request.request_headers.append('Accept', 'application/json');
+        this._session.queue_message(request, (obj, message) => {
+            if (message.status_code !== Soup.Status.OK) {
+                Utils.debug('Failed to get route plan from router ' +
+                            this._router + ' ' + message);
                 callback(null);
-                return;
-            }
+            } else {
+                try {
+                    let result = JSON.parse(message.response_body.data);
 
-            /* if there's only a start and end stop (no intermediate stops)
-             * and those stops are identical, reject the routing, since this
-             * means there would be no point in transit, and OTP would give
-             * some bizarre option like boarding transit, go one stop and then
-             * transfer to go back the same route
-             */
-            if (stops.length === 2 && stops[0].id === stops[1].id) {
-                callback(null);
-                return;
-            }
-
-            let params = this._createParams(stops);
-            let query = new HTTP.Query(params);
-            let uri = new Soup.URI(this._getRouterUrl() + '/plan?' +
-                                   query.toString());
-            let request = new Soup.Message({ method: 'GET', uri: uri });
-
-            request.request_headers.append('Accept', 'application/json');
-            this._session.queue_message(request, (obj, message) => {
-                if (message.status_code !== Soup.Status.OK) {
-                    Utils.debug('Failed to get route plan from router ' +
-                                this._router + ' ' + message);
+                    callback(result);
+                } catch (e) {
+                    Utils.debug('Error parsing result: ' + e);
                     callback(null);
-                } else {
-                    callback(JSON.parse(message.response_body.data));
                 }
-            });
+            }
         });
+    }
+
+    _fetchRoutes(callback) {
+        if (this._onlyTransitData) {
+            this._fetchTransitStops((stops) => {
+                let points = this._query.filledPoints;
+
+                if (!stops) {
+                    callback(null);
+                    return;
+                }
+
+                /* if there's only a start and end stop (no intermediate stops)
+                 * and those stops are identical, reject the routing, since this
+                 * means there would be no point in transit, and OTP would give
+                 * some bizarre option like boarding transit, go one stop and then
+                 * transfer to go back the same route
+                 */
+                if (stops.length === 2 && stops[0].id === stops[1].id) {
+                    callback(null);
+                    return;
+                }
+
+                let params = this._createParamsWithStops(stops);
+
+                this._fetchPlan(params, callback);
+            });
+        } else {
+            let params = this._createParamsWithLocations();
+
+            this._fetchPlan(params, callback);
+        }
     }
 
     _reset() {
@@ -510,6 +559,8 @@ var OpenTripPlanner = class OpenTripPlanner {
                 let itineraries = [];
                 let plan = route.plan;
 
+                Utils.debug('route: ' + JSON.stringify(route, null, 2));
+
                 if (plan && plan.itineraries) {
                     itineraries =
                         itineraries.concat(
@@ -522,7 +573,10 @@ var OpenTripPlanner = class OpenTripPlanner {
                      * results */
                     this._noRouteFound();
                 } else {
-                    this._recalculateItineraries(itineraries);
+                    if (this._onlyTransitData)
+                        this._recalculateItineraries(itineraries);
+                    else
+                        this._updateWithNewItineraries(itineraries);
                 }
             } else {
                 this._noRouteFound();
@@ -577,6 +631,30 @@ var OpenTripPlanner = class OpenTripPlanner {
         return true;
     }
 
+    /**
+     * Update plan with new itineraries, setting the new itineraries if it's
+     * the first fetch for a query, or extending the existing ones if it's
+     * a request to load more
+     */
+    _updateWithNewItineraries(itineraries) {
+        /* sort itineraries, by departure time ascending if querying
+         * by leaving time, by arrival time descending when querying
+         * by arriving time
+         */
+        if (this._query.arriveBy)
+            itineraries.sort(TransitPlan.sortItinerariesByArrivalDesc);
+        else
+            itineraries.sort(TransitPlan.sortItinerariesByDepartureAsc);
+
+        let newItineraries =
+            this._extendPrevious ? this.plan.itineraries.concat(itineraries) :
+                                   itineraries;
+
+        // reset the "load more results" flag
+        this._extendPrevious = false;
+        this.plan.update(newItineraries);
+    }
+
     _recalculateItinerariesRecursive(itineraries, index) {
         if (index < itineraries.length) {
             this._recalculateItinerary(itineraries[index], (itinerary) => {
@@ -602,23 +680,7 @@ var OpenTripPlanner = class OpenTripPlanner {
 
             if (filteredItineraries.length > 0) {
                 filteredItineraries.forEach((itinerary) => itinerary.adjustTimings());
-
-                /* sort itineraries, by departure time ascending if querying
-                 * by leaving time, by arrival time descending when querying
-                 * by arriving time
-                 */
-                if (this._query.arriveBy)
-                    filteredItineraries.sort(TransitPlan.sortItinerariesByArrivalDesc);
-                else
-                    filteredItineraries.sort(TransitPlan.sortItinerariesByDepartureAsc);
-
-                let newItineraries = this._extendPrevious ?
-                                     this.plan.itineraries.concat(filteredItineraries) :
-                                     filteredItineraries;
-
-                // reset the "load more results" flag
-                this._extendPrevious = false;
-                this.plan.update(newItineraries);
+                this._updateWithNewItineraries(filteredItineraries);
             } else {
                 this._noRouteFound();
             }
@@ -999,12 +1061,47 @@ var OpenTripPlanner = class OpenTripPlanner {
 
     _createLeg(leg) {
         let polyline = EPAF.decode(leg.legGeometry.points);
-        let intermediateStops =
-            this._createIntermediateStops(leg);
         let color = leg.routeColor && this._isValidHexColor(leg.routeColor) ?
                     leg.routeColor : null;
         let textColor = leg.routeTextColor && this._isValidHexColor(leg.routeTextColor) ?
                         leg.routeTextColor : null;
+
+
+
+        let result = new TransitPlan.Leg({ departure:            leg.from.departure,
+                                           arrival:              leg.to.arrival,
+                                           from:                 leg.from.name,
+                                           to:                   leg.to.name,
+                                           headsign:             leg.headsign,
+                                           fromCoordinate:       [leg.from.lat,
+                                                                  leg.from.lon],
+                                           toCoordinate:         [leg.to.lat,
+                                                                  leg.to.lon],
+                                           route:                leg.route,
+                                           routeType:            leg.routeType,
+                                           polyline:             polyline,
+                                           isTransit:            leg.transitLeg,
+                                           distance:             leg.distance,
+                                           duration:             leg.duration,
+                                           agencyName:           leg.agencyName,
+                                           agencyUrl:            leg.agencyUrl,
+                                           agencyTimezoneOffset: leg.agencyTimeZoneOffset,
+                                           color:                color,
+                                           textColor:            textColor,
+                                           tripShortName:        leg.tripShortName });
+
+        if (leg.transitLeg)
+            result.intermediateStops = this._createIntermediateStops(leg);
+        else if (!this._onlyTransitData)
+            result.walkingInstructions = this._createTurnpoints(leg);
+
+        return result;
+    }
+
+    _createIntermediateStops(leg) {
+        let stops = leg.intermediateStops;
+        let intermediateStops =
+            stops.map((stop) => this._createIntermediateStop(stop, leg));
 
         /* instroduce an extra stop at the end (in additional to the
          * intermediate stops we get from OTP
@@ -1014,34 +1111,7 @@ var OpenTripPlanner = class OpenTripPlanner {
                                                       agencyTimezoneOffset: leg.agencyTimeZoneOffset,
                                                       coordinate: [leg.to.lat,
                                                                    leg.to.lon] }));
-
-        return new TransitPlan.Leg({ departure:            leg.from.departure,
-                                     arrival:              leg.to.arrival,
-                                     from:                 leg.from.name,
-                                     to:                   leg.to.name,
-                                     headsign:             leg.headsign,
-                                     intermediateStops:    intermediateStops,
-                                     fromCoordinate:       [leg.from.lat,
-                                                            leg.from.lon],
-                                     toCoordinate:         [leg.to.lat,
-                                                            leg.to.lon],
-                                     route:                leg.route,
-                                     routeType:            leg.routeType,
-                                     polyline:             polyline,
-                                     isTransit:            leg.transitLeg,
-                                     distance:             leg.distance,
-                                     duration:             leg.duration,
-                                     agencyName:           leg.agencyName,
-                                     agencyUrl:            leg.agencyUrl,
-                                     agencyTimezoneOffset: leg.agencyTimeZoneOffset,
-                                     color:                color,
-                                     textColor:            textColor,
-                                     tripShortName:        leg.tripShortName });
-    }
-
-    _createIntermediateStops(leg) {
-        let stops = leg.intermediateStops;
-        return stops.map((stop) => this._createIntermediateStop(stop, leg));
+        return intermediateStops;
     }
 
     _createIntermediateStop(stop, leg) {
@@ -1050,5 +1120,21 @@ var OpenTripPlanner = class OpenTripPlanner {
                                       departure:  stop.departure,
                                       agencyTimezoneOffset: leg.agencyTimeZoneOffset,
                                       coordinate: [stop.lat, stop.lon] });
+    }
+
+    /**
+     * Create a turnpoints list on the same format we use with GraphHopper
+     * from OpenTripPlanner walking steps
+     */
+    _createTurnpoints(leg) {
+        if (leg.steps) {
+            leg.steps.forEach((step) => {
+                Utils.debug('step: ' + JSON.stringify(step, null, 2));
+            });
+            // TODO: return the actual turnpoints
+            return null;
+        } else {
+            return null;
+        }
     }
 };
