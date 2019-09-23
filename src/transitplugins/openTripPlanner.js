@@ -116,6 +116,7 @@ var OpenTripPlanner = class OpenTripPlanner {
         this._query = Application.routeQuery;
         this._baseUrl = params.baseUrl;
         this._router = params.router || 'default';
+        this._onlyTransitData = params.onlyTransitData || false;
         this._walkingRoutes = [];
         this._extendPrevious = false;
     }
@@ -372,8 +373,26 @@ var OpenTripPlanner = class OpenTripPlanner {
         return date.format('%F');
     }
 
+    _getPlaceParamFromLocation(location) {
+        return location.latitude + ',' + location.longitude;
+    }
+
+    _createParamsWithLocations() {
+        let points = this._query.filledPoints;
+        let params = {
+            fromPlace: this._getPlaceParamFromLocation(points[0].location),
+            toPlace: this._getPlaceParamFromLocation(points[points.length - 1].location) };
+        let intermediatePlaces = [];
+
+        for (let i = 1; i < points.length - 1; i++) {
+            let location = points[i].location;
+            intermediatePlaces.push(this._getPlaceParamFromLocation(location));
+        }
+        if (intermediatePlaces)
+    }
+
     // create parameter map for the request, given query and options
-    _createParams(stops) {
+    _createParamsWithStops(stops) {
         let params = { fromPlace: stops[0].id,
                        toPlace: stops.last().id };
         let intermediatePlaces = [];
