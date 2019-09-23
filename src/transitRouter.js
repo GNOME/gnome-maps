@@ -105,21 +105,9 @@ var TransitRouter = class TransitRoute {
             return null;
     }
 
-    /**
-     * Get the most preferred provider for a given query.
-     * Return: an array with the provider definition and the plugin instance,
-     *         or null if no matching provider was found.
-     */
-    _getBestProviderForQuery() {
-        let startLocation = this._query.filledPoints[0].place.location;
-        let endLocation =
-            this._query.filledPoints[this._query.points.length - 1].place.location;
-        let startCountry =
-            Utils.getCountryCodeForCoordinates(startLocation.latitude,
-                                               startLocation.longitude);
-        let endCountry =
-            Utils.getCountryCodeForCoordinates(endLocation.latitude,
-                                               endLocation.longitude);
+    _getMatchingProvidersForLocation(location) {
+        let country = Utils.getCountryCodeForCoordinates(location.latitude,
+                                                         location.longitude);
 
         let matchingProviders = [];
 
@@ -144,9 +132,8 @@ var TransitRouter = class TransitRoute {
                 let countries = area.countries;
 
                 if (countries) {
-                    if (countries.includes(startCountry) &&
-                        countries.includes(endCountry)) {
-                        matchingProviders.push(provider);
+                    if (countries.includes(country)) {
+                        matchingProviders[provider.name] = provider;
                         return;
                     }
                 }
@@ -165,19 +152,56 @@ var TransitRouter = class TransitRoute {
                                                             top: x2,
                                                             right: y2 });
 
-                    if (cbbox.covers(startLocation.latitude,
-                                     startLocation.longitude) &&
-                        cbbox.covers(endLocation.latitude,
-                                     endLocation.longitude)) {
-                        matchingProviders.push(provider);
+                    if (cbbox.covers(location.latitude,
+                                     location.longitude)) {
+                        matchingProviders[provider.name] = provider;
                         return;
                     }
                 }
             });
         });
 
-        if (matchingProviders.length === 0)
-            return null;
+        Utils.debug('returning matching providers: ' + matchingProviders.length);
+        return matchingProviders;
+    }
+
+    /**
+     * Get the most preferred provider for a given query.
+     * Return: an array with the provider definition and the plugin instance,
+     *         or null if no matching provider was found.
+     */
+    _getBestProviderForQuery() {
+        let startLocation = this._query.filledPoints[0].place.location;
+        let endLocation =
+            this._query.filledPoints[this._query.points.length - 1].place.location;
+
+        let matchingProvidersForStart =
+            this._getMatchingProvidersForLocation(startLocation);
+        let matchingProvidersForEnd =
+            this._getMatchingProvidersForLocation(endLocation);
+
+        let matchingProviders = [];
+
+        // check all candidate providers matching on the start location
+        for (let name in matchingProvidersForStart) {
+            let providerAtStart = matchingProvidersForStart[name];
+            let providerAtEnd = matchingProvidersForEnd[name];
+
+            /* if the provider also matches on the end location, consider it
+             * as a potential candidate
+             */
+            if (providerAtEnd) {
+                let order = this._sortProviders(providerAtStart, providerAtEnd);
+
+                /* add the provider at it lowest priority to favor higher
+                 * priority providers in "fringe cases"
+                 */
+                if (order < 0)
+                    matchingProviders.push(providerAtStart);
+                else
+                    matchingProviders.push(providerAtEnd);
+            }
+        }
 
         matchingProviders.sort(this._sortProviders);
 
