@@ -337,7 +337,8 @@ var MapView = GObject.registerClass({
             let renderer = new Champlain.ImageRenderer();
             let source = new Maps.FileTileSource({
                 path: Utils.getBufferText(Application.application.local_tile_path),
-                renderer: renderer
+                renderer: renderer,
+                tile_size: 512
             });
             try {
                 source.prepare();
