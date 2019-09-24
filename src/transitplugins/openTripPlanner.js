@@ -506,22 +506,26 @@ var OpenTripPlanner = class OpenTripPlanner {
         let points = this._query.filledPoints;
 
         this._fetchRoutes((route) => {
-            let itineraries = [];
-            let plan = route.plan;
+            if (route) {
+                let itineraries = [];
+                let plan = route.plan;
 
-            if (plan && plan.itineraries) {
-                itineraries =
-                    itineraries.concat(
-                        this._createItineraries(plan.itineraries));
-            }
+                if (plan && plan.itineraries) {
+                    itineraries =
+                        itineraries.concat(
+                            this._createItineraries(plan.itineraries));
+                }
 
-            if (itineraries.length === 0) {
-                /* don't reset query points, unlike for turn-based
-                 * routing, since options and timeing might influence
-                 * results */
-                this._noRouteFound();
+                if (itineraries.length === 0) {
+                    /* don't reset query points, unlike for turn-based
+                     * routing, since options and timeing might influence
+                     * results */
+                    this._noRouteFound();
+                } else {
+                    this._recalculateItineraries(itineraries);
+                }
             } else {
-                this._recalculateItineraries(itineraries);
+                this._noRouteFound();
             }
         });
     }
