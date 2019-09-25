@@ -544,6 +544,10 @@ var Leg = class Leg {
         return this._intermediateStops;
     }
 
+    set intermediateStops(intermediateStops) {
+        this._intermediateStops = intermediateStops;
+    }
+
     get headsign() {
         return this._headsign;
     }
@@ -666,6 +670,10 @@ var Leg = class Leg {
 
     get walkingInstructions() {
         return this._walkingInstructions;
+    }
+
+    set walkingInstructions(walkingInstructions) {
+        this._walkingInstructions = walkingInstructions;
     }
 
     /* Pretty print timing for a transit leg, set params.isStart: true when
