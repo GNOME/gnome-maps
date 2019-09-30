@@ -38,7 +38,10 @@ var TurnPointType = {
 
     // This one is not in GraphHopper, so choose
     // a reasonably unlikely number for this
-    START:         10000
+    START:         10000,
+    ELEVATOR:      10001,
+    UTURN_LEFT:    10002,
+    UTURN_RIGHT:   10003
 };
 
 /* countries/terrotories driving on the left
