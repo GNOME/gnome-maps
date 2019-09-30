@@ -25,6 +25,7 @@ const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 
 const Application = imports.application;
+const HVT = imports.hvt;
 const Time = imports.time;
 const TransitOptions = imports.transitOptions;
 const TransitPlan = imports.transitPlan;
@@ -46,7 +47,8 @@ var TransitOptionsPanel = GObject.registerClass({
                        'tramCheckButton',
                        'trainCheckButton',
                        'subwayCheckButton',
-                       'ferryCheckButton']
+                       'ferryCheckButton',
+                       'airplaneCheckButton']
 }, class TransitOptionsPanel extends Gtk.Grid {
 
     _init(params) {
@@ -171,9 +173,10 @@ var TransitOptionsPanel = GObject.registerClass({
         let trainSelected = this._trainCheckButton.active;
         let subwaySelected = this._subwayCheckButton.active;
         let ferrySelected = this._ferryCheckButton.active;
+        let airplaneSelected = this._airplaneCheckButton.active;
 
         if (busSelected && tramSelected && trainSelected && subwaySelected &&
-            ferrySelected) {
+            ferrySelected && airplaneSelected) {
             options.showAllTransitTypes = true;
         } else {
             if (busSelected)
@@ -186,6 +189,8 @@ var TransitOptionsPanel = GObject.registerClass({
                 options.addTransitType(TransitPlan.RouteType.SUBWAY);
             if (ferrySelected)
                 options.addTransitType(TransitPlan.RouteType.FERRY);
+            if (airplaneSelected)
+                options.addTransitType(HVT.AIR_SERVICE);
         }
 
         return options;
