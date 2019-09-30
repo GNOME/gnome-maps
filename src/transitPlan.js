@@ -657,6 +657,10 @@ var Leg = class Leg {
                         case HVT.TAXI_SERVICE:
                             /* TODO: should we have a dedicated taxi icon? */
                             return 'route-car-symbolic';
+
+                        case HVT.AIR_SERVICE:
+                            return 'route-transit-airplane-symbolic';
+
                         default:
                             /* use a fallback question mark icon in case of some future,
                              * for now unknown mode appears */
