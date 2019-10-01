@@ -28,6 +28,7 @@ const Soup = imports.gi.Soup;
 const Application = imports.application;
 const EPAF = imports.epaf;
 const HTTP = imports.http;
+const HVT = imports.hvt;
 const Location = imports.location;
 const Place = imports.place;
 const Route = imports.route;
@@ -155,6 +156,8 @@ var OpenTripPlanner = class OpenTripPlanner {
             return 'BUS';
         case TransitPlan.RouteType.FERRY:
             return 'FERRY';
+        case HVT.AIR_SERVICE:
+            return 'AIRPLANE';
         default:
             throw new Error('unhandled route type');
         }
