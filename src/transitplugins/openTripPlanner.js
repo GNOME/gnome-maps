@@ -120,6 +120,7 @@ var OpenTripPlanner = class OpenTripPlanner {
         this._onlyTransitData = params.onlyTransitData || false;
         this._walkingRoutes = [];
         this._extendPrevious = false;
+        this._language = Utils.getLanguage();
     }
 
     get plan() {
@@ -388,6 +389,7 @@ var OpenTripPlanner = class OpenTripPlanner {
     _addCommonParams(params) {
         params.numItineraries = 5;
         params.showIntermediateStops = true;
+        params.locale = this._language;
 
         let time = this._query.time;
         let date = this._query.date;
