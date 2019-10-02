@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-07-12 12:37+0000\n"
-"PO-Revision-Date: 2019-07-17 23:41+0200\n"
+"POT-Creation-Date: 2019-08-29 00:15+0000\n"
+"PO-Revision-Date: 2019-10-02 05:06+0200\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -70,7 +70,7 @@ msgstr "GNOME-projektet"
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
-#: src/application.js:81 src/mainWindow.js:139 src/mainWindow.js:509
+#: src/application.js:81 src/mainWindow.js:139 src/mainWindow.js:513
 msgid "Maps"
 msgstr "Kort"
 
@@ -96,59 +96,75 @@ msgid "Coordinates of last viewed location."
 msgstr "Koordinater for sidst viste sted."
 
 #: data/org.gnome.Maps.gschema.xml:16
+msgid "zoom"
+msgstr "zoom"
+
+#: data/org.gnome.Maps.gschema.xml:17
+msgid "Zoom level"
+msgstr "Zoomniveau"
+
+#: data/org.gnome.Maps.gschema.xml:21
+msgid "Map type"
+msgstr "Korttype"
+
+#: data/org.gnome.Maps.gschema.xml:22
+msgid "The type of map to display (street, aerial, etc.)"
+msgstr "Typen af kort som skal vises (vejkort, luftfoto osv.)"
+
+#: data/org.gnome.Maps.gschema.xml:26
 msgid "Window size"
 msgstr "Vinduesstørrelse"
 
-#: data/org.gnome.Maps.gschema.xml:17
+#: data/org.gnome.Maps.gschema.xml:27
 msgid "Window size (width and height)."
 msgstr "Vinduesstørrelse (bredde og højde)."
 
-#: data/org.gnome.Maps.gschema.xml:21
+#: data/org.gnome.Maps.gschema.xml:31
 msgid "Window position"
 msgstr "Vinduesplacering"
 
-#: data/org.gnome.Maps.gschema.xml:22
+#: data/org.gnome.Maps.gschema.xml:32
 msgid "Window position (X and Y)."
 msgstr "Vinduesplacering (X og Y)."
 
-#: data/org.gnome.Maps.gschema.xml:26
+#: data/org.gnome.Maps.gschema.xml:36
 msgid "Window maximized"
 msgstr "Vindue maksimeret"
 
-#: data/org.gnome.Maps.gschema.xml:27
+#: data/org.gnome.Maps.gschema.xml:37
 msgid "Window maximization state"
 msgstr "Maksimeringstilstand for vindue"
 
-#: data/org.gnome.Maps.gschema.xml:31
+#: data/org.gnome.Maps.gschema.xml:41
 msgid "Maximum number of search results"
 msgstr "Maksimum antal af søgeresultater"
 
-#: data/org.gnome.Maps.gschema.xml:32
+#: data/org.gnome.Maps.gschema.xml:42
 msgid "Maximum number of search results from geocode search."
 msgstr "Maksimum antal af søgeresultater fra geokode-søgning."
 
-#: data/org.gnome.Maps.gschema.xml:36
+#: data/org.gnome.Maps.gschema.xml:46
 msgid "Number of recent places to store"
 msgstr "Antal seneste steder, der skal gemmes"
 
-#: data/org.gnome.Maps.gschema.xml:37
+#: data/org.gnome.Maps.gschema.xml:47
 msgid "Number of recently visited places to store."
 msgstr "Antal senest besøgte steder, der skal gemmes."
 
-#: data/org.gnome.Maps.gschema.xml:41
+#: data/org.gnome.Maps.gschema.xml:51
 msgid "Number of recent routes to store"
 msgstr "Antal seneste ruter, der skal gemmes"
 
-#: data/org.gnome.Maps.gschema.xml:42
+#: data/org.gnome.Maps.gschema.xml:52
 msgid "Number of recently visited routes to store."
 msgstr "Antal senest besøgte ruter, der skal gemmes."
 
-#: data/org.gnome.Maps.gschema.xml:46
+#: data/org.gnome.Maps.gschema.xml:56
 msgid "Facebook check-in privacy setting"
 msgstr "Privatlivsindstilling til at tjekke ind på Facebook"
 
 #. Translators: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS, and SELF are constant names, and should not be translated
-#: data/org.gnome.Maps.gschema.xml:48
+#: data/org.gnome.Maps.gschema.xml:58
 msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
@@ -156,11 +172,11 @@ msgstr ""
 "Sidst benyttede privatlivsindstilling til at tjekke ind på Facebook. Mulige "
 "værdier er: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS og SELF."
 
-#: data/org.gnome.Maps.gschema.xml:52
+#: data/org.gnome.Maps.gschema.xml:62
 msgid "Foursquare check-in privacy setting"
 msgstr "Privatlivsindstilling til at tjekke ind på Foursquare"
 
-#: data/org.gnome.Maps.gschema.xml:53
+#: data/org.gnome.Maps.gschema.xml:63
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
@@ -168,11 +184,11 @@ msgstr ""
 "Sidst benyttede privatlivsindstilling til at tjekke ind på Foursquare. "
 "Mulige værdier er: public, followers eller private."
 
-#: data/org.gnome.Maps.gschema.xml:57
+#: data/org.gnome.Maps.gschema.xml:67
 msgid "Foursquare check-in Facebook broadcasting"
 msgstr "Facebook-post af indtjekning på Foursquare"
 
-#: data/org.gnome.Maps.gschema.xml:58
+#: data/org.gnome.Maps.gschema.xml:68
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
@@ -180,28 +196,28 @@ msgstr ""
 "Angiver om Foursquare skal poste din indtjekning som opdatering på Facebook-"
 "kontoen, der er tilknyttet denne Foursquare-konto."
 
-#: data/org.gnome.Maps.gschema.xml:62
+#: data/org.gnome.Maps.gschema.xml:72
 msgid "Foursquare check-in Twitter broadcasting"
 msgstr "Twitter-post af indtjekning på Foursquare"
 
-#: data/org.gnome.Maps.gschema.xml:63
+#: data/org.gnome.Maps.gschema.xml:73
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
 msgstr ""
-"Angiver om Foursquare skal poste din indtjekning som tweet i Twitter-kontoen, "
-"der er tilknyttet denne Foursquare-konto."
+"Angiver om Foursquare skal poste din indtjekning som tweet i Twitter-"
+"kontoen, der er tilknyttet denne Foursquare-konto."
 
-#: data/org.gnome.Maps.gschema.xml:67
+#: data/org.gnome.Maps.gschema.xml:77
 msgid "OpenStreetMap username or e-mail address"
 msgstr "Brugernavn eller e-mail-adresse på OpenStreetMap"
 
-#: data/org.gnome.Maps.gschema.xml:68
+#: data/org.gnome.Maps.gschema.xml:78
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr ""
 "Angiver om brugeren er logget ind til at kunne redigere data i OpenStreetMap."
 
-#: data/org.gnome.Maps.gschema.xml:72
+#: data/org.gnome.Maps.gschema.xml:82
 msgid "Last used transportation type for routing"
 msgstr "Sidst brugte transporttype til routing"
 
@@ -441,7 +457,6 @@ msgstr "Føj til ny rute"
 
 #. Translators: This is a tooltip
 #: data/ui/map-bubble.ui:62
-#| msgid "Open location"
 msgid "Share location"
 msgstr "Del placering"
 
@@ -598,7 +613,6 @@ msgid "Drag to change order of the route"
 msgstr "Træk for at ændre rækkefølge for ruten"
 
 #: data/ui/send-to-dialog.ui:10
-#| msgid "Open location"
 msgid "Open Location"
 msgstr "Åbn placering"
 
@@ -893,11 +907,11 @@ msgstr "Start!"
 msgid "All Layer Files"
 msgstr "Alle lagfiler"
 
-#: src/mainWindow.js:442
+#: src/mainWindow.js:446
 msgid "Failed to connect to location service"
 msgstr "Kunne ikke forbinde til lokaliseringstjeneste"
 
-#: src/mainWindow.js:507
+#: src/mainWindow.js:511
 msgid "translator-credits"
 msgstr ""
 "Kris Thomsen\n"
@@ -909,15 +923,15 @@ msgstr ""
 "Websted http://dansk-gruppen.dk\n"
 "E-mail <dansk@dansk-gruppen.dk>"
 
-#: src/mainWindow.js:510
+#: src/mainWindow.js:514
 msgid "A map application for GNOME"
 msgstr "Et kortprogram til GNOME"
 
-#: src/mainWindow.js:521
+#: src/mainWindow.js:525
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Ophavsret © 2011 – 2019 Red Hat, Inc. og udviklerne af GNOME Kort"
 
-#: src/mainWindow.js:541
+#: src/mainWindow.js:545
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Kortdata af %s og bidragydere"
@@ -927,7 +941,7 @@ msgstr "Kortdata af %s og bidragydere"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:557
+#: src/mainWindow.js:561
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Kortfelter leveret af %s"
@@ -941,20 +955,20 @@ msgstr "Kortfelter leveret af %s"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:586
+#: src/mainWindow.js:590
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Søgning leveret af %s med %s"
 
-#: src/mapView.js:359
+#: src/mapView.js:374
 msgid "File type is not supported"
 msgstr "Filtypen understøttes ikke"
 
-#: src/mapView.js:366
+#: src/mapView.js:381
 msgid "Failed to open layer"
 msgstr "Kunne ikke åbne lag"
 
-#: src/mapView.js:402
+#: src/mapView.js:417
 msgid "Failed to open GeoURI"
 msgstr "Kunne ikke åbne GeoURI"
 
@@ -1268,7 +1282,7 @@ msgstr "Rullestolsadgang:"
 msgid "Phone:"
 msgstr "Telefon:"
 
-#: src/placeEntry.js:205
+#: src/placeEntry.js:209
 msgid "Failed to parse Geo URI"
 msgstr "Fortolkning af Geo-URI mislykkedes"
 
@@ -1313,12 +1327,10 @@ msgid "designated"
 msgstr "handicap"
 
 #: src/place.js:475
-#| msgid "Edit on OpenStreetMap"
 msgid "Place not found in OpenStreetMap"
 msgstr "Placering ikke fundet i OpenStreetMap"
 
 #: src/place.js:495
-#| msgid "OpenStreetMap Account"
 msgid "OpenStreetMap URL is not valid"
 msgstr "OpenStreetMap-URL er ikke gyldig"
 
@@ -1327,7 +1339,6 @@ msgid "Coordinates in URL are not valid"
 msgstr "Koordinater i URL er ikke gyldige"
 
 #: src/place.js:521
-#| msgid "File type is not supported"
 msgid "URL is not supported"
 msgstr "URL understøttes ikke"
 
@@ -1367,7 +1378,6 @@ msgstr "Vend ruten om"
 #. second string is the name of the app to add it to
 #: src/sendToDialog.js:103
 #, javascript-format
-#| msgid "From %s to %s"
 msgid "Add %s to %s"
 msgstr "Tilføj %s til %s"
 
