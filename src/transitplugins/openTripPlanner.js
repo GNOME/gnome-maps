@@ -117,10 +117,17 @@ var OpenTripPlanner = class OpenTripPlanner {
         this._query = Application.routeQuery;
         this._baseUrl = params.baseUrl;
         this._router = params.router || 'default';
+        this._routerUrl = params.routerUrl || null;
         this._onlyTransitData = params.onlyTransitData || false;
         this._walkingRoutes = [];
         this._extendPrevious = false;
         this._language = Utils.getLanguage();
+
+        if (!this._baseUrl && !this._routerUrl)
+            throw new Error('must specify either baseUrl or routerUrl as an argument');
+
+        if (this._baseUrl && this._routerUrl)
+            throw new Error('can not specify both baseUrl and routerUrl as arguments');
     }
 
     get plan() {
@@ -142,7 +149,8 @@ var OpenTripPlanner = class OpenTripPlanner {
     }
 
     _getRouterUrl() {
-        return this._baseUrl + '/routers/' + this._router;
+        return this._routerUrl ? this._routerUrl :
+                                 this._baseUrl + '/routers/' + this._router;
     }
 
     _getMode(routeType) {
