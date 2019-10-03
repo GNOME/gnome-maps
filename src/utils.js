@@ -385,3 +385,4 @@ function getCountryCodeForCoordinates(lat, lon) {
     return location.get_country();
 }
 
+
