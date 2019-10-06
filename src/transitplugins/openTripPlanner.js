@@ -654,22 +654,9 @@ var OpenTripPlanner = class OpenTripPlanner {
      * a request to load more
      */
     _updateWithNewItineraries(itineraries) {
-        /* sort itineraries, by departure time ascending if querying
-         * by leaving time, by arrival time descending when querying
-         * by arriving time
-         */
-        if (this._query.arriveBy)
-            itineraries.sort(TransitPlan.sortItinerariesByArrivalDesc);
-        else
-            itineraries.sort(TransitPlan.sortItinerariesByDepartureAsc);
-
-        let newItineraries =
-            this._extendPrevious ? this.plan.itineraries.concat(itineraries) :
-                                   itineraries;
-
-        // reset the "load more results" flag
+        this.plan.updateWithNewItineraries(itineraries, this._query.arriveBy,
+                                           this._extendPrevious);
         this._extendPrevious = false;
-        this.plan.update(newItineraries);
     }
 
     _recalculateItinerariesRecursive(itineraries, index) {
