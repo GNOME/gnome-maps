@@ -27,6 +27,7 @@ const Soup = imports.gi.Soup;
 
 const Application = imports.application;
 const EPAF = imports.epaf;
+const GraphHopperTransit = imports.graphHopperTransit;
 const HTTP = imports.http;
 const HVT = imports.hvt;
 const Location = imports.location;
@@ -119,7 +120,6 @@ var OpenTripPlanner = class OpenTripPlanner {
         this._router = params.router || 'default';
         this._routerUrl = params.routerUrl || null;
         this._onlyTransitData = params.onlyTransitData || false;
-        this._walkingRoutes = [];
         this._extendPrevious = false;
         this._language = Utils.getLanguage();
 
@@ -198,7 +198,7 @@ var OpenTripPlanner = class OpenTripPlanner {
                 this._selectBestStopRecursive(stops, index + 1, stopIndex,
                                               callback);
             } else if (stopIndex === 0) {
-                this._fetchWalkingRoute([points[0], stopPoint],
+                GraphHopperTransit.fetchWalkingRoute([points[0], stopPoint],
                                         (route) => {
                     /* if we couldn't find an exact walking route, go with the
                      * "as the crow flies" distance */
@@ -208,7 +208,8 @@ var OpenTripPlanner = class OpenTripPlanner {
                                                   callback);
                 });
             } else if (stopIndex === points.length - 1) {
-                this._fetchWalkingRoute([stopPoint, points.last()], (route) => {
+                GraphHopperTransit.fetchWalkingRoute([stopPoint, points.last()],
+                                                     (route) => {
                     if (route)
                         stop.dist = route.distance;
                     this._selectBestStopRecursive(stops, index + 1, stopIndex,
@@ -654,22 +655,9 @@ var OpenTripPlanner = class OpenTripPlanner {
      * a request to load more
      */
     _updateWithNewItineraries(itineraries) {
-        /* sort itineraries, by departure time ascending if querying
-         * by leaving time, by arrival time descending when querying
-         * by arriving time
-         */
-        if (this._query.arriveBy)
-            itineraries.sort(TransitPlan.sortItinerariesByArrivalDesc);
-        else
-            itineraries.sort(TransitPlan.sortItinerariesByDepartureAsc);
-
-        let newItineraries =
-            this._extendPrevious ? this.plan.itineraries.concat(itineraries) :
-                                   itineraries;
-
-        // reset the "load more results" flag
+        this.plan.updateWithNewItineraries(itineraries, this._query.arriveBy,
+                                           this._extendPrevious);
         this._extendPrevious = false;
-        this.plan.update(newItineraries);
     }
 
     _recalculateItinerariesRecursive(itineraries, index) {
@@ -712,57 +700,6 @@ var OpenTripPlanner = class OpenTripPlanner {
                                            longitude: toLoc.longitude })];
     }
 
-    /* Creates a new walking leg given start and end places, and a route
-     * obtained from GraphHopper. If the route is undefined (which happens if
-     * GraphHopper failed to obtain a walking route, approximate it with a
-     * straight line. */
-    _createWalkingLeg(from, to, fromName, toName, route) {
-        let fromLocation = from.place.location;
-        let toLocation = to.place.location;
-        let fromCoordinate = [fromLocation.latitude, fromLocation.longitude];
-        let toCoordinate = [toLocation.latitude, toLocation.longitude];
-        let polyline = route ? route.path :
-                               this._createStraightPolyline(fromLocation, toLocation);
-        let distance = route ? route.distance :
-                               fromLocation.get_distance_from(toLocation) * 1000;
-        /* as an estimate for approximated straight-line walking legs,
-         * assume a speed of 1 m/s to allow some extra time */
-        let duration = route ? route.time / 1000 : distance;
-        let walkingInstructions = route ? route.turnPoints : null;
-
-        return new TransitPlan.Leg({ fromCoordinate: fromCoordinate,
-                                     toCoordinate: toCoordinate,
-                                     from: fromName,
-                                     to: toName,
-                                     isTransit: false,
-                                     polyline: polyline,
-                                     duration: duration,
-                                     distance: distance,
-                                     walkingInstructions: walkingInstructions });
-    }
-
-    /* fetches walking route and stores the route for the given coordinate
-     * pair to avoid requesting the same route over and over from GraphHopper
-     */
-    _fetchWalkingRoute(points, callback) {
-        let index = points[0].place.location.latitude + ',' +
-                    points[0].place.location.longitude + ';' +
-                    points[1].place.location.latitude + ',' +
-                    points[1].place.location.longitude;
-        let route = this._walkingRoutes[index];
-
-        if (!route) {
-            Application.routingDelegator.graphHopper.fetchRouteAsync(points,
-                                              RouteQuery.Transportation.PEDESTRIAN,
-                                              (newRoute) => {
-                this._walkingRoutes[index] = newRoute;
-                callback(newRoute);
-            });
-        } else {
-            callback(route);
-        }
-    }
-
     _recalculateItinerary(itinerary, callback) {
         let from = this._query.filledPoints[0];
         let to = this._query.filledPoints.last();
@@ -772,9 +709,12 @@ var OpenTripPlanner = class OpenTripPlanner {
              * leg is a non-transit (walking), recalculate the route in its entire
              * using walking
              */
-            this._fetchWalkingRoute(this._query.filledPoints, (route) => {
-                let leg = this._createWalkingLeg(from, to, from.place.name,
-                                                 to.place.name, route);
+            GraphHopperTransit.fetchWalkingRoute(this._query.filledPoints,
+                                                 (route) => {
+                let leg = GraphHopperTransit.createWalkingLeg(from, to,
+                                                              from.place.name,
+                                                              to.place.name,
+                                                              route);
                 let newItinerary =
                     new TransitPlan.Itinerary({departure: itinerary.departure,
                                                duration: route.time / 1000,
@@ -798,14 +738,19 @@ var OpenTripPlanner = class OpenTripPlanner {
                 /* add an extra walking leg to both the beginning and end of the
                  * itinerary
                  */
-                this._fetchWalkingRoute([from, startLeg], (firstRoute) => {
+                GraphHopperTransit.fetchWalkingRoute([from, startLeg],
+                                                     (firstRoute) => {
                     let firstLeg =
-                        this._createWalkingLeg(from, startLeg, from.place.name,
-                                               leg.from, firstRoute);
-                    this._fetchWalkingRoute([endLeg, to], (lastRoute) => {
-                        let lastLeg = this._createWalkingLeg(endLeg, to, leg.to,
-                                                             to.place.name,
-                                                             lastRoute);
+                        GraphHopperTransit.createWalkingLeg(from, startLeg,
+                                                            from.place.name,
+                                                            leg.from, firstRoute);
+                    GraphHopperTransit.fetchWalkingRoute([endLeg, to],
+                                                         (lastRoute) => {
+                        let lastLeg =
+                            GraphHopperTransit.createWalkingLeg(endLeg, to,
+                                                                leg.to,
+                                                                to.place.name,
+                                                                lastRoute);
                         itinerary.legs.unshift(firstLeg);
                         itinerary.legs.push(lastLeg);
                         callback(itinerary);
@@ -813,10 +758,12 @@ var OpenTripPlanner = class OpenTripPlanner {
                 });
             } else if (endWalkDistance >= MIN_WALK_ROUTING_DISTANCE) {
                 // add an extra walking leg to the end of the itinerary
-                this._fetchWalkingRoute([endLeg, to], (lastRoute) => {
+                GraphHopperTransit.fetchWalkingRoute([endLeg, to],
+                                                     (lastRoute) => {
                     let lastLeg =
-                        this._createWalkingLeg(endLeg, to, leg.to,
-                                               to.place.name, lastRoute);
+                        GraphHopperTransit.createWalkingLeg(endLeg, to, leg.to,
+                                                            to.place.name,
+                                                            lastRoute);
                     itinerary.legs.push(lastLeg);
                     callback(itinerary);
                 });
@@ -893,10 +840,11 @@ var OpenTripPlanner = class OpenTripPlanner {
                         itinerary.legs.splice(index + 1, index + 1);
                     }
 
-                    this._fetchWalkingRoute([from, to], (route) => {
+                    GraphHopperTransit.fetchWalkingRoute([from, to], (route) => {
                         let newLeg =
-                            this._createWalkingLeg(from, to, from.place.name,
-                                                   toName, route);
+                            GraphHopperTransit.createWalkingLeg(from, to,
+                                                                from.place.name,
+                                                                toName, route);
                         itinerary.legs[index] = newLeg;
                         this._recalculateItineraryRecursive(itinerary, index + 1,
                                                             callback);
@@ -912,10 +860,13 @@ var OpenTripPlanner = class OpenTripPlanner {
                     let distance = fromLoc.get_distance_from(toLoc) * 1000;
 
                     if (distance >= MIN_WALK_ROUTING_DISTANCE) {
-                        this._fetchWalkingRoute([from, to], (route) => {
+                        GraphHopperTransit.fetchWalkingRoute([from, to],
+                                                             (route) => {
                             let newLeg =
-                                this._createWalkingLeg(from, to, from.place.name,
-                                                       leg.from, route);
+                                GraphHopperTransit.createWalkingLeg(from, to,
+                                                                    from.place.name,
+                                                                    leg.from,
+                                                                    route);
                             itinerary.legs.unshift(newLeg);
                             /* now, next index will be two steps up, since we
                              * inserted a new leg
@@ -973,9 +924,9 @@ var OpenTripPlanner = class OpenTripPlanner {
                         insertIndex = index;
                     }
                     let from = this._createQueryPointForCoord(finalTransitLeg.fromCoordinate);
-                    this._fetchWalkingRoute([from, to], (route) => {
+                    GraphHopperTransit.fetchWalkingRoute([from, to], (route) => {
                         let newLeg =
-                            this._createWalkingLeg(from, to,
+                            GraphHopperTransit.createWalkingLeg(from, to,
                                                    finalTransitLeg.from,
                                                    to.place.name, route);
                         itinerary.legs[insertIndex] = newLeg;
@@ -994,10 +945,11 @@ var OpenTripPlanner = class OpenTripPlanner {
                     let distance = fromLoc.get_distance_from(toLoc) * 1000;
 
                     if (distance >= MIN_WALK_ROUTING_DISTANCE) {
-                        this._fetchWalkingRoute([from, to], (route) => {
+                        GraphHopperTransit.fetchWalkingRoute([from, to],
+                                                             (route) => {
                             let newLeg =
-                                this._createWalkingLeg(from, to, leg.to,
-                                                       to.place.name, route);
+                                GraphHopperTransit.createWalkingLeg(from, to,
+                                                leg.to, to.place.name, route);
                             itinerary.legs.push(newLeg);
                             /* now, next index will be two steps up, since we
                              * inserted a new leg
@@ -1030,9 +982,10 @@ var OpenTripPlanner = class OpenTripPlanner {
                         itinerary.legs.splice(index + 1, index + 1);
                     }
 
-                    this._fetchWalkingRoute([from, to], (route) => {
-                        let newLeg = this._createWalkingLeg(from, to, leg.from,
-                                                            leg.to, route);
+                    GraphHopperTransit.fetchWalkingRoute([from, to], (route) => {
+                        let newLeg =
+                            GraphHopperTransit.createWalkingLeg(from, to, leg.from,
+                                                                leg.to, route);
                         itinerary.legs[index] = newLeg;
                         this._recalculateItineraryRecursive(itinerary,
                                                             index + 1,
