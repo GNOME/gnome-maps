@@ -130,6 +130,29 @@ var Plan = GObject.registerClass({
         this.emit('update');
     }
 
+    /**
+     * Update plan with new itineraries, setting the new itineraries if it's
+     * the first fetch for a query, or extending the existing ones if it's
+     * a request to load more
+     */
+    updateWithNewItineraries(itineraries, arriveBy, extendPrevious) {
+        /* sort itineraries, by departure time ascending if querying
+         * by leaving time, by arrival time descending when querying
+         * by arriving time
+         */
+        if (arriveBy)
+            itineraries.sort(sortItinerariesByArrivalDesc);
+        else
+            itineraries.sort(sortItinerariesByDepartureAsc);
+
+        let newItineraries =
+            extendPrevious ? this.itineraries.concat(itineraries) : itineraries;
+
+        this.update(newItineraries);
+    }
+
+
+
     reset() {
         this._itineraries = [];
         this.bbox = null;
