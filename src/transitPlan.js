@@ -130,6 +130,29 @@ var Plan = GObject.registerClass({
         this.emit('update');
     }
 
+    /**
+     * Update plan with new itineraries, setting the new itineraries if it's
+     * the first fetch for a query, or extending the existing ones if it's
+     * a request to load more
+     */
+    updateWithNewItineraries(itineraries, arriveBy, extendPrevious) {
+        /* sort itineraries, by departure time ascending if querying
+         * by leaving time, by arrival time descending when querying
+         * by arriving time
+         */
+        if (arriveBy)
+            itineraries.sort(sortItinerariesByArrivalDesc);
+        else
+            itineraries.sort(sortItinerariesByDepartureAsc);
+
+        let newItineraries =
+            extendPrevious ? this.itineraries.concat(itineraries) : itineraries;
+
+        this.update(newItineraries);
+    }
+
+
+
     reset() {
         this._itineraries = [];
         this.bbox = null;
@@ -383,6 +406,10 @@ class Itinerary extends GObject.Object {
     /* gets the timezone offset of the final transit leg */
     get transitArrivalTimezoneOffset() {
         return this._getTransitArrivalLeg().timezoneOffset;
+    }
+
+    get isWalkingOnly() {
+        return this.legs.length === 1 && !this.legs[0].isTransit;
     }
 });
 
@@ -761,9 +788,25 @@ var Stop = class Stop {
 };
 
 function sortItinerariesByDepartureAsc(first, second) {
-    return first.departure > second.departure;
+    /* always sort walk-only itineraries first, as they would always be
+     * starting at the earliest possible departure time
+     */
+    if (first.isWalkingOnly)
+        return -1;
+    else if (second.isWalkingOnly)
+        return 1;
+    else
+        return first.departure > second.departure;
 }
 
 function sortItinerariesByArrivalDesc(first, second) {
-    return first.arrival < second.arrival;
+    /* always sort walk-only itineraries first, as they would always be
+     * ending at the latest possible arrival time
+     */
+    if (first.isWalkingOnly)
+        return -1;
+    else if (second.isWalkingOnly)
+        return 1;
+    else
+        return first.arrival < second.arrival;
 }
