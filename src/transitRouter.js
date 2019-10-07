@@ -161,7 +161,6 @@ var TransitRouter = class TransitRoute {
             });
         });
 
-        Utils.debug('returning matching providers: ' + matchingProviders.length);
         return matchingProviders;
     }
 
@@ -173,7 +172,7 @@ var TransitRouter = class TransitRoute {
     _getBestProviderForQuery() {
         let startLocation = this._query.filledPoints[0].place.location;
         let endLocation =
-            this._query.filledPoints[this._query.points.length - 1].place.location;
+            this._query.filledPoints.last().place.location;
 
         let matchingProvidersForStart =
             this._getMatchingProvidersForLocation(startLocation);
