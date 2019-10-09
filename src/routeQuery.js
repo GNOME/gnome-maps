@@ -239,7 +239,8 @@ var RouteQuery = GObject.registerClass({
     }
 
     isValid() {
-        if (this.filledPoints.length >= 2)
+        if (this.filledPoints.length >= 2 &&
+            this.filledPoints.length === this.points.length)
             return true;
         else
             return false;
