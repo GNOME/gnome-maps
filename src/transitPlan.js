@@ -551,6 +551,10 @@ var Leg = class Leg {
         return this._polyline;
     }
 
+    set polyline(polyline) {
+        this._polyline = polyline;
+    }
+
     get fromCoordinate() {
         return this._fromCoordinate;
     }
@@ -585,6 +589,10 @@ var Leg = class Leg {
 
     get distance() {
         return this._distance;
+    }
+
+    set distance(distance) {
+        this._distance = distance;
     }
 
     get duration() {
