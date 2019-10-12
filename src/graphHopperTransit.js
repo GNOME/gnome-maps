@@ -105,3 +105,59 @@ function createQueryPointForCoord(coord) {
     point.place = place;
     return point;
 }
+
+/**
+ * Refine itineraries with walking legs retrieved from GraphHopper.
+ * Intended for use by transit plugins where the source API doesn't give
+ * full walking turn-by-turn routing
+ */
+function addWalkingToItineraries(itineraries, callback) {
+    _addWalkingToItinerariesRecursive(itineraries, 0, callback);
+}
+
+function _addWalkingToItinerariesRecursive(itineraries, index, callback) {
+    if (index === itineraries.length) {
+        callback();
+    } else {
+        let itinerary = itineraries[index];
+
+        _addWalkingToLegsRecursive(itinerary.legs, 0, () => {
+            _addWalkingToItinerariesRecursive(itineraries, index + 1, callback);
+        });
+    }
+}
+
+function _addWalkingToLegsRecursive(legs, index, callback) {
+    if (index === legs.length) {
+        callback();
+    } else {
+        let leg = legs[index];
+
+        if (!leg.transit) {
+            let from = createQueryPointForCoord(leg.fromCoordinate);
+            let to = createQueryPointForCoord(leg.toCoordinate);
+
+            fetchWalkingRoute([from, to], (route) => {
+                if (route) {
+                    let duration = route.time / 1000;
+
+                    /* for walking legs not in the start or end
+                     * only replace with the retrieved one if it's not
+                     * longer in duration that the previous (straight-line)
+                     * one.
+                     */
+                    if (index === 0 || index === legs.length - 1 ||
+                        duration <= leg.duration) {
+                        leg.distance = route.distance;
+                        leg.walkingInstructions = route.turnPoints;
+                        leg.polyline = route.path;
+                    }
+                }
+
+                _addWalkingToLegsRecursive(legs, index + 1, callback);
+            });
+        } else {
+            _addWalkingToLegsRecursive(legs, index + 1, callback);
+        }
+    }
+}
