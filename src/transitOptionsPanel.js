@@ -90,8 +90,8 @@ var TransitOptionsPanel = GObject.registerClass({
             this._transitTimeEntry.visible = false;
             this._transitDateButton.visible = false;
             this._query.arriveBy = false;
-            this._query.time = null;
             this._query.date = null;
+            this._query.time = null;
             this._timeSelected = null;
             this._dateSelected = null;
         } else {
