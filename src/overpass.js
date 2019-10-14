@@ -70,7 +70,7 @@ var Overpass = GObject.registerClass({
         this.outputSortOrder = params.outputSortOrder || _DEFAULT_OUTPUT_SORT_ORDER;
 
         // HTTP Session Variables
-        this._session = new Soup.Session();
+        this._session = new Soup.Session({ user_agent : 'gnome-maps/' + pkg.version });
     }
 
     addInfo(place) {

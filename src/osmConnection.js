@@ -47,7 +47,7 @@ const SECRET_SCHEMA = new Secret.Schema("org.gnome.Maps",
 var OSMConnection = class OSMConnection {
 
     constructor() {
-        this._session = new Soup.Session();
+        this._session = new Soup.Session({ user_agent : 'gnome-maps/' + pkg.version });
 
         /* OAuth proxy used for making OSM uploads */
         this._callProxy = Rest.OAuthProxy.new(CONSUMER_KEY, CONSUMER_SECRET,

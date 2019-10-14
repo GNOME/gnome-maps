@@ -112,7 +112,7 @@ const GAP_BEFORE_MORE_RESULTS = 120;
 var OpenTripPlanner = class OpenTripPlanner {
 
     constructor(params) {
-        this._session = new Soup.Session();
+        this._session = new Soup.Session({ user_agent : 'gnome-maps/' + pkg.version });
         this._plan = Application.routingDelegator.transitRouter.plan;
         this._query = Application.routeQuery;
         this._baseUrl = params.baseUrl;
