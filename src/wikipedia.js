@@ -30,7 +30,7 @@ const Utils = imports.utils;
 let _soupSession = null;
 function _getSoupSession() {
     if (_soupSession === null) {
-        _soupSession = new Soup.Session ();
+        _soupSession = new Soup.Session({ user_agent : 'gnome-maps/' + pkg.version });
     }
 
     return _soupSession;
