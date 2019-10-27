@@ -112,8 +112,6 @@ var TransitTweaks = class {
         if (agencyTweaks) {
             let routeTypeTweaks = agencyTweaks.routeTypes[leg.routeType];
 
-            Utils.debug('route type tweaks: ' + JSON.stringify(routeTypeTweaks, null, 2));
-
             if (routeTypeTweaks) {
                 let tweakToApply;
                 let bboxTweaks = routeTypeTweaks.bboxes;
@@ -135,7 +133,6 @@ var TransitTweaks = class {
                             /* if boundingbox fits, use embedded route or
                              * route pattern tweaks
                              */
-                            Utils.debug('matching on bounding box');
                             routeTweaks = tweak.routes ?
                                           tweak.routes[leg.route] : null;
                             routePatternTweaks = tweak.routePatterns;
@@ -159,9 +156,6 @@ var TransitTweaks = class {
                 if (!tweakToApply) {
                     tweakToApply = routeTypeTweaks;
                 }
-
-                Utils.debug('tweak to apply: ' +
-                            JSON.stringify(tweakToApply, null, 2));
 
                 this._applyRouteTweaksToLeg(leg, tweakToApply);
             }
