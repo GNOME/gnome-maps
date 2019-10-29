@@ -43,6 +43,11 @@ function getLanguage(wiki) {
 }
 
 function getArticle(wiki) {
+    return Soup.uri_encode(wiki.replace(/ /g, '_').split(':').splice(1).join(':'),
+                           '\'');
+}
+
+function getHtmlEntityEncodedArticle(wiki) {
     return GLib.markup_escape_text(wiki.split(':').splice(1).join(':'), -1);
 }
 
@@ -53,7 +58,7 @@ function getArticle(wiki) {
  */
 function fetchArticleThumbnail(wiki, size, callback) {
     let lang = getLanguage(wiki);
-    let title = getArticle(wiki);
+    let title = getHtmlEntityEncodedArticle(wiki);
     let uri = Format.vprintf('https://%s.wikipedia.org/w/api.php', [ lang ]);
     let msg = Soup.form_request_new_from_hash('GET', uri, { action: 'query',
                                                             titles: title,
