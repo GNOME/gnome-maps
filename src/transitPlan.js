@@ -488,6 +488,10 @@ var Leg = class Leg {
         return this._route;
     }
 
+    set route(route) {
+        this._route = route;
+    }
+
     // try to get a shortened route name, suitable for overview rendering
     get compactRoute() {
         if (this._compactRoute)
@@ -525,6 +529,10 @@ var Leg = class Leg {
 
     get routeType() {
         return this._routeType;
+    }
+
+    set routeType(routeType) {
+        this._routeType = routeType;
     }
 
     get departure() {
@@ -619,8 +627,16 @@ var Leg = class Leg {
         return this._color || DEFAULT_ROUTE_COLOR;
     }
 
+    set color(color) {
+        this._color = color;
+    }
+
     get textColor() {
         return this._textColor || DEFAULT_ROUTE_TEXT_COLOR;
+    }
+
+    set textColor(textColor) {
+        this._textColor = textColor;
     }
 
     get tripShortName() {
