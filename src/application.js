@@ -97,6 +97,13 @@ var Application = GObject.registerClass({
         this.add_main_option('version', 'v'.charCodeAt(0), GLib.OptionFlags.NONE, GLib.OptionArg.NONE,
                              _("Show the version of the program"), null);
 
+        this.add_main_option('force-online',
+                             0,
+                             GLib.OptionFlags.NONE,
+                             GLib.OptionArg.NONE,
+                             _("Ignore network availability"),
+                             null);
+
         this.connect('handle-local-options', (app, options) => {
             if (options.contains('local')) {
                 let variant = options.lookup_value('local', null);
@@ -108,6 +115,8 @@ var Application = GObject.registerClass({
                  * leaving the running instance unaffected
                  */
                 return 0;
+            } else if (options.contains('force-online')) {
+                this._forceOnline = true;
             }
 
             return -1;
@@ -115,7 +124,9 @@ var Application = GObject.registerClass({
     }
 
     _checkNetwork() {
-        this.connected = networkMonitor.connectivity === Gio.NetworkConnectivity.FULL;
+        this.connected =
+            this._forceOnline ||
+            networkMonitor.connectivity === Gio.NetworkConnectivity.FULL;
     }
 
     _showContact(id) {
