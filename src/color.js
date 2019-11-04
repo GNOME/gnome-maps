@@ -20,7 +20,7 @@
  */
 
 /* Minimum contrast ratio for foreground/background color for i.e. route labels */
-const MIN_CONTRAST_RATIO = 3.0;
+const MIN_CONTRAST_RATIO = 2.0;
 
 /**
  * Parses a given color component index (0: red, 1: green, 2: blue)
