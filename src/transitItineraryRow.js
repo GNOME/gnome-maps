@@ -54,10 +54,10 @@ var TransitItineraryRow = GObject.registerClass({
          */
         let useCompact = length > 2;
         /* don't show the route labels if too much space is consumed,
-         * the constant 28 here was empiracally tested out...
+         * the constant 26 here was empiracally tested out...
          */
         let estimatedSpace = this._calculateEstimatedSpace();
-        let useContractedLabels = estimatedSpace > 28;
+        let useContractedLabels = estimatedSpace > 26;
 
         this._itinerary.legs.forEach((leg, i) => {
             this._summaryGrid.add(this._createLeg(leg, useCompact,
