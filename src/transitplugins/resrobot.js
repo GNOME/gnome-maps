@@ -524,7 +524,7 @@ var Resrobot = class Resrobot {
         let [arrival, arrivalTzOffset] = [,];
 
         if (stop.depTime && stop.depDate)
-            [departure, departureTzOffset] = this._parseTime(stop.depTime, stop.depDate)
+            [departure, departureTzOffset] = this._parseTime(stop.depTime, stop.depDate);
         if (stop.arrTime && stop.arrDate)
             [arrival, arrivalTzOffset] = this._parseTime(stop.arrTime, stop.arrDate);
 
