@@ -116,7 +116,7 @@ var TransitTweaks = class {
                 let tweakToApply;
                 let bboxTweaks = routeTypeTweaks.bboxes;
                 let routeTweaks = routeTypeTweaks.routes ?
-                                  routeTypeTweaks.routes[leg.route] : null;
+                                  routeTypeTweaks.routes[leg.route] || null : null;
                 let routePatternTweaks = routeTypeTweaks.routePatterns;
 
                 // first check for boundingbox-specific tweaks
