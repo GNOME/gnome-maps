@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-10-01 20:20+0000\n"
-"PO-Revision-Date: 2019-10-10 09:56+0200\n"
+"POT-Creation-Date: 2019-10-30 21:01+0000\n"
+"PO-Revision-Date: 2019-11-05 15:07+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
@@ -641,15 +641,6 @@ msgid "Route search by GraphHopper"
 msgstr "Ruta buscada por GraphHopper"
 
 #: data/ui/sidebar.ui:364
-#| msgid ""
-#| "Routing itineraries for public transit is provided by GNOME\n"
-#| "using timetable data obtained from transit companies or agencies.\n"
-#| "The companies and agencies can not be held responsible for the results "
-#| "shown.\n"
-#| "GNOME can not guarantee correctness of the itineraries and schedules "
-#| "shown.\n"
-#| "Names and brands shown are to be considered as registered trademarks when "
-#| "applicable."
 msgid ""
 "Routing itineraries for public transit is provided by third-party\n"
 "services.\n"
@@ -773,6 +764,10 @@ msgstr "Una ruta a la estructura de carpetas locales de cuadrículas"
 #: src/application.js:98
 msgid "Show the version of the program"
 msgstr "Mostrar la versión del programa"
+
+#: src/application.js:104
+msgid "Ignore network availability"
+msgstr "Ignorar la disponibilidad de la red"
 
 #: src/checkInDialog.js:167
 msgid "Select an account"
@@ -904,15 +899,15 @@ msgstr "error al analizar"
 msgid "unknown geometry"
 msgstr "geometría desconocida"
 
-#: src/graphHopper.js:112 src/transitPlan.js:169
+#: src/graphHopper.js:112 src/transitPlan.js:192
 msgid "Route request failed."
 msgstr "Falló al solicitar la ruta."
 
-#: src/graphHopper.js:119 src/transitPlan.js:161
+#: src/graphHopper.js:119 src/transitPlan.js:184
 msgid "No route found."
 msgstr "No se ha encontrado la ruta."
 
-#: src/graphHopper.js:207 src/transitplugins/openTripPlanner.js:1154
+#: src/graphHopper.js:207 src/transitplugins/openTripPlanner.js:1100
 msgid "Start!"
 msgstr "Empezar"
 
@@ -1398,7 +1393,6 @@ msgstr "Tiempo estimado: %s"
 
 #: src/sidebar.js:352
 #, javascript-format
-#| msgid "Map tiles provided by %s"
 msgid "Itineraries provided by %s"
 msgstr "Itinerarios proporcionados por %s"
 
@@ -1434,7 +1428,7 @@ msgstr "Caminar %s"
 msgid "Arrive at %s"
 msgstr "Llegar a %s"
 
-#: src/transit.js:77 src/transitplugins/openTripPlanner.js:1167
+#: src/transit.js:77 src/transitplugins/openTripPlanner.js:1113
 msgid "Arrive"
 msgstr "Llegar"
 
@@ -1471,12 +1465,11 @@ msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%b %e"
 
-#: src/transitPlan.js:165
+#: src/transitPlan.js:188
 msgid "No timetable data found for this route."
 msgstr "No hay datos en la tabla de tiempos para esta ruta."
 
-#: src/transitPlan.js:173
-#| msgid "No timetable data found for this route."
+#: src/transitPlan.js:196
 msgid "No provider found for this route."
 msgstr "No se ha encontrado un proveedor para esta ruta."
 
@@ -1485,7 +1478,7 @@ msgstr "No se ha encontrado un proveedor para esta ruta."
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:290
+#: src/transitPlan.js:313
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -1494,7 +1487,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: src/transitPlan.js:317
+#: src/transitPlan.js:340
 #, javascript-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -1505,7 +1498,7 @@ msgstr[1] "%d minutos"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: src/transitPlan.js:328
+#: src/transitPlan.js:351
 #, javascript-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -1516,7 +1509,7 @@ msgstr[1] "%d horas"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: src/transitPlan.js:334
+#: src/transitPlan.js:357
 #, javascript-format
 msgid "%d:%02d hour"
 msgid_plural "%d:%02d hours"
@@ -1529,7 +1522,7 @@ msgstr[1] "%d:%02d horas"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:699
+#: src/transitPlan.js:750
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -1731,107 +1724,107 @@ msgstr "%s mi"
 msgid "%s ft"
 msgstr "%s ft"
 
-#: src/transitplugins/openTripPlanner.js:1228
+#: src/transitplugins/openTripPlanner.js:1174
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Continúe por %s"
 
-#: src/transitplugins/openTripPlanner.js:1230
+#: src/transitplugins/openTripPlanner.js:1176
 msgid "Continue"
 msgstr "Continúe"
 
-#: src/transitplugins/openTripPlanner.js:1233
+#: src/transitplugins/openTripPlanner.js:1179
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Gire a la izquierda en %s"
 
-#: src/transitplugins/openTripPlanner.js:1235
+#: src/transitplugins/openTripPlanner.js:1181
 msgid "Turn left"
 msgstr "Gire a la izquierda"
 
-#: src/transitplugins/openTripPlanner.js:1238
+#: src/transitplugins/openTripPlanner.js:1184
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Gire levemente a la izquierda en %s"
 
-#: src/transitplugins/openTripPlanner.js:1240
+#: src/transitplugins/openTripPlanner.js:1186
 msgid "Turn slightly left"
 msgstr "Gire levemente a la izquierda"
 
-#: src/transitplugins/openTripPlanner.js:1243
+#: src/transitplugins/openTripPlanner.js:1189
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Gire bruscamente a la izquierda en %s"
 
-#: src/transitplugins/openTripPlanner.js:1245
+#: src/transitplugins/openTripPlanner.js:1191
 msgid "Turn sharp left"
 msgstr "Gire bruscamente a la izquierda"
 
-#: src/transitplugins/openTripPlanner.js:1248
+#: src/transitplugins/openTripPlanner.js:1194
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Gire a la derecha en %s"
 
-#: src/transitplugins/openTripPlanner.js:1250
+#: src/transitplugins/openTripPlanner.js:1196
 msgid "Turn right"
 msgstr "Gire a la derecha"
 
-#: src/transitplugins/openTripPlanner.js:1253
+#: src/transitplugins/openTripPlanner.js:1199
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Gire levemente a la derecha en %s"
 
-#: src/transitplugins/openTripPlanner.js:1255
+#: src/transitplugins/openTripPlanner.js:1201
 msgid "Turn slightly right"
 msgstr "Gire levemente a la derecha"
 
-#: src/transitplugins/openTripPlanner.js:1258
+#: src/transitplugins/openTripPlanner.js:1204
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Gire bruscamente a la derecha en %s"
 
-#: src/transitplugins/openTripPlanner.js:1260
+#: src/transitplugins/openTripPlanner.js:1206
 msgid "Turn sharp right"
 msgstr "Gire bruscamente a la derecha"
 
-#: src/transitplugins/openTripPlanner.js:1266
+#: src/transitplugins/openTripPlanner.js:1212
 #, javascript-format
 msgid "In the roundaboat, take exit %s"
 msgstr "En la rotonda, coja la salida %s"
 
-#: src/transitplugins/openTripPlanner.js:1268
+#: src/transitplugins/openTripPlanner.js:1214
 #, javascript-format
 msgid "In the roundabout, take exit to %s"
 msgstr "En la rotonda, coja la salida hacia %s"
 
-#: src/transitplugins/openTripPlanner.js:1270
+#: src/transitplugins/openTripPlanner.js:1216
 msgid "Take the roundabout"
 msgstr "Entre en la rotonda"
 
-#: src/transitplugins/openTripPlanner.js:1274
+#: src/transitplugins/openTripPlanner.js:1220
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Coja el ascensor y salga en %s"
 
-#: src/transitplugins/openTripPlanner.js:1276
+#: src/transitplugins/openTripPlanner.js:1222
 msgid "Take the elevator"
 msgstr "Coja el ascensor"
 
-#: src/transitplugins/openTripPlanner.js:1280
+#: src/transitplugins/openTripPlanner.js:1226
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Dé la vuelta hacia la izquierda en %s"
 
-#: src/transitplugins/openTripPlanner.js:1282
+#: src/transitplugins/openTripPlanner.js:1228
 msgid "Make a left u-turn"
 msgstr "Dé la vuelta hacia la izquierda"
 
-#: src/transitplugins/openTripPlanner.js:1285
+#: src/transitplugins/openTripPlanner.js:1231
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Dé la vuelta hacia la derecha en %s"
 
-#: src/transitplugins/openTripPlanner.js:1287
+#: src/transitplugins/openTripPlanner.js:1233
 msgid "Make a rigth u-turn"
 msgstr "Dé la vuelta hacia la derecha"
 
