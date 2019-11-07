@@ -50,11 +50,19 @@ var Query = class Query {
             this._query[key].push(value);
     }
 
-    toString() {
+    /**
+     * Get the query parameters in string form.
+     * If useArrayNotation is given, and true, use array notation adding []
+     * after key if there's multiple values for that key.
+     */
+    toString(useArrayNotation = false) {
         let vars = [];
         for(let key in this._query) {
             let values = this._query[key];
-            let encKey = encode(key);
+            let multipleValues = values.length > 1;
+            let encKey = encode(key) + (multipleValues && useArrayNotation ?
+                                        '[]' : '');
+
             values.forEach(function(value) {
                 let encValue = encode(value);
                 if(encValue !== null)
