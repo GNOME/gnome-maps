@@ -56,7 +56,6 @@ const Products = {
     TRAM:           64,
     BUS:            128,
     FERRY:          256,
-    // This is not currently specified in the API documentation
     TAXI:           512
 };
 
@@ -75,7 +74,6 @@ const CatCode = {
     TRAM:           6,
     BUS:            7,
     FERRY:          8,
-    // This is not currently specified in the API documentation
     TAXI:           9
 };
 
