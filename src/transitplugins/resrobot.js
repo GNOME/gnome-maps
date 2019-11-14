@@ -45,7 +45,7 @@ const API_VERSION = 'v2';
 // Timezone for timestamps returned by this provider
 const NATIVE_TIMEZONE = 'Europe/Stockholm';
 
-const ISO_8601_DURATION_REGEXP = new RegExp(/PT((\d+)H)?((\d+)M)?/);
+const ISO_8601_DURATION_REGEXP = new RegExp(/P((\d+)D)?T((\d+)H)?((\d+)M)?/);
 
 const Products = {
     EXPRESS_TRAIN:  2,
@@ -372,9 +372,9 @@ var Resrobot = class Resrobot {
         let match = duration.match(ISO_8601_DURATION_REGEXP);
 
         if (match) {
-            let [,,h,,min] = match;
+            let [,,d,,h,,min] = match;
 
-            return (h || 0) * 3600 + (min || 0) * 60;
+            return (d || 0) * 86400 + (h || 0) * 3600 + (min || 0) * 60;
         } else {
             Utils.debug('Unknown duration: ' + duration);
 
