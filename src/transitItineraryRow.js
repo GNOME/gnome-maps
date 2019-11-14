@@ -24,6 +24,9 @@ const Gtk = imports.gi.Gtk;
 
 const TransitRouteLabel = imports.transitRouteLabel;
 
+// maximum number of legs to show before abbreviating with a … in the middle
+const MAX_LEGS_SHOWN = 8;
+
 var TransitItineraryRow = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/transit-itinerary-row.ui',
     InternalChildren: ['timeLabel',
@@ -59,7 +62,26 @@ var TransitItineraryRow = GObject.registerClass({
         let estimatedSpace = this._calculateEstimatedSpace();
         let useContractedLabels = estimatedSpace > 26;
 
-        this._itinerary.legs.forEach((leg, i) => {
+        if (length > MAX_LEGS_SHOWN) {
+            /* ellipsize list with horizontal dots to avoid overflowing and
+             * expanding the sidebar
+             */
+            this._renderLegs(this._itinerary.legs.slice(0, MAX_LEGS_SHOWN / 2),
+                             true, true);
+            this._summaryGrid.add(new Gtk.Label({ visible: true,
+                                                  label: '\u22ef' } ));
+            this._renderLegs(this._itinerary.legs.slice(-MAX_LEGS_SHOWN / 2),
+                             true, true);
+        } else {
+            this._renderLegs(this._itinerary.legs, useCompact,
+                             useContractedLabels);
+        }
+    }
+
+    _renderLegs(legs, useCompact, useContractedLabels) {
+        let length = legs.length;
+
+        legs.forEach((leg, i) =>  {
             this._summaryGrid.add(this._createLeg(leg, useCompact,
                                                   useContractedLabels));
             if (i !== length - 1)
