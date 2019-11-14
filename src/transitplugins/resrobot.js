@@ -128,7 +128,8 @@ var Resrobot = class Resrobot {
     fetchMoreResults() {
         this._extendPrevious = true;
 
-        if (!this._scrF && !this._scrB)
+        if ((!this._scrF && !this._query.arriveBy) ||
+            (!this._scrB && this._query.arriveBy))
             this._noRouteFound();
         else
             this._fetchResults();
