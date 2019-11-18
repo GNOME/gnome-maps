@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-10-01 20:20+0000\n"
-"PO-Revision-Date: 2019-10-17 21:32+0200\n"
+"POT-Creation-Date: 2019-11-10 02:21+0000\n"
+"PO-Revision-Date: 2019-11-18 09:20+0100\n"
 "Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
@@ -764,6 +764,10 @@ msgstr "Un percors par une struture de cartele locâl des piastrelis"
 msgid "Show the version of the program"
 msgstr "Mostre la version dal program"
 
+#: src/application.js:104
+msgid "Ignore network availability"
+msgstr "Ignore disponibilitât rêt"
+
 #: src/checkInDialog.js:167
 msgid "Select an account"
 msgstr "Selezione un account"
@@ -893,15 +897,15 @@ msgstr "erôr tal analizâ"
 msgid "unknown geometry"
 msgstr "gjeometrie no valide"
 
-#: src/graphHopper.js:112 src/transitPlan.js:169
+#: src/graphHopper.js:112 src/transitPlan.js:192
 msgid "Route request failed."
 msgstr "Richieste dal percors falide."
 
-#: src/graphHopper.js:119 src/transitPlan.js:161
+#: src/graphHopper.js:119 src/transitPlan.js:184
 msgid "No route found."
 msgstr "Percors no cjatât."
 
-#: src/graphHopper.js:207 src/transitplugins/openTripPlanner.js:1154
+#: src/graphHopper.js:207 src/transitplugins/openTripPlanner.js:1100
 msgid "Start!"
 msgstr "Invie!"
 
@@ -1422,7 +1426,7 @@ msgstr "Cjaminâ %s"
 msgid "Arrive at %s"
 msgstr "Rive a %s"
 
-#: src/transit.js:77 src/transitplugins/openTripPlanner.js:1167
+#: src/transit.js:77 src/transitplugins/openTripPlanner.js:1113
 msgid "Arrive"
 msgstr "Rivade"
 
@@ -1459,11 +1463,11 @@ msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e di %b"
 
-#: src/transitPlan.js:165
+#: src/transitPlan.js:188
 msgid "No timetable data found for this route."
 msgstr "Nissun dât di oraris cjatât par chest percors."
 
-#: src/transitPlan.js:173
+#: src/transitPlan.js:196
 msgid "No provider found for this route."
 msgstr "Nissun furnidôr cjatât par chest percors."
 
@@ -1472,7 +1476,7 @@ msgstr "Nissun furnidôr cjatât par chest percors."
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:290
+#: src/transitPlan.js:313
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -1481,7 +1485,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: src/transitPlan.js:317
+#: src/transitPlan.js:340
 #, javascript-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -1492,7 +1496,7 @@ msgstr[1] "%d minûts"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: src/transitPlan.js:328
+#: src/transitPlan.js:351
 #, javascript-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -1503,7 +1507,7 @@ msgstr[1] "%d oris"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: src/transitPlan.js:334
+#: src/transitPlan.js:357
 #, javascript-format
 msgid "%d:%02d hour"
 msgid_plural "%d:%02d hours"
@@ -1516,7 +1520,7 @@ msgstr[1] "%d:%02d oris"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:699
+#: src/transitPlan.js:750
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -1718,107 +1722,107 @@ msgstr "%s mi"
 msgid "%s ft"
 msgstr "%s ft"
 
-#: src/transitplugins/openTripPlanner.js:1228
+#: src/transitplugins/openTripPlanner.js:1174
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Continue su %s"
 
-#: src/transitplugins/openTripPlanner.js:1230
+#: src/transitplugins/openTripPlanner.js:1176
 msgid "Continue"
 msgstr "Continue"
 
-#: src/transitplugins/openTripPlanner.js:1233
+#: src/transitplugins/openTripPlanner.js:1179
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Svolte a çampe su %s"
 
-#: src/transitplugins/openTripPlanner.js:1235
+#: src/transitplugins/openTripPlanner.js:1181
 msgid "Turn left"
 msgstr "Svolte a çampe"
 
-#: src/transitplugins/openTripPlanner.js:1238
+#: src/transitplugins/openTripPlanner.js:1184
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Svolte di pôc a çampe su %s"
 
-#: src/transitplugins/openTripPlanner.js:1240
+#: src/transitplugins/openTripPlanner.js:1186
 msgid "Turn slightly left"
 msgstr "Svolte di pôc a çampe"
 
-#: src/transitplugins/openTripPlanner.js:1243
+#: src/transitplugins/openTripPlanner.js:1189
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Svolte di bot a çampe su %s"
 
-#: src/transitplugins/openTripPlanner.js:1245
+#: src/transitplugins/openTripPlanner.js:1191
 msgid "Turn sharp left"
 msgstr "Svolte di bot a çampe"
 
-#: src/transitplugins/openTripPlanner.js:1248
+#: src/transitplugins/openTripPlanner.js:1194
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Svolte a diestre su %s"
 
-#: src/transitplugins/openTripPlanner.js:1250
+#: src/transitplugins/openTripPlanner.js:1196
 msgid "Turn right"
 msgstr "Svolte a diestre"
 
-#: src/transitplugins/openTripPlanner.js:1253
+#: src/transitplugins/openTripPlanner.js:1199
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Svolte di pôc a diestre su %s"
 
-#: src/transitplugins/openTripPlanner.js:1255
+#: src/transitplugins/openTripPlanner.js:1201
 msgid "Turn slightly right"
 msgstr "Svolte di pôc a diestre"
 
-#: src/transitplugins/openTripPlanner.js:1258
+#: src/transitplugins/openTripPlanner.js:1204
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Svolte di bot a diestre su %s"
 
-#: src/transitplugins/openTripPlanner.js:1260
+#: src/transitplugins/openTripPlanner.js:1206
 msgid "Turn sharp right"
 msgstr "Svolte di bot a diestre"
 
-#: src/transitplugins/openTripPlanner.js:1266
+#: src/transitplugins/openTripPlanner.js:1212
 #, javascript-format
 msgid "In the roundaboat, take exit %s"
 msgstr "Inte rotatorie, cjape la jessude %s"
 
-#: src/transitplugins/openTripPlanner.js:1268
+#: src/transitplugins/openTripPlanner.js:1214
 #, javascript-format
 msgid "In the roundabout, take exit to %s"
 msgstr "Inte rotatorie, cjape la jessude par %s"
 
-#: src/transitplugins/openTripPlanner.js:1270
+#: src/transitplugins/openTripPlanner.js:1216
 msgid "Take the roundabout"
 msgstr "Cjape la rotatorie"
 
-#: src/transitplugins/openTripPlanner.js:1274
+#: src/transitplugins/openTripPlanner.js:1220
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Cjape l'assensôr e jes a %s"
 
-#: src/transitplugins/openTripPlanner.js:1276
+#: src/transitplugins/openTripPlanner.js:1222
 msgid "Take the elevator"
 msgstr "Cjape l'assensôr"
 
-#: src/transitplugins/openTripPlanner.js:1280
+#: src/transitplugins/openTripPlanner.js:1226
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Fâs une inversion a U a çampe su %s"
 
-#: src/transitplugins/openTripPlanner.js:1282
+#: src/transitplugins/openTripPlanner.js:1228
 msgid "Make a left u-turn"
 msgstr "Fâs une inversion a U a çampe"
 
-#: src/transitplugins/openTripPlanner.js:1285
+#: src/transitplugins/openTripPlanner.js:1231
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Fâs une inversion a U a diestre su %s"
 
-#: src/transitplugins/openTripPlanner.js:1287
+#: src/transitplugins/openTripPlanner.js:1233
 msgid "Make a rigth u-turn"
 msgstr "Fâs une inversion a U a diestre"
 
