@@ -1230,7 +1230,7 @@ var OpenTripPlanner = class OpenTripPlanner {
                 if (street)
                     return _("Make a right u-turn onto %s").format(street);
                 else
-                    return _("Make a rigth u-turn");
+                    return _("Make a right u-turn");
             default:
                 return '';
         }
