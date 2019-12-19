@@ -14,7 +14,7 @@
  * for more details.
  *
  * You should have received a copy of the GNU General Public License along
- * with GNOME Maps; if not, see <http://www.gnu.org/licenses/>.
+ * with GNOME Maps; if not, see <https://www.gnu.org/licenses/>.
  *
  * Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  *         Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
