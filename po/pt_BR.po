@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-08-27 20:37+0000\n"
-"PO-Revision-Date: 2019-09-05 03:14-0300\n"
+"POT-Creation-Date: 2019-12-15 18:16+0000\n"
+"PO-Revision-Date: 2019-12-26 07:08-0300\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -69,7 +69,7 @@ msgstr ""
 "“Praias perto de Fernando de Noronha” ou “Universidade perto de "
 "Alexanderplatz, Berlin”."
 
-#: data/org.gnome.Maps.appdata.xml.in:59
+#: data/org.gnome.Maps.appdata.xml.in:92
 msgid "The GNOME Project"
 msgstr "O Projeto GNOME"
 
@@ -116,14 +116,12 @@ msgid "Zoom level"
 msgstr "Nível de ampliação"
 
 #: data/org.gnome.Maps.gschema.xml:21
-#| msgctxt "shortcut window"
-#| msgid "Map View"
 msgid "Map type"
 msgstr "Tipo do mapa"
 
 #: data/org.gnome.Maps.gschema.xml:22
 msgid "The type of map to display (street, aerial, etc.)"
-msgstr "O tipo do mapa para exibir (rual, aérea, etc.)"
+msgstr "O tipo do mapa para exibir (rua, aérea etc.)"
 
 #: data/org.gnome.Maps.gschema.xml:26
 msgid "Window size"
@@ -653,29 +651,34 @@ msgstr "Tornar visível"
 msgid "Route search by GraphHopper"
 msgstr "Pesquisa de rota por GraphHopper"
 
-#: data/ui/sidebar.ui:296
-msgid "Route search by OpenTripPlanner"
-msgstr "Pesquisa de rota por OpenTripPlanner"
-
-#: data/ui/sidebar.ui:369
+#: data/ui/sidebar.ui:364
+#| msgid ""
+#| "Routing itineraries for public transit is provided by GNOME\n"
+#| "using timetable data obtained from transit companies or agencies.\n"
+#| "The companies and agencies can not be held responsible for the results "
+#| "shown.\n"
+#| "GNOME can not guarantee correctness of the itineraries and schedules "
+#| "shown.\n"
+#| "Names and brands shown are to be considered as registered trademarks when "
+#| "applicable."
 msgid ""
-"Routing itineraries for public transit is provided by GNOME\n"
-"using timetable data obtained from transit companies or agencies.\n"
-"The companies and agencies can not be held responsible for the results "
-"shown.\n"
+"Routing itineraries for public transit is provided by third-party\n"
+"services.\n"
 "GNOME can not guarantee correctness of the itineraries and schedules shown.\n"
+"Note that some providers might not include all available modes of "
+"transportation,\n"
+"e.g. a national provider might not include airlines, and a local provider "
+"could\n"
+"miss regional trains.\n"
 "Names and brands shown are to be considered as registered trademarks when "
 "applicable."
 msgstr ""
-"Itinerários de rotas para trânsito público é fornecido pelo GNOME\n"
-"usando dados de horários obtidos a partir de companhias ou agências de "
-"trânsito.\n"
-"As companhias ou agências não podem ser responsabilizadas por resultados "
-"mostrados.\n"
-"GNOME não pode garantir que os itinerários e agendamentos mostrados estejam "
-"corretos.\n"
-"Nomes e marcas mostradas devem ser considerados como marcas registradas, "
-"quando aplicável."
+"Itinerários de rotas para trânsito público é fornecido por serviços\n"
+"de terceiros.\n"
+"GNOME não pode garantir que os itinerários e agendamentos mostrados estejam\n"
+"corretos. Observe que alguns fornecedores podem não incluir todos os modos\n"
+"de transporte disponíveis, por exemplo, um fornecedor nacional pode não\n"
+"incluir companhias aéreas e um fornecedor local pode perder trens regionais."
 
 #: data/ui/social-place-more-results-row.ui:8
 msgid "Show more results"
@@ -731,6 +734,10 @@ msgstr "Metrô"
 msgid "Ferries"
 msgstr "Balsas"
 
+#: data/ui/transit-options-panel.ui:152
+msgid "Airplanes"
+msgstr "Aviões"
+
 #: data/ui/user-location-bubble.ui:13 src/geoclue.js:118
 msgid "Current location"
 msgstr "Localização atual"
@@ -751,7 +758,7 @@ msgstr "Ampliar"
 #: lib/maps-file-tile-source.c:303 lib/maps-file-tile-source.c:379
 #: lib/maps-file-tile-source.c:459
 msgid "Failed to find tile structure in directory"
-msgstr "Falha ao pesquisar estrutura de ladrilho no diretório"
+msgstr "Falha ao pesquisar estrutura de blocos no diretório"
 
 #: lib/maps-osm.c:56
 msgid "Failed to parse XML document"
@@ -767,11 +774,15 @@ msgstr "Não foi possível localizar elemento OSM"
 
 #: src/application.js:94
 msgid "A path to a local tiles directory structure"
-msgstr "Um caminho para um diretório local de estrutura de ladrilhos"
+msgstr "Um caminho para um diretório local de estrutura de blocos"
 
 #: src/application.js:98
 msgid "Show the version of the program"
 msgstr "Mostra a versão do programa"
+
+#: src/application.js:104
+msgid "Ignore network availability"
+msgstr "Ignora a disponibilidade de rede"
 
 #: src/checkInDialog.js:167
 msgid "Select an account"
@@ -904,15 +915,15 @@ msgstr "erro de análise"
 msgid "unknown geometry"
 msgstr "geometria desconhecida"
 
-#: src/graphHopper.js:112 src/openTripPlanner.js:652
+#: src/graphHopper.js:112 src/transitPlan.js:192
 msgid "Route request failed."
 msgstr "Solicitação da rota falhou."
 
-#: src/graphHopper.js:119 src/openTripPlanner.js:615
+#: src/graphHopper.js:119 src/transitPlan.js:184
 msgid "No route found."
 msgstr "Nenhuma rota encontrada."
 
-#: src/graphHopper.js:207
+#: src/graphHopper.js:207 src/transitplugins/openTripPlanner.js:1100
 msgid "Start!"
 msgstr "Começar!"
 
@@ -952,7 +963,7 @@ msgstr "Dados de mapas por %s e contribuidores"
 #: src/mainWindow.js:561
 #, javascript-format
 msgid "Map tiles provided by %s"
-msgstr "Ladrilhos de mapas fornecidos por %s"
+msgstr "Blocos de mapas fornecidos por %s"
 
 #. Translators: this is an attribution string giving credit to the
 #. * search provider where the first %s placeholder is replaced by either
@@ -968,21 +979,17 @@ msgstr "Ladrilhos de mapas fornecidos por %s"
 msgid "Search provided by %s using %s"
 msgstr "Pesquisa fornecida por %s usando %s"
 
-#: src/mapView.js:374
+#: src/mapView.js:375
 msgid "File type is not supported"
 msgstr "Não há suporte ao tipo de arquivo"
 
-#: src/mapView.js:381
+#: src/mapView.js:382
 msgid "Failed to open layer"
 msgstr "Falha ao abrir camada"
 
-#: src/mapView.js:417
+#: src/mapView.js:418
 msgid "Failed to open GeoURI"
 msgstr "Falha ao analisar o URI geo"
-
-#: src/openTripPlanner.js:648
-msgid "No timetable data found for this route."
-msgstr "Nenhum dado de horário localizado para essa rota."
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
@@ -1398,10 +1405,16 @@ msgid "failed to load file"
 msgstr "falha ao carregar arquivo"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:293
+#: src/sidebar.js:296
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Tempo estimado: %s"
+
+#: src/sidebar.js:352
+#, javascript-format
+#| msgid "Map tiles provided by %s"
+msgid "Itineraries provided by %s"
+msgstr "Itinerários fornecidos por %s"
 
 #. Translators: this is a format string indicating instructions
 #. * starting a journey at the address given as the parameter
@@ -1435,7 +1448,7 @@ msgstr "Caminhe %s"
 msgid "Arrive at %s"
 msgstr "Chegada em %s"
 
-#: src/transit.js:77
+#: src/transit.js:77 src/transitplugins/openTripPlanner.js:1113
 msgid "Arrive"
 msgstr "Chegada"
 
@@ -1467,17 +1480,26 @@ msgstr "Nenhuma alternativa posterior encontrada."
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:141
+#: src/transitOptionsPanel.js:143
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e de %b"
+
+#: src/transitPlan.js:188
+msgid "No timetable data found for this route."
+msgstr "Nenhum dado de horário localizado para essa rota."
+
+#: src/transitPlan.js:196
+#| msgid "No timetable data found for this route."
+msgid "No provider found for this route."
+msgstr "Nenhum provedor localizado para essa rota."
 
 #. Translators: this is a format string for showing a departure and
 #. * arrival time, like:
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:254
+#: src/transitPlan.js:313
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -1486,7 +1508,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: src/transitPlan.js:281
+#: src/transitPlan.js:340
 #, javascript-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -1497,7 +1519,7 @@ msgstr[1] "%d minutos"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: src/transitPlan.js:292
+#: src/transitPlan.js:351
 #, javascript-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -1508,7 +1530,7 @@ msgstr[1] "%d horas"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: src/transitPlan.js:298
+#: src/transitPlan.js:357
 #, javascript-format
 msgid "%d:%02d hour"
 msgid_plural "%d:%02d hours"
@@ -1521,7 +1543,7 @@ msgstr[1] "%d:%02d horas"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:651
+#: src/transitPlan.js:750
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -1675,53 +1697,161 @@ msgid "service"
 msgstr "serviço"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:220
+#: src/utils.js:229
 msgid "Unknown"
 msgstr "Desconhecido"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:223
+#: src/utils.js:232
 msgid "Exact"
 msgstr "Exato"
 
-#: src/utils.js:281
+#: src/utils.js:290
 #, javascript-format
 msgid "%f h"
 msgstr "%f h"
 
-#: src/utils.js:283
+#: src/utils.js:292
 #, javascript-format
 msgid "%f min"
 msgstr "%f min"
 
-#: src/utils.js:285
+#: src/utils.js:294
 #, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:296
+#: src/utils.js:305
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:299
+#: src/utils.js:308
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:307
+#: src/utils.js:316
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:310
+#: src/utils.js:319
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
+
+#: src/transitplugins/openTripPlanner.js:1174
+#, javascript-format
+msgid "Continue on %s"
+msgstr "Continue em %s"
+
+#: src/transitplugins/openTripPlanner.js:1176
+msgid "Continue"
+msgstr "Continue"
+
+#: src/transitplugins/openTripPlanner.js:1179
+#, javascript-format
+msgid "Turn left on %s"
+msgstr "Vire à esquerda em %s"
+
+#: src/transitplugins/openTripPlanner.js:1181
+msgid "Turn left"
+msgstr "Vire à esquerda"
+
+#: src/transitplugins/openTripPlanner.js:1184
+#, javascript-format
+msgid "Turn slightly left on %s"
+msgstr "Vire ligeiramente à esquerda em %s"
+
+#: src/transitplugins/openTripPlanner.js:1186
+msgid "Turn slightly left"
+msgstr "Vire ligeiramente à esquerda"
+
+#: src/transitplugins/openTripPlanner.js:1189
+#, javascript-format
+msgid "Turn sharp left on %s"
+msgstr "Vire acentuadamente à esquerda em %s"
+
+#: src/transitplugins/openTripPlanner.js:1191
+msgid "Turn sharp left"
+msgstr "Vire acentuadamente à esquerda"
+
+#: src/transitplugins/openTripPlanner.js:1194
+#, javascript-format
+msgid "Turn right on %s"
+msgstr "Vire à direita em %s"
+
+#: src/transitplugins/openTripPlanner.js:1196
+msgid "Turn right"
+msgstr "Vire à direita"
+
+#: src/transitplugins/openTripPlanner.js:1199
+#, javascript-format
+msgid "Turn slightly right on %s"
+msgstr "Vire ligeiramente à direita em %s"
+
+#: src/transitplugins/openTripPlanner.js:1201
+msgid "Turn slightly right"
+msgstr "Vire ligeiramente à direita"
+
+#: src/transitplugins/openTripPlanner.js:1204
+#, javascript-format
+msgid "Turn sharp right on %s"
+msgstr "Vire acentuadamente à direita em %s"
+
+#: src/transitplugins/openTripPlanner.js:1206
+msgid "Turn sharp right"
+msgstr "Vire acentuadamente à direita"
+
+# %s aqui é um número -- Rafael
+#: src/transitplugins/openTripPlanner.js:1212
+#, javascript-format
+msgid "In the roundabout, take exit %s"
+msgstr "Na rotatória, pegue a %sª saída"
+
+#: src/transitplugins/openTripPlanner.js:1214
+#, javascript-format
+msgid "In the roundabout, take exit to %s"
+msgstr "Na rotatória, pegue a saída para %s"
+
+#: src/transitplugins/openTripPlanner.js:1216
+msgid "Take the roundabout"
+msgstr "Pegue a rotatória"
+
+#: src/transitplugins/openTripPlanner.js:1220
+#, javascript-format
+msgid "Take the elevator and get off at %s"
+msgstr "Pegue o elevador e saia em %s"
+
+#: src/transitplugins/openTripPlanner.js:1222
+msgid "Take the elevator"
+msgstr "Pegue o elevador"
+
+#: src/transitplugins/openTripPlanner.js:1226
+#, javascript-format
+msgid "Make a left u-turn onto %s"
+msgstr "Faça um retorno em U à esquerda para %s"
+
+#: src/transitplugins/openTripPlanner.js:1228
+msgid "Make a left u-turn"
+msgstr "Faça um retorno em U à esquerda"
+
+#: src/transitplugins/openTripPlanner.js:1231
+#, javascript-format
+msgid "Make a right u-turn onto %s"
+msgstr "Faça um retorno em U à direita para %s"
+
+#: src/transitplugins/openTripPlanner.js:1233
+msgid "Make a right u-turn"
+msgstr "Faça um retorno em U à direita"
+
+#~ msgid "Route search by OpenTripPlanner"
+#~ msgstr "Pesquisa de rota por OpenTripPlanner"
 
 #~ msgid "org.gnome.Maps"
 #~ msgstr "org.gnome.Maps"
