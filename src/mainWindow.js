@@ -36,7 +36,7 @@ const ExportViewDialog = imports.exportViewDialog;
 const FavoritesPopover = imports.favoritesPopover;
 const Geoclue = imports.geoclue;
 const GeocodeFactory = imports.geocode;
-const LayersPopover = imports.layersPopover;
+const HeaderBar = imports.headerBar;
 const LocationServiceDialog = imports.locationServiceDialog;
 const MapView = imports.mapView;
 const PlaceEntry = imports.placeEntry;
@@ -82,11 +82,7 @@ var MainWindow = GObject.registerClass({
                         'grid',
                         'mainStack',
                         'mainGrid',
-                        'noNetworkView',
-                        'toggleSidebarButton',
-                        'layersButton',
-                        'favoritesButton',
-                        'printRouteButton' ]
+                        'noNetworkView' ]
 }, class MainWindow extends Gtk.ApplicationWindow {
 
     get mapView() {
@@ -111,13 +107,6 @@ var MainWindow = GObject.registerClass({
 
         this._contextMenu = new ContextMenu.ContextMenu({ mapView: this._mapView,
                                                           mainWindow: this });
-
-        this.layersPopover = new LayersPopover.LayersPopover({
-            mapView: this._mapView
-        });
-        this._layersButton.popover = this.layersPopover;
-        this._favoritesButton.popover = new FavoritesPopover.FavoritesPopover({ mapView: this._mapView });
-
 
         this._initHeaderbar();
         this._initActions();
@@ -163,9 +152,6 @@ var MainWindow = GObject.registerClass({
         let sidebar = new Sidebar.Sidebar(this._mapView);
 
         Application.routeQuery.connect('notify', () => this._setRevealSidebar(true));
-        this._toggleSidebarButton.bind_property('active',
-                                                this._mapView, 'routingOpen',
-                                                GObject.BindingFlags.BIDIRECTIONAL);
         this.application.bind_property('connected',
                                        sidebar, 'visible',
                                        GObject.BindingFlags.DEFAULT);
@@ -339,17 +325,20 @@ var MainWindow = GObject.registerClass({
     }
 
     _initHeaderbar() {
+        this._headerBarLeft = new HeaderBar.HeaderBarLeft({
+            mapView: this._mapView,
+            application: this.application
+        });
+        this._headerBar.pack_start(this._headerBarLeft);
+
+        this._headerBarRight = new HeaderBar.HeaderBarRight({
+            mapView: this._mapView,
+            application: this.application
+        });
+        this._headerBar.pack_end(this._headerBarRight);
+
         this._placeEntry = this._createPlaceEntry();
         this._headerBar.custom_title = this._placeEntry;
-
-        let favoritesPopover = this._favoritesButton.popover;
-        this._favoritesButton.sensitive = favoritesPopover.rows > 0;
-        favoritesPopover.connect('notify::rows', () => {
-            this._favoritesButton.sensitive = favoritesPopover.rows > 0;
-        });
-
-        this._mapView.bind_property('routeShowing', this._printRouteButton,
-                                    'visible', GObject.BindingFlags.DEFAULT);
 
         Application.geoclue.connect('notify::state',
                                     this._updateLocationSensitivity.bind(this));
@@ -357,12 +346,7 @@ var MainWindow = GObject.registerClass({
             let app = this.application;
 
             this._updateLocationSensitivity();
-            this._layersButton.sensitive = app.connected;
-            this._toggleSidebarButton.sensitive = app.connected;
-            this._favoritesButton.sensitive = (app.connected &&
-                                               favoritesPopover.rows > 0);
             this._placeEntry.sensitive = app.connected;
-            this._printRouteButton.sensitive = app.connected;
         });
     }
 
@@ -513,14 +497,12 @@ var MainWindow = GObject.registerClass({
 
     _onStreetViewActivate() {
         this._mapView.setMapType(MapView.MapType.STREET);
-        this.layersPopover.setMapType(MapView.MapType.STREET);
     }
 
     _onAerialViewActivate() {
         // don't attempt to switch to aerial if we don't have tiles for it
         if (Service.getService().tiles.aerial) {
             this._mapView.setMapType(MapView.MapType.AERIAL);
-            this.layersPopover.setMapType(MapView.MapType.AERIAL);
         }
     }
 
@@ -637,7 +619,7 @@ var MainWindow = GObject.registerClass({
         this._fileChooser.connect('response', (widget, response) => {
             if (response === Gtk.ResponseType.ACCEPT) {
                 this._mapView.openShapeLayers(this._fileChooser.get_files());
-                this.layersPopover.popdown();
+                this._headerBarLeft.popdownLayersPopover();
             }
             this._fileChooser.destroy();
         });
