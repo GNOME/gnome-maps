@@ -59,6 +59,7 @@ var SendToDialog = GObject.registerClass({
 
     _init(params) {
         this._place = params.place;
+        this._location = this._place.location;
         delete params.place;
 
         this._mapView = params.mapView;
@@ -95,7 +96,7 @@ var SendToDialog = GObject.registerClass({
 
         if (GWeather) {
             let world = GWeather.Location.get_world();
-            let location = this._place.location;
+            let location = this._location;
             this._city = world.find_nearest_city(location.latitude,
                                                  location.longitude);
             /* Translators: The first string is the name of the city, the
@@ -157,8 +158,8 @@ var SendToDialog = GObject.registerClass({
             lines.push(details);
         }
 
-        lines.push('%f, %f'.format(place.location.latitude,
-                                   place.location.longitude));
+        lines.push('%f, %f'.format(this._location.latitude,
+                                   this._location.longitude));
 
         return lines.join('\n');
     }
@@ -174,8 +175,8 @@ var SendToDialog = GObject.registerClass({
                                      place.osm_id);
         } else {
             return '%s?mlat=%f&mlon=%f&zoom=%d'.format(base,
-                                                       place.location.latitude,
-                                                       place.location.longitude,
+                                                       this._location.latitude,
+                                                       this._location.longitude,
                                                        view.zoom_level);
         }
     }
@@ -237,7 +238,7 @@ var SendToDialog = GObject.registerClass({
                                  new GLib.Variant('v', this._city.serialize()),
                                  timestamp);
         } else if (row instanceof OpenWithRow) {
-            let uri = this._place.location.to_uri(Geocode.LocationURIScheme.GEO);
+            let uri = this._location.to_uri(Geocode.LocationURIScheme.GEO);
             row.appinfo.launch_uris([ uri ], this._getAppLaunchContext());
         }
         this.response(Response.SUCCESS);
