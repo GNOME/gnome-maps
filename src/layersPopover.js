@@ -108,11 +108,15 @@ var LayersPopover = GObject.registerClass({
         // disable the map type switch buttons if aerial is unavailable
         if (Service.getService().tiles.aerial) {
             this._streetLayerButton.connect('clicked', () => {
-                this._mapView.setMapType(MapView.MapType.STREET);
+                if (this._streetLayerButton.active) {
+                    this._mapView.setMapType(MapView.MapType.STREET);
+                }
             });
 
             this._aerialLayerButton.connect('clicked', () => {
-                this._mapView.setMapType(MapView.MapType.AERIAL);
+                if (this._aerialLayerButton.active) {
+                    this._mapView.setMapType(MapView.MapType.AERIAL);
+                }
             });
 
             this._mapView.view.connect("notify::zoom-level",
@@ -127,6 +131,9 @@ var LayersPopover = GObject.registerClass({
         }
 
         this.setMapType(this._mapView.getMapType());
+        this._mapView.connect("map-type-changed", (_mapView, type) => {
+            this.setMapType(type);
+        });
     }
 
     _setLayerPreviews() {
