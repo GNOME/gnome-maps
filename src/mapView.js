@@ -109,7 +109,8 @@ var MapView = GObject.registerClass({
         'going-to-user-location': {},
         'gone-to-user-location': {},
         'view-moved': {},
-        'marker-selected': { param_types: [Champlain.Marker] }
+        'marker-selected': { param_types: [Champlain.Marker] },
+        'map-type-changed': { param_types: [GObject.TYPE_STRING] }
     },
 }, class MapView extends GtkChamplain.Embed {
 
@@ -356,6 +357,8 @@ var MapView = GObject.registerClass({
         }
 
         overlay_sources.forEach((source) => this.view.add_overlay_source(source, 255));
+
+        this.emit("map-type-changed", mapType);
     }
 
     toggleScale() {
