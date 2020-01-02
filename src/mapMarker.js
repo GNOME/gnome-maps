@@ -76,13 +76,17 @@ var MapMarker = GObject.registerClass({
 
             // Some markers are draggable, we want to sync the marker location and
             // the location saved in the GeocodePlace
-            this.bind_property('latitude',
-                               this.place.location, 'latitude',
-                               GObject.BindingFlags.DEFAULT);
+            // These are not bindings because the place may have a different
+            // location later
+            this.connect('notify::latitude', () => {
+                this.place.location.latitude = this.latitude;
+            });
+            this.connect('notify::longitude', () => {
+                this.place.location.longitude = this.longitude;
+            });
 
-            this.bind_property('longitude',
-                               this.place.location, 'longitude',
-                               GObject.BindingFlags.DEFAULT);
+            this.place.connect('notify::location', this._onLocationChanged.bind(this));
+
             this._view.bind_property('latitude', this, 'view-latitude',
                                      GObject.BindingFlags.DEFAULT);
             this._view.bind_property('longitude', this, 'view-longitude',
@@ -168,6 +172,17 @@ var MapMarker = GObject.registerClass({
 
     _translateMarkerPosition() {
         this.set_translation(-this.anchor.x, -this.anchor.y, 0);
+    }
+
+    _onLocationChanged() {
+        this.set_location(this.place.location.latitude, this.place.location.longitude);
+
+        if (this._bubble) {
+            if (this._isInsideView())
+                this._positionBubble(this._bubble);
+            else
+                this.hideBubble();
+        }
     }
 
     /**
@@ -295,6 +310,12 @@ var MapMarker = GObject.registerClass({
         let dragMotionSignalId = this.connect('drag-motion', () => {
             this.set_selected(false);
         });
+        let markerHiddenSignalId = this.connect('notify::visible', () => {
+            if (!this.visible) {
+                this.set_selected(false);
+            }
+        });
+
         Utils.once(this.bubble, 'closed', () => {
             this._mapView.disconnect(markerSelectedSignalId);
             this._mapView.disconnect(goingToSignalId);
