@@ -83,13 +83,10 @@ var MainWindow = GObject.registerClass({
                         'mainStack',
                         'mainGrid',
                         'noNetworkView',
-                        'gotoUserLocationButton',
                         'toggleSidebarButton',
                         'layersButton',
                         'favoritesButton',
-                        'printRouteButton',
-                        'zoomInButton',
-                        'zoomOutButton' ]
+                        'printRouteButton' ]
 }, class MainWindow extends Gtk.ApplicationWindow {
 
     get mapView() {
@@ -319,16 +316,18 @@ var MainWindow = GObject.registerClass({
         let zoomLevel = this._mapView.view.zoom_level;
         let maxZoomLevel = this._mapView.view.max_zoom_level;
         let minZoomLevel = this._mapView.view.min_zoom_level;
+        let zoomInAction = this.lookup_action("zoom-in");
+        let zoomOutAction = this.lookup_action("zoom-out");
 
         if (zoomLevel >= maxZoomLevel)
-            this._zoomInButton.set_sensitive(false);
+            zoomInAction.set_enabled(false);
         else
-            this._zoomInButton.set_sensitive(true);
+            zoomInAction.set_enabled(true);
 
         if (zoomLevel <= minZoomLevel)
-            this._zoomOutButton.set_sensitive(false);
+            zoomOutAction.set_enabled(false);
         else
-            this._zoomOutButton.set_sensitive(true);
+            zoomOutAction.set_enabled(true);
     }
 
     _updateLocationSensitivity() {
@@ -336,7 +335,7 @@ var MainWindow = GObject.registerClass({
                          (this.application.connected ||
                           this.application.local_tile_path));
 
-        this._gotoUserLocationButton.sensitive = sensitive;
+        this.lookup_action("goto-user-location").set_enabled(sensitive);
     }
 
     _initHeaderbar() {
