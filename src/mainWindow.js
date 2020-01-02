@@ -48,8 +48,8 @@ const Sidebar = imports.sidebar;
 const Utils = imports.utils;
 
 const _CONFIGURE_ID_TIMEOUT = 100; // msecs
-const _WINDOW_MIN_WIDTH = 600;
-const _WINDOW_MIN_HEIGHT = 500;
+const _ADAPTIVE_VIEW_WIDTH = 700;
+const _PLACE_ENTRY_MARGIN = 35;
 
 var ShapeLayerFileChooser = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/shape-layer-file-chooser.ui'
@@ -82,7 +82,9 @@ var MainWindow = GObject.registerClass({
                         'grid',
                         'mainStack',
                         'mainGrid',
-                        'noNetworkView' ]
+                        'noNetworkView',
+                        'actionBar',
+                        'actionBarRevealer' ]
 }, class MainWindow extends Gtk.ApplicationWindow {
 
     get mapView() {
@@ -108,8 +110,8 @@ var MainWindow = GObject.registerClass({
         this._contextMenu = new ContextMenu.ContextMenu({ mapView: this._mapView,
                                                           mainWindow: this });
 
-        this._initHeaderbar();
         this._initActions();
+        this._initHeaderbar();
         this._initSignals();
         this._restoreWindowGeometry();
         this._initDND();
@@ -130,8 +132,8 @@ var MainWindow = GObject.registerClass({
     _createPlaceEntry() {
         let placeEntry = new PlaceEntry.PlaceEntry({ mapView: this._mapView,
                                                      visible: true,
-                                                     margin_start: 35,
-                                                     margin_end: 35,
+                                                     margin_start: _PLACE_ENTRY_MARGIN,
+                                                     margin_end: _PLACE_ENTRY_MARGIN,
                                                      max_width_chars: 50,
                                                      loupe: true,
                                                      matchRoute: true
@@ -347,6 +349,36 @@ var MainWindow = GObject.registerClass({
 
             this._updateLocationSensitivity();
             this._placeEntry.sensitive = app.connected;
+        });
+
+        // action bar, for when the window is too narrow for the full headerbar
+        this._actionBarLeft =  new HeaderBar.HeaderBarLeft({
+            mapView: this._mapView,
+            application: this.application
+        })
+        this._actionBar.pack_start(this._actionBarLeft);
+
+        this._actionBarRight = new HeaderBar.HeaderBarRight({
+            mapView: this._mapView,
+            application: this.application
+        })
+        this._actionBar.pack_end(this._actionBarRight);
+
+        this.connect('size-allocate', () => {
+            let [width, height] = this.get_size();
+            if (width < _ADAPTIVE_VIEW_WIDTH) {
+                this._headerBarLeft.hide();
+                this._headerBarRight.hide();
+                this._actionBarRevealer.set_reveal_child(true);
+                this._placeEntry.set_margin_start(0);
+                this._placeEntry.set_margin_end(0);
+            } else {
+                this._headerBarLeft.show();
+                this._headerBarRight.show();
+                this._actionBarRevealer.set_reveal_child(false);
+                this._placeEntry.set_margin_start(_PLACE_ENTRY_MARGIN);
+                this._placeEntry.set_margin_end(_PLACE_ENTRY_MARGIN);
+            }
         });
     }
 
@@ -620,6 +652,7 @@ var MainWindow = GObject.registerClass({
             if (response === Gtk.ResponseType.ACCEPT) {
                 this._mapView.openShapeLayers(this._fileChooser.get_files());
                 this._headerBarLeft.popdownLayersPopover();
+                this._actionBarLeft.popdownLayersPopover();
             }
             this._fileChooser.destroy();
         });

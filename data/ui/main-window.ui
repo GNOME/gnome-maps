@@ -24,7 +24,7 @@
     </section>
   </menu>
   <template class="Gjs_MainWindow" parent="GtkApplicationWindow">
-    <property name="width-request">600</property>
+    <property name="width-request">300</property>
     <property name="height-request">500</property>
     <property name="window-position">center</property>
     <property name="title" translatable="yes">Maps</property>
@@ -130,6 +130,23 @@
               </object>
             </child>
           </object>
+        </child>
+        <child>
+          <object class="GtkRevealer" id="actionBarRevealer">
+            <property name="visible">True</property>
+            <property name="reveal-child">False</property>
+            <property name="transition-type">slide-up</property>
+            <child>
+              <object class="GtkActionBar" id="actionBar">
+                <property name="visible">True</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">1</property>
+            <property name="width">2</property>
+          </packing>
         </child>
       </object>
     </child>
