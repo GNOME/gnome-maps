@@ -45,6 +45,9 @@ class AccuracyCirleMarker extends Champlain.Point {
     }
 
     refreshGeometry(view) {
+        this.latitude = this.place.location.latitude;
+        this.longitude = this.place.location.longitude;
+
         let zoom = view.zoom_level;
         let source = view.map_source;
         let metersPerPixel = source.get_meters_per_pixel(zoom,
@@ -67,21 +70,15 @@ class UserLocationMarker extends MapMarker.MapMarker {
     _init(params) {
         super._init(params);
 
-        if (this.place.location.heading > -1) {
-            let actor = this._actorFromIconName('user-location-compass', 0);
-            actor.set_pivot_point(0.5, 0.5);
-            actor.set_rotation_angle(Clutter.RotateAxis.Z_AXIS, this.place.location.heading);
-            this.add_actor(actor);
-        } else {
-            this.add_actor(this._actorFromIconName('user-location', 0));
-        }
+        this._accuracyMarker = new AccuracyCircleMarker({ place: this.place });
+        this.connect('notify::view-zoom-level',
+                     () => this._accuracyMarker.refreshGeometry(this._view));
+         this._accuracyMarker.refreshGeometry(this._view);
 
-        if (this.place.location.accuracy > 0) {
-            this._accuracyMarker = new AccuracyCircleMarker({ place: this.place });
-            this._accuracyMarker.refreshGeometry(this._view);
-            this.connect('notify::view-zoom-level',
-                         () => this._accuracyMarker.refreshGeometry(this._view));
-        }
+        this.place.connect('notify::location', this._updateLocation.bind(this));
+        this._updateLocation();
+
+        this.connect('notify::visible', this._updateAccuracyCircle.bind(this));
     }
 
     get anchor() {
@@ -95,9 +92,35 @@ class UserLocationMarker extends MapMarker.MapMarker {
     }
 
     addToLayer(layer) {
-        if (this._accuracyMarker)
-            layer.add_marker(this._accuracyMarker);
-
+        layer.add_marker(this._accuracyMarker);
         layer.add_marker(this);
+    }
+
+    _updateLocation() {
+        if (this._actor) {
+            this._actor.destroy();
+            delete this._actor;
+        }
+
+        if (this.place.location.heading > -1) {
+            this._actor = this._actorFromIconName('user-location-compass', 0);
+            this._actor.set_pivot_point(0.5, 0.5);
+            this._actor.set_rotation_angle(Clutter.RotateAxis.Z_AXIS, this.place.location.heading);
+        } else {
+            this._actor = this._actorFromIconName('user-location', 0);
+        }
+        this.add_actor(this._actor);
+
+        this._updateAccuracyCircle();
+        if (this._bubble)
+            this._bubble.updateLocation();
+    }
+
+    _updateAccuracyCircle() {
+        if (this.visible && this.place.location.accuracy > 0) {
+            this._accuracyMarker.refreshGeometry(this._view);
+        } else {
+            this._accuracyMarker.visible = false;
+        }
     }
 });
