@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-09-22 06:02+0000\n"
-"PO-Revision-Date: 2019-09-26 10:02+0200\n"
+"POT-Creation-Date: 2019-12-15 18:16+0000\n"
+"PO-Revision-Date: 2020-01-17 08:25+0100\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
 "Language: sk\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
 msgid "GNOME Maps"
@@ -674,17 +674,26 @@ msgstr "Prepne viditeľné"
 msgid "Route search by GraphHopper"
 msgstr "Trasa poskytovaná službou GraphHopper"
 
-#: data/ui/sidebar.ui:296
-msgid "Route search by OpenTripPlanner"
-msgstr "Trasa poskytovaná službou OpenTripPlanner"
-
-#: data/ui/sidebar.ui:369
+#: data/ui/sidebar.ui:364
+#, fuzzy
+#| msgid ""
+#| "Routing itineraries for public transit is provided by GNOME\n"
+#| "using timetable data obtained from transit companies or agencies.\n"
+#| "The companies and agencies can not be held responsible for the results "
+#| "shown.\n"
+#| "GNOME can not guarantee correctness of the itineraries and schedules "
+#| "shown.\n"
+#| "Names and brands shown are to be considered as registered trademarks when "
+#| "applicable."
 msgid ""
-"Routing itineraries for public transit is provided by GNOME\n"
-"using timetable data obtained from transit companies or agencies.\n"
-"The companies and agencies can not be held responsible for the results "
-"shown.\n"
+"Routing itineraries for public transit is provided by third-party\n"
+"services.\n"
 "GNOME can not guarantee correctness of the itineraries and schedules shown.\n"
+"Note that some providers might not include all available modes of "
+"transportation,\n"
+"e.g. a national provider might not include airlines, and a local provider "
+"could\n"
+"miss regional trains.\n"
 "Names and brands shown are to be considered as registered trademarks when "
 "applicable."
 msgstr ""
@@ -752,6 +761,10 @@ msgstr "Metro"
 msgid "Ferries"
 msgstr "Trajekty"
 
+#: data/ui/transit-options-panel.ui:152
+msgid "Airplanes"
+msgstr "Lietadlá"
+
 #: data/ui/user-location-bubble.ui:13 src/geoclue.js:118
 msgid "Current location"
 msgstr "Aktuálne umiestnenie"
@@ -793,6 +806,10 @@ msgstr "Cesta k štruktúre adresárov miestnych dlaždíc"
 #: src/application.js:98
 msgid "Show the version of the program"
 msgstr "Zobrazí verziu programu"
+
+#: src/application.js:104
+msgid "Ignore network availability"
+msgstr "Ignorovať dostupnosť siete"
 
 #: src/checkInDialog.js:167
 msgid "Select an account"
@@ -923,15 +940,15 @@ msgstr "chyba analýzy"
 msgid "unknown geometry"
 msgstr "neznáma geometria"
 
-#: src/graphHopper.js:112 src/openTripPlanner.js:652
+#: src/graphHopper.js:112 src/transitPlan.js:192
 msgid "Route request failed."
 msgstr "Požiadavka na trasu zlyhala."
 
-#: src/graphHopper.js:119 src/openTripPlanner.js:615
+#: src/graphHopper.js:119 src/transitPlan.js:184
 msgid "No route found."
 msgstr "Nenašla sa žiadna trasa."
 
-#: src/graphHopper.js:207
+#: src/graphHopper.js:207 src/transitplugins/openTripPlanner.js:1100
 msgid "Start!"
 msgstr "Začiatok!"
 
@@ -986,21 +1003,17 @@ msgstr "Dlaždice mapy poskytnuté zo služby %s"
 msgid "Search provided by %s using %s"
 msgstr "Vyhľadávanie poskytnuté službou %s použitím %s"
 
-#: src/mapView.js:374
+#: src/mapView.js:375
 msgid "File type is not supported"
 msgstr "Typ súboru nie je podporovaný"
 
-#: src/mapView.js:381
+#: src/mapView.js:382
 msgid "Failed to open layer"
 msgstr "Zlyhalo otvorenie vrstvy"
 
-#: src/mapView.js:417
+#: src/mapView.js:418
 msgid "Failed to open GeoURI"
 msgstr "Zlyhalo otvorenie GeoURI"
-
-#: src/openTripPlanner.js:648
-msgid "No timetable data found for this route."
-msgstr "Pre túto trasu sa nenašli žiadne údaje cestovného poriadku."
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
@@ -1417,10 +1430,16 @@ msgid "failed to load file"
 msgstr "zlyhalo načítanie súboru"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:293
+#: src/sidebar.js:296
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Odhadovaný čas: %s"
+
+#: src/sidebar.js:352
+#, fuzzy, javascript-format
+#| msgid "Map tiles provided by %s"
+msgid "Itineraries provided by %s"
+msgstr "Dlaždice mapy poskytnuté zo služby %s"
 
 #. Translators: this is a format string indicating instructions
 #. * starting a journey at the address given as the parameter
@@ -1454,7 +1473,7 @@ msgstr "Chôdza %s"
 msgid "Arrive at %s"
 msgstr "Príchod na adresu %s"
 
-#: src/transit.js:77
+#: src/transit.js:77 src/transitplugins/openTripPlanner.js:1113
 msgid "Arrive"
 msgstr "Príchod"
 
@@ -1488,17 +1507,27 @@ msgstr "Nenašli sa žiadne neskoršie alternatívy."
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:141
+#: src/transitOptionsPanel.js:143
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e. %b"
+
+#: src/transitPlan.js:188
+msgid "No timetable data found for this route."
+msgstr "Pre túto trasu sa nenašli žiadne údaje cestovného poriadku."
+
+#: src/transitPlan.js:196
+#, fuzzy
+#| msgid "No timetable data found for this route."
+msgid "No provider found for this route."
+msgstr "Pre túto trasu sa nenašli žiadne údaje cestovného poriadku."
 
 #. Translators: this is a format string for showing a departure and
 #. * arrival time, like:
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:254
+#: src/transitPlan.js:313
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -1507,7 +1536,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: src/transitPlan.js:281
+#: src/transitPlan.js:340
 #, javascript-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -1519,7 +1548,7 @@ msgstr[2] "%d minúty"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: src/transitPlan.js:292
+#: src/transitPlan.js:351
 #, javascript-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -1531,7 +1560,7 @@ msgstr[2] "%d hodiny"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: src/transitPlan.js:298
+#: src/transitPlan.js:357
 #, javascript-format
 msgid "%d:%02d hour"
 msgid_plural "%d:%02d hours"
@@ -1545,7 +1574,7 @@ msgstr[2] "%d:%02d hodiny"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:651
+#: src/transitPlan.js:750
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -1699,53 +1728,160 @@ msgid "service"
 msgstr "obsluha"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:220
+#: src/utils.js:229
 msgid "Unknown"
 msgstr "Neznáma"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:223
+#: src/utils.js:232
 msgid "Exact"
 msgstr "Presná"
 
-#: src/utils.js:281
+#: src/utils.js:290
 #, javascript-format
 msgid "%f h"
 msgstr "%f h"
 
-#: src/utils.js:283
+#: src/utils.js:292
 #, javascript-format
 msgid "%f min"
 msgstr "%f min"
 
-#: src/utils.js:285
+#: src/utils.js:294
 #, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:296
+#: src/utils.js:305
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:299
+#: src/utils.js:308
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:307
+#: src/utils.js:316
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:310
+#: src/utils.js:319
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
+
+#: src/transitplugins/openTripPlanner.js:1174
+#, javascript-format
+msgid "Continue on %s"
+msgstr "Pokračujte na %s"
+
+#: src/transitplugins/openTripPlanner.js:1176
+msgid "Continue"
+msgstr "Pokračujte"
+
+#: src/transitplugins/openTripPlanner.js:1179
+#, javascript-format
+msgid "Turn left on %s"
+msgstr "Odbočte doľava na %s"
+
+#: src/transitplugins/openTripPlanner.js:1181
+msgid "Turn left"
+msgstr "Odbočte doľava"
+
+#: src/transitplugins/openTripPlanner.js:1184
+#, javascript-format
+msgid "Turn slightly left on %s"
+msgstr "Odbočte mierne doľava na %s"
+
+#: src/transitplugins/openTripPlanner.js:1186
+msgid "Turn slightly left"
+msgstr "Odbočte mierne doľava"
+
+#: src/transitplugins/openTripPlanner.js:1189
+#, javascript-format
+msgid "Turn sharp left on %s"
+msgstr "Odbočte ostro doľava na %s"
+
+#: src/transitplugins/openTripPlanner.js:1191
+msgid "Turn sharp left"
+msgstr "Odbočte ostro doľava"
+
+#: src/transitplugins/openTripPlanner.js:1194
+#, javascript-format
+msgid "Turn right on %s"
+msgstr "Odbočte doprava na %s"
+
+#: src/transitplugins/openTripPlanner.js:1196
+msgid "Turn right"
+msgstr "Odbočte doprava"
+
+#: src/transitplugins/openTripPlanner.js:1199
+#, javascript-format
+msgid "Turn slightly right on %s"
+msgstr "Odbočte mierne doprava na %s"
+
+#: src/transitplugins/openTripPlanner.js:1201
+msgid "Turn slightly right"
+msgstr "Odbočte mierne doprava"
+
+#: src/transitplugins/openTripPlanner.js:1204
+#, javascript-format
+msgid "Turn sharp right on %s"
+msgstr "Odbočte ostro doprava na %s"
+
+#: src/transitplugins/openTripPlanner.js:1206
+msgid "Turn sharp right"
+msgstr "Odbočte ostro doprava"
+
+#: src/transitplugins/openTripPlanner.js:1212
+#, javascript-format
+msgid "In the roundabout, take exit %s"
+msgstr "Na kruhovom objazde použite %s. výjazd"
+
+#: src/transitplugins/openTripPlanner.js:1214
+#, javascript-format
+msgid "In the roundabout, take exit to %s"
+msgstr "Na kruhovom objazde použite výjazd na %s"
+
+#: src/transitplugins/openTripPlanner.js:1216
+msgid "Take the roundabout"
+msgstr "Vojdite do kruhového objazdu"
+
+#: src/transitplugins/openTripPlanner.js:1220
+#, fuzzy, javascript-format
+msgid "Take the elevator and get off at %s"
+msgstr "Použite výťah a prejdite na %s"
+
+#: src/transitplugins/openTripPlanner.js:1222
+msgid "Take the elevator"
+msgstr "Použite výťah"
+
+#: src/transitplugins/openTripPlanner.js:1226
+#, javascript-format
+msgid "Make a left u-turn onto %s"
+msgstr "Otočte sa doľava na %s"
+
+#: src/transitplugins/openTripPlanner.js:1228
+msgid "Make a left u-turn"
+msgstr "Otočte sa doľava"
+
+#: src/transitplugins/openTripPlanner.js:1231
+#, javascript-format
+msgid "Make a right u-turn onto %s"
+msgstr "Otočte sa doprava na %s"
+
+#: src/transitplugins/openTripPlanner.js:1233
+msgid "Make a right u-turn"
+msgstr "Otočte sa doprava"
+
+#~ msgid "Route search by OpenTripPlanner"
+#~ msgstr "Trasa poskytovaná službou OpenTripPlanner"
 
 #~ msgid "org.gnome.Maps"
 #~ msgstr "org.gnome.Maps"
