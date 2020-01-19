@@ -22,6 +22,7 @@
 
 const _ = imports.gettext.gettext;
 
+const Champlain = imports.gi.Champlain;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Gdk = imports.gi.Gdk;
@@ -31,6 +32,7 @@ const Mainloop = imports.mainloop;
 
 const Application = imports.application;
 const ContextMenu = imports.contextMenu;
+const ExportViewDialog = imports.exportViewDialog;
 const FavoritesPopover = imports.favoritesPopover;
 const Geoclue = imports.geoclue;
 const GeocodeFactory = imports.geocode;
@@ -244,6 +246,9 @@ var MainWindow = GObject.registerClass({
             'open-shape-layer': {
                 accels: ['<Primary>O'],
                 onActivate: () => this._onOpenShapeLayer()
+            },
+            'export-as-image': {
+                onActivate: () => this._onExportActivated()
             }
         });
     }
@@ -462,6 +467,38 @@ var MainWindow = GObject.registerClass({
                 break;
             }
         });
+    }
+
+    _activateExport() {
+        let view = this._mapView.view;
+        let surface = view.to_surface(true);
+        let bbox = view.get_bounding_box();
+        let [latitude, longitude] = bbox.get_center();
+
+        let dialog = new ExportViewDialog.ExportViewDialog({
+            transient_for: this,
+            modal: true,
+            surface: surface,
+            latitude: latitude,
+            longitude: longitude,
+            mapView: this._mapView
+        });
+
+        dialog.connect('response', () => dialog.destroy());
+        dialog.show_all();
+    }
+
+    _onExportActivated() {
+        if (this._mapView.view.state === Champlain.State.DONE) {
+            this._activateExport();
+        } else {
+            let notifyId = this._mapView.view.connect('notify::state', () => {
+                if (this._mapView.view.state === Champlain.State.DONE) {
+                    this._mapView.view.disconnect(notifyId);
+                    this._activateExport();
+                }
+            });
+        }
     }
 
     _printRouteActivate() {
