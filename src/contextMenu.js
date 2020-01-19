@@ -19,7 +19,6 @@
  * Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
-const Champlain = imports.gi.Champlain;
 const Gdk = imports.gi.Gdk;
 const Geocode = imports.gi.GeocodeGlib;
 const GObject = imports.gi.GObject;
@@ -27,7 +26,6 @@ const Gtk = imports.gi.Gtk;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
-const ExportViewDialog = imports.exportViewDialog;
 const GeocodeFactory = imports.geocode;
 const Location = imports.location;
 const OSMAccountDialog = imports.osmAccountDialog;
@@ -42,12 +40,10 @@ var ContextMenu = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/context-menu.ui',
     InternalChildren: [ 'whatsHereItem',
                         'geoURIItem',
-                        'exportItem',
                         'addOSMLocationItem',
                         'routeItem' ],
 }, class ContextMenu extends Gtk.Menu {
     _init(params) {
-        this._mapView = params.mapView;
         delete params.mapView;
 
         this._mainWindow = params.mainWindow;
@@ -62,8 +58,6 @@ var ContextMenu = GObject.registerClass({
                                     this._onWhatsHereActivated.bind(this));
         this._geoURIItem.connect('activate',
                                  this._onGeoURIActivated.bind(this));
-        this._exportItem.connect('activate',
-                                 this._onExportActivated.bind(this));
         this._addOSMLocationItem.connect('activate',
                                          this._onAddOSMLocationActivated.bind(this));
         this._routeItem.connect('activate',
@@ -191,37 +185,5 @@ var ContextMenu = GObject.registerClass({
                                  Gtk.MessageType.INFO, this._mainWindow);
             }
         });
-    }
-
-    _activateExport() {
-        let view = this._mapView.view;
-        let surface = view.to_surface(true);
-        let bbox = view.get_bounding_box();
-        let [latitude, longitude] = bbox.get_center();
-
-        let dialog = new ExportViewDialog.ExportViewDialog({
-            transient_for: this._mainWindow,
-            modal: true,
-            surface: surface,
-            latitude: latitude,
-            longitude: longitude,
-            mapView: this._mapView
-        });
-
-        dialog.connect('response', () => dialog.destroy());
-        dialog.show_all();
-    }
-
-    _onExportActivated() {
-        if (this._mapView.view.state === Champlain.State.DONE) {
-            this._activateExport();
-        } else {
-            let notifyId = this._mapView.view.connect('notify::state', () => {
-                if (this._mapView.view.state === Champlain.State.DONE) {
-                    this._mapView.view.disconnect(notifyId);
-                    this._activateExport();
-                }
-            });
-        }
     }
 });
