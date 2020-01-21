@@ -44,6 +44,7 @@ var ContextMenu = GObject.registerClass({
                         'routeItem' ],
 }, class ContextMenu extends Gtk.Menu {
     _init(params) {
+        this._mapView = params.mapView;
         delete params.mapView;
 
         this._mainWindow = params.mainWindow;
