@@ -2,14 +2,14 @@
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2013-2019.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2013-2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-12-26 10:20+0000\n"
-"PO-Revision-Date: 2019-12-30 12:11+0100\n"
+"POT-Creation-Date: 2020-01-21 22:14+0000\n"
+"PO-Revision-Date: 2020-01-22 09:59+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
@@ -68,8 +68,8 @@ msgstr "El Proyecto GNOME"
 #. * overview.
 #.
 #. Translators: This is the program name.
-#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
-#: src/application.js:81 src/mainWindow.js:139 src/mainWindow.js:513
+#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:30
+#: src/application.js:81 src/mainWindow.js:141 src/mainWindow.js:550
 msgid "Maps"
 msgstr "Mapas"
 
@@ -279,11 +279,7 @@ msgstr "¿Qué hay aquí?"
 msgid "Copy Location"
 msgstr "Copiar ubicación"
 
-#: data/ui/context-menu.ui:23
-msgid "Export As Image"
-msgstr "Exportar como imagen"
-
-#: data/ui/context-menu.ui:36
+#: data/ui/context-menu.ui:29
 msgid "Add to OpenStreetMap"
 msgstr "Añadir a OpenStreetMap"
 
@@ -391,54 +387,59 @@ msgstr "Configuración de la ubicación"
 msgid "Set up OpenStreetMap Account"
 msgstr "Configurar cuenta de OpenStreetMap"
 
-#: data/ui/main-window.ui:13
+#: data/ui/main-window.ui:12
+#| msgid "Export As Image"
+msgid "Export as Image"
+msgstr "Exportar como imagen"
+
+#: data/ui/main-window.ui:17
 msgid "_Keyboard Shortcuts"
 msgstr "_Atajos del teclado"
 
-#: data/ui/main-window.ui:18
+#: data/ui/main-window.ui:22
 msgid "About Maps"
 msgstr "Acerca de Mapas"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:41
+#: data/ui/main-window.ui:45
 msgid "Go to current location"
 msgstr "Ir a la ubicación actual"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:62
+#: data/ui/main-window.ui:66
 msgid "Choose map type"
 msgstr "Elegir el tipo de mapa"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:87
+#: data/ui/main-window.ui:91
 msgid "Zoom out"
 msgstr "Reducir"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:103
+#: data/ui/main-window.ui:107
 msgid "Zoom in"
 msgstr "Ampliar"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:142
+#: data/ui/main-window.ui:146
 msgid "Toggle route planner"
 msgstr "Conmutar el planificador de rutas"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:163
+#: data/ui/main-window.ui:167
 msgid "Toggle favorites"
 msgstr "Conmutar favoritos"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:183
+#: data/ui/main-window.ui:187
 msgid "Print Route"
 msgstr "Imprimir ruta"
 
-#: data/ui/main-window.ui:246
+#: data/ui/main-window.ui:250
 msgid "Maps is offline!"
 msgstr "Mapas está desconectado"
 
-#: data/ui/main-window.ui:256
+#: data/ui/main-window.ui:260
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -446,7 +447,7 @@ msgstr ""
 "Mapas necesita una conexión a Internet activa para funcionar correctamente, "
 "pero no se ha encontrado ninguna."
 
-#: data/ui/main-window.ui:265
+#: data/ui/main-window.ui:269
 msgid "Check your connection and proxy settings."
 msgstr "Compruebe la configuración de su conexión y de su proxy."
 
@@ -623,7 +624,7 @@ msgstr "Copiar"
 msgid "Send To…"
 msgstr "Enviar a…"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:62
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:64
 msgid "Open Shape Layer"
 msgstr "Abrir capa de formas"
 
@@ -727,11 +728,6 @@ msgstr "Aviones"
 msgid "Current location"
 msgstr "Ubicación actual"
 
-#. To translators: %s can be "Unknown", "Exact" or "%f km²"
-#: data/ui/user-location-bubble.ui:28
-msgid "Accuracy: %s"
-msgstr "Precisión: %s"
-
 #: data/ui/zoom-in-dialog.ui:16
 msgid "Zoom in to add location!"
 msgstr "Ampliar para añadir una ubicación."
@@ -834,23 +830,23 @@ msgstr ""
 "Las credenciales han caducado. Abra las Cuentas en línea para iniciar sesión "
 "y activar esta cuenta."
 
-#: src/contextMenu.js:99
+#: src/contextMenu.js:93
 msgid "Route from here"
 msgstr "Ruta desde aquí"
 
-#: src/contextMenu.js:101
+#: src/contextMenu.js:95
 msgid "Add destination"
 msgstr "Añadir destino"
 
-#: src/contextMenu.js:103
+#: src/contextMenu.js:97
 msgid "Route to here"
 msgstr "Ruta hasta aquí"
 
-#: src/contextMenu.js:129
+#: src/contextMenu.js:123
 msgid "Nothing found here!"
 msgstr "No se ha encontrado nada aquí."
 
-#: src/contextMenu.js:190
+#: src/contextMenu.js:184
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -911,27 +907,27 @@ msgstr "No se ha encontrado la ruta."
 msgid "Start!"
 msgstr "Empezar"
 
-#: src/mainWindow.js:59
+#: src/mainWindow.js:61
 msgid "All Layer Files"
 msgstr "Todos los archivos de capas"
 
-#: src/mainWindow.js:446
+#: src/mainWindow.js:451
 msgid "Failed to connect to location service"
 msgstr "Falló al conectar al servicio de ubicación"
 
-#: src/mainWindow.js:511
+#: src/mainWindow.js:548
 msgid "translator-credits"
 msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2013"
 
-#: src/mainWindow.js:514
+#: src/mainWindow.js:551
 msgid "A map application for GNOME"
 msgstr "Una aplicación de mapas para GNOME"
 
-#: src/mainWindow.js:525
+#: src/mainWindow.js:562
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 – 2019 Red Hat, Inc. y los autores de Mapas de GNOME"
 
-#: src/mainWindow.js:545
+#: src/mainWindow.js:582
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Datos de mapas por %s y colaboradores"
@@ -941,7 +937,7 @@ msgstr "Datos de mapas por %s y colaboradores"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:561
+#: src/mainWindow.js:598
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Cuadrículas de mapas proporcionadas por %s"
@@ -955,7 +951,7 @@ msgstr "Cuadrículas de mapas proporcionadas por %s"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:590
+#: src/mainWindow.js:627
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Búsqueda proporcionada por %s usando %s"
@@ -1367,16 +1363,16 @@ msgstr "Ruta inversa"
 
 #. Translators: The first string is the name of the city, the
 #. second string is the name of the app to add it to
-#: src/sendToDialog.js:103
+#: src/sendToDialog.js:104
 #, javascript-format
 msgid "Add %s to %s"
 msgstr "Añadir %s a %s"
 
-#: src/sendToDialog.js:201
+#: src/sendToDialog.js:202
 msgid "Failed to open URI"
 msgstr "Falló al abrir el URI"
 
-#: src/sendToDialog.js:258
+#: src/sendToDialog.js:259
 #, javascript-format
 msgid "Open with %s"
 msgstr "Abrir con %s"
@@ -1675,6 +1671,12 @@ msgstr "terminal"
 msgid "service"
 msgstr "servicio"
 
+#. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
+#: src/userLocationBubble.js:56
+#, javascript-format
+msgid "Accuracy: %s"
+msgstr "Precisión: %s"
+
 #. Translators: Accuracy of user location information
 #: src/utils.js:229
 msgid "Unknown"
@@ -1825,7 +1827,6 @@ msgid "Make a right u-turn onto %s"
 msgstr "Dé la vuelta hacia la derecha en %s"
 
 #: src/transitplugins/openTripPlanner.js:1233
-#| msgid "Make a rigth u-turn"
 msgid "Make a right u-turn"
 msgstr "Dé la vuelta hacia la derecha"
 
