@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-12-15 18:16+0000\n"
-"PO-Revision-Date: 2020-01-17 08:25+0100\n"
+"POT-Creation-Date: 2020-01-21 22:14+0000\n"
+"PO-Revision-Date: 2020-01-26 21:06+0100\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <kde-i18n-doc@kde.org>\n"
 "Language: sk\n"
@@ -68,8 +68,8 @@ msgstr "Projekt GNOME"
 #. * overview.
 #.
 #. Translators: This is the program name.
-#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
-#: src/application.js:81 src/mainWindow.js:139 src/mainWindow.js:513
+#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:30
+#: src/application.js:81 src/mainWindow.js:141 src/mainWindow.js:550
 msgid "Maps"
 msgstr "Mapy"
 
@@ -291,13 +291,8 @@ msgstr "Čo sa nachádza tu?"
 msgid "Copy Location"
 msgstr "Skopírovať umiestnenie"
 
-# menu item
-#: data/ui/context-menu.ui:23
-msgid "Export As Image"
-msgstr "Exportovať ako obrázok"
-
 # DK:https://bugzilla.gnome.org/show_bug.cgi?id=761995
-#: data/ui/context-menu.ui:36
+#: data/ui/context-menu.ui:29
 msgid "Add to OpenStreetMap"
 msgstr "Pridať do projektu OpenStreetMap"
 
@@ -410,59 +405,64 @@ msgstr "Nastavenia umiestnenia"
 msgid "Set up OpenStreetMap Account"
 msgstr "Nastaviť účet projektu OpenStreetMap"
 
-#: data/ui/main-window.ui:13
+# menu item
+#: data/ui/main-window.ui:12
+msgid "Export as Image"
+msgstr "Exportovať ako obrázok"
+
+#: data/ui/main-window.ui:17
 msgid "_Keyboard Shortcuts"
 msgstr "_Klávesové skratky"
 
-#: data/ui/main-window.ui:18
+#: data/ui/main-window.ui:22
 msgid "About Maps"
 msgstr "O aplikácii Mapy"
 
 # DK:tooltip
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:41
+#: data/ui/main-window.ui:45
 msgid "Go to current location"
 msgstr "Prejde na aktuálne umiestnenie"
 
 # DK:tooltip
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:62
+#: data/ui/main-window.ui:66
 msgid "Choose map type"
 msgstr "Vyberie typ mapy"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:87
+#: data/ui/main-window.ui:91
 msgid "Zoom out"
 msgstr "Oddiali"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:103
+#: data/ui/main-window.ui:107
 msgid "Zoom in"
 msgstr "Priblíži"
 
 # DK:tooltip
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:142
+#: data/ui/main-window.ui:146
 msgid "Toggle route planner"
 msgstr "Prepne plánovač trasy"
 
 # tooltip
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:163
+#: data/ui/main-window.ui:167
 msgid "Toggle favorites"
 msgstr "Prepne obľúbené"
 
 # tooltip
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:183
+#: data/ui/main-window.ui:187
 msgid "Print Route"
 msgstr "Vytlačí trasu"
 
-#: data/ui/main-window.ui:246
+#: data/ui/main-window.ui:250
 msgid "Maps is offline!"
 msgstr "Aplikácia Mapy je bez pripojenia!"
 
-#: data/ui/main-window.ui:256
+#: data/ui/main-window.ui:260
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -470,7 +470,7 @@ msgstr ""
 "Aby mohla aplikácia Mapy pracovať správne, vyžaduje sa aktívne internetové "
 "pripojenie, ale žiadne nie je dostupné."
 
-#: data/ui/main-window.ui:265
+#: data/ui/main-window.ui:269
 msgid "Check your connection and proxy settings."
 msgstr "Skontrolujte vaše nastavenia pripojenia a sprostredkovateľa proxy."
 
@@ -656,7 +656,7 @@ msgid "Send To…"
 msgstr "Odoslať do…"
 
 # dialo title
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:62
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:64
 msgid "Open Shape Layer"
 msgstr "Otvorenie vrstvy s tvarmi"
 
@@ -769,11 +769,6 @@ msgstr "Lietadlá"
 msgid "Current location"
 msgstr "Aktuálne umiestnenie"
 
-#. To translators: %s can be "Unknown", "Exact" or "%f km²"
-#: data/ui/user-location-bubble.ui:28
-msgid "Accuracy: %s"
-msgstr "Presnosť: %s"
-
 #: data/ui/zoom-in-dialog.ui:16
 msgid "Zoom in to add location!"
 msgstr "Priblížením pridajte umiestnenie!"
@@ -875,23 +870,23 @@ msgstr ""
 "Platnosť poverení vypršala. Prosím, otvorte Účty služieb na prihlásenie a "
 "povolenie tohto účtu"
 
-#: src/contextMenu.js:99
+#: src/contextMenu.js:93
 msgid "Route from here"
 msgstr "Trasa odtiaľto"
 
-#: src/contextMenu.js:101
+#: src/contextMenu.js:95
 msgid "Add destination"
 msgstr "Pridať cieľ"
 
-#: src/contextMenu.js:103
+#: src/contextMenu.js:97
 msgid "Route to here"
 msgstr "Trasa sem"
 
-#: src/contextMenu.js:129
+#: src/contextMenu.js:123
 msgid "Nothing found here!"
 msgstr "Tu sa nič nenašlo!"
 
-#: src/contextMenu.js:190
+#: src/contextMenu.js:184
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -952,29 +947,29 @@ msgstr "Nenašla sa žiadna trasa."
 msgid "Start!"
 msgstr "Začiatok!"
 
-#: src/mainWindow.js:59
+#: src/mainWindow.js:61
 msgid "All Layer Files"
 msgstr "Všetky súbory vrstiev"
 
-#: src/mainWindow.js:446
+#: src/mainWindow.js:451
 msgid "Failed to connect to location service"
 msgstr "Zlyhalo pripojenie k lokalizačnej službe"
 
-#: src/mainWindow.js:511
+#: src/mainWindow.js:548
 msgid "translator-credits"
 msgstr "Dušan Kazik <prescott66@gmail.com>"
 
-#: src/mainWindow.js:514
+#: src/mainWindow.js:551
 msgid "A map application for GNOME"
 msgstr "Aplikácia na prezeranie máp pre GNOME"
 
-#: src/mainWindow.js:525
+#: src/mainWindow.js:562
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr ""
 "Autorské práva © 2011 – 2019 Red Hat, Inc. a autori aplikácie Mapy "
 "prostredia GNOME"
 
-#: src/mainWindow.js:545
+#: src/mainWindow.js:582
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Údaje mapy zo služby %s a jej prispievateľov"
@@ -984,7 +979,7 @@ msgstr "Údaje mapy zo služby %s a jej prispievateľov"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:561
+#: src/mainWindow.js:598
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Dlaždice mapy poskytnuté zo služby %s"
@@ -998,7 +993,7 @@ msgstr "Dlaždice mapy poskytnuté zo služby %s"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:590
+#: src/mainWindow.js:627
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Vyhľadávanie poskytnuté službou %s použitím %s"
@@ -1411,16 +1406,16 @@ msgstr "Obráti trasu"
 
 #. Translators: The first string is the name of the city, the
 #. second string is the name of the app to add it to
-#: src/sendToDialog.js:103
+#: src/sendToDialog.js:104
 #, javascript-format
 msgid "Add %s to %s"
 msgstr "Pridať obec %s do aplikácie %s"
 
-#: src/sendToDialog.js:201
+#: src/sendToDialog.js:202
 msgid "Failed to open URI"
 msgstr "Zlyhalo otvorenie URI"
 
-#: src/sendToDialog.js:258
+#: src/sendToDialog.js:259
 #, javascript-format
 msgid "Open with %s"
 msgstr "Otvoriť pomocou %s"
@@ -1436,10 +1431,9 @@ msgid "Estimated time: %s"
 msgstr "Odhadovaný čas: %s"
 
 #: src/sidebar.js:352
-#, fuzzy, javascript-format
-#| msgid "Map tiles provided by %s"
+#, javascript-format
 msgid "Itineraries provided by %s"
-msgstr "Dlaždice mapy poskytnuté zo služby %s"
+msgstr "Itinerár poskytnutý zo služby %s"
 
 #. Translators: this is a format string indicating instructions
 #. * starting a journey at the address given as the parameter
@@ -1517,10 +1511,8 @@ msgid "No timetable data found for this route."
 msgstr "Pre túto trasu sa nenašli žiadne údaje cestovného poriadku."
 
 #: src/transitPlan.js:196
-#, fuzzy
-#| msgid "No timetable data found for this route."
 msgid "No provider found for this route."
-msgstr "Pre túto trasu sa nenašli žiadne údaje cestovného poriadku."
+msgstr "Pre túto trasu sa nenašiel žiadny poskytovateľ."
 
 #. Translators: this is a format string for showing a departure and
 #. * arrival time, like:
@@ -1727,6 +1719,12 @@ msgstr "terminál"
 msgid "service"
 msgstr "obsluha"
 
+#. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
+#: src/userLocationBubble.js:56
+#, javascript-format
+msgid "Accuracy: %s"
+msgstr "Presnosť: %s"
+
 #. Translators: Accuracy of user location information
 #: src/utils.js:229
 msgid "Unknown"
@@ -1854,9 +1852,9 @@ msgid "Take the roundabout"
 msgstr "Vojdite do kruhového objazdu"
 
 #: src/transitplugins/openTripPlanner.js:1220
-#, fuzzy, javascript-format
+#, javascript-format
 msgid "Take the elevator and get off at %s"
-msgstr "Použite výťah a prejdite na %s"
+msgstr "Použite výťah a vstúpte na %s"
 
 #: src/transitplugins/openTripPlanner.js:1222
 msgid "Take the elevator"
