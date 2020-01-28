@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-08-02 06:11+0000\n"
-"PO-Revision-Date: 2019-08-17 16:31+0300\n"
+"POT-Creation-Date: 2020-01-21 22:14+0000\n"
+"PO-Revision-Date: 2020-01-28 21:39+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
 msgid "GNOME Maps"
@@ -53,7 +53,7 @@ msgstr ""
 "Voit myös etsiä tietynlaista sijaintia, kuten \"Pubit lähellä Kallio, "
 "Helsinki\" tai \"Hotellit lähellä Berliini, Saksa\"."
 
-#: data/org.gnome.Maps.appdata.xml.in:59
+#: data/org.gnome.Maps.appdata.xml.in:92
 msgid "The GNOME Project"
 msgstr "Gnome-projekti"
 
@@ -65,8 +65,8 @@ msgstr "Gnome-projekti"
 #. * overview.
 #.
 #. Translators: This is the program name.
-#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
-#: src/application.js:81 src/mainWindow.js:139 src/mainWindow.js:509
+#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:30
+#: src/application.js:81 src/mainWindow.js:141 src/mainWindow.js:550
 msgid "Maps"
 msgstr "Kartat"
 
@@ -274,11 +274,7 @@ msgstr "Mitä täällä on?"
 msgid "Copy Location"
 msgstr "Kopioi sijainti"
 
-#: data/ui/context-menu.ui:23
-msgid "Export As Image"
-msgstr "Vie kuvana"
-
-#: data/ui/context-menu.ui:36
+#: data/ui/context-menu.ui:29
 msgid "Add to OpenStreetMap"
 msgstr "Lisää OpenStreetMapiin"
 
@@ -386,54 +382,58 @@ msgstr "Sijaintipalvelut"
 msgid "Set up OpenStreetMap Account"
 msgstr "Määritä OpenStreetMap-tili"
 
-#: data/ui/main-window.ui:13
+#: data/ui/main-window.ui:12
+msgid "Export as Image"
+msgstr "Vie kuvana"
+
+#: data/ui/main-window.ui:17
 msgid "_Keyboard Shortcuts"
 msgstr "_Pikanäppäimet"
 
-#: data/ui/main-window.ui:18
+#: data/ui/main-window.ui:22
 msgid "About Maps"
 msgstr "Tietoja - Kartat"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:41
+#: data/ui/main-window.ui:45
 msgid "Go to current location"
 msgstr "Siirry nykyiseen sijaintiin"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:62
+#: data/ui/main-window.ui:66
 msgid "Choose map type"
 msgstr "Valitse kartan tyyppi"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:87
+#: data/ui/main-window.ui:91
 msgid "Zoom out"
 msgstr "Loitonna"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:103
+#: data/ui/main-window.ui:107
 msgid "Zoom in"
 msgstr "Lähennä"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:142
+#: data/ui/main-window.ui:146
 msgid "Toggle route planner"
 msgstr "Näytä/piilota reittisuunnittelu"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:163
+#: data/ui/main-window.ui:167
 msgid "Toggle favorites"
 msgstr "Näytä/piilota suosikit"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:183
+#: data/ui/main-window.ui:187
 msgid "Print Route"
 msgstr "Tulosta reitti"
 
-#: data/ui/main-window.ui:246
+#: data/ui/main-window.ui:250
 msgid "Maps is offline!"
 msgstr "Kartat on verkottomassa tilassa!"
 
-#: data/ui/main-window.ui:256
+#: data/ui/main-window.ui:260
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -441,7 +441,7 @@ msgstr ""
 "Kartat tarvitsee aktiivisen internetyhteyden toimiakseen kunnolla, mutta "
 "sellaista ei kuitenkaan havaittu."
 
-#: data/ui/main-window.ui:265
+#: data/ui/main-window.ui:269
 msgid "Check your connection and proxy settings."
 msgstr "Tarkista yhteytesi ja välityspalvelimen asetukset."
 
@@ -619,7 +619,7 @@ msgstr "Kopioi"
 msgid "Send To…"
 msgstr "Lähetä…"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:62
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:64
 msgid "Open Shape Layer"
 msgstr "Avaa muototaso"
 
@@ -636,25 +636,28 @@ msgstr "Näytä/piilota"
 msgid "Route search by GraphHopper"
 msgstr "Reittihaun tarjoaa GraphHopper"
 
-#: data/ui/sidebar.ui:296
-msgid "Route search by OpenTripPlanner"
-msgstr "Reittihaun tarjoaa OpenTripPlanner"
-
-#: data/ui/sidebar.ui:369
+#: data/ui/sidebar.ui:364
 msgid ""
-"Routing itineraries for public transit is provided by GNOME\n"
-"using timetable data obtained from transit companies or agencies.\n"
-"The companies and agencies can not be held responsible for the results "
-"shown.\n"
+"Routing itineraries for public transit is provided by third-party\n"
+"services.\n"
 "GNOME can not guarantee correctness of the itineraries and schedules shown.\n"
+"Note that some providers might not include all available modes of "
+"transportation,\n"
+"e.g. a national provider might not include airlines, and a local provider "
+"could\n"
+"miss regional trains.\n"
 "Names and brands shown are to be considered as registered trademarks when "
 "applicable."
 msgstr ""
 "Julkisen liikenteen reitityksen matkareitit tarjoaa Gnome\n"
-"käyttäen liikennöintiyhtiöiltä saatuja aikataulutietoja.\n"
-"Kyseisiä yhtiöitä ei voida pitää vastuussa näytettävistä tuloksista.\n"
+"käyttäen kolmansien osapuolien palveluja.\n"
 "Gnome ei voi taata näytettävien matkareittien ja aikataulujen "
 "oikeellisuutta.\n"
+"Huomioi, että jotkin palveluntarjoajat eivät välttämättä sisällytä kaikkia\n"
+"liikennöintimuotoja, esimerkiksi kansalliset palveluntarjoajat eivät "
+"välttämättä\n"
+"huomioi lentoreittejä, tai paikalliset palveluntarjoajat eivät välttämättä\n"
+"huomioi valtakunnallisia junia.\n"
 "Näytettävät nimet ja tuotemerkit on soveltuvin osin oletettava "
 "rekisteröidyiksi."
 
@@ -712,14 +715,13 @@ msgstr "Metro"
 msgid "Ferries"
 msgstr "Lautat"
 
+#: data/ui/transit-options-panel.ui:152
+msgid "Airplanes"
+msgstr "Lentokoneet"
+
 #: data/ui/user-location-bubble.ui:13 src/geoclue.js:118
 msgid "Current location"
 msgstr "Nykyinen sijainti"
-
-#. To translators: %s can be "Unknown", "Exact" or "%f km²"
-#: data/ui/user-location-bubble.ui:28
-msgid "Accuracy: %s"
-msgstr "Tarkkuus: %s"
 
 #: data/ui/zoom-in-dialog.ui:16
 msgid "Zoom in to add location!"
@@ -753,6 +755,10 @@ msgstr "Polku paikallisten tiilien hakemistorakenteeseen"
 #: src/application.js:98
 msgid "Show the version of the program"
 msgstr "Näytä ohjelman versio"
+
+#: src/application.js:104
+msgid "Ignore network availability"
+msgstr "Älä huomioi verkon saatavuutta"
 
 #: src/checkInDialog.js:167
 msgid "Select an account"
@@ -818,23 +824,23 @@ msgstr ""
 "Kirjautumistiedot ovat vanhentuneet. Avaa verkkotilien asetukset "
 "kirjautuaksesi ja käyttääksesi tätä tiliä"
 
-#: src/contextMenu.js:99
+#: src/contextMenu.js:93
 msgid "Route from here"
 msgstr "Reitti täältä"
 
-#: src/contextMenu.js:101
+#: src/contextMenu.js:95
 msgid "Add destination"
 msgstr "Lisää välipiste"
 
-#: src/contextMenu.js:103
+#: src/contextMenu.js:97
 msgid "Route to here"
 msgstr "Reitti tänne"
 
-#: src/contextMenu.js:129
+#: src/contextMenu.js:123
 msgid "Nothing found here!"
 msgstr "Täältä ei löytynyt mitään!"
 
-#: src/contextMenu.js:190
+#: src/contextMenu.js:184
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -883,41 +889,41 @@ msgstr "jäsentämisvirhe"
 msgid "unknown geometry"
 msgstr "tuntematon geometria"
 
-#: src/graphHopper.js:112 src/openTripPlanner.js:652
+#: src/graphHopper.js:112 src/transitPlan.js:192
 msgid "Route request failed."
 msgstr "Reittipyyntö epäonnistui."
 
-#: src/graphHopper.js:119 src/openTripPlanner.js:615
+#: src/graphHopper.js:119 src/transitPlan.js:184
 msgid "No route found."
 msgstr "Reittiä ei löytynyt."
 
-#: src/graphHopper.js:207
+#: src/graphHopper.js:207 src/transitplugins/openTripPlanner.js:1100
 msgid "Start!"
 msgstr "Aloitus!"
 
-#: src/mainWindow.js:59
+#: src/mainWindow.js:61
 msgid "All Layer Files"
 msgstr "Kaikki tasotiedostot"
 
-#: src/mainWindow.js:442
+#: src/mainWindow.js:451
 msgid "Failed to connect to location service"
 msgstr "Yhteys sijaintipalveluun epäonnistui"
 
-#: src/mainWindow.js:507
+#: src/mainWindow.js:548
 msgid "translator-credits"
 msgstr "Jiri Grönroos"
 
-#: src/mainWindow.js:510
+#: src/mainWindow.js:551
 msgid "A map application for GNOME"
 msgstr "Karttasovellus Gnomelle"
 
-#: src/mainWindow.js:521
+#: src/mainWindow.js:562
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr ""
 "Tekijänoikeus © 2011 – 2019 Red Hat, Inc. ja Gnomen karttasovelluksen "
 "kehittäjät"
 
-#: src/mainWindow.js:541
+#: src/mainWindow.js:582
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Karttatiedot tarjoaa %s ja avustajat"
@@ -927,7 +933,7 @@ msgstr "Karttatiedot tarjoaa %s ja avustajat"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:557
+#: src/mainWindow.js:598
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Karttatiilet tarjoaa %s"
@@ -941,26 +947,22 @@ msgstr "Karttatiilet tarjoaa %s"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:586
+#: src/mainWindow.js:627
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Haun tarjoaa %s käyttämällä %s"
 
-#: src/mapView.js:374
+#: src/mapView.js:375
 msgid "File type is not supported"
 msgstr "Tiedostotyyppi ei ole tuettu"
 
-#: src/mapView.js:381
+#: src/mapView.js:382
 msgid "Failed to open layer"
 msgstr "Tason avaaminen epäonnistui"
 
-#: src/mapView.js:417
+#: src/mapView.js:418
 msgid "Failed to open GeoURI"
 msgstr "GeoURI:n avaaminen epäonnistui"
-
-#: src/openTripPlanner.js:648
-msgid "No timetable data found for this route."
-msgstr "Tälle reitille ei löytynyt aikataulutietoja."
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
@@ -1262,7 +1264,7 @@ msgstr "Pääsy pyörätuolilla:"
 msgid "Phone:"
 msgstr "Puhelin:"
 
-#: src/placeEntry.js:205
+#: src/placeEntry.js:209
 msgid "Failed to parse Geo URI"
 msgstr "Geo URI:n jäsentäminen epäonnistui"
 
@@ -1311,7 +1313,6 @@ msgid "Place not found in OpenStreetMap"
 msgstr "Paikkaa ei löytynyt OpenStreetMapista"
 
 #: src/place.js:495
-#| msgid "OpenStreetMap Account"
 msgid "OpenStreetMap URL is not valid"
 msgstr "OpenStreetMap-osoite ei ole kelvollinen"
 
@@ -1357,17 +1358,16 @@ msgstr "Käänteinen reitti"
 
 #. Translators: The first string is the name of the city, the
 #. second string is the name of the app to add it to
-#: src/sendToDialog.js:103
+#: src/sendToDialog.js:104
 #, javascript-format
-#| msgid "From %s to %s"
 msgid "Add %s to %s"
 msgstr "Lisää %s sovellukseen %s"
 
-#: src/sendToDialog.js:201
+#: src/sendToDialog.js:202
 msgid "Failed to open URI"
 msgstr "URI:n avaaminen epäonnistui"
 
-#: src/sendToDialog.js:258
+#: src/sendToDialog.js:259
 #, javascript-format
 msgid "Open with %s"
 msgstr "Avaa sovelluksella %s"
@@ -1377,10 +1377,15 @@ msgid "failed to load file"
 msgstr "tiedoston lataaminen epäonnistui"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:293
+#: src/sidebar.js:296
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Arvioitu aika: %s"
+
+#: src/sidebar.js:352
+#, javascript-format
+msgid "Itineraries provided by %s"
+msgstr "Matkareitit tarjoaa %s"
 
 #. Translators: this is a format string indicating instructions
 #. * starting a journey at the address given as the parameter
@@ -1414,7 +1419,7 @@ msgstr "Kävele %s"
 msgid "Arrive at %s"
 msgstr "Saavu %s"
 
-#: src/transit.js:77
+#: src/transit.js:77 src/transitplugins/openTripPlanner.js:1113
 msgid "Arrive"
 msgstr "Saavu"
 
@@ -1446,17 +1451,25 @@ msgstr "Myöhempiä vaihtoehtoja ei löytynyt."
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:141
+#: src/transitOptionsPanel.js:143
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e. %b"
+
+#: src/transitPlan.js:188
+msgid "No timetable data found for this route."
+msgstr "Tälle reitille ei löytynyt aikataulutietoja."
+
+#: src/transitPlan.js:196
+msgid "No provider found for this route."
+msgstr "Tälle reitille ei löytynyt palveluntarjoajaa."
 
 #. Translators: this is a format string for showing a departure and
 #. * arrival time, like:
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:254
+#: src/transitPlan.js:313
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -1465,7 +1478,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: src/transitPlan.js:281
+#: src/transitPlan.js:340
 #, javascript-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -1476,7 +1489,7 @@ msgstr[1] "%d minuuttia"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: src/transitPlan.js:292
+#: src/transitPlan.js:351
 #, javascript-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -1487,7 +1500,7 @@ msgstr[1] "%d tuntia"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: src/transitPlan.js:298
+#: src/transitPlan.js:357
 #, javascript-format
 msgid "%d:%02d hour"
 msgid_plural "%d:%02d hours"
@@ -1500,7 +1513,7 @@ msgstr[1] "%d:%02d tuntia"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:651
+#: src/transitPlan.js:750
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -1653,54 +1666,167 @@ msgstr "pääte"
 msgid "service"
 msgstr "palvelu"
 
+#. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
+#: src/userLocationBubble.js:56
+#, javascript-format
+msgid "Accuracy: %s"
+msgstr "Tarkkuus: %s"
+
 #. Translators: Accuracy of user location information
-#: src/utils.js:220
+#: src/utils.js:229
 msgid "Unknown"
 msgstr "Tuntematon"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:223
+#: src/utils.js:232
 msgid "Exact"
 msgstr "Tarkka"
 
-#: src/utils.js:281
+#: src/utils.js:290
 #, javascript-format
 msgid "%f h"
 msgstr "%f t"
 
-#: src/utils.js:283
+#: src/utils.js:292
 #, javascript-format
 msgid "%f min"
 msgstr "%f min"
 
-#: src/utils.js:285
+#: src/utils.js:294
 #, javascript-format
 msgid "%f s"
 msgstr "%f s"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:296
+#: src/utils.js:305
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:299
+#: src/utils.js:308
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:307
+#: src/utils.js:316
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:310
+#: src/utils.js:319
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
+
+#: src/transitplugins/openTripPlanner.js:1174
+#, javascript-format
+msgid "Continue on %s"
+msgstr "Jatka %s"
+
+#: src/transitplugins/openTripPlanner.js:1176
+msgid "Continue"
+msgstr "Jatka"
+
+#: src/transitplugins/openTripPlanner.js:1179
+#, javascript-format
+msgid "Turn left on %s"
+msgstr "Käänny vasemmalle kohdasta %s"
+
+#: src/transitplugins/openTripPlanner.js:1181
+msgid "Turn left"
+msgstr "Käänny vasemmalle"
+
+#: src/transitplugins/openTripPlanner.js:1184
+#, javascript-format
+msgid "Turn slightly left on %s"
+msgstr "Käänny hieman vasemmalle kohdasta %s"
+
+#: src/transitplugins/openTripPlanner.js:1186
+msgid "Turn slightly left"
+msgstr "Käänny hieman vasemmalle"
+
+#: src/transitplugins/openTripPlanner.js:1189
+#, javascript-format
+msgid "Turn sharp left on %s"
+msgstr "Käänny terävästi vasemmalle kohdasta %s"
+
+#: src/transitplugins/openTripPlanner.js:1191
+msgid "Turn sharp left"
+msgstr "Käänny terävästi vasemmalle"
+
+#: src/transitplugins/openTripPlanner.js:1194
+#, javascript-format
+msgid "Turn right on %s"
+msgstr "Käänny oikealle kohdasta %s"
+
+#: src/transitplugins/openTripPlanner.js:1196
+msgid "Turn right"
+msgstr "Käänny oikealle"
+
+#: src/transitplugins/openTripPlanner.js:1199
+#, javascript-format
+msgid "Turn slightly right on %s"
+msgstr "Käänny hieman oikealle kohdasta %s"
+
+#: src/transitplugins/openTripPlanner.js:1201
+msgid "Turn slightly right"
+msgstr "Käänny hieman oikealle"
+
+#: src/transitplugins/openTripPlanner.js:1204
+#, javascript-format
+msgid "Turn sharp right on %s"
+msgstr "Käänny terävästi oikealle kohdasta %s"
+
+#: src/transitplugins/openTripPlanner.js:1206
+msgid "Turn sharp right"
+msgstr "Käänny terävästi oikealle"
+
+#: src/transitplugins/openTripPlanner.js:1212
+#, javascript-format
+msgid "In the roundabout, take exit %s"
+msgstr "Kiertoliittymässä ota poistumistie %s"
+
+#: src/transitplugins/openTripPlanner.js:1214
+#, javascript-format
+msgid "In the roundabout, take exit to %s"
+msgstr "Kiertoliittymässä ota poistumistie kohtaan %s"
+
+#: src/transitplugins/openTripPlanner.js:1216
+msgid "Take the roundabout"
+msgstr "Mene kiertoliittymään"
+
+#: src/transitplugins/openTripPlanner.js:1220
+#, javascript-format
+msgid "Take the elevator and get off at %s"
+msgstr "Ota hissi ja jää pois kerroksessa %s"
+
+#: src/transitplugins/openTripPlanner.js:1222
+msgid "Take the elevator"
+msgstr "Ota hissi"
+
+#: src/transitplugins/openTripPlanner.js:1226
+#, javascript-format
+msgid "Make a left u-turn onto %s"
+msgstr "Tee u-käännös vasemmalle kohtaan %s"
+
+#: src/transitplugins/openTripPlanner.js:1228
+msgid "Make a left u-turn"
+msgstr "Tee u-käännös vasemmalle"
+
+#: src/transitplugins/openTripPlanner.js:1231
+#, javascript-format
+msgid "Make a right u-turn onto %s"
+msgstr "Tee u-käännös oikealle kohtaan %s"
+
+#: src/transitplugins/openTripPlanner.js:1233
+msgid "Make a right u-turn"
+msgstr "Tee u-käännös oikealle"
+
+#~ msgid "Route search by OpenTripPlanner"
+#~ msgstr "Reittihaun tarjoaa OpenTripPlanner"
 
 #~ msgid "org.gnome.Maps"
 #~ msgstr "org.gnome.Maps"
