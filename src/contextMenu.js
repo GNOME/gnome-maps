@@ -41,7 +41,9 @@ var ContextMenu = GObject.registerClass({
     InternalChildren: [ 'whatsHereItem',
                         'geoURIItem',
                         'addOSMLocationItem',
-                        'routeItem' ],
+                        'routeFromHereItem',
+                        'addIntermediateDestinationItem',
+                        'routeToHereItem' ],
 }, class ContextMenu extends Gtk.Menu {
     _init(params) {
         this._mapView = params.mapView;
@@ -61,11 +63,14 @@ var ContextMenu = GObject.registerClass({
                                  this._onGeoURIActivated.bind(this));
         this._addOSMLocationItem.connect('activate',
                                          this._onAddOSMLocationActivated.bind(this));
-        this._routeItem.connect('activate',
-                                this._onRouteActivated.bind(this));
+        this._routeFromHereItem.connect('activate',
+                                        this._onRouteFromHereActivated.bind(this));
+        this._addIntermediateDestinationItem.connect('activate',
+                                        this._onAddIntermediateDestinationActivated.bind(this));
+        this._routeToHereItem.connect('activate',
+                                      this._onRouteToHereActivated.bind(this));
         Application.routeQuery.connect('notify::points',
                                        this._routingUpdate.bind(this));
-        this._routeItem.visible = false;
         this._routingUpdate();
     }
 
@@ -83,36 +88,42 @@ var ContextMenu = GObject.registerClass({
 
     _routingUpdate() {
         let query = Application.routeQuery;
+        let numPoints = query.points.length;
 
-        this._routeItem.sensitive = query.points.length < RouteQuery.MAX_QUERY_POINTS;
-
-        if (query.points.length === 0)
-            return;
-
-        this._routeItem.visible = true;
-        if (!query.points[0].place) {
-            this._routeItem.label = _("Route from here");
-        } else if (query.filledPoints.length > 1) {
-            this._routeItem.label = _("Add destination");
-        } else {
-            this._routeItem.label = _("Route to here");
-        }
+        this._routeFromHereItem.sensitive = numPoints < RouteQuery.MAX_QUERY_POINTS;
+        this._routeToHereItem.sensitive = numPoints < RouteQuery.MAX_QUERY_POINTS;
+        this._addIntermediateDestinationItem.sensitive =
+            query.filledPoints.length >= 2 && numPoints < RouteQuery.MAX_QUERY_POINTS;
     }
 
-    _onRouteActivated() {
+    _onRouteFromHereActivated() {
         let query = Application.routeQuery;
         let location = new Location.Location({ latitude: this._latitude,
                                                longitude: this._longitude,
                                                accuracy: 0 });
         let place = new Place.Place({ location: location });
 
-        if (!query.points[0].place) {
-            query.points[0].place = place;
-        } else if (query.filledPoints.length > 1) {
-            query.addPoint(-1).place = place;
-        } else {
-            query.points[query.points.length - 1].place = place;
-        }
+        query.points[0].place = place;
+    }
+
+    _onRouteToHereActivated() {
+        let query = Application.routeQuery;
+        let location = new Location.Location({ latitude: this._latitude,
+                                               longitude: this._longitude,
+                                               accuracy: 0 });
+        let place = new Place.Place({ location: location });
+
+        query.points.last().place = place;
+    }
+
+    _onAddIntermediateDestinationActivated() {
+        let query = Application.routeQuery;
+        let location = new Location.Location({ latitude: this._latitude,
+                                               longitude: this._longitude,
+                                               accuracy: 0 });
+        let place = new Place.Place({ location: location });
+
+        query.addPoint(-1).place = place;
     }
 
     _onWhatsHereActivated() {

@@ -4,6 +4,33 @@
   <template class="Gjs_ContextMenu" parent="GtkMenu">
     <property name="visible">False</property>
     <child>
+      <object class="GtkMenuItem" id="routeFromHereItem">
+        <property name="name">route-from-here-item</property>
+        <property name="label" translatable="yes">Route from here</property>
+        <property name="visible">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="addIntermediateDestinationItem">
+        <property name="name">add-itermediate-destination-item</property>
+        <property name="label" translatable="yes">Add intermediate destination</property>
+        <property name="visible">True</property>
+        <property name="sensitive">False</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="routeToHereItem">
+        <property name="name">route-to-here-item</property>
+        <property name="label" translatable="yes">Route to here</property>
+        <property name="visible">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkSeparatorMenuItem">
+        <property name="visible">True</property>
+      </object>
+    </child>
+    <child>
       <object class="GtkMenuItem" id="whatsHereItem">
         <property name="name">whats-here-item</property>
         <property name="label" translatable="yes">What’s here?</property>
@@ -17,12 +44,7 @@
         <property name="visible">True</property>
       </object>
     </child>
-    <child>
-      <object class="GtkMenuItem" id="routeItem">
-        <property name="name">route-item</property>
-        <property name="visible">True</property>
-      </object>
-    </child>
+
     <child>
       <object class="GtkMenuItem" id="addOSMLocationItem">
         <property name="name">add-osm-location-item</property>
