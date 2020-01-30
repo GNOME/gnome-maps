@@ -170,7 +170,8 @@ var PlaceEntry = GObject.registerClass({
         this.connect('size-allocate', (widget, allocation) => {
             // Magic number to make the alignment pixel perfect.
             let width_request = allocation.width + 20;
-            popover.width_request = width_request;
+            // set at least 320 px width to avoid too narrow in the sidebar
+            popover.width_request = Math.max(width_request, 320);
         });
 
         popover.connect('selected', (widget, place) => {
