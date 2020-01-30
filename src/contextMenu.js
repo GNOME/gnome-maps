@@ -31,7 +31,9 @@ const Location = imports.location;
 const OSMAccountDialog = imports.osmAccountDialog;
 const OSMEdit = imports.osmEdit;
 const OSMEditDialog = imports.osmEditDialog;
+const FavoriteEditDialog = imports.favoriteEditDialog;
 const Place = imports.place;
+const PlaceStore = imports.placeStore;
 const RouteQuery = imports.routeQuery;
 const Utils = imports.utils;
 const ZoomInDialog = imports.zoomInDialog;
@@ -41,7 +43,8 @@ var ContextMenu = GObject.registerClass({
     InternalChildren: [ 'whatsHereItem',
                         'geoURIItem',
                         'addOSMLocationItem',
-                        'routeItem' ],
+                        'routeItem',
+                        'createFavorite' ],
 }, class ContextMenu extends Gtk.Menu {
     _init(params) {
         this._mapView = params.mapView;
@@ -63,6 +66,8 @@ var ContextMenu = GObject.registerClass({
                                          this._onAddOSMLocationActivated.bind(this));
         this._routeItem.connect('activate',
                                 this._onRouteActivated.bind(this));
+        this._createFavorite.connect('activate',
+                                    this._onCreateFavoriteActivated.bind(this));
         Application.routeQuery.connect('notify::points',
                                        this._routingUpdate.bind(this));
         this._routeItem.visible = false;
@@ -128,6 +133,35 @@ var ContextMenu = GObject.registerClass({
         });
     }
 
+    _onCreateFavoriteActivated() {
+        if (this._mapView.view.get_zoom_level() < FavoriteEditDialog.MIN_ADD_LOCATION_ZOOM_LEVEL) {
+            let zoomInDialog =
+                new ZoomInDialog.ZoomInDialog({
+                    longitude: this._longitude,
+                    latitude: this._latitude,
+                    view: this._mapView.view,
+                    transient_for: this._mainWindow,
+                    description: 'Zoom in to mark a location as favorite!',
+                    modal: true
+                });
+            zoomInDialog.connect('response', () => zoomInDialog.destroy());
+            zoomInDialog.show_all();
+            return;
+        }
+
+        let dialog = new FavoriteEditDialog.FavoriteEditDialog({
+            transient_for: this._mainWindow,
+            modal: true,
+            latitude: this._latitude,
+            longitude: this._longitude
+        });
+
+        dialog.show();
+        dialog.connect('response', (dialog) => {
+            dialog.destroy();
+        });
+    }
+
     _onGeoURIActivated() {
         let location = new Location.Location({ latitude: this._latitude,
                                                longitude: this._longitude,
@@ -154,7 +188,7 @@ var ContextMenu = GObject.registerClass({
 
             return;
         }
-
+        
         this._addOSMLocation();
     }
 
@@ -167,7 +201,8 @@ var ContextMenu = GObject.registerClass({
                                                 latitude: this._latitude,
                                                 view: this._mapView.view,
                                                 transient_for: this._mainWindow,
-                                                modal: true });
+                                                description: 'Zoom in to add location!',
+                                                modal: true, });
 
             zoomInDialog.connect('response', () => zoomInDialog.destroy());
             zoomInDialog.show_all();
