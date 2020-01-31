@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2020-01-21 22:14+0000\n"
-"PO-Revision-Date: 2020-01-22 09:59+0100\n"
+"POT-Creation-Date: 2020-01-30 20:30+0000\n"
+"PO-Revision-Date: 2020-01-31 08:56+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
@@ -272,14 +272,27 @@ msgid "Private"
 msgstr "Privado"
 
 #: data/ui/context-menu.ui:9
+msgid "Route from here"
+msgstr "Ruta desde aquí"
+
+#: data/ui/context-menu.ui:16
+#| msgid "Hide intermediate stops and information"
+msgid "Add intermediate destination"
+msgstr "Añadir destino intermedio"
+
+#: data/ui/context-menu.ui:24
+msgid "Route to here"
+msgstr "Ruta hasta aquí"
+
+#: data/ui/context-menu.ui:36
 msgid "What’s here?"
 msgstr "¿Qué hay aquí?"
 
-#: data/ui/context-menu.ui:16
+#: data/ui/context-menu.ui:43
 msgid "Copy Location"
 msgstr "Copiar ubicación"
 
-#: data/ui/context-menu.ui:29
+#: data/ui/context-menu.ui:51
 msgid "Add to OpenStreetMap"
 msgstr "Añadir a OpenStreetMap"
 
@@ -388,7 +401,6 @@ msgid "Set up OpenStreetMap Account"
 msgstr "Configurar cuenta de OpenStreetMap"
 
 #: data/ui/main-window.ui:12
-#| msgid "Export As Image"
 msgid "Export as Image"
 msgstr "Exportar como imagen"
 
@@ -830,23 +842,11 @@ msgstr ""
 "Las credenciales han caducado. Abra las Cuentas en línea para iniciar sesión "
 "y activar esta cuenta."
 
-#: src/contextMenu.js:93
-msgid "Route from here"
-msgstr "Ruta desde aquí"
-
-#: src/contextMenu.js:95
-msgid "Add destination"
-msgstr "Añadir destino"
-
-#: src/contextMenu.js:97
-msgid "Route to here"
-msgstr "Ruta hasta aquí"
-
-#: src/contextMenu.js:123
+#: src/contextMenu.js:135
 msgid "Nothing found here!"
 msgstr "No se ha encontrado nada aquí."
 
-#: src/contextMenu.js:184
+#: src/contextMenu.js:196
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -1829,6 +1829,9 @@ msgstr "Dé la vuelta hacia la derecha en %s"
 #: src/transitplugins/openTripPlanner.js:1233
 msgid "Make a right u-turn"
 msgstr "Dé la vuelta hacia la derecha"
+
+#~ msgid "Add destination"
+#~ msgstr "Añadir destino"
 
 #~ msgid "Route search by OpenTripPlanner"
 #~ msgstr "Ruta buscada por OpenTripPlanner"
