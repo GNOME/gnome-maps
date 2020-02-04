@@ -489,10 +489,8 @@ var OpenTripPlanner = class OpenTripPlanner {
         return params;
     }
 
-    _fetchPlan(params, callback) {
-        let query = new HTTP.Query(params);
-        let uri = new Soup.URI(this._getRouterUrl() + '/plan?' +
-                               query.toString());
+    _fetchPlan(url, callback) {
+        let uri = new Soup.URI(url);
         let request = new Soup.Message({ method: 'GET', uri: uri });
 
         request.request_headers.append('Accept', 'application/json');
@@ -512,6 +510,20 @@ var OpenTripPlanner = class OpenTripPlanner {
                 }
             }
         });
+    }
+
+    _getPlanUrlFromParams(params) {
+        let query = new HTTP.Query(params);
+
+        return this._getRouterUrl() + '/plan?' + query.toString();
+    }
+
+    _getPlanUrlWithStops(stops) {
+        return this._getPlanUrlFromParams(this._createParamsWithStops(stops));
+    }
+
+    _getPlanUrlWithLocations() {
+        return this._getPlanUrlFromParams(this._createParamsWithLocations());
     }
 
     _fetchRoutes(callback) {
@@ -535,14 +547,10 @@ var OpenTripPlanner = class OpenTripPlanner {
                     return;
                 }
 
-                let params = this._createParamsWithStops(stops);
-
-                this._fetchPlan(params, callback);
+                this._fetchPlan(this._getPlanUrlWithStops(stops), callback);
             });
         } else {
-            let params = this._createParamsWithLocations();
-
-            this._fetchPlan(params, callback);
+            this._fetchPlan(this._getPlanUrlWithLocations(), callback);
         }
     }
 
