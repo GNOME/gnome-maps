@@ -591,6 +591,10 @@ var OpenTripPlanner = class OpenTripPlanner {
                     itineraries =
                         itineraries.concat(
                             this._createItineraries(plan.itineraries));
+                } else if (route.itineraries) {
+                    itineraries =
+                        itineraries.concat(
+                            this._createItineraries(route.itineraries));
                 }
 
                 if (itineraries.length === 0) {
@@ -1062,7 +1066,7 @@ var OpenTripPlanner = class OpenTripPlanner {
                                            textColor:            textColor,
                                            tripShortName:        leg.tripShortName });
 
-        if (leg.transitLeg)
+        if (leg.transitLeg && leg.intermediateStops)
             result.intermediateStops = this._createIntermediateStops(leg);
         else if (!this._onlyTransitData)
             result.walkingInstructions = this._createTurnpoints(leg, polyline);
