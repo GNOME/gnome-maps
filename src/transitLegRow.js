@@ -178,14 +178,16 @@ var TransitLegRow = GObject.registerClass({
 
     _populateInstructions() {
         if (this._leg.transit) {
-            let stops = this._leg.intermediateStops;
-            for (let index = 0; index < stops.length; index++) {
-                 let stop = stops[index];
-                 let row =
-                    new TransitStopRow.TransitStopRow({ visible: true,
-                                                        stop: stop,
-                                                        final: index === stops.length - 1 });
-                this._instructionList.add(row);
+            if (this._leg.intermediateStops) {
+                let stops = this._leg.intermediateStops;
+                for (let index = 0; index < stops.length; index++) {
+                    let stop = stops[index];
+                    let row =
+                        new TransitStopRow.TransitStopRow({ visible: true,
+                                                            stop: stop,
+                                                            final: index === stops.length - 1 });
+                    this._instructionList.add(row);
+                }
             }
         } else {
             /* don't output the starting and ending instructions from the walk
