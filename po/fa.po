@@ -1,14 +1,14 @@
 # Persian translation for gnome-maps.
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # Arash Mousavi <mousavi.arash@gmail.com>, 2013, 2014, 2015, 2016.
-# Danial Behzadi <dani.behzi@ubuntu.com>, 2014, 2017, 2018, 2019.
+# Danial Behzadi <dani.behzi@ubuntu.com>, 2014, 2017, 2018, 2019, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps gnome-3-10\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-10-19 13:44+0000\n"
-"PO-Revision-Date: 2019-10-19 16:36+0000\n"
+"POT-Creation-Date: 2020-01-30 20:30+0000\n"
+"PO-Revision-Date: 2020-02-07 14:08+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian\n"
 "Language: fa\n"
@@ -67,8 +67,8 @@ msgstr "پروژهٔ گنوم"
 #. * overview.
 #.
 #. Translators: This is the program name.
-#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26 src/application.js:81
-#: src/mainWindow.js:139 src/mainWindow.js:513
+#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:30 src/application.js:81
+#: src/mainWindow.js:141 src/mainWindow.js:550
 msgid "Maps"
 msgstr "نقشه‌ها"
 
@@ -269,18 +269,26 @@ msgid "Private"
 msgstr "خصوصی"
 
 #: data/ui/context-menu.ui:9
+msgid "Route from here"
+msgstr "مسیر از این‌جا"
+
+#: data/ui/context-menu.ui:16
+msgid "Add intermediate destination"
+msgstr "افزودن مقصد میانی"
+
+#: data/ui/context-menu.ui:24
+msgid "Route to here"
+msgstr "مسیر به این‌جا"
+
+#: data/ui/context-menu.ui:36
 msgid "What’s here?"
 msgstr "این‌جا چیست؟"
 
-#: data/ui/context-menu.ui:16
+#: data/ui/context-menu.ui:43
 msgid "Copy Location"
 msgstr "رونوشت موقعیت"
 
-#: data/ui/context-menu.ui:23
-msgid "Export As Image"
-msgstr "برون‌ریزی به عنوان عکس"
-
-#: data/ui/context-menu.ui:36
+#: data/ui/context-menu.ui:51
 msgid "Add to OpenStreetMap"
 msgstr "افزودن به OpenStreetMap"
 
@@ -388,60 +396,64 @@ msgstr "تنظیمات موقعیت"
 msgid "Set up OpenStreetMap Account"
 msgstr "برپاسازی حساب OpenStreetMap"
 
-#: data/ui/main-window.ui:13
+#: data/ui/main-window.ui:12
+msgid "Export as Image"
+msgstr "برون‌ریزی به عنوان عکس"
+
+#: data/ui/main-window.ui:17
 msgid "_Keyboard Shortcuts"
 msgstr "میان‌برهای _صفحه‌کلید"
 
-#: data/ui/main-window.ui:18
+#: data/ui/main-window.ui:22
 msgid "About Maps"
 msgstr "دربارهٔ نقشه‌ها"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:41
+#: data/ui/main-window.ui:45
 msgid "Go to current location"
 msgstr "رفتن به موقعیت فعلی"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:62
+#: data/ui/main-window.ui:66
 msgid "Choose map type"
 msgstr "گزینش گونهٔ نقشه"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:87
+#: data/ui/main-window.ui:91
 msgid "Zoom out"
 msgstr "بزرگنمایی به خارج"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:103
+#: data/ui/main-window.ui:107
 msgid "Zoom in"
 msgstr "بزرگ‌نمایی به داخل"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:142
+#: data/ui/main-window.ui:146
 msgid "Toggle route planner"
 msgstr "تغییر وضعیت برنامه‌ریز مسیر"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:163
+#: data/ui/main-window.ui:167
 msgid "Toggle favorites"
 msgstr "تغییر وضعیت برگزیده‌ها"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:183
+#: data/ui/main-window.ui:187
 msgid "Print Route"
 msgstr "چاپ مسیر"
 
-#: data/ui/main-window.ui:246
+#: data/ui/main-window.ui:250
 msgid "Maps is offline!"
 msgstr "نقشه‌ها برون‌خط است!"
 
-#: data/ui/main-window.ui:256
+#: data/ui/main-window.ui:260
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t be "
 "found."
 msgstr "نقشه‌ها برای عملکرد صحیح نیاز به اینترنت دارد."
 
-#: data/ui/main-window.ui:265
+#: data/ui/main-window.ui:269
 msgid "Check your connection and proxy settings."
 msgstr "تنظیمات پیشکار و اتّصالتان را بررسی کنید."
 
@@ -617,7 +629,7 @@ msgstr "رونوشت"
 msgid "Send To…"
 msgstr "فرستادن به…"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:62
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:64
 msgid "Open Shape Layer"
 msgstr "گشودن لایهٔ شکل"
 
@@ -716,11 +728,6 @@ msgstr "هواپیماها"
 msgid "Current location"
 msgstr "موقعیت کنونی"
 
-#. To translators: %s can be "Unknown", "Exact" or "%f km²"
-#: data/ui/user-location-bubble.ui:28
-msgid "Accuracy: %s"
-msgstr "دقّت: %s"
-
 #: data/ui/zoom-in-dialog.ui:16
 msgid "Zoom in to add location!"
 msgstr "برای افزودن موقعیت، بزرگ‌نمایی کنید!"
@@ -753,6 +760,10 @@ msgstr "مسیری به ساختار شاخهٔ کاشی‌های محلّی"
 #: src/application.js:98
 msgid "Show the version of the program"
 msgstr "نمایش نگارش برنامه"
+
+#: src/application.js:104
+msgid "Ignore network availability"
+msgstr "نادیده گرفتن موجود بودن شبکه"
 
 #: src/checkInDialog.js:167
 msgid "Select an account"
@@ -818,23 +829,11 @@ msgstr ""
 "اعتبارنامه‌ها منقضی شده‌اند. لطفاً برای ورود و به کار انداختن این حساب، حساب‌های برخط "
 "را بگشایید"
 
-#: src/contextMenu.js:99
-msgid "Route from here"
-msgstr "مسیر از این‌جا"
-
-#: src/contextMenu.js:101
-msgid "Add destination"
-msgstr "افزودن مقصد"
-
-#: src/contextMenu.js:103
-msgid "Route to here"
-msgstr "مسیر به این‌جا"
-
-#: src/contextMenu.js:129
+#: src/contextMenu.js:135
 msgid "Nothing found here!"
 msgstr "این‌جا چیزی پیدا نشد!"
 
-#: src/contextMenu.js:190
+#: src/contextMenu.js:196
 msgid ""
 "Location was added to the map, note that it may take a while before it shows on "
 "the map and in search results."
@@ -895,29 +894,29 @@ msgstr "هیچ مسیری پیدا نشد."
 msgid "Start!"
 msgstr "شروع!"
 
-#: src/mainWindow.js:59
+#: src/mainWindow.js:61
 msgid "All Layer Files"
 msgstr "تمام پرونده‌های لایه"
 
-#: src/mainWindow.js:446
+#: src/mainWindow.js:451
 msgid "Failed to connect to location service"
 msgstr "شکست در اتّصال به خدمت مکانی"
 
-#: src/mainWindow.js:511
+#: src/mainWindow.js:548
 msgid "translator-credits"
 msgstr ""
 "دانیال بهزادی <dani.behzi@ubuntu.com>\n"
 "آرش موسوی <mousavi.arash@gmail.com>"
 
-#: src/mainWindow.js:514
+#: src/mainWindow.js:551
 msgid "A map application for GNOME"
 msgstr "یک برنامهٔ نقشه برای گنوم"
 
-#: src/mainWindow.js:525
+#: src/mainWindow.js:562
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "حق رونوشت © ۲۰۱۱ - ۲۰۱۹ – شرکت ردهت و نگارندگان نقشه‌های گنوم"
 
-#: src/mainWindow.js:545
+#: src/mainWindow.js:582
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "دادهّای نقشه به دست %s و مشارکت‌کنندگان"
@@ -927,7 +926,7 @@ msgstr "دادهّای نقشه به دست %s و مشارکت‌کنندگان"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:561
+#: src/mainWindow.js:598
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "کاشی‌های نقشه به دست %s فراهم شده"
@@ -941,7 +940,7 @@ msgstr "کاشی‌های نقشه به دست %s فراهم شده"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:590
+#: src/mainWindow.js:627
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "جست‌وجو به دست %s با استفاده از %s فراهم شده"
@@ -1349,16 +1348,16 @@ msgstr "مسیر برعکس"
 
 #. Translators: The first string is the name of the city, the
 #. second string is the name of the app to add it to
-#: src/sendToDialog.js:103
+#: src/sendToDialog.js:104
 #, javascript-format
 msgid "Add %s to %s"
 msgstr "افزودن %s به %s"
 
-#: src/sendToDialog.js:201
+#: src/sendToDialog.js:202
 msgid "Failed to open URI"
 msgstr "شکست در گشودن نشانی"
 
-#: src/sendToDialog.js:258
+#: src/sendToDialog.js:259
 #, javascript-format
 msgid "Open with %s"
 msgstr "گشودن با %s"
@@ -1501,7 +1500,7 @@ msgstr[0] "%Id:%I02d ساعت"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:734
+#: src/transitPlan.js:750
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -1654,6 +1653,12 @@ msgstr "پایانه"
 msgid "service"
 msgstr "خدمت"
 
+#. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
+#: src/userLocationBubble.js:56
+#, javascript-format
+msgid "Accuracy: %s"
+msgstr "دقّت: %s"
+
 #. Translators: Accuracy of user location information
 #: src/utils.js:229
 msgid "Unknown"
@@ -1768,7 +1773,7 @@ msgstr "تند به رایت بپیچید"
 
 #: src/transitplugins/openTripPlanner.js:1212
 #, javascript-format
-msgid "In the roundaboat, take exit %s"
+msgid "In the roundabout, take exit %s"
 msgstr "در میدان از %s خارج شوید"
 
 #: src/transitplugins/openTripPlanner.js:1214
@@ -1804,8 +1809,11 @@ msgid "Make a right u-turn onto %s"
 msgstr "به %s گردش به راست کنید"
 
 #: src/transitplugins/openTripPlanner.js:1233
-msgid "Make a rigth u-turn"
+msgid "Make a right u-turn"
 msgstr "گردش به راست کنید"
+
+#~ msgid "Add destination"
+#~ msgstr "افزودن مقصد"
 
 #~ msgid "Route search by OpenTripPlanner"
 #~ msgstr "جست‌وجوی مسیر به دست OpenTripPlanner"
