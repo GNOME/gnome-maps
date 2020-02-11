@@ -55,6 +55,7 @@ const Transportations = {
  */
 const Category = {
     // bus
+    B:    'B',
     NFB:  'NFB',
     NFO:  'NFO',
     BUS:  'BUS',
@@ -320,6 +321,7 @@ var OpendataCH = class OpendataCH {
 
     _getHVTCodeFromCategory(category) {
         switch (category) {
+            case Category.B:
             case Category.BUS:
             case Category.NFB:
             case Category.NFO:
