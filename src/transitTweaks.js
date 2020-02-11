@@ -54,7 +54,7 @@ var TransitTweaks = class {
     }
 
     _doApplyTweaks(itineraries, callback) {
-        if (this._tweaks !== {}) {
+        if (Object.keys(this._tweaks).length !== 0) {
             itineraries.forEach((itinerary) =>
                 this._applyTweaksToItinerary(itinerary));
         }
@@ -67,6 +67,7 @@ var TransitTweaks = class {
 
         if (!data) {
             Utils.debug('Failed to read from tweak file');
+            this._tweaks = {};
             callback();
         }
 
@@ -85,6 +86,7 @@ var TransitTweaks = class {
         this._session.queue_message(request, (obj, message) => {
             if (message.status_code !== Soup.Status.OK) {
                 Utils.debug('Failed to download tweaks');
+                this._tweaks = {};
                 callback();
             } else {
                 try {
