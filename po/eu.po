@@ -4,13 +4,13 @@
 # This file is distributed under the same license as the gnome-maps package.
 #
 # Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2013, 2014, 2015, 2016, 2017.
-# Asier Sarasua Garmendia <asier.sarasua@gmail.com>, 2019.
+# Asier Sarasua Garmendia <asier.sarasua@gmail.com>, 2019, 2020.
 #
 msgid ""
 msgstr "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-10-13 19:50+0000\n"
-"PO-Revision-Date: 2019-10-20 10:00+0100\n"
+"POT-Creation-Date: 2020-01-30 20:30+0000\n"
+"PO-Revision-Date: 2020-02-16 10:00+0100\n"
 "Last-Translator: Asier Sarasua Garmendia <asier.sarasua@gmail.com>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -61,8 +61,8 @@ msgstr "GNOME proiektua"
 #. * overview.
 #.
 #. Translators: This is the program name.
-#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
-#: src/application.js:81 src/mainWindow.js:139 src/mainWindow.js:513
+#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:30
+#: src/application.js:81 src/mainWindow.js:141 src/mainWindow.js:550
 msgid "Maps"
 msgstr "Mapak"
 
@@ -255,18 +255,26 @@ msgid "Private"
 msgstr "Pribatua"
 
 #: data/ui/context-menu.ui:9
+msgid "Route from here"
+msgstr "Ibilbidea hemendik"
+
+#: data/ui/context-menu.ui:16
+msgid "Add intermediate destination"
+msgstr "Gehitu tarteko helmuga"
+
+#: data/ui/context-menu.ui:24
+msgid "Route to here"
+msgstr "Ibilbidea hona"
+
+#: data/ui/context-menu.ui:36
 msgid "What’s here?"
 msgstr "Zer dago hemen?"
 
-#: data/ui/context-menu.ui:16
+#: data/ui/context-menu.ui:43
 msgid "Copy Location"
 msgstr "Kopiatu kokalekua"
 
-#: data/ui/context-menu.ui:23
-msgid "Export As Image"
-msgstr "Esportatu irudi gisa"
-
-#: data/ui/context-menu.ui:36
+#: data/ui/context-menu.ui:51
 msgid "Add to OpenStreetMap"
 msgstr "Gehitu OpenStreetMap-i"
 
@@ -374,60 +382,64 @@ msgstr "Kokapenaren ezarpenak"
 msgid "Set up OpenStreetMap Account"
 msgstr "Konfiguratu OpenStreetMap-eko kontua"
 
-#: data/ui/main-window.ui:13
+#: data/ui/main-window.ui:12
+msgid "Export as Image"
+msgstr "Esportatu irudi gisa"
+
+#: data/ui/main-window.ui:17
 msgid "_Keyboard Shortcuts"
 msgstr "Las_ter-teklak"
 
-#: data/ui/main-window.ui:18
+#: data/ui/main-window.ui:22
 msgid "About Maps"
 msgstr "Mapak aplikazioari buruz"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:41
+#: data/ui/main-window.ui:45
 msgid "Go to current location"
 msgstr "Joan uneko kokalekura"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:62
+#: data/ui/main-window.ui:66
 msgid "Choose map type"
 msgstr "Aukeratu mapa mota"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:87
+#: data/ui/main-window.ui:91
 msgid "Zoom out"
 msgstr "Txikiagotu"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:103
+#: data/ui/main-window.ui:107
 msgid "Zoom in"
 msgstr "Handiagotu"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:142
+#: data/ui/main-window.ui:146
 msgid "Toggle route planner"
 msgstr "Txandakatu ibilbidearen antolatzailea"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:163
+#: data/ui/main-window.ui:167
 msgid "Toggle favorites"
 msgstr "Txandakatu gogokoak"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.ui:183
+#: data/ui/main-window.ui:187
 msgid "Print Route"
 msgstr "Inprimatu ibilbidea"
 
-#: data/ui/main-window.ui:246
+#: data/ui/main-window.ui:250
 msgid "Maps is offline!"
 msgstr "Mapa lineaz kanpo dago!"
 
-#: data/ui/main-window.ui:256
+#: data/ui/main-window.ui:260
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
 msgstr "Mapak interneteko konexio aktiboa behar du ongi funtzionatzeko, baina ez da bat ere aurkitu."
 
-#: data/ui/main-window.ui:265
+#: data/ui/main-window.ui:269
 msgid "Check your connection and proxy settings."
 msgstr "Egiaztatu konexioaren eta proxyaren ezarpenak."
 
@@ -557,7 +569,7 @@ msgstr "Mapen aldaketak ikusgai egongo dira OpenStreetMap-eko\n"
 
 #: data/ui/osm-edit-dialog.ui:241
 msgid "Recently Used"
-msgstr "Duela gutxi erabilita"
+msgstr "Azken aldian erabilia"
 
 #: data/ui/osm-edit-dialog.ui:280
 msgctxt "dialog title"
@@ -599,7 +611,7 @@ msgstr "Kopiatu"
 msgid "Send To…"
 msgstr "Bidali hona…"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:62
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:64
 msgid "Open Shape Layer"
 msgstr "Ireki formen geruza"
 
@@ -695,11 +707,6 @@ msgstr "Hegazkinak"
 msgid "Current location"
 msgstr "Uneko kokalekua"
 
-#. To translators: %s can be "Unknown", "Exact" or "%f km²"
-#: data/ui/user-location-bubble.ui:28
-msgid "Accuracy: %s"
-msgstr "Zehaztasuna: %s"
-
 #: data/ui/zoom-in-dialog.ui:16
 msgid "Zoom in to add location!"
 msgstr "Handiagotu zooma kokalekua gehitzeko!"
@@ -732,6 +739,10 @@ msgstr "Lokaleko lauzen direktorioaren egituraren bide-izena"
 #: src/application.js:98
 msgid "Show the version of the program"
 msgstr "Erakutsi programaren bertsioa"
+
+#: src/application.js:104
+msgid "Ignore network availability"
+msgstr "Ezikusi egin sarearen erabilgarritasunari"
 
 #: src/checkInDialog.js:167
 msgid "Select an account"
@@ -791,23 +802,11 @@ msgid ""
 "this account"
 msgstr "Kredentzialak iraungi egin dira. Ireki 'Lineako kontuak' kontu hau sinatzeko eta gaitzeko"
 
-#: src/contextMenu.js:99
-msgid "Route from here"
-msgstr "Ibilbidea hemendik"
-
-#: src/contextMenu.js:101
-msgid "Add destination"
-msgstr "Gehitu helmuga"
-
-#: src/contextMenu.js:103
-msgid "Route to here"
-msgstr "Ibilbidea hona"
-
-#: src/contextMenu.js:129
+#: src/contextMenu.js:135
 msgid "Nothing found here!"
 msgstr "Ez da ezer aurkitu."
 
-#: src/contextMenu.js:190
+#: src/contextMenu.js:196
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -854,39 +853,39 @@ msgstr "analisi-errorea"
 msgid "unknown geometry"
 msgstr "geometria ezezaguna"
 
-#: src/graphHopper.js:112 src/transitPlan.js:169
+#: src/graphHopper.js:112 src/transitPlan.js:192
 msgid "Route request failed."
 msgstr "Huts egin du ibilbidearen eskaerak."
 
-#: src/graphHopper.js:119 src/transitPlan.js:161
+#: src/graphHopper.js:119 src/transitPlan.js:184
 msgid "No route found."
 msgstr "Ez da ibilbiderik aurkitu."
 
-#: src/graphHopper.js:207 src/transitplugins/openTripPlanner.js:1164
+#: src/graphHopper.js:207 src/transitplugins/openTripPlanner.js:1100
 msgid "Start!"
 msgstr "Hasi!"
 
-#: src/mainWindow.js:59
+#: src/mainWindow.js:61
 msgid "All Layer Files"
 msgstr "Geruzen fitxategi guztiak"
 
-#: src/mainWindow.js:446
+#: src/mainWindow.js:451
 msgid "Failed to connect to location service"
 msgstr "Huts egin du kokapen-zerbitzuarekin konektatzean"
 
-#: src/mainWindow.js:511
+#: src/mainWindow.js:548
 msgid "translator-credits"
-msgstr "Asier Sarasua Garmendia <asier.sarasua@gmail.com>"
+msgstr "translator-credits"
 
-#: src/mainWindow.js:514
+#: src/mainWindow.js:551
 msgid "A map application for GNOME"
 msgstr "GNOMEren mapen aplikazioa"
 
-#: src/mainWindow.js:525
+#: src/mainWindow.js:562
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 – 2019 Red Hat, Inc. eta GNOME Maps egileak"
 
-#: src/mainWindow.js:545
+#: src/mainWindow.js:582
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Maparen datuen sortzaileak: %s eta laguntzaileak"
@@ -896,7 +895,7 @@ msgstr "Maparen datuen sortzaileak: %s eta laguntzaileak"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:561
+#: src/mainWindow.js:598
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Mapa-lauzen hornitzaileak: %s"
@@ -910,7 +909,7 @@ msgstr "Mapa-lauzen hornitzaileak: %s"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:590
+#: src/mainWindow.js:627
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "%s motorrak hornitutako bilaketa %s bidez"
@@ -1312,16 +1311,16 @@ msgstr "Alderantzikatu ibilbidea"
 
 #. Translators: The first string is the name of the city, the
 #. second string is the name of the app to add it to
-#: src/sendToDialog.js:103
+#: src/sendToDialog.js:104
 #, javascript-format
 msgid "Add %s to %s"
 msgstr "Gehitu %s honi: %s"
 
-#: src/sendToDialog.js:201
+#: src/sendToDialog.js:202
 msgid "Failed to open URI"
 msgstr "Huts egin du URIa irekitzean"
 
-#: src/sendToDialog.js:258
+#: src/sendToDialog.js:259
 #, javascript-format
 msgid "Open with %s"
 msgstr "Ireki honekin: %s"
@@ -1373,7 +1372,7 @@ msgstr "Oinez: %s"
 msgid "Arrive at %s"
 msgstr "Iritsi: %s"
 
-#: src/transit.js:77 src/transitplugins/openTripPlanner.js:1177
+#: src/transit.js:77 src/transitplugins/openTripPlanner.js:1113
 msgid "Arrive"
 msgstr "Iritsi"
 
@@ -1410,11 +1409,11 @@ msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%b %e"
 
-#: src/transitPlan.js:165
+#: src/transitPlan.js:188
 msgid "No timetable data found for this route."
 msgstr "Ez da ordutegiaren daturik aurkitu ibilbide honetan."
 
-#: src/transitPlan.js:173
+#: src/transitPlan.js:196
 msgid "No provider found for this route."
 msgstr "Ez da hornitzailerik aurkitu ibilbide honetarako."
 
@@ -1423,7 +1422,7 @@ msgstr "Ez da hornitzailerik aurkitu ibilbide honetarako."
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:290
+#: src/transitPlan.js:313
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -1432,7 +1431,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: src/transitPlan.js:317
+#: src/transitPlan.js:340
 #, javascript-format
 msgid "%d minute"
 msgid_plural "%d minutes"
@@ -1443,7 +1442,7 @@ msgstr[1] "%d minutu"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: src/transitPlan.js:328
+#: src/transitPlan.js:351
 #, javascript-format
 msgid "%d hour"
 msgid_plural "%d hours"
@@ -1454,7 +1453,7 @@ msgstr[1] "%d ordu"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: src/transitPlan.js:334
+#: src/transitPlan.js:357
 #, javascript-format
 msgid "%d:%02d hour"
 msgid_plural "%d:%02d hours"
@@ -1467,7 +1466,7 @@ msgstr[1] "%d:%0d ordu"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:699
+#: src/transitPlan.js:750
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -1620,6 +1619,12 @@ msgstr "terminala"
 msgid "service"
 msgstr "zerbitzua"
 
+#. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
+#: src/userLocationBubble.js:56
+#, javascript-format
+msgid "Accuracy: %s"
+msgstr "Zehaztasuna: %s"
+
 #. Translators: Accuracy of user location information
 #: src/utils.js:229
 msgid "Unknown"
@@ -1669,109 +1674,112 @@ msgstr "%s mi"
 msgid "%s ft"
 msgstr "%s ft"
 
-#: src/transitplugins/openTripPlanner.js:1238
+#: src/transitplugins/openTripPlanner.js:1174
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Jarraitu hemen: %s"
 
-#: src/transitplugins/openTripPlanner.js:1240
+#: src/transitplugins/openTripPlanner.js:1176
 msgid "Continue"
 msgstr "Jarraitu"
 
-#: src/transitplugins/openTripPlanner.js:1243
+#: src/transitplugins/openTripPlanner.js:1179
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Biratu ezkerrera hemen: %s"
 
-#: src/transitplugins/openTripPlanner.js:1245
+#: src/transitplugins/openTripPlanner.js:1181
 msgid "Turn left"
 msgstr "Biratu ezkerrera"
 
-#: src/transitplugins/openTripPlanner.js:1248
+#: src/transitplugins/openTripPlanner.js:1184
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Biratu pixka bat ezkerrera hemen: %s"
 
-#: src/transitplugins/openTripPlanner.js:1250
+#: src/transitplugins/openTripPlanner.js:1186
 msgid "Turn slightly left"
 msgstr "Biratu pixka bat ezkerrera"
 
-#: src/transitplugins/openTripPlanner.js:1253
+#: src/transitplugins/openTripPlanner.js:1189
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Biratu erabat ezkerrera hemen: %s"
 
-#: src/transitplugins/openTripPlanner.js:1255
+#: src/transitplugins/openTripPlanner.js:1191
 msgid "Turn sharp left"
 msgstr "Biratu erabat ezkerrera"
 
-#: src/transitplugins/openTripPlanner.js:1258
+#: src/transitplugins/openTripPlanner.js:1194
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Biratu eskuinera hemen: %s"
 
-#: src/transitplugins/openTripPlanner.js:1260
+#: src/transitplugins/openTripPlanner.js:1196
 msgid "Turn right"
 msgstr "Biratu eskuinera"
 
-#: src/transitplugins/openTripPlanner.js:1263
+#: src/transitplugins/openTripPlanner.js:1199
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Biratu pixka bat eskuinera hemen: %s"
 
-#: src/transitplugins/openTripPlanner.js:1265
+#: src/transitplugins/openTripPlanner.js:1201
 msgid "Turn slightly right"
 msgstr "Biratu pixka bat eskuinera"
 
-#: src/transitplugins/openTripPlanner.js:1268
+#: src/transitplugins/openTripPlanner.js:1204
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Biratu erabat eskuinera hemen: %s"
 
-#: src/transitplugins/openTripPlanner.js:1270
+#: src/transitplugins/openTripPlanner.js:1206
 msgid "Turn sharp right"
 msgstr "Biratu erabat eskuinera"
 
-#: src/transitplugins/openTripPlanner.js:1276
+#: src/transitplugins/openTripPlanner.js:1212
 #, javascript-format
-msgid "In the roundaboat, take exit %s"
+msgid "In the roundabout, take exit %s"
 msgstr "Biribilgunean, hartu %s irteera"
 
-#: src/transitplugins/openTripPlanner.js:1278
+#: src/transitplugins/openTripPlanner.js:1214
 #, javascript-format
 msgid "In the roundabout, take exit to %s"
 msgstr "Biribilgunean, hartu %s helbidera joateko irteera"
 
-#: src/transitplugins/openTripPlanner.js:1280
+#: src/transitplugins/openTripPlanner.js:1216
 msgid "Take the roundabout"
 msgstr "Hartu biribilgunea"
 
-#: src/transitplugins/openTripPlanner.js:1284
+#: src/transitplugins/openTripPlanner.js:1220
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Hartu igogailua eta utzi hemen: %s"
 
-#: src/transitplugins/openTripPlanner.js:1286
+#: src/transitplugins/openTripPlanner.js:1222
 msgid "Take the elevator"
 msgstr "Hartu igogailua"
 
-#: src/transitplugins/openTripPlanner.js:1290
+#: src/transitplugins/openTripPlanner.js:1226
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Aldatu noranzkoa ezkerrerantz hemen: %s"
 
-#: src/transitplugins/openTripPlanner.js:1292
+#: src/transitplugins/openTripPlanner.js:1228
 msgid "Make a left u-turn"
 msgstr "Aldatu noranzkoa ezkerrerantz"
 
-#: src/transitplugins/openTripPlanner.js:1295
+#: src/transitplugins/openTripPlanner.js:1231
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Aldatu noranzkoa eskuinerantz hemen: %s"
 
-#: src/transitplugins/openTripPlanner.js:1297
-msgid "Make a rigth u-turn"
+#: src/transitplugins/openTripPlanner.js:1233
+msgid "Make a right u-turn"
 msgstr "Aldatu noranzkoa eskuinerantz"
+
+#~ msgid "Add destination"
+#~ msgstr "Gehitu helmuga"
 
 #~ msgid "Route search by OpenTripPlanner"
 #~ msgstr "ibilbidea OpenTripPlanner-ek bilatuta"
