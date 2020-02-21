@@ -1,3 +1,5 @@
+include: 'https://gitlab.gnome.org/GNOME/citemplates/raw/master/flatpak/flatpak_ci_initiative.yml'
+
 stages:
 - test
 - review
@@ -7,6 +9,7 @@ variables:
     BUNDLE: "gnome-maps-git.flatpak"
 
 flatpak:
+    extends: .flatpak
     image: registry.gitlab.gnome.org/gnome/gnome-runtime-images/gnome:master
     stage: test
     variables:
@@ -19,18 +22,6 @@ flatpak:
         # are passed except the config-args because we build it ourselves
         MESON_ARGS: ""
         DBUS_ID: "org.gnome.Maps"
-
-    script:
-        - flatpak-builder --user --disable-rofiles-fuse --stop-at=${FLATPAK_MODULE} app ${MANIFEST_PATH}
-        # Make sure to keep this in sync with the Flatpak manifest, all arguments
-        # are passed except the config-args because we build it ourselves
-        - flatpak build app meson --prefix=/app ${MESON_ARGS} _build
-        - flatpak build app ninja -C _build install
-        - flatpak-builder --user --disable-rofiles-fuse --finish-only --repo=repo app ${MANIFEST_PATH}
-        # Generate a Flatpak bundle
-        - flatpak build-bundle repo ${BUNDLE} --runtime-repo=${RUNTIME_REPO} ${DBUS_ID}
-        # Run automatic tests inside the Flatpak env
-        - xvfb-run -a -s "-screen 0 1024x768x24" flatpak build app ninja -C _build test
     artifacts:
         paths:
             - ${BUNDLE}
