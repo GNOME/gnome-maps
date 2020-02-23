@@ -21,9 +21,6 @@ flatpak:
             - _build/meson-logs/meson-log.txt
             - _build/meson-logs/testlog.txt
         expire_in: 30 days
-    cache:
-        paths:
-             - .flatpak-builder/cache
 
 nightly:
     extends: '.publish_nightly'
