@@ -21,5 +21,6 @@
 #include <glib-object.h>
 #include "maps-contact-store.h"
 #include "maps-contact.h"
+#include "maps-gtfs-stop.h"
 
 #endif
