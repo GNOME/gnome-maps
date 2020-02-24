@@ -15,12 +15,6 @@ flatpak:
         MESON_ARGS: ""
         APP_ID: "org.gnome.Maps"
         BUNDLE: "gnome-maps-git.flatpak"
-    artifacts:
-        paths:
-            - ${BUNDLE}
-            - _build/meson-logs/meson-log.txt
-            - _build/meson-logs/testlog.txt
-        expire_in: 30 days
 
 nightly:
     extends: '.publish_nightly'
