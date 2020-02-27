@@ -23,18 +23,17 @@
 
 G_BEGIN_DECLS
 
-#define MAPS_TYPE_GTFS_ROUTE (maps_gtfs_route_get_type())
+#define MAPS_TYPE_GTFS_TRIP (maps_gtfs_trip_get_type())
 
-G_DECLARE_DERIVABLE_TYPE (MapsGTFSRoute, maps_gtfs_route, MAPS, GTFS_ROUTE, GObject)
+G_DECLARE_DERIVABLE_TYPE (MapsGTFSTrip, maps_gtfs_trip, MAPS, GTFS_TRIP, GObject)
 
-struct _MapsGTFSRouteClass
+struct _MapsGTFSTripClass
 {
   GObjectClass parent_class;
 };
 
-MapsGTFSRoute *maps_gtfs_route_new (gchar *id, gchar *agency_id,
-                                    gchar *short_name,
-                                    gchar *long_name, guint16 type, gchar *color,
-                                    gchar *text_color);
+MapsGTFSTrip *maps_gtfs_trip_new (gchar *route_id, gchar *service_id, gchar *id,
+                                  gchar *headsign, gchar *short_name,
+                                  gchar *shape_id);
 
 G_END_DECLS
