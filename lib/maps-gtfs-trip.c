@@ -37,6 +37,11 @@ G_DEFINE_TYPE_WITH_PRIVATE (MapsGTFSTrip, maps_gtfs_trip, G_TYPE_OBJECT)
 
 enum {
   PROP_0,
+  PROP_ROUTE_ID,
+  PROP_SERVICE_ID,
+  PROP_ID,
+  PROP_HEADSIGN,
+  PROP_SHORT_NAME,
   N_PROPS
 };
 
@@ -87,24 +92,25 @@ maps_gtfs_trip_get_property (GObject    *object,
                              GParamSpec *pspec)
 {
   MapsGTFSTrip *self = MAPS_GTFS_TRIP (object);
+  MapsGTFSTripPrivate *priv = maps_gtfs_trip_get_instance_private (self);
 
   switch (prop_id)
     {
-    default:
-      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-    }
-}
-
-static void
-maps_gtfs_trip_set_property (GObject      *object,
-                             guint         prop_id,
-                             const GValue *value,
-                             GParamSpec   *pspec)
-{
-  MapsGTFSTrip *self = MAPS_GTFS_TRIP (object);
-
-  switch (prop_id)
-    {
+    case PROP_ROUTE_ID:
+      g_value_set_string (value, priv->route_id);
+      break;
+    case PROP_SERVICE_ID:
+      g_value_set_string (value, priv->service_id);
+      break;
+    case PROP_ID:
+      g_value_set_string (value, priv->id);
+      break;
+    case PROP_HEADSIGN:
+      g_value_set_string (value, priv->headsign);
+      break;
+    case PROP_SHORT_NAME:
+      g_value_set_string (value, priv->short_name);
+      break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
     }
@@ -117,7 +123,35 @@ maps_gtfs_trip_class_init (MapsGTFSTripClass *klass)
 
   object_class->finalize = maps_gtfs_trip_finalize;
   object_class->get_property = maps_gtfs_trip_get_property;
-  object_class->set_property = maps_gtfs_trip_set_property;
+
+  properties[PROP_ROUTE_ID] =
+    g_param_spec_string ("route_id",
+                         "Route ID", "Reference to the route",
+                         NULL,
+                         G_PARAM_READABLE|G_PARAM_EXPLICIT_NOTIFY);
+  properties[PROP_SERVICE_ID] =
+    g_param_spec_string ("service_id",
+                         "Service ID", "Reference to calendar or calendar_date",
+                         NULL,
+                         G_PARAM_READABLE|G_PARAM_EXPLICIT_NOTIFY);
+  properties[PROP_ID] =
+    g_param_spec_string ("id",
+                         "ID", "Unique identifier",
+                         NULL,
+                         G_PARAM_READABLE|G_PARAM_EXPLICIT_NOTIFY);
+  properties[PROP_HEADSIGN] =
+    g_param_spec_string ("headsign",
+                         "Headsign",
+                         "Destination sign for the trip, can be overridden in a StopTime",
+                         NULL,
+                         G_PARAM_READABLE|G_PARAM_EXPLICIT_NOTIFY);
+  properties[PROP_SHORT_NAME] =
+    g_param_spec_string ("short_name",
+                         "Short name", "Identifier for the trip (e.g. a train number)",
+                         NULL,
+                         G_PARAM_READABLE|G_PARAM_EXPLICIT_NOTIFY);
+
+  g_object_class_install_properties (object_class, N_PROPS, properties);
 }
 
 static void
