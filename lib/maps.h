@@ -22,5 +22,6 @@
 #include "maps-contact-store.h"
 #include "maps-contact.h"
 #include "maps-gtfs-stop.h"
+#include "maps-gtfs-stop-time.h"
 
 #endif
