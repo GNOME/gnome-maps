@@ -38,7 +38,8 @@ libmaps_deps = [
 	dependency('champlain-0.12', version: '>= 0.12.14'),
 	dependency('libxml-2.0'),
 	dependency('rest-0.7', version: '>= 0.7.90'),
-	dependency('libarchive')
+	dependency('libarchive'),
+	dependency('sqlite3')
 ]
 
 msgfmt = find_program('msgfmt')
