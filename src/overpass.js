@@ -204,8 +204,12 @@ var Overpass = GObject.registerClass({
             place.name = element.tags.name;
         if (element.tags.population)
             place.population = element.tags.population;
+        if (element.tags['contact:website'])
+            place.website = element.tags['contact:website'];
         if (element.tags.website)
             place.website = element.tags.website;
+        if (element.tags['contact:phone'])
+            place.phone = element.tags['contact:phone'];
         if (element.tags.phone)
             place.phone = element.tags.phone;
         if (element.tags.wikipedia)
