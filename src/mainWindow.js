@@ -36,7 +36,7 @@ const ExportViewDialog = imports.exportViewDialog;
 const FavoritesPopover = imports.favoritesPopover;
 const Geoclue = imports.geoclue;
 const GeocodeFactory = imports.geocode;
-const LayersPopover = imports.layersPopover;
+const HeaderBar = imports.headerBar;
 const LocationServiceDialog = imports.locationServiceDialog;
 const MapView = imports.mapView;
 const PlaceEntry = imports.placeEntry;
@@ -48,8 +48,8 @@ const Sidebar = imports.sidebar;
 const Utils = imports.utils;
 
 const _CONFIGURE_ID_TIMEOUT = 100; // msecs
-const _WINDOW_MIN_WIDTH = 600;
-const _WINDOW_MIN_HEIGHT = 500;
+const _ADAPTIVE_VIEW_WIDTH = 700;
+const _PLACE_ENTRY_MARGIN = 35;
 
 var ShapeLayerFileChooser = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/shape-layer-file-chooser.ui'
@@ -83,13 +83,8 @@ var MainWindow = GObject.registerClass({
                         'mainStack',
                         'mainGrid',
                         'noNetworkView',
-                        'gotoUserLocationButton',
-                        'toggleSidebarButton',
-                        'layersButton',
-                        'favoritesButton',
-                        'printRouteButton',
-                        'zoomInButton',
-                        'zoomOutButton' ]
+                        'actionBar',
+                        'actionBarRevealer' ]
 }, class MainWindow extends Gtk.ApplicationWindow {
 
     get mapView() {
@@ -115,15 +110,8 @@ var MainWindow = GObject.registerClass({
         this._contextMenu = new ContextMenu.ContextMenu({ mapView: this._mapView,
                                                           mainWindow: this });
 
-        this.layersPopover = new LayersPopover.LayersPopover({
-            mapView: this._mapView
-        });
-        this._layersButton.popover = this.layersPopover;
-        this._favoritesButton.popover = new FavoritesPopover.FavoritesPopover({ mapView: this._mapView });
-
-
-        this._initHeaderbar();
         this._initActions();
+        this._initHeaderbar();
         this._initSignals();
         this._restoreWindowGeometry();
         this._initDND();
@@ -144,8 +132,8 @@ var MainWindow = GObject.registerClass({
     _createPlaceEntry() {
         let placeEntry = new PlaceEntry.PlaceEntry({ mapView: this._mapView,
                                                      visible: true,
-                                                     margin_start: 35,
-                                                     margin_end: 35,
+                                                     margin_start: _PLACE_ENTRY_MARGIN,
+                                                     margin_end: _PLACE_ENTRY_MARGIN,
                                                      max_width_chars: 50,
                                                      loupe: true,
                                                      matchRoute: true
@@ -166,9 +154,6 @@ var MainWindow = GObject.registerClass({
         let sidebar = new Sidebar.Sidebar(this._mapView);
 
         Application.routeQuery.connect('notify', () => this._setRevealSidebar(true));
-        this._toggleSidebarButton.bind_property('active',
-                                                this._mapView, 'routingOpen',
-                                                GObject.BindingFlags.BIDIRECTIONAL);
         this.application.bind_property('connected',
                                        sidebar, 'visible',
                                        GObject.BindingFlags.DEFAULT);
@@ -319,16 +304,18 @@ var MainWindow = GObject.registerClass({
         let zoomLevel = this._mapView.view.zoom_level;
         let maxZoomLevel = this._mapView.view.max_zoom_level;
         let minZoomLevel = this._mapView.view.min_zoom_level;
+        let zoomInAction = this.lookup_action("zoom-in");
+        let zoomOutAction = this.lookup_action("zoom-out");
 
         if (zoomLevel >= maxZoomLevel)
-            this._zoomInButton.set_sensitive(false);
+            zoomInAction.set_enabled(false);
         else
-            this._zoomInButton.set_sensitive(true);
+            zoomInAction.set_enabled(true);
 
         if (zoomLevel <= minZoomLevel)
-            this._zoomOutButton.set_sensitive(false);
+            zoomOutAction.set_enabled(false);
         else
-            this._zoomOutButton.set_sensitive(true);
+            zoomOutAction.set_enabled(true);
     }
 
     _updateLocationSensitivity() {
@@ -336,21 +323,24 @@ var MainWindow = GObject.registerClass({
                          (this.application.connected ||
                           this.application.local_tile_path));
 
-        this._gotoUserLocationButton.sensitive = sensitive;
+        this.lookup_action("goto-user-location").set_enabled(sensitive);
     }
 
     _initHeaderbar() {
+        this._headerBarLeft = new HeaderBar.HeaderBarLeft({
+            mapView: this._mapView,
+            application: this.application
+        });
+        this._headerBar.pack_start(this._headerBarLeft);
+
+        this._headerBarRight = new HeaderBar.HeaderBarRight({
+            mapView: this._mapView,
+            application: this.application
+        });
+        this._headerBar.pack_end(this._headerBarRight);
+
         this._placeEntry = this._createPlaceEntry();
         this._headerBar.custom_title = this._placeEntry;
-
-        let favoritesPopover = this._favoritesButton.popover;
-        this._favoritesButton.sensitive = favoritesPopover.rows > 0;
-        favoritesPopover.connect('notify::rows', () => {
-            this._favoritesButton.sensitive = favoritesPopover.rows > 0;
-        });
-
-        this._mapView.bind_property('routeShowing', this._printRouteButton,
-                                    'visible', GObject.BindingFlags.DEFAULT);
 
         Application.geoclue.connect('notify::state',
                                     this._updateLocationSensitivity.bind(this));
@@ -358,12 +348,37 @@ var MainWindow = GObject.registerClass({
             let app = this.application;
 
             this._updateLocationSensitivity();
-            this._layersButton.sensitive = app.connected;
-            this._toggleSidebarButton.sensitive = app.connected;
-            this._favoritesButton.sensitive = (app.connected &&
-                                               favoritesPopover.rows > 0);
             this._placeEntry.sensitive = app.connected;
-            this._printRouteButton.sensitive = app.connected;
+        });
+
+        // action bar, for when the window is too narrow for the full headerbar
+        this._actionBarLeft =  new HeaderBar.HeaderBarLeft({
+            mapView: this._mapView,
+            application: this.application
+        })
+        this._actionBar.pack_start(this._actionBarLeft);
+
+        this._actionBarRight = new HeaderBar.HeaderBarRight({
+            mapView: this._mapView,
+            application: this.application
+        })
+        this._actionBar.pack_end(this._actionBarRight);
+
+        this.connect('size-allocate', () => {
+            let [width, height] = this.get_size();
+            if (width < _ADAPTIVE_VIEW_WIDTH) {
+                this._headerBarLeft.hide();
+                this._headerBarRight.hide();
+                this._actionBarRevealer.set_reveal_child(true);
+                this._placeEntry.set_margin_start(0);
+                this._placeEntry.set_margin_end(0);
+            } else {
+                this._headerBarLeft.show();
+                this._headerBarRight.show();
+                this._actionBarRevealer.set_reveal_child(false);
+                this._placeEntry.set_margin_start(_PLACE_ENTRY_MARGIN);
+                this._placeEntry.set_margin_end(_PLACE_ENTRY_MARGIN);
+            }
         });
     }
 
@@ -514,14 +529,12 @@ var MainWindow = GObject.registerClass({
 
     _onStreetViewActivate() {
         this._mapView.setMapType(MapView.MapType.STREET);
-        this.layersPopover.setMapType(MapView.MapType.STREET);
     }
 
     _onAerialViewActivate() {
         // don't attempt to switch to aerial if we don't have tiles for it
         if (Service.getService().tiles.aerial) {
             this._mapView.setMapType(MapView.MapType.AERIAL);
-            this.layersPopover.setMapType(MapView.MapType.AERIAL);
         }
     }
 
@@ -638,7 +651,8 @@ var MainWindow = GObject.registerClass({
         this._fileChooser.connect('response', (widget, response) => {
             if (response === Gtk.ResponseType.ACCEPT) {
                 this._mapView.openShapeLayers(this._fileChooser.get_files());
-                this.layersPopover.popdown();
+                this._headerBarLeft.popdownLayersPopover();
+                this._actionBarLeft.popdownLayersPopover();
             }
             this._fileChooser.destroy();
         });

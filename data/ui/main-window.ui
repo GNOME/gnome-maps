@@ -24,7 +24,7 @@
     </section>
   </menu>
   <template class="Gjs_MainWindow" parent="GtkApplicationWindow">
-    <property name="width-request">600</property>
+    <property name="width-request">300</property>
     <property name="height-request">500</property>
     <property name="window-position">center</property>
     <property name="title" translatable="yes">Maps</property>
@@ -36,86 +36,6 @@
         <style>
           <class name="titlebar"/>
         </style>
-        <child>
-          <object class="GtkButton" id="gotoUserLocationButton">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="valign">center</property>
-            <property name="action-name">win.goto-user-location</property>
-            <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Go to current location</property>
-            <style>
-              <class name="image-button"/>
-            </style>
-            <child>
-              <object class="GtkImage" id="track-user-button-image">
-                <property name="visible">True</property>
-                <property name="icon-size">1</property>
-                <property name="icon-name">find-location-symbolic</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="pack-type">start</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkMenuButton" id="layersButton">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="valign">center</property>
-            <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Choose map type</property>
-            <style>
-              <class name="image-button"/>
-            </style>
-            <child>
-              <object class="GtkImage" id="layers-button-image">
-                <property name="visible">True</property>
-                <property name="icon-size">1</property>
-                <property name="icon-name">layers-button-symbolic</property>
-              </object>
-            </child>
-          </object>
-        </child>
-        <child>
-          <object class="GtkBox">
-            <property name="visible">True</property>
-            <style>
-              <class name="linked"/>
-            </style>
-            <child>
-              <object class="GtkButton" id="zoomOutButton">
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="valign">center</property>
-                <property name="action-name">win.zoom-out</property>
-                <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Zoom out</property>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="icon-size">1</property>
-                    <property name="icon-name">zoom-out-symbolic</property>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="zoomInButton">
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="valign">center</property>
-                <property name="action-name">win.zoom-in</property>
-                <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Zoom in</property>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="icon-size">1</property>
-                    <property name="icon-name">zoom-in-symbolic</property>
-                  </object>
-                </child>
-              </object>
-            </child>
-          </object>
-        </child>
         <child>
           <object class="GtkMenuButton">
             <property name="visible">True</property>
@@ -130,70 +50,6 @@
                 <property name="visible">True</property>
                 <property name="icon-size">1</property>
                 <property name="icon-name">open-menu-symbolic</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="pack-type">end</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToggleButton" id="toggleSidebarButton">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="valign">center</property>
-            <property name="action-name">win.toggle-sidebar</property>
-            <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Toggle route planner</property>
-            <style>
-              <class name="image-button"/>
-            </style>
-            <child>
-              <object class="GtkImage" id="toggle-sidebar-button-image">
-                <property name="visible">True</property>
-                <property name="icon-size">1</property>
-                <property name="icon-name">route-button-symbolic</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="pack-type">end</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkMenuButton" id="favoritesButton">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="valign">center</property>
-            <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Toggle favorites</property>
-            <style>
-              <class name="image-button"/>
-            </style>
-            <child>
-              <object class="GtkImage" id="favorites-button-image">
-                <property name="visible">True</property>
-                <property name="icon-size">1</property>
-                <property name="icon-name">starred-symbolic</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="pack-type">end</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="printRouteButton">
-            <property name="name">print-route</property>
-            <property name="can-focus">True</property>
-            <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Print Route</property>
-            <property name="action-name">win.print-route</property>
-            <property name="valign">center</property>
-            <style>
-              <class name="image-button"/>
-            </style>
-            <child>
-              <object class="GtkImage" id="print-route-button-image">
-                <property name="visible">True</property>
-                <property name="icon-name">document-print-symbolic</property>
               </object>
             </child>
           </object>
@@ -274,6 +130,23 @@
               </object>
             </child>
           </object>
+        </child>
+        <child>
+          <object class="GtkRevealer" id="actionBarRevealer">
+            <property name="visible">True</property>
+            <property name="reveal-child">False</property>
+            <property name="transition-type">slide-up</property>
+            <child>
+              <object class="GtkActionBar" id="actionBar">
+                <property name="visible">True</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">1</property>
+            <property name="width">2</property>
+          </packing>
         </child>
       </object>
     </child>
