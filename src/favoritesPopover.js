@@ -111,7 +111,6 @@ var FavoritesPopover = GObject.registerClass({
             let place = model.get_value(iter, PlaceStore.Columns.PLACE);
 
             let row = new PlaceListRow.PlaceListRow({ place: place,
-                                                      maxChars: 15,
                                                       can_focus: true });
             this._list.add(row);
             rows++;
