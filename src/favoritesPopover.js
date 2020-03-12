@@ -30,7 +30,6 @@ const _N_VISIBLE = 6;
 var FavoritesPopover = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/favorites-popover.ui',
     InternalChildren: [ 'mainGrid',
-                        'revealer',
                         'entry',
                         'scrolledWindow',
                         'list' ],
@@ -71,10 +70,10 @@ var FavoritesPopover = GObject.registerClass({
         this.connect('notify::rows', () => {
             let visible = Math.min(this._rows, _N_VISIBLE);
             let separators = visible - 1; // separators are 1px
-            let height = (PlaceListRow.ROW_HEIGHT + 6) * visible + separators;
+            let height = PlaceListRow.ROW_HEIGHT * visible + separators;
 
             this._scrolledWindow.min_content_height = height;
-            this._revealer.reveal_child = this._rows > _N_VISIBLE;
+            this._entry.visible = this._rows > _N_VISIBLE;
         });
 
         this._entry.connect('changed',
