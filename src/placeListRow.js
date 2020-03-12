@@ -42,9 +42,6 @@ var PlaceListRow = GObject.registerClass({
         let searchString = params.searchString || '';
         delete params.searchString;
 
-        this._maxChars = params.maxChars || 40;
-        delete params.maxChars;
-
         let type = params.type;
         delete params.type;
 
@@ -60,7 +57,6 @@ var PlaceListRow = GObject.registerClass({
         let markup = GLib.markup_escape_text(formatter.title, -1);
 
         this._name.label = this._boldMatch(markup, searchString);
-        this._details.max_width_chars = this._maxChars;
         this._details.label = GLib.markup_escape_text(formatter.getDetailsString(),-1);
         this._icon.gicon = place.icon;
 

@@ -129,7 +129,6 @@ var PlacePopover = GObject.registerClass({
         let row = new PlaceListRow.PlaceListRow({ place: place,
                                                   searchString: searchString,
                                                   type: type,
-                                                  maxChars: this._maxChars,
                                                   can_focus: true });
         this._list.add(row);
     }
