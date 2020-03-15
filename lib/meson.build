@@ -22,6 +22,7 @@ sources = files(
 	'maps-contact-store.c',
 	'maps-file-tile-source.c',
 	'maps-gtfs-agency.c',
+	'maps-gtfs-db-funcs.c',
 	'maps-gtfs-route.c',
 	'maps-gtfs-stop.c',
 	'maps-gtfs-trip.c',
@@ -44,6 +45,11 @@ maps_enums = gnome.mkenums(
 	identifier_prefix: maps_ns,
 	symbol_prefix: maps_ns.to_lower()
 )
+
+libm = cc.find_library('m', required: false)
+if libm.found()
+    libmaps_deps += [ libm ]
+endif
 
 cflags = [
 	'-DG_DISABLE_DEPRECATED',
