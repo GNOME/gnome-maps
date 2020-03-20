@@ -48,6 +48,7 @@ var Sidebar = GObject.registerClass({
                         'instructionSpinner',
                         'instructionStack',
                         'errorLabel',
+                        'progressLabel',
                         'modeBikeToggle',
                         'modeCarToggle',
                         'modePedestrianToggle',
@@ -326,11 +327,23 @@ var Sidebar = GObject.registerClass({
         // connect error handlers
         route.connect('error', (route, msg) => this._showError(msg));
         transitPlan.connect('error', (plan, msg) => this._showError(msg));
+
+        // connect progress handler
+        transitPlan.connect('progress', (plan, msg) => this._showProgress(msg));
     }
 
     _showError(msg) {
         this._instructionStack.visible_child = this._errorLabel;
         this._errorLabel.label = msg;
+    }
+
+    _showProgress(msg) {
+        if (msg) {
+            this._progressLabel.visible = true;
+            this._progressLabel.label = msg;
+        } else {
+            this._progressLabel.visible = false;
+        }
     }
 
     _clearTransitOverview() {
