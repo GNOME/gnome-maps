@@ -93,7 +93,8 @@ var Plan = GObject.registerClass({
         'no-more-results': {},
         'itinerary-selected': { param_types: [GObject.TYPE_OBJECT] },
         'itinerary-deselected': {},
-        'error': { param_types: [GObject.TYPE_STRING] }
+        'error': { param_types: [GObject.TYPE_STRING] },
+        'progress': { param_types: [GObject.TYPE_STRING] }
     }
 }, class Plan extends GObject.Object {
 
@@ -198,6 +199,10 @@ var Plan = GObject.registerClass({
 
     noProvider() {
         this.emit('error', _("No provider found for this route."));
+    }
+
+    progress(msg) {
+        this.emit('progress', msg);
     }
 
     _createBBox() {
