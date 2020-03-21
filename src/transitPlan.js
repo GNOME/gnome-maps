@@ -63,7 +63,11 @@ var RouteType = {
     /* Funicular referres to a railway system designed for steep inclines,
      * https://en.wikipedia.org/wiki/Funicular
      */
-    FUNICULAR:   7
+    FUNICULAR:   7,
+    /* Electric buses that draw power from overhead wires using poles. */
+    TROLLEYBUS:  11,
+    /* Railway in which the track consists of a single rail or a beam. */
+    MONORAIL:    12
 };
 
 /* extra time to add to the first itinerary leg when it's a walking leg */
