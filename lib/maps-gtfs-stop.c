@@ -66,8 +66,8 @@ static GParamSpec *properties [N_PROPS];
  * Returns: (transfer full): a newly created #MapsGTFSStop
  */
 MapsGTFSStop *
-maps_gtfs_stop_new (gchar *id, gchar *code, gchar *name, gchar *desc,
-                    float lat, float lon,
+maps_gtfs_stop_new (const gchar *id, const gchar *code, const gchar *name,
+                    const gchar *desc, float lat, float lon,
                     MapsGTFSStopLocationType location_type,
                     MapsGTFSStop *parent_station, GTimeZone *timezone)
 {
@@ -81,7 +81,7 @@ maps_gtfs_stop_new (gchar *id, gchar *code, gchar *name, gchar *desc,
   priv->lat = lat;
   priv->lon = lon;
   priv->location_type = location_type;
-  priv->parent_station = g_object_ref (parent_station);
+  priv->parent_station = parent_station ? g_object_ref (parent_station) : NULL;
   priv->timezone = timezone ? g_time_zone_ref (timezone) : NULL;
 
   return stop;

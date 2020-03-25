@@ -49,7 +49,8 @@ struct _MapsGTFSStopClass
   GObjectClass parent_class;
 };
 
-MapsGTFSStop *maps_gtfs_stop_new (gchar *id, gchar *code, gchar *name, gchar *desc,
+MapsGTFSStop *maps_gtfs_stop_new (const gchar *id, const gchar *code,
+                                  const gchar *name, const gchar *desc,
                                   float lat, float lon,
                                   MapsGTFSStopLocationType location_type,
                                   MapsGTFSStop *parent_station, GTimeZone *timezone);
