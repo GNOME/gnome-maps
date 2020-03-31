@@ -244,8 +244,9 @@ var Sidebar = GObject.registerClass({
         });
 
         this._query.connect('notify', () => {
-            if (this._query.isValid()) {
+            if (this._query.isValid() && this._errorLabel.label === '') {
                 this._instructionStack.visible_child = this._instructionSpinner;
+                this._errorLabel.label = '';
             } else if (this._instructionStack.visible_child !== this._errorLabel) {
                 if (this._query.transportation === RouteQuery.Transportation.TRANSIT) {
                     this._clearTransitOverview();
