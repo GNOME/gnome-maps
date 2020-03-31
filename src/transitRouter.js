@@ -66,7 +66,6 @@ var TransitRouter = class TransitRoute {
             this._currPluginInstance.fetchFirstResults();
         } else {
             this._plan.reset();
-            this._query.reset();
             this._plan.noProvider();
         }
     }
