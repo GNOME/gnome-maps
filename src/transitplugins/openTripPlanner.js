@@ -564,8 +564,7 @@ var OpenTripPlanner = class OpenTripPlanner {
             this._extendPrevious = false;
             this.plan.noMoreResults();
         } else {
-            this._reset();
-            this.plan.noRouteFound();
+            this.plan.noRouteFound();re
         }
     }
 
