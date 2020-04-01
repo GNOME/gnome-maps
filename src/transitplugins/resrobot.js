@@ -303,13 +303,6 @@ var Resrobot = class Resrobot {
         return walkingItinerary;
     }
 
-    _reset() {
-        if (this._query.latest)
-            this._query.latest.place = null;
-        else
-            this._plan.reset();
-    }
-
     /* Indicate that no routes where found, either shows the "No route found"
      * message, or in case of loading additional (later/earlier) results,
      * indicate no such where found, so that the sidebar can disable the
@@ -319,7 +312,6 @@ var Resrobot = class Resrobot {
         if (this._extendPrevious) {
             this._plan.noMoreResults();
         } else {
-            this._reset();
             this._plan.noRouteFound();
         }
     }
