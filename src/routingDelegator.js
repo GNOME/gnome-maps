@@ -65,6 +65,7 @@ var RoutingDelegator = class RoutingDelegator {
 
     _onQueryChanged() {
         if (this._query.isValid()) {
+            this._query.emit('run');
             if (this._transitRouting) {
                 this._transitRouter.fetchFirstResults();
             } else {
