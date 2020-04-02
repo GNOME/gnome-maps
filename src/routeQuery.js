@@ -75,7 +75,8 @@ var RouteQuery = GObject.registerClass({
     Signals: {
         'reset': { },
         'point-added': { param_types: [GObject.TYPE_OBJECT, GObject.TYPE_INT] },
-        'point-removed': { param_types: [GObject.TYPE_OBJECT, GObject.TYPE_INT] }
+        'point-removed': { param_types: [GObject.TYPE_OBJECT, GObject.TYPE_INT] },
+        'run': { }
     },
     Properties: {
         'points': GObject.ParamSpec.object('points',
