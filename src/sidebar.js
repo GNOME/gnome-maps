@@ -243,16 +243,13 @@ var Sidebar = GObject.registerClass({
             loadMoreRow.showNoMore();
         });
 
-        // reset error label when mode changes
-        this._query.connect('notify::transportation', () => {
-            this._errorLabel.label = '';
+        this._query.connect('run', () => {
+            this._instructionStack.visible_child = this._instructionSpinner;
         });
 
         this._query.connect('notify', () => {
-            if (this._query.isValid()) {
-                if (this._errorLabel.label === '')
-                    this._instructionStack.visible_child = this._instructionSpinner;
-            } else if (this._instructionStack.visible_child !== this._errorLabel) {
+            if (this._instructionStack.visible_child !== this._instructionSpinner &&
+                this._instructionStack.visible_child !== this._errorLabel) {
                 if (this._query.transportation === RouteQuery.Transportation.TRANSIT) {
                     this._clearTransitOverview();
                     this._showTransitOverview();
