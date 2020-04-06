@@ -28,6 +28,7 @@ const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 
 const HVT = imports.hvt;
+const Utils = imports.utils;
 
 // in org.gnome.desktop.interface
 const CLOCK_FORMAT_KEY = 'clock-format';
@@ -73,14 +74,18 @@ var RouteType = {
 /* extra time to add to the first itinerary leg when it's a walking leg */
 const WALK_SLACK = 120;
 
-function _printTimeWithTZOffset(time, offset) {
-    let utcTimeWithOffset = (time + offset) / 1000;
-    let date = GLib.DateTime.new_from_unix_utc(utcTimeWithOffset);
+const _timeFormat = new Intl.DateTimeFormat([], { hour:     '2-digit',
+                                                  minute:   '2-digit',
+                                                  hour12:   clockFormat === '12h',
+                                                  timeZone: 'UTC'});
 
-    if (clockFormat === '24h')
-        return date.format('%R');
-    else
-        return date.format('%r');
+function _printTimeWithTZOffset(time, offset) {
+    let utcTimeWithOffset = time + offset;
+    let date = new Date();
+
+    date.setTime(utcTimeWithOffset);
+
+    return _timeFormat.format(date);
 }
 
 var DEFAULT_ROUTE_COLOR = '4c4c4c';
@@ -337,13 +342,16 @@ class Itinerary extends GObject.Object {
         let mins = this.duration / 60;
 
         if (mins < 60) {
+            let minStr = Utils.formatLocaleInteger(mins);
+
             /* translators: this is an indication for a trip duration of
              * less than an hour, with only the minutes part, using plural forms
              * as appropriate
              */
-            return ngettext("%d minute", "%d minutes", mins).format(mins);
+            return ngettext("%s minute", "%s minutes", mins).format(minStr);
         } else {
             let hours = Math.floor(mins / 60);
+            let hourStr = Utils.formatLocaleInteger(hours);
 
             mins = mins % 60;
 
@@ -352,13 +360,15 @@ class Itinerary extends GObject.Object {
                  * where the duration is an exact number of hours (i.e. no
                  * minutes part), using plural forms as appropriate
                  */
-                return ngettext("%d hour", "%d hours", hours).format(hours);
+                return ngettext("%s hour", "%s hours", hours).format(hourStr);
             } else {
+                let minStr = Utils.formatLocaleIntegerMinimumTwoDigits(mins);
+
                 /* translators: this is an indication for a trip duration
                  * where the duration contains an hour and minute part, it's
                  * pluralized on the hours part
                  */
-                return ngettext("%d:%02d hour", "%d:%02d hours", hours).format(hours, mins);
+                return ngettext("%s:%s hour", "%s:%s hours", hours).format(hourStr, minStr);
             }
         }
     }
