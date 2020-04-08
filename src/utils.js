@@ -20,6 +20,9 @@
  *         Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
+const _ = imports.gettext.gettext;
+const ngettext = imports.gettext.ngettext;
+
 const GLib = imports.gi.GLib;
 const Gdk = imports.gi.Gdk;
 const GdkPixbuf = imports.gi.GdkPixbuf;
@@ -38,6 +41,11 @@ const IMPERIAL_LOCALES = ['unm_US', 'es_US', 'es_PR', 'en_US', 'yi_US'];
 
 // Matches all unicode stand-alone accent characters
 const ACCENTS_REGEX = /[\u0300-\u036F]/g;
+
+const _integerFormat = new Intl.NumberFormat([], { maximumFractionDigits: 0 });
+const _integerTwoDigitFormat =
+    new Intl.NumberFormat([], { minimumIntegerDigits: 2,
+                                maximumFractionDigits: 0 });
 
 let debugInit = false;
 let measurementSystem = null;
@@ -278,6 +286,23 @@ function osmTypeToString(osmType) {
     }
 }
 
+/**
+ * Return a formatted integer number with no
+ * fraction, using locale-specific numerals
+ */
+function formatLocaleInteger(n) {
+    return _integerFormat.format(n);
+}
+
+/**
+ * Return a formatted integer number with no
+ * fraction, using locale-specific numerals using at least two digits
+ * with possible leading 0, suitable for time rendering.
+ */
+function formatLocaleIntegerMinimumTwoDigits(n) {
+    return _integerTwoDigitFormat.format(n);
+}
+
 function prettyTime(time) {
     let seconds = Math.floor(time / 1000);
     let minutes = Math.floor(seconds / 60);
@@ -285,14 +310,35 @@ function prettyTime(time) {
     let hours = Math.floor(minutes / 60);
     minutes = minutes % 60;
 
-    let labelledTime = "";
-    if (hours > 0)
-        labelledTime += _("%f h").format(hours)+' ';
-    if (minutes > 0)
-        labelledTime += _("%f min").format(minutes);
-    if (hours === 0 && minutes === 0)
-        labelledTime = _("%f s").format(seconds);
-    return labelledTime;
+    let secondsStr = formatLocaleInteger(seconds);
+    let minutesStr = formatLocaleInteger(minutes);
+    let hoursStr = formatLocaleInteger(hours);
+
+    if (hours > 0 && minutes === 0) {
+        /* Translators: this is a duration with only hours, using
+         * an abbreviation for hours, corresponding to 'h' in English
+         */
+        return _("%s h").format(hoursStr);
+    } else if (hours > 0) {
+        /* Translators: this is a duration with hours and minutes parts
+         * using abbreviations for hours and minutes, correspoding to 'h'
+         * and 'min' in English. The minutes has appropriate plural variations
+         */
+        return ngettext("%s h %s min", "%s h %s mins",
+                        minutes).format(hoursStr, minutesStr);
+    } else if (minues > 0) {
+        /* Translators: this is a duration with minutes part
+         * using abbreviation for minutes, corresponding to 'min' in English
+         * with appropriate plural variations
+         */
+        return nggettext("%s min", "%s mins", minutes).format(minutesStr);
+    } else {
+        /* Translators: this is a duration of less than one minute
+         * with seconds using an abbreviation for seconds, corresponding to
+         * 's' in English with appropriate plural forms
+         */
+        return ngettext("%s s", "%s s", seconds).format(secondsStr);
+    }
 }
 
 function prettyDistance(distance, noRound) {
