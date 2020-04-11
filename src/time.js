@@ -19,6 +19,63 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
+// allow using :, ., and the ratio symbol to separate hours:mins
+const _DELIMITERS = [':', '.', '\u2236'];
+
+// digits variants
+const _DIGIT_RANGE_BASES = [
+    // Arabic
+    0x0660,
+    // Persian
+    0x06f0,
+    // Nko
+    0x07c0,
+    // Devanagari
+    0x0966,
+    // Bengali
+    0x09e6,
+    // Gurmukhi
+    0x0a66,
+    // Gujarati
+    0x0ae6,
+    // Oriya
+    0x0b66,
+    // Tamil
+    0x0be6,
+    // Telugu
+    0x0c66,
+    // Kannada
+    0x0c80,
+    // Malayalam
+    0x0d66,
+    // Sinhala
+    0x0de6,
+    // Thai
+    0x0e50,
+    // Lao
+    0x0ed0,
+    // Tibetan
+    0x0f20,
+    // Myanmar
+    0x1090,
+    // Khmer
+    0x17e0,
+    // Mongolian
+    0x1810,
+    // Limbu
+    0x1946,
+    // Tai lue
+    0x19d0,
+    // Tai Tham
+    0x1a90,
+    // Balinese
+    0x1b50,
+    // Sundanese
+    0x1bb0,
+    // Lepcha
+    0x1c40
+];
+
 /* parse a time from a fixed set of free-formats into a string representation:
  * hour:min
  *
@@ -45,30 +102,42 @@ function parseTimeString(timeString) {
         pmSet = true;
     }
 
-    /* allow using :, ., and the ratio symbol to separate hours:mins */
-    if (timeString.charAt(2) === ':' || timeString.charAt(1) === ':')
-        timeString = timeString.replace(':', '');
-    else if (timeString.charAt(2) === '.' || timeString.charAt(1) === '.')
-        timeString = timeString.replace('.', '');
-    else if (timeString.charAt(2) === '\u2236' ||
-             timeString.charAt(1) === '\u2236')
-        timeString = timeString.replace('\u2236', '');
+    /* remove delimiting characters if they occur at position 3 (hh:mm)
+     * or position 2 (h:mm)
+     */
+    if (_DELIMITERS.includes(timeString.charAt(2)))
+        timeString = timeString.substring(0, 2) + timeString.substring(3);
+    else if (_DELIMITERS.includes(timeString.charAt(1)))
+        timeString = timeString.substring(0, 1) + timeString.substring(2);
 
-    if (timeString.length === 4) {
+    // translate localized digits to corresponding Latin digits
+    let translatedTimeString = '';
+
+    for (let i = 0; i < timeString.length; i++) {
+        let c = timeString.charCodeAt(i);
+
+        _DIGIT_RANGE_BASES.forEach((base) => {
+            if (c >= base && c < base + 10)
+                c = (c - base) + 0x30;
+        });
+        translatedTimeString += String.fromCharCode(c);
+    }
+
+    if (translatedTimeString.length === 4) {
         /* expect a full time specification (hours, minutes) */
-        hours = timeString.substring(0, 2);
-        mins = timeString.substring(2, 4);
+        hours = translatedTimeString.substring(0, 2);
+        mins = translatedTimeString.substring(2, 4);
     } else if (timeString.length === 3) {
         /* interpret a 3 digit string as h:mm */
-        hours = '0' + timeString.substring(0, 1);
-        mins = timeString.substring(1, 3);
-    } else if (timeString.length === 2) {
+        hours = '0' + translatedTimeString.substring(0, 1);
+        mins = translatedTimeString.substring(1, 3);
+    } else if (translatedTimeString.length === 2) {
         /* expect just the hour part */
-        hours = timeString.substring(0, 2);
+        hours = translatedTimeString.substring(0, 2);
         mins = '00';
-    } else if (timeString.length === 1) {
+    } else if (translatedTimeString.length === 1) {
         /* expect just the hour part, one digit */
-        hours = '0' + timeString;
+        hours = '0' + translatedTimeString;
         mins = '00';
     } else {
         /* this makes no sense, just bail out */
