@@ -36,6 +36,10 @@ const CLOCK_FORMAT_KEY = 'clock-format';
 let _desktopSettings = new Gio.Settings({ schema_id: 'org.gnome.desktop.interface' });
 let clockFormat = _desktopSettings.get_string(CLOCK_FORMAT_KEY);
 
+const _timeFormat = new Intl.DateTimeFormat([], { hour:     '2-digit',
+                                                  minute:   '2-digit',
+                                                  hour12:   clockFormat === '12h' });
+
 var TransitOptionsPanel = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/transit-options-panel.ui',
     InternalChildren: ['transitTimeOptionsComboBox',
@@ -99,7 +103,7 @@ var TransitOptionsPanel = GObject.registerClass({
             this._transitDateButton.visible = true;
 
             if (!this._timeSelected)
-                this._updateTransitTimeEntry(GLib.DateTime.new_now_local());
+                this._transitTimeEntry.text = _timeFormat.format(new Date());
 
             if (!this._dateSelected)
                 this._updateTransitDateButton(GLib.DateTime.new_now_local());
@@ -110,13 +114,6 @@ var TransitOptionsPanel = GObject.registerClass({
                 this._query.arriveBy = false;
             }
         }
-    }
-
-    _updateTransitTimeEntry(time) {
-        if (clockFormat === '24h')
-            this._transitTimeEntry.text = time.format('%R');
-        else
-            this._transitTimeEntry.text = time.format('%r');
     }
 
     _onTransitTimeEntryActivated() {
