@@ -93,6 +93,12 @@ var Application = GObject.registerClass({
                              GLib.OptionArg.FILENAME,
                              _("A path to a local tiles directory structure"),
                              null);
+        this.add_main_option('local-tile-size',
+                             0,
+                             GLib.OptionFlags.NONE,
+                             GLib.OptionArg.INT,
+                             _("Tile size for local tiles directory"),
+                             null);
 
         this.add_main_option('version', 'v'.charCodeAt(0), GLib.OptionFlags.NONE, GLib.OptionArg.NONE,
                              _("Show the version of the program"), null);
@@ -109,6 +115,10 @@ var Application = GObject.registerClass({
                 let variant = options.lookup_value('local', null);
                 this.local_tile_path = variant.deep_unpack();
                 normalStartup = false;
+                if (options.contains('local-tile-size')) {
+                    variant = options.lookup_value('local-tile-size', null);
+                    this.local_tile_size = variant.deep_unpack();
+                }
             } else if (options.contains('version')) {
                 print(pkg.version);
                 /* quit the invoked process after printing the version number
