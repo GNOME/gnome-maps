@@ -339,7 +339,7 @@ var MapView = GObject.registerClass({
             let source = new Maps.FileTileSource({
                 path: Utils.getBufferText(Application.application.local_tile_path),
                 renderer: renderer,
-                tile_size: 512
+                tile_size: Application.application.local_tile_size || 512
             });
             try {
                 source.prepare();
