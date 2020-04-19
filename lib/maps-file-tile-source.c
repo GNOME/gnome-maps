@@ -495,7 +495,7 @@ maps_file_tile_source_prepare (MapsFileTileSource *tile_source,
                                                     tile_size);
   tile_source->priv->world->right = champlain_map_source_get_longitude (source,
                                                      tile_source->priv->min_zoom,
-                                                     tile_source->priv->max_x *
+                                                     (tile_source->priv->max_x + 1) *
                                                      tile_size);
   tile_source->priv->world->top = champlain_map_source_get_latitude (source,
                                                      tile_source->priv->min_zoom,
@@ -503,7 +503,7 @@ maps_file_tile_source_prepare (MapsFileTileSource *tile_source,
                                                      tile_size);
   tile_source->priv->world->bottom = champlain_map_source_get_latitude (source,
                                                   tile_source->priv->min_zoom,
-                                                  tile_source->priv->max_y *
+                                                  (tile_source->priv->max_y + 1) *
                                                   tile_size);
  out:
   return ret;
