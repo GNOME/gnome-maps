@@ -326,12 +326,12 @@ function prettyTime(time) {
          */
         return ngettext("%s h %s min", "%s h %s mins",
                         minutes).format(hoursStr, minutesStr);
-    } else if (minues > 0) {
+    } else if (minutes > 0) {
         /* Translators: this is a duration with minutes part
          * using abbreviation for minutes, corresponding to 'min' in English
          * with appropriate plural variations
          */
-        return nggettext("%s min", "%s mins", minutes).format(minutesStr);
+        return ngettext("%s min", "%s mins", minutes).format(minutesStr);
     } else {
         /* Translators: this is a duration of less than one minute
          * with seconds using an abbreviation for seconds, corresponding to
