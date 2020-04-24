@@ -37,7 +37,7 @@ const DECIMAL_COORDINATES_REGEX = (
 
 // Matches coordinates string in 'Degrees, Minutes, Seconds' format
 const DMS_COORDINATES_REGEX = new RegExp(
-    /^\s*(\d+)°?\s*(\d+)['′]?\s*(\d+(?:.\d+)?)["″]?\s*(N|S)\s*,/.source
+    /^\s*(\d+)°?\s*(\d+)['′]?\s*(\d+(?:.\d+)?)["″]?\s*(N|S)\s*,?/.source
     + /\s*(\d+)°?\s*(\d+)['′]?\s*(\d+(?:.\d+)?)["″]?\s*(W|E)\s*$/.source,
     "i"
 );
