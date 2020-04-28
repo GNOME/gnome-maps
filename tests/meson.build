@@ -4,7 +4,7 @@ script_conf.set('PACKAGE_VERSION', version)
 script_conf.set('libdir', libdir)
 script_conf.set('prefix', prefix)
 
-tests = []
+tests = ['utilsTest']
 
 foreach test : tests
   script_conf.set('name', test)
