@@ -164,7 +164,7 @@ function activateAction(appId, action, parameter, timestamp) {
 
 function dashedToCamelCase(name) {
     return name.replace(/(-.)/g, function(x) {
-        return x[1].toUpperCase();
+        return x;
     });
 }
 
