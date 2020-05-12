@@ -342,9 +342,9 @@ function prettyTime(time) {
 }
 
 function prettyDistance(distance, noRound) {
-    distance = Math.round(distance);
-
-    if (getMeasurementSystem() === METRIC_SYSTEM){
+    if (getMeasurementSystem() === METRIC_SYSTEM) {
+        // round to whole meters
+        distance = Math.round(distance);
         if (distance >= 1000 && !noRound) {
             distance = Math.round(distance / 1000 * 10) / 10;
             /* Translators: This is a distance measured in kilometers */
