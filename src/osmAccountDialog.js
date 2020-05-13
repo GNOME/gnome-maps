@@ -39,7 +39,7 @@ var OSMAccountDialog = GObject.registerClass({
                        'signInSpinner',
                        'signUpLinkButton',
                        'resetPasswordLabel',
-                       'verifyView',
+                       'verifyGrid',
                        'verificationEntry',
                        'verifyButton',
                        'verificationFailedLabel',
@@ -78,6 +78,18 @@ var OSMAccountDialog = GObject.registerClass({
             this._signedInUserLabel.label = Application.osmEdit.username;
             this._stack.visible_child_name = 'logged-in';
         }
+
+        /* initilize verification web view, we do it programmatically rather
+         * declare it in the .ui file to be able to enable WebKit sandboxing
+         */
+        let webContext = WebKit2.WebContext.get_default();
+
+        webContext.set_sandbox_enabled(true);
+        this._verifyView = WebKit2.WebView.new_with_context(webContext);
+        this._verifyView.visible = true;
+        this._verifyView.halign = Gtk.Align.FILL;
+        this._verifyView.height_request = 150;
+        this._verifyGrid.attach(this._verifyView, 0, 0, 1, 1);
     }
 
     _onCredentialsChanged() {
