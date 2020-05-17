@@ -223,7 +223,7 @@ var OSMConnection = class OSMConnection {
                                                OAUTH_ENDPOINT_URL, false);
         this._oauthProxy.request_token_async('request_token', 'oob', (p, error, w, u) => {
             this._onRequestOAuthToken(error, callback);
-        }, this._oauthProxy, callback);
+        }, this._oauthProxy);
     }
 
     _onRequestOAuthToken(error, callback) {
@@ -339,7 +339,7 @@ var OSMConnection = class OSMConnection {
     requestOAuthAccessToken(code, callback) {
         this._oauthProxy.access_token_async('access_token', code, (p, error, w, data) => {
             this._onAccessOAuthToken(error, callback);
-        }, this._oauthProxy, callback);
+        }, this._oauthProxy);
     }
 
     _onAccessOAuthToken(error, callback) {
