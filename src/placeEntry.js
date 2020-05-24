@@ -65,12 +65,14 @@ var PlaceEntry = GObject.registerClass({
             return;
 
         if (p) {
-            if (p.name) {
+            if (p.name)
                 this._placeText = p.name;
-            } else
-                this._placeText = p.location.latitude + ', ' + p.location.longitude;
-        } else
+            else
+                this._placeText = '%.5f, %.5f'.format(p.location.latitude,
+                                                      p.location.longitude);
+        } else {
             this._placeText = '';
+        }
 
         this.text = this._placeText;
 
