@@ -36,7 +36,7 @@ class AccuracyCirleMarker extends Champlain.Point {
         params.color = new Clutter.Color({ red: 0,
                                            blue: 255,
                                            green: 0,
-                                           alpha: 50 });
+                                           alpha: 25 });
         params.latitude = this.place.location.latitude;
         params.longitude = this.place.location.longitude;
         params.reactive = false;
