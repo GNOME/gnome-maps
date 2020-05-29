@@ -36,7 +36,7 @@ class AccuracyCirleMarker extends Champlain.Point {
         params.color = new Clutter.Color({ red: 0,
                                            blue: 255,
                                            green: 0,
-                                           alpha: 50 });
+                                           alpha: 25 });
         params.latitude = this.place.location.latitude;
         params.longitude = this.place.location.longitude;
         params.reactive = false;
@@ -55,7 +55,7 @@ class AccuracyCirleMarker extends Champlain.Point {
                                                          this.longitude);
         let size = this.place.location.accuracy * 2 / metersPerPixel;
 
-        if (size > view.width && size > view.height)
+        if (size > view.width || size > view.height)
             this.hide();
         else {
             this.size = size;
@@ -73,9 +73,13 @@ class UserLocationMarker extends MapMarker.MapMarker {
         this._accuracyMarker = new AccuracyCircleMarker({ place: this.place });
         this.connect('notify::view-zoom-level',
                      () => this._accuracyMarker.refreshGeometry(this._view));
-         this._accuracyMarker.refreshGeometry(this._view);
+        this._view.connect('notify::width',
+                     () => this._accuracyMarker.refreshGeometry(this._view));
+        this._view.connect('notify::height',
+                     () => this._accuracyMarker.refreshGeometry(this._view));
+        this._accuracyMarker.refreshGeometry(this._view);
 
-        this.place.connect('notify::location', this._updateLocation.bind(this));
+        this.place.connect('notify::location', () => this._updateLocation());
         this._updateLocation();
 
         this.connect('notify::visible', this._updateAccuracyCircle.bind(this));
