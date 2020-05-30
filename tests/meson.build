@@ -18,7 +18,9 @@ endforeach
 
 foreach test : tests
   test(test, find_program('gjs'),
-       args: ['-I', '../src/', '-I', '../tests/', 'tests/@0@'.format(test)],
+       args: ['-I', meson.source_root() + '/src/', '-I',
+              meson.source_root() + '/tests/',
+              'tests/@0@'.format(test)],
        env:  ['LANG=C', 'LC_ALL=C']
   )
 endforeach
