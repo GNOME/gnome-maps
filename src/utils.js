@@ -33,6 +33,8 @@ const GWeather = imports.gi.GWeather;
 const Soup = imports.gi.Soup;
 const ByteArray = imports.byteArray;
 
+const Application = imports.application;
+
 var METRIC_SYSTEM = 1;
 var IMPERIAL_SYSTEM = 2;
 
@@ -110,23 +112,34 @@ function setAccelsForActionMap(actionMap, actionName, accels) {
     app.set_accels_for_action(prefix + '.' + actionName, accels);
 }
 
-function createAction(name, { state, paramType, onActivate, onChangeState }) {
-    let entry = { name: name };
+function createAction(name, { state, paramType, onActivate, onChangeState,
+                              setting }) {
 
-    if(Array.isArray(state)) {
-        let [type, value] = state;
-        entry.state = new GLib.Variant.new(type, value);
+
+    let action;
+
+    if (setting) {
+        action = Application.settings.create_action(setting);
+
+        if (onChangeState)
+            action.connect('notify::state', onChangeState);
+    } else {
+        let entry = { name: name };
+
+        if (Array.isArray(state)) {
+            let [type, value] = state;
+            entry.state = new GLib.Variant.new(type, value);
+        }
+
+        if (paramType !== undefined)
+            entry.parameter_type = GLib.VariantType.new(paramType);
+            action = new Gio.SimpleAction(entry);
+
+        if (onActivate)
+            action.connect('activate', onActivate);
+        if (onChangeState)
+            action.connect('change-state', onChangeState);
     }
-
-    if(paramType !== undefined)
-        entry.parameter_type = GLib.VariantType.new(paramType);
-
-    let action = new Gio.SimpleAction(entry);
-
-    if(onActivate)
-        action.connect('activate', onActivate);
-    if(onChangeState)
-        action.connect('change-state', onChangeState);
 
     return action;
 }
