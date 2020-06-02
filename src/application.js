@@ -225,6 +225,29 @@ var Application = GObject.registerClass({
         }
     }
 
+    _onNightModeChange(action) {
+        let state = action.get_state();
+        Utils.debug('state: ' + state.get_boolean());
+        settings.set_value('night-mode', GLib.Variant.new('b', !state.get_boolean()));
+    }
+
+    _nightModeCreateHook(action) {
+        settings.connect('changed::night-mode', () => {
+            let state = settings.get_value('night-mode');
+            Utils.debug('settings state: ' + state.get_boolean() + ', ' +
+                        'action state: ' + action.state.get_boolean());
+            if (state.get_boolean() != action.state.get_boolean())
+                action.change_state(state);
+
+            let gtkSettings = Gtk.Settings.get_default();
+            gtkSettings.gtk_application_prefer_dark_theme = state.get_boolean();
+        });
+
+        let state = settings.get_value('night-mode');
+        let gtkSettings = Gtk.Settings.get_default();
+        gtkSettings.gtk_application_prefer_dark_theme = state.get_boolean();
+    }
+
     vfunc_startup() {
         super.vfunc_startup();
 
@@ -242,6 +265,12 @@ var Application = GObject.registerClass({
             },
             'osm-account-setup': {
                 onActivate: this._onOsmAccountSetupActivate.bind(this)
+            },
+            'night-mode': {
+                paramType:     'b',
+                onChangeState: this._onNightModeChange.bind(this),
+                createHook:    this._nightModeCreateHook.bind(this),
+                state:         ['b', settings.get_value('night-mode')]
             },
             'quit': {
                 onActivate: () => this.quit(),
