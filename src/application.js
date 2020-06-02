@@ -225,6 +225,12 @@ var Application = GObject.registerClass({
         }
     }
 
+    _onNightModeChange(action) {
+        let state = action.get_state();
+        let gtkSettings = Gtk.Settings.get_default();
+        gtkSettings.gtk_application_prefer_dark_theme = state.get_boolean();
+    }
+
     vfunc_startup() {
         super.vfunc_startup();
 
@@ -243,11 +249,22 @@ var Application = GObject.registerClass({
             'osm-account-setup': {
                 onActivate: this._onOsmAccountSetupActivate.bind(this)
             },
+            'night-mode': {
+                paramType:     'b',
+                onChangeState: this._onNightModeChange.bind(this),
+                setting:       'night-mode'
+            },
             'quit': {
                 onActivate: () => this.quit(),
                 accels: ['<Primary>Q']
             }
         });
+
+        // set dark theme when night-mode is enabled
+        let gtkSettings = Gtk.Settings.get_default();
+
+        gtkSettings.gtk_application_prefer_dark_theme =
+            settings.get('night-mode');
 
         Gtk.IconTheme.get_default().append_search_path(GLib.build_filenamev([pkg.pkgdatadir,
                                                                              'icons']));
