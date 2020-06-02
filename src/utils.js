@@ -84,10 +84,10 @@ function loadStyleSheet(file) {
                                              Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 }
 
-function addActions(actionMap, entries) {
+function addActions(actionMap, entries, settings = null) {
     for(let name in entries) {
         let entry = entries[name];
-        let action = createAction(name, entry);
+        let action = createAction(name, entry, settings);
 
         actionMap.add_action(action);
 
@@ -110,23 +110,34 @@ function setAccelsForActionMap(actionMap, actionName, accels) {
     app.set_accels_for_action(prefix + '.' + actionName, accels);
 }
 
-function createAction(name, { state, paramType, onActivate, onChangeState }) {
-    let entry = { name: name };
+function createAction(name,
+                      { state, paramType, onActivate, onChangeState, setting },
+                      settings = null) {
+    let action;
 
-    if(Array.isArray(state)) {
-        let [type, value] = state;
-        entry.state = new GLib.Variant.new(type, value);
+    if (setting && settings) {
+        action = settings.create_action(setting);
+
+        if (onChangeState)
+            action.connect('notify::state', onChangeState);
+    } else {
+        let entry = { name: name };
+
+        if (Array.isArray(state)) {
+            let [type, value] = state;
+            entry.state = new GLib.Variant.new(type, value);
+        }
+
+        if (paramType !== undefined)
+            entry.parameter_type = GLib.VariantType.new(paramType);
+
+        action = new Gio.SimpleAction(entry);
+
+        if (onActivate)
+            action.connect('activate', onActivate);
+        if (onChangeState)
+            action.connect('change-state', onChangeState);
     }
-
-    if(paramType !== undefined)
-        entry.parameter_type = GLib.VariantType.new(paramType);
-
-    let action = new Gio.SimpleAction(entry);
-
-    if(onActivate)
-        action.connect('activate', onActivate);
-    if(onChangeState)
-        action.connect('change-state', onChangeState);
 
     return action;
 }
