@@ -110,22 +110,30 @@ function setAccelsForActionMap(actionMap, actionName, accels) {
     app.set_accels_for_action(prefix + '.' + actionName, accels);
 }
 
-function createAction(name, { state, paramType, onActivate, onChangeState }) {
+function createAction(name, { state, paramType, onActivate, onChangeState,
+                              createHook }) {
     let entry = { name: name };
 
-    if(Array.isArray(state)) {
+    if (Array.isArray(state)) {
         let [type, value] = state;
         entry.state = new GLib.Variant.new(type, value);
     }
 
-    if(paramType !== undefined)
+    if (paramType !== undefined)
         entry.parameter_type = GLib.VariantType.new(paramType);
 
-    let action = new Gio.SimpleAction(entry);
+    let action;
 
-    if(onActivate)
+    if (entry.state)
+        action = Gio.SimpleAction.new_stateful(name, null, entry.state);
+    else
+        action = new Gio.SimpleAction(entry);
+
+    if (createHook)
+        createHook(action);
+    if (onActivate)
         action.connect('activate', onActivate);
-    if(onChangeState)
+    if (onChangeState)
         action.connect('change-state', onChangeState);
 
     return action;
