@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2020-04-23 20:59+0000\n"
-"PO-Revision-Date: 2020-04-28 12:32+0200\n"
+"POT-Creation-Date: 2020-05-31 14:23+0000\n"
+"PO-Revision-Date: 2020-06-03 11:45+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
@@ -372,42 +372,47 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Salir"
 
-#: data/ui/help-overlay.ui:55
+#: data/ui/help-overlay.ui:53
+msgctxt "shortcut window"
+msgid "Open main menu"
+msgstr "Abrir el menú principal"
+
+#: data/ui/help-overlay.ui:62
 msgctxt "shortcut window"
 msgid "Map View"
 msgstr "Vista de mapa"
 
-#: data/ui/help-overlay.ui:59
+#: data/ui/help-overlay.ui:66
 msgctxt "shortcut window"
 msgid "Zoom in"
 msgstr "Ampliar"
 
-#: data/ui/help-overlay.ui:66
+#: data/ui/help-overlay.ui:73
 msgctxt "shortcut window"
 msgid "Zoom out"
 msgstr "Reducir"
 
-#: data/ui/help-overlay.ui:73
+#: data/ui/help-overlay.ui:80
 msgctxt "shortcut window"
 msgid "Toggle scale"
 msgstr "Conmutar escalado"
 
-#: data/ui/help-overlay.ui:80
+#: data/ui/help-overlay.ui:87
 msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Ir a la ubicación actual"
 
-#: data/ui/help-overlay.ui:87
+#: data/ui/help-overlay.ui:94
 msgctxt "shortcut window"
 msgid "Switch to street view"
 msgstr "Cambiar a vista de calle"
 
-#: data/ui/help-overlay.ui:94
+#: data/ui/help-overlay.ui:101
 msgctxt "shortcut window"
 msgid "Switch to aerial view"
 msgstr "Cambiar a vista aérea"
 
-#: data/ui/help-overlay.ui:101
+#: data/ui/help-overlay.ui:108
 msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "Abrir capa de formas"
@@ -446,11 +451,15 @@ msgstr "_Atajos del teclado"
 msgid "About Maps"
 msgstr "Acerca de Mapas"
 
-#: data/ui/main-window.ui:106
+#: data/ui/main-window.ui:48
+msgid "Primary menu"
+msgstr "Menú primario"
+
+#: data/ui/main-window.ui:110
 msgid "Maps is offline!"
 msgstr "Mapas está desconectado"
 
-#: data/ui/main-window.ui:116
+#: data/ui/main-window.ui:118
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -458,7 +467,7 @@ msgstr ""
 "Mapas necesita una conexión a Internet activa para funcionar correctamente, "
 "pero no se ha encontrado ninguna."
 
-#: data/ui/main-window.ui:125
+#: data/ui/main-window.ui:126
 msgid "Check your connection and proxy settings."
 msgstr "Compruebe la configuración de su conexión y de su proxy."
 
@@ -530,23 +539,23 @@ msgstr ""
 msgid "The verification code didn’t match, please try again."
 msgstr "El código de verificación no coincide, inténtelo de nuevo."
 
-#: data/ui/osm-account-dialog.ui:209
+#: data/ui/osm-account-dialog.ui:198
 msgid "Enter verification code shown above"
 msgstr "Introduzca el código de verificación mostrado"
 
-#: data/ui/osm-account-dialog.ui:232
+#: data/ui/osm-account-dialog.ui:221
 msgid "Verify"
 msgstr "Verificar"
 
-#: data/ui/osm-account-dialog.ui:262
+#: data/ui/osm-account-dialog.ui:251
 msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
 msgstr "<span weight=\"bold\" size=\"x-large\">Sesión iniciada</span>"
 
-#: data/ui/osm-account-dialog.ui:275
+#: data/ui/osm-account-dialog.ui:264
 msgid "Your OpenStreetMap account is active."
 msgstr "Su cuenta de OpenStreetMap está activada."
 
-#: data/ui/osm-account-dialog.ui:309
+#: data/ui/osm-account-dialog.ui:298
 msgid "Sign Out"
 msgstr "Cerrar sesión"
 
@@ -769,7 +778,6 @@ msgid "A path to a local tiles directory structure"
 msgstr "Una ruta a la estructura de carpetas locales de cuadrículas"
 
 #: src/application.js:100
-#| msgid "A path to a local tiles directory structure"
 msgid "Tile size for local tiles directory"
 msgstr "Tamaño de cuadrícula para carpeta de cuadrículas locales"
 
@@ -1273,7 +1281,7 @@ msgstr "Acceso para sillas de ruedas:"
 msgid "Phone:"
 msgstr "Teléfono:"
 
-#: src/placeEntry.js:210
+#: src/placeEntry.js:212
 msgid "Failed to parse Geo URI"
 msgstr "Falló al analizar el URI de Geo"
 
@@ -1489,8 +1497,6 @@ msgstr "%s – %s"
 #.
 #: src/transitPlan.js:351
 #, javascript-format
-#| msgid "%d minute"
-#| msgid_plural "%d minutes"
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] "%s minuto"
@@ -1502,8 +1508,6 @@ msgstr[1] "%s minutos"
 #.
 #: src/transitPlan.js:363
 #, javascript-format
-#| msgid "%d hour"
-#| msgid_plural "%d hours"
 msgid "%s hour"
 msgid_plural "%s hours"
 msgstr[0] "%s hora"
@@ -1515,8 +1519,6 @@ msgstr[1] "%s horas"
 #.
 #: src/transitPlan.js:371
 #, javascript-format
-#| msgid "%d:%02d hour"
-#| msgid_plural "%d:%02d hours"
 msgid "%s:%s hour"
 msgid_plural "%s:%s hours"
 msgstr[0] "%s:%s hora"
@@ -1711,8 +1713,6 @@ msgstr "%s h"
 #.
 #: src/utils.js:327
 #, javascript-format
-#| msgctxt "time range list"
-#| msgid "%s %s %s"
 msgid "%s h %s min"
 msgid_plural "%s h %s mins"
 msgstr[0] "%s h %s min"
@@ -1724,7 +1724,6 @@ msgstr[1] "%s h %s min"
 #.
 #: src/utils.js:334
 #, javascript-format
-#| msgid "%s mi"
 msgid "%s min"
 msgid_plural "%s mins"
 msgstr[0] "%s min"
