@@ -132,6 +132,10 @@ function createStreetSource() {
     return _createCachedSource(Service.getService().tiles.street);
 }
 
+function createStreetDarkSource() {
+    return _createCachedSource(Service.getService().tiles.streetDark)
+}
+
 function createPrintSource() {
     return _createCachedSource(Service.getService().tiles.print);
 }
