@@ -42,6 +42,7 @@ const MapWalker = imports.mapWalker;
 const Place = imports.place;
 const PlaceMarker = imports.placeMarker;
 const RouteQuery = imports.routeQuery;
+const Service = imports.service;
 const ShapeLayer = imports.shapeLayer;
 const StoredRoute = imports.storedRoute;
 const TransitArrivalMarker = imports.transitArrivalMarker;
@@ -198,8 +199,23 @@ var MapView = GObject.registerClass({
             }
         });
 
+        // if dark tiles is available, setup handler to switch style
+        if (Service.getService().tiles.streetDark) {
+            Application.settings.connect('changed::night-mode',
+                                         this._onNightModeChanged.bind(this));
+        }
+
         this._initScale(view);
         return view;
+    }
+
+    _onNightModeChanged() {
+        if (this._mapType === MapType.STREET) {
+            if (Application.settings.get('night-mode'))
+                this.view.map_source = MapSource.createStreetDarkSource();
+            else
+                this.view.map_source = MapSource.createStreetSource();
+        }
     }
 
     /* create and store a route layer, pass true to get a dashed line */
@@ -323,11 +339,16 @@ var MapView = GObject.registerClass({
         this._mapType = mapType;
 
         if (mapType !== MapType.LOCAL) {
-            if (mapType === MapType.AERIAL)
+            if (mapType === MapType.AERIAL) {
                 this.view.map_source = MapSource.createAerialSource();
-            else
-                this.view.map_source = MapSource.createStreetSource();
-
+            } else {
+                if (Service.getService().tiles.streetDark &&
+                    Application.settings.get('night-mode')) {
+                    this.view.map_source = MapSource.createStreetDarkSource();
+                } else {
+                    this.view.map_source = MapSource.createStreetSource();
+                }
+            }
             if (!this._attribution) {
                 this._attribution = new MapSource.AttributionLogo(this.view);
                 this.view.add_child(this._attribution);
