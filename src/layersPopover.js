@@ -22,6 +22,7 @@ const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Gdk = imports.gi.Gdk;
 
+const Application = imports.application;
 const MapSource = imports.mapSource;
 const MapView = imports.mapView;
 const Service = imports.service;
@@ -98,6 +99,11 @@ var LayersPopover = GObject.registerClass({
                 widget: this._streetLayerImage,
                 lastLocation: { x: -1, y: -1, z: -1 }
             },
+            streetDark: {
+                source: MapSource.createStreetDarkSource(),
+                widget: this._streetLayerImage,
+                lastLocation: { x: -1, y: -1, z: -1 }
+            },
             aerial: {
                 source: MapSource.createAerialSource(),
                 widget: this._aerialLayerImage,
@@ -125,6 +131,9 @@ var LayersPopover = GObject.registerClass({
                                        this._setLayerPreviews.bind(this));
             this._mapView.view.connect("notify::longitude",
                                        this._setLayerPreviews.bind(this));
+            Application.settings.connect("changed::night-mode",
+                                         this._onNightModeChanged.bind(this));
+
         } else {
             this._streetLayerButton.visible = false;
             this._aerialLayerButton.visible = false;
@@ -136,12 +145,26 @@ var LayersPopover = GObject.registerClass({
         });
     }
 
-    _setLayerPreviews() {
-        this._setLayerPreviewImage("street");
-        this._setLayerPreviewImage("aerial");
+    _onNightModeChanged() {
+        if (Service.getService().tiles.streetDark &&
+            Application.settings.get('night-mode')) {
+            this._setLayerPreviewImage('streetDark', true);
+        } else {
+            this._setLayerPreviewImage('street', true);
+        }
     }
 
-    _setLayerPreviewImage(layer) {
+    _setLayerPreviews() {
+        if (Service.getService().tiles.streetDark &&
+            Application.settings.get('night-mode')) {
+            this._setLayerPreviewImage('streetDark');
+        } else {
+            this._setLayerPreviewImage('street');
+        }
+        this._setLayerPreviewImage('aerial');
+    }
+
+    _setLayerPreviewImage(layer, forceUpdate = false) {
         let previewInfo = this._layerPreviews[layer];
         let source = previewInfo.source;
         let widget = previewInfo.widget;
@@ -157,7 +180,7 @@ var LayersPopover = GObject.registerClass({
         // then don't bother changing anything
         if (previewInfo.lastLocation.x == x &&
             previewInfo.lastLocation.y == y &&
-            previewInfo.lastLocation.z == z) {
+            previewInfo.lastLocation.z == z && !forceUpdate) {
 
             return;
         }
