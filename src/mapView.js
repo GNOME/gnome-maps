@@ -205,8 +205,45 @@ var MapView = GObject.registerClass({
                                          this._onNightModeChanged.bind(this));
         }
 
+        this._gtkSettings = Gtk.Settings.get_default();
+        this._gtkSettings.connect('notify::gtk-application-prefer-dark-theme',
+                            this._onPreferDarkThemeChanged.bind(this));
+        // set dark background if we start up in dark theme
+        if (this._gtkSettings.gtk_application_prefer_dark_theme) {
+            if (!this._darkBackgroud)
+                this._createDarkBackground();
+            view.set_background_pattern(this._darkBackground);
+        }
+
         this._initScale(view);
         return view;
+    }
+
+    _drawDarkBackground(canvas, cr, width, height) {
+        // set this arbitrarily to try to match the typical dark tile set
+        cr.setSourceRGB(0.2, 0.2, 0.2);
+        cr.rectangle(0, 0, width, height);
+        cr.fillPreserve();
+
+        return true;
+    }
+
+    _createDarkBackground() {
+        this._darkBackground = new Clutter.Canvas();
+        this._darkBackground.set_size(512, 512);
+        this._darkBackground.connect('draw',
+                                     this._drawDarkBackground.bind(this));
+        this._darkBackground.invalidate();
+    }
+
+    _onPreferDarkThemeChanged() {
+        if (this._gtkSettings.gtk_application_prefer_dark_theme) {
+            if (!this._darkBackgroud)
+                this._createDarkBackground();
+            this.view.set_background_pattern(this._darkBackground);
+        } else {
+            this.view.background_pattern = null;
+        }
     }
 
     _onNightModeChanged() {
