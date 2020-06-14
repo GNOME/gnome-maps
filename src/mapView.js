@@ -42,6 +42,7 @@ const MapWalker = imports.mapWalker;
 const Place = imports.place;
 const PlaceMarker = imports.placeMarker;
 const RouteQuery = imports.routeQuery;
+const Service = imports.service;
 const ShapeLayer = imports.shapeLayer;
 const StoredRoute = imports.storedRoute;
 const TransitArrivalMarker = imports.transitArrivalMarker;
@@ -198,8 +199,64 @@ var MapView = GObject.registerClass({
             }
         });
 
+        // if dark tiles is available, setup handler to switch style
+        if (Service.getService().tiles.streetDark) {
+            Application.settings.connect('changed::night-mode',
+                                         this._onNightModeChanged.bind(this));
+        }
+
+        this._gtkSettings = Gtk.Settings.get_default();
+        this._gtkSettings.connect('notify::gtk-application-prefer-dark-theme',
+                            this._onPreferDarkThemeChanged.bind(this));
+        // set dark background if we start up in dark theme
+        if (this._gtkSettings.gtk_application_prefer_dark_theme) {
+            if (!this._darkBackgroud)
+                this._createDarkBackground();
+            view.set_background_pattern(this._darkBackground);
+        }
+
         this._initScale(view);
         return view;
+    }
+
+    /* handler to draw background for dark theme,
+     * theese three functions should not be needed later with a native GTK
+     * widget (Shumate)
+     */
+    _drawDarkBackground(canvas, cr, width, height) {
+        // set this arbitrarily to try to match the typical dark tile set
+        cr.setSourceRGB(0.2, 0.2, 0.2);
+        cr.rectangle(0, 0, width, height);
+        cr.fillPreserve();
+
+        return true;
+    }
+
+    _createDarkBackground() {
+        this._darkBackground = new Clutter.Canvas();
+        this._darkBackground.set_size(512, 512);
+        this._darkBackground.connect('draw',
+                                     this._drawDarkBackground.bind(this));
+        this._darkBackground.invalidate();
+    }
+
+    _onPreferDarkThemeChanged() {
+        if (this._gtkSettings.gtk_application_prefer_dark_theme) {
+            if (!this._darkBackgroud)
+                this._createDarkBackground();
+            this.view.set_background_pattern(this._darkBackground);
+        } else {
+            this.view.background_pattern = null;
+        }
+    }
+
+    _onNightModeChanged() {
+        if (this._mapType === MapType.STREET) {
+            if (Application.settings.get('night-mode'))
+                this.view.map_source = MapSource.createStreetDarkSource();
+            else
+                this.view.map_source = MapSource.createStreetSource();
+        }
     }
 
     /* create and store a route layer, pass true to get a dashed line */
@@ -323,11 +380,16 @@ var MapView = GObject.registerClass({
         this._mapType = mapType;
 
         if (mapType !== MapType.LOCAL) {
-            if (mapType === MapType.AERIAL)
+            if (mapType === MapType.AERIAL) {
                 this.view.map_source = MapSource.createAerialSource();
-            else
-                this.view.map_source = MapSource.createStreetSource();
-
+            } else {
+                if (Service.getService().tiles.streetDark &&
+                    Application.settings.get('night-mode')) {
+                    this.view.map_source = MapSource.createStreetDarkSource();
+                } else {
+                    this.view.map_source = MapSource.createStreetSource();
+                }
+            }
             if (!this._attribution) {
                 this._attribution = new MapSource.AttributionLogo(this.view);
                 this.view.add_child(this._attribution);
