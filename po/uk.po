@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2020-05-31 14:23+0000\n"
-"PO-Revision-Date: 2020-05-31 22:01+0300\n"
+"POT-Creation-Date: 2020-06-15 21:26+0000\n"
+"PO-Revision-Date: 2020-06-16 12:26+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -68,7 +68,7 @@ msgstr "Проєкт GNOME"
 #. * overview.
 #.
 #. Translators: This is the program name.
-#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:30
+#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:34
 #: src/application.js:81 src/mainWindow.js:129 src/mainWindow.js:563
 msgid "Maps"
 msgstr "Карти"
@@ -219,6 +219,14 @@ msgstr ""
 #: data/org.gnome.Maps.gschema.xml:82
 msgid "Last used transportation type for routing"
 msgstr "Останній використаний тип транспорту для побудови маршрутів"
+
+#: data/org.gnome.Maps.gschema.xml:86
+msgid "Night mode"
+msgstr "Нічний режим"
+
+#: data/org.gnome.Maps.gschema.xml:87
+msgid "Whether the application is in night mode."
+msgstr "Чи програма в нічному режимі."
 
 #: data/ui/check-in-dialog.ui:250 data/ui/check-in-dialog.ui:299
 msgid "Visibility"
@@ -435,30 +443,34 @@ msgid "Location Settings"
 msgstr "Параметри розташування"
 
 #: data/ui/main-window.ui:8
+msgid "Night Mode"
+msgstr "Нічний режим"
+
+#: data/ui/main-window.ui:12
 msgid "Set up OpenStreetMap Account"
 msgstr "Відкрити обліковий запис у OpenStreetMap"
 
-#: data/ui/main-window.ui:12
+#: data/ui/main-window.ui:16
 msgid "Export as Image"
 msgstr "Експортувати як зображення"
 
-#: data/ui/main-window.ui:17
+#: data/ui/main-window.ui:21
 msgid "_Keyboard Shortcuts"
 msgstr "_Клавіатурні скорочення"
 
-#: data/ui/main-window.ui:22
+#: data/ui/main-window.ui:26
 msgid "About Maps"
 msgstr "Про «Карти»"
 
-#: data/ui/main-window.ui:48
+#: data/ui/main-window.ui:52
 msgid "Primary menu"
 msgstr "Основне меню"
 
-#: data/ui/main-window.ui:110
+#: data/ui/main-window.ui:114
 msgid "Maps is offline!"
 msgstr "Карти поза мережею!"
 
-#: data/ui/main-window.ui:118
+#: data/ui/main-window.ui:122
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -466,7 +478,7 @@ msgstr ""
 "Карти потребують з'єднання з інтернетом, щоб повноцінно працювати, але його "
 "немає."
 
-#: data/ui/main-window.ui:126
+#: data/ui/main-window.ui:130
 msgid "Check your connection and proxy settings."
 msgstr "Перевірте зв'язок і параметри проксі."
 
@@ -964,15 +976,15 @@ msgstr "Блоки карти надано %s"
 msgid "Search provided by %s using %s"
 msgstr "Послуги з пошуку надано %s, використовуємо %s"
 
-#: src/mapView.js:378
+#: src/mapView.js:440
 msgid "File type is not supported"
 msgstr "Тип файла не підтримується"
 
-#: src/mapView.js:385
+#: src/mapView.js:447
 msgid "Failed to open layer"
 msgstr "Не вдалося відкрити шар"
 
-#: src/mapView.js:421
+#: src/mapView.js:483
 msgid "Failed to open GeoURI"
 msgstr "Не вдалося відкрити GeoURI"
 
@@ -1687,19 +1699,19 @@ msgid "Accuracy: %s"
 msgstr "Точність: %s"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:237
+#: src/utils.js:248
 msgid "Unknown"
 msgstr "Невідомо"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:240
+#: src/utils.js:251
 msgid "Exact"
 msgstr "Уточнити"
 
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
 #.
-#: src/utils.js:321
+#: src/utils.js:332
 #, javascript-format
 msgid "%s h"
 msgstr "%s год"
@@ -1708,7 +1720,7 @@ msgstr "%s год"
 #. * using abbreviations for hours and minutes, correspoding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
 #.
-#: src/utils.js:327
+#: src/utils.js:338
 #, javascript-format
 msgid "%s h %s min"
 msgid_plural "%s h %s mins"
@@ -1720,7 +1732,7 @@ msgstr[2] "%s год %s хв"
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
 #.
-#: src/utils.js:334
+#: src/utils.js:345
 #, javascript-format
 msgid "%s min"
 msgid_plural "%s mins"
@@ -1732,7 +1744,7 @@ msgstr[2] "%s хв"
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
 #.
-#: src/utils.js:340
+#: src/utils.js:351
 #, javascript-format
 msgid "%s s"
 msgid_plural "%s s"
@@ -1741,25 +1753,25 @@ msgstr[1] "%s с"
 msgstr[2] "%s с"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:351
+#: src/utils.js:362
 #, javascript-format
 msgid "%s km"
 msgstr "%s км"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:354
+#: src/utils.js:365
 #, javascript-format
 msgid "%s m"
 msgstr "%s м"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:362
+#: src/utils.js:373
 #, javascript-format
 msgid "%s mi"
 msgstr "%s ми"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:365
+#: src/utils.js:376
 #, javascript-format
 msgid "%s ft"
 msgstr "%s фт"
