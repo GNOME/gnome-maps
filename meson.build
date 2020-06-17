@@ -37,8 +37,7 @@ libmaps_deps = [
 	dependency('geocode-glib-1.0', version: '>= 3.15.2'),
 	dependency('champlain-0.12', version: '>= 0.12.14'),
 	dependency('libxml-2.0'),
-	dependency('rest-0.7', version: '>= 0.7.90'),
-	dependency('libgfbgraph-0.3')
+	dependency('rest-0.7', version: '>= 0.7.90')
 ]
 
 msgfmt = find_program('msgfmt')
