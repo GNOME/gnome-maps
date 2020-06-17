@@ -7,10 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2020-04-23 20:59+0000\n"
-"PO-Revision-Date: 2020-05-03 15:51+0300\n"
-"Last-Translator: Florentina Mușat <florentina.musat.28 [at] gmail [dot] "
-"com>\n"
+"POT-Creation-Date: 2020-06-15 21:26+0000\n"
+"PO-Revision-Date: 2020-06-17 18:40+0300\n"
+"Last-Translator: Florentina Mușat <florentina [dot] musat [dot] 28 [at] "
+"gmail [dot] com>\n"
 "Language-Team: Gnome Romanian Translation Team\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.3.1\n"
 "X-Project-Style: gnome\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
@@ -70,7 +70,7 @@ msgstr "Proiectul GNOME"
 #. * overview.
 #.
 #. Translators: This is the program name.
-#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:30
+#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:34
 #: src/application.js:81 src/mainWindow.js:129 src/mainWindow.js:563
 msgid "Maps"
 msgstr "Hărți"
@@ -223,6 +223,14 @@ msgstr ""
 msgid "Last used transportation type for routing"
 msgstr "Ultimul tip de transport utilizat pentru drum"
 
+#: data/org.gnome.Maps.gschema.xml:86
+msgid "Night mode"
+msgstr "Mod nocturn"
+
+#: data/org.gnome.Maps.gschema.xml:87
+msgid "Whether the application is in night mode."
+msgstr "Dacă aplicația este în modul nocturn."
+
 #: data/ui/check-in-dialog.ui:250 data/ui/check-in-dialog.ui:299
 msgid "Visibility"
 msgstr "Vizibilitate"
@@ -374,42 +382,47 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Ieșire"
 
-#: data/ui/help-overlay.ui:55
+#: data/ui/help-overlay.ui:53
+msgctxt "shortcut window"
+msgid "Open main menu"
+msgstr "Deschide meniul principal"
+
+#: data/ui/help-overlay.ui:62
 msgctxt "shortcut window"
 msgid "Map View"
 msgstr "Vizualizarea hărții"
 
-#: data/ui/help-overlay.ui:59
+#: data/ui/help-overlay.ui:66
 msgctxt "shortcut window"
 msgid "Zoom in"
 msgstr "Mărește"
 
-#: data/ui/help-overlay.ui:66
+#: data/ui/help-overlay.ui:73
 msgctxt "shortcut window"
 msgid "Zoom out"
 msgstr "Micșorează"
 
-#: data/ui/help-overlay.ui:73
+#: data/ui/help-overlay.ui:80
 msgctxt "shortcut window"
 msgid "Toggle scale"
 msgstr "Comută scara"
 
-#: data/ui/help-overlay.ui:80
+#: data/ui/help-overlay.ui:87
 msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Navighează la locația curentă"
 
-#: data/ui/help-overlay.ui:87
+#: data/ui/help-overlay.ui:94
 msgctxt "shortcut window"
 msgid "Switch to street view"
 msgstr "Schimbă la vizualizarea stradală"
 
-#: data/ui/help-overlay.ui:94
+#: data/ui/help-overlay.ui:101
 msgctxt "shortcut window"
 msgid "Switch to aerial view"
 msgstr "Schimbă la vederea aeriană"
 
-#: data/ui/help-overlay.ui:101
+#: data/ui/help-overlay.ui:108
 msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "Deschide stratul formei"
@@ -433,26 +446,34 @@ msgid "Location Settings"
 msgstr "Configurări de locație"
 
 #: data/ui/main-window.ui:8
+msgid "Night Mode"
+msgstr "Mod nocturn"
+
+#: data/ui/main-window.ui:12
 msgid "Set up OpenStreetMap Account"
 msgstr "Configurează contul OpenStreetMap"
 
-#: data/ui/main-window.ui:12
+#: data/ui/main-window.ui:16
 msgid "Export as Image"
 msgstr "Exportă ca imagine"
 
-#: data/ui/main-window.ui:17
+#: data/ui/main-window.ui:21
 msgid "_Keyboard Shortcuts"
 msgstr "_Scurtături de tastatură"
 
-#: data/ui/main-window.ui:22
+#: data/ui/main-window.ui:26
 msgid "About Maps"
 msgstr "Despre Hărți"
 
-#: data/ui/main-window.ui:106
+#: data/ui/main-window.ui:52
+msgid "Primary menu"
+msgstr "Meniu principal"
+
+#: data/ui/main-window.ui:114
 msgid "Maps is offline!"
 msgstr "Hărți este offline!"
 
-#: data/ui/main-window.ui:116
+#: data/ui/main-window.ui:122
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -460,7 +481,7 @@ msgstr ""
 "Hărți necesită o conexiune la internet pentru a funcționa în mod "
 "corespunzător, dar nicio conexiune nu a fost găsită."
 
-#: data/ui/main-window.ui:125
+#: data/ui/main-window.ui:130
 msgid "Check your connection and proxy settings."
 msgstr "Verificați conexiunile și configurările proxy."
 
@@ -533,23 +554,23 @@ msgstr ""
 msgid "The verification code didn’t match, please try again."
 msgstr "Codul de verificare nu se potrivește, încercați din nou."
 
-#: data/ui/osm-account-dialog.ui:209
+#: data/ui/osm-account-dialog.ui:198
 msgid "Enter verification code shown above"
 msgstr "Introduceți codul de verificare arătat mai sus"
 
-#: data/ui/osm-account-dialog.ui:232
+#: data/ui/osm-account-dialog.ui:221
 msgid "Verify"
 msgstr "Verifică"
 
-#: data/ui/osm-account-dialog.ui:262
+#: data/ui/osm-account-dialog.ui:251
 msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
 msgstr "<span weight=\"bold\" size=\"x-large\">Autentificat</span>"
 
-#: data/ui/osm-account-dialog.ui:275
+#: data/ui/osm-account-dialog.ui:264
 msgid "Your OpenStreetMap account is active."
 msgstr "Contul dumneavoastră OpenStreetMap este activ."
 
-#: data/ui/osm-account-dialog.ui:309
+#: data/ui/osm-account-dialog.ui:298
 msgid "Sign Out"
 msgstr "Deautentificare"
 
@@ -924,7 +945,8 @@ msgstr "Nu s-a reușit conectarea la serviciul de localizare"
 msgid "translator-credits"
 msgstr ""
 "Mădălin Șerbănescu <ciber_ady [at] yahoo [dot] com>, 2018\n"
-"Florentina Mușat <emryslokadottir [at] gmail [dot] com>, 2018-2020"
+"Florentina Mușat <florentina [dot] musat [dot] 28 [at] gmail [dot] com>, "
+"2018-2020"
 
 #: src/mainWindow.js:564
 msgid "A map application for GNOME"
@@ -963,15 +985,15 @@ msgstr "Fragmente de hărți furnizate de %s"
 msgid "Search provided by %s using %s"
 msgstr "Căutare furnizată de %s utilizând %s"
 
-#: src/mapView.js:378
+#: src/mapView.js:440
 msgid "File type is not supported"
 msgstr "Tipul de fișier nu este suportat"
 
-#: src/mapView.js:385
+#: src/mapView.js:447
 msgid "Failed to open layer"
 msgstr "Nu s-a putut deschide stratul"
 
-#: src/mapView.js:421
+#: src/mapView.js:483
 msgid "Failed to open GeoURI"
 msgstr "Nu s-a putut deschide GeoURI"
 
@@ -1276,7 +1298,7 @@ msgstr "Acces pentru scaun cu rotile:"
 msgid "Phone:"
 msgstr "Număr de telefon:"
 
-#: src/placeEntry.js:210
+#: src/placeEntry.js:212
 msgid "Failed to parse Geo URI"
 msgstr "Nu s-a putut parsa URI-ul Geo"
 
@@ -1688,19 +1710,19 @@ msgid "Accuracy: %s"
 msgstr "Acuratețe: %s"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:237
+#: src/utils.js:248
 msgid "Unknown"
 msgstr "Necunoscut"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:240
+#: src/utils.js:251
 msgid "Exact"
 msgstr "Exact"
 
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
 #.
-#: src/utils.js:321
+#: src/utils.js:332
 #, javascript-format
 msgid "%s h"
 msgstr "%s o"
@@ -1709,7 +1731,7 @@ msgstr "%s o"
 #. * using abbreviations for hours and minutes, correspoding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
 #.
-#: src/utils.js:327
+#: src/utils.js:338
 #, javascript-format
 msgid "%s h %s min"
 msgid_plural "%s h %s mins"
@@ -1721,7 +1743,7 @@ msgstr[2] "%s o %s min"
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
 #.
-#: src/utils.js:334
+#: src/utils.js:345
 #, javascript-format
 msgid "%s min"
 msgid_plural "%s mins"
@@ -1733,7 +1755,7 @@ msgstr[2] "%s min"
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
 #.
-#: src/utils.js:340
+#: src/utils.js:351
 #, javascript-format
 msgid "%s s"
 msgid_plural "%s s"
@@ -1742,25 +1764,25 @@ msgstr[1] "%s s"
 msgstr[2] "%s s"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:351
+#: src/utils.js:362
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:354
+#: src/utils.js:365
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:362
+#: src/utils.js:373
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:365
+#: src/utils.js:376
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
