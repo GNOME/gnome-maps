@@ -85,9 +85,6 @@ var PlaceFormatter = class PlaceFormatter {
             break;
 
         case Geocode.PlaceType.TOWN:
-            if (this._place.town)
-                this._titleProperty = 'town';
-
             if (this._place.county)
                 this._addRow(['county']);
             else if (this._place.state)
