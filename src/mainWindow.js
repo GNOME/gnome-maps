@@ -195,6 +195,10 @@ var MainWindow = GObject.registerClass({
                 accels: ['<Primary>2', '<Primary>KP_2'],
                 onActivate: () => this._onAerialViewActivate()
             },
+            'toggle-hybrid-aerial': {
+                paramType:     'b',
+                setting:       'hybrid-aerial'
+            },
             'goto-user-location': {
                 accels: ['<Primary>L'],
                 onActivate: () => this._onGotoUserLocationActivate()
