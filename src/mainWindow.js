@@ -195,6 +195,10 @@ var MainWindow = GObject.registerClass({
                 accels: ['<Primary>2', '<Primary>KP_2'],
                 onActivate: () => this._onAerialViewActivate()
             },
+            'hybrid-aerial': {
+                paramType:     'b',
+                setting:       'hybrid-aerial'
+            },
             'goto-user-location': {
                 accels: ['<Primary>L'],
                 onActivate: () => this._onGotoUserLocationActivate()
@@ -235,7 +239,7 @@ var MainWindow = GObject.registerClass({
             'export-as-image': {
                 onActivate: () => this._onExportActivated()
             }
-        });
+        }, Application.settings);
     }
 
     _initSignals() {
