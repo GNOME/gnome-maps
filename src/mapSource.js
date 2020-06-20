@@ -128,6 +128,10 @@ function createAerialSource() {
     return _createCachedSource(Service.getService().tiles.aerial);
 }
 
+function createHybridAerialSource() {
+    return _createCachedSource(Service.getService().tiles.hybridAerial);
+}
+
 function createStreetSource() {
     return _createCachedSource(Service.getService().tiles.street);
 }
