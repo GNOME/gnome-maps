@@ -205,6 +205,12 @@ var MapView = GObject.registerClass({
                                          this._onNightModeChanged.bind(this));
         }
 
+        // if hybrid aerial tiles are available, setup handler to toggle
+        if (Service.getService().tiles.hybridAerial) {
+            Application.settings.connect('changed::hybrid-aerial',
+                                         this._onHybridAerialChanged.bind(this));
+        }
+
         this._gtkSettings = Gtk.Settings.get_default();
         this._gtkSettings.connect('notify::gtk-application-prefer-dark-theme',
                             this._onPreferDarkThemeChanged.bind(this));
@@ -256,6 +262,15 @@ var MapView = GObject.registerClass({
                 this.view.map_source = MapSource.createStreetDarkSource();
             else
                 this.view.map_source = MapSource.createStreetSource();
+        }
+    }
+
+    _onHybridAerialChanged() {
+        if (this._mapType === MapType.AERIAL) {
+            if (Application.settings.get('hybrid-aerial'))
+                this.view.map_source = MapSource.createHybridAerialSource();
+            else
+                this.view.map_source = MapSource.createAerialSource();
         }
     }
 
@@ -381,7 +396,12 @@ var MapView = GObject.registerClass({
 
         if (mapType !== MapType.LOCAL) {
             if (mapType === MapType.AERIAL) {
-                this.view.map_source = MapSource.createAerialSource();
+                if (Service.getService().tiles.hybridAerial &&
+                    Application.settings.get('hybrid-aerial')) {
+                    this.view.map_source = MapSource.createHybridAerialSource();
+                } else {
+                    this.view.map_source = MapSource.createAerialSource();
+                }
             } else {
                 if (Service.getService().tiles.streetDark &&
                     Application.settings.get('night-mode')) {
