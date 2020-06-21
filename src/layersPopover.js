@@ -65,6 +65,7 @@ var LayersPopover = GObject.registerClass({
                         'aerialLayerButton',
                         'streetLayerImage',
                         'aerialLayerImage',
+                        'hybridAerialRevealer',
                         'layersListBox',
                         'loadLayerButton' ]
 }, class LayersPopover extends Gtk.Popover {
@@ -115,6 +116,13 @@ var LayersPopover = GObject.registerClass({
                 lastLocation: { x: -1, y: -1, z: -1 }
             };
         }
+        if (Service.getService().tiles.hybridAerial) {
+            this._layerPreviews.hybridAerial = {
+                source: MapSource.createHybridAerialSource(),
+                widget: this._aerialLayerImage,
+                lastLocation: { x: -1, y: -1, z: -1 }
+            };
+        }
 
         // disable the map type switch buttons if aerial is unavailable
         if (Service.getService().tiles.aerial) {
@@ -138,6 +146,8 @@ var LayersPopover = GObject.registerClass({
                                        this._setLayerPreviews.bind(this));
             Application.settings.connect("changed::night-mode",
                                          this._onNightModeChanged.bind(this));
+            Application.settings.connect("changed::hybrid-aerial",
+                                         this._onHybridAerialChanged.bind(this));
 
         } else {
             this._streetLayerButton.visible = false;
@@ -159,6 +169,15 @@ var LayersPopover = GObject.registerClass({
         }
     }
 
+    _onHybridAerialChanged() {
+        if (Service.getService().tiles.hybridAerial &&
+            Application.settings.get('hybrid-aerial')) {
+            this._setLayerPreviewImage('hybridAerial', true);
+        } else {
+            this._setLayerPreviewImage('aerial', true);
+        }
+    }
+
     _setLayerPreviews() {
         if (Service.getService().tiles.streetDark &&
             Application.settings.get('night-mode')) {
@@ -166,7 +185,12 @@ var LayersPopover = GObject.registerClass({
         } else {
             this._setLayerPreviewImage('street');
         }
-        this._setLayerPreviewImage('aerial');
+        if (Service.getService().tiles.hybridAerial &&
+            Application.settings.get('hybrid-aerial')) {
+            this._setLayerPreviewImage('hybridAerial');
+        } else {
+            this._setLayerPreviewImage('aerial');
+        }
     }
 
     _setLayerPreviewImage(layer, forceUpdate = false) {
@@ -216,10 +240,14 @@ var LayersPopover = GObject.registerClass({
     }
 
     setMapType(mapType) {
-        if (mapType === MapView.MapType.STREET)
+        if (mapType === MapView.MapType.STREET) {
             this._streetLayerButton.active = true;
-        else if (mapType === MapView.MapType.AERIAL)
+            this._hybridAerialRevealer.reveal_child = false;
+        } else if (mapType === MapView.MapType.AERIAL) {
             this._aerialLayerButton.active = true;
+            if (Service.getService().tiles.hybridAerial)
+                this._hybridAerialRevealer.reveal_child = true;
+        }
     }
 
     _onRemoveClicked(row) {
