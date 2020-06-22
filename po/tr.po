@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2020-05-31 14:23+0000\n"
-"PO-Revision-Date: 2020-06-14 09:15+0300\n"
+"POT-Creation-Date: 2020-06-15 21:26+0000\n"
+"PO-Revision-Date: 2020-06-23 01:28+0300\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -76,7 +76,7 @@ msgstr "GNOME Projesi"
 #. * overview.
 #.
 #. Translators: This is the program name.
-#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:30
+#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:34
 #: src/application.js:81 src/mainWindow.js:129 src/mainWindow.js:563
 msgid "Maps"
 msgstr "Haritalar"
@@ -228,6 +228,14 @@ msgstr ""
 #: data/org.gnome.Maps.gschema.xml:82
 msgid "Last used transportation type for routing"
 msgstr "Yönlendirme için son kullanılan ulaşım şekli"
+
+#: data/org.gnome.Maps.gschema.xml:86
+msgid "Night mode"
+msgstr "Gece kipi"
+
+#: data/org.gnome.Maps.gschema.xml:87
+msgid "Whether the application is in night mode."
+msgstr "Uygulamanın gece kipinde olup olmadığı."
 
 #: data/ui/check-in-dialog.ui:250 data/ui/check-in-dialog.ui:299
 msgid "Visibility"
@@ -444,30 +452,34 @@ msgid "Location Settings"
 msgstr "Konum Ayarları"
 
 #: data/ui/main-window.ui:8
+msgid "Night Mode"
+msgstr "Gece Kipi"
+
+#: data/ui/main-window.ui:12
 msgid "Set up OpenStreetMap Account"
 msgstr "OpenStreetMap Hesabını Ayarla"
 
-#: data/ui/main-window.ui:12
+#: data/ui/main-window.ui:16
 msgid "Export as Image"
 msgstr "Resim Olarak Dışarıya Aktar"
 
-#: data/ui/main-window.ui:17
+#: data/ui/main-window.ui:21
 msgid "_Keyboard Shortcuts"
 msgstr "_Klavye Kısayolları"
 
-#: data/ui/main-window.ui:22
+#: data/ui/main-window.ui:26
 msgid "About Maps"
 msgstr "Haritalar Hakkında"
 
-#: data/ui/main-window.ui:48
+#: data/ui/main-window.ui:52
 msgid "Primary menu"
 msgstr "Ana menü"
 
-#: data/ui/main-window.ui:110
+#: data/ui/main-window.ui:114
 msgid "Maps is offline!"
 msgstr "Haritalar çevrim dışı!"
 
-#: data/ui/main-window.ui:118
+#: data/ui/main-window.ui:122
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -475,7 +487,7 @@ msgstr ""
 "Haritaların çalışması için kullanılabilir bir internet bağlantısı gerekli, "
 "ancak bağlantı yok."
 
-#: data/ui/main-window.ui:126
+#: data/ui/main-window.ui:130
 msgid "Check your connection and proxy settings."
 msgstr "Bağlantı ve vekil sunucu ayarlarınızı denetleyin."
 
@@ -984,15 +996,15 @@ msgstr "Harita döşemeleri %s tarafından sağlanmıştır"
 msgid "Search provided by %s using %s"
 msgstr "Arama %s tarafından %s kullanılarak sağlanmıştır."
 
-#: src/mapView.js:378
+#: src/mapView.js:440
 msgid "File type is not supported"
 msgstr "Dosya türü desteklenmiyor"
 
-#: src/mapView.js:385
+#: src/mapView.js:447
 msgid "Failed to open layer"
 msgstr "Katman açma başarısız oldu"
 
-#: src/mapView.js:421
+#: src/mapView.js:483
 msgid "Failed to open GeoURI"
 msgstr "GeoURI açma başarısız"
 
@@ -1705,19 +1717,19 @@ msgid "Accuracy: %s"
 msgstr "Doğruluk: %s"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:237
+#: src/utils.js:248
 msgid "Unknown"
 msgstr "Bilinmiyor"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:240
+#: src/utils.js:251
 msgid "Exact"
 msgstr "Tam"
 
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
 #.
-#: src/utils.js:321
+#: src/utils.js:332
 #, javascript-format
 msgid "%s h"
 msgstr "%s s"
@@ -1726,7 +1738,7 @@ msgstr "%s s"
 #. * using abbreviations for hours and minutes, correspoding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
 #.
-#: src/utils.js:327
+#: src/utils.js:338
 #, javascript-format
 msgid "%s h %s min"
 msgid_plural "%s h %s mins"
@@ -1736,7 +1748,7 @@ msgstr[0] "%s s %s dak"
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
 #.
-#: src/utils.js:334
+#: src/utils.js:345
 #, javascript-format
 msgid "%s min"
 msgid_plural "%s mins"
@@ -1746,32 +1758,32 @@ msgstr[0] "%s dak"
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
 #.
-#: src/utils.js:340
+#: src/utils.js:351
 #, javascript-format
 msgid "%s s"
 msgid_plural "%s s"
 msgstr[0] "%s sn"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:351
+#: src/utils.js:362
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:354
+#: src/utils.js:365
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:362
+#: src/utils.js:373
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:365
+#: src/utils.js:376
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
