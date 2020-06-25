@@ -258,19 +258,25 @@ var MapView = GObject.registerClass({
 
     _onNightModeChanged() {
         if (this._mapType === MapType.STREET) {
+            let overlay_sources = this.view.get_overlay_sources();
+
             if (Application.settings.get('night-mode'))
                 this.view.map_source = MapSource.createStreetDarkSource();
             else
                 this.view.map_source = MapSource.createStreetSource();
+            overlay_sources.forEach((source) => this.view.add_overlay_source(source, 255));
         }
     }
 
     _onHybridAerialChanged() {
         if (this._mapType === MapType.AERIAL) {
+            let overlay_sources = this.view.get_overlay_sources();
+
             if (Application.settings.get('hybrid-aerial'))
                 this.view.map_source = MapSource.createHybridAerialSource();
             else
                 this.view.map_source = MapSource.createAerialSource();
+            overlay_sources.forEach((source) => this.view.add_overlay_source(source, 255));
         }
     }
 
