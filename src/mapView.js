@@ -153,11 +153,10 @@ var MapView = GObject.registerClass({
         this._initLayers();
 
         this.setMapType(mapType);
+        this.shapeLayerStore = new Gio.ListStore(GObject.TYPE_OBJECT);
 
         if (Application.normalStartup)
             this._goToStoredLocation();
-
-        this.shapeLayerStore = new Gio.ListStore(GObject.TYPE_OBJECT);
 
         Application.geoclue.connect('location-changed',
                                     this._updateUserLocation.bind(this));
@@ -258,19 +257,25 @@ var MapView = GObject.registerClass({
 
     _onNightModeChanged() {
         if (this._mapType === MapType.STREET) {
+            let overlay_sources = this.view.get_overlay_sources();
+
             if (Application.settings.get('night-mode'))
                 this.view.map_source = MapSource.createStreetDarkSource();
             else
                 this.view.map_source = MapSource.createStreetSource();
+            overlay_sources.forEach((source) => this.view.add_overlay_source(source, 255));
         }
     }
 
     _onHybridAerialChanged() {
         if (this._mapType === MapType.AERIAL) {
+            let overlay_sources = this.view.get_overlay_sources();
+
             if (Application.settings.get('hybrid-aerial'))
                 this.view.map_source = MapSource.createHybridAerialSource();
             else
                 this.view.map_source = MapSource.createAerialSource();
+            overlay_sources.forEach((source) => this.view.add_overlay_source(source, 255));
         }
     }
 
