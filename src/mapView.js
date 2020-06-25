@@ -152,12 +152,11 @@ var MapView = GObject.registerClass({
         this.view = this._initView();
         this._initLayers();
 
+        this.shapeLayerStore = new Gio.ListStore(GObject.TYPE_OBJECT);
         this.setMapType(mapType);
 
         if (Application.normalStartup)
             this._goToStoredLocation();
-
-        this.shapeLayerStore = new Gio.ListStore(GObject.TYPE_OBJECT);
 
         Application.geoclue.connect('location-changed',
                                     this._updateUserLocation.bind(this));
@@ -439,6 +438,7 @@ var MapView = GObject.registerClass({
         }
 
         overlay_sources.forEach((source) => this.view.add_overlay_source(source, 255));
+        this._refreshShapeLayers();
 
         this.emit("map-type-changed", mapType);
     }
@@ -472,6 +472,11 @@ var MapView = GObject.registerClass({
 
         this.gotoBBox(bbox);
         return ret;
+    }
+
+    _refreshShapeLayers() {
+        for (let i = 0; i < this.shapeLayerStore.get_n_items(); i++)
+            this.shapeLayerStore.get_item(i).refresh();
     }
 
     removeShapeLayer(shapeLayer) {
