@@ -7,10 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2020-06-15 21:26+0000\n"
-"PO-Revision-Date: 2020-06-17 18:40+0300\n"
-"Last-Translator: Florentina Mușat <florentina [dot] musat [dot] 28 [at] "
-"gmail [dot] com>\n"
+"POT-Creation-Date: 2020-06-24 20:25+0000\n"
+"PO-Revision-Date: 2020-06-25 12:22+0300\n"
+"Last-Translator: Florentina Mușat <florentina.musat.28@gmail.com>\n"
 "Language-Team: Gnome Romanian Translation Team\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
@@ -71,7 +70,7 @@ msgstr "Proiectul GNOME"
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:34
-#: src/application.js:81 src/mainWindow.js:129 src/mainWindow.js:563
+#: src/application.js:81 src/mainWindow.js:129 src/mainWindow.js:567
 msgid "Maps"
 msgstr "Hărți"
 
@@ -230,6 +229,15 @@ msgstr "Mod nocturn"
 #: data/org.gnome.Maps.gschema.xml:87
 msgid "Whether the application is in night mode."
 msgstr "Dacă aplicația este în modul nocturn."
+
+#: data/org.gnome.Maps.gschema.xml:91
+msgid "Use hybrid aerial tiles"
+msgstr "Utilizează dalele aeriene hibride"
+
+#: data/org.gnome.Maps.gschema.xml:92
+msgid "Whether aerial tiles should use hybrid style (with labels)."
+msgstr ""
+"Dacă dalele aeriene ar trebui să utilizeze stilul hibrid (cu etichete)."
 
 #: data/ui/check-in-dialog.ui:250 data/ui/check-in-dialog.ui:299
 msgid "Visibility"
@@ -427,8 +435,12 @@ msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "Deschide stratul formei"
 
+#: data/ui/layers-popover.ui:65
+msgid "Show Labels"
+msgstr "Arată etichetele"
+
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:69
+#: data/ui/layers-popover.ui:102
 msgid "Open Shape Layer…"
 msgstr "Deschide stratul formei…"
 
@@ -937,26 +949,26 @@ msgstr "Pornește!"
 msgid "All Layer Files"
 msgstr "Toate fișierele strat"
 
-#: src/mainWindow.js:466
+#: src/mainWindow.js:470
 msgid "Failed to connect to location service"
 msgstr "Nu s-a reușit conectarea la serviciul de localizare"
 
-#: src/mainWindow.js:561
+#: src/mainWindow.js:565
 msgid "translator-credits"
 msgstr ""
 "Mădălin Șerbănescu <ciber_ady [at] yahoo [dot] com>, 2018\n"
 "Florentina Mușat <florentina [dot] musat [dot] 28 [at] gmail [dot] com>, "
 "2018-2020"
 
-#: src/mainWindow.js:564
+#: src/mainWindow.js:568
 msgid "A map application for GNOME"
 msgstr "O aplicație cu hărți pentru GNOME"
 
-#: src/mainWindow.js:575
+#: src/mainWindow.js:579
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Drepturi de autor © 2011 – 2019 Red Hat, Inc. și autorii GNOME Hărți"
 
-#: src/mainWindow.js:595
+#: src/mainWindow.js:599
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Datele hărții ale %s și contribuitorii"
@@ -966,7 +978,7 @@ msgstr "Datele hărții ale %s și contribuitorii"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:611
+#: src/mainWindow.js:615
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Fragmente de hărți furnizate de %s"
@@ -980,20 +992,20 @@ msgstr "Fragmente de hărți furnizate de %s"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:640
+#: src/mainWindow.js:644
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Căutare furnizată de %s utilizând %s"
 
-#: src/mapView.js:440
+#: src/mapView.js:460
 msgid "File type is not supported"
 msgstr "Tipul de fișier nu este suportat"
 
-#: src/mapView.js:447
+#: src/mapView.js:467
 msgid "Failed to open layer"
 msgstr "Nu s-a putut deschide stratul"
 
-#: src/mapView.js:483
+#: src/mapView.js:503
 msgid "Failed to open GeoURI"
 msgstr "Nu s-a putut deschide GeoURI"
 
