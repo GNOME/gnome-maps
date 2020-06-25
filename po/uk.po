@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2020-06-15 21:26+0000\n"
-"PO-Revision-Date: 2020-06-16 12:26+0300\n"
+"POT-Creation-Date: 2020-06-24 20:25+0000\n"
+"PO-Revision-Date: 2020-06-25 08:35+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -69,7 +69,7 @@ msgstr "Проєкт GNOME"
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:34
-#: src/application.js:81 src/mainWindow.js:129 src/mainWindow.js:563
+#: src/application.js:81 src/mainWindow.js:129 src/mainWindow.js:567
 msgid "Maps"
 msgstr "Карти"
 
@@ -227,6 +227,15 @@ msgstr "Нічний режим"
 #: data/org.gnome.Maps.gschema.xml:87
 msgid "Whether the application is in night mode."
 msgstr "Чи програма в нічному режимі."
+
+#: data/org.gnome.Maps.gschema.xml:91
+msgid "Use hybrid aerial tiles"
+msgstr "Використовувати гібридні супутникові плитки"
+
+#: data/org.gnome.Maps.gschema.xml:92
+msgid "Whether aerial tiles should use hybrid style (with labels)."
+msgstr ""
+"Чи слід використовувати гібридний стиль (із мітками) для супутникових плиток."
 
 #: data/ui/check-in-dialog.ui:250 data/ui/check-in-dialog.ui:299
 msgid "Visibility"
@@ -424,8 +433,12 @@ msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "Відкрити шар форм"
 
+#: data/ui/layers-popover.ui:65
+msgid "Show Labels"
+msgstr "Показувати мітки"
+
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:69
+#: data/ui/layers-popover.ui:102
 msgid "Open Shape Layer…"
 msgstr "Відкрити шар форм…"
 
@@ -931,23 +944,23 @@ msgstr "Нумо!"
 msgid "All Layer Files"
 msgstr "Усі файли шарів"
 
-#: src/mainWindow.js:466
+#: src/mainWindow.js:470
 msgid "Failed to connect to location service"
 msgstr "Не вдалося з'єднатись зі службою розташування"
 
-#: src/mainWindow.js:561
+#: src/mainWindow.js:565
 msgid "translator-credits"
 msgstr "Daniel Korostil <ted.korostiled@gmail.com>"
 
-#: src/mainWindow.js:564
+#: src/mainWindow.js:568
 msgid "A map application for GNOME"
 msgstr "Карти для GNOME"
 
-#: src/mainWindow.js:575
+#: src/mainWindow.js:579
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "© Red Hat, Inc. та розробники «Карт» GNOME, 2011–2019"
 
-#: src/mainWindow.js:595
+#: src/mainWindow.js:599
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Дані карт надано %s та учасниками проєкту"
@@ -957,7 +970,7 @@ msgstr "Дані карт надано %s та учасниками проєкт
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:611
+#: src/mainWindow.js:615
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Блоки карти надано %s"
@@ -971,20 +984,20 @@ msgstr "Блоки карти надано %s"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:640
+#: src/mainWindow.js:644
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Послуги з пошуку надано %s, використовуємо %s"
 
-#: src/mapView.js:440
+#: src/mapView.js:460
 msgid "File type is not supported"
 msgstr "Тип файла не підтримується"
 
-#: src/mapView.js:447
+#: src/mapView.js:467
 msgid "Failed to open layer"
 msgstr "Не вдалося відкрити шар"
 
-#: src/mapView.js:483
+#: src/mapView.js:503
 msgid "Failed to open GeoURI"
 msgstr "Не вдалося відкрити GeoURI"
 
@@ -1884,12 +1897,3 @@ msgstr "Виконайте правий розворот на %s"
 #: src/transitplugins/openTripPlanner.js:1244
 msgid "Make a right u-turn"
 msgstr "Виконайте правий розворот"
-
-#~ msgid "%f h"
-#~ msgstr "%f г"
-
-#~ msgid "%f min"
-#~ msgstr "%f хв"
-
-#~ msgid "%f s"
-#~ msgstr "%f с"
