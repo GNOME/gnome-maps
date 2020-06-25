@@ -94,6 +94,9 @@ var ShapeLayer = GObject.registerClass({
         this._mapView.view.add_overlay_source(this._mapSource, 255);
     }
 
+    refresh() {
+        this._mapView.view.add_overlay_source(this._mapSource, 255);
+    }
 
     _parseContent() {
         /* Unimplemented */
