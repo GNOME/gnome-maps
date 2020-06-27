@@ -6,21 +6,23 @@
 # YunQiang Su <wzssyqa@gmail.com>, 2015, 2016.
 # Mingcong Bai <jeffbai@aosc.xyz>, 2015, 2016, 2017, 2018.
 # Dingzhong Chen <wsxy162@gmail.com>, 2015, 2016, 2017, 2018, 2019.
+# 王滋涵 Zephyr Wang <wi24rd@fedoraproject.org>, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2019-04-11 18:46+0000\n"
-"PO-Revision-Date: 2019-04-13 21:40+0800\n"
-"Last-Translator: Dingzhong Chen <wsxy162@gmail.com>\n"
-"Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
+"POT-Creation-Date: 2020-06-24 20:25+0000\n"
+"PO-Revision-Date: 2020-06-27 11:17-0400\n"
+"Last-Translator: Boyuan Yang <073plan@gmail.com>\n"
+"Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Gtranslator 2.91.7\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.3.1\n"
+"X-DamnedLies-Scope: partial\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
 msgid "GNOME Maps"
@@ -56,7 +58,7 @@ msgstr ""
 "你甚至可以搜索特定类型的位置，比如“Pubs near Main Street, Boston”或“Hotels "
 "near Alexanderplatz, Berlin”。"
 
-#: data/org.gnome.Maps.appdata.xml.in:59
+#: data/org.gnome.Maps.appdata.xml.in:122
 msgid "The GNOME Project"
 msgstr "GNOME 项目"
 
@@ -68,8 +70,8 @@ msgstr "GNOME 项目"
 #. * overview.
 #.
 #. Translators: This is the program name.
-#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:26
-#: src/application.js:83 src/mainWindow.js:138 src/mainWindow.js:508
+#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:34
+#: src/application.js:81 src/mainWindow.js:129 src/mainWindow.js:567
 msgid "Maps"
 msgstr "地图"
 
@@ -94,60 +96,64 @@ msgstr "最近查看的位置"
 msgid "Coordinates of last viewed location."
 msgstr "最近查看的位置的座标。"
 
-#: data/org.gnome.Maps.gschema.xml:16
+#: data/org.gnome.Maps.gschema.xml:21
+msgid "Map type"
+msgstr "地图类型"
+
+#: data/org.gnome.Maps.gschema.xml:26
 msgid "Window size"
 msgstr "窗口大小"
 
-#: data/org.gnome.Maps.gschema.xml:17
+#: data/org.gnome.Maps.gschema.xml:27
 msgid "Window size (width and height)."
 msgstr "窗口大小（宽度和高度）。"
 
-#: data/org.gnome.Maps.gschema.xml:21
+#: data/org.gnome.Maps.gschema.xml:31
 msgid "Window position"
 msgstr "窗口位置"
 
-#: data/org.gnome.Maps.gschema.xml:22
+#: data/org.gnome.Maps.gschema.xml:32
 msgid "Window position (X and Y)."
 msgstr "窗口位置（水平和竖直）。"
 
-#: data/org.gnome.Maps.gschema.xml:26
+#: data/org.gnome.Maps.gschema.xml:36
 msgid "Window maximized"
 msgstr "窗口最大化"
 
-#: data/org.gnome.Maps.gschema.xml:27
+#: data/org.gnome.Maps.gschema.xml:37
 msgid "Window maximization state"
 msgstr "窗口最大化状态"
 
-#: data/org.gnome.Maps.gschema.xml:31
+#: data/org.gnome.Maps.gschema.xml:41
 msgid "Maximum number of search results"
 msgstr "搜索结果的最大数量"
 
-#: data/org.gnome.Maps.gschema.xml:32
+#: data/org.gnome.Maps.gschema.xml:42
 msgid "Maximum number of search results from geocode search."
 msgstr "来自 geocode 搜索结果的最大数量。"
 
-#: data/org.gnome.Maps.gschema.xml:36
+#: data/org.gnome.Maps.gschema.xml:46
 msgid "Number of recent places to store"
 msgstr "存储最近地点的数量"
 
-#: data/org.gnome.Maps.gschema.xml:37
+#: data/org.gnome.Maps.gschema.xml:47
 msgid "Number of recently visited places to store."
 msgstr "存储最近拜访过地点的数量。"
 
-#: data/org.gnome.Maps.gschema.xml:41
+#: data/org.gnome.Maps.gschema.xml:51
 msgid "Number of recent routes to store"
 msgstr "存储最近路线的数量"
 
-#: data/org.gnome.Maps.gschema.xml:42
+#: data/org.gnome.Maps.gschema.xml:52
 msgid "Number of recently visited routes to store."
 msgstr "存储最近使用过路线的数量。"
 
-#: data/org.gnome.Maps.gschema.xml:46
+#: data/org.gnome.Maps.gschema.xml:56
 msgid "Facebook check-in privacy setting"
 msgstr "Facebook 签到隐私设置"
 
 #. Translators: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS, and SELF are constant names, and should not be translated
-#: data/org.gnome.Maps.gschema.xml:48
+#: data/org.gnome.Maps.gschema.xml:58
 msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
@@ -155,11 +161,11 @@ msgstr ""
 "最近使用的 Facebook 签到隐私设置。可能的值有：EVERYONE, FRIENDS_OF_FRIENDS, "
 "ALL_FRIENDS 或 SELF。"
 
-#: data/org.gnome.Maps.gschema.xml:52
+#: data/org.gnome.Maps.gschema.xml:62
 msgid "Foursquare check-in privacy setting"
 msgstr "Foursquare 签到隐私设置"
 
-#: data/org.gnome.Maps.gschema.xml:53
+#: data/org.gnome.Maps.gschema.xml:63
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
@@ -167,11 +173,11 @@ msgstr ""
 "最近使用的 Foursquare 签到隐私设置。可能的值有：public, followers 或 "
 "private。"
 
-#: data/org.gnome.Maps.gschema.xml:57
+#: data/org.gnome.Maps.gschema.xml:67
 msgid "Foursquare check-in Facebook broadcasting"
 msgstr "Foursquare 签到同步到 Facebook"
 
-#: data/org.gnome.Maps.gschema.xml:58
+#: data/org.gnome.Maps.gschema.xml:68
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
@@ -179,11 +185,11 @@ msgstr ""
 "表示 Foursquare 是否把签到当成消息发布到 Foursquare 已经关联的 Facebook 帐号"
 "上。"
 
-#: data/org.gnome.Maps.gschema.xml:62
+#: data/org.gnome.Maps.gschema.xml:72
 msgid "Foursquare check-in Twitter broadcasting"
 msgstr "Foursquare 签到同步到 Twitter"
 
-#: data/org.gnome.Maps.gschema.xml:63
+#: data/org.gnome.Maps.gschema.xml:73
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
@@ -191,17 +197,21 @@ msgstr ""
 "表示 Foursquare 是否把签到当成推文发布到 Foursquare 已经关联的 Twitter 帐号"
 "上。"
 
-#: data/org.gnome.Maps.gschema.xml:67
+#: data/org.gnome.Maps.gschema.xml:77
 msgid "OpenStreetMap username or e-mail address"
 msgstr "OpenStreetMap 用户名或电子邮件地址"
 
-#: data/org.gnome.Maps.gschema.xml:68
+#: data/org.gnome.Maps.gschema.xml:78
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr "指示用户是否已经登录以编辑 OpenStreetMap 数据。"
 
-#: data/org.gnome.Maps.gschema.xml:72
+#: data/org.gnome.Maps.gschema.xml:82
 msgid "Last used transportation type for routing"
 msgstr "载入用过的交通类型来规划路线"
+
+#: data/org.gnome.Maps.gschema.xml:86
+msgid "Night mode"
+msgstr "夜晚模式"
 
 #: data/ui/check-in-dialog.ui:250 data/ui/check-in-dialog.ui:299
 msgid "Visibility"
@@ -216,7 +226,7 @@ msgid "Post on Twitter"
 msgstr "发到 Twitter"
 
 #: data/ui/check-in-dialog.ui:388 data/ui/export-view-dialog.ui:20
-#: data/ui/send-to-dialog.ui:21 data/ui/shape-layer-file-chooser.ui:22
+#: data/ui/send-to-dialog.ui:13 data/ui/shape-layer-file-chooser.ui:22
 msgid "_Cancel"
 msgstr "取消(_C)"
 
@@ -254,18 +264,26 @@ msgid "Private"
 msgstr "私人"
 
 #: data/ui/context-menu.ui:9
+msgid "Route from here"
+msgstr "从此处出发的路径"
+
+#: data/ui/context-menu.ui:16
+msgid "Add intermediate destination"
+msgstr "添加途经目的地"
+
+#: data/ui/context-menu.ui:24
+msgid "Route to here"
+msgstr "前往此处的路径"
+
+#: data/ui/context-menu.ui:36
 msgid "What’s here?"
 msgstr "这是哪里？"
 
-#: data/ui/context-menu.ui:16
+#: data/ui/context-menu.ui:43
 msgid "Copy Location"
 msgstr "复制位置信息"
 
-#: data/ui/context-menu.ui:23
-msgid "Export As Image"
-msgstr "导出为图像"
-
-#: data/ui/context-menu.ui:36
+#: data/ui/context-menu.ui:51
 msgid "Add to OpenStreetMap"
 msgstr "添加到 OpenStreetMap"
 
@@ -280,6 +298,41 @@ msgstr "导出(_E)"
 #: data/ui/export-view-dialog.ui:126
 msgid "Include route and markers"
 msgstr "包括路线和标记"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-left.ui:15
+msgid "Go to current location"
+msgstr "转到当前位置"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-left.ui:36
+msgid "Choose map type"
+msgstr "选择地图类型"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-left.ui:61
+msgid "Zoom out"
+msgstr "缩小"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-left.ui:77
+msgid "Zoom in"
+msgstr "放大"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-right.ui:16
+msgid "Toggle route planner"
+msgstr "切换路线规划器"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-right.ui:37
+msgid "Toggle favorites"
+msgstr "切换喜爱"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-right.ui:57
+msgid "Print Route"
+msgstr "打印路线"
 
 #: data/ui/help-overlay.ui:14
 msgctxt "shortcut window"
@@ -311,48 +364,57 @@ msgctxt "shortcut window"
 msgid "Quit"
 msgstr "退出"
 
-#: data/ui/help-overlay.ui:55
+#: data/ui/help-overlay.ui:53
+msgctxt "shortcut window"
+msgid "Open main menu"
+msgstr "打开主菜单"
+
+#: data/ui/help-overlay.ui:62
 msgctxt "shortcut window"
 msgid "Map View"
 msgstr "地图视图"
 
-#: data/ui/help-overlay.ui:59
+#: data/ui/help-overlay.ui:66
 msgctxt "shortcut window"
 msgid "Zoom in"
 msgstr "放大"
 
-#: data/ui/help-overlay.ui:66
+#: data/ui/help-overlay.ui:73
 msgctxt "shortcut window"
 msgid "Zoom out"
 msgstr "缩小"
 
-#: data/ui/help-overlay.ui:73
+#: data/ui/help-overlay.ui:80
 msgctxt "shortcut window"
 msgid "Toggle scale"
 msgstr "切换比例尺"
 
-#: data/ui/help-overlay.ui:80
+#: data/ui/help-overlay.ui:87
 msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "转到当前位置"
 
-#: data/ui/help-overlay.ui:87
+#: data/ui/help-overlay.ui:94
 msgctxt "shortcut window"
 msgid "Switch to street view"
 msgstr "切换到街景视图"
 
-#: data/ui/help-overlay.ui:94
+#: data/ui/help-overlay.ui:101
 msgctxt "shortcut window"
 msgid "Switch to aerial view"
 msgstr "切换到空中视图"
 
-#: data/ui/help-overlay.ui:101
+#: data/ui/help-overlay.ui:108
 msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "打开图形图层"
 
+#: data/ui/layers-popover.ui:65
+msgid "Show Labels"
+msgstr "显示标签"
+
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:69
+#: data/ui/layers-popover.ui:102
 msgid "Open Shape Layer…"
 msgstr "打开形状图层…"
 
@@ -370,63 +432,40 @@ msgid "Location Settings"
 msgstr "地点设置"
 
 #: data/ui/main-window.ui:8
+msgid "Night Mode"
+msgstr "夜晚模式"
+
+#: data/ui/main-window.ui:12
 msgid "Set up OpenStreetMap Account"
 msgstr "建立 OpenStreetMap 帐号"
 
-#: data/ui/main-window.ui:13
+#: data/ui/main-window.ui:16
+msgid "Export as Image"
+msgstr "导出为图像"
+
+#: data/ui/main-window.ui:21
 msgid "_Keyboard Shortcuts"
 msgstr "键盘快捷键(_K)"
 
-#: data/ui/main-window.ui:18
+#: data/ui/main-window.ui:26
 msgid "About Maps"
 msgstr "关于地图"
 
-#. Translators: This is a tooltip
-#: data/ui/main-window.ui:41
-msgid "Go to current location"
-msgstr "转到当前位置"
+#: data/ui/main-window.ui:52
+msgid "Primary menu"
+msgstr "主菜单"
 
-#. Translators: This is a tooltip
-#: data/ui/main-window.ui:62
-msgid "Choose map type"
-msgstr "选择地图类型"
-
-#. Translators: This is a tooltip
-#: data/ui/main-window.ui:87
-msgid "Zoom out"
-msgstr "缩小"
-
-#. Translators: This is a tooltip
-#: data/ui/main-window.ui:103
-msgid "Zoom in"
-msgstr "放大"
-
-#. Translators: This is a tooltip
-#: data/ui/main-window.ui:142
-msgid "Toggle route planner"
-msgstr "切换路线规划器"
-
-#. Translators: This is a tooltip
-#: data/ui/main-window.ui:163
-msgid "Toggle favorites"
-msgstr "切换喜爱"
-
-#. Translators: This is a tooltip
-#: data/ui/main-window.ui:183
-msgid "Print Route"
-msgstr "打印路线"
-
-#: data/ui/main-window.ui:246
+#: data/ui/main-window.ui:114
 msgid "Maps is offline!"
-msgstr "地图应用处于离线！"
+msgstr "地图应用处于离线状态！"
 
-#: data/ui/main-window.ui:256
+#: data/ui/main-window.ui:122
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
 msgstr "地图应用需要有效的网络连接才能正常运行，但是未发现有效连接。"
 
-#: data/ui/main-window.ui:265
+#: data/ui/main-window.ui:130
 msgid "Check your connection and proxy settings."
 msgstr "请检查您的网络连接和代理设置。"
 
@@ -437,8 +476,8 @@ msgstr "添加到新路线"
 
 #. Translators: This is a tooltip
 #: data/ui/map-bubble.ui:62
-msgid "Open with another application"
-msgstr "以其他程序打开"
+msgid "Share location"
+msgstr "分享位置"
 
 #. Translators: This is a tooltip
 #: data/ui/map-bubble.ui:79
@@ -497,23 +536,23 @@ msgstr ""
 msgid "The verification code didn’t match, please try again."
 msgstr "验证码不匹配，请重试。"
 
-#: data/ui/osm-account-dialog.ui:209
+#: data/ui/osm-account-dialog.ui:198
 msgid "Enter verification code shown above"
 msgstr "输入在上面显示的验证码"
 
-#: data/ui/osm-account-dialog.ui:232
+#: data/ui/osm-account-dialog.ui:221
 msgid "Verify"
 msgstr "验证"
 
-#: data/ui/osm-account-dialog.ui:262
+#: data/ui/osm-account-dialog.ui:251
 msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
 msgstr "<span weight=\"bold\" size=\"x-large\">已登录</span>"
 
-#: data/ui/osm-account-dialog.ui:275
+#: data/ui/osm-account-dialog.ui:264
 msgid "Your OpenStreetMap account is active."
 msgstr "您的 OpenStreetMap 帐号已激活。"
 
-#: data/ui/osm-account-dialog.ui:309
+#: data/ui/osm-account-dialog.ui:298
 msgid "Sign Out"
 msgstr "退出"
 
@@ -581,11 +620,7 @@ msgstr "在 OpenStreetMap 上编辑"
 msgid "Show more information"
 msgstr "显示更多信息"
 
-#: data/ui/place-popover.ui:24
-msgid "Press enter to search"
-msgstr "按下回车键开始搜索"
-
-#: data/ui/place-popover.ui:72
+#: data/ui/place-popover.ui:54
 msgid "No results found"
 msgstr "未找到结果"
 
@@ -594,17 +629,25 @@ msgstr "未找到结果"
 msgid "Drag to change order of the route"
 msgstr "拖动以改变路线的顺序"
 
-#: data/ui/send-to-dialog.ui:15
-msgid "Open location"
+#: data/ui/send-to-dialog.ui:10
+msgid "Open Location"
 msgstr "打开位置"
 
-#: data/ui/send-to-dialog.ui:35 data/ui/shape-layer-file-chooser.ui:12
-msgid "_Open"
-msgstr "打开(_O)"
+#: data/ui/send-to-dialog.ui:70
+msgid "Copy"
+msgstr "复制"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:61
+#: data/ui/send-to-dialog.ui:76
+msgid "Send To…"
+msgstr "发送至…"
+
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:64
 msgid "Open Shape Layer"
 msgstr "打开图形图层"
+
+#: data/ui/shape-layer-file-chooser.ui:12
+msgid "_Open"
+msgstr "打开(_O)"
 
 #. Translators: This is a tooltip
 #: data/ui/shape-layer-row.ui:19
@@ -615,24 +658,25 @@ msgstr "切换可见"
 msgid "Route search by GraphHopper"
 msgstr "通过 GraphHopper 搜索路线"
 
-#: data/ui/sidebar.ui:296
-msgid "Route search by OpenTripPlanner"
-msgstr "通过 OpenTripPlanner 搜索路线"
-
-#: data/ui/sidebar.ui:369
+#: data/ui/sidebar.ui:364
 msgid ""
-"Routing itineraries for public transit is provided by GNOME\n"
-"using timetable data obtained from transit companies or agencies.\n"
-"The companies and agencies can not be held responsible for the results "
-"shown.\n"
+"Routing itineraries for public transit is provided by third-party\n"
+"services.\n"
 "GNOME can not guarantee correctness of the itineraries and schedules shown.\n"
+"Note that some providers might not include all available modes of "
+"transportation,\n"
+"e.g. a national provider might not include airlines, and a local provider "
+"could\n"
+"miss regional trains.\n"
 "Names and brands shown are to be considered as registered trademarks when "
 "applicable."
 msgstr ""
-"公共交通的路线安排来自运输公司或代理商提供的时间表，由 GNOME 提供。\n"
-"这些公司或代理商不为这些结果负责。\n"
-"GNOME 不能担保这些路线安排或时间表的准确性。此处显示的名称和品牌在\n"
-"适用时应看待为已注册商标。"
+"公共交通行程路线由第三方服务提供。\n"
+"GNOME 无法保证所显示的行程和时间表的准确性。\n"
+"一些提供者可能不会包含所有可用的交通方式，\n"
+"例如，国家级提供者可能不包括航空公司，\n"
+"地方提供者也可能会缺少地区列车信息。\n"
+"所示名称和品牌在适用时应视为注册商标。"
 
 #: data/ui/social-place-more-results-row.ui:8
 msgid "Show more results"
@@ -678,7 +722,7 @@ msgstr "有轨电车"
 
 #: data/ui/transit-options-panel.ui:131
 msgid "Trains"
-msgstr "火车"
+msgstr "列车"
 
 #: data/ui/transit-options-panel.ui:138
 msgid "Subway"
@@ -688,14 +732,13 @@ msgstr "地铁"
 msgid "Ferries"
 msgstr "渡轮"
 
+#: data/ui/transit-options-panel.ui:152
+msgid "Airplanes"
+msgstr "飞机"
+
 #: data/ui/user-location-bubble.ui:13 src/geoclue.js:118
 msgid "Current location"
 msgstr "当前位置"
-
-#. To translators: %s can be "Unknown", "Exact" or "%f km²"
-#: data/ui/user-location-bubble.ui:28
-msgid "Accuracy: %s"
-msgstr "位置精度：%s"
 
 #: data/ui/zoom-in-dialog.ui:16
 msgid "Zoom in to add location!"
@@ -722,13 +765,21 @@ msgstr "缺失需要的属性"
 msgid "Could not find OSM element"
 msgstr "找不到 OSM 元素"
 
-#: src/application.js:96
+#: src/application.js:94
 msgid "A path to a local tiles directory structure"
 msgstr "指向本地区块目录结构的路径"
 
 #: src/application.js:100
+msgid "Tile size for local tiles directory"
+msgstr "本地区块目录的区块大小"
+
+#: src/application.js:104
 msgid "Show the version of the program"
 msgstr "显示该程序的版本"
+
+#: src/application.js:110
+msgid "Ignore network availability"
+msgstr "忽略网络可用性"
 
 #: src/checkInDialog.js:167
 msgid "Select an account"
@@ -788,23 +839,11 @@ msgid ""
 "this account"
 msgstr "证书已过期，请打开“在线帐号”登录并启用此帐号"
 
-#: src/contextMenu.js:98
-msgid "Route from here"
-msgstr "从此处出发的路径"
-
-#: src/contextMenu.js:100
-msgid "Add destination"
-msgstr "添加目的地"
-
-#: src/contextMenu.js:102
-msgid "Route to here"
-msgstr "前往此处的路径"
-
-#: src/contextMenu.js:131
+#: src/contextMenu.js:135
 msgid "Nothing found here!"
 msgstr "这里什么都没有找到！"
 
-#: src/contextMenu.js:192
+#: src/contextMenu.js:196
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -839,56 +878,56 @@ msgstr "未指定文件名"
 msgid "Unable to export view"
 msgstr "无法导出视图"
 
-#: src/geoJSONSource.js:98
+#: src/geoJSONSource.js:97
 msgid "invalid coordinate"
 msgstr "无效坐标"
 
-#: src/geoJSONSource.js:147 src/geoJSONSource.js:187 src/geoJSONSource.js:202
+#: src/geoJSONSource.js:146 src/geoJSONSource.js:186 src/geoJSONSource.js:201
 msgid "parse error"
 msgstr "解析错误"
 
-#: src/geoJSONSource.js:181
+#: src/geoJSONSource.js:180
 msgid "unknown geometry"
 msgstr "未知几何方位"
 
-#: src/graphHopper.js:93 src/openTripPlanner.js:652
+#: src/graphHopper.js:112 src/transitPlan.js:201
 msgid "Route request failed."
 msgstr "路线请求失败。"
 
-#: src/graphHopper.js:100 src/openTripPlanner.js:615
+#: src/graphHopper.js:119 src/transitPlan.js:193
 msgid "No route found."
 msgstr "没有找到路线。"
 
-#: src/graphHopper.js:188
+#: src/graphHopper.js:207 src/transitplugins/openTripPlanner.js:1111
 msgid "Start!"
 msgstr "开始!"
 
-#: src/mainWindow.js:58
+#: src/mainWindow.js:61
 msgid "All Layer Files"
 msgstr "全部图层文件"
 
-#: src/mainWindow.js:441
+#: src/mainWindow.js:470
 msgid "Failed to connect to location service"
 msgstr "无法连接到定位服务"
 
-#: src/mainWindow.js:506
+#: src/mainWindow.js:565
 msgid "translator-credits"
 msgstr ""
-"tuhaihe <1132321739qq@gmail.com>, 2013\n"
+"tuhaihe <1132321739qq@gmail.com>, 2013, 2020\n"
 "Tong Hui <tonghuix@gmail.com>, 2014\n"
 "Mingcong Bai <jeffbai@aosc.xyz>, 2015, 2016, 2017, 2018\n"
-"Dingzhong Chen <wsxy162@gmail.com>, 2015-2018"
+"Dingzhong Chen <wsxy162@gmail.com>, 2015-2018\n"
+"王滋涵 <wi24rd@fedoraproject.org>, 2020"
 
-#: src/mainWindow.js:509
+#: src/mainWindow.js:568
 msgid "A map application for GNOME"
 msgstr "一款 GNOME 地图应用程序"
 
-#: src/mainWindow.js:520
-#| msgid "Copyright © 2011 – 2017 Red Hat, Inc. and The GNOME Maps authors"
+#: src/mainWindow.js:579
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "版权所有 © 2011 – 2019 红帽公司和 GNOME 地图作者"
 
-#: src/mainWindow.js:539
+#: src/mainWindow.js:599
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "地图数据来自 %s 和贡献者"
@@ -898,26 +937,36 @@ msgstr "地图数据来自 %s 和贡献者"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:555
+#: src/mainWindow.js:615
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "地图图块由 %s 提供"
 
-#: src/mapView.js:358
+#. Translators: this is an attribution string giving credit to the
+#. * search provider where the first %s placeholder is replaced by either
+#. * the bare name of the geocoder provider, or a linkified URL if one
+#. * is available, and the second %s placeholder is replaced by the
+#. * URL to the geocoder project page. These placeholders
+#. * can be swapped, if needed using the %n$s positional syntax
+#. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
+#. * before the provider).
+#.
+#: src/mainWindow.js:644
+#, javascript-format
+msgid "Search provided by %s using %s"
+msgstr "使用 %s 提供的服务搜索 %s"
+
+#: src/mapView.js:460
 msgid "File type is not supported"
 msgstr "文件类型未支持"
 
-#: src/mapView.js:365
+#: src/mapView.js:467
 msgid "Failed to open layer"
 msgstr "打开图层失败"
 
-#: src/mapView.js:401
+#: src/mapView.js:503
 msgid "Failed to open GeoURI"
 msgstr "打开 GeoURI 失败"
-
-#: src/openTripPlanner.js:648
-msgid "No timetable data found for this route."
-msgstr "找不到该路线的时间表信息。"
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
@@ -1180,6 +1229,10 @@ msgstr "选择类型"
 msgid "Done"
 msgstr "完成"
 
+#: src/photonParser.js:103
+msgid "Unnamed place"
+msgstr "未命名地点"
+
 #: src/placeBubble.js:143
 msgid "Population:"
 msgstr "人口总数："
@@ -1212,7 +1265,7 @@ msgstr "轮椅通行："
 msgid "Phone:"
 msgstr "电话："
 
-#: src/placeEntry.js:186
+#: src/placeEntry.js:212
 msgid "Failed to parse Geo URI"
 msgstr "解析 Geo URI 失败"
 
@@ -1222,7 +1275,7 @@ msgstr "解析 Geo URI 失败"
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/place.js:218 src/translations.js:329 src/translations.js:391
+#: src/place.js:268 src/translations.js:329 src/translations.js:391
 msgid "yes"
 msgstr "有"
 
@@ -1231,7 +1284,7 @@ msgstr "有"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/place.js:225
+#: src/place.js:275
 msgid "limited"
 msgstr "有限制"
 
@@ -1243,7 +1296,7 @@ msgstr "有限制"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/place.js:231 src/translations.js:335 src/translations.js:392
+#: src/place.js:281 src/translations.js:335 src/translations.js:392
 msgid "no"
 msgstr "无"
 
@@ -1252,9 +1305,25 @@ msgstr "无"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/place.js:238
+#: src/place.js:288
 msgid "designated"
 msgstr "专用设施"
+
+#: src/place.js:475
+msgid "Place not found in OpenStreetMap"
+msgstr "地点在 OpenStreetMap 上找不到"
+
+#: src/place.js:495
+msgid "OpenStreetMap URL is not valid"
+msgstr "OpenStreetMap URL 无效"
+
+#: src/place.js:500
+msgid "Coordinates in URL are not valid"
+msgstr "URL 中的坐标无效"
+
+#: src/place.js:521
+msgid "URL is not supported"
+msgstr "URL 不支持"
 
 #: src/printLayout.js:312
 #, javascript-format
@@ -1288,19 +1357,36 @@ msgstr "通过位置移除"
 msgid "Reverse route"
 msgstr "反向路线"
 
-#: src/sendToDialog.js:175
+#. Translators: The first string is the name of the city, the
+#. second string is the name of the app to add it to
+#: src/sendToDialog.js:104
+#, javascript-format
+msgid "Add %s to %s"
+msgstr "添加 %s 到 %s"
+
+#: src/sendToDialog.js:202
 msgid "Failed to open URI"
 msgstr "打开 URI 失败"
+
+#: src/sendToDialog.js:259
+#, javascript-format
+msgid "Open with %s"
+msgstr "用 %s 打开"
 
 #: src/shapeLayer.js:91
 msgid "failed to load file"
 msgstr "载入文件失败"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:293
+#: src/sidebar.js:299
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "估计时间：%s"
+
+#: src/sidebar.js:355
+#, javascript-format
+msgid "Itineraries provided by %s"
+msgstr "路线由 %s 提供"
 
 #. Translators: this is a format string indicating instructions
 #. * starting a journey at the address given as the parameter
@@ -1334,7 +1420,7 @@ msgstr "步行 %s"
 msgid "Arrive at %s"
 msgstr "到达时间为 %s"
 
-#: src/transit.js:77
+#: src/transit.js:77 src/transitplugins/openTripPlanner.js:1124
 msgid "Arrive"
 msgstr "到达"
 
@@ -1366,17 +1452,25 @@ msgstr "找不到下一个替代方案。"
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:141
+#: src/transitOptionsPanel.js:140
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%-m月%-d日"
+
+#: src/transitPlan.js:197
+msgid "No timetable data found for this route."
+msgstr "找不到该路线的时间表信息。"
+
+#: src/transitPlan.js:205
+msgid "No provider found for this route."
+msgstr "找不到该路线的提供商。"
 
 #. Translators: this is a format string for showing a departure and
 #. * arrival time, like:
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:254
+#: src/transitPlan.js:322
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s - %s"
@@ -1385,31 +1479,31 @@ msgstr "%s - %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: src/transitPlan.js:281
+#: src/transitPlan.js:351
 #, javascript-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] "%d 分钟"
+msgid "%s minute"
+msgid_plural "%s minutes"
+msgstr[0] "%s 分钟"
 
 #. translators: this is an indication for a trip duration,
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: src/transitPlan.js:292
+#: src/transitPlan.js:363
 #, javascript-format
-msgid "%d hour"
-msgid_plural "%d hours"
-msgstr[0] "%d 小时"
+msgid "%s hour"
+msgid_plural "%s hours"
+msgstr[0] "%s 小时"
 
 #. translators: this is an indication for a trip duration
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: src/transitPlan.js:298
+#: src/transitPlan.js:371
 #, javascript-format
-msgid "%d:%02d hour"
-msgid_plural "%d:%02d hours"
-msgstr[0] "%d:%02d 小时"
+msgid "%s:%s hour"
+msgid_plural "%s:%s hours"
+msgstr[0] "%s:%s 小时"
 
 #. Translators: this is a format string for showing a departure and
 #. * arrival time in a more compact manner to show in the instruction
@@ -1417,7 +1511,7 @@ msgstr[0] "%d:%02d 小时"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:651
+#: src/transitPlan.js:764
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s-%s"
@@ -1570,54 +1664,212 @@ msgstr "终端"
 msgid "service"
 msgstr "服务"
 
+#. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
+#: src/userLocationBubble.js:56
+#, javascript-format
+msgid "Accuracy: %s"
+msgstr "位置精度：%s"
+
 #. Translators: Accuracy of user location information
-#: src/utils.js:219
+#: src/utils.js:248
 msgid "Unknown"
 msgstr "未知"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:222
+#: src/utils.js:251
 msgid "Exact"
 msgstr "准确"
 
-#: src/utils.js:280
+#. Translators: this is a duration with only hours, using
+#. * an abbreviation for hours, corresponding to 'h' in English
+#.
+#: src/utils.js:332
 #, javascript-format
-msgid "%f h"
-msgstr "%f 小时"
+msgid "%s h"
+msgstr "%s 小时"
 
-#: src/utils.js:282
+#. Translators: this is a duration with hours and minutes parts
+#. * using abbreviations for hours and minutes, correspoding to 'h'
+#. * and 'min' in English. The minutes has appropriate plural variations
+#.
+#: src/utils.js:338
 #, javascript-format
-msgid "%f min"
-msgstr "%f 分钟"
+msgid "%s h %s min"
+msgid_plural "%s h %s mins"
+msgstr[0] "%s 小时 %s 分钟"
 
-#: src/utils.js:284
+#. Translators: this is a duration with minutes part
+#. * using abbreviation for minutes, corresponding to 'min' in English
+#. * with appropriate plural variations
+#.
+#: src/utils.js:345
 #, javascript-format
-msgid "%f s"
-msgstr "%f 秒"
+msgid "%s min"
+msgid_plural "%s mins"
+msgstr[0] "%s 分钟"
+
+#. Translators: this is a duration of less than one minute
+#. * with seconds using an abbreviation for seconds, corresponding to
+#. * 's' in English with appropriate plural forms
+#.
+#: src/utils.js:351
+#, javascript-format
+msgid "%s s"
+msgid_plural "%s s"
+msgstr[0] "%s 秒"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:295
+#: src/utils.js:362
 #, javascript-format
 msgid "%s km"
 msgstr "%s 千米"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:298
+#: src/utils.js:365
 #, javascript-format
 msgid "%s m"
 msgstr "%s 米"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:306
+#: src/utils.js:373
 #, javascript-format
 msgid "%s mi"
 msgstr "%s 英里"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:309
+#: src/utils.js:376
 #, javascript-format
 msgid "%s ft"
 msgstr "%s 英尺"
+
+#: src/transitplugins/goMetro.js:60
+msgid "This plugin doesn't support latest arrival"
+msgstr "该插件不支持最近到达信息"
+
+#: src/transitplugins/openTripPlanner.js:1185
+#, javascript-format
+msgid "Continue on %s"
+msgstr "继续沿 %s 前进"
+
+#: src/transitplugins/openTripPlanner.js:1187
+msgid "Continue"
+msgstr "继续"
+
+#: src/transitplugins/openTripPlanner.js:1190
+#, javascript-format
+msgid "Turn left on %s"
+msgstr "%s 处左转"
+
+#: src/transitplugins/openTripPlanner.js:1192
+msgid "Turn left"
+msgstr "左转"
+
+#: src/transitplugins/openTripPlanner.js:1195
+#, javascript-format
+msgid "Turn slightly left on %s"
+msgstr "%s 处稍向左转"
+
+#: src/transitplugins/openTripPlanner.js:1197
+msgid "Turn slightly left"
+msgstr "稍向左转"
+
+#: src/transitplugins/openTripPlanner.js:1200
+#, javascript-format
+msgid "Turn sharp left on %s"
+msgstr "%s 处向左急转"
+
+#: src/transitplugins/openTripPlanner.js:1202
+msgid "Turn sharp left"
+msgstr "向左急转"
+
+#: src/transitplugins/openTripPlanner.js:1205
+#, javascript-format
+msgid "Turn right on %s"
+msgstr "%s 处右转"
+
+#: src/transitplugins/openTripPlanner.js:1207
+msgid "Turn right"
+msgstr "右转"
+
+#: src/transitplugins/openTripPlanner.js:1210
+#, javascript-format
+msgid "Turn slightly right on %s"
+msgstr "%s 处稍向右转"
+
+#: src/transitplugins/openTripPlanner.js:1212
+msgid "Turn slightly right"
+msgstr "稍向右转"
+
+#: src/transitplugins/openTripPlanner.js:1215
+#, javascript-format
+msgid "Turn sharp right on %s"
+msgstr "%s 处向右急转"
+
+#: src/transitplugins/openTripPlanner.js:1217
+msgid "Turn sharp right"
+msgstr "向右急转"
+
+#: src/transitplugins/openTripPlanner.js:1223
+#, javascript-format
+msgid "In the roundabout, take exit %s"
+msgstr "在 %s 出环岛"
+
+#: src/transitplugins/openTripPlanner.js:1225
+#, javascript-format
+msgid "In the roundabout, take exit to %s"
+msgstr "环岛驶出 %s"
+
+#: src/transitplugins/openTripPlanner.js:1227
+msgid "Take the roundabout"
+msgstr "环岛绕行"
+
+#: src/transitplugins/openTripPlanner.js:1231
+#, javascript-format
+msgid "Take the elevator and get off at %s"
+msgstr "乘坐电梯并在 %s 层离开"
+
+#: src/transitplugins/openTripPlanner.js:1233
+msgid "Take the elevator"
+msgstr "乘坐电梯"
+
+#: src/transitplugins/openTripPlanner.js:1237
+#, javascript-format
+msgid "Make a left u-turn onto %s"
+msgstr "向走掉头进入 %s"
+
+#: src/transitplugins/openTripPlanner.js:1239
+msgid "Make a left u-turn"
+msgstr "向走掉头"
+
+#: src/transitplugins/openTripPlanner.js:1242
+#, javascript-format
+msgid "Make a right u-turn onto %s"
+msgstr "向右掉头进入 %s"
+
+#: src/transitplugins/openTripPlanner.js:1244
+msgid "Make a right u-turn"
+msgstr "向右掉头"
+
+#~ msgid "Open with another application"
+#~ msgstr "以其他程序打开"
+
+#~ msgid "Press enter to search"
+#~ msgstr "按下回车键开始搜索"
+
+#~ msgid "Route search by OpenTripPlanner"
+#~ msgstr "通过 OpenTripPlanner 搜索路线"
+
+#~ msgid "Add destination"
+#~ msgstr "添加目的地"
+
+#~ msgid "%f h"
+#~ msgstr "%f 小时"
+
+#~ msgid "%f min"
+#~ msgstr "%f 分钟"
+
+#~ msgid "%f s"
+#~ msgstr "%f 秒"
 
 #~ msgid "org.gnome.Maps"
 #~ msgstr "org.gnome.Maps"
