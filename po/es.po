@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2020-06-16 07:45+0000\n"
-"PO-Revision-Date: 2020-06-17 13:51+0200\n"
+"POT-Creation-Date: 2020-06-24 20:25+0000\n"
+"PO-Revision-Date: 2020-06-29 12:18+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
@@ -69,7 +69,7 @@ msgstr "El Proyecto GNOME"
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:34
-#: src/application.js:81 src/mainWindow.js:129 src/mainWindow.js:563
+#: src/application.js:81 src/mainWindow.js:129 src/mainWindow.js:567
 msgid "Maps"
 msgstr "Mapas"
 
@@ -228,6 +228,16 @@ msgstr "Modo nocturno"
 #: data/org.gnome.Maps.gschema.xml:87
 msgid "Whether the application is in night mode."
 msgstr "indica si la aplicación está en modo nocturno."
+
+#: data/org.gnome.Maps.gschema.xml:91
+msgid "Use hybrid aerial tiles"
+msgstr "Usar cuadrículas aéreas híbridas"
+
+#: data/org.gnome.Maps.gschema.xml:92
+msgid "Whether aerial tiles should use hybrid style (with labels)."
+msgstr ""
+"Indica si las cuadrículas aéreas se deben usar con un estilo híbrido (con "
+"etiquetas)."
 
 #: data/ui/check-in-dialog.ui:250 data/ui/check-in-dialog.ui:299
 msgid "Visibility"
@@ -425,8 +435,12 @@ msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "Abrir capa de formas"
 
+#: data/ui/layers-popover.ui:65
+msgid "Show Labels"
+msgstr "Mostrar etiquetas"
+
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:69
+#: data/ui/layers-popover.ui:102
 msgid "Open Shape Layer…"
 msgstr "Abrir capa de formas…"
 
@@ -935,23 +949,23 @@ msgstr "Empezar"
 msgid "All Layer Files"
 msgstr "Todos los archivos de capas"
 
-#: src/mainWindow.js:466
+#: src/mainWindow.js:470
 msgid "Failed to connect to location service"
 msgstr "Falló al conectar al servicio de ubicación"
 
-#: src/mainWindow.js:561
+#: src/mainWindow.js:565
 msgid "translator-credits"
 msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2013"
 
-#: src/mainWindow.js:564
+#: src/mainWindow.js:568
 msgid "A map application for GNOME"
 msgstr "Una aplicación de mapas para GNOME"
 
-#: src/mainWindow.js:575
+#: src/mainWindow.js:579
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 – 2019 Red Hat, Inc. y los autores de Mapas de GNOME"
 
-#: src/mainWindow.js:595
+#: src/mainWindow.js:599
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Datos de mapas por %s y colaboradores"
@@ -961,7 +975,7 @@ msgstr "Datos de mapas por %s y colaboradores"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:611
+#: src/mainWindow.js:615
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Cuadrículas de mapas proporcionadas por %s"
@@ -975,20 +989,20 @@ msgstr "Cuadrículas de mapas proporcionadas por %s"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:640
+#: src/mainWindow.js:644
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Búsqueda proporcionada por %s usando %s"
 
-#: src/mapView.js:440
+#: src/mapView.js:460
 msgid "File type is not supported"
 msgstr "Tipo de archivo no soportado"
 
-#: src/mapView.js:447
+#: src/mapView.js:467
 msgid "Failed to open layer"
 msgstr "Falló al abrir la capa"
 
-#: src/mapView.js:483
+#: src/mapView.js:503
 msgid "Failed to open GeoURI"
 msgstr "Falló al abrir el GeoURI"
 
