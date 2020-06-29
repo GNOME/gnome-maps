@@ -37,6 +37,8 @@ const _MEMORY_CACHE_SIZE_LIMIT = 100; /* number of tiles */
 
 const _LOGO_PADDING_X = 10;
 const _LOGO_PADDING_Y = 25;
+// extra pading below logo in RTL, where scale will be on the right side
+const _LOGO_PADDING_Y_RTL = 35;
 
 var AttributionLogo = GObject.registerClass({},
 class AttributionLogo extends GtkClutter.Actor {
@@ -49,6 +51,7 @@ class AttributionLogo extends GtkClutter.Actor {
         else
             return;
 
+        this._rtl = Gtk.get_locale_direction() === Gtk.TextDirection.RTL;
         view.connect('notify::width', () => this._updatePosition(view));
         view.connect('notify::height', () => this._updatePosition(view));
 
@@ -58,9 +61,16 @@ class AttributionLogo extends GtkClutter.Actor {
     _updatePosition(view) {
         let width = _attributionImage.pixbuf.width;
         let height = _attributionImage.pixbuf.height;
+        let x = view.width  - width  - _LOGO_PADDING_X;
+        /* TODO: ideally the attribution logo should be aligned to the left
+         * side in RTL locales, but I couldn't get that working with Clutter
+         * actor positioning, so adjust the padding to fit above the scale
+         * for now
+         */
+        let y = view.height - height -
+                (this._rtl ? _LOGO_PADDING_Y_RTL : _LOGO_PADDING_Y);
 
-        this.set_position(view.width  - width  - _LOGO_PADDING_X,
-                          view.height - height - _LOGO_PADDING_Y);
+        this.set_position(x, y);
     }
 });
 
