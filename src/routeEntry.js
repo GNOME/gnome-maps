@@ -35,7 +35,6 @@ var Type = {
 
 var RouteEntry = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/route-entry.ui',
-    Children: [ 'iconEventBox' ],
     InternalChildren: [ 'entryGrid',
                         'icon',
                         'button',

@@ -25,6 +25,7 @@ const Geocode = imports.gi.GeocodeGlib;
 const Application = imports.application;
 const PlaceStore = imports.placeStore;
 const TransitOptions = imports.transitOptions;
+const Utils = imports.utils;
 
 var MAX_QUERY_POINTS = 10;
 
@@ -165,6 +166,7 @@ var RouteQuery = GObject.registerClass({
 
     _init(args) {
         super._init(args);
+        Utils.debug('RouteQuery::_init ' + this);
         this._points = [];
         this._time = null;
         this._date = null;
@@ -185,6 +187,8 @@ var RouteQuery = GObject.registerClass({
             throw new Error('Too many query points');
         let point = new QueryPoint();
 
+        Utils.debug('addPoint() ' + this);
+
         if (index === -1)
             index = this.points.length - 1;
 
@@ -200,9 +204,12 @@ var RouteQuery = GObject.registerClass({
             this.notify('points');
             this._latest = point;
         });
+        Utils.debug('addPoint() 2');
         this._latest = point;
         this.notify('points');
-        this.emit('point-added', point, index);
+        // TODO: temporarily comment this out to get a bit further...
+        //this.emit('point-added', point, index);
+        Utils.debug('addPoint() 3');
         return point;
     }
 

@@ -17,14 +17,12 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
-const Champlain = imports.gi.Champlain;
-const Clutter = imports.gi.Clutter;
 const GdkPixbuf = imports.gi.GdkPixbuf;
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const GtkClutter = imports.gi.GtkClutter;
+const Shumate = imports.gi.Shumate;
 const System = imports.system;
 
 const Service = imports.service;
@@ -41,7 +39,7 @@ const _LOGO_PADDING_Y = 25;
 const _LOGO_PADDING_Y_RTL = 35;
 
 var AttributionLogo = GObject.registerClass({},
-class AttributionLogo extends GtkClutter.Actor {
+class AttributionLogo extends Gtk.Image {
 
     _init(view) {
         super._init();
@@ -61,16 +59,17 @@ class AttributionLogo extends GtkClutter.Actor {
     _updatePosition(view) {
         let width = _attributionImage.pixbuf.width;
         let height = _attributionImage.pixbuf.height;
-        let x = view.width  - width  - _LOGO_PADDING_X;
+        //let x = view.width  - width  - _LOGO_PADDING_X;
         /* TODO: ideally the attribution logo should be aligned to the left
          * side in RTL locales, but I couldn't get that working with Clutter
          * actor positioning, so adjust the padding to fit above the scale
          * for now
          */
-        let y = view.height - height -
-                (this._rtl ? _LOGO_PADDING_Y_RTL : _LOGO_PADDING_Y);
+        //let y = view.height - height -
+        //        (this._rtl ? _LOGO_PADDING_Y_RTL : _LOGO_PADDING_Y);
 
-        this.set_position(x, y);
+        // TODO: logo should be added to a GtkOverlay, I guess this should not be needed...
+        //this.set_position(x, y);
     }
 });
 
@@ -87,7 +86,7 @@ function _updateAttributionImage(source) {
 }
 
 function _createTileSource(source) {
-    let tileSource = new Champlain.NetworkTileSource({
+    let tileSource = new Shumate.NetworkTileSource({
         id: source.id,
         name: source.name,
         license: source.license,
@@ -95,7 +94,7 @@ function _createTileSource(source) {
         min_zoom_level: source.min_zoom_level,
         max_zoom_level: source.max_zoom_level,
         tile_size: source.tile_size,
-        renderer: new Champlain.ImageRenderer(),
+        //renderer: new Shumate.ImageRenderer(),
         uri_format: source.uri_format
     });
     tileSource.max_conns = source.max_connections;
@@ -106,18 +105,18 @@ function _createCachedSource(source) {
     let tileSource = _createTileSource(source);
     _updateAttributionImage(source);
 
-    let fileCache = new Champlain.FileCache({
+    let fileCache = new Shumate.FileCache({
         size_limit: _FILE_CACHE_SIZE_LIMIT,
-        renderer: new Champlain.ImageRenderer()
+        //renderer: new Shumate.ImageRenderer()
     });
 
-    let memoryCache = new Champlain.MemoryCache({
+    let memoryCache = new Shumate.MemoryCache({
         size_limit: _MEMORY_CACHE_SIZE_LIMIT,
-        renderer: new Champlain.ImageRenderer()
+        //renderer: new Shumate.ImageRenderer()
     });
 
-    let errorSource = new Champlain.NullTileSource({
-        renderer: new Champlain.ImageRenderer()
+    let errorSource = new Shumate.ErrorTileSource({
+        //renderer: new Shumate.ImageRenderer()
     });
 
     /*
@@ -125,7 +124,7 @@ function _createCachedSource(source) {
      * the next one in the chain tries instead. Until we get to the error
      * source.
      */
-    let sourceChain = new Champlain.MapSourceChain();
+    let sourceChain = new Shumate.MapSourceChain();
     sourceChain.push(errorSource);
     sourceChain.push(tileSource);
     sourceChain.push(fileCache);

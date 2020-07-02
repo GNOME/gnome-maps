@@ -69,12 +69,17 @@ var Sidebar = GObject.registerClass({
 }, class Sidebar extends Gtk.Revealer {
 
     _init(mapView) {
+        Utils.debug('Sidebar::_init');
         super._init({ transition_type: Gtk.RevealerTransitionType.SLIDE_LEFT });
+
+        Utils.debug('Sidebar::_init 2');
 
         this._mapView = mapView;
 
         this._query = Application.routeQuery;
         this._initInstructionList();
+
+        Utils.debug('Sidebar::_init 3');
 
         /* I could not get the custom GTK+ template widget to init properly
          * from the UI file, we also need to manually insert the transit
@@ -91,9 +96,13 @@ var Sidebar = GObject.registerClass({
                                         this._modeCarToggle,
                                         this._modeTransitToggle);
 
+        Utils.debug('Sidebar::_init 4');
+
         this._initQuerySignals();
+        Utils.debug('Sidebar::_init 5');
         this._query.addPoint(0);
         this._query.addPoint(1);
+        Utils.debug('Sidebar::_init 6');
         this._switchRoutingMode(Application.routeQuery.transportation);
         /* Enable/disable transit mode switch based on the presence of
          * public transit providers.
@@ -104,6 +113,8 @@ var Sidebar = GObject.registerClass({
          */
         if (!Application.routingDelegator.transitRouter.enabled)
             this._modeTransitToggle.destroy();
+
+        Utils.debug('end Sidebar::_init');
     }
 
     _initTransportationToggles(pedestrian, bike, car, transit) {
@@ -500,7 +511,8 @@ var Sidebar = GObject.registerClass({
 
     _clearInstructions() {
         let listBox = this._instructionList;
-        listBox.forall(listBox.remove.bind(listBox));
+        // TODO: GtkContainer is not available in GTK4, use get_first(), get_next(), or something like that
+        //listBox.foreach(listBox.remove.bind(listBox));
 
         this._instructionStack.visible_child = this._instructionWindow;
         this._timeInfo.label = '';

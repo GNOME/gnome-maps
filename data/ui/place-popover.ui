@@ -4,7 +4,6 @@
   <template class="Gjs_PlacePopover" parent="Gjs_SearchPopover">
     <property name="visible">False</property>
     <property name="hexpand">False</property>
-    <property name="modal">False</property>
     <style>
       <class name="maps-popover"/>
     </style>
@@ -26,12 +25,11 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="hscrollbar_policy">never</property>
-                <property name="shadow_type">in</property>
                 <child>
                   <object class="GtkListBox" id="list">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="expand">True</property>
+                    <property name="vexpand">True</property>
                     <property name="activate_on_single_click">True</property>
                   </object>
                 </child>

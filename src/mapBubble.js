@@ -47,8 +47,6 @@ class MapBubble extends Gtk.Popover {
         delete params.place;
 
         this._mapView = params.mapView;
-        params.relative_to = params.mapView;
-        params.transitions_enabled = false;
         delete params.mapView;
 
         let buttonFlags = params.buttons || Button.NONE;
@@ -95,6 +93,7 @@ class MapBubble extends Gtk.Popover {
         }
 
         this.add(ui.bubbleMainGrid);
+        this.set_parent(this._mapView);
     }
 
     get image() {

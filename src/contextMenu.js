@@ -37,14 +37,15 @@ const Utils = imports.utils;
 const ZoomInDialog = imports.zoomInDialog;
 
 var ContextMenu = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/context-menu.ui',
+    Template: 'resource:///org/gnome/Maps/ui/context-menu.ui' /*,
     InternalChildren: [ 'whatsHereItem',
                         'geoURIItem',
                         'addOSMLocationItem',
                         'routeFromHereItem',
                         'addIntermediateDestinationItem',
-                        'routeToHereItem' ],
-}, class ContextMenu extends Gtk.Menu {
+                        'routeToHereItem' ]*/,
+}, class ContextMenu extends Gtk.PopoverMenu {
+    // TODO: should create from a menu model…
     _init(params) {
         this._mapView = params.mapView;
         delete params.mapView;
@@ -54,9 +55,11 @@ var ContextMenu = GObject.registerClass({
 
         super._init(params);
 
-        this._mapView.connect('button-release-event',
-                              this._onButtonReleaseEvent.bind(this));
+        // TODO: use GtkGesture (and also for long-press, see https://gitlab.gnome.org/GNOME/gnome-maps/-/issues/2)
+        //this._mapView.connect('button-release-event',
+        //                      this._onButtonReleaseEvent.bind(this));
 
+        /* TODO: use menu model...
         this._whatsHereItem.connect('activate',
                                     this._onWhatsHereActivated.bind(this));
         this._geoURIItem.connect('activate',
@@ -69,6 +72,7 @@ var ContextMenu = GObject.registerClass({
                                         this._onAddIntermediateDestinationActivated.bind(this));
         this._routeToHereItem.connect('activate',
                                       this._onRouteToHereActivated.bind(this));
+        */
         Application.routeQuery.connect('notify::points',
                                        this._routingUpdate.bind(this));
         this._routingUpdate();
@@ -90,10 +94,11 @@ var ContextMenu = GObject.registerClass({
         let query = Application.routeQuery;
         let numPoints = query.points.length;
 
-        this._routeFromHereItem.sensitive = numPoints < RouteQuery.MAX_QUERY_POINTS;
-        this._routeToHereItem.sensitive = numPoints < RouteQuery.MAX_QUERY_POINTS;
-        this._addIntermediateDestinationItem.sensitive =
-            query.filledPoints.length >= 2 && numPoints < RouteQuery.MAX_QUERY_POINTS;
+        // TODO: update menu model
+        //this._routeFromHereItem.sensitive = numPoints < RouteQuery.MAX_QUERY_POINTS;
+        //this._routeToHereItem.sensitive = numPoints < RouteQuery.MAX_QUERY_POINTS;
+        //this._addIntermediateDestinationItem.sensitive =
+        //    query.filledPoints.length >= 2 && numPoints < RouteQuery.MAX_QUERY_POINTS;
     }
 
     _onRouteFromHereActivated() {

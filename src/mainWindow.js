@@ -22,12 +22,12 @@
 
 const _ = imports.gettext.gettext;
 
-const Champlain = imports.gi.Champlain;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Gdk = imports.gi.Gdk;
 const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
+const Shumate = imports.gi.Shumate;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
@@ -92,6 +92,7 @@ var MainWindow = GObject.registerClass({
     }
 
     _init(params) {
+        Utils.debug('MainWindow::_init');
         super._init(params);
 
         this._configureId = 0;
@@ -101,7 +102,7 @@ var MainWindow = GObject.registerClass({
                 MapView.MapType.LOCAL : undefined,
             mainWindow: this });
 
-        this._mainGrid.add(this._mapView);
+        this._mainGrid.attach(this._mapView, 0, 0, 1, 1);
 
         this._mapView.gotoUserLocation(false);
 
@@ -110,15 +111,24 @@ var MainWindow = GObject.registerClass({
         this._contextMenu = new ContextMenu.ContextMenu({ mapView: this._mapView,
                                                           mainWindow: this });
 
+        Utils.debug('MainWindow::_init 2');
+
         this._initActions();
+        Utils.debug('MainWindow::_init 3');
         this._initHeaderbar();
+        Utils.debug('MainWindow::_init 4');
         this._initSignals();
+        Utils.debug('MainWindow::_init 5');
         this._restoreWindowGeometry();
+        Utils.debug('MainWindow::_init 6');
         this._initDND();
+
+        Utils.debug('MainWindow::_init 3');
 
         this._grid.attach(this._sidebar, 1, 0, 1, 1);
 
-        this._grid.show_all();
+        // TODO: this should not be needed (and not supported) anymore?
+        //this._grid.show_all();
 
         /* for some reason, setting the title of the window through the .ui
          * template does not work anymore (maybe has something to do with
@@ -127,6 +137,7 @@ var MainWindow = GObject.registerClass({
          * overview.
          */
         this.title = _("Maps");
+        Utils.debug('end MainWindow::_init');
     }
 
     _createPlaceEntry() {
@@ -146,7 +157,8 @@ var MainWindow = GObject.registerClass({
 
         let popover = placeEntry.popover;
         popover.connect('selected', () => this._mapView.grab_focus());
-        this._mapView.view.connect('button-press-event', () => popover.hide());
+        // TODO: should use GtkGesture for this...
+        //this._mapView.view.connect('button-press-event', () => popover.hide());
         return placeEntry;
     }
 
@@ -161,6 +173,7 @@ var MainWindow = GObject.registerClass({
     }
 
     _initDND() {
+        /* TODO: use new GTK4 API with GtkDropTarget, and connect signals
         this.drag_dest_set(Gtk.DestDefaults.DROP, null, 0);
         this.drag_dest_add_uri_targets();
 
@@ -176,6 +189,7 @@ var MainWindow = GObject.registerClass({
             else
                 Gtk.drag_finish(ctx, false, false, time);
         });
+        */
     }
 
     _initActions() {
@@ -243,17 +257,20 @@ var MainWindow = GObject.registerClass({
     }
 
     _initSignals() {
-        this.connect('delete-event', this._quit.bind(this));
-        this.connect('configure-event',
-                     this._onConfigureEvent.bind(this));
+        this.connect('close-request', this._quit.bind(this));
+        // TODO: what is the equivalent in GTK4?
+        //this.connect('configure-event',
+        //             this._onConfigureEvent.bind(this));
 
-        this.connect('window-state-event',
-                     this._onWindowStateEvent.bind(this));
+        this.connect('notify::is_maximized',
+                     this._onMaximizedChanged.bind(this));
+        /* TODO: replace with GtkGesture
         this._mapView.view.connect('button-press-event', () => {
             // Can not call something that will generate clutter events
             // from a clutter event-handler. So use an idle.
             Mainloop.idle_add(() => this._mapView.grab_focus());
         });
+        */
 
         this.application.connect('notify::connected', () => {
             if (this.application.connected || this.application.local_tile_path)
@@ -267,40 +284,41 @@ var MainWindow = GObject.registerClass({
          * hijack the key-press to the main window and make sure that
          * they reach the entry before they can be swallowed as accelerator.
          */
-        this.connect('key-press-event', (window, event) => {
-            let focusWidget = window.get_focus();
-            let keyval = event.get_keyval()[1];
-            let keys = [Gdk.KEY_plus, Gdk.KEY_KP_Add,
-                        Gdk.KEY_minus, Gdk.KEY_KP_Subtract,
-                        Gdk.KEY_equal];
-            let isPassThroughKey = keys.indexOf(keyval) !== -1;
+        // TODO: replace with GtkGesture
+        //this.connect('key-press-event', (window, event) => {
+        //    let focusWidget = window.get_focus();
+        //    let keyval = event.get_keyval()[1];
+        //    let keys = [Gdk.KEY_plus, Gdk.KEY_KP_Add,
+        //                Gdk.KEY_minus, Gdk.KEY_KP_Subtract,
+        //                Gdk.KEY_equal];
+        //    let isPassThroughKey = keys.indexOf(keyval) !== -1;
+        //
+        //    /* if no entry is focused, and the key is not one we should treat
+        //     * as a zoom accelerator when no entry is focused, focus the
+        //     * main search entry in the headebar to propaget the keypress there
+        //     */
+        //    if (!(focusWidget instanceof Gtk.Entry) && !isPassThroughKey) {
+        //        /* if the search entry does not handle the event, pass it on
+        //         * instead of activating the entry
+        //         */
+        //        if (this._placeEntry.handle_event(event) === Gdk.EVENT_PROPAGATE)
+        //            return false;
+        //
+        //        this._placeEntry.has_focus = true;
+        //        focusWidget = this._placeEntry;
+        //    }
+        //
+        //    if (focusWidget instanceof Gtk.Entry)
+        //        return focusWidget.event(event);
+        //
+        //    return false;
+        //});
 
-            /* if no entry is focused, and the key is not one we should treat
-             * as a zoom accelerator when no entry is focused, focus the
-             * main search entry in the headebar to propaget the keypress there
-             */
-            if (!(focusWidget instanceof Gtk.Entry) && !isPassThroughKey) {
-                /* if the search entry does not handle the event, pass it on
-                 * instead of activating the entry
-                 */
-                if (this._placeEntry.handle_event(event) === Gdk.EVENT_PROPAGATE)
-                    return false;
-
-                this._placeEntry.has_focus = true;
-                focusWidget = this._placeEntry;
-            }
-
-            if (focusWidget instanceof Gtk.Entry)
-                return focusWidget.event(event);
-
-            return false;
-        });
-
-        this._mapView.view.connect('notify::zoom-level',
+        this._mapView.get_viewport().connect('notify::zoom-level',
                                    this._updateZoomButtonsSensitivity.bind(this));
-        this._mapView.view.connect('notify::max-zoom-level',
+        this._mapView.get_viewport().connect('notify::max-zoom-level',
                                    this._updateZoomButtonsSensitivity.bind(this));
-        this._mapView.view.connect('notify::min-zoom-level',
+        this._mapView.get_viewport().connect('notify::min-zoom-level',
                                    this._updateZoomButtonsSensitivity.bind(this));
     }
 
@@ -336,15 +354,13 @@ var MainWindow = GObject.registerClass({
             application: this.application
         });
         this._headerBar.pack_start(this._headerBarLeft);
-
         this._headerBarRight = new HeaderBar.HeaderBarRight({
             mapView: this._mapView,
             application: this.application
         });
         this._headerBar.pack_end(this._headerBarRight);
-
         this._placeEntry = this._createPlaceEntry();
-        this._headerBar.custom_title = this._placeEntry;
+        this._headerBar.title_widget = this._placeEntry;
 
         Application.geoclue.connect('notify::state',
                                     this._updateLocationSensitivity.bind(this));
@@ -368,6 +384,7 @@ var MainWindow = GObject.registerClass({
         })
         this._actionBar.pack_end(this._actionBarRight);
 
+        /* TODO: how to do this with GTK4?
         this.connect('size-allocate', () => {
             let [width, height] = this.get_size();
             if (width < _ADAPTIVE_VIEW_WIDTH) {
@@ -384,21 +401,20 @@ var MainWindow = GObject.registerClass({
                 this._placeEntry.set_margin_end(_PLACE_ENTRY_MARGIN);
             }
         });
+        */
     }
 
     _saveWindowGeometry() {
-        let window = this.get_window();
-        let state = window.get_state();
-
-        if (state & Gdk.WindowState.MAXIMIZED)
+        if (this.is_maximized)
             return;
 
         // GLib.Variant.new() can handle arrays just fine
         let size = this.get_size();
         Application.settings.set('window-size', size);
 
-        let position = this.get_position();
-        Application.settings.set('window-position', position);
+        // TODO: is this possible in GTK4?
+        //let position = this.get_position();
+        //Application.settings.set('window-position', position);
     }
 
     _restoreWindowGeometry() {
@@ -412,7 +428,8 @@ var MainWindow = GObject.registerClass({
         if (position.length === 2) {
             let [x, y] = position;
 
-            this.move(x, y);
+            // TODO: is this possible in GTK4?
+            //this.move(x, y);
         }
 
         if (Application.settings.get('window-maximized'))
@@ -432,14 +449,9 @@ var MainWindow = GObject.registerClass({
         });
     }
 
-    _onWindowStateEvent(widget, event) {
-        let window = widget.get_window();
-        let state = window.get_state();
+    _onMaximizedChanged() {
+        let maximized = this.is_maximized;
 
-        if (state & Gdk.WindowState.FULLSCREEN)
-            return;
-
-        let maximized = (state & Gdk.WindowState.MAXIMIZED);
         Application.settings.set('window-maximized', maximized);
     }
 
@@ -452,6 +464,7 @@ var MainWindow = GObject.registerClass({
 
         // always save geometry before quitting
         this._saveWindowGeometry();
+        Application.application.quit();
 
         return false;
     }

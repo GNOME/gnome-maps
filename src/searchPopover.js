@@ -24,6 +24,8 @@ const Gdk = imports.gi.Gdk;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 
+const Utils = imports.utils;
+
 /* Abstract search result popover that progagates keypress events from a
    focus-taking internal widget to the spawning search entry widget */
 var SearchPopover = GObject.registerClass({
@@ -31,16 +33,26 @@ var SearchPopover = GObject.registerClass({
 }, class SearchPopover extends Gtk.Popover {
 
     _init(props) {
+        Utils.debug('SearchPopover::_init');
+        let parent = props.parent;
+        delete props.parent;
+
         super._init(props);
 
-        this._entry = this.relative_to;
+        Utils.debug('SearchPopover::_init 2');
+
+        this.set_parent(parent);
+        this._entry = parent;
+
+        Utils.debug('SearchPopover::_init 3');
 
         // We need to propagate events to the listbox so that we can
         // keep typing while selecting a place. But we do not want to
         // propagate the 'enter' key press if there is a selection.
-        this._entry.connect('key-press-event',
-                            this._propagateKeys.bind(this));
-        this._entry.connect('button-press-event', () => this._list.unselect_all());
+        // TODO: replace with GtkGesture for GTK 4
+        //this._entry.connect('key-press-event',
+        //                    this._propagateKeys.bind(this));
+        //this._entry.connect('button-press-event', () => this._list.unselect_all());
     }
 
     _propagateKeys(entry, event) {

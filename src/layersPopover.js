@@ -75,8 +75,6 @@ var LayersPopover = GObject.registerClass({
         delete params.mapView;
 
         super._init({ width_request: 200,
-                      no_show_all: true,
-                      transitions_enabled: false,
                       visible: false });
 
         this._aerialLayerButton.join_group(this._streetLayerButton);
@@ -138,11 +136,12 @@ var LayersPopover = GObject.registerClass({
                 }
             });
 
-            this._mapView.view.connect("notify::zoom-level",
+            let viewport = this._mapView.get_viewport();
+            viewport.connect("notify::zoom-level",
                                        this._setLayerPreviews.bind(this));
-            this._mapView.view.connect("notify::latitude",
+            viewport.connect("notify::latitude",
                                        this._setLayerPreviews.bind(this));
-            this._mapView.view.connect("notify::longitude",
+            viewport.connect("notify::longitude",
                                        this._setLayerPreviews.bind(this));
             Application.settings.connect("changed::night-mode",
                                          this._onNightModeChanged.bind(this));

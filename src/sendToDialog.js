@@ -23,7 +23,8 @@ const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const GWeather = imports.gi.GWeather;
+// TODO: GWeather for GTK 4
+//const GWeather = imports.gi.GWeather;
 const Soup = imports.gi.Soup;
 
 const Application = imports.application;

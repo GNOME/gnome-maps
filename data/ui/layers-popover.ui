@@ -1,113 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <!-- interface-requires gtk+ 3.10 -->
   <template class="Gjs_LayersPopover" parent="GtkPopover">
-    <child>
+    <property name="child">
       <object class="GtkGrid" id="grid">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
+        <property name="can_focus">0</property>
         <property name="halign">center</property>
         <property name="valign">center</property>
         <property name="row_spacing">5</property>
         <child>
           <object class="GtkRadioButton" id="streetLayerButton">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="draw-indicator">False</property>
+            <property name="draw-indicator">0</property>
             <style>
               <class name="layer-radio-button"/>
             </style>
             <child>
-              <object class="GtkImage" id="streetLayerImage">
-                <property name="visible">True</property>
-              </object>
+              <object class="GtkImage" id="streetLayerImage"/>
             </child>
+            <layout>
+              <property name="left-attach">0</property>
+              <property name="top-attach">0</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left-attach">0</property>
-            <property name="top-attach">0</property>
-          </packing>
         </child>
         <child>
           <object class="GtkRadioButton" id="aerialLayerButton">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="draw-indicator">False</property>
+            <property name="draw-indicator">0</property>
             <style>
               <class name="layer-radio-button"/>
             </style>
             <child>
-              <object class="GtkImage" id="aerialLayerImage">
-                <property name="visible">True</property>
-              </object>
+              <object class="GtkImage" id="aerialLayerImage"/>
             </child>
+            <layout>
+              <property name="left-attach">0</property>
+              <property name="top-attach">1</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left-attach">0</property>
-            <property name="top-attach">1</property>
-          </packing>
         </child>
         <child>
           <object class="GtkRevealer" id="hybridAerialRevealer">
-            <property name="can-focus">False</property>
-            <property name="visible">True</property>
-            <child>
+            <property name="can-focus">0</property>
+            <property name="child">
               <object class="GtkBox">
-                <property name="orientation">GTK_ORIENTATION_HORIZONTAL</property>
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
+                <property name="can-focus">0</property>
                 <child>
                   <object class="GtkLabel">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="hexpand">True</property>
+                    <property name="can-focus">0</property>
+                    <property name="hexpand">1</property>
                     <property name="halign">GTK_ALIGN_START</property>
                     <property name="label" translatable="yes">Show Labels</property>
                   </object>
                 </child>
                 <child>
                   <object class="GtkCheckButton">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
                     <property name="action-name">win.hybrid-aerial</property>
                   </object>
                 </child>
               </object>
-            </child>
+            </property>
+            <layout>
+              <property name="left-attach">0</property>
+              <property name="top-attach">2</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left-attach">0</property>
-            <property name="top-attach">2</property>
-          </packing>
         </child>
         <child>
           <object class="GtkListBox" id="layersListBox">
             <property name="name">layers-list-box</property>
-            <property name="visible">false</property>
-            <property name="can_focus">False</property>
+            <property name="visible">0</property>
+            <property name="can_focus">0</property>
             <property name="selection-mode">none</property>
             <style>
               <class name="frame"/>
             </style>
+            <layout>
+              <property name="left-attach">0</property>
+              <property name="top-attach">3</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left-attach">0</property>
-            <property name="top-attach">3</property>
-          </packing>
         </child>
         <child>
           <object class="GtkButton" id="loadLayerButton">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
             <property name="label" translatable="yes" comments="Translators: This string uses ellipsis character">Open Shape Layer…</property>
             <property name="action-name">win.open-shape-layer</property>
+            <layout>
+              <property name="left-attach">0</property>
+              <property name="top-attach">4</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left-attach">0</property>
-            <property name="top-attach">4</property>
-          </packing>
         </child>
       </object>
-    </child>
+    </property>
   </template>
 </interface>

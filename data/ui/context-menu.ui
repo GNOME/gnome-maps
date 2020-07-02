@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.0 -->
-  <template class="Gjs_ContextMenu" parent="GtkMenu">
+  <template class="Gjs_ContextMenu" parent="GtkPopoverMenu">
     <property name="visible">False</property>
+    <!-- TODO: build from menu model...
     <child>
       <object class="GtkMenuItem" id="routeFromHereItem">
         <property name="name">route-from-here-item</property>
@@ -52,5 +53,6 @@
         <property name="visible">True</property>
       </object>
     </child>
+    -->
   </template>
 </interface>

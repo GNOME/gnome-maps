@@ -24,6 +24,7 @@ const Application = imports.application;
 const PlaceListRow = imports.placeListRow;
 const PlaceStore = imports.placeStore;
 const SearchPopover = imports.searchPopover;
+const Utils = imports.utils;
 
 const _PLACE_ICON_SIZE = 20;
 
@@ -40,16 +41,18 @@ var PlacePopover = GObject.registerClass({
 }, class PlacePopover extends SearchPopover.SearchPopover {
 
     _init(props) {
+        Utils.debug('PlacePopover::_init');
         let numVisible = props.num_visible;
         delete props.num_visible;
 
         this._maxChars = props.maxChars;
         delete props.maxChars;
 
-        props.transitions_enabled = false;
+        Utils.debug('PlacePopover::_init 2');
+
         super._init(props);
 
-        this._entry = this.relative_to;
+        Utils.debug('PlacePopover::_init 3');
 
         this._list.connect('row-activated', (list, row) => {
             if (row)

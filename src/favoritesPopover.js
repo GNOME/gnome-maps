@@ -49,7 +49,6 @@ var FavoritesPopover = GObject.registerClass({
         this._mapView = params.mapView;
         delete params.mapView;
 
-        params.transitions_enabled = false;
         super._init(params);
 
         this._rows = 0;
@@ -103,7 +102,8 @@ var FavoritesPopover = GObject.registerClass({
     }
 
     _updateList() {
-        this._list.forall((row) => row.destroy());
+        // TODO: GtkContainer is not available in GTK4, use get_first(), get_next(), or something like that
+        //this._list.forall((row) => row.destroy());
 
         let rows = 0;
         this._model.foreach((model, path, iter) => {

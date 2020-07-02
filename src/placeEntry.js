@@ -89,13 +89,17 @@ var PlaceEntry = GObject.registerClass({
     }
 
     _init(props) {
+        Utils.debug('PlaceEntry::_init');
         let numVisible = props.num_visible || 6;
         delete props.num_visible;
         this._mapView = props.mapView;
         delete props.mapView;
 
-        if (!props.loupe)
-            props.primary_icon_name = null;
+        Utils.debug('PlaceEntry::_init 2');
+        // TODO: GtkSearchEntry always shows icon in GTK4, should we use a normal entry
+        // for the route case to not have search icons?
+        //if (!props.loupe)
+        //    props.primary_icon_name = null;
         delete props.loupe;
 
         let maxChars = props.maxChars;
@@ -104,19 +108,27 @@ var PlaceEntry = GObject.registerClass({
         this._matchRoute = props.matchRoute || false;
         delete props.matchRoute;
 
+        Utils.debug('PlaceEntry::_init 3');
+
         super._init(props);
+
+        Utils.debug('PlaceEntry::_init 4');
 
         this._filter = new Gtk.TreeModelFilter({ child_model: Application.placeStore });
         this._filter.set_visible_func(this._completionVisibleFunc.bind(this));
 
+        Utils.debug('PlaceEntry::_init 5');
+
         this._popover = this._createPopover(numVisible, maxChars);
+
+        Utils.debug('PlaceEntry::_init 6');
 
         this.connect('search-changed', this._onSearchChanged.bind(this));
 
         this._cache = {};
 
         // clear cache when view moves, as result are location-dependent
-        this._mapView.view.connect('notify::latitude', () => this._cache = {});
+        this._mapView.get_viewport().connect('notify::latitude', () => this._cache = {});
     }
 
     _onSearchChanged() {
@@ -166,21 +178,27 @@ var PlaceEntry = GObject.registerClass({
 
     _createPopover(numVisible, maxChars) {
         let popover = new PlacePopover.PlacePopover({ num_visible:   numVisible,
-                                                      relative_to:   this,
-                                                      maxChars:      maxChars});
+                                                      maxChars:      maxChars,
+                                                      parent:        this });
 
+        Utils.debug('_createPopover');
+
+        // TODO: how to do this in GTK4?
+        /*
         this.connect('size-allocate', (widget, allocation) => {
             // Magic number to make the alignment pixel perfect.
             let width_request = allocation.width + 20;
             // set at least 320 px width to avoid too narrow in the sidebar
             popover.width_request = Math.max(width_request, 320);
         });
+        */
 
         popover.connect('selected', (widget, place) => {
             this.place = place;
             popover.hide();
         });
 
+        Utils.debug('_createPopover 2');
         return popover;
     }
 

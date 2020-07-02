@@ -79,14 +79,16 @@ var TransitOptionsPanel = GObject.registerClass({
         /* trigger an update of the query time as soon as focus leave the time
          * entry, to allow the user to enter a time before selecting start
          * and destination without having to press enter */
-        this._transitTimeEntry.connect('focus-out-event',
-            this._onTransitTimeEntryActivated.bind(this));
-        this._transitDateButton.popover.get_child().connect('day-selected-double-click',
+        // TODO: how do we do this in GTK 4?
+        //this._transitTimeEntry.connect('focus-out-event',
+        //    this._onTransitTimeEntryActivated.bind(this));
+        this._transitDateButton.popover.get_child().connect('day-selected',
             this._onTransitDateCalenderDaySelected.bind(this));
-        this._transitDateButton.connect('toggled',
-            this._onTransitDateButtonToogled.bind(this));
-        this._transitParametersMenuButton.connect('toggled',
-            this._onTransitParametersToggled.bind(this))
+        // TODO: connect to 'closed' on the popover instead
+        //this._transitDateButton.connect('toggled',
+        //    this._onTransitDateButtonToogled.bind(this));
+        //this._transitParametersMenuButton.connect('toggled',
+        //    this._onTransitParametersToggled.bind(this))
     }
 
     _onTransitTimeOptionsComboboxChanged() {
