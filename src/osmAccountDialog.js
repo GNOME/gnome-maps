@@ -22,7 +22,8 @@
 
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const WebKit2 = imports.gi.WebKit2;
+// TODO: WebKit for GTK 4
+//const WebKit2 = imports.gi.WebKit2;
 
 const Application = imports.application;
 

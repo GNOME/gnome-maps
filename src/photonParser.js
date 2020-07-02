@@ -22,7 +22,8 @@
 const _ = imports.gettext.gettext;
 
 const Geocode = imports.gi.GeocodeGlib;
-const GWeather = imports.gi.GWeather;
+// TODO: GWeather for GTK 4?
+//const GWeather = imports.gi.GWeather;
 
 const Address = imports.address;
 const OSMTypes = imports.osmTypes;

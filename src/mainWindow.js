@@ -22,12 +22,12 @@
 
 const _ = imports.gettext.gettext;
 
-const Champlain = imports.gi.Champlain;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Gdk = imports.gi.Gdk;
 const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
+const Shumate = imports.gi.Shumate;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
@@ -101,7 +101,7 @@ var MainWindow = GObject.registerClass({
                 MapView.MapType.LOCAL : undefined,
             mainWindow: this });
 
-        this._mainGrid.add(this._mapView);
+        this._mainGrid.attach(this._mapView, 0, 0, 1, 1);
 
         this._mapView.gotoUserLocation(false);
 

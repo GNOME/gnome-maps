@@ -44,7 +44,8 @@ var ContextMenu = GObject.registerClass({
                         'routeFromHereItem',
                         'addIntermediateDestinationItem',
                         'routeToHereItem' ],
-}, class ContextMenu extends Gtk.Menu {
+}, class ContextMenu extends Gtk.PopoverMenu {
+    // TODO: should create from a menu model…
     _init(params) {
         this._mapView = params.mapView;
         delete params.mapView;

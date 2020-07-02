@@ -19,13 +19,11 @@
  * Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
-const Champlain = imports.gi.Champlain;
-const Clutter = imports.gi.Clutter;
 const GObject = imports.gi.GObject;
 const Geocode = imports.gi.GeocodeGlib;
 const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
-const GtkChamplain = imports.gi.GtkChamplain;
+const Shumate = imports.gi.Shumate;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
@@ -59,6 +57,7 @@ var MapType = {
 };
 const _LOCATION_STORE_TIMEOUT = 500;
 const MapMinZoom = 2;
+const MapMaxZoom = 19;
 
 /*
  * Due to the mathematics of spherical mericator projection,
@@ -110,10 +109,10 @@ var MapView = GObject.registerClass({
         'going-to-user-location': {},
         'gone-to-user-location': {},
         'view-moved': {},
-        'marker-selected': { param_types: [Champlain.Marker] },
+        'marker-selected': { param_types: [Shumate.Marker] },
         'map-type-changed': { param_types: [GObject.TYPE_STRING] }
     },
-}, class MapView extends GtkChamplain.Embed {
+}, class MapView extends Shumate.View {
 
     get routingOpen() {
         return this._routingOpen || this._instructionMarkerLayer.visible;
@@ -166,36 +165,34 @@ var MapView = GObject.registerClass({
         this._connectRouteSignals();
     }
 
-    _initScale(view) {
-        this._scale = new Champlain.Scale({ visible: true });
-        this._scale.connect_view(view);
+    _initScale() {
+        this._scale = new Shumate.Scale({ visible: true });
+        // this._scale.connect_view();
 
         if (Utils.getMeasurementSystem() === Utils.METRIC_SYSTEM)
-            this._scale.unit = Champlain.Unit.KM;
+            this._scale.unit = Shumate.Unit.KM;
         else
-            this._scale.unit = Champlain.Unit.MILES;
+            this._scale.unit = Shumate.Unit.MILES;
 
-        this._scale.set_x_expand(true);
-        this._scale.set_y_expand(true);
-        this._scale.set_x_align(Clutter.ActorAlign.START);
-        this._scale.set_y_align(Clutter.ActorAlign.END);
-        view.add_child(this._scale);
+        // TODO: scale should be added to a GtkOverlay...
+        // view.add_child(this._scale);
     }
 
     _initView() {
-        let view = this.get_view();
+        let viewport = this.get_viewport();
 
-        view.min_zoom_level = MapMinZoom;
-        view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_OUT_CUBIC;
-        view.reactive = true;
-        view.kinetic_mode = true;
-        view.horizontal_wrap = true;
+        viewport.min_zoom_level = MapMinZoom;
+        viewport.max_zoom_level = MapMaxZoom;
 
-        view.connect('notify::latitude', this._onViewMoved.bind(this));
+        // this.goto_animation_mode = Clutter.AnimationMode.EASE_IN_OUT_CUBIC;
+        this.kinetic_mode = true;
+        this.horizontal_wrap = true;
+
+        this.connect('notify::latitude', this._onViewMoved.bind(this));
         // switching map type will set view min-zoom-level from map source
-        view.connect('notify::min-zoom-level', () => {
-            if (view.min_zoom_level < MapMinZoom) {
-                view.min_zoom_level = MapMinZoom;
+        this.connect('notify::min-zoom-level', () => {
+            if (viewport.min_zoom_level < MapMinZoom) {
+                viewport.min_zoom_level = MapMinZoom;
             }
         });
 
@@ -221,8 +218,7 @@ var MapView = GObject.registerClass({
             view.set_background_pattern(this._darkBackground);
         }
 
-        this._initScale(view);
-        return view;
+        this._initScale();
     }
 
     /* handler to draw background for dark theme,
@@ -313,19 +309,17 @@ var MapView = GObject.registerClass({
     }
 
     _initLayers() {
-        let mode = Champlain.SelectionMode.SINGLE;
+        this._userLocationLayer = new Shumate.MarkerLayer();
+        this.add_layer(this._userLocationLayer);
 
-        this._userLocationLayer = new Champlain.MarkerLayer({ selection_mode: mode });
-        this.view.add_layer(this._userLocationLayer);
+        this._placeLayer = new Shumate.MarkerLayer();
+        this.add_layer(this._placeLayer);
 
-        this._placeLayer = new Champlain.MarkerLayer({ selection_mode: mode });
-        this.view.add_layer(this._placeLayer);
+        this._instructionMarkerLayer = new Shumate.MarkerLayer();
+        this.add_layer(this._instructionMarkerLayer);
 
-        this._instructionMarkerLayer = new Champlain.MarkerLayer({ selection_mode: mode });
-        this.view.add_layer(this._instructionMarkerLayer);
-
-        this._annotationMarkerLayer = new Champlain.MarkerLayer({ selection_mode: mode });
-        this.view.add_layer(this._annotationMarkerLayer);
+        this._annotationMarkerLayer = new Shumate.MarkerLayer();
+        this.add_layer(this._annotationMarkerLayer);
 
         ShapeLayer.SUPPORTED_TYPES.push(GeoJSONShapeLayer.GeoJSONShapeLayer);
         ShapeLayer.SUPPORTED_TYPES.push(KmlShapeLayer.KmlShapeLayer);
@@ -396,7 +390,7 @@ var MapView = GObject.registerClass({
         if (this._mapType && this._mapType === mapType)
             return;
 
-        let overlay_sources = this.view.get_overlay_sources();
+        let overlay_sources = this.get_overlay_sources();
 
         this._mapType = mapType;
 
@@ -411,14 +405,15 @@ var MapView = GObject.registerClass({
             } else {
                 if (Service.getService().tiles.streetDark &&
                     Application.settings.get('night-mode')) {
-                    this.view.map_source = MapSource.createStreetDarkSource();
+                    this.map_source = MapSource.createStreetDarkSource();
                 } else {
-                    this.view.map_source = MapSource.createStreetSource();
+                    this.map_source = MapSource.createStreetSource();
                 }
             }
             if (!this._attribution) {
-                this._attribution = new MapSource.AttributionLogo(this.view);
-                this.view.add_child(this._attribution);
+                this._attribution = new MapSource.AttributionLogo(this);
+                // TODO: should add attribution logo to a GtkOverlay...
+                //this.view.add_child(this._attribution);
             }
 
             Application.settings.set('map-type', mapType);
@@ -543,7 +538,7 @@ var MapView = GObject.registerClass({
         let place =
             new Place.Place({ location: new Location.Location({ latitude: lat,
                                                                 longitude: lon }),
-                              initialZoom: this.view.zoom_level });
+                              initialZoom: this.get_viewport().zoom_level });
 
         new MapWalker.MapWalker(place, this).goTo(true);
     }
@@ -585,30 +580,34 @@ var MapView = GObject.registerClass({
 
     _goToStoredLocation() {
         let location = Application.settings.get('last-viewed-location');
+        let viewport = this.get_viewport();
 
         if (location.length === 2) {
             let [lat, lon] = location;
             let zoom = Application.settings.get('zoom-level');
 
-            if (zoom >= this.view.min_zoom_level &&
-                zoom <= this.view.max_zoom_level)
-                this.view.zoom_level = Application.settings.get('zoom-level');
+            Utils.debug('min_zoom_level: ' + viewport.min_zoom_level);
+            Utils.debug('max_zoom_level: ' + viewport.max_zoom_level);
+
+            if (zoom >= viewport.min_zoom_level &&
+                zoom <= viewport.max_zoom_level)
+                viewport.zoom_level = Application.settings.get('zoom-level');
             else
                 Utils.debug('Invalid initial zoom level: ' + zoom);
 
             if (lat >= MIN_LATITUDE && lat <= MAX_LATITUDE &&
                 lon >= MIN_LONGITUDE && lon <= MAX_LONGITUDE)
-                this.view.center_on(location[0], location[1]);
+                this.center_on(location[0], location[1]);
             else
                 Utils.debug('Invalid initial coordinates: ' + lat + ', ' + lon);
         } else {
             /* bounding box. for backwards compatibility, not used anymore */
-            let bbox = new Champlain.BoundingBox({ top: location[0],
+            let bbox = new Shumate.BoundingBox({ top: location[0],
                                                    bottom: location[1],
                                                    left: location[2],
                                                    right: location[3] });
-            this.view.connect("notify::realized", () => {
-                if (this.view.realized)
+            this.connect("notify::realized", () => {
+                if (this.realized)
                     this.gotoBBox(bbox, true);
             });
         }
