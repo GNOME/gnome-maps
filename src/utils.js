@@ -29,7 +29,8 @@ const GdkPixbuf = imports.gi.GdkPixbuf;
 const Geocode = imports.gi.GeocodeGlib;
 const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
-const GWeather = imports.gi.GWeather;
+// TODO: GWeather for GTK 4?
+//const GWeather = imports.gi.GWeather;
 const Soup = imports.gi.Soup;
 const ByteArray = imports.byteArray;
 
@@ -79,9 +80,9 @@ function once(obj, signal, callback) {
 function loadStyleSheet(file) {
     let provider = new Gtk.CssProvider();
     provider.load_from_file(file);
-    Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(),
-                                             provider,
-                                             Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+    Gtk.StyleContext.add_provider_for_display(Gdk.Display.get_default(),
+                                              provider,
+                                              Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 }
 
 function addActions(actionMap, entries, settings = null) {

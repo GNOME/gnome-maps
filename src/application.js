@@ -20,12 +20,13 @@
  *         Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
+const Gdk = imports.gi.Gdk;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
-const GtkClutter = imports.gi.GtkClutter;
-const WebKit2 = imports.gi.WebKit2;
+// TODO: WebKit for GTK 4?
+//const WebKit2 = imports.gi.WebKit2;
 
 const CheckIn = imports.checkIn;
 const ContactPlace = imports.contactPlace;
@@ -54,7 +55,7 @@ var osmEdit = null;
 var normalStartup = true;
 var routeQuery = null;
 
-const _ensuredTypes = [WebKit2.WebView,
+const _ensuredTypes = [/*WebKit2.WebView*/,
                        OSMTypeSearchEntry.OSMTypeSearchEntry];
 
 var Application = GObject.registerClass({
@@ -234,8 +235,6 @@ var Application = GObject.registerClass({
     vfunc_startup() {
         super.vfunc_startup();
 
-        GtkClutter.init(null);
-
         Utils.loadStyleSheet(Gio.file_new_for_uri('resource:///org/gnome/Maps/application.css'));
 
         application = this;
@@ -266,8 +265,8 @@ var Application = GObject.registerClass({
         gtkSettings.gtk_application_prefer_dark_theme =
             settings.get('night-mode');
 
-        Gtk.IconTheme.get_default().append_search_path(GLib.build_filenamev([pkg.pkgdatadir,
-                                                                             'icons']));
+        Gtk.IconTheme.get_for_display(Gdk.Display.get_default()).
+            add_search_path(GLib.build_filenamev([pkg.pkgdatadir, 'icons']));
         this._initPlaceStore();
     }
 
