@@ -84,7 +84,8 @@ var Application = GObject.registerClass({
         _ensuredTypes.forEach((type) => GObject.type_ensure(type));
 
         super._init({ application_id: 'org.gnome.Maps',
-                      flags: Gio.ApplicationFlags.HANDLES_OPEN });
+                      flags: Gio.ApplicationFlags.HANDLES_OPEN |
+                             Gio.ApplicationFlags.HANDLES_COMMAND_LINE });
         this._connected = false;
 
         this.add_main_option('local',
@@ -109,28 +110,12 @@ var Application = GObject.registerClass({
                              GLib.OptionArg.NONE,
                              _("Ignore network availability"),
                              null);
-
-        this.connect('handle-local-options', (app, options) => {
-            if (options.contains('local')) {
-                let variant = options.lookup_value('local', null);
-                this.local_tile_path = variant.deep_unpack();
-                normalStartup = false;
-                if (options.contains('local-tile-size')) {
-                    variant = options.lookup_value('local-tile-size', null);
-                    this.local_tile_size = variant.deep_unpack();
-                }
-            } else if (options.contains('version')) {
-                print(pkg.version);
-                /* quit the invoked process after printing the version number
-                 * leaving the running instance unaffected
-                 */
-                return 0;
-            } else if (options.contains('force-online')) {
-                this._forceOnline = true;
-            }
-
-            return -1;
-        });
+        this.add_main_option(GLib.OPTION_REMAINING,
+                             0,
+                             0,
+                             GLib.OptionArg.STRING_ARRAY,
+                             _("[FILE…|URI]"),
+                             _("[FILE…|URI]"));
     }
 
     _checkNetwork() {
@@ -341,6 +326,51 @@ var Application = GObject.registerClass({
         else
             mapView.view.connect('notify::realized',
                                  this._openInternal.bind(this, files));
+    }
+
+    vfunc_command_line(cmdline) {
+        let options = cmdline.get_options_dict();
+
+        if (options.contains('local')) {
+            let variant = options.lookup_value('local', null);
+            this.local_tile_path = variant.deep_unpack();
+            normalStartup = false;
+            if (options.contains('local-tile-size')) {
+                variant = options.lookup_value('local-tile-size', null);
+                this.local_tile_size = variant.deep_unpack();
+            }
+        } else if (options.contains('version')) {
+            print(pkg.version);
+            /* quit the invoked process after printing the version number
+             * leaving the running instance unaffected
+             */
+            return 0;
+        } else if (options.contains('force-online')) {
+            this._forceOnline = true;
+        }
+
+        let remaining = options.lookup(GLib.OPTION_REMAINING, null);
+
+        if (remaining) {
+            let files = [];
+
+            remaining.forEach((r) => {
+                let path = r.get_string()[0];
+
+                if (path.startsWith('geo:') || path.startsWith('http://') ||
+                    path.startsWith('https://')) {
+                    files.push(Gio.File.new_for_uri(path));
+                } else {
+                    files.push(Gio.File.new_for_path(path));
+                }
+            });
+
+            this.open(files, '');
+        } else {
+            this.activate();
+        }
+
+        return 0;
     }
 
     _onWindowDestroy(window) {
