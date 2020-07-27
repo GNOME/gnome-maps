@@ -243,6 +243,9 @@ var PlaceBubble = GObject.registerClass({
     _populate(place) {
         let formatter = new PlaceFormatter.PlaceFormatter(place);
 
+        // refresh place view
+        this._clearView();
+
         let content = formatter.rows.map((row) => {
             row = row.map(function(prop) {
                 return GLib.markup_escape_text(place[prop], -1);
