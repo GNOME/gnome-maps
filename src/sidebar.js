@@ -188,12 +188,21 @@ var Sidebar = GObject.registerClass({
         let routeEntry = new RouteEntry.RouteEntry({ type: type,
                                                      point: point,
                                                      mapView: this._mapView });
+
+        // add handler overriding tab focus behavior on route entries
+        routeEntry.entry.connect('focus', this._onRouteEntryFocus.bind(this));
+        // add handler for
+        routeEntry.entry.connect('notify::place', () => {
+            this._onRouteEntrySelectedPlace(routeEntry.entry);
+        });
         this._entryList.insert(routeEntry, index);
 
         if (type === RouteEntry.Type.FROM) {
             routeEntry.button.connect('clicked', () => {
                 let lastIndex = this._entryList.get_children().length;
                 this._query.addPoint(lastIndex - 1);
+                // focus on the newly added point's entry
+                this._entryList.get_row_at_index(lastIndex - 1).get_child().entry.grab_focus();
             });
 
             this.connect('notify::child-revealed', () => {
@@ -211,6 +220,56 @@ var Sidebar = GObject.registerClass({
         }
 
         this._initRouteDragAndDrop(routeEntry);
+    }
+
+    _onRouteEntryFocus(entry, direction) {
+        let index = this._getIndexForRouteEntry(entry);
+
+        /* if tabbing forward from the last entry or backward from the first,
+         * let the default handler handle it
+         */
+        if ((direction === Gtk.DirectionType.TAB_FORWARD &&
+             index === this._entryList.get_children().length - 1) ||
+            (direction === Gtk.DirectionType.TAB_BACKWARD && index === 0)) {
+            return false;
+        }
+
+        if (direction === Gtk.DirectionType.TAB_FORWARD) {
+            index++;
+        } else if (direction === Gtk.DirectionType.TAB_BACKWARD) {
+            index--;
+        } else {
+            // don't handle other directions
+            return false;
+        }
+
+        this._entryList.get_row_at_index(index).get_child().entry.grab_focus();
+        return true;
+    }
+
+    _onRouteEntrySelectedPlace(entry) {
+        let index = this._getIndexForRouteEntry(entry);
+
+        /* if a new place is selected and it's not the last entry, focus next
+         * entry
+         */
+        if (entry.place && index < this._entryList.get_children().length - 1) {
+            let nextPlaceEntry =
+                this._entryList.get_row_at_index(index + 1).get_child().entry;
+
+            nextPlaceEntry.grab_focus();
+        }
+    }
+
+    _getIndexForRouteEntry(entry) {
+        for (let i = 0; i < this._entryList.get_children().length; i++) {
+            let routeEntry = this._entryList.get_row_at_index(i).get_child();
+
+            if (routeEntry.entry === entry)
+                return i;
+        }
+
+        return -1;
     }
 
     _initInstructionList() {
