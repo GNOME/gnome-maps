@@ -119,6 +119,20 @@ OpenStreetMap account.</property>
                       </packing>
                     </child>
                     <child>
+                      <object class="GtkLinkButton" id="signUpLinkButton">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="label" translatable="yes">Sign up</property>
+                        <property name="uri">https://www.openstreetmap.org/user/new</property>
+                        <property name="halign">GTK_ALIGN_END</property>
+                        <property name="hexpand">True</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
                       <object class="GtkButton" id="signInButton">
                         <property name="visible">True</property>
                         <property name="halign">GTK_ALIGN_END</property>
@@ -139,18 +153,7 @@ OpenStreetMap account.</property>
                     <property name="top_attach">2</property>
                   </packing>
                 </child>
-                <child>
-                  <object class="GtkLinkButton" id="signUpLinkButton">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="label" translatable="yes">Don’t have an account?</property>
-                    <property name="uri">https://www.openstreetmap.org/user/new</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">3</property>
-                  </packing>
-                </child>
+
                 <child>
                   <object class="GtkLabel" id="resetPasswordLabel">
                     <property name="visible">False</property>
