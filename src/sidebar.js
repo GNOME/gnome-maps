@@ -68,10 +68,10 @@ var Sidebar = GObject.registerClass({
                         'transitAttributionLabel']
 }, class Sidebar extends Gtk.Revealer {
 
-    _init(mapView) {
+    _init(mainWindow) {
         super._init({ transition_type: Gtk.RevealerTransitionType.SLIDE_LEFT });
 
-        this._mapView = mapView;
+        this._mainWindow = mainWindow;
 
         this._query = Application.routeQuery;
         this._initInstructionList();
@@ -187,7 +187,7 @@ var Sidebar = GObject.registerClass({
 
         let routeEntry = new RouteEntry.RouteEntry({ type: type,
                                                      point: point,
-                                                     mapView: this._mapView });
+                                                     mapView: this._mainWindow.mapView });
 
         // add handler overriding tab focus behavior on route entries
         routeEntry.entry.connect('focus', this._onRouteEntryFocus.bind(this));
@@ -361,7 +361,7 @@ var Sidebar = GObject.registerClass({
 
         this._instructionList.connect('row-selected', (listbox, row) => {
             if (row)
-                this._mapView.showTurnPoint(row.turnPoint);
+                this._mainWindow.showTurnPoint(row.turnPoint);
         });
 
         transitPlan.connect('update', () => {
@@ -487,14 +487,14 @@ var Sidebar = GObject.registerClass({
             let leg = itinerary.legs[i];
             let row = new TransitLegRow.TransitLegRow({ leg: leg,
                                                         start: i === 0,
-                                                        mapView: this._mapView });
+                                                        mainWindow: this._mainWindow });
             this._transitItineraryListBox.add(row);
         }
 
         /* insert the additional arrival row, showing the arrival place and time */
         this._transitItineraryListBox.add(
             new TransitArrivalRow.TransitArrivalRow({ itinerary: itinerary,
-                                                      mapView: this._mapView }));
+                                                      mapView: this._mainWindow.mapView }));
     }
 
 

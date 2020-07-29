@@ -55,8 +55,8 @@ var TransitLegRow = GObject.registerClass({
         this._start = params.start;
         delete params.start;
 
-        this._mapView = params.mapView;
-        delete params.mapView;
+        this._mainWindow = params.mainWindow;
+        delete params.mainWindow;
 
         super._init(params);
 
@@ -122,9 +122,9 @@ var TransitLegRow = GObject.registerClass({
         this._instructionList.connect('row-selected', (listbox, row) => {
             if (row) {
                 if (row.turnPoint)
-                    this._mapView.showTurnPoint(row.turnPoint);
+                    this._mainWindow.showTurnPoint(row.turnPoint);
                 else
-                    this._mapView.showTransitStop(row.stop, this._leg);
+                    this._mainWindow.showTransitStop(row.stop, this._leg);
             }
         });
 
@@ -145,9 +145,9 @@ var TransitLegRow = GObject.registerClass({
             if (this._isExpanded) {
                 this._collaps();
             } else {
-                this._mapView.view.zoom_level = 16;
-                this._mapView.view.center_on(this._leg.fromCoordinate[0],
-                                             this._leg.fromCoordinate[1]);
+                this._mainWindow.mapView.view.zoom_level = 16;
+                this._mainWindow.mapView.view.center_on(this._leg.fromCoordinate[0],
+                                                        this._leg.fromCoordinate[1]);
                 if (this._hasIntructions())
                     this._expand();
             }
