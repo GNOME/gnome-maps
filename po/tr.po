@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2020-06-15 21:26+0000\n"
-"PO-Revision-Date: 2020-06-23 01:28+0300\n"
+"POT-Creation-Date: 2020-07-15 08:46+0000\n"
+"PO-Revision-Date: 2020-07-30 00:10+0300\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -77,13 +77,13 @@ msgstr "GNOME Projesi"
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:34
-#: src/application.js:81 src/mainWindow.js:129 src/mainWindow.js:563
+#: src/application.js:81 src/mainWindow.js:129 src/mainWindow.js:567
 msgid "Maps"
 msgstr "Haritalar"
 
 #: data/org.gnome.Maps.desktop.in:5
 msgid "A simple maps application"
-msgstr "Basit bir harita uygulaması"
+msgstr "Basit harita uygulaması"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Maps.desktop.in:14
@@ -201,7 +201,7 @@ msgid ""
 "Facebook account associated with the Foursquare account."
 msgstr ""
 "Foursquare’in yer bildirimlerini, Foursquare hesabına bağlı olan Facebook "
-"hesabında bir gönderi olarak yayınlayıp yayınlamayacağını belirtir."
+"hesabında gönderi olarak yayınlayıp yayınlamayacağını belirtir."
 
 #: data/org.gnome.Maps.gschema.xml:72
 msgid "Foursquare check-in Twitter broadcasting"
@@ -213,7 +213,7 @@ msgid ""
 "Twitter account associated with the Foursquare account."
 msgstr ""
 "Foursquare’in yer bildirimlerini, Foursquare hesabına bağlı olan Twitter "
-"hesabında bir tvit olarak yayınlayıp yayınlamayacağını belirtir."
+"hesabında tweet olarak yayınlayıp yayınlamayacağını belirtir."
 
 #: data/org.gnome.Maps.gschema.xml:77
 msgid "OpenStreetMap username or e-mail address"
@@ -236,6 +236,14 @@ msgstr "Gece kipi"
 #: data/org.gnome.Maps.gschema.xml:87
 msgid "Whether the application is in night mode."
 msgstr "Uygulamanın gece kipinde olup olmadığı."
+
+#: data/org.gnome.Maps.gschema.xml:91
+msgid "Use hybrid aerial tiles"
+msgstr "Hibrit uydu döşemelerini kullan"
+
+#: data/org.gnome.Maps.gschema.xml:92
+msgid "Whether aerial tiles should use hybrid style (with labels)."
+msgstr "Uydu döşemelerinin hibrit biçim (etiketli) kullanıp kullanmayacağı"
 
 #: data/ui/check-in-dialog.ui:250 data/ui/check-in-dialog.ui:299
 msgid "Visibility"
@@ -433,8 +441,12 @@ msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "Şekil katmanını aç"
 
+#: data/ui/layers-popover.ui:65
+msgid "Show Labels"
+msgstr "Etiketleri Göster"
+
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:69
+#: data/ui/layers-popover.ui:102
 msgid "Open Shape Layer…"
 msgstr "Şekil Katmanını Aç…"
 
@@ -484,7 +496,7 @@ msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
 msgstr ""
-"Haritaların çalışması için kullanılabilir bir internet bağlantısı gerekli, "
+"Haritaların çalışması için kullanılabilir internet bağlantısı gerekli, "
 "ancak bağlantı yok."
 
 #: data/ui/main-window.ui:130
@@ -526,7 +538,7 @@ msgid ""
 "Help to improve the map, using an\n"
 "OpenStreetMap account."
 msgstr ""
-"Bir OpenStreetMap hesabı kullanarak\n"
+"OpenStreetMap hesabı kullanarak\n"
 "haritayı iyileştirmeye yardım edin."
 
 #: data/ui/osm-account-dialog.ui:56
@@ -794,25 +806,29 @@ msgstr "Gerekli öznitelikler eksik"
 msgid "Could not find OSM element"
 msgstr "OSM ögesi bulunamadı"
 
-#: src/application.js:94
+#: src/application.js:95
 msgid "A path to a local tiles directory structure"
-msgstr "Yerel bir döşeme dizini yapısını gösteren adres (yol)"
+msgstr "Yerel döşeme dizini yapısını barındıran yol"
 
-#: src/application.js:100
+#: src/application.js:101
 msgid "Tile size for local tiles directory"
 msgstr "Yerel döşeme dizini için döşeme boyutu"
 
-#: src/application.js:104
+#: src/application.js:105
 msgid "Show the version of the program"
 msgstr "Programın sürümünü göster"
 
-#: src/application.js:110
+#: src/application.js:111
 msgid "Ignore network availability"
 msgstr "Ağ uygunluğunu göz ardı et"
 
+#: src/application.js:121 src/application.js:122
+msgid "[FILE…|URI]"
+msgstr "[DOSYA…|URI]"
+
 #: src/checkInDialog.js:167
 msgid "Select an account"
-msgstr "Bir hesap seç"
+msgstr "Hesap seç"
 
 #: src/checkInDialog.js:172 src/checkInDialog.js:244
 msgid "Loading"
@@ -820,7 +836,7 @@ msgstr "Yükleniyor"
 
 #: src/checkInDialog.js:196
 msgid "Select a place"
-msgstr "Bir yer seç"
+msgstr "Yer seç"
 
 #: src/checkInDialog.js:201
 msgid ""
@@ -828,7 +844,7 @@ msgid ""
 "from this list."
 msgstr ""
 "Haritalar Facebook ile yer bildiriminde bulunabilmek için yeri bulamıyor. "
-"Lütfen bu listeden bir tane seçin."
+"Lütfen bu listeden seçin."
 
 #: src/checkInDialog.js:203
 msgid ""
@@ -836,7 +852,7 @@ msgid ""
 "from this list."
 msgstr ""
 "Haritalar Foursquare ile yer bildiriminde bulunabilmek için yeri bulamıyor. "
-"Lütfen bu listeden bir tane seçin."
+"Lütfen bu listeden seçin."
 
 #. Translators: %s is the name of the place to check in.
 #.
@@ -850,11 +866,11 @@ msgstr "%s için yer bildiriminde bulun"
 #: src/checkInDialog.js:228
 #, javascript-format
 msgid "Write an optional message to check in to %s."
-msgstr "%s’den yer bildiriminde bulunmak için isteğe bağlı bir mesaj girin."
+msgstr "%s’den yer bildiriminde bulunmak için isteğe bağlı ileti girin."
 
 #: src/checkInDialog.js:280 src/checkIn.js:162 src/osmEditDialog.js:549
 msgid "An error has occurred"
-msgstr "Bir hata oluştu"
+msgstr "Hata oluştu"
 
 #. Translators: %s is the place name that user wanted to check-in
 #: src/checkIn.js:144
@@ -864,7 +880,7 @@ msgstr "Sosyal hizmette “%s” bulunamıyor"
 
 #: src/checkIn.js:146
 msgid "Cannot find a suitable place to check-in in this location"
-msgstr "Bu konumda yer bildirimi yapılabilecek uygun bir yer bulunamıyor"
+msgstr "Bu konumda yer bildirimi yapılabilecek uygun yer bulunamıyor"
 
 #: src/checkIn.js:150
 msgid ""
@@ -901,7 +917,7 @@ msgstr "Dosya sistemi salt okunur"
 
 #: src/exportViewDialog.js:156
 msgid "You do not have permission to save there"
-msgstr "Oraya kaydetmek için gerekli izne sahip değilsiniz"
+msgstr "Oraya kaydetmek için gerekli izniniz yok"
 
 #: src/exportViewDialog.js:158
 msgid "The directory does not exist"
@@ -943,11 +959,11 @@ msgstr "Başla!"
 msgid "All Layer Files"
 msgstr "Tüm Katman Dosyaları"
 
-#: src/mainWindow.js:466
+#: src/mainWindow.js:470
 msgid "Failed to connect to location service"
 msgstr "Konum hizmetine bağlanma başarısız oldu"
 
-#: src/mainWindow.js:561
+#: src/mainWindow.js:565
 msgid "translator-credits"
 msgstr ""
 "Muhammet Kara <muhammetk@gmail.com>\n"
@@ -959,15 +975,15 @@ msgstr ""
 "Ahmet Elgun <ahmetelgn@gmail.com>\n"
 "Sabri Ünal <libreajans@gmail.com>"
 
-#: src/mainWindow.js:564
+#: src/mainWindow.js:568
 msgid "A map application for GNOME"
 msgstr "GNOME için harita uygulaması"
 
-#: src/mainWindow.js:575
+#: src/mainWindow.js:579
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Telif Hakkı © 2011 – 2019 Red Hat, Inc. ve GNOME Haritalar yazarları"
 
-#: src/mainWindow.js:595
+#: src/mainWindow.js:599
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "%s ve katkıcılar tarafından harita verisi"
@@ -977,7 +993,7 @@ msgstr "%s ve katkıcılar tarafından harita verisi"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:611
+#: src/mainWindow.js:615
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Harita döşemeleri %s tarafından sağlanmıştır"
@@ -991,20 +1007,20 @@ msgstr "Harita döşemeleri %s tarafından sağlanmıştır"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:640
+#: src/mainWindow.js:644
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Arama %s tarafından %s kullanılarak sağlanmıştır."
 
-#: src/mapView.js:440
+#: src/mapView.js:466
 msgid "File type is not supported"
 msgstr "Dosya türü desteklenmiyor"
 
-#: src/mapView.js:447
+#: src/mapView.js:473
 msgid "Failed to open layer"
 msgstr "Katman açma başarısız oldu"
 
-#: src/mapView.js:483
+#: src/mapView.js:509
 msgid "Failed to open GeoURI"
 msgstr "GeoURI açma başarısız"
 
@@ -1028,7 +1044,7 @@ msgstr "Nesne bulunamadı"
 
 #: src/osmConnection.js:444
 msgid "Conflict, someone else has just modified the object"
-msgstr "Çakışma; nesneyi az önce bir başkası değiştirdi"
+msgstr "Çakışma; nesneyi az önce başkası değiştirdi"
 
 #: src/osmConnection.js:446
 msgid "Object has been deleted"
@@ -1059,7 +1075,7 @@ msgid ""
 "The official website. Try to use the most basic form of a URL i.e. http://"
 "example.com instead of http://example.com/index.html."
 msgstr ""
-"Resmi web sitesi. Bir URL adresinin en temel halini kullanmaya çalışın. Örn. "
+"Resmi web sitesi. URL adresinin en temel halini kullanmaya çalışın. Örn. "
 "http://example.com/index.html yerine http://example.com."
 
 #: src/osmEditDialog.js:127
