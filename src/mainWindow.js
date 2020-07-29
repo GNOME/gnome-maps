@@ -87,6 +87,7 @@ var MainWindow = GObject.registerClass({
                         'mapViewWrapper',
                         'noNetworkView',
                         'routingHeaderBar',
+                        'routingHeaderBarPrintButton',
                         'actionBar',
                         'actionBarRevealer' ]
 }, class MainWindow extends Gtk.ApplicationWindow {
@@ -417,6 +418,10 @@ var MainWindow = GObject.registerClass({
         // Show routing headerbar when the leaflet is folded, showing only the
         // routing sidebar
         this._leaflet.connect('notify::folded', this._updateRoutingHeaderBar.bind(this));
+
+        /* Show/hide the print button in the routing headerbar */
+        this._mapView.bind_property('routeShowing', this._routingHeaderBarPrintButton,
+                                    'visible', GObject.BindingFlags.DEFAULT);
     }
 
     _saveWindowGeometry() {
