@@ -581,7 +581,9 @@ var MainWindow = GObject.registerClass({
     }
 
     _updateRoutingHeaderBar() {
-        let folded = this._leaflet.folded;
+        let [sidebarMin, _] = this._sidebar.get_child().get_preferred_width();
+        let [mainMin, _1] = this._mainBox.get_preferred_width();
+        let folded = this._leaflet.folded || sidebarMin + mainMin > this.get_allocated_width();
         let sidebarVisible = this._leaflet.visible_child == this._sidebar;
 
         if (folded && sidebarVisible) {
