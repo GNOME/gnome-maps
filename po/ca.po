@@ -10,16 +10,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2020-06-24 20:25+0000\n"
-"PO-Revision-Date: 2020-07-03 02:29+0200\n"
+"POT-Creation-Date: 2020-07-30 06:43+0000\n"
+"PO-Revision-Date: 2020-08-01 07:10+0200\n"
 "Last-Translator: Gil Forcada <gilforcada@guifi.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Gtranslator 3.36.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.3\n"
 "X-Project-Style: gnome\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
@@ -546,15 +546,15 @@ msgid "Password"
 msgstr "Contrasenya"
 
 #: data/ui/osm-account-dialog.ui:125
+msgid "Sign up"
+msgstr "Registreu-vos"
+
+#: data/ui/osm-account-dialog.ui:139
 msgid "Sign In"
 msgstr "Inicieu la sessió"
 
-#: data/ui/osm-account-dialog.ui:146
-msgid "Don’t have an account?"
-msgstr "No teniu un compte?"
-
 #. The label should contain the link to the OSM reset password page with a translated title
-#: data/ui/osm-account-dialog.ui:159
+#: data/ui/osm-account-dialog.ui:162
 msgid ""
 "Sorry, that didn’t work. Please try again, or visit\n"
 "<a href=\"https://www.openstreetmap.org/user/forgot-password"
@@ -564,27 +564,27 @@ msgstr ""
 "<a href=\"https://www.openstreetmap.org/user/forgot-password"
 "\">OpenStreetMap</a> per restablir la contrasenya."
 
-#: data/ui/osm-account-dialog.ui:172
+#: data/ui/osm-account-dialog.ui:175
 msgid "The verification code didn’t match, please try again."
 msgstr "El codi de verificació no funciona, torneu-ho a provar."
 
-#: data/ui/osm-account-dialog.ui:198
+#: data/ui/osm-account-dialog.ui:201
 msgid "Enter verification code shown above"
 msgstr "Introduïu el codi de verificació mostrat a sobre"
 
-#: data/ui/osm-account-dialog.ui:221
+#: data/ui/osm-account-dialog.ui:224
 msgid "Verify"
 msgstr "Verifica"
 
-#: data/ui/osm-account-dialog.ui:251
+#: data/ui/osm-account-dialog.ui:254
 msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
 msgstr "<span weight=\"bold\" size=\"x-large\">Sessió iniciada</span>"
 
-#: data/ui/osm-account-dialog.ui:264
+#: data/ui/osm-account-dialog.ui:267
 msgid "Your OpenStreetMap account is active."
 msgstr "El vostre compte OpenStreetMap està actiu."
 
-#: data/ui/osm-account-dialog.ui:298
+#: data/ui/osm-account-dialog.ui:301
 msgid "Sign Out"
 msgstr "Surt de la sessió"
 
@@ -798,22 +798,25 @@ msgstr "S'han perdut els atributs requerits"
 msgid "Could not find OSM element"
 msgstr "No s'ha trobat l'element OSM"
 
-#: src/application.js:94
+#: src/application.js:95
 msgid "A path to a local tiles directory structure"
 msgstr "Un camí a l'estructura de caselles locals del directori"
 
-#: src/application.js:100
-#| msgid "A path to a local tiles directory structure"
+#: src/application.js:101
 msgid "Tile size for local tiles directory"
 msgstr "Mida de les caselles pel directori de caselles local"
 
-#: src/application.js:104
+#: src/application.js:105
 msgid "Show the version of the program"
 msgstr "Mostra la versió del programa"
 
-#: src/application.js:110
+#: src/application.js:111
 msgid "Ignore network availability"
 msgstr "Ignora la disponibilitat de la xarxa"
+
+#: src/application.js:121 src/application.js:122
+msgid "[FILE…|URI]"
+msgstr "[FITXER…|URI]"
 
 #: src/checkInDialog.js:167
 msgid "Select an account"
@@ -998,15 +1001,15 @@ msgstr "Caselles de mapa proporcionades per %s"
 msgid "Search provided by %s using %s"
 msgstr "Cerca proveïda per %s utilitzant %s"
 
-#: src/mapView.js:460
+#: src/mapView.js:466
 msgid "File type is not supported"
 msgstr "Aquest tipus de fitxer no està suportat"
 
-#: src/mapView.js:467
+#: src/mapView.js:473
 msgid "Failed to open layer"
 msgstr "S'ha produït un error en obrir la capa"
 
-#: src/mapView.js:503
+#: src/mapView.js:509
 msgid "Failed to open GeoURI"
 msgstr "S'ha produït un error en obrir el fitxer GeoURI"
 
@@ -1421,15 +1424,15 @@ msgstr "Obre amb %s"
 
 #: src/shapeLayer.js:91
 msgid "failed to load file"
-msgstr "S'ha produït un error en carregar el fitxer"
+msgstr "s'ha produït un error en carregar el fitxer"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:299
+#: src/sidebar.js:358
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Temps estimat: %s"
 
-#: src/sidebar.js:355
+#: src/sidebar.js:414
 #, javascript-format
 msgid "Itineraries provided by %s"
 msgstr "Itineraris proporcionats per %s"
@@ -1527,8 +1530,6 @@ msgstr "%s – %s"
 #.
 #: src/transitPlan.js:351
 #, javascript-format
-#| msgid "%d minute"
-#| msgid_plural "%d minutes"
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] "%s minut"
@@ -1540,8 +1541,6 @@ msgstr[1] "%s minuts"
 #.
 #: src/transitPlan.js:363
 #, javascript-format
-#| msgid "%d hour"
-#| msgid_plural "%d hours"
 msgid "%s hour"
 msgid_plural "%s hours"
 msgstr[0] "%s hora"
@@ -1553,8 +1552,6 @@ msgstr[1] "%s hores"
 #.
 #: src/transitPlan.js:371
 #, javascript-format
-#| msgid "%d:%02d hour"
-#| msgid_plural "%d:%02d hours"
 msgid "%s:%s hour"
 msgid_plural "%s:%s hours"
 msgstr[0] "%s:%s hora"
@@ -1749,8 +1746,6 @@ msgstr "%s h"
 #.
 #: src/utils.js:338
 #, javascript-format
-#| msgctxt "time range list"
-#| msgid "%s %s %s"
 msgid "%s h %s min"
 msgid_plural "%s h %s mins"
 msgstr[0] "%s h %s min"
@@ -1762,7 +1757,6 @@ msgstr[1] "%s h %s min"
 #.
 #: src/utils.js:345
 #, javascript-format
-#| msgid "%s mi"
 msgid "%s min"
 msgid_plural "%s mins"
 msgstr[0] "%s min"
@@ -1911,90 +1905,4 @@ msgstr "Canvieu de sentit cap a la dreta a %s"
 msgid "Make a right u-turn"
 msgstr "Canvieu de sentit cap a la dreta"
 
-#~ msgid "%f h"
-#~ msgstr "%f h"
 
-#~ msgid "%f min"
-#~ msgstr "%f min"
-
-#~ msgid "%f s"
-#~ msgstr "%f s"
-
-#~ msgid "Route search by OpenTripPlanner"
-#~ msgstr "Itinerari proporcionat per OpenTripPlanner"
-
-#~ msgid "Add destination"
-#~ msgstr "Afegiu una destinació"
-
-#~ msgid "org.gnome.Maps"
-#~ msgstr "org.gnome.Maps"
-
-#~ msgid "Open with another application"
-#~ msgstr "Obre amb una altra aplicació"
-
-#~ msgid "Press enter to search"
-#~ msgstr "Premeu retorn per cercar"
-
-#~ msgid "Quit"
-#~ msgstr "Surt"
-
-#~ msgid "Open Shape Layer&#x2026;"
-#~ msgstr "Obre la capa de forma&#x2026;"
-
-#~ msgid "OK"
-#~ msgstr "D'acord"
-
-#~ msgid "Load Map Layer"
-#~ msgstr "Carrega la capa mapa"
-
-#~ msgid "Open Layer"
-#~ msgstr "Obre la capa"
-
-#~ msgid "%f km"
-#~ msgstr "%f km"
-
-#~ msgid "%f m"
-#~ msgstr "%f m"
-
-#~ msgid "%f mi"
-#~ msgstr "%f milles"
-
-#~ msgid "%f ft"
-#~ msgstr "%f peus"
-
-#~ msgid "Position not found"
-#~ msgstr "No s'ha trobat la posició."
-
-#~ msgid "Country code: %s"
-#~ msgstr "Codi de país: %s"
-
-#~ msgid "Population: %s"
-#~ msgstr "Població: %s"
-
-#~ msgid "Wheelchair access: %s"
-#~ msgstr "Accés amb cadira de rodes: %s"
-
-#~ msgid "Failed to parse GeoJSON file"
-#~ msgstr "S'ha produït un error en analitzar el fitxer GeoJSON"
-
-#~ msgid "Last known location and accuracy"
-#~ msgstr "L'última ubicació coneguda i la precisió"
-
-#~ msgid ""
-#~ "Last known location (latitude and longitude in degrees) and accuracy (in "
-#~ "meters)."
-#~ msgstr ""
-#~ "L'última ubicació coneguda (latitud i longitud en graus) i la precisió "
-#~ "(en metres)."
-
-#~ msgid "Description of last known location of user."
-#~ msgstr "Descripció de l'última ubicació coneguda de l'usuari."
-
-#~ msgid "Whether the last known location was set manually by the user."
-#~ msgstr "Si l'última ubicació coneguda l'ha definit manualment l'usuari."
-
-#~ msgid "I’m here!"
-#~ msgstr "Sóc aquí!"
-
-#~ msgid "%f km²"
-#~ msgstr "%f km²"
