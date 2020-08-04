@@ -25,6 +25,7 @@ const GObject = imports.gi.GObject;
 const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
 const GtkClutter = imports.gi.GtkClutter;
+const Hdy = imports.gi.Handy;
 const WebKit2 = imports.gi.WebKit2;
 
 const CheckIn = imports.checkIn;
@@ -224,6 +225,7 @@ var Application = GObject.registerClass({
         super.vfunc_startup();
 
         GtkClutter.init(null);
+        Hdy.init();
 
         Utils.loadStyleSheet(Gio.file_new_for_uri('resource:///org/gnome/Maps/application.css'));
 
