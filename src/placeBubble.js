@@ -29,9 +29,6 @@ const Format = imports.format;
 const Application = imports.application;
 const ContactPlace = imports.contactPlace;
 const MapBubble = imports.mapBubble;
-const OSMAccountDialog = imports.osmAccountDialog;
-const OSMEditDialog = imports.osmEditDialog;
-const OSMUtils = imports.osmUtils;
 const Overpass = imports.overpass;
 const Place = imports.place;
 const PlaceFormatter = imports.placeFormatter;
@@ -60,7 +57,6 @@ var PlaceBubble = GObject.registerClass({
                                                      'box-content',
                                                      'grid-content',
                                                      'label-title',
-                                                     'edit-button',
                                                      'expand-button',
                                                      'expanded-content',
                                                      'content-revealer']);
@@ -70,6 +66,9 @@ var PlaceBubble = GObject.registerClass({
         if (params.place.store)
             params.buttons |= MapBubble.Button.FAVORITE;
 
+        if (!(params.place instanceof ContactPlace.ContactPlace) && params.place.osm_id)
+            params.buttons |= MapBubble.Button.EDIT_ON_OSM;
+
         super._init(params);
 
         Utils.load_icon(this.place.icon, 48, (pixbuf) => this.image.pixbuf = pixbuf);
@@ -78,7 +77,6 @@ var PlaceBubble = GObject.registerClass({
         this._title = ui.labelTitle;
         this._boxContent = ui.boxContent;
         this._gridContent = ui.gridContent;
-        this._editButton = ui.editButton;
         this._expandButton = ui.expandButton;
         this._expandedContent = ui.expandedContent;
         this._revealer = ui.contentRevealer;
@@ -107,12 +105,6 @@ var PlaceBubble = GObject.registerClass({
             this._populate(this.place);
         }
         this.content.add(this._stack);
-
-        let osm_id = this.place.osm_id;
-        if (this.place instanceof ContactPlace.ContactPlace || !osm_id)
-            this._editButton.visible = false;
-        else
-            this._initEditButton();
 
         this._initExpandButton();
     }
@@ -313,58 +305,11 @@ var PlaceBubble = GObject.registerClass({
         this._expandedContent.get_children().forEach((child) => child.destroy());
     }
 
-    _initEditButton() {
-        this._editButton.visible = true;
-        this._editButton.connect('clicked', this._onEditClicked.bind(this));
-    }
-
     _initExpandButton() {
         let image = this._expandButton.get_child();
 
         this._expandButton.connect('clicked', (function() {
             this._revealer.reveal_child = !this._revealer.child_revealed;
         }).bind(this));
-    }
-
-    _onEditClicked() {
-        let osmEdit = Application.osmEdit;
-        /* if the user is not alread signed in, show the account dialog */
-        if (!osmEdit.isSignedIn) {
-            let dialog = osmEdit.createAccountDialog(this.get_toplevel(), true);
-
-            dialog.show();
-            dialog.connect('response', (dialog, response) => {
-                dialog.destroy();
-                if (response === OSMAccountDialog.Response.SIGNED_IN)
-                    this._edit();
-            });
-
-            return;
-        }
-
-        this._edit();
-    }
-
-    _edit() {
-        let osmEdit = Application.osmEdit;
-        let dialog = osmEdit.createEditDialog(this.get_toplevel(), this._place);
-
-        dialog.show();
-        dialog.connect('response', (dialog, response) => {
-            dialog.destroy();
-
-            switch (response) {
-            case OSMEditDialog.Response.UPLOADED:
-                // update place
-                let object = osmEdit.object;
-                OSMUtils.updatePlaceFromOSMObject(this._place, object);
-                // refresh place view
-                this._clearView();
-                this._populate(this._place);
-                break;
-            default:
-                break;
-            }
-        });
     }
 });

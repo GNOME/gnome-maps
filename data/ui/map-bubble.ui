@@ -98,6 +98,21 @@
                 <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Check in here</property>
               </object>
             </child>
+            <child>
+              <object class="GtkButton" id="bubble-edit-button">
+                <property name="visible">False</property>
+                <property name="can_focus">True</property>
+                <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Edit on OpenStreetMap</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="icon-name">document-edit-symbolic</property>
+                    <property name="pixel_size">16</property>
+                  </object>
+                </child>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="left_attach">0</property>

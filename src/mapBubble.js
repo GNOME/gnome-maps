@@ -26,6 +26,9 @@ const Gtk = imports.gi.Gtk;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
+const OSMAccountDialog = imports.osmAccountDialog;
+const OSMEditDialog = imports.osmEditDialog;
+const OSMUtils = imports.osmUtils;
 const Place = imports.place;
 const PlaceStore = imports.placeStore;
 const SendToDialog = imports.sendToDialog;
@@ -36,7 +39,8 @@ var Button = {
     ROUTE: 2,
     SEND_TO: 4,
     FAVORITE: 8,
-    CHECK_IN: 16
+    CHECK_IN: 16,
+    EDIT_ON_OSM: 32,
 };
 
 var MapBubble = GObject.registerClass({ Abstract: true },
@@ -75,6 +79,7 @@ class MapBubble extends Gtk.Popover {
                                                    'bubble-send-to-button',
                                                    'bubble-favorite-button',
                                                    'bubble-check-in-button',
+                                                   'bubble-edit-button',
                                                    'bubble-favorite-button-image']);
         this._image = ui.bubbleImage;
         this._thumbnail = ui.bubbleThumbnail;
@@ -92,6 +97,8 @@ class MapBubble extends Gtk.Popover {
                 this._initFavoriteButton(ui.bubbleFavoriteButton, ui.bubbleFavoriteButtonImage);
             if (buttonFlags & Button.CHECK_IN)
                 this._initCheckInButton(ui.bubbleCheckInButton, checkInMatchPlace);
+            if (buttonFlags & Button.EDIT_ON_OSM)
+                this._initEditButton(ui.bubbleEditButton);
         }
 
         this.add(ui.bubbleMainGrid);
@@ -187,6 +194,53 @@ class MapBubble extends Gtk.Popover {
             Application.checkInManager.showCheckInDialog(this.get_toplevel(),
                                                          this.place,
                                                          matchPlace);
+        });
+    }
+
+    _initEditButton(button) {
+        button.visible = true;
+        button.connect('clicked', this._onEditClicked.bind(this));
+    }
+
+    _onEditClicked() {
+        let osmEdit = Application.osmEdit;
+        /* if the user is not alread signed in, show the account dialog */
+        if (!osmEdit.isSignedIn) {
+            let dialog = osmEdit.createAccountDialog(this.get_toplevel(), true);
+
+            dialog.show();
+            dialog.connect('response', (dialog, response) => {
+                dialog.destroy();
+                if (response === OSMAccountDialog.Response.SIGNED_IN)
+                    this._edit();
+            });
+
+            return;
+        }
+
+        this._edit();
+    }
+
+    _edit() {
+        let osmEdit = Application.osmEdit;
+        let dialog = osmEdit.createEditDialog(this.get_toplevel(), this._place);
+
+        dialog.show();
+        dialog.connect('response', (dialog, response) => {
+            dialog.destroy();
+
+            switch (response) {
+            case OSMEditDialog.Response.UPLOADED:
+                // update place
+                let object = osmEdit.object;
+                OSMUtils.updatePlaceFromOSMObject(this._place, object);
+                // refresh place view
+                this._clearView();
+                this._populate(this._place);
+                break;
+            default:
+                break;
+            }
         });
     }
 });
