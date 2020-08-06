@@ -71,6 +71,8 @@ class MapBubble extends Gtk.Popover {
         super._init(params);
         let ui = Utils.getUIObject('map-bubble', [ 'bubble-main-box',
                                                    'bubble-spinner',
+                                                   'bubble-thumbnail',
+                                                   'thumbnail-separator',
                                                    'bubble-main-stack',
                                                    'bubble-content-area',
                                                    'bubble-button-area',
@@ -80,6 +82,8 @@ class MapBubble extends Gtk.Popover {
                                                    'bubble-check-in-button',
                                                    'bubble-edit-button',
                                                    'bubble-favorite-button-image']);
+        this._thumbnail = ui.bubbleThumbnail;
+        this._thumbnailSeparator = ui.thumbnailSeparator;
         this._content = ui.bubbleContentArea;
         this._mainStack = ui.bubbleMainStack;
         this._spinner = ui.bubbleSpinner;
@@ -101,6 +105,8 @@ class MapBubble extends Gtk.Popover {
         }
 
         this.add(this._mainStack);
+
+        this.get_style_context().add_class("map-bubble");
     }
 
     get place() {
@@ -109,6 +115,18 @@ class MapBubble extends Gtk.Popover {
 
     get content() {
         return this._content;
+    }
+
+    get thumbnail() {
+        return this._thumbnail.pixbuf;
+    }
+
+    set thumbnail(val) {
+        if (val) {
+            this._thumbnail.pixbuf = val;
+            this._thumbnail.visible = true;
+            this._thumbnailSeparator.visible = true;
+        }
     }
 
     get loading() {

@@ -31,15 +31,14 @@ const ContactPlace = imports.contactPlace;
 const MapBubble = imports.mapBubble;
 const Overpass = imports.overpass;
 const Place = imports.place;
+const PlaceBubbleImage = imports.placeBubbleImage;
 const PlaceFormatter = imports.placeFormatter;
 const PlaceStore = imports.placeStore;
 const Utils = imports.utils;
 const Wikipedia = imports.wikipedia;
 
 // maximum dimension of thumbnails to fetch from Wikipedia
-const THUMBNAIL_FETCH_SIZE = 128;
-// final scaled size of cropped thumnail
-const THUMBNAIL_FINAL_SIZE = 70;
+const THUMBNAIL_FETCH_SIZE = 360;
 
 var PlaceBubble = GObject.registerClass({
     Properties: {
@@ -75,7 +74,6 @@ var PlaceBubble = GObject.registerClass({
 
         this._title = ui.labelTitle;
         this._boxContent = ui.boxContent;
-        this._gridContent = ui.gridContent;
         this._expandButton = ui.expandButton;
         this._expandedContent = ui.expandedContent;
         this._revealer = ui.contentRevealer;
@@ -284,28 +282,7 @@ var PlaceBubble = GObject.registerClass({
     }
 
     _onThumbnailComplete(thumbnail) {
-        if (thumbnail) {
-            // TODO: Add thumbnails back
-        }
-    }
-
-    // returns a cropped square-shaped thumbnail
-    _cropAndScaleThumbnail(thumbnail) {
-        let width = thumbnail.get_width();
-        let height = thumbnail.get_height();
-        let croppedThumbnail;
-
-        if (width > height) {
-            let x = (width - height) / 2;
-            croppedThumbnail = thumbnail.new_subpixbuf(x, 0, height, height);
-        } else {
-            let y = (height - width) / 2;
-            croppedThumbnail = thumbnail.new_subpixbuf(0, y, width, width);
-        }
-
-        return croppedThumbnail.scale_simple(THUMBNAIL_FINAL_SIZE,
-                                             THUMBNAIL_FINAL_SIZE,
-                                             GdkPixbuf.InterpType.BILINEAR);
+        this.thumbnail = thumbnail;
     }
 
     // clear the view widgets to be able to re-populate an updated place

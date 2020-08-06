@@ -10,6 +10,21 @@
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child>
+          <object class="Gjs_PlaceBubbleImage" id="bubble-thumbnail">
+            <property name="visible">False</property>
+            <property name="can_focus">False</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkSeparator" id="thumbnail-separator">
+            <property name="visible">False</property>
+            <property name="can_focus">False</property>
+            <style>
+              <class name="no-margin-separator"/>
+            </style>
+          </object>
+        </child>
+        <child>
           <object class="GtkGrid" id="bubble-content-area">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
