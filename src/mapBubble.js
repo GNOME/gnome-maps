@@ -69,7 +69,7 @@ class MapBubble extends Gtk.Popover {
         params.modal = false;
 
         super._init(params);
-        let ui = Utils.getUIObject('map-bubble', [ 'bubble-main-grid',
+        let ui = Utils.getUIObject('map-bubble', [ 'bubble-main-box',
                                                    'bubble-content-area',
                                                    'bubble-button-area',
                                                    'bubble-route-button',
@@ -95,7 +95,7 @@ class MapBubble extends Gtk.Popover {
                 this._initEditButton(ui.bubbleEditButton);
         }
 
-        this.add(ui.bubbleMainGrid);
+        this.add(ui.bubbleMainBox);
     }
 
     get place() {

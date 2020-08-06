@@ -2,128 +2,106 @@
 <!-- Generated with glade 3.18.3 -->
 <interface>
   <requires lib="gtk+" version="3.12"/>
-  <object class="GtkGrid" id="bubble-main-grid">
+  <object class="GtkBox" id="bubble-main-box">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="column_spacing">8</property>
-    <property name="margin_start">10</property>
-    <property name="margin_end">10</property>
-    <property name="margin_top">10</property>
-    <property name="margin_bottom">10</property>
     <property name="orientation">vertical</property>
     <child>
       <object class="GtkGrid" id="bubble-content-area">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="margin-start">15</property>
+        <property name="margin-top">12</property>
+        <property name="margin-bottom">12</property>
+        <property name="margin-start">12</property>
+        <property name="margin-end">12</property>
       </object>
-      <packing>
-        <property name="left_attach">1</property>
-        <property name="top_attach">0</property>
-        <property name="width">2</property>
-      </packing>
     </child>
     <child>
-      <object class="GtkGrid" id="bubble-button-area">
+      <object class="GtkBox" id="bubble-button-area">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="margin-top">10</property>
-        <property name="margin-start">15</property>
-        <property name="valign">GTK_ALIGN_END</property>
+        <property name="orientation">horizontal</property>
+        <property name="spacing">6</property>
+        <property name="margin-bottom">12</property>
+        <property name="margin-start">12</property>
+        <property name="margin-end">12</property>
         <child>
-          <object class="GtkBox" id="bubble-standard-button-area">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="orientation">horizontal</property>
-            <property name="spacing">5</property>
+          <object class="GtkButton" id="bubble-route-button">
+            <property name="name">bubble-route-button</property>
+            <property name="visible">False</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Add to new route</property>
             <child>
-              <object class="GtkButton" id="bubble-route-button">
-                <property name="name">bubble-route-button</property>
-                <property name="visible">False</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">False</property>
-                <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Add to new route</property>
-                <child>
-                  <object class="GtkImage" id="bubble-route-button-image">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="icon-name">route-button-symbolic</property>
-                    <property name="icon_size">1</property>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="bubble-send-to-button">
-                <property name="name">bubble-send-to-button</property>
-                <property name="visible">False</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">False</property>
-                <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Share location</property>
-                <child>
-                  <object class="GtkImage" id="bubble-send-to-button-image">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="icon-name">send-to-symbolic</property>
-                    <property name="pixel_size">16</property>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="bubble-favorite-button">
-                <property name="name">bubble-favorite-button</property>
-                <property name="visible">False</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">False</property>
-                <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Mark as favorite</property>
-                <child>
-                  <object class="GtkImage" id="bubble-favorite-button-image">
-                    <property name="name">bubble-favorite-button-image</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="icon-name">starred-symbolic</property>
-                    <property name="pixel_size">16</property>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="bubble-check-in-button">
-                <property name="label" translatable="yes" comments="Translators: Check in is used as a verb">C_heck in</property>
-                <property name="visible">False</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">False</property>
-                <property name="use_underline">True</property>
-                <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Check in here</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="bubble-edit-button">
-                <property name="visible">False</property>
-                <property name="can_focus">True</property>
-                <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Edit on OpenStreetMap</property>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="icon-name">document-edit-symbolic</property>
-                    <property name="pixel_size">16</property>
-                  </object>
-                </child>
+              <object class="GtkImage" id="bubble-route-button-image">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon-name">route-button-symbolic</property>
               </object>
             </child>
           </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">0</property>
-          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="bubble-send-to-button">
+            <property name="name">bubble-send-to-button</property>
+            <property name="visible">False</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Share location</property>
+            <child>
+              <object class="GtkImage" id="bubble-send-to-button-image">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon-name">send-to-symbolic</property>
+                <property name="pixel_size">16</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="bubble-favorite-button">
+            <property name="name">bubble-favorite-button</property>
+            <property name="visible">False</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Mark as favorite</property>
+            <child>
+              <object class="GtkImage" id="bubble-favorite-button-image">
+                <property name="name">bubble-favorite-button-image</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon-name">starred-symbolic</property>
+                <property name="pixel_size">16</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="bubble-check-in-button">
+            <property name="label" translatable="yes" comments="Translators: Check in is used as a verb">C_heck in</property>
+            <property name="visible">False</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="use_underline">True</property>
+            <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Check in here</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="bubble-edit-button">
+            <property name="visible">False</property>
+            <property name="can_focus">True</property>
+            <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Edit on OpenStreetMap</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon-name">document-edit-symbolic</property>
+                <property name="pixel_size">16</property>
+              </object>
+            </child>
+          </object>
         </child>
       </object>
-      <packing>
-        <property name="left_attach">1</property>
-        <property name="top_attach">1</property>
-      </packing>
     </child>
   </object>
 </interface>
