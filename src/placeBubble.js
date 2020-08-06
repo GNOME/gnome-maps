@@ -71,8 +71,6 @@ var PlaceBubble = GObject.registerClass({
 
         super._init(params);
 
-        Utils.load_icon(this.place.icon, 48, (pixbuf) => this.image.pixbuf = pixbuf);
-
         this._stack = ui.stack;
         this._title = ui.labelTitle;
         this._boxContent = ui.boxContent;
@@ -275,8 +273,7 @@ var PlaceBubble = GObject.registerClass({
 
     _onThumbnailComplete(thumbnail) {
         if (thumbnail) {
-            this.thumbnail.pixbuf = this._cropAndScaleThumbnail(thumbnail);
-            this.iconStack.visible_child_name = 'thumbnail';
+            // TODO: Add thumbnails back
         }
     }
 

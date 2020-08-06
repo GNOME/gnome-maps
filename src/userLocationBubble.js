@@ -41,9 +41,6 @@ class UserLocationBubble extends MapBubble.MapBubble {
 
         super._init(params);
 
-        this.image.icon_name = 'find-location-symbolic';
-        this.image.pixel_size = 48;
-
         this.updateLocation();
         this.content.add(this._ui.gridContent);
     }
