@@ -53,8 +53,7 @@ var PlaceBubble = GObject.registerClass({
 }, class PlaceBubble extends MapBubble.MapBubble {
 
     _init(params) {
-        let ui = Utils.getUIObject('place-bubble', [ 'stack',
-                                                     'box-content',
+        let ui = Utils.getUIObject('place-bubble', [ 'box-content',
                                                      'grid-content',
                                                      'contact-avatar',
                                                      'label-title',
@@ -72,7 +71,8 @@ var PlaceBubble = GObject.registerClass({
 
         super._init(params);
 
-        this._stack = ui.stack;
+        this.loading = true;
+
         this._title = ui.labelTitle;
         this._boxContent = ui.boxContent;
         this._gridContent = ui.gridContent;
@@ -112,7 +112,7 @@ var PlaceBubble = GObject.registerClass({
         } else {
             this._populate(this.place);
         }
-        this.content.add(this._stack);
+        this.content.add(ui.gridContent);
 
         this._initExpandButton();
     }
@@ -272,7 +272,7 @@ var PlaceBubble = GObject.registerClass({
             this._title.label = title;
         }
         this._expandButton.visible = expandedContent.length > 0;
-        this._stack.visible_child = this._gridContent;
+        this.loading = false;
 
         if (place.wiki)
             this._requestWikipediaThumbnail(place.wiki);
