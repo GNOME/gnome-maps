@@ -56,6 +56,7 @@ var PlaceBubble = GObject.registerClass({
         let ui = Utils.getUIObject('place-bubble', [ 'stack',
                                                      'box-content',
                                                      'grid-content',
+                                                     'contact-avatar',
                                                      'label-title',
                                                      'expand-button',
                                                      'expanded-content',
@@ -78,6 +79,15 @@ var PlaceBubble = GObject.registerClass({
         this._expandButton = ui.expandButton;
         this._expandedContent = ui.expandedContent;
         this._revealer = ui.contentRevealer;
+        this._contactAvatar = ui.contactAvatar;
+
+        /* Set up contact avatar */
+        if (this.place instanceof ContactPlace.ContactPlace) {
+            this._contactAvatar.visible = true;
+            Utils.load_icon(this.place.icon, 32, (pixbuf) => {
+                this._contactAvatar.set_image_load_func(this._avatarImageLoadFunc.bind(this, pixbuf));
+            });
+        }
 
         let overpass = new Overpass.Overpass();
 
@@ -252,6 +262,8 @@ var PlaceBubble = GObject.registerClass({
 
         this._attachContent(content, expandedContent);
 
+        this._contactAvatar.text = formatter.title;
+
         let title = GLib.markup_escape_text(formatter.title, -1);
         if (place.website) {
             let uri = GLib.markup_escape_text(place.website, -1);
@@ -309,4 +321,22 @@ var PlaceBubble = GObject.registerClass({
             this._revealer.reveal_child = !this._revealer.child_revealed;
         }).bind(this));
     }
+
+    // Loads the HdyAvatar image for contact places
+    _avatarImageLoadFunc(pixbuf, size) {
+        let width = pixbuf.get_width();
+        let height = pixbuf.get_height();
+        let croppedThumbnail;
+
+        if (width > height) {
+            let x = (width - height) / 2;
+            croppedThumbnail = pixbuf.new_subpixbuf(x, 0, height, height);
+        } else {
+            let y = (height - width) / 2;
+            croppedThumbnail = pixbuf.new_subpixbuf(0, y, width, width);
+        }
+
+        return croppedThumbnail.scale_simple(size, size, GdkPixbuf.InterpType.BILINEAR);
+    }
+
 });
