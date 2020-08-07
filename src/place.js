@@ -27,7 +27,6 @@ const GObject = imports.gi.GObject;
 
 const Location = imports.location;
 const Overpass = imports.overpass;
-const Translations = imports.translations;
 const Utils = imports.utils;
 
 // Matches coordinates string in 'Decimal Degrees' format
@@ -192,16 +191,8 @@ class Place extends Geocode.Place {
         this._internetAccess = v;
     }
 
-    get openingHoursTranslated() {
-        return Translations.translateOpeningHours(this._openingHours);
-    }
-
     get internetAccess() {
         return this._internetAccess;
-    }
-
-    get internetAccessTranslated() {
-        return Translations.translateInternetAccess(this._internetAccess);
     }
 
     set religion(v) {
@@ -212,20 +203,12 @@ class Place extends Geocode.Place {
         return this._religion;
     }
 
-    get religionTranslated() {
-        return Translations.translateReligion(this._religion);
-    }
-
     set toilets(v) {
         this._toilets = v;
     }
 
     get toilets() {
         return this._toilets;
-    }
-
-    get toiletsTranslated() {
-        return Translations.translateYesNo(this._toilets);
     }
 
     set note(v) {
@@ -244,10 +227,6 @@ class Place extends Geocode.Place {
         return this._wheelchair;
     }
 
-    get wheelchairTranslated() {
-        return this._translateWheelchair(this._wheelchair);
-    }
-
     get initialZoom() {
         return this._initialZoom;
     }
@@ -259,38 +238,6 @@ class Place extends Geocode.Place {
     set prefilled(prefilled) {
         this._prefilled = prefilled;
     }
-
-    _translateWheelchair(string) {
-        switch(string) {
-            /* Translators:
-             * This means wheelchairs have full unrestricted access.
-             */
-            case 'yes': return _("yes");
-
-            /* Translators:
-             * This means wheelchairs have partial access (e.g some areas
-             * can be accessed and others not, areas requiring assistance
-             * by someone pushing up a steep gradient).
-             */
-            case 'limited': return _("limited");
-
-            /* Translators:
-             * This means wheelchairs have no unrestricted access
-             * (e.g. stair only access).
-             */
-            case 'no': return _("no");
-
-            /* Translators:
-             * This means that the way or area is designated or purpose built
-             * for wheelchairs (e.g. elevators designed for wheelchair access
-             * only). This is rarely used.
-             */
-            case 'designated': return _("designated");
-
-            default: return null;
-        }
-    }
-
 
     toJSON() {
         let bounding_box = null;

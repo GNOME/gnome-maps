@@ -34,6 +34,7 @@ const Place = imports.place;
 const PlaceBubbleImage = imports.placeBubbleImage;
 const PlaceFormatter = imports.placeFormatter;
 const PlaceStore = imports.placeStore;
+const Translations = imports.translations;
 const Utils = imports.utils;
 const Wikipedia = imports.wikipedia;
 
@@ -52,13 +53,10 @@ var PlaceBubble = GObject.registerClass({
 }, class PlaceBubble extends MapBubble.MapBubble {
 
     _init(params) {
-        let ui = Utils.getUIObject('place-bubble', [ 'box-content',
-                                                     'grid-content',
+        let ui = Utils.getUIObject('place-bubble', [ 'main-grid',
+                                                     'place-details',
                                                      'contact-avatar',
-                                                     'label-title',
-                                                     'expand-button',
-                                                     'expanded-content',
-                                                     'content-revealer']);
+                                                     'label-title']);
         params.buttons = (MapBubble.Button.ROUTE |
                           MapBubble.Button.SEND_TO);
 
@@ -73,11 +71,8 @@ var PlaceBubble = GObject.registerClass({
         this.loading = true;
 
         this._title = ui.labelTitle;
-        this._boxContent = ui.boxContent;
-        this._expandButton = ui.expandButton;
-        this._expandedContent = ui.expandedContent;
-        this._revealer = ui.contentRevealer;
         this._contactAvatar = ui.contactAvatar;
+        this._placeDetails = ui.placeDetails;
 
         /* Set up contact avatar */
         if (this.place instanceof ContactPlace.ContactPlace) {
@@ -110,9 +105,7 @@ var PlaceBubble = GObject.registerClass({
         } else {
             this._populate(this.place);
         }
-        this.content.add(ui.gridContent);
-
-        this._initExpandButton();
+        this.content.add(ui.mainGrid);
     }
 
     _onInfoAdded() {
@@ -130,12 +123,143 @@ var PlaceBubble = GObject.registerClass({
         return Format.vprintf('https://%s.wikipedia.org/wiki/%s', [ lang, article ]);
     }
 
-    /*
-     * Create an array of all content to be showed when expanding the place
-     * bubble
-     */
-    _createExpandedContent(place) {
-        let expandedContent = [];
+    _createContent(formatter, place) {
+        let content = [];
+
+        let address = formatter.rows.map((row) => {
+            row = row.map(function(prop) {
+                return GLib.markup_escape_text(place[prop], -1);
+            });
+            return row.join(', ');
+        });
+        if (address.length > 0) {
+            content.push({ label: _("Address"),
+                           icon: 'map-marker-symbolic',
+                           info: address.join('\n') });
+        }
+
+        if (place.website) {
+            content.push({ label: _("Website"),
+                           icon: 'web-browser-symbolic',
+                           info: GLib.markup_escape_text(place.website, -1),
+                           linkUrl: place.website });
+        }
+
+        if (place.phone) {
+            let phone = { label: _("Phone number"),
+                          icon: 'phone-oldschool-symbolic',
+                          info: GLib.markup_escape_text(place.phone, -1) };
+
+            if (Utils.uriSchemeSupported('tel')) {
+                phone.linkUrl = 'tel:%s'.format(place.phone);
+            }
+
+            content.push(phone);
+        }
+
+        if (place.openingHours) {
+            content.push({ label: _("Opening hours"),
+                           icon: 'emoji-recent-symbolic',
+                           info: Translations.translateOpeningHours(place.openingHours) });
+        }
+
+        switch(place.internetAccess) {
+            case 'yes':
+                /* Translators:
+                 * There is public internet access but the particular kind is unknown.
+                 */
+                content.push({ info: _("Public internet access"),
+                               icon: 'network-wireless-signal-excellent-symbolic' });
+                break;
+
+            case 'no':
+                /* Translators:
+                 * no internet access is offered in a place where
+                 * someone might expect it.
+                 */
+                content.push({ info: _("No internet access"),
+                               icon: 'network-wireless-offline-symbolic' });
+                break;
+
+            case 'wlan':
+                /* Translators:
+                 * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
+                 */
+                content.push({ info: _("Public Wi-Fi"),
+                               icon: 'network-wireless-signal-excellent-symbolic' });
+                break;
+
+            case 'wired':
+                /* Translators:
+                 * This means a a place where you can plug in your laptop with ethernet.
+                 */
+                content.push({ info: _("Wired internet access"),
+                               icon: 'network-wired-symbolic' });
+                break;
+
+            case 'terminal':
+                /* Translators:
+                 * Like internet cafe or library where the computer is given.
+                 */
+                content.push({ info: _("Computers available for use"),
+                               icon: 'computer-symbolic' });
+                break;
+
+            case 'service':
+                /* Translators:
+                 * This means there is personnel which helps you in case of problems.
+                 */
+                content.push({ info: _("Internet assistance available"),
+                               icon: 'computer-symbolic' });
+                break;
+        }
+
+        if (place.toilets === 'no') {
+            content.push({ info: _("No toilets available"),
+                           icon: 'no-toilets-symbolic' });
+        } else if (place.toilets === 'yes') {
+            content.push({ info: _("Toilets available"),
+                           icon: 'toilets-symbolic' });
+        }
+
+        switch(place.wheelchair) {
+            case 'yes':
+                /* Translators:
+                 * This means wheelchairs have full unrestricted access.
+                 */
+                content.push({ info: _("Wheelchair accessible"),
+                               icon: 'wheelchair-symbolic' });
+                break;
+
+            case 'limited':
+                /* Translators:
+                 * This means wheelchairs have partial access (e.g some areas
+                 * can be accessed and others not, areas requiring assistance
+                 * by someone pushing up a steep gradient).
+                 */
+                content.push({ info: _("Limited wheelchair accessibility"),
+                               icon: 'wheelchair-limited-symbolic'  });
+                break;
+
+            case 'no':
+                /* Translators:
+                 * This means wheelchairs have no unrestricted access
+                 * (e.g. stair only access).
+                 */
+                content.push({ info: _("Not wheelchair accessible"),
+                               icon: 'no-wheelchair-symbolic'  });
+                break;
+
+            case 'designated':
+                /* Translators:
+                 * This means that the way or area is designated or purpose built
+                 * for wheelchairs (e.g. elevators designed for wheelchair access
+                 * only). This is rarely used.
+                 */
+                content.push({ info: _("Designated for wheelchair users"),
+                               icon: 'wheelchair-symbolic'  });
+                break;
+        }
 
         if (place.population) {
             /* TODO: this is a bit of a work-around to re-interpret the population,
@@ -144,103 +268,88 @@ var PlaceBubble = GObject.registerClass({
              * in the Place class. But this will also need to be handled by the
              * PlaceStore, possible in a backwards-compatible way
              */
-            expandedContent.push({ label: _("Population:"),
-                                   info: parseInt(place.population).toLocaleString() });
+            content.push({ label: _("Population"),
+                           icon: 'system-users-symbolic',
+                           info: parseInt(place.population).toLocaleString() });
         }
 
         if (place.location.altitude > 0) {
             let alt  = place.location.altitude;
-            expandedContent.push({ label: _("Altitude:"),
-                                   info: Utils.prettyDistance(alt, true) });
-        }
-
-        if (place.openingHours) {
-            expandedContent.push({ label: _("Opening hours:"),
-                                   info: place.openingHoursTranslated });
-        }
-
-        if (place.internetAccess) {
-            expandedContent.push({ label: _("Internet access:"),
-                                   info: place.internetAccessTranslated });
+            content.push({ label: _("Altitude"),
+                           icon: 'mountain-symbolic',
+                           info: Utils.prettyDistance(alt, true) });
         }
 
         if (place.religion) {
-            expandedContent.push({ label: _("Religion:"),
-                                   info: place.religionTranslated });
-        }
-
-        if (place.toilets) {
-            expandedContent.push({ label: _("Toilets:"),
-                                   info: place.toiletsTranslated });
-        }
-
-        if (place.wheelchair) {
-            expandedContent.push({ label: _("Wheelchair access:"),
-                                   info: place.wheelchairTranslated });
-        }
-
-        if (place.phone) {
-            if (Utils.uriSchemeSupported('tel')) {
-                expandedContent.push({ label: _("Phone:"),
-                                       linkText: place.phone,
-                                       linkUrl: 'tel:%s'.format(place.phone) });
-            } else {
-                expandedContent.push({ label: _("Phone:"),
-                                       info: place.phone });
-            }
+            content.push({ label: _("Religion:"),
+                           info: Translations.translateReligion(place.religion) });
         }
 
         if (place.wiki) {
             let link = this._formatWikiLink(place.wiki);
-            expandedContent.push({ linkText: _("Wikipedia"),
-                                   linkUrl: link});
+            content.push({ info: _("Wikipedia"),
+                           linkUrl: link});
         }
 
-        return expandedContent;
+        return content;
     }
 
-    _attachContent(content, expandedContent) {
-        content.forEach((info) => {
-            let label = new Gtk.Label({ label: info,
-                                        visible: true,
-                                        use_markup: true,
-                                        halign: Gtk.Align.START });
-            this._boxContent.pack_start(label, false, true, 0);
-        });
+    _attachContent(content) {
+        content.forEach(({ label, icon, linkUrl, info }) => {
+            let separator = new Gtk.Separator({ visible: true });
+            separator.get_style_context().add_class('no-margin-separator');
+            this._placeDetails.add(separator);
 
-        expandedContent.forEach(({ label, linkUrl, linkText, info }, row) => {
-            let widget;
+            let box = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL,
+                                    visible: true,
+                                    marginStart: 18,
+                                    marginEnd: 18,
+                                    marginTop: 6,
+                                    marginBottom: 6,
+                                    spacing: 12 });
 
-            if (label) {
-                widget = new Gtk.Label({ label: label.italics(),
-                                         visible: true,
-                                         use_markup: true,
-                                         yalign: 0,
-                                         halign: Gtk.Align.START });
-                this._expandedContent.attach(widget, 0, row, 1, 1);
+            if (icon) {
+                let widget = new Gtk.Image({ icon_name: icon,
+                                             visible: true,
+                                             xalign: 1,
+                                             valign: Gtk.Align.START,
+                                             halign: Gtk.Align.END });
+
+                if (label) {
+                    widget.tooltip_markup = label;
+                }
+
+                box.add(widget);
+            } else if (label) {
+                let widget = new Gtk.Label({ label: label.italics(),
+                                             visible: true,
+                                             use_markup: true,
+                                             yalign: 0,
+                                             halign: Gtk.Align.END });
+                box.add(widget);
             }
 
             if (linkUrl) {
                 let uri = GLib.markup_escape_text(linkUrl, -1);
-                /* double-escape the tooltip text, as GTK+ treats it as markup */
+                /* double-escape the tooltip text, as GTK treats it as markup */
                 let tooltipText = GLib.markup_escape_text(uri, -1);
                 info = '<a href="%s" title="%s">%s</a>'.format(uri,
                                                                tooltipText,
-                                                               linkText);
+                                                               info);
             }
 
-            widget = new Gtk.Label({ label: info,
-                                     visible: true,
-                                     use_markup: true,
-                                     max_width_chars: 25,
-                                     wrap: true,
-                                     halign: Gtk.Align.START });
+            let widget = new Gtk.Label({ label: info,
+                                         visible: true,
+                                         use_markup: true,
+                                         max_width_chars: 30,
+                                         wrap: true,
+                                         xalign: 0,
+                                         hexpand: true,
+                                         halign: Gtk.Align.FILL });
 
-            if(label)
-                this._expandedContent.attach(widget, 1, row, 1, 1);
-            else
-                // Expand over both columns if this row has no label
-                this._expandedContent.attach(widget, 0, row, 2, 1);
+            box.add(widget);
+
+            this._placeDetails.add(box);
         });
     }
 
@@ -250,30 +359,17 @@ var PlaceBubble = GObject.registerClass({
         // refresh place view
         this._clearView();
 
-        let content = formatter.rows.map((row) => {
-            row = row.map(function(prop) {
-                return GLib.markup_escape_text(place[prop], -1);
-            });
-            return row.join(', ');
-        });
-        let expandedContent = this._createExpandedContent(place);
-
-        this._attachContent(content, expandedContent);
+        let content = this._createContent(formatter, place);
+        this._attachContent(content);
 
         this._contactAvatar.text = formatter.title;
 
-        let title = GLib.markup_escape_text(formatter.title, -1);
-        if (place.website) {
-            let uri = GLib.markup_escape_text(place.website, -1);
-            this._title.label = '<a href="%s">%s</a>'.format(uri, title);
-        } else {
-            this._title.label = title;
-        }
-        this._expandButton.visible = expandedContent.length > 0;
-        this.loading = false;
+        this._title.label = formatter.title;
 
         if (place.wiki)
             this._requestWikipediaThumbnail(place.wiki);
+
+        this.loading = false;
     }
 
     _requestWikipediaThumbnail(wiki) {
@@ -287,16 +383,7 @@ var PlaceBubble = GObject.registerClass({
 
     // clear the view widgets to be able to re-populate an updated place
     _clearView() {
-        this._boxContent.get_children().forEach((child) => child.destroy());
-        this._expandedContent.get_children().forEach((child) => child.destroy());
-    }
-
-    _initExpandButton() {
-        let image = this._expandButton.get_child();
-
-        this._expandButton.connect('clicked', (function() {
-            this._revealer.reveal_child = !this._revealer.child_revealed;
-        }).bind(this));
+        this._placeDetails.get_children().forEach((child) => child.destroy());
     }
 
     // Loads the HdyAvatar image for contact places
