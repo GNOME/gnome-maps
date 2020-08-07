@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2020-07-15 08:46+0000\n"
-"PO-Revision-Date: 2020-07-30 00:10+0300\n"
+"POT-Creation-Date: 2020-08-05 21:03+0000\n"
+"PO-Revision-Date: 2020-08-07 17:33+0300\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
@@ -77,7 +77,7 @@ msgstr "GNOME Projesi"
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:34
-#: src/application.js:81 src/mainWindow.js:129 src/mainWindow.js:567
+#: src/application.js:82 src/mainWindow.js:134 src/mainWindow.js:626
 msgid "Maps"
 msgstr "Haritalar"
 
@@ -243,7 +243,7 @@ msgstr "Hibrit uydu döşemelerini kullan"
 
 #: data/org.gnome.Maps.gschema.xml:92
 msgid "Whether aerial tiles should use hybrid style (with labels)."
-msgstr "Uydu döşemelerinin hibrit biçim (etiketli) kullanıp kullanmayacağı"
+msgstr "Uydu döşemelerinin hibrit biçim (etiketli) kullanıp kullanmayacağı."
 
 #: data/ui/check-in-dialog.ui:250 data/ui/check-in-dialog.ui:299
 msgid "Visibility"
@@ -362,7 +362,7 @@ msgid "Toggle favorites"
 msgstr "Gözdeleri aç/kapat"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-right.ui:57
+#: data/ui/headerbar-right.ui:57 data/ui/main-window.ui:98
 msgid "Print Route"
 msgstr "Rotayı Yazdır"
 
@@ -483,23 +483,27 @@ msgstr "_Klavye Kısayolları"
 msgid "About Maps"
 msgstr "Haritalar Hakkında"
 
-#: data/ui/main-window.ui:52
+#: data/ui/main-window.ui:56
 msgid "Primary menu"
 msgstr "Ana menü"
 
-#: data/ui/main-window.ui:114
+#: data/ui/main-window.ui:81
+msgid "Find a Route"
+msgstr "Rota Bul"
+
+#: data/ui/main-window.ui:181
 msgid "Maps is offline!"
 msgstr "Haritalar çevrim dışı!"
 
-#: data/ui/main-window.ui:122
+#: data/ui/main-window.ui:194
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
 msgstr ""
-"Haritaların çalışması için kullanılabilir internet bağlantısı gerekli, "
-"ancak bağlantı yok."
+"Haritaların çalışması için kullanılabilir internet bağlantısı gerekli, ancak "
+"bağlantı yok."
 
-#: data/ui/main-window.ui:130
+#: data/ui/main-window.ui:203
 msgid "Check your connection and proxy settings."
 msgstr "Bağlantı ve vekil sunucu ayarlarınızı denetleyin."
 
@@ -550,15 +554,15 @@ msgid "Password"
 msgstr "Parola"
 
 #: data/ui/osm-account-dialog.ui:125
+msgid "Sign up"
+msgstr "Kaydol"
+
+#: data/ui/osm-account-dialog.ui:139
 msgid "Sign In"
 msgstr "Oturum Aç"
 
-#: data/ui/osm-account-dialog.ui:146
-msgid "Don’t have an account?"
-msgstr "Hesabınız yok mu?"
-
 #. The label should contain the link to the OSM reset password page with a translated title
-#: data/ui/osm-account-dialog.ui:159
+#: data/ui/osm-account-dialog.ui:162
 msgid ""
 "Sorry, that didn’t work. Please try again, or visit\n"
 "<a href=\"https://www.openstreetmap.org/user/forgot-password"
@@ -569,27 +573,27 @@ msgstr ""
 "<a href=\"https://www.openstreetmap.org/user/forgot-password"
 "\">OpenStreetMap</a>’i ziyaret edin."
 
-#: data/ui/osm-account-dialog.ui:172
+#: data/ui/osm-account-dialog.ui:175
 msgid "The verification code didn’t match, please try again."
 msgstr "Doğrulama kodu eşleşmedi, lütfen yeniden deneyin."
 
-#: data/ui/osm-account-dialog.ui:198
+#: data/ui/osm-account-dialog.ui:201
 msgid "Enter verification code shown above"
 msgstr "Yukarıda gösterilen doğrulama kodunu girin"
 
-#: data/ui/osm-account-dialog.ui:221
+#: data/ui/osm-account-dialog.ui:224
 msgid "Verify"
 msgstr "Doğrula"
 
-#: data/ui/osm-account-dialog.ui:251
+#: data/ui/osm-account-dialog.ui:254
 msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
 msgstr "<span weight=\"bold\" size=\"x-large\">Oturum Açıldı</span>"
 
-#: data/ui/osm-account-dialog.ui:264
+#: data/ui/osm-account-dialog.ui:267
 msgid "Your OpenStreetMap account is active."
 msgstr "OpenStreetMap hesabınız etkin."
 
-#: data/ui/osm-account-dialog.ui:298
+#: data/ui/osm-account-dialog.ui:301
 msgid "Sign Out"
 msgstr "Oturumu Kapat"
 
@@ -678,7 +682,7 @@ msgstr "Kopyala"
 msgid "Send To…"
 msgstr "Gönder…"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:64
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:65
 msgid "Open Shape Layer"
 msgstr "Şekil Katmanını Aç"
 
@@ -806,23 +810,23 @@ msgstr "Gerekli öznitelikler eksik"
 msgid "Could not find OSM element"
 msgstr "OSM ögesi bulunamadı"
 
-#: src/application.js:95
+#: src/application.js:96
 msgid "A path to a local tiles directory structure"
 msgstr "Yerel döşeme dizini yapısını barındıran yol"
 
-#: src/application.js:101
+#: src/application.js:102
 msgid "Tile size for local tiles directory"
 msgstr "Yerel döşeme dizini için döşeme boyutu"
 
-#: src/application.js:105
+#: src/application.js:106
 msgid "Show the version of the program"
 msgstr "Programın sürümünü göster"
 
-#: src/application.js:111
+#: src/application.js:112
 msgid "Ignore network availability"
 msgstr "Ağ uygunluğunu göz ardı et"
 
-#: src/application.js:121 src/application.js:122
+#: src/application.js:122 src/application.js:123
 msgid "[FILE…|URI]"
 msgstr "[DOSYA…|URI]"
 
@@ -955,15 +959,15 @@ msgstr "Hiçbir rota bulunamadı."
 msgid "Start!"
 msgstr "Başla!"
 
-#: src/mainWindow.js:61
+#: src/mainWindow.js:62
 msgid "All Layer Files"
 msgstr "Tüm Katman Dosyaları"
 
-#: src/mainWindow.js:470
+#: src/mainWindow.js:508
 msgid "Failed to connect to location service"
 msgstr "Konum hizmetine bağlanma başarısız oldu"
 
-#: src/mainWindow.js:565
+#: src/mainWindow.js:624
 msgid "translator-credits"
 msgstr ""
 "Muhammet Kara <muhammetk@gmail.com>\n"
@@ -975,15 +979,15 @@ msgstr ""
 "Ahmet Elgun <ahmetelgn@gmail.com>\n"
 "Sabri Ünal <libreajans@gmail.com>"
 
-#: src/mainWindow.js:568
+#: src/mainWindow.js:627
 msgid "A map application for GNOME"
 msgstr "GNOME için harita uygulaması"
 
-#: src/mainWindow.js:579
+#: src/mainWindow.js:638
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Telif Hakkı © 2011 – 2019 Red Hat, Inc. ve GNOME Haritalar yazarları"
 
-#: src/mainWindow.js:599
+#: src/mainWindow.js:658
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "%s ve katkıcılar tarafından harita verisi"
@@ -993,7 +997,7 @@ msgstr "%s ve katkıcılar tarafından harita verisi"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:615
+#: src/mainWindow.js:674
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Harita döşemeleri %s tarafından sağlanmıştır"
@@ -1007,10 +1011,10 @@ msgstr "Harita döşemeleri %s tarafından sağlanmıştır"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:644
+#: src/mainWindow.js:703
 #, javascript-format
 msgid "Search provided by %s using %s"
-msgstr "Arama %s tarafından %s kullanılarak sağlanmıştır."
+msgstr "Arama %s tarafından %s kullanılarak sağlanmıştır"
 
 #: src/mapView.js:466
 msgid "File type is not supported"
@@ -1440,12 +1444,12 @@ msgid "failed to load file"
 msgstr "dosya yükleme başarısız"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:299
+#: src/sidebar.js:358
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Tahmini süre: %s"
 
-#: src/sidebar.js:355
+#: src/sidebar.js:414
 #, javascript-format
 msgid "Itineraries provided by %s"
 msgstr "Rota yönergelerini %s sağlamıştır"
@@ -1911,6 +1915,9 @@ msgstr "%s üstünde sağa u dönüşü yapın"
 #: src/transitplugins/openTripPlanner.js:1244
 msgid "Make a right u-turn"
 msgstr "Sağa u dönüşü yapın"
+
+#~ msgid "Don’t have an account?"
+#~ msgstr "Hesabınız yok mu?"
 
 #~ msgid "%f h"
 #~ msgstr "%f sa"
