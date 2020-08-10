@@ -376,8 +376,6 @@ var PlaceBubble = GObject.registerClass({
     }
 
     _requestWikipedia(wiki) {
-        this._wiki = wiki;
-
         Wikipedia.fetchArticleInfo(wiki,
                                    THUMBNAIL_FETCH_SIZE,
                                    this._onWikiMetadataComplete.bind(this),
@@ -388,10 +386,10 @@ var PlaceBubble = GObject.registerClass({
         this.thumbnail = thumbnail;
     }
 
-    _onWikiMetadataComplete(metadata) {
+    _onWikiMetadataComplete(wiki, metadata) {
         if (metadata.extract) {
             let text = GLib.markup_escape_text(metadata.extract, -1);
-            let link = this._formatWikiLink(this._wiki);
+            let link = this._formatWikiLink(wiki);
 
             /* If the text goes past some number of characters (see
              * wikipedia.js), it is ellipsized with '...'

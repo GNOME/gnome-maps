@@ -58,9 +58,9 @@ function getHtmlEntityEncodedArticle(wiki) {
  *
  * @size is the maximum width of the thumbnail.
  *
- * Calls @metadataCb with an object containing information about the article.
- * For the keys/values of this object, see the relevant MediaWiki API
- * documentation.
+ * Calls @metadataCb with the lang:title pair for the article and an object
+ * containing information about the article. For the keys/values of this
+ * object, see the relevant MediaWiki API documentation.
  *
  * Calls @thumbnailCb with the Gdk.Pixbuf of the icon when successful, otherwise
  * null.
@@ -71,12 +71,15 @@ function fetchArticleInfo(wiki, size, metadataCb, thumbnailCb) {
     let uri = Format.vprintf('https://%s.wikipedia.org/w/api.php', [ lang ]);
     let msg = Soup.form_request_new_from_hash('GET', uri, { action: 'query',
                                                             titles: title,
-                                                            prop: 'extracts|pageimages',
+                                                            prop: 'extracts|pageimages|langlinks',
                                                             format: 'json',
 
                                                             /* Allow redirects, for example if an
                                                                article is renamed. */
                                                             redirects: '1',
+
+                                                            /* Make sure we get all lang links */
+                                                            lllimit: 'max',
 
                                                             /* don't go past first section header */
                                                             exintro: 'yes',
@@ -88,19 +91,19 @@ function fetchArticleInfo(wiki, size, metadataCb, thumbnailCb) {
                                                             pithumbsize: size + ''});
     let session = _getSoupSession();
     let cachedMetadata = _metadataCache[wiki];
-    let cachedThumbnail = _thumbnailCache[wiki + '/' + size];
 
-    if (cachedMetadata && cachedThumbnail) {
-        metadataCb(cachedMetadata);
-        thumbnailCb(cachedThumbnail);
+    if (cachedMetadata) {
+        _onMetadataFetched(wiki, cachedMetadata, size, metadataCb, thumbnailCb);
         return;
     }
 
     session.queue_message(msg, (session, msg) => {
         if (msg.status_code !== Soup.KnownStatusCode.OK) {
             log("Failed to request Wikipedia metadata: " + msg.reason_phrase);
-            metadataCb({});
-            thumbnailCb(null);
+            metadataCb(null, {});
+            if (thumbnailCb) {
+                thumbnailCb(null);
+            }
             return;
         }
 
@@ -116,29 +119,51 @@ function fetchArticleInfo(wiki, size, metadataCb, thumbnailCb) {
                 let page = pages[pageId];
 
                 _metadataCache[wiki] = page;
-                metadataCb(page);
-
-                let thumbnail = page.thumbnail;
-                if (thumbnail) {
-                    let source = page.thumbnail.source;
-
-                    _fetchThumbnailImage(wiki, size, source, thumbnailCb);
-                } else {
-                    thumbnailCb(null);
-                }
+                _onMetadataFetched(wiki, page, size, metadataCb, thumbnailCb);
                 return;
             }
         } else {
-            metadataCb({});
-            thumbnailCb(null);
+            metadataCb(null, {});
+            if (thumbnailCb) {
+                thumbnailCb(null);
+            }
         }
     });
+}
+
+function _onMetadataFetched(wiki, page, size, metadataCb, thumbnailCb) {
+    /* Try to get a thumbnail *before* following language links--the primary
+       article probably has the best thumbnail image */
+    if (thumbnailCb && page.thumbnail) {
+        let source = page.thumbnail.source;
+
+        _fetchThumbnailImage(wiki, size, source, thumbnailCb);
+        thumbnailCb = null;
+    }
+
+    /* Follow language links if necessary */
+    let langlink = _findLanguageLink(wiki, page);
+    if (langlink) {
+        fetchArticleInfo(langlink, size, metadataCb, thumbnailCb);
+    } else {
+        metadataCb(wiki, page);
+
+        if (thumbnailCb) {
+            thumbnailCb(null);
+        }
+    }
 }
 
 function _fetchThumbnailImage(wiki, size, source, callback) {
     let uri = new Soup.URI(source);
     let msg = new Soup.Message({ method: 'GET', uri: uri });
     let session = _getSoupSession();
+
+    let cachedThumbnail = _thumbnailCache[wiki + '/' + size];
+    if (cachedThumbnail) {
+        callback(cachedThumbnail);
+        return;
+    }
 
     session.queue_message(msg, (session, msg) => {
         if (msg.status_code !== Soup.KnownStatusCode.OK) {
@@ -162,4 +187,27 @@ function _fetchThumbnailImage(wiki, size, source, callback) {
 
         stream.close(null);
     });
+}
+
+/* Finds the best language to use, based on the language of the original
+   article and the langlinks data from the Wikipedia API.
+
+   Returns a lang:title string if that article should be used, or undefined if
+   the original article should be used. */
+function _findLanguageLink(wiki, page) {
+    let originalLang = getLanguage(wiki);
+    let languages = GLib.get_language_names().map((lang) => lang.split(/[\._\-]/)[0]);
+
+    if (!languages.includes(originalLang)) {
+        let langlinks = {};
+        for (let langlink of (page.langlinks || [])) {
+            langlinks[langlink.lang] = langlink["*"];
+        }
+
+        for (let language of languages) {
+            if (language in langlinks) {
+                return language + ":" + langlinks[language];
+            }
+        }
+    }
 }
