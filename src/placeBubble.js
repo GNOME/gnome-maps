@@ -286,16 +286,14 @@ var PlaceBubble = GObject.registerClass({
         }
 
         if (place.wiki) {
-            let link = this._formatWikiLink(place.wiki);
-            content.push({ info: _("Wikipedia"),
-                           linkUrl: link});
+            content.push({ type: 'wikipedia', info: '' });
         }
 
         return content;
     }
 
     _attachContent(content) {
-        content.forEach(({ label, icon, linkUrl, info }) => {
+        content.forEach(({ type, label, icon, linkUrl, info }) => {
             let separator = new Gtk.Separator({ visible: true });
             separator.get_style_context().add_class('no-margin-separator');
             this._placeDetails.add(separator);
@@ -347,8 +345,13 @@ var PlaceBubble = GObject.registerClass({
                                          hexpand: true,
                                          halign: Gtk.Align.FILL });
 
-            box.add(widget);
+            if (type === 'wikipedia') {
+                box.marginTop = 14;
+                box.marginBottom = 18;
+                this._wikipediaLabel = widget;
+            }
 
+            box.add(widget);
             this._placeDetails.add(box);
         });
     }
@@ -363,22 +366,47 @@ var PlaceBubble = GObject.registerClass({
         this._attachContent(content);
 
         this._contactAvatar.text = formatter.title;
-
         this._title.label = formatter.title;
 
-        if (place.wiki)
-            this._requestWikipediaThumbnail(place.wiki);
+        if (place.wiki) {
+            this._requestWikipedia(place.wiki);
+        }
 
         this.loading = false;
     }
 
-    _requestWikipediaThumbnail(wiki) {
-        Wikipedia.fetchArticleThumbnail(wiki, THUMBNAIL_FETCH_SIZE,
-                                        this._onThumbnailComplete.bind(this));
+    _requestWikipedia(wiki) {
+        this._wiki = wiki;
+
+        Wikipedia.fetchArticleInfo(wiki,
+                                   THUMBNAIL_FETCH_SIZE,
+                                   this._onWikiMetadataComplete.bind(this),
+                                   this._onThumbnailComplete.bind(this));
     }
 
     _onThumbnailComplete(thumbnail) {
         this.thumbnail = thumbnail;
+    }
+
+    _onWikiMetadataComplete(metadata) {
+        if (metadata.extract) {
+            let text = GLib.markup_escape_text(metadata.extract, -1);
+            let link = this._formatWikiLink(this._wiki);
+
+            /* If the text goes past some number of characters (see
+             * wikipedia.js), it is ellipsized with '...'
+             * GNOME HIG says to use U+2026 HORIZONTAL ELLIPSIS instead.
+             * Also, trim whitespace. */
+            text = text.replace(/\s*\.\.\.\s*$/, '…');
+
+            let uri = GLib.markup_escape_text(link, -1);
+            /* double-escape the tooltip text, as GTK treats it as markup */
+            let tooltipText = GLib.markup_escape_text(uri, -1);
+
+            /* Translators: This is the text for the "Wikipedia" link at the end
+               of summaries */
+            this._wikipediaLabel.label = `${text} <a href="${link}" title="${tooltipText}">${ _("Wikipedia") }</a>`;
+        }
     }
 
     // clear the view widgets to be able to re-populate an updated place

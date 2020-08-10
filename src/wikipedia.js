@@ -37,6 +37,7 @@ function _getSoupSession() {
 }
 
 let _thumbnailCache = {};
+let _metadataCache = {};
 
 function getLanguage(wiki) {
     return wiki.split(':')[0];
@@ -52,31 +53,54 @@ function getHtmlEntityEncodedArticle(wiki) {
 }
 
 /*
- * Try to fetch the thumbnail given an article title and thumbnail size
- * Calls callback with the Gdk.PixBuf of the icon when successful, otherwise
- * undefined
+ * Fetch various metadata about a Wikipedia article, given the wiki language
+ * and article title.
+ *
+ * @size is the maximum width of the thumbnail.
+ *
+ * Calls @metadataCb with an object containing information about the article.
+ * For the keys/values of this object, see the relevant MediaWiki API
+ * documentation.
+ *
+ * Calls @thumbnailCb with the Gdk.Pixbuf of the icon when successful, otherwise
+ * null.
  */
-function fetchArticleThumbnail(wiki, size, callback) {
+function fetchArticleInfo(wiki, size, metadataCb, thumbnailCb) {
     let lang = getLanguage(wiki);
     let title = getHtmlEntityEncodedArticle(wiki);
     let uri = Format.vprintf('https://%s.wikipedia.org/w/api.php', [ lang ]);
     let msg = Soup.form_request_new_from_hash('GET', uri, { action: 'query',
                                                             titles: title,
-                                                            prop: 'pageimages',
+                                                            prop: 'extracts|pageimages',
                                                             format: 'json',
+
+                                                            /* Allow redirects, for example if an
+                                                               article is renamed. */
+                                                            redirects: '1',
+
+                                                            /* don't go past first section header */
+                                                            exintro: 'yes',
+                                                            /* limit the length   */
+                                                            exchars: '200',
+                                                            /* for plain text rather than HTML */
+                                                            explaintext: 'yes',
+
                                                             pithumbsize: size + ''});
     let session = _getSoupSession();
+    let cachedMetadata = _metadataCache[wiki];
     let cachedThumbnail = _thumbnailCache[wiki + '/' + size];
 
-    if (cachedThumbnail) {
-        callback(cachedThumbnail);
+    if (cachedMetadata && cachedThumbnail) {
+        metadataCb(cachedMetadata);
+        thumbnailCb(cachedThumbnail);
         return;
     }
 
     session.queue_message(msg, (session, msg) => {
         if (msg.status_code !== Soup.KnownStatusCode.OK) {
-            log("Failed to request thumbnail: " + msg.reason_phrase);
-            callback(null);
+            log("Failed to request Wikipedia metadata: " + msg.reason_phrase);
+            metadataCb({});
+            thumbnailCb(null);
             return;
         }
 
@@ -88,20 +112,25 @@ function fetchArticleThumbnail(wiki, size, callback) {
              * object, but the API specifies the sub-object as the page ID,
              * so we'll have to use this iteration approach here
              */
-            for (let page in pages) {
-                let thumbnail = pages[page].thumbnail;
+            for (let pageId in pages) {
+                let page = pages[pageId];
 
+                _metadataCache[wiki] = page;
+                metadataCb(page);
+
+                let thumbnail = page.thumbnail;
                 if (thumbnail) {
-                    let source = pages[page].thumbnail.source;
+                    let source = page.thumbnail.source;
 
-                    _fetchThumbnailImage(wiki, size, source, callback);
+                    _fetchThumbnailImage(wiki, size, source, thumbnailCb);
                 } else {
-                    callback(null);
+                    thumbnailCb(null);
                 }
                 return;
             }
         } else {
-            callback(null);
+            metadataCb({});
+            thumbnailCb(null);
         }
     });
 }
