@@ -69,9 +69,9 @@ function prettyTimeTest() {
     JsUnit.assertEquals('1 h', Utils.prettyTime(3600000));
     JsUnit.assertEquals('1 h 1 min', Utils.prettyTime(3660000));
     JsUnit.assertEquals('1 h', Utils.prettyTime(3600001));
-    JsUnit.assertEquals('1 h 10 mins', Utils.prettyTime(4200000));
-    JsUnit.assertEquals('20 mins', Utils.prettyTime(1200000));
-    JsUnit.assertEquals('20 mins', Utils.prettyTime(1201000));
+    JsUnit.assertEquals('1 h 10 min', Utils.prettyTime(4200000));
+    JsUnit.assertEquals('20 min', Utils.prettyTime(1200000));
+    JsUnit.assertEquals('20 min', Utils.prettyTime(1201000));
     JsUnit.assertEquals('1 s', Utils.prettyTime(1000));
     JsUnit.assertEquals('1 s', Utils.prettyTime(1001));
 }

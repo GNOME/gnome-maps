@@ -335,14 +335,14 @@ function prettyTime(time) {
          * using abbreviations for hours and minutes, correspoding to 'h'
          * and 'min' in English. The minutes has appropriate plural variations
          */
-        return ngettext("%s h %s min", "%s h %s mins",
+        return ngettext("%s h %s min", "%s h %s min",
                         minutes).format(hoursStr, minutesStr);
     } else if (minutes > 0) {
         /* Translators: this is a duration with minutes part
          * using abbreviation for minutes, corresponding to 'min' in English
          * with appropriate plural variations
          */
-        return ngettext("%s min", "%s mins", minutes).format(minutesStr);
+        return ngettext("%s min", "%s min", minutes).format(minutesStr);
     } else {
         /* Translators: this is a duration of less than one minute
          * with seconds using an abbreviation for seconds, corresponding to
