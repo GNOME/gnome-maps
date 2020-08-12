@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2020-06-27 15:19+0000\n"
-"PO-Revision-Date: 2020-07-03 08:55-0400\n"
+"POT-Creation-Date: 2020-08-05 21:03+0000\n"
+"PO-Revision-Date: 2020-08-11 14:56+0800\n"
 "Last-Translator: Boyuan Yang <073plan@gmail.com>\n"
 "Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-DamnedLies-Scope: partial\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
@@ -71,7 +71,7 @@ msgstr "GNOME 项目"
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:34
-#: src/application.js:81 src/mainWindow.js:129 src/mainWindow.js:567
+#: src/application.js:82 src/mainWindow.js:134 src/mainWindow.js:626
 msgid "Maps"
 msgstr "地图"
 
@@ -354,7 +354,7 @@ msgid "Toggle favorites"
 msgstr "切换喜爱"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-right.ui:57
+#: data/ui/headerbar-right.ui:57 data/ui/main-window.ui:98
 msgid "Print Route"
 msgstr "打印路线"
 
@@ -475,21 +475,25 @@ msgstr "键盘快捷键(_K)"
 msgid "About Maps"
 msgstr "关于地图"
 
-#: data/ui/main-window.ui:52
+#: data/ui/main-window.ui:56
 msgid "Primary menu"
 msgstr "主菜单"
 
-#: data/ui/main-window.ui:114
+#: data/ui/main-window.ui:81
+msgid "Find a Route"
+msgstr "寻找路线"
+
+#: data/ui/main-window.ui:181
 msgid "Maps is offline!"
 msgstr "地图应用处于离线状态！"
 
-#: data/ui/main-window.ui:122
+#: data/ui/main-window.ui:194
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
 msgstr "地图应用需要有效的网络连接才能正常运行，但是未发现有效连接。"
 
-#: data/ui/main-window.ui:130
+#: data/ui/main-window.ui:203
 msgid "Check your connection and proxy settings."
 msgstr "请检查您的网络连接和代理设置。"
 
@@ -538,15 +542,15 @@ msgid "Password"
 msgstr "密码"
 
 #: data/ui/osm-account-dialog.ui:125
+msgid "Sign up"
+msgstr "注册"
+
+#: data/ui/osm-account-dialog.ui:139
 msgid "Sign In"
 msgstr "登录"
 
-#: data/ui/osm-account-dialog.ui:146
-msgid "Don’t have an account?"
-msgstr "没有帐号？"
-
 #. The label should contain the link to the OSM reset password page with a translated title
-#: data/ui/osm-account-dialog.ui:159
+#: data/ui/osm-account-dialog.ui:162
 msgid ""
 "Sorry, that didn’t work. Please try again, or visit\n"
 "<a href=\"https://www.openstreetmap.org/user/forgot-password"
@@ -556,27 +560,27 @@ msgstr ""
 "<a href=\"https://www.openstreetmap.org/user/forgot-password"
 "\">OpenStreetMap</a> 以重置密码。"
 
-#: data/ui/osm-account-dialog.ui:172
+#: data/ui/osm-account-dialog.ui:175
 msgid "The verification code didn’t match, please try again."
 msgstr "验证码不匹配，请重试。"
 
-#: data/ui/osm-account-dialog.ui:198
+#: data/ui/osm-account-dialog.ui:201
 msgid "Enter verification code shown above"
 msgstr "输入在上面显示的验证码"
 
-#: data/ui/osm-account-dialog.ui:221
+#: data/ui/osm-account-dialog.ui:224
 msgid "Verify"
 msgstr "验证"
 
-#: data/ui/osm-account-dialog.ui:251
+#: data/ui/osm-account-dialog.ui:254
 msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
 msgstr "<span weight=\"bold\" size=\"x-large\">已登录</span>"
 
-#: data/ui/osm-account-dialog.ui:264
+#: data/ui/osm-account-dialog.ui:267
 msgid "Your OpenStreetMap account is active."
 msgstr "您的 OpenStreetMap 帐号已激活。"
 
-#: data/ui/osm-account-dialog.ui:298
+#: data/ui/osm-account-dialog.ui:301
 msgid "Sign Out"
 msgstr "退出"
 
@@ -665,7 +669,7 @@ msgstr "复制"
 msgid "Send To…"
 msgstr "发送至…"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:64
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:65
 msgid "Open Shape Layer"
 msgstr "打开图形图层"
 
@@ -789,21 +793,25 @@ msgstr "缺失需要的属性"
 msgid "Could not find OSM element"
 msgstr "找不到 OSM 元素"
 
-#: src/application.js:94
+#: src/application.js:96
 msgid "A path to a local tiles directory structure"
 msgstr "指向本地区块目录结构的路径"
 
-#: src/application.js:100
+#: src/application.js:102
 msgid "Tile size for local tiles directory"
 msgstr "本地区块目录的区块大小"
 
-#: src/application.js:104
+#: src/application.js:106
 msgid "Show the version of the program"
 msgstr "显示该程序的版本"
 
-#: src/application.js:110
+#: src/application.js:112
 msgid "Ignore network availability"
 msgstr "忽略网络可用性"
+
+#: src/application.js:122 src/application.js:123
+msgid "[FILE…|URI]"
+msgstr "[文件…|URI]"
 
 #: src/checkInDialog.js:167
 msgid "Select an account"
@@ -926,15 +934,15 @@ msgstr "没有找到路线。"
 msgid "Start!"
 msgstr "开始!"
 
-#: src/mainWindow.js:61
+#: src/mainWindow.js:62
 msgid "All Layer Files"
 msgstr "全部图层文件"
 
-#: src/mainWindow.js:470
+#: src/mainWindow.js:508
 msgid "Failed to connect to location service"
 msgstr "无法连接到定位服务"
 
-#: src/mainWindow.js:565
+#: src/mainWindow.js:624
 msgid "translator-credits"
 msgstr ""
 "tuhaihe <1132321739qq@gmail.com>, 2013, 2020\n"
@@ -943,15 +951,15 @@ msgstr ""
 "Dingzhong Chen <wsxy162@gmail.com>, 2015-2018\n"
 "王滋涵 <wi24rd@fedoraproject.org>, 2020"
 
-#: src/mainWindow.js:568
+#: src/mainWindow.js:627
 msgid "A map application for GNOME"
 msgstr "一款 GNOME 地图应用程序"
 
-#: src/mainWindow.js:579
+#: src/mainWindow.js:638
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "版权所有 © 2011 – 2019 红帽公司和 GNOME 地图作者"
 
-#: src/mainWindow.js:599
+#: src/mainWindow.js:658
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "地图数据来自 %s 和贡献者"
@@ -961,7 +969,7 @@ msgstr "地图数据来自 %s 和贡献者"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:615
+#: src/mainWindow.js:674
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "地图图块由 %s 提供"
@@ -975,20 +983,20 @@ msgstr "地图图块由 %s 提供"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:644
+#: src/mainWindow.js:703
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "使用 %s 提供的服务搜索 %s"
 
-#: src/mapView.js:460
+#: src/mapView.js:466
 msgid "File type is not supported"
 msgstr "文件类型未支持"
 
-#: src/mapView.js:467
+#: src/mapView.js:473
 msgid "Failed to open layer"
 msgstr "打开图层失败"
 
-#: src/mapView.js:503
+#: src/mapView.js:509
 msgid "Failed to open GeoURI"
 msgstr "打开 GeoURI 失败"
 
@@ -1402,12 +1410,12 @@ msgid "failed to load file"
 msgstr "载入文件失败"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:299
+#: src/sidebar.js:358
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "估计时间：%s"
 
-#: src/sidebar.js:355
+#: src/sidebar.js:414
 #, javascript-format
 msgid "Itineraries provided by %s"
 msgstr "路线由 %s 提供"
@@ -1873,6 +1881,9 @@ msgstr "向右掉头进入 %s"
 #: src/transitplugins/openTripPlanner.js:1244
 msgid "Make a right u-turn"
 msgstr "向右掉头"
+
+#~ msgid "Don’t have an account?"
+#~ msgstr "没有帐号？"
 
 #~ msgid "Open with another application"
 #~ msgstr "以其他程序打开"
