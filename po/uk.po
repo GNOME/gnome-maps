@@ -6,16 +6,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2020-08-05 21:03+0000\n"
-"PO-Revision-Date: 2020-08-08 18:10+0300\n"
+"POT-Creation-Date: 2020-08-11 20:42+0000\n"
+"PO-Revision-Date: 2020-08-12 09:20+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
-"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Lokalize 20.07.70\n"
 "X-Project-Style: gnome\n"
 
@@ -476,11 +476,12 @@ msgid "About Maps"
 msgstr "Про «Карти»"
 
 #: data/ui/main-window.ui:56
-msgid "Primary menu"
-msgstr "Основне меню"
+#| msgctxt "shortcut window"
+#| msgid "Open main menu"
+msgid "Open main menu"
+msgstr "Відкрити головне меню"
 
 #: data/ui/main-window.ui:81
-#| msgid "Print Route"
 msgid "Find a Route"
 msgstr "Знайти маршрут"
 
@@ -1530,6 +1531,7 @@ msgid_plural "%s minutes"
 msgstr[0] "%s хвилина"
 msgstr[1] "%s хвилини"
 msgstr[2] "%s хвилин"
+msgstr[3] "%s хвилина"
 
 #. translators: this is an indication for a trip duration,
 #. * where the duration is an exact number of hours (i.e. no
@@ -1542,6 +1544,7 @@ msgid_plural "%s hours"
 msgstr[0] "%s година"
 msgstr[1] "%s години"
 msgstr[2] "%s годин"
+msgstr[3] "%s година"
 
 #. translators: this is an indication for a trip duration
 #. * where the duration contains an hour and minute part, it's
@@ -1554,6 +1557,7 @@ msgid_plural "%s:%s hours"
 msgstr[0] "%s:%s година"
 msgstr[1] "%s:%s години"
 msgstr[2] "%s:%s годин"
+msgstr[3] "%s:%s година"
 
 #. Translators: this is a format string for showing a departure and
 #. * arrival time in a more compact manner to show in the instruction
@@ -1744,11 +1748,14 @@ msgstr "%s год"
 #.
 #: src/utils.js:338
 #, javascript-format
+#| msgid "%s h %s min"
+#| msgid_plural "%s h %s mins"
 msgid "%s h %s min"
-msgid_plural "%s h %s mins"
+msgid_plural "%s h %s min"
 msgstr[0] "%s год %s хв"
 msgstr[1] "%s год %s хв"
 msgstr[2] "%s год %s хв"
+msgstr[3] "%s год %s хв"
 
 #. Translators: this is a duration with minutes part
 #. * using abbreviation for minutes, corresponding to 'min' in English
@@ -1756,11 +1763,14 @@ msgstr[2] "%s год %s хв"
 #.
 #: src/utils.js:345
 #, javascript-format
+#| msgid "%s min"
+#| msgid_plural "%s mins"
 msgid "%s min"
-msgid_plural "%s mins"
+msgid_plural "%s min"
 msgstr[0] "%s хв"
 msgstr[1] "%s хв"
 msgstr[2] "%s хв"
+msgstr[3] "%s хв"
 
 #. Translators: this is a duration of less than one minute
 #. * with seconds using an abbreviation for seconds, corresponding to
@@ -1773,6 +1783,7 @@ msgid_plural "%s s"
 msgstr[0] "%s с"
 msgstr[1] "%s с"
 msgstr[2] "%s с"
+msgstr[3] "%s с"
 
 #. Translators: This is a distance measured in kilometers
 #: src/utils.js:362
@@ -1906,6 +1917,3 @@ msgstr "Виконайте правий розворот на %s"
 #: src/transitplugins/openTripPlanner.js:1244
 msgid "Make a right u-turn"
 msgstr "Виконайте правий розворот"
-
-#~ msgid "Don’t have an account?"
-#~ msgstr "Немає облікового запису?"
