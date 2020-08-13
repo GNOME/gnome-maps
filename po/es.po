@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2020-07-15 08:46+0000\n"
-"PO-Revision-Date: 2020-07-29 09:05+0200\n"
+"POT-Creation-Date: 2020-08-05 21:03+0000\n"
+"PO-Revision-Date: 2020-08-13 10:01+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
@@ -69,7 +69,7 @@ msgstr "El Proyecto GNOME"
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:34
-#: src/application.js:81 src/mainWindow.js:129 src/mainWindow.js:567
+#: src/application.js:82 src/mainWindow.js:134 src/mainWindow.js:626
 msgid "Maps"
 msgstr "Mapas"
 
@@ -356,7 +356,7 @@ msgid "Toggle favorites"
 msgstr "Conmutar favoritos"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-right.ui:57
+#: data/ui/headerbar-right.ui:57 data/ui/main-window.ui:98
 msgid "Print Route"
 msgstr "Imprimir ruta"
 
@@ -477,15 +477,20 @@ msgstr "_Atajos del teclado"
 msgid "About Maps"
 msgstr "Acerca de Mapas"
 
-#: data/ui/main-window.ui:52
+#: data/ui/main-window.ui:56
 msgid "Primary menu"
 msgstr "Menú primario"
 
-#: data/ui/main-window.ui:114
+#: data/ui/main-window.ui:81
+#| msgid "Print Route"
+msgid "Find a Route"
+msgstr "Buscar una ruta"
+
+#: data/ui/main-window.ui:181
 msgid "Maps is offline!"
 msgstr "Mapas está desconectado"
 
-#: data/ui/main-window.ui:122
+#: data/ui/main-window.ui:194
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -493,7 +498,7 @@ msgstr ""
 "Mapas necesita una conexión a Internet activa para funcionar correctamente, "
 "pero no se ha encontrado ninguna."
 
-#: data/ui/main-window.ui:130
+#: data/ui/main-window.ui:203
 msgid "Check your connection and proxy settings."
 msgstr "Compruebe la configuración de su conexión y de su proxy."
 
@@ -543,15 +548,16 @@ msgid "Password"
 msgstr "Contraseña"
 
 #: data/ui/osm-account-dialog.ui:125
+#| msgid "Sign Out"
+msgid "Sign up"
+msgstr "Registrarse"
+
+#: data/ui/osm-account-dialog.ui:139
 msgid "Sign In"
 msgstr "Iniciar sesión"
 
-#: data/ui/osm-account-dialog.ui:146
-msgid "Don’t have an account?"
-msgstr "¿No tiene una cuenta?"
-
 #. The label should contain the link to the OSM reset password page with a translated title
-#: data/ui/osm-account-dialog.ui:159
+#: data/ui/osm-account-dialog.ui:162
 msgid ""
 "Sorry, that didn’t work. Please try again, or visit\n"
 "<a href=\"https://www.openstreetmap.org/user/forgot-password"
@@ -561,27 +567,27 @@ msgstr ""
 "<a href=\"https://www.openstreetmap.org/user/forgot-password"
 "\">OpenStreetMap</a> para restablecer su contraseña."
 
-#: data/ui/osm-account-dialog.ui:172
+#: data/ui/osm-account-dialog.ui:175
 msgid "The verification code didn’t match, please try again."
 msgstr "El código de verificación no coincide, inténtelo de nuevo."
 
-#: data/ui/osm-account-dialog.ui:198
+#: data/ui/osm-account-dialog.ui:201
 msgid "Enter verification code shown above"
 msgstr "Introduzca el código de verificación mostrado"
 
-#: data/ui/osm-account-dialog.ui:221
+#: data/ui/osm-account-dialog.ui:224
 msgid "Verify"
 msgstr "Verificar"
 
-#: data/ui/osm-account-dialog.ui:251
+#: data/ui/osm-account-dialog.ui:254
 msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
 msgstr "<span weight=\"bold\" size=\"x-large\">Sesión iniciada</span>"
 
-#: data/ui/osm-account-dialog.ui:264
+#: data/ui/osm-account-dialog.ui:267
 msgid "Your OpenStreetMap account is active."
 msgstr "Su cuenta de OpenStreetMap está activada."
 
-#: data/ui/osm-account-dialog.ui:298
+#: data/ui/osm-account-dialog.ui:301
 msgid "Sign Out"
 msgstr "Cerrar sesión"
 
@@ -670,7 +676,7 @@ msgstr "Copiar"
 msgid "Send To…"
 msgstr "Enviar a…"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:64
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:65
 msgid "Open Shape Layer"
 msgstr "Abrir capa de formas"
 
@@ -799,23 +805,23 @@ msgstr "Faltan los atributos necesarios"
 msgid "Could not find OSM element"
 msgstr "No se pudo encontrar el elemento OSM"
 
-#: src/application.js:95
+#: src/application.js:96
 msgid "A path to a local tiles directory structure"
 msgstr "Una ruta a la estructura de carpetas locales de cuadrículas"
 
-#: src/application.js:101
+#: src/application.js:102
 msgid "Tile size for local tiles directory"
 msgstr "Tamaño de cuadrícula para carpeta de cuadrículas locales"
 
-#: src/application.js:105
+#: src/application.js:106
 msgid "Show the version of the program"
 msgstr "Mostrar la versión del programa"
 
-#: src/application.js:111
+#: src/application.js:112
 msgid "Ignore network availability"
 msgstr "Ignorar la disponibilidad de la red"
 
-#: src/application.js:121 src/application.js:122
+#: src/application.js:122 src/application.js:123
 msgid "[FILE…|URI]"
 msgstr "[ARCHIVO…|URI]"
 
@@ -949,27 +955,27 @@ msgstr "No se ha encontrado la ruta."
 msgid "Start!"
 msgstr "Empezar"
 
-#: src/mainWindow.js:61
+#: src/mainWindow.js:62
 msgid "All Layer Files"
 msgstr "Todos los archivos de capas"
 
-#: src/mainWindow.js:470
+#: src/mainWindow.js:508
 msgid "Failed to connect to location service"
 msgstr "Falló al conectar al servicio de ubicación"
 
-#: src/mainWindow.js:565
+#: src/mainWindow.js:624
 msgid "translator-credits"
 msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2013"
 
-#: src/mainWindow.js:568
+#: src/mainWindow.js:627
 msgid "A map application for GNOME"
 msgstr "Una aplicación de mapas para GNOME"
 
-#: src/mainWindow.js:579
+#: src/mainWindow.js:638
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 – 2019 Red Hat, Inc. y los autores de Mapas de GNOME"
 
-#: src/mainWindow.js:599
+#: src/mainWindow.js:658
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Datos de mapas por %s y colaboradores"
@@ -979,7 +985,7 @@ msgstr "Datos de mapas por %s y colaboradores"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:615
+#: src/mainWindow.js:674
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Cuadrículas de mapas proporcionadas por %s"
@@ -993,7 +999,7 @@ msgstr "Cuadrículas de mapas proporcionadas por %s"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:644
+#: src/mainWindow.js:703
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Búsqueda proporcionada por %s usando %s"
@@ -1424,12 +1430,12 @@ msgid "failed to load file"
 msgstr "falló al cargar el archivo"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:299
+#: src/sidebar.js:358
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Tiempo estimado: %s"
 
-#: src/sidebar.js:355
+#: src/sidebar.js:414
 #, javascript-format
 msgid "Itineraries provided by %s"
 msgstr "Itinerarios proporcionados por %s"
@@ -1901,6 +1907,9 @@ msgstr "Dé la vuelta hacia la derecha en %s"
 #: src/transitplugins/openTripPlanner.js:1244
 msgid "Make a right u-turn"
 msgstr "Dé la vuelta hacia la derecha"
+
+#~ msgid "Don’t have an account?"
+#~ msgstr "¿No tiene una cuenta?"
 
 #~ msgid "%f h"
 #~ msgstr "%f h"
