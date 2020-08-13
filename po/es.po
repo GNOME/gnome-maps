@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2020-08-05 21:03+0000\n"
-"PO-Revision-Date: 2020-08-13 10:01+0200\n"
+"POT-Creation-Date: 2020-08-13 08:32+0000\n"
+"PO-Revision-Date: 2020-08-13 10:38+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
@@ -478,11 +478,12 @@ msgid "About Maps"
 msgstr "Acerca de Mapas"
 
 #: data/ui/main-window.ui:56
-msgid "Primary menu"
-msgstr "Menú primario"
+#| msgctxt "shortcut window"
+#| msgid "Open main menu"
+msgid "Open main menu"
+msgstr "Abrir el menú principal"
 
 #: data/ui/main-window.ui:81
-#| msgid "Print Route"
 msgid "Find a Route"
 msgstr "Buscar una ruta"
 
@@ -548,7 +549,6 @@ msgid "Password"
 msgstr "Contraseña"
 
 #: data/ui/osm-account-dialog.ui:125
-#| msgid "Sign Out"
 msgid "Sign up"
 msgstr "Registrarse"
 
@@ -965,7 +965,7 @@ msgstr "Falló al conectar al servicio de ubicación"
 
 #: src/mainWindow.js:624
 msgid "translator-credits"
-msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2013"
+msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2013 - 2020"
 
 #: src/mainWindow.js:627
 msgid "A map application for GNOME"
@@ -1749,8 +1749,10 @@ msgstr "%s h"
 #.
 #: src/utils.js:338
 #, javascript-format
+#| msgid "%s h %s min"
+#| msgid_plural "%s h %s mins"
 msgid "%s h %s min"
-msgid_plural "%s h %s mins"
+msgid_plural "%s h %s min"
 msgstr[0] "%s h %s min"
 msgstr[1] "%s h %s min"
 
@@ -1760,10 +1762,12 @@ msgstr[1] "%s h %s min"
 #.
 #: src/utils.js:345
 #, javascript-format
+#| msgid "%s min"
+#| msgid_plural "%s mins"
 msgid "%s min"
-msgid_plural "%s mins"
+msgid_plural "%s min"
 msgstr[0] "%s min"
-msgstr[1] "%s mi"
+msgstr[1] "%s min"
 
 #. Translators: this is a duration of less than one minute
 #. * with seconds using an abbreviation for seconds, corresponding to
@@ -1907,6 +1911,9 @@ msgstr "Dé la vuelta hacia la derecha en %s"
 #: src/transitplugins/openTripPlanner.js:1244
 msgid "Make a right u-turn"
 msgstr "Dé la vuelta hacia la derecha"
+
+#~ msgid "Primary menu"
+#~ msgstr "Menú primario"
 
 #~ msgid "Don’t have an account?"
 #~ msgstr "¿No tiene una cuenta?"
