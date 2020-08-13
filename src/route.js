@@ -135,6 +135,9 @@ var TurnPoint = class TurnPoint {
         case TurnPointType.VIA:          return 'maps-point-end-symbolic';
         case TurnPointType.END:          return 'maps-point-end-symbolic';
         case TurnPointType.ROUNDABOUT:   return this._getRoundaboutIconName(turnAngle);
+        case TurnPointType.ELEVATOR:     return 'maps-direction-elevator-symbolic';
+        case TurnPointType.UTURN_LEFT:   return 'maps-direction-u-turn-left-symbolic';
+        case TurnPointType.UTURN_RIGHT:  return 'maps-direction-u-turn-right-symbolic';
         default:                         return '';
         }
     }
