@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2020-07-30 06:43+0000\n"
-"PO-Revision-Date: 2020-07-31 16:40+0300\n"
+"POT-Creation-Date: 2020-08-11 20:42+0000\n"
+"PO-Revision-Date: 2020-08-14 15:38+0300\n"
 "Last-Translator: Florentina Mușat <florentina.musat.28@gmail.com>\n"
 "Language-Team: Gnome Romanian Translation Team\n"
 "Language: ro\n"
@@ -70,7 +70,7 @@ msgstr "Proiectul GNOME"
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:34
-#: src/application.js:81 src/mainWindow.js:129 src/mainWindow.js:567
+#: src/application.js:82 src/mainWindow.js:134 src/mainWindow.js:626
 msgid "Maps"
 msgstr "Hărți"
 
@@ -356,7 +356,7 @@ msgid "Toggle favorites"
 msgstr "Comută preferatele"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-right.ui:57
+#: data/ui/headerbar-right.ui:57 data/ui/main-window.ui:98
 msgid "Print Route"
 msgstr "Tipărește ruta"
 
@@ -477,15 +477,19 @@ msgstr "_Scurtături de tastatură"
 msgid "About Maps"
 msgstr "Despre Hărți"
 
-#: data/ui/main-window.ui:52
-msgid "Primary menu"
-msgstr "Meniu principal"
+#: data/ui/main-window.ui:56
+msgid "Open main menu"
+msgstr "Deschide meniul principal"
 
-#: data/ui/main-window.ui:114
+#: data/ui/main-window.ui:81
+msgid "Find a Route"
+msgstr "Găsește o rută"
+
+#: data/ui/main-window.ui:181
 msgid "Maps is offline!"
 msgstr "Hărți este offline!"
 
-#: data/ui/main-window.ui:122
+#: data/ui/main-window.ui:194
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -493,7 +497,7 @@ msgstr ""
 "Hărți necesită o conexiune la internet pentru a funcționa în mod "
 "corespunzător, dar nicio conexiune nu a fost găsită."
 
-#: data/ui/main-window.ui:130
+#: data/ui/main-window.ui:203
 msgid "Check your connection and proxy settings."
 msgstr "Verificați conexiunile și configurările proxy."
 
@@ -671,7 +675,7 @@ msgstr "Copiază"
 msgid "Send To…"
 msgstr "Trimite la…"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:64
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:65
 msgid "Open Shape Layer"
 msgstr "Deschide stratul formei"
 
@@ -799,23 +803,23 @@ msgstr "Lipsesc atributele necesare"
 msgid "Could not find OSM element"
 msgstr "Nu s-a putut găsi elementul OSM"
 
-#: src/application.js:95
+#: src/application.js:96
 msgid "A path to a local tiles directory structure"
 msgstr "O cale către o structură locală de directoare pentru fragmente"
 
-#: src/application.js:101
+#: src/application.js:102
 msgid "Tile size for local tiles directory"
 msgstr "Dimensiunea unei dale pentru directorul de dale local"
 
-#: src/application.js:105
+#: src/application.js:106
 msgid "Show the version of the program"
 msgstr "Arată versiunea programului"
 
-#: src/application.js:111
+#: src/application.js:112
 msgid "Ignore network availability"
 msgstr "Ignoră disponibilitatea rețelei"
 
-#: src/application.js:121 src/application.js:122
+#: src/application.js:122 src/application.js:123
 msgid "[FILE…|URI]"
 msgstr "[FIȘIER…|URI]"
 
@@ -949,30 +953,30 @@ msgstr "Nu s-au găsit rute."
 msgid "Start!"
 msgstr "Pornește!"
 
-#: src/mainWindow.js:61
+#: src/mainWindow.js:62
 msgid "All Layer Files"
 msgstr "Toate fișierele strat"
 
-#: src/mainWindow.js:470
+#: src/mainWindow.js:508
 msgid "Failed to connect to location service"
 msgstr "Nu s-a reușit conectarea la serviciul de localizare"
 
-#: src/mainWindow.js:565
+#: src/mainWindow.js:624
 msgid "translator-credits"
 msgstr ""
 "Mădălin Șerbănescu <ciber_ady [at] yahoo [dot] com>, 2018\n"
 "Florentina Mușat <florentina [dot] musat [dot] 28 [at] gmail [dot] com>, "
 "2018-2020"
 
-#: src/mainWindow.js:568
+#: src/mainWindow.js:627
 msgid "A map application for GNOME"
 msgstr "O aplicație cu hărți pentru GNOME"
 
-#: src/mainWindow.js:579
+#: src/mainWindow.js:638
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Drepturi de autor © 2011 – 2019 Red Hat, Inc. și autorii GNOME Hărți"
 
-#: src/mainWindow.js:599
+#: src/mainWindow.js:658
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Datele hărții ale %s și contribuitorii"
@@ -982,7 +986,7 @@ msgstr "Datele hărții ale %s și contribuitorii"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:615
+#: src/mainWindow.js:674
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Fragmente de hărți furnizate de %s"
@@ -996,7 +1000,7 @@ msgstr "Fragmente de hărți furnizate de %s"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:644
+#: src/mainWindow.js:703
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Căutare furnizată de %s utilizând %s"
@@ -1750,7 +1754,7 @@ msgstr "%s o"
 #: src/utils.js:338
 #, javascript-format
 msgid "%s h %s min"
-msgid_plural "%s h %s mins"
+msgid_plural "%s h %s min"
 msgstr[0] "%s o %s min"
 msgstr[1] "%s o %s min"
 msgstr[2] "%s o %s min"
@@ -1762,7 +1766,7 @@ msgstr[2] "%s o %s min"
 #: src/utils.js:345
 #, javascript-format
 msgid "%s min"
-msgid_plural "%s mins"
+msgid_plural "%s min"
 msgstr[0] "%s min"
 msgstr[1] "%s min"
 msgstr[2] "%s min"
@@ -1910,6 +1914,9 @@ msgstr "Faceți un viraj spre dreapta pe %s"
 #: src/transitplugins/openTripPlanner.js:1244
 msgid "Make a right u-turn"
 msgstr "Faceți un viraj spre dreapta"
+
+#~ msgid "Primary menu"
+#~ msgstr "Meniu principal"
 
 #~ msgid "Don’t have an account?"
 #~ msgstr "Nu aveți un cont?"
