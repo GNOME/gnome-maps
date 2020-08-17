@@ -572,7 +572,7 @@ var OpenTripPlanner = class OpenTripPlanner {
             this._extendPrevious = false;
             this.plan.noMoreResults();
         } else {
-            this.plan.noRouteFound();re
+            this.plan.noRouteFound();
         }
     }
 
