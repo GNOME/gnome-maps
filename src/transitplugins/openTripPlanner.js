@@ -497,7 +497,7 @@ var OpenTripPlanner = class OpenTripPlanner {
         this._session.queue_message(request, (obj, message) => {
             if (message.status_code !== Soup.Status.OK) {
                 Utils.debug('Failed to get route plan from router ' +
-                            this._router + ' ' + message);
+                            this._router + ' ' + message.reason_phrase);
                 callback(null);
             } else {
                 try {
