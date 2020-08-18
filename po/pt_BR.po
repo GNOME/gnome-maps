@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2020-07-22 11:34+0000\n"
-"PO-Revision-Date: 2020-07-22 08:44-0300\n"
+"POT-Creation-Date: 2020-08-11 20:42+0000\n"
+"PO-Revision-Date: 2020-08-18 10:31-0300\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -82,7 +82,7 @@ msgstr "O Projeto GNOME"
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:34
-#: src/application.js:81 src/mainWindow.js:129 src/mainWindow.js:567
+#: src/application.js:82 src/mainWindow.js:134 src/mainWindow.js:626
 msgid "Maps"
 msgstr "Mapas"
 
@@ -365,7 +365,7 @@ msgid "Toggle favorites"
 msgstr "Ativa favoritos"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-right.ui:57
+#: data/ui/headerbar-right.ui:57 data/ui/main-window.ui:98
 msgid "Print Route"
 msgstr "Imprime rota"
 
@@ -486,15 +486,22 @@ msgstr "A_talhos de teclado"
 msgid "About Maps"
 msgstr "Sobre o Mapas"
 
-#: data/ui/main-window.ui:52
-msgid "Primary menu"
-msgstr "Menu principal"
+#: data/ui/main-window.ui:56
+#| msgctxt "shortcut window"
+#| msgid "Open main menu"
+msgid "Open main menu"
+msgstr "Abrir menu principal"
 
-#: data/ui/main-window.ui:114
+#: data/ui/main-window.ui:81
+#| msgid "Print Route"
+msgid "Find a Route"
+msgstr "Encontrar uma rota"
+
+#: data/ui/main-window.ui:181
 msgid "Maps is offline!"
 msgstr "Mapas está desconectado!"
 
-#: data/ui/main-window.ui:122
+#: data/ui/main-window.ui:194
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -502,7 +509,7 @@ msgstr ""
 "Mapas necessita de uma conexão de internet ativa para funcionar "
 "propriamente, mas nenhuma pode ser encontrada."
 
-#: data/ui/main-window.ui:130
+#: data/ui/main-window.ui:203
 msgid "Check your connection and proxy settings."
 msgstr "Verifique sua conexão e as configurações de proxy."
 
@@ -552,45 +559,46 @@ msgid "Password"
 msgstr "Senha"
 
 #: data/ui/osm-account-dialog.ui:125
-msgid "Sign In"
-msgstr "Ingressar"
+#| msgid "Sign Out"
+msgid "Sign up"
+msgstr "Cadastrar"
 
-#: data/ui/osm-account-dialog.ui:146
-msgid "Don’t have an account?"
-msgstr "Você não tem uma conta?"
+#: data/ui/osm-account-dialog.ui:139
+msgid "Sign In"
+msgstr "Entrar"
 
 #. The label should contain the link to the OSM reset password page with a translated title
-#: data/ui/osm-account-dialog.ui:159
+#: data/ui/osm-account-dialog.ui:162
 msgid ""
 "Sorry, that didn’t work. Please try again, or visit\n"
 "<a href=\"https://www.openstreetmap.org/user/forgot-password"
 "\">OpenStreetMap</a> to reset your password."
 msgstr ""
-"Desculpe, mas isto não funcionou. Tente novamente ou visite o <a href="
-"\"https://www.openstreetmap.org/user/forgot-password\">OpenStreetMap</a> "
-"para reiniciar sua senha."
+"Desculpe, mas isto não funcionou. Tente novamente ou visite\n"
+"o <a href=\"https://www.openstreetmap.org/user/forgot-password"
+"\">OpenStreetMap</a> para reiniciar sua senha."
 
-#: data/ui/osm-account-dialog.ui:172
+#: data/ui/osm-account-dialog.ui:175
 msgid "The verification code didn’t match, please try again."
 msgstr "O código de verificação não combina, por gentileza, tente novamente."
 
-#: data/ui/osm-account-dialog.ui:198
+#: data/ui/osm-account-dialog.ui:201
 msgid "Enter verification code shown above"
 msgstr "Digite o código de verificação mostrado acima"
 
-#: data/ui/osm-account-dialog.ui:221
+#: data/ui/osm-account-dialog.ui:224
 msgid "Verify"
 msgstr "Verificar"
 
-#: data/ui/osm-account-dialog.ui:251
+#: data/ui/osm-account-dialog.ui:254
 msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
 msgstr "<span weight=\"bold\" size=\"x-large\">Ingressado</span>"
 
-#: data/ui/osm-account-dialog.ui:264
+#: data/ui/osm-account-dialog.ui:267
 msgid "Your OpenStreetMap account is active."
 msgstr "Sua conta do OpenStreetMap está ativa."
 
-#: data/ui/osm-account-dialog.ui:298
+#: data/ui/osm-account-dialog.ui:301
 msgid "Sign Out"
 msgstr "Sair"
 
@@ -679,7 +687,7 @@ msgstr "Copiar"
 msgid "Send To…"
 msgstr "Enviar para…"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:64
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:65
 msgid "Open Shape Layer"
 msgstr "Abrir camada"
 
@@ -803,23 +811,23 @@ msgstr "Faltando atributos necessários"
 msgid "Could not find OSM element"
 msgstr "Não foi possível localizar elemento OSM"
 
-#: src/application.js:95
+#: src/application.js:96
 msgid "A path to a local tiles directory structure"
 msgstr "Um caminho para um diretório local de estrutura de blocos"
 
-#: src/application.js:101
+#: src/application.js:102
 msgid "Tile size for local tiles directory"
 msgstr "O tamanho de bloco para o diretório local de blocos"
 
-#: src/application.js:105
+#: src/application.js:106
 msgid "Show the version of the program"
 msgstr "Mostra a versão do programa"
 
-#: src/application.js:111
+#: src/application.js:112
 msgid "Ignore network availability"
 msgstr "Ignora a disponibilidade de rede"
 
-#: src/application.js:121 src/application.js:122
+#: src/application.js:122 src/application.js:123
 msgid "[FILE…|URI]"
 msgstr "[ARQUIVO…|URI]"
 
@@ -954,30 +962,30 @@ msgstr "Nenhuma rota encontrada."
 msgid "Start!"
 msgstr "Começar!"
 
-#: src/mainWindow.js:61
+#: src/mainWindow.js:62
 msgid "All Layer Files"
 msgstr "Todas os arquivos de camadas"
 
-#: src/mainWindow.js:470
+#: src/mainWindow.js:508
 msgid "Failed to connect to location service"
 msgstr "Falha ao conectar ao serviço de localização"
 
-#: src/mainWindow.js:565
+#: src/mainWindow.js:624
 msgid "translator-credits"
 msgstr ""
 "Enrico Nicoletto <liverig@gmail.com>\n"
 "Fábio Nogueira <fnogueira@gnome.org>\n"
 "Rafael Fontenelle <rafaelff@gnome.org>"
 
-#: src/mainWindow.js:568
+#: src/mainWindow.js:627
 msgid "A map application for GNOME"
 msgstr "Um aplicativo de mapas para o GNOME"
 
-#: src/mainWindow.js:579
+#: src/mainWindow.js:638
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 – 2019 Red Hat, Inc. e os autores do GNOME Mapas"
 
-#: src/mainWindow.js:599
+#: src/mainWindow.js:658
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Dados de mapas por %s e contribuidores"
@@ -987,7 +995,7 @@ msgstr "Dados de mapas por %s e contribuidores"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:615
+#: src/mainWindow.js:674
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Blocos de mapas fornecidos por %s"
@@ -1001,7 +1009,7 @@ msgstr "Blocos de mapas fornecidos por %s"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:644
+#: src/mainWindow.js:703
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Pesquisa fornecida por %s usando %s"
@@ -1432,12 +1440,12 @@ msgid "failed to load file"
 msgstr "falha ao carregar arquivo"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:299
+#: src/sidebar.js:358
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Tempo estimado: %s"
 
-#: src/sidebar.js:355
+#: src/sidebar.js:414
 #, javascript-format
 msgid "Itineraries provided by %s"
 msgstr "Itinerários fornecidos por %s"
@@ -1751,8 +1759,10 @@ msgstr "%s h"
 #.
 #: src/utils.js:338
 #, javascript-format
+#| msgid "%s h %s min"
+#| msgid_plural "%s h %s mins"
 msgid "%s h %s min"
-msgid_plural "%s h %s mins"
+msgid_plural "%s h %s min"
 msgstr[0] "%s h %s min"
 msgstr[1] "%s h %s mins"
 
@@ -1762,8 +1772,10 @@ msgstr[1] "%s h %s mins"
 #.
 #: src/utils.js:345
 #, javascript-format
+#| msgid "%s min"
+#| msgid_plural "%s mins"
 msgid "%s min"
-msgid_plural "%s mins"
+msgid_plural "%s min"
 msgstr[0] "%s min"
 msgstr[1] "%s mins"
 
@@ -1910,6 +1922,12 @@ msgstr "Faça um retorno em U à direita para %s"
 #: src/transitplugins/openTripPlanner.js:1244
 msgid "Make a right u-turn"
 msgstr "Faça um retorno em U à direita"
+
+#~ msgid "Primary menu"
+#~ msgstr "Menu principal"
+
+#~ msgid "Don’t have an account?"
+#~ msgstr "Você não tem uma conta?"
 
 #~ msgid "%f h"
 #~ msgstr "%f h"
