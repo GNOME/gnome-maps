@@ -65,7 +65,7 @@ function updatePlaceFromOSMObject(place, object) {
 
     let altitude = object.get_tag('ele');
 
-    if (altitude > 0)
+    if (altitude)
         place.location.altitude = altitude;
 
     Application.placeStore.updatePlace(place);
