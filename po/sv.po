@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2020-07-30 06:43+0000\n"
-"PO-Revision-Date: 2020-08-03 16:24+0200\n"
+"POT-Creation-Date: 2020-08-11 20:42+0000\n"
+"PO-Revision-Date: 2020-08-23 18:51+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
 msgid "GNOME Maps"
@@ -71,7 +71,7 @@ msgstr "GNOME-projektet"
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:34
-#: src/application.js:81 src/mainWindow.js:129 src/mainWindow.js:567
+#: src/application.js:82 src/mainWindow.js:134 src/mainWindow.js:626
 msgid "Maps"
 msgstr "Kartor"
 
@@ -355,7 +355,7 @@ msgid "Toggle favorites"
 msgstr "Slå på/av favoriter"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-right.ui:57
+#: data/ui/headerbar-right.ui:57 data/ui/main-window.ui:98
 msgid "Print Route"
 msgstr "Skriv ut rutt"
 
@@ -476,15 +476,19 @@ msgstr "_Tangentbordsgenvägar"
 msgid "About Maps"
 msgstr "Om Kartor"
 
-#: data/ui/main-window.ui:52
-msgid "Primary menu"
-msgstr "Primär meny"
+#: data/ui/main-window.ui:56
+msgid "Open main menu"
+msgstr "Öppna huvudmeny"
 
-#: data/ui/main-window.ui:114
+#: data/ui/main-window.ui:81
+msgid "Find a Route"
+msgstr "Hitta en rutt"
+
+#: data/ui/main-window.ui:181
 msgid "Maps is offline!"
 msgstr "Kartor är frånkopplad!"
 
-#: data/ui/main-window.ui:122
+#: data/ui/main-window.ui:194
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -492,7 +496,7 @@ msgstr ""
 "Kartor behöver en aktiv internetanslutning för att fungera korrekt, men en "
 "sådan kan ej hittas."
 
-#: data/ui/main-window.ui:130
+#: data/ui/main-window.ui:203
 msgid "Check your connection and proxy settings."
 msgstr "Kontrollera din anslutning och proxyinställningar."
 
@@ -670,7 +674,7 @@ msgstr "Kopiera"
 msgid "Send To…"
 msgstr "Skicka till…"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:64
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:65
 msgid "Open Shape Layer"
 msgstr "Öppna formlager"
 
@@ -797,23 +801,23 @@ msgstr "Saknar nödvändiga attribut"
 msgid "Could not find OSM element"
 msgstr "Kunde inte hitta OSM-element"
 
-#: src/application.js:95
+#: src/application.js:96
 msgid "A path to a local tiles directory structure"
 msgstr "En sökväg till en lokal katalogstruktur med kartrutor"
 
-#: src/application.js:101
+#: src/application.js:102
 msgid "Tile size for local tiles directory"
 msgstr "Rutstorlek för lokal katalog med kartrutor"
 
-#: src/application.js:105
+#: src/application.js:106
 msgid "Show the version of the program"
 msgstr "Visa programmets version"
 
-#: src/application.js:111
+#: src/application.js:112
 msgid "Ignore network availability"
 msgstr "Ignorera nätverkets tillgänglighet"
 
-#: src/application.js:121 src/application.js:122
+#: src/application.js:122 src/application.js:123
 msgid "[FILE…|URI]"
 msgstr "[FIL…|URI]"
 
@@ -946,15 +950,15 @@ msgstr "Hittade ingen rutt."
 msgid "Start!"
 msgstr "Starta!"
 
-#: src/mainWindow.js:61
+#: src/mainWindow.js:62
 msgid "All Layer Files"
 msgstr "Alla lagerfiler"
 
-#: src/mainWindow.js:470
+#: src/mainWindow.js:508
 msgid "Failed to connect to location service"
 msgstr "Misslyckades att ansluta till platstjänst"
 
-#: src/mainWindow.js:565
+#: src/mainWindow.js:624
 msgid "translator-credits"
 msgstr ""
 "Marcus Lundblad <ml@update.uu.se>\n"
@@ -962,15 +966,15 @@ msgstr ""
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>."
 
-#: src/mainWindow.js:568
+#: src/mainWindow.js:627
 msgid "A map application for GNOME"
 msgstr "Ett kartprogram för GNOME"
 
-#: src/mainWindow.js:579
+#: src/mainWindow.js:638
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 – 2019 Red Hat, Inc. och upphovsmännen för GNOME Maps"
 
-#: src/mainWindow.js:599
+#: src/mainWindow.js:658
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Kartdata från %s och bidragsgivare"
@@ -980,7 +984,7 @@ msgstr "Kartdata från %s och bidragsgivare"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:615
+#: src/mainWindow.js:674
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Kartrutor tillhandahållna av %s"
@@ -994,7 +998,7 @@ msgstr "Kartrutor tillhandahållna av %s"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:644
+#: src/mainWindow.js:703
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Sökning tillhandahålls av %s med %s"
@@ -1746,7 +1750,7 @@ msgstr "%s h"
 #: src/utils.js:338
 #, javascript-format
 msgid "%s h %s min"
-msgid_plural "%s h %s mins"
+msgid_plural "%s h %s min"
 msgstr[0] "%s h %s min"
 msgstr[1] "%s h %s min"
 
@@ -1757,7 +1761,7 @@ msgstr[1] "%s h %s min"
 #: src/utils.js:345
 #, javascript-format
 msgid "%s min"
-msgid_plural "%s mins"
+msgid_plural "%s min"
 msgstr[0] "%s min"
 msgstr[1] "%s min"
 
@@ -1903,6 +1907,9 @@ msgstr "Gör en u-sväng åt höger in på %s"
 #: src/transitplugins/openTripPlanner.js:1244
 msgid "Make a right u-turn"
 msgstr "Gör en u-sväng åt höger"
+
+#~ msgid "Primary menu"
+#~ msgstr "Primär meny"
 
 #~ msgid "Don’t have an account?"
 #~ msgstr "Har du inte ett konto?"
