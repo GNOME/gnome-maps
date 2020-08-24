@@ -50,10 +50,11 @@ var Response = {
  * field types
  */
 const EditFieldType = {
-    TEXT: 0,
-    INTEGER: 1,
-    COMBO: 2,
-    ADDRESS: 3
+    TEXT:             0,
+    INTEGER:          1,
+    UNSIGNED_INTEGER: 2,
+    COMBO:            3,
+    ADDRESS:          4
 };
 
 const _WIKI_BASE = 'https://wiki.openstreetmap.org/wiki/Key:';
@@ -151,7 +152,7 @@ const OSM_FIELDS = [
     {
         name: _("Population"),
         tag: 'population',
-        type: EditFieldType.INTEGER
+        type: EditFieldType.UNSIGNED_INTEGER
     },
     {
         name: _("Altitude"),
@@ -652,10 +653,10 @@ var OSMEditDialog = GObject.registerClass({
         this._currentRow++;
     }
 
-    _addOSMEditIntegerEntry(fieldSpec, value) {
+    _addOSMEditIntegerEntry(fieldSpec, value, min, max) {
         this._addOSMEditLabel(fieldSpec);
 
-        let spinbutton = Gtk.SpinButton.new_with_range(0, 1e9, 1);
+        let spinbutton = Gtk.SpinButton.new_with_range(min, max, 1);
         spinbutton.value = value;
         spinbutton.numeric = true;
         spinbutton.hexpand = true;
@@ -763,7 +764,7 @@ var OSMEditDialog = GObject.registerClass({
 
                 button.connect('clicked', () => {
                     this._addFieldButton.active = false;
-                    this._addOSMField(fieldSpec, '');
+                    this._addOSMField(fieldSpec);
                     /* add a "placeholder" empty OSM tag to keep the add field
                      * menu updated, these tags will be filtered out if nothing
                      * is entered */
@@ -788,16 +789,19 @@ var OSMEditDialog = GObject.registerClass({
     _addOSMField(fieldSpec, value) {
         switch (fieldSpec.type) {
         case EditFieldType.TEXT:
-            this._addOSMEditTextEntry(fieldSpec, value);
+            this._addOSMEditTextEntry(fieldSpec, value || '');
             break;
         case EditFieldType.INTEGER:
-            this._addOSMEditIntegerEntry(fieldSpec, value);
+            this._addOSMEditIntegerEntry(fieldSpec, value || 0, -1e9, 1e9);
+            break;
+        case EditFieldType.UNSIGNED_INTEGER:
+            this._addOSMEditIntegerEntry(fieldSpec, value || 0, 0, 1e9);
             break;
         case EditFieldType.COMBO:
-            this._addOSMEditComboEntry(fieldSpec, value);
+            this._addOSMEditComboEntry(fieldSpec, value || '');
             break;
         case EditFieldType.ADDRESS:
-            this._addOSMEditAddressEntry(fieldSpec, value);
+            this._addOSMEditAddressEntry(fieldSpec, value || '');
             break;
         }
     }
