@@ -273,7 +273,9 @@ var PlaceBubble = GObject.registerClass({
                            info: parseInt(place.population).toLocaleString() });
         }
 
-        if (place.location.altitude > 0) {
+        /* The default value for a place's altitude is -G_MAXDOUBLE, so we can
+         * compare to an impossibly low altitude to see if one is set */
+        if (place.location.altitude > -1000000000.0) {
             let alt  = place.location.altitude;
             content.push({ label: _("Altitude"),
                            icon: 'mountain-symbolic',
