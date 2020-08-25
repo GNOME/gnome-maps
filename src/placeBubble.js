@@ -140,8 +140,14 @@ var PlaceBubble = GObject.registerClass({
         let expandedContent = [];
 
         if (place.population) {
+            /* TODO: this is a bit of a work-around to re-interpret the population,
+             * stored as a string into an integer to convert back to a locale-
+             * formatted string. Ideally it should be kept as an integer value
+             * in the Place class. But this will also need to be handled by the
+             * PlaceStore, possible in a backwards-compatible way
+             */
             expandedContent.push({ label: _("Population:"),
-                                   info: place.population });
+                                   info: parseInt(place.population).toLocaleString() });
         }
 
         if (place.location.altitude > 0) {
