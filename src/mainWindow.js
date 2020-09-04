@@ -28,7 +28,6 @@ const GObject = imports.gi.GObject;
 const Gdk = imports.gi.Gdk;
 const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
-const Hdy = imports.gi.Handy;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
@@ -80,13 +79,10 @@ var ShapeLayerFileChooser = GObject.registerClass({
 var MainWindow = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/main-window.ui',
     InternalChildren: [ 'headerBar',
-                        'headerBarStack',
-                        'leaflet',
-                        'mainBox',
+                        'grid',
                         'mainStack',
-                        'mapViewWrapper',
+                        'mainGrid',
                         'noNetworkView',
-                        'routingHeaderBar',
                         'actionBar',
                         'actionBarRevealer' ]
 }, class MainWindow extends Gtk.ApplicationWindow {
@@ -105,7 +101,7 @@ var MainWindow = GObject.registerClass({
                 MapView.MapType.LOCAL : undefined,
             mainWindow: this });
 
-        this._mapViewWrapper.add(this._mapView);
+        this._mainGrid.add(this._mapView);
 
         this._mapView.gotoUserLocation(false);
 
@@ -120,9 +116,9 @@ var MainWindow = GObject.registerClass({
         this._restoreWindowGeometry();
         this._initDND();
 
-        this._leaflet.add(this._sidebar);
+        this._grid.attach(this._sidebar, 1, 0, 1, 1);
 
-        this._leaflet.show_all();
+        this._grid.show_all();
 
         /* for some reason, setting the title of the window through the .ui
          * template does not work anymore (maybe has something to do with
@@ -154,33 +150,8 @@ var MainWindow = GObject.registerClass({
         return placeEntry;
     }
 
-    showTurnPoint(turnPoint) {
-        /* Used by the sidebar when an instruction row is clicked. Shows the
-        turn point on the map, and makes sure the map is visible in the
-        leaflet. */
-
-        this._mapView.showTurnPoint(turnPoint);
-
-        /* if leaflet is folded, hide the sidebar */
-        if (this._leaflet.folded) {
-            this._setRevealSidebar(false);
-        }
-    }
-
-    showTransitStop(transitStop, transitLeg) {
-        /* Used by the sidebar when a transit stop is clicked. Shows the
-        stop on the map, and makes sure the map is visible in the leaflet. */
-
-        this._mapView.showTransitStop(transitStop, transitLeg);
-
-        /* if leaflet is folded, hide the sidebar */
-        if (this._leaflet.folded) {
-            this._setRevealSidebar(false);
-        }
-    }
-
     _createSidebar() {
-        let sidebar = new Sidebar.Sidebar(this);
+        let sidebar = new Sidebar.Sidebar(this._mapView);
 
         Application.routeQuery.connect('notify', () => this._setRevealSidebar(true));
         this.application.bind_property('connected',
@@ -286,7 +257,7 @@ var MainWindow = GObject.registerClass({
 
         this.application.connect('notify::connected', () => {
             if (this.application.connected || this.application.local_tile_path)
-                this._mainStack.visible_child = this._leaflet;
+                this._mainStack.visible_child = this._mainGrid;
             else
                 this._mainStack.visible_child = this._noNetworkView;
         });
@@ -413,10 +384,6 @@ var MainWindow = GObject.registerClass({
                 this._placeEntry.set_margin_end(_PLACE_ENTRY_MARGIN);
             }
         });
-
-        // Show routing headerbar when the leaflet is folded, showing only the
-        // routing sidebar
-        this._leaflet.connect('notify::folded', this._updateRoutingHeaderBar.bind(this));
     }
 
     _saveWindowGeometry() {
@@ -575,30 +542,11 @@ var MainWindow = GObject.registerClass({
         }
     }
 
-    _updateRoutingHeaderBar() {
-        let folded = this._leaflet.folded;
-        let sidebarVisible = this._leaflet.visible_child == this._sidebar;
-
-        if (folded && sidebarVisible) {
-            this._headerBarStack.set_visible_child(this._routingHeaderBar);
-        } else {
-            this._headerBarStack.set_visible_child(this._headerBar);
-        }
-    }
-
     _onToggleSidebarChangeState(action, variant) {
         action.set_state(variant);
 
         let reveal = variant.get_boolean();
         this._sidebar.set_reveal_child(reveal);
-
-        if (reveal) {
-            this._leaflet.set_visible_child(this._sidebar);
-        } else {
-            this._leaflet.set_visible_child(this._mainBox);
-        }
-
-        this._updateRoutingHeaderBar();
     }
 
     _setRevealSidebar(value) {
