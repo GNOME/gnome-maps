@@ -2,39 +2,13 @@
 <!-- Generated with glade 3.18.3 -->
 <interface>
   <requires lib="gtk+" version="3.12"/>
-      <object class="GtkGrid" id="grid-content">
+      <object class="GtkBox" id="content">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="column-spacing">12</property>
-        <child>
-          <object class="GtkLabel" id="label-title">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">start</property>
-            <property name="label" translatable="yes">Current location</property>
-            <style>
-              <class name="bubble-title"/>
-            </style>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="label-accuracy">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">start</property>
-            <style>
-              <class name="bubble-subtitle"/>
-            </style>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">1</property>
-          </packing>
-        </child>
+        <property name="orientation">vertical</property>
+        <property name="spacing">6</property>
+        <property name="margin">18</property>
+        <property name="margin-top">0</property>
         <child>
           <object class="GtkLabel" id="label-coordinates">
             <property name="visible">True</property>
@@ -42,14 +16,14 @@
             <property name="halign">start</property>
             <property name="margin_top">3</property>
             <property name="wrap">True</property>
-            <style>
-              <class name="bubble-subtitle"/>
-            </style>
           </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">2</property>
-          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label-accuracy">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">start</property>
+          </object>
         </child>
       </object>
 </interface>

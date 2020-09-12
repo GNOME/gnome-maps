@@ -30,7 +30,7 @@ var UserLocationBubble = GObject.registerClass(
 class UserLocationBubble extends MapBubble.MapBubble {
 
     _init(params) {
-        this._ui = Utils.getUIObject('user-location-bubble', [ 'grid-content',
+        this._ui = Utils.getUIObject('user-location-bubble', [ 'content',
                                                                'label-accuracy',
                                                                'label-coordinates' ]);
         params.buttons = MapBubble.Button.ROUTE |
@@ -42,7 +42,7 @@ class UserLocationBubble extends MapBubble.MapBubble {
         super._init(params);
 
         this.updateLocation();
-        this.content.add(this._ui.gridContent);
+        this.content.add(this._ui.content);
     }
 
     updateLocation() {

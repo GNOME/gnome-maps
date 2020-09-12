@@ -26,10 +26,12 @@ const Gtk = imports.gi.Gtk;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
+const ContactPlace = imports.contactPlace;
 const OSMAccountDialog = imports.osmAccountDialog;
 const OSMEditDialog = imports.osmEditDialog;
 const OSMUtils = imports.osmUtils;
 const Place = imports.place;
+const PlaceFormatter = imports.placeFormatter;
 const PlaceStore = imports.placeStore;
 const SendToDialog = imports.sendToDialog;
 const Utils = imports.utils;
@@ -73,6 +75,9 @@ class MapBubble extends Gtk.Popover {
                                                    'bubble-spinner',
                                                    'bubble-thumbnail',
                                                    'thumbnail-separator',
+                                                   'label-title',
+                                                   'contact-avatar',
+                                                   'address-label',
                                                    'bubble-main-stack',
                                                    'bubble-content-area',
                                                    'bubble-button-area',
@@ -82,12 +87,15 @@ class MapBubble extends Gtk.Popover {
                                                    'bubble-check-in-button',
                                                    'bubble-edit-button',
                                                    'bubble-favorite-button-image']);
+        this._title = ui.labelTitle;
         this._thumbnail = ui.bubbleThumbnail;
         this._thumbnailSeparator = ui.thumbnailSeparator;
         this._content = ui.bubbleContentArea;
         this._mainStack = ui.bubbleMainStack;
         this._spinner = ui.bubbleSpinner;
         this._mainBox = ui.bubbleMainBox;
+        this._contactAvatar = ui.contactAvatar;
+        this._addressLabel = ui.addressLabel;
 
         if (!buttonFlags)
             ui.bubbleButtonArea.visible = false;
@@ -106,7 +114,17 @@ class MapBubble extends Gtk.Popover {
 
         this.add(this._mainStack);
 
+        /* Set up contact avatar */
+        if (this.place instanceof ContactPlace.ContactPlace) {
+            this._contactAvatar.visible = true;
+            Utils.load_icon(this.place.icon, 32, (pixbuf) => {
+                this._contactAvatar.set_image_load_func(this._avatarImageLoadFunc.bind(this, pixbuf));
+            });
+        }
+
         this.get_style_context().add_class("map-bubble");
+
+        this.updatePlaceDetails();
     }
 
     get place() {
@@ -135,6 +153,27 @@ class MapBubble extends Gtk.Popover {
     set loading(val) {
         this._mainStack.set_visible_child(val ? this._spinner : this._mainBox);
         this._spinner.active = val;
+    }
+
+    updatePlaceDetails() {
+        let place = this.place;
+        let formatter = new PlaceFormatter.PlaceFormatter(place);
+
+        let address = formatter.rows.map((row) => {
+            row = row.map(function(prop) {
+                return GLib.markup_escape_text(place[prop], -1);
+            });
+            return row.join(', ');
+        });
+        if (address.length > 0) {
+            this._addressLabel.label = address.join('\n');
+            this._addressLabel.show();
+        } else {
+            this._addressLabel.hide();
+        }
+
+        this._title.label = formatter.title;
+        this._contactAvatar.text = formatter.title;
     }
 
     _initFavoriteButton(button, image) {
@@ -255,5 +294,22 @@ class MapBubble extends Gtk.Popover {
                 break;
             }
         });
+    }
+
+    // Loads the HdyAvatar image for contact places
+    _avatarImageLoadFunc(pixbuf, size) {
+        let width = pixbuf.get_width();
+        let height = pixbuf.get_height();
+        let croppedThumbnail;
+
+        if (width > height) {
+            let x = (width - height) / 2;
+            croppedThumbnail = pixbuf.new_subpixbuf(x, 0, height, height);
+        } else {
+            let y = (height - width) / 2;
+            croppedThumbnail = pixbuf.new_subpixbuf(0, y, width, width);
+        }
+
+        return croppedThumbnail.scale_simple(size, size, GdkPixbuf.InterpType.BILINEAR);
     }
 });

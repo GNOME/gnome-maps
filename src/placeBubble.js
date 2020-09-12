@@ -19,7 +19,6 @@
  * Author: Damián Nohales <damiannohales@gmail.com>
  */
 
-const GdkPixbuf = imports.gi.GdkPixbuf;
 const Geocode = imports.gi.GeocodeGlib;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
@@ -32,7 +31,6 @@ const MapBubble = imports.mapBubble;
 const Overpass = imports.overpass;
 const Place = imports.place;
 const PlaceBubbleImage = imports.placeBubbleImage;
-const PlaceFormatter = imports.placeFormatter;
 const PlaceStore = imports.placeStore;
 const Translations = imports.translations;
 const Utils = imports.utils;
@@ -53,10 +51,6 @@ var PlaceBubble = GObject.registerClass({
 }, class PlaceBubble extends MapBubble.MapBubble {
 
     _init(params) {
-        let ui = Utils.getUIObject('place-bubble', [ 'main-grid',
-                                                     'place-details',
-                                                     'contact-avatar',
-                                                     'label-title']);
         params.buttons = (MapBubble.Button.ROUTE |
                           MapBubble.Button.SEND_TO);
 
@@ -70,17 +64,9 @@ var PlaceBubble = GObject.registerClass({
 
         this.loading = true;
 
-        this._title = ui.labelTitle;
-        this._contactAvatar = ui.contactAvatar;
-        this._placeDetails = ui.placeDetails;
-
-        /* Set up contact avatar */
-        if (this.place instanceof ContactPlace.ContactPlace) {
-            this._contactAvatar.visible = true;
-            Utils.load_icon(this.place.icon, 32, (pixbuf) => {
-                this._contactAvatar.set_image_load_func(this._avatarImageLoadFunc.bind(this, pixbuf));
-            });
-        }
+        this._placeDetails = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL,
+                                           visible: true});
+        this.content.add(this._placeDetails);
 
         let overpass = new Overpass.Overpass();
 
@@ -105,7 +91,6 @@ var PlaceBubble = GObject.registerClass({
         } else {
             this._populate(this.place);
         }
-        this.content.add(ui.mainGrid);
     }
 
     _onInfoAdded() {
@@ -123,20 +108,8 @@ var PlaceBubble = GObject.registerClass({
         return Format.vprintf('https://%s.wikipedia.org/wiki/%s', [ lang, article ]);
     }
 
-    _createContent(formatter, place) {
+    _createContent(place) {
         let content = [];
-
-        let address = formatter.rows.map((row) => {
-            row = row.map(function(prop) {
-                return GLib.markup_escape_text(place[prop], -1);
-            });
-            return row.join(', ');
-        });
-        if (address.length > 0) {
-            content.push({ label: _("Address"),
-                           icon: 'map-marker-symbolic',
-                           info: address.join('\n') });
-        }
 
         if (place.website) {
             content.push({ label: _("Website"),
@@ -359,21 +332,17 @@ var PlaceBubble = GObject.registerClass({
     }
 
     _populate(place) {
-        let formatter = new PlaceFormatter.PlaceFormatter(place);
-
         // refresh place view
         this._clearView();
 
-        let content = this._createContent(formatter, place);
+        let content = this._createContent(place);
         this._attachContent(content);
-
-        this._contactAvatar.text = formatter.title;
-        this._title.label = formatter.title;
 
         if (place.wiki) {
             this._requestWikipedia(place.wiki);
         }
 
+        this.updatePlaceDetails();
         this.loading = false;
     }
 
@@ -413,22 +382,4 @@ var PlaceBubble = GObject.registerClass({
     _clearView() {
         this._placeDetails.get_children().forEach((child) => child.destroy());
     }
-
-    // Loads the HdyAvatar image for contact places
-    _avatarImageLoadFunc(pixbuf, size) {
-        let width = pixbuf.get_width();
-        let height = pixbuf.get_height();
-        let croppedThumbnail;
-
-        if (width > height) {
-            let x = (width - height) / 2;
-            croppedThumbnail = pixbuf.new_subpixbuf(x, 0, height, height);
-        } else {
-            let y = (height - width) / 2;
-            croppedThumbnail = pixbuf.new_subpixbuf(0, y, width, width);
-        }
-
-        return croppedThumbnail.scale_simple(size, size, GdkPixbuf.InterpType.BILINEAR);
-    }
-
 });
