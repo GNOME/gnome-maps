@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2020-08-25 21:00+0000\n"
-"PO-Revision-Date: 2020-08-22 17:42+0200\n"
+"POT-Creation-Date: 2020-09-16 21:00+0000\n"
+"PO-Revision-Date: 2020-09-18 12:42+0200\n"
 "Last-Translator: vanadiae <vanadiae35@gmail.com>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "Language: fr_FR\n"
@@ -63,7 +63,7 @@ msgstr ""
 "de la Cathédrale de Strasbourg » ou « Hôtels à côté d’Alexanderplatz à "
 "Berlin »."
 
-#: data/org.gnome.Maps.appdata.xml.in:122
+#: data/org.gnome.Maps.appdata.xml.in:159
 msgid "The GNOME Project"
 msgstr "Le projet GNOME"
 
@@ -76,7 +76,7 @@ msgstr "Le projet GNOME"
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:34
-#: src/application.js:82 src/mainWindow.js:134 src/mainWindow.js:626
+#: src/application.js:81 src/mainWindow.js:129 src/mainWindow.js:567
 msgid "Maps"
 msgstr "Cartes"
 
@@ -368,7 +368,7 @@ msgid "Toggle favorites"
 msgstr "Basculer les favoris"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-right.ui:57 data/ui/main-window.ui:98
+#: data/ui/headerbar-right.ui:57
 msgid "Print Route"
 msgstr "Imprimer l’itinéraire"
 
@@ -489,19 +489,15 @@ msgstr "_Raccourcis clavier"
 msgid "About Maps"
 msgstr "À propos de Cartes"
 
-#: data/ui/main-window.ui:56
+#: data/ui/main-window.ui:52
 msgid "Open main menu"
 msgstr "Ouvrir le menu principal"
 
-#: data/ui/main-window.ui:81
-msgid "Find a Route"
-msgstr "Trouver un itinéraire"
-
-#: data/ui/main-window.ui:182
+#: data/ui/main-window.ui:114
 msgid "Maps is offline!"
 msgstr "Cartes est hors ligne !"
 
-#: data/ui/main-window.ui:195
+#: data/ui/main-window.ui:122
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -509,7 +505,7 @@ msgstr ""
 "Cartes a besoin d’une connexion Internet active et fonctionnelle, mais "
 "aucune n’a été trouvée."
 
-#: data/ui/main-window.ui:204
+#: data/ui/main-window.ui:130
 msgid "Check your connection and proxy settings."
 msgstr "Vérifiez votre connexion et vos paramètres de proxy."
 
@@ -687,7 +683,7 @@ msgstr "Copier"
 msgid "Send To…"
 msgstr "Envoyer vers…"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:65
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:64
 msgid "Open Shape Layer"
 msgstr "Ouvrir une couche de formes"
 
@@ -815,23 +811,23 @@ msgstr "Attributs obligatoires manquants"
 msgid "Could not find OSM element"
 msgstr "Impossible de trouver l’élément OSM"
 
-#: src/application.js:96
+#: src/application.js:95
 msgid "A path to a local tiles directory structure"
 msgstr "Un chemin vers un répertoire local de structure de tuiles"
 
-#: src/application.js:102
+#: src/application.js:101
 msgid "Tile size for local tiles directory"
 msgstr "Taille de tuile pour le répertoire local de tuiles"
 
-#: src/application.js:106
+#: src/application.js:105
 msgid "Show the version of the program"
 msgstr "Afficher la version du logiciel"
 
-#: src/application.js:112
+#: src/application.js:111
 msgid "Ignore network availability"
 msgstr "Ignorer la disponibilité du réseau"
 
-#: src/application.js:122 src/application.js:123
+#: src/application.js:121 src/application.js:122
 msgid "[FILE…|URI]"
 msgstr "[FICHIER…|URI]"
 
@@ -966,31 +962,31 @@ msgstr "Aucun itinéraire trouvé."
 msgid "Start!"
 msgstr "C’est parti !"
 
-#: src/mainWindow.js:62
+#: src/mainWindow.js:61
 msgid "All Layer Files"
 msgstr "Tous les fichiers de couches"
 
-#: src/mainWindow.js:508
+#: src/mainWindow.js:470
 msgid "Failed to connect to location service"
 msgstr "Échec à la connexion au service de localisation"
 
-#: src/mainWindow.js:624
+#: src/mainWindow.js:565
 msgid "translator-credits"
 msgstr ""
 "Ouharzoune Mohammed <karim-ouh@hotmail.fr>\n"
 "Claude Paroz <claude@2xlibre.net>\n"
 "Guillaume Bernard <contact.guib@laposte.net>"
 
-#: src/mainWindow.js:627
+#: src/mainWindow.js:568
 msgid "A map application for GNOME"
 msgstr "Une application cartographique pour GNOME"
 
-#: src/mainWindow.js:638
+#: src/mainWindow.js:579
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr ""
 "Copyright © 2011 – 2019 Red Hat, Inc. et les auteurs de Cartes de GNOME"
 
-#: src/mainWindow.js:658
+#: src/mainWindow.js:599
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Données cartographiques de %s et contributeurs"
@@ -1000,7 +996,7 @@ msgstr "Données cartographiques de %s et contributeurs"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:674
+#: src/mainWindow.js:615
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Couches de données cartographiques fournies par %s"
@@ -1014,7 +1010,7 @@ msgstr "Couches de données cartographiques fournies par %s"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:703
+#: src/mainWindow.js:644
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Recherche fournie par %s utilisant %s"
@@ -1098,7 +1094,7 @@ msgstr ""
 "signe +. Attention aux lois locales sur la vie privée, surtout pour les "
 "numéros de téléphone des particuliers."
 
-#: src/osmEditDialog.js:137 src/placeBubble.js:191
+#: src/osmEditDialog.js:137 src/placeBubble.js:197
 msgid "Wikipedia"
 msgstr "Wikipédia"
 
@@ -1302,35 +1298,41 @@ msgstr "Terminé"
 msgid "Unnamed place"
 msgstr "Emplacement sans nom"
 
-#: src/placeBubble.js:143
+#. TODO: this is a bit of a work-around to re-interpret the population,
+#. * stored as a string into an integer to convert back to a locale-
+#. * formatted string. Ideally it should be kept as an integer value
+#. * in the Place class. But this will also need to be handled by the
+#. * PlaceStore, possible in a backwards-compatible way
+#.
+#: src/placeBubble.js:149
 msgid "Population:"
 msgstr "Population :"
 
-#: src/placeBubble.js:149
+#: src/placeBubble.js:155
 msgid "Altitude:"
 msgstr "Altitude :"
 
-#: src/placeBubble.js:154
+#: src/placeBubble.js:160
 msgid "Opening hours:"
 msgstr "Heures d’ouverture :"
 
-#: src/placeBubble.js:159
+#: src/placeBubble.js:165
 msgid "Internet access:"
 msgstr "Accès à Internet :"
 
-#: src/placeBubble.js:164
+#: src/placeBubble.js:170
 msgid "Religion:"
 msgstr "Religion :"
 
-#: src/placeBubble.js:169
+#: src/placeBubble.js:175
 msgid "Toilets:"
 msgstr "Toilettes :"
 
-#: src/placeBubble.js:174
+#: src/placeBubble.js:180
 msgid "Wheelchair access:"
 msgstr "Accès aux fauteuils roulants :"
 
-#: src/placeBubble.js:180 src/placeBubble.js:184
+#: src/placeBubble.js:186 src/placeBubble.js:190
 msgid "Phone:"
 msgstr "Téléphone :"
 
@@ -1392,7 +1394,7 @@ msgstr "Les coordonnées dans l’URL ne sont pas valides"
 
 #: src/place.js:521
 msgid "URL is not supported"
-msgstr "L’URL n’est pas pris en charge"
+msgstr "L’URL n’est pas prise en charge"
 
 #: src/printLayout.js:312
 #, javascript-format
@@ -1924,6 +1926,9 @@ msgstr "Faire un demi-tour à droite sur %s"
 #: src/transitplugins/openTripPlanner.js:1244
 msgid "Make a right u-turn"
 msgstr "Faire un demi-tour à droite"
+
+#~ msgid "Find a Route"
+#~ msgstr "Trouver un itinéraire"
 
 #~ msgid "Primary menu"
 #~ msgstr "Menu principal"
