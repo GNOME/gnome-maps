@@ -30,9 +30,14 @@ const PhotonParser = imports.photonParser;
 const Service = imports.service;
 const Utils = imports.utils;
 
+// HTTP session timeout (in seconds)
+const TIMEOUT = 5;
+
 var GraphHopperGeocode = class {
     constructor() {
-        this._session = new Soup.Session({ user_agent : 'gnome-maps/' + pkg.version });
+        this._session =
+            new Soup.Session({ user_agent : 'gnome-maps/' + pkg.version,
+                               timeout:     TIMEOUT });
         this._readService();
         this._limit = Application.settings.get('max-search-results');
     }
@@ -51,15 +56,19 @@ var GraphHopperGeocode = class {
             if (cancellable.is_cancelled())
                 return;
 
-            try {
-                let result = this._parseMessage(message.response_body.data);
-                if (!result)
-                    callback(null, null);
-                else
-                    callback(result, null);
-            } catch (e) {
-                Utils.debug('Error: ' + e);
-                callback(null, e);
+            if (message.status_code !== Soup.KnownStatusCode.OK) {
+                callback(null, msg.status_code);
+            } else {
+                try {
+                    let result = this._parseMessage(message.response_body.data);
+                    if (!result)
+                        callback(null, null);
+                    else
+                        callback(result, null);
+                } catch (e) {
+                    Utils.debug('Error: ' + e);
+                    callback(null, e);
+                }
             }
         });
     }
