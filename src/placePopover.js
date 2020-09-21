@@ -36,7 +36,8 @@ var PlacePopover = GObject.registerClass({
                         'stack',
                         'spinner',
                         'list',
-                        'noResultsLabel' ],
+                        'noResultsLabel',
+                        'errorLabel' ],
 }, class PlacePopover extends SearchPopover.SearchPopover {
 
     _init(props) {
@@ -99,6 +100,13 @@ var PlacePopover = GObject.registerClass({
             this._spinner.stop();
 
         this._stack.visible_child = this._noResultsLabel;
+    }
+
+    showError() {
+        if (this._spinner.active)
+            this._spinner.stop();
+
+        this._stack.visible_child = this._errorLabel;
     }
 
     updateResult(places, searchString) {
