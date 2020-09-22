@@ -258,10 +258,16 @@ var PlaceEntry = GObject.registerClass({
                                             this._cancellable,
                                             (places, error) => {
             this._cancellable = null;
-            this._updateResults(places);
 
-            // cache results for later
-            this._cache[this.text] = places;
+            if (error) {
+                this.place = null;
+                this._popover.showError();
+            } else {
+                this._updateResults(places);
+
+                // cache results for later
+                this._cache[this.text] = places;
+            }
 
             // if search input has been updated, trigger a refresh
             if (this.text !== this._previousSearch)
