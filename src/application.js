@@ -293,7 +293,7 @@ var Application = GObject.registerClass({
     }
 
     vfunc_dbus_unregister(connection, path) {
-        super.vfunc_dbus_register(connection, path);
+        super.vfunc_dbus_unregister(connection, path);
     }
 
     vfunc_activate() {
