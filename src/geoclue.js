@@ -115,7 +115,7 @@ var Geoclue = GObject.registerClass({
 
     _updateLocation(location) {
         if (!this.place)
-            this.place = new Place.Place({ name: _("Current location"),
+            this.place = new Place.Place({ name: _("Current Location"),
                                            isCurrentLocation: true });
 
         this.place.location = location;

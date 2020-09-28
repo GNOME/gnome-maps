@@ -33,10 +33,8 @@ class UserLocationBubble extends MapBubble.MapBubble {
         this._ui = Utils.getUIObject('user-location-bubble', [ 'content',
                                                                'label-accuracy',
                                                                'label-coordinates' ]);
-        params.buttons = MapBubble.Button.ROUTE |
-                         MapBubble.Button.SEND_TO |
+        params.buttons = MapBubble.Button.SEND_TO |
                          MapBubble.Button.CHECK_IN;
-        params.routeFrom = true;
         params.checkInMatchPlace = false;
 
         super._init(params);

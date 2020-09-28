@@ -27,6 +27,7 @@ const Mainloop = imports.mainloop;
 
 const Application = imports.application;
 const ContactPlace = imports.contactPlace;
+const GeocodeFactory = imports.geocode;
 const OSMAccountDialog = imports.osmAccountDialog;
 const OSMEditDialog = imports.osmEditDialog;
 const OSMUtils = imports.osmUtils;
@@ -60,9 +61,6 @@ class MapBubble extends Gtk.Popover {
         let buttonFlags = params.buttons || Button.NONE;
         delete params.buttons;
 
-        let routeFrom = params.routeFrom;
-        delete params.routeFrom;
-
         let checkInMatchPlace = params.checkInMatchPlace;
         if (checkInMatchPlace !== false)
             checkInMatchPlace = true;
@@ -83,6 +81,8 @@ class MapBubble extends Gtk.Popover {
                                                    'bubble-button-area',
                                                    'bubble-route-button',
                                                    'bubble-send-to-button',
+                                                   'bubble-send-to-button-alt',
+                                                   'title-box',
                                                    'bubble-favorite-button',
                                                    'bubble-check-in-button',
                                                    'bubble-edit-button',
@@ -101,7 +101,7 @@ class MapBubble extends Gtk.Popover {
             ui.bubbleButtonArea.visible = false;
         else {
             if (buttonFlags & Button.ROUTE)
-                this._initRouteButton(ui.bubbleRouteButton, routeFrom);
+                this._initRouteButton(ui.bubbleRouteButton);
             if (buttonFlags & Button.SEND_TO)
                 this._initSendToButton(ui.bubbleSendToButton);
             if (buttonFlags & Button.FAVORITE)
@@ -110,6 +110,20 @@ class MapBubble extends Gtk.Popover {
                 this._initCheckInButton(ui.bubbleCheckInButton, checkInMatchPlace);
             if (buttonFlags & Button.EDIT_ON_OSM)
                 this._initEditButton(ui.bubbleEditButton);
+        }
+
+        if (this.place.isCurrentLocation) {
+            /* Current Location bubbles have a slightly different layout, to
+               avoid awkward whitespace */
+
+            /* hide the normal button area */
+            ui.bubbleButtonArea.visible = false;
+            /* show the top-end-corner share button instead */
+            this._initSendToButton(ui.bubbleSendToButtonAlt);
+            /* adjust some margins */
+            ui.titleBox.margin = 12;
+            ui.titleBox.marginStart = 18;
+            ui.titleBox.spacing = 18;
         }
 
         this.add(this._mainStack);
@@ -213,7 +227,7 @@ class MapBubble extends Gtk.Popover {
         });
     }
 
-    _initRouteButton(button, routeFrom) {
+    _initRouteButton(button) {
         let query = Application.routeQuery;
         let from = query.points[0];
         let to = query.points[query.points.length - 1];
@@ -224,13 +238,11 @@ class MapBubble extends Gtk.Popover {
             query.freeze_notify();
             query.reset();
             Application.routingDelegator.reset();
-            if (routeFrom) {
-                from.place = this._place;
-            } else {
-                if (Application.geoclue.place)
-                    from.place = Application.geoclue.place;
-                to.place = this._place;
-            }
+
+            if (Application.geoclue.place)
+                from.place = Application.geoclue.place;
+            to.place = this._place;
+
             this.destroy();
             query.thaw_notify();
         });
