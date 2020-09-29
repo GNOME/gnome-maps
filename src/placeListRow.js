@@ -21,6 +21,7 @@ const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 
+const ContactPlace = imports.contactPlace;
 const PlaceFormatter = imports.placeFormatter;
 const PlaceStore = imports.placeStore;
 const Utils = imports.utils;
@@ -30,6 +31,8 @@ var ROW_HEIGHT = 55;
 var PlaceListRow = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/place-list-row.ui',
     InternalChildren: [ 'icon',
+                        'iconStack',
+                        'contactAvatar',
                         'name',
                         'details',
                         'typeIcon' ],
@@ -58,7 +61,23 @@ var PlaceListRow = GObject.registerClass({
 
         this._name.label = this._boldMatch(markup, searchString);
         this._details.label = GLib.markup_escape_text(formatter.getDetailsString(),-1);
-        this._icon.gicon = place.icon;
+
+        if (place instanceof ContactPlace.ContactPlace) {
+            this._iconStack.set_visible_child(this._contactAvatar);
+
+            this._contactAvatar.text = formatter.title;
+
+            if (place.icon) {
+                Utils.load_icon(place.icon, 32, (pixbuf) => {
+                    this._contactAvatar.set_image_load_func((size) => Utils.loadAvatar(pixbuf, size));
+                });
+            } else {
+                this._contactAvatar.set_image_load_func(null);
+            }
+        } else if (place.icon) {
+            this._iconStack.set_visible_child(this._icon);
+            this._icon.gicon = place.icon;
+        }
 
         if (type === PlaceStore.PlaceType.RECENT ||
             type === PlaceStore.PlaceType.RECENT_ROUTE)

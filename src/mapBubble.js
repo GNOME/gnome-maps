@@ -124,7 +124,7 @@ class MapBubble extends Gtk.Popover {
         if (this.place instanceof ContactPlace.ContactPlace) {
             this._contactAvatar.visible = true;
             Utils.load_icon(this.place.icon, 32, (pixbuf) => {
-                this._contactAvatar.set_image_load_func(this._avatarImageLoadFunc.bind(this, pixbuf));
+                this._contactAvatar.set_image_load_func((size) => Utils.loadAvatar(pixbuf, size));
             });
         }
 
@@ -286,22 +286,5 @@ class MapBubble extends Gtk.Popover {
                 break;
             }
         });
-    }
-
-    // Loads the HdyAvatar image for contact places
-    _avatarImageLoadFunc(pixbuf, size) {
-        let width = pixbuf.get_width();
-        let height = pixbuf.get_height();
-        let croppedThumbnail;
-
-        if (width > height) {
-            let x = (width - height) / 2;
-            croppedThumbnail = pixbuf.new_subpixbuf(x, 0, height, height);
-        } else {
-            let y = (height - width) / 2;
-            croppedThumbnail = pixbuf.new_subpixbuf(0, y, width, width);
-        }
-
-        return croppedThumbnail.scale_simple(size, size, GdkPixbuf.InterpType.BILINEAR);
     }
 });
