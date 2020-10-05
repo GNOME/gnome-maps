@@ -85,6 +85,9 @@ function parsePlace(latitude, longitude, properties) {
     if (!countryCode && properties.country)
         place.country = properties.country;
 
+    if (properties.extent)
+        place.bounding_box = _parseBoundingBox(properties.extent);
+
     return new Place.Place({ place: place });
 }
 
@@ -205,4 +208,35 @@ function _parsePlaceType(properties) {
         default:
             return Geocode.PlaceType.MISCELLANEOUS;
     }
+}
+
+function _parseBoundingBox(extent) {
+    if (!Array.isArray(extent) || extent.length !== 4 ||
+        !_isValidLongitude(extent[0]) || !_isValidLatitude(extent[1]) ||
+        !_isValidLongitude(extent[2]) || !_isValidLatitude(extent[3])) {
+        Utils.debug('invalid extents in response: ' +
+                    JSON.stringify(extent, null, 2));
+        return null;
+    }
+
+    /* it seems GraphHopper geocode swaps order of bottom and top compared
+     * to stock Photon, so just in case "clamp" both pairs
+     */
+    return new Geocode.BoundingBox({ left:   Math.min(extent[0], extent[2]),
+                                     bottom: Math.min(extent[1], extent[3]),
+                                     right:  Math.max(extent[0], extent[2]),
+                                     top:    Math.max(extent[1], extent[3]) });
+}
+
+/* check if an extent value is a valid latitude (clamp to the maximum latitude
+ * supported by the map view
+ */
+function _isValidLatitude(number) {
+    return Number.isFinite(number) && number >= -85.0511287798 &&
+           number <= 85.0511287798;
+}
+
+// check if an extent value is a valid longitude
+function _isValidLongitude(number) {
+    return Number.isFinite(number) && number >= -180 && number <= 180;
 }
