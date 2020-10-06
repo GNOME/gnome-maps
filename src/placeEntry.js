@@ -259,7 +259,7 @@ var PlaceEntry = GObject.registerClass({
             this._updateResults(places);
 
             // cache results for later
-            this._cache[this.text] = places;
+            this._cache[this._previousSearch] = places;
 
             // if search input has been updated, trigger a refresh
             if (this.text !== this._previousSearch)
