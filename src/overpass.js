@@ -22,6 +22,7 @@ const Geocode = imports.gi.GeocodeGlib;
 const GObject = imports.gi.GObject;
 const Soup = imports.gi.Soup;
 
+const OSMNames = imports.osmNames;
 const PhotonParser = imports.photonParser;
 const Place = imports.place;
 const Utils = imports.utils;
@@ -200,8 +201,9 @@ var Overpass = GObject.registerClass({
         if (!(element && element.tags))
             return;
 
-        if (element.tags.name)
-            place.name = element.tags.name;
+        let name = this._getLocalizedName(element.tags, place);
+        if (name)
+            place.name = name;
         if (element.tags.population)
             place.population = element.tags.population;
         if (element.tags['contact:website'])
@@ -228,6 +230,13 @@ var Overpass = GObject.registerClass({
             place.toilets = element.tags.toilets;
         if (element.tags.note)
             place.note = element.tags.note;
+    }
+
+    _getLocalizedName(tags, place) {
+        let language = Utils.getLanguage();
+
+        return OSMNames.getNameForLanguageAndCountry(tags, language,
+                                                     place.country_code);
     }
 
     _getQueryUrl(osmType, osmId) {
