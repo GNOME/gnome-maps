@@ -120,7 +120,7 @@ class Place extends Geocode.Place {
                        state: params.place.state,
                        county: params.place.county,
                        country: params.place.country,
-                       country_code: params.place.contry_code,
+                       country_code: params.place.country_code,
                        continent: params.place.continent };
         }
 
