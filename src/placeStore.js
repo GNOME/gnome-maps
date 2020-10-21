@@ -46,7 +46,8 @@ var Columns = {
     PLACE: 1,
     NAME: 2,
     TYPE: 3,
-    ADDED: 4
+    ADDED: 4,
+    LANGUAGE: 5
 };
 
 var PlaceStore = GObject.registerClass(
@@ -64,19 +65,22 @@ class PlaceStore extends Gtk.ListStore {
         this.filename = GLib.build_filenamev([GLib.get_user_data_dir(),
                                               _PLACES_STORE_FILE]);
         this._typeTable = {};
+        this._language = Utils.getLanguage();
 
         super._init(params);
         this.set_column_types([GdkPixbuf.Pixbuf,
                                GObject.TYPE_OBJECT,
                                GObject.TYPE_STRING,
                                GObject.TYPE_INT,
-                               GObject.TYPE_DOUBLE]);
+                               GObject.TYPE_DOUBLE,
+                               GObject.TYPE_STRING]);
 
         this.set_sort_column_id(Columns.ADDED, Gtk.SortType.ASCENDING);
     }
 
     _addPlace(place, type) {
-        this._setPlace(this.append(), place, type, new Date().getTime());
+        this._setPlace(this.append(), place, type, new Date().getTime(),
+                       this._language);
         this._store();
     }
 
@@ -166,12 +170,16 @@ class PlaceStore extends Gtk.ListStore {
             return;
         try {
             let jsonArray = JSON.parse(Utils.getBufferText(buffer));
-            jsonArray.forEach(({ place, type, added }) => {
+            jsonArray.forEach(({ place, type, added, language }) => {
                 // We expect exception to be thrown in this line when parsing
                 // gnome-maps 3.14 or below place stores since the "place"
                 // key is not present.
                 if (!place.id)
                     return;
+
+                // GtkListStore doesn't seem to handle null/undefined for strings
+                if (!language)
+                    language = '';
 
                 let p;
                 if (type === PlaceType.RECENT_ROUTE) {
@@ -184,7 +192,7 @@ class PlaceStore extends Gtk.ListStore {
                     if (type === PlaceType.RECENT)
                         this._numRecentPlaces++;
                 }
-                this._setPlace(this.append(), p, type, added);
+                this._setPlace(this.append(), p, type, added, language);
             });
         } catch (e) {
             throw new Error('failed to parse places file');
@@ -234,13 +242,15 @@ class PlaceStore extends Gtk.ListStore {
             let place = model.get_value(iter, Columns.PLACE);
             let type = model.get_value(iter, Columns.TYPE);
             let added = model.get_value(iter, Columns.ADDED);
+            let language = model.get_value(iter, Columns.LANGUAGE);
 
             if (!place || !place.store)
                 return;
             jsonArray.push({
                 place: place.toJSON(),
                 type: type,
-                added: added
+                added: added,
+                language: language
             });
         });
 
@@ -249,16 +259,18 @@ class PlaceStore extends Gtk.ListStore {
             log('Failed to write places file!');
     }
 
-    _setPlace(iter, place, type, added) {
+    _setPlace(iter, place, type, added, language) {
         this.set(iter,
                  [Columns.PLACE,
                   Columns.NAME,
                   Columns.TYPE,
-                  Columns.ADDED],
+                  Columns.ADDED,
+                  Columns.LANGUAGE],
                  [place,
                   place.name,
                   type,
-                  added]);
+                  added,
+                  language]);
 
         if (place.icon !== null) {
             Utils.load_icon(place.icon, _ICON_SIZE, (pixbuf) => {
@@ -287,19 +299,21 @@ class PlaceStore extends Gtk.ListStore {
             return false;
 
         let added = null;
+        let language = null;
         this.foreach((model, path, iter) => {
             let p = model.get_value(iter, Columns.PLACE);
 
             if (p.uniqueID === place.uniqueID) {
                 let p_type = model.get_value(iter, Columns.TYPE);
                 added = model.get_value(iter, Columns.ADDED);
+                language = model.get_value(iter, Columns.LANGUAGE);
             }
         });
 
         let now = new Date().getTime();
         let days = Math.abs(now - added) / _ONE_DAY;
 
-        return (days >= _STALE_THRESHOLD);
+        return language !== this._language || days >= _STALE_THRESHOLD;
     }
 
     exists(place, type) {
@@ -334,7 +348,8 @@ class PlaceStore extends Gtk.ListStore {
 
             if (p.uniqueID === place.uniqueID) {
                 let type = model.get_value(iter, Columns.TYPE);
-                this._setPlace(iter, place, type, new Date().getTime());
+                this._setPlace(iter, place, type, new Date().getTime(),
+                               this._language);
                 this._store();
                 return;
             }
