@@ -191,7 +191,7 @@ var TransitLegRow = GObject.registerClass({
             }
         } else {
             /* don't output the starting and ending instructions from the walk
-             * route, since these are explicitely added by the itinerary
+             * route, since these are explicitly added by the itinerary
              */
             for (let index = 1;
                  index < this._leg.walkingInstructions.length - 1;

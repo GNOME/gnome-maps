@@ -226,7 +226,7 @@ var MapView = GObject.registerClass({
     }
 
     /* handler to draw background for dark theme,
-     * theese three functions should not be needed later with a native GTK
+     * these three functions should not be needed later with a native GTK
      * widget (Shumate)
      */
     _drawDarkBackground(canvas, cr, width, height) {

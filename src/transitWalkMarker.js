@@ -31,7 +31,7 @@ var TransitWalkMarker = GObject.registerClass(
 class TransitWalkMarker extends MapMarker.MapMarker {
 
     _init(params) {
-        /* if there is a preceeding leg, put the marker at the end of that leg
+        /* if there is a preceding leg, put the marker at the end of that leg
          * to avoid gaps, since we will "fill out" the walking leg path line
          * since sometimes the walking route might not reach exactly to the
          * transit stop's position

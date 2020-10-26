@@ -37,7 +37,7 @@ const _MEMORY_CACHE_SIZE_LIMIT = 100; /* number of tiles */
 
 const _LOGO_PADDING_X = 10;
 const _LOGO_PADDING_Y = 25;
-// extra pading below logo in RTL, where scale will be on the right side
+// extra padding below logo in RTL, where scale will be on the right side
 const _LOGO_PADDING_Y_RTL = 35;
 
 var AttributionLogo = GObject.registerClass({},

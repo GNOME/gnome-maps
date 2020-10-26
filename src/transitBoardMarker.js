@@ -63,7 +63,7 @@ class TransitBoardMarker extends MapMarker.MapMarker {
      * attribute and background color taken from the transit legs color
      * attribute.
      * Also draw an outline in the same color as the icon in case the
-     * background color above a threashold to improve readability against the
+     * background color above a threshold to improve readability against the
      * map background.
      */
     _createActor(leg) {

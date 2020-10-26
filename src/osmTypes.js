@@ -34,7 +34,7 @@ const OSM_TYPE_MAP = JSON.parse(Utils.getBufferText(_buffer));
 /* Lists the OSM tags we base our notion of location types on */
 var OSM_TYPE_TAGS = ['aeroway', 'amenity', 'leisure', 'office', 'place', 'shop', 'tourism' ];
 
-/* Sort function comparing two type values accoring to the locale-specific
+/* Sort function comparing two type values according to the locale-specific
  * comparison of the type title */
 function _sortType(t1, t2) {
     return t1.title.toLocaleLowerCase().localeCompare(t2.title.toLocaleLowerCase());

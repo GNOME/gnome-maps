@@ -248,7 +248,7 @@ class MapBubble extends Gtk.Popover {
 
     _onEditClicked() {
         let osmEdit = Application.osmEdit;
-        /* if the user is not alread signed in, show the account dialog */
+        /* if the user is not already signed in, show the account dialog */
         if (!osmEdit.isSignedIn) {
             let dialog = osmEdit.createAccountDialog(this.get_toplevel(), true);
 

@@ -79,7 +79,7 @@ class TurnPointMarker extends MapMarker.MapMarker {
 
     _getColor() {
         /* Use the route color from the transit leg when representing part of
-         * a transit trip, otherwise let the fallback functionallity of the
+         * a transit trip, otherwise let the fallback functionality of the
          * utility function use a GNOMEish blue color for turn-by-turn routing.
          */
         let color = this._transitLeg ? this._transitLeg.color : null;

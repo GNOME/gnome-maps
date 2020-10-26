@@ -47,21 +47,21 @@ var RouteType = {
     TRAIN:       2,
     BUS:         3,
     FERRY:       4,
-    /* Cable car referres to street-level cabel cars, where the propulsive
-     * cable runs in a slot between the tracks beneeth the car
+    /* Cable car refers to street-level cabel cars, where the propulsive
+     * cable runs in a slot between the tracks beneath the car
      * https://en.wikipedia.org/wiki/Cable_car_%28railway%29
-     * For example the cable cars in San Fransisco
+     * For example the cable cars in San Francisco
      * https://en.wikipedia.org/wiki/San_Francisco_cable_car_system
      */
     CABLE_CAR:   5,
-    /* Gondola referres to a suspended cable car, typically aerial cable cars
+    /* Gondola refers to a suspended cable car, typically aerial cable cars
      * where the car is suspended from the cable
      * https://en.wikipedia.org/wiki/Gondola_lift
      * For example the "Emirates Air Line" in London
      * https://en.wikipedia.org/wiki/Emirates_Air_Line_%28cable_car%29
      */
     GONDOLA:     6,
-    /* Funicular referres to a railway system designed for steep inclines,
+    /* Funicular refers to a railway system designed for steep inclines,
      * https://en.wikipedia.org/wiki/Funicular
      */
     FUNICULAR:   7,
@@ -279,7 +279,7 @@ class Itinerary extends GObject.Object {
             if (!leg.transit) {
                 if (i === 0) {
                     /* for the first leg subtract the walking time plus a
-                     * safty slack from the departure time of the following
+                     * safety slack from the departure time of the following
                      * leg
                      */
                     let nextLeg = this.legs[i + 1];

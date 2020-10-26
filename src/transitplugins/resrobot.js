@@ -306,7 +306,7 @@ var Resrobot = class Resrobot {
     /* Indicate that no routes where found, either shows the "No route found"
      * message, or in case of loading additional (later/earlier) results,
      * indicate no such where found, so that the sidebar can disable the
-     * "load more" functionallity as appropriate.
+     * "load more" functionality as appropriate.
      */
     _noRouteFound() {
         if (this._extendPrevious) {
@@ -393,7 +393,7 @@ var Resrobot = class Resrobot {
      */
     _canLegBeIgnored(leg) {
         if (!leg.isTransit) {
-            /* check that the distance is below the threashold and also that
+            /* check that the distance is below the threshold and also that
              * the duration is below 1 min, since the API in some occasions
              * apparently gives distance 0, even though a walking leg has
              * longer duration, and spans a distance in coordinates.

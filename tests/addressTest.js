@@ -50,7 +50,7 @@ function streetAddressForCountryCodeTest() {
     JsUnit.assertEquals('Calle Mapas No° 42',
                         Address.streetAddressForCountryCode('Calle Mapas',
                                                             '42', 'CL'));
-    /* Test fallback to "Number Street name" scheme for unknown contries,
+    /* Test fallback to "Number Street name" scheme for unknown countries,
      * using fictionary "UT" (Utopia)
      */
     JsUnit.assertEquals('42 Some Street',

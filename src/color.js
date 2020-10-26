@@ -57,7 +57,7 @@ function relativeLuminance(color) {
 
 /**
  * Returns the contrast ratio between two colors, expressed in HTML notation
- * (i.e. ffffff for white) according to the W3C WCAG defintion:
+ * (i.e. ffffff for white) according to the W3C WCAG definition:
  * https://www.w3.org/WAI/GL/wiki/Contrast_ratio
  */
 function contrastRatio(color1, color2) {
@@ -74,7 +74,7 @@ function contrastRatio(color1, color2) {
  * Finds a suitable foreground (text) color for a given background color.
  * If the desiredForegroundColor argument is defined, return this color if it
  * has enough contrast against the background, otherwise (or if that argument
- * is undefined), return the one of black or white giving the higest contrast
+ * is undefined), return the one of black or white giving the highest contrast
  */
 function getContrastingForegroundColor(backgroundColor,
                                        desiredForegroundColor) {

@@ -127,7 +127,7 @@ var PlaceEntry = GObject.registerClass({
         if (this._cancellable)
             return;
 
-        /* start search if more than the threashold number of characters have
+        /* start search if more than the threshold number of characters have
          * been entered, or if the first character is in the ideographic CJK
          * block, as for these, shorter strings could be meaningful
          */

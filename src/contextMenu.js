@@ -152,7 +152,7 @@ var ContextMenu = GObject.registerClass({
 
     _onAddOSMLocationActivated() {
         let osmEdit = Application.osmEdit;
-        /* if the user is not alread signed in, show the account dialog */
+        /* if the user is not already signed in, show the account dialog */
         if (!osmEdit.isSignedIn) {
             let dialog = osmEdit.createAccountDialog(this._mainWindow, true);
 

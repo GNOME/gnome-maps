@@ -77,7 +77,7 @@ var OSMEdit = class OSMEdit {
     fetchObject(place, callback, cancellable) {
         let osmType = Utils.osmTypeToString(place.osmType);
 
-        /* reset currenly edited object */
+        /* reset currently edited object */
         this._osmObject = null;
         this._osmConnection.getOSMObject(osmType, place.osm_id,
                      (function(success, status, osmObject, osmType) {

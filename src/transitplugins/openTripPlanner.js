@@ -52,7 +52,7 @@ const Utils = imports.utils;
  * These call into an entry point function "_fatchRoute()".
  * "_fetchRoutes()" is called.
  * In the case where there is no OSM data (onlyTransitData is true), it
- * asyncronously calls "_fetchTransitStops()" to get closest transit stop for
+ * asynchronously calls "_fetchTransitStops()" to get closest transit stop for
  * each of the query point, this function will involve OpenTripPlanner calls to
  * find stops within a search circle around the coordinate and then calls out
  * to GraphHopper to find the actual walking distance and selects the closest
@@ -72,7 +72,7 @@ const Utils = imports.utils;
  * API docs for OpenTripPlanner can be found at: http://dev.opentripplanner.org/apidoc/1.0.0/
  */
 
-/* minimum distance when an explicit walk route will be requested to suppliment
+/* minimum distance when an explicit walk route will be requested to supplement
  * the transit route
  */
 const MIN_WALK_ROUTING_DISTANCE = 100;
@@ -97,7 +97,7 @@ const MAX_WALK_OPTIMIZATION_DISTANCE_DIFFERENCE = 500;
 const MIN_INTERMEDIATE_WALKING_SLACK = 60;
 
 /* maximum walking distance, filter out itineraries containing walking legs
- * whith longer walking after refined by GraphHopper
+ * with longer walking after being refined by GraphHopper
  */
 const MAX_WALKING_DISTANCE = 2000;
 
@@ -565,7 +565,7 @@ var OpenTripPlanner = class OpenTripPlanner {
     /* Indicate that no routes where found, either shows the "No route found"
      * message, or in case of loading additional (later/earlier) results,
      * indicate no such where found, so that the sidebar can disable the
-     * "load more" functionallity as appropriate.
+     * "load more" functionality as appropriate.
      */
     _noRouteFound() {
         if (this._extendPrevious) {
@@ -598,7 +598,7 @@ var OpenTripPlanner = class OpenTripPlanner {
 
                 if (itineraries.length === 0) {
                     /* don't reset query points, unlike for turn-based
-                     * routing, since options and timeing might influence
+                     * routing, since options and timing might influence
                      * results */
                     this._noRouteFound();
                 } else {
@@ -639,7 +639,7 @@ var OpenTripPlanner = class OpenTripPlanner {
             if (!leg.transit) {
                 /* if a walking leg exceeds the maximum desired walking
                  * distance, or for a leg "in-between" two transit legs, if
-                 * there's insufficent switch time
+                 * there's insufficient switch time
                  */
                 if (leg.distance > MAX_WALKING_DISTANCE) {
                     return false;
@@ -679,7 +679,7 @@ var OpenTripPlanner = class OpenTripPlanner {
             });
         } else {
             /* filter out itineraries where there are intermediate walking legs
-             * that are too narrow time-wise, this is nessesary since running
+             * that are too narrow time-wise, this is necessary since running
              * OTP with only transit data can result in some over-optimistic
              * walking itinerary legs, since it will use "line-of-sight"
              * distances.
@@ -725,7 +725,7 @@ var OpenTripPlanner = class OpenTripPlanner {
                 callback(newItinerary);
             });
         } else if (itinerary.legs.length === 1 && itinerary.legs[0].transit) {
-            // special case if there is extactly one transit leg
+            // special case if there is exactly one transit leg
             let leg = itinerary.legs[0];
             let startLeg = GraphHopperTransit.createQueryPointForCoord(leg.fromCoordinate);
             let endLeg = GraphHopperTransit.createQueryPointForCoord(leg.toCoordinate);

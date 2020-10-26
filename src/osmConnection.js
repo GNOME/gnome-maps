@@ -88,7 +88,7 @@ var OSMConnection = class OSMConnection {
 
     openChangeset(comment, callback) {
         /* we assume that this would only be called if there's already been an
-           OAuth access token enrolled, so, if the currently instanciated
+           OAuth access token enrolled, so, if the currently instantiated
            proxy instance doesn't have a token set, we could safely count on
            it being present in the keyring */
         if (this._callProxy.get_token() === null) {

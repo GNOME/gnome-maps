@@ -223,7 +223,7 @@ var TransitRouter = class TransitRoute {
 
                     return [provider, instance];
                 } catch (e) {
-                    Utils.debug('Failed to instanciate transit plugin: ' +
+                    Utils.debug('Failed to instantiate transit plugin: ' +
                                 plugin + ": " + e);
                 }
             } else {

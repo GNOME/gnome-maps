@@ -90,10 +90,10 @@ var TransitItineraryRow = GObject.registerClass({
         });
     }
 
-    /* calculate an estimated relative space-consuption for rendering,
+    /* calculate an estimated relative space-consumption for rendering,
      * this is done based on route label character lengths and a fixed
      * "placeholder" amount for mode icons and separators, since doing an
-     * exact pixel-correct calculation would be hard depeding on fonts and
+     * exact pixel-correct calculation would be hard depending on fonts and
      * themes
      */
     _calculateEstimatedSpace() {

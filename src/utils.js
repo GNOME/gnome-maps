@@ -233,7 +233,7 @@ function getMeasurementSystem() {
 }
 
 /**
- * Get the higest priority bare lange currently in use.
+ * Get the highest priority bare lange currently in use.
  */
 function getLanguage() {
     let locale = GLib.get_language_names()[0];
@@ -348,7 +348,7 @@ function prettyTime(time) {
         return _("%s h").format(hoursStr);
     } else if (hours > 0) {
         /* Translators: this is a duration with hours and minutes parts
-         * using abbreviations for hours and minutes, correspoding to 'h'
+         * using abbreviations for hours and minutes, corresponding to 'h'
          * and 'min' in English. The minutes has appropriate plural variations
          */
         return ngettext("%s h %s min", "%s h %s min",

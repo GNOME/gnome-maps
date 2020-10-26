@@ -79,7 +79,7 @@ var OSMAccountDialog = GObject.registerClass({
             this._stack.visible_child_name = 'logged-in';
         }
 
-        /* initilize verification web view, we do it programmatically rather
+        /* initialize verification web view, we do it programmatically rather
          * declare it in the .ui file to be able to enable WebKit sandboxing
          */
         let webContext = WebKit2.WebContext.get_default();
@@ -174,7 +174,7 @@ var OSMAccountDialog = GObject.registerClass({
     }
 
     _onVerificationEntryActivated() {
-        /* proceed with verfication if a code has been entered */
+        /* proceed with verification if a code has been entered */
         let verificationCode = this._verificationEntry.text;
 
         if (verificationCode && verificationCode.length > 0)

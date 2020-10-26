@@ -529,7 +529,7 @@ var Sidebar = GObject.registerClass({
 
     /* The reason we don't just use the array .reverse() function is that we
      * need to update the place parameters on the actual point objects in the
-     * array to fire the query notify signal that will iniate an update.
+     * array to fire the query notify signal that will initiate an update.
      */
     _reverseRoutePoints() {
         let points = this._query.points;
