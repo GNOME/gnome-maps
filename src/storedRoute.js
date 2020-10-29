@@ -52,29 +52,26 @@ class StoredRoute extends Place.Place {
 
         this._rtl = Gtk.get_locale_direction() === Gtk.TextDirection.RTL;
 
-        let places = params.places;
+        this.places = params.places;
         delete params.places;
         let directionMarker = this._rtl ? _RLM : _LRM;
         let arrow = this._rtl ? '←' : '→';
-        params.name = directionMarker + places[0].name + directionMarker +
-                      arrow + directionMarker + places[places.length -1].name;
+        params.name = directionMarker + this.places[0].name + directionMarker +
+                      arrow + directionMarker + this.places.last().name;
 
 
         let geoclue = params.geoclue;
         delete params.geoclue;
 
-        this.places = [];
         this._containsCurrentLocation = false;
 
         let currentLocation = null;
         if (geoclue)
             currentLocation = geoclue.place;
 
-        places.forEach((place) => {
+        this.places.forEach((place) => {
             if (currentLocation && place === currentLocation)
                 this._containsCurrentLocation = true;
-
-            this.places.push(new Place.Place({ place: place }));
         });
 
         super._init(params);
