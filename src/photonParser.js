@@ -55,40 +55,38 @@ function parsePlace(latitude, longitude, properties) {
             name = streetAddress;
     }
 
-    let place = new Geocode.Place({ name:       name,
-                                    place_type: type,
-                                    location:   location });
+    let params = { name: name, place_type: type, location: location };
 
     if (streetAddress)
-        place.street_address = streetAddress;
+        params.street_address = streetAddress;
 
     if (properties.osm_id && properties.osm_type) {
-        place.osm_id = properties.osm_id + ''; // Geocode-glib needs this as a string
-        place.osm_type = _parseOsmType(properties.osm_type);
+        params.osm_id = properties.osm_id + ''; // Geocode-glib needs this as a string
+        params.osm_type = _parseOsmType(properties.osm_type);
     }
 
     if (properties.street)
-        place.street = properties.street;
+        params.street = properties.street;
 
     if (properties.city)
-        place.town = properties.city;
+        params.town = properties.city;
 
     if (properties.postcode)
-        place.postal_code = properties.postcode;
+        params.postal_code = properties.postcode;
 
     if (properties.state)
-        place.state = properties.state;
+        params.state = properties.state;
 
     if (countryCode)
-        place.country_code = countryCode;
+        params.country_code = countryCode;
 
     if (!countryCode && properties.country)
-        place.country = properties.country;
+        params.country = properties.country;
 
     if (properties.extent)
-        place.bounding_box = _parseBoundingBox(properties.extent);
+        params.bounding_box = _parseBoundingBox(properties.extent);
 
-    return new Place.Place({ place: place });
+    return new Place.Place(params);
 }
 
 function _parseName(properties) {
