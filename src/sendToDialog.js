@@ -158,8 +158,8 @@ var SendToDialog = GObject.registerClass({
             lines.push(details);
         }
 
-        lines.push('%f, %f'.format(this._location.latitude,
-                                   this._location.longitude));
+        lines.push('%f, %f'.format(this._location.latitude.toFixed(5),
+                                   this._location.longitude.toFixed(5)));
 
         return lines.join('\n');
     }
