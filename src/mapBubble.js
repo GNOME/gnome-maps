@@ -61,11 +61,6 @@ class MapBubble extends Gtk.Popover {
         let buttonFlags = params.buttons || Button.NONE;
         delete params.buttons;
 
-        let checkInMatchPlace = params.checkInMatchPlace;
-        if (checkInMatchPlace !== false)
-            checkInMatchPlace = true;
-        delete params.checkInMatchPlace;
-
         params.modal = false;
 
         super._init(params);
@@ -84,7 +79,6 @@ class MapBubble extends Gtk.Popover {
                                                    'bubble-send-to-button-alt',
                                                    'title-box',
                                                    'bubble-favorite-button',
-                                                   'bubble-check-in-button',
                                                    'bubble-edit-button',
                                                    'bubble-favorite-button-image']);
         this._title = ui.labelTitle;
@@ -103,11 +97,9 @@ class MapBubble extends Gtk.Popover {
             if (buttonFlags & Button.ROUTE)
                 this._initRouteButton(ui.bubbleRouteButton);
             if (buttonFlags & Button.SEND_TO)
-                this._initSendToButton(ui.bubbleSendToButton);
+                this._initSendToButton(ui.bubbleSendToButton, buttonFlags & Button.CHECK_IN);
             if (buttonFlags & Button.FAVORITE)
                 this._initFavoriteButton(ui.bubbleFavoriteButton, ui.bubbleFavoriteButtonImage);
-            if (buttonFlags & Button.CHECK_IN)
-                this._initCheckInButton(ui.bubbleCheckInButton, checkInMatchPlace);
             if (buttonFlags & Button.EDIT_ON_OSM)
                 this._initEditButton(ui.bubbleEditButton);
         }
@@ -119,7 +111,7 @@ class MapBubble extends Gtk.Popover {
             /* hide the normal button area */
             ui.bubbleButtonArea.visible = false;
             /* show the top-end-corner share button instead */
-            this._initSendToButton(ui.bubbleSendToButtonAlt);
+            this._initSendToButton(ui.bubbleSendToButtonAlt, buttonFlags & Button.CHECK_IN);
             /* adjust some margins */
             ui.titleBox.margin = 12;
             ui.titleBox.marginStart = 18;
@@ -215,13 +207,14 @@ class MapBubble extends Gtk.Popover {
         });
     }
 
-    _initSendToButton(button) {
+    _initSendToButton(button, showCheckIn) {
         button.visible = true;
         button.connect('clicked', () => {
             let dialog = new SendToDialog.SendToDialog({ transient_for: this.get_toplevel(),
                                                          modal: true,
                                                          mapView: this._mapView,
-                                                         place: this._place });
+                                                         place: this._place,
+                                                         showCheckIn });
             dialog.connect('response', () => dialog.destroy());
             dialog.show();
         });
@@ -245,19 +238,6 @@ class MapBubble extends Gtk.Popover {
 
             this.destroy();
             query.thaw_notify();
-        });
-    }
-
-    _initCheckInButton(button, matchPlace) {
-        Application.checkInManager.bind_property('hasCheckIn',
-                                                 button, 'visible',
-                                                 GObject.BindingFlags.DEFAULT |
-                                                 GObject.BindingFlags.SYNC_CREATE);
-
-        button.connect('clicked', () => {
-            Application.checkInManager.showCheckInDialog(this.get_toplevel(),
-                                                         this.place,
-                                                         matchPlace);
         });
     }
 

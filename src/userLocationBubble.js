@@ -35,7 +35,6 @@ class UserLocationBubble extends MapBubble.MapBubble {
                                                                'label-coordinates' ]);
         params.buttons = MapBubble.Button.SEND_TO |
                          MapBubble.Button.CHECK_IN;
-        params.checkInMatchPlace = false;
 
         super._init(params);
 
