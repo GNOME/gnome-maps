@@ -112,10 +112,12 @@ var PlaceBubble = GObject.registerClass({
         let content = [];
 
         if (place.website) {
-            content.push({ label: _("Website"),
-                           icon: 'web-browser-symbolic',
-                           info: GLib.markup_escape_text(place.website, -1),
-                           linkUrl: place.website });
+            if (Utils.isValidWebsite(place.website)) {
+                content.push({ label: _("Website"),
+                               icon: 'web-browser-symbolic',
+                               info: GLib.markup_escape_text(place.website, -1),
+                               linkUrl: place.website });
+            }
         }
 
         if (place.phone) {
