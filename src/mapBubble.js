@@ -37,6 +37,12 @@ const PlaceStore = imports.placeStore;
 const SendToDialog = imports.sendToDialog;
 const Utils = imports.utils;
 
+/* Maximum width of the popover content before it's forced to wrap */
+const MAX_CONTENT_WIDTH = 300;
+/* Margin between the height of the main window and the height of the popover
+   contents */
+const HEIGHT_MARGIN = 100;
+
 var Button = {
     NONE: 0,
     ROUTE: 2,
@@ -118,7 +124,12 @@ class MapBubble extends Gtk.Popover {
             ui.titleBox.spacing = 18;
         }
 
-        this.add(this._mainStack);
+        let scrolledWindow = new MapBubbleScrolledWindow({ visible: true,
+                                                           propagateNaturalWidth: true,
+                                                           propagateNaturalHeight: true,
+                                                           hscrollbarPolicy: Gtk.PolicyType.NEVER });
+        scrolledWindow.add(this._mainStack);
+        this.add(scrolledWindow);
 
         /* Set up contact avatar */
         if (this.place instanceof ContactPlace.ContactPlace) {
@@ -288,3 +299,45 @@ class MapBubble extends Gtk.Popover {
         });
     }
 });
+
+var MapBubbleScrolledWindow = GObject.registerClass(
+class MapBubbleScrolledWindow extends Gtk.ScrolledWindow {
+    vfunc_get_preferred_width() {
+        let [min, nat] = this.get_child().get_preferred_width();
+        min = Math.min(min, MAX_CONTENT_WIDTH);
+        nat = Math.min(nat, MAX_CONTENT_WIDTH);
+        return [min, nat];
+    }
+
+    vfunc_get_preferred_height_for_width(width) {
+        let windowHeight = this.get_toplevel().get_allocated_height() - HEIGHT_MARGIN;
+        let [min, nat] = this.get_child().get_preferred_height_for_width(width);
+        min = Math.min(min, windowHeight);
+        nat = Math.min(nat, windowHeight);
+        return [min, nat];
+    }
+
+    vfunc_draw(cr) {
+        let popover = this.get_ancestor(Gtk.Popover);
+        if (popover) {
+            let [{x, y, width, height}, baseline] = this.get_allocated_size();
+
+            // clip the top corners to the rounded corner
+            let radius = popover.get_style_context()
+                                .get_property(Gtk.STYLE_PROPERTY_BORDER_RADIUS, popover.get_state_flags())
+                                * this.scale_factor;
+
+            // bottom left
+            cr.moveTo(0, height);
+            cr.lineTo(0, radius);
+            cr.arc(radius, radius, radius, Math.PI, -Math.PI / 2.0);
+            cr.arc(width - radius, radius, radius, -Math.PI / 2.0, 0);
+            cr.lineTo(width, height);
+
+            cr.clip();
+        }
+
+        return super.vfunc_draw(cr);
+    }
+});
+

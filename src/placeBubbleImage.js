@@ -78,23 +78,6 @@ class PlaceBubbleImage extends Gtk.DrawingArea {
             cr.scale(1 / this.scale_factor, 1 / this.scale_factor);
         }
 
-        let popover = this.get_ancestor(Gtk.Popover);
-        if (popover) {
-            // clip the top corners to the rounded corner
-            let radius = popover.get_style_context()
-                                .get_property(Gtk.STYLE_PROPERTY_BORDER_RADIUS, popover.get_state_flags())
-                                * this.scale_factor;
-
-            // bottom left
-            cr.moveTo(x, y + height);
-            //cr.lineTo(x, y + radius);
-            cr.arc(x + radius, y + radius, radius, Math.PI, -Math.PI / 2.0);
-            cr.arc(x + width - radius, y + radius, radius, -Math.PI / 2.0, 0);
-            cr.lineTo(x + width, y + height);
-
-            cr.clip();
-        }
-
         cr.setSourceSurface(this._cached, 0, 0);
 
         cr.paint();
