@@ -84,6 +84,12 @@ var _osmPhoneRewriteFunc = function(text) {
     }
 };
 
+/* Make sure a website field is either empty or contains a valid HTTP or HTTPS
+ * URL. */
+var _osmWebsiteValidateFunc = function(text) {
+    return text === "" || Utils.isValidWebsite(text);
+}
+
 /*
  * specification of OSM edit fields
  * name: the label for the edit field (translatable)
@@ -120,6 +126,8 @@ const OSM_FIELDS = [
         name: _("Website"),
         tag: 'website',
         type: EditFieldType.TEXT,
+        validate: this._osmWebsiteValidateFunc,
+        validateError: _("This is not a valid URL. Make sure to include http:// or https://."),
         hint: _("The official website. Try to use the most basic form " +
                 "of a URL i.e. http://example.com instead of " +
                 "http://example.com/index.html.")
@@ -620,6 +628,16 @@ var OSMEditDialog = GObject.registerClass({
         }
     }
 
+    _validateTextEntry(fieldSpec, entry) {
+        if (fieldSpec.validate) {
+            if (!fieldSpec.validate(entry.text)) {
+                entry.get_style_context().add_class("warning");
+            } else {
+                entry.get_style_context().remove_class("warning");
+            }
+        }
+    }
+
     _addOSMEditTextEntry(fieldSpec, value) {
         this._addOSMEditLabel(fieldSpec);
 
@@ -633,13 +651,22 @@ var OSMEditDialog = GObject.registerClass({
             if (fieldSpec.rewriteFunc)
                 entry.text = fieldSpec.rewriteFunc(entry.text);
             this._osmObject.set_tag(fieldSpec.tag, entry.text);
+
+            this._validateTextEntry(fieldSpec, entry);
+
             this._nextButton.sensitive = true;
         });
+
+        this._validateTextEntry(fieldSpec, entry);
 
         if (fieldSpec.hint) {
             entry.secondary_icon_name = 'dialog-information-symbolic';
             entry.connect('icon-press', (entry, iconPos, event) => {
-                this._showHintPopover(entry, fieldSpec.hint);
+                if (fieldSpec.validate && !fieldSpec.validate(entry.text)) {
+                    this._showHintPopover(entry, fieldSpec.validateError);
+                } else {
+                    this._showHintPopover(entry, fieldSpec.hint);
+                }
             });
         }
 
