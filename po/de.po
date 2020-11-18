@@ -15,16 +15,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2020-08-11 20:42+0000\n"
-"PO-Revision-Date: 2020-09-04 16:52+0200\n"
-"Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
+"POT-Creation-Date: 2020-10-12 14:00+0000\n"
+"PO-Revision-Date: 2020-11-18 17:03+0100\n"
+"Last-Translator: Tim Sabsch <tim@sabsch.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 20.08.0\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
 msgid "GNOME Maps"
@@ -63,7 +63,7 @@ msgstr ""
 "Suchen Sie nach bestimmten Arten von Orten, wie »Kneipen in der Nähe von "
 "Main Street, Boston« oder »Hotels in der Nähe vom Alexanderplatz, Berlin«."
 
-#: data/org.gnome.Maps.appdata.xml.in:122
+#: data/org.gnome.Maps.appdata.xml.in:174
 msgid "The GNOME Project"
 msgstr "Das GNOME-Projekt"
 
@@ -76,7 +76,7 @@ msgstr "Das GNOME-Projekt"
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:34
-#: src/application.js:82 src/mainWindow.js:134 src/mainWindow.js:626
+#: src/application.js:81 src/mainWindow.js:129 src/mainWindow.js:567
 msgid "Maps"
 msgstr "Karten"
 
@@ -365,7 +365,7 @@ msgid "Toggle favorites"
 msgstr "Favoriten umschalten"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-right.ui:57 data/ui/main-window.ui:98
+#: data/ui/headerbar-right.ui:57
 msgid "Print Route"
 msgstr "Route drucken"
 
@@ -486,22 +486,15 @@ msgstr "Tasten_kürzel"
 msgid "About Maps"
 msgstr "Info zu Karten"
 
-#: data/ui/main-window.ui:56
-#| msgctxt "shortcut window"
-#| msgid "Open main menu"
+#: data/ui/main-window.ui:52
 msgid "Open main menu"
 msgstr "Hauptmenü öffnen"
 
-#: data/ui/main-window.ui:81
-#| msgid "Print Route"
-msgid "Find a Route"
-msgstr "Route suchen"
-
-#: data/ui/main-window.ui:181
+#: data/ui/main-window.ui:114
 msgid "Maps is offline!"
 msgstr "Karten ist vom Internet getrennt!"
 
-#: data/ui/main-window.ui:194
+#: data/ui/main-window.ui:123
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -509,7 +502,7 @@ msgstr ""
 "Karten erfordert eine bestehende Internetverbindung, um richtig arbeiten zu "
 "können. Es besteht aber keine."
 
-#: data/ui/main-window.ui:203
+#: data/ui/main-window.ui:131
 msgid "Check your connection and proxy settings."
 msgstr "Prüfen Sie Ihre Verbindung und die Proxy-Einstellungen."
 
@@ -560,9 +553,8 @@ msgid "Password"
 msgstr "Passwort"
 
 #: data/ui/osm-account-dialog.ui:125
-#| msgid "Sign Out"
 msgid "Sign up"
-msgstr "Anmelden"
+msgstr "Registrieren"
 
 #: data/ui/osm-account-dialog.ui:139
 msgid "Sign In"
@@ -655,7 +647,7 @@ msgctxt "dialog title"
 msgid "Edit on OpenStreetMap"
 msgstr "Auf OpenStreetMap bearbeiten"
 
-#: data/ui/osm-edit-dialog.ui:310 src/osmEditDialog.js:512
+#: data/ui/osm-edit-dialog.ui:310 src/osmEditDialog.js:513
 msgid "Next"
 msgstr "Nächste"
 
@@ -672,6 +664,11 @@ msgstr "Weitere Informationen anzeigen"
 #: data/ui/place-popover.ui:54
 msgid "No results found"
 msgstr "Keine Ergebnisse gefunden"
+
+#: data/ui/place-popover.ui:66 src/checkInDialog.js:280 src/checkIn.js:162
+#: src/osmEditDialog.js:550
+msgid "An error has occurred"
+msgstr "Ein Fehler ist aufgetreten"
 
 #. Translators: This is a tooltip
 #: data/ui/route-entry.ui:20
@@ -690,7 +687,7 @@ msgstr "Kopieren"
 msgid "Send To…"
 msgstr "Senden an …"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:65
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:64
 msgid "Open Shape Layer"
 msgstr "Formebene öffnen"
 
@@ -818,23 +815,23 @@ msgstr "Erforderliche Attribute fehlen"
 msgid "Could not find OSM element"
 msgstr "OSM-Element kann nicht gefunden werden"
 
-#: src/application.js:96
+#: src/application.js:95
 msgid "A path to a local tiles directory structure"
 msgstr "Pfad zu einer lokalen Kachel-Ordnerstruktur"
 
-#: src/application.js:102
+#: src/application.js:101
 msgid "Tile size for local tiles directory"
 msgstr "Kachelgröße des lokalen Kachel-Ordner"
 
-#: src/application.js:106
+#: src/application.js:105
 msgid "Show the version of the program"
 msgstr "Die Versionsnummer des Programms anzeigen"
 
-#: src/application.js:112
+#: src/application.js:111
 msgid "Ignore network availability"
 msgstr "Verfügbarkeit des Netzwerks ignorieren"
 
-#: src/application.js:122 src/application.js:123
+#: src/application.js:121 src/application.js:122
 msgid "[FILE…|URI]"
 msgstr "[DATEI …|URI]"
 
@@ -879,10 +876,6 @@ msgstr "Bei %s einchecken"
 #, javascript-format
 msgid "Write an optional message to check in to %s."
 msgstr "Schreiben Sie eine optionale Nachricht, um bei %s einzuchecken."
-
-#: src/checkInDialog.js:280 src/checkIn.js:162 src/osmEditDialog.js:549
-msgid "An error has occurred"
-msgstr "Ein Fehler ist aufgetreten"
 
 #. Translators: %s is the place name that user wanted to check-in
 #: src/checkIn.js:144
@@ -968,15 +961,15 @@ msgstr "Keine Route gefunden."
 msgid "Start!"
 msgstr "Start!"
 
-#: src/mainWindow.js:62
+#: src/mainWindow.js:61
 msgid "All Layer Files"
 msgstr "Alle Ebenendateien"
 
-#: src/mainWindow.js:508
+#: src/mainWindow.js:470
 msgid "Failed to connect to location service"
 msgstr "Es konnte keine Verbindung zum Ortungsdienst hergestellt werden"
 
-#: src/mainWindow.js:624
+#: src/mainWindow.js:565
 msgid "translator-credits"
 msgstr ""
 "Christian Kirbach <Christian.Kirbach@gmail.com>\n"
@@ -987,15 +980,15 @@ msgstr ""
 "Paul Seyfert <pseyfert@mathphys.fsk.uni-heidelberg.de>\n"
 "Tim Sabsch <tim@sabsch.com>"
 
-#: src/mainWindow.js:627
+#: src/mainWindow.js:568
 msgid "A map application for GNOME"
 msgstr "Eine Karten-Anwendung für GNOME"
 
-#: src/mainWindow.js:638
+#: src/mainWindow.js:579
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 – 2019 Red Hat, Inc. und die Autoren von GNOME Karten"
 
-#: src/mainWindow.js:658
+#: src/mainWindow.js:599
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Kartendaten bereitgestellt von %s und weiteren Mitwirkenden"
@@ -1005,7 +998,7 @@ msgstr "Kartendaten bereitgestellt von %s und weiteren Mitwirkenden"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:674
+#: src/mainWindow.js:615
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Kartenausschnitte bereitgestellt von %s"
@@ -1019,7 +1012,7 @@ msgstr "Kartenausschnitte bereitgestellt von %s"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:703
+#: src/mainWindow.js:644
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Suche bereitgestellt von %s unter Verwendung von %s"
@@ -1066,24 +1059,24 @@ msgstr "Objekt wurde gelöscht"
 msgid "Way or relation refers to non-existing children"
 msgstr "Weg oder Bezug verweist auf nicht existierende Unterobjekte"
 
-#: src/osmEditDialog.js:105
+#: src/osmEditDialog.js:106
 msgid "Name"
 msgstr "Name"
 
-#: src/osmEditDialog.js:108
+#: src/osmEditDialog.js:109
 msgid "The official name. This is typically what appears on signs."
 msgstr ""
 "Der offizielle Name, der üblicherweise auf dem Ortseingangsschild erscheint."
 
-#: src/osmEditDialog.js:111
+#: src/osmEditDialog.js:112
 msgid "Address"
 msgstr "Adresse"
 
-#: src/osmEditDialog.js:119
+#: src/osmEditDialog.js:120
 msgid "Website"
 msgstr "Internet-Seite"
 
-#: src/osmEditDialog.js:122
+#: src/osmEditDialog.js:123
 msgid ""
 "The official website. Try to use the most basic form of a URL i.e. http://"
 "example.com instead of http://example.com/index.html."
@@ -1091,11 +1084,11 @@ msgstr ""
 "Die offizielle Webseite. Verwenden Sie möglichst die Grundform der Adresse, "
 "zum Beispiel http://example.com statt http://example.com/index.html."
 
-#: src/osmEditDialog.js:127
+#: src/osmEditDialog.js:128
 msgid "Phone"
 msgstr "Telefon"
 
-#: src/osmEditDialog.js:131
+#: src/osmEditDialog.js:132
 msgid ""
 "Phone number. Use the international format, starting with a + sign. Beware "
 "of local privacy laws, especially for private phone numbers."
@@ -1104,11 +1097,11 @@ msgstr ""
 "Zeichen. Denken Sie an den Schutz der Privatsphäre, insbesondere für private "
 "Telefonnummern."
 
-#: src/osmEditDialog.js:136 src/placeBubble.js:191
+#: src/osmEditDialog.js:137 src/placeBubble.js:197
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: src/osmEditDialog.js:140
+#: src/osmEditDialog.js:141
 msgid ""
 "The format used should include the language code and the article title like "
 "“en:Article title”."
@@ -1116,170 +1109,170 @@ msgstr ""
 "Das verwendete Format sollte den Sprachcode und den Artikel enthalten, zum "
 "Beispiel »de:Titel des Artikels«."
 
-#: src/osmEditDialog.js:144
+#: src/osmEditDialog.js:145
 msgid "Opening hours"
 msgstr "Öffnungszeiten"
 
-#: src/osmEditDialog.js:149
+#: src/osmEditDialog.js:150
 msgid "See the link in the label for help on format."
 msgstr "Öffnen Sie den Verweis in der Beschriftung für Hilfe zur Formatierung."
 
-#: src/osmEditDialog.js:152
+#: src/osmEditDialog.js:153
 msgid "Population"
 msgstr "Bevölkerung"
 
-#: src/osmEditDialog.js:157
+#: src/osmEditDialog.js:158
 msgid "Altitude"
 msgstr "Höhe"
 
-#: src/osmEditDialog.js:160
+#: src/osmEditDialog.js:161
 msgid "Elevation (height above sea level) of a point in metres."
 msgstr "Höhe eines Punktes über dem Meeresspiegel in Meter."
 
-#: src/osmEditDialog.js:163
+#: src/osmEditDialog.js:164
 msgid "Wheelchair access"
 msgstr "Barrierefreier Zugang"
 
-#: src/osmEditDialog.js:166 src/osmEditDialog.js:175 src/osmEditDialog.js:213
+#: src/osmEditDialog.js:167 src/osmEditDialog.js:176 src/osmEditDialog.js:214
 msgid "Yes"
 msgstr "Ja"
 
-#: src/osmEditDialog.js:167 src/osmEditDialog.js:176 src/osmEditDialog.js:214
+#: src/osmEditDialog.js:168 src/osmEditDialog.js:177 src/osmEditDialog.js:215
 msgid "No"
 msgstr "Nein"
 
-#: src/osmEditDialog.js:168
+#: src/osmEditDialog.js:169
 msgid "Limited"
 msgstr "Begrenzt"
 
-#: src/osmEditDialog.js:169
+#: src/osmEditDialog.js:170
 msgid "Designated"
 msgstr "Geeignet"
 
-#: src/osmEditDialog.js:172
+#: src/osmEditDialog.js:173
 msgid "Internet access"
 msgstr "Internetzugang"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
 #.
-#: src/osmEditDialog.js:177 src/translations.js:340
+#: src/osmEditDialog.js:178 src/translations.js:340
 msgid "Wi-Fi"
 msgstr "Funknetzwerk"
 
-#: src/osmEditDialog.js:178
+#: src/osmEditDialog.js:179
 msgid "Wired"
 msgstr "Kabelgebunden"
 
-#: src/osmEditDialog.js:179
+#: src/osmEditDialog.js:180
 msgid "Terminal"
 msgstr "Terminal"
 
-#: src/osmEditDialog.js:180
+#: src/osmEditDialog.js:181
 msgid "Service"
 msgstr "Dienst"
 
-#: src/osmEditDialog.js:183
+#: src/osmEditDialog.js:184
 msgid "Religion"
 msgstr "Religion"
 
-#: src/osmEditDialog.js:186 src/translations.js:363
+#: src/osmEditDialog.js:187 src/translations.js:363
 msgid "Animism"
 msgstr "Animismus"
 
-#: src/osmEditDialog.js:187
+#: src/osmEditDialog.js:188
 msgid "Bahá’í"
 msgstr "Bahaitum"
 
-#: src/osmEditDialog.js:188 src/translations.js:365
+#: src/osmEditDialog.js:189 src/translations.js:365
 msgid "Buddhism"
 msgstr "Buddhismus"
 
-#: src/osmEditDialog.js:189 src/translations.js:366
+#: src/osmEditDialog.js:190 src/translations.js:366
 msgid "Caodaism"
 msgstr "Caodaismus"
 
-#: src/osmEditDialog.js:190 src/translations.js:367
+#: src/osmEditDialog.js:191 src/translations.js:367
 msgid "Christianity"
 msgstr "Christentum"
 
-#: src/osmEditDialog.js:191 src/translations.js:368
+#: src/osmEditDialog.js:192 src/translations.js:368
 msgid "Confucianism"
 msgstr "Konfuzianismus"
 
-#: src/osmEditDialog.js:192 src/translations.js:369
+#: src/osmEditDialog.js:193 src/translations.js:369
 msgid "Hinduism"
 msgstr "Hinduismus"
 
-#: src/osmEditDialog.js:193 src/translations.js:370
+#: src/osmEditDialog.js:194 src/translations.js:370
 msgid "Jainism"
 msgstr "Jainismus"
 
-#: src/osmEditDialog.js:194 src/translations.js:371
+#: src/osmEditDialog.js:195 src/translations.js:371
 msgid "Judaism"
 msgstr "Judentum"
 
-#: src/osmEditDialog.js:195 src/translations.js:372
+#: src/osmEditDialog.js:196 src/translations.js:372
 msgid "Islam"
 msgstr "Islam"
 
-#: src/osmEditDialog.js:196 src/translations.js:373
+#: src/osmEditDialog.js:197 src/translations.js:373
 msgid "Multiple Religions"
 msgstr "Mehrere Religionen"
 
-#: src/osmEditDialog.js:197 src/translations.js:374
+#: src/osmEditDialog.js:198 src/translations.js:374
 msgid "Paganism"
 msgstr "Heidentum"
 
-#: src/osmEditDialog.js:198 src/translations.js:375
+#: src/osmEditDialog.js:199 src/translations.js:375
 msgid "Pastafarianism"
 msgstr "Pastafarianismus"
 
-#: src/osmEditDialog.js:199 src/translations.js:376
+#: src/osmEditDialog.js:200 src/translations.js:376
 msgid "Scientology"
 msgstr "Scientology"
 
-#: src/osmEditDialog.js:200 src/translations.js:377
+#: src/osmEditDialog.js:201 src/translations.js:377
 msgid "Shinto"
 msgstr "Shintoismus"
 
-#: src/osmEditDialog.js:201 src/translations.js:378
+#: src/osmEditDialog.js:202 src/translations.js:378
 msgid "Sikhism"
 msgstr "Sikhismus"
 
-#: src/osmEditDialog.js:202 src/translations.js:379
+#: src/osmEditDialog.js:203 src/translations.js:379
 msgid "Spiritualism"
 msgstr "Spiritualismus"
 
-#: src/osmEditDialog.js:203 src/translations.js:380
+#: src/osmEditDialog.js:204 src/translations.js:380
 msgid "Taoism"
 msgstr "Daoismus"
 
-#: src/osmEditDialog.js:204 src/translations.js:381
+#: src/osmEditDialog.js:205 src/translations.js:381
 msgid "Unitarian Universalism"
 msgstr "Unitarismus"
 
-#: src/osmEditDialog.js:205 src/translations.js:382
+#: src/osmEditDialog.js:206 src/translations.js:382
 msgid "Voodoo"
 msgstr "Voodoo"
 
-#: src/osmEditDialog.js:206 src/translations.js:383
+#: src/osmEditDialog.js:207 src/translations.js:383
 msgid "Yazidism"
 msgstr "Jesidismus"
 
-#: src/osmEditDialog.js:207 src/translations.js:384
+#: src/osmEditDialog.js:208 src/translations.js:384
 msgid "Zoroastrianism"
 msgstr "Zarathustrismus"
 
-#: src/osmEditDialog.js:210
+#: src/osmEditDialog.js:211
 msgid "Toilets"
 msgstr "Toiletten"
 
-#: src/osmEditDialog.js:217
+#: src/osmEditDialog.js:218
 msgid "Note"
 msgstr "Notiz"
 
-#: src/osmEditDialog.js:220
+#: src/osmEditDialog.js:221
 msgid ""
 "Information used to inform other mappers about non-obvious information about "
 "an element, the author’s intent when creating it, or hints for further "
@@ -1289,16 +1282,16 @@ msgstr ""
 "Element, die Absicht des Autors bei der Erstellung, oder Hinweise zur "
 "weiteren Verbesserung zur Verfügung stellt."
 
-#: src/osmEditDialog.js:325
+#: src/osmEditDialog.js:326
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Zu OpenStreetMap hinzufügen"
 
-#: src/osmEditDialog.js:379
+#: src/osmEditDialog.js:380
 msgid "Select Type"
 msgstr "Typ wählen"
 
-#: src/osmEditDialog.js:496
+#: src/osmEditDialog.js:497
 msgid "Done"
 msgstr "Abgeschlossen"
 
@@ -1306,35 +1299,41 @@ msgstr "Abgeschlossen"
 msgid "Unnamed place"
 msgstr "Unbenannter Ort"
 
-#: src/placeBubble.js:143
+#. TODO: this is a bit of a work-around to re-interpret the population,
+#. * stored as a string into an integer to convert back to a locale-
+#. * formatted string. Ideally it should be kept as an integer value
+#. * in the Place class. But this will also need to be handled by the
+#. * PlaceStore, possible in a backwards-compatible way
+#.
+#: src/placeBubble.js:149
 msgid "Population:"
 msgstr "Bevölkerung:"
 
-#: src/placeBubble.js:149
+#: src/placeBubble.js:155
 msgid "Altitude:"
 msgstr "Höhe:"
 
-#: src/placeBubble.js:154
+#: src/placeBubble.js:160
 msgid "Opening hours:"
 msgstr "Öffnungszeiten:"
 
-#: src/placeBubble.js:159
+#: src/placeBubble.js:165
 msgid "Internet access:"
 msgstr "Internetzugang:"
 
-#: src/placeBubble.js:164
+#: src/placeBubble.js:170
 msgid "Religion:"
 msgstr "Religion:"
 
-#: src/placeBubble.js:169
+#: src/placeBubble.js:175
 msgid "Toilets:"
 msgstr "Toiletten:"
 
-#: src/placeBubble.js:174
+#: src/placeBubble.js:180
 msgid "Wheelchair access:"
 msgstr "Barrierefreier Zugang:"
 
-#: src/placeBubble.js:180 src/placeBubble.js:184
+#: src/placeBubble.js:186 src/placeBubble.js:190
 msgid "Phone:"
 msgstr "Telefon:"
 
@@ -1770,8 +1769,6 @@ msgstr "%s h"
 #.
 #: src/utils.js:338
 #, javascript-format
-#| msgid "%s h %s min"
-#| msgid_plural "%s h %s mins"
 msgid "%s h %s min"
 msgid_plural "%s h %s min"
 msgstr[0] "%s h, %s min"
@@ -1783,8 +1780,6 @@ msgstr[1] "%s h, %s min"
 #.
 #: src/utils.js:345
 #, javascript-format
-#| msgid "%s min"
-#| msgid_plural "%s mins"
 msgid "%s min"
 msgid_plural "%s min"
 msgstr[0] "%s min"
@@ -1932,6 +1927,10 @@ msgstr "Eine Kehrtwende nach rechts auf %s machen"
 #: src/transitplugins/openTripPlanner.js:1244
 msgid "Make a right u-turn"
 msgstr "Eine Kehrtwende nach rechts machen"
+
+#~| msgid "Print Route"
+#~ msgid "Find a Route"
+#~ msgstr "Route suchen"
 
 #~ msgid "Primary menu"
 #~ msgstr "Hauptmenü"
