@@ -458,3 +458,14 @@ function getCountryCodeForCoordinates(lat, lon) {
     return location.get_country();
 }
 
+/* Determines whether a URI is valid and its scheme is HTTP or HTTPS. */
+function isValidWebsite(website) {
+    try {
+        GLib.Uri.is_valid(website, GLib.UriFlags.NONE);
+    } catch(e) {
+        return false;
+    }
+
+    let scheme = GLib.Uri.parse_scheme(website);
+    return scheme === "http" || scheme === "https";
+}

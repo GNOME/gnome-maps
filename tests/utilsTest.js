@@ -37,6 +37,7 @@ function main() {
     prettyTimeTest();
     prettyDistanceTest();
     normalizeStringTest();
+    validWebsiteTest();
 }
 
 function osmTypeToStringTest() {
@@ -100,4 +101,11 @@ function normalizeStringTest() {
     JsUnit.assertEquals('fooBar', Utils.normalizeString('fooBar'));
     JsUnit.assertEquals('aao', Utils.normalizeString('åäö'));
     JsUnit.assertEquals('aao', Utils.normalizeString('a\u030aa\u0308o\u0308'));
+}
+
+function validWebsiteTest() {
+    JsUnit.assertEquals(true, Utils.isValidWebsite("https://gnome.org"));
+    JsUnit.assertEquals(true, Utils.isValidWebsite("http://gnome.org"));
+    JsUnit.assertEquals(false, Utils.isValidWebsite("ftp://gnome.org"));
+    JsUnit.assertEquals(false, Utils.isValidWebsite("www.gnome.org"));
 }
