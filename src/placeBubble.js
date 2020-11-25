@@ -62,6 +62,11 @@ var PlaceBubble = GObject.registerClass({
         if (!(params.place instanceof ContactPlace.ContactPlace) && params.place.osm_id)
             params.buttons |= MapBubble.Button.EDIT_ON_OSM;
 
+        if (params.place.isUserLocation) {
+            params.buttons |= MapBubble.Button.CHECK_IN;
+            params.buttons &= ~MapBubble.Button.ROUTE;
+        }
+
         super._init(params);
 
         this.loading = true;
@@ -70,29 +75,38 @@ var PlaceBubble = GObject.registerClass({
                                            visible: true});
         this.content.add(this._placeDetails);
 
-        let overpass = new Overpass.Overpass();
+        if (this.place.isCurrentLocation) {
+            this._populate(this.place);
+        } else {
+            let overpass = new Overpass.Overpass();
 
-        /* use a property binding from the Overpass instance to avoid
-         * accessing accessing this object after the underlying GObject has
-         * been finalized */
-        overpass.bind_property('place', this, 'overpass-place',
-                               GObject.BindingFlags.DEFAULT);
-        this.connect('notify::overpass-place', () => this._onInfoAdded());
+            /* use a property binding from the Overpass instance to avoid
+             * accessing this object after the underlying GObject has
+             * been finalized */
+            overpass.bind_property('place', this, 'overpass-place',
+                                   GObject.BindingFlags.DEFAULT);
+            this.connect('notify::overpass-place', () => this._onInfoAdded());
 
-        if (Application.placeStore.exists(this.place, null)) {
+            if (Application.placeStore.exists(this.place, null)) {
 
-            // If the place is stale, update from Overpass.
-            if (Application.placeStore.isStale(this.place)) {
+                // If the place is stale, update from Overpass.
+                if (Application.placeStore.isStale(this.place)) {
+                    overpass.addInfo(this.place);
+                } else {
+                    this._place = Application.placeStore.get(this.place);
+                    this._populate(this.place);
+                }
+            } else if (this.place.store && !this.place.prefilled) {
                 overpass.addInfo(this.place);
             } else {
-                this._place = Application.placeStore.get(this.place);
                 this._populate(this.place);
             }
-        } else if (this.place.store && !this.place.prefilled) {
-            overpass.addInfo(this.place);
-        } else {
-            this._populate(this.place);
         }
+    }
+
+    updateLocation() {
+        /* Called by the UserLocationMarker when its location changes */
+        this._populate(this.place);
     }
 
     _onInfoAdded() {
@@ -112,6 +126,22 @@ var PlaceBubble = GObject.registerClass({
 
     _createContent(place) {
         let content = [];
+
+        if (place.isCurrentLocation) {
+            let coordinates = place.location.latitude.toFixed(5)
+                              + ', '
+                              + place.location.longitude.toFixed(5);
+            let accuracyDescription = Utils.getAccuracyDescription(this.place.location.accuracy);
+
+            content.push({ label: _("Coordinates"),
+                           icon: 'map-marker-symbolic',
+                           info: coordinates });
+
+            content.push({ label: _("Accuracy"),
+                           icon: 'find-location-symbolic',
+                           /* Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m) */
+                           info: _("Accuracy: %s").format(accuracyDescription) });
+        }
 
         if (place.website) {
             if (Utils.isValidWebsite(place.website)) {
