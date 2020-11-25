@@ -33,6 +33,7 @@ const MapBubble = imports.mapBubble;
 const Overpass = imports.overpass;
 const Place = imports.place;
 const PlaceBubbleImage = imports.placeBubbleImage;
+const PlaceButtons = imports.placeButtons;
 const PlaceStore = imports.placeStore;
 const Translations = imports.translations;
 const Utils = imports.utils;
@@ -53,18 +54,18 @@ var PlaceBubble = GObject.registerClass({
 }, class PlaceBubble extends MapBubble.MapBubble {
 
     _init(params) {
-        params.buttons = (MapBubble.Button.ROUTE |
-                          MapBubble.Button.SEND_TO);
+        params.buttons = (PlaceButtons.Button.ROUTE |
+                          PlaceButtons.Button.SEND_TO);
 
         if (params.place.store)
-            params.buttons |= MapBubble.Button.FAVORITE;
+            params.buttons |= PlaceButtons.Button.FAVORITE;
 
         if (!(params.place instanceof ContactPlace.ContactPlace) && params.place.osm_id)
-            params.buttons |= MapBubble.Button.EDIT_ON_OSM;
+            params.buttons |= PlaceButtons.Button.EDIT_ON_OSM;
 
         if (params.place.isUserLocation) {
-            params.buttons |= MapBubble.Button.CHECK_IN;
-            params.buttons &= ~MapBubble.Button.ROUTE;
+            params.buttons |= PlaceButtons.Button.CHECK_IN;
+            params.buttons &= ~PlaceButtons.Button.ROUTE;
         }
 
         super._init(params);
