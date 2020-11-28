@@ -41,13 +41,8 @@ const DMS_COORDINATES_REGEX = new RegExp(
     "i"
 );
 
-// Matches a URL pointing to an object in OpenStreetMap
-const OSM_OBJECT_URL_REGEX =
-    new RegExp(/https?:\/\/(www\.)?openstreetmap\.org\/(node|way|relation)\/(\d+)\/?$/);
-
-// Matches a URL with a specifies coordinate in OpenStreetMap
-const OSM_COORD_URL_REGEX =
-    new RegExp(/https?:\/\/(www\.)?openstreetmap\.org\/?\?(\&?mlat=(\d+(?:\.\d+)?))?(\&mlon=(\d+(?:\.\d+)?))?(\&zoom=(\d+))?(\#map=(\d+)\/(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?))?/);
+// Matches URLs for OpenStreetMap (for addressing objects or coordinates)
+const OSM_URL_REGEX = new RegExp(/https?:\/\/(www\.)?openstreetmap\.org./);
 
 var Place = GObject.registerClass(
 class Place extends Geocode.Place {
@@ -401,43 +396,74 @@ let overpass = null;
  */
 const Application = imports.application;
 
-function _parseOSMObjectURL(match, callback) {
-    let [,, type, id] = match;
-    let storedPlace = Application.placeStore.existsWithOsmTypeAndId(type, id);
+function _parseOSMPath(path) {
+    let parts = path.split('/');
 
-    if (storedPlace) {
-        callback(storedPlace, null);
-        return;
-    }
+    if (parts.length === 2) {
+        let type = parts[0];
+        let id = parts[1];
 
-    if (overpass === null)
-        overpass = new Overpass.Overpass();
-
-    Application.application.mark_busy();
-    overpass.fetchPlace(type, id, (place) => {
-        Application.application.unmark_busy();
-        if (place)
-            callback(place, null);
+        if (type === 'node' || type === 'way' || type === 'relation')
+            return [type, id];
         else
-            callback(null, _("Place not found in OpenStreetMap"));
-    });
+            return [null, null];
+    } else {
+        return [null, null];
+    }
 }
 
-function _parseOSMCoordURL(match, callback) {
-    let [,,,mlat,,mlon,,zoom,,mapZoom,mapLat, mapLon] = match;
-    let lat;
-    let lon;
-    let z;
+function _parseOSMObjectURL(path, callback) {
+    let [type, id] = _parseOSMPath(path);
 
-    if (mapZoom && mapLat && mapLon) {
-        lat = mapLat;
-        lon = mapLon;
-        z = mapZoom;
+    if (type && id) {
+        let storedPlace = Application.placeStore.existsWithOsmTypeAndId(type, id);
+
+        if (storedPlace) {
+            callback(storedPlace, null);
+            return;
+        }
+
+        if (overpass === null)
+            overpass = new Overpass.Overpass();
+
+        Application.application.mark_busy();
+        overpass.fetchPlace(type, id, (place) => {
+            Application.application.unmark_busy();
+            if (place)
+                callback(place, null);
+            else
+                callback(null, _("Place not found in OpenStreetMap"));
+        });
+    } else {
+        callback(null, _("OpenStreetMap URL is not valid"));
+    }
+}
+
+function _parseOSMCoordParams(params, callback) {
+    let lat = params.lat;
+    let lon = params.lon;
+    let mlat = params.mlat;
+    let mlon = params.mlon;
+    let zoom = params.zoom;
+    let map = params['#map'];
+
+    if (map) {
+        let parts = map.split('/');
+
+        if (parts.length !== 3) {
+            callback(null, _("OpenStreetMap URL is not valid"));
+            return;
+        } else {
+            zoom = parseInt(parts[0]);
+            lat = parseFloat(parts[1]);
+            lon = parseFloat(parts[2]);
+        }
     } else if (mlat && mlon) {
-        lat = mlat;
-        lon = mlon;
-        if (zoom)
-            z = zoom;
+        lat = parseFloat(mlat);
+        lon = parseFloat(mlon);
+    } else if (lat && lon) {
+        lat = parseFloat(lat);
+        lon = parseFloat(lon);
     } else {
         callback(null, _("OpenStreetMap URL is not valid"));
         return;
@@ -449,23 +475,29 @@ function _parseOSMCoordURL(match, callback) {
     }
 
     let location = new Location.Location({ latitude: lat, longitude: lon });
-    let place = z ? new Place({ location: location, initialZoom: z }) :
-                    new Place({ location: location });
+    let place = zoom ? new Place({ location: location, initialZoom: zoom }) :
+                       new Place({ location: location });
 
     callback(place, null);
 }
 
 function parseHttpURL(text, callback) {
-    let match = text.match(OSM_OBJECT_URL_REGEX);
+    let match = text.match(OSM_URL_REGEX);
 
     if (match) {
-        _parseOSMObjectURL(match, callback);
+        let uri = GLib.Uri.parse(text, GLib.UriFlags.NONE);
+        let path = uri.get_path();
+
+        if (path.length > 1) {
+            _parseOSMObjectPath(path, callback);
+        } else  {
+            let params = GLib.Uri.parse_params(uri.get_query(), -1, '&',
+                                               GLib.UriParamsFlags.NONE);
+
+            _parseOSMCoordParams(params, callback);
+        }
     } else {
-        match = text.match(OSM_COORD_URL_REGEX);
-        if (match)
-            _parseOSMCoordURL(match, callback);
-        else
-            callback(null, _("URL is not supported"));
+        callback(null, _("URL is not supported"));
     }
 }
 
