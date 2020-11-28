@@ -199,6 +199,15 @@ var PlaceEntry = GObject.registerClass({
             return false;
     }
 
+    /**
+     * Returns true if two locations are equal when rounded to displayes
+     * coordinate precision
+     */
+    _roundedLocEquals(locA, locB) {
+        return '%.5f, %.5f'.format(locA.latitude, locA.longitude) ===
+               '%.5f, %.5f'.format(locB.latitude, locB.longitude)
+    }
+
     _parse() {
         let parsed = false;
 
@@ -218,7 +227,14 @@ var PlaceEntry = GObject.registerClass({
 
         let parsedLocation = Place.Place.parseCoordinates(this.text);
         if (parsedLocation) {
-            this.place = new Place.Place({ location: parsedLocation });
+            /* if the place was a parsed OSM coordinate URL, it will have
+             * gotten re-written as bare coordinates and trigger a search-changed,
+             * in this case don't re-set the place, as it will loose the zoom
+             * level from the URL if set
+             */
+            if (!this.place ||
+                !this._roundedLocEquals(parsedLocation, this.place.location))
+                this.place = new Place.Place({ location: parsedLocation });
             parsed = true;
         }
 
