@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2020-08-13 08:32+0000\n"
-"PO-Revision-Date: 2020-08-13 10:38+0200\n"
+"POT-Creation-Date: 2020-11-25 21:30+0000\n"
+"PO-Revision-Date: 2020-12-02 12:52+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 3.36.0\n"
+"X-Generator: Gtranslator 3.38.0\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
 msgid "GNOME Maps"
@@ -56,7 +56,7 @@ msgstr ""
 "También puede buscar por tipos de ubicaciones específicos como «Bares cerca "
 "de la Gran Vía, Madrid» u «Hoteles cerca de la Plaza Mayor, Madrid»."
 
-#: data/org.gnome.Maps.appdata.xml.in:122
+#: data/org.gnome.Maps.appdata.xml.in:159
 msgid "The GNOME Project"
 msgstr "El Proyecto GNOME"
 
@@ -69,7 +69,7 @@ msgstr "El Proyecto GNOME"
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:34
-#: src/application.js:82 src/mainWindow.js:134 src/mainWindow.js:626
+#: src/application.js:82 src/mainWindow.js:129 src/mainWindow.js:567
 msgid "Maps"
 msgstr "Mapas"
 
@@ -256,8 +256,7 @@ msgstr "Publicar el Twitter"
 msgid "_Cancel"
 msgstr "_Cancelar"
 
-#. Translators: Check in is used as a verb
-#: data/ui/check-in-dialog.ui:399 data/ui/map-bubble.ui:93
+#: data/ui/check-in-dialog.ui:399
 msgid "C_heck in"
 msgstr "_Registrar"
 
@@ -356,7 +355,7 @@ msgid "Toggle favorites"
 msgstr "Conmutar favoritos"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-right.ui:57 data/ui/main-window.ui:98
+#: data/ui/headerbar-right.ui:57
 msgid "Print Route"
 msgstr "Imprimir ruta"
 
@@ -477,21 +476,15 @@ msgstr "_Atajos del teclado"
 msgid "About Maps"
 msgstr "Acerca de Mapas"
 
-#: data/ui/main-window.ui:56
-#| msgctxt "shortcut window"
-#| msgid "Open main menu"
+#: data/ui/main-window.ui:52
 msgid "Open main menu"
 msgstr "Abrir el menú principal"
 
-#: data/ui/main-window.ui:81
-msgid "Find a Route"
-msgstr "Buscar una ruta"
-
-#: data/ui/main-window.ui:181
+#: data/ui/main-window.ui:114
 msgid "Maps is offline!"
 msgstr "Mapas está desconectado"
 
-#: data/ui/main-window.ui:194
+#: data/ui/main-window.ui:123
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -499,29 +492,34 @@ msgstr ""
 "Mapas necesita una conexión a Internet activa para funcionar correctamente, "
 "pero no se ha encontrado ninguna."
 
-#: data/ui/main-window.ui:203
+#: data/ui/main-window.ui:131
 msgid "Check your connection and proxy settings."
 msgstr "Compruebe la configuración de su conexión y de su proxy."
 
 #. Translators: This is a tooltip
-#: data/ui/map-bubble.ui:45
-msgid "Add to new route"
-msgstr "Añadir a la ruta nueva"
-
-#. Translators: This is a tooltip
-#: data/ui/map-bubble.ui:62
+#: data/ui/map-bubble.ui:67 data/ui/map-bubble.ui:136
 msgid "Share location"
 msgstr "Compartir ubicación"
 
 #. Translators: This is a tooltip
-#: data/ui/map-bubble.ui:79
+#: data/ui/map-bubble.ui:101
+msgid "Add to new route"
+msgstr "Añadir a la ruta nueva"
+
+#. Translators: This is the button to find a route to a place
+#: data/ui/map-bubble.ui:120
+msgid "Directions"
+msgstr "Direcciones"
+
+#. Translators: This is a tooltip
+#: data/ui/map-bubble.ui:156
 msgid "Mark as favorite"
 msgstr "Marcar como favorita"
 
 #. Translators: This is a tooltip
-#: data/ui/map-bubble.ui:98
-msgid "Check in here"
-msgstr "Registrarse aquí"
+#: data/ui/map-bubble.ui:175
+msgid "Edit on OpenStreetMap"
+msgstr "Editar en OpenStreetMap"
 
 #: data/ui/osm-account-dialog.ui:9
 msgid "OpenStreetMap Account"
@@ -641,23 +639,18 @@ msgctxt "dialog title"
 msgid "Edit on OpenStreetMap"
 msgstr "Editar en OpenStreetMap"
 
-#: data/ui/osm-edit-dialog.ui:310 src/osmEditDialog.js:512
+#: data/ui/osm-edit-dialog.ui:310 src/osmEditDialog.js:521
 msgid "Next"
 msgstr "Siguiente"
-
-#. Translators: This is a tooltip
-#: data/ui/place-bubble.ui:49
-msgid "Edit on OpenStreetMap"
-msgstr "Editar en OpenStreetMap"
-
-#. Translators: This is a tooltip
-#: data/ui/place-bubble.ui:73
-msgid "Show more information"
-msgstr "Mostrar más información"
 
 #: data/ui/place-popover.ui:54
 msgid "No results found"
 msgstr "No se han encontrado resultados"
+
+#: data/ui/place-popover.ui:66 src/checkInDialog.js:280 src/checkIn.js:162
+#: src/osmEditDialog.js:558
+msgid "An error has occurred"
+msgstr "Ha ocurrido un error"
 
 #. Translators: This is a tooltip
 #: data/ui/route-entry.ui:20
@@ -668,15 +661,20 @@ msgstr "Arrastre para cambiar el orden de la ruta"
 msgid "Open Location"
 msgstr "Abrir ubicación"
 
-#: data/ui/send-to-dialog.ui:70
+#: data/ui/send-to-dialog.ui:72
 msgid "Copy"
 msgstr "Copiar"
 
-#: data/ui/send-to-dialog.ui:76
+#: data/ui/send-to-dialog.ui:79
 msgid "Send To…"
 msgstr "Enviar a…"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:65
+#: data/ui/send-to-dialog.ui:86
+#| msgid "C_heck in"
+msgid "Check In…"
+msgstr "Registrar…"
+
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:64
 msgid "Open Shape Layer"
 msgstr "Abrir capa de formas"
 
@@ -776,10 +774,6 @@ msgstr "Ferris"
 msgid "Airplanes"
 msgstr "Aviones"
 
-#: data/ui/user-location-bubble.ui:13 src/geoclue.js:118
-msgid "Current location"
-msgstr "Ubicación actual"
-
 #: data/ui/zoom-in-dialog.ui:16
 msgid "Zoom in to add location!"
 msgstr "Ampliar para añadir una ubicación."
@@ -867,10 +861,6 @@ msgstr "Registrarse en %s"
 msgid "Write an optional message to check in to %s."
 msgstr "Escribir un mensaje opcional para registrarse en %s."
 
-#: src/checkInDialog.js:280 src/checkIn.js:162 src/osmEditDialog.js:549
-msgid "An error has occurred"
-msgstr "Ha ocurrido un error"
-
 #. Translators: %s is the place name that user wanted to check-in
 #: src/checkIn.js:144
 #, javascript-format
@@ -931,6 +921,11 @@ msgstr "No se ha especificado un nombre de archivo"
 msgid "Unable to export view"
 msgstr "No se puede exportar la vista"
 
+#: src/geoclue.js:118
+#| msgid "Current location"
+msgid "Current Location"
+msgstr "Ubicación actual"
+
 #: src/geoJSONSource.js:97
 msgid "invalid coordinate"
 msgstr "coordenada no válida"
@@ -955,27 +950,27 @@ msgstr "No se ha encontrado la ruta."
 msgid "Start!"
 msgstr "Empezar"
 
-#: src/mainWindow.js:62
+#: src/mainWindow.js:61
 msgid "All Layer Files"
 msgstr "Todos los archivos de capas"
 
-#: src/mainWindow.js:508
+#: src/mainWindow.js:470
 msgid "Failed to connect to location service"
 msgstr "Falló al conectar al servicio de ubicación"
 
-#: src/mainWindow.js:624
+#: src/mainWindow.js:565
 msgid "translator-credits"
 msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2013 - 2020"
 
-#: src/mainWindow.js:627
+#: src/mainWindow.js:568
 msgid "A map application for GNOME"
 msgstr "Una aplicación de mapas para GNOME"
 
-#: src/mainWindow.js:638
+#: src/mainWindow.js:579
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 – 2019 Red Hat, Inc. y los autores de Mapas de GNOME"
 
-#: src/mainWindow.js:658
+#: src/mainWindow.js:599
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Datos de mapas por %s y colaboradores"
@@ -985,7 +980,7 @@ msgstr "Datos de mapas por %s y colaboradores"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:674
+#: src/mainWindow.js:615
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Cuadrículas de mapas proporcionadas por %s"
@@ -999,7 +994,7 @@ msgstr "Cuadrículas de mapas proporcionadas por %s"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:703
+#: src/mainWindow.js:644
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Búsqueda proporcionada por %s usando %s"
@@ -1046,23 +1041,27 @@ msgstr "Se ha eliminado el objeto"
 msgid "Way or relation refers to non-existing children"
 msgstr "La vía o la relación se refiere a hijos no existentes"
 
-#: src/osmEditDialog.js:105
+#: src/osmEditDialog.js:112
 msgid "Name"
 msgstr "Nombre"
 
-#: src/osmEditDialog.js:108
+#: src/osmEditDialog.js:115
 msgid "The official name. This is typically what appears on signs."
 msgstr "El nombre oficial. Esto es lo que normalmente aparece en las firmas."
 
-#: src/osmEditDialog.js:111
+#: src/osmEditDialog.js:118
 msgid "Address"
 msgstr "Dirección"
 
-#: src/osmEditDialog.js:119
+#: src/osmEditDialog.js:126 src/placeBubble.js:116
 msgid "Website"
 msgstr "Página web"
 
-#: src/osmEditDialog.js:122
+#: src/osmEditDialog.js:130
+msgid "This is not a valid URL. Make sure to include http:// or https://."
+msgstr "Esto no es un URL válido. asegúrese de incluir http:// o https://."
+
+#: src/osmEditDialog.js:131
 msgid ""
 "The official website. Try to use the most basic form of a URL i.e. http://"
 "example.com instead of http://example.com/index.html."
@@ -1070,11 +1069,11 @@ msgstr ""
 "La página web oficial. Pruebe a usar la forma más sencilla de URL, por "
 "ejemplo http://ejemplo.com en lugar de of http://ejemplo.com/index.html."
 
-#: src/osmEditDialog.js:127
+#: src/osmEditDialog.js:136
 msgid "Phone"
 msgstr "Teléfono"
 
-#: src/osmEditDialog.js:131
+#: src/osmEditDialog.js:140
 msgid ""
 "Phone number. Use the international format, starting with a + sign. Beware "
 "of local privacy laws, especially for private phone numbers."
@@ -1083,11 +1082,13 @@ msgstr ""
 "Tenga en cuenta las leyes de privacidad locales, especialmente en el caso de "
 "números privados."
 
-#: src/osmEditDialog.js:136 src/placeBubble.js:191
+#. Translators: This is the text for the "Wikipedia" link at the end
+#. of summaries
+#: src/osmEditDialog.js:145 src/placeBubble.js:379
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: src/osmEditDialog.js:140
+#: src/osmEditDialog.js:149
 msgid ""
 "The format used should include the language code and the article title like "
 "“en:Article title”."
@@ -1095,170 +1096,173 @@ msgstr ""
 "El formato usado debe incluir el código del idioma y el título del artículo, "
 "similar a «es:Título del artículo»."
 
-#: src/osmEditDialog.js:144
+#: src/osmEditDialog.js:153 src/placeBubble.js:136
 msgid "Opening hours"
 msgstr "Horario de apertura"
 
-#: src/osmEditDialog.js:149
+#: src/osmEditDialog.js:158
 msgid "See the link in the label for help on format."
 msgstr "Consulte el enlace en la etiqueta para obtener ayuda sobre el formato."
 
-#: src/osmEditDialog.js:152
+#. TODO: this is a bit of a work-around to re-interpret the population,
+#. * stored as a string into an integer to convert back to a locale-
+#. * formatted string. Ideally it should be kept as an integer value
+#. * in the Place class. But this will also need to be handled by the
+#. * PlaceStore, possible in a backwards-compatible way
+#.
+#: src/osmEditDialog.js:161 src/placeBubble.js:246
 msgid "Population"
 msgstr "Población"
 
-#: src/osmEditDialog.js:157
+#: src/osmEditDialog.js:166 src/placeBubble.js:255
 msgid "Altitude"
 msgstr "Altitud"
 
-#: src/osmEditDialog.js:160
+#: src/osmEditDialog.js:169
 msgid "Elevation (height above sea level) of a point in metres."
 msgstr "Elevación (altura sobre el nivel del mar) de un punto, en metros."
 
-#: src/osmEditDialog.js:163
+#: src/osmEditDialog.js:172
 msgid "Wheelchair access"
 msgstr "Acceso para sillas de ruedas"
 
-#: src/osmEditDialog.js:166 src/osmEditDialog.js:175 src/osmEditDialog.js:213
+#: src/osmEditDialog.js:175 src/osmEditDialog.js:184 src/osmEditDialog.js:222
 msgid "Yes"
 msgstr "Sí"
 
-#: src/osmEditDialog.js:167 src/osmEditDialog.js:176 src/osmEditDialog.js:214
+#: src/osmEditDialog.js:176 src/osmEditDialog.js:185 src/osmEditDialog.js:223
 msgid "No"
 msgstr "No"
 
-#: src/osmEditDialog.js:168
+#: src/osmEditDialog.js:177
 msgid "Limited"
 msgstr "Limitado"
 
-#: src/osmEditDialog.js:169
+#: src/osmEditDialog.js:178
 msgid "Designated"
 msgstr "Designado"
 
-#: src/osmEditDialog.js:172
+#: src/osmEditDialog.js:181
 msgid "Internet access"
 msgstr "Acceso a Internet"
 
-#. Translators:
-#. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
-#.
-#: src/osmEditDialog.js:177 src/translations.js:340
+#: src/osmEditDialog.js:186
 msgid "Wi-Fi"
 msgstr "Inalámbrica"
 
-#: src/osmEditDialog.js:178
+#: src/osmEditDialog.js:187
 msgid "Wired"
 msgstr "Cableada"
 
-#: src/osmEditDialog.js:179
+#: src/osmEditDialog.js:188
 msgid "Terminal"
 msgstr "Terminal"
 
-#: src/osmEditDialog.js:180
+#: src/osmEditDialog.js:189
 msgid "Service"
 msgstr "Servicio"
 
-#: src/osmEditDialog.js:183
+#: src/osmEditDialog.js:192
 msgid "Religion"
 msgstr "Religión"
 
-#: src/osmEditDialog.js:186 src/translations.js:363
+#: src/osmEditDialog.js:195 src/translations.js:326
 msgid "Animism"
 msgstr "Animismo"
 
-#: src/osmEditDialog.js:187
+#: src/osmEditDialog.js:196
 msgid "Bahá’í"
 msgstr "Bahaísmo"
 
-#: src/osmEditDialog.js:188 src/translations.js:365
+#: src/osmEditDialog.js:197 src/translations.js:328
 msgid "Buddhism"
 msgstr "Budismo"
 
-#: src/osmEditDialog.js:189 src/translations.js:366
+#: src/osmEditDialog.js:198 src/translations.js:329
 msgid "Caodaism"
 msgstr "Caodaísmo"
 
-#: src/osmEditDialog.js:190 src/translations.js:367
+#: src/osmEditDialog.js:199 src/translations.js:330
 msgid "Christianity"
 msgstr "Cristianismo"
 
-#: src/osmEditDialog.js:191 src/translations.js:368
+#: src/osmEditDialog.js:200 src/translations.js:331
 msgid "Confucianism"
 msgstr "Confucionismo"
 
-#: src/osmEditDialog.js:192 src/translations.js:369
+#: src/osmEditDialog.js:201 src/translations.js:332
 msgid "Hinduism"
 msgstr "Hinduismo"
 
-#: src/osmEditDialog.js:193 src/translations.js:370
+#: src/osmEditDialog.js:202 src/translations.js:333
 msgid "Jainism"
 msgstr "Jainismo"
 
-#: src/osmEditDialog.js:194 src/translations.js:371
+#: src/osmEditDialog.js:203 src/translations.js:334
 msgid "Judaism"
 msgstr "Judaísmo"
 
-#: src/osmEditDialog.js:195 src/translations.js:372
+#: src/osmEditDialog.js:204 src/translations.js:335
 msgid "Islam"
 msgstr "Islam"
 
-#: src/osmEditDialog.js:196 src/translations.js:373
+#: src/osmEditDialog.js:205 src/translations.js:336
 msgid "Multiple Religions"
 msgstr "Varias religiones"
 
-#: src/osmEditDialog.js:197 src/translations.js:374
+#: src/osmEditDialog.js:206 src/translations.js:337
 msgid "Paganism"
 msgstr "Paganismo"
 
-#: src/osmEditDialog.js:198 src/translations.js:375
+#: src/osmEditDialog.js:207 src/translations.js:338
 msgid "Pastafarianism"
 msgstr "Pastafarismo"
 
-#: src/osmEditDialog.js:199 src/translations.js:376
+#: src/osmEditDialog.js:208 src/translations.js:339
 msgid "Scientology"
 msgstr "Cienciología"
 
-#: src/osmEditDialog.js:200 src/translations.js:377
+#: src/osmEditDialog.js:209 src/translations.js:340
 msgid "Shinto"
 msgstr "Sintoísmo"
 
-#: src/osmEditDialog.js:201 src/translations.js:378
+#: src/osmEditDialog.js:210 src/translations.js:341
 msgid "Sikhism"
 msgstr "Sijismo"
 
-#: src/osmEditDialog.js:202 src/translations.js:379
+#: src/osmEditDialog.js:211 src/translations.js:342
 msgid "Spiritualism"
 msgstr "Espiritualismo"
 
-#: src/osmEditDialog.js:203 src/translations.js:380
+#: src/osmEditDialog.js:212 src/translations.js:343
 msgid "Taoism"
 msgstr "Taoismo"
 
-#: src/osmEditDialog.js:204 src/translations.js:381
+#: src/osmEditDialog.js:213 src/translations.js:344
 msgid "Unitarian Universalism"
 msgstr "Unitarismo universalista"
 
-#: src/osmEditDialog.js:205 src/translations.js:382
+#: src/osmEditDialog.js:214 src/translations.js:345
 msgid "Voodoo"
 msgstr "Vudú"
 
-#: src/osmEditDialog.js:206 src/translations.js:383
+#: src/osmEditDialog.js:215 src/translations.js:346
 msgid "Yazidism"
 msgstr "Yazidismo"
 
-#: src/osmEditDialog.js:207 src/translations.js:384
+#: src/osmEditDialog.js:216 src/translations.js:347
 msgid "Zoroastrianism"
 msgstr "Zoroastrismo"
 
-#: src/osmEditDialog.js:210
+#: src/osmEditDialog.js:219
 msgid "Toilets"
 msgstr "Baño"
 
-#: src/osmEditDialog.js:217
+#: src/osmEditDialog.js:226
 msgid "Note"
 msgstr "Nota"
 
-#: src/osmEditDialog.js:220
+#: src/osmEditDialog.js:229
 msgid ""
 "Information used to inform other mappers about non-obvious information about "
 "an element, the author’s intent when creating it, or hints for further "
@@ -1268,112 +1272,140 @@ msgstr ""
 "obvia sobre un elemento, un intento del autor de crearlo o pistas sobre "
 "futuras mejoras."
 
-#: src/osmEditDialog.js:325
+#: src/osmEditDialog.js:334
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Añadir a OpenStreetMap"
 
-#: src/osmEditDialog.js:379
+#: src/osmEditDialog.js:388
 msgid "Select Type"
 msgstr "Seleccionar tipo"
 
-#: src/osmEditDialog.js:496
+#: src/osmEditDialog.js:505
 msgid "Done"
 msgstr "Hecho"
 
-#: src/photonParser.js:103
+#: src/photonParser.js:104
 msgid "Unnamed place"
 msgstr "Lugar sin nombre"
 
-#: src/placeBubble.js:143
-msgid "Population:"
-msgstr "Población:"
+#: src/placeBubble.js:124
+#| msgid "House number"
+msgid "Phone number"
+msgstr "Número de teléfono"
 
-#: src/placeBubble.js:149
-msgid "Altitude:"
-msgstr "Altitud:"
+#. Translators:
+#. * There is public internet access but the particular kind is unknown.
+#.
+#: src/placeBubble.js:146
+#| msgid "Internet access"
+msgid "Public internet access"
+msgstr "Acceso público a Internet"
 
-#: src/placeBubble.js:154
-msgid "Opening hours:"
-msgstr "Horario de apertura:"
+#. Translators:
+#. * no internet access is offered in a place where
+#. * someone might expect it.
+#.
+#: src/placeBubble.js:155
+#| msgid "Internet access"
+msgid "No internet access"
+msgstr "Sin acceso a Internet"
 
-#: src/placeBubble.js:159
-msgid "Internet access:"
-msgstr "Acceso a Internet:"
+#. Translators:
+#. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
+#.
+#: src/placeBubble.js:163
+#| msgid "Public"
+msgid "Public Wi-Fi"
+msgstr "Red Wi-Fi pública"
 
-#: src/placeBubble.js:164
-msgid "Religion:"
-msgstr "Religión:"
+#. Translators:
+#. * This means a a place where you can plug in your laptop with ethernet.
+#.
+#: src/placeBubble.js:171
+#| msgid "Internet access"
+msgid "Wired internet access"
+msgstr "Acceso a Internet por cable"
 
-#: src/placeBubble.js:169
-msgid "Toilets:"
-msgstr "Baño:"
+#. Translators:
+#. * Like internet cafe or library where the computer is given.
+#.
+#: src/placeBubble.js:179
+msgid "Computers available for use"
+msgstr "Ordenadores disponibles para su uso"
 
-#: src/placeBubble.js:174
-msgid "Wheelchair access:"
-msgstr "Acceso para sillas de ruedas:"
+#. Translators:
+#. * This means there is personnel which helps you in case of problems.
+#.
+#: src/placeBubble.js:187
+msgid "Internet assistance available"
+msgstr "Asistencia de Internet disponible"
 
-#: src/placeBubble.js:180 src/placeBubble.js:184
-msgid "Phone:"
-msgstr "Teléfono:"
+#: src/placeBubble.js:193
+msgid "No toilets available"
+msgstr "Sin baños disponibles"
 
-#: src/placeEntry.js:212
-msgid "Failed to parse Geo URI"
-msgstr "Falló al analizar el URI de Geo"
+#: src/placeBubble.js:196
+msgid "Toilets available"
+msgstr "Baños disponibles"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#. Translators:
-#. * There is public internet access but the particular kind is unknown.
-#.
-#: src/place.js:268 src/translations.js:329 src/translations.js:391
-msgid "yes"
-msgstr "sí"
+#: src/placeBubble.js:205
+#| msgid "Wheelchair access"
+msgid "Wheelchair accessible"
+msgstr "Accesible para sillas de ruedas"
 
 #. Translators:
 #. * This means wheelchairs have partial access (e.g some areas
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/place.js:275
-msgid "limited"
-msgstr "limitado"
+#: src/placeBubble.js:215
+#| msgid "Wheelchair access"
+msgid "Limited wheelchair accessibility"
+msgstr "Accesibilidad limitada para sillas de ruedas"
 
 #. Translators:
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#. Translators:
-#. * no internet access is offered in a place where
-#. * someone might expect it.
-#.
-#: src/place.js:281 src/translations.js:335 src/translations.js:392
-msgid "no"
-msgstr "no"
+#: src/placeBubble.js:224
+#| msgid "Wheelchair access"
+msgid "Not wheelchair accessible"
+msgstr "Sin acceso para sillas de ruedas"
 
 #. Translators:
 #. * This means that the way or area is designated or purpose built
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/place.js:288
-msgid "designated"
-msgstr "designado"
+#: src/placeBubble.js:234
+msgid "Designated for wheelchair users"
+msgstr "Diseñador para usuarios de sillas de ruedas"
 
-#: src/place.js:475
+#: src/placeBubble.js:261
+msgid "Religion:"
+msgstr "Religión:"
+
+#: src/placeEntry.js:212
+msgid "Failed to parse Geo URI"
+msgstr "Falló al analizar el URI de Geo"
+
+#: src/place.js:422
 msgid "Place not found in OpenStreetMap"
 msgstr "Lugar no encontrado en OpenStreetMap"
 
-#: src/place.js:495
+#: src/place.js:442
 msgid "OpenStreetMap URL is not valid"
 msgstr "El URL de OpenStreetMap no es válido"
 
-#: src/place.js:500
+#: src/place.js:447
 msgid "Coordinates in URL are not valid"
 msgstr "Las coordenadas del URL no son válidas"
 
-#: src/place.js:521
+#: src/place.js:468
 msgid "URL is not supported"
 msgstr "URL no soportado"
 
@@ -1411,16 +1443,16 @@ msgstr "Ruta inversa"
 
 #. Translators: The first string is the name of the city, the
 #. second string is the name of the app to add it to
-#: src/sendToDialog.js:104
+#: src/sendToDialog.js:121
 #, javascript-format
 msgid "Add %s to %s"
 msgstr "Añadir %s a %s"
 
-#: src/sendToDialog.js:202
+#: src/sendToDialog.js:219
 msgid "Failed to open URI"
 msgstr "Falló al abrir el URI"
 
-#: src/sendToDialog.js:259
+#: src/sendToDialog.js:276
 #, javascript-format
 msgid "Open with %s"
 msgstr "Abrir con %s"
@@ -1698,29 +1730,8 @@ msgctxt "time interval"
 msgid "%s-%s"
 msgstr "%s-%s"
 
-#. Translators:
-#. * This means a a place where you can plug in your laptop with ethernet.
-#.
-#: src/translations.js:345
-msgid "wired"
-msgstr "cableada"
-
-#. Translators:
-#. * Like internet cafe or library where the computer is given.
-#.
-#: src/translations.js:350
-msgid "terminal"
-msgstr "terminal"
-
-#. Translators:
-#. * This means there is personnel which helps you in case of problems.
-#.
-#: src/translations.js:355
-msgid "service"
-msgstr "servicio"
-
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/userLocationBubble.js:56
+#: src/userLocationBubble.js:50
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Precisión: %s"
@@ -1738,19 +1749,17 @@ msgstr "Exacta"
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
 #.
-#: src/utils.js:332
+#: src/utils.js:348
 #, javascript-format
 msgid "%s h"
 msgstr "%s h"
 
 #. Translators: this is a duration with hours and minutes parts
-#. * using abbreviations for hours and minutes, correspoding to 'h'
+#. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
 #.
-#: src/utils.js:338
+#: src/utils.js:354
 #, javascript-format
-#| msgid "%s h %s min"
-#| msgid_plural "%s h %s mins"
 msgid "%s h %s min"
 msgid_plural "%s h %s min"
 msgstr[0] "%s h %s min"
@@ -1760,10 +1769,8 @@ msgstr[1] "%s h %s min"
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
 #.
-#: src/utils.js:345
+#: src/utils.js:361
 #, javascript-format
-#| msgid "%s min"
-#| msgid_plural "%s mins"
 msgid "%s min"
 msgid_plural "%s min"
 msgstr[0] "%s min"
@@ -1773,7 +1780,7 @@ msgstr[1] "%s min"
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
 #.
-#: src/utils.js:351
+#: src/utils.js:367
 #, javascript-format
 msgid "%s s"
 msgid_plural "%s s"
@@ -1781,25 +1788,25 @@ msgstr[0] "%s s"
 msgstr[1] "%s s"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:362
+#: src/utils.js:378
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:365
+#: src/utils.js:381
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:373
+#: src/utils.js:389
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:376
+#: src/utils.js:392
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
@@ -1911,6 +1918,57 @@ msgstr "Dé la vuelta hacia la derecha en %s"
 #: src/transitplugins/openTripPlanner.js:1244
 msgid "Make a right u-turn"
 msgstr "Dé la vuelta hacia la derecha"
+
+#~ msgid "Find a Route"
+#~ msgstr "Buscar una ruta"
+
+#~ msgid "Check in here"
+#~ msgstr "Registrarse aquí"
+
+#~ msgid "Show more information"
+#~ msgstr "Mostrar más información"
+
+#~ msgid "Population:"
+#~ msgstr "Población:"
+
+#~ msgid "Altitude:"
+#~ msgstr "Altitud:"
+
+#~ msgid "Opening hours:"
+#~ msgstr "Horario de apertura:"
+
+#~ msgid "Internet access:"
+#~ msgstr "Acceso a Internet:"
+
+#~ msgid "Toilets:"
+#~ msgstr "Baño:"
+
+#~ msgid "Wheelchair access:"
+#~ msgstr "Acceso para sillas de ruedas:"
+
+#~ msgid "Phone:"
+#~ msgstr "Teléfono:"
+
+#~ msgid "yes"
+#~ msgstr "sí"
+
+#~ msgid "limited"
+#~ msgstr "limitado"
+
+#~ msgid "no"
+#~ msgstr "no"
+
+#~ msgid "designated"
+#~ msgstr "designado"
+
+#~ msgid "wired"
+#~ msgstr "cableada"
+
+#~ msgid "terminal"
+#~ msgstr "terminal"
+
+#~ msgid "service"
+#~ msgstr "servicio"
 
 #~ msgid "Primary menu"
 #~ msgstr "Menú primario"
