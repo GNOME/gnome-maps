@@ -126,7 +126,9 @@ var PlaceBubble = GObject.registerClass({
                           info: GLib.markup_escape_text(place.phone, -1) };
 
             if (Utils.uriSchemeSupported('tel')) {
-                phone.linkUrl = 'tel:%s'.format(place.phone);
+                /* RFC3966 only allows "-", '.", "(", and ")" as visual
+                 * separator characters in a global phone number, no space */
+                phone.linkUrl = 'tel:%s'.format(place.phone.replace(/\s+/g, ''));
             }
 
             content.push(phone);
