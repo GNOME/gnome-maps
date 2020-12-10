@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2020-08-11 20:42+0000\n"
-"PO-Revision-Date: 2020-08-14 15:38+0300\n"
+"POT-Creation-Date: 2020-12-07 22:14+0000\n"
+"PO-Revision-Date: 2020-12-10 18:09+0200\n"
 "Last-Translator: Florentina Mușat <florentina.musat.28@gmail.com>\n"
 "Language-Team: Gnome Romanian Translation Team\n"
 "Language: ro\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2);\n"
-"X-Generator: Poedit 2.4\n"
+"X-Generator: Poedit 2.4.2\n"
 "X-Project-Style: gnome\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
@@ -57,7 +57,7 @@ msgstr ""
 "Puteți de asemenea să căutați anumite tipuri de locații, precum „Gara "
 "Lipscani, București” sau „Acces Wi-Fi lângă Dumbrava, Sibiu”."
 
-#: data/org.gnome.Maps.appdata.xml.in:122
+#: data/org.gnome.Maps.appdata.xml.in:159
 msgid "The GNOME Project"
 msgstr "Proiectul GNOME"
 
@@ -70,7 +70,7 @@ msgstr "Proiectul GNOME"
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:34
-#: src/application.js:82 src/mainWindow.js:134 src/mainWindow.js:626
+#: src/application.js:82 src/mainWindow.js:129 src/mainWindow.js:567
 msgid "Maps"
 msgstr "Hărți"
 
@@ -256,8 +256,7 @@ msgstr "Postează pe Twitter"
 msgid "_Cancel"
 msgstr "_Anulează"
 
-#. Translators: Check in is used as a verb
-#: data/ui/check-in-dialog.ui:399 data/ui/map-bubble.ui:93
+#: data/ui/check-in-dialog.ui:399
 msgid "C_heck in"
 msgstr "Înr_egistrează"
 
@@ -356,7 +355,7 @@ msgid "Toggle favorites"
 msgstr "Comută preferatele"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-right.ui:57 data/ui/main-window.ui:98
+#: data/ui/headerbar-right.ui:57
 msgid "Print Route"
 msgstr "Tipărește ruta"
 
@@ -477,19 +476,15 @@ msgstr "_Scurtături de tastatură"
 msgid "About Maps"
 msgstr "Despre Hărți"
 
-#: data/ui/main-window.ui:56
+#: data/ui/main-window.ui:52
 msgid "Open main menu"
 msgstr "Deschide meniul principal"
 
-#: data/ui/main-window.ui:81
-msgid "Find a Route"
-msgstr "Găsește o rută"
-
-#: data/ui/main-window.ui:181
+#: data/ui/main-window.ui:114
 msgid "Maps is offline!"
 msgstr "Hărți este offline!"
 
-#: data/ui/main-window.ui:194
+#: data/ui/main-window.ui:123
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -497,29 +492,34 @@ msgstr ""
 "Hărți necesită o conexiune la internet pentru a funcționa în mod "
 "corespunzător, dar nicio conexiune nu a fost găsită."
 
-#: data/ui/main-window.ui:203
+#: data/ui/main-window.ui:131
 msgid "Check your connection and proxy settings."
 msgstr "Verificați conexiunile și configurările proxy."
 
 #. Translators: This is a tooltip
-#: data/ui/map-bubble.ui:45
-msgid "Add to new route"
-msgstr "Adaugă la ruta nouă"
-
-#. Translators: This is a tooltip
-#: data/ui/map-bubble.ui:62
+#: data/ui/map-bubble.ui:67 data/ui/map-bubble.ui:136
 msgid "Share location"
 msgstr "Partajează locația"
 
 #. Translators: This is a tooltip
-#: data/ui/map-bubble.ui:79
+#: data/ui/map-bubble.ui:101
+msgid "Add to new route"
+msgstr "Adaugă la ruta nouă"
+
+#. Translators: This is the button to find a route to a place
+#: data/ui/map-bubble.ui:120
+msgid "Directions"
+msgstr "Direcții"
+
+#. Translators: This is a tooltip
+#: data/ui/map-bubble.ui:156
 msgid "Mark as favorite"
 msgstr "Marchează ca favorit"
 
 #. Translators: This is a tooltip
-#: data/ui/map-bubble.ui:98
-msgid "Check in here"
-msgstr "Înregistrați-vă aici"
+#: data/ui/map-bubble.ui:175
+msgid "Edit on OpenStreetMap"
+msgstr "Editează pe OpenStreetMap"
 
 #: data/ui/osm-account-dialog.ui:9
 msgid "OpenStreetMap Account"
@@ -640,23 +640,18 @@ msgctxt "dialog title"
 msgid "Edit on OpenStreetMap"
 msgstr "Editare pe OpenStreetMap"
 
-#: data/ui/osm-edit-dialog.ui:310 src/osmEditDialog.js:512
+#: data/ui/osm-edit-dialog.ui:310 src/osmEditDialog.js:521
 msgid "Next"
 msgstr "Următorul"
-
-#. Translators: This is a tooltip
-#: data/ui/place-bubble.ui:49
-msgid "Edit on OpenStreetMap"
-msgstr "Editează pe OpenStreetMap"
-
-#. Translators: This is a tooltip
-#: data/ui/place-bubble.ui:73
-msgid "Show more information"
-msgstr "Arată mai multe informații"
 
 #: data/ui/place-popover.ui:54
 msgid "No results found"
 msgstr "Niciun rezultat găsit"
+
+#: data/ui/place-popover.ui:66 src/checkInDialog.js:280 src/checkIn.js:162
+#: src/osmEditDialog.js:558
+msgid "An error has occurred"
+msgstr "A apărut o eroare"
 
 #. Translators: This is a tooltip
 #: data/ui/route-entry.ui:20
@@ -667,15 +662,19 @@ msgstr "Trageți pentru a schimba ordinea rutei"
 msgid "Open Location"
 msgstr "Deschide locația"
 
-#: data/ui/send-to-dialog.ui:70
+#: data/ui/send-to-dialog.ui:72
 msgid "Copy"
 msgstr "Copiază"
 
-#: data/ui/send-to-dialog.ui:76
+#: data/ui/send-to-dialog.ui:79
 msgid "Send To…"
 msgstr "Trimite la…"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:65
+#: data/ui/send-to-dialog.ui:86
+msgid "Check In…"
+msgstr "Verificare de intrare…"
+
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:64
 msgid "Open Shape Layer"
 msgstr "Deschide stratul formei"
 
@@ -774,10 +773,6 @@ msgstr "Feriboturi"
 msgid "Airplanes"
 msgstr "Avioane"
 
-#: data/ui/user-location-bubble.ui:13 src/geoclue.js:118
-msgid "Current location"
-msgstr "Locația curentă"
-
 #: data/ui/zoom-in-dialog.ui:16
 msgid "Zoom in to add location!"
 msgstr "Măriți pentru a adăuga locația!"
@@ -865,10 +860,6 @@ msgstr "Înregistează la %s"
 msgid "Write an optional message to check in to %s."
 msgstr "Scrieți un mesaj opțional pentru înregistrare la %s."
 
-#: src/checkInDialog.js:280 src/checkIn.js:162 src/osmEditDialog.js:549
-msgid "An error has occurred"
-msgstr "A apărut o eroare"
-
 #. Translators: %s is the place name that user wanted to check-in
 #: src/checkIn.js:144
 #, javascript-format
@@ -929,6 +920,10 @@ msgstr "Nu este specificat nici un nume de fișier"
 msgid "Unable to export view"
 msgstr "Nu se poate exporta vizualizarea"
 
+#: src/geoclue.js:118
+msgid "Current Location"
+msgstr "Locație curentă"
+
 #: src/geoJSONSource.js:97
 msgid "invalid coordinate"
 msgstr "coordonate nevalide"
@@ -953,30 +948,30 @@ msgstr "Nu s-au găsit rute."
 msgid "Start!"
 msgstr "Pornește!"
 
-#: src/mainWindow.js:62
+#: src/mainWindow.js:61
 msgid "All Layer Files"
 msgstr "Toate fișierele strat"
 
-#: src/mainWindow.js:508
+#: src/mainWindow.js:470
 msgid "Failed to connect to location service"
 msgstr "Nu s-a reușit conectarea la serviciul de localizare"
 
-#: src/mainWindow.js:624
+#: src/mainWindow.js:565
 msgid "translator-credits"
 msgstr ""
 "Mădălin Șerbănescu <ciber_ady [at] yahoo [dot] com>, 2018\n"
 "Florentina Mușat <florentina [dot] musat [dot] 28 [at] gmail [dot] com>, "
 "2018-2020"
 
-#: src/mainWindow.js:627
+#: src/mainWindow.js:568
 msgid "A map application for GNOME"
 msgstr "O aplicație cu hărți pentru GNOME"
 
-#: src/mainWindow.js:638
+#: src/mainWindow.js:579
 msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Drepturi de autor © 2011 – 2019 Red Hat, Inc. și autorii GNOME Hărți"
 
-#: src/mainWindow.js:658
+#: src/mainWindow.js:599
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Datele hărții ale %s și contribuitorii"
@@ -986,7 +981,7 @@ msgstr "Datele hărții ale %s și contribuitorii"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:674
+#: src/mainWindow.js:615
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Fragmente de hărți furnizate de %s"
@@ -1000,7 +995,7 @@ msgstr "Fragmente de hărți furnizate de %s"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:703
+#: src/mainWindow.js:644
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Căutare furnizată de %s utilizând %s"
@@ -1047,23 +1042,28 @@ msgstr "Obiectul a fost șters"
 msgid "Way or relation refers to non-existing children"
 msgstr "Calea sau relația se referă la copii care nu există"
 
-#: src/osmEditDialog.js:105
+#: src/osmEditDialog.js:112
 msgid "Name"
 msgstr "Nume"
 
-#: src/osmEditDialog.js:108
+#: src/osmEditDialog.js:115
 msgid "The official name. This is typically what appears on signs."
 msgstr "Numele oficial. Acesta este, de obicei, numele real."
 
-#: src/osmEditDialog.js:111
+#: src/osmEditDialog.js:118
 msgid "Address"
 msgstr "Adresă"
 
-#: src/osmEditDialog.js:119
+#: src/osmEditDialog.js:126 src/placeBubble.js:116
 msgid "Website"
 msgstr "Website"
 
-#: src/osmEditDialog.js:122
+#: src/osmEditDialog.js:130
+msgid "This is not a valid URL. Make sure to include http:// or https://."
+msgstr ""
+"Acesta nu este un URL valid. Asigurați-vă că includeți http:// sau https://."
+
+#: src/osmEditDialog.js:131
 msgid ""
 "The official website. Try to use the most basic form of a URL i.e. http://"
 "example.com instead of http://example.com/index.html."
@@ -1071,11 +1071,11 @@ msgstr ""
 "Pagina web oficială. Încercați să utilizați forma cea mai de bază a unui URL "
 "de ex: http://example.com în loc de http://example.com/index.html."
 
-#: src/osmEditDialog.js:127
+#: src/osmEditDialog.js:136
 msgid "Phone"
 msgstr "Telefon"
 
-#: src/osmEditDialog.js:131
+#: src/osmEditDialog.js:140
 msgid ""
 "Phone number. Use the international format, starting with a + sign. Beware "
 "of local privacy laws, especially for private phone numbers."
@@ -1084,11 +1084,13 @@ msgstr ""
 "+. Aveți grijă la legile de confidențialitate locale, în special pentru "
 "numerele de telefon private."
 
-#: src/osmEditDialog.js:136 src/placeBubble.js:191
+#. Translators: This is the text for the "Wikipedia" link at the end
+#. of summaries
+#: src/osmEditDialog.js:145 src/placeBubble.js:381
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: src/osmEditDialog.js:140
+#: src/osmEditDialog.js:149
 msgid ""
 "The format used should include the language code and the article title like "
 "“en:Article title”."
@@ -1096,170 +1098,173 @@ msgstr ""
 "Formatul utilizat trebuie să includă codul de limbă și titlul articolului ca "
 "„en:titlu de articol”."
 
-#: src/osmEditDialog.js:144
+#: src/osmEditDialog.js:153 src/placeBubble.js:138
 msgid "Opening hours"
 msgstr "Ore de deschidere"
 
-#: src/osmEditDialog.js:149
+#: src/osmEditDialog.js:158
 msgid "See the link in the label for help on format."
 msgstr "Consultați legătura din etichetă pentru ajutor cu formatul."
 
-#: src/osmEditDialog.js:152
+#. TODO: this is a bit of a work-around to re-interpret the population,
+#. * stored as a string into an integer to convert back to a locale-
+#. * formatted string. Ideally it should be kept as an integer value
+#. * in the Place class. But this will also need to be handled by the
+#. * PlaceStore, possible in a backwards-compatible way
+#.
+#: src/osmEditDialog.js:161 src/placeBubble.js:248
 msgid "Population"
 msgstr "Populație"
 
-#: src/osmEditDialog.js:157
+#: src/osmEditDialog.js:166 src/placeBubble.js:257
 msgid "Altitude"
 msgstr "Altitudine"
 
-#: src/osmEditDialog.js:160
+#: src/osmEditDialog.js:169
 msgid "Elevation (height above sea level) of a point in metres."
 msgstr "Elevația (înălțimea deasupra nivelului mării) unui punct în metri."
 
-#: src/osmEditDialog.js:163
+#: src/osmEditDialog.js:172
 msgid "Wheelchair access"
 msgstr "Acces pentru scaun cu rotile"
 
-#: src/osmEditDialog.js:166 src/osmEditDialog.js:175 src/osmEditDialog.js:213
+#: src/osmEditDialog.js:175 src/osmEditDialog.js:184 src/osmEditDialog.js:222
 msgid "Yes"
 msgstr "Da"
 
-#: src/osmEditDialog.js:167 src/osmEditDialog.js:176 src/osmEditDialog.js:214
+#: src/osmEditDialog.js:176 src/osmEditDialog.js:185 src/osmEditDialog.js:223
 msgid "No"
 msgstr "Nu"
 
-#: src/osmEditDialog.js:168
+#: src/osmEditDialog.js:177
 msgid "Limited"
 msgstr "Limitat"
 
-#: src/osmEditDialog.js:169
+#: src/osmEditDialog.js:178
 msgid "Designated"
 msgstr "Desemnat"
 
-#: src/osmEditDialog.js:172
+#: src/osmEditDialog.js:181
 msgid "Internet access"
 msgstr "Acces la internet"
 
-#. Translators:
-#. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
-#.
-#: src/osmEditDialog.js:177 src/translations.js:340
+#: src/osmEditDialog.js:186
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
 
-#: src/osmEditDialog.js:178
+#: src/osmEditDialog.js:187
 msgid "Wired"
 msgstr "Cu fir"
 
-#: src/osmEditDialog.js:179
+#: src/osmEditDialog.js:188
 msgid "Terminal"
 msgstr "Terminal"
 
-#: src/osmEditDialog.js:180
+#: src/osmEditDialog.js:189
 msgid "Service"
 msgstr "Serviciu"
 
-#: src/osmEditDialog.js:183
+#: src/osmEditDialog.js:192
 msgid "Religion"
 msgstr "Religie"
 
-#: src/osmEditDialog.js:186 src/translations.js:363
+#: src/osmEditDialog.js:195 src/translations.js:326
 msgid "Animism"
 msgstr "Animism"
 
-#: src/osmEditDialog.js:187
+#: src/osmEditDialog.js:196
 msgid "Bahá’í"
 msgstr "Bahá’í"
 
-#: src/osmEditDialog.js:188 src/translations.js:365
+#: src/osmEditDialog.js:197 src/translations.js:328
 msgid "Buddhism"
 msgstr "Budism"
 
-#: src/osmEditDialog.js:189 src/translations.js:366
+#: src/osmEditDialog.js:198 src/translations.js:329
 msgid "Caodaism"
 msgstr "Caodaism"
 
-#: src/osmEditDialog.js:190 src/translations.js:367
+#: src/osmEditDialog.js:199 src/translations.js:330
 msgid "Christianity"
 msgstr "Creștinism"
 
-#: src/osmEditDialog.js:191 src/translations.js:368
+#: src/osmEditDialog.js:200 src/translations.js:331
 msgid "Confucianism"
 msgstr "Confucianism"
 
-#: src/osmEditDialog.js:192 src/translations.js:369
+#: src/osmEditDialog.js:201 src/translations.js:332
 msgid "Hinduism"
 msgstr "Hinduism"
 
-#: src/osmEditDialog.js:193 src/translations.js:370
+#: src/osmEditDialog.js:202 src/translations.js:333
 msgid "Jainism"
 msgstr "Jainism"
 
-#: src/osmEditDialog.js:194 src/translations.js:371
+#: src/osmEditDialog.js:203 src/translations.js:334
 msgid "Judaism"
 msgstr "Iudaism"
 
-#: src/osmEditDialog.js:195 src/translations.js:372
+#: src/osmEditDialog.js:204 src/translations.js:335
 msgid "Islam"
 msgstr "Islam"
 
-#: src/osmEditDialog.js:196 src/translations.js:373
+#: src/osmEditDialog.js:205 src/translations.js:336
 msgid "Multiple Religions"
 msgstr "Religii multiple"
 
-#: src/osmEditDialog.js:197 src/translations.js:374
+#: src/osmEditDialog.js:206 src/translations.js:337
 msgid "Paganism"
 msgstr "Păgânism"
 
-#: src/osmEditDialog.js:198 src/translations.js:375
+#: src/osmEditDialog.js:207 src/translations.js:338
 msgid "Pastafarianism"
 msgstr "Pastafarianism"
 
-#: src/osmEditDialog.js:199 src/translations.js:376
+#: src/osmEditDialog.js:208 src/translations.js:339
 msgid "Scientology"
 msgstr "Scientologie"
 
-#: src/osmEditDialog.js:200 src/translations.js:377
+#: src/osmEditDialog.js:209 src/translations.js:340
 msgid "Shinto"
 msgstr "Shinto"
 
-#: src/osmEditDialog.js:201 src/translations.js:378
+#: src/osmEditDialog.js:210 src/translations.js:341
 msgid "Sikhism"
 msgstr "Sikhism"
 
-#: src/osmEditDialog.js:202 src/translations.js:379
+#: src/osmEditDialog.js:211 src/translations.js:342
 msgid "Spiritualism"
 msgstr "Spiritualism"
 
-#: src/osmEditDialog.js:203 src/translations.js:380
+#: src/osmEditDialog.js:212 src/translations.js:343
 msgid "Taoism"
 msgstr "Taoism"
 
-#: src/osmEditDialog.js:204 src/translations.js:381
+#: src/osmEditDialog.js:213 src/translations.js:344
 msgid "Unitarian Universalism"
 msgstr "Universalism unitarian"
 
-#: src/osmEditDialog.js:205 src/translations.js:382
+#: src/osmEditDialog.js:214 src/translations.js:345
 msgid "Voodoo"
 msgstr "Voodoo"
 
-#: src/osmEditDialog.js:206 src/translations.js:383
+#: src/osmEditDialog.js:215 src/translations.js:346
 msgid "Yazidism"
 msgstr "Yazidism"
 
-#: src/osmEditDialog.js:207 src/translations.js:384
+#: src/osmEditDialog.js:216 src/translations.js:347
 msgid "Zoroastrianism"
 msgstr "Zoroastrism"
 
-#: src/osmEditDialog.js:210
+#: src/osmEditDialog.js:219
 msgid "Toilets"
 msgstr "Toalete"
 
-#: src/osmEditDialog.js:217
+#: src/osmEditDialog.js:226
 msgid "Note"
 msgstr "Notiță"
 
-#: src/osmEditDialog.js:220
+#: src/osmEditDialog.js:229
 msgid ""
 "Information used to inform other mappers about non-obvious information about "
 "an element, the author’s intent when creating it, or hints for further "
@@ -1269,112 +1274,128 @@ msgstr ""
 "informațiile care nu sunt evidente despre un element, intenția autorului în "
 "timpul creării acestuia, sau indicii pentru îmbunătățiri ulterioare."
 
-#: src/osmEditDialog.js:325
+#: src/osmEditDialog.js:334
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Adaugă la OpenStreetMap"
 
-#: src/osmEditDialog.js:379
+#: src/osmEditDialog.js:388
 msgid "Select Type"
 msgstr "Selectați tipul"
 
-#: src/osmEditDialog.js:496
+#: src/osmEditDialog.js:505
 msgid "Done"
 msgstr "Gata"
 
-#: src/photonParser.js:103
+#: src/photonParser.js:104
 msgid "Unnamed place"
 msgstr "Loc nedenumit"
 
-#: src/placeBubble.js:143
-msgid "Population:"
-msgstr "Populație:"
+#: src/placeBubble.js:124
+msgid "Phone number"
+msgstr "Număr de telefon"
 
-#: src/placeBubble.js:149
-msgid "Altitude:"
-msgstr "Altitudine:"
+#. Translators:
+#. * There is public internet access but the particular kind is unknown.
+#.
+#: src/placeBubble.js:148
+msgid "Public internet access"
+msgstr "Acces la internet public"
 
-#: src/placeBubble.js:154
-msgid "Opening hours:"
-msgstr "Ore de deschidere:"
+#. Translators:
+#. * no internet access is offered in a place where
+#. * someone might expect it.
+#.
+#: src/placeBubble.js:157
+msgid "No internet access"
+msgstr "Nu există acces la internet"
 
-#: src/placeBubble.js:159
-msgid "Internet access:"
-msgstr "Acces la internet:"
+#. Translators:
+#. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
+#.
+#: src/placeBubble.js:165
+msgid "Public Wi-Fi"
+msgstr "Wi-Fi public"
 
-#: src/placeBubble.js:164
-msgid "Religion:"
-msgstr "Religie:"
+#. Translators:
+#. * This means a a place where you can plug in your laptop with ethernet.
+#.
+#: src/placeBubble.js:173
+msgid "Wired internet access"
+msgstr "Acces la internet prin cablu"
 
-#: src/placeBubble.js:169
-msgid "Toilets:"
-msgstr "Toalete:"
+#. Translators:
+#. * Like internet cafe or library where the computer is given.
+#.
+#: src/placeBubble.js:181
+msgid "Computers available for use"
+msgstr "Calculatoare disponibile pentru utilizare"
 
-#: src/placeBubble.js:174
-msgid "Wheelchair access:"
-msgstr "Acces pentru scaun cu rotile:"
+#. Translators:
+#. * This means there is personnel which helps you in case of problems.
+#.
+#: src/placeBubble.js:189
+msgid "Internet assistance available"
+msgstr "Asistență pe internet disponibilă"
 
-#: src/placeBubble.js:180 src/placeBubble.js:184
-msgid "Phone:"
-msgstr "Număr de telefon:"
+#: src/placeBubble.js:195
+msgid "No toilets available"
+msgstr "Nu există toalete disponibile"
 
-#: src/placeEntry.js:212
-msgid "Failed to parse Geo URI"
-msgstr "Nu s-a putut parsa URI-ul Geo"
+#: src/placeBubble.js:198
+msgid "Toilets available"
+msgstr "Toaletele sunt disponibile"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#. Translators:
-#. * There is public internet access but the particular kind is unknown.
-#.
-#: src/place.js:268 src/translations.js:329 src/translations.js:391
-msgid "yes"
-msgstr "da"
+#: src/placeBubble.js:207
+msgid "Wheelchair accessible"
+msgstr "Accesibil pentru scaun cu rotile"
 
 #. Translators:
 #. * This means wheelchairs have partial access (e.g some areas
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/place.js:275
-msgid "limited"
-msgstr "limitat"
+#: src/placeBubble.js:217
+msgid "Limited wheelchair accessibility"
+msgstr "Accesibilitate pentru scaun cu rotile limitată"
 
 #. Translators:
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#. Translators:
-#. * no internet access is offered in a place where
-#. * someone might expect it.
-#.
-#: src/place.js:281 src/translations.js:335 src/translations.js:392
-msgid "no"
-msgstr "nu"
+#: src/placeBubble.js:226
+msgid "Not wheelchair accessible"
+msgstr "Nu este accesibil pentru scaun cu rotile"
 
 #. Translators:
 #. * This means that the way or area is designated or purpose built
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/place.js:288
-msgid "designated"
-msgstr "desemnat"
+#: src/placeBubble.js:236
+msgid "Designated for wheelchair users"
+msgstr "Desemnat pentru utilizatorii în scaun cu rotile"
 
-#: src/place.js:475
+#: src/placeBubble.js:263
+msgid "Religion:"
+msgstr "Religie:"
+
+#: src/placeEntry.js:221
+msgid "Failed to parse Geo URI"
+msgstr "Nu s-a putut parsa URI-ul Geo"
+
+#: src/place.js:417
 msgid "Place not found in OpenStreetMap"
 msgstr "Locul nu a fost găsit în OpenStreetMap"
 
-#: src/place.js:495
-msgid "OpenStreetMap URL is not valid"
-msgstr "URL-ul de OpenStreetMap nu este valid"
-
-#: src/place.js:500
+#: src/place.js:424
 msgid "Coordinates in URL are not valid"
 msgstr "Coordonatele din URL nu sunt valide"
 
-#: src/place.js:521
+#: src/place.js:433
 msgid "URL is not supported"
 msgstr "URL-ul nu este suportat"
 
@@ -1412,16 +1433,16 @@ msgstr "Inversează ruta"
 
 #. Translators: The first string is the name of the city, the
 #. second string is the name of the app to add it to
-#: src/sendToDialog.js:104
+#: src/sendToDialog.js:121
 #, javascript-format
 msgid "Add %s to %s"
 msgstr "Adaugă %s la %s"
 
-#: src/sendToDialog.js:202
+#: src/sendToDialog.js:219
 msgid "Failed to open URI"
 msgstr "Nu s-a putut deschide URI-ul"
 
-#: src/sendToDialog.js:259
+#: src/sendToDialog.js:276
 #, javascript-format
 msgid "Open with %s"
 msgstr "Deschide cu %s"
@@ -1702,29 +1723,8 @@ msgctxt "time interval"
 msgid "%s-%s"
 msgstr "%s-%s"
 
-#. Translators:
-#. * This means a a place where you can plug in your laptop with ethernet.
-#.
-#: src/translations.js:345
-msgid "wired"
-msgstr "cu fir"
-
-#. Translators:
-#. * Like internet cafe or library where the computer is given.
-#.
-#: src/translations.js:350
-msgid "terminal"
-msgstr "terminal"
-
-#. Translators:
-#. * This means there is personnel which helps you in case of problems.
-#.
-#: src/translations.js:355
-msgid "service"
-msgstr "serviciu"
-
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/userLocationBubble.js:56
+#: src/userLocationBubble.js:50
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Acuratețe: %s"
@@ -1742,16 +1742,16 @@ msgstr "Exact"
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
 #.
-#: src/utils.js:332
+#: src/utils.js:348
 #, javascript-format
 msgid "%s h"
 msgstr "%s o"
 
 #. Translators: this is a duration with hours and minutes parts
-#. * using abbreviations for hours and minutes, correspoding to 'h'
+#. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
 #.
-#: src/utils.js:338
+#: src/utils.js:354
 #, javascript-format
 msgid "%s h %s min"
 msgid_plural "%s h %s min"
@@ -1763,7 +1763,7 @@ msgstr[2] "%s o %s min"
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
 #.
-#: src/utils.js:345
+#: src/utils.js:361
 #, javascript-format
 msgid "%s min"
 msgid_plural "%s min"
@@ -1775,7 +1775,7 @@ msgstr[2] "%s min"
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
 #.
-#: src/utils.js:351
+#: src/utils.js:367
 #, javascript-format
 msgid "%s s"
 msgid_plural "%s s"
@@ -1784,25 +1784,25 @@ msgstr[1] "%s s"
 msgstr[2] "%s s"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:362
+#: src/utils.js:378
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:365
+#: src/utils.js:381
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:373
+#: src/utils.js:389
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:376
+#: src/utils.js:392
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
@@ -1914,6 +1914,60 @@ msgstr "Faceți un viraj spre dreapta pe %s"
 #: src/transitplugins/openTripPlanner.js:1244
 msgid "Make a right u-turn"
 msgstr "Faceți un viraj spre dreapta"
+
+#~ msgid "Find a Route"
+#~ msgstr "Găsește o rută"
+
+#~ msgid "Check in here"
+#~ msgstr "Înregistrați-vă aici"
+
+#~ msgid "Show more information"
+#~ msgstr "Arată mai multe informații"
+
+#~ msgid "Population:"
+#~ msgstr "Populație:"
+
+#~ msgid "Altitude:"
+#~ msgstr "Altitudine:"
+
+#~ msgid "Opening hours:"
+#~ msgstr "Ore de deschidere:"
+
+#~ msgid "Internet access:"
+#~ msgstr "Acces la internet:"
+
+#~ msgid "Toilets:"
+#~ msgstr "Toalete:"
+
+#~ msgid "Wheelchair access:"
+#~ msgstr "Acces pentru scaun cu rotile:"
+
+#~ msgid "Phone:"
+#~ msgstr "Număr de telefon:"
+
+#~ msgid "yes"
+#~ msgstr "da"
+
+#~ msgid "limited"
+#~ msgstr "limitat"
+
+#~ msgid "no"
+#~ msgstr "nu"
+
+#~ msgid "designated"
+#~ msgstr "desemnat"
+
+#~ msgid "OpenStreetMap URL is not valid"
+#~ msgstr "URL-ul de OpenStreetMap nu este valid"
+
+#~ msgid "wired"
+#~ msgstr "cu fir"
+
+#~ msgid "terminal"
+#~ msgstr "terminal"
+
+#~ msgid "service"
+#~ msgstr "serviciu"
 
 #~ msgid "Primary menu"
 #~ msgstr "Meniu principal"
