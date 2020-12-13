@@ -108,4 +108,5 @@ function validWebsiteTest() {
     JsUnit.assertEquals(true, Utils.isValidWebsite("http://gnome.org"));
     JsUnit.assertEquals(false, Utils.isValidWebsite("ftp://gnome.org"));
     JsUnit.assertEquals(false, Utils.isValidWebsite("www.gnome.org"));
+    JsUnit.assertEquals(false, Utils.isValidWebsite("https:gnome.org"));
 }

@@ -465,7 +465,5 @@ function isValidWebsite(website) {
     } catch(e) {
         return false;
     }
-
-    let scheme = GLib.Uri.parse_scheme(website);
-    return scheme === "http" || scheme === "https";
+    return website.startsWith("http://") || website.startsWith("https://");
 }
