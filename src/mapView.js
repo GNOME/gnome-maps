@@ -453,9 +453,24 @@ var MapView = GObject.registerClass({
         this._scale.visible = !this._scale.visible;
     }
 
+    _onShapeLoad(error, bbox, layer) {
+        if (error) {
+            let msg = _("Failed to open layer");
+            Utils.showDialog(msg, Gtk.MessageType.ERROR, this._mainWindow);
+        } else {
+            bbox.compose(layer.bbox);
+        }
+
+        this._remainingFilesToLoad--;
+        if (this._remainingFilesToLoad === 0) {
+            this.gotoBBox(bbox);
+        }
+    }
+
     openShapeLayers(files) {
         let bbox = new Champlain.BoundingBox();
         let ret = true;
+        this._remainingFilesToLoad = files.length;
         files.forEach((file) => {
             try {
                 let i = this._findShapeLayerIndex(file);
@@ -464,10 +479,9 @@ var MapView = GObject.registerClass({
                     layer = ShapeLayer.newFromFile(file, this);
                     if (!layer)
                         throw new Error(_("File type is not supported"));
-                    layer.load();
+                    layer.load(this._onShapeLoad.bind(this), bbox);
                     this.shapeLayerStore.append(layer);
                 }
-                bbox.compose(layer.bbox);
             } catch (e) {
                 Utils.debug(e);
                 let msg = _("Failed to open layer");
@@ -476,7 +490,6 @@ var MapView = GObject.registerClass({
             }
         });
 
-        this.gotoBBox(bbox);
         return ret;
     }
 

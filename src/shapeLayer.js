@@ -22,6 +22,7 @@ const Gio = imports.gi.Gio;
 const GObject = imports.gi.GObject;
 
 const GeoJSONShapeLayer = imports.geoJSONShapeLayer;
+const Utils = imports.utils;
 
 var SUPPORTED_TYPES = [];
 
@@ -84,16 +85,24 @@ var ShapeLayer = GObject.registerClass({
         return this.filename.replace(/\.[^\.]+$/, '');
     }
 
-    load() {
-        let [status, buffer] = this.file.load_contents(null);
-        this._fileContents = buffer;
-        if (!status)
-            throw new Error(_("failed to load file"));
-        this._parseContent();
-        this._mapView.view.add_layer(this._markerLayer);
-        this._mapView.view.add_overlay_source(this._mapSource, 255);
+    load(callback, bbox) {
+        this.file.load_contents_async(null, (sourceObject, result) => {
+            let error = false;
+            try {
+                let [status, buffer] = this.file.load_contents_finish(result);
+                this._fileContents = buffer;
+                if (!status)
+                    throw new Error(_("failed to load file"));
+                this._parseContent();
+                this._mapView.view.add_layer(this._markerLayer);
+                this._mapView.view.add_overlay_source(this._mapSource, 255);
+            } catch (e) {
+                Utils.debug(e);
+                error = true;
+            }
+            callback(error, bbox, this);
+        });
     }
-
 
     _parseContent() {
         /* Unimplemented */
