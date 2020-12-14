@@ -19,6 +19,8 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
+const Gio = imports.gi.Gio;
+
 // allow using :, ., and the ratio symbol to separate hours:mins
 const _DELIMITERS = [':', '.', '\u2236'];
 
@@ -75,6 +77,21 @@ const _DIGIT_RANGE_BASES = [
     // Lepcha
     0x1c40
 ];
+
+// in org.gnome.desktop.interface
+const CLOCK_FORMAT_KEY = 'clock-format';
+
+let _desktopSettings = new Gio.Settings({ schema_id: 'org.gnome.desktop.interface' });
+let _clockFormat = _desktopSettings.get_string(CLOCK_FORMAT_KEY);
+
+const _timeFormat24 = new Intl.DateTimeFormat([], { hour:     '2-digit',
+                                                    minute:   '2-digit',
+                                                    hour12:   false,
+                                                    timeZone: 'UTC'});
+const _timeFormat12 = new Intl.DateTimeFormat([], { hour:     '2-digit',
+                                                    minute:   '2-digit',
+                                                    hour12:   true,
+                                                    timeZone: 'UTC'});
 
 /* parse a time from a fixed set of free-formats into a string representation:
  * hour:min
@@ -157,4 +174,39 @@ function parseTimeString(timeString) {
     } else {
         return null;
     }
+}
+
+function _is12Hour() {
+    return _clockFormat === '12h';
+}
+
+/**
+ * Format a time as HH:mm in either 12 or 24 h
+ * format depending on system settings
+ * given time in ms since Epoch with an offset in
+ * ms relative UTC.
+ */
+function formatTimeWithTZOffset(time, offset) {
+    let utcTimeWithOffset = time + offset;
+    let date = new Date();
+    let timeFormat = _is12Hour() ? _timeFormat12 : _timeFormat24;
+
+    date.setTime(utcTimeWithOffset);
+
+    return timeFormat.format(date);
+}
+
+/**
+ * Format a time as HH:mm in either 12 or 24 h
+ * format depending on system settings
+ * given hours and minutes values.
+ */
+function formatTimeFromHoursAndMins(hours, mins) {
+    let date = new Date();
+    let timeFormat = _is12Hour() ? _timeFormat12 : _timeFormat24;
+
+    date.setUTCHours(hours);
+    date.setUTCMinutes(mins);
+
+    return timeFormat.format(date);
 }

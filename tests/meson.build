@@ -1,4 +1,5 @@
-tests = ['addressTest', 'colorTest', 'osmNamesTest', 'utilsTest', 'urlsTest']
+tests = ['addressTest', 'colorTest', 'osmNamesTest', 'timeTest', 'utilsTest',
+         'urlsTest']
 
 foreach test : tests
   script_conf = configuration_data()
