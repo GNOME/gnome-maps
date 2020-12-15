@@ -23,18 +23,12 @@ const _ = imports.gettext.gettext;
 const ngettext = imports.gettext.ngettext;
 
 const Champlain = imports.gi.Champlain;
-const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 
 const HVT = imports.hvt;
+const Time = imports.time;
 const Utils = imports.utils;
-
-// in org.gnome.desktop.interface
-const CLOCK_FORMAT_KEY = 'clock-format';
-
-let _desktopSettings = new Gio.Settings({ schema_id: 'org.gnome.desktop.interface' });
-let clockFormat = _desktopSettings.get_string(CLOCK_FORMAT_KEY);
 
 /*
  * These constants corresponds to the routeType attribute of transit legs
@@ -73,20 +67,6 @@ var RouteType = {
 
 /* extra time to add to the first itinerary leg when it's a walking leg */
 const WALK_SLACK = 120;
-
-const _timeFormat = new Intl.DateTimeFormat([], { hour:     '2-digit',
-                                                  minute:   '2-digit',
-                                                  hour12:   clockFormat === '12h',
-                                                  timeZone: 'UTC'});
-
-function _printTimeWithTZOffset(time, offset) {
-    let utcTimeWithOffset = time + offset;
-    let date = new Date();
-
-    date.setTime(utcTimeWithOffset);
-
-    return _timeFormat.format(date);
-}
 
 var DEFAULT_ROUTE_COLOR = '4c4c4c';
 var DEFAULT_ROUTE_TEXT_COLOR = 'ffffff';
@@ -326,16 +306,16 @@ class Itinerary extends GObject.Object {
     _getDepartureTime() {
         /* take the itinerary departure time and offset using the timezone
          * offset of the first leg */
-        return _printTimeWithTZOffset(this.departure,
-                                      this.legs[0].agencyTimezoneOffset);
+        return Time.formatTimeWithTZOffset(this.departure,
+                                           this.legs[0].agencyTimezoneOffset);
     }
 
     _getArrivalTime() {
         /* take the itinerary departure time and offset using the timezone
          * offset of the last leg */
         let lastLeg = this.legs[this.legs.length - 1];
-        return _printTimeWithTZOffset(this.arrival,
-                                      lastLeg.agencyTimezoneOffset);
+        return Time.formatTimeWithTZOffset(this.arrival,
+                                           lastLeg.agencyTimezoneOffset);
     }
 
     prettyPrintDuration() {
@@ -770,14 +750,16 @@ var Leg = class Leg {
         /* take the itinerary departure time and offset using the timezone
          * offset of the first leg
          */
-        return _printTimeWithTZOffset(this.departure, this.agencyTimezoneOffset);
+        return Time.formatTimeWithTZOffset(this.departure,
+                                           this.agencyTimezoneOffset);
     }
 
     prettyPrintArrivalTime() {
         /* take the itinerary departure time and offset using the timezone
          * offset of the last leg
          */
-        return _printTimeWithTZOffset(this.arrival, this.agencyTimezoneOffset);
+        return Time.formatTimeWithTZOffset(this.arrival,
+                                           this.agencyTimezoneOffset);
     }
 };
 
@@ -813,14 +795,14 @@ var Stop = class Stop {
             /* take the stop arrival time and offset using the timezone
              * offset of the last leg
              */
-            return _printTimeWithTZOffset(this._arrival,
-                                          this._agencyTimezoneOffset);
+            return Time.formatTimeWithTZOffset(this._arrival,
+                                               this._agencyTimezoneOffset);
         } else {
             /* take the stop departure time and offset using the timezone
              * offset of the first leg
              */
-            return _printTimeWithTZOffset(this._departure,
-                                          this._agencyTimezoneOffset);
+            return Time.formatTimeWithTZOffset(this._departure,
+                                               this._agencyTimezoneOffset);
         }
     }
 };
