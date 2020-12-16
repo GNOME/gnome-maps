@@ -23,6 +23,8 @@ const Geocode = imports.gi.GeocodeGlib;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
+const Pango = imports.gi.Pango;
+
 const Format = imports.format;
 
 const Application = imports.application;
@@ -137,7 +139,7 @@ var PlaceBubble = GObject.registerClass({
         if (place.openingHours) {
             content.push({ label: _("Opening hours"),
                            icon: 'emoji-recent-symbolic',
-                           info: Translations.translateOpeningHours(place.openingHours) });
+                           grid: Translations.translateOpeningHours(place.openingHours) });
         }
 
         switch(place.internetAccess) {
@@ -272,7 +274,7 @@ var PlaceBubble = GObject.registerClass({
     }
 
     _attachContent(content) {
-        content.forEach(({ type, label, icon, linkUrl, info }) => {
+        content.forEach(({ type, label, icon, linkUrl, info, grid }) => {
             let separator = new Gtk.Separator({ visible: true });
             separator.get_style_context().add_class('no-margin-separator');
             this._placeDetails.add(separator);
@@ -315,7 +317,38 @@ var PlaceBubble = GObject.registerClass({
                                                                info);
             }
 
-            let widget = new Gtk.Label({ label: info,
+            let widget;
+
+            if (grid) {
+                widget = new Gtk.Grid({ visible:        true,
+                                        column_spacing: 8 });
+
+                for (let i = 0; i < grid.length; i++) {
+                    let row = grid[i];
+
+                    for (let j = 0; j < row.length; j++) {
+                        let label = new Gtk.Label({ label:   row[j],
+                                                    visible: true,
+                                                    xalign:  0,
+                                                    hexpand: false,
+                                                    halign:  Gtk.Align.FILL });
+
+                        if (j === 1) {
+                            /* set tabular digits for the second column to get
+                             * aligned times
+                             */
+                            let attrList = Pango.AttrList.new();
+                            let tnum = Pango.AttrFontFeatures.new('tnum');
+
+                            attrList.insert(tnum);
+                            label.set_attributes(attrList);
+                        }
+
+                        widget.attach(label, j, i, 1, 1);
+                    }
+                }
+            } else {
+                widget = new Gtk.Label({ label: info,
                                          visible: true,
                                          use_markup: true,
                                          max_width_chars: 30,
@@ -324,10 +357,11 @@ var PlaceBubble = GObject.registerClass({
                                          hexpand: true,
                                          halign: Gtk.Align.FILL });
 
-            if (type === 'wikipedia') {
-                box.marginTop = 14;
-                box.marginBottom = 18;
-                this._wikipediaLabel = widget;
+                if (type === 'wikipedia') {
+                    box.marginTop = 14;
+                    box.marginBottom = 18;
+                    this._wikipediaLabel = widget;
+                }
             }
 
             box.add(widget);

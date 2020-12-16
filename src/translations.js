@@ -22,18 +22,14 @@
 const _ = imports.gettext.gettext;
 const C_ = imports.gettext.dgettext;
 
-const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 
-// in org.gnome.desktop.interface
-const CLOCK_FORMAT_KEY = 'clock-format';
-
-let _desktopSettings = new Gio.Settings({ schema_id: 'org.gnome.desktop.interface' });
-let clockFormat = _desktopSettings.get_string(CLOCK_FORMAT_KEY);
-
+const Time = imports.time;
 
 /* Translate an opening time specification tag value.
- * from OSM to a human-readable string (marked for translation).
+ * from OSM into a "two-dimensional" (array-of-arrays) grid of human-readable
+ * strings (marked for translation) suitable for laying out in aligned rows
+ * and columns in a GtkGrid in the place bubbles.
  *
  * Some limitations are imposed to keep the translations manageable:
  * A maximum of three components (separated by ; in the tag) are considered.
@@ -53,75 +49,41 @@ let clockFormat = _desktopSettings.get_string(CLOCK_FORMAT_KEY);
 function translateOpeningHours(string) {
     if (string === '24/7' || string === 'Mo-Su 00:00-24:00' ||
         string === '00:00-24:00')
-        return _("around the clock");
+        return [[_("Around the clock")]];
     else if (string === 'sunrise-sunset')
-        return _("from sunrise to sunset");
+        return [[_("From sunrise to sunset")]];
     else {
         /* split "components" */
         let splitParts = string.split(';');
-        let part1, part2, part3;
 
-        switch (splitParts.length) {
-            case 1:
-                return _translateOpeningHoursPart(splitParts[0].trim());
-            case 2:
-                part1 = _translateOpeningHoursPart(splitParts[0].trim());
-                part2 = _translateOpeningHoursPart(splitParts[1].trim());
-
-                /* Translators:
-                 * This is a format string with two separate time ranges
-                 * such as "Mo-Fr 10:00-19:00 Sa 12:00-16:00"
-                 * The space between the format place holders could be
-                 * substituted with the appropriate separator.
-                 */
-                return C_("time range list", "%s %s").format(part1, part2);
-            case 3:
-                part1 = _translateOpeningHoursPart(splitParts[0].trim());
-                part2 = _translateOpeningHoursPart(splitParts[1].trim());
-                part3 = _translateOpeningHoursPart(splitParts[2].trim());
-
-                /* Translators:
-                 * This is a format string with three separate time ranges
-                 * such as "Mo-Fr 10:00-19:00 Sa 10:00-17:00 Su 12:00-16:00"
-                 * The space between the format place holders could be
-                 * substituted with the appropriate separator.
-                 */
-            return C_("time range list", "%s %s %s").format(part1,
-                                                            part2,
-                                                            part3);
-            default:
-                return string;
-        }
+        return splitParts.map(p => _translateOpeningHoursPart(p.trim()));
     }
 
 }
 
 /*
- * Parse a time range component, comprised of day and time ranges, such as:
+ * Parse a time range component, comprised of either a single time range, or
+ * day and time ranges, such as:
+ * 10:00-18:00
+ * 09:00-12:00,13:00-19:00
  * Mo-Fr 10:00-19:00
  * Mo-We,Fr 10:00-12:00,13:00-17:00
  */
 function _translateOpeningHoursPart(string) {
-    let splitString = string.split(' ');
+    let splitString = string.split(/\s+/);
 
-    if (splitString.length == 2) {
+    if (splitString.length === 1) {
+        return [_translateOpeningHoursTimeIntervalList(string.trim())];
+    } else if (splitString.length === 2) {
         let dayIntervalSpec =
             _translateOpeningHoursDayIntervalList(splitString[0].trim());
         let timeIntervalSpec =
             _translateOpeningHoursTimeIntervalList(splitString[1].trim());
 
-        /* Translators:
-         * This is a format string consisting of a part specifying the days for
-         * which the specified time is applied and the time interval
-         * specification as the second argument.
-         * The space between the format place holders could be substituted with
-         * the appropriate separator or phrase and the ordering of the arguments
-         * can be rearranged with the %n#s syntax. */
-        return C_("time range component", "%s %s").
-                    format(dayIntervalSpec, timeIntervalSpec);
+        return [dayIntervalSpec, timeIntervalSpec];
     } else {
         // for an unknown format, just output the raw value
-        return string;
+        return [string];
     }
 }
 
@@ -182,7 +144,7 @@ function _translateOpeningHoursDayInterval(string) {
 
     // special case: Mo-Su treated as "every day"
     if (string === 'Mo-Su')
-        return _("every day");
+        return _("Every day");
 
     switch (splitString.length) {
         case 1:
@@ -205,9 +167,9 @@ function _translateOpeningHoursDayInterval(string) {
 
 function _translateOpeningHoursDay(string) {
     if (string === 'PH')
-        return _("public holidays");
+        return _("Public holidays");
     if (string === 'SH')
-        return _("school holidays");
+        return _("School holidays");
 
     // create a dummy DateTime instance which is guaranteed to be a Monday
     let time = GLib.DateTime.new_local(1, 1, 1, 0, 0, 0.0);
@@ -303,18 +265,7 @@ function _translateOpeningHoursTime(string) {
         if (h > 24 || h < 0 || min > 59 || min < 0)
             return string;
 
-        // should translate 24:00 to 00:00 to keep GDateTime happy
-        if (h == 24)
-            h = 0;
-
-        // create a dummy DateTime, we are just interested in the hour and
-        // minute parts
-        let time = GLib.DateTime.new_local(1, 1, 1, h, min, 0.0);
-
-        if (clockFormat === '24h')
-            return time.format('%R');
-        else
-            return time.format('%r');
+        return Time.formatTimeFromHoursAndMins(h, min);
     } else {
         // unknown format, just return input
         return string;
