@@ -87,6 +87,9 @@ const DASHED_ROUTE_LINE_FILLED_LENGTH = 5;
 // length of gaps of dashed lines used for walking legs of transit itineraries
 const DASHED_ROUTE_LINE_GAP_LENGTH = 5;
 
+// Maximum limit of file size (20 MB) that can be loaded without user confirmation
+const FILE_SIZE_LIMIT_MB = 20;
+
 var MapView = GObject.registerClass({
     Properties: {
         // this property is true when the routing sidebar is active
@@ -453,6 +456,21 @@ var MapView = GObject.registerClass({
         this._scale.visible = !this._scale.visible;
     }
 
+    _checkIfFileSizeNeedsConfirmation(files) {
+        let confirmLoad = false;
+        let totalFileSizeMB = 0;
+        files.forEach((file) => {
+            totalFileSizeMB += file.query_info(Gio.FILE_ATTRIBUTE_STANDARD_SIZE, 
+                                               0, null).get_size();
+        });
+        totalFileSizeMB = totalFileSizeMB / (1024 * 1024);
+        if (totalFileSizeMB > FILE_SIZE_LIMIT_MB) {
+            confirmLoad = true;
+        }
+
+        return {'confirmLoad': confirmLoad, 'totalFileSizeMB': totalFileSizeMB};
+    }
+
     _onShapeLoad(error, bbox, layer) {
         if (error) {
             let msg = _("Failed to open layer");
@@ -468,9 +486,38 @@ var MapView = GObject.registerClass({
     }
 
     openShapeLayers(files) {
+        let result = this._checkIfFileSizeNeedsConfirmation(files);
+        if (result.confirmLoad) {
+            let totalFileSizeMB = result.totalFileSizeMB;
+
+            let dialog = new Gtk.MessageDialog ({
+                transient_for: this._mainWindow,
+                modal: true,
+                buttons: Gtk.ButtonsType.OK_CANCEL,
+                text: _("Do you want to continue?"), 
+                secondary_text: _("You are about to open files with a total " + 
+                                 "size of %s MB.This could take some time to" +
+                                 " load").format(totalFileSizeMB.toLocaleString(undefined,
+                                                                               { maximumFractionDigits: 1 }))
+            });
+
+            dialog.connect('response', (widget, responseId) => {
+                if (responseId === Gtk.ResponseType.OK) {
+                    this._loadShapeLayers(files);
+                }
+                dialog.destroy();
+            });
+            dialog.show_all();
+        } else {
+            this._loadShapeLayers(files);
+        }
+        return true;
+    }
+
+    _loadShapeLayers(files) {
         let bbox = new Champlain.BoundingBox();
-        let ret = true;
         this._remainingFilesToLoad = files.length;
+
         files.forEach((file) => {
             try {
                 let i = this._findShapeLayerIndex(file);
@@ -486,11 +533,8 @@ var MapView = GObject.registerClass({
                 Utils.debug(e);
                 let msg = _("Failed to open layer");
                 Utils.showDialog(msg, Gtk.MessageType.ERROR, this._mainWindow);
-                ret = false;
             }
         });
-
-        return ret;
     }
 
     removeShapeLayer(shapeLayer) {
