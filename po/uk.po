@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2020-11-25 21:30+0000\n"
-"PO-Revision-Date: 2020-11-28 10:37+0200\n"
+"POT-Creation-Date: 2020-12-21 22:09+0000\n"
+"PO-Revision-Date: 2020-12-22 13:29+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -668,7 +668,6 @@ msgid "Send To…"
 msgstr "Надіслати…"
 
 #: data/ui/send-to-dialog.ui:86
-#| msgid "C_heck in"
 msgid "Check In…"
 msgstr "Відзначитися…"
 
@@ -917,7 +916,6 @@ msgid "Unable to export view"
 msgstr "Неможливо експортувати перегляд"
 
 #: src/geoclue.js:118
-#| msgid "Current location"
 msgid "Current Location"
 msgstr "Поточне місце"
 
@@ -933,11 +931,11 @@ msgstr "помилка розбирання"
 msgid "unknown geometry"
 msgstr "невідома геометрія"
 
-#: src/graphHopper.js:112 src/transitPlan.js:201
+#: src/graphHopper.js:112 src/transitPlan.js:181
 msgid "Route request failed."
 msgstr "Невдалий запит маршруту."
 
-#: src/graphHopper.js:119 src/transitPlan.js:193
+#: src/graphHopper.js:119 src/transitPlan.js:173
 msgid "No route found."
 msgstr "Не знайдено жодного маршруту."
 
@@ -994,15 +992,15 @@ msgstr "Блоки карти надано %s"
 msgid "Search provided by %s using %s"
 msgstr "Послуги з пошуку надано %s, використовуємо %s"
 
-#: src/mapView.js:466
-msgid "File type is not supported"
-msgstr "Тип файла не підтримується"
-
-#: src/mapView.js:473
+#: src/mapView.js:458 src/mapView.js:487
 msgid "Failed to open layer"
 msgstr "Не вдалося відкрити шар"
 
-#: src/mapView.js:509
+#: src/mapView.js:481
+msgid "File type is not supported"
+msgstr "Тип файла не підтримується"
+
+#: src/mapView.js:522
 msgid "Failed to open GeoURI"
 msgstr "Не вдалося відкрити GeoURI"
 
@@ -1048,15 +1046,15 @@ msgstr "Офіційна назва. Це зазвичай перше, що по
 msgid "Address"
 msgstr "Адреса"
 
-#: src/osmEditDialog.js:126 src/placeBubble.js:116
+#: src/osmEditDialog.js:126 src/placeBubble.js:118
 msgid "Website"
 msgstr "Сайт"
 
 #: src/osmEditDialog.js:130
 msgid "This is not a valid URL. Make sure to include http:// or https://."
 msgstr ""
-"Ця адреса є некоректною. Переконайтеся, що адреса починається з http:// або"
-" https://."
+"Ця адреса є некоректною. Переконайтеся, що адреса починається з http:// або "
+"https://."
 
 #: src/osmEditDialog.js:131
 msgid ""
@@ -1081,7 +1079,7 @@ msgstr ""
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:145 src/placeBubble.js:379
+#: src/osmEditDialog.js:145 src/placeBubble.js:415
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -1091,7 +1089,7 @@ msgid ""
 "“en:Article title”."
 msgstr "Формат слід містити код мови і назву статті, як-от «uk:Назва статті»."
 
-#: src/osmEditDialog.js:153 src/placeBubble.js:136
+#: src/osmEditDialog.js:153 src/placeBubble.js:140
 msgid "Opening hours"
 msgstr "Робочий час"
 
@@ -1105,11 +1103,11 @@ msgstr "Довідку щодо формату можна знати за пос
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:161 src/placeBubble.js:246
+#: src/osmEditDialog.js:161 src/placeBubble.js:250
 msgid "Population"
 msgstr "Населення"
 
-#: src/osmEditDialog.js:166 src/placeBubble.js:255
+#: src/osmEditDialog.js:166 src/placeBubble.js:259
 msgid "Altitude"
 msgstr "Висота"
 
@@ -1161,7 +1159,7 @@ msgstr "Служба"
 msgid "Religion"
 msgstr "Релігія"
 
-#: src/osmEditDialog.js:195 src/translations.js:326
+#: src/osmEditDialog.js:195 src/translations.js:277
 msgid "Animism"
 msgstr "Анімізм"
 
@@ -1169,83 +1167,83 @@ msgstr "Анімізм"
 msgid "Bahá’í"
 msgstr "Бахаїзм"
 
-#: src/osmEditDialog.js:197 src/translations.js:328
+#: src/osmEditDialog.js:197 src/translations.js:279
 msgid "Buddhism"
 msgstr "Буддизм"
 
-#: src/osmEditDialog.js:198 src/translations.js:329
+#: src/osmEditDialog.js:198 src/translations.js:280
 msgid "Caodaism"
 msgstr "Каодай"
 
-#: src/osmEditDialog.js:199 src/translations.js:330
+#: src/osmEditDialog.js:199 src/translations.js:281
 msgid "Christianity"
 msgstr "Християнство"
 
-#: src/osmEditDialog.js:200 src/translations.js:331
+#: src/osmEditDialog.js:200 src/translations.js:282
 msgid "Confucianism"
 msgstr "Конфуціанство"
 
-#: src/osmEditDialog.js:201 src/translations.js:332
+#: src/osmEditDialog.js:201 src/translations.js:283
 msgid "Hinduism"
 msgstr "Індуїзм"
 
-#: src/osmEditDialog.js:202 src/translations.js:333
+#: src/osmEditDialog.js:202 src/translations.js:284
 msgid "Jainism"
 msgstr "Джайнізм"
 
-#: src/osmEditDialog.js:203 src/translations.js:334
+#: src/osmEditDialog.js:203 src/translations.js:285
 msgid "Judaism"
 msgstr "Юдаїзм"
 
-#: src/osmEditDialog.js:204 src/translations.js:335
+#: src/osmEditDialog.js:204 src/translations.js:286
 msgid "Islam"
 msgstr "Іслам"
 
-#: src/osmEditDialog.js:205 src/translations.js:336
+#: src/osmEditDialog.js:205 src/translations.js:287
 msgid "Multiple Religions"
 msgstr "Мультиконфесійність"
 
-#: src/osmEditDialog.js:206 src/translations.js:337
+#: src/osmEditDialog.js:206 src/translations.js:288
 msgid "Paganism"
 msgstr "Язичництво"
 
-#: src/osmEditDialog.js:207 src/translations.js:338
+#: src/osmEditDialog.js:207 src/translations.js:289
 msgid "Pastafarianism"
 msgstr "Пастафаріанство"
 
-#: src/osmEditDialog.js:208 src/translations.js:339
+#: src/osmEditDialog.js:208 src/translations.js:290
 msgid "Scientology"
 msgstr "Сайнтологія"
 
-#: src/osmEditDialog.js:209 src/translations.js:340
+#: src/osmEditDialog.js:209 src/translations.js:291
 msgid "Shinto"
 msgstr "Сінтоїзм"
 
-#: src/osmEditDialog.js:210 src/translations.js:341
+#: src/osmEditDialog.js:210 src/translations.js:292
 msgid "Sikhism"
 msgstr "Сикхізм"
 
-#: src/osmEditDialog.js:211 src/translations.js:342
+#: src/osmEditDialog.js:211 src/translations.js:293
 msgid "Spiritualism"
 msgstr "Спіритуалізм"
 
-#: src/osmEditDialog.js:212 src/translations.js:343
+#: src/osmEditDialog.js:212 src/translations.js:294
 msgid "Taoism"
 msgstr "Даосизм"
 
-#: src/osmEditDialog.js:213 src/translations.js:344
+#: src/osmEditDialog.js:213 src/translations.js:295
 msgid "Unitarian Universalism"
 msgstr "Унітарний універсалізм"
 
-#: src/osmEditDialog.js:214 src/translations.js:345
+#: src/osmEditDialog.js:214 src/translations.js:296
 msgid "Voodoo"
 msgstr "Вуду"
 
-#: src/osmEditDialog.js:215 src/translations.js:346
+#: src/osmEditDialog.js:215 src/translations.js:297
 msgid "Yazidism"
 msgstr "Єзидизм"
 
-#: src/osmEditDialog.js:216 src/translations.js:347
+#: src/osmEditDialog.js:216 src/translations.js:298
 msgid "Zoroastrianism"
 msgstr "Зороастризм"
 
@@ -1284,16 +1282,14 @@ msgstr "Зроблено"
 msgid "Unnamed place"
 msgstr "Місце без назви"
 
-#: src/placeBubble.js:124
-#| msgid "House number"
+#: src/placeBubble.js:126
 msgid "Phone number"
 msgstr "Номер телефону"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeBubble.js:146
-#| msgid "Internet access"
+#: src/placeBubble.js:150
 msgid "Public internet access"
 msgstr "Громадський доступ до інтернету"
 
@@ -1301,54 +1297,50 @@ msgstr "Громадський доступ до інтернету"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeBubble.js:155
-#| msgid "Internet access"
+#: src/placeBubble.js:159
 msgid "No internet access"
 msgstr "Немає доступу до інтернету"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeBubble.js:163
-#| msgid "Public"
+#: src/placeBubble.js:167
 msgid "Public Wi-Fi"
 msgstr "Громадський Wi-Fi"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeBubble.js:171
-#| msgid "Internet access"
+#: src/placeBubble.js:175
 msgid "Wired internet access"
 msgstr "Дротовий доступ до інтернету"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeBubble.js:179
+#: src/placeBubble.js:183
 msgid "Computers available for use"
 msgstr "Є доступ до комп'ютерів"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeBubble.js:187
+#: src/placeBubble.js:191
 msgid "Internet assistance available"
 msgstr "Доступна інтернет-допомога"
 
-#: src/placeBubble.js:193
+#: src/placeBubble.js:197
 msgid "No toilets available"
 msgstr "Немає туалетів"
 
-#: src/placeBubble.js:196
+#: src/placeBubble.js:200
 msgid "Toilets available"
 msgstr "Є туалети"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeBubble.js:205
-#| msgid "Wheelchair access"
+#: src/placeBubble.js:209
 msgid "Wheelchair accessible"
 msgstr "Доступне для візків"
 
@@ -1357,8 +1349,7 @@ msgstr "Доступне для візків"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeBubble.js:215
-#| msgid "Wheelchair access"
+#: src/placeBubble.js:219
 msgid "Limited wheelchair accessibility"
 msgstr "Обмежена доступність для візків"
 
@@ -1366,8 +1357,7 @@ msgstr "Обмежена доступність для візків"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeBubble.js:224
-#| msgid "Wheelchair access"
+#: src/placeBubble.js:228
 msgid "Not wheelchair accessible"
 msgstr "Недоступне для візків"
 
@@ -1376,31 +1366,27 @@ msgstr "Недоступне для візків"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeBubble.js:234
+#: src/placeBubble.js:238
 msgid "Designated for wheelchair users"
 msgstr "Позначено для користувачів візків"
 
-#: src/placeBubble.js:261
+#: src/placeBubble.js:265
 msgid "Religion:"
 msgstr "Релігія:"
 
-#: src/placeEntry.js:212
+#: src/placeEntry.js:221
 msgid "Failed to parse Geo URI"
 msgstr "Не вдалося розібрати геопосилання"
 
-#: src/place.js:422
+#: src/place.js:417
 msgid "Place not found in OpenStreetMap"
 msgstr "Місце не знайдено на OpenStreetMap"
 
-#: src/place.js:442
-msgid "OpenStreetMap URL is not valid"
-msgstr "Адреса OpenStreetMap є некоректною"
-
-#: src/place.js:447
+#: src/place.js:424
 msgid "Coordinates in URL are not valid"
 msgstr "Координати у адресі є некоректними"
 
-#: src/place.js:468
+#: src/place.js:433
 msgid "URL is not supported"
 msgstr "Підтримки адреси не передбачено"
 
@@ -1452,7 +1438,7 @@ msgstr "Не вдалося відкрити посилання"
 msgid "Open with %s"
 msgstr "Відкрити через %s"
 
-#: src/shapeLayer.js:91
+#: src/shapeLayer.js:95
 msgid "failed to load file"
 msgstr "не вдалося завантажити файл"
 
@@ -1536,11 +1522,11 @@ msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e %b"
 
-#: src/transitPlan.js:197
+#: src/transitPlan.js:177
 msgid "No timetable data found for this route."
 msgstr "Немає даних про цей маршрут."
 
-#: src/transitPlan.js:205
+#: src/transitPlan.js:185
 msgid "No provider found for this route."
 msgstr "Для цього маршруту не знайдено надавачів даних."
 
@@ -1549,7 +1535,7 @@ msgstr "Для цього маршруту не знайдено надавач�
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:322
+#: src/transitPlan.js:302
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -1558,7 +1544,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: src/transitPlan.js:351
+#: src/transitPlan.js:331
 #, javascript-format
 msgid "%s minute"
 msgid_plural "%s minutes"
@@ -1571,7 +1557,7 @@ msgstr[3] "%s хвилина"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: src/transitPlan.js:363
+#: src/transitPlan.js:343
 #, javascript-format
 msgid "%s hour"
 msgid_plural "%s hours"
@@ -1584,7 +1570,7 @@ msgstr[3] "%s година"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: src/transitPlan.js:371
+#: src/transitPlan.js:351
 #, javascript-format
 msgid "%s:%s hour"
 msgid_plural "%s:%s hours"
@@ -1599,55 +1585,20 @@ msgstr[3] "%s:%s година"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:764
+#: src/transitPlan.js:744
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
 
-#: src/translations.js:56
-msgid "around the clock"
-msgstr "цілодобово"
+#: src/translations.js:52
+#| msgid "around the clock"
+msgid "Around the clock"
+msgstr "Цілодобово"
 
-#: src/translations.js:58
-msgid "from sunrise to sunset"
-msgstr "від світанку до заходу"
-
-#. Translators:
-#. * This is a format string with two separate time ranges
-#. * such as "Mo-Fr 10:00-19:00 Sa 12:00-16:00"
-#. * The space between the format place holders could be
-#. * substituted with the appropriate separator.
-#.
-#: src/translations.js:77
-#, javascript-format
-msgctxt "time range list"
-msgid "%s %s"
-msgstr "%s %s"
-
-#. Translators:
-#. * This is a format string with three separate time ranges
-#. * such as "Mo-Fr 10:00-19:00 Sa 10:00-17:00 Su 12:00-16:00"
-#. * The space between the format place holders could be
-#. * substituted with the appropriate separator.
-#.
-#: src/translations.js:89
-#, javascript-format
-msgctxt "time range list"
-msgid "%s %s %s"
-msgstr "%s %s %s"
-
-#. Translators:
-#. * This is a format string consisting of a part specifying the days for
-#. * which the specified time is applied and the time interval
-#. * specification as the second argument.
-#. * The space between the format place holders could be substituted with
-#. * the appropriate separator or phrase and the ordering of the arguments
-#. * can be rearranged with the %n#s syntax.
-#: src/translations.js:120
-#, javascript-format
-msgctxt "time range component"
-msgid "%s %s"
-msgstr "%s %s"
+#: src/translations.js:54
+#| msgid "from sunrise to sunset"
+msgid "From sunrise to sunset"
+msgstr "Від світанку до заходу"
 
 #. Translators:
 #. * This represents a format string consisting of two day interval
@@ -1658,7 +1609,7 @@ msgstr "%s %s"
 #. * place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: src/translations.js:152
+#: src/translations.js:114
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s"
@@ -1673,32 +1624,35 @@ msgstr "%s,%s"
 #. * %s place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: src/translations.js:166
+#: src/translations.js:128
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s,%s"
 msgstr "%s,%s,%s"
 
-#: src/translations.js:185
-msgid "every day"
-msgstr "щодня"
+#: src/translations.js:147
+#| msgid "every day"
+msgid "Every day"
+msgstr "Щодня"
 
 #. Translators:
 #. * This represents a range of days with a starting and ending day.
 #.
-#: src/translations.js:197
+#: src/translations.js:159
 #, javascript-format
 msgctxt "day range"
 msgid "%s-%s"
 msgstr "%s-%s"
 
-#: src/translations.js:208
-msgid "public holidays"
-msgstr "святкові дні"
+#: src/translations.js:170
+#| msgid "public holidays"
+msgid "Public holidays"
+msgstr "Святкові дні"
 
-#: src/translations.js:210
-msgid "school holidays"
-msgstr "шкільні канікули"
+#: src/translations.js:172
+#| msgid "school holidays"
+msgid "School holidays"
+msgstr "Шкільні канікули"
 
 #. Translators:
 #. * This is a list with two time intervals, such as:
@@ -1708,13 +1662,13 @@ msgstr "шкільні канікули"
 #. * the translation. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: src/translations.js:250
+#: src/translations.js:212
 #, javascript-format
 msgctxt "time interval list"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/translations.js:264
+#: src/translations.js:226
 msgid "not open"
 msgstr "не відкрито"
 
@@ -1725,7 +1679,7 @@ msgstr "не відкрито"
 #. * translation as needed. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: src/translations.js:279
+#: src/translations.js:241
 #, javascript-format
 msgctxt "time interval"
 msgid "%s-%s"
@@ -1926,6 +1880,21 @@ msgstr "Виконайте правий розворот на %s"
 #: src/transitplugins/openTripPlanner.js:1244
 msgid "Make a right u-turn"
 msgstr "Виконайте правий розворот"
+
+#~ msgid "OpenStreetMap URL is not valid"
+#~ msgstr "Адреса OpenStreetMap є некоректною"
+
+#~ msgctxt "time range list"
+#~ msgid "%s %s"
+#~ msgstr "%s %s"
+
+#~ msgctxt "time range list"
+#~ msgid "%s %s %s"
+#~ msgstr "%s %s %s"
+
+#~ msgctxt "time range component"
+#~ msgid "%s %s"
+#~ msgstr "%s %s"
 
 #~ msgid "Find a Route"
 #~ msgstr "Знайти маршрут"
