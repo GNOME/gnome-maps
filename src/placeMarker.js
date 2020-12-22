@@ -38,11 +38,7 @@ class PlaceMarker extends MapMarker.MapMarker {
                  y: this.height - 3 };
     }
 
-    _createBubble() {
-        if (this.place.name) {
-            return new PlaceBubble.PlaceBubble({ place: this.place,
-                                                 mapView: this._mapView });
-        } else
-            return null;
+    _hasBubble() {
+        return true;
     }
 });

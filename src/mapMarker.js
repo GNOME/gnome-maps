@@ -27,7 +27,9 @@ const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Mainloop = imports.mainloop;
 
+const Application = imports.application;
 const MapWalker = imports.mapWalker;
+const PlaceBubble = imports.placeBubble;
 const Utils = imports.utils;
 
 var MapMarker = GObject.registerClass({
@@ -97,6 +99,8 @@ var MapMarker = GObject.registerClass({
             this.connect('notify::view-longitude', this._onViewUpdated.bind(this));
             this.connect('notify::view-zoom-level', this._onViewUpdated.bind(this));
         }
+
+        Application.application.connect('notify::adaptive-mode', this._onAdaptiveModeChanged.bind(this));
     }
 
     get surface() {
@@ -202,15 +206,19 @@ var MapMarker = GObject.registerClass({
     }
 
     get bubble() {
-        if (this._bubble === undefined)
-            this._bubble = this._createBubble();
+        if (this._bubble === undefined && this._hasBubble()) {
+            if (this._place.name) {
+                this._bubble = new PlaceBubble.PlaceBubble({ place: this._place,
+                                                             mapView: this._mapView });
+            }
+        }
 
         return this._bubble;
     }
 
-    _createBubble() {
+    _hasBubble() {
         // Markers has no associated bubble by default
-        return null;
+        return false;
     }
 
     _positionBubble(bubble) {
@@ -349,7 +357,7 @@ var MapMarker = GObject.registerClass({
     }
 
     showBubble() {
-        if (this.bubble && !this.bubble.visible && this._isInsideView()) {
+        if (this.bubble && !this.bubble.visible && this._isInsideView() && !Application.application.adaptive_mode) {
             this._initBubbleSignals();
             this.bubble.show();
             this._positionBubble(this.bubble);
@@ -384,9 +392,24 @@ var MapMarker = GObject.registerClass({
     }
 
     _onMarkerSelected() {
-        if (this.selected)
-            this.showBubble();
-        else
+        if (this.selected) {
+            if (this.bubble) {
+                this.showBubble();
+                Application.application.selected_place = this._place;
+            }
+        } else {
             this.hideBubble();
+            Application.application.selected_place = null;
+        }
+    }
+
+    _onAdaptiveModeChanged() {
+        if (this.selected) {
+            if (!Application.application.adaptive_mode) {
+                this.showBubble();
+            } else {
+                this.hideBubble();
+            }
+        }
     }
 });

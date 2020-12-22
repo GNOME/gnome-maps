@@ -24,7 +24,6 @@ const Clutter = imports.gi.Clutter;
 const GObject = imports.gi.GObject;
 
 const MapMarker = imports.mapMarker;
-const PlaceBubble = imports.placeBubble;
 
 var AccuracyCircleMarker = GObject.registerClass(
 class AccuracyCirleMarker extends Champlain.Point {
@@ -90,9 +89,8 @@ class UserLocationMarker extends MapMarker.MapMarker {
                  y: Math.floor(this.height / 2) };
     }
 
-    _createBubble() {
-        return new PlaceBubble.PlaceBubble({ place: this.place,
-                                             mapView: this._mapView });
+    _hasBubble() {
+        return true;
     }
 
     addToLayer(layer) {

@@ -22,6 +22,7 @@
 
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
+const Geocode = imports.gi.GeocodeGlib;
 const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
 const GtkClutter = imports.gi.GtkClutter;
@@ -64,7 +65,18 @@ var Application = GObject.registerClass({
                                                '',
                                                '',
                                                GObject.ParamFlags.READABLE |
-                                               GObject.ParamFlags.WRITABLE)
+                                               GObject.ParamFlags.WRITABLE),
+        'selected-place': GObject.ParamSpec.object('selected-place',
+                                                   'Selected Place',
+                                                   'The selected place',
+                                                   GObject.ParamFlags.READABLE |
+                                                   GObject.ParamFlags.WRITABLE,
+                                                   Geocode.Place),
+        'adaptive-mode': GObject.ParamSpec.boolean('adaptive-mode',
+                                                   'Adaptive Move',
+                                                   'Whether the main window is in adaptive (narrow) mode',
+                                                   GObject.ParamFlags.READABLE |
+                                                   GObject.ParamFlags.WRITABLE),
     },
 }, class Application extends Gtk.Application {
 

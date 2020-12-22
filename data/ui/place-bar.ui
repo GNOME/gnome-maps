@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="Gjs_PlaceBar" parent="GtkRevealer">
+    <property name="visible">True</property>
+    <property name="transition_type">slide-up</property>
+    <property name="reveal_child">False</property>
+    <child>
+      <object class="GtkActionBar" id="actionbar">
+        <property name="visible">True</property>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkLabel" id="title">
+                <style>
+                  <class name="title-2"/>
+                </style>
+                <property name="visible">True</property>
+                <property name="label"></property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>
+
+

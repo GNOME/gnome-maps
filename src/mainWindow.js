@@ -39,6 +39,7 @@ const GeocodeFactory = imports.geocode;
 const HeaderBar = imports.headerBar;
 const LocationServiceDialog = imports.locationServiceDialog;
 const MapView = imports.mapView;
+const PlaceBar = imports.placeBar;
 const PlaceEntry = imports.placeEntry;
 const PlaceStore = imports.placeStore;
 const PrintOperation = imports.printOperation;
@@ -84,7 +85,8 @@ var MainWindow = GObject.registerClass({
                         'mainGrid',
                         'noNetworkView',
                         'actionBar',
-                        'actionBarRevealer' ]
+                        'actionBarRevealer',
+                        'placeBar' ]
 }, class MainWindow extends Gtk.ApplicationWindow {
 
     get mapView() {
@@ -115,8 +117,9 @@ var MainWindow = GObject.registerClass({
         this._initSignals();
         this._restoreWindowGeometry();
         this._initDND();
+        this._initPlaceBar();
 
-        this._grid.attach(this._sidebar, 1, 0, 1, 1);
+        this._grid.attach(this._sidebar, 1, 0, 1, 2);
 
         this._grid.show_all();
 
@@ -158,6 +161,12 @@ var MainWindow = GObject.registerClass({
                                        sidebar, 'visible',
                                        GObject.BindingFlags.DEFAULT);
         return sidebar;
+    }
+
+    _initPlaceBar() {
+        this.application.bind_property('selected-place',
+                                       this._placeBar, 'place',
+                                       GObject.BindingFlags.DEFAULT);
     }
 
     _initDND() {
@@ -371,12 +380,14 @@ var MainWindow = GObject.registerClass({
         this.connect('size-allocate', () => {
             let [width, height] = this.get_size();
             if (width < _ADAPTIVE_VIEW_WIDTH) {
+                this.application.adaptive_mode = true;
                 this._headerBarLeft.hide();
                 this._headerBarRight.hide();
                 this._actionBarRevealer.set_reveal_child(true);
                 this._placeEntry.set_margin_start(0);
                 this._placeEntry.set_margin_end(0);
             } else {
+                this.application.adaptive_mode = false;
                 this._headerBarLeft.show();
                 this._headerBarRight.show();
                 this._actionBarRevealer.set_reveal_child(false);
