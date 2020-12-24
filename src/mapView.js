@@ -496,7 +496,7 @@ var MapView = GObject.registerClass({
                 buttons: Gtk.ButtonsType.OK_CANCEL,
                 text: _("Do you want to continue?"), 
                 secondary_text: _("You are about to open files with a total " + 
-                                 "size of %s MB.This could take some time to" +
+                                 "size of %s MB. This could take some time to" +
                                  " load").format(totalFileSizeMB.toLocaleString(undefined,
                                                                                { maximumFractionDigits: 1 }))
             });
