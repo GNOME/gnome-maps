@@ -28,11 +28,12 @@ const Pango = imports.gi.Pango;
 const Format = imports.format;
 
 const Application = imports.application;
-const MapBubble = imports.mapBubble;
+const ContactPlace = imports.contactPlace;
 const Overpass = imports.overpass;
 const Place = imports.place;
 const PlaceBubbleImage = imports.placeBubbleImage;
 const PlaceButtons = imports.placeButtons;
+const PlaceFormatter = imports.placeFormatter;
 const PlaceStore = imports.placeStore;
 const Translations = imports.translations;
 const Utils = imports.utils;
@@ -50,10 +51,69 @@ var PlaceBubble = GObject.registerClass({
                                                    GObject.ParamFlags.WRITABLE,
                                                    Geocode.Place)
     }
-}, class PlaceBubble extends MapBubble.MapBubble {
+}, class PlaceBubble extends Gtk.Box {
 
     _init(params) {
+        this._place = params.place;
+        delete params.place;
+
+        let mapView = params.mapView;
+        delete params.mapView;
+
         super._init(params);
+
+        let ui = Utils.getUIObject('map-bubble', [ 'bubble-main-box',
+                                                   'bubble-spinner',
+                                                   'bubble-thumbnail',
+                                                   'thumbnail-separator',
+                                                   'label-title',
+                                                   'contact-avatar',
+                                                   'address-label',
+                                                   'bubble-main-stack',
+                                                   'bubble-content-area',
+                                                   'place-buttons',
+                                                   'send-to-button-alt',
+                                                   'title-box' ]);
+        this._title = ui.labelTitle;
+        this._thumbnail = ui.bubbleThumbnail;
+        this._thumbnailSeparator = ui.thumbnailSeparator;
+        this._content = ui.bubbleContentArea;
+        this._mainStack = ui.bubbleMainStack;
+        this._spinner = ui.bubbleSpinner;
+        this._mainBox = ui.bubbleMainBox;
+        this._contactAvatar = ui.contactAvatar;
+        this._addressLabel = ui.addressLabel;
+
+        this.add(this._mainStack);
+
+        let placeButtons = new PlaceButtons.PlaceButtons({ place: this._place,
+                                                           mapView: mapView });
+        ui.placeButtons.add(placeButtons);
+
+        if (this.place.isCurrentLocation) {
+            /* Current Location bubbles have a slightly different layout, to
+               avoid awkward whitespace */
+
+            /* hide the normal button area */
+            ui.placeButtons.visible = false;
+
+            /* show the top-end-corner share button instead */
+            ui.sendToButtonAlt.visible = true;
+            placeButtons.initSendToButton(ui.sendToButtonAlt);
+
+            /* adjust some margins */
+            ui.titleBox.margin = 12;
+            ui.titleBox.marginStart = 18;
+            ui.titleBox.spacing = 18;
+        }
+
+        /* Set up contact avatar */
+        if (this.place instanceof ContactPlace.ContactPlace) {
+            this._contactAvatar.visible = true;
+            Utils.load_icon(this.place.icon, 32, (pixbuf) => {
+                this._contactAvatar.set_image_load_func((size) => Utils.loadAvatar(pixbuf, size));
+            });
+        }
 
         this.loading = true;
 
@@ -88,11 +148,62 @@ var PlaceBubble = GObject.registerClass({
                 this._populate(this.place);
             }
         }
+
+        this.updatePlaceDetails();
     }
 
     updateLocation() {
         /* Called by the UserLocationMarker when its location changes */
         this._populate(this.place);
+    }
+
+    get place() {
+        return this._place;
+    }
+
+    get content() {
+        return this._content;
+    }
+
+    get thumbnail() {
+        return this._thumbnail.pixbuf;
+    }
+
+    set thumbnail(val) {
+        if (val) {
+            this._thumbnail.pixbuf = val;
+            this._thumbnail.visible = true;
+            this._thumbnailSeparator.visible = true;
+        }
+    }
+
+    get loading() {
+        return this._spinner.active;
+    }
+    set loading(val) {
+        this._mainStack.set_visible_child(val ? this._spinner : this._mainBox);
+        this._spinner.active = val;
+    }
+
+    updatePlaceDetails() {
+        let place = this.place;
+        let formatter = new PlaceFormatter.PlaceFormatter(place);
+
+        let address = formatter.rows.map((row) => {
+            row = row.map(function(prop) {
+                return GLib.markup_escape_text(place[prop], -1);
+            });
+            return row.join(', ');
+        });
+        if (address.length > 0) {
+            this._addressLabel.label = address.join('\n');
+            this._addressLabel.show();
+        } else {
+            this._addressLabel.hide();
+        }
+
+        this._title.label = formatter.title;
+        this._contactAvatar.text = formatter.title;
     }
 
     _onInfoAdded() {

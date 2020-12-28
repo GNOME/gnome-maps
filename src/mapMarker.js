@@ -28,8 +28,8 @@ const Gtk = imports.gi.Gtk;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
+const MapBubble = imports.mapBubble;
 const MapWalker = imports.mapWalker;
-const PlaceBubble = imports.placeBubble;
 const Utils = imports.utils;
 
 var MapMarker = GObject.registerClass({
@@ -208,8 +208,8 @@ var MapMarker = GObject.registerClass({
     get bubble() {
         if (this._bubble === undefined && this._hasBubble()) {
             if (this._place.name) {
-                this._bubble = new PlaceBubble.PlaceBubble({ place: this._place,
-                                                             mapView: this._mapView });
+                this._bubble = new MapBubble.MapBubble({ place: this._place,
+                                                         mapView: this._mapView });
             }
         }
 
