@@ -27,8 +27,8 @@ const Gtk = imports.gi.Gtk;
 /* The maximum aspect ratio, after which the image will be cropped vertically */
 const MAX_ASPECT_RATIO = 1;
 
-var PlaceBubbleImage = GObject.registerClass(
-class PlaceBubbleImage extends Gtk.DrawingArea {
+var PlaceViewImage = GObject.registerClass(
+class PlaceViewImage extends Gtk.DrawingArea {
     _init(params) {
         super._init(params);
 

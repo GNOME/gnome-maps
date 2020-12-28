@@ -22,7 +22,6 @@
 const GObject = imports.gi.GObject;
 
 const MapMarker = imports.mapMarker;
-const PlaceBubble = imports.placeBubble;
 
 var PlaceMarker = GObject.registerClass(
 class PlaceMarker extends MapMarker.MapMarker {

@@ -29,7 +29,7 @@ const Application = imports.application;
 const ContactPlace = imports.contactPlace;
 const GeocodeFactory = imports.geocode;
 const Place = imports.place;
-const PlaceBubble = imports.placeBubble;
+const PlaceView = imports.placeView;
 const PlaceButtons = imports.placeButtons;
 const PlaceFormatter = imports.placeFormatter;
 const PlaceStore = imports.placeStore;
@@ -57,7 +57,7 @@ class MapBubble extends Gtk.Popover {
 
         super._init(params);
 
-        let content = new PlaceBubble.PlaceBubble({ place, mapView, visible: true });
+        let content = new PlaceView.PlaceView({ place, mapView, visible: true });
 
         let scrolledWindow = new MapBubbleScrolledWindow({ visible: true,
                                                            propagateNaturalWidth: true,

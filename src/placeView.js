@@ -31,7 +31,7 @@ const Application = imports.application;
 const ContactPlace = imports.contactPlace;
 const Overpass = imports.overpass;
 const Place = imports.place;
-const PlaceBubbleImage = imports.placeBubbleImage;
+const PlaceViewImage = imports.placeViewImage;
 const PlaceButtons = imports.placeButtons;
 const PlaceFormatter = imports.placeFormatter;
 const PlaceStore = imports.placeStore;
@@ -42,7 +42,7 @@ const Wikipedia = imports.wikipedia;
 // maximum dimension of thumbnails to fetch from Wikipedia
 const THUMBNAIL_FETCH_SIZE = 360;
 
-var PlaceBubble = GObject.registerClass({
+var PlaceView = GObject.registerClass({
     Properties: {
         'overpass-place': GObject.ParamSpec.object('overpass-place',
                                                    'Overpass Place',
@@ -51,7 +51,7 @@ var PlaceBubble = GObject.registerClass({
                                                    GObject.ParamFlags.WRITABLE,
                                                    Geocode.Place)
     }
-}, class PlaceBubble extends Gtk.Box {
+}, class PlaceView extends Gtk.Box {
 
     _init(params) {
         this._place = params.place;
@@ -62,7 +62,7 @@ var PlaceBubble = GObject.registerClass({
 
         super._init(params);
 
-        let ui = Utils.getUIObject('map-bubble', [ 'bubble-main-box',
+        let ui = Utils.getUIObject('place-view', [ 'bubble-main-box',
                                                    'bubble-spinner',
                                                    'bubble-thumbnail',
                                                    'thumbnail-separator',
