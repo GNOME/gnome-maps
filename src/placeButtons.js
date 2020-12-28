@@ -50,7 +50,9 @@ var PlaceButtons = GObject.registerClass({
 
         this._initSignals();
 
-        this.place = place;
+        if (place) {
+            this.place = place;
+        }
     }
 
     get place() {

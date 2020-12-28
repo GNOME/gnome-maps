@@ -31,6 +31,8 @@ const PlaceFormatter = imports.placeFormatter;
 var PlaceBar = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/place-bar.ui',
     InternalChildren: [ 'actionbar',
+                        'altSendToButton',
+                        'box',
                         'title' ],
     Properties: {
         'place': GObject.ParamSpec.object('place',
@@ -42,7 +44,14 @@ var PlaceBar = GObject.registerClass({
     },
 }, class PlaceBar extends Gtk.Revealer {
     _init(params) {
+        let mapView = params.mapView;
+        delete params.mapView;
+
         super._init(params);
+
+        this._buttons = new PlaceButtons.PlaceButtons({ mapView });
+        this._buttons.initSendToButton(this._altSendToButton);
+        this._box.add(this._buttons);
 
         Application.application.connect('notify::adaptive-mode', this._updateVisibility.bind(this));
         this.connect('notify::place', this._updatePlace.bind(this));
@@ -58,6 +67,10 @@ var PlaceBar = GObject.registerClass({
         let formatter = new PlaceFormatter.PlaceFormatter(this.place);
         this._title.label = formatter.title;
 
+        this._buttons.place = this.place;
+
+        this._altSendToButton.visible = this.place.isCurrentLocation;
+        this._buttons.visible = !this.place.isCurrentLocation;
     }
 
     _updateVisibility() {

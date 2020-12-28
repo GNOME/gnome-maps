@@ -86,7 +86,7 @@ var MainWindow = GObject.registerClass({
                         'noNetworkView',
                         'actionBar',
                         'actionBarRevealer',
-                        'placeBar' ]
+                        'placeBarContainer' ]
 }, class MainWindow extends Gtk.ApplicationWindow {
 
     get mapView() {
@@ -164,6 +164,10 @@ var MainWindow = GObject.registerClass({
     }
 
     _initPlaceBar() {
+        this._placeBar = new PlaceBar.PlaceBar({ mapView: this._mapView,
+                                                 visible: true });
+        this._placeBarContainer.add(this._placeBar);
+
         this.application.bind_property('selected-place',
                                        this._placeBar, 'place',
                                        GObject.BindingFlags.DEFAULT);
