@@ -26,6 +26,7 @@ const Gtk = imports.gi.Gtk;
 
 const Application = imports.application;
 const PlaceButtons = imports.placeButtons;
+const PlaceDialog = imports.placeDialog;
 const PlaceFormatter = imports.placeFormatter;
 
 var PlaceBar = GObject.registerClass({
@@ -33,6 +34,7 @@ var PlaceBar = GObject.registerClass({
     InternalChildren: [ 'actionbar',
                         'altSendToButton',
                         'box',
+                        'eventbox',
                         'title' ],
     Properties: {
         'place': GObject.ParamSpec.object('place',
@@ -44,14 +46,17 @@ var PlaceBar = GObject.registerClass({
     },
 }, class PlaceBar extends Gtk.Revealer {
     _init(params) {
-        let mapView = params.mapView;
+        this._mapView = params.mapView;
         delete params.mapView;
 
         super._init(params);
 
-        this._buttons = new PlaceButtons.PlaceButtons({ mapView });
+        this._buttons = new PlaceButtons.PlaceButtons({ mapView: this._mapView });
         this._buttons.initSendToButton(this._altSendToButton);
         this._box.add(this._buttons);
+
+        this._multipress = new Gtk.GestureMultiPress({ widget: this._eventbox });
+        this._multipress.connect('released', this._onEventBoxClicked.bind(this));
 
         Application.application.connect('notify::adaptive-mode', this._updateVisibility.bind(this));
         this.connect('notify::place', this._updatePlace.bind(this));
@@ -79,5 +84,14 @@ var PlaceBar = GObject.registerClass({
         } else {
             this.reveal_child = false;
         }
+    }
+
+    _onEventBoxClicked() {
+        let dialog = new PlaceDialog.PlaceDialog ({ transient_for: this.get_toplevel(),
+                                                    modal: true,
+                                                    mapView: this._mapView,
+                                                    place: this.place });
+        dialog.connect('response', () => dialog.destroy());
+        dialog.show();
     }
 });

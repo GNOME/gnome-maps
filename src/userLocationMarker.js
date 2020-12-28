@@ -114,8 +114,6 @@ class UserLocationMarker extends MapMarker.MapMarker {
         this.add_actor(this._actor);
 
         this._updateAccuracyCircle();
-        if (this._bubble)
-            this._bubble.updateLocation();
     }
 
     _updateAccuracyCircle() {

@@ -150,11 +150,8 @@ var PlaceView = GObject.registerClass({
         }
 
         this.updatePlaceDetails();
-    }
 
-    updateLocation() {
-        /* Called by the UserLocationMarker when its location changes */
-        this._populate(this.place);
+        this._place.connect('notify::location', () => this._updateLocation());
     }
 
     get place() {
@@ -546,5 +543,10 @@ var PlaceView = GObject.registerClass({
     // clear the view widgets to be able to re-populate an updated place
     _clearView() {
         this._placeDetails.get_children().forEach((child) => child.destroy());
+    }
+
+    // called when the place's location changes (e.g. for the current location)
+    _updateLocation() {
+        this._populate(this.place);
     }
 });

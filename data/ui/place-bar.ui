@@ -8,38 +8,43 @@
       <object class="GtkActionBar" id="actionbar">
         <property name="visible">True</property>
         <child>
-          <object class="GtkBox" id="box">
+          <object class="GtkEventBox" id="eventbox">
             <property name="visible">True</property>
-            <property name="orientation">vertical</property>
-            <property name="spacing">6</property>
             <child>
-              <object class="GtkBox">
+              <object class="GtkBox" id="box">
                 <property name="visible">True</property>
-                <property name="orientation">horizontal</property>
-                <property name="hexpand">True</property>
+                <property name="orientation">vertical</property>
+                <property name="spacing">6</property>
                 <child>
-                  <object class="GtkLabel" id="title">
-                    <style>
-                      <class name="title-2"/>
-                    </style>
+                  <object class="GtkBox">
                     <property name="visible">True</property>
-                    <property name="label"></property>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkButton" id="altSendToButton">
-                    <property name="visible">False</property>
+                    <property name="orientation">horizontal</property>
+                    <property name="hexpand">True</property>
                     <child>
-                      <object class="GtkImage">
+                      <object class="GtkLabel" id="title">
+                        <style>
+                          <class name="title-2"/>
+                        </style>
                         <property name="visible">True</property>
-                        <property name="icon_name">send-to-symbolic</property>
-                        <property name="tooltip_text" translatable="yes" comments="Translators: This is a tooltip">Share location</property>
+                        <property name="ellipsize">end</property>
                       </object>
                     </child>
+                    <child>
+                      <object class="GtkButton" id="altSendToButton">
+                        <property name="visible">False</property>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="icon_name">send-to-symbolic</property>
+                            <property name="tooltip_text" translatable="yes" comments="Translators: This is a tooltip">Share location</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="pack_type">end</property>
+                      </packing>
+                    </child>
                   </object>
-                  <packing>
-                    <property name="pack_type">end</property>
-                  </packing>
                 </child>
               </object>
             </child>
