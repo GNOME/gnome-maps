@@ -52,9 +52,6 @@ class MapBubble extends Gtk.Popover {
         params.transitions_enabled = false;
         delete params.mapView;
 
-        let buttonFlags = params.buttons || Button.NONE;
-        delete params.buttons;
-
         params.modal = false;
 
         super._init(params);
@@ -80,9 +77,7 @@ class MapBubble extends Gtk.Popover {
         this._contactAvatar = ui.contactAvatar;
         this._addressLabel = ui.addressLabel;
 
-        ui.placeButtons.visible = !!buttonFlags;
-        let placeButtons = new PlaceButtons.PlaceButtons({ buttonFlags,
-                                                           place: this._place,
+        let placeButtons = new PlaceButtons.PlaceButtons({ place: this._place,
                                                            mapView: this._mapView })
         ui.placeButtons.add(placeButtons);
 
@@ -92,8 +87,11 @@ class MapBubble extends Gtk.Popover {
 
             /* hide the normal button area */
             ui.placeButtons.visible = false;
+
             /* show the top-end-corner share button instead */
-            placeButtons.initSendToButton(ui.sendToButtonAlt, buttonFlags & PlaceButtons.Button.CHECK_IN);
+            ui.sendToButtonAlt.visible = true;
+            placeButtons.initSendToButton(ui.sendToButtonAlt);
+
             /* adjust some margins */
             ui.titleBox.margin = 12;
             ui.titleBox.marginStart = 18;
