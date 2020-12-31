@@ -38,6 +38,12 @@ var PlaceButtons = GObject.registerClass({
                         'favoriteButton',
                         'editButton',
                         'favoriteButtonImage' ],
+    Signals: {
+        /* Emitted when the Edit dialog is closed, because the place details
+           might have changed and the parent PlaceBar/PlaceView needs
+           refreshing */
+        'place-edited': {}
+    }
 }, class PlaceButtons extends Gtk.Box {
     _init(params) {
         let place = params.place;
@@ -166,8 +172,7 @@ var PlaceButtons = GObject.registerClass({
                 let object = osmEdit.object;
                 OSMUtils.updatePlaceFromOSMObject(this._place, object);
                 // refresh place view
-                this._clearView();
-                this._populate(this._place);
+                this.emit('place-edited');
                 break;
             default:
                 break;

@@ -88,6 +88,7 @@ var PlaceView = GObject.registerClass({
 
         let placeButtons = new PlaceButtons.PlaceButtons({ place: this._place,
                                                            mapView: mapView });
+        placeButtons.connect('place-edited', this._onPlaceEdited.bind(this));
         ui.placeButtons.add(placeButtons);
 
         if (this.place.isCurrentLocation) {
@@ -548,5 +549,10 @@ var PlaceView = GObject.registerClass({
     // called when the place's location changes (e.g. for the current location)
     _updateLocation() {
         this._populate(this.place);
+    }
+
+    /* called when the place is edited via the OSM edit dialog */
+    _onPlaceEdited() {
+        this._populate(this._place);
     }
 });

@@ -53,6 +53,7 @@ var PlaceBar = GObject.registerClass({
 
         this._buttons = new PlaceButtons.PlaceButtons({ mapView: this._mapView });
         this._buttons.initSendToButton(this._altSendToButton);
+        this._buttons.connect('place-edited', this._onPlaceEdited.bind(this));
         this._box.add(this._buttons);
 
         this._multipress = new Gtk.GestureMultiPress({ widget: this._eventbox });
@@ -93,5 +94,9 @@ var PlaceBar = GObject.registerClass({
                                                     place: this.place });
         dialog.connect('response', () => dialog.destroy());
         dialog.show();
+    }
+
+    _onPlaceEdited() {
+        _updatePlace();
     }
 });
