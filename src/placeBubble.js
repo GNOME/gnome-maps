@@ -85,8 +85,8 @@ var PlaceBubble = GObject.registerClass({
             if (Application.placeStore.isStale(this.place)) {
                 overpass.addInfo(this.place);
             } else {
-                let place = Application.placeStore.get(this.place);
-                this._populate(place);
+                this._place = Application.placeStore.get(this.place);
+                this._populate(this.place);
             }
         } else if (this.place.store && !this.place.prefilled) {
             overpass.addInfo(this.place);
