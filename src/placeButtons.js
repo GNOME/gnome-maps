@@ -67,6 +67,12 @@ var PlaceButtons = GObject.registerClass({
 
     set place(newPlace) {
         this._place = newPlace;
+        /* Use the PlaceStore's version of a place, if available. */
+        if (Application.placeStore.exists(newPlace, null)) {
+            this._place = Application.placeStore.get(newPlace);
+        } else {
+            this._place = newPlace;
+        }
 
         this._updateFavoriteButton(!!this._place.store);
 
