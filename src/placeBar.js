@@ -25,9 +25,11 @@ const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 
 const Application = imports.application;
+const ContactPlace = imports.contactPlace;
 const PlaceButtons = imports.placeButtons;
 const PlaceDialog = imports.placeDialog;
 const PlaceFormatter = imports.placeFormatter;
+const Utils = imports.utils;
 
 var PlaceBar = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/place-bar.ui',
@@ -35,6 +37,7 @@ var PlaceBar = GObject.registerClass({
                         'altSendToButton',
                         'box',
                         'eventbox',
+                        'contactAvatar',
                         'title' ],
     Properties: {
         'place': GObject.ParamSpec.object('place',
@@ -72,6 +75,18 @@ var PlaceBar = GObject.registerClass({
 
         let formatter = new PlaceFormatter.PlaceFormatter(this.place);
         this._title.label = formatter.title;
+
+        if (this.place instanceof ContactPlace.ContactPlace) {
+            this._contactAvatar.visible = true;
+            this._contactAvatar.text = formatter.title;
+
+            this._contactAvatar.set_image_load_func(null);
+            Utils.load_icon(this.place.icon, 32, (pixbuf) => {
+                this._contactAvatar.set_image_load_func((size) => Utils.loadAvatar(pixbuf, size));
+            });
+        } else {
+            this._contactAvatar.visible = false;
+        }
 
         this._buttons.place = this.place;
 
