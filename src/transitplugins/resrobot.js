@@ -36,7 +36,6 @@ const GraphHopperTransit = imports.graphHopperTransit;
 const HTTP = imports.http;
 const HVT = imports.hvt;
 const TransitPlan = imports.transitPlan;
-const TransitTweaks = imports.transitTweaks;
 const Utils = imports.utils;
 
 const BASE_URL = 'https://api.resrobot.se';
@@ -96,7 +95,6 @@ var Resrobot = class Resrobot {
         this._query = Application.routeQuery;
         this._key = params.key;
         this._tz = GLib.TimeZone.new(NATIVE_TIMEZONE);
-        this._tweaks = new TransitTweaks.TransitTweaks({ name: 'resrobot' });
 
         if (!this._key)
             throw new Error('missing key');
@@ -214,9 +212,7 @@ var Resrobot = class Resrobot {
                         // store the back and forward references from the result
                         this._scrB = result.scrB;
                         this._scrF = result.scrF;
-                        this._tweaks.applyTweaks(itineraries, () => {
-                            this._processItineraries(itineraries)
-                        });
+                        this._processItineraries(itineraries);
                     } else {
                         this._noRouteFound();
                     }
