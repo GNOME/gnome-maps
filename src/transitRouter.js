@@ -19,6 +19,7 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
+const GLib = imports.gi.GLib;
 const Champlain = imports.gi.Champlain;
 
 const Service = imports.service;
@@ -54,15 +55,36 @@ var TransitRouter = class TransitRoute {
      * of results-
      */
     fetchFirstResults() {
-        let bestProvider = this._getBestProviderForQuery();
+        let pluginOverride = GLib.getenv('TRANSIT_PLUGIN');
 
-        if (bestProvider) {
-            let provider = bestProvider[0];
+        if (pluginOverride) {
+            // override plugin was specified, try instanciating if not done yet
+            if (!this._currPluginInstance) {
+                let module = this._availablePlugins[pluginOverride];
 
-            this._currPluginInstance = bestProvider[1];
-            this._plan.attribution = this._getAttributionForProvider(provider);
-            if (provider.attributionUrl)
-                this._plan.attributionUrl = provider.attributionUrl;
+                if (module) {
+                    this._currPluginInstance =
+                        new imports.transitplugins[module][pluginOverride]();
+                } else {
+                    throw new Error('Specified override plugin not found');
+                }
+            }
+        } else {
+            let bestProvider = this._getBestProviderForQuery();
+
+            this._currPluginInstance = null;
+
+            if (bestProvider) {
+                let provider = bestProvider[0];
+
+                this._currPluginInstance = bestProvider[1];
+                this._plan.attribution = this._getAttributionForProvider(provider);
+                if (provider.attributionUrl)
+                    this._plan.attributionUrl = provider.attributionUrl;
+            }
+        }
+
+        if (this._currPluginInstance) {
             this._currPluginInstance.fetchFirstResults();
         } else {
             this._plan.reset();
