@@ -19,6 +19,7 @@
  * Author: James Westman <james@flyingpimonster.net>
  */
 
+const Clutter = imports.gi.Clutter;
 const Gdk = imports.gi.Gdk;
 const Geocode = imports.gi.GeocodeGlib;
 const GObject = imports.gi.GObject;
@@ -64,6 +65,8 @@ var PlaceBar = GObject.registerClass({
 
         Application.application.connect('notify::adaptive-mode', this._updateVisibility.bind(this));
         this.connect('notify::place', this._updatePlace.bind(this));
+
+        this._mapView.view.connect('touch-event', this._onMapClickEvent.bind(this));
     }
 
     _updatePlace() {
@@ -113,5 +116,23 @@ var PlaceBar = GObject.registerClass({
 
     _onPlaceEdited() {
         _updatePlace();
+    }
+
+    _onMapClickEvent(view, event) {
+        switch (event.type()) {
+            case Clutter.EventType.TOUCH_BEGIN:
+                this._tapped = true;
+                break;
+            case Clutter.EventType.TOUCH_UPDATE:
+                this._tapped = false;
+            case Clutter.EventType.TOUCH_END:
+            case Clutter.EventType.TOUCH_CANCEL:
+                if (this._tapped) {
+                    Application.application.selected_place = null;
+                }
+                break;
+        }
+
+        return Clutter.EVENT_PROPAGATE;
     }
 });
