@@ -113,13 +113,18 @@ const GAP_BEFORE_MORE_RESULTS = 120;
 var OpenTripPlanner = class OpenTripPlanner {
 
     constructor(params) {
+        let onlyTransitDataEnv = GLib.getenv('OTP_ONLY_TRANSIT_DATA');
+        let onlyTransitData =
+            onlyTransitDataEnv ? onlyTransitDataEnv === 'true' :
+            params?.onlyTransitData ?? false;
+
         this._session = new Soup.Session({ user_agent : 'gnome-maps/' + pkg.version });
         this._plan = Application.routingDelegator.transitRouter.plan;
         this._query = Application.routeQuery;
-        this._baseUrl = params.baseUrl;
-        this._router = params.router || 'default';
-        this._routerUrl = params.routerUrl || null;
-        this._onlyTransitData = params.onlyTransitData || false;
+        this._baseUrl = GLib.getenv('OTP_BASE_URL') ?? params.baseUrl;
+        this._router = params?.router ?? 'default';
+        this._routerUrl = params?.routerUrl;
+        this._onlyTransitData = onlyTransitData;
         this._extendPrevious = false;
         this._language = Utils.getLanguage();
 
