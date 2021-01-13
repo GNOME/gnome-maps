@@ -167,6 +167,9 @@ var MapView = GObject.registerClass({
         Application.geoclue.connect('notify::state',
                                     this._updateUserLocation.bind(this));
         this._connectRouteSignals();
+
+        // set dark background if we start up in dark theme
+        this._setBackgroundPatternIfNeeded();
     }
 
     _initScale(view) {
@@ -195,6 +198,8 @@ var MapView = GObject.registerClass({
         view.horizontal_wrap = true;
 
         view.connect('notify::latitude', this._onViewMoved.bind(this));
+        view.connect('notify::longitude',
+                     () => this._setBackgroundPatternIfNeeded());
         // switching map type will set view min-zoom-level from map source
         view.connect('notify::min-zoom-level', () => {
             if (view.min_zoom_level < MapMinZoom) {
@@ -217,12 +222,6 @@ var MapView = GObject.registerClass({
         this._gtkSettings = Gtk.Settings.get_default();
         this._gtkSettings.connect('notify::gtk-application-prefer-dark-theme',
                             this._onPreferDarkThemeChanged.bind(this));
-        // set dark background if we start up in dark theme
-        if (this._gtkSettings.gtk_application_prefer_dark_theme) {
-            if (!this._darkBackgroud)
-                this._createDarkBackground();
-            view.set_background_pattern(this._darkBackground);
-        }
 
         this._initScale(view);
         return view;
@@ -249,14 +248,27 @@ var MapView = GObject.registerClass({
         this._darkBackground.invalidate();
     }
 
-    _onPreferDarkThemeChanged() {
-        if (this._gtkSettings.gtk_application_prefer_dark_theme) {
+    _isWrappingAround() {
+        let bbox = this.view.get_bounding_box();
+
+        return bbox.left > bbox.right;
+    }
+
+    _setBackgroundPatternIfNeeded() {
+        if (this._gtkSettings.gtk_application_prefer_dark_theme &&
+            !this._isWrappingAround()) {
             if (!this._darkBackgroud)
                 this._createDarkBackground();
             this.view.set_background_pattern(this._darkBackground);
-        } else {
+            this._customBackgroundSet = true;
+        } else if (this._customBackgroundSet) {
             this.view.background_pattern = null;
+            this._customBackgroundSet = false;
         }
+    }
+
+    _onPreferDarkThemeChanged() {
+        this._setBackgroundPatternIfNeeded();
     }
 
     _onNightModeChanged() {
