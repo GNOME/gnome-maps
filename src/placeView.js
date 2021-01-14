@@ -60,6 +60,11 @@ var PlaceView = GObject.registerClass({
         let mapView = params.mapView;
         delete params.mapView;
 
+        /* This mode is used in PlaceBar for inline current location details.
+           It hides the title box and decreases the start margin on the rows. */
+        this._inlineMode = !!params.inlineMode;
+        delete params.inlineMode;
+
         super._init(params);
 
         let ui = Utils.getUIObject('place-view', [ 'bubble-main-box',
@@ -148,6 +153,10 @@ var PlaceView = GObject.registerClass({
             } else {
                 this._populate(this.place);
             }
+        }
+
+        if (this._inlineMode) {
+            ui.titleBox.hide();
         }
 
         this.updatePlaceDetails();
@@ -411,6 +420,10 @@ var PlaceView = GObject.registerClass({
                                     marginTop: 6,
                                     marginBottom: 6,
                                     spacing: 12 });
+
+            if (this._inlineMode) {
+                box.marginStart = 6;
+            }
 
             if (icon) {
                 let widget = new Gtk.Image({ icon_name: icon,

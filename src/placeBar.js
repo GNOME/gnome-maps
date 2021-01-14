@@ -30,6 +30,7 @@ const ContactPlace = imports.contactPlace;
 const PlaceButtons = imports.placeButtons;
 const PlaceDialog = imports.placeDialog;
 const PlaceFormatter = imports.placeFormatter;
+const PlaceView = imports.placeView;
 const Utils = imports.utils;
 
 var PlaceBar = GObject.registerClass({
@@ -106,12 +107,25 @@ var PlaceBar = GObject.registerClass({
     }
 
     _onEventBoxClicked() {
-        let dialog = new PlaceDialog.PlaceDialog ({ transient_for: this.get_toplevel(),
-                                                    modal: true,
-                                                    mapView: this._mapView,
-                                                    place: this.place });
-        dialog.connect('response', () => dialog.destroy());
-        dialog.show();
+        if (this.place.isCurrentLocation) {
+            if (this._currentLocationView) {
+                this._box.remove(this._currentLocationView);
+                delete this._currentLocationView;
+            } else {
+                this._currentLocationView = new PlaceView.PlaceView({ place: this.place,
+                                                                      mapView: this._mapView,
+                                                                      inlineMode: true,
+                                                                      visible: true });
+                this._box.add(this._currentLocationView);
+            }
+        } else {
+            let dialog = new PlaceDialog.PlaceDialog ({ transient_for: this.get_toplevel(),
+                                                        modal: true,
+                                                        mapView: this._mapView,
+                                                        place: this.place });
+            dialog.connect('response', () => dialog.destroy());
+            dialog.show();
+        }
     }
 
     _onPlaceEdited() {
