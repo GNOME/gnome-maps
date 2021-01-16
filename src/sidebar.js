@@ -257,7 +257,8 @@ var Sidebar = GObject.registerClass({
             let nextPlaceEntry =
                 this._entryList.get_row_at_index(index + 1).get_child().entry;
 
-            nextPlaceEntry.grab_focus();
+            if (!nextPlaceEntry.place)
+                nextPlaceEntry.grab_focus();
         }
     }
 
