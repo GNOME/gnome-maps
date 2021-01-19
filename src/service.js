@@ -50,6 +50,9 @@ function getService() {
     if (_service)
         return _service;
 
+    if (GLib.getenv('MAPS_DEFAULT_SERVICE'))
+        return _createDefaultService();
+
     let serviceOverride = GLib.getenv('MAPS_SERVICE');
     if (serviceOverride)
         return _getServiceFromFile(serviceOverride);
