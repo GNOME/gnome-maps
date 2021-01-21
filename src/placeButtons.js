@@ -125,6 +125,8 @@ var PlaceButtons = GObject.registerClass({
                 from.place = Application.geoclue.place;
             to.place = this._place;
 
+            Application.application.selected_place = null;
+
             query.thaw_notify();
         });
 

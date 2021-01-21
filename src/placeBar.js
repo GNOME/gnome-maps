@@ -73,6 +73,11 @@ var PlaceBar = GObject.registerClass({
     _updatePlace() {
         this._updateVisibility();
 
+        if (this._dialog) {
+            this._dialog.destroy();
+            delete this._dialog;
+        }
+
         if (!this.place) {
             return;
         }
@@ -119,12 +124,15 @@ var PlaceBar = GObject.registerClass({
                 this._box.add(this._currentLocationView);
             }
         } else {
-            let dialog = new PlaceDialog.PlaceDialog ({ transient_for: this.get_toplevel(),
+            this._dialog = new PlaceDialog.PlaceDialog ({ transient_for: this.get_toplevel(),
                                                         modal: true,
                                                         mapView: this._mapView,
                                                         place: this.place });
-            dialog.connect('response', () => dialog.destroy());
-            dialog.show();
+            this._dialog.connect('response', () => {
+                this._dialog.destroy();
+                delete this._dialog;
+            });
+            this._dialog.show();
         }
     }
 
