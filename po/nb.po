@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps 3.38.x\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2020-09-16 21:00+0000\n"
-"PO-Revision-Date: 2020-12-04 15:36+0100\n"
+"POT-Creation-Date: 2021-01-15 22:25+0000\n"
+"PO-Revision-Date: 2021-01-25 15:53+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
@@ -57,7 +57,7 @@ msgstr ""
 "Du kan også søke etter en bestemt type sted, som f.eks. «Pub nær Main "
 "Street, Boston» eller «Hoteller nær Alexanderplatz, Berlin»."
 
-#: data/org.gnome.Maps.appdata.xml.in:159
+#: data/org.gnome.Maps.appdata.xml.in:182
 msgid "The GNOME Project"
 msgstr "GNOME prosjektet"
 
@@ -483,7 +483,7 @@ msgstr "Åpne hovedmeny"
 msgid "Maps is offline!"
 msgstr "Kart er frakoblet!"
 
-#: data/ui/main-window.ui:122
+#: data/ui/main-window.ui:123
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -491,7 +491,7 @@ msgstr ""
 "Kart trenger en aktiv internettforbindelse for å fungere, men ingen ble "
 "funnet."
 
-#: data/ui/main-window.ui:130
+#: data/ui/main-window.ui:131
 msgid "Check your connection and proxy settings."
 msgstr "Sjekk tilkobling og innstillinger for proxy."
 
@@ -650,6 +650,11 @@ msgstr "Vis mer informasjon"
 #: data/ui/place-popover.ui:54
 msgid "No results found"
 msgstr "Ingen resultater funnet"
+
+#: data/ui/place-popover.ui:66 src/checkInDialog.js:280 src/checkIn.js:162
+#: src/osmEditDialog.js:550
+msgid "An error has occurred"
+msgstr "Det har oppstått en feil"
 
 #. Translators: This is a tooltip
 #: data/ui/route-entry.ui:20
@@ -856,10 +861,6 @@ msgstr "Sjekk inn på %s"
 msgid "Write an optional message to check in to %s."
 msgstr "Skriv en valgfri melding for å sjekke inn ved %s."
 
-#: src/checkInDialog.js:280 src/checkIn.js:162 src/osmEditDialog.js:550
-msgid "An error has occurred"
-msgstr "Det har oppstått en feil"
-
 #. Translators: %s is the place name that user wanted to check-in
 #: src/checkIn.js:144
 #, javascript-format
@@ -994,15 +995,15 @@ msgstr "Kartfliser av %s"
 msgid "Search provided by %s using %s"
 msgstr "Søk tilbys av %s ved bruk av %s"
 
-#: src/mapView.js:466
+#: src/mapView.js:478
 msgid "File type is not supported"
 msgstr "Filtypen er ikke støttet"
 
-#: src/mapView.js:473
+#: src/mapView.js:485
 msgid "Failed to open layer"
 msgstr "Klarte ikke å åpne lag"
 
-#: src/mapView.js:509
+#: src/mapView.js:521
 msgid "Failed to open GeoURI"
 msgstr "Klarte ikke å åpne GeoURI"
 
@@ -1224,7 +1225,7 @@ msgstr "Taoisme"
 
 #: src/osmEditDialog.js:205 src/translations.js:381
 msgid "Unitarian Universalism"
-msgstr ""
+msgstr "Unitarisk universalisme"
 
 #: src/osmEditDialog.js:206 src/translations.js:382
 msgid "Voodoo"
