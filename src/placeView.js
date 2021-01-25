@@ -469,6 +469,7 @@ var PlaceView = GObject.registerClass({
                                                     visible: true,
                                                     xalign:  0,
                                                     hexpand: false,
+                                                    wrap: true,
                                                     halign:  Gtk.Align.FILL });
 
                         if (j === 1) {
@@ -550,7 +551,7 @@ var PlaceView = GObject.registerClass({
 
             /* Translators: This is the text for the "Wikipedia" link at the end
                of summaries */
-            this._wikipediaLabel.label = `${text} <a href="${link}" title="${tooltipText}">${ _("Wikipedia") }</a>`;
+            this._wikipediaLabel.label = `${text} <a href="${uri}" title="${tooltipText}">${ _("Wikipedia") }</a>`;
         }
     }
 
