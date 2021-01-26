@@ -590,9 +590,19 @@ var MapView = GObject.registerClass({
     }
 
     _storeLocation() {
-        Application.settings.set('zoom-level', this.view.zoom_level);
+        let zoom = this.view.zoom_level;
         let location = [this.view.latitude, this.view.longitude];
-        Application.settings.set('last-viewed-location', location);
+
+        /* protect agains situations where the Champlain view was already
+         * disposed, in this case zoom will be set to the GObject property
+         * getter
+         */
+        if (!isNaN(zoom)) {
+            Application.settings.set('zoom-level', zoom);
+            Application.settings.set('last-viewed-location', location);
+        } else {
+            Utils.debug('Failed to extract location to store');
+        }
     }
 
     _goToStoredLocation() {
