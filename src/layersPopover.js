@@ -29,7 +29,7 @@ const Service = imports.service;
 const ShapeLayer = imports.shapeLayer;
 const Utils = imports.utils;
 
-const PREVIEW_WIDTH = 180;
+const PREVIEW_MIN_WIDTH = 180;
 const PREVIEW_HEIGHT = 80;
 
 var ShapeLayerRow = GObject.registerClass({
@@ -144,6 +144,7 @@ var LayersPopover = GObject.registerClass({
                                        this._setLayerPreviews.bind(this));
             this._mapView.view.connect("notify::longitude",
                                        this._setLayerPreviews.bind(this));
+            this.connect('notify::visible', this._setLayerPreviews.bind(this));
             Application.settings.connect("changed::night-mode",
                                          this._onNightModeChanged.bind(this));
             Application.settings.connect("changed::hybrid-aerial",
@@ -213,7 +214,13 @@ var LayersPopover = GObject.registerClass({
 
             return;
         }
-        previewInfo.lastLocation = {x, y, z};
+
+        /* when this called directly on construction, don't update last
+         * location to force updating the thumbnail when the popover is first
+         * visible and the widgets are allocated sizes
+         */
+        if (this.visible || previewInfo.lastLocation.z !== -1)
+            previewInfo.lastLocation = {x, y, z};
 
         let tile = Champlain.Tile.new_full(x, y, size, z);
 
@@ -227,11 +234,15 @@ var LayersPopover = GObject.registerClass({
                 previewInfo.lastLocation.y == y &&
                 previewInfo.lastLocation.z == z) {
 
+                let [{x, y, width, height}, baseline] =
+                    widget.get_allocated_size();
+
+                width = Math.max(width, PREVIEW_MIN_WIDTH);
+
                 let pixbuf = Gdk.pixbuf_get_from_surface(tile.surface,
-                                                    (size - PREVIEW_WIDTH) / 2,
+                                                    (size - width) / 2,
                                                     (size - PREVIEW_HEIGHT) / 2,
-                                                    PREVIEW_WIDTH,
-                                                    PREVIEW_HEIGHT);
+                                                    width, PREVIEW_HEIGHT);
                 widget.set_from_pixbuf(pixbuf);
             }
         });
