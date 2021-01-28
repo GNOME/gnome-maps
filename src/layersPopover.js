@@ -29,7 +29,7 @@ const Service = imports.service;
 const ShapeLayer = imports.shapeLayer;
 const Utils = imports.utils;
 
-const PREVIEW_WIDTH = 180;
+const PREVIEW_WIDTH = 230;
 const PREVIEW_HEIGHT = 80;
 
 var ShapeLayerRow = GObject.registerClass({
