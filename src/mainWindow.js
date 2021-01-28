@@ -576,7 +576,7 @@ var MainWindow = GObject.registerClass({
             transient_for: this
         });
 
-        let copyright = _("Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors");
+        let copyright = _("Copyright © 2011 – 2021 Red Hat, Inc. and The GNOME Maps authors");
         let attribution = this._getAttribution();
 
         copyright += '\n' + attribution;
