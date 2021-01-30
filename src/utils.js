@@ -467,3 +467,10 @@ function isValidWebsite(website) {
     }
     return website.startsWith("http://") || website.startsWith("https://");
 }
+
+/* Return string with first character in upper case according the rules
+ * determined by the current locale
+ */
+function firstToLocaleUpperCase(str) {
+    return str[0].toLocaleUpperCase() + str.substring(1);
+}

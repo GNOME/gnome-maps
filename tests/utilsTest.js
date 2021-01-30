@@ -38,6 +38,7 @@ function main() {
     prettyDistanceTest();
     normalizeStringTest();
     validWebsiteTest();
+    firstToLocaleUpperCaseTest();
 }
 
 function osmTypeToStringTest() {
@@ -109,4 +110,12 @@ function validWebsiteTest() {
     JsUnit.assertEquals(false, Utils.isValidWebsite("ftp://gnome.org"));
     JsUnit.assertEquals(false, Utils.isValidWebsite("www.gnome.org"));
     JsUnit.assertEquals(false, Utils.isValidWebsite("https:gnome.org"));
+}
+
+function firstToLocaleUpperCaseTest() {
+    JsUnit.assertEquals('Xxx', Utils.firstToLocaleUpperCase('xxx'));
+    JsUnit.assertEquals('Xxx', Utils.firstToLocaleUpperCase('Xxx'));
+    JsUnit.assertEquals('XXX', Utils.firstToLocaleUpperCase('XXX'));
+    JsUnit.assertEquals('فارسی', Utils.firstToLocaleUpperCase('فارسی'));
+    JsUnit.assertEquals('日本語', Utils.firstToLocaleUpperCase('日本語'));
 }
