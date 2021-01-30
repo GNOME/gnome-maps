@@ -25,6 +25,7 @@ const C_ = imports.gettext.dgettext;
 const GLib = imports.gi.GLib;
 
 const Time = imports.time;
+const Utils = imports.utils;
 
 /* Translate an opening time specification tag value.
  * from OSM into a "two-dimensional" (array-of-arrays) grid of human-readable
@@ -80,7 +81,8 @@ function _translateOpeningHoursPart(string) {
         let timeIntervalSpec =
             _translateOpeningHoursTimeIntervalList(splitString[1].trim());
 
-        return [dayIntervalSpec, timeIntervalSpec];
+        return [Utils.firstToLocaleUpperCase(dayIntervalSpec),
+                timeIntervalSpec];
     } else {
         // for an unknown format, just output the raw value
         return [string];
