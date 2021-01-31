@@ -19,6 +19,9 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
+pkg.require({ 'Gdk': '3.0',
+              'Gtk': '3.0' });
+
 const JsUnit = imports.jsUnit;
 
 const Time = imports.time;
