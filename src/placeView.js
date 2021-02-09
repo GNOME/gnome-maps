@@ -42,6 +42,9 @@ const Wikipedia = imports.wikipedia;
 // maximum dimension of thumbnails to fetch from Wikipedia
 const THUMBNAIL_FETCH_SIZE = 360;
 
+// Unicode left-to-right marker
+const LRM = '\u200E';
+
 var PlaceView = GObject.registerClass({
     Properties: {
         'overpass-place': GObject.ParamSpec.object('overpass-place',
@@ -257,9 +260,15 @@ var PlaceView = GObject.registerClass({
         }
 
         if (place.phone) {
+            /* since the phone numbers are typically always rendered
+             * left-to-right, insert an explicit LRM char to avoid issues
+             * with phone numbers in international format starting with a +
+             * which is considered a "weak" character to determine Unicode
+             * text direction
+             */
             let phone = { label: _("Phone number"),
                           icon: 'phone-oldschool-symbolic',
-                          info: GLib.markup_escape_text(place.phone, -1) };
+                          info: LRM + GLib.markup_escape_text(place.phone, -1) };
 
             if (Utils.uriSchemeSupported('tel')) {
                 /* RFC3966 only allows "-", '.", "(", and ")" as visual
