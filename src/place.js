@@ -97,6 +97,9 @@ class Place extends Geocode.Place {
         this._wheelchair = params.wheelchair;
         delete params.wheelchair;
 
+        this._nativeName = params.nativeName;
+        delete params.nativeName;
+
         if (params.place) {
             params = { osm_id: params.place.osm_id,
                        osm_type: params.place.osm_type,
@@ -232,6 +235,14 @@ class Place extends Geocode.Place {
         this._prefilled = prefilled;
     }
 
+    get nativeName() {
+        return this._nativeName;
+    }
+
+    set nativeName(nativeName) {
+        this._nativeName = nativeName;
+    }
+
     toJSON() {
         let bounding_box = null;
 
@@ -251,6 +262,7 @@ class Place extends Geocode.Place {
                  osm_type: this.osm_type,
                  place_type: this.place_type,
                  name: this.name,
+                 nativeName: this.nativeName,
                  bounding_box: bounding_box,
                  this_type: this.this_type,
                  location: location,
