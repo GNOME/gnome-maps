@@ -75,6 +75,7 @@ var PlaceView = GObject.registerClass({
                                                    'bubble-thumbnail',
                                                    'thumbnail-separator',
                                                    'label-title',
+                                                   'native-name',
                                                    'contact-avatar',
                                                    'address-label',
                                                    'bubble-main-stack',
@@ -83,6 +84,7 @@ var PlaceView = GObject.registerClass({
                                                    'send-to-button-alt',
                                                    'title-box' ]);
         this._title = ui.labelTitle;
+        this._nativeName = ui.nativeName;
         this._thumbnail = ui.bubbleThumbnail;
         this._thumbnailSeparator = ui.thumbnailSeparator;
         this._content = ui.bubbleContentArea;
@@ -214,6 +216,21 @@ var PlaceView = GObject.registerClass({
 
         this._title.label = formatter.title;
         this._contactAvatar.text = formatter.title;
+
+        /* show native name unless it's equal to the localized name, or
+         * if the localized name is a substring of the native name, as can
+         * be the case in e.g. duo-lingual native names, such as is used in
+         * Brussels of the form "French name - Dutch name"
+         */
+        if (place.nativeName && !place.nativeName.includes(place.name)) {
+            this._nativeName.label = place.nativeName;
+
+            /* only show native name if there's installed fonts capable of
+             * showing it
+             */
+            if (this._nativeName.get_layout().get_unknown_glyphs_count() === 0)
+                this._nativeName.visible = true;
+        }
     }
 
     _onInfoAdded() {
