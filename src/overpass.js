@@ -204,6 +204,9 @@ var Overpass = GObject.registerClass({
         let name = this._getLocalizedName(element.tags, place);
         if (name)
             place.name = name;
+
+        if (element.tags.name)
+            place.nativeName = element.tags.name;
         if (element.tags.population)
             place.population = element.tags.population;
         if (element.tags['contact:website'])
