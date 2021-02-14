@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2021-02-13 14:59+0000\n"
-"PO-Revision-Date: 2021-02-14 12:39-0800\n"
+"POT-Creation-Date: 2021-02-14 20:40+0000\n"
+"PO-Revision-Date: 2021-02-14 12:44-0800\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
 "Language: pa\n"
@@ -96,9 +96,21 @@ msgstr "ਪਿਛਲਾ ਵੇਖਿਆ ਟਿਕਾਣਾ"
 msgid "Coordinates of last viewed location."
 msgstr "ਪਿਛਲੇ ਵੇਖੇ ਗਏ ਟਿਕਾਣੇ ਦੇ ਧੁਰੇ।"
 
+#: data/org.gnome.Maps.gschema.xml:16
+msgid "zoom"
+msgstr "ਜ਼ੂਮ"
+
+#: data/org.gnome.Maps.gschema.xml:17
+msgid "Zoom level"
+msgstr "ਜ਼ੂਮ ਪੱਧਰ"
+
 #: data/org.gnome.Maps.gschema.xml:21
 msgid "Map type"
 msgstr "ਨਕਸ਼ੇ ਦੀ ਕਿਸਮ"
+
+#: data/org.gnome.Maps.gschema.xml:22
+msgid "The type of map to display (street, aerial, etc.)"
+msgstr "ਵਿਖਾਉਣ ਲਈ ਨਕਸ਼ੇ ਦੀ ਕਿਸਮ (ਸੜਕ, ਹਵਾਈ ਆਦਿ)"
 
 #: data/org.gnome.Maps.gschema.xml:26
 msgid "Window size"
@@ -208,6 +220,27 @@ msgstr "OpenStreetMap ਵਰਤੋਂਕਾਰ ਨਾਂ ਜਾਂ ਈਮੇਲ 
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr ""
 "ਦਰਸਾਉਂਦਾ ਹੈ ਕਿ ਜੇ ਵਰਤੋਂਕਾਰ ਨੇ OpenStreetMap ਡਾਟੇ ਨੂੰ ਸੋਧਣ ਲਈ ਸਾਈਨ ਇਨ ਕੀਤਾ ਹੈ।"
+
+#: data/org.gnome.Maps.gschema.xml:82
+msgid "Last used transportation type for routing"
+msgstr "ਰੂਟ ਬਣਾਉਣ ਲਈ ਵਰਤਿਆ ਪਿਛਲੀ ਟਰਾਂਸਪੋਰਟ ਕਿਸਮ"
+
+#: data/org.gnome.Maps.gschema.xml:86
+#| msgid "Night Mode"
+msgid "Night mode"
+msgstr "ਗੂੜ੍ਹਾ ਢੰਗ"
+
+#: data/org.gnome.Maps.gschema.xml:87
+msgid "Whether the application is in night mode."
+msgstr "ਕੀ ਐਪਲੀਕੇਸ਼ਨ ਨੂੰ ਰਾਤ ਵਾਲੇ ਢੰਗ ਵਿੱਚ ਵਰਤਣਾ ਹੈ।"
+
+#: data/org.gnome.Maps.gschema.xml:91
+msgid "Use hybrid aerial tiles"
+msgstr "ਹਾਈਬਰਿੱਡ ਹਵਾਈ ਟਾਈਲਾਂ ਵਰਤੋਂ"
+
+#: data/org.gnome.Maps.gschema.xml:92
+msgid "Whether aerial tiles should use hybrid style (with labels)."
+msgstr "ਕੀ ਹਵਾਈ ਟਾਈਲਾਂ ਨੂੰ ਹਾਈਬਰਿੱਡ ਸਟਾਈਲ (ਲੇਬਲਾਂ ਨਾਲ) ਵਰਤਣਾ ਚਾਹੀਦਾ ਹੈ।"
 
 #: data/ui/check-in-dialog.ui:250 data/ui/check-in-dialog.ui:299
 msgid "Visibility"
@@ -492,7 +525,6 @@ msgid "Password"
 msgstr "ਪਾਸਵਰਡ"
 
 #: data/ui/osm-account-dialog.ui:125
-#| msgid "Sign Out"
 msgid "Sign up"
 msgstr "ਸਾਇਨ ਅੱਪ"
 
@@ -617,7 +649,6 @@ msgid "Send To…"
 msgstr "…ਨੂੰ ਭੇਜੋ"
 
 #: data/ui/send-to-dialog.ui:86
-#| msgid "C_heck in"
 msgid "Check In…"
 msgstr "ਚੈਕ ਇਨ…"
 
@@ -774,7 +805,6 @@ msgid "A path to a local tiles directory structure"
 msgstr "ਲੋਕਲ ਟਾਈਲ ਡਾਇਰੈਕਟਰੀ ਢਾਂਚੇ ਲਈ ਮਾਰਗ"
 
 #: src/application.js:114
-#| msgid "A path to a local tiles directory structure"
 msgid "Tile size for local tiles directory"
 msgstr "ਲੋਕਲ ਟਾਈਟਲ ਡਾਇਰੈਕਟਰੀ ਲਈ ਟਾਈਲ ਆਕਾਰ"
 
@@ -894,7 +924,6 @@ msgid "Unable to export view"
 msgstr "ਝਲਕ ਨੂੰ ਐਕਸਪੋਰਟ ਕਰਨ ਲਈ ਅਸਮਰੱਥ"
 
 #: src/geoclue.js:118
-#| msgid "Current location"
 msgid "Current Location"
 msgstr "ਮੌਜੂਦਾ ਟਿਕਾਣਾ"
 
@@ -941,7 +970,6 @@ msgid "A map application for GNOME"
 msgstr "ਗਨੋਮ ਲਈ ਨਕਸ਼ਾ ਐਪਲੀਕੇਸ਼ਨ"
 
 #: src/mainWindow.js:594
-#| msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
 msgid "Copyright © 2011 – 2021 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "ਕਾਪੀਰਾਈਟ © 2011 – 2021 Red Hat, Inc. ਅਤੇ ਗਨੋਮ ਨਕਸ਼ਾ ਡਿਵੈਲਪਰ"
 
@@ -1055,7 +1083,8 @@ msgid ""
 "example.com instead of http://example.com/index.html."
 msgstr ""
 "ਅਧਿਕਾਰਿਤ ਵੈੱਬਸਾਈਟ ਹੈ। URL ਦੇ ਸਭ ਤੋਂ ਮੁੱਢਲੇ ਰੂਪ ਨੂੰ ਵਰਤ ਕੇ ਵੇਖੋ ਜਿਵੇਂ"
-" http://example.com/index.html ਦੀ ਬਜਾਏ http://example.com"
+" http://example.com/index."
+"html ਦੀ ਬਜਾਏ http://example.com"
 
 #: src/osmEditDialog.js:136
 msgid "Phone"
@@ -1067,7 +1096,8 @@ msgid ""
 "of local privacy laws, especially for private phone numbers."
 msgstr ""
 "ਫ਼ੋਨ ਨੰਬਰ। ਕੌਮਾਂਤਰੀ ਫਾਰਮੈਟ ਵਰਤੋਂ, ਜੋ ਕਿ + ਚਿੰਨ੍ਹ ਨਾਲ ਸ਼ੁਰੂ ਹੁੰਦਾ ਹੈ। ਲੋਕਲ"
-" ਪਰਦੇਦਾਰੀ ਕਨੂੰਨਾਂ ਬਾਰੇ ਖਿਆਲ ਰੱਖੋ, ਖਾਸ ਕਰਕੇ ਪ੍ਰਾਈਵੇਟ ਫ਼ੋਨ ਨੰਬਰਾਂ ਬਾਰੇ।"
+" ਪਰਦੇਦਾਰੀ ਕਨੂੰਨਾਂ ਬਾਰੇ "
+"ਖਿਆਲ ਰੱਖੋ, ਖਾਸ ਕਰਕੇ ਪ੍ਰਾਈਵੇਟ ਫ਼ੋਨ ਨੰਬਰਾਂ ਬਾਰੇ।"
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
@@ -1256,7 +1286,8 @@ msgid ""
 "improvement."
 msgstr ""
 "ਜਾਣਕਾਰੀ ਹੋਰ ਨਕਸ਼ੇ ਵਾਲਿਆਂ ਨੂੰ ਭਾਗਾਂ, ਲੇਖਕ ਦੇ ਮੌਕੇ ਜਦੋਂ ਇਹ ਬਣਾਈ ਸੀ ਜਾਂ ਹੋਰ"
-" ਸੁਧਾਰ ਬਾਰੇ ਇਸ਼ਾਰਿਆਂ ਬਾਰੇ ਅਸਪਸ਼ਟ ਜਾਣਕਾਰੀ ਦੇਣ ਲਈ ਵਰਤੀ ਜਾਂਦੀ ਹੈ।"
+" ਸੁਧਾਰ ਬਾਰੇ ਇਸ਼ਾਰਿਆਂ "
+"ਬਾਰੇ ਅਸਪਸ਼ਟ ਜਾਣਕਾਰੀ ਦੇਣ ਲਈ ਵਰਤੀ ਜਾਂਦੀ ਹੈ।"
 
 #: src/osmEditDialog.js:334
 msgctxt "dialog title"
@@ -1280,12 +1311,10 @@ msgid "Failed to parse Geo URI"
 msgstr "ਜੀਓ URI ਨੂੰ ਪਾਰਸ ਕਰਨ ਲਈ ਫੇਲ੍ਹ"
 
 #: src/placeView.js:260
-#| msgid "invalid coordinate"
 msgid "Coordinates"
 msgstr "ਧੁਰੇ"
 
 #: src/placeView.js:264
-#| msgid "Accuracy: %s"
 msgid "Accuracy"
 msgstr "ਦਰੁਸਤੀ"
 
@@ -1302,7 +1331,6 @@ msgstr "ਦਰੁਸਤੀ: %s"
 #. * text direction
 #.
 #: src/placeView.js:286
-#| msgid "House number"
 msgid "Phone number"
 msgstr "ਫ਼ੋਨ ਨੰਬਰ"
 
@@ -1310,7 +1338,6 @@ msgstr "ਫ਼ੋਨ ਨੰਬਰ"
 #. * There is public internet access but the particular kind is unknown.
 #.
 #: src/placeView.js:310
-#| msgid "Internet access"
 msgid "Public internet access"
 msgstr "ਪਬਲਿਕ ਇੰਟਰਨੈੱਟ ਪਹੁੰਚ"
 
@@ -1319,7 +1346,6 @@ msgstr "ਪਬਲਿਕ ਇੰਟਰਨੈੱਟ ਪਹੁੰਚ"
 #. * someone might expect it.
 #.
 #: src/placeView.js:319
-#| msgid "Internet access"
 msgid "No internet access"
 msgstr "ਕੋਈ ਇੰਟਰਨੈੱਟ ਪਹੁੰਚ ਨਹੀਂ ਹੈ"
 
@@ -1327,7 +1353,6 @@ msgstr "ਕੋਈ ਇੰਟਰਨੈੱਟ ਪਹੁੰਚ ਨਹੀਂ ਹੈ"
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
 #: src/placeView.js:327
-#| msgid "Public"
 msgid "Public Wi-Fi"
 msgstr "ਪਬਲਿਕ Wi-Fi"
 
@@ -1335,7 +1360,6 @@ msgstr "ਪਬਲਿਕ Wi-Fi"
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
 #: src/placeView.js:335
-#| msgid "Internet access"
 msgid "Wired internet access"
 msgstr "ਤਾਰਾ ਰਾਹੀ ਇੰਟਰਨੈੱਟ ਪਹੁੰਚ"
 
@@ -1365,7 +1389,6 @@ msgstr "ਗੁਸਲਖ਼ਾਨੇ ਮੌਜੂਦ ਹਨ"
 #. * This means wheelchairs have full unrestricted access.
 #.
 #: src/placeView.js:369
-#| msgid "Wheelchair access"
 msgid "Wheelchair accessible"
 msgstr "ਵੀਲ-ਚੇਅਰ ਰਾਹੀਂ ਪਹੁੰਚਯੋਗ"
 
@@ -1375,7 +1398,6 @@ msgstr "ਵੀਲ-ਚੇਅਰ ਰਾਹੀਂ ਪਹੁੰਚਯੋਗ"
 #. * by someone pushing up a steep gradient).
 #.
 #: src/placeView.js:379
-#| msgid "Wheelchair access"
 msgid "Limited wheelchair accessibility"
 msgstr "ਵੀਲ-ਚੇਅਰ ਰਾਹੀਂ ਪਹੁੰਚ ਸੀਮਿਤ ਹੈ"
 
@@ -1384,7 +1406,6 @@ msgstr "ਵੀਲ-ਚੇਅਰ ਰਾਹੀਂ ਪਹੁੰਚ ਸੀਮਿਤ �
 #. * (e.g. stair only access).
 #.
 #: src/placeView.js:388
-#| msgid "Wheelchair access"
 msgid "Not wheelchair accessible"
 msgstr "ਵੀਲ-ਚੇਅਰ ਰਾਹੀਂ ਪਹੁੰਚ ਨਹੀਂ ਹੈ"
 
@@ -1569,8 +1590,6 @@ msgstr "%s – %s"
 #.
 #: src/transitPlan.js:331
 #, javascript-format
-#| msgid "%d minute"
-#| msgid_plural "%d minutes"
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] "%s ਮਿੰਟ"
@@ -1582,8 +1601,6 @@ msgstr[1] "%s ਮਿੰਟ"
 #.
 #: src/transitPlan.js:343
 #, javascript-format
-#| msgid "%d hour"
-#| msgid_plural "%d hours"
 msgid "%s hour"
 msgid_plural "%s hours"
 msgstr[0] "%s ਘੰਟਾ"
@@ -1595,8 +1612,6 @@ msgstr[1] "%s ਘੰਟੇ"
 #.
 #: src/transitPlan.js:351
 #, javascript-format
-#| msgid "%d:%02d hour"
-#| msgid_plural "%d:%02d hours"
 msgid "%s:%s hour"
 msgid_plural "%s:%s hours"
 msgstr[0] "%s:%s ਘੰਟਾ"
@@ -1614,12 +1629,10 @@ msgid "%s–%s"
 msgstr "%s–%s"
 
 #: src/translations.js:53
-#| msgid "around the clock"
 msgid "Around the clock"
 msgstr "ਚੌਵੀਂ ਘੰਟੇ"
 
 #: src/translations.js:55
-#| msgid "from sunrise to sunset"
 msgid "From sunrise to sunset"
 msgstr "ਸੂਰਜ ਚੜ੍ਹਨ ਤੋਂ ਸੂਰਜ ਡੁੱਬਣ ਤੱਕ"
 
@@ -1654,7 +1667,6 @@ msgid "%s,%s,%s"
 msgstr "%s,%s,%s"
 
 #: src/translations.js:149
-#| msgid "every day"
 msgid "Every day"
 msgstr "ਹਰ ਰੋਜ਼"
 
@@ -1668,12 +1680,10 @@ msgid "%s-%s"
 msgstr "%s-%s"
 
 #: src/translations.js:172
-#| msgid "public holidays"
 msgid "Public holidays"
 msgstr "ਪਬਲਿਕ ਛੁੱਟੀਆਂ"
 
 #: src/translations.js:174
-#| msgid "school holidays"
 msgid "School holidays"
 msgstr "ਸਕੂਲੀ ਛੁੱਟੀਆਂ"
 
@@ -1732,8 +1742,6 @@ msgstr "%s ਘੰ"
 #.
 #: src/utils.js:354
 #, javascript-format
-#| msgctxt "time range list"
-#| msgid "%s %s %s"
 msgid "%s h %s min"
 msgid_plural "%s h %s min"
 msgstr[0] "%s ਘੰ %s ਮਿੰਟ"
@@ -1745,7 +1753,6 @@ msgstr[1] "%s ਘੰ %s ਮਿੰਟ"
 #.
 #: src/utils.js:361
 #, javascript-format
-#| msgid "%s mi"
 msgid "%s min"
 msgid_plural "%s min"
 msgstr[0] "%s ਮਿੰਟ"
