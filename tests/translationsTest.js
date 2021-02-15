@@ -48,6 +48,11 @@ const SAMPLE8 = 'Mo-Fr 09:00-12:00,13:00-18:00; Sa,Su 10:00-14:00; PH off';
 // sample with school holidays
 const SAMPLE9 = 'Mo-Fr 09:00-12:00,13:00-18:00; Sa,Su 10:00-14:00; SH off';
 
+/* sample with 2 components, one day-range, one two day set,
+ * one with 2 time intervals, with an extra space between time components
+ */
+const SAMPLE10 = 'Mo-Fr 09:00-12:00, 13:00-18:00; Sa,Su 10:00-14:00';
+
 pkg.initGettext();
 pkg.initFormat();
 
@@ -140,6 +145,15 @@ function translateOpeningHoursTest() {
     JsUnit.assertEquals('School holidays', translated[2][0]);
     JsUnit.assertEquals('not open', translated[2][1]);
 
+    translated = Translations.translateOpeningHours(SAMPLE10);
+    JsUnit.assertEquals(2, translated.length);
+    JsUnit.assertEquals(2, translated[0].length);
+    JsUnit.assertEquals('Mon-Fri', translated[0][0]);
+    JsUnit.assertEquals('09:00-12:00, 13:00-18:00', translated[0][1]);
+    JsUnit.assertEquals(2, translated[1].length);
+    JsUnit.assertEquals('Sat,Sun', translated[1][0]);
+    JsUnit.assertEquals('10:00-14:00', translated[1][1]);
+
     // mock to always use 12-hour clock format
     Time._is12Hour = function () { return true; };
 
@@ -223,4 +237,13 @@ function translateOpeningHoursTest() {
     JsUnit.assertEquals(2, translated[2].length);
     JsUnit.assertEquals('School holidays', translated[2][0]);
     JsUnit.assertEquals('not open', translated[2][1]);
+
+    translated = Translations.translateOpeningHours(SAMPLE10);
+    JsUnit.assertEquals(2, translated.length);
+    JsUnit.assertEquals(2, translated[0].length);
+    JsUnit.assertEquals('Mon-Fri', translated[0][0]);
+    JsUnit.assertEquals('9:00 AM-12:00 PM, 1:00 PM-6:00 PM', translated[0][1]);
+    JsUnit.assertEquals(2, translated[1].length);
+    JsUnit.assertEquals('Sat,Sun', translated[1][0]);
+    JsUnit.assertEquals('10:00 AM-2:00 PM', translated[1][1]);
 }

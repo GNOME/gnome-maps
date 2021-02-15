@@ -69,17 +69,22 @@ function translateOpeningHours(string) {
  * 09:00-12:00,13:00-19:00
  * Mo-Fr 10:00-19:00
  * Mo-We,Fr 10:00-12:00,13:00-17:00
+ * Mo-We,Fr 10:00-12:00, 13:00-17:00
  */
 function _translateOpeningHoursPart(string) {
     let splitString = string.split(/\s+/);
+    let len = splitString.length;
 
-    if (splitString.length === 1) {
+    if (len === 1) {
         return [_translateOpeningHoursTimeIntervalList(string.trim())];
-    } else if (splitString.length === 2) {
+    } else if (len === 2 || len === 3) {
         let dayIntervalSpec =
             _translateOpeningHoursDayIntervalList(splitString[0].trim());
+        let intervalString =
+            len === 2 ? splitString[1].trim() :
+                        splitString[1].trim() + splitString[2].trim();
         let timeIntervalSpec =
-            _translateOpeningHoursTimeIntervalList(splitString[1].trim());
+            _translateOpeningHoursTimeIntervalList(intervalString);
 
         return [Utils.firstToLocaleUpperCase(dayIntervalSpec),
                 timeIntervalSpec];
