@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2021-02-01 14:41+0000\n"
-"PO-Revision-Date: 2021-02-02 21:13+0100\n"
+"POT-Creation-Date: 2021-02-16 21:32+0000\n"
+"PO-Revision-Date: 2021-02-17 18:55+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -72,7 +72,7 @@ msgstr "Projekt GNOME"
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:34
-#: src/application.js:82 src/mainWindow.js:129 src/mainWindow.js:567
+#: src/application.js:94 src/mainWindow.js:132 src/mainWindow.js:582
 msgid "Maps"
 msgstr "Zemljevidi"
 
@@ -497,31 +497,6 @@ msgstr ""
 msgid "Check your connection and proxy settings."
 msgstr "Preverite povezavo in nastavitve posredniškega strežnika."
 
-#. Translators: This is a tooltip
-#: data/ui/map-bubble.ui:67 data/ui/map-bubble.ui:136
-msgid "Share location"
-msgstr "Objavi mesto"
-
-#. Translators: This is a tooltip
-#: data/ui/map-bubble.ui:101
-msgid "Add to new route"
-msgstr "Dodaj novo pot"
-
-#. Translators: This is the button to find a route to a place
-#: data/ui/map-bubble.ui:120
-msgid "Directions"
-msgstr "Načrt poti"
-
-#. Translators: This is a tooltip
-#: data/ui/map-bubble.ui:156
-msgid "Mark as favorite"
-msgstr "Označi kot priljubljeno"
-
-#. Translators: This is a tooltip
-#: data/ui/map-bubble.ui:175
-msgid "Edit on OpenStreetMap"
-msgstr "Uredi na OpenStreetMap"
-
 #: data/ui/osm-account-dialog.ui:9
 msgid "OpenStreetMap Account"
 msgstr "Račun OpenStreetMap"
@@ -674,7 +649,7 @@ msgstr "Pošlji …"
 msgid "Check In…"
 msgstr "Prijava …"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:64
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:65
 msgid "Open Shape Layer"
 msgstr "Odpri plast oblike"
 
@@ -770,6 +745,31 @@ msgstr "Trajekti"
 msgid "Airplanes"
 msgstr "Letala"
 
+#. Translators: This is a tooltip
+#: data/ui/place-bar.ui:48 data/ui/place-buttons.ui:50 data/ui/place-view.ui:67
+msgid "Share location"
+msgstr "Objavi mesto"
+
+#. Translators: This is a tooltip
+#: data/ui/place-buttons.ui:15
+msgid "Add to new route"
+msgstr "Dodaj novo pot"
+
+#. Translators: This is the button to find a route to a place
+#: data/ui/place-buttons.ui:34
+msgid "Directions"
+msgstr "Načrt poti"
+
+#. Translators: This is a tooltip
+#: data/ui/place-buttons.ui:70
+msgid "Mark as favorite"
+msgstr "Označi kot priljubljeno"
+
+#. Translators: This is a tooltip
+#: data/ui/place-buttons.ui:89
+msgid "Edit on OpenStreetMap"
+msgstr "Uredi na OpenStreetMap"
+
 #: data/ui/zoom-in-dialog.ui:16
 msgid "Zoom in to add location!"
 msgstr "Približaj za dodajanje mesta!"
@@ -795,23 +795,23 @@ msgstr "Manjkajo zahtevani atributi"
 msgid "Could not find OSM element"
 msgstr "Ni mogoče najti predmeta OSM"
 
-#: src/application.js:96
+#: src/application.js:108
 msgid "A path to a local tiles directory structure"
 msgstr "Pot do krajevne mape s sličicami"
 
-#: src/application.js:102
+#: src/application.js:114
 msgid "Tile size for local tiles directory"
 msgstr "Velikost sličic za krajevno mapo s sličicami"
 
-#: src/application.js:106
+#: src/application.js:118
 msgid "Show the version of the program"
 msgstr "Pokaži različico programa"
 
-#: src/application.js:112
+#: src/application.js:124
 msgid "Ignore network availability"
 msgstr "Prezri razpoložljivost omrežja"
 
-#: src/application.js:122 src/application.js:123
+#: src/application.js:134 src/application.js:135
 msgid "[FILE…|URI]"
 msgstr "[DATOTEKA …|NASLOV URI]"
 
@@ -943,31 +943,31 @@ msgstr "Ni najdene poti"
 msgid "Start!"
 msgstr "Začetna točka!"
 
-#: src/mainWindow.js:61
+#: src/mainWindow.js:62
 msgid "All Layer Files"
 msgstr "Vse datoteke plasti"
 
-#: src/mainWindow.js:470
+#: src/mainWindow.js:485
 msgid "Failed to connect to location service"
 msgstr "Napaka med povezovanjem s storitvijo določevanja točke GPS"
 
-#: src/mainWindow.js:565
+#: src/mainWindow.js:580
 msgid "translator-credits"
 msgstr ""
 "Matej Urbančič <mateju@svn.gnome.org>\n"
 "Martin Srebotnjak"
 
-#: src/mainWindow.js:568
+#: src/mainWindow.js:583
 msgid "A map application for GNOME"
 msgstr "Program za prikaz zemljevidov za GNOME"
 
-#: src/mainWindow.js:579
+#: src/mainWindow.js:594
 msgid "Copyright © 2011 – 2021 Red Hat, Inc. and The GNOME Maps authors"
 msgstr ""
 "Avtorske pravice © 2011–2021 Red Hat, Inc. in avtorji programa Zemljevidi "
 "GNOME"
 
-#: src/mainWindow.js:599
+#: src/mainWindow.js:614
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Podatke zemljevida objavljajo %s in drugi sodelujoči"
@@ -977,7 +977,7 @@ msgstr "Podatke zemljevida objavljajo %s in drugi sodelujoči"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:615
+#: src/mainWindow.js:630
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Podatke zemljevida objavlja %s"
@@ -991,7 +991,7 @@ msgstr "Podatke zemljevida objavlja %s"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:644
+#: src/mainWindow.js:659
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Iskalnik omogoča %s z uporabo %s"
@@ -1063,7 +1063,7 @@ msgstr "Uradno ime ali naziv se običajno pojavlja na tablah."
 msgid "Address"
 msgstr "Naslov"
 
-#: src/osmEditDialog.js:126 src/placeBubble.js:118
+#: src/osmEditDialog.js:126 src/placeView.js:272
 msgid "Website"
 msgstr "Spletišče"
 
@@ -1096,7 +1096,7 @@ msgstr ""
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:145 src/placeBubble.js:415
+#: src/osmEditDialog.js:145 src/placeView.js:580
 msgid "Wikipedia"
 msgstr "Wikipedija"
 
@@ -1108,7 +1108,7 @@ msgstr ""
 "Uporabljen zapis mora vključevati kodo jezika in naslov prispevka, na primer "
 "»sl:Naslov prispevka«."
 
-#: src/osmEditDialog.js:153 src/placeBubble.js:140
+#: src/osmEditDialog.js:153 src/placeView.js:300
 msgid "Opening hours"
 msgstr "Odpiralni čas"
 
@@ -1122,11 +1122,11 @@ msgstr "Pomoč o zapisu je na voljo na spletni povezavi."
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:161 src/placeBubble.js:250
+#: src/osmEditDialog.js:161 src/placeView.js:410
 msgid "Population"
 msgstr "Prebivalci"
 
-#: src/osmEditDialog.js:166 src/placeBubble.js:259
+#: src/osmEditDialog.js:166 src/placeView.js:419
 msgid "Altitude"
 msgstr "Nadmorska višina"
 
@@ -1178,7 +1178,7 @@ msgstr "Storitev"
 msgid "Religion"
 msgstr "Religija"
 
-#: src/osmEditDialog.js:195 src/translations.js:277
+#: src/osmEditDialog.js:195 src/translations.js:284
 msgid "Animism"
 msgstr "Animizem"
 
@@ -1186,83 +1186,83 @@ msgstr "Animizem"
 msgid "Bahá’í"
 msgstr "Bahaizem"
 
-#: src/osmEditDialog.js:197 src/translations.js:279
+#: src/osmEditDialog.js:197 src/translations.js:286
 msgid "Buddhism"
 msgstr "Budizem"
 
-#: src/osmEditDialog.js:198 src/translations.js:280
+#: src/osmEditDialog.js:198 src/translations.js:287
 msgid "Caodaism"
 msgstr "Kaodaizem"
 
-#: src/osmEditDialog.js:199 src/translations.js:281
+#: src/osmEditDialog.js:199 src/translations.js:288
 msgid "Christianity"
 msgstr "Krščanstvo"
 
-#: src/osmEditDialog.js:200 src/translations.js:282
+#: src/osmEditDialog.js:200 src/translations.js:289
 msgid "Confucianism"
 msgstr "Konfucionizem"
 
-#: src/osmEditDialog.js:201 src/translations.js:283
+#: src/osmEditDialog.js:201 src/translations.js:290
 msgid "Hinduism"
 msgstr "Hinduizem"
 
-#: src/osmEditDialog.js:202 src/translations.js:284
+#: src/osmEditDialog.js:202 src/translations.js:291
 msgid "Jainism"
 msgstr "Jainizem"
 
-#: src/osmEditDialog.js:203 src/translations.js:285
+#: src/osmEditDialog.js:203 src/translations.js:292
 msgid "Judaism"
 msgstr "Judovstvo"
 
-#: src/osmEditDialog.js:204 src/translations.js:286
+#: src/osmEditDialog.js:204 src/translations.js:293
 msgid "Islam"
 msgstr "Islam"
 
-#: src/osmEditDialog.js:205 src/translations.js:287
+#: src/osmEditDialog.js:205 src/translations.js:294
 msgid "Multiple Religions"
 msgstr "Izberi več"
 
-#: src/osmEditDialog.js:206 src/translations.js:288
+#: src/osmEditDialog.js:206 src/translations.js:295
 msgid "Paganism"
 msgstr "Poganstvo"
 
-#: src/osmEditDialog.js:207 src/translations.js:289
+#: src/osmEditDialog.js:207 src/translations.js:296
 msgid "Pastafarianism"
 msgstr "Pastafarianizem"
 
-#: src/osmEditDialog.js:208 src/translations.js:290
+#: src/osmEditDialog.js:208 src/translations.js:297
 msgid "Scientology"
 msgstr "Scientologija"
 
-#: src/osmEditDialog.js:209 src/translations.js:291
+#: src/osmEditDialog.js:209 src/translations.js:298
 msgid "Shinto"
 msgstr "Šintoizem"
 
-#: src/osmEditDialog.js:210 src/translations.js:292
+#: src/osmEditDialog.js:210 src/translations.js:299
 msgid "Sikhism"
 msgstr "Sikhizem"
 
-#: src/osmEditDialog.js:211 src/translations.js:293
+#: src/osmEditDialog.js:211 src/translations.js:300
 msgid "Spiritualism"
 msgstr "Spiritualizem"
 
-#: src/osmEditDialog.js:212 src/translations.js:294
+#: src/osmEditDialog.js:212 src/translations.js:301
 msgid "Taoism"
 msgstr "Taoizem"
 
-#: src/osmEditDialog.js:213 src/translations.js:295
+#: src/osmEditDialog.js:213 src/translations.js:302
 msgid "Unitarian Universalism"
 msgstr "Univerzalni unitarizem"
 
-#: src/osmEditDialog.js:214 src/translations.js:296
+#: src/osmEditDialog.js:214 src/translations.js:303
 msgid "Voodoo"
 msgstr "Vudu"
 
-#: src/osmEditDialog.js:215 src/translations.js:297
+#: src/osmEditDialog.js:215 src/translations.js:304
 msgid "Yazidism"
 msgstr "Jazidizem"
 
-#: src/osmEditDialog.js:216 src/translations.js:298
+#: src/osmEditDialog.js:216 src/translations.js:305
 msgid "Zoroastrianism"
 msgstr "Zoroastrianizem"
 
@@ -1300,14 +1300,38 @@ msgstr "Končano"
 msgid "Unnamed place"
 msgstr "Neimenovano mesto"
 
-#: src/placeBubble.js:126
+#: src/placeEntry.js:221
+msgid "Failed to parse Geo URI"
+msgstr "Razčlenjevanje naslova URI Geo je spodletelo"
+
+#: src/placeView.js:260
+msgid "Coordinates"
+msgstr "Koordinate"
+
+#: src/placeView.js:264
+msgid "Accuracy"
+msgstr "Natančnost"
+
+#. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
+#: src/placeView.js:267
+#, javascript-format
+msgid "Accuracy: %s"
+msgstr "Natančnost: %s"
+
+#. since the phone numbers are typically always rendered
+#. * left-to-right, insert an explicit LRM char to avoid issues
+#. * with phone numbers in international format starting with a +
+#. * which is considered a "weak" character to determine Unicode
+#. * text direction
+#.
+#: src/placeView.js:286
 msgid "Phone number"
 msgstr "Telefonska številka"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeBubble.js:150
+#: src/placeView.js:310
 msgid "Public internet access"
 msgstr "Javni dostop do interneta"
 
@@ -1315,50 +1339,50 @@ msgstr "Javni dostop do interneta"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeBubble.js:159
+#: src/placeView.js:319
 msgid "No internet access"
 msgstr "Ni dostopa do interneta"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeBubble.js:167
+#: src/placeView.js:327
 msgid "Public Wi-Fi"
 msgstr "Javno omrežje Wi-Fi"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeBubble.js:175
+#: src/placeView.js:335
 msgid "Wired internet access"
 msgstr "Žični dostop do interneta"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeBubble.js:183
+#: src/placeView.js:343
 msgid "Computers available for use"
 msgstr "Možnost uporabe računalnika"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeBubble.js:191
+#: src/placeView.js:351
 msgid "Internet assistance available"
 msgstr "Možnost dostopa do Interneta"
 
-#: src/placeBubble.js:197
+#: src/placeView.js:357
 msgid "No toilets available"
 msgstr "Uporaba stranišč ni mogoča"
 
-#: src/placeBubble.js:200
+#: src/placeView.js:360
 msgid "Toilets available"
 msgstr "Možnost uporabe stranišč"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeBubble.js:209
+#: src/placeView.js:369
 msgid "Wheelchair accessible"
 msgstr "Invalidom na vozičkih prijazno"
 
@@ -1367,7 +1391,7 @@ msgstr "Invalidom na vozičkih prijazno"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeBubble.js:219
+#: src/placeView.js:379
 msgid "Limited wheelchair accessibility"
 msgstr "Omejen dostop za invalidske vozičke"
 
@@ -1375,7 +1399,7 @@ msgstr "Omejen dostop za invalidske vozičke"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeBubble.js:228
+#: src/placeView.js:388
 msgid "Not wheelchair accessible"
 msgstr "Ni dostopa za invalidske vozička"
 
@@ -1384,27 +1408,23 @@ msgstr "Ni dostopa za invalidske vozička"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeBubble.js:238
+#: src/placeView.js:398
 msgid "Designated for wheelchair users"
 msgstr "Prijazno uporabnikom invalidskih vozičkov"
 
-#: src/placeBubble.js:265
+#: src/placeView.js:425
 msgid "Religion:"
 msgstr "Religija:"
 
-#: src/placeEntry.js:221
-msgid "Failed to parse Geo URI"
-msgstr "Razčlenjevanje naslova URI Geo je spodletelo"
-
-#: src/place.js:417
+#: src/place.js:429
 msgid "Place not found in OpenStreetMap"
 msgstr "Mesta na OpenStreetMap ni mogoče najti"
 
-#: src/place.js:424
+#: src/place.js:436
 msgid "Coordinates in URL are not valid"
 msgstr "Koordinate v naslovu URL niso veljavne"
 
-#: src/place.js:433
+#: src/place.js:445
 msgid "URL is not supported"
 msgstr "Podan naslov URL ni podprt"
 
@@ -1608,11 +1628,11 @@ msgstr[3] "%s:%s ure"
 msgid "%s–%s"
 msgstr "%s–%s"
 
-#: src/translations.js:52
+#: src/translations.js:53
 msgid "Around the clock"
 msgstr "neprestano"
 
-#: src/translations.js:54
+#: src/translations.js:55
 msgid "From sunrise to sunset"
 msgstr "od zore do mraka"
 
@@ -1625,7 +1645,7 @@ msgstr "od zore do mraka"
 #. * place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: src/translations.js:114
+#: src/translations.js:121
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s"
@@ -1640,30 +1660,30 @@ msgstr "%s,%s"
 #. * %s place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: src/translations.js:128
+#: src/translations.js:135
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s,%s"
 msgstr "%s,%s,%s"
 
-#: src/translations.js:147
+#: src/translations.js:154
 msgid "Every day"
 msgstr "vsak dan"
 
 #. Translators:
 #. * This represents a range of days with a starting and ending day.
 #.
-#: src/translations.js:159
+#: src/translations.js:166
 #, javascript-format
 msgctxt "day range"
 msgid "%s-%s"
 msgstr "%s-%s"
 
-#: src/translations.js:170
+#: src/translations.js:177
 msgid "Public holidays"
 msgstr "javni prazniki"
 
-#: src/translations.js:172
+#: src/translations.js:179
 msgid "School holidays"
 msgstr "šolske počitnice"
 
@@ -1675,13 +1695,13 @@ msgstr "šolske počitnice"
 #. * the translation. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: src/translations.js:212
+#: src/translations.js:219
 #, javascript-format
 msgctxt "time interval list"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/translations.js:226
+#: src/translations.js:233
 msgid "not open"
 msgstr "ni odprto"
 
@@ -1692,17 +1712,11 @@ msgstr "ni odprto"
 #. * translation as needed. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: src/translations.js:241
+#: src/translations.js:248
 #, javascript-format
 msgctxt "time interval"
 msgid "%s-%s"
 msgstr "%s-%s"
-
-#. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/userLocationBubble.js:50
-#, javascript-format
-msgid "Accuracy: %s"
-msgstr "Natančnost: %s"
 
 #. Translators: Accuracy of user location information
 #: src/utils.js:248
