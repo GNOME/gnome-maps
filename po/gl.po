@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2021-01-28 21:54+0000\n"
-"PO-Revision-Date: 2021-01-31 16:55+0100\n"
+"POT-Creation-Date: 2021-02-13 14:59+0000\n"
+"PO-Revision-Date: 2021-02-18 18:30+0100\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -71,7 +71,7 @@ msgstr "O Proxecto GNOME"
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:34
-#: src/application.js:82 src/mainWindow.js:129 src/mainWindow.js:567
+#: src/application.js:94 src/mainWindow.js:132 src/mainWindow.js:582
 msgid "Maps"
 msgstr "Mapas"
 
@@ -495,31 +495,6 @@ msgstr ""
 msgid "Check your connection and proxy settings."
 msgstr "Comprobe a súa conexión ou preferencias do seu proxy."
 
-#. Translators: This is a tooltip
-#: data/ui/map-bubble.ui:67 data/ui/map-bubble.ui:136
-msgid "Share location"
-msgstr "Compartir localización"
-
-#. Translators: This is a tooltip
-#: data/ui/map-bubble.ui:101
-msgid "Add to new route"
-msgstr "Engadir unha nova ruta"
-
-#. Translators: This is the button to find a route to a place
-#: data/ui/map-bubble.ui:120
-msgid "Directions"
-msgstr "Direccións"
-
-#. Translators: This is a tooltip
-#: data/ui/map-bubble.ui:156
-msgid "Mark as favorite"
-msgstr "Marcar como facorito"
-
-#. Translators: This is a tooltip
-#: data/ui/map-bubble.ui:175
-msgid "Edit on OpenStreetMap"
-msgstr "Editar en OpenStreetMap"
-
 #: data/ui/osm-account-dialog.ui:9
 msgid "OpenStreetMap Account"
 msgstr "Conta de OpenStreetMap"
@@ -673,7 +648,7 @@ msgstr "Enviar a…"
 msgid "Check In…"
 msgstr "Rexistrarse…"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:64
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:65
 msgid "Open Shape Layer"
 msgstr "Abrir a capa de relieve"
 
@@ -772,6 +747,31 @@ msgstr "Ferris"
 msgid "Airplanes"
 msgstr "Avións"
 
+#. Translators: This is a tooltip
+#: data/ui/place-bar.ui:48 data/ui/place-buttons.ui:50 data/ui/place-view.ui:67
+msgid "Share location"
+msgstr "Compartir localización"
+
+#. Translators: This is a tooltip
+#: data/ui/place-buttons.ui:15
+msgid "Add to new route"
+msgstr "Engadir unha nova ruta"
+
+#. Translators: This is the button to find a route to a place
+#: data/ui/place-buttons.ui:34
+msgid "Directions"
+msgstr "Direccións"
+
+#. Translators: This is a tooltip
+#: data/ui/place-buttons.ui:70
+msgid "Mark as favorite"
+msgstr "Marcar como facorito"
+
+#. Translators: This is a tooltip
+#: data/ui/place-buttons.ui:89
+msgid "Edit on OpenStreetMap"
+msgstr "Editar en OpenStreetMap"
+
 #: data/ui/zoom-in-dialog.ui:16
 msgid "Zoom in to add location!"
 msgstr "Amplíe para engadir unha localización!"
@@ -797,23 +797,23 @@ msgstr "Faltan atributos requiridos"
 msgid "Could not find OSM element"
 msgstr "Non foi posíbel atopar o elemento de OSM"
 
-#: src/application.js:96
+#: src/application.js:108
 msgid "A path to a local tiles directory structure"
 msgstr "Unha ruta a unha estrutura de directorios de teselas locais"
 
-#: src/application.js:102
+#: src/application.js:114
 msgid "Tile size for local tiles directory"
 msgstr "O tamaño de tesela para o cartafol de teselas locais"
 
-#: src/application.js:106
+#: src/application.js:118
 msgid "Show the version of the program"
 msgstr "Mostra a versión do programa"
 
-#: src/application.js:112
+#: src/application.js:124
 msgid "Ignore network availability"
 msgstr "Ignorar a dispoñibilidade da rede"
 
-#: src/application.js:122 src/application.js:123
+#: src/application.js:134 src/application.js:135
 msgid "[FILE…|URI]"
 msgstr "[FICHEIRO…|URI]"
 
@@ -947,28 +947,27 @@ msgstr "Non se atopou a ruta."
 msgid "Start!"
 msgstr "Comezar!"
 
-#: src/mainWindow.js:61
+#: src/mainWindow.js:62
 msgid "All Layer Files"
 msgstr "Todos os ficheiros de capa"
 
-#: src/mainWindow.js:470
+#: src/mainWindow.js:485
 msgid "Failed to connect to location service"
 msgstr "Produciuse un fallo ao conectar co servizo de localización"
 
-#: src/mainWindow.js:565
+#: src/mainWindow.js:580
 msgid "translator-credits"
 msgstr "Fran Diéguez <frandieguez@gnome.org>, 2013-2020"
 
-#: src/mainWindow.js:568
+#: src/mainWindow.js:583
 msgid "A map application for GNOME"
 msgstr "Unha aplicación de mapas para GNOME"
 
-#: src/mainWindow.js:579
-#| msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
+#: src/mainWindow.js:594
 msgid "Copyright © 2011 – 2021 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 – 2021 Red Hat, Inc. e os autores de Mapas de GNOME"
 
-#: src/mainWindow.js:599
+#: src/mainWindow.js:614
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Datos do mapa por %s e contribuidores"
@@ -978,7 +977,7 @@ msgstr "Datos do mapa por %s e contribuidores"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:615
+#: src/mainWindow.js:630
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Teselas de mapas fornecidas por %s"
@@ -992,7 +991,7 @@ msgstr "Teselas de mapas fornecidas por %s"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:644
+#: src/mainWindow.js:659
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Busca fornecida por %s usando %s"
@@ -1064,7 +1063,7 @@ msgstr "O nome oficial. Isto é o aparece normalmente nos sinais."
 msgid "Address"
 msgstr "Enderezo"
 
-#: src/osmEditDialog.js:126 src/placeBubble.js:118
+#: src/osmEditDialog.js:126 src/placeView.js:272
 msgid "Website"
 msgstr "Sitio web"
 
@@ -1094,7 +1093,7 @@ msgstr ""
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:145 src/placeBubble.js:415
+#: src/osmEditDialog.js:145 src/placeView.js:580
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -1106,7 +1105,7 @@ msgstr ""
 "O formato usado debería incluír o código de idioma e o título do artigo como "
 "«gl:Título do artigo»."
 
-#: src/osmEditDialog.js:153 src/placeBubble.js:140
+#: src/osmEditDialog.js:153 src/placeView.js:300
 msgid "Opening hours"
 msgstr "Horas de apertura"
 
@@ -1120,11 +1119,11 @@ msgstr "Vexa a ligazón na etiqueta para obter axuda no formatado."
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:161 src/placeBubble.js:250
+#: src/osmEditDialog.js:161 src/placeView.js:410
 msgid "Population"
 msgstr "Poboación"
 
-#: src/osmEditDialog.js:166 src/placeBubble.js:259
+#: src/osmEditDialog.js:166 src/placeView.js:419
 msgid "Altitude"
 msgstr "Altitude"
 
@@ -1176,7 +1175,7 @@ msgstr "Servizo"
 msgid "Religion"
 msgstr "Relixión"
 
-#: src/osmEditDialog.js:195 src/translations.js:277
+#: src/osmEditDialog.js:195 src/translations.js:279
 msgid "Animism"
 msgstr "Animismo"
 
@@ -1184,83 +1183,83 @@ msgstr "Animismo"
 msgid "Bahá’í"
 msgstr "Bahaísmo"
 
-#: src/osmEditDialog.js:197 src/translations.js:279
+#: src/osmEditDialog.js:197 src/translations.js:281
 msgid "Buddhism"
 msgstr "Budismo"
 
-#: src/osmEditDialog.js:198 src/translations.js:280
+#: src/osmEditDialog.js:198 src/translations.js:282
 msgid "Caodaism"
 msgstr "Caodaísmo"
 
-#: src/osmEditDialog.js:199 src/translations.js:281
+#: src/osmEditDialog.js:199 src/translations.js:283
 msgid "Christianity"
 msgstr "Cristianismo"
 
-#: src/osmEditDialog.js:200 src/translations.js:282
+#: src/osmEditDialog.js:200 src/translations.js:284
 msgid "Confucianism"
 msgstr "Confucionismo"
 
-#: src/osmEditDialog.js:201 src/translations.js:283
+#: src/osmEditDialog.js:201 src/translations.js:285
 msgid "Hinduism"
 msgstr "Hinduismo"
 
-#: src/osmEditDialog.js:202 src/translations.js:284
+#: src/osmEditDialog.js:202 src/translations.js:286
 msgid "Jainism"
 msgstr "Xainismo"
 
-#: src/osmEditDialog.js:203 src/translations.js:285
+#: src/osmEditDialog.js:203 src/translations.js:287
 msgid "Judaism"
 msgstr "Xudaismo"
 
-#: src/osmEditDialog.js:204 src/translations.js:286
+#: src/osmEditDialog.js:204 src/translations.js:288
 msgid "Islam"
 msgstr "Islamismo"
 
-#: src/osmEditDialog.js:205 src/translations.js:287
+#: src/osmEditDialog.js:205 src/translations.js:289
 msgid "Multiple Religions"
 msgstr "Múltiples relixións"
 
-#: src/osmEditDialog.js:206 src/translations.js:288
+#: src/osmEditDialog.js:206 src/translations.js:290
 msgid "Paganism"
 msgstr "Paganismo"
 
-#: src/osmEditDialog.js:207 src/translations.js:289
+#: src/osmEditDialog.js:207 src/translations.js:291
 msgid "Pastafarianism"
 msgstr "Pastafarianismo"
 
-#: src/osmEditDialog.js:208 src/translations.js:290
+#: src/osmEditDialog.js:208 src/translations.js:292
 msgid "Scientology"
 msgstr "Cienciloxía"
 
-#: src/osmEditDialog.js:209 src/translations.js:291
+#: src/osmEditDialog.js:209 src/translations.js:293
 msgid "Shinto"
 msgstr "Sintoísmo"
 
-#: src/osmEditDialog.js:210 src/translations.js:292
+#: src/osmEditDialog.js:210 src/translations.js:294
 msgid "Sikhism"
 msgstr "Sixismo"
 
-#: src/osmEditDialog.js:211 src/translations.js:293
+#: src/osmEditDialog.js:211 src/translations.js:295
 msgid "Spiritualism"
 msgstr "Espiritualismo"
 
-#: src/osmEditDialog.js:212 src/translations.js:294
+#: src/osmEditDialog.js:212 src/translations.js:296
 msgid "Taoism"
 msgstr "Taoismo"
 
-#: src/osmEditDialog.js:213 src/translations.js:295
+#: src/osmEditDialog.js:213 src/translations.js:297
 msgid "Unitarian Universalism"
 msgstr "Universalismo unitario"
 
-#: src/osmEditDialog.js:214 src/translations.js:296
+#: src/osmEditDialog.js:214 src/translations.js:298
 msgid "Voodoo"
 msgstr "Vudú"
 
-#: src/osmEditDialog.js:215 src/translations.js:297
+#: src/osmEditDialog.js:215 src/translations.js:299
 msgid "Yazidism"
 msgstr "Xazidismo"
 
-#: src/osmEditDialog.js:216 src/translations.js:298
+#: src/osmEditDialog.js:216 src/translations.js:300
 msgid "Zoroastrianism"
 msgstr "Zoroastrismo"
 
@@ -1299,14 +1298,40 @@ msgstr "Feito"
 msgid "Unnamed place"
 msgstr "Lugar sen nome"
 
-#: src/placeBubble.js:126
+#: src/placeEntry.js:221
+msgid "Failed to parse Geo URI"
+msgstr "Produciuse un fallo ao analizar o URI Geo"
+
+#: src/placeView.js:260
+#| msgid "invalid coordinate"
+msgid "Coordinates"
+msgstr "Coordenadas"
+
+#: src/placeView.js:264
+#| msgid "Accuracy: %s"
+msgid "Accuracy"
+msgstr "Precisión"
+
+#. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
+#: src/placeView.js:267
+#, javascript-format
+msgid "Accuracy: %s"
+msgstr "Precisión: %s"
+
+#. since the phone numbers are typically always rendered
+#. * left-to-right, insert an explicit LRM char to avoid issues
+#. * with phone numbers in international format starting with a +
+#. * which is considered a "weak" character to determine Unicode
+#. * text direction
+#.
+#: src/placeView.js:286
 msgid "Phone number"
 msgstr "Número de teléfono"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeBubble.js:150
+#: src/placeView.js:310
 msgid "Public internet access"
 msgstr "Acceso a internet pública"
 
@@ -1314,50 +1339,50 @@ msgstr "Acceso a internet pública"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeBubble.js:159
+#: src/placeView.js:319
 msgid "No internet access"
 msgstr "Non hai acceso a internet"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeBubble.js:167
+#: src/placeView.js:327
 msgid "Public Wi-Fi"
 msgstr "Wifi público"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeBubble.js:175
+#: src/placeView.js:335
 msgid "Wired internet access"
 msgstr "Acceso a internet cableado"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeBubble.js:183
+#: src/placeView.js:343
 msgid "Computers available for use"
 msgstr "Computadores dispoñíbeis para o uso"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeBubble.js:191
+#: src/placeView.js:351
 msgid "Internet assistance available"
 msgstr "Asistencia a internet dispoñíbel"
 
-#: src/placeBubble.js:197
+#: src/placeView.js:357
 msgid "No toilets available"
 msgstr "Sen baños dispoñíbeis"
 
-#: src/placeBubble.js:200
+#: src/placeView.js:360
 msgid "Toilets available"
 msgstr "Baños dispoñíbeis"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeBubble.js:209
+#: src/placeView.js:369
 msgid "Wheelchair accessible"
 msgstr "Acceso con cadeira de rodas"
 
@@ -1366,7 +1391,7 @@ msgstr "Acceso con cadeira de rodas"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeBubble.js:219
+#: src/placeView.js:379
 msgid "Limited wheelchair accessibility"
 msgstr "Acceso con cadeira de rodas limitado"
 
@@ -1374,7 +1399,7 @@ msgstr "Acceso con cadeira de rodas limitado"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeBubble.js:228
+#: src/placeView.js:388
 msgid "Not wheelchair accessible"
 msgstr "Sen acceso con cadeira de rodas"
 
@@ -1383,27 +1408,23 @@ msgstr "Sen acceso con cadeira de rodas"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeBubble.js:238
+#: src/placeView.js:398
 msgid "Designated for wheelchair users"
 msgstr "Deseñado para usuarios de cadeira de rodas"
 
-#: src/placeBubble.js:265
+#: src/placeView.js:425
 msgid "Religion:"
 msgstr "Relixión:"
 
-#: src/placeEntry.js:221
-msgid "Failed to parse Geo URI"
-msgstr "Produciuse un fallo ao analizar o URI Geo"
-
-#: src/place.js:417
+#: src/place.js:429
 msgid "Place not found in OpenStreetMap"
 msgstr "Lugar non atopada en OpenStreetMap"
 
-#: src/place.js:424
+#: src/place.js:436
 msgid "Coordinates in URL are not valid"
 msgstr "As coordenadas na URL non son válidas"
 
-#: src/place.js:433
+#: src/place.js:445
 msgid "URL is not supported"
 msgstr "O URL non é compatíbel"
 
@@ -1601,11 +1622,11 @@ msgstr[1] "%s:%s horas"
 msgid "%s–%s"
 msgstr "%s–%s"
 
-#: src/translations.js:52
+#: src/translations.js:53
 msgid "Around the clock"
 msgstr "Todo o día"
 
-#: src/translations.js:54
+#: src/translations.js:55
 msgid "From sunrise to sunset"
 msgstr "Desde o solpor ao amencer"
 
@@ -1618,7 +1639,7 @@ msgstr "Desde o solpor ao amencer"
 #. * place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: src/translations.js:114
+#: src/translations.js:116
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s"
@@ -1633,30 +1654,30 @@ msgstr "%s,%s"
 #. * %s place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: src/translations.js:128
+#: src/translations.js:130
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s,%s"
 msgstr "%s,%s,%s"
 
-#: src/translations.js:147
+#: src/translations.js:149
 msgid "Every day"
 msgstr "Cada día"
 
 #. Translators:
 #. * This represents a range of days with a starting and ending day.
 #.
-#: src/translations.js:159
+#: src/translations.js:161
 #, javascript-format
 msgctxt "day range"
 msgid "%s-%s"
 msgstr "%s-%s"
 
-#: src/translations.js:170
+#: src/translations.js:172
 msgid "Public holidays"
 msgstr "Vacacións públicas"
 
-#: src/translations.js:172
+#: src/translations.js:174
 msgid "School holidays"
 msgstr "Vacacións de escola"
 
@@ -1668,13 +1689,13 @@ msgstr "Vacacións de escola"
 #. * the translation. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: src/translations.js:212
+#: src/translations.js:214
 #, javascript-format
 msgctxt "time interval list"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/translations.js:226
+#: src/translations.js:228
 msgid "not open"
 msgstr "non aberto"
 
@@ -1685,17 +1706,11 @@ msgstr "non aberto"
 #. * translation as needed. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: src/translations.js:241
+#: src/translations.js:243
 #, javascript-format
 msgctxt "time interval"
 msgid "%s-%s"
 msgstr "%s-%s"
-
-#. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/userLocationBubble.js:50
-#, javascript-format
-msgid "Accuracy: %s"
-msgstr "Precisión: %s"
 
 #. Translators: Accuracy of user location information
 #: src/utils.js:248
