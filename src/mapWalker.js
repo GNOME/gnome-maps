@@ -21,11 +21,11 @@
  *         Damián Nohales <damiannohales@gmail.com>
  */
 
-const Champlain = imports.gi.Champlain;
 const Clutter = imports.gi.Clutter;
 const Geocode = imports.gi.GeocodeGlib;
 const GObject = imports.gi.GObject;
 
+const BoundingBox = imports.boundingBox;
 const Location = imports.location;
 const Utils = imports.utils;
 
@@ -49,44 +49,43 @@ var MapWalker = GObject.registerClass({
 
     _createBoundingBox(place) {
         if (place.bounding_box !== null) {
-            return new Champlain.BoundingBox({ top: place.bounding_box.top,
-                                               bottom: place.bounding_box.bottom,
-                                               left: place.bounding_box.left,
-                                               right: place.bounding_box.right });
-        } else
+            return new BoundingBox.BoundingBox({ top: place.bounding_box.top,
+                                                 bottom: place.bounding_box.bottom,
+                                                 left: place.bounding_box.left,
+                                                 right: place.bounding_box.right });
+        } else {
             return null;
+        }
     }
 
     // Zoom to the maximal zoom-level that fits the place type
     zoomToFit() {
-        if (this._boundingBox !== null && this._boundingBox.is_valid()) {
-            this._view.zoom_level = this._view.max_zoom_level;
-            this._view.ensure_visible(this._boundingBox, false);
-        } else {
-            let zoom;
+        let zoom;
 
-            if (this.place.initialZoom) {
-                zoom = this.place.initialZoom;
-            } else {
-                switch (this.place.place_type) {
-                    case Geocode.PlaceType.STREET:
-                        zoom = 16;
-                        break;
-                    case Geocode.PlaceType.TOWN:
-                        zoom = 11;
-                        break;
-                    case Geocode.PlaceType.COUNTRY:
-                        zoom = 6;
-                        break;
-                    default:
-                        zoom = this._view.max_zoom_level;
-                        break;
-                }
+        if (this._boundingBox !== null && this._boundingBox.isValid()) {
+            zoom = this._mapView.getZoomLevelFittingBBox(this._boundingBox);
+        } else if (this.place.initialZoom) {
+            zoom = this.place.initialZoom;
+        } else {
+            switch (this.place.place_type) {
+                case Geocode.PlaceType.STREET:
+                    zoom = 16;
+                    break;
+                case Geocode.PlaceType.TOWN:
+                    zoom = 11;
+                    break;
+                case Geocode.PlaceType.COUNTRY:
+                    zoom = 6;
+                    break;
+                default:
+                    zoom = this._view.max_zoom_level;
+                    break;
             }
-            this._view.zoom_level = zoom;
-            this._view.center_on(this.place.location.latitude,
-                                 this.place.location.longitude);
         }
+
+        this._view.zoom_level = zoom;
+        this._view.center_on(this.place.location.latitude,
+                             this.place.location.longitude);
     }
 
     goTo(animate, linear) {
@@ -140,15 +139,15 @@ var MapWalker = GObject.registerClass({
     _ensureVisible(fromLocation) {
         let visibleBox = null;
 
-        if (this._boundingBox !== null && this._boundingBox.is_valid()) {
+        if (this._boundingBox !== null && this._boundingBox.isValid()) {
             visibleBox = this._boundingBox.copy();
 
             visibleBox.extend(fromLocation.latitude, fromLocation.longitude);
         } else {
-            visibleBox = new Champlain.BoundingBox({ left:   180,
-                                                     right: -180,
-                                                     bottom:  90,
-                                                     top:    -90 });
+            visibleBox = new BoundingBox.BoundingBox({ left:   180,
+                                                       right: -180,
+                                                       bottom:  90,
+                                                       top:    -90 });
 
             [fromLocation, this.place.location].forEach((location) => {
                 visibleBox.left   = Math.min(visibleBox.left,   location.longitude);
@@ -158,7 +157,10 @@ var MapWalker = GObject.registerClass({
             });
         }
 
-        this._view.ensure_visible(visibleBox, true);
+        let [lon, lat] = visibleBox.getCenter();
+
+        this._view.zoom_level = this._mapView.getZoomLevelFittingBBox(visibleBox);
+        this._view.go_to(lat, lon);
     }
 
     _boxCovers(coverBox) {
