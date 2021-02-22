@@ -711,6 +711,33 @@ var MapView = GObject.registerClass({
         new MapWalker.MapWalker(place, this).goTo(true, linear);
     }
 
+    getZoomLevelFittingBBox(bbox) {
+        let mapSource = this.view.get_map_source();
+        let goodSize = false;
+        let zoomLevel = this.view.max_zoom_level;
+
+        do {
+
+            let minX = mapSource.get_x(zoomLevel, bbox.left);
+            let minY = mapSource.get_y(zoomLevel, bbox.bottom);
+            let maxX = mapSource.get_x(zoomLevel, bbox.right);
+            let maxY = mapSource.get_y(zoomLevel, bbox.top);
+
+            if (minY - maxY <= this.view.height &&
+                maxX - minX <= this.view.width)
+                goodSize = true;
+            else
+                zoomLevel--;
+
+            if (zoomLevel <= this.view.min_zoom_level) {
+                zoomLevel = this.view.min_zoom_level;
+                goodSize = true;
+            }
+        } while (!goodSize);
+
+        return zoomLevel;
+    }
+
     showTurnPoint(turnPoint) {
         if (this._turnPointMarker)
             this._turnPointMarker.destroy();
