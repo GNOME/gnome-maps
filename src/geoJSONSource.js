@@ -24,6 +24,7 @@ const Clutter = imports.gi.Clutter;
 const GObject = imports.gi.GObject;
 const Mainloop = imports.mainloop;
 
+const BoundingBox = imports.boundingBox;
 const Geojsonvt = imports.geojsonvt.geojsonvt;
 const Location = imports.location;
 const Place = imports.place;
@@ -45,7 +46,7 @@ class GeoJSONSource extends Champlain.TileSource {
 
         this._mapView = params.mapView;
         this._markerLayer = params.markerLayer;
-        this._bbox = new Champlain.BoundingBox();
+        this._bbox = new BoundingBox.BoundingBox();
         this._tileSize = Service.getService().tiles.street.tile_size;
     }
 

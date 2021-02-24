@@ -124,7 +124,7 @@ class TransitPrintLayout extends PrintLayout.PrintLayout {
         if (leg.distance < 10)
             view.center_on(leg.fromCoordinate[0], leg.fromCoordinate[1]);
         else
-            view.ensure_visible(leg.bbox, false);
+            view.ensure_visible(this._createBBox(leg), false);
         if (view.state !== Champlain.State.DONE) {
             let notifyId = view.connect('notify::state', () => {
                 if (view.state === Champlain.State.DONE) {
@@ -139,6 +139,13 @@ class TransitPrintLayout extends PrintLayout.PrintLayout {
             if (surface)
                 this._addSurface(surface, x, y, pageNum);
         }
+    }
+
+    _createBBox(leg) {
+        return Champlain.BoundingBox({ top:    leg.bbox.top,
+                                       left:   leg.bbox.left,
+                                       bottom: leg.bbox.bottom,
+                                       right:  leg.bbox.right });
     }
 
     _createStartMarker(leg, previousLeg) {

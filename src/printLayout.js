@@ -170,7 +170,7 @@ var PrintLayout = GObject.registerClass({
             }
         });
 
-        view.ensure_visible(this._route.createBBox(locations), false);
+        view.ensure_visible(this._createBBox(locations), false);
         if (view.state !== Champlain.State.DONE) {
             let notifyId = view.connect('notify::state', () => {
                 if (view.state === Champlain.State.DONE) {
@@ -185,6 +185,15 @@ var PrintLayout = GObject.registerClass({
             if (surface)
                 this._addSurface(surface, x, y, pageNum);
         }
+    }
+
+    _createBBox(locations) {
+        let bbox = this._route.createBBox(locations);
+
+        return new Champlain.BoundingBox({ top:    bbox.top,
+                                           left:   bbox.left,
+                                           bottom: bbox.bottom,
+                                           right:  bbox.right });
     }
 
     _createTurnPointArray(startIndex, endIndex) {

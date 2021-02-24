@@ -19,11 +19,11 @@
  * Author: Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
  */
 
-const Champlain = imports.gi.Champlain;
 const GLib = imports.gi.GLib;
 const Mainloop = imports.mainloop;
 const Soup = imports.gi.Soup;
 
+const BoundingBox = imports.boundingBox;
 const EPAF = imports.epaf;
 const HTTP = imports.http;
 const Route = imports.route;
@@ -185,9 +185,9 @@ var GraphHopper = class GraphHopper {
     _createRoute(route) {
         let path       = EPAF.decode(route.points);
         let turnPoints = this._createTurnPoints(path, route.instructions);
-        let bbox       = new Champlain.BoundingBox();
+        let bbox       = new BoundingBox.BoundingBox();
 
-        // GH does lonlat-order and Champlain latlon-order
+        // GH does lonlat-order
         bbox.extend(route.bbox[1], route.bbox[0]);
         bbox.extend(route.bbox[3], route.bbox[2]);
 

@@ -22,10 +22,10 @@
 const _ = imports.gettext.gettext;
 const ngettext = imports.gettext.ngettext;
 
-const Champlain = imports.gi.Champlain;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 
+const BoundingBox = imports.boundingBox;
 const HVT = imports.hvt;
 const Time = imports.time;
 const Utils = imports.utils;
@@ -186,7 +186,7 @@ var Plan = GObject.registerClass({
     }
 
     _createBBox() {
-        let bbox = new Champlain.BoundingBox();
+        let bbox = new BoundingBox.BoundingBox();
         this._itineraries.forEach(function(itinerary) {
             bbox.compose(itinerary.bbox);
         });
@@ -284,7 +284,7 @@ class Itinerary extends GObject.Object {
     }
 
     _createBBox() {
-        let bbox = new Champlain.BoundingBox();
+        let bbox = new BoundingBox.BoundingBox();
 
         this._legs.forEach(function(leg) {
             bbox.compose(leg.bbox);
@@ -638,7 +638,7 @@ var Leg = class Leg {
     }
 
     _createBBox() {
-        let bbox = new Champlain.BoundingBox();
+        let bbox = new BoundingBox.BoundingBox();
 
         this.polyline.forEach(function({ latitude, longitude }) {
             bbox.extend(latitude, longitude);

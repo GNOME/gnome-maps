@@ -29,6 +29,7 @@ const GtkChamplain = imports.gi.GtkChamplain;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
+const BoundingBox = imports.boundingBox;
 const ContactPlace = imports.contactPlace;
 const Color = imports.color;
 const Geoclue = imports.geoclue;
@@ -527,7 +528,7 @@ var MapView = GObject.registerClass({
     }
 
     _loadShapeLayers(files) {
-        let bbox = new Champlain.BoundingBox();
+        let bbox = new BoundingBox.BoundingBox();
         this._remainingFilesToLoad = files.length;
 
         files.forEach((file) => {
@@ -682,10 +683,10 @@ var MapView = GObject.registerClass({
                 Utils.debug('Invalid initial coordinates: ' + lat + ', ' + lon);
         } else {
             /* bounding box. for backwards compatibility, not used anymore */
-            let bbox = new Champlain.BoundingBox({ top: location[0],
-                                                   bottom: location[1],
-                                                   left: location[2],
-                                                   right: location[3] });
+            let bbox = new BoundingBox.BoundingBox({ top: location[0],
+                                                     bottom: location[1],
+                                                     left: location[2],
+                                                     right: location[3] });
             this.view.connect("notify::realized", () => {
                 if (this.view.realized)
                     this.gotoBBox(bbox, true);
@@ -694,12 +695,12 @@ var MapView = GObject.registerClass({
     }
 
     gotoBBox(bbox, linear) {
-        if (!bbox.is_valid()) {
+        if (!bbox.isValid()) {
             Utils.debug('Bounding box is invalid');
             return;
         }
 
-        let [lat, lon] = bbox.get_center();
+        let [lon, lat] = bbox.getCenter();
         let place = new Place.Place({
             location: new Location.Location({ latitude  : lat,
                                               longitude : lon }),
@@ -777,10 +778,7 @@ var MapView = GObject.registerClass({
             this._placeLayer.add_marker(marker);
         });
 
-        if (places.length > 1)
-            this.gotoBBox(contact.bounding_box);
-        else
-            new MapWalker.MapWalker(places[0], this).goTo(true);
+        new MapWalker.MapWalker(places[0], this).goTo(true);
     }
 
     _showStoredRoute(stored) {

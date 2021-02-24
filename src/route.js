@@ -19,9 +19,9 @@
  * Author: Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
  */
 
-const Champlain = imports.gi.Champlain;
 const GObject = imports.gi.GObject;
 
+const BoundingBox = imports.boundingBox;
 const Utils = imports.utils;
 
 var TurnPointType = {
@@ -94,7 +94,7 @@ var Route = GObject.registerClass({
     }
 
     createBBox(coordinates) {
-        let bbox = new Champlain.BoundingBox();
+        let bbox = new BoundingBox.BoundingBox();
         coordinates.forEach(function({ latitude, longitude }) {
             bbox.extend(latitude, longitude);
         }, this);
