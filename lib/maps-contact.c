@@ -19,7 +19,6 @@
 
 #include <folks/folks.h>
 #include <geocode-glib/geocode-glib.h>
-#include <champlain/champlain.h>
 
 #include "maps-contact.h"
 
@@ -30,7 +29,6 @@ struct _MapsContactPrivate
 
   GLoadableIcon *icon;
   GList *places;
-  ChamplainBoundingBox *bbox;
 
   GMutex geocode_mutex;
   guint geocode_counter;
@@ -114,11 +112,6 @@ maps_contact_get_property (GObject    *object,
                           contact->priv->id);
       break;
 
-    case PROP_BBOX:
-      g_value_set_boxed (value,
-                         contact->priv->bbox);
-      break;
-
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
       break;
@@ -133,7 +126,6 @@ maps_contact_dispose (GObject *object)
   g_clear_pointer (&contact->priv->name, g_free);
   g_clear_pointer (&contact->priv->id, g_free);
   g_clear_object (&contact->priv->icon);
-  g_clear_object (&contact->priv->bbox);
   g_list_free_full (contact->priv->places, g_object_unref);
 
   G_OBJECT_CLASS (maps_contact_parent_class)->dispose (object);
@@ -187,19 +179,6 @@ maps_contact_class_init (MapsContactClass *klass)
                                G_PARAM_READWRITE |
                                G_PARAM_STATIC_STRINGS);
   g_object_class_install_property (maps_class, PROP_ICON, pspec);
-
-  /**
-   * MapsContact:bounding-box:
-   *
-   * The bounding box for the contact.
-   */
-  pspec = g_param_spec_boxed ("bounding-box",
-                              "Bounding Box",
-                              "The bounding box for the place",
-                              CHAMPLAIN_TYPE_BOUNDING_BOX,
-                              G_PARAM_READABLE |
-                              G_PARAM_STATIC_STRINGS);
-  g_object_class_install_property (maps_class, PROP_BBOX, pspec);
 }
 
 static void
@@ -211,7 +190,6 @@ maps_contact_init (MapsContact *contact)
   contact->priv->id = NULL;
   contact->priv->icon = NULL;
   contact->priv->places = NULL;
-  contact->priv->bbox = NULL;
 
   g_mutex_init (&contact->priv->geocode_mutex);
 }
@@ -272,14 +250,6 @@ on_geocode_search_async (GeocodeForward *forward,
                     geocode_place_get_osm_type (place), NULL);
       g_object_set (G_OBJECT (data->place), "osm-id",
                     geocode_place_get_osm_id (place), NULL);
-
-      /* Update the contact bounding box */
-      if (contact->priv->bbox == NULL)
-        contact->priv->bbox = champlain_bounding_box_new ();
-
-      champlain_bounding_box_extend (contact->priv->bbox,
-                                     geocode_location_get_latitude (location),
-                                     geocode_location_get_longitude (location));
 
       /* Make sure we do not lie about how good our resolution is */
       street_address = geocode_place_get_street_address (place);
