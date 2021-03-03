@@ -30,66 +30,73 @@
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
             <property name="margin">18</property>
-            <property name="spacing">6</property>
+            <property name="spacing">12</property>
             <child>
               <object class="GtkBox">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="orientation">horizontal</property>
-                <property name="spacing">12</property>
+                <property name="orientation">vertical</property>
                 <child>
-                  <object class="HdyAvatar" id="contact-avatar">
-                    <property name="visible">False</property>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="show_initials">True</property>
-                    <property name="size">32</property>
+                    <property name="orientation">horizontal</property>
+                    <property name="spacing">12</property>
+                    <child>
+                      <object class="HdyAvatar" id="contact-avatar">
+                        <property name="visible">False</property>
+                        <property name="can_focus">False</property>
+                        <property name="show_initials">True</property>
+                        <property name="size">32</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="label-title">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">start</property>
+                        <property name="expand">True</property>
+                        <property name="wrap">True</property>
+                        <property name="max_width_chars">30</property>
+                        <property name="xalign">0</property>
+                        <style>
+                          <class name="title-2"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="send-to-button-alt">
+                        <property name="visible">False</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Share location</property>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="icon-name">send-to-symbolic</property>
+                            <property name="pixel_size">16</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
                   </object>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="label-title">
-                    <property name="visible">True</property>
+                  <object class="GtkLabel" id="native-name">
+                    <property name="visible">False</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
                     <property name="expand">True</property>
                     <property name="wrap">True</property>
                     <property name="max_width_chars">30</property>
                     <property name="xalign">0</property>
+                    <property name="margin-top">6</property>
                     <style>
-                      <class name="title-2"/>
+                      <class name="dim-label"/>
                     </style>
                   </object>
                 </child>
-                <child>
-                  <object class="GtkButton" id="send-to-button-alt">
-                    <property name="visible">False</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
-                    <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Share location</property>
-                    <child>
-                      <object class="GtkImage">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="icon-name">send-to-symbolic</property>
-                        <property name="pixel_size">16</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="native-name">
-                <property name="visible">False</property>
-                <property name="can_focus">False</property>
-                <property name="halign">start</property>
-                <property name="expand">True</property>
-                <property name="wrap">True</property>
-                <property name="max_width_chars">30</property>
-                <property name="xalign">0</property>
-                <property name="margin-bottom">6</property>
-                <style>
-                  <class name="dim-label"/>
-                </style>
               </object>
             </child>
             <child>
@@ -100,7 +107,6 @@
                 <property name="xalign">0</property>
                 <property name="use_markup">True</property>
                 <property name="wrap">True</property>
-                <property name="margin-bottom">6</property>
               </object>
             </child>
             <child>
