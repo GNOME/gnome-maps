@@ -1,22 +1,22 @@
 # Vietnamese translations for Maps package
 # Bản dịch Tiếng Việt dành cho gói Maps.
 # This file is distributed under the same license as the Maps package.
-# Trần Ngọc Quân <vnwildman@gmail.com>, 2016, 2017, 2018, 2019.
+# Trần Ngọc Quân <vnwildman@gmail.com>, 2016, 2017, 2018, 2019, 2021.
 # Antoine Đỗ <do.antoine@disroot.org>, 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2021-01-26 21:59+0000\n"
-"PO-Revision-Date: 2021-01-25 09:29+0100\n"
-"Last-Translator: Antoine Đỗ <do.antoine@disroot.org>\n"
+"POT-Creation-Date: 2021-03-10 21:07+0000\n"
+"PO-Revision-Date: 2021-03-12 15:20+0700\n"
+"Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <gnome-vi-list@gnome.org>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Gtranslator 3.38.0\n"
 
 #: data/org.gnome.Maps.appdata.xml.in:6
@@ -69,7 +69,7 @@ msgstr "Dự án GNOME"
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:34
-#: src/application.js:82 src/mainWindow.js:129 src/mainWindow.js:567
+#: src/application.js:94 src/mainWindow.js:132 src/mainWindow.js:582
 msgid "Maps"
 msgstr "Bản đồ"
 
@@ -180,7 +180,7 @@ msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
 msgstr ""
-"Cài đặt riêng tư check-in Foursquare lần cuối. Giá trị có thể là:  public, "
+"Cài đặt riêng tư check-in Foursquare lần cuối. Giá trị có thể là: public, "
 "followers hay private."
 
 #: data/org.gnome.Maps.gschema.xml:67
@@ -388,7 +388,7 @@ msgstr "Thoát"
 #: data/ui/help-overlay.ui:53
 msgctxt "shortcut window"
 msgid "Open main menu"
-msgstr "Mở menu chính"
+msgstr "Mở trình đơn chính"
 
 #: data/ui/help-overlay.ui:62
 msgctxt "shortcut window"
@@ -491,31 +491,6 @@ msgstr ""
 #: data/ui/main-window.ui:131
 msgid "Check your connection and proxy settings."
 msgstr "Kiểm tra lại kết nối và cài đặt ủy nhiệm của bạn."
-
-#. Translators: This is a tooltip
-#: data/ui/map-bubble.ui:67 data/ui/map-bubble.ui:136
-msgid "Share location"
-msgstr "Chia sẻ vị trí"
-
-#. Translators: This is a tooltip
-#: data/ui/map-bubble.ui:101
-msgid "Add to new route"
-msgstr "Thêm đường đi mới"
-
-#. Translators: This is the button to find a route to a place
-#: data/ui/map-bubble.ui:120
-msgid "Directions"
-msgstr "Hướng"
-
-#. Translators: This is a tooltip
-#: data/ui/map-bubble.ui:156
-msgid "Mark as favorite"
-msgstr "Đánh dấu là hay dùng"
-
-#. Translators: This is a tooltip
-#: data/ui/map-bubble.ui:175
-msgid "Edit on OpenStreetMap"
-msgstr "Sửa trên OpenStreetMap"
 
 #: data/ui/osm-account-dialog.ui:9
 msgid "OpenStreetMap Account"
@@ -623,7 +598,7 @@ msgid ""
 "Map changes will be visible on all maps that use\n"
 "OpenStreetMap data."
 msgstr ""
-"Các thay đổi bản đồ sẽ khả kiến trên mọi bản đồ mà\n"
+"Các thay đổi bản đồ sẽ nhìn thấy trên mọi bản đồ mà\n"
 "nó dùng dữ liệu OpenStreetMap."
 
 #: data/ui/osm-edit-dialog.ui:241
@@ -667,9 +642,9 @@ msgstr "Gửi Đến…"
 
 #: data/ui/send-to-dialog.ui:86
 msgid "Check In…"
-msgstr "Kiểm tra Trong ..."
+msgstr "Check In…"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:64
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:65
 msgid "Open Shape Layer"
 msgstr "Mở lớp hình dạng"
 
@@ -680,7 +655,7 @@ msgstr "_Mở"
 #. Translators: This is a tooltip
 #: data/ui/shape-layer-row.ui:19
 msgid "Toggle visible"
-msgstr "Bật/tắt khả kiến"
+msgstr "Bật/tắt nhìn thấy"
 
 #: data/ui/sidebar.ui:275
 msgid "Route search by GraphHopper"
@@ -769,6 +744,31 @@ msgstr "Phà"
 msgid "Airplanes"
 msgstr "Máy bay"
 
+#. Translators: This is a tooltip
+#: data/ui/place-bar.ui:48 data/ui/place-buttons.ui:50 data/ui/place-view.ui:72
+msgid "Share location"
+msgstr "Chia sẻ vị trí"
+
+#. Translators: This is a tooltip
+#: data/ui/place-buttons.ui:15
+msgid "Add to new route"
+msgstr "Thêm đường đi mới"
+
+#. Translators: This is the button to find a route to a place
+#: data/ui/place-buttons.ui:34
+msgid "Directions"
+msgstr "Hướng"
+
+#. Translators: This is a tooltip
+#: data/ui/place-buttons.ui:70
+msgid "Mark as favorite"
+msgstr "Đánh dấu là hay dùng"
+
+#. Translators: This is a tooltip
+#: data/ui/place-buttons.ui:89
+msgid "Edit on OpenStreetMap"
+msgstr "Sửa trên OpenStreetMap"
+
 #: data/ui/zoom-in-dialog.ui:16
 msgid "Zoom in to add location!"
 msgstr "Phóng to vào vị trí thêm!"
@@ -794,23 +794,23 @@ msgstr "Thiếu các thuộc tính cần thiết"
 msgid "Could not find OSM element"
 msgstr "Không thể tìm thấy phần tử OSM"
 
-#: src/application.js:96
+#: src/application.js:108
 msgid "A path to a local tiles directory structure"
 msgstr "Một đường dẫn đến cấu trúc thư mục lát gạch"
 
-#: src/application.js:102
+#: src/application.js:114
 msgid "Tile size for local tiles directory"
 msgstr "Kích thước ô cho thư mục ô cục bộ"
 
-#: src/application.js:106
+#: src/application.js:118
 msgid "Show the version of the program"
 msgstr "Hiển thị phiên bản của chương trình"
 
-#: src/application.js:112
+#: src/application.js:124
 msgid "Ignore network availability"
 msgstr "Bỏ qua tính khả dụng của mạng"
 
-#: src/application.js:122 src/application.js:123
+#: src/application.js:134 src/application.js:135
 msgid "[FILE…|URI]"
 msgstr "[TẬP TIN… | URI]"
 
@@ -943,37 +943,37 @@ msgstr "Không tìm thấy lộ trình nào."
 msgid "Start!"
 msgstr "Bắt đầu!"
 
-#: src/mainWindow.js:61
+#: src/mainWindow.js:62
 msgid "All Layer Files"
 msgstr "Mọi tập tin lớp"
 
-#: src/mainWindow.js:470
+#: src/mainWindow.js:485
 msgid "Failed to connect to location service"
 msgstr "Gặp lỗi khi kết nối đến dịch vụ vị trí"
 
-#: src/mainWindow.js:565
+#: src/mainWindow.js:580
 msgid "translator-credits"
 msgstr "Nhóm Việt hóa GNOME <gnome-vi-list@gnome.org>"
 
-#: src/mainWindow.js:568
+#: src/mainWindow.js:583
 msgid "A map application for GNOME"
 msgstr "Ứng dụng bản đồ dành cho GNOME"
 
-#: src/mainWindow.js:579
-msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
-msgstr "Bản quyền © 2011 – 2019 Red Hat, Inc. và các tác giả Bản đồ GNOME"
+#: src/mainWindow.js:594
+msgid "Copyright © 2011 – 2021 Red Hat, Inc. and The GNOME Maps authors"
+msgstr "Bản quyền © 2011 – 2021 Red Hat, Inc. và các tác giả Bản đồ GNOME"
 
-#: src/mainWindow.js:599
+#: src/mainWindow.js:614
 #, javascript-format
 msgid "Map data by %s and contributors"
-msgstr "Dữ liệu bản đồ bởi %s và những người đóng góp"
+msgstr "Dữ liệu bản đồ của %s và những người đóng góp"
 
 #. Translators: this is an attribution string giving credit to the
 #. * tile provider where the %s placeholder is replaced by either
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:615
+#: src/mainWindow.js:630
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Tiêu đề bản đồ cung cấp bởi %s"
@@ -987,7 +987,7 @@ msgstr "Tiêu đề bản đồ cung cấp bởi %s"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:644
+#: src/mainWindow.js:659
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Tìm kiếm do %s cung cấp sử dụng %s"
@@ -1006,7 +1006,7 @@ msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
 "time to load"
 msgstr ""
-"Bạn sắp mở tệp có tổng kích thước %s MB. Quá trình này có thể mất một khoảng "
+"Bạn sắp mở các tập tin có tổng kích thước là %s MB. Quá trình này có thể tốn "
 "thời gian để tải"
 
 #: src/mapView.js:540
@@ -1059,7 +1059,7 @@ msgstr "Tên chính thức. Đây là cái thường xuất hiện trên chữ k
 msgid "Address"
 msgstr "Địa chỉ"
 
-#: src/osmEditDialog.js:126 src/placeBubble.js:118
+#: src/osmEditDialog.js:126 src/placeView.js:272
 msgid "Website"
 msgstr "Trang thông tin điện tử"
 
@@ -1091,7 +1091,7 @@ msgstr ""
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:145 src/placeBubble.js:415
+#: src/osmEditDialog.js:145 src/placeView.js:580
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -1103,7 +1103,7 @@ msgstr ""
 "Nên dùng dạng thức có bao gồm mã ngôn ngữ và tiêu đề bài viết như là ”vi:"
 "Tiêu đề bài viết”."
 
-#: src/osmEditDialog.js:153 src/placeBubble.js:140
+#: src/osmEditDialog.js:153 src/placeView.js:300
 msgid "Opening hours"
 msgstr "Giờ mở cửa"
 
@@ -1117,11 +1117,11 @@ msgstr "Xem liên kết trong nhãn để nhận được hỗ trợ về địn
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:161 src/placeBubble.js:250
+#: src/osmEditDialog.js:161 src/placeView.js:410
 msgid "Population"
 msgstr "Dân số"
 
-#: src/osmEditDialog.js:166 src/placeBubble.js:259
+#: src/osmEditDialog.js:166 src/placeView.js:419
 msgid "Altitude"
 msgstr "Cao độ"
 
@@ -1173,7 +1173,7 @@ msgstr "Dịch vụ"
 msgid "Religion"
 msgstr "Tôn giáo"
 
-#: src/osmEditDialog.js:195 src/translations.js:277
+#: src/osmEditDialog.js:195 src/translations.js:284
 msgid "Animism"
 msgstr "Thuyết vật linh"
 
@@ -1181,83 +1181,83 @@ msgstr "Thuyết vật linh"
 msgid "Bahá’í"
 msgstr "Bahá’í"
 
-#: src/osmEditDialog.js:197 src/translations.js:279
+#: src/osmEditDialog.js:197 src/translations.js:286
 msgid "Buddhism"
 msgstr "Phật giáo"
 
-#: src/osmEditDialog.js:198 src/translations.js:280
+#: src/osmEditDialog.js:198 src/translations.js:287
 msgid "Caodaism"
 msgstr "Đạo cao đài"
 
-#: src/osmEditDialog.js:199 src/translations.js:281
+#: src/osmEditDialog.js:199 src/translations.js:288
 msgid "Christianity"
 msgstr "Cơ đốc giáo"
 
-#: src/osmEditDialog.js:200 src/translations.js:282
+#: src/osmEditDialog.js:200 src/translations.js:289
 msgid "Confucianism"
 msgstr "Khổng giáo"
 
-#: src/osmEditDialog.js:201 src/translations.js:283
+#: src/osmEditDialog.js:201 src/translations.js:290
 msgid "Hinduism"
 msgstr "Ấn Độ giáo"
 
-#: src/osmEditDialog.js:202 src/translations.js:284
+#: src/osmEditDialog.js:202 src/translations.js:291
 msgid "Jainism"
 msgstr "Đạo Giai-na"
 
-#: src/osmEditDialog.js:203 src/translations.js:285
+#: src/osmEditDialog.js:203 src/translations.js:292
 msgid "Judaism"
 msgstr "Đạo Do Thái"
 
-#: src/osmEditDialog.js:204 src/translations.js:286
+#: src/osmEditDialog.js:204 src/translations.js:293
 msgid "Islam"
 msgstr "Hồi giáo"
 
-#: src/osmEditDialog.js:205 src/translations.js:287
+#: src/osmEditDialog.js:205 src/translations.js:294
 msgid "Multiple Religions"
 msgstr "Đa tôn giáo"
 
-#: src/osmEditDialog.js:206 src/translations.js:288
+#: src/osmEditDialog.js:206 src/translations.js:295
 msgid "Paganism"
 msgstr "Tà giáo"
 
-#: src/osmEditDialog.js:207 src/translations.js:289
+#: src/osmEditDialog.js:207 src/translations.js:296
 msgid "Pastafarianism"
 msgstr "Pastafarianism"
 
-#: src/osmEditDialog.js:208 src/translations.js:290
+#: src/osmEditDialog.js:208 src/translations.js:297
 msgid "Scientology"
 msgstr "Khoa học học"
 
-#: src/osmEditDialog.js:209 src/translations.js:291
+#: src/osmEditDialog.js:209 src/translations.js:298
 msgid "Shinto"
 msgstr "Đạo thần Nhật bản"
 
-#: src/osmEditDialog.js:210 src/translations.js:292
+#: src/osmEditDialog.js:210 src/translations.js:299
 msgid "Sikhism"
 msgstr "Đạo Sikh"
 
-#: src/osmEditDialog.js:211 src/translations.js:293
+#: src/osmEditDialog.js:211 src/translations.js:300
 msgid "Spiritualism"
 msgstr "Thuyết duy linh"
 
-#: src/osmEditDialog.js:212 src/translations.js:294
+#: src/osmEditDialog.js:212 src/translations.js:301
 msgid "Taoism"
 msgstr "Đạo Lão"
 
-#: src/osmEditDialog.js:213 src/translations.js:295
+#: src/osmEditDialog.js:213 src/translations.js:302
 msgid "Unitarian Universalism"
 msgstr "Thuyết phổ độ nhất thể"
 
-#: src/osmEditDialog.js:214 src/translations.js:296
+#: src/osmEditDialog.js:214 src/translations.js:303
 msgid "Voodoo"
 msgstr "Thầy mo"
 
-#: src/osmEditDialog.js:215 src/translations.js:297
+#: src/osmEditDialog.js:215 src/translations.js:304
 msgid "Yazidism"
 msgstr "Yazidism"
 
-#: src/osmEditDialog.js:216 src/translations.js:298
+#: src/osmEditDialog.js:216 src/translations.js:305
 msgid "Zoroastrianism"
 msgstr "Đạo thờ lửa"
 
@@ -1296,14 +1296,38 @@ msgstr "Xong"
 msgid "Unnamed place"
 msgstr "Địa điểm không tên"
 
-#: src/placeBubble.js:126
+#: src/placeEntry.js:221
+msgid "Failed to parse Geo URI"
+msgstr "Gặp lỗi khi phân tích Geo URI"
+
+#: src/placeView.js:260
+msgid "Coordinates"
+msgstr "Hệ tọa độ"
+
+#: src/placeView.js:264
+msgid "Accuracy"
+msgstr "Độ chính xác"
+
+#. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
+#: src/placeView.js:267
+#, javascript-format
+msgid "Accuracy: %s"
+msgstr "Độ chính xác: %s"
+
+#. since the phone numbers are typically always rendered
+#. * left-to-right, insert an explicit LRM char to avoid issues
+#. * with phone numbers in international format starting with a +
+#. * which is considered a "weak" character to determine Unicode
+#. * text direction
+#.
+#: src/placeView.js:286
 msgid "Phone number"
 msgstr "Số điện thoại"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeBubble.js:150
+#: src/placeView.js:310
 msgid "Public internet access"
 msgstr "Kết nối mạng internet công cộng"
 
@@ -1311,50 +1335,50 @@ msgstr "Kết nối mạng internet công cộng"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeBubble.js:159
+#: src/placeView.js:319
 msgid "No internet access"
 msgstr "Không có kết nối mạng"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeBubble.js:167
+#: src/placeView.js:327
 msgid "Public Wi-Fi"
 msgstr "Wi-Fi công cộng"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeBubble.js:175
+#: src/placeView.js:335
 msgid "Wired internet access"
 msgstr "Truy cập internet có dây"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeBubble.js:183
+#: src/placeView.js:343
 msgid "Computers available for use"
 msgstr "Máy tính có sẵn để sử dụng"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeBubble.js:191
+#: src/placeView.js:351
 msgid "Internet assistance available"
 msgstr "Có hỗ trợ Internet"
 
-#: src/placeBubble.js:197
+#: src/placeView.js:357
 msgid "No toilets available"
 msgstr "Không có nhà vệ sinh"
 
-#: src/placeBubble.js:200
+#: src/placeView.js:360
 msgid "Toilets available"
 msgstr "Có nhà vệ sinh"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeBubble.js:209
+#: src/placeView.js:369
 msgid "Wheelchair accessible"
 msgstr "Lối vào xe lăn"
 
@@ -1363,7 +1387,7 @@ msgstr "Lối vào xe lăn"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeBubble.js:219
+#: src/placeView.js:379
 msgid "Limited wheelchair accessibility"
 msgstr "Lối vào cho xe lăn hạn chế"
 
@@ -1371,7 +1395,7 @@ msgstr "Lối vào cho xe lăn hạn chế"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeBubble.js:228
+#: src/placeView.js:388
 msgid "Not wheelchair accessible"
 msgstr "Không dành cho xe lăn"
 
@@ -1380,27 +1404,23 @@ msgstr "Không dành cho xe lăn"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeBubble.js:238
+#: src/placeView.js:398
 msgid "Designated for wheelchair users"
-msgstr "Được chỉ định cho người dùng xe lăn"
+msgstr "Được thiết kế cho người dùng xe lăn"
 
-#: src/placeBubble.js:265
+#: src/placeView.js:425
 msgid "Religion:"
 msgstr "Tôn giáo:"
 
-#: src/placeEntry.js:221
-msgid "Failed to parse Geo URI"
-msgstr "Gặp lỗi khi phân tích Geo URI"
-
-#: src/place.js:417
+#: src/place.js:429
 msgid "Place not found in OpenStreetMap"
 msgstr "Không tìm thấy địa điểm trong OpenStreetMap"
 
-#: src/place.js:424
+#: src/place.js:436
 msgid "Coordinates in URL are not valid"
 msgstr "Tọa độ trong URL không hợp lệ"
 
-#: src/place.js:433
+#: src/place.js:445
 msgid "URL is not supported"
 msgstr "URL không được hỗ trợ"
 
@@ -1525,7 +1545,7 @@ msgstr "Không tìm thấy lựa chọn trước nào."
 
 #: src/transitMoreRow.js:56
 msgid "No later alternatives found."
-msgstr "Không tìm thấy lựa chọn sau nào."
+msgstr "Không tìm thấy lựa chọn thay thế sau nào."
 
 #.
 #. * Translators: this is a format string giving the equivalent to
@@ -1538,7 +1558,7 @@ msgstr "%e %b"
 
 #: src/transitPlan.js:177
 msgid "No timetable data found for this route."
-msgstr "Không tìm thấy dữ liệu bản thời gian cho lộ trình này."
+msgstr "Không tìm thấy dữ liệu bảng thời gian cho lộ trình này."
 
 #: src/transitPlan.js:185
 msgid "No provider found for this route."
@@ -1595,11 +1615,11 @@ msgstr[0] "%s:%s giờ"
 msgid "%s–%s"
 msgstr "%s–%s"
 
-#: src/translations.js:52
+#: src/translations.js:53
 msgid "Around the clock"
 msgstr "Suốt ngày đêm"
 
-#: src/translations.js:54
+#: src/translations.js:55
 msgid "From sunrise to sunset"
 msgstr "Từ bình minh đến khi hoàng hôn"
 
@@ -1612,7 +1632,7 @@ msgstr "Từ bình minh đến khi hoàng hôn"
 #. * place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: src/translations.js:114
+#: src/translations.js:121
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s"
@@ -1627,30 +1647,30 @@ msgstr "%s,%s"
 #. * %s place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: src/translations.js:128
+#: src/translations.js:135
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s,%s"
 msgstr "%s,%s,%s"
 
-#: src/translations.js:147
+#: src/translations.js:154
 msgid "Every day"
 msgstr "Hàng ngày"
 
 #. Translators:
 #. * This represents a range of days with a starting and ending day.
 #.
-#: src/translations.js:159
+#: src/translations.js:166
 #, javascript-format
 msgctxt "day range"
 msgid "%s-%s"
 msgstr "%s-%s"
 
-#: src/translations.js:170
+#: src/translations.js:177
 msgid "Public holidays"
 msgstr "Các ngày lễ"
 
-#: src/translations.js:172
+#: src/translations.js:179
 msgid "School holidays"
 msgstr "Ngày học sinh nghỉ"
 
@@ -1662,13 +1682,13 @@ msgstr "Ngày học sinh nghỉ"
 #. * the translation. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: src/translations.js:212
+#: src/translations.js:219
 #, javascript-format
 msgctxt "time interval list"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/translations.js:226
+#: src/translations.js:233
 msgid "not open"
 msgstr "chưa mở"
 
@@ -1679,17 +1699,11 @@ msgstr "chưa mở"
 #. * translation as needed. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: src/translations.js:241
+#: src/translations.js:248
 #, javascript-format
 msgctxt "time interval"
 msgid "%s-%s"
 msgstr "%s-%s"
-
-#. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/userLocationBubble.js:50
-#, javascript-format
-msgid "Accuracy: %s"
-msgstr "Độ chính xác: %s"
 
 #. Translators: Accuracy of user location information
 #: src/utils.js:248
@@ -1765,7 +1779,7 @@ msgstr "%s ft"
 
 #: src/transitplugins/goMetro.js:60
 msgid "This plugin doesn't support latest arrival"
-msgstr "Plugin này không hỗ trợ phiên bản mới nhất"
+msgstr "Phần bổ sung này không hỗ trợ nơi đến mới nhất"
 
 #: src/transitplugins/openTripPlanner.js:1190
 #, javascript-format
