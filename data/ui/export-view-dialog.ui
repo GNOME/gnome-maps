@@ -63,23 +63,16 @@
             <property name="row_spacing">8</property>
             <property name="column_spacing">8</property>
             <child>
-              <object class="GtkAlignment" id="alignment">
+              <object class="GtkFrame" id="frame">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="vexpand">False</property>
+                <property name="label_xalign">0</property>
+                <property name="shadow_type">out</property>
                 <property name="valign">start</property>
                 <child>
-                  <object class="GtkFrame" id="frame">
+                  <object class="GtkDrawingArea" id="previewArea">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="label_xalign">0</property>
-                    <property name="shadow_type">out</property>
-                    <child>
-                      <object class="GtkDrawingArea" id="previewArea">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                      </object>
-                    </child>
                   </object>
                 </child>
               </object>
