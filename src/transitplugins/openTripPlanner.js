@@ -1225,9 +1225,9 @@ var OpenTripPlanner = class OpenTripPlanner {
                 let exit = step.exit;
 
                 if (exit)
-                    return _("In the roundabout, take exit %s").format(exit);
+                    return _("On the roundabout, take exit %s").format(exit);
                 else if (street)
-                    return _("In the roundabout, take exit to %s").format(street);
+                    return _("On the roundabout, take exit to %s").format(street);
                 else
                     return _("Take the roundabout");
             }
