@@ -8,26 +8,22 @@
     <property name="can_focus">False</property>
     <property name="spacing">6</property>
     <child>
-      <object class="GtkToggleButton" id="toggleSidebarButton">
-        <property name="visible">True</property>
+      <object class="GtkButton" id="printRouteButton">
+        <property name="name">print-route</property>
         <property name="can-focus">True</property>
+        <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Print Route</property>
+        <property name="action-name">win.print-route</property>
         <property name="valign">center</property>
-        <property name="action-name">win.toggle-sidebar</property>
-        <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Toggle route planner</property>
         <style>
           <class name="image-button"/>
         </style>
         <child>
-          <object class="GtkImage" id="toggle-sidebar-button-image">
+          <object class="GtkImage" id="print-route-button-image">
             <property name="visible">True</property>
-            <property name="icon-size">1</property>
-            <property name="icon-name">route-button-symbolic</property>
+            <property name="icon-name">document-print-symbolic</property>
           </object>
         </child>
       </object>
-      <packing>
-        <property name="pack-type">end</property>
-      </packing>
     </child>
     <child>
       <object class="GtkMenuButton" id="favoritesButton">
@@ -46,30 +42,25 @@
           </object>
         </child>
       </object>
-      <packing>
-        <property name="pack-type">end</property>
-      </packing>
     </child>
     <child>
-      <object class="GtkButton" id="printRouteButton">
-        <property name="name">print-route</property>
+      <object class="GtkToggleButton" id="toggleSidebarButton">
+        <property name="visible">True</property>
         <property name="can-focus">True</property>
-        <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Print Route</property>
-        <property name="action-name">win.print-route</property>
         <property name="valign">center</property>
+        <property name="action-name">win.toggle-sidebar</property>
+        <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Toggle route planner</property>
         <style>
           <class name="image-button"/>
         </style>
         <child>
-          <object class="GtkImage" id="print-route-button-image">
+          <object class="GtkImage" id="toggle-sidebar-button-image">
             <property name="visible">True</property>
-            <property name="icon-name">document-print-symbolic</property>
+            <property name="icon-size">1</property>
+            <property name="icon-name">route-button-symbolic</property>
           </object>
         </child>
       </object>
-      <packing>
-        <property name="pack-type">end</property>
-      </packing>
     </child>
   </template>
 </interface>
