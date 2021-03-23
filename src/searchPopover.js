@@ -38,18 +38,21 @@ var SearchPopover = GObject.registerClass({
         // We need to propagate events to the listbox so that we can
         // keep typing while selecting a place. But we do not want to
         // propagate the 'enter' key press if there is a selection.
-        this._entry.connect('key-press-event',
-                            this._propagateKeys.bind(this));
-        this._entry.connect('button-press-event', () => this._list.unselect_all());
+        this._keyController =
+            new Gtk.EventControllerKey({ widget: this._entry });
+        this._keyController.connect('key-pressed',
+                                    this._propagateKeys.bind(this));
+
+        this._buttonPressGesture = new Gtk.GestureSingle({ widget: this._entry });
+        this._buttonPressGesture.connect('begin',
+                                         () => this._list.unselect_all());
     }
 
-    _propagateKeys(entry, event) {
-        let keyval = event.get_keyval()[1];
-
+    _propagateKeys(controller, keyval, keycode, state) {
         if (keyval === Gdk.KEY_Escape) {
             this.hide();
             this._list.unselect_all();
-            return Gdk.EVENT_STOP;
+            return true;
         }
 
         if (keyval === Gdk.KEY_Return ||
@@ -61,9 +64,9 @@ var SearchPopover = GObject.registerClass({
             let row = this._list.get_selected_row();
             if (this.visible && row) {
                 row.activate();
-                return Gdk.EVENT_STOP;
+                return true;
             } else {
-                return Gdk.EVENT_PROPAGATE;
+                return false;
             }
         }
 
@@ -74,7 +77,7 @@ var SearchPopover = GObject.registerClass({
 
             let length = this._list.get_children().length;
             if (length === 0) {
-                return Gdk.EVENT_PROPAGATE;
+                return false;
             }
 
             let direction = (keyval === Gdk.KEY_KP_Up || keyval === Gdk.KEY_Up) ? -1 : 1;
@@ -92,10 +95,10 @@ var SearchPopover = GObject.registerClass({
             } else {
                 this._list.unselect_all();
             }
-            return Gdk.EVENT_STOP;
+            return true;
         }
 
-        return Gdk.EVENT_PROPAGATE;
+        return false;
     }
 
     /* Selects given row and ensures that it is visible. */
