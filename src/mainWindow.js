@@ -280,6 +280,9 @@ var MainWindow = GObject.registerClass({
          * hijack the key-press to the main window and make sure that
          * they reach the entry before they can be swallowed as accelerator.
          */
+        /* TODO: GTK 4. This should probably be handled by something like
+         * setting the map view as key capture widget for the search entry
+         */
         this.connect('key-press-event', (window, event) => {
             let focusWidget = window.get_focus();
             let keyval = event.get_keyval()[1];
