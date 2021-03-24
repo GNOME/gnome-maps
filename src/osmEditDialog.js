@@ -465,7 +465,7 @@ var OSMEditDialog = GObject.registerClass({
             let children = this._recentTypesListBox.get_children();
 
             for (let i = 0; i < children.length; i++) {
-                children[i].destroy();
+                this._recentTypesListBox.remove(children[i]);
             }
 
             this._recentTypesLabel.visible = true;
@@ -476,7 +476,6 @@ var OSMEditDialog = GObject.registerClass({
                 let value = recentTypes[i].value;
                 let title = OSMTypes.lookupType(key, value);
 
-                let row = new Gtk.ListBoxRow({visible: true, hexpand: true});
                 let grid = new Gtk.Grid({visible: true,
                                          margin_top: 6, margin_bottom: 6,
                                          margin_start: 12, margin_end: 12});
@@ -485,14 +484,15 @@ var OSMEditDialog = GObject.registerClass({
 
                 label.get_style_context().add_class('dim-label');
 
+                grid.attach(label, 0, 0, 1, 1);
+
+                this._recentTypesListBox.insert(grid, -1);
+
+                let row = this._recentTypesListBox.get_row_at_index(i);
+
                 row._title = title;
                 row._key = key;
                 row._value = value;
-
-                row.add(grid);
-                grid.add(label);
-
-                this._recentTypesListBox.add(row);
             }
         } else {
             this._recentTypesLabel.visible = false;
@@ -766,6 +766,7 @@ var OSMEditDialog = GObject.registerClass({
         }
 
         /* add selectable items */
+        let row = 0;
         for (let i = 0; i < OSM_FIELDS.length; i++) {
             let fieldSpec = OSM_FIELDS[i];
             let hasValue = false;
@@ -806,7 +807,8 @@ var OSMEditDialog = GObject.registerClass({
                 });
 
                 hasAllFields = false;
-                this._addFieldPopoverGrid.add(button);
+                this._addFieldPopoverGrid.attach(button, 0, row, 1, 1);
+                row++;
             }
         }
 
