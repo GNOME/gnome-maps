@@ -103,7 +103,7 @@ var MainWindow = GObject.registerClass({
                 MapView.MapType.LOCAL : undefined,
             mainWindow: this });
 
-        this._mainGrid.add(this._mapView);
+        this._mainGrid.attach(this._mapView, 0, 0, 1, 1);
 
         this._mapView.gotoUserLocation(false);
 
