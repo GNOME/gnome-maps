@@ -68,10 +68,10 @@ var AccountListBox = GObject.registerClass({
     refresh() {
         let accounts = Application.checkInManager.accounts;
 
-        this.forall(function(row) {
-            row.destroy();
-        });
+        this.foreach((row) => this.remove(row));
 
-        accounts.forEach((account) => this.add(new AccountRow({ account: account })));
+        accounts.forEach((account) => {
+            this.insert(new AccountRow({ account: account }), -1);
+        });
     }
 });
