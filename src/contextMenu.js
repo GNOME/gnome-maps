@@ -54,8 +54,10 @@ var ContextMenu = GObject.registerClass({
 
         super._init(params);
 
-        this._mapView.connect('button-release-event',
-                              this._onButtonReleaseEvent.bind(this));
+        this._buttonGesture =
+            new Gtk.GestureSingle({ widget: this._mapView,
+                                    button: Gdk.BUTTON_SECONDARY });
+        this._buttonGesture.connect('end', this._onButtonRelease.bind(this));
 
         this._whatsHereItem.connect('activate',
                                     this._onWhatsHereActivated.bind(this));
@@ -74,16 +76,14 @@ var ContextMenu = GObject.registerClass({
         this._routingUpdate();
     }
 
-    _onButtonReleaseEvent(widget, event) {
-        let [, button] = event.get_button();
+    _onButtonRelease(gesture, sequence) {
+        let event = gesture.get_last_event(sequence);
         let [, x, y] = event.get_coords();
         this._longitude = this._mapView.view.x_to_longitude(x);
         this._latitude = this._mapView.view.y_to_latitude(y);
 
-        if (button === Gdk.BUTTON_SECONDARY) {
-            // Need idle to avoid Clutter dead-lock on re-entrance
-            Mainloop.idle_add(() => this.popup_at_pointer(event));
-        }
+        // Need idle to avoid Clutter dead-lock on re-entrance
+        Mainloop.idle_add(() => this.popup_at_pointer(event));
     }
 
     _routingUpdate() {
