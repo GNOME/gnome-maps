@@ -47,7 +47,7 @@ var OSMTypePopover = GObject.registerClass({
     }
 
     showMatches(matches) {
-        this._list.forall((row) => row.destroy());
+        this._list.foreach((row) => this._list.remove(row));
 
         matches.forEach((type) => this._addRow(type));
         this.show();
@@ -56,6 +56,6 @@ var OSMTypePopover = GObject.registerClass({
     _addRow(type) {
         let row = new OSMTypeListRow.OSMTypeListRow({ type: type,
                                                       can_focus: true });
-        this._list.add(row);
+        this._list.insert(row, -1);
     }
 });
