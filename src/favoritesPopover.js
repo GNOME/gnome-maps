@@ -111,7 +111,7 @@ var FavoritesPopover = GObject.registerClass({
 
             let row = new PlaceListRow.PlaceListRow({ place: place,
                                                       can_focus: true });
-            this._list.add(row);
+            this._list.insert(row, -1);
             rows++;
         });
 
