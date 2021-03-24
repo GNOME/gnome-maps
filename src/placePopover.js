@@ -128,7 +128,7 @@ var PlacePopover = GObject.registerClass({
         let row = this._list.get_row_at_index(i);
 
         while (row) {
-            row.destroy();
+            this._list.remove(row);
             row = this._list.get_row_at_index(i);
         }
     }
@@ -138,6 +138,6 @@ var PlacePopover = GObject.registerClass({
                                                   searchString: searchString,
                                                   type: type,
                                                   can_focus: true });
-        this._list.add(row);
+        this._list.insert(row, -1);
     }
 });
