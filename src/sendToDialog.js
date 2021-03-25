@@ -149,7 +149,7 @@ var SendToDialog = GObject.registerClass({
             if (!app.should_show())
                 return;
 
-            this._list.add(new OpenWithRow({ appinfo: app }));
+            this._list.insert(new OpenWithRow({ appinfo: app }), -1);
         });
 
         /* Hide the list box if it is empty */
