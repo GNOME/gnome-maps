@@ -55,7 +55,7 @@ var RouteEntry = GObject.registerClass({
         super._init(params);
 
         this.entry = this._createEntry();
-        this._entryGrid.add(this.entry);
+        this._entryGrid.attach(this.entry, 0, 0, 1, 1);
 
         // There is no GdkWindow on the widget until it is realized
         this._icon.connect('realize', function(icon) {
