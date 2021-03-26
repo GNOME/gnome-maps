@@ -68,7 +68,7 @@ var TransitLegRow = GObject.registerClass({
                                     leg: this._leg,
                                  });
 
-            this._routeGrid.add(routeLabel);
+            this._routeGrid.attach(routeLabel, 0, 0, 1, 1);
 
             this._agencyLabel.visible = true;
 
@@ -106,7 +106,8 @@ var TransitLegRow = GObject.registerClass({
 
             headsignLabel.label = '<span size="small">%s</span>'.format(label);
             headsignLabel.get_style_context().add_class('dim-label');
-            this._routeGrid.add(headsignLabel);
+            this._routeGrid.attach(headsignLabel, this._leg.transit ? 1 : 0, 0,
+                                   1, 1);
         }
 
         this._timeLabel.label = this._leg.prettyPrintTime({ isStart: this._start });
@@ -186,7 +187,7 @@ var TransitLegRow = GObject.registerClass({
                         new TransitStopRow.TransitStopRow({ visible: true,
                                                             stop: stop,
                                                             final: index === stops.length - 1 });
-                    this._instructionList.add(row);
+                    this._instructionList.insert(row, -1);
                 }
             }
         } else {
@@ -201,7 +202,7 @@ var TransitLegRow = GObject.registerClass({
                     new InstructionRow.InstructionRow({ visible: true,
                                                         turnPoint: instruction });
 
-                this._instructionList.add(row);
+                this._instructionList.insert(row, -1);
             }
         }
     }
