@@ -59,7 +59,7 @@ var SocialPlaceListBox = GObject.registerClass({
         this.connect('row-activated', (list, row) => {
             if (!row.place) {
                 // "Show more results" row activated
-                row.destroy();
+                this.remove(row);
                 this._showBadMatches();
             } else
                 this.emit('place-selected', row.place);
@@ -94,10 +94,10 @@ var SocialPlaceListBox = GObject.registerClass({
     }
 
     _addPlace(place) {
-        this.add(new SocialPlaceRow({ place: place }));
+        this.insert(new SocialPlaceRow({ place: place }), -1);
     }
 
     _addMoreResults() {
-        this.add(new SocialPlaceMoreResultsRow({}));
+        this.insert(new SocialPlaceMoreResultsRow({}), -1);
     }
 });
