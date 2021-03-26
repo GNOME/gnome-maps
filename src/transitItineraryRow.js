@@ -66,27 +66,39 @@ var TransitItineraryRow = GObject.registerClass({
             /* ellipsize list with horizontal dots to avoid overflowing and
              * expanding the sidebar
              */
-            this._renderLegs(this._itinerary.legs.slice(0, MAX_LEGS_SHOWN / 2),
-                             true, true);
-            this._summaryGrid.add(new Gtk.Label({ visible: true,
-                                                  label: '\u22ef' } ));
-            this._renderLegs(this._itinerary.legs.slice(-MAX_LEGS_SHOWN / 2),
-                             true, true);
+            let firstPart = this._itinerary.legs.slice(0, MAX_LEGS_SHOWN / 2);
+            let lastPart = this._itinerary.legs.slice(-MAX_LEGS_SHOWN / 2);
+
+            this._renderLegs(firstPart, 0, true, true);
+            this._summaryGrid.attach(new Gtk.Label({ visible: true,
+                                                     label: '\u22ef' } ),
+                                     firstPart.length * 2, 0, 1, 1);
+            this._renderLegs(lastPart, firstPart.length * 2 + 1, true, true);
         } else {
-            this._renderLegs(this._itinerary.legs, useCompact,
+            this._renderLegs(this._itinerary.legs, 0, useCompact,
                              useContractedLabels);
         }
     }
 
-    _renderLegs(legs, useCompact, useContractedLabels) {
+    /*
+     * Render a list of legs.
+     * legs:                array of legs to render
+     * startPosition:       start position in grid to render at
+     * useCompact:          true if compact rendering (without route designations)
+     * useContractedLabels: true to use contracted route labels, if possible
+     */
+    _renderLegs(legs, startPosition, useCompact, useContractedLabels) {
         let length = legs.length;
 
         legs.forEach((leg, i) =>  {
-            this._summaryGrid.add(this._createLeg(leg, useCompact,
-                                                  useContractedLabels));
+            this._summaryGrid.attach(this._createLeg(leg, useCompact,
+                                                     useContractedLabels),
+                                     startPosition + i * 2, 0, 1, 1);
+            // render a separator label unless the last leg to render
             if (i !== length - 1)
-                this._summaryGrid.add(new Gtk.Label({ visible: true,
-                                                      label: '-' }));
+                this._summaryGrid.attach(new Gtk.Label({ visible: true,
+                                                      label: '-' }),
+                                         startPosition + i * 2 + 1, 0, 1, 1);
         });
     }
 
