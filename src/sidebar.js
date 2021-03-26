@@ -352,7 +352,7 @@ var Sidebar = GObject.registerClass({
             route.turnPoints.forEach((turnPoint) => {
                 let row = new InstructionRow.InstructionRow({ visible: true,
                                                               turnPoint: turnPoint });
-                this._instructionList.add(row);
+                this._instructionList.insert(row, -1);
             });
 
             /* Translators: %s is a time expression with the format "%f h" or "%f min" */
@@ -445,14 +445,15 @@ var Sidebar = GObject.registerClass({
             let row =
                 new TransitItineraryRow.TransitItineraryRow({ visible: true,
                                                               itinerary: itinerary });
-            this._transitOverviewListBox.add(row);
+            this._transitOverviewListBox.insert(row, -1);
         });
         /* add the "load more" row */
-        this._transitOverviewListBox.add(
-            new TransitMoreRow.TransitMoreRow({ visible: true }));
+        this._transitOverviewListBox.insert(
+            new TransitMoreRow.TransitMoreRow({ visible: true }), -1);
 
         /* add an empty list row to get a final separator */
-        this._transitOverviewListBox.add(new Gtk.ListBoxRow({ visible: true }));
+        this._transitOverviewListBox.insert(new Gtk.ListBoxRow({ visible: true }),
+                                            -1);
     }
 
     _onItineraryActivated(itinerary) {
@@ -489,13 +490,14 @@ var Sidebar = GObject.registerClass({
             let row = new TransitLegRow.TransitLegRow({ leg: leg,
                                                         start: i === 0,
                                                         mapView: this._mapView });
-            this._transitItineraryListBox.add(row);
+            this._transitItineraryListBox.insert(row, -1);
         }
 
         /* insert the additional arrival row, showing the arrival place and time */
-        this._transitItineraryListBox.add(
+        this._transitItineraryListBox.insert(
             new TransitArrivalRow.TransitArrivalRow({ itinerary: itinerary,
-                                                      mapView: this._mapView }));
+                                                      mapView: this._mapView }),
+            -1);
     }
 
 
