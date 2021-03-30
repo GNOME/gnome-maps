@@ -320,7 +320,8 @@ class PlaceStore extends Gtk.ListStore {
         if (type !== undefined && type !== null && this._typeTable[place.uniqueID] !== undefined)
             return this._typeTable[place.uniqueID] === type;
         else
-            return this._typeTable[place.uniqueID] !== undefined;
+            return this._typeTable[place.uniqueID] !== undefined &&
+                   this._typeTable[place.uniqueID] !== null;
     }
 
     existsWithOsmTypeAndId(osmType, osmId) {
