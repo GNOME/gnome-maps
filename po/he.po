@@ -7,27 +7,28 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps 3.9.91\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-09 21:43+0300\n"
-"PO-Revision-Date: 2016-08-11 16:08+0300\n"
-"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
+"POT-Creation-Date: 2021-03-20 09:01+0000\n"
+"PO-Revision-Date: 2021-03-31 19:24+0300\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural= (n!=1);\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
+"2 : 3);\n"
+"X-Generator: Poedit 2.4.2\n"
 
-#: ../data/org.gnome.Maps.appdata.xml.in.h:1
+#: data/org.gnome.Maps.appdata.xml.in:6
 msgid "GNOME Maps"
 msgstr "GNOME מפות"
 
-#: ../data/org.gnome.Maps.appdata.xml.in.h:2
+#: data/org.gnome.Maps.appdata.xml.in:7
 msgid "Find places around the world"
 msgstr "מציאת מקומות מסביב לעולם"
 
-#: ../data/org.gnome.Maps.appdata.xml.in.h:3
+#: data/org.gnome.Maps.appdata.xml.in:9
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
@@ -36,7 +37,7 @@ msgstr ""
 "מפות נותן לך גישה מהירה למפות על פני כל העולם. הוא מאפשר לך למצוא במהירות את "
 "המקום שאתה מחפש באמצעות חיפוש עיר או רחוב, או לאתר מקום לפגישת חבר."
 
-#: ../data/org.gnome.Maps.appdata.xml.in.h:4
+#: data/org.gnome.Maps.appdata.xml.in:14
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
@@ -47,7 +48,7 @@ msgstr ""
 #. Translators: Search is carried out on OpenStreetMap data using Nominatim.
 #. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
 #. your language to see what words you can use for the translated search.
-#: ../data/org.gnome.Maps.appdata.xml.in.h:8
+#: data/org.gnome.Maps.appdata.xml.in:22
 msgid ""
 "You can even search for specific types of locations, such as “Pubs near Main "
 "Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
@@ -55,85 +56,114 @@ msgstr ""
 "ניתן לחפש גם מקום מסוים, כמו „בית קפה ליד הרחוב הראשי, ירושלים” או „מלון "
 "קרוב לאוניברסיטה, תל אביב”."
 
+#: data/org.gnome.Maps.appdata.xml.in:197
+msgid "The GNOME Project"
+msgstr "מיזם GNOME"
+
 #. Translators: This is the program name.
-#: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:85 ../src/mainWindow.js:425
+#. for some reason, setting the title of the window through the .ui
+#. * template does not work anymore (maybe has something to do with
+#. * setting a custom title on the headerbar). Setting it programmatically
+#. * here works though. And yields a proper label in the gnome-shell
+#. * overview.
+#.
+#. Translators: This is the program name.
+#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:34
+#: src/application.js:94 src/mainWindow.js:132 src/mainWindow.js:582
 msgid "Maps"
 msgstr "מפות"
 
-#: ../data/org.gnome.Maps.desktop.in.h:2
+#: data/org.gnome.Maps.desktop.in:5
 msgid "A simple maps application"
 msgstr "יישום מפות פשוט"
 
-#: ../data/org.gnome.Maps.desktop.in.h:3
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Maps.desktop.in:14
 msgid "Maps;"
 msgstr "מפות;מפה;maps;Maps;"
 
-#: ../data/org.gnome.Maps.desktop.in.h:4
+#: data/org.gnome.Maps.desktop.in:17
 msgid "Allows your location to be shown on the map."
 msgstr "מאפשר למיקום שלך להיראות על המפה."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:1
+#: data/org.gnome.Maps.gschema.xml:11
 msgid "last viewed location"
 msgstr "last viewed location"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:2
+#: data/org.gnome.Maps.gschema.xml:12
 msgid "Coordinates of last viewed location."
 msgstr "Coordinates of last viewed location."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:3
+#: data/org.gnome.Maps.gschema.xml:16
+msgid "zoom"
+msgstr "תקריב"
+
+#: data/org.gnome.Maps.gschema.xml:17
+msgid "Zoom level"
+msgstr "רמת תקריב"
+
+#: data/org.gnome.Maps.gschema.xml:21
+msgid "Map type"
+msgstr "סוג מפה"
+
+#: data/org.gnome.Maps.gschema.xml:22
+msgid "The type of map to display (street, aerial, etc.)"
+msgstr "סוג המפה להצגה (רחוב, אווירית וכו׳)"
+
+#: data/org.gnome.Maps.gschema.xml:26
 msgid "Window size"
 msgstr "Window size"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:4
+#: data/org.gnome.Maps.gschema.xml:27
 msgid "Window size (width and height)."
 msgstr "Window size (width and height)."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:5
+#: data/org.gnome.Maps.gschema.xml:31
 msgid "Window position"
 msgstr "Window position"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:6
+#: data/org.gnome.Maps.gschema.xml:32
 msgid "Window position (X and Y)."
 msgstr "Window position (X and Y)."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:7
+#: data/org.gnome.Maps.gschema.xml:36
 msgid "Window maximized"
 msgstr "Window maximized"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:8
+#: data/org.gnome.Maps.gschema.xml:37
 msgid "Window maximization state"
 msgstr "Window maximization state"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:9
+#: data/org.gnome.Maps.gschema.xml:41
 msgid "Maximum number of search results"
 msgstr "Maximum number of search results"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:10
+#: data/org.gnome.Maps.gschema.xml:42
 msgid "Maximum number of search results from geocode search."
 msgstr "Maximum number of search results from geocode search."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:11
+#: data/org.gnome.Maps.gschema.xml:46
 msgid "Number of recent places to store"
 msgstr "Number of recent places to store"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:12
+#: data/org.gnome.Maps.gschema.xml:47
 msgid "Number of recently visited places to store."
 msgstr "Number of recently visited places to store."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:13
+#: data/org.gnome.Maps.gschema.xml:51
 msgid "Number of recent routes to store"
 msgstr "Number of recent routes to store"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:14
+#: data/org.gnome.Maps.gschema.xml:52
 msgid "Number of recently visited routes to store."
 msgstr "Number of recently visited routes to store."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:15
+#: data/org.gnome.Maps.gschema.xml:56
 msgid "Facebook check-in privacy setting"
 msgstr "Facebook check-in privacy setting"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:16
+#. Translators: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS, and SELF are constant names, and should not be translated
+#: data/org.gnome.Maps.gschema.xml:58
 msgid ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
@@ -141,11 +171,11 @@ msgstr ""
 "Latest used Facebook check-in privacy setting. Possible values are: "
 "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:17
+#: data/org.gnome.Maps.gschema.xml:62
 msgid "Foursquare check-in privacy setting"
 msgstr "Foursquare check-in privacy setting"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:18
+#: data/org.gnome.Maps.gschema.xml:63
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
@@ -153,11 +183,11 @@ msgstr ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:19
+#: data/org.gnome.Maps.gschema.xml:67
 msgid "Foursquare check-in Facebook broadcasting"
 msgstr "Foursquare check-in Facebook broadcasting"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:20
+#: data/org.gnome.Maps.gschema.xml:68
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
@@ -165,11 +195,11 @@ msgstr ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:21
+#: data/org.gnome.Maps.gschema.xml:72
 msgid "Foursquare check-in Twitter broadcasting"
 msgstr "Foursquare check-in Twitter broadcasting"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:22
+#: data/org.gnome.Maps.gschema.xml:73
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
@@ -177,234 +207,298 @@ msgstr ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:23
+#: data/org.gnome.Maps.gschema.xml:77
 msgid "OpenStreetMap username or e-mail address"
 msgstr "OpenStreetMap username or e-mail address"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:24
+#: data/org.gnome.Maps.gschema.xml:78
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr "Indicates if the user has signed in to edit OpenStreetMap data."
 
-#: ../data/ui/app-menu.ui.h:1
-msgid "Set up OpenStreetMap Account"
-msgstr "הגדרת חשבון OpenStreetMap"
+#: data/org.gnome.Maps.gschema.xml:82
+msgid "Last used transportation type for routing"
+msgstr "סוג התחבורה האחרונה לניווט"
 
-#: ../data/ui/app-menu.ui.h:2
-msgid "_Keyboard Shortcuts"
-msgstr "_צירופי מקשים"
+#: data/org.gnome.Maps.gschema.xml:86
+msgid "Night mode"
+msgstr "מצב לילה"
 
-#: ../data/ui/app-menu.ui.h:3
-msgid "About"
-msgstr "על אודות"
+#: data/org.gnome.Maps.gschema.xml:87
+msgid "Whether the application is in night mode."
+msgstr "האם היישום הוא במצב לילה."
 
-#: ../data/ui/app-menu.ui.h:4
-msgid "Quit"
-msgstr "יציאה"
+#: data/org.gnome.Maps.gschema.xml:91
+msgid "Use hybrid aerial tiles"
+msgstr "להשתמש באריחים אוויריים משולבים"
 
-#: ../data/ui/check-in-dialog.ui.h:1
+#: data/org.gnome.Maps.gschema.xml:92
+msgid "Whether aerial tiles should use hybrid style (with labels)."
+msgstr "האם אריחים אוויריים אמורים להשתמש בסגנון משולב (עם תוויות)."
+
+#: data/ui/check-in-dialog.ui:250 data/ui/check-in-dialog.ui:299
 msgid "Visibility"
 msgstr "נראה"
 
-#: ../data/ui/check-in-dialog.ui.h:2
+#: data/ui/check-in-dialog.ui:334
 msgid "Post on Facebook"
-msgstr "לפרסם ב־Facebook"
+msgstr "לפרסם בפייסבוק"
 
-#: ../data/ui/check-in-dialog.ui.h:3
+#: data/ui/check-in-dialog.ui:348
 msgid "Post on Twitter"
-msgstr "לפרסם ב־Twitter"
+msgstr "לפרסם בטוויטר"
 
-#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/export-view-dialog.ui.h:2
-#: ../data/ui/send-to-dialog.ui.h:2 ../data/ui/shape-layer-file-chooser.ui.h:3
+#: data/ui/check-in-dialog.ui:388 data/ui/export-view-dialog.ui:20
+#: data/ui/send-to-dialog.ui:13 data/ui/shape-layer-file-chooser.ui:22
 msgid "_Cancel"
 msgstr "_ביטול"
 
-#. Translators: Check in is used as a verb
-#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:5
+#: data/ui/check-in-dialog.ui:399
 msgid "C_heck in"
 msgstr "ה_רשמה"
 
-#: ../data/ui/check-in-dialog.ui.h:6
+#: data/ui/check-in-dialog.ui:427
 msgid "Everyone"
 msgstr "כולם"
 
-#: ../data/ui/check-in-dialog.ui.h:7
+#: data/ui/check-in-dialog.ui:431
 msgid "Friends of friends"
 msgstr "חברים של חברים"
 
-#: ../data/ui/check-in-dialog.ui.h:8
+#: data/ui/check-in-dialog.ui:435
 msgid "Just friends"
 msgstr "חברים בלבד"
 
-#: ../data/ui/check-in-dialog.ui.h:9
+#: data/ui/check-in-dialog.ui:439
 msgid "Just me"
 msgstr "רק אני"
 
-#: ../data/ui/check-in-dialog.ui.h:10
+#: data/ui/check-in-dialog.ui:453
 msgid "Public"
 msgstr "ציבורי"
 
-#: ../data/ui/check-in-dialog.ui.h:11
+#: data/ui/check-in-dialog.ui:457
 msgid "Followers"
 msgstr "עוקבים"
 
-#: ../data/ui/check-in-dialog.ui.h:12
+#: data/ui/check-in-dialog.ui:461
 msgid "Private"
 msgstr "פרטי"
 
-#: ../data/ui/context-menu.ui.h:1
+#: data/ui/context-menu.ui:9
+msgid "Route from here"
+msgstr "מסלול מכאן"
+
+#: data/ui/context-menu.ui:16
+msgid "Add intermediate destination"
+msgstr "הוספת יעד ביניים"
+
+#: data/ui/context-menu.ui:24
+msgid "Route to here"
+msgstr "מסלול לכאן"
+
+#: data/ui/context-menu.ui:36
 msgid "What’s here?"
 msgstr "מה זה כאן?"
 
-#: ../data/ui/context-menu.ui.h:2
+#: data/ui/context-menu.ui:43
 msgid "Copy Location"
 msgstr "העתקת מיקום"
 
-#: ../data/ui/context-menu.ui.h:3
-msgid "Export As Image"
-msgstr "ייצוא כתמונה"
-
-#: ../data/ui/context-menu.ui.h:4
+#: data/ui/context-menu.ui:51
 msgid "Add to OpenStreetMap"
 msgstr "הוספה אל OpenStreetMap"
 
-#: ../data/ui/export-view-dialog.ui.h:1
+#: data/ui/export-view-dialog.ui:14
 msgid "Export view"
 msgstr "תצוגת ייצוא"
 
-#: ../data/ui/export-view-dialog.ui.h:3
+#: data/ui/export-view-dialog.ui:34
 msgid "_Export"
 msgstr "_ייצוא"
 
-#: ../data/ui/export-view-dialog.ui.h:4
+#: data/ui/export-view-dialog.ui:126
 msgid "Include route and markers"
 msgstr "לכלול מסלול וסימונים"
 
-#: ../data/ui/help-overlay.ui.h:1
+#. Translators: This is a tooltip
+#: data/ui/headerbar-left.ui:15
+msgid "Go to current location"
+msgstr "מעבר למיקום הנוכחי"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-left.ui:36
+msgid "Choose map type"
+msgstr "בחירת סוג המפה"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-left.ui:61
+msgid "Zoom out"
+msgstr "להתרחק"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-left.ui:77
+msgid "Zoom in"
+msgstr "להתקרב"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-right.ui:16
+msgid "Toggle route planner"
+msgstr "להציג/להסתיר מתכנן מסלול"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-right.ui:37
+msgid "Toggle favorites"
+msgstr "מועדפים"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-right.ui:57
+msgid "Print Route"
+msgstr "הדפסת מסלול"
+
+#: data/ui/help-overlay.ui:14
 msgctxt "shortcut window"
 msgid "General"
 msgstr "כללי"
 
-#: ../data/ui/help-overlay.ui.h:2
+#: data/ui/help-overlay.ui:18
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "הצגת צירופי מקשים"
 
-#: ../data/ui/help-overlay.ui.h:3
+#: data/ui/help-overlay.ui:25
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "חיפוש"
 
-#: ../data/ui/help-overlay.ui.h:4
+#: data/ui/help-overlay.ui:32
 msgctxt "shortcut window"
 msgid "Toggle route planner"
 msgstr "הצגה/הסתרת מתכנן מסלול"
 
-#: ../data/ui/help-overlay.ui.h:5
+#: data/ui/help-overlay.ui:39
 msgctxt "shortcut window"
 msgid "Print route"
 msgstr "הדפסת מסלול"
 
-#: ../data/ui/help-overlay.ui.h:6
+#: data/ui/help-overlay.ui:46
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "יציאה"
 
-#: ../data/ui/help-overlay.ui.h:7
+#: data/ui/help-overlay.ui:53
+msgctxt "shortcut window"
+msgid "Open main menu"
+msgstr "פתיחת התפריט הראשי"
+
+#: data/ui/help-overlay.ui:62
 msgctxt "shortcut window"
 msgid "Map View"
 msgstr "תצוגת מפה"
 
-#: ../data/ui/help-overlay.ui.h:8
+#: data/ui/help-overlay.ui:66
 msgctxt "shortcut window"
 msgid "Zoom in"
 msgstr "התקרבות"
 
-#: ../data/ui/help-overlay.ui.h:9
+#: data/ui/help-overlay.ui:73
 msgctxt "shortcut window"
 msgid "Zoom out"
 msgstr "התרחקות"
 
-#: ../data/ui/help-overlay.ui.h:10
+#: data/ui/help-overlay.ui:80
 msgctxt "shortcut window"
 msgid "Toggle scale"
 msgstr "הצגת סרגל קנה מידה"
 
-#: ../data/ui/help-overlay.ui.h:11
+#: data/ui/help-overlay.ui:87
 msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "מעבר למיקום הנוכחי"
 
-#: ../data/ui/layers-popover.ui.h:1
-msgid "Load Map Layer"
-msgstr "טעינת שכבת מפה"
+#: data/ui/help-overlay.ui:94
+msgctxt "shortcut window"
+msgid "Switch to street view"
+msgstr "מעבר לתצוגת רחוב"
 
-#: ../data/ui/location-service-notification.ui.h:1
+#: data/ui/help-overlay.ui:101
+msgctxt "shortcut window"
+msgid "Switch to aerial view"
+msgstr "מעבר לתצוגה אווירית"
+
+#: data/ui/help-overlay.ui:108
+msgctxt "shortcut window"
+msgid "Open shape layer"
+msgstr "לפתוח שכבת צורות"
+
+#: data/ui/layers-popover.ui:65
+msgid "Show Labels"
+msgstr "להציג תוויות"
+
+#. Translators: This string uses ellipsis character
+#: data/ui/layers-popover.ui:102
+msgid "Open Shape Layer…"
+msgstr "לפתוח שכבת צורות…"
+
+#: data/ui/location-service-dialog.ui:16
 msgid "Turn on location services to find your location"
 msgstr "הפעלת שירותי איכון למציאת המיקום שלך"
 
-#: ../data/ui/location-service-notification.ui.h:2
+#: data/ui/location-service-dialog.ui:28 data/ui/osm-edit-dialog.ui:283
+#: data/ui/zoom-in-dialog.ui:28
+msgid "Cancel"
+msgstr "ביטול"
+
+#: data/ui/location-service-dialog.ui:38
 msgid "Location Settings"
 msgstr "הגדרות מיקום"
 
-#: ../data/ui/main-window.ui.h:2
-msgid "Go to current location"
-msgstr "מעבר למיקום הנוכחי"
+#: data/ui/main-window.ui:8
+msgid "Night Mode"
+msgstr "מצב לילה"
 
-#: ../data/ui/main-window.ui.h:3
-msgid "Choose map type"
-msgstr "בחירת סוג המפה"
+#: data/ui/main-window.ui:12
+msgid "Set up OpenStreetMap Account"
+msgstr "הגדרת חשבון OpenStreetMap"
 
-#: ../data/ui/main-window.ui.h:4
-msgid "Toggle route planner"
-msgstr "להציג/להסתיר מתכנן מסלול"
+#: data/ui/main-window.ui:16
+msgid "Export as Image"
+msgstr "לייצא כתמונה"
 
-#: ../data/ui/main-window.ui.h:5
-msgid "Toggle favorites"
-msgstr "מועדפים"
+#: data/ui/main-window.ui:21
+msgid "_Keyboard Shortcuts"
+msgstr "_צירופי מקשים"
 
-#: ../data/ui/main-window.ui.h:6
-msgid "Print Route"
-msgstr "הדפסת מסלול"
+#: data/ui/main-window.ui:26
+msgid "About Maps"
+msgstr "על תכנית המפות"
 
-#: ../data/ui/main-window.ui.h:7
+#: data/ui/main-window.ui:52
+msgid "Open main menu"
+msgstr "פתיחת התפריט הראשי"
+
+#: data/ui/main-window.ui:114
 msgid "Maps is offline!"
 msgstr "מפות איננו מקוון!"
 
-#: ../data/ui/main-window.ui.h:8
+#: data/ui/main-window.ui:123
 msgid ""
-"Maps need an active internet connection to function properly, but one can't "
+"Maps need an active internet connection to function properly, but one can’t "
 "be found."
-msgstr "מפות צריך חיבור אינטרנט פעיל על מנת לתפקד כראוי, אך אין אחד בנמצא."
+msgstr "למפות דרוש חיבור אינטרנט פעיל כדי לתפקד כראוי, אך אין כזה."
 
-#: ../data/ui/main-window.ui.h:9
+#: data/ui/main-window.ui:131
 msgid "Check your connection and proxy settings."
 msgstr "יש לבדוק את החיבור שלך ואת הגדרות הפרוקסי."
 
-#: ../data/ui/map-bubble.ui.h:1
-msgid "Add to new route"
-msgstr "הוספה למסלול חדש"
-
-#: ../data/ui/map-bubble.ui.h:2
-msgid "Open with another application"
-msgstr "פתיחה באמצעות יישום אחר"
-
-#: ../data/ui/map-bubble.ui.h:3
-msgid "Mark as favorite"
-msgstr "סימון כמועדף"
-
-#: ../data/ui/map-bubble.ui.h:6
-msgid "Check in here"
-msgstr "הרשמה כאן"
-
-#: ../data/ui/osm-account-dialog.ui.h:1
+#: data/ui/osm-account-dialog.ui:9
 msgid "OpenStreetMap Account"
 msgstr "חשבון OpenStreetMap"
 
-#: ../data/ui/osm-account-dialog.ui.h:2
+#: data/ui/osm-account-dialog.ui:22
 msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
 msgstr "<span weight=\"bold\" size=\"x-large\">התחברות לעריכת מפות</span>"
 
-#: ../data/ui/osm-account-dialog.ui.h:3
+#: data/ui/osm-account-dialog.ui:36
 msgid ""
 "Help to improve the map, using an\n"
 "OpenStreetMap account."
@@ -412,205 +506,326 @@ msgstr ""
 "עזרה בשיפור המפה,\n"
 "באמצעות חשבון OpenStreetMap."
 
-#: ../data/ui/osm-account-dialog.ui.h:5
+#: data/ui/osm-account-dialog.ui:56
 msgid "Email"
 msgstr "דוא״ל"
 
-#: ../data/ui/osm-account-dialog.ui.h:6
+#: data/ui/osm-account-dialog.ui:81
 msgid "Password"
 msgstr "ססמה"
 
-#: ../data/ui/osm-account-dialog.ui.h:7
+#: data/ui/osm-account-dialog.ui:125
+msgid "Sign up"
+msgstr "להירשם"
+
+#: data/ui/osm-account-dialog.ui:139
 msgid "Sign In"
 msgstr "התחברות"
 
-#: ../data/ui/osm-account-dialog.ui.h:8
-msgid "Don't have an account?"
-msgstr "אין לך חשבון?"
-
 #. The label should contain the link to the OSM reset password page with a translated title
-#: ../data/ui/osm-account-dialog.ui.h:10
+#: data/ui/osm-account-dialog.ui:162
 msgid ""
-"Sorry, that didn't work. Please try again, or visit\n"
+"Sorry, that didn’t work. Please try again, or visit\n"
 "<a href=\"https://www.openstreetmap.org/user/forgot-password"
 "\">OpenStreetMap</a> to reset your password."
 msgstr ""
-"אנו מצטערים, זה לא עובד. יש לנסות שוב, או לבקר באתר <a href=\"https://www."
-"openstreetmap.org/user/forgot-password\">OpenStreetMap</a> לאיפוס הססמה שלך."
+"זה לא עבד, עמך הסליחה. נא לנסות שוב או לבקר\n"
+"‫‫ב־<a href=“https://www.openstreetmap.org/user/forgot-"
+"password”>OpenStreetMap</a> כדי לאפס את הססמה שלך."
 
-#: ../data/ui/osm-account-dialog.ui.h:12
-msgid "The verification code didn't match, please try again."
-msgstr "קוד האימות לא מתאים, יש לנסות שוב."
+#: data/ui/osm-account-dialog.ui:175
+msgid "The verification code didn’t match, please try again."
+msgstr "קוד האימות לא מתאים, נא לנסות שוב."
 
-#: ../data/ui/osm-account-dialog.ui.h:13
+#: data/ui/osm-account-dialog.ui:201
 msgid "Enter verification code shown above"
 msgstr "יש להזין את קוד האימות המוצע למעלה"
 
-#: ../data/ui/osm-account-dialog.ui.h:14
+#: data/ui/osm-account-dialog.ui:224
 msgid "Verify"
 msgstr "אימות"
 
-#: ../data/ui/osm-account-dialog.ui.h:15
+#: data/ui/osm-account-dialog.ui:254
 msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
 msgstr "<span weight=\"bold\" size=\"x-large\">התחברות</span>"
 
-#: ../data/ui/osm-account-dialog.ui.h:16
+#: data/ui/osm-account-dialog.ui:267
 msgid "Your OpenStreetMap account is active."
 msgstr "חשבון ה־OpenStreetMap שלך פעיל."
 
-#: ../data/ui/osm-account-dialog.ui.h:17
+#: data/ui/osm-account-dialog.ui:301
 msgid "Sign Out"
 msgstr "התנתקות"
 
-#: ../data/ui/osm-edit-address.ui.h:1
+#: data/ui/osm-edit-address.ui:14
 msgid "Street"
 msgstr "רחוב"
 
-#: ../data/ui/osm-edit-address.ui.h:2
+#: data/ui/osm-edit-address.ui:26
 msgid "House number"
 msgstr "מספר בית"
 
-#: ../data/ui/osm-edit-address.ui.h:3
+#: data/ui/osm-edit-address.ui:38
 msgid "Postal code"
 msgstr "מיקוד"
 
 #. This is the place name as it would be written in a postal address (typically coming after the postal code)
-#: ../data/ui/osm-edit-address.ui.h:5
+#: data/ui/osm-edit-address.ui:50
 msgid "City"
 msgstr "עיר"
 
-#: ../data/ui/osm-edit-dialog.ui.h:1
+#: data/ui/osm-edit-dialog.ui:58
 msgid "Type"
 msgstr "סוג"
 
-#: ../data/ui/osm-edit-dialog.ui.h:2
+#: data/ui/osm-edit-dialog.ui:84
 msgid "None"
 msgstr "ללא"
 
-#: ../data/ui/osm-edit-dialog.ui.h:3
+#: data/ui/osm-edit-dialog.ui:129
 msgid "Add Field"
 msgstr "הוספת שדה"
 
-#: ../data/ui/osm-edit-dialog.ui.h:4
+#: data/ui/osm-edit-dialog.ui:163
 msgid "Comment"
 msgstr "הערות"
 
-#: ../data/ui/osm-edit-dialog.ui.h:5
+#: data/ui/osm-edit-dialog.ui:195
 msgid ""
 "Map changes will be visible on all maps that use\n"
-"    OpenStreetMap data."
-msgstr "שינויים במפה יופיעו בכל המפות המשתמשות במידע מ־OpenStreetMap."
+"OpenStreetMap data."
+msgstr ""
+"שינויים במפה יופיעו בכל המפות המשתמשות\n"
+"במידע מ־OpenStreetMap."
 
-#: ../data/ui/osm-edit-dialog.ui.h:7
+#: data/ui/osm-edit-dialog.ui:241
 msgid "Recently Used"
 msgstr "בשימוש לאחרונה"
 
-#: ../data/ui/osm-edit-dialog.ui.h:8
+#: data/ui/osm-edit-dialog.ui:280
+msgctxt "dialog title"
 msgid "Edit on OpenStreetMap"
 msgstr "עריכה ב־OpenStreetMap"
 
-#: ../data/ui/osm-edit-dialog.ui.h:9
-msgid "Cancel"
-msgstr "ביטול"
-
-#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:471
+#: data/ui/osm-edit-dialog.ui:310 src/osmEditDialog.js:521
 msgid "Next"
 msgstr "הבא"
 
-#: ../data/ui/place-bubble.ui.h:1
-msgid "Show more information"
-msgstr "הצגת מידע נוסף"
+#: data/ui/place-popover.ui:54
+msgid "No results found"
+msgstr "לא נמצאו תוצאות"
 
-#: ../data/ui/place-popover.ui.h:1
-msgid "Press enter to search"
-msgstr "יש ללחוץ Enter לחיפוש"
+#: data/ui/place-popover.ui:66 src/checkInDialog.js:280 src/checkIn.js:162
+#: src/osmEditDialog.js:558
+msgid "An error has occurred"
+msgstr "התרחשה שגיאה"
 
-#: ../data/ui/route-entry.ui.h:1
+#. Translators: This is a tooltip
+#: data/ui/route-entry.ui:20
 msgid "Drag to change order of the route"
 msgstr "יש לגרור לשינוי סדר המסלול"
 
-#: ../data/ui/send-to-dialog.ui.h:1
-msgid "Open location"
-msgstr "פתיחת מיקום"
+#: data/ui/send-to-dialog.ui:10
+msgid "Open Location"
+msgstr "לפתוח את המיקום"
 
-#: ../data/ui/send-to-dialog.ui.h:3 ../data/ui/shape-layer-file-chooser.ui.h:2
+#: data/ui/send-to-dialog.ui:72
+msgid "Copy"
+msgstr "העתקה"
+
+#: data/ui/send-to-dialog.ui:79
+msgid "Send To…"
+msgstr "לשלוח אל…"
+
+#: data/ui/send-to-dialog.ui:86
+msgid "Check In…"
+msgstr "להירשם במיקום…"
+
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:65
+msgid "Open Shape Layer"
+msgstr "לפתוח שכבת צורות"
+
+#: data/ui/shape-layer-file-chooser.ui:12
 msgid "_Open"
 msgstr "_פתיחה"
 
-#: ../data/ui/shape-layer-file-chooser.ui.h:1
-msgid "Open Layer"
-msgstr "פתיחת שכבה"
-
-#: ../data/ui/shape-layer-row.ui.h:1
+#. Translators: This is a tooltip
+#: data/ui/shape-layer-row.ui:19
 msgid "Toggle visible"
 msgstr "הצגה"
 
-#: ../data/ui/sidebar.ui.h:1
+#: data/ui/sidebar.ui:275
 msgid "Route search by GraphHopper"
 msgstr "חיפוש מסלולים באמצעות GraphHopper"
 
-#: ../data/ui/social-place-more-results-row.ui.h:1
+#: data/ui/sidebar.ui:364
+msgid ""
+"Routing itineraries for public transit is provided by third-party\n"
+"services.\n"
+"GNOME can not guarantee correctness of the itineraries and schedules shown.\n"
+"Note that some providers might not include all available modes of "
+"transportation,\n"
+"e.g. a national provider might not include airlines, and a local provider "
+"could\n"
+"miss regional trains.\n"
+"Names and brands shown are to be considered as registered trademarks when "
+"applicable."
+msgstr ""
+"הרכבת מסלולי הנסיעה בתחבורה הציבורית מסופקת על ידי שירותי‬\n"
+"‫צד־שלישי.‬\n"
+"‫ל־GNOME אין אפשרות לאמת את תוקף המידע של המסלולים ולוחות הזמנים המופיעים.‬\n"
+"‫נא לשים לב שחלק מהספקים עשויים לא לכלול את כל תצורות התחבורה הזמינות,‬\n"
+"‫למשל ספק לאומי עשוי שלא לכלול קווי תעופה וספק מקומי יכול לפספס רכבות "
+"אזוריות.‬\n"
+"‫יש להתייחס לשמות ולמותגים כסימני מסחר רשומים בהתאם לצרכים."
+
+#: data/ui/social-place-more-results-row.ui:8
 msgid "Show more results"
 msgstr "הצגת תוצאות נוספות"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:120
-msgid "Current location"
-msgstr "מיקום נוכחי"
+#. Translators: This is a tooltip
+#: data/ui/transit-leg-row.ui:126
+msgid "Hide intermediate stops and information"
+msgstr "להסתיר מידע ותחנות ביניים"
 
-#. To translators: %s can be "Unknown", "Exact" or "%f km²"
-#: ../data/ui/user-location-bubble.ui.h:4
-#, no-c-format
-msgid "Accuracy: %s"
-msgstr "דיוק: ‏%s"
+#. Translators: This is a tooltip
+#: data/ui/transit-leg-row.ui:200
+msgid "Show intermediate stops and information"
+msgstr "להציג מידע ותחנות ביניים"
 
-#: ../data/ui/zoom-in-notification.ui.h:1
+#. Indicates searching for the next available itineraries
+#: data/ui/transit-options-panel.ui:18
+msgid "Leave Now"
+msgstr "לצאת כעת"
+
+#. Indicates searching for itineraries leaving at the specified time at the earliest
+#: data/ui/transit-options-panel.ui:19
+msgid "Leave By"
+msgstr "לצאת עד"
+
+#. Indicates searching for itineraries arriving no later than the specified time
+#: data/ui/transit-options-panel.ui:20
+msgid "Arrive By"
+msgstr "להגיע עד"
+
+#. Header indicating selected modes of transit
+#: data/ui/transit-options-panel.ui:106
+msgid "Show"
+msgstr "הצגה"
+
+#: data/ui/transit-options-panel.ui:117
+msgid "Buses"
+msgstr "אוטובוסים"
+
+#: data/ui/transit-options-panel.ui:124
+msgid "Trams"
+msgstr "חשמליות"
+
+#: data/ui/transit-options-panel.ui:131
+msgid "Trains"
+msgstr "רכבות"
+
+#: data/ui/transit-options-panel.ui:138
+msgid "Subway"
+msgstr "רכבת תחתית"
+
+#: data/ui/transit-options-panel.ui:145
+msgid "Ferries"
+msgstr "מעבורות"
+
+#: data/ui/transit-options-panel.ui:152
+msgid "Airplanes"
+msgstr "מטוסים"
+
+#. Translators: This is a tooltip
+#: data/ui/place-bar.ui:48 data/ui/place-buttons.ui:50 data/ui/place-view.ui:72
+msgid "Share location"
+msgstr "שיתוף מיקום"
+
+#. Translators: This is a tooltip
+#: data/ui/place-buttons.ui:15
+msgid "Add to new route"
+msgstr "הוספה למסלול חדש"
+
+#. Translators: This is the button to find a route to a place
+#: data/ui/place-buttons.ui:34
+msgid "Directions"
+msgstr "הנחיות"
+
+#. Translators: This is a tooltip
+#: data/ui/place-buttons.ui:70
+msgid "Mark as favorite"
+msgstr "סימון כמועדף"
+
+#. Translators: This is a tooltip
+#: data/ui/place-buttons.ui:89
+msgid "Edit on OpenStreetMap"
+msgstr "עריכה ב־OpenStreetMap"
+
+#: data/ui/zoom-in-dialog.ui:16
 msgid "Zoom in to add location!"
-msgstr "יש להתקרב על מנת להוסיף מיקום!"
+msgstr "יש להתקרב כדי להוסיף מיקום!"
 
-#: ../data/ui/zoom-in-notification.ui.h:2
-msgid "OK"
-msgstr "אישור"
+#: data/ui/zoom-in-dialog.ui:38
+msgid "Zoom In"
+msgstr "להתקרב"
 
-#: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
-#: ../lib/maps-file-tile-source.c:459
+#: lib/maps-file-tile-source.c:303 lib/maps-file-tile-source.c:379
+#: lib/maps-file-tile-source.c:459
 msgid "Failed to find tile structure in directory"
-msgstr "נכשל חיפוש מבנה אריח בתיקייה"
+msgstr "חיפוש מבנה אריח בתיקייה נכשל"
 
-#: ../lib/maps-osm.c:56
+#: lib/maps-osm.c:56
 msgid "Failed to parse XML document"
-msgstr "נכשל ניתוח מסמך XML"
+msgstr "ניתוח מסמך XML נכשל"
 
-#: ../lib/maps-osm.c:252 ../lib/maps-osm.c:405
+#: lib/maps-osm.c:249 lib/maps-osm.c:402
 msgid "Missing required attributes"
-msgstr "חסרות תכונות דרושות"
+msgstr "חסרות תכונות חיוניות"
 
-#: ../lib/maps-osm.c:453
+#: lib/maps-osm.c:450
 msgid "Could not find OSM element"
 msgstr "לא ניתן למצוא יסוד OSM"
 
-#: ../src/application.js:101
+#: src/application.js:108
 msgid "A path to a local tiles directory structure"
 msgstr "נתיב לתיקייה מבני אריחים מקומיים"
 
-#: ../src/checkInDialog.js:176
+#: src/application.js:114
+msgid "Tile size for local tiles directory"
+msgstr "גודל אריח לתיקיית האריחים המקומית"
+
+#: src/application.js:118
+msgid "Show the version of the program"
+msgstr "להציג את גרסת התכנית"
+
+#: src/application.js:124
+msgid "Ignore network availability"
+msgstr "להתעלם מזמינות הרשת"
+
+#: src/application.js:134 src/application.js:135
+msgid "[FILE…|URI]"
+msgstr "[קובץ…|כתובת]"
+
+#: src/checkInDialog.js:167
 msgid "Select an account"
 msgstr "בחירת חשבון"
 
-#: ../src/checkInDialog.js:181 ../src/checkInDialog.js:253
+#: src/checkInDialog.js:172 src/checkInDialog.js:244
 msgid "Loading"
 msgstr "בטעינה"
 
-#: ../src/checkInDialog.js:205
+#: src/checkInDialog.js:196
 msgid "Select a place"
 msgstr "בחירת מקום"
 
-#: ../src/checkInDialog.js:210
+#: src/checkInDialog.js:201
 msgid ""
 "Maps cannot find the place to check in to with Facebook. Please select one "
 "from this list."
 msgstr "מפות לא מוצא את המקום להירשם עם Facebook. נא לבחור אחד מרשימה זו."
 
-#: ../src/checkInDialog.js:212
+#: src/checkInDialog.js:203
 msgid ""
 "Maps cannot find the place to check in to with Foursquare. Please select one "
 "from this list."
@@ -618,56 +833,39 @@ msgstr "מפות לא מוצא את המקום להירשם עם Foursquare. נ�
 
 #. Translators: %s is the name of the place to check in.
 #.
-#: ../src/checkInDialog.js:227
+#: src/checkInDialog.js:218
 #, javascript-format
 msgid "Check in to %s"
 msgstr "נרשם עבור %s"
 
 #. Translators: %s is the name of the place to check in.
 #.
-#: ../src/checkInDialog.js:237
+#: src/checkInDialog.js:228
 #, javascript-format
 msgid "Write an optional message to check in to %s."
 msgstr "כתיבת הודעה אפשרית להרשמה עבור %s."
 
-#: ../src/checkInDialog.js:289 ../src/checkIn.js:153
-#: ../src/osmEditDialog.js:508
-msgid "An error has occurred"
-msgstr "התרחשה שגיאה"
-
 #. Translators: %s is the place name that user wanted to check-in
-#: ../src/checkIn.js:135
+#: src/checkIn.js:144
 #, javascript-format
-msgid "Cannot find \"%s\" in the social service"
-msgstr "לא ניתן למצוא את „%s” בשירות החברתי"
+msgid "Cannot find “%s” in the social service"
+msgstr "לא ניתן למצוא את „%s” בשירות הרשת החברתי"
 
-#: ../src/checkIn.js:137
+#: src/checkIn.js:146
 msgid "Cannot find a suitable place to check-in in this location"
 msgstr "לא ניתן למצוא מקום מתאים להירשם במיקום זה"
 
-#: ../src/checkIn.js:141
+#: src/checkIn.js:150
 msgid ""
 "Credentials have expired, please open Online Accounts to sign in and enable "
 "this account"
 msgstr "האישורים פגי תוקף, נא לפתוח חשבונות מקוונים להתחברות ולאפשר חשבון זה"
 
-#: ../src/contextMenu.js:97
-msgid "Route from here"
-msgstr "מסלול מכאן"
-
-#: ../src/contextMenu.js:99
-msgid "Add destination"
-msgstr "הוספת ידע"
-
-#: ../src/contextMenu.js:101
-msgid "Route to here"
-msgstr "מסלול לכאן"
-
-#: ../src/contextMenu.js:130
+#: src/contextMenu.js:135
 msgid "Nothing found here!"
 msgstr "לא נמצא כאן דבר!"
 
-#: ../src/contextMenu.js:187
+#: src/contextMenu.js:196
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -675,114 +873,187 @@ msgstr ""
 "מיקום נוסף למפה, יש לשים לב כי יתכן ויעבור זמן מה לפני שהוא יוצג על המפה "
 "ובתוצאות החיפוש."
 
-#: ../src/exportViewDialog.js:156
+#. Translators: This is a format string for a PNG filename for an
+#. * exported image with coordinates. The .png extension should be kept
+#. * intact in the translated string.
+#.
+#: src/exportViewDialog.js:82
+#, javascript-format
+msgid "Maps at %f, %f.png"
+msgstr "מפות ב־%f,‏ %f.png"
+
+#: src/exportViewDialog.js:154
 msgid "Filesystem is read only"
 msgstr "מערכת הקבצים היא לקריאה בלבד"
 
-#: ../src/exportViewDialog.js:158
+#: src/exportViewDialog.js:156
 msgid "You do not have permission to save there"
 msgstr "אין לך הרשאות לשמירה כאן"
 
-#: ../src/exportViewDialog.js:160
-msgid "The directory does not exists"
+#: src/exportViewDialog.js:158
+msgid "The directory does not exist"
 msgstr "התיקייה אינה קיימת"
 
-#: ../src/exportViewDialog.js:162
+#: src/exportViewDialog.js:160
 msgid "No filename specified"
 msgstr "לא צוין שם קובץ"
 
-#: ../src/exportViewDialog.js:170
+#: src/exportViewDialog.js:168
 msgid "Unable to export view"
 msgstr "לא ניתן לייצא תצוגה"
 
-#: ../src/geoJSONSource.js:98
+#: src/geoclue.js:118
+msgid "Current Location"
+msgstr "מיקום נוכחי"
+
+#: src/geoJSONSource.js:97
 msgid "invalid coordinate"
 msgstr "נקודת ציון לא חוקית"
 
-#: ../src/geoJSONSource.js:149 ../src/geoJSONSource.js:189
-#: ../src/geoJSONSource.js:204
+#: src/geoJSONSource.js:146 src/geoJSONSource.js:186 src/geoJSONSource.js:201
 msgid "parse error"
 msgstr "שגיאת ניתוח"
 
-#: ../src/geoJSONSource.js:183
+#: src/geoJSONSource.js:180
 msgid "unknown geometry"
 msgstr "שגיאה הנדסית"
 
-#: ../src/layersPopover.js:62
+#: src/graphHopper.js:112 src/transitPlan.js:181
+msgid "Route request failed."
+msgstr "בקשת המסלול נכשלה."
+
+#: src/graphHopper.js:119 src/transitPlan.js:173
+msgid "No route found."
+msgstr "לא נמצא מסלול."
+
+#: src/graphHopper.js:207 src/transitplugins/openTripPlanner.js:1116
+msgid "Start!"
+msgstr "להתחיל!"
+
+#: src/mainWindow.js:62
 msgid "All Layer Files"
 msgstr "כל שכבות הקבצים"
 
-#: ../src/mainWindow.js:371
+#: src/mainWindow.js:485
 msgid "Failed to connect to location service"
-msgstr "ארע כשל בהתחברות לשרת האיכון"
+msgstr "ההתחברות לשרת האיכון נכשלה"
 
-#: ../src/mainWindow.js:423
+#: src/mainWindow.js:580
 msgid "translator-credits"
 msgstr "יוסף אור בוצ׳קו <yoseforb@gnome.org>"
 
-#: ../src/mainWindow.js:426
+#: src/mainWindow.js:583
 msgid "A map application for GNOME"
 msgstr "יישום מפות עבור GNOME"
 
-#: ../src/mapView.js:254
-msgid "File type is not supported"
-msgstr "סוג הקובץ אינו נתמך"
+#: src/mainWindow.js:594
+msgid "Copyright © 2011 – 2021 Red Hat, Inc. and The GNOME Maps authors"
+msgstr ""
+"כל הזכויות שמורות © 2011 – 2021 ל־Red Hat בע״מ וליוצרי תכנית המפות של GNOME"
 
-#: ../src/mapView.js:261
+#: src/mainWindow.js:614
+#, javascript-format
+msgid "Map data by %s and contributors"
+msgstr "נתוני המפה באדיבות %s והמתנדבים במיזם"
+
+#. Translators: this is an attribution string giving credit to the
+#. * tile provider where the %s placeholder is replaced by either
+#. * the bare name of the tile provider, or a linkified URL if one
+#. * is available
+#.
+#: src/mainWindow.js:630
+#, javascript-format
+msgid "Map tiles provided by %s"
+msgstr "אריחי המפה סופקו על ידי %s"
+
+#. Translators: this is an attribution string giving credit to the
+#. * search provider where the first %s placeholder is replaced by either
+#. * the bare name of the geocoder provider, or a linkified URL if one
+#. * is available, and the second %s placeholder is replaced by the
+#. * URL to the geocoder project page. These placeholders
+#. * can be swapped, if needed using the %n$s positional syntax
+#. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
+#. * before the provider).
+#.
+#: src/mainWindow.js:659
+#, javascript-format
+msgid "Search provided by %s using %s"
+msgstr "החיפוש סופק על ידי %s בעזרת %s"
+
+#: src/mapView.js:488 src/mapView.js:546
 msgid "Failed to open layer"
 msgstr "אירע כשל בפתיחת שכבה"
 
-#: ../src/mapView.js:297
+#: src/mapView.js:509
+msgid "Do you want to continue?"
+msgstr "להמשיך?"
+
+#: src/mapView.js:510
+#, javascript-format
+msgid ""
+"You are about to open files with a total size of %s MB. This could take some "
+"time to load"
+msgstr "פעולה זו תפתח קבצים בגודל כולל של %s מ״ב. הטעינה עשויה לארוך זמן מה"
+
+#: src/mapView.js:540
+msgid "File type is not supported"
+msgstr "סוג הקובץ אינו נתמך"
+
+#: src/mapView.js:578
 msgid "Failed to open GeoURI"
 msgstr "אירע כשל בפתיחת GeoURI"
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: ../src/osmConnection.js:443
+#: src/osmConnection.js:436
 msgid "Incorrect user name or password"
 msgstr "שם או ססמה לא נכונים"
 
-#: ../src/osmConnection.js:445
+#: src/osmConnection.js:438
 msgid "Success"
 msgstr "הצלחה"
 
-#: ../src/osmConnection.js:447
+#: src/osmConnection.js:440
 msgid "Bad request"
 msgstr "בקשה שגויה"
 
-#: ../src/osmConnection.js:449
+#: src/osmConnection.js:442
 msgid "Object not found"
 msgstr "עצם לא נמצא"
 
-#: ../src/osmConnection.js:451
+#: src/osmConnection.js:444
 msgid "Conflict, someone else has just modified the object"
 msgstr "התנגשות, מישהו אחר שינה את העצם זה עתה"
 
-#: ../src/osmConnection.js:453
+#: src/osmConnection.js:446
 msgid "Object has been deleted"
 msgstr "העצם נמחק"
 
-#: ../src/osmConnection.js:455
+#: src/osmConnection.js:448
 msgid "Way or relation refers to non-existing children"
 msgstr "נתיב או יחס מפנה לילדים לא קיימים"
 
-#: ../src/osmEditDialog.js:104
+#: src/osmEditDialog.js:112
 msgid "Name"
 msgstr "שם"
 
-#: ../src/osmEditDialog.js:107
+#: src/osmEditDialog.js:115
 msgid "The official name. This is typically what appears on signs."
 msgstr "השם הרשמי. זה בדרך כלל מה שמופיע על השילוטים."
 
-#: ../src/osmEditDialog.js:110
+#: src/osmEditDialog.js:118
 msgid "Address"
 msgstr "כתובת"
 
-#: ../src/osmEditDialog.js:118 ../src/placeBubble.js:165
+#: src/osmEditDialog.js:126 src/placeView.js:272
 msgid "Website"
 msgstr "אתר אינטרנט"
 
-#: ../src/osmEditDialog.js:121
+#: src/osmEditDialog.js:130
+msgid "This is not a valid URL. Make sure to include http:// or https://."
+msgstr "זו אינה כתובת תקפה. נא לוודא שכללת את התחיליות http://‎ או https://‎."
+
+#: src/osmEditDialog.js:131
 msgid ""
 "The official website. Try to use the most basic form of a URL i.e. http://"
 "example.com instead of http://example.com/index.html."
@@ -790,11 +1061,11 @@ msgstr ""
 "אתר האינטרנט הרשמי. יש לנסות להשתמש בצורה הבסיסית ביותר של הכתובת. למשל "
 "http://example.com במקום http://example.com/index.html."
 
-#: ../src/osmEditDialog.js:126
+#: src/osmEditDialog.js:136
 msgid "Phone"
 msgstr "טלפון"
 
-#: ../src/osmEditDialog.js:130
+#: src/osmEditDialog.js:140
 msgid ""
 "Phone number. Use the international format, starting with a + sign. Beware "
 "of local privacy laws, especially for private phone numbers."
@@ -802,248 +1073,547 @@ msgstr ""
 "מספר טלפון. יש להשתמש בתבנית בינלאומית, המתחיל עם סימן פלוס +. יש להיזהר "
 "מחוקי הפרטיות, בפרט עבור מספרי טלפון פרטיים."
 
-#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:171
+#. Translators: This is the text for the "Wikipedia" link at the end
+#. of summaries
+#: src/osmEditDialog.js:145 src/placeView.js:580
 msgid "Wikipedia"
 msgstr "ויקיפדיה"
 
-#: ../src/osmEditDialog.js:139
+#: src/osmEditDialog.js:149
 msgid ""
 "The format used should include the language code and the article title like "
 "“en:Article title”."
 msgstr ""
 "התבנית בשימוש צריכה לכלול את קוד השפה ואת כותרת הערך. למשל: \"he:כותרת הערך."
 
-#: ../src/osmEditDialog.js:143
+#: src/osmEditDialog.js:153 src/placeView.js:300
 msgid "Opening hours"
 msgstr "שעות פתיחה"
 
-#: ../src/osmEditDialog.js:148
+#: src/osmEditDialog.js:158
 msgid "See the link in the label for help on format."
 msgstr "ניתן לקבל עזרה עבור התבנית בקישור בתווית."
 
-#: ../src/osmEditDialog.js:151
+#. TODO: this is a bit of a work-around to re-interpret the population,
+#. * stored as a string into an integer to convert back to a locale-
+#. * formatted string. Ideally it should be kept as an integer value
+#. * in the Place class. But this will also need to be handled by the
+#. * PlaceStore, possible in a backwards-compatible way
+#.
+#: src/osmEditDialog.js:161 src/placeView.js:410
 msgid "Population"
 msgstr "אוכלוסייה"
 
-#: ../src/osmEditDialog.js:156
+#: src/osmEditDialog.js:166 src/placeView.js:419
 msgid "Altitude"
 msgstr "גובה"
 
-#: ../src/osmEditDialog.js:159
+#: src/osmEditDialog.js:169
 msgid "Elevation (height above sea level) of a point in metres."
 msgstr "גובה (גובה מעל פני הים) של נקודה במטרים."
 
-#: ../src/osmEditDialog.js:162
+#: src/osmEditDialog.js:172
 msgid "Wheelchair access"
 msgstr "נגישות נכים"
 
-#: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
+#: src/osmEditDialog.js:175 src/osmEditDialog.js:184 src/osmEditDialog.js:222
 msgid "Yes"
 msgstr "יש"
 
-#: ../src/osmEditDialog.js:166 ../src/osmEditDialog.js:175
+#: src/osmEditDialog.js:176 src/osmEditDialog.js:185 src/osmEditDialog.js:223
 msgid "No"
 msgstr "אין"
 
-#: ../src/osmEditDialog.js:167
+#: src/osmEditDialog.js:177
 msgid "Limited"
 msgstr "מוגבל"
 
-#: ../src/osmEditDialog.js:168
+#: src/osmEditDialog.js:178
 msgid "Designated"
 msgstr "מובנה"
 
-#: ../src/osmEditDialog.js:171
+#: src/osmEditDialog.js:181
 msgid "Internet access"
 msgstr "גישה לאינטרנט"
 
-#. Translators:
-#. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
-#.
-#: ../src/osmEditDialog.js:176 ../src/translations.js:341
+#: src/osmEditDialog.js:186
 msgid "Wi-Fi"
 msgstr "רשת אלחוטית"
 
-#: ../src/osmEditDialog.js:177
+#: src/osmEditDialog.js:187
 msgid "Wired"
 msgstr "רשת קווית"
 
-#: ../src/osmEditDialog.js:178
+#: src/osmEditDialog.js:188
 msgid "Terminal"
 msgstr "מסוף"
 
-#: ../src/osmEditDialog.js:179
+#: src/osmEditDialog.js:189
 msgid "Service"
 msgstr "שרת"
 
-#: ../src/osmEditDialog.js:288
+#: src/osmEditDialog.js:192
+msgid "Religion"
+msgstr "דת"
+
+#: src/osmEditDialog.js:195 src/translations.js:284
+msgid "Animism"
+msgstr "אנימיזם"
+
+#: src/osmEditDialog.js:196
+msgid "Bahá’í"
+msgstr "בהאית"
+
+#: src/osmEditDialog.js:197 src/translations.js:286
+msgid "Buddhism"
+msgstr "בודהיזם"
+
+#: src/osmEditDialog.js:198 src/translations.js:287
+msgid "Caodaism"
+msgstr "קאודאיזם"
+
+#: src/osmEditDialog.js:199 src/translations.js:288
+msgid "Christianity"
+msgstr "נצרות"
+
+#: src/osmEditDialog.js:200 src/translations.js:289
+msgid "Confucianism"
+msgstr "קונפוציוסיזם"
+
+#: src/osmEditDialog.js:201 src/translations.js:290
+msgid "Hinduism"
+msgstr "הינדואיזם"
+
+#: src/osmEditDialog.js:202 src/translations.js:291
+msgid "Jainism"
+msgstr "ג׳ייניזם"
+
+#: src/osmEditDialog.js:203 src/translations.js:292
+msgid "Judaism"
+msgstr "יהדות"
+
+#: src/osmEditDialog.js:204 src/translations.js:293
+msgid "Islam"
+msgstr "אסלאם"
+
+#: src/osmEditDialog.js:205 src/translations.js:294
+msgid "Multiple Religions"
+msgstr "מגוון דתות"
+
+#: src/osmEditDialog.js:206 src/translations.js:295
+msgid "Paganism"
+msgstr "פגניות"
+
+#: src/osmEditDialog.js:207 src/translations.js:296
+msgid "Pastafarianism"
+msgstr "פסטפריאניזם"
+
+#: src/osmEditDialog.js:208 src/translations.js:297
+msgid "Scientology"
+msgstr "סיינטולוגיה"
+
+#: src/osmEditDialog.js:209 src/translations.js:298
+msgid "Shinto"
+msgstr "שינטו"
+
+#: src/osmEditDialog.js:210 src/translations.js:299
+msgid "Sikhism"
+msgstr "סיקיזם"
+
+#: src/osmEditDialog.js:211 src/translations.js:300
+msgid "Spiritualism"
+msgstr "ספיריטואליזם"
+
+#: src/osmEditDialog.js:212 src/translations.js:301
+msgid "Taoism"
+msgstr "דאואיזם"
+
+#: src/osmEditDialog.js:213 src/translations.js:302
+msgid "Unitarian Universalism"
+msgstr "אוניברסליזם אוניטריאני"
+
+#: src/osmEditDialog.js:214 src/translations.js:303
+msgid "Voodoo"
+msgstr "וודו"
+
+#: src/osmEditDialog.js:215 src/translations.js:304
+msgid "Yazidism"
+msgstr "יזידיזם"
+
+#: src/osmEditDialog.js:216 src/translations.js:305
+msgid "Zoroastrianism"
+msgstr "זורואסטריות"
+
+#: src/osmEditDialog.js:219
+msgid "Toilets"
+msgstr "שירותים"
+
+#: src/osmEditDialog.js:226
+msgid "Note"
+msgstr "הערה"
+
+#: src/osmEditDialog.js:229
+msgid ""
+"Information used to inform other mappers about non-obvious information about "
+"an element, the author’s intent when creating it, or hints for further "
+"improvement."
+msgstr ""
+"מידע שמשמש ליידע ממפים אחרים בנוגע למידע בלתי מובן מאליו בנוגע לרכיב, מטרת "
+"הכותב בעת יצירתה או רמזים לשיפור נוסף."
+
+#: src/osmEditDialog.js:334
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "הוספה ל־OpenStreetMap"
 
-#: ../src/osmEditDialog.js:339
+#: src/osmEditDialog.js:388
 msgid "Select Type"
 msgstr "בחירת סוג"
 
-#: ../src/osmEditDialog.js:457
+#: src/osmEditDialog.js:505
 msgid "Done"
 msgstr "בוצה"
 
-#: ../src/placeBubble.js:128
-msgid "Population:"
-msgstr "אוכלוסייה:"
+#: src/photonParser.js:104
+msgid "Unnamed place"
+msgstr "מקום ללא שם"
 
-#: ../src/placeBubble.js:134
-msgid "Altitude:"
-msgstr "גובה:"
-
-#: ../src/placeBubble.js:139
-msgid "Opening hours:"
-msgstr "שעות פתיחה:"
-
-#: ../src/placeBubble.js:144
-msgid "Internet access:"
-msgstr "גישת אינטרנט:"
-
-#: ../src/placeBubble.js:149
-msgid "Wheelchair access:"
-msgstr "נגישות נכים:"
-
-#: ../src/placeBubble.js:155 ../src/placeBubble.js:159
-msgid "Phone:"
-msgstr "טלפון:"
-
-#: ../src/placeEntry.js:190
+#: src/placeEntry.js:221
 msgid "Failed to parse Geo URI"
-msgstr "ארע כשל בניתוח כתובת Geo"
+msgstr "ניתוח כתובת Geo נכשל"
+
+#: src/placeView.js:260
+msgid "Coordinates"
+msgstr "נקודת ציון"
+
+#: src/placeView.js:264
+msgid "Accuracy"
+msgstr "דיוק"
+
+#. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
+#: src/placeView.js:267
+#, javascript-format
+msgid "Accuracy: %s"
+msgstr "דיוק: ‏%s"
+
+#. since the phone numbers are typically always rendered
+#. * left-to-right, insert an explicit LRM char to avoid issues
+#. * with phone numbers in international format starting with a +
+#. * which is considered a "weak" character to determine Unicode
+#. * text direction
+#.
+#: src/placeView.js:286
+msgid "Phone number"
+msgstr "מספר טלפון"
+
+#. Translators:
+#. * There is public internet access but the particular kind is unknown.
+#.
+#: src/placeView.js:310
+msgid "Public internet access"
+msgstr "גישה ציבורית לאינטרנט"
+
+#. Translators:
+#. * no internet access is offered in a place where
+#. * someone might expect it.
+#.
+#: src/placeView.js:319
+msgid "No internet access"
+msgstr "אין גישה לאינטרנט"
+
+#. Translators:
+#. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
+#.
+#: src/placeView.js:327
+msgid "Public Wi-Fi"
+msgstr "רשת אלחוטית ציבורית"
+
+#. Translators:
+#. * This means a a place where you can plug in your laptop with ethernet.
+#.
+#: src/placeView.js:335
+msgid "Wired internet access"
+msgstr "גישה לאינטרנט עם כבל"
+
+#. Translators:
+#. * Like internet cafe or library where the computer is given.
+#.
+#: src/placeView.js:343
+msgid "Computers available for use"
+msgstr "מחשבים זמינים לשימוש"
+
+#. Translators:
+#. * This means there is personnel which helps you in case of problems.
+#.
+#: src/placeView.js:351
+msgid "Internet assistance available"
+msgstr "יש עזרה עם האינטרנט"
+
+#: src/placeView.js:357
+msgid "No toilets available"
+msgstr "אין שירותים זמינים"
+
+#: src/placeView.js:360
+msgid "Toilets available"
+msgstr "יש שירותים זמינים"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#. Translators:
-#. * There is public internet access but the particular kind is unknown.
-#.
-#: ../src/place.js:178 ../src/translations.js:330
-msgid "yes"
-msgstr "יש"
+#: src/placeView.js:369
+msgid "Wheelchair accessible"
+msgstr "גישה לנכים"
 
 #. Translators:
 #. * This means wheelchairs have partial access (e.g some areas
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:185
-msgid "limited"
-msgstr "מוגבל"
+#: src/placeView.js:379
+msgid "Limited wheelchair accessibility"
+msgstr "גישה מוגבלת לנכים"
 
 #. Translators:
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#. Translators:
-#. * no internet access is offered in a place where
-#. * someone might expect it.
-#.
-#: ../src/place.js:191 ../src/translations.js:336
-msgid "no"
-msgstr "אין"
+#: src/placeView.js:388
+msgid "Not wheelchair accessible"
+msgstr "אין גישה לנכים"
 
 #. Translators:
 #. * This means that the way or area is designated or purpose built
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:198
-msgid "designated"
-msgstr "מובנה"
+#: src/placeView.js:398
+msgid "Designated for wheelchair users"
+msgstr "מוקצה למשתמשי כסאות גלגלים"
 
-#: ../src/printLayout.js:244
+#: src/placeView.js:425
+msgid "Religion:"
+msgstr "דת:"
+
+#: src/place.js:429
+msgid "Place not found in OpenStreetMap"
+msgstr "המקום לא נמצא ב־OpenStreetMap"
+
+#: src/place.js:436
+msgid "Coordinates in URL are not valid"
+msgstr "נקודות הציון שבכתובת שגויות"
+
+#: src/place.js:445
+msgid "URL is not supported"
+msgstr "הכתובת לא נתמכת"
+
+#: src/printLayout.js:312
 #, javascript-format
 msgid "From %s to %s"
 msgstr "מ־%s אל %s"
 
-#: ../src/printOperation.js:47
+#: src/printOperation.js:46
 msgid "Loading map tiles for printing"
 msgstr "טוען אירי מפה להדפסה"
 
-#: ../src/printOperation.js:48
+#: src/printOperation.js:47
 msgid "You can abort printing if this takes too long"
 msgstr "נתן לבטל ההדפסה אם היא לוקחת יותר מדי זמן"
 
-#: ../src/printOperation.js:50
+#: src/printOperation.js:49
 msgid "Abort printing"
 msgstr "ביטול הדפסה"
 
-#: ../src/routeService.js:90
-msgid "No route found."
-msgstr "לא נמצא מסלול."
+#. Translators: this is add via location tooltip
+#: src/routeEntry.js:74
+msgid "Add via location"
+msgstr "הוספה דרך מיקום"
 
-#: ../src/routeService.js:101
-msgid "Route request failed."
-msgstr "בקשת המסלול נכשלה."
+#. Translators: this is remove via location tooltip
+#: src/routeEntry.js:84
+msgid "Remove via location"
+msgstr "הסרה דרך מיקום"
 
-#: ../src/routeService.js:178
-msgid "Start!"
-msgstr "להתחיל!"
+#. Translators: this is reverse route tooltip
+#: src/routeEntry.js:90
+msgid "Reverse route"
+msgstr "להפוך את המסלול"
 
-#: ../src/sendToDialog.js:179
+#. Translators: The first string is the name of the city, the
+#. second string is the name of the app to add it to
+#: src/sendToDialog.js:121
+#, javascript-format
+msgid "Add %s to %s"
+msgstr "הוספת %s אל %s"
+
+#: src/sendToDialog.js:219
 msgid "Failed to open URI"
-msgstr "ארע כשל בפתיחת הכתובת"
+msgstr "פתיחת הכתובת נכשלה"
 
-#: ../src/shapeLayer.js:93
+#: src/sendToDialog.js:276
+#, javascript-format
+msgid "Open with %s"
+msgstr "לפתוח עם %s"
+
+#: src/shapeLayer.js:95
 msgid "failed to load file"
 msgstr "אירע כשל בטעינת הקובץ"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:208
+#: src/sidebar.js:359
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "זמן משוער: %s"
 
-#: ../src/translations.js:55 ../src/translations.js:57
-msgid "around the clock"
+#: src/sidebar.js:415
+#, javascript-format
+msgid "Itineraries provided by %s"
+msgstr "המסלולים סופקו על ידי %s"
+
+#. Translators: this is a format string indicating instructions
+#. * starting a journey at the address given as the parameter
+#.
+#: src/transit.js:37
+#, javascript-format
+msgid "Start at %s"
+msgstr "להתחיל בנקודה %s"
+
+#. Translators: this indicates starting a journey at a location
+#. * with no set name (such as when the user started routing from
+#. * an arbitrary point on the map)
+#.
+#: src/transit.js:43
+msgid "Start"
+msgstr "התחלה"
+
+#. Translators: this is a format string indicating walking a certain
+#. * distance, with the distance expression being the %s placeholder
+#.
+#: src/transit.js:61
+#, javascript-format
+msgid "Walk %s"
+msgstr "ללכת %s"
+
+#. Translators: this a format string indicating arriving at the
+#. * destination of journey with the arrival address and transit
+#. * stop as the format parameter
+#: src/transit.js:75
+#, javascript-format
+msgid "Arrive at %s"
+msgstr "להגיע אל %s"
+
+#: src/transit.js:77 src/transitplugins/openTripPlanner.js:1129
+msgid "Arrive"
+msgstr "הגעה"
+
+#: src/transitLegRow.js:88
+msgid "Show walking instructions"
+msgstr "להציג הנחיות הליכה"
+
+#: src/transitLegRow.js:89
+msgid "Hide walking instructions"
+msgstr "להסתיר הנחיות הליכה"
+
+#: src/transitMoreRow.js:39
+msgid "Load earlier alternatives"
+msgstr "לטעון חלופות קודמות"
+
+#: src/transitMoreRow.js:41
+msgid "Load later alternatives"
+msgstr "לטעון חלופות מאוחרות"
+
+#: src/transitMoreRow.js:54
+msgid "No earlier alternatives found."
+msgstr "לא נמצאו חלופות מוקדמות."
+
+#: src/transitMoreRow.js:56
+msgid "No later alternatives found."
+msgstr "לא נמצאו חלופות מאוחרות יותר."
+
+#.
+#. * Translators: this is a format string giving the equivalent to
+#. * "may 29" according to the current locale's convensions.
+#.
+#: src/transitOptionsPanel.js:140
+msgctxt "month-day-date"
+msgid "%b %e"
+msgstr "%e ב%b"
+
+#: src/transitPlan.js:177
+msgid "No timetable data found for this route."
+msgstr "לא נמצאו נתוני לוח זמנים למסלול הזה."
+
+#: src/transitPlan.js:185
+msgid "No provider found for this route."
+msgstr "לא נמצא ספק למסלול הזה."
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time, like:
+#. * "12:00 – 13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: src/transitPlan.js:302
+#, javascript-format
+msgid "%s – %s"
+msgstr "%s – %s"
+
+#. translators: this is an indication for a trip duration of
+#. * less than an hour, with only the minutes part, using plural forms
+#. * as appropriate
+#.
+#: src/transitPlan.js:331
+#, javascript-format
+#| msgid "%f min"
+msgid "%s minute"
+msgid_plural "%s minutes"
+msgstr[0] "דקה"
+msgstr[1] "שתי דקות"
+msgstr[2] "‫%s דקות"
+msgstr[3] "‫%s דקות"
+
+#. translators: this is an indication for a trip duration,
+#. * where the duration is an exact number of hours (i.e. no
+#. * minutes part), using plural forms as appropriate
+#.
+#: src/transitPlan.js:343
+#, javascript-format
+msgid "%s hour"
+msgid_plural "%s hours"
+msgstr[0] "שעה"
+msgstr[1] "שעתיים"
+msgstr[2] "‫%s שעות"
+msgstr[3] "‏‫%s שעות"
+
+#. translators: this is an indication for a trip duration
+#. * where the duration contains an hour and minute part, it's
+#. * pluralized on the hours part
+#.
+#: src/transitPlan.js:351
+#, javascript-format
+msgid "%s:%s hour"
+msgid_plural "%s:%s hours"
+msgstr[0] "‫%s:%s שעה"
+msgstr[1] "‫%s:%s שעתיים"
+msgstr[2] "‫%s:%s שעות"
+msgstr[3] "‫%s:%s שעות"
+
+#. Translators: this is a format string for showing a departure and
+#. * arrival time in a more compact manner to show in the instruction
+#. * list for an itinerary, like:
+#. * "12:00–13:03" where the placeholder %s are the actual times,
+#. * these could be rearranged if needed.
+#.
+#: src/transitPlan.js:744
+#, javascript-format
+msgid "%s–%s"
+msgstr "%s–%s"
+
+#: src/translations.js:53
+msgid "Around the clock"
 msgstr "מסביב לשעון"
 
-#: ../src/translations.js:59
-msgid "from sunrise to sunset"
+#: src/translations.js:55
+msgid "From sunrise to sunset"
 msgstr "מהזריחה עד השקיעה"
-
-#. Translators:
-#. * This is a format string with two separate time ranges
-#. * such as "Mo-Fr 10:00-19:00 Sa 12:00-16:00"
-#. * The space between the format place holders could be
-#. * substituted with the appropriate separator.
-#.
-#: ../src/translations.js:78
-#, javascript-format
-msgctxt "time range list"
-msgid "%s %s"
-msgstr "%s %s"
-
-#. Translators:
-#. * This is a format string with three separate time ranges
-#. * such as "Mo-Fr 10:00-19:00 Sa 10:00-17:00 Su 12:00-16:00"
-#. * The space between the format place holders could be
-#. * substituted with the appropriate separator.
-#.
-#: ../src/translations.js:90
-#, javascript-format
-msgctxt "time range list"
-msgid "%s %s %s"
-msgstr "%s %s %s"
-
-#. Translators:
-#. * This is a format string consisting of a part specifying the days for
-#. * which the specified time is applied and the time interval
-#. * specification as the second argument.
-#. * The space between the format place holders could be substituted with
-#. * the appropriate separator or phrase and the ordering of the arguments
-#. * can be rearranged with the %n#s syntax.
-#: ../src/translations.js:121
-#, javascript-format
-msgctxt "time range component"
-msgid "%s %s"
-msgstr "%s %s"
 
 #. Translators:
 #. * This represents a format string consisting of two day interval
@@ -1054,7 +1624,7 @@ msgstr "%s %s"
 #. * place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: ../src/translations.js:153
+#: src/translations.js:121
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s"
@@ -1069,32 +1639,32 @@ msgstr "%s,%s"
 #. * %s place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: ../src/translations.js:167
+#: src/translations.js:135
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s,%s"
 msgstr "%s,%s,%s"
 
-#: ../src/translations.js:186
-msgid "every day"
+#: src/translations.js:154
+msgid "Every day"
 msgstr "כל יום"
 
 #. Translators:
 #. * This represents a range of days with a starting and ending day.
 #.
-#: ../src/translations.js:198
+#: src/translations.js:166
 #, javascript-format
 msgctxt "day range"
 msgid "%s-%s"
 msgstr "%s – %s"
 
-#: ../src/translations.js:209
-msgid "public holidays"
+#: src/translations.js:177
+msgid "Public holidays"
 msgstr "חגים ציבוריים"
 
-#: ../src/translations.js:211
-msgid "school holidays"
-msgstr "חגי בית ספר"
+#: src/translations.js:179
+msgid "School holidays"
+msgstr "חופשי בית ספר"
 
 #. Translators:
 #. * This is a list with two time intervals, such as:
@@ -1104,13 +1674,13 @@ msgstr "חגי בית ספר"
 #. * the translation. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: ../src/translations.js:251
+#: src/translations.js:219
 #, javascript-format
 msgctxt "time interval list"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: ../src/translations.js:265
+#: src/translations.js:233
 msgid "not open"
 msgstr "לא פתוח"
 
@@ -1121,81 +1691,289 @@ msgstr "לא פתוח"
 #. * translation as needed. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: ../src/translations.js:280
+#: src/translations.js:248
 #, javascript-format
 msgctxt "time interval"
 msgid "%s-%s"
 msgstr "%s – %s"
 
-#. Translators:
-#. * This means a a place where you can plug in your laptop with ethernet.
-#.
-#: ../src/translations.js:346
-msgid "wired"
-msgstr "אתרנט"
-
-#. Translators:
-#. * Like internet cafe or library where the computer is given.
-#.
-#: ../src/translations.js:351
-msgid "terminal"
-msgstr "מסוף"
-
-#. Translators:
-#. * This means there is personnel which helps you in case of problems.
-#.
-#: ../src/translations.js:356
-msgid "service"
-msgstr "שרת"
-
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:231
+#: src/utils.js:248
 msgid "Unknown"
 msgstr "לא ידוע"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:234
+#: src/utils.js:251
 msgid "Exact"
 msgstr "מדויק"
 
-#: ../src/utils.js:337
+#. Translators: this is a duration with only hours, using
+#. * an abbreviation for hours, corresponding to 'h' in English
+#.
+#: src/utils.js:348
 #, javascript-format
-msgid "%f h"
-msgstr "%f שעות"
+msgid "%s h"
+msgstr "‫%s שע׳"
 
-#: ../src/utils.js:339
+#. Translators: this is a duration with hours and minutes parts
+#. * using abbreviations for hours and minutes, corresponding to 'h'
+#. * and 'min' in English. The minutes has appropriate plural variations
+#.
+#: src/utils.js:354
 #, javascript-format
-msgid "%f min"
-msgstr "%f דקות"
+#| msgctxt "time range list"
+#| msgid "%s %s %s"
+msgid "%s h %s min"
+msgid_plural "%s h %s min"
+msgstr[0] "‫%s שע׳ %s דק׳"
+msgstr[1] "‏‫%s שע׳ %s דק׳"
+msgstr[2] "‏‫%s שע׳ %s דק׳"
+msgstr[3] "‏‫%s שע׳ %s דק׳"
 
-#: ../src/utils.js:341
+#. Translators: this is a duration with minutes part
+#. * using abbreviation for minutes, corresponding to 'min' in English
+#. * with appropriate plural variations
+#.
+#: src/utils.js:361
 #, javascript-format
-msgid "%f s"
-msgstr "%f שניות"
+#| msgid "%f min"
+msgid "%s min"
+msgid_plural "%s min"
+msgstr[0] "‫%s min"
+msgstr[1] "‫%s min"
+msgstr[2] "‫%s דק׳"
+msgstr[3] "‫%s דק׳‎"
+
+#. Translators: this is a duration of less than one minute
+#. * with seconds using an abbreviation for seconds, corresponding to
+#. * 's' in English with appropriate plural forms
+#.
+#: src/utils.js:367
+#, javascript-format
+msgid "%s s"
+msgid_plural "%s s"
+msgstr[0] "‏‫%s שנ׳"
+msgstr[1] "‏‫%s שנ׳"
+msgstr[2] "‏‫%s שנ׳"
+msgstr[3] "‏‫%s שנ׳"
 
 #. Translators: This is a distance measured in kilometers
-#: ../src/utils.js:352
+#: src/utils.js:378
 #, javascript-format
-msgid "%f km"
-msgstr "%f ק״מ"
+msgid "%s km"
+msgstr "‫%s ק״מ"
 
 #. Translators: This is a distance measured in meters
-#: ../src/utils.js:355
+#: src/utils.js:381
 #, javascript-format
-msgid "%f m"
-msgstr "%f מ׳"
+msgid "%s m"
+msgstr "‫%s מ׳"
 
 #. Translators: This is a distance measured in miles
-#: ../src/utils.js:363
+#: src/utils.js:389
 #, javascript-format
-msgid "%f mi"
-msgstr "%f מיל"
+msgid "%s mi"
+msgstr "‫%s מיל"
 
 #. Translators: This is a distance measured in feet
-#: ../src/utils.js:366
+#: src/utils.js:392
 #, javascript-format
-msgid "%f ft"
-msgstr "%f רגל"
+msgid "%s ft"
+msgstr "‫%s רגל"
+
+#: src/transitplugins/goMetro.js:60
+msgid "This plugin doesn't support latest arrival"
+msgstr "התוסף הזה לא תומך בהגעה המאוחרת ביותר"
+
+#: src/transitplugins/openTripPlanner.js:1190
+#, javascript-format
+msgid "Continue on %s"
+msgstr "להמשיך על %s"
+
+#: src/transitplugins/openTripPlanner.js:1192
+msgid "Continue"
+msgstr "להמשיך"
+
+#: src/transitplugins/openTripPlanner.js:1195
+#, javascript-format
+msgid "Turn left on %s"
+msgstr "לפנות שמאלה אל %s"
+
+#: src/transitplugins/openTripPlanner.js:1197
+msgid "Turn left"
+msgstr "לפנות שמאלה"
+
+#: src/transitplugins/openTripPlanner.js:1200
+#, javascript-format
+msgid "Turn slightly left on %s"
+msgstr "לסטות שמאלה אל %s"
+
+#: src/transitplugins/openTripPlanner.js:1202
+msgid "Turn slightly left"
+msgstr "לסטות שמאלה"
+
+#: src/transitplugins/openTripPlanner.js:1205
+#, javascript-format
+msgid "Turn sharp left on %s"
+msgstr "לפנות שמאלה בחדות אל %s"
+
+#: src/transitplugins/openTripPlanner.js:1207
+msgid "Turn sharp left"
+msgstr "לפנות שמאלה בחדות"
+
+#: src/transitplugins/openTripPlanner.js:1210
+#, javascript-format
+msgid "Turn right on %s"
+msgstr "לפנות ימינה אל %s"
+
+#: src/transitplugins/openTripPlanner.js:1212
+msgid "Turn right"
+msgstr "לפנות ימינה"
+
+#: src/transitplugins/openTripPlanner.js:1215
+#, javascript-format
+msgid "Turn slightly right on %s"
+msgstr "לסטות ימינה אל %s"
+
+#: src/transitplugins/openTripPlanner.js:1217
+msgid "Turn slightly right"
+msgstr "לסטות ימינה"
+
+#: src/transitplugins/openTripPlanner.js:1220
+#, javascript-format
+msgid "Turn sharp right on %s"
+msgstr "לפנות ימינה בחדות אל %s"
+
+#: src/transitplugins/openTripPlanner.js:1222
+msgid "Turn sharp right"
+msgstr "לפנות ימינה בחדות"
+
+#: src/transitplugins/openTripPlanner.js:1228
+#, javascript-format
+msgid "In the roundabout, take exit %s"
+msgstr "בכיכר, לצאת ביציאה ה%s"
+
+#: src/transitplugins/openTripPlanner.js:1230
+#, javascript-format
+msgid "In the roundabout, take exit to %s"
+msgstr "בכיכר, לצאת ביציאה אל %s"
+
+#: src/transitplugins/openTripPlanner.js:1232
+msgid "Take the roundabout"
+msgstr "להיכנס לכיכר"
+
+#: src/transitplugins/openTripPlanner.js:1236
+#, javascript-format
+msgid "Take the elevator and get off at %s"
+msgstr "להשתמש במעלית ולצאת בקומה %s"
+
+#: src/transitplugins/openTripPlanner.js:1238
+msgid "Take the elevator"
+msgstr "להשתמש במעלית"
+
+#: src/transitplugins/openTripPlanner.js:1242
+#, javascript-format
+msgid "Make a left u-turn onto %s"
+msgstr "לפנות פניית פרסה שמאלה אל %s"
+
+#: src/transitplugins/openTripPlanner.js:1244
+msgid "Make a left u-turn"
+msgstr "לפנות פניית פרסה שמאלה"
+
+#: src/transitplugins/openTripPlanner.js:1247
+#, javascript-format
+msgid "Make a right u-turn onto %s"
+msgstr "לפנות פניית פרסה ימינה אל %s"
+
+#: src/transitplugins/openTripPlanner.js:1249
+msgid "Make a right u-turn"
+msgstr "לפנות פניית פרסה ימינה"
+
+#~ msgid "Quit"
+#~ msgstr "יציאה"
+
+#~ msgid "Load Map Layer"
+#~ msgstr "טעינת שכבת מפה"
+
+#~ msgid "Open with another application"
+#~ msgstr "פתיחה באמצעות יישום אחר"
+
+#~ msgid "Check in here"
+#~ msgstr "הרשמה כאן"
+
+#~ msgid "Don't have an account?"
+#~ msgstr "אין לך חשבון?"
+
+#~ msgid "Press enter to search"
+#~ msgstr "יש ללחוץ Enter לחיפוש"
+
+#~ msgid "OK"
+#~ msgstr "אישור"
+
+#~ msgid "Population:"
+#~ msgstr "אוכלוסייה:"
+
+#~ msgid "Altitude:"
+#~ msgstr "גובה:"
+
+#~ msgid "Opening hours:"
+#~ msgstr "שעות פתיחה:"
+
+#~ msgid "Internet access:"
+#~ msgstr "גישת אינטרנט:"
+
+#~ msgid "Wheelchair access:"
+#~ msgstr "נגישות נכים:"
+
+#~ msgid "Phone:"
+#~ msgstr "טלפון:"
+
+#~ msgid "yes"
+#~ msgstr "יש"
+
+#~ msgid "limited"
+#~ msgstr "מוגבל"
+
+#~ msgid "no"
+#~ msgstr "אין"
+
+#~ msgid "designated"
+#~ msgstr "מובנה"
+
+#~ msgctxt "time range list"
+#~ msgid "%s %s"
+#~ msgstr "%s %s"
+
+#~ msgctxt "time range component"
+#~ msgid "%s %s"
+#~ msgstr "%s %s"
+
+#~ msgid "wired"
+#~ msgstr "אתרנט"
+
+#~ msgid "terminal"
+#~ msgstr "מסוף"
+
+#~ msgid "service"
+#~ msgstr "שרת"
+
+#~ msgid "%f h"
+#~ msgstr "%f שעות"
+
+#~ msgid "%f s"
+#~ msgstr "%f שניות"
+
+#~ msgid "%f km"
+#~ msgstr "%f ק״מ"
+
+#~ msgid "%f m"
+#~ msgstr "%f מ׳"
+
+#~ msgid "%f mi"
+#~ msgstr "%f מיל"
+
+#~ msgid "%f ft"
+#~ msgstr "%f רגל"
 
 #~ msgid "Country code: %s"
 #~ msgstr "קוד מדינה: %s"
