@@ -20,8 +20,8 @@
  */
 
 const GLib = imports.gi.GLib;
-const Champlain = imports.gi.Champlain;
 
+const BoundingBox = imports.boundingBox;
 const Service = imports.service;
 const TransitPlan = imports.transitPlan;
 const Utils = imports.utils;
@@ -168,10 +168,10 @@ var TransitRouter = class TransitRoute {
                     }
 
                     let [x1, y1, x2, y2] = bbox;
-                    let cbbox = new Champlain.BoundingBox({ bottom: x1,
-                                                            left: y1,
-                                                            top: x2,
-                                                            right: y2 });
+                    let cbbox = new BoundingBox.BoundingBox({ bottom: x1,
+                                                              left: y1,
+                                                              top: x2,
+                                                              right: y2 });
 
                     if (cbbox.covers(location.latitude,
                                      location.longitude)) {
