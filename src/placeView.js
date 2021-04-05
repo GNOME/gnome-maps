@@ -130,7 +130,7 @@ var PlaceView = GObject.registerClass({
 
         this._placeDetails = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL,
                                            visible: true});
-        this.content.add(this._placeDetails);
+        this.content.attach(this._placeDetails, 0, 0, 1, 1);
 
         if (this.place.isCurrentLocation) {
             this._populate(this.place);
@@ -583,7 +583,7 @@ var PlaceView = GObject.registerClass({
 
     // clear the view widgets to be able to re-populate an updated place
     _clearView() {
-        this._placeDetails.get_children().forEach((child) => child.destroy());
+        this._placeDetails.get_children().forEach((child) => this._placeDetails.remove(child));
     }
 
     // called when the place's location changes (e.g. for the current location)
