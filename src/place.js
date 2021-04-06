@@ -100,6 +100,12 @@ class Place extends Geocode.Place {
         this._nativeName = params.nativeName;
         delete params.nativeName;
 
+        this._osmKey = params.osmKey;
+        delete params.osmKey;
+
+        this._osmValue = params.osmValue;
+        delete params.osmValue;
+
         if (params.place) {
             params = { osm_id: params.place.osm_id,
                        osm_type: params.place.osm_type,
@@ -243,6 +249,22 @@ class Place extends Geocode.Place {
         this._nativeName = nativeName;
     }
 
+    /**
+     * Most important OSM tag for the place ('amenity', 'shop', and so on).
+     * This corresponds to the osm_key parameter in Photon geocoder
+     */
+    get osmKey() {
+        return this._osmKey;
+    }
+
+    /**
+     * Value for the most important OSM tag.
+     * This corresponds to the osm_value parameter in Photon geocoder.
+     */
+    get osmValue() {
+        return this._osmValue;
+    }
+
     toJSON() {
         let bounding_box = null;
 
@@ -260,6 +282,8 @@ class Place extends Geocode.Place {
 
         return { id: this.osm_id,
                  osm_type: this.osm_type,
+                 osmKey: this._osmKey,
+                 osmValue: this._osmValue,
                  place_type: this.place_type,
                  name: this.name,
                  nativeName: this.nativeName,
