@@ -22,11 +22,13 @@
 const _ = imports.gettext.gettext;
 
 const Geocode = imports.gi.GeocodeGlib;
+const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const GObject = imports.gi.GObject;
 
 const Location = imports.location;
 const Overpass = imports.overpass;
+const PlaceIcons = imports.placeIcons;
 const URLS = imports.urls;
 const Utils = imports.utils;
 
@@ -263,6 +265,14 @@ class Place extends Geocode.Place {
      */
     get osmValue() {
         return this._osmValue;
+    }
+
+    get icon() {
+        return Gio.Icon.new_for_string(this._getIconName());
+    }
+
+    _getIconName() {
+        return PlaceIcons.getIconForPlace(this);
     }
 
     toJSON() {
