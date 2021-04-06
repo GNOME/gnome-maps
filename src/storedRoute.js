@@ -21,7 +21,6 @@
  */
 
 const Champlain = imports.gi.Champlain;
-const Gio = imports.gi.Gio;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 
@@ -89,25 +88,6 @@ class StoredRoute extends Place.Place {
         return this._transportation;
     }
 
-    get icon() {
-        let transport = RouteQuery.Transportation;
-        let icon = Gio.Icon.new_for_string('route-button-symbolic');
-
-        switch(this._transportation) {
-        case transport.PEDESTRIAN:
-            icon = Gio.Icon.new_for_string('route-pedestrian-symbolic');
-            break;
-        case transport.CAR:
-            icon = Gio.Icon.new_for_string('route-car-symbolic');
-            break;
-        case transport.BIKE:
-            icon = Gio.Icon.new_for_string('route-bike-symbolic');
-            break;
-        }
-
-        return icon;
-    }
-
     get uniqueID() {
         return this._transportation + '-' + this.places.map(function(place) {
             return [place.osm_type, place.osm_id].join('-');
@@ -128,6 +108,17 @@ class StoredRoute extends Place.Place {
             }
         }
         return hasNull;
+    }
+
+    _getIconName() {
+        let transport = RouteQuery.Transportation;
+
+        switch (this._transportation) {
+            case transport.PEDESTRIAN: return 'route-pedestrian-symbolic';
+            case transport.BIKE:       return 'route-bike-symbolic';
+            case transport.CAR:        return 'route-car-symbolic';
+            default:                   return 'route-button-symbolic';
+        }
     }
 
     toJSON() {
