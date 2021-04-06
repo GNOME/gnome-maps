@@ -86,6 +86,12 @@ function parsePlace(latitude, longitude, properties) {
     if (properties.extent)
         params.bounding_box = _parseBoundingBox(properties.extent);
 
+    if (properties.osm_key)
+        params.osmKey = properties.osm_key;
+
+    if (properties.osm_value)
+        params.osmValue = properties.osm_value;
+
     return new Place.Place(params);
 }
 
