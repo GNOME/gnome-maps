@@ -53,8 +53,14 @@ function updatePlaceFromOSMObject(place, object) {
         /* only update the place's name from the OSM object if the OSM object
          * actually has a name set.
          * https://bugzilla.gnome.org/show_bug.cgi?id=762569
+         *
+         * also update the displayed localized name, if it was equal
+         * to the translated name to avoid the old name showing up as the
+         * native name in when editing places where they equal
          */
-        place.name = name;
+        if (place.name === place.nativeName)
+            place.name = name;
+        place.nativeName = name;
     }
     place.population = object.get_tag('population');
     place.website = object.get_tag('website');
