@@ -160,6 +160,8 @@ var Overpass = GObject.registerClass({
             properties.postcode = tags['addr:postcode'];
         if (tags['addr:city'])
             properties.city = tags['addr:city'];
+        if (tags['addr:country'])
+            properties.countrycode = tags['addr:country'];
 
         if (tags.place)
             this._setOsmKeyAndValue(properties, tags, 'place');
