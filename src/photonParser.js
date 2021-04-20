@@ -41,7 +41,8 @@ function parsePlace(latitude, longitude, properties) {
 
     let street = properties.street;
     let housenumber = properties.housenumber;
-    let countryCode = Utils.getCountryCodeForCoordinates(latitude, longitude);
+    let countryCode = properties.countrycode ??
+                      Utils.getCountryCodeForCoordinates(latitude, longitude);
     let streetAddress;
 
     if (housenumber && street) {
