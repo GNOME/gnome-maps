@@ -97,13 +97,9 @@ var Sidebar = GObject.registerClass({
         this._switchRoutingMode(Application.routeQuery.transportation);
         /* Enable/disable transit mode switch based on the presence of
          * public transit providers.
-         * For some reason, setting visible to false in the UI file and
-         * dynamically setting visible false here doesn't work, maybe because
-         * it's part of a radio group? As a workaround, just remove the button
-         * instead.
          */
-        if (!Application.routingDelegator.transitRouter.enabled)
-            this._modeTransitToggle.destroy();
+        this._modeTransitToggle.sensitive =
+            Application.routingDelegator.transitRouter.enabled;
     }
 
     _initTransportationToggles(pedestrian, bike, car, transit) {
