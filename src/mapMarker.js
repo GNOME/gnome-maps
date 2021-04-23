@@ -342,7 +342,6 @@ var MapMarker = GObject.registerClass({
             this.disconnect(parentSetSignalId);
             this.disconnect(dragMotionSignalId);
 
-            this._bubble.destroy();
             delete this._bubble;
         });
 
