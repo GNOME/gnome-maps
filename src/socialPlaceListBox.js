@@ -71,9 +71,12 @@ var SocialPlaceListBox = GObject.registerClass({
     }
 
     set matches(matches) {
-        this.forall(function(row) {
-            row.destroy();
-        });
+        let row = this.get_row_at_index(0);
+
+        while (row) {
+            this.remove(row);
+            row = this.get_row_at_index(0);
+        }
 
         this._matches = matches;
 
