@@ -462,10 +462,11 @@ var OSMEditDialog = GObject.registerClass({
         let recentTypes = OSMTypes.recentTypesStore.recentTypes;
 
         if (recentTypes.length > 0) {
-            let children = this._recentTypesListBox.get_children();
+            let row = this._recentTypesListBox.get_row_at_index(0);
 
-            for (let i = 0; i < children.length; i++) {
-                this._recentTypesListBox.remove(children[i]);
+            while (row) {
+                this._recentTypesListBox.remove(row);
+                row = this._recentTypesListBox.get_row_at_index(0);
             }
 
             this._recentTypesLabel.visible = true;
@@ -757,12 +758,12 @@ var OSMEditDialog = GObject.registerClass({
     /* update visible items in the "Add Field" popover */
     _updateAddFieldMenu() {
         /* clear old items */
-        let children = this._addFieldPopoverGrid.get_children();
         let hasAllFields = true;
+        let button = this._addFieldPopoverGrid.get_child_at(0, 0);
 
-        for (let i = 0; i < children.length; i++) {
-            let button = children[i];
-            button.destroy();
+        while (button) {
+            this._addFieldPopoverGrid.remove_row(0);
+            button = this._addFieldPopoverGrid.get_child_at(0, 0);
         }
 
         /* add selectable items */
