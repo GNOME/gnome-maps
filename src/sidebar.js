@@ -163,7 +163,7 @@ var Sidebar = GObject.registerClass({
 
         this._query.connect('point-removed', (obj, point, index) => {
             let row = this._entryList.get_row_at_index(index);
-            row.destroy();
+            this._entryList.remove(row);
         });
     }
 
