@@ -252,7 +252,7 @@ var LayersPopover = GObject.registerClass({
 
     _onRemoveClicked(row) {
         this._mapView.removeShapeLayer(row.shapeLayer);
-        if (this._layersListBox.get_children().length <= 0)
+        if (!this._layersListBox.get_row_at_index(0))
             this._layersListBox.hide();
     }
 
