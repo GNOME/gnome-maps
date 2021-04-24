@@ -129,7 +129,8 @@ var PlaceView = GObject.registerClass({
         this.loading = true;
 
         this._placeDetails = new Gtk.Box({ orientation: Gtk.Orientation.VERTICAL,
-                                           visible: true});
+                                           visible: true,
+                                           hexpand: true });
         this.content.add(this._placeDetails);
 
         if (this.place.isCurrentLocation) {
