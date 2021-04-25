@@ -84,12 +84,6 @@ var _osmPhoneRewriteFunc = function(text) {
     }
 };
 
-/* Make sure a website field is either empty or contains a valid HTTP or HTTPS
- * URL. */
-var _osmWebsiteValidateFunc = function(text) {
-    return text === "" || Utils.isValidWebsite(text);
-}
-
 /*
  * specification of OSM edit fields
  * name: the label for the edit field (translatable)
@@ -126,7 +120,7 @@ const OSM_FIELDS = [
         name: _("Website"),
         tag: 'website',
         type: EditFieldType.TEXT,
-        validate: this._osmWebsiteValidateFunc,
+        validate: Utils.isValidWebsite,
         validateError: _("This is not a valid URL. Make sure to include http:// or https://."),
         hint: _("The official website. Try to use the most basic form " +
                 "of a URL i.e. http://example.com instead of " +
@@ -630,7 +624,11 @@ var OSMEditDialog = GObject.registerClass({
 
     _validateTextEntry(fieldSpec, entry) {
         if (fieldSpec.validate) {
-            if (!fieldSpec.validate(entry.text)) {
+            /* also allow empty text without showing the validation warning,
+             * since we want to allow clearing out the text to unset a value
+             * (equivalent to using the delete button).
+             */
+            if (entry.text !== '' && !fieldSpec.validate(entry.text)) {
                 entry.get_style_context().add_class("warning");
             } else {
                 entry.get_style_context().remove_class("warning");
@@ -662,7 +660,8 @@ var OSMEditDialog = GObject.registerClass({
         if (fieldSpec.hint) {
             entry.secondary_icon_name = 'dialog-information-symbolic';
             entry.connect('icon-press', (entry, iconPos, event) => {
-                if (fieldSpec.validate && !fieldSpec.validate(entry.text)) {
+                if (fieldSpec.validate && entry.text !== '' &&
+                    !fieldSpec.validate(entry.text)) {
                     this._showHintPopover(entry, fieldSpec.validateError);
                 } else {
                     this._showHintPopover(entry, fieldSpec.hint);
