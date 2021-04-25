@@ -27,6 +27,12 @@ const Soup = imports.gi.Soup;
 const Format = imports.format;
 const Utils = imports.utils;
 
+/**
+ * Regex matching editions of Wikipedia, e.g. "en", "arz", pt-BR", "simple".
+ * See https://en.wikipedia.org/wiki/List_of_Wikipedias  "WP code".
+ */
+const WP_REGEX = /^[a-z][a-z][a-z]?(\-[a-z]+)?$|^simple$/;
+
 let _soupSession = null;
 function _getSoupSession() {
     if (_soupSession === null) {
@@ -50,6 +56,21 @@ function getArticle(wiki) {
 
 function getHtmlEntityEncodedArticle(wiki) {
     return GLib.markup_escape_text(wiki.split(':').splice(1).join(':'), -1);
+}
+
+/**
+ * Determine if a Wikipedia reference tag is valid
+ * (of the form "lang:Article title")
+ */
+function isValidWikipedia(wiki) {
+    let parts = wiki.split(':');
+
+    if (parts.length < 2)
+        return false;
+
+    let wpCode = parts[0];
+
+    return wpCode.match(WP_REGEX) !== null;
 }
 
 /*
