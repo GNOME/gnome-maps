@@ -427,7 +427,7 @@ var PlaceView = GObject.registerClass({
                            info: Translations.translateReligion(place.religion) });
         }
 
-        if (place.wiki) {
+        if (place.wiki && Wikipedia.isValidWikipedia(place.wiki)) {
             content.push({ type: 'wikipedia', info: '' });
         }
 
@@ -542,7 +542,7 @@ var PlaceView = GObject.registerClass({
         let content = this._createContent(place);
         this._attachContent(content);
 
-        if (place.wiki) {
+        if (place.wiki && Wikipedia.isValidWikipedia(place.wiki)) {
             this._requestWikipedia(place.wiki);
         }
 
