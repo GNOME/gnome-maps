@@ -126,8 +126,10 @@ var TransitRouter = class TransitRoute {
             return null;
     }
 
-    _getMatchingProvidersForLocation(location) {
-        let country = Utils.getCountryCodeForCoordinates(location.latitude,
+    _getMatchingProvidersForPlace(place) {
+        let location = place.location;
+        let country = place.country_code ??
+                      Utils.getCountryCodeForCoordinates(location.latitude,
                                                          location.longitude);
 
         let matchingProviders = [];
@@ -191,14 +193,13 @@ var TransitRouter = class TransitRoute {
      *         or null if no matching provider was found.
      */
     _getBestProviderForQuery() {
-        let startLocation = this._query.filledPoints[0].place.location;
-        let endLocation =
-            this._query.filledPoints.last().place.location;
+        let startPlace = this._query.filledPoints[0].place;
+        let endPlace = this._query.filledPoints.last().place;
 
         let matchingProvidersForStart =
-            this._getMatchingProvidersForLocation(startLocation);
+            this._getMatchingProvidersForPlace(startPlace);
         let matchingProvidersForEnd =
-            this._getMatchingProvidersForLocation(endLocation);
+            this._getMatchingProvidersForPlace(endPlace);
 
         let matchingProviders = [];
 
