@@ -36,6 +36,7 @@ const OSMTypes = imports.osmTypes;
 const OSMTypeSearchEntry = imports.osmTypeSearchEntry;
 const OSMUtils = imports.osmUtils;
 const Utils = imports.utils;
+const Wikipedia = imports.wikipedia;
 
 var Response = {
     UPLOADED: 0,
@@ -139,6 +140,7 @@ const OSM_FIELDS = [
         name: _("Wikipedia"),
         tag: 'wikipedia',
         type: EditFieldType.TEXT,
+        validate: Wikipedia.isValidWikipedia,
         rewriteFunc: this._osmWikipediaRewriteFunc,
         hint: _("The format used should include the language code " +
                 "and the article title like “en:Article title”.")
