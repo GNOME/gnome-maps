@@ -215,6 +215,10 @@ var Overpass = GObject.registerClass({
             place.website = element.tags['contact:website'];
         if (element.tags.website)
             place.website = element.tags.website;
+        if (element.tags['contact:email'])
+            place.email = element.tags['contact:email'];
+        if (element.tags.email)
+            place.email = element.tags.email;
         if (element.tags['contact:phone'])
             place.phone = element.tags['contact:phone'];
         if (element.tags.phone)
