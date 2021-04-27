@@ -38,6 +38,7 @@ function main() {
     prettyDistanceTest();
     normalizeStringTest();
     validWebsiteTest();
+    validEmailTest();
     firstToLocaleUpperCaseTest();
 }
 
@@ -110,6 +111,14 @@ function validWebsiteTest() {
     JsUnit.assertEquals(false, Utils.isValidWebsite("ftp://gnome.org"));
     JsUnit.assertEquals(false, Utils.isValidWebsite("www.gnome.org"));
     JsUnit.assertEquals(false, Utils.isValidWebsite("https:gnome.org"));
+}
+
+function validEmailTest() {
+    JsUnit.assertTrue(Utils.isValidEmail('mail@example.com'));
+    JsUnit.assertTrue(Utils.isValidEmail('information.here@company.store'));
+    JsUnit.assertTrue(Utils.isValidEmail('我買@屋企.香港'));
+    JsUnit.assertFalse(Utils.isValidEmail('mailto:mail@example.com'));
+    JsUnit.assertFalse(Utils.isValidEmail('mail@no-tld'));
 }
 
 function firstToLocaleUpperCaseTest() {

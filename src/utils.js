@@ -42,6 +42,9 @@ const IMPERIAL_LOCALES = ['unm_US', 'es_US', 'es_PR', 'en_US', 'yi_US'];
 // Matches all unicode stand-alone accent characters
 const ACCENTS_REGEX = /[\u0300-\u036F]/g;
 
+// Regex matching e-mail addresses
+const EMAIL_REGEX=/^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
 const _integerFormat = new Intl.NumberFormat([], { maximumFractionDigits: 0 });
 const _integerTwoDigitFormat =
     new Intl.NumberFormat([], { minimumIntegerDigits: 2,
@@ -466,6 +469,15 @@ function isValidWebsite(website) {
         return false;
     }
     return website.startsWith("http://") || website.startsWith("https://");
+}
+
+/* Determine whether a string is a valid e-mail address. */
+function isValidEmail(email) {
+    // if it starts with 'mailto:', it's probably a mistake copy-pasting a URI
+    if (email.startsWith('mailto:'))
+        return false;
+
+    return email.match(EMAIL_REGEX) !== null;
 }
 
 /* Return string with first character in upper case according the rules
