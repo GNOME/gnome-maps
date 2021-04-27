@@ -113,8 +113,8 @@ const WRITING_SYSTEMS = [
     },
     // KHMER
     {
-        languages: new Set('km'),
-        countries: new Set('KH')
+        languages: new Set(['km']),
+        countries: new Set(['KH'])
     },
     // KOREAN
     {
