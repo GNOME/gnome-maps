@@ -57,6 +57,9 @@ class Place extends Geocode.Place {
         this._website = params.website;
         delete params.website;
 
+        this._email = params.email;
+        delete params.email;
+
         this._phone = params.phone;
         delete params.phone;
 
@@ -165,6 +168,14 @@ class Place extends Geocode.Place {
 
     get website() {
         return this._website;
+    }
+
+    set email(v) {
+        this._email = v;
+    }
+
+    get email() {
+        return this._email;
     }
 
     set phone(v) {
@@ -313,6 +324,7 @@ class Place extends Geocode.Place {
                  continent: this.continent,
                  population: this.population,
                  website: this.website,
+                 email: this.email,
                  phone: this.phone,
                  wiki: this.wiki,
                  wheelchair: this.wheelchair,
