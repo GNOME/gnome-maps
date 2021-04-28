@@ -297,6 +297,13 @@ var PlaceView = GObject.registerClass({
             content.push(phone);
         }
 
+        if (place.email && Utils.isValidEmail(place.email)) {
+            content.push({ label: _("E-mail"),
+                           icon: 'mail-unread-symbolic',
+                           info: GLib.markup_escape_text(place.email, -1),
+                           linkUrl: 'mailto:%s'.format(place.email) });
+        }
+
         if (place.openingHours) {
             content.push({ label: _("Opening hours"),
                            icon: 'emoji-recent-symbolic',
