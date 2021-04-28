@@ -64,6 +64,7 @@ function updatePlaceFromOSMObject(place, object) {
     }
     place.population = object.get_tag('population');
     place.website = object.get_tag('website');
+    place.email = object.get_tag('email');
     place.phone = object.get_tag('phone');
     place.wiki = object.get_tag('wikipedia');
     place.openingHours = object.get_tag('opening_hours');
