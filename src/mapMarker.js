@@ -335,9 +335,6 @@ var MapMarker = GObject.registerClass({
             this._bubble.destroy();
             delete this._bubble;
         });
-
-        this.bubble.connect('size-allocate',
-                            () => this._positionBubble(this.bubble));
     }
 
     _isInsideView() {
