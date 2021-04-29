@@ -78,6 +78,9 @@ class Place extends Geocode.Place {
         this._toilets = params.toilets;
         delete params.toilets;
 
+        this._takeaway = params.takeaway;
+        delete params.takeaway;
+
         this._note = params.note;
         delete params.note;
 
@@ -226,6 +229,14 @@ class Place extends Geocode.Place {
         return this._toilets;
     }
 
+    set takeaway(v) {
+        this._takeaway = v;
+    }
+
+    get takeaway() {
+        return this._takeaway;
+    }
+
     set note(v) {
         this._note = v;
     }
@@ -332,6 +343,7 @@ class Place extends Geocode.Place {
                  internetAccess: this.internetAccess,
                  religion: this.religion,
                  toilets: this.toilets,
+                 takeaway: this.takeaway,
                  note: this.note };
     }
 
