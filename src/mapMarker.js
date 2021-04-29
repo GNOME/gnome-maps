@@ -240,23 +240,13 @@ var MapMarker = GObject.registerClass({
         let bubbleSize = bubble.get_preferred_size()[1];
 
         // Set bubble position left/right if it's close to a vertical map edge
-        if (pos.x + pos.width / 2 + bubbleSize.width / 2 >= mapSize.width) {
+        if (pos.x + pos.width / 2 + bubbleSize.width / 2 >= mapSize.width)
             bubble.position = Gtk.PositionType.LEFT;
-        } else if (pos.x + pos.width / 2 - bubbleSize.width / 2 <= 0) {
+        else if (pos.x + pos.width / 2 - bubbleSize.width / 2 <= 0)
             bubble.position = Gtk.PositionType.RIGHT;
         // Avoid bubble to cover header bar if the marker is close to the top map edge
-        } else if (pos.y - bubbleSize.height <= 0) {
-            /* position bubble below marker if there's enough room,
-             * otherwise choose left or right pointing away from the edge
-             * closest to the marker
-             */
-            if (mapSize.height - pos.y >= bubbleSize.height)
-                bubble.position = Gtk.PositionType.BOTTOM;
-            else if (x >= mapSize.width / 2)
-                bubble.position = Gtk.PositionType.LEFT;
-            else
-                bubble.position = Gtk.PositionType.RIGHT;
-        }
+        else if (pos.y - bubbleSize.height <= 0)
+            bubble.position = Gtk.PositionType.BOTTOM;
     }
 
     _hideBubbleOn(signal, duration) {
