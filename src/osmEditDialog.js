@@ -85,6 +85,21 @@ var _osmPhoneRewriteFunc = function(text) {
     }
 };
 
+/* Reformat an e-mail address if it it looks like a mailto: URI
+ * strip off the leading mailto: protocol string and trailing parameters,
+ * following a ?
+ * otherwise return the string unmodified
+ */
+var _osmEmailRewriteFunc = function(text) {
+    if (GLib.uri_parse_scheme(text) === 'mailto') {
+        let afterMailto = text.replace('mailto:', '');
+
+        return Soup.uri_decode(afterMailto.split('?')[0]);
+    } else {
+        return text;
+    }
+}
+
 /*
  * specification of OSM edit fields
  * name: the label for the edit field (translatable)
@@ -135,6 +150,16 @@ const OSM_FIELDS = [
         hint: _("Phone number. Use the international format, " +
                 "starting with a + sign. Beware of local privacy " +
                 "laws, especially for private phone numbers.")
+    },
+    {
+        name: _("E-mail"),
+        tag: 'email',
+        type: EditFieldType.TEXT,
+        validate: Utils.isValidEmail,
+        rewriteFunc: this._osmEmailRewriteFunc,
+        validateError: _("This is not a valid e-mail address. Make sure to not include the mailto: protocol prefix."),
+        hint: _("Contact e-mail address for inquiries." +
+                "Add only email addresses that are intended to be publicly used.")
     },
     {
         name: _("Wikipedia"),
