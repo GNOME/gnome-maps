@@ -237,6 +237,8 @@ var Overpass = GObject.registerClass({
             place.religion = element.tags.religion
         if (element.tags.toilets)
             place.toilets = element.tags.toilets;
+        if (element.tags.takeaway)
+            place.takeaway = element.tags.takeaway;
         if (element.tags.note)
             place.note = element.tags.note;
     }
