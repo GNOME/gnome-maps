@@ -297,6 +297,16 @@ class Place extends Geocode.Place {
         return PlaceIcons.getIconForPlace(this);
     }
 
+    /**
+     * This property is true for places related to eating and/or drinking,
+     * such as restaurants, cafes, pubs and similar
+     */
+    get isEatingAndDrinking() {
+        return this._osmKey === 'amenity' &&
+               ['bar', 'biergarten', 'cafe', 'fast_food', 'food_court',
+                'restaurant', 'pub'].indexOf(this._osmValue) !== -1;
+    }
+
     toJSON() {
         let bounding_box = null;
 
