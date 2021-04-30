@@ -31,6 +31,7 @@ const Application = imports.application;
 const ContactPlace = imports.contactPlace;
 const Overpass = imports.overpass;
 const Place = imports.place;
+const PlaceIcons = imports.placeIcons;
 const PlaceViewImage = imports.placeViewImage;
 const PlaceButtons = imports.placeButtons;
 const PlaceFormatter = imports.placeFormatter;
@@ -302,6 +303,36 @@ var PlaceView = GObject.registerClass({
                            icon: 'mail-unread-symbolic',
                            info: GLib.markup_escape_text(place.email, -1),
                            linkUrl: 'mailto:%s'.format(place.email) });
+        }
+
+        if (place.isEatingAndDrinking) {
+            switch (place.takeaway) {
+                case 'yes':
+                    /* Translators:
+                     * The establishment offers customers to purchase meals
+                     * (or similar) to be consumed elsewhere
+                     */
+                    content.push({ info: _("Offers takeaway"),
+                                   icon: PlaceIcons.getIconForPlace(place) });
+                    break;
+                case 'no':
+                    /* Translators:
+                     * The establishment only offers customers to purchase
+                     * meals (or similar) to be consumed on-premise.
+                     */
+                    content.push({ info: _("Does not offer takeaway"),
+                                   icon: PlaceIcons.getIconForPlace(place) });
+                    break;
+                case 'only':
+                    /* Translators:
+                     * The establishment only offers customers to purchase
+                     * meals (or similar) to be consumed elsewhere. E.g.
+                     * there is no seating on-premise for eating/drinking
+                     */
+                    content.push({ info: _("Only offers takeaway"),
+                                   icon: PlaceIcons.getIconForPlace(place) });
+                    break;
+            }
         }
 
         if (place.openingHours) {
