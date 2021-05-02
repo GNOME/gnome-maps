@@ -210,6 +210,14 @@ const OSM_FIELDS = [
                   ['service', _("Service")]]
     },
     {
+        name: _("Takeaway"),
+        tag:  'takeaway',
+        type: EditFieldType.COMBO,
+        options: [['yes', _("Yes")],
+                  ['no', _("No")],
+                  ['only', _("Only")]]
+    },
+    {
         name: _("Religion"),
         tag: 'religion',
         type: EditFieldType.COMBO,
