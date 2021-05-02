@@ -72,6 +72,7 @@ function updatePlaceFromOSMObject(place, object) {
     place.toilets = object.get_tag('toilets');
     place.internetAccess = object.get_tag('internet_access');
     place.religion = object.get_tag('religion');
+    place.takeaway = object.get_tag('takeaway');
 
     let altitude = object.get_tag('ele');
 
