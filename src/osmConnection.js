@@ -364,9 +364,15 @@ var OSMConnection = class OSMConnection {
 
     _onPasswordStored(result, callback) {
         let res = false;
-        if (result)
-            res = Secret.password_store_finish(result);
-        callback(res);
+        let errorMessage;
+        if (result) {
+            try {
+                res = Secret.password_store_finish(result);
+            } catch (error) {
+                errorMessage = error.message;
+            }
+        }
+        callback(res, errorMessage);
     }
 
     signOut() {

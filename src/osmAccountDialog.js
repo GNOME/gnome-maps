@@ -25,6 +25,7 @@ const Gtk = imports.gi.Gtk;
 const WebKit2 = imports.gi.WebKit2;
 
 const Application = imports.application;
+const Utils = imports.utils;
 
 var Response = {
     SIGNED_IN: 0
@@ -181,7 +182,7 @@ var OSMAccountDialog = GObject.registerClass({
             this._performVerification();
     }
 
-    _onOAuthAccessTokenRequested(success) {
+    _onOAuthAccessTokenRequested(success, errorMessage) {
         if (success) {
             /* update the username label */
             this._signedInUserLabel.label = Application.osmEdit.username;
@@ -197,6 +198,8 @@ var OSMAccountDialog = GObject.registerClass({
                 this._stack.visible_child_name = 'logged-in';
             }
         } else {
+            if (errorMessage)
+                Utils.showDialog(errorMessage, Gtk.MessageType.ERROR, this);
             /* switch back to the sign-in view, and show a label indicating
                that verification failed */
             this._resetPasswordLabel.visible = false;
