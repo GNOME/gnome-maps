@@ -4,7 +4,7 @@ tests = ['addressTest', 'boundingBoxTest', 'colorTest', 'osmNamesTest',
 
 foreach test : tests
   script_conf = configuration_data()
-  script_conf.set('GJS', find_program('gjs').path())
+  script_conf.set('GJS', gjs.path())
   script_conf.set('PACKAGE_VERSION', version)
   script_conf.set('libdir', libdir)
   script_conf.set('prefix', prefix)
@@ -19,7 +19,7 @@ foreach test : tests
 endforeach
 
 foreach test : tests
-  test(test, find_program('gjs'),
+  test(test, gjs,
        args: ['-I', meson.source_root() + '/src/', '-I',
               meson.source_root() + '/tests/',
               'tests/@0@'.format(test)],

@@ -49,6 +49,8 @@ top_inc = include_directories('.')
 
 cc = meson.get_compiler('c')
 
+gjs = find_program('gjs')
+
 subdir('po')
 subdir('src')
 subdir('lib')
