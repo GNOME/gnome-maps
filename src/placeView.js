@@ -455,9 +455,29 @@ var PlaceView = GObject.registerClass({
          * compare to an impossibly low altitude to see if one is set */
         if (place.location.altitude > -1000000000.0) {
             let alt  = place.location.altitude;
+            let info;
+
+            if (alt > 0) {
+                info = Utils.prettyDistance(alt, true);
+            } else if (alt < 0) {
+                /**
+                 * Translators: this is a label indicating an altitude below
+                 * sea level, where the %s placeholder is the altitude relative
+                 * to mean sea level in the "negative direction"
+                 */
+                info = _("%s below sea level").
+                            format(Utils.prettyDistance(-alt, true));
+            } else {
+                /**
+                 * Translators: this indicates a place is located at (or very
+                 * close to) mean sea level
+                 */
+                info = _("At sea level");
+            }
+
             content.push({ label: _("Altitude"),
                            icon: 'mountain-symbolic',
-                           info: Utils.prettyDistance(alt, true) });
+                           info: info });
         }
 
         if (place.religion) {
