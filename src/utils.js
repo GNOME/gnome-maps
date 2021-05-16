@@ -396,6 +396,19 @@ function prettyDistance(distance, noRound) {
     }
 }
 
+/**
+ * Format a population number so that greater than or equal to a million and
+ * evenly divisiable by 100k are displayed a locale-specific compact form
+ * to handle estimated values without showing lots of zeros.
+ * Other values are formatted in full.
+ */
+function prettyPopulation(population) {
+    let notation = population >= 1000000 && population % 100000 === 0 ?
+                   'compact' : 'standard';
+
+    return population.toLocaleString(undefined, { notation: notation });
+}
+
 function uriSchemeSupported(scheme) {
     let apps = Gio.AppInfo.get_all();
     let prefix = 'x-scheme-handler/';

@@ -36,6 +36,7 @@ function main() {
     getAccuracyDescriptionTest();
     prettyTimeTest();
     prettyDistanceTest();
+    prettyPopulationTest();
     normalizeStringTest();
     validWebsiteTest();
     validEmailTest();
@@ -96,6 +97,14 @@ function prettyDistanceTest() {
     JsUnit.assertEquals('1000 ft', Utils.prettyDistance(304.8, false));
     JsUnit.assertEquals('1 mi', Utils.prettyDistance(1610, false));
     JsUnit.assertEquals('5282 ft', Utils.prettyDistance(1610, true));
+}
+
+function prettyPopulationTest() {
+    JsUnit.assertEquals('123456', Utils.prettyPopulation(123456));
+    JsUnit.assertEquals('1234567', Utils.prettyPopulation(1234567));
+    JsUnit.assertEquals('200000', Utils.prettyPopulation(200000));
+    JsUnit.assertEquals('1M', Utils.prettyPopulation(1000000));
+    JsUnit.assertEquals('2.1M', Utils.prettyPopulation(2100000));
 }
 
 function normalizeStringTest() {
