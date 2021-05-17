@@ -448,7 +448,7 @@ var PlaceView = GObject.registerClass({
              */
             content.push({ label: _("Population"),
                            icon: 'system-users-symbolic',
-                           info: parseInt(place.population).toLocaleString() });
+                           info: Utils.prettyPopulation(parseInt(place.population)) });
         }
 
         /* The default value for a place's altitude is -G_MAXDOUBLE, so we can
