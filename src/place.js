@@ -341,7 +341,7 @@ class Place extends Geocode.Place {
                  state: this.state,
                  county: this.county,
                  country: this.country,
-                 country_code: this.contry_code,
+                 country_code: this.country_code,
                  continent: this.continent,
                  population: this.population,
                  website: this.website,
