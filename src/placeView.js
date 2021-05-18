@@ -218,6 +218,12 @@ var PlaceView = GObject.registerClass({
         this._title.label = formatter.title;
         this._contactAvatar.text = formatter.title;
 
+        /* hide native name by default, so that it is only shown when it
+         * should, in case it changed when re-applying changes from Overpass.
+         * This could happen if the locale changed since last run.
+         */
+        this._nativeName.visible = false;
+
         /* show native name unless it's equal to the localized name, or
          * if the localized name is a substring of the native name, as can
          * be the case in e.g. duo-lingual native names, such as is used in
