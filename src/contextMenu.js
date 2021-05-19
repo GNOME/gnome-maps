@@ -101,7 +101,7 @@ var ContextMenu = GObject.registerClass({
         let location = new Location.Location({ latitude: this._latitude,
                                                longitude: this._longitude,
                                                accuracy: 0 });
-        let place = new Place.Place({ location: location });
+        let place = new Place.Place({ location: location, store: false });
 
         query.points[0].place = place;
     }
@@ -111,7 +111,7 @@ var ContextMenu = GObject.registerClass({
         let location = new Location.Location({ latitude: this._latitude,
                                                longitude: this._longitude,
                                                accuracy: 0 });
-        let place = new Place.Place({ location: location });
+        let place = new Place.Place({ location: location, store: false });
 
         query.points.last().place = place;
     }
@@ -121,7 +121,7 @@ var ContextMenu = GObject.registerClass({
         let location = new Location.Location({ latitude: this._latitude,
                                                longitude: this._longitude,
                                                accuracy: 0 });
-        let place = new Place.Place({ location: location });
+        let place = new Place.Place({ location: location, store: false });
 
         query.addPoint(-1).place = place;
     }
