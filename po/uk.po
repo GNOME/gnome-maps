@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2021-05-08 21:38+0000\n"
-"PO-Revision-Date: 2021-05-09 13:03+0300\n"
+"POT-Creation-Date: 2021-05-18 20:51+0000\n"
+"PO-Revision-Date: 2021-05-20 12:40+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -1047,7 +1047,7 @@ msgstr "Офіційна назва. Це зазвичай перше, що по
 msgid "Address"
 msgstr "Адреса"
 
-#: src/osmEditDialog.js:136 src/placeView.js:274
+#: src/osmEditDialog.js:136 src/placeView.js:280
 msgid "Website"
 msgstr "Сайт"
 
@@ -1078,29 +1078,29 @@ msgstr ""
 "плюса (+). Будь обачні з місцевим законами щодо конфіденційності, особливо "
 "особистими номерами."
 
-#: src/osmEditDialog.js:155 src/placeView.js:302
-#| msgid "Email"
+#: src/osmEditDialog.js:155 src/placeView.js:308
 msgid "E-mail"
 msgstr "Ел. пошта"
 
 #: src/osmEditDialog.js:160
-#| msgid "This is not a valid URL. Make sure to include http:// or https://."
 msgid ""
 "This is not a valid e-mail address. Make sure to not include the mailto: "
 "protocol prefix."
 msgstr ""
-"Ця адреса електронної пошти є некоректною. Не використовуйте префікс протоколу mailto:."
+"Ця адреса електронної пошти є некоректною. Не використовуйте префікс "
+"протоколу mailto:."
 
 #: src/osmEditDialog.js:161
 msgid ""
 "Contact e-mail address for inquiries.Add only email addresses that are "
 "intended to be publicly used."
 msgstr ""
-"Адреса електронної пошти для довідкової інформації. Додавайте лише адреси, які призначено для загального доступу."
+"Адреса електронної пошти для довідкової інформації. Додавайте лише адреси, "
+"які призначено для загального доступу."
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:165 src/placeView.js:619
+#: src/osmEditDialog.js:165 src/placeView.js:645
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -1110,7 +1110,7 @@ msgid ""
 "“en:Article title”."
 msgstr "Формат слід містити код мови і назву статті, як-от «uk:Назва статті»."
 
-#: src/osmEditDialog.js:174 src/placeView.js:339
+#: src/osmEditDialog.js:174 src/placeView.js:345
 msgid "Opening hours"
 msgstr "Робочий час"
 
@@ -1124,11 +1124,11 @@ msgstr "Довідку щодо формату можна знати за пос
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:182 src/placeView.js:449
+#: src/osmEditDialog.js:182 src/placeView.js:455
 msgid "Population"
 msgstr "Населення"
 
-#: src/osmEditDialog.js:187 src/placeView.js:458
+#: src/osmEditDialog.js:187 src/placeView.js:484
 msgid "Altitude"
 msgstr "Висота"
 
@@ -1180,13 +1180,11 @@ msgstr "Служба"
 
 #: src/osmEditDialog.js:213
 msgid "Takeaway"
-msgstr ""
-"Перекусна"
+msgstr "Перекусна"
 
 #: src/osmEditDialog.js:218
 msgid "Only"
-msgstr ""
-"Лише"
+msgstr "Лише"
 
 #: src/osmEditDialog.js:221
 msgid "Religion"
@@ -1319,16 +1317,16 @@ msgstr "Місце без назви"
 msgid "Failed to parse Geo URI"
 msgstr "Не вдалося розібрати геопосилання"
 
-#: src/placeView.js:262
+#: src/placeView.js:268
 msgid "Coordinates"
 msgstr "Координати"
 
-#: src/placeView.js:266
+#: src/placeView.js:272
 msgid "Accuracy"
 msgstr "Точність"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:269
+#: src/placeView.js:275
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Точність: %s"
@@ -1339,7 +1337,7 @@ msgstr "Точність: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:288
+#: src/placeView.js:294
 msgid "Phone number"
 msgstr "Номер телефону"
 
@@ -1347,34 +1345,31 @@ msgstr "Номер телефону"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:315
+#: src/placeView.js:321
 msgid "Offers takeaway"
-msgstr ""
-"Пропонує попоїсти"
+msgstr "Пропонує попоїсти"
 
 #. Translators:
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:323
+#: src/placeView.js:329
 msgid "Does not offer takeaway"
-msgstr ""
-"Не пропонує попоїсти"
+msgstr "Не пропонує попоїсти"
 
 #. Translators:
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:332
+#: src/placeView.js:338
 msgid "Only offers takeaway"
-msgstr ""
-"Пропонує лише попоїсти"
+msgstr "Пропонує лише попоїсти"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:349
+#: src/placeView.js:355
 msgid "Public internet access"
 msgstr "Громадський доступ до інтернету"
 
@@ -1382,50 +1377,50 @@ msgstr "Громадський доступ до інтернету"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:358
+#: src/placeView.js:364
 msgid "No internet access"
 msgstr "Немає доступу до інтернету"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:366
+#: src/placeView.js:372
 msgid "Public Wi-Fi"
 msgstr "Громадський Wi-Fi"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:374
+#: src/placeView.js:380
 msgid "Wired internet access"
 msgstr "Дротовий доступ до інтернету"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:382
+#: src/placeView.js:388
 msgid "Computers available for use"
 msgstr "Є доступ до комп'ютерів"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:390
+#: src/placeView.js:396
 msgid "Internet assistance available"
 msgstr "Доступна інтернет-допомога"
 
-#: src/placeView.js:396
+#: src/placeView.js:402
 msgid "No toilets available"
 msgstr "Немає туалетів"
 
-#: src/placeView.js:399
+#: src/placeView.js:405
 msgid "Toilets available"
 msgstr "Є туалети"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:408
+#: src/placeView.js:414
 msgid "Wheelchair accessible"
 msgstr "Доступне для візків"
 
@@ -1434,7 +1429,7 @@ msgstr "Доступне для візків"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:418
+#: src/placeView.js:424
 msgid "Limited wheelchair accessibility"
 msgstr "Обмежена доступність для візків"
 
@@ -1442,7 +1437,7 @@ msgstr "Обмежена доступність для візків"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:427
+#: src/placeView.js:433
 msgid "Not wheelchair accessible"
 msgstr "Недоступне для візків"
 
@@ -1451,11 +1446,31 @@ msgstr "Недоступне для візків"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:437
+#: src/placeView.js:443
 msgid "Designated for wheelchair users"
 msgstr "Позначено для користувачів візків"
 
-#: src/placeView.js:464
+#. *
+#. * Translators: this is a label indicating an altitude below
+#. * sea level, where the %s placeholder is the altitude relative
+#. * to mean sea level in the "negative direction"
+#.
+#: src/placeView.js:474
+#, javascript-format
+msgid "%s below sea level"
+msgstr ""
+"%s під рівнем моря"
+
+#. *
+#. * Translators: this indicates a place is located at (or very
+#. * close to) mean sea level
+#.
+#: src/placeView.js:481
+msgid "At sea level"
+msgstr ""
+"На рівні моря"
+
+#: src/placeView.js:490
 msgid "Religion:"
 msgstr "Релігія:"
 
