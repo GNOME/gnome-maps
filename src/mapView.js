@@ -436,6 +436,8 @@ var MapView = GObject.registerClass({
                 this.view.add_child(this._attribution);
             }
 
+            this._attribution.setSource(this.view.map_source);
+
             Application.settings.set('map-type', mapType);
         } else {
             let renderer = new Champlain.ImageRenderer();
