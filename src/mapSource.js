@@ -30,7 +30,7 @@ const System = imports.system;
 const Service = imports.service;
 const Utils = imports.utils;
 
-let _attributionImage = null;
+let _attributionImages = [];
 
 const _FILE_CACHE_SIZE_LIMIT = (10 * 1024 * 1024); /* 10Mb */
 const _MEMORY_CACHE_SIZE_LIMIT = 100; /* number of tiles */
@@ -46,31 +46,49 @@ class AttributionLogo extends GtkClutter.Actor {
     _init(view) {
         super._init();
 
-        if (_attributionImage)
-            this.contents = _attributionImage;
-        else
-            return;
-
+        this._view = view;
         this._rtl = Gtk.get_locale_direction() === Gtk.TextDirection.RTL;
-        view.connect('notify::width', () => this._updatePosition(view));
-        view.connect('notify::height', () => this._updatePosition(view));
+        view.connect('notify::width', () => this._updatePosition());
+        view.connect('notify::height', () => this._updatePosition());
 
         this._updatePosition(view);
     }
 
-    _updatePosition(view) {
-        let width = _attributionImage.pixbuf.width;
-        let height = _attributionImage.pixbuf.height;
-        let x = view.width  - width  - _LOGO_PADDING_X;
-        /* TODO: ideally the attribution logo should be aligned to the left
-         * side in RTL locales, but I couldn't get that working with Clutter
-         * actor positioning, so adjust the padding to fit above the scale
-         * for now
-         */
-        let y = view.height - height -
-                (this._rtl ? _LOGO_PADDING_Y_RTL : _LOGO_PADDING_Y);
+    setSource(source) {
+        this._id = source.get_id();
 
-        this.set_position(x, y);
+        let bin = this.get_widget();
+
+        if (bin.get_child())
+            bin.remove(bin.get_child());
+
+        if (_attributionImages[source.get_id()]) {
+            bin.add(_attributionImages[source.get_id()]);
+            bin.visible = true;
+        } else {
+            bin.visible = false;
+        }
+
+        this._updatePosition();
+    }
+
+    _updatePosition() {
+        let image = _attributionImages[this._id];
+
+        if (image) {
+            let width = image.pixbuf.width;
+            let height = image.pixbuf.height;
+            let x = this._view.width  - width  - _LOGO_PADDING_X;
+            /* TODO: ideally the attribution logo should be aligned to the left
+             * side in RTL locales, but I couldn't get that working with Clutter
+             * actor positioning, so adjust the padding to fit above the scale
+             * for now
+             */
+            let y = this._view.height - height -
+                    (this._rtl ? _LOGO_PADDING_Y_RTL : _LOGO_PADDING_Y);
+
+            this.set_position(x, y);
+        }
     }
 });
 
@@ -78,12 +96,13 @@ function _updateAttributionImage(source) {
     if (!source.attribution_logo || source.attribution_logo === "")
         return;
 
-    if (!_attributionImage)
-        _attributionImage = new Gtk.Image();
+    if (!_attributionImages[source.id])
+        _attributionImages[source.id] = new Gtk.Image({ visible: true });
 
     let data = GLib.base64_decode(source.attribution_logo);
     let stream = Gio.MemoryInputStream.new_from_bytes(GLib.Bytes.new(data));
-    _attributionImage.pixbuf = GdkPixbuf.Pixbuf.new_from_stream(stream, null);
+    _attributionImages[source.id].pixbuf =
+        GdkPixbuf.Pixbuf.new_from_stream(stream, null);
 }
 
 function _createTileSource(source) {
