@@ -36,7 +36,7 @@ const PlaceStore = imports.placeStore;
 const Utils = imports.utils;
 
 /* Maximum width of the popover content before it's forced to wrap */
-const MAX_CONTENT_WIDTH = 300;
+const MAX_CONTENT_WIDTH = 350;
 /* Margin between the height of the main window and the height of the popover
    contents */
 const HEIGHT_MARGIN = 100;
