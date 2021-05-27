@@ -322,7 +322,7 @@ var MapView = GObject.registerClass({
         this._mapType = mapType;
 
         if (mapType !== MapType.LOCAL) {
-            if (mapType === MapType.AERIAL)
+            if (mapType === MapType.AERIAL && Service.getService().tiles.aerial)
                 this.view.map_source = MapSource.createAerialSource();
             else
                 this.view.map_source = MapSource.createStreetSource();
