@@ -417,15 +417,17 @@ var MapView = GObject.registerClass({
         this._mapType = mapType;
 
         if (mapType !== MapType.LOCAL) {
-            if (mapType === MapType.AERIAL) {
-                if (Service.getService().tiles.hybridAerial &&
+            let tiles = Service.getService().tiles;
+
+            if (mapType === MapType.AERIAL && tiles.aerial) {
+                if (tiles.hybridAerial &&
                     Application.settings.get('hybrid-aerial')) {
                     this.view.map_source = MapSource.createHybridAerialSource();
                 } else {
                     this.view.map_source = MapSource.createAerialSource();
                 }
             } else {
-                if (Service.getService().tiles.streetDark &&
+                if (tiles.streetDark &&
                     Application.settings.get('night-mode')) {
                     this.view.map_source = MapSource.createStreetDarkSource();
                 } else {
