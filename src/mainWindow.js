@@ -192,21 +192,13 @@ var MainWindow = GObject.registerClass({
     }
 
     _initActions() {
-        Utils.addActions(this, {
+        let actions = {
             'about': {
                 onActivate: () => this._onAboutActivate()
             },
             'map-type-menu': {
                 state: ['b', false],
                 onActivate: () => this._onMapTypeMenuActivate()
-            },
-            'switch-to-street-view': {
-                accels: ['<Primary>1', '<Primary>KP_1'],
-                onActivate: () => this._onStreetViewActivate()
-            },
-            'switch-to-aearial-view': {
-                accels: ['<Primary>2', '<Primary>KP_2'],
-                onActivate: () => this._onAerialViewActivate()
             },
             'hybrid-aerial': {
                 paramType:     'b',
@@ -252,7 +244,22 @@ var MainWindow = GObject.registerClass({
             'export-as-image': {
                 onActivate: () => this._onExportActivated()
             }
-        }, Application.settings);
+        };
+
+        // when aerial tiles are available, add shortcuts to switch
+        if (Service.getService().tiles.aerial) {
+            actions['switch-to-street-view'] = {
+                accels: ['<Primary>1', '<Primary>KP_1'],
+                onActivate: () => this._onStreetViewActivate()
+            };
+
+            actions['switch-to-aearial-view'] = {
+                accels: ['<Primary>2', '<Primary>KP_2'],
+                onActivate: () => this._onAerialViewActivate()
+            };
+        }
+
+        Utils.addActions(this, actions, Application.settings);
     }
 
     _initSignals() {
