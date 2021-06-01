@@ -88,16 +88,19 @@
                 <property name="accelerator">&lt;Primary&gt;L</property>
               </object>
             </child>
+            <!-- for now don't show the shortcuts for map type switching, since
+                 the aerial tiles are disabled for now, keep it here to avoid
+                 loosing the translation if/when we enable them again -->
             <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="visible">1</property>
+              <object class="GtkShortcutsShortcut" id="streetShortcut">
+                <property name="visible">0</property>
                 <property name="title" translatable="yes" context="shortcut window">Switch to street view</property>
                 <property name="accelerator">&lt;Primary&gt;1</property>
               </object>
             </child>
             <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="visible">1</property>
+              <object class="GtkShortcutsShortcut" id="aerialShortcut">
+                <property name="visible">0</property>
                 <property name="title" translatable="yes" context="shortcut window">Switch to aerial view</property>
                 <property name="accelerator">&lt;Primary&gt;2</property>
               </object>
