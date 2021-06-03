@@ -97,13 +97,16 @@ var LayersPopover = GObject.registerClass({
                 source: MapSource.createStreetSource(),
                 widget: this._streetLayerImage,
                 lastLocation: { x: -1, y: -1, z: -1 }
-            },
-            aerial: {
+            }
+        };
+
+        if (Service.getService().tiles.aerial) {
+            this._layerPreviews.aerial = {
                 source: MapSource.createAerialSource(),
                 widget: this._aerialLayerImage,
                 lastLocation: { x: -1, y: -1, z: -1 }
-            }
-        };
+            };
+        }
 
         // disable the map type switch buttons if aerial is unavailable
         if (Service.getService().tiles.aerial) {
