@@ -24,7 +24,6 @@ const Goa = imports.gi.Goa;
 const Gtk = imports.gi.Gtk;
 
 const CheckInDialog = imports.checkInDialog;
-const FacebookBackend = imports.facebookBackend;
 const FoursquareBackend = imports.foursquareBackend;
 
 var CheckInManager = GObject.registerClass({
@@ -66,9 +65,6 @@ var CheckInManager = GObject.registerClass({
     }
 
     _initBackends() {
-        let facebookBackend = new FacebookBackend.FacebookBackend();
-        this._backends[facebookBackend.name] = facebookBackend;
-
         let foursquareBackend = new FoursquareBackend.FoursquareBackend();
         this._backends[foursquareBackend.name] = foursquareBackend;
     }
