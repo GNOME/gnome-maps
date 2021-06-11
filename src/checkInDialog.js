@@ -51,8 +51,6 @@ var CheckInDialog = GObject.registerClass({
                         'messageInfoLabel',
                         'messageInfoAccountImage',
                         'messageTextView',
-                        'facebookOptionsGrid',
-                        'facebookOptionsPrivacyComboBox',
                         'foursquareOptionsGrid',
                         'foursquareOptionsPrivacyComboBox',
                         'foursquareOptionsBroadcastFacebookCheckButton',
@@ -100,10 +98,6 @@ var CheckInDialog = GObject.registerClass({
 
         this._placeListBox = new SocialPlaceListBox.SocialPlaceListBox({ visible: true });
         this._placeScrolledWindow.add(this._placeListBox);
-
-        Application.settings.bind('checkin-facebook-privacy',
-                                  this._facebookOptionsPrivacyComboBox,
-                                  'active_id', Gio.SettingsBindFlags.DEFAULT);
 
         Application.settings.bind('checkin-foursquare-privacy',
                                   this._foursquareOptionsPrivacyComboBox,
@@ -197,9 +191,7 @@ var CheckInDialog = GObject.registerClass({
                 this._placeListBox.matches = matches;
 
                 if (this._matchPlace) {
-                    if (this._account.get_account().provider_type === 'facebook')
-                        this._placeNotFoundLabel.label = _("Maps cannot find the place to check in to with Facebook. Please select one from this list.");
-                    else if (this._account.get_account().provider_type === 'foursquare')
+                    if (this._account.get_account().provider_type === 'foursquare')
                         this._placeNotFoundLabel.label = _("Maps cannot find the place to check in to with Foursquare. Please select one from this list.");
                 } else
                     this._placeNotFoundInfoBar.hide();
@@ -230,8 +222,7 @@ var CheckInDialog = GObject.registerClass({
                                                                                             this._checkIn.place.name));
         this._messageInfoAccountImage.gicon = Gio.Icon.new_for_string(account.provider_icon);
 
-        let optionsGrids = { 'facebook': this._facebookOptionsGrid,
-                             'foursquare': this._foursquareOptionsGrid };
+        let optionsGrids = { 'foursquare': this._foursquareOptionsGrid };
 
         for (let provider in optionsGrids)
             if (provider === account.provider_type)
@@ -249,9 +240,7 @@ var CheckInDialog = GObject.registerClass({
         let message = this._messageTextView.buffer.text;
         let privacy;
 
-        if (this._account.get_account().provider_type === 'facebook')
-            privacy = this._facebookOptionsPrivacyComboBox.active_id;
-        else if (this._account.get_account().provider_type === 'foursquare')
+        if (this._account.get_account().provider_type === 'foursquare')
             privacy = this._foursquareOptionsPrivacyComboBox.active_id;
 
         let broadcastFacebook = this._foursquareOptionsBroadcastFacebookCheckButton.active;

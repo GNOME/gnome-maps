@@ -218,49 +218,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkGrid" id="facebookOptionsGrid">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="hexpand">True</property>
-                        <property name="column_spacing">10</property>
-                        <child>
-                          <object class="GtkLabel" id="facebookOptionsPrivacyLabel">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Visibility</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkComboBox" id="facebookOptionsPrivacyComboBox">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="hexpand">True</property>
-                            <property name="model">facebookOptionsPrivacyListStore</property>
-                            <property name="active">0</property>
-                            <property name="id_column">0</property>
-                            <child>
-                              <object class="GtkCellRendererText" id="facebookOptionsPrivacyComboBoxCellRendererText"/>
-                              <attributes>
-                                <attribute name="text">1</attribute>
-                              </attributes>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">0</property>
-                      </packing>
-                    </child>
-                    <child>
                       <object class="GtkGrid" id="foursquareOptionsGrid">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
@@ -388,32 +345,6 @@
       <class name="maps-check-in"/>
     </style>
   </template>
-  <object class="GtkListStore" id="facebookOptionsPrivacyListStore">
-    <columns>
-      <!-- column-name id -->
-      <column type="gchararray"/>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0">EVERYONE</col>
-        <col id="1" translatable="yes">Everyone</col>
-      </row>
-      <row>
-        <col id="0">FRIENDS_OF_FRIENDS</col>
-        <col id="1" translatable="yes">Friends of friends</col>
-      </row>
-      <row>
-        <col id="0">ALL_FRIENDS</col>
-        <col id="1" translatable="yes">Just friends</col>
-      </row>
-      <row>
-        <col id="0">SELF</col>
-        <col id="1" translatable="yes">Just me</col>
-      </row>
-    </data>
-  </object>
   <object class="GtkListStore" id="foursquareOptionsPrivacyListStore">
     <columns>
       <!-- column-name id -->
