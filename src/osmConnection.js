@@ -317,7 +317,7 @@ var OSMConnection = class OSMConnection {
             oauth_token: this._oauthToken,
             oauth_callback: '',
             authenticity_token: token,
-            allow_write_api: 'yes',
+            allow_write_api: '1',
             commit: 'Save changes'
         });
         let requestHeaders = msg.request_headers;
