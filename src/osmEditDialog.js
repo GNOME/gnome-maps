@@ -158,7 +158,7 @@ const OSM_FIELDS = [
         validate: Utils.isValidEmail,
         rewriteFunc: this._osmEmailRewriteFunc,
         validateError: _("This is not a valid e-mail address. Make sure to not include the mailto: protocol prefix."),
-        hint: _("Contact e-mail address for inquiries." +
+        hint: _("Contact e-mail address for inquiries. " +
                 "Add only email addresses that are intended to be publicly used.")
     },
     {
