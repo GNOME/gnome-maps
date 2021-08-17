@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2021-05-18 20:51+0000\n"
-"PO-Revision-Date: 2021-05-20 12:40+0300\n"
+"POT-Creation-Date: 2021-08-16 20:57+0000\n"
+"PO-Revision-Date: 2021-08-17 09:38+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -57,7 +57,7 @@ msgstr "Проєкт GNOME"
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:34
-#: src/application.js:94 src/mainWindow.js:132 src/mainWindow.js:585
+#: src/application.js:94 src/mainWindow.js:132 src/mainWindow.js:592
 msgid "Maps"
 msgstr "Карти"
 
@@ -147,23 +147,10 @@ msgid "Number of recently visited routes to store."
 msgstr "Кількість недавно відвіданих маршрутів, які слід зберігати."
 
 #: data/org.gnome.Maps.gschema.xml:56
-msgid "Facebook check-in privacy setting"
-msgstr "Параметри конфіденційності Facebook щодо відзначення"
-
-#. Translators: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS, and SELF are constant names, and should not be translated
-#: data/org.gnome.Maps.gschema.xml:58
-msgid ""
-"Latest used Facebook check-in privacy setting. Possible values are: "
-"EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
-msgstr ""
-"Останній використаний параметр конфіденційності Facebook щодо відзначення. "
-"Допустимі значення: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS або SELF."
-
-#: data/org.gnome.Maps.gschema.xml:62
 msgid "Foursquare check-in privacy setting"
 msgstr "Параметри конфіденційності Foursquare щодо відзначення"
 
-#: data/org.gnome.Maps.gschema.xml:63
+#: data/org.gnome.Maps.gschema.xml:57
 msgid ""
 "Latest used Foursquare check-in privacy setting. Possible values are: "
 "public, followers or private."
@@ -171,11 +158,11 @@ msgstr ""
 "Останній використаний параметр конфіденційності Foursquare щодо відзначення. "
 "Допустимі значення: public, followers або private."
 
-#: data/org.gnome.Maps.gschema.xml:67
+#: data/org.gnome.Maps.gschema.xml:61
 msgid "Foursquare check-in Facebook broadcasting"
 msgstr "Транслювання відзначення Foursquare через Facebook"
 
-#: data/org.gnome.Maps.gschema.xml:68
+#: data/org.gnome.Maps.gschema.xml:62
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
@@ -183,11 +170,11 @@ msgstr ""
 "Показує, чи слід Foursquare транслювати відзначення як допис на обліковому "
 "записі Facebook, який зв'язано з обліковим записом Foursquare."
 
-#: data/org.gnome.Maps.gschema.xml:72
+#: data/org.gnome.Maps.gschema.xml:66
 msgid "Foursquare check-in Twitter broadcasting"
 msgstr "Транслювання відзначення Foursquare через Twitter"
 
-#: data/org.gnome.Maps.gschema.xml:73
+#: data/org.gnome.Maps.gschema.xml:67
 msgid ""
 "Indicates if Foursquare should broadcast the check-in as a tweet in the "
 "Twitter account associated with the Foursquare account."
@@ -195,82 +182,66 @@ msgstr ""
 "Показує, чи слід Foursquare транслювати відзначення як допис на обліковому "
 "записі Twitter, який зв'язано з обліковим записом Foursquare."
 
-#: data/org.gnome.Maps.gschema.xml:77
+#: data/org.gnome.Maps.gschema.xml:71
 msgid "OpenStreetMap username or e-mail address"
 msgstr "Користувач або поштова скринька у OpenStreetMap"
 
-#: data/org.gnome.Maps.gschema.xml:78
+#: data/org.gnome.Maps.gschema.xml:72
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr ""
 "Показує, чи користувач увійшов у систему OpenStreetMap для редагування даних."
 
-#: data/org.gnome.Maps.gschema.xml:82
+#: data/org.gnome.Maps.gschema.xml:76
 msgid "Last used transportation type for routing"
 msgstr "Останній використаний тип транспорту для побудови маршрутів"
 
-#: data/org.gnome.Maps.gschema.xml:86
+#: data/org.gnome.Maps.gschema.xml:80
 msgid "Night mode"
 msgstr "Нічний режим"
 
-#: data/org.gnome.Maps.gschema.xml:87
+#: data/org.gnome.Maps.gschema.xml:81
 msgid "Whether the application is in night mode."
 msgstr "Чи програма в нічному режимі."
 
-#: data/org.gnome.Maps.gschema.xml:91
+#: data/org.gnome.Maps.gschema.xml:85
 msgid "Use hybrid aerial tiles"
 msgstr "Використовувати гібридні супутникові плитки"
 
-#: data/org.gnome.Maps.gschema.xml:92
+#: data/org.gnome.Maps.gschema.xml:86
 msgid "Whether aerial tiles should use hybrid style (with labels)."
 msgstr ""
 "Чи слід використовувати гібридний стиль (із мітками) для супутникових плиток."
 
-#: data/ui/check-in-dialog.ui:230 data/ui/check-in-dialog.ui:279
+#: data/ui/check-in-dialog.ui:236
 msgid "Visibility"
 msgstr "Видимість"
 
-#: data/ui/check-in-dialog.ui:314
+#: data/ui/check-in-dialog.ui:271
 msgid "Post on Facebook"
 msgstr "Допис на Facebook"
 
-#: data/ui/check-in-dialog.ui:328
+#: data/ui/check-in-dialog.ui:285
 msgid "Post on Twitter"
 msgstr "Допис на Twitter"
 
-#: data/ui/check-in-dialog.ui:368 data/ui/export-view-dialog.ui:20
+#: data/ui/check-in-dialog.ui:325 data/ui/export-view-dialog.ui:20
 #: data/ui/send-to-dialog.ui:13 data/ui/shape-layer-file-chooser.ui:22
 msgid "_Cancel"
 msgstr "_Скасувати"
 
-#: data/ui/check-in-dialog.ui:376
+#: data/ui/check-in-dialog.ui:333
 msgid "C_heck in"
 msgstr "Від_значитись"
 
-#: data/ui/check-in-dialog.ui:401
-msgid "Everyone"
-msgstr "Усім"
-
-#: data/ui/check-in-dialog.ui:405
-msgid "Friends of friends"
-msgstr "Друзям друзів"
-
-#: data/ui/check-in-dialog.ui:409
-msgid "Just friends"
-msgstr "Тільки друзям"
-
-#: data/ui/check-in-dialog.ui:413
-msgid "Just me"
-msgstr "Лише собі"
-
-#: data/ui/check-in-dialog.ui:427
+#: data/ui/check-in-dialog.ui:358
 msgid "Public"
 msgstr "Відкрито"
 
-#: data/ui/check-in-dialog.ui:431
+#: data/ui/check-in-dialog.ui:362
 msgid "Followers"
 msgstr "Послідовники"
 
-#: data/ui/check-in-dialog.ui:435
+#: data/ui/check-in-dialog.ui:366
 msgid "Private"
 msgstr "Особисто"
 
@@ -405,17 +376,17 @@ msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Перейти до поточної місцевості"
 
-#: data/ui/help-overlay.ui:94
+#: data/ui/help-overlay.ui:97
 msgctxt "shortcut window"
 msgid "Switch to street view"
 msgstr "Перемкнутися на перегляд вулиць"
 
-#: data/ui/help-overlay.ui:101
+#: data/ui/help-overlay.ui:104
 msgctxt "shortcut window"
 msgid "Switch to aerial view"
 msgstr "Перемкнутися на супутниковий перегляд"
 
-#: data/ui/help-overlay.ui:108
+#: data/ui/help-overlay.ui:111
 msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "Відкрити шар форм"
@@ -608,7 +579,7 @@ msgstr "Далі"
 msgid "No results found"
 msgstr "Нічого не знайдено"
 
-#: data/ui/place-popover.ui:66 src/checkInDialog.js:280 src/checkIn.js:162
+#: data/ui/place-popover.ui:66 src/checkInDialog.js:269 src/checkIn.js:158
 #: src/osmEditDialog.js:587
 msgid "An error has occurred"
 msgstr "Трапилась помилка"
@@ -802,27 +773,19 @@ msgstr "Ігнорувати доступність мережі"
 msgid "[FILE…|URI]"
 msgstr "[ФАЙЛ…|АДРЕСА]"
 
-#: src/checkInDialog.js:167
+#: src/checkInDialog.js:161
 msgid "Select an account"
 msgstr "Виберіть обліковий запис"
 
-#: src/checkInDialog.js:172 src/checkInDialog.js:244
+#: src/checkInDialog.js:166 src/checkInDialog.js:235
 msgid "Loading"
 msgstr "Завантаження"
 
-#: src/checkInDialog.js:196
+#: src/checkInDialog.js:190
 msgid "Select a place"
 msgstr "Виберіть місце"
 
-#: src/checkInDialog.js:201
-msgid ""
-"Maps cannot find the place to check in to with Facebook. Please select one "
-"from this list."
-msgstr ""
-"Картами неможливо знайти місце, щоб відзначитись через Facebook. Виберіть "
-"щось зі списку."
-
-#: src/checkInDialog.js:203
+#: src/checkInDialog.js:195
 msgid ""
 "Maps cannot find the place to check in to with Foursquare. Please select one "
 "from this list."
@@ -832,29 +795,29 @@ msgstr ""
 
 #. Translators: %s is the name of the place to check in.
 #.
-#: src/checkInDialog.js:218
+#: src/checkInDialog.js:210
 #, javascript-format
 msgid "Check in to %s"
 msgstr "Відзначитись на %s"
 
 #. Translators: %s is the name of the place to check in.
 #.
-#: src/checkInDialog.js:228
+#: src/checkInDialog.js:220
 #, javascript-format
 msgid "Write an optional message to check in to %s."
 msgstr "Напишіть довільне повідомлення, щоб відзначитись на %s."
 
 #. Translators: %s is the place name that user wanted to check-in
-#: src/checkIn.js:144
+#: src/checkIn.js:140
 #, javascript-format
 msgid "Cannot find “%s” in the social service"
 msgstr "Неможливо знайти «%s» в соціальних службах"
 
-#: src/checkIn.js:146
+#: src/checkIn.js:142
 msgid "Cannot find a suitable place to check-in in this location"
 msgstr "Неможливо знайти зручне місце, щоб відзначити цю місцевість"
 
-#: src/checkIn.js:150
+#: src/checkIn.js:146
 msgid ""
 "Credentials have expired, please open Online Accounts to sign in and enable "
 "this account"
@@ -935,23 +898,23 @@ msgstr "Нумо!"
 msgid "All Layer Files"
 msgstr "Усі файли шарів"
 
-#: src/mainWindow.js:488
+#: src/mainWindow.js:495
 msgid "Failed to connect to location service"
 msgstr "Не вдалося з'єднатись зі службою розташування"
 
-#: src/mainWindow.js:583
+#: src/mainWindow.js:590
 msgid "translator-credits"
 msgstr "Daniel Korostil <ted.korostiled@gmail.com>"
 
-#: src/mainWindow.js:586
+#: src/mainWindow.js:593
 msgid "A map application for GNOME"
 msgstr "Карти для GNOME"
 
-#: src/mainWindow.js:597
+#: src/mainWindow.js:604
 msgid "Copyright © 2011 – 2021 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "© Red Hat, Inc. та розробники «Карт» GNOME, 2011–2021"
 
-#: src/mainWindow.js:617
+#: src/mainWindow.js:624
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Дані карт надано %s та учасниками проєкту"
@@ -961,7 +924,7 @@ msgstr "Дані карт надано %s та учасниками проєкт
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:633
+#: src/mainWindow.js:640
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Блоки карти надано %s"
@@ -975,20 +938,20 @@ msgstr "Блоки карти надано %s"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:662
+#: src/mainWindow.js:669
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Послуги з пошуку надано %s, використовуємо %s"
 
-#: src/mapView.js:489 src/mapView.js:547
+#: src/mapView.js:493 src/mapView.js:551
 msgid "Failed to open layer"
 msgstr "Не вдалося відкрити шар"
 
-#: src/mapView.js:510
+#: src/mapView.js:514
 msgid "Do you want to continue?"
 msgstr "Продовжити?"
 
-#: src/mapView.js:511
+#: src/mapView.js:515
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -997,41 +960,41 @@ msgstr ""
 "Ви маєте намір відкрити файли, загальний розмір яких дорівнює %s МБ. Процес "
 "завантаження цих файлів може бути досить тривалим."
 
-#: src/mapView.js:541
+#: src/mapView.js:545
 msgid "File type is not supported"
 msgstr "Тип файла не підтримується"
 
-#: src/mapView.js:579
+#: src/mapView.js:583
 msgid "Failed to open GeoURI"
 msgstr "Не вдалося відкрити GeoURI"
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: src/osmConnection.js:436
+#: src/osmConnection.js:442
 msgid "Incorrect user name or password"
 msgstr "Хибний користувач або пароль"
 
-#: src/osmConnection.js:438
+#: src/osmConnection.js:444
 msgid "Success"
 msgstr "Успіх"
 
-#: src/osmConnection.js:440
+#: src/osmConnection.js:446
 msgid "Bad request"
 msgstr "Поганий запит"
 
-#: src/osmConnection.js:442
+#: src/osmConnection.js:448
 msgid "Object not found"
 msgstr "Об'єкт не знайдено"
 
-#: src/osmConnection.js:444
+#: src/osmConnection.js:450
 msgid "Conflict, someone else has just modified the object"
 msgstr "Конфлікт, хтось інший щойно змінив об'єкт"
 
-#: src/osmConnection.js:446
+#: src/osmConnection.js:452
 msgid "Object has been deleted"
 msgstr "Об'єкт вилучено"
 
-#: src/osmConnection.js:448
+#: src/osmConnection.js:454
 msgid "Way or relation refers to non-existing children"
 msgstr "Спосіб або відношення не стосується чогось явного"
 
@@ -1091,8 +1054,11 @@ msgstr ""
 "протоколу mailto:."
 
 #: src/osmEditDialog.js:161
+#| msgid ""
+#| "Contact e-mail address for inquiries.Add only email addresses that are "
+#| "intended to be publicly used."
 msgid ""
-"Contact e-mail address for inquiries.Add only email addresses that are "
+"Contact e-mail address for inquiries. Add only email addresses that are "
 "intended to be publicly used."
 msgstr ""
 "Адреса електронної пошти для довідкової інформації. Додавайте лише адреси, "
@@ -1458,8 +1424,7 @@ msgstr "Позначено для користувачів візків"
 #: src/placeView.js:474
 #, javascript-format
 msgid "%s below sea level"
-msgstr ""
-"%s під рівнем моря"
+msgstr "%s під рівнем моря"
 
 #. *
 #. * Translators: this indicates a place is located at (or very
@@ -1467,8 +1432,7 @@ msgstr ""
 #.
 #: src/placeView.js:481
 msgid "At sea level"
-msgstr ""
-"На рівні моря"
+msgstr "На рівні моря"
 
 #: src/placeView.js:490
 msgid "Religion:"
@@ -1965,6 +1929,36 @@ msgstr "Виконайте правий розворот на %s"
 #: src/transitplugins/openTripPlanner.js:1249
 msgid "Make a right u-turn"
 msgstr "Виконайте правий розворот"
+
+#~ msgid "Facebook check-in privacy setting"
+#~ msgstr "Параметри конфіденційності Facebook щодо відзначення"
+
+#~ msgid ""
+#~ "Latest used Facebook check-in privacy setting. Possible values are: "
+#~ "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
+#~ msgstr ""
+#~ "Останній використаний параметр конфіденційності Facebook щодо "
+#~ "відзначення. Допустимі значення: EVERYONE, FRIENDS_OF_FRIENDS, "
+#~ "ALL_FRIENDS або SELF."
+
+#~ msgid "Everyone"
+#~ msgstr "Усім"
+
+#~ msgid "Friends of friends"
+#~ msgstr "Друзям друзів"
+
+#~ msgid "Just friends"
+#~ msgstr "Тільки друзям"
+
+#~ msgid "Just me"
+#~ msgstr "Лише собі"
+
+#~ msgid ""
+#~ "Maps cannot find the place to check in to with Facebook. Please select "
+#~ "one from this list."
+#~ msgstr ""
+#~ "Картами неможливо знайти місце, щоб відзначитись через Facebook. Виберіть "
+#~ "щось зі списку."
 
 #~ msgid ""
 #~ "You can even search for specific types of locations, such as “Pubs near "
