@@ -99,7 +99,11 @@ const TYPE_ICON_MAP = {
         tram_stop:        'route-transit-tram-symbolic'
     },
     shop: {
-        _:                'shopping-cart-symbolic'
+        convenience:      'shopping-cart-symbolic',
+        department_store: 'shopping-cart-symbolic',
+        general:          'shopping-cart-symbolic',
+        mall:             'shopping-cart-symbolic',
+        supermarket:      'shopping-cart-symbolic'
     },
     tourism: {
         alpine_hut:       'bed-symbolic',

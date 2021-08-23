@@ -50,10 +50,15 @@ function testKnownTypes() {
     let p1 = new MockedPlace({ osmKey: 'amenity', osmValue: 'restaurant' });
     let p2 = new MockedPlace({ osmKey: 'place', osmValue: 'city' });
     let p3 = new MockedPlace({ osmKey: 'amenity', osmValue: 'pub' });
+    let p4 = new MockedPlace({ osmKey: 'shop', osmValue: 'supermarket' });
+    let p5 = new MockedPlace({ osmKey: 'shop', osmValue: 'hairdresser' });
 
     JsUnit.assertEquals('restaurant-symbolic', PlaceIcons.getIconForPlace(p1));
     JsUnit.assertEquals('city-symbolic', PlaceIcons.getIconForPlace(p2));
     JsUnit.assertEquals('pub-symbolic', PlaceIcons.getIconForPlace(p3));
+    JsUnit.assertEquals('shopping-cart-symbolic',
+                        PlaceIcons.getIconForPlace(p4));
+    JsUnit.assertEquals('map-marker-symbolic', PlaceIcons.getIconForPlace(p5));
 }
 
 // test that some unknown type gets the default map marker icon
