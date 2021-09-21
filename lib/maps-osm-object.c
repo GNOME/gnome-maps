@@ -329,3 +329,17 @@ maps_osm_object_serialize (const MapsOSMObject *object)
   
   return (char *) result;
 }
+
+/**
+ * maps_osm_object_get_tags:
+ *
+ * Returns: (element-type utf8 utf8): a hash table with key/values
+ */
+const GHashTable *
+maps_osm_object_get_tags (const MapsOSMObject *object)
+{
+  const MapsOSMObjectPrivate *priv =
+    maps_osm_object_get_instance_private ((MapsOSMObject *) object);
+
+  return priv->tags;
+}

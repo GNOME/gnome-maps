@@ -53,4 +53,6 @@ void maps_osm_object_delete_tag (MapsOSMObject *object, const char *key);
 
 char *maps_osm_object_serialize (const MapsOSMObject *object);
 
+const GHashTable *maps_osm_object_get_tags (const MapsOSMObject *object);
+
 #endif //__MAPS_OSM_OBJECT_H__
