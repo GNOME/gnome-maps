@@ -48,41 +48,21 @@ var Place = GObject.registerClass(
 class Place extends Geocode.Place {
 
     _init(params) {
+        this.updateFromTags(params);
+
+        delete params.population;
+        delete params.website;
+        delete params.email;
+        delete params.phone;
+        delete params.wiki;
+        delete params.openingHours;
+        delete params.internetAccess;
+        delete params.religion;
+        delete params.takeaway;
+        delete params.note;
+
         this._isCurrentLocation = params.isCurrentLocation;
         delete params.isCurrentLocation;
-
-        this._population = params.population;
-        delete params.population;
-
-        this._website = params.website;
-        delete params.website;
-
-        this._email = params.email;
-        delete params.email;
-
-        this._phone = params.phone;
-        delete params.phone;
-
-        this._wiki = params.wiki;
-        delete params.wiki;
-
-        this._openingHours = params.openingHours;
-        delete params.openingHours;
-
-        this._internetAccess = params.internetAccess;
-        delete params.internetAccess;
-
-        this._religion = params.religion;
-        delete params.religion;
-
-        this._toilets = params.toilets;
-        delete params.toilets;
-
-        this._takeaway = params.takeaway;
-        delete params.takeaway;
-
-        this._note = params.note;
-        delete params.note;
 
         this._initialZoom = params.initialZoom;
         delete params.initialZoom;
@@ -102,7 +82,6 @@ class Place extends Geocode.Place {
             delete params.store;
         }
 
-        this._wheelchair = params.wheelchair;
         delete params.wheelchair;
 
         this._nativeName = params.nativeName;
@@ -139,6 +118,55 @@ class Place extends Geocode.Place {
                 delete params[prop];
 
         super._init(params);
+    }
+
+    /**
+     * Update place with values from OSM tags.
+     */
+    updateFromTags(tags) {
+        /* special handle tags where we use a different name compared to
+         * OSM, to remain backwards-compatible with the place store
+         */
+        let wiki = tags.wiki ?? tags.wikipedia;
+        let openingHours = tags.openingHours ?? tags.opening_hours;
+        let internetAccess = tags.internetAccess ?? tags.internet_access;
+
+        if (tags.name)
+            this.nativeName = tags.name;
+        if (tags.population)
+            this.population = tags.population;
+        if (tags['contact:website'])
+            this.website = tags['contact:website'];
+        if (tags.website)
+            this.website = tags.website;
+        if (tags['contact:email'])
+            this.email = tags['contact:email'];
+        if (tags.email)
+            this.email = tags.email;
+        if (tags['contact:phone'])
+            this.phone = tags['contact:phone'];
+        if (tags.phone)
+            this.phone = tags.phone;
+        if (wiki)
+            this.wiki = wiki;
+        if (tags.wheelchair)
+            this.wheelchair = tags.wheelchair;
+        if (openingHours)
+            this.openingHours = openingHours;
+        if (internetAccess)
+            this.internetAccess = internetAccess;
+        if (tags.ele && this.location)
+            this.location.altitude = parseFloat(tags.ele);
+        else if (tags.ele && tags.location)
+            tags.location.altitude = tags.ele;
+        if (tags.religion)
+            this.religion = tags.religion
+        if (tags.toilets)
+            this.toilets = tags.toilets;
+        if (tags.takeaway)
+            this.takeaway = tags.takeaway;
+        if (tags.note)
+            this.note = tags.note;
     }
 
     set store(v) {
