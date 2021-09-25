@@ -62,22 +62,7 @@ function updatePlaceFromOSMObject(place, object) {
             place.name = name;
         place.nativeName = name;
     }
-    place.population = object.get_tag('population');
-    place.website = object.get_tag('website');
-    place.email = object.get_tag('email');
-    place.phone = object.get_tag('phone');
-    place.wiki = object.get_tag('wikipedia');
-    place.openingHours = object.get_tag('opening_hours');
-    place.wheelchair = object.get_tag('wheelchair');
-    place.toilets = object.get_tag('toilets');
-    place.internetAccess = object.get_tag('internet_access');
-    place.religion = object.get_tag('religion');
-    place.takeaway = object.get_tag('takeaway');
-
-    let altitude = object.get_tag('ele');
-
-    if (altitude)
-        place.location.altitude = altitude;
+    place.updateFromTags(object.get_tags());
 
     Application.placeStore.updatePlace(place);
 }
