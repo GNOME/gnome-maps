@@ -209,38 +209,8 @@ var Overpass = GObject.registerClass({
 
         if (element.tags.name)
             place.nativeName = element.tags.name;
-        if (element.tags.population)
-            place.population = element.tags.population;
-        if (element.tags['contact:website'])
-            place.website = element.tags['contact:website'];
-        if (element.tags.website)
-            place.website = element.tags.website;
-        if (element.tags['contact:email'])
-            place.email = element.tags['contact:email'];
-        if (element.tags.email)
-            place.email = element.tags.email;
-        if (element.tags['contact:phone'])
-            place.phone = element.tags['contact:phone'];
-        if (element.tags.phone)
-            place.phone = element.tags.phone;
-        if (element.tags.wikipedia)
-            place.wiki = element.tags.wikipedia;
-        if (element.tags.wheelchair)
-            place.wheelchair = element.tags.wheelchair;
-        if (element.tags.opening_hours)
-            place.openingHours = element.tags.opening_hours;
-        if (element.tags.internet_access)
-            place.internetAccess = element.tags.internet_access;
-        if (element.tags.ele && place.location)
-            place.location.altitude = parseFloat(element.tags.ele);
-        if (element.tags.religion)
-            place.religion = element.tags.religion
-        if (element.tags.toilets)
-            place.toilets = element.tags.toilets;
-        if (element.tags.takeaway)
-            place.takeaway = element.tags.takeaway;
-        if (element.tags.note)
-            place.note = element.tags.note;
+
+        place.updateFromTags(element.tags);
     }
 
     _getLocalizedName(tags, place) {
