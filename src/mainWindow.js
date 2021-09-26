@@ -86,7 +86,7 @@ var MainWindow = GObject.registerClass({
                         'noNetworkView',
                         'actionBar',
                         'actionBarRevealer',
-                        'placeBarContainer' ]
+                        'placeBarContainer']
 }, class MainWindow extends Gtk.ApplicationWindow {
 
     get mapView() {

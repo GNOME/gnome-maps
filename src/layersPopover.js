@@ -21,6 +21,7 @@ const Champlain = imports.gi.Champlain;
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Gdk = imports.gi.Gdk;
+const Hdy = imports.gi.Handy;
 
 const Application = imports.application;
 const MapSource = imports.mapSource;
@@ -144,8 +145,8 @@ var LayersPopover = GObject.registerClass({
                                        this._setLayerPreviews.bind(this));
             this._mapView.view.connect("notify::longitude",
                                        this._setLayerPreviews.bind(this));
-            Application.settings.connect("changed::night-mode",
-                                         this._onNightModeChanged.bind(this));
+            Hdy.StyleManager.get_default().connect("notify::dark",
+                                                    this._onDarkChanged.bind(this));
             Application.settings.connect("changed::hybrid-aerial",
                                          this._onHybridAerialChanged.bind(this));
 
@@ -160,9 +161,9 @@ var LayersPopover = GObject.registerClass({
         });
     }
 
-    _onNightModeChanged() {
+    _onDarkChanged() {
         if (Service.getService().tiles.streetDark &&
-            Application.settings.get('night-mode')) {
+            Hdy.StyleManager.get_default().dark) {
             this._setLayerPreviewImage('streetDark', true);
         } else {
             this._setLayerPreviewImage('street', true);
@@ -180,7 +181,7 @@ var LayersPopover = GObject.registerClass({
 
     _setLayerPreviews() {
         if (Service.getService().tiles.streetDark &&
-            Application.settings.get('night-mode')) {
+            Hdy.StyleManager.get_default().dark) {
             this._setLayerPreviewImage('streetDark');
         } else {
             this._setLayerPreviewImage('street');

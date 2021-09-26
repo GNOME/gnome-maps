@@ -26,6 +26,7 @@ const Geocode = imports.gi.GeocodeGlib;
 const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
 const GtkChamplain = imports.gi.GtkChamplain;
+const Hdy = imports.gi.Handy;
 const Mainloop = imports.mainloop;
 
 const Application = imports.application;
@@ -210,8 +211,8 @@ var MapView = GObject.registerClass({
 
         // if dark tiles is available, setup handler to switch style
         if (Service.getService().tiles.streetDark) {
-            Application.settings.connect('changed::night-mode',
-                                         this._onNightModeChanged.bind(this));
+            Hdy.StyleManager.get_default().connect('notify::dark',
+                                                    this._onDarkChanged.bind(this));
         }
 
         // if hybrid aerial tiles are available, setup handler to toggle
@@ -272,11 +273,11 @@ var MapView = GObject.registerClass({
         this._setBackgroundPatternIfNeeded();
     }
 
-    _onNightModeChanged() {
+    _onDarkChanged() {
         if (this._mapType === MapType.STREET) {
             let overlay_sources = this.view.get_overlay_sources();
 
-            if (Application.settings.get('night-mode'))
+            if (Hdy.StyleManager.get_default().dark)
                 this.view.map_source = MapSource.createStreetDarkSource();
             else
                 this.view.map_source = MapSource.createStreetSource();
@@ -428,7 +429,7 @@ var MapView = GObject.registerClass({
                 }
             } else {
                 if (tiles.streetDark &&
-                    Application.settings.get('night-mode')) {
+                    Hdy.StyleManager.get_default().dark) {
                     this.view.map_source = MapSource.createStreetDarkSource();
                 } else {
                     this.view.map_source = MapSource.createStreetSource();
