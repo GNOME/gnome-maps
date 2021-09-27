@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps 3.9.91\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2021-06-15 21:15+0000\n"
-"PO-Revision-Date: 2021-06-21 20:56+0300\n"
+"POT-Creation-Date: 2021-09-18 09:13+0000\n"
+"PO-Revision-Date: 2021-09-27 11:23+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
@@ -45,7 +45,7 @@ msgstr ""
 "מפות משתמש במסד הנתונים השיתופי OpenStreetMap, שנוצר על ידי מאות אלפי אנשים "
 "על פני כדור הארץ."
 
-#: data/org.gnome.Maps.appdata.xml.in:189
+#: data/org.gnome.Maps.appdata.xml.in:228
 msgid "The GNOME Project"
 msgstr "מיזם GNOME"
 
@@ -101,19 +101,19 @@ msgstr "סוג המפה להצגה (רחוב, אווירית וכו׳)"
 
 #: data/org.gnome.Maps.gschema.xml:26
 msgid "Window size"
-msgstr "Window size"
+msgstr "גודל החלון"
 
 #: data/org.gnome.Maps.gschema.xml:27
 msgid "Window size (width and height)."
-msgstr "Window size (width and height)."
+msgstr "גודל החלון (רוחב וגובה)."
 
 #: data/org.gnome.Maps.gschema.xml:31
 msgid "Window position"
-msgstr "Window position"
+msgstr "מיקום החלון"
 
 #: data/org.gnome.Maps.gschema.xml:32
 msgid "Window position (X and Y)."
-msgstr "Window position (X and Y)."
+msgstr "מיקום החלון (X ו־Y)."
 
 #: data/org.gnome.Maps.gschema.xml:36
 msgid "Window maximized"
@@ -266,7 +266,7 @@ msgstr "העתקת מיקום"
 
 #: data/ui/context-menu.ui:51
 msgid "Add to OpenStreetMap"
-msgstr "הוספה אל OpenStreetMap"
+msgstr "הוספה ל־OpenStreetMap"
 
 #: data/ui/export-view-dialog.ui:14
 msgid "Export view"
@@ -333,7 +333,7 @@ msgstr "חיפוש"
 #: data/ui/help-overlay.ui:32
 msgctxt "shortcut window"
 msgid "Toggle route planner"
-msgstr "הצגה/הסתרת מתכנן מסלול"
+msgstr "הצגת/הסתרת מתכנן מסלול"
 
 #: data/ui/help-overlay.ui:39
 msgctxt "shortcut window"
@@ -438,7 +438,7 @@ msgstr "פתיחת התפריט הראשי"
 
 #: data/ui/main-window.ui:114
 msgid "Maps is offline!"
-msgstr "מפות איננו מקוון!"
+msgstr "היישום מפות אינו מקוון!"
 
 #: data/ui/main-window.ui:123
 msgid ""
@@ -448,7 +448,7 @@ msgstr "למפות דרוש חיבור אינטרנט פעיל כדי לתפקד
 
 #: data/ui/main-window.ui:131
 msgid "Check your connection and proxy settings."
-msgstr "יש לבדוק את החיבור שלך ואת הגדרות הפרוקסי."
+msgstr "יש לבדוק את החיבור שלך ואת הגדרות המתווך."
 
 #: data/ui/osm-account-dialog.ui:9
 msgid "OpenStreetMap Account"
@@ -499,7 +499,7 @@ msgstr "קוד האימות לא מתאים, נא לנסות שוב."
 
 #: data/ui/osm-account-dialog.ui:201
 msgid "Enter verification code shown above"
-msgstr "יש להזין את קוד האימות המוצע למעלה"
+msgstr "יש למלא את קוד האימות המוצע למעלה"
 
 #: data/ui/osm-account-dialog.ui:224
 msgid "Verify"
@@ -824,7 +824,7 @@ msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
 msgstr ""
-"מיקום נוסף למפה, יש לשים לב כי יתכן ויעבור זמן מה לפני שהוא יוצג על המפה "
+"מיקום נוסף למפה, יש לשים לב כי עשוי ילעבור זמן מה לפני שהוא יוצג על המפה "
 "ובתוצאות החיפוש."
 
 #. Translators: This is a format string for a PNG filename for an
@@ -936,7 +936,7 @@ msgstr "החיפוש סופק על ידי %s בעזרת %s"
 
 #: src/mapView.js:493 src/mapView.js:551
 msgid "Failed to open layer"
-msgstr "אירע כשל בפתיחת שכבה"
+msgstr "פתיחת שכבה נכשלה"
 
 #: src/mapView.js:514
 msgid "Do you want to continue?"
@@ -955,13 +955,13 @@ msgstr "סוג הקובץ אינו נתמך"
 
 #: src/mapView.js:583
 msgid "Failed to open GeoURI"
-msgstr "אירע כשל בפתיחת GeoURI"
+msgstr "פתיחת GeoURI נכשלה"
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
 #: src/osmConnection.js:442
 msgid "Incorrect user name or password"
-msgstr "שם או ססמה לא נכונים"
+msgstr "שם משתמש או ססמה לא נכונים"
 
 #: src/osmConnection.js:444
 msgid "Success"
@@ -985,7 +985,7 @@ msgstr "העצם נמחק"
 
 #: src/osmConnection.js:454
 msgid "Way or relation refers to non-existing children"
-msgstr "נתיב או יחס מפנה לילדים לא קיימים"
+msgstr "נתיב או יחס מפנה לצאצאים לא קיימים"
 
 #: src/osmEditDialog.js:122
 msgid "Name"
@@ -1039,9 +1039,9 @@ msgstr "זו אינה כתובת דוא״ל תקפה. נא לוודא שלא ה�
 
 #: src/osmEditDialog.js:161
 msgid ""
-"Contact e-mail address for inquiries.Add only email addresses that are "
+"Contact e-mail address for inquiries. Add only email addresses that are "
 "intended to be publicly used."
-msgstr "דוא״ל יצירת קשר לשאלות. נא להוסיף כתובת שניתן להשתמש בה באופן ציבורי."
+msgstr "דוא״ל יצירת קשר לשאלות. נא להוסיף כתובות שמיועדות לשימוש הציבור בלבד."
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
@@ -1054,7 +1054,7 @@ msgid ""
 "The format used should include the language code and the article title like "
 "“en:Article title”."
 msgstr ""
-"התבנית בשימוש צריכה לכלול את קוד השפה ואת כותרת הערך. למשל: \"he:כותרת הערך."
+"התבנית בשימוש צריכה לכלול את קוד השפה ואת כותרת הערך. למשל: „he:כותרת הערך”."
 
 #: src/osmEditDialog.js:174 src/placeView.js:345
 msgid "Opening hours"
@@ -1072,7 +1072,7 @@ msgstr "ניתן לקבל עזרה עבור התבנית בקישור בתווי
 #.
 #: src/osmEditDialog.js:182 src/placeView.js:455
 msgid "Population"
-msgstr "אוכלוסייה"
+msgstr "אוכלוסיה"
 
 #: src/osmEditDialog.js:187 src/placeView.js:484
 msgid "Altitude"
@@ -1436,7 +1436,7 @@ msgstr "מ־%s אל %s"
 
 #: src/printOperation.js:46
 msgid "Loading map tiles for printing"
-msgstr "טוען אירי מפה להדפסה"
+msgstr "אריחי מפה להדפסה נטענים"
 
 #: src/printOperation.js:47
 msgid "You can abort printing if this takes too long"
@@ -1758,8 +1758,8 @@ msgstr[3] "‏‫%s שע׳ %s דק׳"
 #, javascript-format
 msgid "%s min"
 msgid_plural "%s min"
-msgstr[0] "‫%s min"
-msgstr[1] "‫%s min"
+msgstr[0] "‫%s דק׳"
+msgstr[1] "‫%s דק׳"
 msgstr[2] "‫%s דק׳"
 msgstr[3] "‫%s דק׳‎"
 
