@@ -25,23 +25,24 @@ const BoundingBox = imports.boundingBox;
 const Utils = imports.utils;
 
 var TurnPointType = {
-    SHARP_LEFT:    0,
-    LEFT:          1,
-    SLIGHT_LEFT:   2,
-    CONTINUE:      3,
-    SLIGHT_RIGHT:  4,
-    RIGHT:         5,
-    SHARP_RIGHT:   6,
-    END:           7,
-    VIA:           8,
-    ROUNDABOUT:    9,
-
-    // This one is not in GraphHopper, so choose
-    // a reasonably unlikely number for this
-    START:         10000,
-    ELEVATOR:      10001,
-    UTURN_LEFT:    10002,
-    UTURN_RIGHT:   10003
+    START:            0,
+    SHARP_LEFT:       1,
+    LEFT:             2,
+    SLIGHT_LEFT:      3,
+    KEEP_LEFT:        4,
+    CONTINUE:         5,
+    SLIGHT_RIGHT:     6,
+    RIGHT:            7,
+    SHARP_RIGHT:      8,
+    KEEP_RIGHT:       9,
+    END:              10,
+    VIA:              11,
+    ROUNDABOUT:       12,
+    LEAVE_ROUNDABOUT: 13,
+    UTURN:            14,
+    UTURN_LEFT:       15,
+    UTURN_RIGHT:      16,
+    ELEVATOR:         17
 };
 
 /* countries/terrotories driving on the left
@@ -136,6 +137,9 @@ var TurnPoint = class TurnPoint {
         case TurnPointType.END:          return 'maps-point-end-symbolic';
         case TurnPointType.ROUNDABOUT:   return this._getRoundaboutIconName(turnAngle);
         case TurnPointType.ELEVATOR:     return 'maps-direction-elevator-symbolic';
+        case TurnPointType.UTURN:        return this._isLeftHandTraffic() ?
+                                                'maps-direction-u-turn-right-symbolic':
+                                                'maps-direction-u-turn-left-symbolic';
         case TurnPointType.UTURN_LEFT:   return 'maps-direction-u-turn-left-symbolic';
         case TurnPointType.UTURN_RIGHT:  return 'maps-direction-u-turn-right-symbolic';
         default:                         return '';

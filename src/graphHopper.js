@@ -35,7 +35,10 @@ const Utils = imports.utils;
  * https://github.com/graphhopper/graphhopper/blob/master/docs/web/api-doc.md
  */
 var Sign = {
+    UTURN: -98,
+    UTURN_LEFT: -8,
     KEEP_LEFT: -7,
+    LEAVE_ROUNDABOUT: -6, // not currently used
     TURN_SHARP_LEFT: -3,
     TURN_LEFT: -2,
     TURN_SLIGHT_LEFT: -1,
@@ -46,7 +49,8 @@ var Sign = {
     FINISH: 4,
     REACHED_VIA: 5,
     USE_ROUNDABOUT: 6,
-    KEEP_RIGHT: 7
+    KEEP_RIGHT: 7,
+    UTURN_RIGHT: 8
 }
 
 var GraphHopper = class GraphHopper {
@@ -258,12 +262,24 @@ var GraphHopper = class GraphHopper {
     }
 
     _createTurnPointType(sign) {
-        let type = sign + 3;
-        let min  = Route.TurnPointType.SHARP_LEFT;
-        let max  = Route.TurnPointType.ROUNDABOUT;
-        if (min <= type && type <= max)
-            return type;
-        else
-            return undefined;
+        switch (sign) {
+            case Sign.UTURN:              return Route.TurnPointType.UTURN;
+            case Sign.UTURN_LEFT:         return Route.TurnPointType.UTURN_LEFT;
+            case Sign.KEEP_LEFT:          return Route.TurnPointType.KEEP_LEFT;
+            case Sign.LEAVE_ROUNDABOUT:   return Route.TurnPointType.LEAVE_ROUNDABOUT;
+            case Sign.TURN_SHARP_LEFT:    return Route.TurnPointType.SHARP_LEFT;
+            case Sign.TURN_LEFT:          return Route.TurnPointType.LEFT;
+            case Sign.TURN_SLIGHT_LEFT:   return Route.TurnPointType.SLIGHT_LEFT;
+            case Sign.CONTINUE_ON_STREET: return Route.TurnPointType.CONTINUE;
+            case Sign.TURN_SLIGHT_RIGHT:  return Route.TurnPointType.SLIGHT_RIGHT;
+            case Sign.TURN_RIGHT:         return Route.TurnPointType.RIGHT;
+            case Sign.TURN_SHARP_RIGHT:   return Route.TurnPointType.SHARP_RIGHT;
+            case Sign.FINISH:             return Route.TurnPointType.END;
+            case Sign.REACHED_VIA:        return Route.TurnPointType.VIA;
+            case Sign.USE_ROUNDABOUT:     return Route.TurnPointType.ROUNDABOUT;
+            case Sign.KEEP_RIGHT:         return Route.TurnPointType.KEEP_RIGHT;
+            case Sign.UTURN_RIGHT:        return Route.TurnPointType.UTURN_RIGHT;
+            default: return undefined;
+        }
     }
 };
