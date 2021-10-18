@@ -1,6 +1,6 @@
 gnome.compile_resources(
 	app_id + '.data',
-	app_id + '.data.gresource.xml',
+	'org.gnome.Maps.data.gresource.xml',
 	gresource_bundle: true,
 	install: true,
 	install_dir: pkgdatadir
@@ -12,9 +12,14 @@ install_data(
 )
 
 desktop = app_id + '.desktop'
-
+desktop_config = configuration_data()
+desktop_config.set('app-id', app_id)
 desktop_file = custom_target('desktop-file',
-  input: desktop + '.in',
+  input: configure_file(
+  	input: 'org.gnome.Maps.desktop.in.in',
+  	output: 'org.gnome.Maps.desktop.in',
+  	configuration: desktop_config
+  ),
   output: desktop,
   install: true,
   install_dir: join_paths(datadir, 'applications'),
@@ -26,15 +31,21 @@ desktop_file = custom_target('desktop-file',
 )
 
 install_data(
-	app_id + '.gschema.xml',
+	'org.gnome.Maps.gschema.xml',
 	install_dir: join_paths(datadir, 'glib-2.0', 'schemas')
 )
 
 appdata = app_id + '.appdata.xml'
-
+appdata_config = configuration_data()
+appdata_config.set('app-id', app_id)
+appdata_config.set('gettext-package', 'gnome-maps')
 appdata_file = i18n.merge_file(
 	appdata,
-	input: appdata + '.in',
+	input: configure_file(
+		input: 'org.gnome.Maps.appdata.xml.in.in',
+		output: 'org.gnome.Maps.appdata.xml.in',
+		configuration: appdata_config
+	),
 	output: appdata,
 	po_dir: po_dir,
 	install: true,
@@ -44,9 +55,10 @@ appdata_file = i18n.merge_file(
 service_conf = configuration_data()
 service_conf.set('PACKAGE_NAME', meson.project_name())
 service_conf.set('pkgdatadir', pkgdatadir)
+service_conf.set('app-id', app_id)
 
 configure_file(
-	input: app_id + '.service.in',
+	input: 'org.gnome.Maps.service.in',
 	output: app_id + '.service',
 	configuration: service_conf,
 	install: true,

@@ -1,5 +1,5 @@
 {
-    "app-id" : "org.gnome.Maps",
+    "app-id" : "org.gnome.Maps.Devel",
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "master",
     "sdk" : "org.gnome.Sdk",
@@ -235,6 +235,9 @@
             "name" : "gnome-maps",
             "buildsystem" : "meson",
             "builddir" : true,
+            "config-opts": [
+                "-Dprofile=development"
+            ],
             "sources" : [
                 {
                     "type" : "git",

@@ -4,6 +4,11 @@ project('gnome-maps', 'c',
 )
 
 app_id = 'org.gnome.Maps'
+
+if get_option('profile') == 'development'
+	app_id = 'org.gnome.Maps.Devel'
+endif
+
 gnome = import('gnome')
 i18n = import('i18n')
 
@@ -60,5 +65,6 @@ subdir('tests')
 meson.add_install_script(
   'meson_post_install.py',
   datadir,
-  bindir
+  bindir,
+  app_id
 )

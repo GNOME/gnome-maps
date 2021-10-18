@@ -70,7 +70,7 @@ var Geoclue = GObject.registerClass({
     }
 
     start(callback) {
-        let id = 'org.gnome.Maps';
+        let id = pkg.name;
         let level = GClue.AccuracyLevel.EXACT;
 
         GClue.Simple.new(id, level, null, (object, result) => {

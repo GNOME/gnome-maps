@@ -96,7 +96,7 @@ var Application = GObject.registerClass({
         /* Needed to be able to use in UI files */
         _ensuredTypes.forEach((type) => GObject.type_ensure(type));
 
-        super._init({ application_id: 'org.gnome.Maps',
+        super._init({ application_id: pkg.name,
                       flags: Gio.ApplicationFlags.HANDLES_OPEN |
                              Gio.ApplicationFlags.HANDLES_COMMAND_LINE });
         this._connected = false;
