@@ -499,3 +499,18 @@ function isValidEmail(email) {
 function firstToLocaleUpperCase(str) {
     return str[0].toLocaleUpperCase() + str.substring(1);
 }
+
+/* Splits string at first occurance of a character, leaving remaining
+ * occurances of the separator in the second part
+ */
+function splitAtFirst(string, separator) {
+    let [first, ...rest] = string.split(separator);
+
+    if (rest.length > 0) {
+        rest = rest.join(separator);
+
+        return [first, rest];
+    } else {
+        return [first];
+    }
+}

@@ -41,6 +41,7 @@ function main() {
     validWebsiteTest();
     validEmailTest();
     firstToLocaleUpperCaseTest();
+    splitAtFirstTest();
 }
 
 function osmTypeToStringTest() {
@@ -136,4 +137,16 @@ function firstToLocaleUpperCaseTest() {
     JsUnit.assertEquals('XXX', Utils.firstToLocaleUpperCase('XXX'));
     JsUnit.assertEquals('فارسی', Utils.firstToLocaleUpperCase('فارسی'));
     JsUnit.assertEquals('日本語', Utils.firstToLocaleUpperCase('日本語'));
+}
+
+function _assertPair(first, second, array) {
+    JsUnit.assertEquals(2, array.length);
+    JsUnit.assertEquals(first, array[0]);
+    JsUnit.assertEquals(second, array[1]);
+}
+
+function splitAtFirstTest() {
+    _assertPair('q', 'Query', Utils.splitAtFirst('q=Query', '='));
+    _assertPair('q', 'Query=more', Utils.splitAtFirst('q=Query=more', '='));
+    JsUnit.assertEquals(1, Utils.splitAtFirst('noseparator', '=').length);
 }
