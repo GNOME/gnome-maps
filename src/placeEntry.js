@@ -137,7 +137,7 @@ var PlaceEntry = GObject.registerClass({
             let cachedResults = this._cache[this.text];
 
             if (cachedResults) {
-                this._updateResults(cachedResults);
+                this.updateResults(cachedResults, this.text, true);
             } else {
                 // if no previous search has been performed, show spinner
                 if (!this._previousSearch ||
@@ -279,7 +279,7 @@ var PlaceEntry = GObject.registerClass({
                 this.place = null;
                 this._popover.showError();
             } else {
-                this._updateResults(places);
+                this.updateResults(places, this.text, true);
 
                 // cache results for later
                 this._cache[this._previousSearch] = places;
@@ -291,7 +291,14 @@ var PlaceEntry = GObject.registerClass({
         });
     }
 
-    _updateResults(places) {
+    /**
+     * Update results popover
+     * places array of places from search result
+     * searchText original search string to highlight in results
+     * includeContactsAndRoute whether to include contacts and recent routes
+     *                         among results
+     */
+    updateResults(places, searchText, includeContactsAndRoutes) {
         if (!places) {
                 this.place = null;
                 this._popover.showNoResult();
@@ -301,13 +308,15 @@ var PlaceEntry = GObject.registerClass({
         let completedPlaces = [];
 
 
-        this._filter.refilter();
-        this._filter.foreach((model, path, iter) => {
-            let place = model.get_value(iter, PlaceStore.Columns.PLACE);
-            let type = model.get_value(iter, PlaceStore.Columns.TYPE);
+        if (includeContactsAndRoutes) {
+            this._filter.refilter();
+            this._filter.foreach((model, path, iter) => {
+                let place = model.get_value(iter, PlaceStore.Columns.PLACE);
+                let type = model.get_value(iter, PlaceStore.Columns.TYPE);
 
-            completedPlaces.push({ place: place, type: type });
-        });
+                completedPlaces.push({ place: place, type: type });
+            });
+        }
 
         let placeStore = Application.placeStore;
 
@@ -324,7 +333,7 @@ var PlaceEntry = GObject.registerClass({
             completedPlaces.push({ place: place, type: type });
         });
 
-        this._popover.updateResult(completedPlaces, this.text);
+        this._popover.updateResult(completedPlaces, searchText);
         this._popover.showResult();
     }
 });
