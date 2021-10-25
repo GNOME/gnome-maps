@@ -93,6 +93,10 @@ var MainWindow = GObject.registerClass({
         return this._mapView;
     }
 
+    get placeEntry() {
+        return this._placeEntry;
+    }
+
     _init(params) {
         super._init(params);
 
