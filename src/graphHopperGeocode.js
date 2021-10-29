@@ -137,11 +137,13 @@ var GraphHopperGeocode = class {
     }
 
     _buildURL(string, latitude, longitude) {
-        let query = new HTTP.Query({ point:   latitude + ',' + longitude,
-                                     limit:   string ? this._limit : 1,
+        let query = new HTTP.Query({ limit:   string ? this._limit : 1,
                                      locale:  this._language,
                                      key:     this._apiKey
                                    });
+        if (latitude !== null && longitude != null)
+            query.add('point', latitude + ',' + longitude);
+
         if (string)
             query.add('q', string);
         else
