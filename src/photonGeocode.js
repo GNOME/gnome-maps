@@ -135,10 +135,12 @@ var PhotonGeocode = class {
     }
 
     _buildURL(string, latitude, longitude) {
-        let query = new HTTP.Query({ lat:     latitude,
-                                     lon:     longitude,
-                                     limit:   string ? this._limit : 1
-                                   });
+        let query = new HTTP.Query({ limit: string ? this._limit : 1 });
+
+        if (latitude !== null && longitude != null) {
+            query.add('lat', latitude);
+            query.add('lon', longitude);
+        }
 
         if (string)
             query.add('q', string);
