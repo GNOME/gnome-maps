@@ -33,6 +33,7 @@ const CheckIn = imports.checkIn;
 const ContactPlace = imports.contactPlace;
 const Format = imports.format;
 const Geoclue = imports.geoclue;
+const GeocodeFactory = imports.geocode;
 const MainWindow = imports.mainWindow;
 const Maps = imports.gi.GnomeMaps;
 const OSMEdit = imports.osmEdit;
@@ -42,6 +43,7 @@ const RoutingDelegator = imports.routingDelegator;
 const RouteQuery = imports.routeQuery;
 const Settings = imports.settings;
 const Utils = imports.utils;
+const URIS = imports.uris;
 
 // used globally
 var application = null;
@@ -311,18 +313,86 @@ var Application = GObject.registerClass({
         let scheme = GLib.uri_parse_scheme(uri);
 
         if (scheme === 'geo') {
-            /* we get an uri that looks like geo:///lat,lon, remove slashes */
+            // we get a URI that looks like geo:///lat,lon, remove slashes
             let geoURI = uri.replace(/\//g, '');
             this._mainWindow.mapView.goToGeoURI(geoURI);
         } else if (scheme === 'http' || scheme === 'https') {
             this._mainWindow.mapView.goToHttpURL(uri);
+        } else if (scheme === 'maps') {
+            // we get a URI that looks like maps:///q=Search, remove slashes
+            let mapsURI = uri.replace(/\//g, '');
+            this._openMapsUri(mapsURI);
         } else {
             this._mainWindow.mapView.openShapeLayers(files);
         }
     }
 
+    _openMapsUri(uri) {
+        let query = URIS.parseMapsURI(uri);
+
+        if (query)
+            this._openSearchQuery(query);
+        else
+            this._invalidMapsUri(uri);
+    }
+
+    _openSearchQuery(query) {
+        let cancellable = new Gio.Cancellable();
+
+        /* unless there's exactly one place (which should be focused) in
+         * the results, let the stored location be used on startup
+         */
+        normalStartup = true;
+        this.connect('shutdown', () => cancellable.cancel());
+        GeocodeFactory.getGeocoder().search(query, null, null, cancellable,
+                                            (places, error) => {
+            if (error) {
+                Utils.showDialog(_("An error has occurred"),
+                                 Gtk.MessageType.ERROR, this._mainWindow);
+            } else {
+                // clear search entry
+                this._mainWindow.placeEntry.text = '';
+
+                if (places) {
+                    /* if there's only one place in results, show it directly
+                     * with it's bubble, otherwise present the results in the
+                     * search popover
+                     */
+                    if (places?.length === 1) {
+                        /* don't use the stored location on startup, as we're
+                         * zooming in directly on the place
+                         */
+                        normalStartup = false;
+                        this._mainWindow.mapView.showPlace(places[0], true);
+                    } else {
+                        this._mainWindow.placeEntry.grab_focus();
+                        this._mainWindow.placeEntry.updateResults(places, query,
+                                                                  false);
+                    }
+                } else {
+                    Utils.showDialog(_("No results found"),
+                                     Gtk.MessageType.INFO, this._mainWindow);
+                }
+            }
+        });
+    }
+
+    _invalidMapsUri(uri) {
+        Utils.showDialog(_("Invalid maps: URI: %s").format(uri),
+                         Gtk.MessageType.ERROR, this._mainWindow);
+    }
+
     vfunc_open(files) {
-        normalStartup = false;
+        /* unless the first argument is a maps: URI with a search query
+         * we should not perform the normal startup behavior of going to
+         * the stored location, as shape layers, directly addressed OSM
+         * objects, and geo: URIs will override the startup location
+         */
+        let uri = files[0].get_uri();
+
+        if (GLib.uri_parse_scheme(uri) !== 'maps')
+            normalStartup = false;
+
         this.activate();
 
         let mapView = this._mainWindow.mapView;
@@ -363,7 +433,7 @@ var Application = GObject.registerClass({
                 let path = r.get_string()[0];
 
                 if (path.startsWith('geo:') || path.startsWith('http://') ||
-                    path.startsWith('https://')) {
+                    path.startsWith('https://') || path.startsWith('maps:')) {
                     files.push(Gio.File.new_for_uri(path));
                 } else {
                     files.push(Gio.File.new_for_path(path));
