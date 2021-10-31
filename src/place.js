@@ -29,7 +29,7 @@ const GObject = imports.gi.GObject;
 const Location = imports.location;
 const Overpass = imports.overpass;
 const PlaceIcons = imports.placeIcons;
-const URLS = imports.urls;
+const URIS = imports.uris;
 const Utils = imports.utils;
 
 // Matches coordinates string in 'Decimal Degrees' format
@@ -503,7 +503,7 @@ let overpass = null;
 const Application = imports.application;
 
 function parseHttpURL(text, callback) {
-    let [type, id] = URLS.parseAsObjectURL(text);
+    let [type, id] = URIS.parseAsObjectURL(text);
 
     if (type && id) {
         let storedPlace = Application.placeStore.existsWithOsmTypeAndId(type, id);
@@ -525,7 +525,7 @@ function parseHttpURL(text, callback) {
                 callback(null, _("Place not found in OpenStreetMap"));
         });
     } else {
-        let [lat, lon, zoom] = URLS.parseAsCoordinateURL(text);
+        let [lat, lon, zoom] = URIS.parseAsCoordinateURL(text);
 
         if (lat && lon) {
             if (!Place.validateCoordinates(lat, lon)) {

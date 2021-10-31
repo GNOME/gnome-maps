@@ -21,7 +21,7 @@
 
 const JsUnit = imports.jsUnit;
 
-const URLS = imports.urls;
+const URIS = imports.uris;
 
 const OSM_COORD_URL1 =
     'https://www.openstreetmap.org/?lat=39.9882&lon=-78.2409&zoom=14&layers=B000FTF';
@@ -32,31 +32,31 @@ function main() {
 }
 
 function parseAsObjectURLTest() {
-    _assertArrayEquals([], URLS.parseAsObjectURL('https://www.example.com'));
-    _assertArrayEquals([], URLS.parseAsObjectURL('https://www.openstreet.org/'));
+    _assertArrayEquals([], URIS.parseAsObjectURL('https://www.example.com'));
+    _assertArrayEquals([], URIS.parseAsObjectURL('https://www.openstreet.org/'));
     _assertArrayEquals(['node', 1],
-                       URLS.parseAsObjectURL('https://www.openstreetmap.org/node/1'));
+                       URIS.parseAsObjectURL('https://www.openstreetmap.org/node/1'));
     _assertArrayEquals(['way', 2],
-                       URLS.parseAsObjectURL('https://www.openstreetmap.org/way/2'));
+                       URIS.parseAsObjectURL('https://www.openstreetmap.org/way/2'));
     _assertArrayEquals(['relation', 3],
-                       URLS.parseAsObjectURL('https://www.openstreetmap.org/relation/3'));
+                       URIS.parseAsObjectURL('https://www.openstreetmap.org/relation/3'));
     _assertArrayEquals([],
-                       URLS.parseAsObjectURL('https://www.openstreetmap.org/foo/1'));
+                       URIS.parseAsObjectURL('https://www.openstreetmap.org/foo/1'));
     _assertArrayEquals(['node', 4],
-                       URLS.parseAsObjectURL('https://openstreetmap.org/node/4'));
+                       URIS.parseAsObjectURL('https://openstreetmap.org/node/4'));
     _assertArrayEquals(['node', 5],
-                       URLS.parseAsObjectURL('http://www.openstreetmap.org/node/5'));
+                       URIS.parseAsObjectURL('http://www.openstreetmap.org/node/5'));
 }
 
 function parseAsCoordinateURLTest() {
     _assertArrayEquals([],
-                       URLS.parseAsCoordinateURL('https://www.example.com'));
+                       URIS.parseAsCoordinateURL('https://www.example.com'));
     _assertArrayEquals([],
-                       URLS.parseAsCoordinateURL('https://www.openstreet.org/'));
+                       URIS.parseAsCoordinateURL('https://www.openstreet.org/'));
     _assertArrayEquals([39.9882, -78.2409, 14],
-                       URLS.parseAsCoordinateURL('https://www.openstreetmap.org/?lat=39.9882&lon=-78.2409&zoom=14&layers=B000FTF'));
+                       URIS.parseAsCoordinateURL('https://www.openstreetmap.org/?lat=39.9882&lon=-78.2409&zoom=14&layers=B000FTF'));
     _assertArrayEquals([59.40538, 17.34894, 12],
-                       URLS.parseAsCoordinateURL('https://www.openstreetmap.org/?#map=12/59.40538/17.34894'));
+                       URIS.parseAsCoordinateURL('https://www.openstreetmap.org/?#map=12/59.40538/17.34894'));
 }
 
 function _assertArrayEquals(arr1, arr2) {

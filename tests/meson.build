@@ -1,6 +1,6 @@
 tests = ['addressTest', 'boundingBoxTest', 'colorTest', 'osmNamesTest',
          'placeIconsTest', 'timeTest', 'translationsTest', 'utilsTest',
-         'urlsTest', 'wikipediaTest']
+         'urisTest', 'wikipediaTest']
 
 foreach test : tests
   script_conf = configuration_data()
