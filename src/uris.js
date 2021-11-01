@@ -22,6 +22,9 @@
 const _ = imports.gettext.gettext;
 
 const GLib = imports.gi.GLib;
+const Soup = imports.gi.Soup;
+
+const Utils = imports.utils;
 
 // Matches URLs for OpenStreetMap (for addressing objects or coordinates)
 const OSM_URL_REGEX = new RegExp(/https?:\/\/(www\.)?openstreetmap\.org./);
@@ -101,4 +104,23 @@ function parseAsObjectURL(url) {
     }
 
     return [];
+}
+
+/**
+ * For maps: URIs, return the search query string if a valid URI
+ * otherwise null.
+ */
+function parseMapsURI(uri) {
+    let path = uri.substring('maps:'.length);
+    let [param, value] = Utils.splitAtFirst(path, '=');
+
+    if (param === 'q') {
+        try {
+            return Soup.uri_decode(value);
+        } catch (error) {
+            return null;
+        }
+    } else {
+        return null;
+    }
 }

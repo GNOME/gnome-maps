@@ -19,6 +19,10 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
+pkg.require({ 'Gdk': '3.0',
+              'Gtk': '3.0',
+              'Soup': '2.4' });
+
 const JsUnit = imports.jsUnit;
 
 const URIS = imports.uris;
@@ -29,6 +33,7 @@ const OSM_COORD_URL1 =
 function main() {
     parseAsObjectURLTest();
     parseAsCoordinateURLTest();
+    parseMapsURITest();
 }
 
 function parseAsObjectURLTest() {
@@ -57,6 +62,14 @@ function parseAsCoordinateURLTest() {
                        URIS.parseAsCoordinateURL('https://www.openstreetmap.org/?lat=39.9882&lon=-78.2409&zoom=14&layers=B000FTF'));
     _assertArrayEquals([59.40538, 17.34894, 12],
                        URIS.parseAsCoordinateURL('https://www.openstreetmap.org/?#map=12/59.40538/17.34894'));
+}
+
+function parseMapsURITest() {
+    JsUnit.assertEquals('Query', URIS.parseMapsURI('maps:q=Query'));
+    JsUnit.assertEquals('Search query', URIS.parseMapsURI('maps:q=Search%20query'));
+    JsUnit.assertNull(URIS.parseMapsURI('maps:No%20query'));
+    JsUnit.assertNull(URIS.parseMapsURI('not_a_valid_uri'));
+    JsUnit.assertNull(URIS.parseMapsURI('maps:q=Foo%bar'));
 }
 
 function _assertArrayEquals(arr1, arr2) {
