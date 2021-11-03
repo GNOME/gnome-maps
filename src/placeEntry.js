@@ -34,6 +34,7 @@ const Location = imports.location;
 const Place = imports.place;
 const PlaceStore = imports.placeStore;
 const PlacePopover = imports.placePopover;
+const URIS = imports.uris;
 const Utils = imports.utils;
 
 // minimum number of characters to start completion
@@ -219,6 +220,19 @@ var PlaceEntry = GObject.registerClass({
                 this.place = new Place.Place({ location: location });
             } catch(e) {
                 let msg = _("Failed to parse Geo URI");
+                Utils.showDialog(msg, Gtk.MessageType.ERROR, this.get_toplevel());
+            }
+
+            parsed = true;
+        }
+
+        if (this.text.startsWith('maps:')) {
+            let query = URIS.parseMapsURI(this.text);
+
+            if (query) {
+                this.text = query;
+            } else {
+                let msg = _("Failed to parse Maps URI");
                 Utils.showDialog(msg, Gtk.MessageType.ERROR, this.get_toplevel());
             }
 
