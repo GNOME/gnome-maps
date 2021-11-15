@@ -125,6 +125,14 @@ var Application = GObject.registerClass({
                              GLib.OptionArg.NONE,
                              _("Ignore network availability"),
                              null);
+
+        this.add_main_option('search',
+                             'S'.charCodeAt(0),
+                             GLib.OptionFlags.NONE,
+                             GLib.OptionArg.STRING,
+                             _("Search for places"),
+                             null);
+
         /* due to https://gitlab.gnome.org/GNOME/gjs/-/issues/330 the
          * description for the remaining args needs to be passed as both
          * description and arg_description
@@ -425,10 +433,16 @@ var Application = GObject.registerClass({
         }
 
         let remaining = options.lookup(GLib.OPTION_REMAINING, null);
+        let files = [];
+
+        // when given the search CLI argument, insert URI as first file
+        if (options.contains('search')) {
+            let query = options.lookup_value('search', null).deep_unpack();
+
+            files = [Gio.File.new_for_uri(`maps:q=${query}`)];
+        }
 
         if (remaining) {
-            let files = [];
-
             remaining.forEach((r) => {
                 let path = r.get_string()[0];
 
@@ -439,11 +453,12 @@ var Application = GObject.registerClass({
                     files.push(Gio.File.new_for_path(path));
                 }
             });
-
-            this.open(files, '');
-        } else {
-            this.activate();
         }
+
+        if (files.length > 0)
+            this.open(files, '');
+        else
+            this.activate();
 
         return 0;
     }
