@@ -189,6 +189,20 @@ var Application = GObject.registerClass({
         dialog.connect('response', () => dialog.destroy());
     }
 
+    _onSearchActivate(action, parameter) {
+        this._createWindow();
+        this._mainWindow.present();
+
+        let query = parameter.deep_unpack();
+        let mapView = this._mainWindow.mapView;
+
+        if (mapView.view.realized)
+            this._openSearchQuery(query);
+        else
+            mapView.view.connect('notify::realized',
+                                 this._openSearchQuery.bind(this, query));
+    }
+
     _addContacts() {
         let contacts = contactStore.get_contacts();
 
@@ -255,6 +269,10 @@ var Application = GObject.registerClass({
             },
             'osm-account-setup': {
                 onActivate: this._onOsmAccountSetupActivate.bind(this)
+            },
+            'search': {
+                paramType: 's',
+                onActivate: this._onSearchActivate.bind(this)
             },
             'quit': {
                 onActivate: () => this.quit(),
