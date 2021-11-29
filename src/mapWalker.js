@@ -22,11 +22,11 @@
  */
 
 const Clutter = imports.gi.Clutter;
-const Geocode = imports.gi.GeocodeGlib;
 const GObject = imports.gi.GObject;
 
 const BoundingBox = imports.boundingBox;
 const Location = imports.location;
+const PlaceZoom = imports.placeZoom;
 const Utils = imports.utils;
 
 const _MAX_DISTANCE = 19850; // half of Earth's circumference (km)
@@ -62,24 +62,23 @@ var MapWalker = GObject.registerClass({
     zoomToFit() {
         let zoom;
 
-        if (this._boundingBox !== null && this._boundingBox.isValid()) {
-            zoom = this._mapView.getZoomLevelFittingBBox(this._boundingBox);
-        } else if (this.place.initialZoom) {
+        if (this.place.initialZoom) {
             zoom = this.place.initialZoom;
         } else {
-            switch (this.place.place_type) {
-                case Geocode.PlaceType.STREET:
-                    zoom = 16;
-                    break;
-                case Geocode.PlaceType.TOWN:
-                    zoom = 11;
-                    break;
-                case Geocode.PlaceType.COUNTRY:
-                    zoom = 6;
-                    break;
-                default:
-                    zoom = this._view.max_zoom_level;
-                    break;
+            zoom = PlaceZoom.getZoomLevelForPlace(this.place) ??
+                   this._view.max_zoom_level;
+
+            /* If the place has a bounding box, use the lower of the default
+             * zoom level based on the place's type and the zoom level needed
+             * fit the bounding box. This way we ensure the bounding box will
+             * be all visible and we also have an appropriate amount
+             * of context for the place
+             */
+            if (this._boundingBox !== null && this._boundingBox.isValid()) {
+                let bboxZoom =
+                    this._mapView.getZoomLevelFittingBBox(this._boundingBox);
+
+                zoom = Math.min(zoom, bboxZoom);
             }
         }
 
