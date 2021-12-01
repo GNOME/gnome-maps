@@ -49,14 +49,14 @@ var TurnPointType = {
  * source: https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic
  */
 const LHT_COUNTRIES = new Set(['AG', 'AI', 'AU', 'BB', 'BD', 'BM', 'BN', 'BS',
-                               'BT', 'BW', 'CY', 'DM', 'FJ', 'FK', 'GB', 'GB',
-                               'GD', 'GY', 'HK', 'ID', 'IE', 'IM', 'IN', 'JE',
-                               'JM', 'JP', 'KE', 'KI', 'KN', 'KY', 'LC', 'LK',
-                               'LS', 'MO', 'MS', 'MT', 'MU', 'MV', 'MW', 'MY',
-                               'MZ', 'NA', 'NP', 'NR', 'NZ', 'PG', 'PN', 'PK',
-                               'SB', 'SC', 'SG', 'SH', 'SR', 'SZ', 'TC', 'TH',
-                               'TL', 'TO', 'TT', 'TV', 'TZ', 'UG', 'VC', 'VG',
-                               'VI', 'WS', 'ZA', 'ZM', 'ZW']);
+                               'BT', 'BW', 'CY', 'DM', 'FJ', 'FK', 'GB', 'GD',
+                               'GY', 'HK', 'ID', 'IE', 'IM', 'IN', 'JE', 'JM',
+                               'JP', 'KE', 'KI', 'KN', 'KY', 'LC', 'LK', 'LS',
+                               'MO', 'MS', 'MT', 'MU', 'MV', 'MW', 'MY', 'MZ',
+                               'NA', 'NP', 'NR', 'NZ', 'PG', 'PN', 'PK', 'SB',
+                               'SC', 'SG', 'SH', 'SR', 'SZ', 'TC', 'TH', 'TL',
+                               'TO', 'TT', 'TV', 'TZ', 'UG', 'VC', 'VG', 'VI',
+                               'WS', 'ZA', 'ZM', 'ZW']);
 
 var Route = GObject.registerClass({
     Signals: {
@@ -137,7 +137,7 @@ var TurnPoint = class TurnPoint {
         case TurnPointType.END:          return 'maps-point-end-symbolic';
         case TurnPointType.ROUNDABOUT:   return this._getRoundaboutIconName(turnAngle);
         case TurnPointType.ELEVATOR:     return 'maps-direction-elevator-symbolic';
-        case TurnPointType.UTURN:        return this._isLeftHandTraffic() ?
+        case TurnPointType.UTURN:        return this._isLefthandTraffic() ?
                                                 'maps-direction-u-turn-right-symbolic':
                                                 'maps-direction-u-turn-left-symbolic';
         case TurnPointType.UTURN_LEFT:   return 'maps-direction-u-turn-left-symbolic';
