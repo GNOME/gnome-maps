@@ -1,14 +1,14 @@
 # Czech translation for gnome-maps.
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
-# Marek Černocký <marek@manet.cz>, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021.
+# Marek Černocký <marek@manet.cz>, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2021-08-16 20:57+0000\n"
-"PO-Revision-Date: 2021-08-17 13:20+0200\n"
+"POT-Creation-Date: 2021-11-22 21:08+0000\n"
+"PO-Revision-Date: 2022-01-12 21:49+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -19,15 +19,25 @@ msgstr ""
 "X-DamnedLies-Scope: partial\n"
 "X-Generator: Gtranslator 2.91.7\n"
 
-#: data/org.gnome.Maps.appdata.xml.in:6
-msgid "GNOME Maps"
-msgstr "Mapy GNOME"
+#. Translators: This is the program name.
+#. for some reason, setting the title of the window through the .ui
+#. * template does not work anymore (maybe has something to do with
+#. * setting a custom title on the headerbar). Setting it programmatically
+#. * here works though. And yields a proper label in the gnome-shell
+#. * overview.
+#.
+#. Translators: This is the program name.
+#: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
+#: data/ui/main-window.ui:30 src/application.js:96 src/mainWindow.js:139
+#: src/mainWindow.js:599
+msgid "Maps"
+msgstr "Mapy"
 
-#: data/org.gnome.Maps.appdata.xml.in:7
+#: data/org.gnome.Maps.appdata.xml.in.in:7
 msgid "Find places around the world"
 msgstr "Vyhledávejte místa na celém světě"
 
-#: data/org.gnome.Maps.appdata.xml.in:9
+#: data/org.gnome.Maps.appdata.xml.in.in:9
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
@@ -37,7 +47,7 @@ msgstr ""
 "rychle najít místo, které hledáte, ať už podle názvu města nebo ulice, nebo "
 "určit místo pro setkání s přáteli."
 
-#: data/org.gnome.Maps.appdata.xml.in:14
+#: data/org.gnome.Maps.appdata.xml.in.in:14
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
@@ -45,33 +55,20 @@ msgstr ""
 "Mapy využívají databázi OpenStreetMap, která vzniká díky spolupráci stovek "
 "tisíců lidí z celého světa."
 
-#: data/org.gnome.Maps.appdata.xml.in:189
+#: data/org.gnome.Maps.appdata.xml.in.in:248
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
 
-#. Translators: This is the program name.
-#. for some reason, setting the title of the window through the .ui
-#. * template does not work anymore (maybe has something to do with
-#. * setting a custom title on the headerbar). Setting it programmatically
-#. * here works though. And yields a proper label in the gnome-shell
-#. * overview.
-#.
-#. Translators: This is the program name.
-#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:34
-#: src/application.js:94 src/mainWindow.js:132 src/mainWindow.js:592
-msgid "Maps"
-msgstr "Mapy"
-
-#: data/org.gnome.Maps.desktop.in:5
+#: data/org.gnome.Maps.desktop.in.in:5
 msgid "A simple maps application"
 msgstr "Jednoduchá mapová aplikace"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Maps.desktop.in:14
+#: data/org.gnome.Maps.desktop.in.in:14
 msgid "Maps;"
 msgstr "mapa;mapy;"
 
-#: data/org.gnome.Maps.desktop.in:17
+#: data/org.gnome.Maps.desktop.in.in:17
 msgid "Allows your location to be shown on the map."
 msgstr "Umožňuje vám zobrazit si na mapě své místo."
 
@@ -197,18 +194,10 @@ msgid "Last used transportation type for routing"
 msgstr "Poslední použitý typ dopravy pro hledání trasy"
 
 #: data/org.gnome.Maps.gschema.xml:80
-msgid "Night mode"
-msgstr "Noční režim"
-
-#: data/org.gnome.Maps.gschema.xml:81
-msgid "Whether the application is in night mode."
-msgstr "Zda je aplikace v nočním režimu"
-
-#: data/org.gnome.Maps.gschema.xml:85
 msgid "Use hybrid aerial tiles"
 msgstr "Používat hybridní dlaždice s leteckými snímky"
 
-#: data/org.gnome.Maps.gschema.xml:86
+#: data/org.gnome.Maps.gschema.xml:81
 msgid "Whether aerial tiles should use hybrid style (with labels)."
 msgstr ""
 "Zda dlaždice s leteckými snímky mají používat hybridní styl (s popisky)"
@@ -416,34 +405,30 @@ msgid "Location Settings"
 msgstr "Nastavení určování polohy"
 
 #: data/ui/main-window.ui:8
-msgid "Night Mode"
-msgstr "Noční režim"
-
-#: data/ui/main-window.ui:12
 msgid "Set up OpenStreetMap Account"
 msgstr "Nastavit účet na OpenStreetMap"
 
-#: data/ui/main-window.ui:16
+#: data/ui/main-window.ui:12
 msgid "Export as Image"
 msgstr "Exportovat jako obrázek"
 
-#: data/ui/main-window.ui:21
+#: data/ui/main-window.ui:17
 msgid "_Keyboard Shortcuts"
 msgstr "_Klávesové zkratky"
 
-#: data/ui/main-window.ui:26
+#: data/ui/main-window.ui:22
 msgid "About Maps"
 msgstr "O aplikaci Mapy"
 
-#: data/ui/main-window.ui:52
+#: data/ui/main-window.ui:48
 msgid "Open main menu"
 msgstr "Otevřít hlavní nabídku"
 
-#: data/ui/main-window.ui:114
+#: data/ui/main-window.ui:110
 msgid "Maps is offline!"
 msgstr "Mapy jsou bez připojení!"
 
-#: data/ui/main-window.ui:123
+#: data/ui/main-window.ui:119
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -451,7 +436,7 @@ msgstr ""
 "Aby Mapy mohly fungovat, potřebují aktivní připojení k Internetu, ale žádné "
 "nenalezly."
 
-#: data/ui/main-window.ui:131
+#: data/ui/main-window.ui:127
 msgid "Check your connection and proxy settings."
 msgstr "Zkontrolujte své připojení a nastavení proxy."
 
@@ -577,12 +562,12 @@ msgstr "Úpravit v OpenStreetMap"
 msgid "Next"
 msgstr "Další"
 
-#: data/ui/place-popover.ui:54
+#: data/ui/place-popover.ui:54 src/application.js:399
 msgid "No results found"
 msgstr "Nebyly nalezeny žádné výsledky"
 
-#: data/ui/place-popover.ui:66 src/checkInDialog.js:269 src/checkIn.js:158
-#: src/osmEditDialog.js:587
+#: data/ui/place-popover.ui:66 src/application.js:376 src/checkInDialog.js:269
+#: src/checkIn.js:158 src/osmEditDialog.js:587
 msgid "An error has occurred"
 msgstr "Vyskytla se chyba"
 
@@ -756,25 +741,34 @@ msgstr "Schází vyžadované atributy"
 msgid "Could not find OSM element"
 msgstr "Nelze najít prvek OSM"
 
-#: src/application.js:108
+#: src/application.js:110
 msgid "A path to a local tiles directory structure"
 msgstr "Cesta k místní struktuře složek s dlaždicemi"
 
-#: src/application.js:114
+#: src/application.js:116
 msgid "Tile size for local tiles directory"
 msgstr "Velikost dlaždic pro místní složeku s dlaždicemi"
 
-#: src/application.js:118
+#: src/application.js:120
 msgid "Show the version of the program"
 msgstr "Zobrazit verzi programu"
 
-#: src/application.js:124
+#: src/application.js:126
 msgid "Ignore network availability"
 msgstr "Ignorovat dostupnost sítě"
 
-#: src/application.js:134 src/application.js:135
+#: src/application.js:133
+msgid "Search for places"
+msgstr "Hledat místa"
+
+#: src/application.js:144 src/application.js:145
 msgid "[FILE…|URI]"
 msgstr "[SOUBOR…|URI]"
+
+#: src/application.js:407
+#, javascript-format
+msgid "Invalid maps: URI: %s"
+msgstr "Neplatné mapy: URI: %s"
 
 #: src/checkInDialog.js:161
 msgid "Select an account"
@@ -886,15 +880,15 @@ msgstr "chyba zpracování"
 msgid "unknown geometry"
 msgstr "neznámé geometrické údaje"
 
-#: src/graphHopper.js:112 src/transitPlan.js:181
+#: src/graphHopper.js:116 src/transitPlan.js:181
 msgid "Route request failed."
 msgstr "Požadavek na vyhledání cesty selhal."
 
-#: src/graphHopper.js:119 src/transitPlan.js:173
+#: src/graphHopper.js:123 src/transitPlan.js:173
 msgid "No route found."
 msgstr "Nenalezena žádná cesta."
 
-#: src/graphHopper.js:207 src/transitplugins/openTripPlanner.js:1116
+#: src/graphHopper.js:211 src/transitplugins/openTripPlanner.js:1116
 msgid "Start!"
 msgstr "Start!"
 
@@ -902,23 +896,23 @@ msgstr "Start!"
 msgid "All Layer Files"
 msgstr "Všechny soubory s vrstvami"
 
-#: src/mainWindow.js:495
+#: src/mainWindow.js:502
 msgid "Failed to connect to location service"
 msgstr "Selhalo připojení ke geolokační službě"
 
-#: src/mainWindow.js:590
+#: src/mainWindow.js:597
 msgid "translator-credits"
 msgstr "Marek Černocký <marek@manet.cz>"
 
-#: src/mainWindow.js:593
+#: src/mainWindow.js:600
 msgid "A map application for GNOME"
 msgstr "Mapová aplikace pro GNOME"
 
-#: src/mainWindow.js:604
+#: src/mainWindow.js:611
 msgid "Copyright © 2011 – 2021 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 - 2021 Red Hat, Inc. a autoři Map GNOME"
 
-#: src/mainWindow.js:624
+#: src/mainWindow.js:631
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Mapová data od %s a přispěvatelů"
@@ -928,7 +922,7 @@ msgstr "Mapová data od %s a přispěvatelů"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:640
+#: src/mainWindow.js:647
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Mapové dlaždice poskytuje %s"
@@ -942,20 +936,20 @@ msgstr "Mapové dlaždice poskytuje %s"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:669
+#: src/mainWindow.js:676
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Hledání zprostředkuje %s pomocí %s"
 
-#: src/mapView.js:493 src/mapView.js:551
+#: src/mapView.js:494 src/mapView.js:552
 msgid "Failed to open layer"
 msgstr "Selhalo otevření vrstvy"
 
-#: src/mapView.js:514
+#: src/mapView.js:515
 msgid "Do you want to continue?"
 msgstr "Chcete pokračovat?"
 
-#: src/mapView.js:515
+#: src/mapView.js:516
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -964,11 +958,11 @@ msgstr ""
 "Chystáte se otevřít soubory o celkové velikosti %s MB. To může zabrat nějaký "
 "čas."
 
-#: src/mapView.js:545
+#: src/mapView.js:546
 msgid "File type is not supported"
 msgstr "Typ souboru není podporován"
 
-#: src/mapView.js:583
+#: src/mapView.js:584
 msgid "Failed to open GeoURI"
 msgstr "Selhalo otevření adresy GeoURI"
 
@@ -1276,13 +1270,17 @@ msgstr "Vybrat typ"
 msgid "Done"
 msgstr "Hotovo"
 
-#: src/photonParser.js:111
+#: src/photonParser.js:110
 msgid "Unnamed place"
 msgstr "Místo bez názvu"
 
-#: src/placeEntry.js:221
+#: src/placeEntry.js:222
 msgid "Failed to parse Geo URI"
 msgstr "Selhalo zpracování adresy GeoURI"
+
+#: src/placeEntry.js:235
+msgid "Failed to parse Maps URI"
+msgstr "Selhalo zpracování adresy URI map"
 
 #: src/placeView.js:268
 msgid "Coordinates"
@@ -1439,15 +1437,15 @@ msgstr "V úrovni hladiny moře"
 msgid "Religion:"
 msgstr "Náboženství:"
 
-#: src/place.js:497
+#: src/place.js:525
 msgid "Place not found in OpenStreetMap"
 msgstr "Místo nebylo v OpenStreetMap nalezeno"
 
-#: src/place.js:504
+#: src/place.js:532
 msgid "Coordinates in URL are not valid"
 msgstr "Souřadnice v adrese URL nejsou platné"
 
-#: src/place.js:513
+#: src/place.js:541
 msgid "URL is not supported"
 msgstr "Tato adreasa URL není podporovaná"
 
@@ -1923,4 +1921,3 @@ msgstr "Proveďte otočku doprava na %s"
 #: src/transitplugins/openTripPlanner.js:1249
 msgid "Make a right u-turn"
 msgstr "Proveďte otočku doprava"
-
