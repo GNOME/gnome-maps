@@ -19,7 +19,6 @@
         "--talk-name=org.gnome.evolution.dataserver.Calendar7",
         "--talk-name=org.gnome.evolution.dataserver.Sources5",
         "--talk-name=org.gnome.evolution.dataserver.Subprocess.Backend.*",
-        "--system-talk-name=org.freedesktop.GeoClue2",
         "--metadata=X-DConf=migrate-path=/org/gnome/Maps",
         "--env=G_ENABLE_DIAGNOSTICS=1"
     ],
@@ -37,6 +36,22 @@
     ],
     "modules" : [
        {
+            "name": "libgeoclue",
+            "buildsystem": "meson",
+            "config-opts" : [
+                "-Denable-backend=false",
+                "-Dlibgeoclue=true",
+                "-Dintrospection=true",
+                "-Dgtk-doc=false"
+            ],
+            "sources": [
+                {
+                    "type" : "git",
+                    "url": "https://gitlab.freedesktop.org/geoclue/geoclue.git"
+                }
+            ]
+        },
+        {
            "name": "libical",
            "cleanup": [ "/lib/cmake" ],
            "buildsystem": "cmake-ninja",

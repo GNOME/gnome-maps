@@ -90,9 +90,13 @@ var Geoclue = GObject.registerClass({
 
             this._simple.connect('notify::location',
                                  () => this._onLocationNotify(this._simple));
-            this._simple.client.connect('notify::active', () => {
-                this.state = this._simple.client.active ? State.ON : State.DENIED;
-            });
+
+            // geoclue doesn't use a client proxy inside the flatpak sandbox
+            if (this._simple.client) {
+                this._simple.client.connect('notify::active', () => {
+                    this.state = this._simple.client.active ? State.ON : State.DENIED;
+                });
+            }
 
             this.state = State.ON;
             this._onLocationNotify(this._simple);
