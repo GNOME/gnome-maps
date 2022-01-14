@@ -40,7 +40,6 @@ appdata_config = configuration_data()
 appdata_config.set('app-id', app_id)
 appdata_config.set('gettext-package', 'gnome-maps')
 appdata_file = i18n.merge_file(
-	appdata,
 	input: configure_file(
 		input: 'org.gnome.Maps.appdata.xml.in.in',
 		output: 'org.gnome.Maps.appdata.xml.in',
