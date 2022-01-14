@@ -33,7 +33,6 @@ install_data(
 appdata = app_id + '.appdata.xml'
 
 appdata_file = i18n.merge_file(
-	appdata,
 	input: appdata + '.in',
 	output: appdata,
 	po_dir: po_dir,
