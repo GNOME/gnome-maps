@@ -1,6 +1,16 @@
+data_conf = configuration_data()
+if (get_option('profile') == 'development')
+	data_conf.set('suffix', '/Devel')
+else
+	data_conf.set('suffix', '')
+endif
 gnome.compile_resources(
 	app_id + '.data',
-	'org.gnome.Maps.data.gresource.xml',
+	configure_file(
+		input: 'org.gnome.Maps.data.gresource.xml.in',
+		output: 'org.gnome.Maps.data.gresource.xml',
+		configuration: data_conf
+	),
 	gresource_bundle: true,
 	install: true,
 	install_dir: pkgdatadir
