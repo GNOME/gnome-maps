@@ -118,6 +118,8 @@ var PlaceEntry = GObject.registerClass({
 
         // clear cache when view moves, as result are location-dependent
         this._mapView.view.connect('notify::latitude', () => this._cache = {});
+        // clear cache when zoom level changes, to allow limiting location bias
+        this._mapView.view.connect('notify::zoom-level', () => this._cache =  {});
     }
 
     _onSearchChanged() {
@@ -282,9 +284,18 @@ var PlaceEntry = GObject.registerClass({
             this._cancellable.cancel();
         this._cancellable = new Gio.Cancellable();
         this._previousSearch = this.text;
-        GeocodeFactory.getGeocoder().search(this.text,
-                                            this._mapView.view.latitude,
-                                            this._mapView.view.longitude,
+
+        /* as a stop-gap solution for the location bias tuning issues
+         * in Photon (https://github.com/komoot/photon/issues/600),
+         * for now search "globally" (e.g. without location bias) for
+         * zoom levels above 17, to still allow focused search nearby
+         */
+        let lat = this._mapView.view.zoom_level > 17 ?
+                  this._mapView.view.latitude : null;
+        let lon = this._mapView.view.zoom_level > 17 ?
+                  this._mapView.view.longitude : null;
+
+        GeocodeFactory.getGeocoder().search(this.text, lat, lon,
                                             this._cancellable,
                                             (places, error) => {
             this._cancellable = null;
