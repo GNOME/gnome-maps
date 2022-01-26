@@ -88,22 +88,22 @@ function prettyDistanceTest() {
     JsUnit.assertEquals('2.4 km', Utils.prettyDistance(2400, false));
     JsUnit.assertEquals('123 m', Utils.prettyDistance(123, false));
     JsUnit.assertEquals('1 km', Utils.prettyDistance(1001, false));
-    JsUnit.assertEquals('1001 m', Utils.prettyDistance(1001, true));
+    JsUnit.assertEquals('1,001 m', Utils.prettyDistance(1001, true));
 
     // tests with imperial system, using override mock function
     Utils.getMeasurementSystem = function() { return Utils.IMPERIAL_SYSTEM; };
     JsUnit.assertEquals('1 mi', Utils.prettyDistance(1609, false));
     JsUnit.assertEquals('2.4 mi', Utils.prettyDistance(3900, false));
     JsUnit.assertEquals('0.3 mi', Utils.prettyDistance(440, false));
-    JsUnit.assertEquals('1000 ft', Utils.prettyDistance(304.8, false));
+    JsUnit.assertEquals('1,000 ft', Utils.prettyDistance(304.8, false));
     JsUnit.assertEquals('1 mi', Utils.prettyDistance(1610, false));
-    JsUnit.assertEquals('5282 ft', Utils.prettyDistance(1610, true));
+    JsUnit.assertEquals('5,282 ft', Utils.prettyDistance(1610, true));
 }
 
 function prettyPopulationTest() {
-    JsUnit.assertEquals('123456', Utils.prettyPopulation(123456));
-    JsUnit.assertEquals('1234567', Utils.prettyPopulation(1234567));
-    JsUnit.assertEquals('200000', Utils.prettyPopulation(200000));
+    JsUnit.assertEquals('123,456', Utils.prettyPopulation(123456));
+    JsUnit.assertEquals('1,234,567', Utils.prettyPopulation(1234567));
+    JsUnit.assertEquals('200,000', Utils.prettyPopulation(200000));
     JsUnit.assertEquals('1M', Utils.prettyPopulation(1000000));
     JsUnit.assertEquals('2.1M', Utils.prettyPopulation(2100000));
 }

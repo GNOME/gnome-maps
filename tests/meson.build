@@ -23,7 +23,7 @@ foreach test : tests
        args: ['-I', meson.source_root() + '/src/', '-I',
               meson.source_root() + '/tests/',
               'tests/@0@'.format(test)],
-       env:  ['LANG=C', 'LC_ALL=C']
+       env:  ['LANG=en_US.utf8', 'LC_ALL=en_US.utf8']
   )
 endforeach
 

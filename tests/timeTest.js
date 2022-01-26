@@ -42,8 +42,6 @@ function formatTimeWithTZOffsetTest() {
 
     JsUnit.assertEquals('10:54 PM',
                         Time.formatTimeWithTZOffset(1607982864000, 3600000));
-    JsUnit.assertEquals('9:54 PM',
-                        Time.formatTimeWithTZOffset(1607982864000, 0));
 }
 
 function formatTimeFromHoursAndMinsTest() {
@@ -51,7 +49,6 @@ function formatTimeFromHoursAndMinsTest() {
     Time._is12Hour = function () { return false; };
 
     JsUnit.assertEquals('12:34', Time.formatTimeFromHoursAndMins(12, 34));
-    JsUnit.assertEquals('09:42', Time.formatTimeFromHoursAndMins(9, 42));
     JsUnit.assertEquals('00:00', Time.formatTimeFromHoursAndMins(24, 0));
     JsUnit.assertEquals('12:01', Time.formatTimeFromHoursAndMins(12, 1));
 
@@ -59,7 +56,6 @@ function formatTimeFromHoursAndMinsTest() {
     Time._is12Hour = function () { return true; };
 
     JsUnit.assertEquals('12:34 PM', Time.formatTimeFromHoursAndMins(12, 34));
-    JsUnit.assertEquals('9:42 AM', Time.formatTimeFromHoursAndMins(9, 42));
     JsUnit.assertEquals('12:00 AM', Time.formatTimeFromHoursAndMins(24, 0));
     JsUnit.assertEquals('12:01 PM', Time.formatTimeFromHoursAndMins(12, 1));
 }

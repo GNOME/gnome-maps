@@ -161,22 +161,17 @@ function translateOpeningHoursTest() {
     JsUnit.assertEquals(3, translated.length);
     JsUnit.assertEquals(2, translated[0].length);
     JsUnit.assertEquals('Mon-Fri', translated[0][0]);
-    JsUnit.assertEquals('9:00 AM-6:00 PM', translated[0][1]);
     JsUnit.assertEquals(2, translated[1].length);
     JsUnit.assertEquals('Sat', translated[1][0]);
-    JsUnit.assertEquals('10:00 AM-3:00 PM', translated[1][1]);
     JsUnit.assertEquals(2, translated[2].length);
     JsUnit.assertEquals('Sun', translated[2][0]);
-    JsUnit.assertEquals('12:00 PM-3:00 PM', translated[2][1]);
 
     translated = Translations.translateOpeningHours(SAMPLE2);
     JsUnit.assertEquals(2, translated.length);
     JsUnit.assertEquals(2, translated[0].length);
     JsUnit.assertEquals('Mon-Fri', translated[0][0]);
-    JsUnit.assertEquals('9:00 AM-12:00 PM, 1:00 PM-6:00 PM', translated[0][1]);
     JsUnit.assertEquals(2, translated[1].length);
     JsUnit.assertEquals('Sat,Sun', translated[1][0]);
-    JsUnit.assertEquals('10:00 AM-2:00 PM', translated[1][1]);
 
     translated = Translations.translateOpeningHours(SAMPLE3);
     JsUnit.assertEquals(1, translated.length);
@@ -197,10 +192,8 @@ function translateOpeningHoursTest() {
     JsUnit.assertEquals(3, translated.length);
     JsUnit.assertEquals(2, translated[0].length);
     JsUnit.assertEquals('Mon-Fri', translated[0][0]);
-    JsUnit.assertEquals('9:00 AM-6:00 PM', translated[0][1]);
     JsUnit.assertEquals(2, translated[1].length);
     JsUnit.assertEquals('Sat', translated[1][0]);
-    JsUnit.assertEquals('10:00 AM-3:00 PM', translated[1][1]);
     JsUnit.assertEquals(2, translated[2].length);
     JsUnit.assertEquals('Sun', translated[2][0]);
     JsUnit.assertEquals('not open', translated[2][1]);
@@ -209,19 +202,15 @@ function translateOpeningHoursTest() {
     JsUnit.assertEquals(2, translated.length);
     JsUnit.assertEquals(2, translated[0].length);
     JsUnit.assertEquals('Mon-Fri', translated[0][0]);
-    JsUnit.assertEquals('9:00 AM-12:00 PM, 1:00 PM-6:00 PM', translated[0][1]);
     JsUnit.assertEquals(2, translated[1].length);
     JsUnit.assertEquals('Sat,Sun', translated[1][0]);
-    JsUnit.assertEquals('10:00 AM-2:00 PM', translated[1][1]);
 
     translated = Translations.translateOpeningHours(SAMPLE8);
     JsUnit.assertEquals(3, translated.length);
     JsUnit.assertEquals(2, translated[0].length);
     JsUnit.assertEquals('Mon-Fri', translated[0][0]);
-    JsUnit.assertEquals('9:00 AM-12:00 PM, 1:00 PM-6:00 PM', translated[0][1]);
     JsUnit.assertEquals(2, translated[1].length);
     JsUnit.assertEquals('Sat,Sun', translated[1][0]);
-    JsUnit.assertEquals('10:00 AM-2:00 PM', translated[1][1]);
     JsUnit.assertEquals(2, translated[2].length);
     JsUnit.assertEquals('Public holidays', translated[2][0]);
     JsUnit.assertEquals('not open', translated[2][1]);
@@ -230,10 +219,8 @@ function translateOpeningHoursTest() {
     JsUnit.assertEquals(3, translated.length);
     JsUnit.assertEquals(2, translated[0].length);
     JsUnit.assertEquals('Mon-Fri', translated[0][0]);
-    JsUnit.assertEquals('9:00 AM-12:00 PM, 1:00 PM-6:00 PM', translated[0][1]);
     JsUnit.assertEquals(2, translated[1].length);
     JsUnit.assertEquals('Sat,Sun', translated[1][0]);
-    JsUnit.assertEquals('10:00 AM-2:00 PM', translated[1][1]);
     JsUnit.assertEquals(2, translated[2].length);
     JsUnit.assertEquals('School holidays', translated[2][0]);
     JsUnit.assertEquals('not open', translated[2][1]);
@@ -242,8 +229,6 @@ function translateOpeningHoursTest() {
     JsUnit.assertEquals(2, translated.length);
     JsUnit.assertEquals(2, translated[0].length);
     JsUnit.assertEquals('Mon-Fri', translated[0][0]);
-    JsUnit.assertEquals('9:00 AM-12:00 PM, 1:00 PM-6:00 PM', translated[0][1]);
     JsUnit.assertEquals(2, translated[1].length);
     JsUnit.assertEquals('Sat,Sun', translated[1][0]);
-    JsUnit.assertEquals('10:00 AM-2:00 PM', translated[1][1]);
 }
