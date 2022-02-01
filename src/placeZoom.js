@@ -24,7 +24,10 @@ const TYPE_ZOOM_MAP = {
         _:           17
     },
     highway: {
-        bus_stop:    17
+        bus_stop:    17,
+        motorway_junction: 15,
+        rest_area:   17,
+        services:    17
     },
     place: {
         continent:    4,
