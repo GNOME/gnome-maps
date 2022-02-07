@@ -40,8 +40,11 @@ function parseAsCoordinateURL(url) {
          * the # as a work-around
          */
         let uri = GLib.Uri.parse(url.replace('#map=', 'map='), GLib.UriFlags.NONE);
-        let params = GLib.Uri.parse_params(uri.get_query(), -1, '&',
-                                           GLib.UriParamsFlags.NONE);
+        let query = uri.get_query();
+        let path = uri.get_path();
+        // allow OSM location URLs encoding the location with or without a ?
+        let params = GLib.Uri.parse_params(query ?? path.replace('/', ''), -1,
+                                           '&', GLib.UriParamsFlags.NONE);
 
         let lat = params.lat;
         let lon = params.lon;
