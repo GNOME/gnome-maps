@@ -39,7 +39,7 @@ const TransitPlan = imports.transitPlan;
 const Utils = imports.utils;
 
 const BASE_URL = 'https://api.resrobot.se';
-const API_VERSION = 'v2';
+const API_VERSION = 'v2.1';
 
 // Timezone for timestamps returned by this provider
 const NATIVE_TIMEZONE = 'Europe/Stockholm';
@@ -93,11 +93,11 @@ var Resrobot = class Resrobot {
         this._session = new Soup.Session({ user_agent : 'gnome-maps/' + pkg.version });
         this._plan = Application.routingDelegator.transitRouter.plan;
         this._query = Application.routeQuery;
-        this._key = params.key;
+        this._accessId = params.accessId;
         this._tz = GLib.TimeZone.new(NATIVE_TIMEZONE);
 
-        if (!this._key)
-            throw new Error('missing key');
+        if (!this._accessId)
+            throw new Error('missing accessId');
     }
 
     fetchFirstResults() {
@@ -147,14 +147,14 @@ var Resrobot = class Resrobot {
             } else {
                 try {
                     let result = JSON.parse(message.response_body.data);
-                    let stopLocations = result.StopLocation;
+                    let stopLocations = result.stopLocationOrCoordLocation;
 
                     Utils.debug('nearby stops: ' + JSON.stringify(result, null, 2));
 
-                    if (stopLocations && stopLocations.length > 0) {
-                        let stopLocation = stopLocations[0];
+                    if (stopLocations?.length > 0) {
+                        let extId = stopLocations[0]?.StopLocation.extId;
 
-                        this._viaId = stopLocation.id;
+                        this._viaId = extId;
                         callback();
                     } else {
                         Utils.debug('No nearby stops found');
@@ -407,7 +407,7 @@ var Resrobot = class Resrobot {
 
         let origin = leg.Origin;
         let destination = leg.Destination;
-        let product = leg.Product;
+        let product = leg.Product?.[0];
 
         if (!origin)
             throw new Error('Missing Origin element');
@@ -435,7 +435,6 @@ var Resrobot = class Resrobot {
         let routeType =
             isTransit ? this._getHVTCodeFromCatCode(product.catCode) : null;
         let agencyName = isTransit ? product.operator : null;
-        let agencyUrl = isTransit ? product.operatorUrl : null;
         let polyline = this._createPolylineForLeg(leg);
         let duration = leg.duration ? this._parseDuration(leg.duration) : null;
 
@@ -455,7 +454,6 @@ var Resrobot = class Resrobot {
                                            distance:             leg.dist,
                                            duration:             duration,
                                            agencyName:           agencyName,
-                                           agencyUrl:            agencyUrl,
                                            agencyTimezoneOffset: tzOffset,
                                            tripShortName:        route });
 
@@ -552,11 +550,12 @@ var Resrobot = class Resrobot {
         let originLocation = points[0].place.location;
         let destLocation = points.last().place.location;
         let transitOptions = this._query.transitOptions;
-        let params = { key:             this._key,
+        let params = { accessId:        this._accessId,
                        originCoordLat:  originLocation.latitude,
                        originCoordLong: originLocation.longitude,
                        destCoordLat:    destLocation.latitude,
                        destCoordLong:   destLocation.longitude,
+                       passlist:        1,
                        format:          'json' };
 
         if (!transitOptions.showAllTransitTypes)
@@ -582,7 +581,7 @@ var Resrobot = class Resrobot {
     }
 
     _getNearbyStopsQueryParams(lat, lon, num, radius) {
-        let params = { key:             this._key,
+        let params = { accessId:        this._accessId,
                        originCoordLat:  lat,
                        originCoordLong: lon,
                        maxNo:           num,
