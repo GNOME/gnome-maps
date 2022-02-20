@@ -1,14 +1,14 @@
 # Lithuanian translation for gnome-maps.
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
-# Aurimas Černius <aurisc4@gmail.com>, 2013-2021.
+# Aurimas Černius <aurisc4@gmail.com>, 2013-2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2021-08-16 20:57+0000\n"
-"PO-Revision-Date: 2021-09-02 17:55+0300\n"
+"POT-Creation-Date: 2022-02-03 16:52+0000\n"
+"PO-Revision-Date: 2022-02-20 14:59+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -19,15 +19,25 @@ msgstr ""
 "%100<10 || n%100>=20) ? 1 : 2)\n"
 "X-Generator: Gtranslator 40.0\n"
 
-#: data/org.gnome.Maps.appdata.xml.in:6
-msgid "GNOME Maps"
-msgstr "GNOME žemėlapiai"
+#. Translators: This is the program name.
+#. for some reason, setting the title of the window through the .ui
+#. * template does not work anymore (maybe has something to do with
+#. * setting a custom title on the headerbar). Setting it programmatically
+#. * here works though. And yields a proper label in the gnome-shell
+#. * overview.
+#.
+#. Translators: This is the program name.
+#: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
+#: data/ui/main-window.ui:30 src/application.js:96 src/mainWindow.js:139
+#: src/mainWindow.js:599
+msgid "Maps"
+msgstr "Žemėlapiai"
 
-#: data/org.gnome.Maps.appdata.xml.in:7
+#: data/org.gnome.Maps.appdata.xml.in.in:7
 msgid "Find places around the world"
 msgstr "Rasti vietas aplink pasaulį"
 
-#: data/org.gnome.Maps.appdata.xml.in:9
+#: data/org.gnome.Maps.appdata.xml.in.in:9
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
@@ -37,7 +47,7 @@ msgstr ""
 "leidžia greitai rasti ieškomą vietą naudojant paiešką pagal miestą ar gatvę "
 "bei rasti vietą susitikimui su draugu."
 
-#: data/org.gnome.Maps.appdata.xml.in:14
+#: data/org.gnome.Maps.appdata.xml.in.in:14
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
@@ -45,33 +55,20 @@ msgstr ""
 "Žemėlapiai naudoja OpenStreetMap duomenų bazę, kurią sukūrė tūkstančiai "
 "žmonių iš viso pasaulio."
 
-#: data/org.gnome.Maps.appdata.xml.in:189
+#: data/org.gnome.Maps.appdata.xml.in.in:248
 msgid "The GNOME Project"
 msgstr "GNOME projektas"
 
-#. Translators: This is the program name.
-#. for some reason, setting the title of the window through the .ui
-#. * template does not work anymore (maybe has something to do with
-#. * setting a custom title on the headerbar). Setting it programmatically
-#. * here works though. And yields a proper label in the gnome-shell
-#. * overview.
-#.
-#. Translators: This is the program name.
-#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:34
-#: src/application.js:94 src/mainWindow.js:132 src/mainWindow.js:592
-msgid "Maps"
-msgstr "Žemėlapiai"
-
-#: data/org.gnome.Maps.desktop.in:5
+#: data/org.gnome.Maps.desktop.in.in:5
 msgid "A simple maps application"
 msgstr "Paprasta žemėlapių programa"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Maps.desktop.in:14
+#: data/org.gnome.Maps.desktop.in.in:14
 msgid "Maps;"
 msgstr "Žemėlapiai;"
 
-#: data/org.gnome.Maps.desktop.in:17
+#: data/org.gnome.Maps.desktop.in.in:17
 msgid "Allows your location to be shown on the map."
 msgstr "Leidžia parodyti žemėlapyje jūsų vietą."
 
@@ -196,18 +193,10 @@ msgid "Last used transportation type for routing"
 msgstr "Paskutinis transporto tipas, naudotas keliui"
 
 #: data/org.gnome.Maps.gschema.xml:80
-msgid "Night mode"
-msgstr "Nakties veiksena"
-
-#: data/org.gnome.Maps.gschema.xml:81
-msgid "Whether the application is in night mode."
-msgstr "Ar programa yra naktinėje veiksenoje."
-
-#: data/org.gnome.Maps.gschema.xml:85
 msgid "Use hybrid aerial tiles"
 msgstr "Naudoti hibridines oro plyteles"
 
-#: data/org.gnome.Maps.gschema.xml:86
+#: data/org.gnome.Maps.gschema.xml:81
 msgid "Whether aerial tiles should use hybrid style (with labels)."
 msgstr "Ar oro plytelės turėtų naudoti hibridinį stilių (su užrašais)."
 
@@ -413,34 +402,30 @@ msgid "Location Settings"
 msgstr "Vietos nustatymai"
 
 #: data/ui/main-window.ui:8
-msgid "Night Mode"
-msgstr "Nakties veiksena"
-
-#: data/ui/main-window.ui:12
 msgid "Set up OpenStreetMap Account"
 msgstr "Nusistatyti OpenStreetMap paskyrą"
 
-#: data/ui/main-window.ui:16
+#: data/ui/main-window.ui:12
 msgid "Export as Image"
 msgstr "Eksportuoti kaip paveikslėlį"
 
-#: data/ui/main-window.ui:21
+#: data/ui/main-window.ui:17
 msgid "_Keyboard Shortcuts"
 msgstr "_Klaviatūros trumpiniai"
 
-#: data/ui/main-window.ui:26
+#: data/ui/main-window.ui:22
 msgid "About Maps"
 msgstr "Apie žemėlapius"
 
-#: data/ui/main-window.ui:52
+#: data/ui/main-window.ui:48
 msgid "Open main menu"
 msgstr "Atverti pagrindinį meniu"
 
-#: data/ui/main-window.ui:114
+#: data/ui/main-window.ui:110
 msgid "Maps is offline!"
 msgstr "Žemėlapiai atsijungę nuo interneto!"
 
-#: data/ui/main-window.ui:123
+#: data/ui/main-window.ui:119
 msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
@@ -448,7 +433,7 @@ msgstr ""
 "Žemėlapių tvarkingam veikimui reikia aktyvaus interneto ryšio, bet tokio "
 "nėra."
 
-#: data/ui/main-window.ui:131
+#: data/ui/main-window.ui:127
 msgid "Check your connection and proxy settings."
 msgstr "Patikrinkite savo prisijungimo ir tarpinio serverio nustatymus."
 
@@ -575,12 +560,12 @@ msgstr "Redaguoti OpenStreetMap"
 msgid "Next"
 msgstr "Kitas"
 
-#: data/ui/place-popover.ui:54
+#: data/ui/place-popover.ui:54 src/application.js:399
 msgid "No results found"
 msgstr "Nerasta rezultatų"
 
-#: data/ui/place-popover.ui:66 src/checkInDialog.js:269 src/checkIn.js:158
-#: src/osmEditDialog.js:587
+#: data/ui/place-popover.ui:66 src/application.js:376 src/checkInDialog.js:269
+#: src/checkIn.js:158 src/osmEditDialog.js:587
 msgid "An error has occurred"
 msgstr "Kilo klaida"
 
@@ -752,25 +737,35 @@ msgstr "Trūkta reikiamų požymių"
 msgid "Could not find OSM element"
 msgstr "Nepavyko rasti OSM elemento"
 
-#: src/application.js:108
+#: src/application.js:110
 msgid "A path to a local tiles directory structure"
 msgstr "Kelias iki vietinės koklių katalogo struktūros"
 
-#: src/application.js:114
+#: src/application.js:116
 msgid "Tile size for local tiles directory"
 msgstr "Plytelės dydis vietiniam plytelių aplankui"
 
-#: src/application.js:118
+#: src/application.js:120
 msgid "Show the version of the program"
 msgstr "Rodyti programos versiją"
 
-#: src/application.js:124
+#: src/application.js:126
 msgid "Ignore network availability"
 msgstr "Nepaisyti tinklo prieinamumo"
 
-#: src/application.js:134 src/application.js:135
+#: src/application.js:133
+#| msgid "Select a place"
+msgid "Search for places"
+msgstr "Ieškoti vietų"
+
+#: src/application.js:144 src/application.js:145
 msgid "[FILE…|URI]"
 msgstr "[FAILAS…|URI]"
+
+#: src/application.js:407
+#, javascript-format
+msgid "Invalid maps: URI: %s"
+msgstr "Netinkami žemėlapiai: URI: %s"
 
 #: src/checkInDialog.js:161
 msgid "Select an account"
@@ -865,7 +860,7 @@ msgstr "Nenurodytas failo pavadinimas"
 msgid "Unable to export view"
 msgstr "Nepavyko eksportuoti rodinio"
 
-#: src/geoclue.js:118
+#: src/geoclue.js:122
 msgid "Current Location"
 msgstr "Dabartinė vieta"
 
@@ -881,15 +876,15 @@ msgstr "perskaitymo klaida"
 msgid "unknown geometry"
 msgstr "nežinoma geometrija"
 
-#: src/graphHopper.js:112 src/transitPlan.js:181
+#: src/graphHopper.js:116 src/transitPlan.js:181
 msgid "Route request failed."
 msgstr "Nepavyko užklausti maršruto."
 
-#: src/graphHopper.js:119 src/transitPlan.js:173
+#: src/graphHopper.js:123 src/transitPlan.js:173
 msgid "No route found."
 msgstr "Maršrutas nerastas."
 
-#: src/graphHopper.js:207 src/transitplugins/openTripPlanner.js:1116
+#: src/graphHopper.js:211 src/transitplugins/openTripPlanner.js:1116
 msgid "Start!"
 msgstr "Pradėti!"
 
@@ -897,27 +892,27 @@ msgstr "Pradėti!"
 msgid "All Layer Files"
 msgstr "Visi sluoksnių failai"
 
-#: src/mainWindow.js:495
+#: src/mainWindow.js:502
 msgid "Failed to connect to location service"
 msgstr "Nepavyko prisijungti prie vietos tarnybos"
 
-#: src/mainWindow.js:590
+#: src/mainWindow.js:597
 msgid "translator-credits"
 msgstr ""
 "Išvertė:\n"
 "Aurimas Černius <aurisc4@gmail.com>"
 
-#: src/mainWindow.js:593
+#: src/mainWindow.js:600
 msgid "A map application for GNOME"
 msgstr "Žemėlapių programa GNOME aplinkai"
 
-#: src/mainWindow.js:604
+#: src/mainWindow.js:611
 msgid "Copyright © 2011 – 2021 Red Hat, Inc. and The GNOME Maps authors"
 msgstr ""
 "Autorių teisės priklauso © 2011 – 2021 Red Hat, Inc. ir GNOME Žemėlapių "
 "autoriams"
 
-#: src/mainWindow.js:624
+#: src/mainWindow.js:631
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Žemėlapio duomenys pagal %s ir talkininkus"
@@ -927,7 +922,7 @@ msgstr "Žemėlapio duomenys pagal %s ir talkininkus"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:640
+#: src/mainWindow.js:647
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Žemėlapio išklotinę pateikė %s"
@@ -941,31 +936,31 @@ msgstr "Žemėlapio išklotinę pateikė %s"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:669
+#: src/mainWindow.js:676
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Paiešką teikia %s naudojant %s"
 
-#: src/mapView.js:493 src/mapView.js:551
+#: src/mapView.js:494 src/mapView.js:552
 msgid "Failed to open layer"
 msgstr "Nepavyko atverti sluoksnio"
 
-#: src/mapView.js:514
+#: src/mapView.js:515
 msgid "Do you want to continue?"
 msgstr "Ar norite tęsti?"
 
-#: src/mapView.js:515
+#: src/mapView.js:516
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
 "time to load"
 msgstr "Ketinate atverti failus, kurų bendras dydis %s MB. Tai gali užtrukti"
 
-#: src/mapView.js:545
+#: src/mapView.js:546
 msgid "File type is not supported"
 msgstr "Failo tipas yra nepalaikomas"
 
-#: src/mapView.js:583
+#: src/mapView.js:584
 msgid "Failed to open GeoURI"
 msgstr "Nepavyko atverti GeoURI"
 
@@ -1042,12 +1037,10 @@ msgstr ""
 "numerių."
 
 #: src/osmEditDialog.js:155 src/placeView.js:308
-#| msgid "Email"
 msgid "E-mail"
 msgstr "El. paštas"
 
 #: src/osmEditDialog.js:160
-#| msgid "This is not a valid URL. Make sure to include http:// or https://."
 msgid ""
 "This is not a valid e-mail address. Make sure to not include the mailto: "
 "protocol prefix."
@@ -1276,13 +1269,18 @@ msgstr "Pasirinkite tipą"
 msgid "Done"
 msgstr "Atlikta"
 
-#: src/photonParser.js:111
+#: src/photonParser.js:110
 msgid "Unnamed place"
 msgstr "Nepavadinta vieta"
 
-#: src/placeEntry.js:221
+#: src/placeEntry.js:224
 msgid "Failed to parse Geo URI"
 msgstr "Nepavyko perskaityti Geo URI"
+
+#: src/placeEntry.js:237
+#| msgid "Failed to parse Geo URI"
+msgid "Failed to parse Maps URI"
+msgstr "Nepavyko perskaityti Žemėlapių URI"
 
 #: src/placeView.js:268
 msgid "Coordinates"
@@ -1439,15 +1437,15 @@ msgstr "Jūros lygyje"
 msgid "Religion:"
 msgstr "Religija:"
 
-#: src/place.js:497
+#: src/place.js:525
 msgid "Place not found in OpenStreetMap"
 msgstr "Vieta nerasta OpenStreetMap"
 
-#: src/place.js:504
+#: src/place.js:532
 msgid "Coordinates in URL are not valid"
 msgstr "Koordinatės URL yra netinkamos"
 
-#: src/place.js:513
+#: src/place.js:541
 msgid "URL is not supported"
 msgstr "URL yra nepalaikomas"
 
@@ -1885,13 +1883,11 @@ msgstr "Staigiai sukti dešinėn"
 
 #: src/transitplugins/openTripPlanner.js:1228
 #, javascript-format
-#| msgid "In the roundabout, take exit %s"
 msgid "At the roundabout, take exit %s"
 msgstr "Žiede pasirinkite %s išvažiavimą"
 
 #: src/transitplugins/openTripPlanner.js:1230
 #, javascript-format
-#| msgid "In the roundabout, take exit to %s"
 msgid "At the roundabout, take exit to %s"
 msgstr "Žiede pasirinkite išvažiavimą į %s"
 
@@ -1925,6 +1921,18 @@ msgstr "Apsisukite į dešinę į %s"
 #: src/transitplugins/openTripPlanner.js:1249
 msgid "Make a right u-turn"
 msgstr "Apsisukite į dešinę"
+
+#~ msgid "GNOME Maps"
+#~ msgstr "GNOME žemėlapiai"
+
+#~ msgid "Night mode"
+#~ msgstr "Nakties veiksena"
+
+#~ msgid "Whether the application is in night mode."
+#~ msgstr "Ar programa yra naktinėje veiksenoje."
+
+#~ msgid "Night Mode"
+#~ msgstr "Nakties veiksena"
 
 #~ msgid ""
 #~ "You can even search for specific types of locations, such as “Pubs near "
