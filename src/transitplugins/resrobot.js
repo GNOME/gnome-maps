@@ -318,17 +318,11 @@ var Resrobot = class Resrobot {
 
     _createItinerary(trip) {
         let legs = this._createLegs(trip.LegList.Leg);
-        let duration = this._parseDuration(trip.duration);
-        let origin = trip.LegList.Leg[0].Origin;
-        let destination = trip.LegList.Leg.last().Destination;
-        let [startTime,] = this._parseTime(origin.time, origin.date);
-        let [endTime,] = this._parseTime(destination.time, destination.date);
+        let itinerary = new TransitPlan.Itinerary({ legs: legs });
 
-        return new TransitPlan.Itinerary({ duration:  duration,
-                                           departure: startTime,
-                                           arrival:   endTime,
-                                           legs:      legs,
-                                           duration:  duration });
+        itinerary.adjustTimings();
+
+        return itinerary;
     }
 
     /**
