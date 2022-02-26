@@ -319,7 +319,7 @@ class Itinerary extends GObject.Object {
     }
 
     prettyPrintDuration() {
-        let mins = this.duration / 60;
+        let mins = Math.ceil(this.duration / 60);
 
         if (mins < 60) {
             let minStr = Utils.formatLocaleInteger(mins);
