@@ -236,8 +236,7 @@ var OpendataCH = class OpendataCH {
         return new TransitPlan.Itinerary({ duration:  duration,
                                            departure: startTime,
                                            arrival:   endTime,
-                                           legs:      legs,
-                                           duration:  duration });
+                                           legs:      legs });
     }
 
     /**
