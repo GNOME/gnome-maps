@@ -131,7 +131,15 @@ var TransitOptionsPanel = GObject.registerClass({
         }
     }
 
+    /**
+     * Update the date select button with given date, and select the
+     * corresponding day in the calendar shown when clicking the button.
+     */
     _updateTransitDateButton(date) {
+        let calendar = this._transitDateButton.popover.get_child();
+
+        calendar.select_month(date.get_month(), date.get_year());
+        calendar.select_day(date.get_day_of_month());
         this._transitDateButton.label =
             /*
              * Translators: this is a format string giving the equivalent to
