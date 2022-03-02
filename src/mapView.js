@@ -175,7 +175,9 @@ var MapView = GObject.registerClass({
     }
 
     _initScale(view) {
-        this._scale = new Champlain.Scale({ visible: true });
+        let showScale = Application.settings.get('show-scale');
+
+        this._scale = new Champlain.Scale({ visible: showScale });
         this._scale.connect_view(view);
 
         if (Utils.getMeasurementSystem() === Utils.METRIC_SYSTEM)
@@ -224,6 +226,9 @@ var MapView = GObject.registerClass({
         this._gtkSettings = Gtk.Settings.get_default();
         this._gtkSettings.connect('notify::gtk-application-prefer-dark-theme',
                             this._onPreferDarkThemeChanged.bind(this));
+
+        Application.settings.connect('changed::show-scale',
+                                     this._onShowScaleChanged.bind(this));
 
         this._initScale(view);
         return view;
@@ -471,7 +476,13 @@ var MapView = GObject.registerClass({
     }
 
     toggleScale() {
-        this._scale.visible = !this._scale.visible;
+        let showScale = Application.settings.get('show-scale');
+
+        Application.settings.set('show-scale', !showScale);
+    }
+
+    _onShowScaleChanged() {
+        this._scale.visible = Application.settings.get('show-scale');
     }
 
     _checkIfFileSizeNeedsConfirmation(files) {
