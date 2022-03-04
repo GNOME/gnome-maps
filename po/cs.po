@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2021-11-22 21:08+0000\n"
-"PO-Revision-Date: 2022-01-12 21:49+0100\n"
+"POT-Creation-Date: 2022-03-03 21:16+0000\n"
+"PO-Revision-Date: 2022-03-04 12:47+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -55,7 +55,7 @@ msgstr ""
 "Mapy využívají databázi OpenStreetMap, která vzniká díky spolupráci stovek "
 "tisíců lidí z celého světa."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:248
+#: data/org.gnome.Maps.appdata.xml.in.in:245
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
 
@@ -201,6 +201,14 @@ msgstr "Používat hybridní dlaždice s leteckými snímky"
 msgid "Whether aerial tiles should use hybrid style (with labels)."
 msgstr ""
 "Zda dlaždice s leteckými snímky mají používat hybridní styl (s popisky)"
+
+#: data/org.gnome.Maps.gschema.xml:85
+msgid "Show scale"
+msgstr "Zobrazovat měřítko"
+
+#: data/org.gnome.Maps.gschema.xml:86
+msgid "Whether to show the scale."
+msgstr "Zda se má zobrazovat měřítko."
 
 #: data/ui/check-in-dialog.ui:236
 msgid "Visibility"
@@ -638,12 +646,12 @@ msgid "Show more results"
 msgstr "Zobrazit více výsledků"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:126
+#: data/ui/transit-leg-row.ui:129
 msgid "Hide intermediate stops and information"
 msgstr "Skrýt průběžné zastávky a informace"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:200
+#: data/ui/transit-leg-row.ui:203
 msgid "Show intermediate stops and information"
 msgstr "Zobrazit průběžné zastávky a informace"
 
@@ -864,7 +872,7 @@ msgstr "Není zadán název souboru"
 msgid "Unable to export view"
 msgstr "Nelze exportovat zobrazení"
 
-#: src/geoclue.js:118
+#: src/geoclue.js:122
 msgid "Current Location"
 msgstr "Současné místo"
 
@@ -941,15 +949,15 @@ msgstr "Mapové dlaždice poskytuje %s"
 msgid "Search provided by %s using %s"
 msgstr "Hledání zprostředkuje %s pomocí %s"
 
-#: src/mapView.js:494 src/mapView.js:552
+#: src/mapView.js:505 src/mapView.js:563
 msgid "Failed to open layer"
 msgstr "Selhalo otevření vrstvy"
 
-#: src/mapView.js:515
+#: src/mapView.js:526
 msgid "Do you want to continue?"
 msgstr "Chcete pokračovat?"
 
-#: src/mapView.js:516
+#: src/mapView.js:527
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -958,11 +966,11 @@ msgstr ""
 "Chystáte se otevřít soubory o celkové velikosti %s MB. To může zabrat nějaký "
 "čas."
 
-#: src/mapView.js:546
+#: src/mapView.js:557
 msgid "File type is not supported"
 msgstr "Typ souboru není podporován"
 
-#: src/mapView.js:584
+#: src/mapView.js:595
 msgid "Failed to open GeoURI"
 msgstr "Selhalo otevření adresy GeoURI"
 
@@ -1274,11 +1282,11 @@ msgstr "Hotovo"
 msgid "Unnamed place"
 msgstr "Místo bez názvu"
 
-#: src/placeEntry.js:222
+#: src/placeEntry.js:224
 msgid "Failed to parse Geo URI"
 msgstr "Selhalo zpracování adresy GeoURI"
 
-#: src/placeEntry.js:235
+#: src/placeEntry.js:237
 msgid "Failed to parse Maps URI"
 msgstr "Selhalo zpracování adresy URI map"
 
@@ -1576,7 +1584,7 @@ msgstr "Nebyla nalezena žádná pozdější varianta."
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:140
+#: src/transitOptionsPanel.js:148
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%-d. %B"
