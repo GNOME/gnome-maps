@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2022-02-20 12:59+0000\n"
-"PO-Revision-Date: 2022-02-23 12:32+0300\n"
+"POT-Creation-Date: 2022-03-03 21:16+0000\n"
+"PO-Revision-Date: 2022-03-05 00:34+0300\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -63,7 +63,7 @@ msgstr ""
 "Haritalar, küresel çapta yüzbinlerce insanca hazırlanan OpenStreetMap ile "
 "ortak veri tabanını kullanır."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:248
+#: data/org.gnome.Maps.appdata.xml.in.in:245
 msgid "The GNOME Project"
 msgstr "GNOME Projesi"
 
@@ -209,6 +209,14 @@ msgstr "Hibrit uydu döşemelerini kullan"
 #: data/org.gnome.Maps.gschema.xml:81
 msgid "Whether aerial tiles should use hybrid style (with labels)."
 msgstr "Uydu döşemelerinin hibrit biçim (etiketli) kullanıp kullanmayacağı."
+
+#: data/org.gnome.Maps.gschema.xml:85
+msgid "Show scale"
+msgstr "Ölçeği göster"
+
+#: data/org.gnome.Maps.gschema.xml:86
+msgid "Whether to show the scale."
+msgstr "Ölçeğin gösterilmesi."
 
 #: data/ui/check-in-dialog.ui:236
 msgid "Visibility"
@@ -647,12 +655,12 @@ msgid "Show more results"
 msgstr "Daha çok sonuç göster"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:126
+#: data/ui/transit-leg-row.ui:129
 msgid "Hide intermediate stops and information"
 msgstr "Ara durakları ve bilgiyi gizle"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:200
+#: data/ui/transit-leg-row.ui:203
 msgid "Show intermediate stops and information"
 msgstr "Ara durakları ve bilgiyi göster"
 
@@ -957,15 +965,15 @@ msgstr "Harita döşemeleri %s tarafından sağlanmıştır"
 msgid "Search provided by %s using %s"
 msgstr "Arama %s tarafından %s kullanılarak sağlanmıştır"
 
-#: src/mapView.js:494 src/mapView.js:552
+#: src/mapView.js:505 src/mapView.js:563
 msgid "Failed to open layer"
 msgstr "Katman açma başarısız oldu"
 
-#: src/mapView.js:515
+#: src/mapView.js:526
 msgid "Do you want to continue?"
 msgstr "Sürdürmek ister misiniz?"
 
-#: src/mapView.js:516
+#: src/mapView.js:527
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -974,11 +982,11 @@ msgstr ""
 "Toplam boyutu %s MB olan dosyaları açmak üzeresiniz. Bunun yüklenmesi biraz "
 "sürebilir"
 
-#: src/mapView.js:546
+#: src/mapView.js:557
 msgid "File type is not supported"
 msgstr "Dosya türü desteklenmiyor"
 
-#: src/mapView.js:584
+#: src/mapView.js:595
 msgid "Failed to open GeoURI"
 msgstr "GeoURI açma başarısız"
 
@@ -1595,7 +1603,7 @@ msgstr "Daha geç alternatif bulunamadı."
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:140
+#: src/transitOptionsPanel.js:148
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e %b"
