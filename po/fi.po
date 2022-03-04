@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2022-02-03 16:52+0000\n"
-"PO-Revision-Date: 2022-02-23 20:45+0200\n"
+"POT-Creation-Date: 2022-03-03 21:16+0000\n"
+"PO-Revision-Date: 2022-03-04 22:52+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -52,7 +52,7 @@ msgid ""
 msgstr ""
 "Kartat hyödyntää tuhansien ihmisten yhdessä luomaa OpenStreetMap-tietokantaa."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:248
+#: data/org.gnome.Maps.appdata.xml.in.in:245
 msgid "The GNOME Project"
 msgstr "Gnome-projekti"
 
@@ -196,6 +196,14 @@ msgstr "Käytä hybridejä ilmatiilejä"
 #: data/org.gnome.Maps.gschema.xml:81
 msgid "Whether aerial tiles should use hybrid style (with labels)."
 msgstr "Tuleeko ilmatiilten käyttää hybridityyliä (selitteiden kera)."
+
+#: data/org.gnome.Maps.gschema.xml:85
+msgid "Show scale"
+msgstr "Näytä mittakaava"
+
+#: data/org.gnome.Maps.gschema.xml:86
+msgid "Whether to show the scale."
+msgstr "Näytetäänkö mittakaava vai ei."
 
 #: data/ui/check-in-dialog.ui:236
 msgid "Visibility"
@@ -634,12 +642,12 @@ msgid "Show more results"
 msgstr "Näytä lisää tuloksia"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:126
+#: data/ui/transit-leg-row.ui:129
 msgid "Hide intermediate stops and information"
 msgstr "Piilota välipysäkit ja tiedot"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:200
+#: data/ui/transit-leg-row.ui:203
 msgid "Show intermediate stops and information"
 msgstr "Näytä välipysäkit ja tiedot"
 
@@ -938,15 +946,15 @@ msgstr "Karttatiilet tarjoaa %s"
 msgid "Search provided by %s using %s"
 msgstr "Haun tarjoaa %s käyttämällä %s"
 
-#: src/mapView.js:494 src/mapView.js:552
+#: src/mapView.js:505 src/mapView.js:563
 msgid "Failed to open layer"
 msgstr "Tason avaaminen epäonnistui"
 
-#: src/mapView.js:515
+#: src/mapView.js:526
 msgid "Do you want to continue?"
 msgstr "Haluatko jatkaa?"
 
-#: src/mapView.js:516
+#: src/mapView.js:527
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -955,11 +963,11 @@ msgstr ""
 "Olet aikeissa avata tiedostoja, joiden koko yhteensä on %s Mt. Näiden "
 "lataaminen saattaa kestää jonkin aikaa"
 
-#: src/mapView.js:546
+#: src/mapView.js:557
 msgid "File type is not supported"
 msgstr "Tiedostotyyppi ei ole tuettu"
 
-#: src/mapView.js:584
+#: src/mapView.js:595
 msgid "Failed to open GeoURI"
 msgstr "GeoURI:n avaaminen epäonnistui"
 
@@ -1574,7 +1582,7 @@ msgstr "Myöhempiä vaihtoehtoja ei löytynyt."
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:140
+#: src/transitOptionsPanel.js:148
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e. %b"
