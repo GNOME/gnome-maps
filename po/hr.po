@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2021-11-22 21:08+0000\n"
-"PO-Revision-Date: 2021-11-23 19:55+0100\n"
+"POT-Creation-Date: 2022-03-03 21:16+0000\n"
+"PO-Revision-Date: 2022-03-04 11:11+0100\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -55,7 +55,7 @@ msgstr ""
 "Karte koriste suradničku OpenStreetMap bazu podataka, načinjenu od strane "
 "stotine tisuća ljudi diljem svijeta."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:248
+#: data/org.gnome.Maps.appdata.xml.in.in:245
 msgid "The GNOME Project"
 msgstr "GNOME projekt"
 
@@ -201,6 +201,14 @@ msgstr "Koristi hibridne zračne nazive"
 msgid "Whether aerial tiles should use hybrid style (with labels)."
 msgstr "Trebaju li zračni nazivi koristiti hibridni izgled (s oznakama)."
 
+#: data/org.gnome.Maps.gschema.xml:85
+msgid "Show scale"
+msgstr "Prikaži ljestvicu"
+
+#: data/org.gnome.Maps.gschema.xml:86
+msgid "Whether to show the scale."
+msgstr "Treba li prikazati ljestvicu."
+
 #: data/ui/check-in-dialog.ui:236
 msgid "Visibility"
 msgstr "Vidljivost"
@@ -211,7 +219,7 @@ msgstr "Objavi na Facebooku"
 
 #: data/ui/check-in-dialog.ui:285
 msgid "Post on Twitter"
-msgstr "Objavi na Twitter"
+msgstr "Objavi na Twitteru"
 
 #: data/ui/check-in-dialog.ui:325 data/ui/export-view-dialog.ui:20
 #: data/ui/send-to-dialog.ui:13 data/ui/shape-layer-file-chooser.ui:22
@@ -404,7 +412,7 @@ msgstr "Postavke lokacije"
 
 #: data/ui/main-window.ui:8
 msgid "Set up OpenStreetMap Account"
-msgstr "Postavi OpenStreetMap račun"
+msgstr "Prijava na OpenStreetMap račun"
 
 #: data/ui/main-window.ui:12
 msgid "Export as Image"
@@ -475,12 +483,12 @@ msgstr "Prijava"
 #: data/ui/osm-account-dialog.ui:162
 msgid ""
 "Sorry, that didn’t work. Please try again, or visit\n"
-"<a href=\"https://www.openstreetmap.org/user/forgot-password"
-"\">OpenStreetMap</a> to reset your password."
+"<a href=\"https://www.openstreetmap.org/user/forgot-"
+"password\">OpenStreetMap</a> to reset your password."
 msgstr ""
 "Nažalost, to nije uspjelo. Pokušajte ponovno, ili posjetite\n"
-"<a href=\"https://www.openstreetmap.org/user/forgot-password"
-"\">OpenStreetMap</a> za obnovu lozinke."
+"<a href=\"https://www.openstreetmap.org/user/forgot-"
+"password\">OpenStreetMap</a> za obnovu lozinke."
 
 #: data/ui/osm-account-dialog.ui:175
 msgid "The verification code didn’t match, please try again."
@@ -633,12 +641,12 @@ msgid "Show more results"
 msgstr "Prikaži više rezultata"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:126
+#: data/ui/transit-leg-row.ui:129
 msgid "Hide intermediate stops and information"
 msgstr "Sakrij posredna zaustavljanja i informacije"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:200
+#: data/ui/transit-leg-row.ui:203
 msgid "Show intermediate stops and information"
 msgstr "Prikaži posredna zaustavljanja i informacije"
 
@@ -858,7 +866,7 @@ msgstr "Naziv datoteke nije naveden"
 msgid "Unable to export view"
 msgstr "Nemoguće izvesti prikaz"
 
-#: src/geoclue.js:118
+#: src/geoclue.js:122
 msgid "Current Location"
 msgstr "Trenutna lokacija"
 
@@ -935,15 +943,15 @@ msgstr "Blokove karte je omogućio %s"
 msgid "Search provided by %s using %s"
 msgstr "Pretragu je omogućio %s koristeći %s"
 
-#: src/mapView.js:494 src/mapView.js:552
+#: src/mapView.js:505 src/mapView.js:563
 msgid "Failed to open layer"
 msgstr "Neuspjelo otvaranje sloja"
 
-#: src/mapView.js:515
+#: src/mapView.js:526
 msgid "Do you want to continue?"
 msgstr "Želite li nastaviti?"
 
-#: src/mapView.js:516
+#: src/mapView.js:527
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -952,11 +960,11 @@ msgstr ""
 "Otvorit ćete datoteku s ukupnom veličinom od %s MB. Ovo može potrajati dulje "
 "vrijeme"
 
-#: src/mapView.js:546
+#: src/mapView.js:557
 msgid "File type is not supported"
 msgstr "Vrsta datoteke nije podržana"
 
-#: src/mapView.js:584
+#: src/mapView.js:595
 msgid "Failed to open GeoURI"
 msgstr "Neuspjelo otvaranje GeoURI-ja"
 
@@ -1267,11 +1275,11 @@ msgstr "Završeno"
 msgid "Unnamed place"
 msgstr "Neimenovano mjesto"
 
-#: src/placeEntry.js:222
+#: src/placeEntry.js:224
 msgid "Failed to parse Geo URI"
 msgstr "Neuspješna obrada Geo URI-ja"
 
-#: src/placeEntry.js:235
+#: src/placeEntry.js:237
 msgid "Failed to parse Maps URI"
 msgstr "Neuspješna obrada URI-ja karta"
 
@@ -1569,7 +1577,7 @@ msgstr "Nema pronađenih kasnijih alternativa."
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:140
+#: src/transitOptionsPanel.js:148
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e %b"
