@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2021-11-22 21:08+0000\n"
+"POT-Creation-Date: 2022-03-03 21:16+0000\n"
 "PO-Revision-Date: 2022-01-21 19:01+0100\n"
 "Last-Translator: Joan Mas Lloret <joan.mas.lloret@gmail.com>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
@@ -28,7 +28,6 @@ msgstr ""
 #. * setting a custom title on the headerbar). Setting it programmatically
 #. * here works though. And yields a proper label in the gnome-shell
 #. * overview.
-#.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
 #: data/ui/main-window.ui:30 src/application.js:96 src/mainWindow.js:139
@@ -43,8 +42,8 @@ msgstr "Trobeu llocs arreu del món"
 #: data/org.gnome.Maps.appdata.xml.in.in:9
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
-"quickly find the place you’re looking for by searching for a city or street, "
-"or locate a place to meet a friend."
+"quickly find the place you’re looking for by searching for a city or street,"
+" or locate a place to meet a friend."
 msgstr ""
 "El Mapes us dona un accés ràpid a mapes d'arreu del món. Us permet trobar "
 "ràpidament el lloc que esteu cercant tant si és una ciutat com un carrer, o "
@@ -58,7 +57,7 @@ msgstr ""
 "El Mapes empra la base de dades col·laborativa de l'OpenStreetMap, creada "
 "per centenars de milers de persones d'arreu del món."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:248
+#: data/org.gnome.Maps.appdata.xml.in.in:245
 msgid "The GNOME Project"
 msgstr "El projecte GNOME"
 
@@ -66,7 +65,8 @@ msgstr "El projecte GNOME"
 msgid "A simple maps application"
 msgstr "Una aplicació senzilla de mapes"
 
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or
+#. localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Maps.desktop.in.in:14
 msgid "Maps;"
 msgstr "Mapes;"
@@ -168,8 +168,8 @@ msgid ""
 "Indicates if Foursquare should broadcast the check-in as a post in the "
 "Facebook account associated with the Foursquare account."
 msgstr ""
-"Indica si Foursquare hauria de difondre el registre com a apunt al compte de "
-"Facebook associat al compte de Foursquare."
+"Indica si Foursquare hauria de difondre el registre com a apunt al compte de"
+" Facebook associat al compte de Foursquare."
 
 #: data/org.gnome.Maps.gschema.xml:66
 msgid "Foursquare check-in Twitter broadcasting"
@@ -205,6 +205,14 @@ msgstr "Utilitza caselles aèries híbrides"
 msgid "Whether aerial tiles should use hybrid style (with labels)."
 msgstr ""
 "Si les caselles aèries haurien d'utilitzar l'estil híbrid (amb etiquetes)."
+
+#: data/org.gnome.Maps.gschema.xml:85
+msgid "Show scale"
+msgstr "Mostra l'escala"
+
+#: data/org.gnome.Maps.gschema.xml:86
+msgid "Whether to show the scale."
+msgstr "Si s'ha de mostrar l'escala."
 
 #: data/ui/check-in-dialog.ui:236
 msgid "Visibility"
@@ -451,8 +459,8 @@ msgstr "Compte OpenStreetMap"
 #: data/ui/osm-account-dialog.ui:22
 msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
 msgstr ""
-"<span weight=\"bold\" size=\"x-large\">Inicieu la sessió per a editar mapes</"
-"span>"
+"<span weight=\"bold\" size=\"x-large\">Inicieu la sessió per a editar "
+"mapes</span>"
 
 #: data/ui/osm-account-dialog.ui:36
 msgid ""
@@ -478,16 +486,15 @@ msgstr "Registreu-vos-hi"
 msgid "Sign In"
 msgstr "Inicieu la sessió"
 
-#. The label should contain the link to the OSM reset password page with a translated title
+#. The label should contain the link to the OSM reset password page with a
+#. translated title
 #: data/ui/osm-account-dialog.ui:162
 msgid ""
 "Sorry, that didn’t work. Please try again, or visit\n"
-"<a href=\"https://www.openstreetmap.org/user/forgot-password"
-"\">OpenStreetMap</a> to reset your password."
+"<a href=\"https://www.openstreetmap.org/user/forgot-password\">OpenStreetMap</a> to reset your password."
 msgstr ""
 "S'ha produït algun error. Torneu-ho a provar, o visiteu\n"
-"<a href=\"https://www.openstreetmap.org/user/forgot-password"
-"\">OpenStreetMap</a> per a restablir la contrasenya."
+"<a href=\"https://www.openstreetmap.org/user/forgot-password\">OpenStreetMap</a> per a restablir la contrasenya."
 
 #: data/ui/osm-account-dialog.ui:175
 msgid "The verification code didn’t match, please try again."
@@ -525,7 +532,8 @@ msgstr "Número de carrer"
 msgid "Postal code"
 msgstr "Codi postal"
 
-#. This is the place name as it would be written in a postal address (typically coming after the postal code)
+#. This is the place name as it would be written in a postal address
+#. (typically coming after the postal code)
 #: data/ui/osm-edit-address.ui:50
 msgid "City"
 msgstr "Ciutat"
@@ -619,13 +627,10 @@ msgid ""
 "Routing itineraries for public transit is provided by third-party\n"
 "services.\n"
 "GNOME can not guarantee correctness of the itineraries and schedules shown.\n"
-"Note that some providers might not include all available modes of "
-"transportation,\n"
-"e.g. a national provider might not include airlines, and a local provider "
-"could\n"
+"Note that some providers might not include all available modes of transportation,\n"
+"e.g. a national provider might not include airlines, and a local provider could\n"
 "miss regional trains.\n"
-"Names and brands shown are to be considered as registered trademarks when "
-"applicable."
+"Names and brands shown are to be considered as registered trademarks when applicable."
 msgstr ""
 "Els itineraris de ruta del transport públic els proporciona el GNOME\n"
 "utilitzant dades d'horaris obtingudes d'empreses o agències de trànsit.\n"
@@ -639,12 +644,12 @@ msgid "Show more results"
 msgstr "Mostra més resultats"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:126
+#: data/ui/transit-leg-row.ui:129
 msgid "Hide intermediate stops and information"
 msgstr "Oculta les parades intermèdies i informació"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:200
+#: data/ui/transit-leg-row.ui:203
 msgid "Show intermediate stops and information"
 msgstr "Mostra les parades intermèdies i informació"
 
@@ -653,12 +658,14 @@ msgstr "Mostra les parades intermèdies i informació"
 msgid "Leave Now"
 msgstr "Sortiu ara"
 
-#. Indicates searching for itineraries leaving at the specified time at the earliest
+#. Indicates searching for itineraries leaving at the specified time at the
+#. earliest
 #: data/ui/transit-options-panel.ui:19
 msgid "Leave By"
 msgstr "Sortiu a"
 
-#. Indicates searching for itineraries arriving no later than the specified time
+#. Indicates searching for itineraries arriving no later than the specified
+#. time
 #: data/ui/transit-options-panel.ui:20
 msgid "Arrive By"
 msgstr "Arribeu a"
@@ -693,7 +700,8 @@ msgid "Airplanes"
 msgstr "Avions"
 
 #. Translators: This is a tooltip
-#: data/ui/place-bar.ui:48 data/ui/place-buttons.ui:50 data/ui/place-view.ui:72
+#: data/ui/place-bar.ui:48 data/ui/place-buttons.ui:50
+#: data/ui/place-view.ui:72
 msgid "Share location"
 msgstr "Comparteix la ubicació"
 
@@ -786,21 +794,19 @@ msgstr "Seleccioneu un lloc"
 
 #: src/checkInDialog.js:195
 msgid ""
-"Maps cannot find the place to check in to with Foursquare. Please select one "
-"from this list."
+"Maps cannot find the place to check in to with Foursquare. Please select one"
+" from this list."
 msgstr ""
 "Els Mapes no poden trobar el lloc per a registrar-vos amb Foursquare. "
 "Seleccioneu-ne un de la llista."
 
 #. Translators: %s is the name of the place to check in.
-#.
 #: src/checkInDialog.js:210
 #, javascript-format
 msgid "Check in to %s"
 msgstr "Registreu-vos a %s"
 
 #. Translators: %s is the name of the place to check in.
-#.
 #: src/checkInDialog.js:220
 #, javascript-format
 msgid "Write an optional message to check in to %s."
@@ -831,8 +837,8 @@ msgstr "No s'ha trobat res aquí."
 
 #: src/contextMenu.js:196
 msgid ""
-"Location was added to the map, note that it may take a while before it shows "
-"on the map and in search results."
+"Location was added to the map, note that it may take a while before it shows"
+" on the map and in search results."
 msgstr ""
 "La ubicació ha estat afegida al mapa, fixeu-vos que pot tardar una mica "
 "abans de mostrar al mapa els resultats de la cerca."
@@ -840,7 +846,6 @@ msgstr ""
 #. Translators: This is a format string for a PNG filename for an
 #. * exported image with coordinates. The .png extension should be kept
 #. * intact in the translated string.
-#.
 #: src/exportViewDialog.js:82
 #, javascript-format
 msgid "Maps at %f, %f.png"
@@ -866,7 +871,7 @@ msgstr "No hi ha cap nom de fitxer especificat"
 msgid "Unable to export view"
 msgstr "No està habilitada l'exportació de la vista"
 
-#: src/geoclue.js:118
+#: src/geoclue.js:122
 msgid "Current Location"
 msgstr "Ubicació actual"
 
@@ -919,7 +924,8 @@ msgstr "Una aplicació de mapes pel GNOME"
 #: src/mainWindow.js:611
 msgid "Copyright © 2011 – 2021 Red Hat, Inc. and The GNOME Maps authors"
 msgstr ""
-"Copyright © 2011 – 2021 Red Hat, Inc. i els altres autors del Mapes del GNOME"
+"Copyright © 2011 – 2021 Red Hat, Inc. i els altres autors del Mapes del "
+"GNOME"
 
 #: src/mainWindow.js:631
 #, javascript-format
@@ -930,7 +936,6 @@ msgstr "Dades del mapa de %s i col·laboradors"
 #. * tile provider where the %s placeholder is replaced by either
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
-#.
 #: src/mainWindow.js:647
 #, javascript-format
 msgid "Map tiles provided by %s"
@@ -944,34 +949,33 @@ msgstr "Caselles de mapa proporcionades per %s"
 #. * can be swapped, if needed using the %n$s positional syntax
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
-#.
 #: src/mainWindow.js:676
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Cerca proveïda per %s utilitzant %s"
 
-#: src/mapView.js:494 src/mapView.js:552
+#: src/mapView.js:505 src/mapView.js:563
 msgid "Failed to open layer"
 msgstr "S'ha produït un error en obrir la capa"
 
-#: src/mapView.js:515
+#: src/mapView.js:526
 msgid "Do you want to continue?"
 msgstr "Voleu continuar?"
 
-#: src/mapView.js:516
+#: src/mapView.js:527
 #, javascript-format
 msgid ""
-"You are about to open files with a total size of %s MB. This could take some "
-"time to load"
+"You are about to open files with a total size of %s MB. This could take some"
+" time to load"
 msgstr ""
 "Esteu a punt d'obrir fitxers amb una mida total de %s MB. Això pot trigar "
 "una estona a carregar-se"
 
-#: src/mapView.js:546
+#: src/mapView.js:557
 msgid "File type is not supported"
 msgstr "Aquest tipus de fitxer no està suportat"
 
-#: src/mapView.js:584
+#: src/mapView.js:595
 msgid "Failed to open GeoURI"
 msgstr "S'ha produït un error en obrir el fitxer GeoURI"
 
@@ -1028,8 +1032,8 @@ msgstr ""
 
 #: src/osmEditDialog.js:141
 msgid ""
-"The official website. Try to use the most basic form of a URL i.e. http://"
-"example.com instead of http://example.com/index.html."
+"The official website. Try to use the most basic form of a URL i.e. "
+"http://example.com instead of http://example.com/index.html."
 msgstr ""
 "El lloc web oficial. Utilitzeu la forma més bàsica de l'URL, és a dir: "
 "http://example.com en comptes de http://example.com/index.html."
@@ -1043,8 +1047,8 @@ msgid ""
 "Phone number. Use the international format, starting with a + sign. Beware "
 "of local privacy laws, especially for private phone numbers."
 msgstr ""
-"Número de telèfon. Utilitzeu el format internacional, començant amb un signe "
-"+. Compte amb les lleis locals de privacitat, especialment per als números "
+"Número de telèfon. Utilitzeu el format internacional, començant amb un signe"
+" +. Compte amb les lleis locals de privacitat, especialment per als números "
 "de telèfon privats."
 
 #: src/osmEditDialog.js:155 src/placeView.js:308
@@ -1094,7 +1098,6 @@ msgstr "Mireu l'enllaç a l'etiqueta per ajuda sobre el format."
 #. * formatted string. Ideally it should be kept as an integer value
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
-#.
 #: src/osmEditDialog.js:182 src/placeView.js:455
 msgid "Population"
 msgstr "Població"
@@ -1259,8 +1262,8 @@ msgstr "Nota"
 
 #: src/osmEditDialog.js:258
 msgid ""
-"Information used to inform other mappers about non-obvious information about "
-"an element, the author’s intent when creating it, or hints for further "
+"Information used to inform other mappers about non-obvious information about"
+" an element, the author’s intent when creating it, or hints for further "
 "improvement."
 msgstr ""
 "La informació utilitzada per a informar altres creadors de mapes "
@@ -1284,11 +1287,11 @@ msgstr "Fet"
 msgid "Unnamed place"
 msgstr "Ubicació sense nom"
 
-#: src/placeEntry.js:222
+#: src/placeEntry.js:224
 msgid "Failed to parse Geo URI"
 msgstr "S'ha produït un error en analitzar l'URI Geo"
 
-#: src/placeEntry.js:235
+#: src/placeEntry.js:237
 msgid "Failed to parse Maps URI"
 msgstr "S'ha produït un error en analitzar l'URI Maps"
 
@@ -1311,7 +1314,6 @@ msgstr "Precisió: %s"
 #. * with phone numbers in international format starting with a +
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
-#.
 #: src/placeView.js:294
 msgid "Phone number"
 msgstr "Número de telèfon"
@@ -1319,7 +1321,6 @@ msgstr "Número de telèfon"
 #. Translators:
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
-#.
 #: src/placeView.js:321
 msgid "Offers takeaway"
 msgstr "Ofereix per a emportar"
@@ -1327,7 +1328,6 @@ msgstr "Ofereix per a emportar"
 #. Translators:
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
-#.
 #: src/placeView.js:329
 msgid "Does not offer takeaway"
 msgstr "No ofereix per a emportar"
@@ -1336,14 +1336,12 @@ msgstr "No ofereix per a emportar"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
-#.
 #: src/placeView.js:338
 msgid "Only offers takeaway"
 msgstr "Només ofereix per a emportar"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
-#.
 #: src/placeView.js:355
 msgid "Public internet access"
 msgstr "Accés públic a Internet"
@@ -1351,35 +1349,30 @@ msgstr "Accés públic a Internet"
 #. Translators:
 #. * no internet access is offered in a place where
 #. * someone might expect it.
-#.
 #: src/placeView.js:364
 msgid "No internet access"
 msgstr "Sense accés a Internet"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
-#.
 #: src/placeView.js:372
 msgid "Public Wi-Fi"
 msgstr "Wi-Fi públic"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
-#.
 #: src/placeView.js:380
 msgid "Wired internet access"
 msgstr "Accés cablejat a Internet"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
-#.
 #: src/placeView.js:388
 msgid "Computers available for use"
 msgstr "Ordinadors disponibles per al seu ús"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
-#.
 #: src/placeView.js:396
 msgid "Internet assistance available"
 msgstr "Assistència d'Internet disponible"
@@ -1394,7 +1387,6 @@ msgstr "Lavabos disponibles"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
-#.
 #: src/placeView.js:414
 msgid "Wheelchair accessible"
 msgstr "Accessible amb cadira de rodes"
@@ -1403,7 +1395,6 @@ msgstr "Accessible amb cadira de rodes"
 #. * This means wheelchairs have partial access (e.g some areas
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
-#.
 #: src/placeView.js:424
 msgid "Limited wheelchair accessibility"
 msgstr "Accessibilitat amb cadira de rodes limitada"
@@ -1411,7 +1402,6 @@ msgstr "Accessibilitat amb cadira de rodes limitada"
 #. Translators:
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
-#.
 #: src/placeView.js:433
 msgid "Not wheelchair accessible"
 msgstr "No accessible amb cadira de rodes"
@@ -1420,7 +1410,6 @@ msgstr "No accessible amb cadira de rodes"
 #. * This means that the way or area is designated or purpose built
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
-#.
 #: src/placeView.js:443
 msgid "Designated for wheelchair users"
 msgstr "Dissenyat per a usuaris en cadira de rodes"
@@ -1429,7 +1418,6 @@ msgstr "Dissenyat per a usuaris en cadira de rodes"
 #. * Translators: this is a label indicating an altitude below
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
-#.
 #: src/placeView.js:474
 #, javascript-format
 msgid "%s below sea level"
@@ -1438,7 +1426,6 @@ msgstr "%s per sota del nivell del mar"
 #. *
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
-#.
 #: src/placeView.js:481
 msgid "At sea level"
 msgstr "A nivell del mar"
@@ -1524,7 +1511,6 @@ msgstr "Itineraris proporcionats per %s"
 
 #. Translators: this is a format string indicating instructions
 #. * starting a journey at the address given as the parameter
-#.
 #: src/transit.js:37
 #, javascript-format
 msgid "Start at %s"
@@ -1533,14 +1519,12 @@ msgstr "Comenceu a %s"
 #. Translators: this indicates starting a journey at a location
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
-#.
 #: src/transit.js:43
 msgid "Start"
 msgstr "Comença"
 
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
-#.
 #: src/transit.js:61
 #, javascript-format
 msgid "Walk %s"
@@ -1582,11 +1566,9 @@ msgstr "No s'han trobat alternatives anteriors."
 msgid "No later alternatives found."
 msgstr "No s'han trobat alternatives posteriors."
 
-#.
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
-#.
-#: src/transitOptionsPanel.js:140
+#: src/transitOptionsPanel.js:148
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e %b"
@@ -1603,7 +1585,6 @@ msgstr "No s'ha trobat un proveïdor per a aquesta ruta."
 #. * arrival time, like:
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
-#.
 #: src/transitPlan.js:302
 #, javascript-format
 msgid "%s – %s"
@@ -1612,7 +1593,6 @@ msgstr "%s – %s"
 #. translators: this is an indication for a trip duration of
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
-#.
 #: src/transitPlan.js:331
 #, javascript-format
 msgid "%s minute"
@@ -1623,7 +1603,6 @@ msgstr[1] "%s minuts"
 #. translators: this is an indication for a trip duration,
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
-#.
 #: src/transitPlan.js:343
 #, javascript-format
 msgid "%s hour"
@@ -1634,7 +1613,6 @@ msgstr[1] "%s hores"
 #. translators: this is an indication for a trip duration
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
-#.
 #: src/transitPlan.js:351
 #, javascript-format
 msgid "%s:%s hour"
@@ -1647,7 +1625,6 @@ msgstr[1] "%s:%s hores"
 #. * list for an itinerary, like:
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
-#.
 #: src/transitPlan.js:744
 #, javascript-format
 msgid "%s–%s"
@@ -1697,7 +1674,6 @@ msgstr "Tots els dies"
 
 #. Translators:
 #. * This represents a range of days with a starting and ending day.
-#.
 #: src/translations.js:166
 #, javascript-format
 msgctxt "day range"
@@ -1719,7 +1695,6 @@ msgstr "Vacances escolars"
 #. * appropriate white space or connected phrase could be modified by
 #. * the translation. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
-#.
 #: src/translations.js:219
 #, javascript-format
 msgctxt "time interval list"
@@ -1736,7 +1711,6 @@ msgstr "sense obrir"
 #. * appropriate white spacing or connecting phrases can be set by the
 #. * translation as needed. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
-#.
 #: src/translations.js:248
 #, javascript-format
 msgctxt "time interval"
@@ -1755,7 +1729,6 @@ msgstr "Exacte"
 
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
-#.
 #: src/utils.js:351
 #, javascript-format
 msgid "%s h"
@@ -1764,7 +1737,6 @@ msgstr "%s h"
 #. Translators: this is a duration with hours and minutes parts
 #. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
-#.
 #: src/utils.js:357
 #, javascript-format
 msgid "%s h %s min"
@@ -1775,7 +1747,6 @@ msgstr[1] "%s h %s min"
 #. Translators: this is a duration with minutes part
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
-#.
 #: src/utils.js:364
 #, javascript-format
 msgid "%s min"
@@ -1786,7 +1757,6 @@ msgstr[1] "%s min"
 #. Translators: this is a duration of less than one minute
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
-#.
 #: src/utils.js:370
 #, javascript-format
 msgid "%s s"
@@ -1926,120 +1896,3 @@ msgstr "Canvieu de sentit cap a la dreta a %s"
 msgid "Make a right u-turn"
 msgstr "Canvieu de sentit cap a la dreta"
 
-#~ msgid "GNOME Maps"
-#~ msgstr "Mapes del GNOME"
-
-#~ msgid "Night mode"
-#~ msgstr "Mode fosc"
-
-#~ msgid "Whether the application is in night mode."
-#~ msgstr "Si l'aplicació utilitza el mode fosc."
-
-#~ msgid "Night Mode"
-#~ msgstr "Mode fosc"
-
-#~ msgid ""
-#~ "You can even search for specific types of locations, such as “Pubs near "
-#~ "Main Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
-#~ msgstr ""
-#~ "També podeu cercar per tipus d'ubicacions en concret, com ara «Bars a "
-#~ "prop de la plaça Catalunya, Barcelona» o «Hotels a prop d'Alexanderplatz, "
-#~ "Berlín»."
-
-#~ msgid "Facebook check-in privacy setting"
-#~ msgstr "Paràmetre de privacitat de registre al Facebook"
-
-#~ msgid ""
-#~ "Latest used Facebook check-in privacy setting. Possible values are: "
-#~ "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
-#~ msgstr ""
-#~ "Darrer paràmetre de privacitat de registre utilitzat al Facebook. Els "
-#~ "valors possibles són TOTHOM, AMICS D'AMICS, TOTS ELS AMICS o UN MATEIX."
-
-#~ msgid "Everyone"
-#~ msgstr "Tothom"
-
-#~ msgid "Friends of friends"
-#~ msgstr "Amics d'amics"
-
-#~ msgid "Just friends"
-#~ msgstr "Només amics"
-
-#~ msgid "Just me"
-#~ msgstr "Només jo"
-
-#~ msgid ""
-#~ "Maps cannot find the place to check in to with Facebook. Please select "
-#~ "one from this list."
-#~ msgstr ""
-#~ "El Mapes no poden trobar el lloc on registrar-vos amb Facebook. "
-#~ "Seleccioneu-ne un de la llista."
-
-#~ msgid "Find a Route"
-#~ msgstr "Cerca una ruta"
-
-#~ msgid "Check in here"
-#~ msgstr "Registreu-vos aquí"
-
-#~ msgid "Show more information"
-#~ msgstr "Mostra més informació"
-
-#~ msgid "Population:"
-#~ msgstr "Població:"
-
-#~ msgid "Altitude:"
-#~ msgstr "Altitud:"
-
-#~ msgid "Opening hours:"
-#~ msgstr "Hores d'obertura:"
-
-#~ msgid "Internet access:"
-#~ msgstr "Accés a Internet:"
-
-#~ msgid "Toilets:"
-#~ msgstr "Lavabos:"
-
-#~ msgid "Wheelchair access:"
-#~ msgstr "Accés amb cadira de rodes:"
-
-#~ msgid "Phone:"
-#~ msgstr "Telèfon:"
-
-#~ msgid "yes"
-#~ msgstr "sí"
-
-#~ msgid "limited"
-#~ msgstr "limitat"
-
-#~ msgid "no"
-#~ msgstr "no"
-
-#~ msgid "designated"
-#~ msgstr "designat"
-
-#~ msgid "OpenStreetMap URL is not valid"
-#~ msgstr "L'URL de l'OpenStreetMap no és vàlid"
-
-#~ msgctxt "time range list"
-#~ msgid "%s %s"
-#~ msgstr "%s %s"
-
-#~ msgctxt "time range list"
-#~ msgid "%s %s %s"
-#~ msgstr "%s %s %s"
-
-#~ msgctxt "time range component"
-#~ msgid "%s %s"
-#~ msgstr "%s %s"
-
-#~ msgid "wired"
-#~ msgstr "amb fil"
-
-#~ msgid "terminal"
-#~ msgstr "terminal"
-
-#~ msgid "service"
-#~ msgstr "servei"
-
-#~ msgid "Primary menu"
-#~ msgstr "Menú primari"
