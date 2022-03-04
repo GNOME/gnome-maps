@@ -8,14 +8,14 @@
 # Bruno Ramalhete <bram.512@gmail.com>, 2016.
 # Juliano Camargo <julianosc@pm.me>, 2020.
 # Juliano de Souza Camargo <julianosc@protonmail.com>, 2020.
-# Hugo carvalho <hugokarvalho@hotmail.com>, 2020, 2021.
+# Hugo carvalho <hugokarvalho@hotmail.com>, 2020, 2021, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2021-11-22 21:08+0000\n"
-"PO-Revision-Date: 2021-11-23 19:57+0000\n"
+"POT-Creation-Date: 2022-03-03 21:16+0000\n"
+"PO-Revision-Date: 2022-03-04 10:23+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.gnome.org/teams/pt/>\n"
 "Language: pt\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Language: pt_PT\n"
 "X-Source-Language: C\n"
 "X-Project-Style: gnome\n"
@@ -64,7 +64,7 @@ msgstr ""
 "A aplicação Mapas utiliza a base de dados colaborativa OpenStreetMap, feita "
 "por centenas de milhares de pessoas por todo o globo."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:248
+#: data/org.gnome.Maps.appdata.xml.in.in:245
 msgid "The GNOME Project"
 msgstr "O Projeto GNOME"
 
@@ -209,6 +209,14 @@ msgstr "Utilizar vista aérea híbrida"
 #: data/org.gnome.Maps.gschema.xml:81
 msgid "Whether aerial tiles should use hybrid style (with labels)."
 msgstr "Se a vista aérea deve utilizar estilo híbrido (com rótulos)."
+
+#: data/org.gnome.Maps.gschema.xml:85
+msgid "Show scale"
+msgstr "Mostrar escala"
+
+#: data/org.gnome.Maps.gschema.xml:86
+msgid "Whether to show the scale."
+msgstr "Se deve mostrar a escala."
 
 #: data/ui/check-in-dialog.ui:236
 msgid "Visibility"
@@ -644,12 +652,12 @@ msgid "Show more results"
 msgstr "Ver mais resultados"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:126
+#: data/ui/transit-leg-row.ui:129
 msgid "Hide intermediate stops and information"
 msgstr "Ocultar paradas intermediária e informação"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:200
+#: data/ui/transit-leg-row.ui:203
 msgid "Show intermediate stops and information"
 msgstr "Ver paradas intermediárias e informação"
 
@@ -870,7 +878,7 @@ msgstr "Sem nome de ficheiro"
 msgid "Unable to export view"
 msgstr "Impossível exportar a vista"
 
-#: src/geoclue.js:118
+#: src/geoclue.js:122
 msgid "Current Location"
 msgstr "Localização atual"
 
@@ -954,15 +962,15 @@ msgstr "Telas de mapas fornecida por %s"
 msgid "Search provided by %s using %s"
 msgstr "Procura fornecida por %s utilizando %s"
 
-#: src/mapView.js:494 src/mapView.js:552
+#: src/mapView.js:505 src/mapView.js:563
 msgid "Failed to open layer"
 msgstr "Falha ao abrir camada"
 
-#: src/mapView.js:515
+#: src/mapView.js:526
 msgid "Do you want to continue?"
 msgstr "Deseja continuar?"
 
-#: src/mapView.js:516
+#: src/mapView.js:527
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -971,11 +979,11 @@ msgstr ""
 "Está prestes a abrir ficheiros com um tamanho total de %s MB. Isto pode "
 "demorar algum tempo a carregar"
 
-#: src/mapView.js:546
+#: src/mapView.js:557
 msgid "File type is not supported"
 msgstr "Tipo de ficheiro não suportado"
 
-#: src/mapView.js:584
+#: src/mapView.js:595
 msgid "Failed to open GeoURI"
 msgstr "Falha ao abrir GeoURI"
 
@@ -1289,11 +1297,11 @@ msgstr "Concluído"
 msgid "Unnamed place"
 msgstr "Local sem nome"
 
-#: src/placeEntry.js:222
+#: src/placeEntry.js:224
 msgid "Failed to parse Geo URI"
 msgstr "Falha ao processar URI Geo"
 
-#: src/placeEntry.js:235
+#: src/placeEntry.js:237
 msgid "Failed to parse Maps URI"
 msgstr "Falha ao processar URI Mapas"
 
@@ -1591,7 +1599,7 @@ msgstr "Sem alternativas subsequentes."
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:140
+#: src/transitOptionsPanel.js:148
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e de %b"
