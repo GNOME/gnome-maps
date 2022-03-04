@@ -1,13 +1,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Daniel Korostil <ted.korostiled@gmail.com>, 2013, 2014, 2015, 2016, 2017.
-# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021.
+# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2021-11-22 21:08+0000\n"
-"PO-Revision-Date: 2021-11-23 09:40+0200\n"
+"POT-Creation-Date: 2022-03-03 21:16+0000\n"
+"PO-Revision-Date: 2022-03-04 11:54+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -54,7 +54,7 @@ msgstr ""
 "Карти використовують колективну базу даних OpenStreetMap, яку роблять тисячі "
 "осіб по всій планеті."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:248
+#: data/org.gnome.Maps.appdata.xml.in.in:245
 msgid "The GNOME Project"
 msgstr "Проєкт GNOME"
 
@@ -200,6 +200,16 @@ msgstr "Використовувати гібридні супутникові �
 msgid "Whether aerial tiles should use hybrid style (with labels)."
 msgstr ""
 "Чи слід використовувати гібридний стиль (із мітками) для супутникових плиток."
+
+#: data/org.gnome.Maps.gschema.xml:85
+#| msgid "Show Labels"
+msgid "Show scale"
+msgstr "Показувати шкалу"
+
+#: data/org.gnome.Maps.gschema.xml:86
+msgid "Whether to show the scale."
+msgstr ""
+"Чи слід показувати шкалу."
 
 #: data/ui/check-in-dialog.ui:236
 msgid "Visibility"
@@ -635,12 +645,12 @@ msgid "Show more results"
 msgstr "показати більше результатів"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:126
+#: data/ui/transit-leg-row.ui:129
 msgid "Hide intermediate stops and information"
 msgstr "Сховати проміжні зупинки та відомості"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:200
+#: data/ui/transit-leg-row.ui:203
 msgid "Show intermediate stops and information"
 msgstr "Показати проміжні зупинки та відомості"
 
@@ -755,7 +765,6 @@ msgid "Ignore network availability"
 msgstr "Ігнорувати доступність мережі"
 
 #: src/application.js:133
-#| msgid "Select a place"
 msgid "Search for places"
 msgstr "Шукати місця"
 
@@ -766,8 +775,7 @@ msgstr "[ФАЙЛ…|АДРЕСА]"
 #: src/application.js:407
 #, javascript-format
 msgid "Invalid maps: URI: %s"
-msgstr ""
-"Некоректні карти: адреса: %s"
+msgstr "Некоректні карти: адреса: %s"
 
 #: src/checkInDialog.js:161
 msgid "Select an account"
@@ -862,7 +870,7 @@ msgstr "Не вказано назви файла"
 msgid "Unable to export view"
 msgstr "Неможливо експортувати перегляд"
 
-#: src/geoclue.js:118
+#: src/geoclue.js:122
 msgid "Current Location"
 msgstr "Поточне місце"
 
@@ -939,15 +947,15 @@ msgstr "Блоки карти надано %s"
 msgid "Search provided by %s using %s"
 msgstr "Послуги з пошуку надано %s, використовуємо %s"
 
-#: src/mapView.js:494 src/mapView.js:552
+#: src/mapView.js:505 src/mapView.js:563
 msgid "Failed to open layer"
 msgstr "Не вдалося відкрити шар"
 
-#: src/mapView.js:515
+#: src/mapView.js:526
 msgid "Do you want to continue?"
 msgstr "Продовжити?"
 
-#: src/mapView.js:516
+#: src/mapView.js:527
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -956,11 +964,11 @@ msgstr ""
 "Ви маєте намір відкрити файли, загальний розмір яких дорівнює %s МБ. Процес "
 "завантаження цих файлів може бути досить тривалим."
 
-#: src/mapView.js:546
+#: src/mapView.js:557
 msgid "File type is not supported"
 msgstr "Тип файла не підтримується"
 
-#: src/mapView.js:584
+#: src/mapView.js:595
 msgid "Failed to open GeoURI"
 msgstr "Не вдалося відкрити GeoURI"
 
@@ -1272,12 +1280,11 @@ msgstr "Зроблено"
 msgid "Unnamed place"
 msgstr "Місце без назви"
 
-#: src/placeEntry.js:222
+#: src/placeEntry.js:224
 msgid "Failed to parse Geo URI"
 msgstr "Не вдалося розібрати геопосилання"
 
-#: src/placeEntry.js:235
-#| msgid "Failed to parse Geo URI"
+#: src/placeEntry.js:237
 msgid "Failed to parse Maps URI"
 msgstr "Не вдалося розібрати адресу «Карт»"
 
@@ -1575,7 +1582,7 @@ msgstr "Пізніших альтернатив не знайдено."
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:140
+#: src/transitOptionsPanel.js:148
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e %b"
