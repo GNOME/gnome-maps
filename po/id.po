@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps gnome-3-28\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2021-11-22 21:08+0000\n"
-"PO-Revision-Date: 2021-12-23 10:49+0700\n"
+"POT-Creation-Date: 2022-03-03 21:16+0000\n"
+"PO-Revision-Date: 2022-03-04 08:13+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome@i15n.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -56,7 +56,7 @@ msgstr ""
 "Peta memakai basis data kolaboratif OpenStreetMap, yang dibuat oleh ratusan "
 "ribu orang di seluruh dunia."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:248
+#: data/org.gnome.Maps.appdata.xml.in.in:245
 msgid "The GNOME Project"
 msgstr "Proyek GNOME"
 
@@ -202,6 +202,14 @@ msgstr "Gunakan ubin udara hybrid"
 #: data/org.gnome.Maps.gschema.xml:81
 msgid "Whether aerial tiles should use hybrid style (with labels)."
 msgstr "Apakah ubin udara harus menggunakan gaya hybrid (dengan label)."
+
+#: data/org.gnome.Maps.gschema.xml:85
+msgid "Show scale"
+msgstr "Tampilkan skala"
+
+#: data/org.gnome.Maps.gschema.xml:86
+msgid "Whether to show the scale."
+msgstr "Apakah akan menampilkan skala."
 
 #: data/ui/check-in-dialog.ui:236
 msgid "Visibility"
@@ -638,12 +646,12 @@ msgid "Show more results"
 msgstr "Tampilkan lebih banyak hasil"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:126
+#: data/ui/transit-leg-row.ui:129
 msgid "Hide intermediate stops and information"
 msgstr "Sembunyikan informasi dan perhentian antara"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:200
+#: data/ui/transit-leg-row.ui:203
 msgid "Show intermediate stops and information"
 msgstr "Tampilkan berhenti menengah dan informasi"
 
@@ -864,7 +872,7 @@ msgstr "Tak ada nama berkas yang dinyatakan"
 msgid "Unable to export view"
 msgstr "Tak bisa mengekspor tilikan"
 
-#: src/geoclue.js:118
+#: src/geoclue.js:122
 msgid "Current Location"
 msgstr "Lokasi Sekarang"
 
@@ -943,15 +951,15 @@ msgstr "Ubin peta disediakan oleh %s"
 msgid "Search provided by %s using %s"
 msgstr "Pencarian disediakan oleh %s menggunakan %s"
 
-#: src/mapView.js:494 src/mapView.js:552
+#: src/mapView.js:505 src/mapView.js:563
 msgid "Failed to open layer"
 msgstr "Gagal membuka layer"
 
-#: src/mapView.js:515
+#: src/mapView.js:526
 msgid "Do you want to continue?"
 msgstr "Apakah Anda ingin melanjutkan?"
 
-#: src/mapView.js:516
+#: src/mapView.js:527
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -960,11 +968,11 @@ msgstr ""
 "Anda berencana membuka berkas dengan ukuran total %s MB. Ini bisa memakan "
 "waktu untuk memuat"
 
-#: src/mapView.js:546
+#: src/mapView.js:557
 msgid "File type is not supported"
 msgstr "Jenis berkas tak didukung"
 
-#: src/mapView.js:584
+#: src/mapView.js:595
 msgid "Failed to open GeoURI"
 msgstr "Gagal membuka GeoURI"
 
@@ -1276,11 +1284,11 @@ msgstr "Selesai"
 msgid "Unnamed place"
 msgstr "Tempat tanpa nama"
 
-#: src/placeEntry.js:222
+#: src/placeEntry.js:224
 msgid "Failed to parse Geo URI"
 msgstr "Gagal mengurai URI Geo"
 
-#: src/placeEntry.js:235
+#: src/placeEntry.js:237
 msgid "Failed to parse Maps URI"
 msgstr "Gagal mengurai Peta URI"
 
@@ -1578,7 +1586,7 @@ msgstr "Tidak ada alternatif lain yang ditemukan."
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:140
+#: src/transitOptionsPanel.js:148
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e %b"
