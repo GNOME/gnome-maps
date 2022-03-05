@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2021-11-22 21:08+0000\n"
-"PO-Revision-Date: 2022-01-07 11:48+0800\n"
+"POT-Creation-Date: 2022-03-03 21:16+0000\n"
+"PO-Revision-Date: 2022-03-04 20:08+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -58,7 +58,7 @@ msgid ""
 msgstr ""
 "地图应用使用了 OpenStreetMap 数据库，该数据库由全球成千上万的人们协同制作。"
 
-#: data/org.gnome.Maps.appdata.xml.in.in:248
+#: data/org.gnome.Maps.appdata.xml.in.in:245
 msgid "The GNOME Project"
 msgstr "GNOME 项目"
 
@@ -202,6 +202,15 @@ msgstr "使用混合航拍区块"
 #: data/org.gnome.Maps.gschema.xml:81
 msgid "Whether aerial tiles should use hybrid style (with labels)."
 msgstr "航拍区块是否使用混合样式（带标签）。"
+
+#: data/org.gnome.Maps.gschema.xml:85
+#| msgid "Show Labels"
+msgid "Show scale"
+msgstr "显示比例尺"
+
+#: data/org.gnome.Maps.gschema.xml:86
+msgid "Whether to show the scale."
+msgstr "是否显示地图比例尺。"
 
 #: data/ui/check-in-dialog.ui:236
 msgid "Visibility"
@@ -631,12 +640,12 @@ msgid "Show more results"
 msgstr "显示更多结果"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:126
+#: data/ui/transit-leg-row.ui:129
 msgid "Hide intermediate stops and information"
 msgstr "隐藏途径停站及沿路信息"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:200
+#: data/ui/transit-leg-row.ui:203
 msgid "Show intermediate stops and information"
 msgstr "显示途径停站及沿路信息"
 
@@ -751,7 +760,6 @@ msgid "Ignore network availability"
 msgstr "忽略网络可用性"
 
 #: src/application.js:133
-#| msgid "Select a place"
 msgid "Search for places"
 msgstr "搜索地点"
 
@@ -851,7 +859,7 @@ msgstr "未指定文件名"
 msgid "Unable to export view"
 msgstr "无法导出视图"
 
-#: src/geoclue.js:118
+#: src/geoclue.js:122
 msgid "Current Location"
 msgstr "当前位置"
 
@@ -933,26 +941,26 @@ msgstr "地图图块由 %s 提供"
 msgid "Search provided by %s using %s"
 msgstr "使用 %s 提供的服务搜索 %s"
 
-#: src/mapView.js:494 src/mapView.js:552
+#: src/mapView.js:505 src/mapView.js:563
 msgid "Failed to open layer"
 msgstr "打开图层失败"
 
-#: src/mapView.js:515
+#: src/mapView.js:526
 msgid "Do you want to continue?"
 msgstr "请问是否继续？"
 
-#: src/mapView.js:516
+#: src/mapView.js:527
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
 "time to load"
 msgstr "即将打开 %s MB 的文件，这可能需要一定时间"
 
-#: src/mapView.js:546
+#: src/mapView.js:557
 msgid "File type is not supported"
 msgstr "文件类型未支持"
 
-#: src/mapView.js:584
+#: src/mapView.js:595
 msgid "Failed to open GeoURI"
 msgstr "打开 GeoURI 失败"
 
@@ -1256,12 +1264,11 @@ msgstr "完成"
 msgid "Unnamed place"
 msgstr "未命名地点"
 
-#: src/placeEntry.js:222
+#: src/placeEntry.js:224
 msgid "Failed to parse Geo URI"
 msgstr "解析 Geo URI 失败"
 
-#: src/placeEntry.js:235
-#| msgid "Failed to parse Geo URI"
+#: src/placeEntry.js:237
 msgid "Failed to parse Maps URI"
 msgstr "解析地图 URI 失败"
 
@@ -1559,7 +1566,7 @@ msgstr "找不到下一个替代方案。"
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:140
+#: src/transitOptionsPanel.js:148
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%-m月%-d日"
