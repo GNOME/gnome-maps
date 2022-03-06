@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2022-02-03 16:52+0000\n"
-"PO-Revision-Date: 2022-02-26 14:44+0100\n"
+"POT-Creation-Date: 2022-03-03 21:16+0000\n"
+"PO-Revision-Date: 2022-03-06 12:55+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -56,7 +56,7 @@ msgstr ""
 "Mapy udostępniane są przez projekt OpenStreetMap, który jest tworzony przez "
 "setki tysięcy ludzi z całego świata."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:248
+#: data/org.gnome.Maps.appdata.xml.in.in:245
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
 
@@ -206,6 +206,14 @@ msgstr "Hybrydowe kafle satelitarne"
 #: data/org.gnome.Maps.gschema.xml:81
 msgid "Whether aerial tiles should use hybrid style (with labels)."
 msgstr "Czy kafle satelitarne mają używać stylu hybrydowego (z etykietami)."
+
+#: data/org.gnome.Maps.gschema.xml:85
+msgid "Show scale"
+msgstr "Podziałka"
+
+#: data/org.gnome.Maps.gschema.xml:86
+msgid "Whether to show the scale."
+msgstr "Czy wyświetlać podziałkę."
 
 #: data/ui/check-in-dialog.ui:236
 msgid "Visibility"
@@ -364,7 +372,7 @@ msgstr "Pomniejszenie"
 #: data/ui/help-overlay.ui:80
 msgctxt "shortcut window"
 msgid "Toggle scale"
-msgstr "Przełączenie skali"
+msgstr "Przełączenie podziałki"
 
 #: data/ui/help-overlay.ui:87
 msgctxt "shortcut window"
@@ -639,12 +647,12 @@ msgid "Show more results"
 msgstr "Wyświetl więcej wyników"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:126
+#: data/ui/transit-leg-row.ui:129
 msgid "Hide intermediate stops and information"
 msgstr "Ukrywa przystanki pośrednie i informacje"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:200
+#: data/ui/transit-leg-row.ui:203
 msgid "Show intermediate stops and information"
 msgstr "Wyświetla przystanki pośrednie i informacje"
 
@@ -944,15 +952,15 @@ msgstr "Mapa dostarczana przez %s"
 msgid "Search provided by %s using %s"
 msgstr "Funkcja wyszukiwania dostarczana przez %s za pomocą %s"
 
-#: src/mapView.js:494 src/mapView.js:552
+#: src/mapView.js:505 src/mapView.js:563
 msgid "Failed to open layer"
 msgstr "Otwarcie warstwy się nie powiodło"
 
-#: src/mapView.js:515
+#: src/mapView.js:526
 msgid "Do you want to continue?"
 msgstr "Kontynuować?"
 
-#: src/mapView.js:516
+#: src/mapView.js:527
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -961,11 +969,11 @@ msgstr ""
 "Zostaną otwarte pliki o całkowitym rozmiarze %s MB. Wczytanie ich może "
 "potrwać trochę czasu."
 
-#: src/mapView.js:546
+#: src/mapView.js:557
 msgid "File type is not supported"
 msgstr "Typ pliku jest nieobsługiwany"
 
-#: src/mapView.js:584
+#: src/mapView.js:595
 msgid "Failed to open GeoURI"
 msgstr "Otwarcie adresu GeoURI się nie powiodło"
 
@@ -1582,7 +1590,7 @@ msgstr "Nie odnaleziono późniejszych możliwości."
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:140
+#: src/transitOptionsPanel.js:148
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%-d %b"
