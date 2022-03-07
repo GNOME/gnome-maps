@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2022-02-03 16:52+0000\n"
-"PO-Revision-Date: 2022-02-20 14:59+0200\n"
+"POT-Creation-Date: 2022-03-03 21:16+0000\n"
+"PO-Revision-Date: 2022-03-07 18:45+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -55,7 +55,7 @@ msgstr ""
 "Žemėlapiai naudoja OpenStreetMap duomenų bazę, kurią sukūrė tūkstančiai "
 "žmonių iš viso pasaulio."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:248
+#: data/org.gnome.Maps.appdata.xml.in.in:245
 msgid "The GNOME Project"
 msgstr "GNOME projektas"
 
@@ -199,6 +199,15 @@ msgstr "Naudoti hibridines oro plyteles"
 #: data/org.gnome.Maps.gschema.xml:81
 msgid "Whether aerial tiles should use hybrid style (with labels)."
 msgstr "Ar oro plytelės turėtų naudoti hibridinį stilių (su užrašais)."
+
+#: data/org.gnome.Maps.gschema.xml:85
+#| msgid "Show Labels"
+msgid "Show scale"
+msgstr "Rodyti mastelį"
+
+#: data/org.gnome.Maps.gschema.xml:86
+msgid "Whether to show the scale."
+msgstr "Ar rodyti mastelį"
 
 #: data/ui/check-in-dialog.ui:236
 msgid "Visibility"
@@ -634,12 +643,12 @@ msgid "Show more results"
 msgstr "Rodyti daugiau rezultatų"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:126
+#: data/ui/transit-leg-row.ui:129
 msgid "Hide intermediate stops and information"
 msgstr "Slėpti tarpines stoteles ir informaciją"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:200
+#: data/ui/transit-leg-row.ui:203
 msgid "Show intermediate stops and information"
 msgstr "Rodyti tarpines stoteles ir informaciją"
 
@@ -754,7 +763,6 @@ msgid "Ignore network availability"
 msgstr "Nepaisyti tinklo prieinamumo"
 
 #: src/application.js:133
-#| msgid "Select a place"
 msgid "Search for places"
 msgstr "Ieškoti vietų"
 
@@ -941,26 +949,26 @@ msgstr "Žemėlapio išklotinę pateikė %s"
 msgid "Search provided by %s using %s"
 msgstr "Paiešką teikia %s naudojant %s"
 
-#: src/mapView.js:494 src/mapView.js:552
+#: src/mapView.js:505 src/mapView.js:563
 msgid "Failed to open layer"
 msgstr "Nepavyko atverti sluoksnio"
 
-#: src/mapView.js:515
+#: src/mapView.js:526
 msgid "Do you want to continue?"
 msgstr "Ar norite tęsti?"
 
-#: src/mapView.js:516
+#: src/mapView.js:527
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
 "time to load"
 msgstr "Ketinate atverti failus, kurų bendras dydis %s MB. Tai gali užtrukti"
 
-#: src/mapView.js:546
+#: src/mapView.js:557
 msgid "File type is not supported"
 msgstr "Failo tipas yra nepalaikomas"
 
-#: src/mapView.js:584
+#: src/mapView.js:595
 msgid "Failed to open GeoURI"
 msgstr "Nepavyko atverti GeoURI"
 
@@ -1278,7 +1286,6 @@ msgid "Failed to parse Geo URI"
 msgstr "Nepavyko perskaityti Geo URI"
 
 #: src/placeEntry.js:237
-#| msgid "Failed to parse Geo URI"
 msgid "Failed to parse Maps URI"
 msgstr "Nepavyko perskaityti Žemėlapių URI"
 
@@ -1576,7 +1583,7 @@ msgstr "Nerasta vėlesnių alternatyvų."
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:140
+#: src/transitOptionsPanel.js:148
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%b %e"
