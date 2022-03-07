@@ -2,16 +2,16 @@
 # Copyright (C) 2013 THE gnome-maps'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
 # יוסף אור בוצ׳קו <yoseforb@gmail.com>, 2013.
-# Yosef Or Boczko <yoseforb@gmail.com>, 2013-2021.
+# Yosef Or Boczko <yoseforb@gmail.com>, 2013-2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps 3.9.91\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2021-11-22 21:08+0000\n"
-"PO-Revision-Date: 2021-12-29 18:26+0200\n"
+"POT-Creation-Date: 2022-03-03 21:16+0000\n"
+"PO-Revision-Date: 2022-03-07 20:40+0200\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
-"Language-Team: Hebrew <>\n"
+"Language-Team: Hebrew <GNOME Hebrew Translation Project>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -55,7 +55,7 @@ msgstr ""
 "מפות משתמש במסד הנתונים השיתופי OpenStreetMap, שנוצר על ידי מאות אלפי אנשים "
 "על פני כדור הארץ."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:248
+#: data/org.gnome.Maps.appdata.xml.in.in:245
 msgid "The GNOME Project"
 msgstr "מיזם GNOME"
 
@@ -199,6 +199,15 @@ msgstr "להשתמש באריחים אוויריים משולבים"
 #: data/org.gnome.Maps.gschema.xml:81
 msgid "Whether aerial tiles should use hybrid style (with labels)."
 msgstr "האם אריחים אוויריים אמורים להשתמש בסגנון משולב (עם תוויות)."
+
+#: data/org.gnome.Maps.gschema.xml:85
+#| msgid "Show Labels"
+msgid "Show scale"
+msgstr "הצגת קנה מידה"
+
+#: data/org.gnome.Maps.gschema.xml:86
+msgid "Whether to show the scale."
+msgstr "האם להציג את קנה המידה."
 
 #: data/ui/check-in-dialog.ui:236
 msgid "Visibility"
@@ -629,12 +638,12 @@ msgid "Show more results"
 msgstr "הצגת תוצאות נוספות"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:126
+#: data/ui/transit-leg-row.ui:129
 msgid "Hide intermediate stops and information"
 msgstr "להסתיר מידע ותחנות ביניים"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:200
+#: data/ui/transit-leg-row.ui:203
 msgid "Show intermediate stops and information"
 msgstr "להציג מידע ותחנות ביניים"
 
@@ -749,7 +758,6 @@ msgid "Ignore network availability"
 msgstr "להתעלם מזמינות הרשת"
 
 #: src/application.js:133
-#| msgid "Select a place"
 msgid "Search for places"
 msgstr "חיפוש מקומות"
 
@@ -851,7 +859,7 @@ msgstr "לא צוין שם קובץ"
 msgid "Unable to export view"
 msgstr "לא ניתן לייצא תצוגה"
 
-#: src/geoclue.js:118
+#: src/geoclue.js:122
 msgid "Current Location"
 msgstr "מיקום נוכחי"
 
@@ -929,26 +937,26 @@ msgstr "אריחי המפה סופקו על ידי %s"
 msgid "Search provided by %s using %s"
 msgstr "החיפוש סופק על ידי %s בעזרת %s"
 
-#: src/mapView.js:494 src/mapView.js:552
+#: src/mapView.js:505 src/mapView.js:563
 msgid "Failed to open layer"
 msgstr "פתיחת שכבה נכשלה"
 
-#: src/mapView.js:515
+#: src/mapView.js:526
 msgid "Do you want to continue?"
 msgstr "להמשיך?"
 
-#: src/mapView.js:516
+#: src/mapView.js:527
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
 "time to load"
 msgstr "פעולה זו תפתח קבצים בגודל כולל של %s מ״ב. הטעינה עשויה לארוך זמן מה"
 
-#: src/mapView.js:546
+#: src/mapView.js:557
 msgid "File type is not supported"
 msgstr "סוג הקובץ אינו נתמך"
 
-#: src/mapView.js:584
+#: src/mapView.js:595
 msgid "Failed to open GeoURI"
 msgstr "פתיחת GeoURI נכשלה"
 
@@ -1253,12 +1261,11 @@ msgstr "בוצה"
 msgid "Unnamed place"
 msgstr "מקום ללא שם"
 
-#: src/placeEntry.js:222
+#: src/placeEntry.js:224
 msgid "Failed to parse Geo URI"
 msgstr "ניתוח כתובת Geo נכשל"
 
-#: src/placeEntry.js:235
-#| msgid "Failed to parse Geo URI"
+#: src/placeEntry.js:237
 msgid "Failed to parse Maps URI"
 msgstr "ניתוח כתובת המפות נכשל"
 
@@ -1556,7 +1563,7 @@ msgstr "לא נמצאו חלופות מאוחרות יותר."
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:140
+#: src/transitOptionsPanel.js:148
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e ב%b"
