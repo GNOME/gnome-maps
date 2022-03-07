@@ -3,16 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Fran Diéguez <frandieguez@gnome.org>, 2013.
-# Fran Dieguez <fran.dieguez@gnome.org>, 2013-2022.
+# Fran Dieguez <frandieguez@gnome.org>, 2013-2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2021-11-22 21:08+0000\n"
-"PO-Revision-Date: 2022-01-25 02:37+0100\n"
-"Last-Translator: Fran Dieguez <fran.dieguez@gnome.org>\n"
-"Language-Team: Galician <proxecto@trasno.gal>\n"
+"POT-Creation-Date: 2022-03-03 21:16+0000\n"
+"PO-Revision-Date: 2022-03-07 17:56+0100\n"
+"Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
+"Language-Team: Galician <Proxecto Trasno <proxecto@trasno.gal>>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -62,7 +62,7 @@ msgstr ""
 "Mapa usa a base de datos colaborativa de OpenStreetMap, feita por centos de "
 "persoas por todo o mundo."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:248
+#: data/org.gnome.Maps.appdata.xml.in.in:245
 msgid "The GNOME Project"
 msgstr "O Proxecto GNOME"
 
@@ -207,6 +207,15 @@ msgstr "Usar teselas aéreas híbridas"
 msgid "Whether aerial tiles should use hybrid style (with labels)."
 msgstr ""
 "Indica se as teselas aéreas deberían usar o estilo híbrido (con etiquetas)"
+
+#: data/org.gnome.Maps.gschema.xml:85
+#| msgid "Show Labels"
+msgid "Show scale"
+msgstr "Mostrar escala"
+
+#: data/org.gnome.Maps.gschema.xml:86
+msgid "Whether to show the scale."
+msgstr "Indica se mostrar ou non a escala."
 
 #: data/ui/check-in-dialog.ui:236
 msgid "Visibility"
@@ -644,12 +653,12 @@ msgid "Show more results"
 msgstr "Mostrar máis resultados"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:126
+#: data/ui/transit-leg-row.ui:129
 msgid "Hide intermediate stops and information"
 msgstr "Ocultar paradas intermedias e información"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:200
+#: data/ui/transit-leg-row.ui:203
 msgid "Show intermediate stops and information"
 msgstr "Mostrar paradas intermedias e información"
 
@@ -764,7 +773,6 @@ msgid "Ignore network availability"
 msgstr "Ignorar a dispoñibilidade da rede"
 
 #: src/application.js:133
-#| msgid "Select a place"
 msgid "Search for places"
 msgstr "Buscar por lugares"
 
@@ -871,7 +879,7 @@ msgstr "Nome de ficheiro non especificado"
 msgid "Unable to export view"
 msgstr "Non foi posíbel exportar a vista"
 
-#: src/geoclue.js:118
+#: src/geoclue.js:122
 msgid "Current Location"
 msgstr "Localización actual"
 
@@ -948,15 +956,15 @@ msgstr "Teselas de mapas fornecidas por %s"
 msgid "Search provided by %s using %s"
 msgstr "Busca fornecida por %s usando %s"
 
-#: src/mapView.js:494 src/mapView.js:552
+#: src/mapView.js:505 src/mapView.js:563
 msgid "Failed to open layer"
 msgstr "Produciuse un fallo ao abrir a capa"
 
-#: src/mapView.js:515
+#: src/mapView.js:526
 msgid "Do you want to continue?"
 msgstr "Desexa continuar?"
 
-#: src/mapView.js:516
+#: src/mapView.js:527
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -965,11 +973,11 @@ msgstr ""
 "Está a piques de abrir ficheiros con un tamaño total de %s MB. Isto pode "
 "tardar algún tempo en cargar"
 
-#: src/mapView.js:546
+#: src/mapView.js:557
 msgid "File type is not supported"
 msgstr "Tipo de ficheiro non admitido"
 
-#: src/mapView.js:584
+#: src/mapView.js:595
 msgid "Failed to open GeoURI"
 msgstr "Produciuse un fallo ao abrir o GeoURI"
 
@@ -1280,12 +1288,11 @@ msgstr "Feito"
 msgid "Unnamed place"
 msgstr "Lugar sen nome"
 
-#: src/placeEntry.js:222
+#: src/placeEntry.js:224
 msgid "Failed to parse Geo URI"
 msgstr "Produciuse un fallo ao analizar o URI Geo"
 
-#: src/placeEntry.js:235
-#| msgid "Failed to parse Geo URI"
+#: src/placeEntry.js:237
 msgid "Failed to parse Maps URI"
 msgstr "Produciuse un fallo ao analizar o URI de Mapas"
 
@@ -1583,7 +1590,7 @@ msgstr "Non hai alternativas posteriores."
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:140
+#: src/transitOptionsPanel.js:148
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%b %e"
