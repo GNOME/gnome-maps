@@ -1,14 +1,14 @@
 # Persian translation for gnome-maps.
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # Arash Mousavi <mousavi.arash@gmail.com>, 2013-2016.
-# Danial Behzadi <dani.behzi@ubuntu.com>, 2014, 2017-2021.
+# Danial Behzadi <dani.behzi@ubuntu.com>, 2014, 2017-2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps gnome-3-10\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2021-11-22 21:08+0000\n"
-"PO-Revision-Date: 2021-11-24 12:10+0330\n"
+"POT-Creation-Date: 2022-03-03 21:16+0000\n"
+"PO-Revision-Date: 2022-03-07 14:18+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian\n"
 "Language: fa\n"
@@ -54,7 +54,7 @@ msgstr ""
 "نقشه‌ها از پایگاه دادهٔ مشارکتی OpenStreetMap استفاده می‌کند که به دست صدها هزار نفر "
 "در سراسر جهان درست شده است."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:248
+#: data/org.gnome.Maps.appdata.xml.in.in:245
 msgid "The GNOME Project"
 msgstr "پروژهٔ گنوم"
 
@@ -198,6 +198,14 @@ msgstr "استفاده از کاشی‌های هوایی پیوندی"
 #: data/org.gnome.Maps.gschema.xml:81
 msgid "Whether aerial tiles should use hybrid style (with labels)."
 msgstr "این که کاشی‌های هوایی باید از سبک پیوندی (با برچسب‌ها) استفاده کنند یا نه."
+
+#: data/org.gnome.Maps.gschema.xml:85
+msgid "Show scale"
+msgstr "نمایش مقیاس"
+
+#: data/org.gnome.Maps.gschema.xml:86
+msgid "Whether to show the scale."
+msgstr "این که مقیاس نشان داده شود یا نه."
 
 #: data/ui/check-in-dialog.ui:236
 msgid "Visibility"
@@ -627,12 +635,12 @@ msgid "Show more results"
 msgstr "نمایش نتایج بیش‌تر"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:126
+#: data/ui/transit-leg-row.ui:129
 msgid "Hide intermediate stops and information"
 msgstr "نهفتن اطّلاعات و توقّف‌های میانی"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:200
+#: data/ui/transit-leg-row.ui:203
 msgid "Show intermediate stops and information"
 msgstr "نمایش اطّلاعات و توقّف‌های میانی"
 
@@ -852,7 +860,7 @@ msgstr "نامی برای پرونده مشخّص نشده"
 msgid "Unable to export view"
 msgstr "ناتوان در برون‌ریزی نما"
 
-#: src/geoclue.js:118
+#: src/geoclue.js:122
 msgid "Current Location"
 msgstr "موقعیت کنونی"
 
@@ -931,26 +939,26 @@ msgstr "کاشی‌های نقشه به دست %s فراهم شده"
 msgid "Search provided by %s using %s"
 msgstr "جست‌وجو به دست %s با استفاده از %s فراهم شده"
 
-#: src/mapView.js:494 src/mapView.js:552
+#: src/mapView.js:505 src/mapView.js:563
 msgid "Failed to open layer"
 msgstr "شکست در گشودن لایه"
 
-#: src/mapView.js:515
+#: src/mapView.js:526
 msgid "Do you want to continue?"
 msgstr "می‌خواهید ادامه دهید؟"
 
-#: src/mapView.js:516
+#: src/mapView.js:527
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some time "
 "to load"
 msgstr "در حال گشودن پرونده‌ای با حجم کل %s م‌ب هستید. بار شدنش ممکن است کمی طول بکشد"
 
-#: src/mapView.js:546
+#: src/mapView.js:557
 msgid "File type is not supported"
 msgstr "گونهٔ پرونده پشتیبانی نمی‌شود"
 
-#: src/mapView.js:584
+#: src/mapView.js:595
 msgid "Failed to open GeoURI"
 msgstr "شکست در گشودن نشانی جغرافیایی"
 
@@ -1256,11 +1264,11 @@ msgstr "انجام شد"
 msgid "Unnamed place"
 msgstr "مکان بی‌نام"
 
-#: src/placeEntry.js:222
+#: src/placeEntry.js:224
 msgid "Failed to parse Geo URI"
 msgstr "شکست در تجزیهٔ نشانی جغرافیایی"
 
-#: src/placeEntry.js:235
+#: src/placeEntry.js:237
 msgid "Failed to parse Maps URI"
 msgstr "شکست در تجزیهٔ نشانی نقشه‌ها"
 
@@ -1558,7 +1566,7 @@ msgstr "جایگزین‌های جدیدتری پیدا نشدند."
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:140
+#: src/transitOptionsPanel.js:148
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%b %Oe"
