@@ -341,9 +341,7 @@ var MainWindow = GObject.registerClass({
     }
 
     _updateLocationSensitivity() {
-        let sensitive = (Application.geoclue.state !== Geoclue.State.INITIAL &&
-                         (this.application.connected ||
-                          this.application.local_tile_path));
+        let sensitive = Application.geoclue.state !== Geoclue.State.INITIAL;
 
         this.lookup_action("goto-user-location").set_enabled(sensitive);
     }
