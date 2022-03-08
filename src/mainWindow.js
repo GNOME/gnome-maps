@@ -81,9 +81,6 @@ var MainWindow = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/main-window.ui',
     InternalChildren: [ 'headerBar',
                         'grid',
-                        'mainStack',
-                        'mainGrid',
-                        'noNetworkView',
                         'actionBar',
                         'actionBarRevealer',
                         'placeBarContainer']
@@ -107,7 +104,7 @@ var MainWindow = GObject.registerClass({
                 MapView.MapType.LOCAL : undefined,
             mainWindow: this });
 
-        this._mainGrid.attach(this._mapView, 0, 0, 1, 1);
+        this._grid.attach(this._mapView, 0, 0, 1, 1);
 
         this._mapView.gotoUserLocation(false);
 
@@ -280,13 +277,6 @@ var MainWindow = GObject.registerClass({
             // Can not call something that will generate clutter events
             // from a clutter event-handler. So use an idle.
             Mainloop.idle_add(() => this._mapView.grab_focus());
-        });
-
-        this.application.connect('notify::connected', () => {
-            if (this.application.connected || this.application.local_tile_path)
-                this._mainStack.visible_child = this._mainGrid;
-            else
-                this._mainStack.visible_child = this._noNetworkView;
         });
 
         /*

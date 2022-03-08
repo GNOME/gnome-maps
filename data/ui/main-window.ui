@@ -70,69 +70,6 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
-          <object class="GtkStack" id="mainStack">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="transition-type">crossfade</property>
-            <child>
-              <object class="GtkGrid" id="mainGrid">
-                <property name="visible">True</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkSpinner" id="network-spinner">
-                <property name="visible">True</property>
-                <property name="active">True</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkGrid" id="noNetworkView">
-                <property name="visible">True</property>
-                <property name="orientation">vertical</property>
-                <property name="can_focus">False</property>
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="row_spacing">6</property>
-                <property name="margin">18</property>
-                <child>
-                  <object class="GtkImage" id="no-network-conn-image">
-                    <property name="visible">True</property>
-                    <property name="pixel-size">100</property>
-                    <property name="icon-name">network-offline-symbolic</property>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="no-network-conn-header">
-                    <attributes>
-                      <attribute name="weight" value="bold" />
-                      <attribute name="scale" value="2" />
-                    </attributes>
-                    <property name="label" translatable="yes">Maps is offline!</property>
-                    <property name="justify">center</property>
-                    <property name="wrap">True</property>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="no-network-conn-text-1">
-                    <property name="wrap">True</property>
-                    <property name="max-width-chars">45</property>
-                    <property name="label" translatable="yes">Maps need an active internet connection to function properly, but one can’t be found.</property>
-                    <property name="justify">center</property>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="no-network-conn-text-2">
-                    <property name="wrap">True</property>
-                    <property name="max-width-chars">45</property>
-                    <property name="label" translatable="yes">Check your connection and proxy settings.</property>
-                    <property name="justify">center</property>
-                  </object>
-                </child>
-              </object>
-            </child>
-          </object>
-        </child>
-        <child>
           <object class="GtkBox" id="placeBarContainer">
             <property name="visible">True</property>
           </object>
