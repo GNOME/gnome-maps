@@ -364,12 +364,6 @@ var MainWindow = GObject.registerClass({
 
         Application.geoclue.connect('notify::state',
                                     this._updateLocationSensitivity.bind(this));
-        this.application.connect('notify::connected', () => {
-            let app = this.application;
-
-            this._updateLocationSensitivity();
-            this._placeEntry.sensitive = app.connected;
-        });
 
         // action bar, for when the window is too narrow for the full headerbar
         this._actionBarLeft =  new HeaderBar.HeaderBarLeft({
