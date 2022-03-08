@@ -161,9 +161,7 @@ var MainWindow = GObject.registerClass({
         let sidebar = new Sidebar.Sidebar(this._mapView);
 
         Application.routeQuery.connect('notify', () => this._setRevealSidebar(true));
-        this.application.bind_property('connected',
-                                       sidebar, 'visible',
-                                       GObject.BindingFlags.DEFAULT);
+
         return sidebar;
     }
 
