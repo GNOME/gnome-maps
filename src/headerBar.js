@@ -44,11 +44,6 @@ var HeaderBarLeft = GObject.registerClass({
             mapView: this._mapView
         });
         this._layersButton.popover = this._layersPopover;
-
-        this._application.connect('notify::connected', () => {
-            let app = this._application;
-            this._layersButton.sensitive = app.connected;
-        });
     }
 
     popdownLayersPopover() {
@@ -82,14 +77,5 @@ var HeaderBarRight = GObject.registerClass({
 
         this._mapView.bind_property('routeShowing', this._printRouteButton,
                                     'visible', GObject.BindingFlags.DEFAULT);
-
-        this._application.connect('notify::connected', () => {
-            let app = this._application;
-
-            this._toggleSidebarButton.sensitive = app.connected;
-            this._favoritesButton.sensitive = (app.connected &&
-                                               favoritesPopover.rows > 0);
-            this._printRouteButton.sensitive = app.connected;
-        });
     }
 });
