@@ -51,7 +51,6 @@ var settings = null;
 var placeStore = null;
 var routingDelegator = null;
 var geoclue = null;
-var networkMonitor = null;
 var checkInManager = null;
 var contactStore = null;
 var osmEdit = null;
@@ -63,11 +62,6 @@ const _ensuredTypes = [WebKit2.WebView,
 
 var Application = GObject.registerClass({
     Properties: {
-        'connected': GObject.ParamSpec.boolean('connected',
-                                               '',
-                                               '',
-                                               GObject.ParamFlags.READABLE |
-                                               GObject.ParamFlags.WRITABLE),
         'selected-place': GObject.ParamSpec.object('selected-place',
                                                    'Selected Place',
                                                    'The selected place',
@@ -82,15 +76,6 @@ var Application = GObject.registerClass({
     },
 }, class Application extends Gtk.Application {
 
-    set connected(p) {
-        this._connected = p;
-        this.notify('connected');
-    }
-
-    get connected() {
-        return this._connected;
-    }
-
     _init() {
         /* Translators: This is the program name. */
         GLib.set_application_name(_("Maps"));
@@ -101,7 +86,6 @@ var Application = GObject.registerClass({
         super._init({ application_id: pkg.name,
                       flags: Gio.ApplicationFlags.HANDLES_OPEN |
                              Gio.ApplicationFlags.HANDLES_COMMAND_LINE });
-        this._connected = false;
 
         this.add_main_option('local',
                              0,
@@ -138,11 +122,6 @@ var Application = GObject.registerClass({
                              _("[FILE…|URI]"));
     }
 
-    _checkNetwork() {
-        this.connected =
-            networkMonitor.connectivity === Gio.NetworkConnectivity.FULL;
-    }
-
     _showContact(id) {
         contactStore.lookup(id, (contact) => {
             this.mark_busy();
@@ -159,7 +138,6 @@ var Application = GObject.registerClass({
 
     _onShowContactActivate(action, parameter) {
         this._createWindow();
-        this._checkNetwork();
         this._mainWindow.present();
 
         let id = parameter.deep_unpack();
@@ -286,9 +264,6 @@ var Application = GObject.registerClass({
         routeQuery       = new RouteQuery.RouteQuery();
         routingDelegator = new RoutingDelegator.RoutingDelegator({ query: routeQuery });
         geoclue          = new Geoclue.Geoclue();
-        networkMonitor   = Gio.NetworkMonitor.get_default();
-        networkMonitor.connect('network-changed',
-                               this._checkNetwork.bind(this));
         checkInManager = new CheckIn.CheckInManager();
         contactStore = new Maps.ContactStore();
         contactStore.load();
@@ -319,7 +294,6 @@ var Application = GObject.registerClass({
 
     vfunc_activate() {
         this._createWindow();
-        this._checkNetwork();
         this._mainWindow.present();
     }
 
