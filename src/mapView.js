@@ -465,7 +465,6 @@ var MapView = GObject.registerClass({
             } catch(e) {
                 this.setMapType(MapType.STREET);
                 Application.application.local_tile_path = false;
-                Application.application.notify('connected');
                 Utils.showDialog(e.message, Gtk.MessageType.ERROR, this._mainWindow);
             }
         }
