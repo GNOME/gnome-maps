@@ -7,21 +7,22 @@
 # Guillaume Bernard <associations@guillaume-bernard.fr>, 2014-2021
 # Alain Lojewski <allomervan@gmail.com>,2018
 # vanadiae <vanadiae35@gmail.com>, 2020-2021.
-# Charles Monzat <charles.monzat@free.fr>, 2018-2021.
+# Charles Monzat <charles.monzat@free.fr>, 2018-2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2022-02-03 16:52+0000\n"
-"PO-Revision-Date: 2022-02-21 22:17+0100\n"
-"Last-Translator: Claude Paroz <claude@2xlibre.net>\n"
+"POT-Creation-Date: 2022-03-03 21:16+0000\n"
+"PO-Revision-Date: 2022-03-03 22:31+0100\n"
+"Last-Translator: Charles Monzat <charles.monzat@free.fr>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Gtranslator 40.0\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -60,7 +61,7 @@ msgstr ""
 "laquelle contribuent des centaines de milliers de personnes dans le monde "
 "entier."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:248
+#: data/org.gnome.Maps.appdata.xml.in.in:245
 msgid "The GNOME Project"
 msgstr "Le projet GNOME"
 
@@ -209,6 +210,15 @@ msgid "Whether aerial tiles should use hybrid style (with labels)."
 msgstr ""
 "Indique si les tuiles aériennes doivent être utilisées en mode hybride (avec "
 "étiquettes)."
+
+#: data/org.gnome.Maps.gschema.xml:85
+#| msgid "Show Labels"
+msgid "Show scale"
+msgstr "Afficher l’échelle"
+
+#: data/org.gnome.Maps.gschema.xml:86
+msgid "Whether to show the scale."
+msgstr "Indique si l’échelle doit être affichée."
 
 #: data/ui/check-in-dialog.ui:236
 msgid "Visibility"
@@ -441,7 +451,7 @@ msgid ""
 "Maps need an active internet connection to function properly, but one can’t "
 "be found."
 msgstr ""
-"Cartes a besoin d’une connexion Internet active et fonctionnelle, mais "
+"Cartes a besoin d’une connexion internet active et fonctionnelle, mais "
 "aucune n’a été trouvée."
 
 #: data/ui/main-window.ui:127
@@ -647,12 +657,12 @@ msgid "Show more results"
 msgstr "Montrer plus de résultats"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:126
+#: data/ui/transit-leg-row.ui:129
 msgid "Hide intermediate stops and information"
 msgstr "Masquer les arrêts et informations intermédiaires"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:200
+#: data/ui/transit-leg-row.ui:203
 msgid "Show intermediate stops and information"
 msgstr "Afficher les arrêts et informations intermédiaires"
 
@@ -956,15 +966,15 @@ msgstr "Couches de données cartographiques fournies par %s"
 msgid "Search provided by %s using %s"
 msgstr "Recherche fournie par %s utilisant %s"
 
-#: src/mapView.js:494 src/mapView.js:552
+#: src/mapView.js:505 src/mapView.js:563
 msgid "Failed to open layer"
 msgstr "Échec d’ouverture de la couche"
 
-#: src/mapView.js:515
+#: src/mapView.js:526
 msgid "Do you want to continue?"
 msgstr "Voulez-vous continuer ?"
 
-#: src/mapView.js:516
+#: src/mapView.js:527
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -973,11 +983,11 @@ msgstr ""
 "Vous êtes sur le point d’ouvrir des fichiers pour une taille totale de "
 "%s Mo. Cela peut prendre un certain temps à charger"
 
-#: src/mapView.js:546
+#: src/mapView.js:557
 msgid "File type is not supported"
 msgstr "Le type de fichier n’est pas pris en charge"
 
-#: src/mapView.js:584
+#: src/mapView.js:595
 msgid "Failed to open GeoURI"
 msgstr "Échec d’ouverture de la Geo URI"
 
@@ -1025,7 +1035,7 @@ msgstr "Adresse"
 
 #: src/osmEditDialog.js:136 src/placeView.js:280
 msgid "Website"
-msgstr "Site Web"
+msgstr "Site web"
 
 #: src/osmEditDialog.js:140
 msgid "This is not a valid URL. Make sure to include http:// or https://."
@@ -1376,7 +1386,7 @@ msgstr "Wi-Fi public"
 #.
 #: src/placeView.js:380
 msgid "Wired internet access"
-msgstr "Accès Internet filaire"
+msgstr "Accès internet filaire"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
@@ -1390,7 +1400,7 @@ msgstr "Ordinateurs disponibles pour utilisation"
 #.
 #: src/placeView.js:396
 msgid "Internet assistance available"
-msgstr "Assistance Internet disponible"
+msgstr "Assistance internet disponible"
 
 #: src/placeView.js:402
 msgid "No toilets available"
@@ -1594,7 +1604,7 @@ msgstr "Aucune alternative suivante trouvée."
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:140
+#: src/transitOptionsPanel.js:148
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e %b"
