@@ -593,7 +593,7 @@ var MainWindow = GObject.registerClass({
             authors: [ 'Zeeshan Ali (Khattak) <zeeshanak@gnome.org>',
                        'Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>',
                        'Jonas Danielsson <jonas@threetimestwo.org>',
-                       'Marcus Lundblad <ml@update.uu.se>'],
+                       'Marcus Lundblad <ml@dfupdate.se>'],
             translator_credits: _("translator-credits"),
             /* Translators: This is the program name. */
             program_name: _("Maps"),
