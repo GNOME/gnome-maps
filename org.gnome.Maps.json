@@ -104,15 +104,16 @@
         },
         {
             "name" : "libgweather",
-            "buildsystem" : "meson",
             "config-opts" : [
-                "--libdir=/app/lib"
+                "-Denable_vala=false",
+                "-Dgtk_doc=false"
             ],
+            "buildsystem" : "meson",
             "sources" : [
                 {
                     "type" : "git",
                     "url" : "https://gitlab.gnome.org/GNOME/libgweather.git",
-                    "tag" : "40.0"
+                    "branch" : "main"
                 }
             ]
         },
@@ -149,7 +150,8 @@
                 "-DENABLE_EXAMPLES=OFF",
                 "-DENABLE_VALA_BINDINGS=ON",
                 "-DENABLE_INTROSPECTION=ON",
-                "-DENABLE_CANBERRA=OFF"
+                "-DENABLE_CANBERRA=OFF",
+                "-DENABLE_WEATHER=OFF"
             ],
             "buildsystem" : "cmake-ninja",
             "sources" : [
