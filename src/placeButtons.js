@@ -80,8 +80,6 @@ var PlaceButtons = GObject.registerClass({
                                     this._place.osm_id);
 
         this._routeButton.visible = !this._place.isCurrentLocation;
-
-        this._showCheckIn = !!this._place.isCurrentLocation;
     }
 
     initSendToButton(button) {
@@ -89,8 +87,7 @@ var PlaceButtons = GObject.registerClass({
             let dialog = new SendToDialog.SendToDialog({ transient_for: this.get_toplevel(),
                                                          modal: true,
                                                          mapView: this._mapView,
-                                                         place: this._place,
-                                                         showCheckIn: this._showCheckIn });
+                                                         place: this._place });
             dialog.connect('response', () => dialog.destroy());
             dialog.show();
         });
