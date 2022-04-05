@@ -54,7 +54,6 @@ var SendToDialog = GObject.registerClass({
                         'summaryUrl',
                         'copyButton',
                         'emailButton',
-                        'checkInButton',
                         'scrolledWindow' ]
 }, class SendToDialog extends Gtk.Dialog {
 
@@ -65,9 +64,6 @@ var SendToDialog = GObject.registerClass({
 
         this._mapView = params.mapView;
         delete params.mapView;
-
-        let showCheckIn = params.showCheckIn || false;
-        delete params.showCheckIn;
 
         params.use_header_bar = true;
         super._init(params);
@@ -88,19 +84,6 @@ var SendToDialog = GObject.registerClass({
             else
                 row.set_header(null);
         });
-
-        if (showCheckIn) {
-            Application.checkInManager.bind_property('hasCheckIn',
-                                                     this._checkInButton, 'visible',
-                                                     GObject.BindingFlags.DEFAULT |
-                                                     GObject.BindingFlags.SYNC_CREATE);
-
-            this._checkInButton.connect('clicked', () => {
-                Application.checkInManager.showCheckInDialog(this.get_toplevel(),
-                                                             this._place,
-                                                             false);
-            });
-        }
 
         this.connect('show', () => {
             this._summaryLabel.label = this._getSummary();
