@@ -73,21 +73,6 @@
            ]
         },
         {
-            "name" : "gnome-online-accounts",
-            "config-opts" : [
-                "--disable-Werror",
-                "--disable-telepathy",
-                "--disable-documentation",
-                "--disable-backend"
-            ],
-            "sources" : [
-                {
-                    "type" : "git",
-                    "url" : "https://gitlab.gnome.org/GNOME/gnome-online-accounts.git"
-                }
-            ]
-        },
-        {
             "name" : "geocode-glib",
             "buildsystem" : "meson",
             "builddir" : true,
@@ -140,6 +125,7 @@
                 "-DENABLE_GTK=OFF",
                 "-DENABLE_GOOGLE_AUTH=OFF",
                 "-DENABLE_UOA=OFF",
+                "-DENABLE_GOA=OFF",
                 "-DENABLE_GOOGLE=OFF",
                 "-DENABLE_VALA_BINDINGS=ON",
                 "-DWITH_OPENLDAP=OFF",
