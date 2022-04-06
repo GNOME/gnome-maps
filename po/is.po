@@ -1,15 +1,15 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Sveinn í Felli <sv1@fellsnet.is>, 2015, 2017, 2018, 2019, 2021.
+# Sveinn í Felli <sv1@fellsnet.is>, 2015, 2017, 2018, 2019, 2021, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2021-11-22 21:08+0000\n"
-"PO-Revision-Date: 2021-12-13 09:39+0000\n"
+"POT-Creation-Date: 2022-03-19 09:08+0000\n"
+"PO-Revision-Date: 2022-04-06 10:21+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
-"Language-Team: Icelandic <translation-team-is@lists.sourceforge.org>\n"
+"Language-Team: Icelandic\n"
 "Language: is\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -53,7 +53,7 @@ msgstr ""
 "Landakortaforritið notar OpenStreetMap gagnagrunninn, sem er "
 "samvinnuverkefni hundruða þúsunda manna víðsvegar um heiminn."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:248
+#: data/org.gnome.Maps.appdata.xml.in.in:279
 msgid "The GNOME Project"
 msgstr "GNOME verkefnið"
 
@@ -199,6 +199,15 @@ msgstr "Nota blendings-loftmyndaflísar"
 #: data/org.gnome.Maps.gschema.xml:81
 msgid "Whether aerial tiles should use hybrid style (with labels)."
 msgstr "Hvort loftmyndaflísar eigi að nota blandaðan stíl (með merkingum)"
+
+#: data/org.gnome.Maps.gschema.xml:85
+#| msgid "Show Labels"
+msgid "Show scale"
+msgstr "Birta kvarða"
+
+#: data/org.gnome.Maps.gschema.xml:86
+msgid "Whether to show the scale."
+msgstr "Hvort eigi að birta mælikvarða."
 
 #: data/ui/check-in-dialog.ui:236
 msgid "Visibility"
@@ -633,12 +642,12 @@ msgid "Show more results"
 msgstr "Birta fleiri niðurstöður"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:126
+#: data/ui/transit-leg-row.ui:129
 msgid "Hide intermediate stops and information"
 msgstr "Fela biðstöðvar á leiðinni og upplýsingar"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:200
+#: data/ui/transit-leg-row.ui:203
 msgid "Show intermediate stops and information"
 msgstr "Sýna biðstöðvar á leiðinni og upplýsingar"
 
@@ -753,7 +762,6 @@ msgid "Ignore network availability"
 msgstr "Hunsa hvort netsamband sé í boði"
 
 #: src/application.js:133
-#| msgid "Select a place"
 msgid "Search for places"
 msgstr "Leita að stöðum"
 
@@ -859,7 +867,7 @@ msgstr "Ekkert skráarheiti tilgreint"
 msgid "Unable to export view"
 msgstr "Tókst ekki að flytja út sýnina"
 
-#: src/geoclue.js:118
+#: src/geoclue.js:122
 msgid "Current Location"
 msgstr "Núverandi staðsetning"
 
@@ -936,15 +944,15 @@ msgstr "Kortaflísar gefnar út af %s"
 msgid "Search provided by %s using %s"
 msgstr "Leitarniðurstöður í boði %s með %s"
 
-#: src/mapView.js:494 src/mapView.js:552
+#: src/mapView.js:505 src/mapView.js:563
 msgid "Failed to open layer"
 msgstr "Mistókst að opna lag"
 
-#: src/mapView.js:515
+#: src/mapView.js:526
 msgid "Do you want to continue?"
 msgstr "Viltu halda áfram?"
 
-#: src/mapView.js:516
+#: src/mapView.js:527
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -953,11 +961,11 @@ msgstr ""
 "Þú ert að fara að opna skrár sem eru alls %s MB. Það gæti tekið svolítinn "
 "tíma að hlaða þeim inn"
 
-#: src/mapView.js:546
+#: src/mapView.js:557
 msgid "File type is not supported"
 msgstr "Það er enginn stuðningur við skráategundina"
 
-#: src/mapView.js:584
+#: src/mapView.js:595
 msgid "Failed to open GeoURI"
 msgstr "Mistókst að opna Geo URI-slóð"
 
@@ -1272,12 +1280,11 @@ msgstr "Lokið"
 msgid "Unnamed place"
 msgstr "Nafnlaus staður"
 
-#: src/placeEntry.js:222
+#: src/placeEntry.js:224
 msgid "Failed to parse Geo URI"
 msgstr "Gat ekki þáttað Geo URI-slóð"
 
-#: src/placeEntry.js:235
-#| msgid "Failed to parse Geo URI"
+#: src/placeEntry.js:237
 msgid "Failed to parse Maps URI"
 msgstr "Gat ekki þáttað URI-slóð korta"
 
@@ -1575,7 +1582,7 @@ msgstr "Engir síðari möguleikar fundust."
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:140
+#: src/transitOptionsPanel.js:148
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e. %b"
