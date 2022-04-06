@@ -29,7 +29,6 @@ const GtkClutter = imports.gi.GtkClutter;
 const Hdy = imports.gi.Handy;
 const WebKit2 = imports.gi.WebKit2;
 
-const CheckIn = imports.checkIn;
 const ContactPlace = imports.contactPlace;
 const Format = imports.format;
 const Geoclue = imports.geoclue;
@@ -51,7 +50,6 @@ var settings = null;
 var placeStore = null;
 var routingDelegator = null;
 var geoclue = null;
-var checkInManager = null;
 var contactStore = null;
 var osmEdit = null;
 var normalStartup = true;
@@ -264,7 +262,6 @@ var Application = GObject.registerClass({
         routeQuery       = new RouteQuery.RouteQuery();
         routingDelegator = new RoutingDelegator.RoutingDelegator({ query: routeQuery });
         geoclue          = new Geoclue.Geoclue();
-        checkInManager = new CheckIn.CheckInManager();
         contactStore = new Maps.ContactStore();
         contactStore.load();
         osmEdit = new OSMEdit.OSMEdit();
