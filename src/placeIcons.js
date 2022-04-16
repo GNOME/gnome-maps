@@ -30,7 +30,9 @@ const TYPE_ICON_MAP = {
         aerodrome: 'route-transit-airplane-symbolic'
     },
     amenity: {
+        bank:             'bank-symbolic',
         bar:              'bar-symbolic',
+        bbq:              'barbecue-symbolic',
         biergarten:       'pub-symbolic',
         bus_station:      'route-transit-bus-symbolic',
         cafe:             'cafe-symbolic',
@@ -38,20 +40,25 @@ const TYPE_ICON_MAP = {
         cinema:           'video-camera-symbolic',
         clinic:           'hospital-sign-symbolic',
         college:          'school-symbolic',
+        conference_centre:'meeting-symbolic',
         doctors:          'hospital-sign-symbolic',
-        fast_food:        'restaurant-symbolic',
+        fast_food:        'fast-food-symbolic',
         ferry_terminal:   'route-transit-ferry-symbolic',
+        firepit:          'barbecue-symbolic',
         food_court:       'restaurant-symbolic',
         fuel:             'fuel-symbolic',
         hospital:         'hospital-symbolic',
         kindergarten:     'school-symbolic',
+        library:          'library-symbolic',
         night_club:       'bar-symbolic',
         parking:          'parking-sign-symbolic',
         post_office:      'post-box-symbolic',
         pub:              'pub-symbolic',
         restaurant:       'restaurant-symbolic',
         school:           'school-symbolic',
-        university:       'school-symbolic'
+        theatre:          'theater-symbolic',
+        university:       'school-symbolic',
+        veterinary:       'dog-symbolic'
     },
     building: {
         railway_station:  'route-transit-train',
@@ -63,13 +70,17 @@ const TYPE_ICON_MAP = {
         footway:          'route-pedestrian-symbolic',
         pedestrian:       'route-pedestrian-symbolic',
         platform:         'route-transit-bus-symbolic',
-        steps:            'route-pedestrian-symbolic',
+        steps:            'steps-symbolic',
         path:             'route-pedestrian-symbolic',
         _:                'route-car-symbolic'
     },
     leisure: {
+        dog_park:         'dog-symbolic',
+        garden:           'tree-symbolic',
         nature_reserve:   'tree-symbolic',
-        park:             'tree-symbolic'
+        park:             'tree-symbolic',
+        pitch:            'baseball-symbolic',
+        stadium:          'baseball-symbolic'
     },
     natural: {
         hill:             'mountain-symbolic',
@@ -83,11 +94,16 @@ const TYPE_ICON_MAP = {
         borough:          'city-symbolic',
         city:             'city-symbolic',
         city_block:       'building-symbolic',
+        continent:        'earth-symbolic',
+        country:          'flag-filled-symbolic',
         hamlet:           'town-symbolic',
         isolated_dwelling:'building-symbolic',
         neighbourhood:    'town-symbolic',
         quarter:          'town-symbolic',
+        province:         'flag-outline-thick-symbolic',
+        region:           'flag-outline-thick-symbolic',
         square:           'route-pedestrian-symbolic',
+        state:            'flag-outline-thick-symbolic',
         suburb:           'town-symbolic',
         town:             'town-symbolic',
         village:          'town-symbolic'
@@ -99,11 +115,14 @@ const TYPE_ICON_MAP = {
         tram_stop:        'route-transit-tram-symbolic'
     },
     shop: {
+        alcohol:          'drinks-symbolic',
+        bakery:           'bread-symbolic',
         convenience:      'shopping-cart-symbolic',
         department_store: 'shopping-cart-symbolic',
         general:          'shopping-cart-symbolic',
         mall:             'shopping-cart-symbolic',
-        supermarket:      'shopping-cart-symbolic'
+        supermarket:      'shopping-cart-symbolic',
+        wine:             'drinks-symbolic'
     },
     tourism: {
         alpine_hut:       'bed-symbolic',
@@ -119,6 +138,7 @@ const TYPE_ICON_MAP = {
         motel:            'bed-symbolic',
         museum:           'museum-symbolic',
         picnic_site:      'bench-symbolic',
+        viewpoint:        'photo-camera-symbolic',
         zoo:              'penguin-symbolic'
     }
 };
