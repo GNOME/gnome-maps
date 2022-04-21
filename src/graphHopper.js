@@ -239,15 +239,11 @@ var GraphHopper = class GraphHopper {
         for (let i = 1; i < instructions.length; i++) {
             let newInstruction = instructions[i];
             let newSign = newInstruction.sign;
-            let newStreetname = newInstruction.street_name;
 
-            /* if the direction is to continue straight, or keep left or keep
-             * right on the same street/road number, fold the instruction into
-             * the previous one
+            /* if the direction is to continue straight,
+             * fold the instruction into the previous one
              */
-            if (newSign === Sign.CONTINUE_ON_STREET ||
-                ((newSign === Sign.KEEP_LEFT || newSign === Sign.KEEP_RIGHT) &&
-                 newStreetname === currInstruction.street_name)) {
+            if (newSign === Sign.CONTINUE_ON_STREET) {
                 currInstruction.distance += newInstruction.distance;
             } else {
                 res.push(currInstruction);
