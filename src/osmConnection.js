@@ -23,6 +23,8 @@
 const _ = imports.gettext.gettext;
 
 const Maps = imports.gi.GnomeMaps;
+
+const Gio = imports.gi.Gio;
 const Rest = imports.gi.Rest;
 const Secret = imports.gi.Secret;
 const Soup = imports.gi.Soup;
@@ -238,108 +240,56 @@ var OSMConnection = class OSMConnection {
         callback(true);
     }
 
-    authorizeOAuthToken(username, password, callback) {
-        /* get login session ID */
-        let loginUrl = LOGIN_URL + '?cookie_test=true';
-        let uri = new Soup.URI(loginUrl);
-        let msg = new Soup.Message({method: 'GET', uri: uri});
-
-        this._session.queue_message(msg, (obj, message) => {
-            this._onLoginFormReceived(message, username, password, callback);
-        });
-    }
-
-    _onLoginFormReceived(message, username, password, callback) {
-        if (message.status_code !== Soup.Status.OK) {
-            callback(false);
-            return;
-        }
-
-        let osmSessionID =
-            this._extractOSMSessionID(message.response_headers);
-        let osmSessionToken =
-            this._extractToken(message.response_body.data);
-
-        if (osmSessionID === null || osmSessionToken === null) {
-            callback(false, null);
-            return;
-        }
-
-        this._login(username, password, osmSessionID, osmSessionToken, callback);
-    }
-
-    _login(username, password, sessionId, token, callback) {
-        /* post login form */
-        let msg = Soup.form_request_new_from_hash('POST', LOGIN_URL,
-                                                  {username: username,
-                                                   password: password,
-                                                   referer: '/',
-                                                   commit: 'Login',
-                                                   authenticity_token: token});
-        let requestHeaders = msg.request_headers;
-
-        requestHeaders.append('Content-Type',
-                              'application/x-www-form-urlencoded');
-        requestHeaders.append('Cookie', '_osm_session=' + sessionId);
-        msg.flags |= Soup.MessageFlags.NO_REDIRECT;
-
-        this._session.queue_message(msg, (obj, message) => {
-            if (message.status_code === Soup.Status.MOVED_TEMPORARILY)
-                this._fetchAuthorizeForm(username, sessionId, callback);
-            else
-                callback(false, null);
-        });
-
-    }
-
-    _fetchAuthorizeForm(username, sessionId, callback) {
+    authorizeOAuthToken(callback) {
         let auth = '/authorize?oauth_token=';
         let authorizeUrl = OAUTH_ENDPOINT_URL + auth + this._oauthToken;
-        let uri = new Soup.URI(authorizeUrl);
-        let msg = new Soup.Message({uri: uri, method: 'GET'});
 
-        msg.request_headers.append('Cookie',
-                                   '_osm_session=' + sessionId +
-                                   '; _osm_username=' + username);
-        this._session.queue_message(msg, (obj, message) => {
-            if (message.status_code === Soup.Status.OK) {
-                let token = this._extractToken(message.response_body.data);
-                this._postAuthorizeForm(username, sessionId, token, callback);
-            } else {
-                callback(false, null);
-            }
-        });
-    }
+        Utils.debug('Trying to open: ' + authorizeUrl);
 
-    _postAuthorizeForm(username, sessionId, token, callback) {
-        let authorizeUrl = OAUTH_ENDPOINT_URL + '/authorize';
-        let msg = Soup.form_request_new_from_hash('POST', authorizeUrl, {
-            oauth_token: this._oauthToken,
-            oauth_callback: '',
-            authenticity_token: token,
-            allow_write_api: '1',
-            commit: 'Save changes'
-        });
-        let requestHeaders = msg.request_headers;
-
-        requestHeaders.append('Content-Type',
-                              'application/x-www-form-urlencoded');
-        requestHeaders.append('Cookie',
-                              '_osm_session=' + sessionId +
-                              '; _osm_username=' + username);
-
-        this._session.queue_message(msg, (obj, message) => {
-            if (msg.status_code === Soup.Status.OK) {
-                callback(true, message.response_body.data);
-            } else
-                callback(false, null);
-        });
+        try {
+            Gio.AppInfo.launch_default_for_uri(authorizeUrl, null);
+            callback(true);
+        } catch (e) {
+            Utils.debug('error: ' + e.message);
+            callback(false);
+        }
     }
 
     requestOAuthAccessToken(code, callback) {
         this._oauthProxy.access_token_async('access_token', code, (p, error, w, data) => {
             this._onAccessOAuthToken(error, callback);
         }, this._oauthProxy);
+    }
+
+    fetchLoggedInUser(callback) {
+        let call = this._callProxy.new_call();
+        call.set_method('GET');
+        call.set_function('/user/details');
+
+        call.invoke_async(null, (call, res, userdata) =>
+                                { this._onFetchedLoggedInUser(call, callback); });
+    }
+
+    _onFetchedLoggedInUser(call, callback) {
+        switch (call.get_status_code()) {
+            case Soup.Status.OK:
+                try {
+                    callback(Maps.osm_parse_user_details(call.get_payload()));
+                } catch (e) {
+                    Utils.debug('Error parsing user details: ' + e.message);
+                    callback(null);
+                }
+                break;
+            default:
+                /* Not ok, most likely 403 (forbidden), meaning the user
+                 * didn't give permission to read user details.
+                 * Just consider the user name unknown in this case
+                 */
+                Utils.debug('Got status code ' + call.get_status_code() +
+                            ' getting user details');
+                callback(null);
+                break;
+        }
     }
 
     _onAccessOAuthToken(error, callback) {
@@ -388,44 +338,6 @@ var OSMConnection = class OSMConnection {
 
     _onPasswordCleared(source, result) {
         Secret.password_clear_finish(result);
-    }
-
-    /* extract the session ID from the login form response headers */
-    _extractOSMSessionID(responseHeaders) {
-        let cookie = responseHeaders.get('Set-Cookie');
-
-        if (cookie === null)
-            return null;
-
-        let cookieParts = cookie.split(';');
-        for (let cookiePart of cookieParts) {
-            let kvPair = cookiePart.trim().split('=');
-            let kv = kvPair;
-
-            if (kv.length !== 2) {
-                continue;
-            } else if (kv[0] === '_osm_session') {
-                return kv[1];
-            }
-        }
-
-        return null;
-    }
-
-    /* extract the authenticity token from the hidden input field of the login
-       form */
-    _extractToken(messageBody) {
-        let regex = /.*authenticity_token.*value=\"([^\"]+)\".*/;
-        let lines = messageBody.split('\n');
-
-        for (let line of lines) {
-            let match = line.match(regex);
-
-            if (match && match.length === 2)
-                return match[1];
-        }
-
-        return null;
     }
 };
 

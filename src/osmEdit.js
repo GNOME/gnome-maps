@@ -142,19 +142,14 @@ var OSMEdit = class OSMEdit {
         this._osmConnection.closeChangeset(changesetId, callback);
     }
 
-    performOAuthSignIn(username, password, callback) {
+    performOAuthSignIn(callback) {
         this._osmConnection.requestOAuthToken((success) => {
-            if (success)
-                this._onOAuthTokenRequested(username, password, callback);
-            else
-                callback(false, null);
+            if (success) {
+                this._osmConnection.authorizeOAuthToken(callback);
+            } else {
+                callback(false);
+            }
         });
-    }
-
-    _onOAuthTokenRequested(username, password, callback) {
-        /* keep track of authorizing username */
-        this._username = username;
-        this._osmConnection.authorizeOAuthToken(username, password, callback);
     }
 
     requestOAuthAccessToken(code, callback) {
@@ -165,14 +160,20 @@ var OSMEdit = class OSMEdit {
 
     _onOAuthAccessTokenRequested(success, callback) {
         if (success) {
-            this._isSignedIn = true;
-            Application.settings.set('osm-username', this._username);
+            this._osmConnection.fetchLoggedInUser((username) => {
+                this._isSignedIn = true;
+                /* if we couldn't retrieve the logged-in username,
+                 * e.g. if the user de-selected the permission when
+                 * authorizing the OAuth token, use a dummy placeholder
+                 * username to signify that we are signed in
+                 */
+                this._username = username ?? '_unknown_';
+                Application.settings.set('osm-username', this._username);
+                callback(true);
+            });
         } else {
-            /* clear out username if verification was unsuccessful */
-            this._username = null;
+            callback(false);
         }
-
-        callback(success);
     }
 
     signOut() {

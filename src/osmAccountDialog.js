@@ -22,7 +22,6 @@
 
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const WebKit2 = imports.gi.WebKit2;
 
 const Application = imports.application;
 const Utils = imports.utils;
@@ -34,16 +33,11 @@ var Response = {
 var OSMAccountDialog = GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/osm-account-dialog.ui',
     InternalChildren: ['stack',
-                       'emailEntry',
-                       'passwordEntry',
                        'signInButton',
                        'signInSpinner',
-                       'signUpLinkButton',
-                       'resetPasswordLabel',
-                       'verifyGrid',
                        'verificationEntry',
                        'verifyButton',
-                       'verificationFailedLabel',
+                       'errorLabel',
                        'signedInUserLabel',
                        'signOutButton'],
 }, class OSMAccountDialog extends Gtk.Dialog {
@@ -57,12 +51,6 @@ var OSMAccountDialog = GObject.registerClass({
 
         super._init(params);
 
-        this._emailEntry.connect('changed',
-                                 this._onCredentialsChanged.bind(this));
-        this._passwordEntry.connect('changed',
-                                    this._onCredentialsChanged.bind(this));
-        this._passwordEntry.connect('activate',
-                                    this._onPasswordActivated.bind(this));
         this._signInButton.connect('clicked',
                                    this._onSignInButtonClicked.bind(this));
         this._verifyButton.connect('clicked',
@@ -76,76 +64,47 @@ var OSMAccountDialog = GObject.registerClass({
 
         /* if the user is logged in, show the logged-in view */
         if (Application.osmEdit.isSignedIn) {
-            this._signedInUserLabel.label = Application.osmEdit.username;
+            this._updateSignedInUserLabel();
             this._stack.visible_child_name = 'logged-in';
         }
-
-        /* initialize verification web view, we do it programmatically rather
-         * declare it in the .ui file to be able to enable WebKit sandboxing
-         */
-        let webContext = WebKit2.WebContext.get_default();
-
-        webContext.set_sandbox_enabled(true);
-        this._verifyView = WebKit2.WebView.new_with_context(webContext);
-        this._verifyView.visible = true;
-        this._verifyView.halign = Gtk.Align.FILL;
-        this._verifyView.height_request = 150;
-        this._verifyGrid.attach(this._verifyView, 0, 0, 1, 1);
     }
 
-    _onCredentialsChanged() {
-        let email = this._emailEntry.text;
-        let password = this._passwordEntry.text;
-
-        // make sign in button sensitive if credential have been entered
-        this._signInButton.sensitive =
-            email && email.length > 0 && password && password.length > 0;
+    _updateSignedInUserLabel() {
+        /* if we couldn't determine the logged in username (e.g. the user
+         * didn't grant permission to read user details, hide the username
+         * label
+         */
+        if (Application.osmEdit.username === '_unknown_') {
+            this._signedInUserLabel.visible = false;
+        } else {
+            this._signedInUserLabel.label = Application.osmEdit.username;
+            this._signedInUserLabel.visible = true;
+        }
     }
 
     _onSignInButtonClicked() {
         this._performSignIn();
     }
 
-    _onPasswordActivated() {
-        /* if username and password was entered, proceed with sign-in */
-        let email = this._emailEntry.text;
-        let password = this._passwordEntry.text;
-
-        if (email && email.length > 0 && password && password.length > 0)
-            this._performSignIn();
-    }
-
     _performSignIn() {
-        /* turn on signing in spinner and desensisize credential entries */
+        // turn on signing in spinner
         this._signInSpinner.visible = true;
         this._signInButton.sensitive = false;
-        this._emailEntry.sensitive = false;
-        this._passwordEntry.sensitive = false;
-        this._signUpLinkButton.visible = false;
 
-        Application.osmEdit.performOAuthSignIn(this._emailEntry.text,
-                                               this._passwordEntry.text,
-                                               this._onOAuthSignInPerformed.bind(this));
+        Application.osmEdit.performOAuthSignIn(this._onOAuthTokenAuthorized.bind(this));
     }
 
-    _onOAuthSignInPerformed(success, verificationPage) {
+    _onOAuthTokenAuthorized(success) {
         if (success) {
-            /* switch to the verification view and show the verification
-               page */
-            this._verifyView.load_html(verificationPage,
-                                       'https://www.openstreetmap.org/');
+            // switch to the verification view
             this._stack.visible_child_name = 'verify';
         } else {
-            /* clear password entry */
-            this._passwordEntry.text = '';
-            /* show the password reset link */
-            this._resetPasswordLabel.visible = true;
+            this._errorLabel.visible = true;
+            this._errorLabel.label = _("Failed to authorize access");
+            this._signInButton.label = _("Try again");
         }
 
         this._signInSpinner.visible = false;
-        /* re-sensisize credential entries */
-        this._emailEntry.sensitive = true;
-        this._passwordEntry.sensitive = true;
     }
 
     _onVerifyButtonClicked() {
@@ -185,16 +144,14 @@ var OSMAccountDialog = GObject.registerClass({
     _onOAuthAccessTokenRequested(success, errorMessage) {
         if (success) {
             /* update the username label */
-            this._signedInUserLabel.label = Application.osmEdit.username;
+            this._updateSignedInUserLabel();
 
             if (this._closeOnSignIn) {
                 this.response(Response.SIGNED_IN);
             } else {
                 /* switch to the logged in view and reset the state in case
                    the user signs out and start over again */
-                this._resetPasswordLabel.visible = false;
-                this._verificationFailedLabel = false;
-                this._signUpLinkButton.visible = true;
+                this._errorLabel.visible = false;
                 this._stack.visible_child_name = 'logged-in';
             }
         } else {
@@ -202,9 +159,9 @@ var OSMAccountDialog = GObject.registerClass({
                 Utils.showDialog(errorMessage, Gtk.MessageType.ERROR, this);
             /* switch back to the sign-in view, and show a label indicating
                that verification failed */
-            this._resetPasswordLabel.visible = false;
-            this._signUpLinkButton.visible = false;
-            this._verificationFailedLabel.visible = true;
+            this._errorLabel.visible = true;
+            this._errorLabel.label =
+                _("The verification code didn’t match, please try again.");
             this._signInButton.sensitive = true;
             this._stack.visible_child_name = 'sign-in';
         }
@@ -214,6 +171,7 @@ var OSMAccountDialog = GObject.registerClass({
 
     _onSignOutButtonClicked() {
         Application.osmEdit.signOut();
+        this._signInButton.sensitive= true;
         this._stack.visible_child_name = 'sign-in';
     }
 });

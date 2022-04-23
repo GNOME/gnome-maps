@@ -12,6 +12,7 @@
         <child>
           <object class="GtkStack" id="stack">
             <property name="visible">True</property>
+            <property name="transition-type">GTK_STACK_TRANSITION_TYPE_SLIDE_RIGHT</property>
             <child>
               <object class="GtkGrid">
                 <property name="visible">True</property>
@@ -29,6 +30,7 @@
                   <packing>
                     <property name="left_attach">0</property>
                     <property name="top_attach">0</property>
+                    <property name="width">3</property>
                   </packing>
                 </child>
                 <child>
@@ -43,141 +45,80 @@ OpenStreetMap account.</property>
                   <packing>
                     <property name="left_attach">0</property>
                     <property name="top_attach">1</property>
+                    <property name="width">3</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkGrid">
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">Sign in to authorize access in a web browser.
+Then fill in the obtained verification code here in the next step.</property>
                     <property name="visible">True</property>
-                    <property name="column-spacing">10</property>
-                    <property name="row-spacing">10</property>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="label" translatable="yes">Email</property>
-                        <property name="halign">GTK_ALIGN_END</property>
-                        <style>
-                          <class name="dim-label"/>
-                        </style>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkEntry" id="emailEntry">
-                        <property name="visible">True</property>
-                        <property name="hexpand">True</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">0</property>
-                        <property name="width">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="label" translatable="yes">Password</property>
-                        <property name="halign">GTK_ALIGN_END</property>
-                        <style>
-                          <class name="dim-label"/>
-                        </style>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkEntry" id="passwordEntry">
-                        <property name="visible">True</property>
-                        <property name="hexpand">True</property>
-                        <property name="input-purpose">GTK_INPUT_PURPOSE_PASSWORD</property>
-                        <property name="visibility">False</property>
-                        <property name="caps-lock-warning">True</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">1</property>
-                        <property name="width">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkSpinner" id="signInSpinner">
-                        <property name="visible">False</property>
-                        <property name="height_request">16</property>
-                        <property name="width_request">16</property>
-                        <property name="can_focus">False</property>
-                        <property name="active">True</property>
-                        <property name="halign">GTK_ALIGN_END</property>
-                        <property name="hexpand">True</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLinkButton" id="signUpLinkButton">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="label" translatable="yes">Sign up</property>
-                        <property name="uri">https://www.openstreetmap.org/user/new</property>
-                        <property name="halign">GTK_ALIGN_END</property>
-                        <property name="hexpand">True</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="signInButton">
-                        <property name="visible">True</property>
-                        <property name="halign">GTK_ALIGN_END</property>
-                        <property name="label" translatable="yes">Sign In</property>
-                        <property name="sensitive">False</property>
-                        <style>
-                          <class name="suggested-action"/>
-                        </style>
-                      </object>
-                      <packing>
-                        <property name="left_attach">2</property>
-                        <property name="top_attach">2</property>
-                      </packing>
-                    </child>
+                    <property name="hexpand">True</property>
+                    <property name="wrap">True</property>
+                    <property name="halign">GTK_ALIGN_CENTER</property>
+                    <property name="justify">GTK_JUSTIFY_CENTER</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
                     <property name="top_attach">2</property>
+                    <property name="width">3</property>
                   </packing>
                 </child>
-
                 <child>
-                  <object class="GtkLabel" id="resetPasswordLabel">
+                  <object class="GtkSpinner" id="signInSpinner">
+                    <property name="visible">False</property>
+                    <property name="height_request">16</property>
+                    <property name="width_request">16</property>
+                    <property name="can_focus">False</property>
+                    <property name="active">True</property>
+                    <property name="halign">GTK_ALIGN_END</property>
+                    <property name="hexpand">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLinkButton">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="label" translatable="yes">Sign up</property>
+                    <property name="uri">https://www.openstreetmap.org/user/new</property>
+                    <property name="halign">GTK_ALIGN_END</property>
+                    <property name="hexpand">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="signInButton">
+                    <property name="visible">True</property>
+                    <property name="halign">GTK_ALIGN_END</property>
+                    <property name="label" translatable="yes">Sign In</property>
+                    <style>
+                      <class name="suggested-action"/>
+                    </style>
+                  </object>
+                  <packing>
+                    <property name="left_attach">2</property>
+                    <property name="top_attach">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="errorLabel">
                     <property name="visible">False</property>
                     <property name="can_focus">True</property>
-                    <property name="label" translatable="yes"
-                      comments="The label should contain the link to the OSM reset password page with a translated title">Sorry, that didn’t work. Please try again, or visit
-&lt;a href="https://www.openstreetmap.org/user/forgot-password"&gt;OpenStreetMap&lt;/a&gt; to reset your password.</property>
                     <property name="use-markup">True</property>
+                    <style>
+                      <class name="warning"/>
+                    </style>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
                     <property name="top_attach">4</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="verificationFailedLabel">
-                    <property name="visible">False</property>
-                    <property name="can_focus">True</property>
-                    <property name="label" translatable="yes">The verification code didn’t match, please try again.</property>
-                    <property name="use-markup">True</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">5</property>
                   </packing>
                 </child>
               </object>
@@ -186,57 +127,48 @@ OpenStreetMap account.</property>
               </packing>
             </child>
             <child>
-              <object class="GtkGrid" id="verifyGrid">
+              <object class="GtkGrid">
                 <property name="visible">True</property>
                 <property name="row-spacing">10</property>
+                <property name="column-spacing">10</property>
                 <property name="margin">20</property>
                 <child>
-                  <object class="GtkGrid">
+                  <object class="GtkLabel">
                     <property name="visible">True</property>
-                    <property name="column-spacing">10</property>
-                    <property name="row-spacing">10</property>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="label" translatable="yes">Enter verification code shown above</property>
-                        <style>
-                          <class name="dim-label"/>
-                        </style>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkEntry" id="verificationEntry">
-                        <property name="visible">True</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="verifyButton">
-                        <property name="visible">True</property>
-                        <property name="sensitive">False</property>
-                        <property name="label" translatable="yes">Verify</property>
-                        <property name="hexpand">False</property>
-                        <property name="halign">GTK_ALIGN_END</property>
-                        <style>
-                          <class name="suggested-action"/>
-                        </style>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">1</property>
-                      </packing>
-                    </child>
+                    <property name="wrap">True</property>
+                    <property name="label" translatable="yes">Copy verification code shown when authorizing access in the browser</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">0</property>
+                    <property name="width">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="verificationEntry">
+                    <property name="visible">True</property>
+                    <property name="placeholder-text" translatable="yes">Verification code</property>
+                    <property name="hexpand">True</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
                     <property name="top_attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="verifyButton">
+                    <property name="visible">True</property>
+                    <property name="sensitive">False</property>
+                    <property name="label" translatable="yes">Verify</property>
+                    <property name="hexpand">False</property>
+                    <property name="halign">GTK_ALIGN_END</property>
+                    <style>
+                      <class name="suggested-action"/>
+                    </style>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top-attach">1</property>
                   </packing>
                 </child>
               </object>
