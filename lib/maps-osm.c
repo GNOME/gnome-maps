@@ -169,7 +169,8 @@ get_sub_node (xmlDoc *doc)
   xmlXPathObject * xpath_obj;
 
   xpath_ctx = xmlXPathNewContext (doc);
-  xpath_obj = xmlXPathEvalExpression ((xmlChar *) "/osm/node|/osm/way|/osm/relation",
+  xpath_obj = xmlXPathEvalExpression ((xmlChar *)
+                                      "/osm/node|/osm/way|/osm/relation|/osm/user",
                                       xpath_ctx);
 
   if (xpath_obj && xpath_obj->nodesetval && xpath_obj->nodesetval->nodeNr > 0)
@@ -468,4 +469,48 @@ maps_osm_parse (const char *content, guint length, GError **error)
   xmlFreeDoc (doc);
 
   return object;
+}
+
+/**
+ * maps_osm_parse_user_details:
+ * @content: XML data
+ * @error: Error handle
+ * Returns: (transfer full) Logged in user name
+ */
+char *
+maps_osm_parse_user_details (const char *content, GError **error)
+{
+  xmlDocPtr doc;
+  xmlNodePtr sub_node;
+  char *ret;
+
+  doc = read_xml_doc (content, strlen (content), error);
+  sub_node = get_sub_node (doc);
+
+  if (!sub_node)
+    {
+      xmlFreeDoc (doc);
+      *error = g_error_new_literal (MAPS_OSM_ERROR, 0,
+                                   _("Could not find OSM element"));
+      return NULL;
+    }
+
+  if (g_str_equal (sub_node->name, "user"))
+    {
+      g_autoptr (GHashTable) attributes;
+
+      attributes = parse_attributes (sub_node);
+      ret = g_strdup (g_hash_table_lookup (attributes, "display_name"));
+    }
+  else
+    {
+      *error = g_error_new_literal (MAPS_OSM_ERROR, 0,
+                                    _("Could not find user element"));
+      ret = NULL;
+    }
+
+    xmlFreeDoc (doc);
+    xmlFreeNode (sub_node);
+
+    return ret;
 }
