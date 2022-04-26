@@ -27,7 +27,6 @@ const Gio = imports.gi.Gio;
 const Gtk = imports.gi.Gtk;
 const GtkClutter = imports.gi.GtkClutter;
 const Hdy = imports.gi.Handy;
-const WebKit2 = imports.gi.WebKit2;
 
 const ContactPlace = imports.contactPlace;
 const Format = imports.format;
@@ -55,8 +54,7 @@ var osmEdit = null;
 var normalStartup = true;
 var routeQuery = null;
 
-const _ensuredTypes = [WebKit2.WebView,
-                       OSMTypeSearchEntry.OSMTypeSearchEntry];
+const _ensuredTypes = [OSMTypeSearchEntry.OSMTypeSearchEntry];
 
 var Application = GObject.registerClass({
     Properties: {
