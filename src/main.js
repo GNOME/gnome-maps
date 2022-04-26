@@ -38,8 +38,7 @@ pkg.require({ 'cairo': '1.0',
               'GWeather': '4.0',
               'Handy': '1',
               'Rest': '0.7',
-              'Soup': '2.4',
-              'WebKit2': '4.0' });
+              'Soup': '2.4' });
 
 const Application = imports.application;
 
