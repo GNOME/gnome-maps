@@ -474,12 +474,6 @@ var MapView = GObject.registerClass({
         this.emit("map-type-changed", mapType);
     }
 
-    toggleScale() {
-        let showScale = Application.settings.get('show-scale');
-
-        Application.settings.set('show-scale', !showScale);
-    }
-
     _onShowScaleChanged() {
         this._scale.visible = Application.settings.get('show-scale');
     }
