@@ -227,9 +227,10 @@ var MainWindow = GObject.registerClass({
                 accels: ['minus', '<Primary>minus', 'KP_Subtract', '<Primary>KP_Subtract'],
                 onActivate:  () => this._mapView.view.zoom_out()
             },
-            'toggle-scale': {
+            'show-scale': {
                 accels: ['<Primary>S'],
-                onActivate:  () => this._mapView.toggleScale()
+                paramType: 'b',
+                setting: 'show-scale'
             },
             'find': {
                 accels: ['<Primary>F'],
