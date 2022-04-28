@@ -9,6 +9,7 @@
         <property name="halign">center</property>
         <property name="valign">center</property>
         <property name="row_spacing">5</property>
+        <property name="margin">5</property>
         <child>
           <object class="GtkRadioButton" id="streetLayerButton">
             <property name="visible">True</property>
@@ -81,6 +82,33 @@
           </packing>
         </child>
         <child>
+          <object class="GtkBox">
+            <property name="orientation">GTK_ORIENTATION_HORIZONTAL</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="hexpand">True</property>
+                <property name="halign">GTK_ALIGN_START</property>
+                <property name="label" translatable="yes">Show Scale</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkCheckButton">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="action-name">win.show-scale</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">3</property>
+          </packing>
+        </child>
+        <child>
           <object class="GtkListBox" id="layersListBox">
             <property name="name">layers-list-box</property>
             <property name="visible">false</property>
@@ -92,7 +120,7 @@
           </object>
           <packing>
             <property name="left-attach">0</property>
-            <property name="top-attach">3</property>
+            <property name="top-attach">4</property>
           </packing>
         </child>
         <child>
@@ -104,7 +132,7 @@
           </object>
           <packing>
             <property name="left-attach">0</property>
-            <property name="top-attach">4</property>
+            <property name="top-attach">5</property>
           </packing>
         </child>
       </object>
