@@ -440,12 +440,6 @@ var MapView = GObject.registerClass({
                     this.view.map_source = MapSource.createStreetSource();
                 }
             }
-            if (!this._attribution) {
-                this._attribution = new MapSource.AttributionLogo(this.view);
-                this.view.add_child(this._attribution);
-            }
-
-            this._attribution.setSource(this.view.map_source);
 
             Application.settings.set('map-type', mapType);
         } else {
