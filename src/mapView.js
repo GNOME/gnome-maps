@@ -169,9 +169,6 @@ var MapView = GObject.registerClass({
         Application.geoclue.connect('notify::state',
                                     this._updateUserLocation.bind(this));
         this._connectRouteSignals();
-
-        // set dark background if we start up in dark theme
-        this._setBackgroundPatternIfNeeded();
     }
 
     _initScale(view) {
@@ -202,8 +199,6 @@ var MapView = GObject.registerClass({
         view.horizontal_wrap = true;
 
         view.connect('notify::latitude', this._onViewMoved.bind(this));
-        view.connect('notify::longitude',
-                     () => this._setBackgroundPatternIfNeeded());
         // switching map type will set view min-zoom-level from map source
         view.connect('notify::min-zoom-level', () => {
             if (view.min_zoom_level < MapMinZoom) {
@@ -223,59 +218,11 @@ var MapView = GObject.registerClass({
                                          this._onHybridAerialChanged.bind(this));
         }
 
-        this._gtkSettings = Gtk.Settings.get_default();
-        this._gtkSettings.connect('notify::gtk-application-prefer-dark-theme',
-                            this._onPreferDarkThemeChanged.bind(this));
-
         Application.settings.connect('changed::show-scale',
                                      this._onShowScaleChanged.bind(this));
 
         this._initScale(view);
         return view;
-    }
-
-    /* handler to draw background for dark theme,
-     * these three functions should not be needed later with a native GTK
-     * widget (Shumate)
-     */
-    _drawDarkBackground(canvas, cr, width, height) {
-        // set this arbitrarily to try to match the typical dark tile set
-        cr.setSourceRGB(0.2, 0.2, 0.2);
-        cr.rectangle(0, 0, width, height);
-        cr.fillPreserve();
-
-        return true;
-    }
-
-    _createDarkBackground() {
-        this._darkBackground = new Clutter.Canvas();
-        this._darkBackground.set_size(512, 512);
-        this._darkBackground.connect('draw',
-                                     this._drawDarkBackground.bind(this));
-        this._darkBackground.invalidate();
-    }
-
-    _isWrappingAround() {
-        let bbox = this.view.get_bounding_box();
-
-        return bbox.left > bbox.right;
-    }
-
-    _setBackgroundPatternIfNeeded() {
-        if (this._gtkSettings.gtk_application_prefer_dark_theme &&
-            !this._isWrappingAround()) {
-            if (!this._darkBackgroud)
-                this._createDarkBackground();
-            this.view.set_background_pattern(this._darkBackground);
-            this._customBackgroundSet = true;
-        } else if (this._customBackgroundSet) {
-            this.view.background_pattern = null;
-            this._customBackgroundSet = false;
-        }
-    }
-
-    _onPreferDarkThemeChanged() {
-        this._setBackgroundPatternIfNeeded();
     }
 
     _onDarkChanged() {
