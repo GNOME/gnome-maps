@@ -138,7 +138,7 @@ var TransitOptionsPanel = GObject.registerClass({
     _updateTransitDateButton(date) {
         let calendar = this._transitDateButton.popover.get_child();
 
-        calendar.select_month(date.get_month(), date.get_year());
+        calendar.select_month(date.get_month() - 1, date.get_year());
         calendar.select_day(date.get_day_of_month());
         this._transitDateButton.label =
             /*
