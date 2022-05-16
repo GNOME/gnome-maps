@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2022-03-03 21:16+0000\n"
-"PO-Revision-Date: 2022-03-07 17:56+0100\n"
+"POT-Creation-Date: 2022-05-10 21:06+0000\n"
+"PO-Revision-Date: 2022-05-16 10:03+0200\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
 "Language-Team: Galician <Proxecto Trasno <proxecto@trasno.gal>>\n"
 "Language: gl\n"
@@ -22,7 +22,7 @@ msgstr ""
 "X-Project-Style: gnome\n"
 "X-DL-Team: gl\n"
 "X-DL-Module: gnome-maps\n"
-"X-DL-Branch: master\n"
+"X-DL-Branch: main\n"
 "X-DL-Domain: po\n"
 "X-DL-State: Translating\n"
 
@@ -35,8 +35,8 @@ msgstr ""
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
-#: data/ui/main-window.ui:30 src/application.js:96 src/mainWindow.js:139
-#: src/mainWindow.js:599
+#: data/ui/main-window.ui:30 src/application.js:77 src/mainWindow.js:136
+#: src/mainWindow.js:580
 msgid "Maps"
 msgstr "Mapas"
 
@@ -62,7 +62,7 @@ msgstr ""
 "Mapa usa a base de datos colaborativa de OpenStreetMap, feita por centos de "
 "persoas por todo o mundo."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:245
+#: data/org.gnome.Maps.appdata.xml.in.in:279
 msgid "The GNOME Project"
 msgstr "O Proxecto GNOME"
 
@@ -152,103 +152,33 @@ msgid "Number of recently visited routes to store."
 msgstr "Número de lugares visitados recentemente a almacenar."
 
 #: data/org.gnome.Maps.gschema.xml:56
-msgid "Foursquare check-in privacy setting"
-msgstr "Configuración de privacidade do rexistro de Foursquare"
-
-#: data/org.gnome.Maps.gschema.xml:57
-msgid ""
-"Latest used Foursquare check-in privacy setting. Possible values are: "
-"public, followers or private."
-msgstr ""
-"Última configuración de privacidade do rexistro de Foursquare. Os valores "
-"posíbeis son: public, followers ou private."
-
-#: data/org.gnome.Maps.gschema.xml:61
-msgid "Foursquare check-in Facebook broadcasting"
-msgstr "Difusión en Facebook do rexistro de Foursquare"
-
-#: data/org.gnome.Maps.gschema.xml:62
-msgid ""
-"Indicates if Foursquare should broadcast the check-in as a post in the "
-"Facebook account associated with the Foursquare account."
-msgstr ""
-"Indica se Foursquare debe difundir o rexistro como un mensaxe novo na conta "
-"de Facebook asociada coa de Foursquare."
-
-#: data/org.gnome.Maps.gschema.xml:66
-msgid "Foursquare check-in Twitter broadcasting"
-msgstr "Difusión en Twitter do rexistro de Foursquare"
-
-#: data/org.gnome.Maps.gschema.xml:67
-msgid ""
-"Indicates if Foursquare should broadcast the check-in as a tweet in the "
-"Twitter account associated with the Foursquare account."
-msgstr ""
-"Indica se Foursquare debe difundir o rexistro como un chío novo na conta de "
-"Twitter asociada coa de Foursquare."
-
-#: data/org.gnome.Maps.gschema.xml:71
 msgid "OpenStreetMap username or e-mail address"
 msgstr "Nome de usuario ou enderezo de correo de OpenStreetMap"
 
-#: data/org.gnome.Maps.gschema.xml:72
+#: data/org.gnome.Maps.gschema.xml:57
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr "Indica se o usuario iniciou sesión para editar datos en OpenStreetMap."
 
-#: data/org.gnome.Maps.gschema.xml:76
+#: data/org.gnome.Maps.gschema.xml:61
 msgid "Last used transportation type for routing"
 msgstr "O último tipo de transporte para enrutado usado"
 
-#: data/org.gnome.Maps.gschema.xml:80
+#: data/org.gnome.Maps.gschema.xml:65
 msgid "Use hybrid aerial tiles"
 msgstr "Usar teselas aéreas híbridas"
 
-#: data/org.gnome.Maps.gschema.xml:81
+#: data/org.gnome.Maps.gschema.xml:66
 msgid "Whether aerial tiles should use hybrid style (with labels)."
 msgstr ""
 "Indica se as teselas aéreas deberían usar o estilo híbrido (con etiquetas)"
 
-#: data/org.gnome.Maps.gschema.xml:85
-#| msgid "Show Labels"
+#: data/org.gnome.Maps.gschema.xml:70
 msgid "Show scale"
 msgstr "Mostrar escala"
 
-#: data/org.gnome.Maps.gschema.xml:86
+#: data/org.gnome.Maps.gschema.xml:71
 msgid "Whether to show the scale."
 msgstr "Indica se mostrar ou non a escala."
-
-#: data/ui/check-in-dialog.ui:236
-msgid "Visibility"
-msgstr "Visibilidade"
-
-#: data/ui/check-in-dialog.ui:271
-msgid "Post on Facebook"
-msgstr "Enviar a Facebook"
-
-#: data/ui/check-in-dialog.ui:285
-msgid "Post on Twitter"
-msgstr "Enviar a Twitter"
-
-#: data/ui/check-in-dialog.ui:325 data/ui/export-view-dialog.ui:20
-#: data/ui/send-to-dialog.ui:13 data/ui/shape-layer-file-chooser.ui:22
-msgid "_Cancel"
-msgstr "_Cancelar"
-
-#: data/ui/check-in-dialog.ui:333
-msgid "C_heck in"
-msgstr "_Rexistrar"
-
-#: data/ui/check-in-dialog.ui:358
-msgid "Public"
-msgstr "Público"
-
-#: data/ui/check-in-dialog.ui:362
-msgid "Followers"
-msgstr "Seguidores"
-
-#: data/ui/check-in-dialog.ui:366
-msgid "Private"
-msgstr "Privado"
 
 #: data/ui/context-menu.ui:9
 msgid "Route from here"
@@ -277,6 +207,11 @@ msgstr "Engadir a OpenStreetMap"
 #: data/ui/export-view-dialog.ui:14
 msgid "Export view"
 msgstr "Exportar vista"
+
+#: data/ui/export-view-dialog.ui:20 data/ui/send-to-dialog.ui:13
+#: data/ui/shape-layer-file-chooser.ui:22
+msgid "_Cancel"
+msgstr "_Cancelar"
 
 #: data/ui/export-view-dialog.ui:34
 msgid "_Export"
@@ -396,12 +331,17 @@ msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "Abrir a capa de relieve"
 
-#: data/ui/layers-popover.ui:65
+#: data/ui/layers-popover.ui:66
 msgid "Show Labels"
 msgstr "Mostrar etiquetas"
 
+#: data/ui/layers-popover.ui:95
+#| msgid "Show scale"
+msgid "Show Scale"
+msgstr "Mostrar escala"
+
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:102
+#: data/ui/layers-popover.ui:130
 msgid "Open Shape Layer…"
 msgstr "Abrir a capa de relieve…"
 
@@ -438,33 +378,17 @@ msgstr "Sobre Mapas"
 msgid "Open main menu"
 msgstr "Abrir menú principal"
 
-#: data/ui/main-window.ui:110
-msgid "Maps is offline!"
-msgstr "Mapas está desconectado!"
-
-#: data/ui/main-window.ui:119
-msgid ""
-"Maps need an active internet connection to function properly, but one can’t "
-"be found."
-msgstr ""
-"Mapa precisa unha conexión a internet activa para funcionar correctamente, "
-"pero non se atopou ningunha."
-
-#: data/ui/main-window.ui:127
-msgid "Check your connection and proxy settings."
-msgstr "Comprobe a súa conexión ou preferencias do seu proxy."
-
 #: data/ui/osm-account-dialog.ui:9
 msgid "OpenStreetMap Account"
 msgstr "Conta de OpenStreetMap"
 
-#: data/ui/osm-account-dialog.ui:22
+#: data/ui/osm-account-dialog.ui:23
 msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
 msgstr ""
 "<span weight=\"bold\" size=\"x-large\">Iniciar sesión para editar mapas</"
 "span>"
 
-#: data/ui/osm-account-dialog.ui:36
+#: data/ui/osm-account-dialog.ui:38
 msgid ""
 "Help to improve the map, using an\n"
 "OpenStreetMap account."
@@ -472,54 +396,45 @@ msgstr ""
 "Axude a mellorar o mapa, use unha\n"
 "conta de OpenStreetMap."
 
-#: data/ui/osm-account-dialog.ui:56
-msgid "Email"
-msgstr "Correo electrónico"
+#: data/ui/osm-account-dialog.ui:53
+msgid ""
+"Sign in to authorize access in a web browser.\n"
+"Then fill in the obtained verification code here in the next step."
+msgstr ""
+"Iniciar sesión para autorizar o acceso nun navegador web.\n"
+"Logo complete o código de verificación obtido no seguinte paso."
 
-#: data/ui/osm-account-dialog.ui:81
-msgid "Password"
-msgstr "Contrasinal"
-
-#: data/ui/osm-account-dialog.ui:125
+#: data/ui/osm-account-dialog.ui:86
 msgid "Sign up"
 msgstr "Rexistrarse"
 
-#: data/ui/osm-account-dialog.ui:139
+#: data/ui/osm-account-dialog.ui:100
 msgid "Sign In"
 msgstr "Iniciar sesión"
 
-#. The label should contain the link to the OSM reset password page with a translated title
-#: data/ui/osm-account-dialog.ui:162
-msgid ""
-"Sorry, that didn’t work. Please try again, or visit\n"
-"<a href=\"https://www.openstreetmap.org/user/forgot-password"
-"\">OpenStreetMap</a> to reset your password."
+#: data/ui/osm-account-dialog.ui:139
+msgid "Copy verification code shown when authorizing access in the browser"
 msgstr ""
-"Isto non funcionou. Ténteo de novo ou visite\n"
-"<a href=\"https://www.openstreetmap.org/user/forgot-password"
-"\">OpenStreetMap</a> para restabelecer o seu contrasinal."
+"Copie o código de verificación mostrado ao autorizar o acceso no navegador"
 
-#: data/ui/osm-account-dialog.ui:175
-msgid "The verification code didn’t match, please try again."
-msgstr "O código de verificación non coincide, probe de novo."
+#: data/ui/osm-account-dialog.ui:150
+#| msgid "Enter verification code shown above"
+msgid "Verification code"
+msgstr "Código de verificación"
 
-#: data/ui/osm-account-dialog.ui:201
-msgid "Enter verification code shown above"
-msgstr "Escriba o código de verificación mostrado arriba"
-
-#: data/ui/osm-account-dialog.ui:224
+#: data/ui/osm-account-dialog.ui:162
 msgid "Verify"
 msgstr "Comprobar"
 
-#: data/ui/osm-account-dialog.ui:254
+#: data/ui/osm-account-dialog.ui:186
 msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
 msgstr "<span weight=\"bold\" size=\"x-large\">Sesión iniciada</span>"
 
-#: data/ui/osm-account-dialog.ui:267
+#: data/ui/osm-account-dialog.ui:199
 msgid "Your OpenStreetMap account is active."
 msgstr "A súa conta de OpenStreetMap está activa."
 
-#: data/ui/osm-account-dialog.ui:301
+#: data/ui/osm-account-dialog.ui:233
 msgid "Sign Out"
 msgstr "Pechar a sesión"
 
@@ -577,12 +492,11 @@ msgstr "Editar en OpenStreetMap"
 msgid "Next"
 msgstr "Seguinte"
 
-#: data/ui/place-popover.ui:54 src/application.js:399
+#: data/ui/place-popover.ui:54 src/application.js:360
 msgid "No results found"
 msgstr "Non se atoparon resultados"
 
-#: data/ui/place-popover.ui:66 src/application.js:376 src/checkInDialog.js:269
-#: src/checkIn.js:158 src/osmEditDialog.js:587
+#: data/ui/place-popover.ui:66 src/application.js:337 src/osmEditDialog.js:587
 msgid "An error has occurred"
 msgstr "Produciuse un erro"
 
@@ -602,10 +516,6 @@ msgstr "Copiar"
 #: data/ui/send-to-dialog.ui:79
 msgid "Send To…"
 msgstr "Enviar a…"
-
-#: data/ui/send-to-dialog.ui:86
-msgid "Check In…"
-msgstr "Rexistrarse…"
 
 #: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:65
 msgid "Open Shape Layer"
@@ -647,10 +557,6 @@ msgstr ""
 "de transporte, por exemplo o fornecedor nacional pode non incluír as "
 "aeroliñas, e o \n"
 "fornecedor local pode omitir os trens rexionais."
-
-#: data/ui/social-place-more-results-row.ui:8
-msgid "Show more results"
-msgstr "Mostrar máis resultados"
 
 #. Translators: This is a tooltip
 #: data/ui/transit-leg-row.ui:129
@@ -748,95 +654,43 @@ msgstr "Produciuse un fallo ao atopar a estrutura de teselas no cartafol"
 msgid "Failed to parse XML document"
 msgstr "Produciuse un fallo ao analizar o XML do documento"
 
-#: lib/maps-osm.c:249 lib/maps-osm.c:402
+#: lib/maps-osm.c:250 lib/maps-osm.c:403
 msgid "Missing required attributes"
 msgstr "Faltan atributos requiridos"
 
-#: lib/maps-osm.c:450
+#: lib/maps-osm.c:451 lib/maps-osm.c:494
 msgid "Could not find OSM element"
 msgstr "Non foi posíbel atopar o elemento de OSM"
 
-#: src/application.js:110
+#: lib/maps-osm.c:508
+#| msgid "Could not find OSM element"
+msgid "Could not find user element"
+msgstr "Non foi posíbel atopar o elemento do usuario"
+
+#: src/application.js:90
 msgid "A path to a local tiles directory structure"
 msgstr "Unha ruta a unha estrutura de directorios de teselas locais"
 
-#: src/application.js:116
+#: src/application.js:96
 msgid "Tile size for local tiles directory"
 msgstr "O tamaño de tesela para o cartafol de teselas locais"
 
-#: src/application.js:120
+#: src/application.js:100
 msgid "Show the version of the program"
 msgstr "Mostra a versión do programa"
 
-#: src/application.js:126
-msgid "Ignore network availability"
-msgstr "Ignorar a dispoñibilidade da rede"
-
-#: src/application.js:133
+#: src/application.js:106
 msgid "Search for places"
 msgstr "Buscar por lugares"
 
-#: src/application.js:144 src/application.js:145
+#: src/application.js:117 src/application.js:118
 msgid "[FILE…|URI]"
 msgstr "[FICHEIRO…|URI]"
 
-#: src/application.js:407
+#: src/application.js:368
 #, javascript-format
 msgid "Invalid maps: URI: %s"
 msgstr "Mapas non válidos: URI: %s"
-
-#: src/checkInDialog.js:161
-msgid "Select an account"
-msgstr "Seleccione unha conta"
-
-#: src/checkInDialog.js:166 src/checkInDialog.js:235
-msgid "Loading"
-msgstr "Cargando"
-
-#: src/checkInDialog.js:190
-msgid "Select a place"
-msgstr "Seleccione un lugar"
-
-#: src/checkInDialog.js:195
-msgid ""
-"Maps cannot find the place to check in to with Foursquare. Please select one "
-"from this list."
-msgstr ""
-"Mapas non pode atopar un lugar onde rexistrarse con Foursquare. Por favor "
-"seleccione un desde a lista."
-
-#. Translators: %s is the name of the place to check in.
-#.
-#: src/checkInDialog.js:210
-#, javascript-format
-msgid "Check in to %s"
-msgstr "Rexistrarse en %s"
-
-#. Translators: %s is the name of the place to check in.
-#.
-#: src/checkInDialog.js:220
-#, javascript-format
-msgid "Write an optional message to check in to %s."
-msgstr "Escriba unha mensaxe opcional para rexistrarse en %s."
-
-#. Translators: %s is the place name that user wanted to check-in
-#: src/checkIn.js:140
-#, javascript-format
-msgid "Cannot find “%s” in the social service"
-msgstr "Non se pode atopar «%s» no servizo social"
-
-#: src/checkIn.js:142
-msgid "Cannot find a suitable place to check-in in this location"
-msgstr ""
-"Non é posíbel atopar un lugar axeitado para rexistrarse nesta localización"
-
-#: src/checkIn.js:146
-msgid ""
-"Credentials have expired, please open Online Accounts to sign in and enable "
-"this account"
-msgstr ""
-"As súas credenciais expiraron, abra as «Contas en liña» para iniciar sesión "
-"e activar esta conta"
 
 #: src/contextMenu.js:135
 msgid "Nothing found here!"
@@ -911,23 +765,24 @@ msgstr "Comezar!"
 msgid "All Layer Files"
 msgstr "Todos os ficheiros de capa"
 
-#: src/mainWindow.js:502
+#: src/mainWindow.js:483
 msgid "Failed to connect to location service"
 msgstr "Produciuse un fallo ao conectar co servizo de localización"
 
-#: src/mainWindow.js:597
+#: src/mainWindow.js:578
 msgid "translator-credits"
 msgstr "Fran Diéguez <frandieguez@gnome.org>, 2013-2020"
 
-#: src/mainWindow.js:600
+#: src/mainWindow.js:581
 msgid "A map application for GNOME"
 msgstr "Unha aplicación de mapas para GNOME"
 
-#: src/mainWindow.js:611
-msgid "Copyright © 2011 – 2021 Red Hat, Inc. and The GNOME Maps authors"
-msgstr "Copyright © 2011 – 2021 Red Hat, Inc. e os autores de Mapas de GNOME"
+#: src/mainWindow.js:592
+#| msgid "Copyright © 2011 – 2021 Red Hat, Inc. and The GNOME Maps authors"
+msgid "Copyright © 2011 – 2022 Red Hat, Inc. and The GNOME Maps authors"
+msgstr "Copyright © 2011 – 2022 Red Hat, Inc. e os autores de Mapas de GNOME"
 
-#: src/mainWindow.js:631
+#: src/mainWindow.js:612
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Datos do mapa por %s e contribuidores"
@@ -937,7 +792,7 @@ msgstr "Datos do mapa por %s e contribuidores"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:647
+#: src/mainWindow.js:628
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Teselas de mapas fornecidas por %s"
@@ -951,20 +806,20 @@ msgstr "Teselas de mapas fornecidas por %s"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:676
+#: src/mainWindow.js:657
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Busca fornecida por %s usando %s"
 
-#: src/mapView.js:505 src/mapView.js:563
+#: src/mapView.js:439 src/mapView.js:497
 msgid "Failed to open layer"
 msgstr "Produciuse un fallo ao abrir a capa"
 
-#: src/mapView.js:526
+#: src/mapView.js:460
 msgid "Do you want to continue?"
 msgstr "Desexa continuar?"
 
-#: src/mapView.js:527
+#: src/mapView.js:461
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -973,41 +828,41 @@ msgstr ""
 "Está a piques de abrir ficheiros con un tamaño total de %s MB. Isto pode "
 "tardar algún tempo en cargar"
 
-#: src/mapView.js:557
+#: src/mapView.js:491
 msgid "File type is not supported"
 msgstr "Tipo de ficheiro non admitido"
 
-#: src/mapView.js:595
+#: src/mapView.js:529
 msgid "Failed to open GeoURI"
 msgstr "Produciuse un fallo ao abrir o GeoURI"
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: src/osmConnection.js:442
+#: src/osmConnection.js:354
 msgid "Incorrect user name or password"
 msgstr "Nome de usuario ou contrasinal non correcto"
 
-#: src/osmConnection.js:444
+#: src/osmConnection.js:356
 msgid "Success"
 msgstr "Éxito"
 
-#: src/osmConnection.js:446
+#: src/osmConnection.js:358
 msgid "Bad request"
 msgstr "Solicitude non válida"
 
-#: src/osmConnection.js:448
+#: src/osmConnection.js:360
 msgid "Object not found"
 msgstr "O obxecto non se atopou"
 
-#: src/osmConnection.js:450
+#: src/osmConnection.js:362
 msgid "Conflict, someone else has just modified the object"
 msgstr "Conflito, alguén modificou o obxecto"
 
-#: src/osmConnection.js:452
+#: src/osmConnection.js:364
 msgid "Object has been deleted"
 msgstr "O obxecto foi eliminado"
 
-#: src/osmConnection.js:454
+#: src/osmConnection.js:366
 msgid "Way or relation refers to non-existing children"
 msgstr "A forma ou relación refírese aos fillos non existentes"
 
@@ -1497,16 +1352,16 @@ msgstr "Inverter ruta"
 
 #. Translators: The first string is the name of the city, the
 #. second string is the name of the app to add it to
-#: src/sendToDialog.js:121
+#: src/sendToDialog.js:104
 #, javascript-format
 msgid "Add %s to %s"
 msgstr "Engadir %s a %s"
 
-#: src/sendToDialog.js:219
+#: src/sendToDialog.js:202
 msgid "Failed to open URI"
 msgstr "Produciuse un fallo ao abrir o URI"
 
-#: src/sendToDialog.js:276
+#: src/sendToDialog.js:259
 #, javascript-format
 msgid "Open with %s"
 msgstr "Abrir con %s"
@@ -1929,6 +1784,136 @@ msgstr "Faga un xiro en U cara %s"
 #: src/transitplugins/openTripPlanner.js:1249
 msgid "Make a right u-turn"
 msgstr "Faga un xiro en U á dereita"
+
+#~ msgid "Foursquare check-in privacy setting"
+#~ msgstr "Configuración de privacidade do rexistro de Foursquare"
+
+#~ msgid ""
+#~ "Latest used Foursquare check-in privacy setting. Possible values are: "
+#~ "public, followers or private."
+#~ msgstr ""
+#~ "Última configuración de privacidade do rexistro de Foursquare. Os valores "
+#~ "posíbeis son: public, followers ou private."
+
+#~ msgid "Foursquare check-in Facebook broadcasting"
+#~ msgstr "Difusión en Facebook do rexistro de Foursquare"
+
+#~ msgid ""
+#~ "Indicates if Foursquare should broadcast the check-in as a post in the "
+#~ "Facebook account associated with the Foursquare account."
+#~ msgstr ""
+#~ "Indica se Foursquare debe difundir o rexistro como un mensaxe novo na "
+#~ "conta de Facebook asociada coa de Foursquare."
+
+#~ msgid "Foursquare check-in Twitter broadcasting"
+#~ msgstr "Difusión en Twitter do rexistro de Foursquare"
+
+#~ msgid ""
+#~ "Indicates if Foursquare should broadcast the check-in as a tweet in the "
+#~ "Twitter account associated with the Foursquare account."
+#~ msgstr ""
+#~ "Indica se Foursquare debe difundir o rexistro como un chío novo na conta "
+#~ "de Twitter asociada coa de Foursquare."
+
+#~ msgid "Visibility"
+#~ msgstr "Visibilidade"
+
+#~ msgid "Post on Facebook"
+#~ msgstr "Enviar a Facebook"
+
+#~ msgid "Post on Twitter"
+#~ msgstr "Enviar a Twitter"
+
+#~ msgid "C_heck in"
+#~ msgstr "_Rexistrar"
+
+#~ msgid "Public"
+#~ msgstr "Público"
+
+#~ msgid "Followers"
+#~ msgstr "Seguidores"
+
+#~ msgid "Private"
+#~ msgstr "Privado"
+
+#~ msgid "Maps is offline!"
+#~ msgstr "Mapas está desconectado!"
+
+#~ msgid ""
+#~ "Maps need an active internet connection to function properly, but one "
+#~ "can’t be found."
+#~ msgstr ""
+#~ "Mapa precisa unha conexión a internet activa para funcionar "
+#~ "correctamente, pero non se atopou ningunha."
+
+#~ msgid "Check your connection and proxy settings."
+#~ msgstr "Comprobe a súa conexión ou preferencias do seu proxy."
+
+#~ msgid "Email"
+#~ msgstr "Correo electrónico"
+
+#~ msgid "Password"
+#~ msgstr "Contrasinal"
+
+#~ msgid ""
+#~ "Sorry, that didn’t work. Please try again, or visit\n"
+#~ "<a href=\"https://www.openstreetmap.org/user/forgot-"
+#~ "password\">OpenStreetMap</a> to reset your password."
+#~ msgstr ""
+#~ "Isto non funcionou. Ténteo de novo ou visite\n"
+#~ "<a href=\"https://www.openstreetmap.org/user/forgot-"
+#~ "password\">OpenStreetMap</a> para restabelecer o seu contrasinal."
+
+#~ msgid "The verification code didn’t match, please try again."
+#~ msgstr "O código de verificación non coincide, probe de novo."
+
+#~ msgid "Check In…"
+#~ msgstr "Rexistrarse…"
+
+#~ msgid "Show more results"
+#~ msgstr "Mostrar máis resultados"
+
+#~ msgid "Ignore network availability"
+#~ msgstr "Ignorar a dispoñibilidade da rede"
+
+#~ msgid "Select an account"
+#~ msgstr "Seleccione unha conta"
+
+#~ msgid "Loading"
+#~ msgstr "Cargando"
+
+#~ msgid "Select a place"
+#~ msgstr "Seleccione un lugar"
+
+#~ msgid ""
+#~ "Maps cannot find the place to check in to with Foursquare. Please select "
+#~ "one from this list."
+#~ msgstr ""
+#~ "Mapas non pode atopar un lugar onde rexistrarse con Foursquare. Por favor "
+#~ "seleccione un desde a lista."
+
+#, javascript-format
+#~ msgid "Check in to %s"
+#~ msgstr "Rexistrarse en %s"
+
+#, javascript-format
+#~ msgid "Write an optional message to check in to %s."
+#~ msgstr "Escriba unha mensaxe opcional para rexistrarse en %s."
+
+#, javascript-format
+#~ msgid "Cannot find “%s” in the social service"
+#~ msgstr "Non se pode atopar «%s» no servizo social"
+
+#~ msgid "Cannot find a suitable place to check-in in this location"
+#~ msgstr ""
+#~ "Non é posíbel atopar un lugar axeitado para rexistrarse nesta localización"
+
+#~ msgid ""
+#~ "Credentials have expired, please open Online Accounts to sign in and "
+#~ "enable this account"
+#~ msgstr ""
+#~ "As súas credenciais expiraron, abra as «Contas en liña» para iniciar "
+#~ "sesión e activar esta conta"
 
 #~ msgid "GNOME Maps"
 #~ msgstr "Mapas de GNOME"
