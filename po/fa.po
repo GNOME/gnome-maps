@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps gnome-3-10\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2022-03-03 21:16+0000\n"
-"PO-Revision-Date: 2022-03-07 14:18+0330\n"
+"POT-Creation-Date: 2022-05-10 21:06+0000\n"
+"PO-Revision-Date: 2022-05-16 12:25+0430\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian\n"
 "Language: fa\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -27,8 +27,8 @@ msgstr ""
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
-#: data/ui/main-window.ui:30 src/application.js:96 src/mainWindow.js:139
-#: src/mainWindow.js:599
+#: data/ui/main-window.ui:30 src/application.js:77 src/mainWindow.js:136
+#: src/mainWindow.js:580
 msgid "Maps"
 msgstr "نقشه‌ها"
 
@@ -54,7 +54,7 @@ msgstr ""
 "نقشه‌ها از پایگاه دادهٔ مشارکتی OpenStreetMap استفاده می‌کند که به دست صدها هزار نفر "
 "در سراسر جهان درست شده است."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:245
+#: data/org.gnome.Maps.appdata.xml.in.in:279
 msgid "The GNOME Project"
 msgstr "پروژهٔ گنوم"
 
@@ -144,101 +144,32 @@ msgid "Number of recently visited routes to store."
 msgstr "تعداد مسیرهای اخیر سر زده شده برای ذخیره."
 
 #: data/org.gnome.Maps.gschema.xml:56
-msgid "Foursquare check-in privacy setting"
-msgstr "تنظیمات محرمانگی اعلام حضور فوراسکور"
-
-#: data/org.gnome.Maps.gschema.xml:57
-msgid ""
-"Latest used Foursquare check-in privacy setting. Possible values are: public, "
-"followers or private."
-msgstr ""
-"آخرین تنظیمات استفاده شدهٔ محرمانگی اعلام حضور فوراسکور. مقادیر مجاز عبارتند از: "
-"public، followers یا private."
-
-#: data/org.gnome.Maps.gschema.xml:61
-msgid "Foursquare check-in Facebook broadcasting"
-msgstr "اعلام حضور در فوراسکور و انتشار در فیس‌بوک"
-
-#: data/org.gnome.Maps.gschema.xml:62
-msgid ""
-"Indicates if Foursquare should broadcast the check-in as a post in the Facebook "
-"account associated with the Foursquare account."
-msgstr ""
-"مشخّص می‌کند که آیا فوراسکور باید اعلام حضور را به عنوان یک فرسته در حساب فیس‌بوک "
-"مرتبط با حساب فوراسکور منتشر کند یا نه."
-
-#: data/org.gnome.Maps.gschema.xml:66
-msgid "Foursquare check-in Twitter broadcasting"
-msgstr "اعلام حضور فوراسکور و انتشار در توییتر"
-
-#: data/org.gnome.Maps.gschema.xml:67
-msgid ""
-"Indicates if Foursquare should broadcast the check-in as a tweet in the Twitter "
-"account associated with the Foursquare account."
-msgstr ""
-"مشخّص می‌کند که آیا فوراسکور باید اعلام حضور را به عنوان یک توییت در حساب توییتر "
-"مرتبط با حساب فوراسکور منتشر کند یا نه."
-
-#: data/org.gnome.Maps.gschema.xml:71
 msgid "OpenStreetMap username or e-mail address"
 msgstr "نام‌کاربری یا نشانی رایانامهٔ OpenStreetMap"
 
-#: data/org.gnome.Maps.gschema.xml:72
+#: data/org.gnome.Maps.gschema.xml:57
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr "مشخّص می‌کند که آیا کاربر برای ویرایش داده‌های OpenStreetMap وارد شده یا نه."
 
-#: data/org.gnome.Maps.gschema.xml:76
+#: data/org.gnome.Maps.gschema.xml:61
 msgid "Last used transportation type for routing"
 msgstr "آخرین گونهٔ حمل‌ونقل برای مسیریابی"
 
-#: data/org.gnome.Maps.gschema.xml:80
+#: data/org.gnome.Maps.gschema.xml:65
 msgid "Use hybrid aerial tiles"
 msgstr "استفاده از کاشی‌های هوایی پیوندی"
 
-#: data/org.gnome.Maps.gschema.xml:81
+#: data/org.gnome.Maps.gschema.xml:66
 msgid "Whether aerial tiles should use hybrid style (with labels)."
 msgstr "این که کاشی‌های هوایی باید از سبک پیوندی (با برچسب‌ها) استفاده کنند یا نه."
 
-#: data/org.gnome.Maps.gschema.xml:85
+#: data/org.gnome.Maps.gschema.xml:70
 msgid "Show scale"
 msgstr "نمایش مقیاس"
 
-#: data/org.gnome.Maps.gschema.xml:86
+#: data/org.gnome.Maps.gschema.xml:71
 msgid "Whether to show the scale."
 msgstr "این که مقیاس نشان داده شود یا نه."
-
-#: data/ui/check-in-dialog.ui:236
-msgid "Visibility"
-msgstr "نمایانی"
-
-#: data/ui/check-in-dialog.ui:271
-msgid "Post on Facebook"
-msgstr "فرستادن به فیس‌بوک"
-
-#: data/ui/check-in-dialog.ui:285
-msgid "Post on Twitter"
-msgstr "فرستادن به توییتر"
-
-#: data/ui/check-in-dialog.ui:325 data/ui/export-view-dialog.ui:20
-#: data/ui/send-to-dialog.ui:13 data/ui/shape-layer-file-chooser.ui:22
-msgid "_Cancel"
-msgstr "_لغو"
-
-#: data/ui/check-in-dialog.ui:333
-msgid "C_heck in"
-msgstr "اعلام _حضور"
-
-#: data/ui/check-in-dialog.ui:358
-msgid "Public"
-msgstr "عمومی"
-
-#: data/ui/check-in-dialog.ui:362
-msgid "Followers"
-msgstr "پیروان"
-
-#: data/ui/check-in-dialog.ui:366
-msgid "Private"
-msgstr "خصوصی"
 
 #: data/ui/context-menu.ui:9
 msgid "Route from here"
@@ -267,6 +198,11 @@ msgstr "افزودن به OpenStreetMap"
 #: data/ui/export-view-dialog.ui:14
 msgid "Export view"
 msgstr "نمای برون‌ریزی"
+
+#: data/ui/export-view-dialog.ui:20 data/ui/send-to-dialog.ui:13
+#: data/ui/shape-layer-file-chooser.ui:22
+msgid "_Cancel"
+msgstr "_لغو"
 
 #: data/ui/export-view-dialog.ui:34
 msgid "_Export"
@@ -386,12 +322,16 @@ msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "گشودن لایهٔ شکل"
 
-#: data/ui/layers-popover.ui:65
+#: data/ui/layers-popover.ui:66
 msgid "Show Labels"
 msgstr "نمایش برچسب‌ها"
 
+#: data/ui/layers-popover.ui:95
+msgid "Show Scale"
+msgstr "نمایش مقیاس"
+
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:102
+#: data/ui/layers-popover.ui:130
 msgid "Open Shape Layer…"
 msgstr "گشودن لایهٔ شکل…"
 
@@ -428,29 +368,15 @@ msgstr "دربارهٔ نقشه‌ها"
 msgid "Open main menu"
 msgstr "گشودن فهرست اصلی"
 
-#: data/ui/main-window.ui:110
-msgid "Maps is offline!"
-msgstr "نقشه‌ها برون‌خط است!"
-
-#: data/ui/main-window.ui:119
-msgid ""
-"Maps need an active internet connection to function properly, but one can’t be "
-"found."
-msgstr "نقشه‌ها برای عملکرد صحیح نیاز به اینترنت دارد."
-
-#: data/ui/main-window.ui:127
-msgid "Check your connection and proxy settings."
-msgstr "تنظیمات پیشکار و اتّصالتان را بررسی کنید."
-
 #: data/ui/osm-account-dialog.ui:9
 msgid "OpenStreetMap Account"
 msgstr "حساب OpenStreetMap"
 
-#: data/ui/osm-account-dialog.ui:22
+#: data/ui/osm-account-dialog.ui:23
 msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
 msgstr "<span weight=\"bold\" size=\"x-large\">ورود به ویرایش نقشه‌ها</span>"
 
-#: data/ui/osm-account-dialog.ui:36
+#: data/ui/osm-account-dialog.ui:38
 msgid ""
 "Help to improve the map, using an\n"
 "OpenStreetMap account."
@@ -458,54 +384,43 @@ msgstr ""
 "با استفاده از یک حساب OpenStreetMap\n"
 "به گسترش نقشه کمک کنید."
 
-#: data/ui/osm-account-dialog.ui:56
-msgid "Email"
-msgstr "رایانامه"
+#: data/ui/osm-account-dialog.ui:53
+msgid ""
+"Sign in to authorize access in a web browser.\n"
+"Then fill in the obtained verification code here in the next step."
+msgstr ""
+"برای دادن دسترسی در مرورگر وبی وارد شوید.\n"
+"سپس رمز تأیید به دست آمده را در گام بعدی این‌جا پر کنید."
 
-#: data/ui/osm-account-dialog.ui:81
-msgid "Password"
-msgstr "گذرواژه"
-
-#: data/ui/osm-account-dialog.ui:125
+#: data/ui/osm-account-dialog.ui:86
 msgid "Sign up"
 msgstr "ثبت‌نام"
 
-#: data/ui/osm-account-dialog.ui:139
+#: data/ui/osm-account-dialog.ui:100
 msgid "Sign In"
 msgstr "ورود"
 
-#. The label should contain the link to the OSM reset password page with a translated title
+#: data/ui/osm-account-dialog.ui:139
+msgid "Copy verification code shown when authorizing access in the browser"
+msgstr "رمز تأیید نشان داده هنگام گرفتن دسترسی در مرورگر وارد کنید"
+
+#: data/ui/osm-account-dialog.ui:150
+msgid "Verification code"
+msgstr "رمز تأیید"
+
 #: data/ui/osm-account-dialog.ui:162
-msgid ""
-"Sorry, that didn’t work. Please try again, or visit\n"
-"<a href=\"https://www.openstreetmap.org/user/forgot-password\">OpenStreetMap</a> "
-"to reset your password."
-msgstr ""
-"متأسّفانه تأثیری نداشت. لطفا دوباره تلاش کرده یا برای\n"
-"باز نشانی گذرواژه‌تان به <a href=\"https://www.openstreetmap.org/user/forgot-"
-"password\">OpenStreetMap</a> سر بزنید."
-
-#: data/ui/osm-account-dialog.ui:175
-msgid "The verification code didn’t match, please try again."
-msgstr "کد تأیید مطابق نبود، لطفاً دوباره بیازمایید."
-
-#: data/ui/osm-account-dialog.ui:201
-msgid "Enter verification code shown above"
-msgstr "کد تأیید بالا را وارد کنید"
-
-#: data/ui/osm-account-dialog.ui:224
 msgid "Verify"
 msgstr "تأیید"
 
-#: data/ui/osm-account-dialog.ui:254
+#: data/ui/osm-account-dialog.ui:186
 msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
 msgstr "<span weight=\"bold\" size=\"x-large\">وارد شده</span>"
 
-#: data/ui/osm-account-dialog.ui:267
+#: data/ui/osm-account-dialog.ui:199
 msgid "Your OpenStreetMap account is active."
 msgstr "حساب OpenStreetMapتان فعّال است."
 
-#: data/ui/osm-account-dialog.ui:301
+#: data/ui/osm-account-dialog.ui:233
 msgid "Sign Out"
 msgstr "خروج"
 
@@ -563,12 +478,11 @@ msgstr "ویرایش روی OpenStreetMap"
 msgid "Next"
 msgstr "بعدی"
 
-#: data/ui/place-popover.ui:54 src/application.js:399
+#: data/ui/place-popover.ui:54 src/application.js:360
 msgid "No results found"
 msgstr "هیچ نتیجه‌ای پیدا نشد"
 
-#: data/ui/place-popover.ui:66 src/application.js:376 src/checkInDialog.js:269
-#: src/checkIn.js:158 src/osmEditDialog.js:587
+#: data/ui/place-popover.ui:66 src/application.js:337 src/osmEditDialog.js:587
 msgid "An error has occurred"
 msgstr "خطایی رخ داد"
 
@@ -588,10 +502,6 @@ msgstr "رونوشت"
 #: data/ui/send-to-dialog.ui:79
 msgid "Send To…"
 msgstr "فرستادن به…"
-
-#: data/ui/send-to-dialog.ui:86
-msgid "Check In…"
-msgstr "اعلام حضور…"
 
 #: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:65
 msgid "Open Shape Layer"
@@ -629,10 +539,6 @@ msgstr ""
 "باشد و یک فراهم‌کنندهٔ محلّی می‌تواند قطارهای منطقه‌ای را نشان ندهد.\n"
 "نام‌ها و برندهای نمایش‌داده‌شده باید هنگام امکان به عنوان علایم تجاری در نظر گرفته "
 "شوند."
-
-#: data/ui/social-place-more-results-row.ui:8
-msgid "Show more results"
-msgstr "نمایش نتایج بیش‌تر"
 
 #. Translators: This is a tooltip
 #: data/ui/transit-leg-row.ui:129
@@ -730,94 +636,42 @@ msgstr "شکست در یافتن ساختار کاشی در شاخه"
 msgid "Failed to parse XML document"
 msgstr "شکست در تجزیهٔ سند XML"
 
-#: lib/maps-osm.c:249 lib/maps-osm.c:402
+#: lib/maps-osm.c:250 lib/maps-osm.c:403
 msgid "Missing required attributes"
 msgstr "ویژگی‌های لازم وجود ندارند"
 
-#: lib/maps-osm.c:450
+#: lib/maps-osm.c:451 lib/maps-osm.c:494
 msgid "Could not find OSM element"
 msgstr "ناتوان در یافتن عنصر OSM"
 
-#: src/application.js:110
+#: lib/maps-osm.c:508
+msgid "Could not find user element"
+msgstr "ناتوان در یافتن عنصر کاربر"
+
+#: src/application.js:90
 msgid "A path to a local tiles directory structure"
 msgstr "مسیری به ساختار شاخهٔ کاشی‌های محلّی"
 
-#: src/application.js:116
+#: src/application.js:96
 msgid "Tile size for local tiles directory"
 msgstr "اندازهٔ شاخهٔ کاشی‌های محلّی"
 
-#: src/application.js:120
+#: src/application.js:100
 msgid "Show the version of the program"
 msgstr "نمایش نگارش برنامه"
 
-#: src/application.js:126
-msgid "Ignore network availability"
-msgstr "نادیده گرفتن موجود بودن شبکه"
-
-#: src/application.js:133
+#: src/application.js:106
 msgid "Search for places"
 msgstr "جست‌وجوی مکان"
 
-#: src/application.js:144 src/application.js:145
+#: src/application.js:117 src/application.js:118
 msgid "[FILE…|URI]"
 msgstr "[FILE…|URI]"
 
-#: src/application.js:407
+#: src/application.js:368
 #, javascript-format
 msgid "Invalid maps: URI: %s"
 msgstr "نقشه‌های نامعتبر: نشانی: %s"
-
-#: src/checkInDialog.js:161
-msgid "Select an account"
-msgstr "گزینش یک حساب"
-
-#: src/checkInDialog.js:166 src/checkInDialog.js:235
-msgid "Loading"
-msgstr "در حال بار کردن"
-
-#: src/checkInDialog.js:190
-msgid "Select a place"
-msgstr "گزینش یک موقعیت"
-
-#: src/checkInDialog.js:195
-msgid ""
-"Maps cannot find the place to check in to with Foursquare. Please select one from "
-"this list."
-msgstr ""
-"نقشه‌ها نمی‌تواند مکان را برای اعلام حضور در فوراسکور بیابد. لطفاً موقعیتی را از "
-"فهرست برگزینید."
-
-#. Translators: %s is the name of the place to check in.
-#.
-#: src/checkInDialog.js:210
-#, javascript-format
-msgid "Check in to %s"
-msgstr "اعلام حضور در %s"
-
-#. Translators: %s is the name of the place to check in.
-#.
-#: src/checkInDialog.js:220
-#, javascript-format
-msgid "Write an optional message to check in to %s."
-msgstr "نوشتن اختیاری پیامی برای اعلام حضور در %s."
-
-#. Translators: %s is the place name that user wanted to check-in
-#: src/checkIn.js:140
-#, javascript-format
-msgid "Cannot find “%s” in the social service"
-msgstr "نمی‌توان «%s» را در خدمت اجتماعی یافت"
-
-#: src/checkIn.js:142
-msgid "Cannot find a suitable place to check-in in this location"
-msgstr "نمی‌توان مکانی مناسب برای اعلام حضور در این موقعیت یافت"
-
-#: src/checkIn.js:146
-msgid ""
-"Credentials have expired, please open Online Accounts to sign in and enable this "
-"account"
-msgstr ""
-"اعتبارنامه‌ها منقضی شده‌اند. لطفاً برای ورود و به کار انداختن این حساب، حساب‌های برخط "
-"را بگشایید"
 
 #: src/contextMenu.js:135
 msgid "Nothing found here!"
@@ -892,25 +746,25 @@ msgstr "شروع!"
 msgid "All Layer Files"
 msgstr "تمام پرونده‌های لایه"
 
-#: src/mainWindow.js:502
+#: src/mainWindow.js:483
 msgid "Failed to connect to location service"
 msgstr "شکست در اتّصال به خدمت مکانی"
 
-#: src/mainWindow.js:597
+#: src/mainWindow.js:578
 msgid "translator-credits"
 msgstr ""
 "دانیال بهزادی <dani.behzi@ubuntu.com>\n"
 "آرش موسوی <mousavi.arash@gmail.com>"
 
-#: src/mainWindow.js:600
+#: src/mainWindow.js:581
 msgid "A map application for GNOME"
 msgstr "یک برنامهٔ نقشه برای گنوم"
 
-#: src/mainWindow.js:611
-msgid "Copyright © 2011 – 2021 Red Hat, Inc. and The GNOME Maps authors"
-msgstr "حق رونوشت © ۲۰۱۱ - ۲۰۲۱ – شرکت ردهت و نگارندگان نقشه‌های گنوم"
+#: src/mainWindow.js:592
+msgid "Copyright © 2011 – 2022 Red Hat, Inc. and The GNOME Maps authors"
+msgstr "حق رونوشت © ۲۰۱۱ - ۲۰۲۲ – شرکت ردهت و نگارندگان نقشه‌های گنوم"
 
-#: src/mainWindow.js:631
+#: src/mainWindow.js:612
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "دادهّای نقشه به دست %s و مشارکت‌کنندگان"
@@ -920,7 +774,7 @@ msgstr "دادهّای نقشه به دست %s و مشارکت‌کنندگان"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:647
+#: src/mainWindow.js:628
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "کاشی‌های نقشه به دست %s فراهم شده"
@@ -934,61 +788,61 @@ msgstr "کاشی‌های نقشه به دست %s فراهم شده"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:676
+#: src/mainWindow.js:657
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "جست‌وجو به دست %s با استفاده از %s فراهم شده"
 
-#: src/mapView.js:505 src/mapView.js:563
+#: src/mapView.js:439 src/mapView.js:497
 msgid "Failed to open layer"
 msgstr "شکست در گشودن لایه"
 
-#: src/mapView.js:526
+#: src/mapView.js:460
 msgid "Do you want to continue?"
 msgstr "می‌خواهید ادامه دهید؟"
 
-#: src/mapView.js:527
+#: src/mapView.js:461
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some time "
 "to load"
 msgstr "در حال گشودن پرونده‌ای با حجم کل %s م‌ب هستید. بار شدنش ممکن است کمی طول بکشد"
 
-#: src/mapView.js:557
+#: src/mapView.js:491
 msgid "File type is not supported"
 msgstr "گونهٔ پرونده پشتیبانی نمی‌شود"
 
-#: src/mapView.js:595
+#: src/mapView.js:529
 msgid "Failed to open GeoURI"
 msgstr "شکست در گشودن نشانی جغرافیایی"
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: src/osmConnection.js:442
+#: src/osmConnection.js:354
 msgid "Incorrect user name or password"
 msgstr "گذرواژه یا نام‌کاربری نادرست"
 
-#: src/osmConnection.js:444
+#: src/osmConnection.js:356
 msgid "Success"
 msgstr "موفّقیت"
 
-#: src/osmConnection.js:446
+#: src/osmConnection.js:358
 msgid "Bad request"
 msgstr "درخواست بد"
 
-#: src/osmConnection.js:448
+#: src/osmConnection.js:360
 msgid "Object not found"
 msgstr "شی پیدا نشد"
 
-#: src/osmConnection.js:450
+#: src/osmConnection.js:362
 msgid "Conflict, someone else has just modified the object"
 msgstr "تداخل، گسی دیگر به تازگی شی را تغییر داده"
 
-#: src/osmConnection.js:452
+#: src/osmConnection.js:364
 msgid "Object has been deleted"
 msgstr "شی پاک شد"
 
-#: src/osmConnection.js:454
+#: src/osmConnection.js:366
 msgid "Way or relation refers to non-existing children"
 msgstr "راه یا ارتباط به فرزندی ناموجود اشاره می‌کند"
 
@@ -1473,16 +1327,16 @@ msgstr "مسیر برعکس"
 
 #. Translators: The first string is the name of the city, the
 #. second string is the name of the app to add it to
-#: src/sendToDialog.js:121
+#: src/sendToDialog.js:104
 #, javascript-format
 msgid "Add %s to %s"
 msgstr "افزودن %s به %s"
 
-#: src/sendToDialog.js:219
+#: src/sendToDialog.js:202
 msgid "Failed to open URI"
 msgstr "شکست در گشودن نشانی"
 
-#: src/sendToDialog.js:276
+#: src/sendToDialog.js:259
 #, javascript-format
 msgid "Open with %s"
 msgstr "گشودن با %s"
@@ -1899,6 +1753,133 @@ msgstr "به %s گردش به راست کنید"
 #: src/transitplugins/openTripPlanner.js:1249
 msgid "Make a right u-turn"
 msgstr "گردش به راست کنید"
+
+#~ msgid "Foursquare check-in privacy setting"
+#~ msgstr "تنظیمات محرمانگی اعلام حضور فوراسکور"
+
+#~ msgid ""
+#~ "Latest used Foursquare check-in privacy setting. Possible values are: public, "
+#~ "followers or private."
+#~ msgstr ""
+#~ "آخرین تنظیمات استفاده شدهٔ محرمانگی اعلام حضور فوراسکور. مقادیر مجاز عبارتند "
+#~ "از: public، followers یا private."
+
+#~ msgid "Foursquare check-in Facebook broadcasting"
+#~ msgstr "اعلام حضور در فوراسکور و انتشار در فیس‌بوک"
+
+#~ msgid ""
+#~ "Indicates if Foursquare should broadcast the check-in as a post in the "
+#~ "Facebook account associated with the Foursquare account."
+#~ msgstr ""
+#~ "مشخّص می‌کند که آیا فوراسکور باید اعلام حضور را به عنوان یک فرسته در حساب فیس‌بوک "
+#~ "مرتبط با حساب فوراسکور منتشر کند یا نه."
+
+#~ msgid "Foursquare check-in Twitter broadcasting"
+#~ msgstr "اعلام حضور فوراسکور و انتشار در توییتر"
+
+#~ msgid ""
+#~ "Indicates if Foursquare should broadcast the check-in as a tweet in the "
+#~ "Twitter account associated with the Foursquare account."
+#~ msgstr ""
+#~ "مشخّص می‌کند که آیا فوراسکور باید اعلام حضور را به عنوان یک توییت در حساب توییتر "
+#~ "مرتبط با حساب فوراسکور منتشر کند یا نه."
+
+#~ msgid "Visibility"
+#~ msgstr "نمایانی"
+
+#~ msgid "Post on Facebook"
+#~ msgstr "فرستادن به فیس‌بوک"
+
+#~ msgid "Post on Twitter"
+#~ msgstr "فرستادن به توییتر"
+
+#~ msgid "C_heck in"
+#~ msgstr "اعلام _حضور"
+
+#~ msgid "Public"
+#~ msgstr "عمومی"
+
+#~ msgid "Followers"
+#~ msgstr "پیروان"
+
+#~ msgid "Private"
+#~ msgstr "خصوصی"
+
+#~ msgid "Maps is offline!"
+#~ msgstr "نقشه‌ها برون‌خط است!"
+
+#~ msgid ""
+#~ "Maps need an active internet connection to function properly, but one can’t be "
+#~ "found."
+#~ msgstr "نقشه‌ها برای عملکرد صحیح نیاز به اینترنت دارد."
+
+#~ msgid "Check your connection and proxy settings."
+#~ msgstr "تنظیمات پیشکار و اتّصالتان را بررسی کنید."
+
+#~ msgid "Email"
+#~ msgstr "رایانامه"
+
+#~ msgid "Password"
+#~ msgstr "گذرواژه"
+
+#~ msgid ""
+#~ "Sorry, that didn’t work. Please try again, or visit\n"
+#~ "<a href=\"https://www.openstreetmap.org/user/forgot-password\">OpenStreetMap</"
+#~ "a> to reset your password."
+#~ msgstr ""
+#~ "متأسّفانه تأثیری نداشت. لطفا دوباره تلاش کرده یا برای\n"
+#~ "باز نشانی گذرواژه‌تان به <a href=\"https://www.openstreetmap.org/user/forgot-"
+#~ "password\">OpenStreetMap</a> سر بزنید."
+
+#~ msgid "The verification code didn’t match, please try again."
+#~ msgstr "کد تأیید مطابق نبود، لطفاً دوباره بیازمایید."
+
+#~ msgid "Check In…"
+#~ msgstr "اعلام حضور…"
+
+#~ msgid "Show more results"
+#~ msgstr "نمایش نتایج بیش‌تر"
+
+#~ msgid "Ignore network availability"
+#~ msgstr "نادیده گرفتن موجود بودن شبکه"
+
+#~ msgid "Select an account"
+#~ msgstr "گزینش یک حساب"
+
+#~ msgid "Loading"
+#~ msgstr "در حال بار کردن"
+
+#~ msgid "Select a place"
+#~ msgstr "گزینش یک موقعیت"
+
+#~ msgid ""
+#~ "Maps cannot find the place to check in to with Foursquare. Please select one "
+#~ "from this list."
+#~ msgstr ""
+#~ "نقشه‌ها نمی‌تواند مکان را برای اعلام حضور در فوراسکور بیابد. لطفاً موقعیتی را از "
+#~ "فهرست برگزینید."
+
+#, javascript-format
+#~ msgid "Check in to %s"
+#~ msgstr "اعلام حضور در %s"
+
+#, javascript-format
+#~ msgid "Write an optional message to check in to %s."
+#~ msgstr "نوشتن اختیاری پیامی برای اعلام حضور در %s."
+
+#, javascript-format
+#~ msgid "Cannot find “%s” in the social service"
+#~ msgstr "نمی‌توان «%s» را در خدمت اجتماعی یافت"
+
+#~ msgid "Cannot find a suitable place to check-in in this location"
+#~ msgstr "نمی‌توان مکانی مناسب برای اعلام حضور در این موقعیت یافت"
+
+#~ msgid ""
+#~ "Credentials have expired, please open Online Accounts to sign in and enable "
+#~ "this account"
+#~ msgstr ""
+#~ "اعتبارنامه‌ها منقضی شده‌اند. لطفاً برای ورود و به کار انداختن این حساب، حساب‌های "
+#~ "برخط را بگشایید"
 
 #~ msgid "GNOME Maps"
 #~ msgstr "نقشه‌های گنوم"
