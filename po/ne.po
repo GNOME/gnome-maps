@@ -6,742 +6,789 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Gnome Nepali Translation Project\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-07-24 21:57+0000\n"
-"PO-Revision-Date: 2017-08-13 14:57+0545\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
+"POT-Creation-Date: 2022-04-28 15:34+0000\n"
+"PO-Revision-Date: 2022-05-20 16:39+0545\n"
 "Last-Translator: Pawan Chitrakar <chautari@gmail.com>\n"
 "Language-Team: Nepali Translation Team <chautari@gmail.com>\n"
 "Language: ne\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
 
-#: ../data/org.gnome.Maps.appdata.xml.in.h:1
-msgid "GNOME Maps"
-msgstr "जिनोम मानचित्र"
+#. Translators: This is the program name.
+#. for some reason, setting the title of the window through the .ui
+#. * template does not work anymore (maybe has something to do with
+#. * setting a custom title on the headerbar). Setting it programmatically
+#. * here works though. And yields a proper label in the gnome-shell
+#. * overview.
+#.
+#. Translators: This is the program name.
+#: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
+#: data/ui/main-window.ui:30 src/application.js:96 src/mainWindow.js:139
+#: src/mainWindow.js:599
+msgid "Maps"
+msgstr "मानचित्र"
 
-#: ../data/org.gnome.Maps.appdata.xml.in.h:2
+#: data/org.gnome.Maps.appdata.xml.in.in:7
 msgid "Find places around the world"
-msgstr ""
+msgstr "विश्वभरका स्थानहरू फेला पार्नुहोस्"
 
-#: ../data/org.gnome.Maps.appdata.xml.in.h:3
+#: data/org.gnome.Maps.appdata.xml.in.in:9
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
-"quickly find the place you’re looking for by searching for a city or street, "
-"or locate a place to meet a friend."
+"quickly find the place you’re looking for by searching for a city or street, or "
+"locate a place to meet a friend."
 msgstr ""
 
-#: ../data/org.gnome.Maps.appdata.xml.in.h:4
+#: data/org.gnome.Maps.appdata.xml.in.in:14
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
 msgstr ""
 
-#. Translators: Search is carried out on OpenStreetMap data using Nominatim.
-#. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
-#. your language to see what words you can use for the translated search.
-#: ../data/org.gnome.Maps.appdata.xml.in.h:8
-msgid ""
-"You can even search for specific types of locations, such as “Pubs near Main "
-"Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
-msgstr ""
+#: data/org.gnome.Maps.appdata.xml.in.in:288
+msgid "The GNOME Project"
+msgstr "जिनोम परियोजना"
 
-#. Translators: This is the program name.
-#: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:87 ../src/mainWindow.js:476
-msgid "Maps"
-msgstr "मानचित्र"
-
-#: ../data/org.gnome.Maps.desktop.in.h:2
+#: data/org.gnome.Maps.desktop.in.in:5
 msgid "A simple maps application"
 msgstr "सहज मानचित्र अनुप्रयोग"
 
-#: ../data/org.gnome.Maps.desktop.in.h:3
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Maps.desktop.in.in:14
 msgid "Maps;"
 msgstr "मानचित्र;"
 
-#: ../data/org.gnome.Maps.desktop.in.h:4
-msgid "Allows your location to be shown on the map."
-msgstr ""
-
-#: ../data/org.gnome.Maps.gschema.xml.h:1
+#: data/org.gnome.Maps.desktop.in.in:17
 #, fuzzy
-msgid "last viewed location"
-msgstr "हालै हेरिसकेको"
+msgid "Allows your location to be shown on the map."
+msgstr "तपाईंको स्थानको लागि मौसम जानकारी प्रदर्शन गर्न अनुमति दिन्छ।"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:2
+#: data/org.gnome.Maps.gschema.xml:11
+msgid "last viewed location"
+msgstr "हालै हेरिसकेको स्थान"
+
+#: data/org.gnome.Maps.gschema.xml:12
 msgid "Coordinates of last viewed location."
 msgstr ""
 
-#: ../data/org.gnome.Maps.gschema.xml.h:3
+#: data/org.gnome.Maps.gschema.xml:16
+msgid "zoom"
+msgstr "जुम"
+
+#: data/org.gnome.Maps.gschema.xml:17
+msgid "Zoom level"
+msgstr "जुम स्तर"
+
+#: data/org.gnome.Maps.gschema.xml:21
+msgid "Map type"
+msgstr "मानचित्र प्रकार"
+
+#: data/org.gnome.Maps.gschema.xml:22
+msgid "The type of map to display (street, aerial, etc.)"
+msgstr ""
+
+#: data/org.gnome.Maps.gschema.xml:26
 msgid "Window size"
 msgstr "सञ्झ्याल साइज"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:4
+#: data/org.gnome.Maps.gschema.xml:27
 msgid "Window size (width and height)."
 msgstr "सञ्झ्यालको नाप( उचाइ र चौडाई )"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:5
+#: data/org.gnome.Maps.gschema.xml:31
 msgid "Window position"
 msgstr "संझ्यालको स्थिति"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:6
+#: data/org.gnome.Maps.gschema.xml:32
 msgid "Window position (X and Y)."
 msgstr "सञ्झ्यालको  स्थान(X र Y)."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:7
+#: data/org.gnome.Maps.gschema.xml:36
 msgid "Window maximized"
 msgstr "सञ्झ्यालको अधिकतम स्थिति"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:8
-#, fuzzy
+#: data/org.gnome.Maps.gschema.xml:37
 msgid "Window maximization state"
-msgstr "बढाइएको स्थितिलाई टगल गर्नुहोस्"
+msgstr "सञ्झ्यालको अधिकतम स्थिति"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:9
+#: data/org.gnome.Maps.gschema.xml:41
 msgid "Maximum number of search results"
 msgstr "अत्याधिक खोजी परिणाम प्राप्त गर्दै..."
 
-#: ../data/org.gnome.Maps.gschema.xml.h:10
+#: data/org.gnome.Maps.gschema.xml:42
 msgid "Maximum number of search results from geocode search."
 msgstr ""
 
-#: ../data/org.gnome.Maps.gschema.xml.h:11
+#: data/org.gnome.Maps.gschema.xml:46
 #, fuzzy
 msgid "Number of recent places to store"
 msgstr "देखाउनलाई दशमलव ठाउँको संख्या"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:12
+#: data/org.gnome.Maps.gschema.xml:47
 msgid "Number of recently visited places to store."
 msgstr ""
 
-#: ../data/org.gnome.Maps.gschema.xml.h:13
+#: data/org.gnome.Maps.gschema.xml:51
 #, fuzzy
 msgid "Number of recent routes to store"
 msgstr "देखाउनलाई दशमलव ठाउँको संख्या"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:14
+#: data/org.gnome.Maps.gschema.xml:52
 #, fuzzy
 msgid "Number of recently visited routes to store."
 msgstr "देखाउनलाई दशमलव ठाउँको संख्या"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:15
-msgid "Facebook check-in privacy setting"
-msgstr ""
-
-#: ../data/org.gnome.Maps.gschema.xml.h:16
-msgid ""
-"Latest used Facebook check-in privacy setting. Possible values are: "
-"EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
-msgstr ""
-
-#: ../data/org.gnome.Maps.gschema.xml.h:17
+#: data/org.gnome.Maps.gschema.xml:56
 msgid "Foursquare check-in privacy setting"
 msgstr ""
 
-#: ../data/org.gnome.Maps.gschema.xml.h:18
+#: data/org.gnome.Maps.gschema.xml:57
 msgid ""
-"Latest used Foursquare check-in privacy setting. Possible values are: "
-"public, followers or private."
+"Latest used Foursquare check-in privacy setting. Possible values are: public, "
+"followers or private."
 msgstr ""
 
-#: ../data/org.gnome.Maps.gschema.xml.h:19
+#: data/org.gnome.Maps.gschema.xml:61
 msgid "Foursquare check-in Facebook broadcasting"
 msgstr ""
 
-#: ../data/org.gnome.Maps.gschema.xml.h:20
+#: data/org.gnome.Maps.gschema.xml:62
 msgid ""
-"Indicates if Foursquare should broadcast the check-in as a post in the "
-"Facebook account associated with the Foursquare account."
+"Indicates if Foursquare should broadcast the check-in as a post in the Facebook "
+"account associated with the Foursquare account."
 msgstr ""
 
-#: ../data/org.gnome.Maps.gschema.xml.h:21
+#: data/org.gnome.Maps.gschema.xml:66
 msgid "Foursquare check-in Twitter broadcasting"
 msgstr ""
 
-#: ../data/org.gnome.Maps.gschema.xml.h:22
+#: data/org.gnome.Maps.gschema.xml:67
 msgid ""
-"Indicates if Foursquare should broadcast the check-in as a tweet in the "
-"Twitter account associated with the Foursquare account."
+"Indicates if Foursquare should broadcast the check-in as a tweet in the Twitter "
+"account associated with the Foursquare account."
 msgstr ""
 
-#: ../data/org.gnome.Maps.gschema.xml.h:23
-#, fuzzy
+#: data/org.gnome.Maps.gschema.xml:71
 msgid "OpenStreetMap username or e-mail address"
-msgstr "इमेल ठेगाना प्रतिलिपि गर्नुहोस्"
+msgstr "OpenStreetMap प्रयोगकर्ता नाम वा इमेल ठेगाना"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:24
+#: data/org.gnome.Maps.gschema.xml:72
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr ""
 
-#: ../data/org.gnome.Maps.gschema.xml.h:25
+#: data/org.gnome.Maps.gschema.xml:76
 msgid "Last used transportation type for routing"
 msgstr ""
 
-#: ../data/ui/app-menu.ui.h:1
+#: data/org.gnome.Maps.gschema.xml:80
+msgid "Use hybrid aerial tiles"
+msgstr ""
+
+#: data/org.gnome.Maps.gschema.xml:81
+msgid "Whether aerial tiles should use hybrid style (with labels)."
+msgstr ""
+
+#: data/org.gnome.Maps.gschema.xml:85
 #, fuzzy
-msgid "Set up OpenStreetMap Account"
-msgstr "सिर्जना र सेटअप गर्नुहोस्"
+msgid "Show scale"
+msgstr "मापन विकल्प देखाउनुहोस्"
 
-#: ../data/ui/app-menu.ui.h:2
-msgid "_Keyboard Shortcuts"
-msgstr "कुञ्जीपाटी सटकर्ट"
+#: data/org.gnome.Maps.gschema.xml:86
+#, fuzzy
+msgid "Whether to show the scale."
+msgstr "मापन विकल्प देखाउनुहोस्"
 
-#: ../data/ui/app-menu.ui.h:3
-msgid "About"
-msgstr "बारेमा"
-
-#: ../data/ui/app-menu.ui.h:4
-msgid "Quit"
-msgstr "अन्त्य गर्नुहोस्"
-
-#: ../data/ui/check-in-dialog.ui.h:1
+#: data/ui/check-in-dialog.ui:236
 msgid "Visibility"
 msgstr "दृश्यात्मक"
 
-#: ../data/ui/check-in-dialog.ui.h:2
+#: data/ui/check-in-dialog.ui:271
 msgid "Post on Facebook"
 msgstr "फेसबुकमा पोस्ट गर्नुहोस्"
 
-#: ../data/ui/check-in-dialog.ui.h:3
+#: data/ui/check-in-dialog.ui:285
 msgid "Post on Twitter"
 msgstr "ट्विट्टरमा पोस्ट गर्नुहोस्"
 
-#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/export-view-dialog.ui.h:2
-#: ../data/ui/send-to-dialog.ui.h:2 ../data/ui/shape-layer-file-chooser.ui.h:3
+#: data/ui/check-in-dialog.ui:325 data/ui/export-view-dialog.ui:20
+#: data/ui/send-to-dialog.ui:13 data/ui/shape-layer-file-chooser.ui:22
 msgid "_Cancel"
 msgstr "_रद्द गर्नुहोस्"
 
-#. Translators: Check in is used as a verb
-#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:8
+#: data/ui/check-in-dialog.ui:333
 #, fuzzy
 msgid "C_heck in"
-msgstr "जाँच गर्नुहोस्"
+msgstr "सबै फोल्डरहरू भित्र नयाँ सन्देशहरुका लागि जाँच गर्नुहोस्"
 
-#: ../data/ui/check-in-dialog.ui.h:6
-msgid "Everyone"
-msgstr "सबैजना"
-
-#: ../data/ui/check-in-dialog.ui.h:7
-msgid "Friends of friends"
-msgstr "साथीको साथी"
-
-#: ../data/ui/check-in-dialog.ui.h:8
-msgid "Just friends"
-msgstr "साथीमात्र"
-
-#: ../data/ui/check-in-dialog.ui.h:9
-msgid "Just me"
-msgstr "म मात्रै"
-
-#: ../data/ui/check-in-dialog.ui.h:10
+#: data/ui/check-in-dialog.ui:358
 msgid "Public"
 msgstr "सार्वजनिक"
 
-#: ../data/ui/check-in-dialog.ui.h:11
+#: data/ui/check-in-dialog.ui:362
 msgid "Followers"
 msgstr "अनुयायीहरू"
 
-#: ../data/ui/check-in-dialog.ui.h:12
+#: data/ui/check-in-dialog.ui:366
 msgid "Private"
 msgstr "व्यक्तिगत"
 
-#: ../data/ui/context-menu.ui.h:1
+#: data/ui/context-menu.ui:9
+msgid "Route from here"
+msgstr "यहाँबाट मार्ग"
+
+#: data/ui/context-menu.ui:16
+msgid "Add intermediate destination"
+msgstr "मध्यवर्ती गन्तब्य थप्नुहोस्"
+
+#: data/ui/context-menu.ui:24
+msgid "Route to here"
+msgstr "यहाँसम्म पुग्ने मार्ग"
+
+#: data/ui/context-menu.ui:36
 msgid "What’s here?"
 msgstr "यहा के छ ?"
 
-#: ../data/ui/context-menu.ui.h:2
+#: data/ui/context-menu.ui:43
 msgid "Copy Location"
 msgstr "स्थान प्रतिलिपि गर्नुहोस्"
 
-#: ../data/ui/context-menu.ui.h:3
-msgid "Export As Image"
-msgstr "छवि को रुपमा निर्यात गर्नुहोस्"
-
-#: ../data/ui/context-menu.ui.h:4
-#, fuzzy
+#: data/ui/context-menu.ui:51
 msgid "Add to OpenStreetMap"
-msgstr "जोडनुहोस्  [+]"
+msgstr "OpenStreetMap मा थप्नुहोस्"
 
-#: ../data/ui/export-view-dialog.ui.h:1
+#: data/ui/export-view-dialog.ui:14
 msgid "Export view"
 msgstr "निर्यात दृष्य"
 
-#: ../data/ui/export-view-dialog.ui.h:3
+#: data/ui/export-view-dialog.ui:34
 msgid "_Export"
 msgstr "निर्यात"
 
-#: ../data/ui/export-view-dialog.ui.h:4
+#: data/ui/export-view-dialog.ui:119
 #, fuzzy
 msgid "Include route and markers"
-msgstr "लाइन चिन्हकलाई देखाउनुहोस्"
-
-#: ../data/ui/help-overlay.ui.h:1
-msgctxt "shortcut window"
-msgid "General"
-msgstr "सामान्य"
-
-#: ../data/ui/help-overlay.ui.h:2
-#, fuzzy
-msgctxt "shortcut window"
-msgid "Show Shortcuts"
-msgstr "सर्टकटहरू"
-
-#: ../data/ui/help-overlay.ui.h:3
-msgctxt "shortcut window"
-msgid "Search"
-msgstr "खोजी"
-
-#: ../data/ui/help-overlay.ui.h:4
-#, fuzzy
-msgctxt "shortcut window"
-msgid "Toggle route planner"
-msgstr "उल्टनू"
-
-#: ../data/ui/help-overlay.ui.h:5
-#, fuzzy
-msgctxt "shortcut window"
-msgid "Print route"
-msgstr "पथ मेट्नुहोस्"
-
-#: ../data/ui/help-overlay.ui.h:6
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "_बन्द गर्नुहोस्"
-
-#: ../data/ui/help-overlay.ui.h:7
-#, fuzzy
-msgctxt "shortcut window"
-msgid "Map View"
-msgstr "...मा मानचित्र्शा"
-
-#: ../data/ui/help-overlay.ui.h:8
-msgctxt "shortcut window"
-msgid "Zoom in"
-msgstr "यसमा जुम गर्नुहोस्"
-
-#: ../data/ui/help-overlay.ui.h:9
-msgctxt "shortcut window"
-msgid "Zoom out"
-msgstr "जुम घटाउनुहोस््"
-
-#: ../data/ui/help-overlay.ui.h:10
-#, fuzzy
-msgctxt "shortcut window"
-msgid "Toggle scale"
-msgstr "मापन"
-
-#: ../data/ui/help-overlay.ui.h:11
-msgctxt "shortcut window"
-msgid "Go to current location"
-msgstr "हालको स्थानमा जानुहोस्"
-
-#: ../data/ui/help-overlay.ui.h:12
-#, fuzzy
-msgctxt "shortcut window"
-msgid "Switch to street view"
-msgstr "दृश्य \"%s\" मा स्विच गर्नुहोस्"
-
-#: ../data/ui/help-overlay.ui.h:13
-#, fuzzy
-msgctxt "shortcut window"
-msgid "Switch to aerial view"
-msgstr "दृश्य \"%s\" मा स्विच गर्नुहोस्"
-
-#: ../data/ui/help-overlay.ui.h:14
-#, fuzzy
-msgctxt "shortcut window"
-msgid "Open shape layer"
-msgstr "आकार:वितरणको आकार परामिति"
-
-#: ../data/ui/layers-popover.ui.h:1
-#, fuzzy
-msgid "Load Map Layer"
-msgstr "छवि मानचित्र लोड गर्नुहोस्"
-
-#: ../data/ui/location-service-notification.ui.h:1
-msgid "Turn on location services to find your location"
-msgstr ""
-
-#: ../data/ui/location-service-notification.ui.h:2
-#, fuzzy
-msgid "Location Settings"
-msgstr "सेटिङ्"
+msgstr "सूचक सम्मिलित गर्नुहोस्"
 
 #. Translators: This is a tooltip
-#: ../data/ui/main-window.ui.h:3
+#: data/ui/headerbar-left.ui:15
 msgid "Go to current location"
 msgstr "हालको स्थानमा जानुहोस्"
 
 #. Translators: This is a tooltip
-#: ../data/ui/main-window.ui.h:5
+#: data/ui/headerbar-left.ui:33
 msgid "Choose map type"
 msgstr "मानचित्र प्रकार रोज्नुहोस्"
 
 #. Translators: This is a tooltip
-#: ../data/ui/main-window.ui.h:7
-#, fuzzy
+#: data/ui/headerbar-left.ui:58
+msgid "Zoom out"
+msgstr "जुम घटाउनुहोस््"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-left.ui:74
+msgid "Zoom in"
+msgstr "जुम बढाउनुहोस्"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-right.ui:14
+msgid "Print Route"
+msgstr "मार्ग मुद्रण गर्नुहोस्"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-right.ui:33
+msgid "Toggle favorites"
+msgstr "मनपर्ने टगल गर्नुहोस्"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-right.ui:52
 msgid "Toggle route planner"
+msgstr "मार्ग योजनाकार टगल गर्नुहोस्"
+
+#: data/ui/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "General"
+msgstr "सामान्य"
+
+#: data/ui/help-overlay.ui:18
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "सर्टकट देखाउनुहोस्"
+
+#: data/ui/help-overlay.ui:25
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "खोजी"
+
+#: data/ui/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Toggle route planner"
+msgstr "मार्ग योजनाकार टगल गर्नुहोस्"
+
+#: data/ui/help-overlay.ui:39
+msgctxt "shortcut window"
+msgid "Print route"
+msgstr "मार्ग मुद्रण गर्नुहोस्"
+
+#: data/ui/help-overlay.ui:46
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "_बन्द गर्नुहोस्"
+
+#: data/ui/help-overlay.ui:53
+msgctxt "shortcut window"
+msgid "Open main menu"
+msgstr "मुख्य मेनु खोल्नुहोस्"
+
+#: data/ui/help-overlay.ui:62
+msgctxt "shortcut window"
+msgid "Map View"
+msgstr "मानचित्र दृश्य"
+
+#: data/ui/help-overlay.ui:66
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr "यसमा जुम गर्नुहोस्"
+
+#: data/ui/help-overlay.ui:73
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr "जुम घटाउनुहोस््"
+
+#: data/ui/help-overlay.ui:80
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Toggle scale"
 msgstr "उल्टनू"
 
-#. Translators: This is a tooltip
-#: ../data/ui/main-window.ui.h:9
-#, fuzzy
-msgid "Toggle favorites"
-msgstr "मनपर्ने"
+#: data/ui/help-overlay.ui:87
+msgctxt "shortcut window"
+msgid "Go to current location"
+msgstr "हालको स्थानमा जानुहोस्"
 
-#. Translators: This is a tooltip
-#: ../data/ui/main-window.ui.h:11
-#, fuzzy
-msgid "Print Route"
-msgstr "पथ मेट्नुहोस्"
+#: data/ui/help-overlay.ui:97
+msgctxt "shortcut window"
+msgid "Switch to street view"
+msgstr "सडक दृश्यमा स्विच गर्नुहोस्"
 
-#: ../data/ui/main-window.ui.h:12
-#, fuzzy
-msgid "Maps is offline!"
-msgstr "अफलाइन"
+#: data/ui/help-overlay.ui:104
+msgctxt "shortcut window"
+msgid "Switch to aerial view"
+msgstr "हवाई दृश्यमा स्विच गर्नुहोस्"
 
-#: ../data/ui/main-window.ui.h:13
-msgid ""
-"Maps need an active internet connection to function properly, but one can’t "
-"be found."
+#: data/ui/help-overlay.ui:111
+msgctxt "shortcut window"
+msgid "Open shape layer"
+msgstr "आकार तह खोल्नुहोस्"
+
+#: data/ui/layers-popover.ui:65
+msgid "Show Labels"
+msgstr "लेबुल देखाउनुहोस्"
+
+#. Translators: This string uses ellipsis character
+#: data/ui/layers-popover.ui:102
+msgid "Open Shape Layer…"
+msgstr "आकार तह खोल्नुहोस्…"
+
+#: data/ui/location-service-dialog.ui:16
+msgid "Turn on location services to find your location"
 msgstr ""
 
-#: ../data/ui/main-window.ui.h:14
+#: data/ui/location-service-dialog.ui:28 data/ui/osm-edit-dialog.ui:283
+#: data/ui/zoom-in-dialog.ui:28
+msgid "Cancel"
+msgstr "रद्द गर्ने"
+
+#: data/ui/location-service-dialog.ui:38
+msgid "Location Settings"
+msgstr "स्थान सेटिङ"
+
+#: data/ui/main-window.ui:8
+msgid "Set up OpenStreetMap Account"
+msgstr "OpenStreetMap  खाता सेटअप गर्नुहोस्"
+
+#: data/ui/main-window.ui:12
+#, fuzzy
+#| msgid "Export As Image"
+msgid "Export as Image"
+msgstr "निर्यात गर्नुहोस्"
+
+#: data/ui/main-window.ui:17
+msgid "_Keyboard Shortcuts"
+msgstr "कुञ्जीपाटी सटकर्ट"
+
+#: data/ui/main-window.ui:22
+msgid "About Maps"
+msgstr "मानचित्र बारेमा"
+
+#: data/ui/main-window.ui:48
+msgid "Open main menu"
+msgstr "मुख्य मेनु खोल्नुहोस्"
+
+#: data/ui/main-window.ui:110
+msgid "Maps is offline!"
+msgstr "मानचित्र अफलाइन छ!"
+
+#: data/ui/main-window.ui:119
+msgid ""
+"Maps need an active internet connection to function properly, but one can’t be "
+"found."
+msgstr ""
+
+#: data/ui/main-window.ui:127
 msgid "Check your connection and proxy settings."
 msgstr ""
 
-#. Translators: This is a tooltip
-#: ../data/ui/map-bubble.ui.h:2
-#, fuzzy
-msgid "Add to new route"
-msgstr "नयाँ पात्रो जोड्नुहोस्"
-
-#. Translators: This is a tooltip
-#: ../data/ui/map-bubble.ui.h:4
-msgid "Open with another application"
-msgstr ""
-
-#. Translators: This is a tooltip
-#: ../data/ui/map-bubble.ui.h:6
-#, fuzzy
-msgid "Mark as favorite"
-msgstr "मनपर्ने "
-
-#. Translators: This is a tooltip
-#: ../data/ui/map-bubble.ui.h:10
-#, fuzzy
-msgid "Check in here"
-msgstr "यहाँ ल्याउनुहोस्"
-
-#: ../data/ui/osm-account-dialog.ui.h:1
-#, fuzzy
+#: data/ui/osm-account-dialog.ui:9
 msgid "OpenStreetMap Account"
-msgstr "खाता:"
+msgstr "OpenStreetMap खाता "
 
-#: ../data/ui/osm-account-dialog.ui.h:2
+#: data/ui/osm-account-dialog.ui:22
 msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
 msgstr ""
 
-#: ../data/ui/osm-account-dialog.ui.h:3
+#: data/ui/osm-account-dialog.ui:36
 msgid ""
 "Help to improve the map, using an\n"
 "OpenStreetMap account."
 msgstr ""
 
-#: ../data/ui/osm-account-dialog.ui.h:5
+#: data/ui/osm-account-dialog.ui:56
 msgid "Email"
 msgstr "इमेल"
 
-#: ../data/ui/osm-account-dialog.ui.h:6
+#: data/ui/osm-account-dialog.ui:81
 msgid "Password"
 msgstr "पासवर्ड"
 
-#: ../data/ui/osm-account-dialog.ui.h:7
+#: data/ui/osm-account-dialog.ui:125
+msgid "Sign up"
+msgstr "साइन अप"
+
+#: data/ui/osm-account-dialog.ui:139
 msgid "Sign In"
 msgstr "लगइन गर्दै"
 
-#: ../data/ui/osm-account-dialog.ui.h:8
-#, fuzzy
-msgid "Don’t have an account?"
-msgstr "यो प्रदर्शन प्रयोग नगर्नु"
-
 #. The label should contain the link to the OSM reset password page with a translated title
-#: ../data/ui/osm-account-dialog.ui.h:10
+#: data/ui/osm-account-dialog.ui:162
 msgid ""
 "Sorry, that didn’t work. Please try again, or visit\n"
-"<a href=\"https://www.openstreetmap.org/user/forgot-password"
-"\">OpenStreetMap</a> to reset your password."
+"<a href=\"https://www.openstreetmap.org/user/forgot-password\">OpenStreetMap</"
+"a> to reset your password."
 msgstr ""
 
-#: ../data/ui/osm-account-dialog.ui.h:12
+#: data/ui/osm-account-dialog.ui:175
 msgid "The verification code didn’t match, please try again."
 msgstr ""
 
-#: ../data/ui/osm-account-dialog.ui.h:13
+#: data/ui/osm-account-dialog.ui:201
 msgid "Enter verification code shown above"
 msgstr ""
 
-#: ../data/ui/osm-account-dialog.ui.h:14
+#: data/ui/osm-account-dialog.ui:224
 msgid "Verify"
 msgstr "रूजु गर्नुहोस्"
 
-#: ../data/ui/osm-account-dialog.ui.h:15
+#: data/ui/osm-account-dialog.ui:254
 msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
 msgstr ""
 
-#: ../data/ui/osm-account-dialog.ui.h:16
-#, fuzzy
+#: data/ui/osm-account-dialog.ui:267
 msgid "Your OpenStreetMap account is active."
-msgstr "तपाईँको सिप खाताको पासवर्ड के हो ?"
+msgstr "तपाईँको OpenStreetMap खाता सक्रिय छ ।"
 
-#: ../data/ui/osm-account-dialog.ui.h:17
+#: data/ui/osm-account-dialog.ui:301
 msgid "Sign Out"
 msgstr "साइन आउट"
 
-#: ../data/ui/osm-edit-address.ui.h:1
+#: data/ui/osm-edit-address.ui:14
 msgid "Street"
 msgstr "सडक"
 
-#: ../data/ui/osm-edit-address.ui.h:2
+#: data/ui/osm-edit-address.ui:26
 msgid "House number"
 msgstr "घर नम्बर"
 
-#: ../data/ui/osm-edit-address.ui.h:3
+#: data/ui/osm-edit-address.ui:38
 msgid "Postal code"
 msgstr "जिप/हुलाकी सङ्केत"
 
 #. This is the place name as it would be written in a postal address (typically coming after the postal code)
-#: ../data/ui/osm-edit-address.ui.h:5
+#: data/ui/osm-edit-address.ui:50
 msgid "City"
 msgstr "सहर"
 
-#: ../data/ui/osm-edit-dialog.ui.h:1
+#: data/ui/osm-edit-dialog.ui:58
 msgid "Type"
 msgstr "वर्ग"
 
-#: ../data/ui/osm-edit-dialog.ui.h:2
+#: data/ui/osm-edit-dialog.ui:84
 msgid "None"
 msgstr "कुनै पनि होइन"
 
-#: ../data/ui/osm-edit-dialog.ui.h:3
+#: data/ui/osm-edit-dialog.ui:129
 msgid "Add Field"
 msgstr "फाँट थप्नुहोस्"
 
-#: ../data/ui/osm-edit-dialog.ui.h:4
+#: data/ui/osm-edit-dialog.ui:163
 msgid "Comment"
 msgstr "टिप्पणी"
 
-#: ../data/ui/osm-edit-dialog.ui.h:5
+#: data/ui/osm-edit-dialog.ui:195
 msgid ""
 "Map changes will be visible on all maps that use\n"
 "OpenStreetMap data."
 msgstr ""
 
-#: ../data/ui/osm-edit-dialog.ui.h:7
+#: data/ui/osm-edit-dialog.ui:241
 msgid "Recently Used"
 msgstr "हालै प्रयोग गरिएको"
 
-#: ../data/ui/osm-edit-dialog.ui.h:8
-#, fuzzy
+#: data/ui/osm-edit-dialog.ui:280
 msgctxt "dialog title"
 msgid "Edit on OpenStreetMap"
-msgstr "सम्पादन..."
+msgstr "OpenStreetMap सम्पादन"
 
-#: ../data/ui/osm-edit-dialog.ui.h:9
-msgid "Cancel"
-msgstr "रद्द गर्ने"
-
-#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:516
+#: data/ui/osm-edit-dialog.ui:310 src/osmEditDialog.js:550
 msgid "Next"
 msgstr "पछिल्लो"
 
-#. Translators: This is a tooltip
-#: ../data/ui/place-bubble.ui.h:2
-#, fuzzy
-msgid "Edit on OpenStreetMap"
-msgstr "सम्पादन..."
-
-#. Translators: This is a tooltip
-#: ../data/ui/place-bubble.ui.h:4
-msgid "Show more information"
-msgstr "बढी सूचना"
-
-#: ../data/ui/place-popover.ui.h:1
-msgid "Press enter to search"
-msgstr "खोजको लागि इन्टर थिच्नुहोस्"
-
-#: ../data/ui/place-popover.ui.h:2
+#: data/ui/place-popover.ui:54 src/application.js:399
 msgid "No results found"
 msgstr "नतिजा भेटिएन"
 
+#: data/ui/place-popover.ui:66 src/application.js:376 src/checkInDialog.js:269
+#: src/checkIn.js:158 src/osmEditDialog.js:587
+msgid "An error has occurred"
+msgstr "एउटा त्रुटि देखापर्यो ।"
+
 #. Translators: This is a tooltip
-#: ../data/ui/route-entry.ui.h:2
+#: data/ui/route-entry.ui:20
 #, fuzzy
 msgid "Drag to change order of the route"
 msgstr "वक्ररेखाको आकार परिवर्तन गर्न तान्नुहोस् क्लिक गर्नुहोस्"
 
-#: ../data/ui/send-to-dialog.ui.h:1
-msgid "Open location"
+#: data/ui/send-to-dialog.ui:10
+msgid "Open Location"
 msgstr "स्थान खोल्नुहोस्"
 
-#: ../data/ui/send-to-dialog.ui.h:3 ../data/ui/shape-layer-file-chooser.ui.h:2
+#: data/ui/send-to-dialog.ui:72
+msgid "Copy"
+msgstr "प्रतिलपि गर्नुहोस्"
+
+#: data/ui/send-to-dialog.ui:79
+msgid "Send To…"
+msgstr "पठाउन लाई…"
+
+#: data/ui/send-to-dialog.ui:86
+#, fuzzy
+msgid "Check In…"
+msgstr "जाँच"
+
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:65
+msgid "Open Shape Layer"
+msgstr "आकार तह खोल्नुहोस्"
+
+#: data/ui/shape-layer-file-chooser.ui:12
 msgid "_Open"
 msgstr "खोल्नुहोस्"
 
-#: ../data/ui/shape-layer-file-chooser.ui.h:1
-msgid "Open Layer"
-msgstr "तह खोल्नुहोस्"
-
 #. Translators: This is a tooltip
-#: ../data/ui/shape-layer-row.ui.h:2
-#, fuzzy
+#: data/ui/shape-layer-row.ui:19
 msgid "Toggle visible"
-msgstr "दृष्य"
+msgstr "दृश्यात्मक टगल गर्नुहोस्"
 
-#: ../data/ui/sidebar.ui.h:1
+#: data/ui/sidebar.ui:275
 #, fuzzy
 msgid "Route search by GraphHopper"
-msgstr "राउट स्विच प्रक्रियाकर्ता"
+msgstr "हालको वस्तुमा सूचक राउट गर्नुहोस्"
 
-#: ../data/ui/sidebar.ui.h:2
-#, fuzzy
-msgid "Route search by OpenTripPlanner"
-msgstr "राउट स्विच प्रक्रियाकर्ता"
-
-#: ../data/ui/sidebar.ui.h:3
+#: data/ui/sidebar.ui:364
 msgid ""
-"Routing itineraries for public transit is provided by GNOME\n"
-"using timetable data obtained from transit companies or agencies.\n"
-"The companies and agencies can not be held responsible for the results "
-"shown.\n"
+"Routing itineraries for public transit is provided by third-party\n"
+"services.\n"
 "GNOME can not guarantee correctness of the itineraries and schedules shown.\n"
+"Note that some providers might not include all available modes of "
+"transportation,\n"
+"e.g. a national provider might not include airlines, and a local provider "
+"could\n"
+"miss regional trains.\n"
 "Names and brands shown are to be considered as registered trademarks when "
 "applicable."
 msgstr ""
 
-#: ../data/ui/social-place-more-results-row.ui.h:1
+#: data/ui/social-place-more-results-row.ui:8
 msgid "Show more results"
 msgstr "अरू धेरै नतिजा देखाउनुहोस्"
 
 #. Translators: This is a tooltip
-#: ../data/ui/transit-leg-row.ui.h:2
+#: data/ui/transit-leg-row.ui:129
 msgid "Hide intermediate stops and information"
 msgstr ""
 
 #. Translators: This is a tooltip
-#: ../data/ui/transit-leg-row.ui.h:4
+#: data/ui/transit-leg-row.ui:203
 #, fuzzy
 msgid "Show intermediate stops and information"
-msgstr "संस्करण सूचना देखाउनुहोस् र निस्कनुहोस्"
+msgstr "स्थानहरूको बारेमा जानकारी देखाउनुहोस्।"
 
 #. Indicates searching for the next available itineraries
-#: ../data/ui/transit-options-panel.ui.h:2
-#, fuzzy
+#: data/ui/transit-options-panel.ui:18
 msgid "Leave Now"
-msgstr "खुल्ला छोड्नुहोस्"
+msgstr "अहिले जानुहोस्"
 
 #. Indicates searching for itineraries leaving at the specified time at the earliest
-#: ../data/ui/transit-options-panel.ui.h:4
-#, fuzzy
+#: data/ui/transit-options-panel.ui:19
 msgid "Leave By"
-msgstr "खुल्ला छोड्नुहोस्"
+msgstr "अहिले जानुहोस्"
 
 #. Indicates searching for itineraries arriving no later than the specified time
-#: ../data/ui/transit-options-panel.ui.h:6
+#: data/ui/transit-options-panel.ui:20
 msgid "Arrive By"
-msgstr ""
+msgstr "आइपुग्नुहोस्"
 
 #. Header indicating selected modes of transit
-#: ../data/ui/transit-options-panel.ui.h:8
+#: data/ui/transit-options-panel.ui:106
 msgid "Show"
 msgstr "देखाउने"
 
-#: ../data/ui/transit-options-panel.ui.h:9
+#: data/ui/transit-options-panel.ui:117
 msgid "Buses"
 msgstr "बस"
 
-#: ../data/ui/transit-options-panel.ui.h:10
+#: data/ui/transit-options-panel.ui:124
 msgid "Trams"
 msgstr "ट्राम"
 
-#: ../data/ui/transit-options-panel.ui.h:11
+#: data/ui/transit-options-panel.ui:131
 msgid "Trains"
 msgstr "ट्रेन"
 
-#: ../data/ui/transit-options-panel.ui.h:12
+#: data/ui/transit-options-panel.ui:138
 msgid "Subway"
 msgstr "सबवे"
 
-#: ../data/ui/transit-options-panel.ui.h:13
+#: data/ui/transit-options-panel.ui:145
 msgid "Ferries"
 msgstr "फेर्री"
 
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:120
-msgid "Current location"
-msgstr "हालको स्थन"
+#: data/ui/transit-options-panel.ui:152
+msgid "Airplanes"
+msgstr "हवाईजहाज"
 
-#. To translators: %s can be "Unknown", "Exact" or "%f km²"
-#: ../data/ui/user-location-bubble.ui.h:4
-#, no-c-format
-msgid "Accuracy: %s"
-msgstr "शुद्धता: %s"
+#. Translators: This is a tooltip
+#: data/ui/place-bar.ui:48 data/ui/place-buttons.ui:50 data/ui/place-view.ui:72
+msgid "Share location"
+msgstr "स्थान साझा गर्नुहोस्"
 
-#: ../data/ui/zoom-in-notification.ui.h:1
+#. Translators: This is a tooltip
+#: data/ui/place-buttons.ui:15
+msgid "Add to new route"
+msgstr "नयाँ मार्गमा थप्नुहोस्"
+
+#. Translators: This is the button to find a route to a place
+#: data/ui/place-buttons.ui:34
+msgid "Directions"
+msgstr "दिशा"
+
+#. Translators: This is a tooltip
+#: data/ui/place-buttons.ui:70
+msgid "Mark as favorite"
+msgstr "मनपर्ने रूपमा चिन्ह लगाउनुहोस्"
+
+#. Translators: This is a tooltip
+#: data/ui/place-buttons.ui:89
+msgid "Edit on OpenStreetMap"
+msgstr "OpenStreetMap सम्पादन"
+
+#: data/ui/zoom-in-dialog.ui:16
 #, fuzzy
 #| msgid "Go to current location"
 msgid "Zoom in to add location!"
-msgstr "स्थान"
+msgstr "स्थान थप्नुहोस्…"
 
-#: ../data/ui/zoom-in-notification.ui.h:2
-msgid "OK"
-msgstr "OK"
+#: data/ui/zoom-in-dialog.ui:38
+msgid "Zoom In"
+msgstr "जुम बढाउनुहोस्"
 
-#: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
-#: ../lib/maps-file-tile-source.c:459
+#: lib/maps-file-tile-source.c:303 lib/maps-file-tile-source.c:379
+#: lib/maps-file-tile-source.c:459
 msgid "Failed to find tile structure in directory"
 msgstr ""
 
-#: ../lib/maps-osm.c:56
+#: lib/maps-osm.c:56
 #, fuzzy
 msgid "Failed to parse XML document"
-msgstr "XML कागजात राम्रोसँग ढाँचा भएन !"
+msgstr "स्वत: खोज प्रतिक्रिया एक्सएमएल पार्स गर्न असफल भयो"
 
-#: ../lib/maps-osm.c:252 ../lib/maps-osm.c:405
+#: lib/maps-osm.c:249 lib/maps-osm.c:402
 msgid "Missing required attributes"
 msgstr "आवश्यक मान हराइरहेछ"
 
-#: ../lib/maps-osm.c:453
-#, fuzzy
+#: lib/maps-osm.c:450
 msgid "Could not find OSM element"
-msgstr "मद्दत डाइरेक्टरी फेला पार्न सकेन"
+msgstr "OSM तत्व फेला पार्न सकेन"
 
-#: ../src/application.js:102
+#: src/application.js:110
 msgid "A path to a local tiles directory structure"
 msgstr ""
 
-#: ../src/checkInDialog.js:175
+#: src/application.js:116
+msgid "Tile size for local tiles directory"
+msgstr ""
+
+#: src/application.js:120
+msgid "Show the version of the program"
+msgstr ""
+"%s [विकल्प...] आदेश\n"
+"\n"
+"केही सत्र कार्यात्मकता निषेध गर्दा आदेश कार्यान्वयन गर्नुहोस् ।\n"
+"\n"
+"-h, --मद्दत यो मद्दत देखाउनुहोस्\n"
+"  --version कार्यक्रम संस्करण देखाउनुहोस्\n"
+"  --app-id आईडी प्रयोग गर्नका लागि अनुप्रयोग आईडी\n"
+"                    जब निषेध गरिएको हुन्छ (optional)\n"
+"  --resason कारण (वैकल्पिक) अवरोधको कारण\n"
+"  --inhibit ARG कुराहरू, colon-separated सूची:\n"
+"                    लगआउट, स्विच प्रयोगकर्ता, निलम्बन, निस्क्रिय, स्वचालित माउन्ट\n"
+"  --inhibit-only आदेश सुरु नगर्नुहोस् र सट्टामा सदाका लागि प्रतिक्षा गर्नुहोस्\n"
+"  -l, --list सूचीकृत गरिएको हालको निषेधहरू सूचीबद्ध गर्नुहोस्, र निस्कनुहोस्\n"
+"\n"
+"यदि कुनै --inhibit विकल्प निर्दिष्ट गरिएन भने, निस्क्रिय मानिएको छ ।"
+
+#: src/application.js:126
+msgid "Ignore network availability"
+msgstr "सञ्जाल उपलब्धता बेबास्ता गर्नुहोस्"
+
+#: src/application.js:133
+msgid "Search for places"
+msgstr "ठाउँहरू खोज्नुहोस्"
+
+#: src/application.js:144 src/application.js:145
+msgid "[FILE…|URI]"
+msgstr "[FILE…|URI]"
+
+#: src/application.js:407
+#, javascript-format
+msgid "Invalid maps: URI: %s"
+msgstr "अवैध मानचित्र: URI: %s"
+
+#: src/checkInDialog.js:161
 msgid "Select an account"
 msgstr "खाता चयन गर्नुहोस्"
 
-#: ../src/checkInDialog.js:180 ../src/checkInDialog.js:252
+#: src/checkInDialog.js:166 src/checkInDialog.js:235
 msgid "Loading"
 msgstr "लोड गर्दै"
 
-#: ../src/checkInDialog.js:204
+#: src/checkInDialog.js:190
 msgid "Select a place"
 msgstr "स्थान चयन गर्नुहोस्"
 
-#: ../src/checkInDialog.js:209
-msgid ""
-"Maps cannot find the place to check in to with Facebook. Please select one "
-"from this list."
-msgstr ""
-
-#: ../src/checkInDialog.js:211
+#: src/checkInDialog.js:195
 msgid ""
 "Maps cannot find the place to check in to with Foursquare. Please select one "
 "from this list."
@@ -749,555 +796,715 @@ msgstr ""
 
 #. Translators: %s is the name of the place to check in.
 #.
-#: ../src/checkInDialog.js:226
-#, fuzzy, javascript-format
+#: src/checkInDialog.js:210
+#, javascript-format
 msgid "Check in to %s"
-msgstr "%s पत्र फाइल जाँच गर्न सकेन: %s"
+msgstr ""
 
 #. Translators: %s is the name of the place to check in.
 #.
-#: ../src/checkInDialog.js:236
-#, fuzzy, javascript-format
+#: src/checkInDialog.js:220
+#, javascript-format
 msgid "Write an optional message to check in to %s."
-msgstr "%s लाई लेख्न असफल भयो (अनुमतिहरू जाँच गर्नुहुन्छ ?)"
-
-#: ../src/checkInDialog.js:288 ../src/checkIn.js:165
-#: ../src/osmEditDialog.js:553
-msgid "An error has occurred"
-msgstr "एउटा त्रुटि देखापर्यो ।"
+msgstr "%s मा जाँच गर्न एउटा वैकल्पिक सन्देश लेख्नुहोस् ।"
 
 #. Translators: %s is the place name that user wanted to check-in
-#: ../src/checkIn.js:147
+#: src/checkIn.js:140
 #, fuzzy, javascript-format
 msgid "Cannot find “%s” in the social service"
-msgstr "डाइरेक्टरी फेला पार्न सक्दैन %s"
+msgstr "ड्राइभ भेटिएन %s"
 
-#: ../src/checkIn.js:149
+#: src/checkIn.js:142
 msgid "Cannot find a suitable place to check-in in this location"
 msgstr ""
 
-#: ../src/checkIn.js:153
+#: src/checkIn.js:146
 msgid ""
 "Credentials have expired, please open Online Accounts to sign in and enable "
 "this account"
 msgstr ""
 
-#: ../src/contextMenu.js:96
-#, fuzzy
-msgid "Route from here"
-msgstr "बाटो भेटिएन"
-
-#: ../src/contextMenu.js:98
-msgid "Add destination"
-msgstr "गन्तव्य थप्नुहोस्"
-
-#: ../src/contextMenu.js:100
-#, fuzzy
-msgid "Route to here"
-msgstr "पूर्वनिर्धारित पथ"
-
-#: ../src/contextMenu.js:129
+#: src/contextMenu.js:135
 msgid "Nothing found here!"
 msgstr "केही पनि भेटिएन"
 
-#: ../src/contextMenu.js:186
+#: src/contextMenu.js:196
 msgid ""
-"Location was added to the map, note that it may take a while before it shows "
-"on the map and in search results."
+"Location was added to the map, note that it may take a while before it shows on "
+"the map and in search results."
 msgstr ""
 
-#: ../src/exportViewDialog.js:156
-#, fuzzy
+#. Translators: This is a format string for a PNG filename for an
+#. * exported image with coordinates. The .png extension should be kept
+#. * intact in the translated string.
+#.
+#: src/exportViewDialog.js:82
+#, fuzzy, javascript-format
+msgid "Maps at %f, %f.png"
+msgstr "f"
+
+#: src/exportViewDialog.js:154
 msgid "Filesystem is read only"
-msgstr "फाइल प्रणाली"
+msgstr "फाइल प्रणाली पढ्ने मात्र"
 
-#: ../src/exportViewDialog.js:158
-#, fuzzy
+#: src/exportViewDialog.js:156
 msgid "You do not have permission to save there"
-msgstr "यो फाइल संचय गर्न तपाईँसँग आवश्यक अनुमतिहरू छैनन् ।"
+msgstr "तपाईँलाई त्यहाँ बचत गर्ने अनुमति छैन"
 
-#: ../src/exportViewDialog.js:160
-#, fuzzy
+#: src/exportViewDialog.js:158
 msgid "The directory does not exist"
-msgstr "त्यहा अवस्थित छैन"
+msgstr "डाइरेक्टरी अवस्थित छैन"
 
-#: ../src/exportViewDialog.js:162
-#, fuzzy
+#: src/exportViewDialog.js:160
 msgid "No filename specified"
-msgstr "फाइलनाम:"
+msgstr "कुनै फाइलनाम निर्दिष्ट गरिएको छैन"
 
-#: ../src/exportViewDialog.js:170
+#: src/exportViewDialog.js:168
 #, fuzzy
 msgid "Unable to export view"
-msgstr "निर्यात गर्नुहोस्"
+msgstr "निर्यात दृष्य"
 
-#: ../src/geoJSONSource.js:98
+#: src/geoclue.js:122
+msgid "Current Location"
+msgstr "हालको स्थान"
+
+#: src/geoJSONSource.js:98
 #, fuzzy
 msgid "invalid coordinate"
-msgstr "समन्वय गर्नुहोस्"
+msgstr "निर्देशाङ्क"
 
-#: ../src/geoJSONSource.js:149 ../src/geoJSONSource.js:189
-#: ../src/geoJSONSource.js:204
+#: src/geoJSONSource.js:147 src/geoJSONSource.js:187 src/geoJSONSource.js:202
 msgid "parse error"
 msgstr "पदवर्णन त्रुटि"
 
-#: ../src/geoJSONSource.js:183
+#: src/geoJSONSource.js:181
 msgid "unknown geometry"
 msgstr "अज्ञात ज्यामिति"
 
-#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:665
-#, fuzzy
+#: src/graphHopper.js:116 src/transitPlan.js:181
 msgid "Route request failed."
-msgstr "अनुरोध असफल"
+msgstr "रुट अनुरोध असफल भयो ।"
 
-#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:628
+#: src/graphHopper.js:123 src/transitPlan.js:173
 msgid "No route found."
 msgstr "बाटो भेटिएन"
 
-#: ../src/graphHopper.js:193
+#: src/graphHopper.js:211 src/transitplugins/openTripPlanner.js:1116
 msgid "Start!"
 msgstr "सुरु!"
 
-#: ../src/mainWindow.js:59
+#: src/mainWindow.js:62
 msgid "All Layer Files"
 msgstr "सबै तह फाइलहरू"
 
-#: ../src/mainWindow.js:418
+#: src/mainWindow.js:502
 msgid "Failed to connect to location service"
 msgstr "स्थान सेवा जडान असफल"
 
-#: ../src/mainWindow.js:474
+#: src/mainWindow.js:597
 msgid "translator-credits"
 msgstr "Pawan Chitrakar <chautari@gmail.com>"
 
-#: ../src/mainWindow.js:477
+#: src/mainWindow.js:600
 msgid "A map application for GNOME"
 msgstr "जिनोमको मानचित्र अनुप्रयोग"
 
-#: ../src/mapView.js:356
+#: src/mainWindow.js:611
+msgid "Copyright © 2011 – 2021 Red Hat, Inc. and The GNOME Maps authors"
+msgstr ""
+
+#: src/mainWindow.js:631
+#, javascript-format
+msgid "Map data by %s and contributors"
+msgstr "%s र योगदानकर्ताहरूद्वारा मानचित्र डेटा"
+
+#. Translators: this is an attribution string giving credit to the
+#. * tile provider where the %s placeholder is replaced by either
+#. * the bare name of the tile provider, or a linkified URL if one
+#. * is available
+#.
+#: src/mainWindow.js:647
+#, javascript-format
+msgid "Map tiles provided by %s"
+msgstr "%s द्वारा उपलब्ध गराइएको मानचित्र टायलहरू"
+
+#. Translators: this is an attribution string giving credit to the
+#. * search provider where the first %s placeholder is replaced by either
+#. * the bare name of the geocoder provider, or a linkified URL if one
+#. * is available, and the second %s placeholder is replaced by the
+#. * URL to the geocoder project page. These placeholders
+#. * can be swapped, if needed using the %n$s positional syntax
+#. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
+#. * before the provider).
+#.
+#: src/mainWindow.js:676
+#, javascript-format
+msgid "Search provided by %s using %s"
+msgstr "%s प्रयोग गरेर %s द्वारा उपलब्ध गराइएको खोजी गर्नुहोस्"
+
+#: src/mapView.js:505 src/mapView.js:563
+#, fuzzy
+msgid "Failed to open layer"
+msgstr "फाइल खोल्न असफल"
+
+#: src/mapView.js:526
+msgid "Do you want to continue?"
+msgstr "के तपाईँ निरन्तर गर्न चाहनुहुन्छ ?"
+
+#: src/mapView.js:527
+#, javascript-format
+msgid ""
+"You are about to open files with a total size of %s MB. This could take some "
+"time to load"
+msgstr ""
+
+#: src/mapView.js:557
 msgid "File type is not supported"
 msgstr "फाइल प्रकार समर्थित छैन"
 
-#: ../src/mapView.js:363
-#, fuzzy
-msgid "Failed to open layer"
-msgstr "अस्थायी फाइल खोल्न असफल"
-
-#: ../src/mapView.js:399
+#: src/mapView.js:595
 #, fuzzy
 msgid "Failed to open GeoURI"
-msgstr "अस्थायी फाइल खोल्न असफल"
-
-#: ../src/openTripPlanner.js:622
-#, fuzzy
-msgid "No earlier alternatives found."
-msgstr "%s भन्दा छिटो होइन"
-
-#: ../src/openTripPlanner.js:623
-#, fuzzy
-#| msgid "No route found."
-msgid "No later alternatives found."
-msgstr "पछि"
-
-#: ../src/openTripPlanner.js:661
-#, fuzzy
-msgid "No timetable data found for this route."
-msgstr "बाटो भेटिएन"
+msgstr "फाइल खोल्न असफल"
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: ../src/osmConnection.js:442
-#, fuzzy
+#: src/osmConnection.js:442
 msgid "Incorrect user name or password"
-msgstr ""
-"सर्भरमा जडान गर्दा त्यहाँ एउटा त्रुटि थियो ।  यो एउटा गलत प्रयोग कर्ता नाम र/वा "
-"पासवर्ड प्रयोग गरेको कारणले हुन सक्दछ ।"
+msgstr "गलत प्रयोगकर्ता नाम वा पासवर्ड"
 
-#: ../src/osmConnection.js:444
+#: src/osmConnection.js:444
 msgid "Success"
 msgstr "सफलता"
 
-#: ../src/osmConnection.js:446
+#: src/osmConnection.js:446
 msgid "Bad request"
 msgstr "खराब अनुरोध"
 
-#: ../src/osmConnection.js:448
+#: src/osmConnection.js:448
 msgid "Object not found"
 msgstr "वस्तु फेला परेन"
 
-#: ../src/osmConnection.js:450
+#: src/osmConnection.js:450
 msgid "Conflict, someone else has just modified the object"
 msgstr ""
 
-#: ../src/osmConnection.js:452
-#, fuzzy
+#: src/osmConnection.js:452
 msgid "Object has been deleted"
-msgstr "मुद्रणयन्त्र “%s” मेटियो"
+msgstr "वस्तु मेटिएको छ"
 
-#: ../src/osmConnection.js:454
+#: src/osmConnection.js:454
 msgid "Way or relation refers to non-existing children"
 msgstr ""
 
-#: ../src/osmEditDialog.js:104
+#: src/osmEditDialog.js:122
 msgid "Name"
 msgstr "नाम"
 
-#: ../src/osmEditDialog.js:107
+#: src/osmEditDialog.js:125
 msgid "The official name. This is typically what appears on signs."
 msgstr ""
 
-#: ../src/osmEditDialog.js:110
+#: src/osmEditDialog.js:128
 msgid "Address"
 msgstr "ठेगाना"
 
-#: ../src/osmEditDialog.js:118
+#: src/osmEditDialog.js:136 src/placeView.js:280
 msgid "Website"
 msgstr "वेबसाइट"
 
-#: ../src/osmEditDialog.js:121
+#: src/osmEditDialog.js:140
+msgid "This is not a valid URL. Make sure to include http:// or https://."
+msgstr ""
+
+#: src/osmEditDialog.js:141
 msgid ""
 "The official website. Try to use the most basic form of a URL i.e. http://"
 "example.com instead of http://example.com/index.html."
 msgstr ""
 
-#: ../src/osmEditDialog.js:126
+#: src/osmEditDialog.js:146
 msgid "Phone"
 msgstr "फोन"
 
-#: ../src/osmEditDialog.js:130
+#: src/osmEditDialog.js:150
 msgid ""
-"Phone number. Use the international format, starting with a + sign. Beware "
-"of local privacy laws, especially for private phone numbers."
+"Phone number. Use the international format, starting with a + sign. Beware of "
+"local privacy laws, especially for private phone numbers."
 msgstr ""
 
-#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:170
+#: src/osmEditDialog.js:155 src/placeView.js:308
+msgid "E-mail"
+msgstr "इमेल"
+
+#: src/osmEditDialog.js:160
+msgid ""
+"This is not a valid e-mail address. Make sure to not include the mailto: "
+"protocol prefix."
+msgstr ""
+
+#: src/osmEditDialog.js:161
+msgid ""
+"Contact e-mail address for inquiries. Add only email addresses that are "
+"intended to be publicly used."
+msgstr ""
+
+#. Translators: This is the text for the "Wikipedia" link at the end
+#. of summaries
+#: src/osmEditDialog.js:165 src/placeView.js:645
 msgid "Wikipedia"
 msgstr "विकिपेडिया"
 
-#: ../src/osmEditDialog.js:139
+#: src/osmEditDialog.js:170
 msgid ""
-"The format used should include the language code and the article title like "
-"“en:Article title”."
+"The format used should include the language code and the article title like “en:"
+"Article title”."
 msgstr ""
 
-#: ../src/osmEditDialog.js:143
-#, fuzzy
+#: src/osmEditDialog.js:174 src/placeView.js:345
 msgid "Opening hours"
-msgstr "खुल्दैछ"
+msgstr "खुला रहने समय"
 
-#: ../src/osmEditDialog.js:148
+#: src/osmEditDialog.js:179
 msgid "See the link in the label for help on format."
 msgstr ""
 
-#: ../src/osmEditDialog.js:151
+#. TODO: this is a bit of a work-around to re-interpret the population,
+#. * stored as a string into an integer to convert back to a locale-
+#. * formatted string. Ideally it should be kept as an integer value
+#. * in the Place class. But this will also need to be handled by the
+#. * PlaceStore, possible in a backwards-compatible way
+#.
+#: src/osmEditDialog.js:182 src/placeView.js:455
 msgid "Population"
 msgstr "जनसङ्ख्या"
 
-#: ../src/osmEditDialog.js:156
+#: src/osmEditDialog.js:187 src/placeView.js:484
 msgid "Altitude"
 msgstr "ऊचाई"
 
-#: ../src/osmEditDialog.js:159
+#: src/osmEditDialog.js:190
 msgid "Elevation (height above sea level) of a point in metres."
 msgstr ""
 
-#: ../src/osmEditDialog.js:162
-#, fuzzy
+#: src/osmEditDialog.js:193
 msgid "Wheelchair access"
-msgstr "पहुँच:"
+msgstr "ह्विलचेयर पहुँच"
 
-#: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
-#: ../src/osmEditDialog.js:212
+#: src/osmEditDialog.js:196 src/osmEditDialog.js:205 src/osmEditDialog.js:216
+#: src/osmEditDialog.js:251
 msgid "Yes"
 msgstr "ठिक छ"
 
-#: ../src/osmEditDialog.js:166 ../src/osmEditDialog.js:175
-#: ../src/osmEditDialog.js:213
+#: src/osmEditDialog.js:197 src/osmEditDialog.js:206 src/osmEditDialog.js:217
+#: src/osmEditDialog.js:252
 msgid "No"
 msgstr "होइन"
 
-#: ../src/osmEditDialog.js:167
+#: src/osmEditDialog.js:198
 msgid "Limited"
 msgstr "सिमित"
 
-#: ../src/osmEditDialog.js:168
+#: src/osmEditDialog.js:199
 msgid "Designated"
-msgstr ""
+msgstr "तोकिएको"
 
-#: ../src/osmEditDialog.js:171
-#, fuzzy
+#: src/osmEditDialog.js:202
 msgid "Internet access"
-msgstr "वेब र इमेल जस्तो इन्टरनेट पहुँचका लागि कार्यक्रम"
+msgstr "इन्टरनेट पहुँच"
 
-#. Translators:
-#. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
-#.
-#: ../src/osmEditDialog.js:176 ../src/translations.js:340
+#: src/osmEditDialog.js:207
 msgid "Wi-Fi"
 msgstr "वाई-फाई"
 
-#: ../src/osmEditDialog.js:177
+#: src/osmEditDialog.js:208
 msgid "Wired"
 msgstr "तारजडिट"
 
-#: ../src/osmEditDialog.js:178
+#: src/osmEditDialog.js:209
 msgid "Terminal"
 msgstr "टर्मिनल"
 
-#: ../src/osmEditDialog.js:179
+#: src/osmEditDialog.js:210
 msgid "Service"
 msgstr "सेवा"
 
-#: ../src/osmEditDialog.js:182
+#: src/osmEditDialog.js:213
+msgid "Takeaway"
+msgstr "लैजाने"
+
+#: src/osmEditDialog.js:218
+msgid "Only"
+msgstr "मात्र"
+
+#: src/osmEditDialog.js:221
 msgid "Religion"
 msgstr "धर्म"
 
-#: ../src/osmEditDialog.js:185 ../src/translations.js:363
+#: src/osmEditDialog.js:224 src/translations.js:284
 msgid "Animism"
 msgstr ""
 
-#: ../src/osmEditDialog.js:186
+#: src/osmEditDialog.js:225
 msgid "Bahá’í"
 msgstr "बहाई धर्म"
 
-#: ../src/osmEditDialog.js:187 ../src/translations.js:365
+#: src/osmEditDialog.js:226 src/translations.js:286
 msgid "Buddhism"
 msgstr "बौद्ध धर्म"
 
-#: ../src/osmEditDialog.js:188 ../src/translations.js:366
+#: src/osmEditDialog.js:227 src/translations.js:287
 msgid "Caodaism"
 msgstr ""
 
-#: ../src/osmEditDialog.js:189 ../src/translations.js:367
+#: src/osmEditDialog.js:228 src/translations.js:288
 msgid "Christianity"
 msgstr "ईसाई धर्म"
 
-#: ../src/osmEditDialog.js:190 ../src/translations.js:368
+#: src/osmEditDialog.js:229 src/translations.js:289
 msgid "Confucianism"
 msgstr "कन्फुशियस धर्म"
 
-#: ../src/osmEditDialog.js:191 ../src/translations.js:369
+#: src/osmEditDialog.js:230 src/translations.js:290
 msgid "Hinduism"
 msgstr "हिन्दु धर्म"
 
-#: ../src/osmEditDialog.js:192 ../src/translations.js:370
+#: src/osmEditDialog.js:231 src/translations.js:291
 msgid "Jainism"
 msgstr "जैन धर्म"
 
-#: ../src/osmEditDialog.js:193 ../src/translations.js:371
+#: src/osmEditDialog.js:232 src/translations.js:292
 msgid "Judaism"
 msgstr "यहूदी धर्म"
 
-#: ../src/osmEditDialog.js:194 ../src/translations.js:372
+#: src/osmEditDialog.js:233 src/translations.js:293
 msgid "Islam"
 msgstr "इस्लाम धर्म"
 
-#: ../src/osmEditDialog.js:195 ../src/translations.js:373
+#: src/osmEditDialog.js:234 src/translations.js:294
 msgid "Multiple Religions"
 msgstr "धेरैवटा क्षेत्र"
 
-#: ../src/osmEditDialog.js:196 ../src/translations.js:374
+#: src/osmEditDialog.js:235 src/translations.js:295
 msgid "Paganism"
 msgstr "पगानि धर्म"
 
-#: ../src/osmEditDialog.js:197 ../src/translations.js:375
+#: src/osmEditDialog.js:236 src/translations.js:296
 msgid "Pastafarianism"
 msgstr ""
 
-#: ../src/osmEditDialog.js:198 ../src/translations.js:376
+#: src/osmEditDialog.js:237 src/translations.js:297
 msgid "Scientology"
 msgstr "वैज्ञानिक विज्ञान"
 
-#: ../src/osmEditDialog.js:199 ../src/translations.js:377
+#: src/osmEditDialog.js:238 src/translations.js:298
 msgid "Shinto"
 msgstr "शिन्टो धर्म"
 
-#: ../src/osmEditDialog.js:200 ../src/translations.js:378
+#: src/osmEditDialog.js:239 src/translations.js:299
 msgid "Sikhism"
 msgstr "सिख धर्म"
 
-#: ../src/osmEditDialog.js:201 ../src/translations.js:379
+#: src/osmEditDialog.js:240 src/translations.js:300
 msgid "Spiritualism"
 msgstr "आध्यात्मिकता"
 
-#: ../src/osmEditDialog.js:202 ../src/translations.js:380
+#: src/osmEditDialog.js:241 src/translations.js:301
 msgid "Taoism"
 msgstr "टाओ धर्म"
 
-#: ../src/osmEditDialog.js:203 ../src/translations.js:381
+#: src/osmEditDialog.js:242 src/translations.js:302
 msgid "Unitarian Universalism"
 msgstr "यूनिटेरिया यूनिवर्सलवाद"
 
-#: ../src/osmEditDialog.js:204 ../src/translations.js:382
+#: src/osmEditDialog.js:243 src/translations.js:303
 msgid "Voodoo"
 msgstr ""
 
-#: ../src/osmEditDialog.js:205 ../src/translations.js:383
+#: src/osmEditDialog.js:244 src/translations.js:304
 msgid "Yazidism"
 msgstr ""
 
-#: ../src/osmEditDialog.js:206 ../src/translations.js:384
+#: src/osmEditDialog.js:245 src/translations.js:305
 msgid "Zoroastrianism"
 msgstr ""
 
-#: ../src/osmEditDialog.js:209
+#: src/osmEditDialog.js:248
 msgid "Toilets"
 msgstr "शौचालय"
 
-#: ../src/osmEditDialog.js:216
+#: src/osmEditDialog.js:255
 msgid "Note"
 msgstr "द्रष्टव्य"
 
-#: ../src/osmEditDialog.js:219
+#: src/osmEditDialog.js:258
 msgid ""
-"Information used to inform other mappers about non-obvious information about "
-"an element, the author’s intent when creating it, or hints for further "
-"improvement."
+"Information used to inform other mappers about non-obvious information about an "
+"element, the author’s intent when creating it, or hints for further improvement."
 msgstr ""
 
-#: ../src/osmEditDialog.js:328
-#, fuzzy
+#: src/osmEditDialog.js:363
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
-msgstr "जोडनुहोस्  [+]"
+msgstr "OpenStreetMap मा थप्नुहोस्"
 
-#: ../src/osmEditDialog.js:381
+#: src/osmEditDialog.js:417
 msgid "Select Type"
 msgstr "प्रकार चयन गर्नुहोस्"
 
-#: ../src/osmEditDialog.js:500
+#: src/osmEditDialog.js:534
 msgid "Done"
 msgstr "सम्पन्न भयो"
 
-#: ../src/placeBubble.js:122
-msgid "Population:"
-msgstr "जनसङ्ख्या :"
+#: src/photonParser.js:110
+msgid "Unnamed place"
+msgstr "बेनामी ठाउँ"
 
-#: ../src/placeBubble.js:128
-msgid "Altitude:"
-msgstr "ऊचाई:"
-
-#: ../src/placeBubble.js:133
-#, fuzzy
-msgid "Opening hours:"
-msgstr "खुल्दैछ"
-
-#: ../src/placeBubble.js:138
-#, fuzzy
-msgid "Internet access:"
-msgstr "वेब र इमेल जस्तो इन्टरनेट पहुँचका लागि कार्यक्रम"
-
-#: ../src/placeBubble.js:143
-msgid "Religion:"
-msgstr "धर्म:"
-
-#: ../src/placeBubble.js:148
-msgid "Toilets:"
-msgstr "शौचालय:"
-
-#: ../src/placeBubble.js:153
-#, fuzzy
-msgid "Wheelchair access:"
-msgstr "पहुँच:"
-
-#: ../src/placeBubble.js:159 ../src/placeBubble.js:163
-msgid "Phone:"
-msgstr "फोन:"
-
-#: ../src/placeEntry.js:190
+#: src/placeEntry.js:224
 #, fuzzy
 msgid "Failed to parse Geo URI"
-msgstr "जिपिजि प्रयोगकर्ता आइडी संकेत पद वर्णन गर्न असफल भयो ।"
+msgstr "URI \"%s\" पार्स गर्न सकिएन"
+
+#: src/placeEntry.js:237
+#, fuzzy
+msgid "Failed to parse Maps URI"
+msgstr "URI \"%s\" पार्स गर्न सकिएन"
+
+#: src/placeView.js:268
+msgid "Coordinates"
+msgstr "समकक्ष"
+
+#: src/placeView.js:272
+msgid "Accuracy"
+msgstr "शुद्धता"
+
+#. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
+#: src/placeView.js:275
+#, javascript-format
+msgid "Accuracy: %s"
+msgstr "शुद्धता: %s"
+
+#. since the phone numbers are typically always rendered
+#. * left-to-right, insert an explicit LRM char to avoid issues
+#. * with phone numbers in international format starting with a +
+#. * which is considered a "weak" character to determine Unicode
+#. * text direction
+#.
+#: src/placeView.js:294
+msgid "Phone number"
+msgstr "फोन नम्बर"
+
+#. Translators:
+#. * The establishment offers customers to purchase meals
+#. * (or similar) to be consumed elsewhere
+#.
+#: src/placeView.js:321
+msgid "Offers takeaway"
+msgstr "लैजाने प्रस्ताव"
+
+#. Translators:
+#. * The establishment only offers customers to purchase
+#. * meals (or similar) to be consumed on-premise.
+#.
+#: src/placeView.js:329
+msgid "Does not offer takeaway"
+msgstr "लैजाने प्रस्ताव छैन"
+
+#. Translators:
+#. * The establishment only offers customers to purchase
+#. * meals (or similar) to be consumed elsewhere. E.g.
+#. * there is no seating on-premise for eating/drinking
+#.
+#: src/placeView.js:338
+#, fuzzy
+msgid "Only offers takeaway"
+msgstr "पढ्न मात्रै मिल्ने "
+
+#. Translators:
+#. * There is public internet access but the particular kind is unknown.
+#.
+#: src/placeView.js:355
+msgid "Public internet access"
+msgstr "सार्वजनिक इन्टरनेट पहुँच"
+
+#. Translators:
+#. * no internet access is offered in a place where
+#. * someone might expect it.
+#.
+#: src/placeView.js:364
+msgid "No internet access"
+msgstr "इन्टरनेट पहुँच छैन"
+
+#. Translators:
+#. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
+#.
+#: src/placeView.js:372
+msgid "Public Wi-Fi"
+msgstr "सार्वजनिक वाई-फाई "
+
+#. Translators:
+#. * This means a a place where you can plug in your laptop with ethernet.
+#.
+#: src/placeView.js:380
+msgid "Wired internet access"
+msgstr "तारजडितको इन्टरनेट पहुँच"
+
+#. Translators:
+#. * Like internet cafe or library where the computer is given.
+#.
+#: src/placeView.js:388
+msgid "Computers available for use"
+msgstr "प्रयोग गर्नका लागि कम्प्युटरहरू उपलब्ध छन्"
+
+#. Translators:
+#. * This means there is personnel which helps you in case of problems.
+#.
+#: src/placeView.js:396
+msgid "Internet assistance available"
+msgstr "इन्टरनेट सहायता उपलब्ध छ"
+
+#: src/placeView.js:402
+msgid "No toilets available"
+msgstr "शौचालय उपलब्ध छैन"
+
+#: src/placeView.js:405
+msgid "Toilets available"
+msgstr "शौचालय उपलब्ध छ"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#. Translators:
-#. * There is public internet access but the particular kind is unknown.
-#.
-#: ../src/place.js:219 ../src/translations.js:329 ../src/translations.js:391
-msgid "yes"
-msgstr "ठिक छ"
+#: src/placeView.js:414
+msgid "Wheelchair accessible"
+msgstr "ह्विलचेयर को पहुँच योग्य"
 
 #. Translators:
 #. * This means wheelchairs have partial access (e.g some areas
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:226
-msgid "limited"
-msgstr "सिमित"
+#: src/placeView.js:424
+msgid "Limited wheelchair accessibility"
+msgstr "सीमित ह्विलचेयर को पहुँच"
 
 #. Translators:
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#. Translators:
-#. * no internet access is offered in a place where
-#. * someone might expect it.
-#.
-#: ../src/place.js:232 ../src/translations.js:335 ../src/translations.js:392
-msgid "no"
-msgstr "होइन"
+#: src/placeView.js:433
+msgid "Not wheelchair accessible"
+msgstr "ह्विलचेयर पहुँचयोग्य छैन"
 
 #. Translators:
 #. * This means that the way or area is designated or purpose built
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:239
-msgid "designated"
-msgstr ""
+#: src/placeView.js:443
+msgid "Designated for wheelchair users"
+msgstr "व्हीलचेयर प्रयोगकर्ताहरूको लागि तोकिएको"
 
-#: ../src/printLayout.js:244
+#. *
+#. * Translators: this is a label indicating an altitude below
+#. * sea level, where the %s placeholder is the altitude relative
+#. * to mean sea level in the "negative direction"
+#.
+#: src/placeView.js:474
+#, javascript-format
+msgid "%s below sea level"
+msgstr "समुद्र सतह भन्दा तल %s"
+
+#. *
+#. * Translators: this indicates a place is located at (or very
+#. * close to) mean sea level
+#.
+#: src/placeView.js:481
+msgid "At sea level"
+msgstr "समुद्र सतहमा"
+
+#: src/placeView.js:490
+msgid "Religion:"
+msgstr "धर्म:"
+
+#: src/place.js:525
+msgid "Place not found in OpenStreetMap"
+msgstr "OpenStreetMap मा स्थान फेला परेन"
+
+#: src/place.js:532
+msgid "Coordinates in URL are not valid"
+msgstr "URL मा समन्वयहरू अवैध"
+
+#: src/place.js:541
+msgid "URL is not supported"
+msgstr "URL समर्थित छैन"
+
+#: src/printLayout.js:321
 #, javascript-format
 msgid "From %s to %s"
 msgstr "%s बाट %s "
 
-#: ../src/printOperation.js:48
+#: src/printOperation.js:46
 msgid "Loading map tiles for printing"
-msgstr ""
+msgstr "मुद्रणका लागि मानचित्र टायल हरू लोड गर्दै"
 
-#: ../src/printOperation.js:49
+#: src/printOperation.js:47
 msgid "You can abort printing if this takes too long"
-msgstr ""
+msgstr "यदि यसले धेरै समय लिन्छ भने तपाईँले मुद्रण परित्याग गर्न सक्नुहुन्छ ।"
 
-#: ../src/printOperation.js:51
+#: src/printOperation.js:49
 msgid "Abort printing"
 msgstr "परित्याग गर्नुहोस्"
 
-#: ../src/sendToDialog.js:179
-#, fuzzy
-msgid "Failed to open URI"
-msgstr "URI खोल्न असक्षम"
+#. Translators: this is add via location tooltip
+#: src/routeEntry.js:74
+msgid "Add via location"
+msgstr "स्थान मार्फत थप्नुहोस्"
 
-#: ../src/shapeLayer.js:92
-#, fuzzy
+#. Translators: this is remove via location tooltip
+#: src/routeEntry.js:84
+msgid "Remove via location"
+msgstr "स्थान मार्फत हटाउनुहोस"
+
+#. Translators: this is reverse route tooltip
+#: src/routeEntry.js:90
+msgid "Reverse route"
+msgstr "उल्टो मार्ग"
+
+#. Translators: The first string is the name of the city, the
+#. second string is the name of the app to add it to
+#: src/sendToDialog.js:121
+#, javascript-format
+msgid "Add %s to %s"
+msgstr "%s मा %s थप्नुहोस्"
+
+#: src/sendToDialog.js:219
+msgid "Failed to open URI"
+msgstr "URI खोल्न असफल"
+
+#: src/sendToDialog.js:276
+#, javascript-format
+msgid "Open with %s"
+msgstr "%sसंग खोल्नुहोस्"
+
+#: src/shapeLayer.js:95
 msgid "failed to load file"
-msgstr "फाइल लोड गर्न असफल"
+msgstr "फाइल लोड गर्न असफल भयो"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:294
+#: src/sidebar.js:355
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "अन्दजि समय: %s"
 
-#. Translators: this a format string indicating arriving at the
-#. * destination of journey with the arrival address and transit
-#. * stop as the format parameter
-#: ../src/transitArrivalRow.js:56
+#: src/sidebar.js:411
 #, javascript-format
-msgid "Arrive at %s"
-msgstr "Arrive at %s"
-
-#: ../src/transitArrivalRow.js:58
-msgid "Arrive"
-msgstr "आइपुग्छन्"
+msgid "Itineraries provided by %s"
+msgstr "%s द्वारा प्रदान गरिएको यात्रा कार्यक्रम"
 
 #. Translators: this is a format string indicating instructions
 #. * starting a journey at the address given as the parameter
 #.
-#: ../src/transitLegRow.js:73
+#: src/transit.js:37
 #, javascript-format
 msgid "Start at %s"
 msgstr "Start at %s"
@@ -1306,53 +1513,79 @@ msgstr "Start at %s"
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: ../src/transitLegRow.js:79
+#: src/transit.js:43
 msgid "Start"
 msgstr "सुरु"
-
-#: ../src/transitLegRow.js:107
-#, fuzzy
-msgid "Show walking instructions"
-msgstr "यसका लागि देखाउनुहोस्"
-
-#: ../src/transitLegRow.js:108
-#, fuzzy
-msgid "Hide walking instructions"
-msgstr "सञ्झ्याल लुकाउनुहोस्"
 
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
 #.
-#: ../src/transitLegRow.js:133
-#, fuzzy, javascript-format
+#: src/transit.js:61
+#, javascript-format
 msgid "Walk %s"
-msgstr "%s: का लागि"
+msgstr "%s जानुहोस्"
 
-#: ../src/transitMoreRow.js:41
+#. Translators: this a format string indicating arriving at the
+#. * destination of journey with the arrival address and transit
+#. * stop as the format parameter
+#: src/transit.js:75
+#, javascript-format
+msgid "Arrive at %s"
+msgstr "Arrive at %s"
+
+#: src/transit.js:77 src/transitplugins/openTripPlanner.js:1129
+msgid "Arrive"
+msgstr "आइपुग्छन्"
+
+#: src/transitLegRow.js:88
+msgid "Show walking instructions"
+msgstr "हिँड्ने निर्देश देखाउनुहोस्"
+
+#: src/transitLegRow.js:89
+msgid "Hide walking instructions"
+msgstr "हिँड्ने निर्देशन लुकाउनुहोस्"
+
+#: src/transitMoreRow.js:39
 #, fuzzy
 msgid "Load earlier alternatives"
-msgstr "%s भन्दा छिटो होइन"
+msgstr "बहन"
 
-#: ../src/transitMoreRow.js:43
+#: src/transitMoreRow.js:41
 #, fuzzy
 msgid "Load later alternatives"
-msgstr "पछि"
+msgstr "बहन"
+
+#: src/transitMoreRow.js:54
+msgid "No earlier alternatives found."
+msgstr "पहिलेको विकल्प फेला परेन ।"
+
+#: src/transitMoreRow.js:56
+msgid "No later alternatives found."
+msgstr "पछिल्लो विकल्प फेला परेन । "
 
 #.
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: ../src/transitOptionsPanel.js:142
+#: src/transitOptionsPanel.js:148
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%b %e"
+
+#: src/transitPlan.js:177
+msgid "No timetable data found for this route."
+msgstr "यो मार्गका लागि कुनै समय तालिका फेला परेन ।"
+
+#: src/transitPlan.js:185
+msgid "No provider found for this route."
+msgstr "यो मार्गका लागि प्रदायक फेला परेन ।"
 
 #. Translators: this is a format string for showing a departure and
 #. * arrival time, like:
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: ../src/transitPlan.js:253
+#: src/transitPlan.js:302
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -1361,34 +1594,40 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: ../src/transitPlan.js:280
+#: src/transitPlan.js:331
 #, javascript-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] "%d मिनेट"
-msgstr[1] "%d मिनेट"
+#| msgid "%d minute"
+#| msgid_plural "%d minutes"
+msgid "%s minute"
+msgid_plural "%s minutes"
+msgstr[0] "%s मिनेट"
+msgstr[1] "%s मिनेट"
 
 #. translators: this is an indication for a trip duration,
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: ../src/transitPlan.js:291
+#: src/transitPlan.js:343
 #, javascript-format
-msgid "%d hour"
-msgid_plural "%d hours"
-msgstr[0] "%d घण्टा"
-msgstr[1] "%d घण्टा"
+#| msgid "%d hour"
+#| msgid_plural "%d hours"
+msgid "%s hour"
+msgid_plural "%s hours"
+msgstr[0] "%s घण्टा "
+msgstr[1] "%s घण्टा "
 
 #. translators: this is an indication for a trip duration
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: ../src/transitPlan.js:297
+#: src/transitPlan.js:351
 #, javascript-format
-msgid "%d:%02d hour"
-msgid_plural "%d:%02d hours"
-msgstr[0] "%d:%02d घण्टा"
-msgstr[1] "%d:%02d घण्टा"
+#| msgid "%d:%02d hour"
+#| msgid_plural "%d:%02d hours"
+msgid "%s:%s hour"
+msgid_plural "%s:%s hours"
+msgstr[0] "%s:%s घण्टा"
+msgstr[1] "%s:%s घण्टा"
 
 #. Translators: this is a format string for showing a departure and
 #. * arrival time in a more compact manner to show in the instruction
@@ -1396,57 +1635,19 @@ msgstr[1] "%d:%02d घण्टा"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: ../src/transitPlan.js:649
+#: src/transitPlan.js:744
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
 
-#: ../src/translations.js:56
-#, fuzzy
-msgid "around the clock"
-msgstr "घडी"
+#: src/translations.js:53
+msgid "Around the clock"
+msgstr "२४सै घण्टा"
 
-#: ../src/translations.js:58
+#: src/translations.js:55
 #, fuzzy
-msgid "from sunrise to sunset"
+msgid "From sunrise to sunset"
 msgstr "सूर्यास्ट देखि सूर्योदय"
-
-#. Translators:
-#. * This is a format string with two separate time ranges
-#. * such as "Mo-Fr 10:00-19:00 Sa 12:00-16:00"
-#. * The space between the format place holders could be
-#. * substituted with the appropriate separator.
-#.
-#: ../src/translations.js:77
-#, javascript-format
-msgctxt "time range list"
-msgid "%s %s"
-msgstr "%s %s"
-
-#. Translators:
-#. * This is a format string with three separate time ranges
-#. * such as "Mo-Fr 10:00-19:00 Sa 10:00-17:00 Su 12:00-16:00"
-#. * The space between the format place holders could be
-#. * substituted with the appropriate separator.
-#.
-#: ../src/translations.js:89
-#, javascript-format
-msgctxt "time range list"
-msgid "%s %s %s"
-msgstr "%s %s %s"
-
-#. Translators:
-#. * This is a format string consisting of a part specifying the days for
-#. * which the specified time is applied and the time interval
-#. * specification as the second argument.
-#. * The space between the format place holders could be substituted with
-#. * the appropriate separator or phrase and the ordering of the arguments
-#. * can be rearranged with the %n#s syntax.
-#: ../src/translations.js:120
-#, javascript-format
-msgctxt "time range component"
-msgid "%s %s"
-msgstr "%s %s"
 
 #. Translators:
 #. * This represents a format string consisting of two day interval
@@ -1457,7 +1658,7 @@ msgstr "%s %s"
 #. * place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: ../src/translations.js:152
+#: src/translations.js:121
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s"
@@ -1472,31 +1673,31 @@ msgstr "%s,%s"
 #. * %s place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: ../src/translations.js:166
+#: src/translations.js:135
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s,%s"
 msgstr "%s,%s,%s"
 
-#: ../src/translations.js:185
-msgid "every day"
-msgstr "प्रत्येक दिन"
+#: src/translations.js:154
+msgid "Every day"
+msgstr "प्रत्येकदिन"
 
 #. Translators:
 #. * This represents a range of days with a starting and ending day.
 #.
-#: ../src/translations.js:197
+#: src/translations.js:166
 #, javascript-format
 msgctxt "day range"
 msgid "%s-%s"
 msgstr "%s-%s"
 
-#: ../src/translations.js:208
-msgid "public holidays"
-msgstr "सार्वजनिक विदा"
+#: src/translations.js:177
+msgid "Public holidays"
+msgstr "सार्वजनिक बिदा"
 
-#: ../src/translations.js:210
-msgid "school holidays"
+#: src/translations.js:179
+msgid "School holidays"
 msgstr "स्कुल विदा"
 
 #. Translators:
@@ -1507,16 +1708,15 @@ msgstr "स्कुल विदा"
 #. * the translation. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: ../src/translations.js:250
+#: src/translations.js:219
 #, javascript-format
 msgctxt "time interval list"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: ../src/translations.js:264
-#, fuzzy
+#: src/translations.js:233
 msgid "not open"
-msgstr "यससँग खोल्नुहोस्:"
+msgstr "खोलेको छैन"
 
 #. Translators:
 #. * This is a time interval with a starting and an ending time.
@@ -1525,81 +1725,307 @@ msgstr "यससँग खोल्नुहोस्:"
 #. * translation as needed. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: ../src/translations.js:279
+#: src/translations.js:248
 #, javascript-format
 msgctxt "time interval"
 msgid "%s-%s"
 msgstr "%s-%s"
 
-#. Translators:
-#. * This means a a place where you can plug in your laptop with ethernet.
-#.
-#: ../src/translations.js:345
-msgid "wired"
-msgstr "तारजडिट"
-
-#. Translators:
-#. * Like internet cafe or library where the computer is given.
-#.
-#: ../src/translations.js:350
-msgid "terminal"
-msgstr "टर्मिनल"
-
-#. Translators:
-#. * This means there is personnel which helps you in case of problems.
-#.
-#: ../src/translations.js:355
-msgid "service"
-msgstr "सेवा"
-
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:231
+#: src/utils.js:251
 msgid "Unknown"
 msgstr "अज्ञात"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:234
+#: src/utils.js:254
 msgid "Exact"
 msgstr "दुरुस्त"
 
-#: ../src/utils.js:337
+#. Translators: this is a duration with only hours, using
+#. * an abbreviation for hours, corresponding to 'h' in English
+#.
+#: src/utils.js:351
 #, javascript-format
-msgid "%f h"
-msgstr "%f h"
+msgid "%s h"
+msgstr "%s h"
 
-#: ../src/utils.js:339
+#. Translators: this is a duration with hours and minutes parts
+#. * using abbreviations for hours and minutes, corresponding to 'h'
+#. * and 'min' in English. The minutes has appropriate plural variations
+#.
+#: src/utils.js:357
 #, javascript-format
-msgid "%f min"
-msgstr "%f min"
+#| msgctxt "time range list"
+#| msgid "%s %s %s"
+msgid "%s h %s min"
+msgid_plural "%s h %s min"
+msgstr[0] "%s घण्टा %s मिनेट"
+msgstr[1] "%s घण्टा %s मिनेट"
 
-#: ../src/utils.js:341
+#. Translators: this is a duration with minutes part
+#. * using abbreviation for minutes, corresponding to 'min' in English
+#. * with appropriate plural variations
+#.
+#: src/utils.js:364
 #, javascript-format
-msgid "%f s"
-msgstr "%f s"
+msgid "%s min"
+msgid_plural "%s min"
+msgstr[0] "%s min"
+msgstr[1] "%s min"
+
+#. Translators: this is a duration of less than one minute
+#. * with seconds using an abbreviation for seconds, corresponding to
+#. * 's' in English with appropriate plural forms
+#.
+#: src/utils.js:370
+#, javascript-format
+msgid "%s s"
+msgid_plural "%s s"
+msgstr[0] "%s s"
+msgstr[1] "%s s"
 
 #. Translators: This is a distance measured in kilometers
-#: ../src/utils.js:352
+#: src/utils.js:381
 #, javascript-format
 msgid "%s km"
 msgstr "%s किलोमिटर"
 
 #. Translators: This is a distance measured in meters
-#: ../src/utils.js:355
+#: src/utils.js:384
 #, javascript-format
 msgid "%s m"
 msgstr "%s मिटर"
 
 #. Translators: This is a distance measured in miles
-#: ../src/utils.js:363
+#: src/utils.js:392
 #, javascript-format
 msgid "%s mi"
 msgstr "%s माइल"
 
 #. Translators: This is a distance measured in feet
-#: ../src/utils.js:366
+#: src/utils.js:395
 #, javascript-format
 msgid "%s ft"
 msgstr "%sफिट"
+
+#: src/transitplugins/goMetro.js:60
+msgid "This plugin doesn't support latest arrival"
+msgstr "यो प्लगइनले नवीनतम आगमन समर्थन गर्दैन ।"
+
+#: src/transitplugins/openTripPlanner.js:1190
+#, javascript-format
+msgid "Continue on %s"
+msgstr "%s जारी राख्नुहोस्"
+
+#: src/transitplugins/openTripPlanner.js:1192
+msgid "Continue"
+msgstr "जारी राख्नुहोस्"
+
+#: src/transitplugins/openTripPlanner.js:1195
+#, javascript-format
+msgid "Turn left on %s"
+msgstr "%s मा बायाँ घुम्नुहोस्"
+
+#: src/transitplugins/openTripPlanner.js:1197
+msgid "Turn left"
+msgstr "बायाँ घुम्नुहोस्"
+
+#: src/transitplugins/openTripPlanner.js:1200
+#, javascript-format
+msgid "Turn slightly left on %s"
+msgstr "%s मा थोरै बायाँ घुमाउनुहोस्"
+
+#: src/transitplugins/openTripPlanner.js:1202
+msgid "Turn slightly left"
+msgstr "थोरै बायाँ घुमाउनुहोस्"
+
+#: src/transitplugins/openTripPlanner.js:1205
+#, javascript-format
+msgid "Turn sharp left on %s"
+msgstr "%s मा तीव्र बायाँ घुम्नुहोस्"
+
+#: src/transitplugins/openTripPlanner.js:1207
+msgid "Turn sharp left"
+msgstr "तीव्र बायाँ घुम्नुहोस्"
+
+#: src/transitplugins/openTripPlanner.js:1210
+#, javascript-format
+msgid "Turn right on %s"
+msgstr "%s दायाँ मोड्नुहोस्"
+
+#: src/transitplugins/openTripPlanner.js:1212
+msgid "Turn right"
+msgstr "दायाँ घुम्नुहोस्"
+
+#: src/transitplugins/openTripPlanner.js:1215
+#, javascript-format
+msgid "Turn slightly right on %s"
+msgstr "%s मा थोरै दायाँ घुमाउनुहोस्"
+
+#: src/transitplugins/openTripPlanner.js:1217
+msgid "Turn slightly right"
+msgstr "थोरै दायाँ घुमाउनुहोस्"
+
+#: src/transitplugins/openTripPlanner.js:1220
+#, javascript-format
+msgid "Turn sharp right on %s"
+msgstr "%s मा तीव्र दायाँ घुम्नुहोस्"
+
+#: src/transitplugins/openTripPlanner.js:1222
+msgid "Turn sharp right"
+msgstr "तीव्र दायाँ घुम्नुहोस्"
+
+#: src/transitplugins/openTripPlanner.js:1228
+#, javascript-format
+msgid "At the roundabout, take exit %s"
+msgstr "घुमाउरो स्थानमा, %s बाहिर निस्कनुहोस्"
+
+#: src/transitplugins/openTripPlanner.js:1230
+#, javascript-format
+msgid "At the roundabout, take exit to %s"
+msgstr "घुमाउरो स्थानमा, %s मा निस्कनुहोस्"
+
+#: src/transitplugins/openTripPlanner.js:1232
+#, fuzzy
+msgid "Take the roundabout"
+msgstr "स्क्रीनको तस्बिर लीने"
+
+#: src/transitplugins/openTripPlanner.js:1236
+#, javascript-format
+msgid "Take the elevator and get off at %s"
+msgstr "लिफ्ट लिनुहोस् र %s मा निकल्नुहोस्"
+
+#: src/transitplugins/openTripPlanner.js:1238
+msgid "Take the elevator"
+msgstr "लिफ्ट लिनुहोस्"
+
+#: src/transitplugins/openTripPlanner.js:1242
+#, javascript-format
+msgid "Make a left u-turn onto %s"
+msgstr "%s मा बायाँ यू-टर्न गर्नुहोस्"
+
+#: src/transitplugins/openTripPlanner.js:1244
+msgid "Make a left u-turn"
+msgstr "बायाँ यू-टर्न गर्नुहोस्"
+
+#: src/transitplugins/openTripPlanner.js:1247
+#, javascript-format
+msgid "Make a right u-turn onto %s"
+msgstr "%s मा दायाँ यू-टर्न गर्नुहोस्"
+
+#: src/transitplugins/openTripPlanner.js:1249
+msgid "Make a right u-turn"
+msgstr "दायाँ यू-टर्न गर्नुहोस्"
+
+#~ msgid "GNOME Maps"
+#~ msgstr "जिनोम मानचित्र"
+
+#~ msgid "Quit"
+#~ msgstr "अन्त्य गर्नुहोस्"
+
+#~ msgid "Everyone"
+#~ msgstr "सबैजना"
+
+#~ msgid "Friends of friends"
+#~ msgstr "साथीको साथी"
+
+#~ msgid "Just friends"
+#~ msgstr "साथीमात्र"
+
+#~ msgid "Just me"
+#~ msgstr "म मात्रै"
+
+#, fuzzy
+#~ msgid "Load Map Layer"
+#~ msgstr "छवि मानचित्र लोड गर्नुहोस्"
+
+#, fuzzy
+#~ msgid "Check in here"
+#~ msgstr "यहाँ ल्याउनुहोस्"
+
+#, fuzzy
+#~ msgid "Don’t have an account?"
+#~ msgstr "यो प्रदर्शन प्रयोग नगर्नु"
+
+#~ msgid "Show more information"
+#~ msgstr "बढी सूचना"
+
+#~ msgid "Press enter to search"
+#~ msgstr "खोजको लागि इन्टर थिच्नुहोस्"
+
+#~ msgid "Open Layer"
+#~ msgstr "तह खोल्नुहोस्"
+
+#, fuzzy
+#~ msgid "Route search by OpenTripPlanner"
+#~ msgstr "राउट स्विच प्रक्रियाकर्ता"
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgid "Population:"
+#~ msgstr "जनसङ्ख्या :"
+
+#~ msgid "Altitude:"
+#~ msgstr "ऊचाई:"
+
+#, fuzzy
+#~ msgid "Opening hours:"
+#~ msgstr "खुल्दैछ"
+
+#, fuzzy
+#~ msgid "Internet access:"
+#~ msgstr "वेब र इमेल जस्तो इन्टरनेट पहुँचका लागि कार्यक्रम"
+
+#~ msgid "Toilets:"
+#~ msgstr "शौचालय:"
+
+#, fuzzy
+#~ msgid "Wheelchair access:"
+#~ msgstr "पहुँच:"
+
+#~ msgid "Phone:"
+#~ msgstr "फोन:"
+
+#~ msgid "yes"
+#~ msgstr "ठिक छ"
+
+#~ msgid "limited"
+#~ msgstr "सिमित"
+
+#~ msgid "no"
+#~ msgstr "होइन"
+
+#, javascript-format
+#~ msgctxt "time range list"
+#~ msgid "%s %s"
+#~ msgstr "%s %s"
+
+#, javascript-format
+#~ msgctxt "time range component"
+#~ msgid "%s %s"
+#~ msgstr "%s %s"
+
+#~ msgid "wired"
+#~ msgstr "तारजडिट"
+
+#~ msgid "terminal"
+#~ msgstr "टर्मिनल"
+
+#~ msgid "service"
+#~ msgstr "सेवा"
+
+#, javascript-format
+#~ msgid "%f h"
+#~ msgstr "%f h"
+
+#, javascript-format
+#~ msgid "%f min"
+#~ msgstr "%f min"
+
+#, javascript-format
+#~ msgid "%f s"
+#~ msgstr "%f s"
 
 #~ msgid "I’m here!"
 #~ msgstr "म यहा छु"
