@@ -1,4 +1,4 @@
-#!/usr/bin/env gjs
+#!/usr/bin/env -S gjs -m
 
 /* -*- Mode: JS2; indent-tabs-mode: nil; js2-basic-offset: 4 -*- */
 /* vim: set et ts=4 sw=4: */
@@ -29,7 +29,7 @@
  *
  */
 
-const Gio = imports.gi.Gio;
+import Gio from 'gi://Gio';
 
 const ByteArray = imports.byteArray;
 
