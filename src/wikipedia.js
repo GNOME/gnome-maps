@@ -24,7 +24,6 @@ import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
 import Soup from 'gi://Soup';
 
-const Format = imports.format;
 import * as Utils from './utils.js';
 
 /**
@@ -89,7 +88,7 @@ export function isValidWikipedia(wiki) {
 export function fetchArticleInfo(wiki, size, metadataCb, thumbnailCb) {
     let lang = getLanguage(wiki);
     let title = getHtmlEntityEncodedArticle(wiki);
-    let uri = Format.vprintf('https://%s.wikipedia.org/w/api.php', [ lang ]);
+    let uri = `https://${lang}.wikipedia.org/w/api.php`;
     let msg = Soup.form_request_new_from_hash('GET', uri, { action: 'query',
                                                             titles: title,
                                                             prop: 'extracts|pageimages|langlinks',
