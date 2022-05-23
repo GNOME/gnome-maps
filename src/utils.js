@@ -34,8 +34,6 @@ import Soup from 'gi://Soup';
 const _ = gettext.gettext;
 const ngettext = gettext.ngettext;
 
-const ByteArray = imports.byteArray;
-
 export const METRIC_SYSTEM = 1;
 export const IMPERIAL_SYSTEM = 2;
 
@@ -465,15 +463,13 @@ export function showDialog(msg, type, transientFor) {
     messageDialog.show_all();
 }
 
+let decoder = new TextDecoder('utf-8');
+
 /* Gets a string from either a ByteArray or Uint8Array. This is for
 compatibility between two different Gjs versions, see discussion at
 https://gitlab.gnome.org/GNOME/gnome-maps/merge_requests/19 */
 export function getBufferText(buffer) {
-    if (buffer instanceof Uint8Array) {
-        return ByteArray.toString(buffer);
-    } else {
-        return buffer.toString();
-    }
+    return decoder.decode(buffer);
 }
 
 export function getCountryCodeForCoordinates(lat, lon) {
