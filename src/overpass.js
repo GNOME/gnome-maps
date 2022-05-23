@@ -17,8 +17,6 @@
  * Author: Rishi Raj Singh Jhelumi <rishiraj.devel@gmail.com>
  */
 
-const Format = imports.format;
-
 import Geocode from 'gi://GeocodeGlib';
 import GObject from 'gi://GObject';
 import Soup from 'gi://Soup';
@@ -213,33 +211,29 @@ export class Overpass extends GObject.Object {
     }
 
     _getQueryUrl(osmType, osmId) {
-        return Format.vprintf('%s?data=%s', [BASE_URL,
-                                             this._generateOverpassQuery(osmType,
-                                                                          osmId)]);
+        return `${BASE_URL}?data=${this._generateOverpassQuery(osmType, osmId)}`;
     }
 
     _generateOverpassQuery(osmType, osmId) {
-        return Format.vprintf('%s%s%s;%s;%s;',
-                              [ this._getKeyValue('timeout', this.timeout),
-                                this._getKeyValue('out', this.outputFormat),
-                                this._getKeyValue('maxsize', this.maxsize),
-                                this._getData(osmType, osmId),
-                                this._getOutput() ]);
+        let timeout = this._getKeyValue('timeout', this.timeout);
+        let out = this._getKeyValue('out', this.outputFormat);
+        let maxSize = this._getKeyValue('maxsize', this.maxsize);
+        let data = this._getData(osmType, osmId);
+        let output = this._getOutput();
+
+        return `${timeout}${out}${maxSize};${data};${output};`;
     }
 
     _getKeyValue(key, value) {
-        return Format.vprintf('[%s:%s]', [ key,
-                                           value ]);
+        return `[${key}:${value}]`;
     }
 
     _getData(osmType, osmId) {
-        return Format.vprintf('%s(%s)', [osmType, osmId]);
+        return `${osmType}(${osmId})`;
     }
 
     _getOutput() {
-        return Format.vprintf('out center %s %s %s', [ this.outputInfo,
-                                                       this.outputSortOrder,
-                                                       this.outputCount ]);
+        return `out center ${this.outputInfo} ${this.outputSortOrder} ${this.outputCount}`;
     }
 }
 
