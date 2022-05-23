@@ -247,7 +247,7 @@ export class PlaceView extends Gtk.Box {
         let lang = Wikipedia.getLanguage(wiki);
         let article = Wikipedia.getArticle(wiki);
 
-        return Format.vprintf('https://%s.wikipedia.org/wiki/%s', [ lang, article ]);
+        return `https://${lang}.wikipedia.org/wiki/${article}`;
     }
 
     _createContent(place) {
@@ -292,7 +292,7 @@ export class PlaceView extends Gtk.Box {
             if (Utils.uriSchemeSupported('tel')) {
                 /* RFC3966 only allows "-", '.", "(", and ")" as visual
                  * separator characters in a global phone number, no space */
-                phone.linkUrl = 'tel:%s'.format(place.phone.replace(/\s+/g, ''));
+                phone.linkUrl = `tel:${place.phone.replace(/\s+/g, '')}`;
             }
 
             content.push(phone);
@@ -302,7 +302,7 @@ export class PlaceView extends Gtk.Box {
             content.push({ label: _("E-mail"),
                            icon: 'mail-unread-symbolic',
                            info: GLib.markup_escape_text(place.email, -1),
-                           linkUrl: 'mailto:%s'.format(place.email) });
+                           linkUrl: `mailto:${place.email}` });
         }
 
         if (place.isEatingAndDrinking) {
@@ -535,9 +535,7 @@ export class PlaceView extends Gtk.Box {
                 let uri = GLib.markup_escape_text(linkUrl, -1);
                 /* double-escape the tooltip text, as GTK treats it as markup */
                 let tooltipText = GLib.markup_escape_text(uri, -1);
-                info = '<a href="%s" title="%s">%s</a>'.format(uri,
-                                                               tooltipText,
-                                                               info);
+                info = `<a href="${uri}" title="${tooltipText}">${info}</a>`;
             }
 
             let widget;
