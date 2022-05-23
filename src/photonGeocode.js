@@ -19,8 +19,6 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Format = imports.format;
-
 import GLib from 'gi://GLib';
 import Soup from 'gi://Soup';
 
@@ -153,9 +151,7 @@ export class PhotonGeocode {
         if (this._additionalParams)
             this._additionalParams.forEach((p) => query.add(p.key, p.value));
 
-        return Format.vprintf('%s/%s/?%s', [this._baseUrl,
-                                            string ? 'api' : 'reverse',
-                                            query.toString()]);
+        return `${this._baseUrl}/${string ? 'api' : 'reverse'}/?${query.toString()}`;
     }
 
     _readService() {
