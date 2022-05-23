@@ -23,109 +23,102 @@
  * Utility functions for address formatting.
  */
 
-const Format = imports.format;
-
 /**
- * Translation lookup table for street name and house number.
- * First argument is the street name and the second the housenumber.
+ * Translation lookup function for street name and house number.
  * Based on examples from https://en.wikipedia.org/wiki/Address#Address_format
  * Currently don't include address formats for i.e. China and Japan as those
  * formats differ from the Western ones and would need additional handling
  * when printing place addresses (currently we assume there is a street name
  * and house number).
  */
-const FORMAT_MAP = {
-    'AI': '%2$s %1$s',
-    'AL': '%1$s %2$s̈́',
-    'AR': '%1$s %2$s',
-    'AS': '%1$s %2$s',
-    'AU': '%2$s %1$s',
-    'AX': '%1$s %2$s',
-    'BA': '%1$s %2$s',
-    'BD': '%1$s. %2$s',
-    'BE': '%1$s %2$s',
-    'BM': '%2$s %1$s',
-    'BR': '%1$s, %2$s',
-    'BY': '%1$s, д. %2$s',
-    /* if we had access to state codes, we could add a special case for
-     * Quebec format
-     */
-    'CA': '%2$s %1$s',
-    'CH': '%1$s %2$s',
-    'CL': '%1$s No° %2$s',
-    'CZ': '%1$s %2$s',
-    'CY': '%1$s %2$s',
-    'DE': '%1$s %2$s',
-    'DK': '%1$s %2$s',
-    'EE': '%1$s %2$s',
-    'ES': '%1$s, %2$s',
-    'FI': '%1$s %2$s',
-    'FK': '%2$s %1$s',
-    'FO': '%1$s %2$s',
-    'FR': '%2$s, %1$s',
-    'GB': '%2$s %1$s',
-    'GG': '%2$s %1$s',
-    'GL': '%1$s %2$s',
-    'GR': '%1$s %2$s',
-    'HK': '%2$s %1$s',
-    'HR': '%1$s %2$s',
-    'HU': '%1$s %2$s',
-    'IE': '%2$s %1$s',
-    'IL': '%2$s %1$s',
-    'IS': '%1$s %2$s',
-    'IM': '%2$s %1$s',
-    'IN': '%2$s %1$s',
-    'ID': '%1$s No. %2$s',
-    'IR': '%1$s %2$s',
-    'IT': '%1$s %2$s',
-    'IQ': '%1$s %2$s',
-    'JE': '%2$s %1$s',
-    'KR': '%1$s %2$s',
-    'KY': '%2$s %1$s',
-    'LI': '%1$s %2$s',
-    'LK': '%2$s %1$s',
-    'LU': '%1$s %2$s',
-    'LV': '%1$s %2$s',
-    'ME': '%1$s %2$s',
-    'MO': '%1$s%2$s',
-    'MS': '%2$s %1$s',
-    'MY': '%2$s $1%s',
-    'MX': '%1$s No. %2$s',
-    'NL': '%1$s %2$s',
-    'NO': '%1$s %2$s',
-    'NZ': '%2$s %1$s',
-    'OM': '%1$s, %2$s',
-    'PE': '%1$s %2$s',
-    'PH': '%2$s %1$s',
-    'PN': '%2$s %1$s',
-    'PK': '%2$s, %1$s',
-    'PL': '%1$s %2$s',
-    'PT': '%1$s %2$s',
-    'RO': '%1$s, nr. %2$s',
-    'RS': '%1$s %2$s',
-    'RU': '%1$s, д. %2$s',
-    'SA': '%2$s %1$s',
-    'SE': '%1$s %2$s',
-    'SG': '%2$s %1$s',
-    'SH': '%2$s %1$s',
-    'SJ': '%1$s %2$s',
-    'SK': '%1$s %2$s',
-    'SL': '%1$s %2$s',
-    'TC': '%2$s %1$s',
-    'TR': '%1$s %2$s',
-    'TW': '%1$s, %2$s̈́',
-    'UA': 'вул. %1$s, буд. %2$s',
-    'US': '%2$s %1$s',
-    'VG': '%2$s %1$s',
-    'VI': '%2$s %1$s',
-    'VN': 'số %2$s %1$s'
+export function streetAddressForCountryCode(streetName, housenumber,
+                                            countryCode) {
+    switch (countryCode) {
+        case 'AI': return `${housenumber} ${streetName}`;
+        case 'AL': return `${streetName} ${housenumber}`;
+        case 'AR': return `${streetName} ${housenumber}`;
+        case 'AS': return `${streetName} ${housenumber}`;
+        case 'AU': return `${housenumber} ${streetName}`;
+        case 'AX': return `${streetName} ${housenumber}`;
+        case 'BA': return `${streetName} ${housenumber}`;
+        case 'BD': return `${streetName}. ${housenumber}`;
+        case 'BE': return `${streetName} ${housenumber}`;
+        case 'BM': return `${housenumber} ${streetName}`;
+        case 'BR': return `${streetName}, ${housenumber}`;
+        case 'BY': return `${streetName}, д. ${housenumber}`;
+        /* if we had access to state codes, we could add a special case for
+         * Quebec format
+         */
+        case 'CA': return `${housenumber} ${streetName}`;
+        case 'CH': return `${streetName} ${housenumber}`;
+        case 'CL': return `${streetName} No° ${housenumber}`;
+        case 'CZ': return `${streetName} ${housenumber}`;
+        case 'CY': return `${streetName} ${housenumber}`;
+        case 'DE': return `${streetName} ${housenumber}`;
+        case 'DK': return `${streetName} ${housenumber}`;
+        case 'EE': return `${streetName} ${housenumber}`;
+        case 'ES': return `${streetName}, ${housenumber}`;
+        case 'FI': return `${streetName} ${housenumber}`;
+        case 'FK': return `${housenumber} ${streetName}`;
+        case 'FO': return `${streetName} ${housenumber}`;
+        case 'FR': return `${housenumber}, ${streetName}`;
+        case 'GB': return `${housenumber} ${streetName}`;
+        case 'GG': return `${housenumber} ${streetName}`;
+        case 'GL': return `${streetName} ${housenumber}`;
+        case 'GR': return `${streetName} ${housenumber}`;
+        case 'HK': return `${housenumber} ${streetName}`;
+        case 'HR': return `${streetName} ${housenumber}`;
+        case 'HU': return `${streetName} ${housenumber}`;
+        case 'IE': return `${housenumber} ${streetName}`;
+        case 'IL': return `${housenumber} ${streetName}`;
+        case 'IS': return `${streetName} ${housenumber}`;
+        case 'IM': return `${housenumber} ${streetName}`;
+        case 'IN': return `${housenumber} ${streetName}`;
+        case 'ID': return `${streetName} No. ${housenumber}`;
+        case 'IR': return `${streetName} ${housenumber}`;
+        case 'IT': return `${streetName} ${housenumber}`;
+        case 'IQ': return `${streetName} ${housenumber}`;
+        case 'JE': return `${housenumber} ${streetName}`;
+        case 'KR': return `${streetName} ${housenumber}`;
+        case 'KY': return `${housenumber} ${streetName}`;
+        case 'LI': return `${streetName} ${housenumber}`;
+        case 'LK': return `${housenumber} ${streetName}`;
+        case 'LU': return `${streetName} ${housenumber}`;
+        case 'LV': return `${streetName} ${housenumber}`;
+        case 'ME': return `${streetName} ${housenumber}`;
+        case 'MO': return `${streetName}${housenumber}`;
+        case 'MS': return `${housenumber} ${streetName}`;
+        case 'MY': return `${housenumber} $1%s`;
+        case 'MX': return `${streetName} No. ${housenumber}`;
+        case 'NL': return `${streetName} ${housenumber}`;
+        case 'NO': return `${streetName} ${housenumber}`;
+        case 'NZ': return `${housenumber} ${streetName}`;
+        case 'OM': return `${streetName}, ${housenumber}`;
+        case 'PE': return `${streetName} ${housenumber}`;
+        case 'PH': return `${housenumber} ${streetName}`;
+        case 'PN': return `${housenumber} ${streetName}`;
+        case 'PK': return `${housenumber}, ${streetName}`;
+        case 'PL': return `${streetName} ${housenumber}`;
+        case 'PT': return `${streetName} ${housenumber}`;
+        case 'RO': return `${streetName}, nr. ${housenumber}`;
+        case 'RS': return `${streetName} ${housenumber}`;
+        case 'RU': return `${streetName}, д. ${housenumber}`;
+        case 'SA': return `${housenumber} ${streetName}`;
+        case 'SE': return `${streetName} ${housenumber}`;
+        case 'SG': return `${housenumber} ${streetName}`;
+        case 'SH': return `${housenumber} ${streetName}`;
+        case 'SJ': return `${streetName} ${housenumber}`;
+        case 'SK': return `${streetName} ${housenumber}`;
+        case 'SL': return `${streetName} ${housenumber}`;
+        case 'TC': return `${housenumber} ${streetName}`;
+        case 'TR': return `${streetName} ${housenumber}`;
+        case 'TW': return `${streetName}, ${housenumber}`;
+        case 'UA': return `вул. ${streetName}, буд. ${housenumber}`;
+        case 'US': return `${housenumber} ${streetName}`;
+        case 'VG': return `${housenumber} ${streetName}`;
+        case 'VI': return `${housenumber} ${streetName}`;
+        case 'VN': return `số ${housenumber} ${streetName}`;
+        default:   return `${housenumber} ${streetName}`;
+    }
 }
 
-export function streetAddressForCountryCode(streetName, housenumber, countryCode) {
-    let format = FORMAT_MAP[countryCode];
-
-    if (format)
-        return Format.vprintf(format, [streetName, housenumber]);
-    else
-        return Format.vprintf('%s %s', [housenumber, streetName]);
-}
