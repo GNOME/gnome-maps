@@ -29,7 +29,6 @@ import GtkClutter from 'gi://GtkClutter';
 import Hdy from 'gi://Handy';
 
 import {ContactPlace} from './contactPlace.js';
-const Format = imports.format;
 import {Geoclue} from './geoclue.js';
 import * as GeocodeFactory from './geocode.js';
 import {MainWindow} from './mainWindow.js';
@@ -42,6 +41,8 @@ import {RouteQuery} from './routeQuery.js';
 import {Settings} from './settings.js';
 import * as Utils from './utils.js';
 import * as URIS from './uris.js';
+
+const Format = imports.format;
 
 const _ensuredTypes = [OSMTypeSearchEntry];
 
@@ -260,7 +261,7 @@ export class Application extends Gtk.Application {
         this._mainWindow.connect('destroy', () => this._onWindowDestroy());
         if (GLib.getenv('MAPS_DEBUG') === 'focus') {
             this._mainWindow.connect('set-focus', (window, widget) => {
-                log('* focus widget: %s'.format(widget));
+                log(`* focus widget: ${widget}`);
             });
         }
     }
