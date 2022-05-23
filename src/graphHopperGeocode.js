@@ -19,8 +19,6 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Format = imports.format;
-
 import GLib from 'gi://GLib';
 import Soup from 'gi://Soup';
 
@@ -149,8 +147,7 @@ export class GraphHopperGeocode {
         else
             query.add('reverse', 'true');
 
-        return Format.vprintf('%s/api/1/geocode?%s', [this._baseUrl,
-                                                      query.toString()]);
+        return `${this._baseUrl}/api/1/geocode?${query.toString()}`;
     }
 
     _readService() {
