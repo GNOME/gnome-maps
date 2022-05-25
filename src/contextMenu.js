@@ -22,8 +22,8 @@
 import Gdk from 'gi://Gdk';
 import GeocodeGlib from 'gi://GeocodeGlib';
 import GObject from 'gi://GObject';
+import GLib from 'gi://GLib';
 import Gtk from 'gi://Gtk';
-const Mainloop = imports.mainloop;
 
 import {Application} from './application.js';
 import * as GeocodeFactory from './geocode.js';
@@ -77,7 +77,7 @@ export class ContextMenu extends Gtk.Menu {
         this._latitude = this._mapView.view.y_to_latitude(y);
 
         // Need idle to avoid Clutter dead-lock on re-entrance
-        Mainloop.idle_add(() => this.popup_at_pointer(event));
+        GLib.idle_add(null, () => this.popup_at_pointer(event));
     }
 
     _routingUpdate() {
