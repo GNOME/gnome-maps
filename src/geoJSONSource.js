@@ -21,8 +21,8 @@
 import Cairo from 'cairo';
 import Champlain from 'gi://Champlain';
 import Clutter from 'gi://Clutter';
+import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
-const Mainloop = imports.mainloop;
 
 import {BoundingBox} from './boundingBox.js';
 import * as Geojsonvt from './geojsonvt/geojsonvt.js';
@@ -85,7 +85,7 @@ export class GeoJSONSource extends Champlain.TileSource {
                 this.next_source.fill_tile(tile);
         });
 
-        Mainloop.idle_add(() => this._renderTile(tile), tile);
+        GLib.idle_add(tile, () => this._renderTile(tile));
     }
 
     _validate([lon, lat]) {
