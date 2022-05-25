@@ -20,7 +20,6 @@
  */
 
 import GLib from 'gi://GLib';
-const Mainloop = imports.mainloop;
 import Soup from 'gi://Soup';
 
 import {BoundingBox} from './boundingBox.js';
@@ -70,7 +69,7 @@ export class GraphHopper {
     }
 
     _updateFromStored() {
-        Mainloop.idle_add(() => {
+        GLib.idle_add(null, () => {
             if (!this.storedRoute)
                 return;
 
