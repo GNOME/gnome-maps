@@ -22,7 +22,6 @@
 import GObject from 'gi://GObject';
 import GClue from 'gi://Geoclue';
 import Gio from 'gi://Gio';
-const Mainloop = imports.mainloop;
 
 import {Place} from './place.js';
 import {Location} from './location.js';
