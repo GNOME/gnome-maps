@@ -22,7 +22,6 @@
 import Clutter from 'gi://Clutter';
 import Gdk from 'gi://Gdk';
 import GObject from 'gi://GObject';
-const Mainloop = imports.mainloop;
 
 import {Application} from './application.js';
 import * as Color from './color.js';
