@@ -23,9 +23,9 @@ import Cairo from 'cairo';
 import Champlain from 'gi://Champlain';
 import Clutter from 'gi://Clutter';
 import Gdk from 'gi://Gdk';
+import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
-const Mainloop = imports.mainloop;
 
 import {Application} from './application.js';
 import {MapBubble} from './mapBubble.js';
@@ -234,7 +234,7 @@ export class MapMarker extends Champlain.Marker {
         let sourceId = null;
         let signalId = this._view.connect(signal, () => {
             if (sourceId)
-                Mainloop.source_remove(sourceId);
+                GLib.source_remove(sourceId);
             else
                 this.hideBubble();
 
@@ -244,9 +244,9 @@ export class MapMarker extends Champlain.Marker {
             }).bind(this);
 
             if (duration)
-                sourceId = Mainloop.timeout_add(duration, callback);
+                sourceId = GLib.timeout_add(null, duration, callback);
             else
-                sourceId = Mainloop.idle_add(callback);
+                sourceId = GLib.idle_add(null, callback);
         });
 
         Utils.once(this.bubble, 'closed', () => {
@@ -260,7 +260,7 @@ export class MapMarker extends Champlain.Marker {
             // When the marker gets deselected, we need to ensure
             // that the timeout callback is not called anymore.
             if (sourceId) {
-                Mainloop.source_remove(sourceId);
+                GLib.source_remove(sourceId);
                 this._view.disconnect(signalId);
             }
         });
