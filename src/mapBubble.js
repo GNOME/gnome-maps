@@ -23,7 +23,6 @@ import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
-const Mainloop = imports.mainloop;
 
 import {Application} from './application.js';
 import {ContactPlace} from './contactPlace.js';
