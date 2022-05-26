@@ -28,7 +28,6 @@ import GObject from 'gi://GObject';
 import Gdk from 'gi://Gdk';
 import Gio from 'gi://Gio';
 import Gtk from 'gi://Gtk';
-const Mainloop = imports.mainloop;
 
 import {Application} from './application.js';
 import {ContextMenu} from './contextMenu.js';
@@ -270,7 +269,7 @@ export class MainWindow extends Gtk.ApplicationWindow {
         this._mapView.view.connect('button-press-event', () => {
             // Can not call something that will generate clutter events
             // from a clutter event-handler. So use an idle.
-            Mainloop.idle_add(() => this._mapView.grab_focus());
+            GLib.idle_add(null, () => this._mapView.grab_focus());
         });
 
         /*
@@ -417,11 +416,11 @@ export class MainWindow extends Gtk.ApplicationWindow {
 
     _onConfigureEvent(widget, event) {
         if (this._configureId !== 0) {
-            Mainloop.source_remove(this._configureId);
+            GLib.source_remove(this._configureId);
             this._configureId = 0;
         }
 
-        this._configureId = Mainloop.timeout_add(_CONFIGURE_ID_TIMEOUT, () => {
+        this._configureId = GLib.timeout_add(null, _CONFIGURE_ID_TIMEOUT, () => {
             this._saveWindowGeometry();
             this._configureId = 0;
             return false;
@@ -442,7 +441,7 @@ export class MainWindow extends Gtk.ApplicationWindow {
     _quit() {
         // remove configure event handler if still there
         if (this._configureId !== 0) {
-            Mainloop.source_remove(this._configureId);
+            GLib.source_remove(this._configureId);
             this._configureId = 0;
         }
 
