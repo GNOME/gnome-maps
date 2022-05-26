@@ -24,10 +24,10 @@ import Clutter from 'gi://Clutter';
 import GObject from 'gi://GObject';
 import GeocodeGlib from 'gi://GeocodeGlib';
 import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
 import Gtk from 'gi://Gtk';
 import GtkChamplain from 'gi://GtkChamplain';
 import Handy from 'gi://Handy';
-const Mainloop = imports.mainloop;
 
 import GnomeMaps from 'gi://GnomeMaps';
 
@@ -873,7 +873,7 @@ export class MapView extends GtkChamplain.Embed {
         if (this._storeId !== 0)
             return;
 
-        this._storeId = Mainloop.timeout_add(_LOCATION_STORE_TIMEOUT, () => {
+        this._storeId = GLib.timeout_add(null, _LOCATION_STORE_TIMEOUT, () => {
             this._storeId = 0;
             this._storeLocation();
         });
