@@ -17,8 +17,8 @@
  * Author: Amisha Singla <amishas157@gmail.com>
  */
 
+import GLib from 'gi://GLib';
 import Gtk from 'gi://Gtk';
-const Mainloop = imports.mainloop;
 
 import {Application} from './application.js';
 import {LongPrintLayout} from './longPrintLayout.js';
@@ -65,7 +65,7 @@ export class PrintOperation {
         let width = context.get_width();
         let height = context.get_height();
 
-        Mainloop.timeout_add(_MIN_TIME_TO_ABORT, () => {
+        GLib.timeout_add(null, _MIN_TIME_TO_ABORT, () => {
             if (!this._layout.renderFinished) {
                 this._abortDialog.show();
             }
