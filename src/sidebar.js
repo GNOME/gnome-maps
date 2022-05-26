@@ -22,9 +22,9 @@
 
 import Cairo from 'cairo';
 import Gdk from 'gi://Gdk';
+import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
-const Mainloop = imports.mainloop;
 
 import {Application} from './application.js';
 import {InstructionRow} from './instructionRow.js';
@@ -140,7 +140,7 @@ export class Sidebar extends Gtk.Revealer {
     }
 
     _cancelStore() {
-        Mainloop.source_remove(this._storeRouteTimeoutId);
+        GLib.source_remove(this._storeRouteTimeoutId);
         this._storeRouteTimeoutId = 0;
     }
 
@@ -298,7 +298,7 @@ export class Sidebar extends Gtk.Revealer {
             if (this._storeRouteTimeoutId)
                 this._cancelStore();
 
-            this._storeRouteTimeoutId = Mainloop.timeout_add(5000, () => {
+            this._storeRouteTimeoutId = GLib.timeout_add(null, 5000, () => {
                 let placeStore = Application.placeStore;
                 let places = this._query.filledPoints.map(function(point) {
                     return point.place;
