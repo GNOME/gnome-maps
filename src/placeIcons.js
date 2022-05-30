@@ -146,7 +146,7 @@ const TYPE_ICON_MAP = {
 /**
  * Get place icon name suitable for a Place.
  */
-function getIconForPlace(place) {
+export function getIconForPlace(place) {
     return TYPE_ICON_MAP?.[place.osmKey]?.[place.osmValue] ??
            TYPE_ICON_MAP?.[place.osmKey]?.['_'] ?? 'map-marker-symbolic';
 }

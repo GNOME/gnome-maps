@@ -19,17 +19,19 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const _ = imports.gettext.gettext;
+import gettext from 'gettext';
 
-const Geocode = imports.gi.GeocodeGlib;
+import GeocodeGlib from 'gi://GeocodeGlib';
 
-const Address = imports.address;
-const OSMTypes = imports.osmTypes;
-const Place = imports.place;
-const Utils = imports.utils;
+import * as Address from './address.js';
+import * as OSMTypes from './osmTypes.js';
+import {Place} from './place.js';
+import * as Utils from './utils.js';
 
-function parsePlace(latitude, longitude, properties) {
-    let location = new Geocode.Location({ latitude:  latitude,
+const _ = gettext.gettext;
+
+export function parsePlace(latitude, longitude, properties) {
+    let location = new GeocodeGlib.Location({ latitude:  latitude,
                                           longitude: longitude,
                                           accuracy:  0.0 });
     let type = _parsePlaceType(properties);
@@ -92,7 +94,7 @@ function parsePlace(latitude, longitude, properties) {
     if (properties.osm_value)
         params.osmValue = properties.osm_value;
 
-    return new Place.Place(params);
+    return new Place(params);
 }
 
 function _parseName(properties) {
@@ -114,19 +116,19 @@ function _parseName(properties) {
 function _parseOsmType(osmType) {
     switch (osmType) {
         case 'N':
-            return Geocode.PlaceOsmType.NODE;
+            return GeocodeGlib.PlaceOsmType.NODE;
         case 'W':
-            return Geocode.PlaceOsmType.WAY;
+            return GeocodeGlib.PlaceOsmType.WAY;
         case 'R':
-            return Geocode.PlaceOsmType.RELATION;
+            return GeocodeGlib.PlaceOsmType.RELATION;
         default:
-            return Geocode.PlaceOsmType.UNKNOWN;
+            return GeocodeGlib.PlaceOsmType.UNKNOWN;
     }
 }
 
 function _parsePlaceType(properties) {
     if (!properties)
-        return Geocode.PlaceType.UNKNOWN;
+        return GeocodeGlib.PlaceType.UNKNOWN;
 
     let key = properties.osm_key;
     let value = properties.osm_value;
@@ -135,82 +137,82 @@ function _parsePlaceType(properties) {
         case 'place':
             switch (value) {
                 case 'continent':
-                    return Geocode.PlaceType.CONTINENT;
+                    return GeocodeGlib.PlaceType.CONTINENT;
                 case 'country':
-                    return Geocode.PlaceType.COUNTRY;
+                    return GeocodeGlib.PlaceType.COUNTRY;
                 case 'city':
                 case 'town':
                 case 'village':
                 case 'hamlet':
-                    return Geocode.PlaceType.TOWN;
+                    return GeocodeGlib.PlaceType.TOWN;
                 case 'suburb':
-                    return Geocode.PlaceType.SUBURB;
+                    return GeocodeGlib.PlaceType.SUBURB;
                 case 'house':
-                    return Geocode.PlaceType.BUILDING;
+                    return GeocodeGlib.PlaceType.BUILDING;
                 case 'island':
-                    return Geocode.PlaceType.ISLAND;
+                    return GeocodeGlib.PlaceType.ISLAND;
                 case 'municipality':
-                    return Geocode.PlaceType.COUNTY;
+                    return GeocodeGlib.PlaceType.COUNTY;
                 default:
-                    return Geocode.PlaceType.MISCELLANEOUS;
+                    return GeocodeGlib.PlaceType.MISCELLANEOUS;
             }
         case 'amenity':
             switch (value) {
                 case 'bar':
                 case 'pub':
                 case 'nightclub':
-                    return Geocode.PlaceType.BAR;
+                    return GeocodeGlib.PlaceType.BAR;
                 case 'restaurant':
                 case 'fast_food':
-                    return Geocode.PlaceType.RESTAURANT;
+                    return GeocodeGlib.PlaceType.RESTAURANT;
                 case 'school':
                 case 'kindergarten':
-                    return Geocode.PlaceType.SCHOOL;
+                    return GeocodeGlib.PlaceType.SCHOOL;
                 case 'place_of_worship':
-                    return Geocode.PlaceType.PLACE_OF_WORSHIP;
+                    return GeocodeGlib.PlaceType.PLACE_OF_WORSHIP;
                 case 'bus_station':
-                    return Geocode.PlaceType.BUS_STOP;
+                    return GeocodeGlib.PlaceType.BUS_STOP;
                 default:
-                    return Geocode.PlaceType.MISCELLANEOUS;
+                    return GeocodeGlib.PlaceType.MISCELLANEOUS;
             }
         case 'highway':
             switch (value) {
                 case 'bus_stop':
-                    return Geocode.PlaceType.BUS_STOP;
+                    return GeocodeGlib.PlaceType.BUS_STOP;
                 case 'motorway':
-                    return Geocode.PlaceType.MOTORWAY;
+                    return GeocodeGlib.PlaceType.MOTORWAY;
                 default:
-                    return Geocode.PlaceType.STREET;
+                    return GeocodeGlib.PlaceType.STREET;
             }
         case 'railway':
             switch (value) {
                 case 'station':
                 case 'stop':
                 case 'halt':
-                    return Geocode.PlaceType.RAILWAY_STATION;
+                    return GeocodeGlib.PlaceType.RAILWAY_STATION;
                 case 'tram_stop':
-                    return Geocode.PlaceType.LIGHT_RAIL_STATION;
+                    return GeocodeGlib.PlaceType.LIGHT_RAIL_STATION;
                 default:
-                    return Geocode.PlaceType.MISCELLANEOUS;
+                    return GeocodeGlib.PlaceType.MISCELLANEOUS;
             }
         case 'aeroway':
             switch (value) {
                 case 'aerodrome':
-                    return Geocode.PlaceType.AIRPORT;
+                    return GeocodeGlib.PlaceType.AIRPORT;
                 default:
-                    return Geocode.PlaceType.MISCELLANEOUS;
+                    return GeocodeGlib.PlaceType.MISCELLANEOUS;
             }
         case 'building':
             switch (value) {
                 case 'yes':
-                    return Geocode.PlaceType.BUILDING;
+                    return GeocodeGlib.PlaceType.BUILDING;
                 case 'railway_station':
-                    return Geocode.PlaceType.RAILWAY_STATION;
+                    return GeocodeGlib.PlaceType.RAILWAY_STATION;
                 default:
-                    return Geocode.PlaceType.MISCELLANEOUS;
+                    return GeocodeGlib.PlaceType.MISCELLANEOUS;
             }
         default:
-            return Geocode.PlaceType.MISCELLANEOUS;
+            return GeocodeGlib.PlaceType.MISCELLANEOUS;
     }
 }
 
@@ -226,10 +228,10 @@ function _parseBoundingBox(extent) {
     /* it seems GraphHopper geocode swaps order of bottom and top compared
      * to stock Photon, so just in case "clamp" both pairs
      */
-    return new Geocode.BoundingBox({ left:   Math.min(extent[0], extent[2]),
-                                     bottom: Math.min(extent[1], extent[3]),
-                                     right:  Math.max(extent[0], extent[2]),
-                                     top:    Math.max(extent[1], extent[3]) });
+    return new GeocodeGlib.BoundingBox({ left:   Math.min(extent[0], extent[2]),
+                                         bottom: Math.min(extent[1], extent[3]),
+                                         right:  Math.max(extent[0], extent[2]),
+                                         top:    Math.max(extent[1], extent[3]) });
 }
 
 /* check if an extent value is a valid latitude (clamp to the maximum latitude

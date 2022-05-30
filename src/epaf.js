@@ -23,7 +23,7 @@
 // Google encoded polyline decoder
 // https://developers.google.com/maps/documentation/utilities/polylinealgorithm
 
-const Champlain = imports.gi.Champlain;
+import Champlain from 'gi://Champlain';
 
 function _decodeValue(data, index) {
     let b;
@@ -45,7 +45,7 @@ function _decodeValue(data, index) {
     return [ret_val, index];
 }
 
-function decode(data) {
+export function decode(data) {
     let length = data.length;
     let polyline = [];
     let index = 0;

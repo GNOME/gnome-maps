@@ -19,24 +19,21 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
-const OSMTypePopover = imports.osmTypePopover;
-const OSMTypes = imports.osmTypes;
-const Utils = imports.utils;
+import {OSMTypePopover} from './osmTypePopover.js';
+import * as OSMTypes from './osmTypes.js';
+import * as Utils from './utils.js';
 
 const MAX_MATCHES = 10;
 
-var OSMTypeSearchEntry = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/osm-type-search-entry.ui'
-}, class OSMTypeSearchEntry extends Gtk.SearchEntry {
+export class OSMTypeSearchEntry extends Gtk.SearchEntry {
 
-    _init(props) {
-        super._init(props);
+    constructor(props) {
+        super(props);
 
-        this._popover =
-            new OSMTypePopover.OSMTypePopover({relative_to: this});
+        this._popover = new OSMTypePopover({relative_to: this});
 
         this.connect('size-allocate', (widget, allocation) => {
             /* Magic number to make the alignment pixel perfect. */
@@ -72,4 +69,8 @@ var OSMTypeSearchEntry = GObject.registerClass({
             }
         }
     }
-});
+}
+
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/osm-type-search-entry.ui'
+}, OSMTypeSearchEntry);

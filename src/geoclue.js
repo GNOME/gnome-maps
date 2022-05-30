@@ -19,38 +19,23 @@
  * Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
-const GObject = imports.gi.GObject;
-const GClue = imports.gi.Geoclue;
-const Gio = imports.gi.Gio;
+import GObject from 'gi://GObject';
+import GClue from 'gi://Geoclue';
+import Gio from 'gi://Gio';
 const Mainloop = imports.mainloop;
 
-const Place = imports.place;
-const Location = imports.location;
-const Settings = imports.settings;
-const Utils = imports.utils;
+import {Place} from './place.js';
+import {Location} from './location.js';
+import * as Utils from './utils.js';
 
-var State = {
+export const State = {
     INITIAL: 0,
     ON: 1,
     DENIED: 2,
     FAILED: 3
 };
 
-var Geoclue = GObject.registerClass({
-    Signals: {
-        'location-changed': { }
-    },
-    Properties: {
-        'state': GObject.ParamSpec.int('state',
-                                       '',
-                                       '',
-                                       GObject.ParamFlags.READABLE |
-                                       GObject.ParamFlags.WRITABLE,
-                                       State.INITIAL,
-                                       State.FAILED,
-                                       State.INITIAL)
-    },
-}, class Geoclue extends GObject.Object {
+export class Geoclue extends GObject.Object {
 
     set state(s) {
         this._state = s;
@@ -61,8 +46,8 @@ var Geoclue = GObject.registerClass({
         return this._state;
     }
 
-    _init() {
-        super._init();
+    constructor() {
+        super();
         this.place = null;
         this._state = State.INITIAL;
 
@@ -107,7 +92,7 @@ var Geoclue = GObject.registerClass({
 
     _onLocationNotify(simple) {
         let geoclueLocation = simple.get_location();
-        let location = new Location.Location({
+        let location = new Location({
             latitude: geoclueLocation.latitude,
             longitude: geoclueLocation.longitude,
             accuracy: geoclueLocation.accuracy,
@@ -119,8 +104,8 @@ var Geoclue = GObject.registerClass({
 
     _updateLocation(location) {
         if (!this.place)
-            this.place = new Place.Place({ name: _("Current Location"),
-                                           isCurrentLocation: true });
+            this.place = new Place({ name: _("Current Location"),
+                                     isCurrentLocation: true });
 
         this.place.location = location;
         this.emit('location-changed');
@@ -128,4 +113,20 @@ var Geoclue = GObject.registerClass({
                     " (" + location.latitude + ", " + location.longitude +
                     ", accuracy = " + location.accuracy + " m)");
     }
-});
+}
+
+GObject.registerClass({
+    Signals: {
+        'location-changed': { }
+    },
+    Properties: {
+        'state': GObject.ParamSpec.int('state',
+                                       '',
+                                       '',
+                                       GObject.ParamFlags.READABLE |
+                                       GObject.ParamFlags.WRITABLE,
+                                       State.INITIAL,
+                                       State.FAILED,
+                                       State.INITIAL)
+    },
+}, Geoclue);

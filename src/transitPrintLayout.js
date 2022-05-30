@@ -19,20 +19,20 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Cairo = imports.cairo;
-const Champlain = imports.gi.Champlain;
-const Clutter = imports.gi.Clutter;
-const GObject = imports.gi.GObject;
-const Pango = imports.gi.Pango;
+import Cairo from 'cairo';
+import Champlain from 'gi://Champlain';
+import Clutter from 'gi://Clutter';
+import GObject from 'gi://GObject';
+import Pango from 'gi://Pango';
 
-const Color = imports.color;
-const Gfx = imports.gfx;
-const MapSource = imports.mapSource;
-const PrintLayout = imports.printLayout;
-const Transit = imports.transit;
-const TransitArrivalMarker = imports.transitArrivalMarker;
-const TransitBoardMarker = imports.transitBoardMarker;
-const TransitWalkMarker = imports.transitWalkMarker;
+import * as Color from './color.js';
+import * as Gfx from './gfx.js';
+import * as MapSource from './mapSource.js';
+import {PrintLayout} from './printLayout.js';
+import * as Transit from './transit.js';
+import {TransitArrivalMarker} from './transitArrivalMarker.js';
+import {TransitBoardMarker} from './transitBoardMarker.js';
+import {TransitWalkMarker} from './transitWalkMarker.js';
 
 // stroke color for walking paths
 const _STROKE_COLOR = new Clutter.Color({ red: 0,
@@ -62,16 +62,17 @@ const _Instruction = {
 // luminance threashhold for drawing outline around route label badges
 const OUTLINE_LUMINANCE_THREASHHOLD = 0.9;
 
-var TransitPrintLayout = GObject.registerClass(
-class TransitPrintLayout extends PrintLayout.PrintLayout {
+export class TransitPrintLayout extends PrintLayout {
 
-    _init(params) {
-        this._itinerary = params.itinerary;
+    constructor(params) {
+        let itinerary = params.itinerary;
         delete params.itinerary;
 
         params.totalSurfaces = this._getNumberOfSurfaces();
 
-        super._init(params);
+        super(params);
+
+        this._itinerary = itinerary;
     }
 
     _getNumberOfSurfaces() {
@@ -149,16 +150,15 @@ class TransitPrintLayout extends PrintLayout.PrintLayout {
     }
 
     _createStartMarker(leg, previousLeg) {
-        return new TransitWalkMarker.TransitWalkMarker({ leg: leg,
-                                                         previousLeg: previousLeg });
+        return new TransitWalkMarker({ leg: leg, previousLeg: previousLeg });
     }
 
     _createBoardMarker(leg) {
-        return new TransitBoardMarker.TransitBoardMarker({ leg: leg });
+        return new TransitBoardMarker({ leg: leg });
     }
 
     _createArrivalMarker(leg) {
-        return new TransitArrivalMarker.TransitArrivalMarker({ leg: leg });
+        return new TransitArrivalMarker({ leg: leg });
     }
 
     _addRouteLayer(view, index) {
@@ -335,4 +335,6 @@ class TransitPrintLayout extends PrintLayout.PrintLayout {
 
         this._drawArrival(instructionWidth, instructionHeight);
     }
-});
+}
+
+GObject.registerClass(TransitPrintLayout);

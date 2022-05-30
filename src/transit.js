@@ -19,16 +19,18 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const _ = imports.gettext.gettext;
+import gettext from 'gettext';
 
-const Utils = imports.utils;
+import * as Utils from './utils.js';
+
+const _ = gettext.gettext;
 
 /**
  * Get the label to display for the starting point of an itinerary leg.
  * leg: the itinerary leg
  * isFirstLeg: true if this is the first leg of the itinerary.
  */
-function getFromLabel(leg, isFirstLeg) {
+export function getFromLabel(leg, isFirstLeg) {
     if (isFirstLeg) {
         if (leg.from) {
             /* Translators: this is a format string indicating instructions
@@ -51,7 +53,7 @@ function getFromLabel(leg, isFirstLeg) {
  * Get the label to display for the destination headsign.
  * leg: the itinerary leg
  */
-function getHeadsignLabel(leg) {
+export function getHeadsignLabel(leg) {
     if (leg.transit && leg.headsign) {
         return leg.headsign;
     } else if (!leg.transit) {
@@ -67,7 +69,7 @@ function getHeadsignLabel(leg) {
 /**
  * Get the label to display for arrival of the final leg of an itinerary.
  */
-function getArrivalLabel(lastLeg) {
+export function getArrivalLabel(lastLeg) {
     if (lastLeg.to) {
         /* Translators: this a format string indicating arriving at the
          * destination of journey with the arrival address and transit

@@ -19,38 +19,37 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-pkg.require({ 'Gdk': '3.0',
-              'Gtk': '3.0' });
-pkg.initFormat();
+import 'gi://Gdk?version=3.0';
+import 'gi://Gtk?version=3.0';
 
-const Geocode = imports.gi.GeocodeGlib;
-const GLib = imports.gi.GLib;
+import GeocodeGlib from 'gi://GeocodeGlib';
+import GLib from 'gi://GLib';
+
+import * as Utils from './utils.js';
 
 const JsUnit = imports.jsUnit;
 
-const Utils = imports.utils;
+pkg.initFormat();
 
-function main() {
-    osmTypeToStringTest();
-    dashedToCamelCaseTest();
-    getAccuracyDescriptionTest();
-    prettyTimeTest();
-    prettyDistanceTest();
-    prettyPopulationTest();
-    normalizeStringTest();
-    validWebsiteTest();
-    validEmailTest();
-    firstToLocaleUpperCaseTest();
-    splitAtFirstTest();
-}
+osmTypeToStringTest();
+dashedToCamelCaseTest();
+getAccuracyDescriptionTest();
+prettyTimeTest();
+prettyDistanceTest();
+prettyPopulationTest();
+normalizeStringTest();
+validWebsiteTest();
+validEmailTest();
+firstToLocaleUpperCaseTest();
+splitAtFirstTest();
 
 function osmTypeToStringTest() {
     JsUnit.assertEquals('OSM type node', 'node',
-                        Utils.osmTypeToString(Geocode.PlaceOsmType.NODE));
+                        Utils.osmTypeToString(GeocodeGlib.PlaceOsmType.NODE));
     JsUnit.assertEquals('OSM type way', 'way',
-                        Utils.osmTypeToString(Geocode.PlaceOsmType.WAY));
+                        Utils.osmTypeToString(GeocodeGlib.PlaceOsmType.WAY));
     JsUnit.assertEquals('OSM type relation', 'relation',
-                        Utils.osmTypeToString(Geocode.PlaceOsmType.RELATION));
+                        Utils.osmTypeToString(GeocodeGlib.PlaceOsmType.RELATION));
 }
 
 function dashedToCamelCaseTest() {
@@ -60,7 +59,7 @@ function dashedToCamelCaseTest() {
 
 function getAccuracyDescriptionTest() {
     JsUnit.assertEquals('Unknown',
-                        Utils.getAccuracyDescription(Geocode.LOCATION_ACCURACY_UNKNOWN));
+                        Utils.getAccuracyDescription(GeocodeGlib.LOCATION_ACCURACY_UNKNOWN));
     JsUnit.assertEquals('Exact', Utils.getAccuracyDescription(0));
     // for other distances, the same as prettyDistance()
     JsUnit.assertEquals(Utils.prettyDistance(100),
@@ -82,16 +81,16 @@ function prettyTimeTest() {
 }
 
 function prettyDistanceTest() {
-    // tests with metric system, using override mock function
-    Utils.getMeasurementSystem = function() { return Utils.METRIC_SYSTEM; };
+    // tests with metric system
+    Utils._setMeasurementSystem(Utils.METRIC_SYSTEM);
     JsUnit.assertEquals('1 km', Utils.prettyDistance(1000, false));
     JsUnit.assertEquals('2.4 km', Utils.prettyDistance(2400, false));
     JsUnit.assertEquals('123 m', Utils.prettyDistance(123, false));
     JsUnit.assertEquals('1 km', Utils.prettyDistance(1001, false));
     JsUnit.assertEquals('1,001 m', Utils.prettyDistance(1001, true));
 
-    // tests with imperial system, using override mock function
-    Utils.getMeasurementSystem = function() { return Utils.IMPERIAL_SYSTEM; };
+    // tests with imperial system
+    Utils._setMeasurementSystem(Utils.IMPERIAL_SYSTEM);
     JsUnit.assertEquals('1 mi', Utils.prettyDistance(1609, false));
     JsUnit.assertEquals('2.4 mi', Utils.prettyDistance(3900, false));
     JsUnit.assertEquals('0.3 mi', Utils.prettyDistance(440, false));
@@ -150,3 +149,4 @@ function splitAtFirstTest() {
     _assertPair('q', 'Query=more', Utils.splitAtFirst('q=Query=more', '='));
     JsUnit.assertEquals(1, Utils.splitAtFirst('noseparator', '=').length);
 }
+

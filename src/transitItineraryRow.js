@@ -19,27 +19,23 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
-const TransitRouteLabel = imports.transitRouteLabel;
+import {TransitRouteLabel} from './transitRouteLabel.js';
 
 // maximum number of legs to show before abbreviating with a … in the middle
 const MAX_LEGS_SHOWN = 8;
 
-var TransitItineraryRow = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/transit-itinerary-row.ui',
-    InternalChildren: ['timeLabel',
-                       'durationLabel',
-                       'summaryGrid']
-}, class TransitItineraryRow extends Gtk.ListBoxRow {
+export class TransitItineraryRow extends Gtk.ListBoxRow {
 
-    _init(params) {
-        this._itinerary = params.itinerary;
+    constructor(params) {
+        let itinerary = params.itinerary;
         delete params.itinerary;
 
-        super._init(params);
+        super(params);
 
+        this._itinerary = itinerary;
         this._timeLabel.label = this._itinerary.prettyPrintTimeInterval();
         this._durationLabel.label = this._itinerary.prettyPrintDuration();
 
@@ -137,12 +133,19 @@ var TransitItineraryRow = GObject.registerClass({
             let grid = new Gtk.Grid({ visible: true, column_spacing: 2 });
 
             grid.attach(icon, 0, 0, 1, 1);
-            grid.attach(new TransitRouteLabel.TransitRouteLabel({ leg: leg,
-                                                                  compact: useCompact,
-                                                                  visible: true }),
+            grid.attach(new TransitRouteLabel({ leg: leg,
+                                                compact: useCompact,
+                                                visible: true }),
                         1, 0, 1, 1);
 
             return grid;
         }
     }
-});
+}
+
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/transit-itinerary-row.ui',
+    InternalChildren: ['timeLabel',
+                       'durationLabel',
+                       'summaryGrid']
+}, TransitItineraryRow);

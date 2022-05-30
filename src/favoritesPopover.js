@@ -17,41 +17,26 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
-const GLib = imports.gi.GLib;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import GLib from 'gi://GLib';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
-const Application = imports.application;
-const PlaceListRow = imports.placeListRow;
-const PlaceStore = imports.placeStore;
+import {Application} from './application.js';
+import {PlaceListRow} from './placeListRow.js';
+import {PlaceStore} from './placeStore.js';
 
 const _N_VISIBLE = 6;
 
-var FavoritesPopover = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/favorites-popover.ui',
-    InternalChildren: [ 'mainGrid',
-                        'entry',
-                        'scrolledWindow',
-                        'list' ],
-    Properties: {
-        'rows': GObject.ParamSpec.int('rows',
-                                        '',
-                                        '',
-                                        GObject.ParamFlags.READABLE |
-                                        GObject.ParamFlags.WRITABLE,
-                                        0, GLib.MAXINT32, 0)
-    }
-}, class FavoritesPopover extends Gtk.Popover {
+export class FavoritesPopover extends Gtk.Popover {
 
-    _init(params) {
-        params = params || { };
-
-        this._mapView = params.mapView;
+    constructor(params) {
+        let mapView = params.mapView;
         delete params.mapView;
 
         params.transitions_enabled = false;
-        super._init(params);
+        super(params);
 
+        this._mapView = mapView;
         this._rows = 0;
 
         let placeType = PlaceStore.PlaceType.FAVORITE;
@@ -81,7 +66,7 @@ var FavoritesPopover = GObject.registerClass({
 
         this._list.connect('row-activated', (list, row) => {
             this.hide();
-            this._mapView.showPlace(row.place, true);
+            mapView.showPlace(row.place, true);
         });
 
         this._list.set_filter_func((row) => {
@@ -108,13 +93,28 @@ var FavoritesPopover = GObject.registerClass({
         let rows = 0;
         this._model.foreach((model, path, iter) => {
             let place = model.get_value(iter, PlaceStore.Columns.PLACE);
+            let row = new PlaceListRow({ place: place, can_focus: true });
 
-            let row = new PlaceListRow.PlaceListRow({ place: place,
-                                                      can_focus: true });
             this._list.insert(row, -1);
             rows++;
         });
 
         this.rows = rows;
     }
-});
+}
+
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/favorites-popover.ui',
+    InternalChildren: [ 'mainGrid',
+                        'entry',
+                        'scrolledWindow',
+                        'list' ],
+    Properties: {
+        'rows': GObject.ParamSpec.int('rows',
+                                        '',
+                                        '',
+                                        GObject.ParamFlags.READABLE |
+                                        GObject.ParamFlags.WRITABLE,
+                                        0, GLib.MAXINT32, 0)
+    }
+}, FavoritesPopover);

@@ -18,35 +18,34 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
-const Cairo = imports.cairo;
-const Champlain = imports.gi.Champlain;
-const Clutter = imports.gi.Clutter;
-const GObject = imports.gi.GObject;
+import Cairo from 'cairo';
+import Champlain from 'gi://Champlain';
+import Clutter from 'gi://Clutter';
+import GObject from 'gi://GObject';
 const Mainloop = imports.mainloop;
 
-const BoundingBox = imports.boundingBox;
-const Geojsonvt = imports.geojsonvt.geojsonvt;
-const Location = imports.location;
-const Place = imports.place;
-const PlaceMarker = imports.placeMarker;
-const Service = imports.service;
-const Utils = imports.utils;
-const GeoJSONStyle = imports.geoJSONStyle;
-const MapView = imports.mapView;
+import {BoundingBox} from './boundingBox.js';
+import * as Geojsonvt from './geojsonvt/geojsonvt.js';
+import {Location} from './location.js';
+import {Place} from './place.js';
+import {PlaceMarker} from './placeMarker.js';
+import * as Service from './service.js';
+import * as Utils from './utils.js';
+import {GeoJSONStyle} from './geoJSONStyle.js';
+import {MapView} from './mapView.js';
 
 const TileFeature = { POINT: 1,
                       LINESTRING: 2,
                       POLYGON: 3 };
 
-var GeoJSONSource = GObject.registerClass(
-class GeoJSONSource extends Champlain.TileSource {
+export class GeoJSONSource extends Champlain.TileSource {
 
-    _init(params) {
-        super._init();
+    constructor(params) {
+        super();
 
         this._mapView = params.mapView;
         this._markerLayer = params.markerLayer;
-        this._bbox = new BoundingBox.BoundingBox();
+        this._bbox = new BoundingBox();
         this._tileSize = Service.getService().tiles.street.tile_size;
     }
 
@@ -129,16 +128,12 @@ class GeoJSONSource extends Champlain.TileSource {
         this._bbox.extend(coordinates[1],
                           coordinates[0]);
 
-        let location = new Location.Location({
-            latitude: coordinates[1],
-            longitude: coordinates[0]
-        });
+        let location = new Location({ latitude: coordinates[1],
+                                      longitude: coordinates[0] });
 
-        let place = new Place.Place({ name: name,
-                                      store: false,
-                                      location: location });
-        let placeMarker = new PlaceMarker.PlaceMarker({ place: place,
-                                                        mapView: this._mapView });
+        let place = new Place({ name: name, store: false, location: location });
+        let placeMarker = new PlaceMarker({ place: place,
+                                            mapView: this._mapView });
         this._markerLayer.add_marker(placeMarker);
     }
 
@@ -240,7 +235,7 @@ class GeoJSONSource extends Champlain.TileSource {
                 if (feature.type === TileFeature.POINT)
                     return;
 
-                let geoJSONStyleObj = GeoJSONStyle.GeoJSONStyle.parseSimpleStyle(feature.tags);
+                let geoJSONStyleObj = GeoJSONStyle.parseSimpleStyle(feature.tags);
 
                 feature.geometry.forEach((geometry) => {
                     let first = true;
@@ -278,4 +273,6 @@ class GeoJSONSource extends Champlain.TileSource {
 
         content.invalidate();
     }
-});
+}
+
+GObject.registerClass(GeoJSONSource);

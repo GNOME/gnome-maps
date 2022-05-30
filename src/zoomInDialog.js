@@ -20,30 +20,29 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
-const OSMEdit = imports.osmEdit;
+import {OSMEdit} from './osmEdit.js';
 
-var ZoomInDialog = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/zoom-in-dialog.ui',
-    InternalChildren: [ 'cancelButton',
-                        'zoomInButton'],
-}, class ZoomInDialog extends Gtk.Dialog {
+export class ZoomInDialog extends Gtk.Dialog {
 
-    _init(params) {
-        this._latitude = params.latitude;
+    constructor(params) {
+        let latitude = params.latitude;
         delete params.latitude;
-        this._longitude = params.longitude;
+        let longitude = params.longitude;
         delete params.longitude;
-        this._view = params.view;
+        let view = params.view;
         delete params.view;
 
         /* This is a construct-only property and cannot be set by GtkBuilder */
         params.use_header_bar = true;
 
-        super._init(params);
+        super(params);
 
+        this._latitude = latitude;
+        this._longitude = longitude;
+        this._view = view;
         this._zoomInButton.connect('clicked', () => this._onZoomIn());
         this._cancelButton.connect('clicked', () => this._onCancel());
     }
@@ -59,4 +58,10 @@ var ZoomInDialog = GObject.registerClass({
     _onCancel() {
         this.response(Gtk.ResponseType.CANCEL);
     }
-});
+}
+
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/zoom-in-dialog.ui',
+    InternalChildren: [ 'cancelButton',
+                        'zoomInButton'],
+}, ZoomInDialog);

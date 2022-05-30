@@ -19,24 +19,26 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const _ = imports.gettext.gettext;
+import gettext from 'gettext';
 
-const Champlain = imports.gi.Champlain;
-const GLib = imports.gi.GLib;
-const Soup = imports.gi.Soup;
+import Champlain from 'gi://Champlain';
+import GLib from 'gi://GLib';
+import Soup from 'gi://Soup';
 
-const Application = imports.application;
-const EPAF = imports.epaf;
-const GraphHopperTransit = imports.graphHopperTransit;
-const HTTP = imports.http;
-const HVT = imports.hvt;
-const Location = imports.location;
-const Place = imports.place;
-const Route = imports.route;
-const RouteQuery = imports.routeQuery;
-const Service = imports.service;
-const TransitPlan = imports.transitPlan;
-const Utils = imports.utils;
+import {Application} from '../application.js';
+import * as EPAF from '../epaf.js';
+import * as GraphHopperTransit from '../graphHopperTransit.js';
+import {Query} from '../http.js';
+import * as HVT from '../hvt.js';
+import {Location} from '../location.js';
+import {Place} from '../place.js';
+import {TurnPoint} from '../route.js';
+import {RouteQuery} from '../routeQuery.js';
+import * as Service from '../service.js';
+import {Itinerary, Leg, RouteType, Stop} from '../transitPlan.js';
+import * as Utils from '../utils.js';
+
+const _ = gettext.gettext;
 
 /**
  * This module implements the interface for communicating with an OpenTripPlanner
@@ -110,7 +112,7 @@ const NUM_STOPS_TO_TRY = 5;
 // gap to use when fetching additional routes
 const GAP_BEFORE_MORE_RESULTS = 120;
 
-var OpenTripPlanner = class OpenTripPlanner {
+export class OpenTripPlanner {
 
     constructor(params) {
         let onlyTransitDataEnv = GLib.getenv('OTP_ONLY_TRANSIT_DATA');
@@ -160,15 +162,15 @@ var OpenTripPlanner = class OpenTripPlanner {
 
     _getMode(routeType) {
         switch (routeType) {
-        case TransitPlan.RouteType.TRAM:
+        case RouteType.TRAM:
             return 'TRAM';
-        case TransitPlan.RouteType.TRAIN:
+        case RouteType.TRAIN:
             return 'RAIL';
-        case TransitPlan.RouteType.SUBWAY:
+        case RouteType.SUBWAY:
             return 'SUBWAY';
-        case TransitPlan.RouteType.BUS:
+        case RouteType.BUS:
             return 'BUS';
-        case TransitPlan.RouteType.FERRY:
+        case RouteType.FERRY:
             return 'FERRY';
         case HVT.AIR_SERVICE:
             return 'AIRPLANE';
@@ -248,7 +250,7 @@ var OpenTripPlanner = class OpenTripPlanner {
     }
 
     _fetchRoutesForStop(stop, callback) {
-        let query = new HTTP.Query();
+        let query = new Query();
         let uri = new Soup.URI(this._getRouterUrl() + '/index/stops/' +
                                stop.id + '/routes');
         let request = new Soup.Message({ method: 'GET', uri: uri });
@@ -273,16 +275,16 @@ var OpenTripPlanner = class OpenTripPlanner {
         for (let i = 0; i < desiredTransitTypes.length; i++) {
             let type = desiredTransitTypes[i];
 
-            if (type === TransitPlan.RouteType.TRAM && route.mode === 'TRAM')
+            if (type === RouteType.TRAM && route.mode === 'TRAM')
                 return true;
-            else if (type === TransitPlan.RouteType.SUBWAY && route.mode === 'SUBWAY')
+            else if (type === RouteType.SUBWAY && route.mode === 'SUBWAY')
                 return true;
-            else if (type === TransitPlan.RouteType.TRAIN && route.mode === 'RAIL')
+            else if (type === RouteType.TRAIN && route.mode === 'RAIL')
                 return true;
-            else if (type === TransitPlan.RouteType.BUS &&
+            else if (type === RouteType.BUS &&
                      (route.mode === 'BUS' || route.mode === 'TAXI'))
                 return true;
-            else if (type === TransitPlan.RouteType.FERRY && route.mode === 'FERRY')
+            else if (type === RouteType.FERRY && route.mode === 'FERRY')
                 return true;
         }
 
@@ -322,7 +324,7 @@ var OpenTripPlanner = class OpenTripPlanner {
             let params = { lat: point.place.location.latitude,
                            lon: point.place.location.longitude,
                            radius: STOP_SEARCH_RADIUS };
-            let query = new HTTP.Query(params);
+            let query = new Query(params);
             let uri = new Soup.URI(this._getRouterUrl() +
                                    '/index/stops?' + query.toString());
             let request = new Soup.Message({ method: 'GET', uri: uri });
@@ -518,7 +520,7 @@ var OpenTripPlanner = class OpenTripPlanner {
     }
 
     _getPlanUrlFromParams(params) {
-        let query = new HTTP.Query(params);
+        let query = new Query(params);
 
         return this._getRouterUrl() + '/plan?' + query.toString();
     }
@@ -724,7 +726,7 @@ var OpenTripPlanner = class OpenTripPlanner {
                                                               to.place.name,
                                                               route);
                 let newItinerary =
-                    new TransitPlan.Itinerary({departure: itinerary.departure,
+                    new Itinerary({departure: itinerary.departure,
                                                duration: route.time / 1000,
                                                legs: [leg]});
                 callback(newItinerary);
@@ -1006,11 +1008,11 @@ var OpenTripPlanner = class OpenTripPlanner {
 
     _createItinerary(itinerary) {
         let legs = this._createLegs(itinerary.legs);
-        return new TransitPlan.Itinerary({ duration:  itinerary.duration,
-                                           transfers: itinerary.transfers,
-                                           departure: itinerary.startTime,
-                                           arrival:   itinerary.endTime,
-                                           legs:      legs});
+        return new Itinerary({ duration:  itinerary.duration,
+                               transfers: itinerary.transfers,
+                               departure: itinerary.startTime,
+                               arrival:   itinerary.endTime,
+                               legs:      legs});
     }
 
     _createLegs(legs) {
@@ -1048,27 +1050,27 @@ var OpenTripPlanner = class OpenTripPlanner {
             last && !leg.transitLeg ? this._query.filledPoints.last().place.name :
                                       leg.to.name;
 
-        let result = new TransitPlan.Leg({ departure:            leg.from.departure,
-                                           arrival:              leg.to.arrival,
-                                           from:                 from,
-                                           to:                   to,
-                                           headsign:             leg.headsign,
-                                           fromCoordinate:       [leg.from.lat,
-                                                                  leg.from.lon],
-                                           toCoordinate:         [leg.to.lat,
-                                                                  leg.to.lon],
-                                           route:                leg.route,
-                                           routeType:            leg.routeType,
-                                           polyline:             polyline,
-                                           isTransit:            leg.transitLeg,
-                                           distance:             leg.distance,
-                                           duration:             leg.duration,
-                                           agencyName:           leg.agencyName,
-                                           agencyUrl:            leg.agencyUrl,
-                                           agencyTimezoneOffset: leg.agencyTimeZoneOffset,
-                                           color:                color,
-                                           textColor:            textColor,
-                                           tripShortName:        leg.tripShortName });
+        let result = new Leg({ departure:            leg.from.departure,
+                               arrival:              leg.to.arrival,
+                               from:                 from,
+                               to:                   to,
+                               headsign:             leg.headsign,
+                               fromCoordinate:       [leg.from.lat,
+                                                      leg.from.lon],
+                               toCoordinate:         [leg.to.lat,
+                                                      leg.to.lon],
+                               route:                leg.route,
+                               routeType:            leg.routeType,
+                               polyline:             polyline,
+                               isTransit:            leg.transitLeg,
+                               distance:             leg.distance,
+                               duration:             leg.duration,
+                               agencyName:           leg.agencyName,
+                               agencyUrl:            leg.agencyUrl,
+                               agencyTimezoneOffset: leg.agencyTimeZoneOffset,
+                               color:                color,
+                               textColor:            textColor,
+                               tripShortName:        leg.tripShortName });
 
         if (leg.transitLeg && leg.intermediateStops)
             result.intermediateStops = this._createIntermediateStops(leg);
@@ -1086,20 +1088,20 @@ var OpenTripPlanner = class OpenTripPlanner {
         /* instroduce an extra stop at the end (in additional to the
          * intermediate stops we get from OTP
          */
-        intermediateStops.push(new TransitPlan.Stop({ name: leg.to.name,
-                                                      arrival: leg.to.arrival,
-                                                      agencyTimezoneOffset: leg.agencyTimeZoneOffset,
-                                                      coordinate: [leg.to.lat,
-                                                                   leg.to.lon] }));
+        intermediateStops.push(new Stop({ name: leg.to.name,
+                                          arrival: leg.to.arrival,
+                                          agencyTimezoneOffset: leg.agencyTimeZoneOffset,
+                                          coordinate: [leg.to.lat,
+                                                       leg.to.lon] }));
         return intermediateStops;
     }
 
     _createIntermediateStop(stop, leg) {
-        return new TransitPlan.Stop({ name:       stop.name,
-                                      arrival:    stop.arrival,
-                                      departure:  stop.departure,
-                                      agencyTimezoneOffset: leg.agencyTimeZoneOffset,
-                                      coordinate: [stop.lat, stop.lon] });
+        return new Stop({ name:       stop.name,
+                          arrival:    stop.arrival,
+                          departure:  stop.departure,
+                          agencyTimezoneOffset: leg.agencyTimeZoneOffset,
+                          coordinate: [stop.lat, stop.lon] });
     }
 
     /**
@@ -1109,9 +1111,9 @@ var OpenTripPlanner = class OpenTripPlanner {
     _createTurnpoints(leg, polyline) {
         if (leg.steps) {
             let steps = leg.steps;
-            let startPoint = new Route.TurnPoint({
+            let startPoint = new TurnPoint({
                 coordinate:  polyline[0],
-                type:        Route.TurnPointType.START,
+                type:        TurnPoint.Type.START,
                 distance:    0,
                 instruction: _("Start!"),
                 time:        0,
@@ -1122,9 +1124,9 @@ var OpenTripPlanner = class OpenTripPlanner {
                 turnpoints.push(this._createTurnpoint(step));
             });
 
-            let endPoint = new Route.TurnPoint({
+            let endPoint = new TurnPoint({
                 coordinate: polyline.last(),
-                type:       Route.TurnPoint.END,
+                type:       TurnPoint.Type.END,
                 distance:   0,
                 instruction:_("Arrive")
             });
@@ -1140,7 +1142,7 @@ var OpenTripPlanner = class OpenTripPlanner {
     _createTurnpoint(step) {
         let coordinate = new Champlain.Coordinate({ latitude: step.lat,
                                                     longitude: step.lon });
-        let turnpoint = new Route.TurnPoint({
+        let turnpoint = new TurnPoint({
             coordinate: coordinate,
             type: this._getTurnpointType(step),
             distance: step.distance,
@@ -1154,28 +1156,28 @@ var OpenTripPlanner = class OpenTripPlanner {
         switch (step.relativeDirection) {
             case 'DEPART':
             case 'CONTINUE':
-                return Route.TurnPointType.CONTINUE;
+                return TurnPoint.Type.CONTINUE;
             case 'LEFT':
-                return Route.TurnPointType.LEFT;
+                return TurnPoint.Type.LEFT;
             case 'SLIGHTLY_LEFT':
-                return Route.TurnPointType.SLIGHT_LEFT;
+                return TurnPoint.Type.SLIGHT_LEFT;
             case 'HARD_LEFT':
-                return Route.TurnPointType.SHARP_LEFT;
+                return TurnPoint.Type.SHARP_LEFT;
             case 'RIGHT':
-                return Route.TurnPointType.RIGHT;
+                return TurnPoint.Type.RIGHT;
             case 'SLIGHTLY_RIGHT':
-                return Route.TurnPointType.SLIGHT_RIGHT;
+                return TurnPoint.Type.SLIGHT_RIGHT;
             case 'HARD_RIGHT':
-                return Route.TurnPointType.SHARP_RIGHT;
+                return TurnPoint.Type.SHARP_RIGHT;
             case 'CIRCLE_CLOCKWISE':
             case 'CIRCLE_COUNTERCLOCKWISE':
-                return Route.TurnPointType.ROUNDABOUT;
+                return TurnPoint.Type.ROUNDABOUT;
             case 'ELEVATOR':
-                return Route.TurnPointType.ELEVATOR;
+                return TurnPoint.Type.ELEVATOR;
             case 'UTURN_LEFT':
-                return Route.TurnPointType.UTURN_LEFT;
+                return TurnPoint.Type.UTURN_LEFT;
             case 'UTURN_RIGHT':
-                return Route.TurnPointType.UTURN_RIGHT;
+                return TurnPoint.Type.UTURN_RIGHT;
             default:
                 return null;
         }

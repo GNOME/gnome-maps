@@ -19,22 +19,22 @@
  * Author: Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
  */
 
-const GLib = imports.gi.GLib;
+import GLib from 'gi://GLib';
 const Mainloop = imports.mainloop;
-const Soup = imports.gi.Soup;
+import Soup from 'gi://Soup';
 
-const BoundingBox = imports.boundingBox;
-const EPAF = imports.epaf;
-const HTTP = imports.http;
-const Route = imports.route;
-const RouteQuery = imports.routeQuery;
-const Utils = imports.utils;
+import {BoundingBox} from './boundingBox.js';
+import * as EPAF from './epaf.js';
+import {Query} from './http.js';
+import {TurnPoint, Route} from './route.js';
+import {RouteQuery} from './routeQuery.js';
+import * as Utils from './utils.js';
 
 /**
  * Directional sign from the GraphHopper API.
  * https://github.com/graphhopper/graphhopper/blob/master/docs/web/api-doc.md
  */
-var Sign = {
+const Sign = {
     UTURN: -98,
     UTURN_LEFT: -8,
     KEEP_LEFT: -7,
@@ -53,7 +53,7 @@ var Sign = {
     UTURN_RIGHT: 8
 }
 
-var GraphHopper = class GraphHopper {
+export class GraphHopper {
 
     get route() {
         return this._route;
@@ -64,7 +64,7 @@ var GraphHopper = class GraphHopper {
         this._key     = "VCIHrHj0pDKb8INLpT4s5hVadNmJ1Q3vi0J4nJYP";
         this._baseURL = "https://graphhopper.com/api/1/route?";
         this._locale  = GLib.get_language_names()[0];
-        this._route   = new Route.Route();
+        this._route   = new Route();
         this.storedRoute = null;
         this._query = params.query;
     }
@@ -146,13 +146,12 @@ var GraphHopper = class GraphHopper {
             return [point.place.location.latitude, point.place.location.longitude].join(',');
         });
         let vehicle = RouteQuery.Transportation.toString(transportation);
-        let query = new HTTP.Query({ type:    'json',
-                                     key:     this._key,
-                                     vehicle: vehicle,
-                                     locale:  this._locale,
-                                     point:   locations,
-                                     debug:   Utils.debugEnabled
-                                   });
+        let query = new Query({ type:    'json',
+                                key:     this._key,
+                                vehicle: vehicle,
+                                locale:  this._locale,
+                                point:   locations,
+                                debug:   Utils.debugEnabled });
         let url = this._baseURL + query.toString();
         Utils.debug("Sending route request to: " + url);
         return url;
@@ -189,7 +188,7 @@ var GraphHopper = class GraphHopper {
     _createRoute(route) {
         let path       = EPAF.decode(route.points);
         let turnPoints = this._createTurnPoints(path, route.instructions);
-        let bbox       = new BoundingBox.BoundingBox();
+        let bbox       = new BoundingBox();
 
         // GH does lonlat-order
         bbox.extend(route.bbox[1], route.bbox[0]);
@@ -204,9 +203,9 @@ var GraphHopper = class GraphHopper {
 
     _createTurnPoints(path, instructions) {
         let via = 0;
-        let startPoint = new Route.TurnPoint({
+        let startPoint = new TurnPoint({
             coordinate:  path[0],
-            type:        Route.TurnPointType.START,
+            type:        TurnPoint.Type.START,
             distance:    0,
             instruction: _("Start!"),
             time:        0,
@@ -215,12 +214,12 @@ var GraphHopper = class GraphHopper {
         let rest = this._foldInstructions(instructions).map((instr) => {
             let type = this._createTurnPointType(instr.sign);
             let text = instr.text;
-            if (type === Route.TurnPointType.VIA) {
+            if (type === TurnPoint.Type.VIA) {
                 via++;
                 let viaPlace = this._query.filledPoints[via].place;
                 text = viaPlace.name || instr.text;
             }
-            return new Route.TurnPoint({
+            return new TurnPoint({
                 coordinate:  path[instr.interval[0]],
                 type:        type,
                 distance:    instr.distance,
@@ -259,23 +258,23 @@ var GraphHopper = class GraphHopper {
 
     _createTurnPointType(sign) {
         switch (sign) {
-            case Sign.UTURN:              return Route.TurnPointType.UTURN;
-            case Sign.UTURN_LEFT:         return Route.TurnPointType.UTURN_LEFT;
-            case Sign.KEEP_LEFT:          return Route.TurnPointType.KEEP_LEFT;
-            case Sign.LEAVE_ROUNDABOUT:   return Route.TurnPointType.LEAVE_ROUNDABOUT;
-            case Sign.TURN_SHARP_LEFT:    return Route.TurnPointType.SHARP_LEFT;
-            case Sign.TURN_LEFT:          return Route.TurnPointType.LEFT;
-            case Sign.TURN_SLIGHT_LEFT:   return Route.TurnPointType.SLIGHT_LEFT;
-            case Sign.CONTINUE_ON_STREET: return Route.TurnPointType.CONTINUE;
-            case Sign.TURN_SLIGHT_RIGHT:  return Route.TurnPointType.SLIGHT_RIGHT;
-            case Sign.TURN_RIGHT:         return Route.TurnPointType.RIGHT;
-            case Sign.TURN_SHARP_RIGHT:   return Route.TurnPointType.SHARP_RIGHT;
-            case Sign.FINISH:             return Route.TurnPointType.END;
-            case Sign.REACHED_VIA:        return Route.TurnPointType.VIA;
-            case Sign.USE_ROUNDABOUT:     return Route.TurnPointType.ROUNDABOUT;
-            case Sign.KEEP_RIGHT:         return Route.TurnPointType.KEEP_RIGHT;
-            case Sign.UTURN_RIGHT:        return Route.TurnPointType.UTURN_RIGHT;
+            case Sign.UTURN:              return TurnPoint.Type.UTURN;
+            case Sign.UTURN_LEFT:         return TurnPoint.Type.UTURN_LEFT;
+            case Sign.KEEP_LEFT:          return TurnPoint.Type.KEEP_LEFT;
+            case Sign.LEAVE_ROUNDABOUT:   return TurnPoint.Type.LEAVE_ROUNDABOUT;
+            case Sign.TURN_SHARP_LEFT:    return TurnPoint.Type.SHARP_LEFT;
+            case Sign.TURN_LEFT:          return TurnPoint.Type.LEFT;
+            case Sign.TURN_SLIGHT_LEFT:   return TurnPoint.Type.SLIGHT_LEFT;
+            case Sign.CONTINUE_ON_STREET: return TurnPoint.Type.CONTINUE;
+            case Sign.TURN_SLIGHT_RIGHT:  return TurnPoint.Type.SLIGHT_RIGHT;
+            case Sign.TURN_RIGHT:         return TurnPoint.Type.RIGHT;
+            case Sign.TURN_SHARP_RIGHT:   return TurnPoint.Type.SHARP_RIGHT;
+            case Sign.FINISH:             return TurnPoint.Type.END;
+            case Sign.REACHED_VIA:        return TurnPoint.Type.VIA;
+            case Sign.USE_ROUNDABOUT:     return TurnPoint.Type.ROUNDABOUT;
+            case Sign.KEEP_RIGHT:         return TurnPoint.Type.KEEP_RIGHT;
+            case Sign.UTURN_RIGHT:        return TurnPoint.Type.UTURN_RIGHT;
             default: return undefined;
         }
     }
-};
+}

@@ -19,18 +19,20 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
-const _ = imports.gettext.gettext;
+import gettext from 'gettext';
 
-const Geocode = imports.gi.GeocodeGlib;
-const Gio = imports.gi.Gio;
-const GLib = imports.gi.GLib;
-const GObject = imports.gi.GObject;
+import GeocodeGlib from 'gi://GeocodeGlib';
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
+import GObject from 'gi://GObject';
 
-const Location = imports.location;
-const Overpass = imports.overpass;
-const PlaceIcons = imports.placeIcons;
-const URIS = imports.uris;
-const Utils = imports.utils;
+import {Location} from './location.js';
+import {Overpass} from './overpass.js';
+import * as PlaceIcons from './placeIcons.js';
+import * as URIS from './uris.js';
+import * as Utils from './utils.js';
+
+const _ = gettext.gettext;
 
 // Matches coordinates string in 'Decimal Degrees' format
 const DECIMAL_COORDINATES_REGEX = (
@@ -44,11 +46,12 @@ const DMS_COORDINATES_REGEX = new RegExp(
     "i"
 );
 
-var Place = GObject.registerClass(
-class Place extends Geocode.Place {
+export class Place extends GeocodeGlib.Place {
 
-    _init(params) {
-        this.updateFromTags(params);
+    constructor(params) {
+        let originalParams = {};
+
+        Object.assign(originalParams, params);
 
         delete params.population;
         delete params.website;
@@ -60,64 +63,62 @@ class Place extends Geocode.Place {
         delete params.religion;
         delete params.takeaway;
         delete params.note;
-
-        this._isCurrentLocation = params.isCurrentLocation;
         delete params.isCurrentLocation;
-
-        this._initialZoom = params.initialZoom;
         delete params.initialZoom;
-
-        /* set to true if the instance is pre-filled with Overpass data,
-         * at the time of creation, as will be the case when loading a place
-         * from an OSM object URL
-         */
-        this._prefilled = params.prefilled;
         delete params.prefilled;
-
-        /* Determines if the place should be added to the place store */
-        if (typeof(params.store) === 'undefined') {
-            this._store = true;
-        } else {
-            this._store = params.store;
-            delete params.store;
-        }
-
+        delete params.store;
         delete params.wheelchair;
-
-        this._nativeName = params.nativeName;
         delete params.nativeName;
-
-        this._osmKey = params.osmKey;
         delete params.osmKey;
-
-        this._osmValue = params.osmValue;
         delete params.osmValue;
 
-        if (params.place) {
-            params = { osm_id: params.place.osm_id,
-                       osm_type: params.place.osm_type,
-                       name: params.place.name,
-                       location: params.place.location,
-                       bounding_box: params.place.bounding_box,
-                       place_type: params.place.place_type,
-                       street_address: params.place.street_address,
-                       street: params.place.street,
-                       building: params.place.building,
-                       postal_code: params.place.postal_code,
-                       area: params.place.area,
-                       town: params.place.town,
-                       state: params.place.state,
-                       county: params.place.county,
-                       country: params.place.country,
-                       country_code: params.place.country_code,
-                       continent: params.place.continent };
+        if (originalParams.place) {
+            params = { osm_id: originalParams.place.osm_id,
+                       osm_type: originalParams.place.osm_type,
+                       name: originalParams.place.name,
+                       location: originalParams.place.location,
+                       bounding_box: originalParams.place.bounding_box,
+                       place_type: originalParams.place.place_type,
+                       street_address: originalParams.place.street_address,
+                       street: originalParams.place.street,
+                       building: originalParams.place.building,
+                       postal_code: originalParams.place.postal_code,
+                       area: originalParams.place.area,
+                       town: originalParams.place.town,
+                       state: originalParams.place.state,
+                       county: originalParams.place.county,
+                       country: originalParams.place.country,
+                       country_code: originalParams.place.country_code,
+                       continent: originalParams.place.continent };
         }
 
         for (let prop in params)
             if (!params[prop])
                 delete params[prop];
 
-        super._init(params);
+        super(params);
+
+        this.updateFromTags(originalParams);
+
+        this._isCurrentLocation = originalParams.isCurrentLocation;
+        this._initialZoom = originalParams.initialZoom;
+
+        /* set to true if the instance is pre-filled with Overpass data,
+         * at the time of creation, as will be the case when loading a place
+         * from an OSM object URL
+         */
+        this._prefilled = originalParams.prefilled;
+
+        /* Determines if the place should be added to the place store */
+        if (typeof(originalParams.store) === 'undefined') {
+            this._store = true;
+        } else {
+            this._store = originalParams.store;
+        }
+
+        this._nativeName = originalParams.nativeName;
+        this._osmKey = originalParams.osmKey;
+        this._osmValue = originalParams.osmValue;
     }
 
     /**
@@ -409,100 +410,105 @@ class Place extends Geocode.Place {
             return false;
         }
     }
-});
 
-Place.fromJSON = function(obj) {
-    let props = { };
+    static fromJSON(obj) {
+        let props = { };
 
-    for (let key in obj) {
-        let prop = obj[key];
+        for (let key in obj) {
+            let prop = obj[key];
 
-        switch(key) {
-            case 'id':
-                props.osm_id = prop;
-                break;
+            switch(key) {
+                case 'id':
+                    props.osm_id = prop;
+                    break;
 
-            case 'location':
-                props.location = new Location.Location(prop);
-                break;
+                case 'location':
+                    props.location = new Location(prop);
+                    break;
 
-            case 'bounding_box':
-                if (prop)
-                    props.bounding_box = new Geocode.BoundingBox(prop);
-                break;
+                case 'bounding_box':
+                    if (prop)
+                        props.bounding_box = new GeocodeGlib.BoundingBox(prop);
+                    break;
 
-            default:
-                if (prop !== null && prop !== undefined)
-                    props[key] = prop;
-                break;
+                default:
+                    if (prop !== null && prop !== undefined)
+                        props[key] = prop;
+                    break;
+            }
+        }
+        return new Place(props);
+    }
+
+    static validateCoordinates(lat, lon) {
+        return lat <= 90 && lat >= -90 && lon <= 180 && lon >= -180;
+    }
+
+    static parseDecimalCoordinates(text) {
+        let match = text.match(DECIMAL_COORDINATES_REGEX);
+
+        if (match) {
+            let latitude = parseFloat(match[1]);
+            let longitude = parseFloat(match[2]);
+
+            return [latitude, longitude];
+        } else {
+            return null;
         }
     }
-    return new Place(props);
-};
 
-Place.validateCoordinates = function(lat, lon) {
-    return lat <= 90 && lat >= -90 && lon <= 180 && lon >= -180;
-};
+    static parseDmsCoordinates(text) {
+        let match = text.match(DMS_COORDINATES_REGEX);
 
-Place.parseDecimalCoordinates = function(text) {
-    let match = text.match(DECIMAL_COORDINATES_REGEX);
+        if (match) {
+            let degrees = parseFloat(match[1]);
+            let minutes = parseFloat(match[2]);
+            let seconds = parseFloat(match[3]);
+            let latitude = degrees + minutes / 60 + seconds / 3600;
 
-    if (match) {
-        let latitude = parseFloat(match[1]);
-        let longitude = parseFloat(match[2]);
+            if (match[4].toUpperCase() === "S")
+                latitude *= -1;
 
-        return [latitude, longitude];
-    } else {
-        return null;
+            degrees = parseFloat(match[5]);
+            minutes = parseFloat(match[6]);
+            seconds = parseFloat(match[7]);
+            let longitude = degrees + minutes / 60 + seconds / 3600;
+
+            if (match[8].toUpperCase() === "W")
+                longitude *= -1;
+
+            return [latitude, longitude];
+        } else {
+            return null;
+        }
+    };
+
+    static parseCoordinates(text) {
+        let coords = Place.parseDecimalCoordinates(text) ||
+            Place.parseDmsCoordinates(text);
+
+        if (coords && Place.validateCoordinates(coords[0], coords[1])) {
+            return new Location({ latitude: coords[0], longitude: coords[1] });
+        } else {
+            return null;
+        }
     }
-};
 
-Place.parseDmsCoordinates = function(text) {
-    let match = text.match(DMS_COORDINATES_REGEX);
-
-    if (match) {
-        let degrees = parseFloat(match[1]);
-        let minutes = parseFloat(match[2]);
-        let seconds = parseFloat(match[3]);
-        let latitude = degrees + minutes / 60 + seconds / 3600;
-
-        if (match[4].toUpperCase() === "S")
-            latitude *= -1;
-
-        degrees = parseFloat(match[5]);
-        minutes = parseFloat(match[6]);
-        seconds = parseFloat(match[7]);
-        let longitude = degrees + minutes / 60 + seconds / 3600;
-
-        if (match[8].toUpperCase() === "W")
-            longitude *= -1;
-
-        return [latitude, longitude];
-    } else {
-        return null;
+    static parseHttpURL(text, callback) {
+        _parseHttpURL(text, callback);
     }
-};
+}
 
-Place.parseCoordinates = function(text) {
-    let coords = Place.parseDecimalCoordinates(text) ||
-        Place.parseDmsCoordinates(text);
-
-    if (coords && Place.validateCoordinates(coords[0], coords[1])) {
-        return new Location.Location({ latitude: coords[0],
-                                       longitude: coords[1] });
-    } else {
-        return null;
-    }
-};
+GObject.registerClass(Place);
 
 let overpass = null;
 
 /* we can't import Application before the Place class has been defined
  * since it's used via PlaceStore
  */
-const Application = imports.application;
+import {Application} from './application.js';
 
-function parseHttpURL(text, callback) {
+function _parseHttpURL(text, callback) {
     let [type, id] = URIS.parseAsObjectURL(text);
 
     if (type && id) {
@@ -514,7 +520,7 @@ function parseHttpURL(text, callback) {
         }
 
         if (overpass === null)
-            overpass = new Overpass.Overpass();
+            overpass = new Overpass();
 
         Application.application.mark_busy();
         overpass.fetchPlace(type, id, (place) => {
@@ -531,7 +537,7 @@ function parseHttpURL(text, callback) {
             if (!Place.validateCoordinates(lat, lon)) {
                 callback(null, _("Coordinates in URL are not valid"));
             } else {
-                let location = new Location.Location({ latitude: lat, longitude: lon });
+                let location = new Location({ latitude: lat, longitude: lon });
                 let place = zoom ? new Place({ location: location, initialZoom: zoom }) :
                                    new Place({ location: location });
 

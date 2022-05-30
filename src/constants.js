@@ -22,7 +22,7 @@
 /**
  * Constraints of visible location in the standard Mercaartor projection.
  */
-var MIN_LATITUDE = -85.0511287798;
-var MAX_LATITUDE = 85.0511287798;
-var MIN_LONGITUDE = -180;
-var MAX_LONGITUDE = 180;
+export var MIN_LATITUDE = -85.0511287798;
+export var MAX_LATITUDE = 85.0511287798;
+export var MIN_LONGITUDE = -180;
+export var MAX_LONGITUDE = 180;

@@ -19,12 +19,14 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const _ = imports.gettext.gettext;
+import gettext from 'gettext';
 
-const GLib = imports.gi.GLib;
-const Soup = imports.gi.Soup;
+import GLib from 'gi://GLib';
+import Soup from 'gi://Soup';
 
-const Utils = imports.utils;
+import * as Utils from './utils.js';
+
+const _ = gettext.gettext;
 
 // Matches URLs for OpenStreetMap (for addressing objects or coordinates)
 const OSM_URL_REGEX = new RegExp(/https?:\/\/(www\.)?openstreetmap\.org./);
@@ -34,7 +36,7 @@ const OSM_URL_REGEX = new RegExp(/https?:\/\/(www\.)?openstreetmap\.org./);
  * e.g. an openstreetmap.org URL with lat and lon query parameters,
  * returns [lat, lon, optional zoom], otherwise [].
  */
-function parseAsCoordinateURL(url) {
+export function parseAsCoordinateURL(url) {
     if (url.match(OSM_URL_REGEX)) {
         /* it seems #map= is not handle well by parse_params(), so just remove
          * the # as a work-around
@@ -89,7 +91,7 @@ function parseAsCoordinateURL(url) {
  * For URLs addressing a specific OSM object (node, way, or relation),
  * returns [type,id], otherwise [].
  */
-function parseAsObjectURL(url) {
+export function parseAsObjectURL(url) {
     if (url.match(OSM_URL_REGEX)) {
         let uri = GLib.Uri.parse(url, GLib.UriFlags.NONE);
         let path = uri.get_path();
@@ -113,7 +115,7 @@ function parseAsObjectURL(url) {
  * For maps: URIs, return the search query string if a valid URI
  * otherwise null.
  */
-function parseMapsURI(uri) {
+export function parseMapsURI(uri) {
     let path = uri.substring('maps:'.length);
     let [param, value] = Utils.splitAtFirst(path, '=');
 

@@ -19,18 +19,18 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Service = imports.service;
-const GraphHopperGeocode = imports.graphHopperGeocode;
-const PhotonGeocode = imports.photonGeocode;
+import * as Service from './service.js';
+import {GraphHopperGeocode} from './graphHopperGeocode.js';
+import {PhotonGeocode} from './photonGeocode.js';
 
 var _geocoder = null;
 
-function getGeocoder() {
+export function getGeocoder() {
     if (!_geocoder) {
         if (Service.getService().photonGeocode)
-            _geocoder = new PhotonGeocode.PhotonGeocode();
+            _geocoder = new PhotonGeocode();
         else
-            _geocoder = new GraphHopperGeocode.GraphHopperGeocode();
+            _geocoder = new GraphHopperGeocode();
     }
 
     return _geocoder;

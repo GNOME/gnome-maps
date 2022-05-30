@@ -20,18 +20,16 @@
  *         Jonas Danielsson <jonas@threetimestwo.org>
  */
 
-const Gdk = imports.gi.Gdk;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import Gdk from 'gi://Gdk';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
 /* Abstract search result popover that progagates keypress events from a
    focus-taking internal widget to the spawning search entry widget */
-var SearchPopover = GObject.registerClass({
-    Abstract: true
-}, class SearchPopover extends Gtk.Popover {
+export class SearchPopover extends Gtk.Popover {
 
-    _init(props) {
-        super._init(props);
+    constructor(props) {
+        super(props);
 
         this._entry = this.relative_to;
 
@@ -110,5 +108,9 @@ var SearchPopover = GObject.registerClass({
             adjustment.clamp_page(allocation.y, allocation.y + allocation.height);
         }
     }
-});
+}
+
+GObject.registerClass({
+    Abstract: true
+}, SearchPopover);
 

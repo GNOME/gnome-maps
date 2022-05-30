@@ -25,19 +25,19 @@
  * routing for walking legs
  */
 
-const Champlain = imports.gi.Champlain;
+import Champlain from 'gi://Champlain';
 
-const Application = imports.application;
-const Location = imports.location;
-const Place = imports.place;
-const RouteQuery = imports.routeQuery;
-const TransitPlan = imports.transitPlan;
+import {Application} from './application.js';
+import {Location} from './location.js';
+import {Place} from './place.js';
+import {RouteQuery, QueryPoint} from './routeQuery.js';
+import {Leg} from './transitPlan.js';
 
 /* Creates a new walking leg given start and end places, and a route
  * obtained from GraphHopper. If the route is undefined (which happens if
  * GraphHopper failed to obtain a walking route, approximate it with a
  * straight line. */
-function createWalkingLeg(from, to, fromName, toName, route) {
+export function createWalkingLeg(from, to, fromName, toName, route) {
     let fromLocation = from.place.location;
     let toLocation = to.place.location;
     let fromCoordinate = [fromLocation.latitude, fromLocation.longitude];
@@ -51,15 +51,15 @@ function createWalkingLeg(from, to, fromName, toName, route) {
     let duration = route ? route.time / 1000 : distance;
     let walkingInstructions = route ? route.turnPoints : null;
 
-    return new TransitPlan.Leg({ fromCoordinate: fromCoordinate,
-                                 toCoordinate: toCoordinate,
-                                 from: fromName,
-                                 to: toName,
-                                 isTransit: false,
-                                 polyline: polyline,
-                                 duration: duration,
-                                 distance: distance,
-                                 walkingInstructions: walkingInstructions });
+    return new Leg({ fromCoordinate: fromCoordinate,
+                     toCoordinate: toCoordinate,
+                     from: fromName,
+                     to: toName,
+                     isTransit: false,
+                     polyline: polyline,
+                     duration: duration,
+                     distance: distance,
+                     walkingInstructions: walkingInstructions });
 }
 
 // create a straight-line "as the crow flies" polyline between two places
@@ -75,7 +75,7 @@ var _walkingRoutes = [];
 /* fetches walking route and stores the route for the given coordinate
  * pair to avoid requesting the same route over and over from GraphHopper
  */
-function fetchWalkingRoute(points, callback) {
+export function fetchWalkingRoute(points, callback) {
     let index = points[0].place.location.latitude + ',' +
                 points[0].place.location.longitude + ';' +
                 points[1].place.location.latitude + ',' +
@@ -95,12 +95,12 @@ function fetchWalkingRoute(points, callback) {
 }
 
 // create a query point from a bare coordinate (lat, lon pair)
-function createQueryPointForCoord(coord) {
-    let location = new Location.Location({ latitude: coord[0],
-                                           longitude: coord[1],
-                                           accuracy: 0 });
-    let place = new Place.Place({ location: location });
-    let point = new RouteQuery.QueryPoint();
+export function createQueryPointForCoord(coord) {
+    let location = new Location({ latitude: coord[0],
+                                  longitude: coord[1],
+                                  accuracy: 0 });
+    let place = new Place({ location: location });
+    let point = new QueryPoint();
 
     point.place = place;
     return point;
@@ -111,7 +111,7 @@ function createQueryPointForCoord(coord) {
  * Intended for use by transit plugins where the source API doesn't give
  * full walking turn-by-turn routing
  */
-function addWalkingToItineraries(itineraries, callback) {
+export function addWalkingToItineraries(itineraries, callback) {
     _addWalkingToItinerariesRecursive(itineraries, 0, callback);
 }
 

@@ -19,20 +19,20 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const GraphHopper = imports.graphHopper;
-const TransitRouter = imports.transitRouter;
-const RouteQuery = imports.routeQuery;
+import {GraphHopper} from './graphHopper.js';
+import {TransitRouter} from './transitRouter.js';
+import {RouteQuery} from './routeQuery.js';
 
 const _FALLBACK_TRANSPORTATION = RouteQuery.Transportation.PEDESTRIAN;
 
-var RoutingDelegator = class RoutingDelegator {
+export class RoutingDelegator {
 
     constructor(params) {
         this._query = params.query;
 
         this._transitRouting = false;
-        this._graphHopper = new GraphHopper.GraphHopper({ query: this._query });
-        this._transitRouter = new TransitRouter.TransitRouter({ query: this._query });
+        this._graphHopper = new GraphHopper({ query: this._query });
+        this._transitRouter = new TransitRouter({ query: this._query });
         this._query.connect('notify::points', this._onQueryChanged.bind(this));
 
         /* if the query is set to transit mode when it's not available, revert
@@ -74,4 +74,4 @@ var RoutingDelegator = class RoutingDelegator {
             }
         }
     }
-};
+}

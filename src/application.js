@@ -20,68 +20,54 @@
  *         Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
-const GLib = imports.gi.GLib;
-const GObject = imports.gi.GObject;
-const Geocode = imports.gi.GeocodeGlib;
-const Gio = imports.gi.Gio;
-const Gtk = imports.gi.Gtk;
-const GtkClutter = imports.gi.GtkClutter;
-const Hdy = imports.gi.Handy;
+import GLib from 'gi://GLib';
+import GObject from 'gi://GObject';
+import Geocode from 'gi://GeocodeGlib';
+import Gio from 'gi://Gio';
+import Gtk from 'gi://Gtk';
+import GtkClutter from 'gi://GtkClutter';
+import Hdy from 'gi://Handy';
 
-const ContactPlace = imports.contactPlace;
+import {ContactPlace} from './contactPlace.js';
 const Format = imports.format;
-const Geoclue = imports.geoclue;
-const GeocodeFactory = imports.geocode;
-const MainWindow = imports.mainWindow;
-const Maps = imports.gi.GnomeMaps;
-const OSMEdit = imports.osmEdit;
-const OSMTypeSearchEntry = imports.osmTypeSearchEntry;
-const PlaceStore = imports.placeStore;
-const RoutingDelegator = imports.routingDelegator;
-const RouteQuery = imports.routeQuery;
-const Settings = imports.settings;
-const Utils = imports.utils;
-const URIS = imports.uris;
+import {Geoclue} from './geoclue.js';
+import * as GeocodeFactory from './geocode.js';
+import {MainWindow} from './mainWindow.js';
+import GnomeMaps from 'gi://GnomeMaps';
+import {OSMEdit} from './osmEdit.js';
+import {OSMTypeSearchEntry} from './osmTypeSearchEntry.js';
+import {PlaceStore} from './placeStore.js';
+import {RoutingDelegator} from './routingDelegator.js';
+import {RouteQuery} from './routeQuery.js';
+import {Settings} from './settings.js';
+import * as Utils from './utils.js';
+import * as URIS from './uris.js';
 
-// used globally
-var application = null;
-var settings = null;
-var placeStore = null;
-var routingDelegator = null;
-var geoclue = null;
-var contactStore = null;
-var osmEdit = null;
-var normalStartup = true;
-var routeQuery = null;
+const _ensuredTypes = [OSMTypeSearchEntry];
 
-const _ensuredTypes = [OSMTypeSearchEntry.OSMTypeSearchEntry];
+export class Application extends Gtk.Application {
 
-var Application = GObject.registerClass({
-    Properties: {
-        'selected-place': GObject.ParamSpec.object('selected-place',
-                                                   'Selected Place',
-                                                   'The selected place',
-                                                   GObject.ParamFlags.READABLE |
-                                                   GObject.ParamFlags.WRITABLE,
-                                                   Geocode.Place),
-        'adaptive-mode': GObject.ParamSpec.boolean('adaptive-mode',
-                                                   'Adaptive Move',
-                                                   'Whether the main window is in adaptive (narrow) mode',
-                                                   GObject.ParamFlags.READABLE |
-                                                   GObject.ParamFlags.WRITABLE),
-    },
-}, class Application extends Gtk.Application {
+    // used globally
+    static application = null;
+    static settings = null;
+    static placeStore = null;
+    static routingDelegator = null;
+    static geoclue = null;
+    static contactStore = null;
+    static osmEdit = null;
+    static normalStartup = true;
+    static routeQuery = null;
 
-    _init() {
+    constructor() {
         /* Translators: This is the program name. */
         GLib.set_application_name(_("Maps"));
 
         /* Needed to be able to use in UI files */
         _ensuredTypes.forEach((type) => GObject.type_ensure(type));
 
-        super._init({ application_id: pkg.name,
-                      flags: Gio.ApplicationFlags.HANDLES_OPEN |
-                             Gio.ApplicationFlags.HANDLES_COMMAND_LINE });
+        super({ application_id: pkg.name,
+                flags: Gio.ApplicationFlags.HANDLES_OPEN |
+                       Gio.ApplicationFlags.HANDLES_COMMAND_LINE });
 
         this.add_main_option('local',
                              0,
@@ -149,7 +135,8 @@ var Application = GObject.registerClass({
     }
 
     _onOsmAccountSetupActivate() {
-        let dialog = osmEdit.createAccountDialog(this._mainWindow, false);
+        let dialog =
+            Application.osmEdit.createAccountDialog(this._mainWindow, false);
 
         dialog.show();
         dialog.connect('response', () => dialog.destroy());
@@ -170,7 +157,7 @@ var Application = GObject.registerClass({
     }
 
     _addContacts() {
-        let contacts = contactStore.get_contacts();
+        let contacts = Application.contactStore.get_contacts();
 
         this._addContactsRecursive(contacts, 0);
     }
@@ -185,9 +172,9 @@ var Application = GObject.registerClass({
                         return
 
                     Utils.debug('Adding contact address: ' + p.name);
-                    let place = new ContactPlace.ContactPlace({ place: p,
-                                                                contact: contact });
-                    placeStore.addPlace(place, PlaceStore.PlaceType.CONTACT);
+                    let place = new ContactPlace({ place: p, contact: contact });
+
+                    Application.placeStore.addPlace(place, PlaceStore.PlaceType.CONTACT);
                 });
 
                 this._addContactsRecursive(contacts, index + 1);
@@ -196,22 +183,22 @@ var Application = GObject.registerClass({
     }
 
     _initPlaceStore() {
-        placeStore = new PlaceStore.PlaceStore({
-            recentPlacesLimit: settings.get('recent-places-limit'),
-            recentRoutesLimit: settings.get('recent-routes-limit')
+        Application.placeStore = new PlaceStore({
+            recentPlacesLimit: Application.settings.get('recent-places-limit'),
+            recentRoutesLimit: Application.settings.get('recent-routes-limit')
         });
         try {
-            placeStore.load();
+            Application.placeStore.load();
         } catch (e) {
             log('Failed to parse Maps places file, ' +
                 'subsequent writes will overwrite the file!');
         }
 
-        if (contactStore.state === Maps.ContactStoreState.LOADED) {
+        if (Application.contactStore.state === GnomeMaps.ContactStoreState.LOADED) {
             this._addContacts();
         } else {
-            Utils.once(contactStore, 'notify::state', () => {
-                if (contactStore.state === Maps.ContactStoreState.LOADED)
+            Utils.once(Application.contactStore, 'notify::state', () => {
+                if (Application.contactStore.state === GnomeMaps.ContactStoreState.LOADED)
                     this._addContacts();
             });
         }
@@ -225,7 +212,7 @@ var Application = GObject.registerClass({
 
         Utils.loadStyleSheet(Gio.file_new_for_uri('resource:///org/gnome/Maps/application.css'));
 
-        application = this;
+        Application.application = this;
         this._initServices();
 
         Utils.addActions(this, {
@@ -244,7 +231,7 @@ var Application = GObject.registerClass({
                 onActivate: () => this.quit(),
                 accels: ['<Primary>Q']
             }
-        }, settings);
+        }, Application.settings);
 
 
         this._styleManager = Hdy.StyleManager.get_default();
@@ -256,20 +243,20 @@ var Application = GObject.registerClass({
     }
 
     _initServices() {
-        settings         = Settings.getSettings('org.gnome.Maps');
-        routeQuery       = new RouteQuery.RouteQuery();
-        routingDelegator = new RoutingDelegator.RoutingDelegator({ query: routeQuery });
-        geoclue          = new Geoclue.Geoclue();
-        contactStore = new Maps.ContactStore();
-        contactStore.load();
-        osmEdit = new OSMEdit.OSMEdit();
+        Application.settings = Settings.getSettings('org.gnome.Maps');
+        Application.routeQuery = new RouteQuery();
+        Application.routingDelegator = new RoutingDelegator({ query: Application.routeQuery });
+        Application.geoclue = new Geoclue();
+        Application.contactStore = new GnomeMaps.ContactStore();
+        Application.contactStore.load();
+        Application.osmEdit = new OSMEdit();
     }
 
     _createWindow() {
         if (this._mainWindow)
             return;
 
-        this._mainWindow = new MainWindow.MainWindow({ application: this });
+        this._mainWindow = new MainWindow({ application: this });
         this._mainWindow.connect('destroy', () => this._onWindowDestroy());
         if (GLib.getenv('MAPS_DEBUG') === 'focus') {
             this._mainWindow.connect('set-focus', (window, widget) => {
@@ -329,7 +316,7 @@ var Application = GObject.registerClass({
         /* unless there's exactly one place (which should be focused) in
          * the results, let the stored location be used on startup
          */
-        normalStartup = true;
+        Application.normalStartup = true;
         this.connect('shutdown', () => cancellable.cancel());
         GeocodeFactory.getGeocoder().search(query, null, null, cancellable,
                                             (places, error) => {
@@ -349,7 +336,7 @@ var Application = GObject.registerClass({
                         /* don't use the stored location on startup, as we're
                          * zooming in directly on the place
                          */
-                        normalStartup = false;
+                        Application.normalStartup = false;
                         this._mainWindow.mapView.showPlace(places[0], true);
                     } else {
                         this._mainWindow.placeEntry.grab_focus();
@@ -378,7 +365,7 @@ var Application = GObject.registerClass({
         let uri = files[0].get_uri();
 
         if (GLib.uri_parse_scheme(uri) !== 'maps')
-            normalStartup = false;
+            Application.normalStartup = false;
 
         this.activate();
 
@@ -443,4 +430,20 @@ var Application = GObject.registerClass({
     _onWindowDestroy(window) {
         this._mainWindow = null;
     }
-});
+}
+
+GObject.registerClass({
+    Properties: {
+        'selected-place': GObject.ParamSpec.object('selected-place',
+                                                   'Selected Place',
+                                                   'The selected place',
+                                                   GObject.ParamFlags.READABLE |
+                                                   GObject.ParamFlags.WRITABLE,
+                                                   Geocode.Place),
+        'adaptive-mode': GObject.ParamSpec.boolean('adaptive-mode',
+                                                   'Adaptive Move',
+                                                   'Whether the main window is in adaptive (narrow) mode',
+                                                   GObject.ParamFlags.READABLE |
+                                                   GObject.ParamFlags.WRITABLE),
+    }
+}, Application);

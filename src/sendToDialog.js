@@ -17,62 +17,50 @@
  * Author: Jonas Danielson <jonas@threetimestwo.org>
  */
 
-const Gdk = imports.gi.Gdk;
-const Geocode = imports.gi.GeocodeGlib;
-const Gio = imports.gi.Gio;
-const GLib = imports.gi.GLib;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
-const GWeather = imports.gi.GWeather;
-const Soup = imports.gi.Soup;
+import Gdk from 'gi://Gdk';
+import GeocodeGlib from 'gi://GeocodeGlib';
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
+import GWeather from 'gi://GWeather';
+import Soup from 'gi://Soup';
 
-const Application = imports.application;
-const PlaceFormatter = imports.placeFormatter;
-const Utils = imports.utils;
+import {Application} from './application.js';
+import {PlaceFormatter} from './placeFormatter.js';
+import * as Utils from './utils.js';
 
 const _WEATHER_APPID = 'org.gnome.Weather';
 const _CLOCKS_APPID = 'org.gnome.clocks';
 
-var Response = {
-    SUCCESS: 0,
-    CANCEL: 1
-};
-
 const _NUM_VISIBLE = 4;
 
-var SendToDialog = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/send-to-dialog.ui',
-    InternalChildren: [ 'list',
-                        'weatherRow',
-                        'weatherLabel',
-                        'weatherIcon',
-                        'clocksRow',
-                        'clocksLabel',
-                        'clocksIcon',
-                        'cancelButton',
-                        'summaryLabel',
-                        'summaryUrl',
-                        'copyButton',
-                        'emailButton',
-                        'scrolledWindow' ]
-}, class SendToDialog extends Gtk.Dialog {
+export class SendToDialog extends Gtk.Dialog {
 
-    _init(params) {
-        this._place = params.place;
-        this._location = this._place.location;
+    static Response = {
+        SUCCESS: 0,
+        CANCEL: 1
+    };
+
+    constructor(params) {
+        let place = params.place;
         delete params.place;
 
-        this._mapView = params.mapView;
+        let mapView = params.mapView;
         delete params.mapView;
 
         params.use_header_bar = true;
-        super._init(params);
+        super(params);
+
+        this._place = place;
+        this._location = this._place.location;
+        this._mapView = mapView;
 
         this._scrolledWindow.min_content_height = 40 * _NUM_VISIBLE;
         this.get_header_bar().subtitle = this._place.name;
 
         this._cancelButton.connect('clicked',
-                                   () => this.response(Response.CANCEL));
+                                   () => this.response(SendToDialog.Response.CANCEL));
 
         this._list.connect('row-activated', (list, row) => this._activateRow(row));
 
@@ -148,7 +136,7 @@ var SendToDialog = GObject.registerClass({
         let place = this._place;
         let lines = [];
 
-        let formatter = new PlaceFormatter.PlaceFormatter(place);
+        let formatter = new PlaceFormatter(place);
 
         if (!place.isCurrentLocation)
             lines.push(formatter.title);
@@ -187,11 +175,11 @@ var SendToDialog = GObject.registerClass({
         let display = Gdk.Display.get_default();
         let clipboard = Gtk.Clipboard.get_default(display);
         clipboard.set_text(summary, -1);
-        this.response(Response.SUCCESS);
+        this.response(SendToDialog.Response.SUCCESS);
     }
 
     _emailSummary() {
-        let title = new PlaceFormatter.PlaceFormatter(this._place).title;
+        let title = new PlaceFormatter(this._place).title;
         let summary = "%s\n%s".format(this._getSummary(), this._getOSMURI());
         let uri = 'mailto:?subject=%s&body=%s'.format(Soup.URI.encode(title, null),
                                                       Soup.URI.encode(summary, null));
@@ -204,7 +192,7 @@ var SendToDialog = GObject.registerClass({
           Utils.debug('failed to open URI: %s'.format(e.message));
         }
 
-        this.response(Response.SUCCESS);
+        this.response(SendToDialog.Response.SUCCESS);
     }
 
     _getAppLaunchContext() {
@@ -238,25 +226,44 @@ var SendToDialog = GObject.registerClass({
                                  new GLib.Variant('v', this._city.serialize()),
                                  timestamp);
         } else if (row instanceof OpenWithRow) {
-            let uri = this._location.to_uri(Geocode.LocationURIScheme.GEO);
+            let uri = this._location.to_uri(GeocodeGlib.LocationURIScheme.GEO);
             row.appinfo.launch_uris([ uri ], this._getAppLaunchContext());
         }
-        this.response(Response.SUCCESS);
+        this.response(SendToDialog.Response.SUCCESS);
     }
-});
+}
 
-var OpenWithRow = GObject.registerClass({
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/send-to-dialog.ui',
+    InternalChildren: [ 'list',
+                        'weatherRow',
+                        'weatherLabel',
+                        'weatherIcon',
+                        'clocksRow',
+                        'clocksLabel',
+                        'clocksIcon',
+                        'cancelButton',
+                        'summaryLabel',
+                        'summaryUrl',
+                        'copyButton',
+                        'emailButton',
+                        'scrolledWindow' ]
+}, SendToDialog);
+
+export class OpenWithRow extends Gtk.ListBoxRow {
+    constructor(params) {
+        let appinfo = params.appinfo;
+        delete params.appinfo;
+
+        super(params);
+
+        this._label.label = _("Open with %s").format(appinfo.get_name());
+        this._icon.gicon = appinfo.get_icon();
+    }
+}
+
+GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/open-with-row.ui',
     InternalChildren: [ 'label',
                         'icon' ],
-}, class OpenWithRow extends Gtk.ListBoxRow {
-    _init(params) {
-        this.appinfo = params.appinfo;
-        delete params.appinfo;
-
-        super._init(params);
-
-        this._label.label = _("Open with %s").format(this.appinfo.get_name());
-        this._icon.gicon = this.appinfo.get_icon();
-    }
-});
+}, OpenWithRow);

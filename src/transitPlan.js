@@ -19,22 +19,24 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const _ = imports.gettext.gettext;
-const ngettext = imports.gettext.ngettext;
+import gettext from 'gettext';
 
-const GLib = imports.gi.GLib;
-const GObject = imports.gi.GObject;
+import GLib from 'gi://GLib';
+import GObject from 'gi://GObject';
 
-const BoundingBox = imports.boundingBox;
-const HVT = imports.hvt;
-const Time = imports.time;
-const Utils = imports.utils;
+import {BoundingBox} from './boundingBox.js';
+import * as HVT from './hvt.js';
+import * as Time from './time.js';
+import * as Utils from './utils.js';
+
+const _ = gettext.gettext;
+const ngettext = gettext.ngettext;
 
 /*
  * These constants corresponds to the routeType attribute of transit legs
  * in original GTFS specification.
  */
-var RouteType = {
+export const RouteType = {
     NON_TRANSIT: -1,
     TRAM:        0,
     SUBWAY:      1,
@@ -68,22 +70,13 @@ var RouteType = {
 /* extra time to add to the first itinerary leg when it's a walking leg */
 const WALK_SLACK = 120;
 
-var DEFAULT_ROUTE_COLOR = '4c4c4c';
-var DEFAULT_ROUTE_TEXT_COLOR = 'ffffff';
+export const DEFAULT_ROUTE_COLOR = '4c4c4c';
+export const DEFAULT_ROUTE_TEXT_COLOR = 'ffffff';
 
-var Plan = GObject.registerClass({
-    Signals: {
-        'update': {},
-        'reset': {},
-        'no-more-results': {},
-        'itinerary-selected': { param_types: [GObject.TYPE_OBJECT] },
-        'itinerary-deselected': {},
-        'error': { param_types: [GObject.TYPE_STRING] }
-    }
-}, class Plan extends GObject.Object {
+export class Plan extends GObject.Object {
 
-    _init(params) {
-        super._init(params);
+    constructor(params) {
+        super(params);
         this.reset();
         this._attribution = null;
         this._attributionUrl = null;
@@ -186,35 +179,35 @@ var Plan = GObject.registerClass({
     }
 
     _createBBox() {
-        let bbox = new BoundingBox.BoundingBox();
+        let bbox = new BoundingBox();
         this._itineraries.forEach(function(itinerary) {
             bbox.compose(itinerary.bbox);
         });
         return bbox;
     }
-});
+}
 
-var Itinerary = GObject.registerClass(
-class Itinerary extends GObject.Object {
+GObject.registerClass({
+    Signals: {
+        'update': {},
+        'reset': {},
+        'no-more-results': {},
+        'itinerary-selected': { param_types: [GObject.TYPE_OBJECT] },
+        'itinerary-deselected': {},
+        'error': { param_types: [GObject.TYPE_STRING] }
+    }
+}, Plan);
 
-    _init(params) {
+export class Itinerary extends GObject.Object {
+
+    constructor(params) {
+        super();
+
         this._duration = params.duration;
-        delete params.duration;
-
         this._departure = params.departure;
-        delete params.departure;
-
         this._arrival = params.arrival;
-        delete params.arrival;
-
         this._transfers = params.transfers;
-        delete params.transfers;
-
         this._legs = params.legs;
-        delete params.legs;
-
-        super._init(params);
-
         this.bbox = this._createBBox();
     }
 
@@ -284,7 +277,7 @@ class Itinerary extends GObject.Object {
     }
 
     _createBBox() {
-        let bbox = new BoundingBox.BoundingBox();
+        let bbox = new BoundingBox();
 
         this._legs.forEach(function(leg) {
             bbox.compose(leg.bbox);
@@ -405,76 +398,35 @@ class Itinerary extends GObject.Object {
     get isWalkingOnly() {
         return this.legs.length === 1 && !this.legs[0].isTransit;
     }
-});
+}
 
-var Leg = class Leg {
+GObject.registerClass(Itinerary);
+
+export class Leg {
 
     constructor(params) {
         this._route = params.route;
-        delete params.route;
-
         this._routeType = params.routeType;
-        delete params.routeType;
-
         this._departure = params.departure;
-        delete params.departure;
-
         this._arrival = params.arrival;
-        delete params.arrival;
-
         this._polyline = params.polyline;
-        delete params.polyline;
-
         this._fromCoordinate = params.fromCoordinate;
-        delete params.fromCoordinate;
-
         this._toCoordinate = params.toCoordinate;
-        delete params.toCoordinate;
-
         this._from = params.from;
-        delete params.from;
-
         this._to = params.to;
-        delete params.to;
-
         this._intermediateStops = params.intermediateStops;
-        delete params.intermediateStops;
-
         this._headsign = params.headsign;
-        delete params.headsign;
-
         this._isTransit = params.isTransit;
-        delete params.isTransit;
-
         this._walkingInstructions = params.walkingInstructions;
-        delete params.walkingInstructions;
-
         this._distance = params.distance;
-        delete params.distance;
-
         this._duration = params.duration;
-        delete params.duration;
-
         this._agencyName = params.agencyName;
-        delete params.agencyName;
-
         this._agencyUrl = params.agencyUrl;
-        delete params.agencyUrl;
-
         this._agencyTimezoneOffset = params.agencyTimezoneOffset;
-        delete params.agencyTimezoneOffset;
-
         this._color = params.color;
-        delete params.color;
-
         this._textColor = params.textColor;
-        delete params.textColor;
-
         this._tripShortName = params.tripShortName;
-        delete params.tripShortName;
-
         this.bbox = this._createBBox();
-
         this._compactRoute = null;
     }
 
@@ -638,7 +590,7 @@ var Leg = class Leg {
     }
 
     _createBBox() {
-        let bbox = new BoundingBox.BoundingBox();
+        let bbox = new BoundingBox();
 
         this.polyline.forEach(function({ latitude, longitude }) {
             bbox.extend(latitude, longitude);
@@ -761,25 +713,16 @@ var Leg = class Leg {
         return Time.formatTimeWithTZOffset(this.arrival,
                                            this.agencyTimezoneOffset);
     }
-};
+}
 
-var Stop = class Stop {
+export class Stop {
 
     constructor(params) {
         this._name = params.name;
-        delete params.name;
-
         this._arrival = params.arrival;
-        delete params.arrival;
-
         this._departure = params.departure;
-        delete params.departure;
-
         this._agencyTimezoneOffset = params.agencyTimezoneOffset;
-        delete params.agencyTimezoneOffset;
-
         this._coordinate = params.coordinate;
-        delete params.coordinate;
     }
 
     get name() {
@@ -805,7 +748,7 @@ var Stop = class Stop {
                                                this._agencyTimezoneOffset);
         }
     }
-};
+}
 
 function sortItinerariesByDepartureAsc(first, second) {
     /* always sort walk-only itineraries first, as they would always be

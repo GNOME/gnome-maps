@@ -19,21 +19,19 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const _ = imports.gettext.gettext;
+import gettext from 'gettext';
 
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
-const Application = imports.application;
+import {Application} from './application.js';
 
-var TransitMoreRow = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/transit-more-row.ui',
-    InternalChildren: ['stack',
-                       'label']
-}, class TransitMoreRow extends Gtk.ListBoxRow {
+const _ = gettext.gettext;
 
-    _init(params) {
-        super._init(params);
+export class TransitMoreRow extends Gtk.ListBoxRow {
+
+    constructor(params) {
+        super(params);
 
         if (Application.routeQuery.arriveBy)
             this._label.label = _("Load earlier alternatives");
@@ -55,4 +53,10 @@ var TransitMoreRow = GObject.registerClass({
         else
             this._label.label = _("No later alternatives found.");
     }
-});
+}
+
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/transit-more-row.ui',
+    InternalChildren: ['stack',
+                       'label']
+}, TransitMoreRow);

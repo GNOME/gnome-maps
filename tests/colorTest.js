@@ -21,14 +21,7 @@
 
 const JsUnit = imports.jsUnit;
 
-const Color = imports.color;
-
-function main() {
-    parseColorTest();
-    relativeLuminanceTest();
-    contrastRatioTest();
-    getContrastingForegroundColorTest();
-}
+import * as Color from './color.js';
 
 function parseColorTest() {
     JsUnit.assertEquals(1.0, Color.parseColor('ff0000', 0));
@@ -69,3 +62,8 @@ function getContrastingForegroundColorTest() {
     JsUnit.assertEquals('dddddd',
                         Color.getContrastingForegroundColor('000088', 'dddddd'));
 }
+
+parseColorTest();
+relativeLuminanceTest();
+contrastRatioTest();
+getContrastingForegroundColorTest();

@@ -19,19 +19,16 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
-var OSMTypeListRow = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/osm-type-list-row.ui',
-    InternalChildren: [ 'name' ]
-}, class OSMTypeListRow extends Gtk.ListBoxRow {
+export class OSMTypeListRow extends Gtk.ListBoxRow {
 
-    _init(props) {
+    constructor(props) {
         this._type = props.type;
         delete props.type;
 
-        super._init(props);
+        super(props);
 
         this._name.label = this._type.title;
     }
@@ -47,4 +44,9 @@ var OSMTypeListRow = GObject.registerClass({
     get title() {
         return this._type.title;
     }
-});
+}
+
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/osm-type-list-row.ui',
+    InternalChildren: [ 'name' ]
+}, OSMTypeListRow);

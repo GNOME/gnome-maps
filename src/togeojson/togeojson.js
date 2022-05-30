@@ -1,6 +1,6 @@
-const Dom = imports.xmldom.dom;
+import * as Dom from '../xmldom/dom.js';
 
-var toGeoJSON = (function() {
+export var toGeoJSON = (function() {
     'use strict';
 
     var removeSpace = /\s*/g,

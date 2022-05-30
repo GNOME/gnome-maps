@@ -20,29 +20,37 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
-const Champlain = imports.gi.Champlain;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import Champlain from 'gi://Champlain';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
-const Place = imports.place;
-const Route = imports.route;
-const RouteQuery = imports.routeQuery;
+import {Place} from './place.js';
+import {Route, TurnPoint} from './route.js';
+import {RouteQuery} from './routeQuery.js';
 
 // directional override markers
 const _RLM = '\u200F';
 const _LRM = '\u200E';
 
-var StoredRoute = GObject.registerClass(
-class StoredRoute extends Place.Place {
+export class StoredRoute extends Place {
 
-    _init(params) {
+    constructor(params) {
         let route = params.route;
         delete params.route;
 
-        this._transportation = params.transportation;
+        let transportation = params.transportation;
         delete params.transportation;
 
-        this.route = new Route.Route();
+        let places = params.places;
+        delete params.places;
+
+        let geoclue = params.geoclue;
+        delete params.geoclue;
+
+        super(params);
+
+        this._transportation = transportation;
+        this.route = new Route();
         this.route.update({ path: route.path,
                             turnPoints: route.turnPoints,
                             distance: route.distance,
@@ -51,16 +59,11 @@ class StoredRoute extends Place.Place {
 
         this._rtl = Gtk.get_locale_direction() === Gtk.TextDirection.RTL;
 
-        this.places = params.places;
-        delete params.places;
+        this.places = places;
         let directionMarker = this._rtl ? _RLM : _LRM;
         let arrow = this._rtl ? '←' : '→';
         params.name = directionMarker + this.places[0].name + directionMarker +
                       arrow + directionMarker + this.places.last().name;
-
-
-        let geoclue = params.geoclue;
-        delete params.geoclue;
 
         this._containsCurrentLocation = false;
 
@@ -72,8 +75,6 @@ class StoredRoute extends Place.Place {
             if (currentLocation && place === currentLocation)
                 this._containsCurrentLocation = true;
         });
-
-        super._init(params);
     }
 
     get viaString() {
@@ -154,53 +155,55 @@ class StoredRoute extends Place.Place {
                  route: route,
                  places: places };
     }
-});
 
-StoredRoute.fromJSON = function(obj) {
-    let props;
-    let places = [];
-    let route;
-    let transportation = null;
+    static fromJSON(obj) {
+        let props;
+        let places = [];
+        let route;
+        let transportation = null;
 
-    for (let key in obj) {
-        let prop = obj[key];
+        for (let key in obj) {
+            let prop = obj[key];
 
-        switch(key) {
-        case 'transportation':
-            transportation = prop;
-            break;
+            switch(key) {
+            case 'transportation':
+                transportation = prop;
+                break;
 
-        case 'route':
-            route = new Route.Route();
-            prop.path = prop.path.map((coordinate) => {
-                let lat = coordinate.latitude;
-                let lon = coordinate.longitude;
-                return new Champlain.Coordinate({ latitude: lat,
-                                                  longitude: lon });
-            });
-            prop.turnPoints = prop.turnPoints.map((turnPoint) => {
-                let lat = turnPoint.coordinate.latitude;
-                let lon = turnPoint.coordinate.longitude;
-
-                let coordinate = new Champlain.Coordinate({ latitude: lat,
-                                                            longitude: lon });
-
-                return new Route.TurnPoint({
-                    coordinate: coordinate,
-                    type: turnPoint.type,
-                    distance: turnPoint.distance,
-                    instruction: turnPoint.instruction
+            case 'route':
+                route = new Route();
+                prop.path = prop.path.map((coordinate) => {
+                    let lat = coordinate.latitude;
+                    let lon = coordinate.longitude;
+                    return new Champlain.Coordinate({ latitude: lat,
+                                                      longitude: lon });
                 });
-            });
-            route.update(prop);
-            break;
+                prop.turnPoints = prop.turnPoints.map((turnPoint) => {
+                    let lat = turnPoint.coordinate.latitude;
+                    let lon = turnPoint.coordinate.longitude;
 
-        case 'places':
-            prop.forEach((p) => places.push(Place.Place.fromJSON(p)));
-            break;
+                    let coordinate = new Champlain.Coordinate({ latitude: lat,
+                                                                longitude: lon });
+
+                    return new TurnPoint({
+                        coordinate: coordinate,
+                        type: turnPoint.type,
+                        distance: turnPoint.distance,
+                        instruction: turnPoint.instruction
+                    });
+                });
+                route.update(prop);
+                break;
+
+            case 'places':
+                prop.forEach((p) => places.push(Place.fromJSON(p)));
+                break;
+            }
         }
+        return new StoredRoute({ transportation: transportation,
+                                 route: route,
+                                 places: places });
     }
-    return new StoredRoute({ transportation: transportation,
-                             route: route,
-                             places: places });
-};
+}
+
+GObject.registerClass(StoredRoute);

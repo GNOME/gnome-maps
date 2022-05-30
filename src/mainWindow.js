@@ -20,44 +20,44 @@
  *         Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
-const _ = imports.gettext.gettext;
+import gettext from 'gettext';
 
-const Champlain = imports.gi.Champlain;
-const GLib = imports.gi.GLib;
-const GObject = imports.gi.GObject;
-const Gdk = imports.gi.Gdk;
-const Gio = imports.gi.Gio;
-const Gtk = imports.gi.Gtk;
+import Champlain from 'gi://Champlain';
+import GLib from 'gi://GLib';
+import GObject from 'gi://GObject';
+import Gdk from 'gi://Gdk';
+import Gio from 'gi://Gio';
+import Gtk from 'gi://Gtk';
 const Mainloop = imports.mainloop;
 
-const Application = imports.application;
-const ContextMenu = imports.contextMenu;
-const ExportViewDialog = imports.exportViewDialog;
-const FavoritesPopover = imports.favoritesPopover;
-const Geoclue = imports.geoclue;
-const GeocodeFactory = imports.geocode;
-const HeaderBar = imports.headerBar;
-const LocationServiceDialog = imports.locationServiceDialog;
-const MapView = imports.mapView;
-const PlaceBar = imports.placeBar;
-const PlaceEntry = imports.placeEntry;
-const PlaceStore = imports.placeStore;
-const PrintOperation = imports.printOperation;
-const Service = imports.service;
-const ShapeLayer = imports.shapeLayer;
-const Sidebar = imports.sidebar;
-const Utils = imports.utils;
+import {Application} from './application.js';
+import {ContextMenu} from './contextMenu.js';
+import {ExportViewDialog} from './exportViewDialog.js';
+import {FavoritesPopover} from './favoritesPopover.js';
+import * as Geoclue from './geoclue.js';
+import * as GeocodeFactory from './geocode.js';
+import {HeaderBarLeft, HeaderBarRight} from './headerBar.js';
+import {LocationServiceDialog} from './locationServiceDialog.js';
+import {MapView} from './mapView.js';
+import {PlaceBar} from './placeBar.js';
+import {PlaceEntry} from './placeEntry.js';
+import {PlaceStore} from './placeStore.js';
+import {PrintOperation} from './printOperation.js';
+import * as Service from './service.js';
+import {ShapeLayer} from './shapeLayer.js';
+import {Sidebar} from './sidebar.js';
+import * as Utils from './utils.js';
+
+const _ = gettext.gettext;
 
 const _CONFIGURE_ID_TIMEOUT = 100; // msecs
 const _ADAPTIVE_VIEW_WIDTH = 700;
 const _PLACE_ENTRY_MARGIN = 35;
 
-var ShapeLayerFileChooser = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/shape-layer-file-chooser.ui'
-}, class ShapeLayerFileChooser extends Gtk.FileChooserNative {
+class ShapeLayerFileChooser extends Gtk.FileChooserNative {
 
-    _init(params) {
-        super._init(params);
+    constructor(params) {
+        super(params);
         let allFilter = new Gtk.FileFilter();
         allFilter.set_name(_("All Layer Files"));
         this.add_filter(allFilter);
@@ -75,16 +75,13 @@ var ShapeLayerFileChooser = GObject.registerClass({
             this.add_filter(filter);
         });
     }
-});
+}
 
-var MainWindow = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/main-window.ui',
-    InternalChildren: [ 'headerBar',
-                        'grid',
-                        'actionBar',
-                        'actionBarRevealer',
-                        'placeBarContainer']
-}, class MainWindow extends Gtk.ApplicationWindow {
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/shape-layer-file-chooser.ui'
+}, ShapeLayerFileChooser);
+
+export class MainWindow extends Gtk.ApplicationWindow {
 
     get mapView() {
         return this._mapView;
@@ -94,12 +91,12 @@ var MainWindow = GObject.registerClass({
         return this._placeEntry;
     }
 
-    _init(params) {
-        super._init(params);
+    constructor(params) {
+        super(params);
 
         this._configureId = 0;
 
-        this._mapView = new MapView.MapView({
+        this._mapView = new MapView({
             mapType: this.application.local_tile_path ?
                 MapView.MapType.LOCAL : undefined,
             mainWindow: this });
@@ -110,8 +107,8 @@ var MainWindow = GObject.registerClass({
 
         this._sidebar = this._createSidebar();
 
-        this._contextMenu = new ContextMenu.ContextMenu({ mapView: this._mapView,
-                                                          mainWindow: this });
+        this._contextMenu = new ContextMenu({ mapView: this._mapView,
+                                              mainWindow: this });
 
         if (pkg.name.endsWith('.Devel'))
             this.get_style_context().add_class('devel');
@@ -137,14 +134,13 @@ var MainWindow = GObject.registerClass({
     }
 
     _createPlaceEntry() {
-        let placeEntry = new PlaceEntry.PlaceEntry({ mapView: this._mapView,
-                                                     visible: true,
-                                                     margin_start: _PLACE_ENTRY_MARGIN,
-                                                     margin_end: _PLACE_ENTRY_MARGIN,
-                                                     max_width_chars: 50,
-                                                     loupe: true,
-                                                     matchRoute: true
-                                                   });
+        let placeEntry = new PlaceEntry({ mapView: this._mapView,
+                                          visible: true,
+                                          margin_start: _PLACE_ENTRY_MARGIN,
+                                          margin_end: _PLACE_ENTRY_MARGIN,
+                                          max_width_chars: 50,
+                                          loupe: true,
+                                          matchRoute: true });
         placeEntry.connect('notify::place', () => {
             if (placeEntry.place) {
                 this._mapView.showPlace(placeEntry.place, true);
@@ -158,7 +154,7 @@ var MainWindow = GObject.registerClass({
     }
 
     _createSidebar() {
-        let sidebar = new Sidebar.Sidebar(this._mapView);
+        let sidebar = new Sidebar(this._mapView);
 
         Application.routeQuery.connect('notify', () => this._setRevealSidebar(true));
 
@@ -166,8 +162,7 @@ var MainWindow = GObject.registerClass({
     }
 
     _initPlaceBar() {
-        this._placeBar = new PlaceBar.PlaceBar({ mapView: this._mapView,
-                                                 visible: true });
+        this._placeBar = new PlaceBar({ mapView: this._mapView, visible: true });
         this._placeBarContainer.add(this._placeBar);
 
         this.application.bind_property('selected-place',
@@ -348,16 +343,10 @@ var MainWindow = GObject.registerClass({
     }
 
     _initHeaderbar() {
-        this._headerBarLeft = new HeaderBar.HeaderBarLeft({
-            mapView: this._mapView,
-            application: this.application
-        });
+        this._headerBarLeft = new HeaderBarLeft({ mapView: this._mapView });
         this._headerBar.pack_start(this._headerBarLeft);
 
-        this._headerBarRight = new HeaderBar.HeaderBarRight({
-            mapView: this._mapView,
-            application: this.application
-        });
+        this._headerBarRight = new HeaderBarRight({ mapView: this._mapView });
         this._headerBar.pack_end(this._headerBarRight);
 
         this._placeEntry = this._createPlaceEntry();
@@ -367,16 +356,10 @@ var MainWindow = GObject.registerClass({
                                     this._updateLocationSensitivity.bind(this));
 
         // action bar, for when the window is too narrow for the full headerbar
-        this._actionBarLeft =  new HeaderBar.HeaderBarLeft({
-            mapView: this._mapView,
-            application: this.application
-        })
+        this._actionBarLeft =  new HeaderBarLeft({ mapView: this._mapView });
         this._actionBar.pack_start(this._actionBarLeft);
 
-        this._actionBarRight = new HeaderBar.HeaderBarRight({
-            mapView: this._mapView,
-            application: this.application
-        })
+        this._actionBarRight = new HeaderBarRight({ mapView: this._mapView });
         this._actionBar.pack_end(this._actionBarRight);
 
         this.connect('size-allocate', () => {
@@ -507,7 +490,7 @@ var MainWindow = GObject.registerClass({
         let bbox = view.get_bounding_box();
         let [latitude, longitude] = bbox.get_center();
 
-        let dialog = new ExportViewDialog.ExportViewDialog({
+        let dialog = new ExportViewDialog({
             transient_for: this,
             modal: true,
             surface: surface,
@@ -675,4 +658,13 @@ var MainWindow = GObject.registerClass({
         });
         this._fileChooser.show();
     }
-});
+}
+
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/main-window.ui',
+    InternalChildren: [ 'headerBar',
+                        'grid',
+                        'actionBar',
+                        'actionBarRevealer',
+                        'placeBarContainer']
+}, MainWindow);

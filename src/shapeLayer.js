@@ -17,31 +17,32 @@
  * Author: Hashem Nasarat <hashem@riseup.net>
  */
 
-const Champlain = imports.gi.Champlain;
-const Gio = imports.gi.Gio;
-const GObject = imports.gi.GObject;
+import Champlain from 'gi://Champlain';
+import Gio from 'gi://Gio';
+import GObject from 'gi://GObject';
 
-const GeoJSONShapeLayer = imports.geoJSONShapeLayer;
-const Utils = imports.utils;
+import {GeoJSONShapeLayer} from './geoJSONShapeLayer.js';
+import * as Utils from './utils.js';
 
-var SUPPORTED_TYPES = [];
+export class ShapeLayer extends GObject.Object {
 
-function newFromFile(file, mapView) {
-    let contentType = Gio.content_type_guess(file.get_uri(), null)[0];
-    for (let layerClass of SUPPORTED_TYPES) {
-        if (layerClass.mimeTypes.indexOf(contentType) > -1) {
-            return layerClass.createInstance({ file: file, mapView: mapView });
+    static mimeTypes = [];
+    static displayName = '';
+
+    static SUPPORTED_TYPES = [];
+
+    static newFromFile(file, mapView) {
+        let contentType = Gio.content_type_guess(file.get_uri(), null)[0];
+        for (let layerClass of ShapeLayer.SUPPORTED_TYPES) {
+            if (layerClass.mimeTypes.indexOf(contentType) > -1) {
+                return layerClass.createInstance({ file: file, mapView: mapView });
+            }
         }
+        return null;
     }
-    return null;
-}
 
-var ShapeLayer = GObject.registerClass({
-    Abstract: true
-}, class ShapeLayer extends GObject.Object {
-
-    _init(params) {
-        super._init();
+    constructor(params) {
+        super();
         this._visible = true;
         this._mapView = params.mapView;
         this.file = params.file;
@@ -112,7 +113,9 @@ var ShapeLayer = GObject.registerClass({
         this._mapView.view.remove_layer(this._markerLayer);
         this._mapView.view.remove_overlay_source(this._mapSource);
     }
-});
+}
 
-ShapeLayer.mimeTypes = [];
-ShapeLayer.displayName = '';
+GObject.registerClass({
+    Abstract: true
+}, ShapeLayer);
+

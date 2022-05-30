@@ -250,7 +250,7 @@ NamedNodeMap.prototype = {
 /**
  * @see http://www.w3.org/TR/REC-DOM-Level-1/level-one-core.html#ID-102161490
  */
-function DOMImplementation(/* Object */ features) {
+export function DOMImplementation(/* Object */ features) {
 	this._features = {};
 	if (features) {
 		for (var feature in features) {
@@ -907,7 +907,7 @@ function ProcessingInstruction() {
 }
 ProcessingInstruction.prototype.nodeType = PROCESSING_INSTRUCTION_NODE;
 _extends(ProcessingInstruction,Node);
-function XMLSerializer(){}
+export function XMLSerializer(){}
 XMLSerializer.prototype.serializeToString = function(node,attributeSorter){
 	return node.toString(attributeSorter);
 }

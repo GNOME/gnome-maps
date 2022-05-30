@@ -1,8 +1,8 @@
 'use strict';
 
-const clip = imports.geojsonvt.clip.clip;
+import {clip} from './clip.js';
 
-function wrap(features, buffer, intersectX) {
+export function wrap(features, buffer, intersectX) {
     var merged = features,
         left  = clip(features, 1, -1 - buffer, buffer,     0, intersectX, -1, 2), // left world copy
         right = clip(features, 1,  1 - buffer, 2 + buffer, 0, intersectX, -1, 2); // right world copy

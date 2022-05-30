@@ -21,18 +21,18 @@
  *          Jonas Danielsson <jonas@threetimestwo.org>
  */
 
-const Geocode = imports.gi.GeocodeGlib;
-const GObject = imports.gi.GObject;
+import Geocode from 'gi://GeocodeGlib';
+import GObject from 'gi://GObject';
 
 /* Adds heading to Geocode.Location */
-var Location = GObject.registerClass(
-class Location extends Geocode.Location {
+export class Location extends Geocode.Location {
 
-    _init(params) {
-        this._heading = params.heading;
+    constructor(params) {
+        let heading = params.heading;
         delete params.heading;
 
-        super._init(params);
+        super(params);
+        this._heading = heading;
     }
 
     get heading() {
@@ -42,4 +42,6 @@ class Location extends Geocode.Location {
     set heading(v) {
         this._heading = v;
     }
-});
+}
+
+GObject.registerClass(Location);

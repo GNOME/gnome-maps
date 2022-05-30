@@ -20,27 +20,22 @@
  */
 const JsUnit = imports.jsUnit;
 
-const PlaceZoom = imports.placeZoom;
+import * as PlaceZoom from './placeZoom.js';
 
-function main() {
-    placeZoomTest();
-}
+// specific place types
+JsUnit.assertEquals(17,
+                    PlaceZoom.getZoomLevelForPlace({ osmKey:   'shop',
+                                                     osmValue: 'supermarket' }));
+JsUnit.assertEquals(4,
+                    PlaceZoom.getZoomLevelForPlace({ osmKey:   'place',
+                                                     osmValue: 'continent' }));
 
-function placeZoomTest() {
-    // specific place types
-    JsUnit.assertEquals(17,
-                        PlaceZoom.getZoomLevelForPlace({ osmKey:   'shop',
-                                                         osmValue: 'supermarket' }));
-    JsUnit.assertEquals(4,
-                        PlaceZoom.getZoomLevelForPlace({ osmKey:   'place',
-                                                         osmValue: 'continent' }));
+// fallback for for OSM key
+JsUnit.assertEquals(17,
+                    PlaceZoom.getZoomLevelForPlace({ osmKey:   'place',
+                                                     osmValue: 'other' }));
 
-    // fallback for for OSM key
-    JsUnit.assertEquals(17,
-                        PlaceZoom.getZoomLevelForPlace({ osmKey:   'place',
-                                                         osmValue: 'other' }));
+// undefined for not defined type
+JsUnit.assertUndefined(PlaceZoom.getZoomLevelForPlace({ osmKey:   'type',
+                                                        osmValue: 'other' }));
 
-    // undefined for not defined type
-    JsUnit.assertUndefined(PlaceZoom.getZoomLevelForPlace({ osmKey:   'type',
-                                                            osmValue: 'other' }));
-}

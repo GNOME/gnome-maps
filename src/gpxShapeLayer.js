@@ -17,24 +17,28 @@
  * Author: Hashem Nasarat <hashem@riseup.net>
  */
 
-const GObject = imports.gi.GObject;
+import GObject from 'gi://GObject';
 
-const GeoJSONSource = imports.geoJSONSource;
-const ShapeLayer = imports.shapeLayer;
-const Utils = imports.utils;
-const Togeojson = imports.togeojson.togeojson;
-const Domparser = imports.xmldom.domparser;
+import {GeoJSONSource} from './geoJSONSource.js';
+import {ShapeLayer} from './shapeLayer.js';
+import * as Utils from './utils.js';
+import * as Togeojson from './togeojson/togeojson.js';
+import * as Domparser from './xmldom/domparser.js';
 
-var GpxShapeLayer = GObject.registerClass(
-class GpxShapeLayer extends ShapeLayer.ShapeLayer {
+export class GpxShapeLayer extends ShapeLayer {
 
-    _init(params) {
-        super._init(params);
+    static mimeTypes = ['application/gpx+xml' ];
+    static displayName = 'GPX';
 
-        this._mapSource = new GeoJSONSource.GeoJSONSource({
-            mapView: this._mapView,
-            markerLayer: this._markerLayer
-        });
+    static createInstance(params) {
+        return new GpxShapeLayer(params);
+    };
+
+    constructor(params) {
+        super(params);
+
+        this._mapSource = new GeoJSONSource({ mapView: this._mapView,
+                                              markerLayer: this._markerLayer });
     }
 
     _parseContent() {
@@ -43,10 +47,6 @@ class GpxShapeLayer extends ShapeLayer.ShapeLayer {
         let json = Togeojson.toGeoJSON.gpx(parser.parseFromString(s));
         this._mapSource.parse(json);
     }
-});
+}
 
-GpxShapeLayer.mimeTypes = ['application/gpx+xml' ];
-GpxShapeLayer.displayName = 'GPX';
-GpxShapeLayer.createInstance = function(params) {
-    return new GpxShapeLayer(params);
-};
+GObject.registerClass(GpxShapeLayer);

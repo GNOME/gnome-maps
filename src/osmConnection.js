@@ -20,16 +20,18 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const _ = imports.gettext.gettext;
+import gettext from 'gettext';
 
-const Maps = imports.gi.GnomeMaps;
+import GnomeMaps from 'gi://GnomeMaps';
 
-const Gio = imports.gi.Gio;
-const Rest = imports.gi.Rest;
-const Secret = imports.gi.Secret;
-const Soup = imports.gi.Soup;
+import Gio from 'gi://Gio';
+import Rest from 'gi://Rest';
+import Secret from 'gi://Secret';
+import Soup from 'gi://Soup';
 
-const Utils = imports.utils;
+import * as Utils from './utils.js';
+
+const _ = gettext.gettext;
 
 const BASE_URL = 'https://api.openstreetmap.org/api';
 const API_VERSION = '0.6';
@@ -46,7 +48,7 @@ const SECRET_SCHEMA = new Secret.Schema("org.gnome.Maps",
     }
 );
 
-var OSMConnection = class OSMConnection {
+export class OSMConnection {
 
     constructor() {
         this._session = new Soup.Session({ user_agent : 'gnome-maps/' + pkg.version });
@@ -55,7 +57,7 @@ var OSMConnection = class OSMConnection {
         this._callProxy = Rest.OAuthProxy.new(CONSUMER_KEY, CONSUMER_SECRET,
                                               BASE_URL + '/' + API_VERSION,
                                               false);
-        Maps.osm_init();
+        GnomeMaps.osm_init();
     }
 
     getOSMObject(type, id, callback, cancellable) {
@@ -74,8 +76,8 @@ var OSMConnection = class OSMConnection {
             }
 
             try {
-                let object = Maps.osm_parse (message.response_body.data,
-                                             message.response_body.length);
+                let object = GnomeMaps.osm_parse (message.response_body.data,
+                                                  message.response_body.length);
                 callback(true, message.status_code, object, type, null);
             } catch (e) {
                 Utils.debug(e);
@@ -121,10 +123,10 @@ var OSMConnection = class OSMConnection {
 
     _doOpenChangeset(comment, callback) {
         let changeset =
-            Maps.OSMChangeset.new(comment, 'gnome-maps ' + pkg.version);
+            GnomeMaps.OSMChangeset.new(comment, 'gnome-maps ' + pkg.version);
         let xml = changeset.serialize();
 
-        let call = Maps.OSMOAuthProxyCall.new(this._callProxy, xml);
+        let call = GnomeMaps.OSMOAuthProxyCall.new(this._callProxy, xml);
         call.set_method('PUT');
         call.set_function('/changeset/create');
 
@@ -146,7 +148,7 @@ var OSMConnection = class OSMConnection {
         object.changeset = changeset;
 
         let xml = object.serialize();
-        let call = Maps.OSMOAuthProxyCall.new(this._callProxy, xml);
+        let call = GnomeMaps.OSMOAuthProxyCall.new(this._callProxy, xml);
 
         call.set_method('PUT');
         call.set_function(this._getCreateOrUpdateFunction(object, type));
@@ -168,7 +170,7 @@ var OSMConnection = class OSMConnection {
         object.changeset = changeset;
 
         let xml = object.serialize();
-        let call = Maps.OSMOAuthProxyCall.new(this._callProxy, xml);
+        let call = GnomeMaps.OSMOAuthProxyCall.new(this._callProxy, xml);
 
         call.set_method('DELETE');
         call.set_function(this._getDeleteFunction(object, type));
@@ -274,7 +276,7 @@ var OSMConnection = class OSMConnection {
         switch (call.get_status_code()) {
             case Soup.Status.OK:
                 try {
-                    callback(Maps.osm_parse_user_details(call.get_payload()));
+                    callback(GnomeMaps.osm_parse_user_details(call.get_payload()));
                 } catch (e) {
                     Utils.debug('Error parsing user details: ' + e.message);
                     callback(null);
@@ -339,32 +341,32 @@ var OSMConnection = class OSMConnection {
     _onPasswordCleared(source, result) {
         Secret.password_clear_finish(result);
     }
-};
 
-/*
- * Gets a status message (usually for an error case)
- * to show for a given OSM server response.
- */
-function getStatusMessage(statusCode) {
-    switch (statusCode) {
-    case Soup.Status.IO_ERROR:
-    case Soup.Status.UNAUTHORIZED:
-        /* setting the status in session.cancel_message still seems
-           to always give status IO_ERROR */
-        return _("Incorrect user name or password");
-    case Soup.Status.OK:
-        return _("Success");
-    case Soup.Status.BAD_REQUEST:
-        return _("Bad request");
-    case Soup.Status.NOT_FOUND:
-        return _("Object not found");
-    case Soup.Status.CONFLICT:
-        return _("Conflict, someone else has just modified the object");
-    case Soup.Status.GONE:
-        return _("Object has been deleted");
-    case Soup.Status.PRECONDITION_FAILED:
-        return _("Way or relation refers to non-existing children");
-    default:
-        return null;
+    /*
+     * Gets a status message (usually for an error case)
+     * to show for a given OSM server response.
+     */
+    static getStatusMessage(statusCode) {
+        switch (statusCode) {
+        case Soup.Status.IO_ERROR:
+        case Soup.Status.UNAUTHORIZED:
+            /* setting the status in session.cancel_message still seems
+               to always give status IO_ERROR */
+            return _("Incorrect user name or password");
+        case Soup.Status.OK:
+            return _("Success");
+        case Soup.Status.BAD_REQUEST:
+            return _("Bad request");
+        case Soup.Status.NOT_FOUND:
+            return _("Object not found");
+        case Soup.Status.CONFLICT:
+            return _("Conflict, someone else has just modified the object");
+        case Soup.Status.GONE:
+            return _("Object has been deleted");
+        case Soup.Status.PRECONDITION_FAILED:
+            return _("Way or relation refers to non-existing children");
+        default:
+            return null;
+        }
     }
 }

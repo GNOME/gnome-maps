@@ -19,10 +19,10 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Gio = imports.gi.Gio;
-const GLib = imports.gi.GLib;
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
 
-const Utils = imports.utils;
+import * as Utils from './utils.js';
 
 const _RECENT_TYPES_STORE_FILE = 'maps-recent-types.json';
 const _NUM_RECENT_TYPES = 10;
@@ -32,7 +32,7 @@ const [_status, _buffer] = _file.load_contents(null);
 const OSM_TYPE_MAP = JSON.parse(Utils.getBufferText(_buffer));
 
 /* Lists the OSM tags we base our notion of location types on */
-var OSM_TYPE_TAGS = ['aeroway', 'amenity', 'leisure', 'office', 'place', 'shop', 'tourism' ];
+export const OSM_TYPE_TAGS = ['aeroway', 'amenity', 'leisure', 'office', 'place', 'shop', 'tourism' ];
 
 /* Sort function comparing two type values according to the locale-specific
  * comparison of the type title */
@@ -66,7 +66,7 @@ function _lookupTitle(item) {
     return null;
 }
 
-function findMatches(prefix, maxMatches) {
+export function findMatches(prefix, maxMatches) {
     let numMatches = 0;
     let prefixLength = prefix.length;
     let normalized = prefix.toLocaleLowerCase();
@@ -94,7 +94,7 @@ function findMatches(prefix, maxMatches) {
 }
 
 /* return the title of a type with a given key/value if it is known by us */
-function lookupType(key, value) {
+export function lookupType(key, value) {
     let item = OSM_TYPE_MAP[key + '/' + value];
 
     if (item) {
@@ -104,7 +104,7 @@ function lookupType(key, value) {
         return null;
 }
 
-var RecentTypesStore = class RecentTypesStore {
+export class RecentTypesStore {
 
     constructor() {
         this._filename = GLib.build_filenamev([GLib.get_user_data_dir(),
@@ -162,4 +162,4 @@ var RecentTypesStore = class RecentTypesStore {
     }
 };
 
-var recentTypesStore = new RecentTypesStore();
+export const recentTypesStore = new RecentTypesStore();

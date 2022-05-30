@@ -20,37 +20,26 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
-const Application = imports.application;
-const Utils = imports.utils;
+import {Application} from './application.js';
+import * as Utils from './utils.js';
 
-var Response = {
-    SIGNED_IN: 0
-};
+export class OSMAccountDialog extends Gtk.Dialog {
 
-var OSMAccountDialog = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/osm-account-dialog.ui',
-    InternalChildren: ['stack',
-                       'signInButton',
-                       'signInSpinner',
-                       'verificationEntry',
-                       'verifyButton',
-                       'errorLabel',
-                       'signedInUserLabel',
-                       'signOutButton'],
-}, class OSMAccountDialog extends Gtk.Dialog {
+    static Response = { SIGNED_IN: 0 };
 
-    _init(params) {
+    constructor(params) {
         /* This is a construct-only property and cannot be set by GtkBuilder */
         params.use_header_bar = true;
 
-        this._closeOnSignIn = params.closeOnSignIn;
+        let closeOnSignIn = params.closeOnSignIn;
         delete params.closeOnSignIn;
 
-        super._init(params);
+        super(params);
 
+        this._closeOnSignIn = closeOnSignIn;
         this._signInButton.connect('clicked',
                                    this._onSignInButtonClicked.bind(this));
         this._verifyButton.connect('clicked',
@@ -174,4 +163,16 @@ var OSMAccountDialog = GObject.registerClass({
         this._signInButton.sensitive= true;
         this._stack.visible_child_name = 'sign-in';
     }
-});
+}
+
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/osm-account-dialog.ui',
+    InternalChildren: ['stack',
+                       'signInButton',
+                       'signInSpinner',
+                       'verificationEntry',
+                       'verifyButton',
+                       'errorLabel',
+                       'signedInUserLabel',
+                       'signOutButton'],
+}, OSMAccountDialog);

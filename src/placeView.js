@@ -19,26 +19,26 @@
  * Author: Damián Nohales <damiannohales@gmail.com>
  */
 
-const Geocode = imports.gi.GeocodeGlib;
-const GLib = imports.gi.GLib;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
-const Pango = imports.gi.Pango;
+import GeocodeGlib from 'gi://GeocodeGlib';
+import GLib from 'gi://GLib';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
+import Pango from 'gi://Pango';
 
 const Format = imports.format;
 
-const Application = imports.application;
-const ContactPlace = imports.contactPlace;
-const Overpass = imports.overpass;
-const Place = imports.place;
-const PlaceIcons = imports.placeIcons;
-const PlaceViewImage = imports.placeViewImage;
-const PlaceButtons = imports.placeButtons;
-const PlaceFormatter = imports.placeFormatter;
-const PlaceStore = imports.placeStore;
-const Translations = imports.translations;
-const Utils = imports.utils;
-const Wikipedia = imports.wikipedia;
+import {Application} from './application.js';
+import {ContactPlace} from './contactPlace.js';
+import {Overpass} from './overpass.js';
+import {Place} from './place.js';
+import * as PlaceIcons from './placeIcons.js';
+import {PlaceViewImage} from './placeViewImage.js';
+import {PlaceButtons} from './placeButtons.js';
+import {PlaceFormatter} from './placeFormatter.js';
+import {PlaceStore} from './placeStore.js';
+import * as Translations from './translations.js';
+import * as Utils from './utils.js';
+import * as Wikipedia from './wikipedia.js';
 
 // maximum dimension of thumbnails to fetch from Wikipedia
 const THUMBNAIL_FETCH_SIZE = 360;
@@ -46,19 +46,10 @@ const THUMBNAIL_FETCH_SIZE = 360;
 // Unicode left-to-right marker
 const LRM = '\u200E';
 
-var PlaceView = GObject.registerClass({
-    Properties: {
-        'overpass-place': GObject.ParamSpec.object('overpass-place',
-                                                   'Overpass Place',
-                                                   'The place as filled in by Overpass',
-                                                   GObject.ParamFlags.READABLE |
-                                                   GObject.ParamFlags.WRITABLE,
-                                                   Geocode.Place)
-    }
-}, class PlaceView extends Gtk.Box {
+export class PlaceView extends Gtk.Box {
 
-    _init(params) {
-        this._place = params.place;
+    constructor(params) {
+        let place = params.place;
         delete params.place;
 
         let mapView = params.mapView;
@@ -66,10 +57,13 @@ var PlaceView = GObject.registerClass({
 
         /* This mode is used in PlaceBar for inline current location details.
            It hides the title box and decreases the start margin on the rows. */
-        this._inlineMode = !!params.inlineMode;
+        let inlineMode = !!params.inlineMode;
         delete params.inlineMode;
 
-        super._init(params);
+        super(params);
+
+        this._place = place;
+        this._inlineMode = inlineMode;
 
         let ui = Utils.getUIObject('place-view', [ 'bubble-main-box',
                                                    'bubble-spinner',
@@ -97,8 +91,8 @@ var PlaceView = GObject.registerClass({
 
         this.add(this._mainStack);
 
-        let placeButtons = new PlaceButtons.PlaceButtons({ place: this._place,
-                                                           mapView: mapView });
+        let placeButtons = new PlaceButtons({ place: this._place,
+                                              mapView: mapView });
         placeButtons.connect('place-edited', this._onPlaceEdited.bind(this));
         ui.placeButtons.add(placeButtons);
 
@@ -120,7 +114,7 @@ var PlaceView = GObject.registerClass({
         }
 
         /* Set up contact avatar */
-        if (this.place instanceof ContactPlace.ContactPlace) {
+        if (this.place instanceof ContactPlace) {
             this._contactAvatar.visible = true;
             Utils.load_icon(this.place.icon, 32, (pixbuf) => {
                 this._contactAvatar.set_image_load_func((size) => Utils.loadAvatar(pixbuf, size));
@@ -137,7 +131,7 @@ var PlaceView = GObject.registerClass({
         if (this.place.isCurrentLocation) {
             this._populate(this.place);
         } else {
-            let overpass = new Overpass.Overpass();
+            let overpass = new Overpass();
 
             /* use a property binding from the Overpass instance to avoid
              * accessing this object after the underlying GObject has
@@ -201,7 +195,7 @@ var PlaceView = GObject.registerClass({
 
     updatePlaceDetails() {
         let place = this.place;
-        let formatter = new PlaceFormatter.PlaceFormatter(place);
+        let formatter = new PlaceFormatter(place);
 
         let address = formatter.rows.map((row) => {
             row = row.map(function(prop) {
@@ -660,4 +654,15 @@ var PlaceView = GObject.registerClass({
     _onPlaceEdited() {
         this._populate(this._place);
     }
-});
+}
+
+GObject.registerClass({
+    Properties: {
+        'overpass-place': GObject.ParamSpec.object('overpass-place',
+                                                   'Overpass Place',
+                                                   'The place as filled in by Overpass',
+                                                   GObject.ParamFlags.READABLE |
+                                                   GObject.ParamFlags.WRITABLE,
+                                                   GeocodeGlib.Place)
+    }
+}, PlaceView);

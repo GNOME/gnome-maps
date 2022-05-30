@@ -24,7 +24,7 @@
  * See https://wiki.openstreetmap.org/wiki/Multilingual_names
  */
 
-const Utils = imports.utils
+import * as Utils from './utils.js';
 
 /**
  * Mapping writing systems (scripts) to languages (most commonly
@@ -138,7 +138,7 @@ const WRITING_SYSTEMS = [
     }
 ];
 
-function getNameForLanguageAndCountry(tags, language, country) {
+export function getNameForLanguageAndCountry(tags, language, country) {
     let localizedName = _getNameInLanguage(tags, language);
 
     /* for names in Norwegian, the best practice in OSM is to use the
@@ -154,7 +154,7 @@ function getNameForLanguageAndCountry(tags, language, country) {
                                                                  country);
 }
 
-function _getFallbackNameForLanguageAndCountry(tags, language, country) {
+export function _getFallbackNameForLanguageAndCountry(tags, language, country) {
     let intName;
 
     if (_predominantWritingSystemMatchesLanguage(country, language) && tags.name)

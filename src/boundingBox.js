@@ -19,9 +19,9 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Constants = imports.constants;
+import * as Constants from './constants.js';
 
-var BoundingBox = class {
+export class BoundingBox {
     constructor(params) {
         /* default to a bounding box the "opposite" of covering the whole
          * visible world, this way extending with a coordinate will ensure

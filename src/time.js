@@ -19,7 +19,7 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Gio = imports.gi.Gio;
+import Gio from 'gi://Gio';
 
 // allow using :, ., and the ratio symbol to separate hours:mins
 const _DELIMITERS = [':', '.', '\u2236'];
@@ -105,7 +105,7 @@ const _timeFormat12 = new Intl.DateTimeFormat([], { hour:     '2-digit',
  *
  * TODO: maybe try to use some library to get better locale handling,
  * or push for something in GLib */
-function parseTimeString(timeString) {
+export function parseTimeString(timeString) {
     let pmSet = false;
     let hours;
     let mins;
@@ -176,8 +176,13 @@ function parseTimeString(timeString) {
     }
 }
 
-function _is12Hour() {
+let _is12Hour = function() {
     return _clockFormat === '12h';
+}
+
+// for use by unit test mocking only
+export function _setIs12HourFunction(f) {
+    _is12Hour = f;
 }
 
 /**
@@ -186,7 +191,7 @@ function _is12Hour() {
  * given time in ms since Epoch with an offset in
  * ms relative UTC.
  */
-function formatTimeWithTZOffset(time, offset) {
+export function formatTimeWithTZOffset(time, offset) {
     let utcTimeWithOffset = time + offset;
     let date = new Date();
     let timeFormat = _is12Hour() ? _timeFormat12 : _timeFormat24;
@@ -201,7 +206,7 @@ function formatTimeWithTZOffset(time, offset) {
  * format depending on system settings
  * given hours and minutes values.
  */
-function formatTimeFromHoursAndMins(hours, mins) {
+export function formatTimeFromHoursAndMins(hours, mins) {
     let date = new Date();
     let timeFormat = _is12Hour() ? _timeFormat12 : _timeFormat24;
 

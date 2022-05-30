@@ -21,8 +21,8 @@
 
 const JsUnit = imports.jsUnit;
 
-const BoundingBox = imports.boundingBox;
-const Constants = imports.constants;
+import {BoundingBox} from './boundingBox.js';
+import * as Constants from './constants.js';
 
 function main() {
     constructTest();
@@ -36,8 +36,8 @@ function main() {
 }
 
 function constructTest() {
-    let bbox = new BoundingBox.BoundingBox({ top: 60.0, left: 15.0,
-                                             bottom: 59.0, right: 16.0 });
+    let bbox = new BoundingBox({ top: 60.0, left: 15.0,
+                                 bottom: 59.0, right: 16.0 });
 
     JsUnit.assertEquals(60.0, bbox.top);
     JsUnit.assertEquals(15.0, bbox.left);
@@ -45,7 +45,7 @@ function constructTest() {
     JsUnit.assertEquals(16.0, bbox.right);
 
     // test default values
-    bbox = new BoundingBox.BoundingBox();
+    bbox = new BoundingBox();
 
     JsUnit.assertEquals(Constants.MIN_LATITUDE, bbox.top);
     JsUnit.assertEquals(Constants.MAX_LONGITUDE, bbox.left);
@@ -54,8 +54,8 @@ function constructTest() {
 }
 
 function copyTest() {
-    let bbox = new BoundingBox.BoundingBox({ top: 60.0, left: 15.0,
-                                             bottom: 59.0, right: 16.0 });
+    let bbox = new BoundingBox({ top: 60.0, left: 15.0,
+                                 bottom: 59.0, right: 16.0 });
     let copy = bbox.copy();
 
     // update original box
@@ -72,7 +72,7 @@ function copyTest() {
 }
 
 function setTest() {
-    let bbox = new BoundingBox.BoundingBox();
+    let bbox = new BoundingBox();
 
     bbox.top = 0;
     bbox.left = 0;
@@ -86,8 +86,8 @@ function setTest() {
 }
 
 function getCenterTest() {
-    let bbox = new BoundingBox.BoundingBox({ top: 60.0, left: 15.0,
-                                             bottom: 59.0, right: 16.0 });
+    let bbox = new BoundingBox({ top: 60.0, left: 15.0,
+                                 bottom: 59.0, right: 16.0 });
     let center = bbox.getCenter();
 
     JsUnit.assertTrue(center instanceof Array);
@@ -97,10 +97,10 @@ function getCenterTest() {
 }
 
 function composeTest() {
-    let bbox = new BoundingBox.BoundingBox({ top: 60.0, left: 15.0,
-                                             bottom: 59.0, right: 16.0 });
-    let other = new BoundingBox.BoundingBox({ top: 60.0, left: 14.0,
-                                              bottom: 59.0, right: 15.0 });
+    let bbox = new BoundingBox({ top: 60.0, left: 15.0,
+                                 bottom: 59.0, right: 16.0 });
+    let other = new BoundingBox({ top: 60.0, left: 14.0,
+                                  bottom: 59.0, right: 15.0 });
 
     bbox.compose(other);
 
@@ -111,8 +111,8 @@ function composeTest() {
 }
 
 function extendTest() {
-    let bbox = new BoundingBox.BoundingBox({ top: 60.0, left: 15.0,
-                                             bottom: 59.0, right: 16.0 });
+    let bbox = new BoundingBox({ top: 60.0, left: 15.0,
+                                 bottom: 59.0, right: 16.0 });
 
     bbox.extend(58.0, 14.0);
 
@@ -123,31 +123,33 @@ function extendTest() {
 }
 
 function isValidTest() {
-    let valid = new BoundingBox.BoundingBox({ top: 60.0, left: 15.0,
-                                              bottom: 59.0, right: 16.0 });
+    let valid = new BoundingBox({ top: 60.0, left: 15.0,
+                                  bottom: 59.0, right: 16.0 });
 
     JsUnit.assertTrue(valid.isValid());
 
-    let unset = new BoundingBox.BoundingBox();
+    let unset = new BoundingBox();
 
     JsUnit.assertFalse(unset.isValid());
 
-    let overflowNorth = new BoundingBox.BoundingBox({ top: 100.0, left: 15.0,
-                                                      bottom: 0.0, right: 16.0 });
+    let overflowNorth = new BoundingBox({ top: 100.0, left: 15.0,
+                                          bottom: 0.0, right: 16.0 });
 
     JsUnit.assertFalse(overflowNorth.isValid());
 
-    let flipped = new BoundingBox.BoundingBox({ top: 59.0, left: 16.0,
-                                                bottom: 60.0, right: 15.0 });
+    let flipped = new BoundingBox({ top: 59.0, left: 16.0,
+                                    bottom: 60.0, right: 15.0 });
 
     JsUnit.assertFalse(flipped.isValid());
 }
 
 function coversTest() {
-    let bbox = new BoundingBox.BoundingBox({ top: 60.0, left: 15.0,
-                                             bottom: 59.0, right: 16.0 });
+    let bbox = new BoundingBox({ top: 60.0, left: 15.0,
+                                 bottom: 59.0, right: 16.0 });
 
     JsUnit.assertTrue(bbox.covers(59.5, 15.5));
     JsUnit.assertFalse(bbox.covers(0.0, 0.0));
     JsUnit.assertFalse(bbox.covers(59.0, -180.0));
 }
+
+main();

@@ -19,15 +19,14 @@
  * Author: Damián Nohales <damiannohales@gmail.com>
  */
 
-const GObject = imports.gi.GObject;
+import GObject from 'gi://GObject';
 
-const MapMarker = imports.mapMarker;
+import {MapMarker} from './mapMarker.js';
 
-var PlaceMarker = GObject.registerClass(
-class PlaceMarker extends MapMarker.MapMarker {
+export class PlaceMarker extends MapMarker {
 
-    _init(params) {
-        super._init(params);
+    constructor(params) {
+        super(params);
 
         this.add_actor(this._actorFromIconName('mark-location', 32));
     }
@@ -40,4 +39,6 @@ class PlaceMarker extends MapMarker.MapMarker {
     _hasBubble() {
         return true;
     }
-});
+}
+
+GObject.registerClass(PlaceMarker);

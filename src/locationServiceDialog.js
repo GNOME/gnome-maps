@@ -20,26 +20,22 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Gdk = imports.gi.Gdk;
-const Gio = imports.gi.Gio;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import Gdk from 'gi://Gdk';
+import Gio from 'gi://Gio';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
-const Utils = imports.utils;
+import * as Utils from './utils.js';
 
 const _PRIVACY_PANEL = 'gnome-privacy-panel.desktop';
 
-var LocationServiceDialog = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/location-service-dialog.ui',
-    InternalChildren: [ 'cancelButton',
-                        'settingsButton'],
-}, class LocationServiceDialog extends Gtk.Dialog {
+export class LocationServiceDialog extends Gtk.Dialog {
 
-    _init(params) {
+    constructor(params) {
         /* This is a construct-only property and cannot be set by GtkBuilder */
         params.use_header_bar = true;
 
-        super._init(params);
+        super(params);
 
         this._settingsButton.connect('clicked', () => this._onSettings());
         this._cancelButton.connect('clicked', () => this._onCancel());
@@ -62,4 +58,10 @@ var LocationServiceDialog = GObject.registerClass({
     _onCancel() {
         this.response(Gtk.ResponseType.CANCEL);
     }
-});
+}
+
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/location-service-dialog.ui',
+    InternalChildren: [ 'cancelButton',
+                        'settingsButton'],
+}, LocationServiceDialog);

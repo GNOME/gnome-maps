@@ -20,30 +20,25 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const _ = imports.gettext.gettext;
+import gettext from 'gettext';
 
-const Geocode = imports.gi.GeocodeGlib;
-const Gio = imports.gi.Gio;
-const GLib = imports.gi.GLib;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
-const Soup = imports.gi.Soup;
+const _ = gettext.gettext;
 
-const Application = imports.application;
-const Maps = imports.gi.GnomeMaps;
-const OSMConnection = imports.osmConnection;
-const OSMTypes = imports.osmTypes;
-const OSMTypeSearchEntry = imports.osmTypeSearchEntry;
-const OSMUtils = imports.osmUtils;
-const Utils = imports.utils;
-const Wikipedia = imports.wikipedia;
+import GeocodeGlib from 'gi://GeocodeGlib';
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
+import Soup from 'gi://Soup';
 
-var Response = {
-    UPLOADED: 0,
-    DELETED: 1,
-    CANCELLED: 2,
-    ERROR: 3
-};
+import {Application} from './application.js';
+import GnomeMaps from 'gi://GnomeMaps';
+import {OSMConnection} from './osmConnection.js';
+import * as OSMTypes from './osmTypes.js';
+import {OSMTypeSearchEntry} from './osmTypeSearchEntry.js';
+import * as OSMUtils from './osmUtils.js';
+import * as Utils from './utils.js';
+import * as Wikipedia from './wikipedia.js';
 
 /*
  * enumeration representing
@@ -146,7 +141,7 @@ const OSM_FIELDS = [
         name: _("Phone"),
         tag: 'phone',
         type: EditFieldType.TEXT,
-        rewriteFunc: this._osmPhoneRewriteFunc,
+        rewriteFunc: _osmPhoneRewriteFunc,
         hint: _("Phone number. Use the international format, " +
                 "starting with a + sign. Beware of local privacy " +
                 "laws, especially for private phone numbers.")
@@ -156,7 +151,7 @@ const OSM_FIELDS = [
         tag: 'email',
         type: EditFieldType.TEXT,
         validate: Utils.isValidEmail,
-        rewriteFunc: this._osmEmailRewriteFunc,
+        rewriteFunc: _osmEmailRewriteFunc,
         validateError: _("This is not a valid e-mail address. Make sure to not include the mailto: protocol prefix."),
         hint: _("Contact e-mail address for inquiries. " +
                 "Add only email addresses that are intended to be publicly used.")
@@ -166,7 +161,7 @@ const OSM_FIELDS = [
         tag: 'wikipedia',
         type: EditFieldType.TEXT,
         validate: Wikipedia.isValidWikipedia,
-        rewriteFunc: this._osmWikipediaRewriteFunc,
+        rewriteFunc: _osmWikipediaRewriteFunc,
         hint: _("The format used should include the language code " +
                 "and the article title like “en:Article title”.")
     },
@@ -258,15 +253,9 @@ const OSM_FIELDS = [
         hint: _("Information used to inform other mappers about non-obvious information about an element, the author’s intent when creating it, or hints for further improvement.")
     }];
 
-const OSMEditAddress = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/osm-edit-address.ui',
-    Children: [ 'street',
-                'number',
-                'post',
-                'city' ],
-}, class OSMEditAddress extends Gtk.Grid {
+export class OSMEditAddress extends Gtk.Grid {
 
-    _init(params) {
+    constructor(params) {
         let street = params.street;
         delete params.street;
 
@@ -279,7 +268,7 @@ const OSMEditAddress = GObject.registerClass({
         let city = params.city;
         delete params.city;
 
-        super._init(params);
+        super(params);
 
         if (street)
             this.street.text = street;
@@ -293,52 +282,47 @@ const OSMEditAddress = GObject.registerClass({
         if (city)
             this.city.text = city;
     }
-});
+}
 
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/osm-edit-address.ui',
+    Children: [ 'street',
+                'number',
+                'post',
+                'city' ],
+}, OSMEditAddress);
 
-var OSMEditDialog = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/osm-edit-dialog.ui',
-    InternalChildren: [ 'cancelButton',
-                        'backButton',
-                        'nextButton',
-                        'stack',
-                        'editorGrid',
-                        'commentTextView',
-                        'addFieldPopoverGrid',
-                        'addFieldButton',
-                        'typeSearchGrid',
-                        'typeLabel',
-                        'typeButton',
-                        'typeValueLabel',
-                        'recentTypesLabel',
-                        'recentTypesListBox',
-                        'hintPopover',
-                        'hintLabel',
-                        'headerBar'],
-}, class OSMEditDialog extends Gtk.Dialog {
+export class OSMEditDialog extends Gtk.Dialog {
 
-    _init(params) {
-        this._place = params.place;
+    static Response = {
+        UPLOADED: 0,
+        DELETED: 1,
+        CANCELLED: 2,
+        ERROR: 3
+    };
+
+    constructor(params) {
+        let place = params.place;
         delete params.place;
 
-        this._addLocation = params.addLocation;
+        let addLocation = params.addLocation;
         delete params.addLocation;
 
-        this._latitude = params.latitude;
+        let latitude = params.latitude;
         delete params.latitude;
 
-        this._longitude = params.longitude;
+        let longitude = params.longitude;
         delete params.longitude;
 
         /* This is a construct-only property and cannot be set by GtkBuilder */
         params.use_header_bar = true;
 
-        super._init(params);
+        super(params);
 
         /* I could not get this widget working from within the widget template
          * this results in a segfault. The widget definition is left in-place,
          * but commented-out in the template file */
-        this._typeSearch = new OSMTypeSearchEntry.OSMTypeSearchEntry();
+        this._typeSearch = new OSMTypeSearchEntry();
         this._typeSearchGrid.attach(this._typeSearch, 0, 0, 1, 1);
         this._typeSearch.visible = true;
         this._typeSearch.can_focus = true;
@@ -359,23 +343,23 @@ var OSMEditDialog = GObject.registerClass({
         this._backButton.connect('clicked', () => this._onBackClicked());
         this._typeButton.connect('clicked', () => this._onTypeClicked());
 
-        if (this._addLocation) {
+        if (addLocation) {
             this._headerBar.title = C_("dialog title", "Add to OpenStreetMap");
             this._typeLabel.visible = true;
             this._typeButton.visible = true;
 
             /* the OSMObject ID, version, and changeset ID is unknown for now */
             let newNode =
-                Maps.OSMNode.new(0, 0, 0, this._longitude, this._latitude);
+                GnomeMaps.OSMNode.new(0, 0, 0, longitude, latitude);
             /* set a placeholder name tag to always get a name entry for new
              * locations */
             newNode.set_tag('name', '');
             this._loadOSMData(newNode);
             this._isEditing = true;
-            this._osmType = Geocode.PlaceOsmType.NODE;
+            this._osmType = GeocodeGlib.PlaceOsmType.NODE;
         } else {
-            this._osmType = this._place.osmType;
-            Application.osmEdit.fetchObject(this._place,
+            this._osmType = place.osmType;
+            Application.osmEdit.fetchObject(place,
                                             this._onObjectFetched.bind(this),
                                             this._cancellable);
         }
@@ -540,7 +524,7 @@ var OSMEditDialog = GObject.registerClass({
     }
 
     _onCancelClicked() {
-        this.response(Response.CANCELLED);
+        this.response(OSMEditDialog.Response.CANCELLED);
     }
 
     _onBackClicked() {
@@ -566,7 +550,7 @@ var OSMEditDialog = GObject.registerClass({
 
     _onObjectUploaded(success, status) {
         if (success) {
-            this.response(Response.UPLOADED);
+            this.response(OSMEditDialog.Response.UPLOADED);
         } else {
             this._showError(status);
             this.response(Response.ERROR);
@@ -904,4 +888,25 @@ var OSMEditDialog = GObject.registerClass({
         this._updateTypeButton();
         this._stack.visible_child_name = 'editor';
     }
-});
+}
+
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/osm-edit-dialog.ui',
+    InternalChildren: [ 'cancelButton',
+                        'backButton',
+                        'nextButton',
+                        'stack',
+                        'editorGrid',
+                        'commentTextView',
+                        'addFieldPopoverGrid',
+                        'addFieldButton',
+                        'typeSearchGrid',
+                        'typeLabel',
+                        'typeButton',
+                        'typeValueLabel',
+                        'recentTypesLabel',
+                        'recentTypesListBox',
+                        'hintPopover',
+                        'hintLabel',
+                        'headerBar'],
+}, OSMEditDialog);

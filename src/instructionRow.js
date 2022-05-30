@@ -20,28 +20,25 @@
  *         Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
  */
 
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
-const Utils = imports.utils;
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
+import * as Utils from './utils.js';
 
-var InstructionRow = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/instruction-row.ui',
-    InternalChildren: [ 'directionImage',
-                        'instructionLabel',
-                        'distanceLabel' ]
-}, class InstructionRow extends Gtk.ListBoxRow {
+export class InstructionRow extends Gtk.ListBoxRow {
 
-    _init(params) {
-        this.turnPoint = params.turnPoint;
+    constructor(params) {
+        let turnPoint = params.turnPoint;
         delete params.turnPoint;
 
-        this._hasColor = params.hasColor;
+        let hasColor = params.hasColor;
         delete params.hasColor;
 
         let lines = params.lines;
         delete params.lines;
 
-        super._init(params);
+        super(params);
+
+        this.turnPoint = turnPoint;
 
         if (lines)
             this._instructionLabel.lines = lines;
@@ -54,7 +51,7 @@ var InstructionRow = GObject.registerClass({
          * the proper GtkIconLookupflags to re-color the icon as symbolic.
          * When we load the PixBuf from the SVG ourself, we get the color.
          */
-        if (this._hasColor) {
+        if (hasColor) {
             let theme = Gtk.IconTheme.get_default();
             let iconName = this.turnPoint.iconName;
             this._directionImage.pixbuf = theme.load_icon(iconName, 0, 0);
@@ -65,4 +62,11 @@ var InstructionRow = GObject.registerClass({
         if (this.turnPoint.distance > 0)
             this._distanceLabel.label = Utils.prettyDistance(this.turnPoint.distance);
     }
-});
+}
+
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/instruction-row.ui',
+    InternalChildren: [ 'directionImage',
+                        'instructionLabel',
+                        'distanceLabel' ]
+}, InstructionRow);

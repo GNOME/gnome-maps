@@ -19,57 +19,43 @@
  * Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
-const Champlain = imports.gi.Champlain;
-const Clutter = imports.gi.Clutter;
-const GObject = imports.gi.GObject;
-const Geocode = imports.gi.GeocodeGlib;
-const Gio = imports.gi.Gio;
-const Gtk = imports.gi.Gtk;
-const GtkChamplain = imports.gi.GtkChamplain;
-const Hdy = imports.gi.Handy;
+import Champlain from 'gi://Champlain';
+import Clutter from 'gi://Clutter';
+import GObject from 'gi://GObject';
+import GeocodeGlib from 'gi://GeocodeGlib';
+import Gio from 'gi://Gio';
+import Gtk from 'gi://Gtk';
+import GtkChamplain from 'gi://GtkChamplain';
+import Handy from 'gi://Handy';
 const Mainloop = imports.mainloop;
 
-const Application = imports.application;
-const BoundingBox = imports.boundingBox;
-const ContactPlace = imports.contactPlace;
-const Color = imports.color;
-const Geoclue = imports.geoclue;
-const GeoJSONShapeLayer = imports.geoJSONShapeLayer;
-const KmlShapeLayer = imports.kmlShapeLayer;
-const GpxShapeLayer = imports.gpxShapeLayer;
-const Location = imports.location;
-const Maps = imports.gi.GnomeMaps;
-const MapSource = imports.mapSource;
-const MapWalker = imports.mapWalker;
-const Place = imports.place;
-const PlaceMarker = imports.placeMarker;
-const RouteQuery = imports.routeQuery;
-const Service = imports.service;
-const ShapeLayer = imports.shapeLayer;
-const StoredRoute = imports.storedRoute;
-const TransitArrivalMarker = imports.transitArrivalMarker;
-const TransitBoardMarker = imports.transitBoardMarker;
-const TransitWalkMarker = imports.transitWalkMarker;
-const TurnPointMarker = imports.turnPointMarker;
-const UserLocationMarker = imports.userLocationMarker;
-const Utils = imports.utils;
+import GnomeMaps from 'gi://GnomeMaps';
 
-var MapType = {
-    LOCAL: 'MapsLocalSource',
-    STREET: 'MapsStreetSource',
-    AERIAL: 'MapsAerialSource'
-};
+import {Application} from './application.js';
+import {BoundingBox} from './boundingBox.js';
+import {ContactPlace} from './contactPlace.js';
+import * as Color from './color.js';
+import * as Geoclue from './geoclue.js';
+import {GeoJSONShapeLayer} from './geoJSONShapeLayer.js';
+import {KmlShapeLayer} from './kmlShapeLayer.js';
+import {GpxShapeLayer} from './gpxShapeLayer.js';
+import {Location} from './location.js';
+import * as MapSource from './mapSource.js';
+import {MapWalker} from './mapWalker.js';
+import {Place} from './place.js';
+import {PlaceMarker} from './placeMarker.js';
+import * as Service from './service.js';
+import {ShapeLayer} from './shapeLayer.js';
+import {StoredRoute} from './storedRoute.js';
+import {TransitArrivalMarker} from './transitArrivalMarker.js';
+import {TransitBoardMarker} from './transitBoardMarker.js';
+import {TransitWalkMarker} from './transitWalkMarker.js';
+import {TurnPointMarker} from './turnPointMarker.js';
+import {UserLocationMarker} from './userLocationMarker.js';
+import * as Utils from './utils.js';
+
 const _LOCATION_STORE_TIMEOUT = 500;
 const MapMinZoom = 2;
-
-/*
- * Due to the mathematics of spherical mericator projection,
- * the map must be truncated at a latitude less than 90 degrees.
- */
-var MAX_LATITUDE = 85.05112;
-var MIN_LATITUDE = -85.05112;
-var MAX_LONGITUDE = 180;
-var MIN_LONGITUDE = -180;
 
 /* threashhold for route color luminance when we consider it more or less
  * as white, and draw an outline on the path */
@@ -92,33 +78,22 @@ const DASHED_ROUTE_LINE_GAP_LENGTH = 5;
 // Maximum limit of file size (20 MB) that can be loaded without user confirmation
 const FILE_SIZE_LIMIT_MB = 20;
 
-var MapView = GObject.registerClass({
-    Properties: {
-        // this property is true when the routing sidebar is active
-        'routingOpen': GObject.ParamSpec.boolean('routingOpen',
-                                                  'Routing open',
-                                                  'Routing sidebar open',
-                                                  GObject.ParamFlags.READABLE |
-                                                  GObject.ParamFlags.WRITABLE,
-                                                  false),
-        /* this property is true when a route is being shown on the map */
-        'routeShowing': GObject.ParamSpec.boolean('routeShowing',
-                                                 'Route showing',
-                                                 'Showing a route on the map',
-                                                 GObject.ParamFlags.READABLE |
-                                                 GObject.ParamFlags.WRITABLE,
-                                                 false)
-    },
-    Signals: {
-        'user-location-changed': {},
-        'going-to': {},
-        'going-to-user-location': {},
-        'gone-to-user-location': {},
-        'view-moved': {},
-        'marker-selected': { param_types: [Champlain.Marker] },
-        'map-type-changed': { param_types: [GObject.TYPE_STRING] }
-    },
-}, class MapView extends GtkChamplain.Embed {
+export class MapView extends GtkChamplain.Embed {
+
+    static MapType = {
+        LOCAL: 'MapsLocalSource',
+        STREET: 'MapsStreetSource',
+        AERIAL: 'MapsAerialSource'
+    }
+
+    /*
+     * Due to the mathematics of spherical mericator projection,
+     * the map must be truncated at a latitude less than 90 degrees.
+     */
+    static MAX_LATITUDE = 85.05112;
+    static MIN_LATITUDE = -85.05112;
+    static MAX_LONGITUDE = 180;
+    static MIN_LONGITUDE = -180;
 
     get routingOpen() {
         return this._routingOpen || this._instructionMarkerLayer.visible;
@@ -144,8 +119,8 @@ var MapView = GObject.registerClass({
         this.notify('routeShowing');
     }
 
-    _init(params) {
-        super._init();
+    constructor(params) {
+        super();
 
         let mapType = params.mapType || this._getStoredMapType();
         delete params.mapType;
@@ -208,7 +183,7 @@ var MapView = GObject.registerClass({
 
         // if dark tiles is available, setup handler to switch style
         if (Service.getService().tiles.streetDark) {
-            Hdy.StyleManager.get_default().connect('notify::dark',
+            Handy.StyleManager.get_default().connect('notify::dark',
                                                     this._onDarkChanged.bind(this));
         }
 
@@ -229,7 +204,7 @@ var MapView = GObject.registerClass({
         if (this._mapType === MapType.STREET) {
             let overlay_sources = this.view.get_overlay_sources();
 
-            if (Hdy.StyleManager.get_default().dark)
+            if (Handy.StyleManager.get_default().dark)
                 this.view.map_source = MapSource.createStreetDarkSource();
             else
                 this.view.map_source = MapSource.createStreetSource();
@@ -296,9 +271,9 @@ var MapView = GObject.registerClass({
         this._annotationMarkerLayer = new Champlain.MarkerLayer({ selection_mode: mode });
         this.view.add_layer(this._annotationMarkerLayer);
 
-        ShapeLayer.SUPPORTED_TYPES.push(GeoJSONShapeLayer.GeoJSONShapeLayer);
-        ShapeLayer.SUPPORTED_TYPES.push(KmlShapeLayer.KmlShapeLayer);
-        ShapeLayer.SUPPORTED_TYPES.push(GpxShapeLayer.GpxShapeLayer);
+        ShapeLayer.SUPPORTED_TYPES.push(GeoJSONShapeLayer);
+        ShapeLayer.SUPPORTED_TYPES.push(KmlShapeLayer);
+        ShapeLayer.SUPPORTED_TYPES.push(GpxShapeLayer);
 
         this._routeLayers = [];
     }
@@ -348,8 +323,8 @@ var MapView = GObject.registerClass({
         let mapType = Application.settings.get('map-type');
 
         // make sure it's a valid map type
-        for (let type in MapType) {
-            if (mapType === MapType[type]) {
+        for (let type in MapView.MapType) {
+            if (mapType === MapView.MapType[type]) {
                 return mapType;
             }
         }
@@ -369,10 +344,10 @@ var MapView = GObject.registerClass({
 
         this._mapType = mapType;
 
-        if (mapType !== MapType.LOCAL) {
+        if (mapType !== MapView.MapType.LOCAL) {
             let tiles = Service.getService().tiles;
 
-            if (mapType === MapType.AERIAL && tiles.aerial) {
+            if (mapType === MapView.MapType.AERIAL && tiles.aerial) {
                 if (tiles.hybridAerial &&
                     Application.settings.get('hybrid-aerial')) {
                     this.view.map_source = MapSource.createHybridAerialSource();
@@ -381,7 +356,7 @@ var MapView = GObject.registerClass({
                 }
             } else {
                 if (tiles.streetDark &&
-                    Hdy.StyleManager.get_default().dark) {
+                    Handy.StyleManager.get_default().dark) {
                     this.view.map_source = MapSource.createStreetDarkSource();
                 } else {
                     this.view.map_source = MapSource.createStreetSource();
@@ -391,7 +366,7 @@ var MapView = GObject.registerClass({
             Application.settings.set('map-type', mapType);
         } else {
             let renderer = new Champlain.ImageRenderer();
-            let source = new Maps.FileTileSource({
+            let source = new GnomeMaps.FileTileSource({
                 path: Utils.getBufferText(Application.application.local_tile_path),
                 renderer: renderer,
                 tile_size: Application.application.local_tile_size || 512
@@ -404,7 +379,7 @@ var MapView = GObject.registerClass({
                 let [lat, lon] = this.view.world.get_center();
                 this.view.center_on(lat, lon);
             } catch(e) {
-                this.setMapType(MapType.STREET);
+                this.setMapType(MapView.MapType.STREET);
                 Application.application.local_tile_path = false;
                 Utils.showDialog(e.message, Gtk.MessageType.ERROR, this._mainWindow);
             }
@@ -478,7 +453,7 @@ var MapView = GObject.registerClass({
     }
 
     _loadShapeLayers(files) {
-        let bbox = new BoundingBox.BoundingBox();
+        let bbox = new BoundingBox();
         this._remainingFilesToLoad = files.length;
 
         files.forEach((file) => {
@@ -515,14 +490,14 @@ var MapView = GObject.registerClass({
 
     goToGeoURI(uri) {
         try {
-            let location = new Location.Location({ heading: -1 });
+            let location = new Location({ heading: -1 });
             location.set_from_uri(uri);
 
-            let place = new Place.Place({ location: location,
-                                          name: location.description,
-                                          store: false });
-            let marker = new PlaceMarker.PlaceMarker({ place: place,
-                                                       mapView: this });
+            let place = new Place({ location: location,
+                                    name: location.description,
+                                    store: false });
+            let marker = new PlaceMarker({ place: place,
+                                           mapView: this });
             this._placeLayer.add_marker(marker);
             marker.goToAndSelect(true);
         } catch(e) {
@@ -535,8 +510,8 @@ var MapView = GObject.registerClass({
     goToHttpURL(url) {
         Place.parseHttpURL(url, (place, error) => {
             if (place) {
-                let marker = new PlaceMarker.PlaceMarker({ place: place,
-                                                           mapView: this });
+                let marker = new PlaceMarker({ place: place,
+                                               mapView: this });
 
                 this._placeLayer.add_marker(marker);
                 marker.goToAndSelect(true);
@@ -561,11 +536,11 @@ var MapView = GObject.registerClass({
         let lon = this.view.longitude > 0 ?
                   this.view.longitude - 180 : this.view.longitude + 180;
         let place =
-            new Place.Place({ location: new Location.Location({ latitude: lat,
-                                                                longitude: lon }),
-                              initialZoom: this.view.zoom_level });
+            new Place({ location: new Location({ latitude: lat,
+                                                 longitude: lon }),
+                        initialZoom: this.view.zoom_level });
 
-        new MapWalker.MapWalker(place, this).goTo(true);
+        new MapWalker(place, this).goTo(true);
     }
 
     userLocationVisible() {
@@ -586,8 +561,8 @@ var MapView = GObject.registerClass({
 
         if (!this._userLocation) {
             let place = Application.geoclue.place;
-            this._userLocation = new UserLocationMarker.UserLocationMarker({ place: place,
-                                                                             mapView: this });
+            this._userLocation = new UserLocationMarker({ place: place,
+                                                          mapView: this });
             this._userLocationLayer.remove_all();
             this._userLocation.addToLayer(this._userLocationLayer);
         }
@@ -626,17 +601,17 @@ var MapView = GObject.registerClass({
             else
                 Utils.debug('Invalid initial zoom level: ' + zoom);
 
-            if (lat >= MIN_LATITUDE && lat <= MAX_LATITUDE &&
-                lon >= MIN_LONGITUDE && lon <= MAX_LONGITUDE)
+            if (lat >= MapView.MIN_LATITUDE && lat <= MapView.MAX_LATITUDE &&
+                lon >= MapView.MIN_LONGITUDE && lon <= MapView.MAX_LONGITUDE)
                 this.view.center_on(location[0], location[1]);
             else
                 Utils.debug('Invalid initial coordinates: ' + lat + ', ' + lon);
         } else {
             /* bounding box. for backwards compatibility, not used anymore */
-            let bbox = new BoundingBox.BoundingBox({ top: location[0],
-                                                     bottom: location[1],
-                                                     left: location[2],
-                                                     right: location[3] });
+            let bbox = new BoundingBox({ top: location[0],
+                                         bottom: location[1],
+                                         left: location[2],
+                                         right: location[3] });
             this.view.connect("notify::realized", () => {
                 if (this.view.realized)
                     this.gotoBBox(bbox, true);
@@ -651,15 +626,15 @@ var MapView = GObject.registerClass({
         }
 
         let [lon, lat] = bbox.getCenter();
-        let place = new Place.Place({
-            location: new Location.Location({ latitude  : lat,
+        let place = new Place({
+            location: new Location({ latitude  : lat,
                                               longitude : lon }),
-            bounding_box: new Geocode.BoundingBox({ top    : bbox.top,
-                                                    bottom : bbox.bottom,
-                                                    left   : bbox.left,
-                                                    right  : bbox.right })
+            bounding_box: new GeocodeGlib.BoundingBox({ top    : bbox.top,
+                                                        bottom : bbox.bottom,
+                                                        left   : bbox.left,
+                                                        right  : bbox.right })
         });
-        new MapWalker.MapWalker(place, this).goTo(true, linear);
+        new MapWalker(place, this).goTo(true, linear);
     }
 
     getZoomLevelFittingBBox(bbox) {
@@ -697,8 +672,8 @@ var MapView = GObject.registerClass({
         if (turnPoint.isStop())
             return;
 
-        this._turnPointMarker = new TurnPointMarker.TurnPointMarker({ turnPoint: turnPoint,
-                                                                      mapView: this });
+        this._turnPointMarker = new TurnPointMarker({ turnPoint: turnPoint,
+                                                      mapView: this });
         this._instructionMarkerLayer.add_marker(this._turnPointMarker);
         this._turnPointMarker.goTo();
     }
@@ -707,9 +682,9 @@ var MapView = GObject.registerClass({
         if (this._turnPointMarker)
             this._turnPointMarker.destroy();
 
-        this._turnPointMarker = new TurnPointMarker.TurnPointMarker({ transitStop: transitStop,
-                                                                      transitLeg: transitLeg,
-                                                                      mapView: this });
+        this._turnPointMarker = new TurnPointMarker({ transitStop: transitStop,
+                                                      transitLeg: transitLeg,
+                                                      mapView: this });
         this._instructionMarkerLayer.add_marker(this._turnPointMarker);
         this._turnPointMarker.goTo();
     }
@@ -721,14 +696,14 @@ var MapView = GObject.registerClass({
 
         this._placeLayer.remove_all();
         places.forEach((p) => {
-            let place = new ContactPlace.ContactPlace({ place: p,
-                                                        contact: contact });
-            let marker = new PlaceMarker.PlaceMarker({ place: place,
-                                                       mapView: this });
+            let place = new ContactPlace({ place: p,
+                                           contact: contact });
+            let marker = new PlaceMarker({ place: place,
+                                           mapView: this });
             this._placeLayer.add_marker(marker);
         });
 
-        new MapWalker.MapWalker(places[0], this).goTo(true);
+        new MapWalker(places[0], this).goTo(true);
     }
 
     _showStoredRoute(stored) {
@@ -759,14 +734,14 @@ var MapView = GObject.registerClass({
     showPlace(place, animation) {
         this._placeLayer.remove_all();
 
-        if (place instanceof StoredRoute.StoredRoute) {
+        if (place instanceof StoredRoute) {
             this._showStoredRoute(place);
             return;
         }
 
         this.routingOpen = false;
-        let placeMarker = new PlaceMarker.PlaceMarker({ place: place,
-                                                        mapView: this });
+        let placeMarker = new PlaceMarker({ place: place,
+                                            mapView: this });
 
         this._placeLayer.add_marker(placeMarker);
         placeMarker.goToAndSelect(animation);
@@ -799,9 +774,9 @@ var MapView = GObject.registerClass({
         route.turnPoints.forEach((turnPoint) => {
             if (turnPoint.isStop()) {
                 let queryPoint = query.filledPoints[pointIndex];
-                let destinationMarker = new TurnPointMarker.TurnPointMarker({ turnPoint: turnPoint,
-                                                                              queryPoint: queryPoint,
-                                                                              mapView: this });
+                let destinationMarker = new TurnPointMarker({ turnPoint: turnPoint,
+                                                              queryPoint: queryPoint,
+                                                              mapView: this });
                 this._instructionMarkerLayer.add_marker(destinationMarker);
                 pointIndex++;
             }
@@ -869,12 +844,12 @@ var MapView = GObject.registerClass({
             /* add start marker */
             let start;
             if (!leg.transit) {
-                start = new TransitWalkMarker.TransitWalkMarker({ leg: leg,
-                                                                  previousLeg: previousLeg,
-                                                                  mapView: this });
+                start = new TransitWalkMarker({ leg: leg,
+                                                previousLeg: previousLeg,
+                                                mapView: this });
             } else {
-                start = new TransitBoardMarker.TransitBoardMarker({ leg: leg,
-                                                                    mapView: this });
+                start = new TransitBoardMarker({ leg: leg,
+                                                 mapView: this });
             }
 
             this._instructionMarkerLayer.add_marker(start);
@@ -882,8 +857,8 @@ var MapView = GObject.registerClass({
 
         /* add arrival marker */
         let lastLeg = itinerary.legs.last();
-        let arrival = new TransitArrivalMarker.TransitArrivalMarker({ leg: lastLeg,
-                                                                      mapView: this });
+        let arrival = new TransitArrivalMarker({ leg: lastLeg,
+                                                 mapView: this });
         this._instructionMarkerLayer.add_marker(arrival);
 
         this.routingOpen = true;
@@ -907,4 +882,32 @@ var MapView = GObject.registerClass({
     onSetMarkerSelected(selectedMarker) {
         this.emit('marker-selected', selectedMarker);
     }
-});
+}
+
+GObject.registerClass({
+    Properties: {
+        // this property is true when the routing sidebar is active
+        'routingOpen': GObject.ParamSpec.boolean('routingOpen',
+                                                  'Routing open',
+                                                  'Routing sidebar open',
+                                                  GObject.ParamFlags.READABLE |
+                                                  GObject.ParamFlags.WRITABLE,
+                                                  false),
+        /* this property is true when a route is being shown on the map */
+        'routeShowing': GObject.ParamSpec.boolean('routeShowing',
+                                                 'Route showing',
+                                                 'Showing a route on the map',
+                                                 GObject.ParamFlags.READABLE |
+                                                 GObject.ParamFlags.WRITABLE,
+                                                 false)
+    },
+    Signals: {
+        'user-location-changed': {},
+        'going-to': {},
+        'going-to-user-location': {},
+        'gone-to-user-location': {},
+        'view-moved': {},
+        'marker-selected': { param_types: [Champlain.Marker] },
+        'map-type-changed': { param_types: [GObject.TYPE_STRING] }
+    },
+}, MapView);

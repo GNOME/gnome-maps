@@ -20,22 +20,24 @@
  *         Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
  */
 
-const _ = imports.gettext.gettext;
+import gettext from 'gettext';
 
-const GLib = imports.gi.GLib;
-const GObject = imports.gi.GObject;
-const Geocode = imports.gi.GeocodeGlib;
-const Gio = imports.gi.Gio;
-const Gtk = imports.gi.Gtk;
+import GLib from 'gi://GLib';
+import GObject from 'gi://GObject';
+import GeocodeGlib from 'gi://GeocodeGlib';
+import Gio from 'gi://Gio';
+import Gtk from 'gi://Gtk';
 
-const Application = imports.application;
-const GeocodeFactory = imports.geocode;
-const Location = imports.location;
-const Place = imports.place;
-const PlaceStore = imports.placeStore;
-const PlacePopover = imports.placePopover;
-const URIS = imports.uris;
-const Utils = imports.utils;
+import {Application} from './application.js';
+import * as GeocodeFactory from './geocode.js';
+import {Location} from './location.js';
+import {Place} from './place.js';
+import {PlaceStore} from './placeStore.js';
+import {PlacePopover} from './placePopover.js';
+import * as URIS from './uris.js';
+import * as Utils from './utils.js';
+
+const _ = gettext.gettext;
 
 // minimum number of characters to start completion
 const MIN_CHARS_COMPLETION = 3;
@@ -43,16 +45,7 @@ const MIN_CHARS_COMPLETION = 3;
 // pattern matching CJK ideographic characters
 const IDEOGRAPH_PATTERN = /[\u3300-\u9fff]/
 
-var PlaceEntry = GObject.registerClass({
-    Properties: {
-        'place': GObject.ParamSpec.object('place',
-                                          'Place',
-                                          'The selected place',
-                                          GObject.ParamFlags.READABLE |
-                                          GObject.ParamFlags.WRITABLE,
-                                          Geocode.Place)
-    }
-}, class PlaceEntry extends Gtk.SearchEntry {
+export class PlaceEntry extends Gtk.SearchEntry {
 
     set place(p) {
         if (!this._place && !p)
@@ -89,10 +82,10 @@ var PlaceEntry = GObject.registerClass({
         return this._popover;
     }
 
-    _init(props) {
-        let numVisible = props.num_visible || 6;
+    constructor(props) {
+        let numVisible = props.num_visible ?? 6;
         delete props.num_visible;
-        this._mapView = props.mapView;
+        let mapView = props.mapView;
         delete props.mapView;
 
         if (!props.loupe)
@@ -102,11 +95,13 @@ var PlaceEntry = GObject.registerClass({
         let maxChars = props.maxChars;
         delete props.maxChars;
 
-        this._matchRoute = props.matchRoute || false;
+        let matchRoute = props.matchRoute ?? false;
         delete props.matchRoute;
 
-        super._init(props);
+        super(props);
 
+        this._mapView = mapView;
+        this._matchRoute = matchRoute;
         this._filter = new Gtk.TreeModelFilter({ child_model: Application.placeStore });
         this._filter.set_visible_func(this._completionVisibleFunc.bind(this));
 
@@ -168,9 +163,9 @@ var PlaceEntry = GObject.registerClass({
     }
 
     _createPopover(numVisible, maxChars) {
-        let popover = new PlacePopover.PlacePopover({ num_visible:   numVisible,
-                                                      relative_to:   this,
-                                                      maxChars:      maxChars});
+        let popover = new PlacePopover({ num_visible:   numVisible,
+                                         relative_to:   this,
+                                         maxChars:      maxChars });
 
         this.connect('size-allocate', (widget, allocation) => {
             // Magic number to make the alignment pixel perfect.
@@ -215,11 +210,11 @@ var PlaceEntry = GObject.registerClass({
         let parsed = false;
 
         if (this.text.startsWith('geo:')) {
-            let location = new Geocode.Location();
+            let location = new GeocodeGlib.Location();
 
             try {
                 location.set_from_uri(this.text);
-                this.place = new Place.Place({ location: location });
+                this.place = new Place({ location: location });
             } catch(e) {
                 let msg = _("Failed to parse Geo URI");
                 Utils.showDialog(msg, Gtk.MessageType.ERROR, this.get_toplevel());
@@ -241,7 +236,7 @@ var PlaceEntry = GObject.registerClass({
             parsed = true;
         }
 
-        let parsedLocation = Place.Place.parseCoordinates(this.text);
+        let parsedLocation = Place.parseCoordinates(this.text);
         if (parsedLocation) {
             /* if the place was a parsed OSM coordinate URL, it will have
              * gotten re-written as bare coordinates and trigger a search-changed,
@@ -250,7 +245,7 @@ var PlaceEntry = GObject.registerClass({
              */
             if (!this.place ||
                 !this._roundedLocEquals(parsedLocation, this.place.location))
-                this.place = new Place.Place({ location: parsedLocation });
+                this.place = new Place({ location: parsedLocation });
             parsed = true;
         }
 
@@ -361,4 +356,15 @@ var PlaceEntry = GObject.registerClass({
         this._popover.updateResult(completedPlaces, searchText);
         this._popover.showResult();
     }
-});
+}
+
+GObject.registerClass({
+    Properties: {
+        'place': GObject.ParamSpec.object('place',
+                                          'Place',
+                                          'The selected place',
+                                          GObject.ParamFlags.READABLE |
+                                          GObject.ParamFlags.WRITABLE,
+                                          GeocodeGlib.Place)
+    }
+}, PlaceEntry);

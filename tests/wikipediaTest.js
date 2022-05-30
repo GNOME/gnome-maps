@@ -18,27 +18,23 @@
  *
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
+
+import 'gi://Gdk?version=3.0';
+import 'gi://Gtk?version=3.0';
+import 'gi://Soup?version=2.4';
+
+import * as Wikipedia from './wikipedia.js';
+
 const JsUnit = imports.jsUnit;
 
-pkg.require({ 'Gdk':  '3.0',
-              'Gtk':  '3.0',
-              'Soup': '2.4' });
 
-const Wikipedia = imports.wikipedia;
+// valid references
+JsUnit.assertTrue(Wikipedia.isValidWikipedia('en:Test article'));
+JsUnit.assertTrue(Wikipedia.isValidWikipedia('en:Test article:with colon'));
+JsUnit.assertTrue(Wikipedia.isValidWikipedia('arz:ويكيبيديا مصرى'));
+JsUnit.assertTrue(Wikipedia.isValidWikipedia('simple:Article'));
+JsUnit.assertTrue(Wikipedia.isValidWikipedia('zh-yue:粵文維基百科'));
 
-function main() {
-    isValidWikipediaTest();
-}
-
-function isValidWikipediaTest() {
-    // valid references
-    JsUnit.assertTrue(Wikipedia.isValidWikipedia('en:Test article'));
-    JsUnit.assertTrue(Wikipedia.isValidWikipedia('en:Test article:with colon'));
-    JsUnit.assertTrue(Wikipedia.isValidWikipedia('arz:ويكيبيديا مصرى'));
-    JsUnit.assertTrue(Wikipedia.isValidWikipedia('simple:Article'));
-    JsUnit.assertTrue(Wikipedia.isValidWikipedia('zh-yue:粵文維基百科'));
-
-    // invalid references
-    JsUnit.assertFalse(Wikipedia.isValidWikipedia('https://en.wikipedia.org/wiki/Article'));
-    JsUnit.assertFalse(Wikipedia.isValidWikipedia('Article with no edition'));
-}
+// invalid references
+JsUnit.assertFalse(Wikipedia.isValidWikipedia('https://en.wikipedia.org/wiki/Article'));
+JsUnit.assertFalse(Wikipedia.isValidWikipedia('Article with no edition'));

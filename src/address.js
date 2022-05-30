@@ -121,7 +121,7 @@ const FORMAT_MAP = {
     'VN': 'số %2$s %1$s'
 }
 
-function streetAddressForCountryCode(streetName, housenumber, countryCode) {
+export function streetAddressForCountryCode(streetName, housenumber, countryCode) {
     let format = FORMAT_MAP[countryCode];
 
     if (format)

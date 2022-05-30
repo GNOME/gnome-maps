@@ -19,16 +19,16 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Gio = imports.gi.Gio;
-const GLib = imports.gi.GLib;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
-const Application = imports.application;
-const HVT = imports.hvt;
-const Time = imports.time;
-const TransitOptions = imports.transitOptions;
-const TransitPlan = imports.transitPlan;
+import {Application} from './application.js';
+import * as HVT from './hvt.js';
+import * as Time from './time.js';
+import {TransitOptions} from './transitOptions.js';
+import * as TransitPlan from './transitPlan.js';
 
 // in org.gnome.desktop.interface
 const CLOCK_FORMAT_KEY = 'clock-format';
@@ -40,24 +40,11 @@ const _timeFormat = new Intl.DateTimeFormat([], { hour:     '2-digit',
                                                   minute:   '2-digit',
                                                   hour12:   clockFormat === '12h' });
 
-var TransitOptionsPanel = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/transit-options-panel.ui',
-    InternalChildren: ['transitTimeOptionsComboBox',
-                       'transitTimeEntry',
-                       'transitDateButton',
-                       'transitDateCalendar',
-                       'transitParametersMenuButton',
-                       'busCheckButton',
-                       'tramCheckButton',
-                       'trainCheckButton',
-                       'subwayCheckButton',
-                       'ferryCheckButton',
-                       'airplaneCheckButton']
-}, class TransitOptionsPanel extends Gtk.Grid {
+export class TransitOptionsPanel extends Gtk.Grid {
 
-    _init(params) {
+    constructor(params) {
+        super(params);
         this._query = Application.routeQuery;
-        super._init(params);
         this._initTransitOptions();
     }
 
@@ -68,7 +55,7 @@ var TransitOptionsPanel = GObject.registerClass({
         this._transitTimeOptionsComboBox.active_id = 'leaveNow';
         this._timeSelected = false;
         this._dateSelected = false;
-        this._lastOptions = new TransitOptions.TransitOptions();
+        this._lastOptions = new TransitOptions();
     }
 
     _initTransitOptions() {
@@ -172,7 +159,7 @@ var TransitOptionsPanel = GObject.registerClass({
     }
 
     _createTransitOptions() {
-        let options = new TransitOptions.TransitOptions();
+        let options = new TransitOptions();
         let busSelected = this._busCheckButton.active;
         let tramSelected = this._tramCheckButton.active;
         let trainSelected = this._trainCheckButton.active;
@@ -211,4 +198,19 @@ var TransitOptionsPanel = GObject.registerClass({
             }
         }
     }
- });
+ }
+
+ GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/transit-options-panel.ui',
+    InternalChildren: ['transitTimeOptionsComboBox',
+                       'transitTimeEntry',
+                       'transitDateButton',
+                       'transitDateCalendar',
+                       'transitParametersMenuButton',
+                       'busCheckButton',
+                       'tramCheckButton',
+                       'trainCheckButton',
+                       'subwayCheckButton',
+                       'ferryCheckButton',
+                       'airplaneCheckButton']
+}, TransitOptionsPanel);

@@ -1,10 +1,10 @@
 'use strict';
 
-const simplify = imports.geojsonvt.simplify.simplify;
+import {simplify} from './simplify.js';
 
 // converts GeoJSON feature into an intermediate projected JSON vector format with simplification data
 
-function convert(data, tolerance) {
+export function convert(data, tolerance) {
     var features = [];
 
     if (data.type === 'FeatureCollection') {

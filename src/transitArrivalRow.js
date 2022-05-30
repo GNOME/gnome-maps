@@ -19,31 +19,25 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Gdk = imports.gi.Gdk;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import Gdk from 'gi://Gdk';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
-const Transit = imports.transit;
+import * as Transit from './transit.js';
 
-var TransitArrivalRow = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/transit-arrival-row.ui',
-    InternalChildren: ['arrivalLabel',
-                       'timeLabel',
-                       'eventBox',
-                       'separator']
-}, class TransitArrivalRow extends Gtk.ListBoxRow {
+export class TransitArrivalRow extends Gtk.ListBoxRow {
 
-    _init(params) {
-        this._itinerary = params.itinerary;
+    constructor(params) {
+        let itinerary = params.itinerary;
         delete params.itinerary;
 
-        this._mapView = params.mapView;
+        let mapView = params.mapView;
         delete params.mapView;
 
-        super._init(params);
+        super(params);
+        let lastLeg = itinerary.legs[itinerary.legs.length - 1];
 
-        let lastLeg = this._itinerary.legs[this._itinerary.legs.length - 1];
-
+        this._mapView = mapView;
         this._arrivalLabel.label = Transit.getArrivalLabel(lastLeg);
         this._timeLabel.label = lastLeg.prettyPrintArrivalTime();
 
@@ -62,4 +56,12 @@ var TransitArrivalRow = GObject.registerClass({
             this._mapView.view.center_on(coord[0], coord[1]);
         }
     }
-});
+}
+
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/transit-arrival-row.ui',
+    InternalChildren: ['arrivalLabel',
+                       'timeLabel',
+                       'eventBox',
+                       'separator']
+}, TransitArrivalRow);

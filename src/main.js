@@ -20,27 +20,29 @@
  *         Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
+import 'gi://Champlain?version=0.12';
+import 'gi://Clutter?version=1.0';
+import 'gi://Cogl?version=1.0';
+import 'gi://GeocodeGlib?version=1.0';
+import 'gi://Gdk?version=3.0';
+import 'gi://GdkPixbuf?version=2.0';
+import 'gi://Gio?version=2.0';
+import 'gi://GLib?version=2.0';
+import 'gi://GObject?version=2.0';
+import 'gi://Gtk?version=3.0';
+import 'gi://GtkChamplain?version=0.12';
+import 'gi://GtkClutter?version=1.0';
+import 'gi://GWeather?version=4.0';
+import 'gi://Handy?version=1';
+import 'gi://Rest?version=0.7';
+import 'gi://Soup?version=2.4';
+
+import * as system from 'system';
+
+import {Application} from './application.js';
+
 pkg.initGettext();
 pkg.initFormat();
-pkg.require({ 'cairo': '1.0',
-              'Champlain': '0.12',
-              'Clutter': '1.0',
-              'Cogl': '1.0',
-              'GeocodeGlib': '1.0',
-              'Gdk': '3.0',
-              'GdkPixbuf': '2.0',
-              'Gio': '2.0',
-              'GLib': '2.0',
-              'GObject': '2.0',
-              'Gtk': '3.0',
-              'GtkChamplain': '0.12',
-              'GtkClutter': '1.0',
-              'GWeather': '4.0',
-              'Handy': '1',
-              'Rest': '0.7',
-              'Soup': '2.4' });
-
-const Application = imports.application;
 
 function main(args) {
     /* Add prototype to get last element of an array.
@@ -53,6 +55,8 @@ function main(args) {
         }
     }
 
-    let application = new Application.Application();
+    let application = new Application();
     return application.run(args);
 }
+
+main([system.programInvocationName, ...system.programArgs]);

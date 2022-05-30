@@ -19,57 +19,59 @@
  * Author: Dario Di Nucci <linkin88mail@gmail.com>
  */
 
-const Clutter = imports.gi.Clutter;
-const Gdk = imports.gi.Gdk;
-const GObject = imports.gi.GObject;
+import Clutter from 'gi://Clutter';
+import Gdk from 'gi://Gdk';
+import GObject from 'gi://GObject';
 const Mainloop = imports.mainloop;
 
-const Application = imports.application;
-const Color = imports.color;
-const Location = imports.location;
-const MapMarker = imports.mapMarker;
-const Place = imports.place;
-const Utils = imports.utils;
+import {Application} from './application.js';
+import * as Color from './color.js';
+import {Location} from './location.js';
+import {MapMarker} from './mapMarker.js';
+import {Place} from './place.js';
+import * as Utils from './utils.js';
 
-var TurnPointMarker = GObject.registerClass(
-class TurnPointMarker extends MapMarker.MapMarker {
+export class TurnPointMarker extends MapMarker {
 
-    _init(params) {
-        this._queryPoint = params.queryPoint;
+    constructor(params) {
+        let queryPoint = params.queryPoint;
         delete params.queryPoint;
 
-        this._turnPoint = params.turnPoint;
+        let turnPoint = params.turnPoint;
         delete params.turnPoint;
 
-        this._transitStop = params.transitStop;
+        let transitStop = params.transitStop;
         delete params.transitStop;
 
-        this._transitLeg = params.transitLeg;
+        let transitLeg = params.transitLeg;
         delete params.transitLeg;
 
         let latitude;
         let longitude;
 
-        if (this._turnPoint) {
-            latitude = this._turnPoint.coordinate.get_latitude();
-            longitude = this._turnPoint.coordinate.get_longitude();
+        if (turnPoint) {
+            latitude = turnPoint.coordinate.get_latitude();
+            longitude = turnPoint.coordinate.get_longitude();
         } else {
-            latitude = this._transitStop.coordinate[0];
-            longitude = this._transitStop.coordinate[1];
+            latitude = transitStop.coordinate[0];
+            longitude = transitStop.coordinate[1];
         }
 
-        params.place = new Place.Place({
-            location: new Location.Location({ latitude: latitude,
-                                              longitude: longitude }) });
-        super._init(params);
+        params.place =
+            new Place({ location: new Location({ latitude: latitude,
+                                                 longitude: longitude }) });
+
+        super(params);
+
+        this._queryPoint = queryPoint;
 
         let actor;
         if (this._queryPoint) {
             this.draggable = true;
             this.connect('drag-finish', () => this._onMarkerDrag());
-            actor = this._actorFromIconName(this._turnPoint.iconName, 0);
+            actor = this._actorFromIconName(turnPoint.iconName, 0);
         } else {
-            let color = this._getColor();
+            let color = this._getColor(transitLeg);
             actor = this._actorFromIconName('maps-point-end-symbolic',
                                             0,
                                             color);
@@ -77,12 +79,12 @@ class TurnPointMarker extends MapMarker.MapMarker {
         this.add_actor(actor);
     }
 
-    _getColor() {
+    _getColor(transitLeg) {
         /* Use the route color from the transit leg when representing part of
          * a transit trip, otherwise let the fallback functionality of the
          * utility function use a GNOMEish blue color for turn-by-turn routing.
          */
-        let color = this._transitLeg ? this._transitLeg.color : null;
+        let color = transitLeg?.color;
 
         return new Gdk.RGBA({ red: Color.parseColor(color, 0, 33 / 255),
                               green: Color.parseColor(color, 1, 93 / 255),
@@ -114,10 +116,12 @@ class TurnPointMarker extends MapMarker.MapMarker {
 
     _onMarkerDrag() {
         let query = Application.routeQuery;
-        let place = new Place.Place({
-            location: new Location.Location({ latitude: this.latitude.toFixed(5),
-                                              longitude: this.longitude.toFixed(5) }) });
+        let place =
+            new Place({ location: new Location({ latitude: this.latitude.toFixed(5),
+                                                 longitude: this.longitude.toFixed(5) }) });
 
         this._queryPoint.place = place;
     }
-});
+}
+
+GObject.registerClass(TurnPointMarker);

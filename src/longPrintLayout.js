@@ -17,10 +17,10 @@
  * Author: Amisha Singla <amishas157@gmail.com>
  */
 
-const GObject = imports.gi.GObject;
+import GObject from 'gi://GObject';
 
-const PrintLayout = imports.printLayout;
-const Route = imports.route;
+import {PrintLayout} from './printLayout.js';
+import {TurnPoint} from './route.js';
 
 const _NUM_MINIMAPS = 5;
 
@@ -37,24 +37,25 @@ const _MiniMapView = {
     ZOOM_LEVEL: 18
 };
 
-var LongPrintLayout = GObject.registerClass(
-class LongPrintLayout extends PrintLayout.PrintLayout {
+export class LongPrintLayout extends PrintLayout {
 
-    _init(params) {
-        this._route = params.route;
+    constructor(params) {
+        let route = params.route;
         delete params.route;
 
         /* (Header + 3 maps) + instructions */
         let totalSurfaces = 4 + this._route.turnPoints.length;
 
         /* Plus via points */
-        this._route.turnPoints.forEach((turnPoint) => {
-            if (turnPoint.type === Route.TurnPointType.VIA)
+        route.turnPoints.forEach((turnPoint) => {
+            if (turnPoint.type === TurnPoint.Type.VIA)
                 totalSurfaces++;
         });
         params.totalSurfaces = totalSurfaces;
 
-        super._init(params);
+        super(params);
+
+        this._route = route;
     }
 
     render() {
@@ -137,4 +138,4 @@ class LongPrintLayout extends PrintLayout.PrintLayout {
         this._drawMapView(miniMapViewWidth, miniMapViewHeight,
                           miniMapViewZoomLevel, points);
     }
-});
+}

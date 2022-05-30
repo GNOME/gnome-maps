@@ -17,23 +17,28 @@
  * Author: Hashem Nasarat <hashem@riseup.net>
  */
 
-const GObject = imports.gi.GObject;
+import GObject from 'gi://GObject';
 
-const GeoJSONSource = imports.geoJSONSource;
-const ShapeLayer = imports.shapeLayer;
-const Utils = imports.utils;
-const Togeojson = imports.togeojson.togeojson;
-const Domparser = imports.xmldom.domparser;
+import {GeoJSONSource} from './geoJSONSource.js';
+import {ShapeLayer} from './shapeLayer.js';
+import * as Utils from './utils.js';
+import * as Togeojson from './togeojson/togeojson.js';
+import * as Domparser from './xmldom/domparser.js';
 
-var KmlShapeLayer = GObject.registerClass(
-class KmlShapeLayer extends ShapeLayer.ShapeLayer {
-    _init(params) {
-        super._init(params);
+export class KmlShapeLayer extends ShapeLayer {
 
-        this._mapSource = new GeoJSONSource.GeoJSONSource({
-            mapView: this._mapView,
-            markerLayer: this._markerLayer
-        });
+    static mimeTypes = ['application/vnd.google-earth.kml+xml'];
+    static displayName = 'KML';
+
+    static createInstance(params) {
+        return new KmlShapeLayer(params);
+    }
+
+    constructor(params) {
+        super(params);
+
+        this._mapSource = new GeoJSONSource({ mapView: this._mapView,
+                                              markerLayer: this._markerLayer });
     }
 
     _parseContent() {
@@ -42,10 +47,6 @@ class KmlShapeLayer extends ShapeLayer.ShapeLayer {
         let json = Togeojson.toGeoJSON.kml(parser.parseFromString(s));
         this._mapSource.parse(json);
     }
-});
+}
 
-KmlShapeLayer.mimeTypes = ['application/vnd.google-earth.kml+xml'];
-KmlShapeLayer.displayName = 'KML';
-KmlShapeLayer.createInstance = function(params) {
-    return new KmlShapeLayer(params);
-};
+GObject.registerClass(KmlShapeLayer);

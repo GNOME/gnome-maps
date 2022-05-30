@@ -17,43 +17,41 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
-const _ = imports.gettext.gettext;
+import gettext from 'gettext';
 
-const Gdk = imports.gi.Gdk;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import Gdk from 'gi://Gdk';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
-const Application = imports.application;
-const PlaceEntry = imports.placeEntry;
-const RouteQuery = imports.routeQuery;
+import {Application} from './application.js';
+import {PlaceEntry} from './placeEntry.js';
+import {RouteQuery} from './routeQuery.js';
 
-var Type = {
-    FROM: 0,
-    TO: 1,
-    VIA: 2
-};
+const _ = gettext.gettext;
 
-var RouteEntry = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/route-entry.ui',
-    Children: [ 'iconEventBox' ],
-    InternalChildren: [ 'entryGrid',
-                        'icon',
-                        'button',
-                        'buttonImage' ]
-}, class RouteEntry extends Gtk.Grid {
+export class RouteEntry extends Gtk.Grid {
 
-    _init(params) {
-        this._type = params.type;
+    static Type = {
+        FROM: 0,
+        TO: 1,
+        VIA: 2
+    }
+
+    constructor(params) {
+        let type = params.type;
         delete params.type;
 
-        this._point = params.point || null;
+        let point = params.point ?? null;
         delete params.point;
 
-        this._mapView = params.mapView || null;
+        let mapView = params.mapView ?? null;
         delete params.mapView;
 
-        super._init(params);
+        super(params);
 
+        this._type = type;
+        this._point = point;
+        this._mapView = mapView;
         this.entry = this._createEntry();
         this._entryGrid.attach(this.entry, 0, 0, 1, 1);
 
@@ -66,7 +64,7 @@ var RouteEntry = GObject.registerClass({
         });
 
         switch (this._type) {
-        case Type.FROM:
+        case RouteEntry.Type.FROM:
             let query = Application.routeQuery;
             this._buttonImage.icon_name = 'list-add-symbolic';
             this._icon.icon_name = 'maps-point-start-symbolic';
@@ -77,13 +75,13 @@ var RouteEntry = GObject.registerClass({
             });
 
             break;
-        case Type.VIA:
+        case RouteEntry.Type.VIA:
             this._buttonImage.icon_name = 'list-remove-symbolic';
             this._icon.icon_name = 'maps-point-end-symbolic';
             /* Translators: this is remove via location tooltip */
             this._button.tooltip_text = _("Remove via location");
             break;
-        case Type.TO:
+        case RouteEntry.Type.TO:
             this._buttonImage.icon_name = 'route-reverse-symbolic';
             this._icon.icon_name = 'maps-point-end-symbolic';
             /* Translators: this is reverse route tooltip */
@@ -101,12 +99,12 @@ var RouteEntry = GObject.registerClass({
     }
 
     _createEntry() {
-        let entry = new PlaceEntry.PlaceEntry({ visible: true,
-                                                can_focus: true,
-                                                hexpand: true,
-                                                receives_default: true,
-                                                mapView: this._mapView,
-                                                maxChars: 15 });
+        let entry = new PlaceEntry({ visible: true,
+                                     can_focus: true,
+                                     hexpand: true,
+                                     receives_default: true,
+                                     mapView: this._mapView,
+                                     maxChars: 15 });
         if (this._point) {
             entry.bind_property('place',
                                 this._point, 'place',
@@ -115,4 +113,13 @@ var RouteEntry = GObject.registerClass({
 
         return entry;
     }
-});
+}
+
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/route-entry.ui',
+    Children: [ 'iconEventBox' ],
+    InternalChildren: [ 'entryGrid',
+                        'icon',
+                        'button',
+                        'buttonImage' ]
+}, RouteEntry);

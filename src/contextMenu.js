@@ -19,41 +19,35 @@
  * Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
-const Gdk = imports.gi.Gdk;
-const Geocode = imports.gi.GeocodeGlib;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import Gdk from 'gi://Gdk';
+import GeocodeGlib from 'gi://GeocodeGlib';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 const Mainloop = imports.mainloop;
 
-const Application = imports.application;
-const GeocodeFactory = imports.geocode;
-const Location = imports.location;
-const OSMAccountDialog = imports.osmAccountDialog;
-const OSMEdit = imports.osmEdit;
-const OSMEditDialog = imports.osmEditDialog;
-const Place = imports.place;
-const RouteQuery = imports.routeQuery;
-const Utils = imports.utils;
-const ZoomInDialog = imports.zoomInDialog;
+import {Application} from './application.js';
+import * as GeocodeFactory from './geocode.js';
+import {Location} from './location.js';
+import {OSMAccountDialog} from './osmAccountDialog.js';
+import {OSMEdit} from './osmEdit.js';
+import {OSMEditDialog} from './osmEditDialog.js';
+import {Place} from './place.js';
+import {RouteQuery} from './routeQuery.js';
+import * as Utils from './utils.js';
+import {ZoomInDialog} from './zoomInDialog.js';
 
-var ContextMenu = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/context-menu.ui',
-    InternalChildren: [ 'whatsHereItem',
-                        'geoURIItem',
-                        'addOSMLocationItem',
-                        'routeFromHereItem',
-                        'addIntermediateDestinationItem',
-                        'routeToHereItem' ],
-}, class ContextMenu extends Gtk.Menu {
-    _init(params) {
-        this._mapView = params.mapView;
+export class ContextMenu extends Gtk.Menu {
+    constructor(params) {
+        let mapView = params.mapView;
         delete params.mapView;
 
-        this._mainWindow = params.mainWindow;
+        let mainWindow = params.mainWindow;
         delete params.mainWindow;
 
-        super._init(params);
+        super(params);
 
+        this._mapView = mapView;
+        this._mainWindow = mainWindow;
         this._buttonGesture =
             new Gtk.GestureSingle({ widget: this._mapView,
                                     button: Gdk.BUTTON_SECONDARY });
@@ -98,30 +92,30 @@ var ContextMenu = GObject.registerClass({
 
     _onRouteFromHereActivated() {
         let query = Application.routeQuery;
-        let location = new Location.Location({ latitude: this._latitude,
-                                               longitude: this._longitude,
-                                               accuracy: 0 });
-        let place = new Place.Place({ location: location, store: false });
+        let location = new Location({ latitude: this._latitude,
+                                      longitude: this._longitude,
+                                      accuracy: 0 });
+        let place = new Place({ location: location, store: false });
 
         query.points[0].place = place;
     }
 
     _onRouteToHereActivated() {
         let query = Application.routeQuery;
-        let location = new Location.Location({ latitude: this._latitude,
-                                               longitude: this._longitude,
-                                               accuracy: 0 });
-        let place = new Place.Place({ location: location, store: false });
+        let location = new Location({ latitude: this._latitude,
+                                      longitude: this._longitude,
+                                      accuracy: 0 });
+        let place = new Place({ location: location, store: false });
 
         query.points.last().place = place;
     }
 
     _onAddIntermediateDestinationActivated() {
         let query = Application.routeQuery;
-        let location = new Location.Location({ latitude: this._latitude,
-                                               longitude: this._longitude,
-                                               accuracy: 0 });
-        let place = new Place.Place({ location: location, store: false });
+        let location = new Location({ latitude: this._latitude,
+                                      longitude: this._longitude,
+                                      accuracy: 0 });
+        let place = new Place({ location: location, store: false });
 
         query.addPoint(-1).place = place;
     }
@@ -140,12 +134,12 @@ var ContextMenu = GObject.registerClass({
     }
 
     _onGeoURIActivated() {
-        let location = new Location.Location({ latitude: this._latitude,
-                                               longitude: this._longitude,
-                                               accuracy: 0 });
+        let location = new Location({ latitude: this._latitude,
+                                      longitude: this._longitude,
+                                      accuracy: 0 });
         let display = Gdk.Display.get_default();
         let clipboard = Gtk.Clipboard.get_default(display);
-        let uri = location.to_uri(Geocode.LocationURIScheme.GEO);
+        let uri = location.to_uri(GeocodeGlib.LocationURIScheme.GEO);
 
         clipboard.set_text(uri, uri.length);
     }
@@ -174,11 +168,11 @@ var ContextMenu = GObject.registerClass({
 
         if (this._mapView.view.get_zoom_level() < OSMEdit.MIN_ADD_LOCATION_ZOOM_LEVEL) {
             let zoomInDialog =
-                new ZoomInDialog.ZoomInDialog({ longitude: this._longitude,
-                                                latitude: this._latitude,
-                                                view: this._mapView.view,
-                                                transient_for: this._mainWindow,
-                                                modal: true });
+                new ZoomInDialog({ longitude: this._longitude,
+                                   latitude: this._latitude,
+                                   view: this._mapView.view,
+                                   transient_for: this._mainWindow,
+                                   modal: true });
 
             zoomInDialog.connect('response', () => zoomInDialog.destroy());
             zoomInDialog.show_all();
@@ -187,7 +181,7 @@ var ContextMenu = GObject.registerClass({
 
         let dialog =
             osmEdit.createEditNewDialog(this._mainWindow,
-                                      this._latitude, this._longitude);
+                                        this._latitude, this._longitude);
 
         dialog.show();
         dialog.connect('response', (dialog, response) => {
@@ -198,4 +192,14 @@ var ContextMenu = GObject.registerClass({
             }
         });
     }
-});
+}
+
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/context-menu.ui',
+    InternalChildren: [ 'whatsHereItem',
+                        'geoURIItem',
+                        'addOSMLocationItem',
+                        'routeFromHereItem',
+                        'addIntermediateDestinationItem',
+                        'routeToHereItem' ],
+}, ContextMenu);

@@ -18,14 +18,15 @@
  */
 
 const Format = imports.format;
-const Geocode = imports.gi.GeocodeGlib;
-const GObject = imports.gi.GObject;
-const Soup = imports.gi.Soup;
 
-const OSMNames = imports.osmNames;
-const PhotonParser = imports.photonParser;
-const Place = imports.place;
-const Utils = imports.utils;
+import Geocode from 'gi://GeocodeGlib';
+import GObject from 'gi://GObject';
+import Soup from 'gi://Soup';
+
+import * as OSMNames from './osmNames.js';
+import * as PhotonParser from './photonParser.js';
+import {Place} from './place.js';
+import * as Utils from './utils.js';
 
 const _DEFAULT_TIMEOUT = 180;
 const _DEFAULT_MAXSIZE = 536870912;
@@ -36,21 +37,12 @@ const _DEFAULT_OUTPUT_SORT_ORDER = 'qt';
 
 const BASE_URL = 'https://overpass-api.de/api/interpreter';
 
-var Overpass = GObject.registerClass({
-    Properties: {
-        'place': GObject.ParamSpec.object('place',
-                                          'Place',
-                                          'Place with added information',
-                                          GObject.ParamFlags.READABLE |
-                                          GObject.ParamFlags.WRITABLE,
-                                          Geocode.Place)
-    }
-}, class Overpass extends GObject.Object {
+export class Overpass extends GObject.Object {
 
-    _init(params) {
+    constructor(params) {
         params = params || { };
 
-        super._init();
+        super();
 
         // maximum allowed runtime for the query in seconds
         this.timeout = params.timeout || _DEFAULT_TIMEOUT;
@@ -249,4 +241,16 @@ var Overpass = GObject.registerClass({
                                                        this.outputSortOrder,
                                                        this.outputCount ]);
     }
-});
+}
+
+GObject.registerClass({
+    Properties: {
+        'place': GObject.ParamSpec.object('place',
+                                          'Place',
+                                          'Place with added information',
+                                          GObject.ParamFlags.READABLE |
+                                          GObject.ParamFlags.WRITABLE,
+                                          Geocode.Place)
+    }},
+    Overpass
+);

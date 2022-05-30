@@ -19,26 +19,16 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
-const OSMTypeListRow = imports.osmTypeListRow;
-const SearchPopover = imports.searchPopover;
+import {OSMTypeListRow} from './osmTypeListRow.js';
+import {SearchPopover} from './searchPopover.js';
 
-var OSMTypePopover = GObject.registerClass({
-    InternalChildren: ['list'],
-    Template: 'resource:///org/gnome/Maps/ui/osm-type-popover.ui',
-    Signals : {
-        /* signal emitted when selecting a type, indicates OSM key and value
-         * and display title */
-        'selected' : { param_types: [ GObject.TYPE_STRING,
-                                      GObject.TYPE_STRING,
-                                      GObject.TYPE_STRING ] }
-    }
-}, class OSMTypePopover extends SearchPopover.SearchPopover {
+export class OSMTypePopover extends SearchPopover {
 
-    _init(props) {
-        super._init(props);
+    constructor(props) {
+        super(props);
 
         this._list.connect('row-activated', (list, row) => {
             if (row)
@@ -54,8 +44,20 @@ var OSMTypePopover = GObject.registerClass({
     }
 
     _addRow(type) {
-        let row = new OSMTypeListRow.OSMTypeListRow({ type: type,
-                                                      can_focus: true });
+        let row = new OSMTypeListRow({ type: type, can_focus: true });
+
         this._list.insert(row, -1);
     }
-});
+}
+
+GObject.registerClass({
+    InternalChildren: ['list'],
+    Template: 'resource:///org/gnome/Maps/ui/osm-type-popover.ui',
+    Signals : {
+        /* signal emitted when selecting a type, indicates OSM key and value
+         * and display title */
+        'selected' : { param_types: [ GObject.TYPE_STRING,
+                                      GObject.TYPE_STRING,
+                                      GObject.TYPE_STRING ] }
+    }
+}, OSMTypePopover);

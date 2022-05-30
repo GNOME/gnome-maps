@@ -19,55 +19,36 @@
  * Author: Damián Nohales <damiannohales@gmail.com>
  */
 
-const Cairo = imports.cairo;
-const Champlain = imports.gi.Champlain;
-const Clutter = imports.gi.Clutter;
-const Gdk = imports.gi.Gdk;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import Cairo from 'cairo';
+import Champlain from 'gi://Champlain';
+import Clutter from 'gi://Clutter';
+import Gdk from 'gi://Gdk';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 const Mainloop = imports.mainloop;
 
-const Application = imports.application;
-const MapBubble = imports.mapBubble;
-const MapWalker = imports.mapWalker;
-const Utils = imports.utils;
+import {Application} from './application.js';
+import {MapBubble} from './mapBubble.js';
+import {MapWalker} from './mapWalker.js';
+import * as Utils from './utils.js';
 
-var MapMarker = GObject.registerClass({
-    Implements: [Champlain.Exportable],
-    Abstract: true,
-    Signals: {
-        'gone-to': { }
-    },
-    Properties: {
-        'surface': GObject.ParamSpec.override('surface',
-                                              Champlain.Exportable),
-        'view-latitude': GObject.ParamSpec.double('view-latitude', '', '',
-                                                  GObject.ParamFlags.READABLE |
-                                                  GObject.ParamFlags.WRITABLE,
-                                                  -90, 90, 0),
-        'view-longitude': GObject.ParamSpec.double('view-longitude', '', '',
-                                                   GObject.ParamFlags.READABLE |
-                                                   GObject.ParamFlags.WRITABLE,
-                                                   -180, 180, 0),
-        'view-zoom-level': GObject.ParamSpec.int('view-zoom-level', '', '',
-                                                 GObject.ParamFlags.READABLE |
-                                                 GObject.ParamFlags.WRITABLE,
-                                                 0, 20, 3)
-    }
-}, class MapMarker extends Champlain.Marker {
+export class MapMarker extends Champlain.Marker {
 
-    _init(params) {
-        this._place = params.place;
+    constructor(params) {
+        let place = params.place;
         delete params.place;
 
-        this._mapView = params.mapView;
+        let mapView = params.mapView;
         delete params.mapView;
 
-        params.latitude = this.place.location.latitude;
-        params.longitude = this.place.location.longitude;
+        params.latitude = place.location.latitude;
+        params.longitude = place.location.longitude;
         params.selectable = true;
 
-        super._init(params);
+        super(params);
+
+        this._place = place;
+        this._mapView = mapView;
 
         this.connect('notify::size', this._translateMarkerPosition.bind(this));
         if (this._mapView) {
@@ -208,8 +189,8 @@ var MapMarker = GObject.registerClass({
     get bubble() {
         if (this._bubble === undefined && this._hasBubble()) {
             if (this._place.name) {
-                this._bubble = new MapBubble.MapBubble({ place: this._place,
-                                                         mapView: this._mapView });
+                this._bubble = new MapBubble({ place: this._place,
+                                               mapView: this._mapView });
             }
         }
 
@@ -371,7 +352,7 @@ var MapMarker = GObject.registerClass({
 
     get walker() {
         if (this._walker === undefined)
-            this._walker = new MapWalker.MapWalker(this.place, this._mapView);
+            this._walker = new MapWalker(this.place, this._mapView);
 
         return this._walker;
     }
@@ -412,4 +393,28 @@ var MapMarker = GObject.registerClass({
             }
         }
     }
-});
+}
+
+GObject.registerClass({
+    Implements: [Champlain.Exportable],
+    Abstract: true,
+    Signals: {
+        'gone-to': { }
+    },
+    Properties: {
+        'surface': GObject.ParamSpec.override('surface',
+                                              Champlain.Exportable),
+        'view-latitude': GObject.ParamSpec.double('view-latitude', '', '',
+                                                  GObject.ParamFlags.READABLE |
+                                                  GObject.ParamFlags.WRITABLE,
+                                                  -90, 90, 0),
+        'view-longitude': GObject.ParamSpec.double('view-longitude', '', '',
+                                                   GObject.ParamFlags.READABLE |
+                                                   GObject.ParamFlags.WRITABLE,
+                                                   -180, 180, 0),
+        'view-zoom-level': GObject.ParamSpec.int('view-zoom-level', '', '',
+                                                 GObject.ParamFlags.READABLE |
+                                                 GObject.ParamFlags.WRITABLE,
+                                                 0, 20, 3)
+    }
+}, MapMarker);

@@ -21,7 +21,16 @@
 const DEFAULT_LINE_WIDTH = 5;
 const DEFAULT_COLOR = '69B1FF';
 
-var GeoJSONStyle = class GeoJSONStyle {
+export class GeoJSONStyle {
+
+    static parseSimpleStyle(tags) {
+        return new GeoJSONStyle({ alpha: tags['stroke-opacity'],
+                                  fillAlpha: tags['fill-opacity'],
+                                  color: tags['stroke'],
+                                  fillColor: tags['fill'],
+                                  lineWidth: tags['stroke-width'] });
+    }
+
     constructor(params) {
         if (params.lineWidth || params.lineWidth === 0)
             this.lineWidth = params.lineWidth;
@@ -76,12 +85,4 @@ var GeoJSONStyle = class GeoJSONStyle {
 
         return color;
     }
-};
-
-GeoJSONStyle.parseSimpleStyle = function(tags) {
-    return  new GeoJSONStyle({ alpha: tags['stroke-opacity'],
-                               fillAlpha: tags['fill-opacity'],
-                               color: tags['stroke'],
-                               fillColor: tags['fill'],
-                               lineWidth: tags['stroke-width'] });
 }

@@ -19,21 +19,21 @@
  * Author: Damián Nohales <damiannohales@gmail.com>
  */
 
-const Gio = imports.gi.Gio;
-const GLib = imports.gi.GLib;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 const Mainloop = imports.mainloop;
 
-const Application = imports.application;
-const ContactPlace = imports.contactPlace;
-const GeocodeFactory = imports.geocode;
-const Place = imports.place;
-const PlaceView = imports.placeView;
-const PlaceButtons = imports.placeButtons;
-const PlaceFormatter = imports.placeFormatter;
-const PlaceStore = imports.placeStore;
-const Utils = imports.utils;
+import {Application} from './application.js';
+import {ContactPlace} from './contactPlace.js';
+import * as GeocodeFactory from './geocode.js';
+import {Place} from './place.js';
+import {PlaceView} from './placeView.js';
+import {PlaceButtons} from './placeButtons.js';
+import {PlaceFormatter} from './placeFormatter.js';
+import {PlaceStore} from './placeStore.js';
+import * as Utils from './utils.js';
 
 /* Maximum width of the popover content before it's forced to wrap */
 const MAX_CONTENT_WIDTH = 350;
@@ -41,10 +41,9 @@ const MAX_CONTENT_WIDTH = 350;
    contents */
 const HEIGHT_MARGIN = 100;
 
-var MapBubble = GObject.registerClass(
-class MapBubble extends Gtk.Popover {
+export class MapBubble extends Gtk.Popover {
 
-    _init(params) {
+    constructor(params) {
         let place = params.place;
         delete params.place;
 
@@ -55,9 +54,9 @@ class MapBubble extends Gtk.Popover {
         params.transitions_enabled = false;
         params.modal = false;
 
-        super._init(params);
+        super(params);
 
-        let content = new PlaceView.PlaceView({ place, mapView, visible: true });
+        let content = new PlaceView({ place, mapView, visible: true });
 
         let scrolledWindow = new MapBubbleScrolledWindow({ visible: true,
                                                            propagateNaturalWidth: true,
@@ -68,10 +67,11 @@ class MapBubble extends Gtk.Popover {
 
         this.get_style_context().add_class("map-bubble");
     }
-});
+}
 
-var MapBubbleScrolledWindow = GObject.registerClass(
-class MapBubbleScrolledWindow extends Gtk.ScrolledWindow {
+GObject.registerClass(MapBubble);
+
+export class MapBubbleScrolledWindow extends Gtk.ScrolledWindow {
     vfunc_get_preferred_width() {
         let [min, nat] = this.get_child().get_preferred_width();
         min = Math.min(min, MAX_CONTENT_WIDTH);
@@ -109,5 +109,7 @@ class MapBubbleScrolledWindow extends Gtk.ScrolledWindow {
 
         return super.vfunc_draw(cr);
     }
-});
+}
+
+GObject.registerClass(MapBubbleScrolledWindow);
 

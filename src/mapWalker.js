@@ -21,38 +21,34 @@
  *         Damián Nohales <damiannohales@gmail.com>
  */
 
-const Clutter = imports.gi.Clutter;
-const GObject = imports.gi.GObject;
+import Clutter from 'gi://Clutter';
+import GObject from 'gi://GObject';
 
-const BoundingBox = imports.boundingBox;
-const Location = imports.location;
-const PlaceZoom = imports.placeZoom;
-const Utils = imports.utils;
+import {BoundingBox} from './boundingBox.js';
+import {Location} from './location.js';
+import * as PlaceZoom from './placeZoom.js';
+import * as Utils from './utils.js';
 
 const _MAX_DISTANCE = 19850; // half of Earth's circumference (km)
 const _MIN_ANIMATION_DURATION = 2000; // msec
 const _MAX_ANIMATION_DURATION = 5000; // msec
 
-var MapWalker = GObject.registerClass({
-    Signals: {
-        'gone-to': { }
-    }
-}, class MapWalker extends GObject.Object {
+export class MapWalker extends GObject.Object {
 
-    _init(place, mapView) {
+    constructor(place, mapView) {
+        super();
         this.place = place;
         this._mapView = mapView;
         this._view = mapView.view;
         this._boundingBox = this._createBoundingBox(this.place);
-        super._init();
     }
 
     _createBoundingBox(place) {
         if (place.bounding_box !== null) {
-            return new BoundingBox.BoundingBox({ top: place.bounding_box.top,
-                                                 bottom: place.bounding_box.bottom,
-                                                 left: place.bounding_box.left,
-                                                 right: place.bounding_box.right });
+            return new BoundingBox({ top: place.bounding_box.top,
+                                     bottom: place.bounding_box.bottom,
+                                     left: place.bounding_box.left,
+                                     right: place.bounding_box.right });
         } else {
             return null;
         }
@@ -100,8 +96,8 @@ var MapWalker = GObject.registerClass({
             return;
         }
 
-        let fromLocation = new Location.Location({ latitude: this._view.get_center_latitude(),
-                                                   longitude: this._view.get_center_longitude() });
+        let fromLocation = new Location({ latitude: this._view.get_center_latitude(),
+                                          longitude: this._view.get_center_longitude() });
         this._updateGoToDuration(fromLocation);
 
         if (linear) {
@@ -143,10 +139,10 @@ var MapWalker = GObject.registerClass({
 
             visibleBox.extend(fromLocation.latitude, fromLocation.longitude);
         } else {
-            visibleBox = new BoundingBox.BoundingBox({ left:   180,
-                                                       right: -180,
-                                                       bottom:  90,
-                                                       top:    -90 });
+            visibleBox = new BoundingBox({ left:   180,
+                                           right: -180,
+                                           bottom:  90,
+                                           top:    -90 });
 
             [fromLocation, this.place.location].forEach((location) => {
                 visibleBox.left   = Math.min(visibleBox.left,   location.longitude);
@@ -195,4 +191,10 @@ var MapWalker = GObject.registerClass({
         // ensure_visible as 'goto' journeys with its own duration.
         this._view.goto_animation_duration = duration / 2;
     }
-});
+}
+
+GObject.registerClass({
+    Signals: {
+        'gone-to': { }
+    }
+}, MapWalker);

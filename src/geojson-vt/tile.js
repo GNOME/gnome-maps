@@ -1,6 +1,6 @@
 'use strict';
 
-function createTile(features, z2, tx, ty, tolerance, noSimplify) {
+export function createTile(features, z2, tx, ty, tolerance, noSimplify) {
     var tile = {
         features: [],
         numPoints: 0,

@@ -19,13 +19,15 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const _ = imports.gettext.gettext;
-const C_ = imports.gettext.dgettext;
+import gettext from 'gettext';
 
-const GLib = imports.gi.GLib;
+const _ = gettext.gettext;
+const C_ = gettext.dgettext;
 
-const Time = imports.time;
-const Utils = imports.utils;
+import GLib from 'gi://GLib';
+
+import * as Time from './time.js';
+import * as Utils from './utils.js';
 
 /* Translate an opening time specification tag value.
  * from OSM into a "two-dimensional" (array-of-arrays) grid of human-readable
@@ -47,7 +49,7 @@ const Utils = imports.utils;
  * The definition for the opening_hours tag can be found at:
  * http://wiki.openstreetmap.org/wiki/Key:opening_hours
  */
-function translateOpeningHours(string) {
+export function translateOpeningHours(string) {
     if (string === '24/7' || string === 'Mo-Su 00:00-24:00' ||
         string === '00:00-24:00')
         return [[_("Around the clock")]];
@@ -71,7 +73,7 @@ function translateOpeningHours(string) {
  * Mo-We,Fr 10:00-12:00,13:00-17:00
  * Mo-We,Fr 10:00-12:00, 13:00-17:00
  */
-function _translateOpeningHoursPart(string) {
+export function _translateOpeningHoursPart(string) {
     let splitString = string.split(/\s+/);
     let len = splitString.length;
 
@@ -99,7 +101,7 @@ function _translateOpeningHoursPart(string) {
  * Mo-Fr
  * Mo,We,Th-Fr
  */
-function _translateOpeningHoursDayIntervalList(string) {
+export function _translateOpeningHoursDayIntervalList(string) {
     let splitParts = string.split(',');
     let interval1, interval2, interval3;
 
@@ -146,7 +148,7 @@ function _translateOpeningHoursDayIntervalList(string) {
  * Mo-Fr
  * Tu
  */
-function _translateOpeningHoursDayInterval(string) {
+export function _translateOpeningHoursDayInterval(string) {
     let splitString = string.split('-');
 
     // special case: Mo-Su treated as "every day"
@@ -279,7 +281,7 @@ function _translateOpeningHoursTime(string) {
     }
 }
 
-function translateReligion(string) {
+export function translateReligion(string) {
     switch(string) {
     case 'animist': return _("Animism");
     case 'bahai': return_("Bahá'í");

@@ -65,7 +65,7 @@ const TYPE_ZOOM_MAP = {
  * otherwise return undefined, in which case the maximum zoom level
  * (as defined by the map source) could be used.
  */
-function getZoomLevelForPlace(place) {
+export function getZoomLevelForPlace(place) {
     return TYPE_ZOOM_MAP?.[place.osmKey]?.[place.osmValue] ??
            TYPE_ZOOM_MAP?.[place.osmKey]?.['_'];
 }

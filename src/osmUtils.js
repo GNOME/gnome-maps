@@ -20,15 +20,15 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Soup = imports.gi.Soup;
+import Soup from 'gi://Soup';
 
-const Application = imports.application;
+import {Application} from './application.js';
 
 /*
  * Gets a Wikipedia article in OSM tag format (i.e. lang:Article title)
  * given a URL or null if input doesn't match a Wikipedia URL
  */
-function getWikipediaOSMArticleFormatFromUrl(url) {
+export function getWikipediaOSMArticleFormatFromUrl(url) {
     let regex = /https?:\/\/(..)\.wikipedia\.org\/wiki\/(.+)/;
     let match = url.match(regex);
 
@@ -46,7 +46,7 @@ function getWikipediaOSMArticleFormatFromUrl(url) {
  * Updates a Place object according to an OSMObject.
  * Will also update place in the place store.
  */
-function updatePlaceFromOSMObject(place, object) {
+export function updatePlaceFromOSMObject(place, object) {
     let name = object.get_tag('name');
 
     if (name) {

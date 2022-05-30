@@ -19,14 +19,14 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Cairo = imports.cairo;
-const GLib = imports.gi.GLib;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import Cairo from 'cairo';
+import GLib from 'gi://GLib';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
-const Color = imports.color;
-const Gfx = imports.gfx;
-const Utils = imports.utils;
+import * as Color from './color.js';
+import * as Gfx from './gfx.js';
+import * as Utils from './utils.js';
 
 /* threashhold for route color luminance when we consider it more or less
  * as white, and draw an outline around the label
@@ -41,17 +41,15 @@ const DARK_OUTLINE_LUMINANCE_THREASHHOLD = 0.1;
 const HIGH_CONTRAST_COLOR = '000000';
 const HIGH_CONTRAST_TEXT_COLOR = 'ffffff';
 
-var TransitRouteLabel = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/transit-route-label.ui',
-}, class TransitRouteLabel extends Gtk.Label {
+export class TransitRouteLabel extends Gtk.Label {
 
-    _init(params) {
+    constructor(params) {
         let leg = params.leg;
         let compact = params.compact;
 
         delete params.leg;
         delete params.compact;
-        super._init(params);
+        super(params);
 
         this._setLabel(leg, compact);
         this.connect('draw', this._onDraw.bind(this));
@@ -121,4 +119,8 @@ var TransitRouteLabel = GObject.registerClass({
 
         return false;
     }
-});
+}
+
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/transit-route-label.ui',
+}, TransitRouteLabel);

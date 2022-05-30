@@ -27,16 +27,16 @@
  * https://transport.opendata.ch/docs.html
  */
 
-const Champlain = imports.gi.Champlain;
-const GLib = imports.gi.GLib;
-const Soup = imports.gi.Soup;
+import Champlain from 'gi://Champlain';
+import GLib from 'gi://GLib';
+import Soup from 'gi://Soup';
 
-const Application = imports.application;
-const GraphHopperTransit = imports.graphHopperTransit;
-const HVT = imports.hvt;
-const HTTP = imports.http;
-const TransitPlan = imports.transitPlan;
-const Utils = imports.utils;
+import {Application} from '../application.js';
+import * as GraphHopperTransit from '../graphHopperTransit.js';
+import * as HVT from '../hvt.js';
+import {Query} from '../http.js';
+import {Itinerary, Leg, RouteType, Stop} from '../transitPlan.js';
+import * as Utils from '../utils.js';
 
 const BASE_URL = 'https://transport.opendata.ch';
 const API_VERSION = 'v1';
@@ -96,7 +96,7 @@ const Category = {
 // gap to use when fetching additional routes
 const GAP_BEFORE_MORE_RESULTS = 120;
 
-var OpendataCH = class OpendataCH {
+export class OpendataCH {
     constructor() {
         this._session = new Soup.Session({ user_agent : 'gnome-maps/' + pkg.version });
         this._plan = Application.routingDelegator.transitRouter.plan;
@@ -143,8 +143,8 @@ var OpendataCH = class OpendataCH {
             this._fetchResults();
         } else {
             let location = points[index].place.location;
-            let query = new HTTP.Query({ x: location.latitude,
-                                         y: location.longitude });
+            let query = new Query({ x: location.latitude,
+                                    y: location.longitude });
             let uri = new Soup.URI(BASE_URL + '/' + API_VERSION + '/locations?' +
                                    query.toString());
             let request = new Soup.Message({ method: 'GET', uri: uri });
@@ -233,10 +233,10 @@ var OpendataCH = class OpendataCH {
         let [startTime,] = this._parseTime(from.departure);
         let [endTime,] = this._parseTime(to.arrival);
 
-        return new TransitPlan.Itinerary({ duration:  duration,
-                                           departure: startTime,
-                                           arrival:   endTime,
-                                           legs:      legs });
+        return new Itinerary({ duration:  duration,
+                               departure: startTime,
+                               arrival:   endTime,
+                               legs:      legs });
     }
 
     /**
@@ -294,23 +294,23 @@ var OpendataCH = class OpendataCH {
         let [departureX, departureY, arrivalX, arrivalY] =
             this._getCoordsForSection(section, index, sections);
 
-        let result = new TransitPlan.Leg({ departure:            departureTime,
-                                           arrival:              arrivalTime,
-                                           from:                 from,
-                                           to:                   to,
-                                           headsign:             headsign,
-                                           fromCoordinate:       [departureX,
-                                                                  departureY],
-                                           toCoordinate:         [arrivalX,
-                                                                  arrivalY],
-                                           route:                route,
-                                           routeType:            routeType,
-                                           polyline:             polyline,
-                                           isTransit:            isTransit,
-                                           duration:             duration,
-                                           agencyName:           agencyName,
-                                           agencyTimezoneOffset: tzOffset,
-                                           tripShortName:        route });
+        let result = new Leg({ departure:            departureTime,
+                               arrival:              arrivalTime,
+                               from:                 from,
+                               to:                   to,
+                               headsign:             headsign,
+                               fromCoordinate:       [departureX,
+                                                      departureY],
+                               toCoordinate:         [arrivalX,
+                                                      arrivalY],
+                               route:                route,
+                               routeType:            routeType,
+                               polyline:             polyline,
+                               isTransit:            isTransit,
+                               duration:             duration,
+                               agencyName:           agencyName,
+                               agencyTimezoneOffset: tzOffset,
+                               tripShortName:        route });
 
         if (journey)
             result.intermediateStops = this._createIntermediateStops(journey);
@@ -433,12 +433,12 @@ var OpendataCH = class OpendataCH {
         if (!departure)
             departure = arrival;
 
-        return new TransitPlan.Stop({ name:                 pass.station.name,
-                                      arrival:              arrival,
-                                      departure:            departure,
-                                      agencyTimezoneOffset: departureTzOffset || arrivalTzOffset,
-                                      coordinate: [pass.location.coordinate.x,
-                                                   pass.location.coordinate.y] });
+        return new Stop({ name:                 pass.station.name,
+                          arrival:              arrival,
+                          departure:            departure,
+                          agencyTimezoneOffset: departureTzOffset || arrivalTzOffset,
+                          coordinate: [pass.location.coordinate.x,
+                                       pass.location.coordinate.y] });
     }
 
     // get a time suitably formatted for the the query param
@@ -504,7 +504,7 @@ var OpendataCH = class OpendataCH {
                 params.date = this._query.date;
         }
 
-        let query = new HTTP.Query(params);
+        let query = new Query(params);
 
         if (this._viaLocations.length > 0) {
             this._viaLocations.forEach((p) => { query.add('via', p); });
@@ -528,13 +528,13 @@ var OpendataCH = class OpendataCH {
 
     _transportationForTransitType(type) {
         switch (type) {
-            case TransitPlan.RouteType.BUS:
+            case RouteType.BUS:
                 return Transportations.BUS;
-            case TransitPlan.RouteType.TRAM:
+            case RouteType.TRAM:
                 return Transportations.TRAM;
-            case TransitPlan.RouteType.TRAIN:
+            case RouteType.TRAIN:
                 return Transportations.TRAIN;
-            case TransitPlan.RouteType.FERRY:
+            case RouteType.FERRY:
                 return Transportations.SHIP;
             default:
                 return null;

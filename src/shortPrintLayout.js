@@ -17,9 +17,9 @@
  * Author: Amisha Singla <amishas157@gmail.com>
  */
 
-const GObject = imports.gi.GObject;
+import GObject from 'gi://GObject';
 
-const PrintLayout = imports.printLayout;
+import {PrintLayout} from './printLayout.js';
 
 /* All following constants are ratios of surface size to page size */
 const _Instruction = {
@@ -28,17 +28,18 @@ const _Instruction = {
     SCALE_MARGIN: 0.01
 };
 
-var ShortPrintLayout = GObject.registerClass(
-class ShortPrintLayout extends PrintLayout.PrintLayout {
-    _init(params) {
-        this._route = params.route;
+export class ShortPrintLayout extends PrintLayout {
+    constructor(params) {
+        let route = params.route;
         delete params.route;
 
         /* (Header +  map) + instructions */
         let totalSurfaces = 2 + this._route.turnPoints.length;
         params.totalSurfaces = totalSurfaces;
 
-        super._init(params);
+        super(params);
+
+        this._route = route;
     }
 
     render() {
@@ -56,4 +57,6 @@ class ShortPrintLayout extends PrintLayout.PrintLayout {
             this._cursorY += dy;
         });
     }
-});
+}
+
+GObject.registerClass(ShortPrintLayout);

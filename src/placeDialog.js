@@ -19,17 +19,14 @@
  * Author: James Westman <james@flyingpimonster.net>
  */
 
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
-const PlaceFormatter = imports.placeFormatter;
-const PlaceView = imports.placeView;
+import {PlaceFormatter} from './placeFormatter.js';
+import {PlaceView} from './placeView.js';
 
-var PlaceDialog = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/place-dialog.ui',
-    InternalChildren: [ 'scroll' ]
-}, class PlaceDialog extends Gtk.Dialog {
-    _init(params) {
+export class PlaceDialog extends Gtk.Dialog {
+    constructor(params) {
         let place = params.place;
         delete params.place;
 
@@ -37,7 +34,7 @@ var PlaceDialog = GObject.registerClass({
         delete params.mapView;
 
         params.use_header_bar = true;
-        super._init(params);
+        super(params);
 
         if (this.transient_for.is_maximized) {
             this.maximize();
@@ -53,13 +50,18 @@ var PlaceDialog = GObject.registerClass({
             this.set_default_size(width, height);
         }
 
-        this._placeView = new PlaceView.PlaceView({ place,
-                                                    mapView,
-                                                    valign: Gtk.Align.START,
-                                                    visible: true });
+        this._placeView = new PlaceView({ place,
+                                          mapView,
+                                          valign: Gtk.Align.START,
+                                          visible: true });
         this._scroll.add(this._placeView);
 
-        let formatter = new PlaceFormatter.PlaceFormatter(place);
+        let formatter = new PlaceFormatter(place);
         this.title = formatter.title;
     }
-});
+}
+
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/place-dialog.ui',
+    InternalChildren: [ 'scroll' ]
+}, PlaceDialog);

@@ -20,7 +20,7 @@
  */
 const JsUnit = imports.jsUnit;
 
-const PlaceIcons = imports.placeIcons;
+import * as PlaceIcons from './placeIcons.js';
 
 /* use a minimal mock of Place, since Place throught dependencies requires
  * the GResources to be setup, so it can't easily be used from tests
@@ -38,11 +38,6 @@ class MockedPlace {
     get osmValue() {
         return this._osmValue;
     }
-}
-
-function main() {
-    testKnownTypes();
-    testDefaultIcon();
 }
 
 // test some known place type → icon mappings
@@ -71,3 +66,6 @@ function testDefaultIcon() {
     JsUnit.assertEquals('map-marker-symbolic', PlaceIcons.getIconForPlace(p2));
     JsUnit.assertEquals('map-marker-symbolic', PlaceIcons.getIconForPlace(p3));
 }
+
+testKnownTypes();
+testDefaultIcon();

@@ -19,7 +19,7 @@
  * Author: Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
  */
 
-const Soup = imports.gi.Soup;
+import Soup from 'gi://Soup';
 
 function encode(data) {
     if(data === null)
@@ -28,7 +28,7 @@ function encode(data) {
     return Soup.URI.encode(data.toString(), '&');
 }
 
-var Query = class Query {
+export class Query {
 
     constructor(obj) {
         this._query = {};
@@ -73,4 +73,4 @@ var Query = class Query {
         }
         return vars.join('&');
     }
-};
+}

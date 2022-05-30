@@ -20,19 +20,19 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Application = imports.application;
-const OSMAccountDialog = imports.osmAccountDialog;
-const OSMEditDialog = imports.osmEditDialog;
-const OSMConnection = imports.osmConnection;
-const Utils = imports.utils;
+import {Application} from './application.js';
+import {OSMAccountDialog} from './osmAccountDialog.js';
+import {OSMEditDialog} from './osmEditDialog.js';
+import {OSMConnection} from './osmConnection.js';
+import * as Utils from './utils.js';
 
-/* minimum zoom level at which to offer adding a location */
-var MIN_ADD_LOCATION_ZOOM_LEVEL = 16;
+export class OSMEdit {
 
-var OSMEdit = class OSMEdit {
+    // minimum zoom level at which to offer adding a location
+    static get MIN_ADD_LOCATION_ZOOM_LEVEL() { return 16; }
 
     constructor() {
-        this._osmConnection = new OSMConnection.OSMConnection();
+        this._osmConnection = new OSMConnection();
         this._osmObject = null; // currently edited object
         this._username = Application.settings.get('osm-username');
         this._isSignedIn = this._username !== null && this._username.length > 0;
@@ -43,29 +43,25 @@ var OSMEdit = class OSMEdit {
     }
 
     createEditDialog(parentWindow, place) {
-        let dialog = new OSMEditDialog.OSMEditDialog({
-            transient_for: parentWindow,
-            modal: true,
-            place: place
-        });
+        let dialog = new OSMEditDialog({ transient_for: parentWindow,
+                                         modal: true,
+                                         place: place });
 
         return dialog;
     }
 
     createEditNewDialog(parentWindow, latitude, longitude) {
-        let dialog = new OSMEditDialog.OSMEditDialog({
-            transient_for: parentWindow,
-            modal: true,
-            addLocation: true,
-            latitude: latitude,
-            longitude: longitude
-        });
+        let dialog = new OSMEditDialog({ transient_for: parentWindow,
+                                         modal: true,
+                                         addLocation: true,
+                                         latitude: latitude,
+                                         longitude: longitude });
 
         return dialog;
     }
 
     createAccountDialog(parentWindow, closeOnSignIn) {
-        let dialog = new OSMAccountDialog.OSMAccountDialog({
+        let dialog = new OSMAccountDialog({
             transient_for: parentWindow,
             modal: true,
             closeOnSignIn: closeOnSignIn
@@ -191,4 +187,4 @@ var OSMEdit = class OSMEdit {
     get username() {
         return this._username;
     }
-};
+}

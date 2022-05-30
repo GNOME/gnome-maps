@@ -19,11 +19,11 @@
  * Author: Damián Nohales <damiannohales@gmail.com>
  */
 
-const Geocode = imports.gi.GeocodeGlib;
+import GeocodeGlib from 'gi://GeocodeGlib';
 
-const StoredRoute = imports.storedRoute;
+import {StoredRoute} from './storedRoute.js';
 
-var PlaceFormatter = class PlaceFormatter {
+export class PlaceFormatter {
 
     constructor(place) {
         this._place = place;
@@ -55,7 +55,7 @@ var PlaceFormatter = class PlaceFormatter {
     }
 
     getDetailsString() {
-        if (this._place instanceof StoredRoute.StoredRoute)
+        if (this._place instanceof StoredRoute)
             return this._place.viaString;
 
         return this.rows.map((row) => {
@@ -67,24 +67,24 @@ var PlaceFormatter = class PlaceFormatter {
 
     _update() {
         switch (this._place.place_type) {
-        case Geocode.PlaceType.COUNTRY:
+        case GeocodeGlib.PlaceType.COUNTRY:
             if (this._place.country)
                 this._titleProperty = 'country';
 
             this._addRow(['country_code']);
             break;
 
-        case Geocode.PlaceType.STATE:
+        case GeocodeGlib.PlaceType.STATE:
             if (this._place.state)
                 this._titleProperty = 'state';
             break;
 
-        case Geocode.PlaceType.COUNTY:
+        case GeocodeGlib.PlaceType.COUNTY:
             if (this._place.county)
                 this._titleProperty = 'county';
             break;
 
-        case Geocode.PlaceType.TOWN:
+        case GeocodeGlib.PlaceType.TOWN:
             if (this._place.county)
                 this._addRow(['county']);
             else if (this._place.state)

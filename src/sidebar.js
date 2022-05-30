@@ -20,56 +20,29 @@
  *         Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
  */
 
-const Cairo = imports.cairo;
-const Gdk = imports.gi.Gdk;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import Cairo from 'cairo';
+import Gdk from 'gi://Gdk';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 const Mainloop = imports.mainloop;
 
-const Application = imports.application;
-const InstructionRow = imports.instructionRow;
-const PlaceStore  = imports.placeStore;
-const RouteEntry = imports.routeEntry;
-const RouteQuery = imports.routeQuery;
-const StoredRoute = imports.storedRoute;
-const TransitArrivalRow = imports.transitArrivalRow;
-const TransitItineraryRow = imports.transitItineraryRow;
-const TransitLegRow = imports.transitLegRow;
-const TransitMoreRow = imports.transitMoreRow;
-const TransitOptionsPanel = imports.transitOptionsPanel;
-const Utils = imports.utils;
+import {Application} from './application.js';
+import {InstructionRow} from './instructionRow.js';
+import {PlaceStore} from './placeStore.js';
+import {RouteEntry} from './routeEntry.js';
+import {RouteQuery} from './routeQuery.js';
+import {StoredRoute} from './storedRoute.js';
+import {TransitArrivalRow} from './transitArrivalRow.js';
+import {TransitItineraryRow} from './transitItineraryRow.js';
+import {TransitLegRow} from './transitLegRow.js';
+import {TransitMoreRow} from './transitMoreRow.js';
+import {TransitOptionsPanel} from './transitOptionsPanel.js';
+import * as Utils from './utils.js';
 
-var Sidebar = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/sidebar.ui',
-    InternalChildren: [ 'distanceInfo',
-                        'entryList',
-                        'instructionList',
-                        'instructionWindow',
-                        'instructionSpinner',
-                        'instructionStack',
-                        'errorLabel',
-                        'modeBikeToggle',
-                        'modeCarToggle',
-                        'modePedestrianToggle',
-                        'modeTransitToggle',
-                        'timeInfo',
-                        'linkButtonStack',
-                        'transitWindow',
-                        'transitRevealer',
-                        //'transitOptionsPanel',
-                        'transitHeader',
-                        'transitListStack',
-                        'transitOverviewListBox',
-                        'transitItineraryHeader',
-                        'transitItineraryListBox',
-                        'transitItineraryBackButton',
-                        'transitItineraryTimeLabel',
-                        'transitItineraryDurationLabel',
-                        'transitAttributionLabel']
-}, class Sidebar extends Gtk.Revealer {
+export class Sidebar extends Gtk.Revealer {
 
-    _init(mapView) {
-        super._init({ transition_type: Gtk.RevealerTransitionType.SLIDE_LEFT });
+    constructor(mapView) {
+        super({ transition_type: Gtk.RevealerTransitionType.SLIDE_LEFT });
 
         this._mapView = mapView;
 
@@ -81,8 +54,7 @@ var Sidebar = GObject.registerClass({
          * itinerary header widget into the GtkStack to get the correct
          * animation direction.
          */
-        this._transitOptionsPanel =
-            new TransitOptionsPanel.TransitOptionsPanel({ visible: true });
+        this._transitOptionsPanel = new TransitOptionsPanel({ visible: true });
         this._transitHeader.add_named(this._transitOptionsPanel, 'options');
         this._transitHeader.add_named(this._transitItineraryHeader,
                                       'itinerary-header');
@@ -181,9 +153,9 @@ var Sidebar = GObject.registerClass({
         else
             type = RouteEntry.Type.VIA;
 
-        let routeEntry = new RouteEntry.RouteEntry({ type: type,
-                                                     point: point,
-                                                     mapView: this._mapView });
+        let routeEntry = new RouteEntry({ type: type,
+                                          point: point,
+                                          mapView: this._mapView });
 
         // add handler overriding tab focus behavior on route entries
         routeEntry.entry.connect('focus', this._onRouteEntryFocus.bind(this));
@@ -331,7 +303,7 @@ var Sidebar = GObject.registerClass({
                 let places = this._query.filledPoints.map(function(point) {
                     return point.place;
                 });
-                let storedRoute = new StoredRoute.StoredRoute({
+                let storedRoute = new StoredRoute({
                     transportation: this._query.transportation,
                     route: route,
                     places: places,
@@ -346,8 +318,8 @@ var Sidebar = GObject.registerClass({
             });
 
             route.turnPoints.forEach((turnPoint) => {
-                let row = new InstructionRow.InstructionRow({ visible: true,
-                                                              turnPoint: turnPoint });
+                let row = new InstructionRow({ visible: true,
+                                               turnPoint: turnPoint });
                 this._instructionList.insert(row, -1);
             });
 
@@ -438,14 +410,13 @@ var Sidebar = GObject.registerClass({
         let plan = Application.routingDelegator.transitRouter.plan;
 
         plan.itineraries.forEach((itinerary) => {
-            let row =
-                new TransitItineraryRow.TransitItineraryRow({ visible: true,
-                                                              itinerary: itinerary });
+            let row = new TransitItineraryRow({ visible: true,
+                                                itinerary: itinerary });
             this._transitOverviewListBox.insert(row, -1);
         });
         /* add the "load more" row */
-        this._transitOverviewListBox.insert(
-            new TransitMoreRow.TransitMoreRow({ visible: true }), -1);
+        this._transitOverviewListBox.insert(new TransitMoreRow({ visible: true }),
+                                            -1);
 
         /* add an empty list row to get a final separator */
         this._transitOverviewListBox.insert(new Gtk.ListBoxRow({ visible: true }),
@@ -483,16 +454,15 @@ var Sidebar = GObject.registerClass({
         this._clearTransitItinerary();
         for (let i = 0; i < itinerary.legs.length; i++) {
             let leg = itinerary.legs[i];
-            let row = new TransitLegRow.TransitLegRow({ leg: leg,
-                                                        start: i === 0,
-                                                        mapView: this._mapView });
+            let row = new TransitLegRow({ leg: leg,
+                                          start: i === 0,
+                                          mapView: this._mapView });
             this._transitItineraryListBox.insert(row, -1);
         }
 
         /* insert the additional arrival row, showing the arrival place and time */
         this._transitItineraryListBox.insert(
-            new TransitArrivalRow.TransitArrivalRow({ itinerary: itinerary,
-                                                      mapView: this._mapView }),
+            new TransitArrivalRow({ itinerary: itinerary, mapView: this._mapView }),
             -1);
     }
 
@@ -627,4 +597,33 @@ var Sidebar = GObject.registerClass({
         row.connect('drag-motion', this._onDragMotion.bind(this));
         row.connect('drag-drop', this._onDragDrop.bind(this));
     }
-});
+}
+
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/sidebar.ui',
+    InternalChildren: [ 'distanceInfo',
+                        'entryList',
+                        'instructionList',
+                        'instructionWindow',
+                        'instructionSpinner',
+                        'instructionStack',
+                        'errorLabel',
+                        'modeBikeToggle',
+                        'modeCarToggle',
+                        'modePedestrianToggle',
+                        'modeTransitToggle',
+                        'timeInfo',
+                        'linkButtonStack',
+                        'transitWindow',
+                        'transitRevealer',
+                        //'transitOptionsPanel',
+                        'transitHeader',
+                        'transitListStack',
+                        'transitOverviewListBox',
+                        'transitItineraryHeader',
+                        'transitItineraryListBox',
+                        'transitItineraryBackButton',
+                        'transitItineraryTimeLabel',
+                        'transitItineraryDurationLabel',
+                        'transitAttributionLabel']
+}, Sidebar);

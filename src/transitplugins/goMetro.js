@@ -25,23 +25,24 @@
  * https://proserver.gometro.co.za/api/v1/docs/#multimodal-routing
  */
 
+import gettext from 'gettext';
+
+import GLib from 'gi://GLib';
+
+import * as HVT from '../hvt.js';
+import {RouteType} from '../transitPlan.js';
+import * as Utils from '../utils.js';
+
+import {OpenTripPlanner} from './openTripPlanner.js';
+
+const _ = gettext.gettext;
+
 const BASE_URL = 'https://proserver.gometro.co.za/api';
 const API_VERSION = 'v1';
 
 const NATIVE_TIMEZONE = 'Africa/Cape_Town';
 
-const _ = imports.gettext.gettext;
-
-const GLib = imports.gi.GLib;
-
-const Application = imports.application;
-const HVT = imports.hvt;
-const TransitPlan = imports.transitPlan;
-const Utils = imports.utils;
-
-const OpenTripPlanner = imports.transitplugins.openTripPlanner;
-
-var GoMetro = class GoMetro extends OpenTripPlanner.OpenTripPlanner {
+export class GoMetro extends OpenTripPlanner {
     constructor() {
         super({ baseUrl: BASE_URL });
 
@@ -101,7 +102,7 @@ var GoMetro = class GoMetro extends OpenTripPlanner.OpenTripPlanner {
     _createLeg(leg, index, legs) {
         let result = super._createLeg(leg, index, legs);
 
-        if (result.routeType === TransitPlan.RouteType.FERRY)
+        if (result.routeType === RouteType.FERRY)
             result.routeType = HVT.TAXI_SERVICE;
 
         return result;
@@ -112,16 +113,16 @@ var GoMetro = class GoMetro extends OpenTripPlanner.OpenTripPlanner {
         let transitOptions = this._query.transitOptions;
 
         if (transitOptions.showAllTransitTypes ||
-            transitOptions.transitTypes.includes(TransitPlan.RouteType.TRAIN))
+            transitOptions.transitTypes.includes(RouteType.TRAIN))
             params += 'RAIL,';
         if (transitOptions.showAllTransitTypes ||
-            transitOptions.transitTypes.includes(TransitPlan.RouteType.BUS))
+            transitOptions.transitTypes.includes(RouteType.BUS))
             params += 'BUS,';
         if (transitOptions.showAllTransitTypes ||
-            transitOptions.transitTypes.includes(TransitPlan.RouteType.FERRY))
+            transitOptions.transitTypes.includes(RouteType.FERRY))
             params += 'FERRY,';
         if (transitOptions.showAllTransitTypes ||
-            transitOptions.transitTypes.includes(TransitPlan.RouteType.TRAM))
+            transitOptions.transitTypes.includes(RouteType.TRAM))
             params += 'TRAM,';
         if (transitOptions.showAllTransitTypes)
             params += 'GONDOLA,';

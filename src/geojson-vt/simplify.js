@@ -2,7 +2,7 @@
 
 // calculate simplification data using optimized Douglas-Peucker algorithm
 
-function simplify(points, tolerance) {
+export function simplify(points, tolerance) {
 
     var sqTolerance = tolerance * tolerance,
         len = points.length,

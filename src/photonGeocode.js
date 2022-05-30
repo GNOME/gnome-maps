@@ -21,19 +21,19 @@
 
 const Format = imports.format;
 
-const GLib = imports.gi.GLib;
-const Soup = imports.gi.Soup;
+import GLib from 'gi://GLib';
+import Soup from 'gi://Soup';
 
-const Application = imports.application;
-const HTTP = imports.http;
-const PhotonParser = imports.photonParser;
-const Service = imports.service;
-const Utils = imports.utils;
+import {Application} from './application.js';
+import * as HTTP from './http.js';
+import * as PhotonParser from './photonParser.js';
+import * as Service from './service.js';
+import * as Utils from './utils.js';
 
 // HTTP session timeout (in seconds)
 const TIMEOUT = 5;
 
-var PhotonGeocode = class {
+export class PhotonGeocode {
     constructor() {
         this._session =
             new Soup.Session({ user_agent : 'gnome-maps/' + pkg.version,

@@ -18,7 +18,7 @@ var S_E = 5;//attr value end and no space(quot end)
 var S_S = 6;//(attr value end || tag end ) && (space offer)
 var S_C = 7;//closed el<el />
 
-function XMLReader(){
+export function XMLReader(){
 	
 }
 
@@ -579,4 +579,4 @@ function split(source,start){
 		if(match[1])return buf;
 	}
 	return null;
-}
+}

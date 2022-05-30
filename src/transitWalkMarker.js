@@ -19,18 +19,17 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Gdk = imports.gi.Gdk;
-const GObject = imports.gi.GObject;
+import Gdk from 'gi://Gdk';
+import GObject from 'gi://GObject';
 
-const Color = imports.color;
-const Location = imports.location;
-const MapMarker = imports.mapMarker;
-const Place = imports.place;
+import * as Color from './color.js';
+import {Location} from './location.js';
+import {MapMarker} from './mapMarker.js';
+import {Place} from './place.js';
 
-var TransitWalkMarker = GObject.registerClass(
-class TransitWalkMarker extends MapMarker.MapMarker {
+export class TransitWalkMarker extends MapMarker {
 
-    _init(params) {
+    constructor(params) {
         /* if there is a preceding leg, put the marker at the end of that leg
          * to avoid gaps, since we will "fill out" the walking leg path line
          * since sometimes the walking route might not reach exactly to the
@@ -48,13 +47,12 @@ class TransitWalkMarker extends MapMarker.MapMarker {
         delete params.leg;
         delete params.previousLeg;
 
-        let location = new Location.Location({ latitude: point.latitude,
-                                               longitude: point.longitude
-                                             });
+        let location = new Location({ latitude: point.latitude,
+                                      longitude: point.longitude });
 
-        params.place = new Place.Place({ location: location });
+        params.place = new Place({ location: location });
 
-        super._init(params);
+        super(params);
 
         let bgRed = Color.parseColor(bgColor, 0);
         let bgGreen = Color.parseColor(bgColor, 1);
@@ -74,4 +72,6 @@ class TransitWalkMarker extends MapMarker.MapMarker {
         return { x: Math.floor(this.width / 2) - 1,
                  y: Math.floor(this.height / 2) - 1 };
     }
-});
+}
+
+GObject.registerClass(TransitWalkMarker);

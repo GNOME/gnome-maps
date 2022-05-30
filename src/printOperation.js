@@ -17,17 +17,21 @@
  * Author: Amisha Singla <amishas157@gmail.com>
  */
 
-const Gtk = imports.gi.Gtk;
+import Gtk from 'gi://Gtk';
 const Mainloop = imports.mainloop;
 
-const Application = imports.application;
-const PrintLayout = imports.printLayout;
-const TransitPrintLayout = imports.transitPrintLayout;
-const Utils = imports.utils;
+import {Application} from './application.js';
+import {LongPrintLayout} from './longPrintLayout.js';
+import {ShortPrintLayout} from './shortPrintLayout.js';
+import {TransitPrintLayout} from './transitPrintLayout.js';
+import * as Utils from './utils.js';
 
 const _MIN_TIME_TO_ABORT = 3000;
 
-var PrintOperation = class PrintOperation {
+/* Following constant has unit as meters */
+const _SHORT_LAYOUT_MAX_DISTANCE = 3000;
+
+export class PrintOperation {
 
     constructor(params) {
         this._mainWindow = params.mainWindow;
@@ -70,11 +74,19 @@ var PrintOperation = class PrintOperation {
 
         if (selectedTransitItinerary) {
             this._layout =
-                new TransitPrintLayout.TransitPrintLayout({ itinerary: selectedTransitItinerary,
-                                                            pageWidth: width,
-                                                            pageHeight: height });
+                new TransitPrintLayout({ itinerary: selectedTransitItinerary,
+                                         pageWidth: width,
+                                         pageHeight: height });
         } else {
-            this._layout = PrintLayout.newFromRoute(route, width, height);
+            if (route.distance > _SHORT_LAYOUT_MAX_DISTANCE) {
+                return new LongPrintLayout({ route: route,
+                                             pageWidth: pageWidth,
+                                             pageHeight: pageHeight });
+            } else {
+                return new ShortPrintLayout({ route: route,
+                                              pageWidth: pageWidth,
+                                              pageHeight: pageHeight });
+            }
         }
         this._layout.render();
     }
@@ -116,4 +128,4 @@ var PrintOperation = class PrintOperation {
             Utils.debug('Failed to print: %s'.format(e.message));
         }
     }
-};
+}

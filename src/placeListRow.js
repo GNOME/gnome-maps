@@ -17,28 +17,20 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
-const GLib = imports.gi.GLib;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import GLib from 'gi://GLib';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
-const ContactPlace = imports.contactPlace;
-const PlaceFormatter = imports.placeFormatter;
-const PlaceStore = imports.placeStore;
-const Utils = imports.utils;
+import {ContactPlace} from './contactPlace.js';
+import {PlaceFormatter} from './placeFormatter.js';
+import {PlaceStore} from './placeStore.js';
+import * as Utils from './utils.js';
 
 var ROW_HEIGHT = 55;
 
-var PlaceListRow = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/place-list-row.ui',
-    InternalChildren: [ 'icon',
-                        'iconStack',
-                        'contactAvatar',
-                        'name',
-                        'details',
-                        'typeIcon' ],
-}, class PlaceListRow extends Gtk.ListBoxRow {
+export class PlaceListRow extends Gtk.ListBoxRow {
 
-    _init(params) {
+    constructor(params) {
         let place = params.place;
         delete params.place;
 
@@ -49,20 +41,20 @@ var PlaceListRow = GObject.registerClass({
         delete params.type;
 
         params.height_request = ROW_HEIGHT;
-        super._init(params);
+        super(params);
         this.update(place, type, searchString);
     }
 
     update(place, type, searchString) {
         this.place = place;
-        let formatter = new PlaceFormatter.PlaceFormatter(this.place);
+        let formatter = new PlaceFormatter(this.place);
         this.title = formatter.title;
         let markup = GLib.markup_escape_text(formatter.title, -1);
 
         this._name.label = this._boldMatch(markup, searchString);
         this._details.label = GLib.markup_escape_text(formatter.getDetailsString(),-1);
 
-        if (place instanceof ContactPlace.ContactPlace) {
+        if (place instanceof ContactPlace) {
             this._iconStack.set_visible_child(this._contactAvatar);
 
             this._contactAvatar.text = formatter.title;
@@ -102,4 +94,14 @@ var PlaceListRow = GObject.registerClass({
         }
         return title;
     }
-});
+}
+
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/place-list-row.ui',
+    InternalChildren: [ 'icon',
+                        'iconStack',
+                        'contactAvatar',
+                        'name',
+                        'details',
+                        'typeIcon' ],
+}, PlaceListRow);

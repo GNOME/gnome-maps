@@ -1,6 +1,20 @@
 #!@GJS@
+const Gio = imports.gi.Gio;
+
 imports.package.init({ name: "@name@",
                        version: "@PACKAGE_VERSION@",
                        prefix: "@prefix@",
                        libdir: "@libdir@" });
-imports.package.run(imports.@name@);
+
+log('program name: ' + imports.system.programInvocationName);
+log('ARG: ' + imports.system.programArgs);
+
+// manually load GResource from build tree for the generated test scripts
+let resource = Gio.Resource.load(imports.system.programArgs[0]);
+
+resource._register();
+
+import(`resource:///org/gnome/Maps@suffix@/js/@name@.js`).catch(error => {
+    console.error(error);
+    imports.system.exit(1);
+});

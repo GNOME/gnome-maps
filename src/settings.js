@@ -19,16 +19,41 @@
  * Author: Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
  */
 
-const GLib = imports.gi.GLib;
-const Gio = imports.gi.Gio;
-const GObject = imports.gi.GObject;
-const System = imports.system;
+import GLib from 'gi://GLib';
+import Gio from 'gi://Gio';
+import GObject from 'gi://GObject';
+import * as system from 'system';
 
-var Settings = GObject.registerClass(
-class Settings extends Gio.Settings {
+export class Settings extends Gio.Settings {
 
-    _init(params) {
-        super._init(params);
+    static getSettings(schemaId, path) {
+        const GioSSS = Gio.SettingsSchemaSource;
+        let schemaSource;
+
+        if (!pkg.moduledir.startsWith('resource://')) {
+            // Running from the source tree
+            schemaSource = GioSSS.new_from_directory(pkg.pkgdatadir,
+                                                     GioSSS.get_default(),
+                                                     false);
+        } else {
+            schemaSource = GioSSS.get_default();
+        }
+
+        let schemaObj = schemaSource.lookup(schemaId, true);
+        if (!schemaObj) {
+            log('Missing GSettings schema ' + schemaId);
+            system.exit(1);
+        }
+
+        if (path === undefined)
+            return new Settings({ settings_schema: schemaObj });
+        else
+            return new Settings({ settings_schema: schemaObj,
+                                  path: path });
+    }
+
+    constructor(params) {
+        super(params);
         // The GVariant types of the settings
         this._keyTypes = {};
         this.list_keys().forEach((key) => {
@@ -45,30 +70,6 @@ class Settings extends Gio.Settings {
     set(name, value) {
         this.set_value(name, GLib.Variant.new (this._keyTypes[name], value));
     }
-});
-
-function getSettings(schemaId, path) {
-    const GioSSS = Gio.SettingsSchemaSource;
-    let schemaSource;
-
-    if (!pkg.moduledir.startsWith('resource://')) {
-        // Running from the source tree
-        schemaSource = GioSSS.new_from_directory(pkg.pkgdatadir,
-                                                 GioSSS.get_default(),
-                                                 false);
-    } else {
-        schemaSource = GioSSS.get_default();
-    }
-
-    let schemaObj = schemaSource.lookup(schemaId, true);
-    if (!schemaObj) {
-        log('Missing GSettings schema ' + schemaId);
-        System.exit(1);
-    }
-
-    if (path === undefined)
-        return new Settings({ settings_schema: schemaObj });
-    else
-        return new Settings({ settings_schema: schemaObj,
-                              path: path });
 }
+
+GObject.registerClass(Settings);

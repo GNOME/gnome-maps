@@ -19,13 +19,13 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const GdkPixbuf = imports.gi.GdkPixbuf;
-const Gio = imports.gi.Gio;
-const GLib = imports.gi.GLib;
-const Soup = imports.gi.Soup;
+import GdkPixbuf from 'gi://GdkPixbuf';
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
+import Soup from 'gi://Soup';
 
 const Format = imports.format;
-const Utils = imports.utils;
+import * as Utils from './utils.js';
 
 /**
  * Regex matching editions of Wikipedia, e.g. "en", "arz", pt-BR", "simple".
@@ -45,16 +45,16 @@ function _getSoupSession() {
 let _thumbnailCache = {};
 let _metadataCache = {};
 
-function getLanguage(wiki) {
+export function getLanguage(wiki) {
     return wiki.split(':')[0];
 }
 
-function getArticle(wiki) {
+export function getArticle(wiki) {
     return Soup.uri_encode(wiki.replace(/ /g, '_').split(':').splice(1).join(':'),
                            '\'');
 }
 
-function getHtmlEntityEncodedArticle(wiki) {
+export function getHtmlEntityEncodedArticle(wiki) {
     return GLib.markup_escape_text(wiki.split(':').splice(1).join(':'), -1);
 }
 
@@ -62,7 +62,7 @@ function getHtmlEntityEncodedArticle(wiki) {
  * Determine if a Wikipedia reference tag is valid
  * (of the form "lang:Article title")
  */
-function isValidWikipedia(wiki) {
+export function isValidWikipedia(wiki) {
     let parts = wiki.split(':');
 
     if (parts.length < 2)
@@ -86,7 +86,7 @@ function isValidWikipedia(wiki) {
  * Calls @thumbnailCb with the Gdk.Pixbuf of the icon when successful, otherwise
  * null.
  */
-function fetchArticleInfo(wiki, size, metadataCb, thumbnailCb) {
+export function fetchArticleInfo(wiki, size, metadataCb, thumbnailCb) {
     let lang = getLanguage(wiki);
     let title = getHtmlEntityEncodedArticle(wiki);
     let uri = Format.vprintf('https://%s.wikipedia.org/w/api.php', [ lang ]);

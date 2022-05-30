@@ -1,5 +1,11 @@
 #!@GJS@
-imports.package.start({ name: "gnome-maps",
-                        version: "@PACKAGE_VERSION@",
-                        prefix: "@prefix@",
-                        libdir: "@libdir@" });
+imports.package.init({ name: "gnome-maps",
+                       version: "@PACKAGE_VERSION@",
+                       prefix: "@prefix@",
+                       libdir: "@libdir@" });
+
+import(`resource:///org/gnome/Maps@suffix@/js/main.js`).catch(error => {
+    console.error(error);
+    imports.system.exit(1);
+});
+

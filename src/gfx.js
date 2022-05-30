@@ -19,7 +19,7 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Color = imports.color;
+import * as Color from './color.js';
 
 /**
  * Draws a colored badged with rounded corners and an optional outline.
@@ -33,7 +33,7 @@ const Color = imports.color;
  * width: The width to draw the badge
  * height: The height to draw the badge
  */
-function drawColoredBagde(cr, bgColor, outlineColor, x, y, width, height) {
+export function drawColoredBagde(cr, bgColor, outlineColor, x, y, width, height) {
     let bgRed = Color.parseColor(bgColor, 0);
     let bgGreen = Color.parseColor(bgColor, 1);
     let bgBlue = Color.parseColor(bgColor, 2);

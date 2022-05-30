@@ -17,48 +17,43 @@
  * Author: Jonas Danielson <jonas@threetimestwo.org>
  */
 
-const Cairo = imports.cairo;
-const Gdk = imports.gi.Gdk;
-const GLib = imports.gi.GLib;
-const Gio = imports.gi.Gio;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import Cairo from 'cairo';
+import Gdk from 'gi://Gdk';
+import GLib from 'gi://GLib';
+import Gio from 'gi://Gio';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
-const Utils = imports.utils;
-
-var Response = {
-    SUCCESS: 0,
-    CANCEL: 1
-};
+import * as Utils from './utils.js';
 
 const _PREVIEW_WIDTH = 150;
 
-var ExportViewDialog = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/export-view-dialog.ui',
-    InternalChildren: [ 'exportButton',
-                        'cancelButton',
-                        'filenameEntry',
-                        'fileChooserButton',
-                        'previewArea',
-                        'layersCheckButton' ],
-}, class ExportViewDialog extends Gtk.Dialog {
-    _init(params) {
-        this._surface = params.surface;
+export class ExportViewDialog extends Gtk.Dialog {
+
+    static Response = {
+        SUCCESS: 0,
+        CANCEL: 1
+    };
+
+    constructor(params) {
+        let surface = params.surface;
         delete params.surface;
 
-        this._latitude = params.latitude;
+        let latitude = params.latitude;
         delete params.latitude;
 
-        this._longitude = params.longitude;
+        let longitude = params.longitude;
         delete params.longitude;
 
-        this._mapView = params.mapView;
+        let mapView = params.mapView;
         delete params.mapView;
 
         params.use_header_bar = true;
-        super._init(params);
+        super(params);
 
-        this._cancelButton.connect('clicked', () => this.response(Response.CANCEL));
+        this._surface = surface;
+        this._mapView = mapView;
+        this._cancelButton.connect('clicked', () => this.response(ExportViewDialog.Response.CANCEL));
         this._exportButton.connect('clicked', () => this._exportView());
         this._filenameEntry.connect('changed', () => this._onFileNameChanged());
         this._fileChooserButton.connect('file-set', () => this._onFolderChanged());
@@ -69,18 +64,19 @@ var ExportViewDialog = GObject.registerClass({
         if (!this._folder)
             this._folder = GLib.get_user_data_dir();
 
-        this._filenameEntry.text = this._fileName = this._getName();
+        this._filenameEntry.text = this._fileName =
+            this._getName(latitude, longitude);
         this._fileChooserButton.set_current_folder(this._folder);
         this._setupPreviewArea();
     }
 
-    _getName() {
+    _getName(latitude, longitude) {
         /* Translators: This is a format string for a PNG filename for an
          * exported image with coordinates. The .png extension should be kept
          * intact in the translated string.
          */
-        return _("Maps at %f, %f.png").format(this._latitude.toFixed(2),
-                                              this._longitude.toFixed(2));
+        return _("Maps at %f, %f.png").format(latitude.toFixed(2),
+                                              longitude.toFixed(2));
     }
 
     _setupPreviewArea() {
@@ -145,7 +141,7 @@ var ExportViewDialog = GObject.registerClass({
 
         try {
             pixbuf.savev(path, "png", [], []);
-            this.response(Response.SUCCESS);
+            this.response(ExportViewDialog.Response.SUCCESS);
         } catch(e) {
             Utils.debug('failed to export view: ' + e.message);
             let details = null;
@@ -180,4 +176,14 @@ var ExportViewDialog = GObject.registerClass({
         this._surface = this._mapView.view.to_surface(includeLayers);
         this._previewArea.queue_draw();
     }
-});
+}
+
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/export-view-dialog.ui',
+    InternalChildren: [ 'exportButton',
+                        'cancelButton',
+                        'filenameEntry',
+                        'fileChooserButton',
+                        'previewArea',
+                        'layersCheckButton' ],
+}, ExportViewDialog);

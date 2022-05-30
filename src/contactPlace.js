@@ -19,18 +19,18 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
-const GObject = imports.gi.GObject;
+import GObject from 'gi://GObject';
 
-const Place = imports.place;
+import {Place} from './place.js';
 
-var ContactPlace = GObject.registerClass(
-class ContactPlace extends Place.Place {
-    _init(params) {
-        this._contact = params.contact;
+export class ContactPlace extends Place {
+    constructor(params) {
+        let contact = params.contact;
         delete params.contact;
 
         params.store = false;
-        super._init(params);
+        super(params);
+        this._contact = contact;
     }
 
     get icon() {
@@ -42,4 +42,6 @@ class ContactPlace extends Place.Place {
                 this.osm_type,
                 this.osm_id].join('-');
     }
-});
+}
+
+GObject.registerClass(ContactPlace);

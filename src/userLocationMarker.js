@@ -19,40 +19,41 @@
  * Author: Damián Nohales <damiannohales@gmail.com>
  */
 
-const Champlain = imports.gi.Champlain;
-const Clutter = imports.gi.Clutter;
-const GObject = imports.gi.GObject;
+import Champlain from 'gi://Champlain';
+import Clutter from 'gi://Clutter';
+import GObject from 'gi://GObject';
 
-const MapMarker = imports.mapMarker;
+import {MapMarker} from './mapMarker.js';
 
-var AccuracyCircleMarker = GObject.registerClass(
-class AccuracyCirleMarker extends Champlain.Point {
+export class AccuracyCircleMarker extends Champlain.Point {
 
-    _init(params) {
-        this.place = params.place;
+    constructor(params) {
+        let place = params.place;
         delete params.place;
 
         params.color = new Clutter.Color({ red: 0,
                                            blue: 255,
                                            green: 0,
                                            alpha: 25 });
-        params.latitude = this.place.location.latitude;
-        params.longitude = this.place.location.longitude;
+        params.latitude = place.location.latitude;
+        params.longitude = place.location.longitude;
         params.reactive = false;
 
-        super._init(params);
+        super(params);
+
+        this._place = place;
     }
 
     refreshGeometry(view) {
-        this.latitude = this.place.location.latitude;
-        this.longitude = this.place.location.longitude;
+        this.latitude = this._place.location.latitude;
+        this.longitude = this._place.location.longitude;
 
         let zoom = view.zoom_level;
         let source = view.map_source;
         let metersPerPixel = source.get_meters_per_pixel(zoom,
                                                          this.latitude,
                                                          this.longitude);
-        let size = this.place.location.accuracy * 2 / metersPerPixel;
+        let size = this._place.location.accuracy * 2 / metersPerPixel;
 
         if (size > view.width || size > view.height)
             this.hide();
@@ -61,13 +62,14 @@ class AccuracyCirleMarker extends Champlain.Point {
             this.show();
         }
     }
-});
+}
 
-var UserLocationMarker = GObject.registerClass(
-class UserLocationMarker extends MapMarker.MapMarker {
+GObject.registerClass(AccuracyCircleMarker);
 
-    _init(params) {
-        super._init(params);
+export class UserLocationMarker extends MapMarker {
+
+    constructor(params) {
+        super(params);
 
         this._accuracyMarker = new AccuracyCircleMarker({ place: this.place });
         this.connect('notify::view-zoom-level',
@@ -123,4 +125,6 @@ class UserLocationMarker extends MapMarker.MapMarker {
             this._accuracyMarker.visible = false;
         }
     }
-});
+}
+
+GObject.registerClass(UserLocationMarker);

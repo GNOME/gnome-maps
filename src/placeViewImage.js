@@ -19,18 +19,17 @@
  * Author: James Westman <james@flyingpimonster.net>
  */
 
-const Cairo = imports.cairo;
-const Gdk = imports.gi.Gdk;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import Cairo from 'cairo';
+import Gdk from 'gi://Gdk';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
 /* The maximum aspect ratio, after which the image will be cropped vertically */
 const MAX_ASPECT_RATIO = 1;
 
-var PlaceViewImage = GObject.registerClass(
-class PlaceViewImage extends Gtk.DrawingArea {
-    _init(params) {
-        super._init(params);
+export class PlaceViewImage extends Gtk.DrawingArea {
+    constructor(params) {
+        super(params);
 
         this._pixbuf = null;
         this._cached = null;
@@ -98,4 +97,6 @@ class PlaceViewImage extends Gtk.DrawingArea {
             return [0, 0];
         }
     }
-});
+}
+
+GObject.registerClass(PlaceViewImage);

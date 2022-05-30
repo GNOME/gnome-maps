@@ -17,10 +17,10 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
-const Champlain = imports.gi.Champlain;
+import Champlain from 'gi://Champlain';
 
-const Service = imports.service;
-const Utils = imports.utils;
+import * as Service from './service.js';
+import * as Utils from './utils.js';
 
 const _FILE_CACHE_SIZE_LIMIT = (10 * 1024 * 1024); /* 10Mb */
 const _MEMORY_CACHE_SIZE_LIMIT = 100; /* number of tiles */
@@ -72,22 +72,22 @@ function _createCachedSource(source) {
     return sourceChain;
 }
 
-function createAerialSource() {
+export function createAerialSource() {
     return _createCachedSource(Service.getService().tiles.aerial);
 }
 
-function createHybridAerialSource() {
+export function createHybridAerialSource() {
     return _createCachedSource(Service.getService().tiles.hybridAerial);
 }
 
-function createStreetSource() {
+export function createStreetSource() {
     return _createCachedSource(Service.getService().tiles.street);
 }
 
-function createStreetDarkSource() {
+export function createStreetDarkSource() {
     return _createCachedSource(Service.getService().tiles.streetDark)
 }
 
-function createPrintSource() {
+export function createPrintSource() {
     return _createCachedSource(Service.getService().tiles.print);
 }

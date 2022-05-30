@@ -27,16 +27,16 @@
  * https://www.trafiklab.se/api/resrobot-reseplanerare/dokumentation/sokresa
  */
 
-const Champlain = imports.gi.Champlain;
-const GLib = imports.gi.GLib;
-const Soup = imports.gi.Soup;
+import Champlain from 'gi://Champlain';
+import GLib from 'gi://GLib';
+import Soup from 'gi://Soup';
 
-const Application = imports.application;
-const GraphHopperTransit = imports.graphHopperTransit;
-const HTTP = imports.http;
-const HVT = imports.hvt;
-const TransitPlan = imports.transitPlan;
-const Utils = imports.utils;
+import {Application} from '../application.js';
+import * as GraphHopperTransit from '../graphHopperTransit.js';
+import {Query} from '../http.js';
+import * as HVT from '../hvt.js';
+import {Itinerary, Leg, RouteType, Stop} from '../transitPlan.js';
+import * as Utils from '../utils.js';
 
 const BASE_URL = 'https://api.resrobot.se';
 const API_VERSION = 'v2.1';
@@ -88,7 +88,7 @@ const WALK_SEARCH_RADIUS = 2000;
 // maximum distance for walk-only journey
 const MAX_WALK_ONLY_DISTANCE = 2500;
 
-var Resrobot = class Resrobot {
+export class Resrobot {
     constructor(params) {
         this._session = new Soup.Session({ user_agent : 'gnome-maps/' + pkg.version });
         this._plan = Application.routingDelegator.transitRouter.plan;
@@ -134,8 +134,8 @@ var Resrobot = class Resrobot {
     }
 
     _fetchNearbyStops(lat, lon, num, radius, callback) {
-        let query = new HTTP.Query(this._getNearbyStopsQueryParams(lat, lon,
-                                                                   num, radius));
+        let query = new Query(this._getNearbyStopsQueryParams(lat, lon,
+                                                              num, radius));
         let uri = new Soup.URI(BASE_URL + '/' + API_VERSION +
                                '/location.nearbystops?' + query.toString());
         let request = new Soup.Message({ method: 'GET', uri: uri });
@@ -170,7 +170,7 @@ var Resrobot = class Resrobot {
     }
 
     _fetchResults() {
-        let query = new HTTP.Query(this._getQueryParams());
+        let query = new Query(this._getQueryParams());
         let uri = new Soup.URI(BASE_URL + '/' + API_VERSION + '/trip?' +
                                query.toString());
         let request = new Soup.Message({ method: 'GET', uri: uri });
@@ -292,7 +292,7 @@ var Resrobot = class Resrobot {
         walkingLeg.agencyTimezoneOffset = tzOffset;
 
         let walkingItinerary =
-            new TransitPlan.Itinerary({ legs: [walkingLeg]} );
+            new Itinerary({ legs: [walkingLeg]} );
 
         walkingItinerary.adjustTimings();
 
@@ -318,7 +318,7 @@ var Resrobot = class Resrobot {
 
     _createItinerary(trip) {
         let legs = this._createLegs(trip.LegList.Leg);
-        let itinerary = new TransitPlan.Itinerary({ legs: legs });
+        let itinerary = new Itinerary({ legs: legs });
 
         itinerary.adjustTimings();
 
@@ -438,24 +438,24 @@ var Resrobot = class Resrobot {
         let polyline = this._createPolylineForLeg(leg);
         let duration = leg.duration ? this._parseDuration(leg.duration) : null;
 
-        let result = new TransitPlan.Leg({ departure:            departure,
-                                           arrival:              arrival,
-                                           from:                 from,
-                                           to:                   to,
-                                           headsign:             leg.direction,
-                                           fromCoordinate:       [origin.lat,
-                                                                  origin.lon],
-                                           toCoordinate:         [destination.lat,
-                                                                  destination.lon],
-                                           route:                route,
-                                           routeType:            routeType,
-                                           polyline:             polyline,
-                                           isTransit:            isTransit,
-                                           distance:             leg.dist,
-                                           duration:             duration,
-                                           agencyName:           agencyName,
-                                           agencyTimezoneOffset: tzOffset,
-                                           tripShortName:        route });
+        let result = new Leg({ departure:            departure,
+                               arrival:              arrival,
+                               from:                 from,
+                               to:                   to,
+                               headsign:             leg.direction,
+                               fromCoordinate:       [origin.lat,
+                                                      origin.lon],
+                               toCoordinate:         [destination.lat,
+                                                      destination.lon],
+                               route:                route,
+                               routeType:            routeType,
+                               polyline:             polyline,
+                               isTransit:            isTransit,
+                               distance:             leg.dist,
+                               duration:             duration,
+                               agencyName:           agencyName,
+                               agencyTimezoneOffset: tzOffset,
+                               tripShortName:        route });
 
         if (isTransit)
             result.intermediateStops = this._createIntermediateStops(leg);
@@ -512,11 +512,11 @@ var Resrobot = class Resrobot {
         if (!departure)
             departure = arrival;
 
-        return new TransitPlan.Stop({ name:                 stop.name,
-                                      arrival:              arrival,
-                                      departure:            departure,
-                                      agencyTimezoneOffset: departureTzOffset || arrivalTzOffset,
-                                      coordinate: [stop.lat, stop.lon] });
+        return new Stop({ name:                 stop.name,
+                          arrival:              arrival,
+                          departure:            departure,
+                          agencyTimezoneOffset: departureTzOffset || arrivalTzOffset,
+                          coordinate: [stop.lat, stop.lon] });
     }
 
     _getHVTCodeFromCatCode(code) {
@@ -603,15 +603,15 @@ var Resrobot = class Resrobot {
 
     _productCodeForTransitType(type) {
         switch (type) {
-            case TransitPlan.RouteType.BUS:
+            case RouteType.BUS:
                 return Products.BUS + Products.EXPRESS_BUS + Products.TAXI;
-            case TransitPlan.RouteType.TRAM:
+            case RouteType.TRAM:
                 return Products.TRAM;
-            case TransitPlan.RouteType.TRAIN:
+            case RouteType.TRAIN:
                 return Products.EXPRESS_TRAIN + Products.LOCAL_TRAIN;
-            case TransitPlan.RouteType.SUBWAY:
+            case RouteType.SUBWAY:
                 return Products.SUBWAY;
-            case TransitPlan.RouteType.FERRY:
+            case RouteType.FERRY:
                 return Products.FERRY;
             default:
                 return 0;

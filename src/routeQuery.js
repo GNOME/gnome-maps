@@ -19,46 +19,18 @@
  * Author: Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
  */
 
-const GObject = imports.gi.GObject;
-const Geocode = imports.gi.GeocodeGlib;
+import GObject from 'gi://GObject';
+import GeocodeGlib from 'gi://GeocodeGlib';
 
-const Application = imports.application;
-const PlaceStore = imports.placeStore;
-const TransitOptions = imports.transitOptions;
+import {Application} from './application.js';
+import {PlaceStore} from './placeStore.js';
+import {TransitOptions} from './transitOptions.js';
 
-var MAX_QUERY_POINTS = 10;
+export class QueryPoint extends GObject.Object {
 
-var Transportation = {
-    CAR:        0,
-    BIKE:       1,
-    PEDESTRIAN: 2,
-    TRANSIT:    3,
-
-    toString: function (transportation) {
-        switch(transportation) {
-        case Transportation.CAR:        return 'car';
-        case Transportation.BIKE:       return 'bike';
-        case Transportation.PEDESTRIAN: return 'foot';
-        case Transportation.TRANSIT:    return 'transit';
-        default:                        return null;
-        }
-    }
-};
-
-var QueryPoint = GObject.registerClass({
-    Properties: {
-        'place': GObject.ParamSpec.object('place',
-                                          '',
-                                          '',
-                                          GObject.ParamFlags.READABLE |
-                                          GObject.ParamFlags.WRITABLE,
-                                          Geocode.Place)
-    }
-}, class QueryPoint extends GObject.Object {
-
-    _init() {
+    constructor() {
+        super();
         this._place = null;
-        super._init();
     }
 
     set place(p) {
@@ -69,33 +41,39 @@ var QueryPoint = GObject.registerClass({
     get place() {
         return this._place;
     }
-});
+}
 
-var RouteQuery = GObject.registerClass({
-    Signals: {
-        'reset': { },
-        'point-added': { param_types: [GObject.TYPE_OBJECT, GObject.TYPE_INT] },
-        'point-removed': { param_types: [GObject.TYPE_OBJECT, GObject.TYPE_INT] },
-        'run': { }
-    },
+GObject.registerClass({
     Properties: {
-        'points': GObject.ParamSpec.object('points',
-                                           '',
-                                           '',
-                                           GObject.ParamFlags.READABLE |
-                                           GObject.ParamFlags.WRITABLE,
-                                           GObject.Object),
-        'transportation': GObject.ParamSpec.int('transportation',
-                                                '',
-                                                '',
-                                                GObject.ParamFlags.READABLE |
-                                                GObject.ParamFlags.WRITABLE,
-                                                Transportation.CAR,
-                                                Transportation.PEDESTRIAN,
-                                                Transportation.CAR,
-                                                Transportation.TRANSIT)
+        'place': GObject.ParamSpec.object('place',
+                                          '',
+                                          '',
+                                          GObject.ParamFlags.READABLE |
+                                          GObject.ParamFlags.WRITABLE,
+                                          GeocodeGlib.Place)
     }
-}, class RouteQuery extends GObject.Object {
+}, QueryPoint);
+
+export class RouteQuery extends GObject.Object {
+
+    static MAX_QUERY_POINTS = 10;
+
+    static Transportation = {
+        CAR:        0,
+        BIKE:       1,
+        PEDESTRIAN: 2,
+        TRANSIT:    3,
+
+        toString: function (transportation) {
+            switch(transportation) {
+            case RouteQuery.Transportation.CAR:        return 'car';
+            case RouteQuery.Transportation.BIKE:       return 'bike';
+            case RouteQuery.Transportation.PEDESTRIAN: return 'foot';
+            case RouteQuery.Transportation.TRANSIT:    return 'transit';
+            default:                                   return null;
+            }
+        }
+    }
 
     get points() {
         return this._points;
@@ -163,13 +141,13 @@ var RouteQuery = GObject.registerClass({
         this.notify('points');
     }
 
-    _init(args) {
-        super._init(args);
+    constructor(args) {
+        super(args);
         this._points = [];
         this._time = null;
         this._date = null;
         this._arriveBy = false;
-        this._transitOptions = new TransitOptions.TransitOptions();
+        this._transitOptions = new TransitOptions();
         this._initTransportation();
         this.reset();
     }
@@ -181,7 +159,7 @@ var RouteQuery = GObject.registerClass({
     }
 
     addPoint(index) {
-        if (this._points.length >= MAX_QUERY_POINTS)
+        if (this._points.length >= RouteQuery.MAX_QUERY_POINTS)
             throw new Error('Too many query points');
         let point = new QueryPoint();
 
@@ -251,4 +229,30 @@ var RouteQuery = GObject.registerClass({
         return "\nPoints: " + this.points +
                "\nTransportation: " + this.transportation;
     }
-});
+}
+
+GObject.registerClass({
+    Signals: {
+        'reset': { },
+        'point-added': { param_types: [GObject.TYPE_OBJECT, GObject.TYPE_INT] },
+        'point-removed': { param_types: [GObject.TYPE_OBJECT, GObject.TYPE_INT] },
+        'run': { }
+    },
+    Properties: {
+        'points': GObject.ParamSpec.object('points',
+                                           '',
+                                           '',
+                                           GObject.ParamFlags.READABLE |
+                                           GObject.ParamFlags.WRITABLE,
+                                           GObject.Object),
+        'transportation': GObject.ParamSpec.int('transportation',
+                                                '',
+                                                '',
+                                                GObject.ParamFlags.READABLE |
+                                                GObject.ParamFlags.WRITABLE,
+                                                RouteQuery.Transportation.CAR,
+                                                RouteQuery.Transportation.PEDESTRIAN,
+                                                RouteQuery.Transportation.CAR,
+                                                RouteQuery.Transportation.TRANSIT)
+    }
+}, RouteQuery);

@@ -21,11 +21,7 @@
 
 const JsUnit = imports.jsUnit;
 
-const Address = imports.address;
-
-function main() {
-    streetAddressForCountryCodeTest();
-}
+import * as Address from './address.js';
 
 function streetAddressForCountryCodeTest() {
     // Test known expected address formats for some countries
@@ -57,3 +53,5 @@ function streetAddressForCountryCodeTest() {
                         Address.streetAddressForCountryCode('Some Street',
                                                             '42', 'UT'));
 }
+
+streetAddressForCountryCodeTest();

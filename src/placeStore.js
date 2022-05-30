@@ -17,49 +17,52 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
-const GLib = imports.gi.GLib;
-const GObject = imports.gi.GObject;
-const GdkPixbuf = imports.gi.GdkPixbuf;
-const Geocode = imports.gi.GeocodeGlib;
-const Gtk = imports.gi.Gtk;
+import GLib from 'gi://GLib';
+import GObject from 'gi://GObject';
+import GdkPixbuf from 'gi://GdkPixbuf';
+import GeocodeGlib from 'gi://GeocodeGlib';
+import Gtk from 'gi://Gtk';
 
-const ContactPlace = imports.contactPlace;
-const Place = imports.place;
-const StoredRoute = imports.storedRoute;
-const Utils = imports.utils;
+import {ContactPlace} from './contactPlace.js';
+import {Place} from './place.js';
+import {StoredRoute} from './storedRoute.js';
+import * as Utils from './utils.js';
 
 const _PLACES_STORE_FILE = 'maps-places.json';
 const _ICON_SIZE = 20;
 const _ONE_DAY = 1000 * 60 * 60 * 24; // one day in ms
 const _STALE_THRESHOLD = 7; // mark the osm information as stale after a week
 
-var PlaceType = {
-    ANY: -1,
-    RECENT: 0,
-    FAVORITE: 1,
-    CONTACT: 2,
-    RECENT_ROUTE: 3
-};
+export class PlaceStore extends Gtk.ListStore {
 
-var Columns = {
-    PLACE_ICON: 0,
-    PLACE: 1,
-    NAME: 2,
-    TYPE: 3,
-    ADDED: 4,
-    LANGUAGE: 5
-};
+    static PlaceType = {
+        ANY: -1,
+        RECENT: 0,
+        FAVORITE: 1,
+        CONTACT: 2,
+        RECENT_ROUTE: 3
+    }
 
-var PlaceStore = GObject.registerClass(
-class PlaceStore extends Gtk.ListStore {
+    static Columns = {
+        PLACE_ICON: 0,
+        PLACE: 1,
+        NAME: 2,
+        TYPE: 3,
+        ADDED: 4,
+        LANGUAGE: 5
+    }
 
-    _init(params) {
-        this._recentPlacesLimit = params.recentPlacesLimit;
+    constructor(params) {
+        let recentPlacesLimit = params.recentPlacesLimit;
         delete params.recentPlacesLimit;
 
-        this._recentRoutesLimit = params.recentRoutesLimit;
+        let recentRoutesLimit = params.recentRoutesLimit;
         delete params.recentRoutesLimit;
 
+        super(params);
+
+        this._recentPlacesLimit = recentPlacesLimit;
+        this._recentRoutesLimit = recentRoutesLimit;
         this._numRecentPlaces = 0;
         this._numRecentRoutes = 0;
         this.filename = GLib.build_filenamev([GLib.get_user_data_dir(),
@@ -67,7 +70,6 @@ class PlaceStore extends Gtk.ListStore {
         this._typeTable = {};
         this._language = Utils.getLanguage();
 
-        super._init(params);
         this.set_column_types([GdkPixbuf.Pixbuf,
                                GObject.TYPE_OBJECT,
                                GObject.TYPE_STRING,
@@ -75,7 +77,7 @@ class PlaceStore extends Gtk.ListStore {
                                GObject.TYPE_DOUBLE,
                                GObject.TYPE_STRING]);
 
-        this.set_sort_column_id(Columns.ADDED, Gtk.SortType.ASCENDING);
+        this.set_sort_column_id(PlaceStore.Columns.ADDED, Gtk.SortType.ASCENDING);
     }
 
     _addPlace(place, type) {
@@ -85,35 +87,35 @@ class PlaceStore extends Gtk.ListStore {
     }
 
     _addContact(place) {
-        if (this.exists(place, PlaceType.CONTACT)) {
+        if (this.exists(place, PlaceStore.PlaceType.CONTACT)) {
             return;
         }
 
-        this._addPlace(place, PlaceType.CONTACT);
+        this._addPlace(place, PlaceStore.PlaceType.CONTACT);
     }
 
     _addFavorite(place) {
         if (!place.store)
             return;
 
-        if (this.exists(place, PlaceType.FAVORITE)) {
+        if (this.exists(place, PlaceStore.PlaceType.FAVORITE)) {
             return;
         }
 
-        if (this.exists(place, PlaceType.RECENT)) {
+        if (this.exists(place, PlaceStore.PlaceType.RECENT)) {
             this._removeIf((model, iter) => {
-                let p = model.get_value(iter, Columns.PLACE);
+                let p = model.get_value(iter, PlaceStore.Columns.PLACE);
                 return p.uniqueID === place.uniqueID;
             }, true);
         }
-        this._addPlace(place, PlaceType.FAVORITE);
+        this._addPlace(place, PlaceStore.PlaceType.FAVORITE);
     }
 
     _addRecent(place) {
         if (!place.store)
             return;
 
-        if (this.exists(place, PlaceType.RECENT)) {
+        if (this.exists(place, PlaceStore.PlaceType.RECENT)) {
             this.updatePlace(place);
             return;
         }
@@ -122,10 +124,10 @@ class PlaceStore extends Gtk.ListStore {
             // Since we sort by added, the oldest recent will be
             // the first one we encounter.
             this._removeIf((model, iter) => {
-                let type = model.get_value(iter, Columns.TYPE);
+                let type = model.get_value(iter, PlaceStore.Columns.TYPE);
 
-                if (type === PlaceType.RECENT) {
-                    let place = model.get_value(iter, Columns.PLACE);
+                if (type === PlaceStore.PlaceType.RECENT) {
+                    let place = model.get_value(iter, PlaceStore.Columns.PLACE);
                     this._typeTable[place.uniqueID] = null;
                     this._numRecentPlaces--;
                     return true;
@@ -133,12 +135,12 @@ class PlaceStore extends Gtk.ListStore {
                 return false;
             }, true);
         }
-        this._addPlace(place, PlaceType.RECENT);
+        this._addPlace(place, PlaceStore.PlaceType.RECENT);
         this._numRecentPlaces++;
     }
 
     _addRecentRoute(stored) {
-        if (this.exists(stored, PlaceType.RECENT_ROUTE))
+        if (this.exists(stored, PlaceStore.PlaceType.RECENT_ROUTE))
             return;
 
         if (stored.containsCurrentLocation)
@@ -146,10 +148,10 @@ class PlaceStore extends Gtk.ListStore {
 
         if (this._numRecentRoutes >= this._recentRoutesLimit) {
             this._removeIf((model, iter) => {
-                let type = model.get_value(iter, Columns.TYPE);
+                let type = model.get_value(iter, PlaceStore.Columns.TYPE);
 
-                if (type === PlaceType.RECENT_ROUTE) {
-                    let place = model.get_value(iter, Columns.PLACE);
+                if (type === PlaceStore.PlaceType.RECENT_ROUTE) {
+                    let place = model.get_value(iter, PlaceStore.Columns.PLACE);
                     this._typeTable[place.uniqueID] = null;
                     this._numRecentRoutes--;
                     return true;
@@ -157,7 +159,7 @@ class PlaceStore extends Gtk.ListStore {
                 return false;
             }, true);
         }
-        this._addPlace(stored, PlaceType.RECENT_ROUTE);
+        this._addPlace(stored, PlaceStore.PlaceType.RECENT_ROUTE);
         this._numRecentRoutes++;
     }
 
@@ -182,14 +184,14 @@ class PlaceStore extends Gtk.ListStore {
                     language = '';
 
                 let p;
-                if (type === PlaceType.RECENT_ROUTE) {
+                if (type === PlaceStore.PlaceType.RECENT_ROUTE) {
                     if (this._numRecentRoutes >= this._recentRoutesLimit)
                         return;
-                    p = StoredRoute.StoredRoute.fromJSON(place);
+                    p = StoredRoute.fromJSON(place);
                     this._numRecentRoutes++;
                 } else {
-                    p = Place.Place.fromJSON(place);
-                    if (type === PlaceType.RECENT)
+                    p = Place.fromJSON(place);
+                    if (type === PlaceStore.PlaceType.RECENT)
                         this._numRecentPlaces++;
                 }
                 this._setPlace(this.append(), p, type, added, language);
@@ -200,13 +202,13 @@ class PlaceStore extends Gtk.ListStore {
     }
 
     addPlace(place, type) {
-        if (type === PlaceType.FAVORITE)
+        if (type === PlaceStore.PlaceType.FAVORITE)
             this._addFavorite(place, type);
-        else if (type === PlaceType.RECENT)
+        else if (type === PlaceStore.PlaceType.RECENT)
             this._addRecent(place, type);
-        else if (type === PlaceType.CONTACT)
+        else if (type === PlaceStore.PlaceType.CONTACT)
             this._addContact(place, type);
-        else if (type === PlaceType.RECENT_ROUTE)
+        else if (type === PlaceStore.PlaceType.RECENT_ROUTE)
             this._addRecentRoute(place);
     }
 
@@ -215,7 +217,7 @@ class PlaceStore extends Gtk.ListStore {
             return;
 
         this._removeIf((model, iter) => {
-            let p = model.get_value(iter, Columns.PLACE);
+            let p = model.get_value(iter, PlaceStore.Columns.PLACE);
             if (p.uniqueID === place.uniqueID) {
                 this._typeTable[place.uniqueID] = null;
                 return true;
@@ -229,7 +231,7 @@ class PlaceStore extends Gtk.ListStore {
         let filter = new Gtk.TreeModelFilter({ child_model: this });
 
         filter.set_visible_func((model, iter) => {
-            let type = model.get_value(iter, Columns.TYPE);
+            let type = model.get_value(iter, PlaceStore.Columns.TYPE);
             return (type === placeType);
         });
 
@@ -239,10 +241,10 @@ class PlaceStore extends Gtk.ListStore {
     _store() {
         let jsonArray = [];
         this.foreach((model, path, iter) => {
-            let place = model.get_value(iter, Columns.PLACE);
-            let type = model.get_value(iter, Columns.TYPE);
-            let added = model.get_value(iter, Columns.ADDED);
-            let language = model.get_value(iter, Columns.LANGUAGE);
+            let place = model.get_value(iter, PlaceStore.Columns.PLACE);
+            let type = model.get_value(iter, PlaceStore.Columns.TYPE);
+            let added = model.get_value(iter, PlaceStore.Columns.ADDED);
+            let language = model.get_value(iter, PlaceStore.Columns.LANGUAGE);
 
             if (!place || !place.store)
                 return;
@@ -261,11 +263,11 @@ class PlaceStore extends Gtk.ListStore {
 
     _setPlace(iter, place, type, added, language) {
         this.set(iter,
-                 [Columns.PLACE,
-                  Columns.NAME,
-                  Columns.TYPE,
-                  Columns.ADDED,
-                  Columns.LANGUAGE],
+                 [PlaceStore.Columns.PLACE,
+                  PlaceStore.Columns.NAME,
+                  PlaceStore.Columns.TYPE,
+                  PlaceStore.Columns.ADDED,
+                  PlaceStore.Columns.LANGUAGE],
                  [place,
                   place.name,
                   type,
@@ -274,7 +276,7 @@ class PlaceStore extends Gtk.ListStore {
 
         if (place.icon !== null) {
             Utils.load_icon(place.icon, _ICON_SIZE, (pixbuf) => {
-                this.set(iter, [Columns.ICON], [pixbuf]);
+                this.set(iter, [PlaceStore.Columns.ICON], [pixbuf]);
             });
         }
         this._typeTable[place.uniqueID] = type;
@@ -284,7 +286,7 @@ class PlaceStore extends Gtk.ListStore {
         let storedPlace = null;
 
         this.foreach((model, path, iter) => {
-            let p = model.get_value(iter, Columns.PLACE);
+            let p = model.get_value(iter, PlaceStore.Columns.PLACE);
             if (p.uniqueID === place.uniqueID) {
                 storedPlace = p;
                 return true;
@@ -301,12 +303,12 @@ class PlaceStore extends Gtk.ListStore {
         let added = null;
         let language = null;
         this.foreach((model, path, iter) => {
-            let p = model.get_value(iter, Columns.PLACE);
+            let p = model.get_value(iter, PlaceStore.Columns.PLACE);
 
             if (p.uniqueID === place.uniqueID) {
-                let p_type = model.get_value(iter, Columns.TYPE);
-                added = model.get_value(iter, Columns.ADDED);
-                language = model.get_value(iter, Columns.LANGUAGE);
+                let p_type = model.get_value(iter, PlaceStore.Columns.TYPE);
+                added = model.get_value(iter, PlaceStore.Columns.ADDED);
+                language = model.get_value(iter, PlaceStore.Columns.LANGUAGE);
             }
         });
 
@@ -345,10 +347,10 @@ class PlaceStore extends Gtk.ListStore {
 
     updatePlace(place) {
         this.foreach((model, path, iter) => {
-            let p = model.get_value(iter, Columns.PLACE);
+            let p = model.get_value(iter, PlaceStore.Columns.PLACE);
 
             if (p.uniqueID === place.uniqueID) {
-                let type = model.get_value(iter, Columns.TYPE);
+                let type = model.get_value(iter, PlaceStore.Columns.TYPE);
                 this._setPlace(iter, place, type, new Date().getTime(),
                                this._language);
                 this._store();
@@ -356,4 +358,6 @@ class PlaceStore extends Gtk.ListStore {
             }
         });
     }
-});
+}
+
+GObject.registerClass(PlaceStore);

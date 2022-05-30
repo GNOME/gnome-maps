@@ -19,10 +19,10 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-pkg.require({ 'Gdk': '3.0',
-              'Gtk': '3.0' });
+import 'gi://Gdk?version=3.0';
+import 'gi://Gtk?version=3.0';
 
-const OSMNames = imports.osmNames;
+import * as OSMNames from './osmNames.js';
 
 const JsUnit = imports.jsUnit;
 
@@ -59,18 +59,18 @@ const TAGS4 = { 'name': 'Uppsala',
                 'name:sv': 'Uppsala',
                 'name:yi': 'אופסאלא'};
 
-function main() {
-    JsUnit.assertEquals('Name in language', 'Namn',
-                        OSMNames.getNameForLanguageAndCountry(TAGS1, 'sv', 'GB'));
-    JsUnit.assertEquals('Fallback when language not localized', 'Name',
-                        OSMNames.getNameForLanguageAndCountry(TAGS1, 'fi', 'GB'));
-    JsUnit.assertEquals('Legacy Japanese romanization tag', 'Shin Ōsaka',
-                        OSMNames.getNameForLanguageAndCountry(TAGS2, 'sv', 'JP'));
-    JsUnit.assertEquals('Japanese romanization tag', 'Shin Ōsaka',
-                        OSMNames.getNameForLanguageAndCountry(TAGS3, 'sv', 'JP'));
-    JsUnit.assertEquals('Explicit English', 'Shin-Osaka',
-                        OSMNames.getNameForLanguageAndCountry(TAGS3, 'en', 'JP'));
-    JsUnit.assertEquals('Available tag in similar alphabeth', 'Уппсала',
-                        OSMNames.getNameForLanguageAndCountry(TAGS4, 'uk', 'SE'));
-}
+JsUnit.assertEquals('Name in language', 'Namn',
+                    OSMNames.getNameForLanguageAndCountry(TAGS1, 'sv', 'GB'));
+JsUnit.assertEquals('Fallback when language not localized', 'Name',
+                    OSMNames.getNameForLanguageAndCountry(TAGS1, 'fi', 'GB'));
+JsUnit.assertEquals('Legacy Japanese romanization tag', 'Shin Ōsaka',
+                    OSMNames.getNameForLanguageAndCountry(TAGS2, 'sv', 'JP'));
+JsUnit.assertEquals('Japanese romanization tag', 'Shin Ōsaka',
+                    OSMNames.getNameForLanguageAndCountry(TAGS3, 'sv', 'JP'));
+JsUnit.assertEquals('Explicit English', 'Shin-Osaka',
+                    OSMNames.getNameForLanguageAndCountry(TAGS3, 'en', 'JP'));
+JsUnit.assertEquals('Available tag in similar alphabeth', 'Уппсала',
+                    OSMNames.getNameForLanguageAndCountry(TAGS4, 'uk', 'SE'));
+
+
 

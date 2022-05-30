@@ -20,62 +20,56 @@
  *         Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
-const FavoritesPopover = imports.favoritesPopover;
-const LayersPopover = imports.layersPopover;
-const MapView = imports.mapView;
+import {FavoritesPopover} from './favoritesPopover.js';
+import {LayersPopover} from './layersPopover.js';
+import {MapView} from './mapView.js';
 
-var HeaderBarLeft = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/headerbar-left.ui',
-    InternalChildren: [ 'layersButton' ]
-}, class HeaderBarLeft extends Gtk.Box {
-    _init(params) {
-        this._application = params.application;
-        delete params.application;
-
-        this._mapView = params.mapView;
+export class HeaderBarLeft extends Gtk.Box {
+    constructor(params) {
+        let mapView = params.mapView;
         delete params.mapView;
 
-        super._init(params);
+        super(params);
 
-        this._layersPopover = new LayersPopover.LayersPopover({
-            mapView: this._mapView
-        });
+        this._layersPopover = new LayersPopover({ mapView: mapView });
         this._layersButton.popover = this._layersPopover;
     }
 
     popdownLayersPopover() {
         this._layersPopover.popdown();
     }
-});
+}
 
-var HeaderBarRight = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/headerbar-right.ui',
-    InternalChildren: [ 'toggleSidebarButton',
-                        'favoritesButton',
-                        'printRouteButton' ]
-}, class HeaderBarRight extends Gtk.Box {
-    _init(params) {
-        this._application = params.application;
-        delete params.application;
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/headerbar-left.ui',
+    InternalChildren: [ 'layersButton' ]
+}, HeaderBarLeft);
 
-        this._mapView = params.mapView;
+export class HeaderBarRight extends Gtk.Box {
+    constructor(params) {
+        let mapView = params.mapView;
         delete params.mapView;
 
-        super._init(params);
+        super(params);
 
-        this._favoritesButton.popover = new FavoritesPopover.FavoritesPopover({
-            mapView: this._mapView
-        });
+        this._favoritesButton.popover = new FavoritesPopover({ mapView: mapView });
         let favoritesPopover = this._favoritesButton.popover;
         this._favoritesButton.sensitive = favoritesPopover.rows > 0;
         favoritesPopover.connect('notify::rows', () => {
             this._favoritesButton.sensitive = favoritesPopover.rows > 0;
         });
 
-        this._mapView.bind_property('routeShowing', this._printRouteButton,
-                                    'visible', GObject.BindingFlags.DEFAULT);
+        mapView.bind_property('routeShowing', this._printRouteButton,
+                              'visible', GObject.BindingFlags.DEFAULT);
     }
-});
+}
+
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/headerbar-right.ui',
+    InternalChildren: [ 'toggleSidebarButton',
+                        'favoritesButton',
+                        'printRouteButton' ]
+}, HeaderBarRight);

@@ -17,22 +17,28 @@
  * Author: Hashem Nasarat <hashem@riseup.net>
  */
 
-const GObject = imports.gi.GObject;
+import GObject from 'gi://GObject';
 
-const GeoJSONSource = imports.geoJSONSource;
-const ShapeLayer = imports.shapeLayer;
-const Utils = imports.utils;
+import {GeoJSONSource} from './geoJSONSource.js';
+import {ShapeLayer} from './shapeLayer.js';
+import * as Utils from './utils.js';
 
-var GeoJSONShapeLayer = GObject.registerClass(
-class GeoJSONShapeLayer extends ShapeLayer.ShapeLayer {
+export class GeoJSONShapeLayer extends ShapeLayer {
 
-    _init(params) {
-        super._init(params);
+    static mimeTypes = ['application/vnd.geo+json',
+                        'application/geo+json',
+                        'application/json'];
+    static displayName = 'GeoJSON';
 
-        this._mapSource = new GeoJSONSource.GeoJSONSource({
-            mapView: this._mapView,
-            markerLayer: this._markerLayer
-        });
+    static createInstance(params) {
+        return new GeoJSONShapeLayer(params);
+    };
+
+    constructor(params) {
+        super(params);
+
+        this._mapSource = new GeoJSONSource({ mapView: this._mapView,
+                                              markerLayer: this._markerLayer });
     }
 
     getName() {
@@ -47,12 +53,6 @@ class GeoJSONShapeLayer extends ShapeLayer.ShapeLayer {
     _parseContent() {
         this._mapSource.parse(JSON.parse(Utils.getBufferText(this._fileContents)));
     }
-});
+}
 
-GeoJSONShapeLayer.mimeTypes = ['application/vnd.geo+json',
-                               'application/geo+json',
-                               'application/json'];
-GeoJSONShapeLayer.displayName = 'GeoJSON';
-GeoJSONShapeLayer.createInstance = function(params) {
-    return new GeoJSONShapeLayer(params);
-};
+GObject.registerClass(GeoJSONShapeLayer);

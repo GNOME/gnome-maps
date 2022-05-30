@@ -1,7 +1,7 @@
-const XMLReader = imports.xmldom.sax.XMLReader;
-const DOMImplementation = imports.xmldom.dom.DOMImplementation;
+import {XMLReader} from './sax.js';
+import {DOMImplementation} from './dom.js';
 
-function DOMParser(options){
+export function DOMParser(options){
 	this.options = options ||{locator:{}};
 }
 DOMParser.prototype.parseFromString = function(source,mimeType){	
@@ -243,4 +243,4 @@ function appendElement (hander,node) {
     } else {
         hander.currentElement.appendChild(node);
     }
-}//appendChild and setAttributeNS are preformance key
+}//appendChild and setAttributeNS are preformance key

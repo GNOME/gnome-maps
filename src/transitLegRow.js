@@ -19,54 +19,44 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const _ = imports.gettext.gettext;
+import gettext from 'gettext';
 
-const Gdk = imports.gi.Gdk;
-const GLib = imports.gi.GLib;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
-const Pango = imports.gi.Pango;
+import Gdk from 'gi://Gdk';
+import GLib from 'gi://GLib';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
+import Pango from 'gi://Pango';
 
-const InstructionRow = imports.instructionRow;
-const Transit = imports.transit;
-const TransitRouteLabel = imports.transitRouteLabel;
-const TransitStopRow = imports.transitStopRow;
-const Utils = imports.utils;
+import {InstructionRow} from './instructionRow.js';
+import * as Transit from './transit.js';
+import {TransitRouteLabel} from './transitRouteLabel.js';
+import {TransitStopRow} from './transitStopRow.js';
+import * as Utils from './utils.js';
 
-var TransitLegRow = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/transit-leg-row.ui',
-    InternalChildren: ['modeImage',
-                       'fromLabel',
-                       'routeGrid',
-                       'timeLabel',
-                       'footerStack',
-                       'expandButton',
-                       'detailsRevealer',
-                       'agencyLabel',
-                       'collapsButton',
-                       'instructionList',
-                       'eventBox']
-}, class TransitLegRow extends Gtk.ListBoxRow {
+const _ = gettext.gettext;
 
-    _init(params) {
-        this._leg = params.leg;
+export class TransitLegRow extends Gtk.ListBoxRow {
+
+    constructor(params) {
+        let leg = params.leg;
         delete params.leg;
 
-        this._start = params.start;
+        let start = params.start;
         delete params.start;
 
-        this._mapView = params.mapView;
+        let mapView = params.mapView;
         delete params.mapView;
 
-        super._init(params);
+        super(params);
 
+        this._leg = leg;
+        this._start = start;
+        this._mapView = mapView;
         this._modeImage.icon_name = this._leg.iconName;
         this._fromLabel.label = Transit.getFromLabel(this._leg, this._start);
 
         if (this._leg.transit) {
-            let routeLabel = new TransitRouteLabel.TransitRouteLabel({
-                                    leg: this._leg,
-                                 });
+            let routeLabel = new TransitRouteLabel({ leg: this._leg });
 
             this._routeGrid.attach(routeLabel, 0, 0, 1, 1);
 
@@ -183,10 +173,9 @@ var TransitLegRow = GObject.registerClass({
                 let stops = this._leg.intermediateStops;
                 for (let index = 0; index < stops.length; index++) {
                     let stop = stops[index];
-                    let row =
-                        new TransitStopRow.TransitStopRow({ visible: true,
-                                                            stop: stop,
-                                                            final: index === stops.length - 1 });
+                    let row = new TransitStopRow({ visible: true,
+                                                   stop: stop,
+                                                   final: index === stops.length - 1 });
                     this._instructionList.insert(row, -1);
                 }
             }
@@ -198,12 +187,26 @@ var TransitLegRow = GObject.registerClass({
                  index < this._leg.walkingInstructions.length - 1;
                  index++) {
                 let instruction = this._leg.walkingInstructions[index];
-                let row =
-                    new InstructionRow.InstructionRow({ visible: true,
-                                                        turnPoint: instruction });
+                let row = new InstructionRow({ visible: true,
+                                               turnPoint: instruction });
 
                 this._instructionList.insert(row, -1);
             }
         }
     }
-});
+}
+
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/transit-leg-row.ui',
+    InternalChildren: ['modeImage',
+                       'fromLabel',
+                       'routeGrid',
+                       'timeLabel',
+                       'footerStack',
+                       'expandButton',
+                       'detailsRevealer',
+                       'agencyLabel',
+                       'collapsButton',
+                       'instructionList',
+                       'eventBox']
+}, TransitLegRow);

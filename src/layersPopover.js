@@ -17,34 +17,31 @@
  * Author: Dario Di Nucci <linkin88mail@gmail.com>
  */
 
-const Champlain = imports.gi.Champlain;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
-const Gdk = imports.gi.Gdk;
-const Hdy = imports.gi.Handy;
+import Champlain from 'gi://Champlain';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
+import Gdk from 'gi://Gdk';
+import Handy from 'gi://Handy';
 
-const Application = imports.application;
-const MapSource = imports.mapSource;
-const MapView = imports.mapView;
-const Service = imports.service;
-const ShapeLayer = imports.shapeLayer;
-const Utils = imports.utils;
+import {Application} from './application.js';
+import * as MapSource from './mapSource.js';
+import {MapView} from './mapView.js';
+import * as Service from './service.js';
+import {ShapeLayer} from './shapeLayer.js';
+import * as Utils from './utils.js';
 
 const PREVIEW_WIDTH = 230;
 const PREVIEW_HEIGHT = 80;
 
-var ShapeLayerRow = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/shape-layer-row.ui',
-    Children: ['closeButton'],
-    InternalChildren: ['layerLabel', 'visibleButton']
-}, class ShapeLayerRow extends Gtk.ListBoxRow {
+export class ShapeLayerRow extends Gtk.ListBoxRow {
 
-    _init(params) {
-        this.shapeLayer = params.shapeLayer;
+    constructor(params) {
+        let shapeLayer = params.shapeLayer;
         delete params.shapeLayer;
 
-        super._init(params);
+        super(params);
 
+        this.shapeLayer = shapeLayer;
         this._layerLabel.label = this.shapeLayer.getName();
         this._layerLabel.tooltip_text = this.shapeLayer.file.get_parse_name();
         this._visibleButton.connect('clicked', () => {
@@ -58,27 +55,23 @@ var ShapeLayerRow = GObject.registerClass({
                 image.icon_name = 'layer-not-visible-symbolic';
         });
     }
-});
+}
 
-var LayersPopover = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/layers-popover.ui',
-    InternalChildren: [ 'streetLayerButton',
-                        'aerialLayerButton',
-                        'streetLayerImage',
-                        'aerialLayerImage',
-                        'hybridAerialRevealer',
-                        'layersListBox',
-                        'loadLayerButton' ]
-}, class LayersPopover extends Gtk.Popover {
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/shape-layer-row.ui',
+    Children: ['closeButton'],
+    InternalChildren: ['layerLabel', 'visibleButton']
+}, ShapeLayerRow);
 
-    _init(params) {
+export class LayersPopover extends Gtk.Popover {
+
+    constructor(params) {
+        super({ width_request: 200,
+                no_show_all: true,
+                transitions_enabled: false,
+                visible: false });
+
         this._mapView = params.mapView;
-        delete params.mapView;
-
-        super._init({ width_request: 200,
-                      no_show_all: true,
-                      transitions_enabled: false,
-                      visible: false });
 
         this._aerialLayerButton.join_group(this._streetLayerButton);
 
@@ -145,7 +138,7 @@ var LayersPopover = GObject.registerClass({
                                        this._setLayerPreviews.bind(this));
             this._mapView.view.connect("notify::longitude",
                                        this._setLayerPreviews.bind(this));
-            Hdy.StyleManager.get_default().connect("notify::dark",
+            Handy.StyleManager.get_default().connect("notify::dark",
                                                     this._onDarkChanged.bind(this));
             Application.settings.connect("changed::hybrid-aerial",
                                          this._onHybridAerialChanged.bind(this));
@@ -163,7 +156,7 @@ var LayersPopover = GObject.registerClass({
 
     _onDarkChanged() {
         if (Service.getService().tiles.streetDark &&
-            Hdy.StyleManager.get_default().dark) {
+            Handy.StyleManager.get_default().dark) {
             this._setLayerPreviewImage('streetDark', true);
         } else {
             this._setLayerPreviewImage('street', true);
@@ -181,7 +174,7 @@ var LayersPopover = GObject.registerClass({
 
     _setLayerPreviews() {
         if (Service.getService().tiles.streetDark &&
-            Hdy.StyleManager.get_default().dark) {
+            Handy.StyleManager.get_default().dark) {
             this._setLayerPreviewImage('streetDark');
         } else {
             this._setLayerPreviewImage('street');
@@ -264,4 +257,15 @@ var LayersPopover = GObject.registerClass({
         this._layersListBox.show();
         return row;
     }
-});
+}
+
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/layers-popover.ui',
+    InternalChildren: [ 'streetLayerButton',
+                        'aerialLayerButton',
+                        'streetLayerImage',
+                        'aerialLayerImage',
+                        'hybridAerialRevealer',
+                        'layersListBox',
+                        'loadLayerButton' ]
+}, LayersPopover);

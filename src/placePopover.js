@@ -17,39 +17,29 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
-const Application = imports.application;
-const PlaceListRow = imports.placeListRow;
-const PlaceStore = imports.placeStore;
-const SearchPopover = imports.searchPopover;
+import {Application} from './application.js';
+import {PlaceListRow} from './placeListRow.js';
+import {PlaceStore} from './placeStore.js';
+import {SearchPopover} from './searchPopover.js';
 
 const _PLACE_ICON_SIZE = 20;
 
-var PlacePopover = GObject.registerClass({
-    Signals : {
-        'selected' : { param_types: [ GObject.TYPE_OBJECT ] }
-    },
-    Template: 'resource:///org/gnome/Maps/ui/place-popover.ui',
-    InternalChildren: [ 'scrolledWindow',
-                        'stack',
-                        'spinner',
-                        'list',
-                        'noResultsLabel',
-                        'errorLabel' ],
-}, class PlacePopover extends SearchPopover.SearchPopover {
+export class PlacePopover extends SearchPopover {
 
-    _init(props) {
+    constructor(props) {
         let numVisible = props.num_visible;
         delete props.num_visible;
 
-        this._maxChars = props.maxChars;
+        let maxChars = props.maxChars;
         delete props.maxChars;
 
         props.transitions_enabled = false;
-        super._init(props);
+        super(props);
 
+        this._maxChars = maxChars;
         this._entry = this.relative_to;
 
         this._list.connect('row-activated', (list, row) => {
@@ -134,10 +124,23 @@ var PlacePopover = GObject.registerClass({
     }
 
     _addRow(place, type, searchString) {
-        let row = new PlaceListRow.PlaceListRow({ place: place,
-                                                  searchString: searchString,
-                                                  type: type,
-                                                  can_focus: true });
+        let row = new PlaceListRow({ place:        place,
+                                     searchString: searchString,
+                                     type:         type,
+                                     can_focus:    true });
         this._list.insert(row, -1);
     }
-});
+}
+
+GObject.registerClass({
+    Signals : {
+        'selected' : { param_types: [ GObject.TYPE_OBJECT ] }
+    },
+    Template: 'resource:///org/gnome/Maps/ui/place-popover.ui',
+    InternalChildren: [ 'scrolledWindow',
+                        'stack',
+                        'spinner',
+                        'list',
+                        'noResultsLabel',
+                        'errorLabel' ],
+}, PlacePopover);

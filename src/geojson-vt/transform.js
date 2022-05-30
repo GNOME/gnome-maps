@@ -2,7 +2,7 @@
 
 // Transforms the coordinates of each feature in the given tile from
 // mercator-projected space into (extent x extent) tile space.
-function transformTile(tile, extent) {
+export function transformTile(tile, extent) {
     if (tile.transformed) return tile;
 
     var z2 = tile.z2,
@@ -31,7 +31,7 @@ function transformTile(tile, extent) {
     return tile;
 }
 
-function transformPoint(p, extent, z2, tx, ty) {
+export function transformPoint(p, extent, z2, tx, ty) {
     var x = Math.round(extent * (p[0] * z2 - tx)),
         y = Math.round(extent * (p[1] * z2 - ty));
     return [x, y];

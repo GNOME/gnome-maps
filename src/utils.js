@@ -20,21 +20,24 @@
  *         Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
-const _ = imports.gettext.gettext;
-const ngettext = imports.gettext.ngettext;
+import gettext from 'gettext';
 
-const GLib = imports.gi.GLib;
-const Gdk = imports.gi.Gdk;
-const GdkPixbuf = imports.gi.GdkPixbuf;
-const Geocode = imports.gi.GeocodeGlib;
-const Gio = imports.gi.Gio;
-const Gtk = imports.gi.Gtk;
-const GWeather = imports.gi.GWeather;
-const Soup = imports.gi.Soup;
+import GLib from 'gi://GLib';
+import Gdk from 'gi://Gdk';
+import GdkPixbuf from 'gi://GdkPixbuf';
+import GeocodeGlib from 'gi://GeocodeGlib';
+import Gio from 'gi://Gio';
+import Gtk from 'gi://Gtk';
+import GWeather from 'gi://GWeather';
+import Soup from 'gi://Soup';
+
+const _ = gettext.gettext;
+const ngettext = gettext.ngettext;
+
 const ByteArray = imports.byteArray;
 
-var METRIC_SYSTEM = 1;
-var IMPERIAL_SYSTEM = 2;
+export const METRIC_SYSTEM = 1;
+export const IMPERIAL_SYSTEM = 2;
 
 //List of locales using imperial system according to glibc locale database
 const IMPERIAL_LOCALES = ['unm_US', 'es_US', 'es_PR', 'en_US', 'yi_US'];
@@ -53,9 +56,14 @@ const _integerTwoDigitFormat =
 let debugInit = false;
 let measurementSystem = null;
 
-var debugEnabled = false;
+// this should only be used by the unit test to hard-set the measurement system
+export function _setMeasurementSystem(m) {
+    measurementSystem = m;
+}
 
-function debug(msg) {
+export var debugEnabled = false;
+
+export function debug(msg) {
     if (!debugInit) {
         let env = GLib.getenv('MAPS_DEBUG');
         if (env)
@@ -72,14 +80,14 @@ function debug(msg) {
 }
 
 // Connect to a signal on an object and disconnect on its first emission.
-function once(obj, signal, callback) {
+export function once(obj, signal, callback) {
     let id = obj.connect(signal, function() {
         obj.disconnect(id);
         callback();
     });
 }
 
-function loadStyleSheet(file) {
+export function loadStyleSheet(file) {
     let provider = new Gtk.CssProvider();
     provider.load_from_file(file);
     Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(),
@@ -87,7 +95,7 @@ function loadStyleSheet(file) {
                                              Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 }
 
-function addActions(actionMap, entries, settings = null) {
+export function addActions(actionMap, entries, settings = null) {
     for(let name in entries) {
         let entry = entries[name];
         let action = createAction(name, entry, settings);
@@ -99,7 +107,7 @@ function addActions(actionMap, entries, settings = null) {
     }
 }
 
-function setAccelsForActionMap(actionMap, actionName, accels) {
+export function setAccelsForActionMap(actionMap, actionName, accels) {
     let app;
     let prefix;
 
@@ -154,7 +162,7 @@ function _getPlatformData(appId, timestamp) {
     return { 'desktop-startup-id': id };
 }
 
-function activateAction(appId, action, parameter, timestamp) {
+export function activateAction(appId, action, parameter, timestamp) {
     let objectPath = '/' + appId.replace(/\./g, '/');
     let platformData = _getPlatformData(appId, timestamp);
     let wrappedParam = parameter ? [parameter] : [];
@@ -176,13 +184,13 @@ function activateAction(appId, action, parameter, timestamp) {
                           });
 }
 
-function dashedToCamelCase(name) {
+export function dashedToCamelCase(name) {
     return name.replace(/(-.)/g, function(x) {
         return x[1].toUpperCase();
     });
 }
 
-function getUIObject(res, ids) {
+export function getUIObject(res, ids) {
     let builder = new Gtk.Builder();
     builder.add_from_resource('/org/gnome/Maps/ui/' + res + '.ui');
     let ret = {};
@@ -192,7 +200,7 @@ function getUIObject(res, ids) {
     return ret;
 }
 
-function readFile(filename) {
+export function readFile(filename) {
     let status, buffer;
     let file = Gio.File.new_for_path(filename);
     try {
@@ -206,7 +214,7 @@ function readFile(filename) {
         return null;
 }
 
-function writeFile(filename, buffer) {
+export function writeFile(filename, buffer) {
     let file = Gio.File.new_for_path(filename);
     let status;
     try {
@@ -217,7 +225,7 @@ function writeFile(filename, buffer) {
     }
 }
 
-function getMeasurementSystem() {
+export function getMeasurementSystem() {
     if (measurementSystem)
         return measurementSystem;
 
@@ -238,15 +246,15 @@ function getMeasurementSystem() {
 /**
  * Get the highest priority bare lange currently in use.
  */
-function getLanguage() {
+export function getLanguage() {
     let locale = GLib.get_language_names()[0];
     // the last item returned is the "bare" language
     return GLib.get_locale_variants(locale).slice(-1)[0];
 }
 
-function getAccuracyDescription(accuracy) {
+export function getAccuracyDescription(accuracy) {
     switch(accuracy) {
-    case Geocode.LOCATION_ACCURACY_UNKNOWN:
+    case GeocodeGlib.LOCATION_ACCURACY_UNKNOWN:
         /* Translators: Accuracy of user location information */
         return _("Unknown");
     case 0:
@@ -257,7 +265,7 @@ function getAccuracyDescription(accuracy) {
     }
 }
 
-function loadAvatar(pixbuf, size) {
+export function loadAvatar(pixbuf, size) {
     let width = pixbuf.get_width();
     let height = pixbuf.get_height();
     let croppedThumbnail;
@@ -273,7 +281,7 @@ function loadAvatar(pixbuf, size) {
     return croppedThumbnail.scale_simple(size, size, GdkPixbuf.InterpType.BILINEAR);
 }
 
-function load_icon(icon, size, loadCompleteCallback) {
+export function load_icon(icon, size, loadCompleteCallback) {
     if (icon instanceof Gio.FileIcon || icon instanceof Gio.BytesIcon) {
         _load_icon(icon, loadCompleteCallback);
     } else if (icon instanceof Gio.ThemedIcon) {
@@ -307,11 +315,11 @@ function _load_themed_icon(icon, size, loadCompleteCallback) {
     }
 }
 
-function osmTypeToString(osmType) {
+export function osmTypeToString(osmType) {
     switch(osmType) {
-        case Geocode.PlaceOsmType.NODE: return 'node';
-        case Geocode.PlaceOsmType.RELATION: return 'relation';
-        case Geocode.PlaceOsmType.WAY: return 'way';
+        case GeocodeGlib.PlaceOsmType.NODE: return 'node';
+        case GeocodeGlib.PlaceOsmType.RELATION: return 'relation';
+        case GeocodeGlib.PlaceOsmType.WAY: return 'way';
         default: return 'node';
     }
 }
@@ -320,7 +328,7 @@ function osmTypeToString(osmType) {
  * Return a formatted integer number with no
  * fraction, using locale-specific numerals
  */
-function formatLocaleInteger(n) {
+export function formatLocaleInteger(n) {
     return _integerFormat.format(n);
 }
 
@@ -329,11 +337,11 @@ function formatLocaleInteger(n) {
  * fraction, using locale-specific numerals using at least two digits
  * with possible leading 0, suitable for time rendering.
  */
-function formatLocaleIntegerMinimumTwoDigits(n) {
+export function formatLocaleIntegerMinimumTwoDigits(n) {
     return _integerTwoDigitFormat.format(n);
 }
 
-function prettyTime(time) {
+export function prettyTime(time) {
     let seconds = Math.floor(time / 1000);
     let minutes = Math.floor(seconds / 60);
     seconds = seconds % 60;
@@ -371,7 +379,7 @@ function prettyTime(time) {
     }
 }
 
-function prettyDistance(distance, noRound) {
+export function prettyDistance(distance, noRound) {
     if (getMeasurementSystem() === METRIC_SYSTEM) {
         // round to whole meters
         distance = Math.round(distance);
@@ -402,14 +410,14 @@ function prettyDistance(distance, noRound) {
  * to handle estimated values without showing lots of zeros.
  * Other values are formatted in full.
  */
-function prettyPopulation(population) {
+export function prettyPopulation(population) {
     let notation = population >= 1000000 && population % 100000 === 0 ?
                    'compact' : 'standard';
 
     return population.toLocaleString(undefined, { notation: notation });
 }
 
-function uriSchemeSupported(scheme) {
+export function uriSchemeSupported(scheme) {
     let apps = Gio.AppInfo.get_all();
     let prefix = 'x-scheme-handler/';
 
@@ -426,25 +434,25 @@ function uriSchemeSupported(scheme) {
     return false;
 }
 
-function normalizeString(string) {
+export function normalizeString(string) {
     let normalized = GLib.utf8_normalize(string, -1, GLib.NormalizeMode.ALL);
     return normalized.replace(ACCENTS_REGEX, '');
 }
 
-function isUsingDarkThemeVariant() {
+export function isUsingDarkThemeVariant() {
     let gtkSettings = Gtk.Settings.get_default();
 
     return gtkSettings.gtk_application_prefer_dark_theme;
 }
 
-function isUsingHighContrastTheme() {
+export function isUsingHighContrastTheme() {
     let gtkSettings = Gtk.Settings.get_default();
     let themeName = gtkSettings.gtk_theme_name;
 
     return themeName === 'HighContrast' || themeName === 'HighContrastInverse';
 }
 
-function showDialog(msg, type, transientFor) {
+export function showDialog(msg, type, transientFor) {
     let messageDialog =
         new Gtk.MessageDialog({ transient_for: transientFor,
                                 destroy_with_parent: true,
@@ -460,7 +468,7 @@ function showDialog(msg, type, transientFor) {
 /* Gets a string from either a ByteArray or Uint8Array. This is for
 compatibility between two different Gjs versions, see discussion at
 https://gitlab.gnome.org/GNOME/gnome-maps/merge_requests/19 */
-function getBufferText(buffer) {
+export function getBufferText(buffer) {
     if (buffer instanceof Uint8Array) {
         return ByteArray.toString(buffer);
     } else {
@@ -468,14 +476,14 @@ function getBufferText(buffer) {
     }
 }
 
-function getCountryCodeForCoordinates(lat, lon) {
+export function getCountryCodeForCoordinates(lat, lon) {
     let location = GWeather.Location.new_detached('', null, lat, lon);
 
     return location.get_country();
 }
 
 /* Determines whether a URI is valid and its scheme is HTTP or HTTPS. */
-function isValidWebsite(website) {
+export function isValidWebsite(website) {
     try {
         GLib.Uri.is_valid(website, GLib.UriFlags.NONE);
     } catch(e) {
@@ -485,7 +493,7 @@ function isValidWebsite(website) {
 }
 
 /* Determine whether a string is a valid e-mail address. */
-function isValidEmail(email) {
+export function isValidEmail(email) {
     // if it starts with 'mailto:', it's probably a mistake copy-pasting a URI
     if (email.startsWith('mailto:'))
         return false;
@@ -496,14 +504,14 @@ function isValidEmail(email) {
 /* Return string with first character in upper case according the rules
  * determined by the current locale
  */
-function firstToLocaleUpperCase(str) {
+export function firstToLocaleUpperCase(str) {
     return str[0].toLocaleUpperCase() + str.substring(1);
 }
 
 /* Splits string at first occurance of a character, leaving remaining
  * occurances of the separator in the second part
  */
-function splitAtFirst(string, separator) {
+export function splitAtFirst(string, separator) {
     let [first, ...rest] = string.split(separator);
 
     if (rest.length > 0) {

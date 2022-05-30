@@ -19,12 +19,19 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const GLib = imports.gi.GLib;
+import GLib from 'gi://GLib';
 
-const BoundingBox = imports.boundingBox;
-const Service = imports.service;
-const TransitPlan = imports.transitPlan;
-const Utils = imports.utils;
+import {BoundingBox} from './boundingBox.js';
+import * as Service from './service.js';
+import {Plan} from './transitPlan.js';
+import * as Utils from './utils.js';
+
+// plugins
+import {GoMetro} from './transitplugins/goMetro.js';
+import {OpendataCH} from './transitplugins/opendataCH.js';
+import {OpenTripPlanner} from './transitplugins/openTripPlanner.js';
+import {Resrobot} from './transitplugins/resrobot.js';
+
 
 /**
  * Class responsible for delegating requests to perform routing in transit
@@ -32,14 +39,13 @@ const Utils = imports.utils;
  * Holds the the shared plan instance (filled with journeys on successful
  * requests).
  */
-var TransitRouter = class TransitRoute {
+export class TransitRouter {
     constructor(params) {
-        this._plan = new TransitPlan.Plan();
+        this._plan = new Plan();
         this._query = params.query;
         this._providers = Service.getService().transitProviders;
         this._providerCache = [];
         this._language = Utils.getLanguage();
-        this._probePlugins();
     }
 
     get enabled() {
@@ -60,13 +66,12 @@ var TransitRouter = class TransitRoute {
         if (pluginOverride) {
             // override plugin was specified, try instanciating if not done yet
             if (!this._currPluginInstance) {
-                let module = this._availablePlugins[pluginOverride];
-
-                if (module) {
-                    this._currPluginInstance =
-                        new imports.transitplugins[module][pluginOverride]();
-                } else {
-                    throw new Error('Specified override plugin not found');
+                try {
+                    this._currentPluginInstance =
+                        eval(`new ${pluginOverride}()`);
+                } catch (e) {
+                    Utils.debug('Unable to instanciate plugin: ' + pluginOverride);
+                    throw e;
                 }
             }
         } else {
@@ -101,16 +106,6 @@ var TransitRouter = class TransitRoute {
             this._currPluginInstance.fetchMoreResults();
         else
             throw new Error('No previous provider');
-    }
-
-    _probePlugins() {
-        this._availablePlugins = [];
-
-        for (let module in imports.transitplugins) {
-            for (let pluginClass in imports.transitplugins[module]) {
-                this._availablePlugins[pluginClass] = module;
-            }
-        }
     }
 
     /**
@@ -170,10 +165,10 @@ var TransitRouter = class TransitRoute {
                     }
 
                     let [x1, y1, x2, y2] = bbox;
-                    let cbbox = new BoundingBox.BoundingBox({ bottom: x1,
-                                                              left: y1,
-                                                              top: x2,
-                                                              right: y2 });
+                    let cbbox = new BoundingBox({ bottom: x1,
+                                                  left: y1,
+                                                  top: x2,
+                                                  right: y2 });
 
                     if (cbbox.covers(location.latitude,
                                      location.longitude)) {
@@ -233,24 +228,18 @@ var TransitRouter = class TransitRoute {
             if (this._providerCache[provider.name])
                 return [provider, this._providerCache[provider.name]];
 
-            let module = this._availablePlugins[plugin];
+            try {
+                let params = provider.params;
+                let instance =
+                    params ? eval(`new ${plugin}(params)`):
+                             eval(`new ${plugin}()`);
 
-            if (module) {
-                try {
-                    let params = provider.params;
-                    let instance =
-                        params ? new imports.transitplugins[module][plugin](params) :
-                                 new imports.transitplugins[module][plugin]();
+                this._providerCache[provider.name] = instance;
 
-                    this._providerCache[provider.name] = instance;
-
-                    return [provider, instance];
-                } catch (e) {
-                    Utils.debug('Failed to instantiate transit plugin: ' +
-                                plugin + ": " + e);
-                }
-            } else {
-                Utils.debug('Transit provider plugin not available: ' + plugin);
+                return [provider, instance];
+            } catch (e) {
+                Utils.debug('Failed to instantiate transit plugin: ' +
+                            plugin + ": " + e);
             }
         }
 

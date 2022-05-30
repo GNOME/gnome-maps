@@ -7,7 +7,7 @@
  *     |        |
  */
 
-function clip(features, scale, k1, k2, axis, intersect, minAll, maxAll) {
+export function clip(features, scale, k1, k2, axis, intersect, minAll, maxAll) {
 
     k1 /= scale;
     k2 /= scale;

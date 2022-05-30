@@ -17,24 +17,21 @@
  * Author: Amisha Singla <amishas157@gmail.com>
  */
 
-const Cairo = imports.cairo;
-const Champlain = imports.gi.Champlain;
-const Clutter = imports.gi.Clutter;
-const Gdk = imports.gi.Gdk;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
-const Pango = imports.gi.Pango;
-const PangoCairo = imports.gi.PangoCairo;
+import Cairo from 'cairo';
+import Champlain from 'gi://Champlain';
+import Clutter from 'gi://Clutter';
+import Gdk from 'gi://Gdk';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
+import Pango from 'gi://Pango';
+import PangoCairo from 'gi://PangoCairo';
 
-const Application = imports.application;
-const Color = imports.color;
-const MapView = imports.mapView;
-const MapSource = imports.mapSource;
-const TurnPointMarker = imports.turnPointMarker;
-const Utils = imports.utils;
-
-/* Following constant has unit as meters */
-const _SHORT_LAYOUT_MAX_DISTANCE = 3000;
+import {Application} from './application.js';
+import * as Color from './color.js';
+import {MapView} from './mapView.js';
+import * as MapSource from './mapSource.js';
+import {TurnPointMarker} from './turnPointMarker.js';
+import * as Utils from './utils.js';
 
 const _STROKE_COLOR = new Clutter.Color({ red: 0,
                                           blue: 255,
@@ -55,45 +52,23 @@ const _MapView = {
     ZOOM_LEVEL: 18
 };
 
-function newFromRoute(route, pageWidth, pageHeight) {
-    /*
-     * To avoid the circular dependencies, imports has
-     * been carried out in this method
-     */
-    if (route.distance > _SHORT_LAYOUT_MAX_DISTANCE) {
-        return new imports.longPrintLayout.LongPrintLayout({
-            route: route,
-            pageWidth: pageWidth,
-            pageHeight: pageHeight
-        });
-    } else {
-        return new imports.shortPrintLayout.ShortPrintLayout({
-            route: route,
-            pageWidth: pageWidth,
-            pageHeight: pageHeight
-        });
-    }
-}
+export class PrintLayout extends GObject.Object {
 
-var PrintLayout = GObject.registerClass({
-    Abstract: true,
-    Signals: {
-        'render-complete': { }
-    }
-}, class PrintLayout extends GObject.Object {
-
-    _init(params) {
-        this._pageWidth = params.pageWidth;
+    constructor(params) {
+        let pageWidth = params.pageWidth;
         delete params.pageWidth;
 
-        this._pageHeight = params.pageHeight;
+        let pageHeight = params.pageHeight;
         delete params.pageHeight;
 
-        this._totalSurfaces = params.totalSurfaces;
+        let totalSurfaces = params.totalSurfaces;
         delete params.totalSurfaces;
 
-        super._init(params);
+        super(params);
 
+        this._pageWidth = pageWidth;
+        this._pageHeight = pageHeight;
+        this._totalSurfaces = totalSurfaces;
         this.numPages = 0;
         this.surfaceObjects = [];
         this._surfacesRendered = 0;
@@ -142,10 +117,7 @@ var PrintLayout = GObject.registerClass({
     }
 
     _createMarker(turnPoint) {
-        return new TurnPointMarker.TurnPointMarker({
-            turnPoint: turnPoint,
-            queryPoint: {}
-        });
+        return new TurnPointMarker({ turnPoint: turnPoint, queryPoint: {} });
     }
 
     _drawMapView(width, height, zoomLevel, turnPoints) {
@@ -370,4 +342,11 @@ var PrintLayout = GObject.registerClass({
 
         return name;
     }
-});
+}
+
+GObject.registerClass({
+    Abstract: true,
+    Signals: {
+        'render-complete': { }
+    }
+}, PrintLayout);

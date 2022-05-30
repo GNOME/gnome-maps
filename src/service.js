@@ -19,11 +19,11 @@
  *         Jonas Danielsson <jonas@threetimestwo.org>
  */
 
-const Gio = imports.gi.Gio;
-const GLib = imports.gi.GLib;
-const Soup = imports.gi.Soup;
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
+import Soup from 'gi://Soup';
 
-const Utils = imports.utils;
+import * as Utils from './utils.js';
 
 let _service = null;
 
@@ -46,7 +46,7 @@ function _createDefaultService() {
     return _getServiceFromFile(filename);
 }
 
-function getService() {
+export function getService() {
     if (_service)
         return _service;
 

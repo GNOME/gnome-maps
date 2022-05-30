@@ -19,31 +19,10 @@
  * Author: Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
  */
 
-const GObject = imports.gi.GObject;
+import GObject from 'gi://GObject';
 
-const BoundingBox = imports.boundingBox;
-const Utils = imports.utils;
-
-var TurnPointType = {
-    START:            0,
-    SHARP_LEFT:       1,
-    LEFT:             2,
-    SLIGHT_LEFT:      3,
-    KEEP_LEFT:        4,
-    CONTINUE:         5,
-    SLIGHT_RIGHT:     6,
-    RIGHT:            7,
-    SHARP_RIGHT:      8,
-    KEEP_RIGHT:       9,
-    END:              10,
-    VIA:              11,
-    ROUNDABOUT:       12,
-    LEAVE_ROUNDABOUT: 13,
-    UTURN:            14,
-    UTURN_LEFT:       15,
-    UTURN_RIGHT:      16,
-    ELEVATOR:         17
-};
+import {BoundingBox} from './boundingBox.js';
+import * as Utils from './utils.js';
 
 /* countries/terrotories driving on the left
  * source: https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic
@@ -58,16 +37,10 @@ const LHT_COUNTRIES = new Set(['AG', 'AI', 'AU', 'BB', 'BD', 'BM', 'BN', 'BS',
                                'TO', 'TT', 'TV', 'TZ', 'UG', 'VC', 'VG', 'VI',
                                'WS', 'ZA', 'ZM', 'ZW']);
 
-var Route = GObject.registerClass({
-    Signals: {
-        'update': {},
-        'reset': {},
-        'error': { param_types: [GObject.TYPE_STRING] }
-    }
-}, class Route extends GObject.Object {
+export class Route extends GObject.Object {
 
-    _init() {
-        super._init();
+    constructor() {
+        super();
         this.reset();
     }
 
@@ -95,15 +68,44 @@ var Route = GObject.registerClass({
     }
 
     createBBox(coordinates) {
-        let bbox = new BoundingBox.BoundingBox();
+        let bbox = new BoundingBox();
         coordinates.forEach(function({ latitude, longitude }) {
             bbox.extend(latitude, longitude);
         }, this);
         return bbox;
     }
-});
+}
 
-var TurnPoint = class TurnPoint {
+GObject.registerClass({
+    Signals: {
+        'update': {},
+        'reset': {},
+        'error': { param_types: [GObject.TYPE_STRING] }
+    }
+}, Route);
+
+export class TurnPoint {
+
+    static Type = {
+        START:            0,
+        SHARP_LEFT:       1,
+        LEFT:             2,
+        SLIGHT_LEFT:      3,
+        KEEP_LEFT:        4,
+        CONTINUE:         5,
+        SLIGHT_RIGHT:     6,
+        RIGHT:            7,
+        SHARP_RIGHT:      8,
+        KEEP_RIGHT:       9,
+        END:              10,
+        VIA:              11,
+        ROUNDABOUT:       12,
+        LEAVE_ROUNDABOUT: 13,
+        UTURN:            14,
+        UTURN_LEFT:       15,
+        UTURN_RIGHT:      16,
+        ELEVATOR:         17
+    }
 
     constructor({ coordinate, type, distance, instruction, turnAngle }) {
         this.coordinate = coordinate;
@@ -118,30 +120,30 @@ var TurnPoint = class TurnPoint {
     }
 
     isStop() {
-        return this._type === TurnPointType.START
-            || this._type === TurnPointType.VIA
-            || this._type === TurnPointType.END;
+        return this._type === TurnPoint.Type.START
+            || this._type === TurnPoint.Type.VIA
+            || this._type === TurnPoint.Type.END;
     }
 
     _getIconName(turnAngle) {
         switch(this._type) {
-        case TurnPointType.SHARP_LEFT:   return 'maps-direction-sharpleft-symbolic';
-        case TurnPointType.LEFT:         return 'maps-direction-left-symbolic';
-        case TurnPointType.SLIGHT_LEFT:  return 'maps-direction-slightleft-symbolic';
-        case TurnPointType.CONTINUE:     return 'maps-direction-continue-symbolic';
-        case TurnPointType.SLIGHT_RIGHT: return 'maps-direction-slightright-symbolic';
-        case TurnPointType.RIGHT:        return 'maps-direction-right-symbolic';
-        case TurnPointType.SHARP_RIGHT:  return 'maps-direction-sharpright-symbolic';
-        case TurnPointType.START:        return 'maps-point-start-symbolic';
-        case TurnPointType.VIA:          return 'maps-point-end-symbolic';
-        case TurnPointType.END:          return 'maps-point-end-symbolic';
-        case TurnPointType.ROUNDABOUT:   return this._getRoundaboutIconName(turnAngle);
-        case TurnPointType.ELEVATOR:     return 'maps-direction-elevator-symbolic';
-        case TurnPointType.UTURN:        return this._isLefthandTraffic() ?
+        case TurnPoint.Type.SHARP_LEFT:   return 'maps-direction-sharpleft-symbolic';
+        case TurnPoint.Type.LEFT:         return 'maps-direction-left-symbolic';
+        case TurnPoint.Type.SLIGHT_LEFT:  return 'maps-direction-slightleft-symbolic';
+        case TurnPoint.Type.CONTINUE:     return 'maps-direction-continue-symbolic';
+        case TurnPoint.Type.SLIGHT_RIGHT: return 'maps-direction-slightright-symbolic';
+        case TurnPoint.Type.RIGHT:        return 'maps-direction-right-symbolic';
+        case TurnPoint.Type.SHARP_RIGHT:  return 'maps-direction-sharpright-symbolic';
+        case TurnPoint.Type.START:        return 'maps-point-start-symbolic';
+        case TurnPoint.Type.VIA:          return 'maps-point-end-symbolic';
+        case TurnPoint.Type.END:          return 'maps-point-end-symbolic';
+        case TurnPoint.Type.ROUNDABOUT:   return this._getRoundaboutIconName(turnAngle);
+        case TurnPoint.Type.ELEVATOR:     return 'maps-direction-elevator-symbolic';
+        case TurnPoint.Type.UTURN:        return this._isLefthandTraffic() ?
                                                 'maps-direction-u-turn-right-symbolic':
                                                 'maps-direction-u-turn-left-symbolic';
-        case TurnPointType.UTURN_LEFT:   return 'maps-direction-u-turn-left-symbolic';
-        case TurnPointType.UTURN_RIGHT:  return 'maps-direction-u-turn-right-symbolic';
+        case TurnPoint.Type.UTURN_LEFT:   return 'maps-direction-u-turn-left-symbolic';
+        case TurnPoint.Type.UTURN_RIGHT:  return 'maps-direction-u-turn-right-symbolic';
         default:                         return '';
         }
     }
@@ -181,4 +183,4 @@ var TurnPoint = class TurnPoint {
 
         return LHT_COUNTRIES.has(country);
     }
-};
+}

@@ -19,27 +19,32 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const _ = imports.gettext.gettext;
+import gettext from 'gettext';
 
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
-var TransitStopRow = GObject.registerClass({
+const _ = gettext.gettext;
+
+export class TransitStopRow extends Gtk.ListBoxRow {
+
+    constructor(params) {
+        let stop = params.stop;
+        delete params.stop;
+
+        let final = params.final;
+        delete params.final;
+
+        super(params);
+
+        this.stop = stop;
+        this._nameLabel.label = this.stop.name;
+        this._timeLabel.label = this.stop.prettyPrint({ isFinal: final });
+    }
+}
+
+GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/transit-stop-row.ui',
     InternalChildren: [ 'nameLabel',
                         'timeLabel' ]
-}, class TransitStopRow extends Gtk.ListBoxRow {
-
-    _init(params) {
-        this.stop = params.stop;
-        delete params.stop;
-
-        this._final = params.final;
-        delete params.final;
-
-        super._init(params);
-
-        this._nameLabel.label = this.stop.name;
-        this._timeLabel.label = this.stop.prettyPrint({ isFinal: this._final });
-    }
-});
+}, TransitStopRow);

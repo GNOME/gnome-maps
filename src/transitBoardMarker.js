@@ -19,18 +19,18 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Cairo = imports.cairo;
-const Clutter = imports.gi.Clutter;
-const Gdk = imports.gi.Gdk;
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import Cairo from 'cairo';
+import Clutter from 'gi://Clutter';
+import Gdk from 'gi://Gdk';
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
-const Color = imports.color;
-const Location = imports.location;
-const MapMarker = imports.mapMarker;
-const Place = imports.place;
-const TransitPlan = imports.transitPlan;
-const Utils = imports.utils;
+import * as Color from './color.js';
+import {Location} from './location.js';
+import {MapMarker} from './mapMarker.js';
+import {Place} from './place.js';
+import * as TransitPlan from './transitPlan.js';
+import * as Utils from './utils.js';
 
 const ICON_SIZE = 12;
 const ACTOR_SIZE = 20;
@@ -40,19 +40,17 @@ const ACTOR_SIZE = 20;
  */
 const OUTLINE_LUMINANCE_THREASHHOLD = 0.9;
 
-var TransitBoardMarker = GObject.registerClass(
-class TransitBoardMarker extends MapMarker.MapMarker {
+export class TransitBoardMarker extends MapMarker {
 
-    _init(params) {
+    constructor(params) {
         let firstPoint = params.leg.polyline[0];
-        let location = new Location.Location({ latitude: firstPoint.latitude,
-                                               longitude: firstPoint.longitude
-                                             });
+        let location = new Location({ latitude: firstPoint.latitude,
+                                      longitude: firstPoint.longitude });
         let leg = params.leg;
 
         delete params.leg;
-        params.place = new Place.Place({ location: location });
-        super._init(params);
+        params.place = new Place({ location: location });
+        super(params);
 
         this.add_actor(this._createActor(leg));
     }
@@ -68,7 +66,7 @@ class TransitBoardMarker extends MapMarker.MapMarker {
      */
     _createActor(leg) {
         try {
-            let bgColor = leg.color ? leg.color : TransitPlan.DEFAULT_ROUTE_COLOR;
+            let bgColor = leg.color ?? TransitPlan.DEFAULT_ROUTE_COLOR;
             let fgColor =
                 Color.getContrastingForegroundColor(bgColor, leg.textColor ?
                                                              leg.textColor :
@@ -135,4 +133,6 @@ class TransitBoardMarker extends MapMarker.MapMarker {
         return { x: Math.floor(this.width / 2) - 1,
                  y: Math.floor(this.height / 2) - 1 };
     }
-});
+}
+
+GObject.registerClass(TransitBoardMarker);

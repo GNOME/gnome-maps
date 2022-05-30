@@ -1,13 +1,16 @@
 'use strict';
 
-const convert = imports.geojsonvt.convert.convert;
-const transform = { tile: imports.geojsonvt.transform.transformTile,
-                    point: imports.geojsonvt.transform.transformPoint };
-const clip = imports.geojsonvt.clip.clip;
-const createTile = imports.geojsonvt.tile.createTile;
-const wrap = imports.geojsonvt.wrap.wrap;
+import {convert} from './convert.js';
+import {transformTile, transformPoint} from './transform.js';
 
-function geojsonvt(data, options) {
+import {clip} from './clip.js';
+import {createTile} from './tile.js';
+import {wrap} from './wrap.js';
+
+const transform = { tile: transformTile,
+                    point: transformPoint };
+
+export function geojsonvt(data, options) {
     return new GeoJSONVT(data, options);
 }
 

@@ -27,7 +27,7 @@ const MIN_CONTRAST_RATIO = 2.0;
  * from a hex-encoded color string. Optionally, if defaultValue is supplied,
  * fallback to that if color is undefined.
  */
-function parseColor(color, component, defaultValue) {
+export function parseColor(color, component, defaultValue) {
     if (color) {
         let index = component * 2;
         return parseInt(color.substring(index, index + 2), 16) / 255;
@@ -41,7 +41,7 @@ function parseColor(color, component, defaultValue) {
  * notation (i.e. ffffff for white) according to the W3C WCAG definition:
  * https://www.w3.org/WAI/GL/wiki/Relative_luminance
  */
-function relativeLuminance(color) {
+export function relativeLuminance(color) {
     let rsRGB = parseColor(color, 0);
     let gsRGB = parseColor(color, 1);
     let bsRGB = parseColor(color, 2);
@@ -60,7 +60,7 @@ function relativeLuminance(color) {
  * (i.e. ffffff for white) according to the W3C WCAG definition:
  * https://www.w3.org/WAI/GL/wiki/Contrast_ratio
  */
-function contrastRatio(color1, color2) {
+export function contrastRatio(color1, color2) {
     let lc1 = relativeLuminance(color1);
     let lc2 = relativeLuminance(color2);
     /* order by luminance, lighter before darker */
@@ -76,7 +76,7 @@ function contrastRatio(color1, color2) {
  * has enough contrast against the background, otherwise (or if that argument
  * is undefined), return the one of black or white giving the highest contrast
  */
-function getContrastingForegroundColor(backgroundColor,
+export function getContrastingForegroundColor(backgroundColor,
                                        desiredForegroundColor) {
     if (!desiredForegroundColor ||
         (contrastRatio(backgroundColor, desiredForegroundColor) <

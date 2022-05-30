@@ -20,39 +20,28 @@
  */
 
 
-const GObject = imports.gi.GObject;
-const Gtk = imports.gi.Gtk;
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
-const Application = imports.application;
-const ContactPlace = imports.contactPlace;
-const OSMAccountDialog = imports.osmAccountDialog;
-const OSMEditDialog = imports.osmEditDialog;
-const OSMUtils = imports.osmUtils;
-const PlaceStore = imports.placeStore;
-const SendToDialog = imports.sendToDialog;
+import {Application} from './application.js';
+import {ContactPlace} from './contactPlace.js';
+import {OSMAccountDialog} from './osmAccountDialog.js';
+import {OSMEditDialog} from './osmEditDialog.js';
+import * as OSMUtils from './osmUtils.js';
+import {PlaceStore} from './placeStore.js';
+import {SendToDialog} from './sendToDialog.js';
 
-var PlaceButtons = GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/place-buttons.ui',
-    InternalChildren: [ 'routeButton',
-                        'sendToButton',
-                        'favoriteButton',
-                        'editButton',
-                        'favoriteButtonImage' ],
-    Signals: {
-        /* Emitted when the Edit dialog is closed, because the place details
-           might have changed and the parent PlaceBar/PlaceView needs
-           refreshing */
-        'place-edited': {}
-    }
-}, class PlaceButtons extends Gtk.Box {
-    _init(params) {
+export class PlaceButtons extends Gtk.Box {
+    constructor(params) {
         let place = params.place;
         delete params.place;
 
-        this._mapView = params.mapView;
+        let mapView = params.mapView;
         delete params.mapView;
 
-        super._init(params);
+        super(params);
+
+        this._mapView = mapView;
 
         this._initSignals();
 
@@ -76,7 +65,7 @@ var PlaceButtons = GObject.registerClass({
 
         this._updateFavoriteButton(!!this._place.store);
 
-        this._editButton.visible = (!(this._place instanceof ContactPlace.ContactPlace) &&
+        this._editButton.visible = (!(this._place instanceof ContactPlace) &&
                                     this._place.osm_id);
 
         this._routeButton.visible = !this._place.isCurrentLocation;
@@ -84,10 +73,10 @@ var PlaceButtons = GObject.registerClass({
 
     initSendToButton(button) {
         button.connect('clicked', () => {
-            let dialog = new SendToDialog.SendToDialog({ transient_for: this.get_toplevel(),
-                                                         modal: true,
-                                                         mapView: this._mapView,
-                                                         place: this._place });
+            let dialog = new SendToDialog({ transient_for: this.get_toplevel(),
+                                            modal: true,
+                                            mapView: this._mapView,
+                                            place: this._place });
             dialog.connect('response', () => dialog.destroy());
             dialog.show();
         });
@@ -184,4 +173,19 @@ var PlaceButtons = GObject.registerClass({
             }
         });
     }
-});
+}
+
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/place-buttons.ui',
+    InternalChildren: [ 'routeButton',
+                        'sendToButton',
+                        'favoriteButton',
+                        'editButton',
+                        'favoriteButtonImage' ],
+    Signals: {
+        /* Emitted when the Edit dialog is closed, because the place details
+           might have changed and the parent PlaceBar/PlaceView needs
+           refreshing */
+        'place-edited': {}
+    }
+}, PlaceButtons);

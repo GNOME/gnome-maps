@@ -19,30 +19,27 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-const Gdk = imports.gi.Gdk;
-const GObject = imports.gi.GObject;
+import Gdk from 'gi://Gdk';
+import GObject from 'gi://GObject';
 
-const Color = imports.color;
-const Location = imports.location;
-const MapMarker = imports.mapMarker;
-const Place = imports.place;
+import * as Color from './color.js';
+import {Location} from './location.js';
+import {MapMarker} from './mapMarker.js';
+import {Place} from './place.js';
+import * as TransitPlan from './transitPlan.js';
 
-var TransitArrivalMarker = GObject.registerClass(
-class TransitArrivalMarker extends MapMarker.MapMarker {
+export class TransitArrivalMarker extends MapMarker {
 
-    _init(params) {
+    constructor(params) {
         let lastPoint = params.leg.polyline[params.leg.polyline.length - 1];
-        let location =
-            new Location.Location({ latitude: lastPoint.latitude,
-                                    longitude: lastPoint.longitude
-                                  });
-        let bgColor = params.leg.color ? params.leg.color :
-                                         TransitPlan.DEFAULT_ROUTE_COLOR;
+        let location = new Location({ latitude: lastPoint.latitude,
+                                      longitude: lastPoint.longitude });
+        let bgColor = params.leg.color ?? TransitPlan.DEFAULT_ROUTE_COLOR;
 
         delete params.leg;
-        params.place = new Place.Place({ location: location });
+        params.place = new Place({ location: location });
 
-        super._init(params);
+        super(params);
 
         let bgRed = Color.parseColor(bgColor, 0);
         let bgGreen = Color.parseColor(bgColor, 1);
@@ -62,4 +59,6 @@ class TransitArrivalMarker extends MapMarker.MapMarker {
         return { x: Math.floor(this.width / 2) - 1,
                  y: Math.floor(this.height / 2) - 1 };
     }
-});
+}
+
+GObject.registerClass(TransitArrivalMarker);

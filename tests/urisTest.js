@@ -19,22 +19,16 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-pkg.require({ 'Gdk': '3.0',
-              'Gtk': '3.0',
-              'Soup': '2.4' });
+import 'gi://Gdk?version=3.0';
+import 'gi://Gtk?version=3.0';
+import 'gi://Soup?version=2.4';
 
 const JsUnit = imports.jsUnit;
 
-const URIS = imports.uris;
+import * as URIS from './uris.js';
 
 const OSM_COORD_URL1 =
     'https://www.openstreetmap.org/?lat=39.9882&lon=-78.2409&zoom=14&layers=B000FTF';
-
-function main() {
-    parseAsObjectURLTest();
-    parseAsCoordinateURLTest();
-    parseMapsURITest();
-}
 
 function parseAsObjectURLTest() {
     _assertArrayEquals([], URIS.parseAsObjectURL('https://www.example.com'));
@@ -80,4 +74,8 @@ function _assertArrayEquals(arr1, arr2) {
         JsUnit.assertEquals(arr1[i], arr2[i]);
     }
 }
+
+parseAsObjectURLTest();
+parseAsCoordinateURLTest();
+parseMapsURITest();
 
