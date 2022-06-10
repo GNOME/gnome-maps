@@ -280,17 +280,9 @@ export class PlaceEntry extends Gtk.SearchEntry {
         this._cancellable = new Gio.Cancellable();
         this._previousSearch = this.text;
 
-        /* as a stop-gap solution for the location bias tuning issues
-         * in Photon (https://github.com/komoot/photon/issues/600),
-         * for now search "globally" (e.g. without location bias) for
-         * zoom levels above 17, to still allow focused search nearby
-         */
-        let lat = this._mapView.view.zoom_level > 17 ?
-                  this._mapView.view.latitude : null;
-        let lon = this._mapView.view.zoom_level > 17 ?
-                  this._mapView.view.longitude : null;
-
-        GeocodeFactory.getGeocoder().search(this.text, lat, lon,
+        GeocodeFactory.getGeocoder().search(this.text,
+                                            this._mapView.view.latitude,
+                                            this._mapView.view.longitude,
                                             this._cancellable,
                                             (places, error) => {
             this._cancellable = null;
