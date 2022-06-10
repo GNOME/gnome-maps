@@ -138,6 +138,8 @@ export class PhotonGeocode {
         if (latitude !== null && longitude != null) {
             query.add('lat', latitude);
             query.add('lon', longitude);
+            if (string)
+                query.add('location_bias_scale', PhotonUtils.LOCATION_BIAS_SCALE);
         }
 
         if (string)
