@@ -30,6 +30,12 @@ import * as Utils from './utils.js';
 
 const _ = gettext.gettext;
 
+/* Define location bias scale parameter to adjust prominance of search results
+ * with respect to location.
+ * See: https://github.com/komoot/photon/issues/600
+ */
+export const LOCATION_BIAS_SCALE = 0.5;
+
 export function parsePlace(latitude, longitude, properties) {
     let location = new GeocodeGlib.Location({ latitude:  latitude,
                                           longitude: longitude,
