@@ -139,8 +139,11 @@ export class GraphHopperGeocode {
                                      locale:  this._language,
                                      key:     this._apiKey
                                    });
-        if (latitude !== null && longitude != null)
+        if (latitude !== null && longitude != null) {
             query.add('point', latitude + ',' + longitude);
+            if (string)
+                query.add('location_bias_scale', PhotonUtils.LOCATION_BIAS_SCALE);
+        }
 
         if (string)
             query.add('q', string);
