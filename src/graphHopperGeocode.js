@@ -24,7 +24,7 @@ import Soup from 'gi://Soup';
 
 import {Application} from './application.js';
 import * as HTTP from './http.js';
-import * as PhotonParser from './photonParser.js';
+import * as PhotonUtils from './photonUtils.js';
 import * as Service from './service.js';
 import * as Utils from './utils.js';
 
@@ -131,7 +131,7 @@ export class GraphHopperGeocode {
         let lat = hit.point.lat;
         let lon = hit.point.lng;
 
-        return PhotonParser.parsePlace(lat, lon, hit);
+        return PhotonUtils.parsePlace(lat, lon, hit);
     }
 
     _buildURL(string, latitude, longitude) {

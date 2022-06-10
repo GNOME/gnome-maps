@@ -24,7 +24,7 @@ import Soup from 'gi://Soup';
 
 import {Application} from './application.js';
 import * as HTTP from './http.js';
-import * as PhotonParser from './photonParser.js';
+import * as PhotonUtils from './photonUtils.js';
 import * as Service from './service.js';
 import * as Utils from './utils.js';
 
@@ -129,7 +129,7 @@ export class PhotonGeocode {
     _parseFeature(feature) {
         let [lon, lat] = feature.geometry.coordinates;
 
-        return PhotonParser.parsePlace(lat, lon, feature.properties);
+        return PhotonUtils.parsePlace(lat, lon, feature.properties);
     }
 
     _buildURL(string, latitude, longitude) {

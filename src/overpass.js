@@ -22,7 +22,7 @@ import GObject from 'gi://GObject';
 import Soup from 'gi://Soup';
 
 import * as OSMNames from './osmNames.js';
-import * as PhotonParser from './photonParser.js';
+import * as PhotonUtils from './photonUtils.js';
 import {Place} from './place.js';
 import * as Utils from './utils.js';
 
@@ -118,7 +118,7 @@ export class Overpass extends GObject.Object {
         let [lat, lon] = this._getCoordsFromElement(element);
         let photonProperties =
             this._getPhotonProperties(element.tags, osmType, osmId);
-        let place = PhotonParser.parsePlace(lat, lon, photonProperties);
+        let place = PhotonUtils.parsePlace(lat, lon, photonProperties);
 
         this._populatePlace(place, overpassData);
         place.prefilled = true;
