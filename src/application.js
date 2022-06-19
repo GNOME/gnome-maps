@@ -106,7 +106,7 @@ export class Application extends Gtk.Application {
     }
 
     _showContact(id) {
-        contactStore.lookup(id, (contact) => {
+        Application.contactStore.lookup(id, (contact) => {
             this.mark_busy();
             if (!contact) {
                 this.unmark_busy();
@@ -125,11 +125,11 @@ export class Application extends Gtk.Application {
 
         let id = parameter.deep_unpack();
 
-        if (contactStore.state === Maps.ContactStoreState.LOADED) {
+        if (Application.contactStore.state === Maps.ContactStoreState.LOADED) {
             this. _showContact(id);
         } else {
-            Utils.once(contactStore, 'notify::state', () => {
-                if (contactStore.state === Maps.ContactStoreState.LOADED)
+            Utils.once(Application.contactStore, 'notify::state', () => {
+                if (Application.contactStore.state === Maps.ContactStoreState.LOADED)
                     this._showContact(id);
             });
         }
