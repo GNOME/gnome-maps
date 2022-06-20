@@ -106,7 +106,7 @@ export class Application extends Gtk.Application {
     }
 
     _showContact(id) {
-        Application.contactStore.lookup(id, (contact) => {
+        Application.contactStore?.lookup(id, (contact) => {
             this.mark_busy();
             if (!contact) {
                 this.unmark_busy();
@@ -125,13 +125,15 @@ export class Application extends Gtk.Application {
 
         let id = parameter.deep_unpack();
 
-        if (Application.contactStore.state === Maps.ContactStoreState.LOADED) {
-            this. _showContact(id);
-        } else {
-            Utils.once(Application.contactStore, 'notify::state', () => {
-                if (Application.contactStore.state === Maps.ContactStoreState.LOADED)
-                    this._showContact(id);
-            });
+        if (Application.contactStore) {
+            if (Application.contactStore.state === Maps.ContactStoreState.LOADED) {
+                this. _showContact(id);
+            } else {
+                Utils.once(Application.contactStore, 'notify::state', () => {
+                    if (Application.contactStore.state === Maps.ContactStoreState.LOADED)
+                        this._showContact(id);
+                });
+            }
         }
     }
 
@@ -158,9 +160,11 @@ export class Application extends Gtk.Application {
     }
 
     _addContacts() {
-        let contacts = Application.contactStore.get_contacts();
+        if (Application.contactStore) {
+            let contacts = Application.contactStore.get_contacts();
 
-        this._addContactsRecursive(contacts, 0);
+            this._addContactsRecursive(contacts, 0);
+        }
     }
 
     _addContactsRecursive(contacts, index) {
@@ -429,6 +433,12 @@ export class Application extends Gtk.Application {
     }
 
     _onWindowDestroy(window) {
+        /* as a workaround, manually dispose the contact store here
+         * to avoid a crash when it's being disposed as a result of the
+         * GC sweep at exit, probably due to some event loop race condition
+         */
+        Application.contactStore.run_dispose();
+        Application.contactStore = null;
         this._mainWindow = null;
     }
 }
