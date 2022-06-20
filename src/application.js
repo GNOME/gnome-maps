@@ -152,7 +152,7 @@ var Application = GObject.registerClass({
     }
 
     _showContact(id) {
-        contactStore.lookup(id, (contact) => {
+        contactStore?.lookup(id, (contact) => {
             this.mark_busy();
             if (!contact) {
                 this.unmark_busy();
@@ -172,13 +172,15 @@ var Application = GObject.registerClass({
 
         let id = parameter.deep_unpack();
 
-        if (contactStore.state === Maps.ContactStoreState.LOADED) {
-            this. _showContact(id);
-        } else {
-            Utils.once(contactStore, 'notify::state', () => {
-                if (contactStore.state === Maps.ContactStoreState.LOADED)
-                    this._showContact(id);
-            });
+        if (contactStore) {
+            if (contactStore.state === Maps.ContactStoreState.LOADED) {
+                this. _showContact(id);
+            } else {
+                Utils.once(contactStore, 'notify::state', () => {
+                    if (contactStore.state === Maps.ContactStoreState.LOADED)
+                        this._showContact(id);
+                });
+            }
         }
     }
 
@@ -204,9 +206,11 @@ var Application = GObject.registerClass({
     }
 
     _addContacts() {
-        let contacts = contactStore.get_contacts();
+        if (contactStore) {
+            let contacts = contactStore.get_contacts();
 
-        this._addContactsRecursive(contacts, 0);
+            this._addContactsRecursive(contacts, 0);
+        }
     }
 
     _addContactsRecursive(contacts, index) {
@@ -482,6 +486,12 @@ var Application = GObject.registerClass({
     }
 
     _onWindowDestroy(window) {
+        /* as a workaround, manually dispose the contact store here
+         * to avoid a crash when it's being disposed as a result of the
+         * GC sweep at exit, probably due to some event loop race condition
+         */
+        contactStore.run_dispose();
+        contactStore = null;
         this._mainWindow = null;
     }
 });
