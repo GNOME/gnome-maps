@@ -130,7 +130,9 @@ export class TurnPoint {
         case TurnPoint.Type.SHARP_LEFT:   return 'maps-direction-sharpleft-symbolic';
         case TurnPoint.Type.LEFT:         return 'maps-direction-left-symbolic';
         case TurnPoint.Type.SLIGHT_LEFT:  return 'maps-direction-slightleft-symbolic';
+        case TurnPoint.Type.KEEP_LEFT:    return 'maps-direction-keep-left-symbolic';
         case TurnPoint.Type.CONTINUE:     return 'maps-direction-continue-symbolic';
+        case TurnPoint.Type.KEEP_RIGHT:   return 'maps-direction-keep-right-symbolic';
         case TurnPoint.Type.SLIGHT_RIGHT: return 'maps-direction-slightright-symbolic';
         case TurnPoint.Type.RIGHT:        return 'maps-direction-right-symbolic';
         case TurnPoint.Type.SHARP_RIGHT:  return 'maps-direction-sharpright-symbolic';
