@@ -606,6 +606,8 @@ export class Leg {
                 /* special case HVT codes */
                 case HVT.CABLE_CAR:
                     return 'route-transit-cablecar-symbolic';
+                case HVT.TOURIST_RAILWAY_SERVICE:
+                    return 'route-transit-tourist-train-symbolic';
                 default:
                     let hvtSupertype = HVT.supertypeOf(type);
 
