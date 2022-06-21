@@ -475,7 +475,7 @@ maps_osm_parse (const char *content, guint length, GError **error)
  * maps_osm_parse_user_details:
  * @content: XML data
  * @error: Error handle
- * Returns: (transfer full) Logged in user name
+ * Returns: (transfer full): Logged in user name
  */
 char *
 maps_osm_parse_user_details (const char *content, GError **error)
