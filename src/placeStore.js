@@ -23,7 +23,6 @@ import GdkPixbuf from 'gi://GdkPixbuf';
 import GeocodeGlib from 'gi://GeocodeGlib';
 import Gtk from 'gi://Gtk';
 
-import {ContactPlace} from './contactPlace.js';
 import {Place} from './place.js';
 import {StoredRoute} from './storedRoute.js';
 import * as Utils from './utils.js';
@@ -39,7 +38,7 @@ export class PlaceStore extends Gtk.ListStore {
         ANY: -1,
         RECENT: 0,
         FAVORITE: 1,
-        CONTACT: 2,
+        CONTACT: 2, // Legacy, this is not handled anymore
         RECENT_ROUTE: 3
     }
 
@@ -84,14 +83,6 @@ export class PlaceStore extends Gtk.ListStore {
         this._setPlace(this.append(), place, type, new Date().getTime(),
                        this._language);
         this._store();
-    }
-
-    _addContact(place) {
-        if (this.exists(place, PlaceStore.PlaceType.CONTACT)) {
-            return;
-        }
-
-        this._addPlace(place, PlaceStore.PlaceType.CONTACT);
     }
 
     _addFavorite(place) {
@@ -206,8 +197,6 @@ export class PlaceStore extends Gtk.ListStore {
             this._addFavorite(place, type);
         else if (type === PlaceStore.PlaceType.RECENT)
             this._addRecent(place, type);
-        else if (type === PlaceStore.PlaceType.CONTACT)
-            this._addContact(place, type);
         else if (type === PlaceStore.PlaceType.RECENT_ROUTE)
             this._addRecentRoute(place);
     }
