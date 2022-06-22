@@ -28,11 +28,9 @@ import Gtk from 'gi://Gtk';
 import GtkClutter from 'gi://GtkClutter';
 import Hdy from 'gi://Handy';
 
-import {ContactPlace} from './contactPlace.js';
 import {Geoclue} from './geoclue.js';
 import * as GeocodeFactory from './geocode.js';
 import {MainWindow} from './mainWindow.js';
-import GnomeMaps from 'gi://GnomeMaps';
 import {OSMEdit} from './osmEdit.js';
 import {OSMTypeSearchEntry} from './osmTypeSearchEntry.js';
 import {PlaceStore} from './placeStore.js';
@@ -54,7 +52,6 @@ export class Application extends Gtk.Application {
     static placeStore = null;
     static routingDelegator = null;
     static geoclue = null;
-    static contactStore = null;
     static osmEdit = null;
     static normalStartup = true;
     static routeQuery = null;
@@ -105,38 +102,6 @@ export class Application extends Gtk.Application {
                              _("[FILE…|URI]"));
     }
 
-    _showContact(id) {
-        Application.contactStore?.lookup(id, (contact) => {
-            this.mark_busy();
-            if (!contact) {
-                this.unmark_busy();
-                return;
-            }
-            contact.geocode(() => {
-                this.unmark_busy();
-                this._mainWindow.mapView.showContact(contact);
-            });
-        });
-    }
-
-    _onShowContactActivate(action, parameter) {
-        this._createWindow();
-        this._mainWindow.present();
-
-        let id = parameter.deep_unpack();
-
-        if (Application.contactStore) {
-            if (Application.contactStore.state === Maps.ContactStoreState.LOADED) {
-                this. _showContact(id);
-            } else {
-                Utils.once(Application.contactStore, 'notify::state', () => {
-                    if (Application.contactStore.state === Maps.ContactStoreState.LOADED)
-                        this._showContact(id);
-                });
-            }
-        }
-    }
-
     _onOsmAccountSetupActivate() {
         let dialog =
             Application.osmEdit.createAccountDialog(this._mainWindow, false);
@@ -159,34 +124,6 @@ export class Application extends Gtk.Application {
                                  this._openSearchQuery.bind(this, query));
     }
 
-    _addContacts() {
-        if (Application.contactStore) {
-            let contacts = Application.contactStore.get_contacts();
-
-            this._addContactsRecursive(contacts, 0);
-        }
-    }
-
-    _addContactsRecursive(contacts, index) {
-        if (index < contacts.length) {
-            let contact = contacts[index];
-
-            contact.geocode(() => {
-                contact.get_places().forEach((p) => {
-                    if (!p.location)
-                        return
-
-                    Utils.debug('Adding contact address: ' + p.name);
-                    let place = new ContactPlace({ place: p, contact: contact });
-
-                    Application.placeStore.addPlace(place, PlaceStore.PlaceType.CONTACT);
-                });
-
-                this._addContactsRecursive(contacts, index + 1);
-            });
-        }
-    }
-
     _initPlaceStore() {
         Application.placeStore = new PlaceStore({
             recentPlacesLimit: Application.settings.get('recent-places-limit'),
@@ -197,15 +134,6 @@ export class Application extends Gtk.Application {
         } catch (e) {
             log('Failed to parse Maps places file, ' +
                 'subsequent writes will overwrite the file!');
-        }
-
-        if (Application.contactStore.state === GnomeMaps.ContactStoreState.LOADED) {
-            this._addContacts();
-        } else {
-            Utils.once(Application.contactStore, 'notify::state', () => {
-                if (Application.contactStore.state === GnomeMaps.ContactStoreState.LOADED)
-                    this._addContacts();
-            });
         }
     }
 
@@ -221,10 +149,6 @@ export class Application extends Gtk.Application {
         this._initServices();
 
         Utils.addActions(this, {
-            'show-contact': {
-                paramType: 's',
-                onActivate: this._onShowContactActivate.bind(this)
-            },
             'osm-account-setup': {
                 onActivate: this._onOsmAccountSetupActivate.bind(this)
             },
@@ -252,8 +176,6 @@ export class Application extends Gtk.Application {
         Application.routeQuery = new RouteQuery();
         Application.routingDelegator = new RoutingDelegator({ query: Application.routeQuery });
         Application.geoclue = new Geoclue();
-        Application.contactStore = new GnomeMaps.ContactStore();
-        Application.contactStore.load();
         Application.osmEdit = new OSMEdit();
     }
 
@@ -433,12 +355,6 @@ export class Application extends Gtk.Application {
     }
 
     _onWindowDestroy(window) {
-        /* as a workaround, manually dispose the contact store here
-         * to avoid a crash when it's being disposed as a result of the
-         * GC sweep at exit, probably due to some event loop race condition
-         */
-        Application.contactStore.run_dispose();
-        Application.contactStore = null;
         this._mainWindow = null;
     }
 }
