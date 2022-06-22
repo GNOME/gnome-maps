@@ -28,7 +28,6 @@ import Pango from 'gi://Pango';
 const Format = imports.format;
 
 import {Application} from './application.js';
-import {ContactPlace} from './contactPlace.js';
 import {Overpass} from './overpass.js';
 import {Place} from './place.js';
 import * as PlaceIcons from './placeIcons.js';
@@ -71,7 +70,6 @@ export class PlaceView extends Gtk.Box {
                                                    'thumbnail-separator',
                                                    'label-title',
                                                    'native-name',
-                                                   'contact-avatar',
                                                    'address-label',
                                                    'bubble-main-stack',
                                                    'bubble-content-area',
@@ -86,7 +84,6 @@ export class PlaceView extends Gtk.Box {
         this._mainStack = ui.bubbleMainStack;
         this._spinner = ui.bubbleSpinner;
         this._mainBox = ui.bubbleMainBox;
-        this._contactAvatar = ui.contactAvatar;
         this._addressLabel = ui.addressLabel;
 
         this.add(this._mainStack);
@@ -111,14 +108,6 @@ export class PlaceView extends Gtk.Box {
             ui.titleBox.margin = 12;
             ui.titleBox.marginStart = 18;
             ui.titleBox.spacing = 18;
-        }
-
-        /* Set up contact avatar */
-        if (this.place instanceof ContactPlace) {
-            this._contactAvatar.visible = true;
-            Utils.load_icon(this.place.icon, 32, (pixbuf) => {
-                this._contactAvatar.set_image_load_func((size) => Utils.loadAvatar(pixbuf, size));
-            });
         }
 
         this.loading = true;
@@ -211,7 +200,6 @@ export class PlaceView extends Gtk.Box {
         }
 
         this._title.label = formatter.title;
-        this._contactAvatar.text = formatter.title;
 
         /* hide native name by default, so that it is only shown when it
          * should, in case it changed when re-applying changes from Overpass.
