@@ -40,9 +40,6 @@ handy = dependency('libhandy-1', version: '>= 1.5.0')
 gweather = dependency('gweather4', version: '>= 3.90.0')
 
 libmaps_deps = [
-	dependency('gee-0.8', version: '>= 0.16.0'),
-	dependency('folks', version: '>= 0.10.0'),
-	dependency('geocode-glib-1.0', version: '>= 3.15.2'),
 	dependency('champlain-0.12', version: '>= 0.12.14'),
 	dependency('libxml-2.0'),
 	dependency('rest-0.7', version: '>= 0.7.90')
