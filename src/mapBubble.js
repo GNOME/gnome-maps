@@ -25,7 +25,6 @@ import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
 import {Application} from './application.js';
-import {ContactPlace} from './contactPlace.js';
 import * as GeocodeFactory from './geocode.js';
 import {Place} from './place.js';
 import {PlaceView} from './placeView.js';
