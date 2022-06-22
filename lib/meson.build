@@ -1,5 +1,3 @@
-maps_h = 'maps.h'
-
 headers_private = files(
 	'maps-file-tile-source.h',
 	'maps-osm.h',
