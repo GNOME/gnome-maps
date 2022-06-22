@@ -2,7 +2,6 @@ maps_h = 'maps.h'
 
 headers_private = files(
 	'maps-contact.h',
-	'maps-contact-store.h',
 	'maps-file-tile-source.h',
 	'maps-osm.h',
 	'maps-osm-changeset.h',
@@ -15,7 +14,6 @@ headers_private = files(
 
 sources = files(
 	'maps-contact.c',
-	'maps-contact-store.c',
 	'maps-file-tile-source.c',
 	'maps-osm.c',
 	'maps-osm-changeset.c',

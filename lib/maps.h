@@ -19,7 +19,6 @@
 #define __MAPS_H__
 
 #include <glib-object.h>
-#include "maps-contact-store.h"
 #include "maps-contact.h"
 
 #endif
