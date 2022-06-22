@@ -33,7 +33,6 @@ import GnomeMaps from 'gi://GnomeMaps';
 
 import {Application} from './application.js';
 import {BoundingBox} from './boundingBox.js';
-import {ContactPlace} from './contactPlace.js';
 import * as Color from './color.js';
 import * as Geoclue from './geoclue.js';
 import {GeoJSONShapeLayer} from './geoJSONShapeLayer.js';
@@ -687,23 +686,6 @@ export class MapView extends GtkChamplain.Embed {
                                                       mapView: this });
         this._instructionMarkerLayer.add_marker(this._turnPointMarker);
         this._turnPointMarker.goTo();
-    }
-
-    showContact(contact) {
-        let places = contact.get_places();
-        if (places.length === 0)
-            return;
-
-        this._placeLayer.remove_all();
-        places.forEach((p) => {
-            let place = new ContactPlace({ place: p,
-                                           contact: contact });
-            let marker = new PlaceMarker({ place: place,
-                                           mapView: this });
-            this._placeLayer.add_marker(marker);
-        });
-
-        new MapWalker(places[0], this).goTo(true);
     }
 
     _showStoredRoute(stored) {
