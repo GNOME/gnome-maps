@@ -88,6 +88,13 @@ const WALK_SEARCH_RADIUS = 2000;
 // maximum distance for walk-only journey
 const MAX_WALK_ONLY_DISTANCE = 2500;
 
+/* set of transit agencies where "regional rail" is interpreted as
+ * HVT.TOURIST_RAILWAY_SERVICE, e.g. heritage rail
+ */
+const TOURIST_TRAIN_AGENCIES = new Set(['Engelsberg-Norbergs Jä',
+                                        'Lennakatten',
+                                        'TJF Smalspåret']);
+
 export class Resrobot {
     constructor(params) {
         this._session = new Soup.Session({ user_agent : 'gnome-maps/' + pkg.version });
@@ -437,6 +444,16 @@ export class Resrobot {
         let agencyName = isTransit ? product.operator : null;
         let polyline = this._createPolylineForLeg(leg);
         let duration = leg.duration ? this._parseDuration(leg.duration) : null;
+
+        /* if the route leg is classified as regional rail and the agency
+         * is one of the heritage railways, use tourist rail to get the
+         * steam train icon
+         */
+        if ((routeType === HVT.REGIONAL_RAIL_SERVICE ||
+             routeType === HVT.SUBURBAN_RAILWAY_SERVICE ) &&
+            TOURIST_TRAIN_AGENCIES.has(agencyName)) {
+            routeType = HVT.TOURIST_RAILWAY_SERVICE;
+        }
 
         let result = new Leg({ departure:            departure,
                                arrival:              arrival,
