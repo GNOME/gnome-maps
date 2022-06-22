@@ -24,7 +24,6 @@ import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
 import {Application} from './application.js';
-import {ContactPlace} from './contactPlace.js';
 import {OSMAccountDialog} from './osmAccountDialog.js';
 import {OSMEditDialog} from './osmEditDialog.js';
 import * as OSMUtils from './osmUtils.js';
@@ -65,8 +64,7 @@ export class PlaceButtons extends Gtk.Box {
 
         this._updateFavoriteButton(!!this._place.store);
 
-        this._editButton.visible = (!(this._place instanceof ContactPlace) &&
-                                    this._place.osm_id);
+        this._editButton.visible = !!this._place.osm_id;
 
         this._routeButton.visible = !this._place.isCurrentLocation;
     }
