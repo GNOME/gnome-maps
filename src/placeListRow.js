@@ -21,7 +21,6 @@ import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
-import {ContactPlace} from './contactPlace.js';
 import {PlaceFormatter} from './placeFormatter.js';
 import {PlaceStore} from './placeStore.js';
 import * as Utils from './utils.js';
@@ -54,30 +53,14 @@ export class PlaceListRow extends Gtk.ListBoxRow {
         this._name.label = this._boldMatch(markup, searchString);
         this._details.label = GLib.markup_escape_text(formatter.getDetailsString(),-1);
 
-        if (place instanceof ContactPlace) {
-            this._iconStack.set_visible_child(this._contactAvatar);
-
-            this._contactAvatar.text = formatter.title;
-
-            if (place.icon) {
-                Utils.load_icon(place.icon, 32, (pixbuf) => {
-                    this._contactAvatar.set_image_load_func((size) => Utils.loadAvatar(pixbuf, size));
-                });
-            } else {
-                this._contactAvatar.set_image_load_func(null);
-            }
-        } else if (place.icon) {
-            this._iconStack.set_visible_child(this._icon);
+        if (place.icon)
             this._icon.gicon = place.icon;
-        }
 
         if (type === PlaceStore.PlaceType.RECENT ||
             type === PlaceStore.PlaceType.RECENT_ROUTE)
             this._typeIcon.icon_name = 'document-open-recent-symbolic';
         else if (type === PlaceStore.PlaceType.FAVORITE)
             this._typeIcon.icon_name = 'starred-symbolic';
-        else if (type === PlaceStore.PlaceType.CONTACT)
-            this._typeIcon.icon_name = 'avatar-default-symbolic';
         else
             this._typeIcon.icon_name = null;
     }
@@ -99,8 +82,6 @@ export class PlaceListRow extends Gtk.ListBoxRow {
 GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/place-list-row.ui',
     InternalChildren: [ 'icon',
-                        'iconStack',
-                        'contactAvatar',
                         'name',
                         'details',
                         'typeIcon' ],
