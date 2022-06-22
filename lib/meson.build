@@ -47,7 +47,6 @@ gnome.generate_gir(
 	includes: [
 		'GLib-2.0',
 		'GObject-2.0',
-		'GeocodeGlib-1.0',
 		'Champlain-0.12',
 		'Rest-0.7'
 	],
