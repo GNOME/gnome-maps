@@ -22,17 +22,6 @@ sources = files(
 	'maps-osm-oauth-proxy-call.c'
 )
 
-enum_types = 'maps-enum-types'
-
-maps_enums = gnome.mkenums(
-	enum_types,
-	sources: headers_private,
-	c_template: enum_types + '.c.template',
-	h_template: enum_types + '.h.template',
-	identifier_prefix: maps_ns,
-	symbol_prefix: maps_ns.to_lower()
-)
-
 cflags = [
 	'-DG_DISABLE_DEPRECATED',
   	'-DPREFIX="@0@"'.format(prefix),
@@ -42,7 +31,7 @@ cflags = [
 libmaps = shared_library(
 	maps_libname,
 	version: '0.0.0',
-	sources: sources + maps_enums,
+	sources: sources,
 	include_directories: top_inc,
 	dependencies: libmaps_deps,
 	c_args: cflags,
@@ -52,7 +41,7 @@ libmaps = shared_library(
 
 gnome.generate_gir(
 	libmaps,
-	sources: sources + [maps_enums, headers_private],
+	sources: sources + [headers_private],
 	nsversion: maps_gir_version,
 	namespace: maps_gir_name,
 	identifier_prefix: maps_ns,
