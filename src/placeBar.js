@@ -26,7 +26,6 @@ import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
 import {Application} from './application.js';
-import {ContactPlace} from './contactPlace.js';
 import {PlaceButtons} from './placeButtons.js';
 import {PlaceDialog} from './placeDialog.js';
 import {PlaceFormatter} from './placeFormatter.js';
@@ -69,18 +68,6 @@ export class PlaceBar extends Gtk.Revealer {
 
         let formatter = new PlaceFormatter(this.place);
         this._title.label = formatter.title;
-
-        if (this.place instanceof ContactPlace) {
-            this._contactAvatar.visible = true;
-            this._contactAvatar.text = formatter.title;
-
-            this._contactAvatar.set_image_load_func(null);
-            Utils.load_icon(this.place.icon, 32, (pixbuf) => {
-                this._contactAvatar.set_image_load_func((size) => Utils.loadAvatar(pixbuf, size));
-            });
-        } else {
-            this._contactAvatar.visible = false;
-        }
 
         this._buttons.place = this.place;
 
@@ -150,7 +137,6 @@ GObject.registerClass({
                         'altSendToButton',
                         'box',
                         'eventbox',
-                        'contactAvatar',
                         'title' ],
     Properties: {
         'place': GObject.ParamSpec.object('place',
