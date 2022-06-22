@@ -15,10 +15,6 @@
         "--device=dri",
         "--share=network",
         "--talk-name=org.gnome.OnlineAccounts",
-        "--talk-name=org.gnome.evolution.dataserver.AddressBook10",
-        "--talk-name=org.gnome.evolution.dataserver.Calendar7",
-        "--talk-name=org.gnome.evolution.dataserver.Sources5",
-        "--talk-name=org.gnome.evolution.dataserver.Subprocess.Backend.*",
         "--metadata=X-DConf=migrate-path=/org/gnome/Maps",
         "--env=G_ENABLE_DIAGNOSTICS=1",
         "--env=MAPS_DEBUG=1"
@@ -53,26 +49,6 @@
             ]
         },
         {
-           "name": "libical",
-           "cleanup": [ "/lib/cmake" ],
-           "buildsystem": "cmake-ninja",
-           "config-opts": [
-               "-DCMAKE_INSTALL_LIBDIR:PATH=/app/lib",
-               "-DBUILD_SHARED_LIBS:BOOL=ON",
-               "-DGOBJECT_INTROSPECTION:BOOL=ON",
-               "-DICAL_BUILD_DOCS:BOOL=OFF",
-               "-DICAL_GLIB_VAPI:BOOL=ON",
-               "-DICAL_GLIB:BOOL=ON"
-           ],
-           "sources": [
-               {
-                   "type": "git",
-                   "url": "https://github.com/libical/libical.git",
-                   "branch": "3.0"
-               }
-           ]
-        },
-        {
             "name" : "geocode-glib",
             "buildsystem" : "meson",
             "builddir" : true,
@@ -91,7 +67,8 @@
             "name" : "libgweather",
             "config-opts" : [
                 "-Denable_vala=false",
-                "-Dgtk_doc=false"
+                "-Dgtk_doc=false",
+                "-Dsoup2=true"
             ],
             "buildsystem" : "meson",
             "sources" : [
@@ -99,69 +76,6 @@
                     "type" : "git",
                     "url" : "https://gitlab.gnome.org/GNOME/libgweather.git",
                     "branch" : "main"
-                }
-            ]
-        },
-        {
-            "name": "intltool",
-            "cleanup": [ "*" ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://launchpad.net/intltool/trunk/0.51.0/+download/intltool-0.51.0.tar.gz",
-                    "sha256": "67c74d94196b153b774ab9f89b2fa6c6ba79352407037c8c14d5aeb334e959cd"
-                }
-            ]
-        },
-        {
-            "name" : "evolution-data-server",
-            "cleanup" : [
-                "/lib/cmake",
-                "/lib/evolution-data-server/*-backends",
-                "/libexec",
-                "/share/dbus-1/services"
-            ],
-            "config-opts" : [
-                "-DENABLE_GTK=OFF",
-                "-DENABLE_GOOGLE_AUTH=OFF",
-                "-DENABLE_UOA=OFF",
-                "-DENABLE_GOA=OFF",
-                "-DENABLE_GOOGLE=OFF",
-                "-DENABLE_VALA_BINDINGS=ON",
-                "-DWITH_OPENLDAP=OFF",
-                "-DWITH_LIBDB=OFF",
-                "-DENABLE_INTROSPECTION=ON",
-                "-DENABLE_INSTALLED_TESTS=OFF",
-                "-DENABLE_GTK_DOC=OFF",
-                "-DENABLE_EXAMPLES=OFF",
-                "-DENABLE_VALA_BINDINGS=ON",
-                "-DENABLE_INTROSPECTION=ON",
-                "-DENABLE_CANBERRA=OFF",
-                "-DENABLE_WEATHER=OFF"
-            ],
-            "buildsystem" : "cmake-ninja",
-            "sources" : [
-                {
-                    "type" : "git",
-                    "url": "https://gitlab.gnome.org/GNOME/evolution-data-server.git"
-                }
-            ]
-        },
-        {
-            "name" : "folks",
-            "buildsystem": "meson",
-            "cleanup" : [
-                "/bin"
-            ],
-            "config-opts" : [
-                "-Dtelepathy_backend=false",
-                "-Dofono_backend=false",
-                "-Dbluez_backend=false"
-            ],
-            "sources" : [
-                {
-                    "type" : "git",
-                    "url" : "https://gitlab.gnome.org/GNOME/folks.git"
                 }
             ]
         },
