@@ -186,8 +186,7 @@ export class PlaceEntry extends Gtk.SearchEntry {
         let place = model.get_value(iter, PlaceStore.Columns.PLACE);
         let type = model.get_value(iter, PlaceStore.Columns.TYPE);
 
-        if (type !== PlaceStore.PlaceType.CONTACT &&
-            type !== PlaceStore.PlaceType.RECENT_ROUTE ||
+        if (type !== PlaceStore.PlaceType.RECENT_ROUTE ||
             (!this._matchRoute && type === PlaceStore.PlaceType.RECENT_ROUTE))
             return false;
 
