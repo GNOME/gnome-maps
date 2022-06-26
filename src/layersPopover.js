@@ -163,15 +163,6 @@ export class LayersPopover extends Gtk.Popover {
         }
     }
 
-    _onHybridAerialChanged() {
-        if (Service.getService().tiles.hybridAerial &&
-            Application.settings.get('hybrid-aerial')) {
-            this._setLayerPreviewImage('hybridAerial', true);
-        } else {
-            this._setLayerPreviewImage('aerial', true);
-        }
-    }
-
     _setLayerPreviews() {
         if (Service.getService().tiles.streetDark &&
             Handy.StyleManager.get_default().dark) {
@@ -236,11 +227,8 @@ export class LayersPopover extends Gtk.Popover {
     setMapType(mapType) {
         if (mapType === MapView.MapType.STREET) {
             this._streetLayerButton.active = true;
-            this._hybridAerialRevealer.reveal_child = false;
         } else if (mapType === MapView.MapType.AERIAL) {
             this._aerialLayerButton.active = true;
-            if (Service.getService().tiles.hybridAerial)
-                this._hybridAerialRevealer.reveal_child = true;
         }
     }
 
@@ -265,7 +253,6 @@ GObject.registerClass({
                         'aerialLayerButton',
                         'streetLayerImage',
                         'aerialLayerImage',
-                        'hybridAerialRevealer',
                         'layersListBox',
                         'loadLayerButton' ]
 }, LayersPopover);
