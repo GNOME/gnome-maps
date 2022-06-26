@@ -76,16 +76,8 @@ export function createAerialSource() {
     return _createCachedSource(Service.getService().tiles.aerial);
 }
 
-export function createHybridAerialSource() {
-    return _createCachedSource(Service.getService().tiles.hybridAerial);
-}
-
 export function createStreetSource() {
     return _createCachedSource(Service.getService().tiles.street);
-}
-
-export function createStreetDarkSource() {
-    return _createCachedSource(Service.getService().tiles.streetDark)
 }
 
 export function createPrintSource() {
