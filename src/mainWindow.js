@@ -196,10 +196,6 @@ export class MainWindow extends Gtk.ApplicationWindow {
                 state: ['b', false],
                 onActivate: () => this._onMapTypeMenuActivate()
             },
-            'hybrid-aerial': {
-                paramType:     'b',
-                setting:       'hybrid-aerial'
-            },
             'goto-user-location': {
                 accels: ['<Primary>L'],
                 onActivate: () => this._onGotoUserLocationActivate()
