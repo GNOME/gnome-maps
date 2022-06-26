@@ -96,23 +96,9 @@ export class LayersPopover extends Gtk.Popover {
             }
         };
 
-        if (Service.getService().tiles.streetDark) {
-            this._layerPreviews.streetDark = {
-                source: MapSource.createStreetDarkSource(),
-                widget: this._streetLayerImage,
-                lastLocation: { x: -1, y: -1, z: -1 }
-            };
-        }
         if (Service.getService().tiles.aerial) {
             this._layerPreviews.aerial = {
                 source: MapSource.createAerialSource(),
-                widget: this._aerialLayerImage,
-                lastLocation: { x: -1, y: -1, z: -1 }
-            };
-        }
-        if (Service.getService().tiles.hybridAerial) {
-            this._layerPreviews.hybridAerial = {
-                source: MapSource.createHybridAerialSource(),
                 widget: this._aerialLayerImage,
                 lastLocation: { x: -1, y: -1, z: -1 }
             };
@@ -138,11 +124,6 @@ export class LayersPopover extends Gtk.Popover {
                                        this._setLayerPreviews.bind(this));
             this._mapView.view.connect("notify::longitude",
                                        this._setLayerPreviews.bind(this));
-            Handy.StyleManager.get_default().connect("notify::dark",
-                                                    this._onDarkChanged.bind(this));
-            Application.settings.connect("changed::hybrid-aerial",
-                                         this._onHybridAerialChanged.bind(this));
-
         } else {
             this._streetLayerButton.visible = false;
             this._aerialLayerButton.visible = false;
@@ -154,28 +135,9 @@ export class LayersPopover extends Gtk.Popover {
         });
     }
 
-    _onDarkChanged() {
-        if (Service.getService().tiles.streetDark &&
-            Handy.StyleManager.get_default().dark) {
-            this._setLayerPreviewImage('streetDark', true);
-        } else {
-            this._setLayerPreviewImage('street', true);
-        }
-    }
-
     _setLayerPreviews() {
-        if (Service.getService().tiles.streetDark &&
-            Handy.StyleManager.get_default().dark) {
-            this._setLayerPreviewImage('streetDark');
-        } else {
-            this._setLayerPreviewImage('street');
-        }
-        if (Service.getService().tiles.hybridAerial &&
-            Application.settings.get('hybrid-aerial')) {
-            this._setLayerPreviewImage('hybridAerial');
-        } else {
-            this._setLayerPreviewImage('aerial');
-        }
+        this._setLayerPreviewImage('street');
+        this._setLayerPreviewImage('aerial');
     }
 
     _setLayerPreviewImage(layer, forceUpdate = false) {
