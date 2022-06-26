@@ -180,47 +180,11 @@ export class MapView extends GtkChamplain.Embed {
             }
         });
 
-        // if dark tiles is available, setup handler to switch style
-        if (Service.getService().tiles.streetDark) {
-            Handy.StyleManager.get_default().connect('notify::dark',
-                                                    this._onDarkChanged.bind(this));
-        }
-
-        // if hybrid aerial tiles are available, setup handler to toggle
-        if (Service.getService().tiles.hybridAerial) {
-            Application.settings.connect('changed::hybrid-aerial',
-                                         this._onHybridAerialChanged.bind(this));
-        }
-
         Application.settings.connect('changed::show-scale',
                                      this._onShowScaleChanged.bind(this));
 
         this._initScale(view);
         return view;
-    }
-
-    _onDarkChanged() {
-        if (this._mapType === MapType.STREET) {
-            let overlay_sources = this.view.get_overlay_sources();
-
-            if (Handy.StyleManager.get_default().dark)
-                this.view.map_source = MapSource.createStreetDarkSource();
-            else
-                this.view.map_source = MapSource.createStreetSource();
-            overlay_sources.forEach((source) => this.view.add_overlay_source(source, 255));
-        }
-    }
-
-    _onHybridAerialChanged() {
-        if (this._mapType === MapType.AERIAL) {
-            let overlay_sources = this.view.get_overlay_sources();
-
-            if (Application.settings.get('hybrid-aerial'))
-                this.view.map_source = MapSource.createHybridAerialSource();
-            else
-                this.view.map_source = MapSource.createAerialSource();
-            overlay_sources.forEach((source) => this.view.add_overlay_source(source, 255));
-        }
     }
 
     /* create and store a route layer, pass true to get a dashed line */
@@ -346,21 +310,10 @@ export class MapView extends GtkChamplain.Embed {
         if (mapType !== MapView.MapType.LOCAL) {
             let tiles = Service.getService().tiles;
 
-            if (mapType === MapView.MapType.AERIAL && tiles.aerial) {
-                if (tiles.hybridAerial &&
-                    Application.settings.get('hybrid-aerial')) {
-                    this.view.map_source = MapSource.createHybridAerialSource();
-                } else {
-                    this.view.map_source = MapSource.createAerialSource();
-                }
-            } else {
-                if (tiles.streetDark &&
-                    Handy.StyleManager.get_default().dark) {
-                    this.view.map_source = MapSource.createStreetDarkSource();
-                } else {
-                    this.view.map_source = MapSource.createStreetSource();
-                }
-            }
+            if (mapType === MapView.MapType.AERIAL && tiles.aerial)
+                this.view.map_source = MapSource.createAerialSource();
+            else
+                this.view.map_source = MapSource.createStreetSource();
 
             Application.settings.set('map-type', mapType);
         } else {
