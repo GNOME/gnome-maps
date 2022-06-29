@@ -231,9 +231,6 @@ export class MapView extends GtkChamplain.Embed {
         this._instructionMarkerLayer = new Champlain.MarkerLayer({ selection_mode: mode });
         this.view.add_layer(this._instructionMarkerLayer);
 
-        this._annotationMarkerLayer = new Champlain.MarkerLayer({ selection_mode: mode });
-        this.view.add_layer(this._annotationMarkerLayer);
-
         ShapeLayer.SUPPORTED_TYPES.push(GeoJSONShapeLayer);
         ShapeLayer.SUPPORTED_TYPES.push(KmlShapeLayer);
         ShapeLayer.SUPPORTED_TYPES.push(GpxShapeLayer);
