@@ -38,11 +38,17 @@ gtk3 = dependency('gtk+-3.0', version: '>= 3.22.0')
 geoclue2 = dependency('geoclue-2.0', version: '>= 0.12.99')
 handy = dependency('libhandy-1', version: '>= 1.5.0')
 gweather = dependency('gweather4', version: '>= 3.90.0')
+gweather_soup_version = gweather.get_pkgconfig_variable('soupapiversion')
+if gweather_soup_version == '3.0'
+  geocodeglib = dependency('geocode-glib-2.0', version: '>=1.0')
+else
+  geocodeglib = dependency('geocode-glib-1.0', version: '>=1.0')
+endif
 
 libmaps_deps = [
 	dependency('gee-0.8', version: '>= 0.16.0'),
 	dependency('folks', version: '>= 0.10.0'),
-	dependency('geocode-glib-1.0', version: '>= 3.15.2'),
+	geocodeglib,
 	dependency('champlain-0.12', version: '>= 0.12.14'),
 	dependency('libxml-2.0'),
 	dependency('rest-0.7', version: '>= 0.7.90')
