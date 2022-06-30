@@ -1,47 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <!-- interface-requires gtk+ 3.10 -->
+  <requires lib="gtk" version="4.0"/>
   <template class="Gjs_PlacePopover" parent="Gjs_SearchPopover">
     <property name="visible">False</property>
     <property name="hexpand">False</property>
-    <property name="modal">False</property>
     <property name="height-request">320</property>
     <style>
       <class name="maps-popover"/>
     </style>
     <child>
       <object class="GtkGrid" id="mainGrid">
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
+        <property name="focusable">1</property>
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkStack" id="stack">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
             <property name="transition-type">crossfade</property>
             <style>
               <class name="maps-stack"/>
             </style>
             <child>
               <object class="GtkScrolledWindow" id="scrolledWindow">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
                 <property name="hscrollbar_policy">never</property>
-                <property name="shadow_type">in</property>
-                <child>
+                <property name="child">
                   <object class="GtkListBox" id="list">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="expand">True</property>
-                    <property name="activate_on_single_click">True</property>
+                    <property name="hexpand">1</property>
+                    <property name="vexpand">1</property>
                   </object>
-                </child>
+                </property>
               </object>
             </child>
             <child>
               <object class="GtkSpinner" id="spinner">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="width_request">16</property>
@@ -50,9 +39,7 @@
             </child>
             <child>
               <object class="GtkLabel" id="noResultsLabel">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label" translatable="yes">No results found</property>
+                <property name="label" translatable="1">No results found</property>
                 <property name="width_request">16</property>
                 <property name="height_request">16</property>
                 <style>
@@ -62,9 +49,7 @@
             </child>
             <child>
               <object class="GtkLabel" id="errorLabel">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label" translatable="yes">An error has occurred</property>
+                <property name="label" translatable="1">An error has occurred</property>
                 <property name="width_request">16</property>
                 <property name="height_request">16</property>
                 <style>

@@ -19,48 +19,63 @@
  * Author: Damián Nohales <damiannohales@gmail.com>
  */
 
-import Champlain from 'gi://Champlain';
-import Clutter from 'gi://Clutter';
+import Cairo from 'cairo';
 import GObject from 'gi://GObject';
+import Graphene from 'gi://Graphene';
+import Shumate from 'gi://Shumate';
 
 import {MapMarker} from './mapMarker.js';
 
-export class AccuracyCircleMarker extends Champlain.Point {
+export class AccuracyCircleMarker extends Shumate.Marker {
 
     constructor(params) {
         let place = params.place;
         delete params.place;
 
-        params.color = new Clutter.Color({ red: 0,
-                                           blue: 255,
-                                           green: 0,
-                                           alpha: 25 });
         params.latitude = place.location.latitude;
         params.longitude = place.location.longitude;
-        params.reactive = false;
 
         super(params);
 
         this._place = place;
     }
 
-    refreshGeometry(view) {
+    refreshGeometry(mapView) {
         this.latitude = this._place.location.latitude;
         this.longitude = this._place.location.longitude;
 
-        let zoom = view.zoom_level;
-        let source = view.map_source;
+        let zoom = mapView.map.viewport.zoom_level;
+        let source = mapView.mapSource;
         let metersPerPixel = source.get_meters_per_pixel(zoom,
                                                          this.latitude,
                                                          this.longitude);
         let size = this._place.location.accuracy * 2 / metersPerPixel;
+        let {x, y, width, height} = mapView.get_allocation();
 
-        if (size > view.width || size > view.height)
-            this.hide();
+        if (size > width || size > height)
+            this.visible = false;
         else {
-            this.size = size;
-            this.show();
+            this.set_size_request(size, size);
+            this.visible = true;
+            this.queue_draw();
         }
+    }
+
+    vfunc_snapshot(snapshot) {
+        let {x, y, width, height} = this.get_allocation();
+        let rect = new Graphene.Rect();
+
+        rect.init(0, 0, width, height);
+
+        let cr = snapshot.append_cairo(rect);
+
+        cr.setOperator(Cairo.Operator.OVER);
+
+        cr.setSourceRGBA(0, 0, 255, 0.1);
+        cr.arc(width / 2, width / 2, width / 2, 0, Math.PI * 2);
+        cr.fillPreserve();
+
+        super.vfunc_snapshot(snapshot);
     }
 }
 
@@ -73,22 +88,18 @@ export class UserLocationMarker extends MapMarker {
 
         this._accuracyMarker = new AccuracyCircleMarker({ place: this.place });
         this.connect('notify::view-zoom-level',
-                     () => this._accuracyMarker.refreshGeometry(this._view));
-        this._view.connect('notify::width',
-                     () => this._accuracyMarker.refreshGeometry(this._view));
-        this._view.connect('notify::height',
-                     () => this._accuracyMarker.refreshGeometry(this._view));
-        this._accuracyMarker.refreshGeometry(this._view);
+                     () => this._accuracyMarker.refreshGeometry(this._mapView));
+        this._mapView.connect('notify::default-width',
+                     () => this._accuracyMarker.refreshGeometry(this._mapView));
+        this._mapView.connect('notify::default-height',
+                     () => this._accuracyMarker.refreshGeometry(this._mapView));
+        this._accuracyMarker.refreshGeometry(this._mapView);
 
         this.place.connect('notify::location', () => this._updateLocation());
+        this._image.pixel_size = 24;
         this._updateLocation();
 
         this.connect('notify::visible', this._updateAccuracyCircle.bind(this));
-    }
-
-    get anchor() {
-        return { x: Math.floor(this.width / 2),
-                 y: Math.floor(this.height / 2) };
     }
 
     _hasBubble() {
@@ -101,29 +112,31 @@ export class UserLocationMarker extends MapMarker {
     }
 
     _updateLocation() {
-        if (this._actor) {
-            this._actor.destroy();
-            delete this._actor;
-        }
-
         if (this.place.location.heading > -1) {
-            this._actor = this._actorFromIconName('user-location-compass', 0);
-            this._actor.set_pivot_point(0.5, 0.5);
-            this._actor.set_rotation_angle(Clutter.RotateAxis.Z_AXIS, this.place.location.heading);
+            this._image.icon_name = 'user-location-compass'
+            this.queue_draw();
         } else {
-            this._actor = this._actorFromIconName('user-location', 0);
+            this._image.icon_name = 'user-location';
         }
-        this.add_actor(this._actor);
 
         this._updateAccuracyCircle();
     }
 
     _updateAccuracyCircle() {
         if (this.visible && this.place.location.accuracy > 0) {
-            this._accuracyMarker.refreshGeometry(this._view);
+            this._accuracyMarker.refreshGeometry(this._mapView);
         } else {
             this._accuracyMarker.visible = false;
         }
+    }
+
+    vfunc_snapshot(snapshot) {
+        if (this.place.location.heading > -1) {
+            snapshot.rotate(this.place.location.heading);
+        }
+
+        this.snapshot_child(this._image, snapshot);
+        super.vfunc_snapshot(snapshot);
     }
 }
 

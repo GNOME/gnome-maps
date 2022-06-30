@@ -86,12 +86,12 @@ export class PlaceView extends Gtk.Box {
         this._mainBox = ui.bubbleMainBox;
         this._addressLabel = ui.addressLabel;
 
-        this.add(this._mainStack);
+        this.append(this._mainStack);
 
         let placeButtons = new PlaceButtons({ place: this._place,
                                               mapView: mapView });
         placeButtons.connect('place-edited', this._onPlaceEdited.bind(this));
-        ui.placeButtons.add(placeButtons);
+        ui.placeButtons.append(placeButtons);
 
         if (this.place.isCurrentLocation) {
             /* Current Location bubbles have a slightly different layout, to
@@ -175,11 +175,11 @@ export class PlaceView extends Gtk.Box {
     }
 
     get loading() {
-        return this._spinner.active;
+        return this._spinner.spinning;
     }
     set loading(val) {
         this._mainStack.set_visible_child(val ? this._spinner : this._mainBox);
-        this._spinner.active = val;
+        this._spinner.spinning = val;
     }
 
     updatePlaceDetails() {
@@ -484,7 +484,7 @@ export class PlaceView extends Gtk.Box {
         content.forEach(({ type, label, icon, linkUrl, info, grid }) => {
             let separator = new Gtk.Separator({ visible: true });
             separator.get_style_context().add_class('no-margin-separator');
-            this._placeDetails.add(separator);
+            this._placeDetails.append(separator);
 
             let box = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL,
                                     visible: true,
@@ -501,7 +501,6 @@ export class PlaceView extends Gtk.Box {
             if (icon) {
                 let widget = new Gtk.Image({ icon_name: icon,
                                              visible: true,
-                                             xalign: 1,
                                              valign: Gtk.Align.START,
                                              halign: Gtk.Align.END });
 
@@ -509,14 +508,14 @@ export class PlaceView extends Gtk.Box {
                     widget.tooltip_markup = label;
                 }
 
-                box.add(widget);
+                box.append(widget);
             } else if (label) {
                 let widget = new Gtk.Label({ label: label.italics(),
                                              visible: true,
                                              use_markup: true,
                                              yalign: 0,
                                              halign: Gtk.Align.END });
-                box.add(widget);
+                box.append(widget);
             }
 
             if (linkUrl) {
@@ -574,8 +573,8 @@ export class PlaceView extends Gtk.Box {
                 }
             }
 
-            box.add(widget);
-            this._placeDetails.add(box);
+            box.append(widget);
+            this._placeDetails.append(box);
         });
     }
 
@@ -628,7 +627,15 @@ export class PlaceView extends Gtk.Box {
 
     // clear the view widgets to be able to re-populate an updated place
     _clearView() {
-        this._placeDetails.get_children().forEach((child) => this._placeDetails.remove(child));
+        let details = [];
+
+        for (let detail of this._placeDetails) {
+            details.push(detail);
+        }
+
+        for (let detail of details) {
+            this._placeDetails.remove(detail);
+        }
     }
 
     // called when the place's location changes (e.g. for the current location)

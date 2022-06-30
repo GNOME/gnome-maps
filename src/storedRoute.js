@@ -20,9 +20,9 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
-import Champlain from 'gi://Champlain';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
+import Shumate from 'gi://Shumate';
 
 import {Place} from './place.js';
 import {Route, TurnPoint} from './route.js';
@@ -175,15 +175,15 @@ export class StoredRoute extends Place {
                 prop.path = prop.path.map((coordinate) => {
                     let lat = coordinate.latitude;
                     let lon = coordinate.longitude;
-                    return new Champlain.Coordinate({ latitude: lat,
-                                                      longitude: lon });
+                    return new Shumate.Coordinate({ latitude: lat,
+                                                    longitude: lon });
                 });
                 prop.turnPoints = prop.turnPoints.map((turnPoint) => {
                     let lat = turnPoint.coordinate.latitude;
                     let lon = turnPoint.coordinate.longitude;
 
-                    let coordinate = new Champlain.Coordinate({ latitude: lat,
-                                                                longitude: lon });
+                    let coordinate = new Shumate.Coordinate({ latitude: lat,
+                                                              longitude: lon });
 
                     return new TurnPoint({
                         coordinate: coordinate,

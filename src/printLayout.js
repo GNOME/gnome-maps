@@ -18,26 +18,30 @@
  */
 
 import Cairo from 'cairo';
-import Champlain from 'gi://Champlain';
-import Clutter from 'gi://Clutter';
 import Gdk from 'gi://Gdk';
 import GObject from 'gi://GObject';
+import Graphene from 'gi://Graphene';
 import Gtk from 'gi://Gtk';
 import Pango from 'gi://Pango';
 import PangoCairo from 'gi://PangoCairo';
+import Shumate from 'gi://Shumate';
 
 import {Application} from './application.js';
+import {BoundingBox} from './boundingBox.js';
 import * as Color from './color.js';
 import {MapView} from './mapView.js';
 import * as MapSource from './mapSource.js';
 import {TurnPointMarker} from './turnPointMarker.js';
 import * as Utils from './utils.js';
 
-const _STROKE_COLOR = new Clutter.Color({ red: 0,
-                                          blue: 255,
-                                          green: 0,
-                                          alpha: 255 });
+const _STROKE_COLOR = new Gdk.RGBA({ red: 0,
+                                     blue: 255,
+                                     green: 0,
+                                     alpha: 1.0 });
 const _STROKE_WIDTH = 5.0;
+
+const _ICON_COLOR = new Gdk.RGBA({ red: 0, green: 0, blue: 0, alpha: 1.0 });
+const _ICON_SIZE = 24;
 
 /* All following constants are ratios of surface size to page size */
 const _Header = {
@@ -48,8 +52,7 @@ const _Header = {
 const _MapView = {
     SCALE_X: 1.0,
     SCALE_Y: 0.4,
-    SCALE_MARGIN: 0.04,
-    ZOOM_LEVEL: 18
+    SCALE_MARGIN: 0.04
 };
 
 export class PrintLayout extends GObject.Object {
@@ -64,11 +67,15 @@ export class PrintLayout extends GObject.Object {
         let totalSurfaces = params.totalSurfaces;
         delete params.totalSurfaces;
 
+        let mainWindow = params.mainWindow;
+        delete params.mainWindow;
+
         super(params);
 
         this._pageWidth = pageWidth;
         this._pageHeight = pageHeight;
         this._totalSurfaces = totalSurfaces;
+        this._mainWindow = mainWindow;
         this.numPages = 0;
         this.surfaceObjects = [];
         this._surfacesRendered = 0;
@@ -88,8 +95,7 @@ export class PrintLayout extends GObject.Object {
 
         let mapViewWidth = _MapView.SCALE_X * this._pageWidth;
         let mapViewHeight = _MapView.SCALE_Y * this._pageHeight;
-        let mapViewMargin = _MapView.SCALE_MARGIN * this._pageHeight;
-        let mapViewZoomLevel = _MapView.ZOOM_LEVEL;
+        let mapViewMargin = _MapView.SCALE_MARGIN * this._pageHeight
 
         this._createNewPage();
         let dy = 0;
@@ -103,13 +109,15 @@ export class PrintLayout extends GObject.Object {
         this._drawHeader(headerWidth, headerHeight);
         this._cursorY += dy;
 
+        // TODO: for now for now skip drawing the mini map
+        /*
         dy = mapViewHeight + mapViewMargin;
         this._adjustPage(dy);
         let turnPointsLength = this._route.turnPoints.length;
         let allTurnPoints = this._createTurnPointArray(0, turnPointsLength);
-        this._drawMapView(mapViewWidth, mapViewHeight,
-                          mapViewZoomLevel, allTurnPoints);
+        this._drawMapView(mapViewWidth, mapViewHeight, allTurnPoints);
         this._cursorY += dy;
+        */
     }
 
     _initSignals() {
@@ -120,20 +128,38 @@ export class PrintLayout extends GObject.Object {
         return new TurnPointMarker({ turnPoint: turnPoint, queryPoint: {} });
     }
 
-    _drawMapView(width, height, zoomLevel, turnPoints) {
+    _getZoomLevelFittingBBox(bbox, mapSource, width, height) {
+        let goodSize = false;
+        let zoomLevel = mapSource.max_zoom_level;
+
+        do {
+
+            let minX = mapSource.get_x(zoomLevel, bbox.left);
+            let minY = mapSource.get_y(zoomLevel, bbox.bottom);
+            let maxX = mapSource.get_x(zoomLevel, bbox.right);
+            let maxY = mapSource.get_y(zoomLevel, bbox.top);
+
+            if (minY - maxY <= height && maxX - minX <= width)
+                goodSize = true;
+            else
+                zoomLevel--;
+
+            if (zoomLevel <= mapSource.min_zoom_level) {
+                zoomLevel = mapSource.min_zoom_level;
+                goodSize = true;
+            }
+        } while (!goodSize);
+
+        return zoomLevel;
+    }
+
+    _drawMapView(width, height, turnPoints) {
         let pageNum = this.numPages - 1;
         let x = this._cursorX;
         let y = this._cursorY;
         let mapSource = MapSource.createPrintSource();
         let locations = [];
-        let markerLayer = new Champlain.MarkerLayer();
-        let view = new Champlain.View({ width: width,
-                                        height: height,
-                                        zoom_level: zoomLevel });
-        view.set_map_source(mapSource);
-        view.add_layer(markerLayer);
-
-        this._addRouteLayer(view);
+        let markerLayer = new Shumate.MarkerLayer();
 
         turnPoints.forEach((turnPoint) => {
             locations.push(turnPoint.coordinate);
@@ -142,30 +168,60 @@ export class PrintLayout extends GObject.Object {
             }
         });
 
-        view.ensure_visible(this._createBBox(locations), false);
-        if (view.state !== Champlain.State.DONE) {
-            let notifyId = view.connect('notify::state', () => {
-                if (view.state === Champlain.State.DONE) {
-                    view.disconnect(notifyId);
-                    let surface = view.to_surface(true);
-                    if (surface)
-                        this._addSurface(surface, x, y, pageNum);
-                }
-            });
-        } else {
-            let surface = view.to_surface(true);
-            if (surface)
-                this._addSurface(surface, x, y, pageNum);
-        }
+        let bbox = this._createBBox(locations);
+        let zoomLevel =
+            this._getZoomLevelFittingBBox(bbox, mapSource, width, height);
+
+        let map = new Shumate.Map();
+        let mapLayer = new Shumate.MapLayer({ map_source: mapSource,
+                                              viewport:   map.viewport });
+
+        map.viewport.zoom_level = zoomLevel;
+        map.add_layer(mapLayer);
+
+        let routeLayer = this._addRouteLayer(map, mapLayer);
+
+        map.insert_layer_above(markerLayer, routeLayer);
+        map.viewport.set_reference_map_source(mapSource);
+        map.set_size_request(width, height);
+
+        // TODO: how do we know when it's loaded?
+        let surface = this._mapToSurface(map, width, height);
+        if (surface)
+            this._addSurface(surface, x, y, pageNum);
+    }
+
+    // TODO: this does not quite work...
+    _mapToSurface(map, width, height) {
+        let surface = new Cairo.ImageSurface(Cairo.Format.ARGB32, width, height);
+        let cr = new Cairo.Context(surface);
+        let paintable = new Gtk.WidgetPaintable({ widget: map });
+        let rect = new Graphene.Rect();
+
+        rect.init(0, 0, width, height);
+
+        let snapshot = Gtk.Snapshot.new();
+
+        paintable.snapshot(snapshot, width, height);
+
+        let node = snapshot.to_node();
+        let renderer = this._mainWindow.get_native().get_renderer();
+        let texture = renderer.render_texture(node, rect);
+        let pixbuf = Gdk.pixbuf_get_from_texture(texture);
+
+        Gdk.cairo_set_source_pixbuf(cr, pixbuf, 0, 0);
+        cr.paint();
+
+        return surface;
     }
 
     _createBBox(locations) {
         let bbox = this._route.createBBox(locations);
 
-        return new Champlain.BoundingBox({ top:    bbox.top,
-                                           left:   bbox.left,
-                                           bottom: bbox.bottom,
-                                           right:  bbox.right });
+        return new BoundingBox({ top:    bbox.top,
+                                 left:   bbox.left,
+                                 bottom: bbox.bottom,
+                                 right:  bbox.right });
     }
 
     _createTurnPointArray(startIndex, endIndex) {
@@ -176,24 +232,37 @@ export class PrintLayout extends GObject.Object {
         return turnPointArray;
     }
 
-    _addRouteLayer(view) {
-        let routeLayer = new Champlain.PathLayer({ stroke_width: _STROKE_WIDTH,
-                                                   stroke_color: _STROKE_COLOR });
-        view.add_layer(routeLayer);
+    _addRouteLayer(map, mapLayer) {
+        let routeLayer = new Shumate.PathLayer({ stroke_width: _STROKE_WIDTH,
+                                                 stroke_color: _STROKE_COLOR });
+        map.insert_layer_above(routeLayer, mapLayer);
         this._route.path.forEach((node) => routeLayer.add_node(node));
+
+        return routeLayer;
     }
 
-    _drawIcon(cr, iconName, width, height) {
-        let theme = Gtk.IconTheme.get_default();
-        let pixbuf = theme.load_icon(iconName, height, 0);
-        let iconWidth = pixbuf.width;
-        let iconHeight = pixbuf.height;
+    _drawIcon(cr, iconName, width, height, size) {
+        let display = Gdk.Display.get_default();
+        let theme = Gtk.IconTheme.get_for_display(display);
+        let iconPaintable = theme.lookup_icon(iconName, null, size, 1,
+                                          Gtk.TextDirection.NONE, 0);
+        let snapshot = Gtk.Snapshot.new();
+        let rect = new Graphene.Rect();
+
+        iconPaintable.snapshot_symbolic(snapshot, size, size, [_ICON_COLOR]);
+        rect.init(0, 0, size, size);
+
+        let node = snapshot.to_node();
+        let renderer = this._mainWindow.get_native().get_renderer();
+
+        let paintable = renderer.render_texture(node, rect);
+        let pixbuf = Gdk.pixbuf_get_from_texture(paintable)
 
         Gdk.cairo_set_source_pixbuf(cr, pixbuf,
                                     this._rtl ?
-                                    width - height + (height - iconWidth) / 2 :
-                                    (height - iconWidth) / 2,
-                                    (height - iconWidth) / 2);
+                                    width - height + (height - size) / 2 :
+                                    (height - size) / 2,
+                                    (height - size) / 2);
         cr.paint();
     }
 
@@ -259,7 +328,7 @@ export class PrintLayout extends GObject.Object {
         let iconName = turnPoint.iconName;
 
         if (iconName) {
-            this._drawIcon(cr, iconName, width, height);
+            this._drawIcon(cr, iconName, width, height, _ICON_SIZE);
         }
 
         // draw the instruction text

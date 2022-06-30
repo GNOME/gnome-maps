@@ -1,49 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
+  <requires lib="gtk" version="4.0"/>
   <template class="Gjs_PlaceBar" parent="GtkRevealer">
-    <property name="visible">True</property>
     <property name="transition_type">slide-up</property>
-    <property name="reveal_child">False</property>
-    <child>
+    <property name="child">
       <object class="GtkActionBar" id="actionbar">
-        <property name="visible">True</property>
         <child>
-          <object class="GtkEventBox" id="eventbox">
-            <property name="visible">True</property>
+          <object class="GtkBox" id="box">
+            <property name="orientation">vertical</property>
+            <property name="spacing">6</property>
             <child>
-              <object class="GtkBox" id="box">
-                <property name="visible">True</property>
-                <property name="orientation">vertical</property>
+              <object class="GtkBox">
+                <property name="hexpand">1</property>
                 <property name="spacing">6</property>
                 <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="orientation">horizontal</property>
-                    <property name="hexpand">True</property>
-                    <property name="spacing">6</property>
+                  <object class="GtkLabel" id="title">
+                    <style>
+                      <class name="title-2"/>
+                    </style>
+                    <property name="ellipsize">end</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="altSendToButton">
+                    <property name="visible">0</property>
                     <child>
-                      <object class="GtkLabel" id="title">
-                        <style>
-                          <class name="title-2"/>
-                        </style>
-                        <property name="visible">True</property>
-                        <property name="ellipsize">end</property>
+                      <object class="GtkImage">
+                        <property name="icon_name">send-to-symbolic</property>
+                        <property name="tooltip_text" translatable="1" comments="Translators: This is a tooltip">Share location</property>
                       </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="altSendToButton">
-                        <property name="visible">False</property>
-                        <child>
-                          <object class="GtkImage">
-                            <property name="visible">True</property>
-                            <property name="icon_name">send-to-symbolic</property>
-                            <property name="tooltip_text" translatable="yes" comments="Translators: This is a tooltip">Share location</property>
-                          </object>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="pack_type">end</property>
-                      </packing>
                     </child>
                   </object>
                 </child>
@@ -52,8 +37,6 @@
           </object>
         </child>
       </object>
-    </child>
+    </property>
   </template>
 </interface>
-
-

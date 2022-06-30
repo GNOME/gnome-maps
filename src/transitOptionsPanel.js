@@ -63,17 +63,19 @@ export class TransitOptionsPanel extends Gtk.Grid {
             this._onTransitTimeOptionsComboboxChanged.bind(this));
         this._transitTimeEntry.connect('activate',
             this._onTransitTimeEntryActivated.bind(this));
+        this._eventControllerFocus = new Gtk.EventControllerFocus();
+        this._transitTimeEntry.add_controller(this._eventControllerFocus);
         /* trigger an update of the query time as soon as focus leave the time
          * entry, to allow the user to enter a time before selecting start
          * and destination without having to press enter */
-        this._transitTimeEntry.connect('focus-out-event',
+        this._eventControllerFocus.connect('leave',
             this._onTransitTimeEntryActivated.bind(this));
-        this._transitDateButton.popover.get_child().connect('day-selected-double-click',
+        this._transitDateButton.popover.get_child().connect('day-selected',
             this._onTransitDateCalenderDaySelected.bind(this));
-        this._transitDateButton.connect('toggled',
-            this._onTransitDateButtonToogled.bind(this));
-        this._transitParametersMenuButton.connect('toggled',
-            this._onTransitParametersToggled.bind(this))
+        this._transitDateButton.popover.connect('closed',
+            this._onTransitDateClosed.bind(this));
+        this._transitParametersMenuButton.popover.connect('closed',
+            this._onTransitParametersClosed.bind(this))
     }
 
     _onTransitTimeOptionsComboboxChanged() {
@@ -125,8 +127,7 @@ export class TransitOptionsPanel extends Gtk.Grid {
     _updateTransitDateButton(date) {
         let calendar = this._transitDateButton.popover.get_child();
 
-        calendar.select_month(date.get_month() - 1, date.get_year());
-        calendar.select_day(date.get_day_of_month());
+        calendar.select_day(date);
         this._transitDateButton.label =
             /*
              * Translators: this is a format string giving the equivalent to
@@ -153,9 +154,8 @@ export class TransitOptionsPanel extends Gtk.Grid {
         }
     }
 
-    _onTransitDateButtonToogled() {
-        if (!this._transitDateButton.active)
-            this._onTransitDateCalenderDaySelected();
+    _onTransitDateClosed() {
+        this._onTransitDateCalenderDaySelected();
     }
 
     _createTransitOptions() {
@@ -188,14 +188,12 @@ export class TransitOptionsPanel extends Gtk.Grid {
         return options;
     }
 
-    _onTransitParametersToggled() {
-        if (!this._transitParametersMenuButton.active) {
-            let options = this._createTransitOptions();
+    _onTransitParametersClosed() {
+        let options = this._createTransitOptions();
 
-            if (!TransitOptions.equals(options, this._lastOptions)) {
-                this._query.transitOptions = options;
-                this._lastOptions = options;
-            }
+        if (!TransitOptions.equals(options, this._lastOptions)) {
+            this._query.transitOptions = options;
+            this._lastOptions = options;
         }
     }
  }

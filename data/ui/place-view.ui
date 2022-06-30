@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.18.3 -->
 <interface>
-  <requires lib="gtk+" version="3.12"/>
+  <requires lib="gtk" version="4.0"/>
   <object class="GtkStack" id="bubble-main-stack">
-    <property name="visible">True</property>
     <child>
       <object class="GtkBox" id="bubble-main-box">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child>
           <object class="Gjs_PlaceViewImage" id="bubble-thumbnail">
@@ -17,8 +13,7 @@
         </child>
         <child>
           <object class="GtkSeparator" id="thumbnail-separator">
-            <property name="visible">False</property>
-            <property name="can_focus">False</property>
+            <property name="visible">0</property>
             <style>
               <class name="no-margin-separator"/>
             </style>
@@ -26,29 +21,24 @@
         </child>
         <child>
           <object class="GtkBox" id="title-box">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
-            <property name="margin">18</property>
+            <property name="margin-start">18</property>
+            <property name="margin-end">18</property>
+            <property name="margin-top">18</property>
+            <property name="margin-bottom">18</property>
             <property name="spacing">12</property>
             <child>
               <object class="GtkBox">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="orientation">horizontal</property>
                     <property name="spacing">12</property>
                     <child>
                       <object class="GtkLabel" id="label-title">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
                         <property name="halign">start</property>
-                        <property name="expand">True</property>
-                        <property name="wrap">True</property>
+                        <property name="hexpand">1</property>
+                        <property name="vexpand">1</property>
+                        <property name="wrap">1</property>
                         <property name="max_width_chars">30</property>
                         <property name="xalign">0</property>
                         <style>
@@ -58,14 +48,11 @@
                     </child>
                     <child>
                       <object class="GtkButton" id="send-to-button-alt">
-                        <property name="visible">False</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">False</property>
-                        <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Share location</property>
+                        <property name="visible">0</property>
+                        <property name="focusable">1</property>
+                        <property name="tooltip-text" translatable="1" comments="Translators: This is a tooltip">Share location</property>
                         <child>
                           <object class="GtkImage">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
                             <property name="icon-name">send-to-symbolic</property>
                             <property name="pixel_size">16</property>
                           </object>
@@ -76,11 +63,11 @@
                 </child>
                 <child>
                   <object class="GtkLabel" id="native-name">
-                    <property name="visible">False</property>
-                    <property name="can_focus">False</property>
+                    <property name="visible">0</property>
                     <property name="halign">start</property>
-                    <property name="expand">True</property>
-                    <property name="wrap">True</property>
+                    <property name="hexpand">1</property>
+                    <property name="vexpand">1</property>
+                    <property name="wrap">1</property>
                     <property name="max_width_chars">30</property>
                     <property name="xalign">0</property>
                     <property name="margin-top">6</property>
@@ -93,35 +80,27 @@
             </child>
             <child>
               <object class="GtkLabel" id="address-label">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="xalign">0</property>
-                <property name="use_markup">True</property>
-                <property name="wrap">True</property>
+                <property name="use_markup">1</property>
+                <property name="wrap">1</property>
               </object>
             </child>
             <child>
               <object class="GtkBox" id="place-buttons">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
               </object>
             </child>
           </object>
         </child>
         <child>
-          <object class="GtkGrid" id="bubble-content-area">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-          </object>
+          <object class="GtkGrid" id="bubble-content-area"/>
         </child>
       </object>
     </child>
     <child>
       <object class="GtkSpinner" id="bubble-spinner">
-        <property name="visible">True</property>
-        <property name="active">False</property>
+        <property name="spinning">False</property>
       </object>
     </child>
   </object>

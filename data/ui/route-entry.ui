@@ -1,48 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk+" version="3.10"/>
+  <requires lib="gtk" version="4.0"/>
   <template class="Gjs_RouteEntry" parent="GtkGrid">
-    <property name="visible">True</property>
-    <property name="orientation">horizontal</property>
-    <property name="hexpand">False</property>
+    <property name="hexpand">0</property>
     <child>
-      <object class="GtkEventBox" id="iconEventBox">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <child>
-          <object class="GtkImage" id="icon">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="margin-end">8</property>
-            <property name="margin-start">13</property>
-            <property name="width-request">16</property>
-            <property name="icon-name">maps-point-end-symbolic</property>
-	    <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Drag to change order of the route</property>
-          </object>
-        </child>
+      <object class="GtkImage" id="icon">
+        <property name="margin-end">8</property>
+        <property name="margin-start">13</property>
+        <property name="width-request">16</property>
+        <property name="icon-name">maps-point-end-symbolic</property>
+        <property name="tooltip-text" translatable="1" comments="Translators: This is a tooltip">Drag to change order of the route</property>
       </object>
     </child>
     <child>
       <object class="GtkGrid" id="entryGrid">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
         <property name="width_request">230</property>
-        <property name="hexpand">False</property>
+        <property name="hexpand">0</property>
       </object>
     </child>
     <child>
       <object class="GtkButton" id="button">
-        <property name="visible">True</property>
-        <property name="no_show_all">True</property>
-        <property name="can-focus">True</property>
+        <property name="focusable">1</property>
         <property name="valign">center</property>
         <property name="height-request">31</property>
         <property name="margin-start">4</property>
         <property name="margin-end">10</property>
         <child>
-          <object class="GtkImage" id="buttonImage">
-            <property name="visible">True</property>
-          </object>
+          <object class="GtkImage" id="buttonImage"/>
         </child>
       </object>
     </child>

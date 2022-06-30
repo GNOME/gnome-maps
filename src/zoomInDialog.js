@@ -32,8 +32,8 @@ export class ZoomInDialog extends Gtk.Dialog {
         delete params.latitude;
         let longitude = params.longitude;
         delete params.longitude;
-        let view = params.view;
-        delete params.view;
+        let map = params.map;
+        delete params.map;
 
         /* This is a construct-only property and cannot be set by GtkBuilder */
         params.use_header_bar = true;
@@ -42,16 +42,15 @@ export class ZoomInDialog extends Gtk.Dialog {
 
         this._latitude = latitude;
         this._longitude = longitude;
-        this._view = view;
+        this._map = map;
         this._zoomInButton.connect('clicked', () => this._onZoomIn());
         this._cancelButton.connect('clicked', () => this._onCancel());
     }
 
     _onZoomIn() {
-        this._view.zoom_level = OSMEdit.MIN_ADD_LOCATION_ZOOM_LEVEL;
-
         /* center on the position first selected */
-        this._view.center_on(this._latitude, this._longitude);
+        this._map.go_to_full(this._latitude, this._longitude,
+                             OSMEdit.MIN_ADD_LOCATION_ZOOM_LEVEL);
         this.response(Gtk.ResponseType.OK);
     }
 

@@ -20,7 +20,6 @@
  */
 
 import Cairo from 'cairo';
-import Clutter from 'gi://Clutter';
 import Gdk from 'gi://Gdk';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
@@ -33,7 +32,7 @@ import * as TransitPlan from './transitPlan.js';
 import * as Utils from './utils.js';
 
 const ICON_SIZE = 12;
-const ACTOR_SIZE = 20;
+const MARKER_SIZE = 20;
 
 /* threashhold for route color luminance when we consider it more or less
  * as white, and draw an outline around the label
@@ -52,10 +51,11 @@ export class TransitBoardMarker extends MapMarker {
         params.place = new Place({ location: location });
         super(params);
 
-        this.add_actor(this._createActor(leg));
+        this._image.pixel_size = MARKER_SIZE;
+        this._image.paintable = this._createPaintable(leg);
     }
 
-    /* Creates a Clutter actor for the given transit leg, showing the
+    /* Creates a Gdk.Paintable for the given transit leg, showing the
      * corresponding transit type icon and rendered inside a circle using the
      * foreground color of the icon taken from the transit legs text color
      * attribute and background color taken from the transit legs color
@@ -64,7 +64,7 @@ export class TransitBoardMarker extends MapMarker {
      * background color above a threshold to improve readability against the
      * map background.
      */
-    _createActor(leg) {
+    _createPaintable(leg) {
         try {
             let bgColor = leg.color ?? TransitPlan.DEFAULT_ROUTE_COLOR;
             let fgColor =
@@ -84,45 +84,37 @@ export class TransitBoardMarker extends MapMarker {
                                         blue: fgBlue,
                                         alpha: 1.0
                                       });
-            let theme = Gtk.IconTheme.get_default();
-            let info = theme.lookup_icon(leg.iconName, ICON_SIZE,
-                                         Gtk.IconLookupFlags.FORCE_SIZE);
-            let pixbuf = info.load_symbolic(fgRGBA, null, null, null)[0];
-            let canvas = new Clutter.Canvas({ width: ACTOR_SIZE,
-                                              height: ACTOR_SIZE });
+            let paintable = this._paintableFromIconName(leg.iconName,
+                                                        ICON_SIZE, fgRGBA);
 
+            let surface = new Cairo.ImageSurface(Cairo.Format.ARGB32,
+                                                 MARKER_SIZE, MARKER_SIZE);
+            let cr = new Cairo.Context(surface);
+            let pixbuf = Gdk.pixbuf_get_from_texture(paintable);
 
-            canvas.connect('draw', (canvas, cr) => {
-                cr.setOperator(Cairo.Operator.CLEAR);
-                cr.paint();
-                cr.setOperator(Cairo.Operator.OVER);
+            cr.setOperator(Cairo.Operator.CLEAR);
+            cr.paint();
+            cr.setOperator(Cairo.Operator.OVER);
 
-                cr.setSourceRGB(bgRed, bgGreen, bgBlue);
-                cr.arc(ACTOR_SIZE / 2, ACTOR_SIZE / 2, ACTOR_SIZE / 2,
-                       0, Math.PI * 2);
-                cr.fillPreserve();
+            cr.setSourceRGB(bgRed, bgGreen, bgBlue);
+            cr.arc(MARKER_SIZE / 2, MARKER_SIZE / 2, MARKER_SIZE / 2,
+                   0, Math.PI * 2);
+            cr.fillPreserve();
 
-                Gdk.cairo_set_source_pixbuf(cr, pixbuf,
-                                            (ACTOR_SIZE - pixbuf.get_width()) / 2,
-                                            (ACTOR_SIZE - pixbuf.get_height()) / 2);
-                cr.paint();
+            Gdk.cairo_set_source_pixbuf(cr, pixbuf,
+                                        (MARKER_SIZE - pixbuf.get_width()) / 2,
+                                        (MARKER_SIZE - pixbuf.get_height()) / 2);
+            cr.paint();
 
-                if (hasOutline) {
-                    cr.setSourceRGB(fgRed, fgGreen, fgBlue);
-                    cr.setLineWidth(1);
-                    cr.stroke();
-                }
+            if (hasOutline) {
+                cr.setSourceRGB(fgRed, fgGreen, fgBlue);
+                cr.setLineWidth(1);
+                cr.stroke();
+            }
 
-                this._surface = cr.getTarget();
-            });
-
-            let actor = new Clutter.Actor();
-
-            actor.set_content(canvas);
-            actor.set_size(ACTOR_SIZE, ACTOR_SIZE);
-            canvas.invalidate();
-
-            return actor;
+            return Gdk.Texture.new_for_pixbuf(
+                Gdk.pixbuf_get_from_surface(surface, 0, 0,
+                                            MARKER_SIZE, MARKER_SIZE));
         } catch (e) {
             Utils.debug('Failed to load image: %s'.format(e.message));
             return null;

@@ -37,10 +37,23 @@ export class OSMTypePopover extends SearchPopover {
     }
 
     showMatches(matches) {
-        this._list.foreach((row) => this._list.remove(row));
+        let rows = [];
+
+        for (let row of this._list) {
+            rows.push(row);
+        }
+        for (let row of rows) {
+            this._list.remove(row);
+        }
 
         matches.forEach((type) => this._addRow(type));
-        this.show();
+
+        let {x, y, width, height} = this.get_parent().get_allocation();
+
+        // Magic number to make the alignment pixel perfect.
+        this.width_request = width + 20;
+
+        this.popup();
     }
 
     _addRow(type) {

@@ -23,7 +23,7 @@
 // Google encoded polyline decoder
 // https://developers.google.com/maps/documentation/utilities/polylinealgorithm
 
-import Champlain from 'gi://Champlain';
+import Shumate from 'gi://Shumate';
 
 function _decodeValue(data, index) {
     let b;
@@ -61,7 +61,7 @@ export function decode(data) {
         // first value is absolute, rest are relative to previous value
         lat += latdelta;
         lon += londelta;
-        polyline.push(new Champlain.Coordinate({
+        polyline.push(new Shumate.Coordinate({
             latitude:  lat * 1e-5,
             longitude: lon * 1e-5
         }));

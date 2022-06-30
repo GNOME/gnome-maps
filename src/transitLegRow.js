@@ -119,29 +119,22 @@ export class TransitLegRow extends Gtk.ListBoxRow {
             }
         });
 
-        this._eventBox.connect('event', (widget, event) => {
-            this._handleEventBox(event);
-            return true;
-        });
+        this._buttonPressGesture = new Gtk.GestureSingle();
+        this.add_controller(this._buttonPressGesture);
+        this._buttonPressGesture.connect('begin', () => this._onPress());
 
         this._isExpanded = false;
     }
 
-    // Handle events received on the EventBox for expanding when clicking
-    _handleEventBox(event) {
-        let [isButton, button] = event.get_button();
-        let type = event.get_event_type();
-
-        if (isButton && button === 1 && type === Gdk.EventType.BUTTON_PRESS) {
-            if (this._isExpanded) {
-                this._collaps();
-            } else {
-                this._mapView.view.zoom_level = 16;
-                this._mapView.view.center_on(this._leg.fromCoordinate[0],
-                                             this._leg.fromCoordinate[1]);
-                if (this._hasIntructions())
-                    this._expand();
-            }
+    _onPress() {
+        if (this._isExpanded) {
+            this._collaps();
+        } else {
+            this._mapView.map.go_to_full(this._leg.fromCoordinate[0],
+                                         this._leg.fromCoordinate[1],
+                                         16);
+            if (this._hasIntructions())
+                this._expand();
         }
     }
 
@@ -207,6 +200,5 @@ GObject.registerClass({
                        'detailsRevealer',
                        'agencyLabel',
                        'collapsButton',
-                       'instructionList',
-                       'eventBox']
+                       'instructionList']
 }, TransitLegRow);

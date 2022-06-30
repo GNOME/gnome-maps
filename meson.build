@@ -34,13 +34,13 @@ glib = dependency('glib-2.0', version: '>= 2.66.0')
 gio = dependency('gio-2.0', version: '>= 2.44.0')
 gjs = dependency('gjs-1.0', version: '>= 1.69.2')
 girepository = dependency('gobject-introspection-1.0', version: '>= 0.10.1')
-gtk3 = dependency('gtk+-3.0', version: '>= 3.22.0')
+gtk4 = dependency('gtk4')
 geoclue2 = dependency('geoclue-2.0', version: '>= 0.12.99')
-handy = dependency('libhandy-1', version: '>= 1.5.0')
+libadwaita = dependency('libadwaita-1')
 gweather = dependency('gweather4', version: '>= 3.90.0')
 
 libmaps_deps = [
-	dependency('champlain-0.12', version: '>= 0.12.14'),
+	dependency('shumate-1.0'),
 	dependency('libxml-2.0'),
 	dependency('rest-0.7', version: '>= 0.7.90')
 ]

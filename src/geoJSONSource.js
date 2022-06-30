@@ -19,10 +19,12 @@
  */
 
 import Cairo from 'cairo';
-import Champlain from 'gi://Champlain';
-import Clutter from 'gi://Clutter';
+import Gdk from 'gi://Gdk';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
+import Shumate from 'gi://Shumate';
+
+import GnomeMaps from 'gi://GnomeMaps';
 
 import {BoundingBox} from './boundingBox.js';
 import * as Geojsonvt from './geojsonvt/geojsonvt.js';
@@ -38,54 +40,33 @@ const TileFeature = { POINT: 1,
                       LINESTRING: 2,
                       POLYGON: 3 };
 
-export class GeoJSONSource extends Champlain.TileSource {
+export class GeoJSONSource extends GnomeMaps.SyncMapSource {
 
     constructor(params) {
-        super();
+        let mapView = params.mapView;
+        delete params.mapView;
+        let markerLayer = params.markerLayer;
+        delete params.markerLayer;
 
-        this._mapView = params.mapView;
-        this._markerLayer = params.markerLayer;
+        super(params);
+
+        this._mapView = mapView;
+        this._markerLayer = markerLayer;
         this._bbox = new BoundingBox();
-        this._tileSize = Service.getService().tiles.street.tile_size;
+        this.tile_size = Service.getService().tiles.street.tile_size;
+        this.max_zoom_level = 20;
+        this.min_zoom_level = 0;
     }
 
     get bbox() {
         return this._bbox;
     }
 
-    vfunc_get_tile_size() {
-        return this._tileSize;
-    }
-
-    vfunc_get_max_zoom_level() {
-        return 20;
-    }
-
-    vfunc_get_min_zoom_level() {
-        return 0;
-    }
-
-    vfunc_get_id() {
-        return 'GeoJSONSource';
-    }
-
-    vfunc_get_name() {
-        return 'GeoJSONSource';
-    }
-
     vfunc_fill_tile(tile) {
-        if (tile.get_state() === Champlain.State.DONE)
+        if (tile.get_state() === Shumate.State.DONE)
             return;
 
-        tile.connect('render-complete', (tile, data, size, error) => {
-            if(!error) {
-                tile.set_state(Champlain.State.DONE);
-                tile.display_content();
-            } else if(this.next_source)
-                this.next_source.fill_tile(tile);
-        });
-
-        GLib.idle_add(tile, () => this._renderTile(tile));
+        this._renderTile(tile);
     }
 
     _validate([lon, lat]) {
@@ -206,72 +187,70 @@ export class GeoJSONSource extends Champlain.TileSource {
 
     parse(json) {
         this._parseInternal(json);
-        this._tileIndex = Geojsonvt.geojsonvt(json, { extent: this._tileSize,
-                                                      maxZoom: 20 });
+        this._tileIndex = Geojsonvt.geojsonvt(json, { extent: this.tile_size,
+                                                      maxZoom: this.max_zoom_level });
         this._clampBBox();
     }
 
     _renderTile(tile) {
         let tileJSON = this._tileIndex.getTile(tile.zoom_level, tile.x, tile.y);
-        let content = new Clutter.Canvas({ width: this._tileSize,
-                                           height: this._tileSize });
-        tile.content = new Clutter.Actor({ width: this._tileSize,
-                                           height: this._tileSize,
-                                           content: content });
+        let surface = new Cairo.ImageSurface(Cairo.Format.ARGB32,
+                                             this.tile_size, this.tile_size);
+        let cr = new Cairo.Context(surface);
 
-        content.connect('draw', (canvas, cr) => {
-            tile.set_surface(cr.getTarget());
-            cr.setOperator(Cairo.Operator.CLEAR);
-            cr.paint();
-            cr.setOperator(Cairo.Operator.OVER);
-            cr.setFillRule(Cairo.FillRule.EVEN_ODD);
+        cr.setOperator(Cairo.Operator.CLEAR);
+        cr.paint();
+        cr.setOperator(Cairo.Operator.OVER);
+        cr.setFillRule(Cairo.FillRule.EVEN_ODD);
 
-            if (!tileJSON) {
-                tile.emit('render-complete', null, 0, false);
+        if (!tileJSON) {
+            return;
+        }
+
+        tileJSON.features.forEach((feature) => {
+            if (feature.type === TileFeature.POINT)
                 return;
-            }
 
-            tileJSON.features.forEach((feature) => {
-                if (feature.type === TileFeature.POINT)
-                    return;
+            let geoJSONStyleObj = GeoJSONStyle.parseSimpleStyle(feature.tags);
 
-                let geoJSONStyleObj = GeoJSONStyle.parseSimpleStyle(feature.tags);
+            feature.geometry.forEach((geometry) => {
+                let first = true;
+                cr.moveTo(0, 0);
+                cr.setLineWidth(geoJSONStyleObj.lineWidth);
+                cr.setSourceRGBA(geoJSONStyleObj.color.red,
+                                 geoJSONStyleObj.color.green,
+                                 geoJSONStyleObj.color.blue,
+                                 geoJSONStyleObj.alpha);
 
-                feature.geometry.forEach((geometry) => {
-                    let first = true;
-                    cr.moveTo(0, 0);
-                    cr.setLineWidth(geoJSONStyleObj.lineWidth);
-                    cr.setSourceRGBA(geoJSONStyleObj.color.red,
-                                     geoJSONStyleObj.color.green,
-                                     geoJSONStyleObj.color.blue,
-                                     geoJSONStyleObj.alpha);
-
-                    geometry.forEach(function(coord) {
-                        if (first) {
-                            cr.moveTo(coord[0], coord[1]);
-                            first = false;
-                        } else {
-                            cr.lineTo(coord[0], coord[1]);
-                        }
-                    });
+                geometry.forEach(function(coord) {
+                    if (first) {
+                        cr.moveTo(coord[0], coord[1]);
+                        first = false;
+                    } else {
+                        cr.lineTo(coord[0], coord[1]);
+                    }
                 });
-                if (feature.type === TileFeature.POLYGON) {
-                    cr.closePath();
-                    cr.strokePreserve();
-                    cr.setSourceRGBA(geoJSONStyleObj.fillColor.red,
-                                     geoJSONStyleObj.fillColor.green,
-                                     geoJSONStyleObj.fillColor.blue,
-                                     geoJSONStyleObj.fillAlpha);
-                    cr.fill();
-                } else {
-                    cr.stroke();
-                }
             });
-
-            tile.emit('render-complete', null, 0, false);
+            if (feature.type === TileFeature.POLYGON) {
+                cr.closePath();
+                cr.strokePreserve();
+                cr.setSourceRGBA(geoJSONStyleObj.fillColor.red,
+                                 geoJSONStyleObj.fillColor.green,
+                                 geoJSONStyleObj.fillColor.blue,
+                                 geoJSONStyleObj.fillAlpha);
+                cr.fill();
+            } else {
+                cr.stroke();
+            }
         });
 
-        content.invalidate();
+        let paintable =
+            Gdk.Texture.new_for_pixbuf(Gdk.pixbuf_get_from_surface(surface, 0, 0,
+                                                                   this.tile_size,
+                                                                   this.tile_size));
+
+        tile.set_paintable(paintable);
+        tile.state = Shumate.State.DONE;
     }
 }
 

@@ -22,6 +22,7 @@
 import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
+import Graphene from 'gi://Graphene';
 import Gtk from 'gi://Gtk';
 
 import {Application} from './application.js';
@@ -48,10 +49,6 @@ export class MapBubble extends Gtk.Popover {
         let mapView = params.mapView;
         delete params.mapView;
 
-        params.relative_to = mapView;
-        params.transitions_enabled = false;
-        params.modal = false;
-
         super(params);
 
         let content = new PlaceView({ place, mapView, visible: true });
@@ -59,9 +56,9 @@ export class MapBubble extends Gtk.Popover {
         let scrolledWindow = new MapBubbleScrolledWindow({ visible: true,
                                                            propagateNaturalWidth: true,
                                                            propagateNaturalHeight: true,
-                                                           hscrollbarPolicy: Gtk.PolicyType.NEVER });
-        scrolledWindow.add(content);
-        this.add(scrolledWindow);
+                                                           hscrollbarPolicy: Gtk.PolicyType.NEVER,
+                                                           child: content });
+        this.child = scrolledWindow;
 
         this.get_style_context().add_class("map-bubble");
     }
@@ -70,6 +67,39 @@ export class MapBubble extends Gtk.Popover {
 GObject.registerClass(MapBubble);
 
 export class MapBubbleScrolledWindow extends Gtk.ScrolledWindow {
+    /*
+    vfunc_get_request_mode() {
+        return Gtk.SizeRequestMode.HEIGHT_FOR_WIDTH;
+    }
+    */
+
+    /*
+    vfunc_measure(orientation, forSize) {
+        log('measure: ' + orientation + ', ' + forSize);
+
+        let [cm, cn, cbx, cby] = this.child.measure(orientation, forSize);
+
+        log('child measure: ' + cm + ', ' + cn);
+
+        // TODO: fix
+        return [500, 500, null, null];
+
+        if (orientation === Gtk.Orientation.HORIZONTAL) {
+            let windowHeight = this.get_toplevel().get_allocated_height() - HEIGHT_MARGIN;
+            let [min, nat] = this.get_child().get_preferred_height_for_width(width);
+            min = Math.min(min, windowHeight);
+            nat = Math.min(nat, windowHeight);
+            return [min, nat, 0, 0];
+        } else {
+            let [min, nat] = this.get_child().get_preferred_width();
+            min = Math.min(min, MAX_CONTENT_WIDTH);
+            nat = Math.min(nat, MAX_CONTENT_WIDTH);
+            return [min, nat, 0, 0];
+        }
+    }
+    */
+
+    /*
     vfunc_get_preferred_width() {
         let [min, nat] = this.get_child().get_preferred_width();
         min = Math.min(min, MAX_CONTENT_WIDTH);
@@ -84,16 +114,28 @@ export class MapBubbleScrolledWindow extends Gtk.ScrolledWindow {
         nat = Math.min(nat, windowHeight);
         return [min, nat];
     }
+    */
 
-    vfunc_draw(cr) {
+    /*
+    vfunc_snapshot(snapshot) {
         let popover = this.get_ancestor(Gtk.Popover);
         if (popover) {
-            let [{x, y, width, height}, baseline] = this.get_allocated_size();
+            let {x, y, width, height} = this.get_allocation();
+            let rect = new Graphene.Rect();
 
+            log('allocation: ' + [x, y]);
+
+            rect.init(x, y, width, height);
+
+            let cr = snapshot.append_cairo(rect);
             // clip the top corners to the rounded corner
+
             let radius = popover.get_style_context()
                                 .get_property(Gtk.STYLE_PROPERTY_BORDER_RADIUS, popover.get_state_flags())
                                 * this.scale_factor;
+
+            // TODO: how to do this?
+            let radius = 0;
 
             // bottom left
             cr.moveTo(0, height);
@@ -103,10 +145,12 @@ export class MapBubbleScrolledWindow extends Gtk.ScrolledWindow {
             cr.lineTo(width, height);
 
             cr.clip();
+            cr.$dispose();
         }
 
-        return super.vfunc_draw(cr);
+        super.vfunc_snapshot(snapshot);
     }
+    */
 }
 
 GObject.registerClass(MapBubbleScrolledWindow);

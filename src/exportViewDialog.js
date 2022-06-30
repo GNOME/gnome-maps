@@ -22,6 +22,8 @@ import Gdk from 'gi://Gdk';
 import GLib from 'gi://GLib';
 import Gio from 'gi://Gio';
 import GObject from 'gi://GObject';
+import Graphene from 'gi://Graphene';
+import Gsk from 'gi://Gsk';
 import Gtk from 'gi://Gtk';
 
 import * as Utils from './utils.js';
@@ -36,8 +38,8 @@ export class ExportViewDialog extends Gtk.Dialog {
     };
 
     constructor(params) {
-        let surface = params.surface;
-        delete params.surface;
+        let paintable = params.paintable;
+        delete params.paintable;
 
         let latitude = params.latitude;
         delete params.latitude;
@@ -48,17 +50,23 @@ export class ExportViewDialog extends Gtk.Dialog {
         let mapView = params.mapView;
         delete params.mapView;
 
+        let width = params.width;
+        delete params.width;
+
+        let height = params.height;
+        delete params.height;
+
         params.use_header_bar = true;
         super(params);
 
-        this._surface = surface;
+        this._paintable = paintable;
         this._mapView = mapView;
+        this._width = width;
+        this._height = height;
         this._cancelButton.connect('clicked', () => this.response(ExportViewDialog.Response.CANCEL));
         this._exportButton.connect('clicked', () => this._exportView());
         this._filenameEntry.connect('changed', () => this._onFileNameChanged());
-        this._fileChooserButton.connect('file-set', () => this._onFolderChanged());
-        this._layersCheckButton.connect('toggled', () => this._includeLayersChanged());
-
+        this._fileChooserButton.connect('clicked', () => this._onFileChooserClicked());
 
         this._folder = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_PICTURES);
         if (!this._folder)
@@ -66,7 +74,6 @@ export class ExportViewDialog extends Gtk.Dialog {
 
         this._filenameEntry.text = this._fileName =
             this._getName(latitude, longitude);
-        this._fileChooserButton.set_current_folder(this._folder);
         this._setupPreviewArea();
     }
 
@@ -80,25 +87,26 @@ export class ExportViewDialog extends Gtk.Dialog {
     }
 
     _setupPreviewArea() {
-        let [surfaceWidth, surfaceHeight] = this._mapView.view.get_size();
+        this._scaleFactor = _PREVIEW_WIDTH / this._width;
+        let previewHeight = this._height * this._scaleFactor;
 
-        let width = _PREVIEW_WIDTH;
-        this._scaleFactor = width / surfaceWidth;
-        let height = surfaceHeight * this._scaleFactor;
-
-        this._previewArea.set_size_request(width, height);
-        this._previewArea.connect('draw',
-                                  (w, cr) => this._drawPreview(w, cr));
+        this._previewArea.width_request = _PREVIEW_WIDTH;
+        this._previewArea.height_request = previewHeight;
+        this._previewArea.paintable = this._paintable;
     }
 
-    _drawPreview(widget, cr) {
-        cr.setOperator(Cairo.Operator.CLEAR);
-        cr.paint();
-        cr.setOperator(Cairo.Operator.OVER);
+    _onFileChooserClicked() {
+        let folderChooser = new Gtk.FileChooserNative();
 
-        cr.scale(this._scaleFactor, this._scaleFactor);
-        cr.setSourceSurface(this._surface, 0, 0);
-        cr.paint();
+        folderChooser.set_current_folder(Gio.File.new_for_path(this._folder));
+        folderChooser.connect('response',
+                              (widget, response) => {
+            if (response === Gtk.ResponseType.ACCEPT)
+                this._onFolderChanged(folderChooser.get_current_folder().get_path());
+
+            folderChooser.destroy();
+        });
+        folderChooser.show();
     }
 
     _onFileNameChanged() {
@@ -118,9 +126,7 @@ export class ExportViewDialog extends Gtk.Dialog {
         }
     }
 
-    _onFolderChanged() {
-        let folder = this._fileChooserButton.get_filename();
-
+    _onFolderChanged(folder) {
         if (!GLib.file_test(folder, GLib.FileTest.IS_DIR)) {
             this._exportButton.sensitive= false;
             return;
@@ -135,12 +141,23 @@ export class ExportViewDialog extends Gtk.Dialog {
     }
 
     _exportView() {
-        let [width, height] = this._mapView.view.get_size();
-        let pixbuf = Gdk.pixbuf_get_from_surface(this._surface, 0, 0, width, height);
+        let rect = new Graphene.Rect();
+
+        rect.init(0, 0, this._width, this._height);
+
+        let snapshot = Gtk.Snapshot.new();
+
+        this._paintable.snapshot(snapshot,
+                                 this._paintable.get_intrinsic_width(),
+                                 this._paintable.get_intrinsic_height());
+
+        let node = snapshot.to_node();
+        let renderer = this._mapView.get_native().get_renderer();
+        let texture = renderer.render_texture(node, rect);
         let path = GLib.build_filenamev([this._folder, this._fileName]);
 
         try {
-            pixbuf.savev(path, "png", [], []);
+            texture.save_to_png(path);
             this.response(ExportViewDialog.Response.SUCCESS);
         } catch(e) {
             Utils.debug('failed to export view: ' + e.message);
@@ -169,13 +186,6 @@ export class ExportViewDialog extends Gtk.Dialog {
             dialog.show_all();
         }
     }
-
-    _includeLayersChanged() {
-        let includeLayers = this._layersCheckButton.get_active();
-
-        this._surface = this._mapView.view.to_surface(includeLayers);
-        this._previewArea.queue_draw();
-    }
 }
 
 GObject.registerClass({
@@ -184,6 +194,5 @@ GObject.registerClass({
                         'cancelButton',
                         'filenameEntry',
                         'fileChooserButton',
-                        'previewArea',
-                        'layersCheckButton' ],
+                        'previewArea'],
 }, ExportViewDialog);

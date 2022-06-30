@@ -56,18 +56,15 @@ export class RouteEntry extends Gtk.Grid {
         this._entryGrid.attach(this.entry, 0, 0, 1, 1);
 
         // There is no GdkWindow on the widget until it is realized
-        this._icon.connect('realize', function(icon) {
-            if (icon.window && icon.window.get_cursor())
-                return;
-
-            icon.window.set_cursor(Gdk.Cursor.new(Gdk.CursorType.HAND1));
+        this.icon.connect('realize', (icon) => {
+            icon.set_cursor(Gdk.Cursor.new_from_name('grab', null));
         });
 
         switch (this._type) {
         case RouteEntry.Type.FROM:
             let query = Application.routeQuery;
             this._buttonImage.icon_name = 'list-add-symbolic';
-            this._icon.icon_name = 'maps-point-start-symbolic';
+            this.icon.icon_name = 'maps-point-start-symbolic';
             /* Translators: this is add via location tooltip */
             this._button.tooltip_text = _("Add via location");
             query.connect('notify::points', () => {
@@ -77,13 +74,13 @@ export class RouteEntry extends Gtk.Grid {
             break;
         case RouteEntry.Type.VIA:
             this._buttonImage.icon_name = 'list-remove-symbolic';
-            this._icon.icon_name = 'maps-point-end-symbolic';
+            this.icon.icon_name = 'maps-point-end-symbolic';
             /* Translators: this is remove via location tooltip */
             this._button.tooltip_text = _("Remove via location");
             break;
         case RouteEntry.Type.TO:
             this._buttonImage.icon_name = 'route-reverse-symbolic';
-            this._icon.icon_name = 'maps-point-end-symbolic';
+            this.icon.icon_name = 'maps-point-end-symbolic';
             /* Translators: this is reverse route tooltip */
             this._button.tooltip_text = _("Reverse route");
             break;
@@ -117,9 +114,8 @@ export class RouteEntry extends Gtk.Grid {
 
 GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/route-entry.ui',
-    Children: [ 'iconEventBox' ],
+    Children: [ 'icon' ],
     InternalChildren: [ 'entryGrid',
-                        'icon',
                         'button',
                         'buttonImage' ]
 }, RouteEntry);

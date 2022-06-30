@@ -1,72 +1,71 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk+" version="3.14"/>
+  <requires lib="gtk" version="4.0"/>
   <template class="Gjs_TransitItineraryRow" parent="GtkListBoxRow">
-    <property name="visible">True</property>
-    <child>
+    <property name="child">
       <object class="GtkGrid">
-        <property name="visible">True</property>
-        <property name="margin">13</property>
+        <property name="margin-start">13</property>
+        <property name="margin-end">13</property>
+        <property name="margin-top">13</property>
+        <property name="margin-bottom">13</property>
         <property name="column_spacing">13</property>
         <property name="row-spacing">2</property>
         <child>
           <object class="GtkLabel" id="timeLabel">
-            <property name="visible">True</property>
-            <property name="expand">False</property>
-            <property name="halign">GTK_ALIGN_START</property>
+            <property name="hexpand">0</property>
+            <property name="vexpand">0</property>
+            <property name="halign">start</property>
             <attributes>
-              <attribute name="font-features" value="tnum"/>
+              <attribute name="font-features" value="tnum"></attribute>
             </attributes>
+            <layout>
+              <property name="row">0</property>
+              <property name="column">0</property>
+            </layout>
           </object>
-          <packing>
-            <property name="top-attach">0</property>
-            <property name="left-attach">0</property>
-          </packing>
         </child>
         <child>
           <object class="GtkLabel" id="durationLabel">
-            <property name="visible">True</property>
-            <property name="expand">True</property>
-            <property name="halign">GTK_ALIGN_START</property>
+            <property name="hexpand">1</property>
+            <property name="vexpand">1</property>
+            <property name="halign">start</property>
             <attributes>
-              <attribute name="font-features" value="tnum"/>
+              <attribute name="font-features" value="tnum"></attribute>
             </attributes>
             <style>
               <class name="dim-label"/>
             </style>
+            <layout>
+              <property name="row">0</property>
+              <property name="column">1</property>
+            </layout>
           </object>
-          <packing>
-            <property name="top-attach">0</property>
-            <property name="left-attach">1</property>
-          </packing>
         </child>
         <child>
           <object class="GtkGrid" id="summaryGrid">
-            <property name="visible">True</property>
-            <property name="expand">True</property>
+            <property name="hexpand">1</property>
+            <property name="vexpand">1</property>
             <property name="column-spacing">5</property>
+            <layout>
+              <property name="row">1</property>
+              <property name="column">0</property>
+              <property name="column-span">2</property>
+            </layout>
           </object>
-          <packing>
-            <property name="top-attach">1</property>
-            <property name="left-attach">0</property>
-            <property name="width">2</property>
-          </packing>
         </child>
         <child>
           <object class="GtkImage">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
             <property name="icon-name">go-next-symbolic</property>
             <property name="pixel-size">16</property>
+            <layout>
+              <property name="row">0</property>
+              <property name="column">2</property>
+              <property name="row-span">2</property>
+              <property name="column-span">2</property>
+            </layout>
           </object>
-          <packing>
-            <property name="top-attach">0</property>
-            <property name="left-attach">2</property>
-            <property name="height">2</property>
-            <property name="width">2</property>
-          </packing>
         </child>
       </object>
-    </child>
+    </property>
   </template>
 </interface>

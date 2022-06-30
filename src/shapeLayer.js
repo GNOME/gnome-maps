@@ -17,9 +17,10 @@
  * Author: Hashem Nasarat <hashem@riseup.net>
  */
 
-import Champlain from 'gi://Champlain';
 import Gio from 'gi://Gio';
 import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
+import Shumate from 'gi://Shumate';
 
 import {GeoJSONShapeLayer} from './geoJSONShapeLayer.js';
 import * as Utils from './utils.js';
@@ -53,8 +54,9 @@ export class ShapeLayer extends GObject.Object {
             null
         ).get_attribute_string(Gio.FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME);
 
-        this._markerLayer = new Champlain.MarkerLayer({
-            selection_mode: Champlain.SelectionMode.SINGLE
+        this._markerLayer = new Shumate.MarkerLayer({
+            selection_mode: Gtk.SelectionMode.SINGLE,
+            viewport:       this._mapView.map.viewport
         });
         this._mapSource = null;
     }
@@ -69,10 +71,10 @@ export class ShapeLayer extends GObject.Object {
 
     set visible(v) {
         if (v && !this._visible) {
-            this._mapView.view.add_overlay_source(this._mapSource, 255);
+            this._overlayLayer.visible = true;
             this._markerLayer.show_all_markers();
         } else if (!v && this._visible) {
-            this._mapView.view.remove_overlay_source(this._mapSource);
+            this._overlayLayer.visible = false;
             this._markerLayer.hide_all_markers();
         }
         this._visible = v;
@@ -95,8 +97,8 @@ export class ShapeLayer extends GObject.Object {
                 if (!status)
                     throw new Error(_("failed to load file"));
                 this._parseContent();
-                this._mapView.view.add_layer(this._markerLayer);
-                this._mapView.view.add_overlay_source(this._mapSource, 255);
+                this._mapView.map.add_layer(this._markerLayer);
+                this._mapView.map.add_layer(this._overlayLayer);
             } catch (e) {
                 Utils.debug(e);
                 error = true;
@@ -110,8 +112,8 @@ export class ShapeLayer extends GObject.Object {
     }
 
     unload() {
-        this._mapView.view.remove_layer(this._markerLayer);
-        this._mapView.view.remove_overlay_source(this._mapSource);
+        this._mapView.map.remove_layer(this._markerLayer);
+        this._mapView.map.remove_layer(this._overlayLayer);
     }
 }
 

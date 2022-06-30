@@ -21,7 +21,6 @@
  *         Damián Nohales <damiannohales@gmail.com>
  */
 
-import Clutter from 'gi://Clutter';
 import GObject from 'gi://GObject';
 
 import {BoundingBox} from './boundingBox.js';
@@ -39,7 +38,7 @@ export class MapWalker extends GObject.Object {
         super();
         this.place = place;
         this._mapView = mapView;
-        this._view = mapView.view;
+        this._viewport = mapView.map.viewport;
         this._boundingBox = this._createBoundingBox(this.place);
     }
 
@@ -54,15 +53,14 @@ export class MapWalker extends GObject.Object {
         }
     }
 
-    // Zoom to the maximal zoom-level that fits the place type
-    zoomToFit() {
+    _getZoomLevel() {
         let zoom;
 
         if (this.place.initialZoom) {
             zoom = this.place.initialZoom;
         } else {
             zoom = PlaceZoom.getZoomLevelForPlace(this.place) ??
-                   this._view.max_zoom_level;
+                   this._viewport.max_zoom_level;
 
             /* If the place has a bounding box, use the lower of the default
              * zoom level based on the place's type and the zoom level needed
@@ -78,56 +76,37 @@ export class MapWalker extends GObject.Object {
             }
         }
 
-        this._view.zoom_level = zoom;
-        this._view.center_on(this.place.location.latitude,
-                             this.place.location.longitude);
+        return zoom;
+    }
+
+    // Zoom to the maximal zoom-level that fits the place type
+    zoomToFit() {
+        let zoom = this._getZoomLevel();
+
+        this._mapView.map.go_to_full(this.place.location.latitude,
+                                     this.place.location.longitude,
+                                     zoom);
     }
 
     goTo(animate, linear) {
+        let zoom = this._getZoomLevel();
         Utils.debug('Going to ' + [this.place.name,
                     this.place.location.latitude,
                     this.place.location.longitude].join(' '));
         this._mapView.emit('going-to');
 
         if (!animate) {
-            this._view.center_on(this.place.location.latitude,
-                                 this.place.location.longitude);
+            this._mapView.map.center_on(this.place.location.latitude,
+                                        this.place.location.longitude);
+            this._mapView.map.viewport.zoom_level = zoom;
             this.emit('gone-to');
             return;
-        }
-
-        let fromLocation = new Location({ latitude: this._view.get_center_latitude(),
-                                          longitude: this._view.get_center_longitude() });
-        this._updateGoToDuration(fromLocation);
-
-        if (linear) {
-            this._view.goto_animation_mode = Clutter.AnimationMode.LINEAR;
-            Utils.once(this._view, 'animation-completed',
-                       this.zoomToFit.bind(this));
-            this._view.go_to(this.place.location.latitude,
-                             this.place.location.longitude);
         } else {
-            /* Lets first ensure that both current and destination location are visible
-             * before we start the animated journey towards destination itself. We do this
-             * to create the zoom-out-then-zoom-in effect that many map implementations
-             * do. This not only makes the go-to animation look a lot better visually but
-             * also give user a good idea of where the destination is compared to current
-             * location.
-             */
-            this._view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_CUBIC;
-            this._ensureVisible(fromLocation);
-
-            Utils.once(this._view, 'animation-completed', () => {
-                this._view.goto_animation_mode = Clutter.AnimationMode.EASE_OUT_CUBIC;
-                this._view.go_to(this.place.location.latitude,
-                                 this.place.location.longitude);
-
-                Utils.once(this._view, 'animation-completed::go-to', () => {
-                    this.zoomToFit();
-                    this._view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_OUT_CUBIC;
-                    this.emit('gone-to');
-                });
-            });
+            this._mapView.map.go_to_full(this.place.location.latitude,
+                                         this.place.location.longitude,
+                                         zoom);
+            Utils.once(this._mapView.map, 'animation-completed::go-to',
+                       () => this.emit('gone-to'));
         }
     }
 
@@ -175,21 +154,6 @@ export class MapWalker extends GObject.Object {
             return false;
 
         return true;
-    }
-
-    _updateGoToDuration(fromLocation) {
-        let toLocation = this.place.location;
-
-        let distance = fromLocation.get_distance_from(toLocation);
-        let duration = (distance / _MAX_DISTANCE) * _MAX_ANIMATION_DURATION;
-
-        // Clamp duration
-        duration = Math.max(_MIN_ANIMATION_DURATION,
-                            Math.min(duration, _MAX_ANIMATION_DURATION));
-
-        // We divide by two because Champlain treats both go_to and
-        // ensure_visible as 'goto' journeys with its own duration.
-        this._view.goto_animation_duration = duration / 2;
     }
 }
 

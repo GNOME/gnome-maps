@@ -124,7 +124,7 @@ export class SendToDialog extends Gtk.Dialog {
         });
 
         /* Hide the list box if it is empty */
-        if (this._list.get_children().length == 0) {
+        if (!this._list.get_first_child()) {
             this._scrolledWindow.hide();
         }
     }
@@ -153,7 +153,7 @@ export class SendToDialog extends Gtk.Dialog {
     }
 
     _getOSMURI() {
-        let view = this._mapView.view;
+        let viewport = this._mapView.map.viewport;
         let place = this._place;
 
         let base = 'https://openstreetmap.org';
@@ -165,16 +165,15 @@ export class SendToDialog extends Gtk.Dialog {
             return '%s?mlat=%f&mlon=%f&zoom=%d'.format(base,
                                                        this._location.latitude,
                                                        this._location.longitude,
-                                                       view.zoom_level);
+                                                       viewport.zoom_level);
         }
     }
 
     _copySummary() {
         let summary = '%s\n%s'.format(this._getSummary(), this._getOSMURI());
+        let clipboard = this.get_clipboard();
 
-        let display = Gdk.Display.get_default();
-        let clipboard = Gtk.Clipboard.get_default(display);
-        clipboard.set_text(summary, -1);
+        clipboard.set(summary);
         this.response(SendToDialog.Response.SUCCESS);
     }
 
@@ -188,7 +187,7 @@ export class SendToDialog extends Gtk.Dialog {
           Gio.app_info_launch_default_for_uri(uri, this._getAppLaunchContext());
         } catch(e) {
           Utils.showDialog(_("Failed to open URI"), Gtk.MessageType.ERROR,
-                           this.get_toplevel());
+                           this);
           Utils.debug('failed to open URI: %s'.format(e.message));
         }
 
@@ -196,20 +195,17 @@ export class SendToDialog extends Gtk.Dialog {
     }
 
     _getAppLaunchContext() {
-        let timestamp = Gtk.get_current_event_time();
-        let display = Gdk.Display.get_default();
         let ctx = Gdk.Display.get_default().get_app_launch_context();
-        let screen = display.get_default_screen();
 
-        ctx.set_timestamp(timestamp);
-        ctx.set_screen(screen);
+        // GdkAppLaunchContext uses second-precision timestamps
+        ctx.set_timestamp(GLib.get_real_time() / 1000000);
 
         return ctx;
     }
 
     _activateRow(row) {
         if (row === this._weatherRow || row === this._clocksRow) {
-            let timestamp = Gtk.get_current_event_time();
+            let timestamp = GLib.get_real_time() / 1000000;
 
             let action;
             let appId;

@@ -17,11 +17,11 @@
  * Author: Dario Di Nucci <linkin88mail@gmail.com>
  */
 
-import Champlain from 'gi://Champlain';
+import Adw from 'gi://Adw';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 import Gdk from 'gi://Gdk';
-import Handy from 'gi://Handy';
+import Shumate from 'gi://Shumate';
 
 import {Application} from './application.js';
 import * as MapSource from './mapSource.js';
@@ -67,13 +67,11 @@ export class LayersPopover extends Gtk.Popover {
 
     constructor(params) {
         super({ width_request: 200,
-                no_show_all: true,
-                transitions_enabled: false,
                 visible: false });
 
         this._mapView = params.mapView;
 
-        this._aerialLayerButton.join_group(this._streetLayerButton);
+        //this._aerialLayerButton.join_group(this._streetLayerButton);
 
         this.get_style_context().add_class('maps-popover');
 
@@ -88,6 +86,10 @@ export class LayersPopover extends Gtk.Popover {
             row.set_header(header);
         });
 
+        this._loadLayerButton.connect('clicked', () => this.popdown());
+
+        // for now let's disable the map type swithery, as we only have street
+        /*
         this._layerPreviews = {
             street: {
                 source: MapSource.createStreetSource(),
@@ -133,8 +135,10 @@ export class LayersPopover extends Gtk.Popover {
         this._mapView.connect("map-type-changed", (_mapView, type) => {
             this.setMapType(type);
         });
+        */
     }
 
+    /*
     _setLayerPreviews() {
         this._setLayerPreviewImage('street');
         this._setLayerPreviewImage('aerial');
@@ -193,10 +197,16 @@ export class LayersPopover extends Gtk.Popover {
             this._aerialLayerButton.active = true;
         }
     }
+    */
 
     _onRemoveClicked(row) {
         this._mapView.removeShapeLayer(row.shapeLayer);
-        if (this._layersListBox.get_children().length <= 0)
+        let numLayers = 0;
+
+        for (let layer of this._layersListBox) {
+            numLayers++;
+        }
+        if (numLayers <= 0)
             this._layersListBox.hide();
     }
 
@@ -211,10 +221,10 @@ export class LayersPopover extends Gtk.Popover {
 
 GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/layers-popover.ui',
-    InternalChildren: [ 'streetLayerButton',
+    InternalChildren: [ /*'streetLayerButton',
                         'aerialLayerButton',
                         'streetLayerImage',
-                        'aerialLayerImage',
+                        'aerialLayerImage',*/
                         'layersListBox',
                         'loadLayerButton' ]
 }, LayersPopover);

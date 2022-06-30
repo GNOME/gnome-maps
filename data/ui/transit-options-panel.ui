@@ -1,14 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <interface>
+  <requires lib="gtk" version="4.0"/>
   <template class="Gjs_TransitOptionsPanel" parent="GtkGrid">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="no-show-all">True</property>
     <style>
       <class name="shaded"/>
     </style>
     <child>
       <object class="GtkComboBoxText" id="transitTimeOptionsComboBox">
-        <property name="visible">True</property>
         <property name="active_id">leaveNow</property>
         <property name="margin_start">6</property>
         <property name="margin_end">6</property>
@@ -19,91 +17,83 @@
           <item translatable="yes" id="leaveBy" comments="Indicates searching for itineraries leaving at the specified time at the earliest">Leave By</item>
           <item translatable="yes" id="arriveBy" comments="Indicates searching for itineraries arriving no later than the specified time">Arrive By</item>
         </items>
+        <layout>
+          <property name="column">0</property>
+          <property name="row">0</property>
+        </layout>
       </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">0</property>
-      </packing>
     </child>
     <child>
       <object class="GtkEntry" id="transitTimeEntry">
-        <property name="visible">False</property>
-        <property name="width_chars">5</property>
+        <property name="max-width-chars">5</property>
         <property name="margin_start">3</property>
         <property name="margin_end">3</property>
         <property name="margin_top">4</property>
         <property name="margin_bottom">4</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="row">0</property>
+        </layout>
       </object>
-      <packing>
-        <property name="left_attach">1</property>
-        <property name="top_attach">0</property>
-      </packing>
     </child>
     <child>
       <object class="GtkMenuButton" id="transitDateButton">
-        <property name="visible">False</property>
         <property name="popover">transitDatePopover</property>
         <property name="margin_start">3</property>
         <property name="margin_end">3</property>
         <property name="margin_top">4</property>
         <property name="margin_bottom">4</property>
+        <layout>
+          <property name="column">2</property>
+          <property name="row">0</property>
+        </layout>
       </object>
-      <packing>
-        <property name="left_attach">2</property>
-        <property name="top_attach">0</property>
-      </packing>
     </child>
     <child>
       <object class="GtkMenuButton" id="transitParametersMenuButton">
-        <property name="visible">True</property>
         <property name="popover">transitParametersPopover</property>
-        <property name="halign">GTK_ALIGN_END</property>
+        <property name="halign">end</property>
         <property name="margin_start">3</property>
         <property name="margin_end">6</property>
         <property name="margin_top">4</property>
         <property name="margin_bottom">4</property>
+        <property name="hexpand">true</property>
         <child>
           <object class="GtkGrid">
-            <property name="visible">True</property>
-            <property name="valign">GTK_ALIGN_CENTER</property>
+            <property name="valign">center</property>
             <child>
               <object class="GtkImage">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">GTK_ALIGN_CENTER</property>
-                <property name="hexpand">True</property>
+                <property name="halign">center</property>
+                <property name="hexpand">1</property>
                 <property name="icon-name">view-more-symbolic</property>
               </object>
             </child>
           </object>
         </child>
+        <layout>
+          <property name="column">3</property>
+          <property name="row">0</property>
+        </layout>
       </object>
-      <packing>
-        <property name="left_attach">3</property>
-        <property name="top_attach">0</property>
-      </packing>
     </child>
   </template>
   <object class="GtkPopover" id="transitDatePopover">
-    <property name="visible">False</property>
-    <child>
-      <object class="GtkCalendar" id="transitDateCalendar">
-        <property name="visible">True</property>
-      </object>
-    </child>
+    <property name="child">
+      <object class="GtkCalendar" id="transitDateCalendar"/>
+    </property>
   </object>
   <object class="GtkPopover" id="transitParametersPopover">
-    <property name="visible">False</property>
-    <child>
+    <property name="child">
       <object class="GtkGrid">
-        <property name="visible">True</property>
-        <property name="margin">6</property>
-        <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
+        <property name="margin-start">6</property>
+        <property name="margin-end">6</property>
+        <property name="margin-top">6</property>
+        <property name="margin-bottom">6</property>
+        <property name="orientation">vertical</property>
         <child>
           <object class="GtkLabel">
-            <property name="visible">True</property>
-            <property name="halign">GTK_ALIGN_START</property>
-            <property name="label" translatable="yes" comments="Header indicating selected modes of transit">Show</property>
+            <property name="halign">start</property>
+            <property name="label" translatable="1" comments="Header indicating selected modes of transit">Show</property>
             <property name="margin_start">6</property>
             <style>
               <class name="dim-label"/>
@@ -112,48 +102,41 @@
         </child>
         <child>
           <object class="GtkCheckButton" id="busCheckButton">
-            <property name="visible">True</property>
-            <property name="active">True</property>
-            <property name="label" translatable="yes">Buses</property>
+            <property name="active">1</property>
+            <property name="label" translatable="1">Buses</property>
           </object>
         </child>
         <child>
           <object class="GtkCheckButton" id="tramCheckButton">
-            <property name="visible">True</property>
-            <property name="active">True</property>
-            <property name="label" translatable="yes">Trams</property>
+            <property name="active">1</property>
+            <property name="label" translatable="1">Trams</property>
           </object>
         </child>
         <child>
           <object class="GtkCheckButton" id="trainCheckButton">
-            <property name="visible">True</property>
-            <property name="active">True</property>
-            <property name="label" translatable="yes">Trains</property>
+            <property name="active">1</property>
+            <property name="label" translatable="1">Trains</property>
           </object>
         </child>
         <child>
           <object class="GtkCheckButton" id="subwayCheckButton">
-            <property name="visible">True</property>
-            <property name="active">True</property>
-            <property name="label" translatable="yes">Subway</property>
+            <property name="active">1</property>
+            <property name="label" translatable="1">Subway</property>
           </object>
         </child>
         <child>
           <object class="GtkCheckButton" id="ferryCheckButton">
-            <property name="visible">True</property>
-            <property name="active">True</property>
-            <property name="label" translatable="yes">Ferries</property>
+            <property name="active">1</property>
+            <property name="label" translatable="1">Ferries</property>
           </object>
         </child>
         <child>
           <object class="GtkCheckButton" id="airplaneCheckButton">
-            <property name="visible">True</property>
-            <property name="active">True</property>
-            <property name="label" translatable="yes">Airplanes</property>
+            <property name="active">1</property>
+            <property name="label" translatable="1">Airplanes</property>
           </object>
         </child>
       </object>
-    </child>
+    </property>
   </object>
 </interface>
-  

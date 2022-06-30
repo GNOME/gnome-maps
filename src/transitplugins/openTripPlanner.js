@@ -21,8 +21,8 @@
 
 import gettext from 'gettext';
 
-import Champlain from 'gi://Champlain';
 import GLib from 'gi://GLib';
+import Shumate from 'gi://Shumate';
 import Soup from 'gi://Soup';
 
 import {Application} from '../application.js';
@@ -1140,8 +1140,8 @@ export class OpenTripPlanner {
     }
 
     _createTurnpoint(step) {
-        let coordinate = new Champlain.Coordinate({ latitude: step.lat,
-                                                    longitude: step.lon });
+        let coordinate = new Shumate.Coordinate({ latitude: step.lat,
+                                                  longitude: step.lon });
         let turnpoint = new TurnPoint({
             coordinate: coordinate,
             type: this._getTurnpointType(step),

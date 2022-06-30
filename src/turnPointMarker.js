@@ -19,7 +19,6 @@
  * Author: Dario Di Nucci <linkin88mail@gmail.com>
  */
 
-import Clutter from 'gi://Clutter';
 import Gdk from 'gi://Gdk';
 import GObject from 'gi://GObject';
 
@@ -64,18 +63,16 @@ export class TurnPointMarker extends MapMarker {
 
         this._queryPoint = queryPoint;
 
-        let actor;
         if (this._queryPoint) {
-            this.draggable = true;
-            this.connect('drag-finish', () => this._onMarkerDrag());
-            actor = this._actorFromIconName(turnPoint.iconName, 0);
+            this._image.paintable =
+                this._paintableFromIconName(turnPoint.iconName, 16);
         } else {
             let color = this._getColor(transitLeg);
-            actor = this._actorFromIconName('maps-point-end-symbolic',
-                                            0,
+            this._image.paintable =
+                this._paintableFromIconName('maps-point-end-symbolic',
+                                            16,
                                             color);
         }
-        this.add_actor(actor);
     }
 
     _getColor(transitLeg) {
@@ -102,7 +99,6 @@ export class TurnPointMarker extends MapMarker {
         let latitude = this.latitude;
         let longitude = this.longitude;
 
-        view.goto_animation_mode = Clutter.AnimationMode.LINEAR;
         view.goto_duration = 0;
 
         Utils.once(view, 'animation-completed', () => {
@@ -111,15 +107,6 @@ export class TurnPointMarker extends MapMarker {
         });
 
         view.go_to(this.latitude, this.longitude);
-    }
-
-    _onMarkerDrag() {
-        let query = Application.routeQuery;
-        let place =
-            new Place({ location: new Location({ latitude: this.latitude.toFixed(5),
-                                                 longitude: this.longitude.toFixed(5) }) });
-
-        this._queryPoint.place = place;
     }
 }
 

@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.0 -->
 <interface>
-  <requires lib="gtk+" version="3.22"/>
+  <requires lib="gtk" version="4.0"/>
   <template class="Gjs_HeaderBarRight" parent="GtkBox">
-    <property name="visible">True</property>
-    <property name="no-show-all">True</property>
-    <property name="can_focus">False</property>
     <property name="spacing">6</property>
     <child>
       <object class="GtkButton" id="printRouteButton">
+        <property name="visible">0</property>
         <property name="name">print-route</property>
-        <property name="can-focus">True</property>
-        <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Print Route</property>
+        <property name="focusable">1</property>
+        <property name="tooltip-text" translatable="1" comments="Translators: This is a tooltip">Print Route</property>
         <property name="action-name">win.print-route</property>
         <property name="valign">center</property>
         <style>
@@ -19,7 +16,6 @@
         </style>
         <child>
           <object class="GtkImage" id="print-route-button-image">
-            <property name="visible">True</property>
             <property name="icon-name">document-print-symbolic</property>
           </object>
         </child>
@@ -27,17 +23,15 @@
     </child>
     <child>
       <object class="GtkMenuButton" id="favoritesButton">
-        <property name="visible">True</property>
-        <property name="can-focus">True</property>
+        <property name="focusable">1</property>
         <property name="valign">center</property>
-        <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Toggle favorites</property>
+        <property name="tooltip-text" translatable="1" comments="Translators: This is a tooltip">Toggle favorites</property>
         <style>
           <class name="image-button"/>
         </style>
         <child>
           <object class="GtkImage" id="favorites-button-image">
-            <property name="visible">True</property>
-            <property name="icon-size">1</property>
+            <property name="icon-size">normal</property>
             <property name="icon-name">bookmarks-symbolic</property>
           </object>
         </child>
@@ -45,18 +39,16 @@
     </child>
     <child>
       <object class="GtkToggleButton" id="toggleSidebarButton">
-        <property name="visible">True</property>
-        <property name="can-focus">True</property>
+        <property name="focusable">1</property>
         <property name="valign">center</property>
         <property name="action-name">win.toggle-sidebar</property>
-        <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Toggle route planner</property>
+        <property name="tooltip-text" translatable="1" comments="Translators: This is a tooltip">Toggle route planner</property>
         <style>
           <class name="image-button"/>
         </style>
         <child>
           <object class="GtkImage" id="toggle-sidebar-button-image">
-            <property name="visible">True</property>
-            <property name="icon-size">1</property>
+            <property name="icon-size">normal</property>
             <property name="icon-name">route-button-symbolic</property>
           </object>
         </child>

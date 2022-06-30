@@ -27,8 +27,8 @@
  * https://transport.opendata.ch/docs.html
  */
 
-import Champlain from 'gi://Champlain';
 import GLib from 'gi://GLib';
+import Shumate from 'gi://Shumate';
 import Soup from 'gi://Soup';
 
 import {Application} from '../application.js';
@@ -391,18 +391,18 @@ export class OpendataCH {
 
             section.journey.passList.forEach((pass) => {
                 let coordinate = pass.location.coordinate;
-                polyline.push(new Champlain.Coordinate({ latitude:  coordinate.x,
-                                                         longitude: coordinate.y }));
+                polyline.push(new Shumate.Coordinate({ latitude:  coordinate.x,
+                                                       longitude: coordinate.y }));
             });
         } else {
             let [departureX, departureY, arrivalX, arrivalY] =
                 this._getCoordsForSection(section, index, sections);
 
             polyline =
-                [new Champlain.Coordinate({ latitude:  departureX,
-                                            longitude: departureY }),
-                 new Champlain.Coordinate({ latitude:  arrivalX,
-                                            longitude: arrivalY })];
+                [new Shumate.Coordinate({ latitude:  departureX,
+                                          longitude: departureY }),
+                 new Shumate.Coordinate({ latitude:  arrivalX,
+                                          longitude: arrivalY })];
         }
 
         return polyline;

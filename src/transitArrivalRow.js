@@ -41,20 +41,14 @@ export class TransitArrivalRow extends Gtk.ListBoxRow {
         this._arrivalLabel.label = Transit.getArrivalLabel(lastLeg);
         this._timeLabel.label = lastLeg.prettyPrintArrivalTime();
 
-        this._eventBox.connect('event', (widget, event) => {
-            this._onEvent(event, lastLeg.toCoordinate);
-            return true;
-        });
+        this._buttonPressGesture = new Gtk.GestureSingle();
+        this.add_controller(this._buttonPressGesture);
+        this._buttonPressGesture.connect('begin',
+                                         () => this._onPress(lastLeg.toCoordinate));
     }
 
-    _onEvent(event, coord) {
-        let [isButton, button] = event.get_button();
-        let type = event.get_event_type();
-
-        if (isButton && button === 1 && type === Gdk.EventType.BUTTON_PRESS) {
-            this._mapView.view.zoom_level = 16;
-            this._mapView.view.center_on(coord[0], coord[1]);
-        }
+    _onPress(coord) {
+        this._mapView.map.go_to_full(coord[0], coord[1], 16);
     }
 }
 
@@ -62,6 +56,5 @@ GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/transit-arrival-row.ui',
     InternalChildren: ['arrivalLabel',
                        'timeLabel',
-                       'eventBox',
                        'separator']
 }, TransitArrivalRow);

@@ -18,6 +18,7 @@
  */
 
 import GObject from 'gi://GObject';
+import Shumate from 'gi://Shumate';
 
 import {GeoJSONSource} from './geoJSONSource.js';
 import {ShapeLayer} from './shapeLayer.js';
@@ -39,6 +40,9 @@ export class GeoJSONShapeLayer extends ShapeLayer {
 
         this._mapSource = new GeoJSONSource({ mapView: this._mapView,
                                               markerLayer: this._markerLayer });
+        this._overlayLayer =
+            new Shumate.MapLayer({ map_source: this._mapSource,
+                                   viewport:   this._mapView.map.viewport });
     }
 
     getName() {

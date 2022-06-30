@@ -1,59 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk+" version="3.12"/>
+  <requires lib="gtk" version="4.0"/>
   <template class="Gjs_OSMEditAddress" parent="GtkGrid">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
     <style>
       <class name="linked"/>
     </style>
     <child>
       <object class="GtkEntry" id="street">
-        <property name="visible">True</property>
-        <property name="hexpand">True</property>
-        <property name="placeholder_text" translatable="yes">Street</property>
+        <property name="hexpand">1</property>
+        <property name="placeholder_text" translatable="1">Street</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="row">0</property>
+          <property name="column-span">2</property>
+        </layout>
       </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">0</property>
-        <property name="width">2</property>
-      </packing>
     </child>
     <child>
       <object class="GtkEntry" id="number">
-        <property name="visible">True</property>
-        <property name="hexpand">False</property>
-        <property name="placeholder_text" translatable="yes">House number</property>
+        <property name="hexpand">0</property>
+        <property name="placeholder_text" translatable="1">House number</property>
         <property name="width_chars">3</property>
+        <layout>
+          <property name="column">2</property>
+          <property name="row">0</property>
+        </layout>
       </object>
-      <packing>
-        <property name="left_attach">2</property>
-        <property name="top_attach">0</property>
-      </packing>
     </child>
     <child>
       <object class="GtkEntry" id="post">
-        <property name="visible">True</property>
-        <property name="hexpand">False</property>
-        <property name="placeholder_text" translatable="yes">Postal code</property>
+        <property name="hexpand">0</property>
+        <property name="placeholder_text" translatable="1">Postal code</property>
         <property name="width_chars">5</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="row">1</property>
+        </layout>
       </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">1</property>
-      </packing>
     </child>
     <child>
       <object class="GtkEntry" id="city">
-        <property name="visible">True</property>
-        <property name="hexpand">True</property>
-        <property name="placeholder_text" translatable="yes" comments="This is the place name as it would be written in a postal address (typically coming after the postal code)">City</property>
+        <property name="hexpand">1</property>
+        <property name="placeholder_text" translatable="1" comments="This is the place name as it would be written in a postal address (typically coming after the postal code)">City</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="row">1</property>
+          <property name="column-span">2</property>
+        </layout>
       </object>
-      <packing>
-        <property name="left_attach">1</property>
-        <property name="top_attach">1</property>
-        <property name="width">2</property>
-      </packing>
     </child>
   </template>
 </interface>

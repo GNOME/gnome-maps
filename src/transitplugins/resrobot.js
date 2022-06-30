@@ -27,8 +27,8 @@
  * https://www.trafiklab.se/api/resrobot-reseplanerare/dokumentation/sokresa
  */
 
-import Champlain from 'gi://Champlain';
 import GLib from 'gi://GLib';
+import Shumate from 'gi://Shumate';
 import Soup from 'gi://Soup';
 
 import {Application} from '../application.js';
@@ -487,15 +487,15 @@ export class Resrobot {
             polyline = [];
 
             leg.Stops.Stop.forEach((stop) => {
-                polyline.push(new Champlain.Coordinate({ latitude:  stop.lat,
-                                                         longitude: stop.lon }));
+                polyline.push(new Shumate.Coordinate({ latitude:  stop.lat,
+                                                       longitude: stop.lon }));
             });
         } else {
             polyline =
-                [new Champlain.Coordinate({ latitude:  leg.Origin.lat,
-                                            longitude: leg.Origin.lon }),
-                 new Champlain.Coordinate({ latitude:  leg.Destination.lat,
-                                            longitude: leg.Destination.lon })];
+                [new Shumate.Coordinate({ latitude:  leg.Origin.lat,
+                                          longitude: leg.Origin.lon }),
+                 new Shumate.Coordinate({ latitude:  leg.Destination.lat,
+                                          longitude: leg.Destination.lon })];
         }
 
         return polyline;

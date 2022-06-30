@@ -1,56 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <!-- interface-requires gtk+ 3.0 -->
-  <template class="Gjs_ContextMenu" parent="GtkMenu">
-    <property name="visible">False</property>
-    <child>
-      <object class="GtkMenuItem" id="routeFromHereItem">
-        <property name="name">route-from-here-item</property>
-        <property name="label" translatable="yes">Route from here</property>
-        <property name="visible">True</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkMenuItem" id="addIntermediateDestinationItem">
-        <property name="name">add-itermediate-destination-item</property>
-        <property name="label" translatable="yes">Add intermediate destination</property>
-        <property name="visible">True</property>
-        <property name="sensitive">False</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkMenuItem" id="routeToHereItem">
-        <property name="name">route-to-here-item</property>
-        <property name="label" translatable="yes">Route to here</property>
-        <property name="visible">True</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkSeparatorMenuItem">
-        <property name="visible">True</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkMenuItem" id="whatsHereItem">
-        <property name="name">whats-here-item</property>
-        <property name="label" translatable="yes">What’s here?</property>
-        <property name="visible">True</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkMenuItem" id="geoURIItem">
-        <property name="name">geo-uri-item</property>
-        <property name="label" translatable="yes">Copy Location</property>
-        <property name="visible">True</property>
-      </object>
-    </child>
-
-    <child>
-      <object class="GtkMenuItem" id="addOSMLocationItem">
-        <property name="name">add-osm-location-item</property>
-        <property name="label" translatable="yes">Add to OpenStreetMap</property>
-        <property name="visible">True</property>
-      </object>
-    </child>
+  <menu id="context-menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Route from here</attribute>
+        <attribute name="action">win.route-from-here</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Add intermediate destination</attribute>
+        <attribute name="action">win.add-intermediate-destination</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Route to here</attribute>
+        <attribute name="action">win.route-to-here</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">What's here?</attribute>
+        <attribute name="action">win.whats-here</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Copy location</attribute>
+        <attribute name="action">win.copy-location</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Add to OpenStreetMap</attribute>
+        <attribute name="action">win.add-osm-location</attribute>
+      </item>
+    </section>
+  </menu>
+  <template class="Gjs_ContextMenu" parent="GtkPopoverMenu">
+    <property name="menu-model">context-menu</property>
+    <property name="has-arrow">False</property>
   </template>
 </interface>

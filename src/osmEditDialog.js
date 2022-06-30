@@ -335,7 +335,8 @@ export class OSMEditDialog extends Gtk.Dialog {
         this._cancellable = new Gio.Cancellable();
         this._cancellable.connect(() => this.response(OSMEditDialog.Response.CANCELLED));
 
-        this.connect('delete-event', () => this._cancellable.cancel());
+        this.connect('response', () => this._cancellable.cancel());
+        this.connect('close-request', () => this._cancellable.cancel());
 
         this._isEditing = false;
         this._nextButton.connect('clicked', () => this._onNextClicked());
@@ -475,10 +476,15 @@ export class OSMEditDialog extends Gtk.Dialog {
         let recentTypes = OSMTypes.recentTypesStore.recentTypes;
 
         if (recentTypes.length > 0) {
-            let children = this._recentTypesListBox.get_children();
+            let children = [];
 
-            for (let i = 0; i < children.length; i++) {
-                this._recentTypesListBox.remove(children[i]);
+            for (let child of this._recentTypesListBox) {
+                if (child instanceof Gtk.ListBoxRow)
+                    children.push(child);
+            }
+
+            for (let child of children) {
+                this._recentTypesListBox.remove(child);
             }
 
             this._recentTypesLabel.visible = true;
@@ -563,7 +569,7 @@ export class OSMEditDialog extends Gtk.Dialog {
         let statusMessage =
             error ? error.message : OSMConnection.getStatusMessage(status);
         let messageDialog =
-            new Gtk.MessageDialog({ transient_for: this.get_toplevel(),
+            new Gtk.MessageDialog({ transient_for: this.get_root(),
                                     destroy_with_parent: true,
                                     message_type: Gtk.MessageType.ERROR,
                                     buttons: Gtk.ButtonsType.OK,
@@ -571,8 +577,8 @@ export class OSMEditDialog extends Gtk.Dialog {
                                     text: _("An error has occurred"),
                                     secondary_text: statusMessage });
 
-        messageDialog.run();
-        messageDialog.destroy();
+        messageDialog.connect('response', () => messageDialog.destroy());
+        messageDialog.show();
         this.response(OSMEditDialog.Response.ERROR);
     }
 
@@ -590,8 +596,7 @@ export class OSMEditDialog extends Gtk.Dialog {
     }
 
     _addOSMEditDeleteButton(fieldSpec) {
-        let deleteButton = Gtk.Button.new_from_icon_name('user-trash-symbolic',
-                                                         Gtk.IconSize.BUTTON);
+        let deleteButton = Gtk.Button.new_from_icon_name('user-trash-symbolic');
         let styleContext = deleteButton.get_style_context();
         let rows = fieldSpec.rows || 1;
 
@@ -632,11 +637,13 @@ export class OSMEditDialog extends Gtk.Dialog {
     }
 
     _showHintPopover(entry, hint) {
-        if (this._hintPopover.visible) {
+        if (this._hintPopover && this._hintPopover.visible) {
             this._hintPopover.popdown();
+            this._hintPopover = null;
         } else {
-            this._hintPopover.relative_to = entry;
-            this._hintLabel.label = hint;
+            let label = new Gtk.Label({ label: hint });
+            this._hintPopover = new Gtk.Popover({ child: label });
+            this._hintPopover.set_parent(entry);
             this._hintPopover.popup();
         }
     }
@@ -665,8 +672,13 @@ export class OSMEditDialog extends Gtk.Dialog {
             entry.placeholder_text = fieldSpec.placeHolder;
 
         entry.connect('changed', () => {
-            if (fieldSpec.rewriteFunc)
-                entry.text = fieldSpec.rewriteFunc(entry.text);
+            if (fieldSpec.rewriteFunc) {
+                let rewrittenText = fieldSpec.rewriteFunc(entry.text);
+
+                if (rewrittenText !== entry.text)
+                    entry.text = rewrittenText;
+            }
+
             this._osmObject.set_tag(fieldSpec.tag, entry.text);
 
             this._validateTextEntry(fieldSpec, entry);
@@ -710,12 +722,16 @@ export class OSMEditDialog extends Gtk.Dialog {
             this._nextButton.sensitive = true;
         });
 
+        // TODO: this doesn't work in GTK4, since SpinButton doesn't extend
+        // Entry, maybe put the hint button beside the spin button?
+        /*
         if (fieldSpec.hint) {
             spinbutton.secondary_icon_name = 'dialog-information-symbolic';
             spinbutton.connect('icon-press', (iconPos, event) => {
                 this._showHintPopover(spinbutton, fieldSpec.hint);
             });
         }
+        */
 
         this._editorGrid.attach(spinbutton, 1, this._currentRow, 1, 1);
         spinbutton.show();
@@ -775,12 +791,15 @@ export class OSMEditDialog extends Gtk.Dialog {
     /* update visible items in the "Add Field" popover */
     _updateAddFieldMenu() {
         /* clear old items */
-        let children = this._addFieldPopoverGrid.get_children();
         let hasAllFields = true;
+        let children = [];
 
-        for (let i = 0; i < children.length; i++) {
-            let button = children[i];
-            button.destroy();
+        for (let child of this._addFieldPopoverGrid) {
+            children.push(child);
+        }
+
+        for (let child of children) {
+            this._addFieldPopoverGrid.remove(child);
         }
 
         /* add selectable items */
@@ -810,6 +829,7 @@ export class OSMEditDialog extends Gtk.Dialog {
 
                 button.connect('clicked', () => {
                     this._addFieldButton.active = false;
+                    this._addFieldPopover.popdown();
                     this._addOSMField(fieldSpec);
                     /* add a "placeholder" empty OSM tag to keep the add field
                      * menu updated, these tags will be filtered out if nothing
@@ -898,6 +918,7 @@ GObject.registerClass({
                         'stack',
                         'editorGrid',
                         'commentTextView',
+                        'addFieldPopover',
                         'addFieldPopoverGrid',
                         'addFieldButton',
                         'typeSearchGrid',
@@ -906,7 +927,5 @@ GObject.registerClass({
                         'typeValueLabel',
                         'recentTypesLabel',
                         'recentTypesListBox',
-                        'hintPopover',
-                        'hintLabel',
                         'headerBar'],
 }, OSMEditDialog);

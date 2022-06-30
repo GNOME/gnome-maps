@@ -22,12 +22,12 @@
 
 import gettext from 'gettext';
 
-import Champlain from 'gi://Champlain';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Gdk from 'gi://Gdk';
 import Gio from 'gi://Gio';
 import Gtk from 'gi://Gtk';
+import Shumate from 'gi://Shumate';
 
 import {Application} from './application.js';
 import {ContextMenu} from './contextMenu.js';
@@ -90,6 +90,10 @@ export class MainWindow extends Gtk.ApplicationWindow {
         return this._placeEntry;
     }
 
+    get sidebar() {
+        return this._sidebar;
+    }
+
     constructor(params) {
         super(params);
 
@@ -98,16 +102,15 @@ export class MainWindow extends Gtk.ApplicationWindow {
         this._mapView = new MapView({
             mapType: this.application.local_tile_path ?
                 MapView.MapType.LOCAL : undefined,
-            mainWindow: this });
+            mainWindow: this,
+            hexpand: true,
+            vexpand: true });
 
         this._grid.attach(this._mapView, 0, 0, 1, 1);
 
         this._mapView.gotoUserLocation(false);
 
         this._sidebar = this._createSidebar();
-
-        this._contextMenu = new ContextMenu({ mapView: this._mapView,
-                                              mainWindow: this });
 
         if (pkg.name.endsWith('.Devel'))
             this.get_style_context().add_class('devel');
@@ -119,9 +122,10 @@ export class MainWindow extends Gtk.ApplicationWindow {
         this._initDND();
         this._initPlaceBar();
 
-        this._grid.attach(this._sidebar, 1, 0, 1, 2);
+        this._contextMenu = new ContextMenu({ mapView: this._mapView,
+                                              mainWindow: this });
 
-        this._grid.show_all();
+        this._grid.attach(this._sidebar, 1, 0, 1, 2);
 
         /* for some reason, setting the title of the window through the .ui
          * template does not work anymore (maybe has something to do with
@@ -138,7 +142,6 @@ export class MainWindow extends Gtk.ApplicationWindow {
                                           margin_start: _PLACE_ENTRY_MARGIN,
                                           margin_end: _PLACE_ENTRY_MARGIN,
                                           max_width_chars: 50,
-                                          loupe: true,
                                           matchRoute: true });
         placeEntry.connect('notify::place', () => {
             if (placeEntry.place) {
@@ -148,7 +151,10 @@ export class MainWindow extends Gtk.ApplicationWindow {
 
         let popover = placeEntry.popover;
         popover.connect('selected', () => this._mapView.grab_focus());
-        this._mapView.view.connect('button-press-event', () => popover.hide());
+
+        this._buttonPressGesture = new Gtk.GestureSingle();
+        this._mapView.add_controller(this._buttonPressGesture);
+        this._buttonPressGesture.connect('begin', () => popover.popdown());
         return placeEntry;
     }
 
@@ -161,8 +167,8 @@ export class MainWindow extends Gtk.ApplicationWindow {
     }
 
     _initPlaceBar() {
-        this._placeBar = new PlaceBar({ mapView: this._mapView, visible: true });
-        this._placeBarContainer.add(this._placeBar);
+        this._placeBar = new PlaceBar({ mapView: this._mapView, mainWindow: this });
+        this._placeBarContainer.append(this._placeBar);
 
         this.application.bind_property('selected-place',
                                        this._placeBar, 'place',
@@ -170,20 +176,11 @@ export class MainWindow extends Gtk.ApplicationWindow {
     }
 
     _initDND() {
-        this.drag_dest_set(Gtk.DestDefaults.DROP, null, 0);
-        this.drag_dest_add_uri_targets();
+        this._dropTarget = Gtk.DropTarget.new(Gio.File, Gdk.DragAction.COPY);
+        this.add_controller(this._dropTarget);
 
-        this.connect('drag-motion', (widget, ctx, x, y, time) => {
-            Gdk.drag_status(ctx, Gdk.DragAction.COPY, time);
-            return true;
-        });
-
-        this.connect('drag-data-received', (widget, ctx, x, y, data, info, time) => {
-            let files = data.get_uris().map(Gio.file_new_for_uri);
-            if (this._mapView.openShapeLayers(files))
-                Gtk.drag_finish(ctx, true, false, time);
-            else
-                Gtk.drag_finish(ctx, false, false, time);
+        this._dropTarget.connect('drop', (target, value, x, y, data) => {
+            return this._mapView.openShapeLayers([value]);
         });
     }
 
@@ -211,11 +208,11 @@ export class MainWindow extends Gtk.ApplicationWindow {
             },
             'zoom-in': {
                 accels: ['plus', '<Primary>plus', 'KP_Add', '<Primary>KP_Add', 'equal', '<Primary>equal'],
-                onActivate: () => this._mapView.view.zoom_in()
+                onActivate: () => this._mapView.zoomIn()
             },
             'zoom-out': {
                 accels: ['minus', '<Primary>minus', 'KP_Subtract', '<Primary>KP_Subtract'],
-                onActivate:  () => this._mapView.view.zoom_out()
+                onActivate:  () => this._mapView.zoomOut()
             },
             'show-scale': {
                 accels: ['<Primary>S'],
@@ -234,9 +231,19 @@ export class MainWindow extends Gtk.ApplicationWindow {
                 accels: ['<Primary>O'],
                 onActivate: () => this._onOpenShapeLayer()
             },
+            'show-main-menu': {
+                accels: ['F10'],
+                onActivate: () => this._showMainMenu()
+            },
             'export-as-image': {
                 onActivate: () => this._onExportActivated()
-            }
+            },
+            'route-from-here': {},
+            'add-intermediate-destination': {},
+            'route-to-here': {},
+            'whats-here': {},
+            'copy-location': {},
+            'add-osm-location': {}
         };
 
         // when aerial tiles are available, add shortcuts to switch
@@ -256,67 +263,38 @@ export class MainWindow extends Gtk.ApplicationWindow {
     }
 
     _initSignals() {
-        this.connect('delete-event', this._quit.bind(this));
-        this.connect('configure-event',
-                     this._onConfigureEvent.bind(this));
+        this.connect('close-request', () => this._quit());
+        this.connect('notify::default-width', () => this._onSizeChanged());
+        this.connect('notify::default-height', () => this._onSizeChanged());
 
-        this.connect('window-state-event',
-                     this._onWindowStateEvent.bind(this));
+        this.connect('notify::maximized', () => this._onMaximizedChanged());
+        // TODO: GTK4, is this needed?
+        /*
         this._mapView.view.connect('button-press-event', () => {
             // Can not call something that will generate clutter events
             // from a clutter event-handler. So use an idle.
             GLib.idle_add(null, () => this._mapView.grab_focus());
         });
+        */
 
-        /*
-         * If the currently focused widget is an entry then we will
-         * hijack the key-press to the main window and make sure that
-         * they reach the entry before they can be swallowed as accelerator.
-         */
-        /* TODO: GTK 4. This should probably be handled by something like
-         * setting the map view as key capture widget for the search entry
-         */
-        this.connect('key-press-event', (window, event) => {
-            let focusWidget = window.get_focus();
-            let keyval = event.get_keyval()[1];
-            let keys = [Gdk.KEY_plus, Gdk.KEY_KP_Add,
-                        Gdk.KEY_minus, Gdk.KEY_KP_Subtract,
-                        Gdk.KEY_equal];
-            let isPassThroughKey = keys.indexOf(keyval) !== -1;
+        //this._placeEntry.set_key_capture_widget(this)
 
-            /* if no entry is focused, and the key is not one we should treat
-             * as a zoom accelerator when no entry is focused, focus the
-             * main search entry in the headebar to propaget the keypress there
-             */
-            if (!(focusWidget instanceof Gtk.Entry) && !isPassThroughKey) {
-                /* if the search entry does not handle the event, pass it on
-                 * instead of activating the entry
-                 */
-                if (this._placeEntry.handle_event(event) === Gdk.EVENT_PROPAGATE)
-                    return false;
+        let viewport = this._mapView.map.viewport;
 
-                this._placeEntry.has_focus = true;
-                focusWidget = this._placeEntry;
-            }
+        viewport.connect('notify::zoom-level',
+                         this._updateZoomButtonsSensitivity.bind(this));
+        viewport.connect('notify::max-zoom-level',
+                         this._updateZoomButtonsSensitivity.bind(this));
+        viewport.connect('notify::min-zoom-level',
+                         this._updateZoomButtonsSensitivity.bind(this));
 
-            if (focusWidget instanceof Gtk.Entry)
-                return focusWidget.event(event);
-
-            return false;
-        });
-
-        this._mapView.view.connect('notify::zoom-level',
-                                   this._updateZoomButtonsSensitivity.bind(this));
-        this._mapView.view.connect('notify::max-zoom-level',
-                                   this._updateZoomButtonsSensitivity.bind(this));
-        this._mapView.view.connect('notify::min-zoom-level',
-                                   this._updateZoomButtonsSensitivity.bind(this));
+        this._updateZoomButtonsSensitivity();
     }
 
     _updateZoomButtonsSensitivity() {
-        let zoomLevel = this._mapView.view.zoom_level;
-        let maxZoomLevel = this._mapView.view.max_zoom_level;
-        let minZoomLevel = this._mapView.view.min_zoom_level;
+        let zoomLevel = this._mapView.map.viewport.zoom_level;
+        let maxZoomLevel = this._mapView.map.viewport.max_zoom_level;
+        let minZoomLevel = this._mapView.map.viewport.min_zoom_level;
         let zoomInAction = this.lookup_action("zoom-in");
         let zoomOutAction = this.lookup_action("zoom-out");
 
@@ -345,7 +323,7 @@ export class MainWindow extends Gtk.ApplicationWindow {
         this._headerBar.pack_end(this._headerBarRight);
 
         this._placeEntry = this._createPlaceEntry();
-        this._headerBar.custom_title = this._placeEntry;
+        this._headerBar.title_widget = this._placeEntry;
 
         Application.geoclue.connect('notify::state',
                                     this._updateLocationSensitivity.bind(this));
@@ -357,8 +335,8 @@ export class MainWindow extends Gtk.ApplicationWindow {
         this._actionBarRight = new HeaderBarRight({ mapView: this._mapView });
         this._actionBar.pack_end(this._actionBarRight);
 
-        this.connect('size-allocate', () => {
-            let [width, height] = this.get_size();
+        this.connect('notify::default-width', () => {
+            let width = this.default_width;
             if (width < _ADAPTIVE_VIEW_WIDTH) {
                 this.application.adaptive_mode = true;
                 this._headerBarLeft.hide();
@@ -378,18 +356,12 @@ export class MainWindow extends Gtk.ApplicationWindow {
     }
 
     _saveWindowGeometry() {
-        let window = this.get_window();
-        let state = window.get_state();
-
-        if (state & Gdk.WindowState.MAXIMIZED)
+        if (this.maximized)
             return;
 
         // GLib.Variant.new() can handle arrays just fine
-        let size = this.get_size();
-        Application.settings.set('window-size', size);
-
-        let position = this.get_position();
-        Application.settings.set('window-position', position);
+        Application.settings.set('window-size',
+                                 [this.default_width, this.default_height]);
     }
 
     _restoreWindowGeometry() {
@@ -399,18 +371,11 @@ export class MainWindow extends Gtk.ApplicationWindow {
             this.set_default_size(width, height);
         }
 
-        let position = Application.settings.get('window-position');
-        if (position.length === 2) {
-            let [x, y] = position;
-
-            this.move(x, y);
-        }
-
         if (Application.settings.get('window-maximized'))
             this.maximize();
     }
 
-    _onConfigureEvent(widget, event) {
+    _onSizeChanged() {
         if (this._configureId !== 0) {
             GLib.source_remove(this._configureId);
             this._configureId = 0;
@@ -423,15 +388,8 @@ export class MainWindow extends Gtk.ApplicationWindow {
         });
     }
 
-    _onWindowStateEvent(widget, event) {
-        let window = widget.get_window();
-        let state = window.get_state();
-
-        if (state & Gdk.WindowState.FULLSCREEN)
-            return;
-
-        let maximized = (state & Gdk.WindowState.MAXIMIZED);
-        Application.settings.set('window-maximized', maximized);
+    _onMaximizedChanged() {
+        Application.settings.set('window-maximized', this.maximized);
     }
 
     _quit() {
@@ -479,36 +437,27 @@ export class MainWindow extends Gtk.ApplicationWindow {
         });
     }
 
-    _activateExport() {
-        let view = this._mapView.view;
-        let surface = view.to_surface(true);
-        let bbox = view.get_bounding_box();
-        let [latitude, longitude] = bbox.get_center();
+    _onExportActivated() {
+        let {x, y, width, height} = this._mapView.get_allocation();
+        let paintable = new Gtk.WidgetPaintable({ widget: this._mapView });
+        let [latitude, longitude] =
+            this._mapView.map.viewport.widget_coords_to_location(this._mapView.map,
+                                                                 width / 2,
+                                                                 height / 2);
 
         let dialog = new ExportViewDialog({
             transient_for: this,
             modal: true,
-            surface: surface,
+            paintable: paintable,
             latitude: latitude,
             longitude: longitude,
+            width: width,
+            height: height,
             mapView: this._mapView
         });
 
         dialog.connect('response', () => dialog.destroy());
-        dialog.show_all();
-    }
-
-    _onExportActivated() {
-        if (this._mapView.view.state === Champlain.State.DONE) {
-            this._activateExport();
-        } else {
-            let notifyId = this._mapView.view.connect('notify::state', () => {
-                if (this._mapView.view.state === Champlain.State.DONE) {
-                    this._mapView.view.disconnect(notifyId);
-                    this._activateExport();
-                }
-            });
-        }
+        dialog.show();
     }
 
     _printRouteActivate() {
@@ -581,7 +530,6 @@ export class MainWindow extends Gtk.ApplicationWindow {
         copyrightLabel.show();
 
         aboutDialog.show();
-        aboutDialog.connect('response', () => aboutDialog.destroy());
     }
 
     _getAttribution() {
@@ -653,11 +601,16 @@ export class MainWindow extends Gtk.ApplicationWindow {
         });
         this._fileChooser.show();
     }
+
+    _showMainMenu() {
+        this._mainMenuButton.activate();
+    }
 }
 
 GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/main-window.ui',
     InternalChildren: [ 'headerBar',
+                        'mainMenuButton',
                         'grid',
                         'actionBar',
                         'actionBarRevealer',

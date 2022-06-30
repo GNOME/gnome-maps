@@ -129,13 +129,16 @@ export class Sidebar extends Gtk.Revealer {
     }
 
     _initQuerySignals() {
+        this._numRouteEntries = 0;
         this._query.connect('point-added', (obj, point, index) => {
             this._createRouteEntry(index, point);
+            this._numRouteEntries++;
         });
 
         this._query.connect('point-removed', (obj, point, index) => {
             let row = this._entryList.get_row_at_index(index);
-            row.destroy();
+            this._entryList.remove(row);
+            this._numRouteEntries--;
         });
     }
 
@@ -148,7 +151,7 @@ export class Sidebar extends Gtk.Revealer {
         let type;
         if (index === 0)
             type = RouteEntry.Type.FROM;
-        else if (index === this._entryList.get_children().length)
+        else if (index === this._numRouteEntries)
             type = RouteEntry.Type.TO;
         else
             type = RouteEntry.Type.VIA;
@@ -158,7 +161,8 @@ export class Sidebar extends Gtk.Revealer {
                                           mapView: this._mapView });
 
         // add handler overriding tab focus behavior on route entries
-        routeEntry.entry.connect('focus', this._onRouteEntryFocus.bind(this));
+        // TODO: how to set up tab handling using GTK4?
+        //routeEntry.entry.connect('focus', this._onRouteEntryFocus.bind(this));
         // add handler for
         routeEntry.entry.connect('notify::place', () => {
             this._onRouteEntrySelectedPlace(routeEntry.entry);
@@ -167,7 +171,7 @@ export class Sidebar extends Gtk.Revealer {
 
         if (type === RouteEntry.Type.FROM) {
             routeEntry.button.connect('clicked', () => {
-                let lastIndex = this._entryList.get_children().length;
+                let lastIndex = this._numRouteEntries;
                 this._query.addPoint(lastIndex - 1);
                 // focus on the newly added point's entry
                 this._entryList.get_row_at_index(lastIndex - 1).get_child().entry.grab_focus();
@@ -175,7 +179,7 @@ export class Sidebar extends Gtk.Revealer {
 
             this.connect('notify::child-revealed', () => {
                 if (this.child_revealed)
-                    routeEntry.entry.grab_focus_without_selecting();
+                    routeEntry.entry.grab_focus();
             });
         } else if (type === RouteEntry.Type.VIA) {
             routeEntry.button.connect('clicked', () => {
@@ -216,12 +220,12 @@ export class Sidebar extends Gtk.Revealer {
     }
 
     _onRouteEntrySelectedPlace(entry) {
-        let index = this._getIndexForRouteEntry(entry);
+        let [index, numEntries] = this._getIndexForRouteEntryAndNumEntries(entry);
 
         /* if a new place is selected and it's not the last entry, focus next
          * entry
          */
-        if (entry.place && index < this._entryList.get_children().length - 1) {
+        if (entry.place && index < numEntries - 1) {
             let nextPlaceEntry =
                 this._entryList.get_row_at_index(index + 1).get_child().entry;
 
@@ -230,15 +234,27 @@ export class Sidebar extends Gtk.Revealer {
         }
     }
 
-    _getIndexForRouteEntry(entry) {
-        for (let i = 0; i < this._entryList.get_children().length; i++) {
-            let routeEntry = this._entryList.get_row_at_index(i).get_child();
+    _getIndexForRouteEntryAndNumEntries(entry) {
+        let index = 0;
+        let foundIndex = -1;
+
+        for (let item of this._entryList) {
+            let routeEntry = item.get_child();
 
             if (routeEntry.entry === entry)
-                return i;
+                foundIndex = index;
+
+            index++;
         }
 
-        return -1;
+        return [foundIndex, index];
+    }
+
+    // this is needed to be called on shutdown to avoid a GTK warning
+    unparentSearchPopovers() {
+        for (let item of this._entryList) {
+            item.get_child().entry.popover.unparent();
+        }
     }
 
     _initInstructionList() {
@@ -266,8 +282,13 @@ export class Sidebar extends Gtk.Revealer {
 
         transitPlan.connect('no-more-results', () => {
             // set the "load more" row to indicate no more results
-            let numRows = this._transitOverviewListBox.get_children().length;
-            let loadMoreRow = this._transitOverviewListBox.get_row_at_index(numRows - 2);
+            let loadMoreRow;
+
+            for (let row of this._transitOverviewListBox) {
+                if (row instanceof TransitMoreRow)
+                    loadMoreRow = row;
+            }
+
             loadMoreRow.showNoMore();
         });
 
@@ -361,10 +382,23 @@ export class Sidebar extends Gtk.Revealer {
         this._errorLabel.label = msg;
     }
 
+    _clearListBox(listBox) {
+        let rows = [];
+
+        for (let row of listBox) {
+            if (row instanceof Gtk.ListBoxRow)
+                rows.push(row);
+        }
+
+        for (let row of rows) {
+            listBox.remove(row);
+        }
+    }
+
     _clearTransitOverview() {
         let listBox = this._transitOverviewListBox;
-        listBox.forall(listBox.remove.bind(listBox));
 
+        this._clearListBox(listBox);
         this._instructionStack.visible_child = this._transitWindow;
         this._timeInfo.label = '';
         this._distanceInfo.label = '';
@@ -372,7 +406,8 @@ export class Sidebar extends Gtk.Revealer {
 
     _clearTransitItinerary() {
         let listBox = this._transitItineraryListBox;
-        listBox.forall(listBox.remove.bind(listBox));
+
+        this._clearListBox(listBox);
     }
 
     _updateTransitAttribution() {
@@ -469,8 +504,8 @@ export class Sidebar extends Gtk.Revealer {
 
     _clearInstructions() {
         let listBox = this._instructionList;
-        listBox.forall(listBox.remove.bind(listBox));
 
+        this._clearListBox(listBox);
         this._instructionStack.visible_child = this._instructionWindow;
         this._timeInfo.label = '';
         this._distanceInfo.label = '';
@@ -515,12 +550,12 @@ export class Sidebar extends Gtk.Revealer {
         this._query.thaw_notify();
     }
 
-    _onDragDrop(row, context, x, y, time) {
+    _onDragDrop(row) {
         let srcIndex = this._query.points.indexOf(this._draggedPoint);
         let destIndex = row.get_index();
 
         this._reorderRoutePoints(srcIndex, destIndex);
-        Gtk.drag_finish(context, true, false, time);
+
         return true;
     }
 
@@ -546,7 +581,7 @@ export class Sidebar extends Gtk.Revealer {
     }
 
     // Drag ends, show the dragged row again.
-    _onDragEnd(context, row) {
+    _onDragEnd(row) {
         this._draggedPoint = null;
 
         // Restore to natural height
@@ -555,14 +590,10 @@ export class Sidebar extends Gtk.Revealer {
     }
 
     // Drag begins, set the correct drag icon and hide the dragged row.
-    _onDragBegin(context, row) {
+    _onDragBegin(source, row) {
         let routeEntry = row.get_child();
-        let width = row.get_allocated_width();
-        let height = row.get_allocated_height();
-        let surface = new Cairo.ImageSurface(Cairo.Format.ARGB32, width, height);
-        let cr = new Cairo.Context(surface)
+        let {x, y, width, height} = row.get_allocation();
 
-        row.draw(cr);
         this._draggedPoint = routeEntry.point;
 
         // Set a fixed height on the row to prevent the sidebar height
@@ -570,32 +601,32 @@ export class Sidebar extends Gtk.Revealer {
         row.height_request = height;
         row.get_child().hide();
 
-        Gtk.drag_set_icon_surface(context, surface);
+        let paintable = new Gtk.WidgetPaintable(row);
+
+        source.set_icon(paintable, 0, 0);
     }
 
     // Set up drag and drop between RouteEntrys. The drag source is from a
     // GtkEventBox that contains the start/end icon next in the entry. And
     // the drag destination is the ListBox row.
     _initRouteDragAndDrop(routeEntry) {
-        let dragIcon = routeEntry.iconEventBox;
+        let dragIcon = routeEntry.icon;
         let row = routeEntry.get_parent();
+        let dragSource = new Gtk.DragSource();
 
-        dragIcon.drag_source_set(Gdk.ModifierType.BUTTON1_MASK,
-                                 null,
-                                 Gdk.DragAction.MOVE);
-        dragIcon.drag_source_add_image_targets();
+        dragIcon.add_controller(dragSource);
 
-        row.drag_dest_set(Gtk.DestDefaults.MOTION,
-                          null,
-                          Gdk.DragAction.MOVE);
-        row.drag_dest_add_image_targets();
+        dragSource.connect('drag-begin',
+                           (source, drag, widget) => this._onDragBegin(source, row));
+        dragSource.connect('drag-end',
+                           (source, dele, data) => this._onDragEnd(row));
 
-        dragIcon.connect('drag-begin', (icon, context) => this._onDragBegin(context, row));
-        dragIcon.connect('drag-end', (icon, context) => this._onDragEnd(context, row));
+        let dropTarget = Gtk.DropTarget.new(RouteEntry, Gdk.DragAction.MOVE);
 
-        row.connect('drag-leave', this._dragUnhighlightRow.bind(this, row));
-        row.connect('drag-motion', this._onDragMotion.bind(this));
-        row.connect('drag-drop', this._onDragDrop.bind(this));
+        row.add_controller(dropTarget);
+
+        dropTarget.connect('drop',
+                           (target, value, x, y, data) => this._onDragDrop(target));
     }
 }
 

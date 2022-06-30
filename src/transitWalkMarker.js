@@ -62,15 +62,8 @@ export class TransitWalkMarker extends MapMarker {
                                    blue: bgBlue,
                                    alpha: 1.0
                                  });
-        let actor =
-            this._actorFromIconName('maps-point-start-symbolic', 0, color);
-
-        this.add_actor(actor);
-    }
-
-    get anchor() {
-        return { x: Math.floor(this.width / 2) - 1,
-                 y: Math.floor(this.height / 2) - 1 };
+        this._image.paintable =
+            this._paintableFromIconName('maps-point-start-symbolic', 16, color);
     }
 }
 

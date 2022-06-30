@@ -36,7 +36,7 @@ import {RouteQuery} from './routeQuery.js';
 import * as Utils from './utils.js';
 import {ZoomInDialog} from './zoomInDialog.js';
 
-export class ContextMenu extends Gtk.Menu {
+export class ContextMenu extends Gtk.PopoverMenu {
     constructor(params) {
         let mapView = params.mapView;
         delete params.mapView;
@@ -49,44 +49,63 @@ export class ContextMenu extends Gtk.Menu {
         this._mapView = mapView;
         this._mainWindow = mainWindow;
         this._buttonGesture =
-            new Gtk.GestureSingle({ widget: this._mapView,
-                                    button: Gdk.BUTTON_SECONDARY });
-        this._buttonGesture.connect('end', this._onButtonRelease.bind(this));
+            new Gtk.GestureSingle({ button: Gdk.BUTTON_SECONDARY });
+        this._mapView.add_controller(this._buttonGesture);
+        this._buttonGesture.connect('begin', (g, s) => this._onOpenMenu(g, s));
 
-        this._whatsHereItem.connect('activate',
-                                    this._onWhatsHereActivated.bind(this));
-        this._geoURIItem.connect('activate',
-                                 this._onGeoURIActivated.bind(this));
-        this._addOSMLocationItem.connect('activate',
-                                         this._onAddOSMLocationActivated.bind(this));
-        this._routeFromHereItem.connect('activate',
-                                        this._onRouteFromHereActivated.bind(this));
-        this._addIntermediateDestinationItem.connect('activate',
-                                        this._onAddIntermediateDestinationActivated.bind(this));
-        this._routeToHereItem.connect('activate',
-                                      this._onRouteToHereActivated.bind(this));
+        this._routeFromHereAction =
+            this._mainWindow.lookup_action('route-from-here');
+        this._addIntermediateDestinationAction =
+            this._mainWindow.lookup_action('add-intermediate-destination');
+        this._routeToHereAction =
+            this._mainWindow.lookup_action('route-to-here');
+
+        let whatsHereAction =
+            this._mainWindow.lookup_action('whats-here');
+        let copyLocationAction =
+            this._mainWindow.lookup_action('copy-location');
+        let addOSMLocationAction =
+            this._mainWindow.lookup_action('add-osm-location');
+
+        whatsHereAction.connect('activate',
+                                 () => this._onWhatsHereActivated());
+        copyLocationAction.connect('activate',
+                                   () => this._onCopyLocationActivated());
+        addOSMLocationAction.connect('activate',
+                                     () => this._onAddOSMLocationActivated());
+        this._routeFromHereAction.connect('activate',
+                                     () => this._onRouteFromHereActivated());
+        this._addIntermediateDestinationAction.connect('activate',
+                         () => this._onAddIntermediateDestinationActivated());
+        this._routeToHereAction.connect('activate',
+                                        () => this._onRouteToHereActivated());
         Application.routeQuery.connect('notify::points',
-                                       this._routingUpdate.bind(this));
+                                       () => this._routingUpdate());
         this._routingUpdate();
+        this.set_parent(this._mapView);
     }
 
-    _onButtonRelease(gesture, sequence) {
-        let event = gesture.get_last_event(sequence);
-        let [, x, y] = event.get_coords();
-        this._longitude = this._mapView.view.x_to_longitude(x);
-        this._latitude = this._mapView.view.y_to_latitude(y);
+    _onOpenMenu(gesture, sequence) {
+        let [_, x, y] = gesture.get_point(sequence);
+        let viewport = this._mapView.map.viewport;
+        /* we can't get the allocated width before showing, so use a
+         * best-effort offset to get the top-left corner close to the pointer
+         */
+        let rect = new Gdk.Rectangle({ x: x, y: y, width: 200, height: 0 });
 
-        // Need idle to avoid Clutter dead-lock on re-entrance
-        GLib.idle_add(null, () => this.popup_at_pointer(event));
+        [this._latitude, this._longitude] = viewport.widget_coords_to_location(this._mapView, x, y);
+
+        this.pointing_to = rect;
+        this.popup();
     }
 
     _routingUpdate() {
         let query = Application.routeQuery;
         let numPoints = query.points.length;
 
-        this._routeFromHereItem.sensitive = numPoints < RouteQuery.MAX_QUERY_POINTS;
-        this._routeToHereItem.sensitive = numPoints < RouteQuery.MAX_QUERY_POINTS;
-        this._addIntermediateDestinationItem.sensitive =
+        this._routeFromHereAction.enabled = numPoints < RouteQuery.MAX_QUERY_POINTS;
+        this._routeToHereAction.enabled = numPoints < RouteQuery.MAX_QUERY_POINTS;
+        this._addIntermediateDestinationAction.enabled =
             query.filledPoints.length >= 2 && numPoints < RouteQuery.MAX_QUERY_POINTS;
     }
 
@@ -124,7 +143,7 @@ export class ContextMenu extends Gtk.Menu {
         GeocodeFactory.getGeocoder().reverse(this._latitude, this._longitude,
                                       (place) => {
             if (place) {
-                this._mapView.showPlace(place, false);
+                this._mapView.showPlace(place, true);
             } else {
                 let msg = _("Nothing found here!");
 
@@ -133,15 +152,14 @@ export class ContextMenu extends Gtk.Menu {
         });
     }
 
-    _onGeoURIActivated() {
+    _onCopyLocationActivated() {
         let location = new Location({ latitude: this._latitude,
                                       longitude: this._longitude,
                                       accuracy: 0 });
-        let display = Gdk.Display.get_default();
-        let clipboard = Gtk.Clipboard.get_default(display);
+        let clipboard = this.get_clipboard();
         let uri = location.to_uri(GeocodeGlib.LocationURIScheme.GEO);
 
-        clipboard.set_text(uri, uri.length);
+        clipboard.set(uri);
     }
 
     _onAddOSMLocationActivated() {
@@ -165,17 +183,18 @@ export class ContextMenu extends Gtk.Menu {
 
     _addOSMLocation() {
         let osmEdit = Application.osmEdit;
+        let viewport = this._mapView.map.viewport;
 
-        if (this._mapView.view.get_zoom_level() < OSMEdit.MIN_ADD_LOCATION_ZOOM_LEVEL) {
+        if (viewport.zoom_level < OSMEdit.MIN_ADD_LOCATION_ZOOM_LEVEL) {
             let zoomInDialog =
                 new ZoomInDialog({ longitude: this._longitude,
                                    latitude: this._latitude,
-                                   view: this._mapView.view,
+                                   map: this._mapView.map,
                                    transient_for: this._mainWindow,
                                    modal: true });
 
             zoomInDialog.connect('response', () => zoomInDialog.destroy());
-            zoomInDialog.show_all();
+            zoomInDialog.show();
             return;
         }
 
@@ -195,11 +214,5 @@ export class ContextMenu extends Gtk.Menu {
 }
 
 GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/context-menu.ui',
-    InternalChildren: [ 'whatsHereItem',
-                        'geoURIItem',
-                        'addOSMLocationItem',
-                        'routeFromHereItem',
-                        'addIntermediateDestinationItem',
-                        'routeToHereItem' ],
+    Template: 'resource:///org/gnome/Maps/ui/context-menu.ui'
 }, ContextMenu);

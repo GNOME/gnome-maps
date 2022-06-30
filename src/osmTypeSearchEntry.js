@@ -33,13 +33,9 @@ export class OSMTypeSearchEntry extends Gtk.SearchEntry {
     constructor(props) {
         super(props);
 
-        this._popover = new OSMTypePopover({relative_to: this});
-
-        this.connect('size-allocate', (widget, allocation) => {
-            /* Magic number to make the alignment pixel perfect. */
-            let width_request = allocation.width + 20;
-            this._popover.width_request = width_request;
-        });
+        this._popover = new OSMTypePopover({ entry: this });
+        this._popover.set_parent(this);
+        this.set_key_capture_widget(this._popover);
 
         this.connect('search-changed', this._onSearchChanged.bind(this));
         this.connect('activate', this._onSearchChanged.bind(this));

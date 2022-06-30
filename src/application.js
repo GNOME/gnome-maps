@@ -20,13 +20,13 @@
  *         Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
+import Adw from 'gi://Adw';
+import Gdk from 'gi://Gdk';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Geocode from 'gi://GeocodeGlib';
 import Gio from 'gi://Gio';
 import Gtk from 'gi://Gtk';
-import GtkClutter from 'gi://GtkClutter';
-import Hdy from 'gi://Handy';
 
 import {Geoclue} from './geoclue.js';
 import * as GeocodeFactory from './geocode.js';
@@ -44,7 +44,7 @@ const Format = imports.format;
 
 const _ensuredTypes = [OSMTypeSearchEntry];
 
-export class Application extends Gtk.Application {
+export class Application extends Adw.Application {
 
     // used globally
     static application = null;
@@ -140,9 +140,6 @@ export class Application extends Gtk.Application {
     vfunc_startup() {
         super.vfunc_startup();
 
-        GtkClutter.init(null);
-        Hdy.init();
-
         Utils.loadStyleSheet(Gio.file_new_for_uri('resource:///org/gnome/Maps/application.css'));
 
         Application.application = this;
@@ -162,12 +159,10 @@ export class Application extends Gtk.Application {
             }
         }, Application.settings);
 
+        let display = Gdk.Display.get_default();
 
-        this._styleManager = Hdy.StyleManager.get_default();
-        this._styleManager.set_color_scheme(Hdy.ColorScheme.PREFER_LIGHT);
-
-        Gtk.IconTheme.get_default().append_search_path(GLib.build_filenamev([pkg.pkgdatadir,
-                                                                             'icons']));
+        Gtk.IconTheme.get_for_display(display).add_search_path(
+            GLib.build_filenamev([pkg.pkgdatadir, 'icons']));
         this._initPlaceStore();
     }
 
@@ -207,7 +202,7 @@ export class Application extends Gtk.Application {
     }
 
     _openInternal(files) {
-        if (!this._mainWindow || !this._mainWindow.mapView.view.realized)
+        if (!this._mainWindow || !this._mainWindow.mapView.map.get_realized())
             return;
 
         let uri = files[0].get_uri();
@@ -297,10 +292,10 @@ export class Application extends Gtk.Application {
         this.activate();
 
         let mapView = this._mainWindow.mapView;
-        if (mapView.view.realized)
+        if (mapView.map.get_realized())
             this._openInternal(files);
         else
-            mapView.view.connect('notify::realized',
+            mapView.map.connect('realize',
                                  this._openInternal.bind(this, files));
     }
 
@@ -356,6 +351,15 @@ export class Application extends Gtk.Application {
 
     _onWindowDestroy(window) {
         this._mainWindow = null;
+    }
+
+    vfunc_shutdown() {
+        // need to unparent popover children to avoid GTK warnings on exit
+        if (this._mainWindow) {
+            this._mainWindow.placeEntry.popover.unparent();
+        }
+        this._mainWindow.sidebar.unparentSearchPopovers();
+        super.vfunc_shutdown();
     }
 }
 

@@ -36,10 +36,10 @@ export class PlaceDialog extends Gtk.Dialog {
         params.use_header_bar = true;
         super(params);
 
-        if (this.transient_for.is_maximized) {
+        if (this.transient_for.maximized) {
             this.maximize();
         } else {
-            let [width, height] = this.transient_for.get_size();
+            let {x, y, width, height} = this.transient_for.get_allocation();
 
             // Don't let the dialog get too wide
             if (width > 400) {
@@ -54,7 +54,7 @@ export class PlaceDialog extends Gtk.Dialog {
                                           mapView,
                                           valign: Gtk.Align.START,
                                           visible: true });
-        this._scroll.add(this._placeView);
+        this._scroll.child = this._placeView;
 
         let formatter = new PlaceFormatter(place);
         this.title = formatter.title;

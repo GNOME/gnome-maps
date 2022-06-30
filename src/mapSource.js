@@ -17,69 +17,50 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
-import Champlain from 'gi://Champlain';
+import GLib from 'gi://GLib';
+import Shumate from 'gi://Shumate';
 
 import * as Service from './service.js';
 import * as Utils from './utils.js';
 
-const _FILE_CACHE_SIZE_LIMIT = (10 * 1024 * 1024); /* 10Mb */
-const _MEMORY_CACHE_SIZE_LIMIT = 100; /* number of tiles */
-
-function _createTileSource(source) {
-    let tileSource = new Champlain.NetworkTileSource({
-        id: source.id,
-        name: source.name,
-        license: source.license,
-        license_uri: source.license_uri,
-        min_zoom_level: source.min_zoom_level,
-        max_zoom_level: source.max_zoom_level,
-        tile_size: source.tile_size,
-        renderer: new Champlain.ImageRenderer(),
-        uri_format: source.uri_format
-    });
-    tileSource.max_conns = source.max_connections;
-    return tileSource;
+/* Converts a tile URI format from Champlain style to Shumate style.
+ * e.g. from
+ * https://tile.openstreetmap.org/#Z#/#X#/#Y#.png
+ * to
+ * https://tile.openstreetmap.org/{Z}/{X}/{Y}.png
+ */
+function convertUriFormatFromChamplain(uriFormat) {
+     return uriFormat.replace('#Z#', '{z}').replace('#X#', '{x}').replace('#Y#', '{y}');
 }
 
-function _createCachedSource(source) {
-    let tileSource = _createTileSource(source);
+function createTileDownloader(source) {
+    let template = convertUriFormatFromChamplain(source.uri_format);
 
-    let fileCache = new Champlain.FileCache({
-        size_limit: _FILE_CACHE_SIZE_LIMIT,
-        renderer: new Champlain.ImageRenderer()
+    return new Shumate.TileDownloader({ url_template: template });
+}
+
+function createRasterRenderer(source) {
+    return new Shumate.RasterRenderer({
+        id:             source.id,
+        name:           source.name,
+        license:        source.license,
+        license_uri:    source.license_uri,
+        min_zoom_level: source.min_zoom_level,
+        max_zoom_level: source.max_zoom_level,
+        tile_size:      source.tile_size,
+        projection:     Shumate.MapProjection.MERCATOR,
+        data_source:    createTileDownloader(source)
     });
-
-    let memoryCache = new Champlain.MemoryCache({
-        size_limit: _MEMORY_CACHE_SIZE_LIMIT,
-        renderer: new Champlain.ImageRenderer()
-    });
-
-    let errorSource = new Champlain.NullTileSource({
-        renderer: new Champlain.ImageRenderer()
-    });
-
-    /*
-     * When the a source in the chain fails to load a given tile
-     * the next one in the chain tries instead. Until we get to the error
-     * source.
-     */
-    let sourceChain = new Champlain.MapSourceChain();
-    sourceChain.push(errorSource);
-    sourceChain.push(tileSource);
-    sourceChain.push(fileCache);
-    sourceChain.push(memoryCache);
-
-    return sourceChain;
 }
 
 export function createAerialSource() {
-    return _createCachedSource(Service.getService().tiles.aerial);
+    return createRasterRenderer(Service.getService().tiles.aerial);
 }
 
 export function createStreetSource() {
-    return _createCachedSource(Service.getService().tiles.street);
+    return createRasterRenderer(Service.getService().tiles.street);
 }
 
 export function createPrintSource() {
-    return _createCachedSource(Service.getService().tiles.print);
+    return createRasterRenderer(Service.getService().tiles.print);
 }

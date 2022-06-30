@@ -20,19 +20,19 @@
  */
 
 import Cairo from 'cairo';
-import Champlain from 'gi://Champlain';
-import Clutter from 'gi://Clutter';
 import Gdk from 'gi://Gdk';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
+import Graphene from 'gi://Graphene';
 import Gtk from 'gi://Gtk';
+import Shumate from 'gi://Shumate';
 
 import {Application} from './application.js';
 import {MapBubble} from './mapBubble.js';
 import {MapWalker} from './mapWalker.js';
 import * as Utils from './utils.js';
 
-export class MapMarker extends Champlain.Marker {
+export class MapMarker extends Shumate.Marker {
 
     constructor(params) {
         let place = params.place;
@@ -50,12 +50,16 @@ export class MapMarker extends Champlain.Marker {
         this._place = place;
         this._mapView = mapView;
 
-        this.connect('notify::size', this._translateMarkerPosition.bind(this));
+        this._image = new Gtk.Image({ icon_size: Gtk.IconSize.NORMAL });
+        this.child = this._image;
+
         if (this._mapView) {
-            this._view = this._mapView.view;
-            this.connect('notify::selected', this._onMarkerSelected.bind(this));
-            this.connect('button-press', this._onButtonPress.bind(this));
-            this.connect('touch-event', this._onTouchEvent.bind(this));
+            this._viewport = this._mapView.map.viewport;
+
+            this._buttonPressGesture = new Gtk.GestureSingle();
+            this.add_controller(this._buttonPressGesture);
+            this._buttonPressGesture.connect('begin',
+                                             () => this._onMarkerSelected());
 
             // Some markers are draggable, we want to sync the marker location and
             // the location saved in the GeocodePlace
@@ -70,72 +74,18 @@ export class MapMarker extends Champlain.Marker {
 
             this.place.connect('notify::location', this._onLocationChanged.bind(this));
 
-            this._view.bind_property('latitude', this, 'view-latitude',
-                                     GObject.BindingFlags.DEFAULT);
-            this._view.bind_property('longitude', this, 'view-longitude',
-                                     GObject.BindingFlags.DEFAULT);
-            this._view.bind_property('zoom-level', this, 'view-zoom-level',
-                                     GObject.BindingFlags.DEFAULT);
+            this._viewport.bind_property('latitude', this, 'view-latitude',
+                                         GObject.BindingFlags.DEFAULT);
+            this._viewport.bind_property('longitude', this, 'view-longitude',
+                                         GObject.BindingFlags.DEFAULT);
+            this._viewport.bind_property('zoom-level', this, 'view-zoom-level',
+                                         GObject.BindingFlags.DEFAULT);
             this.connect('notify::view-latitude', this._onViewUpdated.bind(this));
             this.connect('notify::view-longitude', this._onViewUpdated.bind(this));
             this.connect('notify::view-zoom-level', this._onViewUpdated.bind(this));
         }
 
         Application.application.connect('notify::adaptive-mode', this._onAdaptiveModeChanged.bind(this));
-    }
-
-    get surface() {
-        return this._surface;
-    }
-
-    set surface(v) {
-        this._surface = v;
-    }
-
-    vfunc_get_surface() {
-        return this._surface;
-    }
-
-    vfunc_set_surface(surface) {
-        this._surface = surface;
-    }
-
-    _actorFromIconName(name, size, color) {
-        try {
-            let theme = Gtk.IconTheme.get_default();
-            let pixbuf;
-
-            if (color) {
-                let info = theme.lookup_icon(name, size, 0);
-                pixbuf = info.load_symbolic(color, null, null, null)[0];
-            } else {
-                pixbuf = theme.load_icon(name, size, 0);
-            }
-
-            let canvas = new Clutter.Canvas({ width: pixbuf.get_width(),
-                                              height: pixbuf.get_height() });
-
-            canvas.connect('draw', (canvas, cr) => {
-                cr.setOperator(Cairo.Operator.CLEAR);
-                cr.paint();
-                cr.setOperator(Cairo.Operator.OVER);
-
-                Gdk.cairo_set_source_pixbuf(cr, pixbuf, 0, 0);
-                cr.paint();
-
-                this._surface = cr.getTarget();
-            });
-
-            let actor = new Clutter.Actor();
-            actor.set_content(canvas);
-            actor.set_size(pixbuf.get_width(), pixbuf.get_height());
-            canvas.invalidate();
-
-            return actor;
-        } catch (e) {
-            Utils.debug('Failed to load image: %s'.format(e.message));
-            return null;
-        }
     }
 
     _onButtonPress(marker, event) {
@@ -146,17 +96,6 @@ export class MapMarker extends Champlain.Marker {
                 this._view.center_on(this.latitude, this.longitude);
             }
         }
-    }
-
-    _onTouchEvent(marker, event) {
-        if (event.type() == Clutter.EventType.TOUCH_BEGIN)
-            this.selected = true;
-
-        return Clutter.EVENT_STOP;
-    }
-
-    _translateMarkerPosition() {
-        this.set_translation(-this.anchor.x, -this.anchor.y, 0);
     }
 
     _onLocationChanged() {
@@ -191,6 +130,7 @@ export class MapMarker extends Champlain.Marker {
             if (this._place.name) {
                 this._bubble = new MapBubble({ place: this._place,
                                                mapView: this._mapView });
+                this._bubble.set_parent(this._mapView);
             }
         }
 
@@ -203,13 +143,14 @@ export class MapMarker extends Champlain.Marker {
     }
 
     _positionBubble(bubble) {
-        let [tx, ty, tz] = this.get_translation();
-        let x = this._view.longitude_to_x(this.longitude);
-        let y = this._view.latitude_to_y(this.latitude);
-        let mapSize = this._mapView.get_allocation();
+        let [x, y] =
+            this._viewport.location_to_widget_coords(this._mapView.map,
+                                                     this.latitude,
+                                                     this.longitude);
+        let mapSize = this._mapView.map.get_allocation();
 
-        let pos = new Gdk.Rectangle({ x: x + tx - this.bubbleSpacing,
-                                      y: y + ty - this.bubbleSpacing,
+        let pos = new Gdk.Rectangle({ x: x - this.bubbleSpacing,
+                                      y: y - this.bubbleSpacing,
                                       width: this.width + this.bubbleSpacing * 2,
                                       height: this.height + this.bubbleSpacing * 2 });
         bubble.pointing_to = pos;
@@ -232,7 +173,7 @@ export class MapMarker extends Champlain.Marker {
 
     _hideBubbleOn(signal, duration) {
         let sourceId = null;
-        let signalId = this._view.connect(signal, () => {
+        let signalId = this._viewport.connect(signal, () => {
             if (sourceId)
                 GLib.source_remove(sourceId);
             else
@@ -253,16 +194,7 @@ export class MapMarker extends Champlain.Marker {
             // We still listening for the signal to refresh
             // the existent timeout
             if (!sourceId)
-                this._view.disconnect(signalId);
-        });
-
-        Utils.once(this, 'notify::selected', () => {
-            // When the marker gets deselected, we need to ensure
-            // that the timeout callback is not called anymore.
-            if (sourceId) {
-                GLib.source_remove(sourceId);
-                this._view.disconnect(signalId);
-            }
+                this._viewport.disconnect(signalId);
         });
     }
 
@@ -282,12 +214,10 @@ export class MapMarker extends Champlain.Marker {
                 this.selected = false;
         });
 
-        let viewTouchEventSignalId =
-            this._view.connect('touch-event', () => this.set_selected(false));
-
         let goingToSignalId = this._mapView.connect('going-to', () => {
             this.set_selected(false);
         });
+        /*
         let buttonPressSignalId =
             this._view.connect('button-press-event', () => {
                 this.set_selected(false);
@@ -304,28 +234,32 @@ export class MapMarker extends Champlain.Marker {
                 this.set_selected(false);
             }
         });
+        */
 
         Utils.once(this.bubble, 'closed', () => {
             this._mapView.disconnect(markerSelectedSignalId);
             this._mapView.disconnect(goingToSignalId);
-            this._view.disconnect(buttonPressSignalId);
-            this._view.disconnect(viewTouchEventSignalId);
-            this.disconnect(parentSetSignalId);
-            this.disconnect(dragMotionSignalId);
+            //this._view.disconnect(buttonPressSignalId);
+            //this._view.disconnect(viewTouchEventSignalId);
+            //this.disconnect(parentSetSignalId);
+            //this.disconnect(dragMotionSignalId);
 
-            this._bubble.destroy();
+            //this._bubble.destroy();
             delete this._bubble;
         });
     }
 
     _isInsideView() {
-        let [tx, ty, tz] = this.get_translation();
-        let x = this._view.longitude_to_x(this.longitude);
-        let y = this._view.latitude_to_y(this.latitude);
-        let mapSize = this._mapView.get_allocation();
+        let [x, y] = this._viewport.location_to_widget_coords(this._mapView.map,
+                                                              this.latitude,
+                                                              this.longitude);
+        let markerSize = this.get_allocation();
+        let mapSize = this._mapView.map.get_allocation();
+        let tx = markerSize.width / 2;
+        let ty = markerSize.height / 2;
 
-        return x + tx + this.width > 0 && x + tx < mapSize.width &&
-               y + ty + this.height > 0 && y + ty < mapSize.height;
+        return x + tx/2 > 0 && x - tx/2 < mapSize.width &&
+               y + ty/2 > 0 && y - ty/2 < mapSize.height;
     }
 
     _onViewUpdated() {
@@ -340,14 +274,14 @@ export class MapMarker extends Champlain.Marker {
     showBubble() {
         if (this.bubble && !this.bubble.visible && this._isInsideView() && !Application.application.adaptive_mode) {
             this._initBubbleSignals();
-            this.bubble.show();
+            this.bubble.popup();
             this._positionBubble(this.bubble);
         }
     }
 
     hideBubble() {
         if (this._bubble)
-            this._bubble.hide();
+            this._bubble.popdown();
     }
 
     get walker() {
@@ -367,43 +301,69 @@ export class MapMarker extends Champlain.Marker {
     }
 
     goToAndSelect(animate) {
-        Utils.once(this, 'gone-to', () => this.selected = true);
+        Utils.once(this, 'gone-to', () => {
+            if (this.bubble)
+                this.showBubble();
+        });
 
         this.goTo(animate);
     }
 
     _onMarkerSelected() {
-        if (this.selected) {
-            if (this.bubble) {
+        if (this.bubble) {
+            if (!this._bubble.visible) {
                 this.showBubble();
                 Application.application.selected_place = this._place;
+            } else {
+                this.hideBubble();
+                Application.application.selected_place = null;
             }
         } else {
-            this.hideBubble();
-            Application.application.selected_place = null;
+            if (!Application.application.selected_place)
+                Application.application.selected_place = this._place;
+            else
+                Application.application.selected_place = null;
         }
     }
 
     _onAdaptiveModeChanged() {
-        if (this.selected) {
-            if (!Application.application.adaptive_mode) {
-                this.showBubble();
-            } else {
-                this.hideBubble();
-            }
+        if (!Application.application.adaptive_mode) {
+            this.showBubble();
+        } else {
+            this.hideBubble();
+        }
+    }
+
+    _paintableFromIconName(name, size, color) {
+        let display = Gdk.Display.get_default();
+        let theme = Gtk.IconTheme.get_for_display(display);
+        let iconPaintable = theme.lookup_icon(name, null, size,
+                                              this.scale_factor,
+                                              Gtk.TextDirection.NONE, 0);
+
+        if (color) {
+            let snapshot = Gtk.Snapshot.new();
+            let rect = new Graphene.Rect();
+
+            iconPaintable.snapshot_symbolic(snapshot, size, size, [color]);
+            rect.init(0, 0, size, size);
+
+            let node = snapshot.to_node();
+            let renderer = this._mapView.get_native().get_renderer();
+
+            return renderer.render_texture(node, rect);
+        } else {
+            return iconPaintable;
         }
     }
 }
 
 GObject.registerClass({
-    Implements: [Champlain.Exportable],
     Abstract: true,
     Signals: {
         'gone-to': { }
     },
     Properties: {
-        'surface': GObject.ParamSpec.override('surface',
-                                              Champlain.Exportable),
         'view-latitude': GObject.ParamSpec.double('view-latitude', '', '',
                                                   GObject.ParamFlags.READABLE |
                                                   GObject.ParamFlags.WRITABLE,

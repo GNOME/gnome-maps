@@ -19,7 +19,6 @@
  * Author: James Westman <james@flyingpimonster.net>
  */
 
-import Clutter from 'gi://Clutter';
 import Gdk from 'gi://Gdk';
 import GeocodeGlib from 'gi://GeocodeGlib';
 import GObject from 'gi://GObject';
@@ -37,21 +36,29 @@ export class PlaceBar extends Gtk.Revealer {
         let mapView = params.mapView;
         delete params.mapView;
 
+        let mainWindow = params.mainWindow;
+        delete params.mainWindow;
+
         super(params);
 
         this._mapView = mapView;
+        this._mainWindow = mainWindow;
         this._buttons = new PlaceButtons({ mapView: this._mapView });
         this._buttons.initSendToButton(this._altSendToButton);
         this._buttons.connect('place-edited', this._onPlaceEdited.bind(this));
-        this._box.add(this._buttons);
+        this._box.append(this._buttons);
 
-        this._multipress = new Gtk.GestureMultiPress({ widget: this._eventbox });
-        this._multipress.connect('released', this._onEventBoxClicked.bind(this));
+        this._click = new Gtk.GestureClick();
+        this._box.add_controller(this._click);
+        this._click.connect('released', this._onBoxClicked.bind(this));
 
         Application.application.connect('notify::adaptive-mode', this._updateVisibility.bind(this));
         this.connect('notify::place', this._updatePlace.bind(this));
 
-        this._mapView.view.connect('touch-event', this._onMapClickEvent.bind(this));
+        this._mapClick = new Gtk.GestureSingle();
+        this._mapView.add_controller(this._mapClick);
+
+        this._mapClick.connect('begin', this._onMapClickEvent.bind(this));
     }
 
     _updatePlace() {
@@ -83,7 +90,7 @@ export class PlaceBar extends Gtk.Revealer {
         }
     }
 
-    _onEventBoxClicked() {
+    _onBoxClicked() {
         if (this.place.isCurrentLocation) {
             if (this._currentLocationView) {
                 this._box.remove(this._currentLocationView);
@@ -93,10 +100,10 @@ export class PlaceBar extends Gtk.Revealer {
                                                             mapView: this._mapView,
                                                             inlineMode: true,
                                                             visible: true });
-                this._box.add(this._currentLocationView);
+                this._box.append(this._currentLocationView);
             }
         } else {
-            this._dialog = new PlaceDialog ({ transient_for: this.get_toplevel(),
+            this._dialog = new PlaceDialog ({ transient_for: this._mainWindow,
                                               modal: true,
                                               mapView: this._mapView,
                                               place: this.place });
@@ -113,21 +120,8 @@ export class PlaceBar extends Gtk.Revealer {
     }
 
     _onMapClickEvent(view, event) {
-        switch (event.type()) {
-            case Clutter.EventType.TOUCH_BEGIN:
-                this._tapped = true;
-                break;
-            case Clutter.EventType.TOUCH_UPDATE:
-                this._tapped = false;
-            case Clutter.EventType.TOUCH_END:
-            case Clutter.EventType.TOUCH_CANCEL:
-                if (this._tapped) {
-                    Application.application.selected_place = null;
-                }
-                break;
-        }
-
-        return Clutter.EVENT_PROPAGATE;
+       Application.application.selected_place = null;
+       this.reveal_child = false;
     }
 }
 
@@ -136,7 +130,6 @@ GObject.registerClass({
     InternalChildren: [ 'actionbar',
                         'altSendToButton',
                         'box',
-                        'eventbox',
                         'title' ],
     Properties: {
         'place': GObject.ParamSpec.object('place',
@@ -147,3 +140,4 @@ GObject.registerClass({
                                           GeocodeGlib.Place)
     },
 }, PlaceBar);
+

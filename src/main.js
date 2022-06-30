@@ -20,21 +20,17 @@
  *         Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
-import 'gi://Champlain?version=0.12';
-import 'gi://Clutter?version=1.0';
-import 'gi://Cogl?version=1.0';
+import 'gi://Adw?version=1';
 import 'gi://GeocodeGlib?version=1.0';
-import 'gi://Gdk?version=3.0';
+import 'gi://Gdk?version=4.0';
 import 'gi://GdkPixbuf?version=2.0';
 import 'gi://Gio?version=2.0';
 import 'gi://GLib?version=2.0';
 import 'gi://GObject?version=2.0';
-import 'gi://Gtk?version=3.0';
-import 'gi://GtkChamplain?version=0.12';
-import 'gi://GtkClutter?version=1.0';
+import 'gi://Gtk?version=4.0';
 import 'gi://GWeather?version=4.0';
-import 'gi://Handy?version=1';
 import 'gi://Rest?version=0.7';
+import 'gi://Shumate?version=1.0';
 import 'gi://Soup?version=2.4';
 
 import * as system from 'system';

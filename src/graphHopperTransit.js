@@ -25,7 +25,7 @@
  * routing for walking legs
  */
 
-import Champlain from 'gi://Champlain';
+import Shumate from 'gi://Shumate';
 
 import {Application} from './application.js';
 import {Location} from './location.js';
@@ -64,10 +64,10 @@ export function createWalkingLeg(from, to, fromName, toName, route) {
 
 // create a straight-line "as the crow flies" polyline between two places
 function createStraightPolyline(fromLoc, toLoc) {
-    return [new Champlain.Coordinate({ latitude: fromLoc.latitude,
-                                       longitude: fromLoc.longitude }),
-            new Champlain.Coordinate({ latitude: toLoc.latitude,
-                                       longitude: toLoc.longitude })];
+    return [new Shumate.Coordinate({ latitude: fromLoc.latitude,
+                                     longitude: fromLoc.longitude }),
+            new Shumate.Coordinate({ latitude: toLoc.latitude,
+                                     longitude: toLoc.longitude })];
 }
 
 var _walkingRoutes = [];

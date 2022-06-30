@@ -22,6 +22,7 @@
 import Cairo from 'cairo';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
+import Graphene from 'gi://Graphene';
 import Gtk from 'gi://Gtk';
 
 import * as Color from './color.js';
@@ -52,7 +53,6 @@ export class TransitRouteLabel extends Gtk.Label {
         super(params);
 
         this._setLabel(leg, compact);
-        this.connect('draw', this._onDraw.bind(this));
     }
 
     _setLabel(leg, compact) {
@@ -103,21 +103,27 @@ export class TransitRouteLabel extends Gtk.Label {
         this.label = '<span foreground="#%s">%s</span>'.format(
                                         textColor,
                                         GLib.markup_escape_text(label, -1));
+
+        this.queue_draw();
     }
 
     /* I didn't find any easy/obvious way to override widget background color
      * and getting rounded corner just using CSS styles, so doing a custom
      * Cairo drawing of a "roundrect"
      */
-    _onDraw(widget, cr) {
-        let width = widget.get_allocated_width();
-        let height = widget.get_allocated_height();
+    vfunc_snapshot(snapshot) {
+        let {x, y, width, height} = this.get_allocation();
+        let rect = new Graphene.Rect();
 
+        rect.init(0, 0, width, height);
+
+        let cr = snapshot.append_cairo(rect);
+
+        // clip off the badge, this seems to avoid some extra space at right/bottom with the CSS
         Gfx.drawColoredBagde(cr, this._color,
                              this._hasOutline ? this._textColor : null,
-                             0, 0, width, height);
-
-        return false;
+                             0, 0, width - 3, height - 3);
+        super.vfunc_snapshot(snapshot);
     }
 }
 

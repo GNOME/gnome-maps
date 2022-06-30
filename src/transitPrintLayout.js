@@ -20,8 +20,6 @@
  */
 
 import Cairo from 'cairo';
-import Champlain from 'gi://Champlain';
-import Clutter from 'gi://Clutter';
 import GObject from 'gi://GObject';
 import Pango from 'gi://Pango';
 
@@ -33,13 +31,6 @@ import * as Transit from './transit.js';
 import {TransitArrivalMarker} from './transitArrivalMarker.js';
 import {TransitBoardMarker} from './transitBoardMarker.js';
 import {TransitWalkMarker} from './transitWalkMarker.js';
-
-// stroke color for walking paths
-const _STROKE_COLOR = new Clutter.Color({ red: 0,
-                                          blue: 0,
-                                          green: 0,
-                                          alpha: 255 });
-const _STROKE_WIDTH = 5.0;
 
 // All following constants are ratios of surface size to page size
 const _Header = {
@@ -58,6 +49,8 @@ const _Instruction = {
     SCALE_Y: 0.1,
     SCALE_MARGIN: 0.01
 };
+
+const _ICON_SIZE = 24;
 
 // luminance threashhold for drawing outline around route label badges
 const OUTLINE_LUMINANCE_THREASHHOLD = 0.9;
@@ -83,116 +76,17 @@ export class TransitPrintLayout extends PrintLayout {
         for (let leg of itinerary.legs) {
             numSurfaces++;
             // add a surface when a leg of the itinerary should have a map view
+            // TODO: skip this now, as we don't have minimaps now..
+            /*
             if (TransitPrintLayout._legHasMiniMap(leg))
                 numSurfaces++;
+            */
         }
 
         // always include the arrival row
         numSurfaces++;
 
         return numSurfaces;
-    }
-
-    _drawMapView(width, height, zoomLevel, index) {
-        let pageNum = this.numPages - 1;
-        let x = this._cursorX;
-        let y = this._cursorY;
-        let mapSource = MapSource.createPrintSource();
-        let markerLayer = new Champlain.MarkerLayer();
-        let view = new Champlain.View({ width: width,
-                                        height: height,
-                                        zoom_level: zoomLevel });
-        let leg = this._itinerary.legs[index];
-        let nextLeg = this._itinerary.legs[index + 1];
-        let previousLeg = index === 0 ? null : this._itinerary.legs[index - 1];
-
-        view.set_map_source(mapSource);
-        /* we want to add the path layer before the marker layer, so that
-         * boarding marker are drawn about the walk dash lines
-         */
-        this._addRouteLayer(view, index);
-        view.add_layer(markerLayer);
-
-        markerLayer.add_marker(this._createStartMarker(leg, previousLeg));
-        if (nextLeg)
-            markerLayer.add_marker(this._createBoardMarker(nextLeg));
-        else
-            markerLayer.add_marker(this._createArrivalMarker(leg));
-
-        /* in some cases, we seem to get get zero distance walking instructions
-         * within station complexes, don't try to show a bounding box for low
-         * distances, instead center on the spot
-         */
-        if (leg.distance < 10)
-            view.center_on(leg.fromCoordinate[0], leg.fromCoordinate[1]);
-        else
-            view.ensure_visible(this._createBBox(leg), false);
-        if (view.state !== Champlain.State.DONE) {
-            let notifyId = view.connect('notify::state', () => {
-                if (view.state === Champlain.State.DONE) {
-                    view.disconnect(notifyId);
-                    let surface = view.to_surface(true);
-                    if (surface)
-                        this._addSurface(surface, x, y, pageNum);
-                }
-            });
-        } else {
-            let surface = view.to_surface(true);
-            if (surface)
-                this._addSurface(surface, x, y, pageNum);
-        }
-    }
-
-    _createBBox(leg) {
-        return new Champlain.BoundingBox({ top:    leg.bbox.top,
-                                           left:   leg.bbox.left,
-                                           bottom: leg.bbox.bottom,
-                                           right:  leg.bbox.right });
-    }
-
-    _createStartMarker(leg, previousLeg) {
-        return new TransitWalkMarker({ leg: leg, previousLeg: previousLeg });
-    }
-
-    _createBoardMarker(leg) {
-        return new TransitBoardMarker({ leg: leg });
-    }
-
-    _createArrivalMarker(leg) {
-        return new TransitArrivalMarker({ leg: leg });
-    }
-
-    _addRouteLayer(view, index) {
-        let routeLayer = new Champlain.PathLayer({ stroke_width: _STROKE_WIDTH,
-                                                   stroke_color: _STROKE_COLOR });
-        let leg = this._itinerary.legs[index];
-
-        routeLayer.set_dash([5, 5]);
-        view.add_layer(routeLayer);
-
-        /* if this is a walking leg and not at the start, "stitch" it
-         * together with the end point of the previous leg, as the walk
-         * route might not reach all the way
-         */
-        if (index > 0 && !leg.transit) {
-            let previousLeg = this._itinerary.legs[index - 1];
-            let lastPoint =
-                previousLeg.polyline[previousLeg.polyline.length - 1];
-
-            routeLayer.add_node(lastPoint);
-        }
-
-        leg.polyline.forEach((node) => routeLayer.add_node(node));
-
-        /* like above, "stitch" the route segment with the next one if it's
-         * a walking leg, and not the last one
-         */
-        if (index < this._itinerary.legs.length - 1 && !leg.transit) {
-            let nextLeg = this._itinerary.legs[index + 1];
-            let firstPoint = nextLeg.polyline[0];
-
-            routeLayer.add_node(firstPoint);
-        }
     }
 
     _drawInstruction(width, height, leg, start) {
@@ -205,7 +99,7 @@ export class TransitPrintLayout extends PrintLayout {
         let fromText = Transit.getFromLabel(leg, start);
         let routeWidth = 0;
 
-        this._drawIcon(cr, leg.iconName, width, height);
+        this._drawIcon(cr, leg.iconName, width, height, _ICON_SIZE);
         this._drawText(cr, fromText, this._rtl ? timeWidth : height, 0,
                        width - height - timeWidth, height / 2, Pango.Alignment.LEFT);
 
@@ -273,7 +167,7 @@ export class TransitPrintLayout extends PrintLayout {
         let cr = new Cairo.Context(surface);
         let lastLeg = this._itinerary.legs[this._itinerary.legs.length - 1];
 
-        this._drawIcon(cr, 'maps-point-end-symbolic', width, height);
+        this._drawIcon(cr, 'maps-point-end-symbolic', width, height, _ICON_SIZE);
         // draw the arrival text
         this._drawTextVerticallyCentered(cr, Transit.getArrivalLabel(lastLeg),
                                          width - height * 3,
@@ -297,11 +191,6 @@ export class TransitPrintLayout extends PrintLayout {
         let headerHeight = _Header.SCALE_Y * this._pageHeight;
         let headerMargin = _Header.SCALE_MARGIN * this._pageHeight;
 
-        let mapViewWidth = _MapView.SCALE_X * this._pageWidth;
-        let mapViewHeight = _MapView.SCALE_Y * this._pageHeight;
-        let mapViewMargin = _MapView.SCALE_MARGIN * this._pageHeight;
-        let mapViewZoomLevel = _MapView.ZOOM_LEVEL;
-
         let instructionWidth = _Instruction.SCALE_X * this._pageWidth;
         let instructionHeight = _Instruction.SCALE_Y * this._pageHeight;
         let instructionMargin = _Instruction.SCALE_MARGIN * this._pageHeight;
@@ -315,22 +204,13 @@ export class TransitPrintLayout extends PrintLayout {
 
         for (let i = 0; i < this._itinerary.legs.length; i++) {
             let leg = this._itinerary.legs[i];
-            let hasMap = TransitPrintLayout._legHasMiniMap(leg);
             let instructionDy = instructionHeight + instructionMargin;
-            let mapDy = hasMap ? mapViewHeight + mapViewMargin : 0;
 
-            dy = instructionDy + mapDy;
+            dy = instructionDy;
             this._adjustPage(dy);
             this._drawInstruction(instructionWidth, instructionHeight, leg,
                                   i === 0);
             this._cursorY += instructionDy;
-
-            if (hasMap) {
-                let nextLeg = i < this._itinerary.legs.length - 1 ?
-                              this._itinerary.legs[i + 1] : null;
-                this._drawMapView(mapViewWidth, mapViewHeight, mapViewZoomLevel, i);
-                this._cursorY += mapDy;
-            }
         }
 
         this._drawArrival(instructionWidth, instructionHeight);

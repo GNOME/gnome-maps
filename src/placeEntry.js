@@ -68,9 +68,11 @@ export class PlaceEntry extends Gtk.SearchEntry {
             this._placeText = '';
         }
 
-        this.text = this._placeText;
+        if (this.text !== this._placeText)
+            this._setTextWithoutTriggerSearch(this._placeText);
 
         this._place = p;
+
         this.notify('place');
     }
 
@@ -87,10 +89,6 @@ export class PlaceEntry extends Gtk.SearchEntry {
         delete props.num_visible;
         let mapView = props.mapView;
         delete props.mapView;
-
-        if (!props.loupe)
-            props.primary_icon_name = null;
-        delete props.loupe;
 
         let maxChars = props.maxChars;
         delete props.maxChars;
@@ -112,9 +110,14 @@ export class PlaceEntry extends Gtk.SearchEntry {
         this._cache = {};
 
         // clear cache when view moves, as result are location-dependent
-        this._mapView.view.connect('notify::latitude', () => this._cache = {});
+        this._mapView.map.viewport.connect('notify::latitude', () => this._cache = {});
         // clear cache when zoom level changes, to allow limiting location bias
-        this._mapView.view.connect('notify::zoom-level', () => this._cache =  {});
+        this._mapView.map.viewport.connect('notify::zoom-level', () => this._cache =  {});
+    }
+
+    _setTextWithoutTriggerSearch(text) {
+        this._setText = text;
+        this.text = text;
     }
 
     _onSearchChanged() {
@@ -123,6 +126,10 @@ export class PlaceEntry extends Gtk.SearchEntry {
 
         // wait for an ongoing search
         if (this._cancellable)
+            return;
+
+        // don't trigger a search when setting explicit text (such as reordering points)
+        if (this.text === this._setText)
             return;
 
         /* start search if more than the threshold number of characters have
@@ -147,7 +154,8 @@ export class PlaceEntry extends Gtk.SearchEntry {
                 this._doSearch();
             }
         } else {
-            this._popover.hide();
+            this._popover.popdown();
+            this.grab_focus();
             if (this.text.length === 0)
                 this.place = null;
             this._previousSearch = null;
@@ -164,22 +172,22 @@ export class PlaceEntry extends Gtk.SearchEntry {
 
     _createPopover(numVisible, maxChars) {
         let popover = new PlacePopover({ num_visible:   numVisible,
-                                         relative_to:   this,
+                                         entry:         this,
                                          maxChars:      maxChars });
 
-        this.connect('size-allocate', (widget, allocation) => {
-            // Magic number to make the alignment pixel perfect.
-            let width_request = allocation.width + 20;
-            // set at least 320 px width to avoid too narrow in the sidebar
-            popover.width_request = Math.max(width_request, 320);
-        });
+        popover.set_parent(this);
+        this.set_key_capture_widget(popover);
 
         popover.connect('selected', (widget, place) => {
             this.place = place;
-            popover.hide();
+            popover.popdown();
         });
 
         return popover;
+    }
+
+    _onKeyPressed(controller, keyval, keycode, state) {
+        return true;
     }
 
     _completionVisibleFunc(model, iter) {
@@ -280,8 +288,8 @@ export class PlaceEntry extends Gtk.SearchEntry {
         this._previousSearch = this.text;
 
         GeocodeFactory.getGeocoder().search(this.text,
-                                            this._mapView.view.latitude,
-                                            this._mapView.view.longitude,
+                                            this._mapView.map.viewport.latitude,
+                                            this._mapView.map.viewport.longitude,
                                             this._cancellable,
                                             (places, error) => {
             this._cancellable = null;

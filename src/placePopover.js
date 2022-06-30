@@ -36,11 +36,9 @@ export class PlacePopover extends SearchPopover {
         let maxChars = props.maxChars;
         delete props.maxChars;
 
-        props.transitions_enabled = false;
         super(props);
 
         this._maxChars = maxChars;
-        this._entry = this.relative_to;
 
         this._list.connect('row-activated', (list, row) => {
             if (row)
@@ -63,16 +61,26 @@ export class PlacePopover extends SearchPopover {
         this.connect('unmap', (popover) => popover.hide());
     }
 
+    _showPopover() {
+        let {x, y, width, height} = this._entry.get_allocation();
+
+        // Magic number to make the alignment pixel perfect.
+        this.width_request = width + 20;
+        this.popup();
+    }
+
     showSpinner() {
         this._spinner.start();
         this._stack.visible_child = this._spinner;
 
         if (!this.visible)
-            this.show();
+            this._showPopover();
+
+        this._numResults = 0;
     }
 
     showResult() {
-        if (this._spinner.active)
+        if (this._spinner.spinning)
             this._spinner.stop();
 
         this._stack.visible_child = this._scrolledWindow;
@@ -82,7 +90,7 @@ export class PlacePopover extends SearchPopover {
             this._list.select_row(row);
 
         if (!this.visible)
-            this.show();
+            this._showPopover();
     }
 
     showNoResult() {
@@ -90,6 +98,7 @@ export class PlacePopover extends SearchPopover {
             this._spinner.stop();
 
         this._stack.visible_child = this._noResultsLabel;
+        this._numResults = 0;
     }
 
     showError() {
@@ -97,6 +106,7 @@ export class PlacePopover extends SearchPopover {
             this._spinner.stop();
 
         this._stack.visible_child = this._errorLabel;
+        this._numResults = 0;
     }
 
     updateResult(places, searchString) {
@@ -113,6 +123,8 @@ export class PlacePopover extends SearchPopover {
 
             i++;
         });
+
+        this._numResults = i;
 
         // remove remaining rows
         let row = this._list.get_row_at_index(i);

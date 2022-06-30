@@ -29,53 +29,54 @@ import Gtk from 'gi://Gtk';
 export class SearchPopover extends Gtk.Popover {
 
     constructor(props) {
+        let entry = props.entry;
+        delete props.entry;
+
         super(props);
 
-        this._entry = this.relative_to;
+        this._entry = entry;
 
         // We need to propagate events to the listbox so that we can
         // keep typing while selecting a place. But we do not want to
         // propagate the 'enter' key press if there is a selection.
-        this._keyController =
-            new Gtk.EventControllerKey({ widget: this._entry });
+        this._keyController = new Gtk.EventControllerKey();
+        this.add_controller(this._keyController);
         this._keyController.connect('key-pressed',
                                     this._propagateKeys.bind(this));
 
-        this._buttonPressGesture = new Gtk.GestureSingle({ widget: this._entry });
+        this._buttonPressGesture = new Gtk.GestureSingle();
+        this._entry.add_controller(this._buttonPressGesture);
         this._buttonPressGesture.connect('begin',
                                          () => this._list.unselect_all());
+
+        this._numResults = 0;
     }
 
     _propagateKeys(controller, keyval, keycode, state) {
         if (keyval === Gdk.KEY_Escape) {
             this.hide();
             this._list.unselect_all();
-            return true;
-        }
-
-        if (keyval === Gdk.KEY_Return ||
-            keyval === Gdk.KEY_KP_ENTER ||
-            keyval === Gdk.KEY_ISO_Enter) {
+        } else if (keyval === Gdk.KEY_Return ||
+                   keyval === Gdk.KEY_KP_ENTER ||
+                   keyval === Gdk.KEY_ISO_Enter) {
 
             // If we get an 'enter' keypress and we have a selected
             // row, we do not want to propagate the event.
             let row = this._list.get_selected_row();
+
             if (this.visible && row) {
                 row.activate();
-                return true;
             } else {
-                return false;
+                controller.forward(this._entry);
             }
-        }
+        } else if (keyval === Gdk.KEY_KP_Up ||
+                   keyval === Gdk.KEY_Up ||
+                   keyval === Gdk.KEY_KP_Down ||
+                   keyval === Gdk.KEY_Down) {
 
-        if (keyval === Gdk.KEY_KP_Up ||
-            keyval === Gdk.KEY_Up ||
-            keyval === Gdk.KEY_KP_Down ||
-            keyval === Gdk.KEY_Down) {
-
-            let length = this._list.get_children().length;
+            let length = this._numResults;
             if (length === 0) {
-                return false;
+                controller.forward(this._entry);
             }
 
             let direction = (keyval === Gdk.KEY_KP_Up || keyval === Gdk.KEY_Up) ? -1 : 1;
@@ -93,10 +94,17 @@ export class SearchPopover extends Gtk.Popover {
             } else {
                 this._list.unselect_all();
             }
-            return true;
+        } else {
+            if (keyval === Gdk.KEY_space) {
+                /* forwarding space seems to not work for some reason,
+                 * work around by manually injecting a space into the entry string
+                 */
+                this._entry.set_text(this._entry.text + ' ');
+                this._entry.set_position(this._entry.text.length);
+            } else {
+                controller.forward(this._entry);
+            }
         }
-
-        return false;
     }
 
     /* Selects given row and ensures that it is visible. */

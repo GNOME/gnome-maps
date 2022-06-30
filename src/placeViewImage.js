@@ -22,6 +22,7 @@
 import Cairo from 'cairo';
 import Gdk from 'gi://Gdk';
 import GObject from 'gi://GObject';
+import Graphene from 'gi://Graphene';
 import Gtk from 'gi://Gtk';
 
 /* The maximum aspect ratio, after which the image will be cropped vertically */
@@ -50,12 +51,18 @@ export class PlaceViewImage extends Gtk.DrawingArea {
         this.queue_resize();
     }
 
-    vfunc_draw(cr) {
-        let [{x, y, width, height}, baseline] = this.get_allocated_size();
+    vfunc_snapshot(snapshot) {
+        let {x, y, width, height} = this.get_allocation();
 
         if (this._pixbuf === null || width === 0 || height === 0) {
             return;
         }
+
+        let rect = new Graphene.Rect();
+
+        rect.init(x, y, width, height);
+
+        let cr = snapshot.append_cairo(rect);
 
         width *= this.scale_factor;
         height *= this.scale_factor;
@@ -82,13 +89,27 @@ export class PlaceViewImage extends Gtk.DrawingArea {
         cr.paint();
         cr.restore();
 
-        return false;
+        super.vfunc_snapshot(snapshot);
+        cr.$dispose();
     }
 
     vfunc_get_request_mode() {
         return Gtk.SizeRequestMode.HEIGHT_FOR_WIDTH;
     }
 
+    vfunc_measure(orientation, forSize) {
+        if (orientation === Gtk.Orientation.VERTICAL) {
+            if (this._pixbuf) {
+                let height = (this._pixbuf.height / this._pixbuf.width) * forSize;
+                return [height, height, 0, 0];
+            } else {
+                return [0, 0, 0, 0];
+            }
+        } else {
+            return [forSize, forSize, 0, 0];
+        }
+    }
+    /*
     vfunc_get_preferred_height_for_width(width) {
         if (this._pixbuf) {
             let height = (this._pixbuf.height / this._pixbuf.width) * width;
@@ -97,6 +118,7 @@ export class PlaceViewImage extends Gtk.DrawingArea {
             return [0, 0];
         }
     }
+    */
 }
 
 GObject.registerClass(PlaceViewImage);

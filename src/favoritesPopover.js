@@ -33,7 +33,6 @@ export class FavoritesPopover extends Gtk.Popover {
         let mapView = params.mapView;
         delete params.mapView;
 
-        params.transitions_enabled = false;
         super(params);
 
         this._mapView = mapView;
@@ -88,7 +87,16 @@ export class FavoritesPopover extends Gtk.Popover {
     }
 
     _updateList() {
-        this._list.forall((row) => row.destroy());
+        let listRows = [];
+
+        for (let row of this._list) {
+            if (row instanceof Gtk.ListBoxRow)
+                listRows.push(row);
+        }
+
+        for (let row of listRows) {
+            this._list.remove(row);
+        }
 
         let rows = 0;
         this._model.foreach((model, path, iter) => {

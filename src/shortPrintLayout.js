@@ -34,7 +34,9 @@ export class ShortPrintLayout extends PrintLayout {
         delete params.route;
 
         /* (Header +  map) + instructions */
-        let totalSurfaces = 2 + route.turnPoints.length;
+        //let totalSurfaces = 2 + route.turnPoints.length;
+        // for now don't count the map surface, as we don't have that yet
+        let totalSurfaces = 1 + route.turnPoints.length;
         params.totalSurfaces = totalSurfaces;
 
         super(params);

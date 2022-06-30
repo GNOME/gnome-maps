@@ -1,81 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.18.3 -->
 <interface>
-  <requires lib="gtk+" version="3.12"/>
+  <requires lib="gtk" version="4.0"/>
   <template class="Gjs_PlaceListRow" parent="GtkListBoxRow">
-    <property name="visible">True</property>
-    <child>
+    <property name="child">
       <object class="GtkGrid" id="grid">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
-        <property name="row-homogeneous">True</property>
-        <property name="margin">5</property>
+        <property name="row-homogeneous">1</property>
+        <property name="margin-start">5</property>
+        <property name="margin-end">5</property>
+        <property name="margin-top">5</property>
+        <property name="margin-bottom">5</property>
         <child>
           <object class="GtkImage" id="icon">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
             <property name="pixel_size">32</property>
             <property name="margin_end">12</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">0</property>
+              <property name="row-span">2</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">0</property>
-            <property name="height">2</property>
-          </packing>
         </child>
         <child>
           <object class="GtkImage" id="typeIcon">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
             <property name="valign">center</property>
             <property name="halign">end</property>
-            <property name="hexpand">True</property>
+            <property name="hexpand">1</property>
             <property name="margin_start">10</property>
             <property name="pixel_size">16</property>
+            <layout>
+              <property name="column">2</property>
+              <property name="row">0</property>
+              <property name="row-span">2</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">0</property>
-            <property name="height">2</property>
-          </packing>
         </child>
         <child>
           <object class="GtkLabel" id="name">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
             <property name="halign">start</property>
             <property name="valign">end</property>
-            <property name="hexpand">True</property>
-            <property name="use_markup">True</property>
+            <property name="hexpand">1</property>
+            <property name="use_markup">1</property>
             <property name="ellipsize">end</property>
+            <layout>
+              <property name="column">1</property>
+              <property name="row">0</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">0</property>
-          </packing>
         </child>
         <child>
           <object class="GtkLabel" id="details">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
             <property name="halign">start</property>
             <property name="valign">start</property>
-            <property name="hexpand">True</property>
-            <property name="use_markup">True</property>
+            <property name="hexpand">1</property>
+            <property name="use_markup">1</property>
             <property name="ellipsize">end</property>
             <style>
               <class name="subtitle"/>
               <class name="dim-label"/>
             </style>
+            <layout>
+              <property name="column">1</property>
+              <property name="row">1</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">1</property>
-          </packing>
         </child>
       </object>
-    </child>
+    </property>
   </template>
 </interface>
-

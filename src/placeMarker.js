@@ -20,6 +20,7 @@
  */
 
 import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
 import {MapMarker} from './mapMarker.js';
 
@@ -28,7 +29,8 @@ export class PlaceMarker extends MapMarker {
     constructor(params) {
         super(params);
 
-        this.add_actor(this._actorFromIconName('mark-location', 32));
+        this._image.icon_name = 'mark-location';
+        this._image.icon_size = Gtk.IconSize.LARGE;
     }
 
     get anchor() {

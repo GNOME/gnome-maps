@@ -69,17 +69,27 @@ export class PrintOperation {
             this._layout =
                 new TransitPrintLayout({ itinerary: selectedTransitItinerary,
                                          pageWidth: width,
-                                         pageHeight: height });
+                                         pageHeight: height,
+                                         mainWindow: this._mainWindow });
         } else {
+            // TODO: for now just use short layout, as we don't have minimaps
+            this._layout = new ShortPrintLayout({ route: route,
+                                                  pageWidth: width,
+                                                  pageHeight: height,
+                                                  mainWindow: this._mainWindow });
+            /*
             if (route.distance > _SHORT_LAYOUT_MAX_DISTANCE) {
                 this._layout = new LongPrintLayout({ route: route,
                                                      pageWidth: width,
-                                                     pageHeight: height });
+                                                     pageHeight: height,
+                                                     mainWindow: this._mainWindow });
             } else {
                 this._layout = new ShortPrintLayout({ route: route,
                                                       pageWidth: width,
-                                                      pageHeight: height });
+                                                      pageHeight: height,
+                                                      mainWindow: this._mainWindow });
             }
+            */
         }
 
         GLib.timeout_add(null, _MIN_TIME_TO_ABORT, () => {

@@ -1,23 +1,25 @@
 headers_private = files(
-	'maps-file-tile-source.h',
+	'maps-file-data-source.h',
 	'maps-osm.h',
 	'maps-osm-changeset.h',
 	'maps-osm-node.h',
 	'maps-osm-object.h',
 	'maps-osm-way.h',
 	'maps-osm-relation.h',
-	'maps-osm-oauth-proxy-call.h'
+	'maps-osm-oauth-proxy-call.h',
+	'maps-sync-map-source.h'
 )
 
 sources = files(
-	'maps-file-tile-source.c',
+	'maps-file-data-source.c',
 	'maps-osm.c',
 	'maps-osm-changeset.c',
 	'maps-osm-node.c',
 	'maps-osm-object.c',
 	'maps-osm-way.c',
 	'maps-osm-relation.c',
-	'maps-osm-oauth-proxy-call.c'
+	'maps-osm-oauth-proxy-call.c',
+	'maps-sync-map-source.c'
 )
 
 cflags = [
@@ -47,8 +49,8 @@ gnome.generate_gir(
 	includes: [
 		'GLib-2.0',
 		'GObject-2.0',
-		'Champlain-0.12',
-		'Rest-0.7'
+		'Rest-0.7',
+		'Shumate-1.0'
 	],
 	install: true,
 	install_dir_gir: join_paths(pkgdatadir, 'gir-' + maps_gir_version),

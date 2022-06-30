@@ -88,9 +88,9 @@ export function once(obj, signal, callback) {
 export function loadStyleSheet(file) {
     let provider = new Gtk.CssProvider();
     provider.load_from_file(file);
-    Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(),
-                                             provider,
-                                             Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+    Gtk.StyleContext.add_provider_for_display(Gdk.Display.get_default(),
+                                              provider,
+                                              Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 }
 
 export function addActions(actionMap, entries, settings = null) {
@@ -302,11 +302,15 @@ function _load_icon(icon, loadCompleteCallback) {
 }
 
 function _load_themed_icon(icon, size, loadCompleteCallback) {
-    let theme = Gtk.IconTheme.get_default();
-    let info = theme.lookup_by_gicon(icon, size, 0);
+    let display = Gdk.Display.get_default();
+    let theme = Gtk.IconTheme.get_for_display(display);
+    // TODO: find the scale factor?
+    let paintable = theme.lookup_by_gicon(icon, size, 1,
+                                          Gtk.TextDirection.NONE, 0);
+    let filename = paintable.file.get_path();
 
     try {
-        let pixbuf = info.load_icon();
+        let pixbuf = GdkPixbuf.Pixbuf.new_from_file(filename);
         loadCompleteCallback(pixbuf);
     } catch(e) {
         log("Failed to load pixbuf: " + e);
@@ -460,7 +464,7 @@ export function showDialog(msg, type, transientFor) {
                                 text: msg });
 
     messageDialog.connect('response', () => messageDialog.destroy());
-    messageDialog.show_all();
+    messageDialog.show();
 }
 
 let decoder = new TextDecoder('utf-8');

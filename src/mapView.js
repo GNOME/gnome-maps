@@ -19,15 +19,13 @@
  * Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
-import Champlain from 'gi://Champlain';
-import Clutter from 'gi://Clutter';
 import GObject from 'gi://GObject';
+import Gdk from 'gi://Gdk';
 import GeocodeGlib from 'gi://GeocodeGlib';
 import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
 import Gtk from 'gi://Gtk';
-import GtkChamplain from 'gi://GtkChamplain';
-import Handy from 'gi://Handy';
+import Shumate from 'gi://Shumate';
 
 import GnomeMaps from 'gi://GnomeMaps';
 
@@ -55,6 +53,7 @@ import * as Utils from './utils.js';
 
 const _LOCATION_STORE_TIMEOUT = 500;
 const MapMinZoom = 2;
+const MapMaxZoom = 19;
 
 /* threashhold for route color luminance when we consider it more or less
  * as white, and draw an outline on the path */
@@ -77,7 +76,7 @@ const DASHED_ROUTE_LINE_GAP_LENGTH = 5;
 // Maximum limit of file size (20 MB) that can be loaded without user confirmation
 const FILE_SIZE_LIMIT_MB = 20;
 
-export class MapView extends GtkChamplain.Embed {
+export class MapView extends Gtk.Overlay {
 
     static MapType = {
         LOCAL: 'MapsLocalSource',
@@ -102,8 +101,9 @@ export class MapView extends GtkChamplain.Embed {
         let isValid = Application.routeQuery.isValid();
 
         this._routingOpen = value && isValid;
-        this._routeLayers.forEach((routeLayer) => routeLayer.visible = value && isValid);
-        this._instructionMarkerLayer.visible = value && isValid;
+        // TODO: bring it back when the layers are working
+        //this._routeLayers.forEach((routeLayer) => routeLayer.visible = value && isValid);
+        //this._instructionMarkerLayer.visible = value && isValid;
         if (!value)
             this.routeShowing = false;
         this.notify('routingOpen');
@@ -118,20 +118,30 @@ export class MapView extends GtkChamplain.Embed {
         this.notify('routeShowing');
     }
 
-    constructor(params) {
-        super();
+    get mapSource() {
+        return this._mapSource;
+    }
 
-        let mapType = params.mapType || this._getStoredMapType();
+    constructor(params) {
+        let mapTypeParam = params.mapType;
         delete params.mapType;
 
-        this._mainWindow = params.mainWindow;
+        let mainWindow = params.mainWindow;
         delete params.mainWindow;
 
-        this._storeId = 0;
-        this.view = this._initView();
-        this._initLayers();
+        super(params);
 
-        this.setMapType(mapType);
+        this._mainWindow = mainWindow;
+        this._storeId = 0;
+        this.map = this._initMap();
+
+        this.child = this.map;
+
+        this._initLicense();
+        this.setMapType(mapTypeParam ?? this._getStoredMapType());
+
+        this._initScale();
+        this._initLayers();
 
         if (Application.normalStartup)
             this._goToStoredLocation();
@@ -145,66 +155,108 @@ export class MapView extends GtkChamplain.Embed {
         this._connectRouteSignals();
     }
 
-    _initScale(view) {
-        let showScale = Application.settings.get('show-scale');
+    zoomIn() {
+        let zoom = this.map.viewport.zoom_level;
+        let maxZoom = this.map.viewport.max_zoom_level;
+        let fraction = zoom - Math.floor(zoom);
 
-        this._scale = new Champlain.Scale({ visible: showScale });
-        this._scale.connect_view(view);
-
-        if (Utils.getMeasurementSystem() === Utils.METRIC_SYSTEM)
-            this._scale.unit = Champlain.Unit.KM;
-        else
-            this._scale.unit = Champlain.Unit.MILES;
-
-        this._scale.set_x_expand(true);
-        this._scale.set_y_expand(true);
-        this._scale.set_x_align(Clutter.ActorAlign.START);
-        this._scale.set_y_align(Clutter.ActorAlign.END);
-        view.add_child(this._scale);
+        /* if we're zoomed to a fraction close to the next higher even zoom level
+         * zoom to the next higher after that to avoid just going a tiny bit
+         */
+        this.map.go_to_full_with_duration(this.map.viewport.latitude,
+                                          this.map.viewport.longitude,
+                                          Math.min(fraction < 0.7 ?
+                                                   Math.floor(zoom + 1) :
+                                                   Math.floor(zoom + 2),
+                                                   maxZoom),
+                                          200);
     }
 
-    _initView() {
-        let view = this.get_view();
+    zoomOut() {
+        let zoom = this.map.viewport.zoom_level;
+        let minZoom = this.map.viewport.min_zoom_level;
+        let fraction = zoom - Math.floor(zoom);
 
-        view.min_zoom_level = MapMinZoom;
-        view.goto_animation_mode = Clutter.AnimationMode.EASE_IN_OUT_CUBIC;
-        view.reactive = true;
-        view.kinetic_mode = true;
-        view.horizontal_wrap = true;
+        /* if we're zoomed to a fraction close to the next lower even zoom level
+         * zoom to the next lower after that to avoid just going a tiny bit
+         */
+        this.map.go_to_full_with_duration(this.map.viewport.latitude,
+                                          this.map.viewport.longitude,
+                                          Math.max(fraction > 0.3 ?
+                                                   Math.floor(zoom) :
+                                                   Math.floor(zoom - 1),
+                                                   minZoom),
+                                          200);
+    }
 
-        view.connect('notify::latitude', this._onViewMoved.bind(this));
+    _initScale() {
+        let showScale = Application.settings.get('show-scale');
+
+        this._scale = new Shumate.Scale({ visible:  showScale,
+                                          viewport: this.map.viewport,
+                                          halign:   Gtk.Align.START,
+                                          valign:   Gtk.Align.END });
+
+        if (Utils.getMeasurementSystem() === Utils.METRIC_SYSTEM)
+            this._scale.unit = Shumate.Unit.METRIC;
+        else
+            this._scale.unit = Shumate.Unit.IMPERIAL;
+
+        this.add_overlay(this._scale);
+    }
+
+    _initLicense() {
+        this._license = new Shumate.License({ halign: Gtk.Align.END,
+                                              valign: Gtk.Align.END });
+        this.add_overlay(this._license);
+    }
+
+    _initMap() {
+        let map = new Shumate.Map();
+
+        map.viewport.max_zoom_level = MapMaxZoom;
+        map.viewport.min_zoom_level = MapMinZoom;
+
+        map.viewport.connect('notify::latitude', this._onViewMoved.bind(this));
         // switching map type will set view min-zoom-level from map source
-        view.connect('notify::min-zoom-level', () => {
-            if (view.min_zoom_level < MapMinZoom) {
-                view.min_zoom_level = MapMinZoom;
+        map.viewport.connect('notify::min-zoom-level', () => {
+            if (map.viewport.min_zoom_level < MapMinZoom) {
+                map.viewport.min_zoom_level = MapMinZoom;
             }
         });
 
         Application.settings.connect('changed::show-scale',
                                      this._onShowScaleChanged.bind(this));
 
-        this._initScale(view);
-        return view;
+        return map;
     }
 
     /* create and store a route layer, pass true to get a dashed line */
-    _createRouteLayer(dashed, lineColor, width) {
-        let red = Color.parseColor(lineColor, 0);
-        let green = Color.parseColor(lineColor, 1);
-        let blue = Color.parseColor(lineColor, 2);
-        // Clutter uses a 0-255 range for color components
-        let strokeColor = new Clutter.Color({ red: red * 255,
-                                              blue: blue * 255,
-                                              green: green * 255,
-                                              alpha: 255 });
-        let routeLayer = new Champlain.PathLayer({ stroke_width: width,
-                                                   stroke_color: strokeColor });
+    _createRouteLayer(dashed, lineColor, outlineColor, width) {
+        let strokeColor = new Gdk.RGBA({ red:    Color.parseColor(lineColor, 0),
+                                         green:  Color.parseColor(lineColor, 1),
+                                         blue:   Color.parseColor(lineColor, 2),
+                                         alpha:  1.0 });
+        let routeLayer = new Shumate.PathLayer({ viewport: this.map.viewport,
+                                                 stroke_width: width,
+                                                 stroke_color: strokeColor });
         if (dashed)
             routeLayer.set_dash([DASHED_ROUTE_LINE_FILLED_LENGTH,
                                  DASHED_ROUTE_LINE_GAP_LENGTH]);
 
+        if (outlineColor) {
+            let outlineStrokeColor =
+                new Gdk.RGBA({ red:   Color.parseColor(outlineColor, 0),
+                               green: Color.parseColor(outlineColor, 1),
+                               blue:  Color.parseColor(outlineColor, 2),
+                               alpha: 1.0 });
+
+            routeLayer.outline_color = outlineStrokeColor;
+            routeLayer.outline_width = 1.0;
+        }
+
         this._routeLayers.push(routeLayer);
-        this.view.add_layer(routeLayer);
+        this.map.insert_layer_behind(routeLayer, this._instructionMarkerLayer);
 
         return routeLayer;
     }
@@ -213,34 +265,36 @@ export class MapView extends GtkChamplain.Embed {
         this._routeLayers.forEach((routeLayer) => {
             routeLayer.remove_all();
             routeLayer.visible = false;
-            this.view.remove_layer(routeLayer);
+            this.map.remove_layer(routeLayer);
         });
 
         this._routeLayers = [];
     }
 
     _initLayers() {
-        let mode = Champlain.SelectionMode.SINGLE;
+        let mode = Gtk.SelectionMode.MULTIPLE;
 
-        this._userLocationLayer = new Champlain.MarkerLayer({ selection_mode: mode });
-        this.view.add_layer(this._userLocationLayer);
+        this._userLocationLayer =
+            new Shumate.MarkerLayer({ selection_mode: mode,
+                                      viewport: this.map.viewport });
+        this.map.add_layer(this._userLocationLayer);
 
-        this._placeLayer = new Champlain.MarkerLayer({ selection_mode: mode });
-        this.view.add_layer(this._placeLayer);
+        this._placeLayer =
+            new Shumate.MarkerLayer({ selection_mode: mode,
+                                      viewport: this.map.viewport });
+        this.map.insert_layer_above(this._placeLayer, this._userLocationLayer);
 
-        this._instructionMarkerLayer = new Champlain.MarkerLayer({ selection_mode: mode });
-        this.view.add_layer(this._instructionMarkerLayer);
+        this._instructionMarkerLayer =
+            new Shumate.MarkerLayer({ selection_mode: mode,
+                                      viewport: this.map.viewport });
+        this.map.insert_layer_above(this._instructionMarkerLayer,
+                                     this._placeLayer);
 
         ShapeLayer.SUPPORTED_TYPES.push(GeoJSONShapeLayer);
         ShapeLayer.SUPPORTED_TYPES.push(KmlShapeLayer);
         ShapeLayer.SUPPORTED_TYPES.push(GpxShapeLayer);
 
         this._routeLayers = [];
-    }
-
-    _ensureInstructionLayerAboveRouteLayers() {
-        this.view.remove_layer(this._instructionMarkerLayer);
-        this.view.add_layer(this._instructionMarkerLayer);
     }
 
     _connectRouteSignals() {
@@ -276,7 +330,12 @@ export class MapView extends GtkChamplain.Embed {
             this.routeShowing = false;
         });
 
-        query.connect('notify', () => this.routingOpen = query.isValid());
+        query.connect('notify', () => {
+            this.routingOpen = query.isValid();
+            this._clearRouteLayers();
+            this._instructionMarkerLayer.remove_all();
+            this.routeShowing = false;
+        });
     }
 
     _getStoredMapType() {
@@ -300,22 +359,29 @@ export class MapView extends GtkChamplain.Embed {
         if (this._mapType && this._mapType === mapType)
             return;
 
-        let overlay_sources = this.view.get_overlay_sources();
+        //let overlay_sources = this.view.get_overlay_sources();
 
         this._mapType = mapType;
+
+        let mapSource;
 
         if (mapType !== MapView.MapType.LOCAL) {
             let tiles = Service.getService().tiles;
 
             if (mapType === MapView.MapType.AERIAL && tiles.aerial)
-                this.view.map_source = MapSource.createAerialSource();
+                mapSource = MapSource.createAerialSource();
             else
-                this.view.map_source = MapSource.createStreetSource();
+                mapSource = MapSource.createStreetSource();
+
+            // update license
+            if (this._mapSource)
+                this._license.remove_map_source(this._mapSource);
+
+            this._license.append_map_source(mapSource);
 
             Application.settings.set('map-type', mapType);
         } else {
-            let renderer = new Champlain.ImageRenderer();
-            let source = new GnomeMaps.FileTileSource({
+            let source = new GnomeMaps.FileDataSource({
                 path: Utils.getBufferText(Application.application.local_tile_path),
                 renderer: renderer,
                 tile_size: Application.application.local_tile_size || 512
@@ -323,10 +389,14 @@ export class MapView extends GtkChamplain.Embed {
             try {
                 source.prepare();
 
-                this.view.map_source = source;
-                this.view.world = source.world;
-                let [lat, lon] = this.view.world.get_center();
-                this.view.center_on(lat, lon);
+                mapSource =
+                    new Shumate.RasterRenderer({ id: 'local',
+                                                 name: 'local',
+                                                 min_zoom_level: source.min_zoom_level,
+                                                 max_zoom_level: source.max_zoom_level,
+                                                 tile_size:      Application.application.local_tile_size ?? 512,
+                                                 projection:     Shumate.MapProjection.MERCATOR,
+                                                 data_source:    source });
             } catch(e) {
                 this.setMapType(MapView.MapType.STREET);
                 Application.application.local_tile_path = false;
@@ -334,8 +404,12 @@ export class MapView extends GtkChamplain.Embed {
             }
         }
 
-        overlay_sources.forEach((source) => this.view.add_overlay_source(source, 255));
+        let mapLayer = new Shumate.MapLayer({ map_source: mapSource,
+                                                  viewport:   this.map.viewport });
 
+        this.map.add_layer(mapLayer);
+        this._mapSource = mapSource;
+        this.map.viewport.set_reference_map_source(mapSource);
         this.emit("map-type-changed", mapType);
     }
 
@@ -346,10 +420,16 @@ export class MapView extends GtkChamplain.Embed {
     _checkIfFileSizeNeedsConfirmation(files) {
         let confirmLoad = false;
         let totalFileSizeMB = 0;
-        files.forEach((file) => {
-            totalFileSizeMB += file.query_info(Gio.FILE_ATTRIBUTE_STANDARD_SIZE, 
+        let file;
+        let i = 0;
+
+        do {
+            let file = files.get_item(i);
+
+            totalFileSizeMB += file.query_info(Gio.FILE_ATTRIBUTE_STANDARD_SIZE,
                                                0, null).get_size();
-        });
+            i++;
+        } while (file);
         totalFileSizeMB = totalFileSizeMB / (1024 * 1024);
         if (totalFileSizeMB > FILE_SIZE_LIMIT_MB) {
             confirmLoad = true;
@@ -403,9 +483,11 @@ export class MapView extends GtkChamplain.Embed {
 
     _loadShapeLayers(files) {
         let bbox = new BoundingBox();
-        this._remainingFilesToLoad = files.length;
+        this._remainingFilesToLoad = files.get_n_items();
 
-        files.forEach((file) => {
+        for (let i = 0; i < files.get_n_items(); i++) {
+            let file = files.get_item(i);
+
             try {
                 let i = this._findShapeLayerIndex(file);
                 let layer = (i > -1) ? this.shapeLayerStore.get_item(i) : null;
@@ -421,7 +503,7 @@ export class MapView extends GtkChamplain.Embed {
                 let msg = _("Failed to open layer");
                 Utils.showDialog(msg, Gtk.MessageType.ERROR, this._mainWindow);
             }
-        });
+        }
     }
 
     removeShapeLayer(shapeLayer) {
@@ -481,19 +563,32 @@ export class MapView extends GtkChamplain.Embed {
     }
 
     gotoAntipode() {
-        let lat = -this.view.latitude;
-        let lon = this.view.longitude > 0 ?
-                  this.view.longitude - 180 : this.view.longitude + 180;
+        let lat = -this.map.viewport.latitude;
+        let lon = this.map.viewport.longitude > 0 ?
+                  this.map.viewport.longitude - 180 :
+                  this.map.viewport.longitude + 180;
         let place =
             new Place({ location: new Location({ latitude: lat,
                                                  longitude: lon }),
-                        initialZoom: this.view.zoom_level });
+                        initialZoom: this.map.viewport.zoom_level });
 
         new MapWalker(place, this).goTo(true);
     }
 
+    _getViewBBox() {
+        let {x, y, width, height} = this.get_allocation();
+        let [top, left] = this.map.viewport.widget_coords_to_location(0, 0);
+        let [bottom, right] =
+            this.map.viewport.widget_coords_to_location(width - 1, height - 1);
+
+        return new BoundingBox({ left:   left,
+                                 top:    top,
+                                 right:  right,
+                                 bottom: bottom });
+    }
+
     userLocationVisible() {
-        let box = this.view.get_bounding_box();
+        let box = this._getViewBBox();
 
         return box.covers(this._userLocation.latitude, this._userLocation.longitude);
     }
@@ -512,7 +607,6 @@ export class MapView extends GtkChamplain.Embed {
             let place = Application.geoclue.place;
             this._userLocation = new UserLocationMarker({ place: place,
                                                           mapView: this });
-            this._userLocationLayer.remove_all();
             this._userLocation.addToLayer(this._userLocationLayer);
         }
 
@@ -522,10 +616,11 @@ export class MapView extends GtkChamplain.Embed {
     }
 
     _storeLocation() {
-        let zoom = this.view.zoom_level;
-        let location = [this.view.latitude, this.view.longitude];
+        let viewport = this.map.viewport;
+        let zoom = viewport.zoom_level;
+        let location = [viewport.latitude, viewport.longitude];
 
-        /* protect agains situations where the Champlain view was already
+        /* protect agains situations where the map view was already
          * disposed, in this case zoom will be set to the GObject property
          * getter
          */
@@ -544,25 +639,27 @@ export class MapView extends GtkChamplain.Embed {
             let [lat, lon] = location;
             let zoom = Application.settings.get('zoom-level');
 
-            if (zoom >= this.view.min_zoom_level &&
-                zoom <= this.view.max_zoom_level)
-                this.view.zoom_level = Application.settings.get('zoom-level');
-            else
-                Utils.debug('Invalid initial zoom level: ' + zoom);
-
             if (lat >= MapView.MIN_LATITUDE && lat <= MapView.MAX_LATITUDE &&
-                lon >= MapView.MIN_LONGITUDE && lon <= MapView.MAX_LONGITUDE)
-                this.view.center_on(location[0], location[1]);
-            else
+                lon >= MapView.MIN_LONGITUDE && lon <= MapView.MAX_LONGITUDE) {
+                this.map.viewport.latitude = lat;
+                this.map.viewport.longitude = lon;
+                if (zoom >= this.map.viewport.min_zoom_level &&
+                    zoom <= this.map.viewport.max_zoom_level) {
+                    this.map.viewport.zoom_level = zoom;
+                } else {
+                    Utils.debug('Invalid initial zoom level: ' + zoom);
+                }
+            } else {
                 Utils.debug('Invalid initial coordinates: ' + lat + ', ' + lon);
+            }
         } else {
             /* bounding box. for backwards compatibility, not used anymore */
             let bbox = new BoundingBox({ top: location[0],
                                          bottom: location[1],
                                          left: location[2],
                                          right: location[3] });
-            this.view.connect("notify::realized", () => {
-                if (this.view.realized)
+            this.map.connect("notify::realized", () => {
+                if (this.map.realized)
                     this.gotoBBox(bbox, true);
             });
         }
@@ -583,13 +680,13 @@ export class MapView extends GtkChamplain.Embed {
                                                         left   : bbox.left,
                                                         right  : bbox.right })
         });
-        new MapWalker(place, this).goTo(true, linear);
+        new MapWalker(place, this).zoomToFit();
     }
 
     getZoomLevelFittingBBox(bbox) {
-        let mapSource = this.view.get_map_source();
+        let mapSource = this._mapSource;
         let goodSize = false;
-        let zoomLevel = this.view.max_zoom_level;
+        let zoomLevel = this.map.viewport.max_zoom_level;
 
         do {
 
@@ -597,15 +694,15 @@ export class MapView extends GtkChamplain.Embed {
             let minY = mapSource.get_y(zoomLevel, bbox.bottom);
             let maxX = mapSource.get_x(zoomLevel, bbox.right);
             let maxY = mapSource.get_y(zoomLevel, bbox.top);
+            let {x, y, width, height} = this.get_allocation();
 
-            if (minY - maxY <= this.view.height &&
-                maxX - minX <= this.view.width)
+            if (minY - maxY <= height && maxX - minX <= width)
                 goodSize = true;
             else
                 zoomLevel--;
 
-            if (zoomLevel <= this.view.min_zoom_level) {
-                zoomLevel = this.view.min_zoom_level;
+            if (zoomLevel <= this.map.viewport.min_zoom_level) {
+                zoomLevel = this.map.viewport.min_zoom_level;
                 goodSize = true;
             }
         } while (!goodSize);
@@ -677,6 +774,7 @@ export class MapView extends GtkChamplain.Embed {
 
         this._placeLayer.add_marker(placeMarker);
         placeMarker.goToAndSelect(animation);
+        Application.application.selected_place = place;
     }
 
     showRoute(route) {
@@ -686,11 +784,9 @@ export class MapView extends GtkChamplain.Embed {
         this._placeLayer.remove_all();
 
         routeLayer = this._createRouteLayer(false, TURN_BY_TURN_ROUTE_COLOR,
-                                            ROUTE_LINE_WIDTH);
+                                            null, ROUTE_LINE_WIDTH);
         route.path.forEach((polyline) => routeLayer.add_node(polyline));
         this.routingOpen = true;
-
-        this._ensureInstructionLayerAboveRouteLayers();
 
         this._showDestinationTurnpoints();
         this.gotoBBox(route.bbox);
@@ -729,15 +825,11 @@ export class MapView extends GtkChamplain.Embed {
             let hasOutline = Color.relativeLuminance(color) >
                              OUTLINE_LUMINANCE_THREASHHOLD;
             let routeLayer;
-            let outlineRouteLayer;
+            let lineWidth = ROUTE_LINE_WIDTH + (hasOutline ? 2 : 0);
 
-            /* draw an outline by drawing a background path layer if needed
-             * TODO: maybe we should add support for outlined path layers in
-             * libchamplain */
-            if (hasOutline)
-                outlineRouteLayer = this._createRouteLayer(dashed, outlineColor,
-                                                           ROUTE_LINE_WIDTH + 2);
-            routeLayer = this._createRouteLayer(dashed, color, ROUTE_LINE_WIDTH);
+            routeLayer = this._createRouteLayer(dashed, color,
+                                                hasOutline ? outlineColor : null,
+                                                lineWidth);
 
             /* if this is a walking leg and not at the start, "stitch" it
              * together with the end point of the previous leg, as the walk
@@ -749,11 +841,6 @@ export class MapView extends GtkChamplain.Embed {
                 routeLayer.add_node(lastPoint);
             }
 
-            if (hasOutline) {
-                leg.polyline.forEach((function (polyline) {
-                    outlineRouteLayer.add_node(polyline);
-                }));
-            }
             leg.polyline.forEach((function (polyline) {
                 routeLayer.add_node(polyline);
             }));
@@ -766,9 +853,7 @@ export class MapView extends GtkChamplain.Embed {
 
                 routeLayer.add_node(firstPoint);
             }
-        });
-
-        this._ensureInstructionLayerAboveRouteLayers();
+        })
 
         itinerary.legs.forEach((leg, index) => {
             let previousLeg = index === 0 ? null : itinerary.legs[index - 1];
@@ -839,7 +924,7 @@ GObject.registerClass({
         'going-to-user-location': {},
         'gone-to-user-location': {},
         'view-moved': {},
-        'marker-selected': { param_types: [Champlain.Marker] },
+        'marker-selected': { param_types: [Shumate.Marker] },
         'map-type-changed': { param_types: [GObject.TYPE_STRING] }
     },
 }, MapView);

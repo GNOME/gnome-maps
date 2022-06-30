@@ -1,24 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk+" version="3.14"/>
+  <requires lib="gtk" version="4.0"/>
   <template class="Gjs_InstructionRow" parent="GtkListBoxRow">
-    <property name="visible">True</property>
-    <child>
+    <property name="child">
       <object class="GtkBox" id="instructionBox">
         <property name="name">instruction-box</property>
         <property name="height_request">48</property>
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
         <property name="spacing">6</property>
         <property name="baseline_position">top</property>
         <child>
           <object class="GtkImage" id="directionImage">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
             <property name="margin-start">2</property>
             <property name="margin-end">2</property>
-            <!-- width: 32 + spacing * 2 -->
             <property name="width-request">44</property>
+            <property name="icon-size">GTK_ICON_SIZE_LARGE</property>
             <style>
               <class name="sidebar-icon"/>
             </style>
@@ -26,35 +21,29 @@
         </child>
         <child>
           <object class="GtkLabel" id="instructionLabel">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
             <property name="halign">start</property>
-            <!-- Somehow we need this xalign, otherwise multi-line -->
-            <!-- labels does not get left-aligned. -->
             <property name="xalign">0</property>
             <property name="margin-top">3</property>
             <property name="margin-bottom">3</property>
-            <property name="use_underline">True</property>
-            <property name="wrap">True</property>
+            <property name="use_underline">1</property>
+            <property name="wrap">1</property>
             <property name="ellipsize">end</property>
             <property name="width_chars">20</property>
             <property name="max_width_chars">20</property>
             <property name="lines">3</property>
-            <property name="expand">True</property>
+            <property name="hexpand">1</property>
+            <property name="vexpand">1</property>
           </object>
         </child>
         <child>
           <object class="GtkLabel" id="distanceLabel">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
             <property name="halign">end</property>
-            <property name="use_underline">True</property>
-            <property name="wrap">True</property>
+            <property name="use_underline">1</property>
             <property name="lines">3</property>
             <property name="margin_end">5</property>
           </object>
         </child>
       </object>
-    </child>
+    </property>
   </template>
 </interface>

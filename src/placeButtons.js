@@ -71,11 +71,18 @@ export class PlaceButtons extends Gtk.Box {
 
     initSendToButton(button) {
         button.connect('clicked', () => {
-            let dialog = new SendToDialog({ transient_for: this.get_toplevel(),
+            let dialog = new SendToDialog({ transient_for: this.get_root(),
                                             modal: true,
                                             mapView: this._mapView,
                                             place: this._place });
-            dialog.connect('response', () => dialog.destroy());
+            dialog.connect('response', () => {
+                dialog.destroy();
+                this._popup();
+            });
+            /* on GTK 4 the popover gets overlayead over the dialog,
+             * so close the popover when not in adaptive mode
+             */
+            this._popdown();
             dialog.show();
         });
     }
@@ -135,13 +142,19 @@ export class PlaceButtons extends Gtk.Box {
         let osmEdit = Application.osmEdit;
         /* if the user is not already signed in, show the account dialog */
         if (!osmEdit.isSignedIn) {
-            let dialog = osmEdit.createAccountDialog(this.get_toplevel(), true);
+            let dialog = osmEdit.createAccountDialog(this.get_root(), true);
 
+            /* on GTK 4 the popover gets overlayead over the dialog,
+             * so close the popover when not in adaptive mode
+             */
+            this._popdown();
             dialog.show();
             dialog.connect('response', (dialog, response) => {
                 dialog.destroy();
                 if (response === OSMAccountDialog.Response.SIGNED_IN)
                     this._edit();
+                else
+                    this._popup();
             });
 
             return;
@@ -150,10 +163,25 @@ export class PlaceButtons extends Gtk.Box {
         this._edit();
     }
 
+    // popdown the parent popove(when not in adaptive mode)
+    _popdown() {
+        if (!Application.application.adaptive_mode)
+            this.get_ancestor(Gtk.Popover).popdown();
+    }
+
+    _popup() {
+        if (!Application.application.adaptive_mode)
+            this.get_ancestor(Gtk.Popover).popup();
+    }
+
     _edit() {
         let osmEdit = Application.osmEdit;
-        let dialog = osmEdit.createEditDialog(this.get_toplevel(), this._place);
+        let dialog = osmEdit.createEditDialog(this.get_root(), this._place);
 
+        /* on GTK 4 the popover gets overlayead over the dialog,
+         * so close the popover when not in adaptive mode
+         */
+        this._popdown();
         dialog.show();
         dialog.connect('response', (dialog, response) => {
             dialog.destroy();
@@ -169,6 +197,8 @@ export class PlaceButtons extends Gtk.Box {
             default:
                 break;
             }
+
+            this._popup();
         });
     }
 }
