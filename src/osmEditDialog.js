@@ -333,7 +333,7 @@ export class OSMEditDialog extends Gtk.Dialog {
         });
 
         this._cancellable = new Gio.Cancellable();
-        this._cancellable.connect(() => this.response(Response.CANCELLED));
+        this._cancellable.connect(() => this.response(OSMEditDialog.Response.CANCELLED));
 
         this.connect('delete-event', () => this._cancellable.cancel());
 
@@ -553,7 +553,7 @@ export class OSMEditDialog extends Gtk.Dialog {
             this.response(OSMEditDialog.Response.UPLOADED);
         } else {
             this._showError(status);
-            this.response(Response.ERROR);
+            this.response(OSMEditDialog.Response.ERROR);
         }
     }
 
@@ -573,7 +573,7 @@ export class OSMEditDialog extends Gtk.Dialog {
 
         messageDialog.run();
         messageDialog.destroy();
-        this.response(Response.ERROR);
+        this.response(OSMEditDialog.Response.ERROR);
     }
 
     /* GtkContainer.child_get_property doesn't seem to be usable from GJS */
