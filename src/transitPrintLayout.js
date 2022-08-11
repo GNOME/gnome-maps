@@ -68,21 +68,22 @@ export class TransitPrintLayout extends PrintLayout {
         let itinerary = params.itinerary;
         delete params.itinerary;
 
-        params.totalSurfaces = this._getNumberOfSurfaces();
+        params.totalSurfaces =
+            TransitPrintLayout._getNumberOfSurfaces(itinerary);
 
         super(params);
 
         this._itinerary = itinerary;
     }
 
-    _getNumberOfSurfaces() {
+    static _getNumberOfSurfaces(itinerary) {
         // always one fixed surface for the title label
         let numSurfaces = 1;
 
-        for (let i = 0; i < this._itinerary.legs.length; i++) {
+        for (let leg of itinerary.legs) {
             numSurfaces++;
             // add a surface when a leg of the itinerary should have a map view
-            if (this._legHasMiniMap(i))
+            if (TransitPrintLayout._legHasMiniMap(leg))
                 numSurfaces++;
         }
 
@@ -143,10 +144,10 @@ export class TransitPrintLayout extends PrintLayout {
     }
 
     _createBBox(leg) {
-        return Champlain.BoundingBox({ top:    leg.bbox.top,
-                                       left:   leg.bbox.left,
-                                       bottom: leg.bbox.bottom,
-                                       right:  leg.bbox.right });
+        return new Champlain.BoundingBox({ top:    leg.bbox.top,
+                                           left:   leg.bbox.left,
+                                           bottom: leg.bbox.bottom,
+                                           right:  leg.bbox.right });
     }
 
     _createStartMarker(leg, previousLeg) {
@@ -287,8 +288,7 @@ export class TransitPrintLayout extends PrintLayout {
         this._addSurface(surface, x, y, pageNum);
     }
 
-    _legHasMiniMap(index) {
-        let leg = this._itinerary.legs[index];
+    static _legHasMiniMap(leg) {
         return !leg.transit;
     }
 
@@ -315,7 +315,7 @@ export class TransitPrintLayout extends PrintLayout {
 
         for (let i = 0; i < this._itinerary.legs.length; i++) {
             let leg = this._itinerary.legs[i];
-            let hasMap = this._legHasMiniMap(i);
+            let hasMap = TransitPrintLayout._legHasMiniMap(leg);
             let instructionDy = instructionHeight + instructionMargin;
             let mapDy = hasMap ? mapViewHeight + mapViewMargin : 0;
 

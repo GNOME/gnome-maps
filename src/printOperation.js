@@ -65,13 +65,6 @@ export class PrintOperation {
         let width = context.get_width();
         let height = context.get_height();
 
-        GLib.timeout_add(null, _MIN_TIME_TO_ABORT, () => {
-            if (!this._layout.renderFinished) {
-                this._abortDialog.show();
-            }
-            return false;
-        }, null);
-
         if (selectedTransitItinerary) {
             this._layout =
                 new TransitPrintLayout({ itinerary: selectedTransitItinerary,
@@ -79,15 +72,23 @@ export class PrintOperation {
                                          pageHeight: height });
         } else {
             if (route.distance > _SHORT_LAYOUT_MAX_DISTANCE) {
-                return new LongPrintLayout({ route: route,
-                                             pageWidth: pageWidth,
-                                             pageHeight: pageHeight });
+                this._layout = new LongPrintLayout({ route: route,
+                                                     pageWidth: width,
+                                                     pageHeight: height });
             } else {
-                return new ShortPrintLayout({ route: route,
-                                              pageWidth: pageWidth,
-                                              pageHeight: pageHeight });
+                this._layout = new ShortPrintLayout({ route: route,
+                                                      pageWidth: width,
+                                                      pageHeight: height });
             }
         }
+
+        GLib.timeout_add(null, _MIN_TIME_TO_ABORT, () => {
+            if (!this._layout.renderFinished) {
+                this._abortDialog.show();
+            }
+            return false;
+        });
+
         this._layout.render();
     }
 
@@ -101,11 +102,15 @@ export class PrintOperation {
     }
 
     _paginate(operation, context) {
-        if (this._layout.renderFinished) {
-            operation.set_n_pages(this._layout.numPages);
-            this._abortDialog.close();
+        if (this._layout) {
+            if (this._layout.renderFinished) {
+                operation.set_n_pages(this._layout.numPages);
+                this._abortDialog.close();
+            }
+            return this._layout.renderFinished;
+        } else {
+            return false;
         }
-        return this._layout.renderFinished;
     }
 
     _drawPage(operation, context, page_num, data) {

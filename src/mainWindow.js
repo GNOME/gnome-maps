@@ -463,7 +463,7 @@ export class MainWindow extends Gtk.ApplicationWindow {
                 break;
 
             case Geoclue.State.DENIED:
-                let dialog = new LocationServiceDialog.LocationServiceDialog({
+                let dialog = new LocationServiceDialog({
                     visible: true,
                     transient_for: this,
                     modal: true });
@@ -513,7 +513,7 @@ export class MainWindow extends Gtk.ApplicationWindow {
 
     _printRouteActivate() {
         if (this._mapView.routeShowing) {
-            let operation = new PrintOperation.PrintOperation({ mainWindow: this });
+            let operation = new PrintOperation({ mainWindow: this });
         }
     }
 

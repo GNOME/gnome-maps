@@ -20,6 +20,7 @@
 import GObject from 'gi://GObject';
 
 import {PrintLayout} from './printLayout.js';
+import {Route} from './route.js';
 import {TurnPoint} from './route.js';
 
 const _NUM_MINIMAPS = 5;
@@ -44,7 +45,7 @@ export class LongPrintLayout extends PrintLayout {
         delete params.route;
 
         /* (Header + 3 maps) + instructions */
-        let totalSurfaces = 4 + this._route.turnPoints.length;
+        let totalSurfaces = 4 + route.turnPoints.length;
 
         /* Plus via points */
         route.turnPoints.forEach((turnPoint) => {
@@ -115,7 +116,7 @@ export class LongPrintLayout extends PrintLayout {
                                   turnPoint);
             this._cursorY += dy;
 
-            if (turnPoint.type === Route.TurnPointType.VIA) {
+            if (turnPoint.type === TurnPoint.Type.VIA) {
                 let tmpY = this._cursorY;
 
                 first = Math.max(0, (i + 1) - (_NUM_MINIMAPS / 2));
@@ -139,3 +140,5 @@ export class LongPrintLayout extends PrintLayout {
                           miniMapViewZoomLevel, points);
     }
 }
+
+GObject.registerClass(LongPrintLayout);
