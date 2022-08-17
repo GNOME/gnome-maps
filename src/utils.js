@@ -29,7 +29,6 @@ import GeocodeGlib from 'gi://GeocodeGlib';
 import Gio from 'gi://Gio';
 import Gtk from 'gi://Gtk';
 import GWeather from 'gi://GWeather';
-import Soup from 'gi://Soup';
 
 const _ = gettext.gettext;
 const ngettext = gettext.ngettext;
