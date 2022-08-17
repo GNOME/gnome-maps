@@ -85,9 +85,15 @@ export class GraphHopper {
     _queryGraphHopper(points, transportationType, callback) {
         let url = this._buildURL(points, transportationType);
         let msg = Soup.Message.new('GET', url);
-        this._session.queue_message(msg, (session, message) => {
+        this._session.send_and_read_async(msg, GLib.PRIORITY_DEFAULT, null,
+                                          (source,res) => {
+            let bytes = this._session.send_and_read_finish(res);
+            let body = bytes ? Utils.getBufferText(bytes.get_data()) : null;
+
             try {
-                let result = this._parseMessage(message);
+                let result = this._parseMessage({ status_code:   msg.get_status(),
+                                                  response_body: body,
+                                                  uri:           url });
                 if (!result)
                     callback(null, null);
                 else
@@ -168,7 +174,7 @@ export class GraphHopper {
         if (status_code !== 200)
             return null;
 
-        let result = JSON.parse(response_body.data);
+        let result = JSON.parse(response_body);
 
         if (!Array.isArray(result.paths)) {
             Utils.debug("No route found");

@@ -54,7 +54,8 @@
             "builddir" : true,
             "config-opts" : [
                 "--libdir=/app/lib",
-                "-Denable-gtk-doc=false"
+                "-Denable-gtk-doc=false",
+                "-Dsoup2=false"
             ],
             "sources" : [
                 {
@@ -68,7 +69,7 @@
             "config-opts" : [
                 "-Denable_vala=false",
                 "-Dgtk_doc=false",
-                "-Dsoup2=true"
+                "-Dsoup2=false"
             ],
             "buildsystem" : "meson",
             "sources" : [
@@ -81,11 +82,17 @@
         },
         {
             "name" : "librest",
+            "buildsystem": "meson",
+            "config-opts": [
+            	"-Dgtk_doc=false",
+            	"-Dexamples=false",
+            	"-Dsoup2=false"
+            ],
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://gitlab.gnome.org/GNOME/librest/-/archive/0.8.1/librest-0.8.1.tar.gz",
-                    "sha256" : "2bdd1be07a9150b1c6ceea6e01dedf2efcff564381cae0cd6c7330403efe59d7"
+                    "url" : "https://gitlab.gnome.org/GNOME/librest/-/archive/1.0.0/librest-1.0.0.tar.gz",
+                    "sha256" : "eeba5ddbf91a29decec01c3ccce64b922bd9bf52d631e307e185227295aea51d"
                 }
             ]
         },
@@ -95,7 +102,8 @@
             "config-opts": [
                 "-Ddemos=false",
                 "-Dgtk_doc=false",
-                "-Dvapi=false"
+                "-Dvapi=false",
+                "-Dlibsoup3=true"
             ],
             "sources" : [
                 {

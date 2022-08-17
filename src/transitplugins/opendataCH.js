@@ -145,17 +145,19 @@ export class OpendataCH {
             let location = points[index].place.location;
             let query = new Query({ x: location.latitude,
                                     y: location.longitude });
-            let uri = new Soup.URI(BASE_URL + '/' + API_VERSION + '/locations?' +
-                                   query.toString());
-            let request = new Soup.Message({ method: 'GET', uri: uri });
+            let uri = BASE_URL + '/' + API_VERSION + '/locations?' + query.toString();
+            let request = Soup.Message('GET', uri);
 
-            this._session.queue_message(request, (obj, message) => {
-                if (message.status_code !== Soup.Status.OK) {
-                    Utils.debug('Failed to get location: ' + message.status_code);
+            this._session.send_and_read_async(request, GLib.PRIORITY_DEFAULT, null,
+                                              (source, res) => {
+                if (request.get_status() !== Soup.Status.OK) {
+                    Utils.debug('Failed to get location: ' + request.get_status());
                     this._plan.requestFailed();
                     this._plan.reset();
                 } else {
-                    let result = JSON.parse(message.response_body.data);
+                    let buffer =
+                        this._session.send_and_read_finish(res).get_data();
+                    let result = JSON.parse(Utils.getBufferText(buffer));
 
                     Utils.debug('locations: ' + JSON.stringify(result, null, 2));
 
@@ -191,19 +193,20 @@ export class OpendataCH {
 
     _fetchResults() {
         let query = this._getQuery();
-        let uri = new Soup.URI(BASE_URL + '/' + API_VERSION + '/connections?' +
-                               query.toString(true));
-        let request = new Soup.Message({ method: 'GET', uri: uri });
+        let uri = BASE_URL + '/' + API_VERSION + '/connections?' + query.toString(true);
+        let request = Soup.Message.new('GET', uri);
 
-        Utils.debug('uri: ' + uri.to_string(true));
+        Utils.debug('uri: ' + uri);
 
-        this._session.queue_message(request, (obj, message) => {
-            if (message.status_code !== Soup.Status.OK) {
-                Utils.debug('Failed to get trip: ' + message.status_code);
+        this._session.send_and_read_async(request, GLib.PRIORITY_DEFAULT, null,
+                                          (source, res) => {
+            if (request.get_status() !== Soup.Status.OK) {
+                Utils.debug('Failed to get trip: ' + request.get_status());
                 this._plan.requestFailed();
                 this._plan.reset();
             } else {
-                let result = JSON.parse(message.response_body.data);
+                let buffer = this._session.send_and_read_finish(res).get_data();
+                let result = JSON.parse(Utils.getBufferText(buffer));
                 Utils.debug('result: ' + JSON.stringify(result, null, 2));
 
                 if (result.connections && result.connections.length > 0) {

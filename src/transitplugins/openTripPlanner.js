@@ -251,17 +251,18 @@ export class OpenTripPlanner {
 
     _fetchRoutesForStop(stop, callback) {
         let query = new Query();
-        let uri = new Soup.URI(this._getRouterUrl() + '/index/stops/' +
-                               stop.id + '/routes');
-        let request = new Soup.Message({ method: 'GET', uri: uri });
+        let uri = this._getRouterUrl() + '/index/stops/' + stop.id + '/routes';
+        let request = Soup.Message.new('GET', uri);
 
         request.request_headers.append('Accept', 'application/json');
-        this._session.queue_message(request, (obj, message) => {
-            if (message.status_code !== Soup.Status.OK) {
+        this._session.send_and_read_async(request, GLib.PRIOITY_DEFAULT, null,
+                                          (source, res) => {
+            if (request.get_status() !== Soup.Status.OK) {
                 Utils.debug('Failed to get routes for stop');
                 this._reset();
             } else {
-                let routes = JSON.parse(message.response_body.data);
+                let buffer = this._session.send_and_read_finish(res).get_data();
+                let routes = JSON.parse(Utils.getBufferText(buffer));
 
                 Utils.debug('Routes for stop: ' + stop + ': ' + JSON.stringify(routes));
                 callback(routes);
@@ -325,17 +326,18 @@ export class OpenTripPlanner {
                            lon: point.place.location.longitude,
                            radius: STOP_SEARCH_RADIUS };
             let query = new Query(params);
-            let uri = new Soup.URI(this._getRouterUrl() +
-                                   '/index/stops?' + query.toString());
-            let request = new Soup.Message({ method: 'GET', uri: uri });
+            let uri = this._getRouterUrl() + '/index/stops?' + query.toString();
+            let request = Soup.Message.new('GET', uri);
 
             request.request_headers.append('Accept', 'application/json');
-            this._session.queue_message(request, (obj, message) => {
-                if (message.status_code !== Soup.Status.OK) {
+            this._session.send_and_read_async(request, GLib.PRIORITY_DEFAULT, null,
+                                              (source, res) => {
+                if (request.get_status() !== Soup.Status.OK) {
                     Utils.debug('Failed to get stop for search point ' + point);
                     this._reset();
                 } else {
-                    let stops = JSON.parse(message.response_body.data);
+                    let buffer = this._session.send_and_read_finish(res).get_data();
+                    let stops = JSON.parse(Utils.getBufferText(buffer));
 
                     if (stops.length === 0) {
                         Utils.debug('No suitable stop found from router');
@@ -497,18 +499,19 @@ export class OpenTripPlanner {
     }
 
     _fetchPlan(url, callback) {
-        let uri = new Soup.URI(url);
-        let request = new Soup.Message({ method: 'GET', uri: uri });
+        let request = Soup.Message.new('GET', url);
 
         request.request_headers.append('Accept', 'application/json');
-        this._session.queue_message(request, (obj, message) => {
-            if (message.status_code !== Soup.Status.OK) {
+        this._session.send_and_read_async(request, GLib.PRIORITY_DEFAULT, null,
+                                          (source, res) => {
+            if (request.get_status() !== Soup.Status.OK) {
                 Utils.debug('Failed to get route plan from router ' +
-                            this._router + ' ' + message.reason_phrase);
+                            this._router + ' ' + request.reason_phrase);
                 callback(null);
             } else {
                 try {
-                    let result = JSON.parse(message.response_body.data);
+                    let buffer = this._session.send_and_read_finish(res).get_data();
+                    let result = JSON.parse(Utils.getBufferText(buffer));
 
                     callback(result);
                 } catch (e) {

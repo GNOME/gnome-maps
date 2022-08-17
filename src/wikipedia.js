@@ -49,8 +49,8 @@ export function getLanguage(wiki) {
 }
 
 export function getArticle(wiki) {
-    return Soup.uri_encode(wiki.replace(/ /g, '_').split(':').splice(1).join(':'),
-                           '\'');
+    return GLib.uri_escape_string(wiki.replace(/ /g, '_').split(':').splice(1).join(':'),
+                                  '\'', false);
 }
 
 export function getHtmlEntityEncodedArticle(wiki) {
@@ -89,26 +89,28 @@ export function fetchArticleInfo(wiki, size, metadataCb, thumbnailCb) {
     let lang = getLanguage(wiki);
     let title = getHtmlEntityEncodedArticle(wiki);
     let uri = `https://${lang}.wikipedia.org/w/api.php`;
-    let msg = Soup.form_request_new_from_hash('GET', uri, { action: 'query',
-                                                            titles: title,
-                                                            prop: 'extracts|pageimages|langlinks',
-                                                            format: 'json',
+    let encodedForm =
+        Soup.form_encode_hash({ action: 'query',
+                                titles: title,
+                                prop: 'extracts|pageimages|langlinks',
+                                format: 'json',
 
-                                                            /* Allow redirects, for example if an
-                                                               article is renamed. */
-                                                            redirects: '1',
+                                /* Allow redirects, for example if an
+                                   article is renamed. */
+                                redirects: '1',
 
-                                                            /* Make sure we get all lang links */
-                                                            lllimit: 'max',
+                                /* Make sure we get all lang links */
+                                lllimit: 'max',
 
-                                                            /* don't go past first section header */
-                                                            exintro: 'yes',
-                                                            /* limit the length   */
-                                                            exchars: '200',
-                                                            /* for plain text rather than HTML */
-                                                            explaintext: 'yes',
+                                /* don't go past first section header */
+                                exintro: 'yes',
+                                /* limit the length   */
+                                exchars: '200',
+                                /* for plain text rather than HTML */
+                                explaintext: 'yes',
 
-                                                            pithumbsize: size + ''});
+                                pithumbsize: size + '' });
+    let msg = Soup.Message.new_from_encoded_form('GET', uri, encodedForm);
     let session = _getSoupSession();
     let cachedMetadata = _metadataCache[wiki];
 
@@ -117,8 +119,9 @@ export function fetchArticleInfo(wiki, size, metadataCb, thumbnailCb) {
         return;
     }
 
-    session.queue_message(msg, (session, msg) => {
-        if (msg.status_code !== Soup.KnownStatusCode.OK) {
+    session.send_and_read_async(msg, GLib.PRIORIRY_DEFAULT, null,
+                                     (source, res) => {
+        if (msg.get_status() !== Soup.Status.OK) {
             log("Failed to request Wikipedia metadata: " + msg.reason_phrase);
             metadataCb(null, {});
             if (thumbnailCb) {
@@ -127,7 +130,8 @@ export function fetchArticleInfo(wiki, size, metadataCb, thumbnailCb) {
             return;
         }
 
-        let response = JSON.parse(msg.response_body.data);
+        let buffer = session.send_and_read_finish(res).get_data();
+        let response = JSON.parse(Utils.getBufferText(buffer));
         let pages = response.query.pages;
 
         if (pages) {
@@ -175,8 +179,7 @@ function _onMetadataFetched(wiki, page, size, metadataCb, thumbnailCb) {
 }
 
 function _fetchThumbnailImage(wiki, size, source, callback) {
-    let uri = new Soup.URI(source);
-    let msg = new Soup.Message({ method: 'GET', uri: uri });
+    let msg = Soup.Message.new('GET', source);
     let session = _getSoupSession();
 
     let cachedThumbnail = _thumbnailCache[wiki + '/' + size];
@@ -185,15 +188,14 @@ function _fetchThumbnailImage(wiki, size, source, callback) {
         return;
     }
 
-    session.queue_message(msg, (session, msg) => {
-        if (msg.status_code !== Soup.KnownStatusCode.OK) {
+    session.send_async(msg, GLib.PRIORITY_DEFAULT, null, (source, res) => {
+        if (msg.get_status() !== Soup.Status.OK) {
             log("Failed to download thumbnail: " + msg.reason_phrase);
             callback(null);
             return;
         }
 
-        let contents = msg.response_body_data;
-        let stream = Gio.MemoryInputStream.new_from_bytes(contents);
+        let stream = session.send_finish(res);
 
         try {
             let pixbuf = GdkPixbuf.Pixbuf.new_from_stream(stream, null);

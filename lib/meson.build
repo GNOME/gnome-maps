@@ -49,7 +49,7 @@ gnome.generate_gir(
 	includes: [
 		'GLib-2.0',
 		'GObject-2.0',
-		'Rest-0.7',
+		'Rest-1.0',
 		'Shumate-1.0'
 	],
 	install: true,

@@ -25,6 +25,7 @@ import gettext from 'gettext';
 import GnomeMaps from 'gi://GnomeMaps';
 
 import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
 import Rest from 'gi://Rest';
 import Secret from 'gi://Secret';
 import Soup from 'gi://Soup';
@@ -62,26 +63,23 @@ export class OSMConnection {
 
     getOSMObject(type, id, callback, cancellable) {
         let url = this._getQueryUrl(type, id);
-        let uri = new Soup.URI(url);
-        let request = new Soup.Message({ method: 'GET', uri: uri });
+        let request = Soup.Message.new('GET', url);
 
-        cancellable.connect(() => {
-            this._session.cancel_message(request, Soup.STATUS_CANCELLED);
-        });
-
-        this._session.queue_message(request, (obj, message) => {
-            if (message.status_code !== Soup.Status.OK) {
-                callback(false, message.status_code, null, type, null);
+        this._session.send_and_read_async(request, GLib.PRIORITY_DEFAULT, cancellable,
+                                          (source, res) => {
+            if (request.get_status() !== Soup.Status.OK) {
+                callback(false, message.get_status(), null, type, null);
                 return;
             }
 
             try {
-                let object = GnomeMaps.osm_parse (message.response_body.data,
-                                                  message.response_body.length);
-                callback(true, message.status_code, object, type, null);
+                let body = this._session.send_and_read_finish(res);
+                let object = GnomeMaps.osm_parse (Utils.getBufferText(body.get_data()),
+                                                  body.get_size());
+                callback(true, request.get_status(), object, type, null);
             } catch (e) {
                 Utils.debug(e);
-                callback(false, message.status_code, null, type, e);
+                callback(false, request.get_status(), null, type, e);
             }
         });
     }

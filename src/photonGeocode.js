@@ -42,22 +42,19 @@ export class PhotonGeocode {
 
     search(string, latitude, longitude, cancellable, callback) {
         let url = this._buildURL(string, latitude, longitude);
-        let msg = Soup.Message.new('GET', url);
-        let handler = cancellable.connect(() => {
-            this._session.cancel_message(msg, Soup.Status.CANCELLED);
-        });
+        let msg = Soup.Message.new('GET', url)
 
-        this._session.queue_message(msg, (session, message) => {
-            cancellable.disconnect(handler);
-
+        this._session.send_and_read_async(msg, GLib.PRIORITY_DEFAULT, cancellable,
+                                          (source, res) => {
             if (cancellable.is_cancelled())
                 return;
 
-            if (message.status_code !== Soup.KnownStatusCode.OK) {
-                callback(null, msg.status_code);
+            if (msg.get_status() !== Soup.Status.OK) {
+                callback(null, msg.get_status());
             } else {
                 try {
-                    let result = this._parseMessage(message.response_body.data);
+                    let buffer = this._session.send_and_read_finish(res).get_data();
+                    let result = this._parseMessage(Utils.getBufferText(buffer));
                     if (!result)
                         callback(null, null);
                     else
@@ -75,10 +72,12 @@ export class PhotonGeocode {
         let msg = Soup.Message.new('GET', url);
 
         Application.application.mark_busy();
-        this._session.queue_message(msg, (session, message) => {
+        this._session.send_and_read_async(msg, GLib.PRIORITY_DEFAULT, null,
+                                          (source, res) => {
             Application.application.unmark_busy();
             try {
-                let result = this._parseMessage(message.response_body.data);
+                let buffer = this._session.send_and_read_finish(res).get_data();
+                let result = this._parseMessage(Utils.getBufferText(buffer));
                 if (!result)
                     callback(null, null);
                 else

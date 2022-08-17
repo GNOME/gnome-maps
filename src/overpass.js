@@ -18,6 +18,7 @@
  */
 
 import Geocode from 'gi://GeocodeGlib';
+import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Soup from 'gi://Soup';
 
@@ -67,17 +68,18 @@ export class Overpass extends GObject.Object {
     addInfo(place) {
         let url = this._getQueryUrl(Utils.osmTypeToString(place.osm_type),
                                     place.osm_id);
-        let uri = new Soup.URI(url);
-        let request = new Soup.Message({ method: 'GET',
-                                         uri: uri });
+        let request = Soup.Message.new('GET', url);
 
-        this._session.queue_message(request, (obj, message) => {
-            if (message.status_code !== Soup.KnownStatusCode.OK) {
-                Utils.debug('Failed to fetch Overpass result: ' + message.status_code);
+        this._session.send_and_read_async(request, GLib.PRIORITY_DEFAULT, null,
+                                          (source, res) => {
+            if (request.get_status() !== Soup.Status.OK) {
+                Utils.debug('Failed to fetch Overpass result: ' +
+                            request.get_status());
                 return;
             }
             try {
-                let jsonObj = JSON.parse(message.response_body.data);
+                let buffer = this._session.send_and_read_finish(res).get_data();
+                let jsonObj = JSON.parse(Utils.getBufferText(buffer));
                 this._populatePlace(place, jsonObj);
                 this.place = place;
                 this.notify('place');
@@ -88,18 +90,20 @@ export class Overpass extends GObject.Object {
     }
 
     fetchPlace(osmType, osmId, callback) {
-        let url = this._getQueryUrl(osmType, osmId);
-        let uri = new Soup.URI(url);
-        let request = new Soup.Message({ method: 'GET',
-                                         uri: uri });
+        let url = this._getQueryUrl(osmType, osmId)
+        let request = Soup.Message.new('GET', url);
 
-        this._session.queue_message(request, (obj, message) => {
-            if (message.status_code !== Soup.KnownStatusCode.OK) {
-                Utils.debug('Failed to fetch Overpass result: ' + message.status_code);
+        this._session.send_and_read_async(request, GLib.PRIORITY_DEFAULT, null,
+                                          (source, res) => {
+            if (request.get_status() !== Soup.Status.OK) {
+                Utils.debug('Failed to fetch Overpass result: ' +
+                            request.get_status());
                 callback(null);
+                return;
             }
             try {
-                let jsonObj = JSON.parse(message.response_body.data);
+                let buffer = this._session.send_and_read_finish(res).get_data();
+                let jsonObj = JSON.parse(Utils.getBufferText(buffer));
                 let place = this._createPlace(jsonObj, osmType, osmId);
                 callback(place);
             } catch(e) {

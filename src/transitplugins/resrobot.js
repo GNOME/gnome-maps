@@ -143,17 +143,18 @@ export class Resrobot {
     _fetchNearbyStops(lat, lon, num, radius, callback) {
         let query = new Query(this._getNearbyStopsQueryParams(lat, lon,
                                                               num, radius));
-        let uri = new Soup.URI(BASE_URL + '/' + API_VERSION +
-                               '/location.nearbystops?' + query.toString());
-        let request = new Soup.Message({ method: 'GET', uri: uri });
+        let uri = BASE_URL + '/' + API_VERSION + '/location.nearbystops?' + query.toString();
+        let request = Soup.Message.new('GET', uri);
 
-        this._session.queue_message(request, (obj, message) => {
-            if (message.status_code !== Soup.Status.OK) {
-                Utils.debug('Failed to get nearby stops: ' + message.status_code);
+        this._session.send_and_read_async(request, GLib.PRIORITY_DEFAULT, null,
+                                          (source, res) => {
+            if (request.get_status() !== Soup.Status.OK) {
+                Utils.debug('Failed to get nearby stops: ' + request.get_status());
                 this._noRouteFound();
             } else {
                 try {
-                    let result = JSON.parse(message.response_body.data);
+                    let buffer = this._session.send_and_read_finish(res).get_data();
+                    let result = JSON.parse(Utils.getBufferText(buffer));
                     let stopLocations = result.stopLocationOrCoordLocation;
 
                     Utils.debug('nearby stops: ' + JSON.stringify(result, null, 2));
@@ -178,13 +179,13 @@ export class Resrobot {
 
     _fetchResults() {
         let query = new Query(this._getQueryParams());
-        let uri = new Soup.URI(BASE_URL + '/' + API_VERSION + '/trip?' +
-                               query.toString());
-        let request = new Soup.Message({ method: 'GET', uri: uri });
+        let uri = BASE_URL + '/' + API_VERSION + '/trip?' + query.toString();
+        let request = Soup.Message.new('GET', uri);
 
-        this._session.queue_message(request, (obj, message) => {
-            if (message.status_code !== Soup.Status.OK) {
-                Utils.debug('Failed to get trip: ' + message.status_code);
+        this._session.send_and_read_async(request, GLib.PRIORITY_DEFAULT, null,
+                                          (source, res) => {
+            if (request.get_status() !== Soup.Status.OK) {
+                Utils.debug('Failed to get trip: ' + request.get_status());
                 /* No routes found. If this is the first search
                  * (not "load more") and the distance is short
                  * enough, generate a walk-only itinerary
@@ -210,7 +211,8 @@ export class Resrobot {
                 }
             } else {
                 try {
-                    let result = JSON.parse(message.response_body.data);
+                    let buffer = this._session.send_and_read_finish(res).get_data();
+                    let result = JSON.parse(Utils.getBufferText(buffer));
 
                     Utils.debug('result: ' + JSON.stringify(result, null, 2));
                     if (result.Trip) {

@@ -21,7 +21,7 @@
 
 import 'gi://Gdk?version=3.0';
 import 'gi://Gtk?version=3.0';
-import 'gi://Soup?version=2.4';
+import 'gi://Soup?version=3.0';
 
 const JsUnit = imports.jsUnit;
 

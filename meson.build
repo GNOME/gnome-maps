@@ -38,12 +38,12 @@ gtk4 = dependency('gtk4')
 geoclue2 = dependency('geoclue-2.0', version: '>= 0.12.99')
 libadwaita = dependency('libadwaita-1')
 gweather = dependency('gweather4', version: '>= 3.90.0')
-geocodeglib = dependency('geocode-glib-1.0', version: '>= 3.15.2')
+geocodeglib = dependency('geocode-glib-2.0', version: '>= 3.15.2')
 
 libmaps_deps = [
 	dependency('shumate-1.0'),
 	dependency('libxml-2.0'),
-	dependency('rest-0.7', version: '>= 0.7.90')
+	dependency('rest-1.0')
 ]
 
 msgfmt = find_program('msgfmt')

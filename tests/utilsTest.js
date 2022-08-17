@@ -21,6 +21,7 @@
 
 import 'gi://Gdk?version=3.0';
 import 'gi://Gtk?version=3.0';
+import 'gi://GeocodeGlib?version=2.0';
 
 import GeocodeGlib from 'gi://GeocodeGlib';
 import GLib from 'gi://GLib';
