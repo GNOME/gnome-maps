@@ -19,13 +19,13 @@
  * Author: Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
  */
 
-import Soup from 'gi://Soup';
+import GLib from 'gi://GLib';
 
 function encode(data) {
     if(data === null)
         return null;
 
-    return Soup.URI.encode(data.toString(), '&');
+    return GLib.uri_escape_string(data.toString(), null, false);
 }
 
 export class Query {
