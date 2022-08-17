@@ -22,7 +22,6 @@
 import gettext from 'gettext';
 
 import GLib from 'gi://GLib';
-import Soup from 'gi://Soup';
 
 import * as Utils from './utils.js';
 
@@ -121,7 +120,7 @@ export function parseMapsURI(uri) {
 
     if (param === 'q') {
         try {
-            return Soup.uri_decode(value);
+            return GLib.uri_unescape_string(value, null);
         } catch (error) {
             return null;
         }
