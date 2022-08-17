@@ -29,7 +29,6 @@ import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
-import Soup from 'gi://Soup';
 
 import {Application} from './application.js';
 import GnomeMaps from 'gi://GnomeMaps';
@@ -74,7 +73,7 @@ var _osmPhoneRewriteFunc = function(text) {
     if (GLib.uri_parse_scheme(text) === 'tel') {
         let afterTel = text.replace('tel:', '');
 
-        return Soup.uri_decode(afterTel.split(';')[0]);
+        return GLib.uri_unescape_string(afterTel.split(';')[0], null);
     } else {
         return text;
     }
@@ -89,7 +88,7 @@ var _osmEmailRewriteFunc = function(text) {
     if (GLib.uri_parse_scheme(text) === 'mailto') {
         let afterMailto = text.replace('mailto:', '');
 
-        return Soup.uri_decode(afterMailto.split('?')[0]);
+        return GLib.uri_unescape_string(afterMailto.split('?')[0], null);
     } else {
         return text;
     }
