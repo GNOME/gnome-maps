@@ -27,6 +27,7 @@ import GObject from 'gi://GObject';
 import Gdk from 'gi://Gdk';
 import Gio from 'gi://Gio';
 import Gtk from 'gi://Gtk';
+import Adw from 'gi://Adw';
 import Shumate from 'gi://Shumate';
 
 import {Application} from './application.js';
@@ -495,47 +496,36 @@ export class MainWindow extends Gtk.ApplicationWindow {
     }
 
     _onAboutActivate() {
-        let aboutDialog = new Gtk.AboutDialog({
-            artists: [ 'Jakub Steiner <jimmac@gmail.com>',
-                       'Andreas Nilsson <nisses.mail@home.se>' ],
-            authors: [ 'Zeeshan Ali (Khattak) <zeeshanak@gnome.org>',
-                       'Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>',
-                       'Jonas Danielsson <jonas@threetimestwo.org>',
-                       'Marcus Lundblad <ml@dfupdate.se>'],
+        let about = new Adw.AboutWindow({
+            designers: [ 'Jakub Steiner <jimmac@gmail.com>',
+                         'Andreas Nilsson <nisses.mail@home.se>' ],
+            developers: [ 'Zeeshan Ali (Khattak) <zeeshanak@gnome.org>',
+                          'Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>',
+                          'Jonas Danielsson <jonas@threetimestwo.org>',
+                          'Marcus Lundblad <ml@dfupdate.se>'],
+            developer_name: _("The GNOME Project"),
             translator_credits: _("translator-credits"),
             /* Translators: This is the program name. */
-            program_name: _("Maps"),
-            comments: _("A map application for GNOME"),
+            application_name: _("Maps"),
+            application_icon: pkg.name,
+            copyright: _("Copyright © 2011 – 2022 Red Hat, Inc. and The GNOME Maps authors"),
             license_type: Gtk.License.GPL_2_0,
-            logo_icon_name: pkg.name,
             version: pkg.version,
             website: 'https://live.gnome.org/Apps/Maps',
-            wrap_license: true,
-
-            modal: true,
+            issue_url: 'https://gitlab.gnome.org/GNOME/gnome-maps/-/issues/new',
             transient_for: this
         });
 
-        let copyright = _("Copyright © 2011 – 2022 Red Hat, Inc. and The GNOME Maps authors");
-        let attribution = this._getAttribution();
+        this._addAttribution(about);
 
-        copyright += '\n' + attribution;
-
-        /* HACK: we need to poke into gtkaboutdialog internals
-         * to set the copyright with markup like attribution requires
-         */
-
-        let copyrightLabel = aboutDialog.get_template_child(Gtk.AboutDialog, 'copyright_label');
-        copyrightLabel.set_markup('<span size="small">' + copyright + '</span>');
-        copyrightLabel.show();
-
-        aboutDialog.show();
+        about.present();
     }
 
-    _getAttribution() {
+    _addAttribution(about) {
         let tileProviderInfo = Service.getService().tileProviderInfo;
         let photonGeocode = Service.getService().photonGeocode;
         let attribution = _("Map data by %s and contributors").format('<a href="https://www.openstreetmap.org">OpenStreetMap</a>');
+        about.add_legal_section(_("Map Data Provider"), null, Gtk.License.CUSTOM, attribution);
 
         if (tileProviderInfo) {
             let tileProviderString;
@@ -545,13 +535,18 @@ export class MainWindow extends Gtk.ApplicationWindow {
             } else {
                 tileProviderString = tileProviderInfo.name;
             }
-            attribution += '\n';
-            /* Translators: this is an attribution string giving credit to the
-             * tile provider where the %s placeholder is replaced by either
-             * the bare name of the tile provider, or a linkified URL if one
-             * is available
-             */
-            attribution += _("Map tiles provided by %s").format(tileProviderString);
+
+            about.add_legal_section(
+                _("Map Tile Provider"),
+                null,
+                Gtk.License.CUSTOM,
+                /* Translators: this is an attribution string giving credit to the
+                * tile provider where the %s placeholder is replaced by either
+                * the bare name of the tile provider, or a linkified URL if one
+                * is available
+                */
+                _("Map tiles provided by %s").format(tileProviderString)
+            );
         }
 
         let provider = GeocodeFactory.getGeocoder().attribution;
@@ -570,7 +565,6 @@ export class MainWindow extends Gtk.ApplicationWindow {
         let geocoderLink =
             '<a href="%s">%s</a>'.format(geocoderUrl, geocoderName);
 
-        attribution += '\n';
         /* Translators: this is an attribution string giving credit to the
          * search provider where the first %s placeholder is replaced by either
          * the bare name of the geocoder provider, or a linkified URL if one
@@ -580,8 +574,12 @@ export class MainWindow extends Gtk.ApplicationWindow {
          * (i.e. "%2$s ... %1$s ..." for positioning the project URL
          * before the provider).
          */
-        attribution += _("Search provided by %s using %s").
-            format(providerString, geocoderLink);
+        about.add_legal_section(
+            _("Search Provider"),
+            null,
+            Gtk.License.CUSTOM,
+            _("Search provided by %s using %s").format(providerString, geocoderLink)
+        );
 
         return attribution;
     }
