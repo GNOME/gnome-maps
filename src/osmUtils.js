@@ -20,7 +20,7 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-import Soup from 'gi://Soup';
+import GLib from 'gi://GLib';
 
 import {Application} from './application.js';
 
@@ -36,7 +36,8 @@ export function getWikipediaOSMArticleFormatFromUrl(url) {
         let lang = match[1];
         let article = match[2];
 
-        return lang + ':' + Soup.uri_decode(article).replace(/_/g, ' ');
+        return lang + ':' +
+               GLib.uri_unescape_string(article, null).replace(/_/g, ' ');
     } else {
         return null;
     }
