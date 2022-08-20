@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps gnome-3-10\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2022-06-27 19:45+0000\n"
-"PO-Revision-Date: 2022-06-28 15:04+0430\n"
+"POT-Creation-Date: 2022-08-20 12:18+0000\n"
+"PO-Revision-Date: 2022-08-20 16:58+0430\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian\n"
 "Language: fa\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -27,8 +27,8 @@ msgstr ""
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
-#: data/ui/main-window.ui:30 src/application.js:61 src/mainWindow.js:132
-#: src/mainWindow.js:558
+#: data/ui/main-window.ui:29 src/application.js:61 src/mainWindow.js:136
+#: src/mainWindow.js:507
 msgid "Maps"
 msgstr "نقشه‌ها"
 
@@ -51,7 +51,7 @@ msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of thousands "
 "of people across the globe."
 msgstr ""
-"نقشه‌ها از پایگاه دادهٔ مشارکتی OpenStreetMap استفاده می‌کند که به دست صدها هزار نفر "
+"نقشه‌ها از پایگاه دادهٔ مشارکتی اوپن‌استریت‌مپ استفاده می‌کند که به دست صدها هزار نفر "
 "در سراسر جهان درست شده است."
 
 #: data/org.gnome.Maps.appdata.xml.in.in:279
@@ -145,11 +145,11 @@ msgstr "تعداد مسیرهای اخیر سر زده شده برای ذخیر�
 
 #: data/org.gnome.Maps.gschema.xml:56
 msgid "OpenStreetMap username or e-mail address"
-msgstr "نام‌کاربری یا نشانی رایانامهٔ OpenStreetMap"
+msgstr "نام‌کاربری یا نشانی رایانامهٔ اوپن‌استریت‌مپ"
 
 #: data/org.gnome.Maps.gschema.xml:57
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
-msgstr "مشخّص می‌کند که آیا کاربر برای ویرایش داده‌های OpenStreetMap وارد شده یا نه."
+msgstr "مشخّص می‌کند که آیا کاربر برای ویرایش داده‌های اوپن‌استریت‌مپ وارد شده یا نه."
 
 #: data/org.gnome.Maps.gschema.xml:61
 msgid "Last used transportation type for routing"
@@ -163,79 +163,75 @@ msgstr "نمایش مقیاس"
 msgid "Whether to show the scale."
 msgstr "این که مقیاس نشان داده شود یا نه."
 
-#: data/ui/context-menu.ui:9
+#: data/ui/context-menu.ui:6
 msgid "Route from here"
 msgstr "مسیر از این‌جا"
 
-#: data/ui/context-menu.ui:16
+#: data/ui/context-menu.ui:10
 msgid "Add intermediate destination"
 msgstr "افزودن مقصد میانی"
 
-#: data/ui/context-menu.ui:24
+#: data/ui/context-menu.ui:14
 msgid "Route to here"
 msgstr "مسیر به این‌جا"
 
-#: data/ui/context-menu.ui:36
-msgid "What’s here?"
+#: data/ui/context-menu.ui:20
+msgid "What's here?"
 msgstr "این‌جا چیست؟"
 
-#: data/ui/context-menu.ui:43
-msgid "Copy Location"
-msgstr "رونوشت موقعیت"
+#: data/ui/context-menu.ui:24
+msgid "Copy location"
+msgstr "رونوشت از موقعیت"
 
-#: data/ui/context-menu.ui:51
+#: data/ui/context-menu.ui:28
 msgid "Add to OpenStreetMap"
-msgstr "افزودن به OpenStreetMap"
+msgstr "افزودن به اوپن‌استریت‌مپ"
 
-#: data/ui/export-view-dialog.ui:14
+#: data/ui/export-view-dialog.ui:7
 msgid "Export view"
 msgstr "نمای برون‌ریزی"
 
-#: data/ui/export-view-dialog.ui:20 data/ui/send-to-dialog.ui:13
+#: data/ui/export-view-dialog.ui:16 data/ui/send-to-dialog.ui:10
 #: data/ui/shape-layer-file-chooser.ui:22
 msgid "_Cancel"
 msgstr "_لغو"
 
-#: data/ui/export-view-dialog.ui:34
+#: data/ui/export-view-dialog.ui:26
 msgid "_Export"
 msgstr "_برون‌ریزی"
 
-#: data/ui/export-view-dialog.ui:119
-msgid "Include route and markers"
-msgstr "شامل مسیر و علائم شدن"
-
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:15
+#: data/ui/headerbar-left.ui:11
 msgid "Go to current location"
 msgstr "رفتن به موقعیت فعلی"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:33
+#: data/ui/headerbar-left.ui:27
 msgid "Choose map type"
 msgstr "گزینش گونهٔ نقشه"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:58
+#: data/ui/headerbar-left.ui:44
 msgid "Zoom out"
 msgstr "بزرگنمایی به خارج"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:74
+#: data/ui/headerbar-left.ui:58
 msgid "Zoom in"
 msgstr "بزرگ‌نمایی به داخل"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-right.ui:14
+#: data/ui/headerbar-right.ui:11
 msgid "Print Route"
 msgstr "چاپ مسیر"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-right.ui:33
+#: data/ui/headerbar-right.ui:28
 msgid "Toggle favorites"
 msgstr "تغییر وضعیت برگزیده‌ها"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-right.ui:52
+#: data/ui/headerbar-right.ui:45
 msgid "Toggle route planner"
 msgstr "تغییر وضعیت برنامه‌ریز مسیر"
 
@@ -314,12 +310,12 @@ msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "گشودن لایهٔ شکل"
 
-#: data/ui/layers-popover.ui:62
+#: data/ui/layers-popover.ui:51
 msgid "Show Scale"
 msgstr "نمایش مقیاس"
 
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:97
+#: data/ui/layers-popover.ui:83
 msgid "Open Shape Layer…"
 msgstr "گشودن لایهٔ شکل…"
 
@@ -327,8 +323,8 @@ msgstr "گشودن لایهٔ شکل…"
 msgid "Turn on location services to find your location"
 msgstr "روشن کردن خدمات مکانی برای یافتن موقعیتتان"
 
-#: data/ui/location-service-dialog.ui:28 data/ui/osm-edit-dialog.ui:283
-#: data/ui/zoom-in-dialog.ui:28
+#: data/ui/location-service-dialog.ui:28 data/ui/osm-edit-dialog.ui:233
+#: data/ui/zoom-in-dialog.ui:21
 msgid "Cancel"
 msgstr "لغو"
 
@@ -338,7 +334,7 @@ msgstr "تنظیمات موقعیت"
 
 #: data/ui/main-window.ui:8
 msgid "Set up OpenStreetMap Account"
-msgstr "برپاسازی حساب OpenStreetMap"
+msgstr "برپاسازی حساب اوپن‌استریت‌مپ"
 
 #: data/ui/main-window.ui:12
 msgid "Export as Image"
@@ -352,15 +348,15 @@ msgstr "میان‌برهای _صفحه‌کلید"
 msgid "About Maps"
 msgstr "دربارهٔ نقشه‌ها"
 
-#: data/ui/main-window.ui:48
+#: data/ui/main-window.ui:40
 msgid "Open main menu"
 msgstr "گشودن فهرست اصلی"
 
-#: data/ui/osm-account-dialog.ui:9
+#: data/ui/osm-account-dialog.ui:6
 msgid "OpenStreetMap Account"
-msgstr "حساب OpenStreetMap"
+msgstr "حساب اوپن‌استریت‌مپ"
 
-#: data/ui/osm-account-dialog.ui:23
+#: data/ui/osm-account-dialog.ui:24
 msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
 msgstr "<span weight=\"bold\" size=\"x-large\">ورود به ویرایش نقشه‌ها</span>"
 
@@ -369,10 +365,10 @@ msgid ""
 "Help to improve the map, using an\n"
 "OpenStreetMap account."
 msgstr ""
-"با استفاده از یک حساب OpenStreetMap\n"
+"با استفاده از یک حساب اوپن‌استریت‌مپ\n"
 "به گسترش نقشه کمک کنید."
 
-#: data/ui/osm-account-dialog.ui:53
+#: data/ui/osm-account-dialog.ui:52
 msgid ""
 "Sign in to authorize access in a web browser.\n"
 "Then fill in the obtained verification code here in the next step."
@@ -380,72 +376,72 @@ msgstr ""
 "برای دادن دسترسی در مرورگر وبی وارد شوید.\n"
 "سپس رمز تأیید به دست آمده را در گام بعدی این‌جا پر کنید."
 
-#: data/ui/osm-account-dialog.ui:86
+#: data/ui/osm-account-dialog.ui:81
 msgid "Sign up"
 msgstr "ثبت‌نام"
 
-#: data/ui/osm-account-dialog.ui:100
+#: data/ui/osm-account-dialog.ui:94
 msgid "Sign In"
 msgstr "ورود"
 
-#: data/ui/osm-account-dialog.ui:139
+#: data/ui/osm-account-dialog.ui:136
 msgid "Copy verification code shown when authorizing access in the browser"
 msgstr "رمز تأیید نشان داده هنگام گرفتن دسترسی در مرورگر وارد کنید"
 
-#: data/ui/osm-account-dialog.ui:150
+#: data/ui/osm-account-dialog.ui:146
 msgid "Verification code"
 msgstr "رمز تأیید"
 
-#: data/ui/osm-account-dialog.ui:162
+#: data/ui/osm-account-dialog.ui:157
 msgid "Verify"
 msgstr "تأیید"
 
-#: data/ui/osm-account-dialog.ui:186
+#: data/ui/osm-account-dialog.ui:185
 msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
 msgstr "<span weight=\"bold\" size=\"x-large\">وارد شده</span>"
 
-#: data/ui/osm-account-dialog.ui:199
+#: data/ui/osm-account-dialog.ui:197
 msgid "Your OpenStreetMap account is active."
-msgstr "حساب OpenStreetMapتان فعّال است."
+msgstr "حساب اوپن‌استریت‌مپتان فعّال است."
 
-#: data/ui/osm-account-dialog.ui:233
+#: data/ui/osm-account-dialog.ui:227
 msgid "Sign Out"
 msgstr "خروج"
 
-#: data/ui/osm-edit-address.ui:14
+#: data/ui/osm-edit-address.ui:11
 msgid "Street"
 msgstr "خیابان"
 
-#: data/ui/osm-edit-address.ui:26
+#: data/ui/osm-edit-address.ui:22
 msgid "House number"
 msgstr "پلاک خانه"
 
-#: data/ui/osm-edit-address.ui:38
+#: data/ui/osm-edit-address.ui:33
 msgid "Postal code"
 msgstr "کد پستی"
 
 #. This is the place name as it would be written in a postal address (typically coming after the postal code)
-#: data/ui/osm-edit-address.ui:50
+#: data/ui/osm-edit-address.ui:44
 msgid "City"
 msgstr "شهر"
 
-#: data/ui/osm-edit-dialog.ui:58
+#: data/ui/osm-edit-dialog.ui:53
 msgid "Type"
 msgstr "گونه"
 
-#: data/ui/osm-edit-dialog.ui:84
+#: data/ui/osm-edit-dialog.ui:75
 msgid "None"
 msgstr "هیچ‌کدام"
 
-#: data/ui/osm-edit-dialog.ui:129
+#: data/ui/osm-edit-dialog.ui:110
 msgid "Add Field"
 msgstr "افزودن زمینه"
 
-#: data/ui/osm-edit-dialog.ui:163
+#: data/ui/osm-edit-dialog.ui:140
 msgid "Comment"
 msgstr "توضیح"
 
-#: data/ui/osm-edit-dialog.ui:195
+#: data/ui/osm-edit-dialog.ui:168
 msgid ""
 "Map changes will be visible on all maps that use\n"
 "OpenStreetMap data."
@@ -453,41 +449,36 @@ msgstr ""
 "تغییرات نقشه در تمام نقشه‌هایی که از داده‌های\n"
 "اوپن‌استریت‌مپ استفاده می‌کنند قابل مشاهده است."
 
-#: data/ui/osm-edit-dialog.ui:241
+#: data/ui/osm-edit-dialog.ui:196
 msgid "Recently Used"
 msgstr "به‌تازگی استفاده شده"
 
-#: data/ui/osm-edit-dialog.ui:280
-msgctxt "dialog title"
-msgid "Edit on OpenStreetMap"
-msgstr "ویرایش روی OpenStreetMap"
-
-#: data/ui/osm-edit-dialog.ui:310 src/osmEditDialog.js:534
+#: data/ui/osm-edit-dialog.ui:251 src/osmEditDialog.js:540
 msgid "Next"
 msgstr "بعدی"
 
-#: data/ui/place-popover.ui:55 src/application.js:274
+#: data/ui/place-popover.ui:42 src/application.js:269
 msgid "No results found"
 msgstr "هیچ نتیجه‌ای پیدا نشد"
 
-#: data/ui/place-popover.ui:67 src/application.js:251 src/osmEditDialog.js:571
+#: data/ui/place-popover.ui:52 src/application.js:246 src/osmEditDialog.js:577
 msgid "An error has occurred"
 msgstr "خطایی رخ داد"
 
 #. Translators: This is a tooltip
-#: data/ui/route-entry.ui:20
+#: data/ui/route-entry.ui:12
 msgid "Drag to change order of the route"
 msgstr "برای تغییر ترتیب مسیر بکشید"
 
-#: data/ui/send-to-dialog.ui:10
+#: data/ui/send-to-dialog.ui:7
 msgid "Open Location"
 msgstr "گشودن موقعیت"
 
-#: data/ui/send-to-dialog.ui:72
+#: data/ui/send-to-dialog.ui:62
 msgid "Copy"
 msgstr "رونوشت"
 
-#: data/ui/send-to-dialog.ui:79
+#: data/ui/send-to-dialog.ui:68
 msgid "Send To…"
 msgstr "فرستادن به…"
 
@@ -504,11 +495,11 @@ msgstr "_گشودن"
 msgid "Toggle visible"
 msgstr "تغییر وضعیت نمایانی"
 
-#: data/ui/sidebar.ui:275
+#: data/ui/sidebar.ui:228
 msgid "Route search by GraphHopper"
 msgstr "جست‌وجوی مسیر به دست GraphHopper"
 
-#: data/ui/sidebar.ui:364
+#: data/ui/sidebar.ui:306
 msgid ""
 "Routing itineraries for public transit is provided by third-party\n"
 "services.\n"
@@ -529,94 +520,94 @@ msgstr ""
 "شوند."
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:129
+#: data/ui/transit-leg-row.ui:98
 msgid "Hide intermediate stops and information"
 msgstr "نهفتن اطّلاعات و توقّف‌های میانی"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:203
+#: data/ui/transit-leg-row.ui:161
 msgid "Show intermediate stops and information"
 msgstr "نمایش اطّلاعات و توقّف‌های میانی"
 
 #. Indicates searching for the next available itineraries
-#: data/ui/transit-options-panel.ui:18
+#: data/ui/transit-options-panel.ui:16
 msgid "Leave Now"
 msgstr "اکنون خارج شوید"
 
 #. Indicates searching for itineraries leaving at the specified time at the earliest
-#: data/ui/transit-options-panel.ui:19
+#: data/ui/transit-options-panel.ui:17
 msgid "Leave By"
 msgstr "شروع حرکت از"
 
 #. Indicates searching for itineraries arriving no later than the specified time
-#: data/ui/transit-options-panel.ui:20
+#: data/ui/transit-options-panel.ui:18
 msgid "Arrive By"
 msgstr "رسیدن به مقصد از"
 
 #. Header indicating selected modes of transit
-#: data/ui/transit-options-panel.ui:106
+#: data/ui/transit-options-panel.ui:96
 msgid "Show"
 msgstr "نمایش"
 
-#: data/ui/transit-options-panel.ui:117
+#: data/ui/transit-options-panel.ui:106
 msgid "Buses"
 msgstr "اتوبوس‌ها"
 
-#: data/ui/transit-options-panel.ui:124
+#: data/ui/transit-options-panel.ui:112
 msgid "Trams"
 msgstr "ترامواها"
 
-#: data/ui/transit-options-panel.ui:131
+#: data/ui/transit-options-panel.ui:118
 msgid "Trains"
 msgstr "قطارها"
 
-#: data/ui/transit-options-panel.ui:138
+#: data/ui/transit-options-panel.ui:124
 msgid "Subway"
 msgstr "مترو"
 
-#: data/ui/transit-options-panel.ui:145
+#: data/ui/transit-options-panel.ui:130
 msgid "Ferries"
 msgstr "قایق‌ها"
 
-#: data/ui/transit-options-panel.ui:152
+#: data/ui/transit-options-panel.ui:136
 msgid "Airplanes"
 msgstr "هواپیماها"
 
 #. Translators: This is a tooltip
-#: data/ui/place-bar.ui:40 data/ui/place-buttons.ui:50 data/ui/place-view.ui:64
+#: data/ui/place-bar.ui:30 data/ui/place-buttons.ui:37 data/ui/place-view.ui:53
 msgid "Share location"
 msgstr "هم‌رسانی موقعیت"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.ui:15
+#: data/ui/place-buttons.ui:11
 msgid "Add to new route"
 msgstr "افزودن به مسیر جدید"
 
 #. Translators: This is the button to find a route to a place
-#: data/ui/place-buttons.ui:34
+#: data/ui/place-buttons.ui:23
 msgid "Directions"
 msgstr "مسیرها"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.ui:70
+#: data/ui/place-buttons.ui:51
 msgid "Mark as favorite"
 msgstr "علامت‌گذاری به عنوان برگزیده"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.ui:89
+#: data/ui/place-buttons.ui:65
 msgid "Edit on OpenStreetMap"
-msgstr "ویرایش روی OpenStreetMap"
+msgstr "ویرایش روی اوپن‌استریت‌مپ"
 
-#: data/ui/zoom-in-dialog.ui:16
+#: data/ui/zoom-in-dialog.ui:11
 msgid "Zoom in to add location!"
 msgstr "برای افزودن موقعیت، بزرگ‌نمایی کنید!"
 
-#: data/ui/zoom-in-dialog.ui:38
+#: data/ui/zoom-in-dialog.ui:27
 msgid "Zoom In"
 msgstr "بزرگ‌نمایی به داخل"
 
-#: lib/maps-file-tile-source.c:303 lib/maps-file-tile-source.c:379
-#: lib/maps-file-tile-source.c:459
+#: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338
+#: lib/maps-file-data-source.c:418
 msgid "Failed to find tile structure in directory"
 msgstr "شکست در یافتن ساختار کاشی در شاخه"
 
@@ -656,16 +647,16 @@ msgstr "جست‌وجوی مکان"
 msgid "[FILE…|URI]"
 msgstr "[FILE…|URI]"
 
-#: src/application.js:282
+#: src/application.js:277
 #, javascript-format
 msgid "Invalid maps: URI: %s"
 msgstr "نقشه‌های نامعتبر: نشانی: %s"
 
-#: src/contextMenu.js:129
+#: src/contextMenu.js:148
 msgid "Nothing found here!"
 msgstr "این‌جا چیزی پیدا نشد!"
 
-#: src/contextMenu.js:190
+#: src/contextMenu.js:209
 msgid ""
 "Location was added to the map, note that it may take a while before it shows on "
 "the map and in search results."
@@ -677,28 +668,28 @@ msgstr ""
 #. * exported image with coordinates. The .png extension should be kept
 #. * intact in the translated string.
 #.
-#: src/exportViewDialog.js:78
+#: src/exportViewDialog.js:85
 #, javascript-format
 msgid "Maps at %f, %f.png"
 msgstr "نقشه‌ها در %If، %If.png"
 
-#: src/exportViewDialog.js:150
+#: src/exportViewDialog.js:167
 msgid "Filesystem is read only"
 msgstr "سامانه‌پرونده فقط-خواندنی است"
 
-#: src/exportViewDialog.js:152
+#: src/exportViewDialog.js:169
 msgid "You do not have permission to save there"
 msgstr "برای ذخیره در آن‌جا دسترسی ندارید"
 
-#: src/exportViewDialog.js:154
+#: src/exportViewDialog.js:171
 msgid "The directory does not exist"
 msgstr "شاخه وجود ندارد"
 
-#: src/exportViewDialog.js:156
+#: src/exportViewDialog.js:173
 msgid "No filename specified"
 msgstr "نامی برای پرونده مشخّص نشده"
 
-#: src/exportViewDialog.js:164
+#: src/exportViewDialog.js:181
 msgid "Unable to export view"
 msgstr "ناتوان در برون‌ریزی نما"
 
@@ -706,15 +697,15 @@ msgstr "ناتوان در برون‌ریزی نما"
 msgid "Current Location"
 msgstr "موقعیت کنونی"
 
-#: src/geoJSONSource.js:97
+#: src/geoJSONSource.js:78
 msgid "invalid coordinate"
 msgstr "مختصات نامعتبر"
 
-#: src/geoJSONSource.js:142 src/geoJSONSource.js:182 src/geoJSONSource.js:197
+#: src/geoJSONSource.js:123 src/geoJSONSource.js:163 src/geoJSONSource.js:178
 msgid "parse error"
 msgstr "خطای تجزیه"
 
-#: src/geoJSONSource.js:176
+#: src/geoJSONSource.js:157
 msgid "unknown geometry"
 msgstr "هندسهٔ ناشناخته"
 
@@ -734,35 +725,35 @@ msgstr "شروع!"
 msgid "All Layer Files"
 msgstr "تمام پرونده‌های لایه"
 
-#: src/mainWindow.js:461
+#: src/mainWindow.js:419
 msgid "Failed to connect to location service"
 msgstr "شکست در اتّصال به خدمت مکانی"
 
-#: src/mainWindow.js:556
+#: src/mainWindow.js:505
 msgid "translator-credits"
 msgstr ""
 "دانیال بهزادی <dani.behzi@ubuntu.com>\n"
 "آرش موسوی <mousavi.arash@gmail.com>"
 
-#: src/mainWindow.js:559
+#: src/mainWindow.js:508
 msgid "A map application for GNOME"
 msgstr "یک برنامهٔ نقشه برای گنوم"
 
-#: src/mainWindow.js:570
+#: src/mainWindow.js:519
 msgid "Copyright © 2011 – 2022 Red Hat, Inc. and The GNOME Maps authors"
-msgstr "حق رونوشت © ۲۰۱۱ - ۲۰۲۲ – شرکت ردهت و نگارندگان نقشه‌های گنوم"
+msgstr "حق رونوشت © ۲۰۱۱ – ۲۰۲۲ شرکت ردهت و نگارندگان نقشه‌های گنوم"
 
-#: src/mainWindow.js:590
+#: src/mainWindow.js:538
 #, javascript-format
 msgid "Map data by %s and contributors"
-msgstr "دادهّای نقشه به دست %s و مشارکت‌کنندگان"
+msgstr "داده‌های نقشه به دست %s و مشارکت‌کنندگان"
 
 #. Translators: this is an attribution string giving credit to the
 #. * tile provider where the %s placeholder is replaced by either
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:606
+#: src/mainWindow.js:554
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "کاشی‌های نقشه به دست %s فراهم شده"
@@ -776,31 +767,31 @@ msgstr "کاشی‌های نقشه به دست %s فراهم شده"
 #. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
 #. * before the provider).
 #.
-#: src/mainWindow.js:635
+#: src/mainWindow.js:583
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "جست‌وجو به دست %s با استفاده از %s فراهم شده"
 
-#: src/mapView.js:366 src/mapView.js:424
+#: src/mapView.js:443 src/mapView.js:503
 msgid "Failed to open layer"
 msgstr "شکست در گشودن لایه"
 
-#: src/mapView.js:387
+#: src/mapView.js:464
 msgid "Do you want to continue?"
 msgstr "می‌خواهید ادامه دهید؟"
 
-#: src/mapView.js:388
+#: src/mapView.js:465
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some time "
 "to load"
 msgstr "در حال گشودن پرونده‌ای با حجم کل %s م‌ب هستید. بار شدنش ممکن است کمی طول بکشد"
 
-#: src/mapView.js:418
+#: src/mapView.js:497
 msgid "File type is not supported"
 msgstr "گونهٔ پرونده پشتیبانی نمی‌شود"
 
-#: src/mapView.js:456
+#: src/mapView.js:535
 msgid "Failed to open GeoURI"
 msgstr "شکست در گشودن نشانی جغرافیایی"
 
@@ -906,7 +897,7 @@ msgstr ""
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:160 src/placeView.js:625
+#: src/osmEditDialog.js:160 src/placeView.js:624
 msgid "Wikipedia"
 msgstr "ویکی‌پدیا"
 
@@ -1101,16 +1092,16 @@ msgstr ""
 "اطّلاعات برای آگاه کردن دیگر نقشه‌کش‌ها دربارهٔ اطّلاعات نابدیهی دربارهٔ یک عنصر، قصد "
 "نگارنده هنگام ایجادش یا راهنمایی برای بهبودهای بعدی."
 
-#: src/osmEditDialog.js:347
+#: src/osmEditDialog.js:348
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
-msgstr "افزودن به OpenStreetMap"
+msgstr "افزودن به اوپن‌استریت‌مپ"
 
-#: src/osmEditDialog.js:401
+#: src/osmEditDialog.js:402
 msgid "Select Type"
 msgstr "گزینش گونه"
 
-#: src/osmEditDialog.js:518
+#: src/osmEditDialog.js:524
 msgid "Done"
 msgstr "انجام شد"
 
@@ -1118,11 +1109,11 @@ msgstr "انجام شد"
 msgid "Unnamed place"
 msgstr "مکان بی‌نام"
 
-#: src/placeEntry.js:218
+#: src/placeEntry.js:226
 msgid "Failed to parse Geo URI"
 msgstr "شکست در تجزیهٔ نشانی جغرافیایی"
 
-#: src/placeEntry.js:231
+#: src/placeEntry.js:239
 msgid "Failed to parse Maps URI"
 msgstr "شکست در تجزیهٔ نشانی نقشه‌ها"
 
@@ -1293,7 +1284,7 @@ msgstr "مختصات نشانی نامعتبر"
 msgid "URL is not supported"
 msgstr "نشانی پشتیبانی نمی‌شود"
 
-#: src/printLayout.js:293
+#: src/printLayout.js:362
 #, javascript-format
 msgid "From %s to %s"
 msgstr "از %s تا %s"
@@ -1311,17 +1302,17 @@ msgid "Abort printing"
 msgstr "خاتمهٔ چاپ"
 
 #. Translators: this is add via location tooltip
-#: src/routeEntry.js:72
+#: src/routeEntry.js:69
 msgid "Add via location"
 msgstr "افزودن از راه موقعیت"
 
 #. Translators: this is remove via location tooltip
-#: src/routeEntry.js:82
+#: src/routeEntry.js:79
 msgid "Remove via location"
 msgstr "برداشتن از راه موقعیت"
 
 #. Translators: this is reverse route tooltip
-#: src/routeEntry.js:88
+#: src/routeEntry.js:85
 msgid "Reverse route"
 msgstr "مسیر برعکس"
 
@@ -1332,26 +1323,26 @@ msgstr "مسیر برعکس"
 msgid "Add %s to %s"
 msgstr "افزودن %s به %s"
 
-#: src/sendToDialog.js:190
+#: src/sendToDialog.js:189
 msgid "Failed to open URI"
 msgstr "شکست در گشودن نشانی"
 
-#: src/sendToDialog.js:260
+#: src/sendToDialog.js:256
 #, javascript-format
 msgid "Open with %s"
 msgstr "گشودن با %s"
 
-#: src/shapeLayer.js:96
+#: src/shapeLayer.js:98
 msgid "failed to load file"
 msgstr "شکست در بارگیری پرونده"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:327
+#: src/sidebar.js:348
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "زمان تخمینی: %s"
 
-#: src/sidebar.js:383
+#: src/sidebar.js:418
 #, javascript-format
 msgid "Itineraries provided by %s"
 msgstr "برنامه سفر فراهم شده به دست %s"
@@ -1420,7 +1411,7 @@ msgstr "جایگزین‌های جدیدتری پیدا نشدند."
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:135
+#: src/transitOptionsPanel.js:136
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%b %Oe"
@@ -1479,7 +1470,7 @@ msgstr[0] "%s:%s ساعت"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:696
+#: src/transitPlan.js:698
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -1587,7 +1578,7 @@ msgstr "دقیقاً"
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
 #.
-#: src/utils.js:357
+#: src/utils.js:361
 #, javascript-format
 msgid "%s h"
 msgstr "%s س"
@@ -1596,7 +1587,7 @@ msgstr "%s س"
 #. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
 #.
-#: src/utils.js:363
+#: src/utils.js:367
 #, javascript-format
 msgid "%s h %s min"
 msgid_plural "%s h %s min"
@@ -1606,7 +1597,7 @@ msgstr[0] "%s س %s د"
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
 #.
-#: src/utils.js:370
+#: src/utils.js:374
 #, javascript-format
 msgid "%s min"
 msgid_plural "%s min"
@@ -1616,32 +1607,32 @@ msgstr[0] "%s د"
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
 #.
-#: src/utils.js:376
+#: src/utils.js:380
 #, javascript-format
 msgid "%s s"
 msgid_plural "%s s"
 msgstr[0] "%s ث"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:387
+#: src/utils.js:391
 #, javascript-format
 msgid "%s km"
 msgstr "%s ک‌م"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:390
+#: src/utils.js:394
 #, javascript-format
 msgid "%s m"
 msgstr "%s م"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:398
+#: src/utils.js:402
 #, javascript-format
 msgid "%s mi"
 msgstr "%s ما"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:401
+#: src/utils.js:405
 #, javascript-format
 msgid "%s ft"
 msgstr "%s پا"
@@ -1753,6 +1744,13 @@ msgstr "به %s گردش به راست کنید"
 #: src/transitplugins/openTripPlanner.js:1251
 msgid "Make a right u-turn"
 msgstr "گردش به راست کنید"
+
+#~ msgid "Include route and markers"
+#~ msgstr "شامل مسیر و علائم شدن"
+
+#~ msgctxt "dialog title"
+#~ msgid "Edit on OpenStreetMap"
+#~ msgstr "ویرایش روی OpenStreetMap"
 
 #~ msgid "Use hybrid aerial tiles"
 #~ msgstr "استفاده از کاشی‌های هوایی پیوندی"
