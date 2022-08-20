@@ -76,24 +76,10 @@ export class OSMAccountDialog extends Gtk.Dialog {
     }
 
     _performSignIn() {
-        // turn on signing in spinner
-        this._signInSpinner.visible = true;
-        this._signInButton.sensitive = false;
+        // switch to the verification view
+        this._stack.visible_child_name = 'verify';
 
-        Application.osmEdit.performOAuthSignIn(this._onOAuthTokenAuthorized.bind(this));
-    }
-
-    _onOAuthTokenAuthorized(success) {
-        if (success) {
-            // switch to the verification view
-            this._stack.visible_child_name = 'verify';
-        } else {
-            this._errorLabel.visible = true;
-            this._errorLabel.label = _("Failed to authorize access");
-            this._signInButton.label = _("Try again");
-        }
-
-        this._signInSpinner.visible = false;
+        Application.osmEdit.performOAuthSignIn();
     }
 
     _onVerifyButtonClicked() {
@@ -169,7 +155,6 @@ GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/osm-account-dialog.ui',
     InternalChildren: ['stack',
                        'signInButton',
-                       'signInSpinner',
                        'verificationEntry',
                        'verifyButton',
                        'errorLabel',

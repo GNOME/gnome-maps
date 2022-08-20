@@ -34,7 +34,7 @@ export class OSMEdit {
     constructor() {
         this._osmConnection = new OSMConnection();
         this._osmObject = null; // currently edited object
-        this._username = Application.settings.get('osm-username');
+        this._username = Application.settings.get('osm-username-oauth2');
         this._isSignedIn = this._username !== null && this._username.length > 0;
     }
 
@@ -138,14 +138,8 @@ export class OSMEdit {
         this._osmConnection.closeChangeset(changesetId, callback);
     }
 
-    performOAuthSignIn(callback) {
-        this._osmConnection.requestOAuthToken((success) => {
-            if (success) {
-                this._osmConnection.authorizeOAuthToken(callback);
-            } else {
-                callback(false);
-            }
-        });
+    performOAuthSignIn() {
+        this._osmConnection.authorizeOAuthToken();
     }
 
     requestOAuthAccessToken(code, callback) {
@@ -164,7 +158,7 @@ export class OSMEdit {
                  * username to signify that we are signed in
                  */
                 this._username = username ?? '_unknown_';
-                Application.settings.set('osm-username', this._username);
+                Application.settings.set('osm-username-oauth2', this._username);
                 callback(true);
             });
         } else {
@@ -176,7 +170,7 @@ export class OSMEdit {
         this._username = null;
         this._isSignedIn = false;
 
-        Application.settings.set('osm-username', '');
+        Application.settings.set('osm-username-oauth2', '');
         this._osmConnection.signOut();
     }
 

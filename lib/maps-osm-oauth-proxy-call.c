@@ -33,7 +33,7 @@ struct _MapsOSMOAuthProxyCallPrivate
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE(MapsOSMOAuthProxyCall, maps_osm_oauth_proxy_call,
-                           OAUTH_TYPE_PROXY_CALL);
+                           REST_TYPE_OAUTH2_PROXY_CALL);
 
 static gboolean
 maps_osm_oauth_proxy_call_serialize_params (RestProxyCall *call,
@@ -85,9 +85,9 @@ maps_osm_oauth_proxy_call_init (MapsOSMOAuthProxyCall *call)
 }
 
 MapsOSMOAuthProxyCall *
-maps_osm_oauth_proxy_call_new (OAuthProxy *proxy, const char *payload)
+maps_osm_oauth_proxy_call_new (RestOAuth2Proxy *proxy, const char *payload)
 {
-  g_return_val_if_fail (OAUTH_IS_PROXY (proxy), NULL);
+  g_return_val_if_fail (REST_IS_OAUTH2_PROXY (proxy), NULL);
   g_return_val_if_fail (payload != NULL, NULL);
 
   MapsOSMOAuthProxyCall *call =

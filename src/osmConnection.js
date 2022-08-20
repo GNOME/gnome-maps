@@ -38,10 +38,11 @@ const BASE_URL = 'https://api.openstreetmap.org/api';
 const API_VERSION = '0.6';
 
 /* OAuth constants */
-const CONSUMER_KEY = '2lbpDoED0ZspGssTBAJ8zOCtrtmUoX4KnmZUIWIK';
-const CONSUMER_SECRET = 'AO9BhDl9sJ33DjaZgQmYcNIuM3ZSml4xtugai6gE';
-const OAUTH_ENDPOINT_URL = 'https://www.openstreetmap.org/oauth';
-const LOGIN_URL = 'https://www.openstreetmap.org/login';
+const CLIENT_KEY = 'ATOMKAKOXQuAJXpFxkm__nDVRlJLYYmP-0P54UfDnZI';
+const CLIENT_SECRET = '9vda-8M_lt0cLJMLJlbTfJVRDGiS2-pPbeSNMRqBQ0k';
+const AUTH_URL = 'https://www.openstreetmap.org/oauth2/authorize';
+const ACCESS_TOKEN_URL = 'https://www.openstreetmap.org/oauth2/token';
+const REDIRECT_URL = 'urn:ietf:wg:oauth:2.0:oob';
 
 const SECRET_SCHEMA = new Secret.Schema("org.gnome.Maps",
     Secret.SchemaFlags.NONE,
@@ -55,9 +56,10 @@ export class OSMConnection {
         this._session = new Soup.Session({ user_agent : 'gnome-maps/' + pkg.version });
 
         /* OAuth proxy used for making OSM uploads */
-        this._callProxy = Rest.OAuthProxy.new(CONSUMER_KEY, CONSUMER_SECRET,
-                                              BASE_URL + '/' + API_VERSION,
-                                              false);
+        this._callProxy = Rest.OAuth2Proxy.new(AUTH_URL, ACCESS_TOKEN_URL,
+                                               REDIRECT_URL,
+                                               CLIENT_KEY, CLIENT_SECRET,
+                                               BASE_URL + '/' + API_VERSION);
         GnomeMaps.osm_init();
     }
 
@@ -93,7 +95,7 @@ export class OSMConnection {
            OAuth access token enrolled, so, if the currently instantiated
            proxy instance doesn't have a token set, we could safely count on
            it being present in the keyring */
-        if (this._callProxy.get_token() === null) {
+        if (this._callProxy.get_access_token() === null) {
             Secret.password_lookup(SECRET_SCHEMA, {}, null, (s, res) => {
                 this._onPasswordLookedUp(res,
                                          comment,
@@ -108,25 +110,29 @@ export class OSMConnection {
         let password = Secret.password_lookup_finish(result);
 
         if (password) {
-            let token = password.split(':')[0];
-            let secret = password.split(':')[1];
-
-            this._callProxy.token = token;
-            this._callProxy.token_secret = secret;
+            this._callProxy.access_token = password;
             this._doOpenChangeset(comment, callback);
         } else {
             callback(false, null, null);
         }
     }
 
+    _createCallWithPayload(payload, method, func) {
+        let call = GnomeMaps.OSMOAuthProxyCall.new(this._callProxy, payload);
+
+        call.set_method(method);
+        call.set_function(func);
+        call.add_header('Authorization',
+                        'Bearer ' + this._callProxy.access_token);
+
+        return call;
+    }
+
     _doOpenChangeset(comment, callback) {
         let changeset =
             GnomeMaps.OSMChangeset.new(comment, 'gnome-maps ' + pkg.version);
         let xml = changeset.serialize();
-
-        let call = GnomeMaps.OSMOAuthProxyCall.new(this._callProxy, xml);
-        call.set_method('PUT');
-        call.set_function('/changeset/create');
+        let call = this._createCallWithPayload(xml, 'PUT', '/changeset/create');
 
         call.invoke_async(null, (call, res, userdata) =>
                                 { this._onChangesetOpened(call, callback); });
@@ -146,10 +152,10 @@ export class OSMConnection {
         object.changeset = changeset;
 
         let xml = object.serialize();
-        let call = GnomeMaps.OSMOAuthProxyCall.new(this._callProxy, xml);
-
-        call.set_method('PUT');
-        call.set_function(this._getCreateOrUpdateFunction(object, type));
+        let call =
+            this._createCallWithPayload(xml, 'PUT',
+                                        this._getCreateOrUpdateFunction(object,
+                                                                        type));
 
         call.invoke_async(null, (call, res, userdata) =>
                                 { this._onObjectUploaded(call, callback); });
@@ -168,10 +174,9 @@ export class OSMConnection {
         object.changeset = changeset;
 
         let xml = object.serialize();
-        let call = GnomeMaps.OSMOAuthProxyCall.new(this._callProxy, xml);
-
-        call.set_method('DELETE');
-        call.set_function(this._getDeleteFunction(object, type));
+        let call =
+            this._createCallWithPayload(xml, 'DELETE',
+                                        this._getDeleteFunction(object, type));
 
         call.invoke_async(null, (call, res, userdata) =>
                                 { this._onObjectDeleted(call, callback); });
@@ -219,46 +224,28 @@ export class OSMConnection {
         return type + '/' + id;
     }
 
-    requestOAuthToken(callback) {
-        /* OAuth proxy used for enrolling access tokens */
-        this._oauthProxy = Rest.OAuthProxy.new(CONSUMER_KEY, CONSUMER_SECRET,
-                                               OAUTH_ENDPOINT_URL, false);
-        this._oauthProxy.request_token_async('request_token', 'oob', (p, error, w, u) => {
-            this._onRequestOAuthToken(error, callback);
-        }, this._oauthProxy);
-    }
-
-    _onRequestOAuthToken(error, callback) {
-        if (error) {
-            Utils.debug(error);
-            callback(false);
-            return;
-        }
-
-        this._oauthToken = this._oauthProxy.get_token();
-        this._oauthTokenSecret = this._oauthProxy.get_token_secret();
-        callback(true);
-    }
-
-    authorizeOAuthToken(callback) {
-        let auth = '/authorize?oauth_token=';
-        let authorizeUrl = OAUTH_ENDPOINT_URL + auth + this._oauthToken;
+    authorizeOAuthToken() {
+        this._codeChallenge = Rest.PkceCodeChallenge.new_random();
+        let [authorizeUrl, state] =
+            this._callProxy.build_authorization_url(this._codeChallenge.get_challenge(),
+                                                    'read_prefs write_api');
 
         Utils.debug('Trying to open: ' + authorizeUrl);
 
         try {
             Gio.AppInfo.launch_default_for_uri(authorizeUrl, null);
-            callback(true);
         } catch (e) {
             Utils.debug('error: ' + e.message);
-            callback(false);
         }
     }
 
     requestOAuthAccessToken(code, callback) {
-        this._oauthProxy.access_token_async('access_token', code, (p, error, w, data) => {
-            this._onAccessOAuthToken(error, callback);
-        }, this._oauthProxy);
+        this._callProxy.fetch_access_token_async(code,
+                                                 this._codeChallenge.get_verifier(),
+                                                 null,
+                                                 (source, res) => {
+           this._onAccessOAuthToken(res, callback);
+        });
     }
 
     fetchLoggedInUser(callback) {
@@ -292,21 +279,18 @@ export class OSMConnection {
         }
     }
 
-    _onAccessOAuthToken(error, callback) {
-        if (error) {
+    _onAccessOAuthToken(res, callback) {
+        let success = this._callProxy.fetch_access_token_finish(res);
+        if (!success) {
             callback(false);
             return;
         }
 
-        let token = this._oauthProxy.token;
-        let secret = this._oauthProxy.token_secret;
+        let token = this._callProxy.access_token;
 
-        this._callProxy.token = token;
-        this._callProxy.token_secret = secret;
         Secret.password_store(SECRET_SCHEMA, {}, Secret.COLLECTION_DEFAULT,
-                              "OSM OAuth access token and secret",
-                              this._oauthProxy.token + ":" +
-                              this._oauthProxy.token_secret, null,
+                              "OSM OAuth access token",
+                              token, null,
                               (source, result, userData) => {
                                 this._onPasswordStored(result, callback);
                               });

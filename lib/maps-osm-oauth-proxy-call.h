@@ -22,8 +22,8 @@
 
 #include <glib-object.h>
 
-#include <rest/oauth-proxy-call.h>
-#include <rest/oauth-proxy.h>
+#include <rest/rest-oauth2-proxy-call.h>
+#include <rest/rest-oauth2-proxy.h>
 
 G_BEGIN_DECLS
 
@@ -40,17 +40,17 @@ typedef struct _MapsOSMOAuthProxyCallClass MapsOSMOAuthProxyCallClass;
 
 struct _MapsOSMOAuthProxyCall
 {
-  OAuthProxyCall parent;
+  RestOAuth2ProxyCall parent;
   MapsOSMOAuthProxyCallPrivate *priv;
 };
 
 struct _MapsOSMOAuthProxyCallClass
 {
-  OAuthProxyCallClass parent_class;
+  RestOAuth2ProxyCallClass parent_class;
 };
 
 GType maps_osm_oauth_proxy_call_get_type(void);
-MapsOSMOAuthProxyCall *maps_osm_oauth_proxy_call_new (OAuthProxy *proxy,
+MapsOSMOAuthProxyCall *maps_osm_oauth_proxy_call_new (RestOAuth2Proxy *proxy,
                                                       const char *content);
 
 G_END_DECLS
