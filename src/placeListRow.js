@@ -25,8 +25,6 @@ import {PlaceFormatter} from './placeFormatter.js';
 import {PlaceStore} from './placeStore.js';
 import * as Utils from './utils.js';
 
-var ROW_HEIGHT = 55;
-
 export class PlaceListRow extends Gtk.ListBoxRow {
 
     constructor(params) {
@@ -39,7 +37,6 @@ export class PlaceListRow extends Gtk.ListBoxRow {
         let type = params.type;
         delete params.type;
 
-        params.height_request = ROW_HEIGHT;
         super(params);
         this.update(place, type, searchString);
     }
@@ -47,11 +44,11 @@ export class PlaceListRow extends Gtk.ListBoxRow {
     update(place, type, searchString) {
         this.place = place;
         let formatter = new PlaceFormatter(this.place);
-        this.title = formatter.title;
         let markup = GLib.markup_escape_text(formatter.title, -1);
 
         this._name.label = this._boldMatch(markup, searchString);
         this._details.label = GLib.markup_escape_text(formatter.getDetailsString(),-1);
+        this._details.visible = this._details.label.length > 0;
 
         if (place.icon)
             this._icon.gicon = place.icon;

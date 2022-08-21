@@ -2,67 +2,49 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <template class="Gjs_PlaceListRow" parent="GtkListBoxRow">
+    <accessibility>
+      <relation name="labelled-by">name</relation>
+      <relation name="described-by">details</relation>
+    </accessibility>
     <property name="child">
-      <object class="GtkGrid" id="grid">
-        <property name="orientation">vertical</property>
-        <property name="row-homogeneous">1</property>
-        <property name="margin-start">5</property>
-        <property name="margin-end">5</property>
-        <property name="margin-top">5</property>
-        <property name="margin-bottom">5</property>
+      <object class="GtkBox">
+        <property name="spacing">6</property>
         <child>
           <object class="GtkImage" id="icon">
-            <property name="pixel_size">32</property>
-            <property name="margin_end">12</property>
-            <layout>
-              <property name="column">0</property>
-              <property name="row">0</property>
-              <property name="row-span">2</property>
-            </layout>
+            <property name="valign">center</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <property name="spacing">3</property>
+            <child>
+              <object class="GtkLabel" id="name">
+                <property name="ellipsize">end</property>
+                <property name="lines">0</property>
+                <property name="xalign">0</property>
+                <property name="use-markup">True</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="details">
+                <property name="ellipsize">end</property>
+                <property name="lines">0</property>
+                <property name="xalign">0</property>
+                <property name="use-markup">True</property>
+                <style>
+                  <class name="caption"/>
+                  <class name="dim-label"/>
+                </style>
+              </object>
+            </child>
           </object>
         </child>
         <child>
           <object class="GtkImage" id="typeIcon">
-            <property name="valign">center</property>
             <property name="halign">end</property>
-            <property name="hexpand">1</property>
-            <property name="margin_start">10</property>
-            <property name="pixel_size">16</property>
-            <layout>
-              <property name="column">2</property>
-              <property name="row">0</property>
-              <property name="row-span">2</property>
-            </layout>
-          </object>
-        </child>
-        <child>
-          <object class="GtkLabel" id="name">
-            <property name="halign">start</property>
-            <property name="valign">end</property>
-            <property name="hexpand">1</property>
-            <property name="use_markup">1</property>
-            <property name="ellipsize">end</property>
-            <layout>
-              <property name="column">1</property>
-              <property name="row">0</property>
-            </layout>
-          </object>
-        </child>
-        <child>
-          <object class="GtkLabel" id="details">
-            <property name="halign">start</property>
-            <property name="valign">start</property>
-            <property name="hexpand">1</property>
-            <property name="use_markup">1</property>
-            <property name="ellipsize">end</property>
-            <style>
-              <class name="subtitle"/>
-              <class name="dim-label"/>
-            </style>
-            <layout>
-              <property name="column">1</property>
-              <property name="row">1</property>
-            </layout>
+            <property name="valign">center</property>
+            <property name="hexpand">True</property>
           </object>
         </child>
       </object>
