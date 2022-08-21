@@ -183,7 +183,7 @@ export class ExportViewDialog extends Gtk.Dialog {
             });
 
             dialog.connect('response', () => dialog.destroy());
-            dialog.show_all();
+            dialog.present();
         }
     }
 }

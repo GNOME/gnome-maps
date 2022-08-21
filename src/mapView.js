@@ -533,7 +533,7 @@ export class MapView extends Gtk.Overlay {
                 }
                 dialog.destroy();
             });
-            dialog.show_all();
+            dialog.present();
         } else {
             this._loadShapeLayers(files);
         }

@@ -418,7 +418,7 @@ export class MainWindow extends Gtk.ApplicationWindow {
                     modal: true });
 
                 dialog.connect('response', () => dialog.destroy());
-                dialog.show_all();
+                dialog.present();
                 break;
 
             default:
