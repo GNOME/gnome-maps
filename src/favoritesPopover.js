@@ -46,18 +46,8 @@ export class FavoritesPopover extends Gtk.Popover {
         this._model.connect('row-inserted',
                             this._updateList.bind(this));
 
-        this._list.set_header_func(function(row, before) {
-            let header = before ? new Gtk.Separator() : null;
-            row.set_header(header);
-        });
-
         this.connect('notify::rows', () => {
-            let visible = Math.min(this._rows, _N_VISIBLE);
-            let separators = visible - 1; // separators are 1px
-            let height = PlaceListRow.ROW_HEIGHT * visible + separators;
-
-            this._scrolledWindow.min_content_height = height;
-            this._entry.visible = this._rows > _N_VISIBLE;
+            this._entryBox.visible = this.rows > _N_VISIBLE;
         });
 
         this._entry.connect('changed',
@@ -113,7 +103,7 @@ export class FavoritesPopover extends Gtk.Popover {
 
 GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/favorites-popover.ui',
-    InternalChildren: [ 'mainGrid',
+    InternalChildren: [ 'entryBox',
                         'entry',
                         'scrolledWindow',
                         'list' ],

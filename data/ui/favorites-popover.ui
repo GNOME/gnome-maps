@@ -2,26 +2,28 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <template class="Gjs_FavoritesPopover" parent="GtkPopover">
-    <property name="hexpand">0</property>
     <property name="width-request">320</property>
-    <property name="height-request">400</property>
     <property name="child">
-      <object class="GtkGrid" id="mainGrid">
+      <object class="GtkBox" id="mainBox">
         <property name="orientation">vertical</property>
-        <property name="row_spacing">6</property>
-        <property name="margin-start">6</property>
-        <property name="margin-end">6</property>
-        <property name="margin-top">6</property>
-        <property name="margin-bottom">6</property>
         <child>
-          <object class="GtkEntry" id="entry">
-            <property name="focusable">1</property>
+          <object class="GtkBox" id="entryBox">
+            <child>
+              <object class="GtkEntry" id="entry">
+                <property name="hexpand">True</property>
+                <property name="focusable">1</property>
+              </object>
+            </child>
+            <style>
+              <class name="dropdown-searchbar"/>
+            </style>
           </object>
         </child>
         <child>
           <object class="GtkScrolledWindow" id="scrolledWindow">
             <property name="hscrollbar_policy">never</property>
-            <property name="vexpand">1</property>
+            <property name="max-content-height">400</property>
+            <property name="propagate-natural-height">True</property>
             <property name="child">
               <object class="GtkListBox" id="list">
                 <property name="hexpand">1</property>
@@ -32,5 +34,9 @@
         </child>
       </object>
     </property>
+    <style>
+      <class name="menu"/>
+      <class name="favorites-popover"/>
+    </style>
   </template>
 </interface>
