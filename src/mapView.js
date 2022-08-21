@@ -33,14 +33,19 @@ import {Application} from './application.js';
 import {BoundingBox} from './boundingBox.js';
 import * as Color from './color.js';
 import * as Geoclue from './geoclue.js';
+import * as GeocodeFactory from './geocode.js';
 import {GeoJSONShapeLayer} from './geoJSONShapeLayer.js';
 import {KmlShapeLayer} from './kmlShapeLayer.js';
 import {GpxShapeLayer} from './gpxShapeLayer.js';
 import {Location} from './location.js';
 import * as MapSource from './mapSource.js';
 import {MapWalker} from './mapWalker.js';
+import {OSMAccountDialog} from './osmAccountDialog.js';
+import {OSMEdit} from './osmEdit.js';
+import {OSMEditDialog} from './osmEditDialog.js';
 import {Place} from './place.js';
 import {PlaceMarker} from './placeMarker.js';
+import {RouteQuery} from './routeQuery.js';
 import * as Service from './service.js';
 import {ShapeLayer} from './shapeLayer.js';
 import {StoredRoute} from './storedRoute.js';
@@ -50,6 +55,7 @@ import {TransitWalkMarker} from './transitWalkMarker.js';
 import {TurnPointMarker} from './turnPointMarker.js';
 import {UserLocationMarker} from './userLocationMarker.js';
 import * as Utils from './utils.js';
+import {ZoomInDialog} from './zoomInDialog.js';
 
 const _LOCATION_STORE_TIMEOUT = 500;
 const MapMinZoom = 2;
@@ -153,6 +159,49 @@ export class MapView extends Gtk.Overlay {
         Application.geoclue.connect('notify::state',
                                     this._updateUserLocation.bind(this));
         this._connectRouteSignals();
+
+        let actions = {
+            'route-from-here': {
+                onActivate: () => this._onRouteFromHereActivated()
+            },
+            'add-intermediate-destination': {
+                onActivate: () => this._onAddIntermediateDestinationActivated()
+            },
+            'route-to-here': {
+                onActivate: () => this._onRouteToHereActivated()
+            },
+            'whats-here': {
+                onActivate: () => this._onWhatsHereActivated()
+            },
+            'copy-location': {
+                onActivate: () => this._onCopyLocationActivated()
+            },
+            'add-osm-location': {
+                onActivate: () => this._onAddOSMLocationActivated()
+            }
+        };
+
+        let actionGroup = new Gio.SimpleActionGroup();
+        Utils.addActions(actionGroup, actions, null);
+        this.insert_action_group('view', actionGroup);
+
+        this._routeFromHereAction = actionGroup.lookup('route-from-here');
+        this._routeToHereAction = actionGroup.lookup('route-to-here');
+        this._addIntermediateDestinationAction = actionGroup.lookup('add-intermediate-destination');
+
+        let builder = Gtk.Builder.new_from_resource('/org/gnome/Maps/ui/context-menu.ui');
+        let menuModel = builder.get_object('context-menu');
+        this._contextMenu = new Gtk.PopoverMenu({ menu_model: menuModel, has_arrow: false });
+        this._contextMenu.set_parent(this);
+
+        this._clickGesture = new Gtk.GestureClick({ button: Gdk.BUTTON_SECONDARY });
+        this._clickGesture.connect('pressed', this._onClickGesturePressed.bind(this));
+        this.add_controller(this._clickGesture);
+    }
+
+    vfunc_size_allocate(width, height, baseline) {
+        super.vfunc_size_allocate(width, height, baseline);
+        this._contextMenu.present();
     }
 
     zoomIn() {
@@ -335,6 +384,16 @@ export class MapView extends Gtk.Overlay {
             this._clearRouteLayers();
             this._instructionMarkerLayer.remove_all();
             this.routeShowing = false;
+        });
+
+        query.connect('notify::points', () => {
+            let query = Application.routeQuery;
+            let numPoints = query.points.length;
+
+            this._routeFromHereAction.enabled = numPoints < RouteQuery.MAX_QUERY_POINTS;
+            this._routeToHereAction.enabled = numPoints < RouteQuery.MAX_QUERY_POINTS;
+            this._addIntermediateDestinationAction.enabled =
+                query.filledPoints.length >= 2 && numPoints < RouteQuery.MAX_QUERY_POINTS;
         });
     }
 
@@ -898,6 +957,136 @@ export class MapView extends Gtk.Overlay {
 
     onSetMarkerSelected(selectedMarker) {
         this.emit('marker-selected', selectedMarker);
+    }
+
+    _onClickGesturePressed(gesture, n_presses, x, y) {
+        if (n_presses > 1) {
+            gesture.set_state(Gtk.EventSequenceState.DENIED);
+            return;
+        }
+
+        let event = gesture.get_current_event();
+        if (event.triggers_context_menu()) {
+            let viewport = this.map.viewport;
+            let rect = new Gdk.Rectangle({ x: x, y: y, width: 0, height: 0 });
+
+            [this._latitude, this._longitude] = viewport.widget_coords_to_location(this, x, y);
+
+            if (this.direction === Gtk.TextDirection.RTL) {
+                this._contextMenu.halign = Gtk.Align.END;
+            } else {
+                this._contextMenu.halign = Gtk.Align.START;
+            }
+
+            this._contextMenu.pointing_to = rect;
+            this._contextMenu.popup();
+            gesture.set_state(Gtk.EventSequenceState.CLAIMED);
+        }
+
+        gesture.set_state(Gtk.EventSequenceState.DENIED);
+    }
+
+    _onRouteFromHereActivated() {
+        let query = Application.routeQuery;
+        let location = new Location({ latitude: this._latitude,
+                                      longitude: this._longitude,
+                                      accuracy: 0 });
+        let place = new Place({ location: location, store: false });
+
+        query.points[0].place = place;
+    }
+
+    _onAddIntermediateDestinationActivated() {
+        let query = Application.routeQuery;
+        let location = new Location({ latitude: this._latitude,
+                                      longitude: this._longitude,
+                                      accuracy: 0 });
+        let place = new Place({ location: location, store: false });
+
+        query.addPoint(-1).place = place;
+    }
+
+    _onRouteToHereActivated() {
+        let query = Application.routeQuery;
+        let location = new Location({ latitude: this._latitude,
+                                      longitude: this._longitude,
+                                      accuracy: 0 });
+        let place = new Place({ location: location, store: false });
+
+        query.points.last().place = place;
+    }
+
+    _onWhatsHereActivated() {
+        GeocodeFactory.getGeocoder().reverse(this._latitude, this._longitude,
+                                      (place) => {
+            if (place) {
+                this.showPlace(place, true);
+            } else {
+                let msg = _("Nothing found here!");
+
+                Utils.showDialog(msg, Gtk.MessageType.INFO, this._mainWindow);
+            }
+        });
+    }
+
+    _onCopyLocationActivated() {
+        let location = new Location({ latitude: this._latitude,
+                                      longitude: this._longitude,
+                                      accuracy: 0 });
+        let clipboard = this.get_clipboard();
+        let uri = location.to_uri(GeocodeGlib.LocationURIScheme.GEO);
+
+        clipboard.set(uri);
+    }
+
+    _onAddOSMLocationActivated() {
+        let osmEdit = Application.osmEdit;
+        /* if the user is not already signed in, show the account dialog */
+        if (!osmEdit.isSignedIn) {
+            let dialog = osmEdit.createAccountDialog(this._mainWindow, true);
+
+            dialog.show();
+            dialog.connect('response', (dialog, response) => {
+                dialog.destroy();
+                if (response === OSMAccountDialog.Response.SIGNED_IN)
+                    this._addOSMLocation();
+            });
+
+            return;
+        }
+
+        this._addOSMLocation();
+    }
+
+    _addOSMLocation() {
+        let osmEdit = Application.osmEdit;
+        let viewport = this.map.viewport;
+
+        if (viewport.zoom_level < OSMEdit.MIN_ADD_LOCATION_ZOOM_LEVEL) {
+            let zoomInDialog =
+                new ZoomInDialog({ longitude: this._longitude,
+                                   latitude: this._latitude,
+                                   map: this.map,
+                                   transient_for: this._mainWindow,
+                                   modal: true });
+
+            zoomInDialog.connect('response', () => zoomInDialog.destroy());
+            zoomInDialog.show();
+            return;
+        }
+
+        let dialog =
+            osmEdit.createEditNewDialog(this._mainWindow,
+                                        this._latitude, this._longitude);
+
+        dialog.show();
+        dialog.connect('response', (dialog, response) => {
+            dialog.destroy();
+            if (response === OSMEditDialog.Response.UPLOADED) {
+                Utils.showDialog(_("Location was added to the map, note that it may take a while before it shows on the map and in search results."),
+                                 Gtk.MessageType.INFO, this._mainWindow);
+            }
+        });
     }
 }
 

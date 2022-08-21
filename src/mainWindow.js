@@ -31,7 +31,6 @@ import Adw from 'gi://Adw';
 import Shumate from 'gi://Shumate';
 
 import {Application} from './application.js';
-import {ContextMenu} from './contextMenu.js';
 import {ExportViewDialog} from './exportViewDialog.js';
 import {FavoritesPopover} from './favoritesPopover.js';
 import * as Geoclue from './geoclue.js';
@@ -122,9 +121,6 @@ export class MainWindow extends Gtk.ApplicationWindow {
         this._restoreWindowGeometry();
         this._initDND();
         this._initPlaceBar();
-
-        this._contextMenu = new ContextMenu({ mapView: this._mapView,
-                                              mainWindow: this });
 
         this._grid.attach(this._sidebar, 1, 0, 1, 2);
 
@@ -239,12 +235,6 @@ export class MainWindow extends Gtk.ApplicationWindow {
             'export-as-image': {
                 onActivate: () => this._onExportActivated()
             },
-            'route-from-here': {},
-            'add-intermediate-destination': {},
-            'route-to-here': {},
-            'whats-here': {},
-            'copy-location': {},
-            'add-osm-location': {}
         };
 
         // when aerial tiles are available, add shortcuts to switch
