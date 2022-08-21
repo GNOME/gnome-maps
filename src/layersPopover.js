@@ -73,8 +73,6 @@ export class LayersPopover extends Gtk.Popover {
 
         //this._aerialLayerButton.join_group(this._streetLayerButton);
 
-        this.get_style_context().add_class('maps-popover');
-
         this._layersListBox.bind_model(this._mapView.shapeLayerStore,
                                        this._listBoxCreateWidget.bind(this));
         this._layersListBox.connect('row-activated', (lb, row) => {
