@@ -45,14 +45,6 @@ export class PlacePopover extends SearchPopover {
                 this.emit('selected', row.place);
         });
 
-        this._list.set_header_func((row, before) => {
-            let header = new Gtk.Separator();
-            if (before)
-                row.set_header(header);
-            else
-                row.set_header(null);
-        });
-
         let rowHeight = PlaceListRow.ROW_HEIGHT;
         this._scrolledWindow.min_content_height = numVisible * rowHeight + 6;
 

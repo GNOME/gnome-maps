@@ -6,60 +6,54 @@
     <property name="hexpand">False</property>
     <property name="height-request">320</property>
     <style>
-      <class name="maps-popover"/>
+      <class name="menu"/>
     </style>
-    <child>
-      <object class="GtkGrid" id="mainGrid">
-        <property name="focusable">1</property>
-        <property name="orientation">vertical</property>
+    <property name="child">
+      <object class="GtkStack" id="stack">
+        <property name="transition-type">crossfade</property>
+        <style>
+          <class name="maps-stack"/>
+        </style>
         <child>
-          <object class="GtkStack" id="stack">
-            <property name="transition-type">crossfade</property>
+          <object class="GtkScrolledWindow" id="scrolledWindow">
+            <property name="hscrollbar_policy">never</property>
+            <property name="child">
+              <object class="GtkListBox" id="list">
+                <property name="hexpand">1</property>
+                <property name="vexpand">1</property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkSpinner" id="spinner">
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="width_request">16</property>
+            <property name="height_request">16</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel" id="noResultsLabel">
+            <property name="label" translatable="1">No results found</property>
+            <property name="width_request">16</property>
+            <property name="height_request">16</property>
             <style>
-              <class name="maps-stack"/>
+              <class name="dim-label"/>
             </style>
-            <child>
-              <object class="GtkScrolledWindow" id="scrolledWindow">
-                <property name="hscrollbar_policy">never</property>
-                <property name="child">
-                  <object class="GtkListBox" id="list">
-                    <property name="hexpand">1</property>
-                    <property name="vexpand">1</property>
-                  </object>
-                </property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkSpinner" id="spinner">
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="width_request">16</property>
-                <property name="height_request">16</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="noResultsLabel">
-                <property name="label" translatable="1">No results found</property>
-                <property name="width_request">16</property>
-                <property name="height_request">16</property>
-                <style>
-                  <class name="dim-label"/>
-                </style>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="errorLabel">
-                <property name="label" translatable="1">An error has occurred</property>
-                <property name="width_request">16</property>
-                <property name="height_request">16</property>
-                <style>
-                  <class name="dim-label"/>
-                </style>
-              </object>
-            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel" id="errorLabel">
+            <property name="label" translatable="1">An error has occurred</property>
+            <property name="width_request">16</property>
+            <property name="height_request">16</property>
+            <style>
+              <class name="dim-label"/>
+            </style>
           </object>
         </child>
       </object>
-    </child>
+    </property>
   </template>
 </interface>
