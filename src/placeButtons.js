@@ -94,11 +94,11 @@ export class PlaceButtons extends Gtk.Box {
         this._favoriteButton.connect('clicked', () => {
             if (placeStore.exists(this._place,
                                   PlaceStore.PlaceType.FAVORITE)) {
-                this._favoriteButtonImage.icon_name = 'non-starred-symbolic';
+                this._favoriteButton.icon_name = 'non-starred-symbolic';
                 placeStore.removePlace(this._place,
                                        PlaceStore.PlaceType.FAVORITE);
             } else {
-                this._favoriteButtonImage.icon_name = 'starred-symbolic';
+                this._favoriteButton.icon_name = 'starred-symbolic';
                 placeStore.addPlace(this._place,
                                     PlaceStore.PlaceType.FAVORITE);
             }
@@ -132,9 +132,9 @@ export class PlaceButtons extends Gtk.Box {
 
         if (placeStore.exists(this._place,
                               PlaceStore.PlaceType.FAVORITE)) {
-            this._favoriteButtonImage.icon_name = 'starred-symbolic';
+            this._favoriteButton.icon_name = 'starred-symbolic';
         } else {
-            this._favoriteButtonImage.icon_name = 'non-starred-symbolic';
+            this._favoriteButton.icon_name = 'non-starred-symbolic';
         }
     }
 
@@ -208,8 +208,7 @@ GObject.registerClass({
     InternalChildren: [ 'routeButton',
                         'sendToButton',
                         'favoriteButton',
-                        'editButton',
-                        'favoriteButtonImage' ],
+                        'editButton' ],
     Signals: {
         /* Emitted when the Edit dialog is closed, because the place details
            might have changed and the parent PlaceBar/PlaceView needs

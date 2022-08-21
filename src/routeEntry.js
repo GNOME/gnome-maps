@@ -63,7 +63,7 @@ export class RouteEntry extends Gtk.Grid {
         switch (this._type) {
         case RouteEntry.Type.FROM:
             let query = Application.routeQuery;
-            this._buttonImage.icon_name = 'list-add-symbolic';
+            this._button.icon_name = 'list-add-symbolic';
             this.icon.icon_name = 'maps-point-start-symbolic';
             /* Translators: this is add via location tooltip */
             this._button.tooltip_text = _("Add via location");
@@ -73,13 +73,13 @@ export class RouteEntry extends Gtk.Grid {
 
             break;
         case RouteEntry.Type.VIA:
-            this._buttonImage.icon_name = 'list-remove-symbolic';
+            this._button.icon_name = 'list-remove-symbolic';
             this.icon.icon_name = 'maps-point-end-symbolic';
             /* Translators: this is remove via location tooltip */
             this._button.tooltip_text = _("Remove via location");
             break;
         case RouteEntry.Type.TO:
-            this._buttonImage.icon_name = 'route-reverse-symbolic';
+            this._button.icon_name = 'route-reverse-symbolic';
             this.icon.icon_name = 'maps-point-end-symbolic';
             /* Translators: this is reverse route tooltip */
             this._button.tooltip_text = _("Reverse route");
@@ -116,6 +116,5 @@ GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/route-entry.ui',
     Children: [ 'icon' ],
     InternalChildren: [ 'entryGrid',
-                        'button',
-                        'buttonImage' ]
+                        'button' ]
 }, RouteEntry);
