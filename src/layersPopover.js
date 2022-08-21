@@ -63,7 +63,7 @@ GObject.registerClass({
     InternalChildren: ['layerLabel', 'visibleButton']
 }, ShapeLayerRow);
 
-export class LayersPopover extends Gtk.Popover {
+export class LayersPopover extends Gtk.PopoverMenu {
 
     constructor(params) {
         super({ width_request: 200,
@@ -79,12 +79,10 @@ export class LayersPopover extends Gtk.Popover {
             this._mapView.gotoBBox(row.shapeLayer.bbox);
         });
 
-        this._layersListBox.set_header_func((row, before) => {
-            let header = before ? new Gtk.Separator() : null;
-            row.set_header(header);
+        this._layersSectionBox.visible = this._mapView.shapeLayerStore.n_items > 0;
+        this._mapView.shapeLayerStore.connect('items-changed', (model) => {
+            this._layersSectionBox.visible = model.n_items > 0;
         });
-
-        this._loadLayerButton.connect('clicked', () => this.popdown());
 
         // for now let's disable the map type swithery, as we only have street
         /*
@@ -212,7 +210,6 @@ export class LayersPopover extends Gtk.Popover {
         let row = new ShapeLayerRow({ shapeLayer: shapeLayer });
         row.closeButton.connect('clicked',
                                 () => this._onRemoveClicked(row));
-        this._layersListBox.show();
         return row;
     }
 }
@@ -223,6 +220,6 @@ GObject.registerClass({
                         'aerialLayerButton',
                         'streetLayerImage',
                         'aerialLayerImage',*/
-                        'layersListBox',
-                        'loadLayerButton' ]
+                        'layersSectionBox',
+                        'layersListBox' ]
 }, LayersPopover);

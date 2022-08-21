@@ -1,94 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk" version="4.0"/>
-  <template class="Gjs_LayersPopover" parent="GtkPopover">
-    <property name="child">
-      <object class="GtkGrid" id="grid">
-        <property name="halign">center</property>
-        <property name="valign">center</property>
-        <property name="row_spacing">5</property>
-        <property name="margin-start">5</property>
-        <property name="margin-end">5</property>
-        <property name="margin-top">5</property>
-        <property name="margin-bottom">5</property>
-        <!-- disable the map type swithers for now, as we only have street right now...-->
-        <!--
-        <child>
-          <object class="GtkToggleButton" id="streetLayerButton">
-            <style>
-              <class name="layer-radio-button"/>
-            </style>
-            <child>
-              <object class="GtkImage" id="streetLayerImage"/>
-            </child>
-            <layout>
-              <property name="column">0</property>
-              <property name="row">0</property>
-            </layout>
-          </object>
-        </child>
-        <child>
-          <object class="GtkToggleButton" id="aerialLayerButton">
-            <style>
-              <class name="layer-radio-button"/>
-            </style>
-            <child>
-              <object class="GtkImage" id="aerialLayerImage"/>
-            </child>
-            <layout>
-              <property name="column">0</property>
-              <property name="row">1</property>
-            </layout>
-          </object>
-        </child>
-        -->
-        <child>
-          <object class="GtkBox">
-            <child>
-              <object class="GtkLabel">
-                <property name="hexpand">1</property>
-                <property name="halign">start</property>
-                <property name="label" translatable="1">Show Scale</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkCheckButton">
-                <property name="focusable">1</property>
-                <property name="action-name">win.show-scale</property>
-              </object>
-            </child>
-            <layout>
-              <property name="column">0</property>
-              <property name="row">3</property>
-            </layout>
-          </object>
-        </child>
+  <menu id="layers_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Show Scale</attribute>
+        <attribute name="action">win.show-scale</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="custom">layers_list</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes" comments="Translators: This string uses ellipsis character">Open Shape Layer…</attribute>
+        <attribute name="action">win.open-shape-layer</attribute>
+      </item>
+    </section>
+  </menu>
+  <template class="Gjs_LayersPopover" parent="GtkPopoverMenu">
+    <property name="menu-model">layers_menu</property>
+    <child type="layers_list">
+      <object class="GtkBox" id="layersSectionBox">
+        <property name="visible">False</property>
+        <property name="orientation">vertical</property>
         <child>
           <object class="GtkListBox" id="layersListBox">
-            <property name="name">layers-list-box</property>
-            <property name="visible">0</property>
             <property name="selection-mode">none</property>
-            <style>
-              <class name="frame"/>
-            </style>
-            <layout>
-              <property name="column">0</property>
-              <property name="row">4</property>
-            </layout>
           </object>
         </child>
         <child>
-          <object class="GtkButton" id="loadLayerButton">
-            <property name="focusable">1</property>
-            <property name="label" translatable="1" comments="Translators: This string uses ellipsis character">Open Shape Layer…</property>
-            <property name="action-name">win.open-shape-layer</property>
-            <layout>
-              <property name="column">0</property>
-              <property name="row">5</property>
-            </layout>
+          <object class="GtkSeparator">
           </object>
         </child>
       </object>
-    </property>
+    </child>
   </template>
 </interface>
