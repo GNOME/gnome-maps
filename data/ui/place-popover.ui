@@ -5,7 +5,6 @@
     <property name="visible">False</property>
     <property name="hexpand">False</property>
     <property name="has-arrow">False</property>
-    <property name="height-request">320</property>
     <style>
       <class name="menu"/>
     </style>
@@ -18,6 +17,8 @@
         <child>
           <object class="GtkScrolledWindow" id="scrolledWindow">
             <property name="hscrollbar_policy">never</property>
+            <property name="max-content-height">400</property>
+            <property name="propagate-natural-height">True</property>
             <property name="child">
               <object class="GtkListBox" id="list">
                 <property name="hexpand">1</property>

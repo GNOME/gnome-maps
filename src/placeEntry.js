@@ -85,8 +85,6 @@ export class PlaceEntry extends Gtk.SearchEntry {
     }
 
     constructor(props) {
-        let numVisible = props.num_visible ?? 6;
-        delete props.num_visible;
         let mapView = props.mapView;
         delete props.mapView;
 
@@ -103,7 +101,7 @@ export class PlaceEntry extends Gtk.SearchEntry {
         this._filter = new Gtk.TreeModelFilter({ child_model: Application.placeStore });
         this._filter.set_visible_func(this._completionVisibleFunc.bind(this));
 
-        this._popover = this._createPopover(numVisible, maxChars);
+        this._popover = this._createPopover(maxChars);
 
         this.connect('search-changed', this._onSearchChanged.bind(this));
 
@@ -170,9 +168,8 @@ export class PlaceEntry extends Gtk.SearchEntry {
                 placeA.location.longitude === placeB.location.longitude);
     }
 
-    _createPopover(numVisible, maxChars) {
-        let popover = new PlacePopover({ num_visible:   numVisible,
-                                         entry:         this,
+    _createPopover(maxChars) {
+        let popover = new PlacePopover({ entry:         this,
                                          maxChars:      maxChars });
 
         popover.set_parent(this);

@@ -30,9 +30,6 @@ const _PLACE_ICON_SIZE = 20;
 export class PlacePopover extends SearchPopover {
 
     constructor(props) {
-        let numVisible = props.num_visible;
-        delete props.num_visible;
-
         let maxChars = props.maxChars;
         delete props.maxChars;
 
@@ -44,9 +41,6 @@ export class PlacePopover extends SearchPopover {
             if (row)
                 this.emit('selected', row.place);
         });
-
-        let rowHeight = PlaceListRow.ROW_HEIGHT;
-        this._scrolledWindow.min_content_height = numVisible * rowHeight + 6;
 
         // This silents warning at Maps exit about this widget being
         // visible but not mapped.
