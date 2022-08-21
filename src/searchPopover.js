@@ -50,6 +50,8 @@ export class SearchPopover extends Gtk.Popover {
                                          () => this._list.unselect_all());
 
         this._numResults = 0;
+
+        this.add_css_class('suggestions');
     }
 
     _propagateKeys(controller, keyval, keycode, state) {
