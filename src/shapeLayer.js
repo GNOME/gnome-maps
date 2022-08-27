@@ -70,13 +70,8 @@ export class ShapeLayer extends GObject.Object {
     }
 
     set visible(v) {
-        if (v && !this._visible) {
-            this._overlayLayer.visible = true;
-            this._markerLayer.show_all_markers();
-        } else if (!v && this._visible) {
-            this._overlayLayer.visible = false;
-            this._markerLayer.hide_all_markers();
-        }
+        this._overlayLayer.visible = v;
+        this._markerLayer.visible = v;
         this._visible = v;
     }
 
