@@ -58,9 +58,6 @@ export class GeoJSONSource extends GnomeMaps.SyncMapSource {
     }
 
     vfunc_fill_tile(tile) {
-        if (tile.get_state() === Shumate.State.DONE)
-            return;
-
         this._renderTile(tile);
     }
 
