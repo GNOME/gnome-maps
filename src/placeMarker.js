@@ -33,11 +33,6 @@ export class PlaceMarker extends MapMarker {
         this._image.icon_size = Gtk.IconSize.LARGE;
     }
 
-    get anchor() {
-        return { x: Math.floor(this.width / 2),
-                 y: this.height - 3 };
-    }
-
     _hasBubble() {
         return true;
     }
