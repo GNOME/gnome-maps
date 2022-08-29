@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2022-08-24 19:28+0000\n"
-"PO-Revision-Date: 2022-08-25 11:53+0200\n"
+"POT-Creation-Date: 2022-08-26 20:12+0000\n"
+"PO-Revision-Date: 2022-08-29 11:01+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -28,8 +28,8 @@ msgstr ""
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
-#: data/ui/main-window.ui:29 src/application.js:61 src/mainWindow.js:136
-#: src/mainWindow.js:507
+#: data/ui/main-window.ui:29 src/application.js:61 src/mainWindow.js:133
+#: src/mainWindow.js:499
 msgid "Maps"
 msgstr "Mapy"
 
@@ -55,7 +55,7 @@ msgstr ""
 "Mapy využívají databázi OpenStreetMap, která vzniká díky spolupráci stovek "
 "tisíců lidí z celého světa."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:279
+#: data/org.gnome.Maps.appdata.xml.in.in:279 src/mainWindow.js:496
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
 
@@ -207,17 +207,17 @@ msgid "Go to current location"
 msgstr "Přejít na současné místo"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:27
+#: data/ui/headerbar-left.ui:19
 msgid "Choose map type"
 msgstr "Zvolit typ mapy"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:44
+#: data/ui/headerbar-left.ui:28
 msgid "Zoom out"
 msgstr "Oddálit"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:58
+#: data/ui/headerbar-left.ui:37
 msgid "Zoom in"
 msgstr "Přiblížit"
 
@@ -227,12 +227,12 @@ msgid "Print Route"
 msgstr "Tisk trasy"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-right.ui:28
+#: data/ui/headerbar-right.ui:21
 msgid "Toggle favorites"
 msgstr "Přepnout oblíbené"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-right.ui:45
+#: data/ui/headerbar-right.ui:30
 msgid "Toggle route planner"
 msgstr "Přepnout plánovač trasy"
 
@@ -311,12 +311,12 @@ msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "Otevřít uživatelskou vrstvu"
 
-#: data/ui/layers-popover.ui:51
+#: data/ui/layers-popover.ui:7
 msgid "Show Scale"
 msgstr "Zobrazovat měřítko"
 
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:83
+#: data/ui/layers-popover.ui:16
 msgid "Open Shape Layer…"
 msgstr "Otevřít uživatelskou vrstvu…"
 
@@ -324,7 +324,7 @@ msgstr "Otevřít uživatelskou vrstvu…"
 msgid "Turn on location services to find your location"
 msgstr "Zapnout geolokační službu pro vyhledávání vaší polohy"
 
-#: data/ui/location-service-dialog.ui:28 data/ui/osm-edit-dialog.ui:233
+#: data/ui/location-service-dialog.ui:28 data/ui/osm-edit-dialog.ui:219
 #: data/ui/zoom-in-dialog.ui:21
 msgid "Cancel"
 msgstr "Zrušit"
@@ -436,15 +436,15 @@ msgstr "Typ"
 msgid "None"
 msgstr "žádné"
 
-#: data/ui/osm-edit-dialog.ui:110
+#: data/ui/osm-edit-dialog.ui:104
 msgid "Add Field"
 msgstr "Přidat pole"
 
-#: data/ui/osm-edit-dialog.ui:140
+#: data/ui/osm-edit-dialog.ui:126
 msgid "Comment"
 msgstr "Komentář"
 
-#: data/ui/osm-edit-dialog.ui:168
+#: data/ui/osm-edit-dialog.ui:154
 msgid ""
 "Map changes will be visible on all maps that use\n"
 "OpenStreetMap data."
@@ -452,19 +452,19 @@ msgstr ""
 "Změny mapy boudou viditelné všude, kde se používají\n"
 "data OpenStreetMap."
 
-#: data/ui/osm-edit-dialog.ui:196
+#: data/ui/osm-edit-dialog.ui:182
 msgid "Recently Used"
 msgstr "Nedávno použité"
 
-#: data/ui/osm-edit-dialog.ui:251 src/osmEditDialog.js:539
+#: data/ui/osm-edit-dialog.ui:232 src/osmEditDialog.js:539
 msgid "Next"
 msgstr "Další"
 
-#: data/ui/place-popover.ui:42 src/application.js:269
+#: data/ui/place-popover.ui:40 src/application.js:269
 msgid "No results found"
 msgstr "Nebyly nalezeny žádné výsledky"
 
-#: data/ui/place-popover.ui:52 src/application.js:246 src/osmEditDialog.js:576
+#: data/ui/place-popover.ui:50 src/application.js:246 src/osmEditDialog.js:576
 msgid "An error has occurred"
 msgstr "Vyskytla se chyba"
 
@@ -494,15 +494,20 @@ msgid "_Open"
 msgstr "_Otevřít"
 
 #. Translators: This is a tooltip
-#: data/ui/shape-layer-row.ui:19
+#: data/ui/shape-layer-row.ui:32
 msgid "Toggle visible"
 msgstr "Přepnout viditelnost"
 
-#: data/ui/sidebar.ui:228
+#. Translators: This is a tooltip
+#: data/ui/shape-layer-row.ui:44
+msgid "Remove Shape Layer"
+msgstr "Odebrat uživatelskou vrstvu"
+
+#: data/ui/sidebar.ui:215
 msgid "Route search by GraphHopper"
 msgstr "Hledání trasy pomocí GraphHopper"
 
-#: data/ui/sidebar.ui:306
+#: data/ui/sidebar.ui:282
 msgid ""
 "Routing itineraries for public transit is provided by third-party\n"
 "services.\n"
@@ -531,7 +536,7 @@ msgid "Hide intermediate stops and information"
 msgstr "Skrýt průběžné zastávky a informace"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:161
+#: data/ui/transit-leg-row.ui:156
 msgid "Show intermediate stops and information"
 msgstr "Zobrazit průběžné zastávky a informace"
 
@@ -551,36 +556,36 @@ msgid "Arrive By"
 msgstr "Příjezd v"
 
 #. Header indicating selected modes of transit
-#: data/ui/transit-options-panel.ui:96
+#: data/ui/transit-options-panel.ui:85
 msgid "Show"
 msgstr "Zobrazit"
 
-#: data/ui/transit-options-panel.ui:106
+#: data/ui/transit-options-panel.ui:95
 msgid "Buses"
 msgstr "autobusy"
 
-#: data/ui/transit-options-panel.ui:112
+#: data/ui/transit-options-panel.ui:101
 msgid "Trams"
 msgstr "tramvaje"
 
-#: data/ui/transit-options-panel.ui:118
+#: data/ui/transit-options-panel.ui:107
 msgid "Trains"
 msgstr "vlaky"
 
-#: data/ui/transit-options-panel.ui:124
+#: data/ui/transit-options-panel.ui:113
 msgid "Subway"
 msgstr "metro"
 
-#: data/ui/transit-options-panel.ui:130
+#: data/ui/transit-options-panel.ui:119
 msgid "Ferries"
 msgstr "trajekty"
 
-#: data/ui/transit-options-panel.ui:136
+#: data/ui/transit-options-panel.ui:125
 msgid "Airplanes"
 msgstr "letadla"
 
 #. Translators: This is a tooltip
-#: data/ui/place-bar.ui:30 data/ui/place-buttons.ui:37 data/ui/place-view.ui:53
+#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27 data/ui/place-view.ui:53
 msgid "Share location"
 msgstr "Sdílet místo"
 
@@ -590,17 +595,17 @@ msgid "Add to new route"
 msgstr "Přidat novou trasu"
 
 #. Translators: This is the button to find a route to a place
-#: data/ui/place-buttons.ui:23
+#: data/ui/place-buttons.ui:15
 msgid "Directions"
 msgstr "Směry"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.ui:51
+#: data/ui/place-buttons.ui:36
 msgid "Mark as favorite"
 msgstr "Označit jako oblíbené"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.ui:65
+#: data/ui/place-buttons.ui:44
 msgid "Edit on OpenStreetMap"
 msgstr "Úpravy v OpenStreetMap"
 
@@ -657,18 +662,6 @@ msgstr "[SOUBOR…|URI]"
 #, javascript-format
 msgid "Invalid maps: URI: %s"
 msgstr "Neplatné mapy: URI: %s"
-
-#: src/contextMenu.js:148
-msgid "Nothing found here!"
-msgstr "Zde nebylo nic nalezeno!"
-
-#: src/contextMenu.js:209
-msgid ""
-"Location was added to the map, note that it may take a while before it shows "
-"on the map and in search results."
-msgstr ""
-"Místo bylo přidáno do mapy, ale vezměte na vědomí, že může chvíli trvat, než "
-"se zobrazí na mapě a ve výsledcích hledání."
 
 #. Translators: This is a format string for a PNG filename for an
 #. * exported image with coordinates. The .png extension should be kept
@@ -731,60 +724,59 @@ msgstr "Start!"
 msgid "All Layer Files"
 msgstr "Všechny soubory s vrstvami"
 
-#: src/mainWindow.js:419
+#: src/mainWindow.js:410
 msgid "Failed to connect to location service"
 msgstr "Selhalo připojení ke geolokační službě"
 
-#: src/mainWindow.js:505
+#: src/mainWindow.js:497
 msgid "translator-credits"
 msgstr "Marek Černocký <marek@manet.cz>"
 
-#: src/mainWindow.js:508
-msgid "A map application for GNOME"
-msgstr "Mapová aplikace pro GNOME"
-
-#: src/mainWindow.js:519
+#: src/mainWindow.js:501
 msgid "Copyright © 2011 – 2022 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 - 2022 Red Hat, Inc. a autoři Map GNOME"
 
-#: src/mainWindow.js:538
+#: src/mainWindow.js:517
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Mapová data od %s a přispěvatelů"
+
+#: src/mainWindow.js:518
+msgid "Map Data Provider"
+msgstr "Poskytovatel mapových dat"
+
+#: src/mainWindow.js:530
+msgid "Map Tile Provider"
+msgstr "Poskytovatel mapových dlaždic"
 
 #. Translators: this is an attribution string giving credit to the
 #. * tile provider where the %s placeholder is replaced by either
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:554
+#: src/mainWindow.js:538
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Mapové dlaždice poskytuje %s"
 
-#. Translators: this is an attribution string giving credit to the
-#. * search provider where the first %s placeholder is replaced by either
-#. * the bare name of the geocoder provider, or a linkified URL if one
-#. * is available, and the second %s placeholder is replaced by the
-#. * URL to the geocoder project page. These placeholders
-#. * can be swapped, if needed using the %n$s positional syntax
-#. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
-#. * before the provider).
-#.
-#: src/mainWindow.js:583
+#: src/mainWindow.js:568
+msgid "Search Provider"
+msgstr "Poskytovatel vyhledávání"
+
+#: src/mainWindow.js:571
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Hledání zprostředkuje %s pomocí %s"
 
-#: src/mapView.js:443 src/mapView.js:503
+#: src/mapView.js:502 src/mapView.js:562
 msgid "Failed to open layer"
 msgstr "Selhalo otevření vrstvy"
 
-#: src/mapView.js:464
+#: src/mapView.js:523
 msgid "Do you want to continue?"
 msgstr "Chcete pokračovat?"
 
-#: src/mapView.js:465
+#: src/mapView.js:524
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -793,13 +785,25 @@ msgstr ""
 "Chystáte se otevřít soubory o celkové velikosti %s MB. To může zabrat nějaký "
 "čas."
 
-#: src/mapView.js:497
+#: src/mapView.js:556
 msgid "File type is not supported"
 msgstr "Typ souboru není podporován"
 
-#: src/mapView.js:535
+#: src/mapView.js:594
 msgid "Failed to open GeoURI"
 msgstr "Selhalo otevření adresy GeoURI"
+
+#: src/mapView.js:1025
+msgid "Nothing found here!"
+msgstr "Zde nebylo nic nalezeno!"
+
+#: src/mapView.js:1086
+msgid ""
+"Location was added to the map, note that it may take a while before it shows "
+"on the map and in search results."
+msgstr ""
+"Místo bylo přidáno do mapy, ale vezměte na vědomí, že může chvíli trvat, než "
+"se zobrazí na mapě a ve výsledcích hledání."
 
 #: src/osmAccountDialog.js:139
 msgid "The verification code didn’t match, please try again."
@@ -1113,11 +1117,11 @@ msgstr "Hotovo"
 msgid "Unnamed place"
 msgstr "Místo bez názvu"
 
-#: src/placeEntry.js:226
+#: src/placeEntry.js:223
 msgid "Failed to parse Geo URI"
 msgstr "Selhalo zpracování adresy GeoURI"
 
-#: src/placeEntry.js:239
+#: src/placeEntry.js:236
 msgid "Failed to parse Maps URI"
 msgstr "Selhalo zpracování adresy URI map"
 
