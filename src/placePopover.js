@@ -80,7 +80,7 @@ export class PlacePopover extends SearchPopover {
     }
 
     showNoResult() {
-        if (this._spinner.active)
+        if (this._spinner.spinning)
             this._spinner.stop();
 
         this._stack.visible_child = this._noResultsLabel;
@@ -88,7 +88,7 @@ export class PlacePopover extends SearchPopover {
     }
 
     showError() {
-        if (this._spinner.active)
+        if (this._spinner.spinning)
             this._spinner.stop();
 
         this._stack.visible_child = this._errorLabel;
