@@ -41,7 +41,7 @@ gweather = dependency('gweather4', version: '>= 3.90.0')
 geocodeglib = dependency('geocode-glib-2.0', version: '>= 3.15.2')
 
 libmaps_deps = [
-	dependency('shumate-1.0'),
+	dependency('shumate-1.0', version: '>= 1.0.0.beta'),
 	dependency('libxml-2.0'),
 	dependency('rest-1.0')
 ]
