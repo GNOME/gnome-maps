@@ -197,6 +197,11 @@ export class MapView extends Gtk.Overlay {
         this._clickGesture = new Gtk.GestureClick({ button: Gdk.BUTTON_SECONDARY });
         this._clickGesture.connect('pressed', this._onClickGesturePressed.bind(this));
         this.add_controller(this._clickGesture);
+
+        this._longPressGesture = new Gtk.GestureLongPress();;
+        this._longPressGesture.connect('pressed',
+                                       this._onLongPressGesturePressed.bind(this));
+        this.add_controller(this._longPressGesture);
     }
 
     vfunc_size_allocate(width, height, baseline) {
@@ -967,23 +972,32 @@ export class MapView extends Gtk.Overlay {
 
         let event = gesture.get_current_event();
         if (event.triggers_context_menu()) {
-            let viewport = this.map.viewport;
-            let rect = new Gdk.Rectangle({ x: x, y: y, width: 0, height: 0 });
-
-            [this._latitude, this._longitude] = viewport.widget_coords_to_location(this, x, y);
-
-            if (this.direction === Gtk.TextDirection.RTL) {
-                this._contextMenu.halign = Gtk.Align.END;
-            } else {
-                this._contextMenu.halign = Gtk.Align.START;
-            }
-
-            this._contextMenu.pointing_to = rect;
-            this._contextMenu.popup();
+            this._showContextMenuAt(x, y);
             gesture.set_state(Gtk.EventSequenceState.CLAIMED);
         }
 
         gesture.set_state(Gtk.EventSequenceState.DENIED);
+    }
+
+    _onLongPressGesturePressed(gesture, x, y) {
+        this._showContextMenuAt(x, y);
+        gesture.set_state(Gtk.EventSequenceState.CLAIMED);
+    }
+
+    _showContextMenuAt(x, y) {
+        let viewport = this.map.viewport;
+        let rect = new Gdk.Rectangle({ x: x, y: y, width: 0, height: 0 });
+
+        [this._latitude, this._longitude] = viewport.widget_coords_to_location(this, x, y);
+
+        if (this.direction === Gtk.TextDirection.RTL) {
+            this._contextMenu.halign = Gtk.Align.END;
+        } else {
+            this._contextMenu.halign = Gtk.Align.START;
+        }
+
+        this._contextMenu.pointing_to = rect;
+        this._contextMenu.popup();
     }
 
     _onRouteFromHereActivated() {
