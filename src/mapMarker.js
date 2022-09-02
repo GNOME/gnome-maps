@@ -217,35 +217,10 @@ export class MapMarker extends Shumate.Marker {
         let goingToSignalId = this._mapView.connect('going-to', () => {
             this.set_selected(false);
         });
-        /*
-        let buttonPressSignalId =
-            this._view.connect('button-press-event', () => {
-                this.set_selected(false);
-            });
-        // Destroy the bubble when the marker is destroyed o removed from a layer
-        let parentSetSignalId = this.connect('parent-set', () => {
-            this.set_selected(false);
-        });
-        let dragMotionSignalId = this.connect('drag-motion', () => {
-            this.set_selected(false);
-        });
-        let markerHiddenSignalId = this.connect('notify::visible', () => {
-            if (!this.visible) {
-                this.set_selected(false);
-            }
-        });
-        */
 
         Utils.once(this.bubble, 'closed', () => {
             this._mapView.disconnect(markerSelectedSignalId);
             this._mapView.disconnect(goingToSignalId);
-            //this._view.disconnect(buttonPressSignalId);
-            //this._view.disconnect(viewTouchEventSignalId);
-            //this.disconnect(parentSetSignalId);
-            //this.disconnect(dragMotionSignalId);
-
-            //this._bubble.destroy();
-            delete this._bubble;
         });
     }
 
