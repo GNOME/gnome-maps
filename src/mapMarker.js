@@ -53,6 +53,11 @@ export class MapMarker extends Shumate.Marker {
         this._image = new Gtk.Image({ icon_size: Gtk.IconSize.NORMAL });
         this.child = this._image;
 
+        this.connect('unmap', () => {
+            if (this._bubble)
+                this._bubble.unparent();
+        });
+
         if (this._mapView) {
             this._viewport = this._mapView.map.viewport;
 
@@ -126,12 +131,16 @@ export class MapMarker extends Shumate.Marker {
     }
 
     get bubble() {
-        if (this._bubble === undefined && this._hasBubble()) {
-            if (this._place.name) {
-                this._bubble = new MapBubble({ place: this._place,
-                                               mapView: this._mapView });
-                this._bubble.set_parent(this._mapView);
+        if (this._hasBubble) {
+            if (this._bubble === undefined) {
+                if (this._place.name) {
+                    this._bubble = new MapBubble({ place: this._place,
+                                                   mapView: this._mapView });
+                }
             }
+
+            if (!this._bubble.get_parent())
+                this._bubble.set_parent(this._mapView);
         }
 
         return this._bubble;
