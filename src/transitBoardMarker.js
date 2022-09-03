@@ -120,11 +120,6 @@ export class TransitBoardMarker extends MapMarker {
             return null;
         }
     }
-
-    get anchor() {
-        return { x: Math.floor(this.width / 2) - 1,
-                 y: Math.floor(this.height / 2) - 1 };
-    }
 }
 
 GObject.registerClass(TransitBoardMarker);
