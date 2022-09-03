@@ -49,6 +49,21 @@
             ]
         },
         {
+            "name" : "libsoup",
+            "buildsystem" : "meson",
+            "builddir" : true,
+            "config-opts" : [
+                "--libdir=/app/lib"
+            ],
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/GNOME/libsoup.git",
+                    "branch": "carlosgc/send-after-cancel"
+                }
+            ]
+        },
+        {
             "name" : "geocode-glib",
             "buildsystem" : "meson",
             "builddir" : true,
