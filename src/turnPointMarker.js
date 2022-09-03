@@ -88,11 +88,6 @@ export class TurnPointMarker extends MapMarker {
                               alpha: 255 });
     }
 
-    get anchor() {
-        return { x: Math.floor(this.width / 2) - 1,
-                 y: Math.floor(this.height / 2) - 1 };
-    }
-
     goTo() {
         let view = this._mapView.view;
         let turnPointZoomLevel = 15;
