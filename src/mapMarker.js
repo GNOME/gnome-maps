@@ -109,14 +109,6 @@ export class MapMarker extends Shumate.Marker {
         }
     }
 
-    /**
-     * Returns: The anchor point for the marker icon, relative to the
-     * top left corner.
-     */
-    get anchor() {
-        return { x: 0, y: 0 };
-    }
-
     get bubbleSpacing() {
         return 0;
     }
