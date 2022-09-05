@@ -42,7 +42,7 @@ gnome.compile_resources(
 	configuration: sources_conf
   ),
   gresource_bundle: true,
-  install: true,
+  install: false,
   install_dir: meson.build_root(),
   source_dir: ['../src', '../src/geojson-vt']
 )
