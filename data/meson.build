@@ -74,7 +74,6 @@ configure_file(
 	install_dir: join_paths(datadir, 'dbus-1', 'services')
 )
 
-desktop_file_validate = find_program('desktop-file-validate', required: false)
 if desktop_file_validate.found()
 	test(
 		'validate-desktop',
@@ -85,7 +84,6 @@ if desktop_file_validate.found()
 	)
 endif
 
-appstream_util = find_program('appstream-util', required: false)
 if appstream_util.found()
 	test(
 		'validate-appdata',
