@@ -1,6 +1,6 @@
 project('gnome-maps', 'c',
 	version: '43.0',
-	license: 'GPL2+'
+	license: 'GPL-2.0-or-later',
 )
 
 app_id = 'org.gnome.Maps'
