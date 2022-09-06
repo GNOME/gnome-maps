@@ -19,8 +19,8 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-import 'gi://Gdk?version=3.0';
-import 'gi://Gtk?version=3.0';
+import 'gi://Gdk?version=4.0';
+import 'gi://Gtk?version=4.0';
 import 'gi://Soup?version=3.0';
 
 import * as Wikipedia from './wikipedia.js';

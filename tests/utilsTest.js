@@ -19,8 +19,8 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-import 'gi://Gdk?version=3.0';
-import 'gi://Gtk?version=3.0';
+import 'gi://Gdk?version=4.0';
+import 'gi://Gtk?version=4.0';
 import 'gi://GeocodeGlib?version=2.0';
 
 import GeocodeGlib from 'gi://GeocodeGlib';
