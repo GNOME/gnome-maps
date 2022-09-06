@@ -21,6 +21,12 @@ configure_file(
 	install_dir: pkgdatadir
 )
 
+install_symlink(
+	'gnome-maps',
+	install_dir: bindir,
+	pointing_to: pkgdatadir / app_id,
+)
+
 sources_conf = configuration_data()
 sources_conf.set('suffix', suffix)
 # comment-out test sources

@@ -1,6 +1,7 @@
 project('gnome-maps', 'c',
 	version: '43.0',
 	license: 'GPL-2.0-or-later',
+	meson_version: '>= 0.61.0',
 )
 
 app_id = 'org.gnome.Maps'
@@ -61,9 +62,8 @@ subdir('lib')
 subdir('data')
 subdir('tests')
 
-meson.add_install_script(
-  'meson_post_install.py',
-  datadir,
-  bindir,
-  app_id
+gnome.post_install(
+  glib_compile_schemas: true,
+  gtk_update_icon_cache: true,
+  update_desktop_database: true,
 )
