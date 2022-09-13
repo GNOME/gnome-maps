@@ -305,7 +305,7 @@ export class Application extends Adw.Application {
         if (options.contains('local')) {
             let variant = options.lookup_value('local', null);
             this.local_tile_path = variant.deep_unpack();
-            normalStartup = false;
+            Application.normalStartup = false;
             if (options.contains('local-tile-size')) {
                 variant = options.lookup_value('local-tile-size', null);
                 this.local_tile_size = variant.deep_unpack();
