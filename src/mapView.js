@@ -446,9 +446,7 @@ export class MapView extends Gtk.Overlay {
             Application.settings.set('map-type', mapType);
         } else {
             let source = new GnomeMaps.FileDataSource({
-                path: Utils.getBufferText(Application.application.local_tile_path),
-                renderer: renderer,
-                tile_size: Application.application.local_tile_size || 512
+                path: Utils.getBufferText(Application.application.local_tile_path)
             });
             try {
                 source.prepare();
@@ -456,8 +454,8 @@ export class MapView extends Gtk.Overlay {
                 mapSource =
                     new Shumate.RasterRenderer({ id: 'local',
                                                  name: 'local',
-                                                 min_zoom_level: source.min_zoom_level,
-                                                 max_zoom_level: source.max_zoom_level,
+                                                 min_zoom_level: source.min_zoom,
+                                                 max_zoom_level: source.max_zoom,
                                                  tile_size:      Application.application.local_tile_size ?? 512,
                                                  projection:     Shumate.MapProjection.MERCATOR,
                                                  data_source:    source });
@@ -465,6 +463,7 @@ export class MapView extends Gtk.Overlay {
                 this.setMapType(MapView.MapType.STREET);
                 Application.application.local_tile_path = false;
                 Utils.showDialog(e.message, Gtk.MessageType.ERROR, this._mainWindow);
+                return;
             }
         }
 
