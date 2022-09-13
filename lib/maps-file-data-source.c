@@ -470,15 +470,14 @@ on_file_load (GObject      *source_object,
   FillTileData *data = g_task_get_task_data (task);
   char *contents;
   gsize length;
-  GBytes *bytes;
 
   g_file_load_contents_finish (data->file, res, &contents, &length, NULL, NULL);
 
   if (contents != NULL)
     {
-      bytes = g_bytes_new_take (contents, length);
+      data->bytes = g_bytes_new_take (contents, length);
       g_signal_emit_by_name (data->self, "received-data", data->x, data->y, data->z, data->bytes);
-      g_task_return_pointer (task, g_steal_pointer (&bytes), (GDestroyNotify)g_bytes_unref);
+      g_task_return_pointer (task, g_steal_pointer (&data->bytes), (GDestroyNotify)g_bytes_unref);
     }
 }
 
