@@ -27,7 +27,7 @@ import Gtk from 'gi://Gtk';
 
 import * as Utils from './utils.js';
 
-const _PRIVACY_PANEL = 'gnome-privacy-panel.desktop';
+const _PRIVACY_PANEL = 'gnome-location-panel.desktop';
 
 export class LocationServiceDialog extends Gtk.Dialog {
 
