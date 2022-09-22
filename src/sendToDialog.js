@@ -24,7 +24,6 @@ import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 import GWeather from 'gi://GWeather';
-import Soup from 'gi://Soup';
 
 import {Application} from './application.js';
 import {PlaceFormatter} from './placeFormatter.js';
@@ -180,8 +179,8 @@ export class SendToDialog extends Gtk.Dialog {
     _emailSummary() {
         let title = new PlaceFormatter(this._place).title;
         let summary = "%s\n%s".format(this._getSummary(), this._getOSMURI());
-        let uri = 'mailto:?subject=%s&body=%s'.format(Soup.URI.encode(title, null),
-                                                      Soup.URI.encode(summary, null));
+        let uri = 'mailto:?subject=%s&body=%s'.format(GLib.uri_escape_string(title, null, false),
+                                                      GLib.uri_escape_string(summary, null, false));
 
         try {
           Gio.app_info_launch_default_for_uri(uri, this._getAppLaunchContext());
