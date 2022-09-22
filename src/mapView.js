@@ -107,9 +107,8 @@ export class MapView extends Gtk.Overlay {
         let isValid = Application.routeQuery.isValid();
 
         this._routingOpen = value && isValid;
-        // TODO: bring it back when the layers are working
-        //this._routeLayers.forEach((routeLayer) => routeLayer.visible = value && isValid);
-        //this._instructionMarkerLayer.visible = value && isValid;
+        this._routeLayers.forEach((routeLayer) => routeLayer.visible = value && isValid);
+        this._instructionMarkerLayer.visible = value && isValid;
         if (!value)
             this.routeShowing = false;
         this.notify('routingOpen');
