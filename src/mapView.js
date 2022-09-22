@@ -774,7 +774,7 @@ export class MapView extends Gtk.Overlay {
 
     showTurnPoint(turnPoint) {
         if (this._turnPointMarker)
-            this._turnPointMarker.destroy();
+            this._instructionMarkerLayer.remove_marker(this._turnPointMarker);
 
         this._turnPointMarker = null;
         if (turnPoint.isStop())
@@ -788,7 +788,7 @@ export class MapView extends Gtk.Overlay {
 
     showTransitStop(transitStop, transitLeg) {
         if (this._turnPointMarker)
-            this._turnPointMarker.destroy();
+            this._instructionMarkerLayer.remove_marker(this._turnPointMarker);
 
         this._turnPointMarker = new TurnPointMarker({ transitStop: transitStop,
                                                       transitLeg: transitLeg,
