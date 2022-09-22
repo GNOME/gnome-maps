@@ -89,19 +89,7 @@ export class TurnPointMarker extends MapMarker {
     }
 
     goTo() {
-        let view = this._mapView.view;
-        let turnPointZoomLevel = 15;
-        let latitude = this.latitude;
-        let longitude = this.longitude;
-
-        view.goto_duration = 0;
-
-        Utils.once(view, 'animation-completed', () => {
-            view.zoom_level = turnPointZoomLevel;
-            view.center_on(latitude, longitude);
-        });
-
-        view.go_to(this.latitude, this.longitude);
+        this._mapView.map.go_to(this.latitude, this.longitude);
     }
 }
 
