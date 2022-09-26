@@ -120,7 +120,7 @@ export class TransitLegRow extends Gtk.ListBoxRow {
         });
 
         this._buttonPressGesture = new Gtk.GestureSingle();
-        this.add_controller(this._buttonPressGesture);
+        this._grid.add_controller(this._buttonPressGesture);
         this._buttonPressGesture.connect('begin', () => this._onPress());
 
         this._isExpanded = false;
@@ -200,5 +200,6 @@ GObject.registerClass({
                        'detailsRevealer',
                        'agencyLabel',
                        'collapsButton',
-                       'instructionList']
+                       'instructionList',
+                       'grid']
 }, TransitLegRow);
