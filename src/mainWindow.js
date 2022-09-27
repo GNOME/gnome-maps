@@ -177,7 +177,11 @@ export class MainWindow extends Gtk.ApplicationWindow {
         this.add_controller(this._dropTarget);
 
         this._dropTarget.connect('drop', (target, value, x, y, data) => {
-            return this._mapView.openShapeLayers([value]);
+            let list = new Gio.ListStore(Gio.File.Gtype);
+
+            list.insert(0, value);
+
+            return this._mapView.openShapeLayers(list);
         });
     }
 
