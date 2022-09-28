@@ -330,24 +330,32 @@ export class MainWindow extends Gtk.ApplicationWindow {
         this._actionBarRight = new HeaderBarRight({ mapView: this._mapView });
         this._actionBar.pack_end(this._actionBarRight);
 
+        // update adaptive status based on initial geometry
+        this._updateAdaptiveMode();
+
         this.connect('notify::default-width', () => {
-            let width = this.default_width;
-            if (width < _ADAPTIVE_VIEW_WIDTH) {
-                this.application.adaptive_mode = true;
-                this._headerBarLeft.hide();
-                this._headerBarRight.hide();
-                this._actionBarRevealer.set_reveal_child(true);
-                this._placeEntry.set_margin_start(0);
-                this._placeEntry.set_margin_end(0);
-            } else {
-                this.application.adaptive_mode = false;
-                this._headerBarLeft.show();
-                this._headerBarRight.show();
-                this._actionBarRevealer.set_reveal_child(false);
-                this._placeEntry.set_margin_start(_PLACE_ENTRY_MARGIN);
-                this._placeEntry.set_margin_end(_PLACE_ENTRY_MARGIN);
-            }
+            this._updateAdaptiveMode();
         });
+    }
+
+    _updateAdaptiveMode() {
+        let width = this.default_width;
+
+        if (width < _ADAPTIVE_VIEW_WIDTH) {
+            this.application.adaptive_mode = true;
+            this._headerBarLeft.hide();
+            this._headerBarRight.hide();
+            this._actionBarRevealer.set_reveal_child(true);
+            this._placeEntry.set_margin_start(0);
+            this._placeEntry.set_margin_end(0);
+        } else {
+            this.application.adaptive_mode = false;
+            this._headerBarLeft.show();
+            this._headerBarRight.show();
+            this._actionBarRevealer.set_reveal_child(false);
+            this._placeEntry.set_margin_start(_PLACE_ENTRY_MARGIN);
+            this._placeEntry.set_margin_end(_PLACE_ENTRY_MARGIN);
+        }
     }
 
     _saveWindowGeometry() {
