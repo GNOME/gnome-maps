@@ -29,6 +29,7 @@ import Gtk from 'gi://Gtk';
 import {Application} from './application.js';
 import {InstructionRow} from './instructionRow.js';
 import {PlaceStore} from './placeStore.js';
+import {QueryPoint} from './routeQuery.js';
 import {RouteEntry} from './routeEntry.js';
 import {RouteQuery} from './routeQuery.js';
 import {StoredRoute} from './storedRoute.js';
@@ -514,7 +515,7 @@ export class Sidebar extends Gtk.Revealer {
     // Iterate over points and establish the new order of places
     _reorderRoutePoints(srcIndex, destIndex) {
         let points = this._query.points;
-        let srcPlace = this._draggedPoint.place;
+        let srcPlace = this._query.points[srcIndex].place;
 
         // Determine if we are swapping from "above" or "below"
         let step = (srcIndex < destIndex) ? -1 : 1;
@@ -550,8 +551,8 @@ export class Sidebar extends Gtk.Revealer {
         this._query.thaw_notify();
     }
 
-    _onDragDrop(row) {
-        let srcIndex = this._query.points.indexOf(this._draggedPoint);
+    _onDragDrop(row, point) {
+        let srcIndex = this._query.points.indexOf(point);
         let destIndex = row.get_index();
 
         this._reorderRoutePoints(srcIndex, destIndex);
@@ -559,51 +560,23 @@ export class Sidebar extends Gtk.Revealer {
         return true;
     }
 
-    _dragHighlightRow(row) {
-        row.opacity = 0.6;
-    }
-
-    _dragUnhighlightRow(row) {
+    // Drag ends, show the dragged row again.
+    _onDragEnd(row) {
         row.opacity = 1.0;
     }
 
-    // Set the opacity of the row we are currently dragging above
-    // to semi transparent.
-    _onDragMotion(row, context, x, y, time) {
-        let routeEntry = row.get_child();
-
-        if (this._draggedPoint && this._draggedPoint !== routeEntry.point) {
-            this._dragHighlightRow(row);
-            Gdk.drag_status(context, Gdk.DragAction.MOVE, time);
-        } else
-            Gdk.drag_status(context, 0, time);
-        return true;
+    _onDragPrepare(point, source, x, y) {
+        return Gdk.ContentProvider.new_for_value(point);
     }
 
-    // Drag ends, show the dragged row again.
-    _onDragEnd(row) {
-        this._draggedPoint = null;
-
-        // Restore to natural height
-        row.height_request = -1;
-        row.get_child().show();
-    }
-
-    // Drag begins, set the correct drag icon and hide the dragged row.
+    // Drag begins, set the correct drag icon and dim the dragged row.
     _onDragBegin(source, row) {
         let routeEntry = row.get_child();
         let {x, y, width, height} = row.get_allocation();
-
-        this._draggedPoint = routeEntry.point;
-
-        // Set a fixed height on the row to prevent the sidebar height
-        // to shrink while dragging a row.
-        row.height_request = height;
-        row.get_child().hide();
-
-        let paintable = new Gtk.WidgetPaintable(row);
+        let paintable = new Gtk.WidgetPaintable({ widget: routeEntry });
 
         source.set_icon(paintable, 0, 0);
+        row.opacity = 0.6;
     }
 
     // Set up drag and drop between RouteEntrys. The drag source is from a
@@ -616,17 +589,21 @@ export class Sidebar extends Gtk.Revealer {
 
         dragIcon.add_controller(dragSource);
 
+        dragSource.connect('prepare',
+                           this._onDragPrepare.bind(this, routeEntry.point));
         dragSource.connect('drag-begin',
-                           (source, drag, widget) => this._onDragBegin(source, row));
+                           (source, drag, widget) =>
+                           this._onDragBegin(source, row));
         dragSource.connect('drag-end',
                            (source, dele, data) => this._onDragEnd(row));
 
-        let dropTarget = Gtk.DropTarget.new(RouteEntry, Gdk.DragAction.MOVE);
+        let dropTarget = Gtk.DropTarget.new(QueryPoint, Gdk.DragAction.COPY);
 
         row.add_controller(dropTarget);
 
         dropTarget.connect('drop',
-                           (target, value, x, y, data) => this._onDragDrop(target));
+                           (target, value, x, y, data) =>
+                           this._onDragDrop(row, value));
     }
 }
 
