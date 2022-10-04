@@ -465,7 +465,8 @@ export class PlaceView extends Gtk.Box {
                            info: Translations.translateReligion(place.religion) });
         }
 
-        if (place.wiki && Wikipedia.isValidWikipedia(place.wiki)) {
+        if (place.wiki && Wikipedia.isValidWikipedia(place.wiki) ||
+            place.wikidata && Wikipedia.isValidWikidata(place.wikidata)) {
             content.push({ type: 'wikipedia', info: '' });
         }
 
@@ -577,7 +578,13 @@ export class PlaceView extends Gtk.Box {
         let content = this._createContent(place);
         this._attachContent(content);
 
-        if (place.wiki && Wikipedia.isValidWikipedia(place.wiki)) {
+        if (place.wikidata && Wikipedia.isValidWikidata(place.wikidata)) {
+            let defaultArticle =
+                place.wiki && Wikipedia.isValidWikipedia(place.wiki)) ?
+                place.wiki : null;
+
+            this._requestWikidata(place.wikidata, defaultArticle);
+        } else if (place.wiki && Wikipedia.isValidWikipedia(place.wiki)) {
             this._requestWikipedia(place.wiki);
         }
 
@@ -590,6 +597,13 @@ export class PlaceView extends Gtk.Box {
                                    THUMBNAIL_FETCH_SIZE,
                                    this._onWikiMetadataComplete.bind(this),
                                    this._onThumbnailComplete.bind(this));
+    }
+
+    _requestWikidata(wikidata, defaultArticle) {
+        Wikipedia.fetchArticleInfoForWikidata(
+            wikidata, defaultArticle, THUMBNAIL_FETCH_SIZE,
+            this._onWikiMetadataComplete.bind(this),
+            this._onThumbnailComplete.bind(this));
     }
 
     _onThumbnailComplete(thumbnail) {
