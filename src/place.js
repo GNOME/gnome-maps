@@ -58,6 +58,7 @@ export class Place extends GeocodeGlib.Place {
         delete params.email;
         delete params.phone;
         delete params.wiki;
+        delete params.wikidata;
         delete params.openingHours;
         delete params.internetAccess;
         delete params.religion;
@@ -150,6 +151,8 @@ export class Place extends GeocodeGlib.Place {
             this.phone = tags.phone;
         if (wiki)
             this.wiki = wiki;
+        if (tags.wikidata)
+            this.wikidata = tags.wikidata;
         if (tags.wheelchair)
             this.wheelchair = tags.wheelchair;
         if (openingHours)
@@ -224,6 +227,14 @@ export class Place extends GeocodeGlib.Place {
 
     get wiki() {
         return this._wiki;
+    }
+
+    set wikidata(v) {
+        this._wikidata = v;
+    }
+
+    get wikidata() {
+        return this._wikidata;
     }
 
     set openingHours(v) {
@@ -377,6 +388,7 @@ export class Place extends GeocodeGlib.Place {
                  email: this.email,
                  phone: this.phone,
                  wiki: this.wiki,
+                 wikidata: this.wikidata,
                  wheelchair: this.wheelchair,
                  openingHours: this.openingHours,
                  internetAccess: this.internetAccess,
