@@ -32,6 +32,11 @@ import * as Utils from './utils.js';
  */
 const WP_REGEX = /^[a-z][a-z][a-z]?(\-[a-z]+)?$|^simple$/;
 
+/**
+ * Wikidata properties
+ */
+const WIKIDATA_PROPERTY_IMAGE = 'P18';
+
 let _soupSession = null;
 function _getSoupSession() {
     if (_soupSession === null) {
@@ -43,6 +48,8 @@ function _getSoupSession() {
 
 let _thumbnailCache = {};
 let _metadataCache = {};
+let _wikidataCache = {};
+let _wikidataImageSourceCache = {};
 
 export function getLanguage(wiki) {
     return wiki.split(':')[0];
@@ -155,6 +162,160 @@ export function fetchArticleInfo(wiki, size, metadataCb, thumbnailCb) {
     });
 }
 
+/*
+ * Fetch various metadata about a Wikidata reference.
+ *
+ * @defaultArticle is the native Wikipedia article, if set, for the object
+ *                 when present, it used as a fallback if none of the references
+ *                 of the Wikidate tag matches a user's language
+ * @size is the maximum width of the thumbnail.
+ *
+ * Calls @metadataCb with the lang:title pair for the article and an object
+ * containing information about the article. For the keys/values of this
+ * object, see the relevant MediaWiki API documentation.
+ *
+ * Calls @thumbnailCb with the Gdk.Pixbuf of the icon when successful, otherwise
+ * null.
+ */
+export function fetchArticleInfoForWikidata(wikidata, defaultArticle,
+                                            size, metadataCb, thumbnailCb) {
+    let cachedWikidata = _wikidataCache[wikidata];
+
+    if (cachedWikidata) {
+        _onWikidataFetched(wikidata, defaultArticle, size, metadataCb,
+                           thumbnailCb);
+        return;
+    }
+
+    let uri = 'https://www.wikidata.org/w/api.php';
+    let encodedForm = Soup.form_encode_hash({ action: 'wbgetentities',
+                                              ids:    wikidata,
+                                              format: 'json' });
+    let msg = Soup.Message.new_from_encoded_form('GET', uri, encodedForm);
+    let session = _getSoupSession();
+
+    session.send_and_read_async(msg, GLib.PRIORIRY_DEFAULT, null,
+                                     (source, res) => {
+        if (msg.get_status() !== Soup.Status.OK) {
+            log('Failed to request Wikidata entities: ' + msg.reason_phrase);
+            metadataCb(null, {});
+            thumbnailCb(null);
+            return;
+        }
+
+        let buffer = session.send_and_read_finish(res).get_data();
+        let response = JSON.parse(Utils.getBufferText(buffer));
+
+        _wikidataCache[wikidata] = response;
+        _onWikidataFetched(wikidata, defaultArticle, response, size,
+                           metadataCb, thumbnailCb);
+    });
+}
+
+function _onWikidataFetched(wikidata, defaultArticle, response, size,
+                            metadataCb, thumbnailCb) {
+    let sitelinks = response?.entities?.[wikidata]?.sitelinks;
+
+    if (!sitelinks) {
+        Utils.debug('No sitelinks element in response');
+        metadataCb(null, {});
+        if (thumbnailCb)
+            thumbnailCb(null);
+        return;
+    }
+
+    let claims = response?.entities?.[wikidata]?.claims;
+    let imageName =
+            claims?.[WIKIDATA_PROPERTY_IMAGE]?.[0]?.mainsnak?.datavalue?.value;
+
+    /* if the Wikidata metadata links to a title image, use that to fetch
+     * the thumbnail image
+     */
+    if (imageName) {
+        _fetchWikidataThumbnail(imageName, size, thumbnailCb);
+        thumbnailCb = null;
+    }
+
+    /* try to find articles in the order of the user's preferred
+     * languages
+     */
+    for (let language of _getLanguages()) {
+        /* sitelinks appear under "sitelinks" in the form:
+         * langwiki, e.g. "enwiki"
+         */
+        if (sitelinks[language + 'wiki']) {
+            let article = `${language}:${sitelinks[language + 'wiki'].title}`;
+
+            fetchArticleInfo(article, size, metadataCb, thumbnailCb);
+            return;
+        }
+    }
+
+    // if no article reference matches a preferred language
+    if (defaultArticle) {
+        // if there's a default article from the "wikipedia" tag, use it
+        fetchArticleInfo(defaultArticle, size, metadataCb, thumbnailCb);
+    } else {
+        /* if there's exactly one *wiki sitelink, use it, since it's
+         * probably the default (native) article
+         */
+        let foundSitelink;
+        let numFoundSitelinks = 0;
+
+        for (let sitelink in sitelinks) {
+            if (sitelink.endsWith('wiki') && sitelink !== 'commonswiki') {
+                foundSitelink = sitelink;
+                numFoundSitelinks++;
+            }
+        }
+
+        if (numFoundSitelinks === 1) {
+            let language = foundSitelink.substring(0, foundSitelink.length - 4);
+            let article = `${language}:${sitelinks[foundSitelink].title}`;
+
+            fetchArticleInfo(article, size, metadataCb, thumbnailCb);
+        }
+    }
+}
+
+function _fetchWikidataThumbnail(imageName, size, thumbnailCb) {
+    let cachedImageUrl = _wikidataImageSourceCache[imageName + '/' + size];
+
+    if (cachedImageUrl) {
+        _fetchThumbnailImage(imageName, size, cachedImageUrl, thumbnailCb);
+        return;
+    }
+
+    let uri = 'https://wikipedia.org/w/api.php';
+    let encodedForm = Soup.form_encode_hash({ action:     'query',
+                                              prop:       'imageinfo',
+                                              iiprop:     'url',
+                                              iiurlwidth: size + '',
+                                              titles:     'Image:' + imageName,
+                                              format:     'json' });
+    let msg = Soup.Message.new_from_encoded_form('GET', uri, encodedForm);
+    let session = _getSoupSession();
+
+    session.send_and_read_async(msg, GLib.PRIORIRY_DEFAULT, null,
+                                     (source, res) => {
+        if (msg.get_status() !== Soup.Status.OK) {
+            log('Failed to request Wikidata image thumbnail URL: ' +
+                msg.reason_phrase);
+            thumbnailCb(null);
+            return;
+        }
+
+        let buffer = session.send_and_read_finish(res).get_data();
+        let response = JSON.parse(Utils.getBufferText(buffer));
+        let thumburl = response?.query?.pages?.[-1]?.imageinfo?.[0]?.thumburl;
+
+        if (thumburl) {
+            _fetchThumbnailImage(imageName, size, thumburl, thumbnailCb);
+            _wikidataImageSourceCache[imageName + '/' + size] = thumburl;
+        }
+    });
+}
+
 function _onMetadataFetched(wiki, page, size, metadataCb, thumbnailCb) {
     /* Try to get a thumbnail *before* following language links--the primary
        article probably has the best thumbnail image */
@@ -218,7 +379,7 @@ function _fetchThumbnailImage(wiki, size, source, callback) {
    the original article should be used. */
 function _findLanguageLink(wiki, page) {
     let originalLang = getLanguage(wiki);
-    let languages = GLib.get_language_names().map((lang) => lang.split(/[\._\-]/)[0]);
+    let languages = _getLanguages();
 
     if (!languages.includes(originalLang)) {
         let langlinks = {};
@@ -232,4 +393,8 @@ function _findLanguageLink(wiki, page) {
             }
         }
     }
+}
+
+function _getLanguages() {
+    return GLib.get_language_names().map((lang) => lang.split(/[\._\-]/)[0]);
 }
