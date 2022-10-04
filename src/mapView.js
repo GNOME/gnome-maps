@@ -127,13 +127,7 @@ export class MapView extends Gtk.Overlay {
         return this._mapSource;
     }
 
-    constructor(params) {
-        let mapTypeParam = params.mapType;
-        delete params.mapType;
-
-        let mainWindow = params.mainWindow;
-        delete params.mainWindow;
-
+    constructor({mapType, mainWindow, ...params}) {
         super(params);
 
         this._mainWindow = mainWindow;
@@ -143,7 +137,7 @@ export class MapView extends Gtk.Overlay {
         this.child = this.map;
 
         this._initLicense();
-        this.setMapType(mapTypeParam ?? this._getStoredMapType());
+        this.setMapType(mapType ?? this._getStoredMapType());
 
         this._initScale();
         this._initLayers();

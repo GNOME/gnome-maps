@@ -32,13 +32,7 @@ import {PlaceView} from './placeView.js';
 import * as Utils from './utils.js';
 
 export class PlaceBar extends Gtk.Revealer {
-    constructor(params) {
-        let mapView = params.mapView;
-        delete params.mapView;
-
-        let mainWindow = params.mainWindow;
-        delete params.mainWindow;
-
+    constructor({mapView, mainWindow, ...params}) {
         super(params);
 
         this._mapView = mapView;

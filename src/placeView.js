@@ -47,22 +47,14 @@ const LRM = '\u200E';
 
 export class PlaceView extends Gtk.Box {
 
-    constructor(params) {
-        let place = params.place;
-        delete params.place;
-
-        let mapView = params.mapView;
-        delete params.mapView;
-
-        /* This mode is used in PlaceBar for inline current location details.
+    constructor({place, mapView, inlineMode, ...params}) {
+        /* inlineMode is used in PlaceBar for inline current location details.
            It hides the title box and decreases the start margin on the rows. */
-        let inlineMode = !!params.inlineMode;
-        delete params.inlineMode;
 
         super(params);
 
         this._place = place;
-        this._inlineMode = inlineMode;
+        this._inlineMode = !!inlineMode;
 
         let ui = Utils.getUIObject('place-view', [ 'bubble-main-box',
                                                    'bubble-spinner',

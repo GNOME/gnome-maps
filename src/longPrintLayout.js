@@ -40,10 +40,7 @@ const _MiniMapView = {
 
 export class LongPrintLayout extends PrintLayout {
 
-    constructor(params) {
-        let route = params.route;
-        delete params.route;
-
+    constructor({route, ...params}) {
         /* (Header + 3 maps) + instructions */
         let totalSurfaces = 4 + route.turnPoints.length;
 
@@ -52,9 +49,8 @@ export class LongPrintLayout extends PrintLayout {
             if (turnPoint.type === TurnPoint.Type.VIA)
                 totalSurfaces++;
         });
-        params.totalSurfaces = totalSurfaces;
 
-        super(params);
+        super({...params, totalSurfaces});
 
         this._route = route;
     }

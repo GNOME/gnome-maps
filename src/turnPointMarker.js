@@ -31,19 +31,7 @@ import * as Utils from './utils.js';
 
 export class TurnPointMarker extends MapMarker {
 
-    constructor(params) {
-        let queryPoint = params.queryPoint;
-        delete params.queryPoint;
-
-        let turnPoint = params.turnPoint;
-        delete params.turnPoint;
-
-        let transitStop = params.transitStop;
-        delete params.transitStop;
-
-        let transitLeg = params.transitLeg;
-        delete params.transitLeg;
-
+    constructor({queryPoint, turnPoint, transitStop, transitLeg, ...params}) {
         let latitude;
         let longitude;
 
@@ -55,11 +43,11 @@ export class TurnPointMarker extends MapMarker {
             longitude = transitStop.coordinate[1];
         }
 
-        params.place =
+        let place =
             new Place({ location: new Location({ latitude: latitude,
                                                  longitude: longitude }) });
 
-        super(params);
+        super({...params, place: place});
 
         this._queryPoint = queryPoint;
 

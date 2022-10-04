@@ -33,9 +33,8 @@ const _SHORT_LAYOUT_MAX_DISTANCE = 3000;
 
 export class PrintOperation {
 
-    constructor(params) {
-        this._mainWindow = params.mainWindow;
-        delete params.mainWindow;
+    constructor({mainWindow}) {
+        this._mainWindow = mainWindow;
 
         this._operation = new Gtk.PrintOperation({ embed_page_setup: true });
         this._operation.connect('begin-print', this._beginPrint.bind(this));

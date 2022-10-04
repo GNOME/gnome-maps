@@ -29,10 +29,7 @@ const MAX_LEGS_SHOWN = 8;
 
 export class TransitItineraryRow extends Gtk.ListBoxRow {
 
-    constructor(params) {
-        let itinerary = params.itinerary;
-        delete params.itinerary;
-
+    constructor({itinerary, ...params}) {
         super(params);
 
         this._itinerary = itinerary;

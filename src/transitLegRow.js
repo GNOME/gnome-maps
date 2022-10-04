@@ -37,16 +37,7 @@ const _ = gettext.gettext;
 
 export class TransitLegRow extends Gtk.ListBoxRow {
 
-    constructor(params) {
-        let leg = params.leg;
-        delete params.leg;
-
-        let start = params.start;
-        delete params.start;
-
-        let mapView = params.mapView;
-        delete params.mapView;
-
+    constructor({leg, start, mapView, ...params}) {
         super(params);
 
         this._leg = leg;

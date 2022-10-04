@@ -41,15 +41,8 @@ export class SendToDialog extends Gtk.Dialog {
         CANCEL: 1
     };
 
-    constructor(params) {
-        let place = params.place;
-        delete params.place;
-
-        let mapView = params.mapView;
-        delete params.mapView;
-
-        params.use_header_bar = true;
-        super(params);
+    constructor({place, mapView, ...params}) {
+        super({...params, use_header_bar: true});
 
         this._place = place;
         this._location = this._place.location;

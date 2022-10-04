@@ -27,10 +27,7 @@ import GObject from 'gi://GObject';
 /* Adds heading to Geocode.Location */
 export class Location extends Geocode.Location {
 
-    constructor(params) {
-        let heading = params.heading;
-        delete params.heading;
-
+    constructor({heading, ...params}) {
         super(params);
         this._heading = heading;
     }

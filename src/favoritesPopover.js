@@ -29,10 +29,7 @@ const _N_VISIBLE = 6;
 
 export class FavoritesPopover extends Gtk.Popover {
 
-    constructor(params) {
-        let mapView = params.mapView;
-        delete params.mapView;
-
+    constructor({mapView, ...params}) {
         super(params);
 
         this._mapView = mapView;

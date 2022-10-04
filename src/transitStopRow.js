@@ -28,13 +28,7 @@ const _ = gettext.gettext;
 
 export class TransitStopRow extends Gtk.ListBoxRow {
 
-    constructor(params) {
-        let stop = params.stop;
-        delete params.stop;
-
-        let final = params.final;
-        delete params.final;
-
+    constructor({stop, final, ...params}) {
         super(params);
 
         this.stop = stop;

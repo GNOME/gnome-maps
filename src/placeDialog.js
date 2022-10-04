@@ -26,15 +26,8 @@ import {PlaceFormatter} from './placeFormatter.js';
 import {PlaceView} from './placeView.js';
 
 export class PlaceDialog extends Gtk.Dialog {
-    constructor(params) {
-        let place = params.place;
-        delete params.place;
-
-        let mapView = params.mapView;
-        delete params.mapView;
-
-        params.use_header_bar = true;
-        super(params);
+    constructor({place, mapView, ...params}) {
+        super({...params, use_header_bar: true});
 
         if (this.transient_for.maximized) {
             this.maximize();

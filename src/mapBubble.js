@@ -42,13 +42,7 @@ const HEIGHT_MARGIN = 100;
 
 export class MapBubble extends Gtk.Popover {
 
-    constructor(params) {
-        let place = params.place;
-        delete params.place;
-
-        let mapView = params.mapView;
-        delete params.mapView;
-
+    constructor({place, mapView, ...params}) {
         super(params);
 
         let content = new PlaceView({ place, mapView, visible: true });

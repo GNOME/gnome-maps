@@ -32,10 +32,8 @@ const _PRIVACY_PANEL = 'gnome-location-panel.desktop';
 export class LocationServiceDialog extends Gtk.Dialog {
 
     constructor(params) {
-        /* This is a construct-only property and cannot be set by GtkBuilder */
-        params.use_header_bar = true;
-
-        super(params);
+        /* use_header_bar is a construct-only property and cannot be set by GtkBuilder */
+        super({...params, use_header_bar: true});
 
         this._settingsButton.connect('clicked', () => this._onSettings());
         this._cancelButton.connect('clicked', () => this._onCancel());

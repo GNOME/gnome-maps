@@ -30,8 +30,8 @@ const MAX_MATCHES = 10;
 
 export class OSMTypeSearchEntry extends Gtk.SearchEntry {
 
-    constructor(props) {
-        super(props);
+    constructor(params) {
+        super(params);
 
         this._popover = new OSMTypePopover({ entry: this });
         this._popover.set_parent(this);

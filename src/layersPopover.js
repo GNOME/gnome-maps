@@ -35,10 +35,7 @@ const PREVIEW_HEIGHT = 80;
 
 export class ShapeLayerRow extends Gtk.ListBoxRow {
 
-    constructor(params) {
-        let shapeLayer = params.shapeLayer;
-        delete params.shapeLayer;
-
+    constructor({shapeLayer, ...params}) {
         super(params);
 
         this.shapeLayer = shapeLayer;

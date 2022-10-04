@@ -57,19 +57,7 @@ const _MapView = {
 
 export class PrintLayout extends GObject.Object {
 
-    constructor(params) {
-        let pageWidth = params.pageWidth;
-        delete params.pageWidth;
-
-        let pageHeight = params.pageHeight;
-        delete params.pageHeight;
-
-        let totalSurfaces = params.totalSurfaces;
-        delete params.totalSurfaces;
-
-        let mainWindow = params.mainWindow;
-        delete params.mainWindow;
-
+    constructor({pageWidth, pageHeight, totalSurfaces, mainWindow, ...params}) {
         super(params);
 
         this._pageWidth = pageWidth;

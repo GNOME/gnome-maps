@@ -58,14 +58,14 @@ export class GraphHopper {
         return this._route;
     }
 
-    constructor(params) {
+    constructor({query}) {
         this._session = new Soup.Session({ user_agent : 'gnome-maps/' + pkg.version });
         this._key     = "VCIHrHj0pDKb8INLpT4s5hVadNmJ1Q3vi0J4nJYP";
         this._baseURL = "https://graphhopper.com/api/1/route?";
         this._locale  = GLib.get_language_names()[0];
         this._route   = new Route();
         this.storedRoute = null;
-        this._query = params.query;
+        this._query = query;
     }
 
     _updateFromStored() {

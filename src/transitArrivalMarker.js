@@ -30,16 +30,13 @@ import * as TransitPlan from './transitPlan.js';
 
 export class TransitArrivalMarker extends MapMarker {
 
-    constructor(params) {
-        let lastPoint = params.leg.polyline[params.leg.polyline.length - 1];
+    constructor({leg, ...params}) {
+        let lastPoint = leg.polyline[leg.polyline.length - 1];
         let location = new Location({ latitude: lastPoint.latitude,
                                       longitude: lastPoint.longitude });
-        let bgColor = params.leg.color ?? TransitPlan.DEFAULT_ROUTE_COLOR;
+        let bgColor = leg.color ?? TransitPlan.DEFAULT_ROUTE_COLOR;
 
-        delete params.leg;
-        params.place = new Place({ location: location });
-
-        super(params);
+        super({...params, place: new Place({ location: location })});
 
         let bgRed = Color.parseColor(bgColor, 0);
         let bgGreen = Color.parseColor(bgColor, 1);

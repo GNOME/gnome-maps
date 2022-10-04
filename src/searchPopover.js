@@ -28,11 +28,8 @@ import Gtk from 'gi://Gtk';
    focus-taking internal widget to the spawning search entry widget */
 export class SearchPopover extends Gtk.Popover {
 
-    constructor(props) {
-        let entry = props.entry;
-        delete props.entry;
-
-        super(props);
+    constructor({entry, ...params}) {
+        super(params);
 
         this._entry = entry;
 

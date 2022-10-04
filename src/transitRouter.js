@@ -40,9 +40,9 @@ import {Resrobot} from './transitplugins/resrobot.js';
  * requests).
  */
 export class TransitRouter {
-    constructor(params) {
+    constructor({query}) {
         this._plan = new Plan();
-        this._query = params.query;
+        this._query = query;
         this._providers = Service.getService().transitProviders;
         this._providerCache = [];
         this._language = Utils.getLanguage();

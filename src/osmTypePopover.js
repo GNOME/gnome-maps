@@ -27,8 +27,8 @@ import {SearchPopover} from './searchPopover.js';
 
 export class OSMTypePopover extends SearchPopover {
 
-    constructor(props) {
-        super(props);
+    constructor(params) {
+        super(params);
 
         this._list.connect('row-activated', (list, row) => {
             if (row)

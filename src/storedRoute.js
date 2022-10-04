@@ -34,19 +34,7 @@ const _LRM = '\u200E';
 
 export class StoredRoute extends Place {
 
-    constructor(params) {
-        let route = params.route;
-        delete params.route;
-
-        let transportation = params.transportation;
-        delete params.transportation;
-
-        let places = params.places;
-        delete params.places;
-
-        let geoclue = params.geoclue;
-        delete params.geoclue;
-
+    constructor({route, transportation, places, geoclue, ...params}) {
         super(params);
 
         this._transportation = transportation;

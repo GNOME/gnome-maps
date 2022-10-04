@@ -24,11 +24,8 @@ import Gtk from 'gi://Gtk';
 
 export class OSMTypeListRow extends Gtk.ListBoxRow {
 
-    constructor(props) {
-        let type = props.type;
-        delete props.type;
-
-        super(props);
+    constructor({type, ...params}) {
+        super(params);
 
         this._type = type;
         this._name.label = this._type.title;

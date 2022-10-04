@@ -29,10 +29,7 @@ const _Instruction = {
 };
 
 export class ShortPrintLayout extends PrintLayout {
-    constructor(params) {
-        let route = params.route;
-        delete params.route;
-
+    constructor({route, ...params}) {
         /* (Header +  map) + instructions */
         //let totalSurfaces = 2 + route.turnPoints.length;
         // for now don't count the map surface, as we don't have that yet

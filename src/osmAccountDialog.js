@@ -30,14 +30,9 @@ export class OSMAccountDialog extends Gtk.Dialog {
 
     static Response = { SIGNED_IN: 0 };
 
-    constructor(params) {
-        /* This is a construct-only property and cannot be set by GtkBuilder */
-        params.use_header_bar = true;
-
-        let closeOnSignIn = params.closeOnSignIn;
-        delete params.closeOnSignIn;
-
-        super(params);
+    constructor({closeOnSignIn, ...params}) {
+        /* use_header_bar is a construct-only property and cannot be set by GtkBuilder */
+        super({...params, use_header_bar: true});
 
         this._closeOnSignIn = closeOnSignIn;
         this._signInButton.connect('clicked',

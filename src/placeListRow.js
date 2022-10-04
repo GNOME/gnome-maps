@@ -27,18 +27,10 @@ import * as Utils from './utils.js';
 
 export class PlaceListRow extends Gtk.ListBoxRow {
 
-    constructor(params) {
-        let place = params.place;
-        delete params.place;
-
-        let searchString = params.searchString || '';
-        delete params.searchString;
-
-        let type = params.type;
-        delete params.type;
-
+    constructor({place, searchString, type, ...params}) {
         super(params);
-        this.update(place, type, searchString);
+
+        this.update(place, type, searchString || '');
     }
 
     update(place, type, searchString) {

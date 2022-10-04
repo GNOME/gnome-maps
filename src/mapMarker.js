@@ -34,18 +34,13 @@ import * as Utils from './utils.js';
 
 export class MapMarker extends Shumate.Marker {
 
-    constructor(params) {
-        let place = params.place;
-        delete params.place;
-
-        let mapView = params.mapView;
-        delete params.mapView;
-
-        params.latitude = place.location.latitude;
-        params.longitude = place.location.longitude;
-        params.selectable = true;
-
-        super(params);
+    constructor({place, mapView, ...params}) {
+        super({
+            ...params,
+            latitude: place.location.latitude,
+            longitude: place.location.longitude,
+            selectable: true,
+        });
 
         this._place = place;
         this._mapView = mapView;

@@ -27,18 +27,9 @@ import {OSMEdit} from './osmEdit.js';
 
 export class ZoomInDialog extends Gtk.Dialog {
 
-    constructor(params) {
-        let latitude = params.latitude;
-        delete params.latitude;
-        let longitude = params.longitude;
-        delete params.longitude;
-        let map = params.map;
-        delete params.map;
-
-        /* This is a construct-only property and cannot be set by GtkBuilder */
-        params.use_header_bar = true;
-
-        super(params);
+    constructor({latitude, longitude, map, ...params}) {
+        /* use_header_bar is a construct-only property and cannot be set by GtkBuilder */
+        super({...params, use_header_bar: true});
 
         this._latitude = latitude;
         this._longitude = longitude;

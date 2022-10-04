@@ -42,12 +42,7 @@ const TileFeature = { POINT: 1,
 
 export class GeoJSONSource extends GnomeMaps.SyncMapSource {
 
-    constructor(params) {
-        let mapView = params.mapView;
-        delete params.mapView;
-        let markerLayer = params.markerLayer;
-        delete params.markerLayer;
-
+    constructor({mapView, markerLayer, ...params}) {
         super(params);
 
         this._mapView = mapView;

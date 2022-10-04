@@ -44,12 +44,7 @@ const HIGH_CONTRAST_TEXT_COLOR = 'ffffff';
 
 export class TransitRouteLabel extends Gtk.Label {
 
-    constructor(params) {
-        let leg = params.leg;
-        let compact = params.compact;
-
-        delete params.leg;
-        delete params.compact;
+    constructor({leg, compact, ...params}) {
         super(params);
 
         this._setLabel(leg, compact);

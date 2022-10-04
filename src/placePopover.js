@@ -29,11 +29,8 @@ const _PLACE_ICON_SIZE = 20;
 
 export class PlacePopover extends SearchPopover {
 
-    constructor(props) {
-        let maxChars = props.maxChars;
-        delete props.maxChars;
-
-        super(props);
+    constructor({maxChars, ...params}) {
+        super(params);
 
         this._maxChars = maxChars;
 

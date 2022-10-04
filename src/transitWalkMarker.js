@@ -29,30 +29,24 @@ import {Place} from './place.js';
 
 export class TransitWalkMarker extends MapMarker {
 
-    constructor(params) {
+    constructor({leg, previousLeg, ...params}) {
         /* if there is a preceding leg, put the marker at the end of that leg
          * to avoid gaps, since we will "fill out" the walking leg path line
          * since sometimes the walking route might not reach exactly to the
          * transit stop's position
          */
         let point;
-        if (params.previousLeg)
-            point = params.previousLeg.polyline[params.previousLeg.polyline.length - 1];
+        if (previousLeg)
+            point = previousLeg.polyline[previousLeg.polyline.length - 1];
         else
-            point = params.leg.polyline[0];
+            point = leg.polyline[0];
 
-        let bgColor = params.leg.color ? params.leg.color :
-                                         TransitPlan.DEFAULT_ROUTE_COLOR;
-
-        delete params.leg;
-        delete params.previousLeg;
+        let bgColor = leg.color ? leg.color : TransitPlan.DEFAULT_ROUTE_COLOR;
 
         let location = new Location({ latitude: point.latitude,
                                       longitude: point.longitude });
 
-        params.place = new Place({ location: location });
-
-        super(params);
+        super({...params, place: new Place({ location: location })});
 
         let bgRed = Color.parseColor(bgColor, 0);
         let bgGreen = Color.parseColor(bgColor, 1);

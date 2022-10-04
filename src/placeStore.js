@@ -51,13 +51,7 @@ export class PlaceStore extends Gtk.ListStore {
         LANGUAGE: 5
     }
 
-    constructor(params) {
-        let recentPlacesLimit = params.recentPlacesLimit;
-        delete params.recentPlacesLimit;
-
-        let recentRoutesLimit = params.recentRoutesLimit;
-        delete params.recentRoutesLimit;
-
+    constructor({recentPlacesLimit, recentRoutesLimit, ...params}) {
         super(params);
 
         this._recentPlacesLimit = recentPlacesLimit;

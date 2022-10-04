@@ -37,27 +37,16 @@ export class ExportViewDialog extends Gtk.Dialog {
         CANCEL: 1
     };
 
-    constructor(params) {
-        let paintable = params.paintable;
-        delete params.paintable;
-
-        let latitude = params.latitude;
-        delete params.latitude;
-
-        let longitude = params.longitude;
-        delete params.longitude;
-
-        let mapView = params.mapView;
-        delete params.mapView;
-
-        let width = params.width;
-        delete params.width;
-
-        let height = params.height;
-        delete params.height;
-
-        params.use_header_bar = true;
-        super(params);
+    constructor({
+        paintable,
+        latitude,
+        longitude,
+        mapView,
+        width,
+        height,
+        ...params
+    }) {
+        super({...params, use_header_bar: true});
 
         this._paintable = paintable;
         this._mapView = mapView;

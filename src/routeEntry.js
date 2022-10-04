@@ -37,21 +37,12 @@ export class RouteEntry extends Gtk.Grid {
         VIA: 2
     }
 
-    constructor(params) {
-        let type = params.type;
-        delete params.type;
-
-        let point = params.point ?? null;
-        delete params.point;
-
-        let mapView = params.mapView ?? null;
-        delete params.mapView;
-
+    constructor({type, point, mapView, ...params}) {
         super(params);
 
         this._type = type;
-        this._point = point;
-        this._mapView = mapView;
+        this._point = point ?? null;
+        this._mapView = mapView ?? null;
         this.entry = this._createEntry();
         this._entryGrid.attach(this.entry, 0, 0, 1, 1);
 

@@ -254,19 +254,7 @@ const OSM_FIELDS = [
 
 export class OSMEditAddress extends Gtk.Grid {
 
-    constructor(params) {
-        let street = params.street;
-        delete params.street;
-
-        let number = params.number;
-        delete params.number;
-
-        let postCode = params.postCode;
-        delete params.postCode;
-
-        let city = params.city;
-        delete params.city;
-
+    constructor({street, number, postCode, city, ...params}) {
         super(params);
 
         if (street)
@@ -300,23 +288,8 @@ export class OSMEditDialog extends Gtk.Dialog {
         ERROR: 3
     };
 
-    constructor(params) {
-        let place = params.place;
-        delete params.place;
-
-        let addLocation = params.addLocation;
-        delete params.addLocation;
-
-        let latitude = params.latitude;
-        delete params.latitude;
-
-        let longitude = params.longitude;
-        delete params.longitude;
-
-        /* This is a construct-only property and cannot be set by GtkBuilder */
-        params.use_header_bar = true;
-
-        super(params);
+    constructor({place, addLocation, latitude, longitude, ...params}) {
+        super({...params, use_header_bar: true});
 
         /* I could not get this widget working from within the widget template
          * this results in a segfault. The widget definition is left in-place,

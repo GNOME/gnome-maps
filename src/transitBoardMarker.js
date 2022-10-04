@@ -41,15 +41,12 @@ const OUTLINE_LUMINANCE_THREASHHOLD = 0.9;
 
 export class TransitBoardMarker extends MapMarker {
 
-    constructor(params) {
-        let firstPoint = params.leg.polyline[0];
+    constructor({leg, ...params}) {
+        let firstPoint = leg.polyline[0];
         let location = new Location({ latitude: firstPoint.latitude,
                                       longitude: firstPoint.longitude });
-        let leg = params.leg;
 
-        delete params.leg;
-        params.place = new Place({ location: location });
-        super(params);
+        super({...params, place: new Place({ location: location })});
 
         this._image.pixel_size = MARKER_SIZE;
         this._image.paintable = this._createPaintable(leg);

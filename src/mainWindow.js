@@ -57,6 +57,7 @@ class ShapeLayerFileChooser extends Gtk.FileChooserNative {
 
     constructor(params) {
         super(params);
+
         let allFilter = new Gtk.FileFilter();
         allFilter.set_name(_("All Layer Files"));
         this.add_filter(allFilter);

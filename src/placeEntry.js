@@ -84,20 +84,11 @@ export class PlaceEntry extends Gtk.SearchEntry {
         return this._popover;
     }
 
-    constructor(props) {
-        let mapView = props.mapView;
-        delete props.mapView;
-
-        let maxChars = props.maxChars;
-        delete props.maxChars;
-
-        let matchRoute = props.matchRoute ?? false;
-        delete props.matchRoute;
-
-        super(props);
+    constructor({mapView, maxChars, matchRoute, ...params}) {
+        super(params);
 
         this._mapView = mapView;
-        this._matchRoute = matchRoute;
+        this._matchRoute = matchRoute ?? false;
         this._filter = new Gtk.TreeModelFilter({ child_model: Application.placeStore });
         this._filter.set_visible_func(this._completionVisibleFunc.bind(this));
 

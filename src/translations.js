@@ -284,7 +284,7 @@ function _translateOpeningHoursTime(string) {
 export function translateReligion(string) {
     switch(string) {
     case 'animist': return _("Animism");
-    case 'bahai': return_("Bahá'í");
+    case 'bahai': return _("Bahá'í");
     case 'buddhist': return _("Buddhism");
     case 'caodaism': return _("Caodaism");
     case 'christian': return _("Christianity");

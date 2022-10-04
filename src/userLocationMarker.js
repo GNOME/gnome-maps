@@ -28,14 +28,12 @@ import {MapMarker} from './mapMarker.js';
 
 export class AccuracyCircleMarker extends Shumate.Marker {
 
-    constructor(params) {
-        let place = params.place;
-        delete params.place;
-
-        params.latitude = place.location.latitude;
-        params.longitude = place.location.longitude;
-
-        super(params);
+    constructor({place, ...params}) {
+        super({
+            ...params,
+            latitude: place.location.latitude,
+            longitude: place.location.longitude,
+        });
 
         this._place = place;
     }

@@ -27,8 +27,8 @@ const _FALLBACK_TRANSPORTATION = RouteQuery.Transportation.PEDESTRIAN;
 
 export class RoutingDelegator {
 
-    constructor(params) {
-        this._query = params.query;
+    constructor({query}) {
+        this._query = query;
 
         this._transitRouting = false;
         this._graphHopper = new GraphHopper({ query: this._query });

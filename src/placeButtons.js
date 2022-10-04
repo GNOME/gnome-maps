@@ -31,13 +31,7 @@ import {PlaceStore} from './placeStore.js';
 import {SendToDialog} from './sendToDialog.js';
 
 export class PlaceButtons extends Gtk.Box {
-    constructor(params) {
-        let place = params.place;
-        delete params.place;
-
-        let mapView = params.mapView;
-        delete params.mapView;
-
+    constructor({place, mapView, ...params}) {
         super(params);
 
         this._mapView = mapView;

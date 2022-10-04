@@ -28,10 +28,7 @@ import {LayersPopover} from './layersPopover.js';
 import {MapView} from './mapView.js';
 
 export class HeaderBarLeft extends Gtk.Box {
-    constructor(params) {
-        let mapView = params.mapView;
-        delete params.mapView;
-
+    constructor({mapView, ...params}) {
         super(params);
 
         this._layersPopover = new LayersPopover({ mapView: mapView });

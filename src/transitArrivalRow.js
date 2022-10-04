@@ -27,13 +27,7 @@ import * as Transit from './transit.js';
 
 export class TransitArrivalRow extends Gtk.ListBoxRow {
 
-    constructor(params) {
-        let itinerary = params.itinerary;
-        delete params.itinerary;
-
-        let mapView = params.mapView;
-        delete params.mapView;
-
+    constructor({itinerary, mapView, ...params}) {
         super(params);
         let lastLeg = itinerary.legs[itinerary.legs.length - 1];
 

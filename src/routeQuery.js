@@ -141,8 +141,8 @@ export class RouteQuery extends GObject.Object {
         this.notify('points');
     }
 
-    constructor(args) {
-        super(args);
+    constructor(params) {
+        super(params);
         this._points = [];
         this._time = null;
         this._date = null;

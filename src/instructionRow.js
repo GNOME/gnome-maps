@@ -26,16 +26,7 @@ import * as Utils from './utils.js';
 
 export class InstructionRow extends Gtk.ListBoxRow {
 
-    constructor(params) {
-        let turnPoint = params.turnPoint;
-        delete params.turnPoint;
-
-        let hasColor = params.hasColor;
-        delete params.hasColor;
-
-        let lines = params.lines;
-        delete params.lines;
-
+    constructor({turnPoint, hasColor, lines, ...params}) {
         super(params);
 
         this.turnPoint = turnPoint;

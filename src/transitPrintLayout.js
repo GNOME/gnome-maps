@@ -57,14 +57,11 @@ const OUTLINE_LUMINANCE_THREASHHOLD = 0.9;
 
 export class TransitPrintLayout extends PrintLayout {
 
-    constructor(params) {
-        let itinerary = params.itinerary;
-        delete params.itinerary;
-
-        params.totalSurfaces =
-            TransitPrintLayout._getNumberOfSurfaces(itinerary);
-
-        super(params);
+    constructor({itinerary, ...params}) {
+        super({
+            ...params,
+            totalSurfaces: TransitPrintLayout._getNumberOfSurfaces(itinerary),
+        });
 
         this._itinerary = itinerary;
     }
