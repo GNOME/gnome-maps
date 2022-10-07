@@ -33,6 +33,11 @@ import * as Utils from './utils.js';
 const WP_REGEX = /^[a-z][a-z][a-z]?(\-[a-z]+)?$|^simple$/;
 
 /**
+ * Regex matching Wikidata tags
+ */
+const WIKIDATA_REGEX = /Q\d+/;
+
+/**
  * Wikidata properties
  */
 const WIKIDATA_PROPERTY_IMAGE = 'P18';
@@ -77,6 +82,13 @@ export function isValidWikipedia(wiki) {
     let wpCode = parts[0];
 
     return wpCode.match(WP_REGEX) !== null;
+}
+
+/**
+ * Determine if a Wikidata reference tag is valid (of the form Qnnn)
+ */
+export function isValidWikidata(wikidata) {
+    return wikidata.match(WIKIDATA_REGEX) !== null;
 }
 
 /*

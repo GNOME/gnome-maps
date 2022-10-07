@@ -38,3 +38,14 @@ JsUnit.assertTrue(Wikipedia.isValidWikipedia('zh-yue:粵文維基百科'));
 // invalid references
 JsUnit.assertFalse(Wikipedia.isValidWikipedia('https://en.wikipedia.org/wiki/Article'));
 JsUnit.assertFalse(Wikipedia.isValidWikipedia('Article with no edition'));
+
+// valid wikidata references
+JsUnit.assertTrue(Wikipedia.isValidWikidata('Q1234'));
+JsUnit.assertTrue(Wikipedia.isValidWikidata('Q1'));
+JsUnit.assertTrue(Wikipedia.isValidWikidata('Q100000000'));
+
+// invalid wikidata references
+JsUnit.assertFalse(Wikipedia.isValidWikidata('1234'));
+JsUnit.assertFalse(Wikipedia.isValidWikidata('AAAA'));
+JsUnit.assertFalse(Wikipedia.isValidWikidata('Q'));
+JsUnit.assertFalse(Wikipedia.isValidWikidata('en:Article'));
