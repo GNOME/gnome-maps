@@ -224,6 +224,33 @@ export function fetchArticleInfoForWikidata(wikidata, defaultArticle,
     });
 }
 
+export function fetchWikidataForArticle(wiki, cancellable, callback) {
+    let lang = getLanguage(wiki);
+    let title = getHtmlEntityEncodedArticle(wiki);
+    let uri = 'https://www.wikidata.org/w/api.php';
+    let encodedForm = Soup.form_encode_hash({ action: 'wbgetentities',
+                                              sites:  lang + 'wiki',
+                                              titles:  title,
+                                              format: 'json' });
+    let msg = Soup.Message.new_from_encoded_form('GET', uri, encodedForm);
+    let session = _getSoupSession();
+
+    session.send_and_read_async(msg, GLib.PRIORIRY_DEFAULT, cancellable,
+                                     (source, res) => {
+        if (msg.get_status() !== Soup.Status.OK) {
+            log(`Failed to request Wikidata entities: ${msg.reason_phrase}`);
+            callback(null);
+            return;
+        }
+
+        let buffer = session.send_and_read_finish(res).get_data();
+        let response = JSON.parse(Utils.getBufferText(buffer));
+        let id = Object.values(response.entities ?? [])?.[0]?.id;
+
+        callback(id);
+    });
+}
+
 function _onWikidataFetched(wikidata, defaultArticle, response, size,
                             metadataCb, thumbnailCb) {
     let sitelinks = response?.entities?.[wikidata]?.sitelinks;
