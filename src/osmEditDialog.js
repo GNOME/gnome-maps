@@ -49,21 +49,11 @@ const EditFieldType = {
     INTEGER:          1,
     UNSIGNED_INTEGER: 2,
     COMBO:            3,
-    ADDRESS:          4
+    ADDRESS:          4,
+    WIKIPEDIA:        5
 };
 
 const _WIKI_BASE = 'https://wiki.openstreetmap.org/wiki/Key:';
-
-var _osmWikipediaRewriteFunc = function(text) {
-    let wikipediaArticleFormatted = OSMUtils.getWikipediaOSMArticleFormatFromUrl(text);
-
-    /* if the entered text is a Wikipedia link,
-     * substitute it with the OSM-formatted Wikipedia article tag */
-    if (wikipediaArticleFormatted)
-        return wikipediaArticleFormatted;
-    else
-        return text;
-};
 
 /* Reformat a phone number string if it looks like a tel: URI
  * strip off the leading tel: protocol string and trailing parameters,
@@ -157,12 +147,10 @@ const OSM_FIELDS = [
     },
     {
         name: _("Wikipedia"),
-        tag: 'wikipedia',
-        type: EditFieldType.TEXT,
-        validate: Wikipedia.isValidWikipedia,
-        rewriteFunc: _osmWikipediaRewriteFunc,
-        hint: _("The format used should include the language code " +
-                "and the article title like “en:Article title”.")
+        tag: 'wiki',
+        subtags: ['wikipedia',
+                  'wikidata'],
+        type: EditFieldType.WIKIPEDIA
     },
     {
         name: _("Opening hours"),
@@ -252,7 +240,7 @@ const OSM_FIELDS = [
         hint: _("Information used to inform other mappers about non-obvious information about an element, the author’s intent when creating it, or hints for further improvement.")
     }];
 
-export class OSMEditAddress extends Gtk.Grid {
+class OSMEditAddress extends Gtk.Grid {
 
     constructor({street, number, postCode, city, ...params}) {
         super(params);
@@ -279,8 +267,39 @@ GObject.registerClass({
                 'city' ],
 }, OSMEditAddress);
 
-export class OSMEditDialog extends Gtk.Dialog {
+class OSMEditWikipedia extends Gtk.Grid {
 
+    constructor({article, wikidata, ...params}) {
+        super(params);
+
+        if (article)
+            this.article.text = article;
+
+        if (wikidata)
+            this.wikidata.text = wikidata;
+
+        if (article && !Wikipedia.isValidWikipedia(article))
+            this.article.get_style_context().add_class("warning");
+        else
+            this.article.get_style_context().remove_class("warning");
+
+        if (wikidata && !Wikipedia.isValidWikidata(wikidata))
+            this.wikidata.get_style_context().add_class("warning");
+        else
+            this.wikidata.get_style_context().remove_class("warning");
+
+        this.refresh.sensitive = article !==  '';
+    }
+}
+
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/osm-edit-wikipedia.ui',
+    Children: [ 'article',
+                'wikidata',
+                'refresh' ]
+}, OSMEditWikipedia);
+
+export class OSMEditDialog extends Gtk.Dialog {
     static Response = {
         UPLOADED: 0,
         DELETED: 1,
@@ -753,9 +772,84 @@ export class OSMEditDialog extends Gtk.Dialog {
         addr.post.connect('changed', changedFunc.bind(this, addr.post, 2));
         addr.city.connect('changed', changedFunc.bind(this, addr.city, 3));
 
-        let rows = fieldSpec.rows || 1;
+        let rows = fieldSpec.rows ?? 1;
         this._editorGrid.attach(addr, 1, this._currentRow, 1, rows);
         addr.street.grab_focus();
+        this._addOSMEditDeleteButton(fieldSpec);
+        this._currentRow += rows;
+    }
+
+    _addOSMEditWikipediaEntry(fieldSpec, value) {
+        this._addOSMEditLabel(fieldSpec)
+
+        let wiki = new OSMEditWikipedia({ article:  value[0],
+                                          wikidata: value[1] });
+
+        wiki.article.connect('changed', () => {
+            let rewrittenText =
+                OMSUtils.getWikipediaOSMArticleFormatFromUrl(wiki.article.text);
+
+            if (rewrittenText)
+                wiki.article.text = rewrittenText;
+
+            if (wiki.article.text !== '' &&
+                !Wikipedia.isValidWikipedia(wiki.article.text)) {
+                wiki.article.get_style_context().add_class("warning");
+            } else {
+                wiki.article.get_style_context().remove_class("warning");
+            }
+
+            this._osmObject.set_tag(fieldSpec.subtags[0], wiki.article.text);
+            this._nextButton.sensitive = true;
+            wiki.refreshWikidata.sensitive = wiki.article.text !==  '';
+        });
+
+        wiki.wikidata.connect('changed', () => {
+            let rewrittenText =
+                OSMUtils.getWikidataFromUrl(wiki.wikidata.text);
+
+            if (rewrittenText)
+                wiki.wikidata.text = rewrittenText;
+
+            if (wiki.wikidata.text !== '' &&
+                !Wikipedia.isValidWikidata(wiki.wikidata.text)) {
+                wiki.wikidata.get_style_context().add_class("warning");
+            } else {
+                wiki.wikidata.get_style_context().remove_class("warning");
+            }
+
+            this._osmObject.set_tag(fieldSpec.subtags[1], wiki.wikidata.text);
+            this._nextButton.sensitive = true;
+        });
+
+        wiki.article.connect('icon-press', () => {
+            this._showHintPopover(wiki.article,
+                                  _("The format used should include the language code " +
+                                    "and the article title like “en:Article title”."));
+        });
+
+        wiki.wikidata.connect('icon-press', () => {
+            this._showHintPopover(wiki.wikidata,
+                                  _("Use the reload button to load the Wikidata tag for the selected article"));
+        });
+
+        wiki.refresh.connect('clicked', () => {
+            Wikipedia.fetchWikidataForArticle(wiki.article.text,
+                                              this._cancellable,
+                                              (wikidata) => {
+                if (!wikidata) {
+                    Utils.showDialog(_("Couldn't find Wikidata tag for article"),
+                                     Gtk.MessageType.ERROR, this);
+                    return;
+                }
+
+                wiki.wikidata.text = wikidata;
+            });
+        });
+
+        let rows = fieldSpec.rows ?? 1;
+        this._editorGrid.attach(wiki, 1, this._currentRow, 1, rows);
+        wiki.article.grab_focus();
         this._addOSMEditDeleteButton(fieldSpec);
         this._currentRow += rows;
     }
@@ -828,19 +922,22 @@ export class OSMEditDialog extends Gtk.Dialog {
     _addOSMField(fieldSpec, value) {
         switch (fieldSpec.type) {
         case EditFieldType.TEXT:
-            this._addOSMEditTextEntry(fieldSpec, value || '');
+            this._addOSMEditTextEntry(fieldSpec, value ?? '');
             break;
         case EditFieldType.INTEGER:
-            this._addOSMEditIntegerEntry(fieldSpec, value || 0, -1e9, 1e9);
+            this._addOSMEditIntegerEntry(fieldSpec, value ?? 0, -1e9, 1e9);
             break;
         case EditFieldType.UNSIGNED_INTEGER:
-            this._addOSMEditIntegerEntry(fieldSpec, value || 0, 0, 1e9);
+            this._addOSMEditIntegerEntry(fieldSpec, value ?? 0, 0, 1e9);
             break;
         case EditFieldType.COMBO:
-            this._addOSMEditComboEntry(fieldSpec, value || '');
+            this._addOSMEditComboEntry(fieldSpec, value ?? '');
             break;
         case EditFieldType.ADDRESS:
-            this._addOSMEditAddressEntry(fieldSpec, value || '');
+            this._addOSMEditAddressEntry(fieldSpec, value ?? '');
+            break;
+        case EditFieldType.WIKIPEDIA:
+            this._addOSMEditWikipediaEntry(fieldSpec, value ?? '');
             break;
         }
     }
@@ -901,3 +998,4 @@ GObject.registerClass({
                         'recentTypesListBox',
                         'headerBar'],
 }, OSMEditDialog);
+
