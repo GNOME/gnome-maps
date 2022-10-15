@@ -48,7 +48,7 @@ libmaps_deps = [
 ]
 
 msgfmt = find_program('msgfmt')
-po_dir = join_paths(meson.source_root(), 'po')
+po_dir = join_paths(meson.project_source_root(), 'po')
 
 top_inc = include_directories('.')
 

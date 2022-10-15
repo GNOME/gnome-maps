@@ -12,7 +12,7 @@ endif
 
 foreach test : tests
   script_conf = configuration_data()
-  script_conf.set('GJS', gjs.path())
+  script_conf.set('GJS', gjs.full_path())
   script_conf.set('PACKAGE_VERSION', version)
   script_conf.set('libdir', libdir)
   script_conf.set('prefix', prefix)
@@ -43,14 +43,14 @@ gnome.compile_resources(
   ),
   gresource_bundle: true,
   install: false,
-  install_dir: meson.build_root(),
+  install_dir: meson.project_build_root(),
   source_dir: ['../src', '../src/geojson-vt']
 )
 
 foreach test : tests
   test(test, gjs,
        args: ['tests/@0@'.format(test),
-              join_paths(meson.build_root(), 'tests', 'test.src.gresource')],
+              join_paths(meson.project_build_root(), 'tests', 'test.src.gresource')],
        env:  ['LANG=en_US.utf8', 'LC_ALL=en_US.utf8']
   )
 endforeach

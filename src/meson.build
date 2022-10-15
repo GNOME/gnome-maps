@@ -7,7 +7,7 @@ else
 endif
 
 script_conf = configuration_data()
-script_conf.set('GJS', gjs.path())
+script_conf.set('GJS', gjs.full_path())
 script_conf.set('PACKAGE_VERSION', version)
 script_conf.set('libdir', libdir)
 script_conf.set('prefix', prefix)
