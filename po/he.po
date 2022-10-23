@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps 3.9.91\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2022-08-26 20:12+0000\n"
-"PO-Revision-Date: 2022-09-11 07:18+0300\n"
+"POT-Creation-Date: 2022-09-17 21:24+0000\n"
+"PO-Revision-Date: 2022-10-23 20:07+0300\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
 "Language: he\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
 "2 : 3)\n"
-"X-Generator: Gtranslator 40.0\n"
+"X-Generator: Gtranslator 42.0\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -55,7 +55,7 @@ msgstr ""
 "מפות משתמש במסד הנתונים השיתופי OpenStreetMap, שנוצר על ידי מאות אלפי אנשים "
 "על פני כדור הארץ."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:279 src/mainWindow.js:496
+#: data/org.gnome.Maps.appdata.xml.in.in:317 src/mainWindow.js:496
 msgid "The GNOME Project"
 msgstr "מיזם GNOME"
 
@@ -177,12 +177,10 @@ msgid "Route to here"
 msgstr "מסלול לכאן"
 
 #: data/ui/context-menu.ui:20
-#| msgid "What’s here?"
 msgid "What's here?"
 msgstr "מה יש כאן?"
 
 #: data/ui/context-menu.ui:24
-#| msgid "Copy Location"
 msgid "Copy location"
 msgstr "העתקת מיקום"
 
@@ -326,7 +324,7 @@ msgstr "לפתוח שכבת צורות…"
 msgid "Turn on location services to find your location"
 msgstr "הפעלת שירותי איכון למציאת המיקום שלך"
 
-#: data/ui/location-service-dialog.ui:28 data/ui/osm-edit-dialog.ui:219
+#: data/ui/location-service-dialog.ui:28 data/ui/osm-edit-dialog.ui:220
 #: data/ui/zoom-in-dialog.ui:21
 msgid "Cancel"
 msgstr "ביטול"
@@ -428,23 +426,23 @@ msgstr "מיקוד"
 msgid "City"
 msgstr "עיר"
 
-#: data/ui/osm-edit-dialog.ui:53
+#: data/ui/osm-edit-dialog.ui:54
 msgid "Type"
 msgstr "סוג"
 
-#: data/ui/osm-edit-dialog.ui:75
+#: data/ui/osm-edit-dialog.ui:76
 msgid "None"
 msgstr "ללא"
 
-#: data/ui/osm-edit-dialog.ui:104
+#: data/ui/osm-edit-dialog.ui:105
 msgid "Add Field"
 msgstr "הוספת שדה"
 
-#: data/ui/osm-edit-dialog.ui:126
+#: data/ui/osm-edit-dialog.ui:127
 msgid "Comment"
 msgstr "הערות"
 
-#: data/ui/osm-edit-dialog.ui:154
+#: data/ui/osm-edit-dialog.ui:155
 msgid ""
 "Map changes will be visible on all maps that use\n"
 "OpenStreetMap data."
@@ -452,19 +450,19 @@ msgstr ""
 "שינויים במפה יופיעו בכל המפות המשתמשות\n"
 "במידע מ־OpenStreetMap."
 
-#: data/ui/osm-edit-dialog.ui:182
+#: data/ui/osm-edit-dialog.ui:183
 msgid "Recently Used"
 msgstr "בשימוש לאחרונה"
 
-#: data/ui/osm-edit-dialog.ui:232 src/osmEditDialog.js:539
+#: data/ui/osm-edit-dialog.ui:233 src/osmEditDialog.js:539
 msgid "Next"
 msgstr "הבא"
 
-#: data/ui/place-popover.ui:40 src/application.js:269
+#: data/ui/place-popover.ui:42 src/application.js:269
 msgid "No results found"
 msgstr "לא נמצאו תוצאות"
 
-#: data/ui/place-popover.ui:50 src/application.js:246 src/osmEditDialog.js:576
+#: data/ui/place-popover.ui:52 src/application.js:246 src/osmEditDialog.js:576
 msgid "An error has occurred"
 msgstr "התרחשה שגיאה"
 
@@ -500,7 +498,6 @@ msgstr "הצגה"
 
 #. Translators: This is a tooltip
 #: data/ui/shape-layer-row.ui:44
-#| msgid "Open Shape Layer"
 msgid "Remove Shape Layer"
 msgstr "למחוק שכבת צורות"
 
@@ -729,7 +726,9 @@ msgstr "ההתחברות לשרת האיכון נכשלה"
 
 #: src/mainWindow.js:497
 msgid "translator-credits"
-msgstr "יוסף אור בוצ׳קו <yoseforb@gnome.org>"
+msgstr ""
+"יוסף אור בוצ׳קו <yoseforb@gnome.org>\n"
+"מיזם תרגום GNOME לעברית https://l10n.gnome.org/teams/he/"
 
 #: src/mainWindow.js:501
 msgid "Copyright © 2011 – 2022 Red Hat, Inc. and The GNOME Maps authors"
@@ -746,7 +745,6 @@ msgid "Map Data Provider"
 msgstr "ספק מידע המפה"
 
 #: src/mainWindow.js:530
-#| msgid "Map tiles provided by %s"
 msgid "Map Tile Provider"
 msgstr "ספק אריחי המפה"
 
@@ -769,34 +767,34 @@ msgstr "ספק חיפוש"
 msgid "Search provided by %s using %s"
 msgstr "החיפוש סופק על ידי %s בעזרת %s"
 
-#: src/mapView.js:502 src/mapView.js:562
+#: src/mapView.js:507 src/mapView.js:567
 msgid "Failed to open layer"
 msgstr "פתיחת שכבה נכשלה"
 
-#: src/mapView.js:523
+#: src/mapView.js:528
 msgid "Do you want to continue?"
 msgstr "להמשיך?"
 
-#: src/mapView.js:524
+#: src/mapView.js:529
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
 "time to load"
 msgstr "פעולה זו תפתח קבצים בגודל כולל של %s מ״ב. הטעינה עשויה לארוך זמן מה"
 
-#: src/mapView.js:556
+#: src/mapView.js:561
 msgid "File type is not supported"
 msgstr "סוג הקובץ אינו נתמך"
 
-#: src/mapView.js:594
+#: src/mapView.js:599
 msgid "Failed to open GeoURI"
 msgstr "פתיחת GeoURI נכשלה"
 
-#: src/mapView.js:1025
+#: src/mapView.js:1039
 msgid "Nothing found here!"
 msgstr "לא נמצא כאן דבר!"
 
-#: src/mapView.js:1086
+#: src/mapView.js:1100
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -1332,7 +1330,7 @@ msgstr "פתיחת הכתובת נכשלה"
 msgid "Open with %s"
 msgstr "לפתוח עם %s"
 
-#: src/shapeLayer.js:98
+#: src/shapeLayer.js:93
 msgid "failed to load file"
 msgstr "אירע כשל בטעינת הקובץ"
 
