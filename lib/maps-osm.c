@@ -355,8 +355,8 @@ fill_members (MapsOSMRelation *relation, const GList *members)
     guint type;
     const char *role = g_hash_table_lookup (attributes, "role");
     const char *ref_string = g_hash_table_lookup (attributes, "ref");
-    guint64 ref;
-    
+    guint64 ref = 0;
+
     if (ref_string)
       ref = g_ascii_strtoull (ref_string, NULL, 10);
 
@@ -436,7 +436,7 @@ maps_osm_parse (const char *content, guint length, GError **error)
 {
   xmlDocPtr doc;
   xmlNodePtr sub_node;
-  MapsOSMObject *object;
+  MapsOSMObject *object = NULL;
 
   doc = read_xml_doc (content, length, error);
 
