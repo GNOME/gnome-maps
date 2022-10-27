@@ -43,6 +43,23 @@ export function getWikipediaOSMArticleFormatFromUrl(url) {
     }
 }
 
+/*
+ * Gets a Wikidata tag from from a URL of the forms
+ * https://www.wikidata.org/wiki/Qnnnn, or
+ * https://www.wikidata.org/wiki/Special:EntityPage/Qnnnn
+ * or null if input doesn't match these formats
+ */
+export function getWikidataFromUrl(url) {
+    let regex =
+        /https?:\/\/www.\wikidata\.org\/wiki\/(?:Special:EntityPage\/)?(Q\d+)/;
+    let match = url.match(regex);
+
+    if (match?.length === 3 || match?.length === 2)
+        return match.last();
+    else
+        return null;
+}
+
 /**
  * Updates a Place object according to an OSMObject.
  * Will also update place in the place store.
