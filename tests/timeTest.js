@@ -23,6 +23,11 @@ const JsUnit = imports.jsUnit;
 
 import * as Time from './time.js';
 
+function compare12HourTime(format, hoursMinutes, AMPM) {
+    JsUnit.assertTrue(format.includes(hoursMinutes));
+    JsUnit.assertTrue(format.endsWith(AMPM));
+}
+
 function formatTimeWithTZOffsetTest() {
     // mock to always use 24 hour format
     Time._setIs12HourFunction(() => { return false; });
@@ -35,8 +40,8 @@ function formatTimeWithTZOffsetTest() {
     // mock to always use 12 hour format
     Time._setIs12HourFunction(() => { return true; });
 
-    JsUnit.assertEquals('10:54 PM',
-                        Time.formatTimeWithTZOffset(1607982864000, 3600000));
+    compare12HourTime(Time.formatTimeWithTZOffset(1607982864000, 3600000),
+                      '10:54', 'PM');
 }
 
 function formatTimeFromHoursAndMinsTest() {
@@ -50,9 +55,9 @@ function formatTimeFromHoursAndMinsTest() {
     // mock to always use 12 hour format
     Time._setIs12HourFunction(() => { return true; });
 
-    JsUnit.assertEquals('12:34 PM', Time.formatTimeFromHoursAndMins(12, 34));
-    JsUnit.assertEquals('12:00 AM', Time.formatTimeFromHoursAndMins(24, 0));
-    JsUnit.assertEquals('12:01 PM', Time.formatTimeFromHoursAndMins(12, 1));
+    compare12HourTime(Time.formatTimeFromHoursAndMins(12, 34), '12:34', 'PM');
+    compare12HourTime(Time.formatTimeFromHoursAndMins(24, 0), '12:00', 'AM');
+    compare12HourTime(Time.formatTimeFromHoursAndMins(12, 1), '12:01', 'PM');
 }
 
 formatTimeWithTZOffsetTest();
