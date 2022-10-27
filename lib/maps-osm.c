@@ -69,12 +69,12 @@ parse_tag (const xmlAttr *attrs, GHashTable *tags)
 
   key = NULL;
   value = NULL;
-  
+
   for (cur_attr = attrs; cur_attr; cur_attr = cur_attr->next)
     {
-      if (g_str_equal (cur_attr->name, "k"))
+      if (g_str_equal ((const char *) cur_attr->name, "k"))
         key = (char *) cur_attr->children->content;
-      else if (g_str_equal (cur_attr->name, "v"))
+      else if (g_str_equal ((const char *) cur_attr->name, "v"))
         value = (char *) cur_attr->children->content;
       else
         g_warning ("Unexpected tag property: %s\n", cur_attr->name);
@@ -115,7 +115,7 @@ parse_tags (const xmlNode *tag_child)
       if (cur_node->type != XML_ELEMENT_NODE)
         continue;
 
-      if (g_str_equal (cur_node->name, "tag"))
+      if (g_str_equal ((const char *) cur_node->name, "tag"))
         parse_tag (cur_node->properties, tags);
     }
 
@@ -136,7 +136,7 @@ parse_node_refs (const xmlNode *node_ref_child)
       if (cur_node->type != XML_ELEMENT_NODE)
         continue;
 
-      if (g_str_equal (cur_node->name, "nd"))
+      if (g_str_equal ((const char *) cur_node->name, "nd"))
         {
           char *ref;
           GHashTable *attributes;
@@ -332,7 +332,7 @@ parse_members (const xmlNode *member_child)
       if (cur_node->type != XML_ELEMENT_NODE)
         continue;
 
-      if (g_str_equal (cur_node->name, "member"))
+      if (g_str_equal ((const char *) cur_node->name, "member"))
         {
           GHashTable *attributes;
 
@@ -452,15 +452,15 @@ maps_osm_parse (const char *content, guint length, GError **error)
       return NULL;
     }
 
-  if (g_str_equal (sub_node->name, "node"))
+  if (g_str_equal ((const char *) sub_node->name, "node"))
     {
       object = MAPS_OSMOBJECT (parse_node (sub_node, error));
     }
-  else if (g_str_equal (sub_node->name, "way"))
+  else if (g_str_equal ((const char *) sub_node->name, "way"))
     {
       object = MAPS_OSMOBJECT (parse_way (sub_node, error));
     }
-  else if (g_str_equal (sub_node->name, "relation"))
+  else if (g_str_equal ((const char *) sub_node->name, "relation"))
     {
       object = MAPS_OSMOBJECT (parse_relation (sub_node, error));
     }
@@ -495,7 +495,7 @@ maps_osm_parse_user_details (const char *content, GError **error)
       return NULL;
     }
 
-  if (g_str_equal (sub_node->name, "user"))
+  if (g_str_equal ((const char *) sub_node->name, "user"))
     {
       g_autoptr (GHashTable) attributes;
 
