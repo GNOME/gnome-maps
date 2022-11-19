@@ -580,7 +580,7 @@ export class PlaceView extends Gtk.Box {
 
         if (place.wikidata && Wikipedia.isValidWikidata(place.wikidata)) {
             let defaultArticle =
-                place.wiki && Wikipedia.isValidWikipedia(place.wiki)) ?
+                place.wiki && Wikipedia.isValidWikipedia(place.wiki) ?
                 place.wiki : null;
 
             this._requestWikidata(place.wikidata, defaultArticle);
