@@ -29,7 +29,7 @@ export class PlaceMarker extends MapMarker {
     constructor(params) {
         super(params);
 
-        this._image.icon_name = 'mark-location';
+        this._image.icon_name = 'maps-mark-location';
         this._image.icon_size = Gtk.IconSize.LARGE;
     }
 
