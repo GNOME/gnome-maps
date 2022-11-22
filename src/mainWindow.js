@@ -330,17 +330,22 @@ export class MainWindow extends Gtk.ApplicationWindow {
 
         this._actionBarRight = new HeaderBarRight({ mapView: this._mapView });
         this._actionBar.pack_end(this._actionBarRight);
+    }
+
+    vfunc_realize() {
+        super.vfunc_realize();
+        this._surface = this.get_native().get_surface();
 
         // update adaptive status based on initial geometry
         this._updateAdaptiveMode();
 
-        this.connect('notify::default-width', () => {
+        this._surface.connect('notify::width', () => {
             this._updateAdaptiveMode();
         });
     }
 
     _updateAdaptiveMode() {
-        let width = this.default_width;
+        let width = this._surface.width;
 
         if (width < _ADAPTIVE_VIEW_WIDTH) {
             this.application.adaptive_mode = true;
