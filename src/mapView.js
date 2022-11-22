@@ -197,7 +197,7 @@ export class MapView extends Gtk.Overlay {
         this._clickGesture.connect('pressed', this._onClickGesturePressed.bind(this));
         this.add_controller(this._clickGesture);
 
-        this._longPressGesture = new Gtk.GestureLongPress();;
+        this._longPressGesture = new Gtk.GestureLongPress({ touch_only: true });;
         this._longPressGesture.connect('pressed',
                                        this._onLongPressGesturePressed.bind(this));
         this.add_controller(this._longPressGesture);
