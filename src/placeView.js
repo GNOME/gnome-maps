@@ -481,8 +481,8 @@ export class PlaceView extends Gtk.Box {
 
             let box = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL,
                                     visible: true,
-                                    marginStart: 18,
-                                    marginEnd: 18,
+                                    marginStart: 12,
+                                    marginEnd: 12,
                                     marginTop: 6,
                                     marginBottom: 6,
                                     spacing: 12 });
@@ -522,7 +522,7 @@ export class PlaceView extends Gtk.Box {
 
             if (grid) {
                 widget = new Gtk.Grid({ visible:        true,
-                                        column_spacing: 8 });
+                                        column_spacing: 6 });
 
                 for (let i = 0; i < grid.length; i++) {
                     let row = grid[i];
@@ -560,7 +560,7 @@ export class PlaceView extends Gtk.Box {
                                          halign: Gtk.Align.FILL });
 
                 if (type === 'wikipedia') {
-                    box.marginTop = 14;
+                    box.marginTop = 12;
                     box.marginBottom = 18;
                     this._wikipediaLabel = widget;
                 }
