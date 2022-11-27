@@ -219,7 +219,13 @@ export class Application extends Adw.Application {
             let mapsURI = uri.replace(/\//g, '');
             this._openMapsUri(mapsURI);
         } else {
-            this._mainWindow.mapView.openShapeLayers(files);
+            let list = new Gio.ListStore(Gio.File.Gtype);
+
+            for (let i = 0; i < files.length; i++) {
+                list.insert(i, files[i]);
+            }
+
+            this._mainWindow.mapView.openShapeLayers(list);
         }
     }
 
