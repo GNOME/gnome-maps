@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2022-10-23 17:08+0000\n"
+"POT-Creation-Date: 2022-12-01 02:11+0000\n"
 "Last-Translator: Нанба Наала <naala-nanba@rambler.ru>\n"
 "Language-Team: Abkhazian <daniel.abzakh@gmail.com>\n"
 "Language: ab\n"
@@ -21,7 +21,7 @@ msgstr ""
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
 #: data/ui/main-window.ui:27 src/application.js:61 src/mainWindow.js:133
-#: src/mainWindow.js:511
+#: src/mainWindow.js:516
 msgid "Maps"
 msgstr ""
 
@@ -42,7 +42,7 @@ msgid ""
 "thousands of people across the globe."
 msgstr ""
 
-#: data/org.gnome.Maps.appdata.xml.in.in:331 src/mainWindow.js:508
+#: data/org.gnome.Maps.appdata.xml.in.in:331 src/mainWindow.js:513
 msgid "The GNOME Project"
 msgstr "The GNOME Project"
 
@@ -59,6 +59,32 @@ msgstr ""
 msgid "Allows your location to be shown on the map."
 msgstr ""
 
+#: data/org.gnome.Maps.gschema.xml:11
+#, fuzzy
+#| msgid "Share location"
+msgid "last viewed location"
+msgstr "Ҭыԥс шәахьыҟоу азнагара"
+
+#: data/org.gnome.Maps.gschema.xml:12
+msgid "Coordinates of last viewed location."
+msgstr ""
+
+#: data/org.gnome.Maps.gschema.xml:16
+msgid "zoom"
+msgstr ""
+
+#: data/org.gnome.Maps.gschema.xml:17
+msgid "Zoom level"
+msgstr ""
+
+#: data/org.gnome.Maps.gschema.xml:21
+msgid "Map type"
+msgstr ""
+
+#: data/org.gnome.Maps.gschema.xml:22
+msgid "The type of map to display (street, aerial, etc.)"
+msgstr ""
+
 #: data/org.gnome.Maps.gschema.xml:26
 msgid "Window size"
 msgstr "Аԥенџьыр ашәагаа"
@@ -70,6 +96,66 @@ msgstr "Аԥенџьыр ашәагаа (аҭбаареи аҳаракыреи)"
 #: data/org.gnome.Maps.gschema.xml:31
 msgid "Window position"
 msgstr "Аԥенџьыр аҭыԥ"
+
+#: data/org.gnome.Maps.gschema.xml:32
+#, fuzzy
+#| msgid "Window position"
+msgid "Window position (X and Y)."
+msgstr "Аԥенџьыр аҭыԥ"
+
+#: data/org.gnome.Maps.gschema.xml:36
+msgid "Window maximized"
+msgstr "Аԥенџьыр иамоуп иреиҳау ашәагаа"
+
+#: data/org.gnome.Maps.gschema.xml:37
+#, fuzzy
+#| msgid "Window position"
+msgid "Window maximization state"
+msgstr "Аԥенџьыр аҭыԥ"
+
+#: data/org.gnome.Maps.gschema.xml:41
+msgid "Maximum number of search results"
+msgstr ""
+
+#: data/org.gnome.Maps.gschema.xml:42
+msgid "Maximum number of search results from geocode search."
+msgstr ""
+
+#: data/org.gnome.Maps.gschema.xml:46
+msgid "Number of recent places to store"
+msgstr ""
+
+#: data/org.gnome.Maps.gschema.xml:47
+msgid "Number of recently visited places to store."
+msgstr ""
+
+#: data/org.gnome.Maps.gschema.xml:51
+msgid "Number of recent routes to store"
+msgstr ""
+
+#: data/org.gnome.Maps.gschema.xml:52
+msgid "Number of recently visited routes to store."
+msgstr ""
+
+#: data/org.gnome.Maps.gschema.xml:56
+msgid "OpenStreetMap username or e-mail address"
+msgstr ""
+
+#: data/org.gnome.Maps.gschema.xml:57
+msgid "Indicates if the user has signed in to edit OpenStreetMap data."
+msgstr ""
+
+#: data/org.gnome.Maps.gschema.xml:61
+msgid "Last used transportation type for routing"
+msgstr ""
+
+#: data/org.gnome.Maps.gschema.xml:65
+msgid "Show scale"
+msgstr ""
+
+#: data/org.gnome.Maps.gschema.xml:66
+msgid "Whether to show the scale."
+msgstr ""
 
 #: data/ui/context-menu.ui:6
 msgid "Route from here"
@@ -106,7 +192,7 @@ msgstr "_Аԥыхра"
 
 #: data/ui/export-view-dialog.ui:26
 msgid "_Export"
-msgstr ""
+msgstr "_Аекспорт азура"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-left.ui:11
@@ -121,12 +207,12 @@ msgstr ""
 #. Translators: This is a tooltip
 #: data/ui/headerbar-left.ui:28
 msgid "Zoom out"
-msgstr ""
+msgstr "Архәҷра"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-left.ui:37
 msgid "Zoom in"
-msgstr ""
+msgstr "Ардура"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-right.ui:11
@@ -329,7 +415,7 @@ msgstr ""
 #. This is the place name as it would be written in a postal address (typically coming after the postal code)
 #: data/ui/osm-edit-address.ui:44
 msgid "City"
-msgstr ""
+msgstr "Ақалақь"
 
 #: data/ui/osm-edit-dialog.ui:54
 msgid "Type"
@@ -337,7 +423,7 @@ msgstr "Ахкы"
 
 #: data/ui/osm-edit-dialog.ui:76
 msgid "None"
-msgstr ""
+msgstr "Мап"
 
 #: data/ui/osm-edit-dialog.ui:105
 msgid "Add Field"
@@ -361,11 +447,11 @@ msgstr "Ааигәа шәхы иашәырхәахьоу"
 msgid "Next"
 msgstr "Ԥхьаҟа"
 
-#: data/ui/place-popover.ui:42 src/application.js:269
+#: data/ui/place-popover.ui:42 src/application.js:275
 msgid "No results found"
-msgstr ""
+msgstr "Алҵшәақәа ԥшааӡам"
 
-#: data/ui/place-popover.ui:52 src/application.js:246 src/osmEditDialog.js:576
+#: data/ui/place-popover.ui:52 src/application.js:252 src/osmEditDialog.js:576
 msgid "An error has occurred"
 msgstr ""
 
@@ -380,7 +466,7 @@ msgstr ""
 
 #: data/ui/send-to-dialog.ui:62
 msgid "Copy"
-msgstr ""
+msgstr "Ахкьыҧхьаара"
 
 #: data/ui/send-to-dialog.ui:68
 msgid "Send To…"
@@ -477,7 +563,7 @@ msgid "Airplanes"
 msgstr ""
 
 #. Translators: This is a tooltip
-#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27 data/ui/place-view.ui:53
+#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27 data/ui/place-view.ui:52
 msgid "Share location"
 msgstr "Ҭыԥс шәахьыҟоу азнагара"
 
@@ -494,7 +580,7 @@ msgstr ""
 #. Translators: This is a tooltip
 #: data/ui/place-buttons.ui:36
 msgid "Mark as favorite"
-msgstr ""
+msgstr "Иалкаау ахь ацҵара"
 
 #. Translators: This is a tooltip
 #: data/ui/place-buttons.ui:44
@@ -507,7 +593,7 @@ msgstr ""
 
 #: data/ui/zoom-in-dialog.ui:27
 msgid "Zoom In"
-msgstr ""
+msgstr "Амасштаб ардура"
 
 #: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338
 #: lib/maps-file-data-source.c:418
@@ -550,7 +636,7 @@ msgstr ""
 msgid "[FILE…|URI]"
 msgstr "[FILE...|URI]"
 
-#: src/application.js:277
+#: src/application.js:283
 #, javascript-format
 msgid "Invalid maps: URI: %s"
 msgstr ""
@@ -578,7 +664,7 @@ msgstr ""
 
 #: src/exportViewDialog.js:173
 msgid "No filename specified"
-msgstr ""
+msgstr "Афаил ахьӡ арбаӡам"
 
 #: src/exportViewDialog.js:181
 msgid "Unable to export view"
@@ -616,28 +702,28 @@ msgstr ""
 msgid "All Layer Files"
 msgstr "Аҿыгҳарақәа рфаилқәа"
 
-#: src/mainWindow.js:422
+#: src/mainWindow.js:427
 msgid "Failed to connect to location service"
 msgstr ""
 
-#: src/mainWindow.js:509
+#: src/mainWindow.js:514
 msgid "translator-credits"
 msgstr "Нанба Наала <naala-nanba@rambler.ru>, 2022"
 
-#: src/mainWindow.js:513
+#: src/mainWindow.js:518
 msgid "Copyright © 2011 – 2022 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Аԥҵаҩы изин © 2011 – 2022 Red Hat, Inc.  GNOME Maps аԥҵаҩцәеи"
 
-#: src/mainWindow.js:529
+#: src/mainWindow.js:534
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr ""
 
-#: src/mainWindow.js:530
+#: src/mainWindow.js:535
 msgid "Map Data Provider"
 msgstr ""
 
-#: src/mainWindow.js:542
+#: src/mainWindow.js:547
 msgid "Map Tile Provider"
 msgstr ""
 
@@ -646,16 +732,16 @@ msgstr ""
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:550
+#: src/mainWindow.js:555
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr ""
 
-#: src/mainWindow.js:580
+#: src/mainWindow.js:585
 msgid "Search Provider"
 msgstr ""
 
-#: src/mainWindow.js:583
+#: src/mainWindow.js:588
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr ""
@@ -831,7 +917,7 @@ msgstr "Ааи"
 #: src/osmEditDialog.js:191 src/osmEditDialog.js:200 src/osmEditDialog.js:211
 #: src/osmEditDialog.js:246
 msgid "No"
-msgstr ""
+msgstr "Мап"
 
 #: src/osmEditDialog.js:192
 msgid "Limited"
@@ -855,7 +941,7 @@ msgstr ""
 
 #: src/osmEditDialog.js:203
 msgid "Terminal"
-msgstr ""
+msgstr "Атерминал"
 
 #: src/osmEditDialog.js:204
 msgid "Service"
@@ -987,7 +1073,7 @@ msgstr ""
 
 #: src/osmEditDialog.js:523
 msgid "Done"
-msgstr ""
+msgstr "Ихиоуп"
 
 #: src/photonUtils.js:118
 msgid "Unnamed place"
@@ -1023,7 +1109,7 @@ msgstr ""
 #.
 #: src/placeView.js:276
 msgid "Phone number"
-msgstr ""
+msgstr "Аҭел аномер"
 
 #. Translators:
 #. * The establishment offers customers to purchase meals
@@ -1634,866 +1720,3 @@ msgstr ""
 #: src/transitplugins/openTripPlanner.js:1254
 msgid "Make a right u-turn"
 msgstr ""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#, fuzzy
