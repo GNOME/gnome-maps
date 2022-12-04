@@ -130,7 +130,15 @@ export class UserLocationMarker extends MapMarker {
 
     vfunc_snapshot(snapshot) {
         if (this.place.location.heading > -1) {
+            // rotate around the center of the icon
+            let {x, y, width, height} = this.get_allocation();
+            let point = new Graphene.Point();
+
+            point.init(width / 2, height / 2);
+            snapshot.translate(point);
             snapshot.rotate(this.place.location.heading);
+            point.init(-width / 2, -height / 2);
+            snapshot.translate(point);
         }
 
         this.snapshot_child(this._image, snapshot);
