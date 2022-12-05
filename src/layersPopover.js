@@ -79,6 +79,7 @@ export class LayersPopover extends Gtk.PopoverMenu {
         this._layersSectionBox.visible = this._mapView.shapeLayerStore.n_items > 0;
         this._mapView.shapeLayerStore.connect('items-changed', (model) => {
             this._layersSectionBox.visible = model.n_items > 0;
+            this._layersListBox.visible = model.n_items > 0;
         });
 
         // for now let's disable the map type swithery, as we only have street
