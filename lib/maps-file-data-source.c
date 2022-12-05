@@ -467,11 +467,18 @@ on_file_load (GObject      *source_object,
               gpointer      user_data)
 {
   g_autoptr(GTask) task = user_data;
+  g_autoptr(GError) error = NULL;
   FillTileData *data = g_task_get_task_data (task);
   char *contents;
   gsize length;
 
-  g_file_load_contents_finish (data->file, res, &contents, &length, NULL, NULL);
+  g_file_load_contents_finish (data->file, res, &contents, &length, NULL, &error);
+
+  if (error)
+    {
+      g_warning ("Failed to load file: %s", error->message);
+      return;
+    }
 
   if (contents != NULL)
     {
