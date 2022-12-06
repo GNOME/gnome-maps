@@ -22,7 +22,7 @@ import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 import Shumate from 'gi://Shumate';
 
-import {GeoJSONShapeLayer} from './geoJSONShapeLayer.js';
+import {GeoJSONSource} from './geoJSONSource.js';
 import * as Utils from './utils.js';
 
 export class ShapeLayer extends GObject.Object {
@@ -58,7 +58,12 @@ export class ShapeLayer extends GObject.Object {
             selection_mode: Gtk.SelectionMode.SINGLE,
             viewport:       this._mapView.map.viewport
         });
-        this._mapSource = null;
+
+        this._mapSource = new GeoJSONSource({ mapView: this._mapView,
+                                              markerLayer: this._markerLayer });
+        this._overlayLayer =
+            new Shumate.MapLayer({ map_source: this._mapSource,
+                                   viewport:   this._mapView.map.viewport });
     }
 
     get bbox() {
