@@ -64,6 +64,16 @@ export class ShapeLayer extends GObject.Object {
         this._overlayLayer =
             new Shumate.MapLayer({ map_source: this._mapSource,
                                    viewport:   this._mapView.map.viewport });
+        this._zoomId = this._mapView.map.viewport.connect('notify::zoom-level', () => {
+            let oldOverlayLayer = this._overlayLayer;
+
+            this._overlayLayer =
+                new Shumate.MapLayer({ map_source: this._mapSource,
+                                       viewport:   this._mapView.map.viewport });
+            this._overlayLayer.visible = this._visible;
+            this._mapView.map.add_layer(this._overlayLayer);
+            this._mapView.map.remove_layer(oldOverlayLayer);
+        });
     }
 
     get bbox() {
@@ -114,6 +124,7 @@ export class ShapeLayer extends GObject.Object {
     unload() {
         this._mapView.map.remove_layer(this._markerLayer);
         this._mapView.map.remove_layer(this._overlayLayer);
+        this._mapView.map.viewport.disconnect(this._zoomId);
     }
 }
 
