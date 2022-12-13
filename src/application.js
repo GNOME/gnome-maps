@@ -363,8 +363,9 @@ export class Application extends Adw.Application {
         // need to unparent popover children to avoid GTK warnings on exit
         if (this._mainWindow) {
             this._mainWindow.placeEntry.popover.unparent();
+            this._mainWindow.sidebar.unparentSearchPopovers();
         }
-        this._mainWindow.sidebar.unparentSearchPopovers();
+
         super.vfunc_shutdown();
     }
 }
