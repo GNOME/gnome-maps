@@ -73,8 +73,16 @@ export class PlaceBar extends Gtk.Revealer {
             return;
         }
 
-        let formatter = new PlaceFormatter(this.place);
-        this._title.label = formatter.title;
+        /* set a formatted title when relevant for the place
+         * e.g. not for pure coordinate-based places (geo: URIs for example)
+         * which are not stored in the place store
+         */
+        if (this.place.store) {
+            let formatter = new PlaceFormatter(this.place);
+            this._title.label = formatter.title;
+        } else {
+            this._title.label = '';
+        }
 
         this._buttons.place = this.place;
 
