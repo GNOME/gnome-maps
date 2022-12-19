@@ -347,6 +347,14 @@ export class MainWindow extends Gtk.ApplicationWindow {
     _updateAdaptiveMode() {
         let width = this._surface.width;
 
+        /* don't update adaptive state when the window has just been
+         * realized before adding widgets, having a tiny size
+         * this avoid flickering the adaptive mode bottom toolbar
+         * at startup in "desktop" mode when it shouldn't be
+         */
+        if (width < 10)
+            return;
+
         if (width < _ADAPTIVE_VIEW_WIDTH) {
             this.application.adaptive_mode = true;
             this._headerBarLeft.hide();
