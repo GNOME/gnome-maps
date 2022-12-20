@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2022-10-06 20:44+0000\n"
-"PO-Revision-Date: 2022-10-12 20:34+0300\n"
+"POT-Creation-Date: 2022-11-23 21:49+0000\n"
+"PO-Revision-Date: 2022-11-28 20:23+0300\n"
 "Last-Translator: Aleksandr Melman <Alexmelman88@gmail.com>\n"
 "Language-Team: русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.1\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -33,7 +33,7 @@ msgstr ""
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
 #: data/ui/main-window.ui:27 src/application.js:61 src/mainWindow.js:134
-#: src/mainWindow.js:512
+#: src/mainWindow.js:517
 msgid "Maps"
 msgstr "Карты"
 
@@ -59,7 +59,7 @@ msgstr ""
 "Карты используют базу данных OpenStreetMap, созданную сотнями тысяч людей по "
 "всеми миру."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:317 src/mainWindow.js:509
+#: data/org.gnome.Maps.appdata.xml.in.in:317 src/mainWindow.js:514
 msgid "The GNOME Project"
 msgstr "Проект GNOME"
 
@@ -463,15 +463,23 @@ msgstr ""
 msgid "Recently Used"
 msgstr "Недавно использованные"
 
-#: data/ui/osm-edit-dialog.ui:233 src/osmEditDialog.js:512
+#: data/ui/osm-edit-dialog.ui:233 src/osmEditDialog.js:531
 msgid "Next"
 msgstr "Далее"
+
+#: data/ui/osm-edit-wikipedia.ui:8
+msgid "Article"
+msgstr "Статья"
+
+#: data/ui/osm-edit-wikipedia.ui:21
+msgid "Wikidata tag"
+msgstr "Метка Викиданных"
 
 #: data/ui/place-popover.ui:42 src/application.js:269
 msgid "No results found"
 msgstr "Результатов не найдено"
 
-#: data/ui/place-popover.ui:52 src/application.js:246 src/osmEditDialog.js:549
+#: data/ui/place-popover.ui:52 src/application.js:246 src/osmEditDialog.js:568
 msgid "An error has occurred"
 msgstr "Произошла ошибка"
 
@@ -594,7 +602,7 @@ msgid "Airplanes"
 msgstr "Самолеты"
 
 #. Translators: This is a tooltip
-#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27 data/ui/place-view.ui:53
+#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27 data/ui/place-view.ui:52
 msgid "Share location"
 msgstr "Поделиться местоположением"
 
@@ -736,11 +744,11 @@ msgstr "Старт!"
 msgid "All Layer Files"
 msgstr "Все файлы слоёв"
 
-#: src/mainWindow.js:423
+#: src/mainWindow.js:428
 msgid "Failed to connect to location service"
 msgstr "Не удалось подключиться к службе местоположения"
 
-#: src/mainWindow.js:510
+#: src/mainWindow.js:515
 msgid "translator-credits"
 msgstr ""
 "Yuri Myasoedov <ymyasoedov@yandex.ru>, 2013, 2014.\n"
@@ -748,20 +756,20 @@ msgstr ""
 "Alexey Rubtsov <rushills@gmail.com>, 2021\n"
 "Aleksandr Melman <alexmelman88@gmail.com>, 2022"
 
-#: src/mainWindow.js:514
+#: src/mainWindow.js:519
 msgid "Copyright © 2011 – 2022 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Авторское право © 2011 – 2022 Red Hat, Inc. и авторы GNOME Maps"
 
-#: src/mainWindow.js:530
+#: src/mainWindow.js:535
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Картографические данные %s и участников"
 
-#: src/mainWindow.js:531
+#: src/mainWindow.js:536
 msgid "Map Data Provider"
 msgstr "Поставщик картографических данных"
 
-#: src/mainWindow.js:543
+#: src/mainWindow.js:548
 msgid "Map Tile Provider"
 msgstr "Поставщик картографического слоя"
 
@@ -770,16 +778,16 @@ msgstr "Поставщик картографического слоя"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:551
+#: src/mainWindow.js:556
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Картографические слои предоставлены %s"
 
-#: src/mainWindow.js:581
+#: src/mainWindow.js:586
 msgid "Search Provider"
 msgstr "Поставщик поиска"
 
-#: src/mainWindow.js:584
+#: src/mainWindow.js:589
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Поиск осуществляется %s с помощью %s"
@@ -855,27 +863,27 @@ msgstr "Объект был удалён"
 msgid "Way or relation refers to non-existing children"
 msgstr "Путь или связь ссылается на несуществующего потомка"
 
-#: src/osmEditDialog.js:116
+#: src/osmEditDialog.js:106
 msgid "Name"
 msgstr "Имя"
 
-#: src/osmEditDialog.js:119
+#: src/osmEditDialog.js:109
 msgid "The official name. This is typically what appears on signs."
 msgstr "Официальное название. Обычно то, что написано на знаках."
 
-#: src/osmEditDialog.js:122
+#: src/osmEditDialog.js:112
 msgid "Address"
 msgstr "Адрес"
 
-#: src/osmEditDialog.js:130 src/placeView.js:254
+#: src/osmEditDialog.js:120 src/placeView.js:254
 msgid "Website"
 msgstr "Веб-сайт"
 
-#: src/osmEditDialog.js:134
+#: src/osmEditDialog.js:124
 msgid "This is not a valid URL. Make sure to include http:// or https://."
 msgstr "Это не правильный URL. Обязательно включите http:// или https://."
 
-#: src/osmEditDialog.js:135
+#: src/osmEditDialog.js:125
 msgid ""
 "The official website. Try to use the most basic form of a URL i.e. http://"
 "example.com instead of http://example.com/index.html."
@@ -883,22 +891,22 @@ msgstr ""
 "Официальный веб-сайт. Рекомендуется использовать URL в наиболее общей форме, "
 "например «http://example.com» вместо «http://example.com/index.html»."
 
-#: src/osmEditDialog.js:140
+#: src/osmEditDialog.js:130
 msgid "Phone"
 msgstr "Телефон"
 
-#: src/osmEditDialog.js:144
+#: src/osmEditDialog.js:134
 msgid ""
 "Phone number. Use the international format, starting with a + sign. Beware "
 "of local privacy laws, especially for private phone numbers."
 msgstr ""
 "Номер телефона. Используйте международный формат, начинающийся со знака «+»."
 
-#: src/osmEditDialog.js:149 src/placeView.js:282
+#: src/osmEditDialog.js:139 src/placeView.js:282
 msgid "E-mail"
 msgstr "E-mail"
 
-#: src/osmEditDialog.js:154
+#: src/osmEditDialog.js:144
 msgid ""
 "This is not a valid e-mail address. Make sure to not include the mailto: "
 "protocol prefix."
@@ -906,7 +914,7 @@ msgstr ""
 "Это не действительный адрес электронной почты. Убедитесь, что не указан "
 "префикс протокола mailto:."
 
-#: src/osmEditDialog.js:155
+#: src/osmEditDialog.js:145
 msgid ""
 "Contact e-mail address for inquiries. Add only email addresses that are "
 "intended to be publicly used."
@@ -916,23 +924,15 @@ msgstr ""
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:159 src/placeView.js:616
+#: src/osmEditDialog.js:149 src/placeView.js:630
 msgid "Wikipedia"
 msgstr "Википедия"
 
-#: src/osmEditDialog.js:164
-msgid ""
-"The format used should include the language code and the article title like "
-"“en:Article title”."
-msgstr ""
-"Используемый формат должен содержать код языка и заголовок статьи, например "
-"«ru:Заголовок статьи»."
-
-#: src/osmEditDialog.js:168 src/placeView.js:319
+#: src/osmEditDialog.js:156 src/placeView.js:319
 msgid "Opening hours"
 msgstr "Часы работы"
 
-#: src/osmEditDialog.js:173
+#: src/osmEditDialog.js:161
 msgid "See the link in the label for help on format."
 msgstr "Для получения справки по формату см. ссылку в метке."
 
@@ -942,169 +942,169 @@ msgstr "Для получения справки по формату см. сс�
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:176 src/placeView.js:429
+#: src/osmEditDialog.js:164 src/placeView.js:429
 msgid "Population"
 msgstr "Население"
 
-#: src/osmEditDialog.js:181 src/placeView.js:458
+#: src/osmEditDialog.js:169 src/placeView.js:458
 msgid "Altitude"
 msgstr "Высота"
 
-#: src/osmEditDialog.js:184
+#: src/osmEditDialog.js:172
 msgid "Elevation (height above sea level) of a point in metres."
 msgstr "Высота над уровнем моря в метрах."
 
-#: src/osmEditDialog.js:187
+#: src/osmEditDialog.js:175
 msgid "Wheelchair access"
 msgstr "Доступ для инвалидных колясок"
 
-#: src/osmEditDialog.js:190 src/osmEditDialog.js:199 src/osmEditDialog.js:210
-#: src/osmEditDialog.js:245
+#: src/osmEditDialog.js:178 src/osmEditDialog.js:187 src/osmEditDialog.js:198
+#: src/osmEditDialog.js:233
 msgid "Yes"
 msgstr "Да"
 
-#: src/osmEditDialog.js:191 src/osmEditDialog.js:200 src/osmEditDialog.js:211
-#: src/osmEditDialog.js:246
+#: src/osmEditDialog.js:179 src/osmEditDialog.js:188 src/osmEditDialog.js:199
+#: src/osmEditDialog.js:234
 msgid "No"
 msgstr "Нет"
 
-#: src/osmEditDialog.js:192
+#: src/osmEditDialog.js:180
 msgid "Limited"
 msgstr "Ограниченный"
 
-#: src/osmEditDialog.js:193
+#: src/osmEditDialog.js:181
 msgid "Designated"
 msgstr "Специализированный"
 
-#: src/osmEditDialog.js:196
+#: src/osmEditDialog.js:184
 msgid "Internet access"
 msgstr "Доступ к Интернету"
 
-#: src/osmEditDialog.js:201
+#: src/osmEditDialog.js:189
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
 
-#: src/osmEditDialog.js:202
+#: src/osmEditDialog.js:190
 msgid "Wired"
 msgstr "Проводной"
 
-#: src/osmEditDialog.js:203
+#: src/osmEditDialog.js:191
 msgid "Terminal"
 msgstr "Терминал"
 
-#: src/osmEditDialog.js:204
+#: src/osmEditDialog.js:192
 msgid "Service"
 msgstr "Служебный"
 
-#: src/osmEditDialog.js:207
+#: src/osmEditDialog.js:195
 msgid "Takeaway"
 msgstr "Вынос"
 
-#: src/osmEditDialog.js:212
+#: src/osmEditDialog.js:200
 msgid "Only"
 msgstr "Только"
 
-#: src/osmEditDialog.js:215
+#: src/osmEditDialog.js:203
 msgid "Religion"
 msgstr "Религия"
 
-#: src/osmEditDialog.js:218 src/translations.js:286
+#: src/osmEditDialog.js:206 src/translations.js:286
 msgid "Animism"
 msgstr "Анимизм"
 
-#: src/osmEditDialog.js:219
+#: src/osmEditDialog.js:207
 msgid "Bahá’í"
 msgstr "Бахаи"
 
-#: src/osmEditDialog.js:220 src/translations.js:288
+#: src/osmEditDialog.js:208 src/translations.js:288
 msgid "Buddhism"
 msgstr "Буддизм"
 
-#: src/osmEditDialog.js:221 src/translations.js:289
+#: src/osmEditDialog.js:209 src/translations.js:289
 msgid "Caodaism"
 msgstr "Каодаизм"
 
-#: src/osmEditDialog.js:222 src/translations.js:290
+#: src/osmEditDialog.js:210 src/translations.js:290
 msgid "Christianity"
 msgstr "Христианство"
 
-#: src/osmEditDialog.js:223 src/translations.js:291
+#: src/osmEditDialog.js:211 src/translations.js:291
 msgid "Confucianism"
 msgstr "Конфуцианство"
 
-#: src/osmEditDialog.js:224 src/translations.js:292
+#: src/osmEditDialog.js:212 src/translations.js:292
 msgid "Hinduism"
 msgstr "Индуизм"
 
-#: src/osmEditDialog.js:225 src/translations.js:293
+#: src/osmEditDialog.js:213 src/translations.js:293
 msgid "Jainism"
 msgstr "Джайнизм"
 
-#: src/osmEditDialog.js:226 src/translations.js:294
+#: src/osmEditDialog.js:214 src/translations.js:294
 msgid "Judaism"
 msgstr "Иудаизм"
 
-#: src/osmEditDialog.js:227 src/translations.js:295
+#: src/osmEditDialog.js:215 src/translations.js:295
 msgid "Islam"
 msgstr "Ислам"
 
-#: src/osmEditDialog.js:228 src/translations.js:296
+#: src/osmEditDialog.js:216 src/translations.js:296
 msgid "Multiple Religions"
 msgstr "Несколько религий"
 
-#: src/osmEditDialog.js:229 src/translations.js:297
+#: src/osmEditDialog.js:217 src/translations.js:297
 msgid "Paganism"
 msgstr "Язычество"
 
-#: src/osmEditDialog.js:230 src/translations.js:298
+#: src/osmEditDialog.js:218 src/translations.js:298
 msgid "Pastafarianism"
 msgstr "Пастафарианство"
 
-#: src/osmEditDialog.js:231 src/translations.js:299
+#: src/osmEditDialog.js:219 src/translations.js:299
 msgid "Scientology"
 msgstr "Саентология"
 
-#: src/osmEditDialog.js:232 src/translations.js:300
+#: src/osmEditDialog.js:220 src/translations.js:300
 msgid "Shinto"
 msgstr "Синто"
 
-#: src/osmEditDialog.js:233 src/translations.js:301
+#: src/osmEditDialog.js:221 src/translations.js:301
 msgid "Sikhism"
 msgstr "Сикхизм"
 
-#: src/osmEditDialog.js:234 src/translations.js:302
+#: src/osmEditDialog.js:222 src/translations.js:302
 msgid "Spiritualism"
 msgstr "Спиритизм"
 
-#: src/osmEditDialog.js:235 src/translations.js:303
+#: src/osmEditDialog.js:223 src/translations.js:303
 msgid "Taoism"
 msgstr "Даосизм"
 
-#: src/osmEditDialog.js:236 src/translations.js:304
+#: src/osmEditDialog.js:224 src/translations.js:304
 msgid "Unitarian Universalism"
 msgstr "Унитарный универсализм"
 
-#: src/osmEditDialog.js:237 src/translations.js:305
+#: src/osmEditDialog.js:225 src/translations.js:305
 msgid "Voodoo"
 msgstr "Шаманство"
 
-#: src/osmEditDialog.js:238 src/translations.js:306
+#: src/osmEditDialog.js:226 src/translations.js:306
 msgid "Yazidism"
 msgstr "Езидизм"
 
-#: src/osmEditDialog.js:239 src/translations.js:307
+#: src/osmEditDialog.js:227 src/translations.js:307
 msgid "Zoroastrianism"
 msgstr "Зороастризм"
 
-#: src/osmEditDialog.js:242
+#: src/osmEditDialog.js:230
 msgid "Toilets"
 msgstr "Туалеты"
 
-#: src/osmEditDialog.js:249
+#: src/osmEditDialog.js:237
 msgid "Note"
 msgstr "Заметка"
 
-#: src/osmEditDialog.js:252
+#: src/osmEditDialog.js:240
 msgid ""
 "Information used to inform other mappers about non-obvious information about "
 "an element, the author’s intent when creating it, or hints for further "
@@ -1114,18 +1114,36 @@ msgstr ""
 "информации об элементе, намерении автора при его создании или о намеках на "
 "дальнейшее совершенствование."
 
-#: src/osmEditDialog.js:320
+#: src/osmEditDialog.js:339
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Добавить в OpenStreetMap"
 
-#: src/osmEditDialog.js:374
+#: src/osmEditDialog.js:393
 msgid "Select Type"
 msgstr "Выберите тип"
 
-#: src/osmEditDialog.js:496
+#: src/osmEditDialog.js:515
 msgid "Done"
 msgstr "Готово"
+
+#: src/osmEditDialog.js:827
+msgid ""
+"The format used should include the language code and the article title like "
+"“en:Article title”."
+msgstr ""
+"Используемый формат должен содержать код языка и заголовок статьи, например "
+"«ru:Заголовок статьи»."
+
+#: src/osmEditDialog.js:833
+msgid "Use the reload button to load the Wikidata tag for the selected article"
+msgstr ""
+"Используйте кнопку перезагрузки для загрузки метки Викиданных для выбранной "
+"статьи"
+
+#: src/osmEditDialog.js:841
+msgid "Couldn't find Wikidata tag for article"
+msgstr "Не удалось найти метку Викиданных для статьи"
 
 #: src/photonUtils.js:118
 msgid "Unnamed place"
@@ -1294,15 +1312,15 @@ msgstr "На уровне моря"
 msgid "Religion:"
 msgstr "Религия:"
 
-#: src/place.js:531
+#: src/place.js:543
 msgid "Place not found in OpenStreetMap"
 msgstr "Место не найдено в OpenStreetMap"
 
-#: src/place.js:538
+#: src/place.js:550
 msgid "Coordinates in URL are not valid"
 msgstr "Координаты в URL не действительны"
 
-#: src/place.js:547
+#: src/place.js:559
 msgid "URL is not supported"
 msgstr "URL не поддерживается"
 
