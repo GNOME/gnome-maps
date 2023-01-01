@@ -787,7 +787,7 @@ export class OSMEditDialog extends Gtk.Dialog {
 
         wiki.article.connect('changed', () => {
             let rewrittenText =
-                OMSUtils.getWikipediaOSMArticleFormatFromUrl(wiki.article.text);
+                OSMUtils.getWikipediaOSMArticleFormatFromUrl(wiki.article.text);
 
             if (rewrittenText)
                 wiki.article.text = rewrittenText;
