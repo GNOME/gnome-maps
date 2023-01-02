@@ -6,7 +6,6 @@ headers_private = files(
 	'maps-osm-object.h',
 	'maps-osm-way.h',
 	'maps-osm-relation.h',
-	'maps-osm-oauth-proxy-call.h',
 	'maps-sync-map-source.h'
 )
 
@@ -18,7 +17,6 @@ sources = files(
 	'maps-osm-object.c',
 	'maps-osm-way.c',
 	'maps-osm-relation.c',
-	'maps-osm-oauth-proxy-call.c',
 	'maps-sync-map-source.c'
 )
 
@@ -49,7 +47,6 @@ gnome.generate_gir(
 	includes: [
 		'GLib-2.0',
 		'GObject-2.0',
-		'Rest-1.0',
 		'Shumate-1.0'
 	],
 	install: true,
