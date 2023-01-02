@@ -30,6 +30,7 @@ import Rest from 'gi://Rest';
 import Secret from 'gi://Secret';
 import Soup from 'gi://Soup';
 
+import {OSMOAuthProxyCall} from './osmOAuthProxyCall.js';
 import * as Utils from './utils.js';
 
 const _ = gettext.gettext;
@@ -117,22 +118,14 @@ export class OSMConnection {
         }
     }
 
-    _createCallWithPayload(payload, method, func) {
-        let call = GnomeMaps.OSMOAuthProxyCall.new(this._callProxy, payload);
-
-        call.set_method(method);
-        call.set_function(func);
-        call.add_header('Authorization',
-                        'Bearer ' + this._callProxy.access_token);
-
-        return call;
-    }
-
     _doOpenChangeset(comment, callback) {
         let changeset =
             GnomeMaps.OSMChangeset.new(comment, 'gnome-maps ' + pkg.version);
         let xml = changeset.serialize();
-        let call = this._createCallWithPayload(xml, 'PUT', '/changeset/create');
+        let call = new OSMOAuthProxyCall({ content: xml,
+                                           method:  'PUT',
+                                           func:    '/changeset/create',
+                                           proxy:   this._callProxy });
 
         call.invoke_async(null, (call, res, userdata) =>
                                 { this._onChangesetOpened(call, callback); });
@@ -153,9 +146,11 @@ export class OSMConnection {
 
         let xml = object.serialize();
         let call =
-            this._createCallWithPayload(xml, 'PUT',
-                                        this._getCreateOrUpdateFunction(object,
-                                                                        type));
+            new OSMOAuthProxyCall({ content: xml,
+                                    method:  'PUT',
+                                    func:    this._getCreateOrUpdateFunction(object,
+                                                                             type),
+                                    proxy:   this._callProxy });
 
         call.invoke_async(null, (call, res, userdata) =>
                                 { this._onObjectUploaded(call, callback); });
@@ -175,8 +170,11 @@ export class OSMConnection {
 
         let xml = object.serialize();
         let call =
-            this._createCallWithPayload(xml, 'DELETE',
-                                        this._getDeleteFunction(object, type));
+            new OSMOAuthProxyCall({ content: xml,
+                                    method:  'DELETE',
+                                    func:    this._getDeleteFunction(object,
+                                                                     type),
+                                    proxy:   this._callProxy });
 
         call.invoke_async(null, (call, res, userdata) =>
                                 { this._onObjectDeleted(call, callback); });
