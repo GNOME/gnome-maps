@@ -524,7 +524,7 @@ export class MainWindow extends Gtk.ApplicationWindow {
             /* Translators: This is the program name. */
             application_name: _("Maps"),
             application_icon: pkg.name,
-            copyright: _("Copyright © 2011 – 2022 Red Hat, Inc. and The GNOME Maps authors"),
+            copyright: _("Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"),
             license_type: Gtk.License.GPL_2_0,
             version: pkg.version,
             website: 'https://live.gnome.org/Apps/Maps',
