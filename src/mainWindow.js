@@ -199,7 +199,7 @@ export class MainWindow extends Gtk.ApplicationWindow {
                 onActivate: () => this._onGotoUserLocationActivate()
             },
             'goto-antipode-location': {
-                accels: ['<Primary>A'],
+                accels: ['<Primary>I'],
                 onActivate: () => this._mapView.gotoAntipode()
             },
             'toggle-sidebar': {
