@@ -320,6 +320,7 @@ export class MainWindow extends Gtk.ApplicationWindow {
 
         this._placeEntry = this._createPlaceEntry();
         this._headerBar.title_widget = this._placeEntry;
+        this._placeEntry.grab_focus();
 
         Application.geoclue.connect('notify::state',
                                     this._updateLocationSensitivity.bind(this));
