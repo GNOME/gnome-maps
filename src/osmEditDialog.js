@@ -288,7 +288,7 @@ class OSMEditWikipedia extends Gtk.Grid {
         else
             this.wikidata.get_style_context().remove_class("warning");
 
-        this.refresh.sensitive = article !==  '';
+        this.refresh.sensitive = !!article;
     }
 }
 
@@ -801,7 +801,7 @@ export class OSMEditDialog extends Gtk.Dialog {
 
             this._osmObject.set_tag(fieldSpec.subtags[0], wiki.article.text);
             this._nextButton.sensitive = true;
-            wiki.refreshWikidata.sensitive = wiki.article.text !==  '';
+            wiki.refresh.sensitive = !!wiki.article.text;
         });
 
         wiki.wikidata.connect('changed', () => {
