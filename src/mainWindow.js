@@ -223,7 +223,7 @@ export class MainWindow extends Gtk.ApplicationWindow {
             },
             'find': {
                 accels: ['<Primary>F'],
-                onActivate: () => this._placeEntry.grab_focus()
+                onActivate: () => this._onFindActivate()
             },
             'print-route': {
                 accels: ['<Primary>P'],
@@ -421,6 +421,11 @@ export class MainWindow extends Gtk.ApplicationWindow {
         this._saveWindowGeometry();
 
         return false;
+    }
+
+    _onFindActivate() {
+        this._placeEntry.grab_focus();
+        this._placeEntry.select_region(0, this._placeEntry.text.length);
     }
 
     _onGotoUserLocationActivate() {
