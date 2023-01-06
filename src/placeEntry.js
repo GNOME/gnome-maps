@@ -22,6 +22,7 @@
 
 import gettext from 'gettext';
 
+import Gdk from 'gi://Gdk';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import GeocodeGlib from 'gi://GeocodeGlib';
@@ -91,6 +92,12 @@ export class PlaceEntry extends Gtk.SearchEntry {
         this._matchRoute = matchRoute ?? false;
         this._filter = new Gtk.TreeModelFilter({ child_model: Application.placeStore });
         this._filter.set_visible_func(this._completionVisibleFunc.bind(this));
+
+        this._keyController = new Gtk.EventControllerKey();
+        this._keyController.connect('key-pressed', this._onKeyPressed.bind(this));
+        this.add_controller(this._keyController);
+
+        this.connect('activate', this._onActivate.bind(this));
 
         this._popover = this._createPopover(maxChars);
 
@@ -175,7 +182,55 @@ export class PlaceEntry extends Gtk.SearchEntry {
     }
 
     _onKeyPressed(controller, keyval, keycode, state) {
-        return true;
+        if (keyval === Gdk.KEY_Escape) {
+            this._popover.popdown();
+            this._popover.list.unselect_all();
+            return true;
+        } else if (keyval === Gdk.KEY_KP_Up ||
+                   keyval === Gdk.KEY_Up ||
+                   keyval === Gdk.KEY_KP_Down ||
+                   keyval === Gdk.KEY_Down) {
+            let length = this._popover.numResults;
+            let direction =
+                (keyval === Gdk.KEY_KP_Up || keyval === Gdk.KEY_Up) ? -1 : 1;
+
+            /* if the popover is not already showing and there are previous
+             * results when pressing arrow down, show the results
+             */
+            if (direction === 1 && !this._popover.visible && length > 0) {
+                this._popover.popup();
+                return true;
+            }
+
+            let row = this._popover.list.get_selected_row();
+            let idx;
+
+            if (!row)
+                idx = (direction === 1) ? 0 : length - 1;
+            else
+                idx = row.get_index() + direction;
+
+            let inBounds = 0 <= idx && idx < length;
+
+            if (inBounds)
+                this._popover.selectRow(this._popover.list.get_row_at_index(idx));
+            else
+                this._popover.list.unselect_all();
+
+            return true;
+        }
+
+        return false;
+    }
+
+    _onActivate() {
+        // if the popover is visible and we have a selected item, activate it
+        let row = this._popover.list.get_selected_row();
+
+        log('enter on row: ' + row);
+
+        if (this._popover.visible && row)
+            row.activate();
     }
 
     _completionVisibleFunc(model, iter) {
