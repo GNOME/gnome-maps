@@ -118,6 +118,16 @@ export class PlacePopover extends SearchPopover {
         }
     }
 
+    /* Selects given row and ensures that it is visible. */
+    selectRow(row) {
+        this.list.select_row(row);
+        let adjustment = this.list.get_adjustment();
+        if (adjustment) {
+            let allocation = row.get_allocation();
+            adjustment.clamp_page(allocation.y, allocation.y + allocation.height);
+        }
+    }
+
     _addRow(place, type, searchString) {
         let row = new PlaceListRow({ place:        place,
                                      searchString: searchString,
