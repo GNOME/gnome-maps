@@ -41,6 +41,10 @@ export class SearchPopover extends Gtk.Popover {
 
         this.add_css_class('suggestions');
     }
+
+    get numResults() {
+        return this._numResults;
+    }
 }
 
 GObject.registerClass({
