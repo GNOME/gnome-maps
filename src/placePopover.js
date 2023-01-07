@@ -34,7 +34,7 @@ export class PlacePopover extends SearchPopover {
 
         this._maxChars = maxChars;
 
-        this._list.connect('row-activated', (list, row) => {
+        this.list.connect('row-activated', (list, row) => {
             if (row)
                 this.emit('selected', row.place);
         });
@@ -68,9 +68,9 @@ export class PlacePopover extends SearchPopover {
 
         this._stack.visible_child = this._scrolledWindow;
 
-        let row = this._list.get_row_at_index(0);
+        let row = this.list.get_row_at_index(0);
         if (row)
-            this._list.select_row(row);
+            this.list.select_row(row);
 
         if (!this.visible)
             this._showPopover();
@@ -96,7 +96,7 @@ export class PlacePopover extends SearchPopover {
         let i = 0;
 
         places.forEach((p) => {
-            let row = this._list.get_row_at_index(i);
+            let row = this.list.get_row_at_index(i);
 
             // update existing row, if there is one, otherwise create new
             if (row)
@@ -110,11 +110,11 @@ export class PlacePopover extends SearchPopover {
         this._numResults = i;
 
         // remove remaining rows
-        let row = this._list.get_row_at_index(i);
+        let row = this.list.get_row_at_index(i);
 
         while (row) {
-            this._list.remove(row);
-            row = this._list.get_row_at_index(i);
+            this.list.remove(row);
+            row = this.list.get_row_at_index(i);
         }
     }
 
@@ -123,7 +123,7 @@ export class PlacePopover extends SearchPopover {
                                      searchString: searchString,
                                      type:         type,
                                      can_focus:    true });
-        this._list.insert(row, -1);
+        this.list.insert(row, -1);
     }
 }
 
@@ -132,10 +132,10 @@ GObject.registerClass({
         'selected' : { param_types: [ GObject.TYPE_OBJECT ] }
     },
     Template: 'resource:///org/gnome/Maps/ui/place-popover.ui',
+    Children: [ 'list' ],
     InternalChildren: [ 'scrolledWindow',
                         'stack',
                         'spinner',
-                        'list',
                         'noResultsLabel',
                         'errorLabel' ],
 }, PlacePopover);
