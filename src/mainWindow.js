@@ -209,11 +209,11 @@ export class MainWindow extends Gtk.ApplicationWindow {
                 onChangeState: (a, v) => this._onToggleSidebarChangeState(a, v)
             },
             'zoom-in': {
-                accels: ['plus', '<Primary>plus', 'KP_Add', '<Primary>KP_Add', 'equal', '<Primary>equal'],
+                accels: ['<Primary>plus', 'KP_Add', '<Primary>KP_Add', '<Primary>equal'],
                 onActivate: () => this._mapView.zoomIn()
             },
             'zoom-out': {
-                accels: ['minus', '<Primary>minus', 'KP_Subtract', '<Primary>KP_Subtract'],
+                accels: ['<Primary>minus', 'KP_Subtract', '<Primary>KP_Subtract'],
                 onActivate:  () => this._mapView.zoomOut()
             },
             'show-scale': {
