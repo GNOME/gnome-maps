@@ -130,6 +130,8 @@ export class MapView extends Gtk.Overlay {
     constructor({mapType, mainWindow, ...params}) {
         super(params);
 
+        this.overflow = Gtk.Overflow.HIDDEN;
+
         this._mainWindow = mainWindow;
         this._storeId = 0;
         this.map = this._initMap();
