@@ -18,7 +18,6 @@
  */
 
 import GObject from 'gi://GObject';
-import Gtk from 'gi://Gtk';
 
 import {Application} from './application.js';
 import {PlaceListRow} from './placeListRow.js';
