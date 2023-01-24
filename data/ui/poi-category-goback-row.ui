@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <template class="Gjs_PoiCategoryGobackRow" parent="GtkListBoxRow">
+    <accessibility>
+      <relation name="labelled-by">label</relation>
+    </accessibility>
+    <property name="margin-top">6</property>
+    <property name="margin-start">6</property>
+    <property name="margin-end">6</property>
+    <property name="child">
+      <object class="GtkBox">
+        <property name="spacing">6</property>
+        <child>
+          <object class="GtkImage">
+            <property name="icon-name">go-previous-symbolic</property>
+            <property name="valign">center</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label">
+            <property name="label" translatable="yes">Back to Main Categories</property>
+            <property name="xalign">0</property>
+          </object>
+        </child>"
+      </object>
+    </property>
+  </template>
+</interface>
