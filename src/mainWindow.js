@@ -246,6 +246,10 @@ export class MainWindow extends Gtk.ApplicationWindow {
                 accels: ['<Primary>F'],
                 onActivate: () => this._onFindActivate()
             },
+            'browse': {
+                accels: ['<Shift><Primary>F'],
+                onActivate: () => this._onBrowseActivate()
+            },
             'print-route': {
                 accels: ['<Primary>P'],
                 onActivate: () => this._printRouteActivate()
@@ -449,6 +453,10 @@ export class MainWindow extends Gtk.ApplicationWindow {
 
         placeEntry.grab_focus();
         placeEntry.select_region(0, placeEntry.text.length);
+    }
+
+    _onBrowseActivate() {
+        this._searchBar.placeEntry.browsePois();
     }
 
     _onGotoUserLocationActivate() {
