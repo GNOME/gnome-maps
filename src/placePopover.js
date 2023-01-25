@@ -17,18 +17,25 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
+import Geocode from 'gi://GeocodeGlib';
+import Gio from 'gi://Gio';
 import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 
 import {Application} from './application.js';
+import {Overpass} from './overpass.js';
 import {PlaceListRow} from './placeListRow.js';
 import {PlaceStore} from './placeStore.js';
+import * as PoiCategories from './poiCategories.js';
+import {PoiCategoryGobackRow} from './poiCategoryGobackRow.js';
+import {PoiCategoryRow} from './poiCategoryRow.js';
 import {SearchPopover} from './searchPopover.js';
 
 const _PLACE_ICON_SIZE = 20;
 
 export class PlacePopover extends SearchPopover {
 
-    constructor({maxChars, ...params}) {
+    constructor({maxChars, hasPoiBrowser = false, ...params}) {
         super(params);
 
         this._maxChars = maxChars;
@@ -38,9 +45,113 @@ export class PlacePopover extends SearchPopover {
                 this.emit('selected', row.place);
         });
 
+        if (hasPoiBrowser) {
+            this._overpass = new Overpass();
+            this._createPoiCategories();
+        }
+
         // This silents warning at Maps exit about this widget being
         // visible but not mapped.
         this.connect('unmap', (popover) => popover.hide());
+    }
+
+    _createPoiCategories() {
+        let categoryStructure = PoiCategories.getCategoryStructure();
+
+        for (let mainCategory of categoryStructure) {
+            log('label: ' + mainCategory.label);
+            log('icon: ' + mainCategory.icon);
+            let row = new PoiCategoryRow({ label:    mainCategory.label,
+                                           iconName: mainCategory.icon ??
+                                                     'map-marker-symbolic' });
+
+            this._poiMainCategories.insert(row, -1);
+            row.mainCategory = mainCategory;
+        }
+
+        this._poiMainCategories.connect('row-activated', (list, row) => {
+            let subcategoryListBox =
+                this._createSubcategoryListBox(row.mainCategory, row);
+
+            // set stack switching animation to "sliding"
+            this._stack.transition_type = Gtk.StackTransitionType.SLIDE_LEFT;
+            this._poiSubCategories.child = subcategoryListBox;
+            this._stack.visible_child = this._poiSubCategories;
+            // unselect current main category
+            this._poiMainCategories.unselect_all();
+
+            // grab focus on entry to enable continued keyboard navigation
+            this.get_parent().grab_focus();
+        });
+    }
+
+    _createSubcategoryListBox(mainCategory, row) {
+        let listBox = new Gtk.ListBox();
+
+        // insert "go back" row
+        let goBackRow = new PoiCategoryGobackRow();
+
+        listBox.insert(goBackRow, -1);
+
+        for (let subcategory of mainCategory.subcategories) {
+            let row = new PoiCategoryRow({ label:    subcategory.label,
+                                           iconName: subcategory.icon ??
+                                                     'map-marker-symbolic' });
+
+            listBox.insert(row, -1);
+        }
+
+        listBox.connect('row-activated', (list, row) => {
+            // grab focus on entry to enable continued keyboard navigation
+            this.get_parent().grab_focus();
+
+            if (row === goBackRow) {
+                // slide back to main
+                this._stack.transition_type =
+                    Gtk.StackTransitionType.SLIDE_RIGHT;
+                this._stack.visible_child = this._poiMainCategories;
+
+                // unselect, so the "go back" row is not highlighted when going back
+                listBox.unselect_all();
+
+                return;
+            }
+
+            // the index of the selected category, subtract one for the "go back"
+            let index = row.get_index() - 1;
+            let selectedCategory = mainCategory.subcategories[index];
+            this.showSpinner(Gtk.StackTransitionType.SLIDE_LEFT);
+            this._performPoiSearch(selectedCategory);
+        });
+
+        return listBox;
+    }
+
+    _performPoiSearch(category) {
+        log('perform search: ' + category.label);
+        log('keyValues: ' + category);
+
+        let viewport = this._entry.mapView.map.viewport;
+
+        this._poiSearchCancellable = new Gio.Cancellable();
+        this._overpass.searchPois(viewport.latitude, viewport.longitude,
+                                  category, this._poiSearchCancellable,
+                                  (results) => {
+            this._poiSearchCancellable = null;
+
+            if (!results) {
+                this.showError();
+            } else if (results.length === 0) {
+                this.showNoResult();
+            } else {
+                let placeStore = Application.placeStore;
+                let completedPlaces = placeStore.getCompletedPlaces(results);
+
+                this.updateResult(completedPlaces, '');
+                this.showResult();
+                this._entry.grab_focus();
+            }
+        });
     }
 
     _showPopover() {
@@ -51,9 +162,32 @@ export class PlacePopover extends SearchPopover {
         this.popup();
     }
 
-    showSpinner() {
+    showPoiMainCategories() {
+        log('showPoiMainCategories');
+        let firstRow = this._poiMainCategories.get_row_at_index(0);
+
+        if (this._poiSearchCancellable &&
+            !this._poiSearchCancellable.is_cancelled()) {
+            this._poiSearchCancellable.cancel();
+            this._poiSearchCancellable = null;
+        }
+
+        this._stack.visible_child = this._poiMainCategories;
+        this._poiMainCategories.select_row(firstRow);
+
+        if (!this.visible)
+            this._showPopover();
+    }
+
+    showSpinner(transitionType = Gtk.StackTransitionType.CROSSFADE) {
         this._spinner.start();
+        this._stack.transition_type = transitionType;
         this._stack.visible_child = this._spinner;
+
+        /* set the transition to crossfade so the result won't come in
+         * with a sliding animation when coming from POI browsing
+         */
+       this._stack.transition_type = Gtk.StackTransitionType.CROSSFADE;
 
         if (!this.visible)
             this._showPopover();
@@ -146,5 +280,7 @@ GObject.registerClass({
                         'stack',
                         'spinner',
                         'noResultsLabel',
-                        'errorLabel' ],
+                        'errorLabel',
+                        'poiMainCategories',
+                        'poiSubCategories'],
 }, PlacePopover);

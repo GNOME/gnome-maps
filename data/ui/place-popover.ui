@@ -17,16 +17,16 @@
           <class name="maps-stack"/>
         </style>
         <child>
-          <object class="GtkScrolledWindow" id="scrolledWindow">
-            <property name="hscrollbar_policy">never</property>
-            <property name="max-content-height">400</property>
-            <property name="propagate-natural-height">True</property>
-            <property name="child">
-              <object class="GtkListBox" id="list">
-                <property name="hexpand">1</property>
-                <property name="vexpand">1</property>
-              </object>
-            </property>
+          <object class="GtkListBox" id="poiMainCategories">
+            <property name="vexpand">True</property>
+            <property name="hexpand">True</property>
+            <property name="height-request">400</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwBin" id="poiSubCategories">
+            <property name="vexpand">True</property>
+            <property name="hexpand">True</property>
           </object>
         </child>
         <child>
@@ -37,6 +37,19 @@
             <property name="height_request">16</property>
             <property name="valign">GTK_ALIGN_CENTER</property>
             <property name="spinning">True</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow" id="scrolledWindow">
+            <property name="hscrollbar_policy">never</property>
+            <property name="max-content-height">400</property>
+            <property name="propagate-natural-height">True</property>
+            <property name="child">
+              <object class="GtkListBox" id="list">
+                <property name="hexpand">1</property>
+                <property name="vexpand">1</property>
+              </object>
+            </property>
           </object>
         </child>
         <child>
