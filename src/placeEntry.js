@@ -389,6 +389,16 @@ export class PlaceEntry extends Gtk.SearchEntry {
         this._popover.updateResult(completedPlaces, searchText);
         this._popover.showResult();
     }
+
+    browsePois() {
+        this._popover.showPoiMainCategories();
+        /* clear text entry incase it has a previous selected place
+         * highlighted to avoid confusion, as this text is not taken into
+         * account when searching for POIs
+         */
+        this.text = '';
+        this.grab_focus();
+    }
 }
 
 GObject.registerClass({
