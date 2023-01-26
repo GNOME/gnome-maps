@@ -2,7 +2,8 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <template class="Gjs_ExportViewDialog" parent="GtkDialog">
-    <property name="resizable">0</property>
+    <property name="default-height">360</property>
+    <property name="default-width">360</property>
     <property name="title" translatable="1">Export view</property>
     <child internal-child="headerbar">
       <object class="GtkHeaderBar" id="headerBar">
@@ -47,7 +48,7 @@
             <property name="column_spacing">8</property>
             <child>
               <object class="GtkFrame" id="frame">
-                <property name="valign">start</property>
+                <property name="vexpand">True</property>
                 <property name="child">
                   <object class="GtkImage" id="previewArea">
                     <property name="vexpand">True</property>
@@ -56,28 +57,25 @@
                 </property>
                 <layout>
                   <property name="column">0</property>
+                  <property name="column-span">2</property>
                   <property name="row">0</property>
-                  <property name="row-span">3</property>
                 </layout>
               </object>
             </child>
             <child>
               <object class="GtkEntry" id="filenameEntry">
                 <property name="focusable">1</property>
-                <property name="valign">start</property>
+                <property name="hexpand">True</property>
                 <property name="activates_default">1</property>
-                <property name="width_chars">32</property>
                 <layout>
-                  <property name="column">2</property>
-                  <property name="row">0</property>
+                  <property name="column">0</property>
+                  <property name="row">1</property>
                 </layout>
               </object>
             </child>
             <child>
               <object class="GtkButton" id="fileChooserButton">
                 <property name="can_focus">False</property>
-                <property name="valign">start</property>
-                <property name="vexpand">True</property>
                 <child>
                   <object class="GtkImage" id="favorites-button-image">
                     <property name="icon-size">normal</property>
@@ -85,7 +83,7 @@
                   </object>
                 </child>
                 <layout>
-                  <property name="column">2</property>
+                  <property name="column">1</property>
                   <property name="row">1</property>
                 </layout>
               </object>
