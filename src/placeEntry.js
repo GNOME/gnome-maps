@@ -89,7 +89,8 @@ export class PlaceEntry extends Gtk.SearchEntry {
         return this._mapView;
     }
 
-    constructor({mapView, maxChars, matchRoute, ...params}) {
+    constructor({mapView, maxChars, matchRoute, hasPoiBrowser = false,
+                 ...params}) {
         super(params);
 
         this._mapView = mapView;
@@ -103,7 +104,7 @@ export class PlaceEntry extends Gtk.SearchEntry {
 
         this.connect('activate', this._onActivate.bind(this));
 
-        this._popover = this._createPopover(maxChars);
+        this._popover = this._createPopover(maxChars, hasPoiBrowser);
 
         this.connect('search-changed', this._onSearchChanged.bind(this));
 
@@ -170,9 +171,10 @@ export class PlaceEntry extends Gtk.SearchEntry {
                 placeA.location.longitude === placeB.location.longitude);
     }
 
-    _createPopover(maxChars) {
+    _createPopover(maxChars, hasPoiBrowser) {
         let popover = new PlacePopover({ entry:         this,
-                                         maxChars:      maxChars });
+                                         maxChars:      maxChars,
+                                         hasPoiBrowser: hasPoiBrowser });
 
         popover.set_parent(this);
         this.set_key_capture_widget(popover);
