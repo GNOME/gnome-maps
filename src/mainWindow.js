@@ -39,9 +39,9 @@ import {HeaderBarLeft, HeaderBarRight} from './headerBar.js';
 import {LocationServiceDialog} from './locationServiceDialog.js';
 import {MapView} from './mapView.js';
 import {PlaceBar} from './placeBar.js';
-import {PlaceEntry} from './placeEntry.js';
 import {PlaceStore} from './placeStore.js';
 import {PrintOperation} from './printOperation.js';
+import {SearchBar} from './searchBar.js';
 import * as Service from './service.js';
 import {ShapeLayer} from './shapeLayer.js';
 import {Sidebar} from './sidebar.js';
@@ -88,8 +88,8 @@ export class MainWindow extends Gtk.ApplicationWindow {
         return this._mapView;
     }
 
-    get placeEntry() {
-        return this._placeEntry;
+    get searchBar() {
+        return this._searchBar;
     }
 
     get sidebar() {
@@ -146,26 +146,23 @@ export class MainWindow extends Gtk.ApplicationWindow {
         Utils.showToastInOverlay(message, this._overlay);
     }
 
-    _createPlaceEntry() {
-        let placeEntry = new PlaceEntry({ mapView: this._mapView,
-                                          visible: true,
-                                          margin_start: _PLACE_ENTRY_MARGIN,
-                                          margin_end: _PLACE_ENTRY_MARGIN,
-                                          max_width_chars: 50,
-                                          matchRoute: true });
-        placeEntry.connect('notify::place', () => {
-            if (placeEntry.place) {
-                this._mapView.showPlace(placeEntry.place, true);
+    _createSearchBar() {
+        let searchBar = new SearchBar({ mapView: this._mapView,
+                                        margin_start: _PLACE_ENTRY_MARGIN,
+                                        margin_end: _PLACE_ENTRY_MARGIN });
+        searchBar.connect('notify::place', () => {
+            if (searchBar.place) {
+                this._mapView.showPlace(searchBar.place, true);
             }
         });
 
-        let popover = placeEntry.popover;
+        let popover = searchBar.popover;
         popover.connect('selected', () => this._mapView.grab_focus());
 
         this._buttonPressGesture = new Gtk.GestureSingle();
         this._mapView.add_controller(this._buttonPressGesture);
         this._buttonPressGesture.connect('begin', () => popover.popdown());
-        return placeEntry;
+        return searchBar;
     }
 
     _createSidebar() {
@@ -342,9 +339,9 @@ export class MainWindow extends Gtk.ApplicationWindow {
         this._headerBarRight = new HeaderBarRight({ mapView: this._mapView });
         this._headerBar.pack_end(this._headerBarRight);
 
-        this._placeEntry = this._createPlaceEntry();
-        this._headerBar.title_widget = this._placeEntry;
-        this._placeEntry.grab_focus();
+        this._searchBar = this._createSearchBar();
+        this._headerBar.title_widget = this._searchBar;
+        this._searchBar.placeEntry.grab_focus();
 
         Application.geoclue.connect('notify::state',
                                     this._updateLocationSensitivity.bind(this));
@@ -385,15 +382,15 @@ export class MainWindow extends Gtk.ApplicationWindow {
             this._headerBarLeft.hide();
             this._headerBarRight.hide();
             this._actionBarRevealer.set_reveal_child(true);
-            this._placeEntry.set_margin_start(0);
-            this._placeEntry.set_margin_end(0);
+            this._searchBar.set_margin_start(0);
+            this._searchBar.set_margin_end(0);
         } else {
             this.application.adaptive_mode = false;
             this._headerBarLeft.show();
             this._headerBarRight.show();
             this._actionBarRevealer.set_reveal_child(false);
-            this._placeEntry.set_margin_start(_PLACE_ENTRY_MARGIN);
-            this._placeEntry.set_margin_end(_PLACE_ENTRY_MARGIN);
+            this._searchBar.set_margin_start(_PLACE_ENTRY_MARGIN);
+            this._searchBar.set_margin_end(_PLACE_ENTRY_MARGIN);
         }
     }
 
@@ -448,8 +445,10 @@ export class MainWindow extends Gtk.ApplicationWindow {
     }
 
     _onFindActivate() {
-        this._placeEntry.grab_focus();
-        this._placeEntry.select_region(0, this._placeEntry.text.length);
+        let placeEntry = this._searchBar.placeEntry;
+
+        placeEntry.grab_focus();
+        placeEntry.select_region(0, placeEntry.text.length);
     }
 
     _onGotoUserLocationActivate() {

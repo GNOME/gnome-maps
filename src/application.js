@@ -252,7 +252,7 @@ export class Application extends Adw.Application {
                 this._mainWindow.showToast(_("An error has occurred"));
             } else {
                 // clear search entry
-                this._mainWindow.placeEntry.text = '';
+                this._mainWindow.searchBar.placeEntry.text = '';
 
                 if (places) {
                     /* if there's only one place in results, show it directly
@@ -266,9 +266,9 @@ export class Application extends Adw.Application {
                         Application.normalStartup = false;
                         this._mainWindow.mapView.showPlace(places[0], true);
                     } else {
-                        this._mainWindow.placeEntry.grab_focus();
-                        this._mainWindow.placeEntry.updateResults(places, query,
-                                                                  false);
+                        this._mainWindow.searchBar.placeEntry.grab_focus();
+                        this._mainWindow.searchBar.updateResults(places, query,
+                                                                 false);
                     }
                 } else {
                     this._mainWindow.showToast(_("No results found"));
@@ -359,7 +359,7 @@ export class Application extends Adw.Application {
     vfunc_shutdown() {
         // need to unparent popover children to avoid GTK warnings on exit
         if (this._mainWindow) {
-            this._mainWindow.placeEntry.popover.unparent();
+            this._mainWindow.searchBar.placeEntry.popover.unparent();
             this._mainWindow.sidebar.unparentSearchPopovers();
         }
 
