@@ -85,6 +85,10 @@ export class PlaceEntry extends Gtk.SearchEntry {
         return this._popover;
     }
 
+    get mapView() {
+        return this._mapView;
+    }
+
     constructor({mapView, maxChars, matchRoute, ...params}) {
         super(params);
 
