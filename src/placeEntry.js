@@ -381,18 +381,8 @@ export class PlaceEntry extends Gtk.SearchEntry {
 
         let placeStore = Application.placeStore;
 
-        places.forEach((place) => {
-            let type;
-
-            if (placeStore.exists(place, PlaceStore.PlaceType.RECENT))
-                type = PlaceStore.PlaceType.RECENT;
-            else if (placeStore.exists(place, PlaceStore.PlaceType.FAVORITE))
-                type = PlaceStore.PlaceType.FAVORITE;
-            else
-                type = PlaceStore.PlaceType.ANY;
-
-            completedPlaces.push({ place: place, type: type });
-        });
+        completedPlaces =
+            completedPlaces.concat(placeStore.getCompletedPlaces(places));
 
         this._popover.updateResult(completedPlaces, searchText);
         this._popover.showResult();
