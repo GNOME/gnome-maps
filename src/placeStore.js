@@ -341,6 +341,25 @@ export class PlaceStore extends Gtk.ListStore {
             }
         });
     }
+
+    getCompletedPlaces(places) {
+        let completedPlaces = [];
+
+        places.forEach((place) => {
+            let type;
+
+            if (this.exists(place, PlaceStore.PlaceType.RECENT))
+                type = PlaceStore.PlaceType.RECENT;
+            else if (this.exists(place, PlaceStore.PlaceType.FAVORITE))
+                type = PlaceStore.PlaceType.FAVORITE;
+            else
+                type = PlaceStore.PlaceType.ANY;
+
+            completedPlaces.push({ place: place, type: type });
+        });
+
+        return completedPlaces;
+    }
 }
 
 GObject.registerClass(PlaceStore);
