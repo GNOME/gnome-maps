@@ -227,8 +227,6 @@ export class PlaceEntry extends Gtk.SearchEntry {
         // if the popover is visible and we have a selected item, activate it
         let row = this._popover.list.get_selected_row();
 
-        log('enter on row: ' + row);
-
         if (this._popover.visible && row)
             row.activate();
     }
