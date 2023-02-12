@@ -113,3 +113,25 @@
   padding: 6px;
   border-bottom: 1px solid @borders;
 }
+
+popover.suggestions list > row:hover {
+  background-color: alpha(currentColor, .04);
+}
+
+popover.suggestions list > row:active {
+  background-color: alpha(currentColor, .08);
+}
+
+popover.suggestions list > row:selected {
+  background-color: alpha(currentColor, .1);
+}
+
+popover.suggestions list > row:selected:hover {
+  background-color: alpha(currentColor, .13);
+}
+
+popover.suggestions list > row:selected:active {
+  background-color: alpha(currentColor, .19);
+}
+
+
