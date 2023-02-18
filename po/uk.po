@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2023-01-25 19:05+0000\n"
-"PO-Revision-Date: 2023-01-27 21:13+0200\n"
+"POT-Creation-Date: 2023-02-18 14:57+0000\n"
+"PO-Revision-Date: 2023-02-18 21:13+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -166,60 +166,67 @@ msgid "Whether to show the scale."
 msgstr "Чи слід показувати шкалу."
 
 #: data/ui/context-menu.ui:6
-msgid "Route from here"
+#| msgid "Route from here"
+msgid "Route from Here"
 msgstr "Маршрут звідси"
 
 #: data/ui/context-menu.ui:10
-msgid "Add intermediate destination"
+#| msgid "Add intermediate destination"
+msgid "Add Intermediate Destination"
 msgstr "Додати проміжний пункт маршруту"
 
 #: data/ui/context-menu.ui:14
-msgid "Route to here"
+#| msgid "Route to here"
+msgid "Route to Here"
 msgstr "Маршрут сюди"
 
 #: data/ui/context-menu.ui:20
-msgid "What's here?"
+#| msgid "What's here?"
+msgid "What's Here?"
 msgstr "Що тут?"
 
 #: data/ui/context-menu.ui:24
-msgid "Copy location"
-msgstr "Копіювати місцевість"
+#| msgid "Copy location"
+msgid "Copy Location"
+msgstr "Копіювати місце"
 
 #: data/ui/context-menu.ui:28
-msgid "Add to OpenStreetMap"
-msgstr "Додати до OpenStreetMap"
+#| msgid "Add to OpenStreetMap"
+msgid "Add to OpenStreetMap…"
+msgstr "Додати до OpenStreetMap…"
 
-#: data/ui/export-view-dialog.ui:6
+#: data/ui/export-view-dialog.ui:7
 msgid "Export view"
 msgstr "Експортувати перегляд"
 
-#: data/ui/export-view-dialog.ui:15 data/ui/send-to-dialog.ui:10
+#: data/ui/export-view-dialog.ui:16 data/ui/send-to-dialog.ui:10
 #: data/ui/shape-layer-file-chooser.ui:22
 msgid "_Cancel"
 msgstr "_Скасувати"
 
-#: data/ui/export-view-dialog.ui:25
+#: data/ui/export-view-dialog.ui:26
 msgid "_Export"
 msgstr "_Експортувати"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:11
-msgid "Go to current location"
-msgstr "Перейти до поточної місцевості"
+#: data/ui/headerbar-left.ui:11 src/geoclue.js:106
+msgid "Current Location"
+msgstr "Поточне місце"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-left.ui:19
-msgid "Choose map type"
-msgstr "Вибрати тип карти"
+msgid "Layers"
+msgstr "Шари"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-left.ui:28
-msgid "Zoom out"
+#| msgid "Zoom out"
+msgid "Zoom Out"
 msgstr "Зменшити"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:37
-msgid "Zoom in"
+#: data/ui/headerbar-left.ui:37 data/ui/zoom-in-dialog.ui:27
+msgid "Zoom In"
 msgstr "Збільшити"
 
 #. Translators: This is a tooltip
@@ -229,13 +236,15 @@ msgstr "Надрукувати маршрут"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-right.ui:21
-msgid "Toggle favorites"
-msgstr "Змінити улюблені"
+#| msgid "Toggle favorites"
+msgid "Favorites"
+msgstr "Улюблене"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-right.ui:30
-msgid "Toggle route planner"
-msgstr "Перемкнути планувальника маршрутів"
+#| msgid "Toggle route planner"
+msgid "Route Planner"
+msgstr "Планувальник маршрутів"
 
 #: data/ui/help-overlay.ui:12
 msgctxt "shortcut window"
@@ -335,12 +344,14 @@ msgid "Turn on location services to find your location"
 msgstr "Увімкнути службу розташування для знаходження місцевості"
 
 #: data/ui/main-window.ui:8
-msgid "Set up OpenStreetMap Account"
-msgstr "Відкрити обліковий запис у OpenStreetMap"
+#| msgid "Set up OpenStreetMap Account"
+msgid "Set up OpenStreetMap Account…"
+msgstr "Відкрити обліковий запис у OpenStreetMap…"
 
 #: data/ui/main-window.ui:12
-msgid "Export as Image"
-msgstr "Експортувати як зображення"
+#| msgid "Export as Image"
+msgid "Export as Image…"
+msgstr "Експортувати як зображення…"
 
 #: data/ui/main-window.ui:17
 msgid "_Keyboard Shortcuts"
@@ -351,8 +362,9 @@ msgid "About Maps"
 msgstr "Про «Карти»"
 
 #: data/ui/main-window.ui:38
-msgid "Open main menu"
-msgstr "Відкрити головне меню"
+#| msgid "Open main menu"
+msgid "Main Menu"
+msgstr "Головне меню"
 
 #: data/ui/osm-account-dialog.ui:6
 msgid "OpenStreetMap Account"
@@ -469,18 +481,18 @@ msgstr "Стаття"
 msgid "Wikidata tag"
 msgstr "Мітка Вікіданих"
 
-#: data/ui/place-popover.ui:40 src/application.js:275
+#: data/ui/place-popover.ui:44 src/application.js:275
 msgid "No results found"
 msgstr "Нічого не знайдено"
 
-#: data/ui/place-popover.ui:50 src/application.js:252 src/osmEditDialog.js:568
+#: data/ui/place-popover.ui:54 src/application.js:252 src/osmEditDialog.js:568
 msgid "An error has occurred"
 msgstr "Трапилась помилка"
 
 #. Translators: This is a tooltip
 #: data/ui/route-entry.ui:12
-msgid "Drag to change order of the route"
-msgstr "Перенесіть, щоб змінити порядок маршруту"
+msgid "Change Route Order"
+msgstr "Змінити порядок маршрутів"
 
 #: data/ui/send-to-dialog.ui:7
 msgid "Open Location"
@@ -594,8 +606,9 @@ msgid "Airplanes"
 msgstr "Літаки"
 
 #. Translators: This is a tooltip
-#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27 data/ui/place-view.ui:52
-msgid "Share location"
+#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27
+#| msgid "Share location"
+msgid "Share Location"
 msgstr "Оприлюднити місце"
 
 #. Translators: This is a tooltip
@@ -610,21 +623,23 @@ msgstr "Напрямки"
 
 #. Translators: This is a tooltip
 #: data/ui/place-buttons.ui:36
-msgid "Mark as favorite"
-msgstr "Зазначити як улюблене"
+#| msgid "Mark as favorite"
+msgid "Mark as Favorite"
+msgstr "Додати до улюблених"
 
 #. Translators: This is a tooltip
 #: data/ui/place-buttons.ui:44
 msgid "Edit on OpenStreetMap"
 msgstr "Редагувати в OpenStreetMap"
 
+#. Translators: This is a tooltip
+#: data/ui/place-view.ui:52
+msgid "Share location"
+msgstr "Оприлюднити місце"
+
 #: data/ui/zoom-in-dialog.ui:11
 msgid "Zoom in to add location!"
 msgstr "Наблизьтесь, щоб додати місцевість!"
-
-#: data/ui/zoom-in-dialog.ui:27
-msgid "Zoom In"
-msgstr "Збільшити"
 
 #: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338
 #: lib/maps-file-data-source.c:418
@@ -701,10 +716,6 @@ msgstr "Не вказано назви файла"
 msgid "Unable to export view"
 msgstr "Неможливо експортувати перегляд"
 
-#: src/geoclue.js:106
-msgid "Current Location"
-msgstr "Поточне місце"
-
 #: src/geoJSONSource.js:73
 msgid "invalid coordinate"
 msgstr "неправильна координата"
@@ -742,7 +753,6 @@ msgid "translator-credits"
 msgstr "Daniel Korostil <ted.korostiled@gmail.com>"
 
 #: src/mainWindow.js:533
-#| msgid "Copyright © 2011 – 2022 Red Hat, Inc. and The GNOME Maps authors"
 msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "© Red Hat, Inc. та розробники «Карт» GNOME, 2011–2023"
 
@@ -1138,11 +1148,11 @@ msgstr "Не вдалося знайти мітку Вікіданих для с
 msgid "Unnamed place"
 msgstr "Місце без назви"
 
-#: src/placeEntry.js:269
+#: src/placeEntry.js:267
 msgid "Failed to parse Geo URI"
 msgstr "Не вдалося розібрати геопосилання"
 
-#: src/placeEntry.js:282
+#: src/placeEntry.js:280
 msgid "Failed to parse Maps URI"
 msgstr "Не вдалося розібрати адресу «Карт»"
 
@@ -1797,6 +1807,18 @@ msgstr "Виконайте правий розворот на %s"
 msgid "Make a right u-turn"
 msgstr "Виконайте правий розворот"
 
+#~ msgid "Go to current location"
+#~ msgstr "Перейти до поточної місцевості"
+
+#~ msgid "Choose map type"
+#~ msgstr "Вибрати тип карти"
+
+#~ msgid "Zoom in"
+#~ msgstr "Збільшити"
+
+#~ msgid "Drag to change order of the route"
+#~ msgstr "Перенесіть, щоб змінити порядок маршруту"
+
 #~ msgid "A map application for GNOME"
 #~ msgstr "Карти для GNOME"
 
@@ -1896,12 +1918,12 @@ msgstr "Виконайте правий розворот"
 
 #~ msgid ""
 #~ "Sorry, that didn’t work. Please try again, or visit\n"
-#~ "<a href=\"https://www.openstreetmap.org/user/forgot-password"
-#~ "\">OpenStreetMap</a> to reset your password."
+#~ "<a href=\"https://www.openstreetmap.org/user/forgot-"
+#~ "password\">OpenStreetMap</a> to reset your password."
 #~ msgstr ""
 #~ "Вибачте, не виконалось. Спробуйте ще раз, або відвідайте\n"
-#~ "<a href=\"https://www.openstreetmap.org/user/forgot-password"
-#~ "\">OpenStreetMap</a>, щоб оновити пароль."
+#~ "<a href=\"https://www.openstreetmap.org/user/forgot-"
+#~ "password\">OpenStreetMap</a>, щоб оновити пароль."
 
 #~ msgid "Check In…"
 #~ msgstr "Відзначитися…"
