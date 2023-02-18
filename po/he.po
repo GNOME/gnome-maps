@@ -8,17 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps 3.9.91\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2023-02-02 13:40+0000\n"
-"PO-Revision-Date: 2023-02-12 08:18+0200\n"
-"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"POT-Creation-Date: 2023-02-18 14:57+0000\n"
+"PO-Revision-Date: 2023-02-18 20:13+0200\n"
+"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
-"2 : 3);\n"
-"X-Generator: Poedit 3.2.2\n"
+"2 : 3)\n"
+"X-Generator: Gtranslator 42.0\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -165,28 +165,28 @@ msgid "Whether to show the scale."
 msgstr "האם להציג את קנה המידה."
 
 #: data/ui/context-menu.ui:6
-msgid "Route from here"
+msgid "Route from Here"
 msgstr "מסלול מכאן"
 
 #: data/ui/context-menu.ui:10
-msgid "Add intermediate destination"
+msgid "Add Intermediate Destination"
 msgstr "הוספת יעד ביניים"
 
 #: data/ui/context-menu.ui:14
-msgid "Route to here"
+msgid "Route to Here"
 msgstr "מסלול לכאן"
 
 #: data/ui/context-menu.ui:20
-msgid "What's here?"
+msgid "What's Here?"
 msgstr "מה יש כאן?"
 
 #: data/ui/context-menu.ui:24
-msgid "Copy location"
+msgid "Copy Location"
 msgstr "העתקת מיקום"
 
 #: data/ui/context-menu.ui:28
-msgid "Add to OpenStreetMap"
-msgstr "הוספה ל־OpenStreetMap"
+msgid "Add to OpenStreetMap…"
+msgstr "הוספה ל־OpenStreetMap…"
 
 #: data/ui/export-view-dialog.ui:7
 msgid "Export view"
@@ -202,24 +202,24 @@ msgid "_Export"
 msgstr "_ייצוא"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:11
-msgid "Go to current location"
-msgstr "מעבר למיקום הנוכחי"
+#: data/ui/headerbar-left.ui:11 src/geoclue.js:106
+msgid "Current Location"
+msgstr "מיקום נוכחי"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-left.ui:19
-msgid "Choose map type"
-msgstr "בחירת סוג המפה"
+msgid "Layers"
+msgstr "שכבות"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-left.ui:28
-msgid "Zoom out"
-msgstr "להתרחק"
+msgid "Zoom Out"
+msgstr "התרחקות"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:37
-msgid "Zoom in"
-msgstr "להתקרב"
+#: data/ui/headerbar-left.ui:37 data/ui/zoom-in-dialog.ui:27
+msgid "Zoom In"
+msgstr "התקרבות"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-right.ui:11
@@ -228,13 +228,13 @@ msgstr "הדפסת מסלול"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-right.ui:21
-msgid "Toggle favorites"
+msgid "Favorites"
 msgstr "מועדפים"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-right.ui:30
-msgid "Toggle route planner"
-msgstr "להציג/להסתיר מתכנן מסלול"
+msgid "Route Planner"
+msgstr "תכנון מסלול"
 
 #: data/ui/help-overlay.ui:12
 msgctxt "shortcut window"
@@ -334,12 +334,12 @@ msgid "Turn on location services to find your location"
 msgstr "הפעלת שירותי איכון למציאת המיקום שלך"
 
 #: data/ui/main-window.ui:8
-msgid "Set up OpenStreetMap Account"
-msgstr "הגדרת חשבון OpenStreetMap"
+msgid "Set up OpenStreetMap Account…"
+msgstr "הגדרת חשבון OpenStreetMap…"
 
 #: data/ui/main-window.ui:12
-msgid "Export as Image"
-msgstr "לייצא כתמונה"
+msgid "Export as Image…"
+msgstr "ייצוא כתמונה…"
 
 #: data/ui/main-window.ui:17
 msgid "_Keyboard Shortcuts"
@@ -350,8 +350,8 @@ msgid "About Maps"
 msgstr "על תכנית המפות"
 
 #: data/ui/main-window.ui:38
-msgid "Open main menu"
-msgstr "פתיחת התפריט הראשי"
+msgid "Main Menu"
+msgstr "תפריט ראשי"
 
 #: data/ui/osm-account-dialog.ui:6
 msgid "OpenStreetMap Account"
@@ -466,18 +466,18 @@ msgstr "ערך"
 msgid "Wikidata tag"
 msgstr "תג וויקינתונים"
 
-#: data/ui/place-popover.ui:40 src/application.js:275
+#: data/ui/place-popover.ui:44 src/application.js:275
 msgid "No results found"
 msgstr "לא נמצאו תוצאות"
 
-#: data/ui/place-popover.ui:50 src/application.js:252 src/osmEditDialog.js:568
+#: data/ui/place-popover.ui:54 src/application.js:252 src/osmEditDialog.js:568
 msgid "An error has occurred"
 msgstr "התרחשה שגיאה"
 
 #. Translators: This is a tooltip
 #: data/ui/route-entry.ui:12
-msgid "Drag to change order of the route"
-msgstr "יש לגרור לשינוי סדר המסלול"
+msgid "Change Route Order"
+msgstr "שינוי כיוון מסלול"
 
 #: data/ui/send-to-dialog.ui:7
 msgid "Open Location"
@@ -589,8 +589,8 @@ msgid "Airplanes"
 msgstr "מטוסים"
 
 #. Translators: This is a tooltip
-#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27 data/ui/place-view.ui:52
-msgid "Share location"
+#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27
+msgid "Share Location"
 msgstr "שיתוף מיקום"
 
 #. Translators: This is a tooltip
@@ -605,7 +605,7 @@ msgstr "הנחיות"
 
 #. Translators: This is a tooltip
 #: data/ui/place-buttons.ui:36
-msgid "Mark as favorite"
+msgid "Mark as Favorite"
 msgstr "סימון כמועדף"
 
 #. Translators: This is a tooltip
@@ -613,13 +613,14 @@ msgstr "סימון כמועדף"
 msgid "Edit on OpenStreetMap"
 msgstr "עריכה ב־OpenStreetMap"
 
+#. Translators: This is a tooltip
+#: data/ui/place-view.ui:52
+msgid "Share location"
+msgstr "שיתוף מיקום"
+
 #: data/ui/zoom-in-dialog.ui:11
 msgid "Zoom in to add location!"
 msgstr "יש להתקרב כדי להוסיף מיקום!"
-
-#: data/ui/zoom-in-dialog.ui:27
-msgid "Zoom In"
-msgstr "להתקרב"
 
 #: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338
 #: lib/maps-file-data-source.c:418
@@ -695,10 +696,6 @@ msgstr "לא צוין שם קובץ"
 #: src/exportViewDialog.js:170
 msgid "Unable to export view"
 msgstr "לא ניתן לייצא תצוגה"
-
-#: src/geoclue.js:106
-msgid "Current Location"
-msgstr "מיקום נוכחי"
 
 #: src/geoJSONSource.js:73
 msgid "invalid coordinate"
@@ -1780,6 +1777,18 @@ msgstr "לפנות פניית פרסה ימינה אל %s"
 #: src/transitplugins/openTripPlanner.js:1254
 msgid "Make a right u-turn"
 msgstr "לפנות פניית פרסה ימינה"
+
+#~ msgid "Go to current location"
+#~ msgstr "מעבר למיקום הנוכחי"
+
+#~ msgid "Choose map type"
+#~ msgstr "בחירת סוג המפה"
+
+#~ msgid "Zoom in"
+#~ msgstr "להתקרב"
+
+#~ msgid "Drag to change order of the route"
+#~ msgstr "יש לגרור לשינוי סדר המסלול"
 
 #~ msgid "Include route and markers"
 #~ msgstr "לכלול מסלול וסימונים"
