@@ -9,8 +9,8 @@
 msgid ""
 msgstr "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2023-02-02 13:40+0000\n"
-"PO-Revision-Date: 2023-02-12 10:00+0100\n"
+"POT-Creation-Date: 2023-02-18 14:57+0000\n"
+"PO-Revision-Date: 2023-02-19 10:00+0100\n"
 "Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -160,28 +160,28 @@ msgid "Whether to show the scale."
 msgstr "Eskala erakutsiko den ala ez."
 
 #: data/ui/context-menu.ui:6
-msgid "Route from here"
+msgid "Route from Here"
 msgstr "Ibilbidea hemendik"
 
 #: data/ui/context-menu.ui:10
-msgid "Add intermediate destination"
+msgid "Add Intermediate Destination"
 msgstr "Gehitu tarteko helmuga"
 
 #: data/ui/context-menu.ui:14
-msgid "Route to here"
+msgid "Route to Here"
 msgstr "Ibilbidea hona"
 
 #: data/ui/context-menu.ui:20
-msgid "What's here?"
+msgid "What's Here?"
 msgstr "Zer dago hemen?"
 
 #: data/ui/context-menu.ui:24
-msgid "Copy location"
+msgid "Copy Location"
 msgstr "Kopiatu kokalekua"
 
 #: data/ui/context-menu.ui:28
-msgid "Add to OpenStreetMap"
-msgstr "Gehitu OpenStreetMap-i"
+msgid "Add to OpenStreetMap…"
+msgstr "Gehitu OpenStreetMap-en…"
 
 #: data/ui/export-view-dialog.ui:7
 msgid "Export view"
@@ -197,23 +197,23 @@ msgid "_Export"
 msgstr "_Esportatu"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:11
-msgid "Go to current location"
-msgstr "Joan uneko kokalekura"
+#: data/ui/headerbar-left.ui:11 src/geoclue.js:106
+msgid "Current Location"
+msgstr "Uneko kokalekua"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-left.ui:19
-msgid "Choose map type"
-msgstr "Aukeratu mapa mota"
+msgid "Layers"
+msgstr "Geruzak"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-left.ui:28
-msgid "Zoom out"
+msgid "Zoom Out"
 msgstr "Txikiagotu"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:37
-msgid "Zoom in"
+#: data/ui/headerbar-left.ui:37 data/ui/zoom-in-dialog.ui:27
+msgid "Zoom In"
 msgstr "Handiagotu"
 
 #. Translators: This is a tooltip
@@ -223,13 +223,13 @@ msgstr "Inprimatu ibilbidea"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-right.ui:21
-msgid "Toggle favorites"
-msgstr "Txandakatu gogokoak"
+msgid "Favorites"
+msgstr "Gogokoak"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-right.ui:30
-msgid "Toggle route planner"
-msgstr "Txandakatu ibilbidearen antolatzailea"
+msgid "Route Planner"
+msgstr "Ibilbideen planifikatzailea"
 
 #: data/ui/help-overlay.ui:12
 msgctxt "shortcut window"
@@ -249,7 +249,7 @@ msgstr "Bilatu"
 #: data/ui/help-overlay.ui:27
 msgctxt "shortcut window"
 msgid "Toggle route planner"
-msgstr "Txandakatu ibilbidearen antolatzailea"
+msgstr "Txandakatu ibilbidearen planifikatzailea"
 
 #: data/ui/help-overlay.ui:33
 msgctxt "shortcut window"
@@ -329,12 +329,12 @@ msgid "Turn on location services to find your location"
 msgstr "Aktibatu kokapen-zerbitzuak zure kokapena aurkitzeko"
 
 #: data/ui/main-window.ui:8
-msgid "Set up OpenStreetMap Account"
-msgstr "Konfiguratu OpenStreetMap-eko kontua"
+msgid "Set up OpenStreetMap Account…"
+msgstr "Konfiguratu OpenStreetMap-eko kontua…"
 
 #: data/ui/main-window.ui:12
-msgid "Export as Image"
-msgstr "Esportatu irudi gisa"
+msgid "Export as Image…"
+msgstr "Esportatu irudi gisa…"
 
 #: data/ui/main-window.ui:17
 msgid "_Keyboard Shortcuts"
@@ -345,8 +345,8 @@ msgid "About Maps"
 msgstr "Mapak aplikazioari buruz"
 
 #: data/ui/main-window.ui:38
-msgid "Open main menu"
-msgstr "Ireki menu nagusia"
+msgid "Main Menu"
+msgstr "Menu nagusia"
 
 #: data/ui/osm-account-dialog.ui:6
 msgid "OpenStreetMap Account"
@@ -458,18 +458,18 @@ msgstr "Artikulua"
 msgid "Wikidata tag"
 msgstr "Wikidatako etiketa"
 
-#: data/ui/place-popover.ui:40 src/application.js:275
+#: data/ui/place-popover.ui:44 src/application.js:275
 msgid "No results found"
 msgstr "Ez da emaitzarik aurkitu"
 
-#: data/ui/place-popover.ui:50 src/application.js:252 src/osmEditDialog.js:568
+#: data/ui/place-popover.ui:54 src/application.js:252 src/osmEditDialog.js:568
 msgid "An error has occurred"
 msgstr "Errore bat gertatu da"
 
 #. Translators: This is a tooltip
 #: data/ui/route-entry.ui:12
-msgid "Drag to change order of the route"
-msgstr "Arrastatu ibilbidearen ordena aldatzeko"
+msgid "Change Route Order"
+msgstr "Aldatu ibilbidearen ordena"
 
 #: data/ui/send-to-dialog.ui:7
 msgid "Open Location"
@@ -577,8 +577,8 @@ msgid "Airplanes"
 msgstr "Hegazkinak"
 
 #. Translators: This is a tooltip
-#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27 data/ui/place-view.ui:52
-msgid "Share location"
+#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27
+msgid "Share Location"
 msgstr "Partekatu kokalekua"
 
 #. Translators: This is a tooltip
@@ -593,7 +593,7 @@ msgstr "Norabideak"
 
 #. Translators: This is a tooltip
 #: data/ui/place-buttons.ui:36
-msgid "Mark as favorite"
+msgid "Mark as Favorite"
 msgstr "Markatu gogoko gisa"
 
 #. Translators: This is a tooltip
@@ -601,13 +601,14 @@ msgstr "Markatu gogoko gisa"
 msgid "Edit on OpenStreetMap"
 msgstr "Editatu OpenStreetMap-en"
 
+#. Translators: This is a tooltip
+#: data/ui/place-view.ui:52
+msgid "Share location"
+msgstr "Partekatu kokalekua"
+
 #: data/ui/zoom-in-dialog.ui:11
 msgid "Zoom in to add location!"
 msgstr "Handiagotu zooma kokalekua gehitzeko!"
-
-#: data/ui/zoom-in-dialog.ui:27
-msgid "Zoom In"
-msgstr "Handiagotu"
 
 #: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338
 #: lib/maps-file-data-source.c:418
@@ -683,10 +684,6 @@ msgstr "Ez da fitxategi-izenik zehaztu"
 #: src/exportViewDialog.js:170
 msgid "Unable to export view"
 msgstr "Ezin da ikuspegia esportatu"
-
-#: src/geoclue.js:106
-msgid "Current Location"
-msgstr "Uneko kokalekua"
 
 #: src/geoJSONSource.js:73
 msgid "invalid coordinate"
@@ -1745,6 +1742,18 @@ msgstr "Aldatu noranzkoa eskuinerantz hemen: %s"
 msgid "Make a right u-turn"
 msgstr "Aldatu noranzkoa eskuinerantz"
 
+#~ msgid "Go to current location"
+#~ msgstr "Joan uneko kokalekura"
+
+#~ msgid "Choose map type"
+#~ msgstr "Aukeratu mapa mota"
+
+#~ msgid "Zoom in"
+#~ msgstr "Handiagotu"
+
+#~ msgid "Drag to change order of the route"
+#~ msgstr "Arrastatu ibilbidearen ordena aldatzeko"
+
 #~ msgid "Include route and markers"
 #~ msgstr "Txertatu ibilbidea eta markatzaileak"
 
@@ -1843,12 +1852,12 @@ msgstr "Aldatu noranzkoa eskuinerantz"
 
 #~ msgid ""
 #~ "Sorry, that didn’t work. Please try again, or visit\n"
-#~ "<a href=\"https://www.openstreetmap.org/user/forgot-password"
-#~ "\">OpenStreetMap</a> to reset your password."
+#~ "<a href=\"https://www.openstreetmap.org/user/forgot-"
+#~ "password\">OpenStreetMap</a> to reset your password."
 #~ msgstr ""
 #~ "Ez du funtzionatzen. Saiatu berriro, edo bisitatu\n"
-#~ "<a href=\"https://www.openstreetmap.org/user/forgot-password"
-#~ "\">OpenStreetMap</a> zure pasahitza berrezartzeko."
+#~ "<a href=\"https://www.openstreetmap.org/user/forgot-"
+#~ "password\">OpenStreetMap</a> zure pasahitza berrezartzeko."
 
 #~ msgid "Check In…"
 #~ msgstr "Eregistratu…"
@@ -2047,9 +2056,6 @@ msgstr "Aldatu noranzkoa eskuinerantz"
 
 #~ msgid "Load Map Layer"
 #~ msgstr "Kargatu maparen geruza"
-
-#~ msgid "Open Layer"
-#~ msgstr "Ireki geruza"
 
 #~ msgid "OK"
 #~ msgstr "Ados"
