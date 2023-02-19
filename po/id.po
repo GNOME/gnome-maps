@@ -1,16 +1,16 @@
 # Indonesian translation for gnome-maps.
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
-# Andika Triwidada <andika@gmail.com>, 2013, 2014, 2015, 2018.
+# Andika Triwidada <andika@gmail.com>, 2013, 2014, 2015, 2018, 2023.
 # Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017-2023.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-maps gnome-3-28\n"
+"Project-Id-Version: gnome-maps main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2023-02-02 13:40+0000\n"
-"PO-Revision-Date: 2023-02-05 16:10+0700\n"
-"Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
+"POT-Creation-Date: 2023-02-18 14:57+0000\n"
+"PO-Revision-Date: 2023-02-19 12:52+0700\n"
+"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <gnome@i15n.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
@@ -167,28 +167,28 @@ msgid "Whether to show the scale."
 msgstr "Apakah akan menampilkan skala."
 
 #: data/ui/context-menu.ui:6
-msgid "Route from here"
-msgstr "Rute dari sini"
+msgid "Route from Here"
+msgstr "Rute dari Sini"
 
 #: data/ui/context-menu.ui:10
-msgid "Add intermediate destination"
-msgstr "Tambahkan tujuan antara"
+msgid "Add Intermediate Destination"
+msgstr "Tambahkan Tujuan Antara"
 
 #: data/ui/context-menu.ui:14
-msgid "Route to here"
-msgstr "Rute ke sini"
+msgid "Route to Here"
+msgstr "Rute ke Sini"
 
 #: data/ui/context-menu.ui:20
-msgid "What's here?"
-msgstr "Apa yang ada disini?"
+msgid "What's Here?"
+msgstr "Ada Apa Di Sini?"
 
 #: data/ui/context-menu.ui:24
-msgid "Copy location"
-msgstr "Salin lokasi"
+msgid "Copy Location"
+msgstr "Salin Lokasi"
 
 #: data/ui/context-menu.ui:28
-msgid "Add to OpenStreetMap"
-msgstr "Tambahkan ke OpenStreetMap"
+msgid "Add to OpenStreetMap…"
+msgstr "Tambahkan ke OpenStreetMap…"
 
 #: data/ui/export-view-dialog.ui:7
 msgid "Export view"
@@ -204,23 +204,23 @@ msgid "_Export"
 msgstr "_Ekspor"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:11
-msgid "Go to current location"
-msgstr "Pergi ke lokasi saat ini"
+#: data/ui/headerbar-left.ui:11 src/geoclue.js:106
+msgid "Current Location"
+msgstr "Lokasi Sekarang"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-left.ui:19
-msgid "Choose map type"
-msgstr "Pilih jenis peta"
+msgid "Layers"
+msgstr "Lapisan"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-left.ui:28
-msgid "Zoom out"
+msgid "Zoom Out"
 msgstr "Perkecil"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:37
-msgid "Zoom in"
+#: data/ui/headerbar-left.ui:37 data/ui/zoom-in-dialog.ui:27
+msgid "Zoom In"
 msgstr "Perbesar"
 
 #. Translators: This is a tooltip
@@ -230,13 +230,13 @@ msgstr "Cetak Rute"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-right.ui:21
-msgid "Toggle favorites"
-msgstr "Jungkitkan favorit"
+msgid "Favorites"
+msgstr "Favorit"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-right.ui:30
-msgid "Toggle route planner"
-msgstr "Jungkitkan perencana rute"
+msgid "Route Planner"
+msgstr "Perencana Rute"
 
 #: data/ui/help-overlay.ui:12
 msgctxt "shortcut window"
@@ -336,12 +336,12 @@ msgid "Turn on location services to find your location"
 msgstr "Nyalakan layanan lokasi untuk menemukan lokasi Anda"
 
 #: data/ui/main-window.ui:8
-msgid "Set up OpenStreetMap Account"
-msgstr "Menyiapkan Akun OpenStreetMap"
+msgid "Set up OpenStreetMap Account…"
+msgstr "Menyiapkan Akun OpenStreetMap…"
 
 #: data/ui/main-window.ui:12
-msgid "Export as Image"
-msgstr "Ekspor sebagai Citra"
+msgid "Export as Image…"
+msgstr "Ekspor sebagai Citra…"
 
 #: data/ui/main-window.ui:17
 msgid "_Keyboard Shortcuts"
@@ -352,8 +352,8 @@ msgid "About Maps"
 msgstr "Tentang Peta"
 
 #: data/ui/main-window.ui:38
-msgid "Open main menu"
-msgstr "Buka menu utama"
+msgid "Main Menu"
+msgstr "Menu Utama"
 
 #: data/ui/osm-account-dialog.ui:6
 msgid "OpenStreetMap Account"
@@ -470,18 +470,18 @@ msgstr "Artikel"
 msgid "Wikidata tag"
 msgstr "Tag Wikidata"
 
-#: data/ui/place-popover.ui:40 src/application.js:275
+#: data/ui/place-popover.ui:44 src/application.js:275
 msgid "No results found"
 msgstr "Hasil tak ditemukan"
 
-#: data/ui/place-popover.ui:50 src/application.js:252 src/osmEditDialog.js:568
+#: data/ui/place-popover.ui:54 src/application.js:252 src/osmEditDialog.js:568
 msgid "An error has occurred"
 msgstr "Terjadi suatu kesalahan"
 
 #. Translators: This is a tooltip
 #: data/ui/route-entry.ui:12
-msgid "Drag to change order of the route"
-msgstr "Seret untuk mengubah urutan rute"
+msgid "Change Route Order"
+msgstr "Ubah Urutan Rute"
 
 #: data/ui/send-to-dialog.ui:7
 msgid "Open Location"
@@ -596,9 +596,9 @@ msgid "Airplanes"
 msgstr "Penerbangan"
 
 #. Translators: This is a tooltip
-#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27 data/ui/place-view.ui:52
-msgid "Share location"
-msgstr "Bagikan lokasi"
+#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27
+msgid "Share Location"
+msgstr "Bagikan Lokasi"
 
 #. Translators: This is a tooltip
 #: data/ui/place-buttons.ui:11
@@ -612,21 +612,22 @@ msgstr "Petunjuk Arah"
 
 #. Translators: This is a tooltip
 #: data/ui/place-buttons.ui:36
-msgid "Mark as favorite"
-msgstr "Tandai sebagai favorit"
+msgid "Mark as Favorite"
+msgstr "Tandai sebagai Favorit"
 
 #. Translators: This is a tooltip
 #: data/ui/place-buttons.ui:44
 msgid "Edit on OpenStreetMap"
 msgstr "Sunting pada OpenStreetMap"
 
+#. Translators: This is a tooltip
+#: data/ui/place-view.ui:52
+msgid "Share location"
+msgstr "Bagikan lokasi"
+
 #: data/ui/zoom-in-dialog.ui:11
 msgid "Zoom in to add location!"
 msgstr "Perbesar untuk menambah lokasi!"
-
-#: data/ui/zoom-in-dialog.ui:27
-msgid "Zoom In"
-msgstr "Perbesar"
 
 #: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338
 #: lib/maps-file-data-source.c:418
@@ -703,10 +704,6 @@ msgstr "Tak ada nama berkas yang dinyatakan"
 msgid "Unable to export view"
 msgstr "Tak bisa mengekspor tilikan"
 
-#: src/geoclue.js:106
-msgid "Current Location"
-msgstr "Lokasi Sekarang"
-
 #: src/geoJSONSource.js:73
 msgid "invalid coordinate"
 msgstr "koordinat tak valid"
@@ -742,7 +739,7 @@ msgstr "Gagal menyambung ke layanan lokasi"
 #: src/mainWindow.js:529
 msgid "translator-credits"
 msgstr ""
-"Andika Triwidada <andika@gmail.com>, 2013-2016, 2018, 2019.\n"
+"Andika Triwidada <andika@gmail.com>, 2013-2016, 2018, 2019, 2023.\n"
 "Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017-2023."
 
 #: src/mainWindow.js:533
@@ -1779,286 +1776,3 @@ msgstr "Putar balik kanan ke %s"
 #: src/transitplugins/openTripPlanner.js:1254
 msgid "Make a right u-turn"
 msgstr "Putar balik kanan"
-
-#~ msgid "A map application for GNOME"
-#~ msgstr "Aplikasi peta bagi GNOME"
-
-#~ msgid "Failed to authorize access"
-#~ msgstr "Gagal mengautorisasi akses"
-
-#~ msgid "Try again"
-#~ msgstr "Coba lagi"
-
-#~ msgid "Include route and markers"
-#~ msgstr "Sertakan rute dan penanda"
-
-#~ msgctxt "dialog title"
-#~ msgid "Edit on OpenStreetMap"
-#~ msgstr "Sunting pada OpenStreetMap"
-
-#~ msgid "Foursquare check-in privacy setting"
-#~ msgstr "Pengaturan privasi check-in Foursquare"
-
-#~ msgid ""
-#~ "Latest used Foursquare check-in privacy setting. Possible values are: "
-#~ "public, followers or private."
-#~ msgstr ""
-#~ "Pengaturan privasi check in Foursquare  yang terakhir dipakai. Nilai yang "
-#~ "mungkin adalah: public (umum), followers (para pengikut), atau private "
-#~ "(pribadi)"
-
-#~ msgid "Foursquare check-in Facebook broadcasting"
-#~ msgstr "Penyiaran Facebook untuk check in Foursquare"
-
-#~ msgid ""
-#~ "Indicates if Foursquare should broadcast the check-in as a post in the "
-#~ "Facebook account associated with the Foursquare account."
-#~ msgstr ""
-#~ "Menandakan apakah Foursquare mesti menyiarkan check in sebagai sebuah "
-#~ "kiriman dalam akun Facebook yang dikaitkan dengan akun Foursquare."
-
-#~ msgid "Foursquare check-in Twitter broadcasting"
-#~ msgstr "Penyiaran Twitter untuk check in Foursquare"
-
-#~ msgid ""
-#~ "Indicates if Foursquare should broadcast the check-in as a tweet in the "
-#~ "Twitter account associated with the Foursquare account."
-#~ msgstr ""
-#~ "Menandakan apakah Foursquare mesti menyiarkan check in sebagai sebuah "
-#~ "twit dalam akun Twitter yang dikaitkan dengan akun Foursquare."
-
-#~ msgid "Use hybrid aerial tiles"
-#~ msgstr "Gunakan ubin udara hybrid"
-
-#~ msgid "Whether aerial tiles should use hybrid style (with labels)."
-#~ msgstr "Apakah ubin udara harus menggunakan gaya hybrid (dengan label)."
-
-#~ msgid "Visibility"
-#~ msgstr "Kenampakan"
-
-#~ msgid "Post on Facebook"
-#~ msgstr "Kirim pada Facebook"
-
-#~ msgid "Post on Twitter"
-#~ msgstr "Kirim pada Twitter"
-
-#~ msgid "C_heck in"
-#~ msgstr "C_heck in"
-
-#~ msgid "Public"
-#~ msgstr "Umum"
-
-#~ msgid "Followers"
-#~ msgstr "Pengikut"
-
-#~ msgid "Private"
-#~ msgstr "Pribadi"
-
-#~ msgid "Show Labels"
-#~ msgstr "Tampilkan Label"
-
-#~ msgid "Maps is offline!"
-#~ msgstr "Peta luring!"
-
-#~ msgid ""
-#~ "Maps need an active internet connection to function properly, but one "
-#~ "can’t be found."
-#~ msgstr ""
-#~ "Peta perlu suatu koneksi internet aktif untuk berfungsi dengan benar, "
-#~ "tapi tidak ditemukan satupun."
-
-#~ msgid "Check your connection and proxy settings."
-#~ msgstr "Periksalah pengaturan proksi dan koneksi Anda."
-
-#~ msgid "Email"
-#~ msgstr "Surel"
-
-#~ msgid "Password"
-#~ msgstr "Kata Sandi"
-
-#~ msgid ""
-#~ "Sorry, that didn’t work. Please try again, or visit\n"
-#~ "<a href=\"https://www.openstreetmap.org/user/forgot-password"
-#~ "\">OpenStreetMap</a> to reset your password."
-#~ msgstr ""
-#~ "Maaf, itu tidak bisa. Harap coba lagi, atau kunjungi\n"
-#~ "<a href=\"https://www.openstreetmap.org/user/forgot-password"
-#~ "\">OpenStreetMap</a> untuk mereset sandi Anda."
-
-#~ msgid "Check In…"
-#~ msgstr "Check In…"
-
-#~ msgid "Show more results"
-#~ msgstr "Tampilkan lebih banyak hasil"
-
-#~ msgid "Ignore network availability"
-#~ msgstr "Abaikan ketersediaan jaringan"
-
-#~ msgid "Select an account"
-#~ msgstr "Pilih sebuah akun"
-
-#~ msgid "Loading"
-#~ msgstr "Memuat"
-
-#~ msgid "Select a place"
-#~ msgstr "Pilih suatu tempat"
-
-#~ msgid ""
-#~ "Maps cannot find the place to check in to with Foursquare. Please select "
-#~ "one from this list."
-#~ msgstr ""
-#~ "Peta tak dapat temukan tempat untuk check in dengan Foursquare. Harap "
-#~ "pilih satu dari daftar ini."
-
-#~ msgid "Check in to %s"
-#~ msgstr "Check in ke %s"
-
-#~ msgid "Write an optional message to check in to %s."
-#~ msgstr "Tulis suatu pesan tambahan untuk check in ke %s."
-
-#~ msgid "Cannot find “%s” in the social service"
-#~ msgstr "Tak dapat menemukan \"%s\" dalam layanan sosial"
-
-#~ msgid "Cannot find a suitable place to check-in in this location"
-#~ msgstr ""
-#~ "Tak dapat temukan suatu tempat yang cocok untuk check in dalam lokasi ini"
-
-#~ msgid ""
-#~ "Credentials have expired, please open Online Accounts to sign in and "
-#~ "enable this account"
-#~ msgstr ""
-#~ "Kredensial telah kedaluarsa, harap buka Akun Daring untuk masuk dan "
-#~ "memfungsikan akun ini"
-
-#~ msgid "GNOME Maps"
-#~ msgstr "GNOME Peta"
-
-#~ msgid "Night mode"
-#~ msgstr "Mode malam"
-
-#~ msgid "Whether the application is in night mode."
-#~ msgstr "Apakah aplikasi sedang dalam mode malam."
-
-#~ msgid "Night Mode"
-#~ msgstr "Mode Malam"
-
-#~ msgid ""
-#~ "You can even search for specific types of locations, such as “Pubs near "
-#~ "Main Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
-#~ msgstr ""
-#~ "Anda bahkan dapat mencari lokasi dengan jenis tertentu, seperti misalnya "
-#~ "\"Pub dekat Main Street, Boston\" atau \"Hotel dekat Alexanderplatz, "
-#~ "Berlin\"."
-
-#~ msgid "Facebook check-in privacy setting"
-#~ msgstr "Pengaturan privasi check-in Facebook"
-
-#~ msgid ""
-#~ "Latest used Facebook check-in privacy setting. Possible values are: "
-#~ "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
-#~ msgstr ""
-#~ "Pengaturan privasi check in Facebook yang terakhir dipakai. Nilai yang "
-#~ "mungkin adalah: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS, atau SELF."
-
-#~ msgid "Everyone"
-#~ msgstr "Semua orang"
-
-#~ msgid "Friends of friends"
-#~ msgstr "Teman dari teman"
-
-#~ msgid "Just friends"
-#~ msgstr "Teman saja"
-
-#~ msgid "Just me"
-#~ msgstr "Hanya saya"
-
-#~ msgid ""
-#~ "Maps cannot find the place to check in to with Facebook. Please select "
-#~ "one from this list."
-#~ msgstr ""
-#~ "Peta tak dapat temukan tempat untuk check in dengan Facebook. Harap pilih "
-#~ "satu dari daftar ini."
-
-#~ msgid "Find a Route"
-#~ msgstr "Temukan Rute"
-
-#~ msgid "Check in here"
-#~ msgstr "Check in di sini"
-
-#~ msgid "Show more information"
-#~ msgstr "Tampilkan lebih banyak informasi"
-
-#~ msgid "Population:"
-#~ msgstr "Populasi:"
-
-#~ msgid "Altitude:"
-#~ msgstr "Ketinggian:"
-
-#~ msgid "Opening hours:"
-#~ msgstr "Jam buka:"
-
-#~ msgid "Internet access:"
-#~ msgstr "Akses internet:"
-
-#~ msgid "Toilets:"
-#~ msgstr "Toilet:"
-
-#~ msgid "Wheelchair access:"
-#~ msgstr "Akses kursi roda:"
-
-#~ msgid "Phone:"
-#~ msgstr "Telepon:"
-
-#~ msgid "yes"
-#~ msgstr "ya"
-
-#~ msgid "limited"
-#~ msgstr "terbatas"
-
-#~ msgid "no"
-#~ msgstr "tidak"
-
-#~ msgid "designated"
-#~ msgstr "ditugaskan"
-
-#~ msgid "OpenStreetMap URL is not valid"
-#~ msgstr "URL OpenStreetMap tak valid"
-
-#~ msgctxt "time range list"
-#~ msgid "%s %s"
-#~ msgstr "%s %s"
-
-#~ msgctxt "time range list"
-#~ msgid "%s %s %s"
-#~ msgstr "%s %s %s"
-
-#~ msgctxt "time range component"
-#~ msgid "%s %s"
-#~ msgstr "%s %s"
-
-#~ msgid "wired"
-#~ msgstr "ethernet"
-
-#~ msgid "terminal"
-#~ msgstr "terminal"
-
-#~ msgid "service"
-#~ msgstr "pelayanan"
-
-#~ msgid "Primary menu"
-#~ msgstr "Menu utama"
-
-#~ msgid "Don’t have an account?"
-#~ msgstr "Tidak punya akun?"
-
-#~ msgid "%f h"
-#~ msgstr "%f j"
-
-#~ msgid "%f min"
-#~ msgstr "%f men"
-
-#~ msgid "%f s"
-#~ msgstr "%f s"
-
-#~ msgid "Add destination"
-#~ msgstr "Tambahkan tujuan"
