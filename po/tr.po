@@ -15,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2023-01-24 22:01+0000\n"
-"PO-Revision-Date: 2023-01-25 02:45+0300\n"
-"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
+"POT-Creation-Date: 2023-02-18 14:57+0000\n"
+"PO-Revision-Date: 2023-02-18 22:13+0300\n"
+"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -175,61 +175,61 @@ msgid "Whether to show the scale."
 msgstr "Ölçeğin gösterilmesi."
 
 #: data/ui/context-menu.ui:6
-msgid "Route from here"
-msgstr "Buradan rota"
+msgid "Route from Here"
+msgstr "Buradan Rota"
 
 #: data/ui/context-menu.ui:10
-msgid "Add intermediate destination"
-msgstr "Ara durak ekle"
+msgid "Add Intermediate Destination"
+msgstr "Ara Durak Ekle"
 
 #: data/ui/context-menu.ui:14
-msgid "Route to here"
-msgstr "Buraya rota"
+msgid "Route to Here"
+msgstr "Buraya Rota"
 
 #: data/ui/context-menu.ui:20
-msgid "What's here?"
-msgstr "Burada ne var?"
+msgid "What's Here?"
+msgstr "Burada Ne Var?"
 
 #: data/ui/context-menu.ui:24
-msgid "Copy location"
-msgstr "Konumu kopyala"
+msgid "Copy Location"
+msgstr "Konumu Kopyala"
 
 # Sağ tıklama menüsü ögesi olduğu için tümce düzeni.
 #: data/ui/context-menu.ui:28
-msgid "Add to OpenStreetMap"
-msgstr "OpenStreetMap’e ekle"
+msgid "Add to OpenStreetMap…"
+msgstr "OpenStreetMap’e Ekle…"
 
-#: data/ui/export-view-dialog.ui:6
+#: data/ui/export-view-dialog.ui:7
 msgid "Export view"
 msgstr "Görünümü dışa aktar"
 
-#: data/ui/export-view-dialog.ui:15 data/ui/send-to-dialog.ui:10
+#: data/ui/export-view-dialog.ui:16 data/ui/send-to-dialog.ui:10
 #: data/ui/shape-layer-file-chooser.ui:22
 msgid "_Cancel"
 msgstr "_İptal"
 
-#: data/ui/export-view-dialog.ui:25
+#: data/ui/export-view-dialog.ui:26
 msgid "_Export"
 msgstr "Dışa _Aktar"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:11
-msgid "Go to current location"
-msgstr "Geçerli konuma git"
+#: data/ui/headerbar-left.ui:11 src/geoclue.js:106
+msgid "Current Location"
+msgstr "Geçerli Konum"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-left.ui:19
-msgid "Choose map type"
-msgstr "Harita türü seç"
+msgid "Layers"
+msgstr "Katmanlar"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-left.ui:28
-msgid "Zoom out"
+msgid "Zoom Out"
 msgstr "Uzaklaştır"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:37
-msgid "Zoom in"
+#: data/ui/headerbar-left.ui:37 data/ui/zoom-in-dialog.ui:27
+msgid "Zoom In"
 msgstr "Yakınlaştır"
 
 #. Translators: This is a tooltip
@@ -239,13 +239,13 @@ msgstr "Rotayı Yazdır"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-right.ui:21
-msgid "Toggle favorites"
-msgstr "Gözdeleri aç/kapat"
+msgid "Favorites"
+msgstr "Gözdeler"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-right.ui:30
-msgid "Toggle route planner"
-msgstr "Rota planlayıcıyı aç/kapat"
+msgid "Route Planner"
+msgstr "Rota Planlayıcı"
 
 #: data/ui/help-overlay.ui:12
 msgctxt "shortcut window"
@@ -345,12 +345,12 @@ msgid "Turn on location services to find your location"
 msgstr "Konumunuzu bulmak için konum hizmetlerini etkinleştirin"
 
 #: data/ui/main-window.ui:8
-msgid "Set up OpenStreetMap Account"
-msgstr "OpenStreetMap Hesabını Ayarla"
+msgid "Set up OpenStreetMap Account…"
+msgstr "OpenStreetMap Hesabını Ayarla…"
 
 #: data/ui/main-window.ui:12
-msgid "Export as Image"
-msgstr "Resim Olarak Dışarıya Aktar"
+msgid "Export as Image…"
+msgstr "Resim Olarak Dışarıya Aktar…"
 
 #: data/ui/main-window.ui:17
 msgid "_Keyboard Shortcuts"
@@ -361,8 +361,8 @@ msgid "About Maps"
 msgstr "Haritalar Hakkında"
 
 #: data/ui/main-window.ui:38
-msgid "Open main menu"
-msgstr "Ana menüyü aç"
+msgid "Main Menu"
+msgstr "Ana Menü"
 
 #: data/ui/osm-account-dialog.ui:6
 msgid "OpenStreetMap Account"
@@ -479,18 +479,18 @@ msgstr "Makale"
 msgid "Wikidata tag"
 msgstr "Wikidata etiketi"
 
-#: data/ui/place-popover.ui:40 src/application.js:275
+#: data/ui/place-popover.ui:44 src/application.js:275
 msgid "No results found"
 msgstr "Hiçbir sonuç bulunamadı"
 
-#: data/ui/place-popover.ui:50 src/application.js:252 src/osmEditDialog.js:568
+#: data/ui/place-popover.ui:54 src/application.js:252 src/osmEditDialog.js:568
 msgid "An error has occurred"
 msgstr "Hata oluştu"
 
 #. Translators: This is a tooltip
 #: data/ui/route-entry.ui:12
-msgid "Drag to change order of the route"
-msgstr "Rota sıralamasını değiştirmek için sürükle"
+msgid "Change Route Order"
+msgstr "Rota Sıralamasını Değiştir"
 
 #: data/ui/send-to-dialog.ui:7
 msgid "Open Location"
@@ -605,9 +605,9 @@ msgid "Airplanes"
 msgstr "Uçaklar"
 
 #. Translators: This is a tooltip
-#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27 data/ui/place-view.ui:52
-msgid "Share location"
-msgstr "Konum paylaş"
+#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27
+msgid "Share Location"
+msgstr "Konum Paylaş"
 
 #. Translators: This is a tooltip
 #: data/ui/place-buttons.ui:11
@@ -621,21 +621,22 @@ msgstr "Yönergeler"
 
 #. Translators: This is a tooltip
 #: data/ui/place-buttons.ui:36
-msgid "Mark as favorite"
-msgstr "Gözde olarak imle"
+msgid "Mark as Favorite"
+msgstr "Gözde Olarak İmle"
 
 #. Translators: This is a tooltip
 #: data/ui/place-buttons.ui:44
 msgid "Edit on OpenStreetMap"
 msgstr "OpenStreetMap’te Düzenle"
 
+#. Translators: This is a tooltip
+#: data/ui/place-view.ui:52
+msgid "Share location"
+msgstr "Konum paylaş"
+
 #: data/ui/zoom-in-dialog.ui:11
 msgid "Zoom in to add location!"
 msgstr "Konum eklemek için yakınlaştırın!"
-
-#: data/ui/zoom-in-dialog.ui:27
-msgid "Zoom In"
-msgstr "Yakınlaştır"
 
 #: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338
 #: lib/maps-file-data-source.c:418
@@ -711,10 +712,6 @@ msgstr "Dosya adı belirtilmedi"
 #: src/exportViewDialog.js:170
 msgid "Unable to export view"
 msgstr "Görüntü aktarılamıyor"
-
-#: src/geoclue.js:106
-msgid "Current Location"
-msgstr "Geçerli Konum"
 
 #: src/geoJSONSource.js:73
 msgid "invalid coordinate"
@@ -1157,11 +1154,11 @@ msgstr "Makale için Wikidata etiketi bulunamadı"
 msgid "Unnamed place"
 msgstr "Adsız yer"
 
-#: src/placeEntry.js:269
+#: src/placeEntry.js:267
 msgid "Failed to parse Geo URI"
 msgstr "Geo URI ayrıştırma başarısız"
 
-#: src/placeEntry.js:282
+#: src/placeEntry.js:280
 msgid "Failed to parse Maps URI"
 msgstr "Maps URI ayrıştırma başarısız"
 
