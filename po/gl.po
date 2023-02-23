@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2023-01-25 19:05+0000\n"
-"PO-Revision-Date: 2023-02-05 21:58+0100\n"
+"POT-Creation-Date: 2023-02-18 14:57+0000\n"
+"PO-Revision-Date: 2023-02-23 11:38+0100\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -172,60 +172,60 @@ msgid "Whether to show the scale."
 msgstr "Indica se mostrar ou non a escala."
 
 #: data/ui/context-menu.ui:6
-msgid "Route from here"
+msgid "Route from Here"
 msgstr "Ruta desde aquí"
 
 #: data/ui/context-menu.ui:10
-msgid "Add intermediate destination"
+msgid "Add Intermediate Destination"
 msgstr "Engadir un destino intermedio"
 
 #: data/ui/context-menu.ui:14
-msgid "Route to here"
+msgid "Route to Here"
 msgstr "Ruta a aquí"
 
 #: data/ui/context-menu.ui:20
-msgid "What's here?"
+msgid "What's Here?"
 msgstr "Que hai aquí?"
 
 #: data/ui/context-menu.ui:24
-msgid "Copy location"
+msgid "Copy Location"
 msgstr "Copiar localización"
 
 #: data/ui/context-menu.ui:28
-msgid "Add to OpenStreetMap"
-msgstr "Engadir a OpenStreetMap"
+msgid "Add to OpenStreetMap…"
+msgstr "Engadir a OpenStreetMap…"
 
-#: data/ui/export-view-dialog.ui:6
+#: data/ui/export-view-dialog.ui:7
 msgid "Export view"
 msgstr "Exportar vista"
 
-#: data/ui/export-view-dialog.ui:15 data/ui/send-to-dialog.ui:10
+#: data/ui/export-view-dialog.ui:16 data/ui/send-to-dialog.ui:10
 #: data/ui/shape-layer-file-chooser.ui:22
 msgid "_Cancel"
 msgstr "_Cancelar"
 
-#: data/ui/export-view-dialog.ui:25
+#: data/ui/export-view-dialog.ui:26
 msgid "_Export"
 msgstr "_Exportar"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:11
-msgid "Go to current location"
-msgstr "Ir á localización actual"
+#: data/ui/headerbar-left.ui:11 src/geoclue.js:106
+msgid "Current Location"
+msgstr "Localización actual"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-left.ui:19
-msgid "Choose map type"
-msgstr "Escolla o tipo de mapa"
+msgid "Layers"
+msgstr "Capas"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-left.ui:28
-msgid "Zoom out"
+msgid "Zoom Out"
 msgstr "Afastar"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:37
-msgid "Zoom in"
+#: data/ui/headerbar-left.ui:37 data/ui/zoom-in-dialog.ui:27
+msgid "Zoom In"
 msgstr "Ampliar"
 
 #. Translators: This is a tooltip
@@ -235,13 +235,13 @@ msgstr "Imprimir ruta"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-right.ui:21
-msgid "Toggle favorites"
-msgstr "Trocar favoritos"
+msgid "Favorites"
+msgstr "Favoritos"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-right.ui:30
-msgid "Toggle route planner"
-msgstr "Activar/desactivar o planificador de rutas"
+msgid "Route Planner"
+msgstr "Planificador de rutas"
 
 #: data/ui/help-overlay.ui:12
 msgctxt "shortcut window"
@@ -341,12 +341,12 @@ msgid "Turn on location services to find your location"
 msgstr "Active os servizos de localización para buscar a súa localización"
 
 #: data/ui/main-window.ui:8
-msgid "Set up OpenStreetMap Account"
-msgstr "Configurar unha conta de OpenStreetMap"
+msgid "Set up OpenStreetMap Account…"
+msgstr "Configurar unha conta de OpenStreetMap…"
 
 #: data/ui/main-window.ui:12
-msgid "Export as Image"
-msgstr "Exportar como imaxe"
+msgid "Export as Image…"
+msgstr "Exportar como imaxe…"
 
 #: data/ui/main-window.ui:17
 msgid "_Keyboard Shortcuts"
@@ -357,8 +357,8 @@ msgid "About Maps"
 msgstr "Sobre Mapas"
 
 #: data/ui/main-window.ui:38
-msgid "Open main menu"
-msgstr "Abrir menú principal"
+msgid "Main Menu"
+msgstr "Menú principal"
 
 #: data/ui/osm-account-dialog.ui:6
 msgid "OpenStreetMap Account"
@@ -476,18 +476,18 @@ msgstr "Artigo"
 msgid "Wikidata tag"
 msgstr "Etiqueta de Wikidata"
 
-#: data/ui/place-popover.ui:40 src/application.js:275
+#: data/ui/place-popover.ui:44 src/application.js:275
 msgid "No results found"
 msgstr "Non se atoparon resultados"
 
-#: data/ui/place-popover.ui:50 src/application.js:252 src/osmEditDialog.js:568
+#: data/ui/place-popover.ui:54 src/application.js:252 src/osmEditDialog.js:568
 msgid "An error has occurred"
 msgstr "Produciuse un erro"
 
 #. Translators: This is a tooltip
 #: data/ui/route-entry.ui:12
-msgid "Drag to change order of the route"
-msgstr "Arrastrar a orde de cambio de ruta"
+msgid "Change Route Order"
+msgstr "Cambiar orde da ruta"
 
 #: data/ui/send-to-dialog.ui:7
 msgid "Open Location"
@@ -602,8 +602,8 @@ msgid "Airplanes"
 msgstr "Avións"
 
 #. Translators: This is a tooltip
-#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27 data/ui/place-view.ui:52
-msgid "Share location"
+#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27
+msgid "Share Location"
 msgstr "Compartir localización"
 
 #. Translators: This is a tooltip
@@ -618,7 +618,7 @@ msgstr "Direccións"
 
 #. Translators: This is a tooltip
 #: data/ui/place-buttons.ui:36
-msgid "Mark as favorite"
+msgid "Mark as Favorite"
 msgstr "Marcar como favorito"
 
 #. Translators: This is a tooltip
@@ -626,13 +626,14 @@ msgstr "Marcar como favorito"
 msgid "Edit on OpenStreetMap"
 msgstr "Editar en OpenStreetMap"
 
+#. Translators: This is a tooltip
+#: data/ui/place-view.ui:52
+msgid "Share location"
+msgstr "Compartir localización"
+
 #: data/ui/zoom-in-dialog.ui:11
 msgid "Zoom in to add location!"
 msgstr "Amplíe para engadir unha localización!"
-
-#: data/ui/zoom-in-dialog.ui:27
-msgid "Zoom In"
-msgstr "Ampliar"
 
 #: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338
 #: lib/maps-file-data-source.c:418
@@ -708,10 +709,6 @@ msgstr "Nome de ficheiro non especificado"
 #: src/exportViewDialog.js:170
 msgid "Unable to export view"
 msgstr "Non foi posíbel exportar a vista"
-
-#: src/geoclue.js:106
-msgid "Current Location"
-msgstr "Localización actual"
 
 #: src/geoJSONSource.js:73
 msgid "invalid coordinate"
@@ -1143,11 +1140,11 @@ msgstr "Non foi posíbel atopar a etiqueta de Wikidata para o artigo"
 msgid "Unnamed place"
 msgstr "Lugar sen nome"
 
-#: src/placeEntry.js:269
+#: src/placeEntry.js:267
 msgid "Failed to parse Geo URI"
 msgstr "Produciuse un fallo ao analizar o URI Geo"
 
-#: src/placeEntry.js:282
+#: src/placeEntry.js:280
 msgid "Failed to parse Maps URI"
 msgstr "Produciuse un fallo ao analizar o URI de Mapas"
 
@@ -1788,6 +1785,18 @@ msgstr "Faga un xiro en U cara %s"
 #: src/transitplugins/openTripPlanner.js:1254
 msgid "Make a right u-turn"
 msgstr "Faga un xiro en U á dereita"
+
+#~ msgid "Go to current location"
+#~ msgstr "Ir á localización actual"
+
+#~ msgid "Choose map type"
+#~ msgstr "Escolla o tipo de mapa"
+
+#~ msgid "Zoom in"
+#~ msgstr "Ampliar"
+
+#~ msgid "Drag to change order of the route"
+#~ msgstr "Arrastrar a orde de cambio de ruta"
 
 #~ msgid "A map application for GNOME"
 #~ msgstr "Unha aplicación de mapas para GNOME"
