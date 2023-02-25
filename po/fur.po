@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2023-01-25 19:05+0000\n"
-"PO-Revision-Date: 2023-02-02 13:39+0000\n"
+"POT-Creation-Date: 2023-02-18 14:57+0000\n"
+"PO-Revision-Date: 2023-02-25 07:29+0000\n"
 "Last-Translator: Fabio T. <f.t.public@gmail.com>\n"
 "Language-Team: Friulian <f.t.public@gmail.com>\n"
 "Language: fur\n"
@@ -138,11 +138,11 @@ msgstr "Numar di lûcs resints viodûts di tegnî di cont."
 
 #: data/org.gnome.Maps.gschema.xml:51
 msgid "Number of recent routes to store"
-msgstr "Numar di stradis resintis di archiviâ"
+msgstr "Numar di percors resints di archiviâ"
 
 #: data/org.gnome.Maps.gschema.xml:52
 msgid "Number of recently visited routes to store."
-msgstr "Numar di stradis resintis viodudis di tegnî di cont."
+msgstr "Numar di percors resints fats di memorizâ."
 
 #: data/org.gnome.Maps.gschema.xml:56
 msgid "OpenStreetMap username or e-mail address"
@@ -167,76 +167,76 @@ msgid "Whether to show the scale."
 msgstr "Indiche se mostrâ la scjale."
 
 #: data/ui/context-menu.ui:6
-msgid "Route from here"
-msgstr "Strade di chi"
+msgid "Route from Here"
+msgstr "Percors di chi"
 
 #: data/ui/context-menu.ui:10
-msgid "Add intermediate destination"
+msgid "Add Intermediate Destination"
 msgstr "Zonte destinazion intermedie"
 
 #: data/ui/context-menu.ui:14
-msgid "Route to here"
-msgstr "Strade par rivâ chi"
+msgid "Route to Here"
+msgstr "Percors par rivâ chi"
 
 #: data/ui/context-menu.ui:20
-msgid "What's here?"
+msgid "What's Here?"
 msgstr "Ce isal achì?"
 
 #: data/ui/context-menu.ui:24
-msgid "Copy location"
+msgid "Copy Location"
 msgstr "Copie posizion"
 
 #: data/ui/context-menu.ui:28
-msgid "Add to OpenStreetMap"
-msgstr "Zonte a OpenStreetMap"
+msgid "Add to OpenStreetMap…"
+msgstr "Zonte a OpenStreetMap…"
 
-#: data/ui/export-view-dialog.ui:6
+#: data/ui/export-view-dialog.ui:7
 msgid "Export view"
 msgstr "Espuarte viodude"
 
-#: data/ui/export-view-dialog.ui:15 data/ui/send-to-dialog.ui:10
+#: data/ui/export-view-dialog.ui:16 data/ui/send-to-dialog.ui:10
 #: data/ui/shape-layer-file-chooser.ui:22
 msgid "_Cancel"
 msgstr "_Anule"
 
-#: data/ui/export-view-dialog.ui:25
+#: data/ui/export-view-dialog.ui:26
 msgid "_Export"
 msgstr "_Espuarte"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:11
-msgid "Go to current location"
-msgstr "Va te posizion atuâl"
+#: data/ui/headerbar-left.ui:11 src/geoclue.js:106
+msgid "Current Location"
+msgstr "Posizion atuâl"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-left.ui:19
-msgid "Choose map type"
-msgstr "Sielç il gjenar di mape"
+msgid "Layers"
+msgstr "Strâts"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-left.ui:28
-msgid "Zoom out"
+msgid "Zoom Out"
 msgstr "Impiçulìs"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:37
-msgid "Zoom in"
+#: data/ui/headerbar-left.ui:37 data/ui/zoom-in-dialog.ui:27
+msgid "Zoom In"
 msgstr "Ingrandìs"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-right.ui:11
 msgid "Print Route"
-msgstr "Stampe Strade"
+msgstr "Stampe percors"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-right.ui:21
-msgid "Toggle favorites"
-msgstr "Ative/disative preferîts"
+msgid "Favorites"
+msgstr "Preferîts"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-right.ui:30
-msgid "Toggle route planner"
-msgstr "Ative/disative plan di percors"
+msgid "Route Planner"
+msgstr "Plan di percors"
 
 #: data/ui/help-overlay.ui:12
 msgctxt "shortcut window"
@@ -256,12 +256,12 @@ msgstr "Cîr"
 #: data/ui/help-overlay.ui:27
 msgctxt "shortcut window"
 msgid "Toggle route planner"
-msgstr "Cambie plan stradis"
+msgstr "Cambie plan di percors"
 
 #: data/ui/help-overlay.ui:33
 msgctxt "shortcut window"
 msgid "Print route"
-msgstr "Stampe strade"
+msgstr "Stampe percors"
 
 #: data/ui/help-overlay.ui:39
 msgctxt "shortcut window"
@@ -336,12 +336,12 @@ msgid "Turn on location services to find your location"
 msgstr "Ativâ i servizis di localizazion par cjatâ la tô posizion"
 
 #: data/ui/main-window.ui:8
-msgid "Set up OpenStreetMap Account"
-msgstr "Configure Account OpenStreetMap"
+msgid "Set up OpenStreetMap Account…"
+msgstr "Configure Account OpenStreetMap…"
 
 #: data/ui/main-window.ui:12
-msgid "Export as Image"
-msgstr "Espuarte come Imagjin"
+msgid "Export as Image…"
+msgstr "Espuarte come imagjin…"
 
 #: data/ui/main-window.ui:17
 msgid "_Keyboard Shortcuts"
@@ -352,8 +352,8 @@ msgid "About Maps"
 msgstr "Informazions su Mapis"
 
 #: data/ui/main-window.ui:38
-msgid "Open main menu"
-msgstr "Vierç il menù principâl"
+msgid "Main Menu"
+msgstr "Menù principâl"
 
 #: data/ui/osm-account-dialog.ui:6
 msgid "OpenStreetMap Account"
@@ -471,18 +471,18 @@ msgstr "Articul"
 msgid "Wikidata tag"
 msgstr "Etichete Wikidata"
 
-#: data/ui/place-popover.ui:40 src/application.js:275
+#: data/ui/place-popover.ui:44 src/application.js:275
 msgid "No results found"
 msgstr "Nissun risultât cjatât"
 
-#: data/ui/place-popover.ui:50 src/application.js:252 src/osmEditDialog.js:568
+#: data/ui/place-popover.ui:54 src/application.js:252 src/osmEditDialog.js:568
 msgid "An error has occurred"
 msgstr "Si è verificât un erôr"
 
 #. Translators: This is a tooltip
 #: data/ui/route-entry.ui:12
-msgid "Drag to change order of the route"
-msgstr "Strissine par cambiâ l'ordin de strade"
+msgid "Change Route Order"
+msgstr "Cambie ordin percors"
 
 #: data/ui/send-to-dialog.ui:7
 msgid "Open Location"
@@ -594,8 +594,7 @@ msgstr "Avions"
 
 #. Translators: This is a tooltip
 #: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27
-#: data/ui/place-view.ui:52
-msgid "Share location"
+msgid "Share Location"
 msgstr "Condivît posizion"
 
 #. Translators: This is a tooltip
@@ -610,7 +609,7 @@ msgstr "Direzions"
 
 #. Translators: This is a tooltip
 #: data/ui/place-buttons.ui:36
-msgid "Mark as favorite"
+msgid "Mark as Favorite"
 msgstr "Segne come preferît"
 
 #. Translators: This is a tooltip
@@ -618,13 +617,14 @@ msgstr "Segne come preferît"
 msgid "Edit on OpenStreetMap"
 msgstr "Modifiche su OpenStreetMap"
 
+#. Translators: This is a tooltip
+#: data/ui/place-view.ui:52
+msgid "Share location"
+msgstr "Condivît posizion"
+
 #: data/ui/zoom-in-dialog.ui:11
 msgid "Zoom in to add location!"
 msgstr "Aumente ingrandiment par zontâ un puest!"
-
-#: data/ui/zoom-in-dialog.ui:27
-msgid "Zoom In"
-msgstr "Ingrandìs"
 
 #: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338
 #: lib/maps-file-data-source.c:418
@@ -699,10 +699,6 @@ msgstr "Nissun non file specificât"
 #: src/exportViewDialog.js:170
 msgid "Unable to export view"
 msgstr "Impussibil espuartâ la viodude"
-
-#: src/geoclue.js:106
-msgid "Current Location"
-msgstr "Posizion atuâl"
 
 #: src/geoJSONSource.js:73
 msgid "invalid coordinate"
@@ -1134,11 +1130,11 @@ msgstr "Impussibil cjatâ la etichete Wikidata pal articul"
 msgid "Unnamed place"
 msgstr "Puest cence non"
 
-#: src/placeEntry.js:269
+#: src/placeEntry.js:267
 msgid "Failed to parse Geo URI"
 msgstr "Impussibil analizâ il Geo URI"
 
-#: src/placeEntry.js:282
+#: src/placeEntry.js:280
 msgid "Failed to parse Maps URI"
 msgstr "Impussibil analizâ l'URI di Mapis"
 
@@ -1747,6 +1743,18 @@ msgstr "Fâs une inversion a U a diestre su %s"
 msgid "Make a right u-turn"
 msgstr "Fâs une inversion a U a diestre"
 
+#~ msgid "Go to current location"
+#~ msgstr "Va te posizion atuâl"
+
+#~ msgid "Choose map type"
+#~ msgstr "Sielç il gjenar di mape"
+
+#~ msgid "Zoom in"
+#~ msgstr "Ingrandìs"
+
+#~ msgid "Drag to change order of the route"
+#~ msgstr "Strissine par cambiâ l'ordin de strade"
+
 #~ msgid "Use hybrid aerial tiles"
 #~ msgstr "Dopre sezions aeriis ibridis"
 
@@ -2048,9 +2056,6 @@ msgstr "Fâs une inversion a U a diestre"
 
 #~ msgid "Load Map Layer"
 #~ msgstr "Cjarie strât de mape"
-
-#~ msgid "Open Layer"
-#~ msgstr "Vierç Strât"
 
 #~ msgid "%f km"
 #~ msgstr "%f km"
