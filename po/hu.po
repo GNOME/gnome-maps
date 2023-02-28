@@ -1,16 +1,16 @@
 # Hungarian translation for gnome-maps.
-# Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022 Free Software Foundation, Inc.
+# Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-maps package.
 #
-# Balázs Úr <ur.balazs at fsf dot hu>, 2013, 2014, 2015, 2016, 2018, 2019, 2020, 2021, 2022.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2013, 2014, 2015, 2016, 2018, 2019, 2020, 2021, 2022, 2023.
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2013, 2015, 2016, 2017.
 # Balázs Meskó <mesko.balazs at fsf dot hu>, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2022-10-06 20:44+0000\n"
-"PO-Revision-Date: 2022-11-05 20:21+0100\n"
+"POT-Creation-Date: 2023-02-18 14:57+0000\n"
+"PO-Revision-Date: 2023-02-28 01:14+0100\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
@@ -30,7 +30,7 @@ msgstr ""
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
 #: data/ui/main-window.ui:27 src/application.js:61 src/mainWindow.js:134
-#: src/mainWindow.js:512
+#: src/mainWindow.js:531
 msgid "Maps"
 msgstr "Térképek"
 
@@ -56,7 +56,7 @@ msgstr ""
 "A Térképek az együttműködésen alapuló OpenStreetMap adatbázist használja, "
 "amelyet több százezer ember készít a világ minden részén."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:317 src/mainWindow.js:509
+#: data/org.gnome.Maps.appdata.xml.in.in:317 src/mainWindow.js:528
 msgid "The GNOME Project"
 msgstr "A GNOME projekt"
 
@@ -168,60 +168,67 @@ msgid "Whether to show the scale."
 msgstr "Megjelenjen-e a méretarány."
 
 #: data/ui/context-menu.ui:6
-msgid "Route from here"
+#| msgid "Route from here"
+msgid "Route from Here"
 msgstr "Útvonal innen"
 
 #: data/ui/context-menu.ui:10
-msgid "Add intermediate destination"
+#| msgid "Add intermediate destination"
+msgid "Add Intermediate Destination"
 msgstr "Közbenső megálló hozzáadása"
 
 #: data/ui/context-menu.ui:14
-msgid "Route to here"
+#| msgid "Route to here"
+msgid "Route to Here"
 msgstr "Útvonal ide"
 
 #: data/ui/context-menu.ui:20
-msgid "What's here?"
+#| msgid "What's here?"
+msgid "What's Here?"
 msgstr "Mi van itt?"
 
 #: data/ui/context-menu.ui:24
-msgid "Copy location"
+#| msgid "Copy location"
+msgid "Copy Location"
 msgstr "Hely másolása"
 
 #: data/ui/context-menu.ui:28
-msgid "Add to OpenStreetMap"
-msgstr "Hozzáadás az OpenStreetMap-hez"
+#| msgid "Add to OpenStreetMap"
+msgid "Add to OpenStreetMap…"
+msgstr "Hozzáadás az OpenStreetMaphez…"
 
-#: data/ui/export-view-dialog.ui:6
+#: data/ui/export-view-dialog.ui:7
 msgid "Export view"
 msgstr "Exportálási nézet"
 
-#: data/ui/export-view-dialog.ui:15 data/ui/send-to-dialog.ui:10
+#: data/ui/export-view-dialog.ui:16 data/ui/send-to-dialog.ui:10
 #: data/ui/shape-layer-file-chooser.ui:22
 msgid "_Cancel"
 msgstr "_Mégse"
 
-#: data/ui/export-view-dialog.ui:25
+#: data/ui/export-view-dialog.ui:26
 msgid "_Export"
 msgstr "_Exportálás"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:11
-msgid "Go to current location"
-msgstr "Ugrás a jelenlegi helyre"
+#: data/ui/headerbar-left.ui:11 src/geoclue.js:106
+msgid "Current Location"
+msgstr "Jelenlegi hely"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-left.ui:19
-msgid "Choose map type"
-msgstr "Térképtípus kiválasztása"
+msgid "Layers"
+msgstr "Rétegek"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-left.ui:28
-msgid "Zoom out"
+#| msgid "Zoom out"
+msgid "Zoom Out"
 msgstr "Kicsinyítés"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:37
-msgid "Zoom in"
+#: data/ui/headerbar-left.ui:37 data/ui/zoom-in-dialog.ui:27
+msgid "Zoom In"
 msgstr "Nagyítás"
 
 #. Translators: This is a tooltip
@@ -231,85 +238,87 @@ msgstr "Útvonal nyomtatása"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-right.ui:21
-msgid "Toggle favorites"
-msgstr "Kedvencek ki- és bekapcsolása"
+#| msgid "Toggle favorites"
+msgid "Favorites"
+msgstr "Kedvencek"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-right.ui:30
-msgid "Toggle route planner"
-msgstr "Útvonaltervező ki- és bekapcsolása"
+#| msgid "Toggle route planner"
+msgid "Route Planner"
+msgstr "Útvonaltervező"
 
-#: data/ui/help-overlay.ui:14
+#: data/ui/help-overlay.ui:12
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Általános"
 
-#: data/ui/help-overlay.ui:18
+#: data/ui/help-overlay.ui:15
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Gyorsbillentyűk megjelenítése"
 
-#: data/ui/help-overlay.ui:25
+#: data/ui/help-overlay.ui:21
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Keresés"
 
-#: data/ui/help-overlay.ui:32
+#: data/ui/help-overlay.ui:27
 msgctxt "shortcut window"
 msgid "Toggle route planner"
 msgstr "Útvonaltervező ki- és bekapcsolása"
 
-#: data/ui/help-overlay.ui:39
+#: data/ui/help-overlay.ui:33
 msgctxt "shortcut window"
 msgid "Print route"
 msgstr "Útvonal nyomtatása"
 
-#: data/ui/help-overlay.ui:46
+#: data/ui/help-overlay.ui:39
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Kilépés"
 
-#: data/ui/help-overlay.ui:53
+#: data/ui/help-overlay.ui:45
 msgctxt "shortcut window"
 msgid "Open main menu"
 msgstr "Főmenü megnyitása"
 
-#: data/ui/help-overlay.ui:62
+#: data/ui/help-overlay.ui:53
 msgctxt "shortcut window"
 msgid "Map View"
 msgstr "Térkép nézet"
 
-#: data/ui/help-overlay.ui:66
+#: data/ui/help-overlay.ui:56
 msgctxt "shortcut window"
 msgid "Zoom in"
 msgstr "Nagyítás"
 
-#: data/ui/help-overlay.ui:73
+#: data/ui/help-overlay.ui:62
 msgctxt "shortcut window"
 msgid "Zoom out"
 msgstr "Kicsinyítés"
 
-#: data/ui/help-overlay.ui:80
+#: data/ui/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Toggle scale"
 msgstr "Méretarány ki- és bekapcsolása"
 
-#: data/ui/help-overlay.ui:87
+#: data/ui/help-overlay.ui:74
 msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Ugrás a jelenlegi helyre"
 
-#: data/ui/help-overlay.ui:97
+#: data/ui/help-overlay.ui:84
 msgctxt "shortcut window"
 msgid "Switch to street view"
 msgstr "Váltás utcanézetre"
 
-#: data/ui/help-overlay.ui:104
+#: data/ui/help-overlay.ui:91
 msgctxt "shortcut window"
 msgid "Switch to aerial view"
 msgstr "Váltás légifelvételre"
 
-#: data/ui/help-overlay.ui:111
+#: data/ui/help-overlay.ui:97
 msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "Alak réteg megnyitása"
@@ -338,12 +347,14 @@ msgstr ""
 "Helymeghatározó szolgáltatások bekapcsolása a helyzetének megkereséséhez"
 
 #: data/ui/main-window.ui:8
-msgid "Set up OpenStreetMap Account"
-msgstr "OpenStreetMap fiók beállítása"
+#| msgid "Set up OpenStreetMap Account"
+msgid "Set up OpenStreetMap Account…"
+msgstr "OpenStreetMap-fiók beállítása…"
 
 #: data/ui/main-window.ui:12
-msgid "Export as Image"
-msgstr "Exportálás képként"
+#| msgid "Export as Image"
+msgid "Export as Image…"
+msgstr "Exportálás képként…"
 
 #: data/ui/main-window.ui:17
 msgid "_Keyboard Shortcuts"
@@ -354,8 +365,9 @@ msgid "About Maps"
 msgstr "A Térképek névjegye"
 
 #: data/ui/main-window.ui:38
-msgid "Open main menu"
-msgstr "Főmenü megnyitása"
+#| msgid "Open main menu"
+msgid "Main Menu"
+msgstr "Főmenü"
 
 #: data/ui/osm-account-dialog.ui:6
 msgid "OpenStreetMap Account"
@@ -462,22 +474,30 @@ msgstr ""
 msgid "Recently Used"
 msgstr "Nemrég használt"
 
-#: data/ui/osm-edit-dialog.ui:233 src/osmEditDialog.js:512
+#: data/ui/osm-edit-dialog.ui:233 src/osmEditDialog.js:531
 msgid "Next"
 msgstr "Következő"
 
-#: data/ui/place-popover.ui:42 src/application.js:269
+#: data/ui/osm-edit-wikipedia.ui:8
+msgid "Article"
+msgstr "Szócikk"
+
+#: data/ui/osm-edit-wikipedia.ui:21
+msgid "Wikidata tag"
+msgstr "Wikidata címke"
+
+#: data/ui/place-popover.ui:44 src/application.js:275
 msgid "No results found"
 msgstr "Nincs találat"
 
-#: data/ui/place-popover.ui:52 src/application.js:246 src/osmEditDialog.js:549
+#: data/ui/place-popover.ui:54 src/application.js:252 src/osmEditDialog.js:568
 msgid "An error has occurred"
 msgstr "Hiba történt"
 
 #. Translators: This is a tooltip
 #: data/ui/route-entry.ui:12
-msgid "Drag to change order of the route"
-msgstr "Húzza az útvonal sorrendjének módosításához"
+msgid "Change Route Order"
+msgstr "Útvonalsorrend megváltoztatása"
 
 #: data/ui/send-to-dialog.ui:7
 msgid "Open Location"
@@ -595,8 +615,9 @@ msgid "Airplanes"
 msgstr "Repülőgépek"
 
 #. Translators: This is a tooltip
-#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27 data/ui/place-view.ui:53
-msgid "Share location"
+#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27
+#| msgid "Share location"
+msgid "Share Location"
 msgstr "Hely megosztása"
 
 #. Translators: This is a tooltip
@@ -611,7 +632,8 @@ msgstr "Útvonal"
 
 #. Translators: This is a tooltip
 #: data/ui/place-buttons.ui:36
-msgid "Mark as favorite"
+#| msgid "Mark as favorite"
+msgid "Mark as Favorite"
 msgstr "Megjelölés kedvencként"
 
 #. Translators: This is a tooltip
@@ -619,13 +641,14 @@ msgstr "Megjelölés kedvencként"
 msgid "Edit on OpenStreetMap"
 msgstr "Szerkesztés az OpenStreetMapen"
 
+#. Translators: This is a tooltip
+#: data/ui/place-view.ui:52
+msgid "Share location"
+msgstr "Hely megosztása"
+
 #: data/ui/zoom-in-dialog.ui:11
 msgid "Zoom in to add location!"
 msgstr "Nagyítson a hely hozzáadásához!"
-
-#: data/ui/zoom-in-dialog.ui:27
-msgid "Zoom In"
-msgstr "Nagyítás"
 
 #: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338
 #: lib/maps-file-data-source.c:418
@@ -668,7 +691,7 @@ msgstr "Keressen helyeket"
 msgid "[FILE…|URI]"
 msgstr "[FÁJL…|URI]"
 
-#: src/application.js:277
+#: src/application.js:283
 #, javascript-format
 msgid "Invalid maps: URI: %s"
 msgstr "Érvénytelen térképek: URI: %s"
@@ -702,10 +725,6 @@ msgstr "Nincs megadva fájlnév"
 msgid "Unable to export view"
 msgstr "A nézet exportálása sikertelen"
 
-#: src/geoclue.js:106
-msgid "Current Location"
-msgstr "Jelenlegi hely"
-
 #: src/geoJSONSource.js:73
 msgid "invalid coordinate"
 msgstr "érvénytelen koordináta"
@@ -734,30 +753,31 @@ msgstr "Indulás!"
 msgid "All Layer Files"
 msgstr "Minden rétegfájl"
 
-#: src/mainWindow.js:423
+#: src/mainWindow.js:442
 msgid "Failed to connect to location service"
 msgstr "Nem sikerült kapcsolódni a helymeghatározó szolgáltatáshoz"
 
-#: src/mainWindow.js:510
+#: src/mainWindow.js:529
 msgid "translator-credits"
 msgstr ""
 "Meskó Balázs <mesko dot balazs at fsf dot hu>\n"
 "Úr Balázs <ur dot balazs at fsf dot hu>"
 
-#: src/mainWindow.js:514
-msgid "Copyright © 2011 – 2022 Red Hat, Inc. and The GNOME Maps authors"
-msgstr "Copyright © 2011 – 2022 Red Hat, Inc. és a GNOME Térképek szerzői"
+#: src/mainWindow.js:533
+#| msgid "Copyright © 2011 – 2022 Red Hat, Inc. and The GNOME Maps authors"
+msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
+msgstr "Copyright © 2011 – 2023 Red Hat, Inc. és a GNOME Térképek szerzői"
 
-#: src/mainWindow.js:530
+#: src/mainWindow.js:549
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Térképadatok: %s és közreműködők"
 
-#: src/mainWindow.js:531
+#: src/mainWindow.js:550
 msgid "Map Data Provider"
 msgstr "Térképadatok szolgáltatója"
 
-#: src/mainWindow.js:543
+#: src/mainWindow.js:562
 msgid "Map Tile Provider"
 msgstr "Térképcsempék szolgáltatója"
 
@@ -766,29 +786,29 @@ msgstr "Térképcsempék szolgáltatója"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:551
+#: src/mainWindow.js:570
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "A térképcsempéket a(z) %s szolgáltatja"
 
-#: src/mainWindow.js:581
+#: src/mainWindow.js:600
 msgid "Search Provider"
 msgstr "Keresési szolgáltató"
 
-#: src/mainWindow.js:584
+#: src/mainWindow.js:603
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "A keresést a(z) %s biztosította %s használatával"
 
-#: src/mapView.js:499 src/mapView.js:559
+#: src/mapView.js:501 src/mapView.js:561
 msgid "Failed to open layer"
 msgstr "A réteg megnyitása nem sikerült"
 
-#: src/mapView.js:520
+#: src/mapView.js:522
 msgid "Do you want to continue?"
 msgstr "Szeretné folytatni?"
 
-#: src/mapView.js:521
+#: src/mapView.js:523
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -797,19 +817,19 @@ msgstr ""
 "Arra készül, hogy %s MB-nyi összméretű fájlokat nyit meg. A betöltése több "
 "időt vehet igénybe."
 
-#: src/mapView.js:553
+#: src/mapView.js:555
 msgid "File type is not supported"
 msgstr "A fájltípus nem támogatott"
 
-#: src/mapView.js:591
+#: src/mapView.js:593
 msgid "Failed to open GeoURI"
 msgstr "A GeoURI megnyitása nem sikerült"
 
-#: src/mapView.js:1031
+#: src/mapView.js:1033
 msgid "Nothing found here!"
 msgstr "Itt nincs semmi!"
 
-#: src/mapView.js:1092
+#: src/mapView.js:1094
 msgid ""
 "Location was added to the map, note that it may take a while before it shows "
 "on the map and in search results."
@@ -823,57 +843,57 @@ msgstr "Az ellenőrző kód nem egyezik, próbálja újra."
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: src/osmConnection.js:337
+#: src/osmConnection.js:335
 msgid "Incorrect user name or password"
 msgstr "Helytelen felhasználónév vagy jelszó"
 
-#: src/osmConnection.js:339
+#: src/osmConnection.js:337
 msgid "Success"
 msgstr "Sikerült"
 
-#: src/osmConnection.js:341
+#: src/osmConnection.js:339
 msgid "Bad request"
 msgstr "Rossz kérés"
 
-#: src/osmConnection.js:343
+#: src/osmConnection.js:341
 msgid "Object not found"
 msgstr "Nem található objektum"
 
-#: src/osmConnection.js:345
+#: src/osmConnection.js:343
 msgid "Conflict, someone else has just modified the object"
 msgstr "Konfliktus, valaki épp most módosította az objektumot"
 
-#: src/osmConnection.js:347
+#: src/osmConnection.js:345
 msgid "Object has been deleted"
 msgstr "Az objektum törlésre került"
 
-#: src/osmConnection.js:349
+#: src/osmConnection.js:347
 msgid "Way or relation refers to non-existing children"
 msgstr "Út vagy kapcsolat nem létező gyermekekre hivatkozik"
 
-#: src/osmEditDialog.js:116
+#: src/osmEditDialog.js:106
 msgid "Name"
 msgstr "Név"
 
-#: src/osmEditDialog.js:119
+#: src/osmEditDialog.js:109
 msgid "The official name. This is typically what appears on signs."
 msgstr "A hivatalos név. Jellemzően ez jelenik meg a jelzéseken."
 
-#: src/osmEditDialog.js:122
+#: src/osmEditDialog.js:112
 msgid "Address"
 msgstr "Cím"
 
-#: src/osmEditDialog.js:130 src/placeView.js:254
+#: src/osmEditDialog.js:120 src/placeView.js:254
 msgid "Website"
 msgstr "Weboldal"
 
-#: src/osmEditDialog.js:134
+#: src/osmEditDialog.js:124
 msgid "This is not a valid URL. Make sure to include http:// or https://."
 msgstr ""
 "Ez nem érvényes URL. Győződjön meg róla, hogy tartalmazza a http:// vagy "
 "https:// protokollt."
 
-#: src/osmEditDialog.js:135
+#: src/osmEditDialog.js:125
 msgid ""
 "The official website. Try to use the most basic form of a URL i.e. http://"
 "example.com instead of http://example.com/index.html."
@@ -881,11 +901,11 @@ msgstr ""
 "A hivatalos honlap. Próbálja meg az URL alapvető formáját használni, pl. "
 "http://pelda.hu a http://pelda.hu/index.html helyett."
 
-#: src/osmEditDialog.js:140
+#: src/osmEditDialog.js:130
 msgid "Phone"
 msgstr "Telefon"
 
-#: src/osmEditDialog.js:144
+#: src/osmEditDialog.js:134
 msgid ""
 "Phone number. Use the international format, starting with a + sign. Beware "
 "of local privacy laws, especially for private phone numbers."
@@ -893,11 +913,11 @@ msgstr ""
 "Telefonszám. Használja a nemzetközi formátumot a + jellel. Figyeljen a helyi "
 "adatvédelmi törvényekre, különösen a magántelefonszámokra."
 
-#: src/osmEditDialog.js:149 src/placeView.js:282
+#: src/osmEditDialog.js:139 src/placeView.js:282
 msgid "E-mail"
 msgstr "E-mail"
 
-#: src/osmEditDialog.js:154
+#: src/osmEditDialog.js:144
 msgid ""
 "This is not a valid e-mail address. Make sure to not include the mailto: "
 "protocol prefix."
@@ -905,7 +925,7 @@ msgstr ""
 "Ez nem érvényes e-mail-cím. Győződjön meg arról, hogy ne tartalmazza a "
 "mailto: protokollelőtagot."
 
-#: src/osmEditDialog.js:155
+#: src/osmEditDialog.js:145
 msgid ""
 "Contact e-mail address for inquiries. Add only email addresses that are "
 "intended to be publicly used."
@@ -915,23 +935,15 @@ msgstr ""
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:159 src/placeView.js:616
+#: src/osmEditDialog.js:149 src/placeView.js:630
 msgid "Wikipedia"
 msgstr "Wikipédia"
 
-#: src/osmEditDialog.js:164
-msgid ""
-"The format used should include the language code and the article title like "
-"“en:Article title”."
-msgstr ""
-"A használt formátumban legyen benne a nyelvi kód és a cikk címe, mint "
-"például „hu:Cikk címe”."
-
-#: src/osmEditDialog.js:168 src/placeView.js:319
+#: src/osmEditDialog.js:156 src/placeView.js:319
 msgid "Opening hours"
 msgstr "Nyitva tartás"
 
-#: src/osmEditDialog.js:173
+#: src/osmEditDialog.js:161
 msgid "See the link in the label for help on format."
 msgstr "Kövesse a címke hivatkozását formázási segítségért."
 
@@ -941,169 +953,169 @@ msgstr "Kövesse a címke hivatkozását formázási segítségért."
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:176 src/placeView.js:429
+#: src/osmEditDialog.js:164 src/placeView.js:429
 msgid "Population"
 msgstr "Népesség"
 
-#: src/osmEditDialog.js:181 src/placeView.js:458
+#: src/osmEditDialog.js:169 src/placeView.js:458
 msgid "Altitude"
 msgstr "Magasság"
 
-#: src/osmEditDialog.js:184
+#: src/osmEditDialog.js:172
 msgid "Elevation (height above sea level) of a point in metres."
 msgstr "Egy pont tengerszint feletti magassága méterben."
 
-#: src/osmEditDialog.js:187
+#: src/osmEditDialog.js:175
 msgid "Wheelchair access"
 msgstr "Kerekesszékes elérés"
 
-#: src/osmEditDialog.js:190 src/osmEditDialog.js:199 src/osmEditDialog.js:210
-#: src/osmEditDialog.js:245
+#: src/osmEditDialog.js:178 src/osmEditDialog.js:187 src/osmEditDialog.js:198
+#: src/osmEditDialog.js:233
 msgid "Yes"
 msgstr "Igen"
 
-#: src/osmEditDialog.js:191 src/osmEditDialog.js:200 src/osmEditDialog.js:211
-#: src/osmEditDialog.js:246
+#: src/osmEditDialog.js:179 src/osmEditDialog.js:188 src/osmEditDialog.js:199
+#: src/osmEditDialog.js:234
 msgid "No"
 msgstr "Nem"
 
-#: src/osmEditDialog.js:192
+#: src/osmEditDialog.js:180
 msgid "Limited"
 msgstr "Korlátozott"
 
-#: src/osmEditDialog.js:193
+#: src/osmEditDialog.js:181
 msgid "Designated"
 msgstr "Kijelölt"
 
-#: src/osmEditDialog.js:196
+#: src/osmEditDialog.js:184
 msgid "Internet access"
 msgstr "Internet-hozzáférés"
 
-#: src/osmEditDialog.js:201
+#: src/osmEditDialog.js:189
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
 
-#: src/osmEditDialog.js:202
+#: src/osmEditDialog.js:190
 msgid "Wired"
 msgstr "Vezetékes"
 
-#: src/osmEditDialog.js:203
+#: src/osmEditDialog.js:191
 msgid "Terminal"
 msgstr "Terminál"
 
-#: src/osmEditDialog.js:204
+#: src/osmEditDialog.js:192
 msgid "Service"
 msgstr "Szolgáltatás"
 
-#: src/osmEditDialog.js:207
+#: src/osmEditDialog.js:195
 msgid "Takeaway"
 msgstr "Elvitel"
 
-#: src/osmEditDialog.js:212
+#: src/osmEditDialog.js:200
 msgid "Only"
 msgstr "Kizárólag"
 
-#: src/osmEditDialog.js:215
+#: src/osmEditDialog.js:203
 msgid "Religion"
 msgstr "Vallás"
 
-#: src/osmEditDialog.js:218 src/translations.js:286
+#: src/osmEditDialog.js:206 src/translations.js:286
 msgid "Animism"
 msgstr "Animizmus"
 
-#: src/osmEditDialog.js:219
+#: src/osmEditDialog.js:207
 msgid "Bahá’í"
 msgstr "Bahá’í"
 
-#: src/osmEditDialog.js:220 src/translations.js:288
+#: src/osmEditDialog.js:208 src/translations.js:288
 msgid "Buddhism"
 msgstr "Buddhizmus"
 
-#: src/osmEditDialog.js:221 src/translations.js:289
+#: src/osmEditDialog.js:209 src/translations.js:289
 msgid "Caodaism"
 msgstr "Kaodaizmus"
 
-#: src/osmEditDialog.js:222 src/translations.js:290
+#: src/osmEditDialog.js:210 src/translations.js:290
 msgid "Christianity"
 msgstr "Kereszténység"
 
-#: src/osmEditDialog.js:223 src/translations.js:291
+#: src/osmEditDialog.js:211 src/translations.js:291
 msgid "Confucianism"
 msgstr "Konfucianizmus"
 
-#: src/osmEditDialog.js:224 src/translations.js:292
+#: src/osmEditDialog.js:212 src/translations.js:292
 msgid "Hinduism"
 msgstr "Hinduizmus"
 
-#: src/osmEditDialog.js:225 src/translations.js:293
+#: src/osmEditDialog.js:213 src/translations.js:293
 msgid "Jainism"
 msgstr "Dzsainizmus"
 
-#: src/osmEditDialog.js:226 src/translations.js:294
+#: src/osmEditDialog.js:214 src/translations.js:294
 msgid "Judaism"
 msgstr "Judaizmus"
 
-#: src/osmEditDialog.js:227 src/translations.js:295
+#: src/osmEditDialog.js:215 src/translations.js:295
 msgid "Islam"
 msgstr "Iszlám"
 
-#: src/osmEditDialog.js:228 src/translations.js:296
+#: src/osmEditDialog.js:216 src/translations.js:296
 msgid "Multiple Religions"
 msgstr "Több vallás"
 
-#: src/osmEditDialog.js:229 src/translations.js:297
+#: src/osmEditDialog.js:217 src/translations.js:297
 msgid "Paganism"
 msgstr "Pogányság"
 
-#: src/osmEditDialog.js:230 src/translations.js:298
+#: src/osmEditDialog.js:218 src/translations.js:298
 msgid "Pastafarianism"
 msgstr "Pasztafarizmus"
 
-#: src/osmEditDialog.js:231 src/translations.js:299
+#: src/osmEditDialog.js:219 src/translations.js:299
 msgid "Scientology"
 msgstr "Szcientológia"
 
-#: src/osmEditDialog.js:232 src/translations.js:300
+#: src/osmEditDialog.js:220 src/translations.js:300
 msgid "Shinto"
 msgstr "Sintoizmus"
 
-#: src/osmEditDialog.js:233 src/translations.js:301
+#: src/osmEditDialog.js:221 src/translations.js:301
 msgid "Sikhism"
 msgstr "Szikhizmus"
 
-#: src/osmEditDialog.js:234 src/translations.js:302
+#: src/osmEditDialog.js:222 src/translations.js:302
 msgid "Spiritualism"
 msgstr "Spiritualizmus"
 
-#: src/osmEditDialog.js:235 src/translations.js:303
+#: src/osmEditDialog.js:223 src/translations.js:303
 msgid "Taoism"
 msgstr "Taoizmus"
 
-#: src/osmEditDialog.js:236 src/translations.js:304
+#: src/osmEditDialog.js:224 src/translations.js:304
 msgid "Unitarian Universalism"
 msgstr "Unitárius univerzalizmus"
 
-#: src/osmEditDialog.js:237 src/translations.js:305
+#: src/osmEditDialog.js:225 src/translations.js:305
 msgid "Voodoo"
 msgstr "Vudu"
 
-#: src/osmEditDialog.js:238 src/translations.js:306
+#: src/osmEditDialog.js:226 src/translations.js:306
 msgid "Yazidism"
 msgstr "Jezidizmus"
 
-#: src/osmEditDialog.js:239 src/translations.js:307
+#: src/osmEditDialog.js:227 src/translations.js:307
 msgid "Zoroastrianism"
 msgstr "Zoroasztrizmus"
 
-#: src/osmEditDialog.js:242
+#: src/osmEditDialog.js:230
 msgid "Toilets"
 msgstr "Toalett"
 
-#: src/osmEditDialog.js:249
+#: src/osmEditDialog.js:237
 msgid "Note"
 msgstr "Megjegyzés"
 
-#: src/osmEditDialog.js:252
+#: src/osmEditDialog.js:240
 msgid ""
 "Information used to inform other mappers about non-obvious information about "
 "an element, the author’s intent when creating it, or hints for further "
@@ -1112,28 +1124,46 @@ msgstr ""
 "Más térképezőknek szánt információ, egy elem nem egyértelmű "
 "tulajdonságairól, a szerző szándékáról, vagy tippek a további finomításokhoz."
 
-#: src/osmEditDialog.js:320
+#: src/osmEditDialog.js:339
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "Hozzáadás az OpenStreetMaphez"
 
-#: src/osmEditDialog.js:374
+#: src/osmEditDialog.js:393
 msgid "Select Type"
 msgstr "Válasszon egy típust"
 
-#: src/osmEditDialog.js:496
+#: src/osmEditDialog.js:515
 msgid "Done"
 msgstr "Kész"
+
+#: src/osmEditDialog.js:827
+msgid ""
+"The format used should include the language code and the article title like "
+"“en:Article title”."
+msgstr ""
+"A használt formátumban legyen benne a nyelvi kód és a cikk címe, mint "
+"például „hu:Cikk címe”."
+
+#: src/osmEditDialog.js:833
+msgid "Use the reload button to load the Wikidata tag for the selected article"
+msgstr ""
+"Használja az újratöltés gombot a kiválasztott szócikk Wikidata címkéjének"
+" betöltéséhez"
+
+#: src/osmEditDialog.js:841
+msgid "Couldn't find Wikidata tag for article"
+msgstr "Nem sikerült Wikidata címkét találni a szócikkhez"
 
 #: src/photonUtils.js:118
 msgid "Unnamed place"
 msgstr "Névtelen hely"
 
-#: src/placeEntry.js:214
+#: src/placeEntry.js:267
 msgid "Failed to parse Geo URI"
 msgstr "A Geo URI feldolgozása nem sikerült"
 
-#: src/placeEntry.js:227
+#: src/placeEntry.js:280
 msgid "Failed to parse Maps URI"
 msgstr "A térképek URI feldolgozása nem sikerült"
 
@@ -1292,15 +1322,15 @@ msgstr "Tengerszinten"
 msgid "Religion:"
 msgstr "Vallás:"
 
-#: src/place.js:531
+#: src/place.js:543
 msgid "Place not found in OpenStreetMap"
 msgstr "A hely nem található az OpenStreetMapen"
 
-#: src/place.js:538
+#: src/place.js:550
 msgid "Coordinates in URL are not valid"
 msgstr "Az URL-ben lévő koordináták nem érvényesek"
 
-#: src/place.js:547
+#: src/place.js:559
 msgid "URL is not supported"
 msgstr "Az URL nem támogatott"
 
@@ -1352,7 +1382,7 @@ msgstr "Az URI megnyitása nem sikerült"
 msgid "Open with %s"
 msgstr "Megnyitás %s használatával"
 
-#: src/shapeLayer.js:93
+#: src/shapeLayer.js:108
 msgid "failed to load file"
 msgstr "nem sikerült betölteni a fájlt"
 
@@ -1589,7 +1619,6 @@ msgid "%s-%s"
 msgstr "%s-%s"
 
 #: src/translations.js:287
-#| msgid "Bahá’í"
 msgid "Bahá'í"
 msgstr "Bahá'í"
 
