@@ -634,5 +634,6 @@ GObject.registerClass({
                         'grid',
                         'actionBar',
                         'actionBarRevealer',
-                        'placeBarContainer']
+                        'placeBarContainer',
+                        'overlay']
 }, MainWindow);
