@@ -5,222 +5,226 @@
     <property name="width_request">500</property>
     <property name="title" translatable="1">OpenStreetMap Account</property>
     <child>
-      <object class="GtkBox" id="contentArea">
+      <object class="AdwToastOverlay" id="overlay">
         <child>
-          <object class="GtkStack" id="stack">
-            <property name="transition-type">slide-right</property>
+          <object class="GtkBox" id="contentArea">
             <child>
-              <object class="GtkStackPage">
-                <property name="name">sign-in</property>
-                <property name="child">
-                  <object class="GtkGrid">
-                    <property name="row-spacing">10</property>
-                    <property name="margin-start">20</property>
-                    <property name="margin-end">20</property>
-                    <property name="margin-top">20</property>
-                    <property name="margin-bottom">20</property>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="1">&lt;span weight=&quot;bold&quot; size=&quot;x-large&quot;&gt;Sign in to edit maps&lt;/span&gt;</property>
-                        <property name="use_markup">1</property>
-                        <property name="hexpand">1</property>
-                        <property name="halign">center</property>
-                        <property name="justify">center</property>
-                        <layout>
-                          <property name="column">0</property>
-                          <property name="row">0</property>
-                          <property name="column-span">3</property>
-                        </layout>
+              <object class="GtkStack" id="stack">
+                <property name="transition-type">slide-right</property>
+                <child>
+                  <object class="GtkStackPage">
+                    <property name="name">sign-in</property>
+                    <property name="child">
+                      <object class="GtkGrid">
+                        <property name="row-spacing">10</property>
+                        <property name="margin-start">20</property>
+                        <property name="margin-end">20</property>
+                        <property name="margin-top">20</property>
+                        <property name="margin-bottom">20</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="label" translatable="1">&lt;span weight=&quot;bold&quot; size=&quot;x-large&quot;&gt;Sign in to edit maps&lt;/span&gt;</property>
+                            <property name="use_markup">1</property>
+                            <property name="hexpand">1</property>
+                            <property name="halign">center</property>
+                            <property name="justify">center</property>
+                            <layout>
+                              <property name="column">0</property>
+                              <property name="row">0</property>
+                              <property name="column-span">3</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="label" translatable="1">Help to improve the map, using an
+    OpenStreetMap account.</property>
+                            <property name="hexpand">1</property>
+                            <property name="halign">center</property>
+                            <property name="justify">center</property>
+                            <layout>
+                              <property name="column">0</property>
+                              <property name="row">1</property>
+                              <property name="column-span">3</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="label" translatable="1">Sign in to authorize access in a web browser.
+    Then fill in the obtained verification code here in the next step.</property>
+                            <property name="hexpand">1</property>
+                            <property name="wrap">1</property>
+                            <property name="halign">center</property>
+                            <property name="justify">center</property>
+                            <layout>
+                              <property name="column">0</property>
+                              <property name="row">2</property>
+                              <property name="column-span">3</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkLinkButton">
+                            <property name="focusable">1</property>
+                            <property name="label" translatable="1">Sign up</property>
+                            <property name="uri">https://www.openstreetmap.org/user/new</property>
+                            <property name="halign">end</property>
+                            <property name="hexpand">1</property>
+                            <layout>
+                              <property name="column">0</property>
+                              <property name="row">3</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="signInButton">
+                            <property name="halign">end</property>
+                            <property name="label" translatable="1">Sign In</property>
+                            <style>
+                              <class name="suggested-action"/>
+                            </style>
+                            <layout>
+                              <property name="column">1</property>
+                              <property name="row">3</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="errorLabel">
+                            <property name="visible">0</property>
+                            <property name="focusable">1</property>
+                            <property name="use-markup">1</property>
+                            <style>
+                              <class name="warning"/>
+                            </style>
+                            <layout>
+                              <property name="column">0</property>
+                              <property name="row">4</property>
+                            </layout>
+                          </object>
+                        </child>
                       </object>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="1">Help to improve the map, using an
-OpenStreetMap account.</property>
-                        <property name="hexpand">1</property>
-                        <property name="halign">center</property>
-                        <property name="justify">center</property>
-                        <layout>
-                          <property name="column">0</property>
-                          <property name="row">1</property>
-                          <property name="column-span">3</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="1">Sign in to authorize access in a web browser.
-Then fill in the obtained verification code here in the next step.</property>
-                        <property name="hexpand">1</property>
-                        <property name="wrap">1</property>
-                        <property name="halign">center</property>
-                        <property name="justify">center</property>
-                        <layout>
-                          <property name="column">0</property>
-                          <property name="row">2</property>
-                          <property name="column-span">3</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkLinkButton">
-                        <property name="focusable">1</property>
-                        <property name="label" translatable="1">Sign up</property>
-                        <property name="uri">https://www.openstreetmap.org/user/new</property>
-                        <property name="halign">end</property>
-                        <property name="hexpand">1</property>
-                        <layout>
-                          <property name="column">0</property>
-                          <property name="row">3</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="signInButton">
-                        <property name="halign">end</property>
-                        <property name="label" translatable="1">Sign In</property>
-                        <style>
-                          <class name="suggested-action"/>
-                        </style>
-                        <layout>
-                          <property name="column">1</property>
-                          <property name="row">3</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="errorLabel">
-                        <property name="visible">0</property>
-                        <property name="focusable">1</property>
-                        <property name="use-markup">1</property>
-                        <style>
-                          <class name="warning"/>
-                        </style>
-                        <layout>
-                          <property name="column">0</property>
-                          <property name="row">4</property>
-                        </layout>
-                      </object>
-                    </child>
+                    </property>
                   </object>
-                </property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkStackPage">
-                <property name="name">verify</property>
-                <property name="child">
-                  <object class="GtkGrid">
-                    <property name="row-spacing">10</property>
-                    <property name="column-spacing">10</property>
-                    <property name="margin-start">20</property>
-                    <property name="margin-end">20</property>
-                    <property name="margin-top">20</property>
-                    <property name="margin-bottom">20</property>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="wrap">1</property>
-                        <property name="label" translatable="1">Copy verification code shown when authorizing access in the browser</property>
-                        <layout>
-                          <property name="column">0</property>
-                          <property name="row">0</property>
-                          <property name="column-span">2</property>
-                        </layout>
+                </child>
+                <child>
+                  <object class="GtkStackPage">
+                    <property name="name">verify</property>
+                    <property name="child">
+                      <object class="GtkGrid">
+                        <property name="row-spacing">10</property>
+                        <property name="column-spacing">10</property>
+                        <property name="margin-start">20</property>
+                        <property name="margin-end">20</property>
+                        <property name="margin-top">20</property>
+                        <property name="margin-bottom">20</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="wrap">1</property>
+                            <property name="label" translatable="1">Copy verification code shown when authorizing access in the browser</property>
+                            <layout>
+                              <property name="column">0</property>
+                              <property name="row">0</property>
+                              <property name="column-span">2</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkEntry" id="verificationEntry">
+                            <property name="placeholder-text" translatable="1">Verification code</property>
+                            <property name="hexpand">1</property>
+                            <layout>
+                              <property name="column">0</property>
+                              <property name="row">1</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="verifyButton">
+                            <property name="sensitive">0</property>
+                            <property name="label" translatable="1">Verify</property>
+                            <property name="hexpand">0</property>
+                            <property name="halign">end</property>
+                            <style>
+                              <class name="suggested-action"/>
+                            </style>
+                            <layout>
+                              <property name="column">1</property>
+                              <property name="row">1</property>
+                            </layout>
+                          </object>
+                        </child>
                       </object>
-                    </child>
-                    <child>
-                      <object class="GtkEntry" id="verificationEntry">
-                        <property name="placeholder-text" translatable="1">Verification code</property>
-                        <property name="hexpand">1</property>
-                        <layout>
-                          <property name="column">0</property>
-                          <property name="row">1</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="verifyButton">
-                        <property name="sensitive">0</property>
-                        <property name="label" translatable="1">Verify</property>
-                        <property name="hexpand">0</property>
-                        <property name="halign">end</property>
-                        <style>
-                          <class name="suggested-action"/>
-                        </style>
-                        <layout>
-                          <property name="column">1</property>
-                          <property name="row">1</property>
-                        </layout>
-                      </object>
-                    </child>
+                    </property>
                   </object>
-                </property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkStackPage">
-                <property name="name">logged-in</property>
-                <property name="child">
-                  <object class="GtkGrid">
-                    <property name="row-spacing">10</property>
-                    <property name="margin-start">20</property>
-                    <property name="margin-end">20</property>
-                    <property name="margin-top">20</property>
-                    <property name="margin-bottom">20</property>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="1">&lt;span weight=&quot;bold&quot; size=&quot;x-large&quot;&gt;Signed In&lt;/span&gt;</property>
-                        <property name="use_markup">1</property>
-                        <property name="hexpand">1</property>
-                        <property name="halign">center</property>
-                        <layout>
-                          <property name="column">0</property>
-                          <property name="row">0</property>
-                        </layout>
+                </child>
+                <child>
+                  <object class="GtkStackPage">
+                    <property name="name">logged-in</property>
+                    <property name="child">
+                      <object class="GtkGrid">
+                        <property name="row-spacing">10</property>
+                        <property name="margin-start">20</property>
+                        <property name="margin-end">20</property>
+                        <property name="margin-top">20</property>
+                        <property name="margin-bottom">20</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="label" translatable="1">&lt;span weight=&quot;bold&quot; size=&quot;x-large&quot;&gt;Signed In&lt;/span&gt;</property>
+                            <property name="use_markup">1</property>
+                            <property name="hexpand">1</property>
+                            <property name="halign">center</property>
+                            <layout>
+                              <property name="column">0</property>
+                              <property name="row">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="label" translatable="1">Your OpenStreetMap account is active.</property>
+                            <property name="hexpand">1</property>
+                            <property name="halign">center</property>
+                            <layout>
+                              <property name="column">0</property>
+                              <property name="row">1</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="icon-name">avatar-default-symbolic</property>
+                            <property name="pixel-size">64</property>
+                            <property name="opacity">0.33</property>
+                            <layout>
+                              <property name="column">0</property>
+                              <property name="row">2</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="signedInUserLabel">
+                            <layout>
+                              <property name="column">0</property>
+                              <property name="row">3</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="signOutButton">
+                            <property name="label" translatable="1">Sign Out</property>
+                            <property name="halign">center</property>
+                            <layout>
+                              <property name="column">0</property>
+                              <property name="row">4</property>
+                            </layout>
+                          </object>
+                        </child>
                       </object>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="1">Your OpenStreetMap account is active.</property>
-                        <property name="hexpand">1</property>
-                        <property name="halign">center</property>
-                        <layout>
-                          <property name="column">0</property>
-                          <property name="row">1</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImage">
-                        <property name="icon-name">avatar-default-symbolic</property>
-                        <property name="pixel-size">64</property>
-                        <property name="opacity">0.33</property>
-                        <layout>
-                          <property name="column">0</property>
-                          <property name="row">2</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="signedInUserLabel">
-                        <layout>
-                          <property name="column">0</property>
-                          <property name="row">3</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="signOutButton">
-                        <property name="label" translatable="1">Sign Out</property>
-                        <property name="halign">center</property>
-                        <layout>
-                          <property name="column">0</property>
-                          <property name="row">4</property>
-                        </layout>
-                      </object>
-                    </child>
+                    </property>
                   </object>
-                </property>
+                </child>
               </object>
             </child>
           </object>

@@ -126,7 +126,7 @@ export class OSMAccountDialog extends Gtk.Dialog {
             }
         } else {
             if (errorMessage)
-                Utils.showDialog(errorMessage, Gtk.MessageType.ERROR, this);
+                Utils.showToastInOverlay(errorMessage, this._overlay);
             /* switch back to the sign-in view, and show a label indicating
                that verification failed */
             this._errorLabel.visible = true;
@@ -154,5 +154,6 @@ GObject.registerClass({
                        'verifyButton',
                        'errorLabel',
                        'signedInUserLabel',
-                       'signOutButton'],
+                       'signOutButton',
+                       'overlay'],
 }, OSMAccountDialog);
