@@ -28,6 +28,7 @@ import GdkPixbuf from 'gi://GdkPixbuf';
 import GeocodeGlib from 'gi://GeocodeGlib';
 import Gio from 'gi://Gio';
 import Gtk from 'gi://Gtk';
+import Adw from 'gi://Adw';
 import GWeather from 'gi://GWeather';
 
 const _ = gettext.gettext;
@@ -452,6 +453,15 @@ export function isUsingHighContrastTheme() {
 
     return themeName === 'HighContrast' || themeName === 'HighContrastInverse';
 }
+
+export function showToastInOverlay(message, overlay) {
+    let toast = new Adw.Toast({
+        title: message,
+    });
+
+    overlay.add_toast(toast);
+}
+
 
 export function showDialog(msg, type, transientFor) {
     let messageDialog =
