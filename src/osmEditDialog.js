@@ -838,8 +838,7 @@ export class OSMEditDialog extends Gtk.Dialog {
                                               this._cancellable,
                                               (wikidata) => {
                 if (!wikidata) {
-                    Utils.showDialog(_("Couldn't find Wikidata tag for article"),
-                                     Gtk.MessageType.ERROR, this);
+                    Utils.showToastInOverlay(_("Couldn't find Wikidata tag for article"), this._overlay);
                     return;
                 }
 
@@ -996,6 +995,7 @@ GObject.registerClass({
                         'typeValueLabel',
                         'recentTypesLabel',
                         'recentTypesListBox',
-                        'headerBar'],
+                        'headerBar',
+                        'overlay'],
 }, OSMEditDialog);
 
