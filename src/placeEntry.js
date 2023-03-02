@@ -208,20 +208,7 @@ export class PlaceEntry extends Gtk.SearchEntry {
                 return true;
             }
 
-            let row = this._popover.list.get_selected_row();
-            let idx;
-
-            if (!row)
-                idx = (direction === 1) ? 0 : length - 1;
-            else
-                idx = row.get_index() + direction;
-
-            let inBounds = 0 <= idx && idx < length;
-
-            if (inBounds)
-                this._popover.selectRow(this._popover.list.get_row_at_index(idx));
-            else
-                this._popover.list.unselect_all();
+            this._popover.handleArrowKey(direction);
 
             return true;
         }
