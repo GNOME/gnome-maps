@@ -179,6 +179,48 @@ export class PlacePopover extends SearchPopover {
         this.popup();
     }
 
+    handleArrowKey(direction) {
+        let listBox = this._getCurrentListBox();
+        let row = listBox.get_selected_row();
+        let idx;
+
+        let length = 0;
+
+        for (let row of listBox) {
+            length++;
+        }
+
+        if (!row)
+            idx = (direction === 1) ? 0 : length - 1;
+        else
+            idx = row.get_index() + direction;
+
+        let inBounds = 0 <= idx && idx < length;
+
+        if (inBounds)
+            this.selectRow(listBox, listBox.get_row_at_index(idx));
+        else
+            listBox.unselect_all();
+    }
+
+    handleActivate() {
+        // if the popover is visible and we have a selected item, activate it
+        let listBox = this._getCurrentListBox();
+        let row = listBox.get_selected_row();
+
+        if (this.visible && row)
+            row.activate();
+    }
+
+    _getCurrentListBox() {
+        if (this._stack.visible_child === this._poiMainCategories)
+            return this._poiMainCategories;
+        else if (this._stack.visible_child === this._poiSubCategories)
+            return this._poiSubCategories.child;
+        else
+            return this.list;
+    }
+
     showPoiMainCategories() {
         log('showPoiMainCategories');
         let firstRow = this._poiMainCategories.get_row_at_index(0);
@@ -269,9 +311,9 @@ export class PlacePopover extends SearchPopover {
     }
 
     /* Selects given row and ensures that it is visible. */
-    selectRow(row) {
-        this.list.select_row(row);
-        let adjustment = this.list.get_adjustment();
+    selectRow(listBox, row) {
+        listBox.select_row(row);
+        let adjustment = listBox.get_adjustment();
         if (adjustment) {
             let allocation = row.get_allocation();
             adjustment.clamp_page(allocation.y, allocation.y + allocation.height);
