@@ -462,20 +462,6 @@ export function showToastInOverlay(message, overlay) {
     overlay.add_toast(toast);
 }
 
-
-export function showDialog(msg, type, transientFor) {
-    let messageDialog =
-        new Gtk.MessageDialog({ transient_for: transientFor,
-                                destroy_with_parent: true,
-                                message_type: type,
-                                buttons: Gtk.ButtonsType.OK,
-                                modal: true,
-                                text: msg });
-
-    messageDialog.connect('response', () => messageDialog.destroy());
-    messageDialog.show();
-}
-
 let decoder = new TextDecoder('utf-8');
 
 /* Gets a string from either a ByteArray or Uint8Array. This is for
