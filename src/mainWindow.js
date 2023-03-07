@@ -134,6 +134,10 @@ export class MainWindow extends Gtk.ApplicationWindow {
         this.title = _("Maps");
     }
 
+    showToast(message) {
+        Utils.showToastInOverlay(message, this._overlay);
+    }
+
     _createPlaceEntry() {
         let placeEntry = new PlaceEntry({ mapView: this._mapView,
                                           visible: true,
