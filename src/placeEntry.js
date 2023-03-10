@@ -156,7 +156,12 @@ export class PlaceEntry extends Gtk.SearchEntry {
                 this._doSearch();
             }
         } else {
-            this._popover.popdown();
+            /* if the popover is showing the POI browser, don't hide it,
+             * this prevents the popover closing and popping up again if
+             * the user starts typing to do a free-text search
+             */
+            if (!this._popover.isShowingPoiBrowser)
+                this._popover.popdown();
             this.grab_focus();
             if (this.text.length === 0)
                 this.place = null;
