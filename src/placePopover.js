@@ -55,6 +55,11 @@ export class PlacePopover extends SearchPopover {
         this.connect('unmap', (popover) => popover.hide());
     }
 
+    get isShowingPoiBrowser() {
+        return this._stack.visible_child === this._poiMainCategories ||
+               this._stack.visible_child === this._poiSubCategories;
+    }
+
     _createPoiCategories() {
         let categoryStructure = PoiCategories.getCategoryStructure();
 
