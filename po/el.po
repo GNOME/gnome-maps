@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2023-01-25 19:05+0000\n"
-"PO-Revision-Date: 2023-01-27 23:01+0200\n"
+"POT-Creation-Date: 2023-02-18 14:57+0000\n"
+"PO-Revision-Date: 2023-03-11 21:00+0200\n"
 "Last-Translator: Efstathios Iosifidis <eiosifidis@gnome.org>\n"
 "Language-Team: Greek, Modern (1453-) <iosifidis@opensuse.org>\n"
 "Language: el\n"
@@ -171,60 +171,60 @@ msgid "Whether to show the scale."
 msgstr "Εάν θα εμφανίζεται η κλίμακα."
 
 #: data/ui/context-menu.ui:6
-msgid "Route from here"
+msgid "Route from Here"
 msgstr "Διαδρομή από εδώ"
 
 #: data/ui/context-menu.ui:10
-msgid "Add intermediate destination"
+msgid "Add Intermediate Destination"
 msgstr "Προσθήκη ενδιάμεσου προορισμού"
 
 #: data/ui/context-menu.ui:14
-msgid "Route to here"
+msgid "Route to Here"
 msgstr "Διαδρομή προς εδώ"
 
 #: data/ui/context-menu.ui:20
-msgid "What's here?"
+msgid "What's Here?"
 msgstr "Τι έχουμε εδώ;"
 
 #: data/ui/context-menu.ui:24
-msgid "Copy location"
+msgid "Copy Location"
 msgstr "Αντιγραφή τοποθεσίας"
 
 #: data/ui/context-menu.ui:28
-msgid "Add to OpenStreetMap"
-msgstr "Προσθήκη στο OpenStreetMap"
+msgid "Add to OpenStreetMap…"
+msgstr "Προσθήκη στο OpenStreetMap…"
 
-#: data/ui/export-view-dialog.ui:6
+#: data/ui/export-view-dialog.ui:7
 msgid "Export view"
 msgstr "Προβολή εξαγωγής"
 
-#: data/ui/export-view-dialog.ui:15 data/ui/send-to-dialog.ui:10
+#: data/ui/export-view-dialog.ui:16 data/ui/send-to-dialog.ui:10
 #: data/ui/shape-layer-file-chooser.ui:22
 msgid "_Cancel"
 msgstr "Ά_κυρο"
 
-#: data/ui/export-view-dialog.ui:25
+#: data/ui/export-view-dialog.ui:26
 msgid "_Export"
 msgstr "Ε_ξαγωγή"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:11
-msgid "Go to current location"
-msgstr "Μετάβαση στην τρέχουσα τοποθεσία"
+#: data/ui/headerbar-left.ui:11 src/geoclue.js:106
+msgid "Current Location"
+msgstr "Τρέχουσα τοποθεσία"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-left.ui:19
-msgid "Choose map type"
-msgstr "Επιλογή τύπου χάρτη"
+msgid "Layers"
+msgstr "Στρώσεις"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-left.ui:28
-msgid "Zoom out"
+msgid "Zoom Out"
 msgstr "Σμίκρυνση"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:37
-msgid "Zoom in"
+#: data/ui/headerbar-left.ui:37 data/ui/zoom-in-dialog.ui:27
+msgid "Zoom In"
 msgstr "Μεγέθυνση"
 
 #. Translators: This is a tooltip
@@ -234,13 +234,13 @@ msgstr "Εκτύπωση διαδρομής"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-right.ui:21
-msgid "Toggle favorites"
-msgstr "Εναλλαγή αγαπημένων"
+msgid "Favorites"
+msgstr "Αγαπημένα"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-right.ui:30
-msgid "Toggle route planner"
-msgstr "Εναλλαγή οργανωτή διαδρομής"
+msgid "Route Planner"
+msgstr "Σχεδιαστής διαδρομής"
 
 #: data/ui/help-overlay.ui:12
 msgctxt "shortcut window"
@@ -340,12 +340,12 @@ msgid "Turn on location services to find your location"
 msgstr "Ενεργοποίηση υπηρεσιών τοποθεσίας για να βρείτε την τοποθεσία σας"
 
 #: data/ui/main-window.ui:8
-msgid "Set up OpenStreetMap Account"
-msgstr "Ρύθμιση λογαριασμού OpenStreetMap"
+msgid "Set up OpenStreetMap Account…"
+msgstr "Ρύθμιση λογαριασμού OpenStreetMap…"
 
 #: data/ui/main-window.ui:12
-msgid "Export as Image"
-msgstr "Εξαγωγή ως εικόνα"
+msgid "Export as Image…"
+msgstr "Εξαγωγή ως εικόνα…"
 
 #: data/ui/main-window.ui:17
 msgid "_Keyboard Shortcuts"
@@ -356,8 +356,8 @@ msgid "About Maps"
 msgstr "Περί του Χάρτες"
 
 #: data/ui/main-window.ui:38
-msgid "Open main menu"
-msgstr "Άνοιγμα κυρίως μενού"
+msgid "Main Menu"
+msgstr "Κυρίως μενού"
 
 #: data/ui/osm-account-dialog.ui:6
 msgid "OpenStreetMap Account"
@@ -478,18 +478,18 @@ msgstr "Άρθρο"
 msgid "Wikidata tag"
 msgstr "Ετικέτα Wikidata"
 
-#: data/ui/place-popover.ui:40 src/application.js:275
+#: data/ui/place-popover.ui:44 src/application.js:275
 msgid "No results found"
 msgstr "Δεν βρέθηκαν αποτελέσματα"
 
-#: data/ui/place-popover.ui:50 src/application.js:252 src/osmEditDialog.js:568
+#: data/ui/place-popover.ui:54 src/application.js:252 src/osmEditDialog.js:568
 msgid "An error has occurred"
 msgstr "Παρουσιάστηκε σφάλμα"
 
 #. Translators: This is a tooltip
 #: data/ui/route-entry.ui:12
-msgid "Drag to change order of the route"
-msgstr "Σύρετε για να αλλάξετε την σειρά στη διαδρομή"
+msgid "Change Route Order"
+msgstr "Αλλαγή σειράς διαδρομής"
 
 #: data/ui/send-to-dialog.ui:7
 msgid "Open Location"
@@ -605,8 +605,8 @@ msgid "Airplanes"
 msgstr "Αεροπλάνα"
 
 #. Translators: This is a tooltip
-#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27 data/ui/place-view.ui:52
-msgid "Share location"
+#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27
+msgid "Share Location"
 msgstr "Διαμοιρασμός τοποθεσίας"
 
 #. Translators: This is a tooltip
@@ -621,7 +621,7 @@ msgstr "Οδηγίες"
 
 #. Translators: This is a tooltip
 #: data/ui/place-buttons.ui:36
-msgid "Mark as favorite"
+msgid "Mark as Favorite"
 msgstr "Επισήμανση ως αγαπημένο"
 
 #. Translators: This is a tooltip
@@ -629,13 +629,14 @@ msgstr "Επισήμανση ως αγαπημένο"
 msgid "Edit on OpenStreetMap"
 msgstr "Επεξεργασία στο OpenStreetMap"
 
+#. Translators: This is a tooltip
+#: data/ui/place-view.ui:52
+msgid "Share location"
+msgstr "Διαμοιρασμός τοποθεσίας"
+
 #: data/ui/zoom-in-dialog.ui:11
 msgid "Zoom in to add location!"
 msgstr "Εστιάστε για να προσθέσετε μια τοποθεσία!"
-
-#: data/ui/zoom-in-dialog.ui:27
-msgid "Zoom In"
-msgstr "Μεγέθυνση"
 
 #: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338
 #: lib/maps-file-data-source.c:418
@@ -711,10 +712,6 @@ msgstr "Δεν ορίσθηκε όνομα αρχείου"
 #: src/exportViewDialog.js:170
 msgid "Unable to export view"
 msgstr "Αδυναμία εξαγωγής προβολής"
-
-#: src/geoclue.js:106
-msgid "Current Location"
-msgstr "Τρέχουσα τοποθεσία"
 
 #: src/geoJSONSource.js:73
 msgid "invalid coordinate"
@@ -1155,17 +1152,17 @@ msgstr ""
 
 #: src/osmEditDialog.js:841
 msgid "Couldn't find Wikidata tag for article"
-msgstr ""
+msgstr "Δεν ήταν δυνατή η εύρεση της ετικέτας Wikidata για το άρθρο"
 
 #: src/photonUtils.js:118
 msgid "Unnamed place"
 msgstr "Άγνωστο μέρος"
 
-#: src/placeEntry.js:269
+#: src/placeEntry.js:267
 msgid "Failed to parse Geo URI"
 msgstr "Αποτυχία ανάλυσης Geo URI"
 
-#: src/placeEntry.js:282
+#: src/placeEntry.js:280
 msgid "Failed to parse Maps URI"
 msgstr "Αποτυχία ανάλυσης URI χαρτών"
 
@@ -1807,6 +1804,18 @@ msgstr "Κάντε μια δεξιά αναστροφή στο %s"
 msgid "Make a right u-turn"
 msgstr "Κάντε μια δεξιά αναστροφή"
 
+#~ msgid "Go to current location"
+#~ msgstr "Μετάβαση στην τρέχουσα τοποθεσία"
+
+#~ msgid "Choose map type"
+#~ msgstr "Επιλογή τύπου χάρτη"
+
+#~ msgid "Zoom in"
+#~ msgstr "Μεγέθυνση"
+
+#~ msgid "Drag to change order of the route"
+#~ msgstr "Σύρετε για να αλλάξετε την σειρά στη διαδρομή"
+
 #~ msgid "GNOME Maps"
 #~ msgstr "Χάρτες GNOME"
 
@@ -2103,9 +2112,6 @@ msgstr "Κάντε μια δεξιά αναστροφή"
 
 #~ msgid "Load Map Layer"
 #~ msgstr "Φόρτωση στρώσης χάρτη"
-
-#~ msgid "Open Layer"
-#~ msgstr "Άνοιγμα στρώσης"
 
 #~ msgid "%f km"
 #~ msgstr "%f km"
