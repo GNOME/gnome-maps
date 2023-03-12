@@ -130,8 +130,15 @@ export class PlaceView extends Gtk.Box {
                     this._place = Application.placeStore.get(this.place);
                     this._populate(this.place);
                 }
-            } else if (this.place.store && !this.place.prefilled) {
-                overpass.addInfo(this.place);
+            } else if (this.place.store) {
+                /* if we got a place with already pre-filled data from
+                 * Overpass, make sure it is stored in the place store
+                 */
+                if (this.place.prefilled) {
+                    this._onInfoAdded();
+                } else {
+                    overpass.addInfo(this.place);
+                }
             } else {
                 this._populate(this.place);
             }
