@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2023-02-18 14:57+0000\n"
-"PO-Revision-Date: 2023-02-25 07:29+0000\n"
+"POT-Creation-Date: 2023-03-11 19:00+0000\n"
+"PO-Revision-Date: 2023-03-13 21:50+0100\n"
 "Last-Translator: Fabio T. <f.t.public@gmail.com>\n"
 "Language-Team: Friulian <f.t.public@gmail.com>\n"
 "Language: fur\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Editor: HaiPO 1.4 beta\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -25,6 +25,7 @@ msgstr ""
 #. * setting a custom title on the headerbar). Setting it programmatically
 #. * here works though. And yields a proper label in the gnome-shell
 #. * overview.
+#.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
 #: data/ui/main-window.ui:27 src/application.js:61 src/mainWindow.js:134
@@ -39,8 +40,8 @@ msgstr "Cjate puescj tor atôr pal mont"
 #: data/org.gnome.Maps.appdata.xml.in.in:9
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
-"quickly find the place you’re looking for by searching for a city or street,"
-" or locate a place to meet a friend."
+"quickly find the place you’re looking for by searching for a city or street, "
+"or locate a place to meet a friend."
 msgstr ""
 "Mapis ti da un acès veloç a lis mapis ator pal mont. Ti permet di cjatâ di "
 "corse il puest che ti interesse cirint citât o vie, o cirî un puest dulà "
@@ -62,8 +63,7 @@ msgstr "Il progjet GNOME"
 msgid "A simple maps application"
 msgstr "Une semplice aplicazion pes mapis"
 
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Maps.desktop.in.in:14
 msgid "Maps;"
 msgstr "Mapis;"
@@ -361,7 +361,8 @@ msgstr "Account OpenStreetMap"
 
 #: data/ui/osm-account-dialog.ui:24
 msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
-msgstr "<span weight=\"bold\" size=\"x-large\">Jentre par modificâ lis mapis</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"x-large\">Jentre par modificâ lis mapis</span>"
 
 #: data/ui/osm-account-dialog.ui:38
 msgid ""
@@ -425,8 +426,7 @@ msgstr "Numar civic"
 msgid "Postal code"
 msgstr "Codiç postâl"
 
-#. This is the place name as it would be written in a postal address
-#. (typically coming after the postal code)
+#. This is the place name as it would be written in a postal address (typically coming after the postal code)
 #: data/ui/osm-edit-address.ui:44
 msgid "City"
 msgstr "Citât"
@@ -523,18 +523,24 @@ msgid ""
 "Routing itineraries for public transit is provided by third-party\n"
 "services.\n"
 "GNOME can not guarantee correctness of the itineraries and schedules shown.\n"
-"Note that some providers might not include all available modes of transportation,\n"
-"e.g. a national provider might not include airlines, and a local provider could\n"
+"Note that some providers might not include all available modes of "
+"transportation,\n"
+"e.g. a national provider might not include airlines, and a local provider "
+"could\n"
 "miss regional trains.\n"
-"Names and brands shown are to be considered as registered trademarks when applicable."
+"Names and brands shown are to be considered as registered trademarks when "
+"applicable."
 msgstr ""
 "I itineraris di percors pai mieçs publics a son furnîts di servizis di\n"
 "tiercis parts.\n"
 "GNOME nol pues garantî la justece dai itineraris e dai oraris mostrâts.\n"
-"Viôt che cualchi furnidôr al podarès no includi dutis lis modalitâts di traspuart disponibilis,\n"
-"p.e. un furnidôr nazionâl al podarès no includi lis tratis aeronautichis e un furnidôr locâl\n"
+"Viôt che cualchi furnidôr al podarès no includi dutis lis modalitâts di "
+"traspuart disponibilis,\n"
+"p.e. un furnidôr nazionâl al podarès no includi lis tratis aeronautichis e "
+"un furnidôr locâl\n"
 "al pues no includi i trens regjionâi.\n"
-"I nons e lis marchis mostradis si àn di considerâ come marchis regjistradis cuant che si puedin aplicâ."
+"I nons e lis marchis mostradis si àn di considerâ come marchis regjistradis "
+"cuant che si puedin aplicâ."
 
 #. Translators: This is a tooltip
 #: data/ui/transit-leg-row.ui:98
@@ -551,14 +557,12 @@ msgstr "Mostre fermadis intermediis e informazions"
 msgid "Leave Now"
 msgstr "Partî cumò"
 
-#. Indicates searching for itineraries leaving at the specified time at the
-#. earliest
+#. Indicates searching for itineraries leaving at the specified time at the earliest
 #: data/ui/transit-options-panel.ui:17
 msgid "Leave By"
 msgstr "Partî tor"
 
-#. Indicates searching for itineraries arriving no later than the specified
-#. time
+#. Indicates searching for itineraries arriving no later than the specified time
 #: data/ui/transit-options-panel.ui:18
 msgid "Arrive By"
 msgstr "Rivâ tor"
@@ -675,6 +679,7 @@ msgstr "Mapis no validis: URI: %s"
 #. Translators: This is a format string for a PNG filename for an
 #. * exported image with coordinates. The .png extension should be kept
 #. * intact in the translated string.
+#.
 #: src/exportViewDialog.js:74
 #, javascript-format
 msgid "Maps at %f, %f.png"
@@ -757,6 +762,7 @@ msgstr "Furnidôr tassei de mape"
 #. * tile provider where the %s placeholder is replaced by either
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
+#.
 #: src/mainWindow.js:570
 #, javascript-format
 msgid "Map tiles provided by %s"
@@ -782,11 +788,11 @@ msgstr "Desideristu continuâ?"
 #: src/mapView.js:523
 #, javascript-format
 msgid ""
-"You are about to open files with a total size of %s MB. This could take some"
-" time to load"
+"You are about to open files with a total size of %s MB. This could take some "
+"time to load"
 msgstr ""
-"Tu stâs par vierzi files che a àn un totâl di %s MB di dimension. Al podarès"
-" tirâle a dilunc par cjariâju"
+"Tu stâs par vierzi files che a àn un totâl di %s MB di dimension. Al podarès "
+"tirâle a dilunc par cjariâju"
 
 #: src/mapView.js:555
 msgid "File type is not supported"
@@ -802,8 +808,8 @@ msgstr "Nol è nuie culì!"
 
 #: src/mapView.js:1094
 msgid ""
-"Location was added to the map, note that it may take a while before it shows"
-" on the map and in search results."
+"Location was added to the map, note that it may take a while before it shows "
+"on the map and in search results."
 msgstr ""
 "Il lûc al è stât zontât te mape, viôt che al podarès coventâ un pôc prime "
 "che al vegni fûr te mape e tai risultâts di ricercje."
@@ -864,11 +870,11 @@ msgstr "Chest nol è un URL valit. Controle di includi http:// o https://."
 
 #: src/osmEditDialog.js:125
 msgid ""
-"The official website. Try to use the most basic form of a URL i.e. "
-"http://example.com instead of http://example.com/index.html."
+"The official website. Try to use the most basic form of a URL i.e. http://"
+"example.com instead of http://example.com/index.html."
 msgstr ""
-"Il sît web uficiâl. Cîr di doprâ la plui semplice forme di direzion, par "
-"esempli http://example.com invezit di http://example.com/index.html."
+"Il sît web uficiâl. Cîr di doprâ la plui semplice forme di direzion, vâl a "
+"dî http://example.com invezit di http://example.com/index.html."
 
 #: src/osmEditDialog.js:130
 msgid "Phone"
@@ -922,6 +928,7 @@ msgstr "Viôt il leam te etichete pal jutori sul formât."
 #. * formatted string. Ideally it should be kept as an integer value
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
+#.
 #: src/osmEditDialog.js:164 src/placeView.js:429
 msgid "Population"
 msgstr "Popolazion"
@@ -1086,13 +1093,13 @@ msgstr "Note"
 
 #: src/osmEditDialog.js:240
 msgid ""
-"Information used to inform other mappers about non-obvious information about"
-" an element, the author’s intent when creating it, or hints for further "
+"Information used to inform other mappers about non-obvious information about "
+"an element, the author’s intent when creating it, or hints for further "
 "improvement."
 msgstr ""
-"Informazion doprade par informâ altris mapadôrs su no evidentis informazions"
-" suntun element, l’intent dai autôrs tal creâlu o sugjeriments par ulteriôrs"
-" mioraments."
+"Informazion doprade par informâ altris mapadôrs su no evidentis informazions "
+"suntun element, l’intent dai autôrs tal creâlu o sugjeriments par ulteriôrs "
+"mioraments."
 
 #: src/osmEditDialog.js:339
 msgctxt "dialog title"
@@ -1116,8 +1123,7 @@ msgstr ""
 "come \"fur:Titul dal articul\"."
 
 #: src/osmEditDialog.js:833
-msgid ""
-"Use the reload button to load the Wikidata tag for the selected article"
+msgid "Use the reload button to load the Wikidata tag for the selected article"
 msgstr ""
 "Dopre il boton “torne cjame” par cjariâ la etichete Wikidata pal articul "
 "selezionât"
@@ -1157,6 +1163,7 @@ msgstr "Precision de posizion: %s"
 #. * with phone numbers in international format starting with a +
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
+#.
 #: src/placeView.js:268
 msgid "Phone number"
 msgstr "Numar di telefon"
@@ -1164,6 +1171,7 @@ msgstr "Numar di telefon"
 #. Translators:
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
+#.
 #: src/placeView.js:295
 msgid "Offers takeaway"
 msgstr "Al ufrìs robe di puartâ vie"
@@ -1171,6 +1179,7 @@ msgstr "Al ufrìs robe di puartâ vie"
 #. Translators:
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
+#.
 #: src/placeView.js:303
 msgid "Does not offer takeaway"
 msgstr "Nol ufrìs robe di puartâ vie"
@@ -1179,12 +1188,14 @@ msgstr "Nol ufrìs robe di puartâ vie"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
+#.
 #: src/placeView.js:312
 msgid "Only offers takeaway"
 msgstr "Al ufrìs dome robe di puartâ vie"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
+#.
 #: src/placeView.js:329
 msgid "Public internet access"
 msgstr "Acès internet public"
@@ -1192,30 +1203,35 @@ msgstr "Acès internet public"
 #. Translators:
 #. * no internet access is offered in a place where
 #. * someone might expect it.
+#.
 #: src/placeView.js:338
 msgid "No internet access"
 msgstr "Nissun acès internet"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
+#.
 #: src/placeView.js:346
 msgid "Public Wi-Fi"
 msgstr "Wi-Fi public"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
+#.
 #: src/placeView.js:354
 msgid "Wired internet access"
 msgstr "Acès internet vie fîl"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
+#.
 #: src/placeView.js:362
 msgid "Computers available for use"
 msgstr "Computers disponibii di doprâ"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
+#.
 #: src/placeView.js:370
 msgid "Internet assistance available"
 msgstr "Assistence internet disponibile"
@@ -1230,6 +1246,7 @@ msgstr "Gabinets disponibii"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
+#.
 #: src/placeView.js:388
 msgid "Wheelchair accessible"
 msgstr "Acessibil in carocele"
@@ -1238,6 +1255,7 @@ msgstr "Acessibil in carocele"
 #. * This means wheelchairs have partial access (e.g some areas
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
+#.
 #: src/placeView.js:398
 msgid "Limited wheelchair accessibility"
 msgstr "Acessibil in carocele in mût limitât"
@@ -1245,6 +1263,7 @@ msgstr "Acessibil in carocele in mût limitât"
 #. Translators:
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
+#.
 #: src/placeView.js:407
 msgid "Not wheelchair accessible"
 msgstr "No acessibil in carocele"
@@ -1253,6 +1272,7 @@ msgstr "No acessibil in carocele"
 #. * This means that the way or area is designated or purpose built
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
+#.
 #: src/placeView.js:417
 msgid "Designated for wheelchair users"
 msgstr "Progjetât pai utents in carocele"
@@ -1261,6 +1281,7 @@ msgstr "Progjetât pai utents in carocele"
 #. * Translators: this is a label indicating an altitude below
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
+#.
 #: src/placeView.js:448
 #, javascript-format
 msgid "%s below sea level"
@@ -1269,6 +1290,7 @@ msgstr "%s sot dal nivel dal mâr"
 #. *
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
+#.
 #: src/placeView.js:455
 msgid "At sea level"
 msgstr "A nivel dal mâr"
@@ -1354,6 +1376,7 @@ msgstr "Itineraris furnîts di %s"
 
 #. Translators: this is a format string indicating instructions
 #. * starting a journey at the address given as the parameter
+#.
 #: src/transit.js:39
 #, javascript-format
 msgid "Start at %s"
@@ -1362,12 +1385,14 @@ msgstr "Partìs di %s"
 #. Translators: this indicates starting a journey at a location
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
+#.
 #: src/transit.js:45
 msgid "Start"
 msgstr "Partence"
 
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
+#.
 #: src/transit.js:63
 #, javascript-format
 msgid "Walk %s"
@@ -1409,8 +1434,10 @@ msgstr "Nissune alternative plui adore cjatade."
 msgid "No later alternatives found."
 msgstr "Nissune alternative plui tart cjatade."
 
+#.
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
+#.
 #: src/transitOptionsPanel.js:136
 msgctxt "month-day-date"
 msgid "%b %e"
@@ -1428,6 +1455,7 @@ msgstr "Nissun furnidôr cjatât par chest percors."
 #. * arrival time, like:
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
+#.
 #: src/transitPlan.js:295
 #, javascript-format
 msgid "%s – %s"
@@ -1436,6 +1464,7 @@ msgstr "%s – %s"
 #. translators: this is an indication for a trip duration of
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
+#.
 #: src/transitPlan.js:324
 #, javascript-format
 msgid "%s minute"
@@ -1446,6 +1475,7 @@ msgstr[1] "%s minûts"
 #. translators: this is an indication for a trip duration,
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
+#.
 #: src/transitPlan.js:336
 #, javascript-format
 msgid "%s hour"
@@ -1456,6 +1486,7 @@ msgstr[1] "%s oris"
 #. translators: this is an indication for a trip duration
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
+#.
 #: src/transitPlan.js:344
 #, javascript-format
 msgid "%s:%s hour"
@@ -1468,6 +1499,7 @@ msgstr[1] "%s:%s oris"
 #. * list for an itinerary, like:
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
+#.
 #: src/transitPlan.js:698
 #, javascript-format
 msgid "%s–%s"
@@ -1517,6 +1549,7 @@ msgstr "Ogni dì"
 
 #. Translators:
 #. * This represents a range of days with a starting and ending day.
+#.
 #: src/translations.js:168
 #, javascript-format
 msgctxt "day range"
@@ -1538,6 +1571,7 @@ msgstr "Vacancis di scuele"
 #. * appropriate white space or connected phrase could be modified by
 #. * the translation. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
+#.
 #: src/translations.js:221
 #, javascript-format
 msgctxt "time interval list"
@@ -1554,6 +1588,7 @@ msgstr "no viert"
 #. * appropriate white spacing or connecting phrases can be set by the
 #. * translation as needed. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
+#.
 #: src/translations.js:250
 #, javascript-format
 msgctxt "time interval"
@@ -1576,6 +1611,7 @@ msgstr "Di precîs"
 
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
+#.
 #: src/utils.js:360
 #, javascript-format
 msgid "%s h"
@@ -1584,6 +1620,7 @@ msgstr "%s h"
 #. Translators: this is a duration with hours and minutes parts
 #. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
+#.
 #: src/utils.js:366
 #, javascript-format
 msgid "%s h %s min"
@@ -1594,6 +1631,7 @@ msgstr[1] "%s h %s min"
 #. Translators: this is a duration with minutes part
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
+#.
 #: src/utils.js:373
 #, javascript-format
 msgid "%s min"
@@ -1604,6 +1642,7 @@ msgstr[1] "%s min"
 #. Translators: this is a duration of less than one minute
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
+#.
 #: src/utils.js:379
 #, javascript-format
 msgid "%s s"
@@ -1783,8 +1822,8 @@ msgstr "Fâs une inversion a U a diestre"
 #~ "Latest used Foursquare check-in privacy setting. Possible values are: "
 #~ "public, followers or private."
 #~ msgstr ""
-#~ "Ultime impostazion pe privacy dai check-in doprade. I valôrs pussibii a son:"
-#~ " public, followers o private."
+#~ "Ultime impostazion pe privacy dai check-in doprade. I valôrs pussibii a "
+#~ "son: public, followers o private."
 
 #~ msgid "Foursquare check-in Facebook broadcasting"
 #~ msgstr "Trasmission a Facebook dai check-in di Foursquare"
@@ -1832,11 +1871,11 @@ msgstr "Fâs une inversion a U a diestre"
 
 # cjatâ'nt indi?
 #~ msgid ""
-#~ "Maps need an active internet connection to function properly, but one can’t "
-#~ "be found."
+#~ "Maps need an active internet connection to function properly, but one "
+#~ "can’t be found."
 #~ msgstr ""
-#~ "Mapis a scugne vê une conession internet ative par podê funzionâ, ma no si "
-#~ "'nt rive a cjatâ une."
+#~ "Mapis a scugne vê une conession internet ative par podê funzionâ, ma no "
+#~ "si 'nt rive a cjatâ une."
 
 #~ msgid "Check your connection and proxy settings."
 #~ msgstr "Controle le tô conession e lis impostazions proxy."
@@ -1849,10 +1888,12 @@ msgstr "Fâs une inversion a U a diestre"
 
 #~ msgid ""
 #~ "Sorry, that didn’t work. Please try again, or visit\n"
-#~ "<a href=\"https://www.openstreetmap.org/user/forgot-password\">OpenStreetMap</a> to reset your password."
+#~ "<a href=\"https://www.openstreetmap.org/user/forgot-"
+#~ "password\">OpenStreetMap</a> to reset your password."
 #~ msgstr ""
 #~ "Mi displâs, nol funzione. Torne prove o visite\n"
-#~ "<a href=\"https://www.openstreetmap.org/user/forgot-password\">OpenStreetMap</a> par tornâ a configurâ la tô password."
+#~ "<a href=\"https://www.openstreetmap.org/user/forgot-"
+#~ "password\">OpenStreetMap</a> par tornâ a configurâ la tô password."
 
 #~ msgid "Check In…"
 #~ msgstr "Check In…"
@@ -1873,11 +1914,11 @@ msgstr "Fâs une inversion a U a diestre"
 #~ msgstr "Selezione un lûc"
 
 #~ msgid ""
-#~ "Maps cannot find the place to check in to with Foursquare. Please select one"
-#~ " from this list."
+#~ "Maps cannot find the place to check in to with Foursquare. Please select "
+#~ "one from this list."
 #~ msgstr ""
-#~ "Mapis nol pues cjatâ il puest pal check-in cun Foursquare. Selezionâ un di "
-#~ "cheste liste."
+#~ "Mapis nol pues cjatâ il puest pal check-in cun Foursquare. Selezionâ un "
+#~ "di cheste liste."
 
 #, javascript-format
 #~ msgid "Check in to %s"
@@ -1895,11 +1936,11 @@ msgstr "Fâs une inversion a U a diestre"
 #~ msgstr "Impussibil cjatâ un puest adat pal check-in in chest lûc"
 
 #~ msgid ""
-#~ "Credentials have expired, please open Online Accounts to sign in and enable "
-#~ "this account"
+#~ "Credentials have expired, please open Online Accounts to sign in and "
+#~ "enable this account"
 #~ msgstr ""
-#~ "Lis credenziâi a son scjadudis, vierç Accounts Online par coneti e abilitâ "
-#~ "chest account"
+#~ "Lis credenziâi a son scjadudis, vierç Accounts Online par coneti e "
+#~ "abilitâ chest account"
 
 #~ msgid "GNOME Maps"
 #~ msgstr "Mapis GNOME"
@@ -1914,11 +1955,11 @@ msgstr "Fâs une inversion a U a diestre"
 #~ msgstr "Modalitât gnot"
 
 #~ msgid ""
-#~ "You can even search for specific types of locations, such as “Pubs near Main"
-#~ " Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
+#~ "You can even search for specific types of locations, such as “Pubs near "
+#~ "Main Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
 #~ msgstr ""
-#~ "Tu puedis ancje cirî par specifics gjenars di puescj, come \"Pubs near Main "
-#~ "Street, Boston\" o \"Hotels near Alexanderplatz, Berlin”."
+#~ "Tu puedis ancje cirî par specifics gjenars di puescj, come \"Pubs near "
+#~ "Main Street, Boston\" o \"Hotels near Alexanderplatz, Berlin”."
 
 #~ msgid "Facebook check-in privacy setting"
 #~ msgstr "Impostazions privacy dai check-in su Facebook"
@@ -1943,8 +1984,8 @@ msgstr "Fâs une inversion a U a diestre"
 #~ msgstr "Nome jo"
 
 #~ msgid ""
-#~ "Maps cannot find the place to check in to with Facebook. Please select one "
-#~ "from this list."
+#~ "Maps cannot find the place to check in to with Facebook. Please select "
+#~ "one from this list."
 #~ msgstr ""
 #~ "Mapis nol pues cjatâ il puest pal check-in cun Facebook. Selezionâ un di "
 #~ "cheste liste."
@@ -2082,8 +2123,8 @@ msgstr "Fâs une inversion a U a diestre"
 #~ "Last known location (latitude and longitude in degrees) and accuracy (in "
 #~ "meters)."
 #~ msgstr ""
-#~ "L'ultime posizion (latitudin e longjitudin in grâts) e precision (in metris)"
-#~ " cognossude."
+#~ "L'ultime posizion (latitudin e longjitudin in grâts) e precision (in "
+#~ "metris) cognossude."
 
 #~ msgid "Description of last known location of user."
 #~ msgstr "Descrizion de ultime posizion dal utent."
