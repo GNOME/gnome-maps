@@ -147,7 +147,7 @@ export class PlacePopover extends SearchPopover {
     }
 
     _showPopover() {
-        let {x, y, width, height} = this._entry.get_allocation();
+        let {x, y, width, height} = this.get_parent().get_allocation();
 
         // Magic number to make the alignment pixel perfect.
         this.width_request = width + 20;
