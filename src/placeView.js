@@ -292,7 +292,7 @@ export class PlaceView extends Gtk.Box {
                      * The establishment offers customers to purchase meals
                      * (or similar) to be consumed elsewhere
                      */
-                    content.push({ info: _("Offers takeaway"),
+                    content.push({ info: _("Offers takeout"),
                                    icon: PlaceIcons.getIconForPlace(place) });
                     break;
                 case 'no':
@@ -300,7 +300,7 @@ export class PlaceView extends Gtk.Box {
                      * The establishment only offers customers to purchase
                      * meals (or similar) to be consumed on-premise.
                      */
-                    content.push({ info: _("Does not offer takeaway"),
+                    content.push({ info: _("Does not offer takeout"),
                                    icon: PlaceIcons.getIconForPlace(place) });
                     break;
                 case 'only':
@@ -309,7 +309,7 @@ export class PlaceView extends Gtk.Box {
                      * meals (or similar) to be consumed elsewhere. E.g.
                      * there is no seating on-premise for eating/drinking
                      */
-                    content.push({ info: _("Only offers takeaway"),
+                    content.push({ info: _("Only offers takeout"),
                                    icon: PlaceIcons.getIconForPlace(place) });
                     break;
             }
