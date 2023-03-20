@@ -264,8 +264,7 @@ export class PlaceEntry extends Gtk.SearchEntry {
                 location.set_from_uri(this.text);
                 this.place = new Place({ location: location });
             } catch(e) {
-                let msg = _("Failed to parse Geo URI");
-                Utils.showDialog(msg, Gtk.MessageType.ERROR, this.get_toplevel());
+                this.root.showToast(_("Failed to parse Geo URI"));
             }
 
             parsed = true;
@@ -277,8 +276,7 @@ export class PlaceEntry extends Gtk.SearchEntry {
             if (query) {
                 this.text = query;
             } else {
-                let msg = _("Failed to parse Maps URI");
-                Utils.showDialog(msg, Gtk.MessageType.ERROR, this.get_toplevel());
+                this.root.showToast(_("Failed to parse Maps URI"));
             }
 
             parsed = true;
@@ -306,8 +304,7 @@ export class PlaceEntry extends Gtk.SearchEntry {
                 if (place)
                     this.place = place;
                 else
-                    Utils.showDialog(error,
-                                     Gtk.MessageType.ERROR, this.get_toplevel());
+                    this.root.showToast(error);
             });
 
             /* don't cancel ongoing search, as we have started an async

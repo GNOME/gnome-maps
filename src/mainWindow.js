@@ -134,6 +134,10 @@ export class MainWindow extends Gtk.ApplicationWindow {
         this.title = _("Maps");
     }
 
+    showToast(message) {
+        Utils.showToastInOverlay(message, this._overlay);
+    }
+
     _createPlaceEntry() {
         let placeEntry = new PlaceEntry({ mapView: this._mapView,
                                           visible: true,
@@ -439,8 +443,7 @@ export class MainWindow extends Gtk.ApplicationWindow {
         Application.geoclue.start(() => {
             switch(Application.geoclue.state) {
             case Geoclue.State.FAILED:
-                message = _("Failed to connect to location service");
-                Utils.showDialog(message, Gtk.MessageType.ERROR, this);
+                this.showToast(_("Failed to connect to location service"));
                 break;
 
             case Geoclue.State.DENIED:
@@ -634,5 +637,6 @@ GObject.registerClass({
                         'grid',
                         'actionBar',
                         'actionBarRevealer',
-                        'placeBarContainer']
+                        'placeBarContainer',
+                        'overlay']
 }, MainWindow);

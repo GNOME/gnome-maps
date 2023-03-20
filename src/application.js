@@ -249,8 +249,7 @@ export class Application extends Adw.Application {
         GeocodeFactory.getGeocoder().search(query, null, null, cancellable,
                                             (places, error) => {
             if (error) {
-                Utils.showDialog(_("An error has occurred"),
-                                 Gtk.MessageType.ERROR, this._mainWindow);
+                this._mainWindow.showToast(_("An error has occurred"));
             } else {
                 // clear search entry
                 this._mainWindow.placeEntry.text = '';
@@ -272,16 +271,14 @@ export class Application extends Adw.Application {
                                                                   false);
                     }
                 } else {
-                    Utils.showDialog(_("No results found"),
-                                     Gtk.MessageType.INFO, this._mainWindow);
+                    this._mainWindow.showToast(_("No results found"));
                 }
             }
         });
     }
 
     _invalidMapsUri(uri) {
-        Utils.showDialog(_("Invalid maps: URI: %s").format(uri),
-                         Gtk.MessageType.ERROR, this._mainWindow);
+        this._mainWindow.showToast(_("Invalid maps: URI: %s").format(uri));
     }
 
     vfunc_open(files) {

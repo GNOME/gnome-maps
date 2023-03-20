@@ -178,8 +178,7 @@ export class SendToDialog extends Gtk.Dialog {
         try {
           Gio.app_info_launch_default_for_uri(uri, this._getAppLaunchContext());
         } catch(e) {
-          Utils.showDialog(_("Failed to open URI"), Gtk.MessageType.ERROR,
-                           this);
+          Utils.showToastInOverlay(_("Failed to open URI"), this._overlay);
           Utils.debug('failed to open URI: %s'.format(e.message));
         }
 
@@ -235,7 +234,8 @@ GObject.registerClass({
                         'summaryUrl',
                         'copyButton',
                         'emailButton',
-                        'scrolledWindow' ]
+                        'scrolledWindow',
+                        'overlay']
 }, SendToDialog);
 
 export class OpenWithRow extends Gtk.ListBoxRow {

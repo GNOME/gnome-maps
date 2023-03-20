@@ -6,206 +6,211 @@
     <property name="height_request">500</property>
     <property name="use-header-bar">True</property>
     <property name="title" translatable="True" context="dialog title">Edit on OpenStreetMap</property>
+
     <child>
-      <object class="GtkBox" id="contentArea">
+      <object class="AdwToastOverlay" id="overlay">
         <child>
-          <object class="GtkStack" id="stack">
-            <property name="transition_type">crossfade</property>
+          <object class="GtkBox" id="contentArea">
             <child>
-              <object class="GtkStackPage">
-                <property name="name">loading</property>
-                <property name="child">
-                  <object class="GtkGrid" id="loadingGrid">
-                    <child>
-                      <object class="GtkSpinner" id="loadingSpinner">
-                        <property name="height_request">32</property>
-                        <property name="hexpand">1</property>
-                        <property name="vexpand">1</property>
-                        <property name="valign">GTK_ALIGN_CENTER</property>
-                        <property name="spinning">True</property>
-                        <layout>
-                          <property name="column">0</property>
-                          <property name="row">0</property>
-                        </layout>
-                      </object>
-                    </child>
-                  </object>
-                </property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkStackPage">
-                <property name="name">editor</property>
-                <property name="child">
-                  <object class="GtkGrid">
-                    <property name="orientation">vertical</property>
-                    <property name="margin-start">20</property>
-                    <property name="margin-end">20</property>
-                    <property name="margin-top">20</property>
-                    <property name="margin-bottom">20</property>
-                    <child>
-                      <object class="GtkGrid" id="editorGrid">
-                        <property name="row-spacing">12</property>
-                        <property name="column-spacing">6</property>
-                        <property name="margin-bottom">12</property>
+              <object class="GtkStack" id="stack">
+                <property name="transition_type">crossfade</property>
+                <child>
+                  <object class="GtkStackPage">
+                    <property name="name">loading</property>
+                    <property name="child">
+                      <object class="GtkGrid" id="loadingGrid">
                         <child>
-                          <object class="GtkLabel" id="typeLabel">
-                            <property name="visible">0</property>
-                            <property name="label" translatable="1">Type</property>
-                            <property name="halign">end</property>
-                            <style>
-                              <class name="dim-label"/>
-                            </style>
+                          <object class="GtkSpinner" id="loadingSpinner">
+                            <property name="height_request">32</property>
+                            <property name="hexpand">1</property>
+                            <property name="vexpand">1</property>
+                            <property name="valign">GTK_ALIGN_CENTER</property>
+                            <property name="spinning">True</property>
                             <layout>
                               <property name="column">0</property>
                               <property name="row">0</property>
                             </layout>
                           </object>
                         </child>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkStackPage">
+                    <property name="name">editor</property>
+                    <property name="child">
+                      <object class="GtkGrid">
+                        <property name="orientation">vertical</property>
+                        <property name="margin-start">20</property>
+                        <property name="margin-end">20</property>
+                        <property name="margin-top">20</property>
+                        <property name="margin-bottom">20</property>
                         <child>
-                          <object class="GtkButton" id="typeButton">
-                            <property name="visible">0</property>
-                            <property name="focusable">1</property>
-                            <property name="hexpand">1</property>
+                          <object class="GtkGrid" id="editorGrid">
+                            <property name="row-spacing">12</property>
+                            <property name="column-spacing">6</property>
+                            <property name="margin-bottom">12</property>
                             <child>
-                              <object class="GtkGrid">
-                                <property name="row-spacing">5</property>
-                                <property name="column-spacing">5</property>
-                                <child>
-                                  <object class="GtkLabel" id="typeValueLabel">
-                                    <property name="label" translatable="1">None</property>
-                                  </object>
-                                </child>
-                                <child>
-                                  <object class="GtkImage">
-                                    <property name="halign">end</property>
-                                    <property name="hexpand">1</property>
-                                    <property name="icon-name">go-next-symbolic</property>
-                                  </object>
-                                </child>
+                              <object class="GtkLabel" id="typeLabel">
+                                <property name="visible">0</property>
+                                <property name="label" translatable="1">Type</property>
+                                <property name="halign">end</property>
+                                <style>
+                                  <class name="dim-label"/>
+                                </style>
+                                <layout>
+                                  <property name="column">0</property>
+                                  <property name="row">0</property>
+                                </layout>
                               </object>
                             </child>
+                            <child>
+                              <object class="GtkButton" id="typeButton">
+                                <property name="visible">0</property>
+                                <property name="focusable">1</property>
+                                <property name="hexpand">1</property>
+                                <child>
+                                  <object class="GtkGrid">
+                                    <property name="row-spacing">5</property>
+                                    <property name="column-spacing">5</property>
+                                    <child>
+                                      <object class="GtkLabel" id="typeValueLabel">
+                                        <property name="label" translatable="1">None</property>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkImage">
+                                        <property name="halign">end</property>
+                                        <property name="hexpand">1</property>
+                                        <property name="icon-name">go-next-symbolic</property>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                                <layout>
+                                  <property name="column">1</property>
+                                  <property name="row">0</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkGrid">
+                            <property name="vexpand">1</property>
+                            <property name="valign">end</property>
+                            <child>
+                              <object class="GtkMenuButton" id="addFieldButton">
+                                <property name="focusable">1</property>
+                                <property name="popover">addFieldPopover</property>
+                                <property name="direction">up</property>
+                                <property name="label" translatable="1">Add Field</property>
+                                <property name="always-show-arrow">True</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkStackPage">
+                    <property name="name">upload</property>
+                    <property name="child">
+                      <object class="GtkGrid" id="uploadGrid">
+                        <property name="margin_start">15</property>
+                        <property name="margin_end">15</property>
+                        <property name="margin_top">15</property>
+                        <property name="margin_bottom">15</property>
+                        <property name="row-spacing">5</property>
+                        <child>
+                          <object class="GtkLabel" id="commentLabel">
+                            <property name="label" translatable="1">Comment</property>
+                            <property name="halign">start</property>
+                            <style>
+                              <class name="dim-label"/>
+                            </style>
                             <layout>
-                              <property name="column">1</property>
-                              <property name="row">0</property>
+                              <property name="column">0</property>
+                              <property name="row">1</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkFrame">
+                            <property name="child">
+                              <object class="GtkTextView" id="commentTextView">
+                                <property name="focusable">1</property>
+                                <property name="hexpand">1</property>
+                                <property name="vexpand">1</property>
+                              </object>
+                            </property>
+                            <layout>
+                              <property name="column">0</property>
+                              <property name="row">2</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="uploadInfoLabel">
+                            <property name="label" translatable="1">Map changes will be visible on all maps that use
+    OpenStreetMap data.</property>
+                            <property name="halign">start</property>
+                            <style>
+                              <class name="dim-label"/>
+                            </style>
+                            <layout>
+                              <property name="column">0</property>
+                              <property name="row">3</property>
                             </layout>
                           </object>
                         </child>
                       </object>
-                    </child>
-                    <child>
-                      <object class="GtkGrid">
-                        <property name="vexpand">1</property>
-                        <property name="valign">end</property>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkStackPage">
+                    <property name="name">select-type</property>
+                    <property name="child">
+                      <object class="GtkGrid" id="typeSearchGrid">
+                        <property name="margin_start">60</property>
+                        <property name="margin_end">60</property>
+                        <property name="margin_top">15</property>
+                        <property name="margin_bottom">30</property>
+                        <property name="row-spacing">5</property>
                         <child>
-                          <object class="GtkMenuButton" id="addFieldButton">
+                          <object class="GtkLabel" id="recentTypesLabel">
+                            <property name="label" translatable="1">Recently Used</property>
+                            <property name="halign">start</property>
+                            <style>
+                              <class name="dim-label"/>
+                            </style>
+                            <layout>
+                              <property name="column">0</property>
+                              <property name="row">1</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkListBox" id="recentTypesListBox">
                             <property name="focusable">1</property>
-                            <property name="popover">addFieldPopover</property>
-                            <property name="direction">up</property>
-                            <property name="label" translatable="1">Add Field</property>
-                            <property name="always-show-arrow">True</property>
+                            <property name="selection-mode">none</property>
+                            <style>
+                              <class name="frame"/>
+                            </style>
+                            <layout>
+                              <property name="column">0</property>
+                              <property name="row">2</property>
+                            </layout>
                           </object>
                         </child>
                       </object>
-                    </child>
+                    </property>
                   </object>
-                </property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkStackPage">
-                <property name="name">upload</property>
-                <property name="child">
-                  <object class="GtkGrid" id="uploadGrid">
-                    <property name="margin_start">15</property>
-                    <property name="margin_end">15</property>
-                    <property name="margin_top">15</property>
-                    <property name="margin_bottom">15</property>
-                    <property name="row-spacing">5</property>
-                    <child>
-                      <object class="GtkLabel" id="commentLabel">
-                        <property name="label" translatable="1">Comment</property>
-                        <property name="halign">start</property>
-                        <style>
-                          <class name="dim-label"/>
-                        </style>
-                        <layout>
-                          <property name="column">0</property>
-                          <property name="row">1</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkFrame">
-                        <property name="child">
-                          <object class="GtkTextView" id="commentTextView">
-                            <property name="focusable">1</property>
-                            <property name="hexpand">1</property>
-                            <property name="vexpand">1</property>
-                          </object>
-                        </property>
-                        <layout>
-                          <property name="column">0</property>
-                          <property name="row">2</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="uploadInfoLabel">
-                        <property name="label" translatable="1">Map changes will be visible on all maps that use
-OpenStreetMap data.</property>
-                        <property name="halign">start</property>
-                        <style>
-                          <class name="dim-label"/>
-                        </style>
-                        <layout>
-                          <property name="column">0</property>
-                          <property name="row">3</property>
-                        </layout>
-                      </object>
-                    </child>
-                  </object>
-                </property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkStackPage">
-                <property name="name">select-type</property>
-                <property name="child">
-                  <object class="GtkGrid" id="typeSearchGrid">
-                    <property name="margin_start">60</property>
-                    <property name="margin_end">60</property>
-                    <property name="margin_top">15</property>
-                    <property name="margin_bottom">30</property>
-                    <property name="row-spacing">5</property>
-                    <child>
-                      <object class="GtkLabel" id="recentTypesLabel">
-                        <property name="label" translatable="1">Recently Used</property>
-                        <property name="halign">start</property>
-                        <style>
-                          <class name="dim-label"/>
-                        </style>
-                        <layout>
-                          <property name="column">0</property>
-                          <property name="row">1</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkListBox" id="recentTypesListBox">
-                        <property name="focusable">1</property>
-                        <property name="selection-mode">none</property>
-                        <style>
-                          <class name="frame"/>
-                        </style>
-                        <layout>
-                          <property name="column">0</property>
-                          <property name="row">2</property>
-                        </layout>
-                      </object>
-                    </child>
-                  </object>
-                </property>
+                </child>
               </object>
             </child>
           </object>

@@ -42,28 +42,39 @@
       </object>
     </child>
     <child>
-      <object class="GtkGrid" id="grid">
-        <child>
-          <object class="GtkBox" id="placeBarContainer">
-            <layout>
-              <property name="column">0</property>
-              <property name="row">1</property>
-            </layout>
+      <object class="AdwToastOverlay" id="overlay">
+        <property name="child">
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <property name="hexpand">true</property>
+            <property name="vexpand">true</property>
+            <child>
+              <object class="GtkGrid" id="grid">
+                <child>
+                  <object class="GtkBox" id="placeBarContainer">
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkRevealer" id="actionBarRevealer">
+                    <property name="transition-type">slide-up</property>
+                    <property name="child">
+                      <object class="GtkActionBar" id="actionBar"/>
+                    </property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">2</property>
+                      <property name="column-span">2</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
           </object>
-        </child>
-        <child>
-          <object class="GtkRevealer" id="actionBarRevealer">
-            <property name="transition-type">slide-up</property>
-            <property name="child">
-              <object class="GtkActionBar" id="actionBar"/>
-            </property>
-            <layout>
-              <property name="column">0</property>
-              <property name="row">2</property>
-              <property name="column-span">2</property>
-            </layout>
-          </object>
-        </child>
+        </property>
       </object>
     </child>
   </template>

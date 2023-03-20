@@ -28,6 +28,7 @@ import GdkPixbuf from 'gi://GdkPixbuf';
 import GeocodeGlib from 'gi://GeocodeGlib';
 import Gio from 'gi://Gio';
 import Gtk from 'gi://Gtk';
+import Adw from 'gi://Adw';
 import GWeather from 'gi://GWeather';
 
 const _ = gettext.gettext;
@@ -453,17 +454,12 @@ export function isUsingHighContrastTheme() {
     return themeName === 'HighContrast' || themeName === 'HighContrastInverse';
 }
 
-export function showDialog(msg, type, transientFor) {
-    let messageDialog =
-        new Gtk.MessageDialog({ transient_for: transientFor,
-                                destroy_with_parent: true,
-                                message_type: type,
-                                buttons: Gtk.ButtonsType.OK,
-                                modal: true,
-                                text: msg });
+export function showToastInOverlay(message, overlay) {
+    let toast = new Adw.Toast({
+        title: message,
+    });
 
-    messageDialog.connect('response', () => messageDialog.destroy());
-    messageDialog.show();
+    overlay.add_toast(toast);
 }
 
 let decoder = new TextDecoder('utf-8');

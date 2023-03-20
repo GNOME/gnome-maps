@@ -457,7 +457,7 @@ export class MapView extends Gtk.Overlay {
             } catch(e) {
                 this.setMapType(MapView.MapType.STREET);
                 Application.application.local_tile_path = false;
-                Utils.showDialog(e.message, Gtk.MessageType.ERROR, this._mainWindow);
+                this._mainWindow.showToast(e.message);
                 return;
             }
         }
@@ -498,8 +498,7 @@ export class MapView extends Gtk.Overlay {
 
     _onShapeLoad(error, bbox, layer) {
         if (error) {
-            let msg = _("Failed to open layer");
-            Utils.showDialog(msg, Gtk.MessageType.ERROR, this._mainWindow);
+            this._mainWindow.showToast(_("Failed to open layer"));
         } else {
             bbox.compose(layer.bbox);
         }
@@ -558,8 +557,7 @@ export class MapView extends Gtk.Overlay {
                 }
             } catch (e) {
                 Utils.debug(e);
-                let msg = _("Failed to open layer");
-                Utils.showDialog(msg, Gtk.MessageType.ERROR, this._mainWindow);
+                this._mainWindow.showToast(_("Failed to open layer"));
             }
         }
     }
@@ -590,8 +588,7 @@ export class MapView extends Gtk.Overlay {
             this._placeLayer.add_marker(marker);
             marker.goToAndSelect(true);
         } catch(e) {
-            let msg = _("Failed to open GeoURI");
-            Utils.showDialog(msg, Gtk.MessageType.ERROR, this._mainWindow);
+            this._mainWindow.showToast(_("Failed to open GeoURI"));
             Utils.debug("failed to open GeoURI: %s".format(e.message));
         }
     }
@@ -605,7 +602,7 @@ export class MapView extends Gtk.Overlay {
                 this._placeLayer.add_marker(marker);
                 marker.goToAndSelect(true);
             } else {
-                Utils.showDialog(error, Gtk.MessageType.ERROR, this._mainWindow);
+                this._mainWindow.showToast(error);
             }
         });
     }
@@ -1030,9 +1027,7 @@ export class MapView extends Gtk.Overlay {
             if (place) {
                 this.showPlace(place, true);
             } else {
-                let msg = _("Nothing found here!");
-
-                Utils.showDialog(msg, Gtk.MessageType.INFO, this._mainWindow);
+                this._mainWindow.showToast(_("Nothing found here!"));
             }
         });
     }
@@ -1091,8 +1086,7 @@ export class MapView extends Gtk.Overlay {
         dialog.connect('response', (dialog, response) => {
             dialog.destroy();
             if (response === OSMEditDialog.Response.UPLOADED) {
-                Utils.showDialog(_("Location was added to the map, note that it may take a while before it shows on the map and in search results."),
-                                 Gtk.MessageType.INFO, this._mainWindow);
+                this._mainWindow.showToast(_("Location was added in OpenStreetMap"));
             }
         });
     }
