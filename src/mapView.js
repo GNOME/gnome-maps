@@ -38,6 +38,7 @@ import * as GeocodeFactory from './geocode.js';
 import {GeoJSONShapeLayer} from './geoJSONShapeLayer.js';
 import {KmlShapeLayer} from './kmlShapeLayer.js';
 import {GpxShapeLayer} from './gpxShapeLayer.js';
+import {FitShapeLayer} from './fitShapeLayer.js';
 import {Location} from './location.js';
 import * as MapSource from './mapSource.js';
 import {MapWalker} from './mapWalker.js';
@@ -347,6 +348,7 @@ export class MapView extends Gtk.Overlay {
         ShapeLayer.SUPPORTED_TYPES.push(GeoJSONShapeLayer);
         ShapeLayer.SUPPORTED_TYPES.push(KmlShapeLayer);
         ShapeLayer.SUPPORTED_TYPES.push(GpxShapeLayer);
+        ShapeLayer.SUPPORTED_TYPES.push(FitShapeLayer);
 
         this._routeLayers = [];
     }
