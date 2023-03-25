@@ -17,6 +17,7 @@
  * Author: Amisha Singla <amishas157@gmail.com>
  */
 
+import Adw from 'gi://Adw';
 import GLib from 'gi://GLib';
 import Gtk from 'gi://Gtk';
 
@@ -41,16 +42,16 @@ export class PrintOperation {
         this._operation.connect('paginate', this._paginate.bind(this));
         this._operation.connect('draw-page', this._drawPage.bind(this));
 
-        this._abortDialog = new Gtk.MessageDialog({
+        this._abortDialog = new Adw.MessageDialog({
             transient_for: this._mainWindow,
             destroy_with_parent: true,
-            message_type: Gtk.MessageType.OTHER,
             modal: true,
-            text: _("Loading map tiles for printing"),
-            secondary_text: _("You can abort printing if this takes too long")
+            heading: _("Loading map tiles for printing"),
+            body: _("You can abort printing if this takes too long")
         });
-        this._abortDialog.add_button(_("Abort printing"),
-                                     Gtk.ResponseType.CANCEL);
+        this._abortDialog.add_response('abort', _("Abort printing"));
+        this._abortDialog.set_response_appearance('abort',
+                                                  Adw.ResponseAppearance.DESTRUCTIVE);
         this._responseId = this._abortDialog.connect('response',
                                                      this.onAbortDialogResponse.bind(this));
 
