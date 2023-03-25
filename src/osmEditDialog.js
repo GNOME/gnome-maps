@@ -559,17 +559,8 @@ export class OSMEditDialog extends Gtk.Dialog {
          * a generic error message for the HTTP status code */
         let statusMessage =
             error ? error.message : OSMConnection.getStatusMessage(status);
-        let messageDialog =
-            new Gtk.MessageDialog({ transient_for: this.get_root(),
-                                    destroy_with_parent: true,
-                                    message_type: Gtk.MessageType.ERROR,
-                                    buttons: Gtk.ButtonsType.OK,
-                                    modal: true,
-                                    text: _("An error has occurred"),
-                                    secondary_text: statusMessage });
 
-        messageDialog.connect('response', () => messageDialog.destroy());
-        messageDialog.show();
+        this.transient_for.showToast(statusMessage);
         this.response(OSMEditDialog.Response.ERROR);
     }
 
