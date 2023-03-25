@@ -19,6 +19,7 @@
  * Author: Zeeshan Ali (Khattak) <zeeshanak@gnome.org>
  */
 
+import Adw from 'gi://Adw';
 import GObject from 'gi://GObject';
 import Gdk from 'gi://Gdk';
 import GeocodeGlib from 'gi://GeocodeGlib';
@@ -514,19 +515,25 @@ export class MapView extends Gtk.Overlay {
         if (result.confirmLoad) {
             let totalFileSizeMB = result.totalFileSizeMB;
 
-            let dialog = new Gtk.MessageDialog ({
+            let dialog = new Adw.MessageDialog ({
                 transient_for: this._mainWindow,
                 modal: true,
-                buttons: Gtk.ButtonsType.OK_CANCEL,
-                text: _("Do you want to continue?"), 
-                secondary_text: _("You are about to open files with a total " + 
-                                 "size of %s MB. This could take some time to" +
-                                 " load").format(totalFileSizeMB.toLocaleString(undefined,
-                                                                               { maximumFractionDigits: 1 }))
+                heading: _("Do you want to continue?"),
+                body: _("You are about to open files with a total " +
+                        "size of %s MB. This could take some time to" +
+                        " load").format(totalFileSizeMB.toLocaleString(undefined,
+                                                                       { maximumFractionDigits: 1 }))
             });
 
+            dialog.add_response('cancel', _("Cancel"));
+            dialog.add_response('continue', _("Continue"));
+            dialog.set_response_appearance('continue',
+                                           Adw.ResponseAppearance.SUGGESTED);
+            dialog.set_default_response('cancel');
+            dialog.set_close_response('cancel');
+
             dialog.connect('response', (widget, responseId) => {
-                if (responseId === Gtk.ResponseType.OK) {
+                if (responseId === 'continue') {
                     this._loadShapeLayers(files);
                 }
                 dialog.destroy();
