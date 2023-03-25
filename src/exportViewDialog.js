@@ -145,34 +145,13 @@ export class ExportViewDialog extends Gtk.Dialog {
         let texture = renderer.render_texture(node, rect);
         let path = GLib.build_filenamev([this._folder, this._fileName]);
 
-        try {
-            texture.save_to_png(path);
+        let success = texture.save_to_png(path);
+
+        if (success) {
             this.response(ExportViewDialog.Response.SUCCESS);
-        } catch(e) {
-            Utils.debug('failed to export view: ' + e.message);
-            let details = null;
-
-            if (e.matches(GLib.FileError, GLib.FileError.ROFS))
-                details = _("Filesystem is read only");
-            else if (e.matches(GLib.FileError, GLib.FileError.ACCES))
-                details = _("You do not have permission to save there");
-            else if (e.matches(GLib.FileError, GLib.FileError.NOENT))
-                details = _("The directory does not exist");
-            else if (e.matches(GLib.FileError, GLib.FileError.ISDIR))
-                details = _("No filename specified");
-
-            let dialog = new Gtk.MessageDialog({
-                transient_for: this,
-                destroy_with_parent: true,
-                message_type: Gtk.MessageType.ERROR,
-                buttons: Gtk.ButtonsType.OK,
-                modal: true,
-                text: _("Unable to export view"),
-                secondary_text: details
-            });
-
-            dialog.connect('response', () => dialog.destroy());
-            dialog.present();
+        } else {
+            this.transient_for.showToast(_("Unable to export view"));
+            this.response(ExportViewDialog.Response.CANCEL);
         }
     }
 }
