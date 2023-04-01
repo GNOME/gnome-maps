@@ -60,6 +60,17 @@ export class PlacePopover extends SearchPopover {
                this._stack.visible_child === this._poiSubCategories;
     }
 
+    _updateDistances() {
+        let viewport = this._entry.mapView.map.viewport;
+        let location = new Geocode.Location({ latitude:  viewport.latitude,
+                                              longitude: viewport.longitude,
+                                              accuracy:  0 });
+
+        for (let row of this.list) {
+            row.setDistanceFrom(location);
+        }
+    }
+
     _createPoiCategories() {
         let categoryStructure = PoiCategories.getCategoryStructure();
 
@@ -148,6 +159,7 @@ export class PlacePopover extends SearchPopover {
                 let completedPlaces = placeStore.getCompletedPlaces(results);
 
                 this.updateResult(completedPlaces, '');
+                this._updateDistances();
                 this.showResult();
                 this._entry.grab_focus();
             }
@@ -264,6 +276,7 @@ export class PlacePopover extends SearchPopover {
         let row = new PlaceListRow({ place:        place,
                                      searchString: searchString,
                                      type:         type,
+                                     sizeGroup:    this._distanceLabelSizeGroup,
                                      can_focus:    true });
         this.list.insert(row, -1);
     }
@@ -282,5 +295,6 @@ GObject.registerClass({
                         'errorLabel',
                         'poiMainCategories',
                         'poiMainCategoriesListBox',
-                        'poiSubCategories'],
+                        'poiSubCategories',
+                        'distanceLabelSizeGroup' ],
 }, PlacePopover);
