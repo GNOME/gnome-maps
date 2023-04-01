@@ -17,6 +17,8 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
+import gettext from 'gettext';
+
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
@@ -25,12 +27,32 @@ import {PlaceFormatter} from './placeFormatter.js';
 import {PlaceStore} from './placeStore.js';
 import * as Utils from './utils.js';
 
+const C_ = gettext.dgettext;
+
+/*
+ * Lower threashold when only showing a "less than distance" for POIs
+ * relative the view center
+ */
+const SHORT_DISTANCE_THREASHOLD_METRIC = 100;
+const SHORT_DISTANCE_THREASHOLD_IMPERIAL = 91.44; // 300 ft (300 * 12 * 0.0254 m)
+
+/*
+ * Translators: This a format string for showing a distance to a place
+ * is lower than a "quite short" distance.
+ * The "less than" symbol can be substituded with an appropriate one, if
+ * needed (e.g. using the correct direction, or alternative symbol).
+ * The %s should be kept, and is substituted with a label representing the
+ * short distance. The \u2009 (thin space) could also be adjusted if needed */
+const SHORT_DISTANCE_FORMAT = C_("short distance format string", "< %s");
+
 export class PlaceListRow extends Gtk.ListBoxRow {
 
-    constructor({place, searchString, type, ...params}) {
+    constructor({place, searchString, type, sizeGroup, ...params}) {
         super(params);
 
         this.update(place, type, searchString || '');
+        if (sizeGroup)
+            sizeGroup.add_widget(this._distanceLabel);
     }
 
     update(place, type, searchString) {
@@ -52,6 +74,36 @@ export class PlaceListRow extends Gtk.ListBoxRow {
             this._typeIcon.icon_name = 'starred-symbolic';
         else
             this._typeIcon.icon_name = null;
+
+        /* hide distance by default so that a previous content from a POI
+         * search doesn't keep the distance when updating with a new search
+         * result
+         */
+        this._distanceLabel.visible = false;
+    }
+
+    setDistanceFrom(location) {
+        let distance = this.place.location.get_distance_from(location) * 1000;
+        let label;
+
+        if (Utils.getMeasurementSystem() === Utils.METRIC_SYSTEM &&
+            distance < SHORT_DISTANCE_THREASHOLD_METRIC) {
+            let prettyDistance =
+                Utils.prettyDistance(SHORT_DISTANCE_THREASHOLD_METRIC);
+
+            label = SHORT_DISTANCE_FORMAT.format(prettyDistance);
+        } else if (distance < SHORT_DISTANCE_THREASHOLD_IMPERIAL) {
+            let prettyDistance =
+                Utils.prettyDistance(SHORT_DISTANCE_THREASHOLD_IMPERIAL);
+
+            label = SHORT_DISTANCE_FORMAT.format(prettyDistance);
+        } else {
+            label = Utils.prettyDistance(distance);
+        }
+
+
+        this._distanceLabel.label = label;
+        this._distanceLabel.visible = true;
     }
 
     _boldMatch(title, string) {
@@ -73,5 +125,6 @@ GObject.registerClass({
     InternalChildren: [ 'icon',
                         'name',
                         'details',
+                        'distanceLabel',
                         'typeIcon' ],
 }, PlaceListRow);
