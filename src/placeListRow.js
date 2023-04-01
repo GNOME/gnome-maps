@@ -27,10 +27,12 @@ import * as Utils from './utils.js';
 
 export class PlaceListRow extends Gtk.ListBoxRow {
 
-    constructor({place, searchString, type, ...params}) {
+    constructor({place, searchString, type, sizeGroup, ...params}) {
         super(params);
 
         this.update(place, type, searchString || '');
+        if (sizeGroup)
+            sizeGroup.add_widget(this._distanceLabel);
     }
 
     update(place, type, searchString) {
@@ -52,6 +54,19 @@ export class PlaceListRow extends Gtk.ListBoxRow {
             this._typeIcon.icon_name = 'starred-symbolic';
         else
             this._typeIcon.icon_name = null;
+
+        /* hide distance by default so that a previous content from a POI
+         * search doesn't keep the distance when updating with a new search
+         * result
+         */
+        this._distanceLabel.visible = false;
+    }
+
+    setDistanceFrom(location) {
+        let distance = this.place.location.get_distance_from(location) * 1000;
+
+        this._distanceLabel.label = Utils.prettyDistance(distance);
+        this._distanceLabel.visible = true;
     }
 
     _boldMatch(title, string) {
@@ -73,5 +88,6 @@ GObject.registerClass({
     InternalChildren: [ 'icon',
                         'name',
                         'details',
+                        'distanceLabel',
                         'typeIcon' ],
 }, PlaceListRow);
