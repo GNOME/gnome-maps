@@ -164,6 +164,8 @@ export class Overpass {
             this._setOsmKeyAndValue(properties, tags, 'leisure');
         else if (tags.shop)
             this._setOsmKeyAndValue(properties, tags, 'shop');
+        else if (tags.tourism)
+            this._setOsmKeyAndValue(properties, tags, 'tourism');
         else if (tags.highway)
             this._setOsmKeyAndValue(properties, tags, 'highway');
         else if (tags.railway)
