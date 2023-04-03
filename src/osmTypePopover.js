@@ -30,7 +30,7 @@ export class OSMTypePopover extends SearchPopover {
     constructor(params) {
         super(params);
 
-        this._list.connect('row-activated', (list, row) => {
+        this.list.connect('row-activated', (list, row) => {
             if (row)
                 this.emit('selected', row.key, row.value, row.title);
         });
@@ -39,7 +39,7 @@ export class OSMTypePopover extends SearchPopover {
     showMatches(matches) {
         let rows = [];
 
-        for (let row of this._list) {
+        for (let row of this.list) {
             rows.push(row);
         }
         for (let row of rows) {
@@ -59,12 +59,12 @@ export class OSMTypePopover extends SearchPopover {
     _addRow(type) {
         let row = new OSMTypeListRow({ type: type, can_focus: true });
 
-        this._list.insert(row, -1);
+        this.list.insert(row, -1);
     }
 }
 
 GObject.registerClass({
-    InternalChildren: ['list'],
+    Children: ['list'],
     Template: 'resource:///org/gnome/Maps/ui/osm-type-popover.ui',
     Signals : {
         /* signal emitted when selecting a type, indicates OSM key and value

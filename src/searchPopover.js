@@ -35,7 +35,7 @@ export class SearchPopover extends Gtk.Popover {
         this._buttonPressGesture = new Gtk.GestureSingle();
         this._entry.add_controller(this._buttonPressGesture);
         this._buttonPressGesture.connect('begin',
-                                         () => this._list.unselect_all());
+                                         () => this.list.unselect_all());
 
         this._numResults = 0;
 
