@@ -667,7 +667,7 @@ export class Leg {
                     }
             }
         } else {
-            return 'route-pedestrian-symbolic';
+            return 'walking-symbolic';
         }
     }
 
