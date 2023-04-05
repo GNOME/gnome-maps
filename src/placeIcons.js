@@ -66,12 +66,12 @@ const TYPE_ICON_MAP = {
     },
     highway: {
         bus_stop:         'route-transit-bus-symbolic',
-        cycleway:         'route-bike-symbolic',
-        footway:          'route-pedestrian-symbolic',
-        pedestrian:       'route-pedestrian-symbolic',
+        cycleway:         'cycling-symbolic',
+        footway:          'walking-symbolic',
+        pedestrian:       'walking-symbolic',
         platform:         'route-transit-bus-symbolic',
         steps:            'steps-symbolic',
-        path:             'route-pedestrian-symbolic',
+        path:             'walking-symbolic',
         _:                'route-car-symbolic'
     },
     leisure: {
@@ -102,7 +102,7 @@ const TYPE_ICON_MAP = {
         quarter:          'town-symbolic',
         province:         'flag-outline-thick-symbolic',
         region:           'flag-outline-thick-symbolic',
-        square:           'route-pedestrian-symbolic',
+        square:           'walking-symbolic',
         state:            'flag-outline-thick-symbolic',
         suburb:           'town-symbolic',
         town:             'town-symbolic',
