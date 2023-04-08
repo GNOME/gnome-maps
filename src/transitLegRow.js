@@ -121,9 +121,22 @@ export class TransitLegRow extends Gtk.ListBoxRow {
         if (this._isExpanded) {
             this._collaps();
         } else {
+            /*
+             * WORKAROUND!!!!
+             *
+             * For now disable the animation to prevent getting
+             * throttled by the tile server:
+             * https://gitlab.gnome.org/GNOME/gnome-maps/-/issues/546
+             */
+            this._mapView.map.center_on(this._leg.fromCoordinate[0],
+                                        this._leg.fromCoordinate[1]);
+            this._mapView.map.viewport.zoom_level = 16;
+
+            /*
             this._mapView.map.go_to_full(this._leg.fromCoordinate[0],
                                          this._leg.fromCoordinate[1],
                                          16);
+            */
             if (this._hasIntructions())
                 this._expand();
         }
