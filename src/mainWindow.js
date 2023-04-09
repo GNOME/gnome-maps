@@ -250,6 +250,10 @@ export class MainWindow extends Gtk.ApplicationWindow {
                 accels: ['<Shift><Primary>F'],
                 onActivate: () => this._onBrowseActivate()
             },
+            'show-search-results': {
+                accels: ['<Primary>R'],
+                onActivate: () => this._onShowSearchResultsActivate()
+            },
             'print-route': {
                 accels: ['<Primary>P'],
                 onActivate: () => this._printRouteActivate()
@@ -457,6 +461,13 @@ export class MainWindow extends Gtk.ApplicationWindow {
 
     _onBrowseActivate() {
         this._searchBar.placeEntry.browsePois();
+    }
+
+    _onShowSearchResultsActivate() {
+        if (this._searchBar.placeEntry.popover.numResults > 0) {
+            this._searchBar.placeEntry.popover.showResult();
+            this._searchBar.placeEntry.grab_focus();
+        }
     }
 
     _onGotoUserLocationActivate() {
