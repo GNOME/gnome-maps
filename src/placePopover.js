@@ -105,6 +105,9 @@ export class PlacePopover extends SearchPopover {
         }
 
         listBox.connect('row-activated', (list, row) => {
+            // grab focus on entry to enable continued keyboard navigation
+            this.get_parent().placeEntry.grab_focus();
+
             if (row === goBackRow) {
                 // slide back to main
                 this._stack.transition_type =
