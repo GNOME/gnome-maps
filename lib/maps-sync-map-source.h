@@ -17,6 +17,12 @@
  * Author: Marcus Lundblad <ml@dfupdate.se>
  */
 
+/**
+ * Wrapper of ShumateMapSource encapsulating fill_tile_async and
+ * fill_tile_finish into a synchronous file_tile vfunc as work-around for
+ * https://gitlab.gnome.org/GNOME/gjs/-/issues/72
+ */
+
 #ifndef _MAPS_SYNC_MAP_SOURCE_H_
 #define _MAPS_SYNC_MAP_SOURCE_H_
 
