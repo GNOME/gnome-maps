@@ -246,12 +246,10 @@ GObject.registerClass({
 }, SendToDialog);
 
 export class OpenWithRow extends Gtk.ListBoxRow {
-    constructor(params) {
-        let appinfo = params.appinfo;
-        delete params.appinfo;
-
+    constructor({ appinfo, ...params }) {
         super(params);
 
+        this.appinfo = appinfo;
         this._label.label = _("Open with %s").format(appinfo.get_name());
         this._icon.gicon = appinfo.get_icon();
     }
