@@ -253,16 +253,6 @@ export function fetchWikidataForArticle(wiki, cancellable, callback) {
 
 function _onWikidataFetched(wikidata, defaultArticle, response, size,
                             metadataCb, thumbnailCb) {
-    let sitelinks = response?.entities?.[wikidata]?.sitelinks;
-
-    if (!sitelinks) {
-        Utils.debug('No sitelinks element in response');
-        metadataCb(null, {});
-        if (thumbnailCb)
-            thumbnailCb(null);
-        return;
-    }
-
     let claims = response?.entities?.[wikidata]?.claims;
     let imageName =
             claims?.[WIKIDATA_PROPERTY_IMAGE]?.[0]?.mainsnak?.datavalue?.value;
@@ -273,6 +263,16 @@ function _onWikidataFetched(wikidata, defaultArticle, response, size,
     if (imageName) {
         _fetchWikidataThumbnail(imageName, size, thumbnailCb);
         thumbnailCb = null;
+    }
+
+    let sitelinks = response?.entities?.[wikidata]?.sitelinks;
+
+    if (!sitelinks) {
+        Utils.debug('No sitelinks element in response');
+        metadataCb(null, {});
+        if (thumbnailCb)
+            thumbnailCb(null);
+        return;
     }
 
     /* try to find articles in the order of the user's preferred
