@@ -144,12 +144,18 @@ export class MainWindow extends Gtk.ApplicationWindow {
                                           margin_start: _PLACE_ENTRY_MARGIN,
                                           margin_end: _PLACE_ENTRY_MARGIN,
                                           max_width_chars: 50,
-                                          matchRoute: true });
+                                          matchRoute: true,
+                                          hasPoiBrowser: true,
+                                          placeholder_text: _("Search")});
         placeEntry.connect('notify::place', () => {
             if (placeEntry.place) {
                 this._mapView.showPlace(placeEntry.place, true);
             }
         });
+
+        this._clickGesture = new Gtk.GestureSingle();
+        placeEntry.add_controller(this._clickGesture);
+        this._clickGesture.connect('begin', () => this._onEntryClicked());
 
         let popover = placeEntry.popover;
         popover.connect('selected', () => this._mapView.grab_focus());
@@ -158,6 +164,12 @@ export class MainWindow extends Gtk.ApplicationWindow {
         this._mapView.add_controller(this._buttonPressGesture);
         this._buttonPressGesture.connect('begin', () => popover.popdown());
         return placeEntry;
+    }
+
+    _onEntryClicked() {
+        if (!this._placeEntry.text) {
+            this._placeEntry.popover.showPoiMainCategories();
+        }
     }
 
     _createSidebar() {
