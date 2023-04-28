@@ -194,8 +194,8 @@ export function fetchArticleInfoForWikidata(wikidata, defaultArticle,
     let cachedWikidata = _wikidataCache[wikidata];
 
     if (cachedWikidata) {
-        _onWikidataFetched(wikidata, defaultArticle, size, metadataCb,
-                           thumbnailCb);
+        _onWikidataFetched(wikidata, defaultArticle, cachedWikidata, size,
+                           metadataCb, thumbnailCb);
         return;
     }
 
