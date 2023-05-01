@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2023-02-19 04:44+0000\n"
-"PO-Revision-Date: 2023-02-20 04:06+0300\n"
+"POT-Creation-Date: 2023-04-25 20:16+0000\n"
+"PO-Revision-Date: 2023-04-26 00:28+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. Translators: This is the program name.
@@ -37,7 +37,7 @@ msgstr ""
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
 #: data/ui/main-window.ui:27 src/application.js:61 src/mainWindow.js:134
-#: src/mainWindow.js:531
+#: src/mainWindow.js:534
 msgid "Maps"
 msgstr "Haritalar"
 
@@ -63,7 +63,7 @@ msgstr ""
 "Haritalar, küresel çapta yüzbinlerce insanca hazırlanan OpenStreetMap ile "
 "ortak veri tabanını kullanır."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:317 src/mainWindow.js:528
+#: data/org.gnome.Maps.appdata.xml.in.in:369 src/mainWindow.js:531
 msgid "The GNOME Project"
 msgstr "GNOME Projesi"
 
@@ -331,8 +331,8 @@ msgstr "Ölçeği Göster"
 msgid "Open Shape Layer…"
 msgstr "Biçim Katmanını Aç…"
 
-#: data/ui/location-service-dialog.ui:12 data/ui/osm-edit-dialog.ui:220
-#: data/ui/zoom-in-dialog.ui:21
+#: data/ui/location-service-dialog.ui:12 data/ui/osm-edit-dialog.ui:225
+#: data/ui/zoom-in-dialog.ui:21 src/mapView.js:528
 msgid "Cancel"
 msgstr "İptal"
 
@@ -368,13 +368,13 @@ msgstr "Ana Menü"
 msgid "OpenStreetMap Account"
 msgstr "OpenStreetMap Hesabı"
 
-#: data/ui/osm-account-dialog.ui:24
+#: data/ui/osm-account-dialog.ui:26
 msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
 msgstr ""
 "<span weight=\"bold\" size=\"x-large\">Haritaları düzenlemek için oturum aç</"
 "span>"
 
-#: data/ui/osm-account-dialog.ui:38
+#: data/ui/osm-account-dialog.ui:39
 msgid ""
 "Help to improve the map, using an\n"
 "OpenStreetMap account."
@@ -390,35 +390,31 @@ msgstr ""
 "Erişimi yetkilendirmek için tarayıcıda oturum aç.\n"
 "Ardından burada alınan doğrulama kodunu sonraki adımda yazın."
 
-#: data/ui/osm-account-dialog.ui:68
-msgid "Sign up"
-msgstr "Kaydol"
-
-#: data/ui/osm-account-dialog.ui:81
+#: data/ui/osm-account-dialog.ui:67
 msgid "Sign In"
 msgstr "Oturum Aç"
 
-#: data/ui/osm-account-dialog.ui:123
+#: data/ui/osm-account-dialog.ui:111
 msgid "Copy verification code shown when authorizing access in the browser"
 msgstr "Doğrulama kodunu tarayıcıda erişimi yetkilendirirken kopyala"
 
-#: data/ui/osm-account-dialog.ui:133
+#: data/ui/osm-account-dialog.ui:121
 msgid "Verification code"
 msgstr "Doğrulama kodu"
 
-#: data/ui/osm-account-dialog.ui:144
+#: data/ui/osm-account-dialog.ui:132
 msgid "Verify"
 msgstr "Doğrula"
 
-#: data/ui/osm-account-dialog.ui:172
+#: data/ui/osm-account-dialog.ui:160
 msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
 msgstr "<span weight=\"bold\" size=\"x-large\">Oturum Açıldı</span>"
 
-#: data/ui/osm-account-dialog.ui:184
+#: data/ui/osm-account-dialog.ui:172
 msgid "Your OpenStreetMap account is active."
 msgstr "OpenStreetMap hesabınız etkin."
 
-#: data/ui/osm-account-dialog.ui:214
+#: data/ui/osm-account-dialog.ui:202
 msgid "Sign Out"
 msgstr "Oturumu Kapat"
 
@@ -439,23 +435,23 @@ msgstr "Posta kodu"
 msgid "City"
 msgstr "Şehir"
 
-#: data/ui/osm-edit-dialog.ui:54
+#: data/ui/osm-edit-dialog.ui:57
 msgid "Type"
 msgstr "Tür"
 
-#: data/ui/osm-edit-dialog.ui:76
+#: data/ui/osm-edit-dialog.ui:79
 msgid "None"
 msgstr "Yok"
 
-#: data/ui/osm-edit-dialog.ui:105
+#: data/ui/osm-edit-dialog.ui:108
 msgid "Add Field"
 msgstr "Alan Ekle"
 
-#: data/ui/osm-edit-dialog.ui:127
+#: data/ui/osm-edit-dialog.ui:130
 msgid "Comment"
 msgstr "Yorum"
 
-#: data/ui/osm-edit-dialog.ui:155
+#: data/ui/osm-edit-dialog.ui:158
 msgid ""
 "Map changes will be visible on all maps that use\n"
 "OpenStreetMap data."
@@ -463,11 +459,11 @@ msgstr ""
 "Harita değişiklikleri, OpenStreetMap verisini\n"
 "kullanan tüm haritalarda görünecektir."
 
-#: data/ui/osm-edit-dialog.ui:183
+#: data/ui/osm-edit-dialog.ui:186
 msgid "Recently Used"
 msgstr "Sok Kullanılan"
 
-#: data/ui/osm-edit-dialog.ui:233 src/osmEditDialog.js:531
+#: data/ui/osm-edit-dialog.ui:238 src/osmEditDialog.js:531
 msgid "Next"
 msgstr "İleri"
 
@@ -479,11 +475,11 @@ msgstr "Makale"
 msgid "Wikidata tag"
 msgstr "Wikidata etiketi"
 
-#: data/ui/place-popover.ui:44 src/application.js:275
+#: data/ui/place-popover.ui:44 src/application.js:274
 msgid "No results found"
 msgstr "Hiçbir sonuç bulunamadı"
 
-#: data/ui/place-popover.ui:54 src/application.js:252 src/osmEditDialog.js:568
+#: data/ui/place-popover.ui:54 src/application.js:252
 msgid "An error has occurred"
 msgstr "Hata oluştu"
 
@@ -496,11 +492,11 @@ msgstr "Rota Sıralamasını Değiştir"
 msgid "Open Location"
 msgstr "Konum Aç"
 
-#: data/ui/send-to-dialog.ui:62
+#: data/ui/send-to-dialog.ui:64
 msgid "Copy"
 msgstr "Kopyala"
 
-#: data/ui/send-to-dialog.ui:68
+#: data/ui/send-to-dialog.ui:70
 msgid "Send To…"
 msgstr "Gönder…"
 
@@ -679,7 +675,7 @@ msgstr "Yer ara"
 msgid "[FILE…|URI]"
 msgstr "[DOSYA…|URI]"
 
-#: src/application.js:283
+#: src/application.js:281
 #, javascript-format
 msgid "Invalid maps: URI: %s"
 msgstr "Geçersiz haritalar: URI: %s"
@@ -693,23 +689,7 @@ msgstr "Geçersiz haritalar: URI: %s"
 msgid "Maps at %f, %f.png"
 msgstr "%f, %f konumunda haritalar.png"
 
-#: src/exportViewDialog.js:156
-msgid "Filesystem is read only"
-msgstr "Dosya sistemi salt okunur"
-
-#: src/exportViewDialog.js:158
-msgid "You do not have permission to save there"
-msgstr "Oraya kaydetmek için gerekli izniniz yok"
-
-#: src/exportViewDialog.js:160
-msgid "The directory does not exist"
-msgstr "Dizin yok"
-
-#: src/exportViewDialog.js:162
-msgid "No filename specified"
-msgstr "Dosya adı belirtilmedi"
-
-#: src/exportViewDialog.js:170
+#: src/exportViewDialog.js:153
 msgid "Unable to export view"
 msgstr "Görüntü aktarılamıyor"
 
@@ -741,11 +721,11 @@ msgstr "Başla!"
 msgid "All Layer Files"
 msgstr "Tüm Katman Dosyaları"
 
-#: src/mainWindow.js:442
+#: src/mainWindow.js:446
 msgid "Failed to connect to location service"
 msgstr "Konum hizmetine bağlanamadı"
 
-#: src/mainWindow.js:529
+#: src/mainWindow.js:532
 msgid "translator-credits"
 msgstr ""
 "Emin Tufan Çetin <etcetin@gmail.com>\n"
@@ -757,20 +737,20 @@ msgstr ""
 "Ahmet Elgun <ahmetelgn@gmail.com>\n"
 "Sabri Ünal <libreajans@gmail.com>"
 
-#: src/mainWindow.js:533
+#: src/mainWindow.js:536
 msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Telif Hakkı © 2011 – 2023 Red Hat, Inc. ve GNOME Haritalar yazarları"
 
-#: src/mainWindow.js:549
+#: src/mainWindow.js:552
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "%s ve katkıcılar tarafından harita verisi"
 
-#: src/mainWindow.js:550
+#: src/mainWindow.js:553
 msgid "Map Data Provider"
 msgstr "Harita Veri Sağlayıcı"
 
-#: src/mainWindow.js:562
+#: src/mainWindow.js:565
 msgid "Map Tile Provider"
 msgstr "Harita Döşeme Sağlayıcı"
 
@@ -779,29 +759,29 @@ msgstr "Harita Döşeme Sağlayıcı"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:570
+#: src/mainWindow.js:573
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Harita döşemeleri %s tarafından sağlanmıştır"
 
-#: src/mainWindow.js:600
+#: src/mainWindow.js:603
 msgid "Search Provider"
 msgstr "Arama Sağlayıcı"
 
-#: src/mainWindow.js:603
+#: src/mainWindow.js:606
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Arama %s tarafından %s kullanılarak sağlanmıştır"
 
-#: src/mapView.js:501 src/mapView.js:561
+#: src/mapView.js:502 src/mapView.js:567
 msgid "Failed to open layer"
 msgstr "Katman açılamadı"
 
-#: src/mapView.js:522
+#: src/mapView.js:521
 msgid "Do you want to continue?"
 msgstr "Sürdürmek ister misiniz?"
 
-#: src/mapView.js:523
+#: src/mapView.js:522
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -810,25 +790,25 @@ msgstr ""
 "Toplam boyutu %s MB olan dosyaları açmak üzeresiniz. Bunun yüklenmesi biraz "
 "sürebilir"
 
-#: src/mapView.js:555
+#: src/mapView.js:529 src/transitplugins/openTripPlanner.js:1197
+msgid "Continue"
+msgstr "Devam et"
+
+#: src/mapView.js:561
 msgid "File type is not supported"
 msgstr "Dosya türü desteklenmiyor"
 
-#: src/mapView.js:593
+#: src/mapView.js:598
 msgid "Failed to open GeoURI"
 msgstr "GeoURI açılamadı"
 
-#: src/mapView.js:1033
+#: src/mapView.js:1037
 msgid "Nothing found here!"
 msgstr "Burada bir şey bulunamadı!"
 
-#: src/mapView.js:1094
-msgid ""
-"Location was added to the map, note that it may take a while before it shows "
-"on the map and in search results."
-msgstr ""
-"Konum haritaya eklendi, arama sonuçlarında ve haritada gösterilmesi biraz "
-"sürebilir."
+#: src/mapView.js:1096
+msgid "Location was added in OpenStreetMap"
+msgstr "Konum OpenStreetMap’te bulunamadı"
 
 #: src/osmAccountDialog.js:134
 msgid "The verification code didn’t match, please try again."
@@ -1002,8 +982,8 @@ msgid "Service"
 msgstr "Hizmet"
 
 #: src/osmEditDialog.js:195
-msgid "Takeaway"
-msgstr "Al Götür"
+msgid "Takeout"
+msgstr "Al götür"
 
 #: src/osmEditDialog.js:200
 msgid "Only"
@@ -1132,7 +1112,7 @@ msgstr "Tür Seç"
 msgid "Done"
 msgstr "Bitti"
 
-#: src/osmEditDialog.js:827
+#: src/osmEditDialog.js:818
 msgid ""
 "The format used should include the language code and the article title like "
 "“en:Article title”."
@@ -1140,13 +1120,13 @@ msgstr ""
 "Kullanılan biçim, dil kodu ve makale başlığı içermeli “tr:Makale başlığı” "
 "gibi."
 
-#: src/osmEditDialog.js:833
+#: src/osmEditDialog.js:824
 msgid "Use the reload button to load the Wikidata tag for the selected article"
 msgstr ""
 "Seçilen makaleyle ilgili Wikidata etiketini yüklemek için yeniden yükle "
 "düğmesini kullanın"
 
-#: src/osmEditDialog.js:841
+#: src/osmEditDialog.js:832
 msgid "Couldn't find Wikidata tag for article"
 msgstr "Makale için Wikidata etiketi bulunamadı"
 
@@ -1158,7 +1138,7 @@ msgstr "Adsız yer"
 msgid "Failed to parse Geo URI"
 msgstr "Geo URI ayrıştırılamadı"
 
-#: src/placeEntry.js:280
+#: src/placeEntry.js:279
 msgid "Failed to parse Maps URI"
 msgstr "Maps URI ayrıştırılamadı"
 
@@ -1191,7 +1171,7 @@ msgstr "Telefon numarası"
 #. * (or similar) to be consumed elsewhere
 #.
 #: src/placeView.js:295
-msgid "Offers takeaway"
+msgid "Offers takeout"
 msgstr "Al götür sunar"
 
 #. Translators:
@@ -1199,7 +1179,7 @@ msgstr "Al götür sunar"
 #. * meals (or similar) to be consumed on-premise.
 #.
 #: src/placeView.js:303
-msgid "Does not offer takeaway"
+msgid "Does not offer takeout"
 msgstr "Al götür sunmaz"
 
 #. Translators:
@@ -1208,7 +1188,7 @@ msgstr "Al götür sunmaz"
 #. * there is no seating on-premise for eating/drinking
 #.
 #: src/placeView.js:312
-msgid "Only offers takeaway"
+msgid "Only offers takeout"
 msgstr "Yalnızca al götür sunar"
 
 #. Translators:
@@ -1373,7 +1353,7 @@ msgstr "%s şehrini %s uygulamasına ekle"
 msgid "Failed to open URI"
 msgstr "URI açılamadı"
 
-#: src/sendToDialog.js:248
+#: src/sendToDialog.js:246
 #, javascript-format
 msgid "Open with %s"
 msgstr "%s ile aç"
@@ -1616,19 +1596,19 @@ msgid "Bahá'í"
 msgstr "Bahâîlik"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:256
+#: src/utils.js:257
 msgid "Unknown"
 msgstr "Bilinmiyor"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:259
+#: src/utils.js:260
 msgid "Exact"
 msgstr "Tam"
 
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
 #.
-#: src/utils.js:360
+#: src/utils.js:361
 #, javascript-format
 msgid "%s h"
 msgstr "%s s"
@@ -1637,7 +1617,7 @@ msgstr "%s s"
 #. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
 #.
-#: src/utils.js:366
+#: src/utils.js:367
 #, javascript-format
 msgid "%s h %s min"
 msgid_plural "%s h %s min"
@@ -1647,7 +1627,7 @@ msgstr[0] "%s s %s dak"
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
 #.
-#: src/utils.js:373
+#: src/utils.js:374
 #, javascript-format
 msgid "%s min"
 msgid_plural "%s min"
@@ -1657,32 +1637,32 @@ msgstr[0] "%s dak"
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
 #.
-#: src/utils.js:379
+#: src/utils.js:380
 #, javascript-format
 msgid "%s s"
 msgid_plural "%s s"
 msgstr[0] "%s sn"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:390
+#: src/utils.js:391
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:393
+#: src/utils.js:394
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:401
+#: src/utils.js:402
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:404
+#: src/utils.js:405
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
@@ -1695,10 +1675,6 @@ msgstr "Bu uzantı son varışı desteklemiyor"
 #, javascript-format
 msgid "Continue on %s"
 msgstr "%s üstünde devam et"
-
-#: src/transitplugins/openTripPlanner.js:1197
-msgid "Continue"
-msgstr "Devam et"
 
 #: src/transitplugins/openTripPlanner.js:1200
 #, javascript-format
@@ -1794,3 +1770,28 @@ msgstr "%s üstünde sağa u dönüşü yapın"
 #: src/transitplugins/openTripPlanner.js:1254
 msgid "Make a right u-turn"
 msgstr "Sağa u dönüşü yapın"
+
+#~ msgid "Sign up"
+#~ msgstr "Kaydol"
+
+#~ msgid "Filesystem is read only"
+#~ msgstr "Dosya sistemi salt okunur"
+
+#~ msgid "You do not have permission to save there"
+#~ msgstr "Oraya kaydetmek için gerekli izniniz yok"
+
+#~ msgid "The directory does not exist"
+#~ msgstr "Dizin yok"
+
+#~ msgid "No filename specified"
+#~ msgstr "Dosya adı belirtilmedi"
+
+#~ msgid ""
+#~ "Location was added to the map, note that it may take a while before it "
+#~ "shows on the map and in search results."
+#~ msgstr ""
+#~ "Konum haritaya eklendi, arama sonuçlarında ve haritada gösterilmesi biraz "
+#~ "sürebilir."
+
+#~ msgid "Takeaway"
+#~ msgstr "Al Götür"
