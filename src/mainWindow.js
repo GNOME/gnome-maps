@@ -107,7 +107,7 @@ export class MainWindow extends Gtk.ApplicationWindow {
             hexpand: true,
             vexpand: true });
 
-        this._grid.attach(this._mapView, 0, 0, 1, 1);
+        this._mapOverlay.child = this._mapView;
 
         this._mapView.gotoUserLocation(false);
 
@@ -670,5 +670,6 @@ GObject.registerClass({
                         'actionBar',
                         'actionBarRevealer',
                         'placeBarContainer',
-                        'overlay']
+                        'overlay',
+                        'mapOverlay']
 }, MainWindow);
