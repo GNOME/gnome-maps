@@ -220,6 +220,18 @@ export class MainWindow extends Gtk.ApplicationWindow {
                 accels: ['<Primary>minus', 'KP_Subtract', '<Primary>KP_Subtract'],
                 onActivate:  () => this._mapView.zoomOut()
             },
+            'rotate-clockwise': {
+                accels: ['<Primary>Right'],
+                onActivate: () => this._rotateMap(Math.PI / 32)
+            },
+            'rotate-counter-clockwise': {
+                accels: ['<Primary>Left'],
+                onActivate: () => this._rotateMap(-Math.PI / 32)
+            },
+            'reset-rotation': {
+                accels: ['<Primary>Up'],
+                onActivate: () => { this._mapView.map.viewport.rotation = 0.0; }
+            },
             'show-scale': {
                 accels: ['<Primary>S'],
                 paramType: 'b',
@@ -484,6 +496,26 @@ export class MainWindow extends Gtk.ApplicationWindow {
 
         dialog.connect('response', () => dialog.destroy());
         dialog.show();
+    }
+
+    _rotateMap(angle) {
+        let rotation = this._mapView.map.viewport.rotation;
+
+        rotation += angle;
+
+        // keep the rotation in [0..2 * PI)
+        if (rotation < 0)
+            rotation += 2 * Math.PI
+        else if (rotation >= 2 * Math.PI)
+            rotation -= 2 * Math.PI;
+
+        /* if the resulting angle is close to 0, snap back to 0 to avoid
+         * rounding errors adding when doing multiple rotations
+         */
+        if (rotation < 0.01 || 2 * Math.PI - rotation < 0.01)
+            rotation = 0;
+
+        this._mapView.map.viewport.rotation = rotation;
     }
 
     _printRouteActivate() {
