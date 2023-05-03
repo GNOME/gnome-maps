@@ -135,6 +135,7 @@ export class MapView extends Gtk.Overlay {
 
         this._mainWindow = mainWindow;
         this._storeId = 0;
+        this._storeRotationId = 0;
         this.map = this._initMap();
 
         this.child = this.map;
@@ -145,8 +146,10 @@ export class MapView extends Gtk.Overlay {
         this._initScale();
         this._initLayers();
 
-        if (Application.normalStartup)
+        if (Application.normalStartup) {
             this._goToStoredLocation();
+            this._setStoredRotation();
+        }
 
         this.shapeLayerStore = new Gio.ListStore(GObject.TYPE_OBJECT);
 
@@ -268,6 +271,7 @@ export class MapView extends Gtk.Overlay {
         map.viewport.min_zoom_level = MapMinZoom;
 
         map.viewport.connect('notify::latitude', this._onViewMoved.bind(this));
+        map.viewport.connect('notify::rotation', this._onViewRotated.bind(this));
         // switching map type will set view min-zoom-level from map source
         map.viewport.connect('notify::min-zoom-level', () => {
             if (map.viewport.min_zoom_level < MapMinZoom) {
@@ -694,6 +698,14 @@ export class MapView extends Gtk.Overlay {
         }
     }
 
+    _storeRotation() {
+        let viewport = this.map.viewport;
+        let rotation = viewport.rotation;
+
+        if (!isNaN(rotation))
+            Application.settings.set('rotation', rotation);
+    }
+
     _goToStoredLocation() {
         let location = Application.settings.get('last-viewed-location');
 
@@ -725,6 +737,18 @@ export class MapView extends Gtk.Overlay {
                     this.gotoBBox(bbox, true);
             });
         }
+    }
+
+    _setStoredRotation() {
+        let rotation = Application.settings.get('rotation');
+
+        if (rotation < 0.0 || rotation >= 2 * Math.PI) {
+            // safeguard agains out-of-bounds rotation values
+            Utils.debug('Invalid stored rotation, set no rotation');
+            rotation = 0;
+        }
+
+        this.map.viewport.rotation = rotation;
     }
 
     gotoBBox(bbox, linear) {
@@ -955,6 +979,16 @@ export class MapView extends Gtk.Overlay {
         this._storeId = GLib.timeout_add(null, _LOCATION_STORE_TIMEOUT, () => {
             this._storeId = 0;
             this._storeLocation();
+        });
+    }
+
+    _onViewRotated() {
+        if (this._storeRotationId !== 0)
+            return;
+
+        this._storeRotationId = GLib.timeout_add(null, _LOCATION_STORE_TIMEOUT, () => {
+            this._storeRotationId = 0;
+            this._storeRotation();
         });
     }
 
