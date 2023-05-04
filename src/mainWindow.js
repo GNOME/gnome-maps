@@ -46,6 +46,7 @@ import * as Service from './service.js';
 import {ShapeLayer} from './shapeLayer.js';
 import {Sidebar} from './sidebar.js';
 import * as Utils from './utils.js';
+import {ZoomAndRotateControls} from './zoomAndRotateControls.js';
 
 const _ = gettext.gettext;
 
@@ -108,6 +109,13 @@ export class MainWindow extends Gtk.ApplicationWindow {
             vexpand: true });
 
         this._mapOverlay.child = this._mapView;
+
+        this._mapOverlay.add_overlay(
+            new ZoomAndRotateControls({ mapView: this._mapView,
+                                        halign:  Gtk.Align.START,
+                                        valign:  Gtk.Align.START,
+                                        margin_start: 6,
+                                        margin_top: 6 }));
 
         this._mapView.gotoUserLocation(false);
 
