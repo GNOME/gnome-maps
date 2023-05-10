@@ -98,6 +98,8 @@ export class UserLocationMarker extends MapMarker {
         this._updateLocation();
 
         this.connect('notify::visible', this._updateAccuracyCircle.bind(this));
+        this._mapView.map.viewport.connect('notify::rotation',
+                                           () => this._updateLocation());
     }
 
     _hasBubble() {
@@ -129,20 +131,26 @@ export class UserLocationMarker extends MapMarker {
     }
 
     vfunc_snapshot(snapshot) {
+        snapshot.save();
+
         if (this.place.location.heading > -1) {
             // rotate around the center of the icon
-            let {x, y, width, height} = this.get_allocation();
+            let width = this.get_width();
+            let height = this.get_height();
             let point = new Graphene.Point();
+            let rotation = this.place.location.heading +
+                           this._mapView.map.viewport.rotation * 180 / Math.PI;
 
             point.init(width / 2, height / 2);
             snapshot.translate(point);
-            snapshot.rotate(this.place.location.heading);
+            snapshot.rotate(rotation);
             point.init(-width / 2, -height / 2);
             snapshot.translate(point);
         }
 
         this.snapshot_child(this._image, snapshot);
         super.vfunc_snapshot(snapshot);
+        snapshot.restore();
     }
 }
 
