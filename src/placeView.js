@@ -114,24 +114,18 @@ export class PlaceView extends Gtk.Box {
         } else {
             let overpass = new Overpass();
 
-            /* use a property binding from the Overpass instance to avoid
-             * accessing this object after the underlying GObject has
-             * been finalized */
-            overpass.bind_property('place', this, 'overpass-place',
-                                   GObject.BindingFlags.DEFAULT);
-            this.connect('notify::overpass-place', () => this._onInfoAdded());
-
             if (Application.placeStore.exists(this.place, null)) {
 
                 // If the place is stale, update from Overpass.
                 if (Application.placeStore.isStale(this.place)) {
-                    overpass.addInfo(this.place);
+                    overpass.populatePlace(this.place,
+                                           this._onOverpass.bind(this));
                 } else {
                     this._place = Application.placeStore.get(this.place);
                     this._populate(this.place);
                 }
             } else if (this.place.store && !this.place.prefilled) {
-                overpass.addInfo(this.place);
+                overpass.populatePlace(this.place, this._onOverpass.bind(this));
             } else {
                 this._populate(this.place);
             }
@@ -215,8 +209,12 @@ export class PlaceView extends Gtk.Box {
         }
     }
 
-    _onInfoAdded() {
+    _onOverpass(success) {
+        if (!success)
+            return;
+
         this._populate(this.place);
+
         if (Application.placeStore.exists(this.place, null))
             Application.placeStore.updatePlace(this.place);
         else
@@ -655,13 +653,4 @@ export class PlaceView extends Gtk.Box {
     }
 }
 
-GObject.registerClass({
-    Properties: {
-        'overpass-place': GObject.ParamSpec.object('overpass-place',
-                                                   'Overpass Place',
-                                                   'The place as filled in by Overpass',
-                                                   GObject.ParamFlags.READABLE |
-                                                   GObject.ParamFlags.WRITABLE,
-                                                   GeocodeGlib.Place)
-    }
-}, PlaceView);
+GObject.registerClass(PlaceView);
