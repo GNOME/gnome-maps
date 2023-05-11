@@ -463,31 +463,34 @@ export class PlaceView extends Gtk.Box {
                            info: Translations.translateReligion(place.religion) });
         }
 
-        if (place.wiki && Wikipedia.isValidWikipedia(place.wiki) ||
-            place.wikidata && Wikipedia.isValidWikidata(place.wikidata)) {
-            content.push({ type: 'wikipedia', info: '' });
+        return content;
+    }
+
+    _addBox() {
+        let separator = new Gtk.Separator();
+
+        separator.get_style_context().add_class('no-margin-separator');
+        this._placeDetails.append(separator);
+
+        let box = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL,
+                                marginStart: 12,
+                                marginEnd: 12,
+                                marginTop: 6,
+                                marginBottom: 6,
+                                spacing: 12 });
+
+        if (this._inlineMode) {
+            box.marginStart = 6;
         }
 
-        return content;
+        this._placeDetails.append(box);
+
+        return box;
     }
 
     _attachContent(content) {
         content.forEach(({ type, label, icon, linkUrl, info, grid }) => {
-            let separator = new Gtk.Separator({ visible: true });
-            separator.get_style_context().add_class('no-margin-separator');
-            this._placeDetails.append(separator);
-
-            let box = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL,
-                                    visible: true,
-                                    marginStart: 12,
-                                    marginEnd: 12,
-                                    marginTop: 6,
-                                    marginBottom: 6,
-                                    spacing: 12 });
-
-            if (this._inlineMode) {
-                box.marginStart = 6;
-            }
+            let box = this._addBox();
 
             if (icon) {
                 let widget = new Gtk.Image({ icon_name: icon,
@@ -556,16 +559,9 @@ export class PlaceView extends Gtk.Box {
                                          xalign: 0,
                                          hexpand: true,
                                          halign: Gtk.Align.FILL });
-
-                if (type === 'wikipedia') {
-                    box.marginTop = 12;
-                    box.marginBottom = 18;
-                    this._wikipediaLabel = widget;
-                }
             }
 
             box.append(widget);
-            this._placeDetails.append(box);
         });
     }
 
@@ -610,6 +606,14 @@ export class PlaceView extends Gtk.Box {
 
     _onWikiMetadataComplete(wiki, metadata) {
         if (metadata.extract) {
+            let box = this._addBox();
+            let wikipediaLabel = new Gtk.Label({ use_markup: true,
+                                                 max_width_chars: 30,
+                                                 wrap: true,
+                                                 xalign: 0,
+                                                 hexpand: true,
+                                                 halign: Gtk.Align.FILL });
+
             let text = GLib.markup_escape_text(metadata.extract, -1);
             let link = this._formatWikiLink(wiki);
 
@@ -625,7 +629,12 @@ export class PlaceView extends Gtk.Box {
 
             /* Translators: This is the text for the "Wikipedia" link at the end
                of summaries */
-            this._wikipediaLabel.label = `${text} <a href="${uri}" title="${tooltipText}">${ _("Wikipedia") }</a>`;
+            let label = `${text} <a href="${uri}" title="${tooltipText}">${ _("Wikipedia") }</a>`;
+
+            wikipediaLabel.label = label;
+            box.marginTop = 12;
+            box.marginBottom = 18;
+            box.append(wikipediaLabel);
         }
     }
 
