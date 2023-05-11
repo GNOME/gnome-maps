@@ -36,12 +36,10 @@ const _DEFAULT_OUTPUT_SORT_ORDER = 'qt';
 
 const BASE_URL = 'https://overpass-api.de/api/interpreter';
 
-export class Overpass extends GObject.Object {
+export class Overpass {
 
     constructor(params) {
         params = params || { };
-
-        super();
 
         // maximum allowed runtime for the query in seconds
         this.timeout = params.timeout || _DEFAULT_TIMEOUT;
@@ -63,30 +61,6 @@ export class Overpass extends GObject.Object {
 
         // HTTP Session Variables
         this._session = new Soup.Session({ user_agent : 'gnome-maps/' + pkg.version });
-    }
-
-    addInfo(place) {
-        let url = this._getQueryUrl(Utils.osmTypeToString(place.osm_type),
-                                    place.osm_id);
-        let request = Soup.Message.new('GET', url);
-
-        this._session.send_and_read_async(request, GLib.PRIORITY_DEFAULT, null,
-                                          (source, res) => {
-            if (request.get_status() !== Soup.Status.OK) {
-                Utils.debug('Failed to fetch Overpass result: ' +
-                            request.get_status());
-                return;
-            }
-            try {
-                let buffer = this._session.send_and_read_finish(res).get_data();
-                let jsonObj = JSON.parse(Utils.getBufferText(buffer));
-                this._populatePlace(place, jsonObj);
-                this.place = place;
-                this.notify('place');
-            } catch(e) {
-                Utils.debug('Failed to parse Overpass result');
-            }
-        });
     }
 
     populatePlace(place, callback) {
@@ -266,14 +240,3 @@ export class Overpass extends GObject.Object {
     }
 }
 
-GObject.registerClass({
-    Properties: {
-        'place': GObject.ParamSpec.object('place',
-                                          'Place',
-                                          'Place with added information',
-                                          GObject.ParamFlags.READABLE |
-                                          GObject.ParamFlags.WRITABLE,
-                                          Geocode.Place)
-    }},
-    Overpass
-);
