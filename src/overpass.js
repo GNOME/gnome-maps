@@ -89,6 +89,31 @@ export class Overpass extends GObject.Object {
         });
     }
 
+    populatePlace(place, callback) {
+        let url = this._getQueryUrl(Utils.osmTypeToString(place.osm_type),
+                                    place.osm_id);
+        let request = Soup.Message.new('GET', url);
+
+        this._session.send_and_read_async(request, GLib.PRIORITY_DEFAULT, null,
+                                          (source, res) => {
+            if (request.get_status() !== Soup.Status.OK) {
+                Utils.debug('Failed to fetch Overpass result: ' +
+                            request.get_status());
+                callback(false);
+                return;
+            }
+            try {
+                let buffer = this._session.send_and_read_finish(res).get_data();
+                let jsonObj = JSON.parse(Utils.getBufferText(buffer));
+                this._populatePlace(place, jsonObj);
+                callback(true);
+            } catch(e) {
+                Utils.debug('Failed to parse Overpass result');
+                callback(false);
+            }
+        });
+    }
+
     fetchPlace(osmType, osmId, callback) {
         let url = this._getQueryUrl(osmType, osmId)
         let request = Soup.Message.new('GET', url);
