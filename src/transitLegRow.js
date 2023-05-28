@@ -78,7 +78,7 @@ export class TransitLegRow extends Gtk.ListBoxRow {
                                                 can_focus: false,
                                                 use_markup: true,
                                                 hexpand: true,
-                                                margin_start: 3,
+                                                margin_start: 6,
                                                 max_width_chars: 20,
                                                 ellipsize: Pango.EllipsizeMode.END,
                                                 halign: Gtk.Align.START });
