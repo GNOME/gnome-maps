@@ -5,7 +5,7 @@
     <property name="width_request">500</property>
     <property name="height_request">500</property>
     <property name="use-header-bar">True</property>
-    <property name="title" translatable="True" context="dialog title">Edit on OpenStreetMap</property>
+    <property name="title" translatable="yes" context="dialog title">Edit on OpenStreetMap</property>
 
     <child>
       <object class="AdwToastOverlay" id="overlay">
@@ -54,7 +54,7 @@
                             <child>
                               <object class="GtkLabel" id="typeLabel">
                                 <property name="visible">0</property>
-                                <property name="label" translatable="1">Type</property>
+                                <property name="label" translatable="yes">Type</property>
                                 <property name="halign">end</property>
                                 <style>
                                   <class name="dim-label"/>
@@ -76,7 +76,7 @@
                                     <property name="column-spacing">5</property>
                                     <child>
                                       <object class="GtkLabel" id="typeValueLabel">
-                                        <property name="label" translatable="1">None</property>
+                                        <property name="label" translatable="yes">None</property>
                                       </object>
                                     </child>
                                     <child>
@@ -105,7 +105,7 @@
                                 <property name="focusable">1</property>
                                 <property name="popover">addFieldPopover</property>
                                 <property name="direction">up</property>
-                                <property name="label" translatable="1">Add Field</property>
+                                <property name="label" translatable="yes">Add Field</property>
                                 <property name="always-show-arrow">True</property>
                               </object>
                             </child>
@@ -127,7 +127,7 @@
                         <property name="row-spacing">5</property>
                         <child>
                           <object class="GtkLabel" id="commentLabel">
-                            <property name="label" translatable="1">Comment</property>
+                            <property name="label" translatable="yes">Comment</property>
                             <property name="halign">start</property>
                             <style>
                               <class name="dim-label"/>
@@ -155,7 +155,7 @@
                         </child>
                         <child>
                           <object class="GtkLabel" id="uploadInfoLabel">
-                            <property name="label" translatable="1">Map changes will be visible on all maps that use
+                            <property name="label" translatable="yes">Map changes will be visible on all maps that use
 OpenStreetMap data.</property>
                             <property name="halign">start</property>
                             <style>
@@ -183,7 +183,7 @@ OpenStreetMap data.</property>
                         <property name="row-spacing">5</property>
                         <child>
                           <object class="GtkLabel" id="recentTypesLabel">
-                            <property name="label" translatable="1">Recently Used</property>
+                            <property name="label" translatable="yes">Recently Used</property>
                             <property name="halign">start</property>
                             <style>
                               <class name="dim-label"/>
@@ -222,7 +222,7 @@ OpenStreetMap data.</property>
         <property name="show-title-buttons">0</property>
         <child type="start">
           <object class="GtkButton" id="cancelButton">
-            <property name="label" translatable="1">Cancel</property>
+            <property name="label" translatable="yes">Cancel</property>
             <property name="focusable">1</property>
           </object>
         </child>
@@ -235,7 +235,7 @@ OpenStreetMap data.</property>
         </child>
         <child type="end">
           <object class="GtkButton" id="nextButton">
-            <property name="label" translatable="1">Next</property>
+            <property name="label" translatable="yes">Next</property>
             <property name="sensitive">0</property>
             <property name="focusable">1</property>
             <property name="receives_default">1</property>

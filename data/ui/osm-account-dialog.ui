@@ -3,7 +3,7 @@
   <requires lib="gtk" version="4.0"/>
   <template class="Gjs_OSMAccountDialog" parent="GtkDialog">
     <property name="width_request">500</property>
-    <property name="title" translatable="1">OpenStreetMap Account</property>
+    <property name="title" translatable="yes">OpenStreetMap Account</property>
     <child>
       <object class="AdwToastOverlay" id="overlay">
         <child>
@@ -23,7 +23,7 @@
                         <property name="margin-bottom">18</property>
                         <child>
                           <object class="GtkLabel">
-                            <property name="label" translatable="1">&lt;span weight=&quot;bold&quot; size=&quot;x-large&quot;&gt;Sign in to edit maps&lt;/span&gt;</property>
+                            <property name="label" translatable="yes">&lt;span weight=&quot;bold&quot; size=&quot;x-large&quot;&gt;Sign in to edit maps&lt;/span&gt;</property>
                             <property name="use_markup">1</property>
                             <property name="hexpand">1</property>
                             <property name="halign">center</property>
@@ -36,7 +36,7 @@
                         </child>
                         <child>
                           <object class="GtkLabel">
-                            <property name="label" translatable="1">Help to improve the map, using an
+                            <property name="label" translatable="yes">Help to improve the map, using an
 OpenStreetMap account.</property>
                             <property name="hexpand">1</property>
                             <property name="halign">center</property>
@@ -49,7 +49,7 @@ OpenStreetMap account.</property>
                         </child>
                         <child>
                           <object class="GtkLabel">
-                            <property name="label" translatable="1">Sign in to authorize access in a web browser.
+                            <property name="label" translatable="yes">Sign in to authorize access in a web browser.
 Then fill in the obtained verification code here in the next step.</property>
                             <property name="hexpand">1</property>
                             <property name="wrap">1</property>
@@ -64,7 +64,7 @@ Then fill in the obtained verification code here in the next step.</property>
                         <child>
                           <object class="GtkButton" id="signInButton">
                             <property name="halign">end</property>
-                            <property name="label" translatable="1">Sign In</property>
+                            <property name="label" translatable="yes">Sign In</property>
                             <property name="halign">center</property>
                             <style>
                               <class name="suggested-action"/>
@@ -108,7 +108,7 @@ Then fill in the obtained verification code here in the next step.</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="wrap">1</property>
-                            <property name="label" translatable="1">Copy verification code shown when authorizing access in the browser</property>
+                            <property name="label" translatable="yes">Copy verification code shown when authorizing access in the browser</property>
                             <layout>
                               <property name="column">0</property>
                               <property name="row">0</property>
@@ -118,7 +118,7 @@ Then fill in the obtained verification code here in the next step.</property>
                         </child>
                         <child>
                           <object class="GtkEntry" id="verificationEntry">
-                            <property name="placeholder-text" translatable="1">Verification code</property>
+                            <property name="placeholder-text" translatable="yes">Verification code</property>
                             <property name="hexpand">1</property>
                             <layout>
                               <property name="column">0</property>
@@ -129,7 +129,7 @@ Then fill in the obtained verification code here in the next step.</property>
                         <child>
                           <object class="GtkButton" id="verifyButton">
                             <property name="sensitive">0</property>
-                            <property name="label" translatable="1">Verify</property>
+                            <property name="label" translatable="yes">Verify</property>
                             <property name="hexpand">0</property>
                             <property name="halign">end</property>
                             <style>
@@ -157,7 +157,7 @@ Then fill in the obtained verification code here in the next step.</property>
                         <property name="margin-bottom">18</property>
                         <child>
                           <object class="GtkLabel">
-                            <property name="label" translatable="1">&lt;span weight=&quot;bold&quot; size=&quot;x-large&quot;&gt;Signed In&lt;/span&gt;</property>
+                            <property name="label" translatable="yes">&lt;span weight=&quot;bold&quot; size=&quot;x-large&quot;&gt;Signed In&lt;/span&gt;</property>
                             <property name="use_markup">1</property>
                             <property name="hexpand">1</property>
                             <property name="halign">center</property>
@@ -169,7 +169,7 @@ Then fill in the obtained verification code here in the next step.</property>
                         </child>
                         <child>
                           <object class="GtkLabel">
-                            <property name="label" translatable="1">Your OpenStreetMap account is active.</property>
+                            <property name="label" translatable="yes">Your OpenStreetMap account is active.</property>
                             <property name="hexpand">1</property>
                             <property name="halign">center</property>
                             <layout>
@@ -199,7 +199,7 @@ Then fill in the obtained verification code here in the next step.</property>
                         </child>
                         <child>
                           <object class="GtkButton" id="signOutButton">
-                            <property name="label" translatable="1">Sign Out</property>
+                            <property name="label" translatable="yes">Sign Out</property>
                             <property name="halign">center</property>
                             <style>
                               <class name="pill"/>
