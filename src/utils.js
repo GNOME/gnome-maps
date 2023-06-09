@@ -263,22 +263,6 @@ export function getAccuracyDescription(accuracy) {
     }
 }
 
-export function loadAvatar(pixbuf, size) {
-    let width = pixbuf.get_width();
-    let height = pixbuf.get_height();
-    let croppedThumbnail;
-
-    if (width > height) {
-        let x = (width - height) / 2;
-        croppedThumbnail = pixbuf.new_subpixbuf(x, 0, height, height);
-    } else {
-        let y = (height - width) / 2;
-        croppedThumbnail = pixbuf.new_subpixbuf(0, y, width, width);
-    }
-
-    return croppedThumbnail.scale_simple(size, size, GdkPixbuf.InterpType.BILINEAR);
-}
-
 export function load_icon(icon, size, loadCompleteCallback) {
     if (icon instanceof Gio.FileIcon || icon instanceof Gio.BytesIcon) {
         _load_icon(icon, loadCompleteCallback);
