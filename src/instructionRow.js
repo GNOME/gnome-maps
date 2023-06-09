@@ -26,7 +26,7 @@ import * as Utils from './utils.js';
 
 export class InstructionRow extends Gtk.ListBoxRow {
 
-    constructor({turnPoint, hasColor, lines, ...params}) {
+    constructor({turnPoint, lines, ...params}) {
         super(params);
 
         this.turnPoint = turnPoint;
@@ -35,20 +35,7 @@ export class InstructionRow extends Gtk.ListBoxRow {
             this._instructionLabel.lines = lines;
 
         this._instructionLabel.label = this.turnPoint.instruction;
-
-        /*
-         * The SVG icons for turn point stops  has the color red, but has
-         * the suffix '-symbolic'. So when loading through GtkImage it will have
-         * the proper GtkIconLookupflags to re-color the icon as symbolic.
-         * When we load the PixBuf from the SVG ourself, we get the color.
-         */
-        if (hasColor) {
-            let theme = Gtk.IconTheme.get_default();
-            let iconName = this.turnPoint.iconName;
-            this._directionImage.pixbuf = theme.load_icon(iconName, 0, 0);
-        } else {
-            this._directionImage.icon_name = this.turnPoint.iconName;
-        }
+        this._directionImage.icon_name = this.turnPoint.iconName;
 
         if (this.turnPoint.distance > 0)
             this._distanceLabel.label = Utils.prettyDistance(this.turnPoint.distance);
