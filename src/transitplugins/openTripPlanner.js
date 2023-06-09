@@ -129,6 +129,8 @@ export class OpenTripPlanner {
         this._onlyTransitData = onlyTransitData;
         this._extendPrevious = false;
         this._language = Utils.getLanguage();
+        this._authHeader = GLib.getenv('OTP_AUTH_HEADER') ?? params.authHeader;
+        this._authKey = GLib.getenv('OTP_AUTH_KEY') ?? params.authKey;
 
         if (!this._baseUrl && !this._routerUrl)
             throw new Error('must specify either baseUrl or routerUrl as an argument');
@@ -249,12 +251,22 @@ export class OpenTripPlanner {
         return s1.dist > s2.dist;
     }
 
-    _fetchRoutesForStop(stop, callback) {
-        let query = new Query();
-        let uri = this._getRouterUrl() + '/index/stops/' + stop.id + '/routes';
+    _createMessage(uri) {
         let request = Soup.Message.new('GET', uri);
 
         request.request_headers.append('Accept', 'application/json');
+
+        if (this._authHeader && this._authKey)
+            request.request_headers.append(this._authHeader, this._authKey);
+
+        return request;
+    }
+
+    _fetchRoutesForStop(stop, callback) {
+        let query = new Query();
+        let uri = this._getRouterUrl() + '/index/stops/' + stop.id + '/routes';
+        let request = this._createMessage(uri);
+
         this._session.send_and_read_async(request, GLib.PRIOITY_DEFAULT, null,
                                           (source, res) => {
             if (request.get_status() !== Soup.Status.OK) {
@@ -327,9 +339,8 @@ export class OpenTripPlanner {
                            radius: STOP_SEARCH_RADIUS };
             let query = new Query(params);
             let uri = this._getRouterUrl() + '/index/stops?' + query.toString();
-            let request = Soup.Message.new('GET', uri);
+            let request = this._createMessage(uri);
 
-            request.request_headers.append('Accept', 'application/json');
             this._session.send_and_read_async(request, GLib.PRIORITY_DEFAULT, null,
                                               (source, res) => {
                 if (request.get_status() !== Soup.Status.OK) {
@@ -499,9 +510,8 @@ export class OpenTripPlanner {
     }
 
     _fetchPlan(url, callback) {
-        let request = Soup.Message.new('GET', url);
+        let request = this._createMessage(url);
 
-        request.request_headers.append('Accept', 'application/json');
         this._session.send_and_read_async(request, GLib.PRIORITY_DEFAULT, null,
                                           (source, res) => {
             if (request.get_status() !== Soup.Status.OK) {
