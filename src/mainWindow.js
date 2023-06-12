@@ -51,8 +51,7 @@ import {ZoomAndRotateControls} from './zoomAndRotateControls.js';
 const _ = gettext.gettext;
 
 const _CONFIGURE_ID_TIMEOUT = 100; // msecs
-const _ADAPTIVE_VIEW_WIDTH = 700;
-const _PLACE_ENTRY_MARGIN = 35;
+const _PLACE_ENTRY_MARGIN = 36;
 
 class ShapeLayerFileChooser extends Gtk.FileChooserNative {
 
@@ -82,7 +81,7 @@ GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/shape-layer-file-chooser.ui'
 }, ShapeLayerFileChooser);
 
-export class MainWindow extends Gtk.ApplicationWindow {
+export class MainWindow extends Adw.ApplicationWindow {
 
     get mapView() {
         return this._mapView;
@@ -131,7 +130,10 @@ export class MainWindow extends Gtk.ApplicationWindow {
         this._initDND();
         this._initPlaceBar();
 
-        this._grid.attach(this._sidebar, 1, 0, 1, 2);
+        this._splitView.sidebar = this._sidebar;
+        this._splitView.connect('notify::show-sidebar', () => {
+            this._setRevealSidebar(this._splitView.show_sidebar);
+        });
 
         /* for some reason, setting the title of the window through the .ui
          * template does not work anymore (maybe has something to do with
@@ -140,6 +142,9 @@ export class MainWindow extends Gtk.ApplicationWindow {
          * overview.
          */
         this.title = _("Maps");
+
+        this._breakpoint.connect('apply', () => this._onBreakpointApplied());
+        this._breakpoint.connect('unapply', () => this._onBreakpointUnapplied());
     }
 
     showToast(message) {
@@ -166,7 +171,7 @@ export class MainWindow extends Gtk.ApplicationWindow {
     }
 
     _createSidebar() {
-        let sidebar = new Sidebar(this._mapView);
+        let sidebar = new Sidebar({ mapView: this._mapView });
 
         Application.routeQuery.connect('notify', () => this._setRevealSidebar(true));
 
@@ -362,44 +367,20 @@ export class MainWindow extends Gtk.ApplicationWindow {
         this._actionBar.pack_end(this._actionBarRight);
     }
 
-    vfunc_realize() {
-        super.vfunc_realize();
-        this._surface = this.get_native().get_surface();
-
-        // update adaptive status based on initial geometry
-        this._updateAdaptiveMode();
-
-        this._surface.connect('notify::width', () => {
-            this._updateAdaptiveMode();
-        });
+    _onBreakpointApplied() {
+        this.application.adaptive_mode = true;
+        this._headerBarLeft.hide();
+        this._headerBarRight.hide();
+        this._searchBar.set_margin_start(0);
+        this._searchBar.set_margin_end(0);
     }
 
-    _updateAdaptiveMode() {
-        let width = this._surface.width;
-
-        /* don't update adaptive state when the window has just been
-         * realized before adding widgets, having a tiny size
-         * this avoid flickering the adaptive mode bottom toolbar
-         * at startup in "desktop" mode when it shouldn't be
-         */
-        if (width < 10)
-            return;
-
-        if (width < _ADAPTIVE_VIEW_WIDTH) {
-            this.application.adaptive_mode = true;
-            this._headerBarLeft.hide();
-            this._headerBarRight.hide();
-            this._actionBarRevealer.set_reveal_child(true);
-            this._searchBar.set_margin_start(0);
-            this._searchBar.set_margin_end(0);
-        } else {
-            this.application.adaptive_mode = false;
-            this._headerBarLeft.show();
-            this._headerBarRight.show();
-            this._actionBarRevealer.set_reveal_child(false);
-            this._searchBar.set_margin_start(_PLACE_ENTRY_MARGIN);
-            this._searchBar.set_margin_end(_PLACE_ENTRY_MARGIN);
-        }
+    _onBreakpointUnapplied() {
+        this.application.adaptive_mode = false;
+        this._headerBarLeft.show();
+        this._headerBarRight.show();
+        this._searchBar.set_margin_start(_PLACE_ENTRY_MARGIN);
+        this._searchBar.set_margin_end(_PLACE_ENTRY_MARGIN);
     }
 
     _saveWindowGeometry() {
@@ -570,7 +551,7 @@ export class MainWindow extends Gtk.ApplicationWindow {
         action.set_state(variant);
 
         let reveal = variant.get_boolean();
-        this._sidebar.set_reveal_child(reveal);
+        this._splitView.show_sidebar = reveal;
     }
 
     _setRevealSidebar(value) {
@@ -694,8 +675,9 @@ GObject.registerClass({
                         'mainMenuButton',
                         'grid',
                         'actionBar',
-                        'actionBarRevealer',
                         'placeBarContainer',
                         'overlay',
-                        'mapOverlay']
+                        'mapOverlay',
+                        'splitView',
+                        'breakpoint' ]
 }, MainWindow);

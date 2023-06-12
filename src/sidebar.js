@@ -40,10 +40,10 @@ import {TransitMoreRow} from './transitMoreRow.js';
 import {TransitOptionsPanel} from './transitOptionsPanel.js';
 import * as Utils from './utils.js';
 
-export class Sidebar extends Gtk.Revealer {
+export class Sidebar extends Gtk.Grid {
 
-    constructor(mapView) {
-        super({ transition_type: Gtk.RevealerTransitionType.SLIDE_LEFT });
+    constructor({ mapView, ...params }) {
+        super(params);
 
         this._mapView = mapView;
 
