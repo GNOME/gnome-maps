@@ -37,7 +37,7 @@ gjs = dependency('gjs-1.0', version: '>= 1.69.2')
 girepository = dependency('gobject-introspection-1.0', version: '>= 0.10.1')
 gtk4 = dependency('gtk4')
 geoclue2 = dependency('geoclue-2.0', version: '>= 0.12.99')
-libadwaita = dependency('libadwaita-1')
+libadwaita = dependency('libadwaita-1', version: '>= 1.4.alpha')
 gweather = dependency('gweather4', version: '>= 3.90.0')
 geocodeglib = dependency('geocode-glib-2.0', version: '>= 3.15.2')
 
