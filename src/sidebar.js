@@ -161,10 +161,6 @@ export class Sidebar extends Gtk.Revealer {
                                           point: point,
                                           mapView: this._mapView });
 
-        // add handler overriding tab focus behavior on route entries
-        // TODO: how to set up tab handling using GTK4?
-        //routeEntry.entry.connect('focus', this._onRouteEntryFocus.bind(this));
-        // add handler for
         routeEntry.entry.connect('notify::place', () => {
             this._onRouteEntrySelectedPlace(routeEntry.entry);
         });
@@ -193,31 +189,6 @@ export class Sidebar extends Gtk.Revealer {
         }
 
         this._initRouteDragAndDrop(routeEntry);
-    }
-
-    _onRouteEntryFocus(entry, direction) {
-        let index = this._getIndexForRouteEntry(entry);
-
-        /* if tabbing forward from the last entry or backward from the first,
-         * let the default handler handle it
-         */
-        if ((direction === Gtk.DirectionType.TAB_FORWARD &&
-             index === this._entryList.get_children().length - 1) ||
-            (direction === Gtk.DirectionType.TAB_BACKWARD && index === 0)) {
-            return false;
-        }
-
-        if (direction === Gtk.DirectionType.TAB_FORWARD) {
-            index++;
-        } else if (direction === Gtk.DirectionType.TAB_BACKWARD) {
-            index--;
-        } else {
-            // don't handle other directions
-            return false;
-        }
-
-        this._entryList.get_row_at_index(index).get_child().entry.grab_focus();
-        return true;
     }
 
     _onRouteEntrySelectedPlace(entry) {
@@ -265,9 +236,14 @@ export class Sidebar extends Gtk.Revealer {
         route.connect('reset', () => {
             this._clearInstructions();
 
-            let length = this._entryList.get_children().length;
+            let length = 0;
+
+            for (let entry of this._entryList) {
+                length++;
+            }
+
             for (let index = 1; index < (length - 1); index++) {
-                this._query.removePoint(index);
+                this._query.removePoint(1);
             }
         });
 
