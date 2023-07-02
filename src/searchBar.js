@@ -29,7 +29,7 @@ import {PlaceEntry} from './placeEntry.js';
 
 const _ = gettext.gettext;
 
-// mimimum zoom level to show the explore button
+// minimum zoom level to show the explore button
 const EXPLORE_BUTTON_MIN_ZOOM = 15;
 
 export class SearchBar extends Gtk.Grid {
@@ -47,7 +47,7 @@ export class SearchBar extends Gtk.Grid {
 
         /* looks like we need to create the button in code as well, since
          * the place entry is created here and added after the template
-         * was initialized, else the linked style doesn't get applied propperly
+         * was initialized, else the linked style doesn't get applied properly
          */
         this._exploreButton =
             new Gtk.Button({ valign: Gtk.Align.CENTER,

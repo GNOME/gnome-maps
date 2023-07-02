@@ -86,7 +86,7 @@ export class SubCategory extends Category {
      * Array of arrays of strings with search terms (tag=value) for Overpass
      * search query. Each element of the top level array are used as terms
      * of an or-statement in Overpass, each consisting of an expression
-     * fullfilling each of the statements in the subarray.
+     * fulfilling each of the statements in the subarray.
      */
     get keyValues() {
         return this._keyValues;
@@ -378,7 +378,7 @@ const POI_CATEGORIES = [
         ]
     },
     {
-        label: _("Accomodation"),
+        label: _("Accommodation"),
         icon:  'bed-symbolic',
         subcategories: [
             {
