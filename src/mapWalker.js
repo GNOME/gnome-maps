@@ -95,15 +95,6 @@ export class MapWalker extends GObject.Object {
                     this.place.location.longitude].join(' '));
         this._mapView.emit('going-to');
 
-        /*
-         * WORKAROUND!!!!
-         *
-         * For now disable the go-to animation to prevent getting
-         * throttled by the tile server:
-         * https://gitlab.gnome.org/GNOME/gnome-maps/-/issues/546
-         */
-        animate = false;
-
         if (!animate) {
             this._mapView.map.center_on(this.place.location.latitude,
                                         this.place.location.longitude);
