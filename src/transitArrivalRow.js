@@ -42,17 +42,7 @@ export class TransitArrivalRow extends Gtk.ListBoxRow {
     }
 
     _onPress(coord) {
-        /*
-         * WORKAROUND!!!!
-         *
-         * For now disable the animation to prevent getting
-         * throttled by the tile server:
-         * https://gitlab.gnome.org/GNOME/gnome-maps/-/issues/546
-         */
-        this._mapView.map.center_on(coord[0], coord[1]);
-        this._mapView.map.viewport.zoom_level = 16;
-
-        //this._mapView.map.go_to_full(coord[0], coord[1], 16);
+        this._mapView.map.go_to_full(coord[0], coord[1], 16);
     }
 }
 
