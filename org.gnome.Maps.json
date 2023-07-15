@@ -114,6 +114,23 @@
             ]
         },
         {
+            "name" : "libportal",
+            "buildsystem" : "meson",
+            "config-opts" : [
+                "-Ddocs=false",
+                "-Dvapi=false",
+                "-Dbackend-gtk3=disabled",
+                "-Dbackend-gtk4=enabled"
+            ],
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://github.com/flatpak/libportal.git",
+                    "branch" : "main"
+                }
+            ]
+        },
+        {
             "name" : "gnome-maps",
             "buildsystem" : "meson",
             "builddir" : true,
