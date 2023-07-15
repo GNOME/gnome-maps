@@ -32,6 +32,7 @@ import 'gi://GWeather?version=4.0';
 import 'gi://Rest?version=1.0';
 import 'gi://Shumate?version=1.0';
 import 'gi://Soup?version=3.0';
+import 'gi://Xdp?version=1.0';
 
 import * as system from 'system';
 
