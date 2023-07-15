@@ -24,6 +24,7 @@ import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 import Pango from 'gi://Pango';
+import Xdp from 'gi://Xdp';
 
 const Format = imports.format;
 
@@ -275,7 +276,12 @@ export class PlaceView extends Gtk.Box {
                           icon: 'phone-oldschool-symbolic',
                           info: LRM + GLib.markup_escape_text(place.phone, -1) };
 
-            if (Utils.uriSchemeSupported('tel')) {
+            /* if we're running in a sandbox (Flatpak or Snap), assume
+             * we have some app that can handle tel: URIs, as we can't
+             * enumerate apps inside the sandbox
+             */
+            if (Xdp.Portal.running_under_sandbox() ||
+                Utils.uriSchemeSupported('tel')) {
                 /* RFC3966 only allows "-", '.", "(", and ")" as visual
                  * separator characters in a global phone number, no space */
                 phone.linkUrl = `tel:${place.phone.replace(/\s+/g, '')}`;
