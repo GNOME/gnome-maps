@@ -296,18 +296,7 @@ export class MainWindow extends Adw.ApplicationWindow {
         this.connect('close-request', () => this._quit());
         this.connect('notify::default-width', () => this._onSizeChanged());
         this.connect('notify::default-height', () => this._onSizeChanged());
-
         this.connect('notify::maximized', () => this._onMaximizedChanged());
-        // TODO: GTK4, is this needed?
-        /*
-        this._mapView.view.connect('button-press-event', () => {
-            // Can not call something that will generate clutter events
-            // from a clutter event-handler. So use an idle.
-            GLib.idle_add(null, () => this._mapView.grab_focus());
-        });
-        */
-
-        //this._placeEntry.set_key_capture_widget(this)
 
         let viewport = this._mapView.map.viewport;
 
