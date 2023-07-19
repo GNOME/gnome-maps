@@ -17,7 +17,8 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
-import GLib from 'gi://GLib';
+import Gio from 'gi://Gio';
+import GdkPixbuf from 'gi://GdkPixbuf';
 import Shumate from 'gi://Shumate';
 
 import * as Service from './service.js';
@@ -63,4 +64,23 @@ export function createStreetSource() {
 
 export function createPrintSource() {
     return createRasterRenderer(Service.getService().tiles.print);
+}
+
+export function createVectorSource() {
+    const [_status, style_file] = Gio.file_new_for_uri('resource://org/gnome/Maps/styles/osm-liberty/style.json').load_contents(null);
+    const style = Utils.getBufferText(style_file);
+
+    const source = Shumate.VectorRenderer.new("vector-tiles", style);
+    source.set_license("© OpenMapTiles © OpenStreetMap contributors");
+    source.set_license_uri("https://www.openstreetmap.org/copyright");
+
+    const [_status2, sprites_json_file] = Gio.file_new_for_uri('resource://org/gnome/Maps/styles/osm-liberty/sprites.json').load_contents(null);
+    const sprites_json = Utils.getBufferText(sprites_json_file);
+
+    source.set_sprite_sheet_data(
+        GdkPixbuf.Pixbuf.new_from_resource('/org/gnome/Maps/styles/osm-liberty/sprites.png'),
+        sprites_json,
+    );
+
+    return source;
 }

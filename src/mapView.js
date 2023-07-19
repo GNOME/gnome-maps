@@ -88,7 +88,8 @@ export class MapView extends Gtk.Overlay {
     static MapType = {
         LOCAL: 'MapsLocalSource',
         STREET: 'MapsStreetSource',
-        AERIAL: 'MapsAerialSource'
+        AERIAL: 'MapsAerialSource',
+        VECTOR: 'MapsVectorSource',
     }
 
     /*
@@ -435,6 +436,8 @@ export class MapView extends Gtk.Overlay {
 
             if (mapType === MapView.MapType.AERIAL && tiles.aerial)
                 mapSource = MapSource.createAerialSource();
+            else if (mapType === MapView.MapType.VECTOR)
+                mapSource = MapSource.createVectorSource();
             else
                 mapSource = MapSource.createStreetSource();
 
