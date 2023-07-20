@@ -151,6 +151,10 @@ export class MainWindow extends Adw.ApplicationWindow {
         Utils.showToastInOverlay(message, this._overlay);
     }
 
+    addToast(toast) {
+        this._overlay.add_toast(toast);
+    }
+
     _createSearchBar() {
         let searchBar = new SearchBar({ mapView: this._mapView,
                                         margin_start: _PLACE_ENTRY_MARGIN,
