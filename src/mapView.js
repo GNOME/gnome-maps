@@ -57,7 +57,6 @@ import {TransitWalkMarker} from './transitWalkMarker.js';
 import {TurnPointMarker} from './turnPointMarker.js';
 import {UserLocationMarker} from './userLocationMarker.js';
 import * as Utils from './utils.js';
-import {ZoomInDialog} from './zoomInDialog.js';
 
 const _LOCATION_STORE_TIMEOUT = 500;
 const MapMinZoom = 2;
@@ -1109,15 +1108,17 @@ export class MapView extends Gtk.Overlay {
         let viewport = this.map.viewport;
 
         if (viewport.zoom_level < OSMEdit.MIN_ADD_LOCATION_ZOOM_LEVEL) {
-            let zoomInDialog =
-                new ZoomInDialog({ longitude: this._longitude,
-                                   latitude: this._latitude,
-                                   map: this.map,
-                                   transient_for: this._mainWindow,
-                                   modal: true });
+            let zoomInToast =
+                new Adw.Toast({ title: _("Zoom in to add location"),
+                                button_label: _("Zoom In") });
 
-            zoomInDialog.connect('response', () => zoomInDialog.destroy());
-            zoomInDialog.show();
+            zoomInToast.connect('button-clicked', () => {
+                this.map.go_to_full(this._latitude, this._longitude,
+                                    OSMEdit.MIN_ADD_LOCATION_ZOOM_LEVEL);
+            });
+
+            this._mainWindow.addToast(zoomInToast);
+
             return;
         }
 
