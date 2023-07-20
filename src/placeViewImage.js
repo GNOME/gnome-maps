@@ -101,24 +101,14 @@ export class PlaceViewImage extends Gtk.DrawingArea {
         if (orientation === Gtk.Orientation.VERTICAL) {
             if (this._pixbuf) {
                 let height = (this._pixbuf.height / this._pixbuf.width) * forSize;
-                return [height, height, 0, 0];
+                return [height, height, -1, -1];
             } else {
-                return [0, 0, 0, 0];
+                return [0, 0, -1, -1];
             }
         } else {
-            return [forSize, forSize, 0, 0];
+            return [forSize, forSize, -1, -1];
         }
     }
-    /*
-    vfunc_get_preferred_height_for_width(width) {
-        if (this._pixbuf) {
-            let height = (this._pixbuf.height / this._pixbuf.width) * width;
-            return [height, height];
-        } else {
-            return [0, 0];
-        }
-    }
-    */
 }
 
 GObject.registerClass(PlaceViewImage);
