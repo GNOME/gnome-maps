@@ -480,12 +480,97 @@ export class MapView extends Gtk.Overlay {
         }
 
         this._mapLayer = mapLayer;
+        mapLayer.connect("symbol-clicked", this._onSymbolClicked.bind(this));
 
         this.map.viewport.set_reference_map_source(mapSource);
 
         this._mapSource = mapSource;
 
         this.emit("map-type-changed", mapType);
+    }
+
+    _onSymbolClicked(_mapLayer, symbol) {
+        let placeType = GeocodeGlib.PlaceType.UNKNOWN;
+
+        const layerName = symbol.get_source_layer();
+        const featureId = symbol.get_feature_id();
+        const className = symbol.get_tag("class");
+
+        const featureType = featureId % 10;
+        const osmId = Math.floor(featureId / 10);
+
+        let osmType;
+        if (featureType === 0) {
+            osmType = GeocodeGlib.PlaceOsmType.NODE;
+        } else if (featureType === 1) {
+            osmType = GeocodeGlib.PlaceOsmType.WAY;
+        } else if (featureType === 4) {
+            osmType = GeocodeGlib.PlaceOsmType.RELATION;
+        } else {
+            osmType = GeocodeGlib.PlaceOsmType.UNKNOWN;
+        }
+
+        switch (layerName) {
+            case "place":
+                placeType = {
+                    "continent": GeocodeGlib.PlaceType.CONTINENT,
+                    "country": GeocodeGlib.PlaceType.COUNTRY,
+                    "state": GeocodeGlib.PlaceType.STATE,
+                    "province": GeocodeGlib.PlaceType.STATE,
+                    "city": GeocodeGlib.PlaceType.TOWN,
+                    "town": GeocodeGlib.PlaceType.TOWN,
+                    "village": GeocodeGlib.PlaceType.TOWN,
+                    "hamlet": GeocodeGlib.PlaceType.TOWN,
+                    "suburb": GeocodeGlib.PlaceType.SUBURB,
+                    "quarter": GeocodeGlib.PlaceType.SUBURB,
+                    "borough": GeocodeGlib.PlaceType.SUBURB,
+                    "island": GeocodeGlib.PlaceType.ISLAND,
+                    "neighbourhood": GeocodeGlib.PlaceType.ESTATE,
+                    "isolated_dwelling": GeocodeGlib.PlaceType.ESTATE,
+                }[className] ?? GeocodeGlib.PlaceType.UNKNOWN;
+                break;
+
+            case "water_name":
+                placeType = {
+                    "ocean": GeocodeGlib.PlaceType.OCEAN,
+                    "sea": GeocodeGlib.PlaceType.SEA,
+                }[className] ?? GeocodeGlib.PlaceType.DRAINAGE;
+                break;
+
+            case "poi":
+                placeType = GeocodeGlib.PlaceType.POINT_OF_INTEREST;
+                break;
+
+            case "mountain_peak":
+                placeType = GeocodeGlib.PlaceType.LAND_FEATURE;
+                break;
+
+            default:
+                return;
+        }
+
+        const place = new Place({
+            location: new Location({
+                latitude: symbol.latitude,
+                longitude: symbol.longitude
+            }),
+            placeType,
+            name: symbol.get_tag("name"),
+            osmId,
+            osmType,
+        });
+
+        const osmTags = {};
+        for (const key of symbol.get_keys()) {
+            if (key.startsWith("osm:")) {
+                osmTags[key.slice("osm:".length)] = symbol.get_tag(key);
+            } else if (key === "name" || key.startsWith("name:")) {
+                osmTags[key] = symbol.get_tag(key);
+            }
+        }
+        place.osmTags = osmTags;
+
+        this.showPlace(place, false, true);
     }
 
     _onShowScaleChanged() {
@@ -840,7 +925,7 @@ export class MapView extends Gtk.Overlay {
         Application.routingDelegator.replaceRoute(stored);
     }
 
-    showPlace(place, animation) {
+    showPlace(place, animation, skipGoTo) {
         this._placeLayer.remove_all();
 
         if (place instanceof StoredRoute) {
@@ -853,7 +938,11 @@ export class MapView extends Gtk.Overlay {
                                             mapView: this });
 
         this._placeLayer.add_marker(placeMarker);
-        placeMarker.goToAndSelect(animation);
+        if (skipGoTo) {
+            placeMarker.showBubble();
+        } else {
+            placeMarker.goToAndSelect(animation);
+        }
         Application.application.selected_place = place;
     }
 

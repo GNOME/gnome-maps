@@ -119,7 +119,7 @@ export class PlaceView extends Gtk.Box {
                                            hexpand: true });
         this.content.attach(this._placeDetails, 0, 0, 1, 1);
 
-        if (this.place.isCurrentLocation) {
+        if (this.place.isCurrentLocation || !this.place.osmType) {
             this._populate(this.place);
         } else {
             let overpass = new Overpass();

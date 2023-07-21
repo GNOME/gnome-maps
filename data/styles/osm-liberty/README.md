@@ -9,6 +9,7 @@ with a few modifications:
 - Removed the 3D buildings layer, since libshumate doesn't support fill-extrusion
   layers yet
 - Changed the tile source URL
+- Added "libshumate:cursor": "pointer" to some symbol layers
 
 OSM Liberty is covered by several licenses. See LICENSE.md, which is copied
 from the upstream repository.
