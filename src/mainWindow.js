@@ -36,7 +36,6 @@ import {FavoritesPopover} from './favoritesPopover.js';
 import * as Geoclue from './geoclue.js';
 import * as GeocodeFactory from './geocode.js';
 import {HeaderBarLeft, HeaderBarRight} from './headerBar.js';
-import {LocationServiceDialog} from './locationServiceDialog.js';
 import {MapView} from './mapView.js';
 import {PlaceBar} from './placeBar.js';
 import {PlaceStore} from './placeStore.js';
@@ -459,13 +458,25 @@ export class MainWindow extends Adw.ApplicationWindow {
                 break;
 
             case Geoclue.State.DENIED:
-                let dialog = new LocationServiceDialog({
-                    visible: true,
-                    transient_for: this,
-                    modal: true });
+                let locationServiceToast =
+                    new Adw.Toast({ title: _("Turn on location services"),
+                                    button_label: _("Location Settings") });
 
-                dialog.connect('response', () => dialog.destroy());
-                dialog.present();
+                locationServiceToast.connect('button-clicked', () => {
+                    let privacyInfo =
+                        Gio.DesktopAppInfo.new('gnome-location-panel.desktop');
+
+                    try {
+                        let display = Gdk.Display.get_default();
+
+                        privacyInfo.launch([], display.get_app_launch_context());
+                    } catch(e) {
+                        Utils.debug('launching privacy panel failed: ' + e);
+                    }
+                });
+
+                this.addToast(locationServiceToast);
+
                 break;
 
             default:
