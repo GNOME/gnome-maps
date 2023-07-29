@@ -40,6 +40,11 @@ import {TransitMoreRow} from './transitMoreRow.js';
 import {TransitOptionsPanel} from './transitOptionsPanel.js';
 import * as Utils from './utils.js';
 
+const ID_PEDESTRIAN = 'pedestrian';
+const ID_CAR = 'car';
+const ID_BIKE = 'bike';
+const ID_TRANSIT = 'transit';
+
 export class Sidebar extends Gtk.Grid {
 
     constructor({ mapView, ...params }) {
@@ -59,10 +64,7 @@ export class Sidebar extends Gtk.Grid {
         this._transitHeader.add_named(this._transitOptionsPanel, 'options');
         this._transitHeader.add_named(this._transitItineraryHeader,
                                       'itinerary-header');
-        this._initTransportationToggles(this._modePedestrianToggle,
-                                        this._modeBikeToggle,
-                                        this._modeCarToggle,
-                                        this._modeTransitToggle);
+        this._initTransportationToggles();
 
         this._initQuerySignals();
         this._query.addPoint(0);
@@ -74,37 +76,50 @@ export class Sidebar extends Gtk.Grid {
         this._entryList.get_row_at_index(0).child.entry.grab_focus();
     }
 
-    _initTransportationToggles(pedestrian, bike, car, transit) {
-        let transport = RouteQuery.Transportation;
+    _initTransportationToggles() {
+        const transport = RouteQuery.Transportation;
 
-        let onToggle = function(mode, button) {
+        this._modeChooser.connect('notify::active', () => {
+            const activeModeId = this._modeChooser.active_name;
+            let mode;
+
+            if (activeModeId === ID_PEDESTRIAN) {
+                mode = transport.PEDESTRIAN;
+            } else if (activeModeId === ID_CAR) {
+                mode = transport.CAR;
+            } else if (activeModeId === ID_BIKE) {
+                mode = transport.BIKE;
+            } else if (activeModeId === ID_TRANSIT) {
+                mode = transport.TRANSIT;
+            }
+
             let previousMode = this._query.transportation;
 
-            if (button.active && previousMode !== mode) {
+            if (previousMode !== mode) {
                 this._switchRoutingMode(mode);
                 this._query.transportation = mode;
             }
-        };
-        pedestrian.connect('toggled', onToggle.bind(this, transport.PEDESTRIAN));
-        car.connect('toggled', onToggle.bind(this, transport.CAR));
-        bike.connect('toggled', onToggle.bind(this, transport.BIKE));
-        transit.connect('toggled', onToggle.bind(this, transport.TRANSIT))
+        });
 
         let setToggles = function() {
+            let activeModeId;
+
             switch(Application.routeQuery.transportation) {
             case transport.PEDESTRIAN:
-                pedestrian.active = true;
+                activeModeId = ID_PEDESTRIAN;
                 break;
             case transport.CAR:
-                car.active = true;
+                activeModeId = ID_CAR;
                 break;
             case transport.BIKE:
-                bike.active = true;
+                activeModeId = ID_BIKE;
                 break;
             case transport.TRANSIT:
-                transit.active = true;
+                activeModeId = ID_TRANSIT;
                 break;
             }
+
+            this._modeChooser.active_name = activeModeId;
 
             this._switchRoutingMode(Application.routeQuery.transportation);
         };
@@ -590,10 +605,7 @@ GObject.registerClass({
                         'instructionSpinner',
                         'instructionStack',
                         'errorLabel',
-                        'modeBikeToggle',
-                        'modeCarToggle',
-                        'modePedestrianToggle',
-                        'modeTransitToggle',
+                        'modeChooser',
                         'timeInfo',
                         'linkButtonStack',
                         'transitWindow',
