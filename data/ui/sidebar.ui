@@ -9,64 +9,16 @@
     <property name="width_request">320</property>
     <property name="row_spacing">2</property>
     <child>
-      <object class="GtkBox" id="mode-chooser">
+      <object class="AdwToggleGroup" id="modeChooser">
         <property name="halign">center</property>
         <property name="margin-top">12</property>
-        <child>
-          <object class="GtkToggleButton" id="modePedestrianToggle">
-            <property name="name">mode-pedestrian-toggle</property>
-            <property name="receives_default">1</property>
-            <property name="height-request">32</property>
-            <property name="width-request">42</property>
-            <property name="icon-name">route-pedestrian-symbolic</property>
-            <style>
-              <class name="transportation-mode-button"/>
-            </style>
-          </object>
-        </child>
-        <child>
-          <object class="GtkToggleButton" id="modeBikeToggle">
-            <property name="name">mode-bike-toggle</property>
-            <property name="receives_default">1</property>
-            <property name="group">modePedestrianToggle</property>
-            <property name="height-request">32</property>
-            <property name="width-request">42</property>
-            <property name="icon-name">route-bike-symbolic</property>
-            <style>
-              <class name="transportation-mode-button"/>
-            </style>
-          </object>
-        </child>
-        <child>
-          <object class="GtkToggleButton" id="modeCarToggle">
-            <property name="name">mode-car-toggle</property>
-            <property name="receives_default">1</property>
-            <property name="active">1</property>
-            <property name="group">modeBikeToggle</property>
-            <property name="height-request">32</property>
-            <property name="width-request">42</property>
-            <property name="icon-name">route-car-symbolic</property>
-            <style>
-              <class name="transportation-mode-button"/>
-            </style>
-          </object>
-        </child>
-        <child>
-          <object class="GtkToggleButton" id="modeTransitToggle">
-            <property name="name">mode-transit-toggle</property>
-            <property name="receives_default">1</property>
-            <property name="group">modeCarToggle</property>
-            <property name="height-request">32</property>
-            <property name="width-request">42</property>
-            <property name="icon-name">route-transit-symbolic</property>
-            <style>
-              <class name="transportation-mode-button"/>
-            </style>
-          </object>
-        </child>
-        <style>
-          <class name="linked"/>
-        </style>
+        <property name="display-mode">icon</property>
+        <toggles>
+          <toggle id="pedestrian" icon-name="route-pedestrian-symbolic" translatable="yes">Pedestrian</toggle>
+          <toggle id="bike" icon-name="route-bike-symbolic" translatable="yes">Bike</toggle>
+          <toggle id="car" icon-name="route-car-symbolic" translatable="yes">Car</toggle>
+          <toggle id="transit" icon-name="route-transit-symbolic" translatable="yes">Transit</toggle>
+        </toggles>
       </object>
     </child>
     <child>
