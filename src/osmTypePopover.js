@@ -43,7 +43,7 @@ export class OSMTypePopover extends SearchPopover {
             rows.push(row);
         }
         for (let row of rows) {
-            this._list.remove(row);
+            this.list.remove(row);
         }
 
         matches.forEach((type) => this._addRow(type));
