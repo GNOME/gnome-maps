@@ -157,11 +157,19 @@ export class GraphHopperGeocode {
 
     _readService() {
         let graphHopperGeocode = Service.getService().graphHopperGeocode;
-        this._language = Utils.getLanguage();
 
         if (graphHopperGeocode) {
             this._baseUrl = graphHopperGeocode.baseUrl;
             this._apiKey = graphHopperGeocode.apiKey;
+
+            let language = Utils.getLanguage();
+            let supportedLanguages =
+                graphHopperGeocode.supportedLanguages ?? [];
+
+            if (supportedLanguages.includes(language))
+                this._language = language;
+            else
+                this._language = null;
         }
     }
 }
