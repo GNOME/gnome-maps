@@ -141,20 +141,7 @@ export class PlaceEntry extends Gtk.SearchEntry {
         if ((this.text.length >= MIN_CHARS_COMPLETION ||
              (this.text.length > 0 && this.text[0].match(IDEOGRAPH_PATTERN))) &&
             this.text !== this._placeText) {
-            let cachedResults = this._cache[this.text];
-
-            if (cachedResults) {
-                this.updateResults(cachedResults, this.text, true);
-            } else {
-                // if no previous search has been performed, show spinner
-                if (!this._previousSearch ||
-                    this._previousSearch.length < MIN_CHARS_COMPLETION ||
-                    this._placeText) {
-                    this._popover.showSpinner();
-                }
-                this._placeText = '';
-                this._doSearch();
-            }
+            this._handleSearchInput();
         } else {
             /* if the popover is showing the POI browser, don't hide it,
              * this prevents the popover closing and popping up again if
@@ -166,6 +153,23 @@ export class PlaceEntry extends Gtk.SearchEntry {
             if (this.text.length === 0)
                 this.place = null;
             this._previousSearch = null;
+        }
+    }
+
+    _handleSearchInput() {
+        let cachedResults = this._cache[this.text];
+
+        if (cachedResults) {
+            this.updateResults(cachedResults, this.text, true);
+        } else {
+            // if no previous search has been performed, show spinner
+            if (!this._previousSearch ||
+                this._previousSearch.length < MIN_CHARS_COMPLETION ||
+                this._placeText) {
+                this._popover.showSpinner();
+            }
+            this._placeText = '';
+            this._doSearch();
         }
     }
 
@@ -222,7 +226,19 @@ export class PlaceEntry extends Gtk.SearchEntry {
     }
 
     _onActivate() {
-        this._popover.handleActivate();
+        /* if the search result is short enough and doesn't start with a CJK
+         * ideograph, it wouldn't already have been triggered in the "search
+         * changed" handler.
+         * In case the popover isn't already showing (e.g. showing POI search)
+         * trigger a search, allowing explicitly searching for short strings
+         */
+        if (!this._popover.visible && this.text.length > 0 &&
+            this.text.length < MIN_CHARS_COMPLETION &&
+            !(this.text.length > 0 && this.text[0].match(IDEOGRAPH_PATTERN))) {
+            this._handleSearchInput();
+        } else {
+            this._popover.handleActivate();
+        }
     }
 
     _completionVisibleFunc(model, iter) {
