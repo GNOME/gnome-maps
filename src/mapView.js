@@ -425,8 +425,6 @@ export class MapView extends Gtk.Overlay {
         if (this._mapType && this._mapType === mapType)
             return;
 
-        //let overlay_sources = this.view.get_overlay_sources();
-
         this._mapType = mapType;
 
         let mapSource;
@@ -440,12 +438,6 @@ export class MapView extends Gtk.Overlay {
                 mapSource = MapSource.createVectorSource();
             else
                 mapSource = MapSource.createStreetSource();
-
-            // update license
-            if (this._mapSource)
-                this._license.remove_map_source(this._mapSource);
-
-            this._license.append_map_source(mapSource);
 
             Application.settings.set('map-type', mapType);
         } else {
@@ -471,12 +463,25 @@ export class MapView extends Gtk.Overlay {
             }
         }
 
-        let mapLayer = new Shumate.MapLayer({ map_source: mapSource,
-                                                  viewport:   this.map.viewport });
+        const mapLayer = new Shumate.MapLayer({ map_source: mapSource,
+                                                viewport:   this.map.viewport });
 
-        this.map.add_layer(mapLayer);
-        this._mapSource = mapSource;
+        if (this._mapLayer) {
+            this.map.insert_layer_above(mapLayer, this._mapLayer);
+            this.map.remove_layer(this._mapLayer);
+        } else {
+            this.map.add_layer(mapLayer);
+        }
+
+        this._mapLayer = mapLayer;
+
+        if (this._mapSource)
+            this._license.remove_map_source(this._mapSource);
+        this._license.append_map_source(mapSource);
         this.map.viewport.set_reference_map_source(mapSource);
+
+        this._mapSource = mapSource;
+
         this.emit("map-type-changed", mapType);
     }
 
