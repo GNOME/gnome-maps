@@ -414,7 +414,7 @@ export class MapView extends Gtk.Overlay {
             }
         }
 
-        return MapType.STREET;
+        return MapView.MapType.STREET;
     }
 
     getMapType() {
