@@ -567,6 +567,9 @@ export class MainWindow extends Adw.ApplicationWindow {
 
         let reveal = variant.get_boolean();
         this._splitView.show_sidebar = reveal;
+
+        if (reveal)
+            this._splitView.sidebar.focusStartEntry();
     }
 
     _setRevealSidebar(value) {
