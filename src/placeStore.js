@@ -41,10 +41,9 @@ export class PlaceStore extends Gtk.ListStore {
 
     static Columns = {
         PLACE: 0,
-        NAME: 1,
-        TYPE: 2,
-        ADDED: 3,
-        LANGUAGE: 4
+        TYPE: 1,
+        ADDED: 2,
+        LANGUAGE: 3
     }
 
     constructor({recentPlacesLimit, recentRoutesLimit, ...params}) {
@@ -60,7 +59,6 @@ export class PlaceStore extends Gtk.ListStore {
         this._language = Utils.getLanguage();
 
         this.set_column_types([GObject.TYPE_OBJECT,
-                               GObject.TYPE_STRING,
                                GObject.TYPE_INT,
                                GObject.TYPE_DOUBLE,
                                GObject.TYPE_STRING]);
@@ -242,12 +240,10 @@ export class PlaceStore extends Gtk.ListStore {
     _setPlace(iter, place, type, added, language) {
         this.set(iter,
                  [PlaceStore.Columns.PLACE,
-                  PlaceStore.Columns.NAME,
                   PlaceStore.Columns.TYPE,
                   PlaceStore.Columns.ADDED,
                   PlaceStore.Columns.LANGUAGE],
                  [place,
-                  place.name,
                   type,
                   added,
                   language]);
