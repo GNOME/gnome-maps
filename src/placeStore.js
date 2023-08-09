@@ -19,8 +19,6 @@
 
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
-import GdkPixbuf from 'gi://GdkPixbuf';
-import GeocodeGlib from 'gi://GeocodeGlib';
 import Gtk from 'gi://Gtk';
 
 import {Place} from './place.js';
@@ -28,7 +26,6 @@ import {StoredRoute} from './storedRoute.js';
 import * as Utils from './utils.js';
 
 const _PLACES_STORE_FILE = 'maps-places.json';
-const _ICON_SIZE = 20;
 const _ONE_DAY = 1000 * 60 * 60 * 24; // one day in ms
 const _STALE_THRESHOLD = 7; // mark the osm information as stale after a week
 
@@ -43,12 +40,11 @@ export class PlaceStore extends Gtk.ListStore {
     }
 
     static Columns = {
-        PLACE_ICON: 0,
-        PLACE: 1,
-        NAME: 2,
-        TYPE: 3,
-        ADDED: 4,
-        LANGUAGE: 5
+        PLACE: 0,
+        NAME: 1,
+        TYPE: 2,
+        ADDED: 3,
+        LANGUAGE: 4
     }
 
     constructor({recentPlacesLimit, recentRoutesLimit, ...params}) {
@@ -63,8 +59,7 @@ export class PlaceStore extends Gtk.ListStore {
         this._typeTable = {};
         this._language = Utils.getLanguage();
 
-        this.set_column_types([GdkPixbuf.Pixbuf,
-                               GObject.TYPE_OBJECT,
+        this.set_column_types([GObject.TYPE_OBJECT,
                                GObject.TYPE_STRING,
                                GObject.TYPE_INT,
                                GObject.TYPE_DOUBLE,
@@ -257,11 +252,6 @@ export class PlaceStore extends Gtk.ListStore {
                   added,
                   language]);
 
-        if (place.icon !== null) {
-            Utils.load_icon(place.icon, _ICON_SIZE, (pixbuf) => {
-                this.set(iter, [PlaceStore.Columns.ICON], [pixbuf]);
-            });
-        }
         this._typeTable[place.uniqueID] = type;
     }
 

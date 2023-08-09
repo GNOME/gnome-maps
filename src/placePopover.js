@@ -31,8 +31,6 @@ import {PoiCategoryGobackRow} from './poiCategoryGobackRow.js';
 import {PoiCategoryRow} from './poiCategoryRow.js';
 import {SearchPopover} from './searchPopover.js';
 
-const _PLACE_ICON_SIZE = 20;
-
 export class PlacePopover extends SearchPopover {
 
     constructor({maxChars, hasPoiBrowser = false, ...params}) {

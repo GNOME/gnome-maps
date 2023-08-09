@@ -24,7 +24,6 @@ import gettext from 'gettext';
 
 import GLib from 'gi://GLib';
 import Gdk from 'gi://Gdk';
-import GdkPixbuf from 'gi://GdkPixbuf';
 import GeocodeGlib from 'gi://GeocodeGlib';
 import Gio from 'gi://Gio';
 import Gtk from 'gi://Gtk';
@@ -252,44 +251,6 @@ export function getAccuracyDescription(accuracy) {
         return _("Exact");
     default:
         return prettyDistance(accuracy);
-    }
-}
-
-export function load_icon(icon, size, loadCompleteCallback) {
-    if (icon instanceof Gio.FileIcon || icon instanceof Gio.BytesIcon) {
-        _load_icon(icon, loadCompleteCallback);
-    } else if (icon instanceof Gio.ThemedIcon) {
-        _load_themed_icon(icon, size, loadCompleteCallback);
-    }
-}
-
-function _load_icon(icon, loadCompleteCallback) {
-    icon.load_async(-1, null, function(icon, res) {
-        try {
-            let stream = icon.load_finish(res)[0];
-            let pixbuf = GdkPixbuf.Pixbuf.new_from_stream(stream, null);
-
-            loadCompleteCallback(pixbuf);
-        } catch(e) {
-            log("Failed to load pixbuf: " + e);
-            loadCompleteCallback(null);
-        }
-    });
-}
-
-function _load_themed_icon(icon, size, loadCompleteCallback) {
-    let display = Gdk.Display.get_default();
-    let theme = Gtk.IconTheme.get_for_display(display);
-    // TODO: find the scale factor?
-    let paintable = theme.lookup_by_gicon(icon, size, 1,
-                                          Gtk.TextDirection.NONE, 0);
-    let filename = paintable.file.get_path();
-
-    try {
-        let pixbuf = GdkPixbuf.Pixbuf.new_from_file(filename);
-        loadCompleteCallback(pixbuf);
-    } catch(e) {
-        log("Failed to load pixbuf: " + e);
     }
 }
 
