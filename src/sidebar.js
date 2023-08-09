@@ -75,6 +75,10 @@ export class Sidebar extends Gtk.Grid {
             Application.routingDelegator.transitRouter.enabled;
     }
 
+    focusStartEntry() {
+        this._entryList.get_row_at_index(0).child.entry.grab_focus();
+    }
+
     _initTransportationToggles(pedestrian, bike, car, transit) {
         let transport = RouteQuery.Transportation;
 
