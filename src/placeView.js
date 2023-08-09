@@ -158,12 +158,12 @@ export class PlaceView extends Gtk.Box {
     }
 
     get thumbnail() {
-        return this._thumbnail.pixbuf;
+        return this._thumbnail.paintable;
     }
 
     set thumbnail(val) {
         if (val) {
-            this._thumbnail.pixbuf = val;
+            this._thumbnail.paintable = val;
             this._thumbnail.visible = true;
             this._thumbnailSeparator.visible = true;
         }

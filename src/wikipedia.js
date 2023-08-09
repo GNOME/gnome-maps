@@ -19,8 +19,7 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-import GdkPixbuf from 'gi://GdkPixbuf';
-import Gio from 'gi://Gio';
+import Gdk from 'gi://Gdk';
 import GLib from 'gi://GLib';
 import Soup from 'gi://Soup';
 
@@ -388,26 +387,24 @@ function _fetchThumbnailImage(wiki, size, source, callback) {
         return;
     }
 
-    session.send_async(msg, GLib.PRIORITY_DEFAULT, null, (source, res) => {
+    session.send_and_read_async(msg, GLib.PRIORITY_DEFAULT, null, (source, res) => {
         if (msg.get_status() !== Soup.Status.OK) {
             log("Failed to download thumbnail: " + msg.reason_phrase);
             callback(null);
             return;
         }
 
-        let stream = session.send_finish(res);
+        const bytes = session.send_and_read_finish(res);
 
         try {
-            let pixbuf = GdkPixbuf.Pixbuf.new_from_stream(stream, null);
+            const texture = Gdk.Texture.new_from_bytes(bytes);
 
-            _thumbnailCache[wiki + '/' + size] = pixbuf;
-            callback(pixbuf);
+            _thumbnailCache[wiki + '/' + size] = texture;
+            callback(texture);
         } catch(e) {
-            log("Failed to load pixbuf: " + e);
+            log("Failed to load image: " + e);
             callback(null);
         }
-
-        stream.close(null);
     });
 }
 

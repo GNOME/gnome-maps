@@ -19,8 +19,6 @@
  * Author: James Westman <james@flyingpimonster.net>
  */
 
-import Cairo from 'cairo';
-import Gdk from 'gi://Gdk';
 import GObject from 'gi://GObject';
 import Graphene from 'gi://Graphene';
 import Gtk from 'gi://Gtk';
@@ -28,69 +26,52 @@ import Gtk from 'gi://Gtk';
 /* The maximum aspect ratio, after which the image will be cropped vertically */
 const MAX_ASPECT_RATIO = 1;
 
-export class PlaceViewImage extends Gtk.DrawingArea {
+export class PlaceViewImage extends Gtk.Widget {
     constructor(params) {
         super(params);
 
-        this._pixbuf = null;
-        this._cached = null;
+        this._paintable = null;
     }
 
-    get pixbuf() {
-        return this._pixbuf;
+    get paintable() {
+        return this._paintable;
     }
 
-    set pixbuf(val) {
-        /* crop the pixbuf to the max aspect ratio, if necessary */
-        if (val.height / val.width > MAX_ASPECT_RATIO) {
-            let y = (val.height - val.width * MAX_ASPECT_RATIO) / 2;
-            val = val.new_subpixbuf(0, y, val.width, val.width * MAX_ASPECT_RATIO);
-        }
-
-        this._pixbuf = val;
+    set paintable(val) {
+        this._paintable = val;
         this.queue_resize();
     }
 
     vfunc_snapshot(snapshot) {
-        let {x, y, width, height} = this.get_allocation();
+        const {x, y, width, height} = this.get_allocation();
 
-        if (this._pixbuf === null || width === 0 || height === 0) {
+        if (this._paintable === null || width === 0 || height === 0) {
             return;
         }
 
-        let rect = new Graphene.Rect();
+        snapshot.save();
 
-        rect.init(x, y, width, height);
+        const clipRect = new Graphene.Rect();
+        clipRect.init(x, y, width, height);
+        snapshot.push_clip(clipRect);
 
-        let cr = snapshot.append_cairo(rect);
+        const paintableWidth = this._paintable.get_intrinsic_width();
+        const paintableHeight = this._paintable.get_intrinsic_height();
 
-        width *= this.scale_factor;
-        height *= this.scale_factor;
+        const scale = Math.max(width / paintableWidth, height / paintableHeight);
+        const scaledWidth = paintableWidth * scale;
+        const scaledHeight = paintableHeight * scale;
 
-        /* Cache surfaces so we don't have to do as much scaling */
-        if (this._cached === null || width !== this._cached.getWidth() || height !== this._cached.getHeight()) {
-            // create a new, scaled image
-            this._cached = new Cairo.ImageSurface(Cairo.Format.ARGB32, width, height);
+        const translate = new Graphene.Point();
+        translate.init((width - scaledWidth) / 2, (height - scaledHeight) / 2);
+        snapshot.translate(translate);
 
-            let cr_scaled = new Cairo.Context(this._cached);
-            cr_scaled.scale(width / this._pixbuf.width, height / this._pixbuf.height);
-            Gdk.cairo_set_source_pixbuf(cr_scaled, this._pixbuf, 0, 0);
-            cr_scaled.paint();
-        }
+        this._paintable.snapshot(snapshot, scaledWidth, scaledHeight);
 
-        cr.save();
-
-        if (this.scale_factor !== 1) {
-            cr.scale(1 / this.scale_factor, 1 / this.scale_factor);
-        }
-
-        cr.setSourceSurface(this._cached, 0, 0);
-
-        cr.paint();
-        cr.restore();
+        snapshot.pop();
+        snapshot.restore();
 
         super.vfunc_snapshot(snapshot);
-        cr.$dispose();
     }
 
     vfunc_get_request_mode() {
@@ -99,8 +80,10 @@ export class PlaceViewImage extends Gtk.DrawingArea {
 
     vfunc_measure(orientation, forSize) {
         if (orientation === Gtk.Orientation.VERTICAL) {
-            if (this._pixbuf) {
-                let height = (this._pixbuf.height / this._pixbuf.width) * forSize;
+            if (this._paintable) {
+                const paintableWidth = this._paintable.get_intrinsic_width();
+                const paintableHeight = this._paintable.get_intrinsic_height();
+                const height = Math.min(paintableHeight / paintableWidth, MAX_ASPECT_RATIO) * forSize;
                 return [height, height, -1, -1];
             } else {
                 return [0, 0, -1, -1];
