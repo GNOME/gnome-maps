@@ -79,7 +79,7 @@ export class StoredRoute extends Place {
 
     get uniqueID() {
         return this._transportation + '-' + this.places.map(function(place) {
-            return [place.osm_type, place.osm_id].join('-');
+            return [place.osmType, place.osmId].join('-');
         }).join('-');
     }
 

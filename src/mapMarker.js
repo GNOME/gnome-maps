@@ -57,7 +57,7 @@ export class MapMarker extends Shumate.Marker {
                                              () => this._onMarkerSelected());
 
             // Some markers are draggable, we want to sync the marker location and
-            // the location saved in the GeocodePlace
+            // the location saved in the Place
             // These are not bindings because the place may have a different
             // location later
             this.connect('notify::latitude', () => {

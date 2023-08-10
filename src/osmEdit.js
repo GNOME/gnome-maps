@@ -75,7 +75,7 @@ export class OSMEdit {
 
         /* reset currently edited object */
         this._osmObject = null;
-        this._osmConnection.getOSMObject(osmType, place.osm_id,
+        this._osmConnection.getOSMObject(osmType, place.osmId,
                      (function(success, status, osmObject, osmType) {
                          callback(success, status, osmObject, osmType);
                      }), cancellable);

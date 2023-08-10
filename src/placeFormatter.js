@@ -70,12 +70,12 @@ export class PlaceFormatter {
     }
 
     _update() {
-        switch (this._place.place_type) {
+        switch (this._place.placeType) {
         case GeocodeGlib.PlaceType.COUNTRY:
             if (this._place.country)
                 this._titleProperty = 'country';
 
-            this._addRow(['country_code']);
+            this._addRow(['countryCode']);
             break;
 
         case GeocodeGlib.PlaceType.STATE:
@@ -98,13 +98,13 @@ export class PlaceFormatter {
             break;
 
         default:
-            if (this._place.street_address)
-                this._addRow(['street_address']);
+            if (this._place.streetAddress)
+                this._addRow(['streetAddress']);
             else if (this._place.street)
                 this._addRow(['street']);
 
             if (this._place.town !== this._place[this._titleProperty])
-                this._addRow(['postal_code', 'town']);
+                this._addRow(['postalCode', 'town']);
             break;
         }
     }

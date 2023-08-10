@@ -72,8 +72,8 @@ export class Overpass {
     }
 
     populatePlace(place, callback) {
-        let url = this._getQueryUrl(Utils.osmTypeToString(place.osm_type),
-                                    place.osm_id);
+        let url = this._getQueryUrl(Utils.osmTypeToString(place.osmType),
+                                    place.osmId);
         let request = Soup.Message.new('GET', url);
 
         this._session.send_and_read_async(request, GLib.PRIORITY_DEFAULT, null,
@@ -353,7 +353,7 @@ export class Overpass {
         let language = Utils.getLanguage();
 
         return OSMNames.getNameForLanguageAndCountry(tags, language,
-                                                     place.country_code);
+                                                     place.countryCode);
     }
 
     _getQueryUrl(osmType, osmId) {

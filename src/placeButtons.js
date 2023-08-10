@@ -58,7 +58,7 @@ export class PlaceButtons extends Gtk.Box {
 
         this._updateFavoriteButton(!!this._place.store);
 
-        this._editButton.visible = !!this._place.osm_id;
+        this._editButton.visible = !!this._place.osmId;
 
         this._routeButton.visible = !this._place.isCurrentLocation;
     }

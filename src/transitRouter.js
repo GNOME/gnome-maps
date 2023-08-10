@@ -125,7 +125,7 @@ export class TransitRouter {
 
     _getMatchingProvidersForPlace(place) {
         let location = place.location;
-        let country = place.country_code ??
+        let country = place.countryCode ??
                       Utils.getCountryCodeForCoordinates(location.latitude,
                                                          location.longitude);
 

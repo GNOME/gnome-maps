@@ -149,10 +149,10 @@ export class SendToDialog extends Gtk.Dialog {
         let place = this._place;
 
         let base = 'https://openstreetmap.org';
-        if (this._place.osm_id && this._place.osm_type) {
+        if (this._place.osmId && this._place.osmType) {
             return '%s/%s/%s'.format(base,
-                                     Utils.osmTypeToString(place.osm_type),
-                                     place.osm_id);
+                                     Utils.osmTypeToString(place.osmType),
+                                     place.osmId);
         } else {
             return '%s?mlat=%f&mlon=%f&zoom=%d'.format(base,
                                                        this._location.latitude,

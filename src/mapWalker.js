@@ -43,11 +43,11 @@ export class MapWalker extends GObject.Object {
     }
 
     _createBoundingBox(place) {
-        if (place.bounding_box !== null) {
-            return new BoundingBox({ top: place.bounding_box.top,
-                                     bottom: place.bounding_box.bottom,
-                                     left: place.bounding_box.left,
-                                     right: place.bounding_box.right });
+        if (place.boundingBox !== null) {
+            return new BoundingBox({ top: place.boundingBox.top,
+                                     bottom: place.boundingBox.bottom,
+                                     left: place.boundingBox.left,
+                                     right: place.boundingBox.right });
         } else {
             return null;
         }

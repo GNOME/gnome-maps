@@ -50,22 +50,24 @@ export class Place extends GObject.Object {
     constructor(params) {
         super();
 
-        this._osm_id = params.osm_id;
-        this._osm_type = params.osm_type;
+        /* Some of these properties are read as snake_case for backward compatibility
+        with the place store. */
+        this._osmId = params.osm_id;
+        this._osmType = params.osm_type;
         this._name = params.name;
         this._location = params.location;
-        this._bounding_box = params.bounding_box ?? null;
-        this._place_type = params.place_type;
-        this._street_address = params.street_address;
+        this._boundingBox = params.bounding_box ?? null;
+        this._placeType = params.place_type;
+        this._streetAddress = params.street_address;
         this._street = params.street;
         this._building = params.building;
-        this._postal_code = params.postal_code;
+        this._postalCode = params.postal_code;
         this._area = params.area;
         this._town = params.town;
         this._state = params.state;
         this._county = params.county;
         this._country = params.country;
-        this._country_code = params.country_code;
+        this._countryCode = params.country_code;
         this._continent = params.continent;
 
         this.updateFromTags(params);
@@ -91,20 +93,20 @@ export class Place extends GObject.Object {
         this._osmValue = params.osmValue;
     }
 
-    get osm_id() {
-        return this._osm_id;
+    get osmId() {
+        return this._osmId;
     }
 
-    set osm_id(osm_id) {
-        this._osm_id = osm_id;
+    set osmId(osmId) {
+        this._osmId = osmId;
     }
 
-    get osm_type() {
-        return this._osm_type;
+    get osmType() {
+        return this._osmType;
     }
 
-    set osm_type(osm_type) {
-        this._osm_type = osm_type;
+    set osmType(osmType) {
+        this._osmType = osmType;
     }
 
     get name() {
@@ -123,29 +125,28 @@ export class Place extends GObject.Object {
         this._location = location;
     }
 
-    get bounding_box() {
-        return this._bounding_box;
+    get boundingBox() {
+        return this._boundingBox;
     }
 
-    set bounding_box(bounding_box) {
-        this._bounding_box = bounding_box;
+    set boundingBox(boundingBox) {
+        this._boundingBox = boundingBox;
     }
 
-
-    get place_type() {
-        return this._place_type;
+    get placeType() {
+        return this._placeType;
     }
 
-    set place_type(place_type) {
-        this._place_type = place_type;
+    set placeType(placeType) {
+        this._placeType = placeType;
     }
 
-    get street_address() {
-        return this._street_address;
+    get streetAddress() {
+        return this._streetAddress;
     }
 
-    set street_address(street_address) {
-        this._street_address = street_address;
+    set streetAddress(streetAddress) {
+        this._streetAddress = streetAddress;
     }
 
     get street() {
@@ -164,12 +165,12 @@ export class Place extends GObject.Object {
         this._building = building;
     }
 
-    get postal_code() {
-        return this._postal_code;
+    get postalCode() {
+        return this._postalCode;
     }
 
-    set postal_code(postal_code) {
-        this._postal_code = postal_code;
+    set postalCode(postalCode) {
+        this._postalCode = postalCode;
     }
 
     get area() {
@@ -212,12 +213,12 @@ export class Place extends GObject.Object {
         this._country = country;
     }
 
-    get country_code() {
-        return this._country_code;
+    get countryCode() {
+        return this._countryCode;
     }
 
-    set country_code(country_code) {
-        this._country_code = country_code;
+    set countryCode(countryCode) {
+        this._countryCode = countryCode;
     }
 
     get continent() {
@@ -288,7 +289,7 @@ export class Place extends GObject.Object {
     }
 
     get uniqueID() {
-        return this.osm_type + '-' + this.osm_id;
+        return this.osmType + '-' + this.osmId;
     }
 
     get isCurrentLocation() {
@@ -456,11 +457,11 @@ export class Place extends GObject.Object {
     toJSON() {
         let bounding_box = null;
 
-        if (this.bounding_box) {
-            bounding_box = { top: this.bounding_box.top,
-                             bottom: this.bounding_box.bottom,
-                             left: this.bounding_box.left,
-                             right: this.bounding_box.right };
+        if (this.boundingBox) {
+            bounding_box = { top: this.boundingBox.top,
+                             bottom: this.boundingBox.bottom,
+                             left: this.boundingBox.left,
+                             right: this.boundingBox.right };
         }
 
         let location = { latitude: this.location.latitude,
@@ -468,26 +469,26 @@ export class Place extends GObject.Object {
                          altitude: this.location.altitude,
                          accuracy: this.location.accuracy };
 
-        return { id: this.osm_id,
-                 osm_type: this.osm_type,
+        return { id: this.osmId,
+                 osm_type: this.osmType,
                  osmKey: this._osmKey,
                  osmValue: this._osmValue,
-                 place_type: this.place_type,
+                 place_type: this.placeType,
                  name: this.name,
                  nativeName: this.nativeName,
                  bounding_box: bounding_box,
                  this_type: this.this_type,
                  location: location,
-                 street_address: this.street_address,
+                 street_address: this.streetAddress,
                  street: this.street,
                  building: this.building,
-                 postal_code: this.postal_code,
+                 postal_code: this.postalCode,
                  area: this.area,
                  town: this.town,
                  state: this.state,
                  county: this.county,
                  country: this.country,
-                 country_code: this.country_code,
+                 country_code: this.countryCode,
                  continent: this.continent,
                  population: this.population,
                  website: this.website,
