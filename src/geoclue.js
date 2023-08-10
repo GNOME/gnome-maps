@@ -104,6 +104,7 @@ export class Geoclue extends GObject.Object {
     _updateLocation(location) {
         if (!this.place)
             this.place = new Place({ name: _("Current Location"),
+                                     store: false,
                                      isCurrentLocation: true });
 
         this.place.location = location;
