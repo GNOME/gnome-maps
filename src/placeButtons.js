@@ -176,8 +176,8 @@ export class PlaceButtons extends Gtk.Box {
             switch (response) {
             case OSMEditDialog.Response.UPLOADED:
                 // update place
-                let object = osmEdit.object;
-                OSMUtils.updatePlaceFromOSMObject(this._place, object);
+                this._place.osmTags = osmEdit.object.get_tags();
+                Application.placeStore.addPlace(this._place);
                 // refresh place view
                 this.emit('place-edited');
                 break;

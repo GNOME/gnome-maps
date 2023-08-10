@@ -25,7 +25,9 @@ import GeocodeGlib from 'gi://GeocodeGlib';
 import Gio from 'gi://Gio';
 import GObject from 'gi://GObject';
 
+import * as Address from './address.js';
 import {Location} from './location.js';
+import * as OSMNames from './osmNames.js';
 import {Overpass} from './overpass.js';
 import * as PlaceIcons from './placeIcons.js';
 import * as URIS from './uris.js';
@@ -71,8 +73,6 @@ export class Place extends GObject.Object {
         this._continent = params.continent;
         this._originalJson = params.originalJson;
 
-        this.updateFromTags(params);
-
         this._isCurrentLocation = params.isCurrentLocation;
         this._initialZoom = params.initialZoom;
 
@@ -92,6 +92,7 @@ export class Place extends GObject.Object {
         this._nativeName = params.nativeName;
         this._osmKey = params.osmKey;
         this._osmValue = params.osmValue;
+        this._osmTags = params.osmTags;
     }
 
     get osmId() {
@@ -110,7 +111,26 @@ export class Place extends GObject.Object {
         this._osmType = osmType;
     }
 
+    get osmTags() {
+        return this._osmTags;
+    }
+
+    set osmTags(osmTags) {
+        this._osmTags = osmTags;
+
+        if (osmTags.ele && this.location)
+            this.location.altitude = parseFloat(osmTags.ele);
+    }
+
     get name() {
+        if (this.osmTags) {
+            const language = Utils.getLanguage();
+
+            return OSMNames.getNameForLanguageAndCountry(
+                this.osmTags, language, this.countryCode
+            );
+        }
+
         return this._name;
     }
 
@@ -143,19 +163,21 @@ export class Place extends GObject.Object {
     }
 
     get streetAddress() {
+        if (this.houseNumber && this.street) {
+            return Address.streetAddressForCountryCode(
+                this.street, this.houseNumber, this.countryCode
+            );
+        }
+
         return this._streetAddress;
     }
 
-    set streetAddress(streetAddress) {
-        this._streetAddress = streetAddress;
-    }
-
     get street() {
-        return this._street;
+        return this.osmTags?.['addr:street'] ?? this._street;
     }
 
-    set street(street) {
-        this._street = street;
+    get houseNumber() {
+        return this.osmTags?.['addr:housenumber'];
     }
 
     get building() {
@@ -167,59 +189,31 @@ export class Place extends GObject.Object {
     }
 
     get postalCode() {
-        return this._postalCode;
-    }
-
-    set postalCode(postalCode) {
-        this._postalCode = postalCode;
+        return this.osmTags?.['addr:postcode'] ?? this._postalCode;
     }
 
     get area() {
         return this._area;
     }
 
-    set area(area) {
-        this._area = area;
-    }
-
     get town() {
-        return this._town;
-    }
-
-    set town(town) {
-        this._town = town;
+        return this.osmTags?.['addr:city'] ?? this._town;
     }
 
     get state() {
         return this._state;
     }
 
-    set state(state) {
-        this._state = state;
-    }
-
     get county() {
         return this._county;
-    }
-
-    set county(county) {
-        this._county = county;
     }
 
     get country() {
         return this._country;
     }
 
-    set country(country) {
-        this._country = country;
-    }
-
     get countryCode() {
-        return this._countryCode;
-    }
-
-    set countryCode(countryCode) {
-        this._countryCode = countryCode;
+        return this.osmTags?.['addr:country'] ?? this._countryCode;
     }
 
     get continent() {
@@ -228,57 +222,6 @@ export class Place extends GObject.Object {
 
     set continent(continent) {
         this._continent = continent;
-    }
-
-    /**
-     * Update place with values from OSM tags.
-     */
-    updateFromTags(tags) {
-        /* special handle tags where we use a different name compared to
-         * OSM, to remain backwards-compatible with the place store
-         */
-        let wiki = tags.wiki ?? tags.wikipedia;
-        let openingHours = tags.openingHours ?? tags.opening_hours;
-        let internetAccess = tags.internetAccess ?? tags.internet_access;
-
-        if (tags.name)
-            this.nativeName = tags.name;
-        if (tags.population)
-            this.population = tags.population;
-        if (tags['contact:website'])
-            this.website = tags['contact:website'];
-        if (tags.website)
-            this.website = tags.website;
-        if (tags['contact:email'])
-            this.email = tags['contact:email'];
-        if (tags.email)
-            this.email = tags.email;
-        if (tags['contact:phone'])
-            this.phone = tags['contact:phone'];
-        if (tags.phone)
-            this.phone = tags.phone;
-        if (wiki)
-            this.wiki = wiki;
-        if (tags.wikidata)
-            this.wikidata = tags.wikidata;
-        if (tags.wheelchair)
-            this.wheelchair = tags.wheelchair;
-        if (openingHours)
-            this.openingHours = openingHours;
-        if (internetAccess)
-            this.internetAccess = internetAccess;
-        if (tags.ele && this.location)
-            this.location.altitude = parseFloat(tags.ele);
-        else if (tags.ele && tags.location)
-            tags.location.altitude = tags.ele;
-        if (tags.religion)
-            this.religion = tags.religion
-        if (tags.toilets)
-            this.toilets = tags.toilets;
-        if (tags.takeaway)
-            this.takeaway = tags.takeaway;
-        if (tags.note)
-            this.note = tags.note;
     }
 
     set store(v) {
@@ -297,108 +240,56 @@ export class Place extends GObject.Object {
         return this._isCurrentLocation;
     }
 
-    set population(v) {
-        this._population = v;
-    }
-
     get population() {
-        return this._population;
-    }
-
-    set website(v) {
-        this._website = v;
+        return this.osmTags?.population;
     }
 
     get website() {
-        return this._website;
-    }
-
-    set email(v) {
-        this._email = v;
+        return this.osmTags?.['contact:website'] ?? this.osmTags?.website;
     }
 
     get email() {
-        return this._email;
-    }
-
-    set phone(v) {
-        this._phone = v;
+        return this.osmTags?.['contact:email'] ?? this.osmTags?.email;
     }
 
     get phone() {
-        return this._phone;
-    }
-
-    set wiki(v) {
-        this._wiki = v;
+        return this.osmTags?.['contact:phone'] ?? this.osmTags?.phone;
     }
 
     get wiki() {
-        return this._wiki;
-    }
-
-    set wikidata(v) {
-        this._wikidata = v;
+        return this.osmTags?.wikipedia ?? this.osmTags?.wiki;
     }
 
     get wikidata() {
-        return this._wikidata;
-    }
-
-    set openingHours(v) {
-        this._openingHours = v;
+        return this.osmTags?.wikidata;
     }
 
     get openingHours() {
-        return this._openingHours;
-    }
-
-    set internetAccess(v) {
-        this._internetAccess = v;
+        return this.osmTags?.opening_hours ?? this.osmTags?.openingHours;
     }
 
     get internetAccess() {
-        return this._internetAccess;
-    }
-
-    set religion(v) {
-        this._religion = v;
+        return this.osmTags?.internet_access ?? this.osmTags?.internetAccess;
     }
 
     get religion() {
-        return this._religion;
-    }
-
-    set toilets(v) {
-        this._toilets = v;
+        return this.osmTags?.religion;
     }
 
     get toilets() {
-        return this._toilets;
-    }
-
-    set takeaway(v) {
-        this._takeaway = v;
+        return this.osmTags?.toilets;
     }
 
     get takeaway() {
-        return this._takeaway;
-    }
-
-    set note(v) {
-        this._note = v;
+        return this.osmTags?.takeaway;
     }
 
     get note() {
-        return this._note;
-    }
-
-    set wheelchair(v) {
-        this._wheelchair = v;
+        return this.osmTags?.note;
     }
 
     get wheelchair() {
-        return this._wheelchair;
+        return this.osmTags?.wheelchair;
     }
 
     get initialZoom() {
@@ -414,11 +305,7 @@ export class Place extends GObject.Object {
     }
 
     get nativeName() {
-        return this._nativeName;
-    }
-
-    set nativeName(nativeName) {
-        this._nativeName = nativeName;
+        return this.osmTags?.name;
     }
 
     /**
@@ -434,7 +321,7 @@ export class Place extends GObject.Object {
      * This corresponds to the osm_value parameter in Photon geocoder.
      */
     get osmValue() {
-        return this._osmValue;
+        return this.osmTags?.[this.osmKey] ?? this._osmValue;
     }
 
     get icon() {
@@ -477,36 +364,23 @@ export class Place extends GObject.Object {
                  osmType: this._osmType,
                  osmKey: this._osmKey,
                  osmValue: this._osmValue,
-                 place_type: this.placeType,
-                 name: this.name,
-                 nativeName: this.nativeName,
+                 osmTags: this._osmTags,
+                 place_type: this._placeType,
+                 name: this._name,
+                 nativeName: this._nativeName,
                  bounding_box: bounding_box,
-                 this_type: this.this_type,
                  location: location,
-                 street_address: this.streetAddress,
-                 street: this.street,
-                 building: this.building,
-                 postal_code: this.postalCode,
-                 area: this.area,
-                 town: this.town,
-                 state: this.state,
-                 county: this.county,
-                 country: this.country,
-                 country_code: this.countryCode,
-                 continent: this.continent,
-                 population: this.population,
-                 website: this.website,
-                 email: this.email,
-                 phone: this.phone,
-                 wiki: this.wiki,
-                 wikidata: this.wikidata,
-                 wheelchair: this.wheelchair,
-                 openingHours: this.openingHours,
-                 internetAccess: this.internetAccess,
-                 religion: this.religion,
-                 toilets: this.toilets,
-                 takeaway: this.takeaway,
-                 note: this.note };
+                 street_address: this._streetAddress,
+                 street: this._street,
+                 building: this._building,
+                 postal_code: this._postalCode,
+                 area: this._area,
+                 town: this._town,
+                 state: this._state,
+                 county: this._county,
+                 country: this._country,
+                 country_code: this._countryCode,
+                 continent: this._continent };
     }
 
     match(searchString) {

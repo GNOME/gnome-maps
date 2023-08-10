@@ -23,7 +23,6 @@ import GObject from 'gi://GObject';
 import Soup from 'gi://Soup';
 
 import {Application} from './application.js';
-import * as OSMNames from './osmNames.js';
 import * as PhotonUtils from './photonUtils.js';
 import {Place} from './place.js';
 import * as Utils from './utils.js';
@@ -90,7 +89,7 @@ export class Overpass {
                 let element = jsonObj?.elements?.[0];
 
                 if (element) {
-                    this._populatePlace(place, element);
+                    place.osmTags = element.tags;
                     callback(true);
                 } else {
                     Utils.debug('No element in Overpass result');
@@ -269,7 +268,7 @@ export class Overpass {
             this._getPhotonProperties(element.tags, osmType, osmId);
         let place = PhotonUtils.parsePlace(lat, lon, photonProperties);
 
-        this._populatePlace(place, element);
+        place.osmTags = element.tags;
         place.prefilled = true;
 
         return place;
@@ -336,24 +335,6 @@ export class Overpass {
     _setOsmKeyAndValue(properties, tags, tag) {
         properties.osm_key = tag;
         properties.osm_value = tags[tag];
-    }
-
-    _populatePlace(place, element) {
-        let name = this._getLocalizedName(element.tags, place);
-        if (name)
-            place.name = name;
-
-        if (element.tags.name)
-            place.nativeName = element.tags.name;
-
-        place.updateFromTags(element.tags);
-    }
-
-    _getLocalizedName(tags, place) {
-        let language = Utils.getLanguage();
-
-        return OSMNames.getNameForLanguageAndCountry(tags, language,
-                                                     place.countryCode);
     }
 
     _getQueryUrl(osmType, osmId) {

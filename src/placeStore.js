@@ -416,6 +416,9 @@ export class PlaceStoreItem extends GObject.Object {
     }
 
     isStale() {
+        if (!(this.place instanceof StoredRoute) && !this.place.osmTags)
+            return true;
+
         let now = new Date().getTime();
         let days = Math.abs(now - this.updated.getTime()) / _ONE_DAY;
 
@@ -429,6 +432,7 @@ export class PlaceStoreItem extends GObject.Object {
 
     set place(place) {
         this._place = place;
+        this._updated = new Date();
         this._store.markDirty();
     }
 

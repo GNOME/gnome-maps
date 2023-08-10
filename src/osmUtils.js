@@ -59,28 +59,3 @@ export function getWikidataFromUrl(url) {
     else
         return null;
 }
-
-/**
- * Updates a Place object according to an OSMObject.
- * Will also update place in the place store.
- */
-export function updatePlaceFromOSMObject(place, object) {
-    let name = object.get_tag('name');
-
-    if (name) {
-        /* only update the place's name from the OSM object if the OSM object
-         * actually has a name set.
-         * https://bugzilla.gnome.org/show_bug.cgi?id=762569
-         *
-         * also update the displayed localized name, if it was equal
-         * to the translated name to avoid the old name showing up as the
-         * native name in when editing places where they equal
-         */
-        if (place.name === place.nativeName)
-            place.name = name;
-        place.nativeName = name;
-    }
-    place.updateFromTags(object.get_tags());
-
-    Application.placeStore.updatePlace(place);
-}
