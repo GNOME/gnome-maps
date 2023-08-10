@@ -21,11 +21,11 @@
 
 import gettext from 'gettext';
 
-import GeocodeGlib from 'gi://GeocodeGlib';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
 import {PlaceEntry} from './placeEntry.js';
+import { Place } from './place.js';
 
 const _ = gettext.gettext;
 
@@ -108,7 +108,7 @@ GObject.registerClass({
                                           'The selected place',
                                           GObject.ParamFlags.READABLE |
                                           GObject.ParamFlags.WRITABLE,
-                                          GeocodeGlib.Place)
+                                          Place)
     },
     Template: 'resource:///org/gnome/Maps/ui/search-bar.ui'
 }, SearchBar);

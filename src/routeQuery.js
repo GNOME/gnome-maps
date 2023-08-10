@@ -20,11 +20,11 @@
  */
 
 import GObject from 'gi://GObject';
-import GeocodeGlib from 'gi://GeocodeGlib';
 
 import {Application} from './application.js';
 import {PlaceStore} from './placeStore.js';
 import {TransitOptions} from './transitOptions.js';
+import { Place } from './place.js';
 
 export class QueryPoint extends GObject.Object {
 
@@ -50,7 +50,7 @@ GObject.registerClass({
                                           '',
                                           GObject.ParamFlags.READABLE |
                                           GObject.ParamFlags.WRITABLE,
-                                          GeocodeGlib.Place)
+                                          Place)
     }
 }, QueryPoint);
 

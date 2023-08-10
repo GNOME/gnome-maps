@@ -24,7 +24,6 @@ import Adw from 'gi://Adw';
 import Gdk from 'gi://Gdk';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
-import Geocode from 'gi://GeocodeGlib';
 import Gio from 'gi://Gio';
 import Gtk from 'gi://Gtk';
 
@@ -39,6 +38,7 @@ import {RouteQuery} from './routeQuery.js';
 import {Settings} from './settings.js';
 import * as Utils from './utils.js';
 import * as URIS from './uris.js';
+import { Place } from './place.js';
 
 const Format = imports.format;
 
@@ -375,7 +375,7 @@ GObject.registerClass({
                                                    'The selected place',
                                                    GObject.ParamFlags.READABLE |
                                                    GObject.ParamFlags.WRITABLE,
-                                                   Geocode.Place),
+                                                   Place),
         'adaptive-mode': GObject.ParamSpec.boolean('adaptive-mode',
                                                    'Adaptive Move',
                                                    'Whether the main window is in adaptive (narrow) mode',

@@ -23,7 +23,6 @@ import gettext from 'gettext';
 
 import GeocodeGlib from 'gi://GeocodeGlib';
 import Gio from 'gi://Gio';
-import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 
 import {Location} from './location.js';
@@ -46,80 +45,187 @@ const DMS_COORDINATES_REGEX = new RegExp(
     "i"
 );
 
-export class Place extends GeocodeGlib.Place {
+export class Place extends GObject.Object {
 
     constructor(params) {
-        let originalParams = {};
+        super();
 
-        Object.assign(originalParams, params);
+        this._osm_id = params.osm_id;
+        this._osm_type = params.osm_type;
+        this._name = params.name;
+        this._location = params.location;
+        this._bounding_box = params.bounding_box ?? null;
+        this._place_type = params.place_type;
+        this._street_address = params.street_address;
+        this._street = params.street;
+        this._building = params.building;
+        this._postal_code = params.postal_code;
+        this._area = params.area;
+        this._town = params.town;
+        this._state = params.state;
+        this._county = params.county;
+        this._country = params.country;
+        this._country_code = params.country_code;
+        this._continent = params.continent;
 
-        delete params.population;
-        delete params.website;
-        delete params.email;
-        delete params.phone;
-        delete params.wiki;
-        delete params.wikidata;
-        delete params.openingHours;
-        delete params.internetAccess;
-        delete params.religion;
-        delete params.takeaway;
-        delete params.note;
-        delete params.isCurrentLocation;
-        delete params.initialZoom;
-        delete params.prefilled;
-        delete params.store;
-        delete params.wheelchair;
-        delete params.nativeName;
-        delete params.osmKey;
-        delete params.osmValue;
+        this.updateFromTags(params);
 
-        if (originalParams.place) {
-            params = { osm_id: originalParams.place.osm_id,
-                       osm_type: originalParams.place.osm_type,
-                       name: originalParams.place.name,
-                       location: originalParams.place.location,
-                       bounding_box: originalParams.place.bounding_box,
-                       place_type: originalParams.place.place_type,
-                       street_address: originalParams.place.street_address,
-                       street: originalParams.place.street,
-                       building: originalParams.place.building,
-                       postal_code: originalParams.place.postal_code,
-                       area: originalParams.place.area,
-                       town: originalParams.place.town,
-                       state: originalParams.place.state,
-                       county: originalParams.place.county,
-                       country: originalParams.place.country,
-                       country_code: originalParams.place.country_code,
-                       continent: originalParams.place.continent };
-        }
-
-        for (let prop in params)
-            if (!params[prop])
-                delete params[prop];
-
-        super(params);
-
-        this.updateFromTags(originalParams);
-
-        this._isCurrentLocation = originalParams.isCurrentLocation;
-        this._initialZoom = originalParams.initialZoom;
+        this._isCurrentLocation = params.isCurrentLocation;
+        this._initialZoom = params.initialZoom;
 
         /* set to true if the instance is pre-filled with Overpass data,
          * at the time of creation, as will be the case when loading a place
          * from an OSM object URL
          */
-        this._prefilled = originalParams.prefilled;
+        this._prefilled = params.prefilled;
 
         /* Determines if the place should be added to the place store */
-        if (typeof(originalParams.store) === 'undefined') {
+        if (typeof(params.store) === 'undefined') {
             this._store = true;
         } else {
-            this._store = originalParams.store;
+            this._store = params.store;
         }
 
-        this._nativeName = originalParams.nativeName;
-        this._osmKey = originalParams.osmKey;
-        this._osmValue = originalParams.osmValue;
+        this._nativeName = params.nativeName;
+        this._osmKey = params.osmKey;
+        this._osmValue = params.osmValue;
+    }
+
+    get osm_id() {
+        return this._osm_id;
+    }
+
+    set osm_id(osm_id) {
+        this._osm_id = osm_id;
+    }
+
+    get osm_type() {
+        return this._osm_type;
+    }
+
+    set osm_type(osm_type) {
+        this._osm_type = osm_type;
+    }
+
+    get name() {
+        return this._name;
+    }
+
+    set name(name) {
+        this._name = name;
+    }
+
+    get location() {
+        return this._location;
+    }
+
+    set location(location) {
+        this._location = location;
+    }
+
+    get bounding_box() {
+        return this._bounding_box;
+    }
+
+    set bounding_box(bounding_box) {
+        this._bounding_box = bounding_box;
+    }
+
+
+    get place_type() {
+        return this._place_type;
+    }
+
+    set place_type(place_type) {
+        this._place_type = place_type;
+    }
+
+    get street_address() {
+        return this._street_address;
+    }
+
+    set street_address(street_address) {
+        this._street_address = street_address;
+    }
+
+    get street() {
+        return this._street;
+    }
+
+    set street(street) {
+        this._street = street;
+    }
+
+    get building() {
+        return this._building;
+    }
+
+    set building(building) {
+        this._building = building;
+    }
+
+    get postal_code() {
+        return this._postal_code;
+    }
+
+    set postal_code(postal_code) {
+        this._postal_code = postal_code;
+    }
+
+    get area() {
+        return this._area;
+    }
+
+    set area(area) {
+        this._area = area;
+    }
+
+    get town() {
+        return this._town;
+    }
+
+    set town(town) {
+        this._town = town;
+    }
+
+    get state() {
+        return this._state;
+    }
+
+    set state(state) {
+        this._state = state;
+    }
+
+    get county() {
+        return this._county;
+    }
+
+    set county(county) {
+        this._county = county;
+    }
+
+    get country() {
+        return this._country;
+    }
+
+    set country(country) {
+        this._country = country;
+    }
+
+    get country_code() {
+        return this._country_code;
+    }
+
+    set country_code(country_code) {
+        this._country_code = country_code;
+    }
+
+    get continent() {
+        return this._continent;
+    }
+
+    set continent(continent) {
+        this._continent = continent;
     }
 
     /**

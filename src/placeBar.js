@@ -19,8 +19,6 @@
  * Author: James Westman <james@flyingpimonster.net>
  */
 
-import Gdk from 'gi://Gdk';
-import GeocodeGlib from 'gi://GeocodeGlib';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
@@ -30,6 +28,7 @@ import {PlaceDialog} from './placeDialog.js';
 import {PlaceFormatter} from './placeFormatter.js';
 import {PlaceView} from './placeView.js';
 import * as Utils from './utils.js';
+import { Place } from './place.js';
 
 export class PlaceBar extends Gtk.Revealer {
     constructor({mapView, mainWindow, ...params}) {
@@ -139,7 +138,7 @@ GObject.registerClass({
                                           'The place to show information about',
                                           GObject.ParamFlags.READABLE |
                                           GObject.ParamFlags.WRITABLE,
-                                          GeocodeGlib.Place)
+                                          Place)
     },
 }, PlaceBar);
 

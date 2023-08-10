@@ -412,6 +412,6 @@ GObject.registerClass({
                                           'The selected place',
                                           GObject.ParamFlags.READABLE |
                                           GObject.ParamFlags.WRITABLE,
-                                          GeocodeGlib.Place)
+                                          Place)
     }
 }, PlaceEntry);
