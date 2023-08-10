@@ -100,7 +100,7 @@ export function isValidWikidata(wikidata) {
  * containing information about the article. For the keys/values of this
  * object, see the relevant MediaWiki API documentation.
  *
- * Calls @thumbnailCb with the Gdk.Pixbuf of the icon when successful, otherwise
+ * Calls @thumbnailCb with the Gdk.Texture of the icon when successful, otherwise
  * null.
  */
 export function fetchArticleInfo(wiki, size, metadataCb, thumbnailCb) {
@@ -185,7 +185,7 @@ export function fetchArticleInfo(wiki, size, metadataCb, thumbnailCb) {
  * containing information about the article. For the keys/values of this
  * object, see the relevant MediaWiki API documentation.
  *
- * Calls @thumbnailCb with the Gdk.Pixbuf of the icon when successful, otherwise
+ * Calls @thumbnailCb with the Gdk.Texture of the icon when successful, otherwise
  * null.
  */
 export function fetchArticleInfoForWikidata(wikidata, defaultArticle,
