@@ -71,7 +71,7 @@ export class OSMConnection {
         this._session.send_and_read_async(request, GLib.PRIORITY_DEFAULT, cancellable,
                                           (source, res) => {
             if (request.get_status() !== Soup.Status.OK) {
-                callback(false, message.get_status(), null, type, null);
+                callback(false, request.get_status(), null, type, null);
                 return;
             }
 
