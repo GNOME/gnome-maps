@@ -268,7 +268,7 @@ export function osmTypeFromString(osmType) {
         case 'node': return GeocodeGlib.PlaceOsmType.NODE;
         case 'relation': return GeocodeGlib.PlaceOsmType.RELATION;
         case 'way': return GeocodeGlib.PlaceOsmType.WAY;
-        default: return GeocodeGlib.PlaceOsmType.NODE;
+        default: return GeocodeGlib.PlaceOsmType.UNKNOWN;
     }
 }
 

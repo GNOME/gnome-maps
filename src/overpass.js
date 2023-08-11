@@ -19,11 +19,9 @@
 
 import Geocode from 'gi://GeocodeGlib';
 import GLib from 'gi://GLib';
-import GObject from 'gi://GObject';
 import Soup from 'gi://Soup';
 
 import {Application} from './application.js';
-import * as PhotonUtils from './photonUtils.js';
 import {Place} from './place.js';
 import * as Utils from './utils.js';
 
@@ -263,15 +261,19 @@ export class Overpass {
         if (!element.tags)
             return null;
 
-        let [lat, lon] = this._getCoordsFromElement(element);
-        let photonProperties =
-            this._getPhotonProperties(element.tags, osmType, osmId);
-        let place = PhotonUtils.parsePlace(lat, lon, photonProperties);
+        const [latitude, longitude] = this._getCoordsFromElement(element);
 
-        place.osmTags = element.tags;
-        place.prefilled = true;
-
-        return place;
+        return new Place({
+            location: new Geocode.Location({
+                latitude,
+                longitude,
+                accuracy: 0.0
+            }),
+            osm_type: Utils.osmTypeFromString(osmType),
+            osm_id: osmId + '',
+            osmTags: element.tags,
+            prefilled: true
+        });
     }
 
     _getCoordsFromElement(element) {
@@ -279,62 +281,6 @@ export class Overpass {
             return [element.lat, element.lon];
         else
             return [element.center.lat, element.center.lon];
-    }
-
-    _getPhotonProperties(tags, osmType, osmId) {
-        let properties = {};
-
-        properties.osm_type = this._getPhotonOsmType(osmType);
-        properties.osm_id = osmId;
-
-        if (tags.name)
-            properties.name = tags.name;
-
-        if (tags['addr:street'])
-            properties.street = tags['addr:street'];
-        if (tags['addr:housenumber'])
-            properties.housenumber = tags['addr:housenumber'];
-        if (tags['addr:postcode'])
-            properties.postcode = tags['addr:postcode'];
-        if (tags['addr:city'])
-            properties.city = tags['addr:city'];
-        if (tags['addr:country'])
-            properties.countrycode = tags['addr:country'];
-
-        if (tags.place)
-            this._setOsmKeyAndValue(properties, tags, 'place');
-        else if (tags.amenity)
-            this._setOsmKeyAndValue(properties, tags, 'amenity');
-        else if (tags.leisure)
-            this._setOsmKeyAndValue(properties, tags, 'leisure');
-        else if (tags.shop)
-            this._setOsmKeyAndValue(properties, tags, 'shop');
-        else if (tags.tourism)
-            this._setOsmKeyAndValue(properties, tags, 'tourism');
-        else if (tags.highway)
-            this._setOsmKeyAndValue(properties, tags, 'highway');
-        else if (tags.railway)
-            this._setOsmKeyAndValue(properties, tags, 'railway');
-        else if (tags.aeroway)
-            this._setOsmKeyAndValue(properties, tags, 'aeroway');
-        else if (tags.building)
-            this._setOsmKeyAndValue(properties, tags, 'building');
-
-        return properties;
-    }
-
-    _getPhotonOsmType(osmType) {
-        switch (osmType) {
-            case 'node': return 'N';
-            case 'way': return 'W';
-            case 'relation': return 'R';
-            default: return null;
-        }
-    }
-
-    _setOsmKeyAndValue(properties, tags, tag) {
-        properties.osm_key = tag;
-        properties.osm_value = tags[tag];
     }
 
     _getQueryUrl(osmType, osmId) {

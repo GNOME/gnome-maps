@@ -310,9 +310,20 @@ export class Place extends GObject.Object {
 
     /**
      * Most important OSM tag for the place ('amenity', 'shop', and so on).
-     * This corresponds to the osm_key parameter in Photon geocoder
      */
     get osmKey() {
+        const osmTags = this.osmTags;
+
+        if (osmTags) {
+            const tag = [
+                'place', 'amenity', 'leisure', 'shop', 'tourism', 'highway',
+                'railway', 'aeroway', 'building'
+            ].find(key => key in osmTags);
+
+            if (tag)
+                return tag;
+        }
+
         return this._osmKey;
     }
 
