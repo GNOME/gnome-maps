@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2023-03-20 21:44+0000\n"
-"PO-Revision-Date: 2023-03-21 08:36+0700\n"
-"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
+"POT-Creation-Date: 2023-08-10 22:03+0000\n"
+"PO-Revision-Date: 2023-08-11 19:46+0700\n"
+"Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome@i15n.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.1\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -28,8 +28,8 @@ msgstr ""
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
-#: data/ui/main-window.ui:27 src/application.js:61 src/mainWindow.js:134
-#: src/mainWindow.js:534
+#: data/ui/main-window.ui:27 src/application.js:61 src/mainWindow.js:143
+#: src/mainWindow.js:588
 msgid "Maps"
 msgstr "Peta"
 
@@ -56,7 +56,7 @@ msgstr ""
 "Peta memakai basis data kolaboratif OpenStreetMap, yang dibuat oleh ratusan "
 "ribu orang di seluruh dunia."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:369 src/mainWindow.js:531
+#: data/org.gnome.Maps.appdata.xml.in.in:369 src/mainWindow.js:585
 msgid "The GNOME Project"
 msgstr "Proyek GNOME"
 
@@ -90,79 +90,87 @@ msgid "Zoom level"
 msgstr "Tingkat perbesaran"
 
 #: data/org.gnome.Maps.gschema.xml:21
+msgid "rotation"
+msgstr "rotasi"
+
+#: data/org.gnome.Maps.gschema.xml:22
+msgid "Map rotation in radians"
+msgstr "Rotasi peta dalam radian"
+
+#: data/org.gnome.Maps.gschema.xml:26
 msgid "Map type"
 msgstr "Jenis Peta"
 
-#: data/org.gnome.Maps.gschema.xml:22
+#: data/org.gnome.Maps.gschema.xml:27
 msgid "The type of map to display (street, aerial, etc.)"
 msgstr "Jenis peta untuk ditampilkan (jalan, udara, dll.)"
 
-#: data/org.gnome.Maps.gschema.xml:26
+#: data/org.gnome.Maps.gschema.xml:31
 msgid "Window size"
 msgstr "Ukuran jendela"
 
-#: data/org.gnome.Maps.gschema.xml:27
+#: data/org.gnome.Maps.gschema.xml:32
 msgid "Window size (width and height)."
 msgstr "Ukuran jendela (lebar dan tinggi)."
 
-#: data/org.gnome.Maps.gschema.xml:31
+#: data/org.gnome.Maps.gschema.xml:36
 msgid "Window position"
 msgstr "Posisi jendela"
 
-#: data/org.gnome.Maps.gschema.xml:32
+#: data/org.gnome.Maps.gschema.xml:37
 msgid "Window position (X and Y)."
 msgstr "Posisi jendela (X dan Y)."
 
-#: data/org.gnome.Maps.gschema.xml:36
+#: data/org.gnome.Maps.gschema.xml:41
 msgid "Window maximized"
 msgstr "Jendela dimaksimalkan"
 
-#: data/org.gnome.Maps.gschema.xml:37
+#: data/org.gnome.Maps.gschema.xml:42
 msgid "Window maximization state"
 msgstr "Keadaan termaksimalkan jendela"
 
-#: data/org.gnome.Maps.gschema.xml:41
+#: data/org.gnome.Maps.gschema.xml:46
 msgid "Maximum number of search results"
 msgstr "Banyaknya hasil pencarian maksimum"
 
-#: data/org.gnome.Maps.gschema.xml:42
+#: data/org.gnome.Maps.gschema.xml:47
 msgid "Maximum number of search results from geocode search."
 msgstr "Banyanyak hasil pencarian maksimum dari pencarian geocode."
 
-#: data/org.gnome.Maps.gschema.xml:46
+#: data/org.gnome.Maps.gschema.xml:51
 msgid "Number of recent places to store"
 msgstr "Cacah lokasi baru-baru ini yang disimpan"
 
-#: data/org.gnome.Maps.gschema.xml:47
+#: data/org.gnome.Maps.gschema.xml:52
 msgid "Number of recently visited places to store."
 msgstr "Banyaknya lokasi baru-baru ini dikunjungi yang disimpan."
 
-#: data/org.gnome.Maps.gschema.xml:51
+#: data/org.gnome.Maps.gschema.xml:56
 msgid "Number of recent routes to store"
 msgstr "Cacah rute baru-baru ini yang akan disimpan"
 
-#: data/org.gnome.Maps.gschema.xml:52
+#: data/org.gnome.Maps.gschema.xml:57
 msgid "Number of recently visited routes to store."
 msgstr "Banyaknya rute baru-baru ini dikunjungi yang akan disimpan."
 
-#: data/org.gnome.Maps.gschema.xml:56
+#: data/org.gnome.Maps.gschema.xml:61
 msgid "OpenStreetMap username or e-mail address"
 msgstr "Nama pengguna atau alamat surel OpenStreetMap"
 
-#: data/org.gnome.Maps.gschema.xml:57
+#: data/org.gnome.Maps.gschema.xml:62
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr ""
 "Menandakan apakah pengguna telah masuk untuk menyunting data OpenStreetMap."
 
-#: data/org.gnome.Maps.gschema.xml:61
+#: data/org.gnome.Maps.gschema.xml:66
 msgid "Last used transportation type for routing"
 msgstr "Jenis transportasi terakhir yang digunakan untuk rute"
 
-#: data/org.gnome.Maps.gschema.xml:65
+#: data/org.gnome.Maps.gschema.xml:70
 msgid "Show scale"
 msgstr "Tampilkan skala"
 
-#: data/org.gnome.Maps.gschema.xml:66
+#: data/org.gnome.Maps.gschema.xml:71
 msgid "Whether to show the scale."
 msgstr "Apakah akan menampilkan skala."
 
@@ -214,16 +222,6 @@ msgid "Layers"
 msgstr "Lapisan"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:28
-msgid "Zoom Out"
-msgstr "Perkecil"
-
-#. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:37 data/ui/zoom-in-dialog.ui:27
-msgid "Zoom In"
-msgstr "Perbesar"
-
-#. Translators: This is a tooltip
 #: data/ui/headerbar-right.ui:11
 msgid "Print Route"
 msgstr "Cetak Rute"
@@ -255,60 +253,85 @@ msgstr "Cari"
 
 #: data/ui/help-overlay.ui:27
 msgctxt "shortcut window"
+msgid "Explore points-of-interest"
+msgstr "Jelajahi tempat menarik"
+
+#: data/ui/help-overlay.ui:33
+msgctxt "shortcut window"
+msgid "Show last search results"
+msgstr "Tampilkan hasil pencarian terakhir"
+
+#: data/ui/help-overlay.ui:39
+msgctxt "shortcut window"
 msgid "Toggle route planner"
 msgstr "Jungkitkan perencana rute"
 
-#: data/ui/help-overlay.ui:33
+#: data/ui/help-overlay.ui:45
 msgctxt "shortcut window"
 msgid "Print route"
 msgstr "Cetak rute"
 
-#: data/ui/help-overlay.ui:39
+#: data/ui/help-overlay.ui:51
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Keluar"
 
-#: data/ui/help-overlay.ui:45
+#: data/ui/help-overlay.ui:57
 msgctxt "shortcut window"
 msgid "Open main menu"
 msgstr "Buka menu utama"
 
-#: data/ui/help-overlay.ui:53
+#: data/ui/help-overlay.ui:65
 msgctxt "shortcut window"
 msgid "Map View"
 msgstr "Tilikan Peta"
 
-#: data/ui/help-overlay.ui:56
+#: data/ui/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Zoom in"
 msgstr "Perbesar"
 
-#: data/ui/help-overlay.ui:62
+#: data/ui/help-overlay.ui:74
 msgctxt "shortcut window"
 msgid "Zoom out"
 msgstr "Perkecil"
 
-#: data/ui/help-overlay.ui:68
+#: data/ui/help-overlay.ui:80
+msgctxt "shortcut window"
+msgid "Rotate clockwise"
+msgstr "Putar searah jarum jam"
+
+#: data/ui/help-overlay.ui:86
+msgctxt "shortcut window"
+msgid "Rotate counter-clockwise"
+msgstr "Putar berlawanan jarum jam"
+
+#: data/ui/help-overlay.ui:92
+msgctxt "shortcut window"
+msgid "Reset rotation"
+msgstr "Setel ulang rotasi"
+
+#: data/ui/help-overlay.ui:98
 msgctxt "shortcut window"
 msgid "Toggle scale"
 msgstr "Jungkitkan skala"
 
-#: data/ui/help-overlay.ui:74
+#: data/ui/help-overlay.ui:104
 msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Pergi ke lokasi saat ini"
 
-#: data/ui/help-overlay.ui:84
+#: data/ui/help-overlay.ui:114
 msgctxt "shortcut window"
 msgid "Switch to street view"
 msgstr "Beralih ke tampilan jalan"
 
-#: data/ui/help-overlay.ui:91
+#: data/ui/help-overlay.ui:121
 msgctxt "shortcut window"
 msgid "Switch to aerial view"
 msgstr "Beralih ke tampilan udara"
 
-#: data/ui/help-overlay.ui:97
+#: data/ui/help-overlay.ui:127
 msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "Buka layer shape"
@@ -317,23 +340,14 @@ msgstr "Buka layer shape"
 msgid "Show Scale"
 msgstr "Tampilkan Skala"
 
-#. Translators: This string uses ellipsis character
 #: data/ui/layers-popover.ui:16
+msgid "Enable Experimental Map"
+msgstr "Aktifkan Peta Eksperimental"
+
+#. Translators: This string uses ellipsis character
+#: data/ui/layers-popover.ui:20
 msgid "Open Shape Layer…"
 msgstr "Buka Layer Shape…"
-
-#: data/ui/location-service-dialog.ui:12 data/ui/osm-edit-dialog.ui:225
-#: data/ui/zoom-in-dialog.ui:21
-msgid "Cancel"
-msgstr "Batal"
-
-#: data/ui/location-service-dialog.ui:18
-msgid "Location Settings"
-msgstr "Pengaturan Lokasi"
-
-#: data/ui/location-service-dialog.ui:32
-msgid "Turn on location services to find your location"
-msgstr "Nyalakan layanan lokasi untuk menemukan lokasi Anda"
 
 #: data/ui/main-window.ui:8
 msgid "Set up OpenStreetMap Account…"
@@ -351,7 +365,7 @@ msgstr "_Tombol Pintas"
 msgid "About Maps"
 msgstr "Tentang Peta"
 
-#: data/ui/main-window.ui:38
+#: data/ui/main-window.ui:48
 msgid "Main Menu"
 msgstr "Menu Utama"
 
@@ -364,7 +378,7 @@ msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
 msgstr ""
 "<span weight=\"bold\" size=\"x-large\">Masuklah untuk menyunting peta</span>"
 
-#: data/ui/osm-account-dialog.ui:40
+#: data/ui/osm-account-dialog.ui:39
 msgid ""
 "Help to improve the map, using an\n"
 "OpenStreetMap account."
@@ -372,7 +386,7 @@ msgstr ""
 "Bantulah memperbaiki peta, memakai\n"
 "akun OpenStreetMap."
 
-#: data/ui/osm-account-dialog.ui:54
+#: data/ui/osm-account-dialog.ui:52
 msgid ""
 "Sign in to authorize access in a web browser.\n"
 "Then fill in the obtained verification code here in the next step."
@@ -380,36 +394,32 @@ msgstr ""
 "Masuk untuk mengotorisasi akses di peramban web.\n"
 "Kemudian isi kode verifikasi yang diperoleh di sini pada langkah selanjutnya."
 
-#: data/ui/osm-account-dialog.ui:70
-msgid "Sign up"
-msgstr "Daftar"
-
-#: data/ui/osm-account-dialog.ui:83
+#: data/ui/osm-account-dialog.ui:67
 msgid "Sign In"
 msgstr "Masuk"
 
-#: data/ui/osm-account-dialog.ui:125
+#: data/ui/osm-account-dialog.ui:111
 msgid "Copy verification code shown when authorizing access in the browser"
 msgstr ""
 "Salin kode verifikasi yang ditampilkan saat mengotorisasi akses di peramban"
 
-#: data/ui/osm-account-dialog.ui:135
+#: data/ui/osm-account-dialog.ui:121
 msgid "Verification code"
 msgstr "Kode verifikasi"
 
-#: data/ui/osm-account-dialog.ui:146
+#: data/ui/osm-account-dialog.ui:132
 msgid "Verify"
 msgstr "Verifikasi"
 
-#: data/ui/osm-account-dialog.ui:174
+#: data/ui/osm-account-dialog.ui:160
 msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
 msgstr "<span weight=\"bold\" size=\"x-large\">Masuk</span>"
 
-#: data/ui/osm-account-dialog.ui:186
+#: data/ui/osm-account-dialog.ui:172
 msgid "Your OpenStreetMap account is active."
 msgstr "Akun OpenStreetMap Anda aktif."
 
-#: data/ui/osm-account-dialog.ui:216
+#: data/ui/osm-account-dialog.ui:202
 msgid "Sign Out"
 msgstr "Keluar"
 
@@ -429,6 +439,11 @@ msgstr "Kode pos"
 #: data/ui/osm-edit-address.ui:44
 msgid "City"
 msgstr "Kota"
+
+#: data/ui/osm-edit-dialog.ui:8
+msgctxt "dialog title"
+msgid "Edit on OpenStreetMap"
+msgstr "Sunting pada OpenStreetMap"
 
 #: data/ui/osm-edit-dialog.ui:57
 msgid "Type"
@@ -458,6 +473,10 @@ msgstr ""
 msgid "Recently Used"
 msgstr "Baru-baru Ini Dipakai"
 
+#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:541
+msgid "Cancel"
+msgstr "Batal"
+
 #: data/ui/osm-edit-dialog.ui:238 src/osmEditDialog.js:531
 msgid "Next"
 msgstr "Selanjutnya"
@@ -470,11 +489,19 @@ msgstr "Artikel"
 msgid "Wikidata tag"
 msgstr "Tag Wikidata"
 
-#: data/ui/place-popover.ui:44 src/application.js:274
+#: data/ui/osm-edit-wikipedia.ui:32
+msgid "Load Wikidata tag for article"
+msgstr "Muat tag Wikidata untuk artikel"
+
+#: data/ui/place-popover.ui:23 src/searchBar.js:54
+msgid "Explore Nearby Places"
+msgstr "Jelajahi Tempat Terdekat"
+
+#: data/ui/place-popover.ui:82 src/application.js:274
 msgid "No results found"
 msgstr "Hasil tak ditemukan"
 
-#: data/ui/place-popover.ui:54 src/application.js:252 src/osmEditDialog.js:568
+#: data/ui/place-popover.ui:92 src/application.js:252
 msgid "An error has occurred"
 msgstr "Terjadi suatu kesalahan"
 
@@ -495,7 +522,7 @@ msgstr "Salin"
 msgid "Send To…"
 msgstr "Kirim Ke…"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:65
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:64
 msgid "Open Shape Layer"
 msgstr "Buka Layer Shape"
 
@@ -513,11 +540,11 @@ msgstr "Jungkitkan kenampakan"
 msgid "Remove Shape Layer"
 msgstr "Hapus Layer Shape"
 
-#: data/ui/sidebar.ui:215
+#: data/ui/sidebar.ui:207
 msgid "Route search by GraphHopper"
 msgstr "Pencarian rute oleh GraphHopper"
 
-#: data/ui/sidebar.ui:282
+#: data/ui/sidebar.ui:272
 msgid ""
 "Routing itineraries for public transit is provided by third-party\n"
 "services.\n"
@@ -625,9 +652,24 @@ msgstr "Sunting pada OpenStreetMap"
 msgid "Share location"
 msgstr "Bagikan lokasi"
 
-#: data/ui/zoom-in-dialog.ui:11
-msgid "Zoom in to add location!"
-msgstr "Perbesar untuk menambah lokasi!"
+#: data/ui/poi-category-goback-row.ui:22
+msgid "Back to Main Categories"
+msgstr "Kembali ke Kategori Utama"
+
+#. Translators: This is a tooltip
+#: data/ui/zoom-and-rotate-controls.ui:15 src/mapView.js:1121
+msgid "Zoom In"
+msgstr "Perbesar"
+
+#. Translators: This is a tooltip
+#: data/ui/zoom-and-rotate-controls.ui:28
+msgid "Zoom Out"
+msgstr "Perkecil"
+
+#. Translators: This is a tooltip
+#: data/ui/zoom-and-rotate-controls.ui:49
+msgid "Reset Rotation"
+msgstr "Setel Ulang Rotasi"
 
 #: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338
 #: lib/maps-file-data-source.c:418
@@ -684,23 +726,7 @@ msgstr "Peta tidak valid: URI: %s"
 msgid "Maps at %f, %f.png"
 msgstr "Peta di %f, %f.png"
 
-#: src/exportViewDialog.js:156
-msgid "Filesystem is read only"
-msgstr "Sistem berkas hanya baca"
-
-#: src/exportViewDialog.js:158
-msgid "You do not have permission to save there"
-msgstr "Anda tak punya ijin untuk menyimpan di sana"
-
-#: src/exportViewDialog.js:160
-msgid "The directory does not exist"
-msgstr "Direktori tidak ada"
-
-#: src/exportViewDialog.js:162
-msgid "No filename specified"
-msgstr "Tak ada nama berkas yang dinyatakan"
-
-#: src/exportViewDialog.js:170
+#: src/exportViewDialog.js:153
 msgid "Unable to export view"
 msgstr "Tak bisa mengekspor tilikan"
 
@@ -724,38 +750,46 @@ msgstr "Permintaan rute gagal."
 msgid "No route found."
 msgstr "Rute tak ditemukan."
 
-#: src/graphHopper.js:215 src/transitplugins/openTripPlanner.js:1121
+#: src/graphHopper.js:215 src/transitplugins/openTripPlanner.js:1131
 msgid "Start!"
 msgstr "Mulai!"
 
-#: src/mainWindow.js:62
+#: src/mainWindow.js:61
 msgid "All Layer Files"
 msgstr "Semua Berkas Lapisan"
 
-#: src/mainWindow.js:446
+#: src/mainWindow.js:468
 msgid "Failed to connect to location service"
 msgstr "Gagal menyambung ke layanan lokasi"
 
-#: src/mainWindow.js:532
+#: src/mainWindow.js:473
+msgid "Turn on location services"
+msgstr "Nyalakan layanan lokasi"
+
+#: src/mainWindow.js:474
+msgid "Location Settings"
+msgstr "Pengaturan Lokasi"
+
+#: src/mainWindow.js:586
 msgid "translator-credits"
 msgstr ""
 "Andika Triwidada <andika@gmail.com>, 2013-2016, 2018, 2019, 2023.\n"
 "Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017-2023."
 
-#: src/mainWindow.js:536
+#: src/mainWindow.js:590
 msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Hak Cipta © 2011 – 2023 Red Hat, Inc. dan Penulis GNOME Peta"
 
-#: src/mainWindow.js:552
+#: src/mainWindow.js:606
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Data peta oleh %s dan kontributor"
 
-#: src/mainWindow.js:553
+#: src/mainWindow.js:607
 msgid "Map Data Provider"
 msgstr "Penyedia Data Peta"
 
-#: src/mainWindow.js:565
+#: src/mainWindow.js:619
 msgid "Map Tile Provider"
 msgstr "Penyedia Ubin Peta"
 
@@ -764,29 +798,29 @@ msgstr "Penyedia Ubin Peta"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:573
+#: src/mainWindow.js:627
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Ubin peta disediakan oleh %s"
 
-#: src/mainWindow.js:603
+#: src/mainWindow.js:657
 msgid "Search Provider"
 msgstr "Penyedia Pencarian"
 
-#: src/mainWindow.js:606
+#: src/mainWindow.js:660
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Pencarian disediakan oleh %s menggunakan %s"
 
-#: src/mapView.js:501 src/mapView.js:560
+#: src/mapView.js:515 src/mapView.js:580
 msgid "Failed to open layer"
 msgstr "Gagal membuka layer"
 
-#: src/mapView.js:521
+#: src/mapView.js:534
 msgid "Do you want to continue?"
 msgstr "Apakah Anda ingin melanjutkan?"
 
-#: src/mapView.js:522
+#: src/mapView.js:535
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -795,19 +829,27 @@ msgstr ""
 "Anda berencana membuka berkas dengan ukuran total %s MB. Ini bisa memakan "
 "waktu untuk memuat"
 
-#: src/mapView.js:554
+#: src/mapView.js:542 src/transitplugins/openTripPlanner.js:1207
+msgid "Continue"
+msgstr "Lanjutkan"
+
+#: src/mapView.js:574
 msgid "File type is not supported"
 msgstr "Jenis berkas tak didukung"
 
-#: src/mapView.js:591
+#: src/mapView.js:611
 msgid "Failed to open GeoURI"
 msgstr "Gagal membuka GeoURI"
 
-#: src/mapView.js:1030
+#: src/mapView.js:1080
 msgid "Nothing found here!"
 msgstr "Tak ada yang ditemukan di sini!"
 
-#: src/mapView.js:1089
+#: src/mapView.js:1120
+msgid "Zoom in to add location"
+msgstr "Perbesar untuk menambah lokasi"
+
+#: src/mapView.js:1141
 msgid "Location was added in OpenStreetMap"
 msgstr "Lokasi ditambahkan pada OpenStreetMap"
 
@@ -857,7 +899,7 @@ msgstr "Nama resmi. Ini biasanya apa yang tertulis pada rambu."
 msgid "Address"
 msgstr "Alamat"
 
-#: src/osmEditDialog.js:120 src/placeView.js:254
+#: src/osmEditDialog.js:120 src/placeView.js:261
 msgid "Website"
 msgstr "Situs web"
 
@@ -886,7 +928,7 @@ msgstr ""
 "Nomor telepon. Gunakan format internasional, diawali dengan tanda +. Hati-"
 "hati dengan perundangan privasi lokal, khususnya untuk nomor telepon pribadi."
 
-#: src/osmEditDialog.js:139 src/placeView.js:282
+#: src/osmEditDialog.js:139 src/placeView.js:294
 msgid "E-mail"
 msgstr "Surel"
 
@@ -908,11 +950,11 @@ msgstr ""
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:149 src/placeView.js:630
+#: src/osmEditDialog.js:149 src/placeView.js:646
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: src/osmEditDialog.js:156 src/placeView.js:319
+#: src/osmEditDialog.js:156 src/placeView.js:331
 msgid "Opening hours"
 msgstr "Jam buka"
 
@@ -926,11 +968,11 @@ msgstr "Lihat taut dalam label untuk bantuan tentang format."
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:164 src/placeView.js:429
+#: src/osmEditDialog.js:164 src/placeView.js:441
 msgid "Population"
 msgstr "Populasi"
 
-#: src/osmEditDialog.js:169 src/placeView.js:458
+#: src/osmEditDialog.js:169 src/placeView.js:470
 msgid "Altitude"
 msgstr "Ketinggian"
 
@@ -1080,7 +1122,7 @@ msgstr "Yazidisme"
 msgid "Zoroastrianism"
 msgstr "Zoroastrianisme"
 
-#: src/osmEditDialog.js:230
+#: src/osmEditDialog.js:230 src/poiCategories.js:174
 msgid "Toilets"
 msgstr "Toilet"
 
@@ -1111,7 +1153,7 @@ msgstr "Pilih Jenis"
 msgid "Done"
 msgstr "Selesai"
 
-#: src/osmEditDialog.js:827
+#: src/osmEditDialog.js:818
 msgid ""
 "The format used should include the language code and the article title like "
 "“en:Article title”."
@@ -1119,13 +1161,13 @@ msgstr ""
 "Format yang dipakai mesti menyertakan kode bahasa dan judul artikel seperti "
 "\"id:Judul artikel\"."
 
-#: src/osmEditDialog.js:833
+#: src/osmEditDialog.js:824
 msgid "Use the reload button to load the Wikidata tag for the selected article"
 msgstr ""
 "Gunakan tombol muat ulang untuk memuat tag Wikidata untuk artikel yang "
 "dipilih"
 
-#: src/osmEditDialog.js:841
+#: src/osmEditDialog.js:832
 msgid "Couldn't find Wikidata tag for article"
 msgstr "Tidak dapat menemukan tag Wikidata untuk artikel"
 
@@ -1133,24 +1175,38 @@ msgstr "Tidak dapat menemukan tag Wikidata untuk artikel"
 msgid "Unnamed place"
 msgstr "Tempat tanpa nama"
 
-#: src/placeEntry.js:267
+#: src/placeEntry.js:261
 msgid "Failed to parse Geo URI"
 msgstr "Gagal mengurai URI Geo"
 
-#: src/placeEntry.js:279
+#: src/placeEntry.js:273
 msgid "Failed to parse Maps URI"
 msgstr "Gagal mengurai Peta URI"
 
-#: src/placeView.js:242
+#. 300 ft (300 * 12 * 0.0254 m)
+#.
+#. * Translators: This a format string for showing a distance to a place
+#. * is lower than a "quite short" distance.
+#. * The "less than" symbol can be substituded with an appropriate one, if
+#. * needed (e.g. using the correct direction, or alternative symbol).
+#. * The %s should be kept, and is substituted with a label representing the
+#. * short distance. The \u2009 (thin space) could also be adjusted if needed
+#: src/placeListRow.js:46
+#, javascript-format
+msgctxt "short distance format string"
+msgid "< %s"
+msgstr "< %s"
+
+#: src/placeView.js:249
 msgid "Coordinates"
 msgstr "Koordinat"
 
-#: src/placeView.js:246
+#: src/placeView.js:253
 msgid "Accuracy"
 msgstr "Akurasi"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:249
+#: src/placeView.js:256
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Akurasi: %s"
@@ -1161,7 +1217,7 @@ msgstr "Akurasi: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:268
+#: src/placeView.js:275
 msgid "Phone number"
 msgstr "Nomor telepon"
 
@@ -1169,7 +1225,7 @@ msgstr "Nomor telepon"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:295
+#: src/placeView.js:307
 msgid "Offers takeout"
 msgstr "Menawarkan bawa pulang"
 
@@ -1177,7 +1233,7 @@ msgstr "Menawarkan bawa pulang"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:303
+#: src/placeView.js:315
 msgid "Does not offer takeout"
 msgstr "Tidak menawarkan bawa pulang"
 
@@ -1186,14 +1242,14 @@ msgstr "Tidak menawarkan bawa pulang"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:312
+#: src/placeView.js:324
 msgid "Only offers takeout"
 msgstr "Hanya menawarkan bawa pulang"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:329
+#: src/placeView.js:341
 msgid "Public internet access"
 msgstr "Akses internet publik"
 
@@ -1201,50 +1257,50 @@ msgstr "Akses internet publik"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:338
+#: src/placeView.js:350
 msgid "No internet access"
 msgstr "Tidak ada akses internet"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:346
+#: src/placeView.js:358
 msgid "Public Wi-Fi"
 msgstr "Wi-Fi Publik"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:354
+#: src/placeView.js:366
 msgid "Wired internet access"
 msgstr "Akses internet berkabel"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:362
+#: src/placeView.js:374
 msgid "Computers available for use"
 msgstr "Komputer tersedia untuk digunakan"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:370
+#: src/placeView.js:382
 msgid "Internet assistance available"
 msgstr "Bantuan Internet tersedia"
 
-#: src/placeView.js:376
+#: src/placeView.js:388
 msgid "No toilets available"
 msgstr "Tidak ada toilet yang tersedia"
 
-#: src/placeView.js:379
+#: src/placeView.js:391
 msgid "Toilets available"
 msgstr "Toilet tersedia"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:388
+#: src/placeView.js:400
 msgid "Wheelchair accessible"
 msgstr "Dapat diakses kursi roda"
 
@@ -1253,7 +1309,7 @@ msgstr "Dapat diakses kursi roda"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:398
+#: src/placeView.js:410
 msgid "Limited wheelchair accessibility"
 msgstr "Aksesibilitas kursi roda terbatas"
 
@@ -1261,7 +1317,7 @@ msgstr "Aksesibilitas kursi roda terbatas"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:407
+#: src/placeView.js:419
 msgid "Not wheelchair accessible"
 msgstr "Tidak dapat diakses kursi roda"
 
@@ -1270,7 +1326,7 @@ msgstr "Tidak dapat diakses kursi roda"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:417
+#: src/placeView.js:429
 msgid "Designated for wheelchair users"
 msgstr "Ditunjuk untuk pengguna kursi roda"
 
@@ -1279,7 +1335,7 @@ msgstr "Ditunjuk untuk pengguna kursi roda"
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:448
+#: src/placeView.js:460
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s di bawah permukaan laut"
@@ -1288,11 +1344,11 @@ msgstr "%s di bawah permukaan laut"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:455
+#: src/placeView.js:467
 msgid "At sea level"
 msgstr "Di permukaan laut"
 
-#: src/placeView.js:464
+#: src/placeView.js:476
 msgid "Religion:"
 msgstr "Agama:"
 
@@ -1307,6 +1363,270 @@ msgstr "Koordinat dalam URL tak valid"
 #: src/place.js:559
 msgid "URL is not supported"
 msgstr "URL tak didukung"
+
+#: src/poiCategories.js:132
+msgid "Amenities"
+msgstr "Fasilitas"
+
+#: src/poiCategories.js:135
+msgid "ATMs"
+msgstr "ATM"
+
+#: src/poiCategories.js:141
+msgid "Post Boxes"
+msgstr "Kotak Pos"
+
+#: src/poiCategories.js:147
+msgid "Post Offices"
+msgstr "Kantor Pos"
+
+#: src/poiCategories.js:153
+msgid "Police"
+msgstr "Polisi"
+
+#: src/poiCategories.js:159
+msgid "Libraries"
+msgstr "Perpustakaan"
+
+#: src/poiCategories.js:165
+msgid "Pharmacies"
+msgstr "Apotek"
+
+#: src/poiCategories.js:170
+msgid "Recycling"
+msgstr "Daur ulang"
+
+#: src/poiCategories.js:180
+msgid "Wheelchair-accessible Toilets"
+msgstr "Toilet yang dapat diakses kursi roda"
+
+#: src/poiCategories.js:186
+msgid "Baggage Lockers"
+msgstr "Baggage Lockers"
+
+#: src/poiCategories.js:194
+msgid "Eating & Drinking"
+msgstr "Makan & Minum"
+
+#: src/poiCategories.js:198
+msgid "Restaurants"
+msgstr "Restoran"
+
+#: src/poiCategories.js:203
+msgid "Fast Food"
+msgstr "Makanan Cepat Saji"
+
+#: src/poiCategories.js:208
+msgid "Food Courts"
+msgstr "Pujasera"
+
+#: src/poiCategories.js:213
+msgid "Pubs"
+msgstr "Pub"
+
+#: src/poiCategories.js:219
+msgid "Bars"
+msgstr "Bar"
+
+#: src/poiCategories.js:224
+msgid "Cafes"
+msgstr "Kafe"
+
+#: src/poiCategories.js:229
+msgid "Ice Cream"
+msgstr "Es Krim"
+
+#: src/poiCategories.js:233
+msgid "Food, Snacks, and Beverage Machines"
+msgstr "Mesin Makanan, Jajanan, dan Minuman"
+
+#: src/poiCategories.js:241
+msgid "Shopping"
+msgstr "Belanja"
+
+#: src/poiCategories.js:245
+msgid "Supermarkets"
+msgstr "Supermarkets"
+
+#: src/poiCategories.js:251
+msgid "Convenience Stores"
+msgstr "Toko Serba Ada"
+
+#: src/poiCategories.js:256
+msgid "Shopping Malls"
+msgstr "Shopping Malls"
+
+#: src/poiCategories.js:262
+msgid "Clothes"
+msgstr "Pakaian"
+
+#: src/poiCategories.js:267
+msgid "Shoes"
+msgstr "Sepatu"
+
+#: src/poiCategories.js:272
+msgid "Electronics"
+msgstr "Elektronik"
+
+#: src/poiCategories.js:278
+msgid "Alcohol"
+msgstr "Alkohol"
+
+#: src/poiCategories.js:284
+msgid "Bakeries"
+msgstr "Toko Roti"
+
+#: src/poiCategories.js:290
+msgid "Flowers"
+msgstr "Bunga-bunga"
+
+#: src/poiCategories.js:297
+msgid "Transportation"
+msgstr "Transportasi"
+
+#: src/poiCategories.js:301
+msgid "Bus & Tram Stops"
+msgstr "Halte Bus & Trem"
+
+#: src/poiCategories.js:309
+msgid "Train & Subway Stations"
+msgstr "Stasiun Kereta & Kereta Bawah Tanah"
+
+#: src/poiCategories.js:317
+msgid "Tickets"
+msgstr "Tiket"
+
+#: src/poiCategories.js:325
+msgid "Parking"
+msgstr "Parkir"
+
+#: src/poiCategories.js:330
+msgid "Bicycle Parking"
+msgstr "Bicycle Parking"
+
+#: src/poiCategories.js:335
+msgid "Bicycle Rental"
+msgstr "Penyewaan Sepeda"
+
+#: src/poiCategories.js:340
+msgid "Car Rental"
+msgstr "Penyewaan Mobil"
+
+#: src/poiCategories.js:345
+msgid "Fuel"
+msgstr "Bahan Bakar"
+
+#: src/poiCategories.js:350
+msgid "EV Charging"
+msgstr "Pengisian EV"
+
+#: src/poiCategories.js:358
+msgid "Healthcare"
+msgstr "Kesehatan"
+
+#: src/poiCategories.js:362
+msgid "Clinics"
+msgstr "Klinik"
+
+#: src/poiCategories.js:368
+msgid "Hospitals"
+msgstr "Rumah Sakit"
+
+#: src/poiCategories.js:374
+msgid "Dentists"
+msgstr "Dokter Gigi"
+
+#: src/poiCategories.js:381
+msgid "Accommodation"
+msgstr "Akomodasi"
+
+#: src/poiCategories.js:385
+msgid "Hotels"
+msgstr "Hotel"
+
+#: src/poiCategories.js:390
+msgid "Hostels"
+msgstr "Hostel"
+
+#: src/poiCategories.js:395
+msgid "Bed & Breakfast"
+msgstr "Tempat Tidur & Sarapan"
+
+#: src/poiCategories.js:400
+msgid "Campings"
+msgstr "Berkemah"
+
+#: src/poiCategories.js:407
+msgid "Recreation"
+msgstr "Rekreasi"
+
+#: src/poiCategories.js:411
+msgid "Parks"
+msgstr "Taman"
+
+#: src/poiCategories.js:416
+msgid "Playgrounds"
+msgstr "Taman Bermain"
+
+#: src/poiCategories.js:420
+msgid "Beaches"
+msgstr "Pantai"
+
+#: src/poiCategories.js:425
+msgid "Nature Reserves"
+msgstr "Cagar Alam"
+
+#: src/poiCategories.js:431
+msgid "Theme Parks"
+msgstr "Taman Hiburan"
+
+#: src/poiCategories.js:436
+msgid "Theaters"
+msgstr "Teater"
+
+#: src/poiCategories.js:442
+msgid "Movie Theaters"
+msgstr "Bioskop"
+
+#: src/poiCategories.js:448
+msgid "Night Clubs"
+msgstr "Klub Malam"
+
+#: src/poiCategories.js:455
+msgid "Tourism"
+msgstr "Pariwisata"
+
+#: src/poiCategories.js:459
+msgid "Museums"
+msgstr "Museum"
+
+#: src/poiCategories.js:465
+msgid "Attractions"
+msgstr "Atraksi"
+
+#: src/poiCategories.js:470
+msgid "Artworks"
+msgstr "Karya Seni"
+
+#: src/poiCategories.js:475
+msgid "Tourist Information"
+msgstr "Informasi Turis"
+
+#: src/poiCategories.js:482
+msgid "Sports"
+msgstr "Olah Raga"
+
+#: src/poiCategories.js:486
+msgid "Gyms"
+msgstr "Gym"
+
+#: src/poiCategories.js:492
+msgid "Outdoor Gyms"
+msgstr "Gym Luar Ruangan"
+
+#: src/poiCategories.js:498
+msgid "Golf Courses"
+msgstr "Lapangan Golf"
 
 #: src/printLayout.js:350
 #, javascript-format
@@ -1340,6 +1660,10 @@ msgstr "Hapus lewat lokasi"
 msgid "Reverse route"
 msgstr "Rute sebaliknya"
 
+#: src/searchBar.js:45
+msgid "Search"
+msgstr "Cari"
+
 #. Translators: The first string is the name of the city, the
 #. second string is the name of the app to add it to
 #: src/sendToDialog.js:84
@@ -1351,7 +1675,7 @@ msgstr "Tambahkan %s ke %s"
 msgid "Failed to open URI"
 msgstr "Gagal membuka URI"
 
-#: src/sendToDialog.js:248
+#: src/sendToDialog.js:246
 #, javascript-format
 msgid "Open with %s"
 msgstr "Buka dengan %s"
@@ -1361,12 +1685,12 @@ msgid "failed to load file"
 msgstr "gagal memuat berkas"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:349
+#: src/sidebar.js:325
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Perkiraan waktu: %s"
 
-#: src/sidebar.js:419
+#: src/sidebar.js:395
 #, javascript-format
 msgid "Itineraries provided by %s"
 msgstr "Jadwal disediakan oleh %s"
@@ -1403,7 +1727,7 @@ msgstr "Berjalan %s"
 msgid "Arrive at %s"
 msgstr "Tiba di %s"
 
-#: src/transit.js:79 src/transitplugins/openTripPlanner.js:1134
+#: src/transit.js:79 src/transitplugins/openTripPlanner.js:1144
 msgid "Arrive"
 msgstr "Tiba"
 
@@ -1606,7 +1930,7 @@ msgstr "Eksak"
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
 #.
-#: src/utils.js:361
+#: src/utils.js:345
 #, javascript-format
 msgid "%s h"
 msgstr "%s j"
@@ -1615,7 +1939,7 @@ msgstr "%s j"
 #. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
 #.
-#: src/utils.js:367
+#: src/utils.js:351
 #, javascript-format
 msgid "%s h %s min"
 msgid_plural "%s h %s min"
@@ -1625,7 +1949,7 @@ msgstr[0] "%s j %s mnt"
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
 #.
-#: src/utils.js:374
+#: src/utils.js:358
 #, javascript-format
 msgid "%s min"
 msgid_plural "%s min"
@@ -1635,32 +1959,32 @@ msgstr[0] "%s mnt"
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
 #.
-#: src/utils.js:380
+#: src/utils.js:364
 #, javascript-format
 msgid "%s s"
 msgid_plural "%s s"
 msgstr[0] "%s dtk"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:391
+#: src/utils.js:375
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:394
+#: src/utils.js:378
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:402
+#: src/utils.js:386
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mil"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:405
+#: src/utils.js:389
 #, javascript-format
 msgid "%s ft"
 msgstr "%s kaki"
@@ -1669,106 +1993,117 @@ msgstr "%s kaki"
 msgid "This plugin doesn't support latest arrival"
 msgstr "Pengaya ini tidak mendukung kedatangan terbaru"
 
-#: src/transitplugins/openTripPlanner.js:1195
+#: src/transitplugins/openTripPlanner.js:1205
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Lanjutkan pada %s"
 
-#: src/transitplugins/openTripPlanner.js:1197
-msgid "Continue"
-msgstr "Lanjutkan"
-
-#: src/transitplugins/openTripPlanner.js:1200
+#: src/transitplugins/openTripPlanner.js:1210
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Belok kiri di %s"
 
-#: src/transitplugins/openTripPlanner.js:1202
+#: src/transitplugins/openTripPlanner.js:1212
 msgid "Turn left"
 msgstr "Belok kiri"
 
-#: src/transitplugins/openTripPlanner.js:1205
+#: src/transitplugins/openTripPlanner.js:1215
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Belok sedikit ke kiri pada %s"
 
-#: src/transitplugins/openTripPlanner.js:1207
+#: src/transitplugins/openTripPlanner.js:1217
 msgid "Turn slightly left"
 msgstr "Belok sedikit ke kiri"
 
-#: src/transitplugins/openTripPlanner.js:1210
+#: src/transitplugins/openTripPlanner.js:1220
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Belok kiri tajam pada %s"
 
-#: src/transitplugins/openTripPlanner.js:1212
+#: src/transitplugins/openTripPlanner.js:1222
 msgid "Turn sharp left"
 msgstr "Belok kiri tajam"
 
-#: src/transitplugins/openTripPlanner.js:1215
+#: src/transitplugins/openTripPlanner.js:1225
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Belok kanan pada %s"
 
-#: src/transitplugins/openTripPlanner.js:1217
+#: src/transitplugins/openTripPlanner.js:1227
 msgid "Turn right"
 msgstr "Belok kanan"
 
-#: src/transitplugins/openTripPlanner.js:1220
+#: src/transitplugins/openTripPlanner.js:1230
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Belok sedikit ke kanan pada %s"
 
-#: src/transitplugins/openTripPlanner.js:1222
+#: src/transitplugins/openTripPlanner.js:1232
 msgid "Turn slightly right"
 msgstr "Belok sedikit ke kanan"
 
-#: src/transitplugins/openTripPlanner.js:1225
+#: src/transitplugins/openTripPlanner.js:1235
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Belok kanan tajam pada %s"
 
-#: src/transitplugins/openTripPlanner.js:1227
+#: src/transitplugins/openTripPlanner.js:1237
 msgid "Turn sharp right"
 msgstr "Belok kanan tajam"
 
-#: src/transitplugins/openTripPlanner.js:1233
+#: src/transitplugins/openTripPlanner.js:1243
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "Di bundaran, ambil jalur keluar %s"
 
-#: src/transitplugins/openTripPlanner.js:1235
+#: src/transitplugins/openTripPlanner.js:1245
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "Di bundaran, ambil jalur ke %s"
 
-#: src/transitplugins/openTripPlanner.js:1237
+#: src/transitplugins/openTripPlanner.js:1247
 msgid "Take the roundabout"
 msgstr "Ambil bundaran"
 
-#: src/transitplugins/openTripPlanner.js:1241
+#: src/transitplugins/openTripPlanner.js:1251
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Naik lift dan turun di %s"
 
-#: src/transitplugins/openTripPlanner.js:1243
+#: src/transitplugins/openTripPlanner.js:1253
 msgid "Take the elevator"
 msgstr "Naik lift"
 
-#: src/transitplugins/openTripPlanner.js:1247
+#: src/transitplugins/openTripPlanner.js:1257
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Putar balik kiri ke %s"
 
-#: src/transitplugins/openTripPlanner.js:1249
+#: src/transitplugins/openTripPlanner.js:1259
 msgid "Make a left u-turn"
 msgstr "Putar balik kiri"
 
-#: src/transitplugins/openTripPlanner.js:1252
+#: src/transitplugins/openTripPlanner.js:1262
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Putar balik kanan ke %s"
 
-#: src/transitplugins/openTripPlanner.js:1254
+#: src/transitplugins/openTripPlanner.js:1264
 msgid "Make a right u-turn"
 msgstr "Putar balik kanan"
+
+#~ msgid "Sign up"
+#~ msgstr "Daftar"
+
+#~ msgid "Filesystem is read only"
+#~ msgstr "Sistem berkas hanya baca"
+
+#~ msgid "You do not have permission to save there"
+#~ msgstr "Anda tak punya ijin untuk menyimpan di sana"
+
+#~ msgid "The directory does not exist"
+#~ msgstr "Direktori tidak ada"
+
+#~ msgid "No filename specified"
+#~ msgstr "Tak ada nama berkas yang dinyatakan"
