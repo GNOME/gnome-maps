@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2023-07-23 11:54+0000\n"
-"PO-Revision-Date: 2023-07-28 21:07+0300\n"
+"POT-Creation-Date: 2023-08-10 22:03+0000\n"
+"PO-Revision-Date: 2023-08-11 21:37+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -29,7 +29,7 @@ msgstr ""
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
 #: data/ui/main-window.ui:27 src/application.js:61 src/mainWindow.js:143
-#: src/mainWindow.js:577
+#: src/mainWindow.js:588
 msgid "Maps"
 msgstr "Карти"
 
@@ -55,7 +55,7 @@ msgstr ""
 "Карти використовують колективну базу даних OpenStreetMap, яку роблять тисячі "
 "осіб по всій планеті."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:369 src/mainWindow.js:574
+#: data/org.gnome.Maps.appdata.xml.in.in:369 src/mainWindow.js:585
 msgid "The GNOME Project"
 msgstr "Проєкт GNOME"
 
@@ -89,7 +89,6 @@ msgid "Zoom level"
 msgstr "Масштабування"
 
 #: data/org.gnome.Maps.gschema.xml:21
-#| msgid "Population"
 msgid "rotation"
 msgstr "обертання"
 
@@ -257,7 +256,6 @@ msgid "Explore points-of-interest"
 msgstr "Ознайомитися із цікавими точками"
 
 #: data/ui/help-overlay.ui:33
-#| msgid "Show more results"
 msgctxt "shortcut window"
 msgid "Show last search results"
 msgstr "Показати результати останнього пошуку"
@@ -308,7 +306,6 @@ msgid "Rotate counter-clockwise"
 msgstr "Обернути проти годинникової стрілки"
 
 #: data/ui/help-overlay.ui:92
-#| msgid "Remove via location"
 msgctxt "shortcut window"
 msgid "Reset rotation"
 msgstr "Скинути обертання"
@@ -342,8 +339,12 @@ msgstr "Відкрити шар форм"
 msgid "Show Scale"
 msgstr "Показувати шкалу"
 
-#. Translators: This string uses ellipsis character
 #: data/ui/layers-popover.ui:16
+msgid "Enable Experimental Map"
+msgstr "Увімкнути експериментальну карту"
+
+#. Translators: This string uses ellipsis character
+#: data/ui/layers-popover.ui:20
 msgid "Open Shape Layer…"
 msgstr "Відкрити шар форм…"
 
@@ -471,7 +472,7 @@ msgstr ""
 msgid "Recently Used"
 msgstr "Недавно вжите"
 
-#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:533
+#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:541
 msgid "Cancel"
 msgstr "Скасувати"
 
@@ -488,7 +489,6 @@ msgid "Wikidata tag"
 msgstr "Мітка Вікіданих"
 
 #: data/ui/osm-edit-wikipedia.ui:32
-#| msgid "Couldn't find Wikidata tag for article"
 msgid "Load Wikidata tag for article"
 msgstr "Завантажити мітку Вікіданих для статті"
 
@@ -655,7 +655,7 @@ msgid "Back to Main Categories"
 msgstr "Повернутися до основних категорій"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:15 src/mapView.js:1113
+#: data/ui/zoom-and-rotate-controls.ui:15 src/mapView.js:1121
 msgid "Zoom In"
 msgstr "Збільшити"
 
@@ -666,7 +666,6 @@ msgstr "Зменшити"
 
 #. Translators: This is a tooltip
 #: data/ui/zoom-and-rotate-controls.ui:49
-#| msgid "Remove via location"
 msgid "Reset Rotation"
 msgstr "Скинути обертання"
 
@@ -757,37 +756,36 @@ msgstr "Нумо!"
 msgid "All Layer Files"
 msgstr "Усі файли шарів"
 
-#: src/mainWindow.js:457
+#: src/mainWindow.js:468
 msgid "Failed to connect to location service"
 msgstr "Не вдалося з'єднатись зі службою розташування"
 
-#: src/mainWindow.js:462
-#| msgid "Turn on location services to find your location"
+#: src/mainWindow.js:473
 msgid "Turn on location services"
 msgstr "Увімкнути служби місця перебування"
 
-#: src/mainWindow.js:463
+#: src/mainWindow.js:474
 msgid "Location Settings"
 msgstr "Параметри розташування"
 
-#: src/mainWindow.js:575
+#: src/mainWindow.js:586
 msgid "translator-credits"
 msgstr "Daniel Korostil <ted.korostiled@gmail.com>"
 
-#: src/mainWindow.js:579
+#: src/mainWindow.js:590
 msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "© Red Hat, Inc. та розробники «Карт» GNOME, 2011–2023"
 
-#: src/mainWindow.js:595
+#: src/mainWindow.js:606
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Дані карт надано %s та учасниками проєкту"
 
-#: src/mainWindow.js:596
+#: src/mainWindow.js:607
 msgid "Map Data Provider"
 msgstr "Надавач даних карти"
 
-#: src/mainWindow.js:608
+#: src/mainWindow.js:619
 msgid "Map Tile Provider"
 msgstr "Надавач блоків карти"
 
@@ -796,29 +794,29 @@ msgstr "Надавач блоків карти"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:616
+#: src/mainWindow.js:627
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Блоки карти надано %s"
 
-#: src/mainWindow.js:646
+#: src/mainWindow.js:657
 msgid "Search Provider"
 msgstr "Надавач пошуку"
 
-#: src/mainWindow.js:649
+#: src/mainWindow.js:660
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Послуги з пошуку надано %s, використовуємо %s"
 
-#: src/mapView.js:507 src/mapView.js:572
+#: src/mapView.js:515 src/mapView.js:580
 msgid "Failed to open layer"
 msgstr "Не вдалося відкрити шар"
 
-#: src/mapView.js:526
+#: src/mapView.js:534
 msgid "Do you want to continue?"
 msgstr "Продовжити?"
 
-#: src/mapView.js:527
+#: src/mapView.js:535
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -827,28 +825,27 @@ msgstr ""
 "Ви маєте намір відкрити файли, загальний розмір яких дорівнює %s МБ. Процес "
 "завантаження цих файлів може бути досить тривалим."
 
-#: src/mapView.js:534 src/transitplugins/openTripPlanner.js:1207
+#: src/mapView.js:542 src/transitplugins/openTripPlanner.js:1207
 msgid "Continue"
 msgstr "Продовжуйте"
 
-#: src/mapView.js:566
+#: src/mapView.js:574
 msgid "File type is not supported"
 msgstr "Тип файла не підтримується"
 
-#: src/mapView.js:603
+#: src/mapView.js:611
 msgid "Failed to open GeoURI"
 msgstr "Не вдалося відкрити GeoURI"
 
-#: src/mapView.js:1072
+#: src/mapView.js:1080
 msgid "Nothing found here!"
 msgstr "Тут нічого немає!"
 
-#: src/mapView.js:1112
-#| msgid "Zoom in to add location!"
+#: src/mapView.js:1120
 msgid "Zoom in to add location"
 msgstr "Наблизьтесь, щоб додати місце"
 
-#: src/mapView.js:1133
+#: src/mapView.js:1141
 msgid "Location was added in OpenStreetMap"
 msgstr "Місце було додано в OpenStreetMap"
 
@@ -1373,12 +1370,10 @@ msgid "ATMs"
 msgstr "Банкомати"
 
 #: src/poiCategories.js:141
-#| msgid "Postal code"
 msgid "Post Boxes"
 msgstr "Поштові скриньки"
 
 #: src/poiCategories.js:147
-#| msgid "Postal code"
 msgid "Post Offices"
 msgstr "Поштові відділення"
 
@@ -1387,7 +1382,6 @@ msgid "Police"
 msgstr "Поліція"
 
 #: src/poiCategories.js:159
-#| msgid "Ferries"
 msgid "Libraries"
 msgstr "Бібліотеки"
 
@@ -1400,7 +1394,6 @@ msgid "Recycling"
 msgstr "Пункт переробки"
 
 #: src/poiCategories.js:180
-#| msgid "Wheelchair accessible"
 msgid "Wheelchair-accessible Toilets"
 msgstr "Туалети з доступністю для візків"
 
@@ -1477,12 +1470,10 @@ msgid "Alcohol"
 msgstr "Алкоголь"
 
 #: src/poiCategories.js:284
-#| msgid "Ferries"
 msgid "Bakeries"
 msgstr "Пекарні"
 
 #: src/poiCategories.js:290
-#| msgid "Followers"
 msgid "Flowers"
 msgstr "Квіти"
 
@@ -1563,7 +1554,6 @@ msgid "Campings"
 msgstr "Кемпінги"
 
 #: src/poiCategories.js:407
-#| msgid "Open Location"
 msgid "Recreation"
 msgstr "Відпочинок"
 
@@ -1608,7 +1598,6 @@ msgid "Museums"
 msgstr "Музеї"
 
 #: src/poiCategories.js:465
-#| msgid "Directions"
 msgid "Attractions"
 msgstr "Атракціони"
 
@@ -1617,12 +1606,10 @@ msgid "Artworks"
 msgstr "Оформлення"
 
 #: src/poiCategories.js:475
-#| msgid "Show more information"
 msgid "Tourist Information"
 msgstr "Туристичні дані"
 
 #: src/poiCategories.js:482
-#| msgid "_Export"
 msgid "Sports"
 msgstr "Спорт"
 
@@ -1671,8 +1658,6 @@ msgid "Reverse route"
 msgstr "Зворотній маршрут"
 
 #: src/searchBar.js:45
-#| msgctxt "shortcut window"
-#| msgid "Search"
 msgid "Search"
 msgstr "Пошук"
 
