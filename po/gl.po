@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2023-07-23 11:54+0000\n"
-"PO-Revision-Date: 2023-08-09 09:49+0200\n"
+"POT-Creation-Date: 2023-08-10 22:03+0000\n"
+"PO-Revision-Date: 2023-08-12 11:50+0200\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -36,7 +36,7 @@ msgstr ""
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
 #: data/ui/main-window.ui:27 src/application.js:61 src/mainWindow.js:143
-#: src/mainWindow.js:577
+#: src/mainWindow.js:588
 msgid "Maps"
 msgstr "Mapas"
 
@@ -62,7 +62,7 @@ msgstr ""
 "Mapa usa a base de datos colaborativa de OpenStreetMap, feita por centos de "
 "persoas por todo o mundo."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:369 src/mainWindow.js:574
+#: data/org.gnome.Maps.appdata.xml.in.in:369 src/mainWindow.js:585
 msgid "The GNOME Project"
 msgstr "O Proxecto GNOME"
 
@@ -345,8 +345,12 @@ msgstr "Abrir a capa de relieve"
 msgid "Show Scale"
 msgstr "Mostrar escala"
 
-#. Translators: This string uses ellipsis character
 #: data/ui/layers-popover.ui:16
+msgid "Enable Experimental Map"
+msgstr "Activar o mapa experimental"
+
+#. Translators: This string uses ellipsis character
+#: data/ui/layers-popover.ui:20
 msgid "Open Shape Layer…"
 msgstr "Abrir a capa de relieve…"
 
@@ -475,7 +479,7 @@ msgstr ""
 msgid "Recently Used"
 msgstr "Usados recentemente"
 
-#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:533
+#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:541
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -492,10 +496,8 @@ msgid "Wikidata tag"
 msgstr "Etiqueta de Wikidata"
 
 #: data/ui/osm-edit-wikipedia.ui:32
-#, fuzzy
-#| msgid "Couldn't find Wikidata tag for article"
 msgid "Load Wikidata tag for article"
-msgstr "Non foi posíbel atopar a etiqueta de Wikidata para o artigo"
+msgstr "Cargar a etiqueta de Wikidata para o artigo"
 
 #: data/ui/place-popover.ui:23 src/searchBar.js:54
 msgid "Explore Nearby Places"
@@ -661,7 +663,7 @@ msgid "Back to Main Categories"
 msgstr "Volver ás categorías principais"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:15 src/mapView.js:1113
+#: data/ui/zoom-and-rotate-controls.ui:15 src/mapView.js:1121
 msgid "Zoom In"
 msgstr "Ampliar"
 
@@ -762,36 +764,36 @@ msgstr "Comezar!"
 msgid "All Layer Files"
 msgstr "Todos os ficheiros de capa"
 
-#: src/mainWindow.js:457
+#: src/mainWindow.js:468
 msgid "Failed to connect to location service"
 msgstr "Produciuse un fallo ao conectar co servizo de localización"
 
-#: src/mainWindow.js:462
+#: src/mainWindow.js:473
 msgid "Turn on location services"
 msgstr "Activar os servizos de localización"
 
-#: src/mainWindow.js:463
+#: src/mainWindow.js:474
 msgid "Location Settings"
 msgstr "Preferencias de localización"
 
-#: src/mainWindow.js:575
+#: src/mainWindow.js:586
 msgid "translator-credits"
 msgstr "Fran Diéguez <frandieguez@gnome.org>, 2013-2023"
 
-#: src/mainWindow.js:579
+#: src/mainWindow.js:590
 msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 – 2023 Red Hat, Inc. e os autores de Mapas de GNOME"
 
-#: src/mainWindow.js:595
+#: src/mainWindow.js:606
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Datos do mapa por %s e contribuidores"
 
-#: src/mainWindow.js:596
+#: src/mainWindow.js:607
 msgid "Map Data Provider"
 msgstr "Fornecedor dos datos do mapa"
 
-#: src/mainWindow.js:608
+#: src/mainWindow.js:619
 msgid "Map Tile Provider"
 msgstr "Fornecedor das teselas do mapa"
 
@@ -800,29 +802,29 @@ msgstr "Fornecedor das teselas do mapa"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:616
+#: src/mainWindow.js:627
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Teselas de mapas fornecidas por %s"
 
-#: src/mainWindow.js:646
+#: src/mainWindow.js:657
 msgid "Search Provider"
 msgstr "Fornecedor de busca"
 
-#: src/mainWindow.js:649
+#: src/mainWindow.js:660
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Busca fornecida por %s usando %s"
 
-#: src/mapView.js:507 src/mapView.js:572
+#: src/mapView.js:515 src/mapView.js:580
 msgid "Failed to open layer"
 msgstr "Produciuse un fallo ao abrir a capa"
 
-#: src/mapView.js:526
+#: src/mapView.js:534
 msgid "Do you want to continue?"
 msgstr "Desexa continuar?"
 
-#: src/mapView.js:527
+#: src/mapView.js:535
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -831,29 +833,27 @@ msgstr ""
 "Está a piques de abrir ficheiros con un tamaño total de %s MB. Isto pode "
 "tardar algún tempo en cargar"
 
-#: src/mapView.js:534 src/transitplugins/openTripPlanner.js:1207
+#: src/mapView.js:542 src/transitplugins/openTripPlanner.js:1207
 msgid "Continue"
 msgstr "Continuar"
 
-#: src/mapView.js:566
+#: src/mapView.js:574
 msgid "File type is not supported"
 msgstr "Tipo de ficheiro non admitido"
 
-#: src/mapView.js:603
+#: src/mapView.js:611
 msgid "Failed to open GeoURI"
 msgstr "Produciuse un fallo ao abrir o GeoURI"
 
-#: src/mapView.js:1072
+#: src/mapView.js:1080
 msgid "Nothing found here!"
 msgstr "Non se atopou nada aquí!"
 
-#: src/mapView.js:1112
-#, fuzzy
-#| msgid "Zoom in to add location!"
+#: src/mapView.js:1120
 msgid "Zoom in to add location"
-msgstr "Amplíe para engadir unha localización!"
+msgstr "Amplíe para engadir unha localización"
 
-#: src/mapView.js:1133
+#: src/mapView.js:1141
 msgid "Location was added in OpenStreetMap"
 msgstr "Lugar engadido en OpenStreetMap"
 
@@ -1027,7 +1027,7 @@ msgstr "Servizo"
 
 #: src/osmEditDialog.js:195
 msgid "Takeout"
-msgstr ""
+msgstr "Para levar"
 
 #: src/osmEditDialog.js:200
 msgid "Only"
@@ -1229,8 +1229,6 @@ msgstr "Número de teléfono"
 #. * (or similar) to be consumed elsewhere
 #.
 #: src/placeView.js:307
-#, fuzzy
-#| msgid "Offers takeaway"
 msgid "Offers takeout"
 msgstr "Ofrece para levar"
 
@@ -1378,16 +1376,12 @@ msgid "ATMs"
 msgstr "Caixeiros automáticos"
 
 #: src/poiCategories.js:141
-#, fuzzy
-#| msgid "Postal code"
 msgid "Post Boxes"
-msgstr "Código postal"
+msgstr "Caixas de correos"
 
 #: src/poiCategories.js:147
-#, fuzzy
-#| msgid "Postal code"
 msgid "Post Offices"
-msgstr "Código postal"
+msgstr "Oficinas de corros"
 
 #: src/poiCategories.js:153
 msgid "Police"
@@ -1406,14 +1400,12 @@ msgid "Recycling"
 msgstr "Reciclado"
 
 #: src/poiCategories.js:180
-#, fuzzy
-#| msgid "Wheelchair accessible"
 msgid "Wheelchair-accessible Toilets"
-msgstr "Acceso con cadeira de rodas"
+msgstr "Baño con acceso con cadeira de rodas"
 
 #: src/poiCategories.js:186
 msgid "Baggage Lockers"
-msgstr ""
+msgstr "Armarios de bagaxe"
 
 #: src/poiCategories.js:194
 msgid "Eating & Drinking"
@@ -1429,7 +1421,7 @@ msgstr "Comida rápida"
 
 #: src/poiCategories.js:208
 msgid "Food Courts"
-msgstr ""
+msgstr "Plazas de abastos"
 
 #: src/poiCategories.js:213
 msgid "Pubs"
@@ -1461,7 +1453,7 @@ msgstr "Supermercados"
 
 #: src/poiCategories.js:251
 msgid "Convenience Stores"
-msgstr ""
+msgstr "Tenda de barrio"
 
 #: src/poiCategories.js:256
 msgid "Shopping Malls"
@@ -1484,10 +1476,8 @@ msgid "Alcohol"
 msgstr "Alcohol"
 
 #: src/poiCategories.js:284
-#, fuzzy
-#| msgid "Ferries"
 msgid "Bakeries"
-msgstr "Ferris"
+msgstr "Panaderías"
 
 #: src/poiCategories.js:290
 msgid "Flowers"
@@ -1535,7 +1525,7 @@ msgstr "Carga de vehículo eléctico"
 
 #: src/poiCategories.js:358
 msgid "Healthcare"
-msgstr ""
+msgstr "Asistencia sanitaria"
 
 #: src/poiCategories.js:362
 msgid "Clinics"
@@ -1551,7 +1541,7 @@ msgstr "Dentistas"
 
 #: src/poiCategories.js:381
 msgid "Accommodation"
-msgstr ""
+msgstr "Aloxamento"
 
 #: src/poiCategories.js:385
 msgid "Hotels"
@@ -1563,7 +1553,7 @@ msgstr "Hosteis"
 
 #: src/poiCategories.js:395
 msgid "Bed & Breakfast"
-msgstr ""
+msgstr "Cama e almorzo"
 
 #: src/poiCategories.js:400
 msgid "Campings"
@@ -1587,11 +1577,11 @@ msgstr "Praias"
 
 #: src/poiCategories.js:425
 msgid "Nature Reserves"
-msgstr ""
+msgstr "Reservas naturais"
 
 #: src/poiCategories.js:431
 msgid "Theme Parks"
-msgstr ""
+msgstr "Parques temáticos"
 
 #: src/poiCategories.js:436
 msgid "Theaters"
@@ -1619,7 +1609,7 @@ msgstr "Atraccións"
 
 #: src/poiCategories.js:470
 msgid "Artworks"
-msgstr ""
+msgstr "Obras de arte"
 
 #: src/poiCategories.js:475
 msgid "Tourist Information"
@@ -1639,7 +1629,7 @@ msgstr "Ximnasios ao aire libre"
 
 #: src/poiCategories.js:498
 msgid "Golf Courses"
-msgstr ""
+msgstr "Campos de golf"
 
 #: src/printLayout.js:350
 #, javascript-format
