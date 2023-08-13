@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps gnome-3-10\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2023-07-30 22:14+0000\n"
-"PO-Revision-Date: 2023-07-31 01:45+0330\n"
+"POT-Creation-Date: 2023-08-10 22:03+0000\n"
+"PO-Revision-Date: 2023-08-13 16:35+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian\n"
 "Language: fa\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-DamnedLies-Scope: partial\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -29,7 +29,7 @@ msgstr ""
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
 #: data/ui/main-window.ui:27 src/application.js:61 src/mainWindow.js:143
-#: src/mainWindow.js:577
+#: src/mainWindow.js:588
 msgid "Maps"
 msgstr "نقشه‌ها"
 
@@ -55,7 +55,7 @@ msgstr ""
 "نقشه‌ها از پایگاه دادهٔ مشارکتی اوپن‌استریت‌مپ استفاده می‌کند که به دست صدها هزار نفر "
 "در سراسر جهان درست شده است."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:369 src/mainWindow.js:574
+#: data/org.gnome.Maps.appdata.xml.in.in:369 src/mainWindow.js:585
 msgid "The GNOME Project"
 msgstr "پروژهٔ گنوم"
 
@@ -338,8 +338,12 @@ msgstr "گشودن لایهٔ شکل"
 msgid "Show Scale"
 msgstr "نمایش مقیاس"
 
-#. Translators: This string uses ellipsis character
 #: data/ui/layers-popover.ui:16
+msgid "Enable Experimental Map"
+msgstr "به کار انداختن نقشهٔ ازمایشی"
+
+#. Translators: This string uses ellipsis character
+#: data/ui/layers-popover.ui:20
 msgid "Open Shape Layer…"
 msgstr "گشودن لایهٔ شکل…"
 
@@ -465,7 +469,7 @@ msgstr ""
 msgid "Recently Used"
 msgstr "به‌تازگی استفاده شده"
 
-#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:533
+#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:541
 msgid "Cancel"
 msgstr "لغو"
 
@@ -645,7 +649,7 @@ msgid "Back to Main Categories"
 msgstr "بازگشت به دسته‌های اصلی"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:15 src/mapView.js:1113
+#: data/ui/zoom-and-rotate-controls.ui:15 src/mapView.js:1121
 msgid "Zoom In"
 msgstr "بزرگ‌نمایی"
 
@@ -746,38 +750,38 @@ msgstr "شروع!"
 msgid "All Layer Files"
 msgstr "تمام پرونده‌های لایه"
 
-#: src/mainWindow.js:457
+#: src/mainWindow.js:468
 msgid "Failed to connect to location service"
 msgstr "شکست در اتّصال به خدمت مکانی"
 
-#: src/mainWindow.js:462
+#: src/mainWindow.js:473
 msgid "Turn on location services"
 msgstr "روشن کردن خدمات مکانی"
 
-#: src/mainWindow.js:463
+#: src/mainWindow.js:474
 msgid "Location Settings"
 msgstr "تنظیمات موقعیت"
 
-#: src/mainWindow.js:575
+#: src/mainWindow.js:586
 msgid "translator-credits"
 msgstr ""
 "دانیال بهزادی <dani.behzi@ubuntu.com>\n"
 "آرش موسوی <mousavi.arash@gmail.com>"
 
-#: src/mainWindow.js:579
+#: src/mainWindow.js:590
 msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "حق رونوشت © ۲۰۱۱ – ۲۰۲۳ شرکت ردهت و نگارندگان نقشه‌های گنوم"
 
-#: src/mainWindow.js:595
+#: src/mainWindow.js:606
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "داده‌های نقشه به دست %s و مشارکت‌کنندگان"
 
-#: src/mainWindow.js:596
+#: src/mainWindow.js:607
 msgid "Map Data Provider"
 msgstr "فراهم‌کنندهٔ داده‌های نقشه"
 
-#: src/mainWindow.js:608
+#: src/mainWindow.js:619
 msgid "Map Tile Provider"
 msgstr "فراهم‌کنندهٔ کاشی نقشه"
 
@@ -786,56 +790,56 @@ msgstr "فراهم‌کنندهٔ کاشی نقشه"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:616
+#: src/mainWindow.js:627
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "کاشی‌های نقشه به دست %s فراهم شده"
 
-#: src/mainWindow.js:646
+#: src/mainWindow.js:657
 msgid "Search Provider"
 msgstr "فراهم‌کنندهٔ جست‌وجو"
 
-#: src/mainWindow.js:649
+#: src/mainWindow.js:660
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "جست‌وجو به دست %s با استفاده از %s فراهم شده"
 
-#: src/mapView.js:507 src/mapView.js:572
+#: src/mapView.js:515 src/mapView.js:580
 msgid "Failed to open layer"
 msgstr "شکست در گشودن لایه"
 
-#: src/mapView.js:526
+#: src/mapView.js:534
 msgid "Do you want to continue?"
 msgstr "می‌خواهید ادامه دهید؟"
 
-#: src/mapView.js:527
+#: src/mapView.js:535
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some time "
 "to load"
 msgstr "در حال گشودن پرونده‌ای با حجم کل %s م‌ب هستید. بار شدنش ممکن است کمی طول بکشد"
 
-#: src/mapView.js:534 src/transitplugins/openTripPlanner.js:1207
+#: src/mapView.js:542 src/transitplugins/openTripPlanner.js:1207
 msgid "Continue"
 msgstr "ادامه"
 
-#: src/mapView.js:566
+#: src/mapView.js:574
 msgid "File type is not supported"
 msgstr "گونهٔ پرونده پشتیبانی نمی‌شود"
 
-#: src/mapView.js:603
+#: src/mapView.js:611
 msgid "Failed to open GeoURI"
 msgstr "شکست در گشودن نشانی جغرافیایی"
 
-#: src/mapView.js:1072
+#: src/mapView.js:1080
 msgid "Nothing found here!"
 msgstr "این‌جا چیزی پیدا نشد!"
 
-#: src/mapView.js:1112
+#: src/mapView.js:1120
 msgid "Zoom in to add location"
 msgstr "بزرگ‌نمایی برای افزودن مکان"
 
-#: src/mapView.js:1133
+#: src/mapView.js:1141
 msgid "Location was added in OpenStreetMap"
 msgstr "مکان به اوپن استریت مپ افزوده شد"
 
