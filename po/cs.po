@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2023-02-18 14:57+0000\n"
-"PO-Revision-Date: 2023-03-03 17:42+0100\n"
-"Last-Translator: Marek Černocký <marek@manet.cz>\n"
+"POT-Creation-Date: 2023-08-10 22:03+0000\n"
+"PO-Revision-Date: 2023-08-16 14:48+0200\n"
+"Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-DamnedLies-Scope: partial\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -28,8 +28,8 @@ msgstr ""
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
-#: data/ui/main-window.ui:27 src/application.js:61 src/mainWindow.js:134
-#: src/mainWindow.js:531
+#: data/ui/main-window.ui:27 src/application.js:61 src/mainWindow.js:143
+#: src/mainWindow.js:588
 msgid "Maps"
 msgstr "Mapy"
 
@@ -55,7 +55,7 @@ msgstr ""
 "Mapy využívají databázi OpenStreetMap, která vzniká díky spolupráci stovek "
 "tisíců lidí z celého světa."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:317 src/mainWindow.js:528
+#: data/org.gnome.Maps.appdata.xml.in.in:369 src/mainWindow.js:585
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
 
@@ -89,78 +89,88 @@ msgid "Zoom level"
 msgstr "Úroveň přiblížení"
 
 #: data/org.gnome.Maps.gschema.xml:21
+#, fuzzy
+#| msgid "Population"
+msgid "rotation"
+msgstr "Populace"
+
+#: data/org.gnome.Maps.gschema.xml:22
+msgid "Map rotation in radians"
+msgstr ""
+
+#: data/org.gnome.Maps.gschema.xml:26
 msgid "Map type"
 msgstr "Typ mapy"
 
-#: data/org.gnome.Maps.gschema.xml:22
+#: data/org.gnome.Maps.gschema.xml:27
 msgid "The type of map to display (street, aerial, etc.)"
 msgstr "Typ mapy, který se má zobrazit(běžná, letecká, atd.)"
 
-#: data/org.gnome.Maps.gschema.xml:26
+#: data/org.gnome.Maps.gschema.xml:31
 msgid "Window size"
 msgstr "Velikost okna"
 
-#: data/org.gnome.Maps.gschema.xml:27
+#: data/org.gnome.Maps.gschema.xml:32
 msgid "Window size (width and height)."
 msgstr "Velikost okna (šířka a výška)."
 
-#: data/org.gnome.Maps.gschema.xml:31
+#: data/org.gnome.Maps.gschema.xml:36
 msgid "Window position"
 msgstr "Poloha okna"
 
-#: data/org.gnome.Maps.gschema.xml:32
+#: data/org.gnome.Maps.gschema.xml:37
 msgid "Window position (X and Y)."
 msgstr "Poloha okna (X a Y)."
 
-#: data/org.gnome.Maps.gschema.xml:36
+#: data/org.gnome.Maps.gschema.xml:41
 msgid "Window maximized"
 msgstr "Maximalizace okna"
 
-#: data/org.gnome.Maps.gschema.xml:37
+#: data/org.gnome.Maps.gschema.xml:42
 msgid "Window maximization state"
 msgstr "Stav maximalizace okna"
 
-#: data/org.gnome.Maps.gschema.xml:41
+#: data/org.gnome.Maps.gschema.xml:46
 msgid "Maximum number of search results"
 msgstr "Maximální počet výsledků hledání"
 
-#: data/org.gnome.Maps.gschema.xml:42
+#: data/org.gnome.Maps.gschema.xml:47
 msgid "Maximum number of search results from geocode search."
 msgstr "Maximální počet výsledků hledání z geocode."
 
-#: data/org.gnome.Maps.gschema.xml:46
+#: data/org.gnome.Maps.gschema.xml:51
 msgid "Number of recent places to store"
 msgstr "Počet nedávných míst k uchování"
 
-#: data/org.gnome.Maps.gschema.xml:47
+#: data/org.gnome.Maps.gschema.xml:52
 msgid "Number of recently visited places to store."
 msgstr "Počet nedávno navštívených míst, která se mají uchovávat."
 
-#: data/org.gnome.Maps.gschema.xml:51
+#: data/org.gnome.Maps.gschema.xml:56
 msgid "Number of recent routes to store"
 msgstr "Počet nedávných tras k uchování"
 
-#: data/org.gnome.Maps.gschema.xml:52
+#: data/org.gnome.Maps.gschema.xml:57
 msgid "Number of recently visited routes to store."
 msgstr "Počet nedávno navštívených tras, která se mají uchovávat."
 
-#: data/org.gnome.Maps.gschema.xml:56
+#: data/org.gnome.Maps.gschema.xml:61
 msgid "OpenStreetMap username or e-mail address"
 msgstr "Uživatelské jméno nebo e-mailová adresa na OpenStreetMap"
 
-#: data/org.gnome.Maps.gschema.xml:57
+#: data/org.gnome.Maps.gschema.xml:62
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr "Dává najevo, jestli je uživatel přihlášen k úpravám dat OpenStreetMap."
 
-#: data/org.gnome.Maps.gschema.xml:61
+#: data/org.gnome.Maps.gschema.xml:66
 msgid "Last used transportation type for routing"
 msgstr "Poslední použitý typ dopravy pro hledání trasy"
 
-#: data/org.gnome.Maps.gschema.xml:65
+#: data/org.gnome.Maps.gschema.xml:70
 msgid "Show scale"
 msgstr "Zobrazovat měřítko"
 
-#: data/org.gnome.Maps.gschema.xml:66
+#: data/org.gnome.Maps.gschema.xml:71
 msgid "Whether to show the scale."
 msgstr "Zda se má zobrazovat měřítko."
 
@@ -212,16 +222,6 @@ msgid "Layers"
 msgstr "Vrstvy"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:28
-msgid "Zoom Out"
-msgstr "Oddálit"
-
-#. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:37 data/ui/zoom-in-dialog.ui:27
-msgid "Zoom In"
-msgstr "Přiblížit"
-
-#. Translators: This is a tooltip
 #: data/ui/headerbar-right.ui:11
 msgid "Print Route"
 msgstr "Tisk trasy"
@@ -253,60 +253,87 @@ msgstr "Hledat"
 
 #: data/ui/help-overlay.ui:27
 msgctxt "shortcut window"
+msgid "Explore points-of-interest"
+msgstr ""
+
+#: data/ui/help-overlay.ui:33
+msgctxt "shortcut window"
+msgid "Show last search results"
+msgstr ""
+
+#: data/ui/help-overlay.ui:39
+msgctxt "shortcut window"
 msgid "Toggle route planner"
 msgstr "Zapnout/vypnout plánování trasy"
 
-#: data/ui/help-overlay.ui:33
+#: data/ui/help-overlay.ui:45
 msgctxt "shortcut window"
 msgid "Print route"
 msgstr "Vytisknout trasu"
 
-#: data/ui/help-overlay.ui:39
+#: data/ui/help-overlay.ui:51
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Ukončit"
 
-#: data/ui/help-overlay.ui:45
+#: data/ui/help-overlay.ui:57
 msgctxt "shortcut window"
 msgid "Open main menu"
 msgstr "Otevřít hlavní nabídku"
 
-#: data/ui/help-overlay.ui:53
+#: data/ui/help-overlay.ui:65
 msgctxt "shortcut window"
 msgid "Map View"
 msgstr "Zobrazení mapy"
 
-#: data/ui/help-overlay.ui:56
+#: data/ui/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Zoom in"
 msgstr "Přiblížit"
 
-#: data/ui/help-overlay.ui:62
+#: data/ui/help-overlay.ui:74
 msgctxt "shortcut window"
 msgid "Zoom out"
 msgstr "Oddálit"
 
-#: data/ui/help-overlay.ui:68
+#: data/ui/help-overlay.ui:80
+msgctxt "shortcut window"
+msgid "Rotate clockwise"
+msgstr ""
+
+#: data/ui/help-overlay.ui:86
+msgctxt "shortcut window"
+msgid "Rotate counter-clockwise"
+msgstr ""
+
+#: data/ui/help-overlay.ui:92
+#, fuzzy
+#| msgid "Remove via location"
+msgctxt "shortcut window"
+msgid "Reset rotation"
+msgstr "Odebrat podle místa"
+
+#: data/ui/help-overlay.ui:98
 msgctxt "shortcut window"
 msgid "Toggle scale"
 msgstr "Přepnout měřítko"
 
-#: data/ui/help-overlay.ui:74
+#: data/ui/help-overlay.ui:104
 msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Přejít na současné místo"
 
-#: data/ui/help-overlay.ui:84
+#: data/ui/help-overlay.ui:114
 msgctxt "shortcut window"
 msgid "Switch to street view"
 msgstr "Přepnout na panoramatický pohled"
 
-#: data/ui/help-overlay.ui:91
+#: data/ui/help-overlay.ui:121
 msgctxt "shortcut window"
 msgid "Switch to aerial view"
 msgstr "Přepnout na letecký pohled"
 
-#: data/ui/help-overlay.ui:97
+#: data/ui/help-overlay.ui:127
 msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "Otevřít uživatelskou vrstvu"
@@ -315,23 +342,14 @@ msgstr "Otevřít uživatelskou vrstvu"
 msgid "Show Scale"
 msgstr "Zobrazovat měřítko"
 
-#. Translators: This string uses ellipsis character
 #: data/ui/layers-popover.ui:16
+msgid "Enable Experimental Map"
+msgstr ""
+
+#. Translators: This string uses ellipsis character
+#: data/ui/layers-popover.ui:20
 msgid "Open Shape Layer…"
 msgstr "Otevřít uživatelskou vrstvu…"
-
-#: data/ui/location-service-dialog.ui:12 data/ui/osm-edit-dialog.ui:220
-#: data/ui/zoom-in-dialog.ui:21
-msgid "Cancel"
-msgstr "Zrušit"
-
-#: data/ui/location-service-dialog.ui:18
-msgid "Location Settings"
-msgstr "Nastavení určování polohy"
-
-#: data/ui/location-service-dialog.ui:32
-msgid "Turn on location services to find your location"
-msgstr "Zapnout geolokační službu pro vyhledávání vaší polohy"
 
 #: data/ui/main-window.ui:8
 msgid "Set up OpenStreetMap Account…"
@@ -349,7 +367,7 @@ msgstr "_Klávesové zkratky"
 msgid "About Maps"
 msgstr "O aplikaci Mapy"
 
-#: data/ui/main-window.ui:38
+#: data/ui/main-window.ui:48
 msgid "Main Menu"
 msgstr "Hlavní nabídka"
 
@@ -357,12 +375,12 @@ msgstr "Hlavní nabídka"
 msgid "OpenStreetMap Account"
 msgstr "Účet na OpenStreetMap"
 
-#: data/ui/osm-account-dialog.ui:24
+#: data/ui/osm-account-dialog.ui:26
 msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
 msgstr ""
 "<span weight=\"bold\" size=\"x-large\">Přihlaste se pro úpravy map</span>"
 
-#: data/ui/osm-account-dialog.ui:38
+#: data/ui/osm-account-dialog.ui:39
 msgid ""
 "Help to improve the map, using an\n"
 "OpenStreetMap account."
@@ -378,36 +396,32 @@ msgstr ""
 "Pro ověření se přihlaste ve webovém prohlížeči.\n"
 "Po té sem v dalším kroku zkopírujte získaný ověřovací kód."
 
-#: data/ui/osm-account-dialog.ui:68
-msgid "Sign up"
-msgstr "Zaregistrovat se"
-
-#: data/ui/osm-account-dialog.ui:81
+#: data/ui/osm-account-dialog.ui:67
 msgid "Sign In"
 msgstr "Přihlásit se"
 
-#: data/ui/osm-account-dialog.ui:123
+#: data/ui/osm-account-dialog.ui:111
 msgid "Copy verification code shown when authorizing access in the browser"
 msgstr ""
 "Zkopírujte ověřovací kód, který se zobrazí po ověření ve webovém prohlížeči"
 
-#: data/ui/osm-account-dialog.ui:133
+#: data/ui/osm-account-dialog.ui:121
 msgid "Verification code"
 msgstr "Ověřovací kód"
 
-#: data/ui/osm-account-dialog.ui:144
+#: data/ui/osm-account-dialog.ui:132
 msgid "Verify"
 msgstr "Ověřit"
 
-#: data/ui/osm-account-dialog.ui:172
+#: data/ui/osm-account-dialog.ui:160
 msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
 msgstr "<span weight=\"bold\" size=\"x-large\">Jste přihlášen</span>"
 
-#: data/ui/osm-account-dialog.ui:184
+#: data/ui/osm-account-dialog.ui:172
 msgid "Your OpenStreetMap account is active."
 msgstr "Váš účet na OpenStreetMap je aktivní."
 
-#: data/ui/osm-account-dialog.ui:214
+#: data/ui/osm-account-dialog.ui:202
 msgid "Sign Out"
 msgstr "Odhlásit se"
 
@@ -428,23 +442,30 @@ msgstr "PSČ"
 msgid "City"
 msgstr "Město"
 
-#: data/ui/osm-edit-dialog.ui:54
+#: data/ui/osm-edit-dialog.ui:8
+#, fuzzy
+#| msgid "Edit on OpenStreetMap"
+msgctxt "dialog title"
+msgid "Edit on OpenStreetMap"
+msgstr "Úpravy v OpenStreetMap"
+
+#: data/ui/osm-edit-dialog.ui:57
 msgid "Type"
 msgstr "Typ"
 
-#: data/ui/osm-edit-dialog.ui:76
+#: data/ui/osm-edit-dialog.ui:79
 msgid "None"
 msgstr "žádné"
 
-#: data/ui/osm-edit-dialog.ui:105
+#: data/ui/osm-edit-dialog.ui:108
 msgid "Add Field"
 msgstr "Přidat pole"
 
-#: data/ui/osm-edit-dialog.ui:127
+#: data/ui/osm-edit-dialog.ui:130
 msgid "Comment"
 msgstr "Komentář"
 
-#: data/ui/osm-edit-dialog.ui:155
+#: data/ui/osm-edit-dialog.ui:158
 msgid ""
 "Map changes will be visible on all maps that use\n"
 "OpenStreetMap data."
@@ -452,11 +473,15 @@ msgstr ""
 "Změny mapy boudou viditelné všude, kde se používají\n"
 "data OpenStreetMap."
 
-#: data/ui/osm-edit-dialog.ui:183
+#: data/ui/osm-edit-dialog.ui:186
 msgid "Recently Used"
 msgstr "Nedávno použité"
 
-#: data/ui/osm-edit-dialog.ui:233 src/osmEditDialog.js:531
+#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:541
+msgid "Cancel"
+msgstr "Zrušit"
+
+#: data/ui/osm-edit-dialog.ui:238 src/osmEditDialog.js:531
 msgid "Next"
 msgstr "Další"
 
@@ -468,11 +493,21 @@ msgstr "Článek"
 msgid "Wikidata tag"
 msgstr "Štítek z Wikidata"
 
-#: data/ui/place-popover.ui:44 src/application.js:275
+#: data/ui/osm-edit-wikipedia.ui:32
+#, fuzzy
+#| msgid "Couldn't find Wikidata tag for article"
+msgid "Load Wikidata tag for article"
+msgstr "Nezdařilo se najít na Wikidata štítek pro článek"
+
+#: data/ui/place-popover.ui:23 src/searchBar.js:54
+msgid "Explore Nearby Places"
+msgstr ""
+
+#: data/ui/place-popover.ui:82 src/application.js:274
 msgid "No results found"
 msgstr "Nebyly nalezeny žádné výsledky"
 
-#: data/ui/place-popover.ui:54 src/application.js:252 src/osmEditDialog.js:568
+#: data/ui/place-popover.ui:92 src/application.js:252
 msgid "An error has occurred"
 msgstr "Vyskytla se chyba"
 
@@ -485,15 +520,15 @@ msgstr "Změnit pořadí tras"
 msgid "Open Location"
 msgstr "Otevřít místo"
 
-#: data/ui/send-to-dialog.ui:62
+#: data/ui/send-to-dialog.ui:64
 msgid "Copy"
 msgstr "Kopírovat"
 
-#: data/ui/send-to-dialog.ui:68
+#: data/ui/send-to-dialog.ui:70
 msgid "Send To…"
 msgstr "Poslat do…"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:65
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:64
 msgid "Open Shape Layer"
 msgstr "Otevřít uživatelskou vrstvu"
 
@@ -511,11 +546,11 @@ msgstr "Přepnout viditelnost"
 msgid "Remove Shape Layer"
 msgstr "Odebrat uživatelskou vrstvu"
 
-#: data/ui/sidebar.ui:215
+#: data/ui/sidebar.ui:207
 msgid "Route search by GraphHopper"
 msgstr "Hledání trasy pomocí GraphHopper"
 
-#: data/ui/sidebar.ui:282
+#: data/ui/sidebar.ui:272
 msgid ""
 "Routing itineraries for public transit is provided by third-party\n"
 "services.\n"
@@ -622,9 +657,26 @@ msgstr "Úpravy v OpenStreetMap"
 msgid "Share location"
 msgstr "Sdílet místo"
 
-#: data/ui/zoom-in-dialog.ui:11
-msgid "Zoom in to add location!"
-msgstr "Přiblížit pro přidání místa!"
+#: data/ui/poi-category-goback-row.ui:22
+msgid "Back to Main Categories"
+msgstr ""
+
+#. Translators: This is a tooltip
+#: data/ui/zoom-and-rotate-controls.ui:15 src/mapView.js:1121
+msgid "Zoom In"
+msgstr "Přiblížit"
+
+#. Translators: This is a tooltip
+#: data/ui/zoom-and-rotate-controls.ui:28
+msgid "Zoom Out"
+msgstr "Oddálit"
+
+#. Translators: This is a tooltip
+#: data/ui/zoom-and-rotate-controls.ui:49
+#, fuzzy
+#| msgid "Remove via location"
+msgid "Reset Rotation"
+msgstr "Odebrat podle místa"
 
 #: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338
 #: lib/maps-file-data-source.c:418
@@ -667,7 +719,7 @@ msgstr "Hledat místa"
 msgid "[FILE…|URI]"
 msgstr "[SOUBOR…|URI]"
 
-#: src/application.js:283
+#: src/application.js:281
 #, javascript-format
 msgid "Invalid maps: URI: %s"
 msgstr "Neplatné mapy: URI: %s"
@@ -681,23 +733,7 @@ msgstr "Neplatné mapy: URI: %s"
 msgid "Maps at %f, %f.png"
 msgstr "Mapa na souřadnicích %f, %f.png"
 
-#: src/exportViewDialog.js:156
-msgid "Filesystem is read only"
-msgstr "Souborový systém je jen ke čtení"
-
-#: src/exportViewDialog.js:158
-msgid "You do not have permission to save there"
-msgstr "Nemáte oprávnění ukládat do tohoto umístění"
-
-#: src/exportViewDialog.js:160
-msgid "The directory does not exist"
-msgstr "Složka neexistuje"
-
-#: src/exportViewDialog.js:162
-msgid "No filename specified"
-msgstr "Není zadán název souboru"
-
-#: src/exportViewDialog.js:170
+#: src/exportViewDialog.js:153
 msgid "Unable to export view"
 msgstr "Nelze exportovat zobrazení"
 
@@ -721,36 +757,46 @@ msgstr "Požadavek na vyhledání cesty selhal."
 msgid "No route found."
 msgstr "Nenalezena žádná cesta."
 
-#: src/graphHopper.js:215 src/transitplugins/openTripPlanner.js:1121
+#: src/graphHopper.js:215 src/transitplugins/openTripPlanner.js:1131
 msgid "Start!"
 msgstr "Start!"
 
-#: src/mainWindow.js:62
+#: src/mainWindow.js:61
 msgid "All Layer Files"
 msgstr "Všechny soubory s vrstvami"
 
-#: src/mainWindow.js:442
+#: src/mainWindow.js:468
 msgid "Failed to connect to location service"
 msgstr "Selhalo připojení ke geolokační službě"
 
-#: src/mainWindow.js:529
+#: src/mainWindow.js:473
+#, fuzzy
+#| msgid "Turn on location services to find your location"
+msgid "Turn on location services"
+msgstr "Zapnout geolokační službu pro vyhledávání vaší polohy"
+
+#: src/mainWindow.js:474
+msgid "Location Settings"
+msgstr "Nastavení určování polohy"
+
+#: src/mainWindow.js:586
 msgid "translator-credits"
 msgstr "Marek Černocký <marek@manet.cz>"
 
-#: src/mainWindow.js:533
+#: src/mainWindow.js:590
 msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 - 2023 Red Hat, Inc. a autoři Map GNOME"
 
-#: src/mainWindow.js:549
+#: src/mainWindow.js:606
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Mapová data od %s a přispěvatelů"
 
-#: src/mainWindow.js:550
+#: src/mainWindow.js:607
 msgid "Map Data Provider"
 msgstr "Poskytovatel mapových dat"
 
-#: src/mainWindow.js:562
+#: src/mainWindow.js:619
 msgid "Map Tile Provider"
 msgstr "Poskytovatel mapových dlaždic"
 
@@ -759,29 +805,29 @@ msgstr "Poskytovatel mapových dlaždic"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:570
+#: src/mainWindow.js:627
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Mapové dlaždice poskytuje %s"
 
-#: src/mainWindow.js:600
+#: src/mainWindow.js:657
 msgid "Search Provider"
 msgstr "Poskytovatel vyhledávání"
 
-#: src/mainWindow.js:603
+#: src/mainWindow.js:660
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Hledání zprostředkuje %s pomocí %s"
 
-#: src/mapView.js:501 src/mapView.js:561
+#: src/mapView.js:515 src/mapView.js:580
 msgid "Failed to open layer"
 msgstr "Selhalo otevření vrstvy"
 
-#: src/mapView.js:522
+#: src/mapView.js:534
 msgid "Do you want to continue?"
 msgstr "Chcete pokračovat?"
 
-#: src/mapView.js:523
+#: src/mapView.js:535
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -790,25 +836,33 @@ msgstr ""
 "Chystáte se otevřít soubory o celkové velikosti %s MB. To může zabrat nějaký "
 "čas."
 
-#: src/mapView.js:555
+#: src/mapView.js:542 src/transitplugins/openTripPlanner.js:1207
+msgid "Continue"
+msgstr "Pokračujte"
+
+#: src/mapView.js:574
 msgid "File type is not supported"
 msgstr "Typ souboru není podporován"
 
-#: src/mapView.js:593
+#: src/mapView.js:611
 msgid "Failed to open GeoURI"
 msgstr "Selhalo otevření adresy GeoURI"
 
-#: src/mapView.js:1033
+#: src/mapView.js:1080
 msgid "Nothing found here!"
 msgstr "Zde nebylo nic nalezeno!"
 
-#: src/mapView.js:1094
-msgid ""
-"Location was added to the map, note that it may take a while before it shows "
-"on the map and in search results."
-msgstr ""
-"Místo bylo přidáno do mapy, ale vezměte na vědomí, že může chvíli trvat, než "
-"se zobrazí na mapě a ve výsledcích hledání."
+#: src/mapView.js:1120
+#, fuzzy
+#| msgid "Zoom in to add location!"
+msgid "Zoom in to add location"
+msgstr "Přiblížit pro přidání místa!"
+
+#: src/mapView.js:1141
+#, fuzzy
+#| msgid "Place not found in OpenStreetMap"
+msgid "Location was added in OpenStreetMap"
+msgstr "Místo nebylo v OpenStreetMap nalezeno"
 
 #: src/osmAccountDialog.js:134
 msgid "The verification code didn’t match, please try again."
@@ -856,7 +910,7 @@ msgstr "Oficiální název. Typicky to, co bývá na informačních tabulích."
 msgid "Address"
 msgstr "Adresa"
 
-#: src/osmEditDialog.js:120 src/placeView.js:254
+#: src/osmEditDialog.js:120 src/placeView.js:261
 msgid "Website"
 msgstr "Stránky WWW"
 
@@ -885,7 +939,7 @@ msgstr ""
 "Telefonní číslo. Používejte mezinárodní formát začínající znakem +. Dbejte "
 "místních zákonů na ochranu soukromí, zejména u soukromách telefonních čísel."
 
-#: src/osmEditDialog.js:139 src/placeView.js:282
+#: src/osmEditDialog.js:139 src/placeView.js:294
 msgid "E-mail"
 msgstr "E-mail"
 
@@ -907,11 +961,11 @@ msgstr ""
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:149 src/placeView.js:630
+#: src/osmEditDialog.js:149 src/placeView.js:646
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: src/osmEditDialog.js:156 src/placeView.js:319
+#: src/osmEditDialog.js:156 src/placeView.js:331
 msgid "Opening hours"
 msgstr "Otevírací doba"
 
@@ -925,11 +979,11 @@ msgstr "Nápověda k formátu viz odkaz v popisku."
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:164 src/placeView.js:429
+#: src/osmEditDialog.js:164 src/placeView.js:441
 msgid "Population"
 msgstr "Populace"
 
-#: src/osmEditDialog.js:169 src/placeView.js:458
+#: src/osmEditDialog.js:169 src/placeView.js:470
 msgid "Altitude"
 msgstr "Nadmořská výška"
 
@@ -980,8 +1034,8 @@ msgid "Service"
 msgstr "služba"
 
 #: src/osmEditDialog.js:195
-msgid "Takeaway"
-msgstr "Jídlo s sebou"
+msgid "Takeout"
+msgstr ""
 
 #: src/osmEditDialog.js:200
 msgid "Only"
@@ -1079,7 +1133,7 @@ msgstr "jezídizmus"
 msgid "Zoroastrianism"
 msgstr "zarathuštrizmus"
 
-#: src/osmEditDialog.js:230
+#: src/osmEditDialog.js:230 src/poiCategories.js:174
 msgid "Toilets"
 msgstr "Toalety"
 
@@ -1110,7 +1164,7 @@ msgstr "Vybrat typ"
 msgid "Done"
 msgstr "Hotovo"
 
-#: src/osmEditDialog.js:827
+#: src/osmEditDialog.js:818
 msgid ""
 "The format used should include the language code and the article title like "
 "“en:Article title”."
@@ -1118,13 +1172,13 @@ msgstr ""
 "Použitý formát by měl obsahovat rovněž kód jazyka a název článku, jako „cs:"
 "Název článku“."
 
-#: src/osmEditDialog.js:833
+#: src/osmEditDialog.js:824
 msgid "Use the reload button to load the Wikidata tag for the selected article"
 msgstr ""
 "Použijte tlačítko Znovu načíst pro načtení štítku z Wikidata pro vybraný "
 "článek."
 
-#: src/osmEditDialog.js:841
+#: src/osmEditDialog.js:832
 msgid "Couldn't find Wikidata tag for article"
 msgstr "Nezdařilo se najít na Wikidata štítek pro článek"
 
@@ -1132,24 +1186,38 @@ msgstr "Nezdařilo se najít na Wikidata štítek pro článek"
 msgid "Unnamed place"
 msgstr "Místo bez názvu"
 
-#: src/placeEntry.js:267
+#: src/placeEntry.js:261
 msgid "Failed to parse Geo URI"
 msgstr "Selhalo zpracování adresy GeoURI"
 
-#: src/placeEntry.js:280
+#: src/placeEntry.js:273
 msgid "Failed to parse Maps URI"
 msgstr "Selhalo zpracování adresy URI map"
 
-#: src/placeView.js:242
+#. 300 ft (300 * 12 * 0.0254 m)
+#.
+#. * Translators: This a format string for showing a distance to a place
+#. * is lower than a "quite short" distance.
+#. * The "less than" symbol can be substituded with an appropriate one, if
+#. * needed (e.g. using the correct direction, or alternative symbol).
+#. * The %s should be kept, and is substituted with a label representing the
+#. * short distance. The \u2009 (thin space) could also be adjusted if needed
+#: src/placeListRow.js:46
+#, javascript-format
+msgctxt "short distance format string"
+msgid "< %s"
+msgstr ""
+
+#: src/placeView.js:249
 msgid "Coordinates"
 msgstr "Souřadnice"
 
-#: src/placeView.js:246
+#: src/placeView.js:253
 msgid "Accuracy"
 msgstr "Přesnost"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:249
+#: src/placeView.js:256
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Přesnost: %s"
@@ -1160,7 +1228,7 @@ msgstr "Přesnost: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:268
+#: src/placeView.js:275
 msgid "Phone number"
 msgstr "Telefonní číslo"
 
@@ -1168,16 +1236,20 @@ msgstr "Telefonní číslo"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:295
-msgid "Offers takeaway"
+#: src/placeView.js:307
+#, fuzzy
+#| msgid "Offers takeaway"
+msgid "Offers takeout"
 msgstr "Nabízí jídlo s sebou"
 
 #. Translators:
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:303
-msgid "Does not offer takeaway"
+#: src/placeView.js:315
+#, fuzzy
+#| msgid "Does not offer takeaway"
+msgid "Does not offer takeout"
 msgstr "Nenabízí jídlo s sebou"
 
 #. Translators:
@@ -1185,14 +1257,16 @@ msgstr "Nenabízí jídlo s sebou"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:312
-msgid "Only offers takeaway"
+#: src/placeView.js:324
+#, fuzzy
+#| msgid "Only offers takeaway"
+msgid "Only offers takeout"
 msgstr "Nabízí pouze jídlo s sebou"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:329
+#: src/placeView.js:341
 msgid "Public internet access"
 msgstr "Veřejný přístup k Internetu"
 
@@ -1200,50 +1274,50 @@ msgstr "Veřejný přístup k Internetu"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:338
+#: src/placeView.js:350
 msgid "No internet access"
 msgstr "Bez přístupu k Internetu"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:346
+#: src/placeView.js:358
 msgid "Public Wi-Fi"
 msgstr "Veřejná Wi-Fi"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:354
+#: src/placeView.js:366
 msgid "Wired internet access"
 msgstr "Drátový přístup k Internetu"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:362
+#: src/placeView.js:374
 msgid "Computers available for use"
 msgstr "Počítač k dispozici k používání"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:370
+#: src/placeView.js:382
 msgid "Internet assistance available"
 msgstr "Internetová asistence k dispozici"
 
-#: src/placeView.js:376
+#: src/placeView.js:388
 msgid "No toilets available"
 msgstr "Bez toalet k dispozici"
 
-#: src/placeView.js:379
+#: src/placeView.js:391
 msgid "Toilets available"
 msgstr "K dispozici toalety"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:388
+#: src/placeView.js:400
 msgid "Wheelchair accessible"
 msgstr "Bezbariérový přístup"
 
@@ -1252,7 +1326,7 @@ msgstr "Bezbariérový přístup"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:398
+#: src/placeView.js:410
 msgid "Limited wheelchair accessibility"
 msgstr "Omezený bezbariérový přístup"
 
@@ -1260,7 +1334,7 @@ msgstr "Omezený bezbariérový přístup"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:407
+#: src/placeView.js:419
 msgid "Not wheelchair accessible"
 msgstr "Nemá bezbariérový přístup"
 
@@ -1269,7 +1343,7 @@ msgstr "Nemá bezbariérový přístup"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:417
+#: src/placeView.js:429
 msgid "Designated for wheelchair users"
 msgstr "Výslovně vhodné pro vozíčkáře"
 
@@ -1278,7 +1352,7 @@ msgstr "Výslovně vhodné pro vozíčkáře"
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:448
+#: src/placeView.js:460
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s pod hladinou moře"
@@ -1287,11 +1361,11 @@ msgstr "%s pod hladinou moře"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:455
+#: src/placeView.js:467
 msgid "At sea level"
 msgstr "V úrovni hladiny moře"
 
-#: src/placeView.js:464
+#: src/placeView.js:476
 msgid "Religion:"
 msgstr "Náboženství:"
 
@@ -1306,6 +1380,286 @@ msgstr "Souřadnice v adrese URL nejsou platné"
 #: src/place.js:559
 msgid "URL is not supported"
 msgstr "Tato adreasa URL není podporovaná"
+
+#: src/poiCategories.js:132
+msgid "Amenities"
+msgstr ""
+
+#: src/poiCategories.js:135
+msgid "ATMs"
+msgstr ""
+
+#: src/poiCategories.js:141
+#, fuzzy
+#| msgid "Postal code"
+msgid "Post Boxes"
+msgstr "PSČ"
+
+#: src/poiCategories.js:147
+#, fuzzy
+#| msgid "Postal code"
+msgid "Post Offices"
+msgstr "PSČ"
+
+#: src/poiCategories.js:153
+msgid "Police"
+msgstr ""
+
+#: src/poiCategories.js:159
+#, fuzzy
+#| msgid "Ferries"
+msgid "Libraries"
+msgstr "trajekty"
+
+#: src/poiCategories.js:165
+msgid "Pharmacies"
+msgstr ""
+
+#: src/poiCategories.js:170
+msgid "Recycling"
+msgstr ""
+
+#: src/poiCategories.js:180
+#, fuzzy
+#| msgid "Wheelchair accessible"
+msgid "Wheelchair-accessible Toilets"
+msgstr "Bezbariérový přístup"
+
+#: src/poiCategories.js:186
+msgid "Baggage Lockers"
+msgstr ""
+
+#: src/poiCategories.js:194
+msgid "Eating & Drinking"
+msgstr ""
+
+#: src/poiCategories.js:198
+msgid "Restaurants"
+msgstr ""
+
+#: src/poiCategories.js:203
+msgid "Fast Food"
+msgstr ""
+
+#: src/poiCategories.js:208
+msgid "Food Courts"
+msgstr ""
+
+#: src/poiCategories.js:213
+msgid "Pubs"
+msgstr ""
+
+#: src/poiCategories.js:219
+msgid "Bars"
+msgstr ""
+
+#: src/poiCategories.js:224
+msgid "Cafes"
+msgstr ""
+
+#: src/poiCategories.js:229
+msgid "Ice Cream"
+msgstr ""
+
+#: src/poiCategories.js:233
+msgid "Food, Snacks, and Beverage Machines"
+msgstr ""
+
+#: src/poiCategories.js:241
+msgid "Shopping"
+msgstr ""
+
+#: src/poiCategories.js:245
+msgid "Supermarkets"
+msgstr ""
+
+#: src/poiCategories.js:251
+msgid "Convenience Stores"
+msgstr ""
+
+#: src/poiCategories.js:256
+msgid "Shopping Malls"
+msgstr ""
+
+#: src/poiCategories.js:262
+msgid "Clothes"
+msgstr ""
+
+#: src/poiCategories.js:267
+msgid "Shoes"
+msgstr ""
+
+#: src/poiCategories.js:272
+msgid "Electronics"
+msgstr ""
+
+#: src/poiCategories.js:278
+msgid "Alcohol"
+msgstr ""
+
+#: src/poiCategories.js:284
+#, fuzzy
+#| msgid "Ferries"
+msgid "Bakeries"
+msgstr "trajekty"
+
+#: src/poiCategories.js:290
+msgid "Flowers"
+msgstr ""
+
+#: src/poiCategories.js:297
+msgid "Transportation"
+msgstr ""
+
+#: src/poiCategories.js:301
+msgid "Bus & Tram Stops"
+msgstr ""
+
+#: src/poiCategories.js:309
+msgid "Train & Subway Stations"
+msgstr ""
+
+#: src/poiCategories.js:317
+msgid "Tickets"
+msgstr ""
+
+#: src/poiCategories.js:325
+msgid "Parking"
+msgstr ""
+
+#: src/poiCategories.js:330
+msgid "Bicycle Parking"
+msgstr ""
+
+#: src/poiCategories.js:335
+msgid "Bicycle Rental"
+msgstr ""
+
+#: src/poiCategories.js:340
+msgid "Car Rental"
+msgstr ""
+
+#: src/poiCategories.js:345
+msgid "Fuel"
+msgstr ""
+
+#: src/poiCategories.js:350
+msgid "EV Charging"
+msgstr ""
+
+#: src/poiCategories.js:358
+msgid "Healthcare"
+msgstr ""
+
+#: src/poiCategories.js:362
+msgid "Clinics"
+msgstr ""
+
+#: src/poiCategories.js:368
+msgid "Hospitals"
+msgstr ""
+
+#: src/poiCategories.js:374
+msgid "Dentists"
+msgstr ""
+
+#: src/poiCategories.js:381
+msgid "Accommodation"
+msgstr ""
+
+#: src/poiCategories.js:385
+msgid "Hotels"
+msgstr ""
+
+#: src/poiCategories.js:390
+msgid "Hostels"
+msgstr ""
+
+#: src/poiCategories.js:395
+msgid "Bed & Breakfast"
+msgstr ""
+
+#: src/poiCategories.js:400
+msgid "Campings"
+msgstr ""
+
+#: src/poiCategories.js:407
+#, fuzzy
+#| msgid "Open Location"
+msgid "Recreation"
+msgstr "Otevřít místo"
+
+#: src/poiCategories.js:411
+msgid "Parks"
+msgstr ""
+
+#: src/poiCategories.js:416
+msgid "Playgrounds"
+msgstr ""
+
+#: src/poiCategories.js:420
+msgid "Beaches"
+msgstr ""
+
+#: src/poiCategories.js:425
+msgid "Nature Reserves"
+msgstr ""
+
+#: src/poiCategories.js:431
+msgid "Theme Parks"
+msgstr ""
+
+#: src/poiCategories.js:436
+msgid "Theaters"
+msgstr ""
+
+#: src/poiCategories.js:442
+msgid "Movie Theaters"
+msgstr ""
+
+#: src/poiCategories.js:448
+msgid "Night Clubs"
+msgstr ""
+
+#: src/poiCategories.js:455
+msgid "Tourism"
+msgstr ""
+
+#: src/poiCategories.js:459
+msgid "Museums"
+msgstr ""
+
+#: src/poiCategories.js:465
+#, fuzzy
+#| msgid "Directions"
+msgid "Attractions"
+msgstr "Navigovat"
+
+#: src/poiCategories.js:470
+msgid "Artworks"
+msgstr ""
+
+#: src/poiCategories.js:475
+msgid "Tourist Information"
+msgstr ""
+
+#: src/poiCategories.js:482
+#, fuzzy
+#| msgid "_Export"
+msgid "Sports"
+msgstr "_Exportovat"
+
+#: src/poiCategories.js:486
+msgid "Gyms"
+msgstr ""
+
+#: src/poiCategories.js:492
+msgid "Outdoor Gyms"
+msgstr ""
+
+#: src/poiCategories.js:498
+msgid "Golf Courses"
+msgstr ""
 
 #: src/printLayout.js:350
 #, javascript-format
@@ -1339,6 +1693,10 @@ msgstr "Odebrat podle místa"
 msgid "Reverse route"
 msgstr "Otočit trasu"
 
+#: src/searchBar.js:45
+msgid "Search"
+msgstr "Hledat"
+
 #. Translators: The first string is the name of the city, the
 #. second string is the name of the app to add it to
 #: src/sendToDialog.js:84
@@ -1350,7 +1708,7 @@ msgstr "Přidat %s do %s"
 msgid "Failed to open URI"
 msgstr "Selhalo otevření adresy URI"
 
-#: src/sendToDialog.js:248
+#: src/sendToDialog.js:246
 #, javascript-format
 msgid "Open with %s"
 msgstr "Otevřít pomocí %s"
@@ -1360,12 +1718,12 @@ msgid "failed to load file"
 msgstr "selhalo načtení souboru"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:349
+#: src/sidebar.js:325
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Odhadovaný čas: %s"
 
-#: src/sidebar.js:419
+#: src/sidebar.js:395
 #, javascript-format
 msgid "Itineraries provided by %s"
 msgstr "Plán cesty poskytl %s"
@@ -1402,7 +1760,7 @@ msgstr "Chůze %s"
 msgid "Arrive at %s"
 msgstr "Příjezd do %s"
 
-#: src/transit.js:79 src/transitplugins/openTripPlanner.js:1134
+#: src/transit.js:79 src/transitplugins/openTripPlanner.js:1144
 msgid "Arrive"
 msgstr "Příjezd"
 
@@ -1599,19 +1957,19 @@ msgid "Bahá'í"
 msgstr "bahaizmus"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:256
+#: src/utils.js:257
 msgid "Unknown"
 msgstr "neznámá"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:259
+#: src/utils.js:260
 msgid "Exact"
 msgstr "velmi přesná"
 
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
 #.
-#: src/utils.js:360
+#: src/utils.js:345
 #, javascript-format
 msgid "%s h"
 msgstr "%s hod"
@@ -1620,7 +1978,7 @@ msgstr "%s hod"
 #. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
 #.
-#: src/utils.js:366
+#: src/utils.js:351
 #, javascript-format
 msgid "%s h %s min"
 msgid_plural "%s h %s min"
@@ -1632,7 +1990,7 @@ msgstr[2] "%s h %s min"
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
 #.
-#: src/utils.js:373
+#: src/utils.js:358
 #, javascript-format
 msgid "%s min"
 msgid_plural "%s min"
@@ -1644,7 +2002,7 @@ msgstr[2] "%s min"
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
 #.
-#: src/utils.js:379
+#: src/utils.js:364
 #, javascript-format
 msgid "%s s"
 msgid_plural "%s s"
@@ -1653,25 +2011,25 @@ msgstr[1] "%s s"
 msgstr[2] "%s s"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:390
+#: src/utils.js:375
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:393
+#: src/utils.js:378
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:401
+#: src/utils.js:386
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:404
+#: src/utils.js:389
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
@@ -1680,106 +2038,127 @@ msgstr "%s ft"
 msgid "This plugin doesn't support latest arrival"
 msgstr "Tento zásuvný modul nepodporuje poslední příjezd"
 
-#: src/transitplugins/openTripPlanner.js:1195
+#: src/transitplugins/openTripPlanner.js:1205
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Pokračujte na %s"
 
-#: src/transitplugins/openTripPlanner.js:1197
-msgid "Continue"
-msgstr "Pokračujte"
-
-#: src/transitplugins/openTripPlanner.js:1200
+#: src/transitplugins/openTripPlanner.js:1210
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Zahněte doleva na %s"
 
-#: src/transitplugins/openTripPlanner.js:1202
+#: src/transitplugins/openTripPlanner.js:1212
 msgid "Turn left"
 msgstr "Zahněte doleva"
 
-#: src/transitplugins/openTripPlanner.js:1205
+#: src/transitplugins/openTripPlanner.js:1215
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Zahněte mírně doleva na %s"
 
-#: src/transitplugins/openTripPlanner.js:1207
+#: src/transitplugins/openTripPlanner.js:1217
 msgid "Turn slightly left"
 msgstr "Zahněte mírně doleva"
 
-#: src/transitplugins/openTripPlanner.js:1210
+#: src/transitplugins/openTripPlanner.js:1220
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Zahněte ostře doleva na %s"
 
-#: src/transitplugins/openTripPlanner.js:1212
+#: src/transitplugins/openTripPlanner.js:1222
 msgid "Turn sharp left"
 msgstr "Zahněte ostře doleva"
 
-#: src/transitplugins/openTripPlanner.js:1215
+#: src/transitplugins/openTripPlanner.js:1225
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Zahněte doprava na %s"
 
-#: src/transitplugins/openTripPlanner.js:1217
+#: src/transitplugins/openTripPlanner.js:1227
 msgid "Turn right"
 msgstr "Zahněte doprava"
 
-#: src/transitplugins/openTripPlanner.js:1220
+#: src/transitplugins/openTripPlanner.js:1230
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Zahněte mírně doprava na %s"
 
-#: src/transitplugins/openTripPlanner.js:1222
+#: src/transitplugins/openTripPlanner.js:1232
 msgid "Turn slightly right"
 msgstr "Zahněte mírně doprava"
 
-#: src/transitplugins/openTripPlanner.js:1225
+#: src/transitplugins/openTripPlanner.js:1235
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Zahněte ostře doprava na %s"
 
-#: src/transitplugins/openTripPlanner.js:1227
+#: src/transitplugins/openTripPlanner.js:1237
 msgid "Turn sharp right"
 msgstr "Zahněte ostře doprava"
 
-#: src/transitplugins/openTripPlanner.js:1233
+#: src/transitplugins/openTripPlanner.js:1243
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "Na kruhovém objezdu použijte výjezd %s"
 
-#: src/transitplugins/openTripPlanner.js:1235
+#: src/transitplugins/openTripPlanner.js:1245
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "Na kruhovém objezdu použijte výjezd směr %s"
 
-#: src/transitplugins/openTripPlanner.js:1237
+#: src/transitplugins/openTripPlanner.js:1247
 msgid "Take the roundabout"
 msgstr "Najeďte na kruhový objezd"
 
-#: src/transitplugins/openTripPlanner.js:1241
+#: src/transitplugins/openTripPlanner.js:1251
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Použijte výtah a vystupte v %s"
 
-#: src/transitplugins/openTripPlanner.js:1243
+#: src/transitplugins/openTripPlanner.js:1253
 msgid "Take the elevator"
 msgstr "Použijte výtah"
 
-#: src/transitplugins/openTripPlanner.js:1247
+#: src/transitplugins/openTripPlanner.js:1257
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Proveďte otočku doleva na %s"
 
-#: src/transitplugins/openTripPlanner.js:1249
+#: src/transitplugins/openTripPlanner.js:1259
 msgid "Make a left u-turn"
 msgstr "Proveďte otočku doleva"
 
-#: src/transitplugins/openTripPlanner.js:1252
+#: src/transitplugins/openTripPlanner.js:1262
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Proveďte otočku doprava na %s"
 
-#: src/transitplugins/openTripPlanner.js:1254
+#: src/transitplugins/openTripPlanner.js:1264
 msgid "Make a right u-turn"
 msgstr "Proveďte otočku doprava"
+
+#~ msgid "Sign up"
+#~ msgstr "Zaregistrovat se"
+
+#~ msgid "Filesystem is read only"
+#~ msgstr "Souborový systém je jen ke čtení"
+
+#~ msgid "You do not have permission to save there"
+#~ msgstr "Nemáte oprávnění ukládat do tohoto umístění"
+
+#~ msgid "The directory does not exist"
+#~ msgstr "Složka neexistuje"
+
+#~ msgid "No filename specified"
+#~ msgstr "Není zadán název souboru"
+
+#~ msgid ""
+#~ "Location was added to the map, note that it may take a while before it "
+#~ "shows on the map and in search results."
+#~ msgstr ""
+#~ "Místo bylo přidáno do mapy, ale vezměte na vědomí, že může chvíli trvat, "
+#~ "než se zobrazí na mapě a ve výsledcích hledání."
+
+#~ msgid "Takeaway"
+#~ msgstr "Jídlo s sebou"
