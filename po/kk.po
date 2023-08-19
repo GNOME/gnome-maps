@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2022-09-17 21:24+0000\n"
-"PO-Revision-Date: 2022-09-18 12:55+0600\n"
+"POT-Creation-Date: 2023-08-10 22:03+0000\n"
+"PO-Revision-Date: 2023-08-19 22:08+0600\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk@li.org>\n"
 "Language: kk\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -27,8 +27,8 @@ msgstr ""
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
-#: data/ui/main-window.ui:29 src/application.js:61 src/mainWindow.js:133
-#: src/mainWindow.js:499
+#: data/ui/main-window.ui:27 src/application.js:61 src/mainWindow.js:143
+#: src/mainWindow.js:588
 msgid "Maps"
 msgstr "Карталар"
 
@@ -55,7 +55,7 @@ msgstr ""
 "Карталар қолданбасы қауымдастық ұсынатын OpenStreetMap дерекқорын қолданады, "
 "оны дүниежүзінің әр жеріндегі мыңдаған адамдар жасайды."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:317 src/mainWindow.js:496
+#: data/org.gnome.Maps.appdata.xml.in.in:369 src/mainWindow.js:585
 msgid "The GNOME Project"
 msgstr "GNOME жобасы"
 
@@ -89,105 +89,113 @@ msgid "Zoom level"
 msgstr "Масштабтау деңгейі"
 
 #: data/org.gnome.Maps.gschema.xml:21
+msgid "rotation"
+msgstr "бұру"
+
+#: data/org.gnome.Maps.gschema.xml:22
+msgid "Map rotation in radians"
+msgstr "Картаның бұрылуы, радиан есебімен"
+
+#: data/org.gnome.Maps.gschema.xml:26
 msgid "Map type"
 msgstr "Карта түрі"
 
-#: data/org.gnome.Maps.gschema.xml:22
+#: data/org.gnome.Maps.gschema.xml:27
 msgid "The type of map to display (street, aerial, etc.)"
 msgstr "Көрсетілетін карта түрі (көше, әуе және т.б.)"
 
-#: data/org.gnome.Maps.gschema.xml:26
+#: data/org.gnome.Maps.gschema.xml:31
 msgid "Window size"
 msgstr "Терезе өлшемі"
 
-#: data/org.gnome.Maps.gschema.xml:27
+#: data/org.gnome.Maps.gschema.xml:32
 msgid "Window size (width and height)."
 msgstr "Терезе өлшемі (ені мен биіктігі)."
 
-#: data/org.gnome.Maps.gschema.xml:31
+#: data/org.gnome.Maps.gschema.xml:36
 msgid "Window position"
 msgstr "Терезе орны"
 
-#: data/org.gnome.Maps.gschema.xml:32
+#: data/org.gnome.Maps.gschema.xml:37
 msgid "Window position (X and Y)."
 msgstr "Терезе орны (x және y)."
 
-#: data/org.gnome.Maps.gschema.xml:36
+#: data/org.gnome.Maps.gschema.xml:41
 msgid "Window maximized"
 msgstr "Терезе максималды етілген"
 
-#: data/org.gnome.Maps.gschema.xml:37
+#: data/org.gnome.Maps.gschema.xml:42
 msgid "Window maximization state"
 msgstr "Терезенің максималды күйі"
 
-#: data/org.gnome.Maps.gschema.xml:41
+#: data/org.gnome.Maps.gschema.xml:46
 msgid "Maximum number of search results"
 msgstr "Іздеу нәтижелерінің максималды саны"
 
-#: data/org.gnome.Maps.gschema.xml:42
+#: data/org.gnome.Maps.gschema.xml:47
 msgid "Maximum number of search results from geocode search."
 msgstr "Геокодын іздеуі қайтаратын нәтижелерінің максималды саны."
 
-#: data/org.gnome.Maps.gschema.xml:46
+#: data/org.gnome.Maps.gschema.xml:51
 msgid "Number of recent places to store"
 msgstr "Соңғы орындардың сақталатын саны"
 
-#: data/org.gnome.Maps.gschema.xml:47
+#: data/org.gnome.Maps.gschema.xml:52
 msgid "Number of recently visited places to store."
 msgstr "Соңғы болған орындардың қаншауын сақтау керек."
 
-#: data/org.gnome.Maps.gschema.xml:51
+#: data/org.gnome.Maps.gschema.xml:56
 msgid "Number of recent routes to store"
 msgstr "Соңғы бағыттардың сақталатын саны"
 
-#: data/org.gnome.Maps.gschema.xml:52
+#: data/org.gnome.Maps.gschema.xml:57
 msgid "Number of recently visited routes to store."
 msgstr "Соңғы бағыттардың нешеуін сақтау керек."
 
-#: data/org.gnome.Maps.gschema.xml:56
+#: data/org.gnome.Maps.gschema.xml:61
 msgid "OpenStreetMap username or e-mail address"
 msgstr "OpenStreetMap пайдаланушы аты немесе эл. пошта адресі"
 
-#: data/org.gnome.Maps.gschema.xml:57
+#: data/org.gnome.Maps.gschema.xml:62
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr ""
 "Пайдаланушы OpenStreetMap деректерін түзету үшін кірген ба, соны анықтайды."
 
-#: data/org.gnome.Maps.gschema.xml:61
+#: data/org.gnome.Maps.gschema.xml:66
 msgid "Last used transportation type for routing"
 msgstr "Бағдарды құрастыру кезінде соңғы қолданылған көлік түрі"
 
-#: data/org.gnome.Maps.gschema.xml:65
+#: data/org.gnome.Maps.gschema.xml:70
 msgid "Show scale"
 msgstr "Масштабты көрсету"
 
-#: data/org.gnome.Maps.gschema.xml:66
+#: data/org.gnome.Maps.gschema.xml:71
 msgid "Whether to show the scale."
 msgstr "Масштабты көрсету керек пе."
 
 #: data/ui/context-menu.ui:6
-msgid "Route from here"
+msgid "Route from Here"
 msgstr "Осыдан бағдар"
 
 #: data/ui/context-menu.ui:10
-msgid "Add intermediate destination"
+msgid "Add Intermediate Destination"
 msgstr "Аралық мақсатты қосу"
 
 #: data/ui/context-menu.ui:14
-msgid "Route to here"
+msgid "Route to Here"
 msgstr "Осыған дейін бағдар"
 
 #: data/ui/context-menu.ui:20
-msgid "What's here?"
+msgid "What's Here?"
 msgstr "Осында не бар?"
 
 #: data/ui/context-menu.ui:24
-msgid "Copy location"
+msgid "Copy Location"
 msgstr "Орналасуды көшіріп алу"
 
 #: data/ui/context-menu.ui:28
-msgid "Add to OpenStreetMap"
-msgstr "OpenStreetMap ішіне қосу"
+msgid "Add to OpenStreetMap…"
+msgstr "OpenStreetMap ішіне қосу…"
 
 #: data/ui/export-view-dialog.ui:7
 msgid "Export view"
@@ -203,24 +211,14 @@ msgid "_Export"
 msgstr "Э_кспорт"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:11
-msgid "Go to current location"
-msgstr "Ағымдағы орналасуға өту"
+#: data/ui/headerbar-left.ui:11 src/geoclue.js:106
+msgid "Current Location"
+msgstr "Ағымдағы орналасу"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-left.ui:19
-msgid "Choose map type"
-msgstr "Карта түрін таңдаңыз"
-
-#. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:28
-msgid "Zoom out"
-msgstr "Кішірейту"
-
-#. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:37
-msgid "Zoom in"
-msgstr "Үлкейту"
+msgid "Layers"
+msgstr "Қабаттар"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-right.ui:11
@@ -229,85 +227,110 @@ msgstr "Бағдарды баспаға шығару"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-right.ui:21
-msgid "Toggle favorites"
-msgstr "Таңдамалыларды көрсету/жасыру"
+msgid "Favorites"
+msgstr "Таңдамалылар"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-right.ui:30
-msgid "Toggle route planner"
-msgstr "Бағдар жоспарлаушысын іске қосу/сөндіру"
+msgid "Route Planner"
+msgstr "Маршрутты жоспарлаушы"
 
-#: data/ui/help-overlay.ui:14
+#: data/ui/help-overlay.ui:12
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Жалпы"
 
-#: data/ui/help-overlay.ui:18
+#: data/ui/help-overlay.ui:15
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "Пернетақта жарлықтарын көрсету"
 
-#: data/ui/help-overlay.ui:25
+#: data/ui/help-overlay.ui:21
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Іздеу"
 
-#: data/ui/help-overlay.ui:32
+#: data/ui/help-overlay.ui:27
+msgctxt "shortcut window"
+msgid "Explore points-of-interest"
+msgstr "Қызықты жерлерді зерттеңіз"
+
+#: data/ui/help-overlay.ui:33
+msgctxt "shortcut window"
+msgid "Show last search results"
+msgstr "Соңғы іздеу нәтижелерін көрсету"
+
+#: data/ui/help-overlay.ui:39
 msgctxt "shortcut window"
 msgid "Toggle route planner"
 msgstr "Бағдар жоспарлаушысын іске қосу/сөндіру"
 
-#: data/ui/help-overlay.ui:39
+#: data/ui/help-overlay.ui:45
 msgctxt "shortcut window"
 msgid "Print route"
 msgstr "Бағдарды баспаға шығару"
 
-#: data/ui/help-overlay.ui:46
+#: data/ui/help-overlay.ui:51
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Шығу"
 
-#: data/ui/help-overlay.ui:53
+#: data/ui/help-overlay.ui:57
 msgctxt "shortcut window"
 msgid "Open main menu"
 msgstr "Негізгі мәзірді ашу"
 
-#: data/ui/help-overlay.ui:62
+#: data/ui/help-overlay.ui:65
 msgctxt "shortcut window"
 msgid "Map View"
 msgstr "Карта көрінісі"
 
-#: data/ui/help-overlay.ui:66
+#: data/ui/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Zoom in"
 msgstr "Үлкейту"
 
-#: data/ui/help-overlay.ui:73
+#: data/ui/help-overlay.ui:74
 msgctxt "shortcut window"
 msgid "Zoom out"
 msgstr "Кішірейту"
 
 #: data/ui/help-overlay.ui:80
 msgctxt "shortcut window"
+msgid "Rotate clockwise"
+msgstr "Сағат тілі бойымен бұру"
+
+#: data/ui/help-overlay.ui:86
+msgctxt "shortcut window"
+msgid "Rotate counter-clockwise"
+msgstr "Сағат тілі бойына қарсы бұру"
+
+#: data/ui/help-overlay.ui:92
+msgctxt "shortcut window"
+msgid "Reset rotation"
+msgstr "Бұруды тастау"
+
+#: data/ui/help-overlay.ui:98
+msgctxt "shortcut window"
 msgid "Toggle scale"
 msgstr "Масштабты іске қосу/сөндіру"
 
-#: data/ui/help-overlay.ui:87
+#: data/ui/help-overlay.ui:104
 msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "Ағымдағы орналасуға өту"
 
-#: data/ui/help-overlay.ui:97
+#: data/ui/help-overlay.ui:114
 msgctxt "shortcut window"
 msgid "Switch to street view"
 msgstr "Көше көрінісіне ауысу"
 
-#: data/ui/help-overlay.ui:104
+#: data/ui/help-overlay.ui:121
 msgctxt "shortcut window"
 msgid "Switch to aerial view"
 msgstr "Ауадан көрінісіне ауысу"
 
-#: data/ui/help-overlay.ui:111
+#: data/ui/help-overlay.ui:127
 msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "Қабатты (shape) ашу"
@@ -316,31 +339,22 @@ msgstr "Қабатты (shape) ашу"
 msgid "Show Scale"
 msgstr "Масштабты көрсету"
 
-#. Translators: This string uses ellipsis character
 #: data/ui/layers-popover.ui:16
+msgid "Enable Experimental Map"
+msgstr "Сынамалы картаны іске қосу"
+
+#. Translators: This string uses ellipsis character
+#: data/ui/layers-popover.ui:20
 msgid "Open Shape Layer…"
 msgstr "Қабатты (shape) ашу…"
 
-#: data/ui/location-service-dialog.ui:16
-msgid "Turn on location services to find your location"
-msgstr "Орнасуыңызды анықтау үшін орналасулар қызметін іске қосыңыз"
-
-#: data/ui/location-service-dialog.ui:28 data/ui/osm-edit-dialog.ui:220
-#: data/ui/zoom-in-dialog.ui:21
-msgid "Cancel"
-msgstr "Бас тарту"
-
-#: data/ui/location-service-dialog.ui:38
-msgid "Location Settings"
-msgstr "Орналасу баптаулары"
-
 #: data/ui/main-window.ui:8
-msgid "Set up OpenStreetMap Account"
-msgstr "OpenStreetMap тіркелгісін баптау"
+msgid "Set up OpenStreetMap Account…"
+msgstr "OpenStreetMap тіркелгісін баптау…"
 
 #: data/ui/main-window.ui:12
-msgid "Export as Image"
-msgstr "Сурет ретінде экспорттау"
+msgid "Export as Image…"
+msgstr "Сурет ретінде экспорттау…"
 
 #: data/ui/main-window.ui:17
 msgid "_Keyboard Shortcuts"
@@ -350,20 +364,20 @@ msgstr "П_ернетақта жарлықтары"
 msgid "About Maps"
 msgstr "Карталар қолданбасы туралы"
 
-#: data/ui/main-window.ui:40
-msgid "Open main menu"
-msgstr "Негізгі мәзірді ашу"
+#: data/ui/main-window.ui:48
+msgid "Main Menu"
+msgstr "Басты мәзір"
 
 #: data/ui/osm-account-dialog.ui:6
 msgid "OpenStreetMap Account"
 msgstr "OpenStreetMap тіркелгісі"
 
-#: data/ui/osm-account-dialog.ui:24
+#: data/ui/osm-account-dialog.ui:26
 msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
 msgstr ""
 "<span weight=\"bold\" size=\"x-large\">Карталарды түзету үшін кіріңіз</span>"
 
-#: data/ui/osm-account-dialog.ui:38
+#: data/ui/osm-account-dialog.ui:39
 msgid ""
 "Help to improve the map, using an\n"
 "OpenStreetMap account."
@@ -379,37 +393,33 @@ msgstr ""
 "Веб-браузерде рұқсатты авторизациялау үшін кіріңіз.\n"
 "Сосын келесі қадамда алынған тексеру кодын осында енгіңіз."
 
-#: data/ui/osm-account-dialog.ui:68
-msgid "Sign up"
-msgstr "Тіркелу"
-
-#: data/ui/osm-account-dialog.ui:81
+#: data/ui/osm-account-dialog.ui:67
 msgid "Sign In"
 msgstr "Кіру"
 
-#: data/ui/osm-account-dialog.ui:123
+#: data/ui/osm-account-dialog.ui:111
 msgid "Copy verification code shown when authorizing access in the browser"
 msgstr ""
 "Браузерде рұқсатты авторизациялау кезінде көрсетілген тексеру кодын көшіріп "
 "алыңыз"
 
-#: data/ui/osm-account-dialog.ui:133
+#: data/ui/osm-account-dialog.ui:121
 msgid "Verification code"
 msgstr "Тексеру коды"
 
-#: data/ui/osm-account-dialog.ui:144
+#: data/ui/osm-account-dialog.ui:132
 msgid "Verify"
 msgstr "Растау"
 
-#: data/ui/osm-account-dialog.ui:172
+#: data/ui/osm-account-dialog.ui:160
 msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
 msgstr "<span weight=\"bold\" size=\"x-large\">Кіру орындалды</span>"
 
-#: data/ui/osm-account-dialog.ui:184
+#: data/ui/osm-account-dialog.ui:172
 msgid "Your OpenStreetMap account is active."
 msgstr "Сіздің OpenStreetMap тіркелгіңіз белсенді."
 
-#: data/ui/osm-account-dialog.ui:214
+#: data/ui/osm-account-dialog.ui:202
 msgid "Sign Out"
 msgstr "Шығу"
 
@@ -430,23 +440,28 @@ msgstr "Пошталық индексі"
 msgid "City"
 msgstr "Қала"
 
-#: data/ui/osm-edit-dialog.ui:54
+#: data/ui/osm-edit-dialog.ui:8
+msgctxt "dialog title"
+msgid "Edit on OpenStreetMap"
+msgstr "OpenStreetMap ішінде түзету"
+
+#: data/ui/osm-edit-dialog.ui:57
 msgid "Type"
 msgstr "Түрі"
 
-#: data/ui/osm-edit-dialog.ui:76
+#: data/ui/osm-edit-dialog.ui:79
 msgid "None"
 msgstr "Жоқ"
 
-#: data/ui/osm-edit-dialog.ui:105
+#: data/ui/osm-edit-dialog.ui:108
 msgid "Add Field"
 msgstr "Өрісті қосу"
 
-#: data/ui/osm-edit-dialog.ui:127
+#: data/ui/osm-edit-dialog.ui:130
 msgid "Comment"
 msgstr "Пікір"
 
-#: data/ui/osm-edit-dialog.ui:155
+#: data/ui/osm-edit-dialog.ui:158
 msgid ""
 "Map changes will be visible on all maps that use\n"
 "OpenStreetMap data."
@@ -454,36 +469,56 @@ msgstr ""
 "Карта өзгерістері OpenStreetMap деректерін қолданатын\n"
 "барлық карталарда көрінетін болады."
 
-#: data/ui/osm-edit-dialog.ui:183
+#: data/ui/osm-edit-dialog.ui:186
 msgid "Recently Used"
 msgstr "Жақында қолданылған"
 
-#: data/ui/osm-edit-dialog.ui:233 src/osmEditDialog.js:539
+#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:541
+msgid "Cancel"
+msgstr "Бас тарту"
+
+#: data/ui/osm-edit-dialog.ui:238 src/osmEditDialog.js:531
 msgid "Next"
 msgstr "Келесі"
 
-#: data/ui/place-popover.ui:42 src/application.js:269
+#: data/ui/osm-edit-wikipedia.ui:8
+msgid "Article"
+msgstr "Мақала"
+
+#: data/ui/osm-edit-wikipedia.ui:21
+msgid "Wikidata tag"
+msgstr "Wikidata тегі"
+
+#: data/ui/osm-edit-wikipedia.ui:32
+msgid "Load Wikidata tag for article"
+msgstr "Мақала үшін Wikidata тегін жүктеу"
+
+#: data/ui/place-popover.ui:23 src/searchBar.js:54
+msgid "Explore Nearby Places"
+msgstr "Жақын орындарды зерттеңіз"
+
+#: data/ui/place-popover.ui:82 src/application.js:274
 msgid "No results found"
 msgstr "Нәтижелер табылмады"
 
-#: data/ui/place-popover.ui:52 src/application.js:246 src/osmEditDialog.js:576
+#: data/ui/place-popover.ui:92 src/application.js:252
 msgid "An error has occurred"
 msgstr "Қате орын алды"
 
 #. Translators: This is a tooltip
 #: data/ui/route-entry.ui:12
-msgid "Drag to change order of the route"
-msgstr "Бағдар ретін ауыстыру үшін тартып апарыңыз"
+msgid "Change Route Order"
+msgstr "Бағыт ретін өзгерту"
 
 #: data/ui/send-to-dialog.ui:7
 msgid "Open Location"
 msgstr "Орналасуды ашу"
 
-#: data/ui/send-to-dialog.ui:62
+#: data/ui/send-to-dialog.ui:64
 msgid "Copy"
 msgstr "Көшіру"
 
-#: data/ui/send-to-dialog.ui:68
+#: data/ui/send-to-dialog.ui:70
 msgid "Send To…"
 msgstr "Қайда жіберу…"
 
@@ -505,11 +540,11 @@ msgstr "Көрінуін іске қосу/сөндіру"
 msgid "Remove Shape Layer"
 msgstr "Қабатты (shape) өшіру"
 
-#: data/ui/sidebar.ui:215
+#: data/ui/sidebar.ui:207
 msgid "Route search by GraphHopper"
 msgstr "Бағдарды іздеу GraphHopper ұсынады"
 
-#: data/ui/sidebar.ui:282
+#: data/ui/sidebar.ui:272
 msgid ""
 "Routing itineraries for public transit is provided by third-party\n"
 "services.\n"
@@ -588,8 +623,8 @@ msgid "Airplanes"
 msgstr "Ұшақтар"
 
 #. Translators: This is a tooltip
-#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27 data/ui/place-view.ui:53
-msgid "Share location"
+#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27
+msgid "Share Location"
 msgstr "Орналасумен бөлісу"
 
 #. Translators: This is a tooltip
@@ -604,7 +639,7 @@ msgstr "Бағыттар"
 
 #. Translators: This is a tooltip
 #: data/ui/place-buttons.ui:36
-msgid "Mark as favorite"
+msgid "Mark as Favorite"
 msgstr "Таңдамалы ретінде белгілеу"
 
 #. Translators: This is a tooltip
@@ -612,13 +647,29 @@ msgstr "Таңдамалы ретінде белгілеу"
 msgid "Edit on OpenStreetMap"
 msgstr "OpenStreetMap ішінде түзету"
 
-#: data/ui/zoom-in-dialog.ui:11
-msgid "Zoom in to add location!"
-msgstr "Орналасуды қосу үшін масштабты үлкейтіңіз!"
+#. Translators: This is a tooltip
+#: data/ui/place-view.ui:52
+msgid "Share location"
+msgstr "Орналасумен бөлісу"
 
-#: data/ui/zoom-in-dialog.ui:27
+#: data/ui/poi-category-goback-row.ui:22
+msgid "Back to Main Categories"
+msgstr "Негізгі санаттарға оралу"
+
+#. Translators: This is a tooltip
+#: data/ui/zoom-and-rotate-controls.ui:15 src/mapView.js:1121
 msgid "Zoom In"
 msgstr "Үлкейту"
+
+#. Translators: This is a tooltip
+#: data/ui/zoom-and-rotate-controls.ui:28
+msgid "Zoom Out"
+msgstr "Кішірейту"
+
+#. Translators: This is a tooltip
+#: data/ui/zoom-and-rotate-controls.ui:49
+msgid "Reset Rotation"
+msgstr "Бұруды тастау"
 
 #: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338
 #: lib/maps-file-data-source.c:418
@@ -661,7 +712,7 @@ msgstr "Орындарды іздеу"
 msgid "[FILE…|URI]"
 msgstr "[ФАЙЛ…|URI]"
 
-#: src/application.js:277
+#: src/application.js:281
 #, javascript-format
 msgid "Invalid maps: URI: %s"
 msgstr "Жарамсыз карталар: URI: %s"
@@ -670,44 +721,24 @@ msgstr "Жарамсыз карталар: URI: %s"
 #. * exported image with coordinates. The .png extension should be kept
 #. * intact in the translated string.
 #.
-#: src/exportViewDialog.js:85
+#: src/exportViewDialog.js:74
 #, javascript-format
 msgid "Maps at %f, %f.png"
 msgstr "Карта, %f, %f.png"
 
-#: src/exportViewDialog.js:167
-msgid "Filesystem is read only"
-msgstr "Файлдық жүйе тек оқу үшін қолжетерлік"
-
-#: src/exportViewDialog.js:169
-msgid "You do not have permission to save there"
-msgstr "Осында сақтау үшін керек рұқсаттарыңыз жоқ"
-
-#: src/exportViewDialog.js:171
-msgid "The directory does not exist"
-msgstr "Бума жоқ болып тұр"
-
-#: src/exportViewDialog.js:173
-msgid "No filename specified"
-msgstr "Файл аты көрсетілмеген"
-
-#: src/exportViewDialog.js:181
+#: src/exportViewDialog.js:153
 msgid "Unable to export view"
 msgstr "Көріністі экспорттау мүмкін емес"
 
-#: src/geoclue.js:106
-msgid "Current Location"
-msgstr "Ағымдағы орналасу"
-
-#: src/geoJSONSource.js:78
+#: src/geoJSONSource.js:73
 msgid "invalid coordinate"
 msgstr "координаттар жарамсыз"
 
-#: src/geoJSONSource.js:123 src/geoJSONSource.js:163 src/geoJSONSource.js:178
+#: src/geoJSONSource.js:118 src/geoJSONSource.js:158 src/geoJSONSource.js:173
 msgid "parse error"
 msgstr "талдау қатесі"
 
-#: src/geoJSONSource.js:157
+#: src/geoJSONSource.js:152
 msgid "unknown geometry"
 msgstr "геометрия белгісіз"
 
@@ -719,7 +750,7 @@ msgstr "Бағдар сұранымы сәтсіз."
 msgid "No route found."
 msgstr "Бағдар табылмады."
 
-#: src/graphHopper.js:215 src/transitplugins/openTripPlanner.js:1121
+#: src/graphHopper.js:215 src/transitplugins/openTripPlanner.js:1131
 msgid "Start!"
 msgstr "Бастау!"
 
@@ -727,28 +758,37 @@ msgstr "Бастау!"
 msgid "All Layer Files"
 msgstr "Барлық қабаттар файлдары"
 
-#: src/mainWindow.js:410
+#: src/mainWindow.js:468
 msgid "Failed to connect to location service"
 msgstr "Орналасулар қызметіне байланысу сәтсіз аяқталды"
 
-#: src/mainWindow.js:497
+#: src/mainWindow.js:473
+msgid "Turn on location services"
+msgstr "Орналасулар қызметін іске қосу"
+
+#: src/mainWindow.js:474
+msgid "Location Settings"
+msgstr "Орналасу баптаулары"
+
+#: src/mainWindow.js:586
 msgid "translator-credits"
 msgstr "Baurzhan Muftakhidinov <baurthefirst@gmail.com>"
 
-#: src/mainWindow.js:501
-msgid "Copyright © 2011 – 2022 Red Hat, Inc. and The GNOME Maps authors"
-msgstr "Copyright © 2011 – 2022 Red Hat, Inc. және GNOME Maps авторлары"
+#: src/mainWindow.js:590
+#| msgid "Copyright © 2011 – 2022 Red Hat, Inc. and The GNOME Maps authors"
+msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
+msgstr "Copyright © 2011 – 2023 Red Hat, Inc. және GNOME Maps авторлары"
 
-#: src/mainWindow.js:517
+#: src/mainWindow.js:606
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Карта деректерін ұсынған %s және үлес қосушылар"
 
-#: src/mainWindow.js:518
+#: src/mainWindow.js:607
 msgid "Map Data Provider"
 msgstr "Карта деректерін ұсынушысы"
 
-#: src/mainWindow.js:530
+#: src/mainWindow.js:619
 msgid "Map Tile Provider"
 msgstr "Карта мозаикасын ұсынушысы"
 
@@ -757,29 +797,29 @@ msgstr "Карта мозаикасын ұсынушысы"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:538
+#: src/mainWindow.js:627
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Карта мозаикасын ұсынған %s"
 
-#: src/mainWindow.js:568
+#: src/mainWindow.js:657
 msgid "Search Provider"
 msgstr "Іздеу деректерін ұсынушысы"
 
-#: src/mainWindow.js:571
+#: src/mainWindow.js:660
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Іздеуді %s ұсынған, %s негізінде"
 
-#: src/mapView.js:507 src/mapView.js:567
+#: src/mapView.js:515 src/mapView.js:580
 msgid "Failed to open layer"
 msgstr "Қабатты ашу сәтсіз аяқталды"
 
-#: src/mapView.js:528
+#: src/mapView.js:534
 msgid "Do you want to continue?"
 msgstr "Жалғастыруды қалайсыз ба?"
 
-#: src/mapView.js:529
+#: src/mapView.js:535
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -788,81 +828,85 @@ msgstr ""
 "Жалпы өлшемі %s МБ болатын файлдарды ашуға дайынсыз. Бұл жүктелуге біраз "
 "уақытты алуы мүмкін"
 
-#: src/mapView.js:561
+#: src/mapView.js:542 src/transitplugins/openTripPlanner.js:1207
+msgid "Continue"
+msgstr "Жалғастыру"
+
+#: src/mapView.js:574
 msgid "File type is not supported"
 msgstr "Файл түріне қолдау жоқ"
 
-#: src/mapView.js:599
+#: src/mapView.js:611
 msgid "Failed to open GeoURI"
 msgstr "GeoURI ашу сәтсіз аяқталды"
 
-#: src/mapView.js:1039
+#: src/mapView.js:1080
 msgid "Nothing found here!"
 msgstr "Осында ешнәрсе табылмады!"
 
-#: src/mapView.js:1100
-msgid ""
-"Location was added to the map, note that it may take a while before it shows "
-"on the map and in search results."
-msgstr ""
-"Орналасу картаға қосылды. Бірақ, ол картада және іздеу нәтижелерінде "
-"көрінуіне дейін біршама уақыт өту керек болуын ескертіңіз."
+#: src/mapView.js:1120
+msgid "Zoom in to add location"
+msgstr "Орналасуды қосу үшін масштабты үлкейтіңіз"
 
-#: src/osmAccountDialog.js:139
+#: src/mapView.js:1141
+msgid "Location was added in OpenStreetMap"
+msgstr "Орын OpenStreetMap ішінде қосылды"
+
+#: src/osmAccountDialog.js:134
 msgid "The verification code didn’t match, please try again."
 msgstr "Растау коды сәйкес болмады, қайталап көріңіз."
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: src/osmConnection.js:337
+#: src/osmConnection.js:335
 msgid "Incorrect user name or password"
 msgstr "Пайдаланушы аты не паролі қате"
 
-#: src/osmConnection.js:339
+#: src/osmConnection.js:337
 msgid "Success"
 msgstr "Сәтті"
 
-#: src/osmConnection.js:341
+#: src/osmConnection.js:339
 msgid "Bad request"
 msgstr "Қате сұраным"
 
-#: src/osmConnection.js:343
+#: src/osmConnection.js:341
 msgid "Object not found"
 msgstr "Объект табылмады"
 
-#: src/osmConnection.js:345
+#: src/osmConnection.js:343
 msgid "Conflict, someone else has just modified the object"
 msgstr "Ерегесу, біреу бұл объектті жаңа ғана түзеткен"
 
-#: src/osmConnection.js:347
+#: src/osmConnection.js:345
 msgid "Object has been deleted"
 msgstr "Объект өшірілген"
 
-#: src/osmConnection.js:349
+#: src/osmConnection.js:347
 msgid "Way or relation refers to non-existing children"
 msgstr "Жол немесе байланыс жоқ ұрпақтарға сілтеп тұр"
 
-#: src/osmEditDialog.js:116
+#: src/osmEditDialog.js:106
 msgid "Name"
 msgstr "Аты"
 
-#: src/osmEditDialog.js:119
+#: src/osmEditDialog.js:109
 msgid "The official name. This is typically what appears on signs."
 msgstr "Ресми аты. Әдетте бұл белгілерде көрсетіледі."
 
-#: src/osmEditDialog.js:122
+#: src/osmEditDialog.js:112
 msgid "Address"
 msgstr "Адресі"
 
-#: src/osmEditDialog.js:130 src/placeView.js:262
+#: src/osmEditDialog.js:120 src/placeView.js:261
 msgid "Website"
 msgstr "Веб сайт"
 
-#: src/osmEditDialog.js:134
+#: src/osmEditDialog.js:124
 msgid "This is not a valid URL. Make sure to include http:// or https://."
 msgstr "Бұл дұрыс URL емес. http:// немесе https:// қосылғанын тексеріңіз."
 
-#: src/osmEditDialog.js:135
+#: src/osmEditDialog.js:125
 msgid ""
 "The official website. Try to use the most basic form of a URL i.e. http://"
 "example.com instead of http://example.com/index.html."
@@ -870,11 +914,11 @@ msgstr ""
 "Ресми веб сайты. Оңайлатылған түрін қолдануға тырысыңыз, мысалы, http://"
 "example.com (http://example.com/index.html емес)."
 
-#: src/osmEditDialog.js:140
+#: src/osmEditDialog.js:130
 msgid "Phone"
 msgstr "Телефон"
 
-#: src/osmEditDialog.js:144
+#: src/osmEditDialog.js:134
 msgid ""
 "Phone number. Use the international format, starting with a + sign. Beware "
 "of local privacy laws, especially for private phone numbers."
@@ -882,11 +926,11 @@ msgstr ""
 "Телефон нөмірі. +таңбасынан басталатын халықаралық пішімді қолданыңыз. "
 "Жергілікті жекелік заңдарды ескертіңіз, әсіресе, жеке нөмірлер үшін."
 
-#: src/osmEditDialog.js:149 src/placeView.js:290
+#: src/osmEditDialog.js:139 src/placeView.js:294
 msgid "E-mail"
 msgstr "Эл. пошта"
 
-#: src/osmEditDialog.js:154
+#: src/osmEditDialog.js:144
 msgid ""
 "This is not a valid e-mail address. Make sure to not include the mailto: "
 "protocol prefix."
@@ -894,7 +938,7 @@ msgstr ""
 "Бұл дұрыс эл. пошта адресі емес. mailto: хаттама префиксінің қосылмағанын "
 "тексеріңіз."
 
-#: src/osmEditDialog.js:155
+#: src/osmEditDialog.js:145
 msgid ""
 "Contact e-mail address for inquiries. Add only email addresses that are "
 "intended to be publicly used."
@@ -904,23 +948,15 @@ msgstr ""
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:159 src/placeView.js:624
+#: src/osmEditDialog.js:149 src/placeView.js:646
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: src/osmEditDialog.js:164
-msgid ""
-"The format used should include the language code and the article title like "
-"“en:Article title”."
-msgstr ""
-"Қолданылатын пішімі тіл коды және мақала атауынан тұруы керек (мыс, ”kk:"
-"Мақала атауы”)."
-
-#: src/osmEditDialog.js:168 src/placeView.js:327
+#: src/osmEditDialog.js:156 src/placeView.js:331
 msgid "Opening hours"
 msgstr "Жұмыс істеу уақыты"
 
-#: src/osmEditDialog.js:173
+#: src/osmEditDialog.js:161
 msgid "See the link in the label for help on format."
 msgstr "Пішім көмегін алу үшін белгі сілтемесін қараңыз."
 
@@ -930,169 +966,169 @@ msgstr "Пішім көмегін алу үшін белгі сілтемесі�
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:176 src/placeView.js:437
+#: src/osmEditDialog.js:164 src/placeView.js:441
 msgid "Population"
 msgstr "Халық саны"
 
-#: src/osmEditDialog.js:181 src/placeView.js:466
+#: src/osmEditDialog.js:169 src/placeView.js:470
 msgid "Altitude"
 msgstr "Теңіз деңгейінен биіктігі"
 
-#: src/osmEditDialog.js:184
+#: src/osmEditDialog.js:172
 msgid "Elevation (height above sea level) of a point in metres."
 msgstr "Нүктенің биіктігі (теңіз деңгейінен), метр есебімен."
 
-#: src/osmEditDialog.js:187
+#: src/osmEditDialog.js:175
 msgid "Wheelchair access"
 msgstr "Мүгедектер арбасымен қатынау"
 
-#: src/osmEditDialog.js:190 src/osmEditDialog.js:199 src/osmEditDialog.js:210
-#: src/osmEditDialog.js:245
+#: src/osmEditDialog.js:178 src/osmEditDialog.js:187 src/osmEditDialog.js:198
+#: src/osmEditDialog.js:233
 msgid "Yes"
 msgstr "Иә"
 
-#: src/osmEditDialog.js:191 src/osmEditDialog.js:200 src/osmEditDialog.js:211
-#: src/osmEditDialog.js:246
+#: src/osmEditDialog.js:179 src/osmEditDialog.js:188 src/osmEditDialog.js:199
+#: src/osmEditDialog.js:234
 msgid "No"
 msgstr "Жоқ"
 
-#: src/osmEditDialog.js:192
+#: src/osmEditDialog.js:180
 msgid "Limited"
 msgstr "Шектелген"
 
-#: src/osmEditDialog.js:193
+#: src/osmEditDialog.js:181
 msgid "Designated"
 msgstr "Арнайы"
 
-#: src/osmEditDialog.js:196
+#: src/osmEditDialog.js:184
 msgid "Internet access"
 msgstr "Интернетпен байланыс"
 
-#: src/osmEditDialog.js:201
+#: src/osmEditDialog.js:189
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
 
-#: src/osmEditDialog.js:202
+#: src/osmEditDialog.js:190
 msgid "Wired"
 msgstr "Сымды"
 
-#: src/osmEditDialog.js:203
+#: src/osmEditDialog.js:191
 msgid "Terminal"
 msgstr "Терминал"
 
-#: src/osmEditDialog.js:204
+#: src/osmEditDialog.js:192
 msgid "Service"
 msgstr "Қызмет"
 
-#: src/osmEditDialog.js:207
-msgid "Takeaway"
-msgstr "Алып кету"
+#: src/osmEditDialog.js:195
+msgid "Takeout"
+msgstr "Тамақты алып кету"
 
-#: src/osmEditDialog.js:212
+#: src/osmEditDialog.js:200
 msgid "Only"
 msgstr "Тек қана"
 
-#: src/osmEditDialog.js:215
+#: src/osmEditDialog.js:203
 msgid "Religion"
 msgstr "Дін"
 
-#: src/osmEditDialog.js:218 src/translations.js:286
+#: src/osmEditDialog.js:206 src/translations.js:286
 msgid "Animism"
 msgstr "Анимизм"
 
-#: src/osmEditDialog.js:219
+#: src/osmEditDialog.js:207
 msgid "Bahá’í"
 msgstr "Бахаи"
 
-#: src/osmEditDialog.js:220 src/translations.js:288
+#: src/osmEditDialog.js:208 src/translations.js:288
 msgid "Buddhism"
 msgstr "Буддизм"
 
-#: src/osmEditDialog.js:221 src/translations.js:289
+#: src/osmEditDialog.js:209 src/translations.js:289
 msgid "Caodaism"
 msgstr "Каодай"
 
-#: src/osmEditDialog.js:222 src/translations.js:290
+#: src/osmEditDialog.js:210 src/translations.js:290
 msgid "Christianity"
 msgstr "Христиан"
 
-#: src/osmEditDialog.js:223 src/translations.js:291
+#: src/osmEditDialog.js:211 src/translations.js:291
 msgid "Confucianism"
 msgstr "Конфуциандық"
 
-#: src/osmEditDialog.js:224 src/translations.js:292
+#: src/osmEditDialog.js:212 src/translations.js:292
 msgid "Hinduism"
 msgstr "Индуизм"
 
-#: src/osmEditDialog.js:225 src/translations.js:293
+#: src/osmEditDialog.js:213 src/translations.js:293
 msgid "Jainism"
 msgstr "Джайнизм"
 
-#: src/osmEditDialog.js:226 src/translations.js:294
+#: src/osmEditDialog.js:214 src/translations.js:294
 msgid "Judaism"
 msgstr "Иудаизм"
 
-#: src/osmEditDialog.js:227 src/translations.js:295
+#: src/osmEditDialog.js:215 src/translations.js:295
 msgid "Islam"
 msgstr "Ислам"
 
-#: src/osmEditDialog.js:228 src/translations.js:296
+#: src/osmEditDialog.js:216 src/translations.js:296
 msgid "Multiple Religions"
 msgstr "Бірнеше дін"
 
-#: src/osmEditDialog.js:229 src/translations.js:297
+#: src/osmEditDialog.js:217 src/translations.js:297
 msgid "Paganism"
 msgstr "Паганизм"
 
-#: src/osmEditDialog.js:230 src/translations.js:298
+#: src/osmEditDialog.js:218 src/translations.js:298
 msgid "Pastafarianism"
 msgstr "Пастафариандық"
 
-#: src/osmEditDialog.js:231 src/translations.js:299
+#: src/osmEditDialog.js:219 src/translations.js:299
 msgid "Scientology"
 msgstr "Сайентология"
 
-#: src/osmEditDialog.js:232 src/translations.js:300
+#: src/osmEditDialog.js:220 src/translations.js:300
 msgid "Shinto"
 msgstr "Шинто"
 
-#: src/osmEditDialog.js:233 src/translations.js:301
+#: src/osmEditDialog.js:221 src/translations.js:301
 msgid "Sikhism"
 msgstr "Сикхизм"
 
-#: src/osmEditDialog.js:234 src/translations.js:302
+#: src/osmEditDialog.js:222 src/translations.js:302
 msgid "Spiritualism"
 msgstr "Спиритуализм"
 
-#: src/osmEditDialog.js:235 src/translations.js:303
+#: src/osmEditDialog.js:223 src/translations.js:303
 msgid "Taoism"
 msgstr "Таоизм"
 
-#: src/osmEditDialog.js:236 src/translations.js:304
+#: src/osmEditDialog.js:224 src/translations.js:304
 msgid "Unitarian Universalism"
 msgstr "Унитариандық универсализм"
 
-#: src/osmEditDialog.js:237 src/translations.js:305
+#: src/osmEditDialog.js:225 src/translations.js:305
 msgid "Voodoo"
 msgstr "Вуду"
 
-#: src/osmEditDialog.js:238 src/translations.js:306
+#: src/osmEditDialog.js:226 src/translations.js:306
 msgid "Yazidism"
 msgstr "Езидизм"
 
-#: src/osmEditDialog.js:239 src/translations.js:307
+#: src/osmEditDialog.js:227 src/translations.js:307
 msgid "Zoroastrianism"
 msgstr "Зороастризм"
 
-#: src/osmEditDialog.js:242
+#: src/osmEditDialog.js:230 src/poiCategories.js:174
 msgid "Toilets"
 msgstr "Әжетханалар"
 
-#: src/osmEditDialog.js:249
+#: src/osmEditDialog.js:237
 msgid "Note"
 msgstr "Естелік"
 
-#: src/osmEditDialog.js:252
+#: src/osmEditDialog.js:240
 msgid ""
 "Information used to inform other mappers about non-obvious information about "
 "an element, the author’s intent when creating it, or hints for further "
@@ -1102,41 +1138,73 @@ msgstr ""
 "қолданатын ақпарат, немесе оны жасау кезіндегі автордың пікірі, немесе "
 "болашақ жақсартулар туралы кеңестер."
 
-#: src/osmEditDialog.js:347
+#: src/osmEditDialog.js:339
 msgctxt "dialog title"
 msgid "Add to OpenStreetMap"
 msgstr "OpenStreetMap ішіне қосу"
 
-#: src/osmEditDialog.js:401
+#: src/osmEditDialog.js:393
 msgid "Select Type"
 msgstr "Түрін таңдаңыз"
 
-#: src/osmEditDialog.js:523
+#: src/osmEditDialog.js:515
 msgid "Done"
 msgstr "Дайын"
+
+#: src/osmEditDialog.js:818
+msgid ""
+"The format used should include the language code and the article title like "
+"“en:Article title”."
+msgstr ""
+"Қолданылатын пішімі тіл коды және мақала атауынан тұруы керек (мыс, ”kk:"
+"Мақала атауы”)."
+
+#: src/osmEditDialog.js:824
+msgid "Use the reload button to load the Wikidata tag for the selected article"
+msgstr ""
+"Таңдалған мақала үшін Wikidata тегті жүктеу үшін қайта жүктеу батырмасын "
+"пайдаланыңыз"
+
+#: src/osmEditDialog.js:832
+msgid "Couldn't find Wikidata tag for article"
+msgstr "Мақала үшін Wikidata тегті табу сәтсіз аяқталды"
 
 #: src/photonUtils.js:118
 msgid "Unnamed place"
 msgstr "Аталмаған орын"
 
-#: src/placeEntry.js:223
+#: src/placeEntry.js:261
 msgid "Failed to parse Geo URI"
 msgstr "Geo URI талдау сәтсіз аяқталды"
 
-#: src/placeEntry.js:236
+#: src/placeEntry.js:273
 msgid "Failed to parse Maps URI"
 msgstr "Maps URI талдау сәтсіз аяқталды"
 
-#: src/placeView.js:250
+#. 300 ft (300 * 12 * 0.0254 m)
+#.
+#. * Translators: This a format string for showing a distance to a place
+#. * is lower than a "quite short" distance.
+#. * The "less than" symbol can be substituded with an appropriate one, if
+#. * needed (e.g. using the correct direction, or alternative symbol).
+#. * The %s should be kept, and is substituted with a label representing the
+#. * short distance. The \u2009 (thin space) could also be adjusted if needed
+#: src/placeListRow.js:46
+#, javascript-format
+msgctxt "short distance format string"
+msgid "< %s"
+msgstr "< %s"
+
+#: src/placeView.js:249
 msgid "Coordinates"
 msgstr "Координаттар"
 
-#: src/placeView.js:254
+#: src/placeView.js:253
 msgid "Accuracy"
 msgstr "Дәлдік"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:257
+#: src/placeView.js:256
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Дәлдігі: %s"
@@ -1147,7 +1215,7 @@ msgstr "Дәлдігі: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:276
+#: src/placeView.js:275
 msgid "Phone number"
 msgstr "Телефон нөмірі"
 
@@ -1155,16 +1223,16 @@ msgstr "Телефон нөмірі"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:303
-msgid "Offers takeaway"
+#: src/placeView.js:307
+msgid "Offers takeout"
 msgstr "Алып кету мүмкіндігі бар"
 
 #. Translators:
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:311
-msgid "Does not offer takeaway"
+#: src/placeView.js:315
+msgid "Does not offer takeout"
 msgstr "Алып кету мүмкіндігі жоқ"
 
 #. Translators:
@@ -1172,14 +1240,14 @@ msgstr "Алып кету мүмкіндігі жоқ"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:320
-msgid "Only offers takeaway"
+#: src/placeView.js:324
+msgid "Only offers takeout"
 msgstr "Тек алып кетуді ұсынады"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:337
+#: src/placeView.js:341
 msgid "Public internet access"
 msgstr "Интернетпен публикалық байланыс"
 
@@ -1187,50 +1255,50 @@ msgstr "Интернетпен публикалық байланыс"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:346
+#: src/placeView.js:350
 msgid "No internet access"
 msgstr "Интернетпен байланыс жоқ"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:354
+#: src/placeView.js:358
 msgid "Public Wi-Fi"
 msgstr "Публикалық Wi-Fi"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:362
+#: src/placeView.js:366
 msgid "Wired internet access"
 msgstr "Интернетпен сымды байланыс"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:370
+#: src/placeView.js:374
 msgid "Computers available for use"
 msgstr "Пайдалану үшін қолжетімді компьютерлер"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:378
+#: src/placeView.js:382
 msgid "Internet assistance available"
 msgstr "Интернетпен көмек көрсетуі бар"
 
-#: src/placeView.js:384
+#: src/placeView.js:388
 msgid "No toilets available"
 msgstr "Дәретханалар жоқ"
 
-#: src/placeView.js:387
+#: src/placeView.js:391
 msgid "Toilets available"
 msgstr "Қолжетімді дәретханалар"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:396
+#: src/placeView.js:400
 msgid "Wheelchair accessible"
 msgstr "Мүгедектер арбасымен қатынау"
 
@@ -1239,7 +1307,7 @@ msgstr "Мүгедектер арбасымен қатынау"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:406
+#: src/placeView.js:410
 msgid "Limited wheelchair accessibility"
 msgstr "Мүгедектер арбасымен шектелген қатынау"
 
@@ -1247,7 +1315,7 @@ msgstr "Мүгедектер арбасымен шектелген қатына�
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:415
+#: src/placeView.js:419
 msgid "Not wheelchair accessible"
 msgstr "Мүгедектер арбасымен қатынау жоқ"
 
@@ -1256,7 +1324,7 @@ msgstr "Мүгедектер арбасымен қатынау жоқ"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:425
+#: src/placeView.js:429
 msgid "Designated for wheelchair users"
 msgstr "Мүгедектер арбасын қолданушыларына арналған"
 
@@ -1265,7 +1333,7 @@ msgstr "Мүгедектер арбасын қолданушыларына ар�
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:456
+#: src/placeView.js:460
 #, javascript-format
 msgid "%s below sea level"
 msgstr "Теңіз деңгейінен %s төмен"
@@ -1274,85 +1342,353 @@ msgstr "Теңіз деңгейінен %s төмен"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:463
+#: src/placeView.js:467
 msgid "At sea level"
 msgstr "Теңіз деңгейінде"
 
-#: src/placeView.js:472
+#: src/placeView.js:476
 msgid "Religion:"
 msgstr "Дін:"
 
-#: src/place.js:531
+#: src/place.js:543
 msgid "Place not found in OpenStreetMap"
 msgstr "Орын OpenStreetMap ішінен табылмады"
 
-#: src/place.js:538
+#: src/place.js:550
 msgid "Coordinates in URL are not valid"
 msgstr "URL ішіндегі координаталар жарамсыз"
 
-#: src/place.js:547
+#: src/place.js:559
 msgid "URL is not supported"
 msgstr "URL түріне қолдау жоқ"
 
-#: src/printLayout.js:362
+#: src/poiCategories.js:132
+msgid "Amenities"
+msgstr "Қызметтер"
+
+#: src/poiCategories.js:135
+msgid "ATMs"
+msgstr "Банкоматтар"
+
+#: src/poiCategories.js:141
+msgid "Post Boxes"
+msgstr "Пошта жәшіктері"
+
+#: src/poiCategories.js:147
+msgid "Post Offices"
+msgstr "Пошта бөлімшелері"
+
+#: src/poiCategories.js:153
+msgid "Police"
+msgstr "Полиция"
+
+#: src/poiCategories.js:159
+msgid "Libraries"
+msgstr "Кітапханалар"
+
+#: src/poiCategories.js:165
+msgid "Pharmacies"
+msgstr "Дәріханалар"
+
+#: src/poiCategories.js:170
+msgid "Recycling"
+msgstr "Қайта өңдеу"
+
+#: src/poiCategories.js:180
+msgid "Wheelchair-accessible Toilets"
+msgstr "Мүгедектер арбасымен қатынауға болатын дәретханалар"
+
+#: src/poiCategories.js:186
+msgid "Baggage Lockers"
+msgstr "Багажды сақтау камералары"
+
+#: src/poiCategories.js:194
+msgid "Eating & Drinking"
+msgstr "Тамақтану және ішу"
+
+#: src/poiCategories.js:198
+msgid "Restaurants"
+msgstr "Ресторандар"
+
+#: src/poiCategories.js:203
+msgid "Fast Food"
+msgstr "Фастфуд"
+
+#: src/poiCategories.js:208
+msgid "Food Courts"
+msgstr "Фуд-корттары"
+
+#: src/poiCategories.js:213
+msgid "Pubs"
+msgstr "Пабтар"
+
+#: src/poiCategories.js:219
+msgid "Bars"
+msgstr "Барлар"
+
+#: src/poiCategories.js:224
+msgid "Cafes"
+msgstr "Кафелер"
+
+#: src/poiCategories.js:229
+msgid "Ice Cream"
+msgstr "Балмұздақ"
+
+#: src/poiCategories.js:233
+msgid "Food, Snacks, and Beverage Machines"
+msgstr "Азық-түлік, тағамдар және сусындар машиналары"
+
+#: src/poiCategories.js:241
+msgid "Shopping"
+msgstr "Шопинг"
+
+#: src/poiCategories.js:245
+msgid "Supermarkets"
+msgstr "Супермаркеттер"
+
+#: src/poiCategories.js:251
+msgid "Convenience Stores"
+msgstr "Дүкендер"
+
+#: src/poiCategories.js:256
+msgid "Shopping Malls"
+msgstr "Сауда орталықтары"
+
+#: src/poiCategories.js:262
+msgid "Clothes"
+msgstr "Киім"
+
+#: src/poiCategories.js:267
+msgid "Shoes"
+msgstr "Аяқ киім"
+
+#: src/poiCategories.js:272
+msgid "Electronics"
+msgstr "Электроника"
+
+#: src/poiCategories.js:278
+msgid "Alcohol"
+msgstr "Алкоголь"
+
+#: src/poiCategories.js:284
+msgid "Bakeries"
+msgstr "Наубайханалар"
+
+#: src/poiCategories.js:290
+msgid "Flowers"
+msgstr "Гүлдер"
+
+#: src/poiCategories.js:297
+msgid "Transportation"
+msgstr "Тасымалдау"
+
+#: src/poiCategories.js:301
+msgid "Bus & Tram Stops"
+msgstr "Автобус және трамвай аялдамалары"
+
+#: src/poiCategories.js:309
+msgid "Train & Subway Stations"
+msgstr "Пойыз және метро станциялары"
+
+#: src/poiCategories.js:317
+msgid "Tickets"
+msgstr "Билеттер"
+
+#: src/poiCategories.js:325
+msgid "Parking"
+msgstr "Көлік тұрағы"
+
+#: src/poiCategories.js:330
+msgid "Bicycle Parking"
+msgstr "Велосипед тұрағы"
+
+#: src/poiCategories.js:335
+msgid "Bicycle Rental"
+msgstr "Велосипедті жалға беру"
+
+#: src/poiCategories.js:340
+msgid "Car Rental"
+msgstr "Автокөлікті жалға беру"
+
+#: src/poiCategories.js:345
+msgid "Fuel"
+msgstr "Жаңармай"
+
+#: src/poiCategories.js:350
+msgid "EV Charging"
+msgstr "Электр машиналарды зарядтау"
+
+#: src/poiCategories.js:358
+msgid "Healthcare"
+msgstr "Денсаулық сақтау"
+
+#: src/poiCategories.js:362
+msgid "Clinics"
+msgstr "Клиникалар"
+
+#: src/poiCategories.js:368
+msgid "Hospitals"
+msgstr "Ауруханалар"
+
+#: src/poiCategories.js:374
+msgid "Dentists"
+msgstr "Тіс дәрігерлері"
+
+#: src/poiCategories.js:381
+msgid "Accommodation"
+msgstr "Тұрақтау"
+
+#: src/poiCategories.js:385
+msgid "Hotels"
+msgstr "Қонақ үйлер"
+
+#: src/poiCategories.js:390
+msgid "Hostels"
+msgstr "Хостелдер"
+
+#: src/poiCategories.js:395
+msgid "Bed & Breakfast"
+msgstr "Төсек және таңғы ас"
+
+#: src/poiCategories.js:400
+msgid "Campings"
+msgstr "Кемпингтер"
+
+#: src/poiCategories.js:407
+msgid "Recreation"
+msgstr "Демалыс"
+
+#: src/poiCategories.js:411
+msgid "Parks"
+msgstr "Саябақтар"
+
+#: src/poiCategories.js:416
+msgid "Playgrounds"
+msgstr "Ойын алаңдары"
+
+#: src/poiCategories.js:420
+msgid "Beaches"
+msgstr "Жағажайлар"
+
+#: src/poiCategories.js:425
+msgid "Nature Reserves"
+msgstr "Қорықтар"
+
+#: src/poiCategories.js:431
+msgid "Theme Parks"
+msgstr "Тақырыптық саябақтар"
+
+#: src/poiCategories.js:436
+msgid "Theaters"
+msgstr "Театрлар"
+
+#: src/poiCategories.js:442
+msgid "Movie Theaters"
+msgstr "Кинотеатрлар"
+
+#: src/poiCategories.js:448
+msgid "Night Clubs"
+msgstr "Түнгі клубтар"
+
+#: src/poiCategories.js:455
+msgid "Tourism"
+msgstr "Туризм"
+
+#: src/poiCategories.js:459
+msgid "Museums"
+msgstr "Мұражайлар"
+
+#: src/poiCategories.js:465
+msgid "Attractions"
+msgstr "Аттракциондар"
+
+#: src/poiCategories.js:470
+msgid "Artworks"
+msgstr "Өнер туындылары"
+
+#: src/poiCategories.js:475
+msgid "Tourist Information"
+msgstr "Туристік ақпарат"
+
+#: src/poiCategories.js:482
+msgid "Sports"
+msgstr "Спорт"
+
+#: src/poiCategories.js:486
+msgid "Gyms"
+msgstr "Спорт залдары"
+
+#: src/poiCategories.js:492
+msgid "Outdoor Gyms"
+msgstr "Спорт алаңдары"
+
+#: src/poiCategories.js:498
+msgid "Golf Courses"
+msgstr "Гольф алаңдары"
+
+#: src/printLayout.js:350
 #, javascript-format
 msgid "From %s to %s"
 msgstr "%s және %s арасында"
 
-#: src/printOperation.js:50
+#: src/printOperation.js:49
 msgid "Loading map tiles for printing"
 msgstr "Баспаға шығару үшін картаны жүктеп алу"
 
-#: src/printOperation.js:51
+#: src/printOperation.js:50
 msgid "You can abort printing if this takes too long"
 msgstr "Баспаға шығару тым көп уақыт алса, оны үзе аласыз"
 
-#: src/printOperation.js:53
+#: src/printOperation.js:52
 msgid "Abort printing"
 msgstr "Баспаға шығару туралы"
 
 #. Translators: this is add via location tooltip
-#: src/routeEntry.js:69
+#: src/routeEntry.js:60
 msgid "Add via location"
 msgstr "Орналасуы бойынша қосу"
 
 #. Translators: this is remove via location tooltip
-#: src/routeEntry.js:79
+#: src/routeEntry.js:70
 msgid "Remove via location"
 msgstr "Орналасуы бойынша өшіру"
 
 #. Translators: this is reverse route tooltip
-#: src/routeEntry.js:85
+#: src/routeEntry.js:76
 msgid "Reverse route"
 msgstr "Кері бағыт"
 
+#: src/searchBar.js:45
+msgid "Search"
+msgstr "Іздеу"
+
 #. Translators: The first string is the name of the city, the
 #. second string is the name of the app to add it to
-#: src/sendToDialog.js:92
+#: src/sendToDialog.js:84
 #, javascript-format
 msgid "Add %s to %s"
 msgstr "%s %s ішіне қосу"
 
-#: src/sendToDialog.js:189
+#: src/sendToDialog.js:181
 msgid "Failed to open URI"
 msgstr "URI ашу сәтсіз аяқталды"
 
-#: src/sendToDialog.js:256
+#: src/sendToDialog.js:246
 #, javascript-format
 msgid "Open with %s"
 msgstr "%s көмегімен ашу"
 
-#: src/shapeLayer.js:93
+#: src/shapeLayer.js:108
 msgid "failed to load file"
 msgstr "файлды жүктеу сәтсіз"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:348
+#: src/sidebar.js:325
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Шамамен уақыты: %s"
 
-#: src/sidebar.js:418
+#: src/sidebar.js:395
 #, javascript-format
 msgid "Itineraries provided by %s"
 msgstr "Маршруттарды ұсынған %s"
@@ -1389,15 +1725,15 @@ msgstr "Жүріс %s"
 msgid "Arrive at %s"
 msgstr "%s адресіне жету"
 
-#: src/transit.js:79 src/transitplugins/openTripPlanner.js:1134
+#: src/transit.js:79 src/transitplugins/openTripPlanner.js:1144
 msgid "Arrive"
 msgstr "Жету"
 
-#: src/transitLegRow.js:78
+#: src/transitLegRow.js:69
 msgid "Show walking instructions"
 msgstr "Жүріс ақпаратын көрсету"
 
-#: src/transitLegRow.js:79
+#: src/transitLegRow.js:70
 msgid "Hide walking instructions"
 msgstr "Жүріс ақпаратын жасыру"
 
@@ -1575,20 +1911,24 @@ msgctxt "time interval"
 msgid "%s-%s"
 msgstr "%s-%s"
 
+#: src/translations.js:287
+msgid "Bahá'í"
+msgstr "Бахаи"
+
 #. Translators: Accuracy of user location information
-#: src/utils.js:256
+#: src/utils.js:257
 msgid "Unknown"
 msgstr "Белгісіз"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:259
+#: src/utils.js:260
 msgid "Exact"
 msgstr "Дәл"
 
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
 #.
-#: src/utils.js:360
+#: src/utils.js:345
 #, javascript-format
 msgid "%s h"
 msgstr "%s сағ"
@@ -1597,7 +1937,7 @@ msgstr "%s сағ"
 #. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
 #.
-#: src/utils.js:366
+#: src/utils.js:351
 #, javascript-format
 msgid "%s h %s min"
 msgid_plural "%s h %s min"
@@ -1607,7 +1947,7 @@ msgstr[0] "%s сағ %s мин"
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
 #.
-#: src/utils.js:373
+#: src/utils.js:358
 #, javascript-format
 msgid "%s min"
 msgid_plural "%s min"
@@ -1617,32 +1957,32 @@ msgstr[0] "%s мин"
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
 #.
-#: src/utils.js:379
+#: src/utils.js:364
 #, javascript-format
 msgid "%s s"
 msgid_plural "%s s"
 msgstr[0] "%s сек"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:390
+#: src/utils.js:375
 #, javascript-format
 msgid "%s km"
 msgstr "%s км"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:393
+#: src/utils.js:378
 #, javascript-format
 msgid "%s m"
 msgstr "%s м"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:401
+#: src/utils.js:386
 #, javascript-format
 msgid "%s mi"
 msgstr "%s миля"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:404
+#: src/utils.js:389
 #, javascript-format
 msgid "%s ft"
 msgstr "%s фут"
@@ -1651,109 +1991,142 @@ msgstr "%s фут"
 msgid "This plugin doesn't support latest arrival"
 msgstr "Бұл плагині соңғы келуді қолдамайды"
 
-#: src/transitplugins/openTripPlanner.js:1195
+#: src/transitplugins/openTripPlanner.js:1205
 #, javascript-format
 msgid "Continue on %s"
 msgstr "%s көмегімен жалғастыру"
 
-#: src/transitplugins/openTripPlanner.js:1197
-msgid "Continue"
-msgstr "Жалғастыру"
-
-#: src/transitplugins/openTripPlanner.js:1200
+#: src/transitplugins/openTripPlanner.js:1210
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "%s жерінде солға бұрылу"
 
-#: src/transitplugins/openTripPlanner.js:1202
+#: src/transitplugins/openTripPlanner.js:1212
 msgid "Turn left"
 msgstr "Солға бұрылу"
 
-#: src/transitplugins/openTripPlanner.js:1205
+#: src/transitplugins/openTripPlanner.js:1215
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "%s жерінде сол жаққа жайлап бұрылу"
 
-#: src/transitplugins/openTripPlanner.js:1207
+#: src/transitplugins/openTripPlanner.js:1217
 msgid "Turn slightly left"
 msgstr "Сол жаққа жайлап бұрылу"
 
-#: src/transitplugins/openTripPlanner.js:1210
+#: src/transitplugins/openTripPlanner.js:1220
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "%s жерінде сол жаққа лезде бұрылу"
 
-#: src/transitplugins/openTripPlanner.js:1212
+#: src/transitplugins/openTripPlanner.js:1222
 msgid "Turn sharp left"
 msgstr "Сол жаққа лезде бұрылу"
 
-#: src/transitplugins/openTripPlanner.js:1215
+#: src/transitplugins/openTripPlanner.js:1225
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "%s жерінде оңға бұрылу"
 
-#: src/transitplugins/openTripPlanner.js:1217
+#: src/transitplugins/openTripPlanner.js:1227
 msgid "Turn right"
 msgstr "Оңға бұрылу"
 
-#: src/transitplugins/openTripPlanner.js:1220
+#: src/transitplugins/openTripPlanner.js:1230
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "%s жерінде оң жаққа жайлап бұрылу"
 
-#: src/transitplugins/openTripPlanner.js:1222
+#: src/transitplugins/openTripPlanner.js:1232
 msgid "Turn slightly right"
 msgstr "Оң жаққа жайлап бұрылу"
 
-#: src/transitplugins/openTripPlanner.js:1225
+#: src/transitplugins/openTripPlanner.js:1235
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "%s жерінде оң жаққа лезде бұрылу"
 
-#: src/transitplugins/openTripPlanner.js:1227
+#: src/transitplugins/openTripPlanner.js:1237
 msgid "Turn sharp right"
 msgstr "Оң жаққа лезде бұрылу"
 
-#: src/transitplugins/openTripPlanner.js:1233
+#: src/transitplugins/openTripPlanner.js:1243
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "Сақиналы қиылыстан %s шығысын қолданыңыз"
 
-#: src/transitplugins/openTripPlanner.js:1235
+#: src/transitplugins/openTripPlanner.js:1245
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "Сақиналы қиылыстан %s үшін шығысын қолданыңыз"
 
-#: src/transitplugins/openTripPlanner.js:1237
+#: src/transitplugins/openTripPlanner.js:1247
 msgid "Take the roundabout"
 msgstr "Сақиналы қиылысын қолдану"
 
-#: src/transitplugins/openTripPlanner.js:1241
+#: src/transitplugins/openTripPlanner.js:1251
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Лифтті қолданып, %s жерінен шығу"
 
-#: src/transitplugins/openTripPlanner.js:1243
+#: src/transitplugins/openTripPlanner.js:1253
 msgid "Take the elevator"
 msgstr "Лифтті қолдану"
 
-#: src/transitplugins/openTripPlanner.js:1247
+#: src/transitplugins/openTripPlanner.js:1257
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "%s үшін сол жақ кері бұрылысын қолдану"
 
-#: src/transitplugins/openTripPlanner.js:1249
+#: src/transitplugins/openTripPlanner.js:1259
 msgid "Make a left u-turn"
 msgstr "Сол жақ кері бұрылысын қолдану"
 
-#: src/transitplugins/openTripPlanner.js:1252
+#: src/transitplugins/openTripPlanner.js:1262
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "%s үшін оң жақ кері бұрылысын қолдану"
 
-#: src/transitplugins/openTripPlanner.js:1254
+#: src/transitplugins/openTripPlanner.js:1264
 msgid "Make a right u-turn"
 msgstr "Оң жақ кері бұрылысын қолдану"
+
+#~ msgid "Go to current location"
+#~ msgstr "Ағымдағы орналасуға өту"
+
+#~ msgid "Choose map type"
+#~ msgstr "Карта түрін таңдаңыз"
+
+#~ msgid "Zoom in"
+#~ msgstr "Үлкейту"
+
+#~ msgid "Sign up"
+#~ msgstr "Тіркелу"
+
+#~ msgid "Drag to change order of the route"
+#~ msgstr "Бағдар ретін ауыстыру үшін тартып апарыңыз"
+
+#~ msgid "Filesystem is read only"
+#~ msgstr "Файлдық жүйе тек оқу үшін қолжетерлік"
+
+#~ msgid "You do not have permission to save there"
+#~ msgstr "Осында сақтау үшін керек рұқсаттарыңыз жоқ"
+
+#~ msgid "The directory does not exist"
+#~ msgstr "Бума жоқ болып тұр"
+
+#~ msgid "No filename specified"
+#~ msgstr "Файл аты көрсетілмеген"
+
+#~ msgid ""
+#~ "Location was added to the map, note that it may take a while before it "
+#~ "shows on the map and in search results."
+#~ msgstr ""
+#~ "Орналасу картаға қосылды. Бірақ, ол картада және іздеу нәтижелерінде "
+#~ "көрінуіне дейін біршама уақыт өту керек болуын ескертіңіз."
+
+#~ msgid "Takeaway"
+#~ msgstr "Алып кету"
 
 #~ msgid "Foursquare check-in privacy setting"
 #~ msgstr "Foursquare көмегімен белгіленудің жекелік баптауы"
@@ -1808,9 +2181,6 @@ msgstr "Оң жақ кері бұрылысын қолдану"
 #~ msgid "Public"
 #~ msgstr "Публикалық"
 
-#~ msgid "Followers"
-#~ msgstr "Сонымнан ерушілер"
-
 #~ msgid "Private"
 #~ msgstr "Жеке"
 
@@ -1841,22 +2211,15 @@ msgstr "Оң жақ кері бұрылысын қолдану"
 
 #~ msgid ""
 #~ "Sorry, that didn’t work. Please try again, or visit\n"
-#~ "<a href=\"https://www.openstreetmap.org/user/forgot-password"
-#~ "\">OpenStreetMap</a> to reset your password."
+#~ "<a href=\"https://www.openstreetmap.org/user/forgot-"
+#~ "password\">OpenStreetMap</a> to reset your password."
 #~ msgstr ""
 #~ "Кешіріңіз, бұл жасамады. Қайталап көріңіз, немесе\n"
 #~ "пароліңізді тастау үшін, <a href=\"https://www.openstreetmap.org/user/"
 #~ "forgot-password\">OpenStreetMap</a> сайтын шолыңыз."
 
-#~ msgctxt "dialog title"
-#~ msgid "Edit on OpenStreetMap"
-#~ msgstr "OpenStreetMap ішінде түзету"
-
 #~ msgid "Check In…"
 #~ msgstr "Белгілену…"
-
-#~ msgid "Show more results"
-#~ msgstr "Көбірек нәтижелерді көрсету"
 
 #~ msgid "Ignore network availability"
 #~ msgstr "Желінің қолжетімділігін елемеу"
@@ -1957,9 +2320,6 @@ msgstr "Оң жақ кері бұрылысын қолдану"
 #~ msgid "Check in here"
 #~ msgstr "Осында белгілену"
 
-#~ msgid "Show more information"
-#~ msgstr "Көбірек ақпарат шығару"
-
 #~ msgid "Population:"
 #~ msgstr "Халық саны:"
 
@@ -2058,9 +2418,6 @@ msgstr "Оң жақ кері бұрылысын қолдану"
 
 #~ msgid "Load Map Layer"
 #~ msgstr "Карта қабатын жүктеу"
-
-#~ msgid "Open Layer"
-#~ msgstr "Қабатты ашу"
 
 #~ msgid "%f km"
 #~ msgstr "%f км"
