@@ -32,6 +32,7 @@ import {OpendataCH} from './transitplugins/opendataCH.js';
 import {OpenTripPlanner} from './transitplugins/openTripPlanner.js';
 import {Resrobot} from './transitplugins/resrobot.js';
 
+const ALL_PLUGINS = ["GoMetro", "OpendataCH", "OpenTripPlanner", "Resrobot"];
 
 /**
  * Class responsible for delegating requests to perform routing in transit
@@ -67,8 +68,7 @@ export class TransitRouter {
             // override plugin was specified, try instanciating if not done yet
             if (!this._currPluginInstance) {
                 try {
-                    this._currentPluginInstance =
-                        eval(`new ${pluginOverride}()`);
+                    this._currentPluginInstance = this._instantiatePlugin(pluginOverride);
                 } catch (e) {
                     Utils.debug('Unable to instanciate plugin: ' + pluginOverride);
                     throw e;
@@ -230,9 +230,7 @@ export class TransitRouter {
 
             try {
                 let params = provider.params;
-                let instance =
-                    params ? eval(`new ${plugin}(params)`):
-                             eval(`new ${plugin}()`);
+                let instance = this._instantiatePlugin(plugin, params);
 
                 this._providerCache[provider.name] = instance;
 
@@ -262,5 +260,13 @@ export class TransitRouter {
             return 1;
         else
             return 0;
+    }
+
+    _instantiatePlugin(plugin, params) {
+        if (!ALL_PLUGINS.includes(plugin))
+            throw 'Unknown plugin: ' + plugin;
+        return params
+            ? eval(`new ${plugin}(params)`)
+            : eval(`new ${plugin}()`);
     }
 };
