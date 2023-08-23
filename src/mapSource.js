@@ -18,7 +18,7 @@
  */
 
 import Gio from 'gi://Gio';
-import GdkPixbuf from 'gi://GdkPixbuf';
+import Gdk from 'gi://Gdk';
 import Shumate from 'gi://Shumate';
 
 import * as Service from './service.js';
@@ -67,20 +67,29 @@ export function createPrintSource() {
 }
 
 export function createVectorSource() {
-    const [_status, style_file] = Gio.file_new_for_uri('resource://org/gnome/Maps/styles/osm-liberty/style.json').load_contents(null);
-    const style = Utils.getBufferText(style_file);
+    const [_status, styleFile] = Gio.file_new_for_uri('resource://org/gnome/Maps/styles/osm-liberty/style.json').load_contents(null);
+    const style = Utils.getBufferText(styleFile);
 
     const source = Shumate.VectorRenderer.new("vector-tiles", style);
     source.set_license("© OpenMapTiles © OpenStreetMap contributors");
     source.set_license_uri("https://www.openstreetmap.org/copyright");
 
-    const [_status2, sprites_json_file] = Gio.file_new_for_uri('resource://org/gnome/Maps/styles/osm-liberty/sprites.json').load_contents(null);
-    const sprites_json = Utils.getBufferText(sprites_json_file);
-
-    source.set_sprite_sheet_data(
-        GdkPixbuf.Pixbuf.new_from_resource('/org/gnome/Maps/styles/osm-liberty/sprites.png'),
-        sprites_json,
+    const sprites = Shumate.VectorSpriteSheet.new();
+    const [_status2, spritesJsonFile] = Gio.file_new_for_uri('resource://org/gnome/Maps/styles/osm-liberty/sprites.json').load_contents(null);
+    const spritesJson = Utils.getBufferText(spritesJsonFile);
+    sprites.add_page(
+        Gdk.Texture.new_from_resource('/org/gnome/Maps/styles/osm-liberty/sprites.png'),
+        spritesJson,
+        1
     );
+    const [_status3, sprites2xJsonFile] = Gio.file_new_for_uri('resource://org/gnome/Maps/styles/osm-liberty/sprites@2x.json').load_contents(null);
+    const sprites2xJson = Utils.getBufferText(sprites2xJsonFile);
+    sprites.add_page(
+        Gdk.Texture.new_from_resource('/org/gnome/Maps/styles/osm-liberty/sprites@2x.png'),
+        sprites2xJson,
+        2
+    );
+    source.set_sprite_sheet(sprites);
 
     return source;
 }
