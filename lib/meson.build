@@ -6,6 +6,7 @@ headers_private = files(
 	'maps-osm-object.h',
 	'maps-osm-way.h',
 	'maps-osm-relation.h',
+	'maps-sprite-source.h',
 	'maps-sync-map-source.h'
 )
 
@@ -17,6 +18,7 @@ sources = files(
 	'maps-osm-object.c',
 	'maps-osm-way.c',
 	'maps-osm-relation.c',
+	'maps-sprite-source.c',
 	'maps-sync-map-source.c'
 )
 

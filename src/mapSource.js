@@ -20,6 +20,7 @@
 import Gio from 'gi://Gio';
 import Gdk from 'gi://Gdk';
 import Shumate from 'gi://Shumate';
+import GnomeMaps from 'gi://GnomeMaps';
 
 import * as Service from './service.js';
 import * as Utils from './utils.js';
@@ -90,6 +91,9 @@ export function createVectorSource() {
         2
     );
     source.set_sprite_sheet(sprites);
+
+    const spriteSource = new GnomeMaps.SpriteSource();
+    spriteSource.set_fallback(sprites);
 
     return source;
 }
