@@ -99,3 +99,4 @@ if appstreamcli.found()
 endif
 
 subdir('icons')
+subdir('shields')

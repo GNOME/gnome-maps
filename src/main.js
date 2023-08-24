@@ -24,8 +24,8 @@ import 'gi://Adw?version=1';
 import 'gi://GeocodeGlib?version=2.0';
 import 'gi://Gdk?version=4.0';
 import 'gi://GdkPixbuf?version=2.0';
-import 'gi://Gio?version=2.0';
-import 'gi://GLib?version=2.0';
+import Gio from 'gi://Gio?version=2.0';
+import GLib from 'gi://GLib?version=2.0';
 import 'gi://GObject?version=2.0';
 import 'gi://Gtk?version=4.0';
 import 'gi://GWeather?version=4.0';
@@ -41,6 +41,8 @@ import './prototypes.js';
 
 pkg.initGettext();
 pkg.initFormat();
+
+Gio.Resource.load(GLib.build_filenamev([pkg.pkgdatadir, `${pkg.name}.shields.gresource`]))._register();
 
 function main(args) {
     /* Add prototype to get last element of an array.

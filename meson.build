@@ -44,10 +44,15 @@ geocodeglib = dependency('geocode-glib-2.0', version: '>= 3.15.2')
 libportal = dependency('libportal')
 shumate = dependency('shumate-1.0', version: '>= 1.2.alpha')
 
+cc = meson.get_compiler('c')
+
 libmaps_deps = [
 	shumate,
 	dependency('libxml-2.0'),
-	dependency('rest-1.0')
+	dependency('rest-1.0'),
+	dependency('librsvg-2.0'),
+	dependency('json-glib-1.0'),
+	cc.find_library('m', required: true),
 ]
 
 msgfmt = find_program('msgfmt')

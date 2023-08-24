@@ -17,6 +17,7 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
+import GLib from 'gi://GLib';
 import Gio from 'gi://Gio';
 import Gdk from 'gi://Gdk';
 import Shumate from 'gi://Shumate';
@@ -69,9 +70,13 @@ export function createPrintSource() {
 
 export function createVectorSource() {
     const [_status, styleFile] = Gio.file_new_for_uri('resource://org/gnome/Maps/styles/osm-liberty/style.json').load_contents(null);
-    const style = Utils.getBufferText(styleFile);
+    const style = JSON.parse(Utils.getBufferText(styleFile));
 
-    const source = Shumate.VectorRenderer.new("vector-tiles", style);
+    const [_status1, shieldLayerFile] = Gio.file_new_for_uri('resource://org/gnome/Maps/shields/layer.json').load_contents(null);
+    const shieldLayer = JSON.parse(Utils.getBufferText(shieldLayerFile));
+    style.layers.splice(style.layers.findIndex(layer => layer.id === 'road_shield'), 1, shieldLayer);
+
+    const source = Shumate.VectorRenderer.new("vector-tiles", JSON.stringify(style));
     source.set_license("© OpenMapTiles © OpenStreetMap contributors");
     source.set_license_uri("https://www.openstreetmap.org/copyright");
 
@@ -92,8 +97,13 @@ export function createVectorSource() {
     );
     source.set_sprite_sheet(sprites);
 
-    const spriteSource = new GnomeMaps.SpriteSource();
+    const spriteSource = new GnomeMaps.SpriteSource({"color-scheme": "light"});
     spriteSource.set_fallback(sprites);
+
+    const [_status4, shieldsJsonFile] = Gio.file_new_for_uri('resource://org/gnome/Maps/shields/shields.json').load_contents(null);
+    const shieldDefs = JSON.parse(Utils.getBufferText(shieldsJsonFile));
+
+    spriteSource.load_shield_defs(JSON.stringify(shieldDefs));
 
     return source;
 }
