@@ -67,7 +67,8 @@ const MapMaxZoom = 19;
 const OUTLINE_LUMINANCE_THREASHHOLD = 0.9;
 
 // color used for turn-by-turn-based routes (non-transit)
-const TURN_BY_TURN_ROUTE_COLOR = '0000FF';
+const TURN_BY_TURN_ROUTE_COLOR = '62a0ea';
+const TURN_BY_TURN_ROUTE_OUTLINE_COLOR = '1a5fb4';
 
 // line width for route lines
 const ROUTE_LINE_WIDTH = 5;
@@ -287,7 +288,7 @@ export class MapView extends Gtk.Overlay {
     }
 
     /* create and store a route layer, pass true to get a dashed line */
-    _createRouteLayer(dashed, lineColor, outlineColor, width) {
+    _createRouteLayer(dashed, lineColor, outlineColor, width, outlineWidth = 1) {
         let strokeColor = new Gdk.RGBA({ red:    Color.parseColor(lineColor, 0),
                                          green:  Color.parseColor(lineColor, 1),
                                          blue:   Color.parseColor(lineColor, 2),
@@ -307,7 +308,7 @@ export class MapView extends Gtk.Overlay {
                                alpha: 1.0 });
 
             routeLayer.outline_color = outlineStrokeColor;
-            routeLayer.outline_width = 1.0;
+            routeLayer.outline_width = outlineWidth;
         }
 
         this._routeLayers.push(routeLayer);
@@ -861,7 +862,8 @@ export class MapView extends Gtk.Overlay {
         this._placeLayer.remove_all();
 
         routeLayer = this._createRouteLayer(false, TURN_BY_TURN_ROUTE_COLOR,
-                                            null, ROUTE_LINE_WIDTH);
+                                            TURN_BY_TURN_ROUTE_OUTLINE_COLOR,
+                                            ROUTE_LINE_WIDTH + 4, 2);
         route.path.forEach((polyline) => routeLayer.add_node(polyline));
         this.routingOpen = true;
 
