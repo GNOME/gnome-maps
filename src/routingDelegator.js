@@ -23,6 +23,7 @@ import {GraphHopper} from './graphHopper.js';
 import {TransitRouter} from './transitRouter.js';
 import {RouteQuery} from './routeQuery.js';
 import { Route } from './route.js';
+import { StoredRoute } from './storedRoute.js';
 
 const _FALLBACK_TRANSPORTATION = RouteQuery.Transportation.PEDESTRIAN;
 
@@ -44,6 +45,8 @@ export class RoutingDelegator {
             !this._transitRouter.enabled) {
             this._query.transportation = _FALLBACK_TRANSPORTATION;
         }
+
+        this._ignoreNextQueryChange = false;
     }
 
     get graphHopper() {
@@ -70,6 +73,11 @@ export class RoutingDelegator {
     }
 
     _onQueryChanged() {
+        if (this._ignoreNextQueryChange) {
+            this._ignoreNextQueryChange = false;
+            return;
+        }
+
         if (this._query.isValid()) {
             this._query.emit('run');
             if (this._transitRouting) {
@@ -79,5 +87,33 @@ export class RoutingDelegator {
                                              this._query.transportation);
             }
         }
+    }
+
+    /**
+     * @param {StoredRoute} stored
+     */
+    replaceRoute(stored) {
+        const query = this._query;
+        query.freeze_notify();
+
+        let storedLast = stored.places.length - 1;
+        query.points[0].place = stored.places[0];
+        query.points[1].place = stored.places[storedLast];
+        query.transportation = stored.transportation;
+
+        for (let i = 1; i < storedLast; i++) {
+            let point = query.addPoint(i);
+            point.place = stored.places[i];
+        }
+
+        this._ignoreNextQueryChange = true;
+        query.thaw_notify();
+
+        this.route.update({ path: stored.route.path,
+                            turnPoints: stored.route.turnPoints,
+                            distance: stored.route.distance,
+                            time: stored.route.time,
+                            bbox: stored.route.bbox});
+
     }
 }

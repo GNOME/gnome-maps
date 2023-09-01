@@ -64,22 +64,7 @@ export class GraphHopper {
         this._baseURL = "https://graphhopper.com/api/1/route?";
         this._locale  = GLib.get_language_names()[0];
         this._route   = route;
-        this.storedRoute = null;
         this._query = query;
-    }
-
-    _updateFromStored() {
-        GLib.idle_add(null, () => {
-            if (!this.storedRoute)
-                return;
-
-            this.route.update({ path: this.storedRoute.path,
-                                turnPoints: this.storedRoute.turnPoints,
-                                distance: this.storedRoute.distance,
-                                time: this.storedRoute.time,
-                                bbox: this.storedRoute.bbox });
-            this.storedRoute = null;
-        });
     }
 
     _queryGraphHopper(points, transportationType, callback) {
@@ -105,11 +90,6 @@ export class GraphHopper {
     }
 
     fetchRoute(points, transportationType) {
-        if (this.storedRoute) {
-            this._updateFromStored();
-            return;
-        }
-
         this._queryGraphHopper(points, transportationType,
                                (result, exception) => {
             if (exception) {

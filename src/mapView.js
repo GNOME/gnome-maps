@@ -830,29 +830,11 @@ export class MapView extends Gtk.Overlay {
         this._turnPointMarker.goTo();
     }
 
+    /**
+     * @param {StoredRoute} stored
+     */
     _showStoredRoute(stored) {
-        let query = Application.routeQuery;
-        let route = Application.routingDelegator.route;
-
-        Application.routingDelegator.graphHopper.storedRoute = stored.route;
-
-        let resetId = route.connect('reset', function() {
-            route.disconnect(resetId);
-            query.freeze_notify();
-
-            let storedLast = stored.places.length - 1;
-            query.points[0].place = stored.places[0];
-            query.points[1].place = stored.places[storedLast];
-            query.transportation = stored.transportation;
-
-            for (let i = 1; i < storedLast; i++) {
-                let point = query.addPoint(i);
-                point.place = stored.places[i];
-            }
-
-            query.thaw_notify();
-        });
-        route.reset();
+        Application.routingDelegator.replaceRoute(stored);
     }
 
     showPlace(place, animation) {
