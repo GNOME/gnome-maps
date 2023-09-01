@@ -50,7 +50,7 @@ export class StoredRoute extends Place {
         this.places = places;
         let directionMarker = this._rtl ? _RLM : _LRM;
         let arrow = this._rtl ? '←' : '→';
-        params.name = directionMarker + this.places[0].name + directionMarker +
+        this.name = directionMarker + this.places[0].name + directionMarker +
                       arrow + directionMarker + this.places.last().name;
 
         this._containsCurrentLocation = false;
