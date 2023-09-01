@@ -22,6 +22,7 @@
 import {GraphHopper} from './graphHopper.js';
 import {TransitRouter} from './transitRouter.js';
 import {RouteQuery} from './routeQuery.js';
+import { Route } from './route.js';
 
 const _FALLBACK_TRANSPORTATION = RouteQuery.Transportation.PEDESTRIAN;
 
@@ -29,9 +30,10 @@ export class RoutingDelegator {
 
     constructor({query}) {
         this._query = query;
+        this._route = new Route();
 
         this._transitRouting = false;
-        this._graphHopper = new GraphHopper({ query: this._query });
+        this._graphHopper = new GraphHopper({ query: this._query, route: this._route });
         this._transitRouter = new TransitRouter({ query: this._query });
         this._query.connect('notify::points', this._onQueryChanged.bind(this));
 
@@ -52,6 +54,10 @@ export class RoutingDelegator {
         return this._transitRouter;
     }
 
+    get route() {
+        return this._route;
+    }
+
     set useTransit(useTransit) {
         this._transitRouting = useTransit;
     }
@@ -60,7 +66,7 @@ export class RoutingDelegator {
         if (this._transitRouting)
             this._transitRouter.plan.reset();
         else
-            this._graphHopper.route.reset();
+            this._route.reset();
     }
 
     _onQueryChanged() {

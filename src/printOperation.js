@@ -59,7 +59,7 @@ export class PrintOperation {
     }
 
     _beginPrint(operation, context, data) {
-        let route = Application.routingDelegator.graphHopper.route;
+        let route = Application.routingDelegator.route;
         let selectedTransitItinerary =
             Application.routingDelegator.transitRouter.plan.selectedItinerary;
         let width = context.get_width();

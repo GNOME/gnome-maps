@@ -354,7 +354,7 @@ export class MapView extends Gtk.Overlay {
     }
 
     _connectRouteSignals() {
-        let route = Application.routingDelegator.graphHopper.route;
+        let route = Application.routingDelegator.route;
         let transitPlan = Application.routingDelegator.transitRouter.plan;
         let query = Application.routeQuery;
 
@@ -832,7 +832,7 @@ export class MapView extends Gtk.Overlay {
 
     _showStoredRoute(stored) {
         let query = Application.routeQuery;
-        let route = Application.routingDelegator.graphHopper.route;
+        let route = Application.routingDelegator.route;
 
         Application.routingDelegator.graphHopper.storedRoute = stored.route;
 
@@ -888,7 +888,7 @@ export class MapView extends Gtk.Overlay {
     }
 
     _showDestinationTurnpoints() {
-        let route = Application.routingDelegator.graphHopper.route;
+        let route = Application.routingDelegator.route;
         let query = Application.routeQuery;
         let pointIndex = 0;
 

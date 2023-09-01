@@ -234,7 +234,7 @@ export class Sidebar extends Gtk.Grid {
     }
 
     _initInstructionList() {
-        let route = Application.routingDelegator.graphHopper.route;
+        let route = Application.routingDelegator.route;
         let transitPlan = Application.routingDelegator.transitRouter.plan;
 
         route.connect('reset', () => {

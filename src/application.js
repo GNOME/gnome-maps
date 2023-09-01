@@ -50,10 +50,12 @@ export class Application extends Adw.Application {
     static application = null;
     static settings = null;
     static placeStore = null;
+    /** @type {RoutingDelegator} */
     static routingDelegator = null;
     static geoclue = null;
     static osmEdit = null;
     static normalStartup = true;
+    /** @type {RouteQuery} */
     static routeQuery = null;
 
     constructor() {
