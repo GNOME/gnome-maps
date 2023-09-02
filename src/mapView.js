@@ -434,7 +434,7 @@ export class MapView extends Gtk.Overlay {
 
             if (mapType === MapView.MapType.AERIAL && tiles.aerial)
                 mapSource = MapSource.createAerialSource();
-            else if (mapType === MapView.MapType.VECTOR)
+            else if (mapType === MapView.MapType.VECTOR && Shumate.VectorRenderer.is_supported())
                 mapSource = MapSource.createVectorSource();
             else
                 mapSource = MapSource.createStreetSource();
