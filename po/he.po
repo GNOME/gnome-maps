@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps 3.9.91\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2023-07-23 11:54+0000\n"
-"PO-Revision-Date: 2023-07-28 09:57+0300\n"
+"POT-Creation-Date: 2023-08-26 15:30+0000\n"
+"PO-Revision-Date: 2023-09-02 21:22+0300\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
@@ -30,7 +30,7 @@ msgstr ""
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
 #: data/ui/main-window.ui:27 src/application.js:61 src/mainWindow.js:143
-#: src/mainWindow.js:577
+#: src/mainWindow.js:591
 msgid "Maps"
 msgstr "מפות"
 
@@ -55,7 +55,7 @@ msgstr ""
 "מפות משתמש במסד הנתונים השיתופי OpenStreetMap, שנוצר על ידי מאות אלפי אנשים "
 "על פני כדור הארץ."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:369 src/mainWindow.js:574
+#: data/org.gnome.Maps.appdata.xml.in.in:369 src/mainWindow.js:588
 msgid "The GNOME Project"
 msgstr "מיזם GNOME"
 
@@ -338,8 +338,12 @@ msgstr "לפתוח שכבת צורות"
 msgid "Show Scale"
 msgstr "הצגת קנה מידה"
 
-#. Translators: This string uses ellipsis character
 #: data/ui/layers-popover.ui:16
+msgid "Enable Experimental Map"
+msgstr "לאפשר מפה ניסיונית"
+
+#. Translators: This string uses ellipsis character
+#: data/ui/layers-popover.ui:20
 msgid "Open Shape Layer…"
 msgstr "לפתוח שכבת צורות…"
 
@@ -465,7 +469,7 @@ msgstr ""
 msgid "Recently Used"
 msgstr "בשימוש לאחרונה"
 
-#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:533
+#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:541
 msgid "Cancel"
 msgstr "ביטול"
 
@@ -646,7 +650,7 @@ msgid "Back to Main Categories"
 msgstr "חזרה לקטגוריות הראשיות"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:15 src/mapView.js:1113
+#: data/ui/zoom-and-rotate-controls.ui:15 src/mapView.js:1121
 msgid "Zoom In"
 msgstr "התקרבות"
 
@@ -747,39 +751,39 @@ msgstr "להתחיל!"
 msgid "All Layer Files"
 msgstr "כל שכבות הקבצים"
 
-#: src/mainWindow.js:457
+#: src/mainWindow.js:468
 msgid "Failed to connect to location service"
 msgstr "ההתחברות לשרת האיכון נכשלה"
 
-#: src/mainWindow.js:462
+#: src/mainWindow.js:473
 msgid "Turn on location services"
 msgstr "הפעלת שירותי איכון"
 
-#: src/mainWindow.js:463
+#: src/mainWindow.js:474
 msgid "Location Settings"
 msgstr "הגדרות מיקום"
 
-#: src/mainWindow.js:575
+#: src/mainWindow.js:589
 msgid "translator-credits"
 msgstr ""
 "יוסף אור בוצ׳קו <yoseforb@gnome.org>\n"
 "מיזם תרגום GNOME לעברית https://l10n.gnome.org/teams/he/"
 
-#: src/mainWindow.js:579
+#: src/mainWindow.js:593
 msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
 msgstr ""
 "כל הזכויות שמורות © 2011 – 2023 ל־Red Hat בע״מ וליוצרי תכנית המפות של GNOME"
 
-#: src/mainWindow.js:595
+#: src/mainWindow.js:609
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "נתוני המפה באדיבות %s והמתנדבים במיזם"
 
-#: src/mainWindow.js:596
+#: src/mainWindow.js:610
 msgid "Map Data Provider"
 msgstr "ספק מידע המפה"
 
-#: src/mainWindow.js:608
+#: src/mainWindow.js:622
 msgid "Map Tile Provider"
 msgstr "ספק אריחי המפה"
 
@@ -788,56 +792,56 @@ msgstr "ספק אריחי המפה"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:616
+#: src/mainWindow.js:630
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "אריחי המפה סופקו על ידי %s"
 
-#: src/mainWindow.js:646
+#: src/mainWindow.js:660
 msgid "Search Provider"
 msgstr "ספק חיפוש"
 
-#: src/mainWindow.js:649
+#: src/mainWindow.js:663
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "החיפוש סופק על ידי %s בעזרת %s"
 
-#: src/mapView.js:507 src/mapView.js:572
+#: src/mapView.js:515 src/mapView.js:580
 msgid "Failed to open layer"
 msgstr "פתיחת שכבה נכשלה"
 
-#: src/mapView.js:526
+#: src/mapView.js:534
 msgid "Do you want to continue?"
 msgstr "להמשיך?"
 
-#: src/mapView.js:527
+#: src/mapView.js:535
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
 "time to load"
 msgstr "פעולה זו תפתח קבצים בגודל כולל של %s מ״ב. הטעינה עשויה לארוך זמן מה"
 
-#: src/mapView.js:534 src/transitplugins/openTripPlanner.js:1207
+#: src/mapView.js:542 src/transitplugins/openTripPlanner.js:1207
 msgid "Continue"
 msgstr "להמשיך"
 
-#: src/mapView.js:566
+#: src/mapView.js:574
 msgid "File type is not supported"
 msgstr "סוג הקובץ אינו נתמך"
 
-#: src/mapView.js:603
+#: src/mapView.js:611
 msgid "Failed to open GeoURI"
 msgstr "פתיחת GeoURI נכשלה"
 
-#: src/mapView.js:1072
+#: src/mapView.js:1080
 msgid "Nothing found here!"
 msgstr "לא נמצא כאן דבר!"
 
-#: src/mapView.js:1112
+#: src/mapView.js:1120
 msgid "Zoom in to add location"
 msgstr "יש להתקרב כדי להוסיף מיקום"
 
-#: src/mapView.js:1133
+#: src/mapView.js:1141
 msgid "Location was added in OpenStreetMap"
 msgstr "המקום נוסף ב־OpenStreetMap"
 
@@ -1639,8 +1643,8 @@ msgstr "הסרה דרך מיקום"
 msgid "Reverse route"
 msgstr "להפוך את המסלול"
 
-#: src/searchBar.js:45
 # msgctxt "shortcut window"
+#: src/searchBar.js:45
 msgid "Search"
 msgstr "חיפוש"
 
@@ -1665,12 +1669,12 @@ msgid "failed to load file"
 msgstr "אירע כשל בטעינת הקובץ"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:325
+#: src/sidebar.js:329
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "זמן משוער: %s"
 
-#: src/sidebar.js:395
+#: src/sidebar.js:399
 #, javascript-format
 msgid "Itineraries provided by %s"
 msgstr "המסלולים סופקו על ידי %s"
