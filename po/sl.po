@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2023-07-29 09:23+0000\n"
-"PO-Revision-Date: 2023-07-29 16:52+0200\n"
+"POT-Creation-Date: 2023-09-09 06:22+0000\n"
+"PO-Revision-Date: 2023-09-10 22:34+0200\n"
 "Last-Translator: Matej Urbančič <mateju@src.gnome.org>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -32,7 +32,7 @@ msgstr ""
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
 #: data/ui/main-window.ui:27 src/application.js:61 src/mainWindow.js:143
-#: src/mainWindow.js:577
+#: src/mainWindow.js:591
 msgid "Maps"
 msgstr "Zemljevidi"
 
@@ -58,7 +58,7 @@ msgstr ""
 "Program uporablja podatkovno zbirko OpenStreetMap, ki jo ustvarja več sto "
 "tisoč posameznikov na vseh koncih sveta."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:369 src/mainWindow.js:574
+#: data/org.gnome.Maps.appdata.xml.in.in:369 src/mainWindow.js:588
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
 
@@ -341,8 +341,12 @@ msgstr "Odpre plast oblike"
 msgid "Show Scale"
 msgstr "Prikaži merilo"
 
-#. Translators: This string uses ellipsis character
 #: data/ui/layers-popover.ui:16
+msgid "Enable Experimental Map"
+msgstr "Omogoči preizkusni zemljevid"
+
+#. Translators: This string uses ellipsis character
+#: data/ui/layers-popover.ui:21
 msgid "Open Shape Layer…"
 msgstr "Odpri plast oblike …"
 
@@ -469,7 +473,7 @@ msgstr ""
 msgid "Recently Used"
 msgstr "Nedavno uporabljeno"
 
-#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:533
+#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:541
 msgid "Cancel"
 msgstr "Prekliči"
 
@@ -650,7 +654,7 @@ msgid "Back to Main Categories"
 msgstr "Nazaj na glavne kategorije"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:15 src/mapView.js:1113
+#: data/ui/zoom-and-rotate-controls.ui:15 src/mapView.js:1121
 msgid "Zoom In"
 msgstr "Približaj"
 
@@ -751,40 +755,40 @@ msgstr "Začetna točka!"
 msgid "All Layer Files"
 msgstr "Vse datoteke plasti"
 
-#: src/mainWindow.js:457
+#: src/mainWindow.js:468
 msgid "Failed to connect to location service"
 msgstr "Napaka med povezovanjem s storitvijo določevanja točke GPS"
 
-#: src/mainWindow.js:462
+#: src/mainWindow.js:473
 msgid "Turn on location services"
 msgstr "Priklopite geolokacijske storitve"
 
-#: src/mainWindow.js:463
+#: src/mainWindow.js:474
 msgid "Location Settings"
 msgstr "Nastavitve mesta"
 
-#: src/mainWindow.js:575
+#: src/mainWindow.js:589
 msgid "translator-credits"
 msgstr ""
 "Matej Urbančič <mateju@src.gnome.org>\n"
 "Martin Srebotnjak"
 
-#: src/mainWindow.js:579
+#: src/mainWindow.js:593
 msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
 msgstr ""
 "Avtorske pravice © 2011–2023 Red Hat, Inc. in avtorji programa Zemljevidi "
 "GNOME"
 
-#: src/mainWindow.js:595
+#: src/mainWindow.js:609
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Podatke zemljevida objavljajo %s in drugi sodelujoči"
 
-#: src/mainWindow.js:596
+#: src/mainWindow.js:610
 msgid "Map Data Provider"
 msgstr "Ponudnik podatkov zemljevida"
 
-#: src/mainWindow.js:608
+#: src/mainWindow.js:622
 msgid "Map Tile Provider"
 msgstr "Ponudnik sličic zemljevida"
 
@@ -793,29 +797,29 @@ msgstr "Ponudnik sličic zemljevida"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:616
+#: src/mainWindow.js:630
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Slikovne podatke zemljevida objavlja %s"
 
-#: src/mainWindow.js:646
+#: src/mainWindow.js:660
 msgid "Search Provider"
 msgstr "Ponudnik iskalnika"
 
-#: src/mainWindow.js:649
+#: src/mainWindow.js:663
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Iskalnik omogoča %s z uporabo %s"
 
-#: src/mapView.js:507 src/mapView.js:572
+#: src/mapView.js:515 src/mapView.js:580
 msgid "Failed to open layer"
 msgstr "Odpiranje plasti je spodletelo"
 
-#: src/mapView.js:526
+#: src/mapView.js:534
 msgid "Do you want to continue?"
 msgstr "Ali želite nadaljevati?"
 
-#: src/mapView.js:527
+#: src/mapView.js:535
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -824,27 +828,27 @@ msgstr ""
 "Odpreti nameravate datoteke s skupno velikostjo %s MB. Opravilo je lahko "
 "dolgotrajno."
 
-#: src/mapView.js:534 src/transitplugins/openTripPlanner.js:1207
+#: src/mapView.js:542 src/transitplugins/openTripPlanner.js:1207
 msgid "Continue"
 msgstr "Nadaljujte"
 
-#: src/mapView.js:566
+#: src/mapView.js:574
 msgid "File type is not supported"
 msgstr "Vrsta datoteke ni podprta"
 
-#: src/mapView.js:603
+#: src/mapView.js:611
 msgid "Failed to open GeoURI"
 msgstr "Odpiranje naslova GeoURI je spodletelo."
 
-#: src/mapView.js:1072
+#: src/mapView.js:1080
 msgid "Nothing found here!"
 msgstr "Tu ni ničesar!"
 
-#: src/mapView.js:1112
+#: src/mapView.js:1120
 msgid "Zoom in to add location"
 msgstr "Približaj za dodajanje mesta"
 
-#: src/mapView.js:1133
+#: src/mapView.js:1141
 msgid "Location was added in OpenStreetMap"
 msgstr "Mesto je dodano na OpenStreetMap"
 
@@ -1679,12 +1683,12 @@ msgid "failed to load file"
 msgstr "nalaganje datoteke je spodletelo"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:325
+#: src/sidebar.js:329
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Predviden čas: %s"
 
-#: src/sidebar.js:395
+#: src/sidebar.js:399
 #, javascript-format
 msgid "Itineraries provided by %s"
 msgstr "Načrt potovanja objavlja %s"
