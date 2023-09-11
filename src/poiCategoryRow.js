@@ -22,12 +22,14 @@
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
+import gettext from 'gettext';
+
 export class PoiCategoryRow extends Gtk.ListBoxRow {
   constructor({ iconName, label, ...params }) {
     super(params);
 
     this._icon.icon_name = iconName;
-    this._label.label = label;
+    this._label.label = gettext.gettext(label);
   }
 };
 
