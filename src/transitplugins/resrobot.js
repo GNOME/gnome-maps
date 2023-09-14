@@ -105,6 +105,11 @@ export class Resrobot {
 
         if (!this._accessId)
             throw new Error('missing accessId');
+
+        if (typeof(this._accessId) !== 'string' ||
+            !GLib.uuid_string_is_valid(this._accessId)) {
+            throw new Error('invalid accessId');
+        }
     }
 
     fetchFirstResults() {
