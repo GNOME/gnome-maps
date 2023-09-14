@@ -265,8 +265,23 @@ export class TransitRouter {
     _instantiatePlugin(plugin, params) {
         if (!ALL_PLUGINS.includes(plugin))
             throw 'Unknown plugin: ' + plugin;
-        return params
+        return params && this._isValidParams(params)
             ? eval(`new ${plugin}(params)`)
             : eval(`new ${plugin}()`);
+    }
+
+    _isValidParams(params) {
+        if (typeof(params) !== 'object')
+            return false;
+
+        for (const key in params) {
+            const value = params[key];
+            if ((typeof(value) !== 'boolean' && typeof(value) !== 'string') ||
+                (typeof(value) === 'string' && value.length > 255)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 };
