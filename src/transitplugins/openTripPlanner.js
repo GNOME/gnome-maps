@@ -112,6 +112,14 @@ const NUM_STOPS_TO_TRY = 5;
 // gap to use when fetching additional routes
 const GAP_BEFORE_MORE_RESULTS = 120;
 
+// list of trusted base URLs for known OTP instances
+const KNOWN_BASE_URLS = ['https://planner.sncft.com.tn/otp',
+                   'https://otpdjerba.herokuapp.com/otp',
+                   'https://api.digitransit.fi/routing/v1/',
+                   'https://www.metromobilite.fr/otp'];
+
+const KNOWN_ROUTER_URLS = ['https://maps.trimet.org/otp_mod'];
+
 export class OpenTripPlanner {
 
     constructor(params) {
@@ -132,11 +140,35 @@ export class OpenTripPlanner {
         this._authHeader = GLib.getenv('OTP_AUTH_HEADER') ?? params.authHeader;
         this._authKey = GLib.getenv('OTP_AUTH_KEY') ?? params.authKey;
 
+        if (!this._isValidParams(params))
+            throw new Error('invalid parameters');
+
         if (!this._baseUrl && !this._routerUrl)
             throw new Error('must specify either baseUrl or routerUrl as an argument');
 
         if (this._baseUrl && this._routerUrl)
             throw new Error('can not specify both baseUrl and routerUrl as arguments');
+    }
+
+    _isValidParams(params) {
+        if (params.onlyTransitData && typeof(params.onlyTransitData) !== 'boolean') {
+            Utils.debug('invalid value for onlyTransitData');
+            return false;
+        }
+
+        // refuse to use unknown URLs to OTP instances
+        if (params.baseUrl && KNOWN_BASE_URLS.indexOf(params.baseUrl) === -1) {
+            Utils.debug(`refusing unknown base URL ${params.baseUrl}`);
+            return false;
+        }
+
+        if (params.routerUrl &&
+            KNOWN_ROUTER_URLS.indexOf(params.routerUrl) === -1) {
+            Utils.debug(`refusing unknown router URL ${params.routerUrl}`);
+            return false;
+        }
+
+        return true;
     }
 
     get plan() {
