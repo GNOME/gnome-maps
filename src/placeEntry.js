@@ -23,7 +23,6 @@
 import gettext from 'gettext';
 
 import Gdk from 'gi://Gdk';
-import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import GeocodeGlib from 'gi://GeocodeGlib';
 import Gio from 'gi://Gio';
@@ -31,12 +30,10 @@ import Gtk from 'gi://Gtk';
 
 import {Application} from './application.js';
 import * as GeocodeFactory from './geocode.js';
-import {Location} from './location.js';
 import {Place} from './place.js';
 import {PlaceStore} from './placeStore.js';
 import {PlacePopover} from './placePopover.js';
 import * as URIS from './uris.js';
-import * as Utils from './utils.js';
 
 const _ = gettext.gettext;
 
@@ -95,8 +92,10 @@ export class PlaceEntry extends Gtk.SearchEntry {
 
         this._mapView = mapView;
         this._matchRoute = matchRoute ?? false;
-        this._filter = new Gtk.TreeModelFilter({ child_model: Application.placeStore });
-        this._filter.set_visible_func(this._completionVisibleFunc.bind(this));
+        this._filter = new Gtk.FilterListModel({
+            model: Application.placeStore,
+            filter: Gtk.CustomFilter.new(this._completionVisibleFunc.bind(this)),
+        });
 
         this._keyController = new Gtk.EventControllerKey();
         this._keyController.connect('key-pressed', this._onKeyPressed.bind(this));
@@ -241,16 +240,13 @@ export class PlaceEntry extends Gtk.SearchEntry {
         }
     }
 
-    _completionVisibleFunc(model, iter) {
-        let place = model.get_value(iter, PlaceStore.Columns.PLACE);
-        let type = model.get_value(iter, PlaceStore.Columns.TYPE);
-
-        if (type !== PlaceStore.PlaceType.RECENT_ROUTE ||
-            (!this._matchRoute && type === PlaceStore.PlaceType.RECENT_ROUTE))
+    _completionVisibleFunc(placeItem) {
+        if (placeItem.type !== PlaceStore.PlaceType.RECENT_ROUTE ||
+            (!this._matchRoute && placeItem.type === PlaceStore.PlaceType.RECENT_ROUTE))
             return false;
 
-        if (place !== null)
-            return place.match(this.text);
+        if (placeItem.place !== null)
+            return placeItem.place.match(this.text);
         else
             return false;
     }
@@ -374,15 +370,12 @@ export class PlaceEntry extends Gtk.SearchEntry {
 
         let completedPlaces = [];
 
-
         if (includeContactsAndRoutes) {
-            this._filter.refilter();
-            this._filter.foreach((model, path, iter) => {
-                let place = model.get_value(iter, PlaceStore.Columns.PLACE);
-                let type = model.get_value(iter, PlaceStore.Columns.TYPE);
-
-                completedPlaces.push({ place: place, type: type });
-            });
+            this._filter.filter.changed(Gtk.FilterChange.DIFFERENT);
+            for (let i = 0; i < this._filter.n_items; i++) {
+                const placeItem = this._filter.get_item(i);
+                completedPlaces.push({ place: placeItem.place, type: placeItem.type });
+            }
         }
 
         let placeStore = Application.placeStore;

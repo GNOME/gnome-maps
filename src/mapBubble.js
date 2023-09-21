@@ -19,20 +19,10 @@
  * Author: Damián Nohales <damiannohales@gmail.com>
  */
 
-import Gio from 'gi://Gio';
-import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
-import Graphene from 'gi://Graphene';
 import Gtk from 'gi://Gtk';
 
-import {Application} from './application.js';
-import * as GeocodeFactory from './geocode.js';
-import {Place} from './place.js';
 import {PlaceView} from './placeView.js';
-import {PlaceButtons} from './placeButtons.js';
-import {PlaceFormatter} from './placeFormatter.js';
-import {PlaceStore} from './placeStore.js';
-import * as Utils from './utils.js';
 
 /* Maximum width of the popover content before it's forced to wrap */
 const MAX_CONTENT_WIDTH = 350;

@@ -49,6 +49,7 @@ export class Application extends Adw.Application {
     // used globally
     static application = null;
     static settings = null;
+    /** @type {PlaceStore} */
     static placeStore = null;
     /** @type {RoutingDelegator} */
     static routingDelegator = null;

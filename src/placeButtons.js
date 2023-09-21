@@ -26,7 +26,6 @@ import Gtk from 'gi://Gtk';
 import {Application} from './application.js';
 import {OSMAccountDialog} from './osmAccountDialog.js';
 import {OSMEditDialog} from './osmEditDialog.js';
-import * as OSMUtils from './osmUtils.js';
 import {PlaceStore} from './placeStore.js';
 import {SendToDialog} from './sendToDialog.js';
 

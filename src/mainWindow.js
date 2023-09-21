@@ -32,13 +32,11 @@ import Shumate from 'gi://Shumate';
 
 import {Application} from './application.js';
 import {ExportViewDialog} from './exportViewDialog.js';
-import {FavoritesPopover} from './favoritesPopover.js';
 import * as Geoclue from './geoclue.js';
 import * as GeocodeFactory from './geocode.js';
 import {HeaderBarLeft, HeaderBarRight} from './headerBar.js';
 import {MapView} from './mapView.js';
 import {PlaceBar} from './placeBar.js';
-import {PlaceStore} from './placeStore.js';
 import {PrintOperation} from './printOperation.js';
 import {SearchBar} from './searchBar.js';
 import * as Service from './service.js';
