@@ -313,8 +313,7 @@ export class Sidebar extends Gtk.Grid {
                 });
 
                 if (!storedRoute.containsNull) {
-                    placeStore.addPlace(storedRoute,
-                                        PlaceStore.PlaceType.RECENT_ROUTE);
+                    placeStore.addPlace(storedRoute);
                 }
                 this._storeRouteTimeoutId = 0;
             });

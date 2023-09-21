@@ -27,6 +27,7 @@ import Shumate from 'gi://Shumate';
 import {Place} from './place.js';
 import {Route, TurnPoint} from './route.js';
 import {RouteQuery} from './routeQuery.js';
+import * as epaf from './epaf.js';
 
 // directional override markers
 const _RLM = '\u200F';
@@ -63,6 +64,11 @@ export class StoredRoute extends Place {
             if (currentLocation && place === currentLocation)
                 this._containsCurrentLocation = true;
         });
+
+        /** For forward compatibility. @private */
+        this._originalJSON = undefined;
+        /** For forward compatibility. @private */
+        this._originalRouteJSON = undefined;
     }
 
     get viaString() {
@@ -124,12 +130,10 @@ export class StoredRoute extends Place {
                              left: this.route.bbox.left,
                              right: this.route.bbox.right };
 
-        let path = this.route.path.map(function(coordinate) {
-            return { latitude: coordinate.latitude,
-                     longitude: coordinate.longitude };
-        });
+        let path = epaf.encode(this.route.path);
 
-        let route = { path: path,
+        let route = {...this._originalRouteJSON,
+                      path: path,
                       turnPoints: turnPoints,
                       distance: this.route.distance,
                       time: this.route.time };
@@ -138,7 +142,8 @@ export class StoredRoute extends Place {
             return place.toJSON();
         });
 
-        return { id: -1,
+        return {...this._originalJSON,
+                 id: -1,
                  transportation: this._transportation,
                  route: route,
                  places: places };
@@ -160,12 +165,8 @@ export class StoredRoute extends Place {
 
             case 'route':
                 route = new Route();
-                prop.path = prop.path.map((coordinate) => {
-                    let lat = coordinate.latitude;
-                    let lon = coordinate.longitude;
-                    return new Shumate.Coordinate({ latitude: lat,
-                                                    longitude: lon });
-                });
+                prop.path = epaf.decode(prop.path);
+
                 prop.turnPoints = prop.turnPoints.map((turnPoint) => {
                     let lat = turnPoint.coordinate.latitude;
                     let lon = turnPoint.coordinate.longitude;
@@ -188,9 +189,14 @@ export class StoredRoute extends Place {
                 break;
             }
         }
-        return new StoredRoute({ transportation: transportation,
-                                 route: route,
-                                 places: places });
+        const result = new StoredRoute({
+            transportation: transportation,
+            route: route,
+            places: places
+        });
+        result._originalJSON = obj;
+        result._originalRouteJSON = obj.route;
+        return result;
     }
 }
 

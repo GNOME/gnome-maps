@@ -34,6 +34,7 @@ import {Place} from './place.js';
 import {PlaceStore} from './placeStore.js';
 import {PlacePopover} from './placePopover.js';
 import * as URIS from './uris.js';
+import { StoredRoute } from './storedRoute.js';
 
 const _ = gettext.gettext;
 
@@ -241,8 +242,8 @@ export class PlaceEntry extends Gtk.SearchEntry {
     }
 
     _completionVisibleFunc(placeItem) {
-        if (placeItem.type !== PlaceStore.PlaceType.RECENT_ROUTE ||
-            (!this._matchRoute && placeItem.type === PlaceStore.PlaceType.RECENT_ROUTE))
+        if (!(placeItem.place instanceof StoredRoute) ||
+            (!this._matchRoute && placeItem.type instanceof StoredRoute))
             return false;
 
         if (placeItem.place !== null)
@@ -356,9 +357,9 @@ export class PlaceEntry extends Gtk.SearchEntry {
 
     /**
      * Update results popover
-     * places array of places from search result
-     * searchText original search string to highlight in results
-     * includeContactsAndRoute whether to include contacts and recent routes
+     * @param {Place[]} places array of places from search result
+     * @param {string} searchText original search string to highlight in results
+     * @param {boolean} includeContactsAndRoute whether to include contacts and recent routes
      *                         among results
      */
     updateResults(places, searchText, includeContactsAndRoutes) {
@@ -374,14 +375,14 @@ export class PlaceEntry extends Gtk.SearchEntry {
             this._filter.filter.changed(Gtk.FilterChange.DIFFERENT);
             for (let i = 0; i < this._filter.n_items; i++) {
                 const placeItem = this._filter.get_item(i);
-                completedPlaces.push({ place: placeItem.place, type: placeItem.type });
+                completedPlaces.push(placeItem);
             }
         }
 
         let placeStore = Application.placeStore;
 
         completedPlaces =
-            completedPlaces.concat(placeStore.getCompletedPlaces(places));
+            completedPlaces.concat(places.map(place => placeStore.getPlaceItem(place)));
 
         this._popover.updateResult(completedPlaces, searchText);
         this._popover.showResult();

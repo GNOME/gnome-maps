@@ -24,7 +24,7 @@ import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
 import {PlaceFormatter} from './placeFormatter.js';
-import {PlaceStore} from './placeStore.js';
+import {PlaceStoreItem} from './placeStore.js';
 import * as Utils from './utils.js';
 
 const C_ = gettext.dgettext;
@@ -47,16 +47,20 @@ const SHORT_DISTANCE_FORMAT = C_("short distance format string", "< %s");
 
 export class PlaceListRow extends Gtk.ListBoxRow {
 
-    constructor({place, searchString, type, sizeGroup, ...params}) {
+    constructor({placeItem, searchString, sizeGroup, ...params}) {
         super(params);
 
-        this.update(place, type, searchString || '');
+        this.update(placeItem, searchString || '');
         if (sizeGroup)
             sizeGroup.add_widget(this._distanceLabel);
     }
 
-    update(place, type, searchString) {
-        this.place = place;
+    /**
+     * @param {PlaceStoreItem} placeItem
+     * @param {string} searchString
+     */
+    update(placeItem, searchString) {
+        this.place = placeItem.place;
         let formatter = new PlaceFormatter(this.place);
         let markup = GLib.markup_escape_text(formatter.title, -1);
 
@@ -64,16 +68,13 @@ export class PlaceListRow extends Gtk.ListBoxRow {
         this._details.label = GLib.markup_escape_text(formatter.getDetailsString(),-1);
         this._details.visible = this._details.label.length > 0;
 
-        if (place.icon)
-            this._icon.gicon = place.icon;
+        if (placeItem.place.icon)
+            this._icon.gicon = placeItem.place.icon;
 
-        if (type === PlaceStore.PlaceType.RECENT ||
-            type === PlaceStore.PlaceType.RECENT_ROUTE)
-            this._typeIcon.icon_name = 'document-open-recent-symbolic';
-        else if (type === PlaceStore.PlaceType.FAVORITE)
+        if (placeItem.isFavorite)
             this._typeIcon.icon_name = 'starred-symbolic';
         else
-            this._typeIcon.icon_name = null;
+            this._typeIcon.icon_name = 'document-open-recent-symbolic';
 
         /* hide distance by default so that a previous content from a POI
          * search doesn't keep the distance when updating with a new search

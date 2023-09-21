@@ -25,7 +25,7 @@ import Gtk from 'gi://Gtk';
 import {Application} from './application.js';
 import {Overpass} from './overpass.js';
 import {PlaceListRow} from './placeListRow.js';
-import {PlaceStore} from './placeStore.js';
+import {PlaceStoreItem} from './placeStore.js';
 import * as PoiCategories from './poiCategories.js';
 import {PoiCategoryGobackRow} from './poiCategoryGobackRow.js';
 import {PoiCategoryRow} from './poiCategoryRow.js';
@@ -154,7 +154,7 @@ export class PlacePopover extends SearchPopover {
                 this.showNoResult();
             } else {
                 let placeStore = Application.placeStore;
-                let completedPlaces = placeStore.getCompletedPlaces(results);
+                let completedPlaces = results.map((place) => placeStore.getPlaceItem(place));
 
                 this.updateResult(completedPlaces, '');
                 this._updateDistances();
@@ -284,9 +284,9 @@ export class PlacePopover extends SearchPopover {
 
             // update existing row, if there is one, otherwise create new
             if (row)
-                row.update(p.place, p.type, searchString);
+                row.update(p, searchString);
             else
-                this._addRow(p.place, p.type, searchString);
+                this._addRow(p, searchString);
 
             i++;
         });
@@ -312,10 +312,13 @@ export class PlacePopover extends SearchPopover {
         }
     }
 
-    _addRow(place, type, searchString) {
-        let row = new PlaceListRow({ place:        place,
+    /**
+     * @param {PlaceStoreItem} placeItem
+     * @param {string} searchString
+     */
+    _addRow(placeItem, searchString) {
+        let row = new PlaceListRow({ placeItem,
                                      searchString: searchString,
-                                     type:         type,
                                      sizeGroup:    this._distanceLabelSizeGroup,
                                      can_focus:    true });
         this.list.insert(row, -1);

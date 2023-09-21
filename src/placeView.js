@@ -114,15 +114,16 @@ export class PlaceView extends Gtk.Box {
             this._populate(this.place);
         } else {
             let overpass = new Overpass();
+            let placeItem = Application.placeStore.getPlaceItem(this.place);
 
-            if (Application.placeStore.exists(this.place, null)) {
+            if (placeItem !== null) {
 
                 // If the place is stale, update from Overpass.
-                if (Application.placeStore.isStale(this.place)) {
+                if (placeItem.isStale()) {
                     overpass.populatePlace(this.place,
                                            this._onOverpass.bind(this));
                 } else {
-                    this._place = Application.placeStore.get(this.place);
+                    this._place = placeItem.place;
                     this._populate(this.place);
                 }
             } else if (this.place.store) {
@@ -224,10 +225,7 @@ export class PlaceView extends Gtk.Box {
 
         this._populate(this.place);
 
-        if (Application.placeStore.exists(this.place, null))
-            Application.placeStore.updatePlace(this.place);
-        else
-            Application.placeStore.addPlace(this.place, PlaceStore.PlaceType.RECENT);
+        Application.placeStore.addPlace(this.place);
     }
 
     _formatWikiLink(wiki) {

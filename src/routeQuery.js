@@ -170,10 +170,7 @@ export class RouteQuery extends GObject.Object {
         point.connect('notify::place', () => {
             let placeStore = Application.placeStore;
             if (point.place) {
-                if (!placeStore.exists(point.place, null)) {
-                    placeStore.addPlace(point.place,
-                                        PlaceStore.PlaceType.RECENT);
-                }
+                placeStore.addPlace(point.place);
             }
             this.notify('points');
             this._latest = point;

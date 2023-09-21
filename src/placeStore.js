@@ -17,50 +17,53 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
-import GLib from 'gi://GLib';
-import GObject from 'gi://GObject';
-import Gtk from 'gi://Gtk';
+import GLib from "gi://GLib";
+import Gio from "gi://Gio";
+import GObject from "gi://GObject";
 
-import {Place} from './place.js';
-import {StoredRoute} from './storedRoute.js';
-import * as Utils from './utils.js';
+import * as epaf from "./epaf.js";
+import { JsonStorage } from "./jsonStorage.js";
+import { Place } from "./place.js";
+import { StoredRoute } from "./storedRoute.js";
+import * as Utils from "./utils.js";
 
-const _PLACES_STORE_FILE = 'maps-places.json';
 const _ONE_DAY = 1000 * 60 * 60 * 24; // one day in ms
 const _STALE_THRESHOLD = 7; // mark the osm information as stale after a week
 
 export class PlaceStore extends GObject.Object {
-
-    static PlaceType = {
-        ANY: -1,
-        RECENT: 0,
-        FAVORITE: 1,
-        CONTACT: 2, // Legacy, this is not handled anymore
-        RECENT_ROUTE: 3
-    }
-
-    static Columns = {
-        PLACE: 0,
-        TYPE: 1,
-        ADDED: 2,
-        LANGUAGE: 3
-    }
-
-    constructor({recentPlacesLimit, recentRoutesLimit, ...params}) {
+    /**
+     * @param {{
+     *   storage: JsonStorage?,
+     *   recentPlacesLimit: number?,
+     *   recentRoutesLimit: number?,
+     * }} params
+     */
+    constructor({ storage, recentPlacesLimit, recentRoutesLimit, ...params }) {
         super(params);
 
+        /** @type {JsonStorage?} */
+        this._storage = storage;
+        /** @type {number?} */
         this._recentPlacesLimit = recentPlacesLimit;
+        /** @type {number?} */
         this._recentRoutesLimit = recentRoutesLimit;
-        this._numRecentPlaces = 0;
-        this._numRecentRoutes = 0;
-        this.filename = GLib.build_filenamev([GLib.get_user_data_dir(),
-                                              _PLACES_STORE_FILE]);
-        /** @type {{ [id: string]: number? }} */
-        this._typeTable = {};
-        this._language = Utils.getLanguage();
+        /** @type {string} */
+        this._filename = GLib.build_filenamev([
+            GLib.get_user_data_dir(),
+            "gnome-maps",
+            "places.json",
+        ]);
 
         /** @type {PlaceStoreItem[]} */
         this._places = [];
+
+        /** For forward compatibility. @private */
+        this._originalJSON = null;
+        /** For forward compatibility. @private */
+        this._unknownPlaces = [];
+
+        /** For removing old places. @private */
+        this._nextViewOrd = 0;
     }
 
     vfunc_get_item(position) {
@@ -75,11 +78,14 @@ export class PlaceStore extends GObject.Object {
         return this.n_items;
     }
 
-    /** @param {PlaceStoreItem} placeItem  */
-    _addPlace(placeItem) {
+    /**
+     * @param {PlaceStoreItem} placeItem
+     * @private
+     */
+    _addPlaceItem(placeItem) {
         this._places.push(placeItem);
-        this._typeTable[placeItem.place.uniqueID] = placeItem.type;
         this.items_changed(this._places.length - 1, 0, 1);
+        this.markDirty();
     }
 
     get item_type() {
@@ -91,233 +97,257 @@ export class PlaceStore extends GObject.Object {
     }
 
     *[Symbol.iterator]() {
-        for (const item of this._places)
-            yield item;
-    }
-
-    _addFavorite(place) {
-        if (!place.store)
-            return;
-
-        if (this.exists(place, PlaceStore.PlaceType.FAVORITE)) {
-            return;
-        }
-
-        if (this.exists(place, PlaceStore.PlaceType.RECENT)) {
-            this._removeIf((placeItem) => {
-                return placeItem.place.uniqueID === placeItem.place.uniqueID;
-            });
-        }
-
-        this._addPlace(new PlaceStoreItem({
-            place,
-            type: PlaceStore.PlaceType.FAVORITE,
-            added: new Date(),
-        }));
-    }
-
-    /** @param {Place} place  */
-    _addRecent(place) {
-        if (!place.store)
-            return;
-
-        if (this.exists(place, PlaceStore.PlaceType.RECENT)) {
-            this.updatePlace(place);
-            return;
-        }
-
-        if (this._numRecentPlaces === this._recentPlacesLimit) {
-            // Since we sort by added, the oldest recent will be
-            // the first one we encounter.
-            this._removeIf((placeItem) => {
-                if (placeItem.type === PlaceStore.PlaceType.RECENT) {
-                    this._typeTable[placeItem.place.uniqueID] = null;
-                    this._numRecentPlaces--;
-                    return true;
-                }
-                return false;
-            });
-        }
-        this._addPlace(new PlaceStoreItem({
-            place,
-            type: PlaceStore.PlaceType.RECENT,
-        }));
-        this._numRecentPlaces++;
-    }
-
-    /** @param {StoredRoute} stored */
-    _addRecentRoute(stored) {
-        if (this.exists(stored, PlaceStore.PlaceType.RECENT_ROUTE))
-            return;
-
-        if (stored.containsCurrentLocation)
-            return;
-
-        if (this._numRecentRoutes >= this._recentRoutesLimit) {
-            this._removeIf((placeItem) => {
-                if (placeItem.type === PlaceStore.PlaceType.RECENT_ROUTE) {
-                    this._typeTable[placeItem.place.uniqueID] = null;
-                    this._numRecentRoutes--;
-                    return true;
-                }
-                return false;
-            });
-        }
-        this._addPlace(new PlaceStoreItem({
-            place: stored,
-            type: PlaceStore.PlaceType.RECENT_ROUTE,
-        }));
-        this._numRecentRoutes++;
+        for (const item of this._places) yield item;
     }
 
     load() {
-        if (!GLib.file_test(this.filename, GLib.FileTest.EXISTS))
-            return;
+        let jsonData;
 
-        let buffer = Utils.readFile(this.filename);
-        if (buffer === null)
-            return;
+        if (this._storage) {
+            jsonData = this._storage.load();
+            if (jsonData === null) return;
+        } else {
+            this._storage = new JsonStorage(this._filename);
+
+            jsonData = this._storage.load();
+            if (jsonData === null) {
+                // Try the pre-46 location
+                const filename = GLib.build_filenamev([
+                    GLib.get_user_data_dir(),
+                    "maps-places.json",
+                ]);
+
+                let buffer = Utils.readFile(filename);
+                if (buffer === null) return;
+
+                jsonData = JSON.parse(Utils.getBufferText(buffer));
+            }
+        }
+
+        if (jsonData.places === undefined) {
+            jsonData = this._migrateFromPre46(jsonData);
+        }
+
         try {
-            let jsonArray = JSON.parse(Utils.getBufferText(buffer));
-            jsonArray.forEach((stored) => {
-                // We expect exception to be thrown in this line when parsing
-                // gnome-maps 3.14 or below place stores since the "place"
-                // key is not present.
-                if (!stored.place.id)
-                    return;
+            this._originalJSON = jsonData;
+            this._unknownPlaces = [];
 
-                // GtkListStore doesn't seem to handle null/undefined for strings
-                if (!stored.language)
-                    stored.language = '';
-
-                let place;
-                if (stored.type === PlaceStore.PlaceType.RECENT_ROUTE) {
-                    if (this._numRecentRoutes >= this._recentRoutesLimit)
-                        return;
-                    place = StoredRoute.fromJSON(stored.place);
-                    this._numRecentRoutes++;
+            jsonData.places.forEach((stored) => {
+                const placeItem = PlaceStoreItem.fromJSON(this, stored);
+                if (placeItem) {
+                    this._addPlaceItem(placeItem);
                 } else {
-                    place = Place.fromJSON(stored.place);
-                    if (stored.type === PlaceStore.PlaceType.RECENT)
-                        this._numRecentPlaces++;
+                    this._unknownPlaces.push(stored);
                 }
-                this._addPlace(new PlaceStoreItem({
-                    place,
-                    type: stored.type,
-                    added: new Date(stored.added),
-                    originalJSON: stored,
-                }));
+                this._nextViewOrd = Math.max(this._nextViewOrd, stored.viewOrd);
             });
         } catch (e) {
-            throw new Error('failed to parse places file');
+            logError(e);
+            throw new Error("failed to parse places file");
         }
     }
 
-    /**
-     * @param {Place} place
-     * @param {number} type
-     */
-    addPlace(place, type) {
-        if (type === PlaceStore.PlaceType.FAVORITE)
-            this._addFavorite(place);
-        else if (type === PlaceStore.PlaceType.RECENT)
-            this._addRecent(place);
-        else if (type === PlaceStore.PlaceType.RECENT_ROUTE)
-            this._addRecentRoute(place);
-    }
+    /** @private */
+    _migrateFromPre46(jsonArray) {
+        const placeItems = [];
 
-    removePlace(place, placeType) {
-        if (!this.exists(place, placeType))
-            return;
+        const migratePlace = (place) => {
+            place.osmId = place.id;
+            delete place.id;
+            place.osmType = place.osm_type;
+            delete place.osm_type;
+            place.streetAddress = place.street_address;
+            delete place.street_address;
+            place.countryCode = place.country_code;
+            delete place.country_code;
+            place.boundingBox = place.bounding_box;
+            delete place.bounding_box;
+            place.postalCode = place.postal_code;
+            delete place.postal_code;
+            place.placeType = place.place_type;
+            delete place.place_type;
+        };
 
-        this._removeIf((placeItem) => {
-            if (placeItem.place.uniqueID === place.uniqueID) {
-                this._typeTable[place.uniqueID] = null;
-                return true;
+        let viewOrd = 0;
+        for (const placeItem of jsonArray) {
+            delete placeItem.language;
+
+            placeItem.updated = placeItem.added;
+            delete placeItem.added;
+
+            if (placeItem.place) {
+                migratePlace(placeItem.place);
             }
-            return false;
-        });
-        this._store();
+
+            placeItem.viewOrd = viewOrd++;
+
+            switch (placeItem.type) {
+                case 0:
+                    /* Recent */
+                    placeItem.place.type = PlaceStoreItem.PlaceType.PLACE;
+                    delete placeItem.type;
+                    placeItems.push(placeItem);
+                    break;
+                case 1:
+                    /* Favorite */
+                    placeItem.place.type = PlaceStoreItem.PlaceType.PLACE;
+                    placeItem.isFavorite = true;
+                    delete placeItem.type;
+                    placeItems.push(placeItem);
+                    break;
+                case 2:
+                    /* We don't handle contacts anymore */
+                    break;
+                case 3:
+                    /* Recent route */
+                    placeItem.place.type = PlaceStoreItem.PlaceType.ROUTE;
+                    delete placeItem.type;
+
+                    placeItem.place.route.path = epaf.encode(
+                        placeItem.place.route.path
+                    );
+
+                    placeItem.place.places.forEach((p) => {
+                        p.type = PlaceStoreItem.PlaceType.PLACE;
+                        migratePlace(p);
+                    });
+
+                    placeItems.push(placeItem);
+                    break;
+            }
+        }
+
+        return { migration: 1, places: placeItems };
     }
 
-    _store() {
+    /**
+     * Adds a place to the store, or updates an existing place if
+     * there is a match.
+     *
+     * @param {Place} place
+     * @returns {PlaceStoreItem}
+     */
+    addPlace(place) {
+        const existing = this.getPlaceItem(place);
+        if (existing) {
+            existing.place = place;
+            return existing;
+        }
+
+        const placeItem = new PlaceStoreItem(this, place);
+        this._addPlaceItem(placeItem);
+        return placeItem;
+    }
+
+    /**
+     * Indicates that a place in the place store has been changed
+     * and the store should be saved to disk.
+     */
+    markDirty() {
+        /* Remove old places */
+        const removeIf = (filter, limit) => {
+            if (limit === undefined) return;
+
+            const realFilter = (x) => !x.isFavorite && filter(x);
+
+            const viewOrds = this._places
+                .filter(realFilter)
+                .map((placeItem) => placeItem.viewOrd)
+                .sort((a, b) => a - b);
+
+            if (viewOrds.length <= limit) return;
+
+            const threshold = viewOrds[viewOrds.length - limit];
+            this._removeIf(
+                (placeItem) =>
+                    realFilter(placeItem) && placeItem.viewOrd < threshold
+            );
+        };
+
+        removeIf(
+            (placeItem) => !(placeItem.place instanceof StoredRoute),
+            this._recentPlacesLimit
+        );
+        removeIf(
+            (placeItem) => placeItem.place instanceof StoredRoute,
+            this._recentRoutesLimit
+        );
+
+        this.save();
+    }
+
+    /**
+     * Writes the place store to disk.
+     */
+    save() {
         let jsonArray = [];
         this._places.forEach((placeItem) => {
-            if (!placeItem.place || !placeItem.place.store)
-                return;
+            if (!placeItem.place || !placeItem.place.store) return;
             jsonArray.push(placeItem.toJSON());
         });
+        jsonArray = jsonArray.concat(this._unknownPlaces);
 
-        let buffer = JSON.stringify(jsonArray);
-        if (!Utils.writeFile(this.filename, buffer))
-            log('Failed to write places file!');
+        const jsonObject = {
+            ...this._originalJSON,
+            places: jsonArray,
+            version: pkg.version,
+        };
+
+        this._storage.save(jsonObject);
     }
 
     /**
+     * Gets the Place in the store that matches the given place,
+     * if any.
+     *
      * @param {Place} place
      * @returns {Place?}
      */
     get(place) {
-        let storedPlace = null;
-
-        this._places.forEach((placeItem) => {
-            if (placeItem.place.uniqueID === place.uniqueID) {
-                storedPlace = placeItem.place;
-                return true;
-            }
-            return false;
-        });
-        return storedPlace;
-    }
-
-    /** @param {Place} place */
-    isStale(place) {
-        if (!this.exists(place, null))
-            return false;
-
-        let storedPlaceItem = null;
-        this._places.forEach((placeItem) => {
-            if (placeItem.place.uniqueID === place.uniqueID) {
-                storedPlaceItem = placeItem;
-            }
-        });
-
-        let now = new Date().getTime();
-        let days = Math.abs(now - storedPlaceItem.added.getTime()) / _ONE_DAY;
-
-        return storedPlaceItem.language !== this._language || days >= _STALE_THRESHOLD;
+        return this.getPlaceItem(place)?.place ?? null;
     }
 
     /**
+     * Searches the place store for a match for the given place
+     * and returns its PlaceStoreItem, if any.
+     *
+     * In the future, this may find matches by name and location,
+     * but for now it only matches by OSM ID.
+     *
      * @param {Place} place
-     * @param {number?} type
+     * @returns {PlaceStoreItem?}
      */
-    exists(place, type) {
-        if (type !== undefined && type !== null && this._typeTable[place.uniqueID] !== undefined)
-            return this._typeTable[place.uniqueID] === type;
-        else
-            return this._typeTable[place.uniqueID] !== undefined &&
-                   this._typeTable[place.uniqueID] !== null;
+    getPlaceItem(place) {
+        return (
+            this._places.find(
+                (placeItem) => placeItem.place.uniqueID === place.uniqueID
+            ) ?? null
+        );
     }
 
     /**
-     * @param {*} osmType
-     * @param {*} osmId
-     * @returns {number?}
+     * Finds the PlaceStoreItem for the given OSM ID, if any.
+     *
+     * @param {number} osmType
+     * @param {number} osmId
+     * @returns {PlaceStoreItem?} the place store item, or null if it isn't in the store
      */
-    existsWithOsmTypeAndId(osmType, osmId) {
-        let id = osmType + '-' + osmId;
-        if (this._typeTable[id])
-            return this._typeTable[id];
-        else
-            return null;
+    getByOsmId(osmType, osmId) {
+        return (
+            this._places.find(
+                (placeItem) =>
+                    placeItem.place.osmType === osmType &&
+                    placeItem.place.osmId === osmId
+            )?.place.osmType ?? null
+        );
     }
 
     /**
      * @param {(item: PlaceStoreItem) => boolean} evalFunc
+     * @private
      */
     _removeIf(evalFunc) {
-        for (let i = 0; i < this._places.length;) {
+        for (let i = 0; i < this._places.length; ) {
             const placeItem = this._places[i];
             if (evalFunc(placeItem)) {
                 this._places.splice(i, 1);
@@ -327,66 +357,69 @@ export class PlaceStore extends GObject.Object {
             }
         }
     }
-
-    /** @param {Place} place */
-    updatePlace(place) {
-        this._places.forEach((placeItem) => {
-            if (placeItem.place.uniqueID === place.uniqueID) {
-                placeItem.added = new Date();
-                this._store();
-                return;
-            }
-        });
-    }
-
-    /**
-     * @param {Place[]} places
-     */
-    getCompletedPlaces(places) {
-        let completedPlaces = [];
-
-        places.forEach((place) => {
-            let type;
-
-            if (this.exists(place, PlaceStore.PlaceType.RECENT))
-                type = PlaceStore.PlaceType.RECENT;
-            else if (this.exists(place, PlaceStore.PlaceType.FAVORITE))
-                type = PlaceStore.PlaceType.FAVORITE;
-            else
-                type = PlaceStore.PlaceType.ANY;
-
-            completedPlaces.push({ place: place, type: type });
-        });
-
-        return completedPlaces;
-    }
 }
 
-GObject.registerClass({
-    Implements: [Gio.ListModel],
-    Properties: {
-        'item-type': GObject.param_spec_gtype('item-type', '', '', GObject.Object, GObject.ParamFlags.READABLE),
-        'n-items': GObject.ParamSpec.uint('n-items', '', '', GObject.ParamFlags.READABLE, 0, GLib.MAXUINT32, 0),
-    }
-}, PlaceStore);
+GObject.registerClass(
+    {
+        Implements: [Gio.ListModel],
+        Properties: {
+            "item-type": GObject.param_spec_gtype(
+                "item-type",
+                "",
+                "",
+                GObject.Object,
+                GObject.ParamFlags.READABLE
+            ),
+            "n-items": GObject.ParamSpec.uint(
+                "n-items",
+                "",
+                "",
+                GObject.ParamFlags.READABLE,
+                0,
+                GLib.MAXUINT32,
+                0
+            ),
+        },
+    },
+    PlaceStore
+);
 
 export class PlaceStoreItem extends GObject.Object {
+    /** @enum {number} */
+    static PlaceType = {
+        PLACE: 1,
+        ROUTE: 2,
+    };
+
     /**
+     * @param {PlaceStore} store
      * @param {{
-        * place: Place,
-        * type: number,
-        * added?: Date,
-        * language?: string,
-        * originalJSON?: Object,
+     *   place: Place,
+     *   type: number,
+     *   updated?: Date,
+     *   viewOrd?: number,
      * }} params
      */
-    constructor({place, type, added, language, originalJSON}) {
+    constructor(store, place, { isFavorite, updated, viewOrd } = {}) {
         super();
+
+        /** @type {PlaceStore} @private */
+        this._store = store;
+        /** @type {Place} @private */
         this._place = place;
-        this._type = type;
-        this._added = added ?? new Date();
-        this._language = language;
-        this._originalJSON = originalJSON;
+        /** @type {boolean} @private */
+        this._isFavorite = isFavorite ?? false;
+        /** @type {Date} @private */
+        this._updated = updated ?? new Date();
+        /** @type {number} @private */
+        this._viewOrd = viewOrd ?? store._nextViewOrd++;
+    }
+
+    isStale() {
+        let now = new Date().getTime();
+        let days = Math.abs(now - this.updated.getTime()) / _ONE_DAY;
+
+        return days >= _STALE_THRESHOLD;
     }
 
     /** @type {Place} */
@@ -394,36 +427,76 @@ export class PlaceStoreItem extends GObject.Object {
         return this._place;
     }
 
-    get type() {
-        return this._type;
+    set place(place) {
+        this._place = place;
+        this._store.markDirty();
+    }
+
+    get isFavorite() {
+        return this._isFavorite;
+    }
+
+    set isFavorite(isFavorite) {
+        this._isFavorite = isFavorite;
+        this._store.markDirty();
     }
 
     /** @type {Date} */
-    get added() {
-        return this._added;
+    get updated() {
+        return this._updated;
     }
 
-    set added(added) {
-        this._added = added;
+    set updated(updated) {
+        this._updated = updated;
+        this._store.markDirty();
     }
 
-    /** @type {string?} */
-    get language() {
-        return this._language;
+    /** @type {Date} */
+    get viewOrd() {
+        return this._viewOrd;
     }
 
-    set language(language) {
-        this._language = language;
+    updateViewed() {
+        this._viewOrd = this._store.nextViewOrd();
+        this._store.markDirty();
     }
 
     toJSON() {
+        const type =
+            this._place instanceof StoredRoute
+                ? PlaceStoreItem.PlaceType.ROUTE
+                : PlaceStoreItem.PlaceType.PLACE;
+
         return {
             ...this._originalJSON,
             place: this._place.toJSON(),
-            type: this._type,
-            added: this._added.getTime(),
-            language: this._language,
+            type,
+            isFavorite: this._isFavorite,
+            updated: this._updated.getTime(),
+            viewOrd: this._viewOrd,
+        };
+    }
+
+    static fromJSON(store, json) {
+        let place;
+        switch (json.place?.type) {
+            case PlaceStoreItem.PlaceType.PLACE:
+                place = Place.fromJSON(json.place);
+                break;
+            case PlaceStoreItem.PlaceType.ROUTE:
+                place = StoredRoute.fromJSON(json.place);
+                break;
+            default:
+                return null;
         }
+
+        const result = new PlaceStoreItem(store, place, {
+            isFavorite: json.isFavorite,
+            updated: new Date(json.updated),
+        });
+        result._viewOrd = json.viewOrd;
+        result._originalJSON = json;
+        return result;
     }
 }
 

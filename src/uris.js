@@ -89,6 +89,7 @@ export function parseAsCoordinateURL(url) {
 /**
  * For URLs addressing a specific OSM object (node, way, or relation),
  * returns [type,id], otherwise [].
+ * @returns {[string, number] | []}
  */
 export function parseAsObjectURL(url) {
     if (url.match(OSM_URL_REGEX)) {

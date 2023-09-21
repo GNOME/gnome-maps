@@ -136,6 +136,7 @@ export class Application extends Adw.Application {
         try {
             Application.placeStore.load();
         } catch (e) {
+            logError(e);
             log('Failed to parse Maps places file, ' +
                 'subsequent writes will overwrite the file!');
         }

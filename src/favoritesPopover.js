@@ -35,7 +35,7 @@ export class FavoritesPopover extends Gtk.Popover {
         this._mapView = mapView;
         this._rows = 0;
 
-        const filter = Gtk.CustomFilter.new((placeItem) => placeItem.type === PlaceStore.PlaceType.FAVORITE);
+        const filter = Gtk.CustomFilter.new((placeItem) => placeItem.isFavorite);
         this._model = new Gtk.FilterListModel({ model: Application.placeStore, filter });
         this.connect('show', () => filter.changed(Gtk.FilterChange.DIFFERENT));
 
@@ -87,7 +87,7 @@ export class FavoritesPopover extends Gtk.Popover {
         let rows = 0;
         for (let i = 0; i < this._model.n_items; i++) {
             const placeItem = this._model.get_item(i);
-            let row = new PlaceListRow({ place: placeItem.place, can_focus: true });
+            let row = new PlaceListRow({ placeItem, can_focus: true });
             this._list.insert(row, -1);
             rows++;
         }

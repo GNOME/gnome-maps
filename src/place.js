@@ -69,6 +69,7 @@ export class Place extends GObject.Object {
         this._country = params.country;
         this._countryCode = params.country_code;
         this._continent = params.continent;
+        this._originalJson = params.originalJson;
 
         this.updateFromTags(params);
 
@@ -464,13 +465,16 @@ export class Place extends GObject.Object {
                              right: this.boundingBox.right };
         }
 
-        let location = { latitude: this.location.latitude,
-                         longitude: this.location.longitude,
-                         altitude: this.location.altitude,
-                         accuracy: this.location.accuracy };
+        let location = {
+            latitude: this.location.latitude,
+            longitude: this.location.longitude,
+            altitude: this.location.altitude > -1000000 ? this.location.altitude : undefined,
+            accuracy: this.location.accuracy >= 0 ? this.location.accuracy : undefined,
+        };
 
-        return { id: this.osmId,
-                 osm_type: this.osmType,
+        return { ...this._originalJson,
+                 osmId: this._osmId,
+                 osmType: this._osmType,
                  osmKey: this._osmKey,
                  osmValue: this._osmValue,
                  place_type: this.placeType,
@@ -537,8 +541,12 @@ export class Place extends GObject.Object {
             let prop = obj[key];
 
             switch(key) {
-                case 'id':
+                case 'osmId':
                     props.osm_id = prop;
+                    break;
+
+                case 'osmType':
+                    props.osm_type = prop;
                     break;
 
                 case 'location':
@@ -556,6 +564,7 @@ export class Place extends GObject.Object {
                     break;
             }
         }
+        props.originalJson = obj;
         return new Place(props);
     }
 
@@ -631,10 +640,10 @@ function _parseHttpURL(text, callback) {
     let [type, id] = URIS.parseAsObjectURL(text);
 
     if (type && id) {
-        let storedPlace = Application.placeStore.existsWithOsmTypeAndId(type, id);
+        let storedPlace = Application.placeStore.getByOsmId(Utils.osmTypeFromString(type), id);
 
         if (storedPlace) {
-            callback(storedPlace, null);
+            callback(storedPlace.place, null);
             return;
         }
 

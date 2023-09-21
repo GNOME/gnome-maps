@@ -263,6 +263,15 @@ export function osmTypeToString(osmType) {
     }
 }
 
+export function osmTypeFromString(osmType) {
+    switch(osmType) {
+        case 'node': return GeocodeGlib.PlaceOsmType.NODE;
+        case 'relation': return GeocodeGlib.PlaceOsmType.RELATION;
+        case 'way': return GeocodeGlib.PlaceOsmType.WAY;
+        default: return GeocodeGlib.PlaceOsmType.NODE;
+    }
+}
+
 /**
  * Return a formatted integer number with no
  * fraction, using locale-specific numerals

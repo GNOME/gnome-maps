@@ -48,12 +48,9 @@ export class PlaceButtons extends Gtk.Box {
 
     set place(newPlace) {
         this._place = newPlace;
+
         /* Use the PlaceStore's version of a place, if available. */
-        if (Application.placeStore.exists(newPlace, null)) {
-            this._place = Application.placeStore.get(newPlace);
-        } else {
-            this._place = newPlace;
-        }
+        this._place = Application.placeStore.get(newPlace) ?? newPlace;
 
         this._updateFavoriteButton(!!this._place.store);
 
@@ -85,15 +82,17 @@ export class PlaceButtons extends Gtk.Box {
         let query = Application.routeQuery;
 
         this._favoriteButton.connect('clicked', () => {
-            if (placeStore.exists(this._place,
-                                  PlaceStore.PlaceType.FAVORITE)) {
+            let placeItem = placeStore.getPlaceItem(this._place);
+
+            if (placeItem && placeItem.isFavorite) {
                 this._favoriteButton.icon_name = 'non-starred-symbolic';
-                placeStore.removePlace(this._place,
-                                       PlaceStore.PlaceType.FAVORITE);
+                placeItem.isFavorite = false;
             } else {
+                if (!placeItem) {
+                    placeItem = placeStore.addPlace(this._place);
+                }
+                placeItem.isFavorite = true;
                 this._favoriteButton.icon_name = 'starred-symbolic';
-                placeStore.addPlace(this._place,
-                                    PlaceStore.PlaceType.FAVORITE);
             }
         });
 
@@ -120,15 +119,10 @@ export class PlaceButtons extends Gtk.Box {
     }
 
     _updateFavoriteButton(visible) {
-        let placeStore = Application.placeStore;
         this._favoriteButton.visible = visible;
 
-        if (placeStore.exists(this._place,
-                              PlaceStore.PlaceType.FAVORITE)) {
-            this._favoriteButton.icon_name = 'starred-symbolic';
-        } else {
-            this._favoriteButton.icon_name = 'non-starred-symbolic';
-        }
+        const place = Application.placeStore.getPlaceItem(this._place);
+        this._favoriteButton.icon_name = place?.isFavorite ? 'starred-symbolic' : 'non-starred-symbolic';
     }
 
     _onEditClicked() {
