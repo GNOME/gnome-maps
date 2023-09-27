@@ -58,7 +58,7 @@ export function getService() {
         return _getServiceFromFile(serviceOverride);
 
     let user_agent = 'gnome-maps/' + pkg.version;
-    let session = new Soup.Session({ user_agent : user_agent });
+    let session = new Soup.Session({ user_agent: user_agent, timeout: 10 });
     let msg = Soup.Message.new('GET', _SERVICE_URL);
     try {
         let stream = Gio.DataInputStream.new(session.send(msg, null));
