@@ -194,7 +194,7 @@ export class Overpass {
         while (i < results.length - 1) {
             let p1 = results[i];
             let p2 = results[i + 1];
-            let distance = p1.location.get_distance_from(p2.location);
+            let distance = p1.location.get_distance_from(p2.location) * 1000;
 
             if (distance < _POI_DEDUPLICATION_DISTANCE && p1.name === p2.name)
                 results.splice(i + 1, 1);
