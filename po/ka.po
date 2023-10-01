@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2023-07-23 11:54+0000\n"
-"PO-Revision-Date: 2023-07-28 07:59+0200\n"
+"POT-Creation-Date: 2023-09-28 20:02+0000\n"
+"PO-Revision-Date: 2023-10-01 10:47+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <(nothing)>\n"
 "Language: ka\n"
@@ -28,7 +28,7 @@ msgstr ""
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
 #: data/ui/main-window.ui:27 src/application.js:61 src/mainWindow.js:143
-#: src/mainWindow.js:577
+#: src/mainWindow.js:591
 msgid "Maps"
 msgstr "რუკები"
 
@@ -42,14 +42,18 @@ msgid ""
 "quickly find the place you’re looking for by searching for a city or street, "
 "or locate a place to meet a friend."
 msgstr ""
+"Maps მთელი დედამიწის რუკებთან სწრაფ წვდომას გაძლევთ. ის საშუალებას გაძლევთ, "
+"სწრაფად იპოვოთ ადგილი, რომელსაც ეძებთ, ქალაქით, ქუჩით ან რამე სხვა პირობით."
 
 #: data/org.gnome.Maps.appdata.xml.in.in:14
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
 msgstr ""
+"Maps ღია კოდის მქონე OpenStreetmap ბაზას იყენებს, რომელიც მთელი მსოფლიოდან, "
+"ასობით ათასი ადამიანის მიერ იქნება."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:369 src/mainWindow.js:574
+#: data/org.gnome.Maps.appdata.xml.in.in:414 src/mainWindow.js:588
 msgid "The GNOME Project"
 msgstr "პროექტი \"GNOME\""
 
@@ -88,7 +92,7 @@ msgstr "შემობრუნება"
 
 #: data/org.gnome.Maps.gschema.xml:22
 msgid "Map rotation in radians"
-msgstr ""
+msgstr "რუკის მობრუნება რადიანებში"
 
 #: data/org.gnome.Maps.gschema.xml:26
 msgid "Map type"
@@ -246,12 +250,12 @@ msgstr "ძებნა"
 #: data/ui/help-overlay.ui:27
 msgctxt "shortcut window"
 msgid "Explore points-of-interest"
-msgstr ""
+msgstr "ღირსშესანიშნაობების დათვალიერება"
 
 #: data/ui/help-overlay.ui:33
 msgctxt "shortcut window"
 msgid "Show last search results"
-msgstr ""
+msgstr "ბოლო ძებნის შედეგების ჩვენება"
 
 #: data/ui/help-overlay.ui:39
 msgctxt "shortcut window"
@@ -296,7 +300,7 @@ msgstr "საათის ისრის მიმართულებით 
 #: data/ui/help-overlay.ui:86
 msgctxt "shortcut window"
 msgid "Rotate counter-clockwise"
-msgstr ""
+msgstr "საათის საწინააღმდეგო მიმართულებით შემობრუნება"
 
 #: data/ui/help-overlay.ui:92
 msgctxt "shortcut window"
@@ -332,8 +336,12 @@ msgstr "მოხაზულობის ფენის გახსნა"
 msgid "Show Scale"
 msgstr "მასშტაბის ჩვენება"
 
-#. Translators: This string uses ellipsis character
 #: data/ui/layers-popover.ui:16
+msgid "Enable Experimental Map"
+msgstr "ექსპერიმენტული რუკის ჩართვა"
+
+#. Translators: This string uses ellipsis character
+#: data/ui/layers-popover.ui:21
 msgid "Open Shape Layer…"
 msgstr "მოხაზულობის ფენის გახსნა…"
 
@@ -371,12 +379,16 @@ msgid ""
 "Help to improve the map, using an\n"
 "OpenStreetMap account."
 msgstr ""
+"დაგვეხმარეთ რუკის გაუმჯობესებაში\n"
+"OpenStreetMap-ის ანგარიშის გამოყენებით."
 
 #: data/ui/osm-account-dialog.ui:52
 msgid ""
 "Sign in to authorize access in a web browser.\n"
 "Then fill in the obtained verification code here in the next step."
 msgstr ""
+"შედით წვდომის ავტორიზაციის ბრაუზერში გასავლელად.\n"
+"შემდეგ კი, შემდეგ ნაბიჯში, მიღებული გადამოწმების კოდი შეიყვანეთ."
 
 #: data/ui/osm-account-dialog.ui:67
 msgid "Sign In"
@@ -385,6 +397,8 @@ msgstr "შესვლა"
 #: data/ui/osm-account-dialog.ui:111
 msgid "Copy verification code shown when authorizing access in the browser"
 msgstr ""
+"დააკოპირეთ გადამოწმების კოდი, რომელსაც ბრაუზერში წვდომის ავტორიზაციისას "
+"გაჩვენებთ"
 
 #: data/ui/osm-account-dialog.ui:121
 msgid "Verification code"
@@ -449,12 +463,14 @@ msgid ""
 "Map changes will be visible on all maps that use\n"
 "OpenStreetMap data."
 msgstr ""
+"რუკის ცვლილებები ხილული იქნება ყველა რუკაზე, რომელიც\n"
+"OpenStreetMap-ის მონაცემებს იყენებს."
 
 #: data/ui/osm-edit-dialog.ui:186
 msgid "Recently Used"
 msgstr "ახლახანს _გამოყენებული"
 
-#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:533
+#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:541
 msgid "Cancel"
 msgstr "გაუქმება"
 
@@ -472,11 +488,11 @@ msgstr "ვიკიმონაცემების ჭდე"
 
 #: data/ui/osm-edit-wikipedia.ui:32
 msgid "Load Wikidata tag for article"
-msgstr ""
+msgstr "ვიკიმონაცემების ჭდის ჩატვირთვა სტატიისთვის"
 
 #: data/ui/place-popover.ui:23 src/searchBar.js:54
 msgid "Explore Nearby Places"
-msgstr ""
+msgstr "ახლომდებარე ადგილების დათვალიერება"
 
 #: data/ui/place-popover.ui:82 src/application.js:274
 msgid "No results found"
@@ -538,16 +554,27 @@ msgid ""
 "Names and brands shown are to be considered as registered trademarks when "
 "applicable."
 msgstr ""
+"მარშრუტიზაციის მარშრუტები საზოგადოებრივი ტრანზიტისთვის უზრუნველყოფილია "
+"მესამე მხარის მიერ\n"
+"მომსახურება.\n"
+"GNOME ვერ უზრუნველყოფს ნაჩვენები მარშრუტებისა და გრაფიკების სისწორეს.\n"
+"გაითვალისწინეთ, რომ ზოგიერთი პროვაიდერი შეიძლება არ შეიცავდეს "
+"ტრანსპორტირების ყველა ხელმისაწვდომ რეჟიმს,\n"
+"მაგალითად, ეროვნული პროვაიდერი შეიძლება არ მოიცავდეს ავიაკომპანიებს და "
+"ადგილობრივ პროვაიდერს შეუძლია\n"
+"მის რეგიონალური მატარებლები.\n"
+"ნაჩვენები სახელები და ბრენდები უნდა ჩაითვალოს რეგისტრირებულ სავაჭრო "
+"ნიშნებად, როდესაც ეს შესაძლებელია."
 
 #. Translators: This is a tooltip
 #: data/ui/transit-leg-row.ui:98
 msgid "Hide intermediate stops and information"
-msgstr ""
+msgstr "შუალედური გაჩერებებისა და ინფორმაციის დამალვა"
 
 #. Translators: This is a tooltip
 #: data/ui/transit-leg-row.ui:156
 msgid "Show intermediate stops and information"
-msgstr ""
+msgstr "შუალედური გაჩერებებისა და ინფორმაციის ჩვენება"
 
 #. Indicates searching for the next available itineraries
 #: data/ui/transit-options-panel.ui:16
@@ -625,10 +652,10 @@ msgstr "მდებარეობის გაზიარება"
 
 #: data/ui/poi-category-goback-row.ui:22
 msgid "Back to Main Categories"
-msgstr ""
+msgstr "მთავარ კატეგორიებზე დაბრუნება"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:15 src/mapView.js:1113
+#: data/ui/zoom-and-rotate-controls.ui:15 src/mapView.js:1121
 msgid "Zoom In"
 msgstr "გა_დიდება"
 
@@ -665,11 +692,11 @@ msgstr "მომხმარებლის ელემენტის პო�
 
 #: src/application.js:74
 msgid "A path to a local tiles directory structure"
-msgstr ""
+msgstr "ბილიკი ლოკალური ფილების საქაღალდის სტრუქტურამდე"
 
 #: src/application.js:80
 msgid "Tile size for local tiles directory"
-msgstr ""
+msgstr "ფილის ზომა ლოკალური ფილების საქაღალდისთვის"
 
 #: src/application.js:84
 msgid "Show the version of the program"
@@ -695,7 +722,7 @@ msgstr "რუკის არასწორი URI: %s"
 #: src/exportViewDialog.js:74
 #, javascript-format
 msgid "Maps at %f, %f.png"
-msgstr ""
+msgstr "რუკები მისამართზე %f, %f.png"
 
 #: src/exportViewDialog.js:153
 msgid "Unable to export view"
@@ -729,100 +756,102 @@ msgstr "დაწყება!"
 msgid "All Layer Files"
 msgstr "ფენის ყველა ფაილი"
 
-#: src/mainWindow.js:457
+#: src/mainWindow.js:468
 msgid "Failed to connect to location service"
 msgstr "მდებარეობის სერვისთან მიერთების შეცდომა"
 
-#: src/mainWindow.js:462
+#: src/mainWindow.js:473
 msgid "Turn on location services"
 msgstr "მდებარეობის სერვისების ჩართვა"
 
-#: src/mainWindow.js:463
+#: src/mainWindow.js:474
 msgid "Location Settings"
 msgstr "მდებარეობის მორგება"
 
-#: src/mainWindow.js:575
+#: src/mainWindow.js:589
 msgid "translator-credits"
 msgstr "temuri doghonadze"
 
-#: src/mainWindow.js:579
+#: src/mainWindow.js:593
 msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
 
-#: src/mainWindow.js:595
+#: src/mainWindow.js:609
 #, javascript-format
 msgid "Map data by %s and contributors"
-msgstr ""
+msgstr "რუკის მონაცემების ავტორია %s და მოხალისეები"
 
-#: src/mainWindow.js:596
+#: src/mainWindow.js:610
 msgid "Map Data Provider"
-msgstr ""
+msgstr "რუკის მონაცემების მომწოდებელი"
 
-#: src/mainWindow.js:608
+#: src/mainWindow.js:622
 msgid "Map Tile Provider"
-msgstr ""
+msgstr "რუკის ფილების მომწოდებელი"
 
 #. Translators: this is an attribution string giving credit to the
 #. * tile provider where the %s placeholder is replaced by either
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:616
+#: src/mainWindow.js:630
 #, javascript-format
 msgid "Map tiles provided by %s"
-msgstr ""
+msgstr "რუკის ფილებს ავტორია %s"
 
-#: src/mainWindow.js:646
+#: src/mainWindow.js:660
 msgid "Search Provider"
 msgstr "საძიებო სისტემა"
 
-#: src/mainWindow.js:649
+#: src/mainWindow.js:663
 #, javascript-format
 msgid "Search provided by %s using %s"
-msgstr ""
+msgstr "ძებნა მოწოდებულია %s-ის მიერ %s-ის გამოყენებით"
 
-#: src/mapView.js:507 src/mapView.js:572
+#: src/mapView.js:515 src/mapView.js:580
 msgid "Failed to open layer"
 msgstr "ფენის გახსნის შეცდომა"
 
-#: src/mapView.js:526
+#: src/mapView.js:534
 msgid "Do you want to continue?"
 msgstr "გნებავთ, გააგრძელოთ?"
 
-#: src/mapView.js:527
+#: src/mapView.js:535
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
 "time to load"
 msgstr ""
+"აპირებთ, გახსნათ ფაილები ჯამური ზომით %s მბ. ამას საკმაოდ დრო შეიძლება, "
+"დასჭირდეს"
 
-#: src/mapView.js:534 src/transitplugins/openTripPlanner.js:1207
+#: src/mapView.js:542 src/transitplugins/openTripPlanner.js:1207
 msgid "Continue"
 msgstr "გაგრძელება"
 
-#: src/mapView.js:566
+#: src/mapView.js:574
 msgid "File type is not supported"
 msgstr "ფაილის ტიპი მხარდაუჭერელია"
 
-#: src/mapView.js:603
+#: src/mapView.js:611
 msgid "Failed to open GeoURI"
 msgstr "GeoURI-ის გახსნის შეცდომა"
 
-#: src/mapView.js:1072
+#: src/mapView.js:1080
 msgid "Nothing found here!"
 msgstr "ვერაფერი ვიპოვე!"
 
-#: src/mapView.js:1112
+#: src/mapView.js:1120
 msgid "Zoom in to add location"
 msgstr "მდებარეობის დასამატებლად დააპატარავეთ"
 
-#: src/mapView.js:1133
+#: src/mapView.js:1141
 msgid "Location was added in OpenStreetMap"
 msgstr "ადგილი დაემატა OpenStreetMap-ზე"
 
 #: src/osmAccountDialog.js:134
 msgid "The verification code didn’t match, please try again."
-msgstr ""
+msgstr "გადამოწმების კოდი არ დაემთხვა. თავიდან სცადეთ."
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
@@ -844,7 +873,7 @@ msgstr "ობიექტი ვერ ვიპოვე"
 
 #: src/osmConnection.js:343
 msgid "Conflict, someone else has just modified the object"
-msgstr ""
+msgstr "კონფლიქტი. ვიღაცამ ახლახანს ობიექტი შეცვალა"
 
 #: src/osmConnection.js:345
 msgid "Object has been deleted"
@@ -852,7 +881,7 @@ msgstr "ობიექტი წაიშალა"
 
 #: src/osmConnection.js:347
 msgid "Way or relation refers to non-existing children"
-msgstr ""
+msgstr "ურთიერთობა ან გზა არარსებულ შვილებს მიმართავს"
 
 #: src/osmEditDialog.js:106
 msgid "Name"
@@ -879,6 +908,8 @@ msgid ""
 "The official website. Try to use the most basic form of a URL i.e. http://"
 "example.com instead of http://example.com/index.html."
 msgstr ""
+"ოფიციალური ვებგვერდი. სცადეთ, გამოიყენოთ ბმულის ყველაზე მარტივი ფორმა. მაგ: "
+"http://example.com http://example.com/index.html-ის მაგიერ."
 
 #: src/osmEditDialog.js:130
 msgid "Phone"
@@ -889,6 +920,9 @@ msgid ""
 "Phone number. Use the international format, starting with a + sign. Beware "
 "of local privacy laws, especially for private phone numbers."
 msgstr ""
+"ტელეფონის ნომერი. გამოიყენეთ საერთაშორისო ფორმატი, რომელიც + ნიშნით იწყება. "
+"ფრთხილად იყავით ადგილობრივ კონფიდენციალობის კანონებთან, განსაკუთრებით პირად "
+"ნომრებთან დაკავშირებით."
 
 #: src/osmEditDialog.js:139 src/placeView.js:294
 msgid "E-mail"
@@ -899,12 +933,16 @@ msgid ""
 "This is not a valid e-mail address. Make sure to not include the mailto: "
 "protocol prefix."
 msgstr ""
+"ეს არასწორი ელფოსტის მისამართია. დარწმუნდით, რომ ის არ შეიცავს mailto: "
+"პროტოკოლის პრეფიქსს."
 
 #: src/osmEditDialog.js:145
 msgid ""
 "Contact e-mail address for inquiries. Add only email addresses that are "
 "intended to be publicly used."
 msgstr ""
+"კონტაქტის ელფოსტა დასაკავშირებლად. დაამატეთ მხოლოდ ის ელფოსტის მისამართები, "
+"რომლებიც საჯაროდ გამოყენებისთვისაა განკუთვნილი."
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
@@ -918,7 +956,7 @@ msgstr "სამუშაო საათები"
 
 #: src/osmEditDialog.js:161
 msgid "See the link in the label for help on format."
-msgstr ""
+msgstr "ფორმატზე დახმარებისთვის იხილეთ ბმული ჭდეზე."
 
 #. TODO: this is a bit of a work-around to re-interpret the population,
 #. * stored as a string into an integer to convert back to a locale-
@@ -958,7 +996,7 @@ msgstr "შეზღუდული"
 
 #: src/osmEditDialog.js:181
 msgid "Designated"
-msgstr ""
+msgstr "სპეციალიზებული"
 
 #: src/osmEditDialog.js:184
 msgid "Internet access"
@@ -1094,6 +1132,9 @@ msgid ""
 "an element, the author’s intent when creating it, or hints for further "
 "improvement."
 msgstr ""
+"ინფორმაცია, რომელიც გამოიყენება სხვა მერუკეებისთვის ელემენტის შესახებ "
+"არატრივიალური ინფორმაციის მისაწოდებლად, ავტორის მიზანი მისი შექმნისას ან "
+"მინიშნებები მომავალი გაუმჯობესებებისთვის."
 
 #: src/osmEditDialog.js:339
 msgctxt "dialog title"
@@ -1113,14 +1154,18 @@ msgid ""
 "The format used should include the language code and the article title like "
 "“en:Article title”."
 msgstr ""
+"გამოყენებული ფორმატი ენის კოდს და სტატიის სათაურს უნდა შეიცავდეს \"en:"
+"Article title\"."
 
 #: src/osmEditDialog.js:824
 msgid "Use the reload button to load the Wikidata tag for the selected article"
 msgstr ""
+"გამოიყენეთ თავიდან ჩატვირთვის ღილაკი მონიშნული სტატიისთვის ვიკიმონაცემების "
+"ჭდის ჩასატვირთად"
 
 #: src/osmEditDialog.js:832
 msgid "Couldn't find Wikidata tag for article"
-msgstr ""
+msgstr "სტატიისთვის ვიკიმონაცემების ჭდე ვერ ვიპოვე"
 
 #: src/photonUtils.js:118
 msgid "Unnamed place"
@@ -1586,11 +1631,11 @@ msgstr "%s-დან %s-მდე"
 
 #: src/printOperation.js:49
 msgid "Loading map tiles for printing"
-msgstr ""
+msgstr "იტვირთება რუკის ფილები დასაბეჭდად"
 
 #: src/printOperation.js:50
 msgid "You can abort printing if this takes too long"
-msgstr ""
+msgstr "თუ ბეჭდვას დიდი დრო დასჭირდა, ის შეგიძლიათ, გააუქმოთ"
 
 #: src/printOperation.js:52
 msgid "Abort printing"
@@ -1636,15 +1681,15 @@ msgid "failed to load file"
 msgstr "ფაილის ჩატვირთვის შეცდომა"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:325
+#: src/sidebar.js:329
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "დარჩენილი დრო: %s"
 
-#: src/sidebar.js:395
+#: src/sidebar.js:399
 #, javascript-format
 msgid "Itineraries provided by %s"
-msgstr ""
+msgstr "მარშრუტების მომწოდებელია %s"
 
 #. Translators: this is a format string indicating instructions
 #. * starting a journey at the address given as the parameter
@@ -1717,11 +1762,11 @@ msgstr "%b %e"
 
 #: src/transitPlan.js:170
 msgid "No timetable data found for this route."
-msgstr ""
+msgstr "ამ გზისთვის დროის ცხრილის მონაცემები აღმოჩენილი არაა."
 
 #: src/transitPlan.js:178
 msgid "No provider found for this route."
-msgstr ""
+msgstr "ამ გზისთვის მომწოდებელი აღმოჩენილი არაა."
 
 #. Translators: this is a format string for showing a departure and
 #. * arrival time, like:
@@ -1948,7 +1993,7 @@ msgstr "%s ფტ"
 
 #: src/transitplugins/goMetro.js:61
 msgid "This plugin doesn't support latest arrival"
-msgstr ""
+msgstr "ამ დამატებას ბოლოს მისვლის მხარდაჭერა არ გააჩნია"
 
 #: src/transitplugins/openTripPlanner.js:1205
 #, javascript-format
