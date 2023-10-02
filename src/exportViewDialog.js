@@ -85,17 +85,21 @@ export class ExportViewDialog extends Gtk.Dialog {
     }
 
     _onFileChooserClicked() {
-        let folderChooser = new Gtk.FileChooserNative();
+        let initialFolder = Gio.File.new_for_path(this._folder)
+        let folderChooser =
+            new Gtk.FileDialog({ title: _("Select Folder"),
+                                 initial_folder: initialFolder });
 
-        folderChooser.set_current_folder(Gio.File.new_for_path(this._folder));
-        folderChooser.connect('response',
-                              (widget, response) => {
-            if (response === Gtk.ResponseType.ACCEPT)
-                this._onFolderChanged(folderChooser.get_current_folder().get_path());
+        folderChooser.select_folder(this, null, (chooser, result) => {
+            try {
+                const folder = folderChooser.select_folder_finish(result);
 
-            folderChooser.destroy();
+                if (folder)
+                    this._onFolderChanged(folder.get_path());
+            } catch (e) {
+                // if dialog is cancelled, use the default folder
+            }
         });
-        folderChooser.show();
     }
 
     _onFileNameChanged() {
