@@ -45,10 +45,22 @@ install_data(
 	install_dir: join_paths(datadir, 'glib-2.0', 'schemas')
 )
 
+# get current date, used as build date
+today = 'unknown'
+date = find_program('date', required: false)
+if date.found()
+  r = run_command(date, '-I')
+  if r.returncode() == 0
+    today = r.stdout().strip()
+  endif
+endif
+
 appdata = app_id + '.appdata.xml'
 appdata_config = configuration_data()
 appdata_config.set('app-id', app_id)
 appdata_config.set('gettext-package', 'gnome-maps')
+appdata_config.set('build-date', today)
+appdata_config.set('release-version', meson.project_version())
 appdata_file = i18n.merge_file(
 	input: configure_file(
 		input: 'org.gnome.Maps.appdata.xml.in.in',
