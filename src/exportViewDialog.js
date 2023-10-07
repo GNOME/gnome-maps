@@ -25,6 +25,7 @@ import GObject from 'gi://GObject';
 import Graphene from 'gi://Graphene';
 import Gsk from 'gi://Gsk';
 import Gtk from 'gi://Gtk';
+import Pango from 'gi://Pango';
 
 import * as Utils from './utils.js';
 
@@ -139,6 +140,26 @@ export class ExportViewDialog extends Gtk.Dialog {
         this._paintable.snapshot(snapshot,
                                  this._paintable.get_intrinsic_width(),
                                  this._paintable.get_intrinsic_height());
+
+        // render license text
+        const pCtx = this._mapView.create_pango_context();
+        const layout = Pango.Layout.new(pCtx);
+
+        layout.set_markup(this._mapView.mapSource.license, -1);
+
+        const [textWidth, textHeight] = layout.get_pixel_size();
+        const textRect = new Graphene.Rect();
+        const textPoint = new Graphene.Point();
+
+        textRect.init(this._width - textWidth, this._height - textHeight,
+                      textWidth, textHeight);
+        textPoint.init(this._width - textWidth, this._height - textHeight);
+
+        snapshot.append_color(new Gdk.RGBA({ red: 1, green: 1, blue: 1, alpha: 0.5 }),
+                              textRect);
+        snapshot.translate(textPoint);
+        snapshot.append_layout(layout,
+                               new Gdk.RGBA({ red: 0, green: 0, blue: 0, alpha: 1 }));
 
         let node = snapshot.to_node();
         let renderer = this._mapView.get_native().get_renderer();
