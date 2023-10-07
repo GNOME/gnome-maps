@@ -142,7 +142,6 @@ export class MapView extends Gtk.Overlay {
 
         this.child = this.map;
 
-        this._initLicense();
         this.setMapType(mapType ?? this._getStoredMapType());
 
         this._initScale();
@@ -255,10 +254,14 @@ export class MapView extends Gtk.Overlay {
     _initScale() {
         let showScale = Application.settings.get('show-scale');
 
-        this._scale = new Shumate.Scale({ visible:  showScale,
-                                          viewport: this.map.viewport,
-                                          halign:   Gtk.Align.START,
-                                          valign:   Gtk.Align.END });
+        this._scale = new Shumate.Scale({ visible:       showScale,
+                                          viewport:      this.map.viewport,
+                                          halign:        Gtk.Align.START,
+                                          valign:        Gtk.Align.END,
+                                          margin_start:  6,
+                                          margin_end:    6,
+                                          margin_top:    6,
+                                          margin_bottom: 6 });
 
         if (Utils.getMeasurementSystem() === Utils.METRIC_SYSTEM)
             this._scale.unit = Shumate.Unit.METRIC;
@@ -266,12 +269,6 @@ export class MapView extends Gtk.Overlay {
             this._scale.unit = Shumate.Unit.IMPERIAL;
 
         this.add_overlay(this._scale);
-    }
-
-    _initLicense() {
-        this._license = new Shumate.License({ halign: Gtk.Align.END,
-                                              valign: Gtk.Align.END });
-        this.add_overlay(this._license);
     }
 
     _initMap() {
@@ -484,9 +481,6 @@ export class MapView extends Gtk.Overlay {
 
         this._mapLayer = mapLayer;
 
-        if (this._mapSource)
-            this._license.remove_map_source(this._mapSource);
-        this._license.append_map_source(mapSource);
         this.map.viewport.set_reference_map_source(mapSource);
 
         this._mapSource = mapSource;

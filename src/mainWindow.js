@@ -106,14 +106,20 @@ export class MainWindow extends Adw.ApplicationWindow {
             hexpand: true,
             vexpand: true });
 
+        /* couldn't get the CSS styling to apply to the licemse widget
+         * when defining it in the .ui defintion
+         */
+        this._license = new Shumate.License({ halign: Gtk.Align.END,
+                                              valign: Gtk.Align.START });
+        this._licenseRevealer.child = this._license;
+
+        // init license for the initial map source
+        this._license.append_map_source(this._mapView.mapSource);
+        this._revealLicense();
         this._mapOverlay.child = this._mapView;
 
         this._mapOverlay.add_overlay(
-            new ZoomAndRotateControls({ mapView: this._mapView,
-                                        halign:  Gtk.Align.START,
-                                        valign:  Gtk.Align.START,
-                                        margin_start: 6,
-                                        margin_top: 6 }));
+            new ZoomAndRotateControls({ mapView: this._mapView }));
 
         this._mapView.gotoUserLocation(false);
 
@@ -201,6 +207,34 @@ export class MainWindow extends Adw.ApplicationWindow {
 
             return this._mapView.openShapeLayers(list);
         });
+    }
+
+    _revealLicense() {
+        this._licenseRevealer.reveal_child = true;
+
+        if (this._licenseRevealerTimeoutId)
+            GLib.source_remove(this._licenseRevealerTimeoutId);
+
+        this._licenseRevealerTimeoutId = GLib.timeout_add(null, 10000, () => {
+            this._licenseRevealer.reveal_child = false;
+            this._licenseRevealerTimeoutId = 0;
+
+            return false;
+        });
+    }
+
+    _setMapType(mapType) {
+        const mapSource = this._mapView.mapSource;
+
+        // remove previous map source from license
+        if (mapSource)
+            this._license.remove_map_source(mapSource);
+
+        this._mapView.setMapType(mapType);
+
+        // set license for new map source
+        this._license.append_map_source(this._mapView.mapSource);
+        this._revealLicense();
     }
 
     _initActions() {
@@ -298,7 +332,7 @@ export class MainWindow extends Adw.ApplicationWindow {
                 onChangeState: (action, variant) => {
                     action.set_state(variant);
                     const state = variant.get_boolean();
-                    this._mapView.setMapType(state ? MapView.MapType.VECTOR : MapView.MapType.STREET);
+                    this._setMapType(state ? MapView.MapType.VECTOR : MapView.MapType.STREET);
                 }
             };
         }
@@ -311,6 +345,7 @@ export class MainWindow extends Adw.ApplicationWindow {
         this.connect('notify::default-width', () => this._onSizeChanged());
         this.connect('notify::default-height', () => this._onSizeChanged());
         this.connect('notify::maximized', () => this._onMaximizedChanged());
+        this.connect('notify::is-active', () => this._onIsActiveChanged());
 
         let viewport = this._mapView.map.viewport;
 
@@ -322,6 +357,28 @@ export class MainWindow extends Adw.ApplicationWindow {
                          this._updateZoomButtonsSensitivity.bind(this));
 
         this._updateZoomButtonsSensitivity();
+    }
+
+    _onIsActiveChanged() {
+        if (this._inactiveId) {
+            GLib.source_remove(this._inactiveId);
+            this._inactiveId = 0;
+        }
+
+        /* reveal the license when the window gets active if it has
+         * been inactive for at least 10 s inbetween
+         */
+        if (this.is_active) {
+            if (this._isIdle)
+                this._revealLicense();
+            this._isIdle = false;
+        } else {
+            this._inactiveId = GLib.timeout_add(null, 10000, () => {
+                this._isIdle = true;
+                this._inactiveId = 0;
+                return false;
+            });
+        }
     }
 
     _updateZoomButtonsSensitivity() {
@@ -551,13 +608,13 @@ export class MainWindow extends Adw.ApplicationWindow {
     }
 
     _onStreetViewActivate() {
-        this._mapView.setMapType(MapView.MapType.STREET);
+        this._setMapType(MapView.MapType.STREET);
     }
 
     _onAerialViewActivate() {
         // don't attempt to switch to aerial if we don't have tiles for it
         if (Service.getService().tiles.aerial) {
-            this._mapView.setMapType(MapView.MapType.AERIAL);
+            this._setMapType(MapView.MapType.AERIAL);
         }
     }
 
@@ -698,5 +755,6 @@ GObject.registerClass({
                         'overlay',
                         'mapOverlay',
                         'splitView',
-                        'breakpoint' ]
+                        'breakpoint',
+                        'licenseRevealer']
 }, MainWindow);

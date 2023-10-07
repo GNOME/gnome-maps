@@ -64,7 +64,15 @@
                         <property name="show-sidebar">False</property>
                         <property name="pin-sidebar">True</property>
                         <property name="content">
-                          <object class="GtkOverlay" id="mapOverlay"/>
+                          <object class="GtkOverlay" id="mapOverlay">
+                            <child type="overlay">
+                              <object class="GtkRevealer" id="licenseRevealer">
+                                <property name="transition-type">crossfade</property>
+                                <property name="halign">end</property>
+                                <property name="valign">start</property>
+                              </object>
+                            </child>
+                          </object>
                         </property>
                         <layout>
                           <property name="column">0</property>
