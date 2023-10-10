@@ -165,10 +165,10 @@ export class MainWindow extends Adw.ApplicationWindow {
         });
 
         let popover = searchBar.popover;
-        popover.connect('selected', () => this._mapView.grab_focus());
+        popover.connect('selected', () => this._mapView.map.grab_focus());
 
         this._buttonPressGesture = new Gtk.GestureSingle();
-        this._mapView.add_controller(this._buttonPressGesture);
+        this._mapView.map.add_controller(this._buttonPressGesture);
         this._buttonPressGesture.connect('begin', () => popover.popdown());
         return searchBar;
     }
@@ -357,7 +357,6 @@ export class MainWindow extends Adw.ApplicationWindow {
 
         this._searchBar = this._createSearchBar();
         this._headerBar.title_widget = this._searchBar;
-        this._searchBar.placeEntry.grab_focus();
 
         Application.geoclue.connect('notify::state',
                                     this._updateLocationSensitivity.bind(this));
@@ -570,6 +569,8 @@ export class MainWindow extends Adw.ApplicationWindow {
 
         if (reveal)
             this._splitView.sidebar.focusStartEntry();
+        else
+            this._mapView.map.grab_focus();
     }
 
     _setRevealSidebar(value) {
