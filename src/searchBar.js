@@ -44,6 +44,7 @@ export class SearchBar extends Gtk.Grid {
                                             popoverParent: this,
                                             placeholder_text: _("Search") });
         this.attach(this._placeEntry, 0, 0, 1, 1);
+        this._placeEntry.set_key_capture_widget(this._mapView.map);
 
         /* looks like we need to create the button in code as well, since
          * the place entry is created here and added after the template
