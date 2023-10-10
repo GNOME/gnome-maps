@@ -195,9 +195,17 @@ export class MapView extends Gtk.Overlay {
         this._contextMenu = new Gtk.PopoverMenu({ menu_model: menuModel, has_arrow: false });
         this._contextMenu.set_parent(this);
 
-        this._clickGesture = new Gtk.GestureClick({ button: Gdk.BUTTON_SECONDARY });
-        this._clickGesture.connect('pressed', this._onClickGesturePressed.bind(this));
-        this.map.add_controller(this._clickGesture);
+        this._primaryClickGesture =
+            new Gtk.GestureClick({ button: Gdk.BUTTON_PRIMARY });
+        this._primaryClickGesture.connect('pressed',
+                                          this._onPrimaryClick.bind(this));
+        this.map.add_controller(this._primaryClickGesture);
+
+        this._secondaryClickGesture =
+            new Gtk.GestureClick({ button: Gdk.BUTTON_SECONDARY });
+        this._secondaryClickGesture.connect('pressed',
+                                            this._onSecondaryClick.bind(this));
+        this.map.add_controller(this._secondaryClickGesture);
 
         this._longPressGesture = new Gtk.GestureLongPress({ touch_only: true });;
         this._longPressGesture.connect('pressed',
@@ -989,7 +997,15 @@ export class MapView extends Gtk.Overlay {
         this.emit('marker-selected', selectedMarker);
     }
 
-    _onClickGesturePressed(gesture, n_presses, x, y) {
+    _onPrimaryClick(gesture, n_presses, x, y) {
+        if (n_presses > 1)
+            return;
+
+        this.map.grab_focus();
+        gesture.set_state(Gtk.EventSequenceState.CLAIMED);
+    }
+
+    _onSecondaryClick(gesture, n_presses, x, y) {
         if (n_presses > 1) {
             gesture.set_state(Gtk.EventSequenceState.DENIED);
             return;
