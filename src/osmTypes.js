@@ -68,6 +68,55 @@ function _lookupTitle(item) {
     return null;
 }
 
+export function getAllTypes() {
+    let map = {};
+    map['aeroway'] = [];
+    map['amenity'] = [];
+    map['leisure'] = [];
+    map['office'] = [];
+    map['place'] = [];
+    map['shop'] = [];
+    map['tourism'] = [];
+
+    for (let type in OSM_TYPE_MAP) {
+        let item = OSM_TYPE_MAP[type];
+        let [title, normalizedTitle] = _lookupTitle(item);
+        let parts = type.split('/');
+
+        let tag = parts[0];
+
+        if (tag === 'aeroway') {
+            map['aeroway'].push(title);
+        }
+
+        if (tag === 'amenity') {
+            map['amenity'].push(title);
+        }
+
+        if (tag === 'leisure') {
+            map['leisure'].push(title);
+        }
+
+        if (tag === 'office') {
+            map['office'].push(title);
+        }
+
+        if (tag === 'place') {
+            map['place'].push(title);
+        }
+
+        if (tag === 'shop') {
+            map['shop'].push(title);
+        }
+
+        if (tag === 'tourism') {
+            map['tourism'].push(title);
+        }
+    }
+
+    return map;
+}
+
 export function findMatches(prefix, maxMatches) {
     let numMatches = 0;
     let prefixLength = prefix.length;
