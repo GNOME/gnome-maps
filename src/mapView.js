@@ -1226,11 +1226,9 @@ export class MapView extends Gtk.Overlay {
             return;
         }
 
-        let dialog =
-            osmEdit.createEditNewDialog(this._mainWindow,
-                                        this._latitude, this._longitude);
+        let dialog = osmEdit.createEditNewDialog(this._latitude, this._longitude);
 
-        dialog.show();
+        dialog.present(this._mainWindow);
         dialog.connect('response', (dialog, response) => {
             dialog.destroy();
             if (response === OSMEditDialog.Response.UPLOADED) {
