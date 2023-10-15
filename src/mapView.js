@@ -1226,14 +1226,11 @@ export class MapView extends Gtk.Overlay {
             return;
         }
 
-        let dialog =
-            osmEdit.createEditNewDialog(this._mainWindow,
-                                        this._latitude, this._longitude);
+        let dialog = osmEdit.createEditNewDialog(this._latitude, this._longitude);
 
-        dialog.show();
-        dialog.connect('response', (dialog, response) => {
-            dialog.destroy();
-            if (response === OSMEditDialog.Response.UPLOADED) {
+        dialog.present(this._mainWindow);
+        dialog.connect('closed', () => {
+            if (dialog.response === OSMEditDialog.Response.UPLOADED) {
                 this._mainWindow.showToast(_("Location was added in OpenStreetMap"));
             }
         });
