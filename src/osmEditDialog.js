@@ -29,15 +29,17 @@ import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
+import Adw from 'gi://Adw';
 
+import * as Address from './address.js';
 import {Application} from './application.js';
 import GnomeMaps from 'gi://GnomeMaps';
 import {OSMConnection} from './osmConnection.js';
 import * as OSMTypes from './osmTypes.js';
-import {OSMTypeSearchEntry} from './osmTypeSearchEntry.js';
 import * as OSMUtils from './osmUtils.js';
 import * as Utils from './utils.js';
 import * as Wikipedia from './wikipedia.js';
+import {OSMDiscardDialog} from './osmDiscardDialog.js';
 
 /*
  * enumeration representing
@@ -45,12 +47,13 @@ import * as Wikipedia from './wikipedia.js';
  * field types
  */
 const EditFieldType = {
-    TEXT:             0,
-    INTEGER:          1,
-    UNSIGNED_INTEGER: 2,
-    COMBO:            3,
-    ADDRESS:          4,
-    WIKIPEDIA:        5
+    TYPE:             0,
+    TEXT:             1,
+    INTEGER:          2,
+    UNSIGNED_INTEGER: 3,
+    COMBO:            4,
+    ADDRESS:          5,
+    WIKIPEDIA:        6,
 };
 
 const _WIKI_BASE = 'https://wiki.openstreetmap.org/wiki/Key:';
@@ -101,440 +104,293 @@ var _osmEmailRewriteFunc = function(text) {
  * subtags: Used by a complex composite OSM tag.
  * rows: Number of rows needed if != 1 (Currently only for ADDRESS).
  */
+
 const OSM_FIELDS = [
     {
-        name: _("Name"),
-        tag: 'name',
-        type: EditFieldType.TEXT,
-        hint: _("The official name. This is typically what appears on signs.")
+        title: _("General"),
+        fields: [
+            {
+                title: _("Name"),
+                tag: 'name',
+                type: EditFieldType.TEXT
+            },
+            {
+                title: _("Type"),
+                tag: 'type',
+                type: EditFieldType.TYPE
+            },
+            {
+                title: _("Address"),
+                tag: 'addr',
+                subtags: [
+                    'addr:street',
+                    'addr:housenumber',
+                    'addr:postcode',
+                    'addr:city'
+                ],
+                type: EditFieldType.ADDRESS
+            }
+        ]
     },
     {
-        name: _("Address"),
-        tag: 'addr',
-        subtags: ['addr:street', 'addr:housenumber',
-                  'addr:postcode', 'addr:city'],
-        type: EditFieldType.ADDRESS,
-        rows: 2
+        title: _("Contact"),
+        fields: [
+            {
+                title: _("Opening Hours"),
+                tag: 'opening_hours',
+                type: EditFieldType.TEXT,
+                placeHolder: 'Mo-Fr 08:00-20:00; Sa-Su 10:00-14:00'
+            },
+            {
+                title: _("Phone"),
+                tag: 'phone',
+                type: EditFieldType.TEXT,
+                rewriteFunc: _osmPhoneRewriteFunc
+            },
+            {
+                title: _("Email"),
+                tag: 'email',
+                type: EditFieldType.TEXT,
+                validate: Utils.isValidEmail,
+                rewriteFunc: _osmEmailRewriteFunc
+            },
+            {
+                title: _("Website"),
+                tag: 'website',
+                type: EditFieldType.TEXT,
+                validate: Utils.isValidWebsite
+            }
+        ]
     },
     {
-        name: _("Website"),
-        tag: 'website',
-        type: EditFieldType.TEXT,
-        validate: Utils.isValidWebsite,
-        validateError: _("This is not a valid URL. Make sure to include http:// or https://."),
-        hint: _("The official website. Try to use the most basic form " +
-                "of a URL i.e. http://example.com instead of " +
-                "http://example.com/index.html.")
+        title: _("Accessibility"),
+        fields: [
+            {
+                title: _("Wheelchair Access"),
+                tag: 'wheelchair',
+                type: EditFieldType.COMBO,
+                options: [['yes', _("Yes")],
+                          ['no', _("No")],
+                          ['limited', _("Limited")],
+                          ['designated', _("Designated")]]
+            },
+            {
+                title: _("Internet Access"),
+                tag: 'internet_access',
+                type: EditFieldType.COMBO,
+                options: [['yes', _("Yes")],
+                          ['no', _("No")],
+                          ['wlan', _("Wi-Fi")],
+                          ['wired', _("Wired")],
+                          ['terminal', _("Terminal")],
+                          ['service', _("Service")]]
+            }
+        ]
     },
     {
-        name: _("Phone"),
-        tag: 'phone',
-        type: EditFieldType.TEXT,
-        rewriteFunc: _osmPhoneRewriteFunc,
-        hint: _("Phone number. Use the international format, " +
-                "starting with a + sign. Beware of local privacy " +
-                "laws, especially for private phone numbers.")
-    },
-    {
-        name: _("Email"),
-        tag: 'email',
-        type: EditFieldType.TEXT,
-        validate: Utils.isValidEmail,
-        rewriteFunc: _osmEmailRewriteFunc,
-        validateError: _("This is not a valid email address. Make sure to not include the mailto: protocol prefix."),
-        hint: _("Contact email address for inquiries. " +
-                "Add only email addresses that are intended to be publicly used.")
-    },
-    {
-        name: _("Wikipedia"),
-        tag: 'wiki',
-        subtags: ['wikipedia',
-                  'wikidata'],
-        type: EditFieldType.WIKIPEDIA
-    },
-    {
-        name: _("Opening hours"),
-        tag: 'opening_hours',
-        type: EditFieldType.TEXT,
-        placeHolder: 'Mo-Fr 08:00-20:00; Sa-Su 10:00-14:00',
-        includeHelp: true,
-        hint: _("See the link in the label for help on format.")
-    },
-    {
-        name: _("Population"),
-        tag: 'population',
-        type: EditFieldType.UNSIGNED_INTEGER
-    },
-    {
-        name: _("Altitude"),
-        tag: 'ele',
-        type: EditFieldType.INTEGER,
-        hint: _("Elevation (height above sea level) of a point in meters.")
-    },
-    {
-        name: _("Wheelchair access"),
-        tag: 'wheelchair',
-        type: EditFieldType.COMBO,
-        options: [['yes', _("Yes")],
-                  ['no', _("No")],
-                  ['limited', _("Limited")],
-                  ['designated', _("Designated")]]
-    },
-    {
-        name: _("Internet access"),
-        tag: 'internet_access',
-        type: EditFieldType.COMBO,
-        options: [['yes', _("Yes")],
-                  ['no', _("No")],
-                  ['wlan', _("Wi-Fi")],
-                  ['wired', _("Wired")],
-                  ['terminal', _("Terminal")],
-                  ['service', _("Service")]]
-    },
-    {
-        name: _("Takeout"),
-        tag:  'takeaway',
-        type: EditFieldType.COMBO,
-        options: [['yes', _("Yes")],
-                  ['no', _("No")],
-                  ['only', _("Only")]]
-    },
-    {
-        name: _("Religion"),
-        tag: 'religion',
-        type: EditFieldType.COMBO,
-        options: [['animist', _("Animism")],
-                  ['bahai', _("Bahá’í")],
-                  ['buddhist', _("Buddhism")],
-                  ['caodaism', _("Caodaism")],
-                  ['christian', _("Christianity")],
-                  ['confucian', _("Confucianism")],
-                  ['hindu', _("Hinduism")],
-                  ['jain', _("Jainism")],
-                  ['jewish', _("Judaism")],
-                  ['muslim', _("Islam")],
-                  ['multifaith', _("Multiple Religions")],
-                  ['pagan', _("Paganism")],
-                  ['pastafarian', _("Pastafarianism")],
-                  ['scientologist', _("Scientology")],
-                  ['shinto', _("Shinto")],
-                  ['sikh', _("Sikhism")],
-                  ['spiritualist', _("Spiritualism")],
-                  ['taoist', _("Taoism")],
-                  ['unitarian_universalist', _("Unitarian Universalism")],
-                  ['voodoo', _("Voodoo")],
-                  ['yazidi', _("Yazidism")],
-                  ['zoroastrian', _("Zoroastrianism")]]
-    },
-    {
-        name: _("Toilets"),
-        tag: 'toilets',
-        type: EditFieldType.COMBO,
-        options: [['yes', _("Yes")],
-                  ['no', _("No")]]
-    },
-    {
-        name: _("Note"),
-        tag: 'note',
-        type: EditFieldType.TEXT,
-        hint: _("Information used to inform other mappers about non-obvious information about an element, the author’s intent when creating it, or hints for further improvement.")
-    }];
+        title: _("Miscellaneous"),
+        fields: [
+            {
+                title: _("Wikipedia"),
+                tag: 'wiki',
+                subtags: ['wikipedia',
+                          'wikidata'],
+                type: EditFieldType.WIKIPEDIA
+            },
+            {
+                title: _("Population"),
+                tag: 'population',
+                type: EditFieldType.UNSIGNED_INTEGER
+            },
+            {
+                title: _("Altitude"),
+                subtitle: _("Elevation above sea level, in meters"),
+                tag: 'ele',
+                type: EditFieldType.INTEGER,
+            },
 
-class OSMEditAddress extends Gtk.Grid {
-
-    constructor({street, number, postCode, city, ...params}) {
-        super(params);
-
-        if (street)
-            this.street.text = street;
-
-        if (number)
-            this.number.text = number;
-
-        if (postCode)
-            this.post.text = postCode;
-
-        if (city)
-            this.city.text = city;
+            {
+                title: _("Takeout"),
+                tag:  'takeaway',
+                type: EditFieldType.COMBO,
+                options: [['yes', _("Yes")],
+                          ['no', _("No")],
+                          ['only', _("Only")]]
+            },
+            {
+                title: _("Religion"),
+                tag: 'religion',
+                type: EditFieldType.COMBO,
+                options: [['animist', _("Animism")],
+                          ['bahai', _("Bahá’í")],
+                          ['buddhist', _("Buddhism")],
+                          ['caodaism', _("Caodaism")],
+                          ['christian', _("Christianity")],
+                          ['confucian', _("Confucianism")],
+                          ['hindu', _("Hinduism")],
+                          ['jain', _("Jainism")],
+                          ['jewish', _("Judaism")],
+                          ['muslim', _("Islam")],
+                          ['multifaith', _("Multiple Religions")],
+                          ['pagan', _("Paganism")],
+                          ['pastafarian', _("Pastafarianism")],
+                          ['scientologist', _("Scientology")],
+                          ['shinto', _("Shinto")],
+                          ['sikh', _("Sikhism")],
+                          ['spiritualist', _("Spiritualism")],
+                          ['taoist', _("Taoism")],
+                          ['unitarian_universalist', _("Unitarian Universalism")],
+                          ['voodoo', _("Voodoo")],
+                          ['yazidi', _("Yazidism")],
+                          ['zoroastrian', _("Zoroastrianism")]]
+            },
+            {
+                title: _("Note"),
+                tag: 'note',
+                type: EditFieldType.TEXT,
+            }
+        ]
     }
-}
+];
 
-GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/osm-edit-address.ui',
-    Children: [ 'street',
-                'number',
-                'post',
-                'city' ],
-}, OSMEditAddress);
-
-class OSMEditWikipedia extends Gtk.Grid {
-
-    constructor({article, wikidata, ...params}) {
-        super(params);
-
-        if (article)
-            this.article.text = article;
-
-        if (wikidata)
-            this.wikidata.text = wikidata;
-
-        if (article && !Wikipedia.isValidWikipedia(article))
-            this.article.get_style_context().add_class("warning");
-        else
-            this.article.get_style_context().remove_class("warning");
-
-        if (wikidata && !Wikipedia.isValidWikidata(wikidata))
-            this.wikidata.get_style_context().add_class("warning");
-        else
-            this.wikidata.get_style_context().remove_class("warning");
-
-        this.refresh.sensitive = !!article;
-    }
-}
-
-GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/osm-edit-wikipedia.ui',
-    Children: [ 'article',
-                'wikidata',
-                'refresh' ]
-}, OSMEditWikipedia);
-
-export class OSMEditDialog extends Gtk.Dialog {
+export class OSMEditDialog extends Adw.Dialog {
     static Response = {
-        UPLOADED: 0,
-        DELETED: 1,
-        CANCELLED: 2,
-        ERROR: 3
+        NONE:      0,
+        UPLOADED:  1,
+        DELETED:   2,
+        CANCELLED: 3,
+        ERROR:     4
     };
 
     constructor({place, addLocation, latitude, longitude, ...params}) {
-        super({...params, use_header_bar: true});
+        super(params);
 
-        /* I could not get this widget working from within the widget template
-         * this results in a segfault. The widget definition is left in-place,
-         * but commented-out in the template file */
-        this._typeSearch = new OSMTypeSearchEntry();
-        this._typeSearchGrid.attach(this._typeSearch, 0, 0, 1, 1);
-        this._typeSearch.visible = true;
-        this._typeSearch.can_focus = true;
-
-        let typeSearchPopover = this._typeSearch.popover;
-        typeSearchPopover.connect('selected', (o, k, v, t) => {
-            this._onTypeSelected(o, k, v, t);
-        });
+        this._latitude = latitude ?? place.location.latitude;
+        this._longitude = longitude ?? place.location.longitude;
 
         this._cancellable = new Gio.Cancellable();
-        this._cancellable.connect(() => this.response(OSMEditDialog.Response.CANCELLED));
 
-        this.connect('response', () => this._cancellable.cancel());
-        this.connect('close-request', () => this._cancellable.cancel());
+        this.connect('closed', () => this._cancellable.cancel());
+        this.connect('close-attempt', () => {
+            this._showDiscardDialog();
+        });
+
+        this._typeSearchEntry.connect('changed',
+                                      () => { this._onTypeSearchChanged(); });
+
+        [this._shopButton, this._placeButton, this._tourismButton,
+         this._officeButton, this._amenityButton, this._leisureButton,
+         this._aerowayButton].forEach((button) => {
+            button.connect('toggled',
+                           () =>this._loadAllTypes(this._getSelectedTags()));
+         });
+
+        this._continueButton.connect('clicked', () => {
+            this._navigationView.push_by_tag('upload');
+            this._uploadNotesTextview.grab_focus();
+            this._isEditing = false;
+        });
+
+        this._submitButton.connect('clicked', () => this._submit());
+
+        this._uploadNotesTextview.buffer.connect('changed', (buffer) => {
+            if (buffer.text !== '') {
+                this._submitButton.sensitive = true;
+            } else {
+                this._submitButton.sensitive = false;
+            }
+        });
 
         this._isEditing = false;
-        this._nextButton.connect('clicked', () => this._onNextClicked());
-        this._cancelButton.connect('clicked', () => this._onCancelClicked());
-        this._backButton.connect('clicked', () => this._onBackClicked());
-        this._typeButton.connect('clicked', () => this._onTypeClicked());
+
+        this._recentTypeRows = [];
 
         if (addLocation) {
-            this._headerBar.title = C_("dialog title", "Add to OpenStreetMap");
-            this._typeLabel.visible = true;
-            this._typeButton.visible = true;
+            this._editorStatusPage.title = C_("dialog heading", "Add Location");
 
             /* the OSMObject ID, version, and changeset ID is unknown for now */
-            let newNode =
-                GnomeMaps.OSMNode.new(0, 0, 0, longitude, latitude);
-            /* set a placeholder name tag to always get a name entry for new
-             * locations */
-            newNode.set_tag('name', '');
+            let newNode = GnomeMaps.OSMNode.new(0, 0, 0, longitude, latitude);
             this._loadOSMData(newNode);
             this._isEditing = true;
             this._osmType = GeocodeGlib.PlaceOsmType.NODE;
+
+            // set the title and description for adding a POI
+            this._editorStatusPage.title = _("Add Location"),
+            this._editorStatusPage.description = _("Add a new location to OpenStreetMap")
         } else {
             this._osmType = place.osmType;
             Application.osmEdit.fetchObject(place,
                                             this._onObjectFetched.bind(this),
                                             this._cancellable);
         }
+    }
 
-        /* store original title of the dialog to be able to restore it when
-         * coming back from type selection */
-        this._originalTitle = this._headerBar.title;
-        this._updateRecentTypesList();
+    _onTypeSearchChanged() {
+        let text = this._typeSearchEntry.get_text();
 
-        this._recentTypesListBox.set_header_func((row, previous) => {
-            if (previous)
-                row.set_header(new Gtk.Separator());
-        });
+        if (text.length === 0) {
+            this._loadAllTypes(this._getSelectedTags());
+        }
 
-        this._recentTypesListBox.connect('row-activated', (listbox, row) => {
-            this._onTypeSelected(null, row._key, row._value, row._title);
+        if (text.length >= 1) {
+
+            for (const tag of Object.getOwnPropertyNames(OSMTypes.TYPE_TAG_TITLES)) {
+                if (text.localeCompare(gettext.gettext(OSMTypes.TYPE_TAG_TITLES[tag]),
+                                       undefined, { sensitivity: 'base' }) === 0) {
+                    this._typeList.add_css_class('boxed-list');
+                    this._loadAllTypes([tag]);
+
+                    return;
+                }
+            }
+
+            const matches =
+                OSMTypes.findMatches(text, 10, this._getSelectedTags());
+
+            this._typeList.remove_all();
+            this._recentTypesList.visible = false;
+
+            if (matches.length > 0) {
+                this._typeList.add_css_class('boxed-list');
+
+                for (let m of matches) {
+                    let row = this._addTypeRow(m.key, m.value, m.title);
+
+                    this._typeList.append(row);
+                }
+            } else {
+                this._typeList.remove_css_class('boxed-list');
+            }
+        }
+    }
+
+    _showDiscardDialog() {
+        const dialog = new OSMDiscardDialog();
+
+        dialog.present(this);
+        dialog.connect('response', (dialog, response) => {
+            if (response === 'discard') {
+                this.response = OSMEditDialog.Response.CANCELLED;
+                this._cancellable.cancel();
+
+                this.can_close = true;
+                this.close();
+            }
         });
     }
 
-    _onNextClicked() {
+    _submit() {
         if (this._isEditing) {
-            this._switchToUpload();
-        } else {
-            this._stack.visible_child_name = 'loading';
-            this._nextButton.sensitive = false;
-            this._backButton.sensitive = false;
-
-            let comment = this._commentTextView.buffer.text;
-            Application.osmEdit.uploadObject(this._osmObject,
-                                             this._osmType, comment,
-                                             this._onObjectUploaded.bind(this));
-        }
-    }
-
-    _onTypeClicked() {
-        this._cancelButton.visible = false;
-        this._backButton.visible = true;
-        this._nextButton.visible = false;
-        this._headerBar.title = _("Select Type");
-        this._stack.visible_child_name = 'select-type';
-    }
-
-    _onTypeSelected(popover, key, value, title) {
-        this._typeValueLabel.label = title;
-        this._updateType(key, value);
-
-        if (popover)
-            popover.hide();
-
-        /* clear out type search entry */
-        this._typeSearch.text = '';
-
-        /* go back to the editing stack page */
-        this._backButton.visible = false;
-        this._cancelButton.visible = true;
-        this._nextButton.visible = true;
-        this._stack.visible_child_name = 'editor';
-        this._headerBar.title = this._originalTitle;
-
-        /* update recent types store */
-        OSMTypes.recentTypesStore.pushType(key, value);
-
-        /* enable the Next button, so that it's possible to just change the type
-         * of an object without changing anything else */
-        this._nextButton.sensitive = true;
-
-        this._updateRecentTypesList();
-    }
-
-    _updateType(key, value) {
-        /* clear out any previous type-related OSM tags */
-        OSMTypes.OSM_TYPE_TAGS.forEach((tag) => this._osmObject.delete_tag(tag));
-
-        this._osmObject.set_tag(key, value);
-    }
-
-    /* update visibility and enable the type selection button if the object has
-     * a well-known type (based on a known set of tags) */
-    _updateTypeButton() {
-        let numTypeTags = 0;
-        let lastTypeTag = null;
-
-        for (let i = 0; i < OSMTypes.OSM_TYPE_TAGS.length; i++) {
-            let key = OSMTypes.OSM_TYPE_TAGS[i];
-            let value = this._osmObject.get_tag(key);
-
-            if (value != null) {
-                numTypeTags++;
-                lastTypeTag = key;
-            }
+            return;
         }
 
-        /* if the object has none of tags set, enable the button and keep the
-         * pre-set "None" label */
-        if (numTypeTags === 0) {
-            this._typeLabel.visible = true;
-            this._typeButton.visible = true;
-        } else if (numTypeTags === 1) {
-            let value = this._osmObject.get_tag(lastTypeTag);
-            let typeTitle = OSMTypes.lookupType(lastTypeTag, value);
+        this._navigationView.push_by_tag('loading');
 
-            /* if the type tag has a value we know of, and possible has
-             * translations for */
-            if (typeTitle != null) {
-                this._typeValueLabel.label = typeTitle;
-                this._typeLabel.visible = true;
-                this._typeButton.visible = true;
-            }
-        }
-    }
 
-    _updateRecentTypesList() {
-        let recentTypes = OSMTypes.recentTypesStore.recentTypes;
-
-        if (recentTypes.length > 0) {
-            let children = [];
-
-            for (let child of this._recentTypesListBox) {
-                if (child instanceof Gtk.ListBoxRow)
-                    children.push(child);
-            }
-
-            for (let child of children) {
-                this._recentTypesListBox.remove(child);
-            }
-
-            this._recentTypesLabel.visible = true;
-            this._recentTypesListBox.visible = true;
-
-            for (let i = 0; i < recentTypes.length; i++) {
-                let key = recentTypes[i].key;
-                let value = recentTypes[i].value;
-                let title = OSMTypes.lookupType(key, value);
-
-                let grid = new Gtk.Grid({visible: true,
-                                         margin_top: 6, margin_bottom: 6,
-                                         margin_start: 12, margin_end: 12});
-                let label = new Gtk.Label({visible: true, halign: Gtk.Align.START,
-                                           label: title});
-
-                label.get_style_context().add_class('dim-label');
-
-                grid.attach(label, 0, 0, 1, 1);
-
-                this._recentTypesListBox.insert(grid, -1);
-
-                let row = this._recentTypesListBox.get_row_at_index(i);
-
-                row._title = title;
-                row._key = key;
-                row._value = value;
-            }
-        } else {
-            this._recentTypesLabel.visible = false;
-            this._recentTypesListBox.visible = false;
-        }
-    }
-
-    _switchToUpload() {
-        this._stack.set_visible_child_name('upload');
-        this._nextButton.label = _("_Done");
-        this._nextButton.use_underline = true;
-        this._cancelButton.visible = false;
-        this._backButton.visible = true;
-        this._cancelButton.visible = false;
-        this._isEditing = false;
-        this._commentTextView.grab_focus();
-    }
-
-    _onCancelClicked() {
-        this.response(OSMEditDialog.Response.CANCELLED);
-    }
-
-    _onBackClicked() {
-        this._backButton.visible = false;
-        this._cancelButton.visible = true;
-        this._nextButton.visible = true;
-        this._nextButton.label = _("Next");
-        this._stack.set_visible_child_name('editor');
-        this._isEditing = true;
-        this._commentTextView.buffer.text = '';
-        this._typeSearch.text = '';
-        this._headerBar.title = this._originalTitle;
+        let comment = this._uploadNotesTextview.buffer.text;
+        Application.osmEdit.uploadObject(this._osmObject,
+                                         this._osmType, comment,
+                                         this._onObjectUploaded.bind(this));
     }
 
     _onObjectFetched(success, status, osmObject, osmType, error) {
@@ -548,11 +404,17 @@ export class OSMEditDialog extends Gtk.Dialog {
 
     _onObjectUploaded(success, status) {
         if (success) {
-            this.response(OSMEditDialog.Response.UPLOADED);
+            this.response = OSMEditDialog.Response.UPLOADED;
+            // show changes submitted toast, unless it was a new object
+            if (this._osmObject.id !== 0)
+                Application.application.mainWindow.showToast(_("Changes successfully submitted"));
         } else {
             this._showError(status);
-            this.response(OSMEditDialog.Response.ERROR);
+            this.response = OSMEditDialog.Response.ERROR;
         }
+
+        this.can_close = true;
+        this.close();
     }
 
     _showError(status, error) {
@@ -561,435 +423,565 @@ export class OSMEditDialog extends Gtk.Dialog {
         let statusMessage =
             error ? error.message : OSMConnection.getStatusMessage(status);
 
-        this.transient_for.showToast(statusMessage);
-        this.response(OSMEditDialog.Response.ERROR);
+        Application.application.mainWindow.showToast(statusMessage);
+        this.response = OSMEditDialog.Response.ERROR;
     }
 
-    /* GtkContainer.child_get_property doesn't seem to be usable from GJS */
-    _getRowOfDeleteButton(button) {
-        for (let row = 1; row < this._currentRow; row++) {
-            let label = this._editorGrid.get_child_at(0, row);
-            let deleteButton = this._editorGrid.get_child_at(2, row);
+    _getSelectedTags() {
+        const selected =
+            [this._shopButton.active ? 'shop' : null,
+             this._placeButton.active ? 'place' : null,
+             this._tourismButton.active ? 'tourism' : null,
+             this._officeButton.active ? 'office' : null,
+             this._amenityButton.active ? 'amenity' : null,
+             this._leisureButton.active ? 'leisure' : null,
+             this._aerowayButton.active ? 'aeroway' : null].filter((e) => !!e);
 
-            if (deleteButton === button)
-                return row;
+        return selected.length > 0 ? selected : null;
+    }
+
+    _loadAllTypes(selectedTags) {
+        const map = OSMTypes.getAllTypes();
+
+        this._typeList.remove_all();
+        this._typeList.append(this._noneRow);
+        this._recentTypesList.visible = !selectedTags;
+
+        if (selectedTags) {
+            const types = [];
+
+            for (const tag of selectedTags) {
+                for (const item of map[tag]) {
+                    types.push({ tag:             tag,
+                                 value:           item.value,
+                                 title:           item.title,
+                                 normalizedTitle: item.normalizedTitle });
+                }
+            }
+
+            types.sort((a, b) => a.normalizedTitle.localeCompare(b.normalizedTitle));
+
+            for (const item of types) {
+                const row = this._addTypeRow(item.tag, item.value, item.title);
+
+                this._typeList.append(row);
+            }
+        } else {
+            let currentTag = null;
+            let currentValue = null;
+            for (const tag of OSMTypes.OSM_TYPE_TAGS) {
+                currentValue = this._osmObject.get_tag(tag);
+
+                if (currentValue) {
+                    currentTag = tag;
+                    break;
+                }
+            }
+
+            // insert row for the currently selected type, if found
+            if (currentValue) {
+                const currentTitle =
+                    OSMTypes.lookupType(currentTag, currentValue);
+
+                if (currentTitle) {
+                    const row =
+                        this._addTypeRow(currentTag, currentValue, currentTitle);
+
+                    this._typeList.append(row);
+                }
+            }
+
+            for (const row of this._recentTypeRows) {
+                this._recentTypesList.remove(row);
+            }
+
+            this._recentTypeRows = [];
+
+            // insert recently used types (excluding the currently used one)
+            for (const item of OSMTypes.recentTypesStore.recentTypes) {
+                if (item.key !== currentTag && item.value !== currentValue) {
+                    const title = OSMTypes.lookupType(item.key, item.value);
+                    const row =
+                        this._addTypeRow(item.key, item.value, title);
+
+                    this._recentTypeRows.push(row);
+                    this._recentTypesList.add(row);
+                }
+            }
         }
-
-        return -1;
     }
 
-    _addOSMEditDeleteButton(fieldSpec) {
-        let deleteButton = Gtk.Button.new_from_icon_name('user-trash-symbolic');
-        deleteButton.tooltip_text = _("Remove");
-        let styleContext = deleteButton.get_style_context();
-        let rows = fieldSpec.rows || 1;
+    _addTypeRow(tag, value, title) {
+        let row = new Adw.ActionRow();
+        row.set_use_markup(true);
+        row.title = title ? GLib.markup_escape_text(title, -1) : '';
+        row.subtitle = OSMTypes.getTitleForTag(tag);
 
-        styleContext.add_class('flat');
-        this._editorGrid.attach(deleteButton, 2, this._currentRow, 1, 1);
+        let toggle = new Gtk.CheckButton();
+        toggle.set_valign(Gtk.Align.CENTER);
 
-        deleteButton.connect('clicked', () => {
-            if (fieldSpec.subtags) {
-                fieldSpec.subtags.forEach((key) => this._osmObject.delete_tag(key));
-            } else {
-                this._osmObject.delete_tag(fieldSpec.tag);
+        toggle.set_group(this._noneCheckButton);
+
+        row.add_prefix(toggle);
+        row.set_activatable_widget(toggle);
+
+        if (this._osmObject.get_tag(tag) === value)
+            toggle.active = true;
+
+        toggle.connect('toggled', () => {
+            if (toggle.active) {
+                /* clear out any previous type-related OSM tags */
+                OSMTypes.OSM_TYPE_TAGS.forEach((tag) => this._osmObject.delete_tag(tag));
+
+                this._osmObject.set_tag(tag, value);
+                this._updateTypeRow(title);
+                this.can_close = false;
+                this._continueButton.sensitive = true;
+
+                // store recently used type
+                OSMTypes.recentTypesStore.pushType(tag, value);
             }
-
-            let row = this._getRowOfDeleteButton(deleteButton);
-            for (let i = 0; i < rows; i++) {
-                this._editorGrid.remove_row(row);
-                this._currentRow--;
-            }
-            this._nextButton.sensitive = true;
-            this._updateAddFieldMenu();
         });
 
-        deleteButton.show();
+        return row;
     }
 
-    _addOSMEditLabel(fieldSpec) {
-        let text = fieldSpec.name;
-        if (fieldSpec.includeHelp) {
-            let link = _WIKI_BASE + fieldSpec.tag;
-            text = '<a href="%s" title="%s">%s</a>'.format(link, link, text);
-        }
-        let label = new Gtk.Label({ label: text,
-                                    use_markup: true });
-        label.halign = Gtk.Align.END;
-        label.get_style_context().add_class('dim-label');
-        this._editorGrid.attach(label, 0, this._currentRow, 1, 1);
-        label.show();
+    _getTypeTags() {
+        return OSMTypes.OSM_TYPE_TAGS.filter(t => this._osmObject.get_tag(t));
     }
 
-    _showHintPopover(entry, hint) {
-        if (this._hintPopover && this._hintPopover.visible) {
-            this._hintPopover.popdown();
-            this._hintPopover = null;
+    _loadType() {
+        const typeTags = this._getTypeTags();
+
+        if (typeTags.length === 0) {
+            return _("None");
+        } else if (typeTags.length === 1) {
+            const tag = typeTags[0];
+            const value = this._osmObject.get_tag(tag);
+
+            return OSMTypes.lookupType(tag, value);
         } else {
-            let label = new Gtk.Label({ label: hint });
-            this._hintPopover = new Gtk.Popover({ child: label });
-            this._hintPopover.set_parent(entry);
-            this._hintPopover.popup();
+            return null;
         }
     }
 
-    _validateTextEntry(fieldSpec, entry) {
-        if (fieldSpec.validate) {
+    _addOSMTypeEntry(group, category, subtitle) {
+        const row = new Adw.ActionRow();
+
+        row.title = gettext.gettext(category.title);
+        row.activatable = true;
+        row.add_css_class('property');
+        row.add_suffix(Gtk.Image.new_from_icon_name('go-next-symbolic'));
+        row.accessible_role = 'button';
+
+        row.connect('activated', () => {
+            // clear type search entry and filters
+            this._typeSearchEntry.text = '';
+
+            for (const button of [this._shopButton,
+                                  this._placeButton,
+                                  this._tourismButton,
+                                  this._officeButton,
+                                  this._amenityButton,
+                                  this._leisureButton,
+                                  this._aerowayButton]) {
+                button.freeze_notify();
+                button.active = false;
+                button.thaw_notify();
+            }
+
+            this._loadAllTypes();
+            this._typeSearchEntry.grab_focus();
+            this._navigationView.push_by_tag('type');
+        });
+
+        group.add(row);
+
+        this._typeRow = row;
+        this._updateTypeRow(subtitle);
+    }
+
+    _updateTypeRow(subtitle) {
+        this._typeRow.subtitle = subtitle;
+    }
+
+    _validateTextEntry(category, entry) {
+        if (category.validate) {
             /* also allow empty text without showing the validation warning,
              * since we want to allow clearing out the text to unset a value
              * (equivalent to using the delete button).
              */
-            if (entry.text !== '' && !fieldSpec.validate(entry.text)) {
+            if (entry.text !== '' && !category.validate(entry.text)) {
                 entry.get_style_context().add_class("warning");
+                this._continueButton.sensitive = false;
             } else {
                 entry.get_style_context().remove_class("warning");
+                this._continueButton.sensitive = true;
             }
+        } else {
+            this._continueButton.sensitive = true;
         }
     }
 
-    _addOSMEditTextEntry(fieldSpec, value) {
-        this._addOSMEditLabel(fieldSpec);
+    _addOSMEditTextEntry(group, category, value) {
+        let row = new Adw.EntryRow();
+        row.title = gettext.gettext(category.title);
+        row.text = value;
 
-        let entry = new Gtk.Entry();
-        entry.text = value;
-        entry.hexpand = true;
-        if (fieldSpec.placeHolder)
-            entry.placeholder_text = fieldSpec.placeHolder;
+        if (!this._isEditing && row.text !== '') {
+            this._continueButton.sensitive = true;
+        }
 
-        entry.connect('changed', () => {
-            if (fieldSpec.rewriteFunc) {
-                let rewrittenText = fieldSpec.rewriteFunc(entry.text);
-
-                if (rewrittenText !== entry.text)
-                    entry.text = rewrittenText;
-            }
-
-            this._osmObject.set_tag(fieldSpec.tag, entry.text);
-
-            this._validateTextEntry(fieldSpec, entry);
-
-            this._nextButton.sensitive = true;
-        });
-
-        this._validateTextEntry(fieldSpec, entry);
-
-        if (fieldSpec.hint) {
-            entry.secondary_icon_name = 'dialog-information-symbolic';
-            entry.secondary_icon_tooltip_text = _("More Information");
-            entry.connect('icon-press', (entry, iconPos, event) => {
-                if (fieldSpec.validate && entry.text !== '' &&
-                    !fieldSpec.validate(entry.text)) {
-                    this._showHintPopover(entry, fieldSpec.validateError);
+        row.connect('changed', () => {
+            if (category.tag === 'name') {
+                if (row.text !== '') {
+                    this._continueButton.sensitive = true;
                 } else {
-                    this._showHintPopover(entry, fieldSpec.hint);
+                    this._continueButton.sensitive = false;
                 }
-            });
+            }
+
+            if (category.rewriteFunc) {
+                let rewrittenText = category.rewriteFunc(row.text);
+
+                if (rewrittenText !== row.text)
+                    row.text = rewrittenText;
+            }
+
+            this._osmObject.set_tag(category.tag, row.text);
+            this._validateTextEntry(category, row);
+            this.can_close = false;
+        });
+
+        group.add(row);
+    }
+
+    _addOSMEditIntegerEntry(group, category, value, min, max) {
+        const row = new Adw.SpinRow();
+        const subtitle =
+            category.subtitle ? gettext.gettext(category.subtitle) : '';
+
+        row.title = gettext.gettext(category.title);
+        row.subtitle = subtitle;
+
+        const adjustment = new Gtk.Adjustment();
+
+        adjustment.lower = min;
+        adjustment.upper = max;
+
+        if (!value) {
+            row.add_css_class('dim-spinbutton');
         }
 
-        this._editorGrid.attach(entry, 1, this._currentRow, 1, 1);
-        entry.show();
-        entry.grab_focus();
+        adjustment.value = value ?? 0;
+        adjustment.step_increment = 1;
+        adjustment.page_increment = 10;
+        adjustment.numeric = true;
+        row.adjustment = adjustment;
 
-        /* TODO: should we allow deleting the name field? */
-        this._addOSMEditDeleteButton(fieldSpec);
+        group.add(row);
 
-        this._currentRow++;
+        row.connect('changed', (row) => {
+            row.remove_css_class('dim-spinbutton');
+            this._osmObject.set_tag(category.tag, row.text);
+            this.can_close = false;
+            this._continueButton.sensitive = true;
+        });
     }
 
-    _addOSMEditIntegerEntry(fieldSpec, value, min, max) {
-        this._addOSMEditLabel(fieldSpec);
+    _addOSMEditComboEntry(group, category, value) {
+        let row = new Adw.ComboRow();
+        row.title = gettext.gettext(category.title);
 
-        let spinbutton = Gtk.SpinButton.new_with_range(min, max, 1);
-        spinbutton.value = value;
-        spinbutton.numeric = true;
-        spinbutton.hexpand = true;
-        spinbutton.connect('changed', () => {
-            this._osmObject.set_tag(fieldSpec.tag, spinbutton.text);
-            this._nextButton.sensitive = true;
+        group.add(row);
+
+        let model = new Gtk.StringList();
+
+        let selected = 0;
+
+        model.append(_("Unspecified"));
+        category.options.forEach((options, index) => {
+            const [id, title] = options;
+
+            model.append(gettext.gettext(title));
+
+            if (id === value) {
+                // off by one because this index doesn't account for the 'None' option.
+                selected = index + 1;
+            }
         });
 
-        // TODO: this doesn't work in GTK4, since SpinButton doesn't extend
-        // Entry, maybe put the hint button beside the spin button?
-        /*
-        if (fieldSpec.hint) {
-            spinbutton.secondary_icon_name = 'dialog-information-symbolic';
-            spinbutton.connect('icon-press', (iconPos, event) => {
-                this._showHintPopover(spinbutton, fieldSpec.hint);
-            });
+        row.model = model;
+        row.selected = selected;
+
+        if (value === '') {
+            row.selected = 0;
         }
-        */
 
-        this._editorGrid.attach(spinbutton, 1, this._currentRow, 1, 1);
-        spinbutton.show();
-        spinbutton.grab_focus();
+        row.connect('notify::selected', (row) => {
+            const selected = row.selected;
+            const value = selected === 0 ? '' : category.options[selected - 1][0];
 
-        this._addOSMEditDeleteButton(fieldSpec);
-        this._currentRow++;
+            this._osmObject.set_tag(category.tag, value);
+            this.can_close = false;
+        });
     }
 
-    _addOSMEditComboEntry(fieldSpec, value) {
-        this._addOSMEditLabel(fieldSpec);
+    _addEntrySubrows(title, text) {
+        let row = new Adw.EntryRow();
+        row.title = title;
+        row.text = text ?? '';
 
-        let combobox = new Gtk.ComboBoxText();
-
-        fieldSpec.options.forEach(function(option) {
-            combobox.append(option[0], option[1]);
-        });
-        combobox.active_id = value;
-        combobox.hexpand = true;
-        combobox.connect('changed', () => {
-            this._osmObject.set_tag(fieldSpec.tag, combobox.active_id);
-            this._nextButton.sensitive = true;
-        });
-
-        this._editorGrid.attach(combobox, 1, this._currentRow, 1, 1);
-        combobox.show();
-        combobox.grab_focus();
-
-        this._addOSMEditDeleteButton(fieldSpec);
-        this._currentRow++;
+        return row;
     }
 
-    _addOSMEditAddressEntry(fieldSpec, value) {
-        this._addOSMEditLabel(fieldSpec);
+    _updateAddressSubtitle(row) {
+        const houseNumber = this._osmObject.get_tag('addr:housenumber');
+        const street = this._osmObject.get_tag('addr:street');
+        const city = this._osmObject.get_tag('addr:city');
+        const countryCode =
+            this._osmObject.get_tag('addr:country') ??
+            Utils.getCountryCodeForCoordinates(this._latitude, this._longitude);
+        const streetAddress =
+            houseNumber ?
+            Address.streetAddressForCountryCode(street, houseNumber, countryCode) :
+            street;
 
-        let addr = new OSMEditAddress({ street: value[0],
-                                        number: value[1],
-                                        postCode: value[2],
-                                        city: value[3] });
-        let changedFunc = (function(entry, index) {
-            this._osmObject.set_tag(fieldSpec.subtags[index], entry.text);
-            this._nextButton.sensitive = true;
+        if (streetAddress)
+            row.subtitle = city ? `${streetAddress}, ${city}` : streetAddress;
+        else
+            row.subtitle = '';
+    }
+
+    _addOSMEditAddressEntry(group, category, value) {
+        const [street, number, postCode, city] = value;
+        const row = new Adw.ExpanderRow({ title: _("Address") });
+
+        if (this._isEditing && street !== undefined) {
+            row.add_css_class('property');
+        }
+
+        let streetRow = this._addEntrySubrows(_("Street Name"), street);
+        let numberRow = this._addEntrySubrows(_("House Number"), number);
+        let postcodeRow = this._addEntrySubrows(_("ZIP Code"), postCode);
+        let cityRow = this._addEntrySubrows(_("City"), city);
+
+        row.add_row(streetRow);
+        row.add_row(numberRow);
+        row.add_row(postcodeRow);
+        row.add_row(cityRow);
+
+        this._updateAddressSubtitle(row);
+
+        group.add(row);
+
+        let changedFunc = (function(subrow, index) {
+            this._osmObject.set_tag(category.subtags[index], subrow.text);
+            this._updateAddressSubtitle(row);
+            this.can_close = false;
+            this._continueButton.sensitive = true;
         }).bind(this);
 
-        addr.street.connect('changed', changedFunc.bind(this, addr.street, 0));
-        addr.number.connect('changed', changedFunc.bind(this, addr.number, 1));
-        addr.post.connect('changed', changedFunc.bind(this, addr.post, 2));
-        addr.city.connect('changed', changedFunc.bind(this, addr.city, 3));
-
-        let rows = fieldSpec.rows ?? 1;
-        this._editorGrid.attach(addr, 1, this._currentRow, 1, rows);
-        addr.street.grab_focus();
-        this._addOSMEditDeleteButton(fieldSpec);
-        this._currentRow += rows;
+        streetRow.connect('changed', changedFunc.bind(this, streetRow, 0));
+        numberRow.connect('changed', changedFunc.bind(this, numberRow, 1));
+        postcodeRow.connect('changed', changedFunc.bind(this, postcodeRow, 2));
+        cityRow.connect('changed', changedFunc.bind(this, cityRow, 3));
     }
 
-    _addOSMEditWikipediaEntry(fieldSpec, value) {
-        this._addOSMEditLabel(fieldSpec)
+    _addOSMEditWikipediaEntry(group, category, value) {
+        const article = value[0];
+        const wikidataTag = value[1];
 
-        let wiki = new OSMEditWikipedia({ article:  value[0],
-                                          wikidata: value[1] });
+        const row = new Adw.ExpanderRow();
+        row.title = _("Wikipedia");
 
-        wiki.article.connect('changed', () => {
+        const articleRow = new Adw.EntryRow();
+        articleRow.title = _("Wikipedia Article");
+        articleRow.text = article ?? '';
+
+        const dataRow = new Adw.EntryRow();
+        dataRow.title = _("Wikidata Tag");
+        dataRow.text = wikidataTag ?? '';
+
+        const refreshButton = new Gtk.Button();
+        refreshButton.icon_name = 'view-refresh-symbolic';
+        refreshButton.tooltip_text = _("Load Wikidata tag from article name");
+        refreshButton.valign = Gtk.Align.CENTER;
+        refreshButton.add_css_class('flat');
+        refreshButton.add_css_class('circular');
+
+        dataRow.add_suffix(refreshButton);
+
+        row.add_row(articleRow);
+        row.add_row(dataRow);
+
+        group.add(row);
+
+        articleRow.connect('changed', (row) => {
             let rewrittenText =
-                OSMUtils.getWikipediaOSMArticleFormatFromUrl(wiki.article.text);
+                OSMUtils.getWikipediaOSMArticleFormatFromUrl(row.text);
 
             if (rewrittenText)
-                wiki.article.text = rewrittenText;
+                row.text = rewrittenText;
 
-            if (wiki.article.text !== '' &&
-                !Wikipedia.isValidWikipedia(wiki.article.text)) {
-                wiki.article.get_style_context().add_class("warning");
+            if (row.text !== '' &&
+                !Wikipedia.isValidWikipedia(row.text)) {
+                row.add_css_class('warning');
             } else {
-                wiki.article.get_style_context().remove_class("warning");
+                row.remove_css_class('warning');
+                this._continueButton.sensitive = true;
             }
 
-            this._osmObject.set_tag(fieldSpec.subtags[0], wiki.article.text);
-            this._nextButton.sensitive = true;
-            wiki.refresh.sensitive = !!wiki.article.text;
+            this._osmObject.set_tag(category.subtags[0], row.text);
+            refreshButton.sensitive = !!row.text;
+            this.can_close = false;
         });
 
-        wiki.wikidata.connect('changed', () => {
+        dataRow.connect('changed', (row) => {
             let rewrittenText =
-                OSMUtils.getWikidataFromUrl(wiki.wikidata.text);
+                OSMUtils.getWikidataFromUrl(row.text);
 
             if (rewrittenText)
-                wiki.wikidata.text = rewrittenText;
+                row.text = rewrittenText;
 
-            if (wiki.wikidata.text !== '' &&
-                !Wikipedia.isValidWikidata(wiki.wikidata.text)) {
-                wiki.wikidata.get_style_context().add_class("warning");
+            if (row.text !== '' &&
+                !Wikipedia.isValidWikidata(row.text)) {
+                row.add_css_class('warning');
             } else {
-                wiki.wikidata.get_style_context().remove_class("warning");
+                row.remove_css_class('warning');
+                this._continueButton.sensitive = true;
             }
 
-            this._osmObject.set_tag(fieldSpec.subtags[1], wiki.wikidata.text);
-            this._nextButton.sensitive = true;
+            this._osmObject.set_tag(category.subtags[1], row.text);
+            this.can_close = false;
         });
 
-        wiki.article.connect('icon-press', () => {
-            this._showHintPopover(wiki.article,
-                                  _("The format used should include the language code " +
-                                    "and the article title like “en:Article title”."));
-        });
-
-        wiki.wikidata.connect('icon-press', () => {
-            this._showHintPopover(wiki.wikidata,
-                                  _("Use the reload button to load the Wikidata tag for the selected article"));
-        });
-
-        wiki.refresh.connect('clicked', () => {
-            Wikipedia.fetchWikidataForArticle(wiki.article.text,
+        refreshButton.connect('clicked', () => {
+            Wikipedia.fetchWikidataForArticle(articleRow.text,
                                               this._cancellable,
-                                              (wikidata) => {
-                if (!wikidata) {
+                                              (tag) => {
+                if (!tag) {
                     Utils.showToastInOverlay(_("Couldn't find Wikidata tag for article"), this._overlay);
                     return;
                 }
 
-                wiki.wikidata.text = wikidata;
+                dataRow.text = tag;
             });
         });
-
-        let rows = fieldSpec.rows ?? 1;
-        this._editorGrid.attach(wiki, 1, this._currentRow, 1, rows);
-        wiki.article.grab_focus();
-        this._addOSMEditDeleteButton(fieldSpec);
-        this._currentRow += rows;
     }
 
-    /* update visible items in the "Add Field" popover */
-    _updateAddFieldMenu() {
-        /* clear old items */
-        let hasAllFields = true;
-        let children = [];
-
-        for (let child of this._addFieldPopoverGrid) {
-            children.push(child);
-        }
-
-        for (let child of children) {
-            this._addFieldPopoverGrid.remove(child);
-        }
-
-        /* add selectable items */
-        let row = 0;
-        for (let i = 0; i < OSM_FIELDS.length; i++) {
-            let fieldSpec = OSM_FIELDS[i];
-            let hasValue = false;
-
-            if (fieldSpec.subtags) {
-                fieldSpec.subtags.forEach((tag) => {
-                    if (this._osmObject.get_tag(tag) !== null)
-                        hasValue = true;
-                });
-            } else {
-                hasValue = this._osmObject.get_tag(fieldSpec.tag) !== null;
-            }
-
-            if (!hasValue) {
-                let button = new Gtk.Button({
-                    visible: true, sensitive: true,
-                    label: fieldSpec.name
-                });
-                button.get_style_context().add_class('menuitem');
-                button.get_style_context().add_class('button');
-                button.get_style_context().add_class('flat');
-                button.get_child().halign = Gtk.Align.START;
-
-                button.connect('clicked', () => {
-                    this._addFieldButton.active = false;
-                    this._addFieldPopover.popdown();
-                    this._addOSMField(fieldSpec);
-                    /* add a "placeholder" empty OSM tag to keep the add field
-                     * menu updated, these tags will be filtered out if nothing
-                     * is entered */
-                    if (fieldSpec.subtags) {
-                        fieldSpec.subtags.forEach((tag) => {
-                            this._osmObject.set_tag(tag, '');
-                        });
-                    } else {
-                        this._osmObject.set_tag(fieldSpec.tag, '');
-                    }
-                    this._updateAddFieldMenu();
-                });
-
-                hasAllFields = false;
-                this._addFieldPopoverGrid.attach(button, 0, row, 1, 1);
-                row++;
-            }
-        }
-
-        this._addFieldButton.sensitive = !hasAllFields;
-    }
-
-    _addOSMField(fieldSpec, value) {
-        switch (fieldSpec.type) {
+    _addOSMField(group, category, value) {
+        switch (category.type) {
         case EditFieldType.TEXT:
-            this._addOSMEditTextEntry(fieldSpec, value ?? '');
+            this._addOSMEditTextEntry(group, category, value ?? '');
             break;
         case EditFieldType.INTEGER:
-            this._addOSMEditIntegerEntry(fieldSpec, value ?? 0, -1e9, 1e9);
+            this._addOSMEditIntegerEntry(group, category, value, -1e9, 1e9);
             break;
         case EditFieldType.UNSIGNED_INTEGER:
-            this._addOSMEditIntegerEntry(fieldSpec, value ?? 0, 0, 1e9);
+            this._addOSMEditIntegerEntry(group, category, value, 0, 1e9);
             break;
         case EditFieldType.COMBO:
-            this._addOSMEditComboEntry(fieldSpec, value ?? '');
+            this._addOSMEditComboEntry(group, category, value ?? '');
             break;
         case EditFieldType.ADDRESS:
-            this._addOSMEditAddressEntry(fieldSpec, value ?? '');
+            this._addOSMEditAddressEntry(group, category, value ?? '');
             break;
         case EditFieldType.WIKIPEDIA:
-            this._addOSMEditWikipediaEntry(fieldSpec, value ?? '');
+            this._addOSMEditWikipediaEntry(group, category, value ?? '');
+            break;
+        case EditFieldType.TYPE:
+            const subtitle = this._loadType();
+
+            if (subtitle)
+                this._addOSMTypeEntry(group, category, subtitle);
+
             break;
         }
     }
 
     _loadOSMData(osmObject) {
         this._osmObject = osmObject;
+        this._loadType();
 
-        /* keeps track of the current insertion row in the grid for editing
-         * widgets */
-        this._currentRow = 1;
+        for (const category of OSM_FIELDS) {
+            const group = new Adw.PreferencesGroup();
 
-        for (let i = 0; i < OSM_FIELDS.length; i++) {
-            let fieldSpec = OSM_FIELDS[i];
-            let value;
+            group.title = gettext.gettext(category.title);
 
-            if (fieldSpec.subtags) {
-                let hasAny = false;
-                fieldSpec.subtags.forEach(function(tag) {
-                    if (osmObject.get_tag(tag) != null)
-                        hasAny = true;
-                });
+            for (const field of category.fields) {
+                let value;
 
-                if (hasAny) {
-                    value = fieldSpec.subtags.map(function(tag) {
-                        return osmObject.get_tag(tag);
+                if (field.subtags) {
+                    let hasAny = false;
+                    field.subtags.forEach(function(tag) {
+                        if (osmObject.get_tag(tag) != null)
+                            hasAny = true;
                     });
-                    this._addOSMField(fieldSpec, value);
+
+                    if (hasAny) {
+                        value = field.subtags.map(function(tag) {
+                            return osmObject.get_tag(tag);
+                        });
+                    }
+
+                    this._addOSMField(group, field, value);
+                } else {
+                    value = osmObject.get_tag(field.tag);
+                    this._addOSMField(group, field, value);
                 }
-            } else {
-                value = osmObject.get_tag(fieldSpec.tag);
-                if (value != null)
-                    this._addOSMField(fieldSpec, value);
             }
+
+            this._groupsContainer.append(group);
         }
 
-        this._updateAddFieldMenu();
-        this._updateTypeButton();
-        this._stack.visible_child_name = 'editor';
+        this._navigationView.replace_with_tags(['editor']);
+
+        this._noneCheckButton.active = this._getTypeTags().length === 0;
+        this._noneCheckButton.connect('toggled', () => {
+            if (this._noneCheckButton.active) {
+                /* clear out any previous type-related OSM tags */
+                OSMTypes.OSM_TYPE_TAGS.forEach((tag) => this._osmObject.delete_tag(tag));
+
+                if (this._typeRow)
+                    this._updateTypeRow(_("None"));
+                this.can_close = false;
+                this._continueButton.sensitive = true;
+            }
+        });
     }
 }
 
 GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/osm-edit-dialog.ui',
-    InternalChildren: [ 'cancelButton',
-                        'backButton',
-                        'nextButton',
-                        'stack',
-                        'editorGrid',
-                        'commentTextView',
-                        'addFieldPopover',
-                        'addFieldPopoverGrid',
-                        'addFieldButton',
-                        'typeSearchGrid',
-                        'typeLabel',
-                        'typeButton',
-                        'typeValueLabel',
-                        'recentTypesLabel',
-                        'recentTypesListBox',
-                        'headerBar',
-                        'overlay'],
+    Properties: {
+        'type_title': GObject.ParamSpec.string('type_title', '', '',
+                                          GObject.ParamFlags.READABLE |
+                                          GObject.ParamFlags.WRITABLE,
+                                          ''),
+        'response': GObject.ParamSpec.int('response', '', '',
+                                          GObject.ParamFlags.READABLE |
+                                          GObject.ParamFlags.WRITABLE,
+                                          -1),
+    },
+    InternalChildren: ['navigationView',
+                       'continueButton',
+                       'editorStatusPage',
+                       'groupsContainer',
+                       'shopButton',
+                       'placeButton',
+                       'tourismButton',
+                       'officeButton',
+                       'amenityButton',
+                       'leisureButton',
+                       'aerowayButton',
+                       'typeSearchEntry',
+                       'typeList',
+                       'noneCheckButton',
+                       'submitButton',
+                       'uploadNotesTextview',
+                       'overlay',
+                       'noneRow',
+                       'recentTypesList'],
 }, OSMEditDialog);
 

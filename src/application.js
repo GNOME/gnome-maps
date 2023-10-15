@@ -31,7 +31,6 @@ import {Geoclue} from './geoclue.js';
 import * as GeocodeFactory from './geocode.js';
 import {MainWindow} from './mainWindow.js';
 import {OSMEdit} from './osmEdit.js';
-import {OSMTypeSearchEntry} from './osmTypeSearchEntry.js';
 import {PlaceStore} from './placeStore.js';
 import {RoutingDelegator} from './routingDelegator.js';
 import {RouteQuery} from './routeQuery.js';
@@ -41,8 +40,6 @@ import * as URIS from './uris.js';
 import { Place } from './place.js';
 
 const Format = imports.format;
-
-const _ensuredTypes = [OSMTypeSearchEntry];
 
 export class Application extends Adw.Application {
 
@@ -63,9 +60,6 @@ export class Application extends Adw.Application {
         /* Translators: This is the program name. */
         GLib.set_application_name(_("Maps"));
         Gtk.Window.set_default_icon_name(pkg.name);
-
-        /* Needed to be able to use in UI files */
-        _ensuredTypes.forEach((type) => GObject.type_ensure(type));
 
         super({ application_id: pkg.name,
                 flags: Gio.ApplicationFlags.HANDLES_OPEN |

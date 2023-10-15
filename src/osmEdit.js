@@ -42,18 +42,14 @@ export class OSMEdit {
         return this._osmObject;
     }
 
-    createEditDialog(parentWindow, place) {
-        let dialog = new OSMEditDialog({ transient_for: parentWindow,
-                                         modal: true,
-                                         place: place });
+    createEditDialog(place) {
+        let dialog = new OSMEditDialog({ place: place });
 
         return dialog;
     }
 
-    createEditNewDialog(parentWindow, latitude, longitude) {
-        let dialog = new OSMEditDialog({ transient_for: parentWindow,
-                                         modal: true,
-                                         addLocation: true,
+    createEditNewDialog(latitude, longitude) {
+        let dialog = new OSMEditDialog({ addLocation: true,
                                          latitude: latitude,
                                          longitude: longitude });
 
