@@ -593,7 +593,7 @@ export class MainWindow extends Adw.ApplicationWindow {
             copyright: _("Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"),
             license_type: Gtk.License.GPL_2_0,
             version: pkg.version,
-            website: 'https://apps.gnome.org/app/org.gnome.Maps',
+            website: 'https://apps.gnome.org/Maps/',
             issue_url: 'https://gitlab.gnome.org/GNOME/gnome-maps/-/issues/new',
             transient_for: this
         });
