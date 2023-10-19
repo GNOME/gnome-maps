@@ -40,7 +40,7 @@ const _DEFAULT_INITIAL_POI_SEARCH_RADIUS = 1000;
 // multiplying factor for extended search radius
 const _SEARCH_RADIUS_MULTIPLIER = 10;
 // max distance to remove duplicate (name and type) POIs
-const _POI_DEDUPLICATION_DISTANCE = 500;
+const _POI_DEDUPLICATION_DISTANCE = 200;
 
 const BASE_URL = 'https://overpass-api.de/api/interpreter';
 
