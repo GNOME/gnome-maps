@@ -68,7 +68,7 @@ export class TransitRouter {
             // override plugin was specified, try instanciating if not done yet
             if (!this._currPluginInstance) {
                 try {
-                    this._currentPluginInstance = this._instantiatePlugin(pluginOverride);
+                    this._currPluginInstance = this._instantiatePlugin(pluginOverride);
                 } catch (e) {
                     Utils.debug('Unable to instanciate plugin: ' + pluginOverride);
                     throw e;
