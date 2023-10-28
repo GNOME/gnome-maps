@@ -31,7 +31,6 @@ import * as Geojsonvt from './geojsonvt/geojsonvt.js';
 import {Location} from './location.js';
 import {Place} from './place.js';
 import {PlaceMarker} from './placeMarker.js';
-import * as Service from './service.js';
 import * as Utils from './utils.js';
 import {GeoJSONStyle} from './geoJSONStyle.js';
 import {MapView} from './mapView.js';
@@ -48,7 +47,7 @@ export class GeoJSONSource extends GnomeMaps.SyncMapSource {
         this._mapView = mapView;
         this._markerLayer = markerLayer;
         this._bbox = new BoundingBox();
-        this.tile_size = Service.getService().tiles.street.tile_size;
+        this.tile_size = mapView.map.viewport.reference_map_source.tile_size;
         this.max_zoom_level = 20;
         this.min_zoom_level = 0;
     }
