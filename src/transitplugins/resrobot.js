@@ -35,6 +35,7 @@ import {Application} from '../application.js';
 import * as GraphHopperTransit from '../graphHopperTransit.js';
 import {Query} from '../http.js';
 import * as HVT from '../hvt.js';
+import * as Time from '../time.js';
 import {Itinerary, Leg, RouteType, Stop} from '../transitPlan.js';
 import * as Utils from '../utils.js';
 
@@ -345,10 +346,9 @@ export class Resrobot {
      * for the provider's native timezone at the given time and date
      */
     _parseTime(time, date) {
-        let timeText = '%sT%s'.format(date, time);
-        let dateTime = GLib.DateTime.new_from_iso8601(timeText, this._tz);
+        const timeText = `${date}T${time}`;
 
-        return [dateTime.to_unix() * 1000, dateTime.get_utc_offset() / 1000];
+        return Time.parseTime(timeText, this._tz);
     }
 
     /**
