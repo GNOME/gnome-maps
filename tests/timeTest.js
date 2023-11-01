@@ -21,6 +21,8 @@
 
 const JsUnit = imports.jsUnit;
 
+import GLib from 'gi://GLib';
+
 import * as Time from '../src/time.js';
 
 function compare12HourTime(format, hoursMinutes, AMPM) {
@@ -60,5 +62,17 @@ function formatTimeFromHoursAndMinsTest() {
     compare12HourTime(Time.formatTimeFromHoursAndMins(12, 1), '12:01', 'PM');
 }
 
+function parseTimeTest(timeString, defaultTimezone, expectedTs, expectedTz) {
+    const [ts, tz] = Time.parseTime(timeString, defaultTimezone);
+
+    JsUnit.assertEquals(expectedTs, ts);
+    JsUnit.assertEquals(expectedTz, tz)
+}
+
 formatTimeWithTZOffsetTest();
 formatTimeFromHoursAndMinsTest();
+
+parseTimeTest('2023-11-01T22:00:00+01:00', null, 1698872400000, 3600000);
+parseTimeTest('2023-11-01T23:00:00+02:00', null, 1698872400000, 7200000);
+parseTimeTest('2023-11-01T22:00:00', GLib.TimeZone.new('Europe/Stockholm'),
+              1698872400000, 3600000);
