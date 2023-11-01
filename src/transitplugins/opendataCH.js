@@ -35,6 +35,7 @@ import {Application} from '../application.js';
 import * as GraphHopperTransit from '../graphHopperTransit.js';
 import * as HVT from '../hvt.js';
 import {Query} from '../http.js';
+import * as Time from '../time.js';
 import {Itinerary, Leg, RouteType, Stop} from '../transitPlan.js';
 import * as Utils from '../utils.js';
 
@@ -233,24 +234,13 @@ export class OpendataCH {
             connection.to.arrivalTimestamp - connection.from.departureTimestamp;
         let from = connection.from;
         let to = connection.to;
-        let [startTime,] = this._parseTime(from.departure);
-        let [endTime,] = this._parseTime(to.arrival);
+        let [startTime,] = Time.parseTime(from.departure);
+        let [endTime,] = Time.parseTime(to.arrival);
 
         return new Itinerary({ duration:  duration,
                                departure: startTime,
                                arrival:   endTime,
                                legs:      legs });
-    }
-
-    /**
-     * Parse a time string into an array with
-     * an absolute timestamp in ms since Unix epoch and a timezone offset
-     * for the provider's native timezone at the given time and date
-     */
-    _parseTime(timeString) {
-        let dateTime = GLib.DateTime.new_from_iso8601(timeString, null);
-
-        return [dateTime.to_unix() * 1000, dateTime.get_utc_offset() / 1000];
     }
 
     _createLegs(sections) {
@@ -285,8 +275,8 @@ export class OpendataCH {
         let to =
             last && !journey ? this._query.filledPoints.last().place.name :
                                arrival.station.nam;
-        let [departureTime, tzOffset] = this._parseTime(departure.departure);
-        let [arrivalTime,] = this._parseTime(arrival.arrival);
+        let [departureTime, tzOffset] = Time.parseTime(departure.departure);
+        let [arrivalTime,] = Time.parseTime(arrival.arrival);
         let route = journey ? journey.number : null;
         let routeType =
             journey ? this._getHVTCodeFromCategory(journey.category) : null;
@@ -427,9 +417,9 @@ export class OpendataCH {
         let [arrival, arrivalTzOffset] = [,];
 
         if (pass.departure)
-            [departure, departureTzOffset] = this._parseTime(pass.departure)
+            [departure, departureTzOffset] = Time.parseTime(pass.departure);
         if (pass.arrival)
-            [arrival, arrivalTzOffset] = this._parseTime(pass.arrival);
+            [arrival, arrivalTzOffset] = Time.parseTime(pass.arrival);
 
         if (!arrival)
             arrival = departure;
