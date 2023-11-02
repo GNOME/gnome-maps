@@ -200,14 +200,18 @@ GObject.registerClass({
 
 export class Itinerary extends GObject.Object {
 
-    constructor(params) {
-        super();
+    constructor({ duration, departure, departureTimezoneOffset,
+                  arrival, arrivalTimezoneOffset, transfers, legs,
+                  ...params }) {
+        super(params);
 
-        this._duration = params.duration;
-        this._departure = params.departure;
-        this._arrival = params.arrival;
-        this._transfers = params.transfers;
-        this._legs = params.legs;
+        this._duration = duration;
+        this._departure = departure;
+        this._departureTimezoneOffset = departureTimezoneOffset;
+        this._arrival = arrival;
+        this._arrivalTimezoneOffset = arrivalTimezoneOffset;
+        this._transfers = transfers;
+        this._legs = legs;
         this.bbox = this._createBBox();
     }
 
@@ -300,6 +304,7 @@ export class Itinerary extends GObject.Object {
         /* take the itinerary departure time and offset using the timezone
          * offset of the first leg */
         return Time.formatTimeWithTZOffset(this.departure,
+                                           this._departureTimezoneOffset ??
                                            this.legs[0].agencyTimezoneOffset);
     }
 
@@ -308,6 +313,7 @@ export class Itinerary extends GObject.Object {
          * offset of the last leg */
         let lastLeg = this.legs[this.legs.length - 1];
         return Time.formatTimeWithTZOffset(this.arrival,
+                                           this._arrivalTimezoneOffset ??
                                            lastLeg.agencyTimezoneOffset);
     }
 
@@ -404,28 +410,35 @@ GObject.registerClass(Itinerary);
 
 export class Leg {
 
-    constructor(params) {
-        this._route = params.route;
-        this._routeType = params.routeType;
-        this._departure = params.departure;
-        this._arrival = params.arrival;
-        this._polyline = params.polyline;
-        this._fromCoordinate = params.fromCoordinate;
-        this._toCoordinate = params.toCoordinate;
-        this._from = params.from;
-        this._to = params.to;
-        this._intermediateStops = params.intermediateStops;
-        this._headsign = params.headsign;
-        this._isTransit = params.isTransit;
-        this._walkingInstructions = params.walkingInstructions;
-        this._distance = params.distance;
-        this._duration = params.duration;
-        this._agencyName = params.agencyName;
-        this._agencyUrl = params.agencyUrl;
-        this._agencyTimezoneOffset = params.agencyTimezoneOffset;
-        this._color = params.color;
-        this._textColor = params.textColor;
-        this._tripShortName = params.tripShortName;
+    constructor({ route, routeType, departure, departureTimezoneOffset,
+                  arrival, arrivalTimezoneOffset, polyline,
+                  fromCoordinate, toCoordinate, from, to, intermediateStops,
+                  headsign, isTransit, walkingInstructions, distance, duration,
+                  agencyName, agencyUrl, agencyTimezoneOffset, color,
+                  textColor, tripShortName }) {
+        this._route = route;
+        this._routeType = routeType;
+        this._departure = departure;
+        this._departureTimezoneOffset = departureTimezoneOffset,
+        this._arrival = arrival;
+        this._arrivalTimezoneOffset = arrivalTimezoneOffset;
+        this._polyline = polyline;
+        this._fromCoordinate = fromCoordinate;
+        this._toCoordinate = toCoordinate;
+        this._from = from;
+        this._to = to;
+        this._intermediateStops = intermediateStops;
+        this._headsign = headsign;
+        this._isTransit = isTransit;
+        this._walkingInstructions = walkingInstructions;
+        this._distance = distance;
+        this._duration = duration;
+        this._agencyName = agencyName;
+        this._agencyUrl = agencyUrl;
+        this._agencyTimezoneOffset = agencyTimezoneOffset;
+        this._color = color;
+        this._textColor = textColor;
+        this._tripShortName = tripShortName;
         this.bbox = this._createBBox();
         this._compactRoute = null;
     }
@@ -489,8 +502,16 @@ export class Leg {
         this._departure = departure;
     }
 
+    get departureTimezoneOffset() {
+        return this._departureTimezoneOffset ?? this._agencyTimezoneOffset;
+    }
+
     get arrival() {
         return this._arrival;
+    }
+
+    get arrivalTimezoneOffset() {
+        return this._arrivalTimezoneOffset ?? this._agencyTimezoneOffset;
     }
 
     get timezoneOffset() {
@@ -705,6 +726,7 @@ export class Leg {
          * offset of the first leg
          */
         return Time.formatTimeWithTZOffset(this.departure,
+                                           this._departureTimezoneOffset ??
                                            this.agencyTimezoneOffset);
     }
 
@@ -713,18 +735,19 @@ export class Leg {
          * offset of the last leg
          */
         return Time.formatTimeWithTZOffset(this.arrival,
+                                           this._arrivalTimezoneOffset ??
                                            this.agencyTimezoneOffset);
     }
 }
 
 export class Stop {
 
-    constructor(params) {
-        this._name = params.name;
-        this._arrival = params.arrival;
-        this._departure = params.departure;
-        this._agencyTimezoneOffset = params.agencyTimezoneOffset;
-        this._coordinate = params.coordinate;
+    constructor({ name, arrival, departure, agencyTimezoneOffset, coordinate }) {
+        this._name = name;
+        this._arrival = arrival;
+        this._departure = departure;
+        this._agencyTimezoneOffset = agencyTimezoneOffset;
+        this._coordinate = coordinate;
     }
 
     get name() {
