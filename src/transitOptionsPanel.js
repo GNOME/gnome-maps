@@ -68,8 +68,10 @@ export class TransitOptionsPanel extends Gtk.Grid {
         /* trigger an update of the query time as soon as focus leave the time
          * entry, to allow the user to enter a time before selecting start
          * and destination without having to press enter */
-        this._eventControllerFocus.connect('leave',
-            this._onTransitTimeEntryActivated.bind(this));
+        this._eventControllerFocus.connect('leave', () => {
+            if (!this._query.isValid())
+                this._onTransitTimeEntryActivated();
+        });
         this._transitDateButton.popover.get_child().connect('day-selected',
             this._onTransitDateCalenderDaySelected.bind(this));
         this._transitDateButton.popover.connect('closed',
