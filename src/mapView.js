@@ -1002,7 +1002,7 @@ export class MapView extends Gtk.Overlay {
             return;
 
         this.map.grab_focus();
-        gesture.set_state(Gtk.EventSequenceState.CLAIMED);
+        gesture.set_state(Gtk.EventSequenceState.NONE);
     }
 
     _onSecondaryClick(gesture, n_presses, x, y) {
