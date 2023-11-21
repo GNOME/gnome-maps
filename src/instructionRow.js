@@ -22,11 +22,14 @@
 
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
+
+import {TurnPoint} from './route.js';
+import {RouteQuery} from './routeQuery.js';
 import * as Utils from './utils.js';
 
 export class InstructionRow extends Gtk.ListBoxRow {
 
-    constructor({turnPoint, lines, ...params}) {
+    constructor({turnPoint, lines, transportation, ...params}) {
         super(params);
 
         this.turnPoint = turnPoint;
@@ -35,10 +38,28 @@ export class InstructionRow extends Gtk.ListBoxRow {
             this._instructionLabel.lines = lines;
 
         this._instructionLabel.label = this.turnPoint.instruction;
-        this._directionImage.icon_name = this.turnPoint.iconName;
+        this._directionImage.icon_name = this._getIconName(transportation);
 
         if (this.turnPoint.distance > 0)
             this._distanceLabel.label = Utils.prettyDistance(this.turnPoint.distance);
+    }
+
+    _getIconName(transportation) {
+        // use mode-specific icon for the start instruction
+        if (this.turnPoint.type === TurnPoint.Type.START) {
+            switch (transportation) {
+                case RouteQuery.Transportation.PEDESTRIAN:
+                    return 'route-pedestrian-symbolic';
+                case RouteQuery.Transportation.BIKE:
+                    return 'route-bike-symbolic';
+                case RouteQuery.Transportation.CAR:
+                    return 'route-car-symbolic';
+                default:
+                    return 'maps-point-start-symbolic';
+            }
+        } else {
+            return this.turnPoint.iconName;
+        }
     }
 }
 
