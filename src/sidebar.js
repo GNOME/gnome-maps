@@ -320,8 +320,8 @@ export class Sidebar extends Gtk.Grid {
             });
 
             route.turnPoints.forEach((turnPoint) => {
-                let row = new InstructionRow({ visible: true,
-                                               turnPoint: turnPoint });
+                let row = new InstructionRow({ turnPoint: turnPoint,
+                                               transportation: this._query.transportation} );
                 this._instructionList.insert(row, -1);
             });
 
