@@ -51,7 +51,7 @@ export class OSMAccountDialog extends Adw.Window {
         /* if the user is logged in, show the logged-in view */
         if (Application.osmEdit.isSignedIn) {
             this._updateSignedInUserLabel();
-            this._navigation_view.replace_with_tags(['logged-in']);
+            this._navigationView.replace_with_tags(['logged-in']);
         }
     }
 
@@ -74,7 +74,7 @@ export class OSMAccountDialog extends Adw.Window {
 
     _performSignIn() {
         // switch to the verification view
-        this._navigation_view.replace_with_tags(['verify']);
+        this._navigationView.replace_with_tags(['verify']);
 
         Application.osmEdit.performOAuthSignIn();
     }
@@ -124,7 +124,7 @@ export class OSMAccountDialog extends Adw.Window {
             } else {
                 /* switch to the logged in view and reset the state in case
                    the user signs out and start over again */
-                this._navigation_view.replace_with_tags(['logged-in']);
+                this._navigationView.replace_with_tags(['logged-in']);
             }
         } else {
             if (errorMessage)
@@ -133,7 +133,7 @@ export class OSMAccountDialog extends Adw.Window {
                that verification failed */
             Utils.showToastInOverlay(_("The verification code didn’t match, please try again."), this._overlay);
             this._signInButton.sensitive = true;
-            this._navigation_view.replace_with_tags(['sign-in']);
+            this._navigationView.replace_with_tags(['sign-in']);
         }
         /* reset verification code entry */
         this._verificationEntry.text = '';
@@ -142,7 +142,7 @@ export class OSMAccountDialog extends Adw.Window {
     _onSignOutButtonClicked() {
         Application.osmEdit.signOut();
         this._signInButton.sensitive= true;
-        this._navigation_view.replace_with_tags(['sign-in']);
+        this._navigationView.replace_with_tags(['sign-in']);
     }
 }
 
@@ -157,7 +157,7 @@ GObject.registerClass({
     Signals: {
         'response': { param_types: [GObject.TYPE_INT] },
     },
-    InternalChildren: ['navigation_view',
+    InternalChildren: ['navigationView',
                        'signInButton',
                        'verificationEntry',
                        'verifyButton',
