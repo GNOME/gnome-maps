@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2023-08-10 22:03+0000\n"
-"PO-Revision-Date: 2023-08-11 14:36+0300\n"
+"POT-Creation-Date: 2023-10-22 17:33+0000\n"
+"PO-Revision-Date: 2023-11-25 13:31+0300\n"
 "Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.1\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -32,8 +32,8 @@ msgstr ""
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
-#: data/ui/main-window.ui:27 src/application.js:61 src/mainWindow.js:143
-#: src/mainWindow.js:588
+#: data/ui/main-window.ui:27 src/application.js:63 src/mainWindow.js:143
+#: src/mainWindow.js:592
 msgid "Maps"
 msgstr "Карты"
 
@@ -59,7 +59,7 @@ msgstr ""
 "Карты используют базу данных OpenStreetMap, созданную сотнями тысяч людей по "
 "всеми миру."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:369 src/mainWindow.js:585
+#: data/org.gnome.Maps.appdata.xml.in.in:425 src/mainWindow.js:589
 msgid "The GNOME Project"
 msgstr "The GNOME Project"
 
@@ -349,7 +349,7 @@ msgid "Enable Experimental Map"
 msgstr "Включить экспериментальную карту"
 
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:20
+#: data/ui/layers-popover.ui:21
 msgid "Open Shape Layer…"
 msgstr "Открыть слой фигур…"
 
@@ -373,58 +373,49 @@ msgstr "О приложении"
 msgid "Main Menu"
 msgstr "Главное меню"
 
-#: data/ui/osm-account-dialog.ui:6
+#: data/ui/osm-account-dialog.ui:5
 msgid "OpenStreetMap Account"
 msgstr "Учётная запись OpenStreetMap"
 
-#: data/ui/osm-account-dialog.ui:26
-msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
-msgstr ""
-"<span weight=\"bold\" size=\"x-large\">Войдите, чтобы редактировать карты</"
-"span>"
+#: data/ui/osm-account-dialog.ui:31
+msgid "Sign In To Edit Maps"
+msgstr "Войдите для редактирования карт"
 
-#: data/ui/osm-account-dialog.ui:39
-msgid ""
-"Help to improve the map, using an\n"
-"OpenStreetMap account."
-msgstr ""
-"Помогите улучшить карту, используя\n"
-"учётную запись OpenStreetMap."
+#: data/ui/osm-account-dialog.ui:32
+msgid "Help to improve the map, using an OpenStreetMap account."
+msgstr "Помогите улучшить карту, используя учётную запись OpenStreetMap."
 
-#: data/ui/osm-account-dialog.ui:52
-msgid ""
-"Sign in to authorize access in a web browser.\n"
-"Then fill in the obtained verification code here in the next step."
-msgstr ""
-"Войдите в систему для авторизации доступа в веб-браузере.\n"
-"Затем введите полученный проверочный код здесь, на следующем шаге."
-
-#: data/ui/osm-account-dialog.ui:67
+#: data/ui/osm-account-dialog.ui:36
 msgid "Sign In"
 msgstr "Войти"
 
-#: data/ui/osm-account-dialog.ui:111
-msgid "Copy verification code shown when authorizing access in the browser"
-msgstr ""
-"Копировать проверочный код, отображаемый при авторизации доступа в браузере"
+#: data/ui/osm-account-dialog.ui:59
+msgid "Verification"
+msgstr "Проверка"
 
-#: data/ui/osm-account-dialog.ui:121
-msgid "Verification code"
+#: data/ui/osm-account-dialog.ui:60
+msgid ""
+"Copy the verification code shown when authorizing access in the browser."
+msgstr ""
+"Скопируйте проверочный код, отображаемый при авторизации доступа в браузере."
+
+#: data/ui/osm-account-dialog.ui:69
+msgid "Verification Code"
 msgstr "Проверочный код"
 
-#: data/ui/osm-account-dialog.ui:132
+#: data/ui/osm-account-dialog.ui:75
 msgid "Verify"
 msgstr "Проверить"
 
-#: data/ui/osm-account-dialog.ui:160
-msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
-msgstr "<span weight=\"bold\" size=\"x-large\">Авторизован</span>"
+#: data/ui/osm-account-dialog.ui:110
+msgid "Signed In"
+msgstr "Вошел"
 
-#: data/ui/osm-account-dialog.ui:172
+#: data/ui/osm-account-dialog.ui:111
 msgid "Your OpenStreetMap account is active."
 msgstr "Ваша учётная запись OpenStreetMap активна."
 
-#: data/ui/osm-account-dialog.ui:202
+#: data/ui/osm-account-dialog.ui:129
 msgid "Sign Out"
 msgstr "Выйти"
 
@@ -478,7 +469,7 @@ msgstr ""
 msgid "Recently Used"
 msgstr "Недавно использованные"
 
-#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:541
+#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:550
 msgid "Cancel"
 msgstr "Отменить"
 
@@ -498,15 +489,15 @@ msgstr "Метка Викиданных"
 msgid "Load Wikidata tag for article"
 msgstr "Загрузить метку Викиданных для статьи"
 
-#: data/ui/place-popover.ui:23 src/searchBar.js:54
+#: data/ui/place-popover.ui:23 src/searchBar.js:55
 msgid "Explore Nearby Places"
 msgstr "Исследовать близлежащие места"
 
-#: data/ui/place-popover.ui:82 src/application.js:274
+#: data/ui/place-popover.ui:82 src/application.js:276
 msgid "No results found"
 msgstr "Результатов не найдено"
 
-#: data/ui/place-popover.ui:92 src/application.js:252
+#: data/ui/place-popover.ui:92 src/application.js:254
 msgid "An error has occurred"
 msgstr "Произошла ошибка"
 
@@ -700,28 +691,28 @@ msgid "Could not find user element"
 msgstr "Не удалось найти элемент пользователя"
 
 # сомнительно, требует проверки
-#: src/application.js:74
+#: src/application.js:76
 msgid "A path to a local tiles directory structure"
 msgstr "Путь к локальному каталогу плиточной структуры"
 
 # сомнительно, требует проверки
-#: src/application.js:80
+#: src/application.js:82
 msgid "Tile size for local tiles directory"
 msgstr "Размер для локального каталога фрагментов"
 
-#: src/application.js:84
+#: src/application.js:86
 msgid "Show the version of the program"
 msgstr "Показать версию программы"
 
-#: src/application.js:90
+#: src/application.js:92
 msgid "Search for places"
 msgstr "Поиск мест"
 
-#: src/application.js:101 src/application.js:102
+#: src/application.js:103 src/application.js:104
 msgid "[FILE…|URI]"
 msgstr "[FILE...|URI]"
 
-#: src/application.js:281
+#: src/application.js:283
 #, javascript-format
 msgid "Invalid maps: URI: %s"
 msgstr "Недопустимые карты: URI: %s"
@@ -751,15 +742,15 @@ msgstr "ошибка разбора"
 msgid "unknown geometry"
 msgstr "неизвестная геометрия"
 
-#: src/graphHopper.js:121 src/transitPlan.js:174
+#: src/graphHopper.js:101 src/transitPlan.js:174
 msgid "Route request failed."
 msgstr "Сбой при запросе маршрута."
 
-#: src/graphHopper.js:128 src/transitPlan.js:166
+#: src/graphHopper.js:108 src/transitPlan.js:166
 msgid "No route found."
 msgstr "Маршрут не найден."
 
-#: src/graphHopper.js:215 src/transitplugins/openTripPlanner.js:1131
+#: src/graphHopper.js:195 src/transitplugins/openTripPlanner.js:1163
 msgid "Start!"
 msgstr "Старт!"
 
@@ -767,19 +758,19 @@ msgstr "Старт!"
 msgid "All Layer Files"
 msgstr "Все файлы слоёв"
 
-#: src/mainWindow.js:468
+#: src/mainWindow.js:467
 msgid "Failed to connect to location service"
 msgstr "Не удалось подключиться к службе определения местоположения"
 
-#: src/mainWindow.js:473
+#: src/mainWindow.js:472
 msgid "Turn on location services"
 msgstr "Включите службы определения местоположения"
 
-#: src/mainWindow.js:474
+#: src/mainWindow.js:473
 msgid "Location Settings"
 msgstr "Параметры местоположения"
 
-#: src/mainWindow.js:586
+#: src/mainWindow.js:590
 msgid "translator-credits"
 msgstr ""
 "Yuri Myasoedov <ymyasoedov@yandex.ru>, 2013, 2014.\n"
@@ -787,20 +778,20 @@ msgstr ""
 "Alexey Rubtsov <rushills@gmail.com>, 2021\n"
 "Aleksandr Melman <alexmelman88@gmail.com>, 2022-2023"
 
-#: src/mainWindow.js:590
+#: src/mainWindow.js:594
 msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Авторское право © 2011 – 2023 Red Hat, Inc. и авторы GNOME Maps"
 
-#: src/mainWindow.js:606
+#: src/mainWindow.js:610
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Картографические данные %s и участников"
 
-#: src/mainWindow.js:607
+#: src/mainWindow.js:611
 msgid "Map Data Provider"
 msgstr "Поставщик картографических данных"
 
-#: src/mainWindow.js:619
+#: src/mainWindow.js:623
 msgid "Map Tile Provider"
 msgstr "Поставщик картографического слоя"
 
@@ -809,29 +800,29 @@ msgstr "Поставщик картографического слоя"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:627
+#: src/mainWindow.js:631
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Картографические слои предоставлены %s"
 
-#: src/mainWindow.js:657
+#: src/mainWindow.js:661
 msgid "Search Provider"
 msgstr "Поставщик поиска"
 
-#: src/mainWindow.js:660
+#: src/mainWindow.js:664
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Поиск осуществляется %s с помощью %s"
 
-#: src/mapView.js:515 src/mapView.js:580
+#: src/mapView.js:524 src/mapView.js:589
 msgid "Failed to open layer"
 msgstr "Не удалось открыть слой"
 
-#: src/mapView.js:534
+#: src/mapView.js:543
 msgid "Do you want to continue?"
 msgstr "Вы хотите продолжить?"
 
-#: src/mapView.js:535
+#: src/mapView.js:544
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -840,15 +831,15 @@ msgstr ""
 "Вы собираетесь открыть файлы общим размером %s МБ. Загрузка может занять "
 "некоторое время"
 
-#: src/mapView.js:542 src/transitplugins/openTripPlanner.js:1207
+#: src/mapView.js:551 src/transitplugins/openTripPlanner.js:1239
 msgid "Continue"
 msgstr "Продолжить"
 
-#: src/mapView.js:574
+#: src/mapView.js:583
 msgid "File type is not supported"
 msgstr "Тип файла не поддерживается"
 
-#: src/mapView.js:611
+#: src/mapView.js:620
 msgid "Failed to open GeoURI"
 msgstr "Не удалось открыть геолокационный URI"
 
@@ -864,6 +855,8 @@ msgstr "Приблизьте, чтобы добавить местоположе
 msgid "Location was added in OpenStreetMap"
 msgstr "Местоположение было добавлено в OpenStreetMap"
 
+#. switch back to the sign-in view, and show a toast indicating
+#. that verification failed
 #: src/osmAccountDialog.js:134
 msgid "The verification code didn’t match, please try again."
 msgstr "Проверочный код не совпадает, попробуйте снова."
@@ -1184,11 +1177,11 @@ msgstr "Не удалось найти метку Викиданных для с
 msgid "Unnamed place"
 msgstr "Неназванное место"
 
-#: src/placeEntry.js:261
+#: src/placeEntry.js:277
 msgid "Failed to parse Geo URI"
 msgstr "Не удалось разобрать геолокационный URI"
 
-#: src/placeEntry.js:273
+#: src/placeEntry.js:289
 msgid "Failed to parse Maps URI"
 msgstr "Не удалось разобрать URI карт"
 
@@ -1694,12 +1687,12 @@ msgid "failed to load file"
 msgstr "не удалось загрузить файл"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:325
+#: src/sidebar.js:329
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Расчётное время: %s"
 
-#: src/sidebar.js:395
+#: src/sidebar.js:399
 #, javascript-format
 msgid "Itineraries provided by %s"
 msgstr "Маршруты, предоставленные %s"
@@ -1736,7 +1729,7 @@ msgstr "Пешком %s"
 msgid "Arrive at %s"
 msgstr "Прибытие в %s"
 
-#: src/transit.js:79 src/transitplugins/openTripPlanner.js:1144
+#: src/transit.js:79 src/transitplugins/openTripPlanner.js:1176
 msgid "Arrive"
 msgstr "Прибытие"
 
@@ -2017,105 +2010,120 @@ msgstr "%s фт"
 msgid "This plugin doesn't support latest arrival"
 msgstr "Этот модуль не поддерживает последние поступления"
 
-#: src/transitplugins/openTripPlanner.js:1205
+#: src/transitplugins/openTripPlanner.js:1237
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Продолжайте %s"
 
-#: src/transitplugins/openTripPlanner.js:1210
+#: src/transitplugins/openTripPlanner.js:1242
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Поверните налево на %s"
 
-#: src/transitplugins/openTripPlanner.js:1212
+#: src/transitplugins/openTripPlanner.js:1244
 msgid "Turn left"
 msgstr "Поверните налево"
 
-#: src/transitplugins/openTripPlanner.js:1215
+#: src/transitplugins/openTripPlanner.js:1247
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Поверните немного налево на %s"
 
-#: src/transitplugins/openTripPlanner.js:1217
+#: src/transitplugins/openTripPlanner.js:1249
 msgid "Turn slightly left"
 msgstr "Повернитесь немного влево"
 
-#: src/transitplugins/openTripPlanner.js:1220
+#: src/transitplugins/openTripPlanner.js:1252
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Поверните резко налево на %s"
 
-#: src/transitplugins/openTripPlanner.js:1222
+#: src/transitplugins/openTripPlanner.js:1254
 msgid "Turn sharp left"
 msgstr "Повернитесь резко налево"
 
-#: src/transitplugins/openTripPlanner.js:1225
+#: src/transitplugins/openTripPlanner.js:1257
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Поверните направо на %s"
 
-#: src/transitplugins/openTripPlanner.js:1227
+#: src/transitplugins/openTripPlanner.js:1259
 msgid "Turn right"
 msgstr "Поверните направо"
 
-#: src/transitplugins/openTripPlanner.js:1230
+#: src/transitplugins/openTripPlanner.js:1262
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Поверните немного направо на %s"
 
-#: src/transitplugins/openTripPlanner.js:1232
+#: src/transitplugins/openTripPlanner.js:1264
 msgid "Turn slightly right"
 msgstr "Поверните немного направо"
 
-#: src/transitplugins/openTripPlanner.js:1235
+#: src/transitplugins/openTripPlanner.js:1267
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Поверните резко направо на %s"
 
-#: src/transitplugins/openTripPlanner.js:1237
+#: src/transitplugins/openTripPlanner.js:1269
 msgid "Turn sharp right"
 msgstr "Повернитесь резко направо"
 
-#: src/transitplugins/openTripPlanner.js:1243
+#: src/transitplugins/openTripPlanner.js:1275
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "На кольцевой развязке сверните на съезд %s"
 
-#: src/transitplugins/openTripPlanner.js:1245
+#: src/transitplugins/openTripPlanner.js:1277
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "На кольцевой развязке сверните на %s"
 
-#: src/transitplugins/openTripPlanner.js:1247
+#: src/transitplugins/openTripPlanner.js:1279
 msgid "Take the roundabout"
 msgstr "Сверните на кольцевую развязку"
 
-#: src/transitplugins/openTripPlanner.js:1251
+#: src/transitplugins/openTripPlanner.js:1283
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Поднимитесь на лифте и выйдите на %s"
 
-#: src/transitplugins/openTripPlanner.js:1253
+#: src/transitplugins/openTripPlanner.js:1285
 msgid "Take the elevator"
 msgstr "Поднимитесь на лифте"
 
-#: src/transitplugins/openTripPlanner.js:1257
+#: src/transitplugins/openTripPlanner.js:1289
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Выполните левый разворот на %s"
 
-#: src/transitplugins/openTripPlanner.js:1259
+#: src/transitplugins/openTripPlanner.js:1291
 msgid "Make a left u-turn"
 msgstr "Выполните левый разворот"
 
-#: src/transitplugins/openTripPlanner.js:1262
+#: src/transitplugins/openTripPlanner.js:1294
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Выполните правый разворот на %s"
 
-#: src/transitplugins/openTripPlanner.js:1264
+#: src/transitplugins/openTripPlanner.js:1296
 msgid "Make a right u-turn"
 msgstr "Разворот направо"
+
+#~ msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
+#~ msgstr ""
+#~ "<span weight=\"bold\" size=\"x-large\">Войдите, чтобы редактировать "
+#~ "карты</span>"
+
+#~ msgid ""
+#~ "Sign in to authorize access in a web browser.\n"
+#~ "Then fill in the obtained verification code here in the next step."
+#~ msgstr ""
+#~ "Войдите в систему для авторизации доступа в веб-браузере.\n"
+#~ "Затем введите полученный проверочный код здесь, на следующем шаге."
+
+#~ msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
+#~ msgstr "<span weight=\"bold\" size=\"x-large\">Авторизован</span>"
 
 #~ msgid "Sign up"
 #~ msgstr "Регистрация"
