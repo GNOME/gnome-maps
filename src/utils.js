@@ -85,14 +85,6 @@ export function once(obj, signal, callback) {
     });
 }
 
-export function loadStyleSheet(file) {
-    let provider = new Gtk.CssProvider();
-    provider.load_from_file(file);
-    Gtk.StyleContext.add_provider_for_display(Gdk.Display.get_default(),
-                                              provider,
-                                              Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-}
-
 export function addActions(actionMap, entries, settings = null) {
     for(let name in entries) {
         let entry = entries[name];
