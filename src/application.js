@@ -67,7 +67,8 @@ export class Application extends Adw.Application {
 
         super({ application_id: pkg.name,
                 flags: Gio.ApplicationFlags.HANDLES_OPEN |
-                       Gio.ApplicationFlags.HANDLES_COMMAND_LINE });
+                       Gio.ApplicationFlags.HANDLES_COMMAND_LINE,
+                resource_base_path: '/org/gnome/Maps' });
 
         this.add_main_option('local',
                              0,
@@ -141,8 +142,6 @@ export class Application extends Adw.Application {
 
     vfunc_startup() {
         super.vfunc_startup();
-
-        Utils.loadStyleSheet(Gio.file_new_for_uri('resource:///org/gnome/Maps/application.css'));
 
         Application.application = this;
         this._initServices();
