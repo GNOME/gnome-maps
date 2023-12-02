@@ -68,3 +68,31 @@ export function decode(data) {
     }
     return polyline;
 }
+
+function _encodeValue(val) {
+    let result = '';
+    val = Math.round(val * 1e5) << 1;
+    if (val < 0) {
+        val = ~val;
+    }
+    do {
+        result += String.fromCharCode(((val > 0x1f ? 0x20 : 0) | (val & 0x1f)) + 63);
+        val >>= 5;
+    } while (val != 0);
+    return result;
+}
+
+export function encode(polyline) {
+    let result = '';
+    let prevLat = 0;
+    let prevLon = 0;
+
+    for (const coordinate of polyline) {
+        result += _encodeValue(coordinate.latitude - prevLat);
+        result += _encodeValue(coordinate.longitude - prevLon);
+        prevLat = coordinate.latitude;
+        prevLon = coordinate.longitude;
+    }
+
+    return result;
+}

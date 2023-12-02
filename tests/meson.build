@@ -1,4 +1,4 @@
-tests = ['addressTest', 'boundingBoxTest', 'colorTest', 'osmNamesTest',
+tests = ['addressTest', 'boundingBoxTest', 'colorTest', 'epafTest', 'osmNamesTest',
          'placeIconsTest', 'placeZoomTest', 'timeTest', 'translationsTest',
          'utilsTest', 'urisTest', 'wikipediaTest']
 
