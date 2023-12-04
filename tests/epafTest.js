@@ -23,7 +23,7 @@ import Shumate from "gi://Shumate";
 
 const JsUnit = imports.jsUnit;
 
-import { decode, encode } from "./epaf.js";
+import { decode, encode } from "../src/epaf.js";
 
 const TOLERANCE = 0.000001;
 

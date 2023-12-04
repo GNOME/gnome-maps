@@ -1,5 +1,5 @@
 tests = ['addressTest', 'boundingBoxTest', 'colorTest', 'epafTest', 'osmNamesTest',
-         'placeIconsTest', 'placeZoomTest', 'timeTest', 'translationsTest',
+         'placeIconsTest', 'placeStoreTest', 'placeZoomTest', 'timeTest', 'translationsTest',
          'utilsTest', 'urisTest', 'wikipediaTest']
 
 # suffix for source resources (so we get /org/gnome/Maps or
