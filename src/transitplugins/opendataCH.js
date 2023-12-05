@@ -28,7 +28,6 @@
  */
 
 import GLib from 'gi://GLib';
-import Shumate from 'gi://Shumate';
 import Soup from 'gi://Soup';
 
 import {Application} from '../application.js';
@@ -281,34 +280,30 @@ export class OpendataCH {
         let routeType =
             journey ? this._getHVTCodeFromCategory(journey.category) : null;
         let agencyName = journey ? journey.operator : null;
-        let polyline = this._createPolylineForSection(section, index, sections);
         let duration = arrival.arrivalTimestamp - departure.departureTimestamp;
         let headsign = journey ? journey.to : null;
         let [departureX, departureY, arrivalX, arrivalY] =
             this._getCoordsForSection(section, index, sections);
+        let intermediateStops =
+            journey ? this._createIntermediateStops(journey) : null;
 
-        let result = new Leg({ departure:            departureTime,
-                               arrival:              arrivalTime,
-                               from:                 from,
-                               to:                   to,
-                               headsign:             headsign,
-                               fromCoordinate:       [departureX,
-                                                      departureY],
-                               toCoordinate:         [arrivalX,
-                                                      arrivalY],
-                               route:                route,
-                               routeType:            routeType,
-                               polyline:             polyline,
-                               isTransit:            isTransit,
-                               duration:             duration,
-                               agencyName:           agencyName,
-                               agencyTimezoneOffset: tzOffset,
-                               tripShortName:        route });
-
-        if (journey)
-            result.intermediateStops = this._createIntermediateStops(journey);
-
-        return result;
+        return new Leg({ departure:            departureTime,
+                         arrival:              arrivalTime,
+                         from:                 from,
+                         to:                   to,
+                         headsign:             headsign,
+                         fromCoordinate:       [departureX,
+                                                departureY],
+                         toCoordinate:         [arrivalX,
+                                                arrivalY],
+                         route:                route,
+                         routeType:            routeType,
+                         isTransit:            isTransit,
+                         duration:             duration,
+                         agencyName:           agencyName,
+                         agencyTimezoneOffset: tzOffset,
+                         tripShortName:        route,
+                         intermediateStops:    intermediateStops });
     }
 
     _getHVTCodeFromCategory(category) {
@@ -374,31 +369,6 @@ export class OpendataCH {
         }
 
         return [departureX, departureY, arrivalX, arrivalY];
-    }
-
-    _createPolylineForSection(section, index, sections) {
-        let polyline;
-
-        if (section.journey) {
-            polyline = [];
-
-            section.journey.passList.forEach((pass) => {
-                let coordinate = pass.location.coordinate;
-                polyline.push(new Shumate.Coordinate({ latitude:  coordinate.x,
-                                                       longitude: coordinate.y }));
-            });
-        } else {
-            let [departureX, departureY, arrivalX, arrivalY] =
-                this._getCoordsForSection(section, index, sections);
-
-            polyline =
-                [new Shumate.Coordinate({ latitude:  departureX,
-                                          longitude: departureY }),
-                 new Shumate.Coordinate({ latitude:  arrivalX,
-                                          longitude: arrivalY })];
-        }
-
-        return polyline;
     }
 
     _createIntermediateStops(journey) {
