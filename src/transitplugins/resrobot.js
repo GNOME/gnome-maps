@@ -28,7 +28,6 @@
  */
 
 import GLib from 'gi://GLib';
-import Shumate from 'gi://Shumate';
 import Soup from 'gi://Soup';
 
 import {Application} from '../application.js';
@@ -449,8 +448,8 @@ export class Resrobot {
         let routeType =
             isTransit ? this._getHVTCodeFromCatCode(product.catCode) : null;
         let agencyName = isTransit ? product.operator : null;
-        let polyline = this._createPolylineForLeg(leg);
         let duration = leg.duration ? this._parseDuration(leg.duration) : null;
+        let intermediateStops = isTransit ? this._createIntermediateStops(leg) : null;
 
         /* if the route leg is classified as regional rail and the agency
          * is one of the heritage railways, use tourist rail to get the
@@ -462,50 +461,24 @@ export class Resrobot {
             routeType = HVT.TOURIST_RAILWAY_SERVICE;
         }
 
-        let result = new Leg({ departure:            departure,
-                               arrival:              arrival,
-                               from:                 from,
-                               to:                   to,
-                               headsign:             leg.direction,
-                               fromCoordinate:       [origin.lat,
-                                                      origin.lon],
-                               toCoordinate:         [destination.lat,
-                                                      destination.lon],
-                               route:                route,
-                               routeType:            routeType,
-                               polyline:             polyline,
-                               isTransit:            isTransit,
-                               distance:             leg.dist,
-                               duration:             duration,
-                               agencyName:           agencyName,
-                               agencyTimezoneOffset: tzOffset,
-                               tripShortName:        route });
-
-        if (isTransit)
-            result.intermediateStops = this._createIntermediateStops(leg);
-
-        return result;
-    }
-
-    _createPolylineForLeg(leg) {
-        let polyline;
-
-        if (leg.Stops && leg.Stops.Stop) {
-            polyline = [];
-
-            leg.Stops.Stop.forEach((stop) => {
-                polyline.push(new Shumate.Coordinate({ latitude:  stop.lat,
-                                                       longitude: stop.lon }));
-            });
-        } else {
-            polyline =
-                [new Shumate.Coordinate({ latitude:  leg.Origin.lat,
-                                          longitude: leg.Origin.lon }),
-                 new Shumate.Coordinate({ latitude:  leg.Destination.lat,
-                                          longitude: leg.Destination.lon })];
-        }
-
-        return polyline;
+        return new Leg({ departure:            departure,
+                         arrival:              arrival,
+                         from:                 from,
+                         to:                   to,
+                         headsign:             leg.direction,
+                         fromCoordinate:       [origin.lat,
+                                                origin.lon],
+                         toCoordinate:         [destination.lat,
+                                                destination.lon],
+                         route:                route,
+                         routeType:            routeType,
+                         isTransit:            isTransit,
+                         distance:             leg.dist,
+                         duration:             duration,
+                         agencyName:           agencyName,
+                         agencyTimezoneOffset: tzOffset,
+                         tripShortName:        route,
+                         intermediateStops:    intermediateStops });
     }
 
     _createIntermediateStops(leg) {
