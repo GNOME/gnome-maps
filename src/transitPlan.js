@@ -23,6 +23,7 @@ import gettext from 'gettext';
 
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
+import Shumate from 'gi://Shumate';
 
 import {BoundingBox} from './boundingBox.js';
 import * as HVT from './hvt.js';
@@ -523,6 +524,9 @@ export class Leg {
     }
 
     get polyline() {
+        if (!this._polyline)
+            this._createPolyline();
+
         return this._polyline;
     }
 
@@ -608,6 +612,21 @@ export class Leg {
 
     get tripShortName() {
         return this._tripShortName;
+    }
+
+    // create polyline from intermediate stops, or start and arrival coordinates
+    _createPolyline() {
+        if (this._intermediateStops)
+            this._polyline = this._intermediateStops.map((s) => {
+                return new Shumate.Coordinate({ latitude:  s.coordinate[0],
+                                                longitude: s.coordinate[1] });
+            });
+        else
+            this._polyline =
+                [new Shumate.Coordinate({ latitude:  this._fromCoordinate[0],
+                                          longitude: this._fromCoordinate[1] }),
+                 new Shumate.Coordinate({ latitude:  this._toCoordinate[0],
+                                          longitude: this._toCoordinate[1] })];
     }
 
     _createBBox() {
