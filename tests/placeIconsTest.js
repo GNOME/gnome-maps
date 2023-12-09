@@ -19,34 +19,18 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 const JsUnit = imports.jsUnit;
+import '../src/application.js';
 
 import * as PlaceIcons from '../src/placeIcons.js';
-
-/* use a minimal mock of Place, since Place throught dependencies requires
- * the GResources to be setup, so it can't easily be used from tests
- */
-class MockedPlace {
-    constructor(params) {
-        this._osmKey = params.osmKey;
-        this._osmValue = params.osmValue;
-    }
-
-    get osmKey() {
-        return this._osmKey;
-    }
-
-    get osmValue() {
-        return this._osmValue;
-    }
-}
+import { Place } from '../src/place.js';
 
 // test some known place type → icon mappings
 function testKnownTypes() {
-    let p1 = new MockedPlace({ osmKey: 'amenity', osmValue: 'restaurant' });
-    let p2 = new MockedPlace({ osmKey: 'place', osmValue: 'city' });
-    let p3 = new MockedPlace({ osmKey: 'amenity', osmValue: 'pub' });
-    let p4 = new MockedPlace({ osmKey: 'shop', osmValue: 'supermarket' });
-    let p5 = new MockedPlace({ osmKey: 'shop', osmValue: 'hairdresser' });
+    let p1 = new Place({ osmKey: 'amenity', osmValue: 'restaurant' });
+    let p2 = new Place({ osmKey: 'place', osmValue: 'city' });
+    let p3 = new Place({ osmKey: 'amenity', osmValue: 'pub' });
+    let p4 = new Place({ osmKey: 'shop', osmValue: 'supermarket' });
+    let p5 = new Place({ osmKey: 'shop', osmValue: 'hairdresser' });
 
     JsUnit.assertEquals('restaurant-symbolic', PlaceIcons.getIconForPlace(p1));
     JsUnit.assertEquals('city-symbolic', PlaceIcons.getIconForPlace(p2));
@@ -58,9 +42,9 @@ function testKnownTypes() {
 
 // test that some unknown type gets the default map marker icon
 function testDefaultIcon() {
-    let p1 = new MockedPlace({ osmKey: 'tourism', osmValue: 'unknown' });
-    let p2 = new MockedPlace({ osmKey: 'other', osmValue: 'unknown' });
-    let p3 = new MockedPlace({});
+    let p1 = new Place({ osmKey: 'tourism', osmValue: 'unknown' });
+    let p2 = new Place({ osmKey: 'other', osmValue: 'unknown' });
+    let p3 = new Place({});
 
     JsUnit.assertEquals('map-marker-symbolic', PlaceIcons.getIconForPlace(p1));
     JsUnit.assertEquals('map-marker-symbolic', PlaceIcons.getIconForPlace(p2));
