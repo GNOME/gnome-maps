@@ -21,8 +21,8 @@
 
 const JsUnit = imports.jsUnit;
 
-import {BoundingBox} from './boundingBox.js';
-import * as Constants from './constants.js';
+import {BoundingBox} from '../src/boundingBox.js';
+import * as Constants from '../src/constants.js';
 
 function main() {
     constructTest();

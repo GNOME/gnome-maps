@@ -23,7 +23,7 @@ import 'gi://Gdk?version=4.0';
 import 'gi://Gtk?version=4.0';
 import 'gi://Soup?version=3.0';
 
-import * as Wikipedia from './wikipedia.js';
+import * as Wikipedia from '../src/wikipedia.js';
 
 const JsUnit = imports.jsUnit;
 

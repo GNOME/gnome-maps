@@ -21,7 +21,7 @@
 
 const JsUnit = imports.jsUnit;
 
-import * as Address from './address.js';
+import * as Address from '../src/address.js';
 
 function streetAddressForCountryCodeTest() {
     // Test known expected address formats for some countries

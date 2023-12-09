@@ -25,7 +25,7 @@ import 'gi://Soup?version=3.0';
 
 const JsUnit = imports.jsUnit;
 
-import * as URIS from './uris.js';
+import * as URIS from '../src/uris.js';
 
 const OSM_COORD_URL1 =
     'https://www.openstreetmap.org/?lat=39.9882&lon=-78.2409&zoom=14&layers=B000FTF';

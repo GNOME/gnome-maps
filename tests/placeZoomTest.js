@@ -20,7 +20,7 @@
  */
 const JsUnit = imports.jsUnit;
 
-import * as PlaceZoom from './placeZoom.js';
+import * as PlaceZoom from '../src/placeZoom.js';
 
 // specific place types
 JsUnit.assertEquals(17,

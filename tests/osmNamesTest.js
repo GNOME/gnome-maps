@@ -22,7 +22,7 @@
 import 'gi://Gdk?version=4.0';
 import 'gi://Gtk?version=4.0';
 
-import * as OSMNames from './osmNames.js';
+import * as OSMNames from '../src/osmNames.js';
 
 const JsUnit = imports.jsUnit;
 

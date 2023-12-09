@@ -20,7 +20,7 @@
  */
 const JsUnit = imports.jsUnit;
 
-import * as PlaceIcons from './placeIcons.js';
+import * as PlaceIcons from '../src/placeIcons.js';
 
 /* use a minimal mock of Place, since Place throught dependencies requires
  * the GResources to be setup, so it can't easily be used from tests

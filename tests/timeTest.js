@@ -21,7 +21,7 @@
 
 const JsUnit = imports.jsUnit;
 
-import * as Time from './time.js';
+import * as Time from '../src/time.js';
 
 function compare12HourTime(format, hoursMinutes, AMPM) {
     JsUnit.assertTrue(format.includes(hoursMinutes));

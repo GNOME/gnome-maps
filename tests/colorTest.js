@@ -21,7 +21,7 @@
 
 const JsUnit = imports.jsUnit;
 
-import * as Color from './color.js';
+import * as Color from '../src/color.js';
 
 function parseColorTest() {
     JsUnit.assertEquals(1.0, Color.parseColor('ff0000', 0));

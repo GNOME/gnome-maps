@@ -24,8 +24,8 @@ import 'gi://Gtk?version=4.0';
 
 const JsUnit = imports.jsUnit;
 
-import * as Time from './time.js';
-import * as Translations from './translations.js';
+import * as Time from '../src/time.js';
+import * as Translations from '../src/translations.js';
 
 // sample with 3 components, one day-range, two single days, single time ranges
 const SAMPLE1 = 'Mo-Fr 09:00-18:00; Sa 10:00-15:00; Su 12:00-15:00';

@@ -24,9 +24,8 @@ import 'gi://Gtk?version=4.0';
 import 'gi://GeocodeGlib?version=2.0';
 
 import GeocodeGlib from 'gi://GeocodeGlib';
-import GLib from 'gi://GLib';
 
-import * as Utils from './utils.js';
+import * as Utils from '../src/utils.js';
 
 const JsUnit = imports.jsUnit;
 
