@@ -54,7 +54,7 @@ export class PlaceListRow extends Gtk.ListBoxRow {
         if (sizeGroup)
             sizeGroup.add_widget(this._distanceLabel);
 
-        this._typeIcon.visible = showSecondaryIcon ?? true;
+        this._showSecondaryIcon = showSecondaryIcon ?? true;
     }
 
     /**
@@ -74,10 +74,14 @@ export class PlaceListRow extends Gtk.ListBoxRow {
             this._icon.gicon = place.icon;
 
         const placeItem = Application.placeStore.getPlaceItem(place);
-        if (placeItem?.isFavorite)
-            this._typeIcon.icon_name = 'starred-symbolic';
-        else
-            this._typeIcon.icon_name = 'document-open-recent-symbolic';
+        if (placeItem && this._showSecondaryIcon) {
+            this._typeIcon.show();
+            this._typeIcon.icon_name = placeItem.isFavorite
+                ? 'starred-symbolic'
+                : 'document-open-recent-symbolic';
+        } else {
+            this._typeIcon.hide();
+        }
 
         /* hide distance by default so that a previous content from a POI
          * search doesn't keep the distance when updating with a new search
