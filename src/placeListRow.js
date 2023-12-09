@@ -24,8 +24,8 @@ import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
 import {PlaceFormatter} from './placeFormatter.js';
-import {PlaceStoreItem} from './placeStore.js';
 import * as Utils from './utils.js';
+import { Application } from './application.js';
 
 const C_ = gettext.dgettext;
 
@@ -47,20 +47,22 @@ const SHORT_DISTANCE_FORMAT = C_("short distance format string", "< %s");
 
 export class PlaceListRow extends Gtk.ListBoxRow {
 
-    constructor({placeItem, searchString, sizeGroup, ...params}) {
+    constructor({place, searchString, sizeGroup, showSecondaryIcon, ...params}) {
         super(params);
 
-        this.update(placeItem, searchString || '');
+        this.update(place, searchString || '');
         if (sizeGroup)
             sizeGroup.add_widget(this._distanceLabel);
+
+        this._typeIcon.visible = showSecondaryIcon ?? true;
     }
 
     /**
-     * @param {PlaceStoreItem} placeItem
+     * @param {Place} place
      * @param {string} searchString
      */
-    update(placeItem, searchString) {
-        this.place = placeItem.place;
+    update(place, searchString) {
+        this.place = place;
         let formatter = new PlaceFormatter(this.place);
         let markup = GLib.markup_escape_text(formatter.title, -1);
 
@@ -68,10 +70,11 @@ export class PlaceListRow extends Gtk.ListBoxRow {
         this._details.label = GLib.markup_escape_text(formatter.getDetailsString(),-1);
         this._details.visible = this._details.label.length > 0;
 
-        if (placeItem.place.icon)
-            this._icon.gicon = placeItem.place.icon;
+        if (place.icon)
+            this._icon.gicon = place.icon;
 
-        if (placeItem.isFavorite)
+        const placeItem = Application.placeStore.getPlaceItem(place);
+        if (placeItem?.isFavorite)
             this._typeIcon.icon_name = 'starred-symbolic';
         else
             this._typeIcon.icon_name = 'document-open-recent-symbolic';

@@ -87,7 +87,7 @@ export class FavoritesPopover extends Gtk.Popover {
         let rows = 0;
         for (let i = 0; i < this._model.n_items; i++) {
             const placeItem = this._model.get_item(i);
-            let row = new PlaceListRow({ placeItem, can_focus: true });
+            let row = new PlaceListRow({ place: placeItem.place, showSecondaryIcon: false, can_focus: true });
             this._list.insert(row, -1);
             rows++;
         }

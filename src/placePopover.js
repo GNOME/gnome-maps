@@ -153,10 +153,7 @@ export class PlacePopover extends SearchPopover {
             } else if (results.length === 0) {
                 this.showNoResult();
             } else {
-                let placeStore = Application.placeStore;
-                let completedPlaces = results.map((place) => placeStore.getPlaceItem(place));
-
-                this.updateResult(completedPlaces, '');
+                this.updateResult(results, '');
                 this._updateDistances();
                 this.showResult();
                 this._entry.grab_focus();
@@ -313,11 +310,11 @@ export class PlacePopover extends SearchPopover {
     }
 
     /**
-     * @param {PlaceStoreItem} placeItem
+     * @param {Place} placeItem
      * @param {string} searchString
      */
-    _addRow(placeItem, searchString) {
-        let row = new PlaceListRow({ placeItem,
+    _addRow(place, searchString) {
+        let row = new PlaceListRow({ place,
                                      searchString: searchString,
                                      sizeGroup:    this._distanceLabelSizeGroup,
                                      can_focus:    true });

@@ -375,14 +375,11 @@ export class PlaceEntry extends Gtk.SearchEntry {
             this._filter.filter.changed(Gtk.FilterChange.DIFFERENT);
             for (let i = 0; i < this._filter.n_items; i++) {
                 const placeItem = this._filter.get_item(i);
-                completedPlaces.push(placeItem);
+                completedPlaces.push(placeItem.place);
             }
         }
 
-        let placeStore = Application.placeStore;
-
-        completedPlaces =
-            completedPlaces.concat(places.map(place => placeStore.getPlaceItem(place)));
+        completedPlaces = completedPlaces.concat(places);
 
         this._popover.updateResult(completedPlaces, searchText);
         this._popover.showResult();
