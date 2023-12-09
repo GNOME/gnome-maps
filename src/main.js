@@ -37,6 +37,7 @@ import 'gi://Xdp?version=1.0';
 import * as system from 'system';
 
 import {Application} from './application.js';
+import './prototypes.js';
 
 pkg.initGettext();
 pkg.initFormat();
@@ -46,11 +47,6 @@ function main(args) {
      * TODO: if we get more of these, might move initing
      * to a decicated Prototypes modules.
      */
-    if (!Array.prototype.last) {
-        Array.prototype.last = function() {
-            return this[this.length - 1];
-        }
-    }
 
     let application = new Application();
     return application.run(args);

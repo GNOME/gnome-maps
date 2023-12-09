@@ -27,18 +27,14 @@ install_symlink(
 	pointing_to: pkgdatadir / app_id,
 )
 
-sources_conf = configuration_data()
-sources_conf.set('suffix', suffix)
-# comment-out test sources
-sources_conf.set('testopencomment', '<!--')
-sources_conf.set('testclosecomment', '-->')
-
-gnome.compile_resources(
+src_gresource = gnome.compile_resources(
 	app_id + '.src',
 	configure_file(
 		input: 'org.gnome.Maps.src.gresource.xml.in',
 		output: 'org.gnome.Maps.src.gresource.xml',
-		configuration: sources_conf
+		configuration: {
+			'suffix': suffix,
+		}
 	),
 	gresource_bundle: true,
 	install: true,

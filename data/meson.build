@@ -4,7 +4,7 @@ if (get_option('profile') == 'development')
 else
 	data_conf.set('suffix', '')
 endif
-gnome.compile_resources(
+data_gresource = gnome.compile_resources(
 	app_id + '.data',
 	configure_file(
 		input: 'org.gnome.Maps.data.gresource.xml.in',

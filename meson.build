@@ -10,6 +10,7 @@ if get_option('profile') == 'development'
 	app_id = 'org.gnome.Maps.Devel'
 endif
 
+fs = import('fs')
 gnome = import('gnome')
 i18n = import('i18n')
 

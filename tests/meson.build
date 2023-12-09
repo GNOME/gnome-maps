@@ -27,30 +27,35 @@ foreach test : tests
   )
 endforeach
 
-sources_conf = configuration_data()
-sources_conf.set('suffix', suffix)
-# include test sources
-sources_conf.set('testopencomment', '')
-sources_conf.set('testclosecomment', '')
-
-# generate combined GResource with source files and tests to use ES modules
-gnome.compile_resources(
-  'test.src',
+test_gresource = gnome.compile_resources(
+  app_id + '.test',
   configure_file(
-	input: '../src/org.gnome.Maps.src.gresource.xml.in',
-	output: 'test.src.gresource.xml',
-	configuration: sources_conf
+    input: 'org.gnome.Maps.test.gresource.xml.in',
+    output: 'test.src.gresource.xml',
+    configuration: {
+      'suffix': suffix,
+    }
   ),
   gresource_bundle: true,
   install: false,
   install_dir: meson.project_build_root(),
-  source_dir: ['../src', '../src/geojson-vt']
+)
+
+test_wrapper = configure_file(
+  input: 'test-wrapper.sh.in',
+  output: 'test-wrapper.sh',
+  configuration: {
+    'GJS': gjs.full_path(),
+    'LIBMAPS_DIR': fs.parent(libmaps_typelib.full_path()),
+  },
 )
 
 foreach test : tests
-  test(test, gjs,
+  test(test, test_wrapper,
        args: ['tests/@0@'.format(test),
-              join_paths(meson.project_build_root(), 'tests', 'test.src.gresource')],
+              src_gresource,
+              data_gresource,
+              test_gresource],
        env:  ['LANG=en_US.utf8', 'LC_ALL=en_US.utf8']
   )
 endforeach

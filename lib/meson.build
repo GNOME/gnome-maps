@@ -37,7 +37,7 @@ libmaps = shared_library(
 	install_dir: pkglibdir
 )
 
-gnome.generate_gir(
+libmaps_gir_targets = gnome.generate_gir(
 	libmaps,
 	sources: sources + [headers_private],
 	nsversion: maps_gir_version,
@@ -54,3 +54,5 @@ gnome.generate_gir(
 	install_dir_typelib: join_paths(pkglibdir, 'girepository-' + maps_gir_version)
 )
 
+libmaps_gir = libmaps_gir_targets[0]
+libmaps_typelib = libmaps_gir_targets[1]

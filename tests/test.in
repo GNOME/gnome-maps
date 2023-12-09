@@ -10,9 +10,10 @@ log('program name: ' + imports.system.programInvocationName);
 log('ARG: ' + imports.system.programArgs);
 
 // manually load GResource from build tree for the generated test scripts
-let resource = Gio.Resource.load(imports.system.programArgs[0]);
-
-resource._register();
+for (const arg of imports.system.programArgs) {
+    const resource = Gio.Resource.load(arg);
+    resource._register();
+}
 
 import(`resource:///org/gnome/Maps@suffix@/js/@name@.js`).catch(error => {
     console.error(error);
