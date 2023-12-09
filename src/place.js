@@ -399,16 +399,16 @@ export class Place extends GeocodeGlib.Place {
     }
 
     match(searchString) {
-        let name = this.name;
-        if (!name)
-            return false;
+        if (searchString.length === 0)
+            return true;
 
         searchString = Utils.normalizeString(searchString);
         if (searchString === null)
             return false;
 
-        if (searchString.length === 0)
-            return true;
+        let name = this.name;
+        if (!name)
+            return false;
 
         name = Utils.normalizeString(name);
         if (name === null)
