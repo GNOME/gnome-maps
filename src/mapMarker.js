@@ -114,11 +114,9 @@ export class MapMarker extends Shumate.Marker {
 
     get bubble() {
         if (this._bubble === undefined && this._hasBubble()) {
-            if (this._place.name) {
-                this._bubble = new MapBubble({ place: this._place,
-                                               mapView: this._mapView });
-                this._bubble.set_parent(this._mapView);
-            }
+            this._bubble = new MapBubble({ place: this._place,
+                                            mapView: this._mapView });
+            this._bubble.set_parent(this._mapView);
         }
 
         return this._bubble;
