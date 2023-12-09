@@ -85,7 +85,6 @@ export class PlaceStore extends GObject.Object {
     _addPlaceItem(placeItem) {
         this._places.push(placeItem);
         this.items_changed(this._places.length - 1, 0, 1);
-        this.markDirty();
     }
 
     get item_type() {
@@ -236,6 +235,7 @@ export class PlaceStore extends GObject.Object {
 
         const placeItem = new PlaceStoreItem(this, place);
         this._addPlaceItem(placeItem);
+        this.markDirty();
         return placeItem;
     }
 

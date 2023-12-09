@@ -52,6 +52,7 @@ testPlaceStore();
 testPre46Migration();
 testForwardCompatibility();
 testRecentRetention();
+testNoSaveDuringLoad();
 
 function testPlaceStore() {
     const storage = new TestStorage(null);
@@ -336,4 +337,39 @@ function testRecentRetention() {
     }
 
     JsUnit.assertEquals(26, store.n_items);
+}
+
+function testNoSaveDuringLoad() {
+    const storage = {
+        load() {
+            return {
+                places: [
+                    {
+                        type: PlaceStoreItem.PlaceType.ROUTE,
+                        isFavorite: true,
+                        place: {
+                            name: "Test",
+                            route: {
+                                path: "",
+                                turnPoints: [],
+                            },
+                            places: [
+                                {
+                                    name: "Test",
+                                    location: ARBITRARY_LOCATION,
+                                    osm_type: 1,
+                                    osm_id: 1,
+                                },
+                            ],
+                        },
+                    },
+                ],
+            };
+        },
+        save() {
+            throw new Error("save() called during load()");
+        },
+    };
+    const store = new PlaceStore({ storage });
+    store.load();
 }
