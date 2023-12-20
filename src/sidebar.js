@@ -312,7 +312,7 @@ export class Sidebar extends Gtk.Grid {
                     geoclue: Application.geoclue
                 });
 
-                if (!storedRoute.containsNull) {
+                if (!storedRoute.containsNull && !storedRoute.containsCurrentLocation) {
                     placeStore.addPlace(storedRoute);
                 }
                 this._storeRouteTimeoutId = 0;
