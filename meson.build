@@ -30,7 +30,7 @@ maps_gir_name = 'GnomeMaps'
 maps_gir_version = '1.0'
 
 desktop_file_validate = find_program('desktop-file-validate', required: false)
-appstream_util = find_program('appstream-util', required: false)
+appstreamcli = find_program('appstreamcli', required: false)
 
 glib = dependency('glib-2.0', version: '>= 2.66.0')
 gio = dependency('gio-2.0', version: '>= 2.44.0')

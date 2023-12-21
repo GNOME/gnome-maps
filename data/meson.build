@@ -86,13 +86,13 @@ if desktop_file_validate.found()
 	)
 endif
 
-if appstream_util.found()
+if appstreamcli.found()
 	test(
 		'validate-appdata',
-		appstream_util,
+		appstreamcli,
 		args: [
-			'validate-relax',
-			'--nonet',
+			'validate',
+			'--no-net',
 			appdata_file.full_path()
 		]
 	)
