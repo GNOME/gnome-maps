@@ -185,7 +185,17 @@ export class StoredRoute extends Place {
                 break;
 
             case 'places':
-                prop.forEach((p) => places.push(Place.fromJSON(p)));
+                for (const p of prop) {
+                    const place = Place.fromJSON(p);
+
+                    /* If a place can't be deserialized, assume the whole route is
+                       either corrupt or from a newer version of Maps. */
+                    if (place === null)
+                        return null;
+
+                    places.push(Place.fromJSON(p));
+
+                }
                 break;
             }
         }

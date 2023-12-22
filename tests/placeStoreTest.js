@@ -128,6 +128,7 @@ function testForwardCompatibility() {
                     },
                     places: [
                         {
+                            type: PlaceStoreItem.PlaceType.PLACE,
                             name: "Test",
                             location: ARBITRARY_LOCATION,
                             unknownFutureMetadata: "test5",
@@ -136,6 +137,23 @@ function testForwardCompatibility() {
                     unknownFutureMetadata: "test6",
                 },
                 unknownFutureMetadata: "test7",
+            },
+            {
+                place: {
+                    type: PlaceStoreItem.PlaceType.ROUTE,
+                    name: "test9",
+                    route: {
+                        path: "",
+                        turnPoints: [],
+                    },
+                    places: [
+                        {
+                            type: -100,
+                            name: "Test",
+                            location: ARBITRARY_LOCATION,
+                        },
+                    ],
+                },
             },
             {
                 place: {
@@ -162,6 +180,10 @@ function testForwardCompatibility() {
         storage.json.places[1].place.route.unknownFutureMetadata
     );
     JsUnit.assertEquals(
+        PlaceStoreItem.PlaceType.PLACE,
+        storage.json.places[1].place.places[0].type
+    );
+    JsUnit.assertEquals(
         "test5",
         storage.json.places[1].place.places[0].unknownFutureMetadata
     );
@@ -170,8 +192,11 @@ function testForwardCompatibility() {
         storage.json.places[1].place.unknownFutureMetadata
     );
     JsUnit.assertEquals("test7", storage.json.places[1].unknownFutureMetadata);
-    JsUnit.assertEquals(-100, storage.json.places[2].place.type);
-    JsUnit.assertEquals("test8", storage.json.places[2].unknownFutureMetadata);
+
+    JsUnit.assertEquals(-100, storage.json.places[2].place.places[0].type);
+
+    JsUnit.assertEquals(-100, storage.json.places[3].place.type);
+    JsUnit.assertEquals("test8", storage.json.places[3].unknownFutureMetadata);
 }
 
 function testPre46Migration() {
