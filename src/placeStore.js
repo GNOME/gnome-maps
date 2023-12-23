@@ -102,32 +102,32 @@ export class PlaceStore extends GObject.Object {
     load() {
         let jsonData;
 
-        if (this._storage) {
-            jsonData = this._storage.load();
-            if (jsonData === null) return;
-        } else {
-            this._storage = new JsonStorage(this._filename);
-
-            jsonData = this._storage.load();
-            if (jsonData === null) {
-                // Try the pre-46 location
-                const filename = GLib.build_filenamev([
-                    GLib.get_user_data_dir(),
-                    "maps-places.json",
-                ]);
-
-                let buffer = Utils.readFile(filename);
-                if (buffer === null) return;
-
-                jsonData = JSON.parse(Utils.getBufferText(buffer));
-            }
-        }
-
-        if (jsonData.places === undefined) {
-            jsonData = this._migrateFromPre46(jsonData);
-        }
-
         try {
+            if (this._storage) {
+                jsonData = this._storage.load();
+                if (jsonData === null) return;
+            } else {
+                this._storage = new JsonStorage(this._filename);
+
+                jsonData = this._storage.load();
+                if (jsonData === null) {
+                    // Try the pre-46 location
+                    const filename = GLib.build_filenamev([
+                        GLib.get_user_data_dir(),
+                        "maps-places.json",
+                    ]);
+
+                    let buffer = Utils.readFile(filename);
+                    if (buffer === null) return;
+
+                    jsonData = JSON.parse(Utils.getBufferText(buffer));
+                }
+            }
+
+            if (jsonData.places === undefined) {
+                jsonData = this._migrateFromPre46(jsonData);
+            }
+
             this._originalJSON = jsonData;
             this._unknownPlaces = [];
 
@@ -142,7 +142,24 @@ export class PlaceStore extends GObject.Object {
             });
         } catch (e) {
             logError(e);
-            throw new Error("failed to parse places file");
+
+            /* Make a backup of the unreadable file, so we don't destroy
+               user data if it's a bug */
+            const date = new Date();
+            const backupFilename =
+                this._filename +
+                "-" +
+                date.toISOString().replace(/[T:]/g, "-").substring(0, 19) +
+                ".bak";
+            const file = Gio.File.new_for_path(this._filename);
+            const backupFile = Gio.File.new_for_path(backupFilename);
+            file.copy(backupFile, Gio.FileCopyFlags.OVERWRITE, null, null);
+
+            log(
+                "The place store file could not be read. A backup has been saved to " +
+                    backupFilename +
+                    " and a new one will be created."
+            );
         }
     }
 
