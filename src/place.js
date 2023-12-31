@@ -54,22 +54,22 @@ export class Place extends GObject.Object {
 
         /* Some of these properties are read as snake_case for backward compatibility
         with the place store. */
-        this._osmId = params.osm_id;
-        this._osmType = params.osm_type;
+        this._osmId = params.osmId;
+        this._osmType = params.osmType;
         this._name = params.name;
         this._location = params.location;
-        this._boundingBox = params.bounding_box ?? null;
-        this._placeType = params.place_type;
-        this._streetAddress = params.street_address;
+        this._boundingBox = params.boundingBox ?? null;
+        this._placeType = params.placeType;
+        this._streetAddress = params.streetAddress;
         this._street = params.street;
         this._building = params.building;
-        this._postalCode = params.postal_code;
+        this._postalCode = params.postalCode;
         this._area = params.area;
         this._town = params.town;
         this._state = params.state;
         this._county = params.county;
         this._country = params.country;
-        this._countryCode = params.country_code;
+        this._countryCode = params.countryCode;
         this._continent = params.continent;
         this._originalJson = params.originalJson;
 
@@ -354,10 +354,10 @@ export class Place extends GObject.Object {
     }
 
     toJSON() {
-        let bounding_box = null;
+        let boundingBox = null;
 
         if (this.boundingBox) {
-            bounding_box = { top: this.boundingBox.top,
+            boundingBox = { top: this.boundingBox.top,
                              bottom: this.boundingBox.bottom,
                              left: this.boundingBox.left,
                              right: this.boundingBox.right };
@@ -376,21 +376,21 @@ export class Place extends GObject.Object {
                  osmKey: this._osmKey,
                  osmValue: this._osmValue,
                  osmTags: this._osmTags,
-                 place_type: this._placeType,
+                 placeType: this._placeType,
                  name: this._name,
                  nativeName: this._nativeName,
-                 bounding_box: bounding_box,
+                 boundingBox,
                  location: location,
-                 street_address: this._streetAddress,
+                 streetAddress: this._streetAddress,
                  street: this._street,
                  building: this._building,
-                 postal_code: this._postalCode,
+                 postalCode: this._postalCode,
                  area: this._area,
                  town: this._town,
                  state: this._state,
                  county: this._county,
                  country: this._country,
-                 country_code: this._countryCode,
+                 countryCode: this._countryCode,
                  continent: this._continent };
     }
 
@@ -426,21 +426,13 @@ export class Place extends GObject.Object {
             let prop = obj[key];
 
             switch(key) {
-                case 'osmId':
-                    props.osm_id = prop;
-                    break;
-
-                case 'osmType':
-                    props.osm_type = prop;
-                    break;
-
                 case 'location':
                     props.location = new Location(prop);
                     break;
 
-                case 'bounding_box':
+                case 'boundingBox':
                     if (prop)
-                        props.bounding_box = new GeocodeGlib.BoundingBox(prop);
+                        props.boundingBox = new GeocodeGlib.BoundingBox(prop);
                     break;
 
                 default:

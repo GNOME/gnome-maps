@@ -63,8 +63,8 @@ function testPlaceStore() {
     const originalPlace = new Place({
         name: "Test",
         location: ARBITRARY_LOCATION,
-        osm_type: 1,
-        osm_id: 1,
+        osmType: 1,
+        osmId: 1,
     });
 
     const originalPlaceStoreItem = store.addPlace(originalPlace);
@@ -74,8 +74,8 @@ function testPlaceStore() {
     const placeCopy = new Place({
         name: "Test",
         location: ARBITRARY_LOCATION,
-        osm_type: 1,
-        osm_id: 1,
+        osmType: 1,
+        osmId: 1,
     });
     JsUnit.assertEquals(originalPlaceStoreItem, store.getPlaceItem(placeCopy));
     JsUnit.assertEquals(originalPlace, store.get(placeCopy));
@@ -84,8 +84,8 @@ function testPlaceStore() {
     const addedPlace = new Place({
         name: "Test 2",
         location: ARBITRARY_LOCATION,
-        osm_type: 1,
-        osm_id: 1,
+        osmType: 1,
+        osmId: 1,
     });
     const addedPlaceStoreItem = store.addPlace(addedPlace);
     JsUnit.assertEquals(1, store.n_items);
@@ -96,8 +96,8 @@ function testPlaceStore() {
     const addedPlace2 = new Place({
         name: "Test",
         location: ARBITRARY_LOCATION,
-        osm_type: 1,
-        osm_id: 2,
+        osmType: 1,
+        osmId: 2,
     });
     const addedPlaceStoreItem2 = store.addPlace(addedPlace2);
     JsUnit.assertEquals(2, store.n_items);
@@ -324,8 +324,8 @@ function testRecentRetention() {
     const favoritePlace = new Place({
         name: "Test",
         location: ARBITRARY_LOCATION,
-        osm_type: 1,
-        osm_id: 1000,
+        osmType: 1,
+        osmId: 1000,
     });
     const item = store.addPlace(favoritePlace);
     item.isFavorite = true;
@@ -334,8 +334,8 @@ function testRecentRetention() {
         const place = new Place({
             name: "Test",
             location: ARBITRARY_LOCATION,
-            osm_type: 1,
-            osm_id: i,
+            osmType: 1,
+            osmId: i,
         });
         store.addPlace(place);
     }
@@ -353,8 +353,8 @@ function testRecentRetention() {
                 new Place({
                     name: "Test",
                     location: ARBITRARY_LOCATION,
-                    osm_type: 1,
-                    osm_id: i,
+                    osmType: 1,
+                    osmId: i,
                 }),
             ],
         });
@@ -382,8 +382,8 @@ function testNoSaveDuringLoad() {
                                 {
                                     name: "Test",
                                     location: ARBITRARY_LOCATION,
-                                    osm_type: 1,
-                                    osm_id: 1,
+                                    osmType: 1,
+                                    osmId: 1,
                                 },
                             ],
                         },

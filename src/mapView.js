@@ -773,7 +773,7 @@ export class MapView extends Gtk.Overlay {
         let place = new Place({
             location: new Location({ latitude  : lat,
                                               longitude : lon }),
-            bounding_box: new GeocodeGlib.BoundingBox({ top    : bbox.top,
+            boundingBox: new GeocodeGlib.BoundingBox({ top    : bbox.top,
                                                         bottom : bbox.bottom,
                                                         left   : bbox.left,
                                                         right  : bbox.right })

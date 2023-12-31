@@ -269,8 +269,8 @@ export class Overpass {
                 longitude,
                 accuracy: 0.0
             }),
-            osm_type: Utils.osmTypeFromString(osmType),
-            osm_id: osmId + '',
+            osmType: Utils.osmTypeFromString(osmType),
+            osmId: osmId + '',
             osmTags: element.tags,
             prefilled: true
         });

@@ -125,10 +125,6 @@ export class StoredRoute extends Place {
                      distance: turnPoint.distance,
                      instruction: turnPoint.instruction };
         });
-        let bounding_box = { top: this.route.bbox.top,
-                             bottom: this.route.bbox.bottom,
-                             left: this.route.bbox.left,
-                             right: this.route.bbox.right };
 
         let path = epaf.encode(this.route.path);
 
