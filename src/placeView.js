@@ -19,6 +19,8 @@
  * Author: Damián Nohales <damiannohales@gmail.com>
  */
 
+import gettext from 'gettext';
+
 import GeocodeGlib from 'gi://GeocodeGlib';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
@@ -39,6 +41,9 @@ import {PlaceStore} from './placeStore.js';
 import * as Translations from './translations.js';
 import * as Utils from './utils.js';
 import * as Wikipedia from './wikipedia.js';
+
+const _ = gettext.gettext;
+const ngettext = gettext.ngettext;
 
 // maximum dimension of thumbnails to fetch from Wikipedia
 const THUMBNAIL_FETCH_SIZE = 360;
@@ -293,6 +298,60 @@ export class PlaceView extends Gtk.Box {
                            icon: 'mail-unread-symbolic',
                            info: GLib.markup_escape_text(place.email, -1),
                            linkUrl: `mailto:${place.email}` });
+        }
+
+        if (place.levelRef) {
+            /* If a reference to a named floor (named or symbolic) exists
+             * refer to it directly.
+             */
+
+            /* Translators:
+             * This is a reference to named building floor, using a label
+             * or a code, as "displayed in the elevator"
+             */
+            content.push({ label: _("Floor"),
+                           icon:  'steps-symbolic',
+                           info:  _("Floor %s").format(place.levelRef) });
+        } else if (place.level) {
+            /* Else if a floor level relative to ground level exists,
+             * display it indicating the relation to ground, or when 0 that
+             * it's ground level
+             */
+            const level = parseInt(place.level);
+
+            if (!isNaN(level)) {
+                let info;
+
+                if (level === 0) {
+                    info = _("At ground level");
+                } else if (level > 0) {
+                    const levelString = level.toLocaleString();
+
+                    /* Translators:
+                     * This is a reference to a number of floors above
+                     * ground level.
+                     * The %s placeholder is the integer relative number of floors
+                     */
+                    info = ngettext("%s floor above ground level",
+                                    "%s floors above ground level", level)
+                                    .format(levelString);
+                } else {
+                    const levelString = (-level).toLocaleString();
+
+                    /* Translators:
+                     * This is a reference to a number of floors below
+                     * ground level.
+                     * The %s placeholder is the integer relative number of floors
+                     */
+                    info = ngettext("%s floor below ground level",
+                                    "%s floors below ground level", -level)
+                                    .format(levelString);
+                }
+
+                content.push({ label: _("Floor"),
+                               icon:  'steps-symbolic',
+                               info:  info });
+            }
         }
 
         if (place.isEatingAndDrinking) {
