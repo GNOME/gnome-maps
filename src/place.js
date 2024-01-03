@@ -353,6 +353,14 @@ export class Place extends GObject.Object {
                 'restaurant', 'pub'].indexOf(this._osmValue) !== -1;
     }
 
+    get level() {
+        return this.osmTags?.level;
+    }
+
+    get levelRef() {
+        return this.osmTags?.['level:ref'];
+    }
+
     toJSON() {
         let boundingBox = null;
 
