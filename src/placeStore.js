@@ -490,8 +490,10 @@ export class PlaceStoreItem extends GObject.Object {
 
         return {
             ...this._originalJSON,
-            place: this._place.toJSON(),
-            type,
+            place: {
+                ...this._place.toJSON(),
+                type,
+            },
             isFavorite: this._isFavorite,
             updated: this._updated.getTime(),
             viewOrd: this._viewOrd,
