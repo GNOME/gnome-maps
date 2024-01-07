@@ -15,6 +15,8 @@
  * with GNOME Maps; if not, see <http://www.gnu.org/licenses/>.
  */
 
+import Gio from 'gi://Gio';
+
 import * as Utils from "./utils.js";
 
 /**
