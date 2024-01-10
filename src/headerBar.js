@@ -53,11 +53,6 @@ export class HeaderBarRight extends Gtk.Box {
         super(params);
 
         this._favoritesButton.popover = new FavoritesPopover({ mapView: mapView });
-        let favoritesPopover = this._favoritesButton.popover;
-        this._favoritesButton.sensitive = favoritesPopover.rows > 0;
-        favoritesPopover.connect('notify::rows', () => {
-            this._favoritesButton.sensitive = favoritesPopover.rows > 0;
-        });
 
         mapView.bind_property('routeShowing', this._printRouteButton,
                               'visible', GObject.BindingFlags.DEFAULT);

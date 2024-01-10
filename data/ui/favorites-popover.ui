@@ -4,32 +4,47 @@
   <template class="Gjs_FavoritesPopover" parent="GtkPopover">
     <property name="width-request">320</property>
     <property name="child">
-      <object class="GtkBox" id="mainBox">
-        <property name="orientation">vertical</property>
+      <object class="GtkStack" id="stack">
         <child>
-          <object class="GtkBox" id="entryBox">
-            <child>
-              <object class="GtkEntry" id="entry">
-                <property name="hexpand">True</property>
-                <property name="focusable">1</property>
-              </object>
-            </child>
+          <object class="AdwStatusPage" id="empty">
+            <property name="icon-name">starred-symbolic</property>
+            <property name="title" translatable="yes">No favorites</property>
+            <property name="description" translatable="yes">Add places to your favorites to get them listed here</property>
             <style>
-              <class name="dropdown-searchbar"/>
+              <class name="compact"/>
+              <class name="dim-label"/>
             </style>
           </object>
         </child>
         <child>
-          <object class="GtkScrolledWindow" id="scrolledWindow">
-            <property name="hscrollbar_policy">never</property>
-            <property name="max-content-height">400</property>
-            <property name="propagate-natural-height">True</property>
-            <property name="child">
-              <object class="GtkListBox" id="list">
-                <property name="hexpand">1</property>
-                <property name="vexpand">1</property>
+          <object class="GtkBox" id="mainBox">
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkBox" id="entryBox">
+                <child>
+                  <object class="GtkEntry" id="entry">
+                    <property name="hexpand">True</property>
+                    <property name="focusable">1</property>
+                  </object>
+                </child>
+                <style>
+                  <class name="dropdown-searchbar"/>
+                </style>
               </object>
-            </property>
+            </child>
+            <child>
+              <object class="GtkScrolledWindow" id="scrolledWindow">
+                <property name="hscrollbar_policy">never</property>
+                <property name="max-content-height">400</property>
+                <property name="propagate-natural-height">True</property>
+                <property name="child">
+                  <object class="GtkListBox" id="list">
+                    <property name="hexpand">1</property>
+                    <property name="vexpand">1</property>
+                  </object>
+                </property>
+              </object>
+            </child>
           </object>
         </child>
       </object>

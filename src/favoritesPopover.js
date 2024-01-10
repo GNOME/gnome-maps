@@ -42,12 +42,8 @@ export class FavoritesPopover extends Gtk.Popover {
         this._model.connect('items-changed',
                             this._updateList.bind(this));
 
-        this.connect('notify::rows', () => {
-            this._entryBox.visible = this.rows > _N_VISIBLE;
-        });
-
         this._entry.connect('changed',
-                            () => this._list.invalidate_filter(this._list));
+                            () => this._list.invalidate_filter());
 
         this._list.connect('row-activated', (list, row) => {
             this.hide();
@@ -59,17 +55,6 @@ export class FavoritesPopover extends Gtk.Popover {
         });
 
         this._updateList();
-    }
-
-    set rows(rows) {
-        if (rows !== this._rows) {
-            this._rows = rows;
-            this.notify('rows');
-        }
-    }
-
-    get rows() {
-        return this._rows;
     }
 
     _updateList() {
@@ -92,22 +77,18 @@ export class FavoritesPopover extends Gtk.Popover {
             rows++;
         }
 
-        this.rows = rows;
+        this._stack.set_visible_child(rows === 0 ? this._empty : this._mainBox);
+        this._entryBox.visible = rows > _N_VISIBLE;
     }
 }
 
 GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/favorites-popover.ui',
-    InternalChildren: [ 'entryBox',
+    InternalChildren: [ 'stack',
+                        'empty',
+                        'mainBox',
+                        'entryBox',
                         'entry',
                         'scrolledWindow',
-                        'list' ],
-    Properties: {
-        'rows': GObject.ParamSpec.int('rows',
-                                        '',
-                                        '',
-                                        GObject.ParamFlags.READABLE |
-                                        GObject.ParamFlags.WRITABLE,
-                                        0, GLib.MAXINT32, 0)
-    }
+                        'list' ]
 }, FavoritesPopover);
