@@ -17,6 +17,7 @@
  * Author: Jonas Danielsson <jonas@threetimestwo.org>
  */
 
+import Adw from 'gi://Adw';
 import GLib from 'gi://GLib';
 import Gio from 'gi://Gio';
 import Gdk from 'gi://Gdk';
@@ -25,6 +26,7 @@ import GnomeMaps from 'gi://GnomeMaps';
 
 import * as Service from './service.js';
 import * as Utils from './utils.js';
+import { generateMapStyle } from './mapStyle/mapStyle.js';
 
 /* Converts a tile URI format from Champlain style to Shumate style.
  * e.g. from
@@ -69,8 +71,9 @@ export function createPrintSource() {
 }
 
 export function createVectorSource() {
-    const [_status, styleFile] = Gio.file_new_for_uri('resource://org/gnome/Maps/styles/osm-liberty/style.json').load_contents(null);
-    const style = JSON.parse(Utils.getBufferText(styleFile));
+    const style = generateMapStyle({
+        colorScheme: Adw.StyleManager.get_default().dark ? "dark" : "light",
+    });
 
     const [_status1, shieldLayerFile] = Gio.file_new_for_uri('resource://org/gnome/Maps/shields/layer.json').load_contents(null);
     const shieldLayer = JSON.parse(Utils.getBufferText(shieldLayerFile));
