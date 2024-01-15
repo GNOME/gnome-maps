@@ -427,11 +427,39 @@ export class MapView extends Gtk.Overlay {
         return this._mapType;
     }
 
-    setMapType(mapType) {
-        if (this._mapType && this._mapType === mapType)
+    _listenForVectorChanges() {
+        if (this._stopListeningForVectorChanges)
+            return;
+
+        const styleManager = Adw.StyleManager.get_default();
+        const settings = this.get_settings();
+
+        const darkNotify = styleManager.connect('notify::dark', () => {
+            this.setMapType(this._mapType, true);
+        });
+
+        const textSizeNotify = settings.connect('notify::gtk-xft-dpi', () => {
+            this.setMapType(this._mapType, true);
+        });
+
+        this._stopListeningForVectorChanges = () => {
+            styleManager.disconnect(darkNotify);
+            settings.disconnect(textSizeNotify);
+            this._stopListeningForVectorChanges = null;
+        }
+    }
+
+    setMapType(mapType, forceReload = false) {
+        if (this._mapType && this._mapType === mapType && !forceReload)
             return;
 
         this._mapType = mapType;
+
+        if (mapType !== MapView.MapType.VECTOR) {
+            if (this._stopListeningForVectorChanges) {
+                this._stopListeningForVectorChanges();
+            }
+        }
 
         let mapSource;
 
@@ -440,8 +468,10 @@ export class MapView extends Gtk.Overlay {
 
             if (mapType === MapView.MapType.AERIAL && tiles.aerial)
                 mapSource = MapSource.createAerialSource();
-            else if (mapType === MapView.MapType.VECTOR && Shumate.VectorRenderer.is_supported())
+            else if (mapType === MapView.MapType.VECTOR && Shumate.VectorRenderer.is_supported()) {
                 mapSource = MapSource.createVectorSource();
+                this._listenForVectorChanges();
+            }
             else
                 mapSource = MapSource.createStreetSource();
 
