@@ -616,17 +616,23 @@ export class Leg {
 
     // create polyline from intermediate stops, or start and arrival coordinates
     _createPolyline() {
-        if (this._intermediateStops)
-            this._polyline = this._intermediateStops.map((s) => {
+        if (this._intermediateStops) {
+            const first =
+                new Shumate.Coordinate({ latitude:  this._fromCoordinate[0],
+                                         longitude: this._fromCoordinate[1] });
+            const rest = this._intermediateStops.map((s) => {
                 return new Shumate.Coordinate({ latitude:  s.coordinate[0],
                                                 longitude: s.coordinate[1] });
             });
-        else
+
+            this._polyline = [first, ...rest];
+        } else {
             this._polyline =
                 [new Shumate.Coordinate({ latitude:  this._fromCoordinate[0],
                                           longitude: this._fromCoordinate[1] }),
                  new Shumate.Coordinate({ latitude:  this._toCoordinate[0],
                                           longitude: this._toCoordinate[1] })];
+        }
     }
 
     _createBBox() {
