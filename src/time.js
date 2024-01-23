@@ -80,10 +80,17 @@ const _DIGIT_RANGE_BASES = [
 ];
 
 // in org.gnome.desktop.interface
+const CLOCK_FORMAT_SCHEMA = 'org.gnome.desktop.interface';
 const CLOCK_FORMAT_KEY = 'clock-format';
 
-let _desktopSettings = new Gio.Settings({ schema_id: 'org.gnome.desktop.interface' });
-let _clockFormat = _desktopSettings.get_string(CLOCK_FORMAT_KEY);
+const PORTAL_BUS_NAME = 'org.freedesktop.portal.Desktop';
+const PORTAL_OBJECT_PATH = '/org/freedesktop/portal/desktop';
+const PORTAL_SETTINGS_INTERFACE = 'org.freedesktop.portal.Settings';
+
+
+let _desktopSettings = new Gio.Settings({ schema_id: CLOCK_FORMAT_SCHEMA });
+let _clockFormat;
+let _portal;
 
 const _timeFormat24 = new Intl.DateTimeFormat([], { hour:     '2-digit',
                                                     minute:   '2-digit',
@@ -177,7 +184,49 @@ export function parseTimeString(timeString) {
     }
 }
 
+function setupClockFormatPortal() {
+    _portal = Gio.DBusProxy.new_for_bus_sync(Gio.BusType.SESSION,
+                                             Gio.DBusProxyFlags.NONE,
+                                             null,
+                                             PORTAL_BUS_NAME,
+                                             PORTAL_OBJECT_PATH,
+                                             PORTAL_SETTINGS_INTERFACE,
+                                             null);
+
+    const result = _portal.call_sync('Read',
+                                     new GLib.Variant('(ss)',
+                                                      [CLOCK_FORMAT_SCHEMA,
+                                                       CLOCK_FORMAT_KEY]),
+                                     Gio.DBusCallFlags.NONE,
+                                     -1,
+                                     null);
+
+    _portal.connect('g-signal', (proxy, senderName, signalName, parameters) => {
+        if (signalName !== 'SettingChanged')
+            return;
+
+        _clockFormat = parameters.deepUnpack()[2].deepUnpack();
+    });
+
+    [_clockFormat,] = result.deepUnpack()[0].unpack().get_string();
+}
+
 let _is12Hour = function() {
+    if (!_clockFormat) {
+        try {
+            setupClockFormatPortal();
+        } catch (e) {
+            log('Failed to get clock format from portal, fallback to GSettings');
+
+            _desktopSettings.connect('changed', (settings, key) => {
+                if (key === CLOCK_FORMAT_KEY)
+                    _clockFormat = _desktopSettings.get_string(CLOCK_FORMAT_KEY);
+            });
+
+            _clockFormat = _desktopSettings.get_string(CLOCK_FORMAT_KEY);
+        }
+    }
+
     return _clockFormat === '12h';
 }
 
