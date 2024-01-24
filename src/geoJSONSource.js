@@ -95,9 +95,11 @@ export class GeoJSONSource extends GnomeMaps.SyncMapSource {
     }
 
     _parsePoint(coordinates, properties) {
-        let name = null;
-        if (properties)
-            name = properties.name;
+        let name = null, description = null;
+        if (properties) {
+            name = properties.title ?? properties.name;
+            description = properties.description;
+        }
 
         this._validate(coordinates);
         this._bbox.extend(coordinates[1],
@@ -106,7 +108,7 @@ export class GeoJSONSource extends GnomeMaps.SyncMapSource {
         let location = new Location({ latitude: coordinates[1],
                                       longitude: coordinates[0] });
 
-        let place = new Place({ name: name, store: false, location: location });
+        let place = new Place({ name, description, store: false, location: location });
         let placeMarker = new PlaceMarker({ place: place,
                                             mapView: this._mapView });
         this._markerLayer.add_marker(placeMarker);

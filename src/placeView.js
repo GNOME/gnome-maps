@@ -643,7 +643,20 @@ export class PlaceView extends Gtk.Box {
         let content = this._createContent(place);
         this._attachContent(content);
 
-        if (place.wikidata && Wikipedia.isValidWikidata(place.wikidata)) {
+        if (place.description) {
+            const box = this._addBox();
+            const descriptionLabel = new Gtk.Label({
+                max_width_chars: 30,
+                wrap: true,
+                xalign: 0,
+                hexpand: true,
+                halign: Gtk.Align.FILL,
+                label: place.description
+            });
+            box.marginTop = 12;
+            box.marginBottom = 18;
+            box.append(descriptionLabel);
+        } else if (place.wikidata && Wikipedia.isValidWikidata(place.wikidata)) {
             let defaultArticle =
                 place.wiki && Wikipedia.isValidWikipedia(place.wiki) ?
                 place.wiki : null;

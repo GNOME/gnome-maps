@@ -57,6 +57,8 @@ export class Place extends GObject.Object {
         this._osmId = params.osmId;
         this._osmType = params.osmType;
         this._name = params.name;
+        this._description = params.description;
+        this._source = params.source;
         this._location = params.location;
         this._boundingBox = params.boundingBox ?? null;
         this._placeType = params.placeType;
@@ -136,6 +138,22 @@ export class Place extends GObject.Object {
 
     set name(name) {
         this._name = name;
+    }
+
+    get description() {
+        return this._description;
+    }
+
+    set description(description) {
+        this._description = description;
+    }
+
+    get source() {
+        return this._source;
+    }
+
+    set source(source) {
+        this._source = source;
     }
 
     get location() {
@@ -386,6 +404,8 @@ export class Place extends GObject.Object {
                  osmTags: this._osmTags,
                  placeType: this._placeType,
                  name: this._name,
+                 description: this._description,
+                 source: this._source,
                  nativeName: this._nativeName,
                  boundingBox,
                  location: location,
