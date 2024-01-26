@@ -60,7 +60,8 @@ export class ShapeLayer extends GObject.Object {
         });
 
         this._mapSource = new GeoJSONSource({ mapView: this._mapView,
-                                              markerLayer: this._markerLayer });
+                                              markerLayer: this._markerLayer,
+                                              filename: this.getName() });
         this._overlayLayer =
             new Shumate.MapLayer({ map_source: this._mapSource,
                                    viewport:   this._mapView.map.viewport });

@@ -68,6 +68,8 @@ export class PlaceView extends Gtk.Box {
                                                    'thumbnail-separator',
                                                    'label-title',
                                                    'native-name',
+                                                   'source-label',
+                                                   'source-box',
                                                    'address-label',
                                                    'bubble-main-stack',
                                                    'bubble-content-area',
@@ -76,6 +78,8 @@ export class PlaceView extends Gtk.Box {
                                                    'title-box' ]);
         this._title = ui.labelTitle;
         this._nativeName = ui.nativeName;
+        this._sourceLabel = ui.sourceLabel;
+        this._sourceBox = ui.sourceBox;
         this._thumbnail = ui.bubbleThumbnail;
         this._thumbnailSeparator = ui.thumbnailSeparator;
         this._content = ui.bubbleContentArea;
@@ -221,6 +225,13 @@ export class PlaceView extends Gtk.Box {
              */
             if (this._nativeName.get_layout().get_unknown_glyphs_count() === 0)
                 this._nativeName.visible = true;
+        }
+
+        if (place.source) {
+            this._sourceLabel.label = place.source;
+            this._sourceBox.visible = true;
+        } else {
+            this._sourceBox.visible = false;
         }
     }
 

@@ -41,12 +41,13 @@ const TileFeature = { POINT: 1,
 
 export class GeoJSONSource extends GnomeMaps.SyncMapSource {
 
-    constructor({mapView, markerLayer, ...params}) {
+    constructor({mapView, markerLayer, filename, ...params}) {
         super(params);
 
         this._mapView = mapView;
         this._markerLayer = markerLayer;
         this._bbox = new BoundingBox();
+        this._filename = filename;
         this.tile_size = mapView.map.viewport.reference_map_source.tile_size;
         this.max_zoom_level = 20;
         this.min_zoom_level = 0;
@@ -108,7 +109,13 @@ export class GeoJSONSource extends GnomeMaps.SyncMapSource {
         let location = new Location({ latitude: coordinates[1],
                                       longitude: coordinates[0] });
 
-        let place = new Place({ name, description, store: false, location: location });
+        let place = new Place({
+            name,
+            description,
+            source: this._filename,
+            store: false,
+            location: location
+        });
         let placeMarker = new PlaceMarker({ place: place,
                                             mapView: this._mapView });
         this._markerLayer.add_marker(placeMarker);
