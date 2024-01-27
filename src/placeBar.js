@@ -88,6 +88,8 @@ export class PlaceBar extends Gtk.Revealer {
         if (this.place.store) {
             let formatter = new PlaceFormatter(this.place);
             this._title.label = formatter.title;
+        } else if (this.place.isCurrentLocation) {
+            this._title.label = _('Current Location');
         } else {
             this._title.label = '';
         }
@@ -138,8 +140,7 @@ export class PlaceBar extends Gtk.Revealer {
 
 GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/place-bar.ui',
-    InternalChildren: [ 'actionbar',
-                        'altSendToButton',
+    InternalChildren: [ 'altSendToButton',
                         'box',
                         'title' ],
     Properties: {
