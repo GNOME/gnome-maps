@@ -51,9 +51,9 @@ export class MapMarker extends Shumate.Marker {
         if (this._mapView) {
             this._viewport = this._mapView.map.viewport;
 
-            this._buttonPressGesture = new Gtk.GestureSingle();
+            this._buttonPressGesture = new Gtk.GestureClick();
             this.add_controller(this._buttonPressGesture);
-            this._buttonPressGesture.connect('begin',
+            this._buttonPressGesture.connect('pressed',
                                              () => this._onMarkerSelected());
 
             // Some markers are draggable, we want to sync the marker location and
@@ -270,6 +270,7 @@ export class MapMarker extends Shumate.Marker {
     }
 
     _onMarkerSelected() {
+        this._buttonPressGesture.set_state(Gtk.EventSequenceState.CLAIMED);
         if (this.bubble) {
             if (!this._bubble.visible) {
                 this.showBubble();

@@ -48,10 +48,24 @@ export class PlaceBar extends Gtk.Revealer {
         Application.application.connect('notify::adaptive-mode', this._updateVisibility.bind(this));
         this.connect('notify::place', this._updatePlace.bind(this));
 
-        this._mapClick = new Gtk.GestureSingle();
+        this._mapClick = new Gtk.GestureClick();
         this._mapView.add_controller(this._mapClick);
 
-        this._mapClick.connect('begin', this._onMapClickEvent.bind(this));
+        let lat, lon;
+        this._mapClick.connect('pressed', () => {
+            lat = this._mapView.map.viewport.latitude;
+            lon = this._mapView.map.viewport.longitude;
+        });
+        this._mapClick.connect('released', () => {
+            const lat2 = this._mapView.map.viewport.latitude;
+            const lon2 = this._mapView.map.viewport.longitude;
+            /* Hide the place bar if the user clicks the map, but not if they
+               pan. */
+            if (Math.abs(lat - lat2) < 0.00001 && Math.abs(lon - lon2) < 0.00001) {
+                Application.application.selected_place = null;
+                this.reveal_child = false;
+            }
+        });
     }
 
     _updatePlace() {
@@ -118,11 +132,6 @@ export class PlaceBar extends Gtk.Revealer {
 
     _onPlaceEdited() {
         _updatePlace();
-    }
-
-    _onMapClickEvent(view, event) {
-       Application.application.selected_place = null;
-       this.reveal_child = false;
     }
 }
 
