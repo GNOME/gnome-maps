@@ -16,7 +16,7 @@
  */
 
 import { DEFS } from "./defs.js";
-import { isLinestring, isPolygon, mix } from "./utils.js";
+import { isLinestring, isPolygon, localizedName, mix } from "./utils.js";
 
 export const airportLayers = (config) => {
     const color = [
@@ -88,6 +88,101 @@ export const airportLayers = (config) => {
             paint: {
                 "fill-color": color,
             },
+        },
+    ];
+};
+
+export const airportSymbols = (config) => {
+    const commonLayout = {
+        "icon-image": "flying-symbolic",
+        "text-size": 12,
+        "text-anchor": "top",
+        "text-offset": [0, 0.3],
+    };
+    const commonPaint = {
+        "icon-color": config.pick(DEFS.airports.symbolColor),
+        "text-color": config.pick(DEFS.airports.symbolColor),
+    };
+    const minorAirportFilter = [
+        "any",
+        ["!", ["has", "name"]],
+        ["!", ["has", "iata"]],
+        ["!", ["has", "icao"]],
+        ["==", ["get", "class"], "private"],
+    ];
+
+    return [
+        {
+            id: "airport-gate",
+            type: "symbol",
+            source: "vector-tiles",
+            "source-layer": "aeroway",
+            minzoom: 15,
+            filter: ["==", ["get", "class"], "gate"],
+            layout: {
+                "text-field": ["get", "ref"],
+                "text-font": config.fonts("Bold"),
+                "text-size": 12,
+            },
+            paint: {
+                "text-color": config.pick(DEFS.airports.symbolColor),
+            },
+        },
+        {
+            id: "minor-airport-short-label",
+            type: "symbol",
+            source: "vector-tiles",
+            "source-layer": "aerodrome_label",
+            minzoom: 13,
+            filter: minorAirportFilter,
+            layout: {
+                ...commonLayout,
+                "text-field": ["coalesce", ["get", "iata"], ["get", "icao"]],
+                "text-font": config.fonts("Italic"),
+                "text-optional": true,
+            },
+            paint: commonPaint,
+        },
+        {
+            id: "minor-airport-label",
+            type: "symbol",
+            source: "vector-tiles",
+            "source-layer": "aerodrome_label",
+            minzoom: 13,
+            filter: minorAirportFilter,
+            layout: {
+                ...commonLayout,
+                "text-field": localizedName,
+            },
+            paint: commonPaint,
+        },
+        {
+            id: "airport-short-label",
+            type: "symbol",
+            source: "vector-tiles",
+            "source-layer": "aerodrome_label",
+            minzoom: 13,
+            filter: ["!", minorAirportFilter],
+            layout: {
+                ...commonLayout,
+                "text-field": ["coalesce", ["get", "iata"], ["get", "icao"]],
+                "text-font": config.fonts("Italic"),
+                "text-optional": true,
+            },
+            paint: commonPaint,
+        },
+        {
+            id: "airport-label",
+            type: "symbol",
+            source: "vector-tiles",
+            "source-layer": "aerodrome_label",
+            minzoom: 13,
+            filter: ["!", minorAirportFilter],
+            layout: {
+                ...commonLayout,
+                "text-field": localizedName,
+            },
+            paint: commonPaint,
         },
     ];
 };

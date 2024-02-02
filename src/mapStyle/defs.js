@@ -19,6 +19,10 @@ export const DEFS = {
     minLayer: -5,
     maxLayer: 5,
     airports: {
+        symbolColor: {
+            dark: "#ae78bf",
+            light: "#9100bd",
+        },
         runwayColor: {
             dark: "#2d2832",
             light: "#d7cddc",

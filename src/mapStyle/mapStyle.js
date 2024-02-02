@@ -19,7 +19,7 @@ import GLib from "gi://GLib";
 
 import * as Utils from "../utils.js";
 import { aerial, aerialLabel } from "./aerial.js";
-import { airportLayers } from "./airports.js";
+import { airportLayers, airportSymbols } from "./airports.js";
 import { boundaryLayers as boundaries } from "./boundaries.js";
 import { DEFS } from "./defs.js";
 import { landcover } from "./landcover.js";
@@ -103,6 +103,7 @@ export function generateMapStyle(options) {
             roadSymbol(config),
             junctionSymbol(config),
             aerialLabel(config),
+            ...airportSymbols(config),
             ...places(config),
         ],
     };
