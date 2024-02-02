@@ -84,29 +84,12 @@ export function createVectorSource() {
     source.set_license_uri("https://www.openstreetmap.org/copyright");
 
     const sprites = Shumate.VectorSpriteSheet.new();
-    const [_status2, spritesJsonFile] = Gio.file_new_for_uri('resource://org/gnome/Maps/styles/osm-liberty/sprites.json').load_contents(null);
-    const spritesJson = Utils.getBufferText(spritesJsonFile);
-    sprites.add_page(
-        Gdk.Texture.new_from_resource('/org/gnome/Maps/styles/osm-liberty/sprites.png'),
-        spritesJson,
-        1
-    );
-    const [_status3, sprites2xJsonFile] = Gio.file_new_for_uri('resource://org/gnome/Maps/styles/osm-liberty/sprites@2x.json').load_contents(null);
-    const sprites2xJson = Utils.getBufferText(sprites2xJsonFile);
-    sprites.add_page(
-        Gdk.Texture.new_from_resource('/org/gnome/Maps/styles/osm-liberty/sprites@2x.png'),
-        sprites2xJson,
-        2
-    );
-    source.set_sprite_sheet(sprites);
-
     const spriteSource = new GnomeMaps.SpriteSource({"color-scheme": "light"});
-    spriteSource.set_fallback(sprites);
-
     const [_status4, shieldsJsonFile] = Gio.file_new_for_uri('resource://org/gnome/Maps/shields/shields.json').load_contents(null);
     const shieldDefs = JSON.parse(Utils.getBufferText(shieldsJsonFile));
-
     spriteSource.load_shield_defs(JSON.stringify(shieldDefs));
+    spriteSource.set_fallback(sprites);
+    source.set_sprite_sheet(sprites);
 
     return source;
 }
