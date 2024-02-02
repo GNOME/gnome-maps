@@ -169,6 +169,9 @@ export const pois = (config) => {
                 "icon-color": color,
                 "text-color": color,
             },
+            metadata: {
+                "libshumate:cursor": "pointer",
+            },
         });
     }
 

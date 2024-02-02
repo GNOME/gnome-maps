@@ -84,6 +84,9 @@ export const waterName = (config) => ({
     paint: {
         "text-color": waterLabelColor(config),
     },
+    metadata: {
+        "libshumate:cursor": "pointer",
+    },
 });
 
 export const waterNameLine = (config) => ({
@@ -117,6 +120,9 @@ export const waterwayName = (config) => ({
     },
     paint: {
         "text-color": waterLabelColor(config),
+    },
+    metadata: {
+        "libshumate:cursor": "pointer",
     },
 });
 

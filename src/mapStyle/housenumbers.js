@@ -39,4 +39,7 @@ export const housenumbers = (config) => ({
     paint: {
         "text-color": config.pick(DEFS.housenumbers),
     },
+    metadata: {
+        "libshumate:cursor": "pointer",
+    },
 });

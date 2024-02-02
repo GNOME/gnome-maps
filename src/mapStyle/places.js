@@ -44,4 +44,7 @@ export const places = (config) =>
         paint: {
             "text-color": config.pick(place.color),
         },
+        metadata: {
+            "libshumate:cursor": "pointer",
+        },
     }));
