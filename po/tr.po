@@ -8,15 +8,15 @@
 # Furkan Ahmet Kara <furkanahmetkara.fk@gmail.com>, 2018.
 # Muhammet Kara <muhammetk@gnome.org>, 2013, 2014, 2015, 2016, 2018.
 # Ahmet Elgun <ahmetelgn@gmail.com>, 2019.
-# Sabri Ünal <libreajans@gmail.com, 2019, 2021, 2023.
-# Emin Tufan Çetin <etcetin@gmail.com>, 2013, 2017, 2018, 2020, 2021, 2022, 2023.
+# Sabri Ünal <libreajans@gmail.com, 2019, 2021, 2023, 2024.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2013, 2017, 2018, 2020, 2021, 2022, 2023, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2023-11-01 02:40+0000\n"
-"PO-Revision-Date: 2023-11-04 16:00+0300\n"
+"POT-Creation-Date: 2024-01-31 21:06+0000\n"
+"PO-Revision-Date: 2024-02-03 08:00+0300\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. Translators: This is the program name.
@@ -36,8 +36,8 @@ msgstr ""
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
-#: data/ui/main-window.ui:27 src/application.js:63 src/mainWindow.js:143
-#: src/mainWindow.js:592
+#: data/ui/main-window.ui:27 src/application.js:64 src/mainWindow.js:147
+#: src/mainWindow.js:647
 msgid "Maps"
 msgstr "Haritalar"
 
@@ -63,7 +63,8 @@ msgstr ""
 "Haritalar, küresel çapta yüzbinlerce insanca hazırlanan OpenStreetMap ile "
 "ortak veri tabanını kullanır."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:425 src/mainWindow.js:589
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Maps.appdata.xml.in.in:444 src/mainWindow.js:644
 msgid "The GNOME Project"
 msgstr "GNOME Projesi"
 
@@ -219,6 +220,19 @@ msgstr "İ_ptal"
 #: data/ui/export-view-dialog.ui:26
 msgid "_Export"
 msgstr "Dışa _Aktar"
+
+#. Translators: This is a tooltip
+#: data/ui/favorite-list-row.ui:72
+msgid "Remove Favorite"
+msgstr "Gözdeyi Kaldır"
+
+#: data/ui/favorites-popover.ui:11
+msgid "No favorites"
+msgstr "Gözde Yok"
+
+#: data/ui/favorites-popover.ui:12
+msgid "Add places to your favorites to get them listed here"
+msgstr "Burada listelenmeleri için yerleri gözdelerinize ekleyin"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-left.ui:11 src/geoclue.js:106
@@ -473,7 +487,7 @@ msgstr ""
 msgid "Recently Used"
 msgstr "Sok Kullanılan"
 
-#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:550
+#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:629
 msgid "Cancel"
 msgstr "İptal"
 
@@ -497,11 +511,11 @@ msgstr "Makale için Wikidata etiketi yükle"
 msgid "Explore Nearby Places"
 msgstr "Yakın Yerleri Keşfet"
 
-#: data/ui/place-popover.ui:82 src/application.js:276
+#: data/ui/place-popover.ui:82 src/application.js:277
 msgid "No results found"
 msgstr "Hiçbir sonuç bulunamadı"
 
-#: data/ui/place-popover.ui:92 src/application.js:254
+#: data/ui/place-popover.ui:92 src/application.js:255
 msgid "An error has occurred"
 msgstr "Hata oluştu"
 
@@ -522,7 +536,7 @@ msgstr "Kopyala"
 msgid "Send To…"
 msgstr "Gönder…"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:64
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:62
 msgid "Open Shape Layer"
 msgstr "Biçim Katmanını Aç"
 
@@ -623,7 +637,7 @@ msgid "Airplanes"
 msgstr "Uçaklar"
 
 #. Translators: This is a tooltip
-#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27
+#: data/ui/place-bar.ui:33 data/ui/place-buttons.ui:27
 msgid "Share Location"
 msgstr "Konum Paylaş"
 
@@ -657,19 +671,19 @@ msgid "Back to Main Categories"
 msgstr "Ana Kategoriye Dön"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:15 src/mapView.js:1121
-msgid "Zoom In"
-msgstr "Yakınlaştır"
+#: data/ui/zoom-and-rotate-controls.ui:19
+msgid "Reset Rotation"
+msgstr "Döndürmeyi Sıfırla"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:28
+#: data/ui/zoom-and-rotate-controls.ui:32
 msgid "Zoom Out"
 msgstr "Uzaklaştır"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:49
-msgid "Reset Rotation"
-msgstr "Döndürmeyi Sıfırla"
+#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1204
+msgid "Zoom In"
+msgstr "Yakınlaştır"
 
 #: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338
 #: lib/maps-file-data-source.c:418
@@ -692,27 +706,27 @@ msgstr "OSM ögesi bulunamadı"
 msgid "Could not find user element"
 msgstr "Kullanıcı ögesi bulunamadı"
 
-#: src/application.js:76
+#: src/application.js:78
 msgid "A path to a local tiles directory structure"
 msgstr "Yerel döşeme dizini yapısını barındıran yol"
 
-#: src/application.js:82
+#: src/application.js:84
 msgid "Tile size for local tiles directory"
 msgstr "Yerel döşeme dizini için döşeme boyutu"
 
-#: src/application.js:86
+#: src/application.js:88
 msgid "Show the version of the program"
 msgstr "Programın sürümünü göster"
 
-#: src/application.js:92
+#: src/application.js:94
 msgid "Search for places"
 msgstr "Yer ara"
 
-#: src/application.js:103 src/application.js:104
+#: src/application.js:105 src/application.js:106
 msgid "[FILE…|URI]"
 msgstr "[DOSYA…|URI]"
 
-#: src/application.js:283
+#: src/application.js:284
 #, javascript-format
 msgid "Invalid maps: URI: %s"
 msgstr "Geçersiz haritalar: URI: %s"
@@ -721,32 +735,40 @@ msgstr "Geçersiz haritalar: URI: %s"
 #. * exported image with coordinates. The .png extension should be kept
 #. * intact in the translated string.
 #.
-#: src/exportViewDialog.js:74
+#: src/exportViewDialog.js:75
 #, javascript-format
 msgid "Maps at %f, %f.png"
 msgstr "%f, %f konumunda haritalar.png"
 
-#: src/exportViewDialog.js:153
+#: src/exportViewDialog.js:174
 msgid "Unable to export view"
 msgstr "Görüntü aktarılamıyor"
 
-#: src/geoJSONSource.js:72
+#: src/favoriteListRow.js:42
+msgid "Favorite removed"
+msgstr "Gözde kaldırıldı"
+
+#: src/favoriteListRow.js:43
+msgid "Undo"
+msgstr "Geri Al"
+
+#: src/geoJSONSource.js:73
 msgid "invalid coordinate"
 msgstr "geçersiz koordinat"
 
-#: src/geoJSONSource.js:117 src/geoJSONSource.js:157 src/geoJSONSource.js:172
+#: src/geoJSONSource.js:126 src/geoJSONSource.js:166 src/geoJSONSource.js:181
 msgid "parse error"
 msgstr "ayrıştırma hatası"
 
-#: src/geoJSONSource.js:151
+#: src/geoJSONSource.js:160
 msgid "unknown geometry"
 msgstr "bilinmeyen geometri"
 
-#: src/graphHopper.js:101 src/transitPlan.js:174
+#: src/graphHopper.js:101 src/transitPlan.js:175
 msgid "Route request failed."
 msgstr "Rota isteği başarısız oldu."
 
-#: src/graphHopper.js:108 src/transitPlan.js:166
+#: src/graphHopper.js:108 src/transitPlan.js:167
 msgid "No route found."
 msgstr "Hiçbir rota bulunamadı."
 
@@ -754,23 +776,23 @@ msgstr "Hiçbir rota bulunamadı."
 msgid "Start!"
 msgstr "Başla!"
 
-#: src/mainWindow.js:61
+#: src/mainWindow.js:59
 msgid "All Layer Files"
 msgstr "Tüm Katman Dosyaları"
 
-#: src/mainWindow.js:467
+#: src/mainWindow.js:522
 msgid "Failed to connect to location service"
 msgstr "Konum hizmetine bağlanamadı"
 
-#: src/mainWindow.js:472
+#: src/mainWindow.js:527
 msgid "Turn on location services"
 msgstr "Konum hizmetlerini aç"
 
-#: src/mainWindow.js:473
+#: src/mainWindow.js:528
 msgid "Location Settings"
 msgstr "Konum Ayarları"
 
-#: src/mainWindow.js:590
+#: src/mainWindow.js:645
 msgid "translator-credits"
 msgstr ""
 "Emin Tufan Çetin <etcetin@gmail.com>\n"
@@ -782,20 +804,20 @@ msgstr ""
 "Ahmet Elgun <ahmetelgn@gmail.com>\n"
 "Sabri Ünal <libreajans@gmail.com>"
 
-#: src/mainWindow.js:594
+#: src/mainWindow.js:649
 msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Telif Hakkı © 2011 – 2023 Red Hat, Inc. ve GNOME Haritalar yazarları"
 
-#: src/mainWindow.js:610
+#: src/mainWindow.js:665
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "%s ve katkıcılar tarafından harita verisi"
 
-#: src/mainWindow.js:611
+#: src/mainWindow.js:666
 msgid "Map Data Provider"
 msgstr "Harita Veri Sağlayıcı"
 
-#: src/mainWindow.js:623
+#: src/mainWindow.js:678
 msgid "Map Tile Provider"
 msgstr "Harita Döşeme Sağlayıcı"
 
@@ -804,29 +826,29 @@ msgstr "Harita Döşeme Sağlayıcı"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:631
+#: src/mainWindow.js:686
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Harita döşemeleri %s tarafından sağlanmıştır"
 
-#: src/mainWindow.js:661
+#: src/mainWindow.js:716
 msgid "Search Provider"
 msgstr "Arama Sağlayıcı"
 
-#: src/mainWindow.js:664
+#: src/mainWindow.js:719
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Arama %s tarafından %s kullanılarak sağlanmıştır"
 
-#: src/mapView.js:524 src/mapView.js:589
+#: src/mapView.js:603 src/mapView.js:668
 msgid "Failed to open layer"
 msgstr "Katman açılamadı"
 
-#: src/mapView.js:543
+#: src/mapView.js:622
 msgid "Do you want to continue?"
 msgstr "Sürdürmek ister misiniz?"
 
-#: src/mapView.js:544
+#: src/mapView.js:623
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -835,27 +857,28 @@ msgstr ""
 "Toplam boyutu %s MB olan dosyaları açmak üzeresiniz. Bunun yüklenmesi biraz "
 "sürebilir"
 
-#: src/mapView.js:551 src/transitplugins/openTripPlanner.js:1239
+#: src/mapView.js:630 src/transitplugins/openTripPlanner.js:1239
+#: src/transitplugins/openTripPlanner2.js:267
 msgid "Continue"
 msgstr "Devam et"
 
-#: src/mapView.js:583
+#: src/mapView.js:662
 msgid "File type is not supported"
 msgstr "Dosya türü desteklenmiyor"
 
-#: src/mapView.js:620
+#: src/mapView.js:699
 msgid "Failed to open GeoURI"
 msgstr "GeoURI açılamadı"
 
-#: src/mapView.js:1080
+#: src/mapView.js:1163
 msgid "Nothing found here!"
 msgstr "Burada bir şey bulunamadı!"
 
-#: src/mapView.js:1120
+#: src/mapView.js:1203
 msgid "Zoom in to add location"
 msgstr "Konum eklemek için yakınlaştırın"
 
-#: src/mapView.js:1141
+#: src/mapView.js:1224
 msgid "Location was added in OpenStreetMap"
 msgstr "Konum OpenStreetMap’te bulunamadı"
 
@@ -907,7 +930,7 @@ msgstr "Resmi ad. Genellikle tabelalarda yer alan addır."
 msgid "Address"
 msgstr "Adres"
 
-#: src/osmEditDialog.js:120 src/placeView.js:261
+#: src/osmEditDialog.js:120 src/placeView.js:275
 msgid "Website"
 msgstr "Web sitesi"
 
@@ -937,7 +960,7 @@ msgstr ""
 "kişisel telefon numaraları konusunda, yerel kişisel gizlilik yasalarına "
 "dikkat edin."
 
-#: src/osmEditDialog.js:139 src/placeView.js:294
+#: src/osmEditDialog.js:139 src/placeView.js:308
 msgid "E-mail"
 msgstr "E-posta"
 
@@ -959,11 +982,11 @@ msgstr ""
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:149 src/placeView.js:646
+#: src/osmEditDialog.js:149 src/placeView.js:727
 msgid "Wikipedia"
 msgstr "Vikipedi"
 
-#: src/osmEditDialog.js:156 src/placeView.js:331
+#: src/osmEditDialog.js:156 src/placeView.js:399
 msgid "Opening hours"
 msgstr "Açılış saatleri"
 
@@ -977,11 +1000,11 @@ msgstr "Biçimdeki yardım için etiketteki bağlantıyı gör."
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:164 src/placeView.js:441
+#: src/osmEditDialog.js:164 src/placeView.js:509
 msgid "Population"
 msgstr "Nüfus"
 
-#: src/osmEditDialog.js:169 src/placeView.js:470
+#: src/osmEditDialog.js:169 src/placeView.js:538
 msgid "Altitude"
 msgstr "Yükseklik"
 
@@ -1185,11 +1208,11 @@ msgstr "Makale için Wikidata etiketi bulunamadı"
 msgid "Unnamed place"
 msgstr "Adsız yer"
 
-#: src/placeEntry.js:277
+#: src/placeEntry.js:274
 msgid "Failed to parse Geo URI"
 msgstr "Geo URI ayrıştırılamadı"
 
-#: src/placeEntry.js:289
+#: src/placeEntry.js:286
 msgid "Failed to parse Maps URI"
 msgstr "Maps URI ayrıştırılamadı"
 
@@ -1207,16 +1230,16 @@ msgctxt "short distance format string"
 msgid "< %s"
 msgstr "< %s"
 
-#: src/placeView.js:249
+#: src/placeView.js:263
 msgid "Coordinates"
 msgstr "Koordinatlar"
 
-#: src/placeView.js:253
+#: src/placeView.js:267
 msgid "Accuracy"
 msgstr "Doğruluk"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:256
+#: src/placeView.js:270
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Doğruluk: %s"
@@ -1227,15 +1250,57 @@ msgstr "Doğruluk: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:275
+#: src/placeView.js:289
 msgid "Phone number"
 msgstr "Telefon numarası"
+
+#. If a reference to a named floor (named or symbolic) exists
+#. * refer to it directly.
+#.
+#. Translators:
+#. * This is a reference to named building floor, using a label
+#. * or a code, as "displayed in the elevator"
+#.
+#: src/placeView.js:323 src/placeView.js:362
+msgid "Floor"
+msgstr "Zemin"
+
+#: src/placeView.js:325
+#, javascript-format
+msgid "Floor %s"
+msgstr "Zemin %s"
+
+#: src/placeView.js:337
+msgid "At ground level"
+msgstr "Yer düzeyinde"
+
+#. Translators:
+#. * This is a reference to a number of floors above
+#. * ground level.
+#. * The %s placeholder is the integer relative number of floors
+#.
+#: src/placeView.js:346
+#, javascript-format
+msgid "%s floor above ground level"
+msgid_plural "%s floors above ground level"
+msgstr[0] "Yer düzeyinin %s kat üstünde"
+
+#. Translators:
+#. * This is a reference to a number of floors below
+#. * ground level.
+#. * The %s placeholder is the integer relative number of floors
+#.
+#: src/placeView.js:357
+#, javascript-format
+msgid "%s floor below ground level"
+msgid_plural "%s floors below ground level"
+msgstr[0] "Yer düzeyinin %s kat altında"
 
 #. Translators:
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:307
+#: src/placeView.js:375
 msgid "Offers takeout"
 msgstr "Al götür sunar"
 
@@ -1243,7 +1308,7 @@ msgstr "Al götür sunar"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:315
+#: src/placeView.js:383
 msgid "Does not offer takeout"
 msgstr "Al götür sunmaz"
 
@@ -1252,14 +1317,14 @@ msgstr "Al götür sunmaz"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:324
+#: src/placeView.js:392
 msgid "Only offers takeout"
 msgstr "Yalnızca al götür sunar"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:341
+#: src/placeView.js:409
 msgid "Public internet access"
 msgstr "Halka açık internet erişimi"
 
@@ -1267,50 +1332,50 @@ msgstr "Halka açık internet erişimi"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:350
+#: src/placeView.js:418
 msgid "No internet access"
 msgstr "İnternet erişimi yok"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:358
+#: src/placeView.js:426
 msgid "Public Wi-Fi"
 msgstr "Halka açık Wi-Fi"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:366
+#: src/placeView.js:434
 msgid "Wired internet access"
 msgstr "Kablolu internet erişimi"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:374
+#: src/placeView.js:442
 msgid "Computers available for use"
 msgstr "Kullanıma hazır bilgisayar var"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:382
+#: src/placeView.js:450
 msgid "Internet assistance available"
 msgstr "İnternet desteği var"
 
-#: src/placeView.js:388
+#: src/placeView.js:456
 msgid "No toilets available"
 msgstr "Tuvalet yok"
 
-#: src/placeView.js:391
+#: src/placeView.js:459
 msgid "Toilets available"
 msgstr "Tuvalet var"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:400
+#: src/placeView.js:468
 msgid "Wheelchair accessible"
 msgstr "Tekerlekli sandalye erişimli"
 
@@ -1319,7 +1384,7 @@ msgstr "Tekerlekli sandalye erişimli"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:410
+#: src/placeView.js:478
 msgid "Limited wheelchair accessibility"
 msgstr "Kısıtlı tekerlekli sandalye erişimi"
 
@@ -1327,7 +1392,7 @@ msgstr "Kısıtlı tekerlekli sandalye erişimi"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:419
+#: src/placeView.js:487
 msgid "Not wheelchair accessible"
 msgstr "Tekerlekli sandalye erişimi yok"
 
@@ -1336,7 +1401,7 @@ msgstr "Tekerlekli sandalye erişimi yok"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:429
+#: src/placeView.js:497
 msgid "Designated for wheelchair users"
 msgstr "Tekerlekli sandalye kullanıcılarına göre tasarlanmış"
 
@@ -1345,7 +1410,7 @@ msgstr "Tekerlekli sandalye kullanıcılarına göre tasarlanmış"
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:460
+#: src/placeView.js:528
 #, javascript-format
 msgid "%s below sea level"
 msgstr "Deniz düzeyinin %s altında"
@@ -1354,23 +1419,23 @@ msgstr "Deniz düzeyinin %s altında"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:467
+#: src/placeView.js:535
 msgid "At sea level"
 msgstr "Deniz düzeyinde"
 
-#: src/placeView.js:476
+#: src/placeView.js:544
 msgid "Religion:"
 msgstr "Din:"
 
-#: src/place.js:543
+#: src/place.js:564
 msgid "Place not found in OpenStreetMap"
 msgstr "Yer OpenStreetMap’te bulunamadı"
 
-#: src/place.js:550
+#: src/place.js:571
 msgid "Coordinates in URL are not valid"
 msgstr "URLʼdeki koordinatlar geçersiz"
 
-#: src/place.js:559
+#: src/place.js:580
 msgid "URL is not supported"
 msgstr "URL desteklenmiyor"
 
@@ -1692,17 +1757,17 @@ msgstr "URI açılamadı"
 msgid "Open with %s"
 msgstr "%s ile aç"
 
-#: src/shapeLayer.js:108
+#: src/shapeLayer.js:109
 msgid "failed to load file"
 msgstr "dosya yüklenemedi"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:329
+#: src/sidebar.js:328
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Tahmini süre: %s"
 
-#: src/sidebar.js:399
+#: src/sidebar.js:398
 #, javascript-format
 msgid "Itineraries provided by %s"
 msgstr "Rota yönergelerini %s sağlamıştır"
@@ -1719,7 +1784,7 @@ msgstr "%s’te başla"
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: src/transit.js:45
+#: src/transit.js:45 src/transitplugins/openTripPlanner2.js:236
 msgid "Start"
 msgstr "Başla"
 
@@ -1740,6 +1805,7 @@ msgid "Arrive at %s"
 msgstr "%s’te var"
 
 #: src/transit.js:79 src/transitplugins/openTripPlanner.js:1176
+#: src/transitplugins/openTripPlanner2.js:255
 msgid "Arrive"
 msgstr "Var"
 
@@ -1771,16 +1837,16 @@ msgstr "Daha geç alternatif bulunamadı."
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:136
+#: src/transitOptionsPanel.js:138
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e %b"
 
-#: src/transitPlan.js:170
+#: src/transitPlan.js:171
 msgid "No timetable data found for this route."
 msgstr "Bu rota için tarife verisi bulunamadı."
 
-#: src/transitPlan.js:178
+#: src/transitPlan.js:179
 msgid "No provider found for this route."
 msgstr "Bu rota için sağlayıcı bulunamadı."
 
@@ -1789,7 +1855,7 @@ msgstr "Bu rota için sağlayıcı bulunamadı."
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:295
+#: src/transitPlan.js:300
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -1798,7 +1864,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: src/transitPlan.js:324
+#: src/transitPlan.js:331
 #, javascript-format
 msgid "%s minute"
 msgid_plural "%s minutes"
@@ -1808,7 +1874,7 @@ msgstr[0] "%s dakika"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: src/transitPlan.js:336
+#: src/transitPlan.js:343
 #, javascript-format
 msgid "%s hour"
 msgid_plural "%s hours"
@@ -1818,7 +1884,7 @@ msgstr[0] "%s saat"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: src/transitPlan.js:344
+#: src/transitPlan.js:351
 #, javascript-format
 msgid "%s:%s hour"
 msgid_plural "%s:%s hours"
@@ -1830,7 +1896,7 @@ msgstr[0] "%s:%s saat"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:698
+#: src/transitPlan.js:744
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -1930,19 +1996,19 @@ msgid "Bahá'í"
 msgstr "Bahâîlik"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:257
+#: src/utils.js:248
 msgid "Unknown"
 msgstr "Bilinmiyor"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:260
+#: src/utils.js:251
 msgid "Exact"
 msgstr "Tam"
 
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
 #.
-#: src/utils.js:345
+#: src/utils.js:307
 #, javascript-format
 msgid "%s h"
 msgstr "%s s"
@@ -1951,7 +2017,7 @@ msgstr "%s s"
 #. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
 #.
-#: src/utils.js:351
+#: src/utils.js:313
 #, javascript-format
 msgid "%s h %s min"
 msgid_plural "%s h %s min"
@@ -1961,7 +2027,7 @@ msgstr[0] "%s s %s dak"
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
 #.
-#: src/utils.js:358
+#: src/utils.js:320
 #, javascript-format
 msgid "%s min"
 msgid_plural "%s min"
@@ -1971,32 +2037,32 @@ msgstr[0] "%s dak"
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
 #.
-#: src/utils.js:364
+#: src/utils.js:326
 #, javascript-format
 msgid "%s s"
 msgid_plural "%s s"
 msgstr[0] "%s sn"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:375
+#: src/utils.js:337
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:378
+#: src/utils.js:340
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:386
+#: src/utils.js:348
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:389
+#: src/utils.js:351
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
@@ -2006,102 +2072,124 @@ msgid "This plugin doesn't support latest arrival"
 msgstr "Bu uzantı son varışı desteklemiyor"
 
 #: src/transitplugins/openTripPlanner.js:1237
+#: src/transitplugins/openTripPlanner2.js:266
 #, javascript-format
 msgid "Continue on %s"
 msgstr "%s üstünde devam et"
 
 #: src/transitplugins/openTripPlanner.js:1242
+#: src/transitplugins/openTripPlanner2.js:270
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "%s üstünde sola dön"
 
 #: src/transitplugins/openTripPlanner.js:1244
+#: src/transitplugins/openTripPlanner2.js:271
 msgid "Turn left"
 msgstr "Sola dön"
 
 #: src/transitplugins/openTripPlanner.js:1247
+#: src/transitplugins/openTripPlanner2.js:275
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "%s üstünde hafifçe sola dön"
 
 #: src/transitplugins/openTripPlanner.js:1249
+#: src/transitplugins/openTripPlanner2.js:276
 msgid "Turn slightly left"
 msgstr "Sola hafifçe dön"
 
 #: src/transitplugins/openTripPlanner.js:1252
+#: src/transitplugins/openTripPlanner2.js:280
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "%s üstünde sola keskin dön"
 
 #: src/transitplugins/openTripPlanner.js:1254
+#: src/transitplugins/openTripPlanner2.js:281
 msgid "Turn sharp left"
 msgstr "Sola keskin dön"
 
 #: src/transitplugins/openTripPlanner.js:1257
+#: src/transitplugins/openTripPlanner2.js:284
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "%s üstünde sağa dön"
 
 #: src/transitplugins/openTripPlanner.js:1259
+#: src/transitplugins/openTripPlanner2.js:285
 msgid "Turn right"
 msgstr "Sağa dön"
 
 #: src/transitplugins/openTripPlanner.js:1262
+#: src/transitplugins/openTripPlanner2.js:289
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "%s üstünde hafifçe sağa dön"
 
 #: src/transitplugins/openTripPlanner.js:1264
+#: src/transitplugins/openTripPlanner2.js:290
 msgid "Turn slightly right"
 msgstr "Sağa hafifçe dön"
 
 #: src/transitplugins/openTripPlanner.js:1267
+#: src/transitplugins/openTripPlanner2.js:294
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "%s üstünde sağa keskin dön"
 
 #: src/transitplugins/openTripPlanner.js:1269
+#: src/transitplugins/openTripPlanner2.js:295
 msgid "Turn sharp right"
 msgstr "Sağa keskin dön"
 
 #: src/transitplugins/openTripPlanner.js:1275
+#: src/transitplugins/openTripPlanner2.js:302
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "Dönel kavşakta %s. çıkışa gidin"
 
 #: src/transitplugins/openTripPlanner.js:1277
+#: src/transitplugins/openTripPlanner2.js:305
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "Dönel kavşakta %s. çıkıştan çıkın"
 
 #: src/transitplugins/openTripPlanner.js:1279
+#: src/transitplugins/openTripPlanner2.js:307
 msgid "Take the roundabout"
 msgstr "Dönel kavşağı kullanın"
 
 #: src/transitplugins/openTripPlanner.js:1283
+#: src/transitplugins/openTripPlanner2.js:315
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Asansörü kullanın ve %s. katta inin"
 
 #: src/transitplugins/openTripPlanner.js:1285
+#: src/transitplugins/openTripPlanner2.js:316
 msgid "Take the elevator"
 msgstr "Asansörü kullanın"
 
 #: src/transitplugins/openTripPlanner.js:1289
+#: src/transitplugins/openTripPlanner2.js:320
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "%s üstünde sola u dönüşü yapın"
 
 #: src/transitplugins/openTripPlanner.js:1291
+#: src/transitplugins/openTripPlanner2.js:321
 msgid "Make a left u-turn"
 msgstr "Sola u dönüşü yapın"
 
 #: src/transitplugins/openTripPlanner.js:1294
+#: src/transitplugins/openTripPlanner2.js:325
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "%s üstünde sağa u dönüşü yapın"
 
 #: src/transitplugins/openTripPlanner.js:1296
+#: src/transitplugins/openTripPlanner2.js:326
 msgid "Make a right u-turn"
 msgstr "Sağa u dönüşü yapın"
 
