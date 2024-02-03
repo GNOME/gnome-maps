@@ -94,10 +94,10 @@ export const airportLayers = (config) => {
 
 export const airportSymbols = (config) => {
     const commonLayout = {
-        "icon-image": "flying-symbolic",
+        "icon-image": DEFS.pois.tags.aeroway.aerodrome[0],
         "text-size": 12,
         "text-anchor": "top",
-        "text-offset": [0, 0.3],
+        "text-offset": [0, 0.7],
     };
     const commonPaint = {
         "icon-color": config.pick(DEFS.airports.symbolColor),

@@ -250,7 +250,7 @@ export function roads(config, layerNum, layerFilter) {
             : ["in", ["get", "class"], ["literal", roadDef.classes]];
 
         road(
-            roadDef.classes[0],
+            roadDef.subclass?.[0] ?? roadDef.classes[0],
             filter,
             roadDef.color,
             roadDef.size,

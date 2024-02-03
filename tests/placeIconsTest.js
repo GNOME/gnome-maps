@@ -37,7 +37,7 @@ function testKnownTypes() {
     JsUnit.assertEquals('pub-symbolic', PlaceIcons.getIconForPlace(p3));
     JsUnit.assertEquals('shopping-cart-symbolic',
                         PlaceIcons.getIconForPlace(p4));
-    JsUnit.assertEquals('map-marker-symbolic', PlaceIcons.getIconForPlace(p5));
+    JsUnit.assertEquals('barber-symbolic', PlaceIcons.getIconForPlace(p5));
 }
 
 // test that some unknown type gets the default map marker icon

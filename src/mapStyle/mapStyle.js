@@ -42,8 +42,7 @@ import { pois } from "./pois.js";
 
 /**
  * Generates the map style using the given options.
- * @param {Object} options
- * @param {"dark" | "light"} options.colorScheme Color scheme to use.
+ * @param {import("./utils.js").MapStyleConfigParams} options
  * @returns {*}
  */
 export function generateMapStyle(options) {
@@ -69,7 +68,7 @@ export function generateMapStyle(options) {
     }
 
     const style = {
-        version: "8",
+        version: 8,
         name:
             "GNOME Maps " + (options.colorScheme === "dark" ? "Dark" : "Light"),
         sources: {

@@ -22,7 +22,7 @@ export const landcover = (config) => ({
     type: "fill",
     source: "vector-tiles",
     "source-layer": "landcover",
-    filter: ["in", "class", ["literal", Object.keys(DEFS.landcover)]],
+    filter: ["in", ["get", "class"], ["literal", Object.keys(DEFS.landcover)]],
     paint: {
         "fill-color": [
             "interpolate",

@@ -18,42 +18,30 @@
 import { DEFS } from "./defs.js";
 import { localizedName } from "./utils.js";
 
-const classMatch = (attr, defaultVal, minzoom, transform) => {
-    const matchExpr = ["match", ["get", "class"]];
+const classMatch = (transform, defaultVal) => {
+    const matchExpr = ["match", ["coalesce", ["get", "tag"], ["get", "class"]]];
 
-    transform ??= (x) => x;
-    if (typeof minzoom !== "function") {
-        const minzoom2 = minzoom;
-        minzoom = (x) => x === minzoom2;
-    }
-
-    for (const [poiClass, poiSubclasses] of Object.entries(DEFS.pois.classes)) {
-        const subMatchExpr = ["match", ["get", "subclass"]];
-        const subDefault =
-            "_" in poiSubclasses && attr in poiSubclasses["_"]
-                ? transform(poiSubclasses["_"][attr])
-                : defaultVal;
+    for (const [poiClass, poiSubclasses] of Object.entries(DEFS.pois.tags)) {
+        const subMatchExpr = [
+            "match",
+            ["coalesce", ["get", "subtag"], ["get", "subclass"]],
+        ];
+        const subDefaultVal = transform(poiSubclasses._) ?? defaultVal;
 
         for (const [poiSubclass, poiDef] of Object.entries(poiSubclasses)) {
-            if (minzoom(poiDef.minzoom)) {
-                if (poiSubclass !== "_" && attr in poiDef) {
-                    const val = transform(poiDef[attr]);
-                    if (
-                        val !== defaultVal &&
-                        val !== subDefault &&
-                        typeof val !== "undefined"
-                    ) {
-                        subMatchExpr.push(poiSubclass, val);
-                    }
+            if (poiSubclass !== "_") {
+                const val = transform(poiDef) ?? defaultVal;
+                if (val !== subDefaultVal) {
+                    subMatchExpr.push(poiSubclass, val);
                 }
             }
         }
 
         if (subMatchExpr.length > 2) {
-            subMatchExpr.push(subDefault);
+            subMatchExpr.push(subDefaultVal);
             matchExpr.push(poiClass, subMatchExpr);
-        } else if (subDefault !== defaultVal) {
-            matchExpr.push(poiClass, subDefault);
+        } else if (subDefaultVal !== defaultVal) {
+            matchExpr.push(poiClass, subDefaultVal);
         }
     }
 
@@ -65,104 +53,51 @@ const classMatch = (attr, defaultVal, minzoom, transform) => {
     }
 };
 
-const classFilter = (zoom, isMaxZoom) => {
-    const matchExpr = ["match", ["get", "class"]];
-
-    for (const [poiClass, poiSubclasses] of Object.entries(DEFS.pois.classes)) {
-        const defaultMinzoom = poiSubclasses["_"]?.minzoom;
-
-        const matching = [];
-        for (const [poiSubclass, poiDef] of Object.entries(poiSubclasses)) {
-            if (defaultMinzoom === zoom) {
-                if (poiDef.minzoom !== zoom) {
-                    matching.push(poiSubclass);
-                }
-            } else {
-                if (poiDef.minzoom === zoom) {
-                    matching.push(poiSubclass);
-                }
-            }
-        }
-
-        if (matching.length > 0) {
-            const filter =
-                matching.length === 1
-                    ? ["==", ["get", "subclass"], matching[0]]
-                    : ["in", ["get", "subclass"], ["literal", matching]];
-            if (defaultMinzoom === zoom) {
-                matchExpr.push(poiClass, ["!", filter]);
-            } else {
-                matchExpr.push(poiClass, filter);
-            }
-        } else if (defaultMinzoom === zoom) {
-            matchExpr.push(poiClass, true);
-        }
-    }
-
-    matchExpr.push(false);
-
-    if (matchExpr.length > 3) {
-        return matchExpr;
-    } else {
-        return false;
-    }
-};
+const getIcon = (def) => def?.[0];
+const getCategory = (def) => def?.[1];
+const getMinzoom = (def) => (def === false ? 100 : def?.[2] ?? 15);
+const getSize = (def) => def?.[3];
 
 export const pois = (config) => {
-    const result = [];
-
-    const minZoom = Math.min(
-        ...Object.values(DEFS.pois.classes)
-            .flatMap((v) => Object.values(v).map((v2) => v2.minzoom))
-            .filter((v) => v !== undefined)
-    );
-    const maxZoom = Math.max(
-        ...Object.values(DEFS.pois.classes)
-            .flatMap((v) => Object.values(v).map((v2) => v2.minzoom))
-            .filter((v) => v !== undefined)
+    const color = classMatch(
+        (x) => config.pick(DEFS.pois.colors[getCategory(x)]),
+        config.pick(DEFS.pois.colors.generic)
     );
 
-    for (let z = maxZoom; z >= minZoom; z--) {
-        const filter =
-            z === maxZoom
-                ? classMatch(
-                      "minzoom",
-                      true,
-                      (zoom) => zoom !== maxZoom,
-                      () => false
-                  )
-                : classFilter(z, z === maxZoom);
-
-        if (!filter) {
-            continue;
-        }
-
-        const color = classMatch(
-            "category",
-            config.pick({ dark: "#ffffff", light: "#000000" }),
-            z,
-            (x) => config.pick(DEFS.pois.colors[x])
-        );
-        result.push({
-            id: "pois-" + z,
+    return [
+        {
+            id: "pois",
             type: "symbol",
             source: "vector-tiles",
             "source-layer": "poi",
-            minzoom: z,
-            filter,
+            filter: [">=", ["zoom"], classMatch(getMinzoom, 16, () => true)],
             layout: {
                 "text-anchor": "top",
-                "text-field": ["coalesce", localizedName, ["get", "ref"]],
                 "text-offset": [0, 0.7],
+                "text-field": ["coalesce", localizedName, ["get", "ref"]],
                 "text-font": config.fonts("Italic"),
-                "text-size": [
-                    "*",
-                    config.textSize(12),
-                    classMatch("size", 1, z),
-                ],
+                "text-size": ["*", config.textSize(12), classMatch(getSize, 1)],
                 "text-optional": true,
-                "icon-image": classMatch("icon", "circle-small-symbolic", z),
-                "icon-size": classMatch("size", 1, z),
+                "icon-image": [
+                    "let",
+                    "icon",
+                    classMatch(getIcon, "circle-small-symbolic"),
+                    [
+                        "match",
+                        ["var", "icon"],
+                        "@sport",
+                        [
+                            "match",
+                            ["get", "subclass"],
+                            ...Object.entries(DEFS.pois.sportIcons)
+                                .filter((x) => x[0] !== "_")
+                                .flat(),
+                            DEFS.pois.sportIcons._,
+                        ],
+                        ["var", "icon"],
+                    ],
+                ],
+                "icon-size": classMatch(getSize, 1),
                 "symbol-sort-key": ["get", "rank"],
             },
             paint: {
@@ -172,8 +107,6 @@ export const pois = (config) => {
             metadata: {
                 "libshumate:cursor": "pointer",
             },
-        });
-    }
-
-    return result;
+        },
+    ];
 };

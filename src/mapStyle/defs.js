@@ -238,766 +238,201 @@ export const DEFS = {
                 light: "#5050b2",
             },
         },
-        classes: {
-            alcohol_shop: {
-                _: {
-                    icon: "drinks-symbolic",
-                    minzoom: 15,
-                    category: "generic",
-                    tag: "shop",
-                },
+        sportIcons: {
+            american_football: "football-american-symbolic",
+            baseball: "baseball-symbolic",
+            golf: "golf-symbolic",
+            hockey: "hockey-symbolic",
+            tennis: "tennis-symbolic",
+            soccer: "football-symbolic",
+            _: "baseball-symbolic",
+        },
+        tags: {
+            aeroway: {
+                aerodrome: ["flying-symbolic"],
             },
-            art_gallery: {
-                art: {
-                    icon: "brush-symbolic",
-                    minzoom: 15,
-                    category: "generic",
-                    tag: "shop",
-                },
-                arts_centre: {
-                    icon: "theater-symbolic",
-                    minzoom: 15,
-                    category: "generic",
-                    tag: "amenity",
-                },
-                artwork: {
-                    icon: "photo-camera-symbolic",
-                    minzoom: 15,
-                    category: "micro",
-                    tag: "tourism",
-                },
-                gallery: {
-                    icon: "museum-symbolic",
-                    minzoom: 15,
-                    category: "public",
-                    tag: "tourism",
-                },
+            amenity: {
+                arts_centre: ["theater-symbolic", "generic"],
+                atm: ["coin-symbolic", "micro", 16],
+                bank: ["bank-symbolic", "generic"],
+                bar: ["bar-symbolic", "food"],
+                bbq: ["barbecue-symbolic", "micro", 16],
+                bicycle_parking: [
+                    "bicycle-parking-symbolic",
+                    "transport",
+                    16,
+                    0.75,
+                ],
+                bicycle_rental: ["cycling-symbolic", "transport", 16],
+                biergarten: ["pub-symbolic", "food"],
+                bus_station: ["route-transit-bus-symbolic", "transport"],
+                cafe: ["cafe-symbolic", "food"],
+                car_rental: ["route-car-symbolic", "transport"],
+                charging_station: ["electric-car-symbolic", "transport"],
+                cinema: ["video-camera-symbolic", "generic"],
+                clinic: ["hospital-sign-symbolic", "healthAndSafety"],
+                college: ["school-symbolic", "education"],
+                conference_centre: ["meeting-symbolic", "public", 13],
+                dentist: ["dentist-symbolic", "healthAndSafety"],
+                doctors: ["hospital-sign-symbolic", "healthAndSafety"],
+                drinking_water: ["drinking-fountain-symbolic", "micro", 16],
+                fast_food: ["fast-food-symbolic", "food"],
+                ferry_terminal: [
+                    "route-transit-ferry-symbolic",
+                    "transport",
+                    13,
+                ],
+                firepit: ["barbecue-symbolic", "micro", 16],
+                fire_station: ["firefighter-symbolic", "healthAndSafety", 15],
+                food_court: ["restaurant-symbolic", "food"],
+                fuel: ["fuel-symbolic", "transport"],
+                grave_yard: ["non-religious-cemetary-symbolic", "parks"],
+                hospital: ["hospital-symbolic", "hospitals", 10],
+                ice_cream: ["icecream-cone-symbolic", "food"],
+                kindergarten: ["school-symbolic", "education"],
+                library: ["open-book-symbolic", "public", 14],
+                luggage_locker: ["briefcase-symbolic", "micro", 16],
+                nightclub: ["music-note-symbolic", "generic"],
+                parking: ["parking-sign-symbolic", "transport", 16, 0.75],
+                pharmacy: ["pharmacy-symbolic", "healthAndSafety"],
+                place_of_worship: ["circle-small-symbolic", "public", 16],
+                police: ["police-badge2-symbolic", "healthAndSafety"],
+                post_box: ["post-box-symbolic", "micro", 16],
+                post_office: ["post-box-symbolic", "generic"],
+                pub: ["pub-symbolic", "food"],
+                recycling: ["recycling-bin-symbolic", "micro", 16],
+                restaurant: ["restaurant-symbolic", "food"],
+                school: ["school-symbolic", "education"],
+                theatre: ["theater-symbolic", "generic"],
+                toilets: ["toilets-symbolic", "micro", 16],
+                university: ["school-symbolic", "education", 13],
+                veterinary: ["cat-symbolic", "healthAndSafety"],
             },
-            atm: {
-                _: {
-                    icon: "coin-symbolic",
-                    minzoom: 16,
-                    category: "micro",
-                    tag: "amenity",
-                },
+            barrier: {
+                bollard: false,
+                gate: ["gate-symbolic", "traffic", 17, 0.75],
+                lift_gate: ["gate-symbolic", "traffic", 17, 0.75],
             },
-            attraction: {
-                attraction: {
-                    icon: "photo-camera-symbolic",
-                    minzoom: 15,
-                    category: "public",
-                    tag: "tourism",
-                },
-                viewpoint: {
-                    icon: "photo-camera-symbolic",
-                    minzoom: 15,
-                    category: "public",
-                    tag: "tourism",
-                },
+            building: {
+                railway_station: ["route-transit-train", "transport", 16],
+                _: ["building-symbolic", "generic", 16],
             },
-            bakery: {
-                _: {
-                    icon: "loaf-symbolic",
-                    minzoom: 15,
-                    category: "generic",
-                    tag: "shop",
-                },
+            highway: {
+                bus_stop: ["route-transit-bus-symbolic", "transport", 16],
+                cycleway: ["route-bike-symbolic", "transport", 16],
+                footway: ["route-pedestrian-symbolic", "transport", 16],
+                pedestrian: ["route-pedestrian-symbolic", "transport", 16],
+                platform: ["route-transit-bus-symbolic", "transport", 16],
+                steps: ["steps-symbolic", "transport", 16],
+                path: ["route-pedestrian-symbolic", "transport", 16],
+                _: ["route-car-symbolic", "transport", 16],
             },
-            bank: {
-                _: {
-                    icon: "bank-symbolic",
-                    minzoom: 15,
-                    category: "generic",
-                    tag: "amenity",
-                },
-            },
-            bar: {
-                _: {
-                    icon: "pub-symbolic",
-                    minzoom: 15,
-                    category: "food",
-                    tag: "amenity",
-                },
-            },
-            beer: {
-                _: {
-                    icon: "pub-symbolic",
-                    minzoom: 15,
-                    category: "food",
-                    tag: "amenity",
-                },
-            },
-            bicycle_parking: {
-                _: {
-                    icon: "bicycle-parking-symbolic",
-                    minzoom: 16,
-                    category: "transport",
-                    size: 0.75,
-                    tag: "amenity",
-                },
-            },
-            bicycle_rental: {
-                _: {
-                    icon: "cycling-symbolic",
-                    minzoom: 16,
-                    category: "transport",
-                    tag: "amenity",
-                },
-            },
-            bollard: {
-                _: {
-                    skip: true,
-                },
-            },
-            bus: {
-                bus_stop: {
-                    icon: "route-transit-bus-symbolic",
-                    minzoom: 16,
-                    category: "transport",
-                    tag: "highway",
-                },
-                bus_station: {
-                    icon: "route-transit-bus-symbolic",
-                    minzoom: 15,
-                    category: "transport",
-                    tag: "amenity",
-                },
-            },
-            butcher: {
-                _: {
-                    icon: "salami-symbolic",
-                    minzoom: 15,
-                    category: "generic",
-                    tag: "shop",
-                },
-            },
-            cafe: {
-                _: {
-                    icon: "cafe-symbolic",
-                    minzoom: 15,
-                    category: "food",
-                    tag: "amenity",
-                },
-            },
-            car: {
-                car_repair: {
-                    icon: "wrench-wide-symbolic",
-                    tag: "shop",
-                },
-                _: {
-                    icon: "driving-symbolic",
-                    minzoom: 15,
-                    category: "generic",
-                },
-            },
-            car_rental: {
-                _: {
-                    icon: "route-car-symbolic",
-                    minzoom: 15,
-                    category: "transport",
-                    tag: "amenity",
-                },
-            },
-            cemetery: {
-                grave_yard: {
-                    icon: "non-religious-cemetary-symbolic",
-                    minzoom: 15,
-                    category: "parks",
-                    tag: "amenity",
-                },
-                cemetery: {
-                    icon: "non-religious-cemetary-symbolic",
-                    minzoom: 15,
-                    category: "parks",
-                    tag: "landuse",
-                },
-            },
-            cinema: {
-                _: {
-                    icon: "video-camera-symbolic",
-                    minzoom: 15,
-                    category: "generic",
-                    tag: "amenity",
-                },
-            },
-            clinic: {
-                _: {
-                    icon: "hospital-sign-symbolic",
-                    minzoom: 15,
-                    category: "healthAndSafety",
-                    tag: "amenity",
-                },
-            },
-            clothing_store: {
-                _: {
-                    icon: "clothing-store-symbolic",
-                    minzoom: 15,
-                    category: "generic",
-                    tag: "shop",
-                },
-            },
-            college: {
-                university: {
-                    icon: "school-symbolic",
-                    minzoom: 13,
-                    category: "education",
-                    tag: "amenity",
-                },
-                college: {
-                    icon: "school-symbolic",
-                    minzoom: 15,
-                    category: "education",
-                    tag: "amenity",
-                },
-            },
-            conference_centre: {
-                _: {
-                    icon: "meeting-symbolic",
-                    minzoom: 13,
-                    category: "public",
-                    tag: "amenity",
-                },
-            },
-            dentist: {
-                _: {
-                    icon: "dentist-symbolic",
-                    minzoom: 15,
-                    category: "healthAndSafety",
-                    tag: "amenity",
-                },
-            },
-            doctors: {
-                _: {
-                    icon: "hospital-sign-symbolic",
-                    minzoom: 15,
-                    category: "healthAndSafety",
-                    tag: "amenity",
-                },
-            },
-            dog_park: {
-                _: {
-                    icon: "dog-symbolic",
-                    minzoom: 15,
-                    category: "parks",
-                    tag: "leisure",
-                },
-            },
-            drinking_water: {
-                _: {
-                    icon: "drinking-fountain-symbolic",
-                    minzoom: 16,
-                    category: "micro",
-                    tag: "amenity",
-                },
-            },
-            fast_food: {
-                fast_food: {
-                    icon: "fast-food-symbolic",
-                    minzoom: 15,
-                    category: "food",
-                    tag: "amenity",
-                },
-                food_court: {
-                    icon: "restaurant-symbolic",
-                    minzoom: 15,
-                    category: "food",
-                    tag: "amenity",
-                },
-            },
-            ferry_terminal: {
-                _: {
-                    icon: "ferry-symbolic",
-                    minzoom: 13,
-                    category: "transport",
-                    tag: "amenity",
-                },
-            },
-            fire_station: {
-                _: {
-                    icon: "firefighter-symbolic",
-                    minzoom: 15,
-                    category: "healthAndSafety",
-                    tag: "amenity",
-                },
-            },
-            firepit: {
-                _: {
-                    icon: "barbecue-symbolic",
-                    minzoom: 16,
-                    category: "micro",
-                    tag: "leisure",
-                },
-            },
-            fitness_centre: {
-                _: {
-                    icon: "weight2-symbolic",
-                    minzoom: 15,
-                    category: "generic",
-                    tag: "leisure",
-                },
-            },
-            fitness_station: {
-                _: {
-                    icon: "weight2-symbolic",
-                    minzoom: 16,
-                    category: "micro",
-                    tag: "leisure",
-                },
-            },
-            fuel: {
-                charging_station: {
-                    icon: "electric-car-symbolic",
-                },
-                fuel: {
-                    icon: "fuel-symbolic",
-                    minzoom: 15,
-                    category: "transport",
-                },
-            },
-            grocery: {
-                department_store: {
-                    icon: "shop-symbolic",
-                    minzoom: 15,
-                    category: "generic",
-                    tag: "shop",
-                },
-                supermarket: {
-                    icon: "shopping-cart-symbolic",
-                    minzoom: 14,
-                    category: "generic",
-                    tag: "shop",
-                },
-            },
-            hospital: {
-                hospital: {
-                    icon: "hospital-sign-symbolic",
-                    minzoom: 10,
-                    category: "hospitals",
-                    tag: "amenity",
-                },
-                _: {
-                    icon: "doctor-symbolic",
-                    minzoom: 15,
-                    category: "healthAndSafety",
-                },
-            },
-            library: {
-                books: {
-                    icon: "library-symbolic",
-                    minzoom: 15,
-                    category: "generic",
-                    tag: "shop",
-                },
-                library: {
-                    icon: "open-book-symbolic",
-                    minzoom: 14,
-                    category: "public",
-                    tag: "amenity",
-                },
-            },
-            lodging: {
-                alpine_hut: {
-                    minzoom: 15,
-                },
-                chalet: {
-                    minzoom: 15,
-                },
-                dormitory: {
-                    minzoom: 15,
-                    tag: "building",
-                },
-                guest_house: {
-                    minzoom: 15,
-                },
-                _: {
-                    icon: "bed-symbolic",
-                    minzoom: 14,
-                    category: "lodging",
-                    tag: "tourism",
-                },
-            },
-            office: {
-                diplomatic: {
-                    icon: "flag-filled-symbolic",
-                    minzoom: 15,
-                    category: "public",
-                },
-                _: {
-                    icon: "circle-small-symbolic",
-                    minzoom: 15,
-                    category: "generic",
-                },
-            },
-            park: {
-                bbq: {
-                    icon: "barbecue-symbolic",
-                    minzoom: 16,
-                    category: "micro",
-                },
-                park: {
-                    icon: "tree-symbolic",
-                    minzoom: 10,
-                    category: "parks",
-                },
-            },
-            pitch: {
-                american_football: {
-                    icon: "football-american-symbolic",
-                },
-                golf: {
-                    icon: "golf-symbolic",
-                },
-                hockey: {
-                    icon: "hockey-symbolic",
-                },
-                tennis: {
-                    icon: "tennis-symbolic",
-                },
-                soccer: {
-                    icon: "football-symbolic",
-                },
-                _: {
-                    icon: "baseball-symbolic",
-                    minzoom: 16,
-                    category: "parks",
-                    tag: "leisure",
-                },
-            },
-            post: {
-                post_box: {
-                    icon: "post-box-symbolic",
-                    minzoom: 16,
-                    category: "micro",
-                    tag: "amenity",
-                },
-                post_office: {
-                    icon: "post-box-symbolic",
-                    minzoom: 15,
-                    category: "generic",
-                    tag: "amenity",
-                },
-            },
-            railway: {
-                station: {
-                    icon: "train-symbolic",
-                    minzoom: 16,
-                    category: "transport",
-                    tag: "railway",
-                },
-                tram_stop: {
-                    icon: "tram-symbolic",
-                    minzoom: 16,
-                    category: "transport",
-                    tag: "railway",
-                },
-            },
-            school: {
-                kindergarten: {
-                    icon: "school-symbolic",
-                    minzoom: 15,
-                    category: "education",
-                    tag: "amenity",
-                },
-                school: {
-                    icon: "school-symbolic",
-                    minzoom: 15,
-                    category: "education",
-                    tag: "amenity",
-                },
-            },
-            shop: {
-                alcohol: {
-                    icon: "drinks-symbolic",
-                },
-                computer: {
-                    icon: "phonelink2-symbolic",
-                },
-                convenience: {
-                    icon: "shopping-cart-symbolic",
-                },
-                department_store: {
-                    icon: "shop-symbolic",
-                },
-                electronics: {
-                    icon: "phonelink2-symbolic",
-                },
-                general: {
-                    icon: "shop-symbolic",
-                },
-                golf: {
-                    icon: "golf-symbolic",
-                },
-                mall: {
-                    icon: "shop-symbolic",
-                    minzoom: 14,
-                },
-                ice_cream: {
-                    icon: "icecream-cone-symbolic",
-                    minzoom: 15,
-                    category: "food",
-                    tag: "amenity",
-                },
-                mobile_phone: {
-                    icon: "smartphone-symbolic",
-                },
-                newsagent: {
-                    icon: "newspaper-symbolic",
-                },
-                optician: {
-                    icon: "eye-open-negative-filled-symbolic",
-                },
-                pet: {
-                    icon: "cat-symbolic",
-                },
-                sports: {
-                    icon: "baseball-symbolic",
-                },
-                supermarket: {
-                    icon: "shopping-cart-symbolic",
-                    minzoom: 14,
-                },
-                ticket: {
-                    icon: "ticket-special-symbolic",
-                },
-                video_games: {
-                    icon: "gamepad-symbolic",
-                },
-                wine: {
-                    icon: "wine-glass",
-                },
-                _: {
-                    icon: "shop-symbolic",
-                    minzoom: 15,
-                    category: "generic",
-                    tag: "shop",
-                },
-            },
-            stadium: {
-                american_football: {
-                    icon: "football-american-symbolic",
-                },
-                golf: {
-                    icon: "golf-symbolic",
-                },
-                hockey: {
-                    icon: "hockey-symbolic",
-                },
-                soccer: {
-                    icon: "football-symbolic",
-                },
-                tennis: {
-                    icon: "tennis-symbolic",
-                },
-                _: {
-                    icon: "baseball-symbolic",
-                    minzoom: 14,
-                    category: "parks",
-                    tag: "leisure",
-                },
-            },
-            sports_centre: {
-                american_football: {
-                    icon: "football-american-symbolic",
-                },
-                golf: {
-                    icon: "golf-symbolic",
-                },
-                hockey: {
-                    icon: "hockey-symbolic",
-                },
-                tennis: {
-                    icon: "tennis-symbolic",
-                },
-                soccer: {
-                    icon: "football-symbolic",
-                },
-                _: {
-                    icon: "baseball-symbolic",
-                    minzoom: 14,
-                    category: "generic",
-                    tag: "leisure",
-                },
-            },
-            garden: {
-                _: {
-                    icon: "circle-small-symbolic",
-                    minzoom: 15,
-                    category: "parks",
-                    tag: "leisure",
-                },
-            },
-            gate: {
-                _: {
-                    icon: "gate-symbolic",
-                    minzoom: 16,
-                    category: "traffic",
-                    size: 0.75,
-                    tag: "barrier",
-                },
-            },
-            golf: {
-                golf: {
-                    icon: "golf-symbolic",
-                    minzoom: 15,
-                    category: "generic",
-                    tag: "shop",
-                },
-                golf_course: {
-                    icon: "golf-symbolic",
-                    minzoom: 14,
-                    category: "parks",
-                    tag: "leisure",
-                },
-                miniature_golf: {
-                    icon: "golf-symbolic",
-                    minzoom: 16,
-                    category: "parks",
-                    tag: "leisure",
-                },
-            },
-            hairdresser: {
-                _: {
-                    icon: "barber-symbolic",
-                    minzoom: 15,
-                    category: "generic",
-                    tag: "shop",
-                },
+            historic: {
+                monument: ["museum-symbolic", "public"],
             },
             information: {
-                office: {
-                    minzoom: 14,
-                },
-                visitor_centre: {
-                    minzoom: 14,
-                },
-                _: {
-                    icon: "explore-symbolic",
-                    minzoom: 15,
-                    category: "micro",
-                    tag: "information",
-                },
+                office: ["explore-symbolic", "micro", 14],
+                visitor_centre: ["explore-symbolic", "micro", 14],
+                _: ["explore-symbolic", "micro"],
             },
-            lift_gate: {
-                _: {
-                    icon: "gate-symbolic",
-                    minzoom: 16,
-                    category: "traffic",
-                    size: 0.75,
-                    tag: "barrier",
-                },
+            landuse: {
+                cemetery: ["non-religious-cemetary-symbolic", "parks"],
             },
-            luggage_locker: {
-                _: {
-                    icon: "briefcase-symbolic",
-                    minzoom: 16,
-                    category: "micro",
-                    tag: "amenity",
-                },
+            leisure: {
+                dog_park: ["dog-symbolic", "parks"],
+                fitness_centre: ["weight2-symbolic", "generic"],
+                fitness_station: ["weight2-symbolic", "micro", 16],
+                garden: ["tree-symbolic", "parks", 16],
+                golf_course: ["golf-symbolic", "parks", 14],
+                mini_golf: ["golf-symbolic", "parks"],
+                nature_reserve: ["tree-symbolic", "parks", 10],
+                park: ["tree-symbolic", "parks", 10],
+                pitch: ["@sport", "parks", 16],
+                sports_centre: ["@sport", "parks", 13],
+                stadium: ["@sport", "parks", 14],
+                swimming_pool: false,
             },
-            monument: {
-                _: {
-                    icon: "museum-symbolic",
-                    minzoom: 15,
-                    category: "public",
-                    tag: "historic",
-                },
+            natural: {
+                hill: ["mountain-symbolic", "parks"],
+                peak: ["mountain-symbolic", "parks"],
+                volcano: ["mountain-symbolic", "parks"],
             },
-            museum: {
-                _: {
-                    icon: "museum-symbolic",
-                    minzoom: 15,
-                    category: "public",
-                    tag: "tourism",
-                },
+            office: {
+                diplomatic: ["flag-filled-symbolic", "public"],
+                _: ["building-symbolic", "generic"],
             },
-            nature_reserve: {
-                _: {
-                    icon: "tree-symbolic",
-                    minzoom: 10,
-                    category: "parks",
-                    tag: "leisure",
-                },
+            place: {
+                borough: ["city-symbolic"],
+                city: ["city-symbolic"],
+                city_block: ["building-symbolic"],
+                continent: ["earth-symbolic"],
+                country: ["flag-filled-symbolic"],
+                hamlet: ["town-symbolic"],
+                isolated_dwelling: ["building-symbolic"],
+                neighbourhood: ["town-symbolic"],
+                quarter: ["town-symbolic"],
+                province: ["flag-outline-thick-symbolic"],
+                region: ["flag-outline-thick-symbolic"],
+                square: ["route-pedestrian-symbolic"],
+                state: ["flag-outline-thick-symbolic"],
+                suburb: ["town-symbolic"],
+                town: ["town-symbolic"],
+                village: ["town-symbolic"],
             },
-            parking: {
-                _: {
-                    icon: "parking-sign-symbolic",
-                    minzoom: 16,
-                    category: "transport",
-                    size: 0.75,
-                    tag: "amenity",
-                },
+            railway: {
+                halt: ["route-transit-train-symbolic", "transport", 16],
+                station: ["route-transit-train-symbolic", "transport", 16],
+                stop: ["route-transit-train-symbolic", "transport", 16],
+                tram_stop: ["route-transit-tram-symbolic", "transport", 16],
             },
-            pharmacy: {
-                _: {
-                    icon: "pharmacy-symbolic",
-                    minzoom: 15,
-                    category: "healthAndSafety",
-                    tag: "amenity",
-                },
+            shop: {
+                alcohol: ["drinks-symbolic", "generic"],
+                art: ["brush-symbolic", "generic"],
+                bakery: ["bread-symbolic", "generic"],
+                books: ["library-symbolic", "generic"],
+                car: ["driving-symbolic", "generic"],
+                car_repair: ["wrench-wide-symbolic", "shop"],
+                clothing: ["clothing-store-symbolic", "generic"],
+                computer: ["phonelink2-symbolic", "generic"],
+                convenience: ["shopping-cart-symbolic", "generic"],
+                department_store: ["shop-symbolic", "generic"],
+                electronics: ["phonelink2-symbolic", "generic"],
+                general: ["shop-symbolic", "generic"],
+                golf: ["golf-symbolic", "generic"],
+                grocery: ["shopping-cart-symbolic", "generic"],
+                hairdresser: ["barber-symbolic", "generic"],
+                ice_cream: ["icecream-cone-symbolic", "food"],
+                mall: ["shop-symbolic", "generic", 14],
+                mobile_phone: ["smartphone-symbolic", "generic"],
+                music: ["headphones-symbolic", "generic"],
+                newsagent: ["newspaper-symbolic", "generic"],
+                optician: ["eye-open-negative-filled-symbolic", "generic"],
+                pet: ["cat-symbolic", "generic"],
+                photo: ["photo-camera-symbolic", "generic"],
+                sports: ["@sport", "generic"],
+                supermarket: ["shopping-cart-symbolic", "generic", 14],
+                ticket: ["ticket-symbolic", "generic"],
+                video_games: ["gamepad-symbolic", "generic"],
+                wine: ["drinks-symbolic", "generic"],
+                _: ["shop-symbolic", "generic"],
             },
-            picnic_site: {
-                _: {
-                    icon: "bench-symbolic",
-                    minzoom: 16,
-                    category: "micro",
-                    tag: "tourism",
-                },
-            },
-            place_of_worship: {
-                _: {
-                    icon: "circle-small-symbolic",
-                    minzoom: 16,
-                    category: "public",
-                    tag: "amenity",
-                },
-            },
-            police: {
-                _: {
-                    icon: "police-badge2-symbolic",
-                    minzoom: 15,
-                    category: "healthAndSafety",
-                    tag: "amenity",
-                },
-            },
-            recycling: {
-                _: {
-                    icon: "recycling-bin-symbolic",
-                    minzoom: 16,
-                    category: "micro",
-                    tag: "amenity",
-                },
-            },
-            restaurant: {
-                _: {
-                    icon: "restaurant-symbolic",
-                    minzoom: 15,
-                    category: "food",
-                    tag: "amenity",
-                },
-            },
-            theatre: {
-                _: {
-                    icon: "theater-symbolic",
-                    minzoom: 15,
-                    category: "generic",
-                    tag: "amenity",
-                },
-            },
-            toilets: {
-                _: {
-                    icon: "toilets-symbolic",
-                    minzoom: 16,
-                    category: "micro",
-                    tag: "amenity",
-                },
-            },
-            veterinary: {
-                _: {
-                    icon: "cat-symbolic",
-                    minzoom: 15,
-                    category: "healthAndSafety",
-                    tag: "amenity",
-                },
+            tourism: {
+                alpine_hut: ["bed-symbolic", "lodging"],
+                apartment: ["bed-symbolic", "lodging"],
+                attraction: ["photo-camera-symbolic", "public"],
+                artwork: ["photo-camera-symbolic", "micro"],
+                butcher: ["salami-symbolic", "generic"],
+                chalet: ["bed-symbolic", "lodging"],
+                gallery: ["museum-symbolic", "public"],
+                guest_house: ["bed-symbolic", "lodging"],
+                hostel: ["bed-symbolic", "lodging"],
+                hotel: ["bed-symbolic", "lodging", 14],
+                information: ["explore-symbolic", "micro"],
+                motel: ["bed-symbolic", "lodging"],
+                museum: ["museum-symbolic", "public"],
+                picnic_site: ["bench-symbolic", "micro", 16],
+                viewpoint: ["photo-camera-symbolic", "public"],
+                zoo: ["penguin-symbolic", "public"],
             },
         },
     },
