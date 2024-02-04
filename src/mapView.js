@@ -568,6 +568,10 @@ export class MapView extends Gtk.Overlay {
                 osmTags[key] = symbol.get_tag(key);
             }
         }
+        const mainTag = symbol.get_tag("tag");
+        if (mainTag) {
+            osmTags[mainTag] = symbol.get_tag("subtag") ?? symbol.get_tag("subclass");
+        }
         place.osmTags = osmTags;
 
         this.showPlace(place, false, true);
