@@ -294,6 +294,10 @@ export class Place extends GObject.Object {
         return this.osmTags?.religion;
     }
 
+    get sport() {
+        return this.osmTags?.sport;
+    }
+
     get toilets() {
         return this.osmTags?.toilets;
     }

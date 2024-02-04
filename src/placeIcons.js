@@ -19,147 +19,27 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-/**
- * Mapping OSM key/values to place icons.
- * Keys in top map correspond to osmKey from Place.
- * Keys in nested maps correspond to osmValue from Place,
- * _ matches catch-all case for that osmKey.
- */
-const TYPE_ICON_MAP = {
-    aeroway: {
-        aerodrome: 'route-transit-airplane-symbolic'
-    },
-    amenity: {
-        atm:              'coin-symbolic',
-        bank:             'bank-symbolic',
-        bar:              'bar-symbolic',
-        bbq:              'barbecue-symbolic',
-        bicycle_parking:  'route-bike-symbolic',
-        biergarten:       'pub-symbolic',
-        bus_station:      'route-transit-bus-symbolic',
-        cafe:             'cafe-symbolic',
-        car_rental:       'route-car-symbolic',
-        charging_station: 'electric-car-symbolic',
-        cinema:           'video-camera-symbolic',
-        clinic:           'hospital-sign-symbolic',
-        college:          'school-symbolic',
-        conference_centre:'meeting-symbolic',
-        doctors:          'hospital-sign-symbolic',
-        fast_food:        'fast-food-symbolic',
-        ferry_terminal:   'route-transit-ferry-symbolic',
-        firepit:          'barbecue-symbolic',
-        food_court:       'restaurant-symbolic',
-        fuel:             'fuel-symbolic',
-        hospital:         'hospital-symbolic',
-        kindergarten:     'school-symbolic',
-        library:          'library-symbolic',
-        luggage_locker:   'briefcase-symbolic',
-        nightclub:        'music-note-symbolic',
-        parking:          'parking-sign-symbolic',
-        police:           'police-badge2-symbolic',
-        post_box:         'post-box-symbolic',
-        post_office:      'post-box-symbolic',
-        pub:              'pub-symbolic',
-        restaurant:       'restaurant-symbolic',
-        school:           'school-symbolic',
-        theatre:          'theater-symbolic',
-        toilets:          'toilets-symbolic',
-        university:       'school-symbolic',
-        veterinary:       'dog-symbolic'
-    },
-    building: {
-        railway_station:  'route-transit-train',
-        _:                'building-symbolic'
-    },
-    highway: {
-        bus_stop:         'route-transit-bus-symbolic',
-        cycleway:         'route-bike-symbolic',
-        footway:          'route-pedestrian-symbolic',
-        pedestrian:       'route-pedestrian-symbolic',
-        platform:         'route-transit-bus-symbolic',
-        steps:            'steps-symbolic',
-        path:             'route-pedestrian-symbolic',
-        _:                'route-car-symbolic'
-    },
-    leisure: {
-        dog_park:         'dog-symbolic',
-        fitness_centre:   'weight2-symbolic',
-        fitness_station:  'weight2-symbolic',
-        garden:           'tree-symbolic',
-        golf_course:      'golf-symbolic',
-        nature_reserve:   'tree-symbolic',
-        park:             'tree-symbolic',
-        pitch:            'baseball-symbolic',
-        stadium:          'baseball-symbolic'
-    },
-    natural: {
-        hill:             'mountain-symbolic',
-        peak:             'mountain-symbolic',
-        volcano:          'mountain-symbolic'
-    },
-    office: {
-        _:                'building-symbolic'
-    },
-    place: {
-        borough:          'city-symbolic',
-        city:             'city-symbolic',
-        city_block:       'building-symbolic',
-        continent:        'earth-symbolic',
-        country:          'flag-filled-symbolic',
-        hamlet:           'town-symbolic',
-        isolated_dwelling:'building-symbolic',
-        neighbourhood:    'town-symbolic',
-        quarter:          'town-symbolic',
-        province:         'flag-outline-thick-symbolic',
-        region:           'flag-outline-thick-symbolic',
-        square:           'route-pedestrian-symbolic',
-        state:            'flag-outline-thick-symbolic',
-        suburb:           'town-symbolic',
-        town:             'town-symbolic',
-        village:          'town-symbolic'
-    },
-    railway: {
-        halt:             'route-transit-train-symbolic',
-        station:          'route-transit-train-symbolic',
-        stop:             'route-transit-train-symbolic',
-        tram_stop:        'route-transit-tram-symbolic'
-    },
-    shop: {
-        alcohol:          'drinks-symbolic',
-        bakery:           'bread-symbolic',
-        convenience:      'shopping-cart-symbolic',
-        department_store: 'shopping-cart-symbolic',
-        electronics:      'smartphone-symbolic',
-        general:          'shopping-cart-symbolic',
-        mall:             'shopping-cart-symbolic',
-        supermarket:      'shopping-cart-symbolic',
-        ticket:           'ticket-symbolic',
-        wine:             'drinks-symbolic'
-    },
-    tourism: {
-        alpine_hut:       'bed-symbolic',
-        apartment:        'bed-symbolic',
-        attraction:       'photo-camera-symbolic',
-        artwork:          'photo-camera-symbolic',
-        chalet:           'bed-symbolic',
-        gallery:          'museum-symbolic',
-        guest_house:      'bed-symbolic',
-        hostel:           'bed-symbolic',
-        hotel:            'bed-symbolic',
-        information:      'explore-symbolic',
-        motel:            'bed-symbolic',
-        museum:           'museum-symbolic',
-        picnic_site:      'bench-symbolic',
-        viewpoint:        'photo-camera-symbolic',
-        zoo:              'penguin-symbolic'
-    }
-};
+import { DEFS } from "./mapStyle/defs.js";
+import { Place } from "./place.js";
 
 /**
  * Get place icon name suitable for a Place.
+ * @param {Place} place A Place object
+ * @returns {string} Icon name
  */
 export function getIconForPlace(place) {
-    return TYPE_ICON_MAP?.[place.osmKey]?.[place.osmValue] ??
-           TYPE_ICON_MAP?.[place.osmKey]?.['_'] ?? 'map-marker-symbolic';
-}
+    const icon =
+        DEFS.pois.tags[place.osmKey]?.[place.osmValue]?.[0] ??
+        DEFS.pois.tags[place.osmKey]?.["_"]?.[0] ??
+        "map-marker-symbolic";
 
+    if (icon === "@sport") {
+        return DEFS.pois.sportIcons[place.sport] ?? DEFS.pois.sportIcons._;
+    }
+
+    if (icon === "circle-small-symbolic") {
+        return "map-marker-symbolic";
+    }
+
+    return icon;
+}
