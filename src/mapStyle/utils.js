@@ -19,7 +19,9 @@ import Adw from "gi://Adw";
 
 /**
  * @typedef {Object} MapStyleConfigParams
- * @property {"dark" | "light"} colorScheme Color scheme
+ * @property {"dark" | "light"} [colorScheme] Color scheme
+ * @property {"libshumate" | "maplibre-gl-js"} [renderer] Renderer to target
+ * @property {number} [textScale] Text scale factor
  */
 
 export class MapStyleConfig {
@@ -28,6 +30,8 @@ export class MapStyleConfig {
      */
     constructor(options) {
         this.colorScheme = options.colorScheme ?? "light";
+        this.renderer = options.renderer ?? "libshumate";
+        this.textScale = options.textScale;
     }
 
     pick(colorDef) {
@@ -58,11 +62,19 @@ export class MapStyleConfig {
     }
 
     fonts(variant) {
-        return ["Cantarell " + (variant ?? "Regular")];
+        if (this.renderer === "libshumate") {
+            return ["Cantarell " + (variant ?? "Regular")];
+        } else {
+            /* Use Noto Sans when targeting MapLibre GL JS because it's
+               more commonly available in SDF format. */
+            return ["Noto Sans " + (variant ?? "Regular")];
+        }
     }
 
     textSize(size) {
-        return Adw.LengthUnit.to_px(Adw.LengthUnit.SP, size, null);
+        return typeof this.textScale === "undefined"
+            ? Adw.LengthUnit.to_px(Adw.LengthUnit.SP, size, null)
+            : size * this.textScale;
     }
 }
 

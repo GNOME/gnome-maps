@@ -79,6 +79,8 @@ export function generateMapStyle(options) {
                 maxzoom: 14,
             },
         },
+        /* Not used by libshumate, but necessary for Mapbox GL JS */
+        glyphs: "https://tiles.maps.jwestman.net/fonts/{fontstack}/{range}.pbf",
         layers: [
             {
                 id: "background",
