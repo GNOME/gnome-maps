@@ -21,7 +21,7 @@ export const housenumbers = (config) => ({
     id: "housenumbers",
     type: "symbol",
     source: "vector-tiles",
-    "source-layer": "housenumbers",
+    "source-layer": "housenumber",
     minzoom: 18,
     layout: {
         "text-field": ["get", "housenumber"],
