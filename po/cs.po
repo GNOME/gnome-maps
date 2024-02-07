@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2024-01-15 20:56+0000\n"
-"PO-Revision-Date: 2024-01-22 16:10+0100\n"
+"POT-Creation-Date: 2024-01-31 21:06+0000\n"
+"PO-Revision-Date: 2024-02-07 02:26+0100\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -209,6 +209,11 @@ msgstr "_Zrušit"
 #: data/ui/export-view-dialog.ui:26
 msgid "_Export"
 msgstr "_Exportovat"
+
+#. Translators: This is a tooltip
+#: data/ui/favorite-list-row.ui:72
+msgid "Remove Favorite"
+msgstr "Odebrat oblíbené"
 
 #: data/ui/favorites-popover.ui:11
 msgid "No favorites"
@@ -472,7 +477,7 @@ msgstr ""
 msgid "Recently Used"
 msgstr "Nedávno použité"
 
-#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:544
+#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:629
 msgid "Cancel"
 msgstr "Zrušit"
 
@@ -621,7 +626,7 @@ msgid "Airplanes"
 msgstr "letadla"
 
 #. Translators: This is a tooltip
-#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27
+#: data/ui/place-bar.ui:33 data/ui/place-buttons.ui:27
 msgid "Share Location"
 msgstr "Sdílet místo"
 
@@ -665,7 +670,7 @@ msgid "Zoom Out"
 msgstr "Oddálit"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1115
+#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1204
 msgid "Zoom In"
 msgstr "Přiblížit"
 
@@ -728,15 +733,23 @@ msgstr "Mapa na souřadnicích %f, %f.png"
 msgid "Unable to export view"
 msgstr "Nelze exportovat zobrazení"
 
-#: src/geoJSONSource.js:72
+#: src/favoriteListRow.js:42
+msgid "Favorite removed"
+msgstr "Oblíbená položka byla odebrána"
+
+#: src/favoriteListRow.js:43
+msgid "Undo"
+msgstr "Zpět"
+
+#: src/geoJSONSource.js:73
 msgid "invalid coordinate"
 msgstr "neplatné souřadnice"
 
-#: src/geoJSONSource.js:117 src/geoJSONSource.js:157 src/geoJSONSource.js:172
+#: src/geoJSONSource.js:126 src/geoJSONSource.js:166 src/geoJSONSource.js:181
 msgid "parse error"
 msgstr "chyba zpracování"
 
-#: src/geoJSONSource.js:151
+#: src/geoJSONSource.js:160
 msgid "unknown geometry"
 msgstr "neznámé geometrické údaje"
 
@@ -808,15 +821,15 @@ msgstr "Poskytovatel vyhledávání"
 msgid "Search provided by %s using %s"
 msgstr "Hledání zprostředkuje %s pomocí %s"
 
-#: src/mapView.js:518 src/mapView.js:583
+#: src/mapView.js:603 src/mapView.js:668
 msgid "Failed to open layer"
 msgstr "Selhalo otevření vrstvy"
 
-#: src/mapView.js:537
+#: src/mapView.js:622
 msgid "Do you want to continue?"
 msgstr "Chcete pokračovat?"
 
-#: src/mapView.js:538
+#: src/mapView.js:623
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -825,28 +838,28 @@ msgstr ""
 "Chystáte se otevřít soubory o celkové velikosti %s MB. To může zabrat nějaký "
 "čas."
 
-#: src/mapView.js:545 src/transitplugins/openTripPlanner.js:1239
+#: src/mapView.js:630 src/transitplugins/openTripPlanner.js:1239
 #: src/transitplugins/openTripPlanner2.js:267
 msgid "Continue"
 msgstr "Pokračujte"
 
-#: src/mapView.js:577
+#: src/mapView.js:662
 msgid "File type is not supported"
 msgstr "Typ souboru není podporován"
 
-#: src/mapView.js:614
+#: src/mapView.js:699
 msgid "Failed to open GeoURI"
 msgstr "Selhalo otevření adresy GeoURI"
 
-#: src/mapView.js:1074
+#: src/mapView.js:1163
 msgid "Nothing found here!"
 msgstr "Zde nebylo nic nalezeno!"
 
-#: src/mapView.js:1114
+#: src/mapView.js:1203
 msgid "Zoom in to add location"
 msgstr "Přiblížit pro přidání místa"
 
-#: src/mapView.js:1135
+#: src/mapView.js:1224
 msgid "Location was added in OpenStreetMap"
 msgstr "Místo bylo přidáno do OpenStreetMap"
 
@@ -898,7 +911,7 @@ msgstr "Oficiální název. Typicky to, co bývá na informačních tabulích."
 msgid "Address"
 msgstr "Adresa"
 
-#: src/osmEditDialog.js:120 src/placeView.js:264
+#: src/osmEditDialog.js:120 src/placeView.js:275
 msgid "Website"
 msgstr "Stránky WWW"
 
@@ -927,7 +940,7 @@ msgstr ""
 "Telefonní číslo. Používejte mezinárodní formát začínající znakem +. Dbejte "
 "místních zákonů na ochranu soukromí, zejména u soukromách telefonních čísel."
 
-#: src/osmEditDialog.js:139 src/placeView.js:297
+#: src/osmEditDialog.js:139 src/placeView.js:308
 msgid "E-mail"
 msgstr "E-mail"
 
@@ -949,11 +962,11 @@ msgstr ""
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:149 src/placeView.js:703
+#: src/osmEditDialog.js:149 src/placeView.js:727
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: src/osmEditDialog.js:156 src/placeView.js:388
+#: src/osmEditDialog.js:156 src/placeView.js:399
 msgid "Opening hours"
 msgstr "Otevírací doba"
 
@@ -967,11 +980,11 @@ msgstr "Nápověda k formátu viz odkaz v popisku."
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:164 src/placeView.js:498
+#: src/osmEditDialog.js:164 src/placeView.js:509
 msgid "Population"
 msgstr "Populace"
 
-#: src/osmEditDialog.js:169 src/placeView.js:527
+#: src/osmEditDialog.js:169 src/placeView.js:538
 msgid "Altitude"
 msgstr "Nadmořská výška"
 
@@ -1196,16 +1209,16 @@ msgctxt "short distance format string"
 msgid "< %s"
 msgstr "< %s"
 
-#: src/placeView.js:252
+#: src/placeView.js:263
 msgid "Coordinates"
 msgstr "Souřadnice"
 
-#: src/placeView.js:256
+#: src/placeView.js:267
 msgid "Accuracy"
 msgstr "Přesnost"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:259
+#: src/placeView.js:270
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Přesnost: %s"
@@ -1216,7 +1229,7 @@ msgstr "Přesnost: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:278
+#: src/placeView.js:289
 msgid "Phone number"
 msgstr "Telefonní číslo"
 
@@ -1227,16 +1240,16 @@ msgstr "Telefonní číslo"
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
 #.
-#: src/placeView.js:312 src/placeView.js:351
+#: src/placeView.js:323 src/placeView.js:362
 msgid "Floor"
 msgstr "Patro"
 
-#: src/placeView.js:314
+#: src/placeView.js:325
 #, javascript-format
 msgid "Floor %s"
 msgstr "%s. patro"
 
-#: src/placeView.js:326
+#: src/placeView.js:337
 msgid "At ground level"
 msgstr "V úrovni terénu"
 
@@ -1245,7 +1258,7 @@ msgstr "V úrovni terénu"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:335
+#: src/placeView.js:346
 #, javascript-format
 msgid "%s floor above ground level"
 msgid_plural "%s floors above ground level"
@@ -1258,7 +1271,7 @@ msgstr[2] "%s pater nad úrovní terénu"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:346
+#: src/placeView.js:357
 #, javascript-format
 msgid "%s floor below ground level"
 msgid_plural "%s floors below ground level"
@@ -1270,7 +1283,7 @@ msgstr[2] "%s pater pod úrovní terénu"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:364
+#: src/placeView.js:375
 msgid "Offers takeout"
 msgstr "Nabízí jídlo s sebou"
 
@@ -1278,7 +1291,7 @@ msgstr "Nabízí jídlo s sebou"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:372
+#: src/placeView.js:383
 msgid "Does not offer takeout"
 msgstr "Nenabízí jídlo s sebou"
 
@@ -1287,14 +1300,14 @@ msgstr "Nenabízí jídlo s sebou"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:381
+#: src/placeView.js:392
 msgid "Only offers takeout"
 msgstr "Nabízí pouze jídlo s sebou"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:398
+#: src/placeView.js:409
 msgid "Public internet access"
 msgstr "Veřejný přístup k Internetu"
 
@@ -1302,50 +1315,50 @@ msgstr "Veřejný přístup k Internetu"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:407
+#: src/placeView.js:418
 msgid "No internet access"
 msgstr "Bez přístupu k Internetu"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:415
+#: src/placeView.js:426
 msgid "Public Wi-Fi"
 msgstr "Veřejná Wi-Fi"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:423
+#: src/placeView.js:434
 msgid "Wired internet access"
 msgstr "Drátový přístup k Internetu"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:431
+#: src/placeView.js:442
 msgid "Computers available for use"
 msgstr "Počítač k dispozici k používání"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:439
+#: src/placeView.js:450
 msgid "Internet assistance available"
 msgstr "Internetová asistence k dispozici"
 
-#: src/placeView.js:445
+#: src/placeView.js:456
 msgid "No toilets available"
 msgstr "Bez toalet k dispozici"
 
-#: src/placeView.js:448
+#: src/placeView.js:459
 msgid "Toilets available"
 msgstr "K dispozici toalety"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:457
+#: src/placeView.js:468
 msgid "Wheelchair accessible"
 msgstr "Bezbariérový přístup"
 
@@ -1354,7 +1367,7 @@ msgstr "Bezbariérový přístup"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:467
+#: src/placeView.js:478
 msgid "Limited wheelchair accessibility"
 msgstr "Omezený bezbariérový přístup"
 
@@ -1362,7 +1375,7 @@ msgstr "Omezený bezbariérový přístup"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:476
+#: src/placeView.js:487
 msgid "Not wheelchair accessible"
 msgstr "Nemá bezbariérový přístup"
 
@@ -1371,7 +1384,7 @@ msgstr "Nemá bezbariérový přístup"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:486
+#: src/placeView.js:497
 msgid "Designated for wheelchair users"
 msgstr "Výslovně vhodné pro vozíčkáře"
 
@@ -1380,7 +1393,7 @@ msgstr "Výslovně vhodné pro vozíčkáře"
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:517
+#: src/placeView.js:528
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s pod hladinou moře"
@@ -1389,23 +1402,23 @@ msgstr "%s pod hladinou moře"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:524
+#: src/placeView.js:535
 msgid "At sea level"
 msgstr "V úrovni hladiny moře"
 
-#: src/placeView.js:533
+#: src/placeView.js:544
 msgid "Religion:"
 msgstr "Náboženství:"
 
-#: src/place.js:544
+#: src/place.js:564
 msgid "Place not found in OpenStreetMap"
 msgstr "Místo nebylo v OpenStreetMap nalezeno"
 
-#: src/place.js:551
+#: src/place.js:571
 msgid "Coordinates in URL are not valid"
 msgstr "Souřadnice v adrese URL nejsou platné"
 
-#: src/place.js:560
+#: src/place.js:580
 msgid "URL is not supported"
 msgstr "Tato adreasa URL není podporovaná"
 
@@ -1725,7 +1738,7 @@ msgstr "Selhalo otevření adresy URI"
 msgid "Open with %s"
 msgstr "Otevřít pomocí %s"
 
-#: src/shapeLayer.js:108
+#: src/shapeLayer.js:109
 msgid "failed to load file"
 msgstr "selhalo načtení souboru"
 
@@ -1870,7 +1883,7 @@ msgstr[2] "%s∶%s hod"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:738
+#: src/transitPlan.js:744
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s – %s"
