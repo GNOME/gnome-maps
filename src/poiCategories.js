@@ -157,17 +157,19 @@ const POI_CATEGORIES = [
             },
             {
                 label:       _("Libraries"),
-                icon:        'library-symbolic',
+                icon:        'open-book-symbolic',
                 keyValues:   [['amenity=library']],
                 initialSearchRadius: 3000
             },
             {
                 label:       _("Pharmacies"),
+                icon:        'pharmacy-symbolic',
                 keyValues:   [['amenity=pharmacy']],
                 initialSearchRadius: 3000
             },
             {
                 label:       _("Recycling"),
+                icon:        'recycling-bin-symbolic',
                 keyValues:   [['amenity=recycling']]
             },
             {
@@ -227,6 +229,7 @@ const POI_CATEGORIES = [
             },
             {
                 label:     _("Ice Cream"),
+                icon:      'icecream-cone-symbolic',
                 keyValues: [['amenity=ice_cream']]
             },
             {
@@ -239,7 +242,7 @@ const POI_CATEGORIES = [
     },
     {
         label: _("Shopping"),
-        icon:  'shopping-cart-symbolic',
+        icon:  'shop-symbolic',
         subcategories: [
              {
                 label:               _("Supermarkets"),
@@ -260,6 +263,7 @@ const POI_CATEGORIES = [
              },
              {
                 label:               _("Clothes"),
+                icon:                'clothing-store-symbolic',
                 keyValues:           [['shop=clothes']],
                 initialSearchRadius: 3000
              },
@@ -328,7 +332,7 @@ const POI_CATEGORIES = [
             },
             {
                 label:     _("Bicycle Parking"),
-                icon:      'route-bike-symbolic',
+                icon:      'bicycle-parking-symbolic',
                 keyValues: [['amenity=bicycle_parking']]
             },
             {
@@ -360,7 +364,7 @@ const POI_CATEGORIES = [
         subcategories: [
             {
                 label:     _("Clinics"),
-                icon:      'hospital-sign-symbolic',
+                icon:      'doctor-symbolic',
                 keyValues: [['amenity=clinic']],
                 initialSearchRadius: 3000
             },
@@ -372,6 +376,7 @@ const POI_CATEGORIES = [
             },
             {
                 label:     _("Dentists"),
+                icon:      'dentist-symbolic',
                 keyValues: [['amenity=dentist']],
                 initialSearchRadius: 3000
             }
