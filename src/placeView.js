@@ -311,7 +311,7 @@ export class PlaceView extends Gtk.Box {
                            linkUrl: `mailto:${place.email}` });
         }
 
-        if (place.levelRef) {
+        if (place.floor) {
             /* If a reference to a named floor (named or symbolic) exists
              * refer to it directly.
              */
@@ -322,7 +322,7 @@ export class PlaceView extends Gtk.Box {
              */
             content.push({ label: _("Floor"),
                            icon:  'steps-symbolic',
-                           info:  _("Floor %s").format(place.levelRef) });
+                           info:  _("Floor %s").format(place.floor) });
         } else if (place.level) {
             /* Else if a floor level relative to ground level exists,
              * display it indicating the relation to ground, or when 0 that

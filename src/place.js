@@ -379,8 +379,8 @@ export class Place extends GObject.Object {
         return this.osmTags?.level;
     }
 
-    get levelRef() {
-        return this.osmTags?.['level:ref'];
+    get floor() {
+        return this.osmTags?.['addr:floor'] ?? this.osmTags?.['level:ref'];
     }
 
     toJSON() {
