@@ -19,13 +19,13 @@ import { DEFS } from "./defs.js";
 
 export const places = (config) =>
     DEFS.places.map((place) => ({
-        id: `place-${place.classes[0]}`,
+        id: place.id ?? `place-${place.classes[0]}`,
         type: "symbol",
         source: "vector-tiles",
         "source-layer": "place",
         minzoom: place.minzoom,
         maxzoom: place.maxzoom,
-        filter: ["in", ["get", "class"], ["literal", place.classes]],
+        filter: config.filter(place),
         layout: {
             "text-font": config.fonts(place.font),
             "text-field": config.localizedName(),

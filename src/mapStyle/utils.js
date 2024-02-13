@@ -103,6 +103,17 @@ export class MapStyleConfig {
             ],
         ];
     }
+
+    filter(place) {
+      const classExpression =
+        ["in", ["get", "class"], ["literal", place.classes]];
+
+      if (place.maxRank) {
+        return ["all", ["<=", ["get", "rank"], place.maxRank], classExpression];
+      } else {
+        return classExpression;
+      }
+    }
 }
 
 export const hexToRgb = (hex) => [

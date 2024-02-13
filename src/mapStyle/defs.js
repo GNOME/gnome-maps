@@ -202,7 +202,35 @@ export const DEFS = {
                 [12, 12],
                 [15, 18],
             ],
-        }
+        },
+        {
+            id: "place-island-large",
+            classes: ["island"],
+            font: "Italic",
+            color: {
+                dark: "#c8bfbc",
+                light: "#5e5c64",
+            },
+            minzoom: 8,
+            maxzoom: 12,
+            maxRank: 3,
+            sizeStops: [
+                [6, 18],
+            ],
+        },
+        {
+            classes: ["island"],
+            font: "Italic",
+            color: {
+                dark: "#c8bfbc",
+                light: "#5e5c64",
+            },
+            minzoom: 13,
+            maxzoom: 18,
+            sizeStops: [
+                [13, 18],
+            ],
+        },
     ],
     pois: {
         colors: {
