@@ -305,7 +305,7 @@ export class PlaceView extends Gtk.Box {
         }
 
         if (place.email && Utils.isValidEmail(place.email)) {
-            content.push({ label: _("E-mail"),
+            content.push({ label: _("Email"),
                            icon: 'mail-unread-symbolic',
                            info: GLib.markup_escape_text(place.email, -1),
                            linkUrl: `mailto:${place.email}` });

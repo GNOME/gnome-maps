@@ -141,8 +141,8 @@ const OSM_FIELDS = [
         type: EditFieldType.TEXT,
         validate: Utils.isValidEmail,
         rewriteFunc: _osmEmailRewriteFunc,
-        validateError: _("This is not a valid e-mail address. Make sure to not include the mailto: protocol prefix."),
-        hint: _("Contact e-mail address for inquiries. " +
+        validateError: _("This is not a valid email address. Make sure to not include the mailto: protocol prefix."),
+        hint: _("Contact email address for inquiries. " +
                 "Add only email addresses that are intended to be publicly used.")
     },
     {
@@ -169,7 +169,7 @@ const OSM_FIELDS = [
         name: _("Altitude"),
         tag: 'ele',
         type: EditFieldType.INTEGER,
-        hint: _("Elevation (height above sea level) of a point in metres.")
+        hint: _("Elevation (height above sea level) of a point in meters.")
     },
     {
         name: _("Wheelchair access"),
