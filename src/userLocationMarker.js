@@ -33,6 +33,8 @@ export class AccuracyCircleMarker extends Shumate.Marker {
             ...params,
             latitude: place.location.latitude,
             longitude: place.location.longitude,
+            can_focus: false,
+            can_target: false
         });
 
         this._place = place;
