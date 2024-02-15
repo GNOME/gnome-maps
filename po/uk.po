@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2024-02-13 18:42+0000\n"
-"PO-Revision-Date: 2024-02-13 20:57+0200\n"
+"POT-Creation-Date: 2024-02-14 22:30+0000\n"
+"PO-Revision-Date: 2024-02-15 18:32+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -154,7 +154,8 @@ msgid "Number of recently visited routes to store."
 msgstr "Кількість недавно відвіданих маршрутів, які слід зберігати."
 
 #: data/org.gnome.Maps.gschema.xml:61
-msgid "OpenStreetMap username or e-mail address"
+#| msgid "OpenStreetMap username or e-mail address"
+msgid "OpenStreetMap username or email address"
 msgstr "Користувач або поштова скринька у OpenStreetMap"
 
 #: data/org.gnome.Maps.gschema.xml:62
@@ -213,12 +214,10 @@ msgstr "_Експортувати"
 
 #. Translators: This is a tooltip
 #: data/ui/favorite-list-row.ui:72
-#| msgid "Favorites"
 msgid "Remove Favorite"
 msgstr "Вилучити з улюблених"
 
 #: data/ui/favorites-popover.ui:11
-#| msgid "Favorites"
 msgid "No Favorites"
 msgstr "Немає улюблених"
 
@@ -393,9 +392,6 @@ msgid "Sign In To Edit Maps"
 msgstr "Увійти, щоб редагувати карту"
 
 #: data/ui/osm-account-dialog.ui:32
-#| msgid ""
-#| "Help to improve the map, using an\n"
-#| "OpenStreetMap account."
 msgid "Help to improve the map, using an OpenStreetMap account."
 msgstr "Допоможіть покращити карту через обліковий запис OpenStreetMap."
 
@@ -404,19 +400,16 @@ msgid "Sign In"
 msgstr "Увійти"
 
 #: data/ui/osm-account-dialog.ui:59
-#| msgid "Verification code"
 msgid "Verification"
 msgstr "Перевірка"
 
 #: data/ui/osm-account-dialog.ui:60
-#| msgid "Copy verification code shown when authorizing access in the browser"
 msgid ""
 "Copy the verification code shown when authorizing access in the browser."
 msgstr ""
 "Скопіюйте код перевірки, який показано при уповноваженні доступу у браузері."
 
 #: data/ui/osm-account-dialog.ui:69
-#| msgid "Verification code"
 msgid "Verification Code"
 msgstr "Код перевірки"
 
@@ -425,7 +418,6 @@ msgid "Verify"
 msgstr "Перевірити"
 
 #: data/ui/osm-account-dialog.ui:110
-#| msgid "Sign In"
 msgid "Signed In"
 msgstr "Увійшли"
 
@@ -744,7 +736,6 @@ msgid "Unable to export view"
 msgstr "Неможливо експортувати перегляд"
 
 #: src/favoriteListRow.js:42
-#| msgid "Favorites"
 msgid "Favorite removed"
 msgstr "Улюблений запис вилучено"
 
@@ -953,21 +944,27 @@ msgstr ""
 "плюса (+). Будь обачні з місцевим законами щодо конфіденційності, особливо "
 "особистими номерами."
 
-#: src/osmEditDialog.js:139 src/placeView.js:308
+#: src/osmEditDialog.js:139
 msgid "E-mail"
 msgstr "Ел. пошта"
 
 #: src/osmEditDialog.js:144
+#| msgid ""
+#| "This is not a valid e-mail address. Make sure to not include the mailto: "
+#| "protocol prefix."
 msgid ""
-"This is not a valid e-mail address. Make sure to not include the mailto: "
+"This is not a valid email address. Make sure to not include the mailto: "
 "protocol prefix."
 msgstr ""
 "Ця адреса електронної пошти є некоректною. Не використовуйте префікс "
 "протоколу mailto:."
 
 #: src/osmEditDialog.js:145
+#| msgid ""
+#| "Contact e-mail address for inquiries. Add only email addresses that are "
+#| "intended to be publicly used."
 msgid ""
-"Contact e-mail address for inquiries. Add only email addresses that are "
+"Contact email address for inquiries. Add only email addresses that are "
 "intended to be publicly used."
 msgstr ""
 "Адреса електронної пошти для довідкової інформації. Додавайте лише адреси, "
@@ -1002,7 +999,8 @@ msgid "Altitude"
 msgstr "Висота"
 
 #: src/osmEditDialog.js:172
-msgid "Elevation (height above sea level) of a point in metres."
+#| msgid "Elevation (height above sea level) of a point in metres."
+msgid "Elevation (height above sea level) of a point in meters."
 msgstr "Висота (над рівнем моря) у метрах."
 
 #: src/osmEditDialog.js:175
@@ -1245,6 +1243,10 @@ msgstr "Точність: %s"
 msgid "Phone number"
 msgstr "Номер телефону"
 
+#: src/placeView.js:308
+msgid "Email"
+msgstr "Пошта"
+
 #. If a reference to a named floor (named or symbolic) exists
 #. * refer to it directly.
 #.
@@ -1262,7 +1264,6 @@ msgid "Floor %s"
 msgstr "Поверх %s"
 
 #: src/placeView.js:337
-#| msgid "At sea level"
 msgid "At ground level"
 msgstr "На нульовому рівні"
 
@@ -1287,7 +1288,6 @@ msgstr[3] "%s поверх над нульовим рівнем"
 #.
 #: src/placeView.js:357
 #, javascript-format
-#| msgid "%s below sea level"
 msgid "%s floor below ground level"
 msgid_plural "%s floors below ground level"
 msgstr[0] "%s поверх під нульовим рівнем"
@@ -2343,9 +2343,6 @@ msgstr "Виконайте правий розворот"
 
 #~ msgid "Check your connection and proxy settings."
 #~ msgstr "Перевірте зв'язок і параметри проксі."
-
-#~ msgid "Email"
-#~ msgstr "Пошта"
 
 #~ msgid "Password"
 #~ msgstr "Пароль"
