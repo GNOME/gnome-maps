@@ -1,14 +1,14 @@
 # Persian translation for gnome-maps.
 # Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
 # Arash Mousavi <mousavi.arash@gmail.com>, 2013-2016.
-# Danial Behzadi <dani.behzi@ubuntu.com>, 2014, 2017-2024.
+# Danial Behzadi <dani.behzi@ubuntu.com>, 2017-2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps gnome-3-10\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2024-01-15 20:56+0000\n"
-"PO-Revision-Date: 2024-01-18 03:31+0330\n"
+"POT-Creation-Date: 2024-02-14 22:30+0000\n"
+"PO-Revision-Date: 2024-02-16 00:55+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian\n"
 "Language: fa\n"
@@ -56,7 +56,7 @@ msgstr ""
 "در سراسر جهان درست شده است."
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.appdata.xml.in.in:444 src/mainWindow.js:644
+#: data/org.gnome.Maps.appdata.xml.in.in:451 src/mainWindow.js:644
 msgid "The GNOME Project"
 msgstr "پروژهٔ گنوم"
 
@@ -154,7 +154,7 @@ msgid "Number of recently visited routes to store."
 msgstr "تعداد مسیرهای اخیر سر زده شده برای ذخیره."
 
 #: data/org.gnome.Maps.gschema.xml:61
-msgid "OpenStreetMap username or e-mail address"
+msgid "OpenStreetMap username or email address"
 msgstr "نام‌کاربری یا نشانی رایانامهٔ اوپن‌استریت‌مپ"
 
 #: data/org.gnome.Maps.gschema.xml:62
@@ -210,8 +210,13 @@ msgstr "_لغو"
 msgid "_Export"
 msgstr "_برون‌ریزی"
 
+#. Translators: This is a tooltip
+#: data/ui/favorite-list-row.ui:72
+msgid "Remove Favorite"
+msgstr "برداشتن برگزیده"
+
 #: data/ui/favorites-popover.ui:11
-msgid "No favorites"
+msgid "No Favorites"
 msgstr "بدون برگزیده"
 
 #: data/ui/favorites-popover.ui:12
@@ -470,7 +475,7 @@ msgstr ""
 msgid "Recently Used"
 msgstr "به‌تازگی استفاده شده"
 
-#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:544
+#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:663
 msgid "Cancel"
 msgstr "لغو"
 
@@ -616,7 +621,7 @@ msgid "Airplanes"
 msgstr "هواپیماها"
 
 #. Translators: This is a tooltip
-#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27
+#: data/ui/place-bar.ui:33 data/ui/place-buttons.ui:27
 msgid "Share Location"
 msgstr "هم‌رسانی مکان"
 
@@ -660,7 +665,7 @@ msgid "Zoom Out"
 msgstr "کوچک‌نمایی"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1115
+#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1238
 msgid "Zoom In"
 msgstr "بزرگ‌نمایی"
 
@@ -723,15 +728,23 @@ msgstr "نقشه‌ها در %If، %If.png"
 msgid "Unable to export view"
 msgstr "ناتوان در برون‌ریزی نما"
 
-#: src/geoJSONSource.js:72
+#: src/favoriteListRow.js:42
+msgid "Favorite removed"
+msgstr "برگزیده برداشته شد"
+
+#: src/favoriteListRow.js:43
+msgid "Undo"
+msgstr "برگردان"
+
+#: src/geoJSONSource.js:73
 msgid "invalid coordinate"
 msgstr "مختصات نامعتبر"
 
-#: src/geoJSONSource.js:117 src/geoJSONSource.js:157 src/geoJSONSource.js:172
+#: src/geoJSONSource.js:126 src/geoJSONSource.js:166 src/geoJSONSource.js:181
 msgid "parse error"
 msgstr "خطای تجزیه"
 
-#: src/geoJSONSource.js:151
+#: src/geoJSONSource.js:160
 msgid "unknown geometry"
 msgstr "هندسهٔ ناشناخته"
 
@@ -805,43 +818,43 @@ msgstr "فراهم‌کنندهٔ جست‌وجو"
 msgid "Search provided by %s using %s"
 msgstr "جست‌وجو به دست %s با استفاده از %s فراهم شده"
 
-#: src/mapView.js:518 src/mapView.js:583
+#: src/mapView.js:637 src/mapView.js:702
 msgid "Failed to open layer"
 msgstr "شکست در گشودن لایه"
 
-#: src/mapView.js:537
+#: src/mapView.js:656
 msgid "Do you want to continue?"
 msgstr "می‌خواهید ادامه دهید؟"
 
-#: src/mapView.js:538
+#: src/mapView.js:657
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some time "
 "to load"
 msgstr "در حال گشودن پرونده‌ای با حجم کل %s م‌ب هستید. بار شدنش ممکن است کمی طول بکشد"
 
-#: src/mapView.js:545 src/transitplugins/openTripPlanner.js:1239
+#: src/mapView.js:664 src/transitplugins/openTripPlanner.js:1239
 #: src/transitplugins/openTripPlanner2.js:267
 msgid "Continue"
 msgstr "ادامه"
 
-#: src/mapView.js:577
+#: src/mapView.js:696
 msgid "File type is not supported"
 msgstr "گونهٔ پرونده پشتیبانی نمی‌شود"
 
-#: src/mapView.js:614
+#: src/mapView.js:733
 msgid "Failed to open GeoURI"
 msgstr "شکست در گشودن نشانی جغرافیایی"
 
-#: src/mapView.js:1074
+#: src/mapView.js:1197
 msgid "Nothing found here!"
 msgstr "این‌جا چیزی پیدا نشد!"
 
-#: src/mapView.js:1114
+#: src/mapView.js:1237
 msgid "Zoom in to add location"
 msgstr "بزرگ‌نمایی برای افزودن مکان"
 
-#: src/mapView.js:1135
+#: src/mapView.js:1258
 msgid "Location was added in OpenStreetMap"
 msgstr "مکان به اوپن استریت مپ افزوده شد"
 
@@ -893,7 +906,7 @@ msgstr "نام رسمی. معمولاً نامیست که روی تابلوها 
 msgid "Address"
 msgstr "نشانی"
 
-#: src/osmEditDialog.js:120 src/placeView.js:264
+#: src/osmEditDialog.js:120 src/placeView.js:275
 msgid "Website"
 msgstr "پایگاه وب"
 
@@ -921,31 +934,31 @@ msgstr ""
 "شماره تلفن. از قالب بین‌المللی که با + شروع می‌شود اشتفاده کنید. لطفاً قوانین "
 "محرمانگی محلّی را در نظر داشته باشید، به خصوص برای شماره‌های تلفن خصوصی."
 
-#: src/osmEditDialog.js:139 src/placeView.js:297
+#: src/osmEditDialog.js:139
 msgid "E-mail"
 msgstr "رایانامه"
 
 #: src/osmEditDialog.js:144
 msgid ""
-"This is not a valid e-mail address. Make sure to not include the mailto: protocol "
+"This is not a valid email address. Make sure to not include the mailto: protocol "
 "prefix."
-msgstr "نشانی اینترنتی معتبر نیست. مطمئن شوید دارای پیشوند شیوه‌نامهٔ ‪mailto:‬ نیست."
+msgstr "نشانی رایانامه معتبر نیست. مطمئن شوید دارای پیشوند شیوه‌نامهٔ ‪mailto:‬ نیست."
 
 #: src/osmEditDialog.js:145
 msgid ""
-"Contact e-mail address for inquiries. Add only email addresses that are intended "
+"Contact email address for inquiries. Add only email addresses that are intended "
 "to be publicly used."
 msgstr ""
-"نشانی رایانامهٔ تمایش برای پرسش‌ها. تنها نشانی‌های رایانامه‌ای را بیفزایید که برای "
+"نشانی رایانامهٔ تمایش برای پرس‌وجوها. تنها نشانی‌های رایانامه‌ای را بیفزایید که برای "
 "استفادهٔ عمومی در نظر گرفته شده‌اند."
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:149 src/placeView.js:703
+#: src/osmEditDialog.js:149 src/placeView.js:727
 msgid "Wikipedia"
 msgstr "ویکی‌پدیا"
 
-#: src/osmEditDialog.js:156 src/placeView.js:388
+#: src/osmEditDialog.js:156 src/placeView.js:399
 msgid "Opening hours"
 msgstr "ساعت‌های کار"
 
@@ -959,16 +972,16 @@ msgstr "پیوند روی برچسب را برای راهنمایی قالب ب�
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:164 src/placeView.js:498
+#: src/osmEditDialog.js:164 src/placeView.js:509
 msgid "Population"
 msgstr "جمعیت"
 
-#: src/osmEditDialog.js:169 src/placeView.js:527
+#: src/osmEditDialog.js:169 src/placeView.js:538
 msgid "Altitude"
 msgstr "بلندی"
 
 #: src/osmEditDialog.js:172
-msgid "Elevation (height above sea level) of a point in metres."
+msgid "Elevation (height above sea level) of a point in meters."
 msgstr "بلندی (فاصله از سطح دریا) یک نقطه به متر."
 
 #: src/osmEditDialog.js:175
@@ -1113,7 +1126,7 @@ msgstr "یزیدی"
 msgid "Zoroastrianism"
 msgstr "زرتشتی"
 
-#: src/osmEditDialog.js:230 src/poiCategories.js:174
+#: src/osmEditDialog.js:230 src/poiCategories.js:176
 msgid "Toilets"
 msgstr "دستشویی‌ها"
 
@@ -1183,16 +1196,16 @@ msgctxt "short distance format string"
 msgid "< %s"
 msgstr "< %s"
 
-#: src/placeView.js:252
+#: src/placeView.js:263
 msgid "Coordinates"
 msgstr "مختصات"
 
-#: src/placeView.js:256
+#: src/placeView.js:267
 msgid "Accuracy"
 msgstr "دقّت"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:259
+#: src/placeView.js:270
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "دقّت: %s"
@@ -1203,9 +1216,13 @@ msgstr "دقّت: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:278
+#: src/placeView.js:289
 msgid "Phone number"
 msgstr "شماره تلفن"
+
+#: src/placeView.js:308
+msgid "Email"
+msgstr "رایانامه"
 
 #. If a reference to a named floor (named or symbolic) exists
 #. * refer to it directly.
@@ -1214,16 +1231,16 @@ msgstr "شماره تلفن"
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
 #.
-#: src/placeView.js:312 src/placeView.js:351
+#: src/placeView.js:323 src/placeView.js:362
 msgid "Floor"
 msgstr "طبقه"
 
-#: src/placeView.js:314
+#: src/placeView.js:325
 #, javascript-format
 msgid "Floor %s"
 msgstr "طبقهٔ %s"
 
-#: src/placeView.js:326
+#: src/placeView.js:337
 msgid "At ground level"
 msgstr "در سطح زمین"
 
@@ -1232,7 +1249,7 @@ msgstr "در سطح زمین"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:335
+#: src/placeView.js:346
 #, javascript-format
 msgid "%s floor above ground level"
 msgid_plural "%s floors above ground level"
@@ -1243,7 +1260,7 @@ msgstr[0] "%s طبقه بالای سطح"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:346
+#: src/placeView.js:357
 #, javascript-format
 msgid "%s floor below ground level"
 msgid_plural "%s floors below ground level"
@@ -1253,7 +1270,7 @@ msgstr[0] "%s طبقه زیر سطح"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:364
+#: src/placeView.js:375
 msgid "Offers takeout"
 msgstr "ارائه بیرون بردنی"
 
@@ -1261,7 +1278,7 @@ msgstr "ارائه بیرون بردنی"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:372
+#: src/placeView.js:383
 msgid "Does not offer takeout"
 msgstr "بدون ارائه بیرون بردنی"
 
@@ -1270,14 +1287,14 @@ msgstr "بدون ارائه بیرون بردنی"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:381
+#: src/placeView.js:392
 msgid "Only offers takeout"
 msgstr "فقط ارائه بیرون‌بردنی"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:398
+#: src/placeView.js:409
 msgid "Public internet access"
 msgstr "دسترسی عمومی به اینترنت"
 
@@ -1285,50 +1302,50 @@ msgstr "دسترسی عمومی به اینترنت"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:407
+#: src/placeView.js:418
 msgid "No internet access"
 msgstr "بدون دسترسی به اینترنت"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:415
+#: src/placeView.js:426
 msgid "Public Wi-Fi"
 msgstr "وای‌فای عمومی"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:423
+#: src/placeView.js:434
 msgid "Wired internet access"
 msgstr "دسترسی سیمی به اینترنت"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:431
+#: src/placeView.js:442
 msgid "Computers available for use"
 msgstr "رایانه‌های موجود برای استفاده"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:439
+#: src/placeView.js:450
 msgid "Internet assistance available"
 msgstr "همیار اینترنت در دسترس"
 
-#: src/placeView.js:445
+#: src/placeView.js:456
 msgid "No toilets available"
 msgstr "دستشویی در دسترس نیست"
 
-#: src/placeView.js:448
+#: src/placeView.js:459
 msgid "Toilets available"
 msgstr "دستشویی در دسترس"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:457
+#: src/placeView.js:468
 msgid "Wheelchair accessible"
 msgstr "قابل دسترسی با صندلی چرخ‌دار"
 
@@ -1337,7 +1354,7 @@ msgstr "قابل دسترسی با صندلی چرخ‌دار"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:467
+#: src/placeView.js:478
 msgid "Limited wheelchair accessibility"
 msgstr "قابلیت دسترسی محدود با صندلی چرخ‌دار"
 
@@ -1345,7 +1362,7 @@ msgstr "قابلیت دسترسی محدود با صندلی چرخ‌دار"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:476
+#: src/placeView.js:487
 msgid "Not wheelchair accessible"
 msgstr "بدون قابلیت دسترسی با صندلی چرخ‌دار"
 
@@ -1354,7 +1371,7 @@ msgstr "بدون قابلیت دسترسی با صندلی چرخ‌دار"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:486
+#: src/placeView.js:497
 msgid "Designated for wheelchair users"
 msgstr "مخصوص استفاده‌کنندگان از صندلی چرخ‌دار"
 
@@ -1363,7 +1380,7 @@ msgstr "مخصوص استفاده‌کنندگان از صندلی چرخ‌دا
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:517
+#: src/placeView.js:528
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s زیر سطح دریا"
@@ -1372,23 +1389,23 @@ msgstr "%s زیر سطح دریا"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:524
+#: src/placeView.js:535
 msgid "At sea level"
 msgstr "در سطح دریا"
 
-#: src/placeView.js:533
+#: src/placeView.js:544
 msgid "Religion:"
 msgstr "دین:"
 
-#: src/place.js:544
+#: src/place.js:568
 msgid "Place not found in OpenStreetMap"
 msgstr "مکان در اوپن استریت مپ پیدا نشد"
 
-#: src/place.js:551
+#: src/place.js:575
 msgid "Coordinates in URL are not valid"
 msgstr "مختصات نشانی نامعتبر"
 
-#: src/place.js:560
+#: src/place.js:584
 msgid "URL is not supported"
 msgstr "نشانی پشتیبانی نمی‌شود"
 
@@ -1420,239 +1437,239 @@ msgstr "کتابخانه‌ها"
 msgid "Pharmacies"
 msgstr "داروخانه‌ها"
 
-#: src/poiCategories.js:170
+#: src/poiCategories.js:171
 msgid "Recycling"
 msgstr "بازیافت"
 
-#: src/poiCategories.js:180
+#: src/poiCategories.js:182
 msgid "Wheelchair-accessible Toilets"
 msgstr "دستشویی‌های قابل دسترسی با صندلی چرخ‌دار"
 
-#: src/poiCategories.js:186
+#: src/poiCategories.js:188
 msgid "Baggage Lockers"
 msgstr "قفسه‌های چمدان"
 
-#: src/poiCategories.js:194
+#: src/poiCategories.js:196
 msgid "Eating & Drinking"
 msgstr "خورد و خوراک"
 
-#: src/poiCategories.js:198
+#: src/poiCategories.js:200
 msgid "Restaurants"
 msgstr "رستوران‌ها"
 
-#: src/poiCategories.js:203
+#: src/poiCategories.js:205
 msgid "Fast Food"
 msgstr "غذای سریع"
 
-#: src/poiCategories.js:208
+#: src/poiCategories.js:210
 msgid "Food Courts"
 msgstr "مجموعهٔ غذایی"
 
-#: src/poiCategories.js:213
+#: src/poiCategories.js:215
 msgid "Pubs"
 msgstr "میخانه‌ها"
 
-#: src/poiCategories.js:219
+#: src/poiCategories.js:221
 msgid "Bars"
 msgstr "نوشخانه‌ها"
 
-#: src/poiCategories.js:224
+#: src/poiCategories.js:226
 msgid "Cafes"
 msgstr "کافه‌ها"
 
-#: src/poiCategories.js:229
+#: src/poiCategories.js:231
 msgid "Ice Cream"
 msgstr "بستنی"
 
-#: src/poiCategories.js:233
+#: src/poiCategories.js:236
 msgid "Food, Snacks, and Beverage Machines"
 msgstr "دستگاه‌های غذا و نوشیدنی"
 
-#: src/poiCategories.js:241
+#: src/poiCategories.js:244
 msgid "Shopping"
 msgstr "خرید"
 
-#: src/poiCategories.js:245
+#: src/poiCategories.js:248
 msgid "Supermarkets"
 msgstr "سوپرمارکت‌ها"
 
-#: src/poiCategories.js:251
+#: src/poiCategories.js:254
 msgid "Convenience Stores"
 msgstr "فروشگاه‌های راحتی"
 
-#: src/poiCategories.js:256
+#: src/poiCategories.js:259
 msgid "Shopping Malls"
 msgstr "پاساژهای خرید"
 
-#: src/poiCategories.js:262
+#: src/poiCategories.js:265
 msgid "Clothes"
 msgstr "لباس"
 
-#: src/poiCategories.js:267
+#: src/poiCategories.js:271
 msgid "Shoes"
 msgstr "کفش"
 
-#: src/poiCategories.js:272
+#: src/poiCategories.js:276
 msgid "Electronics"
 msgstr "لوازم برقی"
 
-#: src/poiCategories.js:278
+#: src/poiCategories.js:282
 msgid "Alcohol"
 msgstr "الکل"
 
-#: src/poiCategories.js:284
+#: src/poiCategories.js:288
 msgid "Bakeries"
 msgstr "نانوایی‌ّا"
 
-#: src/poiCategories.js:290
+#: src/poiCategories.js:294
 msgid "Flowers"
 msgstr "گل‌فروشی‌ها"
 
-#: src/poiCategories.js:297
+#: src/poiCategories.js:301
 msgid "Transportation"
 msgstr "حمل‌ونقل"
 
-#: src/poiCategories.js:301
+#: src/poiCategories.js:305
 msgid "Bus & Tram Stops"
 msgstr "ایستگاه‌های اتوبوس و قطار"
 
-#: src/poiCategories.js:309
+#: src/poiCategories.js:313
 msgid "Train & Subway Stations"
 msgstr "ایستگاه‌های قطار و قطار شهری"
 
-#: src/poiCategories.js:317
+#: src/poiCategories.js:321
 msgid "Tickets"
 msgstr "بلیت"
 
-#: src/poiCategories.js:325
+#: src/poiCategories.js:329
 msgid "Parking"
 msgstr "پارکینگ"
 
-#: src/poiCategories.js:330
+#: src/poiCategories.js:334
 msgid "Bicycle Parking"
 msgstr "پارکینگ دوچرخه"
 
-#: src/poiCategories.js:335
+#: src/poiCategories.js:339
 msgid "Bicycle Rental"
 msgstr "اجارهٔ دوچرخه"
 
-#: src/poiCategories.js:340
+#: src/poiCategories.js:344
 msgid "Car Rental"
 msgstr "اجارهٔ ماشین"
 
-#: src/poiCategories.js:345
+#: src/poiCategories.js:349
 msgid "Fuel"
 msgstr "سوخت"
 
-#: src/poiCategories.js:350
+#: src/poiCategories.js:354
 msgid "EV Charging"
 msgstr "شارژ خودروی برقی"
 
-#: src/poiCategories.js:358
+#: src/poiCategories.js:362
 msgid "Healthcare"
 msgstr "بهداری‌های"
 
-#: src/poiCategories.js:362
+#: src/poiCategories.js:366
 msgid "Clinics"
 msgstr "درمانگاه‌ها"
 
-#: src/poiCategories.js:368
+#: src/poiCategories.js:372
 msgid "Hospitals"
 msgstr "بیمارستان‌ها"
 
-#: src/poiCategories.js:374
+#: src/poiCategories.js:378
 msgid "Dentists"
 msgstr "دندان‌پزشکی‌ها"
 
-#: src/poiCategories.js:381
+#: src/poiCategories.js:386
 msgid "Accommodation"
 msgstr "اقامتگاه"
 
-#: src/poiCategories.js:385
+#: src/poiCategories.js:390
 msgid "Hotels"
 msgstr "هتل‌ها"
 
-#: src/poiCategories.js:390
+#: src/poiCategories.js:395
 msgid "Hostels"
 msgstr "خوابگاه‌ها"
 
-#: src/poiCategories.js:395
+#: src/poiCategories.js:400
 msgid "Bed & Breakfast"
 msgstr "تخت و ناشتا"
 
-#: src/poiCategories.js:400
+#: src/poiCategories.js:405
 msgid "Campings"
 msgstr "کمپ"
 
-#: src/poiCategories.js:407
+#: src/poiCategories.js:412
 msgid "Recreation"
 msgstr "تفریح"
 
-#: src/poiCategories.js:411
+#: src/poiCategories.js:416
 msgid "Parks"
 msgstr "پارک‌ها"
 
-#: src/poiCategories.js:416
+#: src/poiCategories.js:421
 msgid "Playgrounds"
 msgstr "زمین‌های بازی"
 
-#: src/poiCategories.js:420
+#: src/poiCategories.js:425
 msgid "Beaches"
 msgstr "ساحل‌ها"
 
-#: src/poiCategories.js:425
+#: src/poiCategories.js:430
 msgid "Nature Reserves"
 msgstr "ذخایر طبیعی"
 
-#: src/poiCategories.js:431
+#: src/poiCategories.js:436
 msgid "Theme Parks"
 msgstr "شهربازی‌ها"
 
-#: src/poiCategories.js:436
+#: src/poiCategories.js:441
 msgid "Theaters"
 msgstr "تماشاخانه‌ها"
 
-#: src/poiCategories.js:442
+#: src/poiCategories.js:447
 msgid "Movie Theaters"
 msgstr "سالن‌های سینما"
 
-#: src/poiCategories.js:448
+#: src/poiCategories.js:453
 msgid "Night Clubs"
 msgstr "باشگاه‌های شبانه"
 
-#: src/poiCategories.js:455
+#: src/poiCategories.js:460
 msgid "Tourism"
 msgstr "گردشگری"
 
-#: src/poiCategories.js:459
+#: src/poiCategories.js:464
 msgid "Museums"
 msgstr "موزه"
 
-#: src/poiCategories.js:465
+#: src/poiCategories.js:470
 msgid "Attractions"
 msgstr "جاذبه‌ها"
 
-#: src/poiCategories.js:470
+#: src/poiCategories.js:475
 msgid "Artworks"
 msgstr "کارهای هنری"
 
-#: src/poiCategories.js:475
+#: src/poiCategories.js:480
 msgid "Tourist Information"
 msgstr "اطّلاعات گردشگری"
 
-#: src/poiCategories.js:482
+#: src/poiCategories.js:487
 msgid "Sports"
 msgstr "ورزشی"
 
-#: src/poiCategories.js:486
+#: src/poiCategories.js:491
 msgid "Gyms"
 msgstr "ورزشگاه‌ها"
 
-#: src/poiCategories.js:492
+#: src/poiCategories.js:497
 msgid "Outdoor Gyms"
 msgstr "ورزشگاه‌های سرباز"
 
-#: src/poiCategories.js:498
+#: src/poiCategories.js:503
 msgid "Golf Courses"
 msgstr "زمین‌های گلف"
 
@@ -1708,7 +1725,7 @@ msgstr "شکست در گشودن نشانی"
 msgid "Open with %s"
 msgstr "گشودن با %s"
 
-#: src/shapeLayer.js:108
+#: src/shapeLayer.js:109
 msgid "failed to load file"
 msgstr "شکست در بارگیری پرونده"
 
@@ -1847,7 +1864,7 @@ msgstr[0] "%s:%s ساعت"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:738
+#: src/transitPlan.js:744
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -2273,9 +2290,6 @@ msgstr "گردش به راست کنید"
 
 #~ msgid "Check your connection and proxy settings."
 #~ msgstr "تنظیمات پیشکار و اتّصالتان را بررسی کنید."
-
-#~ msgid "Email"
-#~ msgstr "رایانامه"
 
 #~ msgid "Password"
 #~ msgstr "گذرواژه"
