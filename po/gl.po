@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2024-01-23 21:08+0000\n"
-"PO-Revision-Date: 2024-01-23 22:14+0100\n"
+"POT-Creation-Date: 2024-02-14 22:30+0000\n"
+"PO-Revision-Date: 2024-02-15 03:03+0100\n"
 "Last-Translator: Fran Dieguez <fran.dieguez@gnome.org>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -63,7 +63,7 @@ msgstr ""
 "persoas por todo o mundo."
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.appdata.xml.in.in:444 src/mainWindow.js:644
+#: data/org.gnome.Maps.appdata.xml.in.in:451 src/mainWindow.js:644
 msgid "The GNOME Project"
 msgstr "O Proxecto GNOME"
 
@@ -161,7 +161,7 @@ msgid "Number of recently visited routes to store."
 msgstr "Número de lugares visitados recentemente a almacenar."
 
 #: data/org.gnome.Maps.gschema.xml:61
-msgid "OpenStreetMap username or e-mail address"
+msgid "OpenStreetMap username or email address"
 msgstr "Nome de usuario ou enderezo de correo de OpenStreetMap"
 
 #: data/org.gnome.Maps.gschema.xml:62
@@ -223,7 +223,7 @@ msgid "Remove Favorite"
 msgstr "Retirar de favoritos"
 
 #: data/ui/favorites-popover.ui:11
-msgid "No favorites"
+msgid "No Favorites"
 msgstr "Non hai favoritos"
 
 #: data/ui/favorites-popover.ui:12
@@ -484,7 +484,7 @@ msgstr ""
 msgid "Recently Used"
 msgstr "Usados recentemente"
 
-#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:544
+#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:663
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -634,7 +634,7 @@ msgid "Airplanes"
 msgstr "Avións"
 
 #. Translators: This is a tooltip
-#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27
+#: data/ui/place-bar.ui:33 data/ui/place-buttons.ui:27
 msgid "Share Location"
 msgstr "Compartir localización"
 
@@ -678,7 +678,7 @@ msgid "Zoom Out"
 msgstr "Afastar"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1115
+#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1238
 msgid "Zoom In"
 msgstr "Ampliar"
 
@@ -749,15 +749,15 @@ msgstr "Favorito retirado"
 msgid "Undo"
 msgstr "Desfacer"
 
-#: src/geoJSONSource.js:72
+#: src/geoJSONSource.js:73
 msgid "invalid coordinate"
 msgstr "coordenada non válida"
 
-#: src/geoJSONSource.js:117 src/geoJSONSource.js:157 src/geoJSONSource.js:172
+#: src/geoJSONSource.js:126 src/geoJSONSource.js:166 src/geoJSONSource.js:181
 msgid "parse error"
 msgstr "erro na análise"
 
-#: src/geoJSONSource.js:151
+#: src/geoJSONSource.js:160
 msgid "unknown geometry"
 msgstr "xeometría descoñecida"
 
@@ -829,15 +829,15 @@ msgstr "Fornecedor de busca"
 msgid "Search provided by %s using %s"
 msgstr "Busca fornecida por %s usando %s"
 
-#: src/mapView.js:518 src/mapView.js:583
+#: src/mapView.js:637 src/mapView.js:702
 msgid "Failed to open layer"
 msgstr "Produciuse un fallo ao abrir a capa"
 
-#: src/mapView.js:537
+#: src/mapView.js:656
 msgid "Do you want to continue?"
 msgstr "Desexa continuar?"
 
-#: src/mapView.js:538
+#: src/mapView.js:657
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -846,28 +846,28 @@ msgstr ""
 "Está a piques de abrir ficheiros con un tamaño total de %s MB. Isto pode "
 "tardar algún tempo en cargar"
 
-#: src/mapView.js:545 src/transitplugins/openTripPlanner.js:1239
+#: src/mapView.js:664 src/transitplugins/openTripPlanner.js:1239
 #: src/transitplugins/openTripPlanner2.js:267
 msgid "Continue"
 msgstr "Continuar"
 
-#: src/mapView.js:577
+#: src/mapView.js:696
 msgid "File type is not supported"
 msgstr "Tipo de ficheiro non admitido"
 
-#: src/mapView.js:614
+#: src/mapView.js:733
 msgid "Failed to open GeoURI"
 msgstr "Produciuse un fallo ao abrir o GeoURI"
 
-#: src/mapView.js:1074
+#: src/mapView.js:1197
 msgid "Nothing found here!"
 msgstr "Non se atopou nada aquí!"
 
-#: src/mapView.js:1114
+#: src/mapView.js:1237
 msgid "Zoom in to add location"
 msgstr "Amplíe para engadir unha localización"
 
-#: src/mapView.js:1135
+#: src/mapView.js:1258
 msgid "Location was added in OpenStreetMap"
 msgstr "Lugar engadido en OpenStreetMap"
 
@@ -919,7 +919,7 @@ msgstr "O nome oficial. Isto é o aparece normalmente nos sinais."
 msgid "Address"
 msgstr "Enderezo"
 
-#: src/osmEditDialog.js:120 src/placeView.js:264
+#: src/osmEditDialog.js:120 src/placeView.js:275
 msgid "Website"
 msgstr "Sitio web"
 
@@ -947,13 +947,13 @@ msgstr ""
 "Número de teléfono. Use o formato internacional, comezando polo signo +. "
 "Teña en conta as leis de privacidade locais."
 
-#: src/osmEditDialog.js:139 src/placeView.js:297
+#: src/osmEditDialog.js:139
 msgid "E-mail"
 msgstr "Correo electrónico"
 
 #: src/osmEditDialog.js:144
 msgid ""
-"This is not a valid e-mail address. Make sure to not include the mailto: "
+"This is not a valid email address. Make sure to not include the mailto: "
 "protocol prefix."
 msgstr ""
 "Esta non é un enderezo de correo electrónico válido. Asegúrese que non "
@@ -961,7 +961,7 @@ msgstr ""
 
 #: src/osmEditDialog.js:145
 msgid ""
-"Contact e-mail address for inquiries. Add only email addresses that are "
+"Contact email address for inquiries. Add only email addresses that are "
 "intended to be publicly used."
 msgstr ""
 "Enderezo de correo electrónico de contacto para solicitudes. Engada só un "
@@ -969,11 +969,11 @@ msgstr ""
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:149 src/placeView.js:703
+#: src/osmEditDialog.js:149 src/placeView.js:727
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: src/osmEditDialog.js:156 src/placeView.js:388
+#: src/osmEditDialog.js:156 src/placeView.js:399
 msgid "Opening hours"
 msgstr "Horas de apertura"
 
@@ -987,16 +987,16 @@ msgstr "Vexa a ligazón na etiqueta para obter axuda no formatado."
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:164 src/placeView.js:498
+#: src/osmEditDialog.js:164 src/placeView.js:509
 msgid "Population"
 msgstr "Poboación"
 
-#: src/osmEditDialog.js:169 src/placeView.js:527
+#: src/osmEditDialog.js:169 src/placeView.js:538
 msgid "Altitude"
 msgstr "Altitude"
 
 #: src/osmEditDialog.js:172
-msgid "Elevation (height above sea level) of a point in metres."
+msgid "Elevation (height above sea level) of a point in meters."
 msgstr "Elevación (altura sobre o nivel do mar) do punto en metros."
 
 #: src/osmEditDialog.js:175
@@ -1141,7 +1141,7 @@ msgstr "Xazidismo"
 msgid "Zoroastrianism"
 msgstr "Zoroastrismo"
 
-#: src/osmEditDialog.js:230 src/poiCategories.js:174
+#: src/osmEditDialog.js:230 src/poiCategories.js:176
 msgid "Toilets"
 msgstr "Baño"
 
@@ -1216,16 +1216,16 @@ msgctxt "short distance format string"
 msgid "< %s"
 msgstr "< %s"
 
-#: src/placeView.js:252
+#: src/placeView.js:263
 msgid "Coordinates"
 msgstr "Coordenadas"
 
-#: src/placeView.js:256
+#: src/placeView.js:267
 msgid "Accuracy"
 msgstr "Precisión"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:259
+#: src/placeView.js:270
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Precisión: %s"
@@ -1236,9 +1236,13 @@ msgstr "Precisión: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:278
+#: src/placeView.js:289
 msgid "Phone number"
 msgstr "Número de teléfono"
+
+#: src/placeView.js:308
+msgid "Email"
+msgstr "Correo electrónico"
 
 #. If a reference to a named floor (named or symbolic) exists
 #. * refer to it directly.
@@ -1247,16 +1251,16 @@ msgstr "Número de teléfono"
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
 #.
-#: src/placeView.js:312 src/placeView.js:351
+#: src/placeView.js:323 src/placeView.js:362
 msgid "Floor"
 msgstr "Planta"
 
-#: src/placeView.js:314
+#: src/placeView.js:325
 #, javascript-format
 msgid "Floor %s"
 msgstr "Planta %s"
 
-#: src/placeView.js:326
+#: src/placeView.js:337
 msgid "At ground level"
 msgstr "Ao nivel do chan"
 
@@ -1265,7 +1269,7 @@ msgstr "Ao nivel do chan"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:335
+#: src/placeView.js:346
 #, javascript-format
 msgid "%s floor above ground level"
 msgid_plural "%s floors above ground level"
@@ -1277,7 +1281,7 @@ msgstr[1] "%s plantas sobre o nivel do chan"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:346
+#: src/placeView.js:357
 #, javascript-format
 msgid "%s floor below ground level"
 msgid_plural "%s floors below ground level"
@@ -1288,7 +1292,7 @@ msgstr[1] "%s plantas baixo o nivel de chan"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:364
+#: src/placeView.js:375
 msgid "Offers takeout"
 msgstr "Ofrece para levar"
 
@@ -1296,7 +1300,7 @@ msgstr "Ofrece para levar"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:372
+#: src/placeView.js:383
 msgid "Does not offer takeout"
 msgstr "Non ofrece para levar"
 
@@ -1305,14 +1309,14 @@ msgstr "Non ofrece para levar"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:381
+#: src/placeView.js:392
 msgid "Only offers takeout"
 msgstr "Só ofrece para levar"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:398
+#: src/placeView.js:409
 msgid "Public internet access"
 msgstr "Acceso a internet pública"
 
@@ -1320,50 +1324,50 @@ msgstr "Acceso a internet pública"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:407
+#: src/placeView.js:418
 msgid "No internet access"
 msgstr "Non hai acceso a internet"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:415
+#: src/placeView.js:426
 msgid "Public Wi-Fi"
 msgstr "Wifi público"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:423
+#: src/placeView.js:434
 msgid "Wired internet access"
 msgstr "Acceso a internet cableado"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:431
+#: src/placeView.js:442
 msgid "Computers available for use"
 msgstr "Computadores dispoñíbeis para o uso"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:439
+#: src/placeView.js:450
 msgid "Internet assistance available"
 msgstr "Asistencia a internet dispoñíbel"
 
-#: src/placeView.js:445
+#: src/placeView.js:456
 msgid "No toilets available"
 msgstr "Sen baños dispoñíbeis"
 
-#: src/placeView.js:448
+#: src/placeView.js:459
 msgid "Toilets available"
 msgstr "Baños dispoñíbeis"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:457
+#: src/placeView.js:468
 msgid "Wheelchair accessible"
 msgstr "Acceso con cadeira de rodas"
 
@@ -1372,7 +1376,7 @@ msgstr "Acceso con cadeira de rodas"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:467
+#: src/placeView.js:478
 msgid "Limited wheelchair accessibility"
 msgstr "Acceso con cadeira de rodas limitado"
 
@@ -1380,7 +1384,7 @@ msgstr "Acceso con cadeira de rodas limitado"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:476
+#: src/placeView.js:487
 msgid "Not wheelchair accessible"
 msgstr "Sen acceso con cadeira de rodas"
 
@@ -1389,7 +1393,7 @@ msgstr "Sen acceso con cadeira de rodas"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:486
+#: src/placeView.js:497
 msgid "Designated for wheelchair users"
 msgstr "Deseñado para usuarios de cadeira de rodas"
 
@@ -1398,7 +1402,7 @@ msgstr "Deseñado para usuarios de cadeira de rodas"
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:517
+#: src/placeView.js:528
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s baixo o nivel de mar"
@@ -1407,23 +1411,23 @@ msgstr "%s baixo o nivel de mar"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:524
+#: src/placeView.js:535
 msgid "At sea level"
 msgstr "Ao nivel do mar"
 
-#: src/placeView.js:533
+#: src/placeView.js:544
 msgid "Religion:"
 msgstr "Relixión:"
 
-#: src/place.js:544
+#: src/place.js:568
 msgid "Place not found in OpenStreetMap"
 msgstr "Lugar non atopada en OpenStreetMap"
 
-#: src/place.js:551
+#: src/place.js:575
 msgid "Coordinates in URL are not valid"
 msgstr "As coordenadas na URL non son válidas"
 
-#: src/place.js:560
+#: src/place.js:584
 msgid "URL is not supported"
 msgstr "O URL non é compatíbel"
 
@@ -1455,239 +1459,239 @@ msgstr "Bibliotecas"
 msgid "Pharmacies"
 msgstr "Farmacias"
 
-#: src/poiCategories.js:170
+#: src/poiCategories.js:171
 msgid "Recycling"
 msgstr "Reciclado"
 
-#: src/poiCategories.js:180
+#: src/poiCategories.js:182
 msgid "Wheelchair-accessible Toilets"
 msgstr "Baño con acceso con cadeira de rodas"
 
-#: src/poiCategories.js:186
+#: src/poiCategories.js:188
 msgid "Baggage Lockers"
 msgstr "Armarios de bagaxe"
 
-#: src/poiCategories.js:194
+#: src/poiCategories.js:196
 msgid "Eating & Drinking"
 msgstr "Comer e beber"
 
-#: src/poiCategories.js:198
+#: src/poiCategories.js:200
 msgid "Restaurants"
 msgstr "Restaurantes"
 
-#: src/poiCategories.js:203
+#: src/poiCategories.js:205
 msgid "Fast Food"
 msgstr "Comida rápida"
 
-#: src/poiCategories.js:208
+#: src/poiCategories.js:210
 msgid "Food Courts"
 msgstr "Plazas de abastos"
 
-#: src/poiCategories.js:213
+#: src/poiCategories.js:215
 msgid "Pubs"
 msgstr "Pubs"
 
-#: src/poiCategories.js:219
+#: src/poiCategories.js:221
 msgid "Bars"
 msgstr "Bares"
 
-#: src/poiCategories.js:224
+#: src/poiCategories.js:226
 msgid "Cafes"
 msgstr "Cafeterías"
 
-#: src/poiCategories.js:229
+#: src/poiCategories.js:231
 msgid "Ice Cream"
 msgstr "Xeados"
 
-#: src/poiCategories.js:233
+#: src/poiCategories.js:236
 msgid "Food, Snacks, and Beverage Machines"
 msgstr "Máquinas expendedoras de comida, snacks e bebidas"
 
-#: src/poiCategories.js:241
+#: src/poiCategories.js:244
 msgid "Shopping"
 msgstr "Compras"
 
-#: src/poiCategories.js:245
+#: src/poiCategories.js:248
 msgid "Supermarkets"
 msgstr "Supermercados"
 
-#: src/poiCategories.js:251
+#: src/poiCategories.js:254
 msgid "Convenience Stores"
 msgstr "Tenda de barrio"
 
-#: src/poiCategories.js:256
+#: src/poiCategories.js:259
 msgid "Shopping Malls"
 msgstr "Centros comerciais"
 
-#: src/poiCategories.js:262
+#: src/poiCategories.js:265
 msgid "Clothes"
 msgstr "Roupa"
 
-#: src/poiCategories.js:267
+#: src/poiCategories.js:271
 msgid "Shoes"
 msgstr "Calzado"
 
-#: src/poiCategories.js:272
+#: src/poiCategories.js:276
 msgid "Electronics"
 msgstr "Electrónica"
 
-#: src/poiCategories.js:278
+#: src/poiCategories.js:282
 msgid "Alcohol"
 msgstr "Alcohol"
 
-#: src/poiCategories.js:284
+#: src/poiCategories.js:288
 msgid "Bakeries"
 msgstr "Panaderías"
 
-#: src/poiCategories.js:290
+#: src/poiCategories.js:294
 msgid "Flowers"
 msgstr "Flores"
 
-#: src/poiCategories.js:297
+#: src/poiCategories.js:301
 msgid "Transportation"
 msgstr "Transporte"
 
-#: src/poiCategories.js:301
+#: src/poiCategories.js:305
 msgid "Bus & Tram Stops"
 msgstr "Paradas de bus e tranvía"
 
-#: src/poiCategories.js:309
+#: src/poiCategories.js:313
 msgid "Train & Subway Stations"
 msgstr "Estacións de tren e metro"
 
-#: src/poiCategories.js:317
+#: src/poiCategories.js:321
 msgid "Tickets"
 msgstr "Tickets"
 
-#: src/poiCategories.js:325
+#: src/poiCategories.js:329
 msgid "Parking"
 msgstr "Aparcamento"
 
-#: src/poiCategories.js:330
+#: src/poiCategories.js:334
 msgid "Bicycle Parking"
 msgstr "Aparcamento de bicicletas"
 
-#: src/poiCategories.js:335
+#: src/poiCategories.js:339
 msgid "Bicycle Rental"
 msgstr "Aluguer de bicicletas"
 
-#: src/poiCategories.js:340
+#: src/poiCategories.js:344
 msgid "Car Rental"
 msgstr "Aluguer de coches"
 
-#: src/poiCategories.js:345
+#: src/poiCategories.js:349
 msgid "Fuel"
 msgstr "Combustíbel"
 
-#: src/poiCategories.js:350
+#: src/poiCategories.js:354
 msgid "EV Charging"
 msgstr "Carga de vehículo eléctico"
 
-#: src/poiCategories.js:358
+#: src/poiCategories.js:362
 msgid "Healthcare"
 msgstr "Asistencia sanitaria"
 
-#: src/poiCategories.js:362
+#: src/poiCategories.js:366
 msgid "Clinics"
 msgstr "Clínicas"
 
-#: src/poiCategories.js:368
+#: src/poiCategories.js:372
 msgid "Hospitals"
 msgstr "Hospitais"
 
-#: src/poiCategories.js:374
+#: src/poiCategories.js:378
 msgid "Dentists"
 msgstr "Dentistas"
 
-#: src/poiCategories.js:381
+#: src/poiCategories.js:386
 msgid "Accommodation"
 msgstr "Aloxamento"
 
-#: src/poiCategories.js:385
+#: src/poiCategories.js:390
 msgid "Hotels"
 msgstr "Hoteis"
 
-#: src/poiCategories.js:390
+#: src/poiCategories.js:395
 msgid "Hostels"
 msgstr "Hosteis"
 
-#: src/poiCategories.js:395
+#: src/poiCategories.js:400
 msgid "Bed & Breakfast"
 msgstr "Cama e almorzo"
 
-#: src/poiCategories.js:400
+#: src/poiCategories.js:405
 msgid "Campings"
 msgstr "Acampamentos"
 
-#: src/poiCategories.js:407
+#: src/poiCategories.js:412
 msgid "Recreation"
 msgstr "Recreación"
 
-#: src/poiCategories.js:411
+#: src/poiCategories.js:416
 msgid "Parks"
 msgstr "Parques"
 
-#: src/poiCategories.js:416
+#: src/poiCategories.js:421
 msgid "Playgrounds"
 msgstr "Espazos de xogo"
 
-#: src/poiCategories.js:420
+#: src/poiCategories.js:425
 msgid "Beaches"
 msgstr "Praias"
 
-#: src/poiCategories.js:425
+#: src/poiCategories.js:430
 msgid "Nature Reserves"
 msgstr "Reservas naturais"
 
-#: src/poiCategories.js:431
+#: src/poiCategories.js:436
 msgid "Theme Parks"
 msgstr "Parques temáticos"
 
-#: src/poiCategories.js:436
+#: src/poiCategories.js:441
 msgid "Theaters"
 msgstr "Teatros"
 
-#: src/poiCategories.js:442
+#: src/poiCategories.js:447
 msgid "Movie Theaters"
 msgstr "Cines"
 
-#: src/poiCategories.js:448
+#: src/poiCategories.js:453
 msgid "Night Clubs"
 msgstr "Clubes nocturnos"
 
-#: src/poiCategories.js:455
+#: src/poiCategories.js:460
 msgid "Tourism"
 msgstr "Tuismo"
 
-#: src/poiCategories.js:459
+#: src/poiCategories.js:464
 msgid "Museums"
 msgstr "Museos"
 
-#: src/poiCategories.js:465
+#: src/poiCategories.js:470
 msgid "Attractions"
 msgstr "Atraccións"
 
-#: src/poiCategories.js:470
+#: src/poiCategories.js:475
 msgid "Artworks"
 msgstr "Obras de arte"
 
-#: src/poiCategories.js:475
+#: src/poiCategories.js:480
 msgid "Tourist Information"
 msgstr "Información turística"
 
-#: src/poiCategories.js:482
+#: src/poiCategories.js:487
 msgid "Sports"
 msgstr "Deportes"
 
-#: src/poiCategories.js:486
+#: src/poiCategories.js:491
 msgid "Gyms"
 msgstr "Ximnasios"
 
-#: src/poiCategories.js:492
+#: src/poiCategories.js:497
 msgid "Outdoor Gyms"
 msgstr "Ximnasios ao aire libre"
 
-#: src/poiCategories.js:498
+#: src/poiCategories.js:503
 msgid "Golf Courses"
 msgstr "Campos de golf"
 
@@ -1743,7 +1747,7 @@ msgstr "Produciuse un fallo ao abrir o URI"
 msgid "Open with %s"
 msgstr "Abrir con %s"
 
-#: src/shapeLayer.js:108
+#: src/shapeLayer.js:109
 msgid "failed to load file"
 msgstr "produciuse un fallo ao cargar o ficheiro"
 
@@ -1885,7 +1889,7 @@ msgstr[1] "%s:%s horas"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:738
+#: src/transitPlan.js:744
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -2320,9 +2324,6 @@ msgstr "Faga un xiro en U á dereita"
 
 #~ msgid "Check your connection and proxy settings."
 #~ msgstr "Comprobe a súa conexión ou preferencias do seu proxy."
-
-#~ msgid "Email"
-#~ msgstr "Correo electrónico"
 
 #~ msgid "Password"
 #~ msgstr "Contrasinal"
