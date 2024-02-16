@@ -22,6 +22,7 @@ import Adw from "gi://Adw";
  * @property {"dark" | "light"} [colorScheme] Color scheme
  * @property {"libshumate" | "maplibre-gl-js"} [renderer] Renderer to target
  * @property {number} [textScale] Text scale factor
+ * @property {string} [language] Language code
  */
 
 export class MapStyleConfig {
@@ -32,6 +33,7 @@ export class MapStyleConfig {
         this.colorScheme = options.colorScheme ?? "light";
         this.renderer = options.renderer ?? "libshumate";
         this.textScale = options.textScale;
+        this.language = options.language;
     }
 
     pick(colorDef) {
@@ -76,6 +78,35 @@ export class MapStyleConfig {
             ? Adw.LengthUnit.to_px(Adw.LengthUnit.SP, size, null)
             : size * this.textScale;
     }
+
+    localizedName() {
+        let localeExpr;
+        switch (this.language) {
+            case undefined:
+                /* Fallback for exporting the style as JSON. */
+                localeExpr = ["get", ["concat", "name:", ["slice", ["resolved-locale", ["collator", {}]], 0, 2]]];
+                break;
+            case "nb":
+            case "nn":
+                /* special case for Norwegian (Bokmål "nb" and nynorsk "nn") with the
+                    fallback language code "no" for names with a common translation:
+                    https://wiki.openstreetmap.org/wiki/Multilingual_names#Norway */
+                localeExpr = ["coalesce", ["get", "name:" + this.language], ["get", "name:no"]];
+                break;
+            default:
+                localeExpr = ["get", "name:" + this.language];
+                break;
+        }
+
+        return [
+            "to-string",
+            [
+                "coalesce",
+                localeExpr,
+                ["get", "name"],
+            ],
+        ];
+    }
 }
 
 export const hexToRgb = (hex) => [
@@ -113,42 +144,4 @@ export const isPolygon = [
     "in",
     ["geometry-type"],
     ["literal", ["Polygon", "MultiPolygon"]],
-];
-
-export const locale = [
-    "let",
-    "locale_tag",
-    ["resolved-locale", ["collator", {}]],
-    [
-        "case",
-        ["!=", -1, ["index-of", "-", ["var", "locale_tag"]]],
-        [
-            "slice",
-            ["var", "locale_tag"],
-            0,
-            ["index-of", "-", ["var", "locale_tag"]],
-        ],
-        ["var", "locale_tag"],
-    ],
-];
-
-/* The to-string is necessary in MapLibre GL JS because of how its type coercion works. */
-export const localizedName = [
-    "to-string",
-    [
-        "coalesce",
-        /* special case for Norwegian (Bokmål "nb" and nynorsk "nn") with the
-           fallback language code "no" for names with a common translation:
-           https://wiki.openstreetmap.org/wiki/Multilingual_names#Norway */
-        [
-            "match",
-            locale,
-            "nb",
-            ["coalesce", ["get", "name:nb"], ["get", "name:no"]],
-            "nn",
-            ["coalesce", ["get", "name:nn"], ["get", "name:no"]],
-            ["get", ["concat", "name:", locale]],
-        ],
-        ["get", "name"],
-    ],
 ];

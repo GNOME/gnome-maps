@@ -16,7 +16,7 @@
  */
 
 import { DEFS } from "./defs.js";
-import { isLinestring, isPoint, localizedName, mix } from "./utils.js";
+import { isLinestring, isPoint, mix } from "./utils.js";
 
 export const waterFill = (config) => ({
     id: "water-fill",
@@ -77,7 +77,7 @@ export const waterName = (config) => ({
     "source-layer": "water_name",
     filter: isPoint,
     layout: {
-        "text-field": localizedName,
+        "text-field": config.localizedName(),
         "text-font": config.fonts(),
         "text-size": waterLabelSize(config),
     },
@@ -96,7 +96,7 @@ export const waterNameLine = (config) => ({
     "source-layer": "water_name",
     filter: isLinestring,
     layout: {
-        "text-field": localizedName,
+        "text-field": config.localizedName(),
         "text-font": config.fonts(),
         "text-size": waterLabelSize(config),
         "symbol-placement": "line",
@@ -113,7 +113,7 @@ export const waterwayName = (config) => ({
     "source-layer": "waterway",
     filter: isLinestring,
     layout: {
-        "text-field": localizedName,
+        "text-field": config.localizedName(),
         "text-font": config.fonts(),
         "text-size": waterLabelSize(config),
         "symbol-placement": "line",

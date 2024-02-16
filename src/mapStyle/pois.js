@@ -16,7 +16,6 @@
  */
 
 import { DEFS } from "./defs.js";
-import { localizedName } from "./utils.js";
 
 const classMatch = (transform, defaultVal) => {
     const matchExpr = ["match", ["coalesce", ["get", "tag"], ["get", "class"]]];
@@ -74,7 +73,7 @@ export const pois = (config) => {
             layout: {
                 "text-anchor": "top",
                 "text-offset": [0, 0.7],
-                "text-field": ["coalesce", localizedName, ["get", "ref"]],
+                "text-field": ["coalesce", config.localizedName(), ["get", "ref"]],
                 "text-font": config.fonts("Italic"),
                 "text-size": ["*", config.textSize(12), classMatch(getSize, 1)],
                 "text-optional": true,

@@ -16,7 +16,7 @@
  */
 
 import { DEFS } from "./defs.js";
-import { isLinestring, isPolygon, localizedName, mix } from "./utils.js";
+import { isLinestring, isPolygon, mix } from "./utils.js";
 
 export const airportLayers = (config) => {
     const color = [
@@ -158,7 +158,7 @@ export const airportSymbols = (config) => {
             filter: minorAirportFilter,
             layout: {
                 ...commonLayout,
-                "text-field": localizedName,
+                "text-field": config.localizedName(),
             },
             paint: commonPaint,
             metadata: {
@@ -192,7 +192,7 @@ export const airportSymbols = (config) => {
             filter: ["!", minorAirportFilter],
             layout: {
                 ...commonLayout,
-                "text-field": localizedName,
+                "text-field": config.localizedName(),
             },
             paint: commonPaint,
             metadata: {

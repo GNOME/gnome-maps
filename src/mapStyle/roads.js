@@ -22,7 +22,6 @@ import {
     MapStyleConfig,
     isLinestring,
     isPolygon,
-    localizedName,
     mix,
 } from "./utils.js";
 import * as Utils from "../utils.js";
@@ -391,7 +390,7 @@ export const roadSymbol = (config) => ({
     minzoom: 10,
     filter: ["in", ["get", "class"], ["literal", allClasses]],
     layout: {
-        "text-field": localizedName,
+        "text-field": config.localizedName(),
         "text-font": config.fonts(),
         "text-size": config.textSize(12),
         "symbol-placement": "line",

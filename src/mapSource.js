@@ -73,6 +73,7 @@ export function createPrintSource() {
 export function createVectorSource() {
     const style = generateMapStyle({
         colorScheme: Adw.StyleManager.get_default().dark ? "dark" : "light",
+        language: Utils.getLanguage(),
     });
 
     const source = Shumate.VectorRenderer.new("vector-tiles", JSON.stringify(style));

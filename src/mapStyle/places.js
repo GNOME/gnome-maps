@@ -16,7 +16,6 @@
  */
 
 import { DEFS } from "./defs.js";
-import { localizedName } from "./utils.js";
 
 export const places = (config) =>
     DEFS.places.map((place) => ({
@@ -29,7 +28,7 @@ export const places = (config) =>
         filter: ["in", ["get", "class"], ["literal", place.classes]],
         layout: {
             "text-font": config.fonts(place.font),
-            "text-field": localizedName,
+            "text-field": config.localizedName(),
             "text-transform": place.textTransform,
             "text-size": [
                 "interpolate",
