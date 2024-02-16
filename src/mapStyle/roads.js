@@ -15,6 +15,8 @@
  * License along with this library; if not, see <https://www.gnu.org/licenses/>.
  */
 
+import Gio from 'gi://Gio';
+
 import { DEFS } from "./defs.js";
 import {
     MapStyleConfig,
@@ -23,6 +25,7 @@ import {
     localizedName,
     mix,
 } from "./utils.js";
+import * as Utils from "../utils.js";
 
 const allClasses = ["path", ...DEFS.roads.flatMap((r) => r.classes)];
 
@@ -456,3 +459,8 @@ export const junctionSymbol = (config) => ({
         ],
     },
 });
+
+export const highwayShield = (config) => {
+    const [_status1, shieldLayerFile] = Gio.file_new_for_uri('resource://org/gnome/Maps/shields/layer.json').load_contents(null);
+    return JSON.parse(Utils.getBufferText(shieldLayerFile));
+};

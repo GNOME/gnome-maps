@@ -24,7 +24,7 @@ import { boundaryLayers as boundaries } from "./boundaries.js";
 import { DEFS } from "./defs.js";
 import { landcover } from "./landcover.js";
 import { rail } from "./rail.js";
-import { junctionSymbol, roadSymbol, roads } from "./roads.js";
+import { highwayShield, junctionSymbol, roadSymbol, roads } from "./roads.js";
 import { MapStyleConfig } from "./utils.js";
 import {
     ferryLine,
@@ -101,6 +101,7 @@ export function generateMapStyle(options) {
             ...pois(config),
             roadSymbol(config),
             junctionSymbol(config),
+            highwayShield(config),
             aerialLabel(config),
             ...airportSymbols(config),
             ...places(config),

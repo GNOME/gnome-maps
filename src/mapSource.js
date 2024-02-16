@@ -75,10 +75,6 @@ export function createVectorSource() {
         colorScheme: Adw.StyleManager.get_default().dark ? "dark" : "light",
     });
 
-    const [_status1, shieldLayerFile] = Gio.file_new_for_uri('resource://org/gnome/Maps/shields/layer.json').load_contents(null);
-    const shieldLayer = JSON.parse(Utils.getBufferText(shieldLayerFile));
-    style.layers.splice(style.layers.findIndex(layer => layer.id === 'road_shield'), 1, shieldLayer);
-
     const source = Shumate.VectorRenderer.new("vector-tiles", JSON.stringify(style));
     source.set_license("© OpenMapTiles © OpenStreetMap contributors");
     source.set_license_uri("https://www.openstreetmap.org/copyright");
