@@ -8,10 +8,11 @@ const mapContainer = document.getElementById("mapContainer");
 
 async function loadMap() {
   const iconsJson = fetch("./icons.json").then((res) => res.json());
+  let mapStyle = "./gnome-maps-light.json";
 
   const map = (window.map = new maplibregl.Map({
     container: mapContainer,
-    style: "./gnome-maps-light.json",
+    style: mapStyle,
     hash: true,
   }));
 
@@ -58,13 +59,19 @@ async function loadMap() {
   });
 
   for (const variantBtn of document.querySelectorAll(".variant")) {
-    variantBtn.addEventListener("change", () => {
-      map.setStyle(`./${variantBtn.dataset.variant}.json`);
-    });
+    const setMapStyle = () => {
+      mapStyle = `./${variantBtn.dataset.variant}.json`;
+      map.setStyle(mapStyle);
+    };
+    variantBtn.addEventListener("change", setMapStyle);
     if (variantBtn.checked) {
-      variantBtn.dispatchEvent(new Event("change"));
+      setMapStyle();
     }
   }
+
+  window.mapStyleReload = () => {
+    map.setStyle(mapStyle);
+  };
 }
 
 loadMap();
