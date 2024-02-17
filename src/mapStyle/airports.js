@@ -127,6 +127,9 @@ export const airportSymbols = (config) => {
             paint: {
                 "text-color": config.pick(DEFS.airports.symbolColor),
             },
+            metadata: {
+                "libshumate:cursor": "pointer",
+            },
         },
         {
             id: "minor-airport-short-label",
@@ -142,6 +145,9 @@ export const airportSymbols = (config) => {
                 "text-optional": true,
             },
             paint: commonPaint,
+            metadata: {
+                "libshumate:cursor": "pointer",
+            },
         },
         {
             id: "minor-airport-label",
@@ -155,6 +161,9 @@ export const airportSymbols = (config) => {
                 "text-field": localizedName,
             },
             paint: commonPaint,
+            metadata: {
+                "libshumate:cursor": "pointer",
+            },
         },
         {
             id: "airport-short-label",
@@ -170,6 +179,9 @@ export const airportSymbols = (config) => {
                 "text-optional": true,
             },
             paint: commonPaint,
+            metadata: {
+                "libshumate:cursor": "pointer",
+            },
         },
         {
             id: "airport-label",
@@ -183,6 +195,9 @@ export const airportSymbols = (config) => {
                 "text-field": localizedName,
             },
             paint: commonPaint,
+            metadata: {
+                "libshumate:cursor": "pointer",
+            },
         },
     ];
 };

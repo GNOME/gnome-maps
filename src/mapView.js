@@ -575,6 +575,14 @@ export class MapView extends Gtk.Overlay {
                 placeType = GeocodeGlib.PlaceType.LAND_FEATURE;
                 break;
 
+            case "aerodrome_label":
+                placeType = GeocodeGlib.PlaceType.AIRPORT;
+                break;
+
+            case "aeroway":
+                placeType =  GeocodeGlib.PlaceType.POINT_OF_INTEREST;
+                break;
+
             default:
                 return;
         }
