@@ -69,14 +69,33 @@ export const pois = (config) => {
             type: "symbol",
             source: "vector-tiles",
             "source-layer": "poi",
-            filter: [">=", ["zoom"], classMatch(getMinzoom, 16, () => true)],
+            filter: [
+                "all",
+                /* For zoom levels 15-17, limit POI density by rank. At 14 and below we don't show enough
+                   POI types to cause a problem, and at 18 and above it's zoomed in enough to not be too dense. */
+                [
+                    "<=",
+                    ["get", "rank"],
+                    [
+                        "step",
+                        ["zoom"],
+                        100000,
+                        15, 50,
+                        17, 100,
+                        18, 100000,
+                    ],
+                ],
+                [">=", ["zoom"], classMatch(getMinzoom, 16)],
+            ],
             layout: {
                 "text-anchor": "top",
                 "text-offset": [0, 0.7],
                 "text-field": ["coalesce", config.localizedName(), ["get", "ref"]],
                 "text-font": config.fonts("Italic"),
                 "text-size": ["*", config.textSize(12), classMatch(getSize, 1)],
-                "text-optional": true,
+                "text-optional": ["step", ["zoom"], false, 18, true],
+                "icon-padding": 10,
+                "text-padding": 10,
                 "icon-image": [
                     "let",
                     "icon",
@@ -97,7 +116,7 @@ export const pois = (config) => {
                     ],
                 ],
                 "icon-size": classMatch(getSize, 1),
-                "symbol-sort-key": ["get", "rank"],
+                "symbol-sort-key": ["+", ["*", classMatch(getMinzoom, 16), 1000000], ["get", "rank"]],
             },
             paint: {
                 "icon-color": color,
