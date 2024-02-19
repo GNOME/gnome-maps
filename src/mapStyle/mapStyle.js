@@ -103,7 +103,7 @@ export function generateMapStyle(options) {
             ...pois(config),
             roadSymbol(config),
             junctionSymbol(config),
-            highwayShield(config),
+            ...highwayShield(config),
             aerialLabel(config),
             ...airportSymbols(config),
             ...places(config),

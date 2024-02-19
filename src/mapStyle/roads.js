@@ -461,6 +461,10 @@ export const junctionSymbol = (config) => ({
 });
 
 export const highwayShield = (config) => {
-    const [_status1, shieldLayerFile] = Gio.file_new_for_uri('resource://org/gnome/Maps/shields/layer.json').load_contents(null);
-    return JSON.parse(Utils.getBufferText(shieldLayerFile));
+    if (config.renderer === "maplibre-gl-js") {
+        return [];
+    } else {
+        const [_status1, shieldLayerFile] = Gio.file_new_for_uri('resource://org/gnome/Maps/shields/layer.json').load_contents(null);
+        return [JSON.parse(Utils.getBufferText(shieldLayerFile))];
+    }
 };
