@@ -372,9 +372,9 @@ export class Place extends GObject.Object {
      * such as restaurants, cafes, pubs and similar
      */
     get isEatingAndDrinking() {
-        return this._osmKey === 'amenity' &&
+        return this.osmKey === 'amenity' &&
                ['bar', 'biergarten', 'cafe', 'fast_food', 'food_court',
-                'restaurant', 'pub'].indexOf(this._osmValue) !== -1;
+                'restaurant', 'pub'].indexOf(this.osmValue) !== -1;
     }
 
     get level() {
