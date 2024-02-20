@@ -177,7 +177,7 @@ export const DEFS = {
             ],
         },
         {
-            classes: ["neighborhood", "hamlet", "suburb", "quarter"],
+            classes: ["neighborhood", "suburb", "quarter"],
             font: "Bold",
             color: {
                 dark: "#c0bfbc",
@@ -190,6 +190,19 @@ export const DEFS = {
                 [15, 18],
             ],
         },
+        {
+            classes: ["hamlet"],
+            font: "Bold",
+            color: {
+                dark: "#c0bfbc",
+                light: "#5e5c64",
+            },
+            maxzoom: 15,
+            sizeStops: [
+                [12, 12],
+                [15, 18],
+            ],
+        }
     ],
     pois: {
         colors: {
