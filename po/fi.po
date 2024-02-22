@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2023-08-10 22:03+0000\n"
-"PO-Revision-Date: 2023-08-17 10:25+0300\n"
+"POT-Creation-Date: 2024-02-14 22:30+0000\n"
+"PO-Revision-Date: 2024-02-22 20:16+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -27,8 +27,8 @@ msgstr ""
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
-#: data/ui/main-window.ui:27 src/application.js:61 src/mainWindow.js:143
-#: src/mainWindow.js:588
+#: data/ui/main-window.ui:27 src/application.js:64 src/mainWindow.js:147
+#: src/mainWindow.js:647
 msgid "Maps"
 msgstr "Kartat"
 
@@ -52,7 +52,8 @@ msgid ""
 msgstr ""
 "Kartat hyödyntää tuhansien ihmisten yhdessä luomaa OpenStreetMap-tietokantaa."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:369 src/mainWindow.js:585
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Maps.appdata.xml.in.in:451 src/mainWindow.js:644
 msgid "The GNOME Project"
 msgstr "Gnome-projekti"
 
@@ -150,7 +151,7 @@ msgid "Number of recently visited routes to store."
 msgstr "Äskettäin käytyjen reittien varastoitava lukumäärä."
 
 #: data/org.gnome.Maps.gschema.xml:61
-msgid "OpenStreetMap username or e-mail address"
+msgid "OpenStreetMap username or email address"
 msgstr "OpenStreetMap-käyttäjätunnus tai -sähköposti"
 
 #: data/org.gnome.Maps.gschema.xml:62
@@ -205,6 +206,19 @@ msgstr "_Peru"
 #: data/ui/export-view-dialog.ui:26
 msgid "_Export"
 msgstr "_Vie"
+
+#. Translators: This is a tooltip
+#: data/ui/favorite-list-row.ui:72
+msgid "Remove Favorite"
+msgstr "Poista suosikki"
+
+#: data/ui/favorites-popover.ui:11
+msgid "No Favorites"
+msgstr "Ei suosikkeja"
+
+#: data/ui/favorites-popover.ui:12
+msgid "Add places to your favorites to get them listed here"
+msgstr "Lisää paikkoja suosikkeihisi, jotta ne näkyvät täällä"
 
 #. Translators: This is a tooltip
 #: data/ui/headerbar-left.ui:11 src/geoclue.js:106
@@ -340,7 +354,7 @@ msgid "Enable Experimental Map"
 msgstr "Käytä kokeellista karttaa"
 
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:20
+#: data/ui/layers-popover.ui:21
 msgid "Open Shape Layer…"
 msgstr "Avaa muototaso…"
 
@@ -364,57 +378,48 @@ msgstr "Tietoja - Kartat"
 msgid "Main Menu"
 msgstr "Päävalikko"
 
-#: data/ui/osm-account-dialog.ui:6
+#: data/ui/osm-account-dialog.ui:5
 msgid "OpenStreetMap Account"
 msgstr "OpenStreetMap-tili"
 
-#: data/ui/osm-account-dialog.ui:26
-msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
-msgstr ""
-"<span weight=\"bold\" size=\"x-large\">Kirjaudu sisään muokataksesi "
-"karttoja</span>"
+#: data/ui/osm-account-dialog.ui:31
+msgid "Sign In To Edit Maps"
+msgstr "Kirjaudu sisään muokataksesi karttoja"
 
-#: data/ui/osm-account-dialog.ui:39
-msgid ""
-"Help to improve the map, using an\n"
-"OpenStreetMap account."
-msgstr ""
-"Auta parantamaan karttaa\n"
-"OpenStreetMap-tiliä käyttäen."
+#: data/ui/osm-account-dialog.ui:32
+msgid "Help to improve the map, using an OpenStreetMap account."
+msgstr "Auta parantamaan karttaa OpenStreetMap-tiliä käyttäen."
 
-#: data/ui/osm-account-dialog.ui:52
-msgid ""
-"Sign in to authorize access in a web browser.\n"
-"Then fill in the obtained verification code here in the next step."
-msgstr ""
-"Kirjaudu sisään valtuuttaaksesi pääsyn verkkoselaimessa.\n"
-"Sen jälkeen täytä saatu vahvistuskoodi seuraavassa vaiheessa."
-
-#: data/ui/osm-account-dialog.ui:67
+#: data/ui/osm-account-dialog.ui:36
 msgid "Sign In"
 msgstr "Kirjaudu sisään"
 
-#: data/ui/osm-account-dialog.ui:111
-msgid "Copy verification code shown when authorizing access in the browser"
-msgstr "Kopioi näytettävä vahvistuskoodi kun pääsyä valtuutetaan selaimessa"
+#: data/ui/osm-account-dialog.ui:59
+msgid "Verification"
+msgstr "Vahvistus"
 
-#: data/ui/osm-account-dialog.ui:121
-msgid "Verification code"
+#: data/ui/osm-account-dialog.ui:60
+msgid ""
+"Copy the verification code shown when authorizing access in the browser."
+msgstr "Kopioi näytettävä vahvistuskoodi kun valtuutat pääsyä selaimessa."
+
+#: data/ui/osm-account-dialog.ui:69
+msgid "Verification Code"
 msgstr "Vahvistuskoodi"
 
-#: data/ui/osm-account-dialog.ui:132
+#: data/ui/osm-account-dialog.ui:75
 msgid "Verify"
 msgstr "Vahvista"
 
-#: data/ui/osm-account-dialog.ui:160
-msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
-msgstr "<span weight=\"bold\" size=\"x-large\">Sisäänkirjautunut</span>"
+#: data/ui/osm-account-dialog.ui:110
+msgid "Signed In"
+msgstr "Sisäänkirjautunut"
 
-#: data/ui/osm-account-dialog.ui:172
+#: data/ui/osm-account-dialog.ui:111
 msgid "Your OpenStreetMap account is active."
 msgstr "OpenStreetMap-tilisi on aktiivinen."
 
-#: data/ui/osm-account-dialog.ui:202
+#: data/ui/osm-account-dialog.ui:129
 msgid "Sign Out"
 msgstr "Kirjaudu ulos"
 
@@ -468,7 +473,7 @@ msgstr ""
 msgid "Recently Used"
 msgstr "Viimeksi käytetty"
 
-#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:541
+#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:663
 msgid "Cancel"
 msgstr "Peru"
 
@@ -488,15 +493,15 @@ msgstr "Wikidata-tunniste"
 msgid "Load Wikidata tag for article"
 msgstr "Lataa artikkelin Wikidata-tunniste"
 
-#: data/ui/place-popover.ui:23 src/searchBar.js:54
+#: data/ui/place-popover.ui:23 src/searchBar.js:55
 msgid "Explore Nearby Places"
 msgstr "Selaa lähellä olevia paikkoja"
 
-#: data/ui/place-popover.ui:82 src/application.js:274
+#: data/ui/place-popover.ui:82 src/application.js:277
 msgid "No results found"
 msgstr "Tuloksia ei löytynyt"
 
-#: data/ui/place-popover.ui:92 src/application.js:252
+#: data/ui/place-popover.ui:92 src/application.js:255
 msgid "An error has occurred"
 msgstr "Tapahtui virhe"
 
@@ -517,7 +522,7 @@ msgstr "Kopioi"
 msgid "Send To…"
 msgstr "Lähetä…"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:64
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:62
 msgid "Open Shape Layer"
 msgstr "Avaa muototaso"
 
@@ -619,7 +624,7 @@ msgid "Airplanes"
 msgstr "Lentokoneet"
 
 #. Translators: This is a tooltip
-#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27
+#: data/ui/place-bar.ui:33 data/ui/place-buttons.ui:27
 msgid "Share Location"
 msgstr "Jaa sijainti"
 
@@ -653,19 +658,19 @@ msgid "Back to Main Categories"
 msgstr "Takaisin pääluokkiin"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:15 src/mapView.js:1121
-msgid "Zoom In"
-msgstr "Lähennä"
+#: data/ui/zoom-and-rotate-controls.ui:19
+msgid "Reset Rotation"
+msgstr "Nollaa kierto"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:28
+#: data/ui/zoom-and-rotate-controls.ui:32
 msgid "Zoom Out"
 msgstr "Loitonna"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:49
-msgid "Reset Rotation"
-msgstr "Nollaa kierto"
+#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1238
+msgid "Zoom In"
+msgstr "Lähennä"
 
 #: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338
 #: lib/maps-file-data-source.c:418
@@ -688,27 +693,27 @@ msgstr "OSM-elementtiä ei löytynyt"
 msgid "Could not find user element"
 msgstr "Käyttäjäelementtiä ei löytynyt"
 
-#: src/application.js:74
+#: src/application.js:78
 msgid "A path to a local tiles directory structure"
 msgstr "Polku paikallisten tiilien hakemistorakenteeseen"
 
-#: src/application.js:80
+#: src/application.js:84
 msgid "Tile size for local tiles directory"
 msgstr "Tiilen koko paikalliseen tiilten hakemistoon"
 
-#: src/application.js:84
+#: src/application.js:88
 msgid "Show the version of the program"
 msgstr "Näytä ohjelman versio"
 
-#: src/application.js:90
+#: src/application.js:94
 msgid "Search for places"
 msgstr "Etsi paikkoja"
 
-#: src/application.js:101 src/application.js:102
+#: src/application.js:105 src/application.js:106
 msgid "[FILE…|URI]"
 msgstr "[TIEDOSTO…|URI]"
 
-#: src/application.js:281
+#: src/application.js:284
 #, javascript-format
 msgid "Invalid maps: URI: %s"
 msgstr "Virheelliset kartat: URI: %s"
@@ -717,75 +722,83 @@ msgstr "Virheelliset kartat: URI: %s"
 #. * exported image with coordinates. The .png extension should be kept
 #. * intact in the translated string.
 #.
-#: src/exportViewDialog.js:74
+#: src/exportViewDialog.js:75
 #, javascript-format
 msgid "Maps at %f, %f.png"
 msgstr "Kartta sijainnissa %f, %f.png"
 
-#: src/exportViewDialog.js:153
+#: src/exportViewDialog.js:174
 msgid "Unable to export view"
 msgstr "Näkymän vienti epäonnistui"
+
+#: src/favoriteListRow.js:42
+msgid "Favorite removed"
+msgstr "Suosikki poistettu"
+
+#: src/favoriteListRow.js:43
+msgid "Undo"
+msgstr "Kumoa"
 
 #: src/geoJSONSource.js:73
 msgid "invalid coordinate"
 msgstr "virheellinen koordinaatti"
 
-#: src/geoJSONSource.js:118 src/geoJSONSource.js:158 src/geoJSONSource.js:173
+#: src/geoJSONSource.js:126 src/geoJSONSource.js:166 src/geoJSONSource.js:181
 msgid "parse error"
 msgstr "jäsentämisvirhe"
 
-#: src/geoJSONSource.js:152
+#: src/geoJSONSource.js:160
 msgid "unknown geometry"
 msgstr "tuntematon geometria"
 
-#: src/graphHopper.js:121 src/transitPlan.js:174
+#: src/graphHopper.js:101 src/transitPlan.js:175
 msgid "Route request failed."
 msgstr "Reittipyyntö epäonnistui."
 
-#: src/graphHopper.js:128 src/transitPlan.js:166
+#: src/graphHopper.js:108 src/transitPlan.js:167
 msgid "No route found."
 msgstr "Reittiä ei löytynyt."
 
-#: src/graphHopper.js:215 src/transitplugins/openTripPlanner.js:1131
+#: src/graphHopper.js:195 src/transitplugins/openTripPlanner.js:1163
 msgid "Start!"
 msgstr "Aloitus!"
 
-#: src/mainWindow.js:61
+#: src/mainWindow.js:59
 msgid "All Layer Files"
 msgstr "Kaikki tasotiedostot"
 
-#: src/mainWindow.js:468
+#: src/mainWindow.js:522
 msgid "Failed to connect to location service"
 msgstr "Yhteys sijaintipalveluun epäonnistui"
 
-#: src/mainWindow.js:473
+#: src/mainWindow.js:527
 msgid "Turn on location services"
 msgstr "Ota sijaintipalvelut käyttöön"
 
-#: src/mainWindow.js:474
+#: src/mainWindow.js:528
 msgid "Location Settings"
 msgstr "Sijaintipalvelut"
 
-#: src/mainWindow.js:586
+#: src/mainWindow.js:645
 msgid "translator-credits"
 msgstr "Jiri Grönroos"
 
-#: src/mainWindow.js:590
+#: src/mainWindow.js:649
 msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
 msgstr ""
 "Tekijänoikeus © 2011 – 2023 Red Hat, Inc. ja Gnomen karttasovelluksen "
 "kehittäjät"
 
-#: src/mainWindow.js:606
+#: src/mainWindow.js:665
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Karttatiedot tarjoaa %s ja avustajat"
 
-#: src/mainWindow.js:607
+#: src/mainWindow.js:666
 msgid "Map Data Provider"
 msgstr "Karttatietojen tarjoaja"
 
-#: src/mainWindow.js:619
+#: src/mainWindow.js:678
 msgid "Map Tile Provider"
 msgstr "Karttatiilten tarjoaja"
 
@@ -794,29 +807,29 @@ msgstr "Karttatiilten tarjoaja"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:627
+#: src/mainWindow.js:686
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Karttatiilet tarjoaa %s"
 
-#: src/mainWindow.js:657
+#: src/mainWindow.js:716
 msgid "Search Provider"
 msgstr "Haun tarjoaja"
 
-#: src/mainWindow.js:660
+#: src/mainWindow.js:719
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Haun tarjoaa %s käyttämällä %s"
 
-#: src/mapView.js:515 src/mapView.js:580
+#: src/mapView.js:637 src/mapView.js:702
 msgid "Failed to open layer"
 msgstr "Tason avaaminen epäonnistui"
 
-#: src/mapView.js:534
+#: src/mapView.js:656
 msgid "Do you want to continue?"
 msgstr "Haluatko jatkaa?"
 
-#: src/mapView.js:535
+#: src/mapView.js:657
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -825,30 +838,33 @@ msgstr ""
 "Olet aikeissa avata tiedostoja, joiden koko yhteensä on %s Mt. Näiden "
 "lataaminen saattaa kestää jonkin aikaa"
 
-#: src/mapView.js:542 src/transitplugins/openTripPlanner.js:1207
+#: src/mapView.js:664 src/transitplugins/openTripPlanner.js:1239
+#: src/transitplugins/openTripPlanner2.js:267
 msgid "Continue"
 msgstr "Jatka"
 
-#: src/mapView.js:574
+#: src/mapView.js:696
 msgid "File type is not supported"
 msgstr "Tiedostotyyppi ei ole tuettu"
 
-#: src/mapView.js:611
+#: src/mapView.js:733
 msgid "Failed to open GeoURI"
 msgstr "GeoURI:n avaaminen epäonnistui"
 
-#: src/mapView.js:1080
+#: src/mapView.js:1197
 msgid "Nothing found here!"
 msgstr "Täältä ei löytynyt mitään!"
 
-#: src/mapView.js:1120
+#: src/mapView.js:1237
 msgid "Zoom in to add location"
 msgstr "Lähennä lisätäksesi sijainnin"
 
-#: src/mapView.js:1141
+#: src/mapView.js:1258
 msgid "Location was added in OpenStreetMap"
 msgstr "Sijainti lisättiin OpenStreetMapissa"
 
+#. switch back to the sign-in view, and show a toast indicating
+#. that verification failed
 #: src/osmAccountDialog.js:134
 msgid "The verification code didn’t match, please try again."
 msgstr "Vahvistuskoodi ei kelvannut, yritä uudelleen."
@@ -895,7 +911,7 @@ msgstr "Virallinen nimi. Tämä on yleensä näkyvillä kyltissä."
 msgid "Address"
 msgstr "Osoite"
 
-#: src/osmEditDialog.js:120 src/placeView.js:261
+#: src/osmEditDialog.js:120 src/placeView.js:275
 msgid "Website"
 msgstr "Verkkosivusto"
 
@@ -926,21 +942,21 @@ msgstr ""
 "mahdolliset paikalliset yksityisyyslait, jotka voivat koskea salaisia "
 "puhelinnumeroita."
 
-#: src/osmEditDialog.js:139 src/placeView.js:294
+#: src/osmEditDialog.js:139
 msgid "E-mail"
 msgstr "Sähköposti"
 
 #: src/osmEditDialog.js:144
 msgid ""
-"This is not a valid e-mail address. Make sure to not include the mailto: "
+"This is not a valid email address. Make sure to not include the mailto: "
 "protocol prefix."
 msgstr ""
-"Tämä ei ole kelvollinen sähköpostiosoite. Varmista että osoitteen alussa on "
-"etuliite \"mailto:\"."
+"Tämä ei ole kelvollinen sähköpostiosoite. Varmista ettei osoite sisällä "
+"\"mailto:\"-etuliitettä."
 
 #: src/osmEditDialog.js:145
 msgid ""
-"Contact e-mail address for inquiries. Add only email addresses that are "
+"Contact email address for inquiries. Add only email addresses that are "
 "intended to be publicly used."
 msgstr ""
 "Sähköpostiosoite kyselyjä varten. Lisää vain sähköpostiosoitteita, jotka "
@@ -948,11 +964,11 @@ msgstr ""
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:149 src/placeView.js:646
+#: src/osmEditDialog.js:149 src/placeView.js:727
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: src/osmEditDialog.js:156 src/placeView.js:331
+#: src/osmEditDialog.js:156 src/placeView.js:399
 msgid "Opening hours"
 msgstr "Aukioloajat"
 
@@ -966,17 +982,17 @@ msgstr "Avaa linkki nähdäksesi muotoilua koskevan ohjeen."
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:164 src/placeView.js:441
+#: src/osmEditDialog.js:164 src/placeView.js:509
 msgid "Population"
 msgstr "Asukasluku"
 
-#: src/osmEditDialog.js:169 src/placeView.js:470
+#: src/osmEditDialog.js:169 src/placeView.js:538
 msgid "Altitude"
 msgstr "Korkeus"
 
 #: src/osmEditDialog.js:172
-msgid "Elevation (height above sea level) of a point in metres."
-msgstr "Sijaintipisteen korkeus merenpinnan yläpuolella metreissä."
+msgid "Elevation (height above sea level) of a point in meters."
+msgstr "Korkeustaso (korkeus merenpinnan yläpuolella) metreissä."
 
 #: src/osmEditDialog.js:175
 msgid "Wheelchair access"
@@ -1120,7 +1136,7 @@ msgstr "Jesidismi"
 msgid "Zoroastrianism"
 msgstr "Zarathustralaisuus"
 
-#: src/osmEditDialog.js:230 src/poiCategories.js:174
+#: src/osmEditDialog.js:230 src/poiCategories.js:176
 msgid "Toilets"
 msgstr "Vessat"
 
@@ -1172,11 +1188,11 @@ msgstr "Artikkelin Wikidata-tunnistetta ei löytynyt"
 msgid "Unnamed place"
 msgstr "Nimetön paikka"
 
-#: src/placeEntry.js:261
+#: src/placeEntry.js:274
 msgid "Failed to parse Geo URI"
 msgstr "Geo URI:n jäsentäminen epäonnistui"
 
-#: src/placeEntry.js:273
+#: src/placeEntry.js:286
 msgid "Failed to parse Maps URI"
 msgstr "Maps URI:n jäsentäminen epäonnistui"
 
@@ -1194,16 +1210,16 @@ msgctxt "short distance format string"
 msgid "< %s"
 msgstr "< %s"
 
-#: src/placeView.js:249
+#: src/placeView.js:263
 msgid "Coordinates"
 msgstr "Koordinaatit"
 
-#: src/placeView.js:253
+#: src/placeView.js:267
 msgid "Accuracy"
 msgstr "Tarkkuus"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:256
+#: src/placeView.js:270
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Tarkkuus: %s"
@@ -1214,15 +1230,63 @@ msgstr "Tarkkuus: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:275
+#: src/placeView.js:289
 msgid "Phone number"
 msgstr "Puhelinnumero"
+
+#: src/placeView.js:308
+msgid "Email"
+msgstr "Sähköposti"
+
+#. If a reference to a named floor (named or symbolic) exists
+#. * refer to it directly.
+#.
+#. Translators:
+#. * This is a reference to named building floor, using a label
+#. * or a code, as "displayed in the elevator"
+#.
+#: src/placeView.js:323 src/placeView.js:362
+msgid "Floor"
+msgstr "Kerros"
+
+#: src/placeView.js:325
+#, javascript-format
+msgid "Floor %s"
+msgstr "Kerros %s"
+
+#: src/placeView.js:337
+msgid "At ground level"
+msgstr "Maanpinnalla"
+
+#. Translators:
+#. * This is a reference to a number of floors above
+#. * ground level.
+#. * The %s placeholder is the integer relative number of floors
+#.
+#: src/placeView.js:346
+#, javascript-format
+msgid "%s floor above ground level"
+msgid_plural "%s floors above ground level"
+msgstr[0] "%s kerros maanpinnan yläpuolella"
+msgstr[1] "%s kerrosta maanpinnan yläpuolella"
+
+#. Translators:
+#. * This is a reference to a number of floors below
+#. * ground level.
+#. * The %s placeholder is the integer relative number of floors
+#.
+#: src/placeView.js:357
+#, javascript-format
+msgid "%s floor below ground level"
+msgid_plural "%s floors below ground level"
+msgstr[0] "%s kerros maanpinnan alapuolella"
+msgstr[1] "%s kerrosta maanpinnan alapuolella"
 
 #. Translators:
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:307
+#: src/placeView.js:375
 msgid "Offers takeout"
 msgstr "Tarjoaa noutoruokaa"
 
@@ -1230,7 +1294,7 @@ msgstr "Tarjoaa noutoruokaa"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:315
+#: src/placeView.js:383
 msgid "Does not offer takeout"
 msgstr "Ei tarjoa noutoruokaa"
 
@@ -1239,14 +1303,14 @@ msgstr "Ei tarjoa noutoruokaa"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:324
+#: src/placeView.js:392
 msgid "Only offers takeout"
 msgstr "Tarjoaa vain noutoruokaa"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:341
+#: src/placeView.js:409
 msgid "Public internet access"
 msgstr "Julkinen internetyhteys"
 
@@ -1254,50 +1318,50 @@ msgstr "Julkinen internetyhteys"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:350
+#: src/placeView.js:418
 msgid "No internet access"
 msgstr "Ei internetyhteyttä"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:358
+#: src/placeView.js:426
 msgid "Public Wi-Fi"
 msgstr "Julkinen Wi-Fi"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:366
+#: src/placeView.js:434
 msgid "Wired internet access"
 msgstr "Langallinen internetyhteys"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:374
+#: src/placeView.js:442
 msgid "Computers available for use"
 msgstr "Tietokoneita käytettävissä"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:382
+#: src/placeView.js:450
 msgid "Internet assistance available"
 msgstr "Internetopastusta saatavilla"
 
-#: src/placeView.js:388
+#: src/placeView.js:456
 msgid "No toilets available"
 msgstr "Vessoja ei käytettävissä"
 
-#: src/placeView.js:391
+#: src/placeView.js:459
 msgid "Toilets available"
 msgstr "Vessoja käytettävissä"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:400
+#: src/placeView.js:468
 msgid "Wheelchair accessible"
 msgstr "Pääsy pyörätuolilla"
 
@@ -1306,7 +1370,7 @@ msgstr "Pääsy pyörätuolilla"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:410
+#: src/placeView.js:478
 msgid "Limited wheelchair accessibility"
 msgstr "Rajoitettu pääsy pyörätuolilla"
 
@@ -1314,7 +1378,7 @@ msgstr "Rajoitettu pääsy pyörätuolilla"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:419
+#: src/placeView.js:487
 msgid "Not wheelchair accessible"
 msgstr "Ei pääsyä pyörätuolilla"
 
@@ -1323,7 +1387,7 @@ msgstr "Ei pääsyä pyörätuolilla"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:429
+#: src/placeView.js:497
 msgid "Designated for wheelchair users"
 msgstr "Suunniteltu pyörätuolikäyttäjille"
 
@@ -1332,7 +1396,7 @@ msgstr "Suunniteltu pyörätuolikäyttäjille"
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:460
+#: src/placeView.js:528
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s merenpinnan tason alapuolella"
@@ -1341,23 +1405,23 @@ msgstr "%s merenpinnan tason alapuolella"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:467
+#: src/placeView.js:535
 msgid "At sea level"
 msgstr "Merenpinnan tasolla"
 
-#: src/placeView.js:476
+#: src/placeView.js:544
 msgid "Religion:"
 msgstr "Uskonto:"
 
-#: src/place.js:543
+#: src/place.js:568
 msgid "Place not found in OpenStreetMap"
 msgstr "Paikkaa ei löytynyt OpenStreetMapista"
 
-#: src/place.js:550
+#: src/place.js:575
 msgid "Coordinates in URL are not valid"
 msgstr "Koordinaatit osoitteessa eivät ole kelvolliset"
 
-#: src/place.js:559
+#: src/place.js:584
 msgid "URL is not supported"
 msgstr "Osoite ei ole tuettu"
 
@@ -1389,239 +1453,239 @@ msgstr "Kirjastot"
 msgid "Pharmacies"
 msgstr "Apteekit"
 
-#: src/poiCategories.js:170
+#: src/poiCategories.js:171
 msgid "Recycling"
 msgstr "Kierrätys"
 
-#: src/poiCategories.js:180
+#: src/poiCategories.js:182
 msgid "Wheelchair-accessible Toilets"
 msgstr "Esteettömät vessat"
 
-#: src/poiCategories.js:186
+#: src/poiCategories.js:188
 msgid "Baggage Lockers"
 msgstr "Matkatavaralokerot"
 
-#: src/poiCategories.js:194
+#: src/poiCategories.js:196
 msgid "Eating & Drinking"
 msgstr "Ruokailu ja juomat"
 
-#: src/poiCategories.js:198
+#: src/poiCategories.js:200
 msgid "Restaurants"
 msgstr "Ravintolat"
 
-#: src/poiCategories.js:203
+#: src/poiCategories.js:205
 msgid "Fast Food"
 msgstr "Pikaruoka"
 
-#: src/poiCategories.js:208
+#: src/poiCategories.js:210
 msgid "Food Courts"
 msgstr "Ruokailualueet"
 
-#: src/poiCategories.js:213
+#: src/poiCategories.js:215
 msgid "Pubs"
 msgstr "Pubit"
 
-#: src/poiCategories.js:219
+#: src/poiCategories.js:221
 msgid "Bars"
 msgstr "Baarit"
 
-#: src/poiCategories.js:224
+#: src/poiCategories.js:226
 msgid "Cafes"
 msgstr "Kahvilat"
 
-#: src/poiCategories.js:229
+#: src/poiCategories.js:231
 msgid "Ice Cream"
 msgstr "Jäätelö"
 
-#: src/poiCategories.js:233
+#: src/poiCategories.js:236
 msgid "Food, Snacks, and Beverage Machines"
 msgstr "Ruoka, naposteltava ja virvoitusjuomakoneet"
 
-#: src/poiCategories.js:241
+#: src/poiCategories.js:244
 msgid "Shopping"
 msgstr "Ostokset"
 
-#: src/poiCategories.js:245
+#: src/poiCategories.js:248
 msgid "Supermarkets"
 msgstr "Supermarketit"
 
-#: src/poiCategories.js:251
+#: src/poiCategories.js:254
 msgid "Convenience Stores"
 msgstr "Lähikaupat"
 
-#: src/poiCategories.js:256
+#: src/poiCategories.js:259
 msgid "Shopping Malls"
 msgstr "Ostoskeskukset"
 
-#: src/poiCategories.js:262
+#: src/poiCategories.js:265
 msgid "Clothes"
 msgstr "Vaatteet"
 
-#: src/poiCategories.js:267
+#: src/poiCategories.js:271
 msgid "Shoes"
 msgstr "Kengät"
 
-#: src/poiCategories.js:272
+#: src/poiCategories.js:276
 msgid "Electronics"
 msgstr "Elektroniikka"
 
-#: src/poiCategories.js:278
+#: src/poiCategories.js:282
 msgid "Alcohol"
 msgstr "Alkoholi"
 
-#: src/poiCategories.js:284
+#: src/poiCategories.js:288
 msgid "Bakeries"
 msgstr "Leipomot"
 
-#: src/poiCategories.js:290
+#: src/poiCategories.js:294
 msgid "Flowers"
 msgstr "Kukat"
 
-#: src/poiCategories.js:297
+#: src/poiCategories.js:301
 msgid "Transportation"
 msgstr "Kuljetus"
 
-#: src/poiCategories.js:301
+#: src/poiCategories.js:305
 msgid "Bus & Tram Stops"
 msgstr "Bussi- ja raitiovaunupysäkit"
 
-#: src/poiCategories.js:309
+#: src/poiCategories.js:313
 msgid "Train & Subway Stations"
 msgstr "Juna- ja metroasemat"
 
-#: src/poiCategories.js:317
+#: src/poiCategories.js:321
 msgid "Tickets"
 msgstr "Matkaliput"
 
-#: src/poiCategories.js:325
+#: src/poiCategories.js:329
 msgid "Parking"
 msgstr "Pysäköinti"
 
-#: src/poiCategories.js:330
+#: src/poiCategories.js:334
 msgid "Bicycle Parking"
 msgstr "Pyöräparkki"
 
-#: src/poiCategories.js:335
+#: src/poiCategories.js:339
 msgid "Bicycle Rental"
 msgstr "Pyörävuokraus"
 
-#: src/poiCategories.js:340
+#: src/poiCategories.js:344
 msgid "Car Rental"
 msgstr "Autovuokraus"
 
-#: src/poiCategories.js:345
+#: src/poiCategories.js:349
 msgid "Fuel"
 msgstr "Polttoaine"
 
-#: src/poiCategories.js:350
+#: src/poiCategories.js:354
 msgid "EV Charging"
 msgstr "Sähköauton lataus"
 
-#: src/poiCategories.js:358
+#: src/poiCategories.js:362
 msgid "Healthcare"
 msgstr "Terveydenhuolto"
 
-#: src/poiCategories.js:362
+#: src/poiCategories.js:366
 msgid "Clinics"
 msgstr "Terveyskeskukset"
 
-#: src/poiCategories.js:368
+#: src/poiCategories.js:372
 msgid "Hospitals"
 msgstr "Sairaalat"
 
-#: src/poiCategories.js:374
+#: src/poiCategories.js:378
 msgid "Dentists"
 msgstr "Hammaslääkärit"
 
-#: src/poiCategories.js:381
+#: src/poiCategories.js:386
 msgid "Accommodation"
 msgstr "Majoitus"
 
-#: src/poiCategories.js:385
+#: src/poiCategories.js:390
 msgid "Hotels"
 msgstr "Hotellit"
 
-#: src/poiCategories.js:390
+#: src/poiCategories.js:395
 msgid "Hostels"
 msgstr "Hostellit"
 
-#: src/poiCategories.js:395
+#: src/poiCategories.js:400
 msgid "Bed & Breakfast"
 msgstr "Bed & Breakfast"
 
-#: src/poiCategories.js:400
+#: src/poiCategories.js:405
 msgid "Campings"
 msgstr "Leirintä"
 
-#: src/poiCategories.js:407
+#: src/poiCategories.js:412
 msgid "Recreation"
 msgstr "Ajanviete"
 
-#: src/poiCategories.js:411
+#: src/poiCategories.js:416
 msgid "Parks"
 msgstr "Puistot"
 
-#: src/poiCategories.js:416
+#: src/poiCategories.js:421
 msgid "Playgrounds"
 msgstr "Leikkikentät"
 
-#: src/poiCategories.js:420
+#: src/poiCategories.js:425
 msgid "Beaches"
 msgstr "Rannat"
 
-#: src/poiCategories.js:425
+#: src/poiCategories.js:430
 msgid "Nature Reserves"
 msgstr "Luonnonsuojelualueet"
 
-#: src/poiCategories.js:431
+#: src/poiCategories.js:436
 msgid "Theme Parks"
 msgstr "Huvipuistot"
 
-#: src/poiCategories.js:436
+#: src/poiCategories.js:441
 msgid "Theaters"
 msgstr "Teatterit"
 
-#: src/poiCategories.js:442
+#: src/poiCategories.js:447
 msgid "Movie Theaters"
 msgstr "Elokuvateatterit"
 
-#: src/poiCategories.js:448
+#: src/poiCategories.js:453
 msgid "Night Clubs"
 msgstr "Yökerhot"
 
-#: src/poiCategories.js:455
+#: src/poiCategories.js:460
 msgid "Tourism"
 msgstr "Turismi"
 
-#: src/poiCategories.js:459
+#: src/poiCategories.js:464
 msgid "Museums"
 msgstr "Museot"
 
-#: src/poiCategories.js:465
+#: src/poiCategories.js:470
 msgid "Attractions"
 msgstr "Nähtävyydet"
 
-#: src/poiCategories.js:470
+#: src/poiCategories.js:475
 msgid "Artworks"
 msgstr "Taideteokset"
 
-#: src/poiCategories.js:475
+#: src/poiCategories.js:480
 msgid "Tourist Information"
 msgstr "Turisti-informaatio"
 
-#: src/poiCategories.js:482
+#: src/poiCategories.js:487
 msgid "Sports"
 msgstr "Liikunta"
 
-#: src/poiCategories.js:486
+#: src/poiCategories.js:491
 msgid "Gyms"
 msgstr "Kuntosalit"
 
-#: src/poiCategories.js:492
+#: src/poiCategories.js:497
 msgid "Outdoor Gyms"
 msgstr "Ulkokuntosalit"
 
-#: src/poiCategories.js:498
+#: src/poiCategories.js:503
 msgid "Golf Courses"
 msgstr "Golfkentät"
 
@@ -1677,17 +1741,17 @@ msgstr "URI:n avaaminen epäonnistui"
 msgid "Open with %s"
 msgstr "Avaa sovelluksella %s"
 
-#: src/shapeLayer.js:108
+#: src/shapeLayer.js:109
 msgid "failed to load file"
 msgstr "tiedoston lataaminen epäonnistui"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:325
+#: src/sidebar.js:328
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Arvioitu aika: %s"
 
-#: src/sidebar.js:395
+#: src/sidebar.js:398
 #, javascript-format
 msgid "Itineraries provided by %s"
 msgstr "Matkareitit tarjoaa %s"
@@ -1704,7 +1768,7 @@ msgstr "Aloita %s"
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: src/transit.js:45
+#: src/transit.js:45 src/transitplugins/openTripPlanner2.js:236
 msgid "Start"
 msgstr "Aloita"
 
@@ -1724,7 +1788,8 @@ msgstr "Kävele %s"
 msgid "Arrive at %s"
 msgstr "Saavu %s"
 
-#: src/transit.js:79 src/transitplugins/openTripPlanner.js:1144
+#: src/transit.js:79 src/transitplugins/openTripPlanner.js:1176
+#: src/transitplugins/openTripPlanner2.js:255
 msgid "Arrive"
 msgstr "Saavu"
 
@@ -1756,16 +1821,16 @@ msgstr "Myöhempiä vaihtoehtoja ei löytynyt."
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:136
+#: src/transitOptionsPanel.js:138
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e. %b"
 
-#: src/transitPlan.js:170
+#: src/transitPlan.js:171
 msgid "No timetable data found for this route."
 msgstr "Tälle reitille ei löytynyt aikataulutietoja."
 
-#: src/transitPlan.js:178
+#: src/transitPlan.js:179
 msgid "No provider found for this route."
 msgstr "Tälle reitille ei löytynyt palveluntarjoajaa."
 
@@ -1774,7 +1839,7 @@ msgstr "Tälle reitille ei löytynyt palveluntarjoajaa."
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:295
+#: src/transitPlan.js:300
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -1783,7 +1848,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: src/transitPlan.js:324
+#: src/transitPlan.js:331
 #, javascript-format
 msgid "%s minute"
 msgid_plural "%s minutes"
@@ -1794,7 +1859,7 @@ msgstr[1] "%s minuuttia"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: src/transitPlan.js:336
+#: src/transitPlan.js:343
 #, javascript-format
 msgid "%s hour"
 msgid_plural "%s hours"
@@ -1805,7 +1870,7 @@ msgstr[1] "%s tuntia"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: src/transitPlan.js:344
+#: src/transitPlan.js:351
 #, javascript-format
 msgid "%s:%s hour"
 msgid_plural "%s:%s hours"
@@ -1818,7 +1883,7 @@ msgstr[1] "%s:%02s tuntia"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:698
+#: src/transitPlan.js:744
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -1918,19 +1983,19 @@ msgid "Bahá'í"
 msgstr "Bahá'í"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:257
+#: src/utils.js:248
 msgid "Unknown"
 msgstr "Tuntematon"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:260
+#: src/utils.js:251
 msgid "Exact"
 msgstr "Tarkka"
 
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
 #.
-#: src/utils.js:345
+#: src/utils.js:307
 #, javascript-format
 msgid "%s h"
 msgstr "%s h"
@@ -1939,7 +2004,7 @@ msgstr "%s h"
 #. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
 #.
-#: src/utils.js:351
+#: src/utils.js:313
 #, javascript-format
 msgid "%s h %s min"
 msgid_plural "%s h %s min"
@@ -1950,7 +2015,7 @@ msgstr[1] "%s h %s min"
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
 #.
-#: src/utils.js:358
+#: src/utils.js:320
 #, javascript-format
 msgid "%s min"
 msgid_plural "%s min"
@@ -1961,7 +2026,7 @@ msgstr[1] "%s min"
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
 #.
-#: src/utils.js:364
+#: src/utils.js:326
 #, javascript-format
 msgid "%s s"
 msgid_plural "%s s"
@@ -1969,25 +2034,25 @@ msgstr[0] "%s s"
 msgstr[1] "%s s"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:375
+#: src/utils.js:337
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:378
+#: src/utils.js:340
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:386
+#: src/utils.js:348
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:389
+#: src/utils.js:351
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
@@ -1996,105 +2061,142 @@ msgstr "%s ft"
 msgid "This plugin doesn't support latest arrival"
 msgstr "Tämä liitännäinen ei tue myöhäisintä saapumista"
 
-#: src/transitplugins/openTripPlanner.js:1205
+#: src/transitplugins/openTripPlanner.js:1237
+#: src/transitplugins/openTripPlanner2.js:266
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Jatka %s"
 
-#: src/transitplugins/openTripPlanner.js:1210
+#: src/transitplugins/openTripPlanner.js:1242
+#: src/transitplugins/openTripPlanner2.js:270
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Käänny vasemmalle kohdasta %s"
 
-#: src/transitplugins/openTripPlanner.js:1212
+#: src/transitplugins/openTripPlanner.js:1244
+#: src/transitplugins/openTripPlanner2.js:271
 msgid "Turn left"
 msgstr "Käänny vasemmalle"
 
-#: src/transitplugins/openTripPlanner.js:1215
+#: src/transitplugins/openTripPlanner.js:1247
+#: src/transitplugins/openTripPlanner2.js:275
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Käänny hieman vasemmalle kohdasta %s"
 
-#: src/transitplugins/openTripPlanner.js:1217
+#: src/transitplugins/openTripPlanner.js:1249
+#: src/transitplugins/openTripPlanner2.js:276
 msgid "Turn slightly left"
 msgstr "Käänny hieman vasemmalle"
 
-#: src/transitplugins/openTripPlanner.js:1220
+#: src/transitplugins/openTripPlanner.js:1252
+#: src/transitplugins/openTripPlanner2.js:280
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Käänny terävästi vasemmalle kohdasta %s"
 
-#: src/transitplugins/openTripPlanner.js:1222
+#: src/transitplugins/openTripPlanner.js:1254
+#: src/transitplugins/openTripPlanner2.js:281
 msgid "Turn sharp left"
 msgstr "Käänny terävästi vasemmalle"
 
-#: src/transitplugins/openTripPlanner.js:1225
+#: src/transitplugins/openTripPlanner.js:1257
+#: src/transitplugins/openTripPlanner2.js:284
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Käänny oikealle kohdasta %s"
 
-#: src/transitplugins/openTripPlanner.js:1227
+#: src/transitplugins/openTripPlanner.js:1259
+#: src/transitplugins/openTripPlanner2.js:285
 msgid "Turn right"
 msgstr "Käänny oikealle"
 
-#: src/transitplugins/openTripPlanner.js:1230
+#: src/transitplugins/openTripPlanner.js:1262
+#: src/transitplugins/openTripPlanner2.js:289
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Käänny hieman oikealle kohdasta %s"
 
-#: src/transitplugins/openTripPlanner.js:1232
+#: src/transitplugins/openTripPlanner.js:1264
+#: src/transitplugins/openTripPlanner2.js:290
 msgid "Turn slightly right"
 msgstr "Käänny hieman oikealle"
 
-#: src/transitplugins/openTripPlanner.js:1235
+#: src/transitplugins/openTripPlanner.js:1267
+#: src/transitplugins/openTripPlanner2.js:294
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Käänny terävästi oikealle kohdasta %s"
 
-#: src/transitplugins/openTripPlanner.js:1237
+#: src/transitplugins/openTripPlanner.js:1269
+#: src/transitplugins/openTripPlanner2.js:295
 msgid "Turn sharp right"
 msgstr "Käänny terävästi oikealle"
 
-#: src/transitplugins/openTripPlanner.js:1243
+#: src/transitplugins/openTripPlanner.js:1275
+#: src/transitplugins/openTripPlanner2.js:302
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "Kiertoliittymässä ota poistumistie %s"
 
-#: src/transitplugins/openTripPlanner.js:1245
+#: src/transitplugins/openTripPlanner.js:1277
+#: src/transitplugins/openTripPlanner2.js:305
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "Kiertoliittymässä ota poistumistie suuntaan %s"
 
-#: src/transitplugins/openTripPlanner.js:1247
+#: src/transitplugins/openTripPlanner.js:1279
+#: src/transitplugins/openTripPlanner2.js:307
 msgid "Take the roundabout"
 msgstr "Mene kiertoliittymään"
 
-#: src/transitplugins/openTripPlanner.js:1251
+#: src/transitplugins/openTripPlanner.js:1283
+#: src/transitplugins/openTripPlanner2.js:315
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Ota hissi ja jää pois kerroksessa %s"
 
-#: src/transitplugins/openTripPlanner.js:1253
+#: src/transitplugins/openTripPlanner.js:1285
+#: src/transitplugins/openTripPlanner2.js:316
 msgid "Take the elevator"
 msgstr "Ota hissi"
 
-#: src/transitplugins/openTripPlanner.js:1257
+#: src/transitplugins/openTripPlanner.js:1289
+#: src/transitplugins/openTripPlanner2.js:320
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Tee u-käännös vasemmalle kohtaan %s"
 
-#: src/transitplugins/openTripPlanner.js:1259
+#: src/transitplugins/openTripPlanner.js:1291
+#: src/transitplugins/openTripPlanner2.js:321
 msgid "Make a left u-turn"
 msgstr "Tee u-käännös vasemmalle"
 
-#: src/transitplugins/openTripPlanner.js:1262
+#: src/transitplugins/openTripPlanner.js:1294
+#: src/transitplugins/openTripPlanner2.js:325
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Tee u-käännös oikealle kohtaan %s"
 
-#: src/transitplugins/openTripPlanner.js:1264
+#: src/transitplugins/openTripPlanner.js:1296
+#: src/transitplugins/openTripPlanner2.js:326
 msgid "Make a right u-turn"
 msgstr "Tee u-käännös oikealle"
+
+#~ msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
+#~ msgstr ""
+#~ "<span weight=\"bold\" size=\"x-large\">Kirjaudu sisään muokataksesi "
+#~ "karttoja</span>"
+
+#~ msgid ""
+#~ "Sign in to authorize access in a web browser.\n"
+#~ "Then fill in the obtained verification code here in the next step."
+#~ msgstr ""
+#~ "Kirjaudu sisään valtuuttaaksesi pääsyn verkkoselaimessa.\n"
+#~ "Sen jälkeen täytä saatu vahvistuskoodi seuraavassa vaiheessa."
+
+#~ msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
+#~ msgstr "<span weight=\"bold\" size=\"x-large\">Sisäänkirjautunut</span>"
 
 #~ msgid "Sign up"
 #~ msgstr "Rekisteröidy"
@@ -2214,9 +2316,6 @@ msgstr "Tee u-käännös oikealle"
 
 #~ msgid "Check your connection and proxy settings."
 #~ msgstr "Tarkista yhteytesi ja välityspalvelimen asetukset."
-
-#~ msgid "Email"
-#~ msgstr "Sähköposti"
 
 #~ msgid "Password"
 #~ msgstr "Salasana"
