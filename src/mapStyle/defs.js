@@ -320,7 +320,7 @@ export const DEFS = {
                 toilets: ["toilets-symbolic", "micro", 16],
                 university: ["school-symbolic", "education", 13],
                 veterinary: ["cat-symbolic", "healthAndSafety"],
-                waste_basket: ["user-trash-symbolic", "micro"],
+                waste_basket: ["user-trash-symbolic", "micro", 16],
             },
             barrier: {
                 bollard: false,
