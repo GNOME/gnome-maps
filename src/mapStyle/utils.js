@@ -15,8 +15,6 @@
  * License along with this library; if not, see <https://www.gnu.org/licenses/>.
  */
 
-import Adw from "gi://Adw";
-
 /**
  * @typedef {Object} MapStyleConfigParams
  * @property {"dark" | "light"} [colorScheme] Color scheme
@@ -32,7 +30,7 @@ export class MapStyleConfig {
     constructor(options) {
         this.colorScheme = options.colorScheme ?? "light";
         this.renderer = options.renderer ?? "libshumate";
-        this.textScale = options.textScale;
+        this.textScale = options.textScale ?? 1;
         this.language = options.language;
     }
 
@@ -74,9 +72,7 @@ export class MapStyleConfig {
     }
 
     textSize(size) {
-        return typeof this.textScale === "undefined"
-            ? Adw.LengthUnit.to_px(Adw.LengthUnit.SP, size, null)
-            : size * this.textScale;
+        return size * this.textScale;
     }
 
     localizedName() {

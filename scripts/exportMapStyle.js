@@ -18,13 +18,9 @@
 
 /* Exports the map style to a JSON file for use in MapLibre GL. */
 
-import "gi://Gtk?version=4.0";
-import Adw from "gi://Adw?version=1";
 import Gio from "gi://Gio?version=2.0";
 
 import { generateMapStyle } from "../src/mapStyle/mapStyle.js";
-
-Adw.init();
 
 const configs = [{ colorScheme: "dark" }, { colorScheme: "light" }];
 

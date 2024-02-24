@@ -27,3 +27,15 @@ nightly@aarch64:
   extends: '.publish_nightly'
   # assuming your job in named 'flatpak@aarch64'
   needs: ['flatpak@aarch64']
+
+preview:
+  image: fedora:latest
+  script:
+    - sudo dnf install -y gjs
+    - ./scripts/exportMapStyle.js
+  artifacts:
+    name: 'Map style preview'
+    when: always
+    paths:
+      - dist
+    expire_in: 90 days

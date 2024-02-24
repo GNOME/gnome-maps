@@ -20,7 +20,6 @@
 import Adw from 'gi://Adw';
 import GLib from 'gi://GLib';
 import Gio from 'gi://Gio';
-import Gdk from 'gi://Gdk';
 import Shumate from 'gi://Shumate';
 import GnomeMaps from 'gi://GnomeMaps';
 
@@ -71,10 +70,14 @@ export function createPrintSource() {
 }
 
 export function createVectorSource() {
+    const start = GLib.get_monotonic_time();
     const style = generateMapStyle({
         colorScheme: Adw.StyleManager.get_default().dark ? "dark" : "light",
         language: Utils.getLanguage(),
+        textScale: Adw.LengthUnit.to_px(Adw.LengthUnit.SP, 1, null),
     });
+    const end = GLib.get_monotonic_time();
+    Utils.debug(`Map style generated in ${(end - start) / 1000} ms.`);
 
     const source = Shumate.VectorRenderer.new("vector-tiles", JSON.stringify(style));
     source.set_license("© OpenMapTiles © OpenStreetMap contributors");

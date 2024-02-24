@@ -15,9 +15,6 @@
  * License along with this library; if not, see <https://www.gnu.org/licenses/>.
  */
 
-import GLib from "gi://GLib";
-
-import * as Utils from "../utils.js";
 import { aerial, aerialLabel } from "./aerial.js";
 import { airportLayers, airportSymbols } from "./airports.js";
 import { boundaryLayers as boundaries } from "./boundaries.js";
@@ -46,8 +43,6 @@ import { pois } from "./pois.js";
  * @returns {*}
  */
 export function generateMapStyle(options) {
-    const start = GLib.get_monotonic_time();
-
     const config = new MapStyleConfig(options);
 
     const layeredLayers = [];
@@ -109,9 +104,6 @@ export function generateMapStyle(options) {
             ...places(config),
         ],
     };
-
-    const end = GLib.get_monotonic_time();
-    Utils.debug(`Map style generated in ${(end - start) / 1000} ms.`);
 
     return style;
 }

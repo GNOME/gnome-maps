@@ -24,7 +24,6 @@ import {
     isPolygon,
     mix,
 } from "./utils.js";
-import * as Utils from "../utils.js";
 
 const allClasses = ["path", ...DEFS.roads.flatMap((r) => r.classes)];
 
@@ -464,6 +463,6 @@ export const highwayShield = (config) => {
         return [];
     } else {
         const [_status1, shieldLayerFile] = Gio.file_new_for_uri('resource://org/gnome/Maps/shields/layer.json').load_contents(null);
-        return [JSON.parse(Utils.getBufferText(shieldLayerFile))];
+        return [JSON.parse(new TextDecoder('utf-8').decode(shieldLayerFile))];
     }
 };
