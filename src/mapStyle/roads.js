@@ -271,6 +271,7 @@ export function roads(config, layerNum, layerFilter) {
             layerFilter,
             ["==", ["get", "class"], "path"],
             ["!=", ["get", "subclass"], "pedestrian"],
+            ["!=", ["get", "subclass"], "platform"],
             ["!=", ["get", "surface"], "unpaved"],
         ],
         paint: {
@@ -295,6 +296,7 @@ export function roads(config, layerNum, layerFilter) {
             layerFilter,
             ["==", ["get", "class"], "path"],
             ["!=", ["get", "subclass"], "pedestrian"],
+            ["!=", ["get", "subclass"], "platform"],
             ["==", ["get", "surface"], "unpaved"],
         ],
         layout: {
@@ -313,6 +315,23 @@ export function roads(config, layerNum, layerFilter) {
     });
 
     surfaces.push({
+        id: `path-${layerNum}-platform`,
+        type: "fill",
+        source: "vector-tiles",
+        "source-layer": "transportation",
+        filter: [
+            "all",
+            isPolygon,
+            layerFilter,
+            ["==", ["get", "class"], "path"],
+            ["==", ["get", "subclass"], "platform"],
+        ],
+        paint: {
+            "fill-color": config.pick(DEFS.platforms.color),
+        },
+    });
+
+    surfaces.push({
         id: `path-${layerNum}-fill`,
         type: "fill",
         source: "vector-tiles",
@@ -323,6 +342,7 @@ export function roads(config, layerNum, layerFilter) {
             layerFilter,
             ["==", ["get", "class"], "path"],
             ["!=", ["get", "subclass"], "pedestrian"],
+            ["!=", ["get", "subclass"], "platform"],
         ],
         paint: {
             "fill-color": config.pick(DEFS.paths.color),

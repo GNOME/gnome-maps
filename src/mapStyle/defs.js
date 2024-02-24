@@ -492,6 +492,14 @@ export const DEFS = {
             size: 0.75,
         },
         {
+            classes: ["path"],
+            subclass: ["platform"],
+            color: {
+                dark: "#483a3d",
+                light: "#bebdc8",
+            },
+        },
+        {
             classes: ["service"],
             color: {
                 dark: "#2a2924",
@@ -546,6 +554,12 @@ export const DEFS = {
             light: "#9a9996",
         },
         size: 0.2,
+    },
+    platforms: {
+        color: {
+            dark: "#483a3d",
+            light: "#bebdc8",
+        },
     },
     rail: {
         color: {
