@@ -136,7 +136,7 @@ const OSM_FIELDS = [
                 "laws, especially for private phone numbers.")
     },
     {
-        name: _("E-mail"),
+        name: _("Email"),
         tag: 'email',
         type: EditFieldType.TEXT,
         validate: Utils.isValidEmail,
