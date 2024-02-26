@@ -292,6 +292,9 @@ export const DEFS = {
             aeroway: {
                 aerodrome: ["flying-symbolic"],
             },
+            aerialway: {
+                station: ["gondola-symbolic", "transportation", 16],
+            },
             amenity: {
                 arts_centre: ["theater-symbolic", "generic"],
                 atm: ["coin-symbolic", "micro", 16],
@@ -426,6 +429,8 @@ export const DEFS = {
                 halt: ["route-transit-train-symbolic", "transport", 16],
                 station: ["route-transit-train-symbolic", "transport", 16],
                 stop: ["route-transit-train-symbolic", "transport", 16],
+                subway_entrance: ["exit-symbolic", "transport", 16],
+                train_station_entrance: ["exit-symbolic", "transport", 16],
                 tram_stop: ["route-transit-tram-symbolic", "transport", 16],
             },
             shop: {
@@ -443,10 +448,13 @@ export const DEFS = {
                 department_store: ["shop-symbolic", "generic"],
                 electronics: ["phonelink2-symbolic", "generic"],
                 general: ["shop-symbolic", "generic"],
+                gift: ["package-x-generic-symbolic", "generic"],
                 golf: ["golf-symbolic", "generic"],
                 grocery: ["shopping-cart-symbolic", "generic"],
                 hairdresser: ["barber-symbolic", "generic"],
+                hardware: ["build-alt-symbolic", "generic"],
                 ice_cream: ["icecream-cone-symbolic", "food"],
+                jewelry: ["anniversary-symbolic", "generic"],
                 mall: ["shop-symbolic", "generic", 14],
                 mobile_phone: ["smartphone-symbolic", "generic"],
                 music: ["headphones-symbolic", "generic"],
