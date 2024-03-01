@@ -30,6 +30,7 @@ export const places = (config) =>
             "text-font": config.fonts(place.font),
             "text-field": config.localizedName(),
             "text-transform": place.textTransform,
+            "text-padding": 10,
             "text-size": [
                 "interpolate",
                 ["linear"],
