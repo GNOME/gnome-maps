@@ -94,6 +94,11 @@ export function parseAsObjectURL(url) {
     if (url.match(OSM_URL_REGEX)) {
         let uri = GLib.Uri.parse(url, GLib.UriFlags.NONE);
         let path = uri.get_path();
+
+        // allow trailing slash in the path
+        if (path.endsWith('/'))
+            path = path.substring(0, path.length - 1);
+
         let parts = path.split('/');
 
         if (parts.length === 3 && parts[0] === '' &&
