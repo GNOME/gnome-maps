@@ -63,6 +63,8 @@ function copyIcons(osmAmericanaPath) {
         }
     }
 
+    shields.sort();
+
     /* Create shields.gresource.xml */
     const shieldsGresourceXml = Gio.File.new_for_path(
         "data/shields/org.gnome.Maps.shields.gresource.xml"
