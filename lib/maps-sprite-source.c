@@ -24,6 +24,8 @@ struct _MapsSpriteSource {
 
   char *color_scheme;
 
+  GtkTextDirection text_direction;
+
   GHashTable *shields;
   GRegex *shield_regex;
 };
@@ -119,6 +121,7 @@ maps_sprite_source_init (MapsSpriteSource *self)
 {
   self->shields = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_object_unref);
   self->shield_regex = g_regex_new ("shield\n(.*)\n(.*)=(.*)(?:\n(.*))?", G_REGEX_MULTILINE, 0, NULL);
+  self->text_direction = gtk_widget_get_default_direction ();
 }
 
 static ShumateVectorSprite *
@@ -180,7 +183,7 @@ fallback_function (ShumateVectorSpriteSheet *sprite_sheet,
         NULL,
         16,
         scale,
-        GTK_TEXT_DIR_NONE,
+        self->text_direction,
         0
       );
 
