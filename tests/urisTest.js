@@ -45,6 +45,8 @@ function parseAsObjectURLTest() {
                        URIS.parseAsObjectURL('https://openstreetmap.org/node/4'));
     _assertArrayEquals(['node', 5],
                        URIS.parseAsObjectURL('http://www.openstreetmap.org/node/5'));
+    _assertArrayEquals(['node', 6],
+                       URIS.parseAsObjectURL('http://www.openstreetmap.org/node/6/'));
 }
 
 function parseAsCoordinateURLTest() {
