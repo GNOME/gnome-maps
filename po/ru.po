@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2024-01-31 21:06+0000\n"
-"PO-Revision-Date: 2024-02-01 19:45+0300\n"
+"POT-Creation-Date: 2024-02-14 22:30+0000\n"
+"PO-Revision-Date: 2024-02-15 13:34+0300\n"
 "Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -60,7 +60,7 @@ msgstr ""
 "всеми миру."
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.appdata.xml.in.in:444 src/mainWindow.js:644
+#: data/org.gnome.Maps.appdata.xml.in.in:451 src/mainWindow.js:644
 msgid "The GNOME Project"
 msgstr "Проект GNOME"
 
@@ -158,7 +158,7 @@ msgid "Number of recently visited routes to store."
 msgstr "Количество сохранённых недавно использовавшихся маршрутов."
 
 #: data/org.gnome.Maps.gschema.xml:61
-msgid "OpenStreetMap username or e-mail address"
+msgid "OpenStreetMap username or email address"
 msgstr "Имя или адрес эл. почты пользователя OpenStreetMap"
 
 #: data/org.gnome.Maps.gschema.xml:62
@@ -222,7 +222,7 @@ msgid "Remove Favorite"
 msgstr "Удалить избранное"
 
 #: data/ui/favorites-popover.ui:11
-msgid "No favorites"
+msgid "No Favorites"
 msgstr "Нет избранных"
 
 #: data/ui/favorites-popover.ui:12
@@ -483,7 +483,7 @@ msgstr ""
 msgid "Recently Used"
 msgstr "Недавно использованные"
 
-#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:629
+#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:663
 msgid "Cancel"
 msgstr "Отменить"
 
@@ -678,7 +678,7 @@ msgid "Zoom Out"
 msgstr "Отдалить"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1204
+#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1238
 msgid "Zoom In"
 msgstr "Приблизить"
 
@@ -836,15 +836,15 @@ msgstr "Поставщик поиска"
 msgid "Search provided by %s using %s"
 msgstr "Поиск осуществляется %s с помощью %s"
 
-#: src/mapView.js:603 src/mapView.js:668
+#: src/mapView.js:637 src/mapView.js:702
 msgid "Failed to open layer"
 msgstr "Не удалось открыть слой"
 
-#: src/mapView.js:622
+#: src/mapView.js:656
 msgid "Do you want to continue?"
 msgstr "Вы хотите продолжить?"
 
-#: src/mapView.js:623
+#: src/mapView.js:657
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -853,28 +853,28 @@ msgstr ""
 "Вы собираетесь открыть файлы общим размером %s МБ. Загрузка может занять "
 "некоторое время"
 
-#: src/mapView.js:630 src/transitplugins/openTripPlanner.js:1239
+#: src/mapView.js:664 src/transitplugins/openTripPlanner.js:1239
 #: src/transitplugins/openTripPlanner2.js:267
 msgid "Continue"
 msgstr "Продолжить"
 
-#: src/mapView.js:662
+#: src/mapView.js:696
 msgid "File type is not supported"
 msgstr "Тип файла не поддерживается"
 
-#: src/mapView.js:699
+#: src/mapView.js:733
 msgid "Failed to open GeoURI"
 msgstr "Не удалось открыть геолокационный URI"
 
-#: src/mapView.js:1163
+#: src/mapView.js:1197
 msgid "Nothing found here!"
 msgstr "Здесь ничего не найдено!"
 
-#: src/mapView.js:1203
+#: src/mapView.js:1237
 msgid "Zoom in to add location"
 msgstr "Приблизьте, чтобы добавить местоположение"
 
-#: src/mapView.js:1224
+#: src/mapView.js:1258
 msgid "Location was added in OpenStreetMap"
 msgstr "Местоположение было добавлено в OpenStreetMap"
 
@@ -953,13 +953,13 @@ msgid ""
 msgstr ""
 "Номер телефона. Используйте международный формат, начинающийся со знака «+»."
 
-#: src/osmEditDialog.js:139 src/placeView.js:308
+#: src/osmEditDialog.js:139
 msgid "E-mail"
 msgstr "E-mail"
 
 #: src/osmEditDialog.js:144
 msgid ""
-"This is not a valid e-mail address. Make sure to not include the mailto: "
+"This is not a valid email address. Make sure to not include the mailto: "
 "protocol prefix."
 msgstr ""
 "Это не действительный адрес электронной почты. Убедитесь, что не указан "
@@ -967,7 +967,7 @@ msgstr ""
 
 #: src/osmEditDialog.js:145
 msgid ""
-"Contact e-mail address for inquiries. Add only email addresses that are "
+"Contact email address for inquiries. Add only email addresses that are "
 "intended to be publicly used."
 msgstr ""
 "Адрес электронной почты для запросов. Добавляйте только те адреса "
@@ -1002,8 +1002,8 @@ msgid "Altitude"
 msgstr "Высота"
 
 #: src/osmEditDialog.js:172
-msgid "Elevation (height above sea level) of a point in metres."
-msgstr "Высота над уровнем моря в метрах."
+msgid "Elevation (height above sea level) of a point in meters."
+msgstr "Высота (высота над уровнем моря) точки в метрах."
 
 #: src/osmEditDialog.js:175
 msgid "Wheelchair access"
@@ -1147,7 +1147,7 @@ msgstr "Езидизм"
 msgid "Zoroastrianism"
 msgstr "Зороастризм"
 
-#: src/osmEditDialog.js:230 src/poiCategories.js:174
+#: src/osmEditDialog.js:230 src/poiCategories.js:176
 msgid "Toilets"
 msgstr "Туалеты"
 
@@ -1245,6 +1245,10 @@ msgstr "Точность: %s"
 #: src/placeView.js:289
 msgid "Phone number"
 msgstr "Номер телефона"
+
+#: src/placeView.js:308
+msgid "Email"
+msgstr "Электронная почта"
 
 #. If a reference to a named floor (named or symbolic) exists
 #. * refer to it directly.
@@ -1423,15 +1427,15 @@ msgstr "На уровне моря"
 msgid "Religion:"
 msgstr "Религия:"
 
-#: src/place.js:564
+#: src/place.js:568
 msgid "Place not found in OpenStreetMap"
 msgstr "Место не найдено в OpenStreetMap"
 
-#: src/place.js:571
+#: src/place.js:575
 msgid "Coordinates in URL are not valid"
 msgstr "Координаты в URL не действительны"
 
-#: src/place.js:580
+#: src/place.js:584
 msgid "URL is not supported"
 msgstr "URL не поддерживается"
 
@@ -1463,239 +1467,239 @@ msgstr "Библиотеки"
 msgid "Pharmacies"
 msgstr "Аптеки"
 
-#: src/poiCategories.js:170
+#: src/poiCategories.js:171
 msgid "Recycling"
 msgstr "Пункты приёма вторсырья"
 
-#: src/poiCategories.js:180
+#: src/poiCategories.js:182
 msgid "Wheelchair-accessible Toilets"
 msgstr "Туалеты, доступные для инвалидов-колясочников"
 
-#: src/poiCategories.js:186
+#: src/poiCategories.js:188
 msgid "Baggage Lockers"
 msgstr "Камеры хранения багажа"
 
-#: src/poiCategories.js:194
+#: src/poiCategories.js:196
 msgid "Eating & Drinking"
 msgstr "Еда и напитки"
 
-#: src/poiCategories.js:198
+#: src/poiCategories.js:200
 msgid "Restaurants"
 msgstr "Рестораны"
 
-#: src/poiCategories.js:203
+#: src/poiCategories.js:205
 msgid "Fast Food"
 msgstr "Фаст-фуд"
 
-#: src/poiCategories.js:208
+#: src/poiCategories.js:210
 msgid "Food Courts"
 msgstr "Фуд-корты"
 
-#: src/poiCategories.js:213
+#: src/poiCategories.js:215
 msgid "Pubs"
 msgstr "Пабы"
 
-#: src/poiCategories.js:219
+#: src/poiCategories.js:221
 msgid "Bars"
 msgstr "Бары"
 
-#: src/poiCategories.js:224
+#: src/poiCategories.js:226
 msgid "Cafes"
 msgstr "Кафе"
 
-#: src/poiCategories.js:229
+#: src/poiCategories.js:231
 msgid "Ice Cream"
 msgstr "Кафе-мороженное"
 
-#: src/poiCategories.js:233
+#: src/poiCategories.js:236
 msgid "Food, Snacks, and Beverage Machines"
 msgstr "Автоматы по продаже продуктов питания, закусок и напитков"
 
-#: src/poiCategories.js:241
+#: src/poiCategories.js:244
 msgid "Shopping"
 msgstr "Покупки"
 
-#: src/poiCategories.js:245
+#: src/poiCategories.js:248
 msgid "Supermarkets"
 msgstr "Супермаркеты"
 
-#: src/poiCategories.js:251
+#: src/poiCategories.js:254
 msgid "Convenience Stores"
 msgstr "Круглосуточные магазины"
 
-#: src/poiCategories.js:256
+#: src/poiCategories.js:259
 msgid "Shopping Malls"
 msgstr "Торговые центры"
 
-#: src/poiCategories.js:262
+#: src/poiCategories.js:265
 msgid "Clothes"
 msgstr "Одежда"
 
-#: src/poiCategories.js:267
+#: src/poiCategories.js:271
 msgid "Shoes"
 msgstr "Обувь"
 
-#: src/poiCategories.js:272
+#: src/poiCategories.js:276
 msgid "Electronics"
 msgstr "Электроника"
 
-#: src/poiCategories.js:278
+#: src/poiCategories.js:282
 msgid "Alcohol"
 msgstr "Алкоголь"
 
-#: src/poiCategories.js:284
+#: src/poiCategories.js:288
 msgid "Bakeries"
 msgstr "Выпечка"
 
-#: src/poiCategories.js:290
+#: src/poiCategories.js:294
 msgid "Flowers"
 msgstr "Цветы"
 
-#: src/poiCategories.js:297
+#: src/poiCategories.js:301
 msgid "Transportation"
 msgstr "Передвижение"
 
-#: src/poiCategories.js:301
+#: src/poiCategories.js:305
 msgid "Bus & Tram Stops"
 msgstr "Автобусные и трамвайные остановки"
 
-#: src/poiCategories.js:309
+#: src/poiCategories.js:313
 msgid "Train & Subway Stations"
 msgstr "Железнодорожные станции и станции метро"
 
-#: src/poiCategories.js:317
+#: src/poiCategories.js:321
 msgid "Tickets"
 msgstr "Билеты"
 
-#: src/poiCategories.js:325
+#: src/poiCategories.js:329
 msgid "Parking"
 msgstr "Парковка"
 
-#: src/poiCategories.js:330
+#: src/poiCategories.js:334
 msgid "Bicycle Parking"
 msgstr "Велопарковка"
 
-#: src/poiCategories.js:335
+#: src/poiCategories.js:339
 msgid "Bicycle Rental"
 msgstr "Прокат велосипедов"
 
-#: src/poiCategories.js:340
+#: src/poiCategories.js:344
 msgid "Car Rental"
 msgstr "Прокат автомобилей"
 
-#: src/poiCategories.js:345
+#: src/poiCategories.js:349
 msgid "Fuel"
 msgstr "Автозаправочная станция"
 
-#: src/poiCategories.js:350
+#: src/poiCategories.js:354
 msgid "EV Charging"
 msgstr "Электрозаправочная станция"
 
-#: src/poiCategories.js:358
+#: src/poiCategories.js:362
 msgid "Healthcare"
 msgstr "Здравоохранение"
 
-#: src/poiCategories.js:362
+#: src/poiCategories.js:366
 msgid "Clinics"
 msgstr "Клиники"
 
-#: src/poiCategories.js:368
+#: src/poiCategories.js:372
 msgid "Hospitals"
 msgstr "Госпитали"
 
-#: src/poiCategories.js:374
+#: src/poiCategories.js:378
 msgid "Dentists"
 msgstr "Стоматология"
 
-#: src/poiCategories.js:381
+#: src/poiCategories.js:386
 msgid "Accommodation"
 msgstr "Жильё"
 
-#: src/poiCategories.js:385
+#: src/poiCategories.js:390
 msgid "Hotels"
 msgstr "Гостиницы"
 
-#: src/poiCategories.js:390
+#: src/poiCategories.js:395
 msgid "Hostels"
 msgstr "Хостелы"
 
-#: src/poiCategories.js:395
+#: src/poiCategories.js:400
 msgid "Bed & Breakfast"
 msgstr "Мини-гостиницы (B&B)"
 
-#: src/poiCategories.js:400
+#: src/poiCategories.js:405
 msgid "Campings"
 msgstr "Кемпинги"
 
-#: src/poiCategories.js:407
+#: src/poiCategories.js:412
 msgid "Recreation"
 msgstr "Досуг"
 
-#: src/poiCategories.js:411
+#: src/poiCategories.js:416
 msgid "Parks"
 msgstr "Парки"
 
-#: src/poiCategories.js:416
+#: src/poiCategories.js:421
 msgid "Playgrounds"
 msgstr "Игровые площадки"
 
-#: src/poiCategories.js:420
+#: src/poiCategories.js:425
 msgid "Beaches"
 msgstr "Пляжи"
 
-#: src/poiCategories.js:425
+#: src/poiCategories.js:430
 msgid "Nature Reserves"
 msgstr "Природные заповедники"
 
-#: src/poiCategories.js:431
+#: src/poiCategories.js:436
 msgid "Theme Parks"
 msgstr "Тематические парки"
 
-#: src/poiCategories.js:436
+#: src/poiCategories.js:441
 msgid "Theaters"
 msgstr "Театры"
 
-#: src/poiCategories.js:442
+#: src/poiCategories.js:447
 msgid "Movie Theaters"
 msgstr "Кинотеатры"
 
-#: src/poiCategories.js:448
+#: src/poiCategories.js:453
 msgid "Night Clubs"
 msgstr "Ночные клубы"
 
-#: src/poiCategories.js:455
+#: src/poiCategories.js:460
 msgid "Tourism"
 msgstr "Туризм"
 
-#: src/poiCategories.js:459
+#: src/poiCategories.js:464
 msgid "Museums"
 msgstr "Музеи"
 
-#: src/poiCategories.js:465
+#: src/poiCategories.js:470
 msgid "Attractions"
 msgstr "Достопримечательности"
 
-#: src/poiCategories.js:470
+#: src/poiCategories.js:475
 msgid "Artworks"
 msgstr "Произведения искусства"
 
-#: src/poiCategories.js:475
+#: src/poiCategories.js:480
 msgid "Tourist Information"
 msgstr "Туристические информационные центры"
 
-#: src/poiCategories.js:482
+#: src/poiCategories.js:487
 msgid "Sports"
 msgstr "Спорт"
 
-#: src/poiCategories.js:486
+#: src/poiCategories.js:491
 msgid "Gyms"
 msgstr "Тренажерные залы"
 
-#: src/poiCategories.js:492
+#: src/poiCategories.js:497
 msgid "Outdoor Gyms"
 msgstr "Спортивные площадки"
 
-#: src/poiCategories.js:498
+#: src/poiCategories.js:503
 msgid "Golf Courses"
 msgstr "Поля для гольфа"
 
@@ -2333,9 +2337,6 @@ msgstr "Разворот направо"
 
 #~ msgid "Check your connection and proxy settings."
 #~ msgstr "Проверьте настройки прокси и соединения."
-
-#~ msgid "Email"
-#~ msgstr "Электронная почта"
 
 #~ msgid "Password"
 #~ msgstr "Пароль"
