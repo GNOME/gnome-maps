@@ -86,8 +86,7 @@ export function createVectorSource() {
     const sprites = Shumate.VectorSpriteSheet.new();
     const spriteSource = new GnomeMaps.SpriteSource({"color-scheme": "light"});
     const [_status4, shieldsJsonFile] = Gio.file_new_for_uri('resource://org/gnome/Maps/shields/shields.json').load_contents(null);
-    const shieldDefs = JSON.parse(Utils.getBufferText(shieldsJsonFile));
-    spriteSource.load_shield_defs(JSON.stringify(shieldDefs));
+    spriteSource.load_shield_defs(Utils.getBufferText(shieldsJsonFile));
     spriteSource.set_fallback(sprites);
     source.set_sprite_sheet(sprites);
 
