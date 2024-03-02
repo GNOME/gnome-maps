@@ -231,9 +231,15 @@ export class Place extends GObject.Object {
     }
 
     get countryCode() {
-        return this.osmTags?.['addr:country'] ?? this._countryCode ??
-               Utils.getCountryCodeForCoordinates(this.location.latitude,
-                                                  this.location.longitude);
+        let result = this.osmTags?.['addr:country'] ?? this._countryCode;
+        if (result)
+            return result;
+
+        this._countryCode = Utils.getCountryCodeForCoordinates(
+            this.location.latitude,
+            this.location.longitude
+        );
+        return this._countryCode;
     }
 
     get continent() {
