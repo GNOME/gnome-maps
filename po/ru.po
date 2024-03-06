@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2024-02-14 22:30+0000\n"
-"PO-Revision-Date: 2024-02-15 13:34+0300\n"
+"POT-Creation-Date: 2024-03-02 12:18+0000\n"
+"PO-Revision-Date: 2024-03-06 16:30+0300\n"
 "Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -60,7 +60,7 @@ msgstr ""
 "всеми миру."
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.appdata.xml.in.in:451 src/mainWindow.js:644
+#: data/org.gnome.Maps.appdata.xml.in.in:458 src/mainWindow.js:644
 msgid "The GNOME Project"
 msgstr "Проект GNOME"
 
@@ -483,7 +483,7 @@ msgstr ""
 msgid "Recently Used"
 msgstr "Недавно использованные"
 
-#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:663
+#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:671
 msgid "Cancel"
 msgstr "Отменить"
 
@@ -530,7 +530,7 @@ msgstr "Копировать"
 
 #: data/ui/send-to-dialog.ui:70
 msgid "Send To…"
-msgstr "О_тправить…"
+msgstr "Отправить…"
 
 #: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:62
 msgid "Open Shape Layer"
@@ -678,7 +678,7 @@ msgid "Zoom Out"
 msgstr "Отдалить"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1238
+#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1246
 msgid "Zoom In"
 msgstr "Приблизить"
 
@@ -836,15 +836,15 @@ msgstr "Поставщик поиска"
 msgid "Search provided by %s using %s"
 msgstr "Поиск осуществляется %s с помощью %s"
 
-#: src/mapView.js:637 src/mapView.js:702
+#: src/mapView.js:645 src/mapView.js:710
 msgid "Failed to open layer"
 msgstr "Не удалось открыть слой"
 
-#: src/mapView.js:656
+#: src/mapView.js:664
 msgid "Do you want to continue?"
 msgstr "Вы хотите продолжить?"
 
-#: src/mapView.js:657
+#: src/mapView.js:665
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -853,28 +853,28 @@ msgstr ""
 "Вы собираетесь открыть файлы общим размером %s МБ. Загрузка может занять "
 "некоторое время"
 
-#: src/mapView.js:664 src/transitplugins/openTripPlanner.js:1239
+#: src/mapView.js:672 src/transitplugins/openTripPlanner.js:1239
 #: src/transitplugins/openTripPlanner2.js:267
 msgid "Continue"
 msgstr "Продолжить"
 
-#: src/mapView.js:696
+#: src/mapView.js:704
 msgid "File type is not supported"
 msgstr "Тип файла не поддерживается"
 
-#: src/mapView.js:733
+#: src/mapView.js:741
 msgid "Failed to open GeoURI"
 msgstr "Не удалось открыть геолокационный URI"
 
-#: src/mapView.js:1197
+#: src/mapView.js:1205
 msgid "Nothing found here!"
 msgstr "Здесь ничего не найдено!"
 
-#: src/mapView.js:1237
+#: src/mapView.js:1245
 msgid "Zoom in to add location"
 msgstr "Приблизьте, чтобы добавить местоположение"
 
-#: src/mapView.js:1258
+#: src/mapView.js:1266
 msgid "Location was added in OpenStreetMap"
 msgstr "Местоположение было добавлено в OpenStreetMap"
 
@@ -953,9 +953,9 @@ msgid ""
 msgstr ""
 "Номер телефона. Используйте международный формат, начинающийся со знака «+»."
 
-#: src/osmEditDialog.js:139
-msgid "E-mail"
-msgstr "E-mail"
+#: src/osmEditDialog.js:139 src/placeView.js:308
+msgid "Email"
+msgstr "Электронная почта"
 
 #: src/osmEditDialog.js:144
 msgid ""
@@ -1246,10 +1246,6 @@ msgstr "Точность: %s"
 msgid "Phone number"
 msgstr "Номер телефона"
 
-#: src/placeView.js:308
-msgid "Email"
-msgstr "Электронная почта"
-
 #. If a reference to a named floor (named or symbolic) exists
 #. * refer to it directly.
 #.
@@ -1427,15 +1423,15 @@ msgstr "На уровне моря"
 msgid "Religion:"
 msgstr "Религия:"
 
-#: src/place.js:568
+#: src/place.js:576
 msgid "Place not found in OpenStreetMap"
 msgstr "Место не найдено в OpenStreetMap"
 
-#: src/place.js:575
+#: src/place.js:583
 msgid "Coordinates in URL are not valid"
 msgstr "Координаты в URL не действительны"
 
-#: src/place.js:584
+#: src/place.js:592
 msgid "URL is not supported"
 msgstr "URL не поддерживается"
 
@@ -2205,6 +2201,9 @@ msgstr "Выполните правый разворот на %s"
 #: src/transitplugins/openTripPlanner2.js:326
 msgid "Make a right u-turn"
 msgstr "Разворот направо"
+
+#~ msgid "E-mail"
+#~ msgstr "E-mail"
 
 #~ msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
 #~ msgstr ""
