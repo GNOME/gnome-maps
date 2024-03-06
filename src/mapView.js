@@ -317,7 +317,7 @@ export class MapView extends Gtk.Overlay {
         }
 
         this._routeLayers.push(routeLayer);
-        this.map.insert_layer_behind(routeLayer, this._instructionMarkerLayer);
+        this.map.insert_layer_behind(routeLayer, this._userLocationLayer);
 
         return routeLayer;
     }
