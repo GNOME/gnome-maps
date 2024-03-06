@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2023-08-10 22:03+0000\n"
-"PO-Revision-Date: 2023-08-11 14:36+0300\n"
+"POT-Creation-Date: 2024-03-02 08:17+0000\n"
+"PO-Revision-Date: 2024-03-06 16:32+0300\n"
 "Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -33,7 +33,7 @@ msgstr ""
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
 #: data/ui/main-window.ui:27 src/application.js:61 src/mainWindow.js:143
-#: src/mainWindow.js:588
+#: src/mainWindow.js:591
 msgid "Maps"
 msgstr "Карты"
 
@@ -59,7 +59,7 @@ msgstr ""
 "Карты используют базу данных OpenStreetMap, созданную сотнями тысяч людей по "
 "всеми миру."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:369 src/mainWindow.js:585
+#: data/org.gnome.Maps.appdata.xml.in.in:452 src/mainWindow.js:588
 msgid "The GNOME Project"
 msgstr "The GNOME Project"
 
@@ -349,7 +349,7 @@ msgid "Enable Experimental Map"
 msgstr "Включить экспериментальную карту"
 
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:20
+#: data/ui/layers-popover.ui:21
 msgid "Open Shape Layer…"
 msgstr "Открыть слой фигур…"
 
@@ -525,7 +525,7 @@ msgstr "Копировать"
 
 #: data/ui/send-to-dialog.ui:70
 msgid "Send To…"
-msgstr "О_тправить…"
+msgstr "Отправить…"
 
 #: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:64
 msgid "Open Shape Layer"
@@ -629,7 +629,7 @@ msgid "Airplanes"
 msgstr "Самолеты"
 
 #. Translators: This is a tooltip
-#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27
+#: data/ui/place-bar.ui:33 data/ui/place-buttons.ui:27
 msgid "Share Location"
 msgstr "Поделиться местоположением"
 
@@ -759,7 +759,7 @@ msgstr "Сбой при запросе маршрута."
 msgid "No route found."
 msgstr "Маршрут не найден."
 
-#: src/graphHopper.js:215 src/transitplugins/openTripPlanner.js:1131
+#: src/graphHopper.js:215 src/transitplugins/openTripPlanner.js:1163
 msgid "Start!"
 msgstr "Старт!"
 
@@ -779,7 +779,7 @@ msgstr "Включите службы определения местополо�
 msgid "Location Settings"
 msgstr "Параметры местоположения"
 
-#: src/mainWindow.js:586
+#: src/mainWindow.js:589
 msgid "translator-credits"
 msgstr ""
 "Yuri Myasoedov <ymyasoedov@yandex.ru>, 2013, 2014.\n"
@@ -787,20 +787,20 @@ msgstr ""
 "Alexey Rubtsov <rushills@gmail.com>, 2021\n"
 "Aleksandr Melman <alexmelman88@gmail.com>, 2022-2023"
 
-#: src/mainWindow.js:590
+#: src/mainWindow.js:593
 msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Авторское право © 2011 – 2023 Red Hat, Inc. и авторы GNOME Maps"
 
-#: src/mainWindow.js:606
+#: src/mainWindow.js:609
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Картографические данные %s и участников"
 
-#: src/mainWindow.js:607
+#: src/mainWindow.js:610
 msgid "Map Data Provider"
 msgstr "Поставщик картографических данных"
 
-#: src/mainWindow.js:619
+#: src/mainWindow.js:622
 msgid "Map Tile Provider"
 msgstr "Поставщик картографического слоя"
 
@@ -809,16 +809,16 @@ msgstr "Поставщик картографического слоя"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:627
+#: src/mainWindow.js:630
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Картографические слои предоставлены %s"
 
-#: src/mainWindow.js:657
+#: src/mainWindow.js:660
 msgid "Search Provider"
 msgstr "Поставщик поиска"
 
-#: src/mainWindow.js:660
+#: src/mainWindow.js:663
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Поиск осуществляется %s с помощью %s"
@@ -840,7 +840,7 @@ msgstr ""
 "Вы собираетесь открыть файлы общим размером %s МБ. Загрузка может занять "
 "некоторое время"
 
-#: src/mapView.js:542 src/transitplugins/openTripPlanner.js:1207
+#: src/mapView.js:542 src/transitplugins/openTripPlanner.js:1239
 msgid "Continue"
 msgstr "Продолжить"
 
@@ -1694,12 +1694,12 @@ msgid "failed to load file"
 msgstr "не удалось загрузить файл"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:325
+#: src/sidebar.js:329
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Расчётное время: %s"
 
-#: src/sidebar.js:395
+#: src/sidebar.js:399
 #, javascript-format
 msgid "Itineraries provided by %s"
 msgstr "Маршруты, предоставленные %s"
@@ -1736,7 +1736,7 @@ msgstr "Пешком %s"
 msgid "Arrive at %s"
 msgstr "Прибытие в %s"
 
-#: src/transit.js:79 src/transitplugins/openTripPlanner.js:1144
+#: src/transit.js:79 src/transitplugins/openTripPlanner.js:1176
 msgid "Arrive"
 msgstr "Прибытие"
 
@@ -1768,7 +1768,7 @@ msgstr "Не найдено более поздних вариантов."
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:136
+#: src/transitOptionsPanel.js:138
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e %b"
@@ -2017,103 +2017,103 @@ msgstr "%s фт"
 msgid "This plugin doesn't support latest arrival"
 msgstr "Этот модуль не поддерживает последние поступления"
 
-#: src/transitplugins/openTripPlanner.js:1205
+#: src/transitplugins/openTripPlanner.js:1237
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Продолжайте %s"
 
-#: src/transitplugins/openTripPlanner.js:1210
+#: src/transitplugins/openTripPlanner.js:1242
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Поверните налево на %s"
 
-#: src/transitplugins/openTripPlanner.js:1212
+#: src/transitplugins/openTripPlanner.js:1244
 msgid "Turn left"
 msgstr "Поверните налево"
 
-#: src/transitplugins/openTripPlanner.js:1215
+#: src/transitplugins/openTripPlanner.js:1247
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Поверните немного налево на %s"
 
-#: src/transitplugins/openTripPlanner.js:1217
+#: src/transitplugins/openTripPlanner.js:1249
 msgid "Turn slightly left"
 msgstr "Повернитесь немного влево"
 
-#: src/transitplugins/openTripPlanner.js:1220
+#: src/transitplugins/openTripPlanner.js:1252
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Поверните резко налево на %s"
 
-#: src/transitplugins/openTripPlanner.js:1222
+#: src/transitplugins/openTripPlanner.js:1254
 msgid "Turn sharp left"
 msgstr "Повернитесь резко налево"
 
-#: src/transitplugins/openTripPlanner.js:1225
+#: src/transitplugins/openTripPlanner.js:1257
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Поверните направо на %s"
 
-#: src/transitplugins/openTripPlanner.js:1227
+#: src/transitplugins/openTripPlanner.js:1259
 msgid "Turn right"
 msgstr "Поверните направо"
 
-#: src/transitplugins/openTripPlanner.js:1230
+#: src/transitplugins/openTripPlanner.js:1262
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Поверните немного направо на %s"
 
-#: src/transitplugins/openTripPlanner.js:1232
+#: src/transitplugins/openTripPlanner.js:1264
 msgid "Turn slightly right"
 msgstr "Поверните немного направо"
 
-#: src/transitplugins/openTripPlanner.js:1235
+#: src/transitplugins/openTripPlanner.js:1267
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Поверните резко направо на %s"
 
-#: src/transitplugins/openTripPlanner.js:1237
+#: src/transitplugins/openTripPlanner.js:1269
 msgid "Turn sharp right"
 msgstr "Повернитесь резко направо"
 
-#: src/transitplugins/openTripPlanner.js:1243
+#: src/transitplugins/openTripPlanner.js:1275
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "На кольцевой развязке сверните на съезд %s"
 
-#: src/transitplugins/openTripPlanner.js:1245
+#: src/transitplugins/openTripPlanner.js:1277
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "На кольцевой развязке сверните на %s"
 
-#: src/transitplugins/openTripPlanner.js:1247
+#: src/transitplugins/openTripPlanner.js:1279
 msgid "Take the roundabout"
 msgstr "Сверните на кольцевую развязку"
 
-#: src/transitplugins/openTripPlanner.js:1251
+#: src/transitplugins/openTripPlanner.js:1283
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Поднимитесь на лифте и выйдите на %s"
 
-#: src/transitplugins/openTripPlanner.js:1253
+#: src/transitplugins/openTripPlanner.js:1285
 msgid "Take the elevator"
 msgstr "Поднимитесь на лифте"
 
-#: src/transitplugins/openTripPlanner.js:1257
+#: src/transitplugins/openTripPlanner.js:1289
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Выполните левый разворот на %s"
 
-#: src/transitplugins/openTripPlanner.js:1259
+#: src/transitplugins/openTripPlanner.js:1291
 msgid "Make a left u-turn"
 msgstr "Выполните левый разворот"
 
-#: src/transitplugins/openTripPlanner.js:1262
+#: src/transitplugins/openTripPlanner.js:1294
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Выполните правый разворот на %s"
 
-#: src/transitplugins/openTripPlanner.js:1264
+#: src/transitplugins/openTripPlanner.js:1296
 msgid "Make a right u-turn"
 msgstr "Разворот направо"
 
