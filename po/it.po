@@ -1,5 +1,5 @@
 # Italian translation for gnome-maps.
-# Copyright (C) 2013 - 2019, 2021 Red Hat & gnome-maps authors
+# Copyright (C) 2013 - 2019, 2021, 2024 Red Hat & gnome-maps authors
 # This file is distributed under the same license as the gnome-maps package.
 # Claudio Arseni <claudio.arseni@ubuntu.com>, 2013, 2014, 2015.
 # Gianvito Cavasoli <gianvito@gmx.it>, 2016-2023.
@@ -9,10 +9,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2024-01-18 00:03+0000\n"
-"PO-Revision-Date: 2024-01-22 09:02+0100\n"
+"POT-Creation-Date: 2024-02-26 12:47+0000\n"
+"PO-Revision-Date: 2024-02-28 14:55+0100\n"
 "Last-Translator: Milo Casagrande <milo@milo.name>\n"
-"Language-Team: Italian <gnome-it-list@gnome.org>\n"
+"Language-Team: Italian <international-italian@discourse.gnome.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -58,7 +58,7 @@ msgstr ""
 "di migliaia di persone da ogni parte del mondo."
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.appdata.xml.in.in:444 src/mainWindow.js:644
+#: data/org.gnome.Maps.appdata.xml.in.in:451 src/mainWindow.js:644
 msgid "The GNOME Project"
 msgstr "Il progetto GNOME"
 
@@ -156,8 +156,8 @@ msgid "Number of recently visited routes to store."
 msgstr "Numero di percorsi effettuati di recente di cui tenere traccia."
 
 #: data/org.gnome.Maps.gschema.xml:61
-msgid "OpenStreetMap username or e-mail address"
-msgstr "Nome utente o indirizzo e-mail di OpenStreetMap"
+msgid "OpenStreetMap username or email address"
+msgstr "Nome utente o indirizzo email di OpenStreetMap"
 
 #: data/org.gnome.Maps.gschema.xml:62
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
@@ -214,8 +214,13 @@ msgstr "A_nnulla"
 msgid "_Export"
 msgstr "_Esporta"
 
+#. Translators: This is a tooltip
+#: data/ui/favorite-list-row.ui:72
+msgid "Remove Favorite"
+msgstr "Rimuovi preferito"
+
 #: data/ui/favorites-popover.ui:11
-msgid "No favorites"
+msgid "No Favorites"
 msgstr "Non ci sono preferiti"
 
 #: data/ui/favorites-popover.ui:12
@@ -477,7 +482,7 @@ msgstr ""
 msgid "Recently Used"
 msgstr "Usate recentemente"
 
-#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:544
+#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:671
 msgid "Cancel"
 msgstr "Annulla"
 
@@ -628,7 +633,7 @@ msgid "Airplanes"
 msgstr "Aeroplani"
 
 #. Translators: This is a tooltip
-#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27
+#: data/ui/place-bar.ui:33 data/ui/place-buttons.ui:27
 msgid "Share Location"
 msgstr "Condivide la posizione"
 
@@ -672,7 +677,7 @@ msgid "Zoom Out"
 msgstr "Diminuisce l'ingrandimento"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1115
+#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1246
 msgid "Zoom In"
 msgstr "Aumenta ingrandimento"
 
@@ -735,15 +740,23 @@ msgstr "Mappe di %f, %f.png"
 msgid "Unable to export view"
 msgstr "Impossibile esportare la visualizzazione"
 
-#: src/geoJSONSource.js:72
+#: src/favoriteListRow.js:42
+msgid "Favorite removed"
+msgstr "Preferito rimosso"
+
+#: src/favoriteListRow.js:43
+msgid "Undo"
+msgstr "Annulla"
+
+#: src/geoJSONSource.js:73
 msgid "invalid coordinate"
 msgstr "coordinate non valide"
 
-#: src/geoJSONSource.js:117 src/geoJSONSource.js:157 src/geoJSONSource.js:172
+#: src/geoJSONSource.js:126 src/geoJSONSource.js:166 src/geoJSONSource.js:181
 msgid "parse error"
 msgstr "errore di analisi"
 
-#: src/geoJSONSource.js:151
+#: src/geoJSONSource.js:160
 msgid "unknown geometry"
 msgstr "geometria sconosciuta"
 
@@ -817,15 +830,15 @@ msgstr "Fornitore ricerca"
 msgid "Search provided by %s using %s"
 msgstr "Ricerca fornita da %s usando %s"
 
-#: src/mapView.js:518 src/mapView.js:583
+#: src/mapView.js:645 src/mapView.js:710
 msgid "Failed to open layer"
 msgstr "Apertura del livello non riuscita"
 
-#: src/mapView.js:537
+#: src/mapView.js:664
 msgid "Do you want to continue?"
 msgstr "Continuare?"
 
-#: src/mapView.js:538
+#: src/mapView.js:665
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -834,28 +847,28 @@ msgstr ""
 "Si stanno per aprire dei file con una dimensione totale di %s MB. Il "
 "caricamento potrebbe richiedere del tempo"
 
-#: src/mapView.js:545 src/transitplugins/openTripPlanner.js:1239
+#: src/mapView.js:672 src/transitplugins/openTripPlanner.js:1239
 #: src/transitplugins/openTripPlanner2.js:267
 msgid "Continue"
 msgstr "Continua"
 
-#: src/mapView.js:577
+#: src/mapView.js:704
 msgid "File type is not supported"
 msgstr "Il tipo di file non è supportato"
 
-#: src/mapView.js:614
+#: src/mapView.js:741
 msgid "Failed to open GeoURI"
 msgstr "Apertura di GeoURI non riuscita"
 
-#: src/mapView.js:1074
+#: src/mapView.js:1205
 msgid "Nothing found here!"
 msgstr "Non c'è niente qui!"
 
-#: src/mapView.js:1114
+#: src/mapView.js:1245
 msgid "Zoom in to add location"
 msgstr "Ingrandire per aggiungere la posizione"
 
-#: src/mapView.js:1135
+#: src/mapView.js:1266
 msgid "Location was added in OpenStreetMap"
 msgstr "Luogo aggiunto in OpenStreetMap"
 
@@ -907,7 +920,7 @@ msgstr "Il nome ufficiale. Questo è tipicamente quello che appare all'accesso."
 msgid "Address"
 msgstr "Indirizzo"
 
-#: src/osmEditDialog.js:120 src/placeView.js:264
+#: src/osmEditDialog.js:120 src/placeView.js:275
 msgid "Website"
 msgstr "Sito web"
 
@@ -936,21 +949,21 @@ msgstr ""
 "simbolo +. Fare attenzione alle leggi locali sulla privacy, specialmente per "
 "i numeri di telefono privati."
 
-#: src/osmEditDialog.js:139 src/placeView.js:297
-msgid "E-mail"
-msgstr "Posta elettronica"
+#: src/osmEditDialog.js:139 src/placeView.js:308
+msgid "Email"
+msgstr "Email"
 
 #: src/osmEditDialog.js:144
 msgid ""
-"This is not a valid e-mail address. Make sure to not include the mailto: "
+"This is not a valid email address. Make sure to not include the mailto: "
 "protocol prefix."
 msgstr ""
 "Questo indirizzo email non è valido. Assicurarsi di non includere il "
-"prefisso di protocollo «mailto:»."
+"prefisso di protocollo mailto:."
 
 #: src/osmEditDialog.js:145
 msgid ""
-"Contact e-mail address for inquiries. Add only email addresses that are "
+"Contact email address for inquiries. Add only email addresses that are "
 "intended to be publicly used."
 msgstr ""
 "Indirizzo email di contatto per le richieste. Aggiungere solo indirizzi "
@@ -958,11 +971,11 @@ msgstr ""
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:149 src/placeView.js:703
+#: src/osmEditDialog.js:149 src/placeView.js:727
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: src/osmEditDialog.js:156 src/placeView.js:388
+#: src/osmEditDialog.js:156 src/placeView.js:399
 msgid "Opening hours"
 msgstr "Orari di apertura"
 
@@ -976,16 +989,16 @@ msgstr "Vedere il collegamento nell'etichetta per un aiuto sul formato."
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:164 src/placeView.js:498
+#: src/osmEditDialog.js:164 src/placeView.js:509
 msgid "Population"
 msgstr "Popolazione"
 
-#: src/osmEditDialog.js:169 src/placeView.js:527
+#: src/osmEditDialog.js:169 src/placeView.js:538
 msgid "Altitude"
 msgstr "Altitudine"
 
 #: src/osmEditDialog.js:172
-msgid "Elevation (height above sea level) of a point in metres."
+msgid "Elevation (height above sea level) of a point in meters."
 msgstr "Altitudine (altezza sopra il livello del mare) di un punto in metri."
 
 #: src/osmEditDialog.js:175
@@ -1130,7 +1143,7 @@ msgstr "Yazidismo"
 msgid "Zoroastrianism"
 msgstr "Zoroastrismo"
 
-#: src/osmEditDialog.js:230 src/poiCategories.js:174
+#: src/osmEditDialog.js:230 src/poiCategories.js:176
 msgid "Toilets"
 msgstr "Servizi igienici"
 
@@ -1205,16 +1218,16 @@ msgctxt "short distance format string"
 msgid "< %s"
 msgstr "< %s"
 
-#: src/placeView.js:252
+#: src/placeView.js:263
 msgid "Coordinates"
 msgstr "Coordinate"
 
-#: src/placeView.js:256
+#: src/placeView.js:267
 msgid "Accuracy"
 msgstr "Precisione"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:259
+#: src/placeView.js:270
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Precisione: %s"
@@ -1225,7 +1238,7 @@ msgstr "Precisione: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:278
+#: src/placeView.js:289
 msgid "Phone number"
 msgstr "Numero di telefono"
 
@@ -1236,16 +1249,16 @@ msgstr "Numero di telefono"
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
 #.
-#: src/placeView.js:312 src/placeView.js:351
+#: src/placeView.js:323 src/placeView.js:362
 msgid "Floor"
 msgstr "Piano"
 
-#: src/placeView.js:314
+#: src/placeView.js:325
 #, javascript-format
 msgid "Floor %s"
 msgstr "Piano %s"
 
-#: src/placeView.js:326
+#: src/placeView.js:337
 msgid "At ground level"
 msgstr "Al livello del terreno"
 
@@ -1254,7 +1267,7 @@ msgstr "Al livello del terreno"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:335
+#: src/placeView.js:346
 #, javascript-format
 msgid "%s floor above ground level"
 msgid_plural "%s floors above ground level"
@@ -1266,7 +1279,7 @@ msgstr[1] "%s piani sopra il livello del terreno"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:346
+#: src/placeView.js:357
 #, javascript-format
 msgid "%s floor below ground level"
 msgid_plural "%s floors below ground level"
@@ -1277,7 +1290,7 @@ msgstr[1] "%s piani sotto il livello del terreno"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:364
+#: src/placeView.js:375
 msgid "Offers takeout"
 msgstr "Offre asporto"
 
@@ -1285,7 +1298,7 @@ msgstr "Offre asporto"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:372
+#: src/placeView.js:383
 msgid "Does not offer takeout"
 msgstr "Non offre asporto"
 
@@ -1294,14 +1307,14 @@ msgstr "Non offre asporto"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:381
+#: src/placeView.js:392
 msgid "Only offers takeout"
 msgstr "Offre soltanto asporto"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:398
+#: src/placeView.js:409
 msgid "Public internet access"
 msgstr "Accesso pubblico a Internet"
 
@@ -1309,50 +1322,50 @@ msgstr "Accesso pubblico a Internet"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:407
+#: src/placeView.js:418
 msgid "No internet access"
 msgstr "Nessun accesso a Internet"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:415
+#: src/placeView.js:426
 msgid "Public Wi-Fi"
 msgstr "Wi-Fi pubblico"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:423
+#: src/placeView.js:434
 msgid "Wired internet access"
 msgstr "Accesso a Internet via cavo"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:431
+#: src/placeView.js:442
 msgid "Computers available for use"
 msgstr "Computer disponibili all'uso"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:439
+#: src/placeView.js:450
 msgid "Internet assistance available"
 msgstr "Assistenza Internet disponibile"
 
-#: src/placeView.js:445
+#: src/placeView.js:456
 msgid "No toilets available"
 msgstr "Nessun bagno disponibile"
 
-#: src/placeView.js:448
+#: src/placeView.js:459
 msgid "Toilets available"
 msgstr "Bagno disponibile"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:457
+#: src/placeView.js:468
 msgid "Wheelchair accessible"
 msgstr "Accessibile per sedie a rotelle"
 
@@ -1361,7 +1374,7 @@ msgstr "Accessibile per sedie a rotelle"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:467
+#: src/placeView.js:478
 msgid "Limited wheelchair accessibility"
 msgstr "Accesso limitato per sedie a rotelle"
 
@@ -1369,7 +1382,7 @@ msgstr "Accesso limitato per sedie a rotelle"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:476
+#: src/placeView.js:487
 msgid "Not wheelchair accessible"
 msgstr "Non accessibile per sedie a rotelle"
 
@@ -1378,7 +1391,7 @@ msgstr "Non accessibile per sedie a rotelle"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:486
+#: src/placeView.js:497
 msgid "Designated for wheelchair users"
 msgstr "Progettato per gli utenti con sedia a rotelle"
 
@@ -1387,7 +1400,7 @@ msgstr "Progettato per gli utenti con sedia a rotelle"
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:517
+#: src/placeView.js:528
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s sotto il livello del mare"
@@ -1396,23 +1409,23 @@ msgstr "%s sotto il livello del mare"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:524
+#: src/placeView.js:535
 msgid "At sea level"
 msgstr "Al livello del mare"
 
-#: src/placeView.js:533
+#: src/placeView.js:544
 msgid "Religion:"
 msgstr "Religione:"
 
-#: src/place.js:544
+#: src/place.js:570
 msgid "Place not found in OpenStreetMap"
 msgstr "Luogo non trovato su OpenStreetMap"
 
-#: src/place.js:551
+#: src/place.js:577
 msgid "Coordinates in URL are not valid"
 msgstr "L'URL delle coordinate non è valido"
 
-#: src/place.js:560
+#: src/place.js:586
 msgid "URL is not supported"
 msgstr "L'URL non è supportato"
 
@@ -1444,239 +1457,239 @@ msgstr "Biblioteche"
 msgid "Pharmacies"
 msgstr "Farmacie"
 
-#: src/poiCategories.js:170
+#: src/poiCategories.js:171
 msgid "Recycling"
 msgstr "Riciclaggio"
 
-#: src/poiCategories.js:180
+#: src/poiCategories.js:182
 msgid "Wheelchair-accessible Toilets"
 msgstr "Servizi igienici per disabili"
 
-#: src/poiCategories.js:186
+#: src/poiCategories.js:188
 msgid "Baggage Lockers"
 msgstr "Armadietti per bagagli"
 
-#: src/poiCategories.js:194
+#: src/poiCategories.js:196
 msgid "Eating & Drinking"
 msgstr "Mangiare e bere"
 
-#: src/poiCategories.js:198
+#: src/poiCategories.js:200
 msgid "Restaurants"
 msgstr "Ristoranti"
 
-#: src/poiCategories.js:203
+#: src/poiCategories.js:205
 msgid "Fast Food"
 msgstr "Fast food"
 
-#: src/poiCategories.js:208
+#: src/poiCategories.js:210
 msgid "Food Courts"
 msgstr "Zone di ristoro"
 
-#: src/poiCategories.js:213
+#: src/poiCategories.js:215
 msgid "Pubs"
 msgstr "Pub"
 
-#: src/poiCategories.js:219
+#: src/poiCategories.js:221
 msgid "Bars"
 msgstr "Bar"
 
-#: src/poiCategories.js:224
+#: src/poiCategories.js:226
 msgid "Cafes"
 msgstr "Caffè"
 
-#: src/poiCategories.js:229
+#: src/poiCategories.js:231
 msgid "Ice Cream"
 msgstr "Gelato"
 
-#: src/poiCategories.js:233
+#: src/poiCategories.js:236
 msgid "Food, Snacks, and Beverage Machines"
 msgstr "Macchine per alimenti, spuntini e bevande"
 
-#: src/poiCategories.js:241
+#: src/poiCategories.js:244
 msgid "Shopping"
 msgstr "Shopping"
 
-#: src/poiCategories.js:245
+#: src/poiCategories.js:248
 msgid "Supermarkets"
 msgstr "Supermercati"
 
-#: src/poiCategories.js:251
+#: src/poiCategories.js:254
 msgid "Convenience Stores"
 msgstr "Negozi"
 
-#: src/poiCategories.js:256
+#: src/poiCategories.js:259
 msgid "Shopping Malls"
 msgstr "Centri commerciali"
 
-#: src/poiCategories.js:262
+#: src/poiCategories.js:265
 msgid "Clothes"
 msgstr "Abbigliamento"
 
-#: src/poiCategories.js:267
+#: src/poiCategories.js:271
 msgid "Shoes"
 msgstr "Scarpe"
 
-#: src/poiCategories.js:272
+#: src/poiCategories.js:276
 msgid "Electronics"
 msgstr "Elettronica"
 
-#: src/poiCategories.js:278
+#: src/poiCategories.js:282
 msgid "Alcohol"
 msgstr "Alcolici"
 
-#: src/poiCategories.js:284
+#: src/poiCategories.js:288
 msgid "Bakeries"
 msgstr "Panetterie"
 
-#: src/poiCategories.js:290
+#: src/poiCategories.js:294
 msgid "Flowers"
 msgstr "Fiori"
 
-#: src/poiCategories.js:297
+#: src/poiCategories.js:301
 msgid "Transportation"
 msgstr "Trasporti"
 
-#: src/poiCategories.js:301
+#: src/poiCategories.js:305
 msgid "Bus & Tram Stops"
 msgstr "Fermate di autobus e tram"
 
-#: src/poiCategories.js:309
+#: src/poiCategories.js:313
 msgid "Train & Subway Stations"
 msgstr "Stazioni ferroviarie e della metropolitana"
 
-#: src/poiCategories.js:317
+#: src/poiCategories.js:321
 msgid "Tickets"
 msgstr "Biglietti"
 
-#: src/poiCategories.js:325
+#: src/poiCategories.js:329
 msgid "Parking"
 msgstr "Parcheggio"
 
-#: src/poiCategories.js:330
+#: src/poiCategories.js:334
 msgid "Bicycle Parking"
 msgstr "Parcheggio per biciclette"
 
-#: src/poiCategories.js:335
+#: src/poiCategories.js:339
 msgid "Bicycle Rental"
 msgstr "Noleggio biciclette"
 
-#: src/poiCategories.js:340
+#: src/poiCategories.js:344
 msgid "Car Rental"
 msgstr "Noleggio auto"
 
-#: src/poiCategories.js:345
+#: src/poiCategories.js:349
 msgid "Fuel"
 msgstr "Carburante"
 
-#: src/poiCategories.js:350
+#: src/poiCategories.js:354
 msgid "EV Charging"
 msgstr "Ricarica veicoli elettrici"
 
-#: src/poiCategories.js:358
+#: src/poiCategories.js:362
 msgid "Healthcare"
 msgstr "Assistenza sanitaria"
 
-#: src/poiCategories.js:362
+#: src/poiCategories.js:366
 msgid "Clinics"
 msgstr "Cliniche"
 
-#: src/poiCategories.js:368
+#: src/poiCategories.js:372
 msgid "Hospitals"
 msgstr "Ospedali"
 
-#: src/poiCategories.js:374
+#: src/poiCategories.js:378
 msgid "Dentists"
 msgstr "Dentisti"
 
-#: src/poiCategories.js:381
+#: src/poiCategories.js:386
 msgid "Accommodation"
 msgstr "Alloggio"
 
-#: src/poiCategories.js:385
+#: src/poiCategories.js:390
 msgid "Hotels"
 msgstr "Alberghi"
 
-#: src/poiCategories.js:390
+#: src/poiCategories.js:395
 msgid "Hostels"
 msgstr "Ostelli"
 
-#: src/poiCategories.js:395
+#: src/poiCategories.js:400
 msgid "Bed & Breakfast"
 msgstr "Bed & Breakfast"
 
-#: src/poiCategories.js:400
+#: src/poiCategories.js:405
 msgid "Campings"
 msgstr "Campeggi"
 
-#: src/poiCategories.js:407
+#: src/poiCategories.js:412
 msgid "Recreation"
 msgstr "Svago"
 
-#: src/poiCategories.js:411
+#: src/poiCategories.js:416
 msgid "Parks"
 msgstr "Parchi"
 
-#: src/poiCategories.js:416
+#: src/poiCategories.js:421
 msgid "Playgrounds"
 msgstr "Campi da gioco"
 
-#: src/poiCategories.js:420
+#: src/poiCategories.js:425
 msgid "Beaches"
 msgstr "Spiagge"
 
-#: src/poiCategories.js:425
+#: src/poiCategories.js:430
 msgid "Nature Reserves"
 msgstr "Riserve naturali"
 
-#: src/poiCategories.js:431
+#: src/poiCategories.js:436
 msgid "Theme Parks"
 msgstr "Parchi tematici"
 
-#: src/poiCategories.js:436
+#: src/poiCategories.js:441
 msgid "Theaters"
 msgstr "Teatri"
 
-#: src/poiCategories.js:442
+#: src/poiCategories.js:447
 msgid "Movie Theaters"
 msgstr "Cinema"
 
-#: src/poiCategories.js:448
+#: src/poiCategories.js:453
 msgid "Night Clubs"
 msgstr "Locali notturni"
 
-#: src/poiCategories.js:455
+#: src/poiCategories.js:460
 msgid "Tourism"
 msgstr "Turismo"
 
-#: src/poiCategories.js:459
+#: src/poiCategories.js:464
 msgid "Museums"
 msgstr "Musei"
 
-#: src/poiCategories.js:465
+#: src/poiCategories.js:470
 msgid "Attractions"
 msgstr "Attrazioni"
 
-#: src/poiCategories.js:470
+#: src/poiCategories.js:475
 msgid "Artworks"
 msgstr "Opere d'arte"
 
-#: src/poiCategories.js:475
+#: src/poiCategories.js:480
 msgid "Tourist Information"
 msgstr "Informazioni turistiche"
 
-#: src/poiCategories.js:482
+#: src/poiCategories.js:487
 msgid "Sports"
 msgstr "Sport"
 
-#: src/poiCategories.js:486
+#: src/poiCategories.js:491
 msgid "Gyms"
 msgstr "Palestre"
 
-#: src/poiCategories.js:492
+#: src/poiCategories.js:497
 msgid "Outdoor Gyms"
 msgstr "Palestre all'aperto"
 
-#: src/poiCategories.js:498
+#: src/poiCategories.js:503
 msgid "Golf Courses"
 msgstr "Campi da golf"
 
@@ -1732,7 +1745,7 @@ msgstr "Apertura dell'URI non riuscita"
 msgid "Open with %s"
 msgstr "Apri con %s"
 
-#: src/shapeLayer.js:108
+#: src/shapeLayer.js:109
 msgid "failed to load file"
 msgstr "caricamento file non riuscito"
 
@@ -1874,7 +1887,7 @@ msgstr[1] "%s:%s ore"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:738
+#: src/transitPlan.js:744
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
