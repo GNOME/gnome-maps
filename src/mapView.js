@@ -28,8 +28,6 @@ import GLib from 'gi://GLib';
 import Gtk from 'gi://Gtk';
 import Shumate from 'gi://Shumate';
 
-import GnomeMaps from 'gi://GnomeMaps';
-
 import {Application} from './application.js';
 import {BoundingBox} from './boundingBox.js';
 import * as Color from './color.js';
@@ -87,7 +85,6 @@ const FILE_SIZE_LIMIT_MB = 20;
 export class MapView extends Gtk.Overlay {
 
     static MapType = {
-        LOCAL: 'MapsLocalSource',
         STREET: 'MapsStreetSource',
         AERIAL: 'MapsAerialSource',
         VECTOR: 'MapsVectorSource',
@@ -130,7 +127,7 @@ export class MapView extends Gtk.Overlay {
         return this._mapSource;
     }
 
-    constructor({mapType, mainWindow, ...params}) {
+    constructor({mainWindow, ...params}) {
         super(params);
 
         this.overflow = Gtk.Overflow.HIDDEN;
@@ -142,7 +139,7 @@ export class MapView extends Gtk.Overlay {
 
         this.child = this.map;
 
-        this.setMapType(mapType ?? this._getStoredMapType());
+        this.setMapType(this._getStoredMapType());
 
         this._initScale();
         this._initLayers();
@@ -462,42 +459,18 @@ export class MapView extends Gtk.Overlay {
         }
 
         let mapSource;
+        let tiles = Service.getService().tiles;
 
-        if (mapType !== MapView.MapType.LOCAL) {
-            let tiles = Service.getService().tiles;
-
-            if (mapType === MapView.MapType.AERIAL && tiles.aerial)
-                mapSource = MapSource.createAerialSource();
-            else if (mapType === MapView.MapType.VECTOR && Shumate.VectorRenderer.is_supported()) {
-                mapSource = MapSource.createVectorSource();
-                this._listenForVectorChanges();
-            }
-            else
-                mapSource = MapSource.createStreetSource();
-
-            Application.settings.set('map-type', mapType);
-        } else {
-            let source = new GnomeMaps.FileDataSource({
-                path: Utils.getBufferText(Application.application.local_tile_path)
-            });
-            try {
-                source.prepare();
-
-                mapSource =
-                    new Shumate.RasterRenderer({ id: 'local',
-                                                 name: 'local',
-                                                 min_zoom_level: source.min_zoom,
-                                                 max_zoom_level: source.max_zoom,
-                                                 tile_size:      Application.application.local_tile_size ?? 512,
-                                                 projection:     Shumate.MapProjection.MERCATOR,
-                                                 data_source:    source });
-            } catch(e) {
-                this.setMapType(MapView.MapType.STREET);
-                Application.application.local_tile_path = false;
-                this._mainWindow.showToast(e.message);
-                return;
-            }
+        if (mapType === MapView.MapType.AERIAL && tiles.aerial)
+            mapSource = MapSource.createAerialSource();
+        else if (mapType === MapView.MapType.VECTOR && Shumate.VectorRenderer.is_supported()) {
+            mapSource = MapSource.createVectorSource();
+            this._listenForVectorChanges();
         }
+        else
+            mapSource = MapSource.createStreetSource();
+
+        Application.settings.set('map-type', mapType);
 
         const mapLayer = new Shumate.MapLayer({ map_source: mapSource,
                                                 viewport:   this.map.viewport });
