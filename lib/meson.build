@@ -1,5 +1,4 @@
 headers_private = files(
-	'maps-file-data-source.h',
 	'maps-osm.h',
 	'maps-osm-changeset.h',
 	'maps-osm-node.h',
@@ -12,7 +11,6 @@ headers_private = files(
 )
 
 sources = files(
-	'maps-file-data-source.c',
 	'maps-osm.c',
 	'maps-osm-changeset.c',
 	'maps-osm-node.c',
