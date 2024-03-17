@@ -97,12 +97,9 @@ export class MainWindow extends Adw.ApplicationWindow {
 
         this._configureId = 0;
 
-        this._mapView = new MapView({
-            mapType: this.application.local_tile_path ?
-                MapView.MapType.LOCAL : undefined,
-            mainWindow: this,
-            hexpand: true,
-            vexpand: true });
+        this._mapView = new MapView({ mainWindow: this,
+                                      hexpand: true,
+                                      vexpand: true });
 
         /* couldn't get the CSS styling to apply to the licemse widget
          * when defining it in the .ui defintion
