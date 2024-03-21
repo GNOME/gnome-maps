@@ -311,19 +311,6 @@ export class MainWindow extends Adw.ApplicationWindow {
             },
         };
 
-        // when aerial tiles are available, add shortcuts to switch
-        if (Service.getService().tiles.aerial) {
-            actions['switch-to-street-view'] = {
-                accels: ['<Primary>1', '<Primary>KP_1'],
-                onActivate: () => this._onStreetViewActivate()
-            };
-
-            actions['switch-to-aearial-view'] = {
-                accels: ['<Primary>2', '<Primary>KP_2'],
-                onActivate: () => this._onAerialViewActivate()
-            };
-        }
-
         Utils.addActions(this, actions, Application.settings);
     }
 
@@ -592,17 +579,6 @@ export class MainWindow extends Adw.ApplicationWindow {
     _onMapTypeMenuActivate(action) {
         let state = action.get_state().get_boolean();
         action.set_state(GLib.Variant.new('b', !state));
-    }
-
-    _onStreetViewActivate() {
-        this._setMapType(MapView.MapType.STREET);
-    }
-
-    _onAerialViewActivate() {
-        // don't attempt to switch to aerial if we don't have tiles for it
-        if (Service.getService().tiles.aerial) {
-            this._setMapType(MapView.MapType.AERIAL);
-        }
     }
 
     _onToggleSidebarChangeState(action, variant) {
