@@ -70,29 +70,6 @@ export class GraphHopperGeocode {
         });
     }
 
-    reverse(latitude, longitude, callback) {
-        let url = this._buildURL(null, latitude, longitude);
-        let msg = Soup.Message.new('GET', url);
-
-        Application.application.mark_busy();
-        this._session.send_and_read_async(msg, GLib.PRIORITY_DEFAULT, null,
-                                          (source, res) => {
-            Application.application.unmark_busy();
-            try {
-                let buffer = this._session.send_and_read_finish(res).get_data();
-
-                let result = this._parseMessage(Utils.getBufferText(buffer));
-                if (!result)
-                    callback(null, null);
-                else
-                    callback(result[0], null);
-            } catch (e) {
-                Utils.debug('Error: ' + e);
-                callback(null, e);
-            }
-        });
-    }
-
     get attribution() {
         return Service.getService().graphHopperGeocode.attribution;
     }
@@ -137,8 +114,9 @@ export class GraphHopperGeocode {
     }
 
     _buildURL(string, latitude, longitude) {
-        let query = new HTTP.Query({ limit:   string ? this._limit : 1,
+        let query = new HTTP.Query({ limit:   this._limit,
                                      locale:  this._language,
+                                     q:       string,
                                      key:     this._apiKey
                                    });
         if (latitude !== null && longitude != null) {
@@ -146,11 +124,6 @@ export class GraphHopperGeocode {
             if (string)
                 query.add('location_bias_scale', PhotonUtils.LOCATION_BIAS_SCALE);
         }
-
-        if (string)
-            query.add('q', string);
-        else
-            query.add('reverse', 'true');
 
         return `${this._baseUrl}/api/1/geocode?${query.toString()}`;
     }
