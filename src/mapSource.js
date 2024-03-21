@@ -23,51 +23,8 @@ import Gio from 'gi://Gio';
 import Shumate from 'gi://Shumate';
 import GnomeMaps from 'gi://GnomeMaps';
 
-import * as Service from './service.js';
 import * as Utils from './utils.js';
 import { generateMapStyle } from './mapStyle/mapStyle.js';
-
-/* Converts a tile URI format from Champlain style to Shumate style.
- * e.g. from
- * https://tile.openstreetmap.org/#Z#/#X#/#Y#.png
- * to
- * https://tile.openstreetmap.org/{Z}/{X}/{Y}.png
- */
-function convertUriFormatFromChamplain(uriFormat) {
-     return uriFormat.replace('#Z#', '{z}').replace('#X#', '{x}').replace('#Y#', '{y}');
-}
-
-function createTileDownloader(source) {
-    let template = convertUriFormatFromChamplain(source.uri_format);
-
-    return new Shumate.TileDownloader({ url_template: template });
-}
-
-function createRasterRenderer(source) {
-    return new Shumate.RasterRenderer({
-        id:             source.id,
-        name:           source.name,
-        license:        source.license,
-        license_uri:    source.license_uri,
-        min_zoom_level: source.min_zoom_level,
-        max_zoom_level: source.max_zoom_level,
-        tile_size:      source.tile_size,
-        projection:     Shumate.MapProjection.MERCATOR,
-        data_source:    createTileDownloader(source)
-    });
-}
-
-export function createAerialSource() {
-    return createRasterRenderer(Service.getService().tiles.aerial);
-}
-
-export function createStreetSource() {
-    return createRasterRenderer(Service.getService().tiles.street);
-}
-
-export function createPrintSource() {
-    return createRasterRenderer(Service.getService().tiles.print);
-}
 
 export function createVectorSource() {
     const start = GLib.get_monotonic_time();
