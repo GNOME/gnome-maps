@@ -324,17 +324,6 @@ export class MainWindow extends Adw.ApplicationWindow {
             };
         }
 
-        if (Shumate.VectorRenderer.is_supported()) {
-            actions['enable-vector-layer'] = {
-                state: ['b', Application.settings.get('map-type') === MapView.MapType.VECTOR],
-                onChangeState: (action, variant) => {
-                    action.set_state(variant);
-                    const state = variant.get_boolean();
-                    this._setMapType(state ? MapView.MapType.VECTOR : MapView.MapType.STREET);
-                }
-            };
-        }
-
         Utils.addActions(this, actions, Application.settings);
     }
 
