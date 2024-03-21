@@ -30,7 +30,6 @@ import {Application} from './application.js';
 import {BoundingBox} from './boundingBox.js';
 import * as Color from './color.js';
 import {MapView} from './mapView.js';
-import * as MapSource from './mapSource.js';
 import {TurnPointMarker} from './turnPointMarker.js';
 import * as Utils from './utils.js';
 
@@ -96,137 +95,10 @@ export class PrintLayout extends GObject.Object {
         this._adjustPage(dy);
         this._drawHeader(headerWidth, headerHeight);
         this._cursorY += dy;
-
-        // TODO: for now for now skip drawing the mini map
-        /*
-        dy = mapViewHeight + mapViewMargin;
-        this._adjustPage(dy);
-        let turnPointsLength = this._route.turnPoints.length;
-        let allTurnPoints = this._createTurnPointArray(0, turnPointsLength);
-        this._drawMapView(mapViewWidth, mapViewHeight, allTurnPoints);
-        this._cursorY += dy;
-        */
     }
 
     _initSignals() {
         this.connect('render-complete', () => this.renderFinished = true);
-    }
-
-    _createMarker(turnPoint) {
-        return new TurnPointMarker({ turnPoint: turnPoint, queryPoint: {} });
-    }
-
-    _getZoomLevelFittingBBox(bbox, mapSource, width, height) {
-        let goodSize = false;
-        let zoomLevel = mapSource.max_zoom_level;
-
-        do {
-
-            let minX = mapSource.get_x(zoomLevel, bbox.left);
-            let minY = mapSource.get_y(zoomLevel, bbox.bottom);
-            let maxX = mapSource.get_x(zoomLevel, bbox.right);
-            let maxY = mapSource.get_y(zoomLevel, bbox.top);
-
-            if (minY - maxY <= height && maxX - minX <= width)
-                goodSize = true;
-            else
-                zoomLevel--;
-
-            if (zoomLevel <= mapSource.min_zoom_level) {
-                zoomLevel = mapSource.min_zoom_level;
-                goodSize = true;
-            }
-        } while (!goodSize);
-
-        return zoomLevel;
-    }
-
-    _drawMapView(width, height, turnPoints) {
-        let pageNum = this.numPages - 1;
-        let x = this._cursorX;
-        let y = this._cursorY;
-        let mapSource = MapSource.createPrintSource();
-        let locations = [];
-        let markerLayer = new Shumate.MarkerLayer();
-
-        turnPoints.forEach((turnPoint) => {
-            locations.push(turnPoint.coordinate);
-            if (turnPoint.isStop()) {
-                markerLayer.add_marker(this._createMarker(turnPoint));
-            }
-        });
-
-        let bbox = this._createBBox(locations);
-        let zoomLevel =
-            this._getZoomLevelFittingBBox(bbox, mapSource, width, height);
-
-        let map = new Shumate.Map();
-        let mapLayer = new Shumate.MapLayer({ map_source: mapSource,
-                                              viewport:   map.viewport });
-
-        map.viewport.zoom_level = zoomLevel;
-        map.add_layer(mapLayer);
-
-        let routeLayer = this._addRouteLayer(map, mapLayer);
-
-        map.insert_layer_above(markerLayer, routeLayer);
-        map.viewport.set_reference_map_source(mapSource);
-        map.set_size_request(width, height);
-
-        // TODO: how do we know when it's loaded?
-        let surface = this._mapToSurface(map, width, height);
-        if (surface)
-            this._addSurface(surface, x, y, pageNum);
-    }
-
-    // TODO: this does not quite work...
-    _mapToSurface(map, width, height) {
-        let surface = new Cairo.ImageSurface(Cairo.Format.ARGB32, width, height);
-        let cr = new Cairo.Context(surface);
-        let paintable = new Gtk.WidgetPaintable({ widget: map });
-        let rect = new Graphene.Rect();
-
-        rect.init(0, 0, width, height);
-
-        let snapshot = Gtk.Snapshot.new();
-
-        paintable.snapshot(snapshot, width, height);
-
-        let node = snapshot.to_node();
-        let renderer = this._mainWindow.get_native().get_renderer();
-        let texture = renderer.render_texture(node, rect);
-        let pixbuf = Gdk.pixbuf_get_from_texture(texture);
-
-        Gdk.cairo_set_source_pixbuf(cr, pixbuf, 0, 0);
-        cr.paint();
-
-        return surface;
-    }
-
-    _createBBox(locations) {
-        let bbox = this._route.createBBox(locations);
-
-        return new BoundingBox({ top:    bbox.top,
-                                 left:   bbox.left,
-                                 bottom: bbox.bottom,
-                                 right:  bbox.right });
-    }
-
-    _createTurnPointArray(startIndex, endIndex) {
-        let turnPointArray = [];
-        for (let i = startIndex; i < endIndex; i++) {
-            turnPointArray.push(this._route.turnPoints[i]);
-        }
-        return turnPointArray;
-    }
-
-    _addRouteLayer(map, mapLayer) {
-        let routeLayer = new Shumate.PathLayer({ stroke_width: _STROKE_WIDTH,
-                                                 stroke_color: _STROKE_COLOR });
-        map.insert_layer_above(routeLayer, mapLayer);
-        this._route.path.forEach((node) => routeLayer.add_node(node));
-
-        return routeLayer;
     }
 
     _drawIcon(cr, iconName, width, height, size) {
