@@ -48,7 +48,6 @@ import {OSMEditDialog} from './osmEditDialog.js';
 import {Place} from './place.js';
 import {PlaceMarker} from './placeMarker.js';
 import {RouteQuery} from './routeQuery.js';
-import * as Service from './service.js';
 import {ShapeLayer} from './shapeLayer.js';
 import {StoredRoute} from './storedRoute.js';
 import {TransitArrivalMarker} from './transitArrivalMarker.js';
@@ -88,8 +87,6 @@ export class MapView extends Gtk.Overlay {
 
     static MapType = {
         LOCAL: 'MapsLocalSource',
-        STREET: 'MapsStreetSource',
-        AERIAL: 'MapsAerialSource',
         VECTOR: 'MapsVectorSource',
     }
 
@@ -420,7 +417,7 @@ export class MapView extends Gtk.Overlay {
             }
         }
 
-        return MapView.MapType.STREET;
+        return MapView.MapType.VECTOR;
     }
 
     getMapType() {
@@ -455,25 +452,11 @@ export class MapView extends Gtk.Overlay {
 
         this._mapType = mapType;
 
-        if (mapType !== MapView.MapType.VECTOR) {
-            if (this._stopListeningForVectorChanges) {
-                this._stopListeningForVectorChanges();
-            }
-        }
-
         let mapSource;
 
         if (mapType !== MapView.MapType.LOCAL) {
-            let tiles = Service.getService().tiles;
-
-            if (mapType === MapView.MapType.AERIAL && tiles.aerial)
-                mapSource = MapSource.createAerialSource();
-            else if (mapType === MapView.MapType.VECTOR && Shumate.VectorRenderer.is_supported()) {
-                mapSource = MapSource.createVectorSource();
-                this._listenForVectorChanges();
-            }
-            else
-                mapSource = MapSource.createStreetSource();
+            mapSource = MapSource.createVectorSource();
+            this._listenForVectorChanges();
 
             Application.settings.set('map-type', mapType);
         } else {
