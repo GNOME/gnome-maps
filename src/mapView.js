@@ -167,9 +167,6 @@ export class MapView extends Gtk.Overlay {
             'route-to-here': {
                 onActivate: () => this._onRouteToHereActivated()
             },
-            'whats-here': {
-                onActivate: () => this._onWhatsHereActivated()
-            },
             'copy-location': {
                 onActivate: () => this._onCopyLocationActivated()
             },
@@ -1177,17 +1174,6 @@ export class MapView extends Gtk.Overlay {
         let place = new Place({ location: location, store: false });
 
         query.points.last().place = place;
-    }
-
-    _onWhatsHereActivated() {
-        GeocodeFactory.getGeocoder().reverse(this._latitude, this._longitude,
-                                      (place) => {
-            if (place) {
-                this.showPlace(place, true);
-            } else {
-                this._mainWindow.showToast(_("Nothing found here!"));
-            }
-        });
     }
 
     _onCopyLocationActivated() {
