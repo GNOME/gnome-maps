@@ -67,28 +67,6 @@ export class PhotonGeocode {
         });
     }
 
-    reverse(latitude, longitude, callback) {
-        let url = this._buildURL(null, latitude, longitude);
-        let msg = Soup.Message.new('GET', url);
-
-        Application.application.mark_busy();
-        this._session.send_and_read_async(msg, GLib.PRIORITY_DEFAULT, null,
-                                          (source, res) => {
-            Application.application.unmark_busy();
-            try {
-                let buffer = this._session.send_and_read_finish(res).get_data();
-                let result = this._parseMessage(Utils.getBufferText(buffer));
-                if (!result)
-                    callback(null, null);
-                else
-                    callback(result[0], null);
-            } catch (e) {
-                Utils.debug('Error: ' + e);
-                callback(null, e);
-            }
-        });
-    }
-
     get attribution() {
         return Service.getService().photonGeocode.attribution;
     }
@@ -132,7 +110,8 @@ export class PhotonGeocode {
     }
 
     _buildURL(string, latitude, longitude) {
-        let query = new HTTP.Query({ limit: string ? this._limit : 1 });
+        let query = new HTTP.Query({ limit: this._limit,
+                                     q:     string });
 
         if (latitude !== null && longitude != null) {
             query.add('lat', latitude);
@@ -141,18 +120,13 @@ export class PhotonGeocode {
                 query.add('location_bias_scale', PhotonUtils.LOCATION_BIAS_SCALE);
         }
 
-        if (string)
-            query.add('q', string);
-        else
-            query.add('distance_sort', 'true');
-
         if (this._language)
             query.add('lang', this._language);
 
         if (this._additionalParams)
             this._additionalParams.forEach((p) => query.add(p.key, p.value));
 
-        return `${this._baseUrl}/${string ? 'api' : 'reverse'}/?${query.toString()}`;
+        return `${this._baseUrl}/api/?${query.toString()}`;
     }
 
     _readService() {
