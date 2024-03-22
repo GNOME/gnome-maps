@@ -24,9 +24,7 @@ import Gdk from 'gi://Gdk';
 import Shumate from 'gi://Shumate';
 
 import {Application} from './application.js';
-import * as MapSource from './mapSource.js';
 import {MapView} from './mapView.js';
-import * as Service from './service.js';
 import {ShapeLayer} from './shapeLayer.js';
 import * as Utils from './utils.js';
 
@@ -81,117 +79,7 @@ export class LayersPopover extends Gtk.PopoverMenu {
             this._layersSectionBox.visible = model.n_items > 0;
             this._layersListBox.visible = model.n_items > 0;
         });
-
-        // for now let's disable the map type swithery, as we only have street
-        /*
-        this._layerPreviews = {
-            street: {
-                source: MapSource.createStreetSource(),
-                widget: this._streetLayerImage,
-                lastLocation: { x: -1, y: -1, z: -1 }
-            }
-        };
-
-        if (Service.getService().tiles.aerial) {
-            this._layerPreviews.aerial = {
-                source: MapSource.createAerialSource(),
-                widget: this._aerialLayerImage,
-                lastLocation: { x: -1, y: -1, z: -1 }
-            };
-        }
-
-        // disable the map type switch buttons if aerial is unavailable
-        if (Service.getService().tiles.aerial) {
-            this._streetLayerButton.connect('clicked', () => {
-                if (this._streetLayerButton.active) {
-                    this._mapView.setMapType(MapView.MapType.STREET);
-                }
-            });
-
-            this._aerialLayerButton.connect('clicked', () => {
-                if (this._aerialLayerButton.active) {
-                    this._mapView.setMapType(MapView.MapType.AERIAL);
-                }
-            });
-
-            this._mapView.view.connect("notify::zoom-level",
-                                       this._setLayerPreviews.bind(this));
-            this._mapView.view.connect("notify::latitude",
-                                       this._setLayerPreviews.bind(this));
-            this._mapView.view.connect("notify::longitude",
-                                       this._setLayerPreviews.bind(this));
-        } else {
-            this._streetLayerButton.visible = false;
-            this._aerialLayerButton.visible = false;
-        }
-
-        this.setMapType(this._mapView.getMapType());
-        this._mapView.connect("map-type-changed", (_mapView, type) => {
-            this.setMapType(type);
-        });
-        */
     }
-
-    /*
-    _setLayerPreviews() {
-        this._setLayerPreviewImage('street');
-        this._setLayerPreviewImage('aerial');
-    }
-
-    _setLayerPreviewImage(layer, forceUpdate = false) {
-        let previewInfo = this._layerPreviews[layer];
-        let source = previewInfo.source;
-        let widget = previewInfo.widget;
-
-        let z = this._mapView.view.zoom_level - 1;
-        if (z < 0)
-            z = 0;
-        let size = source.get_tile_size();
-        let x = Math.floor(source.get_x(z, this._mapView.view.longitude) / size);
-        let y = Math.floor(source.get_y(z, this._mapView.view.latitude) / size);
-
-        // If the view hasn't moved enough that the tile is different,
-        // then don't bother changing anything
-        if (previewInfo.lastLocation.x == x &&
-            previewInfo.lastLocation.y == y &&
-            previewInfo.lastLocation.z == z && !forceUpdate) {
-
-            return;
-        }
-        previewInfo.lastLocation = {x, y, z};
-
-        let tile = Champlain.Tile.new_full(x, y, size, z);
-
-        tile.connect("render-complete", (a, b, c, error) => {
-            if (error)
-                return; // oh well
-
-            // Make sure we're still at the same location
-            // This is especially important on slow connections
-            if (previewInfo.lastLocation.x == x &&
-                previewInfo.lastLocation.y == y &&
-                previewInfo.lastLocation.z == z) {
-
-                let pixbuf = Gdk.pixbuf_get_from_surface(tile.surface,
-                                                    (size - PREVIEW_WIDTH) / 2,
-                                                    (size - PREVIEW_HEIGHT) / 2,
-                                                    PREVIEW_WIDTH,
-                                                    PREVIEW_HEIGHT);
-                widget.set_from_pixbuf(pixbuf);
-            }
-        });
-
-        source.fill_tile(tile);
-    }
-
-    setMapType(mapType) {
-        if (mapType === MapView.MapType.STREET) {
-            this._streetLayerButton.active = true;
-        } else if (mapType === MapView.MapType.AERIAL) {
-            this._aerialLayerButton.active = true;
-        }
-    }
-    */
 
     _onRemoveClicked(row) {
         this._mapView.removeShapeLayer(row.shapeLayer);
