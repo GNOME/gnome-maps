@@ -52,6 +52,8 @@ const Sign = {
     UTURN_RIGHT: 8
 }
 
+export const KEY = 'VCIHrHj0pDKb8INLpT4s5hVadNmJ1Q3vi0J4nJYP';
+
 export class GraphHopper {
 
     get route() {
@@ -60,7 +62,6 @@ export class GraphHopper {
 
     constructor({query, route}) {
         this._session = new Soup.Session({ user_agent : 'gnome-maps/' + pkg.version });
-        this._key     = "VCIHrHj0pDKb8INLpT4s5hVadNmJ1Q3vi0J4nJYP";
         this._baseURL = "https://graphhopper.com/api/1/route?";
         this._locale  = GLib.get_language_names()[0];
         this._route   = route;
@@ -132,7 +133,7 @@ export class GraphHopper {
         });
         let vehicle = RouteQuery.Transportation.toString(transportation);
         let query = new Query({ type:    'json',
-                                key:     this._key,
+                                key:     KEY,
                                 vehicle: vehicle,
                                 locale:  this._locale,
                                 point:   locations,
