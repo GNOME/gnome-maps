@@ -25,19 +25,30 @@ import Soup from 'gi://Soup';
 import {Application} from './application.js';
 import * as HTTP from './http.js';
 import * as PhotonUtils from './photonUtils.js';
-import * as Service from './service.js';
 import * as Utils from './utils.js';
 
 // HTTP session timeout (in seconds)
 const TIMEOUT = 5;
 
 export class PhotonGeocode {
-    constructor() {
+    constructor({ baseUrl, supportedLanguages, attribution, attributionUrl,
+                  additionalParams }) {
         this._session =
             new Soup.Session({ user_agent : 'gnome-maps/' + pkg.version,
                                timeout:     TIMEOUT });
         this._readService();
         this._limit = Application.settings.get('max-search-results');
+        this._baseUrl = baseUrl;
+        this._attribution = attribution;
+        this._attributionUrl = attributionUrl;
+        this._additionalParams = additionalParams;
+
+        const language = Utils.getLanguage();
+
+        if (supportedLanguages?.includes(language))
+            this._language = language;
+        else
+            this._language = null;
     }
 
     search(string, latitude, longitude, cancellable, callback) {
@@ -68,11 +79,11 @@ export class PhotonGeocode {
     }
 
     get attribution() {
-        return Service.getService().photonGeocode.attribution;
+        return this._attribution;
     }
 
     get attributionUrl() {
-        return Service.getService().photonGeocode.attributionUrl;
+        return this._attributionUrl;
     }
 
     get name() {
@@ -127,24 +138,5 @@ export class PhotonGeocode {
             this._additionalParams.forEach((p) => query.add(p.key, p.value));
 
         return `${this._baseUrl}/api/?${query.toString()}`;
-    }
-
-    _readService() {
-        let photon = Service.getService().photonGeocode;
-        let language = Utils.getLanguage();
-        let supportedLanguages;
-
-        if (photon) {
-            this._baseUrl = photon.baseUrl;
-            supportedLanguages = photon.supportedLanguages;
-
-            if (photon.additionalParams)
-                this._additionalParams = photon.additionalParams;
-        }
-
-        if (supportedLanguages.includes(language))
-            this._language = language;
-        else
-            this._language = null;
     }
 }
