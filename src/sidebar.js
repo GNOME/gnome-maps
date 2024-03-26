@@ -68,11 +68,6 @@ export class Sidebar extends Gtk.Grid {
         this._query.addPoint(0);
         this._query.addPoint(1);
         this._switchRoutingMode(Application.routeQuery.transportation);
-        /* Enable/disable transit mode switch based on the presence of
-         * public transit providers.
-         */
-        this._modeTransitToggle.sensitive =
-            Application.routingDelegator.transitRouter.enabled;
     }
 
     focusStartEntry() {
