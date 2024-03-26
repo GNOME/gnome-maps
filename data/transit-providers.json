@@ -1,0 +1,184 @@
+[
+	{
+	    "provider": {
+		"name": "SNCFT",
+		"plugin": "OpenTripPlanner",
+		"attribution": "SNCFT",
+		"attributionUrl": "http://www.sncft.com.tn",
+		"priority": 10,
+		"areas": [
+		    {
+		        "countries": [ "TN" ]
+		    }
+		],
+		"params": {
+		    "baseUrl": "https://planner.sncft.com.tn/otp"
+		}
+	    }
+	},
+	{
+	    "provider": {
+		"name": "Djerba",
+		"plugin": "OpenTripPlanner",
+		"attribution": "OTP Djerba",
+		"attributionUrl": "https://otpdjerba.herokuapp.com",
+		"priority": 5,
+		"areas": [
+		    {
+		        "bbox": [33.620763,10.715210,33.920360,11.065125]
+		    }
+		],
+		"params": {
+		    "baseUrl": "https://otpdjerba.herokuapp.com/otp",
+		    "onlyTransitData": true
+		}
+	    }
+	},
+	{
+	    "provider": {
+		 "name": "Finland",
+		 "plugin": "OpenTripPlanner",
+		 "attribution": "Digitransit",
+		 "attributionUrl": "https://www.digitransit.fi",
+		 "priority": 10,
+		 "areas": [
+		     {
+		         "countries": [ "FI" ]
+		     }
+		 ],
+		 "params": {
+		     "baseUrl": "https://api.digitransit.fi/routing/v1/",
+		     "router": "finland",
+		     "authHeader": "digitransit-subscription-key",
+		     "authKey": "0eb7b2d085c347a89bf8ee76b72d2b7a"
+		 }
+	     }
+	},
+	{
+	    "provider": {
+		 "name": "Metromobilite",
+		 "plugin": "OpenTripPlanner",
+		 "attribution": "Métromobilité",
+		 "attributionUrl": "https://www.metromobilite.fr",
+		 "priority": 10,
+		 "areas": [
+		    {
+		        "bbox": [43.94188, 4.70376, 46.39789, 6.57747]
+		    }
+		 ],
+		 "params": {
+		     "baseUrl": "https://www.metromobilite.fr/otp"
+		 }
+	    }
+	},
+	{
+	    "provider": {
+		"name": "TriMet",
+		"plugin": "OpenTripPlanner",
+		"attribution": "TriMet",
+		"attributionUrl": "https://trimet.org/",
+		"priority": 10,
+		"areas": [
+		    {
+		        "bbox": [45.349712, -123.595582, 45.802683, -122.699416]
+		    },
+		    {
+		        "bbox": [45.004068, -122.934854, 45.746509, -122.090826]
+		    }
+		],
+		"params": {
+		    "routerUrl": "https://maps.trimet.org/otp_mod"
+		}
+	    }
+	},
+	{
+	    "provider": {
+		"name": "Sweden",
+		"plugin": "Resrobot",
+		"attribution": "Resrobot",
+		"attributionUrl": "https://www.trafiklab.se",
+		"priority": 10,
+		"areas": [
+		    {
+		        "countries": [ "SE" ]
+		    },
+		    {
+		        "priority": 5,
+		        "comment": "Area around Landskrona and Ven is identified as DK by GWeather",
+		        "bbox": [55.775025, 12.620474, 55.941655, 13.134861]
+		    },
+		    {
+		        "priority": 5,
+		        "comment": "Area near the coast close to Åland gets identified as AX by GWeather",
+		        "bbox": [59.763857, 18.115057, 60.409122, 19.190674]
+		    },
+		    {
+		        "priority": 100,
+		        "comment": "Area in Denmark served by Øresundståg, overlap Denmark on lower prio",
+		        "bbox": [55.508143, 12.445177, 56.053267, 12.657048]
+		    },
+		    {
+		        "priority": 5,
+		        "comment": "Area around Haparanda gets identified as FI by GWeather",
+		        "bbox": [65.506001, 23.306331, 65.863598, 24.147945]
+		    },
+		    {
+		        "priority": 5,
+		        "comment": "Area around Strömstad gets identified as NO by GWeather",
+		        "bbox": [58.520619, 10.931077, 58.982077, 11.459358]
+		    }
+		],
+		"params": {
+		    "key": "f0f7a0d3-f567-4795-b2c7-2d9337743f70",
+		    "accessId": "bd84d95c-1d9b-4ff9-b81c-69af488f4266"
+		}
+	    }
+	},
+	{
+	    "provider": {
+		"name": "Switzerland",
+		"plugin": "OpendataCH",
+		"attribution": "opendata.ch",
+		"attributionUrl": "https://transport.opendata.ch",
+		"priority": 10,
+		"areas": [
+		    {
+		        "countries": [ "CH", "LI" ]
+		    }
+		]
+	    }
+	},
+	{
+	    "provider": {
+		"name": "South Africa",
+		"plugin": "GoMetro",
+		"attribution": "GoMetro",
+		"attributionUrl": "https://proserver.gometro.co.za/api/v1/docs/#multimodal-routing",
+		"priority": 10,
+		"areas": [
+		    {
+		        "countries": [ "ZA" ]
+		    }
+		 ]
+	    }
+	},
+	{
+	    "provider": {
+		"name": "Norway",
+		"plugin": "OpenTripPlanner2",
+		"attribution": "Entur",
+		"attributionUrl": "https://developer.entur.org/pages-journeyplanner-journeyplanner",
+		"priority": 10,
+		"areas": [
+		    {
+		        "countries": [ "NO" ]
+		    }
+		],
+		"params": {
+		     "baseUrl": "https://api.entur.io/journey-planner/v3/graphql",
+		     "authHeader": "ET-Client-Name",
+		     "authKey": "gnome-maps"
+		 }
+	    }
+	}
+]
