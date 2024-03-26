@@ -19,10 +19,10 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
+import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
 
 import {BoundingBox} from './boundingBox.js';
-import * as Service from './service.js';
 import {Plan} from './transitPlan.js';
 import * as Utils from './utils.js';
 
@@ -36,6 +36,9 @@ import {Resrobot} from './transitplugins/resrobot.js';
 const ALL_PLUGINS =
     ["GoMetro", "OpendataCH", "OpenTripPlanner", "OpenTripPlanner2", "Resrobot"];
 
+const _file = Gio.file_new_for_uri('resource://org/gnome/Maps/transit-providers.json');
+const [_status, _buffer] = _file.load_contents(null);
+
 /**
  * Class responsible for delegating requests to perform routing in transit
  * mode.
@@ -46,7 +49,7 @@ export class TransitRouter {
     constructor({query}) {
         this._plan = new Plan();
         this._query = query;
-        this._providers = Service.getService().transitProviders;
+        this._providers = JSON.parse(Utils.getBufferText(_buffer));
         this._providerCache = [];
         this._language = Utils.getLanguage();
     }
