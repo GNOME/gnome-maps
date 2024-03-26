@@ -23,21 +23,29 @@ import GLib from 'gi://GLib';
 import Soup from 'gi://Soup';
 
 import {Application} from './application.js';
+import {KEY} from './graphHopper.js';
 import * as HTTP from './http.js';
 import * as PhotonUtils from './photonUtils.js';
-import * as Service from './service.js';
 import * as Utils from './utils.js';
 
 // HTTP session timeout (in seconds)
 const TIMEOUT = 5;
+
+const BASE_URL = 'https://graphhopper.com';
+const ATTRIBUTION = 'GraphHopper';
+const ATTRIBUTION_URL = 'https://graphhopper.com/';
+const SUPPORTED_LANGUAGES = ['de', 'en', 'fr'];
 
 export class GraphHopperGeocode {
     constructor() {
         this._session =
             new Soup.Session({ user_agent : 'gnome-maps/' + pkg.version,
                                timeout:     TIMEOUT });
-        this._readService();
         this._limit = Application.settings.get('max-search-results');
+
+        const language = Utils.getLanguage();
+
+        this._language = SUPPORTED_LANGUAGES.includes(language) ? language : null;
     }
 
     search(string, latitude, longitude, cancellable, callback) {
@@ -71,11 +79,11 @@ export class GraphHopperGeocode {
     }
 
     get attribution() {
-        return Service.getService().graphHopperGeocode.attribution;
+        return ATTRIBUTION;
     }
 
     get attributionUrl() {
-        return Service.getService().graphHopperGeocode.attributionUrl;
+        return ATTRIBUTION_URL;
     }
 
     get name() {
@@ -117,32 +125,12 @@ export class GraphHopperGeocode {
         let query = new HTTP.Query({ limit:   this._limit,
                                      locale:  this._language,
                                      q:       string,
-                                     key:     this._apiKey
+                                     location_bias_scale: PhotonUtils.LOCATION_BIAS_SCALE,
+                                     key:     KEY
                                    });
-        if (latitude !== null && longitude != null) {
+        if (latitude !== null && longitude != null)
             query.add('point', latitude + ',' + longitude);
-            if (string)
-                query.add('location_bias_scale', PhotonUtils.LOCATION_BIAS_SCALE);
-        }
 
-        return `${this._baseUrl}/api/1/geocode?${query.toString()}`;
-    }
-
-    _readService() {
-        let graphHopperGeocode = Service.getService().graphHopperGeocode;
-
-        if (graphHopperGeocode) {
-            this._baseUrl = graphHopperGeocode.baseUrl;
-            this._apiKey = graphHopperGeocode.apiKey;
-
-            let language = Utils.getLanguage();
-            let supportedLanguages =
-                graphHopperGeocode.supportedLanguages ?? [];
-
-            if (supportedLanguages.includes(language))
-                this._language = language;
-            else
-                this._language = null;
-        }
+        return `${BASE_URL}/api/1/geocode?${query.toString()}`;
     }
 }
