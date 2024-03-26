@@ -19,19 +19,14 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-import * as Service from './service.js';
 import {GraphHopperGeocode} from './graphHopperGeocode.js';
-import {PhotonGeocode} from './photonGeocode.js';
 
 var _geocoder = null;
 
 export function getGeocoder() {
-    if (!_geocoder) {
-        if (Service.getService().photonGeocode)
-            _geocoder = new PhotonGeocode();
-        else
-            _geocoder = new GraphHopperGeocode();
-    }
+    // for now, always use the GraphHopper geocoder
+    if (!_geocoder)
+        _geocoder = new GraphHopperGeocode();
 
     return _geocoder;
 }
