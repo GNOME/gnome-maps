@@ -54,10 +54,6 @@ export class TransitRouter {
         this._language = Utils.getLanguage();
     }
 
-    get enabled() {
-        return this._providers !== undefined;
-    }
-
     get plan() {
         return this._plan;
     }
