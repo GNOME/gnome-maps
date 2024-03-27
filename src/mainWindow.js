@@ -625,32 +625,21 @@ export class MainWindow extends Adw.ApplicationWindow {
     }
 
     _addAttribution(about) {
-        let tileProviderInfo = Service.getService().tileProviderInfo;
         let photonGeocode = Service.getService().photonGeocode;
         let attribution = _("Map data by %s and contributors").format('<a href="https://www.openstreetmap.org">OpenStreetMap</a>');
         about.add_legal_section(_("Map Data Provider"), null, Gtk.License.CUSTOM, attribution);
 
-        if (tileProviderInfo) {
-            let tileProviderString;
-            if (tileProviderInfo.url) {
-                tileProviderString = '<a href="' + tileProviderInfo.url + '">' +
-                                     tileProviderInfo.name + '</a>';
-            } else {
-                tileProviderString = tileProviderInfo.name;
-            }
-
-            about.add_legal_section(
-                _("Map Tile Provider"),
-                null,
-                Gtk.License.CUSTOM,
-                /* Translators: this is an attribution string giving credit to the
-                * tile provider where the %s placeholder is replaced by either
-                * the bare name of the tile provider, or a linkified URL if one
-                * is available
-                */
-                _("Map tiles provided by %s").format(tileProviderString)
-            );
-        }
+        about.add_legal_section(
+            _("Map Tile Provider"),
+            null,
+            Gtk.License.CUSTOM,
+            /* Translators: this is an attribution string giving credit to the
+            * tile provider where the %s placeholder is replaced by either
+            * the bare name of the tile provider, or a linkified URL if one
+            * is available
+            */
+            _("Map tiles provided by %s").format('OpenMapTiles')
+        );
 
         let provider = GeocodeFactory.getGeocoder().attribution;
         let providerUrl = GeocodeFactory.getGeocoder().attributionUrl;
