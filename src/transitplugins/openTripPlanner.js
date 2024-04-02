@@ -34,7 +34,6 @@ import {Location} from '../location.js';
 import {Place} from '../place.js';
 import {TurnPoint} from '../route.js';
 import {RouteQuery} from '../routeQuery.js';
-import * as Service from '../service.js';
 import {Itinerary, Leg, RouteType, Stop} from '../transitPlan.js';
 import * as Utils from '../utils.js';
 
