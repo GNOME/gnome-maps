@@ -39,7 +39,6 @@ import {MapView} from './mapView.js';
 import {PlaceBar} from './placeBar.js';
 import {PrintOperation} from './printOperation.js';
 import {SearchBar} from './searchBar.js';
-import * as Service from './service.js';
 import {ShapeLayer} from './shapeLayer.js';
 import {Sidebar} from './sidebar.js';
 import * as Utils from './utils.js';
@@ -625,7 +624,6 @@ export class MainWindow extends Adw.ApplicationWindow {
     }
 
     _addAttribution(about) {
-        let photonGeocode = Service.getService().photonGeocode;
         let attribution = _("Map data by %s and contributors").format('<a href="https://www.openstreetmap.org">OpenStreetMap</a>');
         about.add_legal_section(_("Map Data Provider"), null, Gtk.License.CUSTOM, attribution);
 
