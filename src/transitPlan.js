@@ -597,7 +597,7 @@ export class Leg {
     }
 
     get color() {
-        return this._color || DEFAULT_ROUTE_COLOR;
+        return this._color;
     }
 
     set color(color) {
@@ -605,7 +605,7 @@ export class Leg {
     }
 
     get textColor() {
-        return this._textColor || DEFAULT_ROUTE_TEXT_COLOR;
+        return this._textColor;
     }
 
     set textColor(textColor) {
