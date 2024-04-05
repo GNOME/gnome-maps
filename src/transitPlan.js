@@ -73,6 +73,8 @@ const WALK_SLACK = 120;
 
 export const DEFAULT_ROUTE_COLOR = '4c4c4c';
 export const DEFAULT_ROUTE_TEXT_COLOR = 'ffffff';
+export const DEFAULT_DARK_ROUTE_COLOR = 'deddda';
+export const DEFAULT_DARK_ROUTE_TEXT_COLOR = '241f31';
 
 export class Plan extends GObject.Object {
 
