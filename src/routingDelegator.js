@@ -21,11 +21,8 @@
 
 import {GraphHopper} from './graphHopper.js';
 import {TransitRouter} from './transitRouter.js';
-import {RouteQuery} from './routeQuery.js';
 import { Route } from './route.js';
 import { StoredRoute } from './storedRoute.js';
-
-const _FALLBACK_TRANSPORTATION = RouteQuery.Transportation.PEDESTRIAN;
 
 export class RoutingDelegator {
 
@@ -37,15 +34,6 @@ export class RoutingDelegator {
         this._graphHopper = new GraphHopper({ query: this._query, route: this._route });
         this._transitRouter = new TransitRouter({ query: this._query });
         this._query.connect('notify::points', this._onQueryChanged.bind(this));
-
-        /* if the query is set to transit mode when it's not available, revert
-         * to a fallback mode
-         */
-        if (this._query.transportation === RouteQuery.Transportation.TRANSIT &&
-            !this._transitRouter.enabled) {
-            this._query.transportation = _FALLBACK_TRANSPORTATION;
-        }
-
         this._ignoreNextQueryChange = false;
     }
 
