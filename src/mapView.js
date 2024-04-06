@@ -52,6 +52,7 @@ import {ShapeLayer} from './shapeLayer.js';
 import {StoredRoute} from './storedRoute.js';
 import {TransitArrivalMarker} from './transitArrivalMarker.js';
 import {TransitBoardMarker} from './transitBoardMarker.js';
+import {TransitPathLayer} from './transitPathLayer.js';
 import {TransitWalkMarker} from './transitWalkMarker.js';
 import {TurnPointMarker} from './turnPointMarker.js';
 import {UserLocationMarker} from './userLocationMarker.js';
@@ -62,24 +63,12 @@ const _LOCATION_STORE_TIMEOUT = 500;
 const MapMinZoom = 2;
 const MapMaxZoom = 19;
 
-/* threashhold for route color luminance when we consider it more or less
- * as white, and draw an outline on the path */
-const OUTLINE_LUMINANCE_THREASHHOLD = 0.9;
-
 // color used for turn-by-turn-based routes (non-transit)
 const TURN_BY_TURN_ROUTE_COLOR = '62a0ea';
 const TURN_BY_TURN_ROUTE_OUTLINE_COLOR = '1a5fb4';
 
 // line width for route lines
 const ROUTE_LINE_WIDTH = 5;
-
-/* length of filled parts of dashed lines used for walking legs of transit
- * itineraries
- */
-const DASHED_ROUTE_LINE_FILLED_LENGTH = 5;
-
-// length of gaps of dashed lines used for walking legs of transit itineraries
-const DASHED_ROUTE_LINE_GAP_LENGTH = 5;
 
 // Maximum limit of file size (20 MB) that can be loaded without user confirmation
 const FILE_SIZE_LIMIT_MB = 20;
@@ -287,25 +276,22 @@ export class MapView extends Gtk.Overlay {
         return map;
     }
 
-    /* create and store a route layer, pass true to get a dashed line */
-    _createRouteLayer(dashed, lineColor, outlineColor, width, outlineWidth = 1) {
-        let strokeColor = new Gdk.RGBA({ red:    Color.parseColor(lineColor, 0),
-                                         green:  Color.parseColor(lineColor, 1),
-                                         blue:   Color.parseColor(lineColor, 2),
-                                         alpha:  1.0 });
+    _createRGBA(lineColor) {
+        return new Gdk.RGBA({ red:    Color.parseColor(lineColor, 0),
+                              green:  Color.parseColor(lineColor, 1),
+                              blue:   Color.parseColor(lineColor, 2),
+                              alpha:  1.0 });
+    }
+
+    /* create and store a route layer */
+    _createRouteLayer(lineColor, outlineColor, width, outlineWidth = 1) {
+        let strokeColor = this._createRGBA(lineColor);
         let routeLayer = new Shumate.PathLayer({ viewport: this.map.viewport,
                                                  stroke_width: width,
                                                  stroke_color: strokeColor });
-        if (dashed)
-            routeLayer.set_dash([DASHED_ROUTE_LINE_FILLED_LENGTH,
-                                 DASHED_ROUTE_LINE_GAP_LENGTH]);
 
         if (outlineColor) {
-            let outlineStrokeColor =
-                new Gdk.RGBA({ red:   Color.parseColor(outlineColor, 0),
-                               green: Color.parseColor(outlineColor, 1),
-                               blue:  Color.parseColor(outlineColor, 2),
-                               alpha: 1.0 });
+            let outlineStrokeColor = this._createRGBA(outlineColor);
 
             routeLayer.outline_color = outlineStrokeColor;
             routeLayer.outline_width = outlineWidth;
@@ -984,7 +970,7 @@ export class MapView extends Gtk.Overlay {
         this._clearRouteLayers();
         this._placeLayer.remove_all();
 
-        routeLayer = this._createRouteLayer(false, TURN_BY_TURN_ROUTE_COLOR,
+        routeLayer = this._createRouteLayer(TURN_BY_TURN_ROUTE_COLOR,
                                             TURN_BY_TURN_ROUTE_OUTLINE_COLOR,
                                             ROUTE_LINE_WIDTH + 4, 2);
         route.path.forEach((polyline) => routeLayer.add_node(polyline));
@@ -1014,6 +1000,8 @@ export class MapView extends Gtk.Overlay {
     }
 
     _showTransitItinerary(itinerary) {
+        const styleManager = Adw.StyleManager.get_default();
+
         this.gotoBBox(itinerary.bbox);
         this._clearRouteLayers();
         this._placeLayer.remove_all();
@@ -1021,17 +1009,11 @@ export class MapView extends Gtk.Overlay {
         this._turnPointMarker = null;
 
         itinerary.legs.forEach((leg, index) => {
-            let dashed = !leg.transit;
-            let color = leg.color;
-            let outlineColor = leg.textColor;
-            let hasOutline = Color.relativeLuminance(color) >
-                             OUTLINE_LUMINANCE_THREASHHOLD;
-            let routeLayer;
-            let lineWidth = ROUTE_LINE_WIDTH + (hasOutline ? 2 : 0);
+            const routeLayer =
+                new TransitPathLayer({ viewport: this.map.viewport, leg: leg });
 
-            routeLayer = this._createRouteLayer(dashed, color,
-                                                hasOutline ? outlineColor : null,
-                                                lineWidth);
+            this._routeLayers.push(routeLayer);
+            this.map.insert_layer_behind(routeLayer, this._userLocationLayer);
 
             /* if this is a walking leg and not at the start, "stitch" it
              * together with the end point of the previous leg, as the walk
