@@ -708,13 +708,17 @@ export class MapView extends Gtk.Overlay {
 
     goToGeoURI(uri) {
         try {
-            let [geoUri] = URIS.parseAsGeoURI(uri);
+            let [
+                geoUri,
+                zoom = this.map.viewport.zoom_level
+            ] = URIS.parseAsGeoURI(uri);
             let location = new Location({ heading: -1 });
             location.set_from_uri(geoUri);
 
             let place = new Place({ location: location,
                                     name: location.description,
-                                    store: false });
+                                    store: false,
+                                    initialZoom: zoom });
             let marker = new PlaceMarker({ place: place,
                                            mapView: this });
             this._placeLayer.add_marker(marker);
