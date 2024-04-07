@@ -87,6 +87,39 @@ export function parseAsCoordinateURL(url) {
 }
 
 /**
+ * For geo: URIs, extracts the `z` parameter from the URI and returns
+ * [geoURI, zoom], otherwise [geoURI]. Any parsing errors are propagated
+ * for the caller.
+ * @returns {[string, number] | [string]}
+ */
+export function parseAsGeoURI(uri) {
+    let parsed = GLib.Uri.parse(uri, GLib.UriFlags.NONE);
+    let query = parsed.get_query();
+
+    if (query) {
+        let {z, ...params} = GLib.Uri.parse_params(query, -1, '&',
+                                                   GLib.UriParamsFlags.NONE);
+
+        if (z !== undefined) {
+            query = Object.entries(params)
+                          .map(([k, v]) => `${k}=${v}`)
+                          .join('&');
+            parsed = GLib.Uri.build(GLib.UriFlags.NONE,
+                                    parsed.get_scheme(),
+                                    parsed.get_userinfo(),
+                                    parsed.get_host(),
+                                    parsed.get_port(),
+                                    parsed.get_path(),
+                                    query || null, // must be %null, not ''
+                                    parsed.get_fragment());
+            return [parsed.to_string().replace(/\//g, ''), parseInt(z)];
+        }
+    }
+
+    return [uri.replace(/\//g, '')];
+}
+
+/**
  * For URLs addressing a specific OSM object (node, way, or relation),
  * returns [type,id], otherwise [].
  * @returns {[string, number] | []}

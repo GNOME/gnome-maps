@@ -56,6 +56,7 @@ import {TransitWalkMarker} from './transitWalkMarker.js';
 import {TurnPointMarker} from './turnPointMarker.js';
 import {UserLocationMarker} from './userLocationMarker.js';
 import * as Utils from './utils.js';
+import * as URIS from './uris.js';
 
 const _LOCATION_STORE_TIMEOUT = 500;
 const MapMinZoom = 2;
@@ -707,8 +708,9 @@ export class MapView extends Gtk.Overlay {
 
     goToGeoURI(uri) {
         try {
+            let [geoUri] = URIS.parseAsGeoURI(uri);
             let location = new Location({ heading: -1 });
-            location.set_from_uri(uri);
+            location.set_from_uri(geoUri);
 
             let place = new Place({ location: location,
                                     name: location.description,
