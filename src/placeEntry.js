@@ -268,9 +268,13 @@ export class PlaceEntry extends Gtk.SearchEntry {
             let location = new GeocodeGlib.Location();
 
             try {
-                let [geoURI] = URIS.parseAsGeoURI(this.text);
+                let [
+                    geoUri,
+                    zoom = this._mapView.map.viewport.zoom_level
+                ] = URIS.parseAsGeoURI(this.text);
                 location.set_from_uri(geoURI);
-                this.place = new Place({ location: location });
+                this.place = new Place({ location: location,
+                                         initialZoom: zoom });
             } catch(e) {
                 this.root.showToast(_("Failed to parse Geo URI"));
             }
