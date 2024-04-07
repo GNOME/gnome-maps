@@ -62,6 +62,17 @@ function parseAsCoordinateURLTest() {
                        URIS.parseAsCoordinateURL('https://www.openstreetmap.org/#map=16/59.3083/18.0183'));
 }
 
+function parseAsGeoURITest() {
+    _assertArrayEquals(['geo:37.88181,-122.18740'],
+                       URIS.parseAsGeoURI('geo://37.88181,-122.18740'));
+    _assertArrayEquals(['geo:37.88181,-122.18740'],
+                       URIS.parseAsGeoURI('geo://37.88181,-122.18740'));
+    _assertArrayEquals(['geo:37.88181,-122.18740', 18],
+                       URIS.parseAsGeoURI('geo:37.88181,-122.18740?z=18'));
+    JsUnit.assertRaises('Propagates errors for malformed URIs',
+                        () => URIS.parseAsGeoURI('not_a_valid_uri'));
+}
+
 function parseMapsURITest() {
     JsUnit.assertEquals('Query', URIS.parseMapsURI('maps:q=Query'));
     JsUnit.assertEquals('Search query', URIS.parseMapsURI('maps:q=Search%20query'));
@@ -79,5 +90,6 @@ function _assertArrayEquals(arr1, arr2) {
 
 parseAsObjectURLTest();
 parseAsCoordinateURLTest();
+parseAsGeoURITest();
 parseMapsURITest();
 
