@@ -212,9 +212,7 @@ export class Application extends Adw.Application {
         let scheme = GLib.uri_parse_scheme(uri);
 
         if (scheme === 'geo') {
-            // we get a URI that looks like geo:///lat,lon, remove slashes
-            let geoURI = uri.replace(/\//g, '');
-            this._mainWindow.mapView.goToGeoURI(geoURI);
+            this._mainWindow.mapView.goToGeoURI(uri);
         } else if (scheme === 'http' || scheme === 'https') {
             this._mainWindow.mapView.goToHttpURL(uri);
         } else if (scheme === 'maps') {
