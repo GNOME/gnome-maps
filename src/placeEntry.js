@@ -268,7 +268,8 @@ export class PlaceEntry extends Gtk.SearchEntry {
             let location = new GeocodeGlib.Location();
 
             try {
-                location.set_from_uri(this.text);
+                let [geoURI] = URIS.parseAsGeoURI(this.text);
+                location.set_from_uri(geoURI);
                 this.place = new Place({ location: location });
             } catch(e) {
                 this.root.showToast(_("Failed to parse Geo URI"));
@@ -331,6 +332,8 @@ export class PlaceEntry extends Gtk.SearchEntry {
             this._cancellable.cancel();
         this._cancellable = new Gio.Cancellable();
         this._previousSearch = this.text;
+
+        console.warning(this.text);
 
         GeocodeFactory.getGeocoder().search(this.text,
                                             this._mapView.map.viewport.latitude,
