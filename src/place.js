@@ -162,6 +162,7 @@ export class Place extends GObject.Object {
 
     set location(location) {
         this._location = location;
+        this.notify('location');
     }
 
     get boundingBox() {
@@ -544,7 +545,15 @@ export class Place extends GObject.Object {
     }
 }
 
-GObject.registerClass(Place);
+GObject.registerClass({
+    Properties: {
+        'location': GObject.ParamSpec.object('location',
+                                             'location',
+                                             'The location of the place',
+                                             GObject.ParamFlags.READABLE |
+                                             GObject.ParamFlags.WRITABLE,
+                                             GeocodeGlib.Location)
+}}, Place);
 
 let overpass = null;
 
