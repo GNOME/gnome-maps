@@ -19,6 +19,7 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
+import Adw from 'gi://Adw';
 import Gdk from 'gi://Gdk';
 import GObject from 'gi://GObject';
 
@@ -26,6 +27,7 @@ import * as Color from './color.js';
 import {Location} from './location.js';
 import {MapMarker} from './mapMarker.js';
 import {Place} from './place.js';
+import * as TransitPlan from './transitPlan.js';
 
 export class TransitWalkMarker extends MapMarker {
 
@@ -48,14 +50,37 @@ export class TransitWalkMarker extends MapMarker {
 
         super({...params, place: new Place({ location: location })});
 
-        let bgRed = Color.parseColor(bgColor, 0);
-        let bgGreen = Color.parseColor(bgColor, 1);
-        let bgBlue = Color.parseColor(bgColor, 2);
-        let color = new Gdk.RGBA({ red: bgRed,
-                                   green: bgGreen,
-                                   blue: bgBlue,
-                                   alpha: 1.0
-                                 });
+        this._styleManager = Adw.StyleManager.get_default();
+    }
+
+    vfunc_map() {
+        this._darkId = this._styleManager.connect('notify::dark', () => {
+            this._setPaintable();
+        });
+        this._setPaintable();
+
+        super.vfunc_map();
+    }
+
+    vfunc_unmap() {
+        this._styleManager.disconnect(this._darkId);
+
+        super.vfunc_unmap();
+    }
+
+    _setPaintable() {
+        const bgColor = this._styleManager.dark ?
+                        TransitPlan.DEFAULT_DARK_ROUTE_COLOR :
+                        TransitPlan.DEFAULT_ROUTE_COLOR;
+        const bgRed = Color.parseColor(bgColor, 0);
+        const bgGreen = Color.parseColor(bgColor, 1);
+        const bgBlue = Color.parseColor(bgColor, 2);
+        const color = new Gdk.RGBA({ red: bgRed,
+                                     green: bgGreen,
+                                     blue: bgBlue,
+                                     alpha: 1.0
+                                    });
+
         this._image.paintable =
             this._paintableFromIconName('maps-point-start-symbolic', 16, color);
     }
