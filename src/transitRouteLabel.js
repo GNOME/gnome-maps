@@ -19,6 +19,7 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
+import Adw from 'gi://Adw';
 import Cairo from 'cairo';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
@@ -27,6 +28,7 @@ import Gtk from 'gi://Gtk';
 
 import * as Color from './color.js';
 import * as Gfx from './gfx.js';
+import * as TransitPlan from './transitPlan.js';
 import * as Utils from './utils.js';
 
 /* threashhold for route color luminance when we consider it more or less
@@ -47,15 +49,47 @@ export class TransitRouteLabel extends Gtk.Label {
     constructor({leg, compact, ...params}) {
         super(params);
 
-        this._setLabel(leg, compact);
+        this._leg = leg;
+        this._compact = compact;
+        this._styleManager = Adw.StyleManager.get_default();
+        this._settings = this.get_settings();
     }
 
-    _setLabel(leg, compact) {
-        let color = leg.color;
-        let textColor = leg.textColor;
-        let label = leg.route;
-        let usingDarkTheme = Utils.isUsingDarkThemeVariant();
-        let usingHighContrastTheme = Utils.isUsingHighContrastTheme();
+    vfunc_map() {
+        this._darkId = this._styleManager.connect('notify::dark', () => {
+            this._setLabel();
+        });
+
+        this._themeId = this._settings.connect('notify::gtk_theme_name', () => {
+            this._setLabel();
+        });
+
+        this._setLabel();
+
+        super.vfunc_map();
+    }
+
+    vfunc_unmap() {
+        this._styleManager.disconnect(this._darkId);
+        this._settings.disconnect(this._themeId);
+
+        super.vfunc_unmap();
+    }
+
+    _setLabel() {
+        const usingDarkTheme = this._styleManager.dark;
+        let color = this._leg.color ?? (usingDarkTheme ?
+                                        TransitPlan.DEFAULT_DARK_ROUTE_COLOR :
+                                        TransitPlan.DEFAULT_ROUTE_COLOR);
+        let textColor =
+            this._leg.textColor ?? (usingDarkTheme ?
+                             TransitPlan.DEFAULT_DARK_ROUTE_TEXT_COLOR :
+                             TransitPlan.DEFAULT_ROUTE_TEXT_COLOR);
+        let label = this._leg.route;
+
+        const usingHighContrastTheme =
+            this._settings.gtk_theme_name === 'HighContrast' ||
+            this._settings.gtk_theme_name === 'HighContrastInverse';
 
         textColor = Color.getContrastingForegroundColor(color, textColor);
 
@@ -63,10 +97,10 @@ export class TransitRouteLabel extends Gtk.Label {
          * hight-contrasting colors, if no label, assume the route color is
          * more relevant and keep it also for high contrast
          */
-        if (usingHighContrastTheme && ((compact && leg.compactRoute) ||
-                                       (!compact && label))) {
-            color = HIGH_CONTRAST_COLOR;
-            textColor = HIGH_CONTRAST_TEXT_COLOR;
+        if (usingHighContrastTheme && ((this._compact && this._leg.compactRoute) ||
+                                       (!this._compact && label))) {
+            color = usingDarkTheme ? HIGH_CONTRAST_TEXT_COLOR : HIGH_CONTRAST_COLOR;
+            textColor = usingDarkTheme ? HIGH_CONTRAST_COLOR : HIGH_CONTRAST_TEXT_COLOR;
         }
 
         this._color = color;
@@ -82,15 +116,15 @@ export class TransitRouteLabel extends Gtk.Label {
         /* for compact (overview) mode, try to shorten the label if the route
          * name was more than 6 characters
          */
-        if (compact && label.length > 6)
-            label = leg.compactRoute;
+        if (this._compact && label.length > 6)
+            label = this._leg.compactRoute;
 
-        if (compact) {
+        if (this._compact) {
             /* restrict number of characters shown in the label when compact mode
              * is requested
              */
             this.max_width_chars = 6;
-        } else if (leg && !leg.headsign) {
+        } else if (this._leg && !this._leg.headsign) {
             // if there is no trip headsign to display, allow more space
             this.max_width_chars = 25;
         }
