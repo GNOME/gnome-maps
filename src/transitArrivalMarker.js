@@ -19,6 +19,7 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
+import Adw from 'gi://Adw';
 import Gdk from 'gi://Gdk';
 import GObject from 'gi://GObject';
 
@@ -31,21 +32,45 @@ import * as TransitPlan from './transitPlan.js';
 export class TransitArrivalMarker extends MapMarker {
 
     constructor({leg, ...params}) {
-        let lastPoint = leg.polyline[leg.polyline.length - 1];
-        let location = new Location({ latitude: lastPoint.latitude,
+        const lastPoint = leg.polyline[leg.polyline.length - 1];
+        const location = new Location({ latitude: lastPoint.latitude,
                                       longitude: lastPoint.longitude });
-        let bgColor = leg.color ?? TransitPlan.DEFAULT_ROUTE_COLOR;
 
         super({...params, place: new Place({ location: location })});
 
-        let bgRed = Color.parseColor(bgColor, 0);
-        let bgGreen = Color.parseColor(bgColor, 1);
-        let bgBlue = Color.parseColor(bgColor, 2);
-        let color = new Gdk.RGBA({ red: bgRed,
-                                   green: bgGreen,
-                                   blue: bgBlue,
-                                   alpha: 1.0
-                                 });
+        this._leg = leg;
+        this._styleManager = Adw.StyleManager.get_default();
+    }
+
+    vfunc_map() {
+        this._darkId = this._styleManager.connect('notify::dark', () => {
+            this._setPaintable();
+        });
+        this._setPaintable();
+
+        super.vfunc_map();
+    }
+
+    vfunc_unmap() {
+        this._styleManager.disconnect(this._darkId);
+
+        super.vfunc_unmap();
+    }
+
+    _setPaintable(leg) {
+        const bgColor = this._leg.color ??
+                        this._styleManager.dark ?
+                        TransitPlan.DEFAULT_DARK_ROUTE_COLOR :
+                        TransitPlan.DEFAULT_ROUTE_COLOR;
+
+        const bgRed = Color.parseColor(bgColor, 0);
+        const bgGreen = Color.parseColor(bgColor, 1);
+        const bgBlue = Color.parseColor(bgColor, 2);
+        const color = new Gdk.RGBA({ red: bgRed,
+                                     green: bgGreen,
+                                     blue: bgBlue,
+                                     alpha: 1.0
+                                   });
         this._image.paintable =
             this._paintableFromIconName('maps-point-end-symbolic', 16, color);
     }
