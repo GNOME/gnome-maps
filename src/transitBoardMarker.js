@@ -19,6 +19,7 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
+import Adw from 'gi://Adw';
 import Cairo from 'cairo';
 import Gdk from 'gi://Gdk';
 import GObject from 'gi://GObject';
@@ -35,21 +36,38 @@ const ICON_SIZE = 12;
 const MARKER_SIZE = 20;
 
 /* threashhold for route color luminance when we consider it more or less
- * as white, and draw an outline around the label
+ * as white, and draw an outline around the label, and vice versa for dark mode
  */
 const OUTLINE_LUMINANCE_THREASHHOLD = 0.9;
+const DARK_OUTLINE_LUMINANCE_THREASHHOLD = 0.2;
 
 export class TransitBoardMarker extends MapMarker {
 
     constructor({leg, ...params}) {
-        let firstPoint = leg.polyline[0];
-        let location = new Location({ latitude: firstPoint.latitude,
-                                      longitude: firstPoint.longitude });
+        const firstPoint = leg.polyline[0];
+        const location = new Location({ latitude: firstPoint.latitude,
+                                        longitude: firstPoint.longitude });
 
         super({...params, place: new Place({ location: location })});
 
+        this._leg = leg;
+        this._styleManager = Adw.StyleManager.get_default();
         this._image.pixel_size = MARKER_SIZE;
-        this._image.paintable = this._createPaintable(leg);
+    }
+
+    vfunc_map() {
+         this._darkId = this._styleManager.connect('notify::dark', () => {
+            this._image.paintable = this._createPaintable();
+        });
+        this._image.paintable = this._createPaintable();
+
+        super.vfunc_map();
+    }
+
+    vfunc_unmap() {
+        this._styleManager.disconnect(this._darkId);
+
+        super.vfunc_unmap();
     }
 
     /* Creates a Gdk.Paintable for the given transit leg, showing the
@@ -61,33 +79,40 @@ export class TransitBoardMarker extends MapMarker {
      * background color above a threshold to improve readability against the
      * map background.
      */
-    _createPaintable(leg) {
+    _createPaintable() {
         try {
-            let bgColor = leg.color ?? TransitPlan.DEFAULT_ROUTE_COLOR;
-            let fgColor =
-                Color.getContrastingForegroundColor(bgColor, leg.textColor ?
-                                                             leg.textColor :
-                                                             TransitPlan.DEFAULT_ROUTE_TEXT_COLOR);
-            let hasOutline =
+            const bgColor = this._leg.color ??
+                            (this._styleManager.dark ?
+                             TransitPlan.DEFAULT_DARK_ROUTE_COLOR :
+                             TransitPlan.DEFAULT_ROUTE_COLOR);
+            const defaultTextColor =
+                this._styleManager.dark ? TransitPlan.DEFAULT_DARK_ROUTE_TEXT_COLOR :
+                                          TransitPlan.DEFAULT_ROUTE_TEXT_COLOR;
+            const fgColor =
+                Color.getContrastingForegroundColor(bgColor, this._leg.textColor ??
+                                                             defaultTextColor);
+            const hasOutline =
+                this._styleManager.dark ?
+                Color.relativeLuminance(bgColor) < DARK_OUTLINE_LUMINANCE_THREASHHOLD :
                 Color.relativeLuminance(bgColor) > OUTLINE_LUMINANCE_THREASHHOLD;
-            let bgRed = Color.parseColor(bgColor, 0);
-            let bgGreen = Color.parseColor(bgColor, 1);
-            let bgBlue = Color.parseColor(bgColor, 2);
-            let fgRed = Color.parseColor(fgColor, 0);
-            let fgGreen = Color.parseColor(fgColor, 1);
-            let fgBlue = Color.parseColor(fgColor, 2);
-            let fgRGBA = new Gdk.RGBA({ red: fgRed,
-                                        green: fgGreen,
-                                        blue: fgBlue,
-                                        alpha: 1.0
-                                      });
-            let paintable = this._paintableFromIconName(leg.iconName,
-                                                        ICON_SIZE, fgRGBA);
+            const bgRed = Color.parseColor(bgColor, 0);
+            const bgGreen = Color.parseColor(bgColor, 1);
+            const bgBlue = Color.parseColor(bgColor, 2);
+            const fgRed = Color.parseColor(fgColor, 0);
+            const fgGreen = Color.parseColor(fgColor, 1);
+            const fgBlue = Color.parseColor(fgColor, 2);
+            const fgRGBA = new Gdk.RGBA({ red: fgRed,
+                                          green: fgGreen,
+                                          blue: fgBlue,
+                                          alpha: 1.0
+                                         });
+            const paintable = this._paintableFromIconName(this._leg.iconName,
+                                                          ICON_SIZE, fgRGBA);
 
-            let surface = new Cairo.ImageSurface(Cairo.Format.ARGB32,
-                                                 MARKER_SIZE, MARKER_SIZE);
-            let cr = new Cairo.Context(surface);
-            let pixbuf = Gdk.pixbuf_get_from_texture(paintable);
+            const surface = new Cairo.ImageSurface(Cairo.Format.ARGB32,
+                                                   MARKER_SIZE, MARKER_SIZE);
+            const cr = new Cairo.Context(surface);
+            const pixbuf = Gdk.pixbuf_get_from_texture(paintable);
 
             cr.setOperator(Cairo.Operator.CLEAR);
             cr.paint();
