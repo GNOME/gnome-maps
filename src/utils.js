@@ -387,19 +387,6 @@ export function normalizeString(string) {
     return normalized.replace(ACCENTS_REGEX, '');
 }
 
-export function isUsingDarkThemeVariant() {
-    let gtkSettings = Gtk.Settings.get_default();
-
-    return gtkSettings.gtk_application_prefer_dark_theme;
-}
-
-export function isUsingHighContrastTheme() {
-    let gtkSettings = Gtk.Settings.get_default();
-    let themeName = gtkSettings.gtk_theme_name;
-
-    return themeName === 'HighContrast' || themeName === 'HighContrastInverse';
-}
-
 export function showToastInOverlay(message, overlay) {
     let toast = new Adw.Toast({
         title: message,
