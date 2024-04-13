@@ -139,24 +139,27 @@ fallback_function (ShumateVectorSpriteSheet *sprite_sheet,
 
   if (g_str_has_prefix (name, "shield\n"))
     {
-      g_autoptr(GMatchInfo) match_info = NULL;
-      g_autofree char *highway_class = NULL;
-      g_autofree char *network = NULL;
-      g_autofree char *ref = NULL;
-      g_autofree char *shield_name = NULL;
+      g_auto(GStrv) lines = NULL;
+      char *highway_class = NULL;
+      char *network = NULL;
+      char *ref = NULL;
+      char *shield_name = NULL;
+      char *color = NULL;
       MapsShield *shield;
 
-      if (!g_regex_match (self->shield_regex, name, 0, &match_info))
+      lines = g_strsplit (name, "\n", -1);
+
+      if (g_strv_length (lines) < 6)
         return NULL;
 
-      highway_class = g_match_info_fetch (match_info, 1);
-      network = g_match_info_fetch (match_info, 2);
-      ref = g_match_info_fetch (match_info, 3);
+      highway_class = lines[1];
+      network = lines[2];
+      ref = lines[3];
+      shield_name = lines[4];
+      color = lines[5];
+
       if (strlen (ref) == 0)
-        g_clear_pointer (&ref, g_free);
-      shield_name = g_match_info_fetch (match_info, 4);
-      if (strlen (shield_name) == 0)
-        g_clear_pointer (&shield_name, g_free);
+        ref = NULL;
 
       /* filter out recreational routes--see <https://github.com/ZeLonewolf/openstreetmap-americana/blob/main/src/js/shield_format.ts> */
       if (g_regex_match_simple ("^[lrni][chimpw]n$", network, 0, 0))
@@ -171,7 +174,7 @@ fallback_function (ShumateVectorSpriteSheet *sprite_sheet,
             return NULL;
         }
 
-      return maps_shield_draw (shield, ref, shield_name, scale);
+      return maps_shield_draw (shield, ref, shield_name, color, scale);
     }
   else if (g_str_has_suffix (name, "-symbolic"))
     {

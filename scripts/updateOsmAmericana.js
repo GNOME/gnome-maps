@@ -186,8 +186,8 @@ function copyShieldLayer(osmAmericanaPath) {
 
     function addHighwayClass(expr) {
         if (expr[0] === "image") {
-            expr[1].splice(2, 0, ["get", "class"]);
-            expr[1].splice(3, 0, "\n");
+            expr[1].splice(3, 0, ["get", "class"]);
+            expr[1].splice(4, 0, "\n");
         } else {
             for (const subExpr of expr) {
                 if (Array.isArray(subExpr)) {
