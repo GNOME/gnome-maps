@@ -13,48 +13,67 @@
       [
         "case",
         [
-          "!=",
+          "any",
           [
-            "get",
-            "route_1"
+            "has",
+            "route_1_network"
           ],
-          null
+          [
+            "has",
+            "route_1_ref"
+          ],
+          [
+            "has",
+            "route_1_name"
+          ],
+          [
+            "has",
+            "route_1_color"
+          ]
         ],
         [
           "image",
           [
             "concat",
-            "shield\n",
+            "shield",
+            "\n",
             [
               "get",
               "class"
             ],
             "\n",
             [
-              "get",
-              "route_1"
-            ],
-            [
-              "match",
+              "coalesce",
               [
                 "get",
-                "route_1"
+                "route_1_network"
               ],
+              ""
+            ],
+            "\n",
+            [
+              "coalesce",
               [
-                "US:CT:Parkway=",
-                "US:KY:Parkway=",
-                "US:NH:Turnpike=",
-                "US:NY:Parkway=",
-                "US:TX:Fort_Bend:FBCTRA=",
-                "US:TX:Harris:HCTRA="
+                "get",
+                "route_1_ref"
               ],
+              ""
+            ],
+            "\n",
+            [
+              "coalesce",
               [
-                "concat",
-                "\n",
-                [
-                  "get",
-                  "name"
-                ]
+                "get",
+                "route_1_name"
+              ],
+              ""
+            ],
+            "\n",
+            [
+              "coalesce",
+              [
+                "get",
+                "route_1_color"
               ],
               ""
             ]
@@ -68,48 +87,67 @@
       [
         "case",
         [
-          "!=",
+          "any",
           [
-            "get",
-            "route_2"
+            "has",
+            "route_2_network"
           ],
-          null
+          [
+            "has",
+            "route_2_ref"
+          ],
+          [
+            "has",
+            "route_2_name"
+          ],
+          [
+            "has",
+            "route_2_color"
+          ]
         ],
         [
           "image",
           [
             "concat",
-            "shield\n",
+            "shield",
+            "\n",
             [
               "get",
               "class"
             ],
             "\n",
             [
-              "get",
-              "route_2"
-            ],
-            [
-              "match",
+              "coalesce",
               [
                 "get",
-                "route_2"
+                "route_2_network"
               ],
+              ""
+            ],
+            "\n",
+            [
+              "coalesce",
               [
-                "US:CT:Parkway=",
-                "US:KY:Parkway=",
-                "US:NH:Turnpike=",
-                "US:NY:Parkway=",
-                "US:TX:Fort_Bend:FBCTRA=",
-                "US:TX:Harris:HCTRA="
+                "get",
+                "route_2_ref"
               ],
+              ""
+            ],
+            "\n",
+            [
+              "coalesce",
               [
-                "concat",
-                "\n",
-                [
-                  "get",
-                  "name"
-                ]
+                "get",
+                "route_2_name"
+              ],
+              ""
+            ],
+            "\n",
+            [
+              "coalesce",
+              [
+                "get",
+                "route_2_color"
               ],
               ""
             ]
@@ -123,48 +161,67 @@
       [
         "case",
         [
-          "!=",
+          "any",
           [
-            "get",
-            "route_3"
+            "has",
+            "route_3_network"
           ],
-          null
+          [
+            "has",
+            "route_3_ref"
+          ],
+          [
+            "has",
+            "route_3_name"
+          ],
+          [
+            "has",
+            "route_3_color"
+          ]
         ],
         [
           "image",
           [
             "concat",
-            "shield\n",
+            "shield",
+            "\n",
             [
               "get",
               "class"
             ],
             "\n",
             [
-              "get",
-              "route_3"
-            ],
-            [
-              "match",
+              "coalesce",
               [
                 "get",
-                "route_3"
+                "route_3_network"
               ],
+              ""
+            ],
+            "\n",
+            [
+              "coalesce",
               [
-                "US:CT:Parkway=",
-                "US:KY:Parkway=",
-                "US:NH:Turnpike=",
-                "US:NY:Parkway=",
-                "US:TX:Fort_Bend:FBCTRA=",
-                "US:TX:Harris:HCTRA="
+                "get",
+                "route_3_ref"
               ],
+              ""
+            ],
+            "\n",
+            [
+              "coalesce",
               [
-                "concat",
-                "\n",
-                [
-                  "get",
-                  "name"
-                ]
+                "get",
+                "route_3_name"
+              ],
+              ""
+            ],
+            "\n",
+            [
+              "coalesce",
+              [
+                "get",
+                "route_3_color"
               ],
               ""
             ]
@@ -178,48 +235,67 @@
       [
         "case",
         [
-          "!=",
+          "any",
           [
-            "get",
-            "route_4"
+            "has",
+            "route_4_network"
           ],
-          null
+          [
+            "has",
+            "route_4_ref"
+          ],
+          [
+            "has",
+            "route_4_name"
+          ],
+          [
+            "has",
+            "route_4_color"
+          ]
         ],
         [
           "image",
           [
             "concat",
-            "shield\n",
+            "shield",
+            "\n",
             [
               "get",
               "class"
             ],
             "\n",
             [
-              "get",
-              "route_4"
-            ],
-            [
-              "match",
+              "coalesce",
               [
                 "get",
-                "route_4"
+                "route_4_network"
               ],
+              ""
+            ],
+            "\n",
+            [
+              "coalesce",
               [
-                "US:CT:Parkway=",
-                "US:KY:Parkway=",
-                "US:NH:Turnpike=",
-                "US:NY:Parkway=",
-                "US:TX:Fort_Bend:FBCTRA=",
-                "US:TX:Harris:HCTRA="
+                "get",
+                "route_4_ref"
               ],
+              ""
+            ],
+            "\n",
+            [
+              "coalesce",
               [
-                "concat",
-                "\n",
-                [
-                  "get",
-                  "name"
-                ]
+                "get",
+                "route_4_name"
+              ],
+              ""
+            ],
+            "\n",
+            [
+              "coalesce",
+              [
+                "get",
+                "route_4_color"
               ],
               ""
             ]
@@ -233,48 +309,67 @@
       [
         "case",
         [
-          "!=",
+          "any",
           [
-            "get",
-            "route_5"
+            "has",
+            "route_5_network"
           ],
-          null
+          [
+            "has",
+            "route_5_ref"
+          ],
+          [
+            "has",
+            "route_5_name"
+          ],
+          [
+            "has",
+            "route_5_color"
+          ]
         ],
         [
           "image",
           [
             "concat",
-            "shield\n",
+            "shield",
+            "\n",
             [
               "get",
               "class"
             ],
             "\n",
             [
-              "get",
-              "route_5"
-            ],
-            [
-              "match",
+              "coalesce",
               [
                 "get",
-                "route_5"
+                "route_5_network"
               ],
+              ""
+            ],
+            "\n",
+            [
+              "coalesce",
               [
-                "US:CT:Parkway=",
-                "US:KY:Parkway=",
-                "US:NH:Turnpike=",
-                "US:NY:Parkway=",
-                "US:TX:Fort_Bend:FBCTRA=",
-                "US:TX:Harris:HCTRA="
+                "get",
+                "route_5_ref"
               ],
+              ""
+            ],
+            "\n",
+            [
+              "coalesce",
               [
-                "concat",
-                "\n",
-                [
-                  "get",
-                  "name"
-                ]
+                "get",
+                "route_5_name"
+              ],
+              ""
+            ],
+            "\n",
+            [
+              "coalesce",
+              [
+                "get",
+                "route_5_color"
               ],
               ""
             ]
@@ -288,48 +383,67 @@
       [
         "case",
         [
-          "!=",
+          "any",
           [
-            "get",
-            "route_6"
+            "has",
+            "route_6_network"
           ],
-          null
+          [
+            "has",
+            "route_6_ref"
+          ],
+          [
+            "has",
+            "route_6_name"
+          ],
+          [
+            "has",
+            "route_6_color"
+          ]
         ],
         [
           "image",
           [
             "concat",
-            "shield\n",
+            "shield",
+            "\n",
             [
               "get",
               "class"
             ],
             "\n",
             [
-              "get",
-              "route_6"
-            ],
-            [
-              "match",
+              "coalesce",
               [
                 "get",
-                "route_6"
+                "route_6_network"
               ],
+              ""
+            ],
+            "\n",
+            [
+              "coalesce",
               [
-                "US:CT:Parkway=",
-                "US:KY:Parkway=",
-                "US:NH:Turnpike=",
-                "US:NY:Parkway=",
-                "US:TX:Fort_Bend:FBCTRA=",
-                "US:TX:Harris:HCTRA="
+                "get",
+                "route_6_ref"
               ],
+              ""
+            ],
+            "\n",
+            [
+              "coalesce",
               [
-                "concat",
-                "\n",
-                [
-                  "get",
-                  "name"
-                ]
+                "get",
+                "route_6_name"
+              ],
+              ""
+            ],
+            "\n",
+            [
+              "coalesce",
+              [
+                "get",
+                "route_6_color"
               ],
               ""
             ]
@@ -452,27 +566,19 @@
     "any",
     [
       "has",
-      "route_1"
+      "route_1_network"
     ],
     [
       "has",
-      "route_2"
+      "route_1_ref"
     ],
     [
       "has",
-      "route_3"
+      "route_1_name"
     ],
     [
       "has",
-      "route_4"
-    ],
-    [
-      "has",
-      "route_5"
-    ],
-    [
-      "has",
-      "route_6"
+      "route_1_color"
     ]
   ]
 }

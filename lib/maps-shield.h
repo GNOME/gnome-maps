@@ -29,6 +29,7 @@ MapsShield *maps_shield_new (JsonNode *node);
 ShumateVectorSprite *maps_shield_draw (MapsShield *self,
                                        const char *ref,
                                        const char *name,
+                                       const char *color,
                                        double scale);
 
 G_END_DECLS

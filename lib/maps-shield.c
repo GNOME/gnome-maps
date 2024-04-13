@@ -1629,6 +1629,7 @@ is_valid_ref (const char *ref)
  * @self: a [class@Shield]
  * @ref: the highway reference
  * @name: the highway name
+ * @color: the route color
  * @scale: the scale factor
  *
  * Returns: (transfer full): a [class@Shumate.VectorSprite]
@@ -1637,6 +1638,7 @@ ShumateVectorSprite *
 maps_shield_draw (MapsShield *self,
                   const char *ref,
                   const char *name,
+                  const char *color,
                   double scale)
 {
   RenderCtx ctx;
