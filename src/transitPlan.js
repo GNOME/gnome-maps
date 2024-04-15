@@ -653,9 +653,9 @@ export class Leg {
             switch (type) {
                 /* special case HVT codes */
                 case HVT.CABLE_CAR:
-                    return 'route-transit-cablecar-symbolic';
+                    return 'cablecar-symbolic';
                 case HVT.TOURIST_RAILWAY_SERVICE:
-                    return 'route-transit-tourist-train-symbolic';
+                    return 'steam-train-symbolic';
                 default:
                     let hvtSupertype = HVT.supertypeOf(type);
 
@@ -665,48 +665,48 @@ export class Leg {
                     switch (type) {
                         case RouteType.TRAM:
                         case HVT.TRAM_SERVICE:
-                            return 'route-transit-tram-symbolic';
+                            return 'tram-symbolic';
 
                         case RouteType.SUBWAY:
                         case HVT.METRO_SERVICE:
                         case HVT.URBAN_RAILWAY_SERVICE:
                         case HVT.UNDERGROUND_SERVICE:
-                            return 'route-transit-subway-symbolic';
+                            return 'subway-symbolic';
 
                         case RouteType.TRAIN:
                         case HVT.RAILWAY_SERVICE:
                         case HVT.SUBURBAN_RAILWAY_SERVICE:
-                            return 'route-transit-train-symbolic';
+                            return 'train-symbolic';
 
                         case RouteType.BUS:
                         case HVT.BUS_SERVICE:
                         case HVT.COACH_SERVICE:
                         case HVT.TROLLEYBUS_SERVICE:
                             /* TODO: handle a special case icon for trolleybus */
-                            return 'route-transit-bus-symbolic';
+                            return 'bus-symbolic';
 
                         case RouteType.FERRY:
                         case HVT.WATER_TRANSPORT_SERVICE:
                         case HVT.FERRY_SERVICE:
-                            return 'route-transit-ferry-symbolic';
+                            return 'ferry-symbolic';
 
                         case RouteType.CABLE_CAR:
-                            return 'route-transit-cablecar-symbolic';
+                            return 'cablecar-symbolic';
 
                         case RouteType.GONDOLA:
                         case HVT.TELECABIN_SERVICE:
-                            return 'route-transit-gondolalift-symbolic';
+                            return 'gondola-symbolic';
 
                         case RouteType.FUNICULAR:
                         case HVT.FUNICULAR_SERVICE:
-                            return 'route-transit-funicular-symbolic';
+                            return 'funicular-symbolic';
 
                         case HVT.TAXI_SERVICE:
                             /* TODO: should we have a dedicated taxi icon? */
-                            return 'route-car-symbolic';
+                            return 'driving-symbolic';
 
                         case HVT.AIR_SERVICE:
-                            return 'route-transit-airplane-symbolic';
+                            return 'flying-symbolic';
 
                         default:
                             /* use a fallback question mark icon in case of some future,
@@ -715,7 +715,7 @@ export class Leg {
                     }
             }
         } else {
-            return 'route-pedestrian-symbolic';
+            return 'walking-symbolic';
         }
     }
 

@@ -49,11 +49,11 @@ export class InstructionRow extends Gtk.ListBoxRow {
         if (this.turnPoint.type === TurnPoint.Type.START) {
             switch (transportation) {
                 case RouteQuery.Transportation.PEDESTRIAN:
-                    return 'route-pedestrian-symbolic';
+                    return 'walking-symbolic';
                 case RouteQuery.Transportation.BIKE:
-                    return 'route-bike-symbolic';
+                    return 'cycling-symbolic';
                 case RouteQuery.Transportation.CAR:
-                    return 'route-car-symbolic';
+                    return 'driving-symbolic';
                 default:
                     return 'maps-point-start-symbolic';
             }

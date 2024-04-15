@@ -303,7 +303,7 @@ const POI_CATEGORIES = [
         subcategories: [
             {
                 label:       _("Bus & Tram Stops"),
-                icon:        'route-transit-bus-symbolic',
+                icon:        'bus-symbolic',
                 keyValues:   [['highway=bus_stop'],
                               ['railway=tram_stop'],
                               ['railway=station', 'station=light_rail']],
@@ -311,7 +311,7 @@ const POI_CATEGORIES = [
             },
             {
                 label:       _("Train & Subway Stations"),
-                icon:        'route-transit-train-symbolic',
+                icon:        'train-symbolic',
                 keyValues:   [['railway=station', 'station!=light_rail'],
                               ['railway=halt']],
                 deduplicate: true,
@@ -337,12 +337,12 @@ const POI_CATEGORIES = [
             },
             {
                 label:     _("Bicycle Rental"),
-                icon:      'route-bike-symbolic',
+                icon:      'cycling-symbolic',
                 keyValues: [['amenity=bicycle_rental']]
             },
             {
                 label:     _("Car Rental"),
-                icon:      'route-car-symbolic',
+                icon:      'driving-symbolic',
                 keyValues: [['amenity=car_rental']]
             },
             {

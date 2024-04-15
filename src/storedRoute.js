@@ -109,9 +109,9 @@ export class StoredRoute extends Place {
         let transport = RouteQuery.Transportation;
 
         switch (this._transportation) {
-            case transport.PEDESTRIAN: return 'route-pedestrian-symbolic';
-            case transport.BIKE:       return 'route-bike-symbolic';
-            case transport.CAR:        return 'route-car-symbolic';
+            case transport.PEDESTRIAN: return 'walking-symbolic';
+            case transport.BIKE:       return 'cycling-symbolic';
+            case transport.CAR:        return 'driving-symbolic';
             default:                   return 'route-button-symbolic';
         }
     }
