@@ -658,6 +658,10 @@ export class Leg {
                 /* special case HVT codes */
                 case HVT.CABLE_CAR:
                     return 'cablecar-symbolic';
+                case HVT.HORSE_DRAWN_CARRIAGE:
+                    return 'horse-symbolic';
+                case HVT.MONORAIL:
+                    return 'monorail-symbolic';
                 case HVT.TOURIST_RAILWAY_SERVICE:
                     return 'steam-train-symbolic';
                 default:
@@ -685,9 +689,11 @@ export class Leg {
                         case RouteType.BUS:
                         case HVT.BUS_SERVICE:
                         case HVT.COACH_SERVICE:
-                        case HVT.TROLLEYBUS_SERVICE:
-                            /* TODO: handle a special case icon for trolleybus */
                             return 'bus-symbolic';
+
+                        case RouteType.TROLLEYBUS:
+                        case HVT.TROLLEYBUS_SERVICE:
+                            return 'trolley-bus-symbolic';
 
                         case RouteType.FERRY:
                         case HVT.WATER_TRANSPORT_SERVICE:
@@ -706,11 +712,13 @@ export class Leg {
                             return 'funicular-symbolic';
 
                         case HVT.TAXI_SERVICE:
-                            /* TODO: should we have a dedicated taxi icon? */
-                            return 'driving-symbolic';
+                            return 'taxi-symbolic';
 
                         case HVT.AIR_SERVICE:
                             return 'flying-symbolic';
+
+                        case RouteType.MONORAIL:
+                            return 'monorail-symbolic';
 
                         default:
                             /* use a fallback question mark icon in case of some future,
