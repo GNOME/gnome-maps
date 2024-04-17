@@ -951,8 +951,10 @@ export class MapView extends Gtk.Overlay {
                                             mapView: this });
 
         // remove marker when dismissing the bubble
-        placeMarker.bubble.connect('closed',
-                                   () => { this._placeLayer.remove_all(); });
+        placeMarker.bubble.connect('closed', () => {
+            this._placeLayer.remove_all();
+            Application.application.selected_place = null;
+        });
 
         this._placeLayer.add_marker(placeMarker);
         if (skipGoTo) {
@@ -1099,6 +1101,7 @@ export class MapView extends Gtk.Overlay {
 
         // remove any showing place markers when clicking outside
         this._placeLayer.remove_all();
+        Application.application.selected_place = null;
 
         this.map.grab_focus();
         gesture.set_state(Gtk.EventSequenceState.NONE);
