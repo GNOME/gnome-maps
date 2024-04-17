@@ -288,7 +288,7 @@ export class MapMarker extends Shumate.Marker {
     }
 
     _onAdaptiveModeChanged() {
-        if (!Application.application.adaptive_mode) {
+        if (!Application.application.adaptive_mode && this.get_mapped()) {
             this.showBubble();
         } else {
             this.hideBubble();
