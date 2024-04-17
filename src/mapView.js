@@ -947,7 +947,6 @@ export class MapView extends Gtk.Overlay {
             return;
         }
 
-        this.routingOpen = false;
         let placeMarker = new PlaceMarker({ place: place,
                                             mapView: this });
 
