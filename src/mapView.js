@@ -157,6 +157,9 @@ export class MapView extends Gtk.Overlay {
             'route-to-here': {
                 onActivate: () => this._onRouteToHereActivated()
             },
+            'clear-route': {
+                onActivate: () => this._onClearRouteActivated()
+            },
             'copy-location': {
                 onActivate: () => this._onCopyLocationActivated()
             },
@@ -172,6 +175,7 @@ export class MapView extends Gtk.Overlay {
         this._routeFromHereAction = actionGroup.lookup('route-from-here');
         this._routeToHereAction = actionGroup.lookup('route-to-here');
         this._addIntermediateDestinationAction = actionGroup.lookup('add-intermediate-destination');
+        this._clearRouteAction = actionGroup.lookup('clear-route');
 
         let builder = Gtk.Builder.new_from_resource('/org/gnome/Maps/ui/context-menu.ui');
         let menuModel = builder.get_object('context-menu');
@@ -388,6 +392,7 @@ export class MapView extends Gtk.Overlay {
             this._routeToHereAction.enabled = numPoints < RouteQuery.MAX_QUERY_POINTS;
             this._addIntermediateDestinationAction.enabled =
                 query.filledPoints.length >= 2 && numPoints < RouteQuery.MAX_QUERY_POINTS;
+            this._clearRouteAction.enabled = query.filledPoints.length >= 2;
         });
     }
 
@@ -1171,6 +1176,10 @@ export class MapView extends Gtk.Overlay {
         let place = new Place({ location: location, store: false });
 
         query.points.last().place = place;
+    }
+
+    _onClearRouteActivated() {
+        Application.routeQuery.reset();
     }
 
     _onCopyLocationActivated() {
