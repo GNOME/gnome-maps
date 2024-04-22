@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2024-02-10 10:18+0000\n"
-"PO-Revision-Date: 2024-02-11 05:07+0100\n"
+"POT-Creation-Date: 2024-04-02 20:44+0000\n"
+"PO-Revision-Date: 2024-04-22 14:28+0200\n"
 "Last-Translator: Fabio T. <f.t.public@gmail.com>\n"
 "Language-Team: Friulian <f.t.public@gmail.com>\n"
 "Language: fur\n"
@@ -29,7 +29,7 @@ msgstr ""
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
 #: data/ui/main-window.ui:27 src/application.js:64 src/mainWindow.js:147
-#: src/mainWindow.js:647
+#: src/mainWindow.js:612
 msgid "Maps"
 msgstr "Mapis"
 
@@ -56,7 +56,7 @@ msgstr ""
 "miârs di personis ator pal mont."
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.appdata.xml.in.in:451 src/mainWindow.js:644
+#: data/org.gnome.Maps.appdata.xml.in.in:469 src/mainWindow.js:609
 msgid "The GNOME Project"
 msgstr "Il progjet GNOME"
 
@@ -154,8 +154,8 @@ msgid "Number of recently visited routes to store."
 msgstr "Numar di percors resints fats di memorizâ."
 
 #: data/org.gnome.Maps.gschema.xml:61
-msgid "OpenStreetMap username or e-mail address"
-msgstr "Non utent o direzion e-mail OpenStreetMap"
+msgid "OpenStreetMap username or email address"
+msgstr "Non utent o direzion e-mail par OpenStreetMap"
 
 #: data/org.gnome.Maps.gschema.xml:62
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
@@ -188,14 +188,10 @@ msgid "Route to Here"
 msgstr "Percors par rivâ chi"
 
 #: data/ui/context-menu.ui:20
-msgid "What's Here?"
-msgstr "Ce isal achì?"
-
-#: data/ui/context-menu.ui:24
 msgid "Copy Location"
 msgstr "Copie posizion"
 
-#: data/ui/context-menu.ui:28
+#: data/ui/context-menu.ui:24
 msgid "Add to OpenStreetMap…"
 msgstr "Zonte a OpenStreetMap…"
 
@@ -218,7 +214,7 @@ msgid "Remove Favorite"
 msgstr "Gjave preferît"
 
 #: data/ui/favorites-popover.ui:11
-msgid "No favorites"
+msgid "No Favorites"
 msgstr "Nissun preferît"
 
 #: data/ui/favorites-popover.ui:12
@@ -226,7 +222,7 @@ msgid "Add places to your favorites to get them listed here"
 msgstr "Zonte puescj ai tiei preferîts par fâju vignî fûr achì"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:11 src/geoclue.js:106
+#: data/ui/headerbar-left.ui:11 src/geoclue.js:106 src/placeBar.js:91
 msgid "Current Location"
 msgstr "Posizion atuâl"
 
@@ -354,12 +350,8 @@ msgstr "Vierç strât sagome"
 msgid "Show Scale"
 msgstr "Mostre la scjale"
 
-#: data/ui/layers-popover.ui:16
-msgid "Enable Experimental Map"
-msgstr "Abilite mape sperimentâl"
-
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:21
+#: data/ui/layers-popover.ui:16
 msgid "Open Shape Layer…"
 msgstr "Vierç strât sagome…"
 
@@ -480,7 +472,7 @@ msgstr ""
 msgid "Recently Used"
 msgstr "Doprâts di resint"
 
-#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:663
+#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:651
 msgid "Cancel"
 msgstr "Anule"
 
@@ -674,7 +666,7 @@ msgid "Zoom Out"
 msgstr "Impiçulìs"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1238
+#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1215
 msgid "Zoom In"
 msgstr "Ingrandìs"
 
@@ -773,36 +765,36 @@ msgstr "Invie!"
 msgid "All Layer Files"
 msgstr "Ducj i files di strât"
 
-#: src/mainWindow.js:522
+#: src/mainWindow.js:498
 msgid "Failed to connect to location service"
 msgstr "Impussibil conetisi al servizi di localizazion"
 
-#: src/mainWindow.js:527
+#: src/mainWindow.js:503
 msgid "Turn on location services"
 msgstr "Ative i servizis di localizazion"
 
-#: src/mainWindow.js:528
+#: src/mainWindow.js:504
 msgid "Location Settings"
 msgstr "Impostazions di localizazion"
 
-#: src/mainWindow.js:645
+#: src/mainWindow.js:610
 msgid "translator-credits"
 msgstr "Fabio Tomat, <f.t.public@gmail.com>"
 
-#: src/mainWindow.js:649
+#: src/mainWindow.js:614
 msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Copyright © 2011 – 2023 Red Hat, Inc. e i autôrs di GNOME Mapis"
 
-#: src/mainWindow.js:665
+#: src/mainWindow.js:629
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Dâts mape di %s e colaboradôrs"
 
-#: src/mainWindow.js:666
+#: src/mainWindow.js:630
 msgid "Map Data Provider"
 msgstr "Furnidôr dâts des mapis"
 
-#: src/mainWindow.js:678
+#: src/mainWindow.js:633
 msgid "Map Tile Provider"
 msgstr "Furnidôr tassei de mape"
 
@@ -811,29 +803,29 @@ msgstr "Furnidôr tassei de mape"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:686
+#: src/mainWindow.js:641
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Tassei de mape furnîts di %s"
 
-#: src/mainWindow.js:716
+#: src/mainWindow.js:670
 msgid "Search Provider"
 msgstr "Furnidôr ricercjis"
 
-#: src/mainWindow.js:719
+#: src/mainWindow.js:673
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Ricercje furnide di %s doprant %s"
 
-#: src/mapView.js:637 src/mapView.js:702
+#: src/mapView.js:625 src/mapView.js:690
 msgid "Failed to open layer"
 msgstr "Impussibil vierzi il strât"
 
-#: src/mapView.js:656
+#: src/mapView.js:644
 msgid "Do you want to continue?"
 msgstr "Desideristu continuâ?"
 
-#: src/mapView.js:657
+#: src/mapView.js:645
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -842,28 +834,24 @@ msgstr ""
 "Tu stâs par vierzi files che a àn un totâl di %s MB di dimension. Al podarès "
 "tirâle a dilunc par cjariâju"
 
-#: src/mapView.js:664 src/transitplugins/openTripPlanner.js:1239
+#: src/mapView.js:652 src/transitplugins/openTripPlanner.js:1239
 #: src/transitplugins/openTripPlanner2.js:267
 msgid "Continue"
 msgstr "Continue"
 
-#: src/mapView.js:696
+#: src/mapView.js:684
 msgid "File type is not supported"
 msgstr "Gjenar di file no supuartât"
 
-#: src/mapView.js:733
+#: src/mapView.js:721
 msgid "Failed to open GeoURI"
 msgstr "Impussibil vierzi il GeoURI"
 
-#: src/mapView.js:1197
-msgid "Nothing found here!"
-msgstr "Nol è nuie culì!"
-
-#: src/mapView.js:1237
+#: src/mapView.js:1214
 msgid "Zoom in to add location"
 msgstr "Aumente l'ingrandiment par zontâ un puest"
 
-#: src/mapView.js:1258
+#: src/mapView.js:1235
 msgid "Location was added in OpenStreetMap"
 msgstr "Il lûc al è stât zontât su OpenStreetMap"
 
@@ -945,24 +933,24 @@ msgstr ""
 "privâts."
 
 #: src/osmEditDialog.js:139 src/placeView.js:308
-msgid "E-mail"
+msgid "Email"
 msgstr "E-mail"
 
 #: src/osmEditDialog.js:144
 msgid ""
-"This is not a valid e-mail address. Make sure to not include the mailto: "
+"This is not a valid email address. Make sure to not include the mailto: "
 "protocol prefix."
 msgstr ""
-"Cheste no je une direzion e-mail valide. Controle di includi il prefìs di "
+"Cheste no je une direzion e-mail valide. Controle di no includi il prefìs di "
 "protocol mailto: ."
 
 #: src/osmEditDialog.js:145
 msgid ""
-"Contact e-mail address for inquiries. Add only email addresses that are "
+"Contact email address for inquiries. Add only email addresses that are "
 "intended to be publicly used."
 msgstr ""
 "Contate la direzion e-mail par domandis. Zonte dome direzions e-mail "
-"destinadis pal ûs cul public."
+"destinadis pal ûs public."
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
@@ -993,7 +981,7 @@ msgid "Altitude"
 msgstr "Altitudin"
 
 #: src/osmEditDialog.js:172
-msgid "Elevation (height above sea level) of a point in metres."
+msgid "Elevation (height above sea level) of a point in meters."
 msgstr "Elevazion (altece sul nivel dal mâr) di un pont in metris."
 
 #: src/osmEditDialog.js:175
@@ -1412,15 +1400,15 @@ msgstr "A nivel dal mâr"
 msgid "Religion:"
 msgstr "Religjon:"
 
-#: src/place.js:568
+#: src/place.js:576
 msgid "Place not found in OpenStreetMap"
 msgstr "Lûc no cjatât su OpenStreetMap"
 
-#: src/place.js:575
+#: src/place.js:583
 msgid "Coordinates in URL are not valid"
 msgstr "Lis coordenadis tal URL no son validis"
 
-#: src/place.js:584
+#: src/place.js:592
 msgid "URL is not supported"
 msgstr "URL nol è supuartât"
 
@@ -1688,7 +1676,7 @@ msgstr "Palestris a viert"
 msgid "Golf Courses"
 msgstr "Cjamps di golf"
 
-#: src/printLayout.js:350
+#: src/printLayout.js:222
 #, javascript-format
 msgid "From %s to %s"
 msgstr "Di %s a %s"
@@ -2182,6 +2170,18 @@ msgstr "Fâs une inversion a U a diestre su %s"
 msgid "Make a right u-turn"
 msgstr "Fâs une inversion a U a diestre"
 
+#~ msgid "What's Here?"
+#~ msgstr "Ce isal achì?"
+
+#~ msgid "Enable Experimental Map"
+#~ msgstr "Abilite mape sperimentâl"
+
+#~ msgid "Nothing found here!"
+#~ msgstr "Nol è nuie culì!"
+
+#~ msgid "E-mail"
+#~ msgstr "E-mail"
+
 #~ msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
 #~ msgstr ""
 #~ "<span weight=\"bold\" size=\"x-large\">Jentre par modificâ lis mapis</"
@@ -2312,9 +2312,6 @@ msgstr "Fâs une inversion a U a diestre"
 
 #~ msgid "Check your connection and proxy settings."
 #~ msgstr "Controle le tô conession e lis impostazions proxy."
-
-#~ msgid "Email"
-#~ msgstr "E-mail"
 
 #~ msgid "Password"
 #~ msgstr "Password"
