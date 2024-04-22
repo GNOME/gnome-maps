@@ -179,9 +179,19 @@ export class MainWindow extends Adw.ApplicationWindow {
     _createSidebar() {
         let sidebar = new Sidebar({ mapView: this._mapView });
 
-        Application.routeQuery.connect('notify', () => this._setRevealSidebar(true));
+        Application.routeQuery.connect('notify', () => this._onRouteQueryNotify());
 
         return sidebar;
+    }
+
+    _onRouteQueryNotify() {
+        const query = Application.routeQuery;
+        const sidebarShowing = this._splitView.show_sidebar;
+
+        /* reveal sidebar if it wasn't already visible and there are now
+         * filled points
+         */
+        this._setRevealSidebar(sidebarShowing || query.filledPoints.length > 0);
     }
 
     _initPlaceBar() {
