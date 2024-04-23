@@ -79,7 +79,6 @@ export class PlaceButtons extends Gtk.Box {
 
     _initSignals() {
         let placeStore = Application.placeStore;
-        let query = Application.routeQuery;
 
         this._favoriteButton.connect('clicked', () => {
             let placeItem = placeStore.getPlaceItem(this._place);
@@ -96,26 +95,43 @@ export class PlaceButtons extends Gtk.Box {
             }
         });
 
-        this._routeButton.connect('clicked', () => {
-            let from = query.points[0];
-            let to = query.points[query.points.length - 1];
+        this._routeButton.connect('clicked',
+                                  () => { this._onRouteButtonClicked(); });
 
-            query.freeze_notify();
+        this._editButton.connect('clicked', this._onEditClicked.bind(this));
+
+        this.initSendToButton(this._sendToButton);
+    }
+
+    _onRouteButtonClicked() {
+        const query = Application.routeQuery;
+        const from = query.points[0];
+        const to = query.points[query.points.length - 1];
+
+        query.freeze_notify();
+
+        if (!from.place && !to.place) {
+            /* if neither from or to is filled in,
+             * route from current location (if known) to the the displayed
+             * place
+             */
             query.reset();
             Application.routingDelegator.reset();
 
             if (Application.geoclue.place)
                 from.place = Application.geoclue.place;
             to.place = this._place;
+        } else if (from.place) {
+            // if only start is filled in, route from start to the displayed place
+            to.place = this.place;
+        } else {
+            // if only to is filled in, route from the displayed place
+            from.place = this.place;
+        }
 
-            Application.application.selected_place = null;
+        Application.application.selected_place = null;
 
-            query.thaw_notify();
-        });
-
-        this._editButton.connect('clicked', this._onEditClicked.bind(this));
-
-        this.initSendToButton(this._sendToButton);
+        query.thaw_notify();
     }
 
     _updateFavoriteButton(visible) {
