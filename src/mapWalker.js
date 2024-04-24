@@ -83,9 +83,10 @@ export class MapWalker extends GObject.Object {
     zoomToFit() {
         let zoom = this._getZoomLevel();
 
-        this._mapView.map.go_to_full(this.place.location.latitude,
+        this._mapView.map.go_to_full_with_duration(this.place.location.latitude,
                                      this.place.location.longitude,
-                                     zoom);
+                                     zoom,
+                                     500);
     }
 
     goTo(animate, linear) {
