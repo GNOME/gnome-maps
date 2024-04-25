@@ -40,6 +40,7 @@ const WIKIDATA_REGEX = /Q\d+/;
  * Wikidata properties
  */
 const WIKIDATA_PROPERTY_IMAGE = 'P18';
+const WIKIDATA_PROPERTY_LOGO_IMAGE = 'P154';
 
 let _soupSession = null;
 function _getSoupSession() {
@@ -189,12 +190,13 @@ export function fetchArticleInfo(wiki, size, metadataCb, thumbnailCb) {
  * null.
  */
 export function fetchArticleInfoForWikidata(wikidata, defaultArticle,
-                                            size, metadataCb, thumbnailCb) {
+                                            size, metadataCb, thumbnailCb,
+                                            imageProperty = WIKIDATA_PROPERTY_IMAGE) {
     let cachedWikidata = _wikidataCache[wikidata];
 
     if (cachedWikidata) {
         _onWikidataFetched(wikidata, defaultArticle, cachedWikidata, size,
-                           metadataCb, thumbnailCb);
+                           metadataCb, thumbnailCb, imageProperty);
         return;
     }
 
@@ -209,7 +211,9 @@ export function fetchArticleInfoForWikidata(wikidata, defaultArticle,
                                      (source, res) => {
         if (msg.get_status() !== Soup.Status.OK) {
             log('Failed to request Wikidata entities: ' + msg.reason_phrase);
-            metadataCb(null, {});
+            if (metadataCb)
+                metadataCb(null, {});
+
             thumbnailCb(null);
             return;
         }
@@ -219,8 +223,13 @@ export function fetchArticleInfoForWikidata(wikidata, defaultArticle,
 
         _wikidataCache[wikidata] = response;
         _onWikidataFetched(wikidata, defaultArticle, response, size,
-                           metadataCb, thumbnailCb);
+                           metadataCb, thumbnailCb, imageProperty);
     });
+}
+
+export function fetchLogoImageForWikidata(wikidata, size, thumbnailCb) {
+    fetchArticleInfoForWikidata(wikidata, null, size, null, thumbnailCb,
+                                WIKIDATA_PROPERTY_LOGO_IMAGE);
 }
 
 export function fetchWikidataForArticle(wiki, cancellable, callback) {
@@ -251,24 +260,44 @@ export function fetchWikidataForArticle(wiki, cancellable, callback) {
 }
 
 function _onWikidataFetched(wikidata, defaultArticle, response, size,
-                            metadataCb, thumbnailCb) {
-    let claims = response?.entities?.[wikidata]?.claims;
-    let imageName =
-            claims?.[WIKIDATA_PROPERTY_IMAGE]?.[0]?.mainsnak?.datavalue?.value;
+                            metadataCb, thumbnailCb,
+                            imageProperty = WIKIDATA_PROPERTY_IMAGE) {
+    const property = response?.entities?.[wikidata]?.claims?.[imageProperty];
 
-    /* if the Wikidata metadata links to a title image, use that to fetch
-     * the thumbnail image
-     */
-    if (imageName) {
-        _fetchWikidataThumbnail(imageName, size, thumbnailCb);
-        thumbnailCb = null;
+    if (property) {
+        let index = 0;
+
+        /* pick an image with rank "preferred", if available, otherwise
+         * the first one listed
+         */
+        for (let i = 0; i < property.length; i++) {
+            if (property[i].rank === 'preferred') {
+                index = i;
+                break;
+            }
+        }
+
+        const imageName = property[index]?.mainsnak?.datavalue?.value;
+
+        /* if the Wikidata metadata links to a title image, use that to fetch
+         * the thumbnail image
+         */
+        if (imageName) {
+            _fetchWikidataThumbnail(imageName, size, thumbnailCb);
+            thumbnailCb = null;
+        }
     }
+
+    // if we're not requesting metadata, skip the trying to find an article
+    if (!metadataCb)
+        return;
 
     let sitelinks = response?.entities?.[wikidata]?.sitelinks;
 
     if (!sitelinks) {
         Utils.debug('No sitelinks element in response');
-        metadataCb(null, {});
+        if (metadataCb)
+            metadataCb(null, {});
         if (thumbnailCb)
             thumbnailCb(null);
         return;
@@ -283,6 +312,12 @@ function _onWikidataFetched(wikidata, defaultArticle, response, size,
          */
         if (sitelinks[language + 'wiki']) {
             let article = `${language}:${sitelinks[language + 'wiki'].title}`;
+
+            // if there's a default article, fetch image from that
+            if (defaultArticle) {
+                fetchArticleInfo(defaultArticle, size, null, thumbnailCb);
+                thumbnailCb = null;
+            }
 
             fetchArticleInfo(article, size, metadataCb, thumbnailCb);
             return;
@@ -369,7 +404,8 @@ function _onMetadataFetched(wiki, page, size, metadataCb, thumbnailCb) {
     if (langlink) {
         fetchArticleInfo(langlink, size, metadataCb, thumbnailCb);
     } else {
-        metadataCb(wiki, page);
+        if (metadataCb)
+            metadataCb(wiki, page);
 
         if (thumbnailCb) {
             thumbnailCb(null);
