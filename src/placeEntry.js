@@ -243,7 +243,7 @@ export class PlaceEntry extends Gtk.SearchEntry {
 
     _completionVisibleFunc(placeItem) {
         if (!(placeItem.place instanceof StoredRoute) ||
-            (!this._matchRoute && placeItem.type instanceof StoredRoute))
+            (!this._matchRoute && placeItem.place instanceof StoredRoute))
             return false;
 
         if (placeItem.place !== null)
