@@ -675,6 +675,9 @@ export class PlaceView extends Gtk.Box {
             this._requestWikidata(place.wikidata, defaultArticle);
         } else if (place.wiki && Wikipedia.isValidWikipedia(place.wiki)) {
             this._requestWikipedia(place.wiki);
+        } else if (place.brandWikidata &&
+                   Wikipedia.isValidWikidata(place.brandWikidata)) {
+            this._requestWikidataLogo(place.brandWikidata);
         }
 
         this.updatePlaceDetails();
@@ -692,6 +695,11 @@ export class PlaceView extends Gtk.Box {
         Wikipedia.fetchArticleInfoForWikidata(
             wikidata, defaultArticle, THUMBNAIL_FETCH_SIZE,
             this._onWikiMetadataComplete.bind(this),
+            this._onThumbnailComplete.bind(this));
+    }
+
+    _requestWikidataLogo(wikidata) {
+        Wikipedia.fetchLogoImageForWikidata(wikidata, THUMBNAIL_FETCH_SIZE,
             this._onThumbnailComplete.bind(this));
     }
 
