@@ -6,17 +6,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2024-02-14 22:30+0000\n"
-"PO-Revision-Date: 2024-02-15 18:32+0200\n"
+"POT-Creation-Date: 2024-04-23 20:23+0000\n"
+"PO-Revision-Date: 2024-04-27 11:09+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
-"Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
+"Language-Team: Ukrainian\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.04.1\n"
+"X-Generator: Lokalize 23.04.3\n"
 "X-Project-Style: gnome\n"
 
 #. Translators: This is the program name.
@@ -28,8 +28,8 @@ msgstr ""
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
-#: data/ui/main-window.ui:27 src/application.js:64 src/mainWindow.js:147
-#: src/mainWindow.js:647
+#: data/ui/main-window.ui:27 src/application.js:64 src/mainWindow.js:146
+#: src/mainWindow.js:621
 msgid "Maps"
 msgstr "Карти"
 
@@ -56,7 +56,7 @@ msgstr ""
 "осіб по всій планеті."
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.appdata.xml.in.in:451 src/mainWindow.js:644
+#: data/org.gnome.Maps.appdata.xml.in.in:469 src/mainWindow.js:618
 msgid "The GNOME Project"
 msgstr "Проєкт GNOME"
 
@@ -154,7 +154,6 @@ msgid "Number of recently visited routes to store."
 msgstr "Кількість недавно відвіданих маршрутів, які слід зберігати."
 
 #: data/org.gnome.Maps.gschema.xml:61
-#| msgid "OpenStreetMap username or e-mail address"
 msgid "OpenStreetMap username or email address"
 msgstr "Користувач або поштова скринька у OpenStreetMap"
 
@@ -187,9 +186,10 @@ msgstr "Додати проміжний пункт маршруту"
 msgid "Route to Here"
 msgstr "Маршрут сюди"
 
-#: data/ui/context-menu.ui:20
-msgid "What's Here?"
-msgstr "Що тут?"
+#: data/ui/context-menu.ui:18
+#| msgid "Print Route"
+msgid "Clear Current Route"
+msgstr "Вилучити поточний маршрут"
 
 #: data/ui/context-menu.ui:24
 msgid "Copy Location"
@@ -226,7 +226,7 @@ msgid "Add places to your favorites to get them listed here"
 msgstr "Додайте місця до улюблених, щоб їх було показано у цьому списку"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:11 src/geoclue.js:106
+#: data/ui/headerbar-left.ui:11 src/geoclue.js:106 src/placeBar.js:91
 msgid "Current Location"
 msgstr "Поточне місце"
 
@@ -354,12 +354,8 @@ msgstr "Відкрити шар форм"
 msgid "Show Scale"
 msgstr "Показувати шкалу"
 
-#: data/ui/layers-popover.ui:16
-msgid "Enable Experimental Map"
-msgstr "Увімкнути експериментальну карту"
-
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:21
+#: data/ui/layers-popover.ui:16
 msgid "Open Shape Layer…"
 msgstr "Відкрити шар форм…"
 
@@ -479,7 +475,7 @@ msgstr ""
 msgid "Recently Used"
 msgstr "Недавно вжите"
 
-#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:663
+#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:643
 msgid "Cancel"
 msgstr "Скасувати"
 
@@ -503,11 +499,11 @@ msgstr "Завантажити мітку Вікіданих для статті
 msgid "Explore Nearby Places"
 msgstr "Ознайомитися із місцями поблизу"
 
-#: data/ui/place-popover.ui:82 src/application.js:277
+#: data/ui/place-popover.ui:82 src/application.js:275
 msgid "No results found"
 msgstr "Нічого не знайдено"
 
-#: data/ui/place-popover.ui:92 src/application.js:255
+#: data/ui/place-popover.ui:92 src/application.js:253
 msgid "An error has occurred"
 msgstr "Трапилась помилка"
 
@@ -528,7 +524,7 @@ msgstr "Копіювати"
 msgid "Send To…"
 msgstr "Надіслати…"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:62
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:61
 msgid "Open Shape Layer"
 msgstr "Відкрити шар форм"
 
@@ -672,7 +668,7 @@ msgid "Zoom Out"
 msgstr "Зменшити"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1238
+#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1221
 msgid "Zoom In"
 msgstr "Збільшити"
 
@@ -717,7 +713,7 @@ msgstr "Шукати місця"
 msgid "[FILE…|URI]"
 msgstr "[ФАЙЛ…|АДРЕСА]"
 
-#: src/application.js:284
+#: src/application.js:282
 #, javascript-format
 msgid "Invalid maps: URI: %s"
 msgstr "Некоректні карти: адреса: %s"
@@ -755,52 +751,52 @@ msgstr "помилка розбирання"
 msgid "unknown geometry"
 msgstr "невідома геометрія"
 
-#: src/graphHopper.js:101 src/transitPlan.js:175
+#: src/graphHopper.js:102 src/transitPlan.js:177
 msgid "Route request failed."
 msgstr "Невдалий запит маршруту."
 
-#: src/graphHopper.js:108 src/transitPlan.js:167
+#: src/graphHopper.js:109 src/transitPlan.js:169
 msgid "No route found."
 msgstr "Не знайдено жодного маршруту."
 
-#: src/graphHopper.js:195 src/transitplugins/openTripPlanner.js:1163
+#: src/graphHopper.js:196 src/transitplugins/openTripPlanner.js:1162
 msgid "Start!"
 msgstr "Нумо!"
 
-#: src/mainWindow.js:59
+#: src/mainWindow.js:58
 msgid "All Layer Files"
 msgstr "Усі файли шарів"
 
-#: src/mainWindow.js:522
+#: src/mainWindow.js:507
 msgid "Failed to connect to location service"
 msgstr "Не вдалося з'єднатись зі службою розташування"
 
-#: src/mainWindow.js:527
+#: src/mainWindow.js:512
 msgid "Turn on location services"
 msgstr "Увімкнути служби місця перебування"
 
-#: src/mainWindow.js:528
+#: src/mainWindow.js:513
 msgid "Location Settings"
 msgstr "Параметри розташування"
 
-#: src/mainWindow.js:645
+#: src/mainWindow.js:619
 msgid "translator-credits"
 msgstr "Daniel Korostil <ted.korostiled@gmail.com>"
 
-#: src/mainWindow.js:649
+#: src/mainWindow.js:623
 msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "© Red Hat, Inc. та розробники «Карт» GNOME, 2011–2023"
 
-#: src/mainWindow.js:665
+#: src/mainWindow.js:637
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Дані карт надано %s та учасниками проєкту"
 
-#: src/mainWindow.js:666
+#: src/mainWindow.js:638
 msgid "Map Data Provider"
 msgstr "Надавач даних карти"
 
-#: src/mainWindow.js:678
+#: src/mainWindow.js:641
 msgid "Map Tile Provider"
 msgstr "Надавач блоків карти"
 
@@ -809,29 +805,29 @@ msgstr "Надавач блоків карти"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:686
+#: src/mainWindow.js:649
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Блоки карти надано %s"
 
-#: src/mainWindow.js:716
+#: src/mainWindow.js:678
 msgid "Search Provider"
 msgstr "Надавач пошуку"
 
-#: src/mainWindow.js:719
+#: src/mainWindow.js:681
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Послуги з пошуку надано %s, використовуємо %s"
 
-#: src/mapView.js:637 src/mapView.js:702
+#: src/mapView.js:617 src/mapView.js:682
 msgid "Failed to open layer"
 msgstr "Не вдалося відкрити шар"
 
-#: src/mapView.js:656
+#: src/mapView.js:636
 msgid "Do you want to continue?"
 msgstr "Продовжити?"
 
-#: src/mapView.js:657
+#: src/mapView.js:637
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -840,28 +836,24 @@ msgstr ""
 "Ви маєте намір відкрити файли, загальний розмір яких дорівнює %s МБ. Процес "
 "завантаження цих файлів може бути досить тривалим."
 
-#: src/mapView.js:664 src/transitplugins/openTripPlanner.js:1239
+#: src/mapView.js:644 src/transitplugins/openTripPlanner.js:1238
 #: src/transitplugins/openTripPlanner2.js:267
 msgid "Continue"
 msgstr "Продовжуйте"
 
-#: src/mapView.js:696
+#: src/mapView.js:676
 msgid "File type is not supported"
 msgstr "Тип файла не підтримується"
 
-#: src/mapView.js:733
+#: src/mapView.js:718
 msgid "Failed to open GeoURI"
 msgstr "Не вдалося відкрити GeoURI"
 
-#: src/mapView.js:1197
-msgid "Nothing found here!"
-msgstr "Тут нічого немає!"
-
-#: src/mapView.js:1237
+#: src/mapView.js:1220
 msgid "Zoom in to add location"
 msgstr "Наблизьтесь, щоб додати місце"
 
-#: src/mapView.js:1258
+#: src/mapView.js:1241
 msgid "Location was added in OpenStreetMap"
 msgstr "Місце було додано в OpenStreetMap"
 
@@ -944,14 +936,11 @@ msgstr ""
 "плюса (+). Будь обачні з місцевим законами щодо конфіденційності, особливо "
 "особистими номерами."
 
-#: src/osmEditDialog.js:139
-msgid "E-mail"
-msgstr "Ел. пошта"
+#: src/osmEditDialog.js:139 src/placeView.js:308
+msgid "Email"
+msgstr "Пошта"
 
 #: src/osmEditDialog.js:144
-#| msgid ""
-#| "This is not a valid e-mail address. Make sure to not include the mailto: "
-#| "protocol prefix."
 msgid ""
 "This is not a valid email address. Make sure to not include the mailto: "
 "protocol prefix."
@@ -960,9 +949,6 @@ msgstr ""
 "протоколу mailto:."
 
 #: src/osmEditDialog.js:145
-#| msgid ""
-#| "Contact e-mail address for inquiries. Add only email addresses that are "
-#| "intended to be publicly used."
 msgid ""
 "Contact email address for inquiries. Add only email addresses that are "
 "intended to be publicly used."
@@ -999,7 +985,6 @@ msgid "Altitude"
 msgstr "Висота"
 
 #: src/osmEditDialog.js:172
-#| msgid "Elevation (height above sea level) of a point in metres."
 msgid "Elevation (height above sea level) of a point in meters."
 msgstr "Висота (над рівнем моря) у метрах."
 
@@ -1197,11 +1182,11 @@ msgstr "Не вдалося знайти мітку Вікіданих для с
 msgid "Unnamed place"
 msgstr "Місце без назви"
 
-#: src/placeEntry.js:274
+#: src/placeEntry.js:279
 msgid "Failed to parse Geo URI"
 msgstr "Не вдалося розібрати геопосилання"
 
-#: src/placeEntry.js:286
+#: src/placeEntry.js:291
 msgid "Failed to parse Maps URI"
 msgstr "Не вдалося розібрати адресу «Карт»"
 
@@ -1242,10 +1227,6 @@ msgstr "Точність: %s"
 #: src/placeView.js:289
 msgid "Phone number"
 msgstr "Номер телефону"
-
-#: src/placeView.js:308
-msgid "Email"
-msgstr "Пошта"
 
 #. If a reference to a named floor (named or symbolic) exists
 #. * refer to it directly.
@@ -1426,15 +1407,15 @@ msgstr "На рівні моря"
 msgid "Religion:"
 msgstr "Релігія:"
 
-#: src/place.js:568
+#: src/place.js:585
 msgid "Place not found in OpenStreetMap"
 msgstr "Місце не знайдено на OpenStreetMap"
 
-#: src/place.js:575
+#: src/place.js:592
 msgid "Coordinates in URL are not valid"
 msgstr "Координати у адресі є некоректними"
 
-#: src/place.js:584
+#: src/place.js:601
 msgid "URL is not supported"
 msgstr "Підтримки адреси не передбачено"
 
@@ -1702,7 +1683,7 @@ msgstr "Гімнастичні майданчики"
 msgid "Golf Courses"
 msgstr "Поля для гольфу"
 
-#: src/printLayout.js:350
+#: src/printLayout.js:222
 #, javascript-format
 msgid "From %s to %s"
 msgstr "З %s до %s"
@@ -1759,12 +1740,12 @@ msgid "failed to load file"
 msgstr "не вдалося завантажити файл"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:328
+#: src/sidebar.js:323
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Розрахунковий час: %s"
 
-#: src/sidebar.js:398
+#: src/sidebar.js:393
 #, javascript-format
 msgid "Itineraries provided by %s"
 msgstr "Маршрути надано %s"
@@ -1801,7 +1782,7 @@ msgstr "Прогулянка %s"
 msgid "Arrive at %s"
 msgstr "Прибуває до %s"
 
-#: src/transit.js:79 src/transitplugins/openTripPlanner.js:1176
+#: src/transit.js:79 src/transitplugins/openTripPlanner.js:1175
 #: src/transitplugins/openTripPlanner2.js:255
 msgid "Arrive"
 msgstr "Прибуває"
@@ -1839,11 +1820,11 @@ msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e %b"
 
-#: src/transitPlan.js:171
+#: src/transitPlan.js:173
 msgid "No timetable data found for this route."
 msgstr "Немає даних про цей маршрут."
 
-#: src/transitPlan.js:179
+#: src/transitPlan.js:181
 msgid "No provider found for this route."
 msgstr "Для цього маршруту не знайдено надавачів даних."
 
@@ -1852,7 +1833,7 @@ msgstr "Для цього маршруту не знайдено надавач�
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:300
+#: src/transitPlan.js:302
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -1861,7 +1842,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: src/transitPlan.js:331
+#: src/transitPlan.js:333
 #, javascript-format
 msgid "%s minute"
 msgid_plural "%s minutes"
@@ -1874,7 +1855,7 @@ msgstr[3] "%s хвилина"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: src/transitPlan.js:343
+#: src/transitPlan.js:345
 #, javascript-format
 msgid "%s hour"
 msgid_plural "%s hours"
@@ -1887,7 +1868,7 @@ msgstr[3] "%s година"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: src/transitPlan.js:351
+#: src/transitPlan.js:353
 #, javascript-format
 msgid "%s:%s hour"
 msgid_plural "%s:%s hours"
@@ -1902,7 +1883,7 @@ msgstr[3] "%s:%s година"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:744
+#: src/transitPlan.js:746
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -2087,127 +2068,139 @@ msgid "This plugin doesn't support latest arrival"
 msgstr ""
 "У цьому додатку не передбачено підтримки визначення найпізнішого прибуття"
 
-#: src/transitplugins/openTripPlanner.js:1237
+#: src/transitplugins/openTripPlanner.js:1236
 #: src/transitplugins/openTripPlanner2.js:266
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Продовжуйте на %s"
 
-#: src/transitplugins/openTripPlanner.js:1242
+#: src/transitplugins/openTripPlanner.js:1241
 #: src/transitplugins/openTripPlanner2.js:270
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Поверніть ліворуч на %s"
 
-#: src/transitplugins/openTripPlanner.js:1244
+#: src/transitplugins/openTripPlanner.js:1243
 #: src/transitplugins/openTripPlanner2.js:271
 msgid "Turn left"
 msgstr "Поверніть ліворуч"
 
-#: src/transitplugins/openTripPlanner.js:1247
+#: src/transitplugins/openTripPlanner.js:1246
 #: src/transitplugins/openTripPlanner2.js:275
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Поверніть трохи ліворуч на %s"
 
-#: src/transitplugins/openTripPlanner.js:1249
+#: src/transitplugins/openTripPlanner.js:1248
 #: src/transitplugins/openTripPlanner2.js:276
 msgid "Turn slightly left"
 msgstr "Поверніть трохи ліворуч"
 
-#: src/transitplugins/openTripPlanner.js:1252
+#: src/transitplugins/openTripPlanner.js:1251
 #: src/transitplugins/openTripPlanner2.js:280
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Поверніть строго ліворуч на %s"
 
-#: src/transitplugins/openTripPlanner.js:1254
+#: src/transitplugins/openTripPlanner.js:1253
 #: src/transitplugins/openTripPlanner2.js:281
 msgid "Turn sharp left"
 msgstr "Різко поверніть ліворуч"
 
-#: src/transitplugins/openTripPlanner.js:1257
+#: src/transitplugins/openTripPlanner.js:1256
 #: src/transitplugins/openTripPlanner2.js:284
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Поверніть праворуч на %s"
 
-#: src/transitplugins/openTripPlanner.js:1259
+#: src/transitplugins/openTripPlanner.js:1258
 #: src/transitplugins/openTripPlanner2.js:285
 msgid "Turn right"
 msgstr "Поверніть праворуч"
 
-#: src/transitplugins/openTripPlanner.js:1262
+#: src/transitplugins/openTripPlanner.js:1261
 #: src/transitplugins/openTripPlanner2.js:289
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Поверніть трохи праворуч на %s"
 
-#: src/transitplugins/openTripPlanner.js:1264
+#: src/transitplugins/openTripPlanner.js:1263
 #: src/transitplugins/openTripPlanner2.js:290
 msgid "Turn slightly right"
 msgstr "Поверніть трохи праворуч"
 
-#: src/transitplugins/openTripPlanner.js:1267
+#: src/transitplugins/openTripPlanner.js:1266
 #: src/transitplugins/openTripPlanner2.js:294
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Різко поверніть праворуч на %s"
 
-#: src/transitplugins/openTripPlanner.js:1269
+#: src/transitplugins/openTripPlanner.js:1268
 #: src/transitplugins/openTripPlanner2.js:295
 msgid "Turn sharp right"
 msgstr "Різко поверніть праворуч"
 
-#: src/transitplugins/openTripPlanner.js:1275
+#: src/transitplugins/openTripPlanner.js:1274
 #: src/transitplugins/openTripPlanner2.js:302
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "На розвороті виберіть виїзд %s"
 
-#: src/transitplugins/openTripPlanner.js:1277
+#: src/transitplugins/openTripPlanner.js:1276
 #: src/transitplugins/openTripPlanner2.js:305
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "На розвороті виберіть виїзд до %s"
 
-#: src/transitplugins/openTripPlanner.js:1279
+#: src/transitplugins/openTripPlanner.js:1278
 #: src/transitplugins/openTripPlanner2.js:307
 msgid "Take the roundabout"
 msgstr "В'їжджайте на розворот"
 
-#: src/transitplugins/openTripPlanner.js:1283
+#: src/transitplugins/openTripPlanner.js:1282
 #: src/transitplugins/openTripPlanner2.js:315
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Увійдіть до ліфта і вийдіть на %s"
 
-#: src/transitplugins/openTripPlanner.js:1285
+#: src/transitplugins/openTripPlanner.js:1284
 #: src/transitplugins/openTripPlanner2.js:316
 msgid "Take the elevator"
 msgstr "Увійдіть до ліфта"
 
-#: src/transitplugins/openTripPlanner.js:1289
+#: src/transitplugins/openTripPlanner.js:1288
 #: src/transitplugins/openTripPlanner2.js:320
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Виконайте лівий розворот на %s"
 
-#: src/transitplugins/openTripPlanner.js:1291
+#: src/transitplugins/openTripPlanner.js:1290
 #: src/transitplugins/openTripPlanner2.js:321
 msgid "Make a left u-turn"
 msgstr "Виконайте лівий розворот"
 
-#: src/transitplugins/openTripPlanner.js:1294
+#: src/transitplugins/openTripPlanner.js:1293
 #: src/transitplugins/openTripPlanner2.js:325
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Виконайте правий розворот на %s"
 
-#: src/transitplugins/openTripPlanner.js:1296
+#: src/transitplugins/openTripPlanner.js:1295
 #: src/transitplugins/openTripPlanner2.js:326
 msgid "Make a right u-turn"
 msgstr "Виконайте правий розворот"
+
+#~ msgid "What's Here?"
+#~ msgstr "Що тут?"
+
+#~ msgid "Enable Experimental Map"
+#~ msgstr "Увімкнути експериментальну карту"
+
+#~ msgid "Nothing found here!"
+#~ msgstr "Тут нічого немає!"
+
+#~ msgid "E-mail"
+#~ msgstr "Ел. пошта"
 
 #~ msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
 #~ msgstr ""
