@@ -138,7 +138,7 @@ export class PlaceButtons extends Gtk.Box {
             dialog.show();
             dialog.connect('response', (dialog, response) => {
                 dialog.destroy();
-                if (response === OSMAccountDialog.Response.SIGNED_IN)
+                if (osmEdit.isSignedIn)
                     this._edit();
                 else
                     this._popup();
