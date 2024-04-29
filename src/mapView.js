@@ -1201,7 +1201,7 @@ export class MapView extends Gtk.Overlay {
             dialog.show();
             dialog.connect('response', (dialog, response) => {
                 dialog.destroy();
-                if (response === OSMAccountDialog.Response.SIGNED_IN)
+                if (osmEdit.isSignedIn)
                     this._addOSMLocation();
             });
 
