@@ -351,6 +351,7 @@ export const DEFS = {
             },
             barrier: {
                 bollard: false,
+                cycle_barrier: ["gate-symbolic", "traffix", 17, 0.75],
                 gate: ["gate-symbolic", "traffic", 17, 0.75],
                 lift_gate: ["gate-symbolic", "traffic", 17, 0.75],
             },
