@@ -32,7 +32,9 @@ const [_status, _buffer] = _file.load_contents(null);
 const OSM_TYPE_MAP = JSON.parse(Utils.getBufferText(_buffer));
 
 /* Lists the OSM tags we base our notion of location types on */
-export const OSM_TYPE_TAGS = ['aeroway', 'amenity', 'leisure', 'office', 'place', 'shop', 'tourism' ];
+export const OSM_TYPE_TAGS = ['aerialway', 'aeroway', 'amenity', 'barrier',
+                              'highway', 'historic', 'leisure', 'office', 'place',
+                              'railway', 'shop', 'tourism'];
 
 /* Sort function comparing two type values according to the locale-specific
  * comparison of the type title */
