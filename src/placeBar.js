@@ -23,9 +23,11 @@ import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
 import {Application} from './application.js';
+import { lookupType } from './osmTypes.js';
 import {PlaceButtons} from './placeButtons.js';
 import {PlaceDialog} from './placeDialog.js';
 import {PlaceFormatter} from './placeFormatter.js';
+import * as PlaceIcons from './placeIcons.js';
 import {PlaceView} from './placeView.js';
 import * as Utils from './utils.js';
 import { Place } from './place.js';
@@ -85,8 +87,17 @@ export class PlaceBar extends Gtk.Revealer {
          * which are not stored in the place store
          */
         if (this.place.store) {
-            let formatter = new PlaceFormatter(this.place);
-            this._title.label = formatter.title;
+            const title = new PlaceFormatter(this.place).title;
+            const typeName = lookupType(this.place.osmKey, this.place.osmValue);
+
+            this._title.label = title ?? typeName;
+
+            if (typeName) {
+                this._icon.icon_name = PlaceIcons.getIconForPlace(this.place);
+                this._icon.visible = true;
+            } else {
+                this._icon.visible = false;
+            }
         } else if (this.place.isCurrentLocation) {
             this._title.label = _('Current Location');
         } else {
@@ -141,6 +152,7 @@ GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/place-bar.ui',
     InternalChildren: [ 'altSendToButton',
                         'box',
+                        'icon',
                         'title' ],
     Properties: {
         'place': GObject.ParamSpec.object('place',
