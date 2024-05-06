@@ -33,11 +33,16 @@ import Gio from 'gi://Gio';
 
 const PRESETS_PATH = 'data/presets';
 const LOCALES_PATH = 'dist/translations';
-const PRESET_TYPES = [ 'aeroway',
+const PRESET_TYPES = [ 'aerialway',
+                       'aeroway',
                        'amenity',
+                       'barrier',
+                       'highway',
+                       'historic',
                        'leisure',
                        'office',
                        'place',
+                       'railway',
                        'shop',
                        'tourism' ];
 
