@@ -22,7 +22,6 @@
 import GeocodeGlib from 'gi://GeocodeGlib';
 
 import {StoredRoute} from './storedRoute.js';
-import { lookupType } from './osmTypes.js';
 
 export class PlaceFormatter {
 
@@ -43,11 +42,8 @@ export class PlaceFormatter {
         // For the 'name' property we split after comma to avoid
         // duplicating information in the title from the Geocode
         // display name.
-        if (this._titleProperty === 'name') {
+        if (this._titleProperty === 'name')
             title = this._place[this._titleProperty]?.split(',')[0];
-            if (!title)
-                title = lookupType(this._place.osmKey, this._place.osmValue);
-        }
         else
             title = this.place[this._titleProperty];
 
