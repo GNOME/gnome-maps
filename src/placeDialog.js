@@ -22,6 +22,7 @@
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
+import { lookupType } from './osmTypes.js';
 import {PlaceFormatter} from './placeFormatter.js';
 import {PlaceView} from './placeView.js';
 
@@ -49,8 +50,10 @@ export class PlaceDialog extends Gtk.Dialog {
                                           visible: true });
         this._scroll.child = this._placeView;
 
-        let formatter = new PlaceFormatter(place);
-        this.title = formatter.title;
+        const title = new PlaceFormatter(place).title ??
+                      lookupType(place.osmKey, place.osmValue);
+
+        this.title = title;
     }
 }
 
