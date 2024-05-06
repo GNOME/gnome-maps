@@ -32,6 +32,7 @@ const Format = imports.format;
 
 import {Application} from './application.js';
 import {Overpass} from './overpass.js';
+import { lookupType } from './osmTypes.js';
 import {Place} from './place.js';
 import * as PlaceIcons from './placeIcons.js';
 import {PlaceViewImage} from './placeViewImage.js';
@@ -67,7 +68,9 @@ export class PlaceView extends Gtk.Box {
                                                    'bubble-thumbnail',
                                                    'thumbnail-separator',
                                                    'label-title',
+                                                   'label-icon',
                                                    'native-name',
+                                                   'source-icon',
                                                    'source-label',
                                                    'source-box',
                                                    'address-label',
@@ -77,7 +80,9 @@ export class PlaceView extends Gtk.Box {
                                                    'send-to-button-alt',
                                                    'title-box' ]);
         this._title = ui.labelTitle;
+        this._icon = ui.labelIcon;
         this._nativeName = ui.nativeName;
+        this._sourceIcon = ui.sourceIcon;
         this._sourceLabel = ui.sourceLabel;
         this._sourceBox = ui.sourceBox;
         this._thumbnail = ui.bubbleThumbnail;
@@ -204,7 +209,22 @@ export class PlaceView extends Gtk.Box {
             this._addressLabel.hide();
         }
 
-        this._title.label = formatter.title;
+        const title = formatter.title;
+        const typeName = lookupType(place.osmKey, place.osmValue);
+
+        /* if the place has a title, show it, otherwise if there's a known
+         * place type name, show that together with a place type icon
+         */
+        if (title) {
+            this._title.label = formatter.title;
+            this._icon.visible = false;
+        } else if (typeName) {
+            this._title.label = typeName;
+            this._icon.icon_name = PlaceIcons.getIconForPlace(place);
+            this._icon.visible = true;
+        } else {
+            this._icon.visible = false;
+        }
 
         /* hide native name by default, so that it is only shown when it
          * should, in case it changed when re-applying changes from Overpass.
@@ -227,8 +247,17 @@ export class PlaceView extends Gtk.Box {
                 this._nativeName.visible = true;
         }
 
+        /* show the source (for shapelayer points), or if there has a known type
+         * name, show it with the corresponding type icon, unless the place
+         * has no title, as in this case the type name would be shown
+         * in place of the title
+         */
         if (place.source) {
             this._sourceLabel.label = place.source;
+            this._sourceBox.visible = true;
+        } else if (title && typeName && place.osmKey !== 'place') {
+            this._sourceLabel.label = typeName;
+            this._sourceIcon.icon_name = PlaceIcons.getIconForPlace(place);
             this._sourceBox.visible = true;
         } else {
             this._sourceBox.visible = false;
