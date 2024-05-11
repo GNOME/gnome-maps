@@ -27,14 +27,13 @@ import {Plan} from './transitPlan.js';
 import * as Utils from './utils.js';
 
 // plugins
-import {GoMetro} from './transitplugins/goMetro.js';
 import {OpendataCH} from './transitplugins/opendataCH.js';
 import {OpenTripPlanner} from './transitplugins/openTripPlanner.js';
 import {OpenTripPlanner2} from './transitplugins/openTripPlanner2.js';
 import {Resrobot} from './transitplugins/resrobot.js';
 
 const ALL_PLUGINS =
-    ["GoMetro", "OpendataCH", "OpenTripPlanner", "OpenTripPlanner2", "Resrobot"];
+    ["OpendataCH", "OpenTripPlanner", "OpenTripPlanner2", "Resrobot"];
 
 const _file = Gio.file_new_for_uri('resource://org/gnome/Maps/transit-providers.json');
 const [_status, _buffer] = _file.load_contents(null);
