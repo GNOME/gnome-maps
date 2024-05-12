@@ -26,6 +26,7 @@ import Gtk from 'gi://Gtk';
 import {PlaceFormatter} from './placeFormatter.js';
 import * as Utils from './utils.js';
 import { Application } from './application.js';
+import {lookupType} from './osmTypes.js';
 
 const C_ = gettext.dgettext;
 
@@ -63,8 +64,11 @@ export class PlaceListRow extends Gtk.ListBoxRow {
      */
     update(place, searchString) {
         this.place = place;
-        let formatter = new PlaceFormatter(this.place);
-        let markup = GLib.markup_escape_text(formatter.title, -1);
+        const formatter = new PlaceFormatter(this.place);
+        const title = formatter.title ?? place.streetAddress ??
+                      lookupType(this.place.osmKey, this.place.osmValue) ??
+                      _("Unnamed place");
+        const markup = GLib.markup_escape_text(title, -1);
 
         this._name.label = this._boldMatch(markup, searchString);
         this._details.label = GLib.markup_escape_text(formatter.getDetailsString(),-1);
