@@ -192,11 +192,14 @@ export class Place extends GObject.Object {
     }
 
     get street() {
-        return this.osmTags?.['addr:street'] ?? this._street;
+        return this.osmTags?.['contact:street'] ??
+               this.osmTags?.['addr:street'] ??
+               this._street;
     }
 
     get houseNumber() {
-        return this.osmTags?.['addr:housenumber'];
+        return this.osmTags?.['contact:housenumber'] ??
+               this.osmTags?.['addr:housenumber'];
     }
 
     get building() {
@@ -208,7 +211,9 @@ export class Place extends GObject.Object {
     }
 
     get postalCode() {
-        return this.osmTags?.['addr:postcode'] ?? this._postalCode;
+        return this.osmTags?.['contact:postcode'] ??
+               this.osmTags?.['addr:postcode'] ??
+               this._postalCode;
     }
 
     get area() {
@@ -216,7 +221,9 @@ export class Place extends GObject.Object {
     }
 
     get town() {
-        return this.osmTags?.['addr:city'] ?? this._town;
+        return this.osmTags?.['contact:city'] ??
+               this.osmTags?.['addr:city'] ??
+               this._town;
     }
 
     get state() {
@@ -232,7 +239,9 @@ export class Place extends GObject.Object {
     }
 
     get countryCode() {
-        let result = this.osmTags?.['addr:country'] ?? this._countryCode;
+        let result = this.osmTags?.['contact:country'] ??
+                     this.osmTags?.['addr:country'] ??
+                     this._countryCode;
         if (result)
             return result;
 
