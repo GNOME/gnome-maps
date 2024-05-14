@@ -27,13 +27,15 @@ import {Plan} from './transitPlan.js';
 import * as Utils from './utils.js';
 
 // plugins
+import {Motis} from './transitplugins/motis.js';
 import {OpendataCH} from './transitplugins/opendataCH.js';
 import {OpenTripPlanner} from './transitplugins/openTripPlanner.js';
 import {OpenTripPlanner2} from './transitplugins/openTripPlanner2.js';
 import {Resrobot} from './transitplugins/resrobot.js';
+import {Transitous} from './transitplugins/transitous.js';
 
 const ALL_PLUGINS =
-    ["OpendataCH", "OpenTripPlanner", "OpenTripPlanner2", "Resrobot"];
+    ["Motis", "OpendataCH", "OpenTripPlanner", "OpenTripPlanner2", "Resrobot", "Transitous"];
 
 const _file = Gio.file_new_for_uri('resource://org/gnome/Maps/transit-providers.json');
 const [_status, _buffer] = _file.load_contents(null);
@@ -86,6 +88,13 @@ export class TransitRouter {
                 this._plan.attribution = this._getAttributionForProvider(provider);
                 if (provider.attributionUrl)
                     this._plan.attributionUrl = provider.attributionUrl;
+            } else {
+                Utils.debug('Falling back to Transitous');
+                if (!this._transitousInstance)
+                    this._transitousInstance = new Transitous();
+                this._currPluginInstance = this._transitousInstance;
+                this._plan.attribution = 'Transitous';
+                this._plan.attributionUrl = 'https://transitous.org';
             }
         }
 
@@ -132,6 +141,9 @@ export class TransitRouter {
         this._providers.forEach((p) => {
             let provider = p.provider;
             let areas = provider.areas;
+
+            if (provider.name === 'last')
+                return;
 
             if (!areas) {
                 Utils.debug('No coverage info for provider ' + provider.name);
@@ -203,6 +215,9 @@ export class TransitRouter {
             let providerAtStart = matchingProvidersForStart[name];
             let providerAtEnd = matchingProvidersForEnd[name];
 
+            if (name === 'last')
+                continue;
+
             /* if the provider also matches on the end location, consider it
              * as a potential candidate
              */
@@ -241,7 +256,6 @@ export class TransitRouter {
             }
         }
 
-        Utils.debug('No suitable transit provider found');
         return null;
     }
 
