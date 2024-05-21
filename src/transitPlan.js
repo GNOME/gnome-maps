@@ -785,6 +785,18 @@ export class Stop {
         return this._coordinate;
     }
 
+    get arrival() {
+        return this._arrival;
+    }
+
+    get departure() {
+        return this._departure;
+    }
+
+    get agencyTimezoneOffset() {
+        return this._agencyTimezoneOffset;
+    }
+
     prettyPrint(params) {
         if (params.isFinal) {
             /* take the stop arrival time and offset using the timezone
