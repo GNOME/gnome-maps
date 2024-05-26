@@ -40,7 +40,7 @@ export class FavoriteListRow extends PlaceListRow {
     _onRemoveClicked() {
         const undoToast =
             new Adw.Toast({ title:        _("Favorite removed"),
-                            button_label: _("Undo") });
+                            button_label: _("_Undo") });
 
         undoToast.connect('button-clicked', () => {
             this._placeItem.isFavorite = true;
