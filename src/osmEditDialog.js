@@ -512,7 +512,8 @@ export class OSMEditDialog extends Gtk.Dialog {
 
     _switchToUpload() {
         this._stack.set_visible_child_name('upload');
-        this._nextButton.label = _("Done");
+        this._nextButton.label = _("_Done");
+        this._nextButton.use_underline = true;
         this._cancelButton.visible = false;
         this._backButton.visible = true;
         this._cancelButton.visible = false;
@@ -579,6 +580,7 @@ export class OSMEditDialog extends Gtk.Dialog {
 
     _addOSMEditDeleteButton(fieldSpec) {
         let deleteButton = Gtk.Button.new_from_icon_name('user-trash-symbolic');
+        deleteButton.tooltip_text = _("Remove");
         let styleContext = deleteButton.get_style_context();
         let rows = fieldSpec.rows || 1;
 
@@ -672,6 +674,7 @@ export class OSMEditDialog extends Gtk.Dialog {
 
         if (fieldSpec.hint) {
             entry.secondary_icon_name = 'dialog-information-symbolic';
+            entry.secondary_icon_tooltip_text = _("More Information");
             entry.connect('icon-press', (entry, iconPos, event) => {
                 if (fieldSpec.validate && entry.text !== '' &&
                     !fieldSpec.validate(entry.text)) {

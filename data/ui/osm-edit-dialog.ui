@@ -105,8 +105,9 @@
                                 <property name="focusable">1</property>
                                 <property name="popover">addFieldPopover</property>
                                 <property name="direction">up</property>
-                                <property name="label" translatable="yes">Add Field</property>
+                                <property name="label" translatable="yes">_Add Field</property>
                                 <property name="always-show-arrow">True</property>
+                                <property name="use-underline">True</property>
                               </object>
                             </child>
                           </object>
@@ -222,12 +223,14 @@ OpenStreetMap data.</property>
         <property name="show-title-buttons">0</property>
         <child type="start">
           <object class="GtkButton" id="cancelButton">
-            <property name="label" translatable="yes">Cancel</property>
+            <property name="label" translatable="yes">_Cancel</property>
             <property name="focusable">1</property>
+            <property name="use-underline">True</property>
           </object>
         </child>
         <child type="start">
           <object class="GtkButton" id="backButton">
+            <property name="tooltip-text" translatable="yes">Back</property>
             <property name="visible">0</property>
             <property name="focusable">1</property>
             <property name="icon-name">go-previous-symbolic</property>
@@ -235,10 +238,11 @@ OpenStreetMap data.</property>
         </child>
         <child type="end">
           <object class="GtkButton" id="nextButton">
-            <property name="label" translatable="yes">Next</property>
+            <property name="label" translatable="yes">_Next</property>
             <property name="sensitive">0</property>
             <property name="focusable">1</property>
             <property name="receives_default">1</property>
+            <property name="use-underline">True</property>
             <style>
               <class name="suggested-action"/>
             </style>
