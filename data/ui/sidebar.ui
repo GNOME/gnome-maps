@@ -14,6 +14,7 @@
         <property name="margin-top">12</property>
         <child>
           <object class="GtkToggleButton" id="modePedestrianToggle">
+            <property name="tooltip-text" translatable="yes">Walking</property>
             <property name="name">mode-pedestrian-toggle</property>
             <property name="receives_default">1</property>
             <property name="height-request">32</property>
@@ -26,6 +27,7 @@
         </child>
         <child>
           <object class="GtkToggleButton" id="modeBikeToggle">
+            <property name="tooltip-text" translatable="yes">Cycling</property>
             <property name="name">mode-bike-toggle</property>
             <property name="receives_default">1</property>
             <property name="group">modePedestrianToggle</property>
@@ -39,6 +41,7 @@
         </child>
         <child>
           <object class="GtkToggleButton" id="modeCarToggle">
+            <property name="tooltip-text" translatable="yes">Driving</property>
             <property name="name">mode-car-toggle</property>
             <property name="receives_default">1</property>
             <property name="active">1</property>
@@ -53,6 +56,7 @@
         </child>
         <child>
           <object class="GtkToggleButton" id="modeTransitToggle">
+            <property name="tooltip-text" translatable="yes">Transit</property>
             <property name="name">mode-transit-toggle</property>
             <property name="receives_default">1</property>
             <property name="group">modeCarToggle</property>
@@ -237,6 +241,7 @@
                 </child>
                 <child>
                   <object class="GtkMenuButton">
+                    <property name="tooltip-text" translatable="yes">More Information</property>
                     <property name="popover">transitDisclaimerPopover</property>
                     <property name="halign">end</property>
                     <property name="margin-top">6</property>
@@ -293,6 +298,7 @@ Names and brands shown are to be considered as registered trademarks when applic
         <property name="margin-bottom">6</property>
         <property name="halign">start</property>
         <property name="icon-name">go-previous-symbolic</property>
+        <property name="tooltip-text" translatable="yes">Back</property>
         <layout>
           <property name="column">0</property>
           <property name="row">0</property>
