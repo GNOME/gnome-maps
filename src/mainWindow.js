@@ -608,7 +608,7 @@ export class MainWindow extends Adw.ApplicationWindow {
     }
 
     _onAboutActivate() {
-        let about = new Adw.AboutWindow({
+        let about = new Adw.AboutDialog({
             designers: [ 'Jakub Steiner <jimmac@gmail.com>',
                          'Andreas Nilsson <nisses.mail@home.se>' ],
             developers: [ 'Zeeshan Ali (Khattak) <zeeshanak@gnome.org>',
@@ -624,13 +624,12 @@ export class MainWindow extends Adw.ApplicationWindow {
             license_type: Gtk.License.GPL_2_0,
             version: pkg.version,
             website: 'https://apps.gnome.org/Maps/',
-            issue_url: 'https://gitlab.gnome.org/GNOME/gnome-maps/-/issues/new',
-            transient_for: this
+            issue_url: 'https://gitlab.gnome.org/GNOME/gnome-maps/-/issues/new'
         });
 
         this._addAttribution(about);
 
-        about.present();
+        about.present(this);
     }
 
     _addAttribution(about) {
