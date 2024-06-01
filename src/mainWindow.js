@@ -624,7 +624,7 @@ export class MainWindow extends Adw.ApplicationWindow {
             license_type: Gtk.License.GPL_2_0,
             version: pkg.version,
             website: 'https://apps.gnome.org/Maps/',
-            issue_url: 'https://gitlab.gnome.org/GNOME/gnome-maps/-/issues/new'
+            issue_url: 'https://gitlab.gnome.org/GNOME/gnome-maps/-/issues/'
         });
 
         this._addAttribution(about);
