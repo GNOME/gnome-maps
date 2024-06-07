@@ -145,15 +145,14 @@ export class PlaceButtons extends Gtk.Box {
         let osmEdit = Application.osmEdit;
         /* if the user is not already signed in, show the account dialog */
         if (!osmEdit.isSignedIn) {
-            let dialog = osmEdit.createAccountDialog(this.get_root(), true);
+            let dialog = osmEdit.createAccountDialog(true);
 
             /* on GTK 4 the popover gets overlayead over the dialog,
              * so close the popover when not in adaptive mode
              */
             this._popdown();
-            dialog.show();
+            dialog.present(this.get_root());
             dialog.connect('response', (dialog, response) => {
-                dialog.destroy();
                 if (osmEdit.isSignedIn)
                     this._edit();
                 else

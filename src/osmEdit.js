@@ -60,10 +60,8 @@ export class OSMEdit {
         return dialog;
     }
 
-    createAccountDialog(parentWindow, closeOnSignIn) {
+    createAccountDialog(closeOnSignIn) {
         let dialog = new OSMAccountDialog({
-            transient_for: parentWindow,
-            modal: true,
             closeOnSignIn: closeOnSignIn
         });
 

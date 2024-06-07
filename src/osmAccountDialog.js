@@ -26,14 +26,14 @@ import Adw from 'gi://Adw';
 import {Application} from './application.js';
 import * as Utils from './utils.js';
 
-export class OSMAccountDialog extends Adw.Window {
+export class OSMAccountDialog extends Adw.Dialog {
 
     static Response = { SIGNED_IN: 0 };
 
     constructor({closeOnSignIn, ...params}) {
         super({...params});
 
-        this.connect('close-request', () => this.emit('response', this.response));
+        this.connect('closed', () => this.emit('response', this.response));
 
         this._closeOnSignIn = closeOnSignIn;
 

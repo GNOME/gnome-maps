@@ -108,10 +108,9 @@ export class Application extends Adw.Application {
 
     _onOsmAccountSetupActivate() {
         let dialog =
-            Application.osmEdit.createAccountDialog(this._mainWindow, false);
+            Application.osmEdit.createAccountDialog(false);
 
-        dialog.show();
-        dialog.connect('response', () => dialog.destroy());
+        dialog.present(this._mainWindow);
     }
 
     _onSearchActivate(action, parameter) {
