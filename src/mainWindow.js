@@ -49,34 +49,6 @@ const _ = gettext.gettext;
 const _CONFIGURE_ID_TIMEOUT = 100; // msecs
 const _PLACE_ENTRY_MARGIN = 36;
 
-class ShapeLayerFileChooser extends Gtk.FileChooserNative {
-
-    constructor(params) {
-        super(params);
-
-        let allFilter = new Gtk.FileFilter();
-        allFilter.set_name(_("All Layer Files"));
-        this.add_filter(allFilter);
-        this.set_filter(allFilter);
-        this.title = _("Open Shape Layer");
-
-        ShapeLayer.SUPPORTED_TYPES.forEach((layerClass) => {
-            let filter = new Gtk.FileFilter();
-            [filter, allFilter].forEach((f) => {
-                layerClass.mimeTypes.forEach((type) => {
-                    f.add_mime_type(type);
-                });
-            });
-            filter.set_name(layerClass.displayName);
-            this.add_filter(filter);
-        });
-    }
-}
-
-GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/shape-layer-file-chooser.ui'
-}, ShapeLayerFileChooser);
-
 export class MainWindow extends Adw.ApplicationWindow {
 
     get mapView() {
@@ -684,19 +656,32 @@ export class MainWindow extends Adw.ApplicationWindow {
     }
 
     _onOpenShapeLayer() {
-        this._fileChooser = new ShapeLayerFileChooser({
-            transient_for: this,
+        let filters = new Gio.ListStore(Gtk.FileFilter.Gtype);
+
+        let allFilter = new Gtk.FileFilter({ name: _("All Layer Files") });
+        filters.append(allFilter);
+
+        ShapeLayer.SUPPORTED_TYPES.forEach((layerClass) => {
+            let filter = new Gtk.FileFilter({ name: layerClass.displayName });
+            layerClass.mimeTypes.forEach((type) => {
+                filter.add_mime_type(type);
+                allFilter.add_mime_type(type);
+            });
+
+            filters.append(filter);
         });
 
-        this._fileChooser.connect('response', (widget, response) => {
-            if (response === Gtk.ResponseType.ACCEPT) {
-                this._mapView.openShapeLayers(this._fileChooser.get_files());
+        let fileDialog = new Gtk.FileDialog({ title: _("Open Shape Layers"),
+                                              filters: filters });
+        fileDialog.open_multiple(this, null, (fileDialog, result) => {
+            try {
+                this._mapView.openShapeLayers(fileDialog.open_multiple_finish(result));
                 this._headerBarLeft.popdownLayersPopover();
                 this._actionBarLeft.popdownLayersPopover();
+            } catch {
+                // do nothing if the file dialog is dismissed
             }
-            this._fileChooser.destroy();
         });
-        this._fileChooser.show();
     }
 
     _showMainMenu() {
