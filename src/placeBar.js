@@ -74,8 +74,7 @@ export class PlaceBar extends Gtk.Revealer {
         this._updateVisibility();
 
         if (this._dialog) {
-            this._dialog.destroy();
-            delete this._dialog;
+            this._dialog.close();
         }
 
         if (!this.place) {
@@ -131,15 +130,12 @@ export class PlaceBar extends Gtk.Revealer {
                 this._box.append(this._currentLocationView);
             }
         } else {
-            this._dialog = new PlaceDialog ({ transient_for: this._mainWindow,
-                                              modal: true,
-                                              mapView: this._mapView,
+            this._dialog = new PlaceDialog ({ mapView: this._mapView,
                                               place: this.place });
-            this._dialog.connect('response', () => {
-                this._dialog.destroy();
+            this._dialog.connect('closed', () => {
                 delete this._dialog;
             });
-            this._dialog.show();
+            this._dialog.present(this._mainWindow);
         }
     }
 

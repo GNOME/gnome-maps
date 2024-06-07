@@ -19,6 +19,7 @@
  * Author: James Westman <james@flyingpimonster.net>
  */
 
+import Adw from 'gi://Adw';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
@@ -26,23 +27,9 @@ import { lookupType } from './osmTypes.js';
 import {PlaceFormatter} from './placeFormatter.js';
 import {PlaceView} from './placeView.js';
 
-export class PlaceDialog extends Gtk.Dialog {
+export class PlaceDialog extends Adw.Dialog {
     constructor({place, mapView, ...params}) {
-        super({...params, use_header_bar: true});
-
-        if (this.transient_for.maximized) {
-            this.maximize();
-        } else {
-            let {x, y, width, height} = this.transient_for.get_allocation();
-
-            // Don't let the dialog get too wide
-            if (width > 400) {
-                width = 400 - 36;
-                height -= 36;
-            }
-
-            this.set_default_size(width, height);
-        }
+        super(params);
 
         this._placeView = new PlaceView({ place,
                                           mapView,
