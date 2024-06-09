@@ -38,30 +38,20 @@
     </child>
     <child>
       <object class="GtkBox" id="contentArea">
+        <property name="orientation">vertical</property>
+        <property name="margin_start">6</property>
+        <property name="margin_end">6</property>
+        <property name="margin_top">6</property>
+        <property name="margin_bottom">6</property>
         <child>
-          <object class="GtkGrid" id="grid">
-            <property name="margin_start">6</property>
-            <property name="margin_end">6</property>
-            <property name="margin_top">6</property>
-            <property name="margin_bottom">6</property>
-            <property name="row_spacing">8</property>
-            <property name="column_spacing">8</property>
-            <child>
-              <object class="GtkFrame" id="frame">
+          <object class="GtkFrame" id="frame">
+            <property name="vexpand">True</property>
+            <property name="child">
+              <object class="GtkImage" id="previewArea">
                 <property name="vexpand">True</property>
-                <property name="child">
-                  <object class="GtkImage" id="previewArea">
-                    <property name="vexpand">True</property>
-                    <property name="hexpand">True</property>
-                  </object>
-                </property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="column-span">2</property>
-                  <property name="row">0</property>
-                </layout>
+                <property name="hexpand">True</property>
               </object>
-            </child>
+            </property>
           </object>
         </child>
       </object>
