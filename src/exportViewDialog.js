@@ -17,17 +17,13 @@
  * Author: Jonas Danielson <jonas@threetimestwo.org>
  */
 
-import Cairo from 'cairo';
 import Gdk from 'gi://Gdk';
 import GLib from 'gi://GLib';
 import Gio from 'gi://Gio';
 import GObject from 'gi://GObject';
 import Graphene from 'gi://Graphene';
-import Gsk from 'gi://Gsk';
 import Gtk from 'gi://Gtk';
 import Pango from 'gi://Pango';
-
-import * as Utils from './utils.js';
 
 const _PREVIEW_WIDTH = 150;
 
