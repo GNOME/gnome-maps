@@ -55,14 +55,12 @@ export class ExportViewDialog extends Gtk.Dialog {
         this._height = height;
         this._cancelButton.connect('clicked', () => this.response(ExportViewDialog.Response.CANCEL));
         this._exportButton.connect('clicked', () => this._exportView());
-        this._filenameEntry.connect('changed', () => this._onFileNameChanged());
-        this._fileChooserButton.connect('clicked', () => this._onFileChooserClicked());
 
         this._folder = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_PICTURES);
         if (!this._folder)
             this._folder = GLib.get_user_data_dir();
 
-        this._filenameEntry.text = this._fileName =
+        this._fileName =
             this._getName(latitude, longitude);
         this._setupPreviewArea();
     }
@@ -85,95 +83,60 @@ export class ExportViewDialog extends Gtk.Dialog {
         this._previewArea.paintable = this._paintable;
     }
 
-    _onFileChooserClicked() {
-        let folderChooser = new Gtk.FileChooserNative();
-
-        folderChooser.set_current_folder(Gio.File.new_for_path(this._folder));
-        folderChooser.connect('response',
-                              (widget, response) => {
-            if (response === Gtk.ResponseType.ACCEPT)
-                this._onFolderChanged(folderChooser.get_current_folder().get_path());
-
-            folderChooser.destroy();
-        });
-        folderChooser.show();
-    }
-
-    _onFileNameChanged() {
-        let name = GLib.filename_from_utf8(this._filenameEntry.text, -1)[0];
-        name = name.toString();
-        if (!name) {
-            this._exportButton.sensitive= false;
-            return;
-        }
-
-        try {
-            GLib.build_filenamev([this._folder, name]);
-            this._exportButton.sensitive = true;
-            this._fileName = name;
-        } catch(e) {
-            this._exportButton.sensitive = false;
-        }
-    }
-
-    _onFolderChanged(folder) {
-        if (!GLib.file_test(folder, GLib.FileTest.IS_DIR)) {
-            this._exportButton.sensitive= false;
-            return;
-        }
-        if (!GLib.file_test(folder, GLib.FileTest.EXISTS)) {
-            this._exportButton.sensitive = false;
-            return;
-        }
-
-        this._exportButton.sensitive = true;
-        this._folder = folder;
-    }
-
     _exportView() {
-        let rect = new Graphene.Rect();
+        let fileDialog = new Gtk.FileDialog({ initialName: this._fileName,
+                                              initialFolder: Gio.File.new_for_path(this._folder) });
 
-        rect.init(0, 0, this._width, this._height);
+        fileDialog.save(this.transient_for, null, (fileDialog, response) => {
+            try {
+                let file = fileDialog.save_finish(response);
+                
+                let rect = new Graphene.Rect();
 
-        let snapshot = Gtk.Snapshot.new();
+                rect.init(0, 0, this._width, this._height);
 
-        this._paintable.snapshot(snapshot,
-                                 this._paintable.get_intrinsic_width(),
-                                 this._paintable.get_intrinsic_height());
+                let snapshot = Gtk.Snapshot.new();
 
-        // render license text
-        const pCtx = this._mapView.create_pango_context();
-        const layout = Pango.Layout.new(pCtx);
+                this._paintable.snapshot(snapshot,
+                                        this._paintable.get_intrinsic_width(),
+                                        this._paintable.get_intrinsic_height());
 
-        layout.set_markup(this._mapView.mapSource.license, -1);
+                // render license text
+                const pCtx = this._mapView.create_pango_context();
+                const layout = Pango.Layout.new(pCtx);
 
-        const [textWidth, textHeight] = layout.get_pixel_size();
-        const textRect = new Graphene.Rect();
-        const textPoint = new Graphene.Point();
+                layout.set_markup(this._mapView.mapSource.license, -1);
 
-        textRect.init(this._width - textWidth, this._height - textHeight,
-                      textWidth, textHeight);
-        textPoint.init(this._width - textWidth, this._height - textHeight);
+                const [textWidth, textHeight] = layout.get_pixel_size();
+                const textRect = new Graphene.Rect();
+                const textPoint = new Graphene.Point();
 
-        snapshot.append_color(new Gdk.RGBA({ red: 1, green: 1, blue: 1, alpha: 0.5 }),
-                              textRect);
-        snapshot.translate(textPoint);
-        snapshot.append_layout(layout,
-                               new Gdk.RGBA({ red: 0, green: 0, blue: 0, alpha: 1 }));
+                textRect.init(this._width - textWidth, this._height - textHeight,
+                            textWidth, textHeight);
+                textPoint.init(this._width - textWidth, this._height - textHeight);
 
-        let node = snapshot.to_node();
-        let renderer = this._mapView.get_native().get_renderer();
-        let texture = renderer.render_texture(node, rect);
-        let path = GLib.build_filenamev([this._folder, this._fileName]);
+                snapshot.append_color(new Gdk.RGBA({ red: 1, green: 1, blue: 1, alpha: 0.5 }),
+                                    textRect);
+                snapshot.translate(textPoint);
+                snapshot.append_layout(layout,
+                                    new Gdk.RGBA({ red: 0, green: 0, blue: 0, alpha: 1 }));
 
-        let success = texture.save_to_png(path);
+                let node = snapshot.to_node();
+                let renderer = this._mapView.get_native().get_renderer();
+                let texture = renderer.render_texture(node, rect);
 
-        if (success) {
-            this.response(ExportViewDialog.Response.SUCCESS);
-        } else {
-            this.transient_for.showToast(_("Unable to export view"));
-            this.response(ExportViewDialog.Response.CANCEL);
-        }
+                let success = texture.save_to_png(file.get_path());
+
+                if (success) {
+                    this.response(ExportViewDialog.Response.SUCCESS);
+                } else {
+                    this.transient_for.showToast(_("Unable to export view"));
+                    this.response(ExportViewDialog.Response.CANCEL);
+                }
+            } catch {
+                this.response(ExportViewDialog.Response.CANCEL);
+            }
+        });
     }
 }
 
@@ -181,7 +144,5 @@ GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/export-view-dialog.ui',
     InternalChildren: [ 'exportButton',
                         'cancelButton',
-                        'filenameEntry',
-                        'fileChooserButton',
                         'previewArea'],
 }, ExportViewDialog);
