@@ -517,8 +517,7 @@ export class MainWindow extends Adw.ApplicationWindow {
                                                                  height / 2);
 
         let dialog = new ExportViewDialog({
-            transient_for: this,
-            modal: true,
+            parentWindow: this,
             paintable: paintable,
             latitude: latitude,
             longitude: longitude,
@@ -527,8 +526,8 @@ export class MainWindow extends Adw.ApplicationWindow {
             mapView: this._mapView
         });
 
-        dialog.connect('response', () => dialog.destroy());
-        dialog.show();
+        dialog.connect('response', () => dialog.close());
+        dialog.present(this);
     }
 
     _rotateMap(angle) {

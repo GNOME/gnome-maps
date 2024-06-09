@@ -17,6 +17,7 @@
  * Author: Jonas Danielson <jonas@threetimestwo.org>
  */
 
+import Adw from 'gi://Adw';
 import Gdk from 'gi://Gdk';
 import GLib from 'gi://GLib';
 import Gio from 'gi://Gio';
@@ -27,7 +28,7 @@ import Pango from 'gi://Pango';
 
 const _PREVIEW_WIDTH = 150;
 
-export class ExportViewDialog extends Gtk.Dialog {
+export class ExportViewDialog extends Adw.Dialog {
 
     static Response = {
         SUCCESS: 0,
@@ -35,6 +36,7 @@ export class ExportViewDialog extends Gtk.Dialog {
     };
 
     constructor({
+        parentWindow,
         paintable,
         latitude,
         longitude,
@@ -43,13 +45,14 @@ export class ExportViewDialog extends Gtk.Dialog {
         height,
         ...params
     }) {
-        super({...params, use_header_bar: true});
+        super(params);
 
+        this._parentWindow = parentWindow;
         this._paintable = paintable;
         this._mapView = mapView;
         this._width = width;
         this._height = height;
-        this._cancelButton.connect('clicked', () => this.response(ExportViewDialog.Response.CANCEL));
+        this._cancelButton.connect('clicked', () => this.emit('response', ExportViewDialog.Response.CANCEL));
         this._exportButton.connect('clicked', () => this._exportView());
 
         this._folder = GLib.get_user_special_dir(GLib.UserDirectory.DIRECTORY_PICTURES);
@@ -83,7 +86,7 @@ export class ExportViewDialog extends Gtk.Dialog {
         let fileDialog = new Gtk.FileDialog({ initialName: this._fileName,
                                               initialFolder: Gio.File.new_for_path(this._folder) });
 
-        fileDialog.save(this.transient_for, null, (fileDialog, response) => {
+        fileDialog.save(this._parentWindow, null, (fileDialog, response) => {
             try {
                 let file = fileDialog.save_finish(response);
                 
@@ -124,13 +127,13 @@ export class ExportViewDialog extends Gtk.Dialog {
                 let success = texture.save_to_png(file.get_path());
 
                 if (success) {
-                    this.response(ExportViewDialog.Response.SUCCESS);
+                    this.emit('response', ExportViewDialog.Response.SUCCESS);
                 } else {
                     this.transient_for.showToast(_("Unable to export view"));
-                    this.response(ExportViewDialog.Response.CANCEL);
+                    this.emit('response', ExportViewDialog.Response.CANCEL);
                 }
             } catch {
-                this.response(ExportViewDialog.Response.CANCEL);
+                this.emit('response', ExportViewDialog.Response.CANCEL);
             }
         });
     }
@@ -141,4 +144,7 @@ GObject.registerClass({
     InternalChildren: [ 'exportButton',
                         'cancelButton',
                         'previewArea'],
+    Signals: {
+        'response': { param_types: [GObject.TYPE_INT] },
+    },                    
 }, ExportViewDialog);
