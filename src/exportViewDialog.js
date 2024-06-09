@@ -83,8 +83,14 @@ export class ExportViewDialog extends Adw.Dialog {
     }
 
     _exportView() {
+        let filters = new Gio.ListStore(Gtk.FileFilter.Gtype);
+        let pngFilter = new Gtk.FileFilter({ name: _("PNG") });
+        pngFilter.add_mime_type("image/png");
+        filters.append(pngFilter);
+
         let fileDialog = new Gtk.FileDialog({ initialName: this._fileName,
-                                              initialFolder: Gio.File.new_for_path(this._folder) });
+                                              initialFolder: Gio.File.new_for_path(this._folder),
+                                              filters: filters });
 
         fileDialog.save(this._parentWindow, null, (fileDialog, response) => {
             try {
