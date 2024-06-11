@@ -42,12 +42,10 @@ export class PrintOperation {
         this._operation.connect('paginate', this._paginate.bind(this));
         this._operation.connect('draw-page', this._drawPage.bind(this));
 
-        this._abortDialog = new Adw.MessageDialog({
-            transient_for: this._mainWindow,
-            destroy_with_parent: true,
-            modal: true,
+        this._abortDialog = new Adw.AlertDialog({
             heading: _("Loading map tiles for printing"),
-            body: _("You can abort printing if this takes too long")
+            body: _("You can abort printing if this takes too long"),
+            canClose: false
         });
         this._abortDialog.add_response('abort', _("Abort printing"));
         this._abortDialog.set_response_appearance('abort',
@@ -94,7 +92,7 @@ export class PrintOperation {
 
         GLib.timeout_add(null, _MIN_TIME_TO_ABORT, () => {
             if (!this._layout.renderFinished) {
-                this._abortDialog.show();
+                this._abortDialog.present(this._mainWindow);
             }
             return false;
         });
@@ -103,11 +101,10 @@ export class PrintOperation {
     }
 
     onAbortDialogResponse(dialog, response) {
-        if (response === Gtk.ResponseType.DELETE_EVENT ||
-            response === Gtk.ResponseType.CANCEL) {
+        if (response === 'abort') {
             this._abortDialog.disconnect(this._responseId);
             this._operation.cancel();
-            this._abortDialog.close();
+            this._abortDialog.force_close();
         }
     }
 
@@ -115,7 +112,7 @@ export class PrintOperation {
         if (this._layout) {
             if (this._layout.renderFinished) {
                 operation.set_n_pages(this._layout.numPages);
-                this._abortDialog.close();
+                this._abortDialog.force_close();
             }
             return this._layout.renderFinished;
         } else {
