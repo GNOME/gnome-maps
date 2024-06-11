@@ -630,9 +630,7 @@ export class MapView extends Gtk.Overlay {
         if (result.confirmLoad) {
             let totalFileSizeMB = result.totalFileSizeMB;
 
-            let dialog = new Adw.MessageDialog ({
-                transient_for: this._mainWindow,
-                modal: true,
+            let dialog = new Adw.AlertDialog ({
                 heading: _("Do you want to continue?"),
                 body: _("You are about to open files with a total " +
                         "size of %s MB. This could take some time to" +
@@ -651,9 +649,8 @@ export class MapView extends Gtk.Overlay {
                 if (responseId === 'continue') {
                     this._loadShapeLayers(files);
                 }
-                dialog.destroy();
             });
-            dialog.present();
+            dialog.present(this._mainWindow);
         } else {
             this._loadShapeLayers(files);
         }
