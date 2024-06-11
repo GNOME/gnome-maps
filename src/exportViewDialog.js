@@ -135,7 +135,7 @@ export class ExportViewDialog extends Adw.Dialog {
                 if (success) {
                     this.emit('response', ExportViewDialog.Response.SUCCESS);
                 } else {
-                    this.transient_for.showToast(_("Unable to export view"));
+                    this._parentWindow.showToast(_("Unable to export view"));
                     this.emit('response', ExportViewDialog.Response.CANCEL);
                 }
             } catch {
