@@ -19,7 +19,6 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
@@ -30,15 +29,12 @@ import * as Time from './time.js';
 import {TransitOptions} from './transitOptions.js';
 import * as TransitPlan from './transitPlan.js';
 
-// in org.gnome.desktop.interface
-const CLOCK_FORMAT_KEY = 'clock-format';
-
-let _desktopSettings = new Gio.Settings({ schema_id: 'org.gnome.desktop.interface' });
-let clockFormat = _desktopSettings.get_string(CLOCK_FORMAT_KEY);
-
-const _timeFormat = new Intl.DateTimeFormat([], { hour:     '2-digit',
+const _timeFormat12 = new Intl.DateTimeFormat([], { hour:     '2-digit',
                                                   minute:   '2-digit',
-                                                  hour12:   clockFormat === '12h' });
+                                                  hour12:   true });
+const _timeFormat24 = new Intl.DateTimeFormat([], { hour:     '2-digit',
+                                                  minute:   '2-digit',
+                                                  hour12:   false });
 
 export class TransitOptionsPanel extends Gtk.Grid {
 
@@ -94,7 +90,9 @@ export class TransitOptionsPanel extends Gtk.Grid {
             this._transitDateButton.visible = true;
 
             if (!this._timeSelected)
-                this._transitTimeEntry.text = _timeFormat.format(new Date());
+                this._transitTimeEntry.text =
+                    (Time.is12Hour() ? _timeFormat12 : _timeFormat24).
+                    format(new Date());
 
             if (!this._dateSelected)
                 this._updateTransitDateButton(GLib.DateTime.new_now_local());
