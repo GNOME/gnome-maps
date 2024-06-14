@@ -230,6 +230,10 @@ let _is12Hour = function() {
     return _clockFormat === '12h';
 }
 
+export function is12Hour() {
+    return _is12Hour();
+}
+
 // for use by unit test mocking only
 export function _setIs12HourFunction(f) {
     _is12Hour = f;
