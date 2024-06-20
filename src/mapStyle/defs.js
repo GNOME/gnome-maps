@@ -391,6 +391,7 @@ export const DEFS = {
                 nature_reserve: ["tree-symbolic", "parks", 10],
                 park: ["tree-symbolic", "parks", 10],
                 pitch: ["@sport", "parks", 16],
+                playground: ["playground3-symbolic", "parks", 16],
                 sports_centre: ["@sport", "parks", 13],
                 stadium: ["@sport", "parks", 14],
                 swimming_pool: false,
