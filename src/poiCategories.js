@@ -419,6 +419,7 @@ const POI_CATEGORIES = [
             },
             {
                 label:     _("Playgrounds"),
+                icon:      'playground3-symbolic',
                 keyValues: [['leisure=playground']]
             },
             {
