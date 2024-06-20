@@ -62,6 +62,7 @@ export class Application extends Adw.Application {
     constructor() {
         /* Translators: This is the program name. */
         GLib.set_application_name(_("Maps"));
+        Gtk.Window.set_default_icon_name(pkg.name);
 
         /* Needed to be able to use in UI files */
         _ensuredTypes.forEach((type) => GObject.type_ensure(type));
