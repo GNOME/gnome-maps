@@ -53,7 +53,7 @@ export class SearchBar extends Gtk.Grid {
         this._exploreButton =
             new Gtk.Button({ valign: Gtk.Align.CENTER,
                              tooltip_text: _("Explore Nearby Places"),
-                             icon_name: 'pan-down-symbolic' });
+                             icon_name: 'explore2-large-symbolic' });
         this.attach(this._exploreButton, 1, 0, 1, 1);
         this._exploreButton.connect('clicked', () => this._onExploreButtonClicked());
         this._placeEntry.bind_property('place', this, 'place',
@@ -109,7 +109,6 @@ GObject.registerClass({
                                           GObject.ParamFlags.READABLE |
                                           GObject.ParamFlags.WRITABLE,
                                           Place)
-    },
-    Template: 'resource:///org/gnome/Maps/ui/search-bar.ui'
+    }
 }, SearchBar);
 
