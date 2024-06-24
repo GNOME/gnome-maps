@@ -23,6 +23,7 @@
 import gettext from 'gettext';
 
 import Gdk from 'gi://Gdk';
+import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import GeocodeGlib from 'gi://GeocodeGlib';
 import Gio from 'gi://Gio';
@@ -44,7 +45,9 @@ const MIN_CHARS_COMPLETION = 3;
 // pattern matching CJK ideographic characters
 const IDEOGRAPH_PATTERN = /[\u3300-\u9fff]/
 
-export class PlaceEntry extends Gtk.SearchEntry {
+const SEARCH_TIMEOUT = 150; // ms
+
+export class PlaceEntry extends Gtk.Entry {
 
     set place(p) {
         if (!this._place && !p)
@@ -88,8 +91,8 @@ export class PlaceEntry extends Gtk.SearchEntry {
     }
 
     constructor({mapView, maxChars, matchRoute, hasPoiBrowser = false,
-                 popoverParent, ...params}) {
-        super(params);
+                 ...params}) {
+        super({ secondary_icon_activatable: true, ...params });
 
         this._mapView = mapView;
         this._matchRoute = matchRoute ?? false;
@@ -105,21 +108,50 @@ export class PlaceEntry extends Gtk.SearchEntry {
         this.connect('activate', this._onActivate.bind(this));
 
         this._popover =
-            this._createPopover(maxChars, hasPoiBrowser, popoverParent ?? this);
+            this._createPopover(maxChars, hasPoiBrowser);
 
-        this.connect('search-changed', this._onSearchChanged.bind(this));
+        this.connect('changed', this._onChanged.bind(this));
+        this.connect('icon-press', this._onIconClick.bind(this));
 
         this._cache = {};
+        this._searchTimeoutId = 0;
 
         // clear cache when view moves, as result are location-dependent
         this._mapView.map.viewport.connect('notify::latitude', () => this._cache = {});
         // clear cache when zoom level changes, to allow limiting location bias
         this._mapView.map.viewport.connect('notify::zoom-level', () => this._cache =  {});
+
+        this._updateIcon();
+        this.add_css_class('search');
     }
 
     _setTextWithoutTriggerSearch(text) {
         this._setText = text;
         this.text = text;
+    }
+
+    _onChanged() {
+        this._updateIcon();
+
+        // cancel already ongoing timeout
+        if (this._searchTimeoutId)
+            GLib.source_remove(this._searchTimeoutId);
+
+        this._searchTimeoutId = GLib.timeout_add(null, SEARCH_TIMEOUT, () => {
+            this._searchTimeoutId = 0;
+            this._onSearchChanged();
+        });
+    }
+
+    _updateIcon() {
+        this.secondary_icon_name =
+            this.text?.length > 0 ? 'edit-clear-symbolic' : null;
+        this.secondary_icon_tooltip_text =
+            this.text?.length > 0 ? _("Clear Entry") : null;
+    }
+
+    _onIconClick() {
+        this.text = '';
     }
 
     _onSearchChanged() {
@@ -149,7 +181,7 @@ export class PlaceEntry extends Gtk.SearchEntry {
              */
             if (!this._popover.isShowingPoiBrowser)
                 this._popover.popdown();
-            this.grab_focus();
+
             if (this.text.length === 0)
                 this.place = null;
             this._previousSearch = null;
@@ -181,12 +213,16 @@ export class PlaceEntry extends Gtk.SearchEntry {
                 placeA.location.longitude === placeB.location.longitude);
     }
 
-    _createPopover(maxChars, hasPoiBrowser, popoverParent) {
+    _createPopover(maxChars, hasPoiBrowser) {
         let popover = new PlacePopover({ entry:         this,
                                          maxChars:      maxChars,
                                          hasPoiBrowser: hasPoiBrowser });
-        popover.set_parent(popoverParent);
-        this.set_key_capture_widget(popover);
+        popover.set_parent(this);
+        this._captureController = new Gtk.EventControllerKey();
+        this._captureController.set_propagation_phase(Gtk.PHASE_BUBBLE);
+        this._captureController.connect('key-pressed',
+                                        this._onKeyPressed.bind());
+        popover.add_controller(this._captureController);
 
         popover.connect('selected', (widget, place) => {
             this.place = place;

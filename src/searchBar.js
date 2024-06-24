@@ -21,6 +21,7 @@
 
 import gettext from 'gettext';
 
+import Gdk from 'gi://Gdk';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
@@ -30,86 +31,86 @@ import { Place } from './place.js';
 const _ = gettext.gettext;
 
 // minimum zoom level to show the explore button
-const EXPLORE_BUTTON_MIN_ZOOM = 15;
+const EXPLORE_BUTTON_MIN_ZOOM = 12;
 
-export class SearchBar extends Gtk.Grid {
+export class SearchBar extends PlaceEntry {
     constructor({mapView, ...params}) {
-        super(params);
+        super({ mapView:             mapView,
+                max_width_chars:     50,
+                matchRoute:          true,
+                hasPoiBrowser:       true,
+                placeholder_text:    _("Search"),
+                primary_icon_name:   'system-search-symbolic',
+                ...params });
 
         this._mapView = mapView;
-        this._placeEntry = new PlaceEntry({ mapView: mapView,
-                                            max_width_chars: 50,
-                                            matchRoute: true,
-                                            hasPoiBrowser: true,
-                                            popoverParent: this,
-                                            placeholder_text: _("Search") });
-        this.attach(this._placeEntry, 0, 0, 1, 1);
-        this._placeEntry.set_key_capture_widget(this._mapView.map);
-
-        /* looks like we need to create the button in code as well, since
-         * the place entry is created here and added after the template
-         * was initialized, else the linked style doesn't get applied properly
-         */
-        this._exploreButton =
-            new Gtk.Button({ valign: Gtk.Align.CENTER,
-                             tooltip_text: _("Explore Nearby Places"),
-                             icon_name: 'pan-down-symbolic' });
-        this.attach(this._exploreButton, 1, 0, 1, 1);
-        this._exploreButton.connect('clicked', () => this._onExploreButtonClicked());
-        this._placeEntry.bind_property('place', this, 'place',
-                                       GObject.BindingFlags.DEFAULT);
+        this._keyCaptureController = new Gtk.EventControllerKey();
+        this._keyCaptureController.connect('key-pressed',
+                                           this._onMapKeyPressed.bind(this));
+        this._mapView.map.add_controller(this._keyCaptureController);
         this._mapView.map.viewport.connect('notify::zoom-level',
-                                           this._updateExploreButtonSensitivity.bind(this));
-        this._updateExploreButtonSensitivity();
+                                           this._updateIcon.bind(this));
+        this._entry = this._getEntry();
     }
 
-    get popover() {
-        return this._placeEntry.popover;
+    _getEntry() {
+        for (const child of this) {
+            if (child instanceof Gtk.Text)
+                return child;
+        }
     }
 
-    get placeEntry()  {
-        return this._placeEntry;
+    _updateIcon() {
+        if (!this.text &&
+            this._mapView.map.viewport.zoom_level >= EXPLORE_BUTTON_MIN_ZOOM) {
+            this.secondary_icon_name = 'explore2-large-symbolic';
+            this.secondary_icon_tooltip_text = _("Explore Nearby Places");
+        } else {
+            this.secondary_icon_tooltip_text = '';
+            super._updateIcon();
+        }
     }
 
-    set text(text) {
-        this._placeEntry.text = text;
+    _onIconClick() {
+        if (!this.text)
+            this._onExploreClicked();
+        else
+            super._onIconClick();
     }
 
-    /**
-     * Update results popover
-     * places array of places from search result
-     * searchText original search string to highlight in results
-     */
-    updateResults(places, searchText) {
-        this._placeEntry.updateResults(places, searchText, false);
+    _onMapKeyPressed(controller, keyval, keycode, state) {
+        if (keyval === Gdk.KEY_KP_Up ||
+            keyval === Gdk.KEY_Up ||
+            keyval === Gdk.KEY_KP_Down ||
+            keyval === Gdk.KEY_Down ||
+            keyval === Gdk.KEY_KP_Left ||
+            keyval === Gdk.KEY_Left ||
+            keyval === Gdk.KEY_KP_Right ||
+            keyval === Gdk.KEY_Right) {
+            return false;
+        } else {
+            this.grab_focus();
+
+            return controller.forward(this._entry);
+        }
     }
 
-    _onExploreButtonClicked() {
+    _onExploreClicked() {
         /* show main category if the popover isn't already visible,
          * or if a previous result is showing.
          * otherwise close the popover
          */
         if (!this.popover.visible || !this.popover.isShowingPoiBrowser)
-            this._placeEntry.browsePois();
+            this.browsePois();
         else
             this.popover.popdown();
     }
 
     _updateExploreButtonSensitivity() {
-        this._exploreButton.sensitive =
+        this.secondary_icon_sensitive =
             this._mapView.map.viewport.zoom_level >= EXPLORE_BUTTON_MIN_ZOOM;
     }
 }
 
-GObject.registerClass({
-    Properties: {
-        'place': GObject.ParamSpec.object('place',
-                                          'Place',
-                                          'The selected place',
-                                          GObject.ParamFlags.READABLE |
-                                          GObject.ParamFlags.WRITABLE,
-                                          Place)
-    },
-    Template: 'resource:///org/gnome/Maps/ui/search-bar.ui'
-}, SearchBar);
+GObject.registerClass(SearchBar);
 

@@ -448,20 +448,18 @@ export class MainWindow extends Adw.ApplicationWindow {
     }
 
     _onFindActivate() {
-        let placeEntry = this._searchBar.placeEntry;
-
-        placeEntry.grab_focus();
-        placeEntry.select_region(0, placeEntry.text.length);
+        this._searchBar.grab_focus();
+        this._searchBar.select_region(0, this._searchBar.text.length);
     }
 
     _onBrowseActivate() {
-        this._searchBar.placeEntry.browsePois();
+        this._searchBar.browsePois();
     }
 
     _onShowSearchResultsActivate() {
-        if (this._searchBar.placeEntry.popover.numResults > 0) {
-            this._searchBar.placeEntry.popover.showResult();
-            this._searchBar.placeEntry.grab_focus();
+        if (this._searchBar.popover.numResults > 0) {
+            this._searchBar.popover.showResult();
+            this._searchBar.grab_focus();
         }
     }
 
