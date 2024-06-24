@@ -326,6 +326,10 @@ export class Itinerary extends GObject.Object {
         if (mins < 60) {
             let minStr = Utils.formatLocaleInteger(mins);
 
+            // don't try to format with a negative number
+            if (mins < 0)
+                return '';
+
             /* translators: this is an indication for a trip duration of
              * less than an hour, with only the minutes part, using plural forms
              * as appropriate
