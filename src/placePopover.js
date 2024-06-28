@@ -93,7 +93,7 @@ export class PlacePopover extends SearchPopover {
             this._poiMainCategoriesListBox.unselect_all();
 
             // grab focus on entry to enable continued keyboard navigation
-            this.get_parent().placeEntry.grab_focus();
+            this.get_parent().grab_focus();
         });
     }
 
@@ -115,7 +115,7 @@ export class PlacePopover extends SearchPopover {
 
         listBox.connect('row-activated', (list, row) => {
             // grab focus on entry to enable continued keyboard navigation
-            this.get_parent().placeEntry.grab_focus();
+            this.get_parent().grab_focus();
 
             if (row === goBackRow) {
                 // slide back to main

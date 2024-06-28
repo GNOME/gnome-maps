@@ -44,7 +44,7 @@ const MIN_CHARS_COMPLETION = 3;
 // pattern matching CJK ideographic characters
 const IDEOGRAPH_PATTERN = /[\u3300-\u9fff]/
 
-export class PlaceEntry extends Gtk.SearchEntry {
+export class PlaceEntry extends Gtk.Entry {
 
     set place(p) {
         if (!this._place && !p)
@@ -107,7 +107,7 @@ export class PlaceEntry extends Gtk.SearchEntry {
         this._popover =
             this._createPopover(maxChars, hasPoiBrowser, popoverParent ?? this);
 
-        this.connect('search-changed', this._onSearchChanged.bind(this));
+        this.connect('changed', this._onSearchChanged.bind(this));
 
         this._cache = {};
 
@@ -123,6 +123,7 @@ export class PlaceEntry extends Gtk.SearchEntry {
     }
 
     _onSearchChanged() {
+        log('changed');
         if (this._parse())
             return;
 
@@ -149,7 +150,7 @@ export class PlaceEntry extends Gtk.SearchEntry {
              */
             if (!this._popover.isShowingPoiBrowser)
                 this._popover.popdown();
-            this.grab_focus();
+            //this.grab_focus();
             if (this.text.length === 0)
                 this.place = null;
             this._previousSearch = null;
@@ -186,7 +187,12 @@ export class PlaceEntry extends Gtk.SearchEntry {
                                          maxChars:      maxChars,
                                          hasPoiBrowser: hasPoiBrowser });
         popover.set_parent(popoverParent);
-        this.set_key_capture_widget(popover);
+        //this.set_key_capture_widget(popover);
+        this._captureController = new Gtk.EventControllerKey();
+        this._captureController.set_propagation_phase(Gtk.PHASE_BUBBLE);
+        this._captureController.connect('key-pressed',
+                                        this._onKeyPressed.bind());
+        popover.add_controller(this._captureController);
 
         popover.connect('selected', (widget, place) => {
             this.place = place;
@@ -197,6 +203,7 @@ export class PlaceEntry extends Gtk.SearchEntry {
     }
 
     _onKeyPressed(controller, keyval, keycode, state) {
+        log('popover key pressed');
         if (keyval === Gdk.KEY_Escape) {
             this._popover.popdown();
             this._popover.list.unselect_all();
