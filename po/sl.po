@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2024-04-23 20:23+0000\n"
-"PO-Revision-Date: 2024-04-23 23:57+0200\n"
+"POT-Creation-Date: 2024-07-01 21:31+0000\n"
+"PO-Revision-Date: 2024-07-02 12:27+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -31,8 +31,8 @@ msgstr ""
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
-#: data/ui/main-window.ui:27 src/application.js:64 src/mainWindow.js:146
-#: src/mainWindow.js:621
+#: data/ui/main-window.ui:27 src/application.js:64 src/mainWindow.js:118
+#: src/mainWindow.js:592
 msgid "Maps"
 msgstr "Zemljevidi"
 
@@ -59,7 +59,7 @@ msgstr ""
 "tisoč posameznikov na vseh koncih sveta."
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.appdata.xml.in.in:469 src/mainWindow.js:618
+#: data/org.gnome.Maps.appdata.xml.in.in:469 src/mainWindow.js:589
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
 
@@ -201,11 +201,11 @@ msgid "Add to OpenStreetMap…"
 msgstr "Objavi na OpenStreetMap …"
 
 #: data/ui/export-view-dialog.ui:7
-msgid "Export view"
-msgstr "Pogled izvoza"
+msgid "Export View"
+msgstr "Izvozi pogled"
 
-#: data/ui/export-view-dialog.ui:16 data/ui/send-to-dialog.ui:10
-#: data/ui/shape-layer-file-chooser.ui:22
+#: data/ui/export-view-dialog.ui:16 data/ui/osm-edit-dialog.ui:226
+#: data/ui/send-to-dialog.ui:10
 msgid "_Cancel"
 msgstr "_Prekliči"
 
@@ -227,7 +227,7 @@ msgid "Add places to your favorites to get them listed here"
 msgstr "Za izpis na tem mestu, dodajte mesta med priljubljene"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:11 src/geoclue.js:106 src/placeBar.js:91
+#: data/ui/headerbar-left.ui:11 src/geoclue.js:106 src/placeBar.js:101
 msgid "Current Location"
 msgstr "Trenutno mesto"
 
@@ -393,37 +393,37 @@ msgid "Help to improve the map, using an OpenStreetMap account."
 msgstr "Sodelujte pri izdelavi zemljevida v okolju OpenStreetMap."
 
 #: data/ui/osm-account-dialog.ui:36
-msgid "Sign In"
-msgstr "Prijava"
+msgid "_Sign In"
+msgstr "_Prijava"
 
-#: data/ui/osm-account-dialog.ui:59
+#: data/ui/osm-account-dialog.ui:60
 msgid "Verification"
 msgstr "Overitev"
 
-#: data/ui/osm-account-dialog.ui:60
+#: data/ui/osm-account-dialog.ui:61
 msgid ""
 "Copy the verification code shown when authorizing access in the browser."
 msgstr "Kopiraj overitveno kodo ob overjanju dostopa v brskalniku."
 
-#: data/ui/osm-account-dialog.ui:69
+#: data/ui/osm-account-dialog.ui:70
 msgid "Verification Code"
 msgstr "Overitvena koda"
 
-#: data/ui/osm-account-dialog.ui:75
-msgid "Verify"
-msgstr "Overi"
+#: data/ui/osm-account-dialog.ui:76
+msgid "_Verify"
+msgstr "Pre_veri"
 
-#: data/ui/osm-account-dialog.ui:110
+#: data/ui/osm-account-dialog.ui:112
 msgid "Signed In"
 msgstr "Prijavljeno"
 
-#: data/ui/osm-account-dialog.ui:111
+#: data/ui/osm-account-dialog.ui:113
 msgid "Your OpenStreetMap account is active."
 msgstr "Račun OpenStreetMap je dejaven."
 
-#: data/ui/osm-account-dialog.ui:129
-msgid "Sign Out"
-msgstr "Odjavi"
+#: data/ui/osm-account-dialog.ui:131
+msgid "_Sign Out"
+msgstr "_Odjavi"
 
 #: data/ui/osm-edit-address.ui:11
 msgid "Street"
@@ -456,14 +456,14 @@ msgid "None"
 msgstr "Brez"
 
 #: data/ui/osm-edit-dialog.ui:108
-msgid "Add Field"
-msgstr "Dodaj polje"
+msgid "_Add Field"
+msgstr "_Dodaj polje"
 
-#: data/ui/osm-edit-dialog.ui:130
+#: data/ui/osm-edit-dialog.ui:131
 msgid "Comment"
 msgstr "Opomba"
 
-#: data/ui/osm-edit-dialog.ui:158
+#: data/ui/osm-edit-dialog.ui:159
 msgid ""
 "Map changes will be visible on all maps that use\n"
 "OpenStreetMap data."
@@ -471,17 +471,17 @@ msgstr ""
 "Spremembe bodo vidne na vseh zemljevidih,\n"
 "    ki uporabljajo podatke OpenStreetMap."
 
-#: data/ui/osm-edit-dialog.ui:186
+#: data/ui/osm-edit-dialog.ui:187
 msgid "Recently Used"
 msgstr "Nedavno uporabljeno"
 
-#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:643
-msgid "Cancel"
-msgstr "Prekliči"
+#: data/ui/osm-edit-dialog.ui:233 data/ui/sidebar.ui:301
+msgid "Back"
+msgstr "Nazaj"
 
-#: data/ui/osm-edit-dialog.ui:238 src/osmEditDialog.js:531
-msgid "Next"
-msgstr "Naslednji"
+#: data/ui/osm-edit-dialog.ui:241
+msgid "_Next"
+msgstr "_Naprej"
 
 #: data/ui/osm-edit-wikipedia.ui:8
 msgid "Article"
@@ -517,20 +517,12 @@ msgid "Open Location"
 msgstr "Odpri mesto"
 
 #: data/ui/send-to-dialog.ui:64
-msgid "Copy"
-msgstr "Kopiraj"
+msgid "C_opy"
+msgstr "K_opiraj"
 
-#: data/ui/send-to-dialog.ui:70
-msgid "Send To…"
-msgstr "Pošlji …"
-
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:61
-msgid "Open Shape Layer"
-msgstr "Odpri plast oblike"
-
-#: data/ui/shape-layer-file-chooser.ui:12
-msgid "_Open"
-msgstr "_Odpri"
+#: data/ui/send-to-dialog.ui:71
+msgid "_Send To…"
+msgstr "_Pošlji …"
 
 #. Translators: This is a tooltip
 #: data/ui/shape-layer-row.ui:32
@@ -542,11 +534,31 @@ msgstr "Preklopi vidno"
 msgid "Remove Shape Layer"
 msgstr "Odstrani plast oblike"
 
-#: data/ui/sidebar.ui:207
+#: data/ui/sidebar.ui:17
+msgid "Walking"
+msgstr "Hoja"
+
+#: data/ui/sidebar.ui:30
+msgid "Cycling"
+msgstr "Kolesarjenje"
+
+#: data/ui/sidebar.ui:44
+msgid "Driving"
+msgstr "Vožnja"
+
+#: data/ui/sidebar.ui:59
+msgid "Transit"
+msgstr "Tranzit"
+
+#: data/ui/sidebar.ui:211
 msgid "Route search by GraphHopper"
 msgstr "Iskanje poti s podporo GraphHopper"
 
-#: data/ui/sidebar.ui:272
+#: data/ui/sidebar.ui:244 src/osmEditDialog.js:677
+msgid "More Information"
+msgstr "Več podrobnosti"
+
+#: data/ui/sidebar.ui:277
 msgid ""
 "Routing itineraries for public transit is provided by third-party\n"
 "services.\n"
@@ -592,37 +604,41 @@ msgstr "Odhod do"
 msgid "Arrive By"
 msgstr "Prihod do"
 
+#: data/ui/transit-options-panel.ui:54
+msgid "View More"
+msgstr "Pokaži več"
+
 #. Header indicating selected modes of transit
-#: data/ui/transit-options-panel.ui:85
+#: data/ui/transit-options-panel.ui:86
 msgid "Show"
 msgstr "Pokaži"
 
-#: data/ui/transit-options-panel.ui:95
-msgid "Buses"
-msgstr "Avtobusi"
+#: data/ui/transit-options-panel.ui:96
+msgid "_Buses"
+msgstr "_Avtobusi"
 
-#: data/ui/transit-options-panel.ui:101
-msgid "Trams"
-msgstr "Tramvaji"
+#: data/ui/transit-options-panel.ui:103
+msgid "_Trams"
+msgstr "_Tramvaji"
 
-#: data/ui/transit-options-panel.ui:107
-msgid "Trains"
-msgstr "Vlaki"
+#: data/ui/transit-options-panel.ui:110
+msgid "T_rains"
+msgstr "Vla_ki"
 
-#: data/ui/transit-options-panel.ui:113
-msgid "Subway"
-msgstr "Podzemna železnica"
+#: data/ui/transit-options-panel.ui:117
+msgid "_Subway"
+msgstr "Po_dzemna železnica"
 
-#: data/ui/transit-options-panel.ui:119
-msgid "Ferries"
-msgstr "Trajekti"
+#: data/ui/transit-options-panel.ui:124
+msgid "_Ferries"
+msgstr "Tra_jekti"
 
-#: data/ui/transit-options-panel.ui:125
-msgid "Airplanes"
-msgstr "Letala"
+#: data/ui/transit-options-panel.ui:131
+msgid "_Airplanes"
+msgstr "_Letala"
 
 #. Translators: This is a tooltip
-#: data/ui/place-bar.ui:33 data/ui/place-buttons.ui:27
+#: data/ui/place-bar.ui:38 data/ui/place-buttons.ui:28
 msgid "Share Location"
 msgstr "Objavi mesto"
 
@@ -633,21 +649,21 @@ msgstr "Dodaj novo pot"
 
 #. Translators: This is the button to find a route to a place
 #: data/ui/place-buttons.ui:15
-msgid "Directions"
-msgstr "Načrt poti"
+msgid "_Directions"
+msgstr "_Navodila za pot"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.ui:36
+#: data/ui/place-buttons.ui:37
 msgid "Mark as Favorite"
 msgstr "Označi kot priljubljeno"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.ui:44
+#: data/ui/place-buttons.ui:45
 msgid "Edit on OpenStreetMap"
 msgstr "Uredi na OpenStreetMap"
 
 #. Translators: This is a tooltip
-#: data/ui/place-view.ui:52
+#: data/ui/place-view.ui:59
 msgid "Share location"
 msgstr "Objavi mesto"
 
@@ -666,7 +682,7 @@ msgid "Zoom Out"
 msgstr "Oddalji"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1221
+#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1217
 msgid "Zoom In"
 msgstr "Približaj"
 
@@ -691,23 +707,23 @@ msgstr "Ni mogoče najti predmeta OSM"
 msgid "Could not find user element"
 msgstr "Ni mogoče najti predmeta uporabnika"
 
-#: src/application.js:78
+#: src/application.js:79
 msgid "A path to a local tiles directory structure"
 msgstr "Pot do krajevne mape s sličicami"
 
-#: src/application.js:84
+#: src/application.js:85
 msgid "Tile size for local tiles directory"
 msgstr "Velikost sličic za krajevno mapo s sličicami"
 
-#: src/application.js:88
+#: src/application.js:89
 msgid "Show the version of the program"
 msgstr "Pokaži različico programa"
 
-#: src/application.js:94
+#: src/application.js:95
 msgid "Search for places"
 msgstr "Poišči mesta"
 
-#: src/application.js:105 src/application.js:106
+#: src/application.js:106 src/application.js:107
 msgid "[FILE…|URI]"
 msgstr "[DATOTEKA …|NASLOV URI]"
 
@@ -720,12 +736,16 @@ msgstr "Neveljaven zemljevid: naslov URI: %s"
 #. * exported image with coordinates. The .png extension should be kept
 #. * intact in the translated string.
 #.
-#: src/exportViewDialog.js:75
+#: src/exportViewDialog.js:72
 #, javascript-format
 msgid "Maps at %f, %f.png"
 msgstr "zemljevid na %f, %f.png"
 
-#: src/exportViewDialog.js:174
+#: src/exportViewDialog.js:87
+msgid "PNG"
+msgstr "PNG"
+
+#: src/exportViewDialog.js:138
 msgid "Unable to export view"
 msgstr "Ni mogoče izvoziti pogleda"
 
@@ -734,8 +754,8 @@ msgid "Favorite removed"
 msgstr "Priljubljeno mesto je odstranjeno"
 
 #: src/favoriteListRow.js:43
-msgid "Undo"
-msgstr "Razveljavi"
+msgid "_Undo"
+msgstr "_Razveljavi"
 
 #: src/geoJSONSource.js:73
 msgid "invalid coordinate"
@@ -761,44 +781,40 @@ msgstr "Ni najdene poti."
 msgid "Start!"
 msgstr "Začetna točka!"
 
-#: src/mainWindow.js:58
-msgid "All Layer Files"
-msgstr "Vse datoteke plasti"
-
-#: src/mainWindow.js:507
+#: src/mainWindow.js:479
 msgid "Failed to connect to location service"
 msgstr "Napaka med povezovanjem s storitvijo določevanja točke GPS"
 
-#: src/mainWindow.js:512
+#: src/mainWindow.js:484
 msgid "Turn on location services"
 msgstr "Priklopite geolokacijske storitve"
 
-#: src/mainWindow.js:513
+#: src/mainWindow.js:485
 msgid "Location Settings"
 msgstr "Nastavitve mesta"
 
-#: src/mainWindow.js:619
+#: src/mainWindow.js:590
 msgid "translator-credits"
 msgstr ""
 "Matej Urbančič <mateju@src.gnome.org>\n"
 "Martin Srebotnjak"
 
-#: src/mainWindow.js:623
+#: src/mainWindow.js:594
 msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
 msgstr ""
 "Avtorske pravice © 2011–2023 Red Hat, Inc. in avtorji programa Zemljevidi "
 "GNOME"
 
-#: src/mainWindow.js:637
+#: src/mainWindow.js:607
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Podatke zemljevida objavljajo %s in drugi sodelujoči"
 
-#: src/mainWindow.js:638
+#: src/mainWindow.js:608
 msgid "Map Data Provider"
 msgstr "Ponudnik podatkov zemljevida"
 
-#: src/mainWindow.js:641
+#: src/mainWindow.js:611
 msgid "Map Tile Provider"
 msgstr "Ponudnik sličic zemljevida"
 
@@ -807,29 +823,37 @@ msgstr "Ponudnik sličic zemljevida"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:649
+#: src/mainWindow.js:619
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Slikovne podatke zemljevida objavlja %s"
 
-#: src/mainWindow.js:678
+#: src/mainWindow.js:648
 msgid "Search Provider"
 msgstr "Ponudnik iskalnika"
 
-#: src/mainWindow.js:681
+#: src/mainWindow.js:651
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Iskalnik omogoča %s z uporabo %s"
 
-#: src/mapView.js:617 src/mapView.js:682
+#: src/mainWindow.js:660
+msgid "All Layer Files"
+msgstr "Vse datoteke plasti"
+
+#: src/mainWindow.js:673
+msgid "Open Shape Layers"
+msgstr "Odpri plasti oblike"
+
+#: src/mapView.js:617 src/mapView.js:679
 msgid "Failed to open layer"
 msgstr "Odpiranje plasti je spodletelo"
 
-#: src/mapView.js:636
+#: src/mapView.js:634
 msgid "Do you want to continue?"
 msgstr "Ali želite nadaljevati?"
 
-#: src/mapView.js:637
+#: src/mapView.js:635
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -838,24 +862,28 @@ msgstr ""
 "Odpreti nameravate datoteke s skupno velikostjo %s MB. Opravilo je lahko "
 "dolgotrajno."
 
-#: src/mapView.js:644 src/transitplugins/openTripPlanner.js:1238
+#: src/mapView.js:641
+msgid "Cancel"
+msgstr "Prekliči"
+
+#: src/mapView.js:642 src/transitplugins/openTripPlanner.js:1238
 #: src/transitplugins/openTripPlanner2.js:267
 msgid "Continue"
 msgstr "Nadaljujte"
 
-#: src/mapView.js:676
+#: src/mapView.js:673
 msgid "File type is not supported"
 msgstr "Vrsta datoteke ni podprta"
 
-#: src/mapView.js:718
+#: src/mapView.js:715
 msgid "Failed to open GeoURI"
 msgstr "Odpiranje naslova GeoURI je spodletelo."
 
-#: src/mapView.js:1220
+#: src/mapView.js:1216
 msgid "Zoom in to add location"
 msgstr "Približaj za dodajanje mesta"
 
-#: src/mapView.js:1241
+#: src/mapView.js:1237
 msgid "Location was added in OpenStreetMap"
 msgstr "Mesto je dodano na OpenStreetMap"
 
@@ -907,7 +935,7 @@ msgstr "Uradno ime ali naziv se običajno pojavlja na tablah."
 msgid "Address"
 msgstr "Naslov"
 
-#: src/osmEditDialog.js:120 src/placeView.js:275
+#: src/osmEditDialog.js:120 src/placeView.js:304
 msgid "Website"
 msgstr "Spletišče"
 
@@ -938,7 +966,7 @@ msgstr ""
 "+ ...) Upoštevajte tudi krajevna določila zasebnosti, še posebej za zasebne "
 "telefonske številke."
 
-#: src/osmEditDialog.js:139 src/placeView.js:308
+#: src/osmEditDialog.js:139 src/placeView.js:337
 msgid "Email"
 msgstr "Elektronski naslov"
 
@@ -959,11 +987,11 @@ msgstr ""
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:149 src/placeView.js:727
+#: src/osmEditDialog.js:149 src/placeView.js:764
 msgid "Wikipedia"
 msgstr "Wikipedija"
 
-#: src/osmEditDialog.js:156 src/placeView.js:399
+#: src/osmEditDialog.js:156 src/placeView.js:428
 msgid "Opening hours"
 msgstr "Odpiralni čas"
 
@@ -977,11 +1005,11 @@ msgstr "Pomoč o zapisu je na voljo na spletni povezavi."
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:164 src/placeView.js:509
+#: src/osmEditDialog.js:164 src/placeView.js:538
 msgid "Population"
 msgstr "Prebivalci"
 
-#: src/osmEditDialog.js:169 src/placeView.js:538
+#: src/osmEditDialog.js:169 src/placeView.js:567
 msgid "Altitude"
 msgstr "Nadmorska višina"
 
@@ -1158,10 +1186,18 @@ msgid "Select Type"
 msgstr "Izbor vrste"
 
 #: src/osmEditDialog.js:515
-msgid "Done"
-msgstr "Končano"
+msgid "_Done"
+msgstr "_Opravljeno"
 
-#: src/osmEditDialog.js:818
+#: src/osmEditDialog.js:532
+msgid "Next"
+msgstr "Naslednji"
+
+#: src/osmEditDialog.js:583
+msgid "Remove"
+msgstr "Odstrani"
+
+#: src/osmEditDialog.js:821
 msgid ""
 "The format used should include the language code and the article title like "
 "“en:Article title”."
@@ -1169,16 +1205,16 @@ msgstr ""
 "Uporabljen zapis mora vključevati kodo jezika in naslov prispevka, na primer "
 "»sl:Naslov prispevka«."
 
-#: src/osmEditDialog.js:824
+#: src/osmEditDialog.js:827
 msgid "Use the reload button to load the Wikidata tag for the selected article"
 msgstr ""
 "Osvežitveni gumb omogoča nalaganje oznak Wikipodatkov za izbran prispevek"
 
-#: src/osmEditDialog.js:832
+#: src/osmEditDialog.js:835
 msgid "Couldn't find Wikidata tag for article"
 msgstr "Oznake Wikipodatki za prispevek ni mogoče najti"
 
-#: src/photonUtils.js:118
+#: src/photonUtils.js:118 src/placeListRow.js:70
 msgid "Unnamed place"
 msgstr "Neimenovano mesto"
 
@@ -1198,22 +1234,22 @@ msgstr "Razčlenjevanje naslova URI zemljevida je spodletelo"
 #. * needed (e.g. using the correct direction, or alternative symbol).
 #. * The %s should be kept, and is substituted with a label representing the
 #. * short distance. The \u2009 (thin space) could also be adjusted if needed
-#: src/placeListRow.js:46
+#: src/placeListRow.js:47
 #, javascript-format
 msgctxt "short distance format string"
 msgid "< %s"
 msgstr "< %s"
 
-#: src/placeView.js:263
+#: src/placeView.js:292
 msgid "Coordinates"
 msgstr "Koordinate"
 
-#: src/placeView.js:267
+#: src/placeView.js:296
 msgid "Accuracy"
 msgstr "Natančnost"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:270
+#: src/placeView.js:299
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Natančnost: %s"
@@ -1224,7 +1260,7 @@ msgstr "Natančnost: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:289
+#: src/placeView.js:318
 msgid "Phone number"
 msgstr "Telefonska številka"
 
@@ -1235,16 +1271,16 @@ msgstr "Telefonska številka"
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
 #.
-#: src/placeView.js:323 src/placeView.js:362
+#: src/placeView.js:352 src/placeView.js:391
 msgid "Floor"
 msgstr "Nadstropje"
 
-#: src/placeView.js:325
+#: src/placeView.js:354
 #, javascript-format
 msgid "Floor %s"
 msgstr "Nadstropje %s"
 
-#: src/placeView.js:337
+#: src/placeView.js:366
 msgid "At ground level"
 msgstr "Na ravni pritličja"
 
@@ -1253,7 +1289,7 @@ msgstr "Na ravni pritličja"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:346
+#: src/placeView.js:375
 #, javascript-format
 msgid "%s floor above ground level"
 msgid_plural "%s floors above ground level"
@@ -1267,7 +1303,7 @@ msgstr[3] "%s nadstropja nad pritličjem"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:357
+#: src/placeView.js:386
 #, javascript-format
 msgid "%s floor below ground level"
 msgid_plural "%s floors below ground level"
@@ -1280,7 +1316,7 @@ msgstr[3] "%s nadstropja pod pritličjem"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:375
+#: src/placeView.js:404
 msgid "Offers takeout"
 msgstr "Ponuja prevzem hrane in pijače"
 
@@ -1288,7 +1324,7 @@ msgstr "Ponuja prevzem hrane in pijače"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:383
+#: src/placeView.js:412
 msgid "Does not offer takeout"
 msgstr "Ne ponuja prevzema hrane in pijače"
 
@@ -1297,14 +1333,14 @@ msgstr "Ne ponuja prevzema hrane in pijače"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:392
+#: src/placeView.js:421
 msgid "Only offers takeout"
 msgstr "Ponuja le prevzem hrane in pijače"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:409
+#: src/placeView.js:438
 msgid "Public internet access"
 msgstr "Javni dostop do interneta"
 
@@ -1312,50 +1348,50 @@ msgstr "Javni dostop do interneta"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:418
+#: src/placeView.js:447
 msgid "No internet access"
 msgstr "Ni dostopa do interneta"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:426
+#: src/placeView.js:455
 msgid "Public Wi-Fi"
 msgstr "Javno omrežje Wi-Fi"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:434
+#: src/placeView.js:463
 msgid "Wired internet access"
 msgstr "Žični dostop do interneta"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:442
+#: src/placeView.js:471
 msgid "Computers available for use"
 msgstr "Možnost uporabe računalnika"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:450
+#: src/placeView.js:479
 msgid "Internet assistance available"
 msgstr "Možnost dostopa do Interneta"
 
-#: src/placeView.js:456
+#: src/placeView.js:485
 msgid "No toilets available"
 msgstr "Uporaba stranišč ni mogoča"
 
-#: src/placeView.js:459
+#: src/placeView.js:488
 msgid "Toilets available"
 msgstr "Možnost uporabe stranišč"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:468
+#: src/placeView.js:497
 msgid "Wheelchair accessible"
 msgstr "Invalidom na vozičkih prijazno"
 
@@ -1364,7 +1400,7 @@ msgstr "Invalidom na vozičkih prijazno"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:478
+#: src/placeView.js:507
 msgid "Limited wheelchair accessibility"
 msgstr "Omejen dostop za invalidske vozičke"
 
@@ -1372,7 +1408,7 @@ msgstr "Omejen dostop za invalidske vozičke"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:487
+#: src/placeView.js:516
 msgid "Not wheelchair accessible"
 msgstr "Ni dostopa za invalidske vozička"
 
@@ -1381,7 +1417,7 @@ msgstr "Ni dostopa za invalidske vozička"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:497
+#: src/placeView.js:526
 msgid "Designated for wheelchair users"
 msgstr "Prijazno uporabnikom invalidskih vozičkov"
 
@@ -1390,7 +1426,7 @@ msgstr "Prijazno uporabnikom invalidskih vozičkov"
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:528
+#: src/placeView.js:557
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s pod morsko gladino"
@@ -1399,23 +1435,23 @@ msgstr "%s pod morsko gladino"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:535
+#: src/placeView.js:564
 msgid "At sea level"
 msgstr "Na ravni morske gladine"
 
-#: src/placeView.js:544
+#: src/placeView.js:573
 msgid "Religion:"
 msgstr "Religija:"
 
-#: src/place.js:585
+#: src/place.js:598
 msgid "Place not found in OpenStreetMap"
 msgstr "Mesta na OpenStreetMap ni mogoče najti"
 
-#: src/place.js:592
+#: src/place.js:605
 msgid "Coordinates in URL are not valid"
 msgstr "Koordinate v naslovu URL niso veljavne"
 
-#: src/place.js:601
+#: src/place.js:614
 msgid "URL is not supported"
 msgstr "Podan naslov URL ni podprt"
 
@@ -1623,63 +1659,63 @@ msgstr "Parki"
 msgid "Playgrounds"
 msgstr "Igrišča"
 
-#: src/poiCategories.js:425
+#: src/poiCategories.js:426
 msgid "Beaches"
 msgstr "Plaže"
 
-#: src/poiCategories.js:430
+#: src/poiCategories.js:431
 msgid "Nature Reserves"
 msgstr "Naravni rezervati"
 
-#: src/poiCategories.js:436
+#: src/poiCategories.js:437
 msgid "Theme Parks"
 msgstr "Tematski parki"
 
-#: src/poiCategories.js:441
+#: src/poiCategories.js:442
 msgid "Theaters"
 msgstr "Gledališča"
 
-#: src/poiCategories.js:447
+#: src/poiCategories.js:448
 msgid "Movie Theaters"
 msgstr "Kinodvorane"
 
-#: src/poiCategories.js:453
+#: src/poiCategories.js:454
 msgid "Night Clubs"
 msgstr "Nočni klubi"
 
-#: src/poiCategories.js:460
+#: src/poiCategories.js:461
 msgid "Tourism"
 msgstr "Turizem"
 
-#: src/poiCategories.js:464
+#: src/poiCategories.js:465
 msgid "Museums"
 msgstr "Muzeji"
 
-#: src/poiCategories.js:470
+#: src/poiCategories.js:471
 msgid "Attractions"
 msgstr "Zanimivosti"
 
-#: src/poiCategories.js:475
+#: src/poiCategories.js:476
 msgid "Artworks"
 msgstr "Umetniške galerije"
 
-#: src/poiCategories.js:480
+#: src/poiCategories.js:481
 msgid "Tourist Information"
 msgstr "Turistične informacije"
 
-#: src/poiCategories.js:487
+#: src/poiCategories.js:488
 msgid "Sports"
 msgstr "Šport"
 
-#: src/poiCategories.js:491
+#: src/poiCategories.js:492
 msgid "Gyms"
 msgstr "Telovadnice"
 
-#: src/poiCategories.js:497
+#: src/poiCategories.js:498
 msgid "Outdoor Gyms"
 msgstr "Telovadnice na prostem"
 
-#: src/poiCategories.js:503
+#: src/poiCategories.js:504
 msgid "Golf Courses"
 msgstr "Golfišča"
 
@@ -1688,15 +1724,15 @@ msgstr "Golfišča"
 msgid "From %s to %s"
 msgstr "Od %s do %s"
 
-#: src/printOperation.js:49
+#: src/printOperation.js:46
 msgid "Loading map tiles for printing"
 msgstr "Poteka nalaganje sličic zemljevida za tiskanje"
 
-#: src/printOperation.js:50
+#: src/printOperation.js:47
 msgid "You can abort printing if this takes too long"
 msgstr "Tiskanje je mogoče prekiniti, če je postopek predolg"
 
-#: src/printOperation.js:52
+#: src/printOperation.js:50
 msgid "Abort printing"
 msgstr "Prekliči tiskanje"
 
@@ -1815,7 +1851,7 @@ msgstr "Ni kasnejših možnosti."
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:138
+#: src/transitOptionsPanel.js:136
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%b %e"
@@ -2062,10 +2098,6 @@ msgstr "%s mi"
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
-
-#: src/transitplugins/goMetro.js:61
-msgid "This plugin doesn't support latest arrival"
-msgstr "Ta vstavek ne podpira najnovejšega prihod"
 
 #: src/transitplugins/openTripPlanner.js:1236
 #: src/transitplugins/openTripPlanner2.js:266
