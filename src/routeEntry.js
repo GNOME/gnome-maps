@@ -43,7 +43,7 @@ export class RouteEntry extends Gtk.Grid {
         this._type = type;
         this._point = point ?? null;
         this._mapView = mapView ?? null;
-        this.entry = this._createEntry();
+        this.entry = this._createEntry(type);
         this._entryGrid.attach(this.entry, 0, 0, 1, 1);
 
         // There is no GdkWindow on the widget until it is realized
@@ -58,6 +58,7 @@ export class RouteEntry extends Gtk.Grid {
             this.icon.icon_name = 'maps-point-start-symbolic';
             /* Translators: this is add via location tooltip */
             this._button.tooltip_text = _("Add via location");
+            this.entry.placeholder_text = _("From");
             query.connect('notify::points', () => {
                 this._button.sensitive = query.points.length < RouteQuery.MAX_QUERY_POINTS;
             });
@@ -68,12 +69,14 @@ export class RouteEntry extends Gtk.Grid {
             this.icon.icon_name = 'maps-point-end-symbolic';
             /* Translators: this is remove via location tooltip */
             this._button.tooltip_text = _("Remove via location");
+            this.entry.placeholder_text = _("Via")
             break;
         case RouteEntry.Type.TO:
             this._button.icon_name = 'route-reverse-symbolic';
             this.icon.icon_name = 'maps-point-end-symbolic';
             /* Translators: this is reverse route tooltip */
             this._button.tooltip_text = _("Reverse route");
+            this.entry.placeholder_text = _("To");
             break;
         }
     }
