@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2024-07-01 21:31+0000\n"
-"PO-Revision-Date: 2024-07-02 12:27+0200\n"
+"POT-Creation-Date: 2024-07-11 13:34+0000\n"
+"PO-Revision-Date: 2024-07-12 00:14+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -32,7 +32,7 @@ msgstr ""
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
 #: data/ui/main-window.ui:27 src/application.js:64 src/mainWindow.js:118
-#: src/mainWindow.js:592
+#: src/mainWindow.js:590
 msgid "Maps"
 msgstr "Zemljevidi"
 
@@ -59,7 +59,7 @@ msgstr ""
 "tisoč posameznikov na vseh koncih sveta."
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.appdata.xml.in.in:469 src/mainWindow.js:589
+#: data/org.gnome.Maps.appdata.xml.in.in:469 src/mainWindow.js:587
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
 
@@ -495,7 +495,7 @@ msgstr "Oznaka Wikipodatki"
 msgid "Load Wikidata tag for article"
 msgstr "Naloži oznake Wikipodatkov za prispevek"
 
-#: data/ui/place-popover.ui:23 src/searchBar.js:55
+#: data/ui/place-popover.ui:23 src/searchBar.js:67
 msgid "Explore Nearby Places"
 msgstr "Razišči bližnja mesta"
 
@@ -781,40 +781,40 @@ msgstr "Ni najdene poti."
 msgid "Start!"
 msgstr "Začetna točka!"
 
-#: src/mainWindow.js:479
+#: src/mainWindow.js:477
 msgid "Failed to connect to location service"
 msgstr "Napaka med povezovanjem s storitvijo določevanja točke GPS"
 
-#: src/mainWindow.js:484
+#: src/mainWindow.js:482
 msgid "Turn on location services"
 msgstr "Priklopite geolokacijske storitve"
 
-#: src/mainWindow.js:485
+#: src/mainWindow.js:483
 msgid "Location Settings"
 msgstr "Nastavitve mesta"
 
-#: src/mainWindow.js:590
+#: src/mainWindow.js:588
 msgid "translator-credits"
 msgstr ""
 "Matej Urbančič <mateju@src.gnome.org>\n"
 "Martin Srebotnjak"
 
-#: src/mainWindow.js:594
+#: src/mainWindow.js:592
 msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
 msgstr ""
 "Avtorske pravice © 2011–2023 Red Hat, Inc. in avtorji programa Zemljevidi "
 "GNOME"
 
-#: src/mainWindow.js:607
+#: src/mainWindow.js:605
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Podatke zemljevida objavljajo %s in drugi sodelujoči"
 
-#: src/mainWindow.js:608
+#: src/mainWindow.js:606
 msgid "Map Data Provider"
 msgstr "Ponudnik podatkov zemljevida"
 
-#: src/mainWindow.js:611
+#: src/mainWindow.js:609
 msgid "Map Tile Provider"
 msgstr "Ponudnik sličic zemljevida"
 
@@ -823,25 +823,25 @@ msgstr "Ponudnik sličic zemljevida"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:619
+#: src/mainWindow.js:617
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Slikovne podatke zemljevida objavlja %s"
 
-#: src/mainWindow.js:648
+#: src/mainWindow.js:646
 msgid "Search Provider"
 msgstr "Ponudnik iskalnika"
 
-#: src/mainWindow.js:651
+#: src/mainWindow.js:649
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Iskalnik omogoča %s z uporabo %s"
 
-#: src/mainWindow.js:660
+#: src/mainWindow.js:658
 msgid "All Layer Files"
 msgstr "Vse datoteke plasti"
 
-#: src/mainWindow.js:673
+#: src/mainWindow.js:671
 msgid "Open Shape Layers"
 msgstr "Odpri plasti oblike"
 
@@ -1218,11 +1218,15 @@ msgstr "Oznake Wikipodatki za prispevek ni mogoče najti"
 msgid "Unnamed place"
 msgstr "Neimenovano mesto"
 
-#: src/placeEntry.js:279
+#: src/placeEntry.js:150
+msgid "Clear Entry"
+msgstr "Počisti vnos"
+
+#: src/placeEntry.js:315
 msgid "Failed to parse Geo URI"
 msgstr "Razčlenjevanje naslova URI Geo je spodletelo"
 
-#: src/placeEntry.js:291
+#: src/placeEntry.js:327
 msgid "Failed to parse Maps URI"
 msgstr "Razčlenjevanje naslova URI zemljevida je spodletelo"
 
@@ -1739,19 +1743,31 @@ msgstr "Prekliči tiskanje"
 #. Translators: this is add via location tooltip
 #: src/routeEntry.js:60
 msgid "Add via location"
-msgstr "Dodaj prek mesta"
+msgstr "Dodaj mesto na poti"
+
+#: src/routeEntry.js:61
+msgid "From"
+msgstr "Od"
 
 #. Translators: this is remove via location tooltip
-#: src/routeEntry.js:70
+#: src/routeEntry.js:71
 msgid "Remove via location"
-msgstr "Odstrani prek mesta"
+msgstr "Odstrani mesto na poti"
+
+#: src/routeEntry.js:72
+msgid "Via"
+msgstr "Prek"
 
 #. Translators: this is reverse route tooltip
-#: src/routeEntry.js:76
+#: src/routeEntry.js:78
 msgid "Reverse route"
 msgstr "Obrni pot"
 
-#: src/searchBar.js:45
+#: src/routeEntry.js:79
+msgid "To"
+msgstr "Na/k"
+
+#: src/searchBar.js:42
 msgid "Search"
 msgstr "Poišči"
 
