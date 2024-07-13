@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2024-06-05 20:14+0000\n"
-"PO-Revision-Date: 2024-07-01 13:54+0530\n"
+"POT-Creation-Date: 2024-07-02 18:22+0000\n"
+"PO-Revision-Date: 2024-07-05 22:26+0530\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <indlinux-hindi@lists.sourceforge.net>\n"
 "Language: hi\n"
@@ -28,8 +28,8 @@ msgstr ""
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
-#: data/ui/main-window.ui:27 src/application.js:64 src/mainWindow.js:146
-#: src/mainWindow.js:621
+#: data/ui/main-window.ui:27 src/application.js:64 src/mainWindow.js:118
+#: src/mainWindow.js:592
 msgid "Maps"
 msgstr "मानचित्र"
 
@@ -56,7 +56,7 @@ msgstr ""
 "लोगों द्वारा बनाया गया है।"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.appdata.xml.in.in:469 src/mainWindow.js:618
+#: data/org.gnome.Maps.appdata.xml.in.in:469 src/mainWindow.js:589
 msgid "The GNOME Project"
 msgstr "गनोम परियोजना"
 
@@ -107,27 +107,27 @@ msgstr "प्रदर्शित करने के लिए मानच�
 
 #: data/org.gnome.Maps.gschema.xml:31
 msgid "Window size"
-msgstr "खिड़की का आकर"
+msgstr "विंडो का आकर"
 
 #: data/org.gnome.Maps.gschema.xml:32
 msgid "Window size (width and height)."
-msgstr "खिड़की का आकर (चौड़ाई और ऊंचाई)।"
+msgstr "विंडो का आकर (चौड़ाई और ऊंचाई)।"
 
 #: data/org.gnome.Maps.gschema.xml:36
 msgid "Window position"
-msgstr "खिड़की स्थान"
+msgstr "विंडो स्थान"
 
 #: data/org.gnome.Maps.gschema.xml:37
 msgid "Window position (X and Y)."
-msgstr "खिड़की स्थान (X और Y)।"
+msgstr "विंडो स्थान (X और Y)।"
 
 #: data/org.gnome.Maps.gschema.xml:41
 msgid "Window maximized"
-msgstr "खिड़की अधिकतम पर"
+msgstr "विंडो अधिकतम पर"
 
 #: data/org.gnome.Maps.gschema.xml:42
 msgid "Window maximization state"
-msgstr "खिड़की अधिकतम स्थिति"
+msgstr "विंडो अधिकतम स्थिति"
 
 #: data/org.gnome.Maps.gschema.xml:46
 msgid "Maximum number of search results"
@@ -200,11 +200,11 @@ msgid "Add to OpenStreetMap…"
 msgstr "OpenStreetMap में जोड़ें…"
 
 #: data/ui/export-view-dialog.ui:7
-msgid "Export view"
+msgid "Export View"
 msgstr "निर्यात दृश्य"
 
-#: data/ui/export-view-dialog.ui:16 data/ui/send-to-dialog.ui:10
-#: data/ui/shape-layer-file-chooser.ui:22
+#: data/ui/export-view-dialog.ui:16 data/ui/osm-edit-dialog.ui:226
+#: data/ui/send-to-dialog.ui:10
 msgid "_Cancel"
 msgstr "रद्द करें (_C)"
 
@@ -226,7 +226,7 @@ msgid "Add places to your favorites to get them listed here"
 msgstr "स्थानों को यहां सूचीबद्ध करने के लिए उन्हें अपने पसंदीदा में जोड़ें"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:11 src/geoclue.js:106 src/placeBar.js:102
+#: data/ui/headerbar-left.ui:11 src/geoclue.js:106 src/placeBar.js:101
 msgid "Current Location"
 msgstr "वर्तमान स्थान"
 
@@ -392,37 +392,37 @@ msgid "Help to improve the map, using an OpenStreetMap account."
 msgstr "OpenStreetMap खाते का उपयोग करके मानचित्र को बेहतर बनाने में सहायता करें।"
 
 #: data/ui/osm-account-dialog.ui:36
-msgid "Sign In"
-msgstr "साइन इन"
+msgid "_Sign In"
+msgstr "साइन इन (_S)"
 
-#: data/ui/osm-account-dialog.ui:59
+#: data/ui/osm-account-dialog.ui:60
 msgid "Verification"
 msgstr "सत्यापन"
 
-#: data/ui/osm-account-dialog.ui:60
+#: data/ui/osm-account-dialog.ui:61
 msgid ""
 "Copy the verification code shown when authorizing access in the browser."
 msgstr "ब्राउज़र में पहुंच को अधिकृत करते समय दिखाए गए सत्यापन कोड को कॉपी करें।"
 
-#: data/ui/osm-account-dialog.ui:69
+#: data/ui/osm-account-dialog.ui:70
 msgid "Verification Code"
 msgstr "सत्यापन कोड"
 
-#: data/ui/osm-account-dialog.ui:75
-msgid "Verify"
-msgstr "सत्यापित करें"
+#: data/ui/osm-account-dialog.ui:76
+msgid "_Verify"
+msgstr "सत्यापित करें (_V)"
 
-#: data/ui/osm-account-dialog.ui:110
+#: data/ui/osm-account-dialog.ui:112
 msgid "Signed In"
 msgstr "साइन इन किया गया"
 
-#: data/ui/osm-account-dialog.ui:111
+#: data/ui/osm-account-dialog.ui:113
 msgid "Your OpenStreetMap account is active."
 msgstr "आपका OpenStreetMap खाता सक्रिय है।"
 
-#: data/ui/osm-account-dialog.ui:129
-msgid "Sign Out"
-msgstr "साइन आउट"
+#: data/ui/osm-account-dialog.ui:131
+msgid "_Sign Out"
+msgstr "साइन आउट (_O)"
 
 #: data/ui/osm-edit-address.ui:11
 msgid "Street"
@@ -455,14 +455,14 @@ msgid "None"
 msgstr "कोई नहीं"
 
 #: data/ui/osm-edit-dialog.ui:108
-msgid "Add Field"
-msgstr "क्षेत्र जोड़ें"
+msgid "_Add Field"
+msgstr "क्षेत्र जोड़ें (_A)"
 
-#: data/ui/osm-edit-dialog.ui:130
+#: data/ui/osm-edit-dialog.ui:131
 msgid "Comment"
 msgstr "टिप्पणी"
 
-#: data/ui/osm-edit-dialog.ui:158
+#: data/ui/osm-edit-dialog.ui:159
 msgid ""
 "Map changes will be visible on all maps that use\n"
 "OpenStreetMap data."
@@ -470,17 +470,17 @@ msgstr ""
 "मानचित्र परिवर्तन उन सभी मानचित्रों पर दिखाई देंगे जो OpenStreetMap डेटा का उपयोग "
 "करते हैं।"
 
-#: data/ui/osm-edit-dialog.ui:186
+#: data/ui/osm-edit-dialog.ui:187
 msgid "Recently Used"
 msgstr "हालिया प्रयुक्त"
 
-#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:643
-msgid "Cancel"
-msgstr "रद्द करें"
+#: data/ui/osm-edit-dialog.ui:233 data/ui/sidebar.ui:301
+msgid "Back"
+msgstr "पीछे"
 
-#: data/ui/osm-edit-dialog.ui:238 src/osmEditDialog.js:531
-msgid "Next"
-msgstr "अगला"
+#: data/ui/osm-edit-dialog.ui:241
+msgid "_Next"
+msgstr "अगला (_N)"
 
 #: data/ui/osm-edit-wikipedia.ui:8
 msgid "Article"
@@ -516,20 +516,12 @@ msgid "Open Location"
 msgstr "स्थान खोलें"
 
 #: data/ui/send-to-dialog.ui:64
-msgid "Copy"
-msgstr "कॉपी करें"
+msgid "C_opy"
+msgstr "कॉपी करें (_o)"
 
-#: data/ui/send-to-dialog.ui:70
-msgid "Send To…"
-msgstr "यहां भेजें…"
-
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:61
-msgid "Open Shape Layer"
-msgstr "आकृति परत खोलें"
-
-#: data/ui/shape-layer-file-chooser.ui:12
-msgid "_Open"
-msgstr "खोलें (_O)"
+#: data/ui/send-to-dialog.ui:71
+msgid "_Send To…"
+msgstr "यहां भेजें (_S)…"
 
 #. Translators: This is a tooltip
 #: data/ui/shape-layer-row.ui:32
@@ -541,11 +533,31 @@ msgstr "दृश्यमान टॉगल करें"
 msgid "Remove Shape Layer"
 msgstr "आकृति परत हटाएं"
 
-#: data/ui/sidebar.ui:207
+#: data/ui/sidebar.ui:17
+msgid "Walking"
+msgstr "चलना"
+
+#: data/ui/sidebar.ui:30
+msgid "Cycling"
+msgstr "साइकिल"
+
+#: data/ui/sidebar.ui:44
+msgid "Driving"
+msgstr "ड्राइविंग"
+
+#: data/ui/sidebar.ui:59
+msgid "Transit"
+msgstr "पारगमन"
+
+#: data/ui/sidebar.ui:211
 msgid "Route search by GraphHopper"
 msgstr "GraphHopper द्वारा मार्ग खोज"
 
-#: data/ui/sidebar.ui:272
+#: data/ui/sidebar.ui:244 src/osmEditDialog.js:677
+msgid "More Information"
+msgstr "अधिक जानकारी"
+
+#: data/ui/sidebar.ui:277
 msgid ""
 "Routing itineraries for public transit is provided by third-party\n"
 "services.\n"
@@ -591,37 +603,41 @@ msgstr "इस तक प्रस्थान"
 msgid "Arrive By"
 msgstr "इस तक आगमन"
 
+#: data/ui/transit-options-panel.ui:54
+msgid "View More"
+msgstr "अधिक देखें"
+
 #. Header indicating selected modes of transit
-#: data/ui/transit-options-panel.ui:85
+#: data/ui/transit-options-panel.ui:86
 msgid "Show"
 msgstr "दिखाएं"
 
-#: data/ui/transit-options-panel.ui:95
-msgid "Buses"
-msgstr "बसें"
+#: data/ui/transit-options-panel.ui:96
+msgid "_Buses"
+msgstr "बसें (_B)"
 
-#: data/ui/transit-options-panel.ui:101
-msgid "Trams"
-msgstr "ट्राम"
+#: data/ui/transit-options-panel.ui:103
+msgid "_Trams"
+msgstr "ट्राम (_T)"
 
-#: data/ui/transit-options-panel.ui:107
-msgid "Trains"
-msgstr "ट्रेनें"
+#: data/ui/transit-options-panel.ui:110
+msgid "T_rains"
+msgstr "ट्रेनें (_r)"
 
-#: data/ui/transit-options-panel.ui:113
-msgid "Subway"
-msgstr "भूमिगत मार्ग"
+#: data/ui/transit-options-panel.ui:117
+msgid "_Subway"
+msgstr "सबवे (_S)"
 
-#: data/ui/transit-options-panel.ui:119
-msgid "Ferries"
-msgstr "नौका"
+#: data/ui/transit-options-panel.ui:124
+msgid "_Ferries"
+msgstr "नौका (_F)"
 
-#: data/ui/transit-options-panel.ui:125
-msgid "Airplanes"
-msgstr "हवाई जहाज"
+#: data/ui/transit-options-panel.ui:131
+msgid "_Airplanes"
+msgstr "हवाई जहाज (_A)"
 
 #. Translators: This is a tooltip
-#: data/ui/place-bar.ui:38 data/ui/place-buttons.ui:27
+#: data/ui/place-bar.ui:38 data/ui/place-buttons.ui:28
 msgid "Share Location"
 msgstr "स्थान साझा करें"
 
@@ -632,16 +648,16 @@ msgstr "नए मार्ग में जोड़ें"
 
 #. Translators: This is the button to find a route to a place
 #: data/ui/place-buttons.ui:15
-msgid "Directions"
-msgstr "दिशा-निर्देश"
+msgid "_Directions"
+msgstr "दिशा-निर्देश (_D)"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.ui:36
+#: data/ui/place-buttons.ui:37
 msgid "Mark as Favorite"
 msgstr "पसंदीदा चिह्नित करें"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.ui:44
+#: data/ui/place-buttons.ui:45
 msgid "Edit on OpenStreetMap"
 msgstr "OpenStreetMap पर संपादित करें"
 
@@ -665,7 +681,7 @@ msgid "Zoom Out"
 msgstr "ज़ूम आउट"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1221
+#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1217
 msgid "Zoom In"
 msgstr "ज़ूम इन"
 
@@ -690,23 +706,23 @@ msgstr "OSM तत्व नहीं मिल सका"
 msgid "Could not find user element"
 msgstr "उपयोगकर्ता तत्व नहीं मिल सका"
 
-#: src/application.js:78
+#: src/application.js:79
 msgid "A path to a local tiles directory structure"
 msgstr "स्थानीय टाइल्स निर्देशिका संरचना का पथ"
 
-#: src/application.js:84
+#: src/application.js:85
 msgid "Tile size for local tiles directory"
 msgstr "स्थानीय टाइल्स निर्देशिका के लिए टाइल का आकार"
 
-#: src/application.js:88
+#: src/application.js:89
 msgid "Show the version of the program"
 msgstr "प्रोग्राम का संस्करण दिखाएं"
 
-#: src/application.js:94
+#: src/application.js:95
 msgid "Search for places"
 msgstr "स्थान खोजें"
 
-#: src/application.js:105 src/application.js:106
+#: src/application.js:106 src/application.js:107
 msgid "[FILE…|URI]"
 msgstr "[फाइल…|URI]"
 
@@ -719,12 +735,16 @@ msgstr "अमान्य मानचित्र: URI: %s"
 #. * exported image with coordinates. The .png extension should be kept
 #. * intact in the translated string.
 #.
-#: src/exportViewDialog.js:75
+#: src/exportViewDialog.js:72
 #, javascript-format
 msgid "Maps at %f, %f.png"
 msgstr "%f, %f.png पर मानचित्र"
 
-#: src/exportViewDialog.js:174
+#: src/exportViewDialog.js:87
+msgid "PNG"
+msgstr "PNG"
+
+#: src/exportViewDialog.js:138
 msgid "Unable to export view"
 msgstr "दृश्य निर्यात करने में असमर्थ"
 
@@ -733,8 +753,8 @@ msgid "Favorite removed"
 msgstr "पसंदीदा हटा दिया गया"
 
 #: src/favoriteListRow.js:43
-msgid "Undo"
-msgstr "पूर्ववत करें"
+msgid "_Undo"
+msgstr "पूर्ववत करें (_U)"
 
 #: src/geoJSONSource.js:73
 msgid "invalid coordinate"
@@ -760,42 +780,38 @@ msgstr "कोई मार्ग नहीं मिला।"
 msgid "Start!"
 msgstr "शुरू करो!"
 
-#: src/mainWindow.js:58
-msgid "All Layer Files"
-msgstr "सभी परत फाइलें"
-
-#: src/mainWindow.js:507
+#: src/mainWindow.js:479
 msgid "Failed to connect to location service"
 msgstr "स्थान सेवा से कनेक्ट करने में विफल"
 
-#: src/mainWindow.js:512
+#: src/mainWindow.js:484
 msgid "Turn on location services"
 msgstr "स्थान सेवाएं चालू करें"
 
-#: src/mainWindow.js:513
+#: src/mainWindow.js:485
 msgid "Location Settings"
 msgstr "स्थान सेटिंग्स"
 
-#: src/mainWindow.js:619
+#: src/mainWindow.js:590
 msgid "translator-credits"
 msgstr ""
 "Solomon Nadar <solomonsunder@gmail.com>\n"
 "Scrambled777 <weblate.scrambled777@simplelogin.com>"
 
-#: src/mainWindow.js:623
+#: src/mainWindow.js:594
 msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "कॉपीराइट © 2011 - 2023 रेड हैट, इंक. और गनोम मानचित्र लेखक"
 
-#: src/mainWindow.js:636
+#: src/mainWindow.js:607
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "%s और योगदानकर्ताओं द्वारा मानचित्र डेटा"
 
-#: src/mainWindow.js:637
+#: src/mainWindow.js:608
 msgid "Map Data Provider"
 msgstr "मानचित्र डेटा प्रदाता"
 
-#: src/mainWindow.js:640
+#: src/mainWindow.js:611
 msgid "Map Tile Provider"
 msgstr "मानचित्र टाइल प्रदाता"
 
@@ -804,53 +820,65 @@ msgstr "मानचित्र टाइल प्रदाता"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:648
+#: src/mainWindow.js:619
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "मानचित्र टाइलें %s द्वारा प्रदान की गईं"
 
-#: src/mainWindow.js:677
+#: src/mainWindow.js:648
 msgid "Search Provider"
 msgstr "खोज प्रदाता"
 
-#: src/mainWindow.js:680
+#: src/mainWindow.js:651
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "%s द्वारा %s का उपयोग करके खोज प्रदान की गई"
 
-#: src/mapView.js:617 src/mapView.js:682
+#: src/mainWindow.js:660
+msgid "All Layer Files"
+msgstr "सभी परत फाइलें"
+
+#: src/mainWindow.js:673
+msgid "Open Shape Layers"
+msgstr "आकृति परत खोलें"
+
+#: src/mapView.js:617 src/mapView.js:679
 msgid "Failed to open layer"
 msgstr "परत खोलने में विफल"
 
-#: src/mapView.js:636
+#: src/mapView.js:634
 msgid "Do you want to continue?"
 msgstr "क्या आप जारी रखना चाहते हैं?"
 
-#: src/mapView.js:637
+#: src/mapView.js:635
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
 "time to load"
 msgstr "आप %s MB के कुल आकार वाली फाइलें खोलने वाले हैं। इसे लोड होने में कुछ समय लग सकता है"
 
-#: src/mapView.js:644 src/transitplugins/openTripPlanner.js:1238
+#: src/mapView.js:641
+msgid "Cancel"
+msgstr "रद्द करें"
+
+#: src/mapView.js:642 src/transitplugins/openTripPlanner.js:1238
 #: src/transitplugins/openTripPlanner2.js:267
 msgid "Continue"
 msgstr "जारी रखें"
 
-#: src/mapView.js:676
+#: src/mapView.js:673
 msgid "File type is not supported"
 msgstr "फाइल प्रकार समर्थित नहीं है"
 
-#: src/mapView.js:718
+#: src/mapView.js:715
 msgid "Failed to open GeoURI"
 msgstr "GeURI खोलने में विफल"
 
-#: src/mapView.js:1220
+#: src/mapView.js:1216
 msgid "Zoom in to add location"
 msgstr "स्थान जोड़ने के लिए ज़ूम करें"
 
-#: src/mapView.js:1241
+#: src/mapView.js:1237
 msgid "Location was added in OpenStreetMap"
 msgstr "स्थान OpenStreetMap में जोड़ा गया"
 
@@ -1150,10 +1178,18 @@ msgid "Select Type"
 msgstr "प्रकार चुनें"
 
 #: src/osmEditDialog.js:515
-msgid "Done"
-msgstr "संपन्न"
+msgid "_Done"
+msgstr "संपन्न (_D)"
 
-#: src/osmEditDialog.js:818
+#: src/osmEditDialog.js:532
+msgid "Next"
+msgstr "अगला"
+
+#: src/osmEditDialog.js:583
+msgid "Remove"
+msgstr "हटाएं"
+
+#: src/osmEditDialog.js:821
 msgid ""
 "The format used should include the language code and the article title like "
 "“en:Article title”."
@@ -1161,11 +1197,11 @@ msgstr ""
 "उपयोग किए गए प्रारूप में भाषा कोड और लेख का शीर्षक जैसे \"en:Article title\" शामिल "
 "होना चाहिए।"
 
-#: src/osmEditDialog.js:824
+#: src/osmEditDialog.js:827
 msgid "Use the reload button to load the Wikidata tag for the selected article"
 msgstr "चयनित आलेख के लिए Wikidata टैग लोड करने के लिए पुनः लोड बटन का उपयोग करें"
 
-#: src/osmEditDialog.js:832
+#: src/osmEditDialog.js:835
 msgid "Couldn't find Wikidata tag for article"
 msgstr "आलेख के लिए Wikidata टैग नहीं मिल सका"
 
@@ -1610,63 +1646,63 @@ msgstr "पार्क"
 msgid "Playgrounds"
 msgstr "खेल के मैदान"
 
-#: src/poiCategories.js:425
+#: src/poiCategories.js:426
 msgid "Beaches"
 msgstr "समुद्रतट"
 
-#: src/poiCategories.js:430
+#: src/poiCategories.js:431
 msgid "Nature Reserves"
 msgstr "प्राकृतिक संरक्षण"
 
-#: src/poiCategories.js:436
+#: src/poiCategories.js:437
 msgid "Theme Parks"
 msgstr "थीम पार्क"
 
-#: src/poiCategories.js:441
+#: src/poiCategories.js:442
 msgid "Theaters"
 msgstr "सिनेमाघर"
 
-#: src/poiCategories.js:447
+#: src/poiCategories.js:448
 msgid "Movie Theaters"
 msgstr "फिल्म सिनेमाघर"
 
-#: src/poiCategories.js:453
+#: src/poiCategories.js:454
 msgid "Night Clubs"
 msgstr "रात्रि क्लब"
 
-#: src/poiCategories.js:460
+#: src/poiCategories.js:461
 msgid "Tourism"
 msgstr "पर्यटन"
 
-#: src/poiCategories.js:464
+#: src/poiCategories.js:465
 msgid "Museums"
 msgstr "संग्रहालय"
 
-#: src/poiCategories.js:470
+#: src/poiCategories.js:471
 msgid "Attractions"
 msgstr "आकर्षण"
 
-#: src/poiCategories.js:475
+#: src/poiCategories.js:476
 msgid "Artworks"
 msgstr "कलाकृतियां"
 
-#: src/poiCategories.js:480
+#: src/poiCategories.js:481
 msgid "Tourist Information"
 msgstr "पर्यटक सूचना"
 
-#: src/poiCategories.js:487
+#: src/poiCategories.js:488
 msgid "Sports"
 msgstr "खेलकूद"
 
-#: src/poiCategories.js:491
+#: src/poiCategories.js:492
 msgid "Gyms"
 msgstr "व्यायामशाला"
 
-#: src/poiCategories.js:497
+#: src/poiCategories.js:498
 msgid "Outdoor Gyms"
 msgstr "बाहरी व्यायामशाला"
 
-#: src/poiCategories.js:503
+#: src/poiCategories.js:504
 msgid "Golf Courses"
 msgstr "गोल्फ कोर्स"
 
@@ -1675,15 +1711,15 @@ msgstr "गोल्फ कोर्स"
 msgid "From %s to %s"
 msgstr "%s से %s तक"
 
-#: src/printOperation.js:49
+#: src/printOperation.js:46
 msgid "Loading map tiles for printing"
 msgstr "मुद्रण के लिए मानचित्र टाइलें लोड हो रही हैं"
 
-#: src/printOperation.js:50
+#: src/printOperation.js:47
 msgid "You can abort printing if this takes too long"
 msgstr "यदि इसमें बहुत अधिक समय लगता है तो आप मुद्रण रोक सकते हैं"
 
-#: src/printOperation.js:52
+#: src/printOperation.js:50
 msgid "Abort printing"
 msgstr "मुद्रण रोकें"
 
@@ -1802,7 +1838,7 @@ msgstr "कोई बाद का विकल्प नहीं मिला�
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:138
+#: src/transitOptionsPanel.js:136
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%b %e"
