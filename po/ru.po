@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2024-07-01 21:31+0000\n"
-"PO-Revision-Date: 2024-07-02 18:25+0300\n"
+"POT-Creation-Date: 2024-07-11 13:34+0000\n"
+"PO-Revision-Date: 2024-07-11 21:47+0300\n"
 "Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -33,7 +33,7 @@ msgstr ""
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
 #: data/ui/main-window.ui:27 src/application.js:64 src/mainWindow.js:118
-#: src/mainWindow.js:592
+#: src/mainWindow.js:590
 msgid "Maps"
 msgstr "Карты"
 
@@ -60,7 +60,7 @@ msgstr ""
 "всеми миру."
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.appdata.xml.in.in:469 src/mainWindow.js:589
+#: data/org.gnome.Maps.appdata.xml.in.in:469 src/mainWindow.js:587
 msgid "The GNOME Project"
 msgstr "Проект GNOME"
 
@@ -499,7 +499,7 @@ msgstr "Метка Викиданных"
 msgid "Load Wikidata tag for article"
 msgstr "Загрузить метку Викиданных для статьи"
 
-#: data/ui/place-popover.ui:23 src/searchBar.js:55
+#: data/ui/place-popover.ui:23 src/searchBar.js:67
 msgid "Explore Nearby Places"
 msgstr "Исследовать близлежащие места"
 
@@ -792,19 +792,19 @@ msgstr "Маршрут не найден."
 msgid "Start!"
 msgstr "Старт!"
 
-#: src/mainWindow.js:479
+#: src/mainWindow.js:477
 msgid "Failed to connect to location service"
 msgstr "Не удалось подключиться к службе определения местоположения"
 
-#: src/mainWindow.js:484
+#: src/mainWindow.js:482
 msgid "Turn on location services"
 msgstr "Включите службы определения местоположения"
 
-#: src/mainWindow.js:485
+#: src/mainWindow.js:483
 msgid "Location Settings"
 msgstr "Параметры местоположения"
 
-#: src/mainWindow.js:590
+#: src/mainWindow.js:588
 msgid "translator-credits"
 msgstr ""
 "Yuri Myasoedov <ymyasoedov@yandex.ru>, 2013, 2014.\n"
@@ -812,20 +812,20 @@ msgstr ""
 "Alexey Rubtsov <rushills@gmail.com>, 2021\n"
 "Aleksandr Melman <alexmelman88@gmail.com>, 2022-2023"
 
-#: src/mainWindow.js:594
+#: src/mainWindow.js:592
 msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Авторское право © 2011 – 2023 Red Hat, Inc. и авторы GNOME Maps"
 
-#: src/mainWindow.js:607
+#: src/mainWindow.js:605
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Картографические данные %s и участников"
 
-#: src/mainWindow.js:608
+#: src/mainWindow.js:606
 msgid "Map Data Provider"
 msgstr "Поставщик картографических данных"
 
-#: src/mainWindow.js:611
+#: src/mainWindow.js:609
 msgid "Map Tile Provider"
 msgstr "Поставщик картографического слоя"
 
@@ -834,25 +834,25 @@ msgstr "Поставщик картографического слоя"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:619
+#: src/mainWindow.js:617
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Картографические слои предоставлены %s"
 
-#: src/mainWindow.js:648
+#: src/mainWindow.js:646
 msgid "Search Provider"
 msgstr "Поставщик поиска"
 
-#: src/mainWindow.js:651
+#: src/mainWindow.js:649
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Поиск осуществляется %s с помощью %s"
 
-#: src/mainWindow.js:660
+#: src/mainWindow.js:658
 msgid "All Layer Files"
 msgstr "Все файлы слоёв"
 
-#: src/mainWindow.js:673
+#: src/mainWindow.js:671
 msgid "Open Shape Layers"
 msgstr "Открыть слои фигур"
 
@@ -1228,11 +1228,15 @@ msgstr "Не удалось найти метку Викиданных для с
 msgid "Unnamed place"
 msgstr "Неназванное место"
 
-#: src/placeEntry.js:279
+#: src/placeEntry.js:150
+msgid "Clear Entry"
+msgstr "Очистить запись"
+
+#: src/placeEntry.js:315
 msgid "Failed to parse Geo URI"
 msgstr "Не удалось разобрать геолокационный URI"
 
-#: src/placeEntry.js:291
+#: src/placeEntry.js:327
 msgid "Failed to parse Maps URI"
 msgstr "Не удалось разобрать URI карт"
 
@@ -1749,17 +1753,29 @@ msgstr "Прервать печать"
 msgid "Add via location"
 msgstr "Добавить через местоположение"
 
+#: src/routeEntry.js:61
+msgid "From"
+msgstr "Из"
+
 #. Translators: this is remove via location tooltip
-#: src/routeEntry.js:70
+#: src/routeEntry.js:71
 msgid "Remove via location"
 msgstr "Удалить через местоположение"
 
+#: src/routeEntry.js:72
+msgid "Via"
+msgstr "Через"
+
 #. Translators: this is reverse route tooltip
-#: src/routeEntry.js:76
+#: src/routeEntry.js:78
 msgid "Reverse route"
 msgstr "Обратный маршрут"
 
-#: src/searchBar.js:45
+#: src/routeEntry.js:79
+msgid "To"
+msgstr "В"
+
+#: src/searchBar.js:42
 msgid "Search"
 msgstr "Поиск"
 
@@ -1768,7 +1784,7 @@ msgstr "Поиск"
 #: src/sendToDialog.js:84
 #, javascript-format
 msgid "Add %s to %s"
-msgstr "Добавьте %s к %s"
+msgstr "Добавить %s в %s"
 
 #: src/sendToDialog.js:181
 msgid "Failed to open URI"
