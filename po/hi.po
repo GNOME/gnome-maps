@@ -1,15 +1,15 @@
 # Hindi translation for gnome-maps.
-# Copyright (C) 2014 gnome-maps's COPYRIGHT HOLDER
+# Copyright (C) 2024 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
 # Solomon Nadar <solomonsunder@gmail.com>, 2014.
 # Scrambled777 <weblate.scrambled777@simplelogin.com>, 2024.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-maps master\n"
+"Project-Id-Version: gnome-maps main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2024-07-02 18:22+0000\n"
-"PO-Revision-Date: 2024-07-05 22:26+0530\n"
+"POT-Creation-Date: 2024-07-13 18:20+0000\n"
+"PO-Revision-Date: 2024-07-15 18:19+0530\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <indlinux-hindi@lists.sourceforge.net>\n"
 "Language: hi\n"
@@ -29,7 +29,7 @@ msgstr ""
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
 #: data/ui/main-window.ui:27 src/application.js:64 src/mainWindow.js:118
-#: src/mainWindow.js:592
+#: src/mainWindow.js:590
 msgid "Maps"
 msgstr "मानचित्र"
 
@@ -56,7 +56,7 @@ msgstr ""
 "लोगों द्वारा बनाया गया है।"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.appdata.xml.in.in:469 src/mainWindow.js:589
+#: data/org.gnome.Maps.appdata.xml.in.in:469 src/mainWindow.js:587
 msgid "The GNOME Project"
 msgstr "गनोम परियोजना"
 
@@ -494,7 +494,7 @@ msgstr "Wikidata टैग"
 msgid "Load Wikidata tag for article"
 msgstr "लेख के लिए Wikidata टैग लोड करें"
 
-#: data/ui/place-popover.ui:23 src/searchBar.js:55
+#: data/ui/place-popover.ui:23 src/searchBar.js:67
 msgid "Explore Nearby Places"
 msgstr "निकटवर्ती स्थानों का अन्वेषण करें"
 
@@ -780,38 +780,38 @@ msgstr "कोई मार्ग नहीं मिला।"
 msgid "Start!"
 msgstr "शुरू करो!"
 
-#: src/mainWindow.js:479
+#: src/mainWindow.js:477
 msgid "Failed to connect to location service"
 msgstr "स्थान सेवा से कनेक्ट करने में विफल"
 
-#: src/mainWindow.js:484
+#: src/mainWindow.js:482
 msgid "Turn on location services"
 msgstr "स्थान सेवाएं चालू करें"
 
-#: src/mainWindow.js:485
+#: src/mainWindow.js:483
 msgid "Location Settings"
 msgstr "स्थान सेटिंग्स"
 
-#: src/mainWindow.js:590
+#: src/mainWindow.js:588
 msgid "translator-credits"
 msgstr ""
 "Solomon Nadar <solomonsunder@gmail.com>\n"
 "Scrambled777 <weblate.scrambled777@simplelogin.com>"
 
-#: src/mainWindow.js:594
+#: src/mainWindow.js:592
 msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "कॉपीराइट © 2011 - 2023 रेड हैट, इंक. और गनोम मानचित्र लेखक"
 
-#: src/mainWindow.js:607
+#: src/mainWindow.js:605
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "%s और योगदानकर्ताओं द्वारा मानचित्र डेटा"
 
-#: src/mainWindow.js:608
+#: src/mainWindow.js:606
 msgid "Map Data Provider"
 msgstr "मानचित्र डेटा प्रदाता"
 
-#: src/mainWindow.js:611
+#: src/mainWindow.js:609
 msgid "Map Tile Provider"
 msgstr "मानचित्र टाइल प्रदाता"
 
@@ -820,25 +820,25 @@ msgstr "मानचित्र टाइल प्रदाता"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:619
+#: src/mainWindow.js:617
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "मानचित्र टाइलें %s द्वारा प्रदान की गईं"
 
-#: src/mainWindow.js:648
+#: src/mainWindow.js:646
 msgid "Search Provider"
 msgstr "खोज प्रदाता"
 
-#: src/mainWindow.js:651
+#: src/mainWindow.js:649
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "%s द्वारा %s का उपयोग करके खोज प्रदान की गई"
 
-#: src/mainWindow.js:660
+#: src/mainWindow.js:658
 msgid "All Layer Files"
 msgstr "सभी परत फाइलें"
 
-#: src/mainWindow.js:673
+#: src/mainWindow.js:671
 msgid "Open Shape Layers"
 msgstr "आकृति परत खोलें"
 
@@ -1209,11 +1209,15 @@ msgstr "आलेख के लिए Wikidata टैग नहीं मिल 
 msgid "Unnamed place"
 msgstr "अनाम स्थान"
 
-#: src/placeEntry.js:279
+#: src/placeEntry.js:150
+msgid "Clear Entry"
+msgstr "प्रविष्टि साफ़ करें"
+
+#: src/placeEntry.js:315
 msgid "Failed to parse Geo URI"
 msgstr "Geo URI का विश्लेषण करने में विफल"
 
-#: src/placeEntry.js:291
+#: src/placeEntry.js:327
 msgid "Failed to parse Maps URI"
 msgstr "Maps URI का विश्लेषण करने में विफल"
 
@@ -1728,17 +1732,29 @@ msgstr "मुद्रण रोकें"
 msgid "Add via location"
 msgstr "स्थान के जरिए जोड़ें"
 
+#: src/routeEntry.js:61
+msgid "From"
+msgstr "यहां से"
+
 #. Translators: this is remove via location tooltip
-#: src/routeEntry.js:70
+#: src/routeEntry.js:71
 msgid "Remove via location"
 msgstr "स्थान के जरिए हटाएं"
 
+#: src/routeEntry.js:72
+msgid "Via"
+msgstr "वाया"
+
 #. Translators: this is reverse route tooltip
-#: src/routeEntry.js:76
+#: src/routeEntry.js:78
 msgid "Reverse route"
 msgstr "उलटा मार्ग"
 
-#: src/searchBar.js:45
+#: src/routeEntry.js:79
+msgid "To"
+msgstr "यहां तक"
+
+#: src/searchBar.js:42
 msgid "Search"
 msgstr "खोजें"
 
