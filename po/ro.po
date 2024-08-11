@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2023-10-06 21:17+0000\n"
-"PO-Revision-Date: 2023-10-09 15:23+0300\n"
+"POT-Creation-Date: 2024-04-08 13:03+0000\n"
+"PO-Revision-Date: 2024-08-07 13:28+0300\n"
 "Last-Translator: Florentina Mușat <florentina [dot] musat [dot] 28 [at] "
 "gmail [dot] com>\n"
 "Language-Team: Gnome Romanian Translation Team\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.4.4\n"
 "X-Project-Style: gnome\n"
 
 #. Translators: This is the program name.
@@ -30,8 +30,8 @@ msgstr ""
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
-#: data/ui/main-window.ui:27 src/application.js:63 src/mainWindow.js:143
-#: src/mainWindow.js:591
+#: data/ui/main-window.ui:27 src/application.js:64 src/mainWindow.js:147
+#: src/mainWindow.js:647
 msgid "Maps"
 msgstr "Hărți"
 
@@ -57,7 +57,8 @@ msgstr ""
 "Hărți colaborează cu OpenStreetMap folosind o întreagă bază de date, "
 "realizată de sute de mii de oameni de pe întregul pământ."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:415 src/mainWindow.js:588
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Maps.appdata.xml.in.in:468 src/mainWindow.js:644
 msgid "The GNOME Project"
 msgstr "Proiectul GNOME"
 
@@ -155,8 +156,8 @@ msgid "Number of recently visited routes to store."
 msgstr "Număr de trasee vizitate recent de stocat."
 
 #: data/org.gnome.Maps.gschema.xml:61
-msgid "OpenStreetMap username or e-mail address"
-msgstr "Nume de utilizator OpenStreetMap sau adresă de e-mail"
+msgid "OpenStreetMap username or email address"
+msgstr "Nume de utilizator OpenStreetMap sau adresa de email"
 
 #: data/org.gnome.Maps.gschema.xml:62
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
@@ -213,7 +214,20 @@ msgid "_Export"
 msgstr "_Exportă"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:11 src/geoclue.js:106
+#: data/ui/favorite-list-row.ui:72
+msgid "Remove Favorite"
+msgstr "Elimină favorite"
+
+#: data/ui/favorites-popover.ui:11
+msgid "No Favorites"
+msgstr "Niciun favorit"
+
+#: data/ui/favorites-popover.ui:12
+msgid "Add places to your favorites to get them listed here"
+msgstr "Adăugați locații la favorite pentru a le lista acolo"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-left.ui:11 src/geoclue.js:106 src/placeBar.js:91
 msgid "Current Location"
 msgstr "Locație curentă"
 
@@ -370,58 +384,49 @@ msgstr "Despre Hărți"
 msgid "Main Menu"
 msgstr "Meniu principal"
 
-#: data/ui/osm-account-dialog.ui:6
+#: data/ui/osm-account-dialog.ui:5
 msgid "OpenStreetMap Account"
 msgstr "Cont OpenStreetMap"
 
-#: data/ui/osm-account-dialog.ui:26
-msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
-msgstr ""
-"<span weight=\"bold\" size=\"x-large\">Autentificați-vă pentru a edita "
-"hărți</span>"
+#: data/ui/osm-account-dialog.ui:31
+msgid "Sign In To Edit Maps"
+msgstr "Autentificați-vă pentru a edita hărți"
 
-#: data/ui/osm-account-dialog.ui:39
-msgid ""
-"Help to improve the map, using an\n"
-"OpenStreetMap account."
-msgstr ""
-"Ajutați la îmbunătățirea hărții, utilizând un\n"
-"cont OpenStreetMap."
+#: data/ui/osm-account-dialog.ui:32
+msgid "Help to improve the map, using an OpenStreetMap account."
+msgstr "Ajutați la îmbunătățirea hărții, utilizând un cont OpenStreetMap."
 
-#: data/ui/osm-account-dialog.ui:52
-msgid ""
-"Sign in to authorize access in a web browser.\n"
-"Then fill in the obtained verification code here in the next step."
-msgstr ""
-"Autentificați-vă pentru a autoriza accesul într-un navigator web.\n"
-"Apoi completați codul de verificare obținut aici în următorul pas."
-
-#: data/ui/osm-account-dialog.ui:67
+#: data/ui/osm-account-dialog.ui:36
 msgid "Sign In"
 msgstr "Autentificare"
 
-#: data/ui/osm-account-dialog.ui:111
-msgid "Copy verification code shown when authorizing access in the browser"
-msgstr ""
-"Copiați codul de verificare arătat când autorizați accesul în navigator"
+#: data/ui/osm-account-dialog.ui:59
+msgid "Verification"
+msgstr "Verificare"
 
-#: data/ui/osm-account-dialog.ui:121
-msgid "Verification code"
+#: data/ui/osm-account-dialog.ui:60
+msgid ""
+"Copy the verification code shown when authorizing access in the browser."
+msgstr ""
+"Copiați codul de verificare arătat când autorizați accesul în navigator."
+
+#: data/ui/osm-account-dialog.ui:69
+msgid "Verification Code"
 msgstr "Cod de verificare"
 
-#: data/ui/osm-account-dialog.ui:132
+#: data/ui/osm-account-dialog.ui:75
 msgid "Verify"
 msgstr "Verifică"
 
-#: data/ui/osm-account-dialog.ui:160
-msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
-msgstr "<span weight=\"bold\" size=\"x-large\">Autentificat</span>"
+#: data/ui/osm-account-dialog.ui:110
+msgid "Signed In"
+msgstr "Autentificat"
 
-#: data/ui/osm-account-dialog.ui:172
+#: data/ui/osm-account-dialog.ui:111
 msgid "Your OpenStreetMap account is active."
 msgstr "Contul dumneavoastră OpenStreetMap este activ."
 
-#: data/ui/osm-account-dialog.ui:202
+#: data/ui/osm-account-dialog.ui:129
 msgid "Sign Out"
 msgstr "Deautentificare"
 
@@ -475,7 +480,7 @@ msgstr ""
 msgid "Recently Used"
 msgstr "Folosite recent"
 
-#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:541
+#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:671
 msgid "Cancel"
 msgstr "Anulează"
 
@@ -495,15 +500,15 @@ msgstr "Eticheta Wikidata"
 msgid "Load Wikidata tag for article"
 msgstr "Încarcă eticheta Wikidata pentru articol"
 
-#: data/ui/place-popover.ui:23 src/searchBar.js:54
+#: data/ui/place-popover.ui:23 src/searchBar.js:55
 msgid "Explore Nearby Places"
 msgstr "Explorează locurile din apropiere"
 
-#: data/ui/place-popover.ui:82 src/application.js:276
+#: data/ui/place-popover.ui:82 src/application.js:277
 msgid "No results found"
 msgstr "Niciun rezultat găsit"
 
-#: data/ui/place-popover.ui:92 src/application.js:254
+#: data/ui/place-popover.ui:92 src/application.js:255
 msgid "An error has occurred"
 msgstr "A apărut o eroare"
 
@@ -524,7 +529,7 @@ msgstr "Copiază"
 msgid "Send To…"
 msgstr "Trimite la…"
 
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:64
+#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:62
 msgid "Open Shape Layer"
 msgstr "Deschide stratul formei"
 
@@ -625,7 +630,7 @@ msgid "Airplanes"
 msgstr "Avioane"
 
 #. Translators: This is a tooltip
-#: data/ui/place-bar.ui:28 data/ui/place-buttons.ui:27
+#: data/ui/place-bar.ui:33 data/ui/place-buttons.ui:27
 msgid "Share Location"
 msgstr "Partajează locația"
 
@@ -659,19 +664,19 @@ msgid "Back to Main Categories"
 msgstr "Înapoi la categoriile principale"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:15 src/mapView.js:1103
-msgid "Zoom In"
-msgstr "Mărește"
+#: data/ui/zoom-and-rotate-controls.ui:19
+msgid "Reset Rotation"
+msgstr "Restabilește rotația"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:28
+#: data/ui/zoom-and-rotate-controls.ui:32
 msgid "Zoom Out"
 msgstr "Micșorează"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:49
-msgid "Reset Rotation"
-msgstr "Restabilește rotația"
+#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1246
+msgid "Zoom In"
+msgstr "Mărește"
 
 #: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338
 #: lib/maps-file-data-source.c:418
@@ -694,27 +699,27 @@ msgstr "Nu s-a putut găsi elementul OSM"
 msgid "Could not find user element"
 msgstr "Nu s-a putut găsi elementul utilizatorului"
 
-#: src/application.js:76
+#: src/application.js:78
 msgid "A path to a local tiles directory structure"
 msgstr "O cale către o structură locală de directoare pentru fragmente"
 
-#: src/application.js:82
+#: src/application.js:84
 msgid "Tile size for local tiles directory"
 msgstr "Dimensiunea unei dale pentru directorul de dale local"
 
-#: src/application.js:86
+#: src/application.js:88
 msgid "Show the version of the program"
 msgstr "Arată versiunea programului"
 
-#: src/application.js:92
+#: src/application.js:94
 msgid "Search for places"
 msgstr "Caută locuri"
 
-#: src/application.js:103 src/application.js:104
+#: src/application.js:105 src/application.js:106
 msgid "[FILE…|URI]"
 msgstr "[FIȘIER…|URI]"
 
-#: src/application.js:283
+#: src/application.js:284
 #, javascript-format
 msgid "Invalid maps: URI: %s"
 msgstr "Hărți nevalide: URI: %s"
@@ -723,76 +728,84 @@ msgstr "Hărți nevalide: URI: %s"
 #. * exported image with coordinates. The .png extension should be kept
 #. * intact in the translated string.
 #.
-#: src/exportViewDialog.js:74
+#: src/exportViewDialog.js:75
 #, javascript-format
 msgid "Maps at %f, %f.png"
 msgstr "Hărți la %f, %f.png"
 
-#: src/exportViewDialog.js:153
+#: src/exportViewDialog.js:174
 msgid "Unable to export view"
 msgstr "Nu se poate exporta vizualizarea"
+
+#: src/favoriteListRow.js:42
+msgid "Favorite removed"
+msgstr "Favorit eliminat"
+
+#: src/favoriteListRow.js:43
+msgid "Undo"
+msgstr "Refă"
 
 #: src/geoJSONSource.js:73
 msgid "invalid coordinate"
 msgstr "coordonate nevalide"
 
-#: src/geoJSONSource.js:118 src/geoJSONSource.js:158 src/geoJSONSource.js:173
+#: src/geoJSONSource.js:126 src/geoJSONSource.js:166 src/geoJSONSource.js:181
 msgid "parse error"
 msgstr "eroare de parsare"
 
-#: src/geoJSONSource.js:152
+#: src/geoJSONSource.js:160
 msgid "unknown geometry"
 msgstr "geometrie necunoscută"
 
-#: src/graphHopper.js:101 src/transitPlan.js:174
+#: src/graphHopper.js:101 src/transitPlan.js:175
 msgid "Route request failed."
 msgstr "Cererea traseului a eșuat."
 
-#: src/graphHopper.js:108 src/transitPlan.js:166
+#: src/graphHopper.js:108 src/transitPlan.js:167
 msgid "No route found."
 msgstr "Nu s-au găsit trasee."
 
-#: src/graphHopper.js:195 src/transitplugins/openTripPlanner.js:1131
+#: src/graphHopper.js:195 src/transitplugins/openTripPlanner.js:1163
 msgid "Start!"
 msgstr "Pornește!"
 
-#: src/mainWindow.js:61
+#: src/mainWindow.js:59
 msgid "All Layer Files"
 msgstr "Toate fișierele strat"
 
-#: src/mainWindow.js:468
+#: src/mainWindow.js:522
 msgid "Failed to connect to location service"
 msgstr "Nu s-a reușit conectarea la serviciul de localizare"
 
-#: src/mainWindow.js:473
+#: src/mainWindow.js:527
 msgid "Turn on location services"
 msgstr "Pornește serviciile de localizare"
 
-#: src/mainWindow.js:474
+#: src/mainWindow.js:528
 msgid "Location Settings"
 msgstr "Configurări de locație"
 
-#: src/mainWindow.js:589
+#: src/mainWindow.js:645
 msgid "translator-credits"
 msgstr ""
 "Mădălin Șerbănescu <ciber_ady [at] yahoo [dot] com>, 2018\n"
 "Florentina Mușat <florentina [dot] musat [dot] 28 [at] gmail [dot] com>, "
-"2018-2021, 2023"
+"2018-2021, 2023-2024"
 
-#: src/mainWindow.js:593
+#: src/mainWindow.js:649
 msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Drepturi de autor © 2011 – 2023 Red Hat, Inc. și autorii Hărți GNOME"
 
-#: src/mainWindow.js:609
+#: src/mainWindow.js:665
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Datele hărții ale %s și contribuitorii"
 
-#: src/mainWindow.js:610
+#: src/mainWindow.js:666
 msgid "Map Data Provider"
 msgstr "Furnizor de date de hartă"
 
-#: src/mainWindow.js:622
+#: src/mainWindow.js:678
 msgid "Map Tile Provider"
 msgstr "Furnizor tile de hartă"
 
@@ -801,29 +814,29 @@ msgstr "Furnizor tile de hartă"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:630
+#: src/mainWindow.js:686
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Fragmente de hărți furnizate de %s"
 
-#: src/mainWindow.js:660
+#: src/mainWindow.js:716
 msgid "Search Provider"
 msgstr "Caută furnizor"
 
-#: src/mainWindow.js:663
+#: src/mainWindow.js:719
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Căutare furnizată de %s utilizând %s"
 
-#: src/mapView.js:515 src/mapView.js:580
+#: src/mapView.js:645 src/mapView.js:710
 msgid "Failed to open layer"
 msgstr "Nu s-a putut deschide stratul"
 
-#: src/mapView.js:534
+#: src/mapView.js:664
 msgid "Do you want to continue?"
 msgstr "Doriți să continuați?"
 
-#: src/mapView.js:535
+#: src/mapView.js:665
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -832,30 +845,33 @@ msgstr ""
 "Sunteți pe cale să deschideți fișiere cu o dimensiune totală de %s MB. Acest "
 "lucru ar putea dura ceva timp să se încarce"
 
-#: src/mapView.js:542 src/transitplugins/openTripPlanner.js:1207
+#: src/mapView.js:672 src/transitplugins/openTripPlanner.js:1239
+#: src/transitplugins/openTripPlanner2.js:267
 msgid "Continue"
 msgstr "Continuă"
 
-#: src/mapView.js:574
+#: src/mapView.js:704
 msgid "File type is not supported"
 msgstr "Tipul de fișier nu este suportat"
 
-#: src/mapView.js:611
+#: src/mapView.js:741
 msgid "Failed to open GeoURI"
 msgstr "Nu s-a putut deschide GeoURI"
 
-#: src/mapView.js:1062
+#: src/mapView.js:1205
 msgid "Nothing found here!"
 msgstr "Nimic nu a fost găsit aici!"
 
-#: src/mapView.js:1102
+#: src/mapView.js:1245
 msgid "Zoom in to add location"
 msgstr "Măriți pentru a adăuga locația"
 
-#: src/mapView.js:1123
+#: src/mapView.js:1266
 msgid "Location was added in OpenStreetMap"
 msgstr "Locația a fost adăugată în OpenStreetMap"
 
+#. switch back to the sign-in view, and show a toast indicating
+#. that verification failed
 #: src/osmAccountDialog.js:134
 msgid "The verification code didn’t match, please try again."
 msgstr "Codul de verificare nu se potrivește, încercați din nou."
@@ -902,7 +918,7 @@ msgstr "Numele oficial. Acesta este, de obicei, numele real."
 msgid "Address"
 msgstr "Adresă"
 
-#: src/osmEditDialog.js:120 src/placeView.js:261
+#: src/osmEditDialog.js:120 src/placeView.js:275
 msgid "Website"
 msgstr "Website"
 
@@ -932,13 +948,13 @@ msgstr ""
 "+. Aveți grijă la legile de confidențialitate locale, în special pentru "
 "numerele de telefon private."
 
-#: src/osmEditDialog.js:139 src/placeView.js:294
-msgid "E-mail"
-msgstr "Email"
+#: src/osmEditDialog.js:139 src/placeView.js:308
+msgid "Email"
+msgstr "E-mail"
 
 #: src/osmEditDialog.js:144
 msgid ""
-"This is not a valid e-mail address. Make sure to not include the mailto: "
+"This is not a valid email address. Make sure to not include the mailto: "
 "protocol prefix."
 msgstr ""
 "Aceasta nu este o adresă email validă. Asigurați-vă că nu includeți prefixul "
@@ -946,7 +962,7 @@ msgstr ""
 
 #: src/osmEditDialog.js:145
 msgid ""
-"Contact e-mail address for inquiries. Add only email addresses that are "
+"Contact email address for inquiries. Add only email addresses that are "
 "intended to be publicly used."
 msgstr ""
 "Adresă email de contact pentru solicitări de informații. Adăugați doar "
@@ -954,11 +970,11 @@ msgstr ""
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:149 src/placeView.js:646
+#: src/osmEditDialog.js:149 src/placeView.js:727
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: src/osmEditDialog.js:156 src/placeView.js:331
+#: src/osmEditDialog.js:156 src/placeView.js:399
 msgid "Opening hours"
 msgstr "Ore de deschidere"
 
@@ -972,16 +988,16 @@ msgstr "Consultați legătura din etichetă pentru ajutor cu formatul."
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:164 src/placeView.js:441
+#: src/osmEditDialog.js:164 src/placeView.js:509
 msgid "Population"
 msgstr "Populație"
 
-#: src/osmEditDialog.js:169 src/placeView.js:470
+#: src/osmEditDialog.js:169 src/placeView.js:538
 msgid "Altitude"
 msgstr "Altitudine"
 
 #: src/osmEditDialog.js:172
-msgid "Elevation (height above sea level) of a point in metres."
+msgid "Elevation (height above sea level) of a point in meters."
 msgstr "Elevația (înălțimea deasupra nivelului mării) unui punct în metri."
 
 #: src/osmEditDialog.js:175
@@ -1126,7 +1142,7 @@ msgstr "Yazidism"
 msgid "Zoroastrianism"
 msgstr "Zoroastrism"
 
-#: src/osmEditDialog.js:230 src/poiCategories.js:174
+#: src/osmEditDialog.js:230 src/poiCategories.js:176
 msgid "Toilets"
 msgstr "Toalete"
 
@@ -1179,11 +1195,11 @@ msgstr "Nu s-a putut găsi eticheta Wikidata pentru articol"
 msgid "Unnamed place"
 msgstr "Loc nedenumit"
 
-#: src/placeEntry.js:277
+#: src/placeEntry.js:274
 msgid "Failed to parse Geo URI"
 msgstr "Nu s-a putut parsa URI-ul Geo"
 
-#: src/placeEntry.js:289
+#: src/placeEntry.js:286
 msgid "Failed to parse Maps URI"
 msgstr "Nu s-a putut parsa URI-ul Hărți"
 
@@ -1201,16 +1217,16 @@ msgctxt "short distance format string"
 msgid "< %s"
 msgstr "< %s"
 
-#: src/placeView.js:249
+#: src/placeView.js:263
 msgid "Coordinates"
 msgstr "Coordonate"
 
-#: src/placeView.js:253
+#: src/placeView.js:267
 msgid "Accuracy"
 msgstr "Acuratețe"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:256
+#: src/placeView.js:270
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Acuratețe: %s"
@@ -1221,15 +1237,61 @@ msgstr "Acuratețe: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:275
+#: src/placeView.js:289
 msgid "Phone number"
 msgstr "Număr de telefon"
+
+#. If a reference to a named floor (named or symbolic) exists
+#. * refer to it directly.
+#.
+#. Translators:
+#. * This is a reference to named building floor, using a label
+#. * or a code, as "displayed in the elevator"
+#.
+#: src/placeView.js:323 src/placeView.js:362
+msgid "Floor"
+msgstr "Etaj"
+
+#: src/placeView.js:325
+#, javascript-format
+msgid "Floor %s"
+msgstr "Etajul %s"
+
+#: src/placeView.js:337
+msgid "At ground level"
+msgstr "La nivelul solului"
+
+#. Translators:
+#. * This is a reference to a number of floors above
+#. * ground level.
+#. * The %s placeholder is the integer relative number of floors
+#.
+#: src/placeView.js:346
+#, javascript-format
+msgid "%s floor above ground level"
+msgid_plural "%s floors above ground level"
+msgstr[0] "%s etaj deasupra nivelului solului"
+msgstr[1] "%s etaje deasupra nivelului solului"
+msgstr[2] "%s de etaje deasupra nivelului solului"
+
+#. Translators:
+#. * This is a reference to a number of floors below
+#. * ground level.
+#. * The %s placeholder is the integer relative number of floors
+#.
+#: src/placeView.js:357
+#, javascript-format
+msgid "%s floor below ground level"
+msgid_plural "%s floors below ground level"
+msgstr[0] "%s etaj sub nivelul solului"
+msgstr[1] "%s etaje sub nivelul solului"
+msgstr[2] "%s de etaje sub nivelul solului"
 
 #. Translators:
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:307
+#: src/placeView.js:375
 msgid "Offers takeout"
 msgstr "Oferă mâncare la pachet"
 
@@ -1237,7 +1299,7 @@ msgstr "Oferă mâncare la pachet"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:315
+#: src/placeView.js:383
 msgid "Does not offer takeout"
 msgstr "Nu oferă mâncare la pachet"
 
@@ -1246,14 +1308,14 @@ msgstr "Nu oferă mâncare la pachet"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:324
+#: src/placeView.js:392
 msgid "Only offers takeout"
 msgstr "Oferă doar mâncare la pachet"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:341
+#: src/placeView.js:409
 msgid "Public internet access"
 msgstr "Acces la internet public"
 
@@ -1261,50 +1323,50 @@ msgstr "Acces la internet public"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:350
+#: src/placeView.js:418
 msgid "No internet access"
 msgstr "Nu există acces la internet"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:358
+#: src/placeView.js:426
 msgid "Public Wi-Fi"
 msgstr "Wi-Fi public"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:366
+#: src/placeView.js:434
 msgid "Wired internet access"
 msgstr "Acces la internet prin cablu"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:374
+#: src/placeView.js:442
 msgid "Computers available for use"
 msgstr "Calculatoare disponibile pentru utilizare"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:382
+#: src/placeView.js:450
 msgid "Internet assistance available"
 msgstr "Asistență pe internet disponibilă"
 
-#: src/placeView.js:388
+#: src/placeView.js:456
 msgid "No toilets available"
 msgstr "Nu există toalete disponibile"
 
-#: src/placeView.js:391
+#: src/placeView.js:459
 msgid "Toilets available"
 msgstr "Toaletele sunt disponibile"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:400
+#: src/placeView.js:468
 msgid "Wheelchair accessible"
 msgstr "Accesibil pentru scaun cu rotile"
 
@@ -1313,7 +1375,7 @@ msgstr "Accesibil pentru scaun cu rotile"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:410
+#: src/placeView.js:478
 msgid "Limited wheelchair accessibility"
 msgstr "Accesibilitate pentru scaun cu rotile limitată"
 
@@ -1321,7 +1383,7 @@ msgstr "Accesibilitate pentru scaun cu rotile limitată"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:419
+#: src/placeView.js:487
 msgid "Not wheelchair accessible"
 msgstr "Nu este accesibil pentru scaun cu rotile"
 
@@ -1330,7 +1392,7 @@ msgstr "Nu este accesibil pentru scaun cu rotile"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:429
+#: src/placeView.js:497
 msgid "Designated for wheelchair users"
 msgstr "Desemnat pentru utilizatorii în scaun cu rotile"
 
@@ -1339,7 +1401,7 @@ msgstr "Desemnat pentru utilizatorii în scaun cu rotile"
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:460
+#: src/placeView.js:528
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s sub nivelul mării"
@@ -1348,23 +1410,23 @@ msgstr "%s sub nivelul mării"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:467
+#: src/placeView.js:535
 msgid "At sea level"
 msgstr "La nivelul mării"
 
-#: src/placeView.js:476
+#: src/placeView.js:544
 msgid "Religion:"
 msgstr "Religie:"
 
-#: src/place.js:543
+#: src/place.js:576
 msgid "Place not found in OpenStreetMap"
 msgstr "Locul nu a fost găsit în OpenStreetMap"
 
-#: src/place.js:550
+#: src/place.js:583
 msgid "Coordinates in URL are not valid"
 msgstr "Coordonatele din URL nu sunt valide"
 
-#: src/place.js:559
+#: src/place.js:592
 msgid "URL is not supported"
 msgstr "URL-ul nu este suportat"
 
@@ -1396,239 +1458,239 @@ msgstr "Biblioteci"
 msgid "Pharmacies"
 msgstr "Farmacii"
 
-#: src/poiCategories.js:170
+#: src/poiCategories.js:171
 msgid "Recycling"
 msgstr "Reciclare"
 
-#: src/poiCategories.js:180
+#: src/poiCategories.js:182
 msgid "Wheelchair-accessible Toilets"
 msgstr "Toalete accesibile pentru scaune cu rotile"
 
-#: src/poiCategories.js:186
+#: src/poiCategories.js:188
 msgid "Baggage Lockers"
 msgstr "Dulapuri pentru bagaje"
 
-#: src/poiCategories.js:194
+#: src/poiCategories.js:196
 msgid "Eating & Drinking"
 msgstr "Mâncare și băutură"
 
-#: src/poiCategories.js:198
+#: src/poiCategories.js:200
 msgid "Restaurants"
 msgstr "Restaurante"
 
-#: src/poiCategories.js:203
+#: src/poiCategories.js:205
 msgid "Fast Food"
 msgstr "Fast food"
 
-#: src/poiCategories.js:208
+#: src/poiCategories.js:210
 msgid "Food Courts"
 msgstr "Spații de mâncare"
 
-#: src/poiCategories.js:213
+#: src/poiCategories.js:215
 msgid "Pubs"
 msgstr "Pub-uri"
 
-#: src/poiCategories.js:219
+#: src/poiCategories.js:221
 msgid "Bars"
 msgstr "Baruri"
 
-#: src/poiCategories.js:224
+#: src/poiCategories.js:226
 msgid "Cafes"
 msgstr "Cafenele"
 
-#: src/poiCategories.js:229
+#: src/poiCategories.js:231
 msgid "Ice Cream"
 msgstr "Înghețată"
 
-#: src/poiCategories.js:233
+#: src/poiCategories.js:236
 msgid "Food, Snacks, and Beverage Machines"
 msgstr "Aparate pentru alimente, gustări și băuturi"
 
-#: src/poiCategories.js:241
+#: src/poiCategories.js:244
 msgid "Shopping"
 msgstr "Cumpărături"
 
-#: src/poiCategories.js:245
+#: src/poiCategories.js:248
 msgid "Supermarkets"
 msgstr "Supermarketuri"
 
-#: src/poiCategories.js:251
+#: src/poiCategories.js:254
 msgid "Convenience Stores"
 msgstr "Magazine"
 
-#: src/poiCategories.js:256
+#: src/poiCategories.js:259
 msgid "Shopping Malls"
 msgstr "Mall-uri"
 
-#: src/poiCategories.js:262
+#: src/poiCategories.js:265
 msgid "Clothes"
 msgstr "Haine"
 
-#: src/poiCategories.js:267
+#: src/poiCategories.js:271
 msgid "Shoes"
 msgstr "Pantofi"
 
-#: src/poiCategories.js:272
+#: src/poiCategories.js:276
 msgid "Electronics"
 msgstr "Electronice"
 
-#: src/poiCategories.js:278
+#: src/poiCategories.js:282
 msgid "Alcohol"
 msgstr "Alcool"
 
-#: src/poiCategories.js:284
+#: src/poiCategories.js:288
 msgid "Bakeries"
 msgstr "Brutării"
 
-#: src/poiCategories.js:290
+#: src/poiCategories.js:294
 msgid "Flowers"
 msgstr "Flori"
 
-#: src/poiCategories.js:297
+#: src/poiCategories.js:301
 msgid "Transportation"
 msgstr "Transport"
 
-#: src/poiCategories.js:301
+#: src/poiCategories.js:305
 msgid "Bus & Tram Stops"
 msgstr "Stații de autobuz și tramvai"
 
-#: src/poiCategories.js:309
+#: src/poiCategories.js:313
 msgid "Train & Subway Stations"
 msgstr "Stații de tren și metrou"
 
-#: src/poiCategories.js:317
+#: src/poiCategories.js:321
 msgid "Tickets"
 msgstr "Bilete"
 
-#: src/poiCategories.js:325
+#: src/poiCategories.js:329
 msgid "Parking"
 msgstr "Parcare"
 
-#: src/poiCategories.js:330
+#: src/poiCategories.js:334
 msgid "Bicycle Parking"
 msgstr "Parcare pentru biciclete"
 
-#: src/poiCategories.js:335
+#: src/poiCategories.js:339
 msgid "Bicycle Rental"
 msgstr "Închiriere de biciclete"
 
-#: src/poiCategories.js:340
+#: src/poiCategories.js:344
 msgid "Car Rental"
 msgstr "Închirieri auto"
 
-#: src/poiCategories.js:345
+#: src/poiCategories.js:349
 msgid "Fuel"
 msgstr "Combustibil"
 
-#: src/poiCategories.js:350
+#: src/poiCategories.js:354
 msgid "EV Charging"
 msgstr "Încărcare EV"
 
-#: src/poiCategories.js:358
+#: src/poiCategories.js:362
 msgid "Healthcare"
 msgstr "Sănătate"
 
-#: src/poiCategories.js:362
+#: src/poiCategories.js:366
 msgid "Clinics"
 msgstr "Clinici"
 
-#: src/poiCategories.js:368
+#: src/poiCategories.js:372
 msgid "Hospitals"
 msgstr "Spitale"
 
-#: src/poiCategories.js:374
+#: src/poiCategories.js:378
 msgid "Dentists"
 msgstr "Stomatologi"
 
-#: src/poiCategories.js:381
+#: src/poiCategories.js:386
 msgid "Accommodation"
 msgstr "Cazare"
 
-#: src/poiCategories.js:385
+#: src/poiCategories.js:390
 msgid "Hotels"
 msgstr "Hoteluri"
 
-#: src/poiCategories.js:390
+#: src/poiCategories.js:395
 msgid "Hostels"
 msgstr "Pensiuni"
 
-#: src/poiCategories.js:395
+#: src/poiCategories.js:400
 msgid "Bed & Breakfast"
 msgstr "Cazare si mic dejun"
 
-#: src/poiCategories.js:400
+#: src/poiCategories.js:405
 msgid "Campings"
 msgstr "Campinguri"
 
-#: src/poiCategories.js:407
+#: src/poiCategories.js:412
 msgid "Recreation"
 msgstr "Recreere"
 
-#: src/poiCategories.js:411
+#: src/poiCategories.js:416
 msgid "Parks"
 msgstr "Parcuri"
 
-#: src/poiCategories.js:416
+#: src/poiCategories.js:421
 msgid "Playgrounds"
 msgstr "Locuri de joacă"
 
-#: src/poiCategories.js:420
+#: src/poiCategories.js:425
 msgid "Beaches"
 msgstr "Plaje"
 
-#: src/poiCategories.js:425
+#: src/poiCategories.js:430
 msgid "Nature Reserves"
 msgstr "Rezervații naturale"
 
-#: src/poiCategories.js:431
+#: src/poiCategories.js:436
 msgid "Theme Parks"
 msgstr "Parcuri tematice"
 
-#: src/poiCategories.js:436
+#: src/poiCategories.js:441
 msgid "Theaters"
 msgstr "Teatre"
 
-#: src/poiCategories.js:442
+#: src/poiCategories.js:447
 msgid "Movie Theaters"
 msgstr "Cinematografe"
 
-#: src/poiCategories.js:448
+#: src/poiCategories.js:453
 msgid "Night Clubs"
 msgstr "Cluburi de noapte"
 
-#: src/poiCategories.js:455
+#: src/poiCategories.js:460
 msgid "Tourism"
 msgstr "Turism"
 
-#: src/poiCategories.js:459
+#: src/poiCategories.js:464
 msgid "Museums"
 msgstr "Muzee"
 
-#: src/poiCategories.js:465
+#: src/poiCategories.js:470
 msgid "Attractions"
 msgstr "Atracții"
 
-#: src/poiCategories.js:470
+#: src/poiCategories.js:475
 msgid "Artworks"
 msgstr "Opere de artă"
 
-#: src/poiCategories.js:475
+#: src/poiCategories.js:480
 msgid "Tourist Information"
 msgstr "Informații turistice"
 
-#: src/poiCategories.js:482
+#: src/poiCategories.js:487
 msgid "Sports"
 msgstr "Sport"
 
-#: src/poiCategories.js:486
+#: src/poiCategories.js:491
 msgid "Gyms"
 msgstr "Săli de sport"
 
-#: src/poiCategories.js:492
+#: src/poiCategories.js:497
 msgid "Outdoor Gyms"
 msgstr "Săli de sport în aer liber"
 
-#: src/poiCategories.js:498
+#: src/poiCategories.js:503
 msgid "Golf Courses"
 msgstr "Terenuri de golf"
 
@@ -1684,17 +1746,17 @@ msgstr "Nu s-a putut deschide URI-ul"
 msgid "Open with %s"
 msgstr "Deschide cu %s"
 
-#: src/shapeLayer.js:108
+#: src/shapeLayer.js:109
 msgid "failed to load file"
 msgstr "nu s-a putut încărca fișierul"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:329
+#: src/sidebar.js:328
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Timp estimat: %s"
 
-#: src/sidebar.js:399
+#: src/sidebar.js:398
 #, javascript-format
 msgid "Itineraries provided by %s"
 msgstr "Itinerarii furnizate de %s"
@@ -1711,7 +1773,7 @@ msgstr "Începe la %s"
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: src/transit.js:45
+#: src/transit.js:45 src/transitplugins/openTripPlanner2.js:236
 msgid "Start"
 msgstr "Începe"
 
@@ -1731,7 +1793,8 @@ msgstr "Plimbare pe %s"
 msgid "Arrive at %s"
 msgstr "Sosește la %s"
 
-#: src/transit.js:79 src/transitplugins/openTripPlanner.js:1144
+#: src/transit.js:79 src/transitplugins/openTripPlanner.js:1176
+#: src/transitplugins/openTripPlanner2.js:255
 msgid "Arrive"
 msgstr "Sosește"
 
@@ -1763,16 +1826,16 @@ msgstr "Nu s-au găsit alternative de mai târziu."
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:136
+#: src/transitOptionsPanel.js:138
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%e %b"
 
-#: src/transitPlan.js:170
+#: src/transitPlan.js:171
 msgid "No timetable data found for this route."
 msgstr "Nu s-au găsit date în orar pentru acest traseu."
 
-#: src/transitPlan.js:178
+#: src/transitPlan.js:179
 msgid "No provider found for this route."
 msgstr "Nu s-a găsit furnizor pentru acest traseu."
 
@@ -1781,7 +1844,7 @@ msgstr "Nu s-a găsit furnizor pentru acest traseu."
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:295
+#: src/transitPlan.js:300
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -1790,7 +1853,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: src/transitPlan.js:324
+#: src/transitPlan.js:331
 #, javascript-format
 msgid "%s minute"
 msgid_plural "%s minutes"
@@ -1802,7 +1865,7 @@ msgstr[2] "%s de minute"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: src/transitPlan.js:336
+#: src/transitPlan.js:343
 #, javascript-format
 msgid "%s hour"
 msgid_plural "%s hours"
@@ -1814,7 +1877,7 @@ msgstr[2] "%s de ore"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: src/transitPlan.js:344
+#: src/transitPlan.js:351
 #, javascript-format
 msgid "%s:%s hour"
 msgid_plural "%s:%s hours"
@@ -1828,7 +1891,7 @@ msgstr[2] "%s:%s de ore"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:698
+#: src/transitPlan.js:744
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -1928,19 +1991,19 @@ msgid "Bahá'í"
 msgstr "Bahá'í"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:257
+#: src/utils.js:248
 msgid "Unknown"
 msgstr "Necunoscut"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:260
+#: src/utils.js:251
 msgid "Exact"
 msgstr "Exact"
 
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
 #.
-#: src/utils.js:345
+#: src/utils.js:307
 #, javascript-format
 msgid "%s h"
 msgstr "%s o"
@@ -1949,7 +2012,7 @@ msgstr "%s o"
 #. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
 #.
-#: src/utils.js:351
+#: src/utils.js:313
 #, javascript-format
 msgid "%s h %s min"
 msgid_plural "%s h %s min"
@@ -1961,7 +2024,7 @@ msgstr[2] "%s o %s min"
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
 #.
-#: src/utils.js:358
+#: src/utils.js:320
 #, javascript-format
 msgid "%s min"
 msgid_plural "%s min"
@@ -1973,7 +2036,7 @@ msgstr[2] "%s min"
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
 #.
-#: src/utils.js:364
+#: src/utils.js:326
 #, javascript-format
 msgid "%s s"
 msgid_plural "%s s"
@@ -1982,25 +2045,25 @@ msgstr[1] "%s s"
 msgstr[2] "%s s"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:375
+#: src/utils.js:337
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:378
+#: src/utils.js:340
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:386
+#: src/utils.js:348
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:389
+#: src/utils.js:351
 #, javascript-format
 msgid "%s ft"
 msgstr "%s ft"
@@ -2009,105 +2072,145 @@ msgstr "%s ft"
 msgid "This plugin doesn't support latest arrival"
 msgstr "Acest modul nu suportă ultima sosire"
 
-#: src/transitplugins/openTripPlanner.js:1205
+#: src/transitplugins/openTripPlanner.js:1237
+#: src/transitplugins/openTripPlanner2.js:266
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Continuă pe %s"
 
-#: src/transitplugins/openTripPlanner.js:1210
+#: src/transitplugins/openTripPlanner.js:1242
+#: src/transitplugins/openTripPlanner2.js:270
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Virează la stânga pe %s"
 
-#: src/transitplugins/openTripPlanner.js:1212
+#: src/transitplugins/openTripPlanner.js:1244
+#: src/transitplugins/openTripPlanner2.js:271
 msgid "Turn left"
 msgstr "Virează la stânga"
 
-#: src/transitplugins/openTripPlanner.js:1215
+#: src/transitplugins/openTripPlanner.js:1247
+#: src/transitplugins/openTripPlanner2.js:275
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Virează larg la stânga pe %s"
 
-#: src/transitplugins/openTripPlanner.js:1217
+#: src/transitplugins/openTripPlanner.js:1249
+#: src/transitplugins/openTripPlanner2.js:276
 msgid "Turn slightly left"
 msgstr "Virează larg la stânga"
 
-#: src/transitplugins/openTripPlanner.js:1220
+#: src/transitplugins/openTripPlanner.js:1252
+#: src/transitplugins/openTripPlanner2.js:280
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Virează strâns la stânga pe %s"
 
-#: src/transitplugins/openTripPlanner.js:1222
+#: src/transitplugins/openTripPlanner.js:1254
+#: src/transitplugins/openTripPlanner2.js:281
 msgid "Turn sharp left"
 msgstr "Virează strâns la stânga"
 
-#: src/transitplugins/openTripPlanner.js:1225
+#: src/transitplugins/openTripPlanner.js:1257
+#: src/transitplugins/openTripPlanner2.js:284
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Virează la dreapta pe %s"
 
-#: src/transitplugins/openTripPlanner.js:1227
+#: src/transitplugins/openTripPlanner.js:1259
+#: src/transitplugins/openTripPlanner2.js:285
 msgid "Turn right"
 msgstr "Virează la dreapta"
 
-#: src/transitplugins/openTripPlanner.js:1230
+#: src/transitplugins/openTripPlanner.js:1262
+#: src/transitplugins/openTripPlanner2.js:289
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Virează larg la dreapta pe %s"
 
-#: src/transitplugins/openTripPlanner.js:1232
+#: src/transitplugins/openTripPlanner.js:1264
+#: src/transitplugins/openTripPlanner2.js:290
 msgid "Turn slightly right"
 msgstr "Virează larg la dreapta"
 
-#: src/transitplugins/openTripPlanner.js:1235
+#: src/transitplugins/openTripPlanner.js:1267
+#: src/transitplugins/openTripPlanner2.js:294
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Virează strâns la dreapta pe %s"
 
-#: src/transitplugins/openTripPlanner.js:1237
+#: src/transitplugins/openTripPlanner.js:1269
+#: src/transitplugins/openTripPlanner2.js:295
 msgid "Turn sharp right"
 msgstr "Virează strâns la dreapta"
 
-#: src/transitplugins/openTripPlanner.js:1243
+#: src/transitplugins/openTripPlanner.js:1275
+#: src/transitplugins/openTripPlanner2.js:302
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "La sensul giratoriu, virează la ieșirea %s"
 
-#: src/transitplugins/openTripPlanner.js:1245
+#: src/transitplugins/openTripPlanner.js:1277
+#: src/transitplugins/openTripPlanner2.js:305
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "La sensul giratoriu, virează la ieșirea spre %s"
 
-#: src/transitplugins/openTripPlanner.js:1247
+#: src/transitplugins/openTripPlanner.js:1279
+#: src/transitplugins/openTripPlanner2.js:307
 msgid "Take the roundabout"
 msgstr "Intră în sensul giratoriu"
 
-#: src/transitplugins/openTripPlanner.js:1251
+#: src/transitplugins/openTripPlanner.js:1283
+#: src/transitplugins/openTripPlanner2.js:315
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Luați liftul și ieșiți la %s"
 
-#: src/transitplugins/openTripPlanner.js:1253
+#: src/transitplugins/openTripPlanner.js:1285
+#: src/transitplugins/openTripPlanner2.js:316
 msgid "Take the elevator"
 msgstr "Luați liftul"
 
-#: src/transitplugins/openTripPlanner.js:1257
+#: src/transitplugins/openTripPlanner.js:1289
+#: src/transitplugins/openTripPlanner2.js:320
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Întoarce prin stânga pe %s"
 
-#: src/transitplugins/openTripPlanner.js:1259
+#: src/transitplugins/openTripPlanner.js:1291
+#: src/transitplugins/openTripPlanner2.js:321
 msgid "Make a left u-turn"
 msgstr "Întoarce prin stânga"
 
-#: src/transitplugins/openTripPlanner.js:1262
+#: src/transitplugins/openTripPlanner.js:1294
+#: src/transitplugins/openTripPlanner2.js:325
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Întoarce prin dreapta pe %s"
 
-#: src/transitplugins/openTripPlanner.js:1264
+#: src/transitplugins/openTripPlanner.js:1296
+#: src/transitplugins/openTripPlanner2.js:326
 msgid "Make a right u-turn"
 msgstr "Întoarce prin dreapta"
+
+#~ msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
+#~ msgstr ""
+#~ "<span weight=\"bold\" size=\"x-large\">Autentificați-vă pentru a edita "
+#~ "hărți</span>"
+
+#~ msgid ""
+#~ "Sign in to authorize access in a web browser.\n"
+#~ "Then fill in the obtained verification code here in the next step."
+#~ msgstr ""
+#~ "Autentificați-vă pentru a autoriza accesul într-un navigator web.\n"
+#~ "Apoi completați codul de verificare obținut aici în următorul pas."
+
+#~ msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
+#~ msgstr "<span weight=\"bold\" size=\"x-large\">Autentificat</span>"
+
+#~ msgid "E-mail"
+#~ msgstr "Email"
 
 #~ msgid "GNOME Maps"
 #~ msgstr "Hărți GNOME"
@@ -2201,9 +2304,6 @@ msgstr "Întoarce prin dreapta"
 
 #~ msgid "Check your connection and proxy settings."
 #~ msgstr "Verificați conexiunile și configurările proxy."
-
-#~ msgid "Email"
-#~ msgstr "E-mail"
 
 #~ msgid "Password"
 #~ msgstr "Parolă"
