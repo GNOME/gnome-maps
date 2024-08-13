@@ -506,7 +506,7 @@ export const DEFS = {
             },
         },
         {
-            classes: ["service"],
+            classes: ["service", "track"],
             color: {
                 dark: "#2a2924",
                 light: "#c8c7b4",
