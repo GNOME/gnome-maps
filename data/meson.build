@@ -82,6 +82,7 @@ if appstreamcli.found()
 		args: [
 			'validate',
 			'--no-net',
+			'--override=release-time-missing=info',
 			appdata_file.full_path()
 		]
 	)
