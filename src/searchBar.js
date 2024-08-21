@@ -41,6 +41,7 @@ export class SearchBar extends PlaceEntry {
                 hasPoiBrowser:       true,
                 placeholder_text:    _("Search"),
                 primary_icon_name:   'system-search-symbolic',
+                primary_icon_sensitive: false,
                 ...params });
 
         this._mapView = mapView;
