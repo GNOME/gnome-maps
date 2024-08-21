@@ -45,6 +45,7 @@ export class SearchBar extends PlaceEntry {
 
         this._mapView = mapView;
         this._keyCaptureController = new Gtk.EventControllerKey();
+        this._keyCaptureController.set_propagation_phase(Gtk.PropagationPhase.BUBBLE);
         this._keyCaptureController.connect('key-pressed',
                                            this._onMapKeyPressed.bind(this));
         this._mapView.map.add_controller(this._keyCaptureController);
@@ -79,14 +80,19 @@ export class SearchBar extends PlaceEntry {
     }
 
     _onMapKeyPressed(controller, keyval, keycode, state) {
-        if (keyval === Gdk.KEY_KP_Up ||
-            keyval === Gdk.KEY_Up ||
-            keyval === Gdk.KEY_KP_Down ||
-            keyval === Gdk.KEY_Down ||
-            keyval === Gdk.KEY_KP_Left ||
-            keyval === Gdk.KEY_Left ||
-            keyval === Gdk.KEY_KP_Right ||
-            keyval === Gdk.KEY_Right) {
+        if (keyval === Gdk.KEY_Tab       || keyval === Gdk.KEY_KP_Tab ||
+            keyval === Gdk.KEY_Up        || keyval === Gdk.KEY_KP_Up ||
+            keyval === Gdk.KEY_Down      || keyval === Gdk.KEY_KP_Down ||
+            keyval === Gdk.KEY_Left      || keyval === Gdk.KEY_KP_Left ||
+            keyval === Gdk.KEY_Right     || keyval === Gdk.KEY_KP_Right ||
+            keyval === Gdk.KEY_Home      || keyval === Gdk.KEY_KP_Home ||
+            keyval === Gdk.KEY_End       || keyval === Gdk.KEY_KP_End ||
+            keyval === Gdk.KEY_Page_Up   || keyval === Gdk.KEY_KP_Page_Up ||
+            keyval === Gdk.KEY_Page_Down || keyval === Gdk.KEY_KP_Page_Down ||
+            keyval === Gdk.KEY_Control_L || keyval === Gdk.KEY_KEY_Control_R ||
+            keyval === Gdk.KEY_Alt_L     ||
+            ((state & (Gdk.ModifierType.CONTROL_MASK |
+                       Gdk.ModifierType.ALT_MASK)) !== 0)) {
             return false;
         } else {
             this.grab_focus();
