@@ -45,7 +45,12 @@ export class GraphHopperGeocode {
 
         const language = Utils.getLanguage();
 
-        this._language = SUPPORTED_LANGUAGES.includes(language) ? language : null;
+        /* for now fallback to English as language when not using a language
+         * supported by GraphHopper, as leaving out language to fallback to
+         * default is currently not working as expected:
+         * https://github.com/komoot/photon/issues/746
+         */
+        this._language = SUPPORTED_LANGUAGES.includes(language) ? language : 'en';
     }
 
     search(string, latitude, longitude, cancellable, callback) {
