@@ -71,6 +71,7 @@ typedef enum {
   SHAPE_ROUNDED_RECTANGLE,
   SHAPE_TRAPEZOID,
   SHAPE_TRIANGLE,
+  SHAPE_PILL,
 
   /* Custom shields */
   SHAPE_PA_BELT,
@@ -415,6 +416,8 @@ maps_shield_set_from_json (MapsShield *self, JsonNode *node)
         self->shape_options.shape = SHAPE_PA_BELT;
       else if (g_strcmp0 (shape, "branson") == 0)
         self->shape_options.shape = SHAPE_BRANSON;
+      else if (g_strcmp0 (shape, "pill") == 0)
+        self->shape_options.shape = SHAPE_PILL;
       else
         {
           g_warning ("Unknown shape '%s'", shape);
@@ -1041,6 +1044,10 @@ draw_shield (RenderCtx *ctx, double width, double height, double banner_height)
 
     case SHAPE_ROUNDED_RECTANGLE:
       rounded_rect (ctx->cr, width, height, ctx->shield->shape_options.radius, half_outline_width);
+      break;
+
+    case SHAPE_PILL:
+      rounded_rect (ctx->cr, width, height, height / 2, half_outline_width);
       break;
 
     case SHAPE_ESCUTCHEON:
