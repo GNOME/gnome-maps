@@ -55,7 +55,9 @@ export class TurnPointMarker extends MapMarker {
             this._image.paintable =
                 this._paintableFromIconName(turnPoint.iconName, 16);
         } else {
-            let color = this._getColor(transitLeg);
+            const color =
+                transitLeg?.color ? this._getRGBA(transitLeg.color) : null;
+
             this._image.paintable =
                 this._paintableFromIconName('maps-point-end-symbolic',
                                             16,
@@ -63,17 +65,11 @@ export class TurnPointMarker extends MapMarker {
         }
     }
 
-    _getColor(transitLeg) {
-        /* Use the route color from the transit leg when representing part of
-         * a transit trip, otherwise let the fallback functionality of the
-         * utility function use a GNOMEish blue color for turn-by-turn routing.
-         */
-        let color = transitLeg?.color;
-
-        return new Gdk.RGBA({ red: Color.parseColor(color, 0, 33 / 255),
-                              green: Color.parseColor(color, 1, 93 / 255),
-                              blue: Color.parseColor(color, 2, 155 / 255),
-                              alpha: 255 });
+    _getRGBA(color) {
+        return new Gdk.RGBA({ red: Color.parseColor(color, 0),
+                              green: Color.parseColor(color, 1),
+                              blue: Color.parseColor(color, 2),
+                              alpha: 1.0 });
     }
 
     goTo() {
