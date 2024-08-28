@@ -147,16 +147,6 @@ function copyShieldsJson(osmAmericanaPath, file) {
         };
     }
 
-    /* There's a slight difference in the text rendering that I haven't been
-       able to track down, that's only really noticeable in US Interstate
-       shields. Adjust for it by shifting the padding down half a pixel. */
-    for (const network of Object.keys(shieldsJson.networks)) {
-        if (network === "US:I" || network.startsWith("US:I:")) {
-            shieldsJson.networks[network].padding.top += 0.5;
-            shieldsJson.networks[network].padding.bottom -= 0.5;
-        }
-    }
-
     destFile.replace_contents(
         JSON.stringify(shieldsJson, null, 2),
         null,
