@@ -140,6 +140,8 @@ struct _MapsShield {
   gboolean vertical_reflect_set : 1;
   gboolean notext_set : 1;
   gboolean notext;
+
+  char *ref;
 };
 
 G_DEFINE_TYPE (MapsShield, maps_shield, G_TYPE_OBJECT)
@@ -173,6 +175,7 @@ maps_shield_finalize (GObject *object)
   g_clear_pointer (&self->override_by_ref, g_hash_table_unref);
   g_clear_pointer (&self->override_by_name, g_hash_table_unref);
   g_clear_object (&self->override_noref);
+  g_clear_pointer (&self->ref, g_free);
 
   G_OBJECT_CLASS (maps_shield_parent_class)->finalize (object);
 }
@@ -448,6 +451,11 @@ maps_shield_set_from_json (MapsShield *self, JsonNode *node)
       JsonNode *override_noref = json_object_get_member (object, "noref");
       self->override_noref = maps_shield_new (override_noref);
     }
+
+  if (json_object_has_member (object, "ref"))
+    {
+      self->ref = g_strdup (json_object_get_string_member (object, "ref"));
+    }
 }
 
 static MapsShield *
@@ -487,6 +495,8 @@ apply_override (MapsShield *self,
 
   result->text_options = override->text_options.layout != TEXT_LAYOUT_UNSET ? override->text_options : self->text_options;
   result->shape_options = override->shape_options.shape != SHAPE_UNSET ? override->shape_options : self->shape_options;
+
+  result->ref = g_strdup (override->ref ? override->ref : self->ref);
 
   return result;
 }
@@ -1689,9 +1699,12 @@ maps_shield_draw (MapsShield *self,
     {
       if (self->override_noref != NULL)
         g_set_object (&ctx.shield, apply_override (self, self->override_noref));
-      else if (!ctx.shield->notext && !(self->override_by_name != NULL && ctx.name != NULL))
+      else if (!ctx.shield->notext && !ctx.shield->ref && !(self->override_by_name != NULL && ctx.name != NULL))
         return NULL;
     }
+
+  if (ctx.shield->ref)
+    ctx.ref = ctx.shield->ref;
 
   if (ctx.shield->notext)
     ctx.ref = NULL;
