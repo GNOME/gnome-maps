@@ -74,7 +74,9 @@ export class TransitPathLayer extends Shumate.PathLayer {
             this._styleManager.dark ? TransitPlan.DEFAULT_DARK_ROUTE_TEXT_COLOR :
                                       TransitPlan.DEFAULT_ROUTE_TEXT_COLOR;
         const color = this._leg.color ?? defaultColor;
-        const outlineColor = this._leg.textColor ?? defaultTextColor;
+        const outlineColor =
+            Color.getContrastingForegroundColor(color,
+                                                this._leg.textColor ?? defaultTextColor);
         const luminance = Color.relativeLuminance(color);
         const hasOutline = this._styleManager.dark ?
                            luminance < DARK_OUTLINE_LUMINANCE_THREASHHOLD :
