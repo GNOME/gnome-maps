@@ -94,6 +94,7 @@ typedef struct {
   gboolean rect_width_set;
   gboolean short_side_up;
   gboolean point_up;
+  gboolean point_up_set;
 } ShapeOptions;
 
 struct _MapsShield {
@@ -427,7 +428,9 @@ maps_shield_set_from_json (MapsShield *self, JsonNode *node)
           return;
         }
 
-      self->shape_options.point_up = TRUE;
+      self->shape_options.point_up_set =
+        set_boolean_field (params, "pointUp", &self->shape_options.point_up);
+
       self->shape_options.outline_width = 1;
 
       set_double_field (params, "sideAngle", &self->shape_options.side_angle);
@@ -435,7 +438,6 @@ maps_shield_set_from_json (MapsShield *self, JsonNode *node)
       set_double_field (params, "yOffset", &self->shape_options.y_offset);
       set_color_field (params, "strokeColor", &self->shape_options.outline);
       set_double_field (params, "outlineWidth", &self->shape_options.outline_width);
-      set_boolean_field (params, "pointUp", &self->shape_options.point_up);
       set_double_field (params, "radius", &self->shape_options.radius);
       set_double_field (params, "radius1", &self->shape_options.radius1);
       set_double_field (params, "radius2", &self->shape_options.radius2);
@@ -1097,7 +1099,9 @@ draw_shield (RenderCtx *ctx, double width, double height, double banner_height)
 
     case SHAPE_FISHHEAD:
       {
-        gboolean point_up = ctx->shield->shape_options.point_up;
+        gboolean point_up =
+          ctx->shield->shape_options.point_up_set ?
+          ctx->shield->shape_options.point_up : FALSE;
 
         double angle_sign = point_up ? -1 : 1;
 
@@ -1133,7 +1137,9 @@ draw_shield (RenderCtx *ctx, double width, double height, double banner_height)
 
     case SHAPE_TRIANGLE:
       {
-        gboolean point_up = ctx->shield->shape_options.point_up;
+        gboolean point_up =
+          ctx->shield->shape_options.point_up_set ?
+          ctx->shield->shape_options.point_up : TRUE;
         double radius = ctx->shield->shape_options.radius;
 
         double angle_sign = point_up ? -1 : 1;
@@ -1260,7 +1266,9 @@ draw_shield (RenderCtx *ctx, double width, double height, double banner_height)
 
     case SHAPE_PENTAGON:
       {
-        gboolean point_up = ctx->shield->shape_options.point_up;
+        gboolean point_up =
+          ctx->shield->shape_options.point_up_set ?
+          ctx->shield->shape_options.point_up : TRUE;
 
         double angle_sign = point_up ? -1 : 1;
         double side_angle = ctx->shield->shape_options.side_angle;
