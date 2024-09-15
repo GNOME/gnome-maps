@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2024-07-29 18:31+0000\n"
-"PO-Revision-Date: 2024-09-05 23:01+0200\n"
+"POT-Creation-Date: 2024-09-15 02:44+0000\n"
+"PO-Revision-Date: 2024-09-15 23:01+0200\n"
 "Last-Translator: Jordi Mas i Hernàndez <jmas@softcatala.org>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "Language: ca\n"
@@ -28,7 +28,6 @@ msgstr ""
 #. * setting a custom title on the headerbar). Setting it programmatically
 #. * here works though. And yields a proper label in the gnome-shell
 #. * overview.
-#.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
 #: data/ui/main-window.ui:27 src/application.js:64 src/mainWindow.js:118
@@ -43,8 +42,8 @@ msgstr "Trobeu llocs arreu del món"
 #: data/org.gnome.Maps.appdata.xml.in.in:9
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
-"quickly find the place you’re looking for by searching for a city or street, "
-"or locate a place to meet a friend."
+"quickly find the place you’re looking for by searching for a city or street,"
+" or locate a place to meet a friend."
 msgstr ""
 "El Mapes us dona un accés ràpid a mapes d'arreu del món. Us permet trobar "
 "ràpidament el lloc que esteu cercant tant si és una ciutat com un carrer, o "
@@ -59,7 +58,7 @@ msgstr ""
 "per centenars de milers de persones d'arreu del món."
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.appdata.xml.in.in:469 src/mainWindow.js:587
+#: data/org.gnome.Maps.appdata.xml.in.in:495 src/mainWindow.js:587
 msgid "The GNOME Project"
 msgstr "El projecte GNOME"
 
@@ -67,7 +66,8 @@ msgstr "El projecte GNOME"
 msgid "A simple maps application"
 msgstr "Una aplicació senzilla de mapes"
 
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or
+#. localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Maps.desktop.in.in:14
 msgid "Maps;"
 msgstr "Mapes;"
@@ -202,6 +202,8 @@ msgstr "Copia la ubicació"
 msgid "Add to OpenStreetMap…"
 msgstr "Afegeix a OpenStreetMap…"
 
+#. Translators: This is the title of the dialog for expoting the map view
+#. content to an image file
 #: data/ui/export-view-dialog.ui:7
 msgid "Export View"
 msgstr "Exporta la vista"
@@ -442,7 +444,8 @@ msgstr "Número de carrer"
 msgid "Postal code"
 msgstr "Codi postal"
 
-#. This is the place name as it would be written in a postal address (typically coming after the postal code)
+#. This is the place name as it would be written in a postal address
+#. (typically coming after the postal code)
 #: data/ui/osm-edit-address.ui:44
 msgid "City"
 msgstr "Ciutat"
@@ -500,7 +503,7 @@ msgstr "Etiqueta Wikidata"
 msgid "Load Wikidata tag for article"
 msgstr "Carrega l'etiqueta Wikidata per a l'article"
 
-#: data/ui/place-popover.ui:23 src/searchBar.js:67
+#: data/ui/place-popover.ui:23 src/searchBar.js:69
 msgid "Explore Nearby Places"
 msgstr "Explorar els llocs propers"
 
@@ -549,11 +552,11 @@ msgstr "En bicicleta"
 
 #: data/ui/sidebar.ui:44
 msgid "Driving"
-msgstr ""
+msgstr "Conducció"
 
 #: data/ui/sidebar.ui:59
 msgid "Transit"
-msgstr ""
+msgstr "Trànsit"
 
 #: data/ui/sidebar.ui:211
 msgid "Route search by GraphHopper"
@@ -568,13 +571,10 @@ msgid ""
 "Routing itineraries for public transit is provided by third-party\n"
 "services.\n"
 "GNOME can not guarantee correctness of the itineraries and schedules shown.\n"
-"Note that some providers might not include all available modes of "
-"transportation,\n"
-"e.g. a national provider might not include airlines, and a local provider "
-"could\n"
+"Note that some providers might not include all available modes of transportation,\n"
+"e.g. a national provider might not include airlines, and a local provider could\n"
 "miss regional trains.\n"
-"Names and brands shown are to be considered as registered trademarks when "
-"applicable."
+"Names and brands shown are to be considered as registered trademarks when applicable."
 msgstr ""
 "Els itineraris de ruta del transport públic els proporciona el GNOME\n"
 "utilitzant dades d'horaris obtingudes d'empreses o agències de trànsit.\n"
@@ -598,12 +598,14 @@ msgstr "Mostra les parades intermèdies i informació"
 msgid "Leave Now"
 msgstr "Sortiu ara"
 
-#. Indicates searching for itineraries leaving at the specified time at the earliest
+#. Indicates searching for itineraries leaving at the specified time at the
+#. earliest
 #: data/ui/transit-options-panel.ui:17
 msgid "Leave By"
 msgstr "Sortiu a"
 
-#. Indicates searching for itineraries arriving no later than the specified time
+#. Indicates searching for itineraries arriving no later than the specified
+#. time
 #: data/ui/transit-options-panel.ui:18
 msgid "Arrive By"
 msgstr "Arribeu a"
@@ -740,7 +742,6 @@ msgstr "Mapes invàlids: URI: %s"
 #. Translators: This is a format string for a PNG filename for an
 #. * exported image with coordinates. The .png extension should be kept
 #. * intact in the translated string.
-#.
 #: src/exportViewDialog.js:72
 #, javascript-format
 msgid "Maps at %f, %f.png"
@@ -811,7 +812,8 @@ msgstr ""
 #: src/mainWindow.js:592
 msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
 msgstr ""
-"Copyright © 2011 – 2023 Red Hat, Inc. i els altres autors del Mapes del GNOME"
+"Copyright © 2011 – 2023 Red Hat, Inc. i els altres autors del Mapes del "
+"GNOME"
 
 #: src/mainWindow.js:605
 #, javascript-format
@@ -830,7 +832,6 @@ msgstr "Proveïdor de les caselles de mapa"
 #. * tile provider where the %s placeholder is replaced by either
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
-#.
 #: src/mainWindow.js:617
 #, javascript-format
 msgid "Map tiles provided by %s"
@@ -850,9 +851,8 @@ msgid "All Layer Files"
 msgstr "Tots els fitxers de capa"
 
 #: src/mainWindow.js:671
-#, fuzzy
 msgid "Open Shape Layers"
-msgstr "Obre la capa de forma"
+msgstr "Obre les capes de forma"
 
 #: src/mapView.js:617 src/mapView.js:679
 msgid "Failed to open layer"
@@ -865,8 +865,8 @@ msgstr "Voleu continuar?"
 #: src/mapView.js:635
 #, javascript-format
 msgid ""
-"You are about to open files with a total size of %s MB. This could take some "
-"time to load"
+"You are about to open files with a total size of %s MB. This could take some"
+" time to load"
 msgstr ""
 "Esteu a punt d'obrir fitxers amb una mida total de %s MB. Això pot trigar "
 "una estona a carregar-se"
@@ -955,8 +955,8 @@ msgstr ""
 
 #: src/osmEditDialog.js:125
 msgid ""
-"The official website. Try to use the most basic form of a URL i.e. http://"
-"example.com instead of http://example.com/index.html."
+"The official website. Try to use the most basic form of a URL i.e. "
+"http://example.com instead of http://example.com/index.html."
 msgstr ""
 "El lloc web oficial. Utilitzeu la forma més bàsica de l'URL, és a dir: "
 "http://example.com en comptes de http://example.com/index.html."
@@ -970,8 +970,8 @@ msgid ""
 "Phone number. Use the international format, starting with a + sign. Beware "
 "of local privacy laws, especially for private phone numbers."
 msgstr ""
-"Número de telèfon. Utilitzeu el format internacional, començant amb un signe "
-"+. Compte amb les lleis locals de privacitat, especialment per als números "
+"Número de telèfon. Utilitzeu el format internacional, començant amb un signe"
+" +. Compte amb les lleis locals de privacitat, especialment per als números "
 "de telèfon privats."
 
 #: src/osmEditDialog.js:139 src/placeView.js:337
@@ -1013,7 +1013,6 @@ msgstr "Mireu l'enllaç a l'etiqueta per ajuda sobre el format."
 #. * formatted string. Ideally it should be kept as an integer value
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
-#.
 #: src/osmEditDialog.js:164 src/placeView.js:538
 msgid "Population"
 msgstr "Població"
@@ -1178,8 +1177,8 @@ msgstr "Nota"
 
 #: src/osmEditDialog.js:240
 msgid ""
-"Information used to inform other mappers about non-obvious information about "
-"an element, the author’s intent when creating it, or hints for further "
+"Information used to inform other mappers about non-obvious information about"
+" an element, the author’s intent when creating it, or hints for further "
 "improvement."
 msgstr ""
 "La informació utilitzada per a informar altres creadors de mapes "
@@ -1216,7 +1215,8 @@ msgstr ""
 "l'article com «ca:Títol de l'article»."
 
 #: src/osmEditDialog.js:827
-msgid "Use the reload button to load the Wikidata tag for the selected article"
+msgid ""
+"Use the reload button to load the Wikidata tag for the selected article"
 msgstr ""
 "Utilitzeu el botó de recàrrega per a carregar l'etiqueta Wikidata per a "
 "l'article seleccionat"
@@ -1242,7 +1242,6 @@ msgid "Failed to parse Maps URI"
 msgstr "S'ha produït un error en analitzar l'URI Maps"
 
 #. 300 ft (300 * 12 * 0.0254 m)
-#.
 #. * Translators: This a format string for showing a distance to a place
 #. * is lower than a "quite short" distance.
 #. * The "less than" symbol can be substituded with an appropriate one, if
@@ -1274,18 +1273,15 @@ msgstr "Precisió: %s"
 #. * with phone numbers in international format starting with a +
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
-#.
 #: src/placeView.js:318
 msgid "Phone number"
 msgstr "Número de telèfon"
 
 #. If a reference to a named floor (named or symbolic) exists
 #. * refer to it directly.
-#.
 #. Translators:
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
-#.
 #: src/placeView.js:352 src/placeView.js:391
 msgid "Floor"
 msgstr "Planta"
@@ -1303,7 +1299,6 @@ msgstr "A nivell de terra"
 #. * This is a reference to a number of floors above
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
-#.
 #: src/placeView.js:375
 #, javascript-format
 msgid "%s floor above ground level"
@@ -1315,7 +1310,6 @@ msgstr[1] "%s pisos sobre el nivell del terra"
 #. * This is a reference to a number of floors below
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
-#.
 #: src/placeView.js:386
 #, javascript-format
 msgid "%s floor below ground level"
@@ -1326,7 +1320,6 @@ msgstr[1] "%s pisos per sota del nivell del terra"
 #. Translators:
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
-#.
 #: src/placeView.js:404
 msgid "Offers takeout"
 msgstr "Ofereix menjar per a emportar"
@@ -1334,7 +1327,6 @@ msgstr "Ofereix menjar per a emportar"
 #. Translators:
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
-#.
 #: src/placeView.js:412
 msgid "Does not offer takeout"
 msgstr "No ofereix menjar per a emportar"
@@ -1343,14 +1335,12 @@ msgstr "No ofereix menjar per a emportar"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
-#.
 #: src/placeView.js:421
 msgid "Only offers takeout"
 msgstr "Només ofereix menjar per a emportar"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
-#.
 #: src/placeView.js:438
 msgid "Public internet access"
 msgstr "Accés públic a Internet"
@@ -1358,35 +1348,30 @@ msgstr "Accés públic a Internet"
 #. Translators:
 #. * no internet access is offered in a place where
 #. * someone might expect it.
-#.
 #: src/placeView.js:447
 msgid "No internet access"
 msgstr "Sense accés a Internet"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
-#.
 #: src/placeView.js:455
 msgid "Public Wi-Fi"
 msgstr "Wi-Fi públic"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
-#.
 #: src/placeView.js:463
 msgid "Wired internet access"
 msgstr "Accés cablejat a Internet"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
-#.
 #: src/placeView.js:471
 msgid "Computers available for use"
 msgstr "Ordinadors disponibles per al seu ús"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
-#.
 #: src/placeView.js:479
 msgid "Internet assistance available"
 msgstr "Assistència d'Internet disponible"
@@ -1401,7 +1386,6 @@ msgstr "Lavabos disponibles"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
-#.
 #: src/placeView.js:497
 msgid "Wheelchair accessible"
 msgstr "Accessible amb cadira de rodes"
@@ -1410,7 +1394,6 @@ msgstr "Accessible amb cadira de rodes"
 #. * This means wheelchairs have partial access (e.g some areas
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
-#.
 #: src/placeView.js:507
 msgid "Limited wheelchair accessibility"
 msgstr "Accessibilitat amb cadira de rodes limitada"
@@ -1418,7 +1401,6 @@ msgstr "Accessibilitat amb cadira de rodes limitada"
 #. Translators:
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
-#.
 #: src/placeView.js:516
 msgid "Not wheelchair accessible"
 msgstr "No accessible amb cadira de rodes"
@@ -1427,7 +1409,6 @@ msgstr "No accessible amb cadira de rodes"
 #. * This means that the way or area is designated or purpose built
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
-#.
 #: src/placeView.js:526
 msgid "Designated for wheelchair users"
 msgstr "Dissenyat per a usuaris en cadira de rodes"
@@ -1436,7 +1417,6 @@ msgstr "Dissenyat per a usuaris en cadira de rodes"
 #. * Translators: this is a label indicating an altitude below
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
-#.
 #: src/placeView.js:557
 #, javascript-format
 msgid "%s below sea level"
@@ -1445,7 +1425,6 @@ msgstr "%s per sota del nivell del mar"
 #. *
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
-#.
 #: src/placeView.js:564
 msgid "At sea level"
 msgstr "A nivell del mar"
@@ -1763,7 +1742,7 @@ msgstr "Suprimeix a través de la ubicació"
 
 #: src/routeEntry.js:72
 msgid "Via"
-msgstr ""
+msgstr "Via"
 
 #. Translators: this is reverse route tooltip
 #: src/routeEntry.js:78
@@ -1811,7 +1790,6 @@ msgstr "Itineraris proporcionats per %s"
 
 #. Translators: this is a format string indicating instructions
 #. * starting a journey at the address given as the parameter
-#.
 #: src/transit.js:39
 #, javascript-format
 msgid "Start at %s"
@@ -1820,14 +1798,12 @@ msgstr "Comenceu a %s"
 #. Translators: this indicates starting a journey at a location
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
-#.
 #: src/transit.js:45 src/transitplugins/openTripPlanner2.js:236
 msgid "Start"
 msgstr "Comença"
 
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
-#.
 #: src/transit.js:63
 #, javascript-format
 msgid "Walk %s"
@@ -1870,10 +1846,8 @@ msgstr "No s'han trobat alternatives anteriors."
 msgid "No later alternatives found."
 msgstr "No s'han trobat alternatives posteriors."
 
-#.
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
-#.
 #: src/transitOptionsPanel.js:136
 msgctxt "month-day-date"
 msgid "%b %e"
@@ -1891,7 +1865,6 @@ msgstr "No s'ha trobat un proveïdor per a aquesta ruta."
 #. * arrival time, like:
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
-#.
 #: src/transitPlan.js:302
 #, javascript-format
 msgid "%s – %s"
@@ -1900,8 +1873,7 @@ msgstr "%s – %s"
 #. translators: this is an indication for a trip duration of
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
-#.
-#: src/transitPlan.js:333
+#: src/transitPlan.js:337
 #, javascript-format
 msgid "%s minute"
 msgid_plural "%s minutes"
@@ -1911,8 +1883,7 @@ msgstr[1] "%s minuts"
 #. translators: this is an indication for a trip duration,
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
-#.
-#: src/transitPlan.js:345
+#: src/transitPlan.js:349
 #, javascript-format
 msgid "%s hour"
 msgid_plural "%s hours"
@@ -1922,8 +1893,7 @@ msgstr[1] "%s hores"
 #. translators: this is an indication for a trip duration
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
-#.
-#: src/transitPlan.js:353
+#: src/transitPlan.js:357
 #, javascript-format
 msgid "%s:%s hour"
 msgid_plural "%s:%s hours"
@@ -1935,8 +1905,7 @@ msgstr[1] "%s:%s hores"
 #. * list for an itinerary, like:
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
-#.
-#: src/transitPlan.js:746
+#: src/transitPlan.js:758
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -1985,7 +1954,6 @@ msgstr "Tots els dies"
 
 #. Translators:
 #. * This represents a range of days with a starting and ending day.
-#.
 #: src/translations.js:168
 #, javascript-format
 msgctxt "day range"
@@ -2007,7 +1975,6 @@ msgstr "Vacances escolars"
 #. * appropriate white space or connected phrase could be modified by
 #. * the translation. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
-#.
 #: src/translations.js:221
 #, javascript-format
 msgctxt "time interval list"
@@ -2024,7 +1991,6 @@ msgstr "sense obrir"
 #. * appropriate white spacing or connecting phrases can be set by the
 #. * translation as needed. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
-#.
 #: src/translations.js:250
 #, javascript-format
 msgctxt "time interval"
@@ -2047,7 +2013,6 @@ msgstr "Exacte"
 
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
-#.
 #: src/utils.js:307
 #, javascript-format
 msgid "%s h"
@@ -2056,7 +2021,6 @@ msgstr "%s h"
 #. Translators: this is a duration with hours and minutes parts
 #. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
-#.
 #: src/utils.js:313
 #, javascript-format
 msgid "%s h %s min"
@@ -2067,7 +2031,6 @@ msgstr[1] "%s h %s min"
 #. Translators: this is a duration with minutes part
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
-#.
 #: src/utils.js:320
 #, javascript-format
 msgid "%s min"
@@ -2078,7 +2041,6 @@ msgstr[1] "%s min"
 #. Translators: this is a duration of less than one minute
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
-#.
 #: src/utils.js:326
 #, javascript-format
 msgid "%s s"
@@ -2232,20 +2194,3 @@ msgstr "Canvieu de sentit cap a la dreta a %s"
 msgid "Make a right u-turn"
 msgstr "Canvieu de sentit cap a la dreta"
 
-#~ msgid "What's Here?"
-#~ msgstr "Què hi ha aquí?"
-
-#~ msgid "Enable Experimental Map"
-#~ msgstr "Activa el mapa experimental"
-
-#~ msgid "Copy"
-#~ msgstr "Copia"
-
-#~ msgid "_Open"
-#~ msgstr "_Obre"
-
-#~ msgid "Nothing found here!"
-#~ msgstr "No s'ha trobat res aquí!"
-
-#~ msgid "This plugin doesn't support latest arrival"
-#~ msgstr "Aquest connector no permet cercar per l'última arribada"
