@@ -113,11 +113,9 @@ export class MapMarker extends Shumate.Marker {
     }
 
     get bubble() {
-        if (this._bubble === undefined && this._hasBubble()) {
+        if (this._bubble === undefined && this._hasBubble())
             this._bubble = new MapBubble({ place: this._place,
-                                            mapView: this._mapView });
-            this._bubble.set_parent(this._mapView);
-        }
+                                           mapView: this._mapView });
 
         return this._bubble;
     }
@@ -233,6 +231,8 @@ export class MapMarker extends Shumate.Marker {
 
     showBubble() {
         if (this.bubble && !this.bubble.visible && this._isInsideView() && !Application.application.adaptive_mode) {
+            if (this._bubble.get_parent() === null)
+                this._bubble.set_parent(this._mapView);
             this._initBubbleSignals();
             this.bubble.popup();
             this._positionBubble(this.bubble);

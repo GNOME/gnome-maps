@@ -40,7 +40,10 @@ export class MapBubble extends Gtk.Popover {
         /* focus on the map when the bubble is closed, to allow continuing
          * keyboard navigation
          */
-        this.connect('closed', () => mapView.map.grab_focus());
+        this.connect('closed', () => {
+            this.unparent();
+            mapView.map.grab_focus();
+        });
 
         this.get_style_context().add_class("map-bubble");
     }

@@ -172,8 +172,13 @@ export class PlaceButtons extends Gtk.Box {
     }
 
     _popup() {
-        if (!Application.application.adaptive_mode)
-            this.get_ancestor(Gtk.Popover).popup();
+        if (!Application.application.adaptive_mode) {
+            const popover = this.get_ancestor(Gtk.Popover);
+
+            if (!popover.get_parent())
+                popover.set_parent(this._mapView);
+            popover.popup();
+        }
     }
 
     _edit() {
