@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2024-08-11 11:26+0000\n"
-"PO-Revision-Date: 2024-08-27 00:31+0200\n"
+"POT-Creation-Date: 2024-09-15 02:43+0000\n"
+"PO-Revision-Date: 2024-09-18 00:25+0200\n"
 "Last-Translator: Jose Riha <jose1711@gmail.com>\n"
 "Language-Team: Slovak <gnome-sk-list@gnome.org>\n"
 "Language: sk\n"
@@ -57,7 +57,7 @@ msgstr ""
 "spolupracujú stovky tisícov ľudí z celého sveta."
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.appdata.xml.in.in:469 src/mainWindow.js:587
+#: data/org.gnome.Maps.appdata.xml.in.in:497 src/mainWindow.js:587
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
 
@@ -201,7 +201,7 @@ msgstr "Trasa sem"
 # tooltip
 #: data/ui/context-menu.ui:18
 msgid "Clear Current Route"
-msgstr "Odstráni aktuálnu trasu"
+msgstr "Odstrániť aktuálnu trasu"
 
 #: data/ui/context-menu.ui:24
 msgid "Copy Location"
@@ -213,6 +213,7 @@ msgid "Add to OpenStreetMap…"
 msgstr "Pridať do projektu OpenStreetMap…"
 
 # dialog title
+#. Translators: This is the title of the dialog for expoting the map view content to an image file
 #: data/ui/export-view-dialog.ui:7
 msgid "Export View"
 msgstr "Export zobrazenia"
@@ -377,7 +378,7 @@ msgstr "Zobraziť mierku"
 #. Translators: This string uses ellipsis character
 #: data/ui/layers-popover.ui:16
 msgid "Open Shape Layer…"
-msgstr "Otvoriť vrstvu s tvarmi…"
+msgstr "Otvoriť používateľskú vrstvu…"
 
 #: data/ui/main-window.ui:8
 msgid "Set up OpenStreetMap Account…"
@@ -518,7 +519,7 @@ msgstr "Značka údajov Wikidata"
 msgid "Load Wikidata tag for article"
 msgstr "Načítať Wikidata značku pre článok"
 
-#: data/ui/place-popover.ui:23 src/searchBar.js:67
+#: data/ui/place-popover.ui:23 src/searchBar.js:69
 msgid "Explore Nearby Places"
 msgstr "Preskúmať miesta v okolí"
 
@@ -558,7 +559,7 @@ msgstr "Prepne viditeľné"
 #. Translators: This is a tooltip
 #: data/ui/shape-layer-row.ui:44
 msgid "Remove Shape Layer"
-msgstr "Odstráni vrstvu s tvarmi"
+msgstr "Odstráni používateľskú vrstvu"
 
 #: data/ui/sidebar.ui:17
 msgid "Walking"
@@ -875,7 +876,7 @@ msgstr "Všetky súbory vrstiev"
 # dialo title
 #: src/mainWindow.js:671
 msgid "Open Shape Layers"
-msgstr "Otvorenie vrstvy s tvarmi"
+msgstr "Otvorenie používateľskej vrstvy"
 
 #: src/mapView.js:617 src/mapView.js:679
 msgid "Failed to open layer"
@@ -1933,7 +1934,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: src/transitPlan.js:333
+#: src/transitPlan.js:337
 #, javascript-format
 msgid "%s minute"
 msgid_plural "%s minutes"
@@ -1945,7 +1946,7 @@ msgstr[2] "%s minúty"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: src/transitPlan.js:345
+#: src/transitPlan.js:349
 #, javascript-format
 msgid "%s hour"
 msgid_plural "%s hours"
@@ -1957,7 +1958,7 @@ msgstr[2] "%s hodiny"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: src/transitPlan.js:353
+#: src/transitPlan.js:357
 #, javascript-format
 msgid "%s:%s hour"
 msgid_plural "%s:%s hours"
@@ -1971,7 +1972,7 @@ msgstr[2] "%s:%s hodiny"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:746
+#: src/transitPlan.js:758
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
