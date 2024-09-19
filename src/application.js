@@ -252,8 +252,8 @@ export class Application extends Adw.Application {
             if (error) {
                 this._mainWindow.showToast(_("An error has occurred"));
             } else {
-                // clear search entry
-                this._mainWindow.searchBar.text = '';
+                // fill in search entry with query string
+                this._mainWindow.searchBar.setTextWithoutTriggeringSearch(query);
 
                 if (places) {
                     /* if there's only one place in results, show it directly
