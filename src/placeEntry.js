@@ -71,7 +71,7 @@ export class PlaceEntry extends Gtk.Entry {
         }
 
         if (this.text !== this._placeText)
-            this._setTextWithoutTriggerSearch(this._placeText);
+            this.setTextWithoutTriggeringSearch(this._placeText);
 
         this._place = p;
 
@@ -125,7 +125,7 @@ export class PlaceEntry extends Gtk.Entry {
         this.add_css_class('search');
     }
 
-    _setTextWithoutTriggerSearch(text) {
+    setTextWithoutTriggeringSearch(text) {
         this._setText = text;
         this.text = text;
     }
