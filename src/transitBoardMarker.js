@@ -38,7 +38,7 @@ const MARKER_SIZE = 20;
 /* threashhold for route color luminance when we consider it more or less
  * as white, and draw an outline around the label, and vice versa for dark mode
  */
-const OUTLINE_LUMINANCE_THREASHHOLD = 0.9;
+const OUTLINE_LUMINANCE_THREASHHOLD = 0.6;
 const DARK_OUTLINE_LUMINANCE_THREASHHOLD = 0.2;
 
 export class TransitBoardMarker extends MapMarker {
