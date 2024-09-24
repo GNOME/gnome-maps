@@ -19,6 +19,10 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
+import gettext from 'gettext';
+
+const _ = gettext.gettext;
+
 import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
 
@@ -31,10 +35,31 @@ const _file = Gio.file_new_for_uri('resource://org/gnome/Maps/osm-types.json');
 const [_status, _buffer] = _file.load_contents(null);
 const OSM_TYPE_MAP = JSON.parse(Utils.getBufferText(_buffer));
 
+// dynamically type mapping, language-specifically generated
+let TYPE_MAP = null;
+
+export const TYPE_TAG_TITLES = {
+  aerialway: _("Aerialway"),
+  aeroway:   _("Aeroway"),
+  amenity:   _("Amenity"),
+  barrier:   _("Barrier"),
+  highway:   _("Road"),
+  historic:  _("Historic"),
+  leisure:   _("Leisure"),
+  office:    _("Office"),
+  place:     _("Place"),
+  railway:   _("Railway"),
+  shop:      _("Shop"),
+  tourism:   _("Tourism")
+}
+
 /* Lists the OSM tags we base our notion of location types on */
-export const OSM_TYPE_TAGS = ['aerialway', 'aeroway', 'amenity', 'barrier',
-                              'highway', 'historic', 'leisure', 'office', 'place',
-                              'railway', 'shop', 'tourism'];
+export const OSM_TYPE_TAGS = Object.getOwnPropertyNames(TYPE_TAG_TITLES);
+
+export function getTitleForTag(tag) {
+    const title = TYPE_TAG_TITLES[tag];
+    return title ? gettext.gettext(title) : _("Other");
+}
 
 /* Sort function comparing two type values according to the locale-specific
  * comparison of the type title */
@@ -68,28 +93,57 @@ function _lookupTitle(item) {
     return null;
 }
 
-export function findMatches(prefix, maxMatches) {
+export function getAllTypes() {
+    if (!TYPE_MAP) {
+        TYPE_MAP = {};
+
+        for (const tag of OSM_TYPE_TAGS) {
+            TYPE_MAP[tag] = [];
+        }
+
+        for (let type in OSM_TYPE_MAP) {
+            let item = OSM_TYPE_MAP[type];
+            let [title, normalizedTitle] = _lookupTitle(item);
+            let parts = type.split('/');
+            let tag = parts[0];
+
+            if (!OSM_TYPE_TAGS.includes(tag))
+                continue;
+
+            TYPE_MAP[tag].push({ title:           title,
+                                 normalizedTitle: normalizedTitle,
+                                 value:           parts[1] });
+
+        }
+    }
+
+    return TYPE_MAP;
+}
+
+
+export function findMatches(prefix, maxMatches, selectedTags) {
     let numMatches = 0;
     let prefixLength = prefix.length;
     let normalized = prefix.toLocaleLowerCase();
     let matches = [];
 
-    for (let type in OSM_TYPE_MAP) {
-        let item = OSM_TYPE_MAP[type];
-        let [title, normalizedTitle] = _lookupTitle(item);
-        let parts = type.split('/');
+    // create dynamic type mapping if it doesn't already exist
+    getAllTypes();
 
-        /* if the (locale-case-normalized) title matches parts of the search
-         * string, or as a convenience for expert mappers, if the search string
-         * is prefix of the raw OSM tag value */
-        if (normalizedTitle.indexOf(normalized) != -1
-            || (prefixLength >= 3 && parts[1].startsWith(prefix))) {
-            numMatches++;
-            matches.push({key: parts[0], value: parts[1], title: title});
+    for (const tag of (selectedTags ?? Object.getOwnPropertyNames(TYPE_MAP))) {
+        for (const item of TYPE_MAP[tag]) {
+            /* if the (locale-case-normalized) title matches parts of the search
+             * string, or as a convenience for expert mappers, if the search string
+             * is prefix of the raw OSM tag value */
+            if (item.normalizedTitle.indexOf(normalized) != -1
+                || (prefixLength >= 3 && item.value.startsWith(prefix))) {
+                numMatches++;
+                matches.push({key: tag, value: item.value, title: item.title });
+            }
+
+            if (numMatches === maxMatches)
+                break;
         }
-
-        if (numMatches === maxMatches)
-            break;
     }
 
     return matches.sort(_sortType);
