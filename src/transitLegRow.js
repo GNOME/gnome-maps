@@ -47,7 +47,8 @@ export class TransitLegRow extends Gtk.ListBoxRow {
         this._fromLabel.label = Transit.getFromLabel(this._leg, this._start);
 
         if (this._leg.transit) {
-            let routeLabel = new TransitRouteLabel({ leg: this._leg });
+            const routeLabel = new TransitRouteLabel({ leg: this._leg });
+            const agencyName = GLib.markup_escape_text(this._leg.agencyName, -1);
 
             this._routeGrid.attach(routeLabel, 0, 0, 1, 1);
 
@@ -61,9 +62,9 @@ export class TransitLegRow extends Gtk.ListBoxRow {
                 let tooltip = GLib.markup_escape_text(url, -1);
                 this._agencyLabel.label =
                     '<a href="%s" title="%s">%s</a>'.format(url, tooltip,
-                                                            this._leg.agencyName);
+                                                            agencyName);
             } else {
-                this._agencyLabel.label = this._leg.agencyName;
+                this._agencyLabel.label = agencyName;
             }
         } else {
             this._expandButton.tooltip_text = _("Show walking instructions");
