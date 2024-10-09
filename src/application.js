@@ -107,6 +107,10 @@ export class Application extends Adw.Application {
                              _("[FILE…|URI]"));
     }
 
+    get mainWindow() {
+        return this._mainWindow;
+    }
+
     _onOsmAccountSetupActivate() {
         let dialog =
             Application.osmEdit.createAccountDialog(false);
