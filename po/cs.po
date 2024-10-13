@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2024-02-14 22:30+0000\n"
-"PO-Revision-Date: 2024-02-17 15:00+0100\n"
+"POT-Creation-Date: 2024-10-11 09:53+0000\n"
+"PO-Revision-Date: 2024-10-13 15:42+0200\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.5\n"
 "X-DamnedLies-Scope: partial\n"
 
 #. Translators: This is the program name.
@@ -56,7 +56,7 @@ msgstr ""
 "tisíců lidí z celého světa."
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.appdata.xml.in.in:451 src/mainWindow.js:644
+#: data/org.gnome.Maps.appdata.xml.in.in:492 src/mainWindow.js:644
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
 
@@ -224,7 +224,7 @@ msgid "Add places to your favorites to get them listed here"
 msgstr "Přidejte si místa do oblíbených, aby se zde zobrazila"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:11 src/geoclue.js:106
+#: data/ui/headerbar-left.ui:11 src/geoclue.js:106 src/placeBar.js:91
 msgid "Current Location"
 msgstr "Současné místo"
 
@@ -477,7 +477,7 @@ msgstr ""
 msgid "Recently Used"
 msgstr "Nedávno použité"
 
-#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:663
+#: data/ui/osm-edit-dialog.ui:225 src/mapView.js:671
 msgid "Cancel"
 msgstr "Zrušit"
 
@@ -670,7 +670,7 @@ msgid "Zoom Out"
 msgstr "Oddálit"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1238
+#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1246
 msgid "Zoom In"
 msgstr "Přiblížit"
 
@@ -821,15 +821,15 @@ msgstr "Poskytovatel vyhledávání"
 msgid "Search provided by %s using %s"
 msgstr "Hledání zprostředkuje %s pomocí %s"
 
-#: src/mapView.js:637 src/mapView.js:702
+#: src/mapView.js:645 src/mapView.js:710
 msgid "Failed to open layer"
 msgstr "Selhalo otevření vrstvy"
 
-#: src/mapView.js:656
+#: src/mapView.js:664
 msgid "Do you want to continue?"
 msgstr "Chcete pokračovat?"
 
-#: src/mapView.js:657
+#: src/mapView.js:665
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -838,28 +838,28 @@ msgstr ""
 "Chystáte se otevřít soubory o celkové velikosti %s MB. To může zabrat nějaký "
 "čas."
 
-#: src/mapView.js:664 src/transitplugins/openTripPlanner.js:1239
+#: src/mapView.js:672 src/transitplugins/openTripPlanner.js:1239
 #: src/transitplugins/openTripPlanner2.js:267
 msgid "Continue"
 msgstr "Pokračujte"
 
-#: src/mapView.js:696
+#: src/mapView.js:704
 msgid "File type is not supported"
 msgstr "Typ souboru není podporován"
 
-#: src/mapView.js:733
+#: src/mapView.js:741
 msgid "Failed to open GeoURI"
 msgstr "Selhalo otevření adresy GeoURI"
 
-#: src/mapView.js:1197
+#: src/mapView.js:1205
 msgid "Nothing found here!"
 msgstr "Zde nebylo nic nalezeno!"
 
-#: src/mapView.js:1237
+#: src/mapView.js:1245
 msgid "Zoom in to add location"
 msgstr "Přiblížit pro přidání místa"
 
-#: src/mapView.js:1258
+#: src/mapView.js:1266
 msgid "Location was added in OpenStreetMap"
 msgstr "Místo bylo přidáno do OpenStreetMap"
 
@@ -940,8 +940,8 @@ msgstr ""
 "Telefonní číslo. Používejte mezinárodní formát začínající znakem +. Dbejte "
 "místních zákonů na ochranu soukromí, zejména u soukromách telefonních čísel."
 
-#: src/osmEditDialog.js:139
-msgid "E-mail"
+#: src/osmEditDialog.js:139 src/placeView.js:308
+msgid "Email"
 msgstr "E-mail"
 
 #: src/osmEditDialog.js:144
@@ -1183,7 +1183,7 @@ msgstr ""
 msgid "Couldn't find Wikidata tag for article"
 msgstr "Nezdařilo se najít na Wikidata štítek pro článek"
 
-#: src/photonUtils.js:118
+#: src/photonUtils.js:118 src/placeListRow.js:70
 msgid "Unnamed place"
 msgstr "Místo bez názvu"
 
@@ -1203,7 +1203,7 @@ msgstr "Selhalo zpracování adresy URI map"
 #. * needed (e.g. using the correct direction, or alternative symbol).
 #. * The %s should be kept, and is substituted with a label representing the
 #. * short distance. The \u2009 (thin space) could also be adjusted if needed
-#: src/placeListRow.js:46
+#: src/placeListRow.js:47
 #, javascript-format
 msgctxt "short distance format string"
 msgid "< %s"
@@ -1232,10 +1232,6 @@ msgstr "Přesnost: %s"
 #: src/placeView.js:289
 msgid "Phone number"
 msgstr "Telefonní číslo"
-
-#: src/placeView.js:308
-msgid "Email"
-msgstr "E-mail"
 
 #. If a reference to a named floor (named or symbolic) exists
 #. * refer to it directly.
@@ -1414,15 +1410,15 @@ msgstr "V úrovni hladiny moře"
 msgid "Religion:"
 msgstr "Náboženství:"
 
-#: src/place.js:568
+#: src/place.js:585
 msgid "Place not found in OpenStreetMap"
 msgstr "Místo nebylo v OpenStreetMap nalezeno"
 
-#: src/place.js:575
+#: src/place.js:592
 msgid "Coordinates in URL are not valid"
 msgstr "Souřadnice v adrese URL nejsou platné"
 
-#: src/place.js:584
+#: src/place.js:601
 msgid "URL is not supported"
 msgstr "Tato adreasa URL není podporovaná"
 
@@ -1724,7 +1720,7 @@ msgstr "Otočit trasu"
 
 #: src/searchBar.js:45
 msgid "Search"
-msgstr "Hledat"
+msgstr "hledat"
 
 #. Translators: The first string is the name of the city, the
 #. second string is the name of the app to add it to
@@ -1794,11 +1790,11 @@ msgstr "Příjezd do %s"
 msgid "Arrive"
 msgstr "Příjezd"
 
-#: src/transitLegRow.js:69
+#: src/transitLegRow.js:70
 msgid "Show walking instructions"
 msgstr "Zobrazit pokyny pro pěší"
 
-#: src/transitLegRow.js:70
+#: src/transitLegRow.js:71
 msgid "Hide walking instructions"
 msgstr "Skrýt pokyny pro pěší"
 
@@ -2189,6 +2185,9 @@ msgstr "Proveďte otočku doprava na %s"
 #: src/transitplugins/openTripPlanner2.js:326
 msgid "Make a right u-turn"
 msgstr "Proveďte otočku doprava"
+
+#~ msgid "E-mail"
+#~ msgstr "E-mail"
 
 #~ msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
 #~ msgstr ""
