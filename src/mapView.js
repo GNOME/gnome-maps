@@ -698,7 +698,7 @@ export class MapView extends Gtk.Overlay {
         try {
             let [
                 geoUri,
-                zoom = this.map.viewport.zoom_level
+                zoom = Application.settings.get('zoom-level')
             ] = URIS.parseAsGeoURI(uri);
             let location = new Location({ heading: -1 });
             location.set_from_uri(geoUri);
