@@ -28,6 +28,7 @@ import * as Utils from './utils.js';
 
 // plugins
 import {Motis} from './transitplugins/motis.js';
+import {Motis2} from './transitplugins/motis2.js';
 import {OpendataCH} from './transitplugins/opendataCH.js';
 import {OpenTripPlanner} from './transitplugins/openTripPlanner.js';
 import {OpenTripPlanner2} from './transitplugins/openTripPlanner2.js';
@@ -35,7 +36,7 @@ import {Resrobot} from './transitplugins/resrobot.js';
 import {Transitous} from './transitplugins/transitous.js';
 
 const ALL_PLUGINS =
-    ["Motis", "OpendataCH", "OpenTripPlanner", "OpenTripPlanner2", "Resrobot", "Transitous"];
+    ["Motis", "Motis2", "OpendataCH", "OpenTripPlanner", "OpenTripPlanner2", "Resrobot", "Transitous"];
 
 const _file = Gio.file_new_for_uri('resource://org/gnome/Maps/transit-providers.json');
 const [_status, _buffer] = _file.load_contents(null);
