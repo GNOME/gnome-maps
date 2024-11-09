@@ -25,9 +25,11 @@
 
 import Shumate from 'gi://Shumate';
 
+const DEFAULT_PRECISION = 5;
+
 function _decodeValue(data, index) {
     let b;
-    let shift = 0;
+    let shift = 1;
     let value = 0;
 
     do {
@@ -36,16 +38,16 @@ function _decodeValue(data, index) {
 
         // Get 5 bits at a time until hit the end of value
         // (which is not OR'd with 0x20)
-        value |= (b & 0x1f) << shift;
-        shift += 5;
+        value += (b & 0x1f) * shift;
+        shift *= 32;
     } while (b >= 0x20);
 
     // negative values are encoded as two's complement
-    let ret_val = ((value & 1) ? ~(value >> 1) : (value >> 1));
+    let ret_val = (value & 1) ? ((-value - 1) / 2) : (value / 2);
     return [ret_val, index];
 }
 
-export function decode(data) {
+export function decode(data, precision = DEFAULT_PRECISION) {
     let length = data.length;
     let polyline = [];
     let index = 0;
@@ -62,8 +64,8 @@ export function decode(data) {
         lat += latdelta;
         lon += londelta;
         polyline.push(new Shumate.Coordinate({
-            latitude:  lat * 1e-5,
-            longitude: lon * 1e-5
+            latitude:  lat * Math.pow(10, -precision),
+            longitude: lon * Math.pow(10, -precision)
         }));
     }
     return polyline;
