@@ -71,6 +71,14 @@ export function decode(data, precision = DEFAULT_PRECISION) {
     return polyline;
 }
 
+export function decodeFirstCoordinate(data, precision = DEFAULT_PRECISION) {
+    const [latdelta, index] = _decodeValue(data, 0);
+    const [londelta,] = _decodeValue(data, index);
+
+    return new Shumate.Coordinate({ latitude: latdelta * Math.pow(10, -precision),
+                                    longitude: londelta * Math.pow(10, -precision) });
+}
+
 function _encodeValue(val) {
     let result = '';
     val = Math.round(val * 1e5) << 1;
