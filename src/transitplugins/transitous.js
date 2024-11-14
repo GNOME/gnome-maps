@@ -19,11 +19,11 @@
  * Author: Marcus Lundblad <ml@dfupdate.se>
  */
 
-import {Motis} from './motis.js';
+import {Motis2} from './motis2.js';
 
-const BASE_URL = 'https://routing.spline.de/api/';
+const BASE_URL = 'https://api.transitous.org/';
 
-export class Transitous extends Motis {
+export class Transitous extends Motis2 {
   constructor(params) {
     super({ baseUrl: BASE_URL, ...params });
   }
