@@ -729,10 +729,23 @@ export class PlaceView extends Gtk.Box {
 
     _requestWikidataLogo(wikidata) {
         Wikipedia.fetchLogoImageForWikidata(wikidata, THUMBNAIL_FETCH_SIZE,
-            this._onThumbnailComplete.bind(this));
+                                            this._onLogoImageComplete.bind(this));
     }
 
-    _onThumbnailComplete(thumbnail) {
+    _onLogoImageComplete(logoImage) {
+        const aspectRatio =
+            logoImage.get_intrinsic_height() / logoImage.get_intrinsic_width();
+
+        // don't show logo images that would scaled
+        if (aspectRatio <= PlaceViewImage.MAX_ASPECT_RATIO)
+            this._onThumbnailComplete(logoImage, true);
+    }
+
+    _onThumbnailComplete(thumbnail, margin = false) {
+        this._thumbnail.margin_start = margin ? 6 : 0;
+        this._thumbnail.margin_end = margin ? 6 : 0;
+        this._thumbnail.margin_top = margin ? 6 : 0;
+        this._thumbnail.margin_bottom = margin ? 6 : 0;
         this.thumbnail = thumbnail;
     }
 
