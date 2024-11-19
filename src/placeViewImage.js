@@ -23,10 +23,10 @@ import GObject from 'gi://GObject';
 import Graphene from 'gi://Graphene';
 import Gtk from 'gi://Gtk';
 
-/* The maximum aspect ratio, after which the image will be cropped vertically */
-const MAX_ASPECT_RATIO = 1;
-
 export class PlaceViewImage extends Gtk.Widget {
+    /* The maximum aspect ratio, after which the image will be cropped vertically */
+    static MAX_ASPECT_RATIO = 1;
+
     constructor(params) {
         super(params);
 
@@ -43,17 +43,14 @@ export class PlaceViewImage extends Gtk.Widget {
     }
 
     vfunc_snapshot(snapshot) {
-        const {x, y, width, height} = this.get_allocation();
+        const width = this.get_width();
+        const height = this.get_height();
 
         if (this._paintable === null || width === 0 || height === 0) {
             return;
         }
 
         snapshot.save();
-
-        const clipRect = new Graphene.Rect();
-        clipRect.init(x, y, width, height);
-        snapshot.push_clip(clipRect);
 
         const paintableWidth = this._paintable.get_intrinsic_width();
         const paintableHeight = this._paintable.get_intrinsic_height();
@@ -68,7 +65,6 @@ export class PlaceViewImage extends Gtk.Widget {
 
         this._paintable.snapshot(snapshot, scaledWidth, scaledHeight);
 
-        snapshot.pop();
         snapshot.restore();
 
         super.vfunc_snapshot(snapshot);
@@ -83,7 +79,9 @@ export class PlaceViewImage extends Gtk.Widget {
             if (this._paintable) {
                 const paintableWidth = this._paintable.get_intrinsic_width();
                 const paintableHeight = this._paintable.get_intrinsic_height();
-                const height = Math.min(paintableHeight / paintableWidth, MAX_ASPECT_RATIO) * forSize;
+                const height =
+                    Math.min(paintableHeight / paintableWidth,
+                             PlaceViewImage.MAX_ASPECT_RATIO) * forSize;
                 return [height, height, -1, -1];
             } else {
                 return [0, 0, -1, -1];
