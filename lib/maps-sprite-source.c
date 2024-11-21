@@ -241,5 +241,31 @@ maps_sprite_source_load_shield_defs (MapsSpriteSource *self, const char *json)
   networks = json_object_get_object_member (root_obj, "networks");
   json_object_iter_init (&iter, networks);
   while (json_object_iter_next (&iter, &network_name, &network_node))
-    g_hash_table_insert (self->shields, g_strdup (network_name), maps_shield_new (network_node));
+    {
+      JsonObject *network;
+
+      g_hash_table_insert (self->shields, g_strdup (network_name), maps_shield_new (network_node));
+      network = json_node_get_object (network_node);
+
+      if (json_object_has_member (network, "bannerMap"))
+        {
+          JsonObject *banner_map;
+          JsonObjectIter banner_iter;
+          JsonNode *banners;
+          const char *banner_network_name;
+
+          banner_map = json_object_get_object_member (network, "bannerMap");
+          json_object_iter_init (&banner_iter, banner_map);
+          while (json_object_iter_next (&banner_iter, &banner_network_name, &banners))
+            {
+              if (JSON_NODE_HOLDS_ARRAY (banners))
+                {
+                  g_hash_table_insert (self->shields,
+                                       g_strdup (banner_network_name),
+                                       maps_shield_new_with_banners (network_node,
+                                                                     json_node_get_array (banners)));
+                }
+            }
+        }
+    }
 }
