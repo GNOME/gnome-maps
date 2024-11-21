@@ -61,7 +61,7 @@ import * as URIS from './uris.js';
 
 const _LOCATION_STORE_TIMEOUT = 500;
 const MapMinZoom = 2;
-const MapMaxZoom = 19;
+const MapMaxZoom = 22;
 
 // color used for turn-by-turn-based routes (non-transit)
 const TURN_BY_TURN_ROUTE_COLOR = '62a0ea';
@@ -445,6 +445,7 @@ export class MapView extends Gtk.Overlay {
 
         if (mapType !== MapView.MapType.LOCAL) {
             mapSource = MapSource.createVectorSource();
+            mapSource.set_max_zoom_level(MapMaxZoom);
             this._listenForVectorChanges();
 
             Application.settings.set('map-type', mapType);
