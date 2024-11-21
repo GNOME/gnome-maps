@@ -26,6 +26,8 @@ G_DECLARE_FINAL_TYPE (MapsShield, maps_shield, MAPS, SHIELD, GObject)
 
 MapsShield *maps_shield_new (JsonNode *node);
 
+MapsShield *maps_shield_new_with_banners (JsonNode *node, JsonArray *banners);
+
 ShumateVectorSprite *maps_shield_draw (MapsShield *self,
                                        const char *ref,
                                        const char *name,

@@ -147,7 +147,8 @@ struct _MapsShield {
 
 G_DEFINE_TYPE (MapsShield, maps_shield, G_TYPE_OBJECT)
 
-static void maps_shield_set_from_json (MapsShield *self, JsonNode *node);
+static void maps_shield_set_from_json (MapsShield *self, JsonNode *node,
+                                       JsonArray *banners);
 
 /**
  * maps_shield_new:
@@ -161,7 +162,24 @@ MapsShield *
 maps_shield_new (JsonNode *node)
 {
   MapsShield *self = g_object_new (MAPS_TYPE_SHIELD, NULL);
-  maps_shield_set_from_json (self, node);
+  maps_shield_set_from_json (self, node, NULL);
+  return self;
+}
+
+/**
+ * maps_shield_new_with_banners:
+ * @node: (transfer none): a [class@JsonNode] containing the shield definition
+ * @banners: (transfer none): array of banner texts to add to the shield
+ *
+ * Creates a new [class@Shield] instance.
+ *
+ * Returns: (transfer full): a new [class@Shield] instance
+ */
+MapsShield *
+maps_shield_new_with_banners (JsonNode *node, JsonArray *banners)
+{
+  MapsShield *self = g_object_new (MAPS_TYPE_SHIELD, NULL);
+  maps_shield_set_from_json (self, node, banners);
   return self;
 }
 
@@ -271,7 +289,7 @@ set_overrides_field (JsonObject  *object,
 }
 
 static void
-maps_shield_set_from_json (MapsShield *self, JsonNode *node)
+maps_shield_set_from_json (MapsShield *self, JsonNode *node, JsonArray *banners)
 {
   JsonObject *object;
 
@@ -313,7 +331,11 @@ maps_shield_set_from_json (MapsShield *self, JsonNode *node)
         }
     }
 
-  if (json_object_has_member (object, "banners"))
+  if (banners)
+    {
+      self->banners = get_string_array (banners);
+    }
+  else if (json_object_has_member (object, "banners"))
     {
       JsonArray *banners = json_object_get_array_member (object, "banners");
       self->banners = get_string_array (banners);
