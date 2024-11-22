@@ -52,6 +52,11 @@ export class PlaceViewImage extends Gtk.Widget {
 
         snapshot.save();
 
+        const clipRect = new Graphene.Rect();
+
+        clipRect.init(0, 0, width, height);
+        snapshot.push_clip(clipRect);
+
         const paintableWidth = this._paintable.get_intrinsic_width();
         const paintableHeight = this._paintable.get_intrinsic_height();
 
@@ -65,6 +70,7 @@ export class PlaceViewImage extends Gtk.Widget {
 
         this._paintable.snapshot(snapshot, scaledWidth, scaledHeight);
 
+        snapshot.pop();
         snapshot.restore();
 
         super.vfunc_snapshot(snapshot);
