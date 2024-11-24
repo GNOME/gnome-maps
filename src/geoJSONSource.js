@@ -49,8 +49,8 @@ export class GeoJSONSource extends GnomeMaps.SyncMapSource {
         this._bbox = new BoundingBox();
         this._filename = filename;
         this.tile_size = mapView.map.viewport.reference_map_source.tile_size;
-        this.max_zoom_level = 20;
-        this.min_zoom_level = 0;
+        this.max_zoom_level = mapView.map.viewport.max_zoom_level;
+        this.min_zoom_level = mapView.map.viewport.min_zoom_level;
     }
 
     get bbox() {
