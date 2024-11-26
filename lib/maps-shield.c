@@ -467,8 +467,8 @@ maps_shield_set_from_json (MapsShield *self, JsonNode *node, JsonArray *banners)
       self->shape_options.rect_width_set = set_double_field (params, "rectWidth", &self->shape_options.rect_width);
     }
 
-  set_overrides_field (object, "overridesByRef", &self->override_by_ref);
-  set_overrides_field (object, "overridesByName", &self->override_by_name);
+  set_overrides_field (object, "overrideByRef", &self->override_by_ref);
+  set_overrides_field (object, "overrideByName", &self->override_by_name);
 
   if (json_object_has_member (object, "noref"))
     {
