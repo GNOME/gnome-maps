@@ -103,6 +103,12 @@ export const DEFS = {
             light: "#f2e3cb",
         },
     },
+    landuse: {
+        pitch: {
+            dark: "#334034",
+            light: "#adccb3",
+        },
+    },
     places: [
         {
             classes: ["continent"],

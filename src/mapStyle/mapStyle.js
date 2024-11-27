@@ -20,6 +20,7 @@ import { airportLayers, airportSymbols } from "./airports.js";
 import { boundaryLayers as boundaries } from "./boundaries.js";
 import { DEFS } from "./defs.js";
 import { landcover } from "./landcover.js";
+import { landuse } from './landuse.js';
 import { rail } from "./rail.js";
 import { highwayShield, junctionSymbol, roadSymbol, roads } from "./roads.js";
 import { MapStyleConfig } from "./utils.js";
@@ -85,6 +86,7 @@ export function generateMapStyle(options) {
                 },
             },
             landcover(config),
+            landuse(config),
             waterFill(config),
             waterLine(config),
             ...boundaries(config),
