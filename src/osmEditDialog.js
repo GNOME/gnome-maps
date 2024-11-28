@@ -232,6 +232,7 @@ const OSM_FIELDS = [
                           ['jewish', _("Judaism")],
                           ['muslim', _("Islam")],
                           ['multifaith', _("Multiple Religions")],
+                          ['none', _("None")],
                           ['pagan', _("Paganism")],
                           ['pastafarian', _("Pastafarianism")],
                           ['scientologist', _("Scientology")],
