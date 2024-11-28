@@ -560,6 +560,22 @@ export const DEFS = {
             },
             size: 2,
         },
+        {
+            classes: ["busway"],
+            color: {
+                dark: "#2b151b",
+                light: "#e1aab1",
+            },
+            size: 1,
+        },
+        {
+            classes: ["bus_guideway"],
+            color: {
+                dark: "#2b151b",
+                light: "#e1aab1",
+            },
+            size: 1.25,
+        },
     ],
     paths: {
         color: {
