@@ -570,8 +570,10 @@ export class PlaceView extends Gtk.Box {
         }
 
         if (place.religion) {
-            content.push({ label: _("Religion:"),
-                           info: Translations.translateReligion(place.religion) });
+            const religion = Translations.translateReligion(place.religion);
+
+            if (religion)
+                content.push({ label: _("Religion:"), info: religion });
         }
 
         return content;
