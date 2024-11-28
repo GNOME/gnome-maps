@@ -48,15 +48,15 @@ export class TransitOptionsPanel extends Gtk.Grid {
         /* reset to indicate departure now and forget any previous manually
          * set time and date
          */
-        this._transitTimeOptionsComboBox.active_id = 'leaveNow';
+        this._transitTimeOptionsDropDown.selected = 0;
         this._timeSelected = false;
         this._dateSelected = false;
         this._lastOptions = new TransitOptions();
     }
 
     _initTransitOptions() {
-        this._transitTimeOptionsComboBox.connect('changed',
-            this._onTransitTimeOptionsComboboxChanged.bind(this));
+        this._transitTimeOptionsDropDown.connect('notify::selected',
+            this._onTransitTimeOptionsDropDownSelected.bind(this));
         this._transitTimeEntry.connect('activate',
             this._onTransitTimeEntryActivated.bind(this));
         this._eventControllerFocus = new Gtk.EventControllerFocus();
@@ -76,8 +76,8 @@ export class TransitOptionsPanel extends Gtk.Grid {
             this._onTransitParametersClosed.bind(this))
     }
 
-    _onTransitTimeOptionsComboboxChanged() {
-        if (this._transitTimeOptionsComboBox.active_id === 'leaveNow') {
+    _onTransitTimeOptionsDropDownSelected() {
+        if (this._transitTimeOptionsDropDown.selected === 0) {
             this._transitTimeEntry.visible = false;
             this._transitDateButton.visible = false;
             this._query.arriveBy = false;
@@ -97,7 +97,7 @@ export class TransitOptionsPanel extends Gtk.Grid {
             if (!this._dateSelected)
                 this._updateTransitDateButton(GLib.DateTime.new_now_local());
 
-            if (this._transitTimeOptionsComboBox.active_id === 'arriveBy') {
+            if (this._transitTimeOptionsDropDown.selected === 2) {
                 this._query.arriveBy = true;
             } else {
                 this._query.arriveBy = false;
@@ -200,7 +200,7 @@ export class TransitOptionsPanel extends Gtk.Grid {
 
  GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/transit-options-panel.ui',
-    InternalChildren: ['transitTimeOptionsComboBox',
+    InternalChildren: ['transitTimeOptionsDropDown',
                        'transitTimeEntry',
                        'transitDateButton',
                        'transitDateCalendar',

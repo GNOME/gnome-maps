@@ -6,17 +6,20 @@
       <class name="shaded"/>
     </style>
     <child>
-      <object class="GtkComboBoxText" id="transitTimeOptionsComboBox">
-        <property name="active_id">leaveNow</property>
+      <object class="GtkDropDown" id="transitTimeOptionsDropDown">
         <property name="margin_start">6</property>
         <property name="margin_end">6</property>
         <property name="margin_top">6</property>
         <property name="margin_bottom">6</property>
-        <items>
-          <item translatable="yes" id="leaveNow" comments="Indicates searching for the next available itineraries">Leave Now</item>
-          <item translatable="yes" id="leaveBy" comments="Indicates searching for itineraries leaving at the specified time at the earliest">Leave By</item>
-          <item translatable="yes" id="arriveBy" comments="Indicates searching for itineraries arriving no later than the specified time">Arrive By</item>
-        </items>
+        <property name="model">
+          <object class="GtkStringList">
+            <items>
+              <item translatable="yes" comments="Indicates searching for the next available itineraries">Leave Now</item>
+              <item translatable="yes" comments="Indicates searching for itineraries leaving at the specified time at the earliest">Leave By</item>
+              <item translatable="yes" comments="Indicates searching for itineraries arriving no later than the specified time">Arrive By</item>
+            </items>
+          </object>
+        </property>
         <layout>
           <property name="column">0</property>
           <property name="row">0</property>
@@ -25,6 +28,7 @@
     </child>
     <child>
       <object class="GtkEntry" id="transitTimeEntry">
+        <property name="visible">False</property>
         <property name="max-width-chars">5</property>
         <property name="margin_start">6</property>
         <property name="margin_end">6</property>
@@ -38,6 +42,7 @@
     </child>
     <child>
       <object class="GtkMenuButton" id="transitDateButton">
+        <property name="visible">False</property>
         <property name="popover">transitDatePopover</property>
         <property name="margin_start">6</property>
         <property name="margin_end">6</property>
