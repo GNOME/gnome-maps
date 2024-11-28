@@ -294,6 +294,7 @@ export function translateReligion(string) {
     case 'jewish': return _("Judaism");
     case 'muslim': return _("Islam");
     case 'multifaith': return _("Multiple Religions");
+    case 'none': return _("None");
     case 'pagan': return _("Paganism");
     case 'pastafarian': return _("Pastafarianism");
     case 'scientologist': return _("Scientology");
