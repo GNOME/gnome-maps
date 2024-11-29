@@ -84,7 +84,9 @@ export class PlaceButtons extends Gtk.Box {
             let placeItem = placeStore.getPlaceItem(this._place);
 
             if (placeItem && placeItem.isFavorite) {
-                this._favoriteButton.icon_name = 'non-starred-symbolic';
+                this._favoriteButton.icon_name = 'unstarred-symbolic';
+                this._favoriteButton.remove_css_class('starred');
+                this._favoriteButton.add_css_class('unstarred');
                 placeItem.isFavorite = false;
             } else {
                 if (!placeItem) {
@@ -92,6 +94,8 @@ export class PlaceButtons extends Gtk.Box {
                 }
                 placeItem.isFavorite = true;
                 this._favoriteButton.icon_name = 'starred-symbolic';
+                this._favoriteButton.remove_css_class('unstarred')
+                this._favoriteButton.add_css_class('starred');
             }
         });
 
@@ -138,7 +142,7 @@ export class PlaceButtons extends Gtk.Box {
         this._favoriteButton.visible = visible;
 
         const place = Application.placeStore.getPlaceItem(this._place);
-        this._favoriteButton.icon_name = place?.isFavorite ? 'starred-symbolic' : 'non-starred-symbolic';
+        this._favoriteButton.icon_name = place?.isFavorite ? 'starred-symbolic' : 'unstarred-symbolic';
     }
 
     _onEditClicked() {
