@@ -150,3 +150,20 @@ button.card.circular {
   padding-bottom: 0.24em;
 }
 
+@keyframes rotate_star {
+  from { -gtk-icon-transform: rotate(-72deg); }
+  to {}
+}
+
+@keyframes rotate_unstar {
+  from { -gtk-icon-transform: rotate(72deg); }
+  to {}
+}
+
+.favorite.starred image {
+  animation: rotate_star 0.4s ease;
+}
+
+.favorite.unstarred image {
+  animation: rotate_unstar 0.4s ease;
+}
