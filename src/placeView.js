@@ -185,11 +185,10 @@ export class PlaceView extends Gtk.Box {
     }
 
     get loading() {
-        return this._spinner.spinning;
+        return this._mainStack.get_visible_child() === this._spinner;
     }
     set loading(val) {
         this._mainStack.set_visible_child(val ? this._spinner : this._mainBox);
-        this._spinner.spinning = val;
     }
 
     updatePlaceDetails() {
