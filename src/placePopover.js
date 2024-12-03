@@ -228,7 +228,6 @@ export class PlacePopover extends SearchPopover {
     }
 
     showSpinner(transitionType = Gtk.StackTransitionType.CROSSFADE) {
-        this._spinner.start();
         this._stack.transition_type = transitionType;
         this._stack.visible_child = this._spinner;
 
@@ -244,9 +243,6 @@ export class PlacePopover extends SearchPopover {
     }
 
     showResult() {
-        if (this._spinner.spinning)
-            this._spinner.stop();
-
         this._stack.visible_child = this._scrolledWindow;
 
         let row = this.list.get_row_at_index(0);
@@ -258,17 +254,11 @@ export class PlacePopover extends SearchPopover {
     }
 
     showNoResult() {
-        if (this._spinner.spinning)
-            this._spinner.stop();
-
         this._stack.visible_child = this._noResultsLabel;
         this._numResults = 0;
     }
 
     showError() {
-        if (this._spinner.spinning)
-            this._spinner.stop();
-
         this._stack.visible_child = this._errorLabel;
         this._numResults = 0;
     }
