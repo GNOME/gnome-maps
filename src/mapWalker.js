@@ -32,6 +32,9 @@ const _MAX_DISTANCE = 19850; // half of Earth's circumference (km)
 const _MIN_ANIMATION_DURATION = 2000; // msec
 const _MAX_ANIMATION_DURATION = 5000; // msec
 
+// default zoom level when no place-specific zoom level is defined for a place
+const DEFAULT_ZOOM_LEVEL = 18;
+
 export class MapWalker extends GObject.Object {
 
     constructor(place, mapView) {
@@ -60,7 +63,7 @@ export class MapWalker extends GObject.Object {
             zoom = this.place.initialZoom;
         } else {
             zoom = PlaceZoom.getZoomLevelForPlace(this.place) ??
-                   this._viewport.max_zoom_level;
+                   Math.min(DEFAULT_ZOOM_LEVEL, this._viewport.max_zoom_level);
 
             /* If the place has a bounding box, use the lower of the default
              * zoom level based on the place's type and the zoom level needed
