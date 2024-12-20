@@ -90,12 +90,17 @@ export class RouteEntry extends Gtk.Grid {
     }
 
     _createEntry() {
-        let entry = new PlaceEntry({ visible: true,
-                                     can_focus: true,
-                                     hexpand: true,
-                                     receives_default: true,
-                                     mapView: this._mapView,
-                                     maxChars: 15 });
+        const controllerKey = new Gtk.EventControllerKey();
+        const entry = new PlaceEntry({ can_focus: true,
+                                       hexpand: true,
+                                       receives_default: true,
+                                       mapView: this._mapView,
+                                       maxChars: 15 });
+
+        controllerKey.connect('key-pressed', (controller, kv, kc) =>
+                                             this._onKeyPressed(entry, kv));
+        entry.add_controller(controllerKey);
+
         if (this._point) {
             entry.bind_property('place',
                                 this._point, 'place',
@@ -103,6 +108,23 @@ export class RouteEntry extends Gtk.Grid {
         }
 
         return entry;
+    }
+
+    _onKeyPressed(entry, keyval) {
+        /* Hide the sidebar when escape is pressed, unless the search result
+         * popover is already shown. In that case let the default keyhandler
+         * of the entry handle the event.
+         */
+        if (!entry.popover.visible && keyval === Gdk.KEY_Escape) {
+            const action =
+                Application.application.mainWindow.lookup_action('toggle-sidebar');
+
+            action.activate(null);
+
+            return true;
+        }
+
+        return false;
     }
 }
 
