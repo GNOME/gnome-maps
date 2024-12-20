@@ -90,12 +90,22 @@ export class RouteEntry extends Gtk.Grid {
     }
 
     _createEntry() {
-        let entry = new PlaceEntry({ visible: true,
+        const shortcut =
+            new Gtk.Shortcut({
+                trigger: Gtk.ShortcutTrigger.parse_string('Escape'),
+                action:  Gtk.ShortcutAction.parse_string('action(win.toggle-sidebar)')
+            });
+        const shortcutController = new Gtk.ShortcutController();
+        const entry = new PlaceEntry({ visible: true,
                                      can_focus: true,
                                      hexpand: true,
                                      receives_default: true,
                                      mapView: this._mapView,
                                      maxChars: 15 });
+
+        shortcutController.add_shortcut(shortcut);
+        entry.add_controller(shortcutController);
+
         if (this._point) {
             entry.bind_property('place',
                                 this._point, 'place',
