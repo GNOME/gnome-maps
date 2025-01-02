@@ -20,12 +20,19 @@
  */
 
 import Cairo from 'cairo';
+
+import Adw from 'gi://Adw';
+import Gdk from 'gi://Gdk';
 import GObject from 'gi://GObject';
 import Graphene from 'gi://Graphene';
+import Gsk from 'gi://Gsk';
 import Shumate from 'gi://Shumate';
 
-import {IconMarker} from './iconMarker.js';
 import {MapMarker} from './mapMarker.js';
+
+const LOCATION_MARKER_SIZE = 32;
+const LOCATION_MARKER_MARGIN = 4;
+const WHITE = new Gdk.RGBA({ red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0} );
 
 export class AccuracyCircleMarker extends Shumate.Marker {
 
@@ -82,7 +89,7 @@ export class AccuracyCircleMarker extends Shumate.Marker {
 
 GObject.registerClass(AccuracyCircleMarker);
 
-export class UserLocationMarker extends IconMarker {
+export class UserLocationMarker extends MapMarker {
 
     constructor(params) {
         super(params);
@@ -97,12 +104,28 @@ export class UserLocationMarker extends IconMarker {
         this._accuracyMarker.refreshGeometry(this._mapView);
 
         this.place.connect('notify::location', () => this._updateLocation());
-        this._image.pixel_size = 24;
-        this._updateLocation();
 
         this.connect('notify::visible', this._updateAccuracyCircle.bind(this));
         this._mapView.map.viewport.connect('notify::rotation',
                                            () => this._updateLocation());
+        this._styleManager = Adw.StyleManager.get_default();
+        this.set_size_request(LOCATION_MARKER_SIZE, LOCATION_MARKER_SIZE);
+        this._pathBuilder = new Gsk.PathBuilder();
+    }
+
+    vfunc_map() {
+        this._accentId = this._styleManager.connect('notify::accent-color-rgba', () => {
+            this.queue_draw();
+        });
+        this.queue_draw();
+
+        super.vfunc_map();
+    }
+
+    vfunc_unmap() {
+        this._styleManager.disconnect(this._accentId);
+
+        super.vfunc_unmap();
     }
 
     _hasBubble() {
@@ -114,17 +137,6 @@ export class UserLocationMarker extends IconMarker {
         layer.add_marker(this);
     }
 
-    _updateLocation() {
-        if (this.place.location.heading > -1) {
-            this._image.icon_name = 'user-location-compass'
-            this.queue_draw();
-        } else {
-            this._image.icon_name = 'user-location';
-        }
-
-        this._updateAccuracyCircle();
-    }
-
     _updateAccuracyCircle() {
         if (this.visible && this.place.location.accuracy > 0) {
             this._accuracyMarker.refreshGeometry(this._mapView);
@@ -134,26 +146,19 @@ export class UserLocationMarker extends IconMarker {
     }
 
     vfunc_snapshot(snapshot) {
-        snapshot.save();
+        const accentColor = this._styleManager.accent_color_rgba;
+        const center = new Graphene.Point();
 
-        if (this.place.location.heading > -1) {
-            // rotate around the center of the icon
-            let width = this.get_width();
-            let height = this.get_height();
-            let point = new Graphene.Point();
-            let rotation = this.place.location.heading +
-                           this._mapView.map.viewport.rotation * 180 / Math.PI;
+        center.init(LOCATION_MARKER_SIZE / 2, LOCATION_MARKER_SIZE / 2);
+        this._pathBuilder.add_circle(center, LOCATION_MARKER_SIZE / 2);
+        snapshot.append_fill(this._pathBuilder.to_path(),
+                             Gsk.FILL_RULE_EVEN_ODD, WHITE);
+        this._pathBuilder.add_circle(center, LOCATION_MARKER_SIZE / 2 -
+                                             LOCATION_MARKER_MARGIN);
+        snapshot.append_fill(this._pathBuilder.to_path(),
+                             Gsk.FILL_RULE_EVEN_ODD, accentColor);
 
-            point.init(width / 2, height / 2);
-            snapshot.translate(point);
-            snapshot.rotate(rotation);
-            point.init(-width / 2, -height / 2);
-            snapshot.translate(point);
-        }
-
-        this.snapshot_child(this._image, snapshot);
         super.vfunc_snapshot(snapshot);
-        snapshot.restore();
     }
 }
 
