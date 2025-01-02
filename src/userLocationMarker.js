@@ -24,6 +24,7 @@ import GObject from 'gi://GObject';
 import Graphene from 'gi://Graphene';
 import Shumate from 'gi://Shumate';
 
+import {IconMarker} from './iconMarker.js';
 import {MapMarker} from './mapMarker.js';
 
 export class AccuracyCircleMarker extends Shumate.Marker {
@@ -81,7 +82,7 @@ export class AccuracyCircleMarker extends Shumate.Marker {
 
 GObject.registerClass(AccuracyCircleMarker);
 
-export class UserLocationMarker extends MapMarker {
+export class UserLocationMarker extends IconMarker {
 
     constructor(params) {
         super(params);

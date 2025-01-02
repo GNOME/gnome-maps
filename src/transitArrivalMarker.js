@@ -24,12 +24,12 @@ import Gdk from 'gi://Gdk';
 import GObject from 'gi://GObject';
 
 import * as Color from './color.js';
+import {IconMarker} from './iconMarker.js';
 import {Location} from './location.js';
-import {MapMarker} from './mapMarker.js';
 import {Place} from './place.js';
 import * as TransitPlan from './transitPlan.js';
 
-export class TransitArrivalMarker extends MapMarker {
+export class TransitArrivalMarker extends IconMarker {
 
     constructor({leg, ...params}) {
         const lastPoint = leg.polyline[leg.polyline.length - 1];

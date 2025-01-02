@@ -24,12 +24,12 @@ import Gdk from 'gi://Gdk';
 import GObject from 'gi://GObject';
 
 import * as Color from './color.js';
+import {IconMarker} from './iconMarker.js';
 import {Location} from './location.js';
-import {MapMarker} from './mapMarker.js';
 import {Place} from './place.js';
 import * as TransitPlan from './transitPlan.js';
 
-export class TransitWalkMarker extends MapMarker {
+export class TransitWalkMarker extends IconMarker {
 
     constructor({leg, previousLeg, ...params}) {
         /* if there is a preceding leg, put the marker at the end of that leg

@@ -22,9 +22,9 @@
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
-import {MapMarker} from './mapMarker.js';
+import {IconMarker} from './iconMarker.js';
 
-export class PlaceMarker extends MapMarker {
+export class PlaceMarker extends IconMarker {
 
     constructor(params) {
         super(params);

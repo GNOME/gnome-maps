@@ -24,12 +24,12 @@ import GObject from 'gi://GObject';
 
 import {Application} from './application.js';
 import * as Color from './color.js';
+import {IconMarker} from './iconMarker.js';
 import {Location} from './location.js';
-import {MapMarker} from './mapMarker.js';
 import {Place} from './place.js';
 import * as Utils from './utils.js';
 
-export class TurnPointMarker extends MapMarker {
+export class TurnPointMarker extends IconMarker {
 
     constructor({queryPoint, turnPoint, transitStop, transitLeg, ...params}) {
         let latitude;
