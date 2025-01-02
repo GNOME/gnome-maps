@@ -23,7 +23,6 @@ import Cairo from 'cairo';
 import Gdk from 'gi://Gdk';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
-import Graphene from 'gi://Graphene';
 import Gtk from 'gi://Gtk';
 import Shumate from 'gi://Shumate';
 
@@ -44,9 +43,6 @@ export class MapMarker extends Shumate.Marker {
 
         this._place = place;
         this._mapView = mapView;
-
-        this._image = new Gtk.Image({ icon_size: Gtk.IconSize.NORMAL });
-        this.child = this._image;
 
         if (this._mapView) {
             this._viewport = this._mapView.map.viewport;
@@ -292,29 +288,6 @@ export class MapMarker extends Shumate.Marker {
             this.showBubble();
         } else {
             this.hideBubble();
-        }
-    }
-
-    _paintableFromIconName(name, size, color) {
-        let display = Gdk.Display.get_default();
-        let theme = Gtk.IconTheme.get_for_display(display);
-        let iconPaintable = theme.lookup_icon(name, null, size,
-                                              this.scale_factor,
-                                              Gtk.TextDirection.NONE, 0);
-
-        if (color) {
-            let snapshot = Gtk.Snapshot.new();
-            let rect = new Graphene.Rect();
-
-            iconPaintable.snapshot_symbolic(snapshot, size, size, [color]);
-            rect.init(0, 0, size, size);
-
-            let node = snapshot.to_node();
-            let renderer = this._mapView.get_native().get_renderer();
-
-            return renderer.render_texture(node, rect);
-        } else {
-            return iconPaintable;
         }
     }
 }

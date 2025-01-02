@@ -26,8 +26,8 @@ import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
 import * as Color from './color.js';
+import {IconMarker} from './iconMarker.js';
 import {Location} from './location.js';
-import {MapMarker} from './mapMarker.js';
 import {Place} from './place.js';
 import * as TransitPlan from './transitPlan.js';
 import * as Utils from './utils.js';
@@ -41,7 +41,7 @@ const MARKER_SIZE = 20;
 const OUTLINE_LUMINANCE_THREASHHOLD = 0.6;
 const DARK_OUTLINE_LUMINANCE_THREASHHOLD = 0.2;
 
-export class TransitBoardMarker extends MapMarker {
+export class TransitBoardMarker extends IconMarker {
 
     constructor({leg, ...params}) {
         const firstPoint = leg.polyline[0];
