@@ -1,3 +1,6 @@
+variables:
+  TARBALL_ARTIFACT_PATH: ".flatpak-builder/build/gnome-maps/_flatpak_build/meson-dist/${CI_PROJECT_NAME}-${CI_COMMIT_TAG}.tar.xz"
+
 include:
   - project: 'gnome/citemplates'
     file: 'flatpak/flatpak_ci_initiative.yml'
@@ -15,7 +18,6 @@ include:
         FLATPAK_MODULE: "gnome-maps"
         APP_ID: "org.gnome.Maps.Devel"
         BUNDLE: "gnome-maps-git.flatpak"
-        TARBALL_ARTIFACT_PATH: ".flatpak-builder/build/${FLATPAK_MODULE}/_flatpak_build/meson-dist/${CI_PROJECT_NAME}-${CI_COMMIT_TAG}.tar.xz"
 
 # Build Flatpak for x86_64
 flatpak@x86_64:
