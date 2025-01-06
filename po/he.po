@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps 3.9.91\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2024-10-21 20:20+0000\n"
-"PO-Revision-Date: 2024-11-25 11:17+0200\n"
+"POT-Creation-Date: 2024-11-27 20:16+0000\n"
+"PO-Revision-Date: 2025-01-06 14:23+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? 2 : "
 "3);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -452,7 +452,7 @@ msgstr "עריכת מיקום"
 msgid "Edit an existing location in OpenStreetMap"
 msgstr "עריכת מיקום קיים ב־OpenStreetMap"
 
-#: data/ui/osm-edit-dialog.ui:86 src/mapView.js:642
+#: data/ui/osm-edit-dialog.ui:86 src/mapView.js:643
 #: src/transitplugins/openTripPlanner.js:1238
 #: src/transitplugins/openTripPlanner2.js:267
 msgid "Continue"
@@ -534,31 +534,31 @@ msgstr "הצגה"
 msgid "Remove Shape Layer"
 msgstr "למחוק שכבת צורות"
 
-#: data/ui/sidebar.ui:17
-msgid "Walking"
-msgstr "הליכה"
+#: data/ui/sidebar.ui:19
+msgid "Pedestrian"
+msgstr "הולך רגל"
 
-#: data/ui/sidebar.ui:30
-msgid "Cycling"
-msgstr "נסיעה באופניים"
+#: data/ui/sidebar.ui:26
+msgid "Bike"
+msgstr "אופנוע"
 
-#: data/ui/sidebar.ui:44
-msgid "Driving"
-msgstr "נהיגה"
+#: data/ui/sidebar.ui:33
+msgid "Car"
+msgstr "מכונית"
 
-#: data/ui/sidebar.ui:59
+#: data/ui/sidebar.ui:40
 msgid "Transit"
 msgstr "תחבורה"
 
-#: data/ui/sidebar.ui:211
+#: data/ui/sidebar.ui:180
 msgid "Route search by GraphHopper"
 msgstr "חיפוש מסלולים באמצעות GraphHopper"
 
-#: data/ui/sidebar.ui:244
+#: data/ui/sidebar.ui:213
 msgid "More Information"
 msgstr "מידע נוסף"
 
-#: data/ui/sidebar.ui:277
+#: data/ui/sidebar.ui:246
 msgid ""
 "Routing itineraries for public transit is provided by third-party\n"
 "services.\n"
@@ -578,7 +578,7 @@ msgstr ""
 "‫למשל ספק לאומי עשוי שלא לכלול קווי תעופה וספק מקומי יכול לפספס רכבות אזוריות.‬\n"
 "‫יש להתייחס לשמות ולמותגים כסימני מסחר רשומים בהתאם לצרכים."
 
-#: data/ui/sidebar.ui:301
+#: data/ui/sidebar.ui:270
 msgid "Back"
 msgstr "חזרה"
 
@@ -685,7 +685,7 @@ msgid "Zoom Out"
 msgstr "התרחקות"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1217
+#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1218
 msgid "Zoom In"
 msgstr "התקרבות"
 
@@ -847,38 +847,38 @@ msgstr "כל שכבות הקבצים"
 msgid "Open Shape Layers"
 msgstr "לפתוח שכבות צורות"
 
-#: src/mapView.js:617 src/mapView.js:679
+#: src/mapView.js:618 src/mapView.js:680
 msgid "Failed to open layer"
 msgstr "פתיחת שכבה נכשלה"
 
-#: src/mapView.js:634
+#: src/mapView.js:635
 msgid "Do you want to continue?"
 msgstr "להמשיך?"
 
-#: src/mapView.js:635
+#: src/mapView.js:636
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
 "time to load"
 msgstr "פעולה זו תפתח קבצים בגודל כולל של %s מ״ב. הטעינה עשויה לארוך זמן מה"
 
-#: src/mapView.js:641
+#: src/mapView.js:642
 msgid "Cancel"
 msgstr "ביטול"
 
-#: src/mapView.js:673
+#: src/mapView.js:674
 msgid "File type is not supported"
 msgstr "סוג הקובץ אינו נתמך"
 
-#: src/mapView.js:715
+#: src/mapView.js:716
 msgid "Failed to open GeoURI"
 msgstr "פתיחת GeoURI נכשלה"
 
-#: src/mapView.js:1216
+#: src/mapView.js:1217
 msgid "Zoom in to add location"
 msgstr "יש להתקרב כדי להוסיף מיקום"
 
-#: src/mapView.js:1234
+#: src/mapView.js:1235
 msgid "Location was added in OpenStreetMap"
 msgstr "המקום נוסף ב־OpenStreetMap"
 
@@ -1004,7 +1004,7 @@ msgstr "שונות"
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:194 src/osmEditDialog.js:796 src/placeView.js:764
+#: src/osmEditDialog.js:194 src/osmEditDialog.js:796 src/placeView.js:777
 msgid "Wikipedia"
 msgstr "ויקיפדיה"
 
@@ -1855,12 +1855,12 @@ msgid "failed to load file"
 msgstr "אירע כשל בטעינת הקובץ"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:323
+#: src/sidebar.js:338
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "זמן משוער: %s"
 
-#: src/sidebar.js:393
+#: src/sidebar.js:408
 #, javascript-format
 msgid "Itineraries provided by %s"
 msgstr "המסלולים סופקו על ידי %s"
@@ -2299,6 +2299,15 @@ msgstr "לפנות פניית פרסה ימינה אל %s"
 #: src/transitplugins/openTripPlanner2.js:326
 msgid "Make a right u-turn"
 msgstr "לפנות פניית פרסה ימינה"
+
+#~ msgid "Walking"
+#~ msgstr "הליכה"
+
+#~ msgid "Cycling"
+#~ msgstr "נסיעה באופניים"
+
+#~ msgid "Driving"
+#~ msgstr "נהיגה"
 
 #~ msgid "Postal code"
 #~ msgstr "מיקוד"
