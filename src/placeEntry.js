@@ -308,7 +308,7 @@ export class PlaceEntry extends Gtk.Entry {
                     geoUri,
                     zoom = this._mapView.map.viewport.zoom_level
                 ] = URIS.parseAsGeoURI(this.text);
-                location.set_from_uri(geoURI);
+                location.set_from_uri(geoUri);
                 this.place = new Place({ location: location,
                                          initialZoom: zoom });
             } catch(e) {
