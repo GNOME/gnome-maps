@@ -55,21 +55,14 @@ export class TurnPointMarker extends IconMarker {
             this._image.paintable =
                 this._paintableFromIconName(turnPoint.iconName, 16);
         } else {
-            const color =
-                transitLeg?.color ? this._getRGBA(transitLeg.color) : null;
+            const color = transitLeg?.color ?
+                          Color.parseColorAsRGBA(transitLeg.color) : null;
 
             this._image.paintable =
                 this._paintableFromIconName('maps-point-end-symbolic',
                                             16,
                                             color);
         }
-    }
-
-    _getRGBA(color) {
-        return new Gdk.RGBA({ red: Color.parseColor(color, 0),
-                              green: Color.parseColor(color, 1),
-                              blue: Color.parseColor(color, 2),
-                              alpha: 1.0 });
     }
 
     goTo() {
