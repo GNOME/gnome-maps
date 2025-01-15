@@ -83,7 +83,7 @@ export class TransitPathLayer extends Shumate.PathLayer {
                            luminance > OUTLINE_LUMINANCE_THREASHHOLD;
         const lineWidth = LINE_WIDTH + (hasOutline ? 2 : 0);
 
-        this.stroke_color = this._createRGBA(color);
+        this.stroke_color = Color.parseColorAsRGBA(color);
         this.stroke_width = lineWidth;
 
         if (!this._leg.transit)
@@ -92,17 +92,10 @@ export class TransitPathLayer extends Shumate.PathLayer {
 
         if (hasOutline) {
             this.outline_width = 1;
-            this.outline_color = this._createRGBA(outlineColor);
+            this.outline_color = Color.parseColorAsRGBA(outlineColor);
         } else {
             this.outline_width = 0;
         }
-    }
-
-     _createRGBA(color) {
-        return new Gdk.RGBA({ red:    Color.parseColor(color, 0),
-                              green:  Color.parseColor(color, 1),
-                              blue:   Color.parseColor(color, 2),
-                              alpha:  1.0 });
     }
 }
 
