@@ -72,14 +72,7 @@ export class TransitWalkMarker extends IconMarker {
         const bgColor = this._styleManager.dark ?
                         TransitPlan.DEFAULT_DARK_ROUTE_COLOR :
                         TransitPlan.DEFAULT_ROUTE_COLOR;
-        const bgRed = Color.parseColor(bgColor, 0);
-        const bgGreen = Color.parseColor(bgColor, 1);
-        const bgBlue = Color.parseColor(bgColor, 2);
-        const color = new Gdk.RGBA({ red: bgRed,
-                                     green: bgGreen,
-                                     blue: bgBlue,
-                                     alpha: 1.0
-                                    });
+        const color = Color.parseColorAsRGBA(bgColor);
 
         this._image.paintable =
             this._paintableFromIconName('maps-point-start-symbolic', 16, color);
