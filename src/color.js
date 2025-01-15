@@ -19,6 +19,8 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
+import Gdk from 'gi://Gdk';
+
 /* Minimum contrast ratio for foreground/background color for i.e. route labels */
 const MIN_CONTRAST_RATIO = 2.0;
 
@@ -34,6 +36,17 @@ export function parseColor(color, component, defaultValue) {
     } else {
         return defaultValue;
     }
+}
+
+/**
+ * Parse a hex-encoded color string as a Gdk.RGBA value.
+ * Optionally with a specified alpha channel, default to 1.0 (opaque).
+ */
+export function parseColorAsRGBA(color, alpha = 1.0) {
+    return new Gdk.RGBA({ red:   parseColor(color, 0),
+                          green: parseColor(color, 1),
+                          blue:  parseColor(color, 2),
+                          alpha: alpha });
 }
 
 /**
