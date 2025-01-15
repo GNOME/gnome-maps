@@ -280,22 +280,15 @@ export class MapView extends Gtk.Overlay {
         return map;
     }
 
-    _createRGBA(lineColor) {
-        return new Gdk.RGBA({ red:    Color.parseColor(lineColor, 0),
-                              green:  Color.parseColor(lineColor, 1),
-                              blue:   Color.parseColor(lineColor, 2),
-                              alpha:  1.0 });
-    }
-
     /* create and store a route layer */
     _createRouteLayer(lineColor, outlineColor, width, outlineWidth = 1) {
-        let strokeColor = this._createRGBA(lineColor);
+        let strokeColor = Color.parseColorAsRGBA(lineColor);
         let routeLayer = new Shumate.PathLayer({ viewport: this.map.viewport,
                                                  stroke_width: width,
                                                  stroke_color: strokeColor });
 
         if (outlineColor) {
-            let outlineStrokeColor = this._createRGBA(outlineColor);
+            let outlineStrokeColor = Color.parseColorAsRGBA(outlineColor);
 
             routeLayer.outline_color = outlineStrokeColor;
             routeLayer.outline_width = outlineWidth;
