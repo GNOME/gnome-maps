@@ -20,9 +20,9 @@
  */
 
 import Adw from 'gi://Adw';
-import Cairo from 'cairo';
-import Gdk from 'gi://Gdk';
 import GObject from 'gi://GObject';
+import Graphene from 'gi://Graphene';
+import Gsk from 'gi://Gsk';
 import Gtk from 'gi://Gtk';
 
 import * as Color from './color.js';
@@ -32,8 +32,9 @@ import {Place} from './place.js';
 import * as TransitPlan from './transitPlan.js';
 import * as Utils from './utils.js';
 
-const ICON_SIZE = 12;
-const MARKER_SIZE = 20;
+const ICON_SIZE = 16;
+const MARKER_SIZE = 32;
+const OUTLINE_WIDTH = 1;
 
 /* threashhold for route color luminance when we consider it more or less
  * as white, and draw an outline around the label, and vice versa for dark mode
@@ -53,6 +54,7 @@ export class TransitBoardMarker extends IconMarker {
         this._leg = leg;
         this._styleManager = Adw.StyleManager.get_default();
         this._image.pixel_size = MARKER_SIZE;
+        this._pathBuilder = new Gsk.PathBuilder();
     }
 
     vfunc_map() {
@@ -95,48 +97,40 @@ export class TransitBoardMarker extends IconMarker {
                 this._styleManager.dark ?
                 Color.relativeLuminance(bgColor) < DARK_OUTLINE_LUMINANCE_THREASHHOLD :
                 Color.relativeLuminance(bgColor) > OUTLINE_LUMINANCE_THREASHHOLD;
-            const bgRed = Color.parseColor(bgColor, 0);
-            const bgGreen = Color.parseColor(bgColor, 1);
-            const bgBlue = Color.parseColor(bgColor, 2);
-            const fgRed = Color.parseColor(fgColor, 0);
-            const fgGreen = Color.parseColor(fgColor, 1);
-            const fgBlue = Color.parseColor(fgColor, 2);
-            const fgRGBA = new Gdk.RGBA({ red: fgRed,
-                                          green: fgGreen,
-                                          blue: fgBlue,
-                                          alpha: 1.0
-                                         });
+            const fgRGBA = Color.parseColorAsRGBA(fgColor);
+            const bgRGBA = Color.parseColorAsRGBA(bgColor);
             const paintable = this._paintableFromIconName(this._leg.iconName,
                                                           ICON_SIZE, fgRGBA);
+            const snapshot = Gtk.Snapshot.new();
+            const rect = new Graphene.Rect();
+            const iconBounds = new Graphene.Rect();
+            const center = new Graphene.Point({ x: MARKER_SIZE / 2,
+                                                y: MARKER_SIZE / 2 });
 
-            const surface = new Cairo.ImageSurface(Cairo.Format.ARGB32,
-                                                   MARKER_SIZE, MARKER_SIZE);
-            const cr = new Cairo.Context(surface);
-            const pixbuf = Gdk.pixbuf_get_from_texture(paintable);
+            rect.init(0, 0, MARKER_SIZE, MARKER_SIZE);
+            iconBounds.init((MARKER_SIZE - ICON_SIZE) / 2,
+                            (MARKER_SIZE - ICON_SIZE) / 2,
+                            ICON_SIZE, ICON_SIZE);
 
-            cr.setOperator(Cairo.Operator.CLEAR);
-            cr.paint();
-            cr.setOperator(Cairo.Operator.OVER);
-
-            cr.setSourceRGB(bgRed, bgGreen, bgBlue);
-            cr.arc(MARKER_SIZE / 2, MARKER_SIZE / 2, MARKER_SIZE / 2,
-                   0, Math.PI * 2);
-            cr.fillPreserve();
-
-            Gdk.cairo_set_source_pixbuf(cr, pixbuf,
-                                        (MARKER_SIZE - pixbuf.get_width()) / 2,
-                                        (MARKER_SIZE - pixbuf.get_height()) / 2);
-            cr.paint();
+            this._pathBuilder.add_circle(center, MARKER_SIZE / 2);
+            snapshot.append_fill(this._pathBuilder.to_path(),
+                                 Gsk.FILL_RULE_EVEN_ODD,
+                                 bgRGBA);
 
             if (hasOutline) {
-                cr.setSourceRGB(fgRed, fgGreen, fgBlue);
-                cr.setLineWidth(1);
-                cr.stroke();
+                this._pathBuilder.add_circle(center, MARKER_SIZE / 2 -
+                                                     OUTLINE_WIDTH / 2);
+                snapshot.append_stroke(this._pathBuilder.to_path(),
+                                       new Gsk.Stroke(OUTLINE_WIDTH),
+                                       fgRGBA);
             }
 
-            return Gdk.Texture.new_for_pixbuf(
-                Gdk.pixbuf_get_from_surface(surface, 0, 0,
-                                            MARKER_SIZE, MARKER_SIZE));
+            snapshot.append_texture(paintable, iconBounds);
+
+            const node = snapshot.to_node();
+            const renderer = this._mapView.get_native().get_renderer();
+
+            return renderer.render_texture(node, rect);
         } catch (e) {
             Utils.debug('Failed to load image: %s'.format(e.message));
             return null;
