@@ -173,8 +173,10 @@ export class Motis2 {
             departureTimezoneOffset === arrivalTimezoneOffset ?
             departureTimezoneOffset * 1000 : null;
         const legs =
-            itinerary.legs.map(leg =>
-                               this._parseLeg(leg, startPlace, destinationPlace,
+            itinerary.legs.map((leg, index) =>
+                               this._parseLeg(leg, index === 0,
+                                              index === itinerary.legs.length - 1,
+                                              startPlace, destinationPlace,
                                               commonTimezoneOffset));
 
         return new Itinerary({
@@ -188,7 +190,8 @@ export class Motis2 {
         });
     }
 
-    _parseLeg(leg, startPlace, destinationPlace, commonTimezoneOffset) {
+    _parseLeg(leg, isFirst, isLast, startPlace, destinationPlace,
+              commonTimezoneOffset) {
         const isTransit = leg.mode !== 'WALK';
         const distance =
             leg.distance ?? (!isTransit ?
@@ -204,8 +207,8 @@ export class Motis2 {
             commonTimezoneOffset ??
             this._getTimezoneOffset(arrival, this._getTimezone(leg.to.lat,
                                                                leg.to.lon));
-        const from = leg.from.name === 'START' ? startPlace.name : leg.from.name;
-        const to = leg.to.name === 'END' ? destinationPlace.name : leg.to.name;
+        const from = isFirst && !isTransit ? startPlace.name : leg.from.name;
+        const to = isLast && !isTransit ? destinationPlace.name : leg.to.name;
 
         const polyline =
             leg?.legGeometry?.points ?
