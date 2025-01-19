@@ -20,16 +20,14 @@
  */
 
 import Adw from 'gi://Adw';
-import Cairo from 'cairo';
-import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Graphene from 'gi://Graphene';
+import Gsk from 'gi://Gsk';
 import Gtk from 'gi://Gtk';
+import Pango from 'gi://Pango';
 
 import * as Color from './color.js';
-import * as Gfx from './gfx.js';
 import * as TransitPlan from './transitPlan.js';
-import * as Utils from './utils.js';
 
 /* threashhold for route color luminance when we consider it more or less
  * as white, and draw an outline around the label
@@ -44,7 +42,16 @@ const DARK_OUTLINE_LUMINANCE_THREASHHOLD = 0.1;
 const HIGH_CONTRAST_COLOR = '000000';
 const HIGH_CONTRAST_TEXT_COLOR = 'ffffff';
 
-export class TransitRouteLabel extends Gtk.Label {
+const MARGIN = 3;
+const CORNER_RADIUS = 3;
+const OUTLINE_WIDTH = 1;
+
+const MAX_WIDTH = 256;
+const MAX_WIDTH_COMPACT = 64;
+
+const FONT_SIZE = 13;
+
+export class TransitRouteLabel extends Gtk.Widget {
 
     constructor({leg, compact, ...params}) {
         super(params);
@@ -53,18 +60,26 @@ export class TransitRouteLabel extends Gtk.Label {
         this._compact = compact;
         this._styleManager = Adw.StyleManager.get_default();
         this._settings = this.get_settings();
+        this._createLayout();
+        this._pathBuilder = new Gsk.PathBuilder();
+
+        const [textWidth, textHeight] = this._layout.get_pixel_size();
+
+        // make the label at least as wide the height
+        this.set_size_request(Math.max(textWidth, textHeight) + 2 * MARGIN,
+                              textHeight + 2 * MARGIN);
     }
 
     vfunc_map() {
         this._darkId = this._styleManager.connect('notify::dark', () => {
-            this._setLabel();
+            this.queue_draw();
         });
 
         this._themeId = this._settings.connect('notify::gtk_theme_name', () => {
-            this._setLabel();
+            this.queue_draw();
         });
 
-        this._setLabel();
+        this.queue_draw();
 
         super.vfunc_map();
     }
@@ -76,7 +91,31 @@ export class TransitRouteLabel extends Gtk.Label {
         super.vfunc_unmap();
     }
 
-    _setLabel() {
+    _createLayout() {
+        const fontDescription = Pango.FontDescription.from_string('sans');
+        const label = this._compact && this._leg.route.length > 6 ?
+                      this._leg.compactRoute : this._leg.route;
+
+        fontDescription.set_absolute_size(FONT_SIZE * Pango.SCALE);
+        fontDescription.set_weight(Pango.Weight.MEDIUM);
+
+        this._layout = Pango.Layout.new(this.get_pango_context());
+        this._layout.set_text(label, -1);
+        this._layout.set_width(Pango.units_from_double(this._compact ?
+                                                       MAX_WIDTH_COMPACT :
+                                                       MAX_WIDTH));
+        this._layout.set_ellipsize(Pango.EllipsizeMode.END);
+        this._layout.set_font_description(fontDescription);
+        this._layout.set_auto_dir(false);
+    }
+
+    vfunc_snapshot(snapshot) {
+        const width = this.get_width();
+        const height = this.get_height();
+        const bounds = new Graphene.Rect();
+
+        bounds.init(0, 0, width, height);
+
         const usingDarkTheme = this._styleManager.dark;
         let color = this._leg.color ?? (usingDarkTheme ?
                                         TransitPlan.DEFAULT_DARK_ROUTE_COLOR :
@@ -85,7 +124,6 @@ export class TransitRouteLabel extends Gtk.Label {
             this._leg.textColor ?? (usingDarkTheme ?
                              TransitPlan.DEFAULT_DARK_ROUTE_TEXT_COLOR :
                              TransitPlan.DEFAULT_ROUTE_TEXT_COLOR);
-        let label = this._leg.route;
 
         const usingHighContrastTheme =
             this._settings.gtk_theme_name === 'HighContrast' ||
@@ -98,64 +136,42 @@ export class TransitRouteLabel extends Gtk.Label {
          * more relevant and keep it also for high contrast
          */
         if (usingHighContrastTheme && ((this._compact && this._leg.compactRoute) ||
-                                       (!this._compact && label))) {
+                                       (!this._compact && this._leg.route))) {
             color = usingDarkTheme ? HIGH_CONTRAST_TEXT_COLOR : HIGH_CONTRAST_COLOR;
             textColor = usingDarkTheme ? HIGH_CONTRAST_COLOR : HIGH_CONTRAST_TEXT_COLOR;
         }
 
-        this._color = color;
-        this._textColor = textColor;
-
-        if ((!usingDarkTheme &&
+        const hasOutline =
+            (!usingDarkTheme &&
              Color.relativeLuminance(color) > OUTLINE_LUMINANCE_THREASHHOLD) ||
             (usingDarkTheme &&
-             Color.relativeLuminance(color) < DARK_OUTLINE_LUMINANCE_THREASHHOLD)) {
-            this._hasOutline = true;
+             Color.relativeLuminance(color) < DARK_OUTLINE_LUMINANCE_THREASHHOLD);
+
+        const roundRect = new Gsk.RoundedRect();
+
+        roundRect.init_from_rect(bounds, CORNER_RADIUS);
+        this._pathBuilder.add_rounded_rect(roundRect);
+        snapshot.append_fill(this._pathBuilder.to_path(), Gsk.FILL_RULE_EVEN_ODD,
+                             Color.parseColorAsRGBA(color));
+
+        if (hasOutline) {
+            roundRect.shrink(OUTLINE_WIDTH / 2, OUTLINE_WIDTH / 2,
+                             OUTLINE_WIDTH / 2, OUTLINE_WIDTH / 2);
+            this._pathBuilder.add_rounded_rect(roundRect);
+            snapshot.append_stroke(this._pathBuilder.to_path(),
+                                   new Gsk.Stroke(OUTLINE_WIDTH),
+                                   Color.parseColorAsRGBA(textColor));
         }
 
-        /* for compact (overview) mode, try to shorten the label if the route
-         * name was more than 6 characters
-         */
-        if (this._compact && label.length > 6)
-            label = this._leg.compactRoute;
+        const [textWidth, textHeight] = this._layout.get_pixel_size();
+        const textOrigin = new Graphene.Point({ x: (width - textWidth) / 2,
+                                                y: (height - textHeight) / 2 });
 
-        if (this._compact) {
-            /* restrict number of characters shown in the label when compact mode
-             * is requested
-             */
-            this.max_width_chars = 6;
-        } else if (this._leg && !this._leg.headsign) {
-            // if there is no trip headsign to display, allow more space
-            this.max_width_chars = 25;
-        }
+        snapshot.translate(textOrigin);
+        snapshot.append_layout(this._layout, Color.parseColorAsRGBA(textColor));
 
-        this.label = '<span foreground="#%s">%s</span>'.format(
-                                        textColor,
-                                        GLib.markup_escape_text(label, -1));
-
-        this.queue_draw();
-    }
-
-    /* I didn't find any easy/obvious way to override widget background color
-     * and getting rounded corner just using CSS styles, so doing a custom
-     * Cairo drawing of a "roundrect"
-     */
-    vfunc_snapshot(snapshot) {
-        let {x, y, width, height} = this.get_allocation();
-        let rect = new Graphene.Rect();
-
-        rect.init(0, 0, width, height);
-
-        let cr = snapshot.append_cairo(rect);
-
-        // clip off the badge, this seems to avoid some extra space at right/bottom with the CSS
-        Gfx.drawColoredBagde(cr, this._color,
-                             this._hasOutline ? this._textColor : null,
-                             0, 0, width - 3, height - 3);
         super.vfunc_snapshot(snapshot);
     }
 }
 
-GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/transit-route-label.ui',
-}, TransitRouteLabel);
+GObject.registerClass(TransitRouteLabel);
