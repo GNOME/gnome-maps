@@ -53,7 +53,7 @@ export class TransitItineraryRow extends Gtk.ListBoxRow {
          * the constant 26 here was empiracally tested out...
          */
         let estimatedSpace = this._calculateEstimatedSpace();
-        let useContractedLabels = estimatedSpace > 26;
+        let useContractedLabels = estimatedSpace > 32;
 
         if (length > MAX_LEGS_SHOWN) {
             /* ellipsize list with horizontal dots to avoid overflowing and
@@ -106,7 +106,7 @@ export class TransitItineraryRow extends Gtk.ListBoxRow {
         /* assume mode icons and the separators consume about twice the space of
          * characters
          */
-        let space = 4 * length - 2;
+        let space = 5 * length - 2;
 
         this._itinerary.legs.forEach(function(leg) {
             if (leg.transit)
@@ -127,7 +127,7 @@ export class TransitItineraryRow extends Gtk.ListBoxRow {
             return icon;
         } else {
             /* for transit legs put besides a short route label */
-            let grid = new Gtk.Grid({ visible: true, column_spacing: 2 });
+            let grid = new Gtk.Grid({ visible: true, column_spacing: 6 });
 
             grid.attach(icon, 0, 0, 1, 1);
             grid.attach(new TransitRouteLabel({ leg: leg,
