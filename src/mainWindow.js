@@ -589,7 +589,7 @@ export class MainWindow extends Adw.ApplicationWindow {
             /* Translators: This is the program name. */
             application_name: _("Maps"),
             application_icon: pkg.name,
-            copyright: _("Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"),
+            copyright: _("Copyright © 2011 – 2025 Red Hat, Inc. and The GNOME Maps authors"),
             license_type: Gtk.License.GPL_2_0,
             version: pkg.version,
             website: 'https://apps.gnome.org/Maps/',
