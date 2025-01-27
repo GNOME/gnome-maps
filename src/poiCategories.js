@@ -294,6 +294,12 @@ const POI_CATEGORIES = [
                 label:               _("Flowers"),
                 keyValues:           [['shop=florist']],
                 initialSearchRadius: 3000
+             },
+             {
+                label:               _("Gifts"),
+                icon:                'package-x-generic-symbolic',
+                keyValues:           [['shop=gift']],
+                initialSearchRadius: 3000
              }
         ]
     },
