@@ -19,17 +19,11 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-import Adw from 'gi://Adw';
-import Gdk from 'gi://Gdk';
 import GObject from 'gi://GObject';
 
-import * as Color from './color.js';
-import {IconMarker} from './iconMarker.js';
-import {Location} from './location.js';
-import {Place} from './place.js';
-import * as TransitPlan from './transitPlan.js';
+import {CircleIconMarker} from './circleIconMarker.js';
 
-export class TransitWalkMarker extends IconMarker {
+export class TransitWalkMarker extends CircleIconMarker {
 
     constructor({leg, previousLeg, ...params}) {
         /* if there is a preceding leg, put the marker at the end of that leg
@@ -43,39 +37,10 @@ export class TransitWalkMarker extends IconMarker {
         else
             point = leg.polyline[0];
 
-        let bgColor = leg.color ? leg.color : TransitPlan.DEFAULT_ROUTE_COLOR;
-
-        let location = new Location({ latitude: point.latitude,
-                                      longitude: point.longitude });
-
-        super({...params, place: new Place({ location: location })});
-
-        this._styleManager = Adw.StyleManager.get_default();
-    }
-
-    vfunc_map() {
-        this._darkId = this._styleManager.connect('notify::dark', () => {
-            this._setPaintable();
-        });
-        this._setPaintable();
-
-        super.vfunc_map();
-    }
-
-    vfunc_unmap() {
-        this._styleManager.disconnect(this._darkId);
-
-        super.vfunc_unmap();
-    }
-
-    _setPaintable() {
-        const bgColor = this._styleManager.dark ?
-                        TransitPlan.DEFAULT_DARK_ROUTE_COLOR :
-                        TransitPlan.DEFAULT_ROUTE_COLOR;
-        const color = Color.parseColorAsRGBA(bgColor);
-
-        this._image.paintable =
-            this._paintableFromIconName('maps-point-start-symbolic', 16, color);
+        super({ latitude:  point.latitude,
+                longitude: point.longitude,
+                iconName:  'walking-symbolic',
+                ...params });
     }
 }
 
