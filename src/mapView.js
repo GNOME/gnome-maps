@@ -32,6 +32,7 @@ import GnomeMaps from 'gi://GnomeMaps';
 
 import {Application} from './application.js';
 import {BoundingBox} from './boundingBox.js';
+import {CircleIconMarker} from './circleIconMarker.js';
 import * as Color from './color.js';
 import * as Geoclue from './geoclue.js';
 import * as GeocodeFactory from './geocode.js';
@@ -54,6 +55,7 @@ import {TransitArrivalMarker} from './transitArrivalMarker.js';
 import {TransitBoardMarker} from './transitBoardMarker.js';
 import {TransitPathLayer} from './transitPathLayer.js';
 import {TransitWalkMarker} from './transitWalkMarker.js';
+import {TurnPoint} from './route.js';
 import {TurnPointMarker} from './turnPointMarker.js';
 import {UserLocationMarker} from './userLocationMarker.js';
 import * as Utils from './utils.js';
@@ -987,13 +989,44 @@ export class MapView extends Gtk.Overlay {
         route.turnPoints.forEach((turnPoint) => {
             if (turnPoint.isStop()) {
                 let queryPoint = query.filledPoints[pointIndex];
-                let destinationMarker = new TurnPointMarker({ turnPoint: turnPoint,
-                                                              queryPoint: queryPoint,
-                                                              mapView: this });
+                let destinationMarker =
+                    this._createDestinationMarker(turnPoint, queryPoint, query);
                 this._instructionMarkerLayer.add_marker(destinationMarker);
                 pointIndex++;
             }
         }, this);
+    }
+
+    _createDestinationMarker(turnPoint, queryPoint, query) {
+        if (turnPoint.type === TurnPoint.Type.START) {
+            return new CircleIconMarker({ latitude:  turnPoint.coordinate.get_latitude(),
+                                          longitude: turnPoint.coordinate.get_longitude(),
+                                          iconName:  this._getTransportIconName(query.transportation),
+                                          mapView:   this });
+        } else if (turnPoint.type === TurnPoint.Type.END) {
+            return new CircleIconMarker({ latitude:  turnPoint.coordinate.get_latitude(),
+                                          longitude: turnPoint.coordinate.get_longitude(),
+                                          iconName:  'maps-point-end-symbolic',
+                                          markerSize: 16,
+                                          mapView:   this });
+        } else {
+            new TurnPointMarker({ turnPoint: turnPoint,
+                                  queryPoint: queryPoint,
+                                  mapView: this });
+        }
+    }
+
+    _getTransportIconName(transportation) {
+        switch (transportation) {
+            case RouteQuery.Transportation.PEDESTRIAN:
+                return 'walking-symbolic';
+            case RouteQuery.Transportation.BIKE:
+                return 'cycling-symbolic';
+            case RouteQuery.Transportation.CAR:
+                return 'driving-symbolic';
+            default:
+                return 'maps-point-start-symbolic';
+        }
     }
 
     _showTransitItinerary(itinerary) {
