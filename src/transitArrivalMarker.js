@@ -19,53 +19,22 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
-import Adw from 'gi://Adw';
-import Gdk from 'gi://Gdk';
 import GObject from 'gi://GObject';
 
-import * as Color from './color.js';
-import {IconMarker} from './iconMarker.js';
-import {Location} from './location.js';
-import {Place} from './place.js';
-import * as TransitPlan from './transitPlan.js';
+import {CircleIconMarker} from './circleIconMarker.js';
 
-export class TransitArrivalMarker extends IconMarker {
+export class TransitArrivalMarker extends CircleIconMarker {
 
     constructor({leg, ...params}) {
         const lastPoint = leg.polyline[leg.polyline.length - 1];
-        const location = new Location({ latitude: lastPoint.latitude,
-                                      longitude: lastPoint.longitude });
 
-        super({...params, place: new Place({ location: location })});
-
-        this._leg = leg;
-        this._styleManager = Adw.StyleManager.get_default();
-    }
-
-    vfunc_map() {
-        this._darkId = this._styleManager.connect('notify::dark', () => {
-            this._setPaintable();
-        });
-        this._setPaintable();
-
-        super.vfunc_map();
-    }
-
-    vfunc_unmap() {
-        this._styleManager.disconnect(this._darkId);
-
-        super.vfunc_unmap();
-    }
-
-    _setPaintable(leg) {
-        const bgColor = this._leg.color ??
-                        this._styleManager.dark ?
-                        TransitPlan.DEFAULT_DARK_ROUTE_COLOR :
-                        TransitPlan.DEFAULT_ROUTE_COLOR;
-        const color = Color.parseColorAsRGBA(bgColor);
-
-        this._image.paintable =
-            this._paintableFromIconName('maps-point-end-symbolic', 16, color);
+        super({ latitude:  lastPoint.latitude,
+                longitude: lastPoint.longitude,
+                color:     leg.color,
+                textColor: leg.textColor,
+                iconName:  'maps-point-end-symbolic',
+                markerSize: 16,
+                ...params });
     }
 }
 
