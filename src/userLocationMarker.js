@@ -35,6 +35,7 @@ const WHITE = new Gdk.RGBA({ red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 });
 const SHADOW_COLOR = new Gdk.RGBA({ red: 0.0, green: 0.0, blue: 0.0, alpha: 0.05 });
 const ACCURACY_CIRCLE_OPACITY = 0.075;
 const ACCURACY_CIRCLE_OUTLINE_OPACITY = 0.225;
+const ACCURACY_CIRCLE_MIN_RADIUS = 30; // min accuracy to show circle (in meters)
 
 export class AccuracyCircleMarker extends Shumate.Marker {
 
@@ -68,6 +69,8 @@ export class AccuracyCircleMarker extends Shumate.Marker {
     }
 
     refreshGeometry(mapView) {
+        const accuracy = this._place.location.accuracy;
+
         this.latitude = this._place.location.latitude;
         this.longitude = this._place.location.longitude;
 
@@ -76,10 +79,10 @@ export class AccuracyCircleMarker extends Shumate.Marker {
         let metersPerPixel = source.get_meters_per_pixel(zoom,
                                                          this.latitude,
                                                          this.longitude);
-        let size = this._place.location.accuracy * 2 / metersPerPixel;
+        let size = accuracy * 2 / metersPerPixel;
         let {x, y, width, height} = mapView.get_allocation();
 
-        if (size > width || size > height)
+        if (accuracy < ACCURACY_CIRCLE_MIN_RADIUS || size > width || size > height)
             this.visible = false;
         else {
             this.set_size_request(size, size);
