@@ -33,6 +33,8 @@ const LOCATION_MARKER_MARGIN = 4;
 const LOCATION_MARKER_SHADOW_RADIUS = 4;
 const WHITE = new Gdk.RGBA({ red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 });
 const SHADOW_COLOR = new Gdk.RGBA({ red: 0.0, green: 0.0, blue: 0.0, alpha: 0.05 });
+const ACCURACY_CIRCLE_OPACITY = 0.075;
+const ACCURACY_CIRCLE_OUTLINE_OPACITY = 0.225;
 
 export class AccuracyCircleMarker extends Shumate.Marker {
 
@@ -95,10 +97,10 @@ export class AccuracyCircleMarker extends Shumate.Marker {
         this._pathBuilder.add_circle(center, width / 2);
         snapshot.append_fill(this._pathBuilder.to_path(),
                              Gsk.FILL_RULE_EVEN_ODD,
-                             new Gdk.RGBA({ red: accentColor.red,
+                             new Gdk.RGBA({ red:   accentColor.red,
                                             green: accentColor.green,
                                             blue:  accentColor.blue,
-                                            alpha: 0.05 }));
+                                            alpha: ACCURACY_CIRCLE_OPACITY }));
 
         this._pathBuilder.add_circle(center, width / 2);
         snapshot.append_stroke(this._pathBuilder.to_path(),
@@ -106,7 +108,7 @@ export class AccuracyCircleMarker extends Shumate.Marker {
                                new Gdk.RGBA({ red:   accentColor.red,
                                               green: accentColor.green,
                                               blue:  accentColor.blue,
-                                              alpha: 0.15 }));
+                                              alpha: ACCURACY_CIRCLE_OUTLINE_OPACITY }));
 
         super.vfunc_snapshot(snapshot);
     }
