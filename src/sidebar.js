@@ -357,6 +357,12 @@ export class Sidebar extends Gtk.Grid {
                 row.set_header(new Gtk.Separator());
         });
 
+        /* use list separators for the transit itinerary list */
+        this._transitItineraryListBox.set_header_func((row, prev) => {
+            if (prev)
+                row.set_header(new Gtk.Separator());
+        });
+
         this._transitOverviewListBox.connect('row-activated',
                                              this._onItineraryOverviewRowActivated.bind(this));
         this._transitItineraryBackButton.connect('clicked',
@@ -489,6 +495,9 @@ export class Sidebar extends Gtk.Grid {
         this._transitItineraryListBox.insert(
             new TransitArrivalRow({ itinerary: itinerary, mapView: this._mapView }),
             -1);
+
+        /* add an empty list row to get a final separator */
+        this._transitItineraryListBox.insert(new Gtk.ListBoxRow(), -1);
     }
 
 
