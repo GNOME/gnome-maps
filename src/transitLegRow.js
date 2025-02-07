@@ -21,6 +21,7 @@
 
 import gettext from 'gettext';
 
+import Adw from 'gi://Adw';
 import Gdk from 'gi://Gdk';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
@@ -35,7 +36,7 @@ import * as Utils from './utils.js';
 
 const _ = gettext.gettext;
 
-export class TransitLegRow extends Gtk.ListBoxRow {
+export class TransitLegRow extends Adw.ExpanderRow {
 
     constructor({leg, start, mapView, ...params}) {
         super(params);
@@ -45,6 +46,9 @@ export class TransitLegRow extends Gtk.ListBoxRow {
         this._mapView = mapView;
         this._modeImage.icon_name = this._leg.iconName;
         this._fromLabel.label = Transit.getFromLabel(this._leg, this._start);
+
+        this.connect('notify::expanded',
+                     () => this.expanded ? this._expand() : this._collaps());
 
         if (this._leg.transit) {
             const routeLabel = new TransitRouteLabel({ leg: this._leg });
@@ -67,19 +71,18 @@ export class TransitLegRow extends Gtk.ListBoxRow {
                 this._agencyLabel.label = agencyName;
             }
         } else {
-            this._expandButton.tooltip_text = _("Show walking instructions");
-            this._collapsButton.tooltip_text = _("Hide walking instructions");
+            //this._expandButton.tooltip_text = _("Show walking instructions");
+            //this._collapsButton.tooltip_text = _("Hide walking instructions");
         }
 
         if (!this._leg.transit || this._leg.headsign) {
             /* Restrict headsign label to 20 characters to avoid horizontally
              * overflowing the sidebar.
              */
-            let headsignLabel = new Gtk.Label({ visible: true,
-                                                can_focus: false,
+            let headsignLabel = new Gtk.Label({ can_focus: false,
                                                 use_markup: true,
                                                 hexpand: true,
-                                                margin_start: 6,
+                                                //margin_start: 0,
                                                 max_width_chars: 20,
                                                 ellipsize: Pango.EllipsizeMode.END,
                                                 halign: Gtk.Align.START });
@@ -96,12 +99,11 @@ export class TransitLegRow extends Gtk.ListBoxRow {
 
         if (this._hasIntructions())
             this._populateInstructions();
-        else
-            this._footerStack.visible_child_name = 'separator';
 
-        this._expandButton.connect('clicked', this._expand.bind(this));
-        this._collapsButton.connect('clicked', this._collaps.bind(this));
+        //this._expandButton.connect('clicked', this._expand.bind(this));
+        //this._collapsButton.connect('clicked', this._collaps.bind(this));
 
+        /*
         this._instructionList.connect('row-selected', (listbox, row) => {
             if (row) {
                 if (row.turnPoint)
@@ -110,14 +112,17 @@ export class TransitLegRow extends Gtk.ListBoxRow {
                     this._mapView.showTransitStop(row.stop, this._leg);
             }
         });
+        */
 
+        /*
         this._buttonPressGesture = new Gtk.GestureSingle();
         this._grid.add_controller(this._buttonPressGesture);
         this._buttonPressGesture.connect('begin', () => this._onPress());
+        */
 
-        this._isExpanded = false;
     }
 
+    /*
     _onPress() {
         if (this._isExpanded) {
             this._collaps();
@@ -129,10 +134,11 @@ export class TransitLegRow extends Gtk.ListBoxRow {
                 this._expand();
         }
     }
+    */
 
     _expand() {
-        this._footerStack.visible_child_name = 'separator';
-        this._detailsRevealer.reveal_child = true;
+        // show the details if the leg is a transit one
+        this._detailsRevealer.reveal_child = this._leg.transit;
         /* collaps the time label down to just show the start time when
          * revealing intermediate stop times, as the arrival time is displayed
          * at the last stop
@@ -142,7 +148,6 @@ export class TransitLegRow extends Gtk.ListBoxRow {
     }
 
     _collaps() {
-        this._footerStack.visible_child_name = 'expander';
         this._detailsRevealer.reveal_child = false;
         this._timeLabel.label = this._leg.prettyPrintTime({ isStart: this._start });
         this._isExpanded = false;
@@ -157,11 +162,11 @@ export class TransitLegRow extends Gtk.ListBoxRow {
             if (this._leg.intermediateStops) {
                 let stops = this._leg.intermediateStops;
                 for (let index = 0; index < stops.length; index++) {
-                    let stop = stops[index];
-                    let row = new TransitStopRow({ visible: true,
-                                                   stop: stop,
-                                                   final: index === stops.length - 1 });
-                    this._instructionList.insert(row, -1);
+                    const stop = stops[index];
+                    const row = new TransitStopRow({ stop:  stop,
+                                                     final: index === stops.length - 1 });
+
+                    this.add_row(row);
                 }
             }
         } else {
@@ -171,11 +176,10 @@ export class TransitLegRow extends Gtk.ListBoxRow {
             for (let index = 1;
                  index < this._leg.walkingInstructions.length - 1;
                  index++) {
-                let instruction = this._leg.walkingInstructions[index];
-                let row = new InstructionRow({ visible: true,
-                                               turnPoint: instruction });
+                const instruction = this._leg.walkingInstructions[index];
+                const row = new InstructionRow({ turnPoint: instruction });
 
-                this._instructionList.insert(row, -1);
+                this.add_row(row);
             }
         }
     }
@@ -187,11 +191,7 @@ GObject.registerClass({
                        'fromLabel',
                        'routeGrid',
                        'timeLabel',
-                       'footerStack',
-                       'expandButton',
                        'detailsRevealer',
                        'agencyLabel',
-                       'collapsButton',
-                       'instructionList',
                        'grid']
 }, TransitLegRow);

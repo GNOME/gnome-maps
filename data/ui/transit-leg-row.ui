@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk" version="4.0"/>
-  <template class="Gjs_TransitLegRow" parent="GtkListBoxRow">
-    <property name="child">
+  <template class="Gjs_TransitLegRow" parent="AdwExpanderRow">
+    <child type="prefix">
       <object class="GtkGrid">
         <child>
           <object class="GtkGrid" id="grid">
             <property name="row-spacing">3</property>
             <child>
               <object class="GtkImage" id="modeImage">
-                <property name="margin-start">12</property>
+                <property name="margin-start">0</property>
                 <property name="margin-end">12</property>
                 <property name="halign">start</property>
                 <style>
@@ -44,159 +44,36 @@
                 </layout>
               </object>
             </child>
+
             <child>
-              <object class="GtkLabel" id="timeLabel">
-                <property name="margin-start">6</property>
-                <property name="margin-end">18</property>
-                <property name="hexpand">0</property>
-                <property name="halign">end</property>
-                <attributes>
-                  <attribute name="font-features" value="tnum"></attribute>
-                </attributes>
+              <object class="GtkRevealer" id="detailsRevealer">
+                <child>
+                  <object class="GtkLabel" id="agencyLabel">
+                    <property name="use-markup">True</property>
+                    <property name="halign">start</property>
+                  </object>
+                </child>
                 <layout>
-                  <property name="column">2</property>
-                  <property name="row">0</property>
-                  <property name="row-span">2</property>
+                  <property name="column">0</property>
+                  <property name="row">2</property>
+                  <property name="column-span">2</property>
                 </layout>
               </object>
             </child>
           </object>
         </child>
-        <child>
-          <object class="GtkRevealer" id="detailsRevealer">
-            <property name="child">
-              <object class="GtkGrid">
-                <property name="margin-start">12</property>
-                <property name="margin-end">12</property>
-                <property name="row-spacing">1</property>
-                <child>
-                  <object class="GtkLabel" id="agencyLabel">
-                    <property name="visible">0</property>
-                    <property name="use-markup">1</property>
-                    <property name="halign">start</property>
-                    <property name="max_width_chars">30</property>
-                    <property name="ellipsize">end</property>
-                    <layout>
-                      <property name="row">0</property>
-                      <property name="column">0</property>
-                      <property name="column-span">3</property>
-                    </layout>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkSeparator">
-                    <property name="hexpand">1</property>
-                    <property name="valign">center</property>
-                    <layout>
-                      <property name="row">1</property>
-                      <property name="column">0</property>
-                    </layout>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkButton" id="collapsButton">
-                    <property name="focusable">1</property>
-                    <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Hide intermediate stops and information</property>
-                    <property name="icon-name">go-up-symbolic</property>
-                    <style>
-                      <class name="small-circular"/>
-                    </style>
-                    <layout>
-                      <property name="row">1</property>
-                      <property name="column">1</property>
-                    </layout>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkSeparator">
-                    <property name="hexpand">1</property>
-                    <property name="valign">center</property>
-                    <layout>
-                      <property name="row">1</property>
-                      <property name="column">2</property>
-                    </layout>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkListBox" id="instructionList">
-                    <layout>
-                      <property name="row">2</property>
-                      <property name="column">0</property>
-                      <property name="column-span">3</property>
-                    </layout>
-                  </object>
-                </child>
-              </object>
-            </property>
-            <layout>
-              <property name="row">1</property>
-              <property name="column">0</property>
-            </layout>
-          </object>
-        </child>
-        <child>
-          <object class="GtkStack" id="footerStack">
-            <child>
-              <object class="GtkStackPage">
-                <property name="name">expander</property>
-                <property name="child">
-                  <object class="GtkGrid">
-                    <child>
-                      <object class="GtkSeparator">
-                        <property name="hexpand">1</property>
-                        <property name="valign">center</property>
-                        <layout>
-                          <property name="row">0</property>
-                          <property name="column">0</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="expandButton">
-                        <property name="focusable">1</property>
-                        <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Show intermediate stops and information</property>
-                        <property name="icon-name">go-down-symbolic</property>
-                        <style>
-                          <class name="small-circular"/>
-                        </style>
-                        <layout>
-                          <property name="row">0</property>
-                          <property name="column">1</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkSeparator">
-                        <property name="hexpand">1</property>
-                        <property name="valign">center</property>
-                        <layout>
-                          <property name="row">0</property>
-                          <property name="column">2</property>
-                        </layout>
-                      </object>
-                    </child>
-                  </object>
-                </property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkStackPage">
-                <property name="name">separator</property>
-                <property name="child">
-                  <object class="GtkSeparator">
-                    <property name="hexpand">1</property>
-                    <property name="valign">center</property>
-                  </object>
-                </property>
-              </object>
-            </child>
-            <layout>
-              <property name="row">2</property>
-              <property name="column">0</property>
-            </layout>
-          </object>
-        </child>
       </object>
-    </property>
+    </child>
+    <child type="suffix">
+      <object class="GtkLabel" id="timeLabel">
+        <property name="margin-start">6</property>
+        <property name="margin-end">6</property>
+        <property name="hexpand">0</property>
+        <property name="halign">end</property>
+        <attributes>
+          <attribute name="font-features" value="tnum"></attribute>
+        </attributes>
+      </object>
+    </child>
   </template>
 </interface>
