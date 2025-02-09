@@ -477,6 +477,10 @@ export class Sidebar extends Gtk.Grid {
     }
 
     _populateTransitItinerary(itinerary) {
+        // expand instructions if the itinerary is a direct non-transit connection
+        const isDirectNonTransit =
+            itinerary.legs.length === 1 && !itinerary.legs[0].transit;
+
         this._transitItineraryTimeLabel.label =
             itinerary.prettyPrintTimeInterval();
         this._transitItineraryDurationLabel.label =
@@ -487,7 +491,8 @@ export class Sidebar extends Gtk.Grid {
             let leg = itinerary.legs[i];
             let row = new TransitLegRow({ leg: leg,
                                           start: i === 0,
-                                          mapView: this._mapView });
+                                          mapView: this._mapView,
+                                          expanded: isDirectNonTransit });
             this._transitItineraryListBox.insert(row, -1);
         }
 
