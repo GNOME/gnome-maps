@@ -247,15 +247,15 @@ export class MainWindow extends Adw.ApplicationWindow {
                 onActivate:  () => this._mapView.zoomOut()
             },
             'rotate-clockwise': {
-                accels: ['<Primary>Right'],
+                accels: ['<Alt>Right'],
                 onActivate: () => this._rotateMap(Math.PI / 32)
             },
             'rotate-counter-clockwise': {
-                accels: ['<Primary>Left'],
+                accels: ['<Alt>Left'],
                 onActivate: () => this._rotateMap(-Math.PI / 32)
             },
             'reset-rotation': {
-                accels: ['<Primary>Up'],
+                accels: ['<Alt>Up'],
                 onActivate: () => { this._mapView.map.viewport.rotation = 0.0; }
             },
             'show-scale': {
