@@ -19,6 +19,8 @@
  * Author: Marcus Lundblad <ml@dfupdate.se>
  */
 
+import gettext from 'gettext';
+
 import GWeather from 'gi://GWeather';
 import GLib from 'gi://GLib';
 import Shumate from 'gi://Shumate';
@@ -32,6 +34,8 @@ import {TurnPoint} from '../route.js';
 import * as Time from '../time.js';
 import {Itinerary, Leg, RouteType, Stop} from '../transitPlan.js';
 import * as Utils from '../utils.js';
+
+const _ = gettext.gettext;
 
 export class Motis2 {
     constructor(params) {
@@ -326,6 +330,10 @@ export class Motis2 {
         switch (step.relativeDirection) {
             case 'DEPART':
             case 'STAIRS':
+                return [TurnPoint.Type.STAIRS,
+                        step.hasOwnProperty('toLevel') ?
+                        _("Take the stairs to level %s").format(step.toLevel) :
+                        _("Take the stairs")];
             case 'CONTINUE':
                 return [TurnPoint.Type.CONTINUE,
                         step.streetName ?
