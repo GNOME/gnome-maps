@@ -104,7 +104,8 @@ export class TurnPoint {
         UTURN:            14,
         UTURN_LEFT:       15,
         UTURN_RIGHT:      16,
-        ELEVATOR:         17
+        ELEVATOR:         17,
+        STAIRS:           18,
     }
 
     constructor({ coordinate, type, distance, instruction, turnAngle }) {
@@ -146,7 +147,8 @@ export class TurnPoint {
                                                 'maps-direction-u-turn-left-symbolic';
         case TurnPoint.Type.UTURN_LEFT:   return 'maps-direction-u-turn-left-symbolic';
         case TurnPoint.Type.UTURN_RIGHT:  return 'maps-direction-u-turn-right-symbolic';
-        default:                         return '';
+        case TurnPoint.Type.STAIRS:       return 'steps-symbolic';
+        default:                          return '';
         }
     }
 
