@@ -23,6 +23,7 @@ import Gio from 'gi://Gio';
 import Shumate from 'gi://Shumate';
 import GnomeMaps from 'gi://GnomeMaps';
 
+import {Application} from './application.js';
 import * as Utils from './utils.js';
 import { generateMapStyle } from './mapStyle/mapStyle.js';
 
@@ -32,6 +33,7 @@ export function createVectorSource() {
         colorScheme: Adw.StyleManager.get_default().dark ? "dark" : "light",
         language: Utils.getLanguage(),
         textScale: Adw.LengthUnit.to_px(Adw.LengthUnit.SP, 1, null),
+        tileUrlPattern: Application.settings.get('vector-tile-source-url-pattern'),
     });
     const end = GLib.get_monotonic_time();
     Utils.debug(`Map style generated in ${(end - start) / 1000} ms.`);
