@@ -45,6 +45,8 @@ import { pois } from "./pois.js";
  */
 export function generateMapStyle(options) {
     const config = new MapStyleConfig(options);
+    const tileUrlPattern = options.tileUrlPattern ??
+                           'https://tileserver.gnome.org/data/v3/{z}/{x}/{y}.pbf';
 
     const layeredLayers = [];
     for (let layerNum = DEFS.minLayer; layerNum <= DEFS.maxLayer; layerNum++) {
@@ -70,7 +72,7 @@ export function generateMapStyle(options) {
         sources: {
             "vector-tiles": {
                 type: "vector",
-                tiles: ["https://tileserver.gnome.org/data/v3/{z}/{x}/{y}.pbf"],
+                tiles: [tileUrlPattern],
                 minzoom: 0,
                 maxzoom: 14,
             },
