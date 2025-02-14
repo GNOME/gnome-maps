@@ -69,6 +69,15 @@ export class Motis2 {
         const request = Soup.Message.new('GET', this._baseUrl + '/api/v1/plan?' +
                                          query.toString());
 
+        // if trying to extend trips, and there was no page cursor, show no results
+        const pageCursor =
+            this._query.arriveBy ? this._previousCursor : this._nextCursor;
+
+        if (extendPrevious && !pageCursor) {
+            this._plan.noMoreResults();
+            return;
+        }
+
         request.request_headers.replace('Content-Type', 'application/json');
 
         this._session.send_and_read_async(request, GLib.PRIORITY_DEFAULT, null,
