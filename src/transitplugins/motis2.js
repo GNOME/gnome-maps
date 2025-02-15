@@ -461,15 +461,21 @@ export class Motis2 {
         return tz.get_offset(interval);
     }
 
-    _getPlaceParamFromLocation(location) {
-        return location.latitude + ',' + location.longitude;
+    _getPlaceParamFromLocation(place) {
+        const location = place.location;
+
+        /* return comma-separated tuple of latitude,longitude, and when
+         * available, level
+         */
+        return [location.latitude, location.longitude, place.level].
+               filter(e => e).join(',');
     }
 
     _getQuery(extendPrevious) {
-        const fromLoc = this._query.filledPoints[0].place.location;
-        const toLoc = this._query.filledPoints.last().place.location;
-        const params = { fromPlace: this._getPlaceParamFromLocation(fromLoc),
-                         toPlace:   this._getPlaceParamFromLocation(toLoc),
+        const from = this._query.filledPoints[0].place;
+        const to = this._query.filledPoints.last().place;
+        const params = { fromPlace: this._getPlaceParamFromLocation(from),
+                         toPlace:   this._getPlaceParamFromLocation(to),
                          arriveBy:  this._query.arriveBy };
 
         if (this._query.time)
