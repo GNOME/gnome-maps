@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2024-09-28 12:22+0000\n"
-"PO-Revision-Date: 2024-10-13 15:46+0200\n"
+"POT-Creation-Date: 2025-02-18 20:34+0000\n"
+"PO-Revision-Date: 2025-02-21 23:32+0100\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -57,7 +57,7 @@ msgstr ""
 "tisíců lidí z celého světa."
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.appdata.xml.in.in:495 src/mainWindow.js:587
+#: data/org.gnome.Maps.appdata.xml.in.in:525 src/mainWindow.js:587
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
 
@@ -104,7 +104,7 @@ msgstr "Typ mapy"
 
 #: data/org.gnome.Maps.gschema.xml:27
 msgid "The type of map to display (street, aerial, etc.)"
-msgstr "Typ mapy, který se má zobrazit(běžná, letecká, atd.)"
+msgstr "Typ mapy, který se má zobrazit (běžná, letecká, atd.)"
 
 #: data/org.gnome.Maps.gschema.xml:31
 msgid "Window size"
@@ -864,7 +864,8 @@ msgstr ""
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: src/mapView.js:642 src/transitplugins/openTripPlanner.js:1238
+#: src/mapView.js:642 src/transitplugins/motis2.js:342
+#: src/transitplugins/openTripPlanner.js:1238
 #: src/transitplugins/openTripPlanner2.js:267
 msgid "Continue"
 msgstr "Pokračujte"
@@ -1811,7 +1812,8 @@ msgstr "Start v %s"
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: src/transit.js:45 src/transitplugins/openTripPlanner2.js:236
+#: src/transit.js:45 src/transitplugins/motis2.js:310
+#: src/transitplugins/openTripPlanner2.js:236
 msgid "Start"
 msgstr "Start"
 
@@ -1831,7 +1833,8 @@ msgstr "Chůze %s"
 msgid "Arrive at %s"
 msgstr "Příjezd do %s"
 
-#: src/transit.js:79 src/transitplugins/openTripPlanner.js:1175
+#: src/transit.js:79 src/transitplugins/motis2.js:328
+#: src/transitplugins/openTripPlanner.js:1175
 #: src/transitplugins/openTripPlanner2.js:255
 msgid "Arrive"
 msgstr "Příjezd"
@@ -2106,124 +2109,124 @@ msgstr "%s mi"
 msgid "%s ft"
 msgstr "%s ft"
 
-#: src/transitplugins/openTripPlanner.js:1236
+#: src/transitplugins/motis2.js:341 src/transitplugins/openTripPlanner.js:1236
 #: src/transitplugins/openTripPlanner2.js:266
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Pokračujte na %s"
 
-#: src/transitplugins/openTripPlanner.js:1241
+#: src/transitplugins/motis2.js:346 src/transitplugins/openTripPlanner.js:1241
 #: src/transitplugins/openTripPlanner2.js:270
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Zahněte doleva na %s"
 
-#: src/transitplugins/openTripPlanner.js:1243
+#: src/transitplugins/motis2.js:347 src/transitplugins/openTripPlanner.js:1243
 #: src/transitplugins/openTripPlanner2.js:271
 msgid "Turn left"
 msgstr "Zahněte doleva"
 
-#: src/transitplugins/openTripPlanner.js:1246
+#: src/transitplugins/motis2.js:351 src/transitplugins/openTripPlanner.js:1246
 #: src/transitplugins/openTripPlanner2.js:275
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Zahněte mírně doleva na %s"
 
-#: src/transitplugins/openTripPlanner.js:1248
+#: src/transitplugins/motis2.js:352 src/transitplugins/openTripPlanner.js:1248
 #: src/transitplugins/openTripPlanner2.js:276
 msgid "Turn slightly left"
 msgstr "Zahněte mírně doleva"
 
-#: src/transitplugins/openTripPlanner.js:1251
+#: src/transitplugins/motis2.js:356 src/transitplugins/openTripPlanner.js:1251
 #: src/transitplugins/openTripPlanner2.js:280
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Zahněte ostře doleva na %s"
 
-#: src/transitplugins/openTripPlanner.js:1253
+#: src/transitplugins/motis2.js:357 src/transitplugins/openTripPlanner.js:1253
 #: src/transitplugins/openTripPlanner2.js:281
 msgid "Turn sharp left"
 msgstr "Zahněte ostře doleva"
 
-#: src/transitplugins/openTripPlanner.js:1256
+#: src/transitplugins/motis2.js:361 src/transitplugins/openTripPlanner.js:1256
 #: src/transitplugins/openTripPlanner2.js:284
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Zahněte doprava na %s"
 
-#: src/transitplugins/openTripPlanner.js:1258
+#: src/transitplugins/motis2.js:362 src/transitplugins/openTripPlanner.js:1258
 #: src/transitplugins/openTripPlanner2.js:285
 msgid "Turn right"
 msgstr "Zahněte doprava"
 
-#: src/transitplugins/openTripPlanner.js:1261
+#: src/transitplugins/motis2.js:366 src/transitplugins/openTripPlanner.js:1261
 #: src/transitplugins/openTripPlanner2.js:289
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Zahněte mírně doprava na %s"
 
-#: src/transitplugins/openTripPlanner.js:1263
+#: src/transitplugins/motis2.js:367 src/transitplugins/openTripPlanner.js:1263
 #: src/transitplugins/openTripPlanner2.js:290
 msgid "Turn slightly right"
 msgstr "Zahněte mírně doprava"
 
-#: src/transitplugins/openTripPlanner.js:1266
+#: src/transitplugins/motis2.js:371 src/transitplugins/openTripPlanner.js:1266
 #: src/transitplugins/openTripPlanner2.js:294
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Zahněte ostře doprava na %s"
 
-#: src/transitplugins/openTripPlanner.js:1268
+#: src/transitplugins/motis2.js:372 src/transitplugins/openTripPlanner.js:1268
 #: src/transitplugins/openTripPlanner2.js:295
 msgid "Turn sharp right"
 msgstr "Zahněte ostře doprava"
 
-#: src/transitplugins/openTripPlanner.js:1274
+#: src/transitplugins/motis2.js:379 src/transitplugins/openTripPlanner.js:1274
 #: src/transitplugins/openTripPlanner2.js:302
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "Na kruhovém objezdu použijte výjezd %s"
 
-#: src/transitplugins/openTripPlanner.js:1276
+#: src/transitplugins/motis2.js:382 src/transitplugins/openTripPlanner.js:1276
 #: src/transitplugins/openTripPlanner2.js:305
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "Na kruhovém objezdu použijte výjezd směr %s"
 
-#: src/transitplugins/openTripPlanner.js:1278
+#: src/transitplugins/motis2.js:384 src/transitplugins/openTripPlanner.js:1278
 #: src/transitplugins/openTripPlanner2.js:307
 msgid "Take the roundabout"
 msgstr "Najeďte na kruhový objezd"
 
-#: src/transitplugins/openTripPlanner.js:1282
+#: src/transitplugins/motis2.js:392 src/transitplugins/openTripPlanner.js:1282
 #: src/transitplugins/openTripPlanner2.js:315
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Použijte výtah a vystupte v %s"
 
-#: src/transitplugins/openTripPlanner.js:1284
+#: src/transitplugins/motis2.js:393 src/transitplugins/openTripPlanner.js:1284
 #: src/transitplugins/openTripPlanner2.js:316
 msgid "Take the elevator"
 msgstr "Použijte výtah"
 
-#: src/transitplugins/openTripPlanner.js:1288
+#: src/transitplugins/motis2.js:397 src/transitplugins/openTripPlanner.js:1288
 #: src/transitplugins/openTripPlanner2.js:320
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Proveďte otočku doleva na %s"
 
-#: src/transitplugins/openTripPlanner.js:1290
+#: src/transitplugins/motis2.js:398 src/transitplugins/openTripPlanner.js:1290
 #: src/transitplugins/openTripPlanner2.js:321
 msgid "Make a left u-turn"
 msgstr "Proveďte otočku doleva"
 
-#: src/transitplugins/openTripPlanner.js:1293
+#: src/transitplugins/motis2.js:402 src/transitplugins/openTripPlanner.js:1293
 #: src/transitplugins/openTripPlanner2.js:325
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Proveďte otočku doprava na %s"
 
-#: src/transitplugins/openTripPlanner.js:1295
+#: src/transitplugins/motis2.js:403 src/transitplugins/openTripPlanner.js:1295
 #: src/transitplugins/openTripPlanner2.js:326
 msgid "Make a right u-turn"
 msgstr "Proveďte otočku doprava"
