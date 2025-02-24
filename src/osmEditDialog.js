@@ -188,6 +188,9 @@ const OSM_FIELDS = [
         ]
     },
     {
+        /* Translators: This is the title for a section of POI fields not
+         * belonging to the previous sections ("General", "Contact", "Accessibility").
+         */
         title: _("Miscellaneous"),
         fields: [
             {
@@ -700,7 +703,10 @@ export class OSMEditDialog extends Adw.Dialog {
 
         let selected = 0;
 
-        model.append(_("Unspecified"));
+        /* Translators: This is the title for a combo box row selected when a
+         * value is not assigned to one in a list of allowed values.
+         */
+        model.append(_("Unspecified value"));
         category.options.forEach((options, index) => {
             const [id, title] = options;
 
