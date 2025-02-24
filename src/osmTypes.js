@@ -94,6 +94,10 @@ export const OSM_TYPE_TAGS = Object.getOwnPropertyNames(TYPE_TAG_TITLES);
 
 export function getTitleForTag(tag) {
     const title = TYPE_TAG_TITLES[tag];
+
+    /* Translators: "Other" refers to points-of-interest where we don't have
+     * a known title corresponding to the raw OpenStreetMap tag
+     */
     return title ? gettext.gettext(title) : _("Other");
 }
 
