@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2024-07-29 18:31+0000\n"
-"PO-Revision-Date: 2024-09-02 23:14+0300\n"
+"POT-Creation-Date: 2025-02-23 21:34+0000\n"
+"PO-Revision-Date: 2025-03-01 23:01+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "(n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.5\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -28,7 +28,7 @@ msgstr ""
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
-#: data/ui/main-window.ui:27 src/application.js:64 src/mainWindow.js:118
+#: data/ui/main-window.ui:27 src/application.js:61 src/mainWindow.js:118
 #: src/mainWindow.js:590
 msgid "Maps"
 msgstr "Žemėlapiai"
@@ -56,7 +56,7 @@ msgstr ""
 "žmonių iš viso pasaulio."
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.appdata.xml.in.in:469 src/mainWindow.js:587
+#: data/org.gnome.Maps.appdata.xml.in.in:512 src/mainWindow.js:587
 msgid "The GNOME Project"
 msgstr "GNOME projektas"
 
@@ -197,11 +197,12 @@ msgstr "Kopijuoti vietą"
 msgid "Add to OpenStreetMap…"
 msgstr "Pridėti prie OpenStreetMap…"
 
+#. Translators: This is the title of the dialog for expoting the map view content to an image file
 #: data/ui/export-view-dialog.ui:7
 msgid "Export View"
 msgstr "Eksportuoti rodinį"
 
-#: data/ui/export-view-dialog.ui:16 data/ui/osm-edit-dialog.ui:226
+#: data/ui/export-view-dialog.ui:16 data/ui/osm-discard-dialog.ui:12
 #: data/ui/send-to-dialog.ui:10
 msgid "_Cancel"
 msgstr "_Atsisakyti"
@@ -424,85 +425,89 @@ msgstr "Jūsų OpenStreetMap paskyra yra aktyvi."
 msgid "_Sign Out"
 msgstr "_Atsijungti"
 
-#: data/ui/osm-edit-address.ui:11
-msgid "Street"
-msgstr "Gatvė"
+#: data/ui/osm-discard-dialog.ui:5
+msgid "Discard Changes?"
+msgstr "Atmesti pakeitimus?"
 
-#: data/ui/osm-edit-address.ui:22
-msgid "House number"
-msgstr "Namo numeris"
+#: data/ui/osm-discard-dialog.ui:6
+msgid "Your current changes to the map will be lost"
+msgstr "Jūsų dabartiniai žemėlapio pakeitimai bus prarasti"
 
-#: data/ui/osm-edit-address.ui:33
-msgid "Postal code"
-msgstr "Pašto kodas"
+#: data/ui/osm-discard-dialog.ui:13
+msgid "_Discard"
+msgstr "_Atmesti"
 
-#. This is the place name as it would be written in a postal address (typically coming after the postal code)
-#: data/ui/osm-edit-address.ui:44
-msgid "City"
-msgstr "Miestas"
-
-#: data/ui/osm-edit-dialog.ui:8
+#: data/ui/osm-edit-dialog.ui:5
 msgctxt "dialog title"
-msgid "Edit on OpenStreetMap"
-msgstr "Redaguoti OpenStreetMap"
+msgid "Edit Location"
+msgstr "Redaguoti vietą"
 
-#: data/ui/osm-edit-dialog.ui:57
-msgid "Type"
-msgstr "Tipas"
+#: data/ui/osm-edit-dialog.ui:25
+msgid "Loading…"
+msgstr "Įkeliama…"
 
-#: data/ui/osm-edit-dialog.ui:79
+#: data/ui/osm-edit-dialog.ui:38 data/ui/osm-edit-dialog.ui:53
+#: data/ui/osm-edit-dialog.ui:101
+msgid "Edit Location"
+msgstr "Redaguoti vietą"
+
+#: data/ui/osm-edit-dialog.ui:54
+msgid "Edit an existing location in OpenStreetMap"
+msgstr "Redaguoti dabartinę vietą OpenStreetMap"
+
+#: data/ui/osm-edit-dialog.ui:80 src/mapView.js:638
+#: src/transitplugins/motis2.js:350 src/transitplugins/openTripPlanner.js:1238
+#: src/transitplugins/openTripPlanner2.js:267
+msgid "Continue"
+msgstr "Tęsti"
+
+#: data/ui/osm-edit-dialog.ui:136
+msgid "Location Type"
+msgstr "Vietos tipas"
+
+#. Translators: This refers to searching for point-of-interest types. Search is a verb.
+#: data/ui/osm-edit-dialog.ui:264
+msgid "Search types"
+msgstr "Paieškos tipai"
+
+#: data/ui/osm-edit-dialog.ui:278
+msgid "Recently Used Types"
+msgstr "Neseniai naudoti tipai"
+
+#: data/ui/osm-edit-dialog.ui:301
+msgid "Edit Map"
+msgstr "Redaguoti žemėlapį"
+
+#: data/ui/osm-edit-dialog.ui:320
+msgid "Almost There!"
+msgstr "Beveik vietoje!"
+
+#: data/ui/osm-edit-dialog.ui:321
+msgid ""
+"Describe your map changes. They will be visible on all maps that use "
+"OpenStreetMap data."
+msgstr ""
+"Apibūdinkite žemėlapio pakeitimus Jie bus matomi visuose žemėlapiuose, "
+"kuriuose naudojami OpenStreetMap duomenys."
+
+#: data/ui/osm-edit-dialog.ui:367
+msgid "Submit"
+msgstr "Pateikti"
+
+#: data/ui/osm-edit-dialog.ui:394 src/osmEditDialog.js:235
+#: src/osmEditDialog.js:558 src/osmEditDialog.js:948 src/translations.js:297
 msgid "None"
 msgstr "Nėra"
 
-#: data/ui/osm-edit-dialog.ui:108
-msgid "_Add Field"
-msgstr "_Pridėti lauką"
-
-#: data/ui/osm-edit-dialog.ui:131
-msgid "Comment"
-msgstr "Komentaras"
-
-#: data/ui/osm-edit-dialog.ui:159
-msgid ""
-"Map changes will be visible on all maps that use\n"
-"OpenStreetMap data."
-msgstr ""
-"Žemėlapio pakeitimai bus matomi visuose žemėlapiuose,\n"
-"kuriuose naudojami OpenStreetMap duomenys."
-
-#: data/ui/osm-edit-dialog.ui:187
-msgid "Recently Used"
-msgstr "Neseniai naudoti"
-
-#: data/ui/osm-edit-dialog.ui:233 data/ui/sidebar.ui:301
-msgid "Back"
-msgstr "Grįžti"
-
-#: data/ui/osm-edit-dialog.ui:241
-msgid "_Next"
-msgstr "_Kitas"
-
-#: data/ui/osm-edit-wikipedia.ui:8
-msgid "Article"
-msgstr "Straipsnis"
-
-#: data/ui/osm-edit-wikipedia.ui:21
-msgid "Wikidata tag"
-msgstr "Wikidata žyma"
-
-#: data/ui/osm-edit-wikipedia.ui:32
-msgid "Load Wikidata tag for article"
-msgstr "Įkelti Wikidata žymą straipsniui"
-
-#: data/ui/place-popover.ui:23 src/searchBar.js:67
+#: data/ui/place-popover.ui:23 src/searchBar.js:69
 msgid "Explore Nearby Places"
 msgstr "Naršyti gretimas vietas"
 
-#: data/ui/place-popover.ui:82 src/application.js:275
+#: data/ui/place-popover.ui:78 src/application.js:273
 msgid "No results found"
 msgstr "Nerasta rezultatų"
 
-#: data/ui/place-popover.ui:92 src/application.js:253
+#: data/ui/place-popover.ui:88 src/application.js:251
 msgid "An error has occurred"
 msgstr "Kilo klaida"
 
@@ -533,31 +538,31 @@ msgstr "Perjungti matomus"
 msgid "Remove Shape Layer"
 msgstr "Pašalinti formos sluoksnį"
 
-#: data/ui/sidebar.ui:17
-msgid "Walking"
+#: data/ui/sidebar.ui:29
+msgid "Pedestrian"
 msgstr "Pėsčiomis"
 
-#: data/ui/sidebar.ui:30
-msgid "Cycling"
+#: data/ui/sidebar.ui:36
+msgid "Bike"
 msgstr "Dviračiu"
 
-#: data/ui/sidebar.ui:44
-msgid "Driving"
+#: data/ui/sidebar.ui:43
+msgid "Car"
 msgstr "Automobiliu"
 
-#: data/ui/sidebar.ui:59
+#: data/ui/sidebar.ui:50
 msgid "Transit"
 msgstr "Viešuoju transportu"
 
-#: data/ui/sidebar.ui:211
+#: data/ui/sidebar.ui:184
 msgid "Route search by GraphHopper"
 msgstr "Maršruto paieška naudojant GraphHopper"
 
-#: data/ui/sidebar.ui:244 src/osmEditDialog.js:677
+#: data/ui/sidebar.ui:217
 msgid "More Information"
 msgstr "Daugiau informacijos"
 
-#: data/ui/sidebar.ui:277
+#: data/ui/sidebar.ui:250
 msgid ""
 "Routing itineraries for public transit is provided by third-party\n"
 "services.\n"
@@ -579,61 +584,65 @@ msgstr ""
 "Pavadinimai ir prekės ženklai yra laikomi registruotais prekyženkliais, kai "
 "taikoma."
 
+#: data/ui/sidebar.ui:274
+msgid "Back"
+msgstr "Grįžti"
+
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:98
+#: data/ui/transit-leg-row.ui:99
 msgid "Hide intermediate stops and information"
 msgstr "Slėpti tarpines stoteles ir informaciją"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:156
+#: data/ui/transit-leg-row.ui:157
 msgid "Show intermediate stops and information"
 msgstr "Rodyti tarpines stoteles ir informaciją"
 
 #. Indicates searching for the next available itineraries
-#: data/ui/transit-options-panel.ui:16
+#: data/ui/transit-options-panel.ui:17
 msgid "Leave Now"
 msgstr "Išvykti dabar"
 
 #. Indicates searching for itineraries leaving at the specified time at the earliest
-#: data/ui/transit-options-panel.ui:17
+#: data/ui/transit-options-panel.ui:18
 msgid "Leave By"
 msgstr "Išvykti"
 
 #. Indicates searching for itineraries arriving no later than the specified time
-#: data/ui/transit-options-panel.ui:18
+#: data/ui/transit-options-panel.ui:19
 msgid "Arrive By"
 msgstr "Atvykti"
 
-#: data/ui/transit-options-panel.ui:54
+#: data/ui/transit-options-panel.ui:59
 msgid "View More"
 msgstr "Rodyti daugiau"
 
 #. Header indicating selected modes of transit
-#: data/ui/transit-options-panel.ui:86
+#: data/ui/transit-options-panel.ui:91
 msgid "Show"
 msgstr "Rodyti"
 
-#: data/ui/transit-options-panel.ui:96
+#: data/ui/transit-options-panel.ui:101
 msgid "_Buses"
 msgstr "_Autobusai"
 
-#: data/ui/transit-options-panel.ui:103
+#: data/ui/transit-options-panel.ui:108
 msgid "_Trams"
 msgstr "_Tramvajai"
 
-#: data/ui/transit-options-panel.ui:110
+#: data/ui/transit-options-panel.ui:115
 msgid "T_rains"
 msgstr "T_raukiniai"
 
-#: data/ui/transit-options-panel.ui:117
+#: data/ui/transit-options-panel.ui:122
 msgid "_Subway"
 msgstr "_Metro"
 
-#: data/ui/transit-options-panel.ui:124
+#: data/ui/transit-options-panel.ui:129
 msgid "_Ferries"
 msgstr "_Keltai"
 
-#: data/ui/transit-options-panel.ui:131
+#: data/ui/transit-options-panel.ui:136
 msgid "_Airplanes"
 msgstr "_Lėktuvai"
 
@@ -658,7 +667,7 @@ msgid "Mark as Favorite"
 msgstr "Pažymėti kaip mėgiamą"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.ui:45
+#: data/ui/place-buttons.ui:48
 msgid "Edit on OpenStreetMap"
 msgstr "Redaguoti OpenStreetMap"
 
@@ -682,7 +691,7 @@ msgid "Zoom Out"
 msgstr "Atitolinti"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1217
+#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1244
 msgid "Zoom In"
 msgstr "Priartinti"
 
@@ -707,27 +716,27 @@ msgstr "Nepavyko rasti OSM elemento"
 msgid "Could not find user element"
 msgstr "Nepavyko rasti naudotojo elemento"
 
-#: src/application.js:79
+#: src/application.js:73
 msgid "A path to a local tiles directory structure"
 msgstr "Kelias iki vietinės koklių katalogo struktūros"
 
-#: src/application.js:85
+#: src/application.js:79
 msgid "Tile size for local tiles directory"
 msgstr "Plytelės dydis vietiniam plytelių aplankui"
 
-#: src/application.js:89
+#: src/application.js:83
 msgid "Show the version of the program"
 msgstr "Rodyti programos versiją"
 
-#: src/application.js:95
+#: src/application.js:89
 msgid "Search for places"
 msgstr "Ieškoti vietų"
 
-#: src/application.js:106 src/application.js:107
+#: src/application.js:100 src/application.js:101
 msgid "[FILE…|URI]"
 msgstr "[FAILAS…|URI]"
 
-#: src/application.js:282
+#: src/application.js:280
 #, javascript-format
 msgid "Invalid maps: URI: %s"
 msgstr "Netinkami žemėlapiai: URI: %s"
@@ -800,9 +809,9 @@ msgstr ""
 "Aurimas Černius <aurisc4@gmail.com>"
 
 #: src/mainWindow.js:592
-msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
+msgid "Copyright © 2011 – 2025 Red Hat, Inc. and The GNOME Maps authors"
 msgstr ""
-"Autorių teisės priklauso © 2011 – 2023 Red Hat, Inc. ir GNOME Žemėlapių "
+"Autorių teisės priklauso © 2011 – 2025 Red Hat, Inc. ir GNOME Žemėlapių "
 "autoriams"
 
 #: src/mainWindow.js:605
@@ -845,43 +854,38 @@ msgstr "Visi sluoksnių failai"
 msgid "Open Shape Layers"
 msgstr "Atverti formos sluoksnį"
 
-#: src/mapView.js:617 src/mapView.js:679
+#: src/mapView.js:613 src/mapView.js:675
 msgid "Failed to open layer"
 msgstr "Nepavyko atverti sluoksnio"
 
-#: src/mapView.js:634
+#: src/mapView.js:630
 msgid "Do you want to continue?"
 msgstr "Ar norite tęsti?"
 
-#: src/mapView.js:635
+#: src/mapView.js:631
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
 "time to load"
 msgstr "Ketinate atverti failus, kurų bendras dydis %s MB. Tai gali užtrukti"
 
-#: src/mapView.js:641
+#: src/mapView.js:637
 msgid "Cancel"
 msgstr "Atsisakyti"
 
-#: src/mapView.js:642 src/transitplugins/openTripPlanner.js:1238
-#: src/transitplugins/openTripPlanner2.js:267
-msgid "Continue"
-msgstr "Tęsti"
-
-#: src/mapView.js:673
+#: src/mapView.js:669
 msgid "File type is not supported"
 msgstr "Failo tipas yra nepalaikomas"
 
-#: src/mapView.js:715
+#: src/mapView.js:711
 msgid "Failed to open GeoURI"
 msgstr "Nepavyko atverti GeoURI"
 
-#: src/mapView.js:1216
+#: src/mapView.js:1243
 msgid "Zoom in to add location"
 msgstr "Pritraukti vietos pridėjimui"
 
-#: src/mapView.js:1237
+#: src/mapView.js:1261
 msgid "Location was added in OpenStreetMap"
 msgstr "Vieta buvo pridėta į OpenStreetMap"
 
@@ -921,81 +925,95 @@ msgstr "Objektas buvo ištrintas"
 msgid "Way or relation refers to non-existing children"
 msgstr "Kelias ar santykis nurodo į nesantį kūrinį"
 
-#: src/osmEditDialog.js:106
+#: src/osmEditDialog.js:110
+msgid "General"
+msgstr "Esmė"
+
+#: src/osmEditDialog.js:113
 msgid "Name"
 msgstr "Pavadinimas"
 
-#: src/osmEditDialog.js:109
-msgid "The official name. This is typically what appears on signs."
-msgstr "Oficialus pavadinimas. Jis dažniausiai matomas ženkluose."
+#: src/osmEditDialog.js:118
+msgid "Type"
+msgstr "Tipas"
 
-#: src/osmEditDialog.js:112
+#: src/osmEditDialog.js:123 src/osmEditDialog.js:759
 msgid "Address"
 msgstr "Adresas"
 
-#: src/osmEditDialog.js:120 src/placeView.js:304
-msgid "Website"
-msgstr "Tinklalapis"
+#: src/osmEditDialog.js:136
+msgid "Contact"
+msgstr "Kontaktas"
 
-#: src/osmEditDialog.js:124
-msgid "This is not a valid URL. Make sure to include http:// or https://."
-msgstr ""
-"Tai nėra tinkamas URL. Įsitikinkite, kad pateikėte http:// arba https://."
+#: src/osmEditDialog.js:139
+msgid "Opening Hours"
+msgstr "Darbo laikas"
 
-#: src/osmEditDialog.js:125
-msgid ""
-"The official website. Try to use the most basic form of a URL i.e. http://"
-"example.com instead of http://example.com/index.html."
-msgstr ""
-"Oficialus tinklalapis. Bandykite paprasčiausią URL formą, pvz. http://"
-"pavyzdys.lt vietoj http://pavyzdys.lt/index.html."
-
-#: src/osmEditDialog.js:130
+#: src/osmEditDialog.js:145
 msgid "Phone"
 msgstr "Telefonas"
 
-#: src/osmEditDialog.js:134
-msgid ""
-"Phone number. Use the international format, starting with a + sign. Beware "
-"of local privacy laws, especially for private phone numbers."
-msgstr ""
-"Telefono numeris. Naudokite tarptautinį formatą, prasidedantį + simboliu. "
-"Atsižvelkite į vietinius privatumo įstatymus, ypač dės asmeninių telefono "
-"numerių."
-
-#: src/osmEditDialog.js:139 src/placeView.js:337
+#: src/osmEditDialog.js:151 src/placeView.js:336
 msgid "Email"
 msgstr "El. paštas"
 
-#: src/osmEditDialog.js:144
-msgid ""
-"This is not a valid email address. Make sure to not include the mailto: "
-"protocol prefix."
-msgstr ""
-"Tai nėra tinkamas el. pašto adresas. Įsitikinkite, kad nepateikėte mailto: "
-"protokolo priešdėlio."
+#: src/osmEditDialog.js:158 src/placeView.js:303
+msgid "Website"
+msgstr "Tinklalapis"
 
-#: src/osmEditDialog.js:145
-msgid ""
-"Contact email address for inquiries. Add only email addresses that are "
-"intended to be publicly used."
-msgstr ""
-"Kontaktinis el. pašto adresas užklausoms. Pridėkite tik el. pašto adresus, "
-"skirtus viešam naudojimui."
+#: src/osmEditDialog.js:166
+msgid "Accessibility"
+msgstr "Prieiga"
+
+#: src/osmEditDialog.js:169
+msgid "Wheelchair Access"
+msgstr "Prieiga neįgaliųjų vežimėliais"
+
+#: src/osmEditDialog.js:172 src/osmEditDialog.js:181 src/osmEditDialog.js:216
+msgid "Yes"
+msgstr "Taip"
+
+#: src/osmEditDialog.js:173 src/osmEditDialog.js:182 src/osmEditDialog.js:217
+msgid "No"
+msgstr "Ne"
+
+#: src/osmEditDialog.js:174
+msgid "Limited"
+msgstr "Ribota"
+
+#: src/osmEditDialog.js:175
+msgid "Designated"
+msgstr "Su paskirtimi"
+
+#: src/osmEditDialog.js:178
+msgid "Internet Access"
+msgstr "Interneto prieiga"
+
+#: src/osmEditDialog.js:183
+msgid "Wi-Fi"
+msgstr "Wi-Fi"
+
+#: src/osmEditDialog.js:184
+msgid "Wired"
+msgstr "Laidinis"
+
+#: src/osmEditDialog.js:185
+msgid "Terminal"
+msgstr "Terminalas"
+
+#: src/osmEditDialog.js:186
+msgid "Service"
+msgstr "Tarnyba"
+
+#: src/osmEditDialog.js:191
+msgid "Miscellaneous"
+msgstr "Įvairūs"
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:149 src/placeView.js:764
+#: src/osmEditDialog.js:194 src/osmEditDialog.js:797 src/placeView.js:778
 msgid "Wikipedia"
 msgstr "Wikipedia"
-
-#: src/osmEditDialog.js:156 src/placeView.js:428
-msgid "Opening hours"
-msgstr "Darbo laikas"
-
-#: src/osmEditDialog.js:161
-msgid "See the link in the label for help on format."
-msgstr "Informaciją apie formatą gausite paspaudę saitą apačioje."
 
 #. TODO: this is a bit of a work-around to re-interpret the population,
 #. * stored as a string into an integer to convert back to a locale-
@@ -1003,216 +1021,263 @@ msgstr "Informaciją apie formatą gausite paspaudę saitą apačioje."
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:164 src/placeView.js:538
+#: src/osmEditDialog.js:201 src/placeView.js:537
 msgid "Population"
 msgstr "Gyventojų skaičius"
 
-#: src/osmEditDialog.js:169 src/placeView.js:567
+#: src/osmEditDialog.js:206 src/placeView.js:566
 msgid "Altitude"
 msgstr "Aukštis"
 
-#: src/osmEditDialog.js:172
-msgid "Elevation (height above sea level) of a point in meters."
-msgstr "Absoliutus aukšti (virš jūros lygio) metrais."
+#: src/osmEditDialog.js:207
+msgid "Elevation above sea level, in meters"
+msgstr "Absoliutus aukšti virš jūros lygio metrais."
 
-#: src/osmEditDialog.js:175
-msgid "Wheelchair access"
-msgstr "Prieiga neįgaliųjų vežimėliais: %s"
-
-#: src/osmEditDialog.js:178 src/osmEditDialog.js:187 src/osmEditDialog.js:198
-#: src/osmEditDialog.js:233
-msgid "Yes"
-msgstr "Taip"
-
-#: src/osmEditDialog.js:179 src/osmEditDialog.js:188 src/osmEditDialog.js:199
-#: src/osmEditDialog.js:234
-msgid "No"
-msgstr "Ne"
-
-#: src/osmEditDialog.js:180
-msgid "Limited"
-msgstr "Ribota"
-
-#: src/osmEditDialog.js:181
-msgid "Designated"
-msgstr "Su paskirtimi"
-
-#: src/osmEditDialog.js:184
-msgid "Internet access"
-msgstr "Interneto prieiga"
-
-#: src/osmEditDialog.js:189
-msgid "Wi-Fi"
-msgstr "Wi-Fi"
-
-#: src/osmEditDialog.js:190
-msgid "Wired"
-msgstr "Laidinis"
-
-#: src/osmEditDialog.js:191
-msgid "Terminal"
-msgstr "Terminalas"
-
-#: src/osmEditDialog.js:192
-msgid "Service"
-msgstr "Tarnyba"
-
-#: src/osmEditDialog.js:195
+#: src/osmEditDialog.js:213
 msgid "Takeout"
 msgstr "Išsinešimui"
 
-#: src/osmEditDialog.js:200
+#: src/osmEditDialog.js:218
 msgid "Only"
 msgstr "Tik"
 
-#: src/osmEditDialog.js:203
+#: src/osmEditDialog.js:221
 msgid "Religion"
 msgstr "Religija"
 
-#: src/osmEditDialog.js:206 src/translations.js:286
+#: src/osmEditDialog.js:224 src/translations.js:286
 msgid "Animism"
 msgstr "Animizmas"
 
-#: src/osmEditDialog.js:207
+#: src/osmEditDialog.js:225
 msgid "Bahá’í"
 msgstr "Bahá’í"
 
-#: src/osmEditDialog.js:208 src/translations.js:288
+#: src/osmEditDialog.js:226 src/translations.js:288
 msgid "Buddhism"
 msgstr "Budizmas"
 
-#: src/osmEditDialog.js:209 src/translations.js:289
+#: src/osmEditDialog.js:227 src/translations.js:289
 msgid "Caodaism"
 msgstr "Kaodaizmas"
 
-#: src/osmEditDialog.js:210 src/translations.js:290
+#: src/osmEditDialog.js:228 src/translations.js:290
 msgid "Christianity"
 msgstr "Krikščionybė"
 
-#: src/osmEditDialog.js:211 src/translations.js:291
+#: src/osmEditDialog.js:229 src/translations.js:291
 msgid "Confucianism"
 msgstr "Konfucionizmas"
 
-#: src/osmEditDialog.js:212 src/translations.js:292
+#: src/osmEditDialog.js:230 src/translations.js:292
 msgid "Hinduism"
 msgstr "Induizmas"
 
-#: src/osmEditDialog.js:213 src/translations.js:293
+#: src/osmEditDialog.js:231 src/translations.js:293
 msgid "Jainism"
 msgstr "Jainizmas"
 
-#: src/osmEditDialog.js:214 src/translations.js:294
+#: src/osmEditDialog.js:232 src/translations.js:294
 msgid "Judaism"
 msgstr "Judėjizmas"
 
-#: src/osmEditDialog.js:215 src/translations.js:295
+#: src/osmEditDialog.js:233 src/translations.js:295
 msgid "Islam"
 msgstr "Islamas"
 
-#: src/osmEditDialog.js:216 src/translations.js:296
+#: src/osmEditDialog.js:234 src/translations.js:296
 msgid "Multiple Religions"
 msgstr "Daug religijų"
 
-#: src/osmEditDialog.js:217 src/translations.js:297
+#: src/osmEditDialog.js:236 src/translations.js:298
 msgid "Paganism"
 msgstr "Pagonybė"
 
-#: src/osmEditDialog.js:218 src/translations.js:298
+#: src/osmEditDialog.js:237 src/translations.js:299
 msgid "Pastafarianism"
 msgstr "Pastafarianizmas"
 
-#: src/osmEditDialog.js:219 src/translations.js:299
+#: src/osmEditDialog.js:238 src/translations.js:300
 msgid "Scientology"
 msgstr "Sientologija"
 
-#: src/osmEditDialog.js:220 src/translations.js:300
+#: src/osmEditDialog.js:239 src/translations.js:301
 msgid "Shinto"
 msgstr "Šinto"
 
-#: src/osmEditDialog.js:221 src/translations.js:301
+#: src/osmEditDialog.js:240 src/translations.js:302
 msgid "Sikhism"
 msgstr "Sichizmas"
 
-#: src/osmEditDialog.js:222 src/translations.js:302
+#: src/osmEditDialog.js:241 src/translations.js:303
 msgid "Spiritualism"
 msgstr "Spiritualizmas"
 
-#: src/osmEditDialog.js:223 src/translations.js:303
+#: src/osmEditDialog.js:242 src/translations.js:304
 msgid "Taoism"
 msgstr "Taoizmas"
 
-#: src/osmEditDialog.js:224 src/translations.js:304
+#: src/osmEditDialog.js:243 src/translations.js:305
 msgid "Unitarian Universalism"
 msgstr "Unitarinis universalizmas"
 
-#: src/osmEditDialog.js:225 src/translations.js:305
+#: src/osmEditDialog.js:244 src/translations.js:306
 msgid "Voodoo"
 msgstr "Voodoo"
 
-#: src/osmEditDialog.js:226 src/translations.js:306
+#: src/osmEditDialog.js:245 src/translations.js:307
 msgid "Yazidism"
 msgstr "Jazidizmas"
 
-#: src/osmEditDialog.js:227 src/translations.js:307
+#: src/osmEditDialog.js:246 src/translations.js:308
 msgid "Zoroastrianism"
 msgstr "Zoroastrianizmas"
 
-#: src/osmEditDialog.js:230 src/poiCategories.js:176
-msgid "Toilets"
-msgstr "Tualetai"
-
-#: src/osmEditDialog.js:237
+#: src/osmEditDialog.js:249
 msgid "Note"
 msgstr "Pastaba"
 
-#: src/osmEditDialog.js:240
-msgid ""
-"Information used to inform other mappers about non-obvious information about "
-"an element, the author’s intent when creating it, or hints for further "
-"improvement."
-msgstr ""
-"Informacija, naudojama kitiems žemėlapių naudotojams informuoti apie "
-"neakivaizdžią informaciją, susijusią su elementu, autoriaus tikslą jį "
-"kuriant arba patarimus tolimesniam patobulinimui."
+#: src/osmEditDialog.js:310
+msgctxt "dialog heading"
+msgid "Add Location"
+msgstr "Pridėti vietą"
 
-#: src/osmEditDialog.js:339
-msgctxt "dialog title"
-msgid "Add to OpenStreetMap"
-msgstr "Pridėti į OpenStreetMap"
+#. set the title and description for adding a POI
+#: src/osmEditDialog.js:319
+msgid "Add Location"
+msgstr "Pridėti vietą"
 
-#: src/osmEditDialog.js:393
-msgid "Select Type"
-msgstr "Pasirinkite tipą"
+#: src/osmEditDialog.js:320
+msgid "Add a new location to OpenStreetMap"
+msgstr "Pridėti naują vietą į OpenStreetMap"
 
-#: src/osmEditDialog.js:515
-msgid "_Done"
-msgstr "_Atlikta"
+#: src/osmEditDialog.js:411
+msgid "Changes successfully submitted"
+msgstr "Pakeitimai sėkmingai pateikti"
 
-#: src/osmEditDialog.js:532
-msgid "Next"
-msgstr "Kitas"
+#: src/osmEditDialog.js:703
+msgid "Unspecified"
+msgstr "Nenurodyta"
 
-#: src/osmEditDialog.js:583
-msgid "Remove"
-msgstr "Pašalinti"
+#: src/osmEditDialog.js:765
+msgid "Street Name"
+msgstr "Gatvės pavadinimas"
 
-#: src/osmEditDialog.js:821
-msgid ""
-"The format used should include the language code and the article title like "
-"“en:Article title”."
-msgstr ""
-"Naudojamas formatas turi įtraukti kalbos kodą bei straipsnio pavadinimą, "
-"pvz. „lt:Straipsnio pavadinimas“."
+#: src/osmEditDialog.js:766
+msgid "House Number"
+msgstr "Namo numeris"
 
-#: src/osmEditDialog.js:827
-msgid "Use the reload button to load the Wikidata tag for the selected article"
-msgstr ""
-"Naudokite pakartotinio įkėlimo mygtuką pažymėto straipsnio Wikidata žymai "
-"įkelti"
+#: src/osmEditDialog.js:767
+msgid "ZIP Code"
+msgstr "ZIP kodas"
 
-#: src/osmEditDialog.js:835
+#: src/osmEditDialog.js:768
+msgid "City"
+msgstr "Miestas"
+
+#: src/osmEditDialog.js:800
+msgid "Wikipedia Article"
+msgstr "Wikipedia straipsnis"
+
+#: src/osmEditDialog.js:804
+msgid "Wikidata Tag"
+msgstr "Wikidata žyma"
+
+#: src/osmEditDialog.js:809
+msgid "Load Wikidata tag from article name"
+msgstr "Įkelti Wikidata žymą iš straipsnio pavadinimo"
+
+#: src/osmEditDialog.js:865
 msgid "Couldn't find Wikidata tag for article"
 msgstr "Nepavyko rasti straipsnio Wikidata žymos"
+
+#. Translators: This represents the title for places tagged with the
+#. * "aerialway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Aerialway
+#.
+#: src/osmTypes.js:45
+msgid "Aerialway"
+msgstr "Oro kelias"
+
+#. Translators: This represents the title for places tagged with the
+#. * "aeroway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Aeroway
+#.
+#: src/osmTypes.js:49
+msgid "Aeroway"
+msgstr "Aerokelias"
+
+#. Translators: This represents the title for places tagged with the
+#. * "amenity" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Amenity
+#.
+#: src/osmTypes.js:53
+msgid "Amenity"
+msgstr "Patogumai"
+
+#. Translators: This represents the title for places tagged with the
+#. * "barrier" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Barrier
+#.
+#: src/osmTypes.js:57
+msgid "Barrier"
+msgstr "Barjeras"
+
+#. Translators: This represents the title for places tagged with the
+#. * "highway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Highway
+#.
+#: src/osmTypes.js:61
+msgid "Road"
+msgstr "Kelias"
+
+#. Translators: This represents the title for places tagged with the
+#. * "historic" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Historic
+#.
+#: src/osmTypes.js:65
+msgid "Historic"
+msgstr "Istorinis"
+
+#. Translators: This represents the title for places tagged with the
+#. * "leisure" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Leisure
+#.
+#: src/osmTypes.js:69
+msgid "Leisure"
+msgstr "Malonumai"
+
+#. Translators: This represents the title for places tagged with the
+#. * "office" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Office
+#.
+#: src/osmTypes.js:73
+msgid "Office"
+msgstr "Biuras"
+
+#. Translators: This represents the title for places tagged with the
+#. * "place" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Place
+#.
+#: src/osmTypes.js:77
+msgid "Place"
+msgstr "Vieta"
+
+#. Translators: This represents the title for places tagged with the
+#. * "railway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Railway
+#.
+#: src/osmTypes.js:81
+msgid "Railway"
+msgstr "Geležinkelis"
+
+#. Translators: This represents the title for places tagged with the
+#. * "shop" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Shop
+#.
+#: src/osmTypes.js:85
+msgid "Shop"
+msgstr "Parduotuvė"
+
+#. Translators: This represents the title for places tagged with the
+#. * "tourism" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Tourism
+#.
+#: src/osmTypes.js:89 src/poiCategories.js:467
+msgid "Tourism"
+msgstr "Turizmas"
+
+#: src/osmTypes.js:97
+msgid "Other"
+msgstr "Kita"
 
 #: src/photonUtils.js:118 src/placeListRow.js:70
 msgid "Unnamed place"
@@ -1244,16 +1309,16 @@ msgctxt "short distance format string"
 msgid "< %s"
 msgstr "< %s"
 
-#: src/placeView.js:292
+#: src/placeView.js:291
 msgid "Coordinates"
 msgstr "Koordinatės"
 
-#: src/placeView.js:296
+#: src/placeView.js:295
 msgid "Accuracy"
 msgstr "Tikslumas"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:299
+#: src/placeView.js:298
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Tikslumas: %s"
@@ -1264,7 +1329,7 @@ msgstr "Tikslumas: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:318
+#: src/placeView.js:317
 msgid "Phone number"
 msgstr "Telefono numeris"
 
@@ -1275,16 +1340,16 @@ msgstr "Telefono numeris"
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
 #.
-#: src/placeView.js:352 src/placeView.js:391
+#: src/placeView.js:351 src/placeView.js:390
 msgid "Floor"
 msgstr "Aukštas"
 
-#: src/placeView.js:354
+#: src/placeView.js:353
 #, javascript-format
 msgid "Floor %s"
 msgstr "Aukštas %s"
 
-#: src/placeView.js:366
+#: src/placeView.js:365
 msgid "At ground level"
 msgstr "Pirmame aukšte"
 
@@ -1293,7 +1358,7 @@ msgstr "Pirmame aukšte"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:375
+#: src/placeView.js:374
 #, javascript-format
 msgid "%s floor above ground level"
 msgid_plural "%s floors above ground level"
@@ -1306,7 +1371,7 @@ msgstr[2] "%s aukšte virš vestibiulio"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:386
+#: src/placeView.js:385
 #, javascript-format
 msgid "%s floor below ground level"
 msgid_plural "%s floors below ground level"
@@ -1318,7 +1383,7 @@ msgstr[2] "%s aukšte žemiau vestibiulio"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:404
+#: src/placeView.js:403
 msgid "Offers takeout"
 msgstr "Siūlo išsinešti"
 
@@ -1326,7 +1391,7 @@ msgstr "Siūlo išsinešti"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:412
+#: src/placeView.js:411
 msgid "Does not offer takeout"
 msgstr "Nesiūlo išsinešti"
 
@@ -1335,14 +1400,18 @@ msgstr "Nesiūlo išsinešti"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:421
+#: src/placeView.js:420
 msgid "Only offers takeout"
 msgstr "Siūlo tik išsinešti"
+
+#: src/placeView.js:427
+msgid "Opening hours"
+msgstr "Darbo laikas"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:438
+#: src/placeView.js:437
 msgid "Public internet access"
 msgstr "Vieša interneto prieiga"
 
@@ -1350,50 +1419,50 @@ msgstr "Vieša interneto prieiga"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:447
+#: src/placeView.js:446
 msgid "No internet access"
 msgstr "Nėra interneto prieigos"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:455
+#: src/placeView.js:454
 msgid "Public Wi-Fi"
 msgstr "Viešas Wi-Fi"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:463
+#: src/placeView.js:462
 msgid "Wired internet access"
 msgstr "Laidinė interneto prieiga"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:471
+#: src/placeView.js:470
 msgid "Computers available for use"
 msgstr "Prieinami kompiuteriai naudojimui"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:479
+#: src/placeView.js:478
 msgid "Internet assistance available"
 msgstr "Yra interneto asistentas"
 
-#: src/placeView.js:485
+#: src/placeView.js:484
 msgid "No toilets available"
 msgstr "Nėra tualetų"
 
-#: src/placeView.js:488
+#: src/placeView.js:487
 msgid "Toilets available"
 msgstr "Yra tualetai"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:497
+#: src/placeView.js:496
 msgid "Wheelchair accessible"
 msgstr "Prieiga neįgaliųjų vežimėliais"
 
@@ -1402,7 +1471,7 @@ msgstr "Prieiga neįgaliųjų vežimėliais"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:507
+#: src/placeView.js:506
 msgid "Limited wheelchair accessibility"
 msgstr "Ribota prieiga neįgaliųjų vežimėliais"
 
@@ -1410,7 +1479,7 @@ msgstr "Ribota prieiga neįgaliųjų vežimėliais"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:516
+#: src/placeView.js:515
 msgid "Not wheelchair accessible"
 msgstr "Nėra prieigos neįgaliųjų vežimėliais"
 
@@ -1419,7 +1488,7 @@ msgstr "Nėra prieigos neįgaliųjų vežimėliais"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:526
+#: src/placeView.js:525
 msgid "Designated for wheelchair users"
 msgstr "Sukurta neįgaliųjų vežimėlių naudotojams"
 
@@ -1428,7 +1497,7 @@ msgstr "Sukurta neįgaliųjų vežimėlių naudotojams"
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:557
+#: src/placeView.js:556
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s žemiau jūros lygio"
@@ -1437,11 +1506,11 @@ msgstr "%s žemiau jūros lygio"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:564
+#: src/placeView.js:563
 msgid "At sea level"
 msgstr "Jūros lygyje"
 
-#: src/placeView.js:573
+#: src/placeView.js:575
 msgid "Religion:"
 msgstr "Religija:"
 
@@ -1488,6 +1557,10 @@ msgstr "Vaistinės"
 #: src/poiCategories.js:171
 msgid "Recycling"
 msgstr "Atliekų rūšiavimas"
+
+#: src/poiCategories.js:176
+msgid "Toilets"
+msgstr "Tualetai"
 
 #: src/poiCategories.js:182
 msgid "Wheelchair-accessible Toilets"
@@ -1573,151 +1646,151 @@ msgstr "Kepiniai"
 msgid "Flowers"
 msgstr "Gėlės"
 
-#: src/poiCategories.js:301
+#: src/poiCategories.js:299
+msgid "Gifts"
+msgstr "Dovanos"
+
+#: src/poiCategories.js:307
 msgid "Transportation"
 msgstr "Transportas"
 
-#: src/poiCategories.js:305
+#: src/poiCategories.js:311
 msgid "Bus & Tram Stops"
 msgstr "Autobusų ir tramvajų stotelės"
 
-#: src/poiCategories.js:313
+#: src/poiCategories.js:319
 msgid "Train & Subway Stations"
 msgstr "Traukinių ir metro stotelės"
 
-#: src/poiCategories.js:321
+#: src/poiCategories.js:327
 msgid "Tickets"
 msgstr "Bilietai"
 
-#: src/poiCategories.js:329
+#: src/poiCategories.js:335
 msgid "Parking"
 msgstr "Stovėjimo aikštelės"
 
-#: src/poiCategories.js:334
+#: src/poiCategories.js:340
 msgid "Bicycle Parking"
 msgstr "Dviračių aikštelės"
 
-#: src/poiCategories.js:339
+#: src/poiCategories.js:345
 msgid "Bicycle Rental"
 msgstr "Dviračių nuoma"
 
-#: src/poiCategories.js:344
+#: src/poiCategories.js:350
 msgid "Car Rental"
 msgstr "Automobilių nuoma"
 
-#: src/poiCategories.js:349
+#: src/poiCategories.js:355
 msgid "Fuel"
 msgstr "Degalai"
 
-#: src/poiCategories.js:354
+#: src/poiCategories.js:360
 msgid "EV Charging"
 msgstr "Elektromobilių įkrovimas"
 
-#: src/poiCategories.js:362
+#: src/poiCategories.js:368
 msgid "Healthcare"
 msgstr "Sveikatos priežiūra"
 
-#: src/poiCategories.js:366
+#: src/poiCategories.js:372
 msgid "Clinics"
 msgstr "Klinikos"
 
-#: src/poiCategories.js:372
+#: src/poiCategories.js:378
 msgid "Hospitals"
 msgstr "Ligoninės"
 
-#: src/poiCategories.js:378
+#: src/poiCategories.js:384
 msgid "Dentists"
 msgstr "Odontologai"
 
-#: src/poiCategories.js:386
+#: src/poiCategories.js:392
 msgid "Accommodation"
 msgstr "Nakvynė"
 
-#: src/poiCategories.js:390
+#: src/poiCategories.js:396
 msgid "Hotels"
 msgstr "Viešbučiai"
 
-#: src/poiCategories.js:395
+#: src/poiCategories.js:401
 msgid "Hostels"
 msgstr "Nakvynės namai"
 
-#: src/poiCategories.js:400
+#: src/poiCategories.js:406
 msgid "Bed & Breakfast"
 msgstr "Lova ir pusryčiai"
 
-#: src/poiCategories.js:405
+#: src/poiCategories.js:411
 msgid "Campings"
 msgstr "Kempingai"
 
-#: src/poiCategories.js:412
+#: src/poiCategories.js:418
 msgid "Recreation"
 msgstr "Rekreacija"
 
-#: src/poiCategories.js:416
+#: src/poiCategories.js:422
 msgid "Parks"
 msgstr "Parkai"
 
-#: src/poiCategories.js:421
+#: src/poiCategories.js:427
 msgid "Playgrounds"
 msgstr "Žaidimų aikštelės"
 
-#: src/poiCategories.js:426
+#: src/poiCategories.js:432
 msgid "Beaches"
 msgstr "Pliažai"
 
-#: src/poiCategories.js:431
+#: src/poiCategories.js:437
 msgid "Nature Reserves"
 msgstr "Gamtos rezervatai"
 
-#: src/poiCategories.js:437
+#: src/poiCategories.js:443
 msgid "Theme Parks"
 msgstr "Teminiai parkai"
 
-#: src/poiCategories.js:442
+#: src/poiCategories.js:448
 msgid "Theaters"
 msgstr "Teatrai"
 
-#: src/poiCategories.js:448
+#: src/poiCategories.js:454
 msgid "Movie Theaters"
 msgstr "Kino teatrai"
 
-#: src/poiCategories.js:454
+#: src/poiCategories.js:460
 msgid "Night Clubs"
 msgstr "Naktiniai klubai"
 
-#: src/poiCategories.js:461
-msgid "Tourism"
-msgstr "Turizmas"
-
-#: src/poiCategories.js:465
+#: src/poiCategories.js:471
 msgid "Museums"
 msgstr "Muziejai"
 
-#: src/poiCategories.js:471
+#: src/poiCategories.js:477
 msgid "Attractions"
 msgstr "Atrakcijonai"
 
-#: src/poiCategories.js:476
+#: src/poiCategories.js:482
 msgid "Artworks"
 msgstr "Meno kūriniai"
 
-#: src/poiCategories.js:481
+#: src/poiCategories.js:487
 msgid "Tourist Information"
 msgstr "Informacija turistams"
 
-#: src/poiCategories.js:488
+#: src/poiCategories.js:494
 msgid "Sports"
 msgstr "Sportas"
 
-#: src/poiCategories.js:492
+#: src/poiCategories.js:498
 msgid "Gyms"
 msgstr "Sporto salės"
 
-#: src/poiCategories.js:498
+#: src/poiCategories.js:504
 msgid "Outdoor Gyms"
 msgstr "Sporto aikštelės"
 
-#: src/poiCategories.js:504
+#: src/poiCategories.js:510
 msgid "Golf Courses"
 msgstr "Golfo laukai"
 
@@ -1790,12 +1863,12 @@ msgid "failed to load file"
 msgstr "nepavyko įkelti failo"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:323
+#: src/sidebar.js:338
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Įvertintas laikas: %s"
 
-#: src/sidebar.js:393
+#: src/sidebar.js:408
 #, javascript-format
 msgid "Itineraries provided by %s"
 msgstr "Teikėjus pateikė %s"
@@ -1812,7 +1885,8 @@ msgstr "Pradėkite ties %s"
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: src/transit.js:45 src/transitplugins/openTripPlanner2.js:236
+#: src/transit.js:45 src/transitplugins/motis2.js:314
+#: src/transitplugins/openTripPlanner2.js:236
 msgid "Start"
 msgstr "Pradėkite"
 
@@ -1832,16 +1906,17 @@ msgstr "Nueikite %s"
 msgid "Arrive at %s"
 msgstr "Atvykti ties %s"
 
-#: src/transit.js:79 src/transitplugins/openTripPlanner.js:1175
+#: src/transit.js:79 src/transitplugins/motis2.js:332
+#: src/transitplugins/openTripPlanner.js:1175
 #: src/transitplugins/openTripPlanner2.js:255
 msgid "Arrive"
 msgstr "Atvykti"
 
-#: src/transitLegRow.js:69
+#: src/transitLegRow.js:70
 msgid "Show walking instructions"
 msgstr "Rodyti ėjimo nurodymus"
 
-#: src/transitLegRow.js:70
+#: src/transitLegRow.js:71
 msgid "Hide walking instructions"
 msgstr "Slėpti ėjimo nurodymus"
 
@@ -1892,7 +1967,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: src/transitPlan.js:333
+#: src/transitPlan.js:337
 #, javascript-format
 msgid "%s minute"
 msgid_plural "%s minutes"
@@ -1904,7 +1979,7 @@ msgstr[2] "%s minučių"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: src/transitPlan.js:345
+#: src/transitPlan.js:349
 #, javascript-format
 msgid "%s hour"
 msgid_plural "%s hours"
@@ -1916,7 +1991,7 @@ msgstr[2] "%s valandų"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: src/transitPlan.js:353
+#: src/transitPlan.js:357
 #, javascript-format
 msgid "%s:%s hour"
 msgid_plural "%s:%s hours"
@@ -1930,7 +2005,7 @@ msgstr[2] "%s:%s valandų"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:746
+#: src/transitPlan.js:758
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -2107,127 +2182,237 @@ msgstr "%s mylios"
 msgid "%s ft"
 msgstr "%s pėdos"
 
-#: src/transitplugins/openTripPlanner.js:1236
+#: src/transitplugins/motis2.js:344
+#, javascript-format
+msgid "Take the stairs to level %s"
+msgstr "Kilkite laiptais į %s aukštą"
+
+#: src/transitplugins/motis2.js:345
+msgid "Take the stairs"
+msgstr "Kilkite laiptais"
+
+#: src/transitplugins/motis2.js:349 src/transitplugins/openTripPlanner.js:1236
 #: src/transitplugins/openTripPlanner2.js:266
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Tęsti %s"
 
-#: src/transitplugins/openTripPlanner.js:1241
+#: src/transitplugins/motis2.js:354 src/transitplugins/openTripPlanner.js:1241
 #: src/transitplugins/openTripPlanner2.js:270
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Sukti kairėn ties %s"
 
-#: src/transitplugins/openTripPlanner.js:1243
+#: src/transitplugins/motis2.js:355 src/transitplugins/openTripPlanner.js:1243
 #: src/transitplugins/openTripPlanner2.js:271
 msgid "Turn left"
 msgstr "Sukti kairėn"
 
-#: src/transitplugins/openTripPlanner.js:1246
+#: src/transitplugins/motis2.js:359 src/transitplugins/openTripPlanner.js:1246
 #: src/transitplugins/openTripPlanner2.js:275
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Sukti kairiau ties %s"
 
-#: src/transitplugins/openTripPlanner.js:1248
+#: src/transitplugins/motis2.js:360 src/transitplugins/openTripPlanner.js:1248
 #: src/transitplugins/openTripPlanner2.js:276
 msgid "Turn slightly left"
 msgstr "Sukti kairiau"
 
-#: src/transitplugins/openTripPlanner.js:1251
+#: src/transitplugins/motis2.js:364 src/transitplugins/openTripPlanner.js:1251
 #: src/transitplugins/openTripPlanner2.js:280
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Staigiai sukti į kairėn ties %s"
 
-#: src/transitplugins/openTripPlanner.js:1253
+#: src/transitplugins/motis2.js:365 src/transitplugins/openTripPlanner.js:1253
 #: src/transitplugins/openTripPlanner2.js:281
 msgid "Turn sharp left"
 msgstr "Staigiai sukti į kairėn"
 
-#: src/transitplugins/openTripPlanner.js:1256
+#: src/transitplugins/motis2.js:369 src/transitplugins/openTripPlanner.js:1256
 #: src/transitplugins/openTripPlanner2.js:284
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Sukti dešinėn ties %s"
 
-#: src/transitplugins/openTripPlanner.js:1258
+#: src/transitplugins/motis2.js:370 src/transitplugins/openTripPlanner.js:1258
 #: src/transitplugins/openTripPlanner2.js:285
 msgid "Turn right"
 msgstr "Sukti dešinėn"
 
-#: src/transitplugins/openTripPlanner.js:1261
+#: src/transitplugins/motis2.js:374 src/transitplugins/openTripPlanner.js:1261
 #: src/transitplugins/openTripPlanner2.js:289
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Sukti dešiniau ties %s"
 
-#: src/transitplugins/openTripPlanner.js:1263
+#: src/transitplugins/motis2.js:375 src/transitplugins/openTripPlanner.js:1263
 #: src/transitplugins/openTripPlanner2.js:290
 msgid "Turn slightly right"
 msgstr "Sukti dešiniau"
 
-#: src/transitplugins/openTripPlanner.js:1266
+#: src/transitplugins/motis2.js:379 src/transitplugins/openTripPlanner.js:1266
 #: src/transitplugins/openTripPlanner2.js:294
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Staigiai sukti dešinėn ties %s"
 
-#: src/transitplugins/openTripPlanner.js:1268
+#: src/transitplugins/motis2.js:380 src/transitplugins/openTripPlanner.js:1268
 #: src/transitplugins/openTripPlanner2.js:295
 msgid "Turn sharp right"
 msgstr "Staigiai sukti dešinėn"
 
-#: src/transitplugins/openTripPlanner.js:1274
+#: src/transitplugins/motis2.js:387 src/transitplugins/openTripPlanner.js:1274
 #: src/transitplugins/openTripPlanner2.js:302
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "Žiede pasirinkite %s išvažiavimą"
 
-#: src/transitplugins/openTripPlanner.js:1276
+#: src/transitplugins/motis2.js:390 src/transitplugins/openTripPlanner.js:1276
 #: src/transitplugins/openTripPlanner2.js:305
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "Žiede pasirinkite išvažiavimą į %s"
 
-#: src/transitplugins/openTripPlanner.js:1278
+#: src/transitplugins/motis2.js:392 src/transitplugins/openTripPlanner.js:1278
 #: src/transitplugins/openTripPlanner2.js:307
 msgid "Take the roundabout"
 msgstr "Įvažiuokite į žiedą"
 
-#: src/transitplugins/openTripPlanner.js:1282
+#: src/transitplugins/motis2.js:400 src/transitplugins/openTripPlanner.js:1282
 #: src/transitplugins/openTripPlanner2.js:315
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Liftu pasikelkite į %s"
 
-#: src/transitplugins/openTripPlanner.js:1284
+#: src/transitplugins/motis2.js:401 src/transitplugins/openTripPlanner.js:1284
 #: src/transitplugins/openTripPlanner2.js:316
 msgid "Take the elevator"
 msgstr "Kilkite liftu"
 
-#: src/transitplugins/openTripPlanner.js:1288
+#: src/transitplugins/motis2.js:405 src/transitplugins/openTripPlanner.js:1288
 #: src/transitplugins/openTripPlanner2.js:320
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Apsisukite į %s"
 
-#: src/transitplugins/openTripPlanner.js:1290
+#: src/transitplugins/motis2.js:406 src/transitplugins/openTripPlanner.js:1290
 #: src/transitplugins/openTripPlanner2.js:321
 msgid "Make a left u-turn"
 msgstr "Apsisukite"
 
-#: src/transitplugins/openTripPlanner.js:1293
+#: src/transitplugins/motis2.js:410 src/transitplugins/openTripPlanner.js:1293
 #: src/transitplugins/openTripPlanner2.js:325
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Apsisukite į dešinę į %s"
 
-#: src/transitplugins/openTripPlanner.js:1295
+#: src/transitplugins/motis2.js:411 src/transitplugins/openTripPlanner.js:1295
 #: src/transitplugins/openTripPlanner2.js:326
 msgid "Make a right u-turn"
 msgstr "Apsisukite į dešinę"
+
+#~ msgid "Postal code"
+#~ msgstr "Pašto kodas"
+
+#~ msgctxt "dialog title"
+#~ msgid "Edit on OpenStreetMap"
+#~ msgstr "Redaguoti OpenStreetMap"
+
+#~ msgid "_Add Field"
+#~ msgstr "_Pridėti lauką"
+
+#~ msgid "Comment"
+#~ msgstr "Komentaras"
+
+#~ msgid "_Next"
+#~ msgstr "_Kitas"
+
+#~ msgid "Article"
+#~ msgstr "Straipsnis"
+
+#~ msgid "Walking"
+#~ msgstr "Pėsčiomis"
+
+#~ msgid "Cycling"
+#~ msgstr "Dviračiu"
+
+#~ msgid "Driving"
+#~ msgstr "Automobiliu"
+
+#~ msgid "The official name. This is typically what appears on signs."
+#~ msgstr "Oficialus pavadinimas. Jis dažniausiai matomas ženkluose."
+
+#~ msgid "This is not a valid URL. Make sure to include http:// or https://."
+#~ msgstr ""
+#~ "Tai nėra tinkamas URL. Įsitikinkite, kad pateikėte http:// arba https://."
+
+#~ msgid ""
+#~ "The official website. Try to use the most basic form of a URL i.e. http://"
+#~ "example.com instead of http://example.com/index.html."
+#~ msgstr ""
+#~ "Oficialus tinklalapis. Bandykite paprasčiausią URL formą, pvz. http://"
+#~ "pavyzdys.lt vietoj http://pavyzdys.lt/index.html."
+
+#~ msgid ""
+#~ "Phone number. Use the international format, starting with a + sign. "
+#~ "Beware of local privacy laws, especially for private phone numbers."
+#~ msgstr ""
+#~ "Telefono numeris. Naudokite tarptautinį formatą, prasidedantį + simboliu. "
+#~ "Atsižvelkite į vietinius privatumo įstatymus, ypač dės asmeninių telefono "
+#~ "numerių."
+
+#~ msgid ""
+#~ "This is not a valid email address. Make sure to not include the mailto: "
+#~ "protocol prefix."
+#~ msgstr ""
+#~ "Tai nėra tinkamas el. pašto adresas. Įsitikinkite, kad nepateikėte "
+#~ "mailto: protokolo priešdėlio."
+
+#~ msgid ""
+#~ "Contact email address for inquiries. Add only email addresses that are "
+#~ "intended to be publicly used."
+#~ msgstr ""
+#~ "Kontaktinis el. pašto adresas užklausoms. Pridėkite tik el. pašto "
+#~ "adresus, skirtus viešam naudojimui."
+
+#~ msgid "See the link in the label for help on format."
+#~ msgstr "Informaciją apie formatą gausite paspaudę saitą apačioje."
+
+#~ msgid ""
+#~ "Information used to inform other mappers about non-obvious information "
+#~ "about an element, the author’s intent when creating it, or hints for "
+#~ "further improvement."
+#~ msgstr ""
+#~ "Informacija, naudojama kitiems žemėlapių naudotojams informuoti apie "
+#~ "neakivaizdžią informaciją, susijusią su elementu, autoriaus tikslą jį "
+#~ "kuriant arba patarimus tolimesniam patobulinimui."
+
+#~ msgid "Select Type"
+#~ msgstr "Pasirinkite tipą"
+
+#~ msgid "_Done"
+#~ msgstr "_Atlikta"
+
+#~ msgid "Next"
+#~ msgstr "Kitas"
+
+#~ msgid "Remove"
+#~ msgstr "Pašalinti"
+
+#~ msgid ""
+#~ "The format used should include the language code and the article title "
+#~ "like “en:Article title”."
+#~ msgstr ""
+#~ "Naudojamas formatas turi įtraukti kalbos kodą bei straipsnio pavadinimą, "
+#~ "pvz. „lt:Straipsnio pavadinimas“."
+
+#~ msgid ""
+#~ "Use the reload button to load the Wikidata tag for the selected article"
+#~ msgstr ""
+#~ "Naudokite pakartotinio įkėlimo mygtuką pažymėto straipsnio Wikidata žymai "
+#~ "įkelti"
 
 #~ msgid "What's Here?"
 #~ msgstr "Kas ten?"
@@ -2276,9 +2461,6 @@ msgstr "Apsisukite į dešinę"
 
 #~ msgid "The directory does not exist"
 #~ msgstr "Katalogo nėra"
-
-#~ msgid "No filename specified"
-#~ msgstr "Nenurodytas failo pavadinimas"
 
 #~ msgid ""
 #~ "Location was added to the map, note that it may take a while before it "
@@ -2338,9 +2520,6 @@ msgstr "Apsisukite į dešinę"
 #~ msgid "Whether aerial tiles should use hybrid style (with labels)."
 #~ msgstr "Ar oro plytelės turėtų naudoti hibridinį stilių (su užrašais)."
 
-#~ msgid "Visibility"
-#~ msgstr "Matomumas"
-
 #~ msgid "Post on Facebook"
 #~ msgstr "Pranešti Facebook"
 
@@ -2395,9 +2574,6 @@ msgstr "Apsisukite į dešinę"
 
 #~ msgid "Select an account"
 #~ msgstr "Pasirinkite paskyrą"
-
-#~ msgid "Loading"
-#~ msgstr "Įkeliama"
 
 #~ msgid "Select a place"
 #~ msgstr "Pasirinkite vietą"
