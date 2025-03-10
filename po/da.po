@@ -5,13 +5,13 @@
 # Kenneth Nielsen <k.nielsen81@gmail.com>, 2014.
 # scootergrisen, 2015, 2019.
 # Ask Hjorth Larsen <asklarsen@gmail.com>, 2015, 16, 17, 18.
-# Alan Mortensen <alanmortensen.am@gmail.com>, 2020-24.
+# Alan Mortensen <alanmortensen.am@gmail.com>, 2020-25.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2024-07-29 18:31+0000\n"
-"PO-Revision-Date: 2024-09-01 15:52+0200\n"
+"POT-Creation-Date: 2025-02-23 21:34+0000\n"
+"PO-Revision-Date: 2025-03-10 19:13+0100\n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -30,7 +30,7 @@ msgstr ""
 #.
 #. Translators: This is the program name.
 #: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
-#: data/ui/main-window.ui:27 src/application.js:64 src/mainWindow.js:118
+#: data/ui/main-window.ui:27 src/application.js:61 src/mainWindow.js:118
 #: src/mainWindow.js:590
 msgid "Maps"
 msgstr "Kort"
@@ -58,7 +58,7 @@ msgstr ""
 "hundrede tusinde mennesker over hele verden."
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.appdata.xml.in.in:469 src/mainWindow.js:587
+#: data/org.gnome.Maps.appdata.xml.in.in:512 src/mainWindow.js:587
 msgid "The GNOME Project"
 msgstr "GNOME-projektet"
 
@@ -200,11 +200,12 @@ msgstr "Kopiér placering"
 msgid "Add to OpenStreetMap…"
 msgstr "Føj til OpenStreetMap …"
 
+#. Translators: This is the title of the dialog for expoting the map view content to an image file
 #: data/ui/export-view-dialog.ui:7
 msgid "Export View"
 msgstr "Eksportér visning"
 
-#: data/ui/export-view-dialog.ui:16 data/ui/osm-edit-dialog.ui:226
+#: data/ui/export-view-dialog.ui:16 data/ui/osm-discard-dialog.ui:12
 #: data/ui/send-to-dialog.ui:10
 msgid "_Cancel"
 msgstr "_Annullér"
@@ -426,86 +427,90 @@ msgstr "Din OpenStreetMap-konto er aktiv."
 msgid "_Sign Out"
 msgstr "_Log ud"
 
-#: data/ui/osm-edit-address.ui:11
-msgid "Street"
-msgstr "Gade"
+#: data/ui/osm-discard-dialog.ui:5
+msgid "Discard Changes?"
+msgstr "Kassér ændringer?"
 
-#: data/ui/osm-edit-address.ui:22
-msgid "House number"
-msgstr "Husnummer"
+#: data/ui/osm-discard-dialog.ui:6
+msgid "Your current changes to the map will be lost"
+msgstr "Dine nuværende ændringer til kortet vil gå tabt"
 
-#: data/ui/osm-edit-address.ui:33
-msgid "Postal code"
-msgstr "Postnummer"
+#: data/ui/osm-discard-dialog.ui:13
+msgid "_Discard"
+msgstr "_Kassér"
 
-#. This is the place name as it would be written in a postal address (typically coming after the postal code)
-#: data/ui/osm-edit-address.ui:44
-msgid "City"
-msgstr "By"
-
-#: data/ui/osm-edit-dialog.ui:8
+#: data/ui/osm-edit-dialog.ui:5
 msgctxt "dialog title"
-msgid "Edit on OpenStreetMap"
-msgstr "Redigér på OpenStreetMap"
+msgid "Edit Location"
+msgstr "Redigér placering"
 
-#: data/ui/osm-edit-dialog.ui:57
-msgid "Type"
-msgstr "Type"
+#: data/ui/osm-edit-dialog.ui:25
+msgid "Loading…"
+msgstr "Indlæser …"
+
+#: data/ui/osm-edit-dialog.ui:38 data/ui/osm-edit-dialog.ui:53
+#: data/ui/osm-edit-dialog.ui:101
+msgid "Edit Location"
+msgstr "Redigér placering"
+
+#: data/ui/osm-edit-dialog.ui:54
+msgid "Edit an existing location in OpenStreetMap"
+msgstr "Redigér en eksisterende placering i OpenStreetMap"
+
+#: data/ui/osm-edit-dialog.ui:80 src/mapView.js:638
+#: src/transitplugins/motis2.js:350 src/transitplugins/openTripPlanner.js:1238
+#: src/transitplugins/openTripPlanner2.js:267
+msgid "Continue"
+msgstr "Fortsæt"
+
+#: data/ui/osm-edit-dialog.ui:136
+msgid "Location Type"
+msgstr "Placeringstype"
+
+#. Translators: This refers to searching for point-of-interest types. Search is a verb.
+#: data/ui/osm-edit-dialog.ui:264
+msgid "Search types"
+msgstr "Søg efter typer"
+
+#: data/ui/osm-edit-dialog.ui:278
+msgid "Recently Used Types"
+msgstr "Senest brugte typer"
+
+#: data/ui/osm-edit-dialog.ui:301
+msgid "Edit Map"
+msgstr "Redigér kort"
+
+#: data/ui/osm-edit-dialog.ui:320
+msgid "Almost There!"
+msgstr "Du er der næsten!"
+
+#: data/ui/osm-edit-dialog.ui:321
+msgid ""
+"Describe your map changes. They will be visible on all maps that use "
+"OpenStreetMap data."
+msgstr ""
+"Beskriv dine kortændringer. De vil være synlige på alle kort, der bruger "
+"data fra OpenStreetMap."
+
+#: data/ui/osm-edit-dialog.ui:367
+msgid "Submit"
+msgstr "Indsend"
 
 # Velsagtens by, postkode eller senest brugte jf. omkringstående
-#: data/ui/osm-edit-dialog.ui:79
+#: data/ui/osm-edit-dialog.ui:394 src/osmEditDialog.js:235
+#: src/osmEditDialog.js:558 src/osmEditDialog.js:948 src/translations.js:297
 msgid "None"
 msgstr "Ingen"
 
-#: data/ui/osm-edit-dialog.ui:108
-msgid "_Add Field"
-msgstr "_Tilføj felt"
-
-#: data/ui/osm-edit-dialog.ui:131
-msgid "Comment"
-msgstr "Kommentar"
-
-#: data/ui/osm-edit-dialog.ui:159
-msgid ""
-"Map changes will be visible on all maps that use\n"
-"OpenStreetMap data."
-msgstr ""
-"Kortændringer vil være synlige på alle kort, der\n"
-"bruger data fra OpenStreetMap."
-
-#: data/ui/osm-edit-dialog.ui:187
-msgid "Recently Used"
-msgstr "Senest brugte"
-
-#: data/ui/osm-edit-dialog.ui:233 data/ui/sidebar.ui:301
-msgid "Back"
-msgstr "Tilbage"
-
-#: data/ui/osm-edit-dialog.ui:241
-msgid "_Next"
-msgstr "_Næste"
-
-#: data/ui/osm-edit-wikipedia.ui:8
-msgid "Article"
-msgstr "Artikel"
-
-#: data/ui/osm-edit-wikipedia.ui:21
-msgid "Wikidata tag"
-msgstr "Wikidata-mærke"
-
-#: data/ui/osm-edit-wikipedia.ui:32
-msgid "Load Wikidata tag for article"
-msgstr "Indlæs Wikidata-mærket til artiklen"
-
-#: data/ui/place-popover.ui:23 src/searchBar.js:67
+#: data/ui/place-popover.ui:23 src/searchBar.js:69
 msgid "Explore Nearby Places"
 msgstr "Udforsk steder i nærheden"
 
-#: data/ui/place-popover.ui:82 src/application.js:275
+#: data/ui/place-popover.ui:78 src/application.js:273
 msgid "No results found"
 msgstr "Ingen resultater fundet"
 
-#: data/ui/place-popover.ui:92 src/application.js:253
+#: data/ui/place-popover.ui:88 src/application.js:251
 msgid "An error has occurred"
 msgstr "Der opstod en fejl"
 
@@ -537,31 +542,31 @@ msgstr "Slå synlighed til/fra"
 msgid "Remove Shape Layer"
 msgstr "Fjern formlag"
 
-#: data/ui/sidebar.ui:17
-msgid "Walking"
-msgstr "Gang"
+#: data/ui/sidebar.ui:29
+msgid "Pedestrian"
+msgstr "Fodgænger"
 
-#: data/ui/sidebar.ui:30
-msgid "Cycling"
-msgstr "Cykling"
+#: data/ui/sidebar.ui:36
+msgid "Bike"
+msgstr "Cykel"
 
-#: data/ui/sidebar.ui:44
-msgid "Driving"
-msgstr "Kørsel"
+#: data/ui/sidebar.ui:43
+msgid "Car"
+msgstr "Bil"
 
-#: data/ui/sidebar.ui:59
+#: data/ui/sidebar.ui:50
 msgid "Transit"
 msgstr "Transit"
 
-#: data/ui/sidebar.ui:211
+#: data/ui/sidebar.ui:184
 msgid "Route search by GraphHopper"
 msgstr "Rutesøgning med GraphHopper"
 
-#: data/ui/sidebar.ui:244 src/osmEditDialog.js:677
+#: data/ui/sidebar.ui:217
 msgid "More Information"
 msgstr "Flere oplysninger"
 
-#: data/ui/sidebar.ui:277
+#: data/ui/sidebar.ui:250
 msgid ""
 "Routing itineraries for public transit is provided by third-party\n"
 "services.\n"
@@ -585,61 +590,65 @@ msgstr ""
 "Viste navne og mærker skal betragtes som registrerede varemærker, når dette "
 "er muligt."
 
+#: data/ui/sidebar.ui:274
+msgid "Back"
+msgstr "Tilbage"
+
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:98
+#: data/ui/transit-leg-row.ui:99
 msgid "Hide intermediate stops and information"
 msgstr "Skjul mellemliggende stop og oplysninger"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:156
+#: data/ui/transit-leg-row.ui:157
 msgid "Show intermediate stops and information"
 msgstr "Vis mellemliggende stop og oplysninger"
 
 #. Indicates searching for the next available itineraries
-#: data/ui/transit-options-panel.ui:16
+#: data/ui/transit-options-panel.ui:17
 msgid "Leave Now"
 msgstr "Tag afsted nu"
 
 #. Indicates searching for itineraries leaving at the specified time at the earliest
-#: data/ui/transit-options-panel.ui:17
+#: data/ui/transit-options-panel.ui:18
 msgid "Leave By"
 msgstr "Afgangstidspunkt"
 
 #. Indicates searching for itineraries arriving no later than the specified time
-#: data/ui/transit-options-panel.ui:18
+#: data/ui/transit-options-panel.ui:19
 msgid "Arrive By"
 msgstr "Ankomsttidspunkt"
 
-#: data/ui/transit-options-panel.ui:54
+#: data/ui/transit-options-panel.ui:59
 msgid "View More"
 msgstr "Vis mere"
 
 #. Header indicating selected modes of transit
-#: data/ui/transit-options-panel.ui:86
+#: data/ui/transit-options-panel.ui:91
 msgid "Show"
 msgstr "Vis"
 
-#: data/ui/transit-options-panel.ui:96
+#: data/ui/transit-options-panel.ui:101
 msgid "_Buses"
 msgstr "_Busser"
 
-#: data/ui/transit-options-panel.ui:103
+#: data/ui/transit-options-panel.ui:108
 msgid "_Trams"
 msgstr "_Sporvogne"
 
-#: data/ui/transit-options-panel.ui:110
+#: data/ui/transit-options-panel.ui:115
 msgid "T_rains"
 msgstr "_Tog"
 
-#: data/ui/transit-options-panel.ui:117
+#: data/ui/transit-options-panel.ui:122
 msgid "_Subway"
 msgstr "_Metro"
 
-#: data/ui/transit-options-panel.ui:124
+#: data/ui/transit-options-panel.ui:129
 msgid "_Ferries"
 msgstr "_Færger"
 
-#: data/ui/transit-options-panel.ui:131
+#: data/ui/transit-options-panel.ui:136
 msgid "_Airplanes"
 msgstr "Fl_y"
 
@@ -664,7 +673,7 @@ msgid "Mark as Favorite"
 msgstr "Markér som foretrukken"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.ui:45
+#: data/ui/place-buttons.ui:48
 msgid "Edit on OpenStreetMap"
 msgstr "Redigér på OpenStreetMap"
 
@@ -688,7 +697,7 @@ msgid "Zoom Out"
 msgstr "Zoom ud"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1217
+#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1244
 msgid "Zoom In"
 msgstr "Zoom ind"
 
@@ -713,27 +722,27 @@ msgstr "Kunne ikke finde OSM-element"
 msgid "Could not find user element"
 msgstr "Kunne ikke finde brugerelement"
 
-#: src/application.js:79
+#: src/application.js:73
 msgid "A path to a local tiles directory structure"
 msgstr "En sti til en lokal flisemappestruktur"
 
-#: src/application.js:85
+#: src/application.js:79
 msgid "Tile size for local tiles directory"
 msgstr "Flisestørrelse til lokal flisemappe"
 
-#: src/application.js:89
+#: src/application.js:83
 msgid "Show the version of the program"
 msgstr "Vis programmets version"
 
-#: src/application.js:95
+#: src/application.js:89
 msgid "Search for places"
 msgstr "Søg efter steder"
 
-#: src/application.js:106 src/application.js:107
+#: src/application.js:100 src/application.js:101
 msgid "[FILE…|URI]"
 msgstr "[FIL…|URI]"
 
-#: src/application.js:282
+#: src/application.js:280
 #, javascript-format
 msgid "Invalid maps: URI: %s"
 msgstr "Ugyldige kort: URI: %s"
@@ -813,8 +822,8 @@ msgstr ""
 "E-mail <dansk@dansk-gruppen.dk>"
 
 #: src/mainWindow.js:592
-msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
-msgstr "Ophavsret © 2011 – 2023 Red Hat, Inc. og udviklerne af GNOME Kort"
+msgid "Copyright © 2011 – 2025 Red Hat, Inc. and The GNOME Maps authors"
+msgstr "Ophavsret © 2011 – 2025 Red Hat, Inc. og udviklerne af GNOME Kort"
 
 #: src/mainWindow.js:605
 #, javascript-format
@@ -856,15 +865,15 @@ msgstr "Alle lagfiler"
 msgid "Open Shape Layers"
 msgstr "Åbn formlag"
 
-#: src/mapView.js:617 src/mapView.js:679
+#: src/mapView.js:613 src/mapView.js:675
 msgid "Failed to open layer"
 msgstr "Kunne ikke åbne lag"
 
-#: src/mapView.js:634
+#: src/mapView.js:630
 msgid "Do you want to continue?"
 msgstr "Vil du fortsætte?"
 
-#: src/mapView.js:635
+#: src/mapView.js:631
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -873,28 +882,23 @@ msgstr ""
 "Du er ved at åbne filer med en samlet størrelse på %s MB. Det kan tage noget "
 "tid at indlæse"
 
-#: src/mapView.js:641
+#: src/mapView.js:637
 msgid "Cancel"
 msgstr "Annullér"
 
-#: src/mapView.js:642 src/transitplugins/openTripPlanner.js:1238
-#: src/transitplugins/openTripPlanner2.js:267
-msgid "Continue"
-msgstr "Fortsæt"
-
-#: src/mapView.js:673
+#: src/mapView.js:669
 msgid "File type is not supported"
 msgstr "Filtypen understøttes ikke"
 
-#: src/mapView.js:715
+#: src/mapView.js:711
 msgid "Failed to open GeoURI"
 msgstr "Kunne ikke åbne GeoURI"
 
-#: src/mapView.js:1216
+#: src/mapView.js:1243
 msgid "Zoom in to add location"
 msgstr "Zoom ind for at tilføje placering"
 
-#: src/mapView.js:1237
+#: src/mapView.js:1261
 msgid "Location was added in OpenStreetMap"
 msgstr "Placering blev tilføjet i OpenStreetMap"
 
@@ -938,78 +942,97 @@ msgstr "Objektet er blevet slettet"
 msgid "Way or relation refers to non-existing children"
 msgstr "Way eller relation refererer til underelementer som ikke findes"
 
-#: src/osmEditDialog.js:106
+#: src/osmEditDialog.js:110
+msgid "General"
+msgstr "Generelt"
+
+#: src/osmEditDialog.js:113
 msgid "Name"
 msgstr "Navn"
 
-#: src/osmEditDialog.js:109
-msgid "The official name. This is typically what appears on signs."
-msgstr "Det officielle navn. Dette er typisk hvad der står på et skilt."
+#: src/osmEditDialog.js:118
+msgid "Type"
+msgstr "Type"
 
-#: src/osmEditDialog.js:112
+#: src/osmEditDialog.js:123 src/osmEditDialog.js:759
 msgid "Address"
 msgstr "Adresse"
 
-#: src/osmEditDialog.js:120 src/placeView.js:304
-msgid "Website"
-msgstr "Webside"
+#: src/osmEditDialog.js:136
+msgid "Contact"
+msgstr "Kontaktperson"
 
-#: src/osmEditDialog.js:124
-msgid "This is not a valid URL. Make sure to include http:// or https://."
-msgstr "Dette er ikke en gyldig URL. Husk at medtage http:// eller https://."
+#: src/osmEditDialog.js:139
+msgid "Opening Hours"
+msgstr "Åbningstider"
 
-#: src/osmEditDialog.js:125
-msgid ""
-"The official website. Try to use the most basic form of a URL i.e. http://"
-"example.com instead of http://example.com/index.html."
-msgstr ""
-"Den officielle webside. Prøv at bruge den mest grundlæggende form, dvs. "
-"http://eksempel.dk i stedet for http://eksempel.dk/index.html."
-
-#: src/osmEditDialog.js:130
+#: src/osmEditDialog.js:145
 msgid "Phone"
 msgstr "Telefon"
 
-#: src/osmEditDialog.js:134
-msgid ""
-"Phone number. Use the international format, starting with a + sign. Beware "
-"of local privacy laws, especially for private phone numbers."
-msgstr ""
-"Telefonnummer. Brug det internationale format som begynder med tegnet +. Vær "
-"opmærksom på lokale love om privatlivsbeskyttelse, især for private numre."
-
-#: src/osmEditDialog.js:139 src/placeView.js:337
+#: src/osmEditDialog.js:151 src/placeView.js:336
 msgid "Email"
 msgstr "E-mail"
 
-#: src/osmEditDialog.js:144
-msgid ""
-"This is not a valid email address. Make sure to not include the mailto: "
-"protocol prefix."
-msgstr ""
-"Dette er ikke en gyldig e-mailadresse. Sørg for, at “mailto:” ikke medtages."
+#: src/osmEditDialog.js:158 src/placeView.js:303
+msgid "Website"
+msgstr "Webside"
 
-#: src/osmEditDialog.js:145
-msgid ""
-"Contact email address for inquiries. Add only email addresses that are "
-"intended to be publicly used."
-msgstr ""
-"E-mailadresse til forespørgsler. Tilføj kun e-mailadresser, som kan bruges "
-"offentligt."
+#: src/osmEditDialog.js:166
+msgid "Accessibility"
+msgstr "Tilgængelighed"
+
+#: src/osmEditDialog.js:169
+msgid "Wheelchair Access"
+msgstr "Rullestolsadgang"
+
+#: src/osmEditDialog.js:172 src/osmEditDialog.js:181 src/osmEditDialog.js:216
+msgid "Yes"
+msgstr "Ja"
+
+#: src/osmEditDialog.js:173 src/osmEditDialog.js:182 src/osmEditDialog.js:217
+msgid "No"
+msgstr "Nej"
+
+#: src/osmEditDialog.js:174
+msgid "Limited"
+msgstr "Begrænset"
+
+#: src/osmEditDialog.js:175
+msgid "Designated"
+msgstr "Handicap"
+
+#: src/osmEditDialog.js:178
+msgid "Internet Access"
+msgstr "Internetadgang"
+
+# Angiver typen af netværksadgang som f.eks. en café udbyder
+#: src/osmEditDialog.js:183
+msgid "Wi-Fi"
+msgstr "Trådløs"
+
+# Angiver typen af netværksadgang som f.eks. en café udbyder
+#: src/osmEditDialog.js:184
+msgid "Wired"
+msgstr "Kabel"
+
+#: src/osmEditDialog.js:185
+msgid "Terminal"
+msgstr "Terminal"
+
+#: src/osmEditDialog.js:186
+msgid "Service"
+msgstr "Tjeneste"
+
+#: src/osmEditDialog.js:191
+msgid "Miscellaneous"
+msgstr "Diverse"
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:149 src/placeView.js:764
+#: src/osmEditDialog.js:194 src/osmEditDialog.js:797 src/placeView.js:778
 msgid "Wikipedia"
 msgstr "Wikipedia"
-
-#: src/osmEditDialog.js:156 src/placeView.js:428
-msgid "Opening hours"
-msgstr "Åbningstider"
-
-#: src/osmEditDialog.js:161
-msgid "See the link in the label for help on format."
-msgstr "Se linket i etiketten for at få hjælp om format."
 
 #. TODO: this is a bit of a work-around to re-interpret the population,
 #. * stored as a string into an integer to convert back to a locale-
@@ -1017,218 +1040,264 @@ msgstr "Se linket i etiketten for at få hjælp om format."
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:164 src/placeView.js:538
+#: src/osmEditDialog.js:201 src/placeView.js:537
 msgid "Population"
 msgstr "Befolkning"
 
-#: src/osmEditDialog.js:169 src/placeView.js:567
+#: src/osmEditDialog.js:206 src/placeView.js:566
 msgid "Altitude"
 msgstr "Højde"
 
-#: src/osmEditDialog.js:172
-msgid "Elevation (height above sea level) of a point in meters."
-msgstr "Højde (over havoverfladen) af et punkt i meter."
+#: src/osmEditDialog.js:207
+msgid "Elevation above sea level, in meters"
+msgstr "Højde over havoverfladen i meter"
 
-#: src/osmEditDialog.js:175
-msgid "Wheelchair access"
-msgstr "Rullestolsadgang"
-
-#: src/osmEditDialog.js:178 src/osmEditDialog.js:187 src/osmEditDialog.js:198
-#: src/osmEditDialog.js:233
-msgid "Yes"
-msgstr "Ja"
-
-#: src/osmEditDialog.js:179 src/osmEditDialog.js:188 src/osmEditDialog.js:199
-#: src/osmEditDialog.js:234
-msgid "No"
-msgstr "Nej"
-
-#: src/osmEditDialog.js:180
-msgid "Limited"
-msgstr "Begrænset"
-
-#: src/osmEditDialog.js:181
-msgid "Designated"
-msgstr "Handicap"
-
-#: src/osmEditDialog.js:184
-msgid "Internet access"
-msgstr "Internetadgang"
-
-# Angiver typen af netværksadgang som f.eks. en café udbyder
-#: src/osmEditDialog.js:189
-msgid "Wi-Fi"
-msgstr "Trådløs"
-
-# Angiver typen af netværksadgang som f.eks. en café udbyder
-#: src/osmEditDialog.js:190
-msgid "Wired"
-msgstr "Kabel"
-
-#: src/osmEditDialog.js:191
-msgid "Terminal"
-msgstr "Terminal"
-
-#: src/osmEditDialog.js:192
-msgid "Service"
-msgstr "Tjeneste"
-
-#: src/osmEditDialog.js:195
+#: src/osmEditDialog.js:213
 msgid "Takeout"
 msgstr "Mad ud af huset"
 
-#: src/osmEditDialog.js:200
+#: src/osmEditDialog.js:218
 msgid "Only"
 msgstr "Kun"
 
-#: src/osmEditDialog.js:203
+#: src/osmEditDialog.js:221
 msgid "Religion"
 msgstr "Religion"
 
-#: src/osmEditDialog.js:206 src/translations.js:286
+#: src/osmEditDialog.js:224 src/translations.js:286
 msgid "Animism"
 msgstr "Animisme"
 
-#: src/osmEditDialog.js:207
+#: src/osmEditDialog.js:225
 msgid "Bahá’í"
 msgstr "Bahá’í"
 
-#: src/osmEditDialog.js:208 src/translations.js:288
+#: src/osmEditDialog.js:226 src/translations.js:288
 msgid "Buddhism"
 msgstr "Buddhisme"
 
-#: src/osmEditDialog.js:209 src/translations.js:289
+#: src/osmEditDialog.js:227 src/translations.js:289
 msgid "Caodaism"
 msgstr "Caodaisme"
 
-#: src/osmEditDialog.js:210 src/translations.js:290
+#: src/osmEditDialog.js:228 src/translations.js:290
 msgid "Christianity"
 msgstr "Kristendom"
 
-#: src/osmEditDialog.js:211 src/translations.js:291
+#: src/osmEditDialog.js:229 src/translations.js:291
 msgid "Confucianism"
 msgstr "Konfucianisme"
 
-#: src/osmEditDialog.js:212 src/translations.js:292
+#: src/osmEditDialog.js:230 src/translations.js:292
 msgid "Hinduism"
 msgstr "Hinduisme"
 
-#: src/osmEditDialog.js:213 src/translations.js:293
+#: src/osmEditDialog.js:231 src/translations.js:293
 msgid "Jainism"
 msgstr "Jainisme"
 
-#: src/osmEditDialog.js:214 src/translations.js:294
+#: src/osmEditDialog.js:232 src/translations.js:294
 msgid "Judaism"
 msgstr "Jødedom"
 
-#: src/osmEditDialog.js:215 src/translations.js:295
+#: src/osmEditDialog.js:233 src/translations.js:295
 msgid "Islam"
 msgstr "Islam"
 
-#: src/osmEditDialog.js:216 src/translations.js:296
+#: src/osmEditDialog.js:234 src/translations.js:296
 msgid "Multiple Religions"
 msgstr "Flere religioner"
 
-#: src/osmEditDialog.js:217 src/translations.js:297
+#: src/osmEditDialog.js:236 src/translations.js:298
 msgid "Paganism"
 msgstr "Paganisme"
 
-#: src/osmEditDialog.js:218 src/translations.js:298
+#: src/osmEditDialog.js:237 src/translations.js:299
 msgid "Pastafarianism"
 msgstr "Pastafarianisme"
 
-#: src/osmEditDialog.js:219 src/translations.js:299
+#: src/osmEditDialog.js:238 src/translations.js:300
 msgid "Scientology"
 msgstr "Scientology"
 
-#: src/osmEditDialog.js:220 src/translations.js:300
+#: src/osmEditDialog.js:239 src/translations.js:301
 msgid "Shinto"
 msgstr "Shinto"
 
-#: src/osmEditDialog.js:221 src/translations.js:301
+#: src/osmEditDialog.js:240 src/translations.js:302
 msgid "Sikhism"
 msgstr "Sikhisme"
 
-#: src/osmEditDialog.js:222 src/translations.js:302
+#: src/osmEditDialog.js:241 src/translations.js:303
 msgid "Spiritualism"
 msgstr "Spiritualisme"
 
-#: src/osmEditDialog.js:223 src/translations.js:303
+#: src/osmEditDialog.js:242 src/translations.js:304
 msgid "Taoism"
 msgstr "Taoisme"
 
-#: src/osmEditDialog.js:224 src/translations.js:304
+#: src/osmEditDialog.js:243 src/translations.js:305
 msgid "Unitarian Universalism"
 msgstr "Unitær universalisme"
 
-#: src/osmEditDialog.js:225 src/translations.js:305
+#: src/osmEditDialog.js:244 src/translations.js:306
 msgid "Voodoo"
 msgstr "Voodoo"
 
-#: src/osmEditDialog.js:226 src/translations.js:306
+#: src/osmEditDialog.js:245 src/translations.js:307
 msgid "Yazidism"
 msgstr "Yazidisme"
 
-#: src/osmEditDialog.js:227 src/translations.js:307
+#: src/osmEditDialog.js:246 src/translations.js:308
 msgid "Zoroastrianism"
 msgstr "Zoroastrianisme"
 
-#: src/osmEditDialog.js:230 src/poiCategories.js:176
-msgid "Toilets"
-msgstr "Toiletter"
-
-#: src/osmEditDialog.js:237
+#: src/osmEditDialog.js:249
 msgid "Note"
 msgstr "Note"
 
-#: src/osmEditDialog.js:240
-msgid ""
-"Information used to inform other mappers about non-obvious information about "
-"an element, the author’s intent when creating it, or hints for further "
-"improvement."
-msgstr ""
-"Information der bruges til at give andre kortbrugere oplysninger om et "
-"element som ikke er åbenlyse, forfatterens hensigt med at oprette det, eller "
-"fif om yderligere forbedringer."
+#: src/osmEditDialog.js:310
+msgctxt "dialog heading"
+msgid "Add Location"
+msgstr "Tilføj placering"
 
-#: src/osmEditDialog.js:339
-msgctxt "dialog title"
-msgid "Add to OpenStreetMap"
-msgstr "Føj til OpenStreetMap"
+#. set the title and description for adding a POI
+#: src/osmEditDialog.js:319
+msgid "Add Location"
+msgstr "Tilføj placering"
 
-#: src/osmEditDialog.js:393
-msgid "Select Type"
-msgstr "Vælg type"
+#: src/osmEditDialog.js:320
+msgid "Add a new location to OpenStreetMap"
+msgstr "Føj en ny placering til OpenStreetMap"
 
-#: src/osmEditDialog.js:515
-msgid "_Done"
-msgstr "_Færdig"
+#: src/osmEditDialog.js:411
+msgid "Changes successfully submitted"
+msgstr "Ændringerne blev indsendt"
 
-#: src/osmEditDialog.js:532
-msgid "Next"
-msgstr "Næste"
+#: src/osmEditDialog.js:703
+msgid "Unspecified"
+msgstr "Uspecificeret"
 
-#: src/osmEditDialog.js:583
-msgid "Remove"
-msgstr "Fjern"
+#: src/osmEditDialog.js:765
+msgid "Street Name"
+msgstr "Gadenavn"
 
-#: src/osmEditDialog.js:821
-msgid ""
-"The format used should include the language code and the article title like "
-"“en:Article title”."
-msgstr ""
-"Formatet bør inkludere sprogkoden og artiklens overskrift, f.eks. “da:"
-"Artikeloverskrift”."
+#: src/osmEditDialog.js:766
+msgid "House Number"
+msgstr "Husnummer"
 
-#: src/osmEditDialog.js:827
-msgid "Use the reload button to load the Wikidata tag for the selected article"
-msgstr ""
-"Brug genindlæsningsknappen til at indlæse Wikidata-mærket for den valgte "
-"artikel"
+#: src/osmEditDialog.js:767
+msgid "ZIP Code"
+msgstr "Postnummer"
 
-#: src/osmEditDialog.js:835
+#: src/osmEditDialog.js:768
+msgid "City"
+msgstr "By"
+
+#: src/osmEditDialog.js:800
+msgid "Wikipedia Article"
+msgstr "Wikipedia-artikel"
+
+#: src/osmEditDialog.js:804
+msgid "Wikidata Tag"
+msgstr "Wikidata-mærke"
+
+#: src/osmEditDialog.js:809
+msgid "Load Wikidata tag from article name"
+msgstr "Indlæs Wikidata-mærke fra artikelnavn"
+
+#: src/osmEditDialog.js:865
 msgid "Couldn't find Wikidata tag for article"
 msgstr "Kunne ikke finde Wikidata-mærket til artiklen"
+
+#. Translators: This represents the title for places tagged with the
+#. * "aerialway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Aerialway
+#.
+#: src/osmTypes.js:45
+msgid "Aerialway"
+msgstr "Kabelbane"
+
+# Det dækker over mange ting - fra helipad til vindpose.
+#. Translators: This represents the title for places tagged with the
+#. * "aeroway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Aeroway
+#.
+#: src/osmTypes.js:49
+msgid "Aeroway"
+msgstr "Luftfacilitet"
+
+#. Translators: This represents the title for places tagged with the
+#. * "amenity" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Amenity
+#.
+#: src/osmTypes.js:53
+msgid "Amenity"
+msgstr "Facilitet"
+
+#. Translators: This represents the title for places tagged with the
+#. * "barrier" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Barrier
+#.
+#: src/osmTypes.js:57
+msgid "Barrier"
+msgstr "Barriere"
+
+#. Translators: This represents the title for places tagged with the
+#. * "highway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Highway
+#.
+#: src/osmTypes.js:61
+msgid "Road"
+msgstr "Vej"
+
+#. Translators: This represents the title for places tagged with the
+#. * "historic" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Historic
+#.
+#: src/osmTypes.js:65
+msgid "Historic"
+msgstr "Historisk"
+
+#. Translators: This represents the title for places tagged with the
+#. * "leisure" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Leisure
+#.
+#: src/osmTypes.js:69
+msgid "Leisure"
+msgstr "Fritid"
+
+#. Translators: This represents the title for places tagged with the
+#. * "office" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Office
+#.
+#: src/osmTypes.js:73
+msgid "Office"
+msgstr "Kontor"
+
+#. Translators: This represents the title for places tagged with the
+#. * "place" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Place
+#.
+#: src/osmTypes.js:77
+msgid "Place"
+msgstr "Sted"
+
+#. Translators: This represents the title for places tagged with the
+#. * "railway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Railway
+#.
+#: src/osmTypes.js:81
+msgid "Railway"
+msgstr "Jernbane"
+
+#. Translators: This represents the title for places tagged with the
+#. * "shop" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Shop
+#.
+#: src/osmTypes.js:85
+msgid "Shop"
+msgstr "Butik"
+
+#. Translators: This represents the title for places tagged with the
+#. * "tourism" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Tourism
+#.
+#: src/osmTypes.js:89 src/poiCategories.js:467
+msgid "Tourism"
+msgstr "Turisme"
+
+#: src/osmTypes.js:97
+msgid "Other"
+msgstr "Andet"
 
 #: src/photonUtils.js:118 src/placeListRow.js:70
 msgid "Unnamed place"
@@ -1260,16 +1329,16 @@ msgctxt "short distance format string"
 msgid "< %s"
 msgstr "< %s"
 
-#: src/placeView.js:292
+#: src/placeView.js:291
 msgid "Coordinates"
 msgstr "Koordinater"
 
-#: src/placeView.js:296
+#: src/placeView.js:295
 msgid "Accuracy"
 msgstr "Nøjagtighed"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:299
+#: src/placeView.js:298
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Nøjagtighed: %s"
@@ -1280,7 +1349,7 @@ msgstr "Nøjagtighed: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:318
+#: src/placeView.js:317
 msgid "Phone number"
 msgstr "Telefonnummer"
 
@@ -1291,16 +1360,16 @@ msgstr "Telefonnummer"
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
 #.
-#: src/placeView.js:352 src/placeView.js:391
+#: src/placeView.js:351 src/placeView.js:390
 msgid "Floor"
 msgstr "Etage"
 
-#: src/placeView.js:354
+#: src/placeView.js:353
 #, javascript-format
 msgid "Floor %s"
 msgstr "Etage %s"
 
-#: src/placeView.js:366
+#: src/placeView.js:365
 msgid "At ground level"
 msgstr "Stueetageniveau"
 
@@ -1309,7 +1378,7 @@ msgstr "Stueetageniveau"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:375
+#: src/placeView.js:374
 #, javascript-format
 msgid "%s floor above ground level"
 msgid_plural "%s floors above ground level"
@@ -1321,7 +1390,7 @@ msgstr[1] "%s etager over stueetage"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:386
+#: src/placeView.js:385
 #, javascript-format
 msgid "%s floor below ground level"
 msgid_plural "%s floors below ground level"
@@ -1332,7 +1401,7 @@ msgstr[1] "%s etager under stueetage"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:404
+#: src/placeView.js:403
 msgid "Offers takeout"
 msgstr "Tilbyder mad ud af huset"
 
@@ -1340,7 +1409,7 @@ msgstr "Tilbyder mad ud af huset"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:412
+#: src/placeView.js:411
 msgid "Does not offer takeout"
 msgstr "Tilbyder ikke mad ud af huset"
 
@@ -1349,14 +1418,18 @@ msgstr "Tilbyder ikke mad ud af huset"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:421
+#: src/placeView.js:420
 msgid "Only offers takeout"
 msgstr "Tilbyder kun mad ud af huset"
+
+#: src/placeView.js:427
+msgid "Opening hours"
+msgstr "Åbningstider"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:438
+#: src/placeView.js:437
 msgid "Public internet access"
 msgstr "Offentlig internetadgang"
 
@@ -1364,50 +1437,50 @@ msgstr "Offentlig internetadgang"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:447
+#: src/placeView.js:446
 msgid "No internet access"
 msgstr "Ingen internetadgang"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:455
+#: src/placeView.js:454
 msgid "Public Wi-Fi"
 msgstr "Offentlig wi-fi"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:463
+#: src/placeView.js:462
 msgid "Wired internet access"
 msgstr "Kablet internetadgang"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:471
+#: src/placeView.js:470
 msgid "Computers available for use"
 msgstr "Computere tilgængelige til brug"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:479
+#: src/placeView.js:478
 msgid "Internet assistance available"
 msgstr "Internetassistance tilgængelig"
 
-#: src/placeView.js:485
+#: src/placeView.js:484
 msgid "No toilets available"
 msgstr "Toiletter ikke tilgængelige"
 
-#: src/placeView.js:488
+#: src/placeView.js:487
 msgid "Toilets available"
 msgstr "Toiletter tilgængelige"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:497
+#: src/placeView.js:496
 msgid "Wheelchair accessible"
 msgstr "Adgang med kørestol"
 
@@ -1416,7 +1489,7 @@ msgstr "Adgang med kørestol"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:507
+#: src/placeView.js:506
 msgid "Limited wheelchair accessibility"
 msgstr "Begrænset adgang med kørestol"
 
@@ -1424,7 +1497,7 @@ msgstr "Begrænset adgang med kørestol"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:516
+#: src/placeView.js:515
 msgid "Not wheelchair accessible"
 msgstr "Ingen adgang med kørestol"
 
@@ -1433,7 +1506,7 @@ msgstr "Ingen adgang med kørestol"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:526
+#: src/placeView.js:525
 msgid "Designated for wheelchair users"
 msgstr "Beregnet til kørestolsbrugere"
 
@@ -1442,7 +1515,7 @@ msgstr "Beregnet til kørestolsbrugere"
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:557
+#: src/placeView.js:556
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s under havoverfladen"
@@ -1451,11 +1524,11 @@ msgstr "%s under havoverfladen"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:564
+#: src/placeView.js:563
 msgid "At sea level"
 msgstr "Tæt på havoverfladen"
 
-#: src/placeView.js:573
+#: src/placeView.js:575
 msgid "Religion:"
 msgstr "Religion:"
 
@@ -1502,6 +1575,10 @@ msgstr "Apoteker"
 #: src/poiCategories.js:171
 msgid "Recycling"
 msgstr "Genanvendelse"
+
+#: src/poiCategories.js:176
+msgid "Toilets"
+msgstr "Toiletter"
 
 #: src/poiCategories.js:182
 msgid "Wheelchair-accessible Toilets"
@@ -1587,151 +1664,151 @@ msgstr "Bagerier"
 msgid "Flowers"
 msgstr "Blomster"
 
-#: src/poiCategories.js:301
+#: src/poiCategories.js:299
+msgid "Gifts"
+msgstr "Gaver"
+
+#: src/poiCategories.js:307
 msgid "Transportation"
 msgstr "Transport"
 
-#: src/poiCategories.js:305
+#: src/poiCategories.js:311
 msgid "Bus & Tram Stops"
 msgstr "Bus- og sporvognsstoppesteder"
 
-#: src/poiCategories.js:313
+#: src/poiCategories.js:319
 msgid "Train & Subway Stations"
 msgstr "Tog- og undergrundsstationer"
 
-#: src/poiCategories.js:321
+#: src/poiCategories.js:327
 msgid "Tickets"
 msgstr "Billetter"
 
-#: src/poiCategories.js:329
+#: src/poiCategories.js:335
 msgid "Parking"
 msgstr "Parkering"
 
-#: src/poiCategories.js:334
+#: src/poiCategories.js:340
 msgid "Bicycle Parking"
 msgstr "Cykelparkering"
 
-#: src/poiCategories.js:339
+#: src/poiCategories.js:345
 msgid "Bicycle Rental"
 msgstr "Cykeludlejning"
 
-#: src/poiCategories.js:344
+#: src/poiCategories.js:350
 msgid "Car Rental"
 msgstr "Biludlejning"
 
-#: src/poiCategories.js:349
+#: src/poiCategories.js:355
 msgid "Fuel"
 msgstr "Brændstof"
 
-#: src/poiCategories.js:354
+#: src/poiCategories.js:360
 msgid "EV Charging"
 msgstr "Opladning af elbil"
 
-#: src/poiCategories.js:362
+#: src/poiCategories.js:368
 msgid "Healthcare"
 msgstr "Sundhedspleje"
 
-#: src/poiCategories.js:366
+#: src/poiCategories.js:372
 msgid "Clinics"
 msgstr "Klinikker"
 
-#: src/poiCategories.js:372
+#: src/poiCategories.js:378
 msgid "Hospitals"
 msgstr "Hospitaler"
 
-#: src/poiCategories.js:378
+#: src/poiCategories.js:384
 msgid "Dentists"
 msgstr "Tandlæger"
 
-#: src/poiCategories.js:386
+#: src/poiCategories.js:392
 msgid "Accommodation"
 msgstr "Indkvartering"
 
-#: src/poiCategories.js:390
+#: src/poiCategories.js:396
 msgid "Hotels"
 msgstr "Hoteller"
 
-#: src/poiCategories.js:395
+#: src/poiCategories.js:401
 msgid "Hostels"
 msgstr "Vandrehjem"
 
-#: src/poiCategories.js:400
+#: src/poiCategories.js:406
 msgid "Bed & Breakfast"
 msgstr "Bed & breakfast"
 
-#: src/poiCategories.js:405
+#: src/poiCategories.js:411
 msgid "Campings"
 msgstr "Campering"
 
-#: src/poiCategories.js:412
+#: src/poiCategories.js:418
 msgid "Recreation"
 msgstr "Rekreation"
 
-#: src/poiCategories.js:416
+#: src/poiCategories.js:422
 msgid "Parks"
 msgstr "Parker"
 
-#: src/poiCategories.js:421
+#: src/poiCategories.js:427
 msgid "Playgrounds"
 msgstr "Legepladser"
 
-#: src/poiCategories.js:426
+#: src/poiCategories.js:432
 msgid "Beaches"
 msgstr "Strande"
 
-#: src/poiCategories.js:431
+#: src/poiCategories.js:437
 msgid "Nature Reserves"
 msgstr "Naturparker"
 
-#: src/poiCategories.js:437
+#: src/poiCategories.js:443
 msgid "Theme Parks"
 msgstr "Forlystelsesparker"
 
-#: src/poiCategories.js:442
+#: src/poiCategories.js:448
 msgid "Theaters"
 msgstr "Teatre"
 
-#: src/poiCategories.js:448
+#: src/poiCategories.js:454
 msgid "Movie Theaters"
 msgstr "Biografer"
 
-#: src/poiCategories.js:454
+#: src/poiCategories.js:460
 msgid "Night Clubs"
 msgstr "Natklubber"
 
-#: src/poiCategories.js:461
-msgid "Tourism"
-msgstr "Turisme"
-
-#: src/poiCategories.js:465
+#: src/poiCategories.js:471
 msgid "Museums"
 msgstr "Museer"
 
-#: src/poiCategories.js:471
+#: src/poiCategories.js:477
 msgid "Attractions"
 msgstr "Seværdigheder"
 
-#: src/poiCategories.js:476
+#: src/poiCategories.js:482
 msgid "Artworks"
 msgstr "Kunst"
 
-#: src/poiCategories.js:481
+#: src/poiCategories.js:487
 msgid "Tourist Information"
 msgstr "Turistinformation"
 
-#: src/poiCategories.js:488
+#: src/poiCategories.js:494
 msgid "Sports"
 msgstr "Sport"
 
-#: src/poiCategories.js:492
+#: src/poiCategories.js:498
 msgid "Gyms"
 msgstr "Fitnesscentre"
 
-#: src/poiCategories.js:498
+#: src/poiCategories.js:504
 msgid "Outdoor Gyms"
 msgstr "Udendørs fitnesscentre"
 
-#: src/poiCategories.js:504
+#: src/poiCategories.js:510
 msgid "Golf Courses"
 msgstr "Golfbaner"
 
@@ -1804,12 +1881,12 @@ msgid "failed to load file"
 msgstr "kunne ikke indlæse fil"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:323
+#: src/sidebar.js:338
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Anslået tid: %s"
 
-#: src/sidebar.js:393
+#: src/sidebar.js:408
 #, javascript-format
 msgid "Itineraries provided by %s"
 msgstr "Rejseplaner leveret af %s"
@@ -1826,7 +1903,8 @@ msgstr "Starttidspunkt %s"
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: src/transit.js:45 src/transitplugins/openTripPlanner2.js:236
+#: src/transit.js:45 src/transitplugins/motis2.js:314
+#: src/transitplugins/openTripPlanner2.js:236
 msgid "Start"
 msgstr "Start"
 
@@ -1846,16 +1924,17 @@ msgstr "Gå %s"
 msgid "Arrive at %s"
 msgstr "Ankomst %s"
 
-#: src/transit.js:79 src/transitplugins/openTripPlanner.js:1175
+#: src/transit.js:79 src/transitplugins/motis2.js:332
+#: src/transitplugins/openTripPlanner.js:1175
 #: src/transitplugins/openTripPlanner2.js:255
 msgid "Arrive"
 msgstr "Ankomst"
 
-#: src/transitLegRow.js:69
+#: src/transitLegRow.js:70
 msgid "Show walking instructions"
 msgstr "Vis gangrute"
 
-#: src/transitLegRow.js:70
+#: src/transitLegRow.js:71
 msgid "Hide walking instructions"
 msgstr "Skjul gangrute"
 
@@ -1906,7 +1985,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: src/transitPlan.js:333
+#: src/transitPlan.js:337
 #, javascript-format
 msgid "%s minute"
 msgid_plural "%s minutes"
@@ -1917,7 +1996,7 @@ msgstr[1] "%s minutter"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: src/transitPlan.js:345
+#: src/transitPlan.js:349
 #, javascript-format
 msgid "%s hour"
 msgid_plural "%s hours"
@@ -1928,7 +2007,7 @@ msgstr[1] "%s timer"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: src/transitPlan.js:353
+#: src/transitPlan.js:357
 #, javascript-format
 msgid "%s:%s hour"
 msgid_plural "%s:%s hours"
@@ -1941,7 +2020,7 @@ msgstr[1] "%s:%s timer"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:746
+#: src/transitPlan.js:758
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -2117,128 +2196,238 @@ msgstr "%s miles"
 msgid "%s ft"
 msgstr "%s fod"
 
-#: src/transitplugins/openTripPlanner.js:1236
+#: src/transitplugins/motis2.js:344
+#, javascript-format
+msgid "Take the stairs to level %s"
+msgstr "Tag trapperne til niveau %s"
+
+#: src/transitplugins/motis2.js:345
+msgid "Take the stairs"
+msgstr "Tag trapperne"
+
+#: src/transitplugins/motis2.js:349 src/transitplugins/openTripPlanner.js:1236
 #: src/transitplugins/openTripPlanner2.js:266
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Fortsæt på %s"
 
-#: src/transitplugins/openTripPlanner.js:1241
+#: src/transitplugins/motis2.js:354 src/transitplugins/openTripPlanner.js:1241
 #: src/transitplugins/openTripPlanner2.js:270
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Drej til venstre på %s"
 
-#: src/transitplugins/openTripPlanner.js:1243
+#: src/transitplugins/motis2.js:355 src/transitplugins/openTripPlanner.js:1243
 #: src/transitplugins/openTripPlanner2.js:271
 msgid "Turn left"
 msgstr "Drej til venstre"
 
-#: src/transitplugins/openTripPlanner.js:1246
+#: src/transitplugins/motis2.js:359 src/transitplugins/openTripPlanner.js:1246
 #: src/transitplugins/openTripPlanner2.js:275
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Drej lidt til venstre på %s"
 
-#: src/transitplugins/openTripPlanner.js:1248
+#: src/transitplugins/motis2.js:360 src/transitplugins/openTripPlanner.js:1248
 #: src/transitplugins/openTripPlanner2.js:276
 msgid "Turn slightly left"
 msgstr "Drej lidt til venstre"
 
-#: src/transitplugins/openTripPlanner.js:1251
+#: src/transitplugins/motis2.js:364 src/transitplugins/openTripPlanner.js:1251
 #: src/transitplugins/openTripPlanner2.js:280
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Drej skarpt til venstre på %s"
 
-#: src/transitplugins/openTripPlanner.js:1253
+#: src/transitplugins/motis2.js:365 src/transitplugins/openTripPlanner.js:1253
 #: src/transitplugins/openTripPlanner2.js:281
 msgid "Turn sharp left"
 msgstr "Drej skarpt til venstre"
 
-#: src/transitplugins/openTripPlanner.js:1256
+#: src/transitplugins/motis2.js:369 src/transitplugins/openTripPlanner.js:1256
 #: src/transitplugins/openTripPlanner2.js:284
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Drej til højre på %s"
 
-#: src/transitplugins/openTripPlanner.js:1258
+#: src/transitplugins/motis2.js:370 src/transitplugins/openTripPlanner.js:1258
 #: src/transitplugins/openTripPlanner2.js:285
 msgid "Turn right"
 msgstr "Drej til højre"
 
-#: src/transitplugins/openTripPlanner.js:1261
+#: src/transitplugins/motis2.js:374 src/transitplugins/openTripPlanner.js:1261
 #: src/transitplugins/openTripPlanner2.js:289
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Drej lidt til højre på %s"
 
-#: src/transitplugins/openTripPlanner.js:1263
+#: src/transitplugins/motis2.js:375 src/transitplugins/openTripPlanner.js:1263
 #: src/transitplugins/openTripPlanner2.js:290
 msgid "Turn slightly right"
 msgstr "Drej lidt til højre"
 
-#: src/transitplugins/openTripPlanner.js:1266
+#: src/transitplugins/motis2.js:379 src/transitplugins/openTripPlanner.js:1266
 #: src/transitplugins/openTripPlanner2.js:294
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Drej skarpt til højre på %s"
 
-#: src/transitplugins/openTripPlanner.js:1268
+#: src/transitplugins/motis2.js:380 src/transitplugins/openTripPlanner.js:1268
 #: src/transitplugins/openTripPlanner2.js:295
 msgid "Turn sharp right"
 msgstr "Drej skarpt til højre"
 
-#: src/transitplugins/openTripPlanner.js:1274
+#: src/transitplugins/motis2.js:387 src/transitplugins/openTripPlanner.js:1274
 #: src/transitplugins/openTripPlanner2.js:302
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "Tag %s. vej i rundkørslen"
 
-#: src/transitplugins/openTripPlanner.js:1276
+#: src/transitplugins/motis2.js:390 src/transitplugins/openTripPlanner.js:1276
 #: src/transitplugins/openTripPlanner2.js:305
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "Drej fra mod %s i rundkørslen"
 
-#: src/transitplugins/openTripPlanner.js:1278
+#: src/transitplugins/motis2.js:392 src/transitplugins/openTripPlanner.js:1278
 #: src/transitplugins/openTripPlanner2.js:307
 msgid "Take the roundabout"
 msgstr "Kør ind i rundkørslen"
 
 # . er for at markere ordenstal og ikke et afsluttende punktum
-#: src/transitplugins/openTripPlanner.js:1282
+#: src/transitplugins/motis2.js:400 src/transitplugins/openTripPlanner.js:1282
 #: src/transitplugins/openTripPlanner2.js:315
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Tag elevatoren og stå af på %s."
 
-#: src/transitplugins/openTripPlanner.js:1284
+#: src/transitplugins/motis2.js:401 src/transitplugins/openTripPlanner.js:1284
 #: src/transitplugins/openTripPlanner2.js:316
 msgid "Take the elevator"
 msgstr "Tag elevatoren"
 
-#: src/transitplugins/openTripPlanner.js:1288
+#: src/transitplugins/motis2.js:405 src/transitplugins/openTripPlanner.js:1288
 #: src/transitplugins/openTripPlanner2.js:320
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Lav en u-vending til venstre ind på %s"
 
-#: src/transitplugins/openTripPlanner.js:1290
+#: src/transitplugins/motis2.js:406 src/transitplugins/openTripPlanner.js:1290
 #: src/transitplugins/openTripPlanner2.js:321
 msgid "Make a left u-turn"
 msgstr "Lav en u-vending til venstre"
 
-#: src/transitplugins/openTripPlanner.js:1293
+#: src/transitplugins/motis2.js:410 src/transitplugins/openTripPlanner.js:1293
 #: src/transitplugins/openTripPlanner2.js:325
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Lav en u-vending til højre ind på %s"
 
-#: src/transitplugins/openTripPlanner.js:1295
+#: src/transitplugins/motis2.js:411 src/transitplugins/openTripPlanner.js:1295
 #: src/transitplugins/openTripPlanner2.js:326
 msgid "Make a right u-turn"
 msgstr "Lav en u-vending til højre"
+
+#~ msgid "Postal code"
+#~ msgstr "Postnummer"
+
+#~ msgctxt "dialog title"
+#~ msgid "Edit on OpenStreetMap"
+#~ msgstr "Redigér på OpenStreetMap"
+
+#~ msgid "_Add Field"
+#~ msgstr "_Tilføj felt"
+
+#~ msgid "Comment"
+#~ msgstr "Kommentar"
+
+#~ msgid "_Next"
+#~ msgstr "_Næste"
+
+#~ msgid "Article"
+#~ msgstr "Artikel"
+
+#~ msgid "Walking"
+#~ msgstr "Gang"
+
+#~ msgid "Cycling"
+#~ msgstr "Cykling"
+
+#~ msgid "Driving"
+#~ msgstr "Kørsel"
+
+#~ msgid "The official name. This is typically what appears on signs."
+#~ msgstr "Det officielle navn. Dette er typisk hvad der står på et skilt."
+
+#~ msgid "This is not a valid URL. Make sure to include http:// or https://."
+#~ msgstr ""
+#~ "Dette er ikke en gyldig URL. Husk at medtage http:// eller https://."
+
+#~ msgid ""
+#~ "The official website. Try to use the most basic form of a URL i.e. http://"
+#~ "example.com instead of http://example.com/index.html."
+#~ msgstr ""
+#~ "Den officielle webside. Prøv at bruge den mest grundlæggende form, dvs. "
+#~ "http://eksempel.dk i stedet for http://eksempel.dk/index.html."
+
+#~ msgid ""
+#~ "Phone number. Use the international format, starting with a + sign. "
+#~ "Beware of local privacy laws, especially for private phone numbers."
+#~ msgstr ""
+#~ "Telefonnummer. Brug det internationale format som begynder med tegnet +. "
+#~ "Vær opmærksom på lokale love om privatlivsbeskyttelse, især for private "
+#~ "numre."
+
+#~ msgid ""
+#~ "This is not a valid email address. Make sure to not include the mailto: "
+#~ "protocol prefix."
+#~ msgstr ""
+#~ "Dette er ikke en gyldig e-mailadresse. Sørg for, at “mailto:” ikke "
+#~ "medtages."
+
+#~ msgid ""
+#~ "Contact email address for inquiries. Add only email addresses that are "
+#~ "intended to be publicly used."
+#~ msgstr ""
+#~ "E-mailadresse til forespørgsler. Tilføj kun e-mailadresser, som kan "
+#~ "bruges offentligt."
+
+#~ msgid "See the link in the label for help on format."
+#~ msgstr "Se linket i etiketten for at få hjælp om format."
+
+#~ msgid ""
+#~ "Information used to inform other mappers about non-obvious information "
+#~ "about an element, the author’s intent when creating it, or hints for "
+#~ "further improvement."
+#~ msgstr ""
+#~ "Information der bruges til at give andre kortbrugere oplysninger om et "
+#~ "element som ikke er åbenlyse, forfatterens hensigt med at oprette det, "
+#~ "eller fif om yderligere forbedringer."
+
+#~ msgid "Select Type"
+#~ msgstr "Vælg type"
+
+#~ msgid "_Done"
+#~ msgstr "_Færdig"
+
+#~ msgid "Next"
+#~ msgstr "Næste"
+
+#~ msgid "Remove"
+#~ msgstr "Fjern"
+
+#~ msgid ""
+#~ "The format used should include the language code and the article title "
+#~ "like “en:Article title”."
+#~ msgstr ""
+#~ "Formatet bør inkludere sprogkoden og artiklens overskrift, f.eks. “da:"
+#~ "Artikeloverskrift”."
+
+#~ msgid ""
+#~ "Use the reload button to load the Wikidata tag for the selected article"
+#~ msgstr ""
+#~ "Brug genindlæsningsknappen til at indlæse Wikidata-mærket for den valgte "
+#~ "artikel"
 
 #~ msgid "What's Here?"
 #~ msgstr "Hvad er der her?"
@@ -2287,9 +2476,6 @@ msgstr "Lav en u-vending til højre"
 
 #~ msgid "The directory does not exist"
 #~ msgstr "Mappen findes ikke"
-
-#~ msgid "No filename specified"
-#~ msgstr "Intet filnavn angivet"
 
 #~ msgid ""
 #~ "Location was added to the map, note that it may take a while before it "
@@ -2349,9 +2535,6 @@ msgstr "Lav en u-vending til højre"
 #~ msgid "Whether aerial tiles should use hybrid style (with labels)."
 #~ msgstr "Hvorvidt luftfotofliser skal bruge hybrid stil (med etiketter)."
 
-#~ msgid "Visibility"
-#~ msgstr "Synlighed"
-
 #~ msgid "Post on Facebook"
 #~ msgstr "Post på Facebook"
 
@@ -2406,9 +2589,6 @@ msgstr "Lav en u-vending til højre"
 
 #~ msgid "Select an account"
 #~ msgstr "Vælg en konto"
-
-#~ msgid "Loading"
-#~ msgstr "Indlæser"
 
 #~ msgid "Select a place"
 #~ msgstr "Vælg et sted"
