@@ -173,12 +173,12 @@ export class Motis2 {
          * recalculate it for each stop
          */
         const departureTimezoneOffset =
-            this._getTimezoneOffset(departure,
+            this._getTimezoneOffset(departure / 1000,
                                     commonTz ??
                                     this._getTimezone(startPlace.location.latitude,
                                                       startPlace.location.longitude));
         const arrivalTimezoneOffset =
-            this._getTimezoneOffset(arrival,
+            this._getTimezoneOffset(arrival / 1000,
                                     commonTz ??
                                     this._getTimezone(destinationPlace.location.latitude,
                                                       destinationPlace.location.longitude));
@@ -213,13 +213,13 @@ export class Motis2 {
         const [departure,] = Time.parseTime(leg.startTime);
         const departureTimezoneOffset =
             commonTimezoneOffset ??
-            this._getTimezoneOffset(departure, this._getTimezone(leg.from.lat,
-                                                                 leg.from.lon));
+            this._getTimezoneOffset(departure / 1000, this._getTimezone(leg.from.lat,
+                                                                        leg.from.lon));
         const [arrival,] = Time.parseTime(leg.endTime);
         const arrivalTimezoneOffset =
             commonTimezoneOffset ??
-            this._getTimezoneOffset(arrival, this._getTimezone(leg.to.lat,
-                                                               leg.to.lon));
+            this._getTimezoneOffset(arrival / 1000, this._getTimezone(leg.to.lat,
+                                                                      leg.to.lon));
         const from = isFirst && !isTransit ? startPlace.name : leg.from.name;
         const to = isLast && !isTransit ? destinationPlace.name : leg.to.name;
 
@@ -297,7 +297,7 @@ export class Motis2 {
         const [arrival,] = Time.parseTime(stop.arrival);
         const timezoneOffset =
             commonTimezoneOffset ??
-            this._getTimezoneOffset(Math.max(arrival, departure),
+            this._getTimezoneOffset(Math.max(arrival / 1000, departure / 1000),
                                     this._getTimezone(stop.lat, stop.lon));
 
         return new Stop({ name:                 stop.name,
