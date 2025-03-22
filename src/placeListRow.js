@@ -98,21 +98,21 @@ export class PlaceListRow extends Gtk.ListBoxRow {
         let distance = this.place.location.get_distance_from(location) * 1000;
         let label;
 
-        if (Utils.getMeasurementSystem() === Utils.METRIC_SYSTEM &&
-            distance < SHORT_DISTANCE_THREASHOLD_METRIC) {
-            let prettyDistance =
-                Utils.prettyDistance(SHORT_DISTANCE_THREASHOLD_METRIC);
+        if (Utils.shouldShowImperialUnits() &&
+            distance < SHORT_DISTANCE_THREASHOLD_IMPERIAL) {
+            const prettyDistance =
+                Utils.prettyDistance(SHORT_DISTANCE_THREASHOLD_IMPERIAL);
 
             label = SHORT_DISTANCE_FORMAT.format(prettyDistance);
-        } else if (distance < SHORT_DISTANCE_THREASHOLD_IMPERIAL) {
-            let prettyDistance =
-                Utils.prettyDistance(SHORT_DISTANCE_THREASHOLD_IMPERIAL);
+        } else if (!Utils.shouldShowImperialUnits() &&
+                   distance < SHORT_DISTANCE_THREASHOLD_METRIC) {
+            const prettyDistance =
+                Utils.prettyDistance(SHORT_DISTANCE_THREASHOLD_METRIC);
 
             label = SHORT_DISTANCE_FORMAT.format(prettyDistance);
         } else {
             label = Utils.prettyDistance(distance);
         }
-
 
         this._distanceLabel.label = label;
         this._distanceLabel.visible = true;
