@@ -30,6 +30,8 @@ import Gtk from 'gi://Gtk';
 import Adw from 'gi://Adw';
 import GWeather from 'gi://GWeather';
 
+import {Settings} from './settings.js';
+
 const _ = gettext.gettext;
 const ngettext = gettext.ngettext;
 
@@ -232,6 +234,39 @@ export function getMeasurementSystem() {
     return measurementSystem;
 }
 
+// only to be used by tests
+var _overrideMeasurementSystem;
+
+export function _setOverrideMeasurementSystem(measurementSystem) {
+    _overrideMeasurementSystem = measurementSystem;
+}
+
+export function shouldShowImperialUnits() {
+    const measurementSystemSetting =
+        _overrideMeasurementSystem ??
+        Settings.getSettings('org.gnome.Maps').get('measurement-system');
+
+    switch (measurementSystemSetting) {
+        case 'system':
+            let locale = GLib.getenv('LC_MEASUREMENT') || GLib.get_language_names()[0];
+
+            // Strip charset
+            if (locale.indexOf('.') !== -1)
+                locale = locale.substring(0, locale.indexOf('.'));
+
+            if (IMPERIAL_LOCALES.indexOf(locale) === -1)
+                return false;
+            else
+                return true;
+        case 'metric':
+            return false;
+        case 'imperial':
+            return true;
+        default:
+            return false;
+    }
+}
+
 /**
  * Get the highest priority bare lange currently in use.
  */
@@ -328,17 +363,7 @@ export function prettyTime(time) {
 }
 
 export function prettyDistance(distance, noRound) {
-    if (getMeasurementSystem() === METRIC_SYSTEM) {
-        // round to whole meters
-        distance = Math.round(distance);
-        if (distance >= 1000 && !noRound) {
-            distance = Math.round(distance / 1000 * 10) / 10;
-            /* Translators: This is a distance measured in kilometers */
-            return _("%s km").format(distance.toLocaleString());
-        } else
-            /* Translators: This is a distance measured in meters */
-            return _("%s m").format(distance.toLocaleString());
-    } else {
+    if (shouldShowImperialUnits()) {
         // Convert to feet
         distance = Math.round(distance * 3.2808399);
         if (distance >= 1056 && !noRound) {
@@ -346,9 +371,21 @@ export function prettyDistance(distance, noRound) {
             distance = Math.round(distance / 5280 * 10) / 10;
             /* Translators: This is a distance measured in miles */
             return _("%s mi").format(distance.toLocaleString());
-        } else
+        } else {
             /* Translators: This is a distance measured in feet */
             return _("%s ft").format(distance.toLocaleString());
+        }
+    } else {
+        // round to whole meters
+        distance = Math.round(distance);
+        if (distance >= 1000 && !noRound) {
+            distance = Math.round(distance / 1000 * 10) / 10;
+            /* Translators: This is a distance measured in kilometers */
+            return _("%s km").format(distance.toLocaleString());
+        } else {
+            /* Translators: This is a distance measured in meters */
+            return _("%s m").format(distance.toLocaleString());
+        }
     }
 }
 

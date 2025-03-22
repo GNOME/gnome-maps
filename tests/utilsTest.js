@@ -62,6 +62,7 @@ function getAccuracyDescriptionTest() {
                         Utils.getAccuracyDescription(GeocodeGlib.LOCATION_ACCURACY_UNKNOWN));
     JsUnit.assertEquals('Exact', Utils.getAccuracyDescription(0));
     // for other distances, the same as prettyDistance()
+    Utils._setOverrideMeasurementSystem('system');
     JsUnit.assertEquals(Utils.prettyDistance(100),
                         Utils.getAccuracyDescription(100));
     JsUnit.assertEquals(Utils.prettyDistance(10000),
@@ -82,7 +83,7 @@ function prettyTimeTest() {
 
 function prettyDistanceTest() {
     // tests with metric system
-    Utils._setMeasurementSystem(Utils.METRIC_SYSTEM);
+    Utils._setOverrideMeasurementSystem('metric');
     JsUnit.assertEquals('1 km', Utils.prettyDistance(1000, false));
     JsUnit.assertEquals('2.4 km', Utils.prettyDistance(2400, false));
     JsUnit.assertEquals('123 m', Utils.prettyDistance(123, false));
@@ -90,7 +91,7 @@ function prettyDistanceTest() {
     JsUnit.assertEquals('1,001 m', Utils.prettyDistance(1001, true));
 
     // tests with imperial system
-    Utils._setMeasurementSystem(Utils.IMPERIAL_SYSTEM);
+    Utils._setOverrideMeasurementSystem('imperial');
     JsUnit.assertEquals('1 mi', Utils.prettyDistance(1609, false));
     JsUnit.assertEquals('2.4 mi', Utils.prettyDistance(3900, false));
     JsUnit.assertEquals('0.3 mi', Utils.prettyDistance(440, false));
