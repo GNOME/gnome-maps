@@ -253,12 +253,18 @@ export class MapView extends Gtk.Overlay {
                                           margin_top:    6,
                                           margin_bottom: 6 });
 
-        if (Utils.getMeasurementSystem() === Utils.METRIC_SYSTEM)
-            this._scale.unit = Shumate.Unit.METRIC;
-        else
-            this._scale.unit = Shumate.Unit.IMPERIAL;
+        this._setScaleUnit();
+
+        Application.settings.connect('changed::measurement-system', () => {
+            this._setScaleUnit();
+        });
 
         this.add_overlay(this._scale);
+    }
+
+    _setScaleUnit() {
+        this._scale.unit = Utils.shouldShowImperialUnits() ?
+                           Shumate.Unit.IMPERIAL : Shumate.Unit.METRIC;
     }
 
     _initMap() {
