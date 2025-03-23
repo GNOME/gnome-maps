@@ -15,20 +15,21 @@
 # Matheus Polkorny <mpolkorny@ipt.br>, 2024.
 # Juliano de Souza Camargo <julianosc@pm.me>, 2024.
 # Rafael Fontenelle <rafaelff@gnome.org>, 2013-2025.
+# Álvaro Burns <>, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2025-02-12 22:33+0000\n"
-"PO-Revision-Date: 2025-02-13 16:35-0300\n"
-"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
+"POT-Creation-Date: 2025-03-18 21:30+0000\n"
+"PO-Revision-Date: 2025-03-19 20:26-0300\n"
+"Last-Translator: Álvaro Burns <>\n"
 "Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Gtranslator 47.1\n"
 "X-Project-Style: gnome\n"
 "X-DL-Team: pt_BR\n"
@@ -77,7 +78,7 @@ msgstr ""
 "de centenas de milhares de pessoas ao redor do planeta."
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.appdata.xml.in.in:512 src/mainWindow.js:587
+#: data/org.gnome.Maps.appdata.xml.in.in:559 src/mainWindow.js:587
 msgid "The GNOME Project"
 msgstr "O Projeto GNOME"
 
@@ -193,6 +194,20 @@ msgstr "Mostrar escala"
 #: data/org.gnome.Maps.gschema.xml:71
 msgid "Whether to show the scale."
 msgstr "Se deve mostrar a escala."
+
+#: data/org.gnome.Maps.gschema.xml:75
+msgid "Map tile URL pattern"
+msgstr "Padrão de URL para bloco do mapa"
+
+#: data/org.gnome.Maps.gschema.xml:76
+msgid ""
+"The URL pattern for the vector tile source to use. Note that the map style "
+"relies on certain extensions compared to upstream Planetiler OpenMapTiles "
+"Profile"
+msgstr ""
+"O padrão de URL para a fonte do bloco vetorial a ser usada. Observe que o "
+"estilo do mapa depende de certas extensões comparadas com o Perfil "
+"Planetiler OpenMapTiles upstream"
 
 #: data/ui/context-menu.ui:6
 msgid "Route from Here"
@@ -476,7 +491,7 @@ msgid "Edit an existing location in OpenStreetMap"
 msgstr "Edita uma localização existente no OpenStreetMap"
 
 #: data/ui/osm-edit-dialog.ui:80 src/mapView.js:638
-#: src/transitplugins/motis2.js:341 src/transitplugins/openTripPlanner.js:1238
+#: src/transitplugins/motis2.js:350 src/transitplugins/openTripPlanner.js:1238
 #: src/transitplugins/openTripPlanner2.js:267
 msgid "Continue"
 msgstr "Continue"
@@ -485,6 +500,7 @@ msgstr "Continue"
 msgid "Location Type"
 msgstr "Tipo de localização"
 
+#. Translators: This refers to searching for point-of-interest types. Search is a verb.
 #: data/ui/osm-edit-dialog.ui:264
 msgid "Search types"
 msgstr "Pesquisar tipos"
@@ -1905,7 +1921,7 @@ msgstr "Início em %s"
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: src/transit.js:45 src/transitplugins/motis2.js:305
+#: src/transit.js:45 src/transitplugins/motis2.js:314
 #: src/transitplugins/openTripPlanner2.js:236
 msgid "Start"
 msgstr "Início"
@@ -1926,7 +1942,7 @@ msgstr "Caminhe %s"
 msgid "Arrive at %s"
 msgstr "Chegada em %s"
 
-#: src/transit.js:79 src/transitplugins/motis2.js:323
+#: src/transit.js:79 src/transitplugins/motis2.js:332
 #: src/transitplugins/openTripPlanner.js:1175
 #: src/transitplugins/openTripPlanner2.js:255
 msgid "Arrive"
@@ -2196,135 +2212,135 @@ msgstr "%s mi"
 msgid "%s ft"
 msgstr "%s ft"
 
-#: src/transitplugins/motis2.js:335
+#: src/transitplugins/motis2.js:344
 #, javascript-format
 msgid "Take the stairs to level %s"
 msgstr "Pegue as escadas no nível %s"
 
-#: src/transitplugins/motis2.js:336
+#: src/transitplugins/motis2.js:345
 msgid "Take the stairs"
 msgstr "Pegue as escadas"
 
-#: src/transitplugins/motis2.js:340 src/transitplugins/openTripPlanner.js:1236
+#: src/transitplugins/motis2.js:349 src/transitplugins/openTripPlanner.js:1236
 #: src/transitplugins/openTripPlanner2.js:266
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Continue em %s"
 
-#: src/transitplugins/motis2.js:345 src/transitplugins/openTripPlanner.js:1241
+#: src/transitplugins/motis2.js:354 src/transitplugins/openTripPlanner.js:1241
 #: src/transitplugins/openTripPlanner2.js:270
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Vire à esquerda em %s"
 
-#: src/transitplugins/motis2.js:346 src/transitplugins/openTripPlanner.js:1243
+#: src/transitplugins/motis2.js:355 src/transitplugins/openTripPlanner.js:1243
 #: src/transitplugins/openTripPlanner2.js:271
 msgid "Turn left"
 msgstr "Vire à esquerda"
 
-#: src/transitplugins/motis2.js:350 src/transitplugins/openTripPlanner.js:1246
+#: src/transitplugins/motis2.js:359 src/transitplugins/openTripPlanner.js:1246
 #: src/transitplugins/openTripPlanner2.js:275
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Vire ligeiramente à esquerda em %s"
 
-#: src/transitplugins/motis2.js:351 src/transitplugins/openTripPlanner.js:1248
+#: src/transitplugins/motis2.js:360 src/transitplugins/openTripPlanner.js:1248
 #: src/transitplugins/openTripPlanner2.js:276
 msgid "Turn slightly left"
 msgstr "Vire ligeiramente à esquerda"
 
-#: src/transitplugins/motis2.js:355 src/transitplugins/openTripPlanner.js:1251
+#: src/transitplugins/motis2.js:364 src/transitplugins/openTripPlanner.js:1251
 #: src/transitplugins/openTripPlanner2.js:280
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Vire acentuadamente à esquerda em %s"
 
-#: src/transitplugins/motis2.js:356 src/transitplugins/openTripPlanner.js:1253
+#: src/transitplugins/motis2.js:365 src/transitplugins/openTripPlanner.js:1253
 #: src/transitplugins/openTripPlanner2.js:281
 msgid "Turn sharp left"
 msgstr "Vire acentuadamente à esquerda"
 
-#: src/transitplugins/motis2.js:360 src/transitplugins/openTripPlanner.js:1256
+#: src/transitplugins/motis2.js:369 src/transitplugins/openTripPlanner.js:1256
 #: src/transitplugins/openTripPlanner2.js:284
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Vire à direita em %s"
 
-#: src/transitplugins/motis2.js:361 src/transitplugins/openTripPlanner.js:1258
+#: src/transitplugins/motis2.js:370 src/transitplugins/openTripPlanner.js:1258
 #: src/transitplugins/openTripPlanner2.js:285
 msgid "Turn right"
 msgstr "Vire à direita"
 
-#: src/transitplugins/motis2.js:365 src/transitplugins/openTripPlanner.js:1261
+#: src/transitplugins/motis2.js:374 src/transitplugins/openTripPlanner.js:1261
 #: src/transitplugins/openTripPlanner2.js:289
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Vire ligeiramente à direita em %s"
 
-#: src/transitplugins/motis2.js:366 src/transitplugins/openTripPlanner.js:1263
+#: src/transitplugins/motis2.js:375 src/transitplugins/openTripPlanner.js:1263
 #: src/transitplugins/openTripPlanner2.js:290
 msgid "Turn slightly right"
 msgstr "Vire ligeiramente à direita"
 
-#: src/transitplugins/motis2.js:370 src/transitplugins/openTripPlanner.js:1266
+#: src/transitplugins/motis2.js:379 src/transitplugins/openTripPlanner.js:1266
 #: src/transitplugins/openTripPlanner2.js:294
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Vire acentuadamente à direita em %s"
 
-#: src/transitplugins/motis2.js:371 src/transitplugins/openTripPlanner.js:1268
+#: src/transitplugins/motis2.js:380 src/transitplugins/openTripPlanner.js:1268
 #: src/transitplugins/openTripPlanner2.js:295
 msgid "Turn sharp right"
 msgstr "Vire acentuadamente à direita"
 
 # Notas:
 # %s aqui é um número -- Rafael
-#: src/transitplugins/motis2.js:378 src/transitplugins/openTripPlanner.js:1274
+#: src/transitplugins/motis2.js:387 src/transitplugins/openTripPlanner.js:1274
 #: src/transitplugins/openTripPlanner2.js:302
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "Na rotatória, pegue a %sª saída"
 
-#: src/transitplugins/motis2.js:381 src/transitplugins/openTripPlanner.js:1276
+#: src/transitplugins/motis2.js:390 src/transitplugins/openTripPlanner.js:1276
 #: src/transitplugins/openTripPlanner2.js:305
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "Na rotatória, pegue a saída para %s"
 
-#: src/transitplugins/motis2.js:383 src/transitplugins/openTripPlanner.js:1278
+#: src/transitplugins/motis2.js:392 src/transitplugins/openTripPlanner.js:1278
 #: src/transitplugins/openTripPlanner2.js:307
 msgid "Take the roundabout"
 msgstr "Pegue a rotatória"
 
-#: src/transitplugins/motis2.js:391 src/transitplugins/openTripPlanner.js:1282
+#: src/transitplugins/motis2.js:400 src/transitplugins/openTripPlanner.js:1282
 #: src/transitplugins/openTripPlanner2.js:315
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Pegue o elevador e saia em %s"
 
-#: src/transitplugins/motis2.js:392 src/transitplugins/openTripPlanner.js:1284
+#: src/transitplugins/motis2.js:401 src/transitplugins/openTripPlanner.js:1284
 #: src/transitplugins/openTripPlanner2.js:316
 msgid "Take the elevator"
 msgstr "Pegue o elevador"
 
-#: src/transitplugins/motis2.js:396 src/transitplugins/openTripPlanner.js:1288
+#: src/transitplugins/motis2.js:405 src/transitplugins/openTripPlanner.js:1288
 #: src/transitplugins/openTripPlanner2.js:320
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Faça um retorno em U à esquerda para %s"
 
-#: src/transitplugins/motis2.js:397 src/transitplugins/openTripPlanner.js:1290
+#: src/transitplugins/motis2.js:406 src/transitplugins/openTripPlanner.js:1290
 #: src/transitplugins/openTripPlanner2.js:321
 msgid "Make a left u-turn"
 msgstr "Faça um retorno em U à esquerda"
 
-#: src/transitplugins/motis2.js:401 src/transitplugins/openTripPlanner.js:1293
+#: src/transitplugins/motis2.js:410 src/transitplugins/openTripPlanner.js:1293
 #: src/transitplugins/openTripPlanner2.js:325
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Faça um retorno em U à direita para %s"
 
-#: src/transitplugins/motis2.js:402 src/transitplugins/openTripPlanner.js:1295
+#: src/transitplugins/motis2.js:411 src/transitplugins/openTripPlanner.js:1295
 #: src/transitplugins/openTripPlanner2.js:326
 msgid "Make a right u-turn"
 msgstr "Faça um retorno em U à direita"
