@@ -290,6 +290,9 @@ export class MainWindow extends Adw.ApplicationWindow {
             'export-as-image': {
                 onActivate: () => this._onExportActivated()
             },
+            'set-measurement-system': {
+                setting: 'measurement-system'
+            }
         };
 
         Utils.addActions(this, actions, Application.settings);
