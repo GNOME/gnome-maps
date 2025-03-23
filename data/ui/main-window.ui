@@ -13,6 +13,28 @@
       </item>
     </section>
     <section>
+      <submenu>
+        <attribute name="label" translatable="yes" comments="Translators: This is a submenu for selecting length measurements units">Measurement Units</attribute>
+        <section>
+          <item>
+            <attribute name="label" translatable="yes" comments="Translators: This is a menu item for showing measurements in units corresponding to the system locale">_System Default</attribute>
+            <attribute name="action">win.measurement-system</attribute>
+            <attribute name="target">system</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes" comments="Translators: This a menu item for showing measurements in metric units">_Metric</attribute>
+            <attribute name="action">win.measurement-system</attribute>
+            <attribute name="target">metric</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes" comments="Translators: This is a menu item for showing measurements in imperial units">_Imperial</attribute>
+            <attribute name="action">win.measurement-system</attribute>
+            <attribute name="target">imperial</attribute>
+          </item>
+        </section>
+      </submenu>
+    </section>
+    <section>
       <item>
         <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
         <attribute name="action">win.show-help-overlay</attribute>
