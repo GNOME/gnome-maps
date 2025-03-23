@@ -35,9 +35,6 @@ import {Settings} from './settings.js';
 const _ = gettext.gettext;
 const ngettext = gettext.ngettext;
 
-export const METRIC_SYSTEM = 1;
-export const IMPERIAL_SYSTEM = 2;
-
 //List of locales using imperial system according to glibc locale database
 const IMPERIAL_LOCALES = ['unm_US', 'es_US', 'es_PR', 'en_US', 'yi_US'];
 
@@ -53,12 +50,6 @@ const _integerTwoDigitFormat =
                                 maximumFractionDigits: 0 });
 
 let debugInit = false;
-let measurementSystem = null;
-
-// this should only be used by the unit test to hard-set the measurement system
-export function _setMeasurementSystem(m) {
-    measurementSystem = m;
-}
 
 export var debugEnabled = false;
 
@@ -214,24 +205,6 @@ export function writeFile(filename, buffer) {
     } catch (e) {
         return false;
     }
-}
-
-export function getMeasurementSystem() {
-    if (measurementSystem)
-        return measurementSystem;
-
-    let locale = GLib.getenv('LC_MEASUREMENT') || GLib.get_language_names()[0];
-
-    // Strip charset
-    if (locale.indexOf('.') !== -1)
-        locale = locale.substring(0, locale.indexOf('.'));
-
-    if (IMPERIAL_LOCALES.indexOf(locale) === -1)
-        measurementSystem = METRIC_SYSTEM;
-    else
-        measurementSystem = IMPERIAL_SYSTEM;
-
-    return measurementSystem;
 }
 
 // only to be used by tests
