@@ -9,18 +9,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2025-02-10 20:35+0000\n"
-"PO-Revision-Date: 2025-02-10 22:10+0100\n"
+"POT-Creation-Date: 2025-03-25 21:59+0000\n"
+"PO-Revision-Date: 2025-03-25 23:18+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
-"n%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
+"%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -59,7 +59,7 @@ msgstr ""
 "tisoč posameznikov na vseh koncih sveta."
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.appdata.xml.in.in:512 src/mainWindow.js:587
+#: data/org.gnome.Maps.appdata.xml.in.in:559 src/mainWindow.js:587
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
 
@@ -175,6 +175,20 @@ msgstr "Prikaži merilo"
 #: data/org.gnome.Maps.gschema.xml:71
 msgid "Whether to show the scale."
 msgstr "Ali naj bo prikazano merilo."
+
+#: data/org.gnome.Maps.gschema.xml:75
+msgid "Map tile URL pattern"
+msgstr "Vzorec URL-ja ploščic zemljevida"
+
+#: data/org.gnome.Maps.gschema.xml:76
+msgid ""
+"The URL pattern for the vector tile source to use. Note that the map style "
+"relies on certain extensions compared to upstream Planetiler OpenMapTiles "
+"Profile"
+msgstr ""
+"Vzorec URL-ja za vir vektorskih ploščic, ki ga želite uporabiti. "
+"Upoštevajte, da se slog zemljevida zanaša na določene razširitve v "
+"primerjavi s profilom Planetiler OpenMapTiles"
 
 #: data/ui/context-menu.ui:6
 msgid "Route from Here"
@@ -457,7 +471,7 @@ msgid "Edit an existing location in OpenStreetMap"
 msgstr "Uredi obstoječe mesto na OpenStreetMap"
 
 #: data/ui/osm-edit-dialog.ui:80 src/mapView.js:638
-#: src/transitplugins/motis2.js:341 src/transitplugins/openTripPlanner.js:1238
+#: src/transitplugins/motis2.js:350 src/transitplugins/openTripPlanner.js:1238
 #: src/transitplugins/openTripPlanner2.js:267
 msgid "Continue"
 msgstr "Nadaljuj"
@@ -466,6 +480,7 @@ msgstr "Nadaljuj"
 msgid "Location Type"
 msgstr "Vrste mest"
 
+#. Translators: This refers to searching for point-of-interest types. Search is a verb.
 #: data/ui/osm-edit-dialog.ui:264
 msgid "Search types"
 msgstr "Išči po vrstah"
@@ -494,8 +509,8 @@ msgstr ""
 msgid "Submit"
 msgstr "Pošlji"
 
-#: data/ui/osm-edit-dialog.ui:394 src/osmEditDialog.js:235
-#: src/osmEditDialog.js:558 src/osmEditDialog.js:948 src/translations.js:297
+#: data/ui/osm-edit-dialog.ui:394 src/osmEditDialog.js:238
+#: src/osmEditDialog.js:561 src/osmEditDialog.js:954 src/translations.js:297
 msgid "None"
 msgstr "Brez"
 
@@ -538,18 +553,22 @@ msgstr "Preklopi vidno"
 msgid "Remove Shape Layer"
 msgstr "Odstrani plast oblike"
 
+#. Translators: This is the tooltip text for the button selecting the pedestrian routing mode
 #: data/ui/sidebar.ui:29
 msgid "Pedestrian"
 msgstr "Peš"
 
+#. Translators: This is the tooltip text for the button selecting the bicycle routing mode
 #: data/ui/sidebar.ui:36
 msgid "Bike"
 msgstr "Kolo"
 
+#. Translators: This is the tooltip text for the button selecting the car routing mode
 #: data/ui/sidebar.ui:43
 msgid "Car"
 msgstr "Avtomobil"
 
+#. Translators: This is the tooltip text for the button selecting the public transit routing mode
 #: data/ui/sidebar.ui:50
 msgid "Transit"
 msgstr "Tranzit"
@@ -938,7 +957,7 @@ msgstr "Ime"
 msgid "Type"
 msgstr "Vrsta"
 
-#: src/osmEditDialog.js:123 src/osmEditDialog.js:759
+#: src/osmEditDialog.js:123 src/osmEditDialog.js:765
 msgid "Address"
 msgstr "Naslov"
 
@@ -970,11 +989,11 @@ msgstr "Dostopnost"
 msgid "Wheelchair Access"
 msgstr "Invalidom prijazno"
 
-#: src/osmEditDialog.js:172 src/osmEditDialog.js:181 src/osmEditDialog.js:216
+#: src/osmEditDialog.js:172 src/osmEditDialog.js:181 src/osmEditDialog.js:219
 msgid "Yes"
 msgstr "Da"
 
-#: src/osmEditDialog.js:173 src/osmEditDialog.js:182 src/osmEditDialog.js:217
+#: src/osmEditDialog.js:173 src/osmEditDialog.js:182 src/osmEditDialog.js:220
 msgid "No"
 msgstr "Ne"
 
@@ -1006,13 +1025,16 @@ msgstr "Terminal"
 msgid "Service"
 msgstr "Storitev"
 
-#: src/osmEditDialog.js:191
+#. Translators: This is the title for a section of POI fields not
+#. * belonging to the previous sections ("General", "Contact", "Accessibility").
+#.
+#: src/osmEditDialog.js:194
 msgid "Miscellaneous"
 msgstr "Razno"
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:194 src/osmEditDialog.js:797 src/placeView.js:778
+#: src/osmEditDialog.js:197 src/osmEditDialog.js:803 src/placeView.js:778
 msgid "Wikipedia"
 msgstr "Wikipedija"
 
@@ -1022,173 +1044,176 @@ msgstr "Wikipedija"
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:201 src/placeView.js:537
+#: src/osmEditDialog.js:204 src/placeView.js:537
 msgid "Population"
 msgstr "Prebivalci"
 
-#: src/osmEditDialog.js:206 src/placeView.js:566
+#: src/osmEditDialog.js:209 src/placeView.js:566
 msgid "Altitude"
 msgstr "Nadmorska višina"
 
-#: src/osmEditDialog.js:207
+#: src/osmEditDialog.js:210
 msgid "Elevation above sea level, in meters"
 msgstr "Nadmorska višina v metrih."
 
-#: src/osmEditDialog.js:213
+#: src/osmEditDialog.js:216
 msgid "Takeout"
 msgstr "Prevzem hrane"
 
-#: src/osmEditDialog.js:218
+#: src/osmEditDialog.js:221
 msgid "Only"
 msgstr "Ponuja le prevzem"
 
-#: src/osmEditDialog.js:221
+#: src/osmEditDialog.js:224
 msgid "Religion"
 msgstr "Religija"
 
-#: src/osmEditDialog.js:224 src/translations.js:286
+#: src/osmEditDialog.js:227 src/translations.js:286
 msgid "Animism"
 msgstr "Animizem"
 
-#: src/osmEditDialog.js:225
+#: src/osmEditDialog.js:228
 msgid "Bahá’í"
 msgstr "Bahaizem"
 
-#: src/osmEditDialog.js:226 src/translations.js:288
+#: src/osmEditDialog.js:229 src/translations.js:288
 msgid "Buddhism"
 msgstr "Budizem"
 
-#: src/osmEditDialog.js:227 src/translations.js:289
+#: src/osmEditDialog.js:230 src/translations.js:289
 msgid "Caodaism"
 msgstr "Kaodaizem"
 
-#: src/osmEditDialog.js:228 src/translations.js:290
+#: src/osmEditDialog.js:231 src/translations.js:290
 msgid "Christianity"
 msgstr "Krščanstvo"
 
-#: src/osmEditDialog.js:229 src/translations.js:291
+#: src/osmEditDialog.js:232 src/translations.js:291
 msgid "Confucianism"
 msgstr "Konfucionizem"
 
-#: src/osmEditDialog.js:230 src/translations.js:292
+#: src/osmEditDialog.js:233 src/translations.js:292
 msgid "Hinduism"
 msgstr "Hinduizem"
 
-#: src/osmEditDialog.js:231 src/translations.js:293
+#: src/osmEditDialog.js:234 src/translations.js:293
 msgid "Jainism"
 msgstr "Jainizem"
 
-#: src/osmEditDialog.js:232 src/translations.js:294
+#: src/osmEditDialog.js:235 src/translations.js:294
 msgid "Judaism"
 msgstr "Judovstvo"
 
-#: src/osmEditDialog.js:233 src/translations.js:295
+#: src/osmEditDialog.js:236 src/translations.js:295
 msgid "Islam"
 msgstr "Islam"
 
-#: src/osmEditDialog.js:234 src/translations.js:296
+#: src/osmEditDialog.js:237 src/translations.js:296
 msgid "Multiple Religions"
 msgstr "Izberi več"
 
-#: src/osmEditDialog.js:236 src/translations.js:298
+#: src/osmEditDialog.js:239 src/translations.js:298
 msgid "Paganism"
 msgstr "Poganstvo"
 
-#: src/osmEditDialog.js:237 src/translations.js:299
+#: src/osmEditDialog.js:240 src/translations.js:299
 msgid "Pastafarianism"
 msgstr "Pastafarianizem"
 
-#: src/osmEditDialog.js:238 src/translations.js:300
+#: src/osmEditDialog.js:241 src/translations.js:300
 msgid "Scientology"
 msgstr "Scientologija"
 
-#: src/osmEditDialog.js:239 src/translations.js:301
+#: src/osmEditDialog.js:242 src/translations.js:301
 msgid "Shinto"
 msgstr "Šintoizem"
 
-#: src/osmEditDialog.js:240 src/translations.js:302
+#: src/osmEditDialog.js:243 src/translations.js:302
 msgid "Sikhism"
 msgstr "Sikhizem"
 
-#: src/osmEditDialog.js:241 src/translations.js:303
+#: src/osmEditDialog.js:244 src/translations.js:303
 msgid "Spiritualism"
 msgstr "Spiritualizem"
 
-#: src/osmEditDialog.js:242 src/translations.js:304
+#: src/osmEditDialog.js:245 src/translations.js:304
 msgid "Taoism"
 msgstr "Taoizem"
 
-#: src/osmEditDialog.js:243 src/translations.js:305
+#: src/osmEditDialog.js:246 src/translations.js:305
 msgid "Unitarian Universalism"
 msgstr "Univerzalni unitarizem"
 
-#: src/osmEditDialog.js:244 src/translations.js:306
+#: src/osmEditDialog.js:247 src/translations.js:306
 msgid "Voodoo"
 msgstr "Vudu"
 
-#: src/osmEditDialog.js:245 src/translations.js:307
+#: src/osmEditDialog.js:248 src/translations.js:307
 msgid "Yazidism"
 msgstr "Jazidizem"
 
-#: src/osmEditDialog.js:246 src/translations.js:308
+#: src/osmEditDialog.js:249 src/translations.js:308
 msgid "Zoroastrianism"
 msgstr "Zoroastrianizem"
 
-#: src/osmEditDialog.js:249
+#: src/osmEditDialog.js:252
 msgid "Note"
 msgstr "Opomba"
 
-#: src/osmEditDialog.js:310
+#: src/osmEditDialog.js:313
 msgctxt "dialog heading"
 msgid "Add Location"
 msgstr "Dodaj mesto"
 
 #. set the title and description for adding a POI
-#: src/osmEditDialog.js:319
+#: src/osmEditDialog.js:322
 msgid "Add Location"
 msgstr "Dodaj mesto"
 
-#: src/osmEditDialog.js:320
+#: src/osmEditDialog.js:323
 msgid "Add a new location to OpenStreetMap"
 msgstr "Dodajanje novega mesta na OpenStreetMap"
 
-#: src/osmEditDialog.js:411
+#: src/osmEditDialog.js:414
 msgid "Changes successfully submitted"
 msgstr "Spremembe so bile uspešno poslane"
 
-#: src/osmEditDialog.js:703
-msgid "Unspecified"
-msgstr "Nedoločeno"
+#. Translators: This is the title for a combo box row selected when a
+#. * value is not assigned to one in a list of allowed values.
+#.
+#: src/osmEditDialog.js:709
+msgid "Unspecified value"
+msgstr "Nedoločena vrednost"
 
-#: src/osmEditDialog.js:765
+#: src/osmEditDialog.js:771
 msgid "Street Name"
 msgstr "Ime ulice"
 
-#: src/osmEditDialog.js:766
+#: src/osmEditDialog.js:772
 msgid "House Number"
 msgstr "Hišna številka"
 
-#: src/osmEditDialog.js:767
+#: src/osmEditDialog.js:773
 msgid "ZIP Code"
 msgstr "Poštna številka"
 
-#: src/osmEditDialog.js:768
+#: src/osmEditDialog.js:774
 msgid "City"
 msgstr "Mesto"
 
-#: src/osmEditDialog.js:800
+#: src/osmEditDialog.js:806
 msgid "Wikipedia Article"
 msgstr "Članek v Wikipediji"
 
-#: src/osmEditDialog.js:804
+#: src/osmEditDialog.js:810
 msgid "Wikidata Tag"
 msgstr "Značka Wikipodatkov"
 
-#: src/osmEditDialog.js:809
+#: src/osmEditDialog.js:815
 msgid "Load Wikidata tag from article name"
 msgstr "Naloži značke Wikipodatkov iz imena prispevka"
 
-#: src/osmEditDialog.js:865
+#: src/osmEditDialog.js:871
 msgid "Couldn't find Wikidata tag for article"
 msgstr "Oznake Wikipodatki za prispevek ni mogoče najti"
 
@@ -1276,7 +1301,10 @@ msgstr "Nakupovanje"
 msgid "Tourism"
 msgstr "Turizem"
 
-#: src/osmTypes.js:97
+#. Translators: "Other" refers to points-of-interest where we don't have
+#. * a known title corresponding to the raw OpenStreetMap tag
+#.
+#: src/osmTypes.js:101
 msgid "Other"
 msgstr "Drugo"
 
@@ -1888,7 +1916,7 @@ msgstr "Začnite na %s"
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: src/transit.js:45 src/transitplugins/motis2.js:305
+#: src/transit.js:45 src/transitplugins/motis2.js:314
 #: src/transitplugins/openTripPlanner2.js:236
 msgid "Start"
 msgstr "Začetna točka"
@@ -1909,7 +1937,7 @@ msgstr "Hodite %s"
 msgid "Arrive at %s"
 msgstr "Prihod k %s"
 
-#: src/transit.js:79 src/transitplugins/motis2.js:323
+#: src/transit.js:79 src/transitplugins/motis2.js:332
 #: src/transitplugins/openTripPlanner.js:1175
 #: src/transitplugins/openTripPlanner2.js:255
 msgid "Arrive"
@@ -2191,133 +2219,133 @@ msgstr "%s mi"
 msgid "%s ft"
 msgstr "%s ft"
 
-#: src/transitplugins/motis2.js:335
+#: src/transitplugins/motis2.js:344
 #, javascript-format
 msgid "Take the stairs to level %s"
 msgstr "Po stopnicah se povzpnite do nadstropja/ravni %s"
 
-#: src/transitplugins/motis2.js:336
+#: src/transitplugins/motis2.js:345
 msgid "Take the stairs"
 msgstr "Pojdite po stopnicah"
 
-#: src/transitplugins/motis2.js:340 src/transitplugins/openTripPlanner.js:1236
+#: src/transitplugins/motis2.js:349 src/transitplugins/openTripPlanner.js:1236
 #: src/transitplugins/openTripPlanner2.js:266
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Nadaljujte po: %s"
 
-#: src/transitplugins/motis2.js:345 src/transitplugins/openTripPlanner.js:1241
+#: src/transitplugins/motis2.js:354 src/transitplugins/openTripPlanner.js:1241
 #: src/transitplugins/openTripPlanner2.js:270
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Zavijte levo na: %s"
 
-#: src/transitplugins/motis2.js:346 src/transitplugins/openTripPlanner.js:1243
+#: src/transitplugins/motis2.js:355 src/transitplugins/openTripPlanner.js:1243
 #: src/transitplugins/openTripPlanner2.js:271
 msgid "Turn left"
 msgstr "Zavijte levo"
 
-#: src/transitplugins/motis2.js:350 src/transitplugins/openTripPlanner.js:1246
+#: src/transitplugins/motis2.js:359 src/transitplugins/openTripPlanner.js:1246
 #: src/transitplugins/openTripPlanner2.js:275
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Držite se leve na: %s"
 
-#: src/transitplugins/motis2.js:351 src/transitplugins/openTripPlanner.js:1248
+#: src/transitplugins/motis2.js:360 src/transitplugins/openTripPlanner.js:1248
 #: src/transitplugins/openTripPlanner2.js:276
 msgid "Turn slightly left"
 msgstr "Držite se leve"
 
-#: src/transitplugins/motis2.js:355 src/transitplugins/openTripPlanner.js:1251
+#: src/transitplugins/motis2.js:364 src/transitplugins/openTripPlanner.js:1251
 #: src/transitplugins/openTripPlanner2.js:280
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Zavijte ostro levo na: %s"
 
-#: src/transitplugins/motis2.js:356 src/transitplugins/openTripPlanner.js:1253
+#: src/transitplugins/motis2.js:365 src/transitplugins/openTripPlanner.js:1253
 #: src/transitplugins/openTripPlanner2.js:281
 msgid "Turn sharp left"
 msgstr "Zavijte ostro levo"
 
-#: src/transitplugins/motis2.js:360 src/transitplugins/openTripPlanner.js:1256
+#: src/transitplugins/motis2.js:369 src/transitplugins/openTripPlanner.js:1256
 #: src/transitplugins/openTripPlanner2.js:284
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Zavijte desno na: %s"
 
-#: src/transitplugins/motis2.js:361 src/transitplugins/openTripPlanner.js:1258
+#: src/transitplugins/motis2.js:370 src/transitplugins/openTripPlanner.js:1258
 #: src/transitplugins/openTripPlanner2.js:285
 msgid "Turn right"
 msgstr "Zavijte desno"
 
-#: src/transitplugins/motis2.js:365 src/transitplugins/openTripPlanner.js:1261
+#: src/transitplugins/motis2.js:374 src/transitplugins/openTripPlanner.js:1261
 #: src/transitplugins/openTripPlanner2.js:289
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Držite se desne na: %s"
 
-#: src/transitplugins/motis2.js:366 src/transitplugins/openTripPlanner.js:1263
+#: src/transitplugins/motis2.js:375 src/transitplugins/openTripPlanner.js:1263
 #: src/transitplugins/openTripPlanner2.js:290
 msgid "Turn slightly right"
 msgstr "Držite se desne"
 
-#: src/transitplugins/motis2.js:370 src/transitplugins/openTripPlanner.js:1266
+#: src/transitplugins/motis2.js:379 src/transitplugins/openTripPlanner.js:1266
 #: src/transitplugins/openTripPlanner2.js:294
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Zavijte ostro desno na: %s"
 
-#: src/transitplugins/motis2.js:371 src/transitplugins/openTripPlanner.js:1268
+#: src/transitplugins/motis2.js:380 src/transitplugins/openTripPlanner.js:1268
 #: src/transitplugins/openTripPlanner2.js:295
 msgid "Turn sharp right"
 msgstr "Zavijte ostro desno"
 
-#: src/transitplugins/motis2.js:378 src/transitplugins/openTripPlanner.js:1274
+#: src/transitplugins/motis2.js:387 src/transitplugins/openTripPlanner.js:1274
 #: src/transitplugins/openTripPlanner2.js:302
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "V krožišču zapeljite na izvoz %s"
 
-#: src/transitplugins/motis2.js:381 src/transitplugins/openTripPlanner.js:1276
+#: src/transitplugins/motis2.js:390 src/transitplugins/openTripPlanner.js:1276
 #: src/transitplugins/openTripPlanner2.js:305
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "V krožišču zapeljite na izvoz za: %s"
 
-#: src/transitplugins/motis2.js:383 src/transitplugins/openTripPlanner.js:1278
+#: src/transitplugins/motis2.js:392 src/transitplugins/openTripPlanner.js:1278
 #: src/transitplugins/openTripPlanner2.js:307
 msgid "Take the roundabout"
 msgstr "Zapeljite v krožišče"
 
-#: src/transitplugins/motis2.js:391 src/transitplugins/openTripPlanner.js:1282
+#: src/transitplugins/motis2.js:400 src/transitplugins/openTripPlanner.js:1282
 #: src/transitplugins/openTripPlanner2.js:315
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Vstopite v dvigalo in izstopite v %s"
 
-#: src/transitplugins/motis2.js:392 src/transitplugins/openTripPlanner.js:1284
+#: src/transitplugins/motis2.js:401 src/transitplugins/openTripPlanner.js:1284
 #: src/transitplugins/openTripPlanner2.js:316
 msgid "Take the elevator"
 msgstr "Vstopite v dvigalo"
 
-#: src/transitplugins/motis2.js:396 src/transitplugins/openTripPlanner.js:1288
+#: src/transitplugins/motis2.js:405 src/transitplugins/openTripPlanner.js:1288
 #: src/transitplugins/openTripPlanner2.js:320
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Naredite polkrožni zavoj v levo na: %s"
 
-#: src/transitplugins/motis2.js:397 src/transitplugins/openTripPlanner.js:1290
+#: src/transitplugins/motis2.js:406 src/transitplugins/openTripPlanner.js:1290
 #: src/transitplugins/openTripPlanner2.js:321
 msgid "Make a left u-turn"
 msgstr "Naredite polkrožni zavoj v levo"
 
-#: src/transitplugins/motis2.js:401 src/transitplugins/openTripPlanner.js:1293
+#: src/transitplugins/motis2.js:410 src/transitplugins/openTripPlanner.js:1293
 #: src/transitplugins/openTripPlanner2.js:325
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Naredite polkrožni zavoj v desno na: %s"
 
-#: src/transitplugins/motis2.js:402 src/transitplugins/openTripPlanner.js:1295
+#: src/transitplugins/motis2.js:411 src/transitplugins/openTripPlanner.js:1295
 #: src/transitplugins/openTripPlanner2.js:326
 msgid "Make a right u-turn"
 msgstr "Naredite polkrožni zavoj v desno"
