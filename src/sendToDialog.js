@@ -17,6 +17,8 @@
  * Author: Jonas Danielson <jonas@threetimestwo.org>
  */
 
+import gettext from 'gettext';
+
 import Gdk from 'gi://Gdk';
 import GeocodeGlib from 'gi://GeocodeGlib';
 import Gio from 'gi://Gio';
@@ -26,8 +28,12 @@ import Gtk from 'gi://Gtk';
 import GWeather from 'gi://GWeather';
 
 import {Application} from './application.js';
+import {CoordinatePlace} from './coordinatePlace.js';
 import {PlaceFormatter} from './placeFormatter.js';
 import * as Utils from './utils.js';
+
+const _ = gettext.gettext;
+const C_ = gettext.dgettext;
 
 const _WEATHER_APPID = 'org.gnome.Weather';
 const _CLOCKS_APPID = 'org.gnome.clocks';
@@ -130,7 +136,10 @@ export class SendToDialog extends Gtk.Dialog {
 
         let formatter = new PlaceFormatter(place);
 
-        if (!place.isCurrentLocation)
+        /* don't show title for current location, and also not for raw
+         * coordinate places, as that would show the coordinate twice
+         */
+        if (!place.isCurrentLocation && !place instanceof CoordinatePlace)
             lines.push(formatter.title);
 
         let details = formatter.getDetailsString();
@@ -138,8 +147,17 @@ export class SendToDialog extends Gtk.Dialog {
             lines.push(details);
         }
 
-        lines.push('%f, %f'.format(this._location.latitude.toFixed(5),
-                                   this._location.longitude.toFixed(5)));
+        const lat =
+            this._location.latitude.toLocaleString(undefined,
+                                                  { maximumFractionDigits: 5 });
+        const lon =
+            this._location.longitude.toLocaleString(undefined,
+                                                   { maximumFractionDigits: 5 });
+
+        /* Translators: this is a format template string for a pair of raw
+         * coordinates, the comma can be adapted to local conventions if needed.
+         */
+        lines.push(C_("coordinates", "%s, %s").format(lat, lon));
 
         return lines.join('\n');
     }
