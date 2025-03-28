@@ -309,7 +309,8 @@ export class PlaceEntry extends Gtk.Entry {
                     zoom = this._mapView.map.viewport.zoom_level
                 ] = URIS.parseAsGeoURI(this.text);
                 location.set_from_uri(geoUri);
-                this.place = new Place({ location: location,
+                this.place = new Place({ location:    location,
+                                         store:       false,
                                          initialZoom: zoom });
             } catch(e) {
                 this.root.showToast(_("Failed to parse Geo URI"));
@@ -327,19 +328,6 @@ export class PlaceEntry extends Gtk.Entry {
                 this.root.showToast(_("Failed to parse Maps URI"));
             }
 
-            parsed = true;
-        }
-
-        let parsedLocation = Place.parseCoordinates(this.text);
-        if (parsedLocation) {
-            /* if the place was a parsed OSM coordinate URL, it will have
-             * gotten re-written as bare coordinates and trigger a search-changed,
-             * in this case don't re-set the place, as it will loose the zoom
-             * level from the URL if set
-             */
-            if (!this.place ||
-                !this._roundedLocEquals(parsedLocation, this.place.location))
-                this.place = new Place({ location: parsedLocation });
             parsed = true;
         }
 
@@ -404,13 +392,10 @@ export class PlaceEntry extends Gtk.Entry {
      *                         among results
      */
     updateResults(places, searchText, includeContactsAndRoutes) {
-        if (!places) {
-                this.place = null;
-                this._popover.showNoResult();
-                return;
-        }
-
-        let completedPlaces = [];
+        const parsedLocation = Place.parseCoordinates(searchText);
+        let completedPlaces = parsedLocation ?
+                              [new Place({ location: parsedLocation, store: false })] :
+                              [];
 
         if (includeContactsAndRoutes) {
             this._filter.filter.changed(Gtk.FilterChange.DIFFERENT);
@@ -420,7 +405,14 @@ export class PlaceEntry extends Gtk.Entry {
             }
         }
 
-        completedPlaces = completedPlaces.concat(places);
+        if (places)
+            completedPlaces = completedPlaces.concat(places);
+
+        if (completedPlaces.length === 0) {
+            this.place = null;
+            this._popover.showNoResult();
+            return;
+        }
 
         this._popover.updateResult(completedPlaces, searchText);
         this._popover.showResult();
