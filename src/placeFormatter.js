@@ -19,9 +19,13 @@
  * Author: Damián Nohales <damiannohales@gmail.com>
  */
 
+import gettext from 'gettext';
+
 import GeocodeGlib from 'gi://GeocodeGlib';
 
 import {StoredRoute} from './storedRoute.js';
+
+const _ = gettext.gettext;
 
 export class PlaceFormatter {
 
@@ -38,16 +42,7 @@ export class PlaceFormatter {
     }
 
     get title() {
-        let title;
-        // For the 'name' property we split after comma to avoid
-        // duplicating information in the title from the Geocode
-        // display name.
-        if (this._titleProperty === 'name')
-            title = this._place[this._titleProperty]?.split(',')[0];
-        else
-            title = this.place[this._titleProperty];
-
-        return title;
+        return this.place[this._titleProperty];
     }
 
     get rows() {
@@ -57,6 +52,9 @@ export class PlaceFormatter {
     getDetailsString() {
         if (this._place instanceof StoredRoute)
             return this._place.viaString;
+
+        if (this._place.isRawCoordinates)
+            return _("Coordinates");
 
         return this.rows.map((row) => {
             return row.map((prop) => {
