@@ -34,6 +34,7 @@ import {Application} from './application.js';
 import {BoundingBox} from './boundingBox.js';
 import {CircleIconMarker} from './circleIconMarker.js';
 import * as Color from './color.js';
+import {CoordinatePlace} from './coordinatePlace.js';
 import * as Geoclue from './geoclue.js';
 import * as GeocodeFactory from './geocode.js';
 import {GeoJSONShapeLayer} from './geoJSONShapeLayer.js';
@@ -705,10 +706,9 @@ export class MapView extends Gtk.Overlay {
             let location = new Location({ heading: -1 });
             location.set_from_uri(geoUri);
 
-            let place = new Place({ location: location,
-                                    name: location.description,
-                                    store: false,
-                                    initialZoom: zoom });
+            let place = new CoordinatePlace({ location: location,
+                                              name: location.description,
+                                              initialZoom: zoom });
             let marker = new PlaceMarker({ place: place,
                                            mapView: this });
             this._placeLayer.add_marker(marker);
