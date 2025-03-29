@@ -23,7 +23,7 @@ import GObject from 'gi://GObject';
 import GClue from 'gi://Geoclue';
 import Gio from 'gi://Gio';
 
-import {Place} from './place.js';
+import {CoordinatePlace} from './coordinatePlace.js';
 import {Location} from './location.js';
 import * as Utils from './utils.js';
 
@@ -103,9 +103,8 @@ export class Geoclue extends GObject.Object {
 
     _updateLocation(location) {
         if (!this.place)
-            this.place = new Place({ name: _("Current Location"),
-                                     store: false,
-                                     isCurrentLocation: true });
+            this.place = new CoordinatePlace({ name: _("Current Location"),
+                                               isCurrentLocation: true });
 
         this.place.location = location;
         this.emit('location-changed');
