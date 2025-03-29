@@ -34,6 +34,7 @@ import * as URIS from './uris.js';
 import * as Utils from './utils.js';
 
 const _ = gettext.gettext;
+const C_ = gettext.dgettext;
 
 // Matches coordinates string in 'Decimal Degrees' format
 const DECIMAL_COORDINATES_REGEX = (
@@ -133,7 +134,7 @@ export class Place extends GObject.Object {
             );
         }
 
-        return this._name;
+        return this._name ?? this.coordinatesDescription;
     }
 
     set name(name) {
@@ -276,6 +277,27 @@ export class Place extends GObject.Object {
         return this._isCurrentLocation;
     }
 
+    // true if the place is not connected to an OSM object
+    get isRawCoordinates() {
+        return !this._osmType;
+    }
+
+    get coordinatesDescription() {
+        const lat =
+            this.location.latitude.toLocaleString(undefined,
+                                                  { minimumFractionDigits: 5,
+                                                    maximumFractionDigits: 5 });
+        const lon =
+            this.location.longitude.toLocaleString(undefined,
+                                                   { minimumFractionDigits: 5,
+                                                     maximumFractionDigits: 5 });
+
+        /* Translators: this is a format template string for a pair of raw
+         * coordinates, the comma can be adapted to local conventions if needed.
+         */
+        return C_("coordinates", "%s, %s").format(lat, lon);
+    }
+
     get population() {
         return this.osmTags?.population;
     }
@@ -384,7 +406,8 @@ export class Place extends GObject.Object {
     }
 
     _getIconName() {
-        return PlaceIcons.getIconForPlace(this);
+        return this.isRawCoordinates ? 'pin-location-symbolic' :
+                                        PlaceIcons.getIconForPlace(this);
     }
 
     /**
