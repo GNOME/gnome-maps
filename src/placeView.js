@@ -124,7 +124,7 @@ export class PlaceView extends Gtk.Box {
                                            hexpand: true });
         this.content.attach(this._placeDetails, 0, 0, 1, 1);
 
-        if (this.place.isCurrentLocation || !this.place.osmType) {
+        if (this.place.isRawCoordinates) {
             this._populate(this.place);
         } else {
             let overpass = new Overpass();
@@ -214,7 +214,11 @@ export class PlaceView extends Gtk.Box {
         /* if the place has a title, show it, otherwise if there's a known
          * place type name, show that together with a place type icon
          */
-        if (title) {
+        if (place.isRawCoordinates &&
+            place.name === place.coordinatesDescription) {
+            this._title.label = _("Coordinates");
+            this._icon.visible = false;
+        } else if (title) {
             this._title.label = formatter.title;
             this._icon.visible = false;
         } else if (typeName) {
@@ -282,20 +286,20 @@ export class PlaceView extends Gtk.Box {
     _createContent(place) {
         let content = [];
 
-        if (place.isCurrentLocation) {
-            let coordinates = place.location.latitude.toFixed(5)
-                              + ', '
-                              + place.location.longitude.toFixed(5);
+        if (place.isRawCoordinates) {
+            let coordinates = place.coordinatesDescription;
             let accuracyDescription = Utils.getAccuracyDescription(this.place.location.accuracy);
 
             content.push({ label: _("Coordinates"),
-                           icon: 'map-marker-symbolic',
+                           icon: place.isCurrentLocation ?
+                                 'map-marker-symbolic' : 'pin-location-symbolic',
                            info: coordinates });
-
-            content.push({ label: _("Accuracy"),
-                           icon: 'find-location-symbolic',
-                           /* Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m) */
-                           info: _("Accuracy: %s").format(accuracyDescription) });
+            if (place.isCurrentLocation ||
+                place.location.accuracy !== GeocodeGlib.LOCATION_ACCURACY_UNKNOWN)
+                content.push({ label: _("Accuracy"),
+                               icon: 'find-location-symbolic',
+                               /* Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m) */
+                               info: _("Accuracy: %s").format(accuracyDescription) });
         }
 
         if (place.website) {
