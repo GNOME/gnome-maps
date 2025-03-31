@@ -176,9 +176,10 @@ export const DEFS = {
                 dark: "#ffffff",
                 light: "#000000",
             },
+            minzoom: 10,
             maxzoom: 13,
             sizeStops: [
-                [9, 12],
+                [10, 12],
                 [12, 18],
             ],
         },
