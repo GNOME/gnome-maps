@@ -32,6 +32,9 @@ const JsUnit = imports.jsUnit;
 
 const ARBITRARY_LOCATION = { latitude: 38.5, longitude: -120.2 };
 
+pkg.initGettext();
+pkg.initFormat();
+
 class TestStorage {
     constructor(json) {
         this.json = json;
