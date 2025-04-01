@@ -77,7 +77,7 @@ export const waterName = (config) => ({
     "source-layer": "water_name",
     filter: isPoint,
     layout: {
-        "text-field": config.localizedName(),
+        "text-field": ["match", ["get", "name"], "Golfo de México", _("Golf of …"), config.localizedName()],
         "text-font": config.fonts(),
         "text-size": waterLabelSize(config),
     },
