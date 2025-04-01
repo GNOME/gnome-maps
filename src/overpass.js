@@ -316,15 +316,12 @@ export class Overpass {
         let data = '(';
 
         for (let disjunction of category.keyValues) {
-            for (let type of ['node', 'way', 'relation']) {
-                data += `${type}(around:${radius},${lat},${lon})`;
-
-                for (let kv of disjunction) {
-                    data += `[${kv}]`;
-                }
-
-                data += ';';
+            data += `nwr(around:${radius},${lat},${lon})`;
+            for (const kv of disjunction) {
+                data += `[${kv}]`;
             }
+
+            data += ';';
         }
 
         data += ')';
