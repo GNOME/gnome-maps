@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2025-03-27 21:46+0000\n"
-"PO-Revision-Date: 2025-03-28 17:01+0100\n"
+"POT-Creation-Date: 2025-04-02 07:52+0000\n"
+"PO-Revision-Date: 2025-04-03 08:53+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -1006,11 +1006,11 @@ msgstr "Odpiralni čas"
 msgid "Phone"
 msgstr "Telefon"
 
-#: src/osmEditDialog.js:151 src/placeView.js:336
+#: src/osmEditDialog.js:151 src/placeView.js:340
 msgid "Email"
 msgstr "Elektronski naslov"
 
-#: src/osmEditDialog.js:158 src/placeView.js:303
+#: src/osmEditDialog.js:158 src/placeView.js:307
 msgid "Website"
 msgstr "Spletišče"
 
@@ -1067,7 +1067,7 @@ msgstr "Razno"
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:197 src/osmEditDialog.js:803 src/placeView.js:778
+#: src/osmEditDialog.js:197 src/osmEditDialog.js:803 src/placeView.js:782
 msgid "Wikipedia"
 msgstr "Wikipedija"
 
@@ -1077,11 +1077,11 @@ msgstr "Wikipedija"
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:204 src/placeView.js:537
+#: src/osmEditDialog.js:204 src/placeView.js:541
 msgid "Population"
 msgstr "Prebivalci"
 
-#: src/osmEditDialog.js:209 src/placeView.js:566
+#: src/osmEditDialog.js:209 src/placeView.js:570
 msgid "Altitude"
 msgstr "Nadmorska višina"
 
@@ -1349,13 +1349,17 @@ msgstr "Neimenovano mesto"
 msgid "Clear Entry"
 msgstr "Počisti vnos"
 
-#: src/placeEntry.js:315
+#: src/placeEntry.js:316
 msgid "Failed to parse Geo URI"
 msgstr "Razčlenjevanje naslova URI Geo je spodletelo"
 
-#: src/placeEntry.js:327
+#: src/placeEntry.js:328
 msgid "Failed to parse Maps URI"
 msgstr "Razčlenjevanje naslova URI zemljevida je spodletelo"
+
+#: src/placeFormatter.js:57 src/placeView.js:219 src/placeView.js:293
+msgid "Coordinates"
+msgstr "Koordinate"
 
 #. 300 ft (300 * 12 * 0.0254 m)
 #.
@@ -1371,16 +1375,12 @@ msgctxt "short distance format string"
 msgid "< %s"
 msgstr "< %s"
 
-#: src/placeView.js:291
-msgid "Coordinates"
-msgstr "Koordinate"
-
-#: src/placeView.js:295
+#: src/placeView.js:299
 msgid "Accuracy"
 msgstr "Natančnost"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:298
+#: src/placeView.js:302
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Natančnost: %s"
@@ -1391,7 +1391,7 @@ msgstr "Natančnost: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:317
+#: src/placeView.js:321
 msgid "Phone number"
 msgstr "Telefonska številka"
 
@@ -1402,16 +1402,16 @@ msgstr "Telefonska številka"
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
 #.
-#: src/placeView.js:351 src/placeView.js:390
+#: src/placeView.js:355 src/placeView.js:394
 msgid "Floor"
 msgstr "Nadstropje"
 
-#: src/placeView.js:353
+#: src/placeView.js:357
 #, javascript-format
 msgid "Floor %s"
 msgstr "Nadstropje %s"
 
-#: src/placeView.js:365
+#: src/placeView.js:369
 msgid "At ground level"
 msgstr "Na ravni pritličja"
 
@@ -1420,7 +1420,7 @@ msgstr "Na ravni pritličja"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:374
+#: src/placeView.js:378
 #, javascript-format
 msgid "%s floor above ground level"
 msgid_plural "%s floors above ground level"
@@ -1434,7 +1434,7 @@ msgstr[3] "%s nadstropja nad pritličjem"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:385
+#: src/placeView.js:389
 #, javascript-format
 msgid "%s floor below ground level"
 msgid_plural "%s floors below ground level"
@@ -1447,7 +1447,7 @@ msgstr[3] "%s nadstropja pod pritličjem"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:403
+#: src/placeView.js:407
 msgid "Offers takeout"
 msgstr "Ponuja prevzem hrane in pijače"
 
@@ -1455,7 +1455,7 @@ msgstr "Ponuja prevzem hrane in pijače"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:411
+#: src/placeView.js:415
 msgid "Does not offer takeout"
 msgstr "Ne ponuja prevzema hrane in pijače"
 
@@ -1464,18 +1464,18 @@ msgstr "Ne ponuja prevzema hrane in pijače"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:420
+#: src/placeView.js:424
 msgid "Only offers takeout"
 msgstr "Ponuja le prevzem hrane in pijače"
 
-#: src/placeView.js:427
+#: src/placeView.js:431
 msgid "Opening hours"
 msgstr "Odpiralni čas"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:437
+#: src/placeView.js:441
 msgid "Public internet access"
 msgstr "Javni dostop do interneta"
 
@@ -1483,50 +1483,50 @@ msgstr "Javni dostop do interneta"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:446
+#: src/placeView.js:450
 msgid "No internet access"
 msgstr "Ni dostopa do interneta"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:454
+#: src/placeView.js:458
 msgid "Public Wi-Fi"
 msgstr "Javno omrežje Wi-Fi"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:462
+#: src/placeView.js:466
 msgid "Wired internet access"
 msgstr "Žični dostop do interneta"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:470
+#: src/placeView.js:474
 msgid "Computers available for use"
 msgstr "Možnost uporabe računalnika"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:478
+#: src/placeView.js:482
 msgid "Internet assistance available"
 msgstr "Možnost dostopa do Interneta"
 
-#: src/placeView.js:484
+#: src/placeView.js:488
 msgid "No toilets available"
 msgstr "Uporaba stranišč ni mogoča"
 
-#: src/placeView.js:487
+#: src/placeView.js:491
 msgid "Toilets available"
 msgstr "Možnost uporabe stranišč"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:496
+#: src/placeView.js:500
 msgid "Wheelchair accessible"
 msgstr "Invalidom na vozičkih prijazno"
 
@@ -1535,7 +1535,7 @@ msgstr "Invalidom na vozičkih prijazno"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:506
+#: src/placeView.js:510
 msgid "Limited wheelchair accessibility"
 msgstr "Omejen dostop za invalidske vozičke"
 
@@ -1543,7 +1543,7 @@ msgstr "Omejen dostop za invalidske vozičke"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:515
+#: src/placeView.js:519
 msgid "Not wheelchair accessible"
 msgstr "Ni dostopa za invalidske vozička"
 
@@ -1552,7 +1552,7 @@ msgstr "Ni dostopa za invalidske vozička"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:525
+#: src/placeView.js:529
 msgid "Designated for wheelchair users"
 msgstr "Prijazno uporabnikom invalidskih vozičkov"
 
@@ -1561,7 +1561,7 @@ msgstr "Prijazno uporabnikom invalidskih vozičkov"
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:556
+#: src/placeView.js:560
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s pod morsko gladino"
@@ -1570,23 +1570,32 @@ msgstr "%s pod morsko gladino"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:563
+#: src/placeView.js:567
 msgid "At sea level"
 msgstr "Na ravni morske gladine"
 
-#: src/placeView.js:575
+#: src/placeView.js:579
 msgid "Religion:"
 msgstr "Religija:"
 
-#: src/place.js:598
+#. Translators: this is a format template string for a pair of raw
+#. * coordinates, the comma can be adapted to local conventions if needed.
+#.
+#: src/place.js:298
+#, javascript-format
+msgctxt "coordinates"
+msgid "%s, %s"
+msgstr "%s, %s"
+
+#: src/place.js:621
 msgid "Place not found in OpenStreetMap"
 msgstr "Mesta na OpenStreetMap ni mogoče najti"
 
-#: src/place.js:605
+#: src/place.js:628
 msgid "Coordinates in URL are not valid"
 msgstr "Koordinate v naslovu URL niso veljavne"
 
-#: src/place.js:614
+#: src/place.js:637
 msgid "URL is not supported"
 msgstr "Podan naslov URL ni podprt"
 
@@ -1908,16 +1917,16 @@ msgstr "Poišči"
 
 #. Translators: The first string is the name of the city, the
 #. second string is the name of the app to add it to
-#: src/sendToDialog.js:84
+#: src/sendToDialog.js:88
 #, javascript-format
 msgid "Add %s to %s"
 msgstr "Dodaj %s v %s"
 
-#: src/sendToDialog.js:181
+#: src/sendToDialog.js:187
 msgid "Failed to open URI"
 msgstr "Odpiranje naslova URI je spodletelo"
 
-#: src/sendToDialog.js:246
+#: src/sendToDialog.js:252
 #, javascript-format
 msgid "Open with %s"
 msgstr "Odpri s programom %s"
