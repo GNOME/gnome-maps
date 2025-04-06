@@ -15,3 +15,8 @@ install_subdir(
 	join_paths('private', 'hicolor'),
 	install_dir: join_paths(pkgdatadir, 'icons')
 )
+
+install_subdir(
+	join_paths('stations', 'hicolor'),
+	install_dir: join_paths(pkgdatadir, 'icons')
+)
