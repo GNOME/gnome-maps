@@ -21,6 +21,7 @@
 
 import { DEFS } from "./mapStyle/defs.js";
 import { Place } from "./place.js";
+import { getStationIconForPlace } from './mapStyle/stations.js';
 
 /**
  * Get place icon name suitable for a Place.
@@ -35,6 +36,10 @@ export function getIconForPlace(place) {
 
     if (icon === "@sport") {
         return DEFS.pois.sportIcons[place.sport] ?? DEFS.pois.sportIcons._;
+    }
+
+    if (icon === "@station") {
+        return getStationIconForPlace(place);
     }
 
     if (icon === "circle-small-symbolic") {
