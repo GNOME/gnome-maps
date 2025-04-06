@@ -446,12 +446,12 @@ export const DEFS = {
                 village: ["town-symbolic"],
             },
             railway: {
-                halt: ["train-symbolic", "transport", 16],
-                station: ["train-symbolic", "transport", 16],
-                stop: ["train-symbolic", "transport", 16],
+                halt: ["@station", "transport", 12],
+                station: ["@station", "transport", 10],
+                stop: ["@station", "transport", 12],
                 subway_entrance: ["exit-symbolic", "transport", 16],
                 train_station_entrance: ["exit-symbolic", "transport", 16],
-                tram_stop: ["tram-symbolic", "transport", 16],
+                tram_stop: ["@station", "transport", 12],
             },
             shop: {
                 alcohol: ["drinks-symbolic", "generic"],
