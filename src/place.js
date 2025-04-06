@@ -326,6 +326,10 @@ export class Place extends GObject.Object {
         return this.osmTags?.['brand:wikidata'];
     }
 
+    get networkWikidata() {
+        return this.osmTags?.['network:wikidata'];
+    }
+
     get openingHours() {
         return this.osmTags?.opening_hours ?? this.osmTags?.openingHours;
     }
