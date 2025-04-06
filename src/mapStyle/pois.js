@@ -16,6 +16,7 @@
  */
 
 import { DEFS } from "./defs.js";
+import { getStationExpression } from "./stations.js";
 
 const classMatch = (transform, defaultVal) => {
     const matchExpr = ["match", ["coalesce", ["get", "tag"], ["get", "class"]]];
@@ -56,6 +57,8 @@ const getIcon = (def) => def?.[0];
 const getCategory = (def) => def?.[1];
 const getMinzoom = (def) => (def === false ? 100 : def?.[2] ?? 15);
 const getSize = (def) => def?.[3];
+
+const stationExpression = getStationExpression();
 
 export const pois = (config) => {
     const color = classMatch(
@@ -112,6 +115,8 @@ export const pois = (config) => {
                                 .flat(),
                             DEFS.pois.sportIcons._,
                         ],
+                        "@station",
+                        stationExpression,
                         ["var", "icon"],
                     ],
                 ],
