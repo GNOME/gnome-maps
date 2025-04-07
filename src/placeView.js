@@ -275,8 +275,15 @@ export class PlaceView extends Gtk.Box {
             this._sourceLabel.label = place.source;
             this._sourceBox.visible = true;
         } else if (title && typeName && place.osmKey !== 'place') {
+            const iconName = PlaceIcons.getIconForPlace(place);
+
             this._sourceLabel.label = typeName;
-            this._sourceIcon.icon_name = PlaceIcons.getIconForPlace(place);
+            // don't dim the icon for non-symbolic (transit network) icons
+            if (iconName.endsWith('-symbolic'))
+                this._sourceIcon.get_style_context().add_class('dim-label');
+            else
+                this._sourceIcon.get_style_context().remove_class('dim-label');
+            this._sourceIcon.icon_name = iconName;
             this._sourceBox.visible = true;
         } else {
             this._sourceBox.visible = false;
