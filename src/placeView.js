@@ -32,7 +32,7 @@ const Format = imports.format;
 
 import {Application} from './application.js';
 import {Overpass} from './overpass.js';
-import { lookupType } from './osmTypes.js';
+import { getTypeNameForPlace } from './osmTypes.js';
 import {Place} from './place.js';
 import * as PlaceIcons from './placeIcons.js';
 import {PlaceViewImage} from './placeViewImage.js';
@@ -212,7 +212,7 @@ export class PlaceView extends Gtk.Box {
         }
 
         const title = formatter.title;
-        const typeName = lookupType(place.osmKey, place.osmValue);
+        const typeName = getTypeNameForPlace(place);
 
         /* if the place has a title, show it, otherwise if there's a known
          * place type name, show that together with a place type icon
