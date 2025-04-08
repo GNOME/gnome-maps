@@ -447,6 +447,10 @@ export class Place extends GObject.Object {
         return this.osmTags?.highway === 'motorway_junction';
     }
 
+    get station() {
+        return this.osmTags?.station;
+    }
+
     toJSON() {
         let boundingBox = null;
 
