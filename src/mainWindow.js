@@ -283,10 +283,6 @@ export class MainWindow extends Adw.ApplicationWindow {
                 accels: ['<Primary>O'],
                 onActivate: () => this._onOpenShapeLayer()
             },
-            'show-main-menu': {
-                accels: ['F10'],
-                onActivate: () => this._showMainMenu()
-            },
             'export-as-image': {
                 onActivate: () => this._onExportActivated()
             },
@@ -682,10 +678,6 @@ export class MainWindow extends Adw.ApplicationWindow {
                 // do nothing if the file dialog is dismissed
             }
         });
-    }
-
-    _showMainMenu() {
-        this._mainMenuButton.activate();
     }
 }
 
