@@ -51,7 +51,9 @@ for (const file of staticFiles.enumerate_children("standard::*", Gio.FileQueryIn
 }
 
 console.log(`Copying icons`);
-const icons = Gio.File.new_for_path("data/icons/private/hicolor/16x16/apps");
+const iconDirs =
+  [Gio.File.new_for_path("data/icons/private/hicolor/16x16/apps"),
+   Gio.File.new_for_path("data/icons/stations/hicolor/16x16/apps")];
 const iconList = [];
 try {
     Gio.File.new_for_path("dist/icons").make_directory_with_parents(null);
@@ -60,11 +62,13 @@ try {
         throw e;
     }
 }
-for (const file of icons.enumerate_children("standard::*", Gio.FileQueryInfoFlags.NONE, null)) {
-    const source = icons.get_child(file.get_name());
-    const dest = Gio.File.new_for_path(`dist/icons/${file.get_name()}`);
-    source.copy(dest, Gio.FileCopyFlags.OVERWRITE, null, null);
-    iconList.push(file.get_name());
+for (const dir of iconDirs) {
+    for (const file of dir.enumerate_children("standard::*", Gio.FileQueryInfoFlags.NONE, null)) {
+        const source = dir.get_child(file.get_name());
+        const dest = Gio.File.new_for_path(`dist/icons/${file.get_name()}`);
+        source.copy(dest, Gio.FileCopyFlags.OVERWRITE, null, null);
+        iconList.push(file.get_name());
+    }
 }
 
 console.log(`Writing icon list`);
