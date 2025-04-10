@@ -201,6 +201,37 @@ export function lookupType(key, value) {
         return null;
 }
 
+export function getTypeNameForPlace(place) {
+    // special case for railway station types
+    if (place.osmKey === 'railway') {
+        switch (place.station) {
+            case 'funicular':
+                return _("Funicular station");
+            case 'light_rail':
+                return _("Light rail stop");
+            case 'monorail':
+                return _("Monorail station");
+            case 'station':
+                return _("Railway station");
+            case 'subway':
+                return _("Subway station");
+            default:
+                switch (place.osmValue) {
+                    case 'halt':
+                        return _("Railway halt");
+                    case 'tram_stop':
+                        return _("Tram stop");
+                    case 'station':
+                        return _("Railway station");
+                    default:
+                        return lookupType(place.osmKey, place.osmValue);
+                }
+        }
+    }
+
+    return lookupType(place.osmKey, place.osmValue);
+}
+
 export class RecentTypesStore {
 
     constructor() {
