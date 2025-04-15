@@ -257,19 +257,10 @@ export class PrintLayout extends GObject.Object {
         let query = Application.routeQuery;
         if (index === -1)
             index = query.filledPoints.length - 1;
-        let name;
         let place = query.filledPoints[index].place;
-        if (place.name) {
-            name = place.name;
-            if (name.length > 25)
-                name = name.substr(0, 22) + '\u2026';
-        } else {
-            let lat = place.location.latitude.toFixed(5);
-            let lon = place.location.latitude.toFixed(5);
-            name = '%s, %s'.format(lat, lon);
-        }
 
-        return name;
+        return place.name.length > 25 ? place.name.substr(0, 22) + '\u2026' :
+                                        place.name;
     }
 }
 
