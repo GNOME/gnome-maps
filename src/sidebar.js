@@ -284,6 +284,7 @@ export class Sidebar extends Gtk.Grid {
         });
 
         this._query.connect('run', () => {
+            this._transitHeader.visible_child_name = 'options';
             this._instructionStack.visible_child = this._instructionSpinner;
         });
 
