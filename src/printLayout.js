@@ -265,7 +265,7 @@ export class PrintLayout extends GObject.Object {
                 name = name.substr(0, 22) + '\u2026';
         } else {
             let lat = place.location.latitude.toFixed(5);
-            let lon = place.location.latitude.toFixed(5);
+            let lon = place.location.longitude.toFixed(5);
             name = '%s, %s'.format(lat, lon);
         }
 
