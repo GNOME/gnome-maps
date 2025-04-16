@@ -29,6 +29,7 @@ import Gtk from 'gi://Gtk';
 
 import {Geoclue} from './geoclue.js';
 import * as GeocodeFactory from './geocode.js';
+import {Location} from './location.js';
 import {MainWindow} from './mainWindow.js';
 import {OSMEdit} from './osmEdit.js';
 import {PlaceStore} from './placeStore.js';
@@ -210,7 +211,27 @@ export class Application extends Adw.Application {
         let scheme = GLib.uri_parse_scheme(uri);
 
         if (scheme === 'geo') {
-            this._mainWindow.mapView.goToGeoURI(uri);
+            const q = URIS.getUriParam(uri, 'q');
+
+            // handle the q= URI parameter as a free-text search term
+            if (q) {
+                const [geoUri, _] = URIS.parseAsGeoURI(uri);
+                const location = new Location({ heading: -1 });
+
+                location.set_from_uri(geoUri);
+
+                /* treat coordinate (0,0) as search with no location bias,
+                 * otherwise use the provided coordinates as bias
+                 */
+                if (location.latitude === 0 && location.longitude === 0) {
+                    this._openSearchQuery(q);
+                } else {
+                    this._openSearchQuery(q,
+                                          location.latitude, location.longitude);
+                }
+            } else {
+                this._mainWindow.mapView.goToGeoURI(uri);
+            }
         } else if (scheme === 'http' || scheme === 'https') {
             this._mainWindow.mapView.goToHttpURL(uri);
         } else if (scheme === 'maps') {
@@ -237,7 +258,7 @@ export class Application extends Adw.Application {
             this._invalidMapsUri(uri);
     }
 
-    _openSearchQuery(query) {
+    _openSearchQuery(query, latitude = null, longitude = null) {
         let cancellable = new Gio.Cancellable();
 
         /* unless there's exactly one place (which should be focused) in
@@ -245,7 +266,7 @@ export class Application extends Adw.Application {
          */
         Application.normalStartup = true;
         this.connect('shutdown', () => cancellable.cancel());
-        GeocodeFactory.getGeocoder().search(query, null, null, cancellable,
+        GeocodeFactory.getGeocoder().search(query, latitude, longitude, cancellable,
                                             (places, error) => {
             if (error) {
                 this._mainWindow.showToast(_("An error has occurred"));
