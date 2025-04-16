@@ -87,36 +87,37 @@ export function parseAsCoordinateURL(url) {
 }
 
 /**
+ * Extract specified query parameter from a URI using &-delimited parameters.
+ * @returns {string}
+ */
+export function getUriParam(uri, param) {
+    const parsed = GLib.Uri.parse(uri, GLib.UriFlags.NONE);
+    const query = parsed.get_query();
+
+    return query ?
+           GLib.Uri.parse_params(query, -1, '&', GLib.UriParamsFlags.NONE)[param] :
+           null;
+}
+
+/**
  * For geo: URIs, extracts the `z` parameter from the URI and returns
  * [geoURI, zoom], otherwise [geoURI]. Any parsing errors are propagated
  * for the caller.
  * @returns {[string, number] | [string]}
  */
 export function parseAsGeoURI(uri) {
-    let parsed = GLib.Uri.parse(uri, GLib.UriFlags.NONE);
-    let query = parsed.get_query();
+    const parsed = GLib.Uri.parse(uri, GLib.UriFlags.NONE);
+    const z = getUriParam(uri, 'z');
+    const uriWithoutParams = GLib.Uri.build(GLib.UriFlags.NONE,
+                                            parsed.get_scheme(),
+                                            parsed.get_userinfo(),
+                                            parsed.get_host(),
+                                            parsed.get_port(),
+                                            parsed.get_path(),
+                                            null,
+                                            parsed.get_fragment()).to_string().replace(/\//g, '');
 
-    if (query) {
-        let {z, ...params} = GLib.Uri.parse_params(query, -1, '&',
-                                                   GLib.UriParamsFlags.NONE);
-
-        if (z !== undefined) {
-            query = Object.entries(params)
-                          .map(([k, v]) => `${k}=${v}`)
-                          .join('&');
-            parsed = GLib.Uri.build(GLib.UriFlags.NONE,
-                                    parsed.get_scheme(),
-                                    parsed.get_userinfo(),
-                                    parsed.get_host(),
-                                    parsed.get_port(),
-                                    parsed.get_path(),
-                                    query || null, // must be %null, not ''
-                                    parsed.get_fragment());
-            return [parsed.to_string().replace(/\//g, ''), parseInt(z)];
-        }
-    }
-
-    return [uri.replace(/\//g, '')];
+    return z ? [uriWithoutParams, parseInt(z)] : [uriWithoutParams];
 }
 
 /**
