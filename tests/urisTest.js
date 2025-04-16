@@ -69,8 +69,16 @@ function parseAsGeoURITest() {
                        URIS.parseAsGeoURI('geo://37.88181,-122.18740'));
     _assertArrayEquals(['geo:37.88181,-122.18740', 18],
                        URIS.parseAsGeoURI('geo:37.88181,-122.18740?z=18'));
+    _assertArrayEquals(['geo:0,0'],
+                       URIS.parseAsGeoURI('geo:0,0?q=Query'));
     JsUnit.assertRaises('Propagates errors for malformed URIs',
                         () => URIS.parseAsGeoURI('not_a_valid_uri'));
+}
+
+function getUriParamTest() {
+    JsUnit.assertEquals('Query', URIS.getUriParam('geo:0,0?q=Query', 'q'));
+    JsUnit.assertNull(URIS.getUriParam('geo:12.3456,78.90', 'q'));
+    JsUnit.assertEquals('', URIS.getUriParam('geo:12.3456,78.90?q=', 'q'));
 }
 
 function parseMapsURITest() {
@@ -92,4 +100,5 @@ parseAsObjectURLTest();
 parseAsCoordinateURLTest();
 parseAsGeoURITest();
 parseMapsURITest();
+getUriParamTest();
 
