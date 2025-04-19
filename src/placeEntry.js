@@ -301,19 +301,25 @@ export class PlaceEntry extends Gtk.Entry {
         let parsed = false;
 
         if (this.text.startsWith('geo:')) {
-            let location = new GeocodeGlib.Location();
+            const query = URIS.getUriParam(this.text, 'q');
 
-            try {
-                let [
-                    geoUri,
-                    zoom = this._mapView.map.viewport.zoom_level
-                ] = URIS.parseAsGeoURI(this.text);
-                location.set_from_uri(geoUri);
-                this.place = new Place({ location:    location,
-                                         store:       false,
-                                         initialZoom: zoom });
-            } catch(e) {
-                this.root.showToast(_("Failed to parse Geo URI"));
+            if (query) {
+                this.text = query;
+            } else {
+                try {
+                    const location = new GeocodeGlib.Location();
+                    const [
+                        geoUri,
+                        zoom = this._mapView.map.viewport.zoom_level
+                    ] = URIS.parseAsGeoURI(this.text);
+
+                    location.set_from_uri(geoUri);
+                    this.place = new Place({ location:    location,
+                                             store:       false,
+                                             initialZoom: zoom });
+                } catch(e) {
+                    this.root.showToast(_("Failed to parse Geo URI"));
+                }
             }
 
             parsed = true;
