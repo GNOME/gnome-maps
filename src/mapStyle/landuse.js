@@ -16,8 +16,32 @@
  */
 
 import { DEFS } from "./defs.js";
+import { mix } from "./utils.js";
 
-export const landuse = (config) => ({
+export const landuse = (config) => ([{
+    id: "buildings-outline",
+    type: "line",
+    source: "vector-tiles",
+    "source-layer": "landuse",
+    filter: ["in", ["get", "class"], ["literal", Object.keys(DEFS.landuse)]],
+    paint: {
+        "line-color": mix(
+            config.colorMatch(DEFS.landuse, "transparent"),
+            "#000000",
+            config.colorScheme === "dark" ? 2 : 0.25,
+        ),
+        "line-width": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            15,
+            0.05,
+            18,
+            config.colorScheme === "dark" ? 1 : 0.5,
+        ],
+    },
+},
+{
     id: "landuse",
     type: "fill",
     source: "vector-tiles",
@@ -34,4 +58,4 @@ export const landuse = (config) => ({
             config.colorMatch(DEFS.landuse, "transparent"),
         ],
     },
-});
+}]);

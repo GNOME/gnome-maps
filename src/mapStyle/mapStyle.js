@@ -88,7 +88,7 @@ export function generateMapStyle(options) {
                 },
             },
             landcover(config),
-            landuse(config),
+            ...landuse(config),
             waterFill(config),
             waterLine(config),
             ...boundaries(config),
