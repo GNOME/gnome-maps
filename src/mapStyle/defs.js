@@ -210,6 +210,18 @@ export const DEFS = {
             ],
         },
         {
+            classes: ["isolated_dwelling"],
+            font: "Regular",
+            color: {
+                dark: "#c0bfbc",
+                light: "#5e5c64",
+            },
+            minzoom: 15,
+            sizeStops: [
+                [15, 15],
+            ],
+        },
+        {
             id: "place-island-large",
             classes: ["island"],
             font: "Italic",
