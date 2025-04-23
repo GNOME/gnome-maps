@@ -63,7 +63,7 @@ export class MapStyleConfig {
 
     fonts(variant) {
         if (this.renderer === "libshumate") {
-            return ["Cantarell " + (variant ?? "Regular")];
+            return ["Adwaita Sans " + (variant ?? "Regular")];
         } else {
             /* Use Noto Sans when targeting MapLibre GL JS because it's
                more commonly available in SDF format. */
