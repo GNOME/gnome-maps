@@ -472,6 +472,7 @@ export const DEFS = {
                 hardware: ["build-alt-symbolic", "generic"],
                 ice_cream: ["icecream-cone-symbolic", "food"],
                 jewelry: ["anniversary-symbolic", "generic"],
+                locksmith: ["key2-symbolic", "generic"],
                 mall: ["shop-symbolic", "generic", 14],
                 mobile_phone: ["smartphone-symbolic", "generic"],
                 music: ["headphones-symbolic", "generic"],
