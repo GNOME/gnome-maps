@@ -176,7 +176,7 @@ fallback_function (ShumateVectorSpriteSheet *sprite_sheet,
 
       return maps_shield_draw (shield, ref, shield_name, color, scale);
     }
-  else if (g_str_has_suffix (name, "-symbolic"))
+  else
     {
       icon_theme = gtk_icon_theme_get_for_display (gdk_display_get_default ());
 
@@ -195,8 +195,6 @@ fallback_function (ShumateVectorSpriteSheet *sprite_sheet,
 
       return shumate_vector_sprite_new (GDK_PAINTABLE (paintable));
     }
-  else
-    return NULL;
 }
 
 /**
