@@ -75,6 +75,11 @@ const ROUTE_LINE_WIDTH = 5;
 // Maximum limit of file size (20 MB) that can be loaded without user confirmation
 const FILE_SIZE_LIMIT_MB = 20;
 
+/* Maximum distance in pixels allowed between button pressed and released
+ * to consider release as a symbol click trigger.
+ */
+const SYMBOL_CLICK_MAX_DISTANCE = 10; // px
+
 export class MapView extends Gtk.Overlay {
 
     static MapType = {
@@ -494,6 +499,26 @@ export class MapView extends Gtk.Overlay {
     }
 
     _onSymbolClicked(_mapLayer, symbol) {
+        /* As a work-around for issue
+         * https://gitlab.gnome.org/GNOME/libshumate/-/issues/82
+         * compare absolute pixel distance relative to the preceeding click
+         * "pressed" event and disregard the event if it moved too far.
+         */
+        const [pressX, pressY] =
+            this.map.viewport.location_to_widget_coords(this,
+                                                        this._pressLatitude,
+                                                        this._pressLongitude);
+        const [releaseX, releaseY] =
+            this.map.viewport.location_to_widget_coords(this,
+                                                        this.map.viewport.latitude,
+                                                        this.map.viewport.longitude);
+
+        const distance = Math.sqrt((pressX - releaseX) ** 2 +
+                                   (pressY - releaseY) ** 2);
+
+        if (distance > SYMBOL_CLICK_MAX_DISTANCE)
+            return;
+
         let placeType = GeocodeGlib.PlaceType.UNKNOWN;
 
         const layerName = symbol.get_source_layer();
@@ -1133,6 +1158,9 @@ export class MapView extends Gtk.Overlay {
     _onPrimaryClick(gesture, n_presses, x, y) {
         if (n_presses > 1)
             return;
+
+        this._pressLatitude = this.map.viewport.latitude;
+        this._pressLongitude = this.map.viewport.longitude;
 
         // remove any showing place markers when clicking outside
         this._placeLayer.remove_all();
