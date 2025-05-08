@@ -216,16 +216,20 @@ export class PlaceView extends Gtk.Box {
          */
         if (place.isRawCoordinates &&
             place.name === place.coordinatesDescription) {
+            this._title.visible = true;
             this._title.label = _("Coordinates");
             this._icon.visible = false;
         } else if (title) {
+            this._title.visible = true;
             this._title.label = formatter.title;
             this._icon.visible = false;
         } else if (typeName) {
             this._title.label = typeName;
             this._icon.icon_name = PlaceIcons.getIconForPlace(place);
+            this._title.visible = true;
             this._icon.visible = true;
         } else {
+            this._title.visible = false;
             this._icon.visible = false;
         }
 
