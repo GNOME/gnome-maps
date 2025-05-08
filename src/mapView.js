@@ -539,6 +539,10 @@ export class MapView extends Gtk.Overlay {
             osmType = GeocodeGlib.PlaceOsmType.UNKNOWN;
         }
 
+        let latitude = symbol.latitude;
+        let longitude = symbol.longitude;
+
+        log(`layerName: ${layerName}, className: ${className}`);
         switch (layerName) {
             case "place":
                 placeType = {
@@ -564,6 +568,12 @@ export class MapView extends Gtk.Overlay {
                     "ocean": GeocodeGlib.PlaceType.OCEAN,
                     "sea": GeocodeGlib.PlaceType.SEA,
                 }[className] ?? GeocodeGlib.PlaceType.DRAINAGE;
+
+                // adjust coordinates to the actual click target
+                [latitude, longitude] =
+                    this.map.viewport.widget_coords_to_location(this,
+                                                                this._pressX,
+                                                                this._pressY);
                 break;
 
             case "poi":
@@ -582,14 +592,50 @@ export class MapView extends Gtk.Overlay {
                 placeType =  GeocodeGlib.PlaceType.POINT_OF_INTEREST;
                 break;
 
+            case "transportation_name":
+                placeType = {
+                    "motorway": GeocodeGlib.PlaceType.MOTORWAY
+                }[className] ?? GeocodeGlib.PlaceType.STREET;
+
+                // adjust coordinates to the actual click target
+                [latitude, longitude] =
+                    this.map.viewport.widget_coords_to_location(this,
+                                                                this._pressX,
+                                                                this._pressY);
+
+                break;
+
+            case "waterway":
+                placeType = GeocodeGlib.PlaceType.DRAINAGE;
+
+                // adjust coordinates to the actual click target
+                [latitude, longitude] =
+                    this.map.viewport.widget_coords_to_location(this,
+                                                                this._pressX,
+                                                                this._pressY);
+
+                /* waterway features don't seem to map to OSM objects,
+                 * so avoid mapping to an unrelated OSM object.
+                 */
+                osmType = GeocodeGlib.PlaceOsmType.UNKNOWN;
+
+                break;
+
+            case "housenumber":
+                placeType = GeocodeGlib.PlaceType.UNKNOWN;
+
+                break;
+
             default:
                 return;
         }
 
+        log(`osmId: ${osmId}, type: ${osmType}, featureType: ${featureType}`);
+
         const place = new Place({
             location: new Location({
-                latitude: symbol.latitude,
-                longitude: symbol.longitude
+                latitude:  latitude,
+                longitude: longitude
             }),
             placeType,
             name: symbol.get_tag("name"),
@@ -1161,6 +1207,8 @@ export class MapView extends Gtk.Overlay {
 
         this._pressLatitude = this.map.viewport.latitude;
         this._pressLongitude = this.map.viewport.longitude;
+        this._pressX = x;
+        this._pressY = y;
 
         // remove any showing place markers when clicking outside
         this._placeLayer.remove_all();
