@@ -275,9 +275,6 @@ export class PlaceView extends Gtk.Box {
     }
 
     _onOverpass(success) {
-        if (!success)
-            return;
-
         this._populate(this.place);
 
         Application.placeStore.addPlace(this.place);
