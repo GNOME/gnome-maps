@@ -133,7 +133,8 @@ export class PlaceView extends Gtk.Box {
             if (placeItem !== null) {
 
                 // If the place is stale, update from Overpass.
-                if (placeItem.isStale()) {
+                if (placeItem.isStale() &&
+                    this.place.osmType !== GeocodeGlib.PlaceOsmType.UNKNOWN) {
                     overpass.populatePlace(this.place,
                                            this._onOverpass.bind(this));
                 } else {
@@ -146,9 +147,11 @@ export class PlaceView extends Gtk.Box {
                  */
                 if (this.place.prefilled) {
                     this._onOverpass(true);
-                } else {
+                } else if (this.place.osmType !== GeocodeGlib.PlaceOsmType.UNKNOWN) {
                     overpass.populatePlace(this.place,
                                            this._onOverpass.bind(this));
+                } else {
+                    this._populate(this.place);
                 }
             } else {
                 this._populate(this.place);
