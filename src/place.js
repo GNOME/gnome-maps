@@ -279,7 +279,7 @@ export class Place extends GObject.Object {
 
     // true if the place is not connected to an OSM object
     get isRawCoordinates() {
-        return !this._osmType;
+        return !this._osmType && !this._osmId;
     }
 
     get coordinatesDescription() {
