@@ -20,6 +20,7 @@
  */
 
 
+import GeocodeGlib from 'gi://GeocodeGlib';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
@@ -54,7 +55,8 @@ export class PlaceButtons extends Gtk.Box {
 
         this._updateFavoriteButton(!!this._place.store);
 
-        this._editButton.visible = !!this._place.osmId;
+        this._editButton.visible =
+            !!this._place.osmId && this._place.osmType !== GeocodeGlib.PlaceOsmType.UNKNOWN;
 
         this._routeButton.visible = !this._place.isCurrentLocation;
     }
