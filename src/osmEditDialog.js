@@ -400,6 +400,7 @@ export class OSMEditDialog extends Adw.Dialog {
             this._loadOSMData(osmObject);
         } else {
             this._showError(status, error);
+            this.close();
         }
     }
 
