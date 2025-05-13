@@ -330,7 +330,7 @@ export const DEFS = {
                 bus_station: ["bus-symbolic", "transport"],
                 cafe: ["cafe-symbolic", "food"],
                 car_rental: ["driving-symbolic", "transport"],
-                charging_station: ["electric-car-symbolic", "transport"],
+                charging_station: ["ev-symbolic", "transport"],
                 cinema: ["video-camera-symbolic", "generic"],
                 clinic: ["hospital-sign-symbolic", "healthAndSafety"],
                 college: ["school-symbolic", "education"],
