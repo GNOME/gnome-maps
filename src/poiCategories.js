@@ -358,7 +358,7 @@ const POI_CATEGORIES = [
             },
             {
                 label:       _("EV Charging"),
-                icon:        'electric-car-symbolic',
+                icon:        'ev-symbolic',
                 keyValues:   [['amenity=charging_station']],
                 deduplicate: true
             }
