@@ -7,56 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2020-09-16 21:00+0000\n"
-"PO-Revision-Date: 2020-10-12 21:58+0800\n"
-"Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
+"POT-Creation-Date: 2025-05-06 21:03+0000\n"
+"PO-Revision-Date: 2025-05-13 17:19+0800\n"
+"Last-Translator: Cheng-Chia Tseng <zerngjia@gmail.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.1\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-#: data/org.gnome.Maps.appdata.xml.in:6
-msgid "GNOME Maps"
-msgstr "GNOME 地圖"
-
-#: data/org.gnome.Maps.appdata.xml.in:7
-msgid "Find places around the world"
-msgstr "尋找世界上各個地方"
-
-#: data/org.gnome.Maps.appdata.xml.in:9
-msgid ""
-"Maps gives you quick access to maps all across the world. It allows you to "
-"quickly find the place you’re looking for by searching for a city or street, "
-"or locate a place to meet a friend."
-msgstr ""
-"《地圖》讓您可以快速存取世界上的地圖。它讓您快速的找到想找的位置，只要搜尋城"
-"市或街道，也可以定位要與朋友見面的場所。"
-
-#: data/org.gnome.Maps.appdata.xml.in:14
-msgid ""
-"Maps uses the collaborative OpenStreetMap database, made by hundreds of "
-"thousands of people across the globe."
-msgstr ""
-"《地圖》使用共同協作的 OpenStreetMap 資料庫，由全球各地難以計數的人們共同製"
-"作。"
-
-#. Translators: Search is carried out on OpenStreetMap data using Nominatim.
-#. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
-#. your language to see what words you can use for the translated search.
-#: data/org.gnome.Maps.appdata.xml.in:22
-msgid ""
-"You can even search for specific types of locations, such as “Pubs near Main "
-"Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
-msgstr ""
-"您甚至能搜尋指定的位置類型，像是「Pubs near Main Street, Boston」或是"
-"「Hotels near Alexanderplatz, Berlin」等。"
-
-#: data/org.gnome.Maps.appdata.xml.in:159
-msgid "The GNOME Project"
-msgstr "GNOME 專案"
+"X-Generator: Poedit 3.6\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -66,21 +26,48 @@ msgstr "GNOME 專案"
 #. * overview.
 #.
 #. Translators: This is the program name.
-#: data/org.gnome.Maps.desktop.in:4 data/ui/main-window.ui:34
-#: src/application.js:81 src/mainWindow.js:129 src/mainWindow.js:567
+#: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
+#: data/ui/main-window.ui:27 src/application.js:61 src/mainWindow.js:118
+#: src/mainWindow.js:590
 msgid "Maps"
 msgstr "地圖"
 
-#: data/org.gnome.Maps.desktop.in:5
+#: data/org.gnome.Maps.appdata.xml.in.in:7
+msgid "Find places around the world"
+msgstr "尋找世界上各個地方"
+
+#: data/org.gnome.Maps.appdata.xml.in.in:9
+msgid ""
+"Maps gives you quick access to maps all across the world. It allows you to "
+"quickly find the place you’re looking for by searching for a city or street, "
+"or locate a place to meet a friend."
+msgstr ""
+"《地圖》讓您可以快速存取世界上的地圖。它讓您快速的找到想找的位置，只要搜尋城"
+"市或街道，也可以定位要與朋友見面的場所。"
+
+#: data/org.gnome.Maps.appdata.xml.in.in:14
+msgid ""
+"Maps uses the collaborative OpenStreetMap database, made by hundreds of "
+"thousands of people across the globe."
+msgstr ""
+"《地圖》使用共同協作的 OpenStreetMap 資料庫，由全球各地難以計數的人們共同製"
+"作。"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Maps.appdata.xml.in.in:572 src/mainWindow.js:587
+msgid "The GNOME Project"
+msgstr "GNOME 專案"
+
+#: data/org.gnome.Maps.desktop.in.in:5
 msgid "A simple maps application"
 msgstr "簡單的地圖應用程式"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Maps.desktop.in:14
+#: data/org.gnome.Maps.desktop.in.in:14
 msgid "Maps;"
 msgstr "Maps;地圖;"
 
-#: data/org.gnome.Maps.desktop.in:17
+#: data/org.gnome.Maps.desktop.in.in:17
 msgid "Allows your location to be shown on the map."
 msgstr "允許您的位置顯示在地圖上。"
 
@@ -94,591 +81,483 @@ msgstr "最後檢視位置的坐標。"
 
 #: data/org.gnome.Maps.gschema.xml:16
 msgid "zoom"
-msgstr "縮放"
+msgstr "遠近縮放"
 
 #: data/org.gnome.Maps.gschema.xml:17
 msgid "Zoom level"
-msgstr "縮放等級"
+msgstr "遠近縮放等級"
 
 #: data/org.gnome.Maps.gschema.xml:21
+msgid "rotation"
+msgstr "旋轉"
+
+#: data/org.gnome.Maps.gschema.xml:22
+msgid "Map rotation in radians"
+msgstr "地圖旋轉（弧度）"
+
+#: data/org.gnome.Maps.gschema.xml:26
 msgid "Map type"
 msgstr "地圖類型"
 
-#: data/org.gnome.Maps.gschema.xml:22
+#: data/org.gnome.Maps.gschema.xml:27
 msgid "The type of map to display (street, aerial, etc.)"
 msgstr "要顯示的地圖類型（街道、航空圖等）"
 
-#: data/org.gnome.Maps.gschema.xml:26
+#: data/org.gnome.Maps.gschema.xml:31
 msgid "Window size"
 msgstr "視窗尺寸"
 
-#: data/org.gnome.Maps.gschema.xml:27
+#: data/org.gnome.Maps.gschema.xml:32
 msgid "Window size (width and height)."
 msgstr "視窗大小 (寬度與高度)。"
 
-#: data/org.gnome.Maps.gschema.xml:31
+#: data/org.gnome.Maps.gschema.xml:36
 msgid "Window position"
 msgstr "視窗位置"
 
-#: data/org.gnome.Maps.gschema.xml:32
+#: data/org.gnome.Maps.gschema.xml:37
 msgid "Window position (X and Y)."
 msgstr "視窗位置 (X 與 Y)。"
 
-#: data/org.gnome.Maps.gschema.xml:36
+#: data/org.gnome.Maps.gschema.xml:41
 msgid "Window maximized"
 msgstr "視窗已最大化"
 
-#: data/org.gnome.Maps.gschema.xml:37
+#: data/org.gnome.Maps.gschema.xml:42
 msgid "Window maximization state"
 msgstr "視窗最大化狀態"
 
-#: data/org.gnome.Maps.gschema.xml:41
+#: data/org.gnome.Maps.gschema.xml:46
 msgid "Maximum number of search results"
 msgstr "搜尋結果的最大數量"
 
-#: data/org.gnome.Maps.gschema.xml:42
+#: data/org.gnome.Maps.gschema.xml:47
 msgid "Maximum number of search results from geocode search."
 msgstr "從 geocode 搜尋取得的最大搜尋結果數。"
 
-#: data/org.gnome.Maps.gschema.xml:46
+#: data/org.gnome.Maps.gschema.xml:51
 msgid "Number of recent places to store"
 msgstr "要儲存的最近位置數"
 
-#: data/org.gnome.Maps.gschema.xml:47
+#: data/org.gnome.Maps.gschema.xml:52
 msgid "Number of recently visited places to store."
-msgstr "要儲存的最近到訪位置數。"
+msgstr "要儲存的最近造訪地點數。"
 
-#: data/org.gnome.Maps.gschema.xml:51
+#: data/org.gnome.Maps.gschema.xml:56
 msgid "Number of recent routes to store"
 msgstr "要儲存的最近路線數"
 
-#: data/org.gnome.Maps.gschema.xml:52
+#: data/org.gnome.Maps.gschema.xml:57
 msgid "Number of recently visited routes to store."
 msgstr "要儲存的最近到訪路線數。"
 
-#: data/org.gnome.Maps.gschema.xml:56
-msgid "Facebook check-in privacy setting"
-msgstr "Facebook 打卡隱私權設定值"
-
-#. Translators: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS, and SELF are constant names, and should not be translated
-#: data/org.gnome.Maps.gschema.xml:58
-msgid ""
-"Latest used Facebook check-in privacy setting. Possible values are: "
-"EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
-msgstr ""
-"最近使用的 Facebook 打卡隱私權設定值。可能的數值有：EVERYONE, "
-"FRIENDS_OF_FRIENDS, ALL_FRIENDS 或 SELF。"
+#: data/org.gnome.Maps.gschema.xml:61
+msgid "OpenStreetMap username or email address"
+msgstr "OpenStreetMap 的使用者名稱或電子郵件地址"
 
 #: data/org.gnome.Maps.gschema.xml:62
-msgid "Foursquare check-in privacy setting"
-msgstr "Foursquare 打卡隱私權設定值"
-
-#: data/org.gnome.Maps.gschema.xml:63
-msgid ""
-"Latest used Foursquare check-in privacy setting. Possible values are: "
-"public, followers or private."
-msgstr ""
-"最近使用的 Foursquare 打卡隱私權設定值。可能的數值有：public, followers 或 "
-"private。"
-
-#: data/org.gnome.Maps.gschema.xml:67
-msgid "Foursquare check-in Facebook broadcasting"
-msgstr "Foursquare 打卡 Facebook 廣播"
-
-#: data/org.gnome.Maps.gschema.xml:68
-msgid ""
-"Indicates if Foursquare should broadcast the check-in as a post in the "
-"Facebook account associated with the Foursquare account."
-msgstr ""
-"表示 Foursquare 是否應比照與 Facebook 帳號連結的 Foursquare 帳號以貼文方式廣"
-"播此次打卡。"
-
-#: data/org.gnome.Maps.gschema.xml:72
-msgid "Foursquare check-in Twitter broadcasting"
-msgstr "Foursquare 打卡 Twitter 廣播"
-
-#: data/org.gnome.Maps.gschema.xml:73
-msgid ""
-"Indicates if Foursquare should broadcast the check-in as a tweet in the "
-"Twitter account associated with the Foursquare account."
-msgstr ""
-"表示 Foursquare 是否應比照與 Twitter 帳號連結的 Foursquare 帳號以推文方式廣播"
-"此次打卡。"
-
-#: data/org.gnome.Maps.gschema.xml:77
-msgid "OpenStreetMap username or e-mail address"
-msgstr "OpenStreetMap 的使用者名稱或電子郵件位址"
-
-#: data/org.gnome.Maps.gschema.xml:78
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
 msgstr "指示使用者是否已登入可編輯 OpenStreetMap 資料。"
 
-#: data/org.gnome.Maps.gschema.xml:82
+#: data/org.gnome.Maps.gschema.xml:66
 msgid "Last used transportation type for routing"
 msgstr "上次路線規劃時使用的交通類型"
 
-#: data/org.gnome.Maps.gschema.xml:86
-msgid "Night mode"
-msgstr "夜晚模式"
+#: data/org.gnome.Maps.gschema.xml:70
+msgid "Show scale"
+msgstr "顯示比例"
 
-#: data/org.gnome.Maps.gschema.xml:87
-msgid "Whether the application is in night mode."
-msgstr "應用程式是否使用夜晚模式。"
+#: data/org.gnome.Maps.gschema.xml:71
+msgid "Whether to show the scale."
+msgstr "是否顯示比例。"
 
-#: data/org.gnome.Maps.gschema.xml:91
-msgid "Use hybrid aerial tiles"
-msgstr "使用混合式航照圖磚"
+#: data/ui/context-menu.ui:6
+msgid "Route from Here"
+msgstr "從此處出發的路線"
 
-#: data/org.gnome.Maps.gschema.xml:92
-msgid "Whether aerial tiles should use hybrid style (with labels)."
-msgstr "是否應該使用混合風格（附帶文字標籤）的航照圖磚。"
+#: data/ui/context-menu.ui:10
+msgid "Add Intermediate Destination"
+msgstr "新增中途目的地"
 
-#: data/ui/check-in-dialog.ui:250 data/ui/check-in-dialog.ui:299
-msgid "Visibility"
-msgstr "可見狀態"
+#: data/ui/context-menu.ui:14
+msgid "Route to Here"
+msgstr "前往此處的路線"
 
-#: data/ui/check-in-dialog.ui:334
-msgid "Post on Facebook"
-msgstr "張貼到 Facebook"
-
-#: data/ui/check-in-dialog.ui:348
-msgid "Post on Twitter"
-msgstr "張貼到 Twitter"
-
-#: data/ui/check-in-dialog.ui:388 data/ui/export-view-dialog.ui:20
-#: data/ui/send-to-dialog.ui:13 data/ui/shape-layer-file-chooser.ui:22
-msgid "_Cancel"
-msgstr "取消(_C)"
-
-#. Translators: Check in is used as a verb
-#: data/ui/check-in-dialog.ui:399 data/ui/map-bubble.ui:93
-msgid "C_heck in"
-msgstr "打卡(_H)"
-
-#: data/ui/check-in-dialog.ui:427
-msgid "Everyone"
-msgstr "每個人"
-
-#: data/ui/check-in-dialog.ui:431
-msgid "Friends of friends"
-msgstr "朋友的朋友"
-
-#: data/ui/check-in-dialog.ui:435
-msgid "Just friends"
-msgstr "僅限朋友"
-
-#: data/ui/check-in-dialog.ui:439
-msgid "Just me"
-msgstr "僅限本人"
-
-#: data/ui/check-in-dialog.ui:453
-msgid "Public"
-msgstr "公開"
-
-#: data/ui/check-in-dialog.ui:457
-msgid "Followers"
-msgstr "跟隨"
-
-#: data/ui/check-in-dialog.ui:461
-msgid "Private"
-msgstr "私人"
-
-#: data/ui/context-menu.ui:9
-msgid "Route from here"
-msgstr "從這裡開始的路線"
-
-#: data/ui/context-menu.ui:16
-msgid "Add intermediate destination"
-msgstr "加入中間目的地"
+#: data/ui/context-menu.ui:18
+msgid "Clear Current Route"
+msgstr "清除目前路線"
 
 #: data/ui/context-menu.ui:24
-msgid "Route to here"
-msgstr "到這裡的路線"
-
-#: data/ui/context-menu.ui:36
-msgid "What’s here?"
-msgstr "這裡有什麼？"
-
-#: data/ui/context-menu.ui:43
 msgid "Copy Location"
 msgstr "複製位置"
 
-#: data/ui/context-menu.ui:51
-msgid "Add to OpenStreetMap"
-msgstr "加入 OpenStreetMap"
+#: data/ui/context-menu.ui:28
+msgid "Add to OpenStreetMap…"
+msgstr "新增到 OpenStreetMap…"
 
-#: data/ui/export-view-dialog.ui:14
-msgid "Export view"
+#. Translators: This is the title of the dialog for expoting the map view content to an image file
+#: data/ui/export-view-dialog.ui:7
+msgid "Export View"
 msgstr "匯出檢視"
 
-#: data/ui/export-view-dialog.ui:34
+#: data/ui/export-view-dialog.ui:16 data/ui/osm-discard-dialog.ui:12
+#: data/ui/send-to-dialog.ui:10
+msgid "_Cancel"
+msgstr "取消(_C)"
+
+#: data/ui/export-view-dialog.ui:26
 msgid "_Export"
 msgstr "匯出(_E)"
 
-#: data/ui/export-view-dialog.ui:126
-msgid "Include route and markers"
-msgstr "包含路線和標記"
+#. Translators: This is a tooltip
+#: data/ui/favorite-list-row.ui:72
+msgid "Remove Favorite"
+msgstr "移除收藏"
+
+#: data/ui/favorites-popover.ui:11
+msgid "No Favorites"
+msgstr "無收藏"
+
+#: data/ui/favorites-popover.ui:12
+msgid "Add places to your favorites to get them listed here"
+msgstr "將地點加入您的收藏，讓它們列在這裡"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:15
-msgid "Go to current location"
-msgstr "前往目前位置"
+#: data/ui/headerbar-left.ui:11 src/geoclue.js:106 src/placeBar.js:101
+msgid "Current Location"
+msgstr "目前位置"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:36
-msgid "Choose map type"
-msgstr "選擇地圖類型"
+#: data/ui/headerbar-left.ui:19
+msgid "Layers"
+msgstr "圖層"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:61
-msgid "Zoom out"
-msgstr "拉遠"
-
-#. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:77
-msgid "Zoom in"
-msgstr "拉近"
-
-#. Translators: This is a tooltip
-#: data/ui/headerbar-right.ui:16
-msgid "Toggle route planner"
-msgstr "切換路徑規劃器"
-
-#. Translators: This is a tooltip
-#: data/ui/headerbar-right.ui:37
-msgid "Toggle favorites"
-msgstr "切換喜好"
-
-#. Translators: This is a tooltip
-#: data/ui/headerbar-right.ui:57
+#: data/ui/headerbar-right.ui:11
 msgid "Print Route"
 msgstr "列印路線"
 
-#: data/ui/help-overlay.ui:14
+#. Translators: This is a tooltip
+#: data/ui/headerbar-right.ui:21
+msgid "Favorites"
+msgstr "收藏"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-right.ui:30
+msgid "Route Planner"
+msgstr "路線規劃器"
+
+#: data/ui/help-overlay.ui:12
 msgctxt "shortcut window"
 msgid "General"
 msgstr "一般"
 
-#: data/ui/help-overlay.ui:18
+#: data/ui/help-overlay.ui:15
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
 msgstr "顯示快捷鍵"
 
-#: data/ui/help-overlay.ui:25
+#: data/ui/help-overlay.ui:21
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "搜尋"
 
-#: data/ui/help-overlay.ui:32
+#: data/ui/help-overlay.ui:27
 msgctxt "shortcut window"
-msgid "Toggle route planner"
-msgstr "切換路徑規劃器"
+msgid "Explore points-of-interest"
+msgstr "探索興趣點"
+
+#: data/ui/help-overlay.ui:33
+msgctxt "shortcut window"
+msgid "Show last search results"
+msgstr "顯示上次搜尋結果"
 
 #: data/ui/help-overlay.ui:39
+msgctxt "shortcut window"
+msgid "Toggle route planner"
+msgstr "切換路線規劃器"
+
+#: data/ui/help-overlay.ui:45
 msgctxt "shortcut window"
 msgid "Print route"
 msgstr "列印路線"
 
-#: data/ui/help-overlay.ui:46
+#: data/ui/help-overlay.ui:51
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "結束"
 
-#: data/ui/help-overlay.ui:53
+#: data/ui/help-overlay.ui:57
 msgctxt "shortcut window"
 msgid "Open main menu"
 msgstr "開啟主選單"
 
-#: data/ui/help-overlay.ui:62
+#: data/ui/help-overlay.ui:65
 msgctxt "shortcut window"
 msgid "Map View"
 msgstr "地圖檢視"
 
-#: data/ui/help-overlay.ui:66
+#: data/ui/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Zoom in"
 msgstr "拉近"
 
-#: data/ui/help-overlay.ui:73
+#: data/ui/help-overlay.ui:74
 msgctxt "shortcut window"
 msgid "Zoom out"
 msgstr "拉遠"
 
 #: data/ui/help-overlay.ui:80
 msgctxt "shortcut window"
+msgid "Rotate clockwise"
+msgstr "順時針旋轉"
+
+#: data/ui/help-overlay.ui:86
+msgctxt "shortcut window"
+msgid "Rotate counter-clockwise"
+msgstr "逆時針旋轉"
+
+#: data/ui/help-overlay.ui:92
+msgctxt "shortcut window"
+msgid "Reset rotation"
+msgstr "重設旋轉"
+
+#: data/ui/help-overlay.ui:98
+msgctxt "shortcut window"
 msgid "Toggle scale"
 msgstr "切換縮放"
 
-#: data/ui/help-overlay.ui:87
+#: data/ui/help-overlay.ui:104
 msgctxt "shortcut window"
 msgid "Go to current location"
 msgstr "前往目前位置"
 
-#: data/ui/help-overlay.ui:94
+#: data/ui/help-overlay.ui:114
 msgctxt "shortcut window"
 msgid "Switch to street view"
 msgstr "切換為街道檢視"
 
-#: data/ui/help-overlay.ui:101
+#: data/ui/help-overlay.ui:121
 msgctxt "shortcut window"
 msgid "Switch to aerial view"
 msgstr "切換為鳥瞰圖"
 
-#: data/ui/help-overlay.ui:108
+#: data/ui/help-overlay.ui:127
 msgctxt "shortcut window"
 msgid "Open shape layer"
 msgstr "開啟形狀圖層"
 
-#: data/ui/layers-popover.ui:65
-msgid "Show Labels"
-msgstr "顯示文字標籤"
+#: data/ui/layers-popover.ui:7
+msgid "Show Scale"
+msgstr "顯示比例"
 
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:102
+#: data/ui/layers-popover.ui:16
 msgid "Open Shape Layer…"
 msgstr "開啟形狀圖層…"
 
-#: data/ui/location-service-dialog.ui:16
-msgid "Turn on location services to find your location"
-msgstr "開啟位置服務以尋找您的位置"
-
-#: data/ui/location-service-dialog.ui:28 data/ui/osm-edit-dialog.ui:283
-#: data/ui/zoom-in-dialog.ui:28
-msgid "Cancel"
-msgstr "取消"
-
-#: data/ui/location-service-dialog.ui:38
-msgid "Location Settings"
-msgstr "位置設定值"
-
 #: data/ui/main-window.ui:8
-msgid "Night Mode"
-msgstr "夜晚模式"
+msgid "Set up OpenStreetMap Account…"
+msgstr "設定 OpenStreetMap 帳號…"
 
 #: data/ui/main-window.ui:12
-msgid "Set up OpenStreetMap Account"
-msgstr "設定 OpenStreetMap 帳號"
+msgid "Export as Image…"
+msgstr "匯出為影像…"
 
-#: data/ui/main-window.ui:16
-msgid "Export as Image"
-msgstr "匯出為影像"
-
-#: data/ui/main-window.ui:21
+#: data/ui/main-window.ui:17
 msgid "_Keyboard Shortcuts"
 msgstr "鍵盤快捷鍵(_K)"
 
-#: data/ui/main-window.ui:26
+#: data/ui/main-window.ui:22
 msgid "About Maps"
 msgstr "關於《地圖》"
 
-#: data/ui/main-window.ui:52
-msgid "Open main menu"
-msgstr "開啟主選單"
+#: data/ui/main-window.ui:48
+msgid "Main Menu"
+msgstr "主選單"
 
-#: data/ui/main-window.ui:114
-msgid "Maps is offline!"
-msgstr "Maps 已離線！"
-
-#: data/ui/main-window.ui:122
-msgid ""
-"Maps need an active internet connection to function properly, but one can’t "
-"be found."
-msgstr "Maps 需要使用網際網路連線才能正常運作，但找不到網際網路。"
-
-#: data/ui/main-window.ui:130
-msgid "Check your connection and proxy settings."
-msgstr "請檢查您的連線與代理伺服器設定值。"
-
-#. Translators: This is a tooltip
-#: data/ui/map-bubble.ui:45
-msgid "Add to new route"
-msgstr "加入新的路線"
-
-#. Translators: This is a tooltip
-#: data/ui/map-bubble.ui:62
-msgid "Share location"
-msgstr "分享位置"
-
-#. Translators: This is a tooltip
-#: data/ui/map-bubble.ui:79
-msgid "Mark as favorite"
-msgstr "標記為喜好"
-
-#. Translators: This is a tooltip
-#: data/ui/map-bubble.ui:98
-msgid "Check in here"
-msgstr "在這裡檢查"
-
-#: data/ui/osm-account-dialog.ui:9
+#: data/ui/osm-account-dialog.ui:5
 msgid "OpenStreetMap Account"
 msgstr "OpenStreetMap 帳號"
 
-#: data/ui/osm-account-dialog.ui:22
-msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
-msgstr "<span weight=\"bold\" size=\"x-large\">登入以編輯地圖</span>"
+#: data/ui/osm-account-dialog.ui:31
+msgid "Sign In To Edit Maps"
+msgstr "登入以編輯地圖"
+
+#: data/ui/osm-account-dialog.ui:32
+msgid "Help to improve the map, using an OpenStreetMap account."
+msgstr "使用 OpenStreetMap 帳號以協助改善地圖。"
 
 #: data/ui/osm-account-dialog.ui:36
-msgid ""
-"Help to improve the map, using an\n"
-"OpenStreetMap account."
-msgstr ""
-"協助改善地圖，使用\n"
-"OpenStreetMap 帳號。"
+msgid "_Sign In"
+msgstr "登入(_S)"
 
-#: data/ui/osm-account-dialog.ui:56
-msgid "Email"
-msgstr "電子郵件"
-
-#: data/ui/osm-account-dialog.ui:81
-msgid "Password"
-msgstr "密碼"
-
-#: data/ui/osm-account-dialog.ui:125
-msgid "Sign up"
-msgstr "註冊"
-
-#: data/ui/osm-account-dialog.ui:139
-msgid "Sign In"
-msgstr "登入"
-
-#. The label should contain the link to the OSM reset password page with a translated title
-#: data/ui/osm-account-dialog.ui:162
-msgid ""
-"Sorry, that didn’t work. Please try again, or visit\n"
-"<a href=\"https://www.openstreetmap.org/user/forgot-password"
-"\">OpenStreetMap</a> to reset your password."
-msgstr ""
-"抱歉，那沒有作用。請再試一次，或者參訪\n"
-"<a href=\"https://www.openstreetmap.org/user/forgot-password"
-"\">OpenStreetMap</a>以重置您的密碼。"
-
-#: data/ui/osm-account-dialog.ui:175
-msgid "The verification code didn’t match, please try again."
-msgstr "驗證碼不符合，請再試一次。"
-
-#: data/ui/osm-account-dialog.ui:201
-msgid "Enter verification code shown above"
-msgstr "輸入上面顯示的驗證碼"
-
-#: data/ui/osm-account-dialog.ui:224
-msgid "Verify"
+#: data/ui/osm-account-dialog.ui:60
+msgid "Verification"
 msgstr "驗證"
 
-#: data/ui/osm-account-dialog.ui:254
-msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
-msgstr "<span weight=\"bold\" size=\"x-large\">已登入</span>"
+#: data/ui/osm-account-dialog.ui:61
+msgid ""
+"Copy the verification code shown when authorizing access in the browser."
+msgstr "複製在瀏覽器中授權存取時顯示的驗證碼。"
 
-#: data/ui/osm-account-dialog.ui:267
+#: data/ui/osm-account-dialog.ui:70
+msgid "Verification Code"
+msgstr "驗證碼"
+
+#: data/ui/osm-account-dialog.ui:76
+msgid "_Verify"
+msgstr "驗證(_V)"
+
+#: data/ui/osm-account-dialog.ui:112
+msgid "Signed In"
+msgstr "登入"
+
+#: data/ui/osm-account-dialog.ui:113
 msgid "Your OpenStreetMap account is active."
 msgstr "您的 OpenStreetMap 帳號已啟用。"
 
-#: data/ui/osm-account-dialog.ui:301
-msgid "Sign Out"
-msgstr "登出"
+#: data/ui/osm-account-dialog.ui:131
+msgid "_Sign Out"
+msgstr "登出(_S)"
 
-#: data/ui/osm-edit-address.ui:14
-msgid "Street"
-msgstr "街道"
+#: data/ui/osm-discard-dialog.ui:5
+msgid "Discard Changes?"
+msgstr "捨棄變更？"
 
-#: data/ui/osm-edit-address.ui:26
-msgid "House number"
-msgstr "門牌號碼"
+#: data/ui/osm-discard-dialog.ui:6
+msgid "Your current changes to the map will be lost"
+msgstr "您目前對地圖所做的變更將會遺失"
 
-#: data/ui/osm-edit-address.ui:38
-msgid "Postal code"
-msgstr "郵遞區號"
+#: data/ui/osm-discard-dialog.ui:13
+msgid "_Discard"
+msgstr "捨棄(_D)"
 
-#. This is the place name as it would be written in a postal address (typically coming after the postal code)
-#: data/ui/osm-edit-address.ui:50
-msgid "City"
-msgstr "城市"
+#: data/ui/osm-edit-dialog.ui:5
+msgctxt "dialog title"
+msgid "Edit Location"
+msgstr "編輯位置"
 
-#: data/ui/osm-edit-dialog.ui:58
-msgid "Type"
-msgstr "類型"
+#: data/ui/osm-edit-dialog.ui:25
+msgid "Loading…"
+msgstr "載入中…"
 
-#: data/ui/osm-edit-dialog.ui:84
-msgid "None"
-msgstr "沒有"
+#: data/ui/osm-edit-dialog.ui:38 data/ui/osm-edit-dialog.ui:53
+#: data/ui/osm-edit-dialog.ui:101
+msgid "Edit Location"
+msgstr "編輯位置"
 
-#: data/ui/osm-edit-dialog.ui:129
-msgid "Add Field"
-msgstr "加入欄位"
+#: data/ui/osm-edit-dialog.ui:54
+msgid "Edit an existing location in OpenStreetMap"
+msgstr "編輯在 OpenStreetMap 中的既有位置"
 
-#: data/ui/osm-edit-dialog.ui:163
-msgid "Comment"
-msgstr "評註"
+#: data/ui/osm-edit-dialog.ui:80 src/mapView.js:663
+#: src/transitplugins/motis2.js:350 src/transitplugins/openTripPlanner.js:1238
+#: src/transitplugins/openTripPlanner2.js:267
+msgid "Continue"
+msgstr "繼續"
 
-#: data/ui/osm-edit-dialog.ui:195
+#: data/ui/osm-edit-dialog.ui:136
+msgid "Location Type"
+msgstr "位置類型"
+
+#. Translators: This refers to searching for point-of-interest types. Search is a verb.
+#: data/ui/osm-edit-dialog.ui:264
+msgid "Search types"
+msgstr "搜尋類型"
+
+#: data/ui/osm-edit-dialog.ui:278
+msgid "Recently Used Types"
+msgstr "最近使用的類型"
+
+#: data/ui/osm-edit-dialog.ui:301
+msgid "Edit Map"
+msgstr "編輯地圖"
+
+#: data/ui/osm-edit-dialog.ui:320
+msgid "Almost There!"
+msgstr "即將完成！"
+
+#: data/ui/osm-edit-dialog.ui:321
 msgid ""
-"Map changes will be visible on all maps that use\n"
+"Describe your map changes. They will be visible on all maps that use "
 "OpenStreetMap data."
 msgstr ""
-"地圖更動資訊會在所有利用 OpenStreetMap\n"
-"    資料的地圖中出現。"
+"請描述您的地圖變更。這些變更將在所有使用 OpenStreetMap 資料的地圖上顯示。"
 
-#: data/ui/osm-edit-dialog.ui:241
-msgid "Recently Used"
-msgstr "最近使用"
+#: data/ui/osm-edit-dialog.ui:367
+msgid "Submit"
+msgstr "提交"
 
-#: data/ui/osm-edit-dialog.ui:280
-msgctxt "dialog title"
-msgid "Edit on OpenStreetMap"
-msgstr "在 OpenStreetMap 編輯"
+#: data/ui/osm-edit-dialog.ui:394 src/osmEditDialog.js:235
+#: src/osmEditDialog.js:558 src/osmEditDialog.js:948 src/translations.js:297
+msgid "None"
+msgstr "無"
 
-#: data/ui/osm-edit-dialog.ui:310 src/osmEditDialog.js:513
-msgid "Next"
-msgstr "下一個"
+#: data/ui/place-popover.ui:23 src/searchBar.js:69
+msgid "Explore Nearby Places"
+msgstr "探索附近的地點"
 
-#. Translators: This is a tooltip
-#: data/ui/place-bubble.ui:49
-msgid "Edit on OpenStreetMap"
-msgstr "在 OpenStreetMap 編輯"
-
-#. Translators: This is a tooltip
-#: data/ui/place-bubble.ui:73
-msgid "Show more information"
-msgstr "顯示更多資訊"
-
-#: data/ui/place-popover.ui:54
+#: data/ui/place-popover.ui:78 src/application.js:273
 msgid "No results found"
-msgstr "找不到結果"
+msgstr "未找到結果"
+
+#: data/ui/place-popover.ui:88 src/application.js:251
+msgid "An error has occurred"
+msgstr "發生錯誤"
 
 #. Translators: This is a tooltip
-#: data/ui/route-entry.ui:20
-msgid "Drag to change order of the route"
-msgstr "拖曳以修改路徑順序"
+#: data/ui/route-entry.ui:12
+msgid "Change Route Order"
+msgstr "變更路線順序"
 
-#: data/ui/send-to-dialog.ui:10
+#: data/ui/send-to-dialog.ui:7
 msgid "Open Location"
 msgstr "開啟位置"
 
-#: data/ui/send-to-dialog.ui:70
-msgid "Copy"
-msgstr "複製"
+#: data/ui/send-to-dialog.ui:64
+msgid "C_opy"
+msgstr "複製(_O)"
 
-#: data/ui/send-to-dialog.ui:76
-msgid "Send To…"
-msgstr "傳送至…"
-
-#: data/ui/shape-layer-file-chooser.ui:4 src/mainWindow.js:64
-msgid "Open Shape Layer"
-msgstr "開啟形狀圖層"
-
-#: data/ui/shape-layer-file-chooser.ui:12
-msgid "_Open"
-msgstr "開啟(_O)"
+#: data/ui/send-to-dialog.ui:71
+msgid "_Send To…"
+msgstr "傳送至(_S)…"
 
 #. Translators: This is a tooltip
-#: data/ui/shape-layer-row.ui:19
+#: data/ui/shape-layer-row.ui:32
 msgid "Toggle visible"
 msgstr "切換可見性"
 
-#: data/ui/sidebar.ui:275
+#. Translators: This is a tooltip
+#: data/ui/shape-layer-row.ui:44
+msgid "Remove Shape Layer"
+msgstr "開啟形狀圖層"
+
+#: data/ui/sidebar.ui:29
+msgid "Pedestrian"
+msgstr "行人"
+
+#: data/ui/sidebar.ui:36
+msgid "Bike"
+msgstr "自行車"
+
+#: data/ui/sidebar.ui:43
+msgid "Car"
+msgstr "汽車"
+
+#: data/ui/sidebar.ui:50
+msgid "Transit"
+msgstr "公共運輸"
+
+#: data/ui/sidebar.ui:184
 msgid "Route search by GraphHopper"
 msgstr "透過 GraphHopper 搜尋路線"
 
-#: data/ui/sidebar.ui:364
+#: data/ui/sidebar.ui:217
+msgid "More Information"
+msgstr "更多資訊"
+
+#: data/ui/sidebar.ui:250
 msgid ""
 "Routing itineraries for public transit is provided by third-party\n"
 "services.\n"
@@ -698,78 +577,119 @@ msgstr ""
 "區域性的車班資訊。\n"
 "此處所顯示的名稱或商標為其註冊商標所有人所有。"
 
-#: data/ui/social-place-more-results-row.ui:8
-msgid "Show more results"
-msgstr "顯示更多結果"
+#: data/ui/sidebar.ui:274
+msgid "Back"
+msgstr "返回"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:126
+#: data/ui/transit-leg-row.ui:99
 msgid "Hide intermediate stops and information"
-msgstr "隱藏中間站與資訊"
+msgstr "隱藏中途站與資訊"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:200
+#: data/ui/transit-leg-row.ui:157
 msgid "Show intermediate stops and information"
-msgstr "顯示中間站與資訊"
+msgstr "顯示中途站與資訊"
 
 #. Indicates searching for the next available itineraries
-#: data/ui/transit-options-panel.ui:18
+#: data/ui/transit-options-panel.ui:17
 msgid "Leave Now"
-msgstr "正在離開"
+msgstr "立即出發"
 
 #. Indicates searching for itineraries leaving at the specified time at the earliest
-#: data/ui/transit-options-panel.ui:19
+#: data/ui/transit-options-panel.ui:18
 msgid "Leave By"
-msgstr "離開於"
+msgstr "出發時間"
 
 #. Indicates searching for itineraries arriving no later than the specified time
-#: data/ui/transit-options-panel.ui:20
+#: data/ui/transit-options-panel.ui:19
 msgid "Arrive By"
-msgstr "抵達於"
+msgstr "抵達時間"
+
+#: data/ui/transit-options-panel.ui:59
+msgid "View More"
+msgstr "檢視更多"
 
 #. Header indicating selected modes of transit
-#: data/ui/transit-options-panel.ui:106
+#: data/ui/transit-options-panel.ui:91
 msgid "Show"
 msgstr "顯示"
 
-#: data/ui/transit-options-panel.ui:117
-msgid "Buses"
-msgstr "公車"
+#: data/ui/transit-options-panel.ui:101
+msgid "_Buses"
+msgstr "公車(_B)"
 
-#: data/ui/transit-options-panel.ui:124
-msgid "Trams"
-msgstr "輕軌"
+#: data/ui/transit-options-panel.ui:108
+msgid "_Trams"
+msgstr "輕軌(_T)"
 
-#: data/ui/transit-options-panel.ui:131
-msgid "Trains"
-msgstr "火車"
+#: data/ui/transit-options-panel.ui:115
+msgid "T_rains"
+msgstr "火車(_R)"
 
-#: data/ui/transit-options-panel.ui:138
-msgid "Subway"
-msgstr "捷運"
+#: data/ui/transit-options-panel.ui:122
+msgid "_Subway"
+msgstr "捷運(_S)"
 
-#: data/ui/transit-options-panel.ui:145
-msgid "Ferries"
-msgstr "渡輪"
+#: data/ui/transit-options-panel.ui:129
+msgid "_Ferries"
+msgstr "渡輪(_F)"
 
-#: data/ui/transit-options-panel.ui:152
-msgid "Airplanes"
-msgstr "飛機"
+#: data/ui/transit-options-panel.ui:136
+msgid "_Airplanes"
+msgstr "飛機(_A)"
 
-#: data/ui/user-location-bubble.ui:13 src/geoclue.js:118
-msgid "Current location"
-msgstr "目前位置"
+#. Translators: This is a tooltip
+#: data/ui/place-bar.ui:38 data/ui/place-buttons.ui:28
+msgid "Share Location"
+msgstr "分享位置"
 
-#: data/ui/zoom-in-dialog.ui:16
-msgid "Zoom in to add location!"
-msgstr "拉近以加入位置！"
+#. Translators: This is a tooltip
+#: data/ui/place-buttons.ui:11
+msgid "Add to new route"
+msgstr "新增至新路線"
 
-#: data/ui/zoom-in-dialog.ui:38
+#. Translators: This is the button to find a route to a place
+#: data/ui/place-buttons.ui:15
+msgid "_Directions"
+msgstr "方向(_D)"
+
+#. Translators: This is a tooltip
+#: data/ui/place-buttons.ui:37
+msgid "Mark as Favorite"
+msgstr "標記為收藏"
+
+#. Translators: This is a tooltip
+#: data/ui/place-buttons.ui:48
+msgid "Edit on OpenStreetMap"
+msgstr "在 OpenStreetMap 編輯"
+
+#. Translators: This is a tooltip
+#: data/ui/place-view.ui:59
+msgid "Share location"
+msgstr "分享位置"
+
+#: data/ui/poi-category-goback-row.ui:22
+msgid "Back to Main Categories"
+msgstr "回到主要類別"
+
+#. Translators: This is a tooltip
+#: data/ui/zoom-and-rotate-controls.ui:19
+msgid "Reset Rotation"
+msgstr "重設旋轉"
+
+#. Translators: This is a tooltip
+#: data/ui/zoom-and-rotate-controls.ui:32
+msgid "Zoom Out"
+msgstr "拉遠"
+
+#. Translators: This is a tooltip
+#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1272
 msgid "Zoom In"
 msgstr "拉近"
 
-#: lib/maps-file-tile-source.c:303 lib/maps-file-tile-source.c:379
-#: lib/maps-file-tile-source.c:459
+#: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338
+#: lib/maps-file-data-source.c:418
 msgid "Failed to find tile structure in directory"
 msgstr "無法在目錄中找到圖磚結構"
 
@@ -777,483 +697,316 @@ msgstr "無法在目錄中找到圖磚結構"
 msgid "Failed to parse XML document"
 msgstr "無法解析 XML 文件"
 
-#: lib/maps-osm.c:249 lib/maps-osm.c:402
+#: lib/maps-osm.c:250 lib/maps-osm.c:403
 msgid "Missing required attributes"
 msgstr "缺少了必要的屬性"
 
-#: lib/maps-osm.c:450
+#: lib/maps-osm.c:451 lib/maps-osm.c:494
 msgid "Could not find OSM element"
 msgstr "找不到 OSM 元素"
 
-#: src/application.js:95
+#: lib/maps-osm.c:508
+msgid "Could not find user element"
+msgstr "找不到使用者元素"
+
+#: src/application.js:73
 msgid "A path to a local tiles directory structure"
 msgstr "本地端圖磚目錄結構的路徑"
 
-#: src/application.js:101
+#: src/application.js:79
 msgid "Tile size for local tiles directory"
 msgstr "本地端圖磚目錄的圖磚大小"
 
-#: src/application.js:105
+#: src/application.js:83
 msgid "Show the version of the program"
 msgstr "顯示程式版本"
 
-#: src/application.js:111
-msgid "Ignore network availability"
-msgstr "忽略網路可用性"
+#: src/application.js:89
+msgid "Search for places"
+msgstr "搜尋地點"
 
-#: src/application.js:121 src/application.js:122
+#: src/application.js:100 src/application.js:101
 msgid "[FILE…|URI]"
 msgstr "[FILE…|URI]"
 
-#: src/checkInDialog.js:167
-msgid "Select an account"
-msgstr "選擇一個帳號"
-
-#: src/checkInDialog.js:172 src/checkInDialog.js:244
-msgid "Loading"
-msgstr "載入中"
-
-#: src/checkInDialog.js:196
-msgid "Select a place"
-msgstr "選擇一個地點"
-
-#: src/checkInDialog.js:201
-msgid ""
-"Maps cannot find the place to check in to with Facebook. Please select one "
-"from this list."
-msgstr "Maps 找不到可以在 Facebook 中打卡的地點。請從清單中選擇一個。"
-
-#: src/checkInDialog.js:203
-msgid ""
-"Maps cannot find the place to check in to with Foursquare. Please select one "
-"from this list."
-msgstr "Maps 找不到可以在 Foursquare 中打卡的地點。請從清單中選擇一個。"
-
-#. Translators: %s is the name of the place to check in.
-#.
-#: src/checkInDialog.js:218
+#: src/application.js:280
 #, javascript-format
-msgid "Check in to %s"
-msgstr "打卡於：%s"
-
-#. Translators: %s is the name of the place to check in.
-#.
-#: src/checkInDialog.js:228
-#, javascript-format
-msgid "Write an optional message to check in to %s."
-msgstr "寫些關於在 %s 打卡的訊息。"
-
-#: src/checkInDialog.js:280 src/checkIn.js:162 src/osmEditDialog.js:550
-msgid "An error has occurred"
-msgstr "發生錯誤"
-
-#. Translators: %s is the place name that user wanted to check-in
-#: src/checkIn.js:144
-#, javascript-format
-msgid "Cannot find “%s” in the social service"
-msgstr "在社群服務中找不到「%s」"
-
-#: src/checkIn.js:146
-msgid "Cannot find a suitable place to check-in in this location"
-msgstr "找不到適合的地點來打卡"
-
-#: src/checkIn.js:150
-msgid ""
-"Credentials have expired, please open Online Accounts to sign in and enable "
-"this account"
-msgstr "憑證已過期，請開啟線上帳號再次登入並啟用這個帳號"
-
-#: src/contextMenu.js:135
-msgid "Nothing found here!"
-msgstr "這裡找不到東西！"
-
-#: src/contextMenu.js:196
-msgid ""
-"Location was added to the map, note that it may take a while before it shows "
-"on the map and in search results."
-msgstr ""
-"位置已加到地圖上，請注意在顯示在地圖上與搜尋結果中之前可能需要一段時間。"
+msgid "Invalid maps: URI: %s"
+msgstr "無效的地圖: URI: %s"
 
 #. Translators: This is a format string for a PNG filename for an
 #. * exported image with coordinates. The .png extension should be kept
 #. * intact in the translated string.
 #.
-#: src/exportViewDialog.js:82
+#: src/exportViewDialog.js:72
 #, javascript-format
 msgid "Maps at %f, %f.png"
 msgstr "於 %f 的地圖, %f.png"
 
-#: src/exportViewDialog.js:154
-msgid "Filesystem is read only"
-msgstr "檔案系統是唯讀的"
+#: src/exportViewDialog.js:87
+msgid "PNG"
+msgstr "PNG"
 
-#: src/exportViewDialog.js:156
-msgid "You do not have permission to save there"
-msgstr "您沒有在該處儲存檔案的權限"
-
-#: src/exportViewDialog.js:158
-msgid "The directory does not exist"
-msgstr "目錄不存在"
-
-#: src/exportViewDialog.js:160
-msgid "No filename specified"
-msgstr "沒有指定檔案名稱"
-
-#: src/exportViewDialog.js:168
+#: src/exportViewDialog.js:138
 msgid "Unable to export view"
 msgstr "無法匯出檢視"
 
-#: src/geoJSONSource.js:97
+#: src/favoriteListRow.js:42
+msgid "Favorite removed"
+msgstr "收藏已移除"
+
+#: src/favoriteListRow.js:43
+msgid "_Undo"
+msgstr "復原(_U)"
+
+#: src/geoJSONSource.js:73
 msgid "invalid coordinate"
 msgstr "無效的坐標"
 
-#: src/geoJSONSource.js:146 src/geoJSONSource.js:186 src/geoJSONSource.js:201
+#: src/geoJSONSource.js:126 src/geoJSONSource.js:166 src/geoJSONSource.js:181
 msgid "parse error"
 msgstr "解析錯誤"
 
-#: src/geoJSONSource.js:180
+#: src/geoJSONSource.js:160
 msgid "unknown geometry"
 msgstr "不明的位置大小"
 
-#: src/graphHopper.js:112 src/transitPlan.js:201
+#: src/graphHopper.js:102 src/transitPlan.js:177
 msgid "Route request failed."
 msgstr "要求路線失敗。"
 
-#: src/graphHopper.js:119 src/transitPlan.js:193
+#: src/graphHopper.js:109 src/transitPlan.js:169
 msgid "No route found."
 msgstr "找不到路線。"
 
-#: src/graphHopper.js:207 src/transitplugins/openTripPlanner.js:1111
+#: src/graphHopper.js:196 src/transitplugins/openTripPlanner.js:1162
 msgid "Start!"
 msgstr "開始！"
 
-#: src/mainWindow.js:61
-msgid "All Layer Files"
-msgstr "所有圖層檔案"
-
-#: src/mainWindow.js:470
+#: src/mainWindow.js:477
 msgid "Failed to connect to location service"
-msgstr "無法連接位置服務"
+msgstr "連線到定位服務失敗"
 
-#: src/mainWindow.js:565
+#: src/mainWindow.js:482
+msgid "Turn on location services"
+msgstr "開啟定位服務"
+
+#: src/mainWindow.js:483
+msgid "Location Settings"
+msgstr "定位設定"
+
+#: src/mainWindow.js:588
 msgid "translator-credits"
 msgstr ""
 "Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>, 2013\n"
 "Yi-Jyun Pan <pan93412@gmail.com>, 2020\n"
-"Cheng-Chia Tseng <pswo10680@gmail.com>, 2020"
+"Cheng-Chia Tseng <pswo10680@gmail.com>, 2020\n"
+"taijuin <taijuin@gmail.com>, 2025"
 
-#: src/mainWindow.js:568
-msgid "A map application for GNOME"
-msgstr "GNOME 的地圖程式"
+#: src/mainWindow.js:592
+msgid "Copyright © 2011 – 2025 Red Hat, Inc. and The GNOME Maps authors"
+msgstr "著作權所有 © 2011 – 2025 Red Hat, Inc. 與 GNOME 地圖作者群"
 
-#: src/mainWindow.js:579
-msgid "Copyright © 2011 – 2019 Red Hat, Inc. and The GNOME Maps authors"
-msgstr "著作權所有 © 2011 – 2019 Red Hat, Inc. 和 GNOME 地圖作者群"
-
-#: src/mainWindow.js:599
+#: src/mainWindow.js:605
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "來自 %s 與貢獻者的地圖資料"
+
+#: src/mainWindow.js:606
+msgid "Map Data Provider"
+msgstr "地圖資料提供者"
+
+#: src/mainWindow.js:609
+msgid "Map Tile Provider"
+msgstr "地圖圖磚提供者"
 
 #. Translators: this is an attribution string giving credit to the
 #. * tile provider where the %s placeholder is replaced by either
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:615
+#: src/mainWindow.js:617
 #, javascript-format
 msgid "Map tiles provided by %s"
-msgstr "由 %s 提供的圖磚"
+msgstr "圖磚由 %s 提供"
 
-#. Translators: this is an attribution string giving credit to the
-#. * search provider where the first %s placeholder is replaced by either
-#. * the bare name of the geocoder provider, or a linkified URL if one
-#. * is available, and the second %s placeholder is replaced by the
-#. * URL to the geocoder project page. These placeholders
-#. * can be swapped, if needed using the %n$s positional syntax
-#. * (i.e. "%2$s ... %1$s ..." for positioning the project URL
-#. * before the provider).
-#.
-#: src/mainWindow.js:644
+#: src/mainWindow.js:646
+msgid "Search Provider"
+msgstr "搜尋提供者"
+
+#: src/mainWindow.js:649
 #, javascript-format
 msgid "Search provided by %s using %s"
-msgstr "搜尋使用 %2$s 並由 %1$s 提供"
+msgstr "使用 %2$s 搜尋，由 %1$s 提供"
 
-#: src/mapView.js:466
-msgid "File type is not supported"
-msgstr "檔案類型不支援"
+#: src/mainWindow.js:658
+msgid "All Layer Files"
+msgstr "所有圖層檔案"
 
-#: src/mapView.js:473
+#: src/mainWindow.js:671
+msgid "Open Shape Layers"
+msgstr "開啟形狀圖層"
+
+#: src/mapView.js:638 src/mapView.js:700
 msgid "Failed to open layer"
 msgstr "無法開啟圖層"
 
-#: src/mapView.js:509
+#: src/mapView.js:655
+msgid "Do you want to continue?"
+msgstr "您想繼續嗎？"
+
+#: src/mapView.js:656
+#, javascript-format
+msgid ""
+"You are about to open files with a total size of %s MB. This could take some "
+"time to load"
+msgstr "您即將開啟總大小 %s MB 的檔案。這可能需要一些時間載入"
+
+#: src/mapView.js:662
+msgid "Cancel"
+msgstr "取消"
+
+#: src/mapView.js:694
+msgid "File type is not supported"
+msgstr "檔案類型不支援"
+
+#: src/mapView.js:736
 msgid "Failed to open GeoURI"
 msgstr "無法開啟 GeoURI"
 
+#: src/mapView.js:1271
+msgid "Zoom in to add location"
+msgstr "拉近以加入位置"
+
+#: src/mapView.js:1289
+msgid "Location was added in OpenStreetMap"
+msgstr "位置已加入 OpenStreetMap"
+
+#. switch back to the sign-in view, and show a toast indicating
+#. that verification failed
+#: src/osmAccountDialog.js:134
+msgid "The verification code didn’t match, please try again."
+msgstr "驗證碼不符合，請再試一次。"
+
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: src/osmConnection.js:436
+#: src/osmConnection.js:335
 msgid "Incorrect user name or password"
 msgstr "不正確的使用者名稱或密碼"
 
-#: src/osmConnection.js:438
+#: src/osmConnection.js:337
 msgid "Success"
 msgstr "成功"
 
-#: src/osmConnection.js:440
+#: src/osmConnection.js:339
 msgid "Bad request"
 msgstr "錯誤的要求"
 
-#: src/osmConnection.js:442
+#: src/osmConnection.js:341
 msgid "Object not found"
 msgstr "找不到物件"
 
-#: src/osmConnection.js:444
+#: src/osmConnection.js:343
 msgid "Conflict, someone else has just modified the object"
 msgstr "衝突，有其他人剛剛修改了這個物件"
 
-#: src/osmConnection.js:446
+#: src/osmConnection.js:345
 msgid "Object has been deleted"
 msgstr "物件已刪除"
 
-#: src/osmConnection.js:448
+#: src/osmConnection.js:347
 msgid "Way or relation refers to non-existing children"
 msgstr "路徑或關係參照到不存在的子項"
 
-#: src/osmEditDialog.js:106
+#: src/osmEditDialog.js:110
+msgid "General"
+msgstr "一般"
+
+#: src/osmEditDialog.js:113
 msgid "Name"
 msgstr "名稱"
 
-#: src/osmEditDialog.js:109
-msgid "The official name. This is typically what appears on signs."
-msgstr "正式的名稱。這通常會出現在招牌上。"
+#: src/osmEditDialog.js:118
+msgid "Type"
+msgstr "類型"
 
-#: src/osmEditDialog.js:112
+#: src/osmEditDialog.js:123 src/osmEditDialog.js:759
 msgid "Address"
 msgstr "地址"
 
-#: src/osmEditDialog.js:120
-msgid "Website"
-msgstr "網站"
+#: src/osmEditDialog.js:136
+msgid "Contact"
+msgstr "聯絡人"
 
-#: src/osmEditDialog.js:123
-msgid ""
-"The official website. Try to use the most basic form of a URL i.e. http://"
-"example.com instead of http://example.com/index.html."
-msgstr ""
-"官方網站。嘗試使用最基本形式的 URL ，例如 HTTP://example.com ，而不是 HTTP://"
-"example.com/index.html。"
+#: src/osmEditDialog.js:139
+msgid "Opening Hours"
+msgstr "開放時間"
 
-#: src/osmEditDialog.js:128
+#: src/osmEditDialog.js:145
 msgid "Phone"
 msgstr "電話"
 
-#: src/osmEditDialog.js:132
-msgid ""
-"Phone number. Use the international format, starting with a + sign. Beware "
-"of local privacy laws, especially for private phone numbers."
-msgstr ""
-"電話號碼。使用國際格式，以 + 號開頭。提防當地的隱私權法律，特別是私人電話號"
-"碼。"
+#: src/osmEditDialog.js:151 src/placeView.js:336
+msgid "Email"
+msgstr "電子郵件"
 
-#: src/osmEditDialog.js:137 src/placeBubble.js:197
-msgid "Wikipedia"
-msgstr "維基百科"
+#: src/osmEditDialog.js:158 src/placeView.js:303
+msgid "Website"
+msgstr "網站"
 
-#: src/osmEditDialog.js:141
-msgid ""
-"The format used should include the language code and the article title like "
-"“en:Article title”."
-msgstr "使用的格式應該包括語言代碼和文章標題，例如「en:Article title」。"
+#: src/osmEditDialog.js:166
+msgid "Accessibility"
+msgstr "無障礙"
 
-#: src/osmEditDialog.js:145
-msgid "Opening hours"
-msgstr "開放時間"
+#: src/osmEditDialog.js:169
+msgid "Wheelchair Access"
+msgstr "輪椅通道"
 
-#: src/osmEditDialog.js:150
-msgid "See the link in the label for help on format."
-msgstr "請參閱標籤的連結以取得格式的求助訊息。"
-
-#: src/osmEditDialog.js:153
-msgid "Population"
-msgstr "資料母體"
-
-#: src/osmEditDialog.js:158
-msgid "Altitude"
-msgstr "海拔高度"
-
-#: src/osmEditDialog.js:161
-msgid "Elevation (height above sea level) of a point in metres."
-msgstr "某一點的高度，以公尺計 (自海平面以上的高度)。"
-
-#: src/osmEditDialog.js:164
-msgid "Wheelchair access"
-msgstr "使用輪椅"
-
-#: src/osmEditDialog.js:167 src/osmEditDialog.js:176 src/osmEditDialog.js:214
+#: src/osmEditDialog.js:172 src/osmEditDialog.js:181 src/osmEditDialog.js:216
 msgid "Yes"
 msgstr "是"
 
-#: src/osmEditDialog.js:168 src/osmEditDialog.js:177 src/osmEditDialog.js:215
+#: src/osmEditDialog.js:173 src/osmEditDialog.js:182 src/osmEditDialog.js:217
 msgid "No"
 msgstr "否"
 
-#: src/osmEditDialog.js:169
+#: src/osmEditDialog.js:174
 msgid "Limited"
 msgstr "有限制"
 
-#: src/osmEditDialog.js:170
+#: src/osmEditDialog.js:175
 msgid "Designated"
 msgstr "特定"
 
-#: src/osmEditDialog.js:173
-msgid "Internet access"
+#: src/osmEditDialog.js:178
+msgid "Internet Access"
 msgstr "網際網路存取"
 
-#. Translators:
-#. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
-#.
-#: src/osmEditDialog.js:178 src/translations.js:340
+#: src/osmEditDialog.js:183
 msgid "Wi-Fi"
 msgstr "Wi-Fi"
 
-#: src/osmEditDialog.js:179
+#: src/osmEditDialog.js:184
 msgid "Wired"
 msgstr "有線網路"
 
-#: src/osmEditDialog.js:180
+#: src/osmEditDialog.js:185
 msgid "Terminal"
 msgstr "網路終端"
 
-#: src/osmEditDialog.js:181
+#: src/osmEditDialog.js:186
 msgid "Service"
 msgstr "服務"
 
-#: src/osmEditDialog.js:184
-msgid "Religion"
-msgstr "宗教"
+#: src/osmEditDialog.js:191
+msgid "Miscellaneous"
+msgstr "雜項"
 
-#: src/osmEditDialog.js:187 src/translations.js:363
-msgid "Animism"
-msgstr "萬物有靈論"
-
-#: src/osmEditDialog.js:188
-msgid "Bahá’í"
-msgstr "巴哈伊教"
-
-#: src/osmEditDialog.js:189 src/translations.js:365
-msgid "Buddhism"
-msgstr "佛教"
-
-#: src/osmEditDialog.js:190 src/translations.js:366
-msgid "Caodaism"
-msgstr "高台教"
-
-#: src/osmEditDialog.js:191 src/translations.js:367
-msgid "Christianity"
-msgstr "基督教"
-
-#: src/osmEditDialog.js:192 src/translations.js:368
-msgid "Confucianism"
-msgstr "儒教"
-
-#: src/osmEditDialog.js:193 src/translations.js:369
-msgid "Hinduism"
-msgstr "印度教"
-
-#: src/osmEditDialog.js:194 src/translations.js:370
-msgid "Jainism"
-msgstr "耆那教"
-
-#: src/osmEditDialog.js:195 src/translations.js:371
-msgid "Judaism"
-msgstr "猶太教"
-
-#: src/osmEditDialog.js:196 src/translations.js:372
-msgid "Islam"
-msgstr "伊斯蘭教"
-
-#: src/osmEditDialog.js:197 src/translations.js:373
-msgid "Multiple Religions"
-msgstr "多種宗教"
-
-#: src/osmEditDialog.js:198 src/translations.js:374
-msgid "Paganism"
-msgstr "異教"
-
-#: src/osmEditDialog.js:199 src/translations.js:375
-msgid "Pastafarianism"
-msgstr "飛天義大利麵神教"
-
-#: src/osmEditDialog.js:200 src/translations.js:376
-msgid "Scientology"
-msgstr "科學神教"
-
-#: src/osmEditDialog.js:201 src/translations.js:377
-msgid "Shinto"
-msgstr "神道教"
-
-#: src/osmEditDialog.js:202 src/translations.js:378
-msgid "Sikhism"
-msgstr "錫克教"
-
-#: src/osmEditDialog.js:203 src/translations.js:379
-msgid "Spiritualism"
-msgstr "精神主義"
-
-#: src/osmEditDialog.js:204 src/translations.js:380
-msgid "Taoism"
-msgstr "道教"
-
-#: src/osmEditDialog.js:205 src/translations.js:381
-msgid "Unitarian Universalism"
-msgstr "一神論的普遍主義"
-
-#: src/osmEditDialog.js:206 src/translations.js:382
-msgid "Voodoo"
-msgstr "巫毒教"
-
-#: src/osmEditDialog.js:207 src/translations.js:383
-msgid "Yazidism"
-msgstr "雅兹迪教"
-
-#: src/osmEditDialog.js:208 src/translations.js:384
-msgid "Zoroastrianism"
-msgstr "拜火教"
-
-#: src/osmEditDialog.js:211
-msgid "Toilets"
-msgstr "廁所"
-
-#: src/osmEditDialog.js:218
-msgid "Note"
-msgstr "備註"
-
-#: src/osmEditDialog.js:221
-msgid ""
-"Information used to inform other mappers about non-obvious information about "
-"an element, the author’s intent when creating it, or hints for further "
-"improvement."
-msgstr ""
-"用來通知其他製圖者關於元件、建立時作者的目的、與更多資訊提示的不明顯資訊。"
-
-#: src/osmEditDialog.js:326
-msgctxt "dialog title"
-msgid "Add to OpenStreetMap"
-msgstr "加入 OpenStreetMap"
-
-#: src/osmEditDialog.js:380
-msgid "Select Type"
-msgstr "選擇類型"
-
-#: src/osmEditDialog.js:497
-msgid "Done"
-msgstr "完成"
-
-#: src/photonParser.js:103
-msgid "Unnamed place"
-msgstr "未命名位置"
+#. Translators: This is the text for the "Wikipedia" link at the end
+#. of summaries
+#: src/osmEditDialog.js:194 src/osmEditDialog.js:797 src/placeView.js:778
+msgid "Wikipedia"
+msgstr "維基百科"
 
 #. TODO: this is a bit of a work-around to re-interpret the population,
 #. * stored as a string into an integer to convert back to a locale-
@@ -1261,99 +1014,776 @@ msgstr "未命名位置"
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/placeBubble.js:149
-msgid "Population:"
-msgstr "人口："
+#: src/osmEditDialog.js:201 src/placeView.js:537
+msgid "Population"
+msgstr "資料母體"
 
-#: src/placeBubble.js:155
-msgid "Altitude:"
-msgstr "海拔高度："
+#: src/osmEditDialog.js:206 src/placeView.js:566
+msgid "Altitude"
+msgstr "海拔高度"
 
-#: src/placeBubble.js:160
-msgid "Opening hours:"
-msgstr "開放時間："
+#: src/osmEditDialog.js:207
+msgid "Elevation above sea level, in meters"
+msgstr "海拔高度（公尺）"
 
-#: src/placeBubble.js:165
-msgid "Internet access:"
-msgstr "網際網路存取："
+#: src/osmEditDialog.js:213
+msgid "Takeout"
+msgstr "外帶"
 
-#: src/placeBubble.js:170
-msgid "Religion:"
-msgstr "宗教："
+#: src/osmEditDialog.js:218
+msgid "Only"
+msgstr "僅供"
 
-#: src/placeBubble.js:175
-msgid "Toilets:"
-msgstr "廁所："
+#: src/osmEditDialog.js:221
+msgid "Religion"
+msgstr "宗教"
 
-#: src/placeBubble.js:180
-msgid "Wheelchair access:"
-msgstr "使用輪椅："
+#: src/osmEditDialog.js:224 src/translations.js:286
+msgid "Animism"
+msgstr "萬物有靈論"
 
-#: src/placeBubble.js:186 src/placeBubble.js:190
-msgid "Phone:"
-msgstr "電話："
+#: src/osmEditDialog.js:225
+msgid "Bahá’í"
+msgstr "巴哈伊教"
 
-#: src/placeEntry.js:212
+#: src/osmEditDialog.js:226 src/translations.js:288
+msgid "Buddhism"
+msgstr "佛教"
+
+#: src/osmEditDialog.js:227 src/translations.js:289
+msgid "Caodaism"
+msgstr "高台教"
+
+#: src/osmEditDialog.js:228 src/translations.js:290
+msgid "Christianity"
+msgstr "基督教"
+
+#: src/osmEditDialog.js:229 src/translations.js:291
+msgid "Confucianism"
+msgstr "儒教"
+
+#: src/osmEditDialog.js:230 src/translations.js:292
+msgid "Hinduism"
+msgstr "印度教"
+
+#: src/osmEditDialog.js:231 src/translations.js:293
+msgid "Jainism"
+msgstr "耆那教"
+
+#: src/osmEditDialog.js:232 src/translations.js:294
+msgid "Judaism"
+msgstr "猶太教"
+
+#: src/osmEditDialog.js:233 src/translations.js:295
+msgid "Islam"
+msgstr "伊斯蘭教"
+
+#: src/osmEditDialog.js:234 src/translations.js:296
+msgid "Multiple Religions"
+msgstr "多種宗教"
+
+#: src/osmEditDialog.js:236 src/translations.js:298
+msgid "Paganism"
+msgstr "異教"
+
+#: src/osmEditDialog.js:237 src/translations.js:299
+msgid "Pastafarianism"
+msgstr "飛天義大利麵神教"
+
+#: src/osmEditDialog.js:238 src/translations.js:300
+msgid "Scientology"
+msgstr "科學神教"
+
+#: src/osmEditDialog.js:239 src/translations.js:301
+msgid "Shinto"
+msgstr "神道教"
+
+#: src/osmEditDialog.js:240 src/translations.js:302
+msgid "Sikhism"
+msgstr "錫克教"
+
+#: src/osmEditDialog.js:241 src/translations.js:303
+msgid "Spiritualism"
+msgstr "精神主義"
+
+#: src/osmEditDialog.js:242 src/translations.js:304
+msgid "Taoism"
+msgstr "道教"
+
+#: src/osmEditDialog.js:243 src/translations.js:305
+msgid "Unitarian Universalism"
+msgstr "一神論的普遍主義"
+
+#: src/osmEditDialog.js:244 src/translations.js:306
+msgid "Voodoo"
+msgstr "巫毒教"
+
+#: src/osmEditDialog.js:245 src/translations.js:307
+msgid "Yazidism"
+msgstr "雅兹迪教"
+
+#: src/osmEditDialog.js:246 src/translations.js:308
+msgid "Zoroastrianism"
+msgstr "拜火教"
+
+#: src/osmEditDialog.js:249
+msgid "Note"
+msgstr "備註"
+
+#: src/osmEditDialog.js:310
+msgctxt "dialog heading"
+msgid "Add Location"
+msgstr "新增位置"
+
+#. set the title and description for adding a POI
+#: src/osmEditDialog.js:319
+msgid "Add Location"
+msgstr "新增位置"
+
+#: src/osmEditDialog.js:320
+msgid "Add a new location to OpenStreetMap"
+msgstr "在 OpenStreetMap 加入新位置"
+
+#: src/osmEditDialog.js:411
+msgid "Changes successfully submitted"
+msgstr "變更已成功提交"
+
+#: src/osmEditDialog.js:703
+msgid "Unspecified"
+msgstr "未指定"
+
+#: src/osmEditDialog.js:765
+msgid "Street Name"
+msgstr "街道名稱"
+
+#: src/osmEditDialog.js:766
+msgid "House Number"
+msgstr "門牌號碼"
+
+#: src/osmEditDialog.js:767
+msgid "ZIP Code"
+msgstr "郵遞區號"
+
+#: src/osmEditDialog.js:768
+msgid "City"
+msgstr "城市"
+
+#: src/osmEditDialog.js:800
+msgid "Wikipedia Article"
+msgstr "Wikipedia 文章"
+
+#: src/osmEditDialog.js:804
+msgid "Wikidata Tag"
+msgstr "Wikidata 標籤"
+
+#: src/osmEditDialog.js:809
+msgid "Load Wikidata tag from article name"
+msgstr "從文章名稱載入 Wikidata 標籤"
+
+#: src/osmEditDialog.js:865
+msgid "Couldn't find Wikidata tag for article"
+msgstr "找不到文章的 Wikidata 標籤"
+
+#. Translators: This represents the title for places tagged with the
+#. * "aerialway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Aerialway
+#.
+#: src/osmTypes.js:45
+msgid "Aerialway"
+msgstr "空中纜線"
+
+#. Translators: This represents the title for places tagged with the
+#. * "aeroway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Aeroway
+#.
+#: src/osmTypes.js:49
+msgid "Aeroway"
+msgstr "航空施設"
+
+#. Translators: This represents the title for places tagged with the
+#. * "amenity" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Amenity
+#.
+#: src/osmTypes.js:53
+msgid "Amenity"
+msgstr "便利設施"
+
+#. Translators: This represents the title for places tagged with the
+#. * "barrier" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Barrier
+#.
+#: src/osmTypes.js:57
+msgid "Barrier"
+msgstr "屏障物"
+
+#. Translators: This represents the title for places tagged with the
+#. * "highway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Highway
+#.
+#: src/osmTypes.js:61
+msgid "Road"
+msgstr "道路"
+
+#. Translators: This represents the title for places tagged with the
+#. * "historic" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Historic
+#.
+#: src/osmTypes.js:65
+msgid "Historic"
+msgstr "歷史相關"
+
+#. Translators: This represents the title for places tagged with the
+#. * "leisure" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Leisure
+#.
+#: src/osmTypes.js:69
+msgid "Leisure"
+msgstr "娛樂設施"
+
+#. Translators: This represents the title for places tagged with the
+#. * "office" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Office
+#.
+#: src/osmTypes.js:73
+msgid "Office"
+msgstr "辦公室"
+
+#. Translators: This represents the title for places tagged with the
+#. * "place" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Place
+#.
+#: src/osmTypes.js:77
+msgid "Place"
+msgstr "地點"
+
+#. Translators: This represents the title for places tagged with the
+#. * "railway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Railway
+#.
+#: src/osmTypes.js:81
+msgid "Railway"
+msgstr "鐵路"
+
+#. Translators: This represents the title for places tagged with the
+#. * "shop" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Shop
+#.
+#: src/osmTypes.js:85
+msgid "Shop"
+msgstr "商店"
+
+#. Translators: This represents the title for places tagged with the
+#. * "tourism" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Tourism
+#.
+#: src/osmTypes.js:89 src/poiCategories.js:467
+msgid "Tourism"
+msgstr "觀光"
+
+#: src/osmTypes.js:97
+msgid "Other"
+msgstr "其他"
+
+#: src/photonUtils.js:118 src/placeListRow.js:70
+msgid "Unnamed place"
+msgstr "未命名地點"
+
+#: src/placeEntry.js:150
+msgid "Clear Entry"
+msgstr "清除內容"
+
+#: src/placeEntry.js:315
 msgid "Failed to parse Geo URI"
 msgstr "無法分析 Geo URI"
+
+#: src/placeEntry.js:327
+msgid "Failed to parse Maps URI"
+msgstr "無法分析 Maps URI"
+
+#. 300 ft (300 * 12 * 0.0254 m)
+#.
+#. * Translators: This a format string for showing a distance to a place
+#. * is lower than a "quite short" distance.
+#. * The "less than" symbol can be substituded with an appropriate one, if
+#. * needed (e.g. using the correct direction, or alternative symbol).
+#. * The %s should be kept, and is substituted with a label representing the
+#. * short distance. The \u2009 (thin space) could also be adjusted if needed
+#: src/placeListRow.js:47
+#, javascript-format
+msgctxt "short distance format string"
+msgid "< %s"
+msgstr "< %s"
+
+#: src/placeView.js:291
+msgid "Coordinates"
+msgstr "座標"
+
+#: src/placeView.js:295
+msgid "Accuracy"
+msgstr "準確度"
+
+#. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
+#: src/placeView.js:298
+#, javascript-format
+msgid "Accuracy: %s"
+msgstr "準確度：%s"
+
+#. since the phone numbers are typically always rendered
+#. * left-to-right, insert an explicit LRM char to avoid issues
+#. * with phone numbers in international format starting with a +
+#. * which is considered a "weak" character to determine Unicode
+#. * text direction
+#.
+#: src/placeView.js:317
+msgid "Phone number"
+msgstr "電話號碼"
+
+#. If a reference to a named floor (named or symbolic) exists
+#. * refer to it directly.
+#.
+#. Translators:
+#. * This is a reference to named building floor, using a label
+#. * or a code, as "displayed in the elevator"
+#.
+#: src/placeView.js:351 src/placeView.js:390
+msgid "Floor"
+msgstr "樓層"
+
+#: src/placeView.js:353
+#, javascript-format
+msgid "Floor %s"
+msgstr "樓層 %s"
+
+#: src/placeView.js:365
+msgid "At ground level"
+msgstr "地平面"
+
+#. Translators:
+#. * This is a reference to a number of floors above
+#. * ground level.
+#. * The %s placeholder is the integer relative number of floors
+#.
+#: src/placeView.js:374
+#, javascript-format
+msgid "%s floor above ground level"
+msgid_plural "%s floors above ground level"
+msgstr[0] "地上 %s 層樓"
+
+#. Translators:
+#. * This is a reference to a number of floors below
+#. * ground level.
+#. * The %s placeholder is the integer relative number of floors
+#.
+#: src/placeView.js:385
+#, javascript-format
+msgid "%s floor below ground level"
+msgid_plural "%s floors below ground level"
+msgstr[0] "地下 %s 層樓"
+
+#. Translators:
+#. * The establishment offers customers to purchase meals
+#. * (or similar) to be consumed elsewhere
+#.
+#: src/placeView.js:403
+msgid "Offers takeout"
+msgstr "提供外帶"
+
+#. Translators:
+#. * The establishment only offers customers to purchase
+#. * meals (or similar) to be consumed on-premise.
+#.
+#: src/placeView.js:411
+msgid "Does not offer takeout"
+msgstr "不提供外帶"
+
+#. Translators:
+#. * The establishment only offers customers to purchase
+#. * meals (or similar) to be consumed elsewhere. E.g.
+#. * there is no seating on-premise for eating/drinking
+#.
+#: src/placeView.js:420
+msgid "Only offers takeout"
+msgstr "僅提供外帶"
+
+#: src/placeView.js:427
+msgid "Opening hours"
+msgstr "開放時間"
+
+#. Translators:
+#. * There is public internet access but the particular kind is unknown.
+#.
+#: src/placeView.js:437
+msgid "Public internet access"
+msgstr "公共網路存取"
+
+#. Translators:
+#. * no internet access is offered in a place where
+#. * someone might expect it.
+#.
+#: src/placeView.js:446
+msgid "No internet access"
+msgstr "未提供網路存取"
+
+#. Translators:
+#. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
+#.
+#: src/placeView.js:454
+msgid "Public Wi-Fi"
+msgstr "公共 Wi-Fi"
+
+#. Translators:
+#. * This means a a place where you can plug in your laptop with ethernet.
+#.
+#: src/placeView.js:462
+msgid "Wired internet access"
+msgstr "有線網路存取"
+
+#. Translators:
+#. * Like internet cafe or library where the computer is given.
+#.
+#: src/placeView.js:470
+msgid "Computers available for use"
+msgstr "有可使用的電腦"
+
+#. Translators:
+#. * This means there is personnel which helps you in case of problems.
+#.
+#: src/placeView.js:478
+msgid "Internet assistance available"
+msgstr "提供網路協助"
+
+#: src/placeView.js:484
+msgid "No toilets available"
+msgstr "沒有廁所"
+
+#: src/placeView.js:487
+msgid "Toilets available"
+msgstr "有廁所"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#. Translators:
-#. * There is public internet access but the particular kind is unknown.
-#.
-#: src/place.js:268 src/translations.js:329 src/translations.js:391
-msgid "yes"
-msgstr "是"
+#: src/placeView.js:496
+msgid "Wheelchair accessible"
+msgstr "輪椅可通行"
 
 #. Translators:
 #. * This means wheelchairs have partial access (e.g some areas
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/place.js:275
-msgid "limited"
-msgstr "有限制"
+#: src/placeView.js:506
+msgid "Limited wheelchair accessibility"
+msgstr "有限的無障礙通道"
 
 #. Translators:
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#. Translators:
-#. * no internet access is offered in a place where
-#. * someone might expect it.
-#.
-#: src/place.js:281 src/translations.js:335 src/translations.js:392
-msgid "no"
-msgstr "否"
+#: src/placeView.js:515
+msgid "Not wheelchair accessible"
+msgstr "沒有輪椅通道"
 
 #. Translators:
 #. * This means that the way or area is designated or purpose built
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/place.js:288
-msgid "designated"
-msgstr "特定"
+#: src/placeView.js:525
+msgid "Designated for wheelchair users"
+msgstr "專供輪椅使用者使用"
 
-#: src/place.js:475
+#. *
+#. * Translators: this is a label indicating an altitude below
+#. * sea level, where the %s placeholder is the altitude relative
+#. * to mean sea level in the "negative direction"
+#.
+#: src/placeView.js:556
+#, javascript-format
+msgid "%s below sea level"
+msgstr "海平面以下 %s"
+
+#. *
+#. * Translators: this indicates a place is located at (or very
+#. * close to) mean sea level
+#.
+#: src/placeView.js:563
+msgid "At sea level"
+msgstr "海平面"
+
+#: src/placeView.js:575
+msgid "Religion:"
+msgstr "宗教："
+
+#: src/place.js:598
 msgid "Place not found in OpenStreetMap"
 msgstr "在 OpenStreetMap 找不到位置"
 
-#: src/place.js:495
-msgid "OpenStreetMap URL is not valid"
-msgstr "OpenStreetMap 網址無效"
-
-#: src/place.js:500
+#: src/place.js:605
 msgid "Coordinates in URL are not valid"
 msgstr "網址中的座標無效"
 
-#: src/place.js:521
+#: src/place.js:614
 msgid "URL is not supported"
 msgstr "網址不支援"
 
-#: src/printLayout.js:312
+#: src/poiCategories.js:132
+msgid "Amenities"
+msgstr "便利設施"
+
+#: src/poiCategories.js:135
+msgid "ATMs"
+msgstr "自動提款機"
+
+#: src/poiCategories.js:141
+msgid "Post Boxes"
+msgstr "郵箱"
+
+#: src/poiCategories.js:147
+msgid "Post Offices"
+msgstr "郵局"
+
+#: src/poiCategories.js:153
+msgid "Police"
+msgstr "警察局"
+
+#: src/poiCategories.js:159
+msgid "Libraries"
+msgstr "圖書館"
+
+#: src/poiCategories.js:165
+msgid "Pharmacies"
+msgstr "藥局"
+
+#: src/poiCategories.js:171
+msgid "Recycling"
+msgstr "回收"
+
+#: src/poiCategories.js:176
+msgid "Toilets"
+msgstr "廁所"
+
+#: src/poiCategories.js:182
+msgid "Wheelchair-accessible Toilets"
+msgstr "輪椅無障礙廁所"
+
+#: src/poiCategories.js:188
+msgid "Baggage Lockers"
+msgstr "置物櫃"
+
+#: src/poiCategories.js:196
+msgid "Eating & Drinking"
+msgstr "飲食"
+
+#: src/poiCategories.js:200
+msgid "Restaurants"
+msgstr "餐廳"
+
+#: src/poiCategories.js:205
+msgid "Fast Food"
+msgstr "速食"
+
+#: src/poiCategories.js:210
+msgid "Food Courts"
+msgstr "美食廣場"
+
+#: src/poiCategories.js:215
+msgid "Pubs"
+msgstr "酒館"
+
+#: src/poiCategories.js:221
+msgid "Bars"
+msgstr "酒吧"
+
+#: src/poiCategories.js:226
+msgid "Cafes"
+msgstr "咖啡店"
+
+#: src/poiCategories.js:231
+msgid "Ice Cream"
+msgstr "冰淇淋"
+
+#: src/poiCategories.js:236
+msgid "Food, Snacks, and Beverage Machines"
+msgstr "食品、點心、飲料販賣機"
+
+#: src/poiCategories.js:244
+msgid "Shopping"
+msgstr "購物"
+
+#: src/poiCategories.js:248
+msgid "Supermarkets"
+msgstr "超市"
+
+#: src/poiCategories.js:254
+msgid "Convenience Stores"
+msgstr "便利商店"
+
+#: src/poiCategories.js:259
+msgid "Shopping Malls"
+msgstr "購物中心"
+
+#: src/poiCategories.js:265
+msgid "Clothes"
+msgstr "衣服"
+
+#: src/poiCategories.js:271
+msgid "Shoes"
+msgstr "鞋子"
+
+#: src/poiCategories.js:276
+msgid "Electronics"
+msgstr "電子產品"
+
+#: src/poiCategories.js:282
+msgid "Alcohol"
+msgstr "酒行"
+
+#: src/poiCategories.js:288
+msgid "Bakeries"
+msgstr "麵包店"
+
+#: src/poiCategories.js:294
+msgid "Flowers"
+msgstr "鮮花"
+
+#: src/poiCategories.js:299
+msgid "Gifts"
+msgstr "禮品"
+
+#: src/poiCategories.js:307
+msgid "Transportation"
+msgstr "公共運輸"
+
+#: src/poiCategories.js:311
+msgid "Bus & Tram Stops"
+msgstr "公車與輕軌站"
+
+#: src/poiCategories.js:319
+msgid "Train & Subway Stations"
+msgstr "火車及地鐵站"
+
+#: src/poiCategories.js:327
+msgid "Tickets"
+msgstr "門票"
+
+#: src/poiCategories.js:335
+msgid "Parking"
+msgstr "停車場"
+
+#: src/poiCategories.js:340
+msgid "Bicycle Parking"
+msgstr "自行車停車場"
+
+#: src/poiCategories.js:345
+msgid "Bicycle Rental"
+msgstr "自行車租賃"
+
+#: src/poiCategories.js:350
+msgid "Car Rental"
+msgstr "汽車租賃"
+
+#: src/poiCategories.js:355
+msgid "Fuel"
+msgstr "燃料"
+
+#: src/poiCategories.js:360
+msgid "EV Charging"
+msgstr "電動車充電"
+
+#: src/poiCategories.js:368
+msgid "Healthcare"
+msgstr "醫療保健"
+
+#: src/poiCategories.js:372
+msgid "Clinics"
+msgstr "診所"
+
+#: src/poiCategories.js:378
+msgid "Hospitals"
+msgstr "醫院"
+
+#: src/poiCategories.js:384
+msgid "Dentists"
+msgstr "牙醫"
+
+#: src/poiCategories.js:392
+msgid "Accommodation"
+msgstr "住宿"
+
+#: src/poiCategories.js:396
+msgid "Hotels"
+msgstr "飯店"
+
+#: src/poiCategories.js:401
+msgid "Hostels"
+msgstr "旅舍"
+
+#: src/poiCategories.js:406
+msgid "Bed & Breakfast"
+msgstr "住宿加早餐"
+
+#: src/poiCategories.js:411
+msgid "Campings"
+msgstr "露營"
+
+#: src/poiCategories.js:418
+msgid "Recreation"
+msgstr "遊憩用地"
+
+#: src/poiCategories.js:422
+msgid "Parks"
+msgstr "公園"
+
+#: src/poiCategories.js:427
+msgid "Playgrounds"
+msgstr "遊樂場"
+
+#: src/poiCategories.js:432
+msgid "Beaches"
+msgstr "海灘"
+
+#: src/poiCategories.js:437
+msgid "Nature Reserves"
+msgstr "自然保護區"
+
+#: src/poiCategories.js:443
+msgid "Theme Parks"
+msgstr "主題樂園"
+
+#: src/poiCategories.js:448
+msgid "Theaters"
+msgstr "劇院"
+
+#: src/poiCategories.js:454
+msgid "Movie Theaters"
+msgstr "電影院"
+
+#: src/poiCategories.js:460
+msgid "Night Clubs"
+msgstr "夜店"
+
+#: src/poiCategories.js:471
+msgid "Museums"
+msgstr "博物館"
+
+#: src/poiCategories.js:477
+msgid "Attractions"
+msgstr "景點"
+
+#: src/poiCategories.js:482
+msgid "Artworks"
+msgstr "藝術品"
+
+#: src/poiCategories.js:487
+msgid "Tourist Information"
+msgstr "旅客資訊"
+
+#: src/poiCategories.js:494
+msgid "Sports"
+msgstr "運動用品"
+
+#: src/poiCategories.js:498
+msgid "Gyms"
+msgstr "健身房"
+
+#: src/poiCategories.js:504
+msgid "Outdoor Gyms"
+msgstr "戶外健身房"
+
+#: src/poiCategories.js:510
+msgid "Golf Courses"
+msgstr "高爾夫球場"
+
+#: src/printLayout.js:222
 #, javascript-format
 msgid "From %s to %s"
 msgstr "從 %s 到 %s"
@@ -1366,52 +1796,68 @@ msgstr "載入列印用的圖磚"
 msgid "You can abort printing if this takes too long"
 msgstr "如果這花費時間太長，您可以放棄列印"
 
-#: src/printOperation.js:49
+#: src/printOperation.js:50
 msgid "Abort printing"
 msgstr "中止列印"
 
 #. Translators: this is add via location tooltip
-#: src/routeEntry.js:74
+#: src/routeEntry.js:60
 msgid "Add via location"
-msgstr "透過位置增加"
+msgstr "新增經過地點"
+
+#: src/routeEntry.js:61
+msgid "From"
+msgstr "起點"
 
 #. Translators: this is remove via location tooltip
-#: src/routeEntry.js:84
+#: src/routeEntry.js:71
 msgid "Remove via location"
-msgstr "透過位置移除"
+msgstr "移除經過地點"
+
+#: src/routeEntry.js:72
+msgid "Via"
+msgstr "經過"
 
 #. Translators: this is reverse route tooltip
-#: src/routeEntry.js:90
+#: src/routeEntry.js:78
 msgid "Reverse route"
 msgstr "反向路線"
 
+#: src/routeEntry.js:79
+msgid "To"
+msgstr "終點"
+
+#: src/searchBar.js:42
+msgid "Search"
+msgstr "搜尋"
+
 #. Translators: The first string is the name of the city, the
 #. second string is the name of the app to add it to
-#: src/sendToDialog.js:104
+#: src/sendToDialog.js:84
 #, javascript-format
 msgid "Add %s to %s"
 msgstr "加入 %s 至 %s"
 
-#: src/sendToDialog.js:202
+#: src/sendToDialog.js:181
 msgid "Failed to open URI"
 msgstr "無法開啟 URI"
 
-#: src/sendToDialog.js:259
+#: src/sendToDialog.js:246
 #, javascript-format
 msgid "Open with %s"
 msgstr "使用 %s 開啟"
 
-#: src/shapeLayer.js:91
+#: src/shapeLayer.js:109
 msgid "failed to load file"
 msgstr "無法載入檔案"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:358
+#: src/sidebar.js:339
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "預估時間：%s"
 
-#: src/sidebar.js:414
+#: src/sidebar.js:409
 #, javascript-format
 msgid "Itineraries provided by %s"
 msgstr "行程表由 %s 提供"
@@ -1419,7 +1865,7 @@ msgstr "行程表由 %s 提供"
 #. Translators: this is a format string indicating instructions
 #. * starting a journey at the address given as the parameter
 #.
-#: src/transit.js:37
+#: src/transit.js:39
 #, javascript-format
 msgid "Start at %s"
 msgstr "開始於 %s"
@@ -1428,14 +1874,15 @@ msgstr "開始於 %s"
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: src/transit.js:43
+#: src/transit.js:45 src/transitplugins/motis2.js:314
+#: src/transitplugins/openTripPlanner2.js:236
 msgid "Start"
 msgstr "開始"
 
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
 #.
-#: src/transit.js:61
+#: src/transit.js:63
 #, javascript-format
 msgid "Walk %s"
 msgstr "步行 %s"
@@ -1443,36 +1890,38 @@ msgstr "步行 %s"
 #. Translators: this a format string indicating arriving at the
 #. * destination of journey with the arrival address and transit
 #. * stop as the format parameter
-#: src/transit.js:75
+#: src/transit.js:77
 #, javascript-format
 msgid "Arrive at %s"
 msgstr "抵達於 %s"
 
-#: src/transit.js:77 src/transitplugins/openTripPlanner.js:1124
+#: src/transit.js:79 src/transitplugins/motis2.js:332
+#: src/transitplugins/openTripPlanner.js:1175
+#: src/transitplugins/openTripPlanner2.js:255
 msgid "Arrive"
 msgstr "抵達"
 
-#: src/transitLegRow.js:88
+#: src/transitLegRow.js:70
 msgid "Show walking instructions"
 msgstr "顯示步行指引"
 
-#: src/transitLegRow.js:89
+#: src/transitLegRow.js:71
 msgid "Hide walking instructions"
 msgstr "隱藏步行指引"
 
-#: src/transitMoreRow.js:39
+#: src/transitMoreRow.js:37
 msgid "Load earlier alternatives"
 msgstr "載入較早的替代路線"
 
-#: src/transitMoreRow.js:41
+#: src/transitMoreRow.js:39
 msgid "Load later alternatives"
 msgstr "載入較晚的替代路線"
 
-#: src/transitMoreRow.js:54
+#: src/transitMoreRow.js:52
 msgid "No earlier alternatives found."
 msgstr "找不到較早的替代路線。"
 
-#: src/transitMoreRow.js:56
+#: src/transitMoreRow.js:54
 msgid "No later alternatives found."
 msgstr "找不到較晚的替代路線。"
 
@@ -1480,16 +1929,16 @@ msgstr "找不到較晚的替代路線。"
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:140
+#: src/transitOptionsPanel.js:136
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%b%e日"
 
-#: src/transitPlan.js:197
+#: src/transitPlan.js:173
 msgid "No timetable data found for this route."
 msgstr "找不到這條路線的時刻表資料。"
 
-#: src/transitPlan.js:205
+#: src/transitPlan.js:181
 msgid "No provider found for this route."
 msgstr "找不到這個路線的提供者。"
 
@@ -1498,7 +1947,7 @@ msgstr "找不到這個路線的提供者。"
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:322
+#: src/transitPlan.js:302
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -1507,7 +1956,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: src/transitPlan.js:351
+#: src/transitPlan.js:337
 #, javascript-format
 msgid "%s minute"
 msgid_plural "%s minutes"
@@ -1517,7 +1966,7 @@ msgstr[0] "%s 分鐘"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: src/transitPlan.js:363
+#: src/transitPlan.js:349
 #, javascript-format
 msgid "%s hour"
 msgid_plural "%s hours"
@@ -1527,7 +1976,7 @@ msgstr[0] "%s 小時"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: src/transitPlan.js:371
+#: src/transitPlan.js:357
 #, javascript-format
 msgid "%s:%s hour"
 msgid_plural "%s:%s hours"
@@ -1539,55 +1988,18 @@ msgstr[0] "%s:%s 小時"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:764
+#: src/transitPlan.js:758
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
 
-#: src/translations.js:56
-msgid "around the clock"
-msgstr "在時鐘周圍"
+#: src/translations.js:55
+msgid "Around the clock"
+msgstr "全天24小時"
 
-#: src/translations.js:58
-msgid "from sunrise to sunset"
+#: src/translations.js:57
+msgid "From sunrise to sunset"
 msgstr "從日出到日落"
-
-#. Translators:
-#. * This is a format string with two separate time ranges
-#. * such as "Mo-Fr 10:00-19:00 Sa 12:00-16:00"
-#. * The space between the format place holders could be
-#. * substituted with the appropriate separator.
-#.
-#: src/translations.js:77
-#, javascript-format
-msgctxt "time range list"
-msgid "%s %s"
-msgstr "%s %s"
-
-#. Translators:
-#. * This is a format string with three separate time ranges
-#. * such as "Mo-Fr 10:00-19:00 Sa 10:00-17:00 Su 12:00-16:00"
-#. * The space between the format place holders could be
-#. * substituted with the appropriate separator.
-#.
-#: src/translations.js:89
-#, javascript-format
-msgctxt "time range list"
-msgid "%s %s %s"
-msgstr "%s %s %s"
-
-#. Translators:
-#. * This is a format string consisting of a part specifying the days for
-#. * which the specified time is applied and the time interval
-#. * specification as the second argument.
-#. * The space between the format place holders could be substituted with
-#. * the appropriate separator or phrase and the ordering of the arguments
-#. * can be rearranged with the %n#s syntax.
-#: src/translations.js:120
-#, javascript-format
-msgctxt "time range component"
-msgid "%s %s"
-msgstr "%s %s"
 
 #. Translators:
 #. * This represents a format string consisting of two day interval
@@ -1598,11 +2010,11 @@ msgstr "%s %s"
 #. * place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: src/translations.js:152
+#: src/translations.js:123
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s"
-msgstr "%s,%s"
+msgstr "%s，%s"
 
 #. Translators:
 #. * This represents a format string consisting of three day interval
@@ -1613,31 +2025,31 @@ msgstr "%s,%s"
 #. * %s place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: src/translations.js:166
+#: src/translations.js:137
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s,%s"
-msgstr "%s,%s,%s"
+msgstr "%s，%s，%s"
 
-#: src/translations.js:185
-msgid "every day"
+#: src/translations.js:156
+msgid "Every day"
 msgstr "每天"
 
 #. Translators:
 #. * This represents a range of days with a starting and ending day.
 #.
-#: src/translations.js:197
+#: src/translations.js:168
 #, javascript-format
 msgctxt "day range"
 msgid "%s-%s"
 msgstr "%s-%s"
 
-#: src/translations.js:208
-msgid "public holidays"
-msgstr "共通假日"
+#: src/translations.js:179
+msgid "Public holidays"
+msgstr "國定假日"
 
-#: src/translations.js:210
-msgid "school holidays"
+#: src/translations.js:181
+msgid "School holidays"
 msgstr "學校假日"
 
 #. Translators:
@@ -1648,13 +2060,13 @@ msgstr "學校假日"
 #. * the translation. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: src/translations.js:250
+#: src/translations.js:221
 #, javascript-format
 msgctxt "time interval list"
 msgid "%s, %s"
-msgstr "%s, %s"
+msgstr "%s，%s"
 
-#: src/translations.js:264
+#: src/translations.js:235
 msgid "not open"
 msgstr "不開放"
 
@@ -1665,38 +2077,15 @@ msgstr "不開放"
 #. * translation as needed. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: src/translations.js:279
+#: src/translations.js:250
 #, javascript-format
 msgctxt "time interval"
 msgid "%s-%s"
 msgstr "%s-%s"
 
-#. Translators:
-#. * This means a a place where you can plug in your laptop with ethernet.
-#.
-#: src/translations.js:345
-msgid "wired"
-msgstr "有線網路"
-
-#. Translators:
-#. * Like internet cafe or library where the computer is given.
-#.
-#: src/translations.js:350
-msgid "terminal"
-msgstr "網路終端"
-
-#. Translators:
-#. * This means there is personnel which helps you in case of problems.
-#.
-#: src/translations.js:355
-msgid "service"
-msgstr "服務"
-
-#. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/userLocationBubble.js:56
-#, javascript-format
-msgid "Accuracy: %s"
-msgstr "準確度：%s"
+#: src/translations.js:287
+msgid "Bahá'í"
+msgstr "巴哈伊"
 
 #. Translators: Accuracy of user location information
 #: src/utils.js:248
@@ -1711,16 +2100,16 @@ msgstr "準確"
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
 #.
-#: src/utils.js:332
+#: src/utils.js:307
 #, javascript-format
 msgid "%s h"
 msgstr "%s 時"
 
 #. Translators: this is a duration with hours and minutes parts
-#. * using abbreviations for hours and minutes, correspoding to 'h'
+#. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
 #.
-#: src/utils.js:338
+#: src/utils.js:313
 #, javascript-format
 msgid "%s h %s min"
 msgid_plural "%s h %s min"
@@ -1730,7 +2119,7 @@ msgstr[0] "%s 時 %s 分"
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
 #.
-#: src/utils.js:345
+#: src/utils.js:320
 #, javascript-format
 msgid "%s min"
 msgid_plural "%s min"
@@ -1740,143 +2129,492 @@ msgstr[0] "%s 分"
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
 #.
-#: src/utils.js:351
+#: src/utils.js:326
 #, javascript-format
 msgid "%s s"
 msgid_plural "%s s"
 msgstr[0] "%s 秒"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:362
+#: src/utils.js:337
 #, javascript-format
 msgid "%s km"
 msgstr "%s 公里"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:365
+#: src/utils.js:340
 #, javascript-format
 msgid "%s m"
 msgstr "%s 公尺"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:373
+#: src/utils.js:348
 #, javascript-format
 msgid "%s mi"
 msgstr "%s 英哩"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:376
+#: src/utils.js:351
 #, javascript-format
 msgid "%s ft"
 msgstr "%s 英呎"
 
-#: src/transitplugins/goMetro.js:60
-msgid "This plugin doesn't support latest arrival"
-msgstr "這個外掛插件不支援最近到站的功能"
+#: src/transitplugins/motis2.js:344
+#, javascript-format
+msgid "Take the stairs to level %s"
+msgstr "走樓梯到 %s 樓"
 
-#: src/transitplugins/openTripPlanner.js:1185
+#: src/transitplugins/motis2.js:345
+msgid "Take the stairs"
+msgstr "走樓梯"
+
+#: src/transitplugins/motis2.js:349 src/transitplugins/openTripPlanner.js:1236
+#: src/transitplugins/openTripPlanner2.js:266
 #, javascript-format
 msgid "Continue on %s"
 msgstr "在 %s 繼續走"
 
-#: src/transitplugins/openTripPlanner.js:1187
-msgid "Continue"
-msgstr "繼續走"
-
-#: src/transitplugins/openTripPlanner.js:1190
+#: src/transitplugins/motis2.js:354 src/transitplugins/openTripPlanner.js:1241
+#: src/transitplugins/openTripPlanner2.js:270
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "在 %s 左轉"
 
-#: src/transitplugins/openTripPlanner.js:1192
+#: src/transitplugins/motis2.js:355 src/transitplugins/openTripPlanner.js:1243
+#: src/transitplugins/openTripPlanner2.js:271
 msgid "Turn left"
 msgstr "左轉"
 
-#: src/transitplugins/openTripPlanner.js:1195
+#: src/transitplugins/motis2.js:359 src/transitplugins/openTripPlanner.js:1246
+#: src/transitplugins/openTripPlanner2.js:275
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "在 %s 稍微左轉"
 
-#: src/transitplugins/openTripPlanner.js:1197
+#: src/transitplugins/motis2.js:360 src/transitplugins/openTripPlanner.js:1248
+#: src/transitplugins/openTripPlanner2.js:276
 msgid "Turn slightly left"
 msgstr "稍微左轉"
 
-#: src/transitplugins/openTripPlanner.js:1200
+#: src/transitplugins/motis2.js:364 src/transitplugins/openTripPlanner.js:1251
+#: src/transitplugins/openTripPlanner2.js:280
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "在 %s 急左轉"
 
-#: src/transitplugins/openTripPlanner.js:1202
+#: src/transitplugins/motis2.js:365 src/transitplugins/openTripPlanner.js:1253
+#: src/transitplugins/openTripPlanner2.js:281
 msgid "Turn sharp left"
 msgstr "急左轉"
 
-#: src/transitplugins/openTripPlanner.js:1205
+#: src/transitplugins/motis2.js:369 src/transitplugins/openTripPlanner.js:1256
+#: src/transitplugins/openTripPlanner2.js:284
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "在 %s 右轉"
 
-#: src/transitplugins/openTripPlanner.js:1207
+#: src/transitplugins/motis2.js:370 src/transitplugins/openTripPlanner.js:1258
+#: src/transitplugins/openTripPlanner2.js:285
 msgid "Turn right"
 msgstr "右轉"
 
-#: src/transitplugins/openTripPlanner.js:1210
+#: src/transitplugins/motis2.js:374 src/transitplugins/openTripPlanner.js:1261
+#: src/transitplugins/openTripPlanner2.js:289
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "在 %s 稍微右轉"
 
-#: src/transitplugins/openTripPlanner.js:1212
+#: src/transitplugins/motis2.js:375 src/transitplugins/openTripPlanner.js:1263
+#: src/transitplugins/openTripPlanner2.js:290
 msgid "Turn slightly right"
 msgstr "稍微右轉"
 
-#: src/transitplugins/openTripPlanner.js:1215
+#: src/transitplugins/motis2.js:379 src/transitplugins/openTripPlanner.js:1266
+#: src/transitplugins/openTripPlanner2.js:294
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "在 %s 急右轉"
 
-#: src/transitplugins/openTripPlanner.js:1217
+#: src/transitplugins/motis2.js:380 src/transitplugins/openTripPlanner.js:1268
+#: src/transitplugins/openTripPlanner2.js:295
 msgid "Turn sharp right"
 msgstr "急右轉"
 
-#: src/transitplugins/openTripPlanner.js:1223
+#: src/transitplugins/motis2.js:387 src/transitplugins/openTripPlanner.js:1274
+#: src/transitplugins/openTripPlanner2.js:302
 #, javascript-format
-msgid "In the roundabout, take exit %s"
+msgid "At the roundabout, take exit %s"
 msgstr "在圓環中，從 %s 離開"
 
-#: src/transitplugins/openTripPlanner.js:1225
+#: src/transitplugins/motis2.js:390 src/transitplugins/openTripPlanner.js:1276
+#: src/transitplugins/openTripPlanner2.js:305
 #, javascript-format
-msgid "In the roundabout, take exit to %s"
+msgid "At the roundabout, take exit to %s"
 msgstr "在圓環中，離開往 %s"
 
-#: src/transitplugins/openTripPlanner.js:1227
+#: src/transitplugins/motis2.js:392 src/transitplugins/openTripPlanner.js:1278
+#: src/transitplugins/openTripPlanner2.js:307
 msgid "Take the roundabout"
 msgstr "走圓環"
 
-#: src/transitplugins/openTripPlanner.js:1231
+#: src/transitplugins/motis2.js:400 src/transitplugins/openTripPlanner.js:1282
+#: src/transitplugins/openTripPlanner2.js:315
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "搭乘電梯到 %s"
 
-#: src/transitplugins/openTripPlanner.js:1233
+#: src/transitplugins/motis2.js:401 src/transitplugins/openTripPlanner.js:1284
+#: src/transitplugins/openTripPlanner2.js:316
 msgid "Take the elevator"
 msgstr "搭乘電梯"
 
-#: src/transitplugins/openTripPlanner.js:1237
+#: src/transitplugins/motis2.js:405 src/transitplugins/openTripPlanner.js:1288
+#: src/transitplugins/openTripPlanner2.js:320
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "%s 進行左迴轉"
 
-#: src/transitplugins/openTripPlanner.js:1239
+#: src/transitplugins/motis2.js:406 src/transitplugins/openTripPlanner.js:1290
+#: src/transitplugins/openTripPlanner2.js:321
 msgid "Make a left u-turn"
 msgstr "進行左迴轉"
 
-#: src/transitplugins/openTripPlanner.js:1242
+#: src/transitplugins/motis2.js:410 src/transitplugins/openTripPlanner.js:1293
+#: src/transitplugins/openTripPlanner2.js:325
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "%s 進行右迴轉"
 
-#: src/transitplugins/openTripPlanner.js:1244
+#: src/transitplugins/motis2.js:411 src/transitplugins/openTripPlanner.js:1295
+#: src/transitplugins/openTripPlanner2.js:326
 msgid "Make a right u-turn"
 msgstr "進行右迴轉"
+
+#~ msgid "GNOME Maps"
+#~ msgstr "GNOME 地圖"
+
+#~ msgid ""
+#~ "You can even search for specific types of locations, such as “Pubs near "
+#~ "Main Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
+#~ msgstr ""
+#~ "您甚至能搜尋指定的位置類型，像是「Pubs near Main Street, Boston」或是"
+#~ "「Hotels near Alexanderplatz, Berlin」等。"
+
+#~ msgid "Facebook check-in privacy setting"
+#~ msgstr "Facebook 打卡隱私權設定值"
+
+#~ msgid ""
+#~ "Latest used Facebook check-in privacy setting. Possible values are: "
+#~ "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
+#~ msgstr ""
+#~ "最近使用的 Facebook 打卡隱私權設定值。可能的數值有：EVERYONE, "
+#~ "FRIENDS_OF_FRIENDS, ALL_FRIENDS 或 SELF。"
+
+#~ msgid "Foursquare check-in privacy setting"
+#~ msgstr "Foursquare 打卡隱私權設定值"
+
+#~ msgid ""
+#~ "Latest used Foursquare check-in privacy setting. Possible values are: "
+#~ "public, followers or private."
+#~ msgstr ""
+#~ "最近使用的 Foursquare 打卡隱私權設定值。可能的數值有：public, followers "
+#~ "或 private。"
+
+#~ msgid "Foursquare check-in Facebook broadcasting"
+#~ msgstr "Foursquare 打卡 Facebook 廣播"
+
+#~ msgid ""
+#~ "Indicates if Foursquare should broadcast the check-in as a post in the "
+#~ "Facebook account associated with the Foursquare account."
+#~ msgstr ""
+#~ "表示 Foursquare 是否應比照與 Facebook 帳號連結的 Foursquare 帳號以貼文方式"
+#~ "廣播此次打卡。"
+
+#~ msgid "Foursquare check-in Twitter broadcasting"
+#~ msgstr "Foursquare 打卡 Twitter 廣播"
+
+#~ msgid ""
+#~ "Indicates if Foursquare should broadcast the check-in as a tweet in the "
+#~ "Twitter account associated with the Foursquare account."
+#~ msgstr ""
+#~ "表示 Foursquare 是否應比照與 Twitter 帳號連結的 Foursquare 帳號以推文方式"
+#~ "廣播此次打卡。"
+
+#~ msgid "Night mode"
+#~ msgstr "夜晚模式"
+
+#~ msgid "Whether the application is in night mode."
+#~ msgstr "應用程式是否使用夜晚模式。"
+
+#~ msgid "Use hybrid aerial tiles"
+#~ msgstr "使用混合式航照圖磚"
+
+#~ msgid "Whether aerial tiles should use hybrid style (with labels)."
+#~ msgstr "是否應該使用混合風格（附帶文字標籤）的航照圖磚。"
+
+#~ msgid "Post on Facebook"
+#~ msgstr "張貼到 Facebook"
+
+#~ msgid "Post on Twitter"
+#~ msgstr "張貼到 Twitter"
+
+#~ msgid "C_heck in"
+#~ msgstr "打卡(_H)"
+
+#~ msgid "Everyone"
+#~ msgstr "每個人"
+
+#~ msgid "Friends of friends"
+#~ msgstr "朋友的朋友"
+
+#~ msgid "Just friends"
+#~ msgstr "僅限朋友"
+
+#~ msgid "Just me"
+#~ msgstr "僅限本人"
+
+#~ msgid "Private"
+#~ msgstr "私人"
+
+#~ msgid "What’s here?"
+#~ msgstr "這裡有什麼？"
+
+#~ msgid "Include route and markers"
+#~ msgstr "包含路線和標記"
+
+#~ msgid "Go to current location"
+#~ msgstr "前往目前位置"
+
+#~ msgid "Choose map type"
+#~ msgstr "選擇地圖類型"
+
+#~ msgid "Zoom in"
+#~ msgstr "拉近"
+
+#~ msgid "Night Mode"
+#~ msgstr "夜晚模式"
+
+#~ msgid "Maps is offline!"
+#~ msgstr "Maps 已離線！"
+
+#~ msgid ""
+#~ "Maps need an active internet connection to function properly, but one "
+#~ "can’t be found."
+#~ msgstr "Maps 需要使用網際網路連線才能正常運作，但找不到網際網路。"
+
+#~ msgid "Check your connection and proxy settings."
+#~ msgstr "請檢查您的連線與代理伺服器設定值。"
+
+#~ msgid "Check in here"
+#~ msgstr "在這裡檢查"
+
+#~ msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
+#~ msgstr "<span weight=\"bold\" size=\"x-large\">登入以編輯地圖</span>"
+
+#~ msgid "Password"
+#~ msgstr "密碼"
+
+#~ msgid "Sign up"
+#~ msgstr "註冊"
+
+#~ msgid ""
+#~ "Sorry, that didn’t work. Please try again, or visit\n"
+#~ "<a href=\"https://www.openstreetmap.org/user/forgot-"
+#~ "password\">OpenStreetMap</a> to reset your password."
+#~ msgstr ""
+#~ "抱歉，那沒有作用。請再試一次，或者參訪\n"
+#~ "<a href=\"https://www.openstreetmap.org/user/forgot-"
+#~ "password\">OpenStreetMap</a>以重置您的密碼。"
+
+#~ msgid "Enter verification code shown above"
+#~ msgstr "輸入上面顯示的驗證碼"
+
+#~ msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
+#~ msgstr "<span weight=\"bold\" size=\"x-large\">已登入</span>"
+
+#~ msgid "Add Field"
+#~ msgstr "加入欄位"
+
+#~ msgid "Comment"
+#~ msgstr "評註"
+
+#~ msgctxt "dialog title"
+#~ msgid "Edit on OpenStreetMap"
+#~ msgstr "在 OpenStreetMap 編輯"
+
+#~ msgid "Next"
+#~ msgstr "下一個"
+
+#~ msgid "Drag to change order of the route"
+#~ msgstr "拖曳以修改路徑順序"
+
+#~ msgid "Copy"
+#~ msgstr "複製"
+
+#~ msgid "_Open"
+#~ msgstr "開啟(_O)"
+
+#~ msgid "Ignore network availability"
+#~ msgstr "忽略網路可用性"
+
+#~ msgid "Select an account"
+#~ msgstr "選擇一個帳號"
+
+#~ msgid ""
+#~ "Maps cannot find the place to check in to with Facebook. Please select "
+#~ "one from this list."
+#~ msgstr "Maps 找不到可以在 Facebook 中打卡的地點。請從清單中選擇一個。"
+
+#~ msgid ""
+#~ "Maps cannot find the place to check in to with Foursquare. Please select "
+#~ "one from this list."
+#~ msgstr "Maps 找不到可以在 Foursquare 中打卡的地點。請從清單中選擇一個。"
+
+#, javascript-format
+#~ msgid "Check in to %s"
+#~ msgstr "打卡於：%s"
+
+#, javascript-format
+#~ msgid "Write an optional message to check in to %s."
+#~ msgstr "寫些關於在 %s 打卡的訊息。"
+
+#, javascript-format
+#~ msgid "Cannot find “%s” in the social service"
+#~ msgstr "在社群服務中找不到「%s」"
+
+#~ msgid "Cannot find a suitable place to check-in in this location"
+#~ msgstr "找不到適合的地點來打卡"
+
+#~ msgid ""
+#~ "Credentials have expired, please open Online Accounts to sign in and "
+#~ "enable this account"
+#~ msgstr "憑證已過期，請開啟線上帳號再次登入並啟用這個帳號"
+
+#~ msgid "Nothing found here!"
+#~ msgstr "這裡找不到東西！"
+
+#~ msgid ""
+#~ "Location was added to the map, note that it may take a while before it "
+#~ "shows on the map and in search results."
+#~ msgstr ""
+#~ "位置已加到地圖上，請注意在顯示在地圖上與搜尋結果中之前可能需要一段時間。"
+
+#~ msgid "Filesystem is read only"
+#~ msgstr "檔案系統是唯讀的"
+
+#~ msgid "You do not have permission to save there"
+#~ msgstr "您沒有在該處儲存檔案的權限"
+
+#~ msgid "The directory does not exist"
+#~ msgstr "目錄不存在"
+
+#~ msgid "A map application for GNOME"
+#~ msgstr "GNOME 的地圖程式"
+
+#~ msgid "The official name. This is typically what appears on signs."
+#~ msgstr "正式的名稱。這通常會出現在招牌上。"
+
+#~ msgid ""
+#~ "The official website. Try to use the most basic form of a URL i.e. http://"
+#~ "example.com instead of http://example.com/index.html."
+#~ msgstr ""
+#~ "官方網站。嘗試使用最基本形式的 URL ，例如 HTTP://example.com ，而不是 "
+#~ "HTTP://example.com/index.html。"
+
+#~ msgid ""
+#~ "Phone number. Use the international format, starting with a + sign. "
+#~ "Beware of local privacy laws, especially for private phone numbers."
+#~ msgstr ""
+#~ "電話號碼。使用國際格式，以 + 號開頭。提防當地的隱私權法律，特別是私人電話"
+#~ "號碼。"
+
+#~ msgid ""
+#~ "The format used should include the language code and the article title "
+#~ "like “en:Article title”."
+#~ msgstr "使用的格式應該包括語言代碼和文章標題，例如「en:Article title」。"
+
+#~ msgid "See the link in the label for help on format."
+#~ msgstr "請參閱標籤的連結以取得格式的求助訊息。"
+
+#~ msgid ""
+#~ "Information used to inform other mappers about non-obvious information "
+#~ "about an element, the author’s intent when creating it, or hints for "
+#~ "further improvement."
+#~ msgstr ""
+#~ "用來通知其他製圖者關於元件、建立時作者的目的、與更多資訊提示的不明顯資訊。"
+
+#~ msgctxt "dialog title"
+#~ msgid "Add to OpenStreetMap"
+#~ msgstr "加入 OpenStreetMap"
+
+#~ msgid "Select Type"
+#~ msgstr "選擇類型"
+
+#~ msgid "Done"
+#~ msgstr "完成"
+
+#~ msgid "Population:"
+#~ msgstr "人口："
+
+#~ msgid "Altitude:"
+#~ msgstr "海拔高度："
+
+#~ msgid "Opening hours:"
+#~ msgstr "開放時間："
+
+#~ msgid "Internet access:"
+#~ msgstr "網際網路存取："
+
+#~ msgid "Toilets:"
+#~ msgstr "廁所："
+
+#~ msgid "Wheelchair access:"
+#~ msgstr "使用輪椅："
+
+#~ msgid "Phone:"
+#~ msgstr "電話："
+
+#~ msgid "yes"
+#~ msgstr "是"
+
+#~ msgid "limited"
+#~ msgstr "有限制"
+
+#~ msgid "no"
+#~ msgstr "否"
+
+#~ msgid "designated"
+#~ msgstr "特定"
+
+#~ msgid "OpenStreetMap URL is not valid"
+#~ msgstr "OpenStreetMap 網址無效"
+
+#, javascript-format
+#~ msgctxt "time range list"
+#~ msgid "%s %s"
+#~ msgstr "%s %s"
+
+#, javascript-format
+#~ msgctxt "time range list"
+#~ msgid "%s %s %s"
+#~ msgstr "%s %s %s"
+
+#, javascript-format
+#~ msgctxt "time range component"
+#~ msgid "%s %s"
+#~ msgstr "%s %s"
+
+#~ msgid "wired"
+#~ msgstr "有線網路"
+
+#~ msgid "terminal"
+#~ msgstr "網路終端"
+
+#~ msgid "service"
+#~ msgstr "服務"
+
+#~ msgid "This plugin doesn't support latest arrival"
+#~ msgstr "這個外掛插件不支援最近到站的功能"
 
 #~ msgid "Don’t have an account?"
 #~ msgstr "還沒有會員帳號嗎？"
@@ -1914,9 +2652,6 @@ msgstr "進行右迴轉"
 #~ msgid "Load Map Layer"
 #~ msgstr "載入地圖圖層"
 
-#~ msgid "Open Layer"
-#~ msgstr "開啟圖層"
-
 #~ msgid "%f km"
 #~ msgstr "%f 公里"
 
@@ -1932,20 +2667,11 @@ msgstr "進行右迴轉"
 #~ msgid "Position not found"
 #~ msgstr "找不到地點"
 
-#~ msgid "General"
-#~ msgstr "一般"
-
-#~ msgid "Search"
-#~ msgstr "搜尋"
-
 #~ msgid "Country code: %s"
 #~ msgstr "國家代碼：%s"
 
 #~ msgid "Population: %s"
 #~ msgstr "資料母體：%s"
-
-#~ msgid "Wheelchair access: %s"
-#~ msgstr "使用輪椅：%s"
 
 #~ msgid "_Share"
 #~ msgstr "分享(_S)"
@@ -1972,12 +2698,6 @@ msgstr "進行右迴轉"
 
 #~ msgid "%f km²"
 #~ msgstr "%f km²"
-
-#~ msgid "To"
-#~ msgstr "終點"
-
-#~ msgid "From"
-#~ msgstr "起點"
 
 #~ msgid " km<sup>2</sup>"
 #~ msgstr " km<sup>2</sup>"
