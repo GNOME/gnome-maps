@@ -583,6 +583,16 @@ export class PlaceView extends Gtk.Box {
                 content.push({ label: _("Religion:"), info: religion });
         }
 
+        if (place.isMotorwayJunction && place.ref) {
+            // Translators: This refers to motorway junction exit (freeway exit)
+            const exitRef = _("Exit %s").format(place.ref);
+            const lht = Utils.isLefthandTrafficForCountry(place.countryCode);
+
+            content.push({ icon: lht ? 'arrow2-top-left-symbolic' :
+                                       'arrow2-top-right-symbolic',
+                           info: exitRef });
+        }
+
         return content;
     }
 
