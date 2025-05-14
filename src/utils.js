@@ -49,6 +49,19 @@ const _integerTwoDigitFormat =
     new Intl.NumberFormat([], { minimumIntegerDigits: 2,
                                 maximumFractionDigits: 0 });
 
+/* countries/terrotories driving on the left
+ * source: https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic
+ */
+const LHT_COUNTRIES = new Set(['AG', 'AI', 'AU', 'BB', 'BD', 'BM', 'BN', 'BS',
+                               'BT', 'BW', 'CY', 'DM', 'FJ', 'FK', 'GB', 'GD',
+                               'GY', 'HK', 'ID', 'IE', 'IM', 'IN', 'JE', 'JM',
+                               'JP', 'KE', 'KI', 'KN', 'KY', 'LC', 'LK', 'LS',
+                               'MO', 'MS', 'MT', 'MU', 'MV', 'MW', 'MY', 'MZ',
+                               'NA', 'NP', 'NR', 'NZ', 'PG', 'PN', 'PK', 'SB',
+                               'SC', 'SG', 'SH', 'SR', 'SZ', 'TC', 'TH', 'TL',
+                               'TO', 'TT', 'TV', 'TZ', 'UG', 'VC', 'VG', 'VI',
+                               'WS', 'ZA', 'ZM', 'ZW']);
+
 let debugInit = false;
 
 export var debugEnabled = false;
@@ -459,4 +472,27 @@ export function splitAtFirst(string, separator) {
     } else {
         return [first];
     }
+}
+
+/**
+ * Determines if left-hand road traffic is used in a given location.
+ *
+ * @param {number} latitude
+ * @param {number} longitude
+ * @return {boolean} true if the given location has LHT
+ */
+export function isLefthandTrafficForCoordinates(latitude, longitude) {
+    const country = getCountryCodeForCoordinates(latitude, longitude);
+
+    return isLefthandTrafficForCountry(country);
+}
+
+/**
+ * Determine if left-hand road traffic is used in a given country/region.
+ *
+ * @param {string} ISO country code
+ * @return {boolean} true if the given location has LHT
+ */
+export function isLefthandTrafficForCountry(country) {
+    return LHT_COUNTRIES.has(country);
 }
