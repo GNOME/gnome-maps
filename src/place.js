@@ -428,6 +428,10 @@ export class Place extends GObject.Object {
         return this.osmTags?.['addr:floor'] ?? this.osmTags?.['level:ref'];
     }
 
+    get ref() {
+        return this.osmTags?.ref;
+    }
+
     toJSON() {
         let boundingBox = null;
 
