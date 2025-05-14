@@ -432,6 +432,13 @@ export class Place extends GObject.Object {
         return this.osmTags?.ref;
     }
 
+    /**
+     * Return true if the place is a motorway junction ("highway exit")
+     */
+    get isMotorwayJunction() {
+        return this.osmTags?.highway === 'motorway_junction';
+    }
+
     toJSON() {
         let boundingBox = null;
 
