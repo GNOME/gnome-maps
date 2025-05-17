@@ -420,7 +420,7 @@ const POI_CATEGORIES = [
         subcategories: [
             {
                 label:     _("Parks"),
-                icon:      'tree-symbolic',
+                icon:      'tree-circle-symbolic',
                 keyValues: [['leisure=park']]
             },
             {
@@ -435,7 +435,7 @@ const POI_CATEGORIES = [
             },
             {
                 label:     _("Nature Reserves"),
-                icon:      'tree-symbolic',
+                icon:      'sprout-symbolic',
                 keyValues: [['leisure=nature_reserve']],
                 initialSearchRadius: 10000
             },
