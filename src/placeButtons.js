@@ -29,6 +29,7 @@ import {OSMAccountDialog} from './osmAccountDialog.js';
 import {OSMEditDialog} from './osmEditDialog.js';
 import {PlaceStore} from './placeStore.js';
 import {SendToDialog} from './sendToDialog.js';
+import * as Utils from './utils.js';
 
 export class PlaceButtons extends Gtk.Box {
     constructor({place, mapView, ...params}) {
@@ -57,6 +58,9 @@ export class PlaceButtons extends Gtk.Box {
 
         this._editButton.visible =
             !!this._place.osmId && this._place.osmType !== GeocodeGlib.PlaceOsmType.UNKNOWN;
+
+        if (Utils.isLefthandTrafficForCountry(this._place.countryCode))
+            this._routeButton.child.icon_name = 'route-button-lht-symbolic';
 
         this._routeButton.visible = !this._place.isCurrentLocation;
     }
