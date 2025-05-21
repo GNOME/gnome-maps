@@ -20,6 +20,7 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
+import Gio from 'gi://Gio';
 import GObject from 'gi://GObject';
 import Adw from 'gi://Adw';
 
@@ -33,7 +34,10 @@ export class OSMAccountDialog extends Adw.Dialog {
     constructor({closeOnSignIn, ...params}) {
         super({...params});
 
-        this.connect('closed', () => this.emit('response', this.response));
+        this.connect('closed', () => {
+            this._cancellable.cancel();
+            this.emit('response', this.response);
+        });
 
         this._closeOnSignIn = closeOnSignIn;
 
@@ -47,6 +51,8 @@ export class OSMAccountDialog extends Adw.Dialog {
                                         this._onVerificationEntryActivated.bind(this));
         this._signOutButton.connect('clicked',
                                     this._onSignOutButtonClicked.bind(this));
+
+        this._cancellable = new Gio.Cancellable();
 
         /* if the user is logged in, show the logged-in view */
         if (Application.osmEdit.isSignedIn) {
@@ -66,6 +72,10 @@ export class OSMAccountDialog extends Adw.Dialog {
             this._signedInUserLabel.label = Application.osmEdit.username;
             this._signedInUserLabel.visible = true;
         }
+
+        Application.osmEdit.fetchUserAvatar(this._cancellable, (texture) => {
+            this._statusPage.paintable = texture;
+        });
     }
 
     _onSignInButtonClicked() {
@@ -161,6 +171,7 @@ GObject.registerClass({
                        'signInButton',
                        'verificationEntry',
                        'verifyButton',
+                       'statusPage',
                        'signedInUserLabel',
                        'signOutButton',
                        'overlay'],
