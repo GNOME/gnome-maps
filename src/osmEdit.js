@@ -160,6 +160,10 @@ export class OSMEdit {
         }
     }
 
+    fetchUserAvatar(cancellable, callback) {
+        this._osmConnection.fetchUserAvatar(cancellable, callback)
+    }
+
     signOut() {
         this._username = null;
         this._isSignedIn = false;
