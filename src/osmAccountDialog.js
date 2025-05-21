@@ -20,6 +20,9 @@
  * Author: Marcus Lundblad <ml@update.uu.se>
  */
 
+import Gdk from 'gi://Gdk';
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Adw from 'gi://Adw';
 
@@ -33,7 +36,10 @@ export class OSMAccountDialog extends Adw.Dialog {
     constructor({closeOnSignIn, ...params}) {
         super({...params});
 
-        this.connect('closed', () => this.emit('response', this.response));
+        this.connect('closed', () => {
+            this._cancellable.cancel();
+            this.emit('response', this.response);
+        });
 
         this._closeOnSignIn = closeOnSignIn;
 
@@ -48,9 +54,32 @@ export class OSMAccountDialog extends Adw.Dialog {
         this._signOutButton.connect('clicked',
                                     this._onSignOutButtonClicked.bind(this));
 
+        this._cancellable = new Gio.Cancellable();
+
+        this._cachedAvatarFilename = GLib.build_filenamev([
+            GLib.get_user_data_dir(),
+            "gnome-maps",
+            "osm-user-avatar.png",
+        ]);
+
+        /* if there is a cached OSM avatar on disk, set it directly, while
+         * also asynchronously downloading it again in the background (the first
+         * time the dialog is opened) to catch upstream updates
+         */
+        try {
+            const avatarTexture =
+                Gdk.Texture.new_from_filename(this._cachedAvatarFilename);
+
+            if (avatarTexture)
+                this._statusPage.paintable = avatarTexture;
+        } catch (e) {
+            Utils.debug('No cached OSM user avatar found');
+        }
+
         /* if the user is logged in, show the logged-in view */
         if (Application.osmEdit.isSignedIn) {
             this._updateSignedInUserLabel();
+            this._loadAvatar();
             this._navigationView.replace_with_tags(['logged-in']);
         }
     }
@@ -66,6 +95,29 @@ export class OSMAccountDialog extends Adw.Dialog {
             this._signedInUserLabel.label = Application.osmEdit.username;
             this._signedInUserLabel.visible = true;
         }
+    }
+
+    _loadAvatar() {
+        Application.osmEdit.fetchUserAvatar(this._cancellable,
+                                            (avatarAvailable, texture) => {
+            /* if there is an avatar specified in the user details, update
+             * the icon image if downloading it was successful and update
+             * the cached icon, so that it can be loaded instantly when
+             * opening the dialog the next time.
+             * if not available, reset to the default icon, and remove cached
+             * image (this could happen if the user has deleted the avatar in
+             * their OSM profile).
+             */
+            if (avatarAvailable) {
+                if (texture) {
+                    this._statusPage.paintable = texture;
+                    texture.save_to_png(this._cachedAvatarFilename);
+                }
+            } else {
+                this._statusPage.icon_name = 'avatar-default-symbolic';
+                Gio.File.new_for_path(this._cachedAvatarFilename).delete(null);
+            }
+        });
     }
 
     _onSignInButtonClicked() {
@@ -115,8 +167,9 @@ export class OSMAccountDialog extends Adw.Dialog {
 
     _onOAuthAccessTokenRequested(success, errorMessage) {
         if (success) {
-            /* update the username label */
+            /* update the username label, and try to load the custom user avatar */
             this._updateSignedInUserLabel();
+            this._loadAvatar();
 
             if (this._closeOnSignIn) {
                 this.response = OSMAccountDialog.Response.SIGNED_IN;
@@ -161,6 +214,7 @@ GObject.registerClass({
                        'signInButton',
                        'verificationEntry',
                        'verifyButton',
+                       'statusPage',
                        'signedInUserLabel',
                        'signOutButton',
                        'overlay'],
