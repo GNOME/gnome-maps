@@ -31,6 +31,7 @@ import Secret from 'gi://Secret';
 import Soup from 'gi://Soup';
 
 import {OSMOAuthProxyCall} from './osmOAuthProxyCall.js';
+import * as Thumbnails from './thumbnails.js';
 import * as Utils from './utils.js';
 
 const _ = gettext.gettext;
@@ -55,6 +56,7 @@ export class OSMConnection {
 
     constructor() {
         this._session = new Soup.Session({ user_agent : 'gnome-maps/' + pkg.version });
+        this._userDetails = null;
 
         /* OAuth proxy used for making OSM uploads */
         this._callProxy = Rest.OAuth2Proxy.new(AUTH_URL, ACCESS_TOKEN_URL,
@@ -99,6 +101,7 @@ export class OSMConnection {
         if (this._callProxy.get_access_token() === null) {
             Secret.password_lookup(SECRET_SCHEMA, {}, null, (s, res) => {
                 this._onPasswordLookedUp(res,
+                                         this._doOpenChangeset.bind(this),
                                          comment,
                                          callback);
             });
@@ -107,12 +110,12 @@ export class OSMConnection {
         }
     }
 
-    _onPasswordLookedUp(result, comment, callback) {
+    _onPasswordLookedUp(result, action, data, callback) {
         let password = Secret.password_lookup_finish(result);
 
         if (password) {
             this._callProxy.access_token = password;
-            this._doOpenChangeset(comment, callback);
+            action(data, callback);
         } else {
             callback(false, null, null);
         }
@@ -247,23 +250,61 @@ export class OSMConnection {
     }
 
     fetchLoggedInUser(callback) {
-        let call = this._callProxy.new_call();
-        call.set_method('GET');
-        call.set_function('/user/details');
-
-        call.invoke_async(null, (call, res, userdata) =>
-                                { this._onFetchedLoggedInUser(call, callback); });
+        this._fetchUserDetails(obj => {
+            callback(obj?.user?.display_name);
+        });
     }
 
-    _onFetchedLoggedInUser(call, callback) {
+    fetchUserAvatar(cancellable, callback) {
+        this._fetchUserDetails(obj => {
+            if (obj?.user?.img?.href) {
+                const href = obj.user.img.href;
+
+                Thumbnails.fetch(href, cancellable,
+                                 texture => callback(true, texture));
+            } else {
+                callback(false, null);
+            }
+        });
+    }
+
+    _fetchUserDetails(callback) {
+        if (this._userDetails) {
+            callback(this._userDetails);
+            return;
+        }
+
+        /* we assume that this would only be called if there's already been an
+           OAuth access token enrolled, so, if the currently instantiated
+           proxy instance doesn't have a token set, we could safely count on
+           it being present in the keyring */
+        if (this._callProxy.get_access_token() === null) {
+            Secret.password_lookup(SECRET_SCHEMA, {}, null, (s, res) => {
+                this._onPasswordLookedUp(res,
+                                         this._doFetchUserDetails.bind(this),
+                                         null,
+                                         callback);
+            });
+        } else {
+            this._doFetchUserDetails(null, callback);
+        }
+    }
+
+    _doFetchUserDetails(_, callback) {
+        const call = this._callProxy.new_call();
+
+        call.set_method('GET');
+        call.set_function('/user/details.json');
+
+        call.invoke_async(null, (call, res, userdata) =>
+                                { this._onUserDetails(call, callback); });
+    }
+
+    _onUserDetails(call, callback) {
         switch (call.get_status_code()) {
             case Soup.Status.OK:
-                try {
-                    callback(GnomeMaps.osm_parse_user_details(call.get_payload()));
-                } catch (e) {
-                    Utils.debug('Error parsing user details: ' + e.message);
-                    callback(null);
-                }
+                this._userDetails = JSON.parse(call.get_payload());
+                callback(this._userDetails);
                 break;
             default:
                 /* Not ok, most likely 403 (forbidden), meaning the user
