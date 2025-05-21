@@ -99,6 +99,7 @@ export class OSMConnection {
         if (this._callProxy.get_access_token() === null) {
             Secret.password_lookup(SECRET_SCHEMA, {}, null, (s, res) => {
                 this._onPasswordLookedUp(res,
+                                         this._doOpenChangeset.bind(this),
                                          comment,
                                          callback);
             });
@@ -107,12 +108,12 @@ export class OSMConnection {
         }
     }
 
-    _onPasswordLookedUp(result, comment, callback) {
+    _onPasswordLookedUp(result, action, data, callback) {
         let password = Secret.password_lookup_finish(result);
 
         if (password) {
             this._callProxy.access_token = password;
-            this._doOpenChangeset(comment, callback);
+            action(data, callback);
         } else {
             callback(false, null, null);
         }
@@ -264,6 +265,60 @@ export class OSMConnection {
                     Utils.debug('Error parsing user details: ' + e.message);
                     callback(null);
                 }
+                break;
+            default:
+                /* Not ok, most likely 403 (forbidden), meaning the user
+                 * didn't give permission to read user details.
+                 * Just consider the user name unknown in this case
+                 */
+                Utils.debug('Got status code ' + call.get_status_code() +
+                            ' getting user details');
+                callback(null);
+                break;
+        }
+    }
+
+    fetchUserAvatar(callback) {
+        this._fetchUserDetails(obj => {
+            if (obj?.user?.img?.href) {
+                const href = obj.user.img.href;
+            } else {
+                callback(null);
+            }
+        });
+    }
+
+    _fetchUserDetails(callback) {
+        /* we assume that this would only be called if there's already been an
+           OAuth access token enrolled, so, if the currently instantiated
+           proxy instance doesn't have a token set, we could safely count on
+           it being present in the keyring */
+        if (this._callProxy.get_access_token() === null) {
+            Secret.password_lookup(SECRET_SCHEMA, {}, null, (s, res) => {
+                this._onPasswordLookedUp(res,
+                                         this._doFetchUserDetails.bind(this),
+                                         null,
+                                         callback);
+            });
+        } else {
+            this._doFetchUserDetails(null, callback);
+        }
+    }
+
+    _doFetchUserDetails(_, callback) {
+        const call = this._callProxy.new_call();
+
+        call.set_method('GET');
+        call.set_function('/user/details.json');
+
+        call.invoke_async(null, (call, res, userdata) =>
+                                { this._onUserDetails(call, callback); });
+    }
+
+    _onUserDetails(call, callback) {
+        switch (call.get_status_code()) {
+            case Soup.Status.OK:
+                log(`result: ${call.get_payload()}`);
                 break;
             default:
                 /* Not ok, most likely 403 (forbidden), meaning the user
