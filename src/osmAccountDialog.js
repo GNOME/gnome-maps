@@ -66,6 +66,10 @@ export class OSMAccountDialog extends Adw.Dialog {
             this._signedInUserLabel.label = Application.osmEdit.username;
             this._signedInUserLabel.visible = true;
         }
+
+        Application.osmEdit.fetchUserAvatar((image) => {
+
+        });
     }
 
     _onSignInButtonClicked() {
