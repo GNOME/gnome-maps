@@ -160,6 +160,17 @@ export class OSMEdit {
         }
     }
 
+    /**
+     * Fetch user avatar
+     *
+     * The callback returns a boolean to indicate wheather the user details
+     * specified an avatar picture, and the texture of the avatar (null if
+     * downloading the image failed).
+     */
+    fetchUserAvatar(cancellable, callback) {
+        this._osmConnection.fetchUserAvatar(cancellable, callback)
+    }
+
     signOut() {
         this._username = null;
         this._isSignedIn = false;
