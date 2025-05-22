@@ -403,7 +403,7 @@ export const DEFS = {
                 dog_park: ["dog-symbolic", "parks"],
                 fitness_centre: ["weight2-symbolic", "generic"],
                 fitness_station: ["weight2-symbolic", "micro", 16],
-                garden: ["tree-symbolic", "parks", 16],
+                garden: ["leaf-symbolic", "parks", 16],
                 golf_course: ["golf-symbolic", "parks", 14],
                 mini_golf: ["golf-symbolic", "parks"],
                 miniature_golf: ["golf-symbolic", "parks"],
