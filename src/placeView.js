@@ -255,6 +255,10 @@ export class PlaceView extends Gtk.Box {
              */
             if (this._nativeName.get_layout().get_unknown_glyphs_count() === 0)
                 this._nativeName.visible = true;
+        } else if (place.name === place.nativeName && place.hiraganaName &&
+                   place.name !== place.hiraganaName) {
+            this._nativeName.label = place.hiraganaName;
+            this._nativeName.visible = true;
         }
 
         /* show the source (for shapelayer points), or if there has a known type
