@@ -374,6 +374,10 @@ export class Place extends GObject.Object {
         return this.osmTags?.name;
     }
 
+    get hiraganaName() {
+        return this.osmTags?.['name:ja-Hira'];
+    }
+
     /**
      * Most important OSM tag for the place ('amenity', 'shop', and so on).
      */
