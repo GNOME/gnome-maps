@@ -624,7 +624,6 @@ export class PlaceView extends Gtk.Box {
 
             if (icon) {
                 let widget = new Gtk.Image({ icon_name: icon,
-                                             visible: true,
                                              valign: Gtk.Align.START,
                                              halign: Gtk.Align.END });
 
@@ -635,7 +634,6 @@ export class PlaceView extends Gtk.Box {
                 box.append(widget);
             } else if (label) {
                 let widget = new Gtk.Label({ label: label.italics(),
-                                             visible: true,
                                              use_markup: true,
                                              yalign: 0,
                                              halign: Gtk.Align.END });
@@ -652,19 +650,24 @@ export class PlaceView extends Gtk.Box {
             let widget;
 
             if (grid) {
-                widget = new Gtk.Grid({ visible:        true,
-                                        column_spacing: 6 });
+                widget = new Gtk.Grid({ column_spacing: 6,
+                                        row_spacing:    6 });
 
                 for (let i = 0; i < grid.length; i++) {
                     let row = grid[i];
 
                     for (let j = 0; j < row.length; j++) {
-                        let label = new Gtk.Label({ label:   row[j],
-                                                    visible: true,
-                                                    xalign:  0,
-                                                    hexpand: false,
-                                                    wrap: true,
-                                                    halign:  Gtk.Align.FILL });
+                        /* if there's only one component, e.g. in opening
+                         * hours, allow more space
+                         */
+                        const maxChars = row.length === 1 ? 30 : 15;
+                        const label = new Gtk.Label({ label:   row[j],
+                                                      xalign:  0,
+                                                      hexpand: true,
+                                                      wrap: true,
+                                                      max_width_chars: maxChars,
+                                                      halign:  Gtk.Align.FILL,
+                                                      valign:  Gtk.Align.START });
 
                         if (j === 1) {
                             /* set tabular digits for the second column to get
@@ -682,13 +685,13 @@ export class PlaceView extends Gtk.Box {
                 }
             } else {
                 widget = new Gtk.Label({ label: info,
-                                         visible: true,
                                          use_markup: true,
                                          max_width_chars: 30,
                                          wrap: true,
                                          xalign: 0,
                                          hexpand: true,
-                                         halign: Gtk.Align.FILL });
+                                         halign: Gtk.Align.FILL,
+                                         wrap: true });
             }
 
             box.append(widget);
