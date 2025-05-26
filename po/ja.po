@@ -1,36 +1,47 @@
 # Japanese translation for gnome-maps.
-# Copyright (C) 2013 gnome-maps's COPYRIGHT HOLDER
+# Copyright (C) 2013-2025 gnome-maps's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-maps package.
 # victory  <victory.deb@gmail.com>, 2013.
 # Jiro Matsuzawa  <jmatsuzawa@gnome.org>, 2013.
 # Ikuya Awashiro <ikuya@fruitsbasket.info>, 2014.
 # Hajime Taira <htaira@redhat.com>, 2014-2015.
+# Tomo Dote <fu7mu4@gmail.com>, 2021.
+# Kusano Takayuki <https://bsky.app/profile/tkusano.jp>, 2025.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-maps master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"maps&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-03-16 20:35+0000\n"
-"PO-Revision-Date: 2016-04-06 07:08+0900\n"
-"Last-Translator: sujiniku <sujinikusityuu@gmail.com>\n"
-"Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
+"Project-Id-Version: gnome-maps gnome-48\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
+"POT-Creation-Date: 2025-05-16 03:37+0000\n"
+"PO-Revision-Date: 2025-05-24 01:53+0900\n"
+"Last-Translator: Kusano Takayuki <https://bsky.app/profile/tkusano.jp>\n"
+"Language-Team: Japanese <https://l10n.gnome.org/teams/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
-#: ../data/org.gnome.Maps.appdata.xml.in.h:1
-msgid "GNOME Maps"
-msgstr ""
+#. Translators: This is the program name.
+#. for some reason, setting the title of the window through the .ui
+#. * template does not work anymore (maybe has something to do with
+#. * setting a custom title on the headerbar). Setting it programmatically
+#. * here works though. And yields a proper label in the gnome-shell
+#. * overview.
+#.
+#. Translators: This is the program name.
+#: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
+#: data/ui/main-window.ui:27 src/application.js:61 src/mainWindow.js:118
+#: src/mainWindow.js:590
+msgid "Maps"
+msgstr "地図"
 
-#: ../data/org.gnome.Maps.appdata.xml.in.h:2
+#: data/org.gnome.Maps.appdata.xml.in.in:7
 msgid "Find places around the world"
-msgstr ""
+msgstr "世界中の場所を見つける"
 
-#: ../data/org.gnome.Maps.appdata.xml.in.h:3
+#: data/org.gnome.Maps.appdata.xml.in.in:9
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
@@ -39,7 +50,7 @@ msgstr ""
 "世界中あらゆる場所の地図に簡単にアクセスできます。都市や住所を検索して、お探"
 "しの場所をさっと見つけられ、待ち合わせ場所もすぐに特定できます。"
 
-#: ../data/org.gnome.Maps.appdata.xml.in.h:4
+#: data/org.gnome.Maps.appdata.xml.in.in:14
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
@@ -47,1192 +58,1966 @@ msgstr ""
 "この地図アプリは、OpenStreetMap データベースを利用しています。このデータベー"
 "スは、世界中の膨大な人々が協力して作成しています。"
 
-#. Translators: Search is carried out on OpenStreetMap data using Nominatim.
-#. Visit http://wiki.openstreetmap.org/wiki/Nominatim/Special_Phrases and click
-#. your language to see what words you can use for the translated search.
-#: ../data/org.gnome.Maps.appdata.xml.in.h:8
-msgid ""
-"You can even search for specific types of locations, such as “Pubs near Main "
-"Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
-msgstr ""
-"特定のタイプにより検索することができます。場所の特定の種類による検索。"
-"例:“Pubs near Main Street, Boston“ あるいは “Hotel near Alexanderplatz, "
-"Berlin“"
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Maps.appdata.xml.in.in:572 src/mainWindow.js:587
+msgid "The GNOME Project"
+msgstr "The GNOME Project"
 
-#. Translators: This is the program name.
-#: ../data/org.gnome.Maps.desktop.in.h:1 ../data/ui/main-window.ui.h:1
-#: ../src/application.js:87 ../src/mainWindow.js:441
-msgid "Maps"
-msgstr "地図"
-
-#: ../data/org.gnome.Maps.desktop.in.h:2
+#: data/org.gnome.Maps.desktop.in.in:5
 msgid "A simple maps application"
 msgstr "シンプルな地図アプリケーション"
 
-#: ../data/org.gnome.Maps.desktop.in.h:3
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Maps.desktop.in.in:14
 msgid "Maps;"
 msgstr "Maps;地図;マップ;"
 
-#: ../data/org.gnome.Maps.desktop.in.h:4
+#: data/org.gnome.Maps.desktop.in.in:17
 msgid "Allows your location to be shown on the map."
-msgstr ""
+msgstr "あなたの場所を地図に表示"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:1
-#, fuzzy
-#| msgid "User set last known location"
+#: data/org.gnome.Maps.gschema.xml:11
 msgid "last viewed location"
-msgstr "直近の既知の位置がユーザー設定によるものかどうか"
+msgstr "直近に表示した場所"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:2
-#, fuzzy
-#| msgid "Description of last known location"
+#: data/org.gnome.Maps.gschema.xml:12
 msgid "Coordinates of last viewed location."
-msgstr "直近の既知の位置の詳細"
+msgstr "直近の既知の位置の詳細。"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:3
+#: data/org.gnome.Maps.gschema.xml:16
+msgid "zoom"
+msgstr "ズーム"
+
+#: data/org.gnome.Maps.gschema.xml:17
+msgid "Zoom level"
+msgstr "ズームレベル"
+
+#: data/org.gnome.Maps.gschema.xml:21
+msgid "rotation"
+msgstr "回転"
+
+#: data/org.gnome.Maps.gschema.xml:22
+msgid "Map rotation in radians"
+msgstr "地図の回転 (単位: ラジアン)"
+
+#: data/org.gnome.Maps.gschema.xml:26
+msgid "Map type"
+msgstr "地図の種類"
+
+#: data/org.gnome.Maps.gschema.xml:27
+msgid "The type of map to display (street, aerial, etc.)"
+msgstr "表示する地図の種類(街路地図、航空写真など)"
+
+#: data/org.gnome.Maps.gschema.xml:31
 msgid "Window size"
 msgstr "ウィンドウサイズ"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:4
+#: data/org.gnome.Maps.gschema.xml:32
 msgid "Window size (width and height)."
 msgstr "ウィンドウサイズ (幅と高さ) です。"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:5
+#: data/org.gnome.Maps.gschema.xml:36
 msgid "Window position"
 msgstr "ウィンドウの位置"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:6
+#: data/org.gnome.Maps.gschema.xml:37
 msgid "Window position (X and Y)."
 msgstr "ウィンドウの位置 (横位置と縦位置) です。"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:7
+#: data/org.gnome.Maps.gschema.xml:41
 msgid "Window maximized"
 msgstr "ウィンドウ最大化"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:8
+#: data/org.gnome.Maps.gschema.xml:42
 msgid "Window maximization state"
 msgstr "ウィンドウを最大化しているかどうかの設定です。"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:9
+#: data/org.gnome.Maps.gschema.xml:46
 msgid "Maximum number of search results"
 msgstr "検索結果の最大数"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:10
+#: data/org.gnome.Maps.gschema.xml:47
 msgid "Maximum number of search results from geocode search."
 msgstr "geocode 検索の検索結果として表示する最大数。"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:11
+#: data/org.gnome.Maps.gschema.xml:51
 msgid "Number of recent places to store"
-msgstr "記録する最近の場所の数"
+msgstr "最近見た場所を保存する数"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:12
+#: data/org.gnome.Maps.gschema.xml:52
 msgid "Number of recently visited places to store."
-msgstr "最近訪れた場所を記録する件数。"
+msgstr "最近訪れた場所を保存する数。"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:13
+#: data/org.gnome.Maps.gschema.xml:56
 msgid "Number of recent routes to store"
-msgstr "記録する最近のルートの数"
+msgstr "最近見たルートの数"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:14
+#: data/org.gnome.Maps.gschema.xml:57
 msgid "Number of recently visited routes to store."
-msgstr "最近訪れたルートを記録する件数。"
+msgstr "最近訪れたルートを保存する数。"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:15
-msgid "Facebook check-in privacy setting"
-msgstr "Facebookへチェックイン時のプライバシー設定"
+#: data/org.gnome.Maps.gschema.xml:61
+msgid "OpenStreetMap username or email address"
+msgstr "OpenStreetMap のユーザー名またはメールアドレス"
 
-#: ../data/org.gnome.Maps.gschema.xml.h:16
-msgid ""
-"Latest used Facebook check-in privacy setting. Possible values are: "
-"EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
-msgstr ""
-"最新のFacebookのチェックイン時のプライバシー設定で指定可能な値: EVERYONE, "
-"FRIENDS_OF_FRIENDS, ALL_FRIENDS, SELF"
-
-#: ../data/org.gnome.Maps.gschema.xml.h:17
-msgid "Foursquare check-in privacy setting"
-msgstr "Foursquareへチェックイン時のプライバシー設定"
-
-#: ../data/org.gnome.Maps.gschema.xml.h:18
-msgid ""
-"Latest used Foursquare check-in privacy setting. Possible values are: "
-"public, followers or private."
-msgstr ""
-"最新のFoursquareのチェックイン時のプライバシー設定で指定可能な値: public, "
-"followers, private"
-
-#: ../data/org.gnome.Maps.gschema.xml.h:19
-msgid "Foursquare check-in Facebook broadcasting"
-msgstr "FoursquareのチェックインをFacebookにも投稿する"
-
-#: ../data/org.gnome.Maps.gschema.xml.h:20
-msgid ""
-"Indicates if Foursquare should broadcast the check-in as a post in the "
-"Facebook account associated with the Foursquare account."
-msgstr ""
-"FacebookアカウントがFoursquareアカウントに関連付けられている場合、Foursquare"
-"のチェックインをFacebookにも投稿するかどうかの設定です。"
-
-#: ../data/org.gnome.Maps.gschema.xml.h:21
-msgid "Foursquare check-in Twitter broadcasting"
-msgstr "FoursquareのチェックインをTwitterにも投稿する"
-
-#: ../data/org.gnome.Maps.gschema.xml.h:22
-msgid ""
-"Indicates if Foursquare should broadcast the check-in as a tweet in the "
-"Twitter account associated with the Foursquare account."
-msgstr ""
-"TwitterアカウントがFoursquareアカウントに関連付けられている場合、Foursquareの"
-"チェックインをTwitterにも投稿するかどうかの設定です。"
-
-#: ../data/org.gnome.Maps.gschema.xml.h:23
-msgid "OpenStreetMap username or e-mail address"
-msgstr ""
-
-#: ../data/org.gnome.Maps.gschema.xml.h:24
+# 日本語訳メモ: OpenStreetMapの画面では「ログイン」と表示されている (2025.5.20)
+#: data/org.gnome.Maps.gschema.xml:62
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
-msgstr ""
+msgstr "OpenStreetMapデータを編集するためにユーザーがログインしたかどうか"
 
-#: ../data/ui/app-menu.ui.h:1
-msgid "Set up OpenStreetMap Account"
-msgstr "OpenStreetMap アカウントの設定"
+#: data/org.gnome.Maps.gschema.xml:66
+msgid "Last used transportation type for routing"
+msgstr "ルート検索で最後に使用した交通手段"
 
-#: ../data/ui/app-menu.ui.h:2
-msgid "_Keyboard Shortcuts"
-msgstr "キーボードショートカット(_K)"
+#: data/org.gnome.Maps.gschema.xml:70
+msgid "Show scale"
+msgstr "スケールを表示"
 
-#: ../data/ui/app-menu.ui.h:3
-msgid "About"
-msgstr "このアプリケーションについて"
+#: data/org.gnome.Maps.gschema.xml:71
+msgid "Whether to show the scale."
+msgstr "スケールを表示するかどうか。"
 
-#: ../data/ui/app-menu.ui.h:4
-msgid "Quit"
-msgstr "終了"
+#: data/ui/context-menu.ui:6
+msgid "Route from Here"
+msgstr "ここからのルート"
 
-#: ../data/ui/check-in-dialog.ui.h:1
-msgid "Visibility"
-msgstr "公開範囲"
+#: data/ui/context-menu.ui:10
+msgid "Add Intermediate Destination"
+msgstr "経由地を追加"
 
-#: ../data/ui/check-in-dialog.ui.h:2
-msgid "Post on Facebook"
-msgstr "Facebookに投稿"
+#: data/ui/context-menu.ui:14
+msgid "Route to Here"
+msgstr "ここまでのルート"
 
-#: ../data/ui/check-in-dialog.ui.h:3
-msgid "Post on Twitter"
-msgstr "Twitterに投稿"
+#: data/ui/context-menu.ui:18
+msgid "Clear Current Route"
+msgstr "現在のルートを消去"
 
-#: ../data/ui/check-in-dialog.ui.h:4 ../data/ui/export-view-dialog.ui.h:2
-#: ../data/ui/send-to-dialog.ui.h:2 ../data/ui/shape-layer-file-chooser.ui.h:3
-msgid "_Cancel"
-msgstr "キャンセル(_C)"
-
-#. Translators: Check in is used as a verb
-#: ../data/ui/check-in-dialog.ui.h:5 ../data/ui/map-bubble.ui.h:5
-msgid "C_heck in"
-msgstr "チェックイン(_H)"
-
-#: ../data/ui/check-in-dialog.ui.h:6
-msgid "Everyone"
-msgstr "誰でも"
-
-#: ../data/ui/check-in-dialog.ui.h:7
-msgid "Friends of friends"
-msgstr "友達の友達まで"
-
-#: ../data/ui/check-in-dialog.ui.h:8
-msgid "Just friends"
-msgstr "友達のみ"
-
-#: ../data/ui/check-in-dialog.ui.h:9
-msgid "Just me"
-msgstr "自分のみ"
-
-#: ../data/ui/check-in-dialog.ui.h:10
-msgid "Public"
-msgstr "公開"
-
-#: ../data/ui/check-in-dialog.ui.h:11
-msgid "Followers"
-msgstr "フォロワー"
-
-#: ../data/ui/check-in-dialog.ui.h:12
-msgid "Private"
-msgstr "プライベート"
-
-#: ../data/ui/context-menu.ui.h:1
-msgid "What’s here?"
-msgstr "ここはどこ?"
-
-#: ../data/ui/context-menu.ui.h:2
+#: data/ui/context-menu.ui:24
 msgid "Copy Location"
 msgstr "場所をコピー"
 
-#: ../data/ui/context-menu.ui.h:3
-msgid "Export As Image"
-msgstr "画像としてエクスポート"
+#: data/ui/context-menu.ui:28
+msgid "Add to OpenStreetMap…"
+msgstr "OpenStreetMapへ追加…"
 
-#: ../data/ui/context-menu.ui.h:4
-msgid "Add to OpenStreetMap"
-msgstr ""
-
-#: ../data/ui/export-view-dialog.ui.h:1
-msgid "Export view"
+#. Translators: This is the title of the dialog for expoting the map view content to an image file
+#: data/ui/export-view-dialog.ui:7
+msgid "Export View"
 msgstr "ビューのエクスポート"
 
-#: ../data/ui/export-view-dialog.ui.h:3
+#: data/ui/export-view-dialog.ui:16 data/ui/osm-discard-dialog.ui:12
+#: data/ui/send-to-dialog.ui:10
+msgid "_Cancel"
+msgstr "キャンセル(_C)"
+
+#: data/ui/export-view-dialog.ui:26
 msgid "_Export"
-msgstr ""
+msgstr "エクスポート(_E)"
 
-#: ../data/ui/export-view-dialog.ui.h:4
-msgid "Include route and markers"
-msgstr "ルートとマーカーを含む"
+#. Translators: This is a tooltip
+#: data/ui/favorite-list-row.ui:72
+msgid "Remove Favorite"
+msgstr "お気に入りを削除"
 
-#: ../data/ui/help-overlay.ui.h:1
+#: data/ui/favorites-popover.ui:11
+msgid "No Favorites"
+msgstr "お気に入り無し"
+
+#: data/ui/favorites-popover.ui:12
+msgid "Add places to your favorites to get them listed here"
+msgstr "場所をお気に入りに追加して、ここに一覧を表示する"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-left.ui:11 src/geoclue.js:106 src/placeBar.js:101
+msgid "Current Location"
+msgstr "現在の位置"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-left.ui:19
+msgid "Layers"
+msgstr "レイヤー"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-right.ui:11
+msgid "Print Route"
+msgstr "ルートの印刷"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-right.ui:21
+msgid "Favorites"
+msgstr "お気に入り"
+
+#. Translators: This is a tooltip
+#: data/ui/headerbar-right.ui:30
+msgid "Route Planner"
+msgstr "ルート案内"
+
+#: data/ui/help-overlay.ui:12
 msgctxt "shortcut window"
 msgid "General"
 msgstr "一般"
 
-#: ../data/ui/help-overlay.ui.h:2
+#: data/ui/help-overlay.ui:15
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr "ショートカットを表示する"
+msgstr "ショートカットを表示"
 
-#: ../data/ui/help-overlay.ui.h:3
+#: data/ui/help-overlay.ui:21
 msgctxt "shortcut window"
 msgid "Search"
-msgstr "検索する"
+msgstr "検索"
 
-#: ../data/ui/help-overlay.ui.h:4
+#: data/ui/help-overlay.ui:27
+msgctxt "shortcut window"
+msgid "Explore points-of-interest"
+msgstr "関心地点(POI)を探索"
+
+#: data/ui/help-overlay.ui:33
+msgctxt "shortcut window"
+msgid "Show last search results"
+msgstr "最新の検索結果を表示"
+
+#: data/ui/help-overlay.ui:39
 msgctxt "shortcut window"
 msgid "Toggle route planner"
-msgstr "ルート案内の有無を切り替える"
+msgstr "ルート案内の有無を切り替え"
 
-#: ../data/ui/help-overlay.ui.h:5
+#: data/ui/help-overlay.ui:45
 msgctxt "shortcut window"
 msgid "Print route"
-msgstr "ルートを印刷する"
+msgstr "ルートを印刷"
 
-#: ../data/ui/help-overlay.ui.h:6
+#: data/ui/help-overlay.ui:51
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "終了する"
+msgstr "終了"
 
-#: ../data/ui/help-overlay.ui.h:7
+#: data/ui/help-overlay.ui:57
+msgctxt "shortcut window"
+msgid "Open main menu"
+msgstr "メインメニューを開く"
+
+#: data/ui/help-overlay.ui:65
 msgctxt "shortcut window"
 msgid "Map View"
 msgstr "地図の表示"
 
-#: ../data/ui/help-overlay.ui.h:8
+#: data/ui/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Zoom in"
-msgstr "拡大する"
+msgstr "拡大"
 
-#: ../data/ui/help-overlay.ui.h:9
+#: data/ui/help-overlay.ui:74
 msgctxt "shortcut window"
 msgid "Zoom out"
-msgstr "縮小する"
+msgstr "縮小"
 
-#: ../data/ui/help-overlay.ui.h:10
+#: data/ui/help-overlay.ui:80
+msgctxt "shortcut window"
+msgid "Rotate clockwise"
+msgstr "時計回りに回転"
+
+#: data/ui/help-overlay.ui:86
+msgctxt "shortcut window"
+msgid "Rotate counter-clockwise"
+msgstr "反時計回りに回転"
+
+#: data/ui/help-overlay.ui:92
+msgctxt "shortcut window"
+msgid "Reset rotation"
+msgstr "回転をリセット"
+
+#: data/ui/help-overlay.ui:98
 msgctxt "shortcut window"
 msgid "Toggle scale"
-msgstr "縮尺の有無を切り替える"
+msgstr "スケールの有無を切り替え"
 
-#: ../data/ui/help-overlay.ui.h:11
+#: data/ui/help-overlay.ui:104
 msgctxt "shortcut window"
 msgid "Go to current location"
-msgstr "現在の位置へ移動する"
+msgstr "現在の位置へ移動"
 
-#: ../data/ui/layers-popover.ui.h:1
-msgid "Load Map Layer"
-msgstr ""
+#: data/ui/help-overlay.ui:114
+msgctxt "shortcut window"
+msgid "Switch to street view"
+msgstr "ストリートビューに切り替え"
 
-#: ../data/ui/location-service-notification.ui.h:1
-msgid "Turn on location services to find your location"
-msgstr "現在位置を特定するには位置情報サービスをオンにしてください"
+#: data/ui/help-overlay.ui:121
+msgctxt "shortcut window"
+msgid "Switch to aerial view"
+msgstr "航空写真画面に切り替え"
 
-#: ../data/ui/location-service-notification.ui.h:2
-msgid "Location Settings"
-msgstr "場所の設定"
+#: data/ui/help-overlay.ui:127
+msgctxt "shortcut window"
+msgid "Open shape layer"
+msgstr "シェープレイヤーを開く"
 
-#: ../data/ui/main-window.ui.h:2
-msgid "Go to current location"
-msgstr "現在の位置へ移動します"
+#: data/ui/layers-popover.ui:7
+msgid "Show Scale"
+msgstr "スケールを表示"
 
-#: ../data/ui/main-window.ui.h:3
-msgid "Choose map type"
-msgstr "地図の種類を選択"
+#. Translators: This string uses ellipsis character
+#: data/ui/layers-popover.ui:16
+msgid "Open Shape Layer…"
+msgstr "シェイプレイヤーを開く…"
 
-#: ../data/ui/main-window.ui.h:4
-msgid "Toggle route planner"
-msgstr "ルート案内"
+#: data/ui/main-window.ui:8
+msgid "Set up OpenStreetMap Account…"
+msgstr "OpenStreetMap アカウントの設定…"
 
-#: ../data/ui/main-window.ui.h:5
-msgid "Toggle favorites"
-msgstr "お気に入り"
+#: data/ui/main-window.ui:12
+msgid "Export as Image…"
+msgstr "画像としてエクスポート"
 
-#: ../data/ui/main-window.ui.h:6
-msgid "Print Route"
-msgstr "ルートの印刷"
+#: data/ui/main-window.ui:17
+msgid "_Keyboard Shortcuts"
+msgstr "キーボードショートカット(_K)"
 
-#: ../data/ui/main-window.ui.h:7
-msgid "Maps is offline!"
-msgstr "地図はオフラインです。"
+#: data/ui/main-window.ui:22
+msgid "About Maps"
+msgstr "“地図”について"
 
-#: ../data/ui/main-window.ui.h:8
-#, fuzzy
-#| msgid ""
-#| "Maps need an active internet connection to function properly, but one "
-#| "can't be found."
-msgid ""
-"Maps need an active internet connection to function properly, but one can’t "
-"be found."
-msgstr ""
-"インターネット接続がありません。このアプリケーションが適切に機能するためにイ"
-"ンターネット接続が必要です。"
+#: data/ui/main-window.ui:48
+msgid "Main Menu"
+msgstr "メインメニュー"
 
-#: ../data/ui/main-window.ui.h:9
-msgid "Check your connection and proxy settings."
-msgstr "インターネット接続とプロキシの設定を確認してください。"
-
-#: ../data/ui/map-bubble.ui.h:1
-msgid "Add to new route"
-msgstr "新しいルートを追加"
-
-#: ../data/ui/map-bubble.ui.h:2
-msgid "Open with another application"
-msgstr "別のアプリケーションで開く"
-
-#: ../data/ui/map-bubble.ui.h:3
-msgid "Mark as favorite"
-msgstr "お気に入りに追加"
-
-#: ../data/ui/map-bubble.ui.h:6
-msgid "Check in here"
-msgstr "ここにチェックイン"
-
-#: ../data/ui/osm-account-dialog.ui.h:1
+#: data/ui/osm-account-dialog.ui:5
 msgid "OpenStreetMap Account"
 msgstr "OpenStreetMap アカウント"
 
-#: ../data/ui/osm-account-dialog.ui.h:2
-msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
-msgstr ""
-"<span weight=\"bold\" size=\"x-large\">地図編集のためのサインイン</span>"
+# 日本語訳メモ: OpenStreetMapの画面では「ログイン」と表示されている (2025.5.20)
+#: data/ui/osm-account-dialog.ui:31
+msgid "Sign In To Edit Maps"
+msgstr "地図を編集するためにログイン"
 
-#: ../data/ui/osm-account-dialog.ui.h:3
+#: data/ui/osm-account-dialog.ui:32
+msgid "Help to improve the map, using an OpenStreetMap account."
+msgstr "OpenStreetMapのアカウントを使って地図の改善を手伝おう。"
+
+# 日本語訳メモ: OpenStreetMapの画面では「ログイン」と表示されている (2025.5.20)
+#: data/ui/osm-account-dialog.ui:36
+msgid "_Sign In"
+msgstr "ログイン(_S)"
+
+#: data/ui/osm-account-dialog.ui:60
+msgid "Verification"
+msgstr "認証"
+
+# 日本語訳メモ: OpenStreetMapで認証された時にコードが表示される日本語の画面で「認証ID」と表示されている (2025.5.20)
+#: data/ui/osm-account-dialog.ui:61
 msgid ""
-"Help to improve the map, using an\n"
-"OpenStreetMap account."
+"Copy the verification code shown when authorizing access in the browser."
 msgstr ""
+"ブラウザーでアクセスを承認した時に表示される認証IDをコピーしてください。"
 
-#: ../data/ui/osm-account-dialog.ui.h:5
-msgid "Email"
-msgstr "メールアドレス"
+# 日本語訳メモ: OpenStreetMapで認証された時にコードが表示される日本語の画面で「認証ID」と表示されている (2025.5.20)
+#: data/ui/osm-account-dialog.ui:70
+msgid "Verification Code"
+msgstr "認証ID"
 
-#: ../data/ui/osm-account-dialog.ui.h:6
-msgid "Password"
-msgstr "パスワード"
+#: data/ui/osm-account-dialog.ui:76
+msgid "_Verify"
+msgstr "認証(_V)"
 
-#: ../data/ui/osm-account-dialog.ui.h:7
-msgid "Sign In"
-msgstr "サインイン"
+# 日本語訳メモ: OpenStreetMapの画面では「ログイン」と表示されている (2025.5.20)
+#: data/ui/osm-account-dialog.ui:112
+msgid "Signed In"
+msgstr "ログイン中"
 
-#: ../data/ui/osm-account-dialog.ui.h:8
-#, fuzzy
-#| msgid "Don't have an account?"
-msgid "Don’t have an account?"
-msgstr "アカウントをお持ちでありませんか?"
-
-#. The label should contain the link to the OSM reset password page with a translated title
-#: ../data/ui/osm-account-dialog.ui.h:10
-msgid ""
-"Sorry, that didn’t work. Please try again, or visit\n"
-"<a href=\"https://www.openstreetmap.org/user/forgot-password"
-"\">OpenStreetMap</a> to reset your password."
-msgstr ""
-
-#: ../data/ui/osm-account-dialog.ui.h:12
-#, fuzzy
-#| msgid "The verification code didn't match, please try again."
-msgid "The verification code didn’t match, please try again."
-msgstr "認証コードが一致しません、やりなおしてください。"
-
-#: ../data/ui/osm-account-dialog.ui.h:13
-msgid "Enter verification code shown above"
-msgstr "上記の認証コードを入力"
-
-#: ../data/ui/osm-account-dialog.ui.h:14
-msgid "Verify"
-msgstr "検証"
-
-#: ../data/ui/osm-account-dialog.ui.h:15
-msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
-msgstr "<span weight=\"bold\" size=\"x-large\">サインイン済み</span>"
-
-#: ../data/ui/osm-account-dialog.ui.h:16
+#: data/ui/osm-account-dialog.ui:113
 msgid "Your OpenStreetMap account is active."
-msgstr "あなたの OpenStreetMap account アカウントはアクティブです。"
+msgstr "あなたの OpenStreetMap アカウントはアクティブです。"
 
-#: ../data/ui/osm-account-dialog.ui.h:17
-msgid "Sign Out"
-msgstr "サインアウト"
+# 日本語訳メモ: OpenStreetMapの画面では「ログアウト」と表示されている (2025.5.20)
+#: data/ui/osm-account-dialog.ui:131
+msgid "_Sign Out"
+msgstr "ログアウト"
 
-#: ../data/ui/osm-edit-address.ui.h:1
-msgid "Street"
-msgstr "道路地図"
+#: data/ui/osm-discard-dialog.ui:5
+msgid "Discard Changes?"
+msgstr "変更を破棄しますか?"
 
-#: ../data/ui/osm-edit-address.ui.h:2
-msgid "House number"
-msgstr ""
+#: data/ui/osm-discard-dialog.ui:6
+msgid "Your current changes to the map will be lost"
+msgstr "地図に今加えた変更は失われます"
 
-#: ../data/ui/osm-edit-address.ui.h:3
-#, fuzzy
-#| msgid "Postal code: %s"
-msgid "Postal code"
-msgstr "郵便番号: %s"
+#: data/ui/osm-discard-dialog.ui:13
+msgid "_Discard"
+msgstr "破棄(_D)"
 
-#. This is the place name as it would be written in a postal address (typically coming after the postal code)
-#: ../data/ui/osm-edit-address.ui.h:5
-msgid "City"
-msgstr ""
+#: data/ui/osm-edit-dialog.ui:5
+msgctxt "dialog title"
+msgid "Edit Location"
+msgstr "場所を編集"
 
-#: ../data/ui/osm-edit-dialog.ui.h:1
-msgid "Type"
-msgstr ""
+#: data/ui/osm-edit-dialog.ui:25
+msgid "Loading…"
+msgstr "読み込み中…"
 
-#: ../data/ui/osm-edit-dialog.ui.h:2
-msgid "None"
-msgstr ""
+#: data/ui/osm-edit-dialog.ui:38 data/ui/osm-edit-dialog.ui:53
+#: data/ui/osm-edit-dialog.ui:101
+msgid "Edit Location"
+msgstr "場所を編集"
 
-#: ../data/ui/osm-edit-dialog.ui.h:3
-msgid "Add Field"
-msgstr ""
+#: data/ui/osm-edit-dialog.ui:54
+msgid "Edit an existing location in OpenStreetMap"
+msgstr "既存の場所をOpenStreetMapで編集"
 
-#: ../data/ui/osm-edit-dialog.ui.h:4
-msgid "Comment"
-msgstr ""
+#: data/ui/osm-edit-dialog.ui:80 src/mapView.js:663
+#: src/transitplugins/motis2.js:350 src/transitplugins/openTripPlanner.js:1238
+#: src/transitplugins/openTripPlanner2.js:267
+msgid "Continue"
+msgstr "続ける"
 
-#: ../data/ui/osm-edit-dialog.ui.h:5
+#: data/ui/osm-edit-dialog.ui:136
+msgid "Location Type"
+msgstr "場所の種類"
+
+#. Translators: This refers to searching for point-of-interest types. Search is a verb.
+#: data/ui/osm-edit-dialog.ui:264
+msgid "Search types"
+msgstr "種類を検索"
+
+#: data/ui/osm-edit-dialog.ui:278
+msgid "Recently Used Types"
+msgstr "最近使用した種類"
+
+#: data/ui/osm-edit-dialog.ui:301
+msgid "Edit Map"
+msgstr "地図を編集"
+
+#: data/ui/osm-edit-dialog.ui:320
+msgid "Almost There!"
+msgstr "もうすぐ!"
+
+#: data/ui/osm-edit-dialog.ui:321
 msgid ""
-"Map changes will be visible on all maps that use\n"
+"Describe your map changes. They will be visible on all maps that use "
 "OpenStreetMap data."
 msgstr ""
+"地図の変更点を記述してください。記述した内容は OpenStreetMap のデータを使用す"
+"るすべての地図で見ることができるようになります。"
 
-#: ../data/ui/osm-edit-dialog.ui.h:7
-msgid "Recently Used"
-msgstr ""
+#: data/ui/osm-edit-dialog.ui:367
+msgid "Submit"
+msgstr "送信"
 
-#: ../data/ui/osm-edit-dialog.ui.h:8
-msgid "Edit on OpenStreetMap"
-msgstr ""
+#: data/ui/osm-edit-dialog.ui:394 src/osmEditDialog.js:235
+#: src/osmEditDialog.js:559 src/osmEditDialog.js:949 src/translations.js:297
+msgid "None"
+msgstr "なし"
 
-#: ../data/ui/osm-edit-dialog.ui.h:9
-#, fuzzy
-#| msgid "_Cancel"
-msgid "Cancel"
-msgstr "キャンセル(_C)"
+#: data/ui/place-popover.ui:23 src/searchBar.js:69
+msgid "Explore Nearby Places"
+msgstr "近くの場所を見る"
 
-#: ../data/ui/osm-edit-dialog.ui.h:10 ../src/osmEditDialog.js:472
-msgid "Next"
-msgstr ""
+#: data/ui/place-popover.ui:78 src/application.js:273
+msgid "No results found"
+msgstr "結果がみつかりません"
 
-#: ../data/ui/place-bubble.ui.h:1
-#, fuzzy
-#| msgid "Show more results"
-msgid "Show more information"
-msgstr "さらに結果を表示"
-
-#: ../data/ui/place-popover.ui.h:1
-msgid "Press enter to search"
-msgstr "Enterキーを押すと検索します"
-
-#: ../data/ui/route-entry.ui.h:1
-msgid "Drag to change order of the route"
-msgstr "ルートの順序をドラッグで変更"
-
-#: ../data/ui/send-to-dialog.ui.h:1
-msgid "Open location"
-msgstr "場所を開く"
-
-#: ../data/ui/send-to-dialog.ui.h:3 ../data/ui/shape-layer-file-chooser.ui.h:2
-msgid "_Open"
-msgstr "開く(_O)"
-
-#: ../data/ui/shape-layer-file-chooser.ui.h:1
-msgid "Open Layer"
-msgstr ""
-
-#: ../data/ui/shape-layer-row.ui.h:1
-#, fuzzy
-#| msgid "Toggle favorites"
-msgid "Toggle visible"
-msgstr "お気に入り"
-
-#: ../data/ui/sidebar.ui.h:1
-msgid "Route search by GraphHopper"
-msgstr "GraphHopperによるルート検索"
-
-#: ../data/ui/sidebar.ui.h:2
-#, fuzzy
-#| msgid "Route search by GraphHopper"
-msgid "Route search by OpenTripPlanner"
-msgstr "GraphHopperによるルート検索"
-
-#: ../data/ui/sidebar.ui.h:3
-msgid ""
-"Routing itineraries for public transit is provided by GNOME\n"
-"using timetable data obtained from transit companies or agencies.\n"
-"The companies and agencies can not be held responsible for the results "
-"shown.\n"
-"GNOME can not guarantee correctness of the itineraries and schedules shown.\n"
-"Names and brands shown are to be considered as registered trademarks when "
-"applicable."
-msgstr ""
-
-#: ../data/ui/social-place-more-results-row.ui.h:1
-msgid "Show more results"
-msgstr "さらに結果を表示"
-
-#: ../data/ui/transit-leg-row.ui.h:1
-msgid "Hide intermediate stops and information"
-msgstr ""
-
-#: ../data/ui/transit-leg-row.ui.h:2
-#, fuzzy
-#| msgid "Show more results"
-msgid "Show intermediate stops and information"
-msgstr "さらに結果を表示"
-
-#. Indicates searching for the next available itineraries
-#: ../data/ui/transit-options-panel.ui.h:2
-msgid "Leave Now"
-msgstr ""
-
-#. Indicates searching for itineraries leaving at the specified time at the earliest
-#: ../data/ui/transit-options-panel.ui.h:4
-msgid "Leave By"
-msgstr ""
-
-#. Indicates searching for itineraries arriving no later than the specified time
-#: ../data/ui/transit-options-panel.ui.h:6
-msgid "Arrive By"
-msgstr ""
-
-#. Header indicating selected modes of transit
-#: ../data/ui/transit-options-panel.ui.h:8
-msgid "Show"
-msgstr ""
-
-#: ../data/ui/transit-options-panel.ui.h:9
-msgid "Buses"
-msgstr ""
-
-#: ../data/ui/transit-options-panel.ui.h:10
-msgid "Trams"
-msgstr ""
-
-#: ../data/ui/transit-options-panel.ui.h:11
-msgid "Trains"
-msgstr ""
-
-#: ../data/ui/transit-options-panel.ui.h:12
-msgid "Subway"
-msgstr ""
-
-#: ../data/ui/transit-options-panel.ui.h:13
-msgid "Ferries"
-msgstr ""
-
-#: ../data/ui/user-location-bubble.ui.h:1 ../src/geoclue.js:120
-msgid "Current location"
-msgstr "現在の位置"
-
-#. To translators: %s can be "Unknown", "Exact" or "%f km²"
-#: ../data/ui/user-location-bubble.ui.h:4
-#, no-c-format
-msgid "Accuracy: %s"
-msgstr "位置精度: %s"
-
-#: ../data/ui/zoom-in-notification.ui.h:1
-msgid "Zoom in to add location!"
-msgstr ""
-
-#: ../data/ui/zoom-in-notification.ui.h:2
-msgid "OK"
-msgstr ""
-
-#: ../lib/maps-file-tile-source.c:303 ../lib/maps-file-tile-source.c:379
-#: ../lib/maps-file-tile-source.c:459
-msgid "Failed to find tile structure in directory"
-msgstr ""
-
-#: ../lib/maps-osm.c:56
-#, fuzzy
-#| msgid "Failed to parse Geo URI"
-msgid "Failed to parse XML document"
-msgstr "Geo URIの解析に失敗しました"
-
-#: ../lib/maps-osm.c:252 ../lib/maps-osm.c:405
-msgid "Missing required attributes"
-msgstr ""
-
-#: ../lib/maps-osm.c:453
-msgid "Could not find OSM element"
-msgstr ""
-
-#: ../src/application.js:103
-msgid "A path to a local tiles directory structure"
-msgstr ""
-
-#: ../src/checkInDialog.js:175
-msgid "Select an account"
-msgstr "アカウントの選択"
-
-#: ../src/checkInDialog.js:180 ../src/checkInDialog.js:252
-msgid "Loading"
-msgstr "読み込み中"
-
-#: ../src/checkInDialog.js:204
-msgid "Select a place"
-msgstr "場所の選択"
-
-#: ../src/checkInDialog.js:209
-msgid ""
-"Maps cannot find the place to check in to with Facebook. Please select one "
-"from this list."
-msgstr ""
-"Facebookでチェックインする場所を見つけることができませんでした。次のリストか"
-"ら1つ選択してください。"
-
-#: ../src/checkInDialog.js:211
-msgid ""
-"Maps cannot find the place to check in to with Foursquare. Please select one "
-"from this list."
-msgstr ""
-"Foursquareでチェックインする場所を見つけることができませんでした。次のリスト"
-"から1つ選択してください。"
-
-#. Translators: %s is the name of the place to check in.
-#.
-#: ../src/checkInDialog.js:226
-#, javascript-format
-msgid "Check in to %s"
-msgstr "%sへチェックイン"
-
-#. Translators: %s is the name of the place to check in.
-#.
-#: ../src/checkInDialog.js:236
-#, javascript-format
-msgid "Write an optional message to check in to %s."
-msgstr "%sへチェックイン時に添えるコメントを書きます。"
-
-#: ../src/checkInDialog.js:288 ../src/checkIn.js:165
-#: ../src/osmEditDialog.js:509
+#: data/ui/place-popover.ui:88 src/application.js:251
 msgid "An error has occurred"
 msgstr "エラーが発生しました"
 
-#. Translators: %s is the place name that user wanted to check-in
-#: ../src/checkIn.js:147
-#, fuzzy, javascript-format
-#| msgid "Cannot find \"%s\" in the social service"
-msgid "Cannot find “%s” in the social service"
-msgstr "ソーシャルサービスにて \"%s\" を見つけることができません"
+#. Translators: This is a tooltip
+#: data/ui/route-entry.ui:12
+msgid "Change Route Order"
+msgstr "ルートの向きを変更"
 
-#: ../src/checkIn.js:149
-msgid "Cannot find a suitable place to check-in in this location"
-msgstr "この場所にチェックインするために適切な場所を見つけることができません"
+#: data/ui/send-to-dialog.ui:7
+msgid "Open Location"
+msgstr "場所を開く"
 
-#: ../src/checkIn.js:153
+#: data/ui/send-to-dialog.ui:64
+msgid "C_opy"
+msgstr "コピー(_O)"
+
+#: data/ui/send-to-dialog.ui:71
+msgid "_Send To…"
+msgstr "送り先(_S)…"
+
+#. Translators: This is a tooltip
+#: data/ui/shape-layer-row.ui:32
+msgid "Toggle visible"
+msgstr "可視・不可視"
+
+#. Translators: This is a tooltip
+#: data/ui/shape-layer-row.ui:44
+msgid "Remove Shape Layer"
+msgstr "シェープレイヤーを削除"
+
+#: data/ui/sidebar.ui:29
+msgid "Pedestrian"
+msgstr "徒歩"
+
+#: data/ui/sidebar.ui:36
+msgid "Bike"
+msgstr "自転車"
+
+#: data/ui/sidebar.ui:43
+msgid "Car"
+msgstr "自動車"
+
+#: data/ui/sidebar.ui:50
+msgid "Transit"
+msgstr "公共交通機関"
+
+#: data/ui/sidebar.ui:184
+msgid "Route search by GraphHopper"
+msgstr "GraphHopperによるルート検索"
+
+#: data/ui/sidebar.ui:217
+msgid "More Information"
+msgstr "さらに表示"
+
+#: data/ui/sidebar.ui:250
 msgid ""
-"Credentials have expired, please open Online Accounts to sign in and enable "
-"this account"
+"Routing itineraries for public transit is provided by third-party\n"
+"services.\n"
+"GNOME can not guarantee correctness of the itineraries and schedules shown.\n"
+"Note that some providers might not include all available modes of "
+"transportation,\n"
+"e.g. a national provider might not include airlines, and a local provider "
+"could\n"
+"miss regional trains.\n"
+"Names and brands shown are to be considered as registered trademarks when "
+"applicable."
 msgstr ""
-"認証情報が失効しました。オンラインアカウント設定を開き、再度アカウントを認証"
-"してください"
+"公共交通機関のルート案内はサードパーティのサービスによって提供されていま"
+"す。\n"
+"GNOME は、表示されるルート案内や時刻表の正確性を保証するものではありませ"
+"ん。\n"
+"一部のサービス提供者は、利用可能なすべての交通手段を網羅していない場合が\n"
+"あります。\n"
+"例えば、国レベルのサービス提供者では航空会社が含まれない場合があり、\n"
+"地域レベルのサービス提供者では地方の鉄道が含まれない場合があります。\n"
+"表示されている名称およびブランドは、該当する場合、登録商標とみなされます。"
 
-#: ../src/contextMenu.js:96
-msgid "Route from here"
-msgstr "ここからのルート"
+#: data/ui/sidebar.ui:274
+msgid "Back"
+msgstr "戻る"
 
-#: ../src/contextMenu.js:98
-msgid "Add destination"
-msgstr "行き先を追加"
+#. Translators: This is a tooltip
+#: data/ui/transit-leg-row.ui:99
+msgid "Hide intermediate stops and information"
+msgstr "中間点と情報を非表示に"
 
-#: ../src/contextMenu.js:100
-msgid "Route to here"
-msgstr "ここまでのルート"
+#. Translators: This is a tooltip
+#: data/ui/transit-leg-row.ui:157
+msgid "Show intermediate stops and information"
+msgstr "中間点と情報を表示"
 
-#: ../src/contextMenu.js:129
-msgid "Nothing found here!"
-msgstr ""
+#. Indicates searching for the next available itineraries
+#: data/ui/transit-options-panel.ui:17
+msgid "Leave Now"
+msgstr "すぐに出発"
 
-#: ../src/contextMenu.js:186
-msgid ""
-"Location was added to the map, note that it may take a while before it shows "
-"on the map and in search results."
-msgstr ""
+#. Indicates searching for itineraries leaving at the specified time at the earliest
+#: data/ui/transit-options-panel.ui:18
+msgid "Leave By"
+msgstr "出発時刻"
 
-#: ../src/exportViewDialog.js:156
-msgid "Filesystem is read only"
-msgstr ""
+#. Indicates searching for itineraries arriving no later than the specified time
+#: data/ui/transit-options-panel.ui:19
+msgid "Arrive By"
+msgstr "到着時刻"
 
-#: ../src/exportViewDialog.js:158
-msgid "You do not have permission to save there"
-msgstr ""
+#: data/ui/transit-options-panel.ui:59
+msgid "View More"
+msgstr "もっと見る"
 
-#: ../src/exportViewDialog.js:160
-msgid "The directory does not exist"
-msgstr ""
+#. Header indicating selected modes of transit
+#: data/ui/transit-options-panel.ui:91
+msgid "Show"
+msgstr "表示"
 
-#: ../src/exportViewDialog.js:162
-msgid "No filename specified"
-msgstr ""
+#: data/ui/transit-options-panel.ui:101
+msgid "_Buses"
+msgstr "バス(_B)"
 
-#: ../src/exportViewDialog.js:170
+#: data/ui/transit-options-panel.ui:108
+msgid "_Trams"
+msgstr "路面電車(_T)"
+
+#: data/ui/transit-options-panel.ui:115
+msgid "T_rains"
+msgstr "鉄道(_R)"
+
+#: data/ui/transit-options-panel.ui:122
+msgid "_Subway"
+msgstr "地下鉄(_S)"
+
+#: data/ui/transit-options-panel.ui:129
+msgid "_Ferries"
+msgstr "フェリー(_F)"
+
+#: data/ui/transit-options-panel.ui:136
+msgid "_Airplanes"
+msgstr "飛行機(_A)"
+
+#. Translators: This is a tooltip
+#: data/ui/place-bar.ui:38 data/ui/place-buttons.ui:28
+msgid "Share Location"
+msgstr "場所を共有"
+
+#. Translators: This is a tooltip
+#: data/ui/place-buttons.ui:11
+msgid "Add to new route"
+msgstr "新しいルートを追加"
+
+#. Translators: This is the button to find a route to a place
+#: data/ui/place-buttons.ui:15
+msgid "_Directions"
+msgstr "ここへ向かう(_D)"
+
+#. Translators: This is a tooltip
+#: data/ui/place-buttons.ui:37
+msgid "Mark as Favorite"
+msgstr "お気に入りに追加"
+
+#. Translators: This is a tooltip
+#: data/ui/place-buttons.ui:48
+msgid "Edit on OpenStreetMap"
+msgstr "OpenStreetMapで編集"
+
+#. Translators: This is a tooltip
+#: data/ui/place-view.ui:59
+msgid "Share location"
+msgstr "場所を共有"
+
+#: data/ui/poi-category-goback-row.ui:22
+msgid "Back to Main Categories"
+msgstr "メインカテゴリーへ戻る"
+
+#. Translators: This is a tooltip
+#: data/ui/zoom-and-rotate-controls.ui:19
+msgid "Reset Rotation"
+msgstr "回転をリセット"
+
+#. Translators: This is a tooltip
+#: data/ui/zoom-and-rotate-controls.ui:32
+msgid "Zoom Out"
+msgstr "ズームアウト"
+
+#. Translators: This is a tooltip
+#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1272
+msgid "Zoom In"
+msgstr "ズームイン"
+
+#: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338
+#: lib/maps-file-data-source.c:418
+msgid "Failed to find tile structure in directory"
+msgstr "ディレクトリでタイルの構造を見つけることができませんでした"
+
+#: lib/maps-osm.c:56
+msgid "Failed to parse XML document"
+msgstr "XMLドキュメントのパースに失敗"
+
+#: lib/maps-osm.c:250 lib/maps-osm.c:403
+msgid "Missing required attributes"
+msgstr "要求した属性が見つかりません"
+
+#: lib/maps-osm.c:451 lib/maps-osm.c:494
+msgid "Could not find OSM element"
+msgstr "OSM 要素を見つられませんでした"
+
+#: lib/maps-osm.c:508
+msgid "Could not find user element"
+msgstr "ユーザー要素を見つけられませんでした"
+
+#: src/application.js:73
+msgid "A path to a local tiles directory structure"
+msgstr "ローカルなタイルディレクトリー構造へのパス"
+
+#: src/application.js:79
+msgid "Tile size for local tiles directory"
+msgstr "ローカルなタイルディレクトリのタイルサイズ"
+
+#: src/application.js:83
+msgid "Show the version of the program"
+msgstr "このプログラムのバージョンを表示"
+
+#: src/application.js:89
+msgid "Search for places"
+msgstr "場所を探す"
+
+#: src/application.js:100 src/application.js:101
+msgid "[FILE…|URI]"
+msgstr "[ファイル…|URI]"
+
+#: src/application.js:280
+#, javascript-format
+msgid "Invalid maps: URI: %s"
+msgstr "無効な地図: URI: %s"
+
+#. Translators: This is a format string for a PNG filename for an
+#. * exported image with coordinates. The .png extension should be kept
+#. * intact in the translated string.
+#.
+#: src/exportViewDialog.js:72
+#, javascript-format
+msgid "Maps at %f, %f.png"
+msgstr "%f,%fの地図.png"
+
+#: src/exportViewDialog.js:87
+msgid "PNG"
+msgstr "PNG"
+
+#: src/exportViewDialog.js:138
 msgid "Unable to export view"
-msgstr ""
+msgstr "ビューをエクスポートできません"
 
-#: ../src/geoJSONSource.js:98
+#: src/favoriteListRow.js:42
+msgid "Favorite removed"
+msgstr "お気に入りを削除しました"
+
+#: src/favoriteListRow.js:43
+msgid "_Undo"
+msgstr "元に戻す(_U)"
+
+#: src/geoJSONSource.js:73
 msgid "invalid coordinate"
-msgstr ""
+msgstr "無効な座標"
 
-#: ../src/geoJSONSource.js:149 ../src/geoJSONSource.js:189
-#: ../src/geoJSONSource.js:204
+#: src/geoJSONSource.js:126 src/geoJSONSource.js:166 src/geoJSONSource.js:181
 msgid "parse error"
-msgstr ""
+msgstr "パースエラー"
 
-#: ../src/geoJSONSource.js:183
+#: src/geoJSONSource.js:160
 msgid "unknown geometry"
-msgstr ""
+msgstr "無効なジオメトリー"
 
-#: ../src/graphHopper.js:93 ../src/openTripPlanner.js:630
+#: src/graphHopper.js:102 src/transitPlan.js:177
 msgid "Route request failed."
 msgstr "ルート要求は失敗しました。"
 
-#: ../src/graphHopper.js:101 ../src/openTripPlanner.js:614
-#: ../src/openTripPlanner.js:728
+#: src/graphHopper.js:109 src/transitPlan.js:169
 msgid "No route found."
 msgstr "ルートが見つかりません。"
 
-#: ../src/graphHopper.js:193
+#: src/graphHopper.js:196 src/transitplugins/openTripPlanner.js:1162
 msgid "Start!"
 msgstr "開始！"
 
-#: ../src/layersPopover.js:62
-msgid "All Layer Files"
-msgstr ""
-
-#: ../src/mainWindow.js:387
+#: src/mainWindow.js:477
 msgid "Failed to connect to location service"
 msgstr "位置情報サービスに接続できません"
 
-#: ../src/mainWindow.js:439
+#: src/mainWindow.js:482
+msgid "Turn on location services"
+msgstr "位置情報サービスをオンにしてください"
+
+#: src/mainWindow.js:483
+msgid "Location Settings"
+msgstr "場所の設定"
+
+#: src/mainWindow.js:588
 msgid "translator-credits"
 msgstr ""
 "松澤 二郎 <jmatsuzawa@gnome.org>\n"
 "victory  <victory.deb@gmail.com>\n"
 "Ikuya Awashiro <ikuya@fruitsbasket.info>\n"
 "Hajime Taira <htaira@redhat.com>\n"
-"日本GNOMEユーザー会 <http://www.gnome.gr.jp>"
+"Japanese Translation Team https://l10n.gnome.org/teams/ja/\n"
+"Tomo Dote <fu7mu4@gmail.com>\n"
+"Kusano Takayuki https://bsky.app/profile/tkusano.jp"
 
-#: ../src/mainWindow.js:442
-msgid "A map application for GNOME"
-msgstr "GNOME 向け地図アプリケーション"
+#: src/mainWindow.js:592
+msgid "Copyright © 2011 – 2025 Red Hat, Inc. and The GNOME Maps authors"
+msgstr "Copyright © 2011 – 2025 Red Hat, Inc. and The GNOME Maps authors"
 
-#: ../src/mapView.js:354
-msgid "File type is not supported"
-msgstr ""
+#: src/mainWindow.js:605
+#, javascript-format
+msgid "Map data by %s and contributors"
+msgstr "%s と貢献者による地図データ"
 
-#: ../src/mapView.js:361
-#, fuzzy
-#| msgid "Failed to parse Geo URI"
+#: src/mainWindow.js:606
+msgid "Map Data Provider"
+msgstr "地図データプロバイダー"
+
+#: src/mainWindow.js:609
+msgid "Map Tile Provider"
+msgstr "地図タイルプロバイダー"
+
+#. Translators: this is an attribution string giving credit to the
+#. * tile provider where the %s placeholder is replaced by either
+#. * the bare name of the tile provider, or a linkified URL if one
+#. * is available
+#.
+#: src/mainWindow.js:617
+#, javascript-format
+msgid "Map tiles provided by %s"
+msgstr "%s 提供の地図タイル"
+
+#: src/mainWindow.js:646
+msgid "Search Provider"
+msgstr "検索プロバイダー"
+
+#: src/mainWindow.js:649
+#, javascript-format
+msgid "Search provided by %s using %s"
+msgstr "%s 提供の %s を使った検索"
+
+#: src/mainWindow.js:658
+msgid "All Layer Files"
+msgstr "すべてのレイヤーファイル"
+
+#: src/mainWindow.js:671
+msgid "Open Shape Layers"
+msgstr "シェイプレイヤーを開く"
+
+#: src/mapView.js:638 src/mapView.js:700
 msgid "Failed to open layer"
-msgstr "Geo URIの解析に失敗しました"
+msgstr "レイヤーを開くのに失敗しました"
 
-#: ../src/mapView.js:397
-#, fuzzy
-#| msgid "Failed to parse Geo URI"
-msgid "Failed to open GeoURI"
-msgstr "Geo URIの解析に失敗しました"
+#: src/mapView.js:655
+msgid "Do you want to continue?"
+msgstr "続けますか?"
 
-#: ../src/openTripPlanner.js:626
-msgid "No timetable data found for this route."
+#: src/mapView.js:656
+#, javascript-format
+msgid ""
+"You are about to open files with a total size of %s MB. This could take some "
+"time to load"
 msgstr ""
+"合計 %s MBのファイルを開こうとしています。読み込むのに時間がかかる場合があり"
+"ます"
+
+#: src/mapView.js:662
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: src/mapView.js:694
+msgid "File type is not supported"
+msgstr "ファイルタイプをサポートしていません"
+
+#: src/mapView.js:736
+msgid "Failed to open GeoURI"
+msgstr "GeoURIを開くのに失敗しました"
+
+#: src/mapView.js:1271
+msgid "Zoom in to add location"
+msgstr "ズームインして場所を追加!"
+
+#: src/mapView.js:1289
+msgid "Location was added in OpenStreetMap"
+msgstr "OpenStreetMap アカウントに場所が追加されました"
+
+#. switch back to the sign-in view, and show a toast indicating
+#. that verification failed
+#: src/osmAccountDialog.js:134
+msgid "The verification code didn’t match, please try again."
+msgstr "認証コードが一致しません、やりなおしてください。"
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: ../src/osmConnection.js:442
+#: src/osmConnection.js:335
 msgid "Incorrect user name or password"
-msgstr ""
+msgstr "ユーザー名またはパスワードが間違っています"
 
-#: ../src/osmConnection.js:444
+#: src/osmConnection.js:337
 msgid "Success"
-msgstr ""
+msgstr "成功"
 
-#: ../src/osmConnection.js:446
+#: src/osmConnection.js:339
 msgid "Bad request"
-msgstr ""
+msgstr "無効なリクエスト"
 
-#: ../src/osmConnection.js:448
-#, fuzzy
-#| msgid "Position not found"
+#: src/osmConnection.js:341
 msgid "Object not found"
 msgstr "位置が見つかりません"
 
-#: ../src/osmConnection.js:450
+#: src/osmConnection.js:343
 msgid "Conflict, someone else has just modified the object"
-msgstr ""
+msgstr "衝突発生。誰かがオブジェクトを変更したばかりです"
 
-#: ../src/osmConnection.js:452
+#: src/osmConnection.js:345
 msgid "Object has been deleted"
-msgstr ""
+msgstr "オブジェクトが削除されています"
 
-#: ../src/osmConnection.js:454
+#: src/osmConnection.js:347
 msgid "Way or relation refers to non-existing children"
-msgstr ""
+msgstr "存在しない子のウェイまたはリレーション"
 
-#: ../src/osmEditDialog.js:104
+#: src/osmEditDialog.js:110
+msgid "General"
+msgstr "一般"
+
+#: src/osmEditDialog.js:113
 msgid "Name"
-msgstr ""
+msgstr "名前"
 
-#: ../src/osmEditDialog.js:107
-msgid "The official name. This is typically what appears on signs."
-msgstr ""
+#: src/osmEditDialog.js:118
+msgid "Type"
+msgstr "種類"
 
-#: ../src/osmEditDialog.js:110
+#: src/osmEditDialog.js:123 src/osmEditDialog.js:760
 msgid "Address"
-msgstr ""
+msgstr "住所"
 
-#: ../src/osmEditDialog.js:118 ../src/placeBubble.js:159
-msgid "Website"
-msgstr ""
+#: src/osmEditDialog.js:136
+msgid "Contact"
+msgstr "連絡先"
 
-#: ../src/osmEditDialog.js:121
-msgid ""
-"The official website. Try to use the most basic form of a URL i.e. http://"
-"example.com instead of http://example.com/index.html."
-msgstr ""
+#: src/osmEditDialog.js:139
+msgid "Opening Hours"
+msgstr "営業時間"
 
-#: ../src/osmEditDialog.js:126
+#: src/osmEditDialog.js:145
 msgid "Phone"
-msgstr ""
+msgstr "電話番号"
 
-#: ../src/osmEditDialog.js:130
-msgid ""
-"Phone number. Use the international format, starting with a + sign. Beware "
-"of local privacy laws, especially for private phone numbers."
-msgstr ""
+#: src/osmEditDialog.js:151 src/placeView.js:336
+msgid "Email"
+msgstr "メールアドレス"
 
-#: ../src/osmEditDialog.js:135 ../src/placeBubble.js:165
-msgid "Wikipedia"
-msgstr "Wikipedia"
+#: src/osmEditDialog.js:158 src/placeView.js:303
+msgid "Website"
+msgstr "ウェブサイト"
 
-#: ../src/osmEditDialog.js:139
-msgid ""
-"The format used should include the language code and the article title like "
-"“en:Article title”."
-msgstr ""
+#: src/osmEditDialog.js:166
+msgid "Accessibility"
+msgstr "アクセシビリティ"
 
-#: ../src/osmEditDialog.js:143
-#, fuzzy
-#| msgid "Opening hours: %s"
-msgid "Opening hours"
-msgstr "営業時間: %s"
+#: src/osmEditDialog.js:169
+msgid "Wheelchair Access"
+msgstr "車いすでのアクセス"
 
-#: ../src/osmEditDialog.js:148
-msgid "See the link in the label for help on format."
-msgstr ""
-
-#: ../src/osmEditDialog.js:151
-#, fuzzy
-#| msgid "Population: %s"
-msgid "Population"
-msgstr "人口: %s"
-
-#: ../src/osmEditDialog.js:156
-msgid "Altitude"
-msgstr ""
-
-#: ../src/osmEditDialog.js:159
-msgid "Elevation (height above sea level) of a point in metres."
-msgstr ""
-
-#: ../src/osmEditDialog.js:162
-#, fuzzy
-#| msgid "Wheelchair access: %s"
-msgid "Wheelchair access"
-msgstr "車いすでのアクセス: %s"
-
-#: ../src/osmEditDialog.js:165 ../src/osmEditDialog.js:174
-#, fuzzy
-#| msgid "yes"
+# 日本語訳メモ: Wheelchair Access、Internet Access、Takeout の選択肢の一つ
+#: src/osmEditDialog.js:172 src/osmEditDialog.js:181 src/osmEditDialog.js:216
 msgid "Yes"
-msgstr "可能"
+msgstr "あり"
 
-#: ../src/osmEditDialog.js:166 ../src/osmEditDialog.js:175
+# 日本語訳メモ: Wheelchair Access、Internet Access、Takeout の選択肢の一つ
+#: src/osmEditDialog.js:173 src/osmEditDialog.js:182 src/osmEditDialog.js:217
 msgid "No"
-msgstr ""
+msgstr "なし"
 
-#: ../src/osmEditDialog.js:167
-#, fuzzy
-#| msgid "limited"
+#: src/osmEditDialog.js:174
 msgid "Limited"
 msgstr "制限あり"
 
-#: ../src/osmEditDialog.js:168
-#, fuzzy
-#| msgid "designated"
+#: src/osmEditDialog.js:175
 msgid "Designated"
 msgstr "車いす専用"
 
-#: ../src/osmEditDialog.js:171
-msgid "Internet access"
-msgstr ""
+#: src/osmEditDialog.js:178
+msgid "Internet Access"
+msgstr "インターネット"
 
-#. Translators:
-#. * This means a WLAN Hotspot, also know as wireless, wifi or Wi-Fi.
-#.
-#: ../src/osmEditDialog.js:176 ../src/translations.js:340
+#: src/osmEditDialog.js:183
 msgid "Wi-Fi"
-msgstr ""
+msgstr "Wi-Fi"
 
-#: ../src/osmEditDialog.js:177
+#: src/osmEditDialog.js:184
 msgid "Wired"
-msgstr ""
+msgstr "有線"
 
-#: ../src/osmEditDialog.js:178
+#: src/osmEditDialog.js:185
 msgid "Terminal"
-msgstr ""
+msgstr "端末あり"
 
-#: ../src/osmEditDialog.js:179
+#: src/osmEditDialog.js:186
 msgid "Service"
-msgstr ""
+msgstr "サービス"
 
-#: ../src/osmEditDialog.js:288
-msgctxt "dialog title"
-msgid "Add to OpenStreetMap"
-msgstr ""
+#: src/osmEditDialog.js:191
+msgid "Miscellaneous"
+msgstr "その他"
 
-#: ../src/osmEditDialog.js:340
-#, fuzzy
-#| msgid "Select a place"
-msgid "Select Type"
-msgstr "場所の選択"
+#. Translators: This is the text for the "Wikipedia" link at the end
+#. of summaries
+#: src/osmEditDialog.js:194 src/osmEditDialog.js:798 src/placeView.js:778
+msgid "Wikipedia"
+msgstr "Wikipedia"
 
-#: ../src/osmEditDialog.js:458
-msgid "Done"
-msgstr ""
+#. TODO: this is a bit of a work-around to re-interpret the population,
+#. * stored as a string into an integer to convert back to a locale-
+#. * formatted string. Ideally it should be kept as an integer value
+#. * in the Place class. But this will also need to be handled by the
+#. * PlaceStore, possible in a backwards-compatible way
+#.
+#: src/osmEditDialog.js:201 src/placeView.js:537
+msgid "Population"
+msgstr "人口"
 
-#: ../src/placeBubble.js:122
-#, fuzzy
-#| msgid "Population: %s"
-msgid "Population:"
-msgstr "人口: %s"
+#: src/osmEditDialog.js:206 src/placeView.js:566
+msgid "Altitude"
+msgstr "高度"
 
-#: ../src/placeBubble.js:128
-msgid "Altitude:"
-msgstr ""
+#: src/osmEditDialog.js:207
+msgid "Elevation above sea level, in meters"
+msgstr "海抜0からの高さ、メートル単位"
 
-#: ../src/placeBubble.js:133
-#, fuzzy
-#| msgid "Opening hours: %s"
-msgid "Opening hours:"
-msgstr "営業時間: %s"
+#: src/osmEditDialog.js:213
+msgid "Takeout"
+msgstr "テイクアウト"
 
-#: ../src/placeBubble.js:138
-msgid "Internet access:"
-msgstr ""
+#: src/osmEditDialog.js:218
+msgid "Only"
+msgstr "テイクアウトのみ"
 
-#: ../src/placeBubble.js:143
-#, fuzzy
-#| msgid "Wheelchair access: %s"
-msgid "Wheelchair access:"
-msgstr "車いすでのアクセス: %s"
+#: src/osmEditDialog.js:221
+msgid "Religion"
+msgstr "宗教"
 
-#: ../src/placeBubble.js:149 ../src/placeBubble.js:153
-msgid "Phone:"
-msgstr ""
+#: src/osmEditDialog.js:224 src/translations.js:286
+msgid "Animism"
+msgstr "アニミズム"
 
-#: ../src/placeEntry.js:190
+#: src/osmEditDialog.js:225
+msgid "Bahá’í"
+msgstr "バハーイ教"
+
+#: src/osmEditDialog.js:226 src/translations.js:288
+msgid "Buddhism"
+msgstr "仏教"
+
+#: src/osmEditDialog.js:227 src/translations.js:289
+msgid "Caodaism"
+msgstr "カオダイ教"
+
+#: src/osmEditDialog.js:228 src/translations.js:290
+msgid "Christianity"
+msgstr "キリスト教"
+
+#: src/osmEditDialog.js:229 src/translations.js:291
+msgid "Confucianism"
+msgstr "儒教"
+
+#: src/osmEditDialog.js:230 src/translations.js:292
+msgid "Hinduism"
+msgstr "ヒンズー教"
+
+#: src/osmEditDialog.js:231 src/translations.js:293
+msgid "Jainism"
+msgstr "ジャイナ教"
+
+#: src/osmEditDialog.js:232 src/translations.js:294
+msgid "Judaism"
+msgstr "ユダヤ教"
+
+#: src/osmEditDialog.js:233 src/translations.js:295
+msgid "Islam"
+msgstr "イスラム教"
+
+#: src/osmEditDialog.js:234 src/translations.js:296
+msgid "Multiple Religions"
+msgstr "複数の宗教"
+
+#: src/osmEditDialog.js:236 src/translations.js:298
+msgid "Paganism"
+msgstr "異教"
+
+#: src/osmEditDialog.js:237 src/translations.js:299
+msgid "Pastafarianism"
+msgstr "空飛ぶスパゲッティ・モンスター教"
+
+#: src/osmEditDialog.js:238 src/translations.js:300
+msgid "Scientology"
+msgstr "サイエントロジー"
+
+#: src/osmEditDialog.js:239 src/translations.js:301
+msgid "Shinto"
+msgstr "神道"
+
+#: src/osmEditDialog.js:240 src/translations.js:302
+msgid "Sikhism"
+msgstr "シク教"
+
+#: src/osmEditDialog.js:241 src/translations.js:303
+msgid "Spiritualism"
+msgstr "スピリチュアリズム"
+
+#: src/osmEditDialog.js:242 src/translations.js:304
+msgid "Taoism"
+msgstr "道教"
+
+#: src/osmEditDialog.js:243 src/translations.js:305
+msgid "Unitarian Universalism"
+msgstr "ユニテリアン・ユニヴァーサリズム"
+
+#: src/osmEditDialog.js:244 src/translations.js:306
+msgid "Voodoo"
+msgstr "ブードゥー教"
+
+#: src/osmEditDialog.js:245 src/translations.js:307
+msgid "Yazidism"
+msgstr "ヤジディ教"
+
+#: src/osmEditDialog.js:246 src/translations.js:308
+msgid "Zoroastrianism"
+msgstr "ゾロアスター教"
+
+#: src/osmEditDialog.js:249
+msgid "Note"
+msgstr "メモ"
+
+#: src/osmEditDialog.js:310
+msgctxt "dialog heading"
+msgid "Add Location"
+msgstr "場所を追加"
+
+#. set the title and description for adding a POI
+#: src/osmEditDialog.js:319
+msgid "Add Location"
+msgstr "場所を追加"
+
+#: src/osmEditDialog.js:320
+msgid "Add a new location to OpenStreetMap"
+msgstr "OpenStreetMap へ新しい場所を追加"
+
+#: src/osmEditDialog.js:412
+msgid "Changes successfully submitted"
+msgstr "変更の送信に成功"
+
+#: src/osmEditDialog.js:704
+msgid "Unspecified"
+msgstr "未指定"
+
+#: src/osmEditDialog.js:766
+msgid "Street Name"
+msgstr "通り名"
+
+#: src/osmEditDialog.js:767
+msgid "House Number"
+msgstr "住居番号 (号、支号、枝番号)"
+
+#: src/osmEditDialog.js:768
+msgid "ZIP Code"
+msgstr "郵便番号"
+
+#: src/osmEditDialog.js:769
+msgid "City"
+msgstr "市"
+
+#: src/osmEditDialog.js:801
+msgid "Wikipedia Article"
+msgstr "Wikipedia 記事"
+
+#: src/osmEditDialog.js:805
+msgid "Wikidata Tag"
+msgstr "Wikidata タグ"
+
+#: src/osmEditDialog.js:810
+msgid "Load Wikidata tag from article name"
+msgstr "記事名から Wikidata のタグを読み込む"
+
+#: src/osmEditDialog.js:866
+msgid "Couldn't find Wikidata tag for article"
+msgstr "記事の Wikidata タグを見つけられませんでした"
+
+# 日本語訳: https://wiki.openstreetmap.org/wiki/JA:Map_Features#%E7%B4%A2%E9%81%93_(Aerialway)
+#. Translators: This represents the title for places tagged with the
+#. * "aerialway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Aerialway
+#.
+#: src/osmTypes.js:45
+msgid "Aerialway"
+msgstr "索道"
+
+# 日本語訳: https://wiki.openstreetmap.org/wiki/JA:Map_Features
+# 日本語訳: https://wiki.openstreetmap.org/wiki/JA:%E7%A9%BA%E8%B7%AF
+#. Translators: This represents the title for places tagged with the
+#. * "aeroway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Aeroway
+#.
+#: src/osmTypes.js:49
+msgid "Aeroway"
+msgstr "空路"
+
+# 日本語訳: https://wiki.openstreetmap.org/wiki/JA:Map_Features#%E6%96%BD%E8%A8%AD_(Amenity)
+#. Translators: This represents the title for places tagged with the
+#. * "amenity" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Amenity
+#.
+#: src/osmTypes.js:53
+msgid "Amenity"
+msgstr "施設"
+
+# 日本語訳: https://wiki.openstreetmap.org/wiki/JA:Map_Features#%E9%9A%9C%E5%AE%B3%E7%89%A9_(Barrier)
+#. Translators: This represents the title for places tagged with the
+#. * "barrier" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Barrier
+#.
+#: src/osmTypes.js:57
+msgid "Barrier"
+msgstr "障害物"
+
+# 日本語訳: https://wiki.openstreetmap.org/wiki/JA:Map_Features#%E9%81%93%E8%B7%AF_(Highway)
+#. Translators: This represents the title for places tagged with the
+#. * "highway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Highway
+#.
+#: src/osmTypes.js:61
+msgid "Road"
+msgstr "道路"
+
+# 日本語訳: https://wiki.openstreetmap.org/wiki/JA:Map_Features#%E5%8F%B2%E8%B7%A1_(Historic)
+#. Translators: This represents the title for places tagged with the
+#. * "historic" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Historic
+#.
+#: src/osmTypes.js:65
+msgid "Historic"
+msgstr "史跡"
+
+# 日本語訳: https://wiki.openstreetmap.org/wiki/JA:Map_Features#%E5%A8%AF%E6%A5%BD_(Leisure)
+#. Translators: This represents the title for places tagged with the
+#. * "leisure" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Leisure
+#.
+#: src/osmTypes.js:69
+msgid "Leisure"
+msgstr "娯楽"
+
+# 日本語訳: https://wiki.openstreetmap.org/wiki/JA:Map_Features#%E4%BA%8B%E5%8B%99%E6%89%80_(Office)
+#. Translators: This represents the title for places tagged with the
+#. * "office" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Office
+#.
+#: src/osmTypes.js:73
+msgid "Office"
+msgstr "事務所"
+
+# 日本語訳: https://wiki.openstreetmap.org/wiki/JA:Map_Features#%E5%9C%B0%E5%90%8D_(Places)
+#. Translators: This represents the title for places tagged with the
+#. * "place" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Place
+#.
+#: src/osmTypes.js:77
+msgid "Place"
+msgstr "地名"
+
+# 日本語訳: https://wiki.openstreetmap.org/wiki/JA:Key:railway
+#. Translators: This represents the title for places tagged with the
+#. * "railway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Railway
+#.
+#: src/osmTypes.js:81
+msgid "Railway"
+msgstr "鉄道"
+
+# 日本語訳: https://wiki.openstreetmap.org/wiki/JA:Map_Features#%E5%BA%97%E8%88%97_(Shop)
+#. Translators: This represents the title for places tagged with the
+#. * "shop" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Shop
+#.
+#: src/osmTypes.js:85
+msgid "Shop"
+msgstr "店舗"
+
+# 日本語: https://wiki.openstreetmap.org/wiki/JA:Key:tourism
+#. Translators: This represents the title for places tagged with the
+#. * "tourism" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Tourism
+#.
+#: src/osmTypes.js:89 src/poiCategories.js:467
+msgid "Tourism"
+msgstr "旅行"
+
+#: src/osmTypes.js:97
+msgid "Other"
+msgstr "その他"
+
+#: src/photonUtils.js:118 src/placeListRow.js:70
+msgid "Unnamed place"
+msgstr "名前のない場所"
+
+#: src/placeEntry.js:150
+msgid "Clear Entry"
+msgstr "エントリーを消去"
+
+#: src/placeEntry.js:315
 msgid "Failed to parse Geo URI"
 msgstr "Geo URIの解析に失敗しました"
+
+#: src/placeEntry.js:327
+msgid "Failed to parse Maps URI"
+msgstr "地図 URIの解析に失敗しました"
+
+#. 300 ft (300 * 12 * 0.0254 m)
+#.
+#. * Translators: This a format string for showing a distance to a place
+#. * is lower than a "quite short" distance.
+#. * The "less than" symbol can be substituded with an appropriate one, if
+#. * needed (e.g. using the correct direction, or alternative symbol).
+#. * The %s should be kept, and is substituted with a label representing the
+#. * short distance. The \u2009 (thin space) could also be adjusted if needed
+#: src/placeListRow.js:47
+#, javascript-format
+msgctxt "short distance format string"
+msgid "< %s"
+msgstr "< %s"
+
+#: src/placeView.js:291
+msgid "Coordinates"
+msgstr "座標"
+
+#: src/placeView.js:295
+msgid "Accuracy"
+msgstr "位置精度"
+
+#. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
+#: src/placeView.js:298
+#, javascript-format
+msgid "Accuracy: %s"
+msgstr "位置精度: %s"
+
+#. since the phone numbers are typically always rendered
+#. * left-to-right, insert an explicit LRM char to avoid issues
+#. * with phone numbers in international format starting with a +
+#. * which is considered a "weak" character to determine Unicode
+#. * text direction
+#.
+#: src/placeView.js:317
+msgid "Phone number"
+msgstr "電話番号"
+
+#. If a reference to a named floor (named or symbolic) exists
+#. * refer to it directly.
+#.
+#. Translators:
+#. * This is a reference to named building floor, using a label
+#. * or a code, as "displayed in the elevator"
+#.
+#: src/placeView.js:351 src/placeView.js:390
+msgid "Floor"
+msgstr "フロア"
+
+#: src/placeView.js:353
+#, javascript-format
+msgid "Floor %s"
+msgstr "%s フロア"
+
+#: src/placeView.js:365
+msgid "At ground level"
+msgstr "1階"
+
+#. Translators:
+#. * This is a reference to a number of floors above
+#. * ground level.
+#. * The %s placeholder is the integer relative number of floors
+#.
+#: src/placeView.js:374
+#, javascript-format
+msgid "%s floor above ground level"
+msgid_plural "%s floors above ground level"
+msgstr[0] "1階より%sフロア上の階"
+
+#. Translators:
+#. * This is a reference to a number of floors below
+#. * ground level.
+#. * The %s placeholder is the integer relative number of floors
+#.
+#: src/placeView.js:385
+#, javascript-format
+msgid "%s floor below ground level"
+msgid_plural "%s floors below ground level"
+msgstr[0] "地下%s階"
+
+#. Translators:
+#. * The establishment offers customers to purchase meals
+#. * (or similar) to be consumed elsewhere
+#.
+#: src/placeView.js:403
+msgid "Offers takeout"
+msgstr "テイクアウトを提供"
+
+#. Translators:
+#. * The establishment only offers customers to purchase
+#. * meals (or similar) to be consumed on-premise.
+#.
+#: src/placeView.js:411
+msgid "Does not offer takeout"
+msgstr "店内のみ"
+
+#. Translators:
+#. * The establishment only offers customers to purchase
+#. * meals (or similar) to be consumed elsewhere. E.g.
+#. * there is no seating on-premise for eating/drinking
+#.
+#: src/placeView.js:420
+msgid "Only offers takeout"
+msgstr "テイクアウトのみ"
+
+#: src/placeView.js:427
+msgid "Opening hours"
+msgstr "営業時間"
+
+#. Translators:
+#. * There is public internet access but the particular kind is unknown.
+#.
+#: src/placeView.js:437
+msgid "Public internet access"
+msgstr "公衆インターネットアクセス"
+
+#. Translators:
+#. * no internet access is offered in a place where
+#. * someone might expect it.
+#.
+#: src/placeView.js:446
+msgid "No internet access"
+msgstr "インターネットアクセス無し"
+
+#. Translators:
+#. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
+#.
+#: src/placeView.js:454
+msgid "Public Wi-Fi"
+msgstr "公衆 Wi-Fi"
+
+#. Translators:
+#. * This means a a place where you can plug in your laptop with ethernet.
+#.
+#: src/placeView.js:462
+msgid "Wired internet access"
+msgstr "有線インターネットアクセス"
+
+#. Translators:
+#. * Like internet cafe or library where the computer is given.
+#.
+#: src/placeView.js:470
+msgid "Computers available for use"
+msgstr "利用可能なコンピューター端末あり"
+
+#. Translators:
+#. * This means there is personnel which helps you in case of problems.
+#.
+#: src/placeView.js:478
+msgid "Internet assistance available"
+msgstr "インターネットのアシスタンスあり"
+
+#: src/placeView.js:484
+msgid "No toilets available"
+msgstr "トイレ利用不可"
+
+#: src/placeView.js:487
+msgid "Toilets available"
+msgstr "トイレ利用可能"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#. Translators:
-#. * There is public internet access but the particular kind is unknown.
-#.
-#: ../src/place.js:178 ../src/translations.js:329
-msgid "yes"
-msgstr "可能"
+#: src/placeView.js:496
+msgid "Wheelchair accessible"
+msgstr "車いすでのアクセス可能"
 
 #. Translators:
 #. * This means wheelchairs have partial access (e.g some areas
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: ../src/place.js:185
-msgid "limited"
-msgstr "制限あり"
+#: src/placeView.js:506
+msgid "Limited wheelchair accessibility"
+msgstr "車いすでのアクセスに制約・制限"
 
 #. Translators:
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#. Translators:
-#. * no internet access is offered in a place where
-#. * someone might expect it.
-#.
-#: ../src/place.js:191 ../src/translations.js:335
-msgid "no"
-msgstr "困難"
+#: src/placeView.js:515
+msgid "Not wheelchair accessible"
+msgstr "車いすでのアクセス不可"
 
 #. Translators:
 #. * This means that the way or area is designated or purpose built
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: ../src/place.js:198
-msgid "designated"
-msgstr "車いす専用"
+#: src/placeView.js:525
+msgid "Designated for wheelchair users"
+msgstr "車いす向け、あるいは専用"
 
-#: ../src/printLayout.js:244
+#. *
+#. * Translators: this is a label indicating an altitude below
+#. * sea level, where the %s placeholder is the altitude relative
+#. * to mean sea level in the "negative direction"
+#.
+#: src/placeView.js:556
+#, javascript-format
+msgid "%s below sea level"
+msgstr "海面下 %s"
+
+#. *
+#. * Translators: this indicates a place is located at (or very
+#. * close to) mean sea level
+#.
+#: src/placeView.js:563
+msgid "At sea level"
+msgstr "海抜0"
+
+#: src/placeView.js:575
+msgid "Religion:"
+msgstr "宗教:"
+
+#: src/place.js:598
+msgid "Place not found in OpenStreetMap"
+msgstr "OpenStreetMap で場所が見つかりませんでした"
+
+#: src/place.js:605
+msgid "Coordinates in URL are not valid"
+msgstr "URL 中の座標が正しくありません"
+
+#: src/place.js:614
+msgid "URL is not supported"
+msgstr "URL はサポートされていません"
+
+#: src/poiCategories.js:132
+msgid "Amenities"
+msgstr "施設"
+
+#: src/poiCategories.js:135
+msgid "ATMs"
+msgstr "ATM"
+
+#: src/poiCategories.js:141
+msgid "Post Boxes"
+msgstr "ポスト"
+
+#: src/poiCategories.js:147
+msgid "Post Offices"
+msgstr "郵便局"
+
+#: src/poiCategories.js:153
+msgid "Police"
+msgstr "警察"
+
+#: src/poiCategories.js:159
+msgid "Libraries"
+msgstr "図書館"
+
+#: src/poiCategories.js:165
+msgid "Pharmacies"
+msgstr "薬局"
+
+#: src/poiCategories.js:171
+msgid "Recycling"
+msgstr "リサイクル施設・ボックス"
+
+#: src/poiCategories.js:176
+msgid "Toilets"
+msgstr "トイレ"
+
+#: src/poiCategories.js:182
+msgid "Wheelchair-accessible Toilets"
+msgstr "車いすで利用できるトイレ"
+
+#: src/poiCategories.js:188
+msgid "Baggage Lockers"
+msgstr "ロッカー"
+
+#: src/poiCategories.js:196
+msgid "Eating & Drinking"
+msgstr "食べ物と飲み物"
+
+#: src/poiCategories.js:200
+msgid "Restaurants"
+msgstr "レストラン"
+
+#: src/poiCategories.js:205
+msgid "Fast Food"
+msgstr "ファストフード"
+
+#: src/poiCategories.js:210
+msgid "Food Courts"
+msgstr "フードコート"
+
+#: src/poiCategories.js:215
+msgid "Pubs"
+msgstr "居酒屋"
+
+#: src/poiCategories.js:221
+msgid "Bars"
+msgstr "スナック、バー"
+
+#: src/poiCategories.js:226
+msgid "Cafes"
+msgstr "喫茶店"
+
+#: src/poiCategories.js:231
+msgid "Ice Cream"
+msgstr "アイスクリーム店"
+
+#: src/poiCategories.js:236
+msgid "Food, Snacks, and Beverage Machines"
+msgstr "食べ物、お菓子、飲み物の自動販売機"
+
+#: src/poiCategories.js:244
+msgid "Shopping"
+msgstr "店舗"
+
+#: src/poiCategories.js:248
+msgid "Supermarkets"
+msgstr "スーパーマーケット"
+
+#: src/poiCategories.js:254
+msgid "Convenience Stores"
+msgstr "コンビニ"
+
+#: src/poiCategories.js:259
+msgid "Shopping Malls"
+msgstr "ショッピングモール"
+
+#: src/poiCategories.js:265
+msgid "Clothes"
+msgstr "衣料品店"
+
+#: src/poiCategories.js:271
+msgid "Shoes"
+msgstr "靴屋"
+
+#: src/poiCategories.js:276
+msgid "Electronics"
+msgstr "電器屋"
+
+#: src/poiCategories.js:282
+msgid "Alcohol"
+msgstr "酒屋"
+
+#: src/poiCategories.js:288
+msgid "Bakeries"
+msgstr "パン屋"
+
+#: src/poiCategories.js:294
+msgid "Flowers"
+msgstr "花屋"
+
+#: src/poiCategories.js:299
+msgid "Gifts"
+msgstr "ギフトショップ"
+
+#: src/poiCategories.js:307
+msgid "Transportation"
+msgstr "交通関連"
+
+#: src/poiCategories.js:311
+msgid "Bus & Tram Stops"
+msgstr "バス停、電停"
+
+#: src/poiCategories.js:319
+msgid "Train & Subway Stations"
+msgstr "鉄道や地下鉄の駅"
+
+#: src/poiCategories.js:327
+msgid "Tickets"
+msgstr "切符、乗車券"
+
+#: src/poiCategories.js:335
+msgid "Parking"
+msgstr "駐車場"
+
+#: src/poiCategories.js:340
+msgid "Bicycle Parking"
+msgstr "駐輪場"
+
+#: src/poiCategories.js:345
+msgid "Bicycle Rental"
+msgstr "自転車レンタル"
+
+#: src/poiCategories.js:350
+msgid "Car Rental"
+msgstr "カーレンタル"
+
+#: src/poiCategories.js:355
+msgid "Fuel"
+msgstr "給油所、ガススタンド"
+
+#: src/poiCategories.js:360
+msgid "EV Charging"
+msgstr "EV充電施設"
+
+#: src/poiCategories.js:368
+msgid "Healthcare"
+msgstr "健康関連"
+
+#: src/poiCategories.js:372
+msgid "Clinics"
+msgstr "中規模医療施設"
+
+#: src/poiCategories.js:378
+msgid "Hospitals"
+msgstr "病院(入院可能)"
+
+#: src/poiCategories.js:384
+msgid "Dentists"
+msgstr "歯科医院"
+
+#: src/poiCategories.js:392
+msgid "Accommodation"
+msgstr "宿泊施設"
+
+#: src/poiCategories.js:396
+msgid "Hotels"
+msgstr "ホテル、旅館"
+
+#: src/poiCategories.js:401
+msgid "Hostels"
+msgstr "ユースホステル"
+
+#: src/poiCategories.js:406
+msgid "Bed & Breakfast"
+msgstr "民宿、ゲストハウス"
+
+#: src/poiCategories.js:411
+msgid "Campings"
+msgstr "キャンプ場"
+
+#: src/poiCategories.js:418
+msgid "Recreation"
+msgstr "レクレーション"
+
+#: src/poiCategories.js:422
+msgid "Parks"
+msgstr "公園"
+
+#: src/poiCategories.js:427
+msgid "Playgrounds"
+msgstr "子供の遊び場"
+
+#: src/poiCategories.js:432
+msgid "Beaches"
+msgstr "砂浜"
+
+#: src/poiCategories.js:437
+msgid "Nature Reserves"
+msgstr "自然保護区域"
+
+#: src/poiCategories.js:443
+msgid "Theme Parks"
+msgstr "テーマパーク、遊園地"
+
+#: src/poiCategories.js:448
+msgid "Theaters"
+msgstr "劇場"
+
+#: src/poiCategories.js:454
+msgid "Movie Theaters"
+msgstr "映画館"
+
+#: src/poiCategories.js:460
+msgid "Night Clubs"
+msgstr "ナイトクラブ、ディスコ"
+
+#: src/poiCategories.js:471
+msgid "Museums"
+msgstr "博物館"
+
+#: src/poiCategories.js:477
+msgid "Attractions"
+msgstr "観光地、観光名所"
+
+#: src/poiCategories.js:482
+msgid "Artworks"
+msgstr "パブリックアート"
+
+#: src/poiCategories.js:487
+msgid "Tourist Information"
+msgstr "ビジターセンター、観光案内所"
+
+#: src/poiCategories.js:494
+msgid "Sports"
+msgstr "スポーツ"
+
+#: src/poiCategories.js:498
+msgid "Gyms"
+msgstr "ジム"
+
+#: src/poiCategories.js:504
+msgid "Outdoor Gyms"
+msgstr "野外ジム"
+
+#: src/poiCategories.js:510
+msgid "Golf Courses"
+msgstr "ゴルフコース"
+
+#: src/printLayout.js:222
 #, javascript-format
 msgid "From %s to %s"
-msgstr ""
+msgstr "%s から %s へ"
 
-#: ../src/printOperation.js:48
+#: src/printOperation.js:46
 msgid "Loading map tiles for printing"
-msgstr ""
+msgstr "印刷のために地図タイルを読み込み中"
 
-#: ../src/printOperation.js:49
+#: src/printOperation.js:47
 msgid "You can abort printing if this takes too long"
-msgstr ""
+msgstr "時間がかかりすぎるならば印刷を中断できます"
 
-#: ../src/printOperation.js:51
+#: src/printOperation.js:50
 msgid "Abort printing"
-msgstr ""
+msgstr "印刷を中断"
 
-#: ../src/sendToDialog.js:179
-#, fuzzy
-#| msgid "Failed to parse Geo URI"
+#. Translators: this is add via location tooltip
+#: src/routeEntry.js:60
+msgid "Add via location"
+msgstr "経由地を追加"
+
+#: src/routeEntry.js:61
+msgid "From"
+msgstr "出発地点"
+
+#. Translators: this is remove via location tooltip
+#: src/routeEntry.js:71
+msgid "Remove via location"
+msgstr "経由地を削除"
+
+#: src/routeEntry.js:72
+msgid "Via"
+msgstr "経由地"
+
+#. Translators: this is reverse route tooltip
+#: src/routeEntry.js:78
+msgid "Reverse route"
+msgstr "逆ルート"
+
+#: src/routeEntry.js:79
+msgid "To"
+msgstr "目的地"
+
+#: src/searchBar.js:42
+msgid "Search"
+msgstr "検索"
+
+#. Translators: The first string is the name of the city, the
+#. second string is the name of the app to add it to
+#: src/sendToDialog.js:84
+#, javascript-format
+msgid "Add %s to %s"
+msgstr "%s を %s へ追加"
+
+#: src/sendToDialog.js:181
 msgid "Failed to open URI"
-msgstr "Geo URIの解析に失敗しました"
+msgstr "URIを開けませんでした"
 
-#: ../src/shapeLayer.js:92
+#: src/sendToDialog.js:246
+#, javascript-format
+msgid "Open with %s"
+msgstr "%s で開く"
+
+#: src/shapeLayer.js:109
 msgid "failed to load file"
-msgstr ""
+msgstr "ファイルを読めませんでした"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: ../src/sidebar.js:285
+#: src/sidebar.js:339
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "所要時間: %s"
 
-#. Translators: this a format string indicating arriving at the
-#. * destination of journey with the arrival address and transit
-#. * stop as the format parameter
-#: ../src/transitArrivalRow.js:56
+#: src/sidebar.js:409
 #, javascript-format
-msgid "Arrive at %s"
-msgstr ""
-
-#: ../src/transitArrivalRow.js:58
-msgid "Arrive"
-msgstr ""
+msgid "Itineraries provided by %s"
+msgstr "%s 提供の旅程"
 
 #. Translators: this is a format string indicating instructions
 #. * starting a journey at the address given as the parameter
 #.
-#: ../src/transitLegRow.js:74
+#: src/transit.js:39
 #, javascript-format
 msgid "Start at %s"
-msgstr ""
+msgstr "%s を出発"
 
 #. Translators: this indicates starting a journey at a location
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: ../src/transitLegRow.js:80
-#, fuzzy
-#| msgid "Start!"
+#: src/transit.js:45 src/transitplugins/motis2.js:314
+#: src/transitplugins/openTripPlanner2.js:236
 msgid "Start"
-msgstr "開始！"
-
-#: ../src/transitLegRow.js:108
-msgid "Show walking instructions"
-msgstr ""
-
-#: ../src/transitLegRow.js:109
-msgid "Hide walking instructions"
-msgstr ""
+msgstr "開始"
 
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
 #.
-#: ../src/transitLegRow.js:134
+#: src/transit.js:63
 #, javascript-format
 msgid "Walk %s"
-msgstr ""
+msgstr "%s 歩く"
 
-#: ../src/transitMoreRow.js:41
+#. Translators: this a format string indicating arriving at the
+#. * destination of journey with the arrival address and transit
+#. * stop as the format parameter
+#: src/transit.js:77
+#, javascript-format
+msgid "Arrive at %s"
+msgstr "%s に到着"
+
+#: src/transit.js:79 src/transitplugins/motis2.js:332
+#: src/transitplugins/openTripPlanner.js:1175
+#: src/transitplugins/openTripPlanner2.js:255
+msgid "Arrive"
+msgstr "到着"
+
+#: src/transitLegRow.js:70
+msgid "Show walking instructions"
+msgstr "徒歩案内を表示"
+
+#: src/transitLegRow.js:71
+msgid "Hide walking instructions"
+msgstr "徒歩案内を隠す"
+
+#: src/transitMoreRow.js:37
 msgid "Load earlier alternatives"
-msgstr ""
+msgstr "より早いルートを読み込み"
 
-#: ../src/transitMoreRow.js:43
+#: src/transitMoreRow.js:39
 msgid "Load later alternatives"
-msgstr ""
+msgstr "より遅いルートを読み込み"
+
+#: src/transitMoreRow.js:52
+msgid "No earlier alternatives found."
+msgstr "早いルートが見つかりませんでした。"
+
+#: src/transitMoreRow.js:54
+msgid "No later alternatives found."
+msgstr "遅いルートが見つかりませんでした。"
 
 #.
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: ../src/transitOptionsPanel.js:141
+#: src/transitOptionsPanel.js:136
 msgctxt "month-day-date"
 msgid "%b %e"
-msgstr ""
+msgstr "%b%e日"
+
+#: src/transitPlan.js:173
+msgid "No timetable data found for this route."
+msgstr "このルートの時刻表データがありません。"
+
+#: src/transitPlan.js:181
+msgid "No provider found for this route."
+msgstr "このルートのプロバイダーがありません。"
 
 #. Translators: this is a format string for showing a departure and
 #. * arrival time, like:
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: ../src/transitPlan.js:248
+#: src/transitPlan.js:302
 #, javascript-format
 msgid "%s – %s"
-msgstr ""
+msgstr "%s – %s"
 
 #. translators: this is an indication for a trip duration of
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: ../src/transitPlan.js:275
-#, fuzzy, javascript-format
-#| msgid "%f min"
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] "%f 分"
+#: src/transitPlan.js:337
+#, javascript-format
+msgid "%s minute"
+msgid_plural "%s minutes"
+msgstr[0] "%s 分"
 
 #. translators: this is an indication for a trip duration,
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: ../src/transitPlan.js:286
+#: src/transitPlan.js:349
 #, javascript-format
-msgid "%d hour"
-msgid_plural "%d hours"
-msgstr[0] ""
+msgid "%s hour"
+msgid_plural "%s hours"
+msgstr[0] "%s 時間"
 
 #. translators: this is an indication for a trip duration
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: ../src/transitPlan.js:292
+#: src/transitPlan.js:357
 #, javascript-format
-msgid "%d:%02d hour"
-msgid_plural "%d:%02d hours"
-msgstr[0] ""
+msgid "%s:%s hour"
+msgid_plural "%s:%s hours"
+msgstr[0] "%s:%s"
 
 #. Translators: this is a format string for showing a departure and
 #. * arrival time in a more compact manner to show in the instruction
@@ -1240,55 +2025,18 @@ msgstr[0] ""
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: ../src/transitPlan.js:611
+#: src/transitPlan.js:758
 #, javascript-format
 msgid "%s–%s"
-msgstr ""
+msgstr "%s–%s"
 
-#: ../src/translations.js:56
-msgid "around the clock"
-msgstr "24時間体制"
+#: src/translations.js:55
+msgid "Around the clock"
+msgstr "24時間営業"
 
-#: ../src/translations.js:58
-msgid "from sunrise to sunset"
+#: src/translations.js:57
+msgid "From sunrise to sunset"
 msgstr "日の出から日没まで"
-
-#. Translators:
-#. * This is a format string with two separate time ranges
-#. * such as "Mo-Fr 10:00-19:00 Sa 12:00-16:00"
-#. * The space between the format place holders could be
-#. * substituted with the appropriate separator.
-#.
-#: ../src/translations.js:77
-#, javascript-format
-msgctxt "time range list"
-msgid "%s %s"
-msgstr "%s %s"
-
-#. Translators:
-#. * This is a format string with three separate time ranges
-#. * such as "Mo-Fr 10:00-19:00 Sa 10:00-17:00 Su 12:00-16:00"
-#. * The space between the format place holders could be
-#. * substituted with the appropriate separator.
-#.
-#: ../src/translations.js:89
-#, javascript-format
-msgctxt "time range list"
-msgid "%s %s %s"
-msgstr "%s %s %s"
-
-#. Translators:
-#. * This is a format string consisting of a part specifying the days for
-#. * which the specified time is applied and the time interval
-#. * specification as the second argument.
-#. * The space between the format place holders could be substituted with
-#. * the appropriate separator or phrase and the ordering of the arguments
-#. * can be rearranged with the %n#s syntax.
-#: ../src/translations.js:120
-#, javascript-format
-msgctxt "time range component"
-msgid "%s %s"
-msgstr "%s %s"
 
 #. Translators:
 #. * This represents a format string consisting of two day interval
@@ -1299,7 +2047,7 @@ msgstr "%s %s"
 #. * place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: ../src/translations.js:152
+#: src/translations.js:123
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s"
@@ -1314,31 +2062,31 @@ msgstr "%s,%s"
 #. * %s place holder.
 #. * The separator (,) could be replaced with a translated variant or
 #. * a phrase if appropriate.
-#: ../src/translations.js:166
+#: src/translations.js:137
 #, javascript-format
 msgctxt "day interval list"
 msgid "%s,%s,%s"
 msgstr "%s,%s,%s"
 
-#: ../src/translations.js:185
-msgid "every day"
+#: src/translations.js:156
+msgid "Every day"
 msgstr "毎日"
 
 #. Translators:
 #. * This represents a range of days with a starting and ending day.
 #.
-#: ../src/translations.js:197
+#: src/translations.js:168
 #, javascript-format
 msgctxt "day range"
 msgid "%s-%s"
 msgstr "%s-%s"
 
-#: ../src/translations.js:208
-msgid "public holidays"
+#: src/translations.js:179
+msgid "Public holidays"
 msgstr "祝日"
 
-#: ../src/translations.js:210
-msgid "school holidays"
+#: src/translations.js:181
+msgid "School holidays"
 msgstr "学校休日"
 
 #. Translators:
@@ -1349,13 +2097,13 @@ msgstr "学校休日"
 #. * the translation. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: ../src/translations.js:250
+#: src/translations.js:221
 #, javascript-format
 msgctxt "time interval list"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: ../src/translations.js:264
+#: src/translations.js:235
 msgid "not open"
 msgstr "休業"
 
@@ -1366,81 +2114,555 @@ msgstr "休業"
 #. * translation as needed. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
 #.
-#: ../src/translations.js:279
+#: src/translations.js:250
 #, javascript-format
 msgctxt "time interval"
 msgid "%s-%s"
 msgstr "%s-%s"
 
-#. Translators:
-#. * This means a a place where you can plug in your laptop with ethernet.
-#.
-#: ../src/translations.js:345
-msgid "wired"
-msgstr ""
-
-#. Translators:
-#. * Like internet cafe or library where the computer is given.
-#.
-#: ../src/translations.js:350
-msgid "terminal"
-msgstr ""
-
-#. Translators:
-#. * This means there is personnel which helps you in case of problems.
-#.
-#: ../src/translations.js:355
-msgid "service"
-msgstr ""
+#: src/translations.js:287
+msgid "Bahá'í"
+msgstr "バハイ教"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:231
+#: src/utils.js:248
 msgid "Unknown"
 msgstr "不明"
 
 #. Translators: Accuracy of user location information
-#: ../src/utils.js:234
+#: src/utils.js:251
 msgid "Exact"
 msgstr "正確"
 
-#: ../src/utils.js:337
+#. Translators: this is a duration with only hours, using
+#. * an abbreviation for hours, corresponding to 'h' in English
+#.
+#: src/utils.js:307
 #, javascript-format
-msgid "%f h"
-msgstr "%f 時間"
+msgid "%s h"
+msgstr "%s 時間"
 
-#: ../src/utils.js:339
+#. Translators: this is a duration with hours and minutes parts
+#. * using abbreviations for hours and minutes, corresponding to 'h'
+#. * and 'min' in English. The minutes has appropriate plural variations
+#.
+#: src/utils.js:313
 #, javascript-format
-msgid "%f min"
-msgstr "%f 分"
+msgid "%s h %s min"
+msgid_plural "%s h %s min"
+msgstr[0] "%s 時間 %s 分"
 
-#: ../src/utils.js:341
+#. Translators: this is a duration with minutes part
+#. * using abbreviation for minutes, corresponding to 'min' in English
+#. * with appropriate plural variations
+#.
+#: src/utils.js:320
 #, javascript-format
-msgid "%f s"
-msgstr "%f 秒"
+msgid "%s min"
+msgid_plural "%s min"
+msgstr[0] "%s 分"
+
+#. Translators: this is a duration of less than one minute
+#. * with seconds using an abbreviation for seconds, corresponding to
+#. * 's' in English with appropriate plural forms
+#.
+#: src/utils.js:326
+#, javascript-format
+msgid "%s s"
+msgid_plural "%s s"
+msgstr[0] "%s 秒"
 
 #. Translators: This is a distance measured in kilometers
-#: ../src/utils.js:352
+#: src/utils.js:337
 #, javascript-format
-msgid "%f km"
-msgstr "%f km"
+msgid "%s km"
+msgstr "%s ㎞"
 
 #. Translators: This is a distance measured in meters
-#: ../src/utils.js:355
+#: src/utils.js:340
 #, javascript-format
-msgid "%f m"
-msgstr "%f m"
+msgid "%s m"
+msgstr "%s m"
 
 #. Translators: This is a distance measured in miles
-#: ../src/utils.js:363
+#: src/utils.js:348
 #, javascript-format
-msgid "%f mi"
-msgstr "%f マイル"
+msgid "%s mi"
+msgstr "%s mi"
 
 #. Translators: This is a distance measured in feet
-#: ../src/utils.js:366
+#: src/utils.js:351
 #, javascript-format
-msgid "%f ft"
-msgstr "%f フィート"
+msgid "%s ft"
+msgstr "%s ft"
+
+#: src/transitplugins/motis2.js:344
+#, javascript-format
+msgid "Take the stairs to level %s"
+msgstr "階段を %s へ"
+
+#: src/transitplugins/motis2.js:345
+msgid "Take the stairs"
+msgstr "階段を使う"
+
+#: src/transitplugins/motis2.js:349 src/transitplugins/openTripPlanner.js:1236
+#: src/transitplugins/openTripPlanner2.js:266
+#, javascript-format
+msgid "Continue on %s"
+msgstr "%s を続ける"
+
+#: src/transitplugins/motis2.js:354 src/transitplugins/openTripPlanner.js:1241
+#: src/transitplugins/openTripPlanner2.js:270
+#, javascript-format
+msgid "Turn left on %s"
+msgstr "%s を左折"
+
+#: src/transitplugins/motis2.js:355 src/transitplugins/openTripPlanner.js:1243
+#: src/transitplugins/openTripPlanner2.js:271
+msgid "Turn left"
+msgstr "左折"
+
+#: src/transitplugins/motis2.js:359 src/transitplugins/openTripPlanner.js:1246
+#: src/transitplugins/openTripPlanner2.js:275
+#, javascript-format
+msgid "Turn slightly left on %s"
+msgstr "%s を少し左折"
+
+#: src/transitplugins/motis2.js:360 src/transitplugins/openTripPlanner.js:1248
+#: src/transitplugins/openTripPlanner2.js:276
+msgid "Turn slightly left"
+msgstr "少し左折"
+
+#: src/transitplugins/motis2.js:364 src/transitplugins/openTripPlanner.js:1251
+#: src/transitplugins/openTripPlanner2.js:280
+#, javascript-format
+msgid "Turn sharp left on %s"
+msgstr "%s を急に左折"
+
+#: src/transitplugins/motis2.js:365 src/transitplugins/openTripPlanner.js:1253
+#: src/transitplugins/openTripPlanner2.js:281
+msgid "Turn sharp left"
+msgstr "急に左折"
+
+#: src/transitplugins/motis2.js:369 src/transitplugins/openTripPlanner.js:1256
+#: src/transitplugins/openTripPlanner2.js:284
+#, javascript-format
+msgid "Turn right on %s"
+msgstr "%s を右折"
+
+#: src/transitplugins/motis2.js:370 src/transitplugins/openTripPlanner.js:1258
+#: src/transitplugins/openTripPlanner2.js:285
+msgid "Turn right"
+msgstr "右折"
+
+#: src/transitplugins/motis2.js:374 src/transitplugins/openTripPlanner.js:1261
+#: src/transitplugins/openTripPlanner2.js:289
+#, javascript-format
+msgid "Turn slightly right on %s"
+msgstr "%s を少し右折"
+
+#: src/transitplugins/motis2.js:375 src/transitplugins/openTripPlanner.js:1263
+#: src/transitplugins/openTripPlanner2.js:290
+msgid "Turn slightly right"
+msgstr "少し右折"
+
+#: src/transitplugins/motis2.js:379 src/transitplugins/openTripPlanner.js:1266
+#: src/transitplugins/openTripPlanner2.js:294
+#, javascript-format
+msgid "Turn sharp right on %s"
+msgstr "%s を急に右折"
+
+#: src/transitplugins/motis2.js:380 src/transitplugins/openTripPlanner.js:1268
+#: src/transitplugins/openTripPlanner2.js:295
+msgid "Turn sharp right"
+msgstr "急に右折"
+
+#: src/transitplugins/motis2.js:387 src/transitplugins/openTripPlanner.js:1274
+#: src/transitplugins/openTripPlanner2.js:302
+#, javascript-format
+msgid "At the roundabout, take exit %s"
+msgstr "ラウンドアバウト %s を出る"
+
+#: src/transitplugins/motis2.js:390 src/transitplugins/openTripPlanner.js:1276
+#: src/transitplugins/openTripPlanner2.js:305
+#, javascript-format
+msgid "At the roundabout, take exit to %s"
+msgstr "ラウンダバウトで %s へ出口を出る"
+
+#: src/transitplugins/motis2.js:392 src/transitplugins/openTripPlanner.js:1278
+#: src/transitplugins/openTripPlanner2.js:307
+msgid "Take the roundabout"
+msgstr "ラウンドアバウトを進む"
+
+#: src/transitplugins/motis2.js:400 src/transitplugins/openTripPlanner.js:1282
+#: src/transitplugins/openTripPlanner2.js:315
+#, javascript-format
+msgid "Take the elevator and get off at %s"
+msgstr "エレベーターに乗って %s で降りる"
+
+#: src/transitplugins/motis2.js:401 src/transitplugins/openTripPlanner.js:1284
+#: src/transitplugins/openTripPlanner2.js:316
+msgid "Take the elevator"
+msgstr "エレベーターに乗る"
+
+#: src/transitplugins/motis2.js:405 src/transitplugins/openTripPlanner.js:1288
+#: src/transitplugins/openTripPlanner2.js:320
+#, javascript-format
+msgid "Make a left u-turn onto %s"
+msgstr "%s に左にUターン"
+
+#: src/transitplugins/motis2.js:406 src/transitplugins/openTripPlanner.js:1290
+#: src/transitplugins/openTripPlanner2.js:321
+msgid "Make a left u-turn"
+msgstr "左にUターン"
+
+#: src/transitplugins/motis2.js:410 src/transitplugins/openTripPlanner.js:1293
+#: src/transitplugins/openTripPlanner2.js:325
+#, javascript-format
+msgid "Make a right u-turn onto %s"
+msgstr "%s に右にUターン"
+
+#: src/transitplugins/motis2.js:411 src/transitplugins/openTripPlanner.js:1295
+#: src/transitplugins/openTripPlanner2.js:326
+msgid "Make a right u-turn"
+msgstr "右にUターン"
+
+#~ msgid "Map tile URL pattern"
+#~ msgstr "地図タイルの URL パターン"
+
+#~ msgid ""
+#~ "The URL pattern for the vector tile source to use. Note that the map "
+#~ "style relies on certain extensions compared to upstream Planetiler "
+#~ "OpenMapTiles Profile"
+#~ msgstr ""
+#~ "使用するベクタータイルソースの UR Lパターン。地図タイルは、上流の "
+#~ "Planetiler OpenMapTiles プロファイルと比較して、特定の拡張機能に依存してい"
+#~ "ることに注意。"
+
+#~ msgid "Units to show measurements in"
+#~ msgstr "距離を表示する探知"
+
+#~ msgid ""
+#~ "How to show measurements. ('system' uses default for system locale, "
+#~ "'metric' always show metric units, 'imperial' always show imperial units)."
+#~ msgstr ""
+#~ "距離をどう表示するか ('system' はシステムのロケールのデフォルトを使"
+#~ "用、'metric' は常にメートル法で表示、'imperial' は常にヤード・ポンド法で表"
+#~ "示)"
+
+#~ msgid "Measurement Units"
+#~ msgstr "単位系"
+
+#~ msgid "_System Default"
+#~ msgstr "システムのデフォルト(_S)"
+
+#~ msgid "_Metric"
+#~ msgstr "メートル法(_M)"
+
+#~ msgid "_Imperial"
+#~ msgstr "ヤード・ポンド法(_I)"
+
+#~ msgid "Walking"
+#~ msgstr "徒歩"
+
+#~ msgid "Cycling"
+#~ msgstr "自転車"
+
+#~ msgid "Driving"
+#~ msgstr "運転"
+
+#, javascript-format
+#~ msgid "Exit %s"
+#~ msgstr "%s 出口"
+
+#, javascript-format
+#~ msgctxt "coordinates"
+#~ msgid "%s, %s"
+#~ msgstr "%s, %s"
+
+#~ msgid ""
+#~ "You can even search for specific types of locations, such as “Pubs near "
+#~ "Main Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
+#~ msgstr ""
+#~ "特定のタイプにより検索することができます。場所の特定の種類による検索。"
+#~ "例:“Pubs near Main Street, Boston“ あるいは “Hotel near Alexanderplatz, "
+#~ "Berlin“"
+
+#~ msgid "Facebook check-in privacy setting"
+#~ msgstr "Facebookへチェックイン時のプライバシー設定"
+
+#~ msgid ""
+#~ "Latest used Facebook check-in privacy setting. Possible values are: "
+#~ "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
+#~ msgstr ""
+#~ "最新のFacebookのチェックイン時のプライバシー設定で指定可能な値: EVERYONE, "
+#~ "FRIENDS_OF_FRIENDS, ALL_FRIENDS, SELF"
+
+#~ msgid "Foursquare check-in privacy setting"
+#~ msgstr "Foursquareへチェックイン時のプライバシー設定"
+
+#~ msgid ""
+#~ "Latest used Foursquare check-in privacy setting. Possible values are: "
+#~ "public, followers or private."
+#~ msgstr ""
+#~ "最新のFoursquareのチェックイン時のプライバシー設定で指定可能な値: public, "
+#~ "followers, private"
+
+#~ msgid "Foursquare check-in Facebook broadcasting"
+#~ msgstr "FoursquareのチェックインをFacebookにも投稿する"
+
+#~ msgid ""
+#~ "Indicates if Foursquare should broadcast the check-in as a post in the "
+#~ "Facebook account associated with the Foursquare account."
+#~ msgstr ""
+#~ "FacebookアカウントがFoursquareアカウントに関連付けられている場合、"
+#~ "FoursquareのチェックインをFacebookにも投稿するかどうかの設定です。"
+
+#~ msgid "Foursquare check-in Twitter broadcasting"
+#~ msgstr "FoursquareのチェックインをTwitterにも投稿する"
+
+#~ msgid ""
+#~ "Indicates if Foursquare should broadcast the check-in as a tweet in the "
+#~ "Twitter account associated with the Foursquare account."
+#~ msgstr ""
+#~ "TwitterアカウントがFoursquareアカウントに関連付けられている場合、"
+#~ "FoursquareのチェックインをTwitterにも投稿するかどうかの設定です。"
+
+#~ msgid "Night mode"
+#~ msgstr "ナイトモード"
+
+#~ msgid "Whether the application is in night mode."
+#~ msgstr "アプリケーションがナイトモードかどうか"
+
+#~ msgid "Post on Facebook"
+#~ msgstr "Facebookに投稿"
+
+#~ msgid "Post on Twitter"
+#~ msgstr "Twitterに投稿"
+
+#~ msgid "C_heck in"
+#~ msgstr "チェックイン(_H)"
+
+#~ msgid "Everyone"
+#~ msgstr "誰でも"
+
+#~ msgid "Friends of friends"
+#~ msgstr "友達の友達まで"
+
+#~ msgid "Just friends"
+#~ msgstr "友達のみ"
+
+#~ msgid "Just me"
+#~ msgstr "自分のみ"
+
+#~ msgid "Public"
+#~ msgstr "公開"
+
+#~ msgid "Private"
+#~ msgstr "プライベート"
+
+#~ msgid "What’s here?"
+#~ msgstr "ここはどこ?"
+
+#~ msgid "Include route and markers"
+#~ msgstr "ルートとマーカーを含む"
+
+#~ msgid "Go to current location"
+#~ msgstr "現在の位置へ移動します"
+
+#~ msgid "Choose map type"
+#~ msgstr "地図の種類を選択"
+
+#~ msgid "Zoom in"
+#~ msgstr "ズームイン"
+
+#~ msgid "Night Mode"
+#~ msgstr "ナイトモード"
+
+#~ msgid "Maps is offline!"
+#~ msgstr "地図はオフラインです。"
+
+#~ msgid ""
+#~ "Maps need an active internet connection to function properly, but one "
+#~ "can’t be found."
+#~ msgstr ""
+#~ "このアプリケーションが適切に機能するためにインターネット接続が必要ですが見"
+#~ "つかりませんでした。"
+
+#~ msgid "Check your connection and proxy settings."
+#~ msgstr "インターネット接続とプロキシの設定を確認してください。"
+
+#~ msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
+#~ msgstr ""
+#~ "<span weight=\"bold\" size=\"x-large\">地図編集のためのサインイン</span>"
+
+#~ msgid "Password"
+#~ msgstr "パスワード"
+
+#~ msgid "Sign up"
+#~ msgstr "サインアップ"
+
+#~ msgid ""
+#~ "Sorry, that didn’t work. Please try again, or visit\n"
+#~ "<a href=\"https://www.openstreetmap.org/user/forgot-"
+#~ "password\">OpenStreetMap</a> to reset your password."
+#~ msgstr ""
+#~ "申しわけありません。動作しません。もう一度試すか、\n"
+#~ "<a href=“https://www.openstreetmap.org/user/forgot-"
+#~ "password”>OpenStreetMap</a>を訪問してパスワードをリセットしてください。"
+
+#~ msgid "Enter verification code shown above"
+#~ msgstr "上記の認証コードを入力"
+
+#~ msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
+#~ msgstr "<span weight=\"bold\" size=\"x-large\">サインイン済み</span>"
+
+#~ msgid "Comment"
+#~ msgstr "コメント"
+
+#~ msgctxt "dialog title"
+#~ msgid "Edit on OpenStreetMap"
+#~ msgstr "OpenStreetMap で編集"
+
+#~ msgid "Next"
+#~ msgstr "次"
+
+#~ msgid "Drag to change order of the route"
+#~ msgstr "ルートの順序をドラッグで変更"
+
+#~ msgid "Check In…"
+#~ msgstr "チェックイン…"
+
+#~ msgid "_Open"
+#~ msgstr "開く(_O)"
+
+#~ msgid "Select an account"
+#~ msgstr "アカウントの選択"
+
+#~ msgid ""
+#~ "Maps cannot find the place to check in to with Facebook. Please select "
+#~ "one from this list."
+#~ msgstr ""
+#~ "Facebookでチェックインする場所を見つけることができませんでした。次のリスト"
+#~ "から1つ選択してください。"
+
+#~ msgid ""
+#~ "Maps cannot find the place to check in to with Foursquare. Please select "
+#~ "one from this list."
+#~ msgstr ""
+#~ "Foursquareでチェックインする場所を見つけることができませんでした。次のリス"
+#~ "トから1つ選択してください。"
+
+#, javascript-format
+#~ msgid "Check in to %s"
+#~ msgstr "%sへチェックイン"
+
+#, javascript-format
+#~ msgid "Write an optional message to check in to %s."
+#~ msgstr "%sへチェックイン時に添えるコメントを書きます。"
+
+#, javascript-format
+#~ msgid "Cannot find “%s” in the social service"
+#~ msgstr "ソーシャルサービスにて \"%s\" を見つけることができません"
+
+#~ msgid "Cannot find a suitable place to check-in in this location"
+#~ msgstr ""
+#~ "この場所にチェックインするために適切な場所を見つけることができません"
+
+#~ msgid ""
+#~ "Credentials have expired, please open Online Accounts to sign in and "
+#~ "enable this account"
+#~ msgstr ""
+#~ "認証情報が失効しました。オンラインアカウント設定を開き、再度アカウントを認"
+#~ "証してください"
+
+#~ msgid "A map application for GNOME"
+#~ msgstr "GNOME 向け地図アプリケーション"
+
+#~ msgid "This is not a valid URL. Make sure to include http:// or https://."
+#~ msgstr ""
+#~ "これは正しいURLではありあせん。http:// または https:// が含まれていること"
+#~ "を確認してください。"
+
+#, fuzzy
+#~| msgid "Select a place"
+#~ msgid "Select Type"
+#~ msgstr "場所の選択"
+
+#~ msgid "Quit"
+#~ msgstr "終了"
+
+#~ msgid "Open with another application"
+#~ msgstr "別のアプリケーションで開く"
+
+#~ msgid "Check in here"
+#~ msgstr "ここにチェックイン"
+
+#, fuzzy
+#~| msgid "Don't have an account?"
+#~ msgid "Don’t have an account?"
+#~ msgstr "アカウントをお持ちでありませんか?"
+
+#~ msgid "Press enter to search"
+#~ msgstr "Enterキーを押すと検索します"
+
+#, fuzzy
+#~| msgid "Route search by GraphHopper"
+#~ msgid "Route search by OpenTripPlanner"
+#~ msgstr "GraphHopperによるルート検索"
+
+#, fuzzy
+#~| msgid "Population: %s"
+#~ msgid "Population:"
+#~ msgstr "人口: %s"
+
+#, fuzzy
+#~| msgid "Opening hours: %s"
+#~ msgid "Opening hours:"
+#~ msgstr "営業時間: %s"
+
+#, fuzzy
+#~| msgid "Wheelchair access: %s"
+#~ msgid "Wheelchair access:"
+#~ msgstr "車いすでのアクセス: %s"
+
+#~ msgid "yes"
+#~ msgstr "可能"
+
+#~ msgid "limited"
+#~ msgstr "制限あり"
+
+#~ msgid "no"
+#~ msgstr "困難"
+
+#~ msgid "designated"
+#~ msgstr "車いす専用"
+
+#~ msgctxt "time range list"
+#~ msgid "%s %s"
+#~ msgstr "%s %s"
+
+#~ msgctxt "time range component"
+#~ msgid "%s %s"
+#~ msgstr "%s %s"
+
+#~ msgid "%f h"
+#~ msgstr "%f 時間"
+
+#~ msgid "%f s"
+#~ msgstr "%f 秒"
+
+#~ msgid "%f km"
+#~ msgstr "%f km"
+
+#~ msgid "%f m"
+#~ msgstr "%f m"
+
+#~ msgid "%f mi"
+#~ msgstr "%f マイル"
+
+#~ msgid "%f ft"
+#~ msgstr "%f フィート"
 
 #~ msgid "Country code: %s"
 #~ msgstr "国コード: %s"
@@ -1463,12 +2685,6 @@ msgstr "%f フィート"
 
 #~ msgid "I’m here!"
 #~ msgstr "私はここにいます!"
-
-#~ msgid "To"
-#~ msgstr "目的地"
-
-#~ msgid "From"
-#~ msgstr "出発地点"
 
 #~ msgid " km<sup>2</sup>"
 #~ msgstr " km<sup>2</sup>"
