@@ -435,6 +435,11 @@ export class PlaceEntry extends Gtk.Entry {
         this.text = '';
         this.grab_focus();
     }
+
+    vfunc_size_allocate(width, height, baseline) {
+        super.vfunc_size_allocate(width, height, baseline);
+        this._popover.present();
+    }
 }
 
 GObject.registerClass({
