@@ -373,6 +373,7 @@ export const DEFS = {
                 cycle_barrier: ["gate-symbolic", "traffix", 17, 0.75],
                 gate: ["gate-symbolic", "traffic", 17, 0.75],
                 lift_gate: ["gate-symbolic", "traffic", 17, 0.75],
+                toll_booth: ["money-symbolic", "traffic", 17, 0.75],
             },
             building: {
                 railway_station: ["train-symbolic", "transport", 16],
