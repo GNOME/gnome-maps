@@ -380,7 +380,9 @@ export const DEFS = {
                 _: ["building-symbolic", "generic", 16],
             },
             highway: {
+                bus_guideway: ["bus-symbolic", "transport", 16],
                 bus_stop: ["bus-symbolic", "transport", 16],
+                busway: ["bus-symbolic", "transport", 16],
                 cycleway: ["cycling-symbolic", "transport", 16],
                 footway: ["walking-symbolic", "transport", 16],
                 pedestrian: ["walking-symbolic", "transport", 16],
