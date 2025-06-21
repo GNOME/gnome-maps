@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2025-05-16 21:37+0000\n"
-"PO-Revision-Date: 2025-05-29 00:57+0300\n"
+"POT-Creation-Date: 2025-06-18 20:52+0000\n"
+"PO-Revision-Date: 2025-06-21 17:00+0300\n"
 "Last-Translator: Yuras Shumovich <shumovichy@gmail.com>\n"
 "Language-Team: Belarusian\n"
 "Language: be_BY\n"
@@ -548,15 +548,15 @@ msgstr "Адправіць"
 msgid "None"
 msgstr "Няма"
 
-#: data/ui/place-popover.ui:23 src/searchBar.js:69
+#: data/ui/place-popover.ui:25 src/searchBar.js:69
 msgid "Explore Nearby Places"
 msgstr "Агляд месцаў побач"
 
-#: data/ui/place-popover.ui:78 src/application.js:294
+#: data/ui/place-popover.ui:82 src/application.js:294
 msgid "No results found"
 msgstr "Нічога не знойдзена"
 
-#: data/ui/place-popover.ui:88 src/application.js:272
+#: data/ui/place-popover.ui:92 src/application.js:272
 msgid "An error has occurred"
 msgstr "Узнікла памылка"
 
@@ -727,7 +727,7 @@ msgid "Edit on OpenStreetMap"
 msgstr "Рэдагаваць у OpenStreetMap"
 
 #. Translators: This is a tooltip
-#: data/ui/place-view.ui:59
+#: data/ui/place-view.ui:60
 msgid "Share location"
 msgstr "Абагуліць месцазнаходжанне"
 
@@ -1007,11 +1007,11 @@ msgstr "Час працы"
 msgid "Phone"
 msgstr "Тэлефон"
 
-#: src/osmEditDialog.js:151 src/placeView.js:344
+#: src/osmEditDialog.js:151 src/placeView.js:360
 msgid "Email"
 msgstr "Электронная пошта"
 
-#: src/osmEditDialog.js:158 src/placeView.js:311
+#: src/osmEditDialog.js:158 src/placeView.js:327
 msgid "Website"
 msgstr "Вэб-сайт"
 
@@ -1068,7 +1068,7 @@ msgstr "Рознае"
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:197 src/osmEditDialog.js:804 src/placeView.js:796
+#: src/osmEditDialog.js:197 src/osmEditDialog.js:804 src/placeView.js:815
 msgid "Wikipedia"
 msgstr "Вікіпедыя"
 
@@ -1078,11 +1078,11 @@ msgstr "Вікіпедыя"
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:204 src/placeView.js:545
+#: src/osmEditDialog.js:204 src/placeView.js:561
 msgid "Population"
 msgstr "Насельніцтва"
 
-#: src/osmEditDialog.js:209 src/placeView.js:574
+#: src/osmEditDialog.js:209 src/placeView.js:590
 msgid "Altitude"
 msgstr "Вышыня над узроўнем мора"
 
@@ -1342,6 +1342,35 @@ msgstr "Турызм"
 msgid "Other"
 msgstr "Іншае"
 
+#: src/osmTypes.js:209
+msgid "Funicular station"
+msgstr "Станцыя фунікулёра"
+
+# Лёгкарэйкавы прырынак
+#: src/osmTypes.js:211
+msgid "Light rail stop"
+msgstr "Прыпынак лёгкарэйкавага транспарту"
+
+#: src/osmTypes.js:213
+msgid "Monorail station"
+msgstr "Манарэйкавая станцыя"
+
+#: src/osmTypes.js:215 src/osmTypes.js:225
+msgid "Railway station"
+msgstr "Чыгуначная станцыя"
+
+#: src/osmTypes.js:217
+msgid "Subway station"
+msgstr "Станцыя метро"
+
+#: src/osmTypes.js:221
+msgid "Railway halt"
+msgstr "Паўстанак"
+
+#: src/osmTypes.js:223
+msgid "Tram stop"
+msgstr "Прыпынак трамвая"
+
 #: src/photonUtils.js:118 src/placeListRow.js:70
 msgid "Unnamed place"
 msgstr "Неназванае месца"
@@ -1358,7 +1387,7 @@ msgstr "Не ўдалося прааналізаваць Geo URI"
 msgid "Failed to parse Maps URI"
 msgstr "Не ўдалося прааналізаваць URI карты"
 
-#: src/placeFormatter.js:57 src/placeView.js:223 src/placeView.js:297
+#: src/placeFormatter.js:57 src/placeView.js:223 src/placeView.js:313
 msgid "Coordinates"
 msgstr "Каардынаты"
 
@@ -1376,12 +1405,12 @@ msgctxt "short distance format string"
 msgid "< %s"
 msgstr "< %s"
 
-#: src/placeView.js:303
+#: src/placeView.js:319
 msgid "Accuracy"
 msgstr "Дакладнасць"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:306
+#: src/placeView.js:322
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Дакладнасць: %s"
@@ -1392,7 +1421,7 @@ msgstr "Дакладнасць: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:325
+#: src/placeView.js:341
 msgid "Phone number"
 msgstr "Нумар тэлефона"
 
@@ -1403,16 +1432,16 @@ msgstr "Нумар тэлефона"
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
 #.
-#: src/placeView.js:359 src/placeView.js:398
+#: src/placeView.js:375 src/placeView.js:414
 msgid "Floor"
 msgstr "Паверх"
 
-#: src/placeView.js:361
+#: src/placeView.js:377
 #, javascript-format
 msgid "Floor %s"
 msgstr "%s паверх"
 
-#: src/placeView.js:373
+#: src/placeView.js:389
 msgid "At ground level"
 msgstr "На ўзроўні зямлі"
 
@@ -1421,7 +1450,7 @@ msgstr "На ўзроўні зямлі"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:382
+#: src/placeView.js:398
 #, javascript-format
 msgid "%s floor above ground level"
 msgid_plural "%s floors above ground level"
@@ -1434,7 +1463,7 @@ msgstr[2] "%s паверхаў вышэй за ўзровень зямлі"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:393
+#: src/placeView.js:409
 #, javascript-format
 msgid "%s floor below ground level"
 msgid_plural "%s floors below ground level"
@@ -1446,7 +1475,7 @@ msgstr[2] "%s паверхаў ніжэй за ўзровень зямлі"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:411
+#: src/placeView.js:427
 msgid "Offers takeout"
 msgstr "Прапануе ежу на вынас"
 
@@ -1454,7 +1483,7 @@ msgstr "Прапануе ежу на вынас"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:419
+#: src/placeView.js:435
 msgid "Does not offer takeout"
 msgstr "Не прапануе ежу на вынас"
 
@@ -1463,18 +1492,18 @@ msgstr "Не прапануе ежу на вынас"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:428
+#: src/placeView.js:444
 msgid "Only offers takeout"
 msgstr "Прапануе толькі ежу на вынас"
 
-#: src/placeView.js:435
+#: src/placeView.js:451
 msgid "Opening hours"
 msgstr "Час працы"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:445
+#: src/placeView.js:461
 msgid "Public internet access"
 msgstr "Публічны доступ да інтэрнэту"
 
@@ -1482,50 +1511,50 @@ msgstr "Публічны доступ да інтэрнэту"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:454
+#: src/placeView.js:470
 msgid "No internet access"
 msgstr "Няма доступу да інтэрнэту"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:462
+#: src/placeView.js:478
 msgid "Public Wi-Fi"
 msgstr "Агульнадаступны Wi-Fi"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:470
+#: src/placeView.js:486
 msgid "Wired internet access"
 msgstr "Правадны доступ да інтэрнэту"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:478
+#: src/placeView.js:494
 msgid "Computers available for use"
 msgstr "Даступна карыстанне камп'ютарам"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:486
+#: src/placeView.js:502
 msgid "Internet assistance available"
 msgstr "Даступна дапамога з інтэрнэтам"
 
-#: src/placeView.js:492
+#: src/placeView.js:508
 msgid "No toilets available"
 msgstr "Туалетаў няма"
 
-#: src/placeView.js:495
+#: src/placeView.js:511
 msgid "Toilets available"
 msgstr "Туалеты ёсць"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:504
+#: src/placeView.js:520
 msgid "Wheelchair accessible"
 msgstr "Даступна для інвалідных калясак"
 
@@ -1534,7 +1563,7 @@ msgstr "Даступна для інвалідных калясак"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:514
+#: src/placeView.js:530
 msgid "Limited wheelchair accessibility"
 msgstr "Абмежаваная даступнасць для інвалідных калясак"
 
@@ -1542,7 +1571,7 @@ msgstr "Абмежаваная даступнасць для інвалідны�
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:523
+#: src/placeView.js:539
 msgid "Not wheelchair accessible"
 msgstr "Недаступна для інвалідных калясак"
 
@@ -1551,7 +1580,7 @@ msgstr "Недаступна для інвалідных калясак"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:533
+#: src/placeView.js:549
 msgid "Designated for wheelchair users"
 msgstr "Прыстасавана для людзей на інваліднай калясцы"
 
@@ -1560,7 +1589,7 @@ msgstr "Прыстасавана для людзей на інваліднай �
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:564
+#: src/placeView.js:580
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s ніжэй за ўзровень мора"
@@ -1569,17 +1598,17 @@ msgstr "%s ніжэй за ўзровень мора"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:571
+#: src/placeView.js:587
 msgid "At sea level"
 msgstr "На ўзроўні мора"
 
-#: src/placeView.js:583
+#: src/placeView.js:599
 msgid "Religion:"
 msgstr "Рэлігія:"
 
 # ?З'езд на %s
 #. Translators: This refers to motorway junction exit (freeway exit)
-#: src/placeView.js:588
+#: src/placeView.js:604
 #, javascript-format
 msgid "Exit %s"
 msgstr "З'езд %s"
@@ -1589,21 +1618,19 @@ msgstr "З'езд %s"
 #.
 #: src/place.js:298
 #, javascript-format
-#| msgctxt "time interval list"
-#| msgid "%s, %s"
 msgctxt "coordinates"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/place.js:632
+#: src/place.js:644
 msgid "Place not found in OpenStreetMap"
 msgstr "Месца не знойдзена на OpenStreetMap"
 
-#: src/place.js:639
+#: src/place.js:651
 msgid "Coordinates in URL are not valid"
 msgstr "Каардынаты ў URL несапраўдныя"
 
-#: src/place.js:648
+#: src/place.js:660
 msgid "URL is not supported"
 msgstr "URL не падтрымліваецца"
 
