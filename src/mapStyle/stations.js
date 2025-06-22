@@ -24,6 +24,13 @@ const DE_U_S_BAHN = {
   }
 };
 
+// generic defintion for (some) Italian metro networks
+const IT_METRO = {
+  railway: {
+    subway: "italy-m"
+  }
+};
+
 // generic defintion for South Korean metro networks
 const KR_METRO = {
   railway: {
@@ -71,6 +78,8 @@ const STATION_ICONS = {
       _: "boston-t"
     }
   },
+  // Metropolitana di Brescia
+  Q3644334: IT_METRO,
   // Brussels (STIB)
   Q114957008: {
     railway: {
@@ -81,6 +90,12 @@ const STATION_ICONS = {
   Q51972: {
     railway: {
       subway: "south-korea-m"
+    }
+  },
+  // Metropolitana di Catania
+  Q239927: {
+    railway: {
+      subway: "catania-m"
     }
   },
   // Copenhagen Metro
@@ -95,6 +110,8 @@ const STATION_ICONS = {
   Q624200: KR_METRO,
   // Frankfurt (RMV)
   Q314042: DE_U_S_BAHN,
+  // Metropolitana di Genova
+  Q295335: IT_METRO,
   // Glasgow subway
   Q506290: {
     railway: {
@@ -105,6 +122,12 @@ const STATION_ICONS = {
   Q495335: KR_METRO,
   // Hamburg (HVV)
   Q896916: DE_U_S_BAHN,
+  // Helsingin metro
+  Q473211: {
+    railway: {
+      subway: "helsinki-m"
+    }
+  },
   // Hong Kong MTR
   Q14751: {
     railway: {
@@ -167,8 +190,12 @@ const STATION_ICONS = {
       station: "madrid-c"
     }
   },
+  // Metropolitana di Milano
+  Q65125405: IT_METRO,
   // München
   Q259000: DE_U_S_BAHN,
+  // Metropolitana di Napoli
+  Q747184: IT_METRO,
   // Nürnberg
   Q2516463: DE_U_S_BAHN,
   // NYC Subway
@@ -195,6 +222,8 @@ const STATION_ICONS = {
       subway: "prague-m"
     }
   },
+  // Metropolitana di Roma
+  Q530087: IT_METRO,
   // Metro de Santiago
   Q913314: {
     railway: {
@@ -233,6 +262,8 @@ const STATION_ICONS = {
       subway: "tbilisi-m"
     }
   },
+  // Metropolitana di Torino
+  Q135001237: IT_METRO,
   // Vienna (U-Bahn)
   Q209400: {
     railway: {
