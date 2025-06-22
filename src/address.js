@@ -100,6 +100,7 @@ export function streetAddressForCountryCode(streetName, housenumber,
         case 'PK': return `${housenumber}, ${streetName}`;
         case 'PL': return `${streetName} ${housenumber}`;
         case 'PT': return `${streetName} ${housenumber}`;
+        case 'PY': return `${streetName} ${housenumber}`;
         case 'RO': return `${streetName}, nr. ${housenumber}`;
         case 'RS': return `${streetName} ${housenumber}`;
         case 'RU': return `${streetName}, д. ${housenumber}`;
