@@ -310,8 +310,6 @@ export class OSMEditDialog extends Adw.Dialog {
         this._recentTypeRows = [];
 
         if (addLocation) {
-            this._editorStatusPage.title = C_("dialog heading", "Add Location");
-
             /* the OSMObject ID, version, and changeset ID is unknown for now */
             let newNode = GnomeMaps.OSMNode.new(0, 0, 0, longitude, latitude);
             this._loadOSMData(newNode);
@@ -319,8 +317,8 @@ export class OSMEditDialog extends Adw.Dialog {
             this._osmType = GeocodeGlib.PlaceOsmType.NODE;
 
             // set the title and description for adding a POI
-            this._editorStatusPage.title = _("Add Location"),
-            this._editorStatusPage.description = _("Add a new location to OpenStreetMap")
+            this._navigationPage.title = C_("dialog heading", "Add Location");
+            this._preferencesPage.description = _("Add a new location to OpenStreetMap");
         } else {
             this._osmType = place.osmType;
             Application.osmEdit.fetchObject(place,
@@ -940,7 +938,7 @@ export class OSMEditDialog extends Adw.Dialog {
                 }
             }
 
-            this._groupsContainer.append(group);
+            this._preferencesPage.add(group);
         }
 
         this._navigationView.replace_with_tags(['editor']);
@@ -974,8 +972,7 @@ GObject.registerClass({
     },
     InternalChildren: ['navigationView',
                        'continueButton',
-                       'editorStatusPage',
-                       'groupsContainer',
+                       'preferencesPage',
                        'shopButton',
                        'placeButton',
                        'tourismButton',
@@ -990,6 +987,7 @@ GObject.registerClass({
                        'uploadNotesTextview',
                        'overlay',
                        'noneRow',
-                       'recentTypesList'],
+                       'recentTypesList',
+                       'navigationPage'],
 }, OSMEditDialog);
 
