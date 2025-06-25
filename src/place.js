@@ -391,7 +391,8 @@ export class Place extends GObject.Object {
         if (osmTags) {
             const tag = [
                 'place', 'amenity', 'leisure', 'shop', 'tourism', 'highway',
-                'railway', 'aeroway', 'office', 'building', 'historic', 'barrier'
+                'railway', 'aeroway', 'office', 'building', 'historic', 'barrier',
+                'landuse'
             ].find(key => key in osmTags);
 
             if (tag)
