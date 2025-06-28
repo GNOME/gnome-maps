@@ -30,6 +30,7 @@ import {Location} from './location.js';
 import * as OSMNames from './osmNames.js';
 import {Overpass} from './overpass.js';
 import * as PlaceIcons from './placeIcons.js';
+import {spriteSource} from './mapSource.js';
 import * as URIS from './uris.js';
 import * as Utils from './utils.js';
 
@@ -380,6 +381,24 @@ export class Place extends GObject.Object {
 
     get hiraganaName() {
         return this.osmTags?.['name:ja-Hira'];
+    }
+
+    /**
+     * Gets an array of objects with {shield, name, network, ref}
+     * from the route_x_[network|ref] tags
+     */
+    get routes() {
+        return [1, 2, 3, 4, 5].map(i => {
+                                   const network =
+                                    this.osmTags?.['route_' + i + '_network'] ?? '';
+
+                                   return { shield:  spriteSource.get_shield_for_network(network),
+                                            name:    this.osmTags?.['route_' + i + '_name'],
+                                            network: network,
+                                            ref:     this.osmTags?.['route_' + i + '_ref']
+                                           }
+                                   })
+                              .filter(e => e.shield);
     }
 
     /**
