@@ -383,6 +383,20 @@ export class Place extends GObject.Object {
     }
 
     /**
+     * Gets an object with {name, network, ref}
+     * from the route_x_[network|ref] tags
+     */
+    get routes() {
+        return [1, 2, 3, 4, 5].map(i => {
+                                   return { name:    this.osmTags['route_' + i + '_name'],
+                                            network: this.osmTags['route_' + i + '_network'],
+                                            ref:     this.osmTags['route_' + i + '_ref']
+                                           }
+                                    })
+                              .filter(e => e.network);
+    }
+
+    /**
      * Most important OSM tag for the place ('amenity', 'shop', and so on).
      */
     get osmKey() {
