@@ -87,7 +87,7 @@ export class Overpass {
                 let element = jsonObj?.elements?.[0];
 
                 if (element) {
-                    place.osmTags = element.tags;
+                    place.osmTags = {...place.osmTags, ...element.tags};
                     callback(true);
                 } else {
                     Utils.debug('No element in Overpass result');
