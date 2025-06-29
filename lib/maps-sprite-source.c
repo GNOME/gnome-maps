@@ -267,3 +267,16 @@ maps_sprite_source_load_shield_defs (MapsSpriteSource *self, const char *json)
         }
     }
 }
+
+/**
+ * maps_sprite_source_get_shield_for_network:
+ * @self: a [class@MapsSpriteSource]
+ * @network_name: network name
+ * @returns: (transfer none): a [class@MapsShield]
+ */
+MapsShield *
+maps_sprite_source_get_shield_for_network (MapsSpriteSource *self,
+                                           const char *network_name)
+{
+  return g_hash_table_lookup (self->shields, network_name);
+}

@@ -32,4 +32,7 @@ void maps_sprite_source_set_fallback (MapsSpriteSource *self, ShumateVectorSprit
 
 void maps_sprite_source_load_shield_defs (MapsSpriteSource *self, const char *json);
 
+MapsShield *maps_sprite_source_get_shield_for_network (MapsSpriteSource *self,
+                                                       const char *network_name);
+
 G_END_DECLS
