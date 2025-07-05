@@ -645,7 +645,8 @@ export class MapView extends Gtk.Overlay {
         for (const key of symbol.get_keys()) {
             if (key.startsWith("osm:")) {
                 osmTags[key.slice("osm:".length)] = symbol.get_tag(key);
-            } else if (key === "name" || key.startsWith("name:")) {
+            } else if (key === "name" || key.startsWith("name:") ||
+                       key.startsWith("route_")) {
                 osmTags[key] = symbol.get_tag(key);
             }
         }
