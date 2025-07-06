@@ -32,7 +32,7 @@
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkBox">
-                    <property name="spacing">12</property>
+                    <property name="spacing">6</property>
                     <child>
                       <object class="GtkImage" id="label-icon">
                         <property name="visible">False</property>
@@ -40,9 +40,15 @@
                       </object>
                     </child>
                     <child>
+                      <object class="GtkImage" id="secondary-label-icon">
+                        <property name="visible">False</property>
+                        <property name="valign">center</property>
+                      </object>
+                    </child>
+                    <child>
                       <object class="GtkLabel" id="label-title">
                         <property name="halign">start</property>
-                        <property name="valign">end</property>
+                        <property name="valign">center</property>
                         <property name="hexpand">True</property>
                         <property name="wrap">True</property>
                         <property name="wrap-mode">PANGO_WRAP_WORD_CHAR</property>
@@ -88,10 +94,16 @@
                     <child>
                       <object class="GtkImage" id="source-icon">
                         <property name="icon-name">layers-button-symbolic</property>
-                        <property name="valign">start</property>
+                        <property name="valign">center</property>
                         <style>
                           <class name="dim-label"/>
                         </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImage" id="secondary-source-icon">
+                        <property name="visible">False</property>
+                        <property name="valign">center</property>
                       </object>
                     </child>
                     <child>
