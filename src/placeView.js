@@ -31,6 +31,7 @@ import Xdp from 'gi://Xdp';
 const Format = imports.format;
 
 import {Application} from './application.js';
+import * as Gfx from './gfx.js';
 import {Overpass} from './overpass.js';
 import { getTypeNameForPlace } from './osmTypes.js';
 import {Place} from './place.js';
@@ -69,8 +70,10 @@ export class PlaceView extends Gtk.Box {
                                                    'thumbnail-separator',
                                                    'label-title',
                                                    'label-icon',
+                                                   'secondary-label-icon',
                                                    'native-name',
                                                    'source-icon',
+                                                   'secondary-source-icon',
                                                    'source-label',
                                                    'source-box',
                                                    'address-label',
@@ -81,8 +84,10 @@ export class PlaceView extends Gtk.Box {
                                                    'title-box' ]);
         this._title = ui.labelTitle;
         this._icon = ui.labelIcon;
+        this._secondaryIcon = ui.secondaryLabelIcon;
         this._nativeName = ui.nativeName;
         this._sourceIcon = ui.sourceIcon;
+        this._secondarySourceIcon = ui.secondarySourceIcon;
         this._sourceLabel = ui.sourceLabel;
         this._sourceBox = ui.sourceBox;
         this._thumbnail = ui.bubbleThumbnail;
@@ -194,6 +199,19 @@ export class PlaceView extends Gtk.Box {
         this._mainStack.set_visible_child(val ? this._spinner : this._mainBox);
     }
 
+    /* get a suitable icon pixel size given a paintable and a maximum desired
+     * pixel height
+     */
+    _calculatePixelSizeForShield(paintable, pixelHeight) {
+        const intrinsicWidth = paintable.get_intrinsic_width();
+        const intrinsicHeight = paintable.get_intrinsic_height();
+
+        return intrinsicHeight < pixelHeight ?
+               Math.max(intrinsicWidth, intrinsicHeight) :
+               Math.max((intrinsicWidth / intrinsicHeight) * pixelHeight,
+                        pixelHeight);
+    }
+
     updatePlaceDetails() {
         let place = this.place;
         let formatter = new PlaceFormatter(place);
@@ -213,6 +231,8 @@ export class PlaceView extends Gtk.Box {
 
         const title = formatter.title;
         const typeName = getTypeNameForPlace(place);
+        const shieldPaintables =
+            Gfx.drawShieldsForPlace(place, 2, this.get_scale_factor());
 
         /* if the place has a title, show it, otherwise if there's a known
          * place type name, show that together with a place type icon
@@ -222,13 +242,31 @@ export class PlaceView extends Gtk.Box {
             this._title.visible = true;
             this._title.label = _("Coordinates");
             this._icon.visible = false;
+            this._seondaryIcon.visible = false;
         } else if (title) {
             this._title.visible = true;
             this._title.label = formatter.title;
             this._icon.visible = false;
+            this._secondaryIcon.visible = false;
         } else if (typeName) {
             this._title.label = typeName;
-            this._icon.icon_name = PlaceIcons.getIconForPlace(place);
+            if (shieldPaintables.length > 0) {
+                this._icon.paintable = shieldPaintables[0];
+                this._icon.pixel_size =
+                    this._calculatePixelSizeForShield(shieldPaintables[0], 24);
+                if (shieldPaintables.length > 1) {
+                    this._secondaryIcon.paintable = shieldPaintables[1];
+                    this._secondaryIcon.pixel_size =
+                        this._calculatePixelSizeForShield(shieldPaintables[1], 24);
+                    this._secondaryIcon.visible = true;
+                } else {
+                    this._secondaryIcon.visible = false;
+                }
+            } else {
+                this._icon.icon_name = PlaceIcons.getIconForPlace(place);
+                this._icon.pixel_size = -1;
+                this._secondaryIcon.visible = false;
+            }
             this._title.visible = true;
             this._icon.visible = true;
         } else {
@@ -275,15 +313,33 @@ export class PlaceView extends Gtk.Box {
             this._sourceLabel.label = place.source;
             this._sourceBox.visible = true;
         } else if (title && typeName && place.osmKey !== 'place') {
-            const iconName = PlaceIcons.getIconForPlace(place);
-
-            this._sourceLabel.label = typeName;
-            // don't dim the icon for non-symbolic (transit network) icons
-            if (iconName.endsWith('-symbolic'))
-                this._sourceIcon.get_style_context().add_class('dim-label');
-            else
+            if (shieldPaintables.length > 0) {
                 this._sourceIcon.get_style_context().remove_class('dim-label');
-            this._sourceIcon.icon_name = iconName;
+                this._sourceIcon.paintable = shieldPaintables[0];
+                this._sourceIcon.pixel_size =
+                    this._calculatePixelSizeForShield(shieldPaintables[0], 18);
+
+                if (shieldPaintables.length > 1) {
+                    this._secondarySourceIcon.paintable = shieldPaintables[1];
+                    this._secondarySourceIcon.pixel_size =
+                        this._calculatePixelSizeForShield(shieldPaintables[1], 18);
+                    this._secondarySourceIcon.visible = true;
+                } else {
+                    this._secondarySourceIcon.visible = false;
+                }
+            } else {
+                const iconName = PlaceIcons.getIconForPlace(place);
+
+                // don't dim the icon for non-symbolic (transit network) icons
+                if (iconName.endsWith('-symbolic'))
+                    this._sourceIcon.get_style_context().add_class('dim-label');
+                else
+                    this._sourceIcon.get_style_context().remove_class('dim-label');
+                this._sourceIcon.icon_name = iconName;
+                this._sourceIcon.pixel_size = -1;
+                this._secondarySourceIcon.visible = false;
+            }
+            this._sourceLabel.label = typeName;
             this._sourceBox.visible = true;
         } else {
             this._sourceBox.visible = false;
