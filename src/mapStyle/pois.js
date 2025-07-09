@@ -89,6 +89,7 @@ export const pois = (config) => {
                     ],
                 ],
                 [">=", ["zoom"], classMatch(getMinzoom, 16)],
+                ["!=", ["get", "osm:access"], "private"],
             ],
             layout: {
                 "text-anchor": "top",
