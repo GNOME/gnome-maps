@@ -576,25 +576,15 @@ export class MainWindow extends Adw.ApplicationWindow {
     }
 
     _onAboutActivate() {
-        let about = new Adw.AboutDialog({
-            designers: [ 'Jakub Steiner <jimmac@gmail.com>',
-                         'Andreas Nilsson <nisses.mail@home.se>' ],
-            developers: [ 'Zeeshan Ali (Khattak) <zeeshanak@gnome.org>',
-                          'Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>',
-                          'Jonas Danielsson <jonas@threetimestwo.org>',
-                          'Marcus Lundblad <ml@dfupdate.se>'],
-            developer_name: _("The GNOME Project"),
-            translator_credits: _("translator-credits"),
-            /* Translators: This is the program name. */
-            application_name: _("Maps"),
-            application_icon: pkg.name,
-            copyright: _("Copyright © 2011 – 2025 Red Hat, Inc. and The GNOME Maps authors"),
-            license_type: Gtk.License.GPL_2_0,
-            version: pkg.version,
-            website: 'https://apps.gnome.org/Maps/',
-            issue_url: 'https://gitlab.gnome.org/GNOME/gnome-maps/-/issues/'
-        });
-
+        let about = Adw.AboutDialog.new_from_appdata(`/org/gnome/Maps/org.gnome.Maps.appdata.xml`, pkg.version);
+        about.set_designers([ 'Jakub Steiner <jimmac@gmail.com>',
+            'Andreas Nilsson <nisses.mail@home.se>' ]);
+        about.set_developers([ 'Zeeshan Ali (Khattak) <zeeshanak@gnome.org>',
+            'Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>',
+            'Jonas Danielsson <jonas@threetimestwo.org>',
+            'Marcus Lundblad <ml@dfupdate.se>']);
+        about.set_copyright(_("Copyright © 2011 – 2025 Red Hat, Inc. and The GNOME Maps authors"));
+        about.set_translator_credits(_("translator-credits"));
         this._addAttribution(about);
 
         about.present(this);
