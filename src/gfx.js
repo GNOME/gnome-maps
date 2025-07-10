@@ -59,3 +59,29 @@ export function drawColoredBagde(cr, bgColor, outlineColor, x, y, width, height)
         cr.stroke();
     }
 }
+
+export function drawShieldsForPlace(place, maxNumShields, scaleFactor) {
+    const routes = place.routes;
+    let numProcessed = 0;
+
+    return routes.map(r => {
+                        if (numProcessed >= maxNumShields)
+                            return null;
+
+                        const paintable = r.shield.draw(r.ref ??
+                                                        place.osmTags['ref'] ??
+                                                        '',
+                                                        r.name ?? '',
+                                                        '',
+                                                        scaleFactor);
+
+                        if (paintable) {
+                            numProcessed++;
+
+                            return paintable;
+                        } else {
+                            return null;
+                        }
+                      })
+                 .filter(p => !!p);
+}
