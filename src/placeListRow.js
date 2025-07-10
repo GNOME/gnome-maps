@@ -23,6 +23,7 @@ import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
+import * as Gfx from './gfx.js';
 import {PlaceFormatter} from './placeFormatter.js';
 import * as Utils from './utils.js';
 import { Application } from './application.js';
@@ -74,7 +75,12 @@ export class PlaceListRow extends Gtk.ListBoxRow {
         this._details.label = GLib.markup_escape_text(formatter.getDetailsString(),-1);
         this._details.visible = this._details.label.length > 0;
 
-        if (place.icon)
+        const shieldPaintables =
+            Gfx.drawShieldsForPlace(place, 1, this.get_scale_factor());
+
+        if (shieldPaintables.length > 0)
+            this._icon.paintable = shieldPaintables[0];
+        else if (place.icon)
             this._icon.gicon = place.icon;
 
         const placeItem = Application.placeStore.getPlaceItem(place);
