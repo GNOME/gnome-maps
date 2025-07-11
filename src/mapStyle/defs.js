@@ -362,6 +362,7 @@ export const DEFS = {
                 restaurant: ["restaurant-symbolic", "food"],
                 school: ["school-symbolic", "education"],
                 taxi: ["taxi-symbolic", "transportation", 16],
+                telephone: ["phone-oldschool-symbolic", "micro", 16],
                 theatre: ["theater-symbolic", "generic"],
                 toilets: ["toilets-symbolic", "micro", 16],
                 university: ["school-symbolic", "education", 13],
