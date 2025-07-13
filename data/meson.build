@@ -1,15 +1,15 @@
-appdata = app_id + '.appdata.xml'
-appdata_config = configuration_data()
-appdata_config.set('app-id', app_id)
-appdata_config.set('gettext-package', 'gnome-maps')
-appdata_config.set('release-version', meson.project_version())
-appdata_file = i18n.merge_file(
+metainfo = app_id + '.metainfo.xml'
+metainfo_config = configuration_data()
+metainfo_config.set('app-id', app_id)
+metainfo_config.set('gettext-package', 'gnome-maps')
+metainfo_config.set('release-version', meson.project_version())
+metainfo_file = i18n.merge_file(
 	input: configure_file(
-		input: 'org.gnome.Maps.appdata.xml.in.in',
-		output: app_id + '.appdata.xml.in',
-		configuration: appdata_config
+		input: 'org.gnome.Maps.metainfo.xml.in.in',
+		output: app_id + '.metainfo.xml.in',
+		configuration: metainfo_config
 	),
-	output: appdata,
+	output: metainfo,
 	po_dir: po_dir,
 	install: true,
 	install_dir: join_paths(datadir, 'metainfo'),
@@ -27,7 +27,7 @@ data_gresource = gnome.compile_resources(
 	gresource_bundle: true,
 	install: true,
 	install_dir: pkgdatadir,
-	dependencies: [appdata_file]
+	dependencies: [metainfo_file]
 )
 
 install_data(
@@ -84,13 +84,13 @@ endif
 
 if appstreamcli.found()
 	test(
-		'validate-appdata',
+		'validate-metainfo',
 		appstreamcli,
 		args: [
 			'validate',
 			'--no-net',
 			'--override=release-time-missing=info',
-			appdata_file.full_path()
+			metainfo_file.full_path()
 		]
 	)
 endif

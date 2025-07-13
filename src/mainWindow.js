@@ -576,7 +576,7 @@ export class MainWindow extends Adw.ApplicationWindow {
     }
 
     _onAboutActivate() {
-        let about = Adw.AboutDialog.new_from_appdata(`/org/gnome/Maps/org.gnome.Maps.appdata.xml`, pkg.version);
+        let about = Adw.AboutDialog.new_from_appdata(`/org/gnome/Maps/org.gnome.Maps.metainfo.xml`, pkg.version);
         about.set_designers([ 'Jakub Steiner <jimmac@gmail.com>',
             'Andreas Nilsson <nisses.mail@home.se>' ]);
         about.set_developers([ 'Zeeshan Ali (Khattak) <zeeshanak@gnome.org>',
