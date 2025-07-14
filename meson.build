@@ -42,7 +42,7 @@ libadwaita = dependency('libadwaita-1', version: '>= 1.8.alpha')
 gweather = dependency('gweather4', version: '>= 3.90.0')
 geocodeglib = dependency('geocode-glib-2.0', version: '>= 3.15.2')
 libportal = dependency('libportal')
-shumate = dependency('shumate-1.0', version: '>= 1.4.alpha')
+shumate = dependency('shumate-1.0', version: '>= 1.5.alpha')
 
 cc = meson.get_compiler('c')
 
