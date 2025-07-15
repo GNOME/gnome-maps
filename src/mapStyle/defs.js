@@ -333,6 +333,7 @@ export const DEFS = {
                 charging_station: ["ev-symbolic", "transport"],
                 cinema: ["video-camera-symbolic", "generic"],
                 clinic: ["hospital-sign-symbolic", "healthAndSafety"],
+                clock: ["clock-alt-symbolic", "micro", 16],
                 college: ["school-symbolic", "education"],
                 conference_centre: ["meeting-symbolic", "public", 13],
                 dentist: ["dentist-symbolic", "healthAndSafety"],
