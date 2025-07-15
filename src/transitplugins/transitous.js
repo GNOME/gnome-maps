@@ -21,7 +21,7 @@
 
 import {Motis2} from './motis2.js';
 
-const BASE_URL = 'https://api.transitous.org/';
+const BASE_URL = 'https://api.transitous.org';
 
 export class Transitous extends Motis2 {
   constructor(params) {
