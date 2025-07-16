@@ -149,6 +149,10 @@ export class OpenTripPlanner {
             throw new Error('can not specify both baseUrl and routerUrl as arguments');
     }
 
+    cancelCurrentRequest() {
+        //Do nothing.
+    }
+
     _isValidParams(params) {
         if (params.onlyTransitData && typeof(params.onlyTransitData) !== 'boolean') {
             Utils.debug('invalid value for onlyTransitData');
