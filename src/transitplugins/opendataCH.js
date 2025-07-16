@@ -103,6 +103,10 @@ export class OpendataCH {
         this._query = Application.routeQuery;
     }
 
+    cancelCurrentRequest() {
+        //Do nothing.
+    }
+
     fetchFirstResults() {
         let filledPoints = this._query.filledPoints;
 
