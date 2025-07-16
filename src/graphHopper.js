@@ -19,6 +19,7 @@
  * Author: Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>
  */
 
+import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
 import Soup from 'gi://Soup';
 
@@ -61,6 +62,7 @@ export class GraphHopper {
     }
 
     constructor({query, route}) {
+        this._requestCancellable = null;
         this._session = new Soup.Session({ user_agent : 'gnome-maps/' + pkg.version });
         this._baseURL = "https://graphhopper.com/api/1/route?";
         this._locale  = GLib.get_language_names()[0];
@@ -68,10 +70,20 @@ export class GraphHopper {
         this._query = query;
     }
 
+    cancelCurrentRequest() {
+        if (this._requestCancellable) {
+            this._requestCancellable.cancel();
+            this._requestCancellable = null;
+        }
+    }
+
     _queryGraphHopper(points, transportationType, callback) {
         let url = this._buildURL(points, transportationType);
         let msg = Soup.Message.new('GET', url);
-        this._session.send_and_read_async(msg, GLib.PRIORITY_DEFAULT, null,
+
+        this._requestCancellable = new Gio.Cancellable();
+
+        this._session.send_and_read_async(msg, GLib.PRIORITY_DEFAULT, this._requestCancellable,
                                           (source,res) => {
             let bytes = this._session.send_and_read_finish(res);
             let body = bytes ? Utils.getBufferText(bytes.get_data()) : null;
@@ -85,7 +97,9 @@ export class GraphHopper {
                 else
                     callback(result, null);
             } catch (e) {
-                callback(null, e);
+                if (!error.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED)) {
+                    callback(null, e);
+                }
             }
         });
     }
