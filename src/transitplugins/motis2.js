@@ -21,6 +21,7 @@
 
 import gettext from 'gettext';
 
+import Gio from 'gi://Gio';
 import GWeather from 'gi://GWeather';
 import GLib from 'gi://GLib';
 import Shumate from 'gi://Shumate';
@@ -39,6 +40,7 @@ const _ = gettext.gettext;
 
 export class Motis2 {
     constructor(params) {
+        this._requestCancellable = null
         this._baseUrl = GLib.getenv('MOTIS_BASE_URL') ?? params?.baseUrl;
         this._plan = Application.routingDelegator.transitRouter.plan;
         this._query = Application.routeQuery;
@@ -48,6 +50,13 @@ export class Motis2 {
 
         if (!this._baseUrl)
             throw new Error('must specify baseUrl as an argument');
+    }
+
+    cancelCurrentRequest() {
+        if (this._requestCancellable) {
+            this._requestCancellable.cancel();
+            this._requestCancellable = null;
+        }
     }
 
     fetchFirstResults() {
@@ -80,7 +89,9 @@ export class Motis2 {
 
         request.request_headers.replace('Content-Type', 'application/json');
 
-        this._session.send_and_read_async(request, GLib.PRIORITY_DEFAULT, null,
+        this._requestCancellable = new Gio.Cancellable();
+
+        this._session.send_and_read_async(request, GLib.PRIORITY_DEFAULT, this._requestCancellable,
                                           (source, res) => {
             try {
                 if (request.get_status() !== Soup.Status.OK) {
@@ -97,9 +108,12 @@ export class Motis2 {
 
                     this._parseResult(result, extendPrevious);
                 }
+                this._requestCancellable = null;
             } catch (error) {
-                Utils.debug('Failed to send request: ' + error.msg + ', ' + error.stack);
-                this._plan.requestFailed();
+                if (!error.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED)) {
+                    Utils.debug('Failed to send request: ' + error.msg + ', ' + error.stack);
+                    this._plan.requestFailed();
+                }
             }
         });
     }
