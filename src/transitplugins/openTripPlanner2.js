@@ -54,6 +54,10 @@ export class OpenTripPlanner2 {
             throw new Error('must specify baseUrl as an argument');
     }
 
+    cancelCurrentRequest() {
+        //Do nothing.
+    }
+
     _isValidParams(params) {
         // refuse to use unknown URLs to OTP instances
         if (params?.baseUrl && KNOWN_BASE_URLS.indexOf(params.baseUrl) === -1) {
