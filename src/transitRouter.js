@@ -106,6 +106,12 @@ export class TransitRouter {
         }
     }
 
+    cancelCurrentRequest() {
+        if (this._currPluginInstance) {
+            this._currPluginInstance.cancelCurrentRequest();
+        }
+    }
+
     /**
      * Called to fetch additional (later or earlier) results depending on the
      * query settings.
