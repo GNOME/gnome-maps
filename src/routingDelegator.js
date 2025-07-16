@@ -35,6 +35,7 @@ export class RoutingDelegator {
         this._transitRouter = new TransitRouter({ query: this._query });
         this._query.connect('notify::points', this._onQueryChanged.bind(this));
         this._ignoreNextQueryChange = false;
+        this._lastUsedRouter = null;
     }
 
     get graphHopper() {
@@ -66,11 +67,19 @@ export class RoutingDelegator {
             return;
         }
 
+        if (this._lastUsedRouter) {
+            this._lastUsedRouter.cancelCurrentRequest();
+        }
+
+        this._query.emit('cancel');
+
         if (this._query.isValid()) {
             this._query.emit('run');
             if (this._transitRouting) {
+                this._lastUsedRouter = this._transitRouter;
                 this._transitRouter.fetchFirstResults();
             } else {
+                this._lastUsedRouter = this._graphHopper;
                 this._graphHopper.fetchRoute(this._query.filledPoints,
                                              this._query.transportation);
             }

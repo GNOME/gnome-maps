@@ -233,7 +233,8 @@ GObject.registerClass({
         'reset': { },
         'point-added': { param_types: [GObject.TYPE_OBJECT, GObject.TYPE_INT] },
         'point-removed': { param_types: [GObject.TYPE_OBJECT, GObject.TYPE_INT] },
-        'run': { }
+        'run': { },
+        'cancel': {}
     },
     Properties: {
         'points': GObject.ParamSpec.object('points',

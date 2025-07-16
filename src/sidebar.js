@@ -288,6 +288,10 @@ export class Sidebar extends Gtk.Grid {
             this._instructionStack.visible_child = this._instructionSpinner;
         });
 
+        this._query.connect('cancel', () => {
+           this._clearInstructions();
+        });
+
         this._query.connect('notify', () => {
             if (this._instructionStack.visible_child !== this._instructionSpinner &&
                 this._instructionStack.visible_child !== this._errorLabel) {
