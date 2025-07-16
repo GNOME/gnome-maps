@@ -111,6 +111,10 @@ export class Resrobot {
             throw new Error('invalid accessId');
         }
     }
+    
+    cancelCurrentRequest() {
+        //Do nothing.
+    }
 
     fetchFirstResults() {
         let filledPoints = this._query.filledPoints;
