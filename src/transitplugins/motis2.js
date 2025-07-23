@@ -75,7 +75,7 @@ export class Motis2 {
 
     _fetch(extendPrevious = false) {
         const query = this._getQuery(extendPrevious);
-        const request = Soup.Message.new('GET', this._baseUrl + '/api/v1/plan?' +
+        const request = Soup.Message.new('GET', this._baseUrl + '/api/v3/plan?' +
                                          query.toString());
 
         // if trying to extend trips, and there was no page cursor, show no results
@@ -239,7 +239,8 @@ export class Motis2 {
 
         const polyline =
             leg?.legGeometry?.points ?
-            this._getEncodedPolyline(leg.legGeometry.points) : undefined;
+            this._getEncodedPolyline(leg.legGeometry.points,
+                                     leg.legGeometry.precision) : undefined;
 
         const commonLegTimezoneOffset =
             arrivalTimezoneOffset === departureTimezoneOffset ?
@@ -294,13 +295,14 @@ export class Motis2 {
         return fromCoord.distance(toCoord);
     }
 
-    _getEncodedPolyline(polyline) {
+    _getEncodedPolyline(polyline, precision) {
         if (!this._cachedEncodedPolylines[polyline]) {
             // clear cached entries when above threashhold to prevent overgrowing
             if (Object.values(this._cachedEncodedPolylines).length > 100)
                 this._cachedEncodedPolylines = {};
 
-            this._cachedEncodedPolylines[polyline] = Epaf.decode(polyline, 7);
+            this._cachedEncodedPolylines[polyline] =
+                Epaf.decode(polyline, precision);
         }
 
         return this._cachedEncodedPolylines[polyline];
@@ -332,7 +334,8 @@ export class Motis2 {
             const [type, instruction] =
                 this._getTurnpointTypeAndInstruction(step);
             const coordinate =
-                Epaf.decodeFirstCoordinate(step.polyline.points, 7);
+                Epaf.decodeFirstCoordinate(step.polyline.points,
+                                           step.polyline.precision);
 
             return new TurnPoint({ type:        type,
                                    distance:    step.distance,
