@@ -38,8 +38,8 @@ export const DEFS = {
             light: "#deddda",
         },
         foreground: {
-            dark: "#ffffff",
-            light: "#000000",
+            dark: "#deddda",
+            light: "#3d3846",
         },
         water: {
             dark: "#0f2f5e",
@@ -158,8 +158,8 @@ export const DEFS = {
             classes: ["city"],
             font: "Bold",
             color: {
-                dark: "#ffffff",
-                light: "#000000",
+                dark: "#deddda",
+                light: "#3d3846",
             },
             minzoom: 4,
             maxzoom: 12,
@@ -173,8 +173,8 @@ export const DEFS = {
             classes: ["town", "village"],
             font: "Bold",
             color: {
-                dark: "#ffffff",
-                light: "#000000",
+                dark: "#deddda",
+                light: "#3d3846",
             },
             maxzoom: 13,
             sizeStops: [
