@@ -23,6 +23,7 @@ import Gdk from 'gi://Gdk';
 import GLib from 'gi://GLib';
 import Soup from 'gi://Soup';
 
+import * as Thumbnails from './thumbnails.js';
 import * as Utils from './utils.js';
 
 /**
@@ -51,7 +52,6 @@ function _getSoupSession() {
     return _soupSession;
 }
 
-let _thumbnailCache = {};
 let _metadataCache = {};
 let _wikidataCache = {};
 let _wikidataImageSourceCache = {};
@@ -355,7 +355,7 @@ function _fetchWikidataThumbnail(imageName, size, thumbnailCb) {
     let cachedImageUrl = _wikidataImageSourceCache[imageName + '/' + size];
 
     if (cachedImageUrl) {
-        _fetchThumbnailImage(imageName, size, cachedImageUrl, thumbnailCb);
+        Thumbnails.fetch(cachedImageUrl, null, thumbnailCb);
         return;
     }
 
@@ -383,7 +383,7 @@ function _fetchWikidataThumbnail(imageName, size, thumbnailCb) {
         let thumburl = response?.query?.pages?.[-1]?.imageinfo?.[0]?.thumburl;
 
         if (thumburl) {
-            _fetchThumbnailImage(imageName, size, thumburl, thumbnailCb);
+            Thumbnails.fetch(thumburl, null, thumbnailCb);
             _wikidataImageSourceCache[imageName + '/' + size] = thumburl;
         }
     });
@@ -395,7 +395,7 @@ function _onMetadataFetched(wiki, page, size, metadataCb, thumbnailCb) {
     if (thumbnailCb && page.thumbnail) {
         let source = page.thumbnail.source;
 
-        _fetchThumbnailImage(wiki, size, source, thumbnailCb);
+        Thumbnails.fetch(source, null, thumbnailCb);
         thumbnailCb = null;
     }
 
@@ -411,37 +411,6 @@ function _onMetadataFetched(wiki, page, size, metadataCb, thumbnailCb) {
             thumbnailCb(null);
         }
     }
-}
-
-function _fetchThumbnailImage(wiki, size, source, callback) {
-    let msg = Soup.Message.new('GET', source);
-    let session = _getSoupSession();
-
-    let cachedThumbnail = _thumbnailCache[wiki + '/' + size];
-    if (cachedThumbnail) {
-        callback(cachedThumbnail);
-        return;
-    }
-
-    session.send_and_read_async(msg, GLib.PRIORITY_DEFAULT, null, (source, res) => {
-        if (msg.get_status() !== Soup.Status.OK) {
-            log("Failed to download thumbnail: " + msg.reason_phrase);
-            callback(null);
-            return;
-        }
-
-        const bytes = session.send_and_read_finish(res);
-
-        try {
-            const texture = Gdk.Texture.new_from_bytes(bytes);
-
-            _thumbnailCache[wiki + '/' + size] = texture;
-            callback(texture);
-        } catch(e) {
-            log("Failed to load image: " + e);
-            callback(null);
-        }
-    });
 }
 
 /* Finds the best language to use, based on the language of the original
