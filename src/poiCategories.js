@@ -202,7 +202,7 @@ const POI_CATEGORIES = [
                 keyValues: [['amenity=restaurant']]
             },
             {
-                label:       _("Vegan & Vegatarian Restaurants"),
+                label:       _("Vegan & Vegetarian Restaurants"),
                 icon:        'restaurant-symbolic',
                 keyValues:   [['amenity=restaurant', '"diet:vegan"~"yes|only"'],
                               ['amenity=restaurant', '"diet:vegetarian"~"yes|only"']],
