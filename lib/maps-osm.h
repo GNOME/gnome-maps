@@ -32,6 +32,4 @@ void maps_osm_finalize (void);
 MapsOSMObject *maps_osm_parse (const char *content, guint length,
                                GError **error);
 
-
-char *maps_osm_parse_user_details(const char *content, GError **error);
 #endif
