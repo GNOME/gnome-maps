@@ -26,8 +26,6 @@ import Graphene from 'gi://Graphene';
 import Gtk from 'gi://Gtk';
 import Pango from 'gi://Pango';
 
-const _PREVIEW_WIDTH = 150;
-
 export class ExportViewDialog extends Adw.Dialog {
 
     static Response = {
@@ -74,11 +72,7 @@ export class ExportViewDialog extends Adw.Dialog {
     }
 
     _setupPreviewArea() {
-        this._scaleFactor = _PREVIEW_WIDTH / this._width;
-        let previewHeight = this._height * this._scaleFactor;
-
-        this._previewArea.width_request = _PREVIEW_WIDTH;
-        this._previewArea.height_request = previewHeight;
+        this._previewArea.pixel_size = this.content_width;
         this._previewArea.paintable = this._paintable;
     }
 
