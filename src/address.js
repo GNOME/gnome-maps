@@ -38,6 +38,7 @@ export function streetAddressForCountryCode(streetName, housenumber,
         case 'AL': return `${streetName} ${housenumber}`;
         case 'AR': return `${streetName} ${housenumber}`;
         case 'AS': return `${streetName} ${housenumber}`;
+        case 'AT': return `${streetName} ${housenumber}`;
         case 'AU': return `${housenumber} ${streetName}`;
         case 'AX': return `${streetName} ${housenumber}`;
         case 'BA': return `${streetName} ${housenumber}`;
