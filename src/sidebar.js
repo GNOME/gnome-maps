@@ -356,12 +356,6 @@ export class Sidebar extends Gtk.Grid {
             this._populateTransitItineraryOverview();
         });
 
-        /* use list separators for the transit itinerary overview list */
-        this._transitOverviewListBox.set_header_func((row, prev) => {
-            if (prev)
-                row.set_header(new Gtk.Separator());
-        });
-
         this._transitOverviewListBox.connect('row-activated',
                                              this._onItineraryOverviewRowActivated.bind(this));
         this._transitItineraryBackButton.connect('clicked',
@@ -440,17 +434,11 @@ export class Sidebar extends Gtk.Grid {
         let plan = Application.routingDelegator.transitRouter.plan;
 
         plan.itineraries.forEach((itinerary) => {
-            let row = new TransitItineraryRow({ visible: true,
-                                                itinerary: itinerary });
+            const row = new TransitItineraryRow({ itinerary: itinerary });
             this._transitOverviewListBox.insert(row, -1);
         });
         /* add the "load more" row */
-        this._transitOverviewListBox.insert(new TransitMoreRow({ visible: true }),
-                                            -1);
-
-        /* add an empty list row to get a final separator */
-        this._transitOverviewListBox.insert(new Gtk.ListBoxRow({ visible: true }),
-                                            -1);
+        this._transitOverviewListBox.insert(new TransitMoreRow(), -1);
     }
 
     _onItineraryActivated(itinerary) {
