@@ -5,11 +5,13 @@
     <child>
       <object class="GtkGrid" id="grid">
         <property name="margin-top">6</property>
+        <property name="margin-bottom">6</property>
         <property name="row-spacing">12</property>
         <child>
           <object class="GtkImage">
             <property name="margin-start">12</property>
-            <property name="margin-end">12</property>
+            <property name="margin-end">6</property>
+            <property name="width-request">18</property>
             <property name="icon-name">maps-point-end-symbolic</property>
             <style>
               <class name="sidebar-icon"/>
@@ -36,23 +38,13 @@
           <object class="GtkLabel" id="timeLabel">
             <property name="halign">end</property>
             <property name="margin-start">6</property>
-            <property name="margin-end">18</property>
+            <property name="margin-end">12</property>
             <attributes>
               <attribute name="font-features" value="tnum"></attribute>
             </attributes>
             <layout>
               <property name="column">2</property>
               <property name="row">0</property>
-            </layout>
-          </object>
-        </child>
-        <child>
-          <object class="GtkSeparator" id="separator">
-            <property name="valign">center</property>
-            <layout>
-              <property name="column">0</property>
-              <property name="row">1</property>
-              <property name="column-span">3</property>
             </layout>
           </object>
         </child>
