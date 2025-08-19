@@ -49,6 +49,5 @@ export class TransitArrivalRow extends Gtk.ListBoxRow {
 GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/transit-arrival-row.ui',
     InternalChildren: ['arrivalLabel',
-                       'timeLabel',
-                       'separator']
+                       'timeLabel']
 }, TransitArrivalRow);
