@@ -66,9 +66,6 @@ export class TransitLegRow extends Gtk.ListBoxRow {
             } else {
                 this._agencyLabel.label = agencyName;
             }
-        } else {
-            this._expandButton.tooltip_text = _("Show walking instructions");
-            this._collapsButton.tooltip_text = _("Hide walking instructions");
         }
 
         if (!this._leg.transit || this._leg.headsign) {
@@ -79,7 +76,6 @@ export class TransitLegRow extends Gtk.ListBoxRow {
                                                 can_focus: false,
                                                 use_markup: true,
                                                 hexpand: true,
-                                                margin_start: 6,
                                                 max_width_chars: 20,
                                                 ellipsize: Pango.EllipsizeMode.END,
                                                 halign: Gtk.Align.START });
@@ -98,9 +94,6 @@ export class TransitLegRow extends Gtk.ListBoxRow {
             this._populateInstructions();
         else
             this._footerStack.visible_child_name = 'separator';
-
-        this._expandButton.connect('clicked', this._expand.bind(this));
-        this._collapsButton.connect('clicked', this._collaps.bind(this));
 
         this._instructionList.connect('row-selected', (listbox, row) => {
             if (row) {
@@ -131,20 +124,20 @@ export class TransitLegRow extends Gtk.ListBoxRow {
     }
 
     _expand() {
-        this._footerStack.visible_child_name = 'separator';
         this._detailsRevealer.reveal_child = true;
         /* collaps the time label down to just show the start time when
          * revealing intermediate stop times, as the arrival time is displayed
          * at the last stop
          */
         this._timeLabel.label = this._leg.prettyPrintDepartureTime();
+        this.set_state_flags(Gtk.StateFlags.CHECKED, false);
         this._isExpanded = true;
     }
 
     _collaps() {
-        this._footerStack.visible_child_name = 'expander';
         this._detailsRevealer.reveal_child = false;
         this._timeLabel.label = this._leg.prettyPrintTime({ isStart: this._start });
+        this.unset_state_flags(Gtk.StateFlags.CHECKED);
         this._isExpanded = false;
     }
 
@@ -187,11 +180,9 @@ GObject.registerClass({
                        'fromLabel',
                        'routeGrid',
                        'timeLabel',
-                       'footerStack',
-                       'expandButton',
+                       'expandArrow',
                        'detailsRevealer',
                        'agencyLabel',
-                       'collapsButton',
                        'instructionList',
                        'grid']
 }, TransitLegRow);
