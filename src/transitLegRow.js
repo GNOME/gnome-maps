@@ -37,12 +37,13 @@ const _ = gettext.gettext;
 
 export class TransitLegRow extends Gtk.ListBoxRow {
 
-    constructor({leg, start, mapView, ...params}) {
+    constructor({leg, start, mapView, direct, ...params}) {
         super(params);
 
         this._leg = leg;
         this._start = start;
         this._mapView = mapView;
+        this._direct = direct;
         this._modeImage.icon_name = this._leg.iconName;
         this._fromLabel.label = Transit.getFromLabel(this._leg, this._start);
 
@@ -51,8 +52,6 @@ export class TransitLegRow extends Gtk.ListBoxRow {
             const agencyName = GLib.markup_escape_text(this._leg.agencyName, -1);
 
             this._routeGrid.attach(routeLabel, 0, 0, 1, 1);
-
-            this._agencyLabel.visible = true;
 
             if (this._leg.agencyUrl) {
                 let url = GLib.markup_escape_text(this._leg.agencyUrl, -1);
@@ -66,9 +65,14 @@ export class TransitLegRow extends Gtk.ListBoxRow {
             } else {
                 this._agencyLabel.label = agencyName;
             }
+        }
+
+        // always expand direct (e.g. walking) trips
+        if (direct) {
+            this._expandArrow.visible = false;
+            this._setExpanded(true);
         } else {
-            this._expandButton.tooltip_text = _("Show walking instructions");
-            this._collapsButton.tooltip_text = _("Hide walking instructions");
+            this._setExpanded(false);
         }
 
         if (!this._leg.transit || this._leg.headsign) {
@@ -79,7 +83,6 @@ export class TransitLegRow extends Gtk.ListBoxRow {
                                                 can_focus: false,
                                                 use_markup: true,
                                                 hexpand: true,
-                                                margin_start: 6,
                                                 max_width_chars: 20,
                                                 ellipsize: Pango.EllipsizeMode.END,
                                                 halign: Gtk.Align.START });
@@ -97,10 +100,13 @@ export class TransitLegRow extends Gtk.ListBoxRow {
         if (this._hasIntructions())
             this._populateInstructions();
         else
-            this._footerStack.visible_child_name = 'separator';
+            this._expandArrow.visible = false;
 
-        this._expandButton.connect('clicked', this._expand.bind(this));
-        this._collapsButton.connect('clicked', this._collaps.bind(this));
+        // Translators: This is a tooltip
+        this._expandArrow.tooltip_text =
+            this._leg.isTransit ?
+            _("Show intermediate stops and information") :
+            _("Show walking instructions");
 
         this._instructionList.connect('row-selected', (listbox, row) => {
             if (row) {
@@ -114,38 +120,56 @@ export class TransitLegRow extends Gtk.ListBoxRow {
         this._buttonPressGesture = new Gtk.GestureSingle();
         this._grid.add_controller(this._buttonPressGesture);
         this._buttonPressGesture.connect('begin', () => this._onPress());
+    }
 
-        this._isExpanded = false;
+    _updateExpandTooltip() {
+        // Translators: This is a tooltip
+        this._expandArrow.tooltip_text =
+            this._isExpanded ? (this._leg.transit ?
+                                _("Hide intermediate stops and information") :
+                                _("Hide walking instructions")) :
+                               (this._leg.transit ?
+                                _("Show intermediate stops and information") :
+                                _("Show walking instructions"));
     }
 
     _onPress() {
-        if (this._isExpanded) {
-            this._collaps();
+        if (this._isExpanded && !this._direct) {
+            this._setExpanded(false);
         } else {
             this._mapView.map.go_to_full(this._leg.fromCoordinate[0],
                                          this._leg.fromCoordinate[1],
                                          16);
             if (this._hasIntructions())
-                this._expand();
+                this._setExpanded(true);
         }
     }
 
-    _expand() {
-        this._footerStack.visible_child_name = 'separator';
-        this._detailsRevealer.reveal_child = true;
+    _setExpanded(expanded) {
+        this._detailsRevealer.reveal_child = expanded;
+        this._agencyIcon.visible = expanded && this._leg.transit;
+        this._agencyLabel.visible = expanded && this._leg.transit;
+
         /* collaps the time label down to just show the start time when
          * revealing intermediate stop times, as the arrival time is displayed
          * at the last stop
          */
-        this._timeLabel.label = this._leg.prettyPrintDepartureTime();
-        this._isExpanded = true;
+        this._timeLabel.label =
+            expanded ? this._leg.prettyPrintDepartureTime() :
+                       this._leg.prettyPrintTime({ isStart: this._start });
+        if (expanded)
+            this.set_state_flags(Gtk.StateFlags.CHECKED, false);
+        else
+            this.unset_state_flags(Gtk.StateFlags.CHECKED);
+
+        this._isExpanded = expanded;
+        this._updateExpandTooltip();
+        this.update_state([Gtk.AccessibleState.EXPANDED], [expanded ? 1 : 0]);
     }
 
-    _collaps() {
-        this._footerStack.visible_child_name = 'expander';
-        this._detailsRevealer.reveal_child = false;
-        this._timeLabel.label = this._leg.prettyPrintTime({ isStart: this._start });
-        this._isExpanded = false;
+    vfunc_activate() {
+        this._onPress();
+        super.vfunc_activate();
     }
 
     _hasIntructions() {
@@ -158,8 +182,7 @@ export class TransitLegRow extends Gtk.ListBoxRow {
                 let stops = this._leg.intermediateStops;
                 for (let index = 0; index < stops.length; index++) {
                     let stop = stops[index];
-                    let row = new TransitStopRow({ visible: true,
-                                                   stop: stop,
+                    let row = new TransitStopRow({ stop: stop,
                                                    final: index === stops.length - 1 });
                     this._instructionList.insert(row, -1);
                 }
@@ -172,8 +195,7 @@ export class TransitLegRow extends Gtk.ListBoxRow {
                  index < this._leg.walkingInstructions.length - 1;
                  index++) {
                 let instruction = this._leg.walkingInstructions[index];
-                let row = new InstructionRow({ visible: true,
-                                               turnPoint: instruction });
+                let row = new InstructionRow({ turnPoint: instruction });
 
                 this._instructionList.insert(row, -1);
             }
@@ -187,11 +209,10 @@ GObject.registerClass({
                        'fromLabel',
                        'routeGrid',
                        'timeLabel',
-                       'footerStack',
-                       'expandButton',
+                       'expandArrow',
                        'detailsRevealer',
                        'agencyLabel',
-                       'collapsButton',
+                       'agencyIcon',
                        'instructionList',
                        'grid']
 }, TransitLegRow);
