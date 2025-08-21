@@ -2823,11 +2823,17 @@
     "US:NHT": {
       "notext": true,
       "overrideByName": {
+        "Mormon Pioneer National Historic Trail Auto Tour Route": {
+          "spriteBlank": "shield_us_nht_mopi"
+        },
         "Oregon National Historic Trail Auto Tour Route": {
           "spriteBlank": "shield_us_nht_oreg"
         },
         "Overmountain Victory National Historic Trail Commemorative Motor Route": {
           "spriteBlank": "shield_us_nht_ovvi"
+        },
+        "Pony Express National Historic Trail Auto Tour Route": {
+          "spriteBlank": "shield_us_nht_poex"
         },
         "Selma to Montgomery National Historic Trail": {
           "spriteBlank": "shield_us_nht_semo"
@@ -2851,6 +2857,12 @@
     "US:ORSB": {
       "spriteBlank": [
         "shield_us_orsb"
+      ],
+      "notext": true
+    },
+    "US:PIPC": {
+      "spriteBlank": [
+        "shield_us_pipc"
       ],
       "notext": true
     },
@@ -5903,6 +5915,29 @@
       },
       "textColor": "white"
     },
+    "US:CO:Larimer:Estes_Park": {
+      "shapeBlank": {
+        "drawFunc": "roundedRectangle",
+        "params": {
+          "fillColor": "#006747",
+          "strokeColor": "white",
+          "radius": 2
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "roundedRect",
+        "options": {
+          "radius": 2
+        }
+      },
+      "padding": {
+        "left": 3,
+        "right": 3,
+        "top": 3,
+        "bottom": 3
+      },
+      "textColor": "white"
+    },
     "US:CO:Ouray": {
       "shapeBlank": {
         "drawFunc": "roundedRectangle",
@@ -8547,6 +8582,24 @@
         "right": 4,
         "top": 7,
         "bottom": 3
+      },
+      "bannerMap": {
+        "US:MN:Truck": [
+          "TRK"
+        ]
+      }
+    },
+    "US:MN:Business": {
+      "spriteBlank": [
+        "shield_us_mn_business_2",
+        "shield_us_mn_business_3"
+      ],
+      "textColor": "white",
+      "padding": {
+        "left": 4,
+        "right": 4,
+        "top": 7,
+        "bottom": 3
       }
     },
     "US:MN:Intercounty": {
@@ -9354,52 +9407,6 @@
       },
       "textColor": "black"
     },
-    "US:MN:Otter_Tail:CSAH": {
-      "shapeBlank": {
-        "drawFunc": "pentagon",
-        "params": {
-          "yOffset": 3,
-          "sideAngle": 0.2617993877991494,
-          "fillColor": "#003f87",
-          "strokeColor": "#ffcd00",
-          "radius1": 2,
-          "radius2": 0
-        }
-      },
-      "textLayout": {
-        "constraintFunc": "rect"
-      },
-      "padding": {
-        "left": 4.277568135664543,
-        "right": 4.277568135664543,
-        "top": 2.5,
-        "bottom": 3
-      },
-      "textColor": "white"
-    },
-    "US:MN:Otter_Tail:CR": {
-      "shapeBlank": {
-        "drawFunc": "roundedRectangle",
-        "params": {
-          "fillColor": "white",
-          "strokeColor": "black",
-          "radius": 2
-        }
-      },
-      "textLayout": {
-        "constraintFunc": "roundedRect",
-        "options": {
-          "radius": 2
-        }
-      },
-      "padding": {
-        "left": 3,
-        "right": 3,
-        "top": 3,
-        "bottom": 3
-      },
-      "textColor": "black"
-    },
     "US:MN:Pennington:CSAH": {
       "shapeBlank": {
         "drawFunc": "pentagon",
@@ -9930,52 +9937,6 @@
       "textColor": "white"
     },
     "US:MN:Stevens:CR": {
-      "shapeBlank": {
-        "drawFunc": "roundedRectangle",
-        "params": {
-          "fillColor": "white",
-          "strokeColor": "black",
-          "radius": 2
-        }
-      },
-      "textLayout": {
-        "constraintFunc": "roundedRect",
-        "options": {
-          "radius": 2
-        }
-      },
-      "padding": {
-        "left": 3,
-        "right": 3,
-        "top": 3,
-        "bottom": 3
-      },
-      "textColor": "black"
-    },
-    "US:MN:Todd:CSAH": {
-      "shapeBlank": {
-        "drawFunc": "pentagon",
-        "params": {
-          "yOffset": 3,
-          "sideAngle": 0.2617993877991494,
-          "fillColor": "#003f87",
-          "strokeColor": "#ffcd00",
-          "radius1": 2,
-          "radius2": 0
-        }
-      },
-      "textLayout": {
-        "constraintFunc": "rect"
-      },
-      "padding": {
-        "left": 4.277568135664543,
-        "right": 4.277568135664543,
-        "top": 2.5,
-        "bottom": 3
-      },
-      "textColor": "white"
-    },
-    "US:MN:Todd:CR": {
       "shapeBlank": {
         "drawFunc": "roundedRectangle",
         "params": {
@@ -12206,6 +12167,52 @@
       },
       "textColor": "black"
     },
+    "US:MN:Otter_Tail:CSAH": {
+      "shapeBlank": {
+        "drawFunc": "roundedRectangle",
+        "params": {
+          "fillColor": "white",
+          "strokeColor": "black",
+          "radius": 2
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "roundedRect",
+        "options": {
+          "radius": 2
+        }
+      },
+      "padding": {
+        "left": 3,
+        "right": 3,
+        "top": 3,
+        "bottom": 3
+      },
+      "textColor": "black"
+    },
+    "US:MN:Otter_Tail:CR": {
+      "shapeBlank": {
+        "drawFunc": "roundedRectangle",
+        "params": {
+          "fillColor": "white",
+          "strokeColor": "black",
+          "radius": 2
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "roundedRect",
+        "options": {
+          "radius": 2
+        }
+      },
+      "padding": {
+        "left": 3,
+        "right": 3,
+        "top": 3,
+        "bottom": 3
+      },
+      "textColor": "black"
+    },
     "US:MN:Rice:CSAH": {
       "shapeBlank": {
         "drawFunc": "roundedRectangle",
@@ -12414,6 +12421,52 @@
       "textColor": "black"
     },
     "US:MN:Swift:CR": {
+      "shapeBlank": {
+        "drawFunc": "roundedRectangle",
+        "params": {
+          "fillColor": "white",
+          "strokeColor": "black",
+          "radius": 2
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "roundedRect",
+        "options": {
+          "radius": 2
+        }
+      },
+      "padding": {
+        "left": 3,
+        "right": 3,
+        "top": 3,
+        "bottom": 3
+      },
+      "textColor": "black"
+    },
+    "US:MN:Todd:CSAH": {
+      "shapeBlank": {
+        "drawFunc": "roundedRectangle",
+        "params": {
+          "fillColor": "white",
+          "strokeColor": "black",
+          "radius": 2
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "roundedRect",
+        "options": {
+          "radius": 2
+        }
+      },
+      "padding": {
+        "left": 3,
+        "right": 3,
+        "top": 3,
+        "bottom": 3
+      },
+      "textColor": "black"
+    },
+    "US:MN:Todd:CR": {
       "shapeBlank": {
         "drawFunc": "roundedRectangle",
         "params": {
@@ -15424,29 +15477,6 @@
         "bottom": 6
       }
     },
-    "US:NV:Clark": {
-      "shapeBlank": {
-        "drawFunc": "pentagon",
-        "params": {
-          "yOffset": 3,
-          "sideAngle": 0.2617993877991494,
-          "fillColor": "#003f87",
-          "strokeColor": "#ffcd00",
-          "radius1": 2,
-          "radius2": 0
-        }
-      },
-      "textLayout": {
-        "constraintFunc": "rect"
-      },
-      "padding": {
-        "left": 4.277568135664543,
-        "right": 4.277568135664543,
-        "top": 2.5,
-        "bottom": 3
-      },
-      "textColor": "#ffcd00"
-    },
     "US:NV:Washoe": {
       "shapeBlank": {
         "drawFunc": "pentagon",
@@ -15469,6 +15499,19 @@
         "bottom": 3
       },
       "textColor": "#ffcd00"
+    },
+    "US:NV:Clark": {
+      "spriteBlank": "shield_us_nv_clark",
+      "textColor": "#003f87",
+      "textLayout": {
+        "constraintFunc": "ellipse"
+      },
+      "padding": {
+        "left": 6,
+        "right": 6,
+        "top": 6,
+        "bottom": 8
+      }
     },
     "US:NY": {
       "spriteBlank": [
@@ -15513,6 +15556,17 @@
       "textColor": "black",
       "ref": "LOOP"
     },
+    "US:NY:TBTA": {
+      "notext": true,
+      "overrideByName": {
+        "Brooklyn–Battery Tunnel": {
+          "spriteBlank": "shield_us_ny_tbta_hughlcarey"
+        },
+        "Queens–Midtown Tunnel": {
+          "spriteBlank": "shield_us_ny_tbta_queensmidtown"
+        }
+      }
+    },
     "US:NY:Thruway": {
       "noref": {
         "spriteBlank": "shield_us_ny_thruway"
@@ -15538,6 +15592,7 @@
       "colorLighten": "white",
       "colorDarken": "#006747",
       "refsByName": {
+        "Bear Mountain Parkway": "BMP",
         "Bear Mountain State Parkway": "BMP",
         "Bronx River Parkway": "BRP",
         "Cross County Parkway": "CCP",
@@ -15573,6 +15628,49 @@
         "right": 2,
         "top": 2,
         "bottom": 8
+      }
+    },
+    "US:NY:Scenic": {
+      "notext": true,
+      "bannerMap": {
+        "US:NY:Scenic:Alternate": [
+          "ALT"
+        ]
+      },
+      "overrideByName": {
+        "Adirondack Trail": {
+          "spriteBlank": "shield_us_ny_scenic_adirondack"
+        },
+        "Black River Trail": {
+          "spriteBlank": "shield_us_ny_scenic_blackriver"
+        },
+        "Catskill Mountains Scenic Byway": {
+          "spriteBlank": "shield_us_ny_scenic_catskillmountains"
+        },
+        "Central Adirondack Trail": {
+          "spriteBlank": "shield_us_ny_scenic_centraladirondack"
+        },
+        "Dude Ranch Trail": {
+          "spriteBlank": "shield_us_ny_scenic_duderanch"
+        },
+        "Durham Valley Scenic Byway": {
+          "spriteBlank": "shield_us_ny_scenic_durham"
+        },
+        "High Peaks Scenic Byway": {
+          "spriteBlank": "shield_us_ny_scenic_highpeaks"
+        },
+        "Maple Traditions Scenic Byway": {
+          "spriteBlank": "shield_us_ny_scenic_mapletraditions"
+        },
+        "Olympic Trail": {
+          "spriteBlank": "shield_us_ny_scenic_olympic"
+        },
+        "Roosevelt-Marcy Trail": {
+          "spriteBlank": "shield_us_ny_scenic_rooseveltmarcy"
+        },
+        "Southern Adirondack Trail": {
+          "spriteBlank": "shield_us_ny_scenic_southernadirondack"
+        }
       }
     },
     "US:NY:Albany": {
@@ -19324,6 +19422,19 @@
               "strokeColor": "white"
             }
           }
+        }
+      }
+    },
+    "US:PANYNJ": {
+      "notext": true,
+      "overrideByName": {
+        "Holland Tunnel": {
+          "spriteBlank": "shield_us_panynj_tunnel",
+          "colorLighten": "#bf2033"
+        },
+        "Lincoln Tunnel": {
+          "spriteBlank": "shield_us_panynj_tunnel",
+          "colorLighten": "#006747"
         }
       }
     },
@@ -26233,6 +26344,29 @@
       },
       "textColor": "white"
     },
+    "za:national": {
+      "shapeBlank": {
+        "drawFunc": "pentagon",
+        "params": {
+          "yOffset": 6,
+          "sideAngle": 0.2617993877991494,
+          "fillColor": "#003f87",
+          "strokeColor": "white",
+          "radius1": 0,
+          "radius2": 0
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "rect"
+      },
+      "padding": {
+        "left": 3.8756443470178588,
+        "right": 3.8756443470178588,
+        "top": 4,
+        "bottom": 3
+      },
+      "textColor": "#ffcd00"
+    },
     "am:national": {
       "shapeBlank": {
         "drawFunc": "roundedRectangle",
@@ -27903,7 +28037,7 @@
         ]
       }
     },
-    "ir:freeway": {
+    "IR:freeway": {
       "shapeBlank": {
         "drawFunc": "roundedRectangle",
         "params": {
@@ -29128,7 +29262,7 @@
       },
       "textColor": "black"
     },
-    "MY:E": {
+    "MY:expressway": {
       "shapeBlank": {
         "drawFunc": "hexagonVertical",
         "params": {
@@ -29286,6 +29420,29 @@
         "top": 2,
         "bottom": 7
       }
+    },
+    "SG:expressway": {
+      "shapeBlank": {
+        "drawFunc": "roundedRectangle",
+        "params": {
+          "fillColor": "#003f87",
+          "strokeColor": "white",
+          "radius": 2
+        }
+      },
+      "textLayout": {
+        "constraintFunc": "roundedRect",
+        "options": {
+          "radius": 2
+        }
+      },
+      "padding": {
+        "left": 3,
+        "right": 3,
+        "top": 3,
+        "bottom": 3
+      },
+      "textColor": "white"
     },
     "TR:motorway": {
       "shapeBlank": {
@@ -33841,6 +33998,18 @@
         "bottom": 3
       },
       "textColor": "white"
+    },
+    "NL:DR:Hunebed_Highway": {
+      "spriteBlank": [
+        "shield_nl_dr_hunebed"
+      ],
+      "textColor": "white",
+      "padding": {
+        "left": 4,
+        "right": 4,
+        "top": 6,
+        "bottom": 4
+      }
     },
     "pl:motorway": {
       "shapeBlank": {
