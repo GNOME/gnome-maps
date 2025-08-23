@@ -40,6 +40,17 @@ export class InstructionRow extends Gtk.ListBoxRow {
         this._instructionLabel.label = this.turnPoint.instruction;
         this._directionImage.icon_name = this._getIconName(transportation);
 
+        /* use smaller icon size for the start instruction to match size of
+         * turn point icons
+         */
+        if (turnPoint.type === TurnPoint.Type.START ||
+            turnPoint.type === TurnPoint.Type.END) {
+            this._directionImage.margin_start = 6;
+            this._directionImage.margin_end = 6;
+            this._directionImage.width_request = 18;
+            this._directionImage.icon_size = Gtk.IconSize.SMALL;
+        }
+
         if (this.turnPoint.distance > 0)
             this._distanceLabel.label = Utils.prettyDistance(this.turnPoint.distance);
     }
