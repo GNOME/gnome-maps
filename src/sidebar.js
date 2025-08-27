@@ -464,17 +464,20 @@ export class Sidebar extends Gtk.Grid {
     }
 
     _populateTransitItinerary(itinerary) {
+        const direct =
+            itinerary.legs.length === 1 && !itinerary.legs[0].isTransit;
+
         this._transitItineraryTimeLabel.label =
             itinerary.prettyPrintTimeInterval();
         this._transitItineraryDurationLabel.label =
             itinerary.prettyPrintDuration();
 
         this._clearTransitItinerary();
-        for (let i = 0; i < itinerary.legs.length; i++) {
-            let leg = itinerary.legs[i];
-            let row = new TransitLegRow({ leg: leg,
-                                          start: i === 0,
-                                          mapView: this._mapView });
+        for (const [i, leg] of itinerary.legs.entries()) {
+            const row = new TransitLegRow({ leg: leg,
+                                            start: i === 0,
+                                            direct: direct,
+                                            mapView: this._mapView });
             this._transitItineraryListBox.insert(row, -1);
         }
 
