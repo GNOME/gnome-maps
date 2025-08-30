@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2025-08-02 14:59+0000\n"
-"PO-Revision-Date: 2025-08-03 00:20+0200\n"
+"POT-Creation-Date: 2025-08-30 08:19+0000\n"
+"PO-Revision-Date: 2025-08-30 20:57+0200\n"
 "Last-Translator: Fran Dieguez <fran.dieguez@gnome.org>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -23,7 +23,7 @@ msgstr ""
 "X-DL-Module: gnome-maps\n"
 "X-DL-State: Translating\n"
 "X-DL-Team: gl\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 "X-Project-Style: gnome\n"
 
 #. Translators: This is the program name.
@@ -754,13 +754,9 @@ msgstr "Produciuse un fallo ao analizar o XML do documento"
 msgid "Missing required attributes"
 msgstr "Faltan atributos requiridos"
 
-#: lib/maps-osm.c:451 lib/maps-osm.c:494
+#: lib/maps-osm.c:451
 msgid "Could not find OSM element"
 msgstr "Non foi posíbel atopar o elemento de OSM"
-
-#: lib/maps-osm.c:508
-msgid "Could not find user element"
-msgstr "Non foi posíbel atopar o elemento do usuario"
 
 #: src/application.js:74
 msgid "A path to a local tiles directory structure"
@@ -791,16 +787,16 @@ msgstr "Mapas non válidos: URI: %s"
 #. * exported image with coordinates. The .png extension should be kept
 #. * intact in the translated string.
 #.
-#: src/exportViewDialog.js:72
+#: src/exportViewDialog.js:70
 #, javascript-format
 msgid "Maps at %f, %f.png"
 msgstr "Mapas en %f, %f.png"
 
-#: src/exportViewDialog.js:87
+#: src/exportViewDialog.js:81
 msgid "PNG"
 msgstr "PNG"
 
-#: src/exportViewDialog.js:138
+#: src/exportViewDialog.js:132
 msgid "Unable to export view"
 msgstr "Non foi posíbel exportar a vista"
 
@@ -935,37 +931,37 @@ msgstr "Lugar engadido en OpenStreetMap"
 
 #. switch back to the sign-in view, and show a toast indicating
 #. that verification failed
-#: src/osmAccountDialog.js:134
+#: src/osmAccountDialog.js:187
 msgid "The verification code didn’t match, please try again."
 msgstr "O código de verificación non coincide, probe de novo."
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: src/osmConnection.js:335
+#: src/osmConnection.js:376
 msgid "Incorrect user name or password"
 msgstr "Nome de usuario ou contrasinal non correcto"
 
-#: src/osmConnection.js:337
+#: src/osmConnection.js:378
 msgid "Success"
 msgstr "Éxito"
 
-#: src/osmConnection.js:339
+#: src/osmConnection.js:380
 msgid "Bad request"
 msgstr "Solicitude non válida"
 
-#: src/osmConnection.js:341
+#: src/osmConnection.js:382
 msgid "Object not found"
 msgstr "O obxecto non se atopou"
 
-#: src/osmConnection.js:343
+#: src/osmConnection.js:384
 msgid "Conflict, someone else has just modified the object"
 msgstr "Conflito, alguén modificou o obxecto"
 
-#: src/osmConnection.js:345
+#: src/osmConnection.js:386
 msgid "Object has been deleted"
 msgstr "O obxecto foi eliminado"
 
-#: src/osmConnection.js:347
+#: src/osmConnection.js:388
 msgid "Way or relation refers to non-existing children"
 msgstr "A forma ou relación refírese aos fillos non existentes"
 
@@ -1669,7 +1665,7 @@ msgid "Restaurants"
 msgstr "Restaurantes"
 
 #: src/poiCategories.js:205
-msgid "Vegan & Vegatarian Restaurants"
+msgid "Vegan & Vegetarian Restaurants"
 msgstr "Restaurantes veganos e vexetarianos"
 
 #: src/poiCategories.js:212
@@ -2400,444 +2396,3 @@ msgstr "Faga un xiro en U cara %s"
 #: src/transitplugins/openTripPlanner2.js:330
 msgid "Make a right u-turn"
 msgstr "Faga un xiro en U á dereita"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Switch to street view"
-#~ msgstr "Trocar á vista de rúa"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Switch to aerial view"
-#~ msgstr "Trocar á vista aérea"
-
-#~ msgid "Pedestrian"
-#~ msgstr "Peonil"
-
-#~ msgid "Bike"
-#~ msgstr "Bicicleta"
-
-#~ msgid "Car"
-#~ msgstr "Coche"
-
-#~ msgid "Add Location"
-#~ msgstr "Engadir localización"
-
-#~ msgid "Postal code"
-#~ msgstr "Código postal"
-
-#~ msgctxt "dialog title"
-#~ msgid "Edit on OpenStreetMap"
-#~ msgstr "Editar en OpenStreetMap"
-
-#~ msgid "_Add Field"
-#~ msgstr "_Engadir campo"
-
-#~ msgid "Comment"
-#~ msgstr "Comentario"
-
-#~ msgid "_Next"
-#~ msgstr "_Seguinte"
-
-#~ msgid "Article"
-#~ msgstr "Artigo"
-
-#~ msgid "The official name. This is typically what appears on signs."
-#~ msgstr "O nome oficial. Isto é o aparece normalmente nos sinais."
-
-#~ msgid "This is not a valid URL. Make sure to include http:// or https://."
-#~ msgstr "Esta non é un URL válido. Asegúrese que inclúe http:// ou https://."
-
-#~ msgid ""
-#~ "The official website. Try to use the most basic form of a URL i.e. http://"
-#~ "example.com instead of http://example.com/index.html."
-#~ msgstr ""
-#~ "O sitio web oficial. Tente usar o formulario máis básico de URL p.ex. "
-#~ "http://exemplo.gal no lugar de http://exemplo.gal/index.html."
-
-#~ msgid ""
-#~ "Phone number. Use the international format, starting with a + sign. "
-#~ "Beware of local privacy laws, especially for private phone numbers."
-#~ msgstr ""
-#~ "Número de teléfono. Use o formato internacional, comezando polo signo +. "
-#~ "Teña en conta as leis de privacidade locais."
-
-#~ msgid ""
-#~ "This is not a valid email address. Make sure to not include the mailto: "
-#~ "protocol prefix."
-#~ msgstr ""
-#~ "Esta non é un enderezo de correo electrónico válido. Asegúrese que non "
-#~ "inclúe o prefixo de protocolo «mailto:»."
-
-#~ msgid ""
-#~ "Contact email address for inquiries. Add only email addresses that are "
-#~ "intended to be publicly used."
-#~ msgstr ""
-#~ "Enderezo de correo electrónico de contacto para solicitudes. Engada só un "
-#~ "enderezo de correo electrónico para o seu uso de forma pública."
-
-#~ msgid "See the link in the label for help on format."
-#~ msgstr "Vexa a ligazón na etiqueta para obter axuda no formatado."
-
-#~ msgid ""
-#~ "Information used to inform other mappers about non-obvious information "
-#~ "about an element, the author’s intent when creating it, or hints for "
-#~ "further improvement."
-#~ msgstr ""
-#~ "Información usada para informar a outros mapeadores sobre información non "
-#~ "obvia sobre un elemento, un intento do autor de crealo ou pistas sobre "
-#~ "futuras melloras."
-
-#~ msgid "Select Type"
-#~ msgstr "Seleccione tipo"
-
-#~ msgid "_Done"
-#~ msgstr "_Feito"
-
-#~ msgid "Next"
-#~ msgstr "Seguinte"
-
-#~ msgid "Remove"
-#~ msgstr "Eliminar"
-
-#~ msgid ""
-#~ "The format used should include the language code and the article title "
-#~ "like “en:Article title”."
-#~ msgstr ""
-#~ "O formato usado debería incluír o código de idioma e o título do artigo "
-#~ "como «gl:Título do artigo»."
-
-#~ msgid ""
-#~ "Use the reload button to load the Wikidata tag for the selected article"
-#~ msgstr ""
-#~ "Use o botón de recargar para cargar a etiqueta de Wikidata para os "
-#~ "artigos seleccionados"
-
-#~ msgid "What's Here?"
-#~ msgstr "Que hai aquí?"
-
-#~ msgid "Enable Experimental Map"
-#~ msgstr "Activar o mapa experimental"
-
-#~ msgid "Copy"
-#~ msgstr "Copiar"
-
-#~ msgid "_Open"
-#~ msgstr "_Abrir"
-
-#~ msgid "Nothing found here!"
-#~ msgstr "Non se atopou nada aquí!"
-
-#~ msgid "E-mail"
-#~ msgstr "Correo electrónico"
-
-#~ msgid "This plugin doesn't support latest arrival"
-#~ msgstr "Este engadido non admite a última chegada"
-
-#~ msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
-#~ msgstr ""
-#~ "<span weight=\"bold\" size=\"x-large\">Iniciar sesión para editar mapas</"
-#~ "span>"
-
-#~ msgid ""
-#~ "Sign in to authorize access in a web browser.\n"
-#~ "Then fill in the obtained verification code here in the next step."
-#~ msgstr ""
-#~ "Iniciar sesión para autorizar o acceso nun navegador web.\n"
-#~ "Logo complete o código de verificación obtido no seguinte paso."
-
-#~ msgid "<span weight=\"bold\" size=\"x-large\">Signed In</span>"
-#~ msgstr "<span weight=\"bold\" size=\"x-large\">Sesión iniciada</span>"
-
-#~ msgid "Sign up"
-#~ msgstr "Rexistrarse"
-
-#~ msgid "Filesystem is read only"
-#~ msgstr "O sistema de ficheiros é de só lectura"
-
-#~ msgid "You do not have permission to save there"
-#~ msgstr "Non ten permiso para gardar aquí"
-
-#~ msgid "The directory does not exist"
-#~ msgstr "O cartafol non existe"
-
-#~ msgid ""
-#~ "Location was added to the map, note that it may take a while before it "
-#~ "shows on the map and in search results."
-#~ msgstr ""
-#~ "Engadiuse a localización ao mapa, teña en conta que pode tardar algún "
-#~ "tempo antes de que se mostre no mapa e nos resultados de busca."
-
-#~ msgid "Takeaway"
-#~ msgstr "Para levar"
-
-#~ msgid "Go to current location"
-#~ msgstr "Ir á localización actual"
-
-#~ msgid "Choose map type"
-#~ msgstr "Escolla o tipo de mapa"
-
-#~ msgid "Zoom in"
-#~ msgstr "Ampliar"
-
-#~ msgid "Drag to change order of the route"
-#~ msgstr "Arrastrar a orde de cambio de ruta"
-
-#~ msgid "A map application for GNOME"
-#~ msgstr "Unha aplicación de mapas para GNOME"
-
-#~ msgid "Failed to authorize access"
-#~ msgstr "Produciuse un fallo ao autorizar o acceso"
-
-#~ msgid "Try again"
-#~ msgstr "Ténteo de novo"
-
-#~ msgid "Use hybrid aerial tiles"
-#~ msgstr "Usar teselas aéreas híbridas"
-
-#~ msgid "Whether aerial tiles should use hybrid style (with labels)."
-#~ msgstr ""
-#~ "Indica se as teselas aéreas deberían usar o estilo híbrido (con etiquetas)"
-
-#~ msgid "Include route and markers"
-#~ msgstr "Incluír rutas e marcadores"
-
-#~ msgid "Show Labels"
-#~ msgstr "Mostrar etiquetas"
-
-#~ msgid "Foursquare check-in privacy setting"
-#~ msgstr "Configuración de privacidade do rexistro de Foursquare"
-
-#~ msgid ""
-#~ "Latest used Foursquare check-in privacy setting. Possible values are: "
-#~ "public, followers or private."
-#~ msgstr ""
-#~ "Última configuración de privacidade do rexistro de Foursquare. Os valores "
-#~ "posíbeis son: public, followers ou private."
-
-#~ msgid "Foursquare check-in Facebook broadcasting"
-#~ msgstr "Difusión en Facebook do rexistro de Foursquare"
-
-#~ msgid ""
-#~ "Indicates if Foursquare should broadcast the check-in as a post in the "
-#~ "Facebook account associated with the Foursquare account."
-#~ msgstr ""
-#~ "Indica se Foursquare debe difundir o rexistro como un mensaxe novo na "
-#~ "conta de Facebook asociada coa de Foursquare."
-
-#~ msgid "Foursquare check-in Twitter broadcasting"
-#~ msgstr "Difusión en Twitter do rexistro de Foursquare"
-
-#~ msgid ""
-#~ "Indicates if Foursquare should broadcast the check-in as a tweet in the "
-#~ "Twitter account associated with the Foursquare account."
-#~ msgstr ""
-#~ "Indica se Foursquare debe difundir o rexistro como un chío novo na conta "
-#~ "de Twitter asociada coa de Foursquare."
-
-#~ msgid "Post on Facebook"
-#~ msgstr "Enviar a Facebook"
-
-#~ msgid "Post on Twitter"
-#~ msgstr "Enviar a Twitter"
-
-#~ msgid "C_heck in"
-#~ msgstr "_Rexistrar"
-
-#~ msgid "Public"
-#~ msgstr "Público"
-
-#~ msgid "Private"
-#~ msgstr "Privado"
-
-#~ msgid "Maps is offline!"
-#~ msgstr "Mapas está desconectado!"
-
-#~ msgid ""
-#~ "Maps need an active internet connection to function properly, but one "
-#~ "can’t be found."
-#~ msgstr ""
-#~ "Mapa precisa unha conexión a internet activa para funcionar "
-#~ "correctamente, pero non se atopou ningunha."
-
-#~ msgid "Check your connection and proxy settings."
-#~ msgstr "Comprobe a súa conexión ou preferencias do seu proxy."
-
-#~ msgid "Password"
-#~ msgstr "Contrasinal"
-
-#~ msgid ""
-#~ "Sorry, that didn’t work. Please try again, or visit\n"
-#~ "<a href=\"https://www.openstreetmap.org/user/forgot-"
-#~ "password\">OpenStreetMap</a> to reset your password."
-#~ msgstr ""
-#~ "Isto non funcionou. Ténteo de novo ou visite\n"
-#~ "<a href=\"https://www.openstreetmap.org/user/forgot-"
-#~ "password\">OpenStreetMap</a> para restabelecer o seu contrasinal."
-
-#~ msgid "Check In…"
-#~ msgstr "Rexistrarse…"
-
-#~ msgid "Ignore network availability"
-#~ msgstr "Ignorar a dispoñibilidade da rede"
-
-#~ msgid "Select an account"
-#~ msgstr "Seleccione unha conta"
-
-#~ msgid "Select a place"
-#~ msgstr "Seleccione un lugar"
-
-#~ msgid ""
-#~ "Maps cannot find the place to check in to with Foursquare. Please select "
-#~ "one from this list."
-#~ msgstr ""
-#~ "Mapas non pode atopar un lugar onde rexistrarse con Foursquare. Por favor "
-#~ "seleccione un desde a lista."
-
-#, javascript-format
-#~ msgid "Check in to %s"
-#~ msgstr "Rexistrarse en %s"
-
-#, javascript-format
-#~ msgid "Write an optional message to check in to %s."
-#~ msgstr "Escriba unha mensaxe opcional para rexistrarse en %s."
-
-#, javascript-format
-#~ msgid "Cannot find “%s” in the social service"
-#~ msgstr "Non se pode atopar «%s» no servizo social"
-
-#~ msgid "Cannot find a suitable place to check-in in this location"
-#~ msgstr ""
-#~ "Non é posíbel atopar un lugar axeitado para rexistrarse nesta localización"
-
-#~ msgid ""
-#~ "Credentials have expired, please open Online Accounts to sign in and "
-#~ "enable this account"
-#~ msgstr ""
-#~ "As súas credenciais expiraron, abra as «Contas en liña» para iniciar "
-#~ "sesión e activar esta conta"
-
-#~ msgid "GNOME Maps"
-#~ msgstr "Mapas de GNOME"
-
-#~ msgid "Night mode"
-#~ msgstr "Modo noite"
-
-#~ msgid "Whether the application is in night mode."
-#~ msgstr "Indica se a aplicación está en modo noite."
-
-#~ msgid "Night Mode"
-#~ msgstr "Modo noite"
-
-#~ msgid ""
-#~ "You can even search for specific types of locations, such as “Pubs near "
-#~ "Main Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
-#~ msgstr ""
-#~ "Incluso pode buscar por tipos de localizacións específicos como «Bares "
-#~ "cerca de Rúa Nova, Compostela» ou «Puntos Wifi cerca de Praza de Galiza, "
-#~ "Vilagarcía»."
-
-#~ msgid "Facebook check-in privacy setting"
-#~ msgstr "Configuración de privacidade do rexistro de Facebook"
-
-#~ msgid ""
-#~ "Latest used Facebook check-in privacy setting. Possible values are: "
-#~ "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
-#~ msgstr ""
-#~ "Última configuración de privacidade do rexistro de Facebook. Os valores "
-#~ "posíbeis son: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS ou SELF."
-
-#~ msgid "Everyone"
-#~ msgstr "Todos"
-
-#~ msgid "Friends of friends"
-#~ msgstr "Amigos de amigos"
-
-#~ msgid "Just friends"
-#~ msgstr "Só amigos"
-
-#~ msgid "Just me"
-#~ msgstr "Só eu"
-
-#~ msgid ""
-#~ "Maps cannot find the place to check in to with Facebook. Please select "
-#~ "one from this list."
-#~ msgstr ""
-#~ "Mapas non pode atopar un lugar onde rexistrarse con Facebook. Por favor "
-#~ "seleccione un desde a lista."
-
-#~ msgid "Find a Route"
-#~ msgstr "Buscar unha ruta"
-
-#~ msgid "Check in here"
-#~ msgstr "Rexistrarse aquí"
-
-#~ msgid "Population:"
-#~ msgstr "Poboación:"
-
-#~ msgid "Altitude:"
-#~ msgstr "Altitude:"
-
-#~ msgid "Opening hours:"
-#~ msgstr "Horario de apertura:"
-
-#~ msgid "Internet access:"
-#~ msgstr "Acceso a internet:"
-
-#~ msgid "Toilets:"
-#~ msgstr "Baño:"
-
-#~ msgid "Wheelchair access:"
-#~ msgstr "Acceso con cadeira de rodas:"
-
-#~ msgid "Phone:"
-#~ msgstr "Teléfono:"
-
-#~ msgid "yes"
-#~ msgstr "sí"
-
-#~ msgid "limited"
-#~ msgstr "limitado"
-
-#~ msgid "no"
-#~ msgstr "non"
-
-#~ msgid "designated"
-#~ msgstr "designado"
-
-#~ msgid "OpenStreetMap URL is not valid"
-#~ msgstr "O URL de OpenStreetMap non é válido"
-
-#~ msgctxt "time range list"
-#~ msgid "%s %s"
-#~ msgstr "%s %s"
-
-#~ msgctxt "time range list"
-#~ msgid "%s %s %s"
-#~ msgstr "%s %s %s"
-
-#~ msgctxt "time range component"
-#~ msgid "%s %s"
-#~ msgstr "%s %s"
-
-#~ msgid "wired"
-#~ msgstr "con fíos"
-
-#~ msgid "terminal"
-#~ msgstr "terminal"
-
-#~ msgid "service"
-#~ msgstr "servizo"
-
-#~ msgid "Don’t have an account?"
-#~ msgstr "Non ten unha conta?"
-
-#~ msgid "%f h"
-#~ msgstr "%f h"
-
-#~ msgid "%f min"
-#~ msgstr "%f min"
-
-#~ msgid "%f s"
-#~ msgstr "%f s"
-
-#~ msgid "Add destination"
-#~ msgstr "Engadir destino"
