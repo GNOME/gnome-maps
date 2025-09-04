@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2025-08-07 18:44+0000\n"
-"PO-Revision-Date: 2025-08-08 11:16+0300\n"
+"POT-Creation-Date: 2025-08-23 22:17+0000\n"
+"PO-Revision-Date: 2025-08-24 12:56+0300\n"
 "Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -365,7 +365,7 @@ msgstr "_Подтвердить"
 
 #: data/ui/osm-account-dialog.ui:112
 msgid "Signed In"
-msgstr "Вошел"
+msgstr "Вход выполнен"
 
 #: data/ui/osm-account-dialog.ui:113
 msgid "Your OpenStreetMap account is active."
@@ -755,13 +755,9 @@ msgstr "Не удалось разобрать документ XML"
 msgid "Missing required attributes"
 msgstr "Пропущены обязательные атрибуты"
 
-#: lib/maps-osm.c:451 lib/maps-osm.c:494
+#: lib/maps-osm.c:451
 msgid "Could not find OSM element"
 msgstr "Не удалось найти элемент OSM"
-
-#: lib/maps-osm.c:508
-msgid "Could not find user element"
-msgstr "Не удалось найти элемент пользователя"
 
 # сомнительно, требует проверки
 #: src/application.js:74
@@ -794,16 +790,16 @@ msgstr "Недопустимые карты: URI: %s"
 #. * exported image with coordinates. The .png extension should be kept
 #. * intact in the translated string.
 #.
-#: src/exportViewDialog.js:72
+#: src/exportViewDialog.js:70
 #, javascript-format
 msgid "Maps at %f, %f.png"
 msgstr "Карты на %f, %f.png"
 
-#: src/exportViewDialog.js:87
+#: src/exportViewDialog.js:81
 msgid "PNG"
 msgstr "PNG"
 
-#: src/exportViewDialog.js:138
+#: src/exportViewDialog.js:132
 msgid "Unable to export view"
 msgstr "Не удалось экспортировать просматриваемую область"
 
@@ -942,37 +938,37 @@ msgstr "Местоположение было добавлено в OpenStreetMa
 
 #. switch back to the sign-in view, and show a toast indicating
 #. that verification failed
-#: src/osmAccountDialog.js:134
+#: src/osmAccountDialog.js:187
 msgid "The verification code didn’t match, please try again."
 msgstr "Проверочный код не совпадает, попробуйте снова."
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: src/osmConnection.js:335
+#: src/osmConnection.js:376
 msgid "Incorrect user name or password"
 msgstr "Неверное имя пользователя или пароль"
 
-#: src/osmConnection.js:337
+#: src/osmConnection.js:378
 msgid "Success"
 msgstr "Успешно"
 
-#: src/osmConnection.js:339
+#: src/osmConnection.js:380
 msgid "Bad request"
 msgstr "Неверный запрос"
 
-#: src/osmConnection.js:341
+#: src/osmConnection.js:382
 msgid "Object not found"
 msgstr "Объект не найден"
 
-#: src/osmConnection.js:343
+#: src/osmConnection.js:384
 msgid "Conflict, someone else has just modified the object"
 msgstr "Конфликт: кто-то ещё только что изменил объект"
 
-#: src/osmConnection.js:345
+#: src/osmConnection.js:386
 msgid "Object has been deleted"
 msgstr "Объект был удалён"
 
-#: src/osmConnection.js:347
+#: src/osmConnection.js:388
 msgid "Way or relation refers to non-existing children"
 msgstr "Путь или связь ссылается на несуществующий дочерний объект"
 
@@ -2418,6 +2414,9 @@ msgstr "Выполните правый разворот на %s"
 #: src/transitplugins/openTripPlanner2.js:330
 msgid "Make a right u-turn"
 msgstr "Разворот направо"
+
+#~ msgid "Could not find user element"
+#~ msgstr "Не удалось найти элемент пользователя"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Switch to street view"
