@@ -200,9 +200,11 @@
             <property name="name">transit</property>
             <property name="child">
               <object class="GtkGrid">
-                <property name="halign">end</property>
+                <property name="halign">fill</property>
                 <child>
                   <object class="GtkLabel" id="transitAttributionLabel">
+                    <property name="halign">center</property>
+                    <property name="hexpand">True</property>
                     <property name="focusable">1</property>
                     <property name="receives_default">1</property>
                     <property name="use_markup">1</property>
@@ -219,7 +221,7 @@
                   <object class="GtkMenuButton">
                     <property name="tooltip-text" translatable="yes">More Information</property>
                     <property name="popover">transitDisclaimerPopover</property>
-                    <property name="halign">end</property>
+                    <property name="halign">fill</property>
                     <property name="margin-top">6</property>
                     <property name="margin-bottom">6</property>
                     <property name="margin-end">6</property>
