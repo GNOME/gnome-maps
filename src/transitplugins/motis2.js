@@ -75,7 +75,7 @@ export class Motis2 {
 
     _fetch(extendPrevious = false) {
         const query = this._getQuery(extendPrevious);
-        const request = Soup.Message.new('GET', this._baseUrl + '/api/v3/plan?' +
+        const request = Soup.Message.new('GET', this._baseUrl + '/api/v4/plan?' +
                                          query.toString());
 
         // if trying to extend trips, and there was no page cursor, show no results
@@ -277,6 +277,7 @@ export class Motis2 {
                          textColor:               leg.routeTextColor,
                          route:                   this._getRoute(leg),
                          routeType:               isTransit ?
+                                                  leg.routeType ??
                                                   this._getRouteType(leg) :
                                                   undefined,
                          agencyName:              leg.agencyName,
@@ -432,12 +433,7 @@ export class Motis2 {
     }
 
     _getRoute(leg) {
-        if (leg.routeShortName?.startsWith('Bus '))
-            return leg.routeShortName.substring('Bus '.length);
-        else if (leg.routeShortName?.startsWith('Tram '))
-            return leg.routeShortName.substring('Tram '.length);
-        else
-            return leg.routeShortName;
+        return leg.displayName ?? leg.shortName;
     }
 
     _getRouteType(leg) {
