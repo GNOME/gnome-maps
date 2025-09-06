@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2025-02-23 21:34+0000\n"
-"PO-Revision-Date: 2025-02-24 17:09+0200\n"
+"POT-Creation-Date: 2025-09-06 07:51+0000\n"
+"PO-Revision-Date: 2025-09-06 21:21+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -26,18 +26,157 @@ msgstr ""
 #. * here works though. And yields a proper label in the gnome-shell
 #. * overview.
 #.
-#. Translators: This is the program name.
-#: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
-#: data/ui/main-window.ui:27 src/application.js:61 src/mainWindow.js:118
-#: src/mainWindow.js:590
+#: data/org.gnome.Maps.desktop.in.in:3 data/org.gnome.Maps.metainfo.xml.in.in:6
+#: data/ui/main-window.ui:49 src/application.js:62 src/mainWindow.js:118
 msgid "Maps"
 msgstr "Карти"
 
-#: data/org.gnome.Maps.appdata.xml.in.in:7
+#: data/org.gnome.Maps.desktop.in.in:4
+msgid "A simple maps application"
+msgstr "Проста програма для роботи з картами"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Maps.desktop.in.in:13
+msgid "Maps;"
+msgstr "Карти;"
+
+#: data/org.gnome.Maps.desktop.in.in:16
+msgid "Allows your location to be shown on the map."
+msgstr "Дозволити вашому перебуванню показуватись на карті."
+
+#: data/org.gnome.Maps.gschema.xml:16
+msgid "last viewed location"
+msgstr "останнє переглянуте місце"
+
+#: data/org.gnome.Maps.gschema.xml:17
+msgid "Coordinates of last viewed location."
+msgstr "Координати останнього переглянутого місця."
+
+#: data/org.gnome.Maps.gschema.xml:21
+msgid "zoom"
+msgstr "масштаб"
+
+#: data/org.gnome.Maps.gschema.xml:22
+msgid "Zoom level"
+msgstr "Масштабування"
+
+#: data/org.gnome.Maps.gschema.xml:26
+msgid "rotation"
+msgstr "обертання"
+
+#: data/org.gnome.Maps.gschema.xml:27
+msgid "Map rotation in radians"
+msgstr "Обертання карти у радіанах"
+
+#: data/org.gnome.Maps.gschema.xml:31
+msgid "Map type"
+msgstr "Тип карти"
+
+#: data/org.gnome.Maps.gschema.xml:32
+msgid "The type of map to display (street, aerial, etc.)"
+msgstr "Тип карти, яку слід показати (вулиці, супутникова тощо)"
+
+#: data/org.gnome.Maps.gschema.xml:36
+msgid "Window size"
+msgstr "Розмір вікна"
+
+#: data/org.gnome.Maps.gschema.xml:37
+msgid "Window size (width and height)."
+msgstr "Розмір вікна (ширина і висота)."
+
+#: data/org.gnome.Maps.gschema.xml:41
+msgid "Window position"
+msgstr "Положення вікна"
+
+#: data/org.gnome.Maps.gschema.xml:42
+msgid "Window position (X and Y)."
+msgstr "Положення вікна (X і Y)."
+
+#: data/org.gnome.Maps.gschema.xml:46
+msgid "Window maximized"
+msgstr "Вікно розгорнуто"
+
+#: data/org.gnome.Maps.gschema.xml:47
+msgid "Window maximization state"
+msgstr "Стан розгорнутого вікна"
+
+#: data/org.gnome.Maps.gschema.xml:51
+msgid "Maximum number of search results"
+msgstr "Максимальна кількість пошукових результатів"
+
+#: data/org.gnome.Maps.gschema.xml:52
+msgid "Maximum number of search results from geocode search."
+msgstr "Максимальна кількість пошукових результатів з пошуку geocode."
+
+#: data/org.gnome.Maps.gschema.xml:56
+msgid "Number of recent places to store"
+msgstr "Кількість недавно відвіданих місць, які зберігати"
+
+#: data/org.gnome.Maps.gschema.xml:57
+msgid "Number of recently visited places to store."
+msgstr "Кількість недавно відвіданих місць, які слід зберігати."
+
+#: data/org.gnome.Maps.gschema.xml:61
+msgid "Number of recent routes to store"
+msgstr "Кількість недавніх маршрутів, які зберігати"
+
+#: data/org.gnome.Maps.gschema.xml:62
+msgid "Number of recently visited routes to store."
+msgstr "Кількість недавно відвіданих маршрутів, які слід зберігати."
+
+#: data/org.gnome.Maps.gschema.xml:66
+msgid "OpenStreetMap username or email address"
+msgstr "Користувач або поштова скринька у OpenStreetMap"
+
+#: data/org.gnome.Maps.gschema.xml:67
+msgid "Indicates if the user has signed in to edit OpenStreetMap data."
+msgstr ""
+"Показує, чи користувач увійшов у систему OpenStreetMap для редагування даних."
+
+#: data/org.gnome.Maps.gschema.xml:71
+msgid "Last used transportation type for routing"
+msgstr "Останній використаний тип транспорту для побудови маршрутів"
+
+#: data/org.gnome.Maps.gschema.xml:75
+msgid "Show scale"
+msgstr "Показувати шкалу"
+
+#: data/org.gnome.Maps.gschema.xml:76
+msgid "Whether to show the scale."
+msgstr "Чи слід показувати шкалу."
+
+#: data/org.gnome.Maps.gschema.xml:80
+msgid "Map tile URL pattern"
+msgstr "Взірець адреси плитки карти"
+
+#: data/org.gnome.Maps.gschema.xml:81
+msgid ""
+"The URL pattern for the vector tile source to use. Note that the map style "
+"relies on certain extensions compared to upstream Planetiler OpenMapTiles "
+"Profile"
+msgstr ""
+"Шаблон адреси для джерела векторних плиток. Зверніть увагу, що стиль карти"
+" залежить від певних розширень порівняно з профілем OpenMapTiles основного"
+" компонента Planetiler."
+
+#: data/org.gnome.Maps.gschema.xml:85
+msgid "Units to show measurements in"
+msgstr "Одиниці, у яких буде показано результати вимірів"
+
+#: data/org.gnome.Maps.gschema.xml:86
+msgid ""
+"How to show measurements. ('system' uses default for system locale, 'metric' "
+"always show metric units, 'imperial' always show imperial units)."
+msgstr ""
+"Як показувати одиниці вимірювання. («system» використовує типове значення"
+" для системної локалі, «metric» завжди показує метричні одиниці, «imperial»"
+" завжди показує імперські одиниці)."
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:7
 msgid "Find places around the world"
 msgstr "Знаходити місця по світу"
 
-#: data/org.gnome.Maps.appdata.xml.in.in:9
+#: data/org.gnome.Maps.metainfo.xml.in.in:9
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
@@ -47,7 +186,7 @@ msgstr ""
 "знайти місце, яке ви шукаєте, через пошук міста, вулиці, ба визначити місце "
 "для зустрічі з друзями."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:14
+#: data/org.gnome.Maps.metainfo.xml.in.in:14
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
@@ -56,123 +195,9 @@ msgstr ""
 "осіб по всій планеті."
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.appdata.xml.in.in:512 src/mainWindow.js:587
+#: data/org.gnome.Maps.metainfo.xml.in.in:559
 msgid "The GNOME Project"
 msgstr "Проєкт GNOME"
-
-#: data/org.gnome.Maps.desktop.in.in:5
-msgid "A simple maps application"
-msgstr "Проста програма для роботи з картами"
-
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Maps.desktop.in.in:14
-msgid "Maps;"
-msgstr "Карти;"
-
-#: data/org.gnome.Maps.desktop.in.in:17
-msgid "Allows your location to be shown on the map."
-msgstr "Дозволити вашому перебуванню показуватись на карті."
-
-#: data/org.gnome.Maps.gschema.xml:11
-msgid "last viewed location"
-msgstr "останнє переглянуте місце"
-
-#: data/org.gnome.Maps.gschema.xml:12
-msgid "Coordinates of last viewed location."
-msgstr "Координати останнього переглянутого місця."
-
-#: data/org.gnome.Maps.gschema.xml:16
-msgid "zoom"
-msgstr "масштаб"
-
-#: data/org.gnome.Maps.gschema.xml:17
-msgid "Zoom level"
-msgstr "Масштабування"
-
-#: data/org.gnome.Maps.gschema.xml:21
-msgid "rotation"
-msgstr "обертання"
-
-#: data/org.gnome.Maps.gschema.xml:22
-msgid "Map rotation in radians"
-msgstr "Обертання карти у радіанах"
-
-#: data/org.gnome.Maps.gschema.xml:26
-msgid "Map type"
-msgstr "Тип карти"
-
-#: data/org.gnome.Maps.gschema.xml:27
-msgid "The type of map to display (street, aerial, etc.)"
-msgstr "Тип карти, яку слід показати (вулиці, супутникова тощо)"
-
-#: data/org.gnome.Maps.gschema.xml:31
-msgid "Window size"
-msgstr "Розмір вікна"
-
-#: data/org.gnome.Maps.gschema.xml:32
-msgid "Window size (width and height)."
-msgstr "Розмір вікна (ширина і висота)."
-
-#: data/org.gnome.Maps.gschema.xml:36
-msgid "Window position"
-msgstr "Положення вікна"
-
-#: data/org.gnome.Maps.gschema.xml:37
-msgid "Window position (X and Y)."
-msgstr "Положення вікна (X і Y)."
-
-#: data/org.gnome.Maps.gschema.xml:41
-msgid "Window maximized"
-msgstr "Вікно розгорнуто"
-
-#: data/org.gnome.Maps.gschema.xml:42
-msgid "Window maximization state"
-msgstr "Стан розгорнутого вікна"
-
-#: data/org.gnome.Maps.gschema.xml:46
-msgid "Maximum number of search results"
-msgstr "Максимальна кількість пошукових результатів"
-
-#: data/org.gnome.Maps.gschema.xml:47
-msgid "Maximum number of search results from geocode search."
-msgstr "Максимальна кількість пошукових результатів з пошуку geocode."
-
-#: data/org.gnome.Maps.gschema.xml:51
-msgid "Number of recent places to store"
-msgstr "Кількість недавно відвіданих місць, які зберігати"
-
-#: data/org.gnome.Maps.gschema.xml:52
-msgid "Number of recently visited places to store."
-msgstr "Кількість недавно відвіданих місць, які слід зберігати."
-
-#: data/org.gnome.Maps.gschema.xml:56
-msgid "Number of recent routes to store"
-msgstr "Кількість недавніх маршрутів, які зберігати"
-
-#: data/org.gnome.Maps.gschema.xml:57
-msgid "Number of recently visited routes to store."
-msgstr "Кількість недавно відвіданих маршрутів, які слід зберігати."
-
-#: data/org.gnome.Maps.gschema.xml:61
-msgid "OpenStreetMap username or email address"
-msgstr "Користувач або поштова скринька у OpenStreetMap"
-
-#: data/org.gnome.Maps.gschema.xml:62
-msgid "Indicates if the user has signed in to edit OpenStreetMap data."
-msgstr ""
-"Показує, чи користувач увійшов у систему OpenStreetMap для редагування даних."
-
-#: data/org.gnome.Maps.gschema.xml:66
-msgid "Last used transportation type for routing"
-msgstr "Останній використаний тип транспорту для побудови маршрутів"
-
-#: data/org.gnome.Maps.gschema.xml:70
-msgid "Show scale"
-msgstr "Показувати шкалу"
-
-#: data/org.gnome.Maps.gschema.xml:71
-msgid "Whether to show the scale."
-msgstr "Чи слід показувати шкалу."
 
 #: data/ui/context-menu.ui:6
 msgid "Route from Here"
@@ -250,106 +275,6 @@ msgstr "Улюблене"
 msgid "Route Planner"
 msgstr "Планувальник маршрутів"
 
-#: data/ui/help-overlay.ui:12
-msgctxt "shortcut window"
-msgid "General"
-msgstr "Загальне"
-
-#: data/ui/help-overlay.ui:15
-msgctxt "shortcut window"
-msgid "Show Shortcuts"
-msgstr "Показати клавіатурні скорочення"
-
-#: data/ui/help-overlay.ui:21
-msgctxt "shortcut window"
-msgid "Search"
-msgstr "Пошук"
-
-#: data/ui/help-overlay.ui:27
-msgctxt "shortcut window"
-msgid "Explore points-of-interest"
-msgstr "Ознайомитися із цікавими точками"
-
-#: data/ui/help-overlay.ui:33
-msgctxt "shortcut window"
-msgid "Show last search results"
-msgstr "Показати результати останнього пошуку"
-
-#: data/ui/help-overlay.ui:39
-msgctxt "shortcut window"
-msgid "Toggle route planner"
-msgstr "Перемкнути планувальника маршрутів"
-
-#: data/ui/help-overlay.ui:45
-msgctxt "shortcut window"
-msgid "Print route"
-msgstr "Надрукувати маршрут"
-
-#: data/ui/help-overlay.ui:51
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Вийти"
-
-#: data/ui/help-overlay.ui:57
-msgctxt "shortcut window"
-msgid "Open main menu"
-msgstr "Відкрити головне меню"
-
-#: data/ui/help-overlay.ui:65
-msgctxt "shortcut window"
-msgid "Map View"
-msgstr "Перегляд карти"
-
-#: data/ui/help-overlay.ui:68
-msgctxt "shortcut window"
-msgid "Zoom in"
-msgstr "Наблизити"
-
-#: data/ui/help-overlay.ui:74
-msgctxt "shortcut window"
-msgid "Zoom out"
-msgstr "Віддалити"
-
-#: data/ui/help-overlay.ui:80
-msgctxt "shortcut window"
-msgid "Rotate clockwise"
-msgstr "Обернути за годинниковою стрілкою"
-
-#: data/ui/help-overlay.ui:86
-msgctxt "shortcut window"
-msgid "Rotate counter-clockwise"
-msgstr "Обернути проти годинникової стрілки"
-
-#: data/ui/help-overlay.ui:92
-msgctxt "shortcut window"
-msgid "Reset rotation"
-msgstr "Скинути обертання"
-
-#: data/ui/help-overlay.ui:98
-msgctxt "shortcut window"
-msgid "Toggle scale"
-msgstr "Перемкнути шкалу"
-
-#: data/ui/help-overlay.ui:104
-msgctxt "shortcut window"
-msgid "Go to current location"
-msgstr "Перейти до поточної місцевості"
-
-#: data/ui/help-overlay.ui:114
-msgctxt "shortcut window"
-msgid "Switch to street view"
-msgstr "Перемкнутися на перегляд вулиць"
-
-#: data/ui/help-overlay.ui:121
-msgctxt "shortcut window"
-msgid "Switch to aerial view"
-msgstr "Перемкнутися на супутниковий перегляд"
-
-#: data/ui/help-overlay.ui:127
-msgctxt "shortcut window"
-msgid "Open shape layer"
-msgstr "Відкрити шар форм"
-
 #: data/ui/layers-popover.ui:7
 msgid "Show Scale"
 msgstr "Показувати шкалу"
@@ -367,15 +292,35 @@ msgstr "Відкрити обліковий запис у OpenStreetMap…"
 msgid "Export as Image…"
 msgstr "Експортувати як зображення…"
 
+#. Translators: This is a submenu for selecting length measurements units
 #: data/ui/main-window.ui:17
+msgid "Measurement Units"
+msgstr "Одиниці виміру"
+
+#. Translators: This is a menu item for showing measurements in units corresponding to the system locale
+#: data/ui/main-window.ui:20
+msgid "_System Default"
+msgstr "_Типове для системи"
+
+#. Translators: This a menu item for showing measurements in metric units
+#: data/ui/main-window.ui:25
+msgid "_Metric"
+msgstr "_Метричні"
+
+#. Translators: This is a menu item for showing measurements in imperial units
+#: data/ui/main-window.ui:30
+msgid "_Imperial"
+msgstr "_Імперські"
+
+#: data/ui/main-window.ui:39
 msgid "_Keyboard Shortcuts"
 msgstr "_Клавіатурні скорочення"
 
-#: data/ui/main-window.ui:22
+#: data/ui/main-window.ui:44
 msgid "About Maps"
 msgstr "Про «Карти»"
 
-#: data/ui/main-window.ui:48
+#: data/ui/main-window.ui:70
 msgid "Main Menu"
 msgstr "Головне меню"
 
@@ -438,86 +383,75 @@ msgid "_Discard"
 msgstr "Від_кинути"
 
 #: data/ui/osm-edit-dialog.ui:5
-#| msgid "Copy Location"
 msgctxt "dialog title"
 msgid "Edit Location"
 msgstr "Редагувати адресу"
 
 #: data/ui/osm-edit-dialog.ui:25
-#| msgid "Loading"
 msgid "Loading…"
 msgstr "Завантаження…"
 
 #: data/ui/osm-edit-dialog.ui:38 data/ui/osm-edit-dialog.ui:53
-#: data/ui/osm-edit-dialog.ui:101
-#| msgid "Copy Location"
 msgid "Edit Location"
 msgstr "Редагувати адресу"
 
 #: data/ui/osm-edit-dialog.ui:54
-#| msgid "Edit on OpenStreetMap"
 msgid "Edit an existing location in OpenStreetMap"
 msgstr "Редагувати наявне місце у OpenStreetMap"
 
-#: data/ui/osm-edit-dialog.ui:80 src/mapView.js:638
-#: src/transitplugins/motis2.js:350 src/transitplugins/openTripPlanner.js:1238
-#: src/transitplugins/openTripPlanner2.js:267
+#: data/ui/osm-edit-dialog.ui:68 src/mapView.js:714
+#: src/transitplugins/motis2.js:367 src/transitplugins/openTripPlanner.js:1242
+#: src/transitplugins/openTripPlanner2.js:271
 msgid "Continue"
 msgstr "Продовжуйте"
 
-#: data/ui/osm-edit-dialog.ui:136
-#| msgid "Location Settings"
+#: data/ui/osm-edit-dialog.ui:89
 msgid "Location Type"
 msgstr "Тип місця"
 
 #. Translators: This refers to searching for point-of-interest types. Search is a verb.
-#: data/ui/osm-edit-dialog.ui:264
-#| msgid "Search for places"
+#: data/ui/osm-edit-dialog.ui:236
 msgid "Search types"
 msgstr "Типи пошуку"
 
-#: data/ui/osm-edit-dialog.ui:278
-#| msgid "Recently Used"
+#: data/ui/osm-edit-dialog.ui:250
 msgid "Recently Used Types"
 msgstr "Нещодавно використані типи"
 
-#: data/ui/osm-edit-dialog.ui:301
+#: data/ui/osm-edit-dialog.ui:273
 msgid "Edit Map"
 msgstr "Редагувати карту"
 
-#: data/ui/osm-edit-dialog.ui:320
+#: data/ui/osm-edit-dialog.ui:292
 msgid "Almost There!"
 msgstr "Майже все!"
 
-#: data/ui/osm-edit-dialog.ui:321
-#| msgid ""
-#| "Map changes will be visible on all maps that use\n"
-#| "OpenStreetMap data."
+#: data/ui/osm-edit-dialog.ui:293
 msgid ""
 "Describe your map changes. They will be visible on all maps that use "
 "OpenStreetMap data."
 msgstr ""
-"Опишіть ваші зміни карти. Зміни буде внесено до усіх карт, які"
-" використовують дані OpenStreetMap."
+"Опишіть ваші зміни карти. Зміни буде внесено до усіх карт, які "
+"використовують дані OpenStreetMap."
 
-#: data/ui/osm-edit-dialog.ui:367
+#: data/ui/osm-edit-dialog.ui:339
 msgid "Submit"
 msgstr "Надіслати"
 
-#: data/ui/osm-edit-dialog.ui:394 src/osmEditDialog.js:235
-#: src/osmEditDialog.js:558 src/osmEditDialog.js:948 src/translations.js:297
+#: data/ui/osm-edit-dialog.ui:366 src/osmEditDialog.js:238
+#: src/osmEditDialog.js:560 src/osmEditDialog.js:953 src/translations.js:297
 msgid "None"
 msgstr "Немає"
 
-#: data/ui/place-popover.ui:23 src/searchBar.js:69
+#: data/ui/place-popover.ui:25 src/searchBar.js:69
 msgid "Explore Nearby Places"
 msgstr "Ознайомитися із місцями поблизу"
 
-#: data/ui/place-popover.ui:78 src/application.js:273
+#: data/ui/place-popover.ui:82 src/application.js:294
 msgid "No results found"
 msgstr "Нічого не знайдено"
 
-#: data/ui/place-popover.ui:88 src/application.js:251
+#: data/ui/place-popover.ui:92 src/application.js:272
 msgid "An error has occurred"
 msgstr "Трапилась помилка"
 
@@ -548,21 +482,116 @@ msgstr "Перемкнути видимість"
 msgid "Remove Shape Layer"
 msgstr "Вилучити шар форм"
 
+#: data/ui/shortcuts-dialog.ui:6
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Загальне"
+
+#: data/ui/shortcuts-dialog.ui:9
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Показати клавіатурні скорочення"
+
+#: data/ui/shortcuts-dialog.ui:15
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Пошук"
+
+#: data/ui/shortcuts-dialog.ui:21
+msgctxt "shortcut window"
+msgid "Explore points-of-interest"
+msgstr "Ознайомитися із цікавими точками"
+
+#: data/ui/shortcuts-dialog.ui:27
+msgctxt "shortcut window"
+msgid "Show last search results"
+msgstr "Показати результати останнього пошуку"
+
+#: data/ui/shortcuts-dialog.ui:33
+msgctxt "shortcut window"
+msgid "Toggle route planner"
+msgstr "Перемкнути планувальника маршрутів"
+
+#: data/ui/shortcuts-dialog.ui:39
+msgctxt "shortcut window"
+msgid "Print route"
+msgstr "Надрукувати маршрут"
+
+#: data/ui/shortcuts-dialog.ui:45
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Вийти"
+
+#: data/ui/shortcuts-dialog.ui:51
+msgctxt "shortcut window"
+msgid "Open main menu"
+msgstr "Відкрити головне меню"
+
+#: data/ui/shortcuts-dialog.ui:59
+msgctxt "shortcut window"
+msgid "Map View"
+msgstr "Перегляд карти"
+
+#: data/ui/shortcuts-dialog.ui:62
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr "Наблизити"
+
+#: data/ui/shortcuts-dialog.ui:68
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr "Віддалити"
+
+#: data/ui/shortcuts-dialog.ui:74
+msgctxt "shortcut window"
+msgid "Rotate clockwise"
+msgstr "Обернути за годинниковою стрілкою"
+
+#: data/ui/shortcuts-dialog.ui:80
+msgctxt "shortcut window"
+msgid "Rotate counter-clockwise"
+msgstr "Обернути проти годинникової стрілки"
+
+#: data/ui/shortcuts-dialog.ui:86
+msgctxt "shortcut window"
+msgid "Reset rotation"
+msgstr "Скинути обертання"
+
+#: data/ui/shortcuts-dialog.ui:92
+msgctxt "shortcut window"
+msgid "Toggle scale"
+msgstr "Перемкнути шкалу"
+
+#: data/ui/shortcuts-dialog.ui:98
+msgctxt "shortcut window"
+msgid "Go to current location"
+msgstr "Перейти до поточної місцевості"
+
+#: data/ui/shortcuts-dialog.ui:104
+msgctxt "shortcut window"
+msgid "Open shape layer"
+msgstr "Відкрити шар форм"
+
+#. Translators: This is the tooltip text for the button selecting the walking (pedestrian) routing mode
 #: data/ui/sidebar.ui:29
-msgid "Pedestrian"
-msgstr "Пішки"
+msgid "Walking"
+msgstr "Прогулянки"
 
+#. Translators: This is the tooltip text for the button selecting the cycling routing mode
 #: data/ui/sidebar.ui:36
-msgid "Bike"
-msgstr "Велосипед"
+msgid "Cycling"
+msgstr "Велоспорт"
 
+#. Translators: This is the tooltip text for the button selecting the driving (car) routing mode
 #: data/ui/sidebar.ui:43
-msgid "Car"
-msgstr "Автомобіль"
+msgid "Driving"
+msgstr "Керування"
 
+#. Translators: This is the tooltip text for the button selecting the public transit routing mode
 #: data/ui/sidebar.ui:50
-msgid "Transit"
-msgstr "У дорозі"
+#| msgid "Transit"
+msgid "Public Transit"
+msgstr "Громадський транспорт"
 
 #: data/ui/sidebar.ui:184
 msgid "Route search by GraphHopper"
@@ -683,7 +712,7 @@ msgid "Edit on OpenStreetMap"
 msgstr "Редагувати в OpenStreetMap"
 
 #. Translators: This is a tooltip
-#: data/ui/place-view.ui:59
+#: data/ui/place-view.ui:66
 msgid "Share location"
 msgstr "Оприлюднити місце"
 
@@ -702,7 +731,7 @@ msgid "Zoom Out"
 msgstr "Зменшити"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1244
+#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1325
 msgid "Zoom In"
 msgstr "Збільшити"
 
@@ -719,35 +748,31 @@ msgstr "Не вдалося розібрати документ XML"
 msgid "Missing required attributes"
 msgstr "Бракує потрібних атрибутів"
 
-#: lib/maps-osm.c:451 lib/maps-osm.c:494
+#: lib/maps-osm.c:451
 msgid "Could not find OSM element"
 msgstr "Неможливо знайти елемент OSM"
 
-#: lib/maps-osm.c:508
-msgid "Could not find user element"
-msgstr "Не вдалося знайти елемент користувача"
-
-#: src/application.js:73
+#: src/application.js:74
 msgid "A path to a local tiles directory structure"
 msgstr "Шлях до локального каталогу зі структурою плиток "
 
-#: src/application.js:79
+#: src/application.js:80
 msgid "Tile size for local tiles directory"
 msgstr "Розмір плитки для каталогу локальних плиток"
 
-#: src/application.js:83
+#: src/application.js:84
 msgid "Show the version of the program"
 msgstr "Показати версію програми"
 
-#: src/application.js:89
+#: src/application.js:90
 msgid "Search for places"
 msgstr "Шукати місця"
 
-#: src/application.js:100 src/application.js:101
+#: src/application.js:101 src/application.js:102
 msgid "[FILE…|URI]"
 msgstr "[ФАЙЛ…|АДРЕСА]"
 
-#: src/application.js:280
+#: src/application.js:301
 #, javascript-format
 msgid "Invalid maps: URI: %s"
 msgstr "Некоректні карти: адреса: %s"
@@ -756,16 +781,16 @@ msgstr "Некоректні карти: адреса: %s"
 #. * exported image with coordinates. The .png extension should be kept
 #. * intact in the translated string.
 #.
-#: src/exportViewDialog.js:72
+#: src/exportViewDialog.js:70
 #, javascript-format
 msgid "Maps at %f, %f.png"
 msgstr "Карта для %f, %f.png"
 
-#: src/exportViewDialog.js:87
+#: src/exportViewDialog.js:81
 msgid "PNG"
 msgstr "PNG"
 
-#: src/exportViewDialog.js:138
+#: src/exportViewDialog.js:132
 msgid "Unable to export view"
 msgstr "Неможливо експортувати перегляд"
 
@@ -789,49 +814,48 @@ msgstr "помилка розбирання"
 msgid "unknown geometry"
 msgstr "невідома геометрія"
 
-#: src/graphHopper.js:102 src/transitPlan.js:177
+#: src/graphHopper.js:116 src/transitPlan.js:177
 msgid "Route request failed."
 msgstr "Невдалий запит маршруту."
 
-#: src/graphHopper.js:109 src/transitPlan.js:169
+#: src/graphHopper.js:123 src/transitPlan.js:169
 msgid "No route found."
 msgstr "Не знайдено жодного маршруту."
 
-#: src/graphHopper.js:196 src/transitplugins/openTripPlanner.js:1162
+#: src/graphHopper.js:210 src/transitplugins/openTripPlanner.js:1166
 msgid "Start!"
 msgstr "Нумо!"
 
-#: src/mainWindow.js:477
+#: src/mainWindow.js:476
 msgid "Failed to connect to location service"
 msgstr "Не вдалося з'єднатись зі службою розташування"
 
-#: src/mainWindow.js:482
+#: src/mainWindow.js:481
 msgid "Turn on location services"
 msgstr "Увімкнути служби місця перебування"
 
-#: src/mainWindow.js:483
+#: src/mainWindow.js:482
 msgid "Location Settings"
 msgstr "Параметри розташування"
 
-#: src/mainWindow.js:588
-msgid "translator-credits"
-msgstr "Daniel Korostil <ted.korostiled@gmail.com>"
-
-#: src/mainWindow.js:592
-#| msgid "Copyright © 2011 – 2023 Red Hat, Inc. and The GNOME Maps authors"
+#: src/mainWindow.js:586
 msgid "Copyright © 2011 – 2025 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "© Red Hat, Inc. та розробники «Карт» GNOME, 2011–2025"
 
-#: src/mainWindow.js:605
+#: src/mainWindow.js:587
+msgid "translator-credits"
+msgstr "Daniel Korostil <ted.korostiled@gmail.com>"
+
+#: src/mainWindow.js:594
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Дані карт надано %s та учасниками проєкту"
 
-#: src/mainWindow.js:606
+#: src/mainWindow.js:595
 msgid "Map Data Provider"
 msgstr "Надавач даних карти"
 
-#: src/mainWindow.js:609
+#: src/mainWindow.js:598
 msgid "Map Tile Provider"
 msgstr "Надавач блоків карти"
 
@@ -840,37 +864,37 @@ msgstr "Надавач блоків карти"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:617
+#: src/mainWindow.js:606
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Блоки карти надано %s"
 
-#: src/mainWindow.js:646
+#: src/mainWindow.js:635
 msgid "Search Provider"
 msgstr "Надавач пошуку"
 
-#: src/mainWindow.js:649
+#: src/mainWindow.js:638
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Послуги з пошуку надано %s, використовуємо %s"
 
-#: src/mainWindow.js:658
+#: src/mainWindow.js:647
 msgid "All Layer Files"
 msgstr "Усі файли шарів"
 
-#: src/mainWindow.js:671
+#: src/mainWindow.js:660
 msgid "Open Shape Layers"
 msgstr "Відкрити шари форм"
 
-#: src/mapView.js:613 src/mapView.js:675
+#: src/mapView.js:689 src/mapView.js:751
 msgid "Failed to open layer"
 msgstr "Не вдалося відкрити шар"
 
-#: src/mapView.js:630
+#: src/mapView.js:706
 msgid "Do you want to continue?"
 msgstr "Продовжити?"
 
-#: src/mapView.js:631
+#: src/mapView.js:707
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -879,65 +903,63 @@ msgstr ""
 "Ви маєте намір відкрити файли, загальний розмір яких дорівнює %s МБ. Процес "
 "завантаження цих файлів може бути досить тривалим."
 
-#: src/mapView.js:637
+#: src/mapView.js:713
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: src/mapView.js:669
+#: src/mapView.js:745
 msgid "File type is not supported"
 msgstr "Тип файла не підтримується"
 
-#: src/mapView.js:711
+#: src/mapView.js:787
 msgid "Failed to open GeoURI"
 msgstr "Не вдалося відкрити GeoURI"
 
-#: src/mapView.js:1243
+#: src/mapView.js:1324
 msgid "Zoom in to add location"
 msgstr "Наблизьтесь, щоб додати місце"
 
-#: src/mapView.js:1261
+#: src/mapView.js:1342
 msgid "Location was added in OpenStreetMap"
 msgstr "Місце було додано в OpenStreetMap"
 
 #. switch back to the sign-in view, and show a toast indicating
 #. that verification failed
-#: src/osmAccountDialog.js:134
+#: src/osmAccountDialog.js:187
 msgid "The verification code didn’t match, please try again."
 msgstr "Код звіряння не збігається, спробуйте ще раз."
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: src/osmConnection.js:335
+#: src/osmConnection.js:376
 msgid "Incorrect user name or password"
 msgstr "Хибний користувач або пароль"
 
-#: src/osmConnection.js:337
+#: src/osmConnection.js:378
 msgid "Success"
 msgstr "Успіх"
 
-#: src/osmConnection.js:339
+#: src/osmConnection.js:380
 msgid "Bad request"
 msgstr "Поганий запит"
 
-#: src/osmConnection.js:341
+#: src/osmConnection.js:382
 msgid "Object not found"
 msgstr "Об'єкт не знайдено"
 
-#: src/osmConnection.js:343
+#: src/osmConnection.js:384
 msgid "Conflict, someone else has just modified the object"
 msgstr "Конфлікт, хтось інший щойно змінив об'єкт"
 
-#: src/osmConnection.js:345
+#: src/osmConnection.js:386
 msgid "Object has been deleted"
 msgstr "Об'єкт вилучено"
 
-#: src/osmConnection.js:347
+#: src/osmConnection.js:388
 msgid "Way or relation refers to non-existing children"
 msgstr "Спосіб або відношення не стосується чогось явного"
 
 #: src/osmEditDialog.js:110
-#| msgctxt "shortcut window"
-#| msgid "General"
 msgid "General"
 msgstr "Загальне"
 
@@ -949,7 +971,7 @@ msgstr "Назва"
 msgid "Type"
 msgstr "Тип"
 
-#: src/osmEditDialog.js:123 src/osmEditDialog.js:759
+#: src/osmEditDialog.js:123 src/osmEditDialog.js:764
 msgid "Address"
 msgstr "Адреса"
 
@@ -958,7 +980,6 @@ msgid "Contact"
 msgstr "Контакт"
 
 #: src/osmEditDialog.js:139
-#| msgid "Opening hours"
 msgid "Opening Hours"
 msgstr "Робочий час"
 
@@ -966,29 +987,27 @@ msgstr "Робочий час"
 msgid "Phone"
 msgstr "Телефон"
 
-#: src/osmEditDialog.js:151 src/placeView.js:336
+#: src/osmEditDialog.js:151 src/placeView.js:416
 msgid "Email"
 msgstr "Пошта"
 
-#: src/osmEditDialog.js:158 src/placeView.js:303
+#: src/osmEditDialog.js:158 src/placeView.js:383
 msgid "Website"
 msgstr "Сайт"
 
 #: src/osmEditDialog.js:166
-#| msgid "Visibility"
 msgid "Accessibility"
 msgstr "Доступність"
 
 #: src/osmEditDialog.js:169
-#| msgid "Wheelchair access"
 msgid "Wheelchair Access"
 msgstr "Доступ для візків"
 
-#: src/osmEditDialog.js:172 src/osmEditDialog.js:181 src/osmEditDialog.js:216
+#: src/osmEditDialog.js:172 src/osmEditDialog.js:181 src/osmEditDialog.js:219
 msgid "Yes"
 msgstr "Так"
 
-#: src/osmEditDialog.js:173 src/osmEditDialog.js:182 src/osmEditDialog.js:217
+#: src/osmEditDialog.js:173 src/osmEditDialog.js:182 src/osmEditDialog.js:220
 msgid "No"
 msgstr "Ні"
 
@@ -1001,7 +1020,6 @@ msgid "Designated"
 msgstr "Вказано"
 
 #: src/osmEditDialog.js:178
-#| msgid "Internet access"
 msgid "Internet Access"
 msgstr "Доступ до інтернету"
 
@@ -1021,13 +1039,16 @@ msgstr "Термінал"
 msgid "Service"
 msgstr "Служба"
 
-#: src/osmEditDialog.js:191
+#. Translators: This is the title for a section of POI fields not
+#. * belonging to the previous sections ("General", "Contact", "Accessibility").
+#.
+#: src/osmEditDialog.js:194
 msgid "Miscellaneous"
 msgstr "Різне"
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:194 src/osmEditDialog.js:797 src/placeView.js:778
+#: src/osmEditDialog.js:197 src/osmEditDialog.js:802 src/placeView.js:871
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -1037,184 +1058,173 @@ msgstr "Wikipedia"
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:201 src/placeView.js:537
+#: src/osmEditDialog.js:204 src/placeView.js:617
 msgid "Population"
 msgstr "Населення"
 
-#: src/osmEditDialog.js:206 src/placeView.js:566
+#: src/osmEditDialog.js:209 src/placeView.js:646
 msgid "Altitude"
 msgstr "Висота"
 
-#: src/osmEditDialog.js:207
-#| msgid "Elevation (height above sea level) of a point in meters."
+#: src/osmEditDialog.js:210
 msgid "Elevation above sea level, in meters"
 msgstr "Висота над рівнем моря у метрах."
 
-#: src/osmEditDialog.js:213
+#: src/osmEditDialog.js:216
 msgid "Takeout"
 msgstr "Їжа на винос"
 
-#: src/osmEditDialog.js:218
+#: src/osmEditDialog.js:221
 msgid "Only"
 msgstr "Лише"
 
-#: src/osmEditDialog.js:221
+#: src/osmEditDialog.js:224
 msgid "Religion"
 msgstr "Релігія"
 
-#: src/osmEditDialog.js:224 src/translations.js:286
+#: src/osmEditDialog.js:227 src/translations.js:286
 msgid "Animism"
 msgstr "Анімізм"
 
-#: src/osmEditDialog.js:225
+#: src/osmEditDialog.js:228
 msgid "Bahá’í"
 msgstr "Бахаїзм"
 
-#: src/osmEditDialog.js:226 src/translations.js:288
+#: src/osmEditDialog.js:229 src/translations.js:288
 msgid "Buddhism"
 msgstr "Буддизм"
 
-#: src/osmEditDialog.js:227 src/translations.js:289
+#: src/osmEditDialog.js:230 src/translations.js:289
 msgid "Caodaism"
 msgstr "Каодай"
 
-#: src/osmEditDialog.js:228 src/translations.js:290
+#: src/osmEditDialog.js:231 src/translations.js:290
 msgid "Christianity"
 msgstr "Християнство"
 
-#: src/osmEditDialog.js:229 src/translations.js:291
+#: src/osmEditDialog.js:232 src/translations.js:291
 msgid "Confucianism"
 msgstr "Конфуціанство"
 
-#: src/osmEditDialog.js:230 src/translations.js:292
+#: src/osmEditDialog.js:233 src/translations.js:292
 msgid "Hinduism"
 msgstr "Індуїзм"
 
-#: src/osmEditDialog.js:231 src/translations.js:293
+#: src/osmEditDialog.js:234 src/translations.js:293
 msgid "Jainism"
 msgstr "Джайнізм"
 
-#: src/osmEditDialog.js:232 src/translations.js:294
+#: src/osmEditDialog.js:235 src/translations.js:294
 msgid "Judaism"
 msgstr "Юдаїзм"
 
-#: src/osmEditDialog.js:233 src/translations.js:295
+#: src/osmEditDialog.js:236 src/translations.js:295
 msgid "Islam"
 msgstr "Іслам"
 
-#: src/osmEditDialog.js:234 src/translations.js:296
+#: src/osmEditDialog.js:237 src/translations.js:296
 msgid "Multiple Religions"
 msgstr "Мультиконфесійність"
 
-#: src/osmEditDialog.js:236 src/translations.js:298
+#: src/osmEditDialog.js:239 src/translations.js:298
 msgid "Paganism"
 msgstr "Язичництво"
 
-#: src/osmEditDialog.js:237 src/translations.js:299
+#: src/osmEditDialog.js:240 src/translations.js:299
 msgid "Pastafarianism"
 msgstr "Пастафаріанство"
 
-#: src/osmEditDialog.js:238 src/translations.js:300
+#: src/osmEditDialog.js:241 src/translations.js:300
 msgid "Scientology"
 msgstr "Сайнтологія"
 
-#: src/osmEditDialog.js:239 src/translations.js:301
+#: src/osmEditDialog.js:242 src/translations.js:301
 msgid "Shinto"
 msgstr "Сінтоїзм"
 
-#: src/osmEditDialog.js:240 src/translations.js:302
+#: src/osmEditDialog.js:243 src/translations.js:302
 msgid "Sikhism"
 msgstr "Сикхізм"
 
-#: src/osmEditDialog.js:241 src/translations.js:303
+#: src/osmEditDialog.js:244 src/translations.js:303
 msgid "Spiritualism"
 msgstr "Спіритуалізм"
 
-#: src/osmEditDialog.js:242 src/translations.js:304
+#: src/osmEditDialog.js:245 src/translations.js:304
 msgid "Taoism"
 msgstr "Даосизм"
 
-#: src/osmEditDialog.js:243 src/translations.js:305
+#: src/osmEditDialog.js:246 src/translations.js:305
 msgid "Unitarian Universalism"
 msgstr "Унітарний універсалізм"
 
-#: src/osmEditDialog.js:244 src/translations.js:306
+#: src/osmEditDialog.js:247 src/translations.js:306
 msgid "Voodoo"
 msgstr "Вуду"
 
-#: src/osmEditDialog.js:245 src/translations.js:307
+#: src/osmEditDialog.js:248 src/translations.js:307
 msgid "Yazidism"
 msgstr "Єзидизм"
 
-#: src/osmEditDialog.js:246 src/translations.js:308
+#: src/osmEditDialog.js:249 src/translations.js:308
 msgid "Zoroastrianism"
 msgstr "Зороастризм"
 
-#: src/osmEditDialog.js:249
+#: src/osmEditDialog.js:252
 msgid "Note"
 msgstr "Примітка"
 
-#: src/osmEditDialog.js:310
-#| msgid "Add via location"
+#. set the title and description for adding a POI
+#: src/osmEditDialog.js:320
 msgctxt "dialog heading"
 msgid "Add Location"
 msgstr "Додати місце"
 
-#. set the title and description for adding a POI
-#: src/osmEditDialog.js:319
-#| msgid "Add via location"
-msgid "Add Location"
-msgstr "Додати місце"
-
-#: src/osmEditDialog.js:320
-#| msgctxt "dialog title"
-#| msgid "Add to OpenStreetMap"
+#: src/osmEditDialog.js:321
 msgid "Add a new location to OpenStreetMap"
 msgstr "Додати нове місце до OpenStreetMap"
 
-#: src/osmEditDialog.js:411
+#: src/osmEditDialog.js:413
 msgid "Changes successfully submitted"
 msgstr "Зміни успішно надіслано"
 
-#: src/osmEditDialog.js:703
-#| msgid "No filename specified"
-msgid "Unspecified"
-msgstr "Не вказано"
+#. Translators: This is the title for a combo box row selected when a
+#. * value is not assigned to one in a list of allowed values.
+#.
+#: src/osmEditDialog.js:708
+#| msgid "Unspecified"
+msgid "Unspecified value"
+msgstr "Невказане значення"
 
-#: src/osmEditDialog.js:765
-#| msgid "Street"
+#: src/osmEditDialog.js:770
 msgid "Street Name"
 msgstr "Назва вулиці"
 
-#: src/osmEditDialog.js:766
-#| msgid "House number"
+#: src/osmEditDialog.js:771
 msgid "House Number"
 msgstr "Номер будинку"
 
-#: src/osmEditDialog.js:767
+#: src/osmEditDialog.js:772
 msgid "ZIP Code"
 msgstr "Поштовий індекс"
 
-#: src/osmEditDialog.js:768
+#: src/osmEditDialog.js:773
 msgid "City"
 msgstr "Місто"
 
-#: src/osmEditDialog.js:800
-#| msgid "Wikipedia"
+#: src/osmEditDialog.js:805
 msgid "Wikipedia Article"
 msgstr "Стаття у Вікіпедії"
 
-#: src/osmEditDialog.js:804
-#| msgid "Wikidata tag"
+#: src/osmEditDialog.js:809
 msgid "Wikidata Tag"
 msgstr "Мітка Вікіданих"
 
-#: src/osmEditDialog.js:809
-#| msgid "Load Wikidata tag for article"
+#: src/osmEditDialog.js:814
 msgid "Load Wikidata tag from article name"
 msgstr "Завантажити мітку Вікіданих з назви статті"
 
-#: src/osmEditDialog.js:865
+#: src/osmEditDialog.js:870
 msgid "Couldn't find Wikidata tag for article"
 msgstr "Не вдалося знайти мітку Вікіданих для статті"
 
@@ -1236,7 +1246,6 @@ msgstr "Канатка"
 #. * "amenity" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Amenity
 #.
 #: src/osmTypes.js:53
-#| msgid "Amenities"
 msgid "Amenity"
 msgstr "Зручності"
 
@@ -1272,7 +1281,6 @@ msgstr "Дозвілля"
 #. * "office" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Office
 #.
 #: src/osmTypes.js:73
-#| msgid "Post Offices"
 msgid "Office"
 msgstr "Офіс"
 
@@ -1294,22 +1302,57 @@ msgstr "Залізнична колія"
 #. * "shop" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Shop
 #.
 #: src/osmTypes.js:85
-#| msgid "Shopping"
 msgid "Shop"
 msgstr "Крамниця"
 
 #. Translators: This represents the title for places tagged with the
 #. * "tourism" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Tourism
 #.
-#: src/osmTypes.js:89 src/poiCategories.js:467
+#: src/osmTypes.js:89 src/poiCategories.js:474
 msgid "Tourism"
 msgstr "Туризм"
 
-#: src/osmTypes.js:97
+#. Translators: "Other" refers to points-of-interest where we don't have
+#. * a known title corresponding to the raw OpenStreetMap tag
+#.
+#: src/osmTypes.js:101
 msgid "Other"
 msgstr "Інше"
 
-#: src/photonUtils.js:118 src/placeListRow.js:70
+#: src/osmTypes.js:209
+msgid "Funicular station"
+msgstr "Станція фунікулера"
+
+#: src/osmTypes.js:211
+msgid "Light rail stop"
+msgstr "Зупинка легкорейкового транспорту"
+
+#: src/osmTypes.js:213
+#| msgid "More Information"
+msgid "Monorail station"
+msgstr "Станція монорейкового транспорту"
+
+#: src/osmTypes.js:215 src/osmTypes.js:225
+#| msgid "Railway"
+msgid "Railway station"
+msgstr "Залізнична станція"
+
+#: src/osmTypes.js:217
+#| msgid "Train & Subway Stations"
+msgid "Subway station"
+msgstr "Станція метро"
+
+#: src/osmTypes.js:221
+#| msgid "Railway"
+msgid "Railway halt"
+msgstr "Кінець залізничної колії"
+
+#: src/osmTypes.js:223
+#| msgid "_Trams"
+msgid "Tram stop"
+msgstr "Трамвайна зупинка"
+
+#: src/photonUtils.js:118 src/placeListRow.js:71
 msgid "Unnamed place"
 msgstr "Місце без назви"
 
@@ -1317,13 +1360,17 @@ msgstr "Місце без назви"
 msgid "Clear Entry"
 msgstr "Спорожнити запис"
 
-#: src/placeEntry.js:315
+#: src/placeEntry.js:321
 msgid "Failed to parse Geo URI"
 msgstr "Не вдалося розібрати геопосилання"
 
-#: src/placeEntry.js:327
+#: src/placeEntry.js:334
 msgid "Failed to parse Maps URI"
 msgstr "Не вдалося розібрати адресу «Карт»"
+
+#: src/placeFormatter.js:57 src/placeView.js:243 src/placeView.js:369
+msgid "Coordinates"
+msgstr "Координати"
 
 #. 300 ft (300 * 12 * 0.0254 m)
 #.
@@ -1333,22 +1380,18 @@ msgstr "Не вдалося розібрати адресу «Карт»"
 #. * needed (e.g. using the correct direction, or alternative symbol).
 #. * The %s should be kept, and is substituted with a label representing the
 #. * short distance. The \u2009 (thin space) could also be adjusted if needed
-#: src/placeListRow.js:47
+#: src/placeListRow.js:48
 #, javascript-format
 msgctxt "short distance format string"
 msgid "< %s"
 msgstr "< %s"
 
-#: src/placeView.js:291
-msgid "Coordinates"
-msgstr "Координати"
-
-#: src/placeView.js:295
+#: src/placeView.js:375
 msgid "Accuracy"
 msgstr "Точність"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:298
+#: src/placeView.js:378
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Точність: %s"
@@ -1359,7 +1402,7 @@ msgstr "Точність: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:317
+#: src/placeView.js:397
 msgid "Phone number"
 msgstr "Номер телефону"
 
@@ -1370,16 +1413,16 @@ msgstr "Номер телефону"
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
 #.
-#: src/placeView.js:351 src/placeView.js:390
+#: src/placeView.js:431 src/placeView.js:470
 msgid "Floor"
 msgstr "Поверх"
 
-#: src/placeView.js:353
+#: src/placeView.js:433
 #, javascript-format
 msgid "Floor %s"
 msgstr "Поверх %s"
 
-#: src/placeView.js:365
+#: src/placeView.js:445
 msgid "At ground level"
 msgstr "На нульовому рівні"
 
@@ -1388,7 +1431,7 @@ msgstr "На нульовому рівні"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:374
+#: src/placeView.js:454
 #, javascript-format
 msgid "%s floor above ground level"
 msgid_plural "%s floors above ground level"
@@ -1402,7 +1445,7 @@ msgstr[3] "%s поверх над нульовим рівнем"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:385
+#: src/placeView.js:465
 #, javascript-format
 msgid "%s floor below ground level"
 msgid_plural "%s floors below ground level"
@@ -1415,7 +1458,7 @@ msgstr[3] "%s поверх під нульовим рівнем"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:403
+#: src/placeView.js:483
 msgid "Offers takeout"
 msgstr "Пропонує їжу на винос"
 
@@ -1423,7 +1466,7 @@ msgstr "Пропонує їжу на винос"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:411
+#: src/placeView.js:491
 msgid "Does not offer takeout"
 msgstr "Не пропонує їжі на винос"
 
@@ -1432,18 +1475,18 @@ msgstr "Не пропонує їжі на винос"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:420
+#: src/placeView.js:500
 msgid "Only offers takeout"
 msgstr "Пропонує лише їжу на винос"
 
-#: src/placeView.js:427
+#: src/placeView.js:507
 msgid "Opening hours"
 msgstr "Робочий час"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:437
+#: src/placeView.js:517
 msgid "Public internet access"
 msgstr "Громадський доступ до інтернету"
 
@@ -1451,50 +1494,50 @@ msgstr "Громадський доступ до інтернету"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:446
+#: src/placeView.js:526
 msgid "No internet access"
 msgstr "Немає доступу до інтернету"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:454
+#: src/placeView.js:534
 msgid "Public Wi-Fi"
 msgstr "Громадський Wi-Fi"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:462
+#: src/placeView.js:542
 msgid "Wired internet access"
 msgstr "Дротовий доступ до інтернету"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:470
+#: src/placeView.js:550
 msgid "Computers available for use"
 msgstr "Є доступ до комп'ютерів"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:478
+#: src/placeView.js:558
 msgid "Internet assistance available"
 msgstr "Доступна інтернет-допомога"
 
-#: src/placeView.js:484
+#: src/placeView.js:564
 msgid "No toilets available"
 msgstr "Немає туалетів"
 
-#: src/placeView.js:487
+#: src/placeView.js:567
 msgid "Toilets available"
 msgstr "Є туалети"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:496
+#: src/placeView.js:576
 msgid "Wheelchair accessible"
 msgstr "Доступне для візків"
 
@@ -1503,7 +1546,7 @@ msgstr "Доступне для візків"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:506
+#: src/placeView.js:586
 msgid "Limited wheelchair accessibility"
 msgstr "Обмежена доступність для візків"
 
@@ -1511,7 +1554,7 @@ msgstr "Обмежена доступність для візків"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:515
+#: src/placeView.js:595
 msgid "Not wheelchair accessible"
 msgstr "Недоступне для візків"
 
@@ -1520,7 +1563,7 @@ msgstr "Недоступне для візків"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:525
+#: src/placeView.js:605
 msgid "Designated for wheelchair users"
 msgstr "Позначено для користувачів візків"
 
@@ -1529,7 +1572,7 @@ msgstr "Позначено для користувачів візків"
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:556
+#: src/placeView.js:636
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s під рівнем моря"
@@ -1538,23 +1581,40 @@ msgstr "%s під рівнем моря"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:563
+#: src/placeView.js:643
 msgid "At sea level"
 msgstr "На рівні моря"
 
-#: src/placeView.js:575
+#: src/placeView.js:655
 msgid "Religion:"
 msgstr "Релігія:"
 
-#: src/place.js:598
+#. Translators: This refers to motorway junction exit (freeway exit)
+#: src/placeView.js:660
+#, javascript-format
+msgid "Exit %s"
+msgstr "Вихід %s"
+
+#. Translators: this is a format template string for a pair of raw
+#. * coordinates, the comma can be adapted to local conventions if needed.
+#.
+#: src/place.js:299
+#, javascript-format
+#| msgctxt "time interval list"
+#| msgid "%s, %s"
+msgctxt "coordinates"
+msgid "%s, %s"
+msgstr "%s, %s"
+
+#: src/place.js:664
 msgid "Place not found in OpenStreetMap"
 msgstr "Місце не знайдено на OpenStreetMap"
 
-#: src/place.js:605
+#: src/place.js:671
 msgid "Coordinates in URL are not valid"
 msgstr "Координати у адресі є некоректними"
 
-#: src/place.js:614
+#: src/place.js:680
 msgid "URL is not supported"
 msgstr "Підтримки адреси не передбачено"
 
@@ -1611,218 +1671,222 @@ msgid "Restaurants"
 msgstr "Ресторани"
 
 #: src/poiCategories.js:205
+msgid "Vegan & Vegetarian Restaurants"
+msgstr "Веганські і вегетаріанські ресторани"
+
+#: src/poiCategories.js:212
 msgid "Fast Food"
 msgstr "Фастфуд"
 
-#: src/poiCategories.js:210
+#: src/poiCategories.js:217
 msgid "Food Courts"
 msgstr "Фудкорти"
 
-#: src/poiCategories.js:215
+#: src/poiCategories.js:222
 msgid "Pubs"
 msgstr "Паби"
 
-#: src/poiCategories.js:221
+#: src/poiCategories.js:228
 msgid "Bars"
 msgstr "Бари"
 
-#: src/poiCategories.js:226
+#: src/poiCategories.js:233
 msgid "Cafes"
 msgstr "Кав'ярні"
 
-#: src/poiCategories.js:231
+#: src/poiCategories.js:238
 msgid "Ice Cream"
 msgstr "Морозиво"
 
-#: src/poiCategories.js:236
+#: src/poiCategories.js:243
 msgid "Food, Snacks, and Beverage Machines"
 msgstr "Автомати продажу їжі, закусок та напоїв"
 
-#: src/poiCategories.js:244
+#: src/poiCategories.js:251
 msgid "Shopping"
 msgstr "Крамниці"
 
-#: src/poiCategories.js:248
+#: src/poiCategories.js:255
 msgid "Supermarkets"
 msgstr "Супермаркети"
 
-#: src/poiCategories.js:254
+#: src/poiCategories.js:261
 msgid "Convenience Stores"
 msgstr "Магазини самообслуговування"
 
-#: src/poiCategories.js:259
+#: src/poiCategories.js:266
 msgid "Shopping Malls"
 msgstr "Торгові пасажі"
 
-#: src/poiCategories.js:265
+#: src/poiCategories.js:272
 msgid "Clothes"
 msgstr "Одежа"
 
-#: src/poiCategories.js:271
+#: src/poiCategories.js:278
 msgid "Shoes"
 msgstr "Взуття"
 
-#: src/poiCategories.js:276
+#: src/poiCategories.js:283
 msgid "Electronics"
 msgstr "Електроніка"
 
-#: src/poiCategories.js:282
+#: src/poiCategories.js:289
 msgid "Alcohol"
 msgstr "Алкоголь"
 
-#: src/poiCategories.js:288
+#: src/poiCategories.js:295
 msgid "Bakeries"
 msgstr "Пекарні"
 
-#: src/poiCategories.js:294
+#: src/poiCategories.js:301
 msgid "Flowers"
 msgstr "Квіти"
 
-#: src/poiCategories.js:299
+#: src/poiCategories.js:306
 msgid "Gifts"
 msgstr "Подарунки"
 
-#: src/poiCategories.js:307
+#: src/poiCategories.js:314
 msgid "Transportation"
 msgstr "Транспорт"
 
-#: src/poiCategories.js:311
+#: src/poiCategories.js:318
 msgid "Bus & Tram Stops"
 msgstr "Зупинки автобусів і трамваїв"
 
-#: src/poiCategories.js:319
+#: src/poiCategories.js:326
 msgid "Train & Subway Stations"
 msgstr "Залізничні станції і станції метро"
 
-#: src/poiCategories.js:327
+#: src/poiCategories.js:334
 msgid "Tickets"
 msgstr "Квитки"
 
-#: src/poiCategories.js:335
+#: src/poiCategories.js:342
 msgid "Parking"
 msgstr "Паркування"
 
-#: src/poiCategories.js:340
+#: src/poiCategories.js:347
 msgid "Bicycle Parking"
 msgstr "Паркування велосипедів"
 
-#: src/poiCategories.js:345
+#: src/poiCategories.js:352
 msgid "Bicycle Rental"
 msgstr "Прокат велосипедів"
 
-#: src/poiCategories.js:350
+#: src/poiCategories.js:357
 msgid "Car Rental"
 msgstr "Оренда автомобілів"
 
-#: src/poiCategories.js:355
+#: src/poiCategories.js:362
 msgid "Fuel"
 msgstr "Паливо"
 
-#: src/poiCategories.js:360
+#: src/poiCategories.js:367
 msgid "EV Charging"
 msgstr "Заряджальні станції"
 
-#: src/poiCategories.js:368
+#: src/poiCategories.js:375
 msgid "Healthcare"
 msgstr "Медицина"
 
-#: src/poiCategories.js:372
+#: src/poiCategories.js:379
 msgid "Clinics"
 msgstr "Клініки"
 
-#: src/poiCategories.js:378
+#: src/poiCategories.js:385
 msgid "Hospitals"
 msgstr "Лікарні"
 
-#: src/poiCategories.js:384
+#: src/poiCategories.js:391
 msgid "Dentists"
 msgstr "Дантисти"
 
-#: src/poiCategories.js:392
+#: src/poiCategories.js:399
 msgid "Accommodation"
 msgstr "Готельні послуги"
 
-#: src/poiCategories.js:396
+#: src/poiCategories.js:403
 msgid "Hotels"
 msgstr "Готелі"
 
-#: src/poiCategories.js:401
+#: src/poiCategories.js:408
 msgid "Hostels"
 msgstr "Гуртожитки"
 
-#: src/poiCategories.js:406
+#: src/poiCategories.js:413
 msgid "Bed & Breakfast"
 msgstr "Ліжко і сніданок"
 
-#: src/poiCategories.js:411
+#: src/poiCategories.js:418
 msgid "Campings"
 msgstr "Кемпінги"
 
-#: src/poiCategories.js:418
+#: src/poiCategories.js:425
 msgid "Recreation"
 msgstr "Відпочинок"
 
-#: src/poiCategories.js:422
+#: src/poiCategories.js:429
 msgid "Parks"
 msgstr "Парки"
 
-#: src/poiCategories.js:427
+#: src/poiCategories.js:434
 msgid "Playgrounds"
 msgstr "Ігрові майданчики"
 
-#: src/poiCategories.js:432
+#: src/poiCategories.js:439
 msgid "Beaches"
 msgstr "Пляжі"
 
-#: src/poiCategories.js:437
+#: src/poiCategories.js:444
 msgid "Nature Reserves"
 msgstr "Заповідники"
 
-#: src/poiCategories.js:443
+#: src/poiCategories.js:450
 msgid "Theme Parks"
 msgstr "Тематичні парки"
 
-#: src/poiCategories.js:448
+#: src/poiCategories.js:455
 msgid "Theaters"
 msgstr "Театри"
 
-#: src/poiCategories.js:454
+#: src/poiCategories.js:461
 msgid "Movie Theaters"
 msgstr "Кінотеатри"
 
-#: src/poiCategories.js:460
+#: src/poiCategories.js:467
 msgid "Night Clubs"
 msgstr "Нічні клуби"
 
-#: src/poiCategories.js:471
+#: src/poiCategories.js:478
 msgid "Museums"
 msgstr "Музеї"
 
-#: src/poiCategories.js:477
+#: src/poiCategories.js:484
 msgid "Attractions"
 msgstr "Атракціони"
 
-#: src/poiCategories.js:482
+#: src/poiCategories.js:489
 msgid "Artworks"
 msgstr "Оформлення"
 
-#: src/poiCategories.js:487
+#: src/poiCategories.js:494
 msgid "Tourist Information"
 msgstr "Туристичні дані"
 
-#: src/poiCategories.js:494
+#: src/poiCategories.js:501
 msgid "Sports"
 msgstr "Спорт"
 
-#: src/poiCategories.js:498
+#: src/poiCategories.js:505
 msgid "Gyms"
 msgstr "Спортзали"
 
-#: src/poiCategories.js:504
+#: src/poiCategories.js:511
 msgid "Outdoor Gyms"
 msgstr "Гімнастичні майданчики"
 
-#: src/poiCategories.js:510
+#: src/poiCategories.js:517
 msgid "Golf Courses"
 msgstr "Поля для гольфу"
 
@@ -1876,16 +1940,16 @@ msgstr "Пошук"
 
 #. Translators: The first string is the name of the city, the
 #. second string is the name of the app to add it to
-#: src/sendToDialog.js:84
+#: src/sendToDialog.js:88
 #, javascript-format
 msgid "Add %s to %s"
 msgstr "Додати %s до %s"
 
-#: src/sendToDialog.js:181
+#: src/sendToDialog.js:187
 msgid "Failed to open URI"
 msgstr "Не вдалося відкрити посилання"
 
-#: src/sendToDialog.js:246
+#: src/sendToDialog.js:252
 #, javascript-format
 msgid "Open with %s"
 msgstr "Відкрити через %s"
@@ -1895,12 +1959,12 @@ msgid "failed to load file"
 msgstr "не вдалося завантажити файл"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:338
+#: src/sidebar.js:343
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "Розрахунковий час: %s"
 
-#: src/sidebar.js:408
+#: src/sidebar.js:413
 #, javascript-format
 msgid "Itineraries provided by %s"
 msgstr "Маршрути надано %s"
@@ -1917,8 +1981,8 @@ msgstr "Відправляється з %s"
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: src/transit.js:45 src/transitplugins/motis2.js:314
-#: src/transitplugins/openTripPlanner2.js:236
+#: src/transit.js:45 src/transitplugins/motis2.js:330
+#: src/transitplugins/openTripPlanner2.js:240
 msgid "Start"
 msgstr "Нумо"
 
@@ -1938,9 +2002,9 @@ msgstr "Прогулянка %s"
 msgid "Arrive at %s"
 msgstr "Прибуває до %s"
 
-#: src/transit.js:79 src/transitplugins/motis2.js:332
-#: src/transitplugins/openTripPlanner.js:1175
-#: src/transitplugins/openTripPlanner2.js:255
+#: src/transit.js:79 src/transitplugins/motis2.js:349
+#: src/transitplugins/openTripPlanner.js:1179
+#: src/transitplugins/openTripPlanner2.js:259
 msgid "Arrive"
 msgstr "Прибуває"
 
@@ -2140,19 +2204,19 @@ msgid "Bahá'í"
 msgstr "Бахаїзм"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:248
+#: src/utils.js:269
 msgid "Unknown"
 msgstr "Невідомо"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:251
+#: src/utils.js:272
 msgid "Exact"
 msgstr "Уточнити"
 
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
 #.
-#: src/utils.js:307
+#: src/utils.js:328
 #, javascript-format
 msgid "%s h"
 msgstr "%s год"
@@ -2161,7 +2225,7 @@ msgstr "%s год"
 #. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
 #.
-#: src/utils.js:313
+#: src/utils.js:334
 #, javascript-format
 msgid "%s h %s min"
 msgid_plural "%s h %s min"
@@ -2174,7 +2238,7 @@ msgstr[3] "%s год %s хв"
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
 #.
-#: src/utils.js:320
+#: src/utils.js:341
 #, javascript-format
 msgid "%s min"
 msgid_plural "%s min"
@@ -2187,7 +2251,7 @@ msgstr[3] "%s хв"
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
 #.
-#: src/utils.js:326
+#: src/utils.js:347
 #, javascript-format
 msgid "%s s"
 msgid_plural "%s s"
@@ -2196,161 +2260,184 @@ msgstr[1] "%s с"
 msgstr[2] "%s с"
 msgstr[3] "%s с"
 
-#. Translators: This is a distance measured in kilometers
-#: src/utils.js:337
-#, javascript-format
-msgid "%s km"
-msgstr "%s км"
-
-#. Translators: This is a distance measured in meters
-#: src/utils.js:340
-#, javascript-format
-msgid "%s m"
-msgstr "%s м"
-
 #. Translators: This is a distance measured in miles
-#: src/utils.js:348
+#: src/utils.js:359
 #, javascript-format
 msgid "%s mi"
 msgstr "%s ми"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:351
+#: src/utils.js:362
 #, javascript-format
 msgid "%s ft"
 msgstr "%s фт"
 
-#: src/transitplugins/motis2.js:344
+#. Translators: This is a distance measured in kilometers
+#: src/utils.js:370
+#, javascript-format
+msgid "%s km"
+msgstr "%s км"
+
+#. Translators: This is a distance measured in meters
+#: src/utils.js:373
+#, javascript-format
+msgid "%s m"
+msgstr "%s м"
+
+#: src/transitplugins/motis2.js:361
 #, javascript-format
 msgid "Take the stairs to level %s"
 msgstr "Перейдіть на рівень %s сходами"
 
-#: src/transitplugins/motis2.js:345
-#| msgid "Take the elevator"
+#: src/transitplugins/motis2.js:362
 msgid "Take the stairs"
 msgstr "Скористайтеся сходами"
 
-#: src/transitplugins/motis2.js:349 src/transitplugins/openTripPlanner.js:1236
-#: src/transitplugins/openTripPlanner2.js:266
+#: src/transitplugins/motis2.js:366 src/transitplugins/openTripPlanner.js:1240
+#: src/transitplugins/openTripPlanner2.js:270
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Продовжуйте на %s"
 
-#: src/transitplugins/motis2.js:354 src/transitplugins/openTripPlanner.js:1241
-#: src/transitplugins/openTripPlanner2.js:270
+#: src/transitplugins/motis2.js:371 src/transitplugins/openTripPlanner.js:1245
+#: src/transitplugins/openTripPlanner2.js:274
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Поверніть ліворуч на %s"
 
-#: src/transitplugins/motis2.js:355 src/transitplugins/openTripPlanner.js:1243
-#: src/transitplugins/openTripPlanner2.js:271
+#: src/transitplugins/motis2.js:372 src/transitplugins/openTripPlanner.js:1247
+#: src/transitplugins/openTripPlanner2.js:275
 msgid "Turn left"
 msgstr "Поверніть ліворуч"
 
-#: src/transitplugins/motis2.js:359 src/transitplugins/openTripPlanner.js:1246
-#: src/transitplugins/openTripPlanner2.js:275
+#: src/transitplugins/motis2.js:376 src/transitplugins/openTripPlanner.js:1250
+#: src/transitplugins/openTripPlanner2.js:279
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Поверніть трохи ліворуч на %s"
 
-#: src/transitplugins/motis2.js:360 src/transitplugins/openTripPlanner.js:1248
-#: src/transitplugins/openTripPlanner2.js:276
+#: src/transitplugins/motis2.js:377 src/transitplugins/openTripPlanner.js:1252
+#: src/transitplugins/openTripPlanner2.js:280
 msgid "Turn slightly left"
 msgstr "Поверніть трохи ліворуч"
 
-#: src/transitplugins/motis2.js:364 src/transitplugins/openTripPlanner.js:1251
-#: src/transitplugins/openTripPlanner2.js:280
+#: src/transitplugins/motis2.js:381 src/transitplugins/openTripPlanner.js:1255
+#: src/transitplugins/openTripPlanner2.js:284
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Поверніть строго ліворуч на %s"
 
-#: src/transitplugins/motis2.js:365 src/transitplugins/openTripPlanner.js:1253
-#: src/transitplugins/openTripPlanner2.js:281
+#: src/transitplugins/motis2.js:382 src/transitplugins/openTripPlanner.js:1257
+#: src/transitplugins/openTripPlanner2.js:285
 msgid "Turn sharp left"
 msgstr "Різко поверніть ліворуч"
 
-#: src/transitplugins/motis2.js:369 src/transitplugins/openTripPlanner.js:1256
-#: src/transitplugins/openTripPlanner2.js:284
+#: src/transitplugins/motis2.js:386 src/transitplugins/openTripPlanner.js:1260
+#: src/transitplugins/openTripPlanner2.js:288
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Поверніть праворуч на %s"
 
-#: src/transitplugins/motis2.js:370 src/transitplugins/openTripPlanner.js:1258
-#: src/transitplugins/openTripPlanner2.js:285
+#: src/transitplugins/motis2.js:387 src/transitplugins/openTripPlanner.js:1262
+#: src/transitplugins/openTripPlanner2.js:289
 msgid "Turn right"
 msgstr "Поверніть праворуч"
 
-#: src/transitplugins/motis2.js:374 src/transitplugins/openTripPlanner.js:1261
-#: src/transitplugins/openTripPlanner2.js:289
+#: src/transitplugins/motis2.js:391 src/transitplugins/openTripPlanner.js:1265
+#: src/transitplugins/openTripPlanner2.js:293
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Поверніть трохи праворуч на %s"
 
-#: src/transitplugins/motis2.js:375 src/transitplugins/openTripPlanner.js:1263
-#: src/transitplugins/openTripPlanner2.js:290
+#: src/transitplugins/motis2.js:392 src/transitplugins/openTripPlanner.js:1267
+#: src/transitplugins/openTripPlanner2.js:294
 msgid "Turn slightly right"
 msgstr "Поверніть трохи праворуч"
 
-#: src/transitplugins/motis2.js:379 src/transitplugins/openTripPlanner.js:1266
-#: src/transitplugins/openTripPlanner2.js:294
+#: src/transitplugins/motis2.js:396 src/transitplugins/openTripPlanner.js:1270
+#: src/transitplugins/openTripPlanner2.js:298
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Різко поверніть праворуч на %s"
 
-#: src/transitplugins/motis2.js:380 src/transitplugins/openTripPlanner.js:1268
-#: src/transitplugins/openTripPlanner2.js:295
+#: src/transitplugins/motis2.js:397 src/transitplugins/openTripPlanner.js:1272
+#: src/transitplugins/openTripPlanner2.js:299
 msgid "Turn sharp right"
 msgstr "Різко поверніть праворуч"
 
-#: src/transitplugins/motis2.js:387 src/transitplugins/openTripPlanner.js:1274
-#: src/transitplugins/openTripPlanner2.js:302
+#: src/transitplugins/motis2.js:404 src/transitplugins/openTripPlanner.js:1278
+#: src/transitplugins/openTripPlanner2.js:306
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "На розвороті виберіть виїзд %s"
 
-#: src/transitplugins/motis2.js:390 src/transitplugins/openTripPlanner.js:1276
-#: src/transitplugins/openTripPlanner2.js:305
+#: src/transitplugins/motis2.js:407 src/transitplugins/openTripPlanner.js:1280
+#: src/transitplugins/openTripPlanner2.js:309
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "На розвороті виберіть виїзд до %s"
 
-#: src/transitplugins/motis2.js:392 src/transitplugins/openTripPlanner.js:1278
-#: src/transitplugins/openTripPlanner2.js:307
+#: src/transitplugins/motis2.js:409 src/transitplugins/openTripPlanner.js:1282
+#: src/transitplugins/openTripPlanner2.js:311
 msgid "Take the roundabout"
 msgstr "В'їжджайте на розворот"
 
-#: src/transitplugins/motis2.js:400 src/transitplugins/openTripPlanner.js:1282
-#: src/transitplugins/openTripPlanner2.js:315
+#: src/transitplugins/motis2.js:417 src/transitplugins/openTripPlanner.js:1286
+#: src/transitplugins/openTripPlanner2.js:319
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Увійдіть до ліфта і вийдіть на %s"
 
-#: src/transitplugins/motis2.js:401 src/transitplugins/openTripPlanner.js:1284
-#: src/transitplugins/openTripPlanner2.js:316
+#: src/transitplugins/motis2.js:418 src/transitplugins/openTripPlanner.js:1288
+#: src/transitplugins/openTripPlanner2.js:320
 msgid "Take the elevator"
 msgstr "Увійдіть до ліфта"
 
-#: src/transitplugins/motis2.js:405 src/transitplugins/openTripPlanner.js:1288
-#: src/transitplugins/openTripPlanner2.js:320
+#: src/transitplugins/motis2.js:422 src/transitplugins/openTripPlanner.js:1292
+#: src/transitplugins/openTripPlanner2.js:324
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Виконайте лівий розворот на %s"
 
-#: src/transitplugins/motis2.js:406 src/transitplugins/openTripPlanner.js:1290
-#: src/transitplugins/openTripPlanner2.js:321
+#: src/transitplugins/motis2.js:423 src/transitplugins/openTripPlanner.js:1294
+#: src/transitplugins/openTripPlanner2.js:325
 msgid "Make a left u-turn"
 msgstr "Виконайте лівий розворот"
 
-#: src/transitplugins/motis2.js:410 src/transitplugins/openTripPlanner.js:1293
-#: src/transitplugins/openTripPlanner2.js:325
+#: src/transitplugins/motis2.js:427 src/transitplugins/openTripPlanner.js:1297
+#: src/transitplugins/openTripPlanner2.js:329
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Виконайте правий розворот на %s"
 
-#: src/transitplugins/motis2.js:411 src/transitplugins/openTripPlanner.js:1295
-#: src/transitplugins/openTripPlanner2.js:326
+#: src/transitplugins/motis2.js:428 src/transitplugins/openTripPlanner.js:1299
+#: src/transitplugins/openTripPlanner2.js:330
 msgid "Make a right u-turn"
 msgstr "Виконайте правий розворот"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Switch to street view"
+#~ msgstr "Перемкнутися на перегляд вулиць"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Switch to aerial view"
+#~ msgstr "Перемкнутися на супутниковий перегляд"
+
+#~ msgid "Pedestrian"
+#~ msgstr "Пішки"
+
+#~ msgid "Bike"
+#~ msgstr "Велосипед"
+
+#~ msgid "Car"
+#~ msgstr "Автомобіль"
+
+#~ msgid "Could not find user element"
+#~ msgstr "Не вдалося знайти елемент користувача"
+
+#~| msgid "Add via location"
+#~ msgid "Add Location"
+#~ msgstr "Додати місце"
 
 #~ msgid "Postal code"
 #~ msgstr "Поштовий індекс"
@@ -2372,17 +2459,6 @@ msgstr "Виконайте правий розворот"
 
 #~ msgid "Article"
 #~ msgstr "Стаття"
-
-#~| msgid "Parking"
-#~ msgid "Walking"
-#~ msgstr "Прогулянки"
-
-#~| msgid "Recycling"
-#~ msgid "Cycling"
-#~ msgstr "Велоспорт"
-
-#~ msgid "Driving"
-#~ msgstr "Керування"
 
 #~ msgid "The official name. This is typically what appears on signs."
 #~ msgstr "Офіційна назва. Це зазвичай перше, що потрапляє на очі."
