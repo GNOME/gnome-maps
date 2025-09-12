@@ -22,6 +22,7 @@ import gettext from 'gettext';
 import Gdk from 'gi://Gdk';
 import GeocodeGlib from 'gi://GeocodeGlib';
 import Gio from 'gi://Gio';
+import GioUnix from 'gi://GioUnix';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
@@ -87,7 +88,7 @@ export class SendToDialog extends Gtk.Dialog {
             second string is the name of the app to add it to */
             let label = _("Add %s to %s");
 
-            let weatherInfo = Gio.DesktopAppInfo.new(_WEATHER_APPID + '.desktop');
+            let weatherInfo = GioUnix.DesktopAppInfo.new(_WEATHER_APPID + '.desktop');
             if (!weatherInfo) {
                 this._list.remove(this._weatherRow);
             } else {
@@ -96,7 +97,7 @@ export class SendToDialog extends Gtk.Dialog {
                 this._weatherIcon.icon_name = weatherInfo.get_icon().to_string();
             }
 
-            let clocksInfo = Gio.DesktopAppInfo.new(_CLOCKS_APPID + '.desktop');
+            let clocksInfo = GioUnix.DesktopAppInfo.new(_CLOCKS_APPID + '.desktop');
             if (!clocksInfo) {
                 this._list.remove(this._clocksRow);
             } else {
