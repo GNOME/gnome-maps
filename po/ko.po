@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2025-02-23 21:34+0000\n"
-"PO-Revision-Date: 2025-03-09 17:01+0900\n"
+"POT-Creation-Date: 2025-09-12 06:27+0000\n"
+"PO-Revision-Date: 2025-09-12 18:14+0900\n"
 "Last-Translator: Jeeyong Um <conr2d@gmail.com>\n"
 "Language-Team: GNOME Korea <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.7\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -26,19 +26,156 @@ msgstr ""
 #. * here works though. And yields a proper label in the gnome-shell
 #. * overview.
 #.
-#. Translators: This is the program name.
-#: data/org.gnome.Maps.appdata.xml.in.in:6 data/org.gnome.Maps.desktop.in.in:4
-#: data/ui/main-window.ui:27 src/application.js:61 src/mainWindow.js:118
-#: src/mainWindow.js:590
+#: data/org.gnome.Maps.desktop.in.in:3 data/org.gnome.Maps.metainfo.xml.in.in:6
+#: data/ui/main-window.ui:49 src/application.js:62 src/mainWindow.js:118
 msgid "Maps"
 msgstr "지도"
 
-#: data/org.gnome.Maps.appdata.xml.in.in:7
+#: data/org.gnome.Maps.desktop.in.in:4
+msgid "A simple maps application"
+msgstr "간단한 지도 프로그램"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Maps.desktop.in.in:13
+msgid "Maps;"
+msgstr "Maps;지도;맵;"
+
+#: data/org.gnome.Maps.desktop.in.in:16
+msgid "Allows your location to be shown on the map."
+msgstr "사용자 위치를 지도에 표시합니다."
+
+#: data/org.gnome.Maps.gschema.xml:16
+msgid "last viewed location"
+msgstr "최근 본 위치"
+
+#: data/org.gnome.Maps.gschema.xml:17
+msgid "Coordinates of last viewed location."
+msgstr "최근 살펴본 위치의 좌표."
+
+#: data/org.gnome.Maps.gschema.xml:21
+msgid "zoom"
+msgstr "확대"
+
+#: data/org.gnome.Maps.gschema.xml:22
+msgid "Zoom level"
+msgstr "확대 수준"
+
+#: data/org.gnome.Maps.gschema.xml:26
+msgid "rotation"
+msgstr "회전하기"
+
+#: data/org.gnome.Maps.gschema.xml:27
+msgid "Map rotation in radians"
+msgstr "라디안 단위로 지도 회전"
+
+#: data/org.gnome.Maps.gschema.xml:31
+msgid "Map type"
+msgstr "지도 형식"
+
+#: data/org.gnome.Maps.gschema.xml:32
+msgid "The type of map to display (street, aerial, etc.)"
+msgstr "지도 표시 형식(거리, 항공 등)"
+
+#: data/org.gnome.Maps.gschema.xml:36
+msgid "Window size"
+msgstr "창 크기"
+
+#: data/org.gnome.Maps.gschema.xml:37
+msgid "Window size (width and height)."
+msgstr "창 크기(너비 및 높이)."
+
+#: data/org.gnome.Maps.gschema.xml:41
+msgid "Window position"
+msgstr "창 위치"
+
+#: data/org.gnome.Maps.gschema.xml:42
+msgid "Window position (X and Y)."
+msgstr "창 위치(가로 및 세로)."
+
+#: data/org.gnome.Maps.gschema.xml:46
+msgid "Window maximized"
+msgstr "창 최대화"
+
+#: data/org.gnome.Maps.gschema.xml:47
+msgid "Window maximization state"
+msgstr "창 최대화 상태"
+
+#: data/org.gnome.Maps.gschema.xml:51
+msgid "Maximum number of search results"
+msgstr "최대 검색 결과 수"
+
+#: data/org.gnome.Maps.gschema.xml:52
+msgid "Maximum number of search results from geocode search."
+msgstr "지오코드 검색 결과의 최대 결과 개수."
+
+#: data/org.gnome.Maps.gschema.xml:56
+msgid "Number of recent places to store"
+msgstr "최근 위치를 저장할 개수"
+
+#: data/org.gnome.Maps.gschema.xml:57
+msgid "Number of recently visited places to store."
+msgstr "최근 방문할 위치를 저장할 개수."
+
+#: data/org.gnome.Maps.gschema.xml:61
+msgid "Number of recent routes to store"
+msgstr "최근 경로를 저장할 개수"
+
+#: data/org.gnome.Maps.gschema.xml:62
+msgid "Number of recently visited routes to store."
+msgstr "최근 방문 경로를 저장할 개수."
+
+#: data/org.gnome.Maps.gschema.xml:66
+msgid "OpenStreetMap username or email address"
+msgstr "OpenStreetMap 사용자 이름 및 전자메일 주소"
+
+#: data/org.gnome.Maps.gschema.xml:67
+msgid "Indicates if the user has signed in to edit OpenStreetMap data."
+msgstr ""
+"사용자가 OpenStreetMap 데이터를 편집하려고 접속했는지 여부를 나타냅니다."
+
+#: data/org.gnome.Maps.gschema.xml:71
+msgid "Last used transportation type for routing"
+msgstr "최근 확인한 경로 안내 대중교통"
+
+#: data/org.gnome.Maps.gschema.xml:75
+msgid "Show scale"
+msgstr "축척 표시"
+
+#: data/org.gnome.Maps.gschema.xml:76
+msgid "Whether to show the scale."
+msgstr "축척 표시 여부."
+
+#: data/org.gnome.Maps.gschema.xml:80
+msgid "Map tile URL pattern"
+msgstr "지도 타일 URL 패턴"
+
+#: data/org.gnome.Maps.gschema.xml:81
+msgid ""
+"The URL pattern for the vector tile source to use. Note that the map style "
+"relies on certain extensions compared to upstream Planetiler OpenMapTiles "
+"Profile"
+msgstr ""
+"벡터 타일 소스용 URL 패턴. 지도 스타일은 업스트림 Planetiler OpenMapTiles 프"
+"로필과 달리 특정 확장 기능을 따름"
+
+#: data/org.gnome.Maps.gschema.xml:85
+msgid "Units to show measurements in"
+msgstr "측정값의 표시 단위"
+
+#: data/org.gnome.Maps.gschema.xml:86
+msgid ""
+"How to show measurements. ('system' uses default for system locale, 'metric' "
+"always show metric units, 'imperial' always show imperial units)."
+msgstr ""
+"측정값 표시 방법. (‘시스템’은 시스템 로케일 설정을 따름, ‘미터법’ 또는 ‘야드"
+"파운드법’은 항상 설정한 방식으로 표시)"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:7
 msgid "Find places around the world"
 msgstr "전세계의 장소를 찾아봅니다"
 
 # NOTE: false alarm
-#: data/org.gnome.Maps.appdata.xml.in.in:9
+#: data/org.gnome.Maps.metainfo.xml.in.in:9
 msgid ""
 "Maps gives you quick access to maps all across the world. It allows you to "
 "quickly find the place you’re looking for by searching for a city or street, "
@@ -47,7 +184,7 @@ msgstr ""
 "지도로 전 세계 모든 지도에 빠르게 접근할 수 있습니다. 도시, 거리, 친구를 만"
 "날 여러분이 찾는 장소를 빠르게 찾을 수 있습니다."
 
-#: data/org.gnome.Maps.appdata.xml.in.in:14
+#: data/org.gnome.Maps.metainfo.xml.in.in:14
 msgid ""
 "Maps uses the collaborative OpenStreetMap database, made by hundreds of "
 "thousands of people across the globe."
@@ -56,123 +193,9 @@ msgstr ""
 "다."
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.appdata.xml.in.in:512 src/mainWindow.js:587
+#: data/org.gnome.Maps.metainfo.xml.in.in:559
 msgid "The GNOME Project"
 msgstr "그놈 프로젝트"
-
-#: data/org.gnome.Maps.desktop.in.in:5
-msgid "A simple maps application"
-msgstr "간단한 지도 프로그램"
-
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Maps.desktop.in.in:14
-msgid "Maps;"
-msgstr "Maps;지도;맵;"
-
-#: data/org.gnome.Maps.desktop.in.in:17
-msgid "Allows your location to be shown on the map."
-msgstr "사용자 위치를 지도에 표시합니다."
-
-#: data/org.gnome.Maps.gschema.xml:11
-msgid "last viewed location"
-msgstr "최근 본 위치"
-
-#: data/org.gnome.Maps.gschema.xml:12
-msgid "Coordinates of last viewed location."
-msgstr "최근 살펴본 위치의 좌표."
-
-#: data/org.gnome.Maps.gschema.xml:16
-msgid "zoom"
-msgstr "확대"
-
-#: data/org.gnome.Maps.gschema.xml:17
-msgid "Zoom level"
-msgstr "확대 수준"
-
-#: data/org.gnome.Maps.gschema.xml:21
-msgid "rotation"
-msgstr "회전하기"
-
-#: data/org.gnome.Maps.gschema.xml:22
-msgid "Map rotation in radians"
-msgstr "라디안 단위로 지도 회전"
-
-#: data/org.gnome.Maps.gschema.xml:26
-msgid "Map type"
-msgstr "지도 형식"
-
-#: data/org.gnome.Maps.gschema.xml:27
-msgid "The type of map to display (street, aerial, etc.)"
-msgstr "지도 표시 형식(거리, 항공 등)"
-
-#: data/org.gnome.Maps.gschema.xml:31
-msgid "Window size"
-msgstr "창 크기"
-
-#: data/org.gnome.Maps.gschema.xml:32
-msgid "Window size (width and height)."
-msgstr "창 크기(너비 및 높이)."
-
-#: data/org.gnome.Maps.gschema.xml:36
-msgid "Window position"
-msgstr "창 위치"
-
-#: data/org.gnome.Maps.gschema.xml:37
-msgid "Window position (X and Y)."
-msgstr "창 위치(가로 및 세로)."
-
-#: data/org.gnome.Maps.gschema.xml:41
-msgid "Window maximized"
-msgstr "창 최대화"
-
-#: data/org.gnome.Maps.gschema.xml:42
-msgid "Window maximization state"
-msgstr "창 최대화 상태"
-
-#: data/org.gnome.Maps.gschema.xml:46
-msgid "Maximum number of search results"
-msgstr "최대 검색 결과 수"
-
-#: data/org.gnome.Maps.gschema.xml:47
-msgid "Maximum number of search results from geocode search."
-msgstr "지오코드 검색 결과의 최대 결과 개수."
-
-#: data/org.gnome.Maps.gschema.xml:51
-msgid "Number of recent places to store"
-msgstr "최근 위치를 저장할 개수"
-
-#: data/org.gnome.Maps.gschema.xml:52
-msgid "Number of recently visited places to store."
-msgstr "최근 방문할 위치를 저장할 개수."
-
-#: data/org.gnome.Maps.gschema.xml:56
-msgid "Number of recent routes to store"
-msgstr "최근 경로를 저장할 개수"
-
-#: data/org.gnome.Maps.gschema.xml:57
-msgid "Number of recently visited routes to store."
-msgstr "최근 방문 경로를 저장할 개수."
-
-#: data/org.gnome.Maps.gschema.xml:61
-msgid "OpenStreetMap username or email address"
-msgstr "OpenStreetMap 사용자 이름 및 전자메일 주소"
-
-#: data/org.gnome.Maps.gschema.xml:62
-msgid "Indicates if the user has signed in to edit OpenStreetMap data."
-msgstr ""
-"사용자가 OpenStreetMap 데이터를 편집하려고 접속했는지 여부를 나타냅니다."
-
-#: data/org.gnome.Maps.gschema.xml:66
-msgid "Last used transportation type for routing"
-msgstr "최근 확인한 경로 안내 대중교통"
-
-#: data/org.gnome.Maps.gschema.xml:70
-msgid "Show scale"
-msgstr "축척 표시"
-
-#: data/org.gnome.Maps.gschema.xml:71
-msgid "Whether to show the scale."
-msgstr "축척 표시 여부."
 
 #: data/ui/context-menu.ui:6
 msgid "Route from Here"
@@ -250,106 +273,6 @@ msgstr "즐겨찾기"
 msgid "Route Planner"
 msgstr "경로 계획 도우미"
 
-#: data/ui/help-overlay.ui:12
-msgctxt "shortcut window"
-msgid "General"
-msgstr "일반"
-
-#: data/ui/help-overlay.ui:15
-msgctxt "shortcut window"
-msgid "Show Shortcuts"
-msgstr "바로 가기 표시"
-
-#: data/ui/help-overlay.ui:21
-msgctxt "shortcut window"
-msgid "Search"
-msgstr "검색"
-
-#: data/ui/help-overlay.ui:27
-msgctxt "shortcut window"
-msgid "Explore points-of-interest"
-msgstr "관심 지점 둘러보기"
-
-#: data/ui/help-overlay.ui:33
-msgctxt "shortcut window"
-msgid "Show last search results"
-msgstr "마지막 검색 결과 보기"
-
-#: data/ui/help-overlay.ui:39
-msgctxt "shortcut window"
-msgid "Toggle route planner"
-msgstr "경로 계획 도우미 전환"
-
-#: data/ui/help-overlay.ui:45
-msgctxt "shortcut window"
-msgid "Print route"
-msgstr "경로 인쇄"
-
-#: data/ui/help-overlay.ui:51
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "끝내기"
-
-#: data/ui/help-overlay.ui:57
-msgctxt "shortcut window"
-msgid "Open main menu"
-msgstr "메인 메뉴 열기"
-
-#: data/ui/help-overlay.ui:65
-msgctxt "shortcut window"
-msgid "Map View"
-msgstr "지도 보기"
-
-#: data/ui/help-overlay.ui:68
-msgctxt "shortcut window"
-msgid "Zoom in"
-msgstr "확대"
-
-#: data/ui/help-overlay.ui:74
-msgctxt "shortcut window"
-msgid "Zoom out"
-msgstr "축소"
-
-#: data/ui/help-overlay.ui:80
-msgctxt "shortcut window"
-msgid "Rotate clockwise"
-msgstr "시계 방향으로 회전"
-
-#: data/ui/help-overlay.ui:86
-msgctxt "shortcut window"
-msgid "Rotate counter-clockwise"
-msgstr "반시계 방향으로 회전"
-
-#: data/ui/help-overlay.ui:92
-msgctxt "shortcut window"
-msgid "Reset rotation"
-msgstr "회전 초기화"
-
-#: data/ui/help-overlay.ui:98
-msgctxt "shortcut window"
-msgid "Toggle scale"
-msgstr "축척 바꾸기"
-
-#: data/ui/help-overlay.ui:104
-msgctxt "shortcut window"
-msgid "Go to current location"
-msgstr "현재 위치로 이동"
-
-#: data/ui/help-overlay.ui:114
-msgctxt "shortcut window"
-msgid "Switch to street view"
-msgstr "거리 보기로 전환"
-
-#: data/ui/help-overlay.ui:121
-msgctxt "shortcut window"
-msgid "Switch to aerial view"
-msgstr "공중 보기로 전환"
-
-#: data/ui/help-overlay.ui:127
-msgctxt "shortcut window"
-msgid "Open shape layer"
-msgstr "도형 레이어 열기"
-
 #: data/ui/layers-popover.ui:7
 msgid "Show Scale"
 msgstr "축척 표시"
@@ -367,15 +290,35 @@ msgstr "OpenStreetMap 계정 설정…"
 msgid "Export as Image…"
 msgstr "그림으로 내보내기…"
 
+#. Translators: This is a submenu for selecting length measurements units
 #: data/ui/main-window.ui:17
+msgid "Measurement Units"
+msgstr "측정 단위"
+
+#. Translators: This is a menu item for showing measurements in units corresponding to the system locale
+#: data/ui/main-window.ui:20
+msgid "_System Default"
+msgstr "시스템(_S)"
+
+#. Translators: This a menu item for showing measurements in metric units
+#: data/ui/main-window.ui:25
+msgid "_Metric"
+msgstr "미터법(_M)"
+
+#. Translators: This is a menu item for showing measurements in imperial units
+#: data/ui/main-window.ui:30
+msgid "_Imperial"
+msgstr "야드파운드법(_I)"
+
+#: data/ui/main-window.ui:39
 msgid "_Keyboard Shortcuts"
 msgstr "키보드 바로 가기 키(_K)"
 
-#: data/ui/main-window.ui:22
+#: data/ui/main-window.ui:44
 msgid "About Maps"
 msgstr "지도 정보"
 
-#: data/ui/main-window.ui:48
+#: data/ui/main-window.ui:70
 msgid "Main Menu"
 msgstr "주 메뉴"
 
@@ -446,7 +389,6 @@ msgid "Loading…"
 msgstr "불러오는 중…"
 
 #: data/ui/osm-edit-dialog.ui:38 data/ui/osm-edit-dialog.ui:53
-#: data/ui/osm-edit-dialog.ui:101
 msgid "Edit Location"
 msgstr "위치 수정"
 
@@ -454,34 +396,34 @@ msgstr "위치 수정"
 msgid "Edit an existing location in OpenStreetMap"
 msgstr "OpenStreetMap에서 기존 위치 편집"
 
-#: data/ui/osm-edit-dialog.ui:80 src/mapView.js:638
-#: src/transitplugins/motis2.js:350 src/transitplugins/openTripPlanner.js:1238
-#: src/transitplugins/openTripPlanner2.js:267
+#: data/ui/osm-edit-dialog.ui:68 src/mapView.js:714
+#: src/transitplugins/motis2.js:367 src/transitplugins/openTripPlanner.js:1242
+#: src/transitplugins/openTripPlanner2.js:271
 msgid "Continue"
 msgstr "계속 진행"
 
-#: data/ui/osm-edit-dialog.ui:136
+#: data/ui/osm-edit-dialog.ui:89
 msgid "Location Type"
 msgstr "위치 종류"
 
 #. Translators: This refers to searching for point-of-interest types. Search is a verb.
-#: data/ui/osm-edit-dialog.ui:264
+#: data/ui/osm-edit-dialog.ui:236
 msgid "Search types"
 msgstr "종류 검색"
 
-#: data/ui/osm-edit-dialog.ui:278
+#: data/ui/osm-edit-dialog.ui:250
 msgid "Recently Used Types"
 msgstr "최근 사용한 종류"
 
-#: data/ui/osm-edit-dialog.ui:301
+#: data/ui/osm-edit-dialog.ui:273
 msgid "Edit Map"
 msgstr "지도 수정"
 
-#: data/ui/osm-edit-dialog.ui:320
+#: data/ui/osm-edit-dialog.ui:292
 msgid "Almost There!"
 msgstr "거의 도착했습니다!"
 
-#: data/ui/osm-edit-dialog.ui:321
+#: data/ui/osm-edit-dialog.ui:293
 msgid ""
 "Describe your map changes. They will be visible on all maps that use "
 "OpenStreetMap data."
@@ -489,24 +431,24 @@ msgstr ""
 "지도 변경 사항을 설명해주세요. 해당 내용은 OpenStreetMap 데이터를 사용하는 모"
 "든 지도에서 보이게 됩니다."
 
-#: data/ui/osm-edit-dialog.ui:367
+#: data/ui/osm-edit-dialog.ui:339
 msgid "Submit"
 msgstr "제출"
 
-#: data/ui/osm-edit-dialog.ui:394 src/osmEditDialog.js:235
-#: src/osmEditDialog.js:558 src/osmEditDialog.js:948 src/translations.js:297
+#: data/ui/osm-edit-dialog.ui:366 src/osmEditDialog.js:238
+#: src/osmEditDialog.js:560 src/osmEditDialog.js:953 src/translations.js:297
 msgid "None"
 msgstr "없음"
 
-#: data/ui/place-popover.ui:23 src/searchBar.js:69
+#: data/ui/place-popover.ui:25 src/searchBar.js:69
 msgid "Explore Nearby Places"
 msgstr "주변 장소 둘러보기"
 
-#: data/ui/place-popover.ui:78 src/application.js:273
+#: data/ui/place-popover.ui:82 src/application.js:294
 msgid "No results found"
 msgstr "결과가 없습니다"
 
-#: data/ui/place-popover.ui:88 src/application.js:251
+#: data/ui/place-popover.ui:92 src/application.js:272
 msgid "An error has occurred"
 msgstr "오류가 발생했습니다"
 
@@ -537,20 +479,114 @@ msgstr "보기 상태 전환"
 msgid "Remove Shape Layer"
 msgstr "도형 레이어 제거"
 
-#: data/ui/sidebar.ui:29
-msgid "Pedestrian"
-msgstr "보행자"
+#: data/ui/shortcuts-dialog.ui:6
+msgctxt "shortcut window"
+msgid "General"
+msgstr "일반"
 
+#: data/ui/shortcuts-dialog.ui:9
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "바로 가기 표시"
+
+#: data/ui/shortcuts-dialog.ui:15
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "검색"
+
+#: data/ui/shortcuts-dialog.ui:21
+msgctxt "shortcut window"
+msgid "Explore points-of-interest"
+msgstr "관심 지점 둘러보기"
+
+#: data/ui/shortcuts-dialog.ui:27
+msgctxt "shortcut window"
+msgid "Show last search results"
+msgstr "마지막 검색 결과 보기"
+
+#: data/ui/shortcuts-dialog.ui:33
+msgctxt "shortcut window"
+msgid "Toggle route planner"
+msgstr "경로 계획 도우미 전환"
+
+#: data/ui/shortcuts-dialog.ui:39
+msgctxt "shortcut window"
+msgid "Print route"
+msgstr "경로 인쇄"
+
+#: data/ui/shortcuts-dialog.ui:45
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "끝내기"
+
+#: data/ui/shortcuts-dialog.ui:51
+msgctxt "shortcut window"
+msgid "Open main menu"
+msgstr "메인 메뉴 열기"
+
+#: data/ui/shortcuts-dialog.ui:59
+msgctxt "shortcut window"
+msgid "Map View"
+msgstr "지도 보기"
+
+#: data/ui/shortcuts-dialog.ui:62
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr "확대"
+
+#: data/ui/shortcuts-dialog.ui:68
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr "축소"
+
+#: data/ui/shortcuts-dialog.ui:74
+msgctxt "shortcut window"
+msgid "Rotate clockwise"
+msgstr "시계 방향으로 회전"
+
+#: data/ui/shortcuts-dialog.ui:80
+msgctxt "shortcut window"
+msgid "Rotate counter-clockwise"
+msgstr "반시계 방향으로 회전"
+
+#: data/ui/shortcuts-dialog.ui:86
+msgctxt "shortcut window"
+msgid "Reset rotation"
+msgstr "회전 초기화"
+
+#: data/ui/shortcuts-dialog.ui:92
+msgctxt "shortcut window"
+msgid "Toggle scale"
+msgstr "축척 바꾸기"
+
+#: data/ui/shortcuts-dialog.ui:98
+msgctxt "shortcut window"
+msgid "Go to current location"
+msgstr "현재 위치로 이동"
+
+#: data/ui/shortcuts-dialog.ui:104
+msgctxt "shortcut window"
+msgid "Open shape layer"
+msgstr "도형 레이어 열기"
+
+#. Translators: This is the tooltip text for the button selecting the walking (pedestrian) routing mode
+#: data/ui/sidebar.ui:29
+msgid "Walking"
+msgstr "도보"
+
+#. Translators: This is the tooltip text for the button selecting the cycling routing mode
 #: data/ui/sidebar.ui:36
-msgid "Bike"
+msgid "Cycling"
 msgstr "자전거"
 
+#. Translators: This is the tooltip text for the button selecting the driving (car) routing mode
 #: data/ui/sidebar.ui:43
-msgid "Car"
-msgstr "자동차"
+msgid "Driving"
+msgstr "운전"
 
+#. Translators: This is the tooltip text for the button selecting the public transit routing mode
 #: data/ui/sidebar.ui:50
-msgid "Transit"
+msgid "Public Transit"
 msgstr "대중교통"
 
 #: data/ui/sidebar.ui:184
@@ -669,7 +705,7 @@ msgid "Edit on OpenStreetMap"
 msgstr "OpenStreetMap에서 편집"
 
 #. Translators: This is a tooltip
-#: data/ui/place-view.ui:59
+#: data/ui/place-view.ui:66
 msgid "Share location"
 msgstr "위치 공유"
 
@@ -688,7 +724,7 @@ msgid "Zoom Out"
 msgstr "축소"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1244
+#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1325
 msgid "Zoom In"
 msgstr "확대"
 
@@ -705,35 +741,31 @@ msgstr "XML 문서 해석에 실패했습니다"
 msgid "Missing required attributes"
 msgstr "필요한 속성이 빠졌습니다"
 
-#: lib/maps-osm.c:451 lib/maps-osm.c:494
+#: lib/maps-osm.c:451
 msgid "Could not find OSM element"
 msgstr "OSM 구성 요소를 찾을 수 없습니다"
 
-#: lib/maps-osm.c:508
-msgid "Could not find user element"
-msgstr "사용자 구성 요소를 찾을 수 없습니다"
-
-#: src/application.js:73
+#: src/application.js:74
 msgid "A path to a local tiles directory structure"
 msgstr "로컬 타일 디렉터리 구조 경로"
 
-#: src/application.js:79
+#: src/application.js:80
 msgid "Tile size for local tiles directory"
 msgstr "로컬 타일 디렉터리의 타일 크기"
 
-#: src/application.js:83
+#: src/application.js:84
 msgid "Show the version of the program"
 msgstr "프로그램 버전 보기"
 
-#: src/application.js:89
+#: src/application.js:90
 msgid "Search for places"
 msgstr "장소 검색"
 
-#: src/application.js:100 src/application.js:101
+#: src/application.js:101 src/application.js:102
 msgid "[FILE…|URI]"
 msgstr "[<파일>…|<URI>]"
 
-#: src/application.js:280
+#: src/application.js:301
 #, javascript-format
 msgid "Invalid maps: URI: %s"
 msgstr "잘못된 지도: URI: %s"
@@ -742,16 +774,16 @@ msgstr "잘못된 지도: URI: %s"
 #. * exported image with coordinates. The .png extension should be kept
 #. * intact in the translated string.
 #.
-#: src/exportViewDialog.js:72
+#: src/exportViewDialog.js:70
 #, javascript-format
 msgid "Maps at %f, %f.png"
 msgstr "%f, %f의 지도.png"
 
-#: src/exportViewDialog.js:87
+#: src/exportViewDialog.js:81
 msgid "PNG"
 msgstr "PNG"
 
-#: src/exportViewDialog.js:138
+#: src/exportViewDialog.js:132
 msgid "Unable to export view"
 msgstr "보기 화면을 내보낼 수 없습니다"
 
@@ -775,51 +807,51 @@ msgstr "해석 오류"
 msgid "unknown geometry"
 msgstr "알 수 없는 지형 정보"
 
-#: src/graphHopper.js:102 src/transitPlan.js:177
+#: src/graphHopper.js:116 src/transitPlan.js:177
 msgid "Route request failed."
 msgstr "경로 요청에 실패했습니다."
 
-#: src/graphHopper.js:109 src/transitPlan.js:169
+#: src/graphHopper.js:123 src/transitPlan.js:169
 msgid "No route found."
 msgstr "경로가 없습니다."
 
-#: src/graphHopper.js:196 src/transitplugins/openTripPlanner.js:1162
+#: src/graphHopper.js:210 src/transitplugins/openTripPlanner.js:1166
 msgid "Start!"
 msgstr "시작!"
 
-#: src/mainWindow.js:477
+#: src/mainWindow.js:476
 msgid "Failed to connect to location service"
 msgstr "위치 서비스 연결에 실패했습니다"
 
-#: src/mainWindow.js:482
+#: src/mainWindow.js:481
 msgid "Turn on location services"
 msgstr "위치 서비스 켜기"
 
-#: src/mainWindow.js:483
+#: src/mainWindow.js:482
 msgid "Location Settings"
 msgstr "위치 정보 설정"
 
-#: src/mainWindow.js:588
+#: src/mainWindow.js:586
+msgid "Copyright © 2011 – 2025 Red Hat, Inc. and The GNOME Maps authors"
+msgstr "Copyright © 2011 – 2025 Red Hat, Inc. and The GNOME Maps authors"
+
+#: src/mainWindow.js:587
 msgid "translator-credits"
 msgstr ""
 "조성호 <shcho@gnome.org>\n"
 "정광섭 <myddpp@gmail.com>\n"
 "엄지용 <conr2d@gmail.com>"
 
-#: src/mainWindow.js:592
-msgid "Copyright © 2011 – 2025 Red Hat, Inc. and The GNOME Maps authors"
-msgstr "Copyright © 2011 – 2025 Red Hat, Inc. and The GNOME Maps authors"
-
-#: src/mainWindow.js:605
+#: src/mainWindow.js:594
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "%s와(과) 기여자의 지도 데이터"
 
-#: src/mainWindow.js:606
+#: src/mainWindow.js:595
 msgid "Map Data Provider"
 msgstr "지도 데이터 제공자"
 
-#: src/mainWindow.js:609
+#: src/mainWindow.js:598
 msgid "Map Tile Provider"
 msgstr "지도 타일 제공자"
 
@@ -828,96 +860,96 @@ msgstr "지도 타일 제공자"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:617
+#: src/mainWindow.js:606
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "%s에서 제공한 지도 타일"
 
-#: src/mainWindow.js:646
+#: src/mainWindow.js:635
 msgid "Search Provider"
 msgstr "검색 제공자"
 
-#: src/mainWindow.js:649
+#: src/mainWindow.js:638
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "%s에서 %s을(를) 활용한 검색 기능 제공함"
 
-#: src/mainWindow.js:658
+#: src/mainWindow.js:647
 msgid "All Layer Files"
 msgstr "모든 레이어 파일"
 
-#: src/mainWindow.js:671
+#: src/mainWindow.js:660
 msgid "Open Shape Layers"
 msgstr "도형 레이어 열기"
 
-#: src/mapView.js:613 src/mapView.js:675
+#: src/mapView.js:689 src/mapView.js:751
 msgid "Failed to open layer"
 msgstr "레이어 열기에 실패했습니다"
 
-#: src/mapView.js:630
+#: src/mapView.js:706
 msgid "Do you want to continue?"
 msgstr "계속 하시겠습니까?"
 
-#: src/mapView.js:631
+#: src/mapView.js:707
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
 "time to load"
 msgstr "%s MB 크기의 파일 열기를 시도하였습니다. 이 작업은 시간이 걸립니다"
 
-#: src/mapView.js:637
+#: src/mapView.js:713
 msgid "Cancel"
 msgstr "취소"
 
-#: src/mapView.js:669
+#: src/mapView.js:745
 msgid "File type is not supported"
 msgstr "파일 형식을 지원하지 않습니다"
 
-#: src/mapView.js:711
+#: src/mapView.js:787
 msgid "Failed to open GeoURI"
 msgstr "GeoURI 열기에 실패했습니다"
 
-#: src/mapView.js:1243
+#: src/mapView.js:1324
 msgid "Zoom in to add location"
 msgstr "위치 추가를 위해 확대"
 
-#: src/mapView.js:1261
+#: src/mapView.js:1342
 msgid "Location was added in OpenStreetMap"
 msgstr "OpenStreetMap에 위치를 추가했습니다"
 
 #. switch back to the sign-in view, and show a toast indicating
 #. that verification failed
-#: src/osmAccountDialog.js:134
+#: src/osmAccountDialog.js:187
 msgid "The verification code didn’t match, please try again."
 msgstr "인증 코드가 일치하지 않습니다. 다시 시도하십시오."
 
 #. setting the status in session.cancel_message still seems
 #. to always give status IO_ERROR
-#: src/osmConnection.js:335
+#: src/osmConnection.js:376
 msgid "Incorrect user name or password"
 msgstr "사용자 이름 또는 암호가 올바르지 않습니다"
 
-#: src/osmConnection.js:337
+#: src/osmConnection.js:378
 msgid "Success"
 msgstr "성공"
 
-#: src/osmConnection.js:339
+#: src/osmConnection.js:380
 msgid "Bad request"
 msgstr "잘못된 요청"
 
-#: src/osmConnection.js:341
+#: src/osmConnection.js:382
 msgid "Object not found"
 msgstr "객체가 없습니다"
 
-#: src/osmConnection.js:343
+#: src/osmConnection.js:384
 msgid "Conflict, someone else has just modified the object"
 msgstr "누군가가 객체를 수정하여 바꾼 동작이 중복됐습니다"
 
-#: src/osmConnection.js:345
+#: src/osmConnection.js:386
 msgid "Object has been deleted"
 msgstr "객체를 삭제했습니다"
 
-#: src/osmConnection.js:347
+#: src/osmConnection.js:388
 msgid "Way or relation refers to non-existing children"
 msgstr "길 또는 관계는 '없는 하위 구성 요소'를 참조합니다"
 
@@ -933,7 +965,7 @@ msgstr "이름"
 msgid "Type"
 msgstr "형식"
 
-#: src/osmEditDialog.js:123 src/osmEditDialog.js:759
+#: src/osmEditDialog.js:123 src/osmEditDialog.js:764
 msgid "Address"
 msgstr "주소"
 
@@ -949,11 +981,11 @@ msgstr "개장 시간"
 msgid "Phone"
 msgstr "전화번호"
 
-#: src/osmEditDialog.js:151 src/placeView.js:336
+#: src/osmEditDialog.js:151 src/placeView.js:416
 msgid "Email"
 msgstr "전자메일"
 
-#: src/osmEditDialog.js:158 src/placeView.js:303
+#: src/osmEditDialog.js:158 src/placeView.js:383
 msgid "Website"
 msgstr "웹사이트"
 
@@ -965,11 +997,11 @@ msgstr "접근성"
 msgid "Wheelchair Access"
 msgstr "휠체어 접근"
 
-#: src/osmEditDialog.js:172 src/osmEditDialog.js:181 src/osmEditDialog.js:216
+#: src/osmEditDialog.js:172 src/osmEditDialog.js:181 src/osmEditDialog.js:219
 msgid "Yes"
 msgstr "예"
 
-#: src/osmEditDialog.js:173 src/osmEditDialog.js:182 src/osmEditDialog.js:217
+#: src/osmEditDialog.js:173 src/osmEditDialog.js:182 src/osmEditDialog.js:220
 msgid "No"
 msgstr "아니요"
 
@@ -1001,13 +1033,16 @@ msgstr "터미널"
 msgid "Service"
 msgstr "서비스"
 
-#: src/osmEditDialog.js:191
+#. Translators: This is the title for a section of POI fields not
+#. * belonging to the previous sections ("General", "Contact", "Accessibility").
+#.
+#: src/osmEditDialog.js:194
 msgid "Miscellaneous"
 msgstr "기타"
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:194 src/osmEditDialog.js:797 src/placeView.js:778
+#: src/osmEditDialog.js:197 src/osmEditDialog.js:802 src/placeView.js:871
 msgid "Wikipedia"
 msgstr "위키피디아"
 
@@ -1017,173 +1052,172 @@ msgstr "위키피디아"
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:201 src/placeView.js:537
+#: src/osmEditDialog.js:204 src/placeView.js:617
 msgid "Population"
 msgstr "인구"
 
-#: src/osmEditDialog.js:206 src/placeView.js:566
+#: src/osmEditDialog.js:209 src/placeView.js:646
 msgid "Altitude"
 msgstr "고도"
 
-#: src/osmEditDialog.js:207
+#: src/osmEditDialog.js:210
 msgid "Elevation above sea level, in meters"
 msgstr "미터 단위 해발고도"
 
-#: src/osmEditDialog.js:213
+#: src/osmEditDialog.js:216
 msgid "Takeout"
 msgstr "포장 판매"
 
-#: src/osmEditDialog.js:218
+#: src/osmEditDialog.js:221
 msgid "Only"
 msgstr "포장만"
 
-#: src/osmEditDialog.js:221
+#: src/osmEditDialog.js:224
 msgid "Religion"
 msgstr "종교"
 
-#: src/osmEditDialog.js:224 src/translations.js:286
+#: src/osmEditDialog.js:227 src/translations.js:286
 msgid "Animism"
 msgstr "애니미즘"
 
-#: src/osmEditDialog.js:225
+#: src/osmEditDialog.js:228
 msgid "Bahá’í"
 msgstr "바하이교"
 
-#: src/osmEditDialog.js:226 src/translations.js:288
+#: src/osmEditDialog.js:229 src/translations.js:288
 msgid "Buddhism"
 msgstr "불교"
 
-#: src/osmEditDialog.js:227 src/translations.js:289
+#: src/osmEditDialog.js:230 src/translations.js:289
 msgid "Caodaism"
 msgstr "까오다이교"
 
-#: src/osmEditDialog.js:228 src/translations.js:290
+#: src/osmEditDialog.js:231 src/translations.js:290
 msgid "Christianity"
 msgstr "크리스트교"
 
-#: src/osmEditDialog.js:229 src/translations.js:291
+#: src/osmEditDialog.js:232 src/translations.js:291
 msgid "Confucianism"
 msgstr "유교"
 
-#: src/osmEditDialog.js:230 src/translations.js:292
+#: src/osmEditDialog.js:233 src/translations.js:292
 msgid "Hinduism"
 msgstr "힌두교"
 
-#: src/osmEditDialog.js:231 src/translations.js:293
+#: src/osmEditDialog.js:234 src/translations.js:293
 msgid "Jainism"
 msgstr "자이나교"
 
-#: src/osmEditDialog.js:232 src/translations.js:294
+#: src/osmEditDialog.js:235 src/translations.js:294
 msgid "Judaism"
 msgstr "유대교"
 
-#: src/osmEditDialog.js:233 src/translations.js:295
+#: src/osmEditDialog.js:236 src/translations.js:295
 msgid "Islam"
 msgstr "이슬람교"
 
-#: src/osmEditDialog.js:234 src/translations.js:296
+#: src/osmEditDialog.js:237 src/translations.js:296
 msgid "Multiple Religions"
 msgstr "다신교"
 
-#: src/osmEditDialog.js:236 src/translations.js:298
+#: src/osmEditDialog.js:239 src/translations.js:298
 msgid "Paganism"
 msgstr "켈트 파가니즘"
 
-#: src/osmEditDialog.js:237 src/translations.js:299
+#: src/osmEditDialog.js:240 src/translations.js:299
 msgid "Pastafarianism"
 msgstr "FSM교"
 
-#: src/osmEditDialog.js:238 src/translations.js:300
+#: src/osmEditDialog.js:241 src/translations.js:300
 msgid "Scientology"
 msgstr "사이언톨로지"
 
-#: src/osmEditDialog.js:239 src/translations.js:301
+#: src/osmEditDialog.js:242 src/translations.js:301
 msgid "Shinto"
 msgstr "신토(しんとう)"
 
-#: src/osmEditDialog.js:240 src/translations.js:302
+#: src/osmEditDialog.js:243 src/translations.js:302
 msgid "Sikhism"
 msgstr "시크교"
 
-#: src/osmEditDialog.js:241 src/translations.js:303
+#: src/osmEditDialog.js:244 src/translations.js:303
 msgid "Spiritualism"
 msgstr "심령술"
 
-#: src/osmEditDialog.js:242 src/translations.js:304
+#: src/osmEditDialog.js:245 src/translations.js:304
 msgid "Taoism"
 msgstr "도교"
 
-#: src/osmEditDialog.js:243 src/translations.js:305
+#: src/osmEditDialog.js:246 src/translations.js:305
 msgid "Unitarian Universalism"
 msgstr "유니테리안 유니버설리즘"
 
-#: src/osmEditDialog.js:244 src/translations.js:306
+#: src/osmEditDialog.js:247 src/translations.js:306
 msgid "Voodoo"
 msgstr "부두교"
 
-#: src/osmEditDialog.js:245 src/translations.js:307
+#: src/osmEditDialog.js:248 src/translations.js:307
 msgid "Yazidism"
 msgstr "야지디교"
 
-#: src/osmEditDialog.js:246 src/translations.js:308
+#: src/osmEditDialog.js:249 src/translations.js:308
 msgid "Zoroastrianism"
 msgstr "조로아스터교"
 
-#: src/osmEditDialog.js:249
+#: src/osmEditDialog.js:252
 msgid "Note"
 msgstr "참고"
 
-#: src/osmEditDialog.js:310
+#. set the title and description for adding a POI
+#: src/osmEditDialog.js:320
 msgctxt "dialog heading"
 msgid "Add Location"
 msgstr "위치 추가"
 
-#. set the title and description for adding a POI
-#: src/osmEditDialog.js:319
-msgid "Add Location"
-msgstr "위치 추가"
-
-#: src/osmEditDialog.js:320
+#: src/osmEditDialog.js:321
 msgid "Add a new location to OpenStreetMap"
 msgstr "OpenStreetMap에 새로운 위치 추가"
 
-#: src/osmEditDialog.js:411
+#: src/osmEditDialog.js:413
 msgid "Changes successfully submitted"
 msgstr "변경 사항을 성공적으로 제출"
 
-#: src/osmEditDialog.js:703
-msgid "Unspecified"
+#. Translators: This is the title for a combo box row selected when a
+#. * value is not assigned to one in a list of allowed values.
+#.
+#: src/osmEditDialog.js:708
+msgid "Unspecified value"
 msgstr "지정하지 않음"
 
-#: src/osmEditDialog.js:765
+#: src/osmEditDialog.js:770
 msgid "Street Name"
 msgstr "거리명"
 
-#: src/osmEditDialog.js:766
+#: src/osmEditDialog.js:771
 msgid "House Number"
 msgstr "지번"
 
-#: src/osmEditDialog.js:767
+#: src/osmEditDialog.js:772
 msgid "ZIP Code"
 msgstr "우편번호"
 
-#: src/osmEditDialog.js:768
+#: src/osmEditDialog.js:773
 msgid "City"
 msgstr "도시"
 
-#: src/osmEditDialog.js:800
+#: src/osmEditDialog.js:805
 msgid "Wikipedia Article"
 msgstr "위키피디아"
 
-#: src/osmEditDialog.js:804
+#: src/osmEditDialog.js:809
 msgid "Wikidata Tag"
 msgstr "위키데이터 태그"
 
-#: src/osmEditDialog.js:809
+#: src/osmEditDialog.js:814
 msgid "Load Wikidata tag from article name"
 msgstr "관련 위키데이터 태그 불러오기"
 
-#: src/osmEditDialog.js:865
+#: src/osmEditDialog.js:870
 msgid "Couldn't find Wikidata tag for article"
 msgstr "해당 문서에 대한 위키데이터 태그를 찾을 수 없습니다"
 
@@ -1267,15 +1301,46 @@ msgstr "상점"
 #. Translators: This represents the title for places tagged with the
 #. * "tourism" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Tourism
 #.
-#: src/osmTypes.js:89 src/poiCategories.js:467
+#: src/osmTypes.js:89 src/poiCategories.js:474
 msgid "Tourism"
 msgstr "여행자 시설"
 
-#: src/osmTypes.js:97
+#. Translators: "Other" refers to points-of-interest where we don't have
+#. * a known title corresponding to the raw OpenStreetMap tag
+#.
+#: src/osmTypes.js:101
 msgid "Other"
 msgstr "그 외"
 
-#: src/photonUtils.js:118 src/placeListRow.js:70
+#: src/osmTypes.js:209
+msgid "Funicular station"
+msgstr "케이블카 정거장"
+
+#: src/osmTypes.js:211
+msgid "Light rail stop"
+msgstr "경전철역"
+
+#: src/osmTypes.js:213
+msgid "Monorail station"
+msgstr "모노레일 정거장"
+
+#: src/osmTypes.js:215 src/osmTypes.js:225
+msgid "Railway station"
+msgstr "기차역"
+
+#: src/osmTypes.js:217
+msgid "Subway station"
+msgstr "지하철역"
+
+#: src/osmTypes.js:221
+msgid "Railway halt"
+msgstr "간이역"
+
+#: src/osmTypes.js:223
+msgid "Tram stop"
+msgstr "트램 정거장"
+
+#: src/photonUtils.js:118 src/placeListRow.js:71
 msgid "Unnamed place"
 msgstr "이름 없는 장소"
 
@@ -1283,13 +1348,17 @@ msgstr "이름 없는 장소"
 msgid "Clear Entry"
 msgstr "내용 비우기"
 
-#: src/placeEntry.js:315
+#: src/placeEntry.js:321
 msgid "Failed to parse Geo URI"
 msgstr "지리 URI 해석에 실패했습니다"
 
-#: src/placeEntry.js:327
+#: src/placeEntry.js:334
 msgid "Failed to parse Maps URI"
 msgstr "지도 URI 해석에 실패했습니다"
+
+#: src/placeFormatter.js:57 src/placeView.js:243 src/placeView.js:369
+msgid "Coordinates"
+msgstr "좌표"
 
 #. 300 ft (300 * 12 * 0.0254 m)
 #.
@@ -1299,22 +1368,18 @@ msgstr "지도 URI 해석에 실패했습니다"
 #. * needed (e.g. using the correct direction, or alternative symbol).
 #. * The %s should be kept, and is substituted with a label representing the
 #. * short distance. The \u2009 (thin space) could also be adjusted if needed
-#: src/placeListRow.js:47
+#: src/placeListRow.js:48
 #, javascript-format
 msgctxt "short distance format string"
 msgid "< %s"
 msgstr "< %s"
 
-#: src/placeView.js:291
-msgid "Coordinates"
-msgstr "좌표"
-
-#: src/placeView.js:295
+#: src/placeView.js:375
 msgid "Accuracy"
 msgstr "위치 정확도"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:298
+#: src/placeView.js:378
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "위치 정확도: %s"
@@ -1325,7 +1390,7 @@ msgstr "위치 정확도: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:317
+#: src/placeView.js:397
 msgid "Phone number"
 msgstr "전화번호"
 
@@ -1336,16 +1401,16 @@ msgstr "전화번호"
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
 #.
-#: src/placeView.js:351 src/placeView.js:390
+#: src/placeView.js:431 src/placeView.js:470
 msgid "Floor"
 msgstr "층"
 
-#: src/placeView.js:353
+#: src/placeView.js:433
 #, javascript-format
 msgid "Floor %s"
 msgstr "%s층"
 
-#: src/placeView.js:365
+#: src/placeView.js:445
 msgid "At ground level"
 msgstr "지상층"
 
@@ -1354,7 +1419,7 @@ msgstr "지상층"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:374
+#: src/placeView.js:454
 #, javascript-format
 msgid "%s floor above ground level"
 msgid_plural "%s floors above ground level"
@@ -1365,7 +1430,7 @@ msgstr[0] "지상 %s층"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:385
+#: src/placeView.js:465
 #, javascript-format
 msgid "%s floor below ground level"
 msgid_plural "%s floors below ground level"
@@ -1375,7 +1440,7 @@ msgstr[0] "지하 %s층"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:403
+#: src/placeView.js:483
 msgid "Offers takeout"
 msgstr "포장 가능"
 
@@ -1383,7 +1448,7 @@ msgstr "포장 가능"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:411
+#: src/placeView.js:491
 msgid "Does not offer takeout"
 msgstr "포장 불가능"
 
@@ -1392,18 +1457,18 @@ msgstr "포장 불가능"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:420
+#: src/placeView.js:500
 msgid "Only offers takeout"
 msgstr "포장만 가능"
 
-#: src/placeView.js:427
+#: src/placeView.js:507
 msgid "Opening hours"
 msgstr "개장 시간"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:437
+#: src/placeView.js:517
 msgid "Public internet access"
 msgstr "공공 인터넷 접속"
 
@@ -1411,50 +1476,50 @@ msgstr "공공 인터넷 접속"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:446
+#: src/placeView.js:526
 msgid "No internet access"
 msgstr "인터넷 접속 불가"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:454
+#: src/placeView.js:534
 msgid "Public Wi-Fi"
 msgstr "공개 와이파이"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:462
+#: src/placeView.js:542
 msgid "Wired internet access"
 msgstr "유선 인터넷 접속"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:470
+#: src/placeView.js:550
 msgid "Computers available for use"
 msgstr "컴퓨터 사용 가능"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:478
+#: src/placeView.js:558
 msgid "Internet assistance available"
 msgstr "인터넷 지원 가능"
 
-#: src/placeView.js:484
+#: src/placeView.js:564
 msgid "No toilets available"
 msgstr "화장실 사용 불가"
 
-#: src/placeView.js:487
+#: src/placeView.js:567
 msgid "Toilets available"
 msgstr "화장실 사용 가능"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:496
+#: src/placeView.js:576
 msgid "Wheelchair accessible"
 msgstr "휠체어 접근 가능"
 
@@ -1463,7 +1528,7 @@ msgstr "휠체어 접근 가능"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:506
+#: src/placeView.js:586
 msgid "Limited wheelchair accessibility"
 msgstr "제한적 휠체어 접근성"
 
@@ -1471,7 +1536,7 @@ msgstr "제한적 휠체어 접근성"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:515
+#: src/placeView.js:595
 msgid "Not wheelchair accessible"
 msgstr "휠체어 접근 불가"
 
@@ -1480,7 +1545,7 @@ msgstr "휠체어 접근 불가"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:525
+#: src/placeView.js:605
 msgid "Designated for wheelchair users"
 msgstr "휠체어 사용자용"
 
@@ -1489,7 +1554,7 @@ msgstr "휠체어 사용자용"
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:556
+#: src/placeView.js:636
 #, javascript-format
 msgid "%s below sea level"
 msgstr "해수면 밑 %s"
@@ -1498,23 +1563,38 @@ msgstr "해수면 밑 %s"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:563
+#: src/placeView.js:643
 msgid "At sea level"
 msgstr "해수면"
 
-#: src/placeView.js:575
+#: src/placeView.js:655
 msgid "Religion:"
 msgstr "종교시설:"
 
-#: src/place.js:598
+#. Translators: This refers to motorway junction exit (freeway exit)
+#: src/placeView.js:660
+#, javascript-format
+msgid "Exit %s"
+msgstr "%s번 출구"
+
+#. Translators: this is a format template string for a pair of raw
+#. * coordinates, the comma can be adapted to local conventions if needed.
+#.
+#: src/place.js:299
+#, javascript-format
+msgctxt "coordinates"
+msgid "%s, %s"
+msgstr "%s, %s"
+
+#: src/place.js:664
 msgid "Place not found in OpenStreetMap"
 msgstr "OpenStreetMap에 해당 위치가 없습니다"
 
-#: src/place.js:605
+#: src/place.js:671
 msgid "Coordinates in URL are not valid"
 msgstr "URL 좌표가 올바르지 않습니다"
 
-#: src/place.js:614
+#: src/place.js:680
 msgid "URL is not supported"
 msgstr "URL을 지원하지 않습니다"
 
@@ -1571,218 +1651,222 @@ msgid "Restaurants"
 msgstr "식당"
 
 #: src/poiCategories.js:205
+msgid "Vegan & Vegetarian Restaurants"
+msgstr "비건 및 채식주의자 식당"
+
+#: src/poiCategories.js:212
 msgid "Fast Food"
 msgstr "패스트푸드"
 
-#: src/poiCategories.js:210
+#: src/poiCategories.js:217
 msgid "Food Courts"
 msgstr "푸드코트"
 
-#: src/poiCategories.js:215
+#: src/poiCategories.js:222
 msgid "Pubs"
 msgstr "술집(Pub)"
 
-#: src/poiCategories.js:221
+#: src/poiCategories.js:228
 msgid "Bars"
 msgstr "술집(Bar)"
 
-#: src/poiCategories.js:226
+#: src/poiCategories.js:233
 msgid "Cafes"
 msgstr "카페"
 
-#: src/poiCategories.js:231
+#: src/poiCategories.js:238
 msgid "Ice Cream"
 msgstr "아이스크림"
 
-#: src/poiCategories.js:236
+#: src/poiCategories.js:243
 msgid "Food, Snacks, and Beverage Machines"
 msgstr "식음료 자판기"
 
-#: src/poiCategories.js:244
+#: src/poiCategories.js:251
 msgid "Shopping"
 msgstr "쇼핑"
 
-#: src/poiCategories.js:248
+#: src/poiCategories.js:255
 msgid "Supermarkets"
 msgstr "슈퍼마켓"
 
-#: src/poiCategories.js:254
+#: src/poiCategories.js:261
 msgid "Convenience Stores"
 msgstr "편의점"
 
-#: src/poiCategories.js:259
+#: src/poiCategories.js:266
 msgid "Shopping Malls"
 msgstr "쇼핑몰"
 
-#: src/poiCategories.js:265
+#: src/poiCategories.js:272
 msgid "Clothes"
 msgstr "의류 매장"
 
-#: src/poiCategories.js:271
+#: src/poiCategories.js:278
 msgid "Shoes"
 msgstr "신발 매장"
 
-#: src/poiCategories.js:276
+#: src/poiCategories.js:283
 msgid "Electronics"
 msgstr "전자제품 매장"
 
-#: src/poiCategories.js:282
+#: src/poiCategories.js:289
 msgid "Alcohol"
 msgstr "주류 매장"
 
-#: src/poiCategories.js:288
+#: src/poiCategories.js:295
 msgid "Bakeries"
 msgstr "제과점"
 
-#: src/poiCategories.js:294
+#: src/poiCategories.js:301
 msgid "Flowers"
 msgstr "꽃집"
 
-#: src/poiCategories.js:299
+#: src/poiCategories.js:306
 msgid "Gifts"
 msgstr "선물 상점"
 
-#: src/poiCategories.js:307
+#: src/poiCategories.js:314
 msgid "Transportation"
 msgstr "교통"
 
-#: src/poiCategories.js:311
+#: src/poiCategories.js:318
 msgid "Bus & Tram Stops"
 msgstr "버스(트램)정류장"
 
-#: src/poiCategories.js:319
+#: src/poiCategories.js:326
 msgid "Train & Subway Stations"
 msgstr "기차(지하철)역"
 
-#: src/poiCategories.js:327
+#: src/poiCategories.js:334
 msgid "Tickets"
 msgstr "매표소"
 
-#: src/poiCategories.js:335
+#: src/poiCategories.js:342
 msgid "Parking"
 msgstr "주차장"
 
-#: src/poiCategories.js:340
+#: src/poiCategories.js:347
 msgid "Bicycle Parking"
 msgstr "자전거 주차장"
 
-#: src/poiCategories.js:345
+#: src/poiCategories.js:352
 msgid "Bicycle Rental"
 msgstr "자전거 대여소"
 
-#: src/poiCategories.js:350
+#: src/poiCategories.js:357
 msgid "Car Rental"
 msgstr "차량 대여소"
 
-#: src/poiCategories.js:355
+#: src/poiCategories.js:362
 msgid "Fuel"
 msgstr "주유소"
 
-#: src/poiCategories.js:360
+#: src/poiCategories.js:367
 msgid "EV Charging"
 msgstr "전기차 충전소"
 
-#: src/poiCategories.js:368
+#: src/poiCategories.js:375
 msgid "Healthcare"
 msgstr "보건 시설"
 
-#: src/poiCategories.js:372
+#: src/poiCategories.js:379
 msgid "Clinics"
 msgstr "진료소"
 
-#: src/poiCategories.js:378
+#: src/poiCategories.js:385
 msgid "Hospitals"
 msgstr "병원"
 
-#: src/poiCategories.js:384
+#: src/poiCategories.js:391
 msgid "Dentists"
 msgstr "치과"
 
-#: src/poiCategories.js:392
+#: src/poiCategories.js:399
 msgid "Accommodation"
 msgstr "숙박 시설"
 
-#: src/poiCategories.js:396
+#: src/poiCategories.js:403
 msgid "Hotels"
 msgstr "호텔"
 
-#: src/poiCategories.js:401
+#: src/poiCategories.js:408
 msgid "Hostels"
 msgstr "호스텔"
 
-#: src/poiCategories.js:406
+#: src/poiCategories.js:413
 msgid "Bed & Breakfast"
 msgstr "게스트하우스"
 
-#: src/poiCategories.js:411
+#: src/poiCategories.js:418
 msgid "Campings"
 msgstr "야영장"
 
-#: src/poiCategories.js:418
+#: src/poiCategories.js:425
 msgid "Recreation"
 msgstr "오락 시설"
 
-#: src/poiCategories.js:422
+#: src/poiCategories.js:429
 msgid "Parks"
 msgstr "공원"
 
-#: src/poiCategories.js:427
+#: src/poiCategories.js:434
 msgid "Playgrounds"
 msgstr "놀이터"
 
-#: src/poiCategories.js:432
+#: src/poiCategories.js:439
 msgid "Beaches"
 msgstr "해수욕장"
 
-#: src/poiCategories.js:437
+#: src/poiCategories.js:444
 msgid "Nature Reserves"
 msgstr "자연보호구역"
 
-#: src/poiCategories.js:443
+#: src/poiCategories.js:450
 msgid "Theme Parks"
 msgstr "놀이공원"
 
-#: src/poiCategories.js:448
+#: src/poiCategories.js:455
 msgid "Theaters"
 msgstr "극장"
 
-#: src/poiCategories.js:454
+#: src/poiCategories.js:461
 msgid "Movie Theaters"
 msgstr "영화관"
 
-#: src/poiCategories.js:460
+#: src/poiCategories.js:467
 msgid "Night Clubs"
 msgstr "나이트클럽"
 
-#: src/poiCategories.js:471
+#: src/poiCategories.js:478
 msgid "Museums"
 msgstr "박물관"
 
-#: src/poiCategories.js:477
+#: src/poiCategories.js:484
 msgid "Attractions"
 msgstr "놀이기구"
 
-#: src/poiCategories.js:482
+#: src/poiCategories.js:489
 msgid "Artworks"
 msgstr "미술 작품"
 
-#: src/poiCategories.js:487
+#: src/poiCategories.js:494
 msgid "Tourist Information"
 msgstr "여행자 안내소"
 
-#: src/poiCategories.js:494
+#: src/poiCategories.js:501
 msgid "Sports"
 msgstr "운동 시설"
 
-#: src/poiCategories.js:498
+#: src/poiCategories.js:505
 msgid "Gyms"
 msgstr "체육관"
 
-#: src/poiCategories.js:504
+#: src/poiCategories.js:511
 msgid "Outdoor Gyms"
 msgstr "실외 체육시설"
 
-#: src/poiCategories.js:510
+#: src/poiCategories.js:517
 msgid "Golf Courses"
 msgstr "골프장"
 
@@ -1836,16 +1920,16 @@ msgstr "검색"
 
 #. Translators: The first string is the name of the city, the
 #. second string is the name of the app to add it to
-#: src/sendToDialog.js:84
+#: src/sendToDialog.js:89
 #, javascript-format
 msgid "Add %s to %s"
 msgstr "%s을(를) %s에 추가"
 
-#: src/sendToDialog.js:181
+#: src/sendToDialog.js:188
 msgid "Failed to open URI"
 msgstr "URI 열기에 실패했습니다"
 
-#: src/sendToDialog.js:246
+#: src/sendToDialog.js:253
 #, javascript-format
 msgid "Open with %s"
 msgstr "%s 프로그램으로 열기"
@@ -1855,12 +1939,12 @@ msgid "failed to load file"
 msgstr "파일 불러오기에 실패했습니다"
 
 #. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:338
+#: src/sidebar.js:343
 #, javascript-format
 msgid "Estimated time: %s"
 msgstr "예상 시간: %s"
 
-#: src/sidebar.js:408
+#: src/sidebar.js:413
 #, javascript-format
 msgid "Itineraries provided by %s"
 msgstr "%s에서 제공한 일정"
@@ -1877,8 +1961,8 @@ msgstr "%s에 시작"
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: src/transit.js:45 src/transitplugins/motis2.js:314
-#: src/transitplugins/openTripPlanner2.js:236
+#: src/transit.js:45 src/transitplugins/motis2.js:330
+#: src/transitplugins/openTripPlanner2.js:240
 msgid "Start"
 msgstr "시작"
 
@@ -1898,9 +1982,9 @@ msgstr "%s 걷기"
 msgid "Arrive at %s"
 msgstr "%s에 도착"
 
-#: src/transit.js:79 src/transitplugins/motis2.js:332
-#: src/transitplugins/openTripPlanner.js:1175
-#: src/transitplugins/openTripPlanner2.js:255
+#: src/transit.js:79 src/transitplugins/motis2.js:349
+#: src/transitplugins/openTripPlanner.js:1179
+#: src/transitplugins/openTripPlanner2.js:259
 msgid "Arrive"
 msgstr "도"
 
@@ -2091,19 +2175,19 @@ msgid "Bahá'í"
 msgstr "바하이교"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:248
+#: src/utils.js:269
 msgid "Unknown"
 msgstr "알 수 없음"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:251
+#: src/utils.js:272
 msgid "Exact"
 msgstr "정확함"
 
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
 #.
-#: src/utils.js:307
+#: src/utils.js:328
 #, javascript-format
 msgid "%s h"
 msgstr "%s시간"
@@ -2112,7 +2196,7 @@ msgstr "%s시간"
 #. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
 #.
-#: src/utils.js:313
+#: src/utils.js:334
 #, javascript-format
 msgid "%s h %s min"
 msgid_plural "%s h %s min"
@@ -2122,7 +2206,7 @@ msgstr[0] "%s시간 %s분"
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
 #.
-#: src/utils.js:320
+#: src/utils.js:341
 #, javascript-format
 msgid "%s min"
 msgid_plural "%s min"
@@ -2132,166 +2216,189 @@ msgstr[0] "%s분"
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
 #.
-#: src/utils.js:326
+#: src/utils.js:347
 #, javascript-format
 msgid "%s s"
 msgid_plural "%s s"
 msgstr[0] "%s초"
 
-#. Translators: This is a distance measured in kilometers
-#: src/utils.js:337
-#, javascript-format
-msgid "%s km"
-msgstr "%s 킬로미터"
-
-#. Translators: This is a distance measured in meters
-#: src/utils.js:340
-#, javascript-format
-msgid "%s m"
-msgstr "%s 미터"
-
 #. Translators: This is a distance measured in miles
-#: src/utils.js:348
+#: src/utils.js:359
 #, javascript-format
 msgid "%s mi"
 msgstr "%s 마일"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:351
+#: src/utils.js:362
 #, javascript-format
 msgid "%s ft"
 msgstr "%s 피트"
 
-#: src/transitplugins/motis2.js:344
+#. Translators: This is a distance measured in kilometers
+#: src/utils.js:370
+#, javascript-format
+msgid "%s km"
+msgstr "%s 킬로미터"
+
+#. Translators: This is a distance measured in meters
+#: src/utils.js:373
+#, javascript-format
+msgid "%s m"
+msgstr "%s 미터"
+
+#: src/transitplugins/motis2.js:361
 #, javascript-format
 msgid "Take the stairs to level %s"
 msgstr "%s층 가는 계단 이용"
 
-#: src/transitplugins/motis2.js:345
+#: src/transitplugins/motis2.js:362
 msgid "Take the stairs"
 msgstr "계단 이용"
 
-#: src/transitplugins/motis2.js:349 src/transitplugins/openTripPlanner.js:1236
-#: src/transitplugins/openTripPlanner2.js:266
+#: src/transitplugins/motis2.js:366 src/transitplugins/openTripPlanner.js:1240
+#: src/transitplugins/openTripPlanner2.js:270
 #, javascript-format
 msgid "Continue on %s"
 msgstr "%s에서 계속 진행"
 
-#: src/transitplugins/motis2.js:354 src/transitplugins/openTripPlanner.js:1241
-#: src/transitplugins/openTripPlanner2.js:270
+#: src/transitplugins/motis2.js:371 src/transitplugins/openTripPlanner.js:1245
+#: src/transitplugins/openTripPlanner2.js:274
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "%s에서 좌회전"
 
-#: src/transitplugins/motis2.js:355 src/transitplugins/openTripPlanner.js:1243
-#: src/transitplugins/openTripPlanner2.js:271
+#: src/transitplugins/motis2.js:372 src/transitplugins/openTripPlanner.js:1247
+#: src/transitplugins/openTripPlanner2.js:275
 msgid "Turn left"
 msgstr "좌회전"
 
-#: src/transitplugins/motis2.js:359 src/transitplugins/openTripPlanner.js:1246
-#: src/transitplugins/openTripPlanner2.js:275
+#: src/transitplugins/motis2.js:376 src/transitplugins/openTripPlanner.js:1250
+#: src/transitplugins/openTripPlanner2.js:279
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "%s에서 살짝 좌회전"
 
-#: src/transitplugins/motis2.js:360 src/transitplugins/openTripPlanner.js:1248
-#: src/transitplugins/openTripPlanner2.js:276
+#: src/transitplugins/motis2.js:377 src/transitplugins/openTripPlanner.js:1252
+#: src/transitplugins/openTripPlanner2.js:280
 msgid "Turn slightly left"
 msgstr "살짝 좌회전"
 
-#: src/transitplugins/motis2.js:364 src/transitplugins/openTripPlanner.js:1251
-#: src/transitplugins/openTripPlanner2.js:280
+#: src/transitplugins/motis2.js:381 src/transitplugins/openTripPlanner.js:1255
+#: src/transitplugins/openTripPlanner2.js:284
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "%s에서 크게 좌회전"
 
-#: src/transitplugins/motis2.js:365 src/transitplugins/openTripPlanner.js:1253
-#: src/transitplugins/openTripPlanner2.js:281
+#: src/transitplugins/motis2.js:382 src/transitplugins/openTripPlanner.js:1257
+#: src/transitplugins/openTripPlanner2.js:285
 msgid "Turn sharp left"
 msgstr "크게 좌회전"
 
-#: src/transitplugins/motis2.js:369 src/transitplugins/openTripPlanner.js:1256
-#: src/transitplugins/openTripPlanner2.js:284
+#: src/transitplugins/motis2.js:386 src/transitplugins/openTripPlanner.js:1260
+#: src/transitplugins/openTripPlanner2.js:288
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "%s에서 우회전"
 
-#: src/transitplugins/motis2.js:370 src/transitplugins/openTripPlanner.js:1258
-#: src/transitplugins/openTripPlanner2.js:285
+#: src/transitplugins/motis2.js:387 src/transitplugins/openTripPlanner.js:1262
+#: src/transitplugins/openTripPlanner2.js:289
 msgid "Turn right"
 msgstr "우회전"
 
-#: src/transitplugins/motis2.js:374 src/transitplugins/openTripPlanner.js:1261
-#: src/transitplugins/openTripPlanner2.js:289
+#: src/transitplugins/motis2.js:391 src/transitplugins/openTripPlanner.js:1265
+#: src/transitplugins/openTripPlanner2.js:293
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "%s에서 살짝 우회전"
 
-#: src/transitplugins/motis2.js:375 src/transitplugins/openTripPlanner.js:1263
-#: src/transitplugins/openTripPlanner2.js:290
+#: src/transitplugins/motis2.js:392 src/transitplugins/openTripPlanner.js:1267
+#: src/transitplugins/openTripPlanner2.js:294
 msgid "Turn slightly right"
 msgstr "살짝 우회전"
 
-#: src/transitplugins/motis2.js:379 src/transitplugins/openTripPlanner.js:1266
-#: src/transitplugins/openTripPlanner2.js:294
+#: src/transitplugins/motis2.js:396 src/transitplugins/openTripPlanner.js:1270
+#: src/transitplugins/openTripPlanner2.js:298
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "%s에서 크게 우회전"
 
-#: src/transitplugins/motis2.js:380 src/transitplugins/openTripPlanner.js:1268
-#: src/transitplugins/openTripPlanner2.js:295
+#: src/transitplugins/motis2.js:397 src/transitplugins/openTripPlanner.js:1272
+#: src/transitplugins/openTripPlanner2.js:299
 msgid "Turn sharp right"
 msgstr "크게 우회전"
 
-#: src/transitplugins/motis2.js:387 src/transitplugins/openTripPlanner.js:1274
-#: src/transitplugins/openTripPlanner2.js:302
+#: src/transitplugins/motis2.js:404 src/transitplugins/openTripPlanner.js:1278
+#: src/transitplugins/openTripPlanner2.js:306
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "로터리에서 %s 출구로 나감"
 
-#: src/transitplugins/motis2.js:390 src/transitplugins/openTripPlanner.js:1276
-#: src/transitplugins/openTripPlanner2.js:305
+#: src/transitplugins/motis2.js:407 src/transitplugins/openTripPlanner.js:1280
+#: src/transitplugins/openTripPlanner2.js:309
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "로터리에서 %s 쪽 출구로 나감"
 
-#: src/transitplugins/motis2.js:392 src/transitplugins/openTripPlanner.js:1278
-#: src/transitplugins/openTripPlanner2.js:307
+#: src/transitplugins/motis2.js:409 src/transitplugins/openTripPlanner.js:1282
+#: src/transitplugins/openTripPlanner2.js:311
 msgid "Take the roundabout"
 msgstr "로터리로 진입"
 
-#: src/transitplugins/motis2.js:400 src/transitplugins/openTripPlanner.js:1282
-#: src/transitplugins/openTripPlanner2.js:315
+#: src/transitplugins/motis2.js:417 src/transitplugins/openTripPlanner.js:1286
+#: src/transitplugins/openTripPlanner2.js:319
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "엘리베이터 탑승 후 %s에서 내림"
 
-#: src/transitplugins/motis2.js:401 src/transitplugins/openTripPlanner.js:1284
-#: src/transitplugins/openTripPlanner2.js:316
+#: src/transitplugins/motis2.js:418 src/transitplugins/openTripPlanner.js:1288
+#: src/transitplugins/openTripPlanner2.js:320
 msgid "Take the elevator"
 msgstr "엘리베이터 탑승"
 
-#: src/transitplugins/motis2.js:405 src/transitplugins/openTripPlanner.js:1288
-#: src/transitplugins/openTripPlanner2.js:320
+#: src/transitplugins/motis2.js:422 src/transitplugins/openTripPlanner.js:1292
+#: src/transitplugins/openTripPlanner2.js:324
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "%s 쪽으로 왼쪽 유턴"
 
-#: src/transitplugins/motis2.js:406 src/transitplugins/openTripPlanner.js:1290
-#: src/transitplugins/openTripPlanner2.js:321
+#: src/transitplugins/motis2.js:423 src/transitplugins/openTripPlanner.js:1294
+#: src/transitplugins/openTripPlanner2.js:325
 msgid "Make a left u-turn"
 msgstr "왼쪽으로 유턴"
 
-#: src/transitplugins/motis2.js:410 src/transitplugins/openTripPlanner.js:1293
-#: src/transitplugins/openTripPlanner2.js:325
+#: src/transitplugins/motis2.js:427 src/transitplugins/openTripPlanner.js:1297
+#: src/transitplugins/openTripPlanner2.js:329
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "%s 쪽으로 오른쪽 유턴"
 
-#: src/transitplugins/motis2.js:411 src/transitplugins/openTripPlanner.js:1295
-#: src/transitplugins/openTripPlanner2.js:326
+#: src/transitplugins/motis2.js:428 src/transitplugins/openTripPlanner.js:1299
+#: src/transitplugins/openTripPlanner2.js:330
 msgid "Make a right u-turn"
 msgstr "오른쪽으로 유턴"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Switch to street view"
+#~ msgstr "거리 보기로 전환"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Switch to aerial view"
+#~ msgstr "공중 보기로 전환"
+
+#~ msgid "Pedestrian"
+#~ msgstr "보행자"
+
+#~ msgid "Bike"
+#~ msgstr "자전거"
+
+#~ msgid "Car"
+#~ msgstr "자동차"
+
+#~ msgid "Could not find user element"
+#~ msgstr "사용자 구성 요소를 찾을 수 없습니다"
+
+#~ msgid "Add Location"
+#~ msgstr "위치 추가"
 
 #~ msgid "Postal code"
 #~ msgstr "우편 번호"
@@ -2311,15 +2418,6 @@ msgstr "오른쪽으로 유턴"
 
 #~ msgid "Article"
 #~ msgstr "관련 문서"
-
-#~ msgid "Walking"
-#~ msgstr "도보"
-
-#~ msgid "Cycling"
-#~ msgstr "자전거"
-
-#~ msgid "Driving"
-#~ msgstr "운전"
 
 #~ msgid "The official name. This is typically what appears on signs."
 #~ msgstr "공식 이름입니다. 보통 이정표에 나타납니다."
