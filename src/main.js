@@ -25,6 +25,7 @@ import 'gi://GeocodeGlib?version=2.0';
 import 'gi://Gdk?version=4.0';
 import 'gi://GdkPixbuf?version=2.0';
 import Gio from 'gi://Gio?version=2.0';
+import GioUnix from 'gi://GioUnix?version=2.0';
 import GLib from 'gi://GLib?version=2.0';
 import 'gi://GObject?version=2.0';
 import 'gi://Gtk?version=4.0';
