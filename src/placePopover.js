@@ -85,10 +85,9 @@ export class PlacePopover extends SearchPopover {
             let subcategoryListBox =
                 this._createSubcategoryListBox(row.mainCategory, row);
 
-            // set stack switching animation to "sliding"
-            this._stack.transition_type = Gtk.StackTransitionType.SLIDE_LEFT;
             this._poiSubCategories.child = subcategoryListBox;
-            this._stack.visible_child = this._poiSubCategories;
+            this._stack.set_visible_child_full('poiSubCategories',
+                                               Gtk.StackTransitionType.SLIDE_LEFT);
             // unselect current main category
             this._poiMainCategoriesListBox.unselect_all();
 
@@ -119,9 +118,8 @@ export class PlacePopover extends SearchPopover {
 
             if (row === goBackRow) {
                 // slide back to main
-                this._stack.transition_type =
-                    Gtk.StackTransitionType.SLIDE_RIGHT;
-                this._stack.visible_child = this._poiMainCategories;
+                this._stack.set_visible_child_full('poiMainCategories',
+                                                   Gtk.StackTransitionType.SLIDE_RIGHT);
 
                 // unselect, so the "go back" row is not highlighted when going back
                 listBox.unselect_all();
@@ -228,13 +226,7 @@ export class PlacePopover extends SearchPopover {
     }
 
     showSpinner(transitionType = Gtk.StackTransitionType.CROSSFADE) {
-        this._stack.transition_type = transitionType;
-        this._stack.visible_child = this._spinner;
-
-        /* set the transition to crossfade so the result won't come in
-         * with a sliding animation when coming from POI browsing
-         */
-       this._stack.transition_type = Gtk.StackTransitionType.CROSSFADE;
+        this._stack.set_visible_child_full('spinner', transitionType);
 
         if (!this.visible)
             this._showPopover();
