@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2025-09-12 14:08+0000\n"
-"PO-Revision-Date: 2025-09-13 17:16+0200\n"
+"POT-Creation-Date: 2025-09-15 20:21+0000\n"
+"PO-Revision-Date: 2025-09-17 13:48+0200\n"
 "Last-Translator: Jordi Mas i Hernàndez <jmas@softcatala.org>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "Language: ca\n"
@@ -149,6 +149,33 @@ msgstr "Mostra l'escala"
 #: data/org.gnome.Maps.gschema.xml:76
 msgid "Whether to show the scale."
 msgstr "Si s'ha de mostrar l'escala."
+
+#: data/org.gnome.Maps.gschema.xml:80
+msgid "Map tile URL pattern"
+msgstr "Patró d'URL de les tessel·les de mapa"
+
+#: data/org.gnome.Maps.gschema.xml:81
+msgid ""
+"The URL pattern for the vector tile source to use. Note that the map style "
+"relies on certain extensions compared to upstream Planetiler OpenMapTiles "
+"Profile"
+msgstr ""
+"El patró d'URL per a la font de tessel·les vectorials a utilitzar. Tingueu "
+"en compte que l’estil del mapa depèn d'algunes extensions respecte del "
+"perfil Planetiler OpenMapTiles original"
+
+#: data/org.gnome.Maps.gschema.xml:85
+msgid "Units to show measurements in"
+msgstr "Unitats en què mostrar les mesures"
+
+#: data/org.gnome.Maps.gschema.xml:86
+msgid ""
+"How to show measurements. ('system' uses default for system locale, 'metric' "
+"always show metric units, 'imperial' always show imperial units)."
+msgstr ""
+"Com mostrar les mesures. («system» utilitza el valor predeterminat segons la "
+"configuració regional del sistema, «metric» sempre mostra unitats mètriques, "
+"«imperial» sempre mostra unitats imperials)."
 
 #: data/org.gnome.Maps.metainfo.xml.in.in:7
 msgid "Find places around the world"
@@ -379,7 +406,7 @@ msgid "Edit an existing location in OpenStreetMap"
 msgstr "Editeu una ubicació existent a l'OpenStreetMap"
 
 #: data/ui/osm-edit-dialog.ui:68 src/mapView.js:714
-#: src/transitplugins/motis2.js:367 src/transitplugins/openTripPlanner.js:1242
+#: src/transitplugins/motis2.js:368 src/transitplugins/openTripPlanner.js:1242
 #: src/transitplugins/openTripPlanner2.js:271
 msgid "Continue"
 msgstr "Continua"
@@ -1953,7 +1980,7 @@ msgstr "Comenceu a %s"
 #. * with no set name (such as when the user started routing from
 #. * an arbitrary point on the map)
 #.
-#: src/transit.js:45 src/transitplugins/motis2.js:330
+#: src/transit.js:45 src/transitplugins/motis2.js:331
 #: src/transitplugins/openTripPlanner2.js:240
 msgid "Start"
 msgstr "Comença"
@@ -1974,7 +2001,7 @@ msgstr "Camineu %s"
 msgid "Arrive at %s"
 msgstr "Arribeu a %s"
 
-#: src/transit.js:79 src/transitplugins/motis2.js:349
+#: src/transit.js:79 src/transitplugins/motis2.js:350
 #: src/transitplugins/openTripPlanner.js:1179
 #: src/transitplugins/openTripPlanner2.js:259
 msgid "Arrive"
@@ -2244,133 +2271,133 @@ msgstr "%s km"
 msgid "%s m"
 msgstr "%s m"
 
-#: src/transitplugins/motis2.js:361
+#: src/transitplugins/motis2.js:362
 #, javascript-format
 msgid "Take the stairs to level %s"
 msgstr "Agafeu les escales fins al nivell %s"
 
-#: src/transitplugins/motis2.js:362
+#: src/transitplugins/motis2.js:363
 msgid "Take the stairs"
 msgstr "Agafeu les escales"
 
-#: src/transitplugins/motis2.js:366 src/transitplugins/openTripPlanner.js:1240
+#: src/transitplugins/motis2.js:367 src/transitplugins/openTripPlanner.js:1240
 #: src/transitplugins/openTripPlanner2.js:270
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Continueu a %s"
 
-#: src/transitplugins/motis2.js:371 src/transitplugins/openTripPlanner.js:1245
+#: src/transitplugins/motis2.js:372 src/transitplugins/openTripPlanner.js:1245
 #: src/transitplugins/openTripPlanner2.js:274
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Gireu a l'esquerra a %s"
 
-#: src/transitplugins/motis2.js:372 src/transitplugins/openTripPlanner.js:1247
+#: src/transitplugins/motis2.js:373 src/transitplugins/openTripPlanner.js:1247
 #: src/transitplugins/openTripPlanner2.js:275
 msgid "Turn left"
 msgstr "Gireu a l'esquerra"
 
-#: src/transitplugins/motis2.js:376 src/transitplugins/openTripPlanner.js:1250
+#: src/transitplugins/motis2.js:377 src/transitplugins/openTripPlanner.js:1250
 #: src/transitplugins/openTripPlanner2.js:279
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Gireu lleugerament a l'esquerra a %s"
 
-#: src/transitplugins/motis2.js:377 src/transitplugins/openTripPlanner.js:1252
+#: src/transitplugins/motis2.js:378 src/transitplugins/openTripPlanner.js:1252
 #: src/transitplugins/openTripPlanner2.js:280
 msgid "Turn slightly left"
 msgstr "Gireu lleugerament a l'esquerra"
 
-#: src/transitplugins/motis2.js:381 src/transitplugins/openTripPlanner.js:1255
+#: src/transitplugins/motis2.js:382 src/transitplugins/openTripPlanner.js:1255
 #: src/transitplugins/openTripPlanner2.js:284
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Gireu pronunciadament a l'esquerra a %s"
 
-#: src/transitplugins/motis2.js:382 src/transitplugins/openTripPlanner.js:1257
+#: src/transitplugins/motis2.js:383 src/transitplugins/openTripPlanner.js:1257
 #: src/transitplugins/openTripPlanner2.js:285
 msgid "Turn sharp left"
 msgstr "Gireu pronunciadament a l'esquerra"
 
-#: src/transitplugins/motis2.js:386 src/transitplugins/openTripPlanner.js:1260
+#: src/transitplugins/motis2.js:387 src/transitplugins/openTripPlanner.js:1260
 #: src/transitplugins/openTripPlanner2.js:288
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Gireu a la dreta a %s"
 
-#: src/transitplugins/motis2.js:387 src/transitplugins/openTripPlanner.js:1262
+#: src/transitplugins/motis2.js:388 src/transitplugins/openTripPlanner.js:1262
 #: src/transitplugins/openTripPlanner2.js:289
 msgid "Turn right"
 msgstr "Gireu a la dreta"
 
-#: src/transitplugins/motis2.js:391 src/transitplugins/openTripPlanner.js:1265
+#: src/transitplugins/motis2.js:392 src/transitplugins/openTripPlanner.js:1265
 #: src/transitplugins/openTripPlanner2.js:293
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Gireu lleugerament a la dreta a %s"
 
-#: src/transitplugins/motis2.js:392 src/transitplugins/openTripPlanner.js:1267
+#: src/transitplugins/motis2.js:393 src/transitplugins/openTripPlanner.js:1267
 #: src/transitplugins/openTripPlanner2.js:294
 msgid "Turn slightly right"
 msgstr "Gireu lleugerament a la dreta"
 
-#: src/transitplugins/motis2.js:396 src/transitplugins/openTripPlanner.js:1270
+#: src/transitplugins/motis2.js:397 src/transitplugins/openTripPlanner.js:1270
 #: src/transitplugins/openTripPlanner2.js:298
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Gireu pronunciadament a la dreta a %s"
 
-#: src/transitplugins/motis2.js:397 src/transitplugins/openTripPlanner.js:1272
+#: src/transitplugins/motis2.js:398 src/transitplugins/openTripPlanner.js:1272
 #: src/transitplugins/openTripPlanner2.js:299
 msgid "Turn sharp right"
 msgstr "Gireu pronunciadament a la dreta"
 
-#: src/transitplugins/motis2.js:404 src/transitplugins/openTripPlanner.js:1278
+#: src/transitplugins/motis2.js:405 src/transitplugins/openTripPlanner.js:1278
 #: src/transitplugins/openTripPlanner2.js:306
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "A la rotonda, agafeu la sortida %s"
 
-#: src/transitplugins/motis2.js:407 src/transitplugins/openTripPlanner.js:1280
+#: src/transitplugins/motis2.js:408 src/transitplugins/openTripPlanner.js:1280
 #: src/transitplugins/openTripPlanner2.js:309
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "A la rotonda, agafeu la sortida a %s"
 
-#: src/transitplugins/motis2.js:409 src/transitplugins/openTripPlanner.js:1282
+#: src/transitplugins/motis2.js:410 src/transitplugins/openTripPlanner.js:1282
 #: src/transitplugins/openTripPlanner2.js:311
 msgid "Take the roundabout"
 msgstr "Agafeu la rotonda"
 
-#: src/transitplugins/motis2.js:417 src/transitplugins/openTripPlanner.js:1286
+#: src/transitplugins/motis2.js:418 src/transitplugins/openTripPlanner.js:1286
 #: src/transitplugins/openTripPlanner2.js:319
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Agafeu l'ascensor i sortiu a %s"
 
-#: src/transitplugins/motis2.js:418 src/transitplugins/openTripPlanner.js:1288
+#: src/transitplugins/motis2.js:419 src/transitplugins/openTripPlanner.js:1288
 #: src/transitplugins/openTripPlanner2.js:320
 msgid "Take the elevator"
 msgstr "Agafeu l'ascensor"
 
-#: src/transitplugins/motis2.js:422 src/transitplugins/openTripPlanner.js:1292
+#: src/transitplugins/motis2.js:423 src/transitplugins/openTripPlanner.js:1292
 #: src/transitplugins/openTripPlanner2.js:324
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Canvieu de sentit cap a l'esquerra a %s"
 
-#: src/transitplugins/motis2.js:423 src/transitplugins/openTripPlanner.js:1294
+#: src/transitplugins/motis2.js:424 src/transitplugins/openTripPlanner.js:1294
 #: src/transitplugins/openTripPlanner2.js:325
 msgid "Make a left u-turn"
 msgstr "Canvieu de sentit cap a l'esquerra"
 
-#: src/transitplugins/motis2.js:427 src/transitplugins/openTripPlanner.js:1297
+#: src/transitplugins/motis2.js:428 src/transitplugins/openTripPlanner.js:1297
 #: src/transitplugins/openTripPlanner2.js:329
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Canvieu de sentit cap a la dreta a %s"
 
-#: src/transitplugins/motis2.js:428 src/transitplugins/openTripPlanner.js:1299
+#: src/transitplugins/motis2.js:429 src/transitplugins/openTripPlanner.js:1299
 #: src/transitplugins/openTripPlanner2.js:330
 msgid "Make a right u-turn"
 msgstr "Canvieu de sentit cap a la dreta"
