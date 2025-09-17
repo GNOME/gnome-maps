@@ -336,6 +336,7 @@ export const DEFS = {
                 clock: ["clock-alt-symbolic", "micro", 16],
                 college: ["school-symbolic", "education"],
                 conference_centre: ["meeting-symbolic", "public", 13],
+                courthouse: ["license-symbolic", "public"],
                 dentist: ["dentist-symbolic", "healthAndSafety"],
                 doctors: ["hospital-sign-symbolic", "healthAndSafety"],
                 drinking_water: ["drinking-fountain-symbolic", "micro", 16],
