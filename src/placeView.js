@@ -242,7 +242,7 @@ export class PlaceView extends Gtk.Box {
             this._title.visible = true;
             this._title.label = _("Coordinates");
             this._icon.visible = false;
-            this._seondaryIcon.visible = false;
+            this._secondaryIcon.visible = false;
         } else if (title) {
             this._title.visible = true;
             this._title.label = formatter.title;
