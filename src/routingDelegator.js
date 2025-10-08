@@ -20,7 +20,8 @@
  */
 
 import {GraphHopper} from './graphHopper.js';
-import {TransitRouter} from './transitRouter.js';
+import {Transitous} from './transitous.js';
+import {Plan} from './transitPlan.js';
 import { Route } from './route.js';
 import { StoredRoute } from './storedRoute.js';
 
@@ -29,10 +30,11 @@ export class RoutingDelegator {
     constructor({query}) {
         this._query = query;
         this._route = new Route();
+        this._plan = new Plan();
 
         this._transitRouting = false;
         this._graphHopper = new GraphHopper({ query: this._query, route: this._route });
-        this._transitRouter = new TransitRouter({ query: this._query });
+        this._transitous = new Transitous({ query: this._query, plan: this._plan });
         this._query.connect('notify::points', this._onQueryChanged.bind(this));
         this._ignoreNextQueryChange = false;
         this._lastUsedRouter = null;
@@ -42,12 +44,12 @@ export class RoutingDelegator {
         return this._graphHopper;
     }
 
-    get transitRouter() {
-        return this._transitRouter;
-    }
-
     get route() {
         return this._route;
+    }
+
+    get plan() {
+        return this._plan;
     }
 
     set useTransit(useTransit) {
@@ -56,9 +58,13 @@ export class RoutingDelegator {
 
     reset() {
         if (this._transitRouting)
-            this._transitRouter.plan.reset();
+            this._plan.reset();
         else
             this._route.reset();
+    }
+
+    fetchMoreResults() {
+        this._transitous.fetchMoreResults();
     }
 
     _onQueryChanged() {
@@ -76,8 +82,8 @@ export class RoutingDelegator {
         if (this._query.isValid()) {
             this._query.emit('run');
             if (this._transitRouting) {
-                this._lastUsedRouter = this._transitRouter;
-                this._transitRouter.fetchFirstResults();
+                this._lastUsedRouter = this._transitous;
+                this._transitous.fetchFirstResults();
             } else {
                 this._lastUsedRouter = this._graphHopper;
                 this._graphHopper.fetchRoute(this._query.filledPoints,

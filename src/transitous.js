@@ -19,11 +19,11 @@
  * Author: Marcus Lundblad <ml@dfupdate.se>
  */
 
-import {Motis2} from './motis2.js';
+import {Motis} from './motis.js';
 
 const BASE_URL = 'https://api.transitous.org';
 
-export class Transitous extends Motis2 {
+export class Transitous extends Motis {
   constructor(params) {
     super({ baseUrl: BASE_URL, ...params });
   }

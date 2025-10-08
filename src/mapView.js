@@ -352,7 +352,7 @@ export class MapView extends Gtk.Overlay {
 
     _connectRouteSignals() {
         let route = Application.routingDelegator.route;
-        let transitPlan = Application.routingDelegator.transitRouter.plan;
+        let transitPlan = Application.routingDelegator.plan;
         let query = Application.routeQuery;
 
         route.connect('update', () => {

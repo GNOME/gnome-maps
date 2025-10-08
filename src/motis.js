@@ -27,23 +27,22 @@ import GLib from 'gi://GLib';
 import Shumate from 'gi://Shumate';
 import Soup from 'gi://Soup';
 
-import {Application} from '../application.js';
-import * as Epaf from '../epaf.js';
-import * as HVT from '../hvt.js';
-import {Query} from '../http.js';
-import {TurnPoint} from '../route.js';
-import * as Time from '../time.js';
-import {Itinerary, Leg, RouteType, Stop} from '../transitPlan.js';
-import * as Utils from '../utils.js';
+import * as Epaf from './epaf.js';
+import * as HVT from './hvt.js';
+import {Query} from './http.js';
+import {TurnPoint} from './route.js';
+import * as Time from './time.js';
+import {Itinerary, Leg, RouteType, Stop} from './transitPlan.js';
+import * as Utils from './utils.js';
 
 const _ = gettext.gettext;
 
-export class Motis2 {
-    constructor(params) {
+export class Motis {
+    constructor({ query, plan, ...params }) {
         this._requestCancellable = null
         this._baseUrl = GLib.getenv('MOTIS_BASE_URL') ?? params?.baseUrl;
-        this._plan = Application.routingDelegator.transitRouter.plan;
-        this._query = Application.routeQuery;
+        this._plan = plan;
+        this._query = query;
         this._session =
             new Soup.Session({ user_agent : 'gnome-maps/' + pkg.version });
         this._cachedEncodedPolylines = {};

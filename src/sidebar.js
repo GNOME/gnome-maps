@@ -138,7 +138,7 @@ export class Sidebar extends Gtk.Grid {
             Application.routingDelegator.useTransit = false;
             this._linkButtonStack.visible_child_name = 'turnByTurn';
             this._transitRevealer.reveal_child = false;
-            Application.routingDelegator.transitRouter.plan.deselectItinerary();
+            Application.routingDelegator.plan.deselectItinerary();
         }
         this._clearInstructions();
     }
@@ -245,7 +245,7 @@ export class Sidebar extends Gtk.Grid {
 
     _initInstructionList() {
         let route = Application.routingDelegator.route;
-        let transitPlan = Application.routingDelegator.transitRouter.plan;
+        let transitPlan = Application.routingDelegator.plan;
 
         route.connect('reset', () => {
             this._clearInstructions();
@@ -268,7 +268,6 @@ export class Sidebar extends Gtk.Grid {
             /* don't remove query points as with the turn-based routing,
              * since we might get "no route" because of the time selected
              * and so on */
-            this._transitAttributionLabel.label = '';
         });
 
         transitPlan.connect('no-more-results', () => {
@@ -298,7 +297,6 @@ export class Sidebar extends Gtk.Grid {
                 if (this._query.transportation === RouteQuery.Transportation.TRANSIT) {
                     this._clearTransitOverview();
                     this._showTransitOverview();
-                    this._transitAttributionLabel.label = '';
                 } else {
                     this._clearInstructions();
                 }
@@ -350,7 +348,6 @@ export class Sidebar extends Gtk.Grid {
         });
 
         transitPlan.connect('update', () => {
-            this._updateTransitAttribution();
             this._clearTransitOverview();
             this._showTransitOverview();
             this._populateTransitItineraryOverview();
@@ -399,26 +396,8 @@ export class Sidebar extends Gtk.Grid {
         this._clearListBox(listBox);
     }
 
-    _updateTransitAttribution() {
-        let plan = Application.routingDelegator.transitRouter.plan;
-
-        if (plan.attribution) {
-            let attributionLabel =
-                _("Itineraries provided by %s").format(plan.attribution);
-            if (plan.attributionUrl) {
-                this._transitAttributionLabel.label =
-                    '<a href="%s">%s</a>'.format([plan.attributionUrl],
-                                                 attributionLabel);
-            } else {
-                this._transitAttributionLabel.label = attributionLabel;
-            }
-        } else {
-            this._transitAttributionLabel.label = '';
-        }
-    }
-
     _showTransitOverview() {
-        let plan = Application.routingDelegator.transitRouter.plan;
+        const plan = Application.routingDelegator.plan;
 
         this._transitListStack.visible_child_name = 'overview';
         this._transitHeader.visible_child_name = 'options';
@@ -431,7 +410,7 @@ export class Sidebar extends Gtk.Grid {
     }
 
     _populateTransitItineraryOverview() {
-        let plan = Application.routingDelegator.transitRouter.plan;
+        const plan = Application.routingDelegator.plan;
 
         plan.itineraries.forEach((itinerary) => {
             const row = new TransitItineraryRow({ itinerary: itinerary });
@@ -442,7 +421,7 @@ export class Sidebar extends Gtk.Grid {
     }
 
     _onItineraryActivated(itinerary) {
-        let plan = Application.routingDelegator.transitRouter.plan;
+        const plan = Application.routingDelegator.plan;
 
         this._populateTransitItinerary(itinerary);
         this._showTransitItineraryView();
@@ -451,7 +430,7 @@ export class Sidebar extends Gtk.Grid {
 
     _onMoreActivated(row) {
         row.startLoading();
-        Application.routingDelegator.transitRouter.fetchMoreResults();
+        Application.routingDelegator.fetchMoreResults();
     }
 
     _onItineraryOverviewRowActivated(listBox, row) {
@@ -614,6 +593,5 @@ GObject.registerClass({
                         'transitItineraryListBox',
                         'transitItineraryBackButton',
                         'transitItineraryTimeLabel',
-                        'transitItineraryDurationLabel',
-                        'transitAttributionLabel']
+                        'transitItineraryDurationLabel']
 }, Sidebar);
