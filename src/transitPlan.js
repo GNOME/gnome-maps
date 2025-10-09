@@ -81,8 +81,6 @@ export class Plan extends GObject.Object {
     constructor(params) {
         super(params);
         this.reset();
-        this._attribution = null;
-        this._attributionUrl = null;
     }
 
     get itineraries() {
@@ -91,22 +89,6 @@ export class Plan extends GObject.Object {
 
     get selectedItinerary() {
         return this._selectedItinerary;
-    }
-
-    get attribution() {
-        return this._attribution;
-    }
-
-    set attribution(attribution) {
-        this._attribution = attribution;
-    }
-
-    get attributionUrl() {
-        return this._attributionUrl;
-    }
-
-    set attributionUrl(attributionUrl) {
-        this._attributionUrl = attributionUrl;
     }
 
     update(itineraries) {
