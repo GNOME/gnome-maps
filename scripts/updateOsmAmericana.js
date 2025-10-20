@@ -31,7 +31,7 @@ function deleteOldIcons() {
     );
     for (const fileInfo of enumerator) {
         const fileName = fileInfo.get_name();
-        if (fileName.startsWith("shield_")) {
+        if (fileName.startsWith("shield_") || fileName.startsWith("shield40_")) {
             const file = Gio.File.new_for_path("data/shields/" + fileName);
             file.delete(null);
         }
@@ -53,7 +53,7 @@ function copyIcons(osmAmericanaPath) {
 
     for (const fileInfo of enumerator) {
         const fileName = fileInfo.get_name();
-        if (fileName.startsWith("shield_")) {
+        if (fileName.startsWith("shield_") || fileName.startsWith("shield40_")) {
             shields.push(fileName);
             const sourceFile = Gio.File.new_for_path(
                 iconsPath + "/" + fileName
