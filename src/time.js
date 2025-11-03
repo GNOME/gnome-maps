@@ -258,6 +258,28 @@ export function formatTimeWithTZOffset(time, offset) {
 /**
  * Format a time as HH:mm in either 12 or 24 h
  * format depending on system settings
+ * given a date time
+ *
+ * @param {GLib.DateTime} dateTime date time instance to format
+ * @returns {string} String representation of time with hours and minutes
+ */
+export function formatDateTime(dateTime) {
+    const tzIdentifier = dateTime.get_timezone().get_identifier();
+    const timeFormat =
+        new Intl.DateTimeFormat([], { hour:     '2-digit',
+                                      minute:   '2-digit',
+                                      hour12:   _is12Hour(),
+                                      timeZone: tzIdentifier });
+    const date = new Date();
+
+    date.setTime(dateTime.to_unix() * 1000);
+
+    return timeFormat.format(date);
+}
+
+/**
+ * Format a time as HH:mm in either 12 or 24 h
+ * format depending on system settings
  * given hours and minutes values.
  */
 export function formatTimeFromHoursAndMins(hours, mins) {

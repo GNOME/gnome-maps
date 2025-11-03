@@ -46,6 +46,36 @@ function formatTimeWithTZOffsetTest() {
                       '10:54', 'PM');
 }
 
+function formatDateTimeTest() {
+    // mock to always use 24 hour format
+    Time._setIs12HourFunction(() => { return false; });
+
+    const date1 = GLib.DateTime.new_from_iso8601('2025-11-03T21:14:29Z', null);
+    // date during European DST
+    const date2 = GLib.DateTime.new_from_iso8601('2025-07-01T12:34:56Z', null);
+
+    JsUnit.assertEquals('22:14',
+                        Time.formatDateTime(date1.to_timezone(GLib.TimeZone.new_identifier('Europe/Stockholm'))));
+    JsUnit.assertEquals('21:14',
+                        Time.formatDateTime(date1.to_timezone(GLib.TimeZone.new_identifier('Europe/London'))));
+    JsUnit.assertEquals('14:34',
+                        Time.formatDateTime(date2.to_timezone(GLib.TimeZone.new_identifier('Europe/Stockholm'))));
+    JsUnit.assertEquals('13:34',
+                        Time.formatDateTime(date2.to_timezone(GLib.TimeZone.new_identifier('Europe/London'))));
+
+    // mock to always use 12 hour format
+    Time._setIs12HourFunction(() => { return true; });
+
+    compare12HourTime(Time.formatDateTime(date1.to_timezone(GLib.TimeZone.new_identifier('Europe/Stockholm'))),
+                      '10:14', 'PM');
+    compare12HourTime(Time.formatDateTime(date1.to_timezone(GLib.TimeZone.new_identifier('Europe/London'))),
+                      '09:14', 'PM');
+    compare12HourTime(Time.formatDateTime(date2.to_timezone(GLib.TimeZone.new_identifier('Europe/Stockholm'))),
+                      '02:34', 'PM');
+    compare12HourTime(Time.formatDateTime(date2.to_timezone(GLib.TimeZone.new_identifier('Europe/London'))),
+                      '01:34', 'PM');
+}
+
 function formatTimeFromHoursAndMinsTest() {
     // mock to always use 24 hour format
     Time._setIs12HourFunction(() => { return false; });
@@ -70,6 +100,7 @@ function parseTimeTest(timeString, defaultTimezone, expectedTs, expectedTz) {
 }
 
 formatTimeWithTZOffsetTest();
+formatDateTimeTest();
 formatTimeFromHoursAndMinsTest();
 
 parseTimeTest('2023-11-01T22:00:00+01:00', null, 1698872400000, 3600000);
