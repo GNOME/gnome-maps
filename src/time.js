@@ -306,3 +306,21 @@ export function parseTime(timeString, defaultTimezone = null) {
 
     return [dateTime.to_unix() * 1000, dateTime.get_utc_offset() / 1000];
 }
+
+/**
+ * Parse a date and time string given a specified timezone
+ *
+ * @param {string} timeString
+ * @param {GLib.TimeZone} tz timezone to use
+ * @returns {GLib.DateTime} date time instance representing the given date and timezone
+ */
+export function parseDateTime(dateTimeString, tz) {
+    const dateTime = GLib.DateTime.new_from_iso8601(dateTimeString, null);
+
+    if (!dateTime) {
+        log(`could not parse date: ${dateTimeString}`);
+        return null;
+    }
+
+    return dateTime.to_timezone(tz);
+}

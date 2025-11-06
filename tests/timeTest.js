@@ -99,6 +99,27 @@ function parseTimeTest(timeString, defaultTimezone, expectedTs, expectedTz) {
     JsUnit.assertEquals(expectedTz, tz)
 }
 
+function parseDateTimeTest() {
+    // valid date
+    const dateValid =
+        Time.parseDateTime('2025-11-06T22:33:44Z',
+                           GLib.TimeZone.new_identifier('Europe/Stockholm'));
+    // invalid date
+    const dateInvalid =
+        Time.parseDateTime('invalid-date',
+                           GLib.TimeZone.new_identifier('Asia/Tokyo'));
+
+    JsUnit.assertEquals(2025, dateValid.get_year());
+    JsUnit.assertEquals(11, dateValid.get_month());
+    JsUnit.assertEquals(6, dateValid.get_day_of_month());
+    JsUnit.assertEquals(23, dateValid.get_hour());
+    JsUnit.assertEquals(33, dateValid.get_minute());
+    JsUnit.assertEquals(44, dateValid.get_second());
+    JsUnit.assertEquals('Europe/Stockholm',
+                        dateValid.get_timezone().get_identifier());
+    JsUnit.assertNull(dateInvalid);
+}
+
 formatTimeWithTZOffsetTest();
 formatDateTimeTest();
 formatTimeFromHoursAndMinsTest();
@@ -107,3 +128,5 @@ parseTimeTest('2023-11-01T22:00:00+01:00', null, 1698872400000, 3600000);
 parseTimeTest('2023-11-01T23:00:00+02:00', null, 1698872400000, 7200000);
 parseTimeTest('2023-11-01T22:00:00', GLib.TimeZone.new('Europe/Stockholm'),
               1698872400000, 3600000);
+
+parseDateTimeTest();
