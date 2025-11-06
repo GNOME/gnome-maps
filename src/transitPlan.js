@@ -151,16 +151,8 @@ export class Plan extends GObject.Object {
         this.emit('error', _("No route found."));
     }
 
-    noTimetable() {
-        this.emit('error', _("No timetable data found for this route."));
-    }
-
     requestFailed() {
         this.emit('error', _("Route request failed."));
-    }
-
-    noProvider() {
-        this.emit('error', _("No provider found for this route."));
     }
 
     _createBBox() {
@@ -218,51 +210,6 @@ export class Itinerary extends GObject.Object {
 
     get legs() {
         return this._legs;
-    }
-
-    /* adjust timings of the legs of the itinerary, using the real duration of
-     * walking legs, also sets the timezone offsets according to adjacent
-     * transit legs
-     */
-    _adjustLegTimings() {
-        if (this.legs.length === 1 && !this.legs[0].transit) {
-            /* if there is only one leg, and it's a walking one, just need to
-             * adjust the arrival time
-             */
-            let leg = this.legs[0];
-            leg.arrival = leg.departure + leg.duration * 1000;
-
-            return;
-        }
-
-        for (let i = 0; i < this.legs.length; i++) {
-            let leg = this.legs[i];
-
-            if (!leg.transit) {
-                if (i === 0) {
-                    /* for the first leg subtract the walking time plus a
-                     * safety slack from the departure time of the following
-                     * leg
-                     */
-                    let nextLeg = this.legs[i + 1];
-                    leg.departure =
-                        nextLeg.departure - leg.duration * 1000 - WALK_SLACK;
-                    leg.arrival = leg.departure + leg.duration * 1000;
-                    // use the timezone offset from the first transit leg
-                    leg.agencyTimezoneOffset = nextLeg.agencyTimezoneOffset;
-                } else {
-                    /* for walking legs in the middle or at the end, just add
-                     * the actual walking walk duration to the arrival time of
-                     * the previous leg
-                     */
-                    let previousLeg = this.legs[i - 1];
-                    leg.departure = previousLeg.arrival;
-                    leg.arrival = previousLeg.arrival + leg.duration * 1000;
-                    // use the timezone offset of the previous (transit) leg
-                    leg.agencyTimezoneOffset = previousLeg.agencyTimezoneOffset;
-                }
-            }
-        }
     }
 
     _createBBox() {
@@ -341,13 +288,6 @@ export class Itinerary extends GObject.Object {
         }
     }
 
-    adjustTimings() {
-        this._adjustLegTimings();
-        this._departure = this._legs[0].departure;
-        this._arrival = this._legs[this._legs.length - 1].arrival;
-        this._duration = (this._arrival - this._departure) / 1000;
-    }
-
     _getTransitDepartureLeg() {
         for (let i = 0; i < this._legs.length; i++) {
             let leg = this._legs[i];
@@ -368,26 +308,6 @@ export class Itinerary extends GObject.Object {
         }
 
         throw new Error('no transit leg found');
-    }
-
-    /* gets the departure time of the first transit leg */
-    get transitDepartureTime() {
-        return this._getTransitDepartureLeg().departure;
-    }
-
-    /* gets the timezone offset of the first transit leg */
-    get transitDepartureTimezoneOffset() {
-        return this._getTransitDepartureLeg().timezoneOffset;
-    }
-
-    /* gets the arrival time of the final transit leg */
-    get transitArrivalTime() {
-        return this._getTransitArrivalLeg().arrival;
-    }
-
-    /* gets the timezone offset of the final transit leg */
-    get transitArrivalTimezoneOffset() {
-        return this._getTransitArrivalLeg().timezoneOffset;
     }
 
     get isWalkingOnly() {
