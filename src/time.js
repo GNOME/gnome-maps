@@ -242,22 +242,6 @@ export function _setIs12HourFunction(f) {
 /**
  * Format a time as HH:mm in either 12 or 24 h
  * format depending on system settings
- * given time in ms since Epoch with an offset in
- * ms relative UTC.
- */
-export function formatTimeWithTZOffset(time, offset) {
-    let utcTimeWithOffset = time + offset;
-    let date = new Date();
-    let timeFormat = _is12Hour() ? _timeFormat12 : _timeFormat24;
-
-    date.setTime(utcTimeWithOffset);
-
-    return timeFormat.format(date);
-}
-
-/**
- * Format a time as HH:mm in either 12 or 24 h
- * format depending on system settings
  * given a date time
  *
  * @param {GLib.DateTime} dateTime date time instance to format
@@ -290,21 +274,6 @@ export function formatTimeFromHoursAndMins(hours, mins) {
     date.setUTCMinutes(mins);
 
     return timeFormat.format(date);
-}
-
-/**
- * Parse a time string into an array with
- * an absolute timestamp in ms since Unix epoch and a timezone offset
- *
- * @param {string} timeString
- * @param {GLib.TimeZone} defaultTimezome timezone to use if timeString doesn't specify offset
- * @returns {Array} timestamp in ms since Epoch, timezone offset from UTC in ms
- */
-export function parseTime(timeString, defaultTimezone = null) {
-    const dateTime = GLib.DateTime.new_from_iso8601(timeString,
-                                                    defaultTimezone);
-
-    return [dateTime.to_unix() * 1000, dateTime.get_utc_offset() / 1000];
 }
 
 /**

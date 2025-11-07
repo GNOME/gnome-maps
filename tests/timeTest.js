@@ -30,22 +30,6 @@ function compare12HourTime(format, hoursMinutes, AMPM) {
     JsUnit.assertTrue(format.endsWith(AMPM));
 }
 
-function formatTimeWithTZOffsetTest() {
-    // mock to always use 24 hour format
-    Time._setIs12HourFunction(() => { return false; });
-
-    JsUnit.assertEquals('22:54',
-                        Time.formatTimeWithTZOffset(1607982864000, 3600000));
-    JsUnit.assertEquals('21:54',
-                        Time.formatTimeWithTZOffset(1607982864000, 0));
-
-    // mock to always use 12 hour format
-    Time._setIs12HourFunction(() => { return true; });
-
-    compare12HourTime(Time.formatTimeWithTZOffset(1607982864000, 3600000),
-                      '10:54', 'PM');
-}
-
 function formatDateTimeTest() {
     // mock to always use 24 hour format
     Time._setIs12HourFunction(() => { return false; });
@@ -92,13 +76,6 @@ function formatTimeFromHoursAndMinsTest() {
     compare12HourTime(Time.formatTimeFromHoursAndMins(12, 1), '12:01', 'PM');
 }
 
-function parseTimeTest(timeString, defaultTimezone, expectedTs, expectedTz) {
-    const [ts, tz] = Time.parseTime(timeString, defaultTimezone);
-
-    JsUnit.assertEquals(expectedTs, ts);
-    JsUnit.assertEquals(expectedTz, tz)
-}
-
 function parseDateTimeTest() {
     // valid date
     const dateValid =
@@ -120,13 +97,7 @@ function parseDateTimeTest() {
     JsUnit.assertNull(dateInvalid);
 }
 
-formatTimeWithTZOffsetTest();
 formatDateTimeTest();
 formatTimeFromHoursAndMinsTest();
-
-parseTimeTest('2023-11-01T22:00:00+01:00', null, 1698872400000, 3600000);
-parseTimeTest('2023-11-01T23:00:00+02:00', null, 1698872400000, 7200000);
-parseTimeTest('2023-11-01T22:00:00', GLib.TimeZone.new('Europe/Stockholm'),
-              1698872400000, 3600000);
 
 parseDateTimeTest();
