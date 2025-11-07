@@ -140,32 +140,17 @@ export class Motis {
             const filledPoints = this._query.filledPoints;
             const startPlace = filledPoints[0].place;
             const destinationPlace = filledPoints.last().place;
-            const startTz = this._getTimezone(startPlace.location.latitude,
-                                              startPlace.location.longitude);
-            const destinationTz =
-                this._getTimezone(destinationPlace.location.latitude,
-                                  destinationPlace.location.longitude);
-
-            /* if start and destination is in the same timezone, use this
-             * timezone for all legs and stops to avoid recalculate it
-             */
-            const commonTz =
-                startTz.get_identifier() === destinationTz.get_identifier() ?
-                startTz : null;
-
             const parsedItineraries =
                 itineraries.map((itinerary) =>
                                  this._parseItinerary(itinerary,
                                                       startPlace,
-                                                      destinationPlace,
-                                                      commonTz));
+                                                      destinationPlace));
             // don't include direct connections when extending a search
             const parsedDirect = extendPrevious ? [] :
                                  direct.map((itinerary) =>
                                             this._parseItinerary(itinerary,
                                                                  startPlace,
-                                                                 destinationPlace,
-                                                                 commonTz));
+                                                                 destinationPlace));
             const newItineraries = [...parsedDirect, ...parsedItineraries];
 
             this._plan.updateWithNewItineraries(newItineraries,
@@ -177,82 +162,67 @@ export class Motis {
         }
     }
 
-    _parseItinerary(itinerary, startPlace, destinationPlace, commonTz) {
-        const [departure,] = Time.parseTime(itinerary.startTime);
-        const [arrival,] = Time.parseTime(itinerary.endTime);
+    _parseItinerary(itinerary, startPlace, destinationPlace) {
+        const from = itinerary.legs[0].from;
+        const to = itinerary.legs.last().to;
+        const fromTzId = from.tz;
+        const toTzId = to.tz;
+        const fromTz = fromTzId ?
+                       GLib.TimeZone.new_identifier(fromTzId) :
+                       this._getTimezone(from.lat, from.lon);
+        const toTz = toTzId ?
+                     GLib.TimeZone.new_identifier(toTzId) :
+                     this._getTimezone(to.lat, to.lon);
+        const departure = Time.parseDateTime(itinerary.startTime, fromTz);
+        const arrival = Time.parseDateTime(itinerary.endTime, toTz);
 
-        /* use common timezone offset if the same timezone is in effect
-         * for the departure and arrival, calculate it once to avoid
-         * recalculate it for each stop
-         */
-        const departureTimezoneOffset =
-            this._getTimezoneOffset(departure / 1000,
-                                    commonTz ??
-                                    this._getTimezone(startPlace.location.latitude,
-                                                      startPlace.location.longitude));
-        const arrivalTimezoneOffset =
-            this._getTimezoneOffset(arrival / 1000,
-                                    commonTz ??
-                                    this._getTimezone(destinationPlace.location.latitude,
-                                                      destinationPlace.location.longitude));
-        const commonTimezoneOffset =
-            departureTimezoneOffset === arrivalTimezoneOffset ?
-            departureTimezoneOffset * 1000 : null;
         const legs =
             itinerary.legs.map((leg, index) =>
                                this._parseLeg(leg, index === 0,
                                               index === itinerary.legs.length - 1,
-                                              startPlace, destinationPlace,
-                                              commonTimezoneOffset));
+                                              startPlace, destinationPlace));
 
         return new Itinerary({
             legs:                    legs,
             departure:               departure,
-            departureTimezoneOffset: departureTimezoneOffset * 1000,
             arrival:                 arrival,
-            arrivalTimezoneOffset:   arrivalTimezoneOffset * 1000,
             duration:                itinerary.duration,
             transfers:               itinerary.transfers
         });
     }
 
-    _parseLeg(leg, isFirst, isLast, startPlace, destinationPlace,
-              commonTimezoneOffset) {
+    _parseLeg(leg, isFirst, isLast, startPlace, destinationPlace) {
         const isTransit = leg.mode !== 'WALK';
         const distance =
             leg.distance ?? (!isTransit ?
                              this._getStraightDistance(leg.from, leg.to) :
                              undefined);
-        const [departure,] = Time.parseTime(leg.startTime);
-        const departureTimezoneOffset =
-            commonTimezoneOffset ??
-            this._getTimezoneOffset(departure / 1000, this._getTimezone(leg.from.lat,
-                                                                        leg.from.lon));
-        const [arrival,] = Time.parseTime(leg.endTime);
-        const arrivalTimezoneOffset =
-            commonTimezoneOffset ??
-            this._getTimezoneOffset(arrival / 1000, this._getTimezone(leg.to.lat,
-                                                                      leg.to.lon));
-        const from = isFirst && !isTransit ? startPlace.name : leg.from.name;
-        const to = isLast && !isTransit ? destinationPlace.name : leg.to.name;
+        const from = leg.from;
+        const to = leg.to;
+        const fromTzId = from.tz;
+        const toTzId = to.tz;
+        const fromTz = fromTzId ?
+                       GLib.TimeZone.new_identifier(fromTzId) :
+                       this._getTimezone(from.lat, from.lon);
+        const toTz = toTzId ?
+                     GLib.TimeZone.new_identifier(toTzId) :
+                     this._getTimezone(to.lat, to.lon);
+        const departure = Time.parseDateTime(leg.startTime, fromTz);
+        const arrival = Time.parseDateTime(leg.endTime, toTz);
+        const fromName = isFirst && !isTransit ? startPlace.name : leg.from.name;
+        const toName = isLast && !isTransit ? destinationPlace.name : leg.to.name;
 
         const polyline =
             leg?.legGeometry?.points ?
             this._getEncodedPolyline(leg.legGeometry.points,
                                      leg.legGeometry.precision) : undefined;
-
-        const commonLegTimezoneOffset =
-            arrivalTimezoneOffset === departureTimezoneOffset ?
-            arrivalTimezoneOffset : undefined;
         const intermediateStops =
             isTransit ?
             [...leg.intermediateStops.map(stop =>
-                                          this._parseStop(stop,
-                                                          commonLegTimezoneOffset)),
-             new Stop({ name: to,
+                                          this._parseStop(stop)),
+             new Stop({ name: toName,
                         arrival:              arrival,
                         departure:            arrival,
-                        agencyTimezoneOffset: arrivalTimezoneOffset,
                         coordinate:           [leg.to.lat, leg.to.lon] })
             ] :
             undefined;
@@ -264,12 +234,10 @@ export class Motis {
                          duration:                leg.duration,
                          distance:                distance,
                          departure:               departure,
-                         departureTimezoneOffset: departureTimezoneOffset,
                          arrival:                 arrival,
-                         arrivalTimezoneOffset:   arrivalTimezoneOffset,
-                         from:                    from,
+                         from:                    fromName,
                          fromCoordinate:          [leg.from.lat, leg.from.lon],
-                         to:                      to,
+                         to:                      toName,
                          toCoordinate:            [leg.to.lat, leg.to.lon],
                          headsign:                leg.headsign,
                          color:                   leg.routeColor,
@@ -308,18 +276,14 @@ export class Motis {
         return this._cachedEncodedPolylines[polyline];
     }
 
-    _parseStop(stop, commonTimezoneOffset) {
-        const [departure,] = Time.parseTime(stop.departure);
-        const [arrival,] = Time.parseTime(stop.arrival);
-        const timezoneOffset =
-            commonTimezoneOffset ??
-            this._getTimezoneOffset(Math.max(arrival / 1000, departure / 1000),
-                                    this._getTimezone(stop.lat, stop.lon));
+    _parseStop(stop) {
+        const tz = GLib.TimeZone.new_identifier(stop.tz);
+        const departure = Time.parseDateTime(stop.departure, tz);
+        const arrival = Time.parseDateTime(stop.arrival, tz);
 
         return new Stop({ name:                 stop.name,
                           arrival:              arrival,
                           departure:            departure,
-                          agencyTimezoneOffset: timezoneOffset,
                           coordinate:           [stop.lat, stop.lon] });
     }
 
@@ -473,12 +437,6 @@ export class Motis {
         const location = GWeather.Location.new_detached('', null, lat, lon);
 
         return location.get_timezone();
-    }
-
-    _getTimezoneOffset(timestamp, tz) {
-        const interval = tz.find_interval(GLib.TimeType.STANDARD, timestamp);
-
-        return tz.get_offset(interval);
     }
 
     _getPlaceParamFromLocation(place) {

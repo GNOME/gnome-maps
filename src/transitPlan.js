@@ -177,16 +177,12 @@ GObject.registerClass({
 
 export class Itinerary extends GObject.Object {
 
-    constructor({ duration, departure, departureTimezoneOffset,
-                  arrival, arrivalTimezoneOffset, transfers, legs,
-                  ...params }) {
+    constructor({ duration, departure, arrival, transfers, legs, ...params }) {
         super(params);
 
         this._duration = duration;
         this._departure = departure;
-        this._departureTimezoneOffset = departureTimezoneOffset;
         this._arrival = arrival;
-        this._arrivalTimezoneOffset = arrivalTimezoneOffset;
         this._transfers = transfers;
         this._legs = legs;
         this.bbox = this._createBBox();
@@ -233,20 +229,11 @@ export class Itinerary extends GObject.Object {
     }
 
     _getDepartureTime() {
-        /* take the itinerary departure time and offset using the timezone
-         * offset of the first leg */
-        return Time.formatTimeWithTZOffset(this.departure,
-                                           this._departureTimezoneOffset ??
-                                           this.legs[0].agencyTimezoneOffset);
+        return Time.formatDateTime(this.departure);
     }
 
     _getArrivalTime() {
-        /* take the itinerary departure time and offset using the timezone
-         * offset of the last leg */
-        let lastLeg = this.legs[this.legs.length - 1];
-        return Time.formatTimeWithTZOffset(this.arrival,
-                                           this._arrivalTimezoneOffset ??
-                                           lastLeg.agencyTimezoneOffset);
+        return Time.formatDateTime(this.arrival);
     }
 
     prettyPrintDuration() {
@@ -319,18 +306,14 @@ GObject.registerClass(Itinerary);
 
 export class Leg {
 
-    constructor({ route, routeType, departure, departureTimezoneOffset,
-                  arrival, arrivalTimezoneOffset, polyline,
+    constructor({ route, routeType, departure, arrival, polyline,
                   fromCoordinate, toCoordinate, from, to, intermediateStops,
                   headsign, isTransit, walkingInstructions, distance, duration,
-                  agencyName, agencyUrl, agencyTimezoneOffset, color,
-                  textColor, tripShortName }) {
+                  agencyName, agencyUrl, color, textColor, tripShortName }) {
         this._route = route;
         this._routeType = routeType;
         this._departure = departure;
-        this._departureTimezoneOffset = departureTimezoneOffset,
         this._arrival = arrival;
-        this._arrivalTimezoneOffset = arrivalTimezoneOffset;
         this._polyline = polyline;
         this._fromCoordinate = fromCoordinate;
         this._toCoordinate = toCoordinate;
@@ -344,7 +327,6 @@ export class Leg {
         this._duration = duration;
         this._agencyName = agencyName;
         this._agencyUrl = agencyUrl;
-        this._agencyTimezoneOffset = agencyTimezoneOffset;
         this._color = color;
         this._textColor = textColor;
         this._tripShortName = tripShortName;
@@ -411,20 +393,8 @@ export class Leg {
         this._departure = departure;
     }
 
-    get departureTimezoneOffset() {
-        return this._departureTimezoneOffset ?? this._agencyTimezoneOffset;
-    }
-
     get arrival() {
         return this._arrival;
-    }
-
-    get arrivalTimezoneOffset() {
-        return this._arrivalTimezoneOffset ?? this._agencyTimezoneOffset;
-    }
-
-    get timezoneOffset() {
-        return this._agencyTimezoneOffset;
     }
 
     set arrival(arrival) {
@@ -492,14 +462,6 @@ export class Leg {
 
     get agencyUrl() {
         return this._agencyUrl;
-    }
-
-    get agencyTimezoneOffset() {
-        return this._agencyTimezoneOffset;
-    }
-
-    set agencyTimezoneOffset(tzOffset) {
-        this._agencyTimezoneOffset = tzOffset;
     }
 
     get color() {
@@ -663,31 +625,20 @@ export class Leg {
     }
 
     prettyPrintDepartureTime() {
-        /* take the itinerary departure time and offset using the timezone
-         * offset of the first leg
-         */
-        return Time.formatTimeWithTZOffset(this.departure,
-                                           this._departureTimezoneOffset ??
-                                           this.agencyTimezoneOffset);
+        return Time.formatDateTime(this.departure);
     }
 
     prettyPrintArrivalTime() {
-        /* take the itinerary departure time and offset using the timezone
-         * offset of the last leg
-         */
-        return Time.formatTimeWithTZOffset(this.arrival,
-                                           this._arrivalTimezoneOffset ??
-                                           this.agencyTimezoneOffset);
+        return Time.formatDateTime(this.arrival);
     }
 }
 
 export class Stop {
 
-    constructor({ name, arrival, departure, agencyTimezoneOffset, coordinate }) {
+    constructor({ name, arrival, departure, coordinate }) {
         this._name = name;
         this._arrival = arrival;
         this._departure = departure;
-        this._agencyTimezoneOffset = agencyTimezoneOffset;
         this._coordinate = coordinate;
     }
 
@@ -707,24 +658,9 @@ export class Stop {
         return this._departure;
     }
 
-    get agencyTimezoneOffset() {
-        return this._agencyTimezoneOffset;
-    }
-
     prettyPrint(params) {
-        if (params.isFinal) {
-            /* take the stop arrival time and offset using the timezone
-             * offset of the last leg
-             */
-            return Time.formatTimeWithTZOffset(this._arrival,
-                                               this._agencyTimezoneOffset);
-        } else {
-            /* take the stop departure time and offset using the timezone
-             * offset of the first leg
-             */
-            return Time.formatTimeWithTZOffset(this._departure,
-                                               this._agencyTimezoneOffset);
-        }
+        return Time.formatDateTime(params.isFinal ?
+                                   this._arrival : this._departure);
     }
 }
 
@@ -737,7 +673,7 @@ function sortItinerariesByDepartureAsc(first, second) {
     else if (second.isWalkingOnly)
         return 1;
     else
-        return first.departure > second.departure;
+        return first.departure.to_unix() > second.departure.to_unix();
 }
 
 function sortItinerariesByArrivalDesc(first, second) {
@@ -749,5 +685,5 @@ function sortItinerariesByArrivalDesc(first, second) {
     else if (second.isWalkingOnly)
         return 1;
     else
-        return first.arrival < second.arrival;
+        return first.arrival.to_unix() < second.arrival.to_unix();
 }
