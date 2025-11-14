@@ -37,6 +37,13 @@ import * as Utils from './utils.js';
 
 const _ = gettext.gettext;
 
+/**
+ * Implements the MOTIS /plan endpoint.
+ *
+ * Currently using the v5 endpoint version.
+ * Requires MOTIS 2.5.0, or later.
+ */
+
 export class Motis {
     constructor({ query, plan, ...params }) {
         this._requestCancellable = null
@@ -74,7 +81,7 @@ export class Motis {
 
     _fetch(extendPrevious = false) {
         const query = this._getQuery(extendPrevious);
-        const request = Soup.Message.new('GET', this._baseUrl + '/api/v4/plan?' +
+        const request = Soup.Message.new('GET', this._baseUrl + '/api/v5/plan?' +
                                          query.toString());
 
         // if trying to extend trips, and there was no page cursor, show no results
@@ -411,8 +418,8 @@ export class Motis {
                 return RouteType.FERRY;
             case 'AIRPLANE':
                 return HVT.AIR_SERVICE;
-            case 'METRO':
-                return HVT.METRO_SERVICE;
+            case 'SUBURBAN':
+                return HVT.SUBURBAN_RAILWAY_SERVICE;
             case 'COACH':
                 return HVT.COACH_SERVICE;
             case 'RAIL':
@@ -426,6 +433,12 @@ export class Motis {
             case 'REGIONAL_FAST_RAIL':
             case 'REGIONAL_RAIL':
                 return HVT.REGIONAL_RAIL_SERVICE;
+            case 'CABLE_CAR':
+                return HVT.CABLE_CAR;
+            case 'FUNICULAR':
+                return HVT.FUNICULAR_SERVICE;
+            case 'AERIAL_LIFT':
+                return HVT.TELECABIN_SERVICE;
             case 'OTHER':
                 return HVT.MISCELLANEOUS_SERVICE;
             default:
