@@ -250,6 +250,7 @@ export class Motis {
                          color:                   leg.routeColor,
                          textColor:               leg.routeTextColor,
                          route:                   this._getRoute(leg),
+                         tripShortName:           leg.tripShortName,
                          routeType:               isTransit ?
                                                   leg.routeType ??
                                                   this._getRouteType(leg) :
@@ -403,7 +404,16 @@ export class Motis {
     }
 
     _getRoute(leg) {
-        return leg.displayName ?? leg.shortName;
+        /* if display name and trip short name is defined, and the trip short
+         * name is not already a part of the display name, use the display name
+         * with the trip short suffix as the full route name
+         */
+        const longName =
+            !leg.routeShortName && leg.displayName && leg.tripShortName &&
+            leg.displayName.indexOf(leg.tripShortname) == -1 ?
+            `${leg.displayName} ${leg.tripShortName}` : leg.displayName;
+
+        return longName ?? leg.routeShortName;
     }
 
     _getRouteType(leg) {
