@@ -288,6 +288,11 @@ export class MainWindow extends Adw.ApplicationWindow {
             },
             'set-measurement-system': {
                 setting: 'measurement-system'
+            },
+            'show-location-marker': {
+                accels: ['<Shift><Primary>L'],
+                paramType: 'b',
+                setting: 'show-location-marker'
             }
         };
 
