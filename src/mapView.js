@@ -289,6 +289,8 @@ export class MapView extends Gtk.Overlay {
 
         Application.settings.connect('changed::show-scale',
                                      this._onShowScaleChanged.bind(this));
+        Application.settings.connect('changed::show-location-marker',
+                                     this._updateUserLocation.bind(this));
 
         return map;
     }
@@ -845,6 +847,9 @@ export class MapView extends Gtk.Overlay {
     }
 
     _updateUserLocation() {
+        const showLocationMarker =
+            Application.settings.get('show-location-marker');
+
         if (!Application.geoclue.place)
             return;
 
@@ -861,7 +866,7 @@ export class MapView extends Gtk.Overlay {
             this._userLocation.addToLayer(this._userLocationLayer);
         }
 
-        this._userLocation.visible = true;
+        this._userLocation.visible = showLocationMarker;
 
         this.emit('user-location-changed');
     }
