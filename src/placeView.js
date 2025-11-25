@@ -64,62 +64,26 @@ export class PlaceView extends Gtk.Box {
         this._place = place;
         this._inlineMode = !!inlineMode;
 
-        let ui = Utils.getUIObject('place-view', [ 'bubble-main-box',
-                                                   'bubble-spinner',
-                                                   'bubble-thumbnail',
-                                                   'thumbnail-separator',
-                                                   'label-title',
-                                                   'label-icon',
-                                                   'secondary-label-icon',
-                                                   'native-name',
-                                                   'source-icon',
-                                                   'secondary-source-icon',
-                                                   'source-label',
-                                                   'source-box',
-                                                   'address-label',
-                                                   'bubble-main-stack',
-                                                   'bubble-content-area',
-                                                   'place-buttons',
-                                                   'send-to-button-alt',
-                                                   'title-box' ]);
-        this._title = ui.labelTitle;
-        this._icon = ui.labelIcon;
-        this._secondaryIcon = ui.secondaryLabelIcon;
-        this._nativeName = ui.nativeName;
-        this._sourceIcon = ui.sourceIcon;
-        this._secondarySourceIcon = ui.secondarySourceIcon;
-        this._sourceLabel = ui.sourceLabel;
-        this._sourceBox = ui.sourceBox;
-        this._thumbnail = ui.bubbleThumbnail;
-        this._thumbnailSeparator = ui.thumbnailSeparator;
-        this._content = ui.bubbleContentArea;
-        this._mainStack = ui.bubbleMainStack;
-        this._spinner = ui.bubbleSpinner;
-        this._mainBox = ui.bubbleMainBox;
-        this._addressLabel = ui.addressLabel;
-
-        this.append(this._mainStack);
-
         let placeButtons = new PlaceButtons({ place: this._place,
                                               mapView: mapView });
         placeButtons.connect('place-edited', this._onPlaceEdited.bind(this));
-        ui.placeButtons.append(placeButtons);
+        this._placeButtons.append(placeButtons);
 
         if (this.place.isCurrentLocation) {
             /* Current Location bubbles have a slightly different layout, to
                avoid awkward whitespace */
 
             /* hide the normal button area */
-            ui.placeButtons.visible = false;
+            this._placeButtons.visible = false;
 
             /* show the top-end-corner share button instead */
-            ui.sendToButtonAlt.visible = true;
-            placeButtons.initSendToButton(ui.sendToButtonAlt);
+            this._sendToButtonAlt.visible = true;
+            placeButtons.initSendToButton(this._sendToButtonAlt);
 
             /* adjust some margins */
-            ui.titleBox.margin = 12;
-            ui.titleBox.marginStart = 18;
-            ui.titleBox.spacing = 18;
+            this._titleBox.margin = 12;
+            this._titleBox.marginStart = 18;
+            this._titleBox.spacing = 18;
         }
 
         this.loading = true;
@@ -164,7 +128,7 @@ export class PlaceView extends Gtk.Box {
         }
 
         if (this._inlineMode) {
-            ui.titleBox.hide();
+            this._titleBox.hide();
         }
 
         this.updatePlaceDetails();
@@ -900,5 +864,26 @@ export class PlaceView extends Gtk.Box {
         this._populate(this._place);
     }
 }
-
-GObject.registerClass(PlaceView);
+GObject.registerClass({
+    Template: 'resource:///org/gnome/Maps/ui/place-view.ui',
+    InternalChildren: [
+        'mainBox',
+        'spinner',
+        'thumbnail',
+        'thumbnailSeparator',
+        'title',
+        'icon',
+        'secondaryIcon',
+        'nativeName',
+        'sourceIcon',
+        'secondarySourceIcon',
+        'sourceLabel',
+        'sourceBox',
+        'addressLabel',
+        'mainStack',
+        'content',
+        'placeButtons',
+        'sendToButtonAlt',
+        'titleBox'
+    ],
+}, PlaceView);
