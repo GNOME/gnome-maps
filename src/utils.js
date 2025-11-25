@@ -179,22 +179,6 @@ export function activateAction(appId, action, parameter, timestamp) {
                           });
 }
 
-export function dashedToCamelCase(name) {
-    return name.replace(/(-.)/g, function(x) {
-        return x[1].toUpperCase();
-    });
-}
-
-export function getUIObject(res, ids) {
-    let builder = new Gtk.Builder();
-    builder.add_from_resource('/org/gnome/Maps/ui/' + res + '.ui');
-    let ret = {};
-    ids.forEach(function(id) {
-        ret[dashedToCamelCase(id)] = builder.get_object(id);
-    });
-    return ret;
-}
-
 export function readFile(filename) {
     let status, buffer;
     let file = Gio.File.new_for_path(filename);

@@ -32,7 +32,6 @@ const JsUnit = imports.jsUnit;
 pkg.initFormat();
 
 osmTypeToStringTest();
-dashedToCamelCaseTest();
 getAccuracyDescriptionTest();
 prettyTimeTest();
 prettyDistanceTest();
@@ -50,11 +49,6 @@ function osmTypeToStringTest() {
                         Utils.osmTypeToString(GeocodeGlib.PlaceOsmType.WAY));
     JsUnit.assertEquals('OSM type relation', 'relation',
                         Utils.osmTypeToString(GeocodeGlib.PlaceOsmType.RELATION));
-}
-
-function dashedToCamelCaseTest() {
-    JsUnit.assertEquals('foo', Utils.dashedToCamelCase('foo'));
-    JsUnit.assertEquals('fooBar', Utils.dashedToCamelCase('foo-bar'));
 }
 
 function getAccuracyDescriptionTest() {
