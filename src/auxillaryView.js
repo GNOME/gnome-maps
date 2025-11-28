@@ -43,6 +43,10 @@ export class AuxillaryView extends Gtk.Grid {
     unparentSearchPopovers() {
         this._routeView.unparentSearchPopovers();
     }
+
+    showRouting() {
+        this.set_visible_child_name('routeView');
+    }
 }
 
 GObject.registerClass({
