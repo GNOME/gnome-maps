@@ -31,6 +31,7 @@ import Adw from 'gi://Adw';
 import Shumate from 'gi://Shumate';
 
 import {Application} from './application.js';
+import {AuxillaryView} from './auxillaryView.js';
 import {ExportViewDialog} from './exportViewDialog.js';
 import * as Geoclue from './geoclue.js';
 import * as GeocodeFactory from './geocode.js';
@@ -40,7 +41,6 @@ import {PlaceBar} from './placeBar.js';
 import {PrintOperation} from './printOperation.js';
 import {SearchBar} from './searchBar.js';
 import {ShapeLayer} from './shapeLayer.js';
-import {Sidebar} from './sidebar.js';
 import * as Utils from './utils.js';
 import {ZoomAndRotateControls} from './zoomAndRotateControls.js';
 
@@ -59,8 +59,8 @@ export class MainWindow extends Adw.ApplicationWindow {
         return this._searchBar;
     }
 
-    get sidebar() {
-        return this._sidebar;
+    get auxillaryView() {
+        return this._auxillaryView;
     }
 
     constructor(params) {
@@ -92,7 +92,7 @@ export class MainWindow extends Adw.ApplicationWindow {
 
         this._mapView.gotoUserLocation(false);
 
-        this._sidebar = this._createSidebar();
+        this._auxillaryView = this._createAuxillaryView();
 
         if (pkg.name.endsWith('.Devel'))
             this.get_style_context().add_class('devel');
@@ -104,7 +104,7 @@ export class MainWindow extends Adw.ApplicationWindow {
         this._initDND();
         this._initPlaceBar();
 
-        this._splitView.sidebar = this._sidebar;
+        this._splitView.sidebar = this._auxillaryView;
         this._splitView.connect('notify::show-sidebar', () => {
             this._setRevealSidebar(this._splitView.show_sidebar);
         });
@@ -148,12 +148,12 @@ export class MainWindow extends Adw.ApplicationWindow {
         return searchBar;
     }
 
-    _createSidebar() {
-        let sidebar = new Sidebar({ mapView: this._mapView });
+    _createAuxillaryView() {
+        const auxillaryView = new AuxillaryView({ mapView: this._mapView });
 
         Application.routeQuery.connect('notify', () => this._onRouteQueryNotify());
 
-        return sidebar;
+        return auxillaryView;
     }
 
     _onRouteQueryNotify() {
