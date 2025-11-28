@@ -41,9 +41,20 @@ export class AuxillaryView extends Gtk.Grid {
     unparentSearchPopovers() {
         this._routeView.unparentSearchPopovers();
     }
+
+    showRouting() {
+        /* if the view is already visible, but not showing routing, crossfade
+         * it in, otherwise show directly without transition
+         */
+        const transitionType =
+            this.visible && this._stack.visible_child_name !== 'routeView' ?
+            Gtk.StackTransitionType.CROSSFADE : Gtk.StackTransitionType.NONE;
+
+        this._stack.set_visible_child_full('routeView', transitionType);
+    }
 }
 
 GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/auxillary-view.ui',
-    InternalChildren: [ 'routeBin']
+    InternalChildren: [ 'stack', 'routeBin']
 }, AuxillaryView);
