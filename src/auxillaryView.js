@@ -25,7 +25,7 @@ import Gtk from 'gi://Gtk';
 
 import {RouteView} from './routeView.js';
 
-export class Sidebar extends Gtk.Grid {
+export class AuxillaryView extends Gtk.Grid {
 
     constructor({ mapView, ...params }) {
         super(params);
@@ -44,6 +44,6 @@ export class Sidebar extends Gtk.Grid {
 }
 
 GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/sidebar.ui',
+    Template: 'resource:///org/gnome/Maps/ui/auxillary-view.ui',
     InternalChildren: [ 'routeBin']
-}, Sidebar);
+}, AuxillaryView);
