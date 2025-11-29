@@ -233,10 +233,9 @@ export class MainWindow extends Adw.ApplicationWindow {
                 accels: ['<Primary>I'],
                 onActivate: () => this._mapView.gotoAntipode()
             },
-            'toggle-sidebar': {
+            'show-routing': {
                 accels: ['<Primary>D'],
-                state: ['b', false],
-                onChangeState: (a, v) => this._onToggleSidebarChangeState(a, v)
+                onActivate: () => this._showRouting()
             },
             'zoom-in': {
                 accels: ['<Primary>plus', 'KP_Add', '<Primary>KP_Add', '<Primary>equal'],
@@ -573,6 +572,10 @@ export class MainWindow extends Adw.ApplicationWindow {
             this._splitView.sidebar.focusStartEntry();
         else
             this._mapView.map.grab_focus();
+    }
+
+    _showRouting() {
+
     }
 
     _setRevealSidebar(value) {
