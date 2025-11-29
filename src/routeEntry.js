@@ -116,10 +116,7 @@ export class RouteEntry extends Gtk.Grid {
          * of the entry handle the event.
          */
         if (!entry.popover.visible && keyval === Gdk.KEY_Escape) {
-            const action =
-                Application.application.mainWindow.lookup_action('toggle-sidebar');
-
-            action.activate(null);
+            Application.application.mainWindow.splitView.show_sidebar = false;
 
             return true;
         }

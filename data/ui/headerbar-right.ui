@@ -4,17 +4,6 @@
   <template class="Gjs_HeaderBarRight" parent="GtkBox">
     <property name="spacing">6</property>
     <child>
-      <object class="GtkButton" id="printRouteButton">
-        <property name="visible">0</property>
-        <property name="name">print-route</property>
-        <property name="focusable">1</property>
-        <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Print Route</property>
-        <property name="action-name">win.print-route</property>
-        <property name="valign">center</property>
-        <property name="icon-name">document-print-symbolic</property>
-      </object>
-    </child>
-    <child>
       <object class="GtkMenuButton" id="favoritesButton">
         <property name="focusable">1</property>
         <property name="valign">center</property>
@@ -23,10 +12,10 @@
       </object>
     </child>
     <child>
-      <object class="GtkToggleButton" id="toggleSidebarButton">
+      <object class="GtkButton" id="showRoutingButton">
         <property name="focusable">1</property>
         <property name="valign">center</property>
-        <property name="action-name">win.toggle-sidebar</property>
+        <property name="action-name">win.show-routing</property>
         <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">Route Planner</property>
         <property name="icon-name">route-button-symbolic</property>
       </object>
