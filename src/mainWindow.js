@@ -104,10 +104,7 @@ export class MainWindow extends Adw.ApplicationWindow {
         this._initDND();
         this._initPlaceBar();
 
-        this._splitView.sidebar = this._auxillaryView;
-        this._splitView.connect('notify::show-sidebar', () => {
-            this._setRevealSidebar(this._splitView.show_sidebar);
-        });
+        this._auxillaryViewContainer.child = this._auxillaryView;
 
         /* for some reason, setting the title of the window through the .ui
          * template does not work anymore (maybe has something to do with
@@ -158,12 +155,10 @@ export class MainWindow extends Adw.ApplicationWindow {
 
     _onRouteQueryNotify() {
         const query = Application.routeQuery;
-        const sidebarShowing = this._splitView.show_sidebar;
 
-        /* reveal sidebar if it wasn't already visible and there are now
-         * filled points
-         */
-        this._setRevealSidebar(sidebarShowing || query.filledPoints.length > 0);
+        // reveal route planner if there are now filled points
+        if (query.filledPoints.length > 0)
+            this._showRouting();
     }
 
     _initPlaceBar() {
@@ -233,10 +228,9 @@ export class MainWindow extends Adw.ApplicationWindow {
                 accels: ['<Primary>I'],
                 onActivate: () => this._mapView.gotoAntipode()
             },
-            'toggle-sidebar': {
+            'show-routing': {
                 accels: ['<Primary>D'],
-                state: ['b', false],
-                onChangeState: (a, v) => this._onToggleSidebarChangeState(a, v)
+                onActivate: () => this._showRouting()
             },
             'zoom-in': {
                 accels: ['<Primary>plus', 'KP_Add', '<Primary>KP_Add', '<Primary>equal'],
@@ -316,6 +310,47 @@ export class MainWindow extends Adw.ApplicationWindow {
                          this._updateZoomButtonsSensitivity.bind(this));
 
         this._updateZoomButtonsSensitivity();
+
+        /* close the bottom sheet when the sidebar is closed, and vice versa
+         * to avoid it being open if switching adaptive mode.
+         * also reset the auxillary view to show the routing view
+         * so that routing is shown next time if a gesture is used to bring
+         * it back
+         */
+        this.splitView.connect('notify::show-sidebar', () => {
+            if (this.splitView.show_sidebar) {
+                this._auxillaryView.focusStartEntry();
+            } else {
+                this._bottomSheet.open = false;
+                this._auxillaryView.showRouting();
+                this._mapView.grab_focus();
+            }
+        });
+        this._bottomSheet.connect('notify::open', () => {
+            if (this._bottomSheet.open) {
+                this._auxillaryView.focusStartEntry();
+            } else {
+                this.splitView.show_sidebar = false;
+                this._auxillaryView.showRouting();
+                this._mapView.grab_focus();
+            }
+        });
+
+        this._closeSidebarButton.connect('clicked',
+                                         () => this.splitView.show_sidebar = false);
+
+
+        this._splitViewKeyPressed = new Gtk.EventControllerKey();
+        this.splitView.add_controller(this._splitViewKeyPressed);
+        this._splitViewKeyPressed.connect('key-pressed', (controller, kv, kc) => {
+            if (kv === Gdk.KEY_Escape) {
+                Application.application.mainWindow.splitView.show_sidebar = false;
+
+                return true;
+            }
+
+            return false;
+        });
     }
 
     _onIsActiveChanged() {
@@ -567,12 +602,18 @@ export class MainWindow extends Adw.ApplicationWindow {
         action.set_state(variant);
 
         let reveal = variant.get_boolean();
-        this._splitView.show_sidebar = reveal;
+        this.splitView.show_sidebar = reveal;
 
         if (reveal)
-            this._splitView.sidebar.focusStartEntry();
+            this.splitView.sidebar.focusStartEntry();
         else
             this._mapView.map.grab_focus();
+    }
+
+    _showRouting() {
+        this._auxillaryView.showRouting();
+        this.splitView.show_sidebar = true;
+        this._bottomSheet.open = true;
     }
 
     _setRevealSidebar(value) {
@@ -678,6 +719,7 @@ export class MainWindow extends Adw.ApplicationWindow {
 
 GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/main-window.ui',
+    Children: ['splitView'],
     InternalChildren: [ 'headerBar',
                         'mainMenuButton',
                         'grid',
@@ -685,7 +727,9 @@ GObject.registerClass({
                         'placeBarContainer',
                         'overlay',
                         'mapOverlay',
-                        'splitView',
+                        'auxillaryViewContainer',
+                        'bottomSheet',
+                        'closeSidebarButton',
                         'breakpoint',
                         'licenseRevealer']
 }, MainWindow);

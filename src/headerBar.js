@@ -61,7 +61,6 @@ export class HeaderBarRight extends Gtk.Box {
 
 GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/headerbar-right.ui',
-    InternalChildren: [ 'toggleSidebarButton',
-                        'favoritesButton',
+    InternalChildren: [ 'favoritesButton',
                         'printRouteButton' ]
 }, HeaderBarRight);
