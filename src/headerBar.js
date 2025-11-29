@@ -53,15 +53,10 @@ export class HeaderBarRight extends Gtk.Box {
         super(params);
 
         this._favoritesButton.popover = new FavoritesPopover({ mapView: mapView });
-
-        mapView.bind_property('routeShowing', this._printRouteButton,
-                              'visible', GObject.BindingFlags.DEFAULT);
     }
 }
 
 GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/headerbar-right.ui',
-    InternalChildren: [ 'toggleSidebarButton',
-                        'favoritesButton',
-                        'printRouteButton' ]
+    InternalChildren: [ 'favoritesButton' ]
 }, HeaderBarRight);
