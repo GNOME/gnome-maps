@@ -44,15 +44,10 @@ export class IconMarker extends MapMarker {
 
         if (color) {
             let snapshot = Gtk.Snapshot.new();
-            let rect = new Graphene.Rect();
 
             iconPaintable.snapshot_symbolic(snapshot, size, size, [color]);
-            rect.init(0, 0, size, size);
 
-            let node = snapshot.to_node();
-            let renderer = this._mapView.get_native().get_renderer();
-
-            return renderer.render_texture(node, rect);
+            return snapshot.to_paintable(new Graphene.Size({ width: size, height: size }));
         } else {
             return iconPaintable;
         }
