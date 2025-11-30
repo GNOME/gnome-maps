@@ -105,15 +105,8 @@ export class CircleIconMarker extends IconMarker {
             const paintable = this._paintableFromIconName(this._iconName,
                                                           ICON_SIZE, fgRGBA);
             const snapshot = Gtk.Snapshot.new();
-            const rect = new Graphene.Rect();
-            const iconBounds = new Graphene.Rect();
             const center = new Graphene.Point({ x: this._markerSize / 2,
                                                 y: this._markerSize / 2 });
-
-            rect.init(0, 0, this._markerSize, this._markerSize);
-            iconBounds.init((this._markerSize - ICON_SIZE) / 2,
-                            (this._markerSize - ICON_SIZE) / 2,
-                            ICON_SIZE, ICON_SIZE);
 
             this._pathBuilder.add_circle(center, this._markerSize / 2);
             snapshot.append_fill(this._pathBuilder.to_path(),
@@ -128,12 +121,15 @@ export class CircleIconMarker extends IconMarker {
                                        fgRGBA);
             }
 
-            snapshot.append_texture(paintable, iconBounds);
+            snapshot.save();
+            snapshot.translate(new Graphene.Point({
+                x: (this._markerSize - ICON_SIZE) / 2,
+                y: (this._markerSize - ICON_SIZE) / 2,
+            }));
+            paintable.snapshot(snapshot, ICON_SIZE, ICON_SIZE);
+            snapshot.restore();
 
-            const node = snapshot.to_node();
-            const renderer = this._mapView.get_native().get_renderer();
-
-            return renderer.render_texture(node, rect);
+            return snapshot.to_paintable(new Graphene.Size({ width: this._markerSize, height: this._markerSize}));
         } catch (e) {
             Utils.debug('Failed to load image: %s'.format(e.message));
             return null;
