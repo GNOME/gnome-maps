@@ -205,6 +205,14 @@ export class MapView extends Gtk.Overlay {
         this._longPressGesture.connect('pressed',
                                        this._onLongPressGesturePressed.bind(this));
         this.map.add_controller(this._longPressGesture);
+
+        Application.application.connect('notify::selected-place',
+                                        this._onSelectedPlace.bind(this));
+    }
+
+    _onSelectedPlace() {
+        if (!Application.application.selected_place)
+            this._placeLayer.remove_all();
     }
 
     vfunc_size_allocate(width, height, baseline) {
@@ -785,10 +793,7 @@ export class MapView extends Gtk.Overlay {
                                     name: location.description,
                                     store: false,
                                     initialZoom: zoom });
-            let marker = new PlaceMarker({ place: place,
-                                           mapView: this });
-            this._placeLayer.add_marker(marker);
-            marker.goToAndSelect(true);
+            this.showPlace(place, true, false);
         } catch(e) {
             this._mainWindow.showToast(_("Failed to open GeoURI"));
             Utils.debug("failed to open GeoURI: %s".format(e.message));
@@ -798,11 +803,7 @@ export class MapView extends Gtk.Overlay {
     goToHttpURL(url) {
         Place.parseHttpURL(url, (place, error) => {
             if (place) {
-                let marker = new PlaceMarker({ place: place,
-                                               mapView: this });
-
-                this._placeLayer.add_marker(marker);
-                marker.goToAndSelect(true);
+                this.showPlace(place, true, false);
             } else {
                 this._mainWindow.showToast(error);
             }
@@ -1033,26 +1034,21 @@ export class MapView extends Gtk.Overlay {
         let placeMarker = new PlaceMarker({ place: place,
                                             mapView: this });
 
-        // remove marker when dismissing the bubble
-        placeMarker.bubble.connect('closed', () => {
-            this._placeLayer.remove_all();
-            Application.application.selected_place = null;
-        });
-
         this._placeLayer.add_marker(placeMarker);
         if (skipGoTo) {
-            placeMarker.showBubble();
+            Application.application.selected_place = place;
         } else {
-            placeMarker.goToAndSelect(animation);
+            Utils.once(placeMarker, 'gone-to', () => {
+                Application.application.selected_place = place;
+            });
+            placeMarker.goTo(animation);
         }
-        Application.application.selected_place = place;
     }
 
     showRoute(route) {
         let routeLayer;
 
         this._clearRouteLayers();
-        this._placeLayer.remove_all();
 
         routeLayer = this._createRouteLayer(TURN_BY_TURN_ROUTE_COLOR,
                                             TURN_BY_TURN_ROUTE_OUTLINE_COLOR,
@@ -1119,7 +1115,6 @@ export class MapView extends Gtk.Overlay {
 
         this.gotoBBox(itinerary.bbox);
         this._clearRouteLayers();
-        this._placeLayer.remove_all();
         this._instructionMarkerLayer.remove_all();
         this._turnPointMarker = null;
 
@@ -1217,10 +1212,6 @@ export class MapView extends Gtk.Overlay {
         this._pressLongitude = this.map.viewport.longitude;
         this._pressX = x;
         this._pressY = y;
-
-        // remove any showing place markers when clicking outside
-        this._placeLayer.remove_all();
-        Application.application.selected_place = null;
 
         this.map.grab_focus();
         gesture.set_state(Gtk.EventSequenceState.NONE);

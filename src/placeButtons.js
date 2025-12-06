@@ -73,12 +73,8 @@ export class PlaceButtons extends Gtk.Box {
                                             place: this._place });
             dialog.connect('response', () => {
                 dialog.destroy();
-                this._popup();
             });
-            /* on GTK 4 the popover gets overlayead over the dialog,
-             * so close the popover when not in adaptive mode
-             */
-            this._popdown();
+
             dialog.show();
         });
     }
@@ -139,8 +135,6 @@ export class PlaceButtons extends Gtk.Box {
             from.place = this.place;
         }
 
-        Application.application.selected_place = null;
-
         query.thaw_notify();
     }
 
@@ -157,16 +151,10 @@ export class PlaceButtons extends Gtk.Box {
         if (!osmEdit.isSignedIn) {
             let dialog = osmEdit.createAccountDialog(true);
 
-            /* on GTK 4 the popover gets overlayead over the dialog,
-             * so close the popover when not in adaptive mode
-             */
-            this._popdown();
             dialog.present(Application.application.mainWindow);
             dialog.connect('response', (dialog, response) => {
                 if (osmEdit.isSignedIn)
                     this._edit();
-                else
-                    this._popup();
             });
 
             return;
@@ -175,30 +163,10 @@ export class PlaceButtons extends Gtk.Box {
         this._edit();
     }
 
-    // popdown the parent popove(when not in adaptive mode)
-    _popdown() {
-        if (!Application.application.adaptive_mode)
-            this.get_ancestor(Gtk.Popover).popdown();
-    }
-
-    _popup() {
-        if (!Application.application.adaptive_mode) {
-            const popover = this.get_ancestor(Gtk.Popover);
-
-            if (!popover.get_parent())
-                popover.set_parent(this._mapView);
-            popover.popup();
-        }
-    }
-
     _edit() {
         let osmEdit = Application.osmEdit;
         let dialog = osmEdit.createEditDialog(this._place);
 
-        /* on GTK 4 the popover gets overlayead over the dialog,
-         * so close the popover when not in adaptive mode
-         */
-        this._popdown();
         dialog.present(Application.application.mainWindow);
         dialog.connect('closed', () => {
             switch (dialog.response) {
@@ -212,8 +180,6 @@ export class PlaceButtons extends Gtk.Box {
             default:
                 break;
             }
-
-            this._popup();
         });
     }
 }

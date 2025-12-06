@@ -248,10 +248,6 @@ export class UserLocationMarker extends MapMarker {
         super.vfunc_unmap();
     }
 
-    _hasBubble() {
-        return true;
-    }
-
     addToLayer(layer) {
         layer.add_marker(this._accuracyMarker);
         layer.add_marker(this._headingTorch);
@@ -277,6 +273,11 @@ export class UserLocationMarker extends MapMarker {
         } else {
             this._accuracyMarker.visible = false;
         }
+    }
+
+    _onMarkerSelected(nPress) {
+        this._mapView.removePlaceMarkers();
+        super._onMarkerSelected(nPress);
     }
 
     vfunc_snapshot(snapshot) {

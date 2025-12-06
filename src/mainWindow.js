@@ -37,7 +37,6 @@ import * as Geoclue from './geoclue.js';
 import * as GeocodeFactory from './geocode.js';
 import {HeaderBarLeft, HeaderBarRight} from './headerBar.js';
 import {MapView} from './mapView.js';
-import {PlaceBar} from './placeBar.js';
 import {PrintOperation} from './printOperation.js';
 import {SearchBar} from './searchBar.js';
 import {ShapeLayer} from './shapeLayer.js';
@@ -102,7 +101,6 @@ export class MainWindow extends Adw.ApplicationWindow {
         this._initSignals();
         this._restoreWindowGeometry();
         this._initDND();
-        this._initPlaceBar();
 
         this._auxillaryViewContainer.child = this._auxillaryView;
 
@@ -152,6 +150,19 @@ export class MainWindow extends Adw.ApplicationWindow {
         const auxillaryView = new AuxillaryView({ mapView: this._mapView });
 
         Application.routeQuery.connect('notify', () => this._onRouteQueryNotify());
+        Application.application.connect('notify::selected-place',
+                                        () => this._onSelectedPlace());
+
+        this._backToPlaceButton.connect('clicked',
+                                        () => this._onBackToPlaceButtonClicked());
+        auxillaryView.stack.connect('notify::visible-child-name', () => {
+            // hide the print button when the route view isn't showing
+            if (auxillaryView.stack.visible_child_name === 'routeView')
+                this._printRouteButton.visible = this._mapView.routeShowing;
+            else
+                this._printRouteButton.visible = false;
+        });
+
 
         return auxillaryView;
     }
@@ -164,13 +175,11 @@ export class MainWindow extends Adw.ApplicationWindow {
             this._showRouting();
     }
 
-    _initPlaceBar() {
-        this._placeBar = new PlaceBar({ mapView: this._mapView, mainWindow: this });
-        this._placeBarContainer.append(this._placeBar);
+    _onSelectedPlace() {
+        const place = Application.application.selected_place;
 
-        this.application.bind_property('selected-place',
-                                       this._placeBar, 'place',
-                                       GObject.BindingFlags.DEFAULT);
+        if (place)
+            this.showPlace(place, Gtk.StackTransitionType.CROSSFADE);
     }
 
     _initDND() {
@@ -233,12 +242,7 @@ export class MainWindow extends Adw.ApplicationWindow {
             },
             'show-routing': {
                 accels: ['<Primary>D'],
-                /* clear the place marker when showing the route planner from
-                 * the headerbar button (as opposed to when accessing it from
-                 * an already showing place
-                 */
-                onActivate: () => { Application.application.selected_place = null;
-                                    this._showRouting(); }
+                onActivate: () => this._openRoutePlanner()
             },
             'zoom-in': {
                 accels: ['<Primary>plus', 'KP_Add', '<Primary>KP_Add', '<Primary>equal'],
@@ -332,6 +336,7 @@ export class MainWindow extends Adw.ApplicationWindow {
                 this._bottomSheet.open = false;
                 this._auxillaryView.showRouting();
                 this._mapView.map.grab_focus();
+                Application.application.selected_place = null;
             }
         });
         this._bottomSheet.connect('notify::open', () => {
@@ -341,6 +346,7 @@ export class MainWindow extends Adw.ApplicationWindow {
                 this.splitView.show_sidebar = false;
                 this._auxillaryView.showRouting();
                 this._mapView.map.grab_focus();
+                Application.application.selected_place = null;
             }
         });
 
@@ -607,8 +613,35 @@ export class MainWindow extends Adw.ApplicationWindow {
         action.set_state(GLib.Variant.new('b', !state));
     }
 
-    _showRouting() {
-        this._auxillaryView.showRouting();
+    _openRoutePlanner() {
+        this._backToPlaceButton.visible = false;
+        /* clear the place marker when showing the route planner from
+         * the headerbar button (as opposed to when accessing it from
+         * an already showing place
+         */
+        Application.application.selected_place = null;
+
+        this._showRouting(Gtk.StackTransitionType.CROSSFADE);
+        this._auxillaryView.focusStartEntry();
+    }
+
+    _showRouting(transitionType) {
+        // enable back button if place is currently shown
+        this._backToPlaceButton.visible = !!Application.application.selected_place;
+        this._auxillaryView.showRouting(transitionType);
+        this.splitView.show_sidebar = true;
+        this._bottomSheet.open = true;
+    }
+
+    _onBackToPlaceButtonClicked() {
+        this.showPlace(Application.application.selected_place,
+                        Gtk.StackTransitionType.SLIDE_RIGHT);
+        this._backToPlaceButton.visible = false;
+    }
+
+    showPlace(place, transitionType) {
+        this._backToPlaceButton.visible = false;
+        this._auxillaryView.showPlace(place, transitionType);
         this.splitView.show_sidebar = true;
         this._bottomSheet.open = true;
     }
@@ -716,7 +749,6 @@ GObject.registerClass({
                         'mainMenuButton',
                         'grid',
                         'actionBar',
-                        'placeBarContainer',
                         'overlay',
                         'mapOverlay',
                         'auxillaryViewContainer',
@@ -724,5 +756,6 @@ GObject.registerClass({
                         'closeSidebarButton',
                         'breakpoint',
                         'licenseRevealer',
-                        'printRouteButton' ]
+                        'printRouteButton',
+                        'backToPlaceButton' ]
 }, MainWindow);

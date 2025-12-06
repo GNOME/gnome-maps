@@ -142,19 +142,11 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkBox" id="placeBarContainer">
-                            <layout>
-                              <property name="column">0</property>
-                              <property name="row">1</property>
-                            </layout>
-                          </object>
-                        </child>
-                        <child>
                           <object class="GtkActionBar" id="actionBar">
                             <property name="visible">False</property>
                             <layout>
                               <property name="column">0</property>
-                              <property name="row">2</property>
+                              <property name="row">1</property>
                               <property name="column-span">2</property>
                             </layout>
                           </object>
@@ -170,6 +162,13 @@
                 <child type="top">
                   <object class="AdwHeaderBar">
                     <property name="show-title">False</property>
+                    <child type="start">
+                      <object class="GtkButton" id="backToPlaceButton">
+                        <property name="visible">False</property>
+                        <property name="tooltip-text" translatable="yes" comments="Translators: This is a tooltip">View Place Information</property>
+                        <property name="icon-name">go-previous-symbolic</property>
+                      </object>
+                    </child>
                     <child type="start">
                       <object class="GtkButton" id="printRouteButton">
                         <property name="visible">0</property>

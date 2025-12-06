@@ -24,6 +24,7 @@ import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
 import {RouteView} from './routeView.js';
+import {PlaceView} from './placeView.js';
 
 export class AuxillaryView extends Gtk.Grid {
 
@@ -32,6 +33,7 @@ export class AuxillaryView extends Gtk.Grid {
 
         this._routeView = new RouteView({ mapView: mapView });
         this._routeBin.child = this._routeView;
+        this._mapView = mapView;
     }
 
     focusStartEntry() {
@@ -42,19 +44,35 @@ export class AuxillaryView extends Gtk.Grid {
         this._routeView.unparentSearchPopovers();
     }
 
-    showRouting() {
+    showRouting(defaultTransitionType) {
         /* if the view is already visible, but not showing routing, crossfade
          * it in, otherwise show directly without transition
          */
-        const transitionType =
-            this.visible && this._stack.visible_child_name !== 'routeView' ?
-            Gtk.StackTransitionType.CROSSFADE : Gtk.StackTransitionType.NONE;
+        const childName = this.stack.visible_child_name;
+        const transitionType = defaultTransitionType ??
+            ((this.visible && childName === 'routeView') ?
+             Gtk.StackTransitionType.CROSSFADE :
+             (this.visible && childName === 'placeView') ?
+             Gtk.StackTransitionType.SLIDE_LEFT :
+             Gtk.StackTransitionType.NONE);
 
-        this._stack.set_visible_child_full('routeView', transitionType);
+        this.stack.set_visible_child_full('routeView', transitionType);
+    }
+
+    showPlace(place, defaultTransitionType) {
+        const placeView = new PlaceView({ place: place, mapView: this._mapView });
+        const transitionType = defaultTransitionType ??
+                               (this.stack.visible_child_name === 'routeView' ?
+                                Gtk.StackTransitionType.SLIDE_RIGHT :
+                                Gtk.StackTransitionType.CROSSFADE);
+
+        this._placeBin.child = placeView;
+        this.stack.set_visible_child_full('placeView', transitionType);
     }
 }
 
 GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/auxillary-view.ui',
-    InternalChildren: [ 'stack', 'routeBin']
+    Children: [ 'stack' ],
+    InternalChildren: [ 'routeBin', 'placeBin' ]
 }, AuxillaryView);

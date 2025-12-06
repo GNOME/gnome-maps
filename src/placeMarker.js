@@ -33,10 +33,6 @@ export class PlaceMarker extends IconMarker {
         this._image.icon_size = Gtk.IconSize.LARGE;
         this.valign = Gtk.Align.END;
     }
-
-    _hasBubble() {
-        return true;
-    }
 }
 
 GObject.registerClass(PlaceMarker);
