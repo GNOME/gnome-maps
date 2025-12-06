@@ -24,6 +24,7 @@ import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
 import {RouteView} from './routeView.js';
+import {PlaceView} from './placeView.js';
 
 export class AuxillaryView extends Gtk.Grid {
 
@@ -32,6 +33,7 @@ export class AuxillaryView extends Gtk.Grid {
 
         this._routeView = new RouteView({ mapView: mapView });
         this._routeBin.child = this._routeView;
+        this._mapView = mapView;
     }
 
     focusStartEntry() {
@@ -52,9 +54,17 @@ export class AuxillaryView extends Gtk.Grid {
 
         this._stack.set_visible_child_full('routeView', transitionType);
     }
+
+    showPlace(place) {
+        const placeView = new PlaceView({ place: place, mapView: this._mapView });
+
+        this._placeBin.child = placeView;
+        this._stack.set_visible_child_full('placeView',
+                                           Gtk.StackTransitionType.CROSSFADE);
+    }
 }
 
 GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/auxillary-view.ui',
-    InternalChildren: [ 'stack', 'routeBin']
+    InternalChildren: [ 'stack', 'routeBin', 'placeBin' ]
 }, AuxillaryView);
