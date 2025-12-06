@@ -22,6 +22,7 @@
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 
+import {Application} from './application.js';
 import {IconMarker} from './iconMarker.js';
 
 export class PlaceMarker extends IconMarker {
@@ -32,10 +33,6 @@ export class PlaceMarker extends IconMarker {
         this._image.icon_name = 'maps-mark-location';
         this._image.icon_size = Gtk.IconSize.LARGE;
         this.valign = Gtk.Align.END;
-    }
-
-    _hasBubble() {
-        return true;
     }
 }
 
