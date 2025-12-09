@@ -246,6 +246,10 @@ export class MapView extends Gtk.Overlay {
                                           200);
     }
 
+    removePlaceMarkers() {
+        this._placeLayer.remove_all();
+    }
+
     _initScale() {
         let showScale = Application.settings.get('show-scale');
 
