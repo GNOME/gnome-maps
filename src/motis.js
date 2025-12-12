@@ -404,14 +404,14 @@ export class Motis {
     }
 
     _getRoute(leg) {
-        /* if display name and trip short name is defined, and the trip short
+        /* if display name and route short name are defined, and the route short
          * name is not already a part of the display name, use the display name
-         * with the trip short suffix as the full route name
+         * with the route short suffix as the full route name
          */
         const longName =
-            !leg.routeShortName && leg.displayName && leg.tripShortName &&
-            leg.displayName.indexOf(leg.tripShortname) == -1 ?
-            `${leg.displayName} ${leg.tripShortName}` : leg.displayName;
+            !leg.routeShortName && leg.displayName && leg.routeShortName &&
+            leg.displayName.indexOf(leg.routeShortName) == -1 ?
+            `${leg.displayName} ${leg.routeShortName}` : leg.displayName;
 
         return longName ?? leg.routeShortName;
     }
