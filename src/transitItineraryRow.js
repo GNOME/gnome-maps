@@ -24,9 +24,6 @@ import Gtk from 'gi://Gtk';
 
 import {TransitRouteLabel} from './transitRouteLabel.js';
 
-// maximum number of legs to show before abbreviating with a … in the middle
-const MAX_LEGS_SHOWN = 8;
-
 export class TransitItineraryRow extends Gtk.ListBoxRow {
 
     constructor({itinerary, ...params}) {
@@ -44,99 +41,41 @@ export class TransitItineraryRow extends Gtk.ListBoxRow {
     }
 
     _populateSummary() {
-        let length = this._itinerary.legs.length;
-        /* use compacted route labels when more than 2 legs, to avoid
-         * overflowing the sidebar width
-         */
-        let useCompact = length > 2;
-        /* don't show the route labels if too much space is consumed,
-         * the constant 26 here was empiracally tested out...
-         */
-        let estimatedSpace = this._calculateEstimatedSpace();
-        let useContractedLabels = estimatedSpace > 32;
-
-        if (length > MAX_LEGS_SHOWN) {
-            /* ellipsize list with horizontal dots to avoid overflowing and
-             * expanding the sidebar
-             */
-            let firstPart = this._itinerary.legs.slice(0, MAX_LEGS_SHOWN / 2);
-            let lastPart = this._itinerary.legs.slice(-MAX_LEGS_SHOWN / 2);
-
-            this._renderLegs(firstPart, 0, true, true);
-            this._summaryGrid.attach(new Gtk.Label({ visible: true,
-                                                     label: '\u22ef' } ),
-                                     firstPart.length * 2, 0, 1, 1);
-            this._renderLegs(lastPart, firstPart.length * 2 + 1, true, true);
-        } else {
-            this._renderLegs(this._itinerary.legs, 0, useCompact,
-                             useContractedLabels);
+        const legs = this._itinerary.legs;
+        for (let i = 0; i < legs.length; i++) {
+            let legItem = this._createLeg(legs[i], i === legs.length - 1);
+            this._summaryBox.append(legItem);
         }
     }
 
-    /*
-     * Render a list of legs.
-     * legs:                array of legs to render
-     * startPosition:       start position in grid to render at
-     * useCompact:          true if compact rendering (without route designations)
-     * useContractedLabels: true to use contracted route labels, if possible
-     */
-    _renderLegs(legs, startPosition, useCompact, useContractedLabels) {
-        let length = legs.length;
+    _createLeg(leg, isLast) {
+        let grid = new Gtk.Box({ visible: true, spacing: 6 });
 
-        legs.forEach((leg, i) =>  {
-            this._summaryGrid.attach(this._createLeg(leg, useCompact,
-                                                     useContractedLabels),
-                                     startPosition + i * 2, 0, 1, 1);
-            // render a separator label unless the last leg to render
-            if (i !== length - 1)
-                this._summaryGrid.attach(new Gtk.Label({ visible: true,
-                                                      label: '-' }),
-                                         startPosition + i * 2 + 1, 0, 1, 1);
-        });
-    }
-
-    /* calculate an estimated relative space-consumption for rendering,
-     * this is done based on route label character lengths and a fixed
-     * "placeholder" amount for mode icons and separators, since doing an
-     * exact pixel-correct calculation would be hard depending on fonts and
-     * themes
-     */
-    _calculateEstimatedSpace() {
-        let length = this._itinerary.legs.length;
-        /* assume mode icons and the separators consume about twice the space of
-         * characters
-         */
-        let space = 5 * length - 2;
-
-        this._itinerary.legs.forEach(function(leg) {
-            if (leg.transit)
-                space += leg.compactRoute.length;
-        });
-
-        return space;
-    }
-
-    _createLeg(leg, useCompact, useContractedLabels) {
+        // All legs get an icon
         let icon = new Gtk.Image({ icon_name: leg.iconName, visible: true });
-
         icon.get_style_context().add_class('sidebar-icon');
+        grid.append(icon);
 
-        if (!leg.transit || useContractedLabels) {
-            /* if this is a non-transit leg (walking), or in case we should
-             * display only a mode icon (to save space), insert a sole icon */
-            return icon;
-        } else {
-            /* for transit legs put besides a short route label */
-            let grid = new Gtk.Grid({ visible: true, column_spacing: 6 });
-
-            grid.attach(icon, 0, 0, 1, 1);
-            grid.attach(new TransitRouteLabel({ leg: leg,
-                                                compact: useCompact,
-                                                visible: true }),
-                        1, 0, 1, 1);
-
-            return grid;
+        // Only transit legs get a label */
+        if (leg.transit) {
+            let routeLabel = new TransitRouteLabel({ leg: leg,
+                                                     showTripName: false, 
+                                                     visible: true
+                                                    });
+            grid.append(routeLabel);
         }
+        
+        // If not the last leg, add a separator chevron
+        if (!isLast) {
+            let transitionIcon = new Gtk.Image({ 
+                iconName: 'go-next-symbolic', 
+                pixelSize: 8,
+            });
+            transitionIcon.get_style_context().add_class('dim-label');
+            grid.append(transitionIcon);
+        }
+
+        return grid;
     }
 }
 
@@ -144,5 +83,5 @@ GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/transit-itinerary-row.ui',
     InternalChildren: ['timeLabel',
                        'durationLabel',
-                       'summaryGrid']
+                       'summaryBox']
 }, TransitItineraryRow);

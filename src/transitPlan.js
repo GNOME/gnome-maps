@@ -331,7 +331,6 @@ export class Leg {
         this._textColor = textColor;
         this._tripShortName = tripShortName;
         this.bbox = this._createBBox();
-        this._compactRoute = null;
     }
 
     get route() {
@@ -340,41 +339,6 @@ export class Leg {
 
     set route(route) {
         this._route = route;
-    }
-
-    // try to get a shortened route name, suitable for overview rendering
-    get compactRoute() {
-        if (this._compactRoute)
-            return this._compactRoute;
-
-        if (this._route.startsWith(this._agencyName)) {
-            /* if the agency name is a prefix of the route name, display the
-             * agency name in the overview, this way we get a nice "transition"
-             * into the expanded route showing the full route name
-             */
-            this._compactRoute = this._agencyName;
-        } else if (this._tripShortName &&
-                   (this._agencyName.length < this._tripShortName.length)) {
-            /* if the agency name is shorter than the trip short name,
-             * which can sometimes be a more "internal" number, like a
-             * "train number", which is less known by the general public,
-             * prefer the agency name */
-            this._compactRoute = this._agencyName;
-        } else if (this._tripShortName && this._tripShortName.length <= 6) {
-            /* if the above conditions are unmet, use the trip short name
-             * as a fallback if it was shorter than the original route name */
-            this._compactRoute = this._tripShortName;
-        } else if (this._color) {
-            /* as a fallback when the route has a defined color,
-             * use an empty compact label to get a colored badge */
-            this._compactRoute = '';
-        } else {
-            /* if none of the above is true, use the original route name,
-             * and rely on label ellipsization */
-            this._compactRoute = this._route;
-        }
-
-        return this._compactRoute;
     }
 
     get routeType() {

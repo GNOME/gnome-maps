@@ -48,7 +48,7 @@ export class TransitLegRow extends Gtk.ListBoxRow {
         this._fromLabel.label = Transit.getFromLabel(this._leg, this._start);
 
         if (this._leg.transit) {
-            const routeLabel = new TransitRouteLabel({ leg: this._leg });
+            const routeLabel = new TransitRouteLabel({ leg: this._leg, showTripName: true });
             const agencyName = GLib.markup_escape_text(this._leg.agencyName, -1);
 
             this._routeGrid.attach(routeLabel, 0, 0, 1, 1);

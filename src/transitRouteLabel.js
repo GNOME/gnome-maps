@@ -29,35 +29,35 @@ import Pango from 'gi://Pango';
 import * as Color from './color.js';
 import * as TransitPlan from './transitPlan.js';
 
-/* threashhold for route color luminance when we consider it more or less
+/* threshold for route color luminance when we consider it more or less
  * as white, and draw an outline around the label
  */
-const OUTLINE_LUMINANCE_THREASHHOLD = 0.9;
-/* the threashhold when using a dark theme, when the color is darker draw an
+const OUTLINE_LUMINANCE_THRESHOLD = 0.9;
+/* the threshold when using a dark theme, when the color is darker draw an
  * outline around the label
  */
-const DARK_OUTLINE_LUMINANCE_THREASHHOLD = 0.1;
+const DARK_OUTLINE_LUMINANCE_THRESHOLD = 0.05;
 
 // fallback high contrast colors
 const HIGH_CONTRAST_COLOR = '000000';
 const HIGH_CONTRAST_TEXT_COLOR = 'ffffff';
 
-const MARGIN = 3;
+const MARGIN_H = 4;
+const MARGIN_V = 3;
 const CORNER_RADIUS = 3;
 const OUTLINE_WIDTH = 1;
 
 const MAX_WIDTH = 256;
-const MAX_WIDTH_COMPACT = 64;
 
 const FONT_SIZE = 13;
 
-export class TransitRouteLabel extends Gtk.Widget {
+export class TransitRouteLabel extends Gtk.Box {
 
-    constructor({leg, compact, ...params}) {
+    constructor({leg, showTripName, ...params}) {
         super(params);
 
         this._leg = leg;
-        this._compact = compact;
+        this._showTripName = showTripName;
         this._styleManager = Adw.StyleManager.get_default();
         this._settings = this.get_settings();
         this._createLayout();
@@ -66,8 +66,8 @@ export class TransitRouteLabel extends Gtk.Widget {
         const [textWidth, textHeight] = this._layout.get_pixel_size();
 
         // make the label at least as wide the height
-        this.set_size_request(Math.max(textWidth, textHeight) + 2 * MARGIN,
-                              textHeight + 2 * MARGIN);
+        this.set_size_request(Math.max(textWidth, textHeight) + 2 * MARGIN_H,
+                              textHeight + 2 * MARGIN_V);
     }
 
     vfunc_map() {
@@ -93,17 +93,17 @@ export class TransitRouteLabel extends Gtk.Widget {
 
     _createLayout() {
         const fontDescription = Pango.FontDescription.from_string('sans');
-        const label = this._compact && this._leg.route.length > 6 ?
-                      this._leg.compactRoute : this._leg.route;
+        // Include trip name in label if requested and it exists
+        const label = this._showTripName && this._leg.tripShortName
+            ? `${this._leg.route} ${this._leg.tripShortName}`
+            : `${this._leg.route}`;
 
         fontDescription.set_absolute_size(FONT_SIZE * Pango.SCALE);
         fontDescription.set_weight(Pango.Weight.MEDIUM);
 
         this._layout = Pango.Layout.new(this.get_pango_context());
         this._layout.set_text(label, -1);
-        this._layout.set_width(Pango.units_from_double(this._compact ?
-                                                       MAX_WIDTH_COMPACT :
-                                                       MAX_WIDTH));
+        this._layout.set_width(Pango.units_from_double(MAX_WIDTH));
         this._layout.set_ellipsize(Pango.EllipsizeMode.END);
         this._layout.set_font_description(fontDescription);
         this._layout.set_auto_dir(false);
@@ -135,17 +135,16 @@ export class TransitRouteLabel extends Gtk.Widget {
          * hight-contrasting colors, if no label, assume the route color is
          * more relevant and keep it also for high contrast
          */
-        if (usingHighContrastTheme && ((this._compact && this._leg.compactRoute) ||
-                                       (!this._compact && this._leg.route))) {
+        if (usingHighContrastTheme && this._leg.route) {
             color = usingDarkTheme ? HIGH_CONTRAST_TEXT_COLOR : HIGH_CONTRAST_COLOR;
             textColor = usingDarkTheme ? HIGH_CONTRAST_COLOR : HIGH_CONTRAST_TEXT_COLOR;
         }
 
         const hasOutline =
             (!usingDarkTheme &&
-             Color.relativeLuminance(color) > OUTLINE_LUMINANCE_THREASHHOLD) ||
+             Color.relativeLuminance(color) > OUTLINE_LUMINANCE_THRESHOLD) ||
             (usingDarkTheme &&
-             Color.relativeLuminance(color) < DARK_OUTLINE_LUMINANCE_THREASHHOLD);
+             Color.relativeLuminance(color) < DARK_OUTLINE_LUMINANCE_THRESHOLD);
 
         const roundRect = new Gsk.RoundedRect();
 
