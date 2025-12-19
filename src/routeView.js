@@ -33,7 +33,7 @@ import {QueryPoint} from './routeQuery.js';
 import {RouteEntry} from './routeEntry.js';
 import {RouteQuery} from './routeQuery.js';
 import {StoredRoute} from './storedRoute.js';
-import {TransitArrivalRow} from './transitArrivalRow.js';
+import {TransitArrivalDestinationRow} from './transitArrivalDestinationRow.js';
 import {TransitItineraryRow} from './transitItineraryRow.js';
 import {TransitLegRow} from './transitLegRow.js';
 import {TransitMoreRow} from './transitMoreRow.js';
@@ -452,18 +452,29 @@ export class RouteView extends Gtk.Box {
             itinerary.prettyPrintDuration();
 
         this._clearTransitItinerary();
+
+        // Insert the destination row
+        this._transitItineraryListBox.insert(
+            new TransitArrivalDestinationRow({ 
+                leg: itinerary.legs[0],
+                mapView: this._mapView, 
+                isArrival: false 
+            }), -1);
+
         for (const [i, leg] of itinerary.legs.entries()) {
             const row = new TransitLegRow({ leg: leg,
-                                            start: i === 0,
                                             direct: direct,
                                             mapView: this._mapView });
             this._transitItineraryListBox.insert(row, -1);
         }
 
-        /* insert the additional arrival row, showing the arrival place and time */
+        // Insert the arrival row
         this._transitItineraryListBox.insert(
-            new TransitArrivalRow({ itinerary: itinerary, mapView: this._mapView }),
-            -1);
+            new TransitArrivalDestinationRow({ 
+                leg: itinerary.legs[itinerary.legs.length - 1],
+                mapView: this._mapView, 
+                isArrival: true 
+            }), -1);
     }
 
 

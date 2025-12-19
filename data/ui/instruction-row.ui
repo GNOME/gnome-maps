@@ -8,6 +8,10 @@
         <property name="height_request">48</property>
         <property name="spacing">6</property>
         <property name="baseline_position">top</property>
+        <!-- The start and end margins are deliberately different -->
+        <!-- This is to keep the layout visually balanced, since the directionImage renders with margin -->
+        <property name="margin-start">6</property>
+        <property name="margin-end">12</property>
         <child>
           <object class="GtkImage" id="directionImage">
             <property name="icon-size">GTK_ICON_SIZE_LARGE</property>
@@ -34,7 +38,6 @@
             <property name="halign">end</property>
             <property name="use_underline">1</property>
             <property name="lines">3</property>
-            <property name="margin_end">6</property>
           </object>
         </child>
       </object>

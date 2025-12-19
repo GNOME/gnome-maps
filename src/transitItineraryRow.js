@@ -58,10 +58,7 @@ export class TransitItineraryRow extends Gtk.ListBoxRow {
 
         // Only transit legs get a label */
         if (leg.transit) {
-            let routeLabel = new TransitRouteLabel({ leg: leg,
-                                                     showTripName: false, 
-                                                     visible: true
-                                                    });
+            let routeLabel = new TransitRouteLabel({ leg: leg, visible: true});
             grid.append(routeLabel);
         }
         

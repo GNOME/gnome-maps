@@ -36,7 +36,7 @@ const OUTLINE_LUMINANCE_THRESHOLD = 0.9;
 /* the threshold when using a dark theme, when the color is darker draw an
  * outline around the label
  */
-const DARK_OUTLINE_LUMINANCE_THRESHOLD = 0.05;
+const DARK_OUTLINE_LUMINANCE_THRESHOLD = 0.1;
 
 // fallback high contrast colors
 const HIGH_CONTRAST_COLOR = '000000';
@@ -53,11 +53,10 @@ const FONT_SIZE = 13;
 
 export class TransitRouteLabel extends Gtk.Box {
 
-    constructor({leg, showTripName, ...params}) {
+    constructor({leg, ...params}) {
         super(params);
 
         this._leg = leg;
-        this._showTripName = showTripName;
         this._styleManager = Adw.StyleManager.get_default();
         this._settings = this.get_settings();
         this._createLayout();
@@ -93,10 +92,7 @@ export class TransitRouteLabel extends Gtk.Box {
 
     _createLayout() {
         const fontDescription = Pango.FontDescription.from_string('sans');
-        // Include trip name in label if requested and it exists
-        const label = this._showTripName && this._leg.tripShortName
-            ? `${this._leg.route} ${this._leg.tripShortName}`
-            : `${this._leg.route}`;
+        const label = this._leg.route;
 
         fontDescription.set_absolute_size(FONT_SIZE * Pango.SCALE);
         fontDescription.set_weight(Pango.Weight.MEDIUM);

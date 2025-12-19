@@ -2,148 +2,115 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <template class="Gjs_TransitLegRow" parent="GtkListBoxRow">
-    <style>
-      <class name="expander"/>
-    </style>
-    <property name="child">
-      <object class="GtkGrid">
+    <child>
+      <object class="GtkGrid" id="grid">
+
         <child>
-          <object class="GtkGrid" id="grid">
-            <property name="row-spacing">6</property>
-            <property name="column-spacing">6</property>
-            <property name="margin-top">6</property>
-            <property name="margin-bottom">6</property>
-            <child>
-              <object class="GtkImage" id="modeImage">
-                <property name="halign">start</property>
-                <property name="margin-start">12</property>
-                <property name="width-request">18</property>
-                <style>
-                  <class name="sidebar-icon"/>
-                </style>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">0</property>
-                  <property name="row-span">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="fromLabel">
-                <property name="halign">start</property>
-                <property name="max-width-chars">25</property>
-                <property name="ellipsize">end</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">0</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkGrid" id="routeGrid">
-                <property name="halign">start</property>
-                <property name="hexpand">1</property>
-                <property name="column-spacing">6</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="timeLabel">
-                <property name="margin-start">6</property>
-                <property name="margin-end">6</property>
-                <property name="hexpand">0</property>
-                <property name="halign">end</property>
-                <attributes>
-                  <attribute name="font-features" value="tnum"></attribute>
-                </attributes>
-                <layout>
-                  <property name="column">2</property>
-                  <property name="row">0</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkImage" id="expandArrow">
-                <property name="icon-name">go-up-symbolic</property>
-                <property name="halign">end</property>
-                <property name="margin-end">6</property>
-                <property name="accessible-role">presentation</property>
-                <style>
-                  <class name="expander-row-arrow"/>
-                </style>
-                <layout>
-                  <property name="column">2</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkBox">
-                <property name="orientation">horizontal</property>
-                <child>
-                  <object class="GtkImage" id="agencyIcon">
-                    <property name="visible">False</property>
-                    <property name="icon-name">web-browser-symbolic</property>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="agencyLabel">
-                    <property name="visible">False</property>
-                    <property name="margin-start">6</property>
-                    <property name="margin-end">6</property>
-                    <property name="use-markup">1</property>
-                    <property name="halign">start</property>
-                    <property name="hexpand">True</property>
-                    <property name="max_width_chars">30</property>
-                    <property name="ellipsize">end</property>
-                  </object>
-                </child>
-                <layout>
-                  <property name="row">2</property>
-                  <property name="column">1</property>
-                  <property name="column-span">3</property>
-                </layout>
-              </object>
-            </child>
+          <object class="AdwBin" id="trackSegmentContainer">
+            <property name="halign">start</property>
+            <property name="width-request">16</property>
+            <property name="margin-start">12</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">0</property>
+              <property name="column-span">1</property>
+              <property name="row-span">5</property>
+            </layout>
           </object>
         </child>
-        <child>
-          <object class="GtkRevealer" id="detailsRevealer">
-            <property name="child">
-              <object class="GtkGrid">
-                <property name="row-spacing">6</property>
 
-                <child>
-                  <object class="GtkSeparator">
-                    <layout>
-                      <property name="row">1</property>
-                      <property name="column">0</property>
-                      <property name="column-span">2</property>
-                    </layout>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkListBox" id="instructionList">
-                    <property name="hexpand">True</property>
-                    <layout>
-                      <property name="row">2</property>
-                      <property name="column">0</property>
-                      <property name="column-span">2</property>
-                    </layout>
-                  </object>
-                </child>
-              </object>
-            </property>
+        <child>
+          <object class="AdwBin" id="headerContainer">
             <layout>
               <property name="row">1</property>
               <property name="column">0</property>
+              <property name="column-span">2</property>
+            </layout>
+          </object>
+        </child>
+
+        <child>
+          <object class="GtkRevealer" id="agencyRevealer">
+            <child>
+              <object class="GtkLabel" id="agencyLabel">
+                <property name="visible">false</property>
+                <property name="margin-start">40</property>
+                <property name="margin-end">12</property>
+                <property name="margin-top">6</property>
+                <property name="margin-bottom">6</property>
+                <property name="use-markup">True</property>
+                <property name="halign">start</property>
+                <property name="hexpand">True</property>
+                <property name="ellipsize">end</property>
+              </object>
+            </child>
+            <layout>
+              <property name="row">2</property>
+              <property name="column">0</property>
+              <property name="column-span">2</property>
+            </layout>
+          </object>
+        </child>
+
+        <child>
+          <object class="GtkRevealer" id="beforeInstructionRevealer">
+            <property name="reveal_child">True</property>
+            <child>
+              <object class="GtkListBox" id="beforeInstructionList">
+                <property name="hexpand">True</property>
+                <property name="show-separators">False</property>
+                <style>
+                  <class name="transit-leg-row-revealer-list"></class>
+                </style>
+              </object>
+            </child>
+            <layout>
+              <property name="row">3</property>
+              <property name="column">0</property>
+              <property name="column-span">2</property>
+            </layout>
+          </object>
+        </child>
+
+        <child>
+          <object class="GtkRevealer" id="instructionRevealer">
+            <child>
+              <object class="GtkListBox" id="instructionList">
+                <property name="hexpand">True</property>
+                <property name="show-separators">False</property>
+                <style>
+                  <class name="transit-leg-row-revealer-list"></class>
+                </style>
+              </object>
+            </child>
+            <layout>
+              <property name="row">4</property>
+              <property name="column">0</property>
+              <property name="column-span">2</property>
+            </layout>
+          </object>
+        </child>
+
+        <child>
+          <object class="GtkRevealer" id="afterInstructionRevealer">
+            <property name="reveal_child">True</property>
+            <child>
+              <object class="GtkListBox" id="afterInstructionList">
+                <property name="hexpand">True</property>
+                <property name="show-separators">False</property>
+                <style>
+                  <class name="transit-leg-row-revealer-list"></class>
+                </style>
+              </object>
+            </child>
+            <layout>
+              <property name="row">5</property>
+              <property name="column">0</property>
+              <property name="column-span">2</property>
             </layout>
           </object>
         </child>
       </object>
-    </property>
+    </child>
   </template>
 </interface>

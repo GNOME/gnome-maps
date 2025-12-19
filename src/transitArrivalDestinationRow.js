@@ -25,16 +25,25 @@ import Gtk from 'gi://Gtk';
 
 import * as Transit from './transit.js';
 
-export class TransitArrivalRow extends Gtk.ListBoxRow {
+export class TransitArrivalDestinationRow extends Gtk.ListBoxRow {
 
-    constructor({itinerary, mapView, ...params}) {
+    constructor({leg, mapView, isArrival, ...params}) {
         super(params);
 
-        this._lastLeg = itinerary.legs[itinerary.legs.length - 1];
+        if (isArrival) {
+            this._iconImage.icon_name = 'maps-point-end-symbolic';
+            this._coord = leg.toCoordinate;
+            this._nameLabel.label = Transit.getArrivalLabel(leg);
+            this._timeLabel.label = leg.prettyPrintArrivalTime();
+        }
+        else {
+            this._iconImage.icon_name = 'maps-point-start-symbolic';
+            this._coord = leg.fromCoordinate;
+            this._nameLabel.label = Transit.getDepartureLabel(leg);
+            this._timeLabel.label = leg.prettyPrintDepartureTime();
+        }
+        
         this._mapView = mapView;
-        this._arrivalLabel.label = Transit.getArrivalLabel(this._lastLeg);
-        this._timeLabel.label = this._lastLeg.prettyPrintArrivalTime();
-
         this._buttonPressGesture = new Gtk.GestureSingle();
         this.add_controller(this._buttonPressGesture);
         this._buttonPressGesture.connect('begin',
@@ -42,9 +51,7 @@ export class TransitArrivalRow extends Gtk.ListBoxRow {
     }
 
     _onPress() {
-        const coord = this._lastLeg.toCoordinate;
-
-        this._mapView.map.go_to_full(coord[0], coord[1], 16);
+        this._mapView.map.go_to_full(this._coord[0], this._coord[1], 16);
     }
 
     vfunc_activate() {
@@ -54,7 +61,8 @@ export class TransitArrivalRow extends Gtk.ListBoxRow {
 }
 
 GObject.registerClass({
-    Template: 'resource:///org/gnome/Maps/ui/transit-arrival-row.ui',
-    InternalChildren: ['arrivalLabel',
+    Template: 'resource:///org/gnome/Maps/ui/transit-arrival-destination-row.ui',
+    InternalChildren: ['iconImage',
+                       'nameLabel',
                        'timeLabel']
-}, TransitArrivalRow);
+}, TransitArrivalDestinationRow);

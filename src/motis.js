@@ -224,15 +224,9 @@ export class Motis {
             this._getEncodedPolyline(leg.legGeometry.points,
                                      leg.legGeometry.precision) : undefined;
         const intermediateStops =
-            isTransit ?
-            [...leg.intermediateStops.map(stop =>
-                                          this._parseStop(stop)),
-             new Stop({ name: toName,
-                        arrival:              arrival,
-                        departure:            arrival,
-                        coordinate:           [leg.to.lat, leg.to.lon] })
-            ] :
-            undefined;
+            isTransit 
+                ? leg.intermediateStops.map(stop => this._parseStop(stop))
+                : undefined;
         const steps =
             !isTransit && leg.steps ?
             this._parseSteps(leg.steps, polyline[0], polyline.last()) : undefined;

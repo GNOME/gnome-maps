@@ -28,25 +28,17 @@ const _ = gettext.gettext;
 /**
  * Get the label to display for the starting point of an itinerary leg.
  * leg: the itinerary leg
- * isFirstLeg: true if this is the first leg of the itinerary.
  */
-export function getFromLabel(leg, isFirstLeg) {
-    if (isFirstLeg) {
-        if (leg.from) {
-            /* Translators: this is a format string indicating instructions
-             * starting a journey at the address given as the parameter
-             */
-            return _("Start at %s").format(leg.from);
-        } else {
-            /* Translators: this indicates starting a journey at a location
-             * with no set name (such as when the user started routing from
-             * an arbitrary point on the map)
-             */
-            return _("Start");
-        }
-    } else {
-        return leg.from;
-    }
+export function getFromLabel(leg) {
+    return leg.from ?? _("Start");
+}
+
+/**
+ * Get the label to display for the ending point of an itinerary leg.
+ * leg: the itinerary leg
+ */
+export function getToLabel(leg) {
+    return leg.to ?? _("Arrive");
 }
 
 /**
@@ -77,5 +69,19 @@ export function getArrivalLabel(lastLeg) {
         return _("Arrive at %s").format(lastLeg.to);
     } else {
         return _("Arrive");
+    }
+}
+
+/**
+ * Get the label to display for departure of the first leg of an itinerary.
+ */
+export function getDepartureLabel(firstLeg) {
+    if (firstLeg.from) {
+        /* Translators: this a format string indicating departing from the
+         * destination of journey with the departure address and transit
+         * stop as the format parameter */
+        return _("Start at %s").format(firstLeg.from);
+    } else {
+        return _("Start");
     }
 }

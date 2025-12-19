@@ -1,65 +1,65 @@
 #dragged-entry {
-    color: #939695;
+  color: #939695;
 }
 
 .layer-radio-button {
-    background-image: none;
-    padding: 0;
-    border: 1px solid @insensitive_borders;
-    outline-width: 1px;
+  background-image: none;
+  padding: 0;
+  border: 1px solid @insensitive_borders;
+  outline-width: 1px;
 }
 
 .layer-radio-button:checked {
-    border: 2px solid @suggested_action_button_a;
+  border: 2px solid @suggested_action_button_a;
 }
 
 #zoom-in-button,
 #zoom-out-button {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 #sidebar-entry-list,
 #sidebar-entry-list .list-row:hover {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 #sidebar-entry-list .list-row:focus {
-    outline: 0;
+  outline: 0;
 }
 
 #sidebar-entry-list > GtkLabel {
-    padding-right: 6px;
+  padding-right: 6px;
 }
 
 #sidebar-entry-list > GtkLabel:dir(rtl) {
-    padding-left: 6px;
+  padding-left: 6px;
 }
 
 #sidebar {
-    border-left: 1px solid @borders;
+  border-left: 1px solid @borders;
 }
 
 #sidebar:dir(rtl) {
-    border-right: 1px solid @borders;
+  border-right: 1px solid @borders;
 }
 
 #sidebar grid.frame {
-  border-width: 1px 0;
+border-width: 1px 0;
 }
 
 #instruction-list {
-    border-right: 0px;
-    border-left: 0px;
+  border-right: 0px;
+  border-left: 0px;
 }
 
 #instruction-box > GtkImage {
-    padding-right: 6px;
-    padding-left: 6px;
+  padding-right: 6px;
+  padding-left: 6px;
 }
 
 .no-margin-separator {
-  /* A separator with no margin, so it's flush with the widgets/borders around it */
-  margin: 0;
+/* A separator with no margin, so it's flush with the widgets/borders around it */
+margin: 0;
 }
 
 .small-label {
@@ -67,12 +67,12 @@
 }
 
 .shaded {
-    background-color: alpha(black, 0.1);
-    border-bottom: 1px solid alpha(black, 0.2);
+  background-color: alpha(black, 0.1);
+  border-bottom: 1px solid alpha(black, 0.2);
 }
 
 .suggestions {
-    padding-top: 6px;
+  padding-top: 6px;
 }
 
 .dropdown-searchbar {
@@ -81,58 +81,66 @@
 }
 
 popover.suggestions list > row:hover {
-  background-color: alpha(currentColor, .04);
+background-color: alpha(currentColor, .04);
 }
 
 popover.suggestions list > row:active {
-  background-color: alpha(currentColor, .08);
+background-color: alpha(currentColor, .08);
 }
 
 popover.suggestions list > row:selected {
-  background-color: alpha(currentColor, .1);
+background-color: alpha(currentColor, .1);
 }
 
 popover.suggestions list > row:selected:hover {
-  background-color: alpha(currentColor, .13);
+background-color: alpha(currentColor, .13);
 }
 
 popover.suggestions list > row:selected:active {
-  background-color: alpha(currentColor, .19);
+background-color: alpha(currentColor, .19);
 }
 
 label.italic {
-  font-style: italic;
+font-style: italic;
 }
 
 /* Overlay controls for zoom */
 button.card.circular {
-  min-width: 42px;
-  min-height: 42px;
+min-width: 42px;
+min-height: 42px;
 }
 
 .dim-spinbutton spinbutton text {
-  opacity: 0.5;
+opacity: 0.5;
 }
 
 .flow button {
-  padding-top: 0.24em;
-  padding-bottom: 0.24em;
+padding-top: 0.24em;
+padding-bottom: 0.24em;
 }
 
 @keyframes rotate_star {
-  from { -gtk-icon-transform: rotate(-72deg); }
-  to {}
+from { -gtk-icon-transform: rotate(-72deg); }
+to {}
 }
 
 @keyframes rotate_unstar {
-  from { -gtk-icon-transform: rotate(72deg); }
-  to {}
+from { -gtk-icon-transform: rotate(72deg); }
+to {}
 }
 
 .favorite.starred image {
-  animation: rotate_star 0.4s ease;
+animation: rotate_star 0.4s ease;
 }
 
 .favorite.unstarred image {
-  animation: rotate_unstar 0.4s ease;
+animation: rotate_unstar 0.4s ease;
+}
+
+.transit-stop-row {
+  padding: 0;
+}
+
+.transit-leg-row-revealer-list {
+  background-color: transparent;
 }

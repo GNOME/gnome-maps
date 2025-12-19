@@ -23,22 +23,42 @@ import gettext from 'gettext';
 
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
+import Pango from 'gi://Pango';
+import { TransitRowTrackSegment } from './transitRowTrackSegment.js';
 
 const _ = gettext.gettext;
 
 export class TransitStopRow extends Gtk.ListBoxRow {
 
-    constructor({stop, final, ...params}) {
+    constructor({stop, final, colors, isHead, isTail, ...params}) {
         super(params);
 
         this.stop = stop;
         this._nameLabel.label = this.stop.name;
         this._timeLabel.label = this.stop.prettyPrint({ isFinal: final });
+        
+        // Bold name of head and tail stops
+        if (isHead || isTail) {
+            let attrs = new Pango.AttrList();
+            let attr = Pango.attr_weight_new(Pango.Weight.BOLD);
+            attrs.insert(attr);       
+            this._nameLabel.set_attributes(attrs);
+        }
+
+        const line = new TransitRowTrackSegment({
+            colors: colors,
+            isHead: isHead,
+            isTail: isTail,
+            isWalk: false,
+            isStation: true,
+        })
+        this._trackSegmentContainer.set_child(line);
     }
 }
 
 GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/transit-stop-row.ui',
-    InternalChildren: [ 'nameLabel',
+    InternalChildren: [ 'trackSegmentContainer',
+                        'nameLabel',
                         'timeLabel' ]
 }, TransitStopRow);

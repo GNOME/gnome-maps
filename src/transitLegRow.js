@@ -21,38 +21,77 @@
 
 import gettext from 'gettext';
 
-import Gdk from 'gi://Gdk';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
+import Gsk from 'gi://Gsk';
 import Pango from 'gi://Pango';
 
 import {InstructionRow} from './instructionRow.js';
-import * as Transit from './transit.js';
-import {TransitRouteLabel} from './transitRouteLabel.js';
+import { Stop } from './transitPlan.js';
 import {TransitStopRow} from './transitStopRow.js';
-import * as Utils from './utils.js';
-
-const _ = gettext.gettext;
+import { TransitLegHeader } from './transitLegHeader.js';
+import { TransitRowTrackSegment } from './transitRowTrackSegment.js';
 
 export class TransitLegRow extends Gtk.ListBoxRow {
 
-    constructor({leg, start, mapView, direct, ...params}) {
+    constructor({leg, mapView, direct, ...params}) {
         super(params);
 
         this._leg = leg;
-        this._start = start;
         this._mapView = mapView;
         this._direct = direct;
-        this._modeImage.icon_name = this._leg.iconName;
-        this._fromLabel.label = Transit.getFromLabel(this._leg, this._start);
+
+        // Header
+        this._header = new TransitLegHeader({
+            leg: this._leg, 
+            canExpand: !this._direct && this._hasIntructions(),
+            expanded: this._direct,
+            onPress: this._onPressHeader.bind(this)
+        });
+        this._headerContainer.set_child(this._header);
 
         if (this._leg.transit) {
-            const routeLabel = new TransitRouteLabel({ leg: this._leg, showTripName: true });
+            // From
+            const fromStop = new Stop({
+                name: this._leg.from,
+                departure: this._leg.departure,
+                coordinate: this._leg.fromCoordinate
+            });
+            const fromStopRow = new TransitStopRow({
+                stop: fromStop, 
+                isHead: true,
+                colors: {
+                    line: this._leg.color,
+                    stop: this._leg.textColor
+                },
+                final: false
+            });
+            this._beforeInstructionList.append(fromStopRow);
+
+            // To
+            const toStop = new Stop({
+                name: this._leg.to,
+                arrival: this._leg.arrival,
+                coordinate: this._leg.toCoordinate
+            });
+            const toStopRow = new TransitStopRow({
+                stop: toStop, 
+                isTail: true,
+                colors: {
+                    line: this._leg.color,
+                    stop: this._leg.textColor
+                },
+                final: true,
+                marginBottom: 12
+            });
+            this._afterInstructionList.append(toStopRow);
+
+            // Agency link
             const agencyName = GLib.markup_escape_text(this._leg.agencyName, -1);
-
-            this._routeGrid.attach(routeLabel, 0, 0, 1, 1);
-
+            if (agencyName) {
+                this._agencyLabel.visible = true;
+            }
             if (this._leg.agencyUrl) {
                 let url = GLib.markup_escape_text(this._leg.agencyUrl, -1);
                 /* we need to double-escape the tooltip text, as GTK+ treats it as
@@ -65,76 +104,51 @@ export class TransitLegRow extends Gtk.ListBoxRow {
             } else {
                 this._agencyLabel.label = agencyName;
             }
+            
+        }
+        else {
+            const line = new TransitRowTrackSegment({
+                isWalk: true,
+            });
+            this._trackSegmentContainer.set_child(line);
         }
 
         // always expand direct (e.g. walking) trips
         if (direct) {
-            this._expandArrow.visible = false;
             this._setExpanded(true);
         } else {
             this._setExpanded(false);
         }
 
-        if (!this._leg.transit || this._leg.headsign) {
-            /* Restrict headsign label to 20 characters to avoid horizontally
-             * overflowing the sidebar.
-             */
-            let headsignLabel = new Gtk.Label({ visible: true,
-                                                can_focus: false,
-                                                use_markup: true,
-                                                hexpand: true,
-                                                max_width_chars: 20,
-                                                ellipsize: Pango.EllipsizeMode.END,
-                                                halign: Gtk.Align.START });
-            let label =
-                GLib.markup_escape_text(Transit.getHeadsignLabel(this._leg), -1);
-
-            headsignLabel.label = '<span size="small">%s</span>'.format(label);
-            headsignLabel.get_style_context().add_class('dim-label');
-            this._routeGrid.attach(headsignLabel, this._leg.transit ? 1 : 0, 0,
-                                   1, 1);
-        }
-
-        this._timeLabel.label = this._leg.prettyPrintTime({ isStart: this._start });
-
         if (this._hasIntructions())
             this._populateInstructions();
-        else
-            this._expandArrow.visible = false;
 
-        // Translators: This is a tooltip
-        this._expandArrow.tooltip_text =
-            this._leg.isTransit ?
-            _("Show intermediate stops and information") :
-            _("Show walking instructions");
-
-        this._instructionList.connect('row-selected', (listbox, row) => {
-            if (row) {
-                if (row.turnPoint)
-                    this._mapView.showTurnPoint(row.turnPoint);
-                else
-                    this._mapView.showTransitStop(row.stop, this._leg);
-            }
+        // Add selection handling to the list row
+        const lists = [
+            this._beforeInstructionList,
+            this._instructionList,
+            this._afterInstructionList
+        ];
+        lists.forEach(list => {
+            list.connect('row-selected', (listbox, row) => {                
+                if (row) {
+                    // When a list row is selected, unselect from other lists
+                    const otherLists = lists.filter(l => l !== list);
+                    for (let list of otherLists) {
+                        list.unselect_all();
+                    }
+                    // Show the selected row on the map
+                    if (row.turnPoint)
+                        this._mapView.showTurnPoint(row.turnPoint);
+                    else
+                        this._mapView.showTransitStop(row.stop, this._leg);
+                }
+            });
         });
-
-        this._buttonPressGesture = new Gtk.GestureSingle();
-        this._grid.add_controller(this._buttonPressGesture);
-        this._buttonPressGesture.connect('begin', () => this._onPress());
     }
 
-    _updateExpandTooltip() {
-        // Translators: This is a tooltip
-        this._expandArrow.tooltip_text =
-            this._isExpanded ? (this._leg.transit ?
-                                _("Hide intermediate stops and information") :
-                                _("Hide walking instructions")) :
-                               (this._leg.transit ?
-                                _("Show intermediate stops and information") :
-                                _("Show walking instructions"));
-    }
-
-    _onPress() {
-        if (this._isExpanded && !this._direct) {
+    _onPressHeader() {
+        if (this._expanded && !this._direct) {
             this._setExpanded(false);
         } else {
             this._mapView.map.go_to_full(this._leg.fromCoordinate[0],
@@ -146,29 +160,20 @@ export class TransitLegRow extends Gtk.ListBoxRow {
     }
 
     _setExpanded(expanded) {
-        this._detailsRevealer.reveal_child = expanded;
-        this._agencyIcon.visible = expanded && this._leg.transit;
-        this._agencyLabel.visible = expanded && this._leg.transit;
-
-        /* collaps the time label down to just show the start time when
-         * revealing intermediate stop times, as the arrival time is displayed
-         * at the last stop
-         */
-        this._timeLabel.label =
-            expanded ? this._leg.prettyPrintDepartureTime() :
-                       this._leg.prettyPrintTime({ isStart: this._start });
+        this._instructionRevealer.reveal_child = expanded;
+        this._agencyRevealer.reveal_child = expanded;
+        this._header.expanded = expanded;
         if (expanded)
             this.set_state_flags(Gtk.StateFlags.CHECKED, false);
         else
             this.unset_state_flags(Gtk.StateFlags.CHECKED);
 
-        this._isExpanded = expanded;
-        this._updateExpandTooltip();
+        this._expanded = expanded;
         this.update_state([Gtk.AccessibleState.EXPANDED], [expanded ? 1 : 0]);
     }
 
     vfunc_activate() {
-        this._onPress();
+        this._onPressHeader();
         super.vfunc_activate();
     }
 
@@ -182,8 +187,14 @@ export class TransitLegRow extends Gtk.ListBoxRow {
                 let stops = this._leg.intermediateStops;
                 for (let index = 0; index < stops.length; index++) {
                     let stop = stops[index];
-                    let row = new TransitStopRow({ stop: stop,
-                                                   final: index === stops.length - 1 });
+                    let row = new TransitStopRow({ 
+                        stop: stop,
+                        colors: {
+                            line: this._leg.color,
+                            stop: this._leg.textColor
+                        },
+                        final: index === stops.length - 1 
+                    });
                     this._instructionList.insert(row, -1);
                 }
             }
@@ -192,10 +203,11 @@ export class TransitLegRow extends Gtk.ListBoxRow {
              * route, since these are explicitly added by the itinerary
              */
             for (let index = 1;
-                 index < this._leg.walkingInstructions.length - 1;
-                 index++) {
+                index < this._leg.walkingInstructions.length - 1;
+                index++) {
                 let instruction = this._leg.walkingInstructions[index];
                 let row = new InstructionRow({ turnPoint: instruction });
+                row.set_margin_start(32);
 
                 this._instructionList.insert(row, -1);
             }
@@ -205,14 +217,16 @@ export class TransitLegRow extends Gtk.ListBoxRow {
 
 GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/transit-leg-row.ui',
-    InternalChildren: ['modeImage',
-                       'fromLabel',
-                       'routeGrid',
-                       'timeLabel',
-                       'expandArrow',
-                       'detailsRevealer',
-                       'agencyLabel',
-                       'agencyIcon',
+    InternalChildren: ['headerContainer',
+                       'trackSegmentContainer',
+                       'beforeInstructionRevealer',
+                       'instructionRevealer',
+                       'afterInstructionRevealer',
+                       'beforeInstructionList',
                        'instructionList',
+                       'afterInstructionList',
+                       'agencyRevealer',
+                       'agencyLabel',
+                       'afterInstructionRevealer',
                        'grid']
 }, TransitLegRow);

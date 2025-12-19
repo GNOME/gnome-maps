@@ -2,16 +2,13 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <template class="Gjs_TransitStopRow" parent="GtkListBoxRow">
-    <property name="child">
+    <child>
       <object class="GtkGrid" id="grid">
+        <property name="column-spacing">12</property>
         <child>
-          <object class="GtkImage">
+          <object class="AdwBin" id="trackSegmentContainer">
+            <property name="halign">start</property>
             <property name="margin-start">12</property>
-            <property name="margin-end">6</property>
-            <property name="icon-name">maps-point-end-symbolic</property>
-            <style>
-              <class name="sidebar-icon"/>
-            </style>
             <layout>
               <property name="column">0</property>
               <property name="row">0</property>
@@ -22,8 +19,11 @@
           <object class="GtkLabel" id="nameLabel">
             <property name="hexpand">1</property>
             <property name="halign">start</property>
-            <property name="max-width-chars">25</property>
+            <property name="margin-top">6</property>
+            <property name="margin-bottom">6</property>
             <property name="ellipsize">end</property>
+            <property name="wrap">true</property>
+            <property name="lines">2</property>
             <layout>
               <property name="column">1</property>
               <property name="row">0</property>
@@ -33,11 +33,15 @@
         <child>
           <object class="GtkLabel" id="timeLabel">
             <property name="halign">end</property>
-            <property name="margin-start">6</property>
+            <property name="margin-top">6</property>
+            <property name="margin-bottom">6</property>
             <property name="margin-end">12</property>
             <attributes>
               <attribute name="font-features" value="tnum"></attribute>
             </attributes>
+            <style>
+              <class name="dim-label"></class>
+            </style>
             <layout>
               <property name="column">2</property>
               <property name="row">0</property>
@@ -45,6 +49,9 @@
           </object>
         </child>
       </object>
-    </property>
+    </child>
+    <style>
+      <class name="transit-stop-row"></class>
+    </style>
   </template>
 </interface>
