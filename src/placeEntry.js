@@ -45,7 +45,7 @@ const MIN_CHARS_COMPLETION = 3;
 // pattern matching CJK ideographic characters
 const IDEOGRAPH_PATTERN = /[\u3300-\u9fff]/
 
-const SEARCH_TIMEOUT = 150; // ms
+const SEARCH_TIMEOUT = 500; // ms
 
 export class PlaceEntry extends Gtk.Entry {
 
