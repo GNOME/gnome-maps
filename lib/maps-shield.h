@@ -18,6 +18,7 @@
 #pragma once
 
 #include <shumate/shumate.h>
+#include <json-glib/json-glib.h>
 
 G_BEGIN_DECLS
 

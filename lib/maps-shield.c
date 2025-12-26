@@ -16,7 +16,6 @@
  */
 
 #include <librsvg/rsvg.h>
-#include <json-glib/json-glib.h>
 
 #include "maps-shield.h"
 
@@ -152,7 +151,7 @@ static void maps_shield_set_from_json (MapsShield *self, JsonNode *node,
 
 /**
  * maps_shield_new:
- * @node: (transfer none): a [class@JsonNode] containing the shield definition
+ * @node: (transfer none): a [class@Json.Node] containing the shield definition
  *
  * Creates a new [class@Shield] instance.
  *
@@ -168,7 +167,7 @@ maps_shield_new (JsonNode *node)
 
 /**
  * maps_shield_new_with_banners:
- * @node: (transfer none): a [class@JsonNode] containing the shield definition
+ * @node: (transfer none): a [class@Json.Node] containing the shield definition
  * @banners: (transfer none): array of banner texts to add to the shield
  *
  * Creates a new [class@Shield] instance.

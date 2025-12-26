@@ -51,7 +51,8 @@ libmaps_gir_targets = gnome.generate_gir(
 	includes: [
 		'GLib-2.0',
 		'GObject-2.0',
-		'Shumate-1.0'
+		'Shumate-1.0',
+		'Json-1.0',
 	],
 	install: true,
 	install_dir_gir: join_paths(pkgdatadir, 'gir-' + maps_gir_version),
