@@ -814,9 +814,6 @@ export class MapView extends Gtk.Overlay {
         if (!this._userLocation)
             return;
 
-        this.emit('going-to-user-location');
-        Utils.once(this._userLocation, "gone-to",
-                   () => this.emit('gone-to-user-location'));
         this._userLocation.goTo(animate);
     }
 
@@ -1359,9 +1356,6 @@ GObject.registerClass({
     },
     Signals: {
         'user-location-changed': {},
-        'going-to': {},
-        'going-to-user-location': {},
-        'gone-to-user-location': {},
         'view-moved': {},
         'marker-selected': { param_types: [Shumate.Marker] },
         'map-type-changed': { param_types: [GObject.TYPE_STRING] }
