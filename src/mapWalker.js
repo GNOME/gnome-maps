@@ -97,20 +97,16 @@ export class MapWalker extends GObject.Object {
         Utils.debug('Going to ' + [this.place.name,
                     this.place.location.latitude,
                     this.place.location.longitude].join(' '));
-        this._mapView.emit('going-to');
 
         if (!animate) {
             this._mapView.map.center_on(this.place.location.latitude,
                                         this.place.location.longitude);
             this._mapView.map.viewport.zoom_level = zoom;
-            this.emit('gone-to');
             return;
         } else {
             this._mapView.map.go_to_full(this.place.location.latitude,
                                          this.place.location.longitude,
                                          zoom);
-            Utils.once(this._mapView.map, 'animation-completed::go-to',
-                       () => this.emit('gone-to'));
         }
     }
 
@@ -161,8 +157,4 @@ export class MapWalker extends GObject.Object {
     }
 }
 
-GObject.registerClass({
-    Signals: {
-        'gone-to': { }
-    }
-}, MapWalker);
+GObject.registerClass(MapWalker);
