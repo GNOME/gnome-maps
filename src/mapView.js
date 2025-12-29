@@ -1035,14 +1035,9 @@ export class MapView extends Gtk.Overlay {
                                             mapView: this });
 
         this._placeLayer.add_marker(placeMarker);
-        if (skipGoTo) {
-            Application.application.selected_place = place;
-        } else {
-            Utils.once(placeMarker, 'gone-to', () => {
-                Application.application.selected_place = place;
-            });
+        Application.application.selected_place = place;
+        if (!skipGoTo)
             placeMarker.goTo(animation);
-        }
     }
 
     showRoute(route) {
