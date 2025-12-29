@@ -87,7 +87,6 @@ export class MapMarker extends Shumate.Marker {
     }
 
     goTo(animate) {
-        Utils.once(this.walker, 'gone-to', () => this.emit('gone-to'));
         this.walker.goTo(animate);
     }
 
@@ -109,8 +108,5 @@ export class MapMarker extends Shumate.Marker {
 }
 
 GObject.registerClass({
-    Abstract: true,
-    Signals: {
-        'gone-to': { }
-    }
+    Abstract: true
 }, MapMarker);
