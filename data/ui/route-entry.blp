@@ -1,0 +1,27 @@
+using Gtk 4.0;
+
+template $Gjs_RouteEntry: Grid {
+  hexpand: false;
+
+  Image icon {
+    margin-end: 6;
+    margin-start: 12;
+    width-request: 16;
+    icon-name: "maps-point-end-symbolic";
+    // Translators: This is a tooltip
+    tooltip-text: _("Change Route Order");
+  }
+
+  Grid entryGrid {
+    width-request: 230;
+    hexpand: true;
+  }
+
+  Button button {
+    focusable: true;
+    valign: center;
+    height-request: 31;
+    margin-start: 6;
+    margin-end: 12;
+  }
+}

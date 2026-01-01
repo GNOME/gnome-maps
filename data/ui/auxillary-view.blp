@@ -1,0 +1,39 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $Gjs_AuxillaryView: Grid {
+  name: "auxillary-view";
+  vexpand: true;
+  column-homogeneous: true;
+  orientation: vertical;
+  width-request: 360;
+  row-spacing: 2;
+
+  Stack stack {
+    transition-type: crossfade;
+    vhomogeneous: false;
+    interpolate-size: true;
+
+    styles [
+      "maps-stack",
+    ]
+
+    StackPage {
+      name: "routeView";
+
+      child: Adw.Bin routeBin {
+        vexpand: true;
+        hexpand: true;
+      };
+    }
+
+    StackPage {
+      name: "placeView";
+
+      child: Adw.Bin placeBin {
+        vexpand: true;
+        hexpand: true;
+      };
+    }
+  }
+}

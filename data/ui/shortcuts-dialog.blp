@@ -1,0 +1,97 @@
+using Gtk 4.0;
+using Adw 1;
+
+Adw.ShortcutsDialog shortcuts_dialog {
+  Adw.ShortcutsSection {
+    title: C_("shortcut window", "General");
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Show Shortcuts");
+      accelerator: "<Primary>question";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Search");
+      accelerator: "<Primary>F";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Explore points-of-interest");
+      accelerator: "<Primary><Shift>F";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Show last search results");
+      accelerator: "<Primary>R";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Show route planner");
+      accelerator: "<Primary>D";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Print route");
+      accelerator: "<Primary>P";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Quit");
+      accelerator: "<Primary>Q";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Open main menu");
+      accelerator: "F10";
+    }
+  }
+
+  Adw.ShortcutsSection {
+    title: C_("shortcut window", "Map View");
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Zoom in");
+      accelerator: "<Primary>plus <Primary>equal";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Zoom out");
+      accelerator: "<Primary>minus";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Rotate clockwise");
+      accelerator: "<Alt>Right";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Rotate counter-clockwise");
+      accelerator: "<Alt>Left";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Reset rotation");
+      accelerator: "<Alt>Up";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Toggle scale");
+      accelerator: "<Primary>S";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Go to current location");
+      accelerator: "<Primary>L";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Open shape layer");
+      accelerator: "<Primary>O";
+    }
+
+    Adw.ShortcutsItem {
+      title: C_("shortcut window", "Toggle location marker");
+      accelerator: "<Shift><Primary>L";
+    }
+  }
+}

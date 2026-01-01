@@ -1,0 +1,37 @@
+using Gtk 4.0;
+
+template $Gjs_InstructionRow: ListBoxRow {
+  child: Box instructionBox {
+    name: "instruction-box";
+    height-request: 48;
+    spacing: 6;
+    baseline-position: top;
+    margin-start: 6;
+    margin-end: 12;
+
+    Image directionImage {
+      icon-size: large;
+    }
+
+    Label instructionLabel {
+      halign: start;
+      xalign: 0;
+      margin-top: 6;
+      margin-bottom: 6;
+      use-underline: true;
+      wrap: true;
+      ellipsize: end;
+      width-chars: 20;
+      max-width-chars: 20;
+      lines: 3;
+      hexpand: true;
+      vexpand: true;
+    }
+
+    Label distanceLabel {
+      halign: end;
+      use-underline: true;
+      lines: 3;
+    }
+  };
+}

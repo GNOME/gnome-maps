@@ -1,0 +1,101 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $Gjs_TransitLegHeader: Grid {
+  row-spacing: 6;
+  column-spacing: 12;
+
+  Image modeImage {
+    halign: start;
+    valign: start;
+    margin-top: 12;
+    margin-start: 12;
+    margin-bottom: 12;
+    width-request: 16;
+    height-request: 24;
+
+    styles [
+      "sidebar-icon",
+    ]
+
+    layout {
+      row: 0;
+      column: 0;
+    }
+  }
+
+  Grid {
+    hexpand: true;
+    row-spacing: 3;
+    margin-top: 12;
+    margin-bottom: 12;
+
+    Adw.Bin route {
+      halign: start;
+      hexpand: true;
+
+      layout {
+        row: 0;
+        column: 0;
+      }
+    }
+
+    Box {
+      orientation: horizontal;
+      spacing: 3;
+      halign: start;
+      hexpand: true;
+
+      Image headsignImage {
+        pixel-size: 16;
+
+        styles [
+          "sidebar-icon",
+        ]
+      }
+
+      Label headsignLabel {
+        halign: start;
+        hexpand: true;
+        ellipsize: end;
+        use-markup: true;
+      }
+
+      layout {
+        row: 1;
+        column: 0;
+      }
+
+      styles [
+        "dim-label",
+      ]
+    }
+
+    layout {
+      row: 0;
+      column: 1;
+    }
+  }
+
+  Image expandArrow {
+    halign: end;
+    valign: start;
+    width-request: 16;
+    height-request: 24;
+    icon-name: "go-up-symbolic";
+    accessible-role: presentation;
+    margin-top: 12;
+    margin-end: 12;
+    margin-bottom: 12;
+
+    styles [
+      "expander-row-arrow",
+      "dim-label",
+    ]
+
+    layout {
+      row: 0;
+      column: 2;
+    }
+  }
+}

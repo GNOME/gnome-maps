@@ -1,0 +1,52 @@
+using Gtk 4.0;
+
+template $Gjs_ZoomAndRotateControls: Box {
+  orientation: horizontal;
+  valign: end;
+  halign: end;
+  margin-start: 18;
+  margin-end: 18;
+  margin-top: 18;
+  margin-bottom: 18;
+  spacing: 12;
+
+  Revealer revealer {
+    transition-type: crossfade;
+
+    $Gjs_RotationButton rotationButton {
+      action-name: "win.reset-rotation";
+      // Translators: This is a tooltip
+      tooltip-text: _("Reset Rotation");
+      icon-name: "navigate-north-symbolic";
+
+      styles [
+        "card",
+        "circular",
+      ]
+    }
+  }
+
+  Button {
+    action-name: "win.zoom-out";
+    // Translators: This is a tooltip
+    tooltip-text: _("Zoom Out");
+    icon-name: "zoom-out-symbolic";
+
+    styles [
+      "card",
+      "circular",
+    ]
+  }
+
+  Button {
+    action-name: "win.zoom-in";
+    // Translators: This is a tooltip
+    tooltip-text: _("Zoom In");
+    icon-name: "zoom-in-symbolic";
+
+    styles [
+      "card",
+      "circular",
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $Gjs_TransitMoreRow: ListBoxRow {
+  child: Grid {
+    margin-start: 12;
+    margin-end: 12;
+    margin-top: 12;
+    margin-bottom: 12;
+
+    Stack stack {
+      StackPage {
+        name: "label";
+
+        child: Label label {
+          hexpand: true;
+          vexpand: true;
+        };
+      }
+
+      StackPage {
+        name: "spinner";
+
+        child: Adw.Spinner {};
+      }
+
+      layout {
+        row: 0;
+        column: 0;
+      }
+    }
+  };
+}

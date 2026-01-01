@@ -1,0 +1,22 @@
+using Gtk 4.0;
+
+template $Gjs_HeaderBarLeft: Box {
+  spacing: 6;
+
+  Button gotoUserLocationButton {
+    focusable: true;
+    valign: center;
+    action-name: "win.goto-user-location";
+    // Translators: This is a tooltip
+    tooltip-text: _("Current Location");
+    icon-name: "find-location-symbolic";
+  }
+
+  MenuButton layersButton {
+    focusable: true;
+    valign: center;
+    // Translators: This is a tooltip
+    tooltip-text: _("Layers");
+    icon-name: "layers-button-symbolic";
+  }
+}

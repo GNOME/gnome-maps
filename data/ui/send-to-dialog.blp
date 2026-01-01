@@ -1,0 +1,121 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $Gjs_SendToDialog: Dialog {
+  use-header-bar: 1;
+  width-request: 360;
+  title: _("Open Location");
+
+  [action response=cancel]
+  Button cancelButton {
+    label: _("_Cancel");
+    focusable: true;
+    use-underline: true;
+
+    styles [
+      "text-button",
+    ]
+  }
+
+  Adw.ToastOverlay overlay {
+    Box contentArea {
+      orientation: vertical;
+      margin-start: 18;
+      margin-end: 18;
+      margin-top: 18;
+      margin-bottom: 18;
+      spacing: 12;
+
+      Box {
+        orientation: vertical;
+        spacing: 12;
+
+        Box {
+          orientation: vertical;
+
+          Label summaryLabel {
+            selectable: true;
+            label: "…";
+            halign: start;
+            wrap: true;
+            xalign: 0;
+          }
+
+          Label summaryUrl {
+            selectable: true;
+            use-markup: true;
+            label: "…";
+            xalign: 0;
+            width-request: 0;
+            ellipsize: end;
+          }
+        }
+
+        Box {
+          spacing: 6;
+
+          Button copyButton {
+            label: _("C_opy");
+            hexpand: true;
+            use-underline: true;
+          }
+
+          Button emailButton {
+            label: _("_Send To…");
+            hexpand: true;
+            use-underline: true;
+          }
+        }
+      }
+
+      ScrolledWindow scrolledWindow {
+        hscrollbar-policy: never;
+        vexpand: true;
+
+        child: ListBox list {
+          ListBoxRow weatherRow {
+            focusable: true;
+
+            child: Grid weatherGrid {
+              column-spacing: 12;
+              margin-start: 6;
+              margin-end: 6;
+              margin-top: 6;
+              margin-bottom: 6;
+
+              Image weatherIcon {
+                pixel-size: 32;
+                halign: start;
+              }
+
+              Label weatherLabel {
+                margin-end: 12;
+              }
+            };
+          }
+
+          ListBoxRow clocksRow {
+            focusable: true;
+
+            child: Grid clocksGrid {
+              column-spacing: 12;
+              margin-start: 6;
+              margin-end: 6;
+              margin-top: 6;
+              margin-bottom: 6;
+
+              Image clocksIcon {
+                pixel-size: 32;
+                halign: start;
+              }
+
+              Label clocksLabel {
+                margin-end: 12;
+              }
+            };
+          }
+        };
+      }
+    }
+  }
+}

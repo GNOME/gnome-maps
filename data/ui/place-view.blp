@@ -1,0 +1,136 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $Gjs_PlaceView: Box {
+  Stack mainStack {
+    Box mainBox {
+      orientation: vertical;
+
+      $Gjs_PlaceViewImage thumbnail {
+        visible: false;
+        can-focus: false;
+      }
+
+      Separator thumbnailSeparator {
+        visible: false;
+
+        styles [
+          "no-margin-separator",
+        ]
+      }
+
+      Box titleBox {
+        orientation: vertical;
+        margin-start: 12;
+        margin-end: 12;
+        margin-top: 12;
+        margin-bottom: 12;
+        spacing: 12;
+
+        Box {
+          orientation: vertical;
+
+          Box {
+            spacing: 6;
+
+            Image icon {
+              visible: false;
+              valign: center;
+            }
+
+            Image secondaryIcon {
+              visible: false;
+              valign: center;
+            }
+
+            Label title {
+              halign: start;
+              valign: center;
+              hexpand: true;
+              wrap: true;
+              wrap-mode: word_char;
+              max-width-chars: 20;
+              xalign: 0;
+
+              styles [
+                "title-2",
+              ]
+            }
+
+            Button sendToButtonAlt {
+              visible: false;
+              focusable: true;
+              // Translators: This is a tooltip
+              tooltip-text: _("Share location");
+              icon-name: "share-symbolic";
+              valign: center;
+            }
+          }
+
+          Label nativeName {
+            visible: false;
+            halign: start;
+            hexpand: true;
+            wrap: true;
+            wrap-mode: word_char;
+            max-width-chars: 20;
+            xalign: 0;
+            margin-top: 6;
+
+            styles [
+              "dim-label",
+            ]
+          }
+
+          Box sourceBox {
+            visible: false;
+            spacing: 6;
+            margin-top: 6;
+            orientation: horizontal;
+
+            Image sourceIcon {
+              icon-name: "layers-button-symbolic";
+              valign: center;
+
+              styles [
+                "dim-label",
+              ]
+            }
+
+            Image secondarySourceIcon {
+              visible: false;
+              valign: center;
+            }
+
+            Label sourceLabel {
+              halign: start;
+              hexpand: true;
+              wrap: true;
+              max-width-chars: 30;
+              xalign: 0;
+
+              styles [
+                "dim-label",
+              ]
+            }
+          }
+        }
+
+        Label addressLabel {
+          halign: start;
+          xalign: 0;
+          use-markup: true;
+          wrap: true;
+        }
+
+        Box placeButtons {
+          orientation: vertical;
+        }
+      }
+
+      Grid content {}
+    }
+
+    Adw.Spinner spinner {}
+  }
+}

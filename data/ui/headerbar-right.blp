@@ -1,0 +1,22 @@
+using Gtk 4.0;
+
+template $Gjs_HeaderBarRight: Box {
+  spacing: 6;
+
+  MenuButton favoritesButton {
+    focusable: true;
+    valign: center;
+    // Translators: This is a tooltip
+    tooltip-text: _("Favorites");
+    icon-name: "library-symbolic";
+  }
+
+  Button showRoutingButton {
+    focusable: true;
+    valign: center;
+    action-name: "win.show-routing";
+    // Translators: This is a tooltip
+    tooltip-text: _("Route Planner");
+    icon-name: "route-button-symbolic";
+  }
+}

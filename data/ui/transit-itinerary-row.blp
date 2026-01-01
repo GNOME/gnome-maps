@@ -1,0 +1,71 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $Gjs_TransitItineraryRow: ListBoxRow {
+  child: Grid {
+    margin-start: 12;
+    margin-end: 12;
+    margin-top: 12;
+    margin-bottom: 12;
+    column-spacing: 6;
+    row-spacing: 6;
+
+    Label timeLabel {
+      hexpand: false;
+      vexpand: false;
+      halign: start;
+
+      styles [
+        "numeric",
+      ]
+
+      layout {
+        row: 0;
+        column: 0;
+      }
+    }
+
+    Label durationLabel {
+      hexpand: true;
+      vexpand: true;
+      halign: start;
+
+      styles [
+        "dim-label",
+        "numeric",
+      ]
+
+      layout {
+        row: 0;
+        column: 1;
+      }
+    }
+
+    Adw.WrapBox summaryBox {
+      hexpand: true;
+      vexpand: true;
+      orientation: horizontal;
+      line-homogeneous: true;
+      child-spacing: 6;
+      line-spacing: 6;
+
+      layout {
+        row: 1;
+        column: 0;
+        column-span: 2;
+      }
+    }
+
+    Image {
+      icon-name: "go-next-symbolic";
+      pixel-size: 16;
+
+      layout {
+        row: 0;
+        column: 2;
+        row-span: 2;
+        column-span: 2;
+      }
+    }
+  };
+}

@@ -1,0 +1,102 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $Gjs_TransitLegRow: ListBoxRow {
+  Grid grid {
+    Adw.Bin trackSegmentContainer {
+      halign: start;
+      width-request: 16;
+      margin-start: 12;
+
+      layout {
+        column: 0;
+        row: 0;
+        column-span: 1;
+        row-span: 5;
+      }
+    }
+
+    Adw.Bin headerContainer {
+      layout {
+        row: 1;
+        column: 0;
+        column-span: 2;
+      }
+    }
+
+    Revealer agencyRevealer {
+      Label agencyLabel {
+        visible: false;
+        margin-start: 40;
+        margin-end: 12;
+        margin-top: 6;
+        margin-bottom: 6;
+        use-markup: true;
+        halign: start;
+        hexpand: true;
+        ellipsize: end;
+      }
+
+      layout {
+        row: 2;
+        column: 0;
+        column-span: 2;
+      }
+    }
+
+    Revealer beforeInstructionRevealer {
+      reveal-child: true;
+
+      ListBox beforeInstructionList {
+        hexpand: true;
+        show-separators: false;
+
+        styles [
+          "transit-leg-row-revealer-list",
+        ]
+      }
+
+      layout {
+        row: 3;
+        column: 0;
+        column-span: 2;
+      }
+    }
+
+    Revealer instructionRevealer {
+      ListBox instructionList {
+        hexpand: true;
+        show-separators: false;
+
+        styles [
+          "transit-leg-row-revealer-list",
+        ]
+      }
+
+      layout {
+        row: 4;
+        column: 0;
+        column-span: 2;
+      }
+    }
+
+    Revealer afterInstructionRevealer {
+      reveal-child: true;
+
+      ListBox afterInstructionList {
+        hexpand: true;
+        show-separators: false;
+
+        styles [
+          "transit-leg-row-revealer-list",
+        ]
+      }
+
+      layout {
+        row: 5;
+        column: 0;
+        column-span: 2;
+      }
+    }
+  }
+}

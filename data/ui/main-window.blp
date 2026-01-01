@@ -1,0 +1,196 @@
+using Gtk 4.0;
+using Adw 1;
+
+menu hamburgerMenu {
+  section {
+    item {
+      action: "app.osm-account-setup";
+      label: _("Set up OpenStreetMap Account…");
+    }
+
+    item {
+      action: "win.export-as-image";
+      label: _("Export as Image…");
+    }
+  }
+
+  section {
+    submenu {
+      // Translators: This is a submenu for selecting length measurements units
+      label: _("Measurement Units");
+
+      section {
+        item {
+          // Translators: This is a menu item for showing measurements in units corresponding to the system locale
+          label: _("_System Default");
+          action: "win.measurement-system";
+          target: "system";
+        }
+
+        item {
+          // Translators: This a menu item for showing measurements in metric units
+          label: _("_Metric");
+          action: "win.measurement-system";
+          target: "metric";
+        }
+
+        item {
+          // Translators: This is a menu item for showing measurements in imperial units
+          label: _("_Imperial");
+          action: "win.measurement-system";
+          target: "imperial";
+        }
+      }
+    }
+  }
+
+  section {
+    item {
+      label: _("_Keyboard Shortcuts");
+      action: "app.shortcuts";
+    }
+
+    item {
+      action: "win.about";
+      label: _("About Maps");
+    }
+  }
+}
+
+template $Gjs_MainWindow: Adw.ApplicationWindow {
+  title: _("Maps");
+  width-request: 360;
+  height-request: 420;
+
+  Adw.Breakpoint breakpoint {
+    condition ("max-width: 700sp")
+
+    setters {
+      multiLayoutView.layout-name: "narrow";
+      actionBar.visible: true;
+      closeSidebarButton.visible: false;
+    }
+  }
+
+  content: Adw.ToastOverlay overlay {
+    child: Adw.MultiLayoutView multiLayoutView {
+      Adw.Layout {
+        name: "wide";
+
+        content: Adw.OverlaySplitView splitView {
+          sidebar-position: start;
+          sidebar-width-fraction: 0.35;
+          min-sidebar-width: 270;
+          max-sidebar-width: 400;
+          show-sidebar: false;
+          enable-show-gesture: true;
+          enable-hide-gesture: true;
+
+          sidebar: Adw.LayoutSlot {
+            id: "secondary";
+          };
+
+          content: Adw.LayoutSlot {
+            id: "primary";
+          };
+        };
+      }
+
+      Adw.Layout {
+        name: "narrow";
+
+        content: Adw.BottomSheet bottomSheet {
+          show-drag-handle: true;
+
+          content: Adw.LayoutSlot {
+            id: "primary";
+          };
+
+          sheet: Adw.LayoutSlot {
+            id: "secondary";
+          };
+        };
+      }
+
+      [primary]
+      Adw.ToolbarView {
+        top-bar-style: raised;
+        width-request: 360;
+
+        [top]
+        Adw.HeaderBar headerBar {
+          [end]
+          MenuButton mainMenuButton {
+            menu-model: hamburgerMenu;
+            tooltip-text: _("Main Menu");
+            primary: true;
+            icon-name: "open-menu-symbolic";
+          }
+        }
+
+        content: Box {
+          orientation: vertical;
+          hexpand: true;
+          vexpand: true;
+
+          Grid grid {
+            Overlay mapOverlay {
+              [overlay]
+              Revealer licenseRevealer {
+                transition-type: crossfade;
+                halign: end;
+                valign: start;
+              }
+            }
+
+            ActionBar actionBar {
+              visible: false;
+
+              layout {
+                column: 0;
+                row: 1;
+                column-span: 2;
+              }
+            }
+          }
+        };
+      }
+
+      [secondary]
+      Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar {
+          show-title: false;
+
+          [start]
+          Button backToPlaceButton {
+            visible: false;
+            // Translators: This is a tooltip
+            tooltip-text: _("View Place Information");
+            icon-name: "go-previous-symbolic";
+          }
+
+          [start]
+          Button printRouteButton {
+            visible: false;
+            name: "print-route";
+            // Translators: This is a tooltip
+            tooltip-text: _("Print Route");
+            action-name: "win.print-route";
+            valign: center;
+            icon-name: "document-print-symbolic";
+          }
+
+          [end]
+          Button closeSidebarButton {
+            icon-name: "sidebar-show-symbolic";
+            // Translators: This is a tooltip
+            tooltip-text: _("Close Sidebar");
+          }
+        }
+
+        content: Adw.Bin auxillaryViewContainer {};
+      }
+    };
+  };
+}

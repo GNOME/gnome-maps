@@ -1,0 +1,50 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $Gjs_FavoritesPopover: Popover {
+  width-request: 320;
+
+  child: Stack stack {
+    Adw.StatusPage empty {
+      icon-name: "starred-symbolic";
+      title: _("No Favorites");
+      description: _("Add places to your favorites to get them listed here");
+
+      styles [
+        "compact",
+        "dim-label",
+      ]
+    }
+
+    Box mainBox {
+      orientation: vertical;
+
+      Box entryBox {
+        Entry entry {
+          hexpand: true;
+          focusable: true;
+        }
+
+        styles [
+          "dropdown-searchbar",
+        ]
+      }
+
+      ScrolledWindow scrolledWindow {
+        hscrollbar-policy: never;
+        max-content-height: 400;
+        propagate-natural-height: true;
+
+        child: ListBox list {
+          hexpand: true;
+          vexpand: true;
+        };
+      }
+    }
+  };
+
+  styles [
+    "menu",
+    "favorites-popover",
+  ]
+}

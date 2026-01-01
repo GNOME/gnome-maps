@@ -1,0 +1,111 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $Gjs_OSMAccountDialog: Adw.Dialog {
+  title: _("OpenStreetMap Account");
+  content-width: 550;
+  content-height: 380;
+  width-request: 360;
+  height-request: 380;
+
+  child: Adw.ToastOverlay overlay {
+    child: Adw.ToolbarView {
+      [top]
+      Adw.HeaderBar {}
+
+      content: Adw.NavigationView navigationView {
+        Adw.NavigationPage {
+          title: "OpenStreetMap Account";
+          tag: "sign-in";
+
+          child: Adw.StatusPage {
+            title: _("Sign In To Edit Maps");
+            description: _("Help to improve the map, using an OpenStreetMap account.");
+
+            Button signInButton {
+              label: _("_Sign In");
+              halign: center;
+              use-underline: true;
+
+              styles [
+                "pill",
+                "suggested-action",
+              ]
+            }
+          };
+        }
+
+        Adw.NavigationPage {
+          title: "Verifying Account";
+          tag: "verify";
+
+          child: Adw.StatusPage {
+            title: _("Verification");
+            description: _("Copy the verification code shown when authorizing access in the browser.");
+
+            Adw.PreferencesGroup {
+              margin-start: 36;
+              margin-end: 36;
+
+              Adw.EntryRow verificationEntry {
+                title: _("Verification Code");
+              }
+
+              Button verifyButton {
+                label: _("_Verify");
+                margin-top: 24;
+                halign: center;
+                sensitive: false;
+                use-underline: true;
+
+                styles [
+                  "pill",
+                  "suggested-action",
+                ]
+              }
+            }
+          };
+        }
+
+        Adw.NavigationPage {
+          title: "OpenStreetMap Account";
+          tag: "logged-in";
+
+          child: Box {
+            orientation: vertical;
+            hexpand: true;
+            vexpand: true;
+
+            Adw.StatusPage statusPage {
+              icon-name: "avatar-default-symbolic";
+              title: _("Signed In");
+              description: _("Your OpenStreetMap account is active.");
+              hexpand: true;
+
+              styles [
+                "compact",
+              ]
+
+              Box {
+                orientation: vertical;
+                spacing: 12;
+
+                Label signedInUserLabel {}
+
+                Button signOutButton {
+                  label: _("_Sign Out");
+                  halign: center;
+                  use-underline: true;
+
+                  styles [
+                    "pill",
+                  ]
+                }
+              }
+            }
+          };
+        }
+      };
+    };
+  };
+}

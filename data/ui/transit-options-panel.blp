@@ -1,0 +1,136 @@
+using Gtk 4.0;
+
+template $Gjs_TransitOptionsPanel: Grid {
+  styles [
+    "shaded",
+  ]
+
+  DropDown transitTimeOptionsDropDown {
+    margin-start: 6;
+    margin-end: 6;
+    margin-top: 6;
+    margin-bottom: 6;
+
+    model: StringList {
+      strings [
+        // Translators: Indicates searching for the next available itineraries
+        _("Leave Now"),
+        // Translators: Indicates searching for itineraries leaving at the specified time at the earliest
+        _("Leave By"),
+        // Translators: Indicates searching for itineraries arriving no later than the specified time
+        _("Arrive By"),
+      ]
+    };
+
+    layout {
+      column: 0;
+      row: 0;
+    }
+  }
+
+  Entry transitTimeEntry {
+    visible: false;
+    max-width-chars: 5;
+    margin-start: 6;
+    margin-end: 6;
+    margin-top: 6;
+    margin-bottom: 6;
+
+    layout {
+      column: 1;
+      row: 0;
+    }
+  }
+
+  MenuButton transitDateButton {
+    visible: false;
+    popover: transitDatePopover;
+    margin-start: 6;
+    margin-end: 6;
+    margin-top: 6;
+    margin-bottom: 6;
+
+    layout {
+      column: 2;
+      row: 0;
+    }
+  }
+
+  MenuButton transitParametersMenuButton {
+    tooltip-text: _("View More");
+    popover: transitParametersPopover;
+    halign: end;
+    margin-start: 6;
+    margin-end: 6;
+    margin-top: 6;
+    margin-bottom: 6;
+    hexpand: true;
+    icon-name: "view-more-symbolic";
+
+    layout {
+      column: 3;
+      row: 0;
+    }
+  }
+}
+
+Popover transitDatePopover {
+  child: Calendar transitDateCalendar {};
+}
+
+Popover transitParametersPopover {
+  child: Grid {
+    margin-start: 6;
+    margin-end: 6;
+    margin-top: 6;
+    margin-bottom: 6;
+    orientation: vertical;
+
+    Label {
+      halign: start;
+      // Translators: Header indicating selected modes of transit
+      label: _("Show");
+      margin-start: 6;
+
+      styles [
+        "dim-label",
+      ]
+    }
+
+    CheckButton busCheckButton {
+      active: true;
+      label: _("_Buses");
+      use-underline: true;
+    }
+
+    CheckButton tramCheckButton {
+      active: true;
+      label: _("_Trams");
+      use-underline: true;
+    }
+
+    CheckButton trainCheckButton {
+      active: true;
+      label: _("T_rains");
+      use-underline: true;
+    }
+
+    CheckButton subwayCheckButton {
+      active: true;
+      label: _("_Subway");
+      use-underline: true;
+    }
+
+    CheckButton ferryCheckButton {
+      active: true;
+      label: _("_Ferries");
+      use-underline: true;
+    }
+
+    CheckButton airplaneCheckButton {
+      active: true;
+      label: _("_Airplanes");
+      use-underline: true;
+    }
+  };
+}

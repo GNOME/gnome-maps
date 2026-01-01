@@ -1,0 +1,59 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $Gjs_ExportViewDialog: Adw.Dialog {
+  content-height: 360;
+  content-width: 360;
+  // Translators: This is the title of the dialog for expoting the map view content to an image file
+  title: _("Export View");
+
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {
+      show-start-title-buttons: false;
+      show-end-title-buttons: false;
+
+      [start]
+      Button cancelButton {
+        label: _("_Cancel");
+        focusable: true;
+        use-underline: true;
+
+        styles [
+          "text-button",
+        ]
+      }
+
+      [end]
+      Button exportButton {
+        label: _("_Export");
+        focusable: true;
+        receives-default: true;
+        valign: center;
+        use-underline: true;
+
+        styles [
+          "suggested-action",
+          "text-button",
+        ]
+      }
+    }
+
+    content: Box contentArea {
+      orientation: vertical;
+      margin-start: 6;
+      margin-end: 6;
+      margin-top: 6;
+      margin-bottom: 6;
+
+      Frame frame {
+        vexpand: true;
+
+        child: Image previewArea {
+          vexpand: true;
+          hexpand: true;
+        };
+      }
+    };
+  };
+}

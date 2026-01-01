@@ -1,0 +1,278 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $Gjs_RouteView: Box {
+  orientation: vertical;
+
+  Adw.ToggleGroup modeChooser {
+    halign: center;
+    margin-top: 12;
+
+    Adw.Toggle {
+      name: "pedestrian";
+      icon-name: "walking-symbolic";
+      // Translators: This is the tooltip text for the button selecting the walking (pedestrian) routing mode
+      tooltip: _("Walking");
+    }
+
+    Adw.Toggle {
+      name: "bike";
+      icon-name: "cycling-symbolic";
+      // Translators: This is the tooltip text for the button selecting the cycling routing mode
+      tooltip: _("Cycling");
+    }
+
+    Adw.Toggle {
+      name: "car";
+      icon-name: "driving-symbolic";
+      // Translators: This is the tooltip text for the button selecting the driving (car) routing mode
+      tooltip: _("Driving");
+    }
+
+    Adw.Toggle {
+      name: "transit";
+      icon-name: "train-symbolic";
+      // Translators: This is the tooltip text for the button selecting the public transit routing mode
+      tooltip: _("Public Transit");
+    }
+  }
+
+  ListBox entryList {
+    name: "sidebar-entry-list";
+    selection-mode: none;
+  }
+
+  Grid sidebar-route-info-wrapper {
+    hexpand: false;
+
+    Grid sidebar-route-info {
+      name: "sidebar-route-info";
+      margin-start: 18;
+      margin-end: 18;
+      margin-top: 12;
+      hexpand: true;
+
+      Label timeInfo {
+        halign: start;
+        hexpand: true;
+      }
+
+      Label distanceInfo {
+        margin-start: 10;
+      }
+    }
+  }
+
+  Grid {
+    vexpand: true;
+    hexpand-set: true;
+
+    styles [
+      "frame",
+    ]
+
+    Revealer transitRevealer {
+      child: Stack transitHeader {
+        transition-type: slide_left_right;
+      };
+
+      layout {
+        column: 0;
+        row: 0;
+      }
+    }
+
+    Stack instructionStack {
+      ScrolledWindow instructionWindow {
+        name: "instruction-window";
+        vexpand: true;
+        margin-start: 0;
+        margin-end: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+        hscrollbar-policy: never;
+        propagate-natural-height: true;
+
+        child: ListBox instructionList {
+          name: "instruction-list";
+          hexpand: true;
+        };
+      }
+
+      ScrolledWindow transitWindow {
+        vexpand: true;
+        margin-start: 0;
+        margin-end: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+        hscrollbar-policy: never;
+        propagate-natural-height: true;
+
+        child: Stack transitListStack {
+          transition-type: slide_left_right;
+          vhomogeneous: false;
+
+          StackPage {
+            name: "overview";
+
+            child: ListBox transitOverviewListBox {
+              show-separators: true;
+            };
+          }
+
+          StackPage {
+            name: "itinerary";
+
+            child: ListBox transitItineraryListBox {
+              selection-mode: none;
+              show-separators: true;
+            };
+          }
+        };
+      }
+
+      Adw.Spinner instructionSpinner {}
+
+      Label errorLabel {
+        styles [
+          "dim-label",
+        ]
+      }
+
+      layout {
+        column: 0;
+        row: 1;
+      }
+    }
+  }
+
+  Stack linkButtonStack {
+    StackPage {
+      name: "turnByTurn";
+
+      child: LinkButton {
+        label: _("Route search by GraphHopper");
+        focusable: true;
+        receives-default: true;
+        uri: "https://graphhopper.com";
+
+        styles [
+          "small-label",
+        ]
+      };
+    }
+
+    StackPage {
+      name: "transit";
+
+      child: Grid {
+        halign: fill;
+
+        LinkButton {
+          label: _("Itineraries provided by Transitous");
+          halign: center;
+          hexpand: true;
+          focusable: true;
+          receives-default: true;
+          uri: "https://www.transitous.org";
+
+          styles [
+            "small-label",
+          ]
+
+          layout {
+            column: 0;
+            row: 0;
+          }
+        }
+
+        MenuButton {
+          tooltip-text: _("More Information");
+          popover: transitDisclaimerPopover;
+          halign: fill;
+          margin-top: 6;
+          margin-bottom: 6;
+          margin-end: 6;
+          margin-start: 6;
+          icon-name: "dialog-information-symbolic";
+
+          styles [
+            "flat",
+          ]
+
+          layout {
+            column: 1;
+            row: 0;
+          }
+        }
+      };
+    }
+  }
+}
+
+Popover transitDisclaimerPopover {
+  child: Grid {
+    Label {
+      margin-top: 6;
+      margin-bottom: 6;
+      margin-start: 6;
+      margin-end: 6;
+      label: _(
+        "Routing itineraries for public transit is provided by third-party\nservices.\nGNOME can not guarantee correctness of the itineraries and schedules shown.\nNote that some providers might not include all available modes of transportation,\ne.g. a national provider might not include airlines, and a local provider could\nmiss regional trains.\nNames and brands shown are to be considered as registered trademarks when applicable."
+      );
+    }
+  };
+}
+
+Grid transitItineraryHeader {
+  styles [
+    "shaded",
+  ]
+
+  Button transitItineraryBackButton {
+    margin-start: 6;
+    margin-end: 6;
+    margin-top: 6;
+    margin-bottom: 6;
+    halign: start;
+    icon-name: "go-previous-symbolic";
+    tooltip-text: _("Back");
+
+    layout {
+      column: 0;
+      row: 0;
+    }
+  }
+
+  Label transitItineraryTimeLabel {
+    margin-start: 6;
+    margin-end: 6;
+    margin-top: 6;
+    margin-bottom: 6;
+    hexpand: false;
+    halign: start;
+
+    layout {
+      column: 1;
+      row: 0;
+    }
+  }
+
+  Label transitItineraryDurationLabel {
+    margin-start: 6;
+    margin-end: 6;
+    margin-top: 6;
+    margin-bottom: 6;
+    hexpand: true;
+    halign: start;
+
+    styles [
+      "dim-label",
+    ]
+
+    layout {
+      column: 2;
+      row: 0;
+    }
+  }
+}

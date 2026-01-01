@@ -1,0 +1,120 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $Gjs_PlacePopover: $Gjs_SearchPopover {
+  visible: false;
+  hexpand: false;
+  has-arrow: false;
+  autohide: false;
+
+  styles [
+    "menu",
+    "suggestions",
+  ]
+
+  child: Stack stack {
+    transition-type: crossfade;
+    vhomogeneous: false;
+    interpolate-size: true;
+
+    styles [
+      "maps-stack",
+    ]
+
+    StackPage {
+      name: "poiMainCategories";
+
+      child: Grid poiMainCategories {
+        Label {
+          label: _("Explore Nearby Places");
+          halign: center;
+          margin-top: 6;
+          margin-bottom: 6;
+          margin-start: 6;
+          margin-end: 6;
+
+          styles [
+            "dim-label",
+          ]
+
+          layout {
+            row: 0;
+            column: 0;
+          }
+        }
+
+        ListBox poiMainCategoriesListBox {
+          vexpand: true;
+          hexpand: true;
+
+          layout {
+            row: 1;
+            column: 0;
+          }
+        }
+      };
+    }
+
+    StackPage {
+      name: "poiSubCategories";
+
+      child: Adw.Bin poiSubCategories {
+        vexpand: true;
+        hexpand: true;
+      };
+    }
+
+    StackPage {
+      name: "spinner";
+
+      child: Adw.Spinner spinner {
+        hexpand: true;
+        vexpand: true;
+        width-request: 48;
+        height-request: 48;
+        margin-top: 18;
+        margin-bottom: 18;
+      };
+    }
+
+    StackPage {
+      child: ScrolledWindow scrolledWindow {
+        hscrollbar-policy: never;
+        propagate-natural-height: true;
+
+        child: ListBox list {
+          hexpand: true;
+          vexpand: true;
+        };
+      };
+    }
+
+    StackPage {
+      child: Label noResultsLabel {
+        label: _("No results found");
+        margin-top: 18;
+        margin-bottom: 18;
+
+        styles [
+          "dim-label",
+        ]
+      };
+    }
+
+    StackPage {
+      child: Label errorLabel {
+        label: _("An error has occurred");
+        margin-top: 18;
+        margin-bottom: 18;
+
+        styles [
+          "dim-label",
+        ]
+      };
+    }
+  };
+}
+
+SizeGroup distanceLabelSizeGroup {
+  mode: horizontal;
+}

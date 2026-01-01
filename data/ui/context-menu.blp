@@ -1,0 +1,37 @@
+using Gtk 4.0;
+
+menu context-menu {
+  section {
+    item {
+      label: _("Route from Here");
+      action: "view.route-from-here";
+    }
+
+    item {
+      label: _("Add Intermediate Destination");
+      action: "view.add-intermediate-destination";
+    }
+
+    item {
+      label: _("Route to Here");
+      action: "view.route-to-here";
+    }
+
+    item {
+      label: _("Clear Current Route");
+      action: "view.clear-route";
+    }
+  }
+
+  section {
+    item {
+      label: _("Copy Location");
+      action: "view.copy-location";
+    }
+
+    item {
+      label: _("Add to OpenStreetMap…");
+      action: "view.add-osm-location";
+    }
+  }
+}

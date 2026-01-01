@@ -1,0 +1,272 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $Gjs_OSMEditDialog: Adw.Dialog {
+  title: C_("dialog title", "Edit Location");
+  content-width: 460;
+  content-height: 600;
+  width-request: 360;
+  height-request: 475;
+  can-close: true;
+
+  child: Adw.ToastOverlay overlay {
+    child: Adw.NavigationView navigationView {
+      Adw.NavigationPage {
+        title: "Loading…";
+        tag: "loading";
+
+        child: Adw.StatusPage {
+          title: _("Loading…");
+
+          Adw.Spinner {}
+        };
+      }
+
+      Adw.NavigationPage navigationPage {
+        title: _("Edit Location");
+        tag: "editor";
+
+        child: Adw.ToolbarView {
+          [top]
+          Adw.HeaderBar headerbar {
+            show-title: true;
+          }
+
+          content: Adw.PreferencesPage preferencesPage {
+            icon-name: "mark-location-symbolic";
+            title: _("Edit Location");
+            description: _("Edit an existing location in OpenStreetMap");
+            description-centered: true;
+          };
+
+          [bottom]
+          Box {
+            hexpand: true;
+            halign: center;
+            margin-top: 12;
+            margin-bottom: 12;
+
+            Button continueButton {
+              label: _("Continue");
+              sensitive: false;
+
+              styles [
+                "pill",
+                "suggested-action",
+              ]
+            }
+          }
+        };
+      }
+
+      Adw.NavigationPage {
+        title: _("Location Type");
+        tag: "type";
+
+        child: Adw.ToolbarView {
+          [top]
+          Adw.HeaderBar {
+            show-title: true;
+          }
+
+          content: ScrolledWindow {
+            hscrollbar-policy: never;
+            propagate-natural-height: true;
+
+            child: Box {
+              orientation: vertical;
+              valign: start;
+
+              Adw.Clamp {
+                child: Box {
+                  orientation: vertical;
+                  valign: start;
+                  margin-top: 24;
+                  margin-bottom: 24;
+                  margin-start: 12;
+                  margin-end: 12;
+                  spacing: 36;
+
+                  Box {
+                    orientation: vertical;
+                    spacing: 12;
+
+                    styles [
+                      "flow",
+                    ]
+
+                    Box {
+                      halign: center;
+                      spacing: 9;
+
+                      ToggleButton shopButton {
+                        label: "Shop";
+
+                        styles [
+                          "pill",
+                        ]
+                      }
+
+                      ToggleButton placeButton {
+                        label: "Place";
+
+                        styles [
+                          "pill",
+                        ]
+                      }
+                    }
+
+                    Box {
+                      halign: center;
+                      spacing: 9;
+
+                      ToggleButton tourismButton {
+                        label: "Tourism";
+
+                        styles [
+                          "pill",
+                        ]
+                      }
+
+                      ToggleButton officeButton {
+                        label: "Office";
+
+                        styles [
+                          "pill",
+                        ]
+                      }
+
+                      ToggleButton amenityButton {
+                        label: "Amenity";
+
+                        styles [
+                          "pill",
+                        ]
+                      }
+                    }
+
+                    Box {
+                      halign: center;
+                      spacing: 9;
+
+                      ToggleButton leisureButton {
+                        label: "Leisure";
+
+                        styles [
+                          "pill",
+                        ]
+                      }
+
+                      ToggleButton aerowayButton {
+                        label: "Aeroway";
+
+                        styles [
+                          "pill",
+                        ]
+                      }
+                    }
+                  }
+
+                  SearchEntry typeSearchEntry {
+                    // Translators: This refers to searching for point-of-interest types. Search is a verb.
+                    placeholder-text: _("Search types");
+                  }
+
+                  ListBox typeList {
+                    selection-mode: none;
+
+                    styles [
+                      "boxed-list",
+                    ]
+                  }
+
+                  Adw.PreferencesGroup recentTypesList {
+                    title: _("Recently Used Types");
+                    visible: false;
+                  }
+                };
+              }
+            };
+          };
+        };
+      }
+
+      Adw.NavigationPage {
+        title: _("Edit Map");
+        tag: "upload";
+
+        child: Adw.ToolbarView {
+          [top]
+          Adw.HeaderBar {
+            show-title: true;
+          }
+
+          content: Box {
+            orientation: vertical;
+            margin-bottom: 24;
+
+            Adw.StatusPage {
+              title: _("Almost There!");
+              description: _(
+                "Describe your map changes. They will be visible on all maps that use OpenStreetMap data."
+              );
+
+              styles [
+                "compact",
+              ]
+            }
+
+            Box {
+              overflow: hidden;
+              margin-top: 24;
+              margin-bottom: 24;
+              margin-start: 12;
+              margin-end: 12;
+              hexpand: true;
+              vexpand: true;
+
+              styles [
+                "card",
+              ]
+
+              ScrolledWindow {
+                hexpand: true;
+                vexpand: true;
+
+                TextView uploadNotesTextview {
+                  wrap-mode: word_char;
+                  height-request: 350;
+                  top-margin: 9;
+                  bottom-margin: 9;
+                  left-margin: 9;
+                  right-margin: 9;
+                }
+              }
+            }
+
+            Button submitButton {
+              label: _("Submit");
+              sensitive: false;
+              halign: center;
+
+              styles [
+                "pill",
+                "suggested-action",
+              ]
+            }
+          };
+        };
+      }
+    };
+  };
+}
+
+Adw.ActionRow noneRow {
+  title: _("None");
+  activatable-widget: noneCheckButton;
+
+  [prefix]
+  CheckButton noneCheckButton {
+    valign: center;
+  }
+}

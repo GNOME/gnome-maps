@@ -1,0 +1,34 @@
+using Gtk 4.0;
+
+template $Gjs_PoiCategoryRow: ListBoxRow {
+  accessibility {
+    labelled-by: [
+      label,
+    ];
+  }
+
+  margin-top: 6;
+  margin-start: 6;
+  margin-end: 6;
+
+  child: Box {
+    spacing: 6;
+
+    Image icon {
+      valign: center;
+    }
+
+    Label label {
+      ellipsize: end;
+      lines: 0;
+      xalign: 0;
+    }
+
+    Image {
+      icon-name: "go-next";
+      halign: end;
+      valign: center;
+      hexpand: true;
+    }
+  };
+}

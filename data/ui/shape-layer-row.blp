@@ -1,0 +1,55 @@
+using Gtk 4.0;
+
+template $Gjs_ShapeLayerRow: ListBoxRow {
+  accessibility {
+    labelled-by: [
+      layerLabel,
+    ];
+  }
+
+  Box {
+    name: "layers-row-box";
+    orientation: horizontal;
+    spacing: 6;
+    margin-top: 6;
+    margin-bottom: 6;
+
+    Separator {
+      styles [
+        "spacer",
+      ]
+    }
+
+    Label layerLabel {
+      hexpand: true;
+      ellipsize: end;
+      xalign: 0;
+    }
+
+    Button visibleButton {
+      hexpand: true;
+      halign: end;
+      // Translators: This is a tooltip
+      tooltip-text: _("Toggle visible");
+      icon-name: "layer-visible-symbolic";
+
+      styles [
+        "flat",
+        "circular",
+      ]
+    }
+
+    Button closeButton {
+      hexpand: true;
+      halign: end;
+      // Translators: This is a tooltip
+      tooltip-text: _("Remove Shape Layer");
+      icon-name: "window-close-symbolic";
+
+      styles [
+        "flat",
+        "circular",
+      ]
+    }
+  }
+}

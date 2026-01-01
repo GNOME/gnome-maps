@@ -1,0 +1,54 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $Gjs_TransitStopRow: ListBoxRow {
+  Grid grid {
+    column-spacing: 12;
+
+    Adw.Bin trackSegmentContainer {
+      halign: start;
+      margin-start: 12;
+
+      layout {
+        column: 0;
+        row: 0;
+      }
+    }
+
+    Label nameLabel {
+      hexpand: true;
+      halign: start;
+      margin-top: 6;
+      margin-bottom: 6;
+      ellipsize: end;
+      wrap: true;
+      lines: 2;
+
+      layout {
+        column: 1;
+        row: 0;
+      }
+    }
+
+    Label timeLabel {
+      halign: end;
+      margin-top: 6;
+      margin-bottom: 6;
+      margin-end: 12;
+
+      styles [
+        "dim-label",
+        "numeric",
+      ]
+
+      layout {
+        column: 2;
+        row: 0;
+      }
+    }
+  }
+
+  styles [
+    "transit-stop-row",
+  ]
+}

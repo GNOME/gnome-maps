@@ -1,0 +1,81 @@
+using Gtk 4.0;
+
+template $Gjs_FavoriteListRow: $Gjs_PlaceListRow {
+  accessibility {
+    labelled-by: [
+      name,
+    ];
+
+    described-by: [
+      details,
+    ];
+  }
+
+  child: Box {
+    spacing: 6;
+
+    Image icon {
+      valign: center;
+    }
+
+    Box {
+      hexpand: true;
+      orientation: vertical;
+      spacing: 3;
+
+      Label name {
+        ellipsize: end;
+        lines: 0;
+        xalign: 0;
+        use-markup: true;
+      }
+
+      Label details {
+        ellipsize: end;
+        lines: 0;
+        xalign: 0;
+        use-markup: true;
+
+        styles [
+          "caption",
+          "dim-label",
+        ]
+      }
+    }
+
+    Image typeIcon {
+      halign: end;
+      valign: center;
+      hexpand: false;
+    }
+
+    Label distanceLabel {
+      valign: center;
+      halign: end;
+      hexpand: false;
+      xalign: 1.0;
+      visible: false;
+
+      styles [
+        "dim-label",
+        "italic",
+        "numeric",
+      ]
+    }
+
+    Button removeButton {
+      halign: end;
+      valign: center;
+      hexpand: false;
+      // Translators: This is a tooltip
+      tooltip-text: _("Remove Favorite");
+      icon-name: "edit-delete-symbolic";
+      clicked => $_onRemoveClicked();
+
+      styles [
+        "flat",
+        "circular",
+      ]
+    }
+  };
+}
