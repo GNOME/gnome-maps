@@ -653,6 +653,7 @@ export class MapView extends Gtk.Overlay {
             name: symbol.get_tag("name"),
             osmId,
             osmType,
+            prefilled: true
         });
 
         const osmTags = {};
