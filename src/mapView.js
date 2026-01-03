@@ -653,15 +653,23 @@ export class MapView extends Gtk.Overlay {
             name: symbol.get_tag("name"),
             osmId,
             osmType,
+            prefilled: true
         });
 
         const osmTags = {};
         for (const key of symbol.get_keys()) {
+            const tag = symbol.get_tag(key);
+
             if (key.startsWith("osm:")) {
-                osmTags[key.slice("osm:".length)] = symbol.get_tag(key);
+                osmTags[key.slice("osm:".length)] = tag;
             } else if (key === "name" || key.startsWith("name:") ||
                        key.startsWith("route_")) {
-                osmTags[key] = symbol.get_tag(key);
+                osmTags[key] = tag;
+            } else if (key === "network" && tag === "road") {
+                /* map network=road to highway=<class> to get the same mapping
+                 * to types as with Overpass results
+                 */
+                osmTags["highway"] = symbol.get_tag("class");
             }
         }
         const mainTag = symbol.get_tag("tag");
