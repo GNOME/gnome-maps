@@ -116,10 +116,8 @@ export class PlaceEntry extends Gtk.Entry {
         this._cache = {};
         this._searchTimeoutId = 0;
 
-        // clear cache when view moves, as result are location-dependent
-        this._mapView.map.viewport.connect('notify::latitude', () => this._cache = {});
-        // clear cache when zoom level changes, to allow limiting location bias
-        this._mapView.map.viewport.connect('notify::zoom-level', () => this._cache =  {});
+        // clear cache when view moves, or zoom level changes as result are location-dependent
+        this._mapView.map.viewport.connect('changed', () => this._cache = {});
 
         this._updateIcon();
         this.add_css_class('search');
