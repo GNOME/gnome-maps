@@ -290,8 +290,7 @@ export class MapView extends Gtk.Overlay {
         map.viewport.max_zoom_level = MapMaxZoom;
         map.viewport.min_zoom_level = MapMinZoom;
 
-        map.viewport.connect('notify::latitude', this._onViewMoved.bind(this));
-        map.viewport.connect('notify::rotation', this._onViewRotated.bind(this));
+        map.viewport.connect('changed', this._onViewportChanged.bind(this));
         // switching map type will set view min-zoom-level from map source
         map.viewport.connect('notify::min-zoom-level', () => {
             if (map.viewport.min_zoom_level < MapMinZoom) {
@@ -1171,8 +1170,7 @@ export class MapView extends Gtk.Overlay {
         this.gotoBBox(plan.bbox);
     }
 
-    _onViewMoved() {
-        this.emit('view-moved');
+    _onViewportChanged() {
         if (this._storeId !== 0)
             return;
 
@@ -1356,7 +1354,6 @@ GObject.registerClass({
     },
     Signals: {
         'user-location-changed': {},
-        'view-moved': {},
         'marker-selected': { param_types: [Shumate.Marker] },
         'map-type-changed': { param_types: [GObject.TYPE_STRING] }
     },
