@@ -67,15 +67,9 @@ export class PlaceButtons extends Gtk.Box {
 
     initSendToButton(button) {
         button.connect('clicked', () => {
-            let dialog = new SendToDialog({ transient_for: this.get_root(),
-                                            modal: true,
-                                            mapView: this._mapView,
+            let dialog = new SendToDialog({ mapView: this._mapView,
                                             place: this._place });
-            dialog.connect('response', () => {
-                dialog.destroy();
-            });
-
-            dialog.show();
+            dialog.present(this.get_root());
         });
     }
 

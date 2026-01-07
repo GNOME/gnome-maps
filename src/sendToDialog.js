@@ -19,6 +19,7 @@
 
 import gettext from 'gettext';
 
+import Adw from 'gi://Adw';
 import Gdk from 'gi://Gdk';
 import GeocodeGlib from 'gi://GeocodeGlib';
 import Gio from 'gi://Gio';
@@ -39,25 +40,18 @@ const _CLOCKS_APPID = 'org.gnome.clocks';
 
 const _NUM_VISIBLE = 4;
 
-export class SendToDialog extends Gtk.Dialog {
-
-    static Response = {
-        SUCCESS: 0,
-        CANCEL: 1
-    };
-
+export class SendToDialog extends Adw.Dialog {
     constructor({place, mapView, ...params}) {
-        super({...params, use_header_bar: true});
+        super({...params});
 
         this._place = place;
         this._location = this._place.location;
         this._mapView = mapView;
 
         this._scrolledWindow.min_content_height = 40 * _NUM_VISIBLE;
-        this.get_header_bar().subtitle = this._place.name;
 
         this._cancelButton.connect('clicked',
-                                   () => this.response(SendToDialog.Response.CANCEL));
+                                   () => this.close());
 
         this._list.connect('row-activated', (list, row) => this._activateRow(row));
 
@@ -70,7 +64,7 @@ export class SendToDialog extends Gtk.Dialog {
                 row.set_header(null);
         });
 
-        this.connect('show', () => {
+        this.connect('realize', () => {
             this._summaryLabel.label = this._getSummary();
             let osmuri = GLib.markup_escape_text(this._getOSMURI(), -1);
             this._summaryUrl.label = '<a href="%s">%s</a>'.format(osmuri, osmuri);
@@ -173,7 +167,7 @@ export class SendToDialog extends Gtk.Dialog {
         let clipboard = this.get_clipboard();
 
         clipboard.set(summary);
-        this.response(SendToDialog.Response.SUCCESS);
+        this.close();
     }
 
     _emailSummary() {
@@ -189,7 +183,7 @@ export class SendToDialog extends Gtk.Dialog {
           Utils.debug('failed to open URI: %s'.format(e.message));
         }
 
-        this.response(SendToDialog.Response.SUCCESS);
+        this.close();
     }
 
     _getAppLaunchContext() {
@@ -223,7 +217,7 @@ export class SendToDialog extends Gtk.Dialog {
             let uri = this._location.to_uri(GeocodeGlib.LocationURIScheme.GEO);
             row.appinfo.launch_uris([ uri ], this._getAppLaunchContext());
         }
-        this.response(SendToDialog.Response.SUCCESS);
+        this.close();
     }
 }
 
