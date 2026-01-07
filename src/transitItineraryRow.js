@@ -68,7 +68,7 @@ export class TransitItineraryRow extends Gtk.ListBoxRow {
                 iconName: 'go-next-symbolic', 
                 pixelSize: 8,
             });
-            transitionIcon.get_style_context().add_class('dim-label');
+            transitionIcon.get_style_context().add_class('dimmed');
             grid.append(transitionIcon);
         }
 

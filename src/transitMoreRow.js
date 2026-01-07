@@ -45,7 +45,7 @@ export class TransitMoreRow extends Gtk.ListBoxRow {
 
     showNoMore() {
         this.activatable = false;
-        this._label.get_style_context().add_class('dim-label');
+        this._label.get_style_context().add_class('dimmed');
         this._stack.visible_child_name = 'label';
 
         if (Application.routeQuery.arriveBy)

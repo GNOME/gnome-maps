@@ -278,7 +278,7 @@ export class PlaceView extends Gtk.Box {
             this._sourceBox.visible = true;
         } else if (title && typeName && place.osmKey !== 'place') {
             if (shieldPaintables.length > 0) {
-                this._sourceIcon.get_style_context().remove_class('dim-label');
+                this._sourceIcon.get_style_context().remove_class('dimmed');
                 this._sourceIcon.paintable = shieldPaintables[0];
                 this._sourceIcon.pixel_size =
                     this._calculatePixelSizeForShield(shieldPaintables[0], 18);
@@ -296,9 +296,9 @@ export class PlaceView extends Gtk.Box {
 
                 // don't dim the icon for non-symbolic (transit network) icons
                 if (iconName.endsWith('-symbolic'))
-                    this._sourceIcon.get_style_context().add_class('dim-label');
+                    this._sourceIcon.get_style_context().add_class('dimmed');
                 else
-                    this._sourceIcon.get_style_context().remove_class('dim-label');
+                    this._sourceIcon.get_style_context().remove_class('dimmed');
                 this._sourceIcon.icon_name = iconName;
                 this._sourceIcon.pixel_size = -1;
                 this._secondarySourceIcon.visible = false;
