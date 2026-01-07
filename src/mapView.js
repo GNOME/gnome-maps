@@ -33,7 +33,6 @@ import GnomeMaps from 'gi://GnomeMaps';
 import {Application} from './application.js';
 import {BoundingBox} from './boundingBox.js';
 import {CircleIconMarker} from './circleIconMarker.js';
-import * as Color from './color.js';
 import * as Geoclue from './geoclue.js';
 import * as GeocodeFactory from './geocode.js';
 import {GeoJSONShapeLayer} from './geoJSONShapeLayer.js';
@@ -66,8 +65,16 @@ const MapMinZoom = 2;
 const MapMaxZoom = 22;
 
 // color used for turn-by-turn-based routes (non-transit)
-const TURN_BY_TURN_ROUTE_COLOR = '62a0ea';
-const TURN_BY_TURN_ROUTE_OUTLINE_COLOR = '1a5fb4';
+const TURN_BY_TURN_ROUTE_COLOR =
+    new Gdk.RGBA({ red:   0x62 / 255,
+                   green: 0xa0 / 255,
+                   blue:  0xea / 255,
+                   alpha: 1.0 }); // #62a0ea
+const TURN_BY_TURN_ROUTE_OUTLINE_COLOR =
+    new Gdk.RGBA({ red:   0x1a / 255,
+                   green: 0x5f / 255,
+                   blue:  0xb4 / 255,
+                   alpha: 1.0 }); // #1a5fb4
 
 // line width for route lines
 const ROUTE_LINE_WIDTH = 5;
@@ -308,15 +315,12 @@ export class MapView extends Gtk.Overlay {
 
     /* create and store a route layer */
     _createRouteLayer(lineColor, outlineColor, width, outlineWidth = 1) {
-        let strokeColor = Color.parseColorAsRGBA(lineColor);
-        let routeLayer = new Shumate.PathLayer({ viewport: this.map.viewport,
-                                                 stroke_width: width,
-                                                 stroke_color: strokeColor });
+        const routeLayer = new Shumate.PathLayer({ viewport:     this.map.viewport,
+                                                   stroke_width: width,
+                                                   stroke_color: lineColor });
 
         if (outlineColor) {
-            let outlineStrokeColor = Color.parseColorAsRGBA(outlineColor);
-
-            routeLayer.outline_color = outlineStrokeColor;
+            routeLayer.outline_color = outlineColor;
             routeLayer.outline_width = outlineWidth;
         }
 
