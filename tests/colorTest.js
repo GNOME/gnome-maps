@@ -21,49 +21,52 @@
 
 const JsUnit = imports.jsUnit;
 
+import Gdk from 'gi://Gdk?version=4.0';
+
 import * as Color from '../src/color.js';
 
-function parseColorTest() {
-    JsUnit.assertEquals(1.0, Color.parseColor('ff0000', 0));
-    JsUnit.assertEquals(1.0, Color.parseColor('00ff00', 1));
-    JsUnit.assertEquals(1.0, Color.parseColor('0000ff', 2));
-    JsUnit.assertEquals(0.0, Color.parseColor('000000', 0));
-    JsUnit.assertEquals(0.0, Color.parseColor('000000', 1));
-    JsUnit.assertEquals(0.0, Color.parseColor('000000', 2));
-    JsUnit.assertEquals(1.0/3.0, Color.parseColor('550000', 0));
-    JsUnit.assertEquals(1.0, Color.parseColor(undefined, 0, 1.0));
-    JsUnit.assertEquals(1.0, Color.parseColor(null, 0, 1.0));
-    JsUnit.assertEquals(1.0, Color.parseColor('', 0, 1.0));
+function parseHex(hexColor) {
+    const color = new Gdk.RGBA();
+
+    color.parse(`#${hexColor}`);
+
+    return color;
 }
 
 function relativeLuminanceTest() {
-    JsUnit.assertEquals(0.0, Color.relativeLuminance('000000'));
-    JsUnit.assertEquals(1.0, Color.relativeLuminance('ffffff'));
-    JsUnit.assertEquals(0.2126, Color.relativeLuminance('ff0000'));
-    JsUnit.assertEquals(0.7152, Color.relativeLuminance('00ff00'));
-    JsUnit.assertEquals(0.0722, Color.relativeLuminance('0000ff'));
-    JsUnit.assertEquals(0.5855256521034803, Color.relativeLuminance('abcdef'));
+    JsUnit.assertEquals(0.0, Color.relativeLuminance(parseHex('000000')));
+    JsUnit.assertEquals(1.0, Color.relativeLuminance(parseHex('ffffff')));
+    JsUnit.assertEquals(0.2126, Color.relativeLuminance(parseHex('ff0000')));
+    JsUnit.assertEquals(0.7152, Color.relativeLuminance(parseHex('00ff00')));
+    JsUnit.assertEquals(0.0722, Color.relativeLuminance(parseHex('0000ff')));
+    JsUnit.assertEquals(0.5855256725486612,
+                        Color.relativeLuminance(parseHex('abcdef')));
 }
 
 function contrastRatioTest() {
-    JsUnit.assertEquals(21.0, Color.contrastRatio('000000', 'ffffff'));
-    JsUnit.assertEquals(21.0, Color.contrastRatio('ffffff', '000000'));
-    JsUnit.assertEquals(1.0, Color.contrastRatio('ffffff', 'ffffff'));
-    JsUnit.assertEquals(1.0, Color.contrastRatio('000000', '000000'));
+    JsUnit.assertEquals(21.0, Color.contrastRatio(parseHex('000000'),
+                                                  parseHex('ffffff')));
+    JsUnit.assertEquals(21.0, Color.contrastRatio(parseHex('ffffff'),
+                                                  parseHex('000000')));
+    JsUnit.assertEquals(1.0, Color.contrastRatio(parseHex('ffffff'),
+                                                 parseHex('ffffff')));
+    JsUnit.assertEquals(1.0, Color.contrastRatio(parseHex('000000'),
+                                                 parseHex('000000')));
 }
 
 function getContrastingForegroundColorTest() {
-    JsUnit.assertEquals('000000',
-                        Color.getContrastingForegroundColor('ffffff'));
-    JsUnit.assertEquals('ffffff',
-                        Color.getContrastingForegroundColor('000000'));
-    JsUnit.assertEquals('ffffff',
-                        Color.getContrastingForegroundColor('000088', '000000'));
-    JsUnit.assertEquals('dddddd',
-                        Color.getContrastingForegroundColor('000088', 'dddddd'));
+    JsUnit.assertTrue(parseHex('000000').equal(
+                      Color.getContrastingForegroundColor(parseHex('ffffff'))));
+    JsUnit.assertTrue(parseHex('ffffff').equal(
+                      Color.getContrastingForegroundColor(parseHex('000000'))));
+    JsUnit.assertTrue(parseHex('ffffff').equal(
+                      Color.getContrastingForegroundColor(parseHex('000088'),
+                                                          parseHex('000000'))));
+    JsUnit.assertTrue(parseHex('dddddd').equal(
+                      Color.getContrastingForegroundColor(parseHex('000088'),
+                                                          parseHex('dddddd'))));
 }
 
-parseColorTest();
 relativeLuminanceTest();
 contrastRatioTest();
 getContrastingForegroundColorTest();

@@ -20,6 +20,7 @@
  */
 
 import Adw from 'gi://Adw';
+import Gdk from 'gi://Gdk';
 import GObject from 'gi://GObject';
 import Graphene from 'gi://Graphene';
 import Gsk from 'gi://Gsk';
@@ -39,8 +40,10 @@ const OUTLINE_LUMINANCE_THRESHOLD = 0.9;
 const DARK_OUTLINE_LUMINANCE_THRESHOLD = 0.1;
 
 // fallback high contrast colors
-const HIGH_CONTRAST_COLOR = '000000';
-const HIGH_CONTRAST_TEXT_COLOR = 'ffffff';
+const HIGH_CONTRAST_COLOR =
+    new Gdk.RGBA({ red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0 });
+const HIGH_CONTRAST_TEXT_COLOR =
+    new Gdk.RGBA({ red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 });;
 
 const MARGIN_H = 4;
 const MARGIN_V = 3;
@@ -147,7 +150,7 @@ export class TransitRouteLabel extends Gtk.Box {
         roundRect.init_from_rect(bounds, CORNER_RADIUS);
         this._pathBuilder.add_rounded_rect(roundRect);
         snapshot.append_fill(this._pathBuilder.to_path(), Gsk.FILL_RULE_EVEN_ODD,
-                             Color.parseColorAsRGBA(color));
+                             color);
 
         if (hasOutline) {
             roundRect.shrink(OUTLINE_WIDTH / 2, OUTLINE_WIDTH / 2,
@@ -155,7 +158,7 @@ export class TransitRouteLabel extends Gtk.Box {
             this._pathBuilder.add_rounded_rect(roundRect);
             snapshot.append_stroke(this._pathBuilder.to_path(),
                                    new Gsk.Stroke(OUTLINE_WIDTH),
-                                   Color.parseColorAsRGBA(textColor));
+                                   textColor);
         }
 
         const [textWidth, textHeight] = this._layout.get_pixel_size();
@@ -163,7 +166,7 @@ export class TransitRouteLabel extends Gtk.Box {
                                                 y: (height - textHeight) / 2 });
 
         snapshot.translate(textOrigin);
-        snapshot.append_layout(this._layout, Color.parseColorAsRGBA(textColor));
+        snapshot.append_layout(this._layout, textColor);
 
         super.vfunc_snapshot(snapshot);
     }

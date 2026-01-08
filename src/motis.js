@@ -21,6 +21,7 @@
 
 import gettext from 'gettext';
 
+import Gdk from 'gi://Gdk';
 import Gio from 'gi://Gio';
 import GWeather from 'gi://GWeather';
 import GLib from 'gi://GLib';
@@ -198,6 +199,12 @@ export class Motis {
         });
     }
 
+    _parseHexColorString(colorString) {
+        const color = new Gdk.RGBA();
+
+        return color.parse(`#${colorString}`) ? color : null;
+    }
+
     _parseLeg(leg, isFirst, isLast, startPlace, destinationPlace) {
         const isTransit = leg.mode !== 'WALK';
         const distance =
@@ -241,8 +248,8 @@ export class Motis {
                          to:                      toName,
                          toCoordinate:            [leg.to.lat, leg.to.lon],
                          headsign:                leg.headsign,
-                         color:                   leg.routeColor,
-                         textColor:               leg.routeTextColor,
+                         color:                   this._parseHexColorString(leg.routeColor),
+                         textColor:               this._parseHexColorString(leg.routeTextColor),
                          route:                   this._getRoute(leg),
                          tripShortName:           leg.tripShortName,
                          routeType:               isTransit ?

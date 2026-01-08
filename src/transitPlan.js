@@ -21,6 +21,7 @@
 
 import gettext from 'gettext';
 
+import Gdk from 'gi://Gdk';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Shumate from 'gi://Shumate';
@@ -71,10 +72,20 @@ export const RouteType = {
 /* extra time to add to the first itinerary leg when it's a walking leg */
 const WALK_SLACK = 120;
 
-export const DEFAULT_ROUTE_COLOR = '4c4c4c';
-export const DEFAULT_ROUTE_TEXT_COLOR = 'ffffff';
-export const DEFAULT_DARK_ROUTE_COLOR = 'deddda';
-export const DEFAULT_DARK_ROUTE_TEXT_COLOR = '241f31';
+export const DEFAULT_ROUTE_COLOR = new Gdk.RGBA({ red:   0x4c / 255,
+                                                  green: 0x4c / 255,
+                                                  blue:  0x4c / 255,
+                                                  alpha: 1.0 });
+export const DEFAULT_ROUTE_TEXT_COLOR = new Gdk.RGBA({ red:   1.0,
+                                                       green: 1.0,
+                                                       blue:  1.0,
+                                                       alpha: 1.0 });
+export const DEFAULT_DARK_ROUTE_COLOR = new Gdk.RGBA({ red:   0xde / 255,
+                                                       green: 0xdd / 255,
+                                                       blue:  0xda / 255 });
+export const DEFAULT_DARK_ROUTE_TEXT_COLOR = new Gdk.RGBA({ red:   0x24 / 255,
+                                                            green: 0x1f / 255,
+                                                            blue:  0x31 / 255 });
 
 export class Plan extends GObject.Object {
 

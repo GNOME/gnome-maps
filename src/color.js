@@ -24,40 +24,17 @@ import Gdk from 'gi://Gdk';
 /* Minimum contrast ratio for foreground/background color for i.e. route labels */
 const MIN_CONTRAST_RATIO = 2.0;
 
-/**
- * Parses a given color component index (0: red, 1: green, 2: blue)
- * from a hex-encoded color string. Optionally, if defaultValue is supplied,
- * fallback to that if color is undefined.
- */
-export function parseColor(color, component, defaultValue) {
-    if (color) {
-        let index = component * 2;
-        return parseInt(color.substring(index, index + 2), 16) / 255;
-    } else {
-        return defaultValue;
-    }
-}
+const WHITE = new Gdk.RGBA({ red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 });
+const BLACK = new Gdk.RGBA({ red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0 });
 
 /**
- * Parse a hex-encoded color string as a Gdk.RGBA value.
- * Optionally with a specified alpha channel, default to 1.0 (opaque).
- */
-export function parseColorAsRGBA(color, alpha = 1.0) {
-    return new Gdk.RGBA({ red:   parseColor(color, 0),
-                          green: parseColor(color, 1),
-                          blue:  parseColor(color, 2),
-                          alpha: alpha });
-}
-
-/**
- * Returns the relative luminance (0.0 - 1.0) of a color, expressed in HTML
- * notation (i.e. ffffff for white) according to the W3C WCAG definition:
+ * Returns the relative luminance (0.0 - 1.0) of a Gdk.RGBA value according to the W3C WCAG definition:
  * https://www.w3.org/WAI/GL/wiki/Relative_luminance
  */
 export function relativeLuminance(color) {
-    let rsRGB = parseColor(color, 0);
-    let gsRGB = parseColor(color, 1);
-    let bsRGB = parseColor(color, 2);
+    let rsRGB = color.red;
+    let gsRGB = color.green;
+    let bsRGB = color.blue;
     let r = rsRGB <= 0.03928 ?
             rsRGB / 12.92 : Math.pow(((rsRGB + 0.055) / 1.055), 2.4);
     let g = gsRGB <= 0.03928 ?
@@ -94,13 +71,13 @@ export function getContrastingForegroundColor(backgroundColor,
     if (!desiredForegroundColor ||
         (contrastRatio(backgroundColor, desiredForegroundColor) <
          MIN_CONTRAST_RATIO)) {
-        let contrastAgainstWhite = contrastRatio(backgroundColor, 'ffffff');
-        let contrastAgainstBlack = contrastRatio(backgroundColor, '000000');
+        let contrastAgainstWhite = contrastRatio(backgroundColor, WHITE);
+        let contrastAgainstBlack = contrastRatio(backgroundColor, BLACK);
 
         if (contrastAgainstWhite > contrastAgainstBlack)
-            return 'ffffff';
+            return WHITE;
         else
-            return '000000';
+            return BLACK;
     } else {
         return desiredForegroundColor;
     }

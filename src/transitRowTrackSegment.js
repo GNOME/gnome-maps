@@ -21,6 +21,7 @@
 
 
 import Adw from 'gi://Adw';
+import Gdk from 'gi://Gdk';
 import GObject from 'gi://GObject';
 import Graphene from 'gi://Graphene';
 import Gsk from 'gi://Gsk';
@@ -39,8 +40,10 @@ const OUTLINE_LUMINANCE_THRESHOLD = 0.9;
 const DARK_OUTLINE_LUMINANCE_THRESHOLD = 0.1;
 
 // fallback high contrast colors
-const HIGH_CONTRAST_COLOR = '000000';
-const HIGH_CONTRAST_TEXT_COLOR = 'ffffff';
+const HIGH_CONTRAST_COLOR =
+    new Gdk.RGBA({ red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0 });
+const HIGH_CONTRAST_TEXT_COLOR =
+    new Gdk.RGBA({ red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 });;
 
 const WALK_LINE_WIDTH = 4;
 const TRANSIT_LINE_WIDTH = 12;
@@ -152,7 +155,7 @@ export class TransitRowTrackSegment extends Gtk.Widget {
             snapshot.append_stroke(
                 outlinePathBuilder.to_path(),
                 this._outlineStroke,
-                Color.parseColorAsRGBA(usingDarkTheme ? HIGH_CONTRAST_TEXT_COLOR : HIGH_CONTRAST_COLOR)
+                fgColor
             );
         }
         
@@ -163,7 +166,7 @@ export class TransitRowTrackSegment extends Gtk.Widget {
         snapshot.append_stroke(
             linePathBuilder.to_path(),
             this._stroke,
-            Color.parseColorAsRGBA(color)
+            color
         );
 
         // Draw station
@@ -177,7 +180,7 @@ export class TransitRowTrackSegment extends Gtk.Widget {
             snapshot.append_fill(
                 stationPathBuilder.to_path(),
                 Gsk.FILL_RULE_EVEN_ODD,
-                Color.parseColorAsRGBA(fgColor)
+                fgColor
             );
         }
 

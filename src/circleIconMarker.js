@@ -100,10 +100,9 @@ export class CircleIconMarker extends IconMarker {
                 this._styleManager.dark ?
                 Color.relativeLuminance(bgColor) < DARK_OUTLINE_LUMINANCE_THREASHHOLD :
                 Color.relativeLuminance(bgColor) > OUTLINE_LUMINANCE_THREASHHOLD;
-            const fgRGBA = Color.parseColorAsRGBA(fgColor);
-            const bgRGBA = Color.parseColorAsRGBA(bgColor);
+
             const paintable = this._paintableFromIconName(this._iconName,
-                                                          ICON_SIZE, fgRGBA);
+                                                          ICON_SIZE, fgColor);
             const snapshot = Gtk.Snapshot.new();
             const center = new Graphene.Point({ x: this._markerSize / 2,
                                                 y: this._markerSize / 2 });
@@ -111,14 +110,14 @@ export class CircleIconMarker extends IconMarker {
             this._pathBuilder.add_circle(center, this._markerSize / 2);
             snapshot.append_fill(this._pathBuilder.to_path(),
                                  Gsk.FILL_RULE_EVEN_ODD,
-                                 bgRGBA);
+                                 bgColor);
 
             if (hasOutline) {
                 this._pathBuilder.add_circle(center, this._markerSize / 2 -
                                                      OUTLINE_WIDTH / 2);
                 snapshot.append_stroke(this._pathBuilder.to_path(),
                                        new Gsk.Stroke(OUTLINE_WIDTH),
-                                       fgRGBA);
+                                       fgColor);
             }
 
             snapshot.save();
