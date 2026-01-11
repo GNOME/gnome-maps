@@ -57,7 +57,7 @@ export class TurnPointMarker extends IconMarker {
             this._image.paintable =
                 this._paintableFromIconName('maps-point-end-symbolic',
                                             16,
-                                            transitLeg.color);
+                                            transitLeg?.color);
         }
     }
 
