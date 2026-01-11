@@ -54,9 +54,9 @@ export class TransitLegRow extends Gtk.ListBoxRow {
         if (this._leg.transit) {
             // From
             const fromStop = new Stop({
-                name: this._leg.from,
+                name: this._leg.from.name,
                 departure: this._leg.departure,
-                coordinate: this._leg.fromCoordinate
+                location: this._leg.from.location
             });
             const fromStopRow = new TransitStopRow({
                 stop: fromStop, 
@@ -71,9 +71,9 @@ export class TransitLegRow extends Gtk.ListBoxRow {
 
             // To
             const toStop = new Stop({
-                name: this._leg.to,
+                name: this._leg.to.name,
                 arrival: this._leg.arrival,
-                coordinate: this._leg.toCoordinate
+                location: this._leg.to.location
             });
             const toStopRow = new TransitStopRow({
                 stop: toStop, 
@@ -151,8 +151,8 @@ export class TransitLegRow extends Gtk.ListBoxRow {
         if (this._expanded && !this._direct) {
             this._setExpanded(false);
         } else {
-            this._mapView.map.go_to_full(this._leg.fromCoordinate[0],
-                                         this._leg.fromCoordinate[1],
+            this._mapView.map.go_to_full(this._leg.from.location.latitude,
+                                         this._leg.from.location.longitude,
                                          16);
             if (this._hasIntructions())
                 this._setExpanded(true);

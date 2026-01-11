@@ -30,7 +30,10 @@ import Soup from 'gi://Soup';
 
 import * as Epaf from './epaf.js';
 import * as HVT from './hvt.js';
+import {Location} from './location.js';
+import {Place} from './place.js';
 import {Query} from './http.js';
+import {TransitPlace} from './transitPlace.js';
 import {TurnPoint} from './route.js';
 import * as Time from './time.js';
 import {Itinerary, Leg, RouteType, Stop} from './transitPlan.js';
@@ -238,15 +241,24 @@ export class Motis {
             !isTransit && leg.steps ?
             this._parseSteps(leg.steps, polyline[0], polyline.last()) : undefined;
 
+        const fromPlace =
+            new TransitPlace({ name:     fromName,
+                               location: new Location({ latitude:  leg.from.lat,
+                                                        longitude: leg.from.lon }),
+                               id:       leg.from.stopId });
+        const toPlace =
+            new TransitPlace({ name:     toName,
+                               location: new Location({ latitude:  leg.to.lat,
+                                                        longitude: leg.to.lon }),
+                               id:       leg.to.stopId });
+
         return new Leg({ isTransit:               isTransit,
                          duration:                leg.duration,
                          distance:                distance,
                          departure:               departure,
                          arrival:                 arrival,
-                         from:                    fromName,
-                         fromCoordinate:          [leg.from.lat, leg.from.lon],
-                         to:                      toName,
-                         toCoordinate:            [leg.to.lat, leg.to.lon],
+                         from:                    fromPlace,
+                         to:                      toPlace,
                          headsign:                leg.headsign,
                          color:                   this._parseHexColorString(leg.routeColor),
                          textColor:               this._parseHexColorString(leg.routeTextColor),
@@ -289,11 +301,14 @@ export class Motis {
         const tz = GLib.TimeZone.new_identifier(stop.tz);
         const departure = Time.parseDateTime(stop.departure, tz);
         const arrival = Time.parseDateTime(stop.arrival, tz);
+        const location = new Location({ latitude: stop.lat,
+                                        longitude: stop.lon });
 
         return new Stop({ name:                 stop.name,
                           arrival:              arrival,
                           departure:            departure,
-                          coordinate:           [stop.lat, stop.lon] });
+                          location:             location,
+                          id:                   stop.stopId });
     }
 
     _parseSteps(steps, fromCoordinate, toCoordinate) {

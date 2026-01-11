@@ -29,6 +29,7 @@ import Shumate from 'gi://Shumate';
 import {BoundingBox} from './boundingBox.js';
 import * as HVT from './hvt.js';
 import * as Time from './time.js';
+import {TransitPlace} from './transitPlace.js';
 import * as Utils from './utils.js';
 
 const _ = gettext.gettext;
@@ -320,7 +321,7 @@ GObject.registerClass(Itinerary);
 export class Leg {
 
     constructor({ route, routeType, departure, arrival, polyline,
-                  fromCoordinate, toCoordinate, from, to, intermediateStops,
+                  from, to, intermediateStops,
                   headsign, isTransit, walkingInstructions, distance, duration,
                   agencyName, agencyUrl, color, textColor, tripShortName }) {
         this._route = route;
@@ -328,8 +329,6 @@ export class Leg {
         this._departure = departure;
         this._arrival = arrival;
         this._polyline = polyline;
-        this._fromCoordinate = fromCoordinate;
-        this._toCoordinate = toCoordinate;
         this._from = from;
         this._to = to;
         this._intermediateStops = intermediateStops;
@@ -465,20 +464,20 @@ export class Leg {
     _createPolyline() {
         if (this._intermediateStops) {
             const first =
-                new Shumate.Coordinate({ latitude:  this._fromCoordinate[0],
-                                         longitude: this._fromCoordinate[1] });
+                new Shumate.Coordinate({ latitude:  this._from.location.latitude,
+                                         longitude: this._from.location.longitude });
             const rest = this._intermediateStops.map((s) => {
-                return new Shumate.Coordinate({ latitude:  s.coordinate[0],
-                                                longitude: s.coordinate[1] });
+                return new Shumate.Coordinate({ latitude:  s.location.latitude,
+                                                longitude: s.location.latitude });
             });
 
             this._polyline = [first, ...rest];
         } else {
             this._polyline =
-                [new Shumate.Coordinate({ latitude:  this._fromCoordinate[0],
-                                          longitude: this._fromCoordinate[1] }),
-                 new Shumate.Coordinate({ latitude:  this._toCoordinate[0],
-                                          longitude: this._toCoordinate[1] })];
+                [new Shumate.Coordinate({ latitude:  this._from.location.latitude,
+                                          longitude: this._from.location.longitude }),
+                 new Shumate.Coordinate({ latitude:  this._to.location.latitude,
+                                          longitude: this._to.location.longitude })];
         }
     }
 
@@ -610,21 +609,13 @@ export class Leg {
     }
 }
 
-export class Stop {
+export class Stop extends TransitPlace {
 
-    constructor({ name, arrival, departure, coordinate }) {
-        this._name = name;
+    constructor({ arrival, departure, ...params }) {
+        super(params);
+
         this._arrival = arrival;
         this._departure = departure;
-        this._coordinate = coordinate;
-    }
-
-    get name() {
-        return this._name;
-    }
-
-    get coordinate() {
-        return this._coordinate;
     }
 
     get arrival() {
@@ -640,6 +631,7 @@ export class Stop {
                                    this._arrival : this._departure);
     }
 }
+GObject.registerClass(Stop);
 
 function sortItinerariesByDepartureAsc(first, second) {
     /* always sort walk-only itineraries first, as they would always be
