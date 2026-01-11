@@ -38,8 +38,8 @@ export class TurnPointMarker extends IconMarker {
             latitude = turnPoint.coordinate.get_latitude();
             longitude = turnPoint.coordinate.get_longitude();
         } else {
-            latitude = transitStop.coordinate[0];
-            longitude = transitStop.coordinate[1];
+            latitude = transitStop.location.latitude;
+            longitude = transitStop.location.longitude;
         }
 
         let place =

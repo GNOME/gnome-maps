@@ -32,13 +32,13 @@ export class TransitArrivalDestinationRow extends Gtk.ListBoxRow {
 
         if (isArrival) {
             this._iconImage.icon_name = 'maps-point-end-symbolic';
-            this._coord = leg.toCoordinate;
+            this._location = leg.to.location;
             this._nameLabel.label = Transit.getArrivalLabel(leg);
             this._timeLabel.label = leg.prettyPrintArrivalTime();
         }
         else {
             this._iconImage.icon_name = 'maps-point-start-symbolic';
-            this._coord = leg.fromCoordinate;
+            this._location = leg.from.location;
             this._nameLabel.label = Transit.getDepartureLabel(leg);
             this._timeLabel.label = leg.prettyPrintDepartureTime();
         }
@@ -51,7 +51,8 @@ export class TransitArrivalDestinationRow extends Gtk.ListBoxRow {
     }
 
     _onPress() {
-        this._mapView.map.go_to_full(this._coord[0], this._coord[1], 16);
+        this._mapView.map.go_to_full(this._location.latitude,
+                                     this._location.longitude, 16);
     }
 
     vfunc_activate() {

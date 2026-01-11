@@ -66,7 +66,7 @@ export function getArrivalLabel(lastLeg) {
         /* Translators: this a format string indicating arriving at the
          * destination of journey with the arrival address and transit
          * stop as the format parameter */
-        return _("Arrive at %s").format(lastLeg.to);
+        return _("Arrive at %s").format(lastLeg.to.name);
     } else {
         return _("Arrive");
     }
@@ -80,7 +80,7 @@ export function getDepartureLabel(firstLeg) {
         /* Translators: this a format string indicating departing from the
          * destination of journey with the departure address and transit
          * stop as the format parameter */
-        return _("Start at %s").format(firstLeg.from);
+        return _("Start at %s").format(firstLeg.from.name);
     } else {
         return _("Start");
     }
