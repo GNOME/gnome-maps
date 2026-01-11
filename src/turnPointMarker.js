@@ -23,7 +23,6 @@ import Gdk from 'gi://Gdk';
 import GObject from 'gi://GObject';
 
 import {Application} from './application.js';
-import * as Color from './color.js';
 import {IconMarker} from './iconMarker.js';
 import {Location} from './location.js';
 import {Place} from './place.js';
@@ -55,13 +54,10 @@ export class TurnPointMarker extends IconMarker {
             this._image.paintable =
                 this._paintableFromIconName(turnPoint.iconName, 16);
         } else {
-            const color = transitLeg?.color ?
-                          Color.parseColorAsRGBA(transitLeg.color) : null;
-
             this._image.paintable =
                 this._paintableFromIconName('maps-point-end-symbolic',
                                             16,
-                                            color);
+                                            transitLeg.color);
         }
     }
 
