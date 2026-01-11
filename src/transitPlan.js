@@ -82,10 +82,12 @@ export const DEFAULT_ROUTE_TEXT_COLOR = new Gdk.RGBA({ red:   1.0,
                                                        alpha: 1.0 });
 export const DEFAULT_DARK_ROUTE_COLOR = new Gdk.RGBA({ red:   0xde / 255,
                                                        green: 0xdd / 255,
-                                                       blue:  0xda / 255 });
+                                                       blue:  0xda / 255,
+                                                       alpha: 1.0 });
 export const DEFAULT_DARK_ROUTE_TEXT_COLOR = new Gdk.RGBA({ red:   0x24 / 255,
                                                             green: 0x1f / 255,
-                                                            blue:  0x31 / 255 });
+                                                            blue:  0x31 / 255,
+                                                            alpha: 1.0 });
 
 export class Plan extends GObject.Object {
 
