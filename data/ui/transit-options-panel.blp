@@ -1,4 +1,5 @@
 using Gtk 4.0;
+using Adw 1;
 
 template $Gjs_TransitOptionsPanel: Grid {
   styles [
@@ -7,7 +8,7 @@ template $Gjs_TransitOptionsPanel: Grid {
 
   DropDown transitTimeOptionsDropDown {
     margin-start: 6;
-    margin-end: 6;
+    margin-end: 3;
     margin-top: 6;
     margin-bottom: 6;
 
@@ -28,11 +29,11 @@ template $Gjs_TransitOptionsPanel: Grid {
     }
   }
 
-  Entry transitTimeEntry {
+  MenuButton transitTimeButton {
     visible: false;
-    max-width-chars: 5;
-    margin-start: 6;
-    margin-end: 6;
+    popover: transitTimePopover;
+    margin-start: 3;
+    margin-end: 3;
     margin-top: 6;
     margin-bottom: 6;
 
@@ -45,8 +46,8 @@ template $Gjs_TransitOptionsPanel: Grid {
   MenuButton transitDateButton {
     visible: false;
     popover: transitDatePopover;
-    margin-start: 6;
-    margin-end: 6;
+    margin-start: 3;
+    margin-end: 3;
     margin-top: 6;
     margin-bottom: 6;
 
@@ -60,7 +61,7 @@ template $Gjs_TransitOptionsPanel: Grid {
     tooltip-text: _("View More");
     popover: transitParametersPopover;
     halign: end;
-    margin-start: 6;
+    margin-start: 3;
     margin-end: 6;
     margin-top: 6;
     margin-bottom: 6;
@@ -72,6 +73,62 @@ template $Gjs_TransitOptionsPanel: Grid {
       row: 0;
     }
   }
+}
+
+Popover transitTimePopover {
+  child: Box {
+    orientation: horizontal;
+    spacing: 4;
+
+    SpinButton transitTimeHourSpinButton {
+      orientation: vertical;
+      digits: 0;
+      numeric: true;
+      wrap: true;
+      adjustment: Adjustment {
+        step-increment: 1;
+        page-increment: 10;
+        page-size: 0;
+      };
+    }
+
+    Label {
+      label: ":";
+      xalign: 0;
+      yalign: 0.5;
+    }
+
+    SpinButton transitTimeMinuteSpinButton {
+      orientation: vertical;
+      digits: 0;
+      numeric: true;
+      wrap: true;
+      adjustment: Adjustment {
+        lower: 0;
+        upper: 59;
+        step-increment: 1;
+        page-increment: 10;
+        page-size: 0;
+      };
+    }
+
+    Adw.ToggleGroup transitTimeAmPmToggleGroup {
+      hexpand: false;
+      vexpand: false;
+      valign: center;
+      margin-start: 6;
+
+      Adw.Toggle {
+        name: "am";
+        label: _("AM");
+      }
+
+      Adw.Toggle {
+        name: "pm";
+        label: _("PM");
+      }
+    }
+  };
 }
 
 Popover transitDatePopover {

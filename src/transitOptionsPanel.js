@@ -57,28 +57,38 @@ export class TransitOptionsPanel extends Gtk.Grid {
     _initTransitOptions() {
         this._transitTimeOptionsDropDown.connect('notify::selected',
             this._onTransitTimeOptionsDropDownSelected.bind(this));
-        this._transitTimeEntry.connect('activate',
-            this._onTransitTimeEntryActivated.bind(this));
-        this._eventControllerFocus = new Gtk.EventControllerFocus();
-        this._transitTimeEntry.add_controller(this._eventControllerFocus);
-        /* trigger an update of the query time as soon as focus leave the time
-         * entry, to allow the user to enter a time before selecting start
-         * and destination without having to press enter */
-        this._eventControllerFocus.connect('leave', () => {
-            if (!this._query.isValid())
-                this._onTransitTimeEntryActivated();
+
+        // Bind events for time selection popover controls
+        this._transitTimeHourSpinButton.connect('value-changed',
+            this._onTransitTimeChanged.bind(this));
+        this._transitTimeMinuteSpinButton.connect('value-changed',
+            this._onTransitTimeChanged.bind(this));
+        this._transitTimeAmPmToggleGroup.connect('notify::active-name',
+            this._onTransitTimeChanged.bind(this));
+        this._transitTimeButton.popover.connect('closed',
+            this._onTransitTimeClosed.bind(this));
+
+        // Override minute spinbutton to output two-digit values
+        this._transitTimeMinuteSpinButton.connect('output', () => {
+            const value = this._transitTimeMinuteSpinButton.get_value_as_int();
+            const text = value.toString().padStart(2, '0');
+            this._transitTimeMinuteSpinButton.set_text(text);
+            return true; 
         });
+
+        // Bind events for date selection popover controls
         this._transitDateButton.popover.get_child().connect('day-selected',
             this._onTransitDateCalenderDaySelected.bind(this));
         this._transitDateButton.popover.connect('closed',
             this._onTransitDateClosed.bind(this));
+
         this._transitParametersMenuButton.popover.connect('closed',
             this._onTransitParametersClosed.bind(this))
-    }
+    }               
 
     _onTransitTimeOptionsDropDownSelected() {
         if (this._transitTimeOptionsDropDown.selected === 0) {
-            this._transitTimeEntry.visible = false;
+            this._transitTimeButton.visible = false;
             this._transitDateButton.visible = false;
             this._query.arriveBy = false;
             this._query.date = null;
@@ -86,13 +96,20 @@ export class TransitOptionsPanel extends Gtk.Grid {
             this._timeSelected = null;
             this._dateSelected = null;
         } else {
-            this._transitTimeEntry.visible = true;
+            this._transitTimeButton.visible = true;
             this._transitDateButton.visible = true;
 
+            // Update AM/PM visibility and hour range based on locale
+            if (Time.is12Hour()) {
+                this._transitTimeHourSpinButton.set_range(1, 12);
+                this._transitTimeAmPmToggleGroup.visible = true;
+            } else {
+                this._transitTimeHourSpinButton.set_range(0, 23);
+                this._transitTimeAmPmToggleGroup.visible = false;
+            }
+
             if (!this._timeSelected)
-                this._transitTimeEntry.text =
-                    (Time.is12Hour() ? _timeFormat12 : _timeFormat24).
-                    format(new Date());
+                this._updateTransitTimeValue(new Date());
 
             if (!this._dateSelected)
                 this._updateTransitDateButton(GLib.DateTime.new_now_local());
@@ -105,8 +122,38 @@ export class TransitOptionsPanel extends Gtk.Grid {
         }
     }
 
-    _onTransitTimeEntryActivated() {
-        let timeString = this._transitTimeEntry.text;
+    _onTransitTimeChanged() {
+        this._updateTransitTimeValue(
+            this._constructTransitTimePopoverValue()
+        );
+    }
+
+    _constructTransitTimePopoverValue() {
+        let hour = this._transitTimeHourSpinButton.value;
+        const minute = this._transitTimeMinuteSpinButton.value;
+
+        if (Time.is12Hour()) {
+            const amPm = this._transitTimeAmPmToggleGroup.active_name;
+            
+            if (amPm === 'pm' && hour < 12) {
+                hour += 12;
+            } 
+            else if (amPm === 'am' && hour === 12) {
+                hour = 0;
+            }
+        }
+
+        const date = new Date();
+        date.setHours(hour);
+        date.setMinutes(minute);
+        date.setSeconds(0);
+        date.setMilliseconds(0);
+
+        return date;
+    }
+
+    _onTransitTimeClosed() {
+        let timeString = _timeFormat24.format(this._constructTransitTimePopoverValue());
 
         if (timeString && timeString.length > 0) {
             timeString = Time.parseTimeString(timeString);
@@ -118,6 +165,31 @@ export class TransitOptionsPanel extends Gtk.Grid {
                 this._timeSelected = timeString;
             }
         }
+    }
+
+    /**
+     * Update the time select button with given time,
+     * and update the spinbuttons and am/pm toggle group in its popover.
+     */
+    _updateTransitTimeValue(time) {
+        // Button label
+        this._transitTimeButton.label =
+            (Time.is12Hour() ? _timeFormat12 : _timeFormat24).format(time);
+
+        // Popover controls
+        if (Time.is12Hour()) {
+            const amPm = time.getHours() >= 12 ? 'pm' : 'am';
+            let hours12 = time.getHours() % 12;
+            if (hours12 === 0)
+                hours12 = 12;
+            this._transitTimeHourSpinButton.set_value(hours12);
+            this._transitTimeAmPmToggleGroup.active_name = amPm;
+        } else {
+            this._transitTimeHourSpinButton.set_value(
+                time.getHours());
+        }
+        this._transitTimeMinuteSpinButton.set_value(
+            time.getMinutes());
     }
 
     /**
@@ -201,7 +273,10 @@ export class TransitOptionsPanel extends Gtk.Grid {
  GObject.registerClass({
     Template: 'resource:///org/gnome/Maps/ui/transit-options-panel.ui',
     InternalChildren: ['transitTimeOptionsDropDown',
-                       'transitTimeEntry',
+                       'transitTimeButton',
+                       'transitTimeHourSpinButton',
+                       'transitTimeMinuteSpinButton',
+                       'transitTimeAmPmToggleGroup',
                        'transitDateButton',
                        'transitDateCalendar',
                        'transitParametersMenuButton',
