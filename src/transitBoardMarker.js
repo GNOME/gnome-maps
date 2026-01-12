@@ -26,13 +26,10 @@ import {CircleIconMarker} from './circleIconMarker.js';
 export class TransitBoardMarker extends CircleIconMarker {
 
     constructor({leg, ...params}) {
-        const firstPoint = leg.polyline[0];
-
-        super({ latitude:   firstPoint.latitude,
-                longitude: firstPoint.longitude,
-                color:     leg.color,
+        super({ color:     leg.color,
                 textColor: leg.textColor,
                 iconName:  leg.iconName,
+                place:     leg.from,
                 ...params });
     }
 
