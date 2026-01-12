@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-01-07 20:29+0000\n"
-"PO-Revision-Date: 2026-01-09 13:49+0100\n"
+"POT-Creation-Date: 2026-01-11 20:58+0000\n"
+"PO-Revision-Date: 2026-01-12 08:26+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -423,7 +423,7 @@ msgstr "Uredi mesto"
 msgid "Edit an existing location in OpenStreetMap"
 msgstr "Uredi obstoječe mesto na OpenStreetMap"
 
-#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:727 src/motis.js:333
+#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:731 src/motis.js:340
 msgid "Continue"
 msgstr "Nadaljuj"
 
@@ -657,50 +657,58 @@ msgid "Toggle location marker"
 msgstr "Preklopni označevalnik mesta"
 
 #. Translators: Indicates searching for the next available itineraries
-#: data/ui/transit-options-panel.blp:17
+#: data/ui/transit-options-panel.blp:18
 msgid "Leave Now"
 msgstr "Odhod takoj"
 
 #. Translators: Indicates searching for itineraries leaving at the specified time at the earliest
-#: data/ui/transit-options-panel.blp:19
+#: data/ui/transit-options-panel.blp:20
 msgid "Leave By"
 msgstr "Odhod do"
 
 #. Translators: Indicates searching for itineraries arriving no later than the specified time
-#: data/ui/transit-options-panel.blp:21
+#: data/ui/transit-options-panel.blp:22
 msgid "Arrive By"
 msgstr "Prihod do"
 
-#: data/ui/transit-options-panel.blp:60
+#: data/ui/transit-options-panel.blp:61
 msgid "View More"
 msgstr "Pokaži več"
 
+#: data/ui/transit-options-panel.blp:123
+msgid "AM"
+msgstr "dop."
+
+#: data/ui/transit-options-panel.blp:128
+msgid "PM"
+msgstr "pop."
+
 #. Translators: Header indicating selected modes of transit
-#: data/ui/transit-options-panel.blp:92
+#: data/ui/transit-options-panel.blp:149
 msgid "Show"
 msgstr "Pokaži"
 
-#: data/ui/transit-options-panel.blp:102
+#: data/ui/transit-options-panel.blp:159
 msgid "_Buses"
 msgstr "_Avtobusi"
 
-#: data/ui/transit-options-panel.blp:108
+#: data/ui/transit-options-panel.blp:165
 msgid "_Trams"
 msgstr "_Tramvaji"
 
-#: data/ui/transit-options-panel.blp:114
+#: data/ui/transit-options-panel.blp:171
 msgid "T_rains"
 msgstr "Vla_ki"
 
-#: data/ui/transit-options-panel.blp:120
+#: data/ui/transit-options-panel.blp:177
 msgid "_Subway"
 msgstr "Po_dzemna železnica"
 
-#: data/ui/transit-options-panel.blp:126
+#: data/ui/transit-options-panel.blp:183
 msgid "_Ferries"
 msgstr "Tra_jekti"
 
-#: data/ui/transit-options-panel.blp:132
+#: data/ui/transit-options-panel.blp:189
 msgid "_Airplanes"
 msgstr "_Letala"
 
@@ -749,7 +757,7 @@ msgid "Zoom Out"
 msgstr "Oddalji"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1315
+#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1319
 msgid "Zoom In"
 msgstr "Približaj"
 
@@ -832,11 +840,11 @@ msgstr "napaka med razčlenjevanjem"
 msgid "unknown geometry"
 msgstr "neznana geometrija"
 
-#: src/graphHopper.js:116 src/transitPlan.js:155
+#: src/graphHopper.js:116 src/transitPlan.js:168
 msgid "Route request failed."
 msgstr "Zahteva za pridobivanje poti je spodletela."
 
-#: src/graphHopper.js:123 src/transitPlan.js:151
+#: src/graphHopper.js:123 src/transitPlan.js:164
 msgid "No route found."
 msgstr "Ni najdene poti."
 
@@ -908,15 +916,15 @@ msgstr "Vse datoteke plasti"
 msgid "Open Shape Layers"
 msgstr "Odpri plasti oblike"
 
-#: src/mapView.js:702 src/mapView.js:764
+#: src/mapView.js:706 src/mapView.js:768
 msgid "Failed to open layer"
 msgstr "Odpiranje plasti je spodletelo"
 
-#: src/mapView.js:719
+#: src/mapView.js:723
 msgid "Do you want to continue?"
 msgstr "Ali želite nadaljevati?"
 
-#: src/mapView.js:720
+#: src/mapView.js:724
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
@@ -925,140 +933,140 @@ msgstr ""
 "Odpreti nameravate datoteke s skupno velikostjo %s MB. Opravilo je lahko "
 "dolgotrajno."
 
-#: src/mapView.js:726
+#: src/mapView.js:730
 msgid "Cancel"
 msgstr "Prekliči"
 
-#: src/mapView.js:758
+#: src/mapView.js:762
 msgid "File type is not supported"
 msgstr "Vrsta datoteke ni podprta"
 
-#: src/mapView.js:797
+#: src/mapView.js:801
 msgid "Failed to open GeoURI"
 msgstr "Odpiranje naslova GeoURI je spodletelo."
 
-#: src/mapView.js:1314
+#: src/mapView.js:1318
 msgid "Zoom in to add location"
 msgstr "Približaj za dodajanje mesta"
 
-#: src/mapView.js:1332
+#: src/mapView.js:1336
 msgid "Location was added in OpenStreetMap"
 msgstr "Mesto je dodano na OpenStreetMap"
 
-#: src/motis.js:296 src/transit.js:33 src/transit.js:85
+#: src/motis.js:303 src/transit.js:33 src/transit.js:85
 msgid "Start"
 msgstr "Začetna točka"
 
-#: src/motis.js:315 src/transit.js:41 src/transit.js:71
+#: src/motis.js:322 src/transit.js:41 src/transit.js:71
 msgid "Arrive"
 msgstr "Prihod"
 
-#: src/motis.js:327
+#: src/motis.js:334
 #, javascript-format
 msgid "Take the stairs to level %s"
 msgstr "Po stopnicah se povzpnite do nadstropja/ravni %s"
 
-#: src/motis.js:328
+#: src/motis.js:335
 msgid "Take the stairs"
 msgstr "Pojdite po stopnicah"
 
-#: src/motis.js:332
+#: src/motis.js:339
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Nadaljujte po: %s"
 
-#: src/motis.js:337
+#: src/motis.js:344
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Zavijte levo na: %s"
 
-#: src/motis.js:338
+#: src/motis.js:345
 msgid "Turn left"
 msgstr "Zavijte levo"
 
-#: src/motis.js:342
+#: src/motis.js:349
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Držite se leve na: %s"
 
-#: src/motis.js:343
+#: src/motis.js:350
 msgid "Turn slightly left"
 msgstr "Držite se leve"
 
-#: src/motis.js:347
+#: src/motis.js:354
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Zavijte ostro levo na: %s"
 
-#: src/motis.js:348
+#: src/motis.js:355
 msgid "Turn sharp left"
 msgstr "Zavijte ostro levo"
 
-#: src/motis.js:352
+#: src/motis.js:359
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Zavijte desno na: %s"
 
-#: src/motis.js:353
+#: src/motis.js:360
 msgid "Turn right"
 msgstr "Zavijte desno"
 
-#: src/motis.js:357
+#: src/motis.js:364
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Držite se desne na: %s"
 
-#: src/motis.js:358
+#: src/motis.js:365
 msgid "Turn slightly right"
 msgstr "Držite se desne"
 
-#: src/motis.js:362
+#: src/motis.js:369
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Zavijte ostro desno na: %s"
 
-#: src/motis.js:363
+#: src/motis.js:370
 msgid "Turn sharp right"
 msgstr "Zavijte ostro desno"
 
-#: src/motis.js:370
+#: src/motis.js:377
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "V krožišču zapeljite na izvoz %s"
 
-#: src/motis.js:373
+#: src/motis.js:380
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "V krožišču zapeljite na izvoz za: %s"
 
-#: src/motis.js:375
+#: src/motis.js:382
 msgid "Take the roundabout"
 msgstr "Zapeljite v krožišče"
 
-#: src/motis.js:383
+#: src/motis.js:390
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Vstopite v dvigalo in izstopite v %s"
 
-#: src/motis.js:384
+#: src/motis.js:391
 msgid "Take the elevator"
 msgstr "Vstopite v dvigalo"
 
-#: src/motis.js:388
+#: src/motis.js:395
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Naredite polkrožni zavoj v levo na: %s"
 
-#: src/motis.js:389
+#: src/motis.js:396
 msgid "Make a left u-turn"
 msgstr "Naredite polkrožni zavoj v levo"
 
-#: src/motis.js:393
+#: src/motis.js:400
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Naredite polkrožni zavoj v desno na: %s"
 
-#: src/motis.js:394
+#: src/motis.js:401
 msgid "Make a right u-turn"
 msgstr "Naredite polkrožni zavoj v desno"
 
@@ -2155,7 +2163,7 @@ msgstr "Ni kasnejših možnosti."
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:136
+#: src/transitOptionsPanel.js:208
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%b %e"
@@ -2165,7 +2173,7 @@ msgstr "%b %e"
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:227
+#: src/transitPlan.js:240
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -2174,7 +2182,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: src/transitPlan.js:253
+#: src/transitPlan.js:266
 #, javascript-format
 msgid "%s minute"
 msgid_plural "%s minutes"
@@ -2187,7 +2195,7 @@ msgstr[3] "%s minute"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: src/transitPlan.js:265
+#: src/transitPlan.js:278
 #, javascript-format
 msgid "%s hour"
 msgid_plural "%s hours"
@@ -2200,7 +2208,7 @@ msgstr[3] "%s ure"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: src/transitPlan.js:273
+#: src/transitPlan.js:286
 #, javascript-format
 msgid "%s:%s hour"
 msgid_plural "%s:%s hours"
@@ -2215,7 +2223,7 @@ msgstr[3] "%s:%s ure"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:586
+#: src/transitPlan.js:599
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
