@@ -52,7 +52,7 @@ blueprints = custom_target('blueprints',
     'ui/zoom-and-rotate-controls.blp',
   ),
   output: '.',
-  command: [find_program('blueprint-compiler', version: '>= 0.19'), 'batch-compile', '--minify', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
+  command: [blueprint_compiler, 'batch-compile', '--minify', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
 )
 
 data_gresource_config = configuration_data()

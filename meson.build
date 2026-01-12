@@ -43,6 +43,7 @@ gweather = dependency('gweather4', version: '>= 3.90.0')
 geocodeglib = dependency('geocode-glib-2.0', version: '>= 3.15.2')
 libportal = dependency('libportal')
 shumate = dependency('shumate-1.0', version: '>= 1.6.alpha')
+blueprint_compiler = find_program('blueprint-compiler', version: '>= 0.19')
 
 cc = meson.get_compiler('c')
 
