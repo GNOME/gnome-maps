@@ -26,19 +26,7 @@ import {CircleIconMarker} from './circleIconMarker.js';
 export class TransitWalkMarker extends CircleIconMarker {
 
     constructor({leg, previousLeg, ...params}) {
-        /* if there is a preceding leg, put the marker at the end of that leg
-         * to avoid gaps, since we will "fill out" the walking leg path line
-         * since sometimes the walking route might not reach exactly to the
-         * transit stop's position
-         */
-        let point;
-        if (previousLeg)
-            point = previousLeg.polyline[previousLeg.polyline.length - 1];
-        else
-            point = leg.polyline[0];
-
-        super({ latitude:  point.latitude,
-                longitude: point.longitude,
+        super({ place:     leg.from,
                 iconName:  'walking-symbolic',
                 ...params });
     }
