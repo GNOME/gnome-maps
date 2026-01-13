@@ -44,12 +44,12 @@ const DARK_OUTLINE_LUMINANCE_THREASHHOLD = 0.2;
 
 export class CircleIconMarker extends IconMarker {
 
-    constructor({ latitude, longitude, color, textColor, iconName,
+    constructor({ latitude, longitude, place, color, textColor, iconName,
                   markerSize = DEFAULT_MARKER_SIZE, ...params}) {
-        const location = new Location({ latitude:  latitude,
-                                        longitude: longitude });
-
-        super({...params, place: new Place({ location: location })});
+        super({ place: place ??
+                       new Place({ location: new Location({ latitude:  latitude,
+                                                            longitude: longitude }) }),
+                ...params });
 
         this._color = color;
         this._textColor = textColor;
