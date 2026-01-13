@@ -124,7 +124,7 @@ export function fetchArticleInfo(wiki, size, metadataCb, thumbnailCb) {
                                 /* don't go past first section header */
                                 exintro: 'yes',
                                 /* limit the length   */
-                                exchars: '200',
+                                exchars: '1200',
                                 /* for plain text rather than HTML */
                                 explaintext: 'yes',
 
