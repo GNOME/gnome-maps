@@ -31,22 +31,16 @@ import * as Utils from './utils.js';
 export class TurnPointMarker extends IconMarker {
 
     constructor({queryPoint, turnPoint, transitStop, transitLeg, ...params}) {
-        let latitude;
-        let longitude;
-
         if (turnPoint) {
-            latitude = turnPoint.coordinate.get_latitude();
-            longitude = turnPoint.coordinate.get_longitude();
+            const latitude = turnPoint.coordinate.get_latitude();
+            const longitude = turnPoint.coordinate.get_longitude();
+            const location = new Location({ latitude:  latitude,
+                                            longitude: longitude });
+
+            super({ ...params, place: new Place({ location: location }) });
         } else {
-            latitude = transitStop.location.latitude;
-            longitude = transitStop.location.longitude;
+            super({ ...params, place: transitStop });
         }
-
-        let place =
-            new Place({ location: new Location({ latitude: latitude,
-                                                 longitude: longitude }) });
-
-        super({...params, place: place});
 
         this._queryPoint = queryPoint;
 
