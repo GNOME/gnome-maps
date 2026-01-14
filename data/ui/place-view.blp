@@ -128,7 +128,11 @@ template $Gjs_PlaceView: Box {
         }
       }
 
-      Grid content {}
+      ScrolledWindow {
+        propagate-natural-height: true;
+
+        Grid content {}
+      }
     }
 
     Adw.Spinner spinner {}

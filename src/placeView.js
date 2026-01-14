@@ -53,6 +53,22 @@ const THUMBNAIL_FETCH_SIZE = 360;
 // Unicode left-to-right marker
 const LRM = '\u200E';
 
+function _formatWikiLabel(isAdaptive, text, uri, tooltipText) {
+    if (isAdaptive) {
+        text = text.substring(0, 200) + "...";
+    };
+
+    /* If the text goes past some number of characters (see
+        * wikipedia.js), it is ellipsized with '...'
+        * GNOME HIG says to use U+2026 HORIZONTAL ELLIPSIS instead.
+        * Also, trim whitespace. */
+    text = text.replace(/\s*\.\.\.\s*$/, '…');
+
+    /* Translators: This is the text for the "Wikipedia" link at the end
+        of summaries */
+    return `${text} <a href="${uri}" title="${tooltipText}">${ _("Wikipedia") }</a>`;
+}
+
 export class PlaceView extends Gtk.Box {
 
     constructor({place, mapView, inlineMode, ...params}) {
@@ -820,19 +836,21 @@ export class PlaceView extends Gtk.Box {
             let text = GLib.markup_escape_text(metadata.extract, -1);
             let link = this._formatWikiLink(wiki);
 
-            /* If the text goes past some number of characters (see
-             * wikipedia.js), it is ellipsized with '...'
-             * GNOME HIG says to use U+2026 HORIZONTAL ELLIPSIS instead.
-             * Also, trim whitespace. */
-            text = text.replace(/\s*\.\.\.\s*$/, '…');
-
             let uri = GLib.markup_escape_text(link, -1);
             /* double-escape the tooltip text, as GTK treats it as markup */
             let tooltipText = GLib.markup_escape_text(uri, -1);
 
-            /* Translators: This is the text for the "Wikipedia" link at the end
-               of summaries */
-            let label = `${text} <a href="${uri}" title="${tooltipText}">${ _("Wikipedia") }</a>`;
+            let label = _formatWikiLabel(
+                Application.application.adaptive_mode,
+                text,
+                uri,
+                tooltipText
+            );
+            Application.application.connect('notify::adaptive-mode', () => {
+                wikipediaLabel.label = _formatWikiLabel(
+                    Application.application.adaptive_mode, text, uri, tooltipText
+                );
+            });
 
             wikipediaLabel.label = label;
             box.marginTop = 12;
