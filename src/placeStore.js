@@ -25,6 +25,7 @@ import * as epaf from "./epaf.js";
 import { JsonStorage } from "./jsonStorage.js";
 import { Place } from "./place.js";
 import { StoredRoute } from "./storedRoute.js";
+import { TransitPlace } from './transitPlace.js';
 import * as Utils from "./utils.js";
 
 const _ONE_DAY = 1000 * 60 * 60 * 24; // one day in ms
@@ -406,6 +407,7 @@ export class PlaceStoreItem extends GObject.Object {
     static PlaceType = {
         PLACE: 1,
         ROUTE: 2,
+        TRANSIT_PLACE: 3,
     };
 
     /**
@@ -484,9 +486,11 @@ export class PlaceStoreItem extends GObject.Object {
 
     toJSON() {
         const type =
-            this._place instanceof StoredRoute
-                ? PlaceStoreItem.PlaceType.ROUTE
-                : PlaceStoreItem.PlaceType.PLACE;
+            this._place instanceof StoredRoute ?
+            PlaceStoreItem.PlaceType.ROUTE :
+            this._place instanceof TransitPlace ?
+            PlaceStoreItem.PlaceType.TRANSIT_PLACE :
+            PlaceStoreItem.PlaceType.PLACE;
 
         return {
             ...this._originalJSON,
@@ -508,6 +512,9 @@ export class PlaceStoreItem extends GObject.Object {
                 break;
             case PlaceStoreItem.PlaceType.ROUTE:
                 place = StoredRoute.fromJSON(json.place);
+                break;
+            case PlaceStoreItem.PlaceType.TRANSIT_PLACE:
+                place = TransitPlace.fromJSON(json.place);
                 break;
             default:
                 return null;
