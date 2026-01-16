@@ -539,10 +539,10 @@ export class Place extends GObject.Object {
         }
     }
 
-    static fromJSON(obj) {
-        let props = { };
+    static constructProperties(obj) {
+        const props = { };
 
-        for (let key in obj) {
+        for (const key in obj) {
             let prop = obj[key];
 
             switch(key) {
@@ -561,8 +561,14 @@ export class Place extends GObject.Object {
                     break;
             }
         }
+
         props.originalJson = obj;
-        return new Place(props);
+
+        return props;
+    }
+
+    static fromJSON(obj) {
+        return new Place(Place.constructProperties(obj));
     }
 
     static validateCoordinates(lat, lon) {
