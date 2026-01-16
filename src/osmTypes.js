@@ -26,6 +26,7 @@ const _ = gettext.gettext;
 import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
 
+import {TransitPlace} from './transitPlace.js';
 import * as Utils from './utils.js';
 
 const _RECENT_TYPES_STORE_FILE = 'maps-recent-types.json';
@@ -202,6 +203,13 @@ export function lookupType(key, value) {
 }
 
 export function getTypeNameForPlace(place) {
+    if (place instanceof TransitPlace) {
+        /* Translators: this is a generic title for public transit stops where
+         * the mode(s) of transportation is not well-known
+         */
+        return _("Public transportation stop");
+    }
+
     // special case for railway station types
     if (place.osmKey === 'railway') {
         switch (place.station) {
