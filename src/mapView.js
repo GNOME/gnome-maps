@@ -1013,6 +1013,9 @@ export class MapView extends Gtk.Overlay {
                                                       transitLeg: transitLeg,
                                                       mapView: this });
         this._instructionMarkerLayer.add_marker(this._turnPointMarker);
+        this._mainWindow.showPlace(transitStop,
+                                   Gtk.StackTransitionType.SLIDE_LEFT);
+        Application.application.selected_place = transitStop;
         this._turnPointMarker.goTo();
     }
 
