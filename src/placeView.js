@@ -35,7 +35,6 @@ import * as Gfx from './gfx.js';
 import {Overpass} from './overpass.js';
 import { getTypeNameForPlace } from './osmTypes.js';
 import {Place} from './place.js';
-import * as PlaceIcons from './placeIcons.js';
 import {PlaceViewImage} from './placeViewImage.js';
 import {PlaceButtons} from './placeButtons.js';
 import {PlaceFormatter} from './placeFormatter.js';
@@ -243,7 +242,7 @@ export class PlaceView extends Gtk.Box {
                     this._secondaryIcon.visible = false;
                 }
             } else {
-                this._icon.icon_name = PlaceIcons.getIconForPlace(place);
+                this._icon.icon_name = place.iconName;
                 this._icon.pixel_size = -1;
                 this._secondaryIcon.visible = false;
             }
@@ -308,7 +307,7 @@ export class PlaceView extends Gtk.Box {
                     this._secondarySourceIcon.visible = false;
                 }
             } else {
-                const iconName = PlaceIcons.getIconForPlace(place);
+                const iconName = place.iconName;
 
                 // don't dim the icon for non-symbolic (transit network) icons
                 if (iconName.endsWith('-symbolic'))
@@ -461,7 +460,7 @@ export class PlaceView extends Gtk.Box {
                      * (or similar) to be consumed elsewhere
                      */
                     content.push({ info: _("Offers takeout"),
-                                   icon: PlaceIcons.getIconForPlace(place) });
+                                   icon: place.iconName });
                     break;
                 case 'no':
                     /* Translators:
@@ -469,7 +468,7 @@ export class PlaceView extends Gtk.Box {
                      * meals (or similar) to be consumed on-premise.
                      */
                     content.push({ info: _("Does not offer takeout"),
-                                   icon: PlaceIcons.getIconForPlace(place) });
+                                   icon: place.iconName });
                     break;
                 case 'only':
                     /* Translators:
@@ -478,7 +477,7 @@ export class PlaceView extends Gtk.Box {
                      * there is no seating on-premise for eating/drinking
                      */
                     content.push({ info: _("Only offers takeout"),
-                                   icon: PlaceIcons.getIconForPlace(place) });
+                                   icon: place.iconName });
                     break;
             }
         }
