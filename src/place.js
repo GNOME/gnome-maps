@@ -430,10 +430,10 @@ export class Place extends GObject.Object {
     }
 
     get icon() {
-        return Gio.Icon.new_for_string(this._getIconName());
+        return Gio.Icon.new_for_string(this.iconName);
     }
 
-    _getIconName() {
+    get iconName() {
         return this.isRawCoordinates ? 'pin-location-symbolic' :
                                         PlaceIcons.getIconForPlace(this);
     }
