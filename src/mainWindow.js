@@ -153,8 +153,8 @@ export class MainWindow extends Adw.ApplicationWindow {
         Application.application.connect('notify::selected-place',
                                         () => this._onSelectedPlace());
 
-        this._backToPlaceButton.connect('clicked',
-                                        () => this._onBackToPlaceButtonClicked());
+        this._backButton.connect('clicked',
+                                 () => this._onBackButtonClicked());
         auxillaryView.stack.connect('notify::visible-child-name', () => {
             // hide the print button when the route view isn't showing
             if (auxillaryView.stack.visible_child_name === 'routeView')
@@ -614,7 +614,7 @@ export class MainWindow extends Adw.ApplicationWindow {
     }
 
     _openRoutePlanner() {
-        this._backToPlaceButton.visible = false;
+        this._backButton.visible = false;
         /* clear the place marker when showing the route planner from
          * the headerbar button (as opposed to when accessing it from
          * an already showing place
@@ -626,21 +626,27 @@ export class MainWindow extends Adw.ApplicationWindow {
     }
 
     _showRouting(transitionType) {
+        this._backButton.tooltip_text = _("View Place Information");
         // enable back button if place is currently shown
-        this._backToPlaceButton.visible = !!Application.application.selected_place;
+        this._backButton.visible = !!Application.application.selected_place;
         this._auxillaryView.showRouting(transitionType);
         this.splitView.show_sidebar = true;
         this._bottomSheet.open = true;
     }
 
-    _onBackToPlaceButtonClicked() {
-        this.showPlace(Application.application.selected_place,
-                        Gtk.StackTransitionType.SLIDE_RIGHT);
-        this._backToPlaceButton.visible = false;
+    _onBackButtonClicked() {
+        if (this._auxillaryView.stack.visible_child_name === 'routeView') {
+            this.showPlace(Application.application.selected_place,
+                           Gtk.StackTransitionType.SLIDE_RIGHT);
+        } else {
+            Application.application.selected_place = null;
+            this._showRouting(Gtk.StackTransitionType.SLIDE_RIGHT);
+        }
     }
 
     showPlace(place, transitionType) {
-        this._backToPlaceButton.visible = false;
+        this._backButton.tooltip_text = _("Show Route Planner");
+        this._backButton.visible = this._mapView.routeShowing;
         this._auxillaryView.showPlace(place, transitionType);
         this.splitView.show_sidebar = true;
         this._bottomSheet.open = true;
@@ -757,5 +763,5 @@ GObject.registerClass({
                         'breakpoint',
                         'licenseRevealer',
                         'printRouteButton',
-                        'backToPlaceButton' ]
+                        'backButton' ]
 }, MainWindow);
