@@ -483,7 +483,7 @@ export class MainWindow extends Adw.ApplicationWindow {
 
                 locationServiceToast.connect('button-clicked', () => {
                     let privacyInfo =
-                        Gio.DesktopAppInfo.new('gnome-location-panel.desktop');
+                        Gio.DesktopAppInfo.new('gnome-privacy-panel.desktop');
 
                     try {
                         let display = Gdk.Display.get_default();
