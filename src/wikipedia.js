@@ -306,7 +306,7 @@ function _onWikidataFetched(wikidata, defaultArticle, response, size,
     /* try to find articles in the order of the user's preferred
      * languages
      */
-    for (let language of _getLanguages()) {
+    for (let language of Utils.getLanguages()) {
         /* sitelinks appear under "sitelinks" in the form:
          * langwiki, e.g. "enwiki"
          */
@@ -420,7 +420,7 @@ function _onMetadataFetched(wiki, page, size, metadataCb, thumbnailCb) {
    the original article should be used. */
 function _findLanguageLink(wiki, page) {
     let originalLang = getLanguage(wiki);
-    let languages = _getLanguages();
+    let languages = Utils.getLanguages();
 
     if (!languages.includes(originalLang)) {
         let langlinks = {};
@@ -436,6 +436,3 @@ function _findLanguageLink(wiki, page) {
     }
 }
 
-function _getLanguages() {
-    return GLib.get_language_names().map((lang) => lang.split(/[\._\-]/)[0]);
-}
