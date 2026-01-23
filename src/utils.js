@@ -238,12 +238,21 @@ export function shouldShowImperialUnits() {
 }
 
 /**
+ * Get array of languages in use.
+ */
+export function getLanguages() {
+    const langs =
+        GLib.get_language_names().map((lang) => lang.split(/[\._\-]/)[0])
+                                 .filter((lang) => lang !== 'C');
+
+    return [...new Set(langs)];
+}
+
+/**
  * Get the highest priority bare lange currently in use.
  */
 export function getLanguage() {
-    let locale = GLib.get_language_names()[0];
-    // the last item returned is the "bare" language
-    return GLib.get_locale_variants(locale).slice(-1)[0];
+    return getLanguages()[0];
 }
 
 export function getAccuracyDescription(accuracy) {
