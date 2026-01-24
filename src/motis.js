@@ -88,6 +88,8 @@ export class Motis {
         const request = Soup.Message.new('GET', this._baseUrl + '/api/v5/plan?' +
                                          query.toString());
 
+        log(`query: ${query.toString()}`);
+
         // if trying to extend trips, and there was no page cursor, show no results
         const pageCursor =
             this._query.arriveBy ? this._previousCursor : this._nextCursor;
@@ -504,7 +506,8 @@ export class Motis {
         const to = this._query.filledPoints.last().place;
         const params = { fromPlace: this._getPlaceParamFromLocation(from),
                          toPlace:   this._getPlaceParamFromLocation(to),
-                         arriveBy:  this._query.arriveBy };
+                         arriveBy:  this._query.arriveBy,
+                         language:  Utils.getLanguages() };
 
         if (this._query.time)
             params.time = this._getTimeParam();
