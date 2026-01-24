@@ -504,7 +504,8 @@ export class Motis {
         const to = this._query.filledPoints.last().place;
         const params = { fromPlace: this._getPlaceParamFromLocation(from),
                          toPlace:   this._getPlaceParamFromLocation(to),
-                         arriveBy:  this._query.arriveBy };
+                         arriveBy:  this._query.arriveBy,
+                         language:  Utils.getLanguages().toString() };
 
         if (this._query.time)
             params.time = this._getTimeParam();
