@@ -660,7 +660,7 @@ export class MainWindow extends Adw.ApplicationWindow {
             'Mattias Bengtsson <mattias.jc.bengtsson@gmail.com>',
             'Jonas Danielsson <jonas@threetimestwo.org>',
             'Marcus Lundblad <ml@dfupdate.se>']);
-        about.set_copyright(_("Copyright © 2011 – 2025 Red Hat, Inc. and The GNOME Maps authors"));
+        about.set_copyright(_("Copyright © 2011 – 2026 Red Hat, Inc. and The GNOME Maps authors"));
         about.set_translator_credits(_("translator-credits"));
         this._addAttribution(about);
 
