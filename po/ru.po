@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-01-11 20:58+0000\n"
-"PO-Revision-Date: 2026-01-12 15:12+0300\n"
+"POT-Creation-Date: 2026-01-22 21:21+0000\n"
+"PO-Revision-Date: 2026-01-23 15:44+0300\n"
 "Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -339,7 +339,7 @@ msgid "Main Menu"
 msgstr "Главное меню"
 
 #. Translators: This is a tooltip
-#: data/ui/main-window.blp:169
+#: data/ui/main-window.blp:169 src/mainWindow.js:629
 msgid "View Place Information"
 msgstr "Просмотр информации о месте"
 
@@ -428,7 +428,7 @@ msgstr "Редактировать местоположение"
 msgid "Edit an existing location in OpenStreetMap"
 msgstr "Изменить существующее местоположение на OpenStreetMap"
 
-#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:731 src/motis.js:340
+#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:731 src/motis.js:366
 msgid "Continue"
 msgstr "Продолжить"
 
@@ -766,7 +766,7 @@ msgid "Zoom Out"
 msgstr "Отдалить"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1319
+#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1322
 msgid "Zoom In"
 msgstr "Приблизить"
 
@@ -852,11 +852,11 @@ msgstr "ошибка разбора"
 msgid "unknown geometry"
 msgstr "неизвестная геометрия"
 
-#: src/graphHopper.js:116 src/transitPlan.js:168
+#: src/graphHopper.js:116 src/transitPlan.js:169
 msgid "Route request failed."
 msgstr "Сбой при запросе маршрута."
 
-#: src/graphHopper.js:123 src/transitPlan.js:164
+#: src/graphHopper.js:123 src/transitPlan.js:165
 msgid "No route found."
 msgstr "Маршрут не найден."
 
@@ -876,11 +876,15 @@ msgstr "Включите службы определения местополо�
 msgid "Location Settings"
 msgstr "Параметры местоположения"
 
-#: src/mainWindow.js:657
+#: src/mainWindow.js:648
+msgid "Show Route Planner"
+msgstr "Показать планировщик маршрута"
+
+#: src/mainWindow.js:663
 msgid "Copyright © 2011 – 2025 Red Hat, Inc. and The GNOME Maps authors"
 msgstr "Авторское право © 2011 – 2025 Red Hat, Inc. и авторы GNOME Maps"
 
-#: src/mainWindow.js:658
+#: src/mainWindow.js:664
 msgid "translator-credits"
 msgstr ""
 "Yuri Myasoedov <ymyasoedov@yandex.ru>, 2013, 2014.\n"
@@ -888,16 +892,16 @@ msgstr ""
 "Alexey Rubtsov <rushills@gmail.com>, 2021\n"
 "Aleksandr Melman <alexmelman88@gmail.com>, 2022-2023"
 
-#: src/mainWindow.js:665
+#: src/mainWindow.js:671
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Картографические данные %s и участников"
 
-#: src/mainWindow.js:666
+#: src/mainWindow.js:672
 msgid "Map Data Provider"
 msgstr "Поставщик картографических данных"
 
-#: src/mainWindow.js:669
+#: src/mainWindow.js:675
 msgid "Map Tile Provider"
 msgstr "Поставщик картографического слоя"
 
@@ -906,25 +910,25 @@ msgstr "Поставщик картографического слоя"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:677
+#: src/mainWindow.js:683
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Картографические слои предоставлены %s"
 
-#: src/mainWindow.js:706
+#: src/mainWindow.js:712
 msgid "Search Provider"
 msgstr "Поставщик поиска"
 
-#: src/mainWindow.js:709
+#: src/mainWindow.js:715
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Поиск осуществляется %s с помощью %s"
 
-#: src/mainWindow.js:718
+#: src/mainWindow.js:724
 msgid "All Layer Files"
 msgstr "Все файлы слоёв"
 
-#: src/mainWindow.js:731
+#: src/mainWindow.js:737
 msgid "Open Shape Layers"
 msgstr "Открыть слои фигур"
 
@@ -957,128 +961,128 @@ msgstr "Тип файла не поддерживается"
 msgid "Failed to open GeoURI"
 msgstr "Не удалось открыть геолокационный URI"
 
-#: src/mapView.js:1318
+#: src/mapView.js:1321
 msgid "Zoom in to add location"
 msgstr "Приблизьте, чтобы добавить местоположение"
 
-#: src/mapView.js:1336
+#: src/mapView.js:1339
 msgid "Location was added in OpenStreetMap"
 msgstr "Местоположение было добавлено в OpenStreetMap"
 
-#: src/motis.js:303 src/transit.js:33 src/transit.js:85
+#: src/motis.js:329 src/transit.js:33 src/transit.js:85
 msgid "Start"
 msgstr "Отправление"
 
-#: src/motis.js:322 src/transit.js:41 src/transit.js:71
+#: src/motis.js:348 src/transit.js:41 src/transit.js:71
 msgid "Arrive"
 msgstr "Прибытие"
 
-#: src/motis.js:334
+#: src/motis.js:360
 #, javascript-format
 msgid "Take the stairs to level %s"
 msgstr "Поднимитесь по лестнице на %s этаж"
 
-#: src/motis.js:335
+#: src/motis.js:361
 msgid "Take the stairs"
 msgstr "Поднимитесь по лестнице"
 
-#: src/motis.js:339
+#: src/motis.js:365
 #, javascript-format
 msgid "Continue on %s"
 msgstr "Продолжайте %s"
 
-#: src/motis.js:344
+#: src/motis.js:370
 #, javascript-format
 msgid "Turn left on %s"
 msgstr "Поверните налево на %s"
 
-#: src/motis.js:345
+#: src/motis.js:371
 msgid "Turn left"
 msgstr "Поверните налево"
 
-#: src/motis.js:349
+#: src/motis.js:375
 #, javascript-format
 msgid "Turn slightly left on %s"
 msgstr "Поверните немного налево на %s"
 
-#: src/motis.js:350
+#: src/motis.js:376
 msgid "Turn slightly left"
 msgstr "Повернитесь немного влево"
 
-#: src/motis.js:354
+#: src/motis.js:380
 #, javascript-format
 msgid "Turn sharp left on %s"
 msgstr "Поверните резко налево на %s"
 
-#: src/motis.js:355
+#: src/motis.js:381
 msgid "Turn sharp left"
 msgstr "Повернитесь резко налево"
 
-#: src/motis.js:359
+#: src/motis.js:385
 #, javascript-format
 msgid "Turn right on %s"
 msgstr "Поверните направо на %s"
 
-#: src/motis.js:360
+#: src/motis.js:386
 msgid "Turn right"
 msgstr "Поверните направо"
 
-#: src/motis.js:364
+#: src/motis.js:390
 #, javascript-format
 msgid "Turn slightly right on %s"
 msgstr "Поверните немного направо на %s"
 
-#: src/motis.js:365
+#: src/motis.js:391
 msgid "Turn slightly right"
 msgstr "Поверните немного направо"
 
-#: src/motis.js:369
+#: src/motis.js:395
 #, javascript-format
 msgid "Turn sharp right on %s"
 msgstr "Поверните резко направо на %s"
 
-#: src/motis.js:370
+#: src/motis.js:396
 msgid "Turn sharp right"
 msgstr "Повернитесь резко направо"
 
-#: src/motis.js:377
+#: src/motis.js:403
 #, javascript-format
 msgid "At the roundabout, take exit %s"
 msgstr "На кольцевой развязке сверните на съезд %s"
 
-#: src/motis.js:380
+#: src/motis.js:406
 #, javascript-format
 msgid "At the roundabout, take exit to %s"
 msgstr "На кольцевой развязке сверните на %s"
 
-#: src/motis.js:382
+#: src/motis.js:408
 msgid "Take the roundabout"
 msgstr "Сверните на кольцевую развязку"
 
-#: src/motis.js:390
+#: src/motis.js:416
 #, javascript-format
 msgid "Take the elevator and get off at %s"
 msgstr "Поднимитесь на лифте и выйдите на %s"
 
-#: src/motis.js:391
+#: src/motis.js:417
 msgid "Take the elevator"
 msgstr "Поднимитесь на лифте"
 
-#: src/motis.js:395
+#: src/motis.js:421
 #, javascript-format
 msgid "Make a left u-turn onto %s"
 msgstr "Выполните левый разворот на %s"
 
-#: src/motis.js:396
+#: src/motis.js:422
 msgid "Make a left u-turn"
 msgstr "Выполните левый разворот"
 
-#: src/motis.js:400
+#: src/motis.js:426
 #, javascript-format
 msgid "Make a right u-turn onto %s"
 msgstr "Выполните правый разворот на %s"
 
-#: src/motis.js:401
+#: src/motis.js:427
 msgid "Make a right u-turn"
 msgstr "Разворот направо"
 
@@ -1146,11 +1150,11 @@ msgstr "Часы работы"
 msgid "Phone"
 msgstr "Телефон"
 
-#: src/osmEditDialog.js:151 src/placeView.js:380
+#: src/osmEditDialog.js:151 src/placeView.js:395
 msgid "Email"
 msgstr "Электронная почта"
 
-#: src/osmEditDialog.js:158 src/placeView.js:347
+#: src/osmEditDialog.js:158 src/placeView.js:362
 msgid "Website"
 msgstr "Веб-сайт"
 
@@ -1207,7 +1211,7 @@ msgstr "Разное"
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:197 src/osmEditDialog.js:802 src/placeView.js:835
+#: src/osmEditDialog.js:197 src/osmEditDialog.js:802 src/placeView.js:68
 msgid "Wikipedia"
 msgstr "Википедия"
 
@@ -1217,11 +1221,11 @@ msgstr "Википедия"
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:204 src/placeView.js:581
+#: src/osmEditDialog.js:204 src/placeView.js:596
 msgid "Population"
 msgstr "Население"
 
-#: src/osmEditDialog.js:209 src/placeView.js:610
+#: src/osmEditDialog.js:209 src/placeView.js:625
 msgid "Altitude"
 msgstr "Высота"
 
@@ -1389,119 +1393,126 @@ msgstr "Не удалось найти метку Викиданных для с
 #. Translators: This represents the title for places tagged with the
 #. * "aerialway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Aerialway
 #.
-#: src/osmTypes.js:45
+#: src/osmTypes.js:46
 msgid "Aerialway"
 msgstr "Канатная дорога"
 
 #. Translators: This represents the title for places tagged with the
 #. * "aeroway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Aeroway
 #.
-#: src/osmTypes.js:49
+#: src/osmTypes.js:50
 msgid "Aeroway"
 msgstr "Воздушный транспорт"
 
 #. Translators: This represents the title for places tagged with the
 #. * "amenity" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Amenity
 #.
-#: src/osmTypes.js:53
+#: src/osmTypes.js:54
 msgid "Amenity"
 msgstr "Благоустройство"
 
 #. Translators: This represents the title for places tagged with the
 #. * "barrier" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Barrier
 #.
-#: src/osmTypes.js:57
+#: src/osmTypes.js:58
 msgid "Barrier"
 msgstr "Преграда"
 
 #. Translators: This represents the title for places tagged with the
 #. * "highway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Highway
 #.
-#: src/osmTypes.js:61
+#: src/osmTypes.js:62
 msgid "Road"
 msgstr "Дорога"
 
 #. Translators: This represents the title for places tagged with the
 #. * "historic" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Historic
 #.
-#: src/osmTypes.js:65
+#: src/osmTypes.js:66
 msgid "Historic"
 msgstr "Историческое место"
 
 #. Translators: This represents the title for places tagged with the
 #. * "leisure" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Leisure
 #.
-#: src/osmTypes.js:69
+#: src/osmTypes.js:70
 msgid "Leisure"
 msgstr "Досуг"
 
 #. Translators: This represents the title for places tagged with the
 #. * "office" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Office
 #.
-#: src/osmTypes.js:73
+#: src/osmTypes.js:74
 msgid "Office"
 msgstr "Офис"
 
 #. Translators: This represents the title for places tagged with the
 #. * "place" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Place
 #.
-#: src/osmTypes.js:77
+#: src/osmTypes.js:78
 msgid "Place"
 msgstr "Местность"
 
 #. Translators: This represents the title for places tagged with the
 #. * "railway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Railway
 #.
-#: src/osmTypes.js:81
+#: src/osmTypes.js:82
 msgid "Railway"
 msgstr "Железная дорога"
 
 #. Translators: This represents the title for places tagged with the
 #. * "shop" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Shop
 #.
-#: src/osmTypes.js:85
+#: src/osmTypes.js:86
 msgid "Shop"
 msgstr "Магазин"
 
 #. Translators: This represents the title for places tagged with the
 #. * "tourism" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Tourism
 #.
-#: src/osmTypes.js:89 src/poiCategories.js:474
+#: src/osmTypes.js:90 src/poiCategories.js:474
 msgid "Tourism"
 msgstr "Туризм"
 
 #. Translators: "Other" refers to points-of-interest where we don't have
 #. * a known title corresponding to the raw OpenStreetMap tag
 #.
-#: src/osmTypes.js:101
+#: src/osmTypes.js:102
 msgid "Other"
 msgstr "Другой"
 
-#: src/osmTypes.js:209
+#. Translators: this is a generic title for public transit stops where
+#. * the mode(s) of transportation is not well-known
+#.
+#: src/osmTypes.js:210
+msgid "Public transportation stop"
+msgstr "Остановка общественного транспорта"
+
+#: src/osmTypes.js:217
 msgid "Funicular station"
 msgstr "Станция фуникулера"
 
-#: src/osmTypes.js:211
+#: src/osmTypes.js:219
 msgid "Light rail stop"
 msgstr "Остановка легкорельсового транспорта"
 
-#: src/osmTypes.js:213
+#: src/osmTypes.js:221
 msgid "Monorail station"
 msgstr "Станция монорельса"
 
-#: src/osmTypes.js:215 src/osmTypes.js:225
+#: src/osmTypes.js:223 src/osmTypes.js:233
 msgid "Railway station"
 msgstr "Железнодорожная станция"
 
-#: src/osmTypes.js:217
+#: src/osmTypes.js:225
 msgid "Subway station"
 msgstr "Станция метро"
 
-#: src/osmTypes.js:221
+#: src/osmTypes.js:229
 msgid "Railway halt"
 msgstr "Железнодорожная остановка"
 
-#: src/osmTypes.js:223
+#: src/osmTypes.js:231
 msgid "Tram stop"
 msgstr "Трамвайная остановка"
 
@@ -1521,7 +1532,7 @@ msgstr "Не удалось разобрать геолокационный URI"
 msgid "Failed to parse Maps URI"
 msgstr "Не удалось разобрать URI карт"
 
-#: src/placeFormatter.js:57 src/placeView.js:207 src/placeView.js:333
+#: src/placeFormatter.js:57 src/placeView.js:222 src/placeView.js:348
 msgid "Coordinates"
 msgstr "Координаты"
 
@@ -1539,12 +1550,12 @@ msgctxt "short distance format string"
 msgid "< %s"
 msgstr "< %s"
 
-#: src/placeView.js:339
+#: src/placeView.js:354
 msgid "Accuracy"
 msgstr "Точность"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:342
+#: src/placeView.js:357
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Точность: %s"
@@ -1555,7 +1566,7 @@ msgstr "Точность: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:361
+#: src/placeView.js:376
 msgid "Phone number"
 msgstr "Номер телефона"
 
@@ -1566,16 +1577,16 @@ msgstr "Номер телефона"
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
 #.
-#: src/placeView.js:395 src/placeView.js:434
+#: src/placeView.js:410 src/placeView.js:449
 msgid "Floor"
 msgstr "Этаж"
 
-#: src/placeView.js:397
+#: src/placeView.js:412
 #, javascript-format
 msgid "Floor %s"
 msgstr "Этаж %s"
 
-#: src/placeView.js:409
+#: src/placeView.js:424
 msgid "At ground level"
 msgstr "На уровне земли"
 
@@ -1584,7 +1595,7 @@ msgstr "На уровне земли"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:418
+#: src/placeView.js:433
 #, javascript-format
 msgid "%s floor above ground level"
 msgid_plural "%s floors above ground level"
@@ -1597,7 +1608,7 @@ msgstr[2] "%s этажей над уровнем земли"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:429
+#: src/placeView.js:444
 #, javascript-format
 msgid "%s floor below ground level"
 msgid_plural "%s floors below ground level"
@@ -1609,7 +1620,7 @@ msgstr[2] "%s этажей ниже уровня земли"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:447
+#: src/placeView.js:462
 msgid "Offers takeout"
 msgstr "Предлагает еду на вынос"
 
@@ -1617,7 +1628,7 @@ msgstr "Предлагает еду на вынос"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:455
+#: src/placeView.js:470
 msgid "Does not offer takeout"
 msgstr "Не предлагает еду на вынос"
 
@@ -1626,18 +1637,18 @@ msgstr "Не предлагает еду на вынос"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:464
+#: src/placeView.js:479
 msgid "Only offers takeout"
 msgstr "Только еда на вынос"
 
-#: src/placeView.js:471
+#: src/placeView.js:486
 msgid "Opening hours"
 msgstr "Часы работы"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:481
+#: src/placeView.js:496
 msgid "Public internet access"
 msgstr "Открытый доступ в Интернет"
 
@@ -1645,50 +1656,50 @@ msgstr "Открытый доступ в Интернет"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:490
+#: src/placeView.js:505
 msgid "No internet access"
 msgstr "Отсутствие доступа в Интернет"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:498
+#: src/placeView.js:513
 msgid "Public Wi-Fi"
 msgstr "Общественный Wi-Fi"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:506
+#: src/placeView.js:521
 msgid "Wired internet access"
 msgstr "Проводной доступ в Интернет"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:514
+#: src/placeView.js:529
 msgid "Computers available for use"
 msgstr "Компьютеры доступные для использования"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:522
+#: src/placeView.js:537
 msgid "Internet assistance available"
 msgstr "Доступна помощь в Интернете"
 
-#: src/placeView.js:528
+#: src/placeView.js:543
 msgid "No toilets available"
 msgstr "Туалеты отсутствуют"
 
-#: src/placeView.js:531
+#: src/placeView.js:546
 msgid "Toilets available"
 msgstr "Туалеты в наличии"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:540
+#: src/placeView.js:555
 msgid "Wheelchair accessible"
 msgstr "Доступность для инвалидных колясок"
 
@@ -1697,7 +1708,7 @@ msgstr "Доступность для инвалидных колясок"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:550
+#: src/placeView.js:565
 msgid "Limited wheelchair accessibility"
 msgstr "Ограниченная доступность для инвалидных колясок"
 
@@ -1705,7 +1716,7 @@ msgstr "Ограниченная доступность для инвалидн�
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:559
+#: src/placeView.js:574
 msgid "Not wheelchair accessible"
 msgstr "Не доступен для инвалидных колясок"
 
@@ -1714,7 +1725,7 @@ msgstr "Не доступен для инвалидных колясок"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:569
+#: src/placeView.js:584
 msgid "Designated for wheelchair users"
 msgstr "Предназначен для инвалидов-колясочников"
 
@@ -1723,7 +1734,7 @@ msgstr "Предназначен для инвалидов-колясочник�
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:600
+#: src/placeView.js:615
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s ниже уровня моря"
@@ -1732,16 +1743,16 @@ msgstr "%s ниже уровня моря"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:607
+#: src/placeView.js:622
 msgid "At sea level"
 msgstr "На уровне моря"
 
-#: src/placeView.js:619
+#: src/placeView.js:634
 msgid "Religion:"
 msgstr "Религия:"
 
 #. Translators: This refers to motorway junction exit (freeway exit)
-#: src/placeView.js:624
+#: src/placeView.js:639
 #, javascript-format
 msgid "Exit %s"
 msgstr "Выезд с %s"
@@ -1755,15 +1766,15 @@ msgctxt "coordinates"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/place.js:664
+#: src/place.js:670
 msgid "Place not found in OpenStreetMap"
 msgstr "Место не найдено в OpenStreetMap"
 
-#: src/place.js:671
+#: src/place.js:677
 msgid "Coordinates in URL are not valid"
 msgstr "Координаты в URL не действительны"
 
-#: src/place.js:680
+#: src/place.js:686
 msgid "URL is not supported"
 msgstr "URL не поддерживается"
 
@@ -2183,7 +2194,7 @@ msgstr "%e %b"
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:240
+#: src/transitPlan.js:241
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -2192,7 +2203,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: src/transitPlan.js:266
+#: src/transitPlan.js:267
 #, javascript-format
 msgid "%s minute"
 msgid_plural "%s minutes"
@@ -2204,7 +2215,7 @@ msgstr[2] "%s минут"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: src/transitPlan.js:278
+#: src/transitPlan.js:279
 #, javascript-format
 msgid "%s hour"
 msgid_plural "%s hours"
@@ -2216,7 +2227,7 @@ msgstr[2] "%s часов"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: src/transitPlan.js:286
+#: src/transitPlan.js:287
 #, javascript-format
 msgid "%s:%s hour"
 msgid_plural "%s:%s hours"
@@ -2230,7 +2241,7 @@ msgstr[2] "%s:%s часов"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:599
+#: src/transitPlan.js:598
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
