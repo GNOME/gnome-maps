@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2025-09-06 18:22+0000\n"
-"PO-Revision-Date: 2025-09-06 23:23+0300\n"
-"Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
+"POT-Creation-Date: 2026-02-11 20:45+0000\n"
+"PO-Revision-Date: 2026-02-12 22:43+0200\n"
+"Last-Translator: Aurimas Černius <aurimas.cernius@mailo.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "(n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Poedit 3.8\n"
 
 #. Translators: This is the program name.
 #. for some reason, setting the title of the window through the .ui
@@ -27,7 +27,7 @@ msgstr ""
 #. * overview.
 #.
 #: data/org.gnome.Maps.desktop.in.in:3 data/org.gnome.Maps.metainfo.xml.in.in:6
-#: data/ui/main-window.ui:49 src/application.js:62 src/mainWindow.js:118
+#: data/ui/main-window.blp:61 src/application.js:62 src/mainWindow.js:113
 msgid "Maps"
 msgstr "Žemėlapiai"
 
@@ -171,6 +171,14 @@ msgstr ""
 "„metric“ visada rodys metrinės sistemos vienetais, „imperial“ visada rodys "
 "imperinius vienetus)."
 
+#: data/org.gnome.Maps.gschema.xml:90
+msgid "Show location marker"
+msgstr "Rodyti vietos žymeklį"
+
+#: data/org.gnome.Maps.gschema.xml:91
+msgid "Whether to show the user location marker (when location is known)."
+msgstr "Ar rodyti naudotojo vietos žymeklį (kai vieta yra žinoma)."
+
 #: data/org.gnome.Maps.metainfo.xml.in.in:7
 msgid "Find places around the world"
 msgstr "Rasti vietas aplink pasaulį"
@@ -193,240 +201,272 @@ msgstr ""
 "Žemėlapiai naudoja OpenStreetMap duomenų bazę, kurią sukūrė tūkstančiai "
 "žmonių iš viso pasaulio."
 
+#: data/org.gnome.Maps.metainfo.xml.in.in:25
+#: data/org.gnome.Maps.metainfo.xml.in.in:41
+msgid "Map view"
+msgstr "Žemėlapio rodinys"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:29
+#: data/org.gnome.Maps.metainfo.xml.in.in:45
+msgid "Pedestrian route instructions"
+msgstr "Pėsčiojo ėjimo nurodymai"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:33
+#: data/org.gnome.Maps.metainfo.xml.in.in:49
+msgid "Information on a selected place"
+msgstr "Informacija apie pažymėtą vietą"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:37
+#: data/org.gnome.Maps.metainfo.xml.in.in:53
+msgid "Public transit itinerary"
+msgstr "Viešuoju transportu"
+
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.metainfo.xml.in.in:559
+#: data/org.gnome.Maps.metainfo.xml.in.in:631
 msgid "The GNOME Project"
 msgstr "GNOME projektas"
 
-#: data/ui/context-menu.ui:6
+#: data/ui/context-menu.blp:6
 msgid "Route from Here"
 msgstr "Maršrutas iš čia"
 
-#: data/ui/context-menu.ui:10
+#: data/ui/context-menu.blp:11
 msgid "Add Intermediate Destination"
 msgstr "Pridėti tarpinę stotelę"
 
-#: data/ui/context-menu.ui:14
+#: data/ui/context-menu.blp:16
 msgid "Route to Here"
 msgstr "Maršrutas į čia"
 
-#: data/ui/context-menu.ui:18
+#: data/ui/context-menu.blp:21
 msgid "Clear Current Route"
 msgstr "Išvalyti dabartinį kelią"
 
-#: data/ui/context-menu.ui:24
+#: data/ui/context-menu.blp:28
 msgid "Copy Location"
 msgstr "Kopijuoti vietą"
 
-#: data/ui/context-menu.ui:28
+#: data/ui/context-menu.blp:33
 msgid "Add to OpenStreetMap…"
 msgstr "Pridėti prie OpenStreetMap…"
 
 #. Translators: This is the title of the dialog for expoting the map view content to an image file
-#: data/ui/export-view-dialog.ui:7
+#: data/ui/export-view-dialog.blp:8
 msgid "Export View"
 msgstr "Eksportuoti rodinį"
 
-#: data/ui/export-view-dialog.ui:16 data/ui/osm-discard-dialog.ui:12
-#: data/ui/send-to-dialog.ui:10
+#: data/ui/export-view-dialog.blp:18 data/ui/osm-discard-dialog.blp:11
+#: data/ui/send-to-dialog.blp:15
 msgid "_Cancel"
 msgstr "_Atsisakyti"
 
-#: data/ui/export-view-dialog.ui:26
+#: data/ui/export-view-dialog.blp:29
 msgid "_Export"
 msgstr "_Eksportuoti"
 
 #. Translators: This is a tooltip
-#: data/ui/favorite-list-row.ui:72
+#: data/ui/favorite-list-row.blp:71
 msgid "Remove Favorite"
 msgstr "Pašalinti mėgiamiausią"
 
-#: data/ui/favorites-popover.ui:11
+#: data/ui/favorites-popover.blp:10
 msgid "No Favorites"
 msgstr "Nėra mėgiamiausių"
 
-#: data/ui/favorites-popover.ui:12
+#: data/ui/favorites-popover.blp:11
 msgid "Add places to your favorites to get them listed here"
 msgstr "Pridėkite vietas prie mėgiamiausių ir jas matysite čia"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:11 src/geoclue.js:106 src/placeBar.js:101
+#: data/ui/headerbar-left.blp:11 src/geoclue.js:106
 msgid "Current Location"
 msgstr "Dabartinė vieta"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-left.ui:19
+#: data/ui/headerbar-left.blp:19
 msgid "Layers"
 msgstr "Sluoksniai"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-right.ui:11
-msgid "Print Route"
-msgstr "Spausdinti kelią"
-
-#. Translators: This is a tooltip
-#: data/ui/headerbar-right.ui:21
+#: data/ui/headerbar-right.blp:10
 msgid "Favorites"
 msgstr "Mėgiamiausi"
 
 #. Translators: This is a tooltip
-#: data/ui/headerbar-right.ui:30
+#: data/ui/headerbar-right.blp:19
 msgid "Route Planner"
 msgstr "Maršruto planavimas"
 
-#: data/ui/layers-popover.ui:7
+#: data/ui/layers-popover.blp:6
 msgid "Show Scale"
 msgstr "Rodyti mastelį"
 
+#: data/ui/layers-popover.blp:11
+msgid "Show Location Marker"
+msgstr "Rodyti vietos žymeklį"
+
 #. Translators: This string uses ellipsis character
-#: data/ui/layers-popover.ui:16
+#: data/ui/layers-popover.blp:23
 msgid "Open Shape Layer…"
 msgstr "Atverti formos sluoksnį…"
 
-#: data/ui/main-window.ui:8
-msgid "Set up OpenStreetMap Account…"
-msgstr "Nusistatyti OpenStreetMap paskyrą…"
+#: data/ui/main-window.blp:8
+msgid "_Set up OpenStreetMap Account…"
+msgstr "_Nusistatyti OpenStreetMap paskyrą…"
 
-#: data/ui/main-window.ui:12
-msgid "Export as Image…"
-msgstr "Eksportuoti kaip paveikslėlį…"
+#: data/ui/main-window.blp:13
+msgid "_Export as Image…"
+msgstr "_Eksportuoti kaip paveikslėlį…"
 
 #. Translators: This is a submenu for selecting length measurements units
-#: data/ui/main-window.ui:17
+#: data/ui/main-window.blp:20
 msgid "Measurement Units"
 msgstr "Matavimo vienetai"
 
 #. Translators: This is a menu item for showing measurements in units corresponding to the system locale
-#: data/ui/main-window.ui:20
+#: data/ui/main-window.blp:25
 msgid "_System Default"
 msgstr "_Sistemos numatyti"
 
 #. Translators: This a menu item for showing measurements in metric units
-#: data/ui/main-window.ui:25
+#: data/ui/main-window.blp:32
 msgid "_Metric"
 msgstr "_Metriniai"
 
 #. Translators: This is a menu item for showing measurements in imperial units
-#: data/ui/main-window.ui:30
+#: data/ui/main-window.blp:39
 msgid "_Imperial"
 msgstr "_Imperiniai"
 
-#: data/ui/main-window.ui:39
+#: data/ui/main-window.blp:49
 msgid "_Keyboard Shortcuts"
 msgstr "_Klaviatūros trumpiniai"
 
-#: data/ui/main-window.ui:44
-msgid "About Maps"
-msgstr "Apie žemėlapius"
+#: data/ui/main-window.blp:55
+msgid "_About Maps"
+msgstr "_Apie žemėlapius"
 
-#: data/ui/main-window.ui:70
+#: data/ui/main-window.blp:125
 msgid "Main Menu"
 msgstr "Pagrindinis meniu"
 
-#: data/ui/osm-account-dialog.ui:5
+#. Translators: This is a tooltip
+#: data/ui/main-window.blp:169 src/mainWindow.js:629
+msgid "View Place Information"
+msgstr "Rodyti vietos informaciją"
+
+#. Translators: This is a tooltip
+#: data/ui/main-window.blp:178
+msgid "Print Route"
+msgstr "Spausdinti kelią"
+
+#. Translators: This is a tooltip
+#: data/ui/main-window.blp:188
+msgid "Close Sidebar"
+msgstr "Užverti šoninį polangį"
+
+#: data/ui/osm-account-dialog.blp:5
 msgid "OpenStreetMap Account"
 msgstr "OpenStreetMap paskyra"
 
-#: data/ui/osm-account-dialog.ui:31
+#: data/ui/osm-account-dialog.blp:22
 msgid "Sign In To Edit Maps"
 msgstr "Prisijunkite žemėlapiams redaguoti"
 
-#: data/ui/osm-account-dialog.ui:32
+#: data/ui/osm-account-dialog.blp:23
 msgid "Help to improve the map, using an OpenStreetMap account."
 msgstr "Padėkite tobulinti žemėlapį naudodami OpenStreetMap paskyrą."
 
-#: data/ui/osm-account-dialog.ui:36
+#: data/ui/osm-account-dialog.blp:26
 msgid "_Sign In"
 msgstr "_Prisijungti"
 
-#: data/ui/osm-account-dialog.ui:60
+#: data/ui/osm-account-dialog.blp:43
 msgid "Verification"
 msgstr "Tikrinimas"
 
-#: data/ui/osm-account-dialog.ui:61
+#: data/ui/osm-account-dialog.blp:44
 msgid ""
 "Copy the verification code shown when authorizing access in the browser."
 msgstr ""
 "Nukopijuokite rodomą patvirtinimo kodą leidžiant prieigą interneto "
 "naršyklėje."
 
-#: data/ui/osm-account-dialog.ui:70
+#: data/ui/osm-account-dialog.blp:51
 msgid "Verification Code"
 msgstr "Patvirtinimo kodas"
 
-#: data/ui/osm-account-dialog.ui:76
+#: data/ui/osm-account-dialog.blp:55
 msgid "_Verify"
 msgstr "_Patvirtinti"
 
-#: data/ui/osm-account-dialog.ui:112
+#: data/ui/osm-account-dialog.blp:81
 msgid "Signed In"
 msgstr "Prisijungta"
 
-#: data/ui/osm-account-dialog.ui:113
+#: data/ui/osm-account-dialog.blp:82
 msgid "Your OpenStreetMap account is active."
 msgstr "Jūsų OpenStreetMap paskyra yra aktyvi."
 
-#: data/ui/osm-account-dialog.ui:131
+#: data/ui/osm-account-dialog.blp:96
 msgid "_Sign Out"
 msgstr "_Atsijungti"
 
-#: data/ui/osm-discard-dialog.ui:5
+#: data/ui/osm-discard-dialog.blp:5
 msgid "Discard Changes?"
 msgstr "Atmesti pakeitimus?"
 
-#: data/ui/osm-discard-dialog.ui:6
+#: data/ui/osm-discard-dialog.blp:6
 msgid "Your current changes to the map will be lost"
 msgstr "Jūsų dabartiniai žemėlapio pakeitimai bus prarasti"
 
-#: data/ui/osm-discard-dialog.ui:13
+#: data/ui/osm-discard-dialog.blp:12
 msgid "_Discard"
 msgstr "_Atmesti"
 
-#: data/ui/osm-edit-dialog.ui:5
+#: data/ui/osm-edit-dialog.blp:5
 msgctxt "dialog title"
 msgid "Edit Location"
 msgstr "Redaguoti vietą"
 
-#: data/ui/osm-edit-dialog.ui:25
+#: data/ui/osm-edit-dialog.blp:19
 msgid "Loading…"
 msgstr "Įkeliama…"
 
-#: data/ui/osm-edit-dialog.ui:38 data/ui/osm-edit-dialog.ui:53
+#: data/ui/osm-edit-dialog.blp:26 data/ui/osm-edit-dialog.blp:37
 msgid "Edit Location"
 msgstr "Redaguoti vietą"
 
-#: data/ui/osm-edit-dialog.ui:54
+#: data/ui/osm-edit-dialog.blp:38
 msgid "Edit an existing location in OpenStreetMap"
 msgstr "Redaguoti dabartinę vietą OpenStreetMap"
 
-#: data/ui/osm-edit-dialog.ui:68 src/mapView.js:714
-#: src/transitplugins/motis2.js:367 src/transitplugins/openTripPlanner.js:1242
-#: src/transitplugins/openTripPlanner2.js:271
+#: data/ui/osm-edit-dialog.blp:50 src/mapView.js:731 src/motis.js:366
 msgid "Continue"
 msgstr "Tęsti"
 
-#: data/ui/osm-edit-dialog.ui:89
+#: data/ui/osm-edit-dialog.blp:63
 msgid "Location Type"
 msgstr "Vietos tipas"
 
 #. Translators: This refers to searching for point-of-interest types. Search is a verb.
-#: data/ui/osm-edit-dialog.ui:236
+#: data/ui/osm-edit-dialog.blp:172
 msgid "Search types"
 msgstr "Paieškos tipai"
 
-#: data/ui/osm-edit-dialog.ui:250
+#: data/ui/osm-edit-dialog.blp:184
 msgid "Recently Used Types"
 msgstr "Neseniai naudoti tipai"
 
-#: data/ui/osm-edit-dialog.ui:273
+#: data/ui/osm-edit-dialog.blp:195
 msgid "Edit Map"
 msgstr "Redaguoti žemėlapį"
 
-#: data/ui/osm-edit-dialog.ui:292
+#: data/ui/osm-edit-dialog.blp:209
 msgid "Almost There!"
 msgstr "Beveik vietoje!"
 
-#: data/ui/osm-edit-dialog.ui:293
+#: data/ui/osm-edit-dialog.blp:211
 msgid ""
 "Describe your map changes. They will be visible on all maps that use "
 "OpenStreetMap data."
@@ -434,173 +474,65 @@ msgstr ""
 "Apibūdinkite žemėlapio pakeitimus Jie bus matomi visuose žemėlapiuose, "
 "kuriuose naudojami OpenStreetMap duomenys."
 
-#: data/ui/osm-edit-dialog.ui:339
+#: data/ui/osm-edit-dialog.blp:248
 msgid "Submit"
 msgstr "Pateikti"
 
-#: data/ui/osm-edit-dialog.ui:366 src/osmEditDialog.js:238
+#: data/ui/osm-edit-dialog.blp:265 src/osmEditDialog.js:238
 #: src/osmEditDialog.js:560 src/osmEditDialog.js:953 src/translations.js:297
 msgid "None"
 msgstr "Nėra"
 
-#: data/ui/place-popover.ui:25 src/searchBar.js:69
+#: data/ui/place-popover.blp:29 src/searchBar.js:69
 msgid "Explore Nearby Places"
 msgstr "Naršyti gretimas vietas"
 
-#: data/ui/place-popover.ui:82 src/application.js:294
+#: data/ui/place-popover.blp:94 src/application.js:294
 msgid "No results found"
 msgstr "Nerasta rezultatų"
 
-#: data/ui/place-popover.ui:92 src/application.js:272
+#: data/ui/place-popover.blp:106 src/application.js:272
 msgid "An error has occurred"
 msgstr "Kilo klaida"
 
 #. Translators: This is a tooltip
-#: data/ui/route-entry.ui:12
+#: data/ui/route-entry.blp:12
 msgid "Change Route Order"
 msgstr "Keisti maršruto tvarką"
 
-#: data/ui/send-to-dialog.ui:7
-msgid "Open Location"
-msgstr "Atverti vietą"
-
-#: data/ui/send-to-dialog.ui:64
-msgid "C_opy"
-msgstr "K_opijuoti"
-
-#: data/ui/send-to-dialog.ui:71
-msgid "_Send To…"
-msgstr "_Siųsti…"
-
-#. Translators: This is a tooltip
-#: data/ui/shape-layer-row.ui:32
-msgid "Toggle visible"
-msgstr "Perjungti matomus"
-
-#. Translators: This is a tooltip
-#: data/ui/shape-layer-row.ui:44
-msgid "Remove Shape Layer"
-msgstr "Pašalinti formos sluoksnį"
-
-#: data/ui/shortcuts-dialog.ui:6
-msgctxt "shortcut window"
-msgid "General"
-msgstr "Bendra"
-
-#: data/ui/shortcuts-dialog.ui:9
-msgctxt "shortcut window"
-msgid "Show Shortcuts"
-msgstr "Rodyti trumpinius"
-
-#: data/ui/shortcuts-dialog.ui:15
-msgctxt "shortcut window"
-msgid "Search"
-msgstr "Ieškoti"
-
-#: data/ui/shortcuts-dialog.ui:21
-msgctxt "shortcut window"
-msgid "Explore points-of-interest"
-msgstr "Naršyti įdomias vietas"
-
-#: data/ui/shortcuts-dialog.ui:27
-msgctxt "shortcut window"
-msgid "Show last search results"
-msgstr "Rodyti paskutinės paieškos rezultatus"
-
-#: data/ui/shortcuts-dialog.ui:33
-msgctxt "shortcut window"
-msgid "Toggle route planner"
-msgstr "Perjungti maršruto planavimą"
-
-#: data/ui/shortcuts-dialog.ui:39
-msgctxt "shortcut window"
-msgid "Print route"
-msgstr "Spausdinti kelią"
-
-#: data/ui/shortcuts-dialog.ui:45
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Išeiti"
-
-#: data/ui/shortcuts-dialog.ui:51
-msgctxt "shortcut window"
-msgid "Open main menu"
-msgstr "Atverti pagrindinį meniu"
-
-#: data/ui/shortcuts-dialog.ui:59
-msgctxt "shortcut window"
-msgid "Map View"
-msgstr "Žemėlapio rodinys"
-
-#: data/ui/shortcuts-dialog.ui:62
-msgctxt "shortcut window"
-msgid "Zoom in"
-msgstr "Didinti"
-
-#: data/ui/shortcuts-dialog.ui:68
-msgctxt "shortcut window"
-msgid "Zoom out"
-msgstr "Mažinti"
-
-#: data/ui/shortcuts-dialog.ui:74
-msgctxt "shortcut window"
-msgid "Rotate clockwise"
-msgstr "Pasukti pagal laikrodžio rodyklę"
-
-#: data/ui/shortcuts-dialog.ui:80
-msgctxt "shortcut window"
-msgid "Rotate counter-clockwise"
-msgstr "Pasukti prieš laikrodžio rodyklę"
-
-#: data/ui/shortcuts-dialog.ui:86
-msgctxt "shortcut window"
-msgid "Reset rotation"
-msgstr "Atstatyti posūkį"
-
-#: data/ui/shortcuts-dialog.ui:92
-msgctxt "shortcut window"
-msgid "Toggle scale"
-msgstr "Perjungti skalę"
-
-#: data/ui/shortcuts-dialog.ui:98
-msgctxt "shortcut window"
-msgid "Go to current location"
-msgstr "Eiti į dabartinę vietą"
-
-#: data/ui/shortcuts-dialog.ui:104
-msgctxt "shortcut window"
-msgid "Open shape layer"
-msgstr "Atverti formos sluoksnį"
-
 #. Translators: This is the tooltip text for the button selecting the walking (pedestrian) routing mode
-#: data/ui/sidebar.ui:29
+#: data/ui/route-view.blp:15
 msgid "Walking"
 msgstr "Pėsčiomis"
 
 #. Translators: This is the tooltip text for the button selecting the cycling routing mode
-#: data/ui/sidebar.ui:36
+#: data/ui/route-view.blp:22
 msgid "Cycling"
 msgstr "Dviračiu"
 
 #. Translators: This is the tooltip text for the button selecting the driving (car) routing mode
-#: data/ui/sidebar.ui:43
+#: data/ui/route-view.blp:29
 msgid "Driving"
 msgstr "Automobiliu"
 
 #. Translators: This is the tooltip text for the button selecting the public transit routing mode
-#: data/ui/sidebar.ui:50
+#: data/ui/route-view.blp:36
 msgid "Public Transit"
 msgstr "Viešuoju transportu"
 
-#: data/ui/sidebar.ui:184
+#: data/ui/route-view.blp:154
 msgid "Route search by GraphHopper"
 msgstr "Maršruto paieška naudojant GraphHopper"
 
-#: data/ui/sidebar.ui:217
+#: data/ui/route-view.blp:172
+msgid "Itineraries provided by Transitous"
+msgstr "Teikėjus pateikė Transitous"
+
+#: data/ui/route-view.blp:190
 msgid "More Information"
 msgstr "Daugiau informacijos"
 
-#: data/ui/sidebar.ui:250
+#: data/ui/route-view.blp:221
 msgid ""
 "Routing itineraries for public transit is provided by third-party\n"
 "services.\n"
@@ -622,114 +554,229 @@ msgstr ""
 "Pavadinimai ir prekės ženklai yra laikomi registruotais prekyženkliais, kai "
 "taikoma."
 
-#: data/ui/sidebar.ui:274
+#: data/ui/route-view.blp:239
 msgid "Back"
 msgstr "Grįžti"
 
-#. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:99
-msgid "Hide intermediate stops and information"
-msgstr "Slėpti tarpines stoteles ir informaciją"
+#: data/ui/send-to-dialog.blp:5
+msgid "Open Location"
+msgstr "Atverti vietą"
+
+#: data/ui/send-to-dialog.blp:62
+msgid "C_opy"
+msgstr "K_opijuoti"
+
+#: data/ui/send-to-dialog.blp:68
+msgid "_Send To…"
+msgstr "_Siųsti…"
 
 #. Translators: This is a tooltip
-#: data/ui/transit-leg-row.ui:157
-msgid "Show intermediate stops and information"
-msgstr "Rodyti tarpines stoteles ir informaciją"
+#: data/ui/shape-layer-row.blp:33
+msgid "Toggle visible"
+msgstr "Perjungti matomus"
 
-#. Indicates searching for the next available itineraries
-#: data/ui/transit-options-panel.ui:17
+#. Translators: This is a tooltip
+#: data/ui/shape-layer-row.blp:46
+msgid "Remove Shape Layer"
+msgstr "Pašalinti formos sluoksnį"
+
+#: data/ui/shortcuts-dialog.blp:6
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Bendra"
+
+#: data/ui/shortcuts-dialog.blp:9
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Rodyti trumpinius"
+
+#: data/ui/shortcuts-dialog.blp:14
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Ieškoti"
+
+#: data/ui/shortcuts-dialog.blp:19
+msgctxt "shortcut window"
+msgid "Explore points-of-interest"
+msgstr "Naršyti įdomias vietas"
+
+#: data/ui/shortcuts-dialog.blp:24
+msgctxt "shortcut window"
+msgid "Show last search results"
+msgstr "Rodyti paskutinės paieškos rezultatus"
+
+#: data/ui/shortcuts-dialog.blp:29
+msgctxt "shortcut window"
+msgid "Show route planner"
+msgstr "Rodyti maršruto planavimą"
+
+#: data/ui/shortcuts-dialog.blp:34
+msgctxt "shortcut window"
+msgid "Print route"
+msgstr "Spausdinti kelią"
+
+#: data/ui/shortcuts-dialog.blp:39
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Išeiti"
+
+#: data/ui/shortcuts-dialog.blp:44
+msgctxt "shortcut window"
+msgid "Open main menu"
+msgstr "Atverti pagrindinį meniu"
+
+#: data/ui/shortcuts-dialog.blp:50
+msgctxt "shortcut window"
+msgid "Map View"
+msgstr "Žemėlapio rodinys"
+
+#: data/ui/shortcuts-dialog.blp:53
+msgctxt "shortcut window"
+msgid "Zoom in"
+msgstr "Didinti"
+
+#: data/ui/shortcuts-dialog.blp:58
+msgctxt "shortcut window"
+msgid "Zoom out"
+msgstr "Mažinti"
+
+#: data/ui/shortcuts-dialog.blp:63
+msgctxt "shortcut window"
+msgid "Rotate clockwise"
+msgstr "Pasukti pagal laikrodžio rodyklę"
+
+#: data/ui/shortcuts-dialog.blp:68
+msgctxt "shortcut window"
+msgid "Rotate counter-clockwise"
+msgstr "Pasukti prieš laikrodžio rodyklę"
+
+#: data/ui/shortcuts-dialog.blp:73
+msgctxt "shortcut window"
+msgid "Reset rotation"
+msgstr "Atstatyti posūkį"
+
+#: data/ui/shortcuts-dialog.blp:78
+msgctxt "shortcut window"
+msgid "Toggle scale"
+msgstr "Perjungti skalę"
+
+#: data/ui/shortcuts-dialog.blp:83
+msgctxt "shortcut window"
+msgid "Go to current location"
+msgstr "Eiti į dabartinę vietą"
+
+#: data/ui/shortcuts-dialog.blp:88
+msgctxt "shortcut window"
+msgid "Open shape layer"
+msgstr "Atverti formos sluoksnį"
+
+#: data/ui/shortcuts-dialog.blp:93
+msgctxt "shortcut window"
+msgid "Toggle location marker"
+msgstr "Perjungti vietos žymeklį"
+
+#. Translators: Indicates searching for the next available itineraries
+#: data/ui/transit-options-panel.blp:18
 msgid "Leave Now"
 msgstr "Išvykti dabar"
 
-#. Indicates searching for itineraries leaving at the specified time at the earliest
-#: data/ui/transit-options-panel.ui:18
+#. Translators: Indicates searching for itineraries leaving at the specified time at the earliest
+#: data/ui/transit-options-panel.blp:20
 msgid "Leave By"
 msgstr "Išvykti"
 
-#. Indicates searching for itineraries arriving no later than the specified time
-#: data/ui/transit-options-panel.ui:19
+#. Translators: Indicates searching for itineraries arriving no later than the specified time
+#: data/ui/transit-options-panel.blp:22
 msgid "Arrive By"
 msgstr "Atvykti"
 
-#: data/ui/transit-options-panel.ui:59
+#: data/ui/transit-options-panel.blp:61
 msgid "View More"
 msgstr "Rodyti daugiau"
 
-#. Header indicating selected modes of transit
-#: data/ui/transit-options-panel.ui:91
+#: data/ui/transit-options-panel.blp:123
+msgid "AM"
+msgstr "AM"
+
+#: data/ui/transit-options-panel.blp:128
+msgid "PM"
+msgstr "PM"
+
+#. Translators: Header indicating selected modes of transit
+#: data/ui/transit-options-panel.blp:149
 msgid "Show"
 msgstr "Rodyti"
 
-#: data/ui/transit-options-panel.ui:101
+#: data/ui/transit-options-panel.blp:159
 msgid "_Buses"
 msgstr "_Autobusai"
 
-#: data/ui/transit-options-panel.ui:108
+#: data/ui/transit-options-panel.blp:165
 msgid "_Trams"
 msgstr "_Tramvajai"
 
-#: data/ui/transit-options-panel.ui:115
+#: data/ui/transit-options-panel.blp:171
 msgid "T_rains"
 msgstr "T_raukiniai"
 
-#: data/ui/transit-options-panel.ui:122
+#: data/ui/transit-options-panel.blp:177
 msgid "_Subway"
 msgstr "_Metro"
 
-#: data/ui/transit-options-panel.ui:129
+#: data/ui/transit-options-panel.blp:183
 msgid "_Ferries"
 msgstr "_Keltai"
 
-#: data/ui/transit-options-panel.ui:136
+#: data/ui/transit-options-panel.blp:189
 msgid "_Airplanes"
 msgstr "_Lėktuvai"
 
 #. Translators: This is a tooltip
-#: data/ui/place-bar.ui:38 data/ui/place-buttons.ui:28
-msgid "Share Location"
-msgstr "Dalintis vieta"
-
-#. Translators: This is a tooltip
-#: data/ui/place-buttons.ui:11
+#: data/ui/place-buttons.blp:12
 msgid "Add to new route"
 msgstr "Pridėti naują maršrutą"
 
 #. Translators: This is the button to find a route to a place
-#: data/ui/place-buttons.ui:15
+#: data/ui/place-buttons.blp:17
 msgid "_Directions"
 msgstr "_Nuorodos"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.ui:37
+#: data/ui/place-buttons.blp:30
+msgid "Share Location"
+msgstr "Dalintis vieta"
+
+#. Translators: This is a tooltip
+#: data/ui/place-buttons.blp:39
 msgid "Mark as Favorite"
 msgstr "Pažymėti kaip mėgiamą"
 
 #. Translators: This is a tooltip
-#: data/ui/place-buttons.ui:48
+#: data/ui/place-buttons.blp:51
 msgid "Edit on OpenStreetMap"
 msgstr "Redaguoti OpenStreetMap"
 
 #. Translators: This is a tooltip
-#: data/ui/place-view.ui:66
+#: data/ui/place-view.blp:64
 msgid "Share location"
 msgstr "Dalintis vieta"
 
-#: data/ui/poi-category-goback-row.ui:22
+#: data/ui/poi-category-goback-row.blp:23
 msgid "Back to Main Categories"
 msgstr "Grįžti prie pagrindinių kategorijų"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:19
+#: data/ui/zoom-and-rotate-controls.blp:19
 msgid "Reset Rotation"
 msgstr "Atstatyti posūkį"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:32
+#: data/ui/zoom-and-rotate-controls.blp:32
 msgid "Zoom Out"
 msgstr "Atitolinti"
 
 #. Translators: This is a tooltip
-#: data/ui/zoom-and-rotate-controls.ui:43 src/mapView.js:1325
+#: data/ui/zoom-and-rotate-controls.blp:44 src/mapView.js:1322
 msgid "Zoom In"
 msgstr "Priartinti"
 
@@ -812,52 +859,54 @@ msgstr "perskaitymo klaida"
 msgid "unknown geometry"
 msgstr "nežinoma geometrija"
 
-#: src/graphHopper.js:116 src/transitPlan.js:177
+#: src/graphHopper.js:116 src/transitPlan.js:169
 msgid "Route request failed."
 msgstr "Nepavyko užklausti maršruto."
 
-#: src/graphHopper.js:123 src/transitPlan.js:169
+#: src/graphHopper.js:123 src/transitPlan.js:165
 msgid "No route found."
 msgstr "Maršrutas nerastas."
 
-#: src/graphHopper.js:210 src/transitplugins/openTripPlanner.js:1166
+#: src/graphHopper.js:210
 msgid "Start!"
 msgstr "Pradėti!"
 
-#: src/mainWindow.js:476
+#: src/mainWindow.js:531
 msgid "Failed to connect to location service"
 msgstr "Nepavyko prisijungti prie vietos tarnybos"
 
-#: src/mainWindow.js:481
+#: src/mainWindow.js:536
 msgid "Turn on location services"
 msgstr "Įjungti vietos tarnybas"
 
-#: src/mainWindow.js:482
+#: src/mainWindow.js:537
 msgid "Location Settings"
 msgstr "Vietos nustatymai"
 
-#: src/mainWindow.js:586
-msgid "Copyright © 2011 – 2025 Red Hat, Inc. and The GNOME Maps authors"
+#: src/mainWindow.js:648
+msgid "Show Route Planner"
+msgstr "Rodyti maršruto planavimą"
+
+#: src/mainWindow.js:663
+msgid "Copyright © 2011 – 2026 Red Hat, Inc. and The GNOME Maps authors"
 msgstr ""
-"Autorių teisės priklauso © 2011 – 2025 Red Hat, Inc. ir GNOME Žemėlapių "
+"Autorių teisės priklauso © 2011 – 2026 Red Hat, Inc. ir GNOME Žemėlapių "
 "autoriams"
 
-#: src/mainWindow.js:587
+#: src/mainWindow.js:664
 msgid "translator-credits"
-msgstr ""
-"Išvertė:\n"
-"Aurimas Černius <aurimas.cernius@mailo.com>"
+msgstr "Aurimas Černius <aurimas.cernius@mailo.com>"
 
-#: src/mainWindow.js:594
+#: src/mainWindow.js:671
 #, javascript-format
 msgid "Map data by %s and contributors"
 msgstr "Žemėlapio duomenys pagal %s ir talkininkus"
 
-#: src/mainWindow.js:595
+#: src/mainWindow.js:672
 msgid "Map Data Provider"
 msgstr "Žemėlapio duomenų tiekėjas"
 
-#: src/mainWindow.js:598
+#: src/mainWindow.js:675
 msgid "Map Tile Provider"
 msgstr "Žemėlapio plytelių tiekėjas"
 
@@ -866,62 +915,179 @@ msgstr "Žemėlapio plytelių tiekėjas"
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
 #.
-#: src/mainWindow.js:606
+#: src/mainWindow.js:683
 #, javascript-format
 msgid "Map tiles provided by %s"
 msgstr "Žemėlapio išklotinę pateikė %s"
 
-#: src/mainWindow.js:635
+#: src/mainWindow.js:712
 msgid "Search Provider"
 msgstr "Paieškos tiekėjas"
 
-#: src/mainWindow.js:638
+#: src/mainWindow.js:715
 #, javascript-format
 msgid "Search provided by %s using %s"
 msgstr "Paiešką teikia %s naudojant %s"
 
-#: src/mainWindow.js:647
+#: src/mainWindow.js:724
 msgid "All Layer Files"
 msgstr "Visi sluoksnių failai"
 
-#: src/mainWindow.js:660
+#: src/mainWindow.js:737
 msgid "Open Shape Layers"
 msgstr "Atverti formos sluoksnį"
 
-#: src/mapView.js:689 src/mapView.js:751
+#: src/mapView.js:706 src/mapView.js:768
 msgid "Failed to open layer"
 msgstr "Nepavyko atverti sluoksnio"
 
-#: src/mapView.js:706
+#: src/mapView.js:723
 msgid "Do you want to continue?"
 msgstr "Ar norite tęsti?"
 
-#: src/mapView.js:707
+#: src/mapView.js:724
 #, javascript-format
 msgid ""
 "You are about to open files with a total size of %s MB. This could take some "
 "time to load"
 msgstr "Ketinate atverti failus, kurų bendras dydis %s MB. Tai gali užtrukti"
 
-#: src/mapView.js:713
+#: src/mapView.js:730
 msgid "Cancel"
 msgstr "Atsisakyti"
 
-#: src/mapView.js:745
+#: src/mapView.js:762
 msgid "File type is not supported"
 msgstr "Failo tipas yra nepalaikomas"
 
-#: src/mapView.js:787
+#: src/mapView.js:801
 msgid "Failed to open GeoURI"
 msgstr "Nepavyko atverti GeoURI"
 
-#: src/mapView.js:1324
+#: src/mapView.js:1321
 msgid "Zoom in to add location"
 msgstr "Pritraukti vietos pridėjimui"
 
-#: src/mapView.js:1342
+#: src/mapView.js:1339
 msgid "Location was added in OpenStreetMap"
 msgstr "Vieta buvo pridėta į OpenStreetMap"
+
+#: src/motis.js:329 src/transit.js:33 src/transit.js:85
+msgid "Start"
+msgstr "Pradėkite"
+
+#: src/motis.js:348 src/transit.js:41 src/transit.js:71
+msgid "Arrive"
+msgstr "Atvykti"
+
+#: src/motis.js:360
+#, javascript-format
+msgid "Take the stairs to level %s"
+msgstr "Kilkite laiptais į %s aukštą"
+
+#: src/motis.js:361
+msgid "Take the stairs"
+msgstr "Kilkite laiptais"
+
+#: src/motis.js:365
+#, javascript-format
+msgid "Continue on %s"
+msgstr "Tęsti %s"
+
+#: src/motis.js:370
+#, javascript-format
+msgid "Turn left on %s"
+msgstr "Sukti kairėn ties %s"
+
+#: src/motis.js:371
+msgid "Turn left"
+msgstr "Sukti kairėn"
+
+#: src/motis.js:375
+#, javascript-format
+msgid "Turn slightly left on %s"
+msgstr "Sukti kairiau ties %s"
+
+#: src/motis.js:376
+msgid "Turn slightly left"
+msgstr "Sukti kairiau"
+
+#: src/motis.js:380
+#, javascript-format
+msgid "Turn sharp left on %s"
+msgstr "Staigiai sukti į kairėn ties %s"
+
+#: src/motis.js:381
+msgid "Turn sharp left"
+msgstr "Staigiai sukti į kairėn"
+
+#: src/motis.js:385
+#, javascript-format
+msgid "Turn right on %s"
+msgstr "Sukti dešinėn ties %s"
+
+#: src/motis.js:386
+msgid "Turn right"
+msgstr "Sukti dešinėn"
+
+#: src/motis.js:390
+#, javascript-format
+msgid "Turn slightly right on %s"
+msgstr "Sukti dešiniau ties %s"
+
+#: src/motis.js:391
+msgid "Turn slightly right"
+msgstr "Sukti dešiniau"
+
+#: src/motis.js:395
+#, javascript-format
+msgid "Turn sharp right on %s"
+msgstr "Staigiai sukti dešinėn ties %s"
+
+#: src/motis.js:396
+msgid "Turn sharp right"
+msgstr "Staigiai sukti dešinėn"
+
+#: src/motis.js:403
+#, javascript-format
+msgid "At the roundabout, take exit %s"
+msgstr "Žiede pasirinkite %s išvažiavimą"
+
+#: src/motis.js:406
+#, javascript-format
+msgid "At the roundabout, take exit to %s"
+msgstr "Žiede pasirinkite išvažiavimą į %s"
+
+#: src/motis.js:408
+msgid "Take the roundabout"
+msgstr "Įvažiuokite į žiedą"
+
+#: src/motis.js:416
+#, javascript-format
+msgid "Take the elevator and get off at %s"
+msgstr "Liftu pasikelkite į %s"
+
+#: src/motis.js:417
+msgid "Take the elevator"
+msgstr "Kilkite liftu"
+
+#: src/motis.js:421
+#, javascript-format
+msgid "Make a left u-turn onto %s"
+msgstr "Apsisukite į %s"
+
+#: src/motis.js:422
+msgid "Make a left u-turn"
+msgstr "Apsisukite"
+
+#: src/motis.js:426
+#, javascript-format
+msgid "Make a right u-turn onto %s"
+msgstr "Apsisukite į dešinę į %s"
+
+#: src/motis.js:427
+msgid "Make a right u-turn"
+msgstr "Apsisukite į dešinę"
 
 #. switch back to the sign-in view, and show a toast indicating
 #. that verification failed
@@ -987,11 +1153,11 @@ msgstr "Darbo laikas"
 msgid "Phone"
 msgstr "Telefonas"
 
-#: src/osmEditDialog.js:151 src/placeView.js:416
+#: src/osmEditDialog.js:151 src/placeView.js:395
 msgid "Email"
 msgstr "El. paštas"
 
-#: src/osmEditDialog.js:158 src/placeView.js:383
+#: src/osmEditDialog.js:158 src/placeView.js:362
 msgid "Website"
 msgstr "Tinklalapis"
 
@@ -1048,7 +1214,7 @@ msgstr "Įvairūs"
 
 #. Translators: This is the text for the "Wikipedia" link at the end
 #. of summaries
-#: src/osmEditDialog.js:197 src/osmEditDialog.js:802 src/placeView.js:871
+#: src/osmEditDialog.js:197 src/osmEditDialog.js:802 src/placeView.js:68
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -1058,11 +1224,11 @@ msgstr "Wikipedia"
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
 #.
-#: src/osmEditDialog.js:204 src/placeView.js:617
+#: src/osmEditDialog.js:204 src/placeView.js:596
 msgid "Population"
 msgstr "Gyventojų skaičius"
 
-#: src/osmEditDialog.js:209 src/placeView.js:646
+#: src/osmEditDialog.js:209 src/placeView.js:625
 msgid "Altitude"
 msgstr "Aukštis"
 
@@ -1230,119 +1396,126 @@ msgstr "Nepavyko rasti straipsnio Wikidata žymos"
 #. Translators: This represents the title for places tagged with the
 #. * "aerialway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Aerialway
 #.
-#: src/osmTypes.js:45
+#: src/osmTypes.js:46
 msgid "Aerialway"
 msgstr "Oro kelias"
 
 #. Translators: This represents the title for places tagged with the
 #. * "aeroway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Aeroway
 #.
-#: src/osmTypes.js:49
+#: src/osmTypes.js:50
 msgid "Aeroway"
 msgstr "Aerokelias"
 
 #. Translators: This represents the title for places tagged with the
 #. * "amenity" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Amenity
 #.
-#: src/osmTypes.js:53
+#: src/osmTypes.js:54
 msgid "Amenity"
 msgstr "Patogumai"
 
 #. Translators: This represents the title for places tagged with the
 #. * "barrier" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Barrier
 #.
-#: src/osmTypes.js:57
+#: src/osmTypes.js:58
 msgid "Barrier"
 msgstr "Barjeras"
 
 #. Translators: This represents the title for places tagged with the
 #. * "highway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Highway
 #.
-#: src/osmTypes.js:61
+#: src/osmTypes.js:62
 msgid "Road"
 msgstr "Kelias"
 
 #. Translators: This represents the title for places tagged with the
 #. * "historic" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Historic
 #.
-#: src/osmTypes.js:65
+#: src/osmTypes.js:66
 msgid "Historic"
 msgstr "Istorinis"
 
 #. Translators: This represents the title for places tagged with the
 #. * "leisure" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Leisure
 #.
-#: src/osmTypes.js:69
+#: src/osmTypes.js:70
 msgid "Leisure"
 msgstr "Malonumai"
 
 #. Translators: This represents the title for places tagged with the
 #. * "office" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Office
 #.
-#: src/osmTypes.js:73
+#: src/osmTypes.js:74
 msgid "Office"
 msgstr "Biuras"
 
 #. Translators: This represents the title for places tagged with the
 #. * "place" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Place
 #.
-#: src/osmTypes.js:77
+#: src/osmTypes.js:78
 msgid "Place"
 msgstr "Vieta"
 
 #. Translators: This represents the title for places tagged with the
 #. * "railway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Railway
 #.
-#: src/osmTypes.js:81
+#: src/osmTypes.js:82
 msgid "Railway"
 msgstr "Geležinkelis"
 
 #. Translators: This represents the title for places tagged with the
 #. * "shop" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Shop
 #.
-#: src/osmTypes.js:85
+#: src/osmTypes.js:86
 msgid "Shop"
 msgstr "Parduotuvė"
 
 #. Translators: This represents the title for places tagged with the
 #. * "tourism" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Tourism
 #.
-#: src/osmTypes.js:89 src/poiCategories.js:474
+#: src/osmTypes.js:90 src/poiCategories.js:474
 msgid "Tourism"
 msgstr "Turizmas"
 
 #. Translators: "Other" refers to points-of-interest where we don't have
 #. * a known title corresponding to the raw OpenStreetMap tag
 #.
-#: src/osmTypes.js:101
+#: src/osmTypes.js:102
 msgid "Other"
 msgstr "Kita"
 
-#: src/osmTypes.js:209
+#. Translators: this is a generic title for public transit stops where
+#. * the mode(s) of transportation is not well-known
+#.
+#: src/osmTypes.js:210
+msgid "Public transportation stop"
+msgstr "Viešojo transporto stotelė"
+
+#: src/osmTypes.js:217
 msgid "Funicular station"
 msgstr "Funikulieriaus stotelė"
 
-#: src/osmTypes.js:211
+#: src/osmTypes.js:219
 msgid "Light rail stop"
 msgstr "Lengvojo traukinio stotelė"
 
-#: src/osmTypes.js:213
+#: src/osmTypes.js:221
 msgid "Monorail station"
 msgstr "Vienbėgio traukinio stotis"
 
-#: src/osmTypes.js:215 src/osmTypes.js:225
+#: src/osmTypes.js:223 src/osmTypes.js:233
 msgid "Railway station"
 msgstr "Geležinkelio stotis"
 
-#: src/osmTypes.js:217
+#: src/osmTypes.js:225
 msgid "Subway station"
 msgstr "Metro stotis"
 
-#: src/osmTypes.js:221
+#: src/osmTypes.js:229
 msgid "Railway halt"
 msgstr "Geležinkelio stotelė"
 
-#: src/osmTypes.js:223
+#: src/osmTypes.js:231
 msgid "Tram stop"
 msgstr "Tramvajaus stotelė"
 
@@ -1350,19 +1523,19 @@ msgstr "Tramvajaus stotelė"
 msgid "Unnamed place"
 msgstr "Nepavadinta vieta"
 
-#: src/placeEntry.js:150
+#: src/placeEntry.js:148
 msgid "Clear Entry"
 msgstr "Išvalyti lauką"
 
-#: src/placeEntry.js:321
+#: src/placeEntry.js:319
 msgid "Failed to parse Geo URI"
 msgstr "Nepavyko perskaityti Geo URI"
 
-#: src/placeEntry.js:334
+#: src/placeEntry.js:332
 msgid "Failed to parse Maps URI"
 msgstr "Nepavyko perskaityti Žemėlapių URI"
 
-#: src/placeFormatter.js:57 src/placeView.js:243 src/placeView.js:369
+#: src/placeFormatter.js:57 src/placeView.js:222 src/placeView.js:348
 msgid "Coordinates"
 msgstr "Koordinatės"
 
@@ -1380,12 +1553,12 @@ msgctxt "short distance format string"
 msgid "< %s"
 msgstr "< %s"
 
-#: src/placeView.js:375
+#: src/placeView.js:354
 msgid "Accuracy"
 msgstr "Tikslumas"
 
 #. Translators: %s can be "Unknown", "Exact" or "%f km" (or ft/mi/m)
-#: src/placeView.js:378
+#: src/placeView.js:357
 #, javascript-format
 msgid "Accuracy: %s"
 msgstr "Tikslumas: %s"
@@ -1396,7 +1569,7 @@ msgstr "Tikslumas: %s"
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
 #.
-#: src/placeView.js:397
+#: src/placeView.js:376
 msgid "Phone number"
 msgstr "Telefono numeris"
 
@@ -1407,16 +1580,16 @@ msgstr "Telefono numeris"
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
 #.
-#: src/placeView.js:431 src/placeView.js:470
+#: src/placeView.js:410 src/placeView.js:449
 msgid "Floor"
 msgstr "Aukštas"
 
-#: src/placeView.js:433
+#: src/placeView.js:412
 #, javascript-format
 msgid "Floor %s"
 msgstr "Aukštas %s"
 
-#: src/placeView.js:445
+#: src/placeView.js:424
 msgid "At ground level"
 msgstr "Pirmame aukšte"
 
@@ -1425,7 +1598,7 @@ msgstr "Pirmame aukšte"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:454
+#: src/placeView.js:433
 #, javascript-format
 msgid "%s floor above ground level"
 msgid_plural "%s floors above ground level"
@@ -1438,7 +1611,7 @@ msgstr[2] "%s aukšte virš vestibiulio"
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
 #.
-#: src/placeView.js:465
+#: src/placeView.js:444
 #, javascript-format
 msgid "%s floor below ground level"
 msgid_plural "%s floors below ground level"
@@ -1450,7 +1623,7 @@ msgstr[2] "%s aukšte žemiau vestibiulio"
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
 #.
-#: src/placeView.js:483
+#: src/placeView.js:462
 msgid "Offers takeout"
 msgstr "Siūlo išsinešti"
 
@@ -1458,7 +1631,7 @@ msgstr "Siūlo išsinešti"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
 #.
-#: src/placeView.js:491
+#: src/placeView.js:470
 msgid "Does not offer takeout"
 msgstr "Nesiūlo išsinešti"
 
@@ -1467,18 +1640,18 @@ msgstr "Nesiūlo išsinešti"
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
 #.
-#: src/placeView.js:500
+#: src/placeView.js:479
 msgid "Only offers takeout"
 msgstr "Siūlo tik išsinešti"
 
-#: src/placeView.js:507
+#: src/placeView.js:486
 msgid "Opening hours"
 msgstr "Darbo laikas"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
 #.
-#: src/placeView.js:517
+#: src/placeView.js:496
 msgid "Public internet access"
 msgstr "Vieša interneto prieiga"
 
@@ -1486,50 +1659,50 @@ msgstr "Vieša interneto prieiga"
 #. * no internet access is offered in a place where
 #. * someone might expect it.
 #.
-#: src/placeView.js:526
+#: src/placeView.js:505
 msgid "No internet access"
 msgstr "Nėra interneto prieigos"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
 #.
-#: src/placeView.js:534
+#: src/placeView.js:513
 msgid "Public Wi-Fi"
 msgstr "Viešas Wi-Fi"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
 #.
-#: src/placeView.js:542
+#: src/placeView.js:521
 msgid "Wired internet access"
 msgstr "Laidinė interneto prieiga"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
 #.
-#: src/placeView.js:550
+#: src/placeView.js:529
 msgid "Computers available for use"
 msgstr "Prieinami kompiuteriai naudojimui"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
 #.
-#: src/placeView.js:558
+#: src/placeView.js:537
 msgid "Internet assistance available"
 msgstr "Yra interneto asistentas"
 
-#: src/placeView.js:564
+#: src/placeView.js:543
 msgid "No toilets available"
 msgstr "Nėra tualetų"
 
-#: src/placeView.js:567
+#: src/placeView.js:546
 msgid "Toilets available"
 msgstr "Yra tualetai"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
 #.
-#: src/placeView.js:576
+#: src/placeView.js:555
 msgid "Wheelchair accessible"
 msgstr "Prieiga neįgaliųjų vežimėliais"
 
@@ -1538,7 +1711,7 @@ msgstr "Prieiga neįgaliųjų vežimėliais"
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
 #.
-#: src/placeView.js:586
+#: src/placeView.js:565
 msgid "Limited wheelchair accessibility"
 msgstr "Ribota prieiga neįgaliųjų vežimėliais"
 
@@ -1546,7 +1719,7 @@ msgstr "Ribota prieiga neįgaliųjų vežimėliais"
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
 #.
-#: src/placeView.js:595
+#: src/placeView.js:574
 msgid "Not wheelchair accessible"
 msgstr "Nėra prieigos neįgaliųjų vežimėliais"
 
@@ -1555,7 +1728,7 @@ msgstr "Nėra prieigos neįgaliųjų vežimėliais"
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
 #.
-#: src/placeView.js:605
+#: src/placeView.js:584
 msgid "Designated for wheelchair users"
 msgstr "Sukurta neįgaliųjų vežimėlių naudotojams"
 
@@ -1564,7 +1737,7 @@ msgstr "Sukurta neįgaliųjų vežimėlių naudotojams"
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
 #.
-#: src/placeView.js:636
+#: src/placeView.js:615
 #, javascript-format
 msgid "%s below sea level"
 msgstr "%s žemiau jūros lygio"
@@ -1573,16 +1746,16 @@ msgstr "%s žemiau jūros lygio"
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
 #.
-#: src/placeView.js:643
+#: src/placeView.js:622
 msgid "At sea level"
 msgstr "Jūros lygyje"
 
-#: src/placeView.js:655
+#: src/placeView.js:634
 msgid "Religion:"
 msgstr "Religija:"
 
 #. Translators: This refers to motorway junction exit (freeway exit)
-#: src/placeView.js:660
+#: src/placeView.js:639
 #, javascript-format
 msgid "Exit %s"
 msgstr "Išeiti %s"
@@ -1596,15 +1769,15 @@ msgctxt "coordinates"
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: src/place.js:664
+#: src/place.js:670
 msgid "Place not found in OpenStreetMap"
 msgstr "Vieta nerasta OpenStreetMap"
 
-#: src/place.js:671
+#: src/place.js:677
 msgid "Coordinates in URL are not valid"
 msgstr "Koordinatės URL yra netinkamos"
 
-#: src/place.js:680
+#: src/place.js:686
 msgid "URL is not supported"
 msgstr "URL yra nepalaikomas"
 
@@ -1924,22 +2097,28 @@ msgstr "Atgalinis maršrutas"
 msgid "To"
 msgstr "Į"
 
+#. Translators: %s is a time expression with the format "%f h" or "%f min"
+#: src/routeView.js:341
+#, javascript-format
+msgid "Estimated time: %s"
+msgstr "Įvertintas laikas: %s"
+
 #: src/searchBar.js:42
 msgid "Search"
 msgstr "Ieškoti"
 
 #. Translators: The first string is the name of the city, the
 #. second string is the name of the app to add it to
-#: src/sendToDialog.js:88
+#: src/sendToDialog.js:83
 #, javascript-format
 msgid "Add %s to %s"
 msgstr "Pridėti %s į %s"
 
-#: src/sendToDialog.js:187
+#: src/sendToDialog.js:182
 msgid "Failed to open URI"
 msgstr "Nepavyko atverti URI"
 
-#: src/sendToDialog.js:252
+#: src/sendToDialog.js:247
 #, javascript-format
 msgid "Open with %s"
 msgstr "Atverti su %s"
@@ -1948,38 +2127,10 @@ msgstr "Atverti su %s"
 msgid "failed to load file"
 msgstr "nepavyko įkelti failo"
 
-#. Translators: %s is a time expression with the format "%f h" or "%f min"
-#: src/sidebar.js:343
-#, javascript-format
-msgid "Estimated time: %s"
-msgstr "Įvertintas laikas: %s"
-
-#: src/sidebar.js:413
-#, javascript-format
-msgid "Itineraries provided by %s"
-msgstr "Teikėjus pateikė %s"
-
-#. Translators: this is a format string indicating instructions
-#. * starting a journey at the address given as the parameter
-#.
-#: src/transit.js:39
-#, javascript-format
-msgid "Start at %s"
-msgstr "Pradėkite ties %s"
-
-#. Translators: this indicates starting a journey at a location
-#. * with no set name (such as when the user started routing from
-#. * an arbitrary point on the map)
-#.
-#: src/transit.js:45 src/transitplugins/motis2.js:330
-#: src/transitplugins/openTripPlanner2.js:240
-msgid "Start"
-msgstr "Pradėkite"
-
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
 #.
-#: src/transit.js:63
+#: src/transit.js:55
 #, javascript-format
 msgid "Walk %s"
 msgstr "Nueikite %s"
@@ -1987,24 +2138,34 @@ msgstr "Nueikite %s"
 #. Translators: this a format string indicating arriving at the
 #. * destination of journey with the arrival address and transit
 #. * stop as the format parameter
-#: src/transit.js:77
+#: src/transit.js:69
 #, javascript-format
 msgid "Arrive at %s"
 msgstr "Atvykti ties %s"
 
-#: src/transit.js:79 src/transitplugins/motis2.js:349
-#: src/transitplugins/openTripPlanner.js:1179
-#: src/transitplugins/openTripPlanner2.js:259
-msgid "Arrive"
-msgstr "Atvykti"
+#. Translators: this a format string indicating departing from the
+#. * destination of journey with the departure address and transit
+#. * stop as the format parameter
+#: src/transit.js:83
+#, javascript-format
+msgid "Start at %s"
+msgstr "Pradėkite ties %s"
 
-#: src/transitLegRow.js:70
-msgid "Show walking instructions"
-msgstr "Rodyti ėjimo nurodymus"
+#: src/transitLegHeader.js:93
+msgid "Hide intermediate stops and information"
+msgstr "Slėpti tarpines stoteles ir informaciją"
 
-#: src/transitLegRow.js:71
+#: src/transitLegHeader.js:94
 msgid "Hide walking instructions"
 msgstr "Slėpti ėjimo nurodymus"
+
+#: src/transitLegHeader.js:96
+msgid "Show intermediate stops and information"
+msgstr "Rodyti tarpines stoteles ir informaciją"
+
+#: src/transitLegHeader.js:97
+msgid "Show walking instructions"
+msgstr "Rodyti ėjimo nurodymus"
 
 #: src/transitMoreRow.js:37
 msgid "Load earlier alternatives"
@@ -2026,25 +2187,17 @@ msgstr "Nerasta vėlesnių alternatyvų."
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
 #.
-#: src/transitOptionsPanel.js:136
+#: src/transitOptionsPanel.js:208
 msgctxt "month-day-date"
 msgid "%b %e"
 msgstr "%b %e"
-
-#: src/transitPlan.js:173
-msgid "No timetable data found for this route."
-msgstr "Šiam maršrutui nerasta tvarkaraščio duomenų."
-
-#: src/transitPlan.js:181
-msgid "No provider found for this route."
-msgstr "Šiam maršrutui nerasta teikėjo."
 
 #. Translators: this is a format string for showing a departure and
 #. * arrival time, like:
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:302
+#: src/transitPlan.js:241
 #, javascript-format
 msgid "%s – %s"
 msgstr "%s – %s"
@@ -2053,7 +2206,7 @@ msgstr "%s – %s"
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
 #.
-#: src/transitPlan.js:337
+#: src/transitPlan.js:267
 #, javascript-format
 msgid "%s minute"
 msgid_plural "%s minutes"
@@ -2065,7 +2218,7 @@ msgstr[2] "%s minučių"
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
 #.
-#: src/transitPlan.js:349
+#: src/transitPlan.js:279
 #, javascript-format
 msgid "%s hour"
 msgid_plural "%s hours"
@@ -2077,7 +2230,7 @@ msgstr[2] "%s valandų"
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
 #.
-#: src/transitPlan.js:357
+#: src/transitPlan.js:287
 #, javascript-format
 msgid "%s:%s hour"
 msgid_plural "%s:%s hours"
@@ -2091,7 +2244,7 @@ msgstr[2] "%s:%s valandų"
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
 #.
-#: src/transitPlan.js:758
+#: src/transitPlan.js:598
 #, javascript-format
 msgid "%s–%s"
 msgstr "%s–%s"
@@ -2191,19 +2344,19 @@ msgid "Bahá'í"
 msgstr "Bahá'í"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:269
+#: src/utils.js:253
 msgid "Unknown"
 msgstr "Nežinomas"
 
 #. Translators: Accuracy of user location information
-#: src/utils.js:272
+#: src/utils.js:256
 msgid "Exact"
 msgstr "Tikslus"
 
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
 #.
-#: src/utils.js:328
+#: src/utils.js:312
 #, javascript-format
 msgid "%s h"
 msgstr "%s h"
@@ -2212,7 +2365,7 @@ msgstr "%s h"
 #. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
 #.
-#: src/utils.js:334
+#: src/utils.js:318
 #, javascript-format
 msgid "%s h %s min"
 msgid_plural "%s h %s min"
@@ -2224,7 +2377,7 @@ msgstr[2] "%s h %s min"
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
 #.
-#: src/utils.js:341
+#: src/utils.js:325
 #, javascript-format
 msgid "%s min"
 msgid_plural "%s min"
@@ -2236,7 +2389,7 @@ msgstr[2] "%s min"
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
 #.
-#: src/utils.js:347
+#: src/utils.js:331
 #, javascript-format
 msgid "%s s"
 msgid_plural "%s s"
@@ -2245,159 +2398,34 @@ msgstr[1] "%s s"
 msgstr[2] "%s s"
 
 #. Translators: This is a distance measured in miles
-#: src/utils.js:359
+#: src/utils.js:343
 #, javascript-format
 msgid "%s mi"
 msgstr "%s mylios"
 
 #. Translators: This is a distance measured in feet
-#: src/utils.js:362
+#: src/utils.js:346
 #, javascript-format
 msgid "%s ft"
 msgstr "%s pėdos"
 
 #. Translators: This is a distance measured in kilometers
-#: src/utils.js:370
+#: src/utils.js:354
 #, javascript-format
 msgid "%s km"
 msgstr "%s km"
 
 #. Translators: This is a distance measured in meters
-#: src/utils.js:373
+#: src/utils.js:357
 #, javascript-format
 msgid "%s m"
 msgstr "%s m"
 
-#: src/transitplugins/motis2.js:361
-#, javascript-format
-msgid "Take the stairs to level %s"
-msgstr "Kilkite laiptais į %s aukštą"
+#~ msgid "No timetable data found for this route."
+#~ msgstr "Šiam maršrutui nerasta tvarkaraščio duomenų."
 
-#: src/transitplugins/motis2.js:362
-msgid "Take the stairs"
-msgstr "Kilkite laiptais"
-
-#: src/transitplugins/motis2.js:366 src/transitplugins/openTripPlanner.js:1240
-#: src/transitplugins/openTripPlanner2.js:270
-#, javascript-format
-msgid "Continue on %s"
-msgstr "Tęsti %s"
-
-#: src/transitplugins/motis2.js:371 src/transitplugins/openTripPlanner.js:1245
-#: src/transitplugins/openTripPlanner2.js:274
-#, javascript-format
-msgid "Turn left on %s"
-msgstr "Sukti kairėn ties %s"
-
-#: src/transitplugins/motis2.js:372 src/transitplugins/openTripPlanner.js:1247
-#: src/transitplugins/openTripPlanner2.js:275
-msgid "Turn left"
-msgstr "Sukti kairėn"
-
-#: src/transitplugins/motis2.js:376 src/transitplugins/openTripPlanner.js:1250
-#: src/transitplugins/openTripPlanner2.js:279
-#, javascript-format
-msgid "Turn slightly left on %s"
-msgstr "Sukti kairiau ties %s"
-
-#: src/transitplugins/motis2.js:377 src/transitplugins/openTripPlanner.js:1252
-#: src/transitplugins/openTripPlanner2.js:280
-msgid "Turn slightly left"
-msgstr "Sukti kairiau"
-
-#: src/transitplugins/motis2.js:381 src/transitplugins/openTripPlanner.js:1255
-#: src/transitplugins/openTripPlanner2.js:284
-#, javascript-format
-msgid "Turn sharp left on %s"
-msgstr "Staigiai sukti į kairėn ties %s"
-
-#: src/transitplugins/motis2.js:382 src/transitplugins/openTripPlanner.js:1257
-#: src/transitplugins/openTripPlanner2.js:285
-msgid "Turn sharp left"
-msgstr "Staigiai sukti į kairėn"
-
-#: src/transitplugins/motis2.js:386 src/transitplugins/openTripPlanner.js:1260
-#: src/transitplugins/openTripPlanner2.js:288
-#, javascript-format
-msgid "Turn right on %s"
-msgstr "Sukti dešinėn ties %s"
-
-#: src/transitplugins/motis2.js:387 src/transitplugins/openTripPlanner.js:1262
-#: src/transitplugins/openTripPlanner2.js:289
-msgid "Turn right"
-msgstr "Sukti dešinėn"
-
-#: src/transitplugins/motis2.js:391 src/transitplugins/openTripPlanner.js:1265
-#: src/transitplugins/openTripPlanner2.js:293
-#, javascript-format
-msgid "Turn slightly right on %s"
-msgstr "Sukti dešiniau ties %s"
-
-#: src/transitplugins/motis2.js:392 src/transitplugins/openTripPlanner.js:1267
-#: src/transitplugins/openTripPlanner2.js:294
-msgid "Turn slightly right"
-msgstr "Sukti dešiniau"
-
-#: src/transitplugins/motis2.js:396 src/transitplugins/openTripPlanner.js:1270
-#: src/transitplugins/openTripPlanner2.js:298
-#, javascript-format
-msgid "Turn sharp right on %s"
-msgstr "Staigiai sukti dešinėn ties %s"
-
-#: src/transitplugins/motis2.js:397 src/transitplugins/openTripPlanner.js:1272
-#: src/transitplugins/openTripPlanner2.js:299
-msgid "Turn sharp right"
-msgstr "Staigiai sukti dešinėn"
-
-#: src/transitplugins/motis2.js:404 src/transitplugins/openTripPlanner.js:1278
-#: src/transitplugins/openTripPlanner2.js:306
-#, javascript-format
-msgid "At the roundabout, take exit %s"
-msgstr "Žiede pasirinkite %s išvažiavimą"
-
-#: src/transitplugins/motis2.js:407 src/transitplugins/openTripPlanner.js:1280
-#: src/transitplugins/openTripPlanner2.js:309
-#, javascript-format
-msgid "At the roundabout, take exit to %s"
-msgstr "Žiede pasirinkite išvažiavimą į %s"
-
-#: src/transitplugins/motis2.js:409 src/transitplugins/openTripPlanner.js:1282
-#: src/transitplugins/openTripPlanner2.js:311
-msgid "Take the roundabout"
-msgstr "Įvažiuokite į žiedą"
-
-#: src/transitplugins/motis2.js:417 src/transitplugins/openTripPlanner.js:1286
-#: src/transitplugins/openTripPlanner2.js:319
-#, javascript-format
-msgid "Take the elevator and get off at %s"
-msgstr "Liftu pasikelkite į %s"
-
-#: src/transitplugins/motis2.js:418 src/transitplugins/openTripPlanner.js:1288
-#: src/transitplugins/openTripPlanner2.js:320
-msgid "Take the elevator"
-msgstr "Kilkite liftu"
-
-#: src/transitplugins/motis2.js:422 src/transitplugins/openTripPlanner.js:1292
-#: src/transitplugins/openTripPlanner2.js:324
-#, javascript-format
-msgid "Make a left u-turn onto %s"
-msgstr "Apsisukite į %s"
-
-#: src/transitplugins/motis2.js:423 src/transitplugins/openTripPlanner.js:1294
-#: src/transitplugins/openTripPlanner2.js:325
-msgid "Make a left u-turn"
-msgstr "Apsisukite"
-
-#: src/transitplugins/motis2.js:427 src/transitplugins/openTripPlanner.js:1297
-#: src/transitplugins/openTripPlanner2.js:329
-#, javascript-format
-msgid "Make a right u-turn onto %s"
-msgstr "Apsisukite į dešinę į %s"
-
-#: src/transitplugins/motis2.js:428 src/transitplugins/openTripPlanner.js:1299
-#: src/transitplugins/openTripPlanner2.js:330
-msgid "Make a right u-turn"
-msgstr "Apsisukite į dešinę"
+#~ msgid "No provider found for this route."
+#~ msgstr "Šiam maršrutui nerasta teikėjo."
 
 #~ msgctxt "shortcut window"
 #~ msgid "Switch to street view"
