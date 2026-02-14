@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-maps master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-maps/issues\n"
-"POT-Creation-Date: 2026-01-25 20:29+0000\n"
-"PO-Revision-Date: 2026-01-29 22:13+0500\n"
+"POT-Creation-Date: 2026-02-11 20:45+0000\n"
+"PO-Revision-Date: 2026-02-14 11:13+0500\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk@li.org>\n"
 "Language: kk\n"
@@ -24,8 +24,9 @@ msgstr ""
 #. * setting a custom title on the headerbar). Setting it programmatically
 #. * here works though. And yields a proper label in the gnome-shell
 #. * overview.
-#: data/org.gnome.Maps.desktop.in.in:3 data/org.gnome.Maps.metainfo.xml.in.in:6 data/ui/main-window.blp:61
-#: src/application.js:62 src/mainWindow.js:113
+#.
+#: data/org.gnome.Maps.desktop.in.in:3 data/org.gnome.Maps.metainfo.xml.in.in:6
+#: data/ui/main-window.blp:61 src/application.js:62 src/mainWindow.js:113
 msgid "Maps"
 msgstr "Карталар"
 
@@ -33,8 +34,7 @@ msgstr "Карталар"
 msgid "A simple maps application"
 msgstr "Қарапайым карталар қолданбасы"
 
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Maps.desktop.in.in:13
 msgid "Maps;"
 msgstr "Maps;Карталар;"
@@ -129,7 +129,8 @@ msgstr "OpenStreetMap пайдаланушы аты немесе эл. пошт�
 
 #: data/org.gnome.Maps.gschema.xml:67
 msgid "Indicates if the user has signed in to edit OpenStreetMap data."
-msgstr "Пайдаланушы OpenStreetMap деректерін түзету үшін кірген ба, соны анықтайды."
+msgstr ""
+"Пайдаланушы OpenStreetMap деректерін түзету үшін кірген ба, соны анықтайды."
 
 #: data/org.gnome.Maps.gschema.xml:71
 msgid "Last used transportation type for routing"
@@ -149,11 +150,13 @@ msgstr "Карта плиткасының URL үлгісі"
 
 #: data/org.gnome.Maps.gschema.xml:81
 msgid ""
-"The URL pattern for the vector tile source to use. Note that the map style relies on certain extensions compared to "
-"upstream Planetiler OpenMapTiles Profile"
+"The URL pattern for the vector tile source to use. Note that the map style "
+"relies on certain extensions compared to upstream Planetiler OpenMapTiles "
+"Profile"
 msgstr ""
-"Қолданылатын векторлық плитка көзінің URL үлгісі. Карта стилі қызметтік Planetiler OpenMapTiles профилімен салыстырғанда "
-"белгілі бір кеңейтулерге сүйенетінін ескеріңіз"
+"Қолданылатын векторлық плитка көзінің URL үлгісі. Карта стилі қызметтік "
+"Planetiler OpenMapTiles профилімен салыстырғанда белгілі бір кеңейтулерге "
+"сүйенетінін ескеріңіз"
 
 #: data/org.gnome.Maps.gschema.xml:85
 msgid "Units to show measurements in"
@@ -161,11 +164,12 @@ msgstr "Өлшемдерді көрсету бірліктері"
 
 #: data/org.gnome.Maps.gschema.xml:86
 msgid ""
-"How to show measurements. ('system' uses default for system locale, 'metric' always show metric units, 'imperial' always "
-"show imperial units)."
+"How to show measurements. ('system' uses default for system locale, 'metric' "
+"always show metric units, 'imperial' always show imperial units)."
 msgstr ""
-"Өлшемдерді қалай көрсету керек. ('system' жүйелік локаль үшін әдепкі мәнді қолданады, 'metric' әрқашан метрлық бірліктерді "
-"көрсетеді, 'imperial' әрқашан империялық бірліктерді көрсетеді)."
+"Өлшемдерді қалай көрсету керек. ('system' жүйелік локаль үшін әдепкі мәнді "
+"қолданады, 'metric' әрқашан метрлық бірліктерді көрсетеді, 'imperial' "
+"әрқашан империялық бірліктерді көрсетеді)."
 
 #: data/org.gnome.Maps.gschema.xml:90
 msgid "Show location marker"
@@ -173,7 +177,8 @@ msgstr "Орналасу маркерін көрсету"
 
 #: data/org.gnome.Maps.gschema.xml:91
 msgid "Whether to show the user location marker (when location is known)."
-msgstr "Пайдаланушының орналасу маркерін көрсету (орналасу белгілі болған кезде)."
+msgstr ""
+"Пайдаланушының орналасу маркерін көрсету (орналасу белгілі болған кезде)."
 
 #: data/org.gnome.Maps.metainfo.xml.in.in:7
 msgid "Find places around the world"
@@ -181,20 +186,45 @@ msgstr "Дүниежүзілік орындарды табу"
 
 #: data/org.gnome.Maps.metainfo.xml.in.in:9
 msgid ""
-"Maps gives you quick access to maps all across the world. It allows you to quickly find the place you’re looking for by "
-"searching for a city or street, or locate a place to meet a friend."
+"Maps gives you quick access to maps all across the world. It allows you to "
+"quickly find the place you’re looking for by searching for a city or street, "
+"or locate a place to meet a friend."
 msgstr ""
-"Карталар қолданбасы сізге дүниежүзі карталарына жылдам қатынауды мүмкін қылады. Оның көмегімен керек болған орынды оның "
-"орналасқан қаласын не көшесін енгізу арқылы табуға, немесе доспен кездесу үшін орынды табуға болады."
+"Карталар қолданбасы сізге дүниежүзі карталарына жылдам қатынауды мүмкін "
+"қылады. Оның көмегімен керек болған орынды оның орналасқан қаласын не "
+"көшесін енгізу арқылы табуға, немесе доспен кездесу үшін орынды табуға "
+"болады."
 
 #: data/org.gnome.Maps.metainfo.xml.in.in:14
-msgid "Maps uses the collaborative OpenStreetMap database, made by hundreds of thousands of people across the globe."
+msgid ""
+"Maps uses the collaborative OpenStreetMap database, made by hundreds of "
+"thousands of people across the globe."
 msgstr ""
-"Карталар қолданбасы қауымдастық ұсынатын OpenStreetMap дерекқорын қолданады, оны дүниежүзінің әр жеріндегі мыңдаған адамдар "
-"жасайды."
+"Карталар қолданбасы қауымдастық ұсынатын OpenStreetMap дерекқорын қолданады, "
+"оны дүниежүзінің әр жеріндегі мыңдаған адамдар жасайды."
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:25
+#: data/org.gnome.Maps.metainfo.xml.in.in:41
+msgid "Map view"
+msgstr "Карта көрінісі"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:29
+#: data/org.gnome.Maps.metainfo.xml.in.in:45
+msgid "Pedestrian route instructions"
+msgstr "Жаяу жүргіншілерге арналған бағыт нұсқаулары"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:33
+#: data/org.gnome.Maps.metainfo.xml.in.in:49
+msgid "Information on a selected place"
+msgstr "Таңдалған орын туралы ақпарат"
+
+#: data/org.gnome.Maps.metainfo.xml.in.in:37
+#: data/org.gnome.Maps.metainfo.xml.in.in:53
+msgid "Public transit itinerary"
+msgstr "Қоғамдық көлік маршруты"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Maps.metainfo.xml.in.in:623
+#: data/org.gnome.Maps.metainfo.xml.in.in:631
 msgid "The GNOME Project"
 msgstr "GNOME жобасы"
 
@@ -222,13 +252,13 @@ msgstr "Орналасуды көшіріп алу"
 msgid "Add to OpenStreetMap…"
 msgstr "OpenStreetMap ішіне қосу…"
 
-#. Translators: This is the title of the dialog for expoting the map view
-#. content to an image file
+#. Translators: This is the title of the dialog for expoting the map view content to an image file
 #: data/ui/export-view-dialog.blp:8
 msgid "Export View"
 msgstr "Көріністі экспорттау"
 
-#: data/ui/export-view-dialog.blp:18 data/ui/osm-discard-dialog.blp:11 data/ui/send-to-dialog.blp:15
+#: data/ui/export-view-dialog.blp:18 data/ui/osm-discard-dialog.blp:11
+#: data/ui/send-to-dialog.blp:15
 msgid "_Cancel"
 msgstr "Ба_с тарту"
 
@@ -295,8 +325,7 @@ msgstr "Сурет ретінде _экспорттау…"
 msgid "Measurement Units"
 msgstr "Өлшем бірліктері"
 
-#. Translators: This is a menu item for showing measurements in units
-#. corresponding to the system locale
+#. Translators: This is a menu item for showing measurements in units corresponding to the system locale
 #: data/ui/main-window.blp:25
 msgid "_System Default"
 msgstr "_Жүйелік әдепкі"
@@ -359,8 +388,11 @@ msgid "Verification"
 msgstr "Тексеру"
 
 #: data/ui/osm-account-dialog.blp:44
-msgid "Copy the verification code shown when authorizing access in the browser."
-msgstr "Браузерде рұқсатты авторизациялау кезінде көрсетілген тексеру кодын көшіріп алыңыз."
+msgid ""
+"Copy the verification code shown when authorizing access in the browser."
+msgstr ""
+"Браузерде рұқсатты авторизациялау кезінде көрсетілген тексеру кодын көшіріп "
+"алыңыз."
 
 #: data/ui/osm-account-dialog.blp:51
 msgid "Verification Code"
@@ -419,8 +451,7 @@ msgstr "Жалғастыру"
 msgid "Location Type"
 msgstr "Орналасу түрі"
 
-#. Translators: This refers to searching for point-of-interest types. Search
-#. is a verb.
+#. Translators: This refers to searching for point-of-interest types. Search is a verb.
 #: data/ui/osm-edit-dialog.blp:172
 msgid "Search types"
 msgstr "Түрлерді іздеу"
@@ -438,15 +469,19 @@ msgid "Almost There!"
 msgstr "Аз қалды!"
 
 #: data/ui/osm-edit-dialog.blp:211
-msgid "Describe your map changes. They will be visible on all maps that use OpenStreetMap data."
-msgstr "Картадағы өзгерістеріңізді сипаттаңыз. Олар OpenStreetMap деректерін қолданатын барлық карталарда көрінетін болады."
+msgid ""
+"Describe your map changes. They will be visible on all maps that use "
+"OpenStreetMap data."
+msgstr ""
+"Картадағы өзгерістеріңізді сипаттаңыз. Олар OpenStreetMap деректерін "
+"қолданатын барлық карталарда көрінетін болады."
 
 #: data/ui/osm-edit-dialog.blp:248
 msgid "Submit"
 msgstr "Жіберу"
 
-#: data/ui/osm-edit-dialog.blp:265 src/osmEditDialog.js:238 src/osmEditDialog.js:560 src/osmEditDialog.js:953
-#: src/translations.js:297
+#: data/ui/osm-edit-dialog.blp:265 src/osmEditDialog.js:238
+#: src/osmEditDialog.js:560 src/osmEditDialog.js:953 src/translations.js:297
 msgid "None"
 msgstr "Жоқ"
 
@@ -467,26 +502,22 @@ msgstr "Қате орын алды"
 msgid "Change Route Order"
 msgstr "Бағыт ретін өзгерту"
 
-#. Translators: This is the tooltip text for the button selecting the walking
-#. (pedestrian) routing mode
+#. Translators: This is the tooltip text for the button selecting the walking (pedestrian) routing mode
 #: data/ui/route-view.blp:15
 msgid "Walking"
 msgstr "Жаяу жүру"
 
-#. Translators: This is the tooltip text for the button selecting the cycling
-#. routing mode
+#. Translators: This is the tooltip text for the button selecting the cycling routing mode
 #: data/ui/route-view.blp:22
 msgid "Cycling"
 msgstr "Велосипедпен жүру"
 
-#. Translators: This is the tooltip text for the button selecting the driving
-#. (car) routing mode
+#. Translators: This is the tooltip text for the button selecting the driving (car) routing mode
 #: data/ui/route-view.blp:29
 msgid "Driving"
 msgstr "Көлік жүргізу"
 
-#. Translators: This is the tooltip text for the button selecting the public
-#. transit routing mode
+#. Translators: This is the tooltip text for the button selecting the public transit routing mode
 #: data/ui/route-view.blp:36
 msgid "Public Transit"
 msgstr "Қоғамдық көлік"
@@ -508,18 +539,24 @@ msgid ""
 "Routing itineraries for public transit is provided by third-party\n"
 "services.\n"
 "GNOME can not guarantee correctness of the itineraries and schedules shown.\n"
-"Note that some providers might not include all available modes of transportation,\n"
-"e.g. a national provider might not include airlines, and a local provider could\n"
+"Note that some providers might not include all available modes of "
+"transportation,\n"
+"e.g. a national provider might not include airlines, and a local provider "
+"could\n"
 "miss regional trains.\n"
-"Names and brands shown are to be considered as registered trademarks when applicable."
+"Names and brands shown are to be considered as registered trademarks when "
+"applicable."
 msgstr ""
 "Қоғамдық көліктің маршруттары үшінші жақты қызметтермен\n"
 "ұсынылған.\n"
 "GNOME көрсетілген бағдарлар және уақыттар үшін жауапты емес.\n"
-"Кейбір провайдерлер тасымалдаудың барлық қолжетімді түрлерін қамтымауы мүмкін\n"
-"екенін ескеріңіз, мысалы, ұлттық провайдер авиакомпанияларды қамтымауы мүмкін және\n"
+"Кейбір провайдерлер тасымалдаудың барлық қолжетімді түрлерін қамтымауы "
+"мүмкін\n"
+"екенін ескеріңіз, мысалы, ұлттық провайдер авиакомпанияларды қамтымауы "
+"мүмкін және\n"
 "жергілікті провайдер аймақтық поездарды қамтымауы мүмкін\n"
-"Көрсетілген атаулар және брендтер тіркелген сауда белгілері ретінде қарастырылуы тиіс."
+"Көрсетілген атаулар және брендтер тіркелген сауда белгілері ретінде "
+"қарастырылуы тиіс."
 
 #: data/ui/route-view.blp:239
 msgid "Back"
@@ -647,14 +684,12 @@ msgstr "Орналасу маркерін ауыстырып қосу"
 msgid "Leave Now"
 msgstr "Қазір кету"
 
-#. Translators: Indicates searching for itineraries leaving at the specified
-#. time at the earliest
+#. Translators: Indicates searching for itineraries leaving at the specified time at the earliest
 #: data/ui/transit-options-panel.blp:20
 msgid "Leave By"
 msgstr "Кету, "
 
-#. Translators: Indicates searching for itineraries arriving no later than the
-#. specified time
+#. Translators: Indicates searching for itineraries arriving no later than the specified time
 #: data/ui/transit-options-panel.blp:22
 msgid "Arrive By"
 msgstr "Жету, "
@@ -749,7 +784,8 @@ msgstr "Кішірейту"
 msgid "Zoom In"
 msgstr "Үлкейту"
 
-#: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338 lib/maps-file-data-source.c:418
+#: lib/maps-file-data-source.c:262 lib/maps-file-data-source.c:338
+#: lib/maps-file-data-source.c:418
 msgid "Failed to find tile structure in directory"
 msgstr "Бумадан мозаикалық құрылымды табу сәтсіз аяқталды"
 
@@ -793,6 +829,7 @@ msgstr "Жарамсыз карталар: URI: %s"
 #. Translators: This is a format string for a PNG filename for an
 #. * exported image with coordinates. The .png extension should be kept
 #. * intact in the translated string.
+#.
 #: src/exportViewDialog.js:70
 #, javascript-format
 msgid "Maps at %f, %f.png"
@@ -856,7 +893,8 @@ msgstr "Маршрутты жоспарлағышты көрсету"
 
 #: src/mainWindow.js:663
 msgid "Copyright © 2011 – 2026 Red Hat, Inc. and The GNOME Maps authors"
-msgstr "Авторлық құқық © 2011 – 2026 Red Hat, Inc. және GNOME карталарының авторлары"
+msgstr ""
+"Авторлық құқық © 2011 – 2026 Red Hat, Inc. және GNOME карталарының авторлары"
 
 #: src/mainWindow.js:664
 msgid "translator-credits"
@@ -879,6 +917,7 @@ msgstr "Карта мозаикасын ұсынушысы"
 #. * tile provider where the %s placeholder is replaced by either
 #. * the bare name of the tile provider, or a linkified URL if one
 #. * is available
+#.
 #: src/mainWindow.js:683
 #, javascript-format
 msgid "Map tiles provided by %s"
@@ -911,8 +950,12 @@ msgstr "Жалғастыруды қалайсыз ба?"
 
 #: src/mapView.js:724
 #, javascript-format
-msgid "You are about to open files with a total size of %s MB. This could take some time to load"
-msgstr "Жалпы өлшемі %s МБ болатын файлдарды ашуға дайынсыз. Бұл жүктелуге біраз уақытты алуы мүмкін"
+msgid ""
+"You are about to open files with a total size of %s MB. This could take some "
+"time to load"
+msgstr ""
+"Жалпы өлшемі %s МБ болатын файлдарды ашуға дайынсыз. Бұл жүктелуге біраз "
+"уақытты алуы мүмкін"
 
 #: src/mapView.js:730
 msgid "Cancel"
@@ -1168,8 +1211,8 @@ msgid "Service"
 msgstr "Қызмет"
 
 #. Translators: This is the title for a section of POI fields not
-#. * belonging to the previous sections ("General", "Contact",
-#. "Accessibility").
+#. * belonging to the previous sections ("General", "Contact", "Accessibility").
+#.
 #: src/osmEditDialog.js:194
 msgid "Miscellaneous"
 msgstr "Әртүрлі"
@@ -1185,6 +1228,7 @@ msgstr "Wikipedia"
 #. * formatted string. Ideally it should be kept as an integer value
 #. * in the Place class. But this will also need to be handled by the
 #. * PlaceStore, possible in a backwards-compatible way
+#.
 #: src/osmEditDialog.js:204 src/placeView.js:596
 msgid "Population"
 msgstr "Халық саны"
@@ -1317,6 +1361,7 @@ msgstr "Өзгерістер сәтті жіберілді"
 
 #. Translators: This is the title for a combo box row selected when a
 #. * value is not assigned to one in a list of allowed values.
+#.
 #: src/osmEditDialog.js:708
 msgid "Unspecified value"
 msgstr "Көрсетілмеген мән"
@@ -1354,94 +1399,99 @@ msgid "Couldn't find Wikidata tag for article"
 msgstr "Мақала үшін Wikidata тегті табу сәтсіз аяқталды"
 
 #. Translators: This represents the title for places tagged with the
-#. * "aerialway" OSM tag:
-#. https://wiki.openstreetmap.org/wiki/Map_features#Aerialway
+#. * "aerialway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Aerialway
+#.
 #: src/osmTypes.js:46
 msgid "Aerialway"
 msgstr "Аспалы жол"
 
 #. Translators: This represents the title for places tagged with the
-#. * "aeroway" OSM tag:
-#. https://wiki.openstreetmap.org/wiki/Map_features#Aeroway
+#. * "aeroway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Aeroway
+#.
 #: src/osmTypes.js:50
 msgid "Aeroway"
 msgstr "Әуе жолы"
 
 #. Translators: This represents the title for places tagged with the
-#. * "amenity" OSM tag:
-#. https://wiki.openstreetmap.org/wiki/Map_features#Amenity
+#. * "amenity" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Amenity
+#.
 #: src/osmTypes.js:54
 msgid "Amenity"
 msgstr "Ыңғайлылық"
 
 #. Translators: This represents the title for places tagged with the
-#. * "barrier" OSM tag:
-#. https://wiki.openstreetmap.org/wiki/Map_features#Barrier
+#. * "barrier" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Barrier
+#.
 #: src/osmTypes.js:58
 msgid "Barrier"
 msgstr "Кедергі"
 
 #. Translators: This represents the title for places tagged with the
-#. * "highway" OSM tag:
-#. https://wiki.openstreetmap.org/wiki/Map_features#Highway
+#. * "highway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Highway
+#.
 #: src/osmTypes.js:62
 msgid "Road"
 msgstr "Жол"
 
 #. Translators: This represents the title for places tagged with the
-#. * "historic" OSM tag:
-#. https://wiki.openstreetmap.org/wiki/Map_features#Historic
+#. * "historic" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Historic
+#.
 #: src/osmTypes.js:66
 msgid "Historic"
 msgstr "Тарихи"
 
 #. Translators: This represents the title for places tagged with the
-#. * "leisure" OSM tag:
-#. https://wiki.openstreetmap.org/wiki/Map_features#Leisure
+#. * "leisure" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Leisure
+#.
 #: src/osmTypes.js:70
 msgid "Leisure"
 msgstr "Демалыс"
 
 #. Translators: This represents the title for places tagged with the
 #. * "office" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Office
+#.
 #: src/osmTypes.js:74
 msgid "Office"
 msgstr "Кеңсе"
 
 #. Translators: This represents the title for places tagged with the
 #. * "place" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Place
+#.
 #: src/osmTypes.js:78
 msgid "Place"
 msgstr "Орын"
 
 #. Translators: This represents the title for places tagged with the
-#. * "railway" OSM tag:
-#. https://wiki.openstreetmap.org/wiki/Map_features#Railway
+#. * "railway" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Railway
+#.
 #: src/osmTypes.js:82
 msgid "Railway"
 msgstr "Теміржол"
 
 #. Translators: This represents the title for places tagged with the
 #. * "shop" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Shop
+#.
 #: src/osmTypes.js:86
 msgid "Shop"
 msgstr "Дүкен"
 
 #. Translators: This represents the title for places tagged with the
-#. * "tourism" OSM tag:
-#. https://wiki.openstreetmap.org/wiki/Map_features#Tourism
+#. * "tourism" OSM tag: https://wiki.openstreetmap.org/wiki/Map_features#Tourism
+#.
 #: src/osmTypes.js:90 src/poiCategories.js:474
 msgid "Tourism"
 msgstr "Туризм"
 
 #. Translators: "Other" refers to points-of-interest where we don't have
 #. * a known title corresponding to the raw OpenStreetMap tag
+#.
 #: src/osmTypes.js:102
 msgid "Other"
 msgstr "Басқа"
 
 #. Translators: this is a generic title for public transit stops where
 #. * the mode(s) of transportation is not well-known
+#.
 #: src/osmTypes.js:210
 msgid "Public transportation stop"
 msgstr "Қоғамдық көлік аялдамасы"
@@ -1495,6 +1545,7 @@ msgid "Coordinates"
 msgstr "Координаттар"
 
 #. 300 ft (300 * 12 * 0.0254 m)
+#.
 #. * Translators: This a format string for showing a distance to a place
 #. * is lower than a "quite short" distance.
 #. * The "less than" symbol can be substituded with an appropriate one, if
@@ -1522,15 +1573,18 @@ msgstr "Дәлдігі: %s"
 #. * with phone numbers in international format starting with a +
 #. * which is considered a "weak" character to determine Unicode
 #. * text direction
+#.
 #: src/placeView.js:376
 msgid "Phone number"
 msgstr "Телефон нөмірі"
 
 #. If a reference to a named floor (named or symbolic) exists
 #. * refer to it directly.
+#.
 #. Translators:
 #. * This is a reference to named building floor, using a label
 #. * or a code, as "displayed in the elevator"
+#.
 #: src/placeView.js:410 src/placeView.js:449
 msgid "Floor"
 msgstr "Қабат"
@@ -1548,6 +1602,7 @@ msgstr "Жер деңгейінде"
 #. * This is a reference to a number of floors above
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
+#.
 #: src/placeView.js:433
 #, javascript-format
 msgid "%s floor above ground level"
@@ -1558,6 +1613,7 @@ msgstr[0] "Жер деңгейінен %s қабат жоғары"
 #. * This is a reference to a number of floors below
 #. * ground level.
 #. * The %s placeholder is the integer relative number of floors
+#.
 #: src/placeView.js:444
 #, javascript-format
 msgid "%s floor below ground level"
@@ -1567,6 +1623,7 @@ msgstr[0] "Жер деңгейінен %s қабат төмен"
 #. Translators:
 #. * The establishment offers customers to purchase meals
 #. * (or similar) to be consumed elsewhere
+#.
 #: src/placeView.js:462
 msgid "Offers takeout"
 msgstr "Алып кету мүмкіндігі бар"
@@ -1574,6 +1631,7 @@ msgstr "Алып кету мүмкіндігі бар"
 #. Translators:
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed on-premise.
+#.
 #: src/placeView.js:470
 msgid "Does not offer takeout"
 msgstr "Алып кету мүмкіндігі жоқ"
@@ -1582,6 +1640,7 @@ msgstr "Алып кету мүмкіндігі жоқ"
 #. * The establishment only offers customers to purchase
 #. * meals (or similar) to be consumed elsewhere. E.g.
 #. * there is no seating on-premise for eating/drinking
+#.
 #: src/placeView.js:479
 msgid "Only offers takeout"
 msgstr "Тек алып кетуді ұсынады"
@@ -1592,6 +1651,7 @@ msgstr "Жұмыс істеу уақыты"
 
 #. Translators:
 #. * There is public internet access but the particular kind is unknown.
+#.
 #: src/placeView.js:496
 msgid "Public internet access"
 msgstr "Интернетпен публикалық байланыс"
@@ -1599,30 +1659,35 @@ msgstr "Интернетпен публикалық байланыс"
 #. Translators:
 #. * no internet access is offered in a place where
 #. * someone might expect it.
+#.
 #: src/placeView.js:505
 msgid "No internet access"
 msgstr "Интернетпен байланыс жоқ"
 
 #. Translators:
 #. * This means a WLAN Hotspot, also known as wireless, wifi or Wi-Fi.
+#.
 #: src/placeView.js:513
 msgid "Public Wi-Fi"
 msgstr "Публикалық Wi-Fi"
 
 #. Translators:
 #. * This means a a place where you can plug in your laptop with ethernet.
+#.
 #: src/placeView.js:521
 msgid "Wired internet access"
 msgstr "Интернетпен сымды байланыс"
 
 #. Translators:
 #. * Like internet cafe or library where the computer is given.
+#.
 #: src/placeView.js:529
 msgid "Computers available for use"
 msgstr "Пайдалану үшін қолжетімді компьютерлер"
 
 #. Translators:
 #. * This means there is personnel which helps you in case of problems.
+#.
 #: src/placeView.js:537
 msgid "Internet assistance available"
 msgstr "Интернетпен көмек көрсетуі бар"
@@ -1637,6 +1702,7 @@ msgstr "Қолжетімді дәретханалар"
 
 #. Translators:
 #. * This means wheelchairs have full unrestricted access.
+#.
 #: src/placeView.js:555
 msgid "Wheelchair accessible"
 msgstr "Мүгедектер арбасымен қатынау"
@@ -1645,6 +1711,7 @@ msgstr "Мүгедектер арбасымен қатынау"
 #. * This means wheelchairs have partial access (e.g some areas
 #. * can be accessed and others not, areas requiring assistance
 #. * by someone pushing up a steep gradient).
+#.
 #: src/placeView.js:565
 msgid "Limited wheelchair accessibility"
 msgstr "Мүгедектер арбасымен шектелген қатынау"
@@ -1652,6 +1719,7 @@ msgstr "Мүгедектер арбасымен шектелген қатына�
 #. Translators:
 #. * This means wheelchairs have no unrestricted access
 #. * (e.g. stair only access).
+#.
 #: src/placeView.js:574
 msgid "Not wheelchair accessible"
 msgstr "Мүгедектер арбасымен қатынау жоқ"
@@ -1660,6 +1728,7 @@ msgstr "Мүгедектер арбасымен қатынау жоқ"
 #. * This means that the way or area is designated or purpose built
 #. * for wheelchairs (e.g. elevators designed for wheelchair access
 #. * only). This is rarely used.
+#.
 #: src/placeView.js:584
 msgid "Designated for wheelchair users"
 msgstr "Мүгедектер арбасын қолданушыларына арналған"
@@ -1668,6 +1737,7 @@ msgstr "Мүгедектер арбасын қолданушыларына ар�
 #. * Translators: this is a label indicating an altitude below
 #. * sea level, where the %s placeholder is the altitude relative
 #. * to mean sea level in the "negative direction"
+#.
 #: src/placeView.js:615
 #, javascript-format
 msgid "%s below sea level"
@@ -1676,6 +1746,7 @@ msgstr "Теңіз деңгейінен %s төмен"
 #. *
 #. * Translators: this indicates a place is located at (or very
 #. * close to) mean sea level
+#.
 #: src/placeView.js:622
 msgid "At sea level"
 msgstr "Теңіз деңгейінде"
@@ -1692,6 +1763,7 @@ msgstr "%s шығысы"
 
 #. Translators: this is a format template string for a pair of raw
 #. * coordinates, the comma can be adapted to local conventions if needed.
+#.
 #: src/place.js:299
 #, javascript-format
 msgctxt "coordinates"
@@ -2058,6 +2130,7 @@ msgstr "файлды жүктеу сәтсіз"
 
 #. Translators: this is a format string indicating walking a certain
 #. * distance, with the distance expression being the %s placeholder
+#.
 #: src/transit.js:55
 #, javascript-format
 msgid "Walk %s"
@@ -2111,8 +2184,10 @@ msgstr "Ертерек балама нұсқалары табылмады."
 msgid "No later alternatives found."
 msgstr "Кейінірек балама нұсқалары табылмады."
 
+#.
 #. * Translators: this is a format string giving the equivalent to
 #. * "may 29" according to the current locale's convensions.
+#.
 #: src/transitOptionsPanel.js:208
 msgctxt "month-day-date"
 msgid "%b %e"
@@ -2122,6 +2197,7 @@ msgstr "%b %e"
 #. * arrival time, like:
 #. * "12:00 – 13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
+#.
 #: src/transitPlan.js:241
 #, javascript-format
 msgid "%s – %s"
@@ -2130,6 +2206,7 @@ msgstr "%s – %s"
 #. translators: this is an indication for a trip duration of
 #. * less than an hour, with only the minutes part, using plural forms
 #. * as appropriate
+#.
 #: src/transitPlan.js:267
 #, javascript-format
 msgid "%s minute"
@@ -2139,6 +2216,7 @@ msgstr[0] "%s минут"
 #. translators: this is an indication for a trip duration,
 #. * where the duration is an exact number of hours (i.e. no
 #. * minutes part), using plural forms as appropriate
+#.
 #: src/transitPlan.js:279
 #, javascript-format
 msgid "%s hour"
@@ -2148,6 +2226,7 @@ msgstr[0] "%s сағат"
 #. translators: this is an indication for a trip duration
 #. * where the duration contains an hour and minute part, it's
 #. * pluralized on the hours part
+#.
 #: src/transitPlan.js:287
 #, javascript-format
 msgid "%s:%s hour"
@@ -2159,6 +2238,7 @@ msgstr[0] "%s:%s сағат"
 #. * list for an itinerary, like:
 #. * "12:00–13:03" where the placeholder %s are the actual times,
 #. * these could be rearranged if needed.
+#.
 #: src/transitPlan.js:598
 #, javascript-format
 msgid "%s–%s"
@@ -2208,6 +2288,7 @@ msgstr "Күнде"
 
 #. Translators:
 #. * This represents a range of days with a starting and ending day.
+#.
 #: src/translations.js:168
 #, javascript-format
 msgctxt "day range"
@@ -2229,6 +2310,7 @@ msgstr "Мектеп демалыстары"
 #. * appropriate white space or connected phrase could be modified by
 #. * the translation. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
+#.
 #: src/translations.js:221
 #, javascript-format
 msgctxt "time interval list"
@@ -2245,6 +2327,7 @@ msgstr "ашық емес"
 #. * appropriate white spacing or connecting phrases can be set by the
 #. * translation as needed. The order of the arguments can be rearranged
 #. * using the %n$s syntax.
+#.
 #: src/translations.js:250
 #, javascript-format
 msgctxt "time interval"
@@ -2267,6 +2350,7 @@ msgstr "Дәл"
 
 #. Translators: this is a duration with only hours, using
 #. * an abbreviation for hours, corresponding to 'h' in English
+#.
 #: src/utils.js:312
 #, javascript-format
 msgid "%s h"
@@ -2275,6 +2359,7 @@ msgstr "%s сағ"
 #. Translators: this is a duration with hours and minutes parts
 #. * using abbreviations for hours and minutes, corresponding to 'h'
 #. * and 'min' in English. The minutes has appropriate plural variations
+#.
 #: src/utils.js:318
 #, javascript-format
 msgid "%s h %s min"
@@ -2284,6 +2369,7 @@ msgstr[0] "%s сағ %s мин"
 #. Translators: this is a duration with minutes part
 #. * using abbreviation for minutes, corresponding to 'min' in English
 #. * with appropriate plural variations
+#.
 #: src/utils.js:325
 #, javascript-format
 msgid "%s min"
@@ -2293,6 +2379,7 @@ msgstr[0] "%s мин"
 #. Translators: this is a duration of less than one minute
 #. * with seconds using an abbreviation for seconds, corresponding to
 #. * 's' in English with appropriate plural forms
+#.
 #: src/utils.js:331
 #, javascript-format
 msgid "%s s"
@@ -2366,33 +2453,44 @@ msgstr "%s м"
 #~ msgstr "Бұл дұрыс URL емес. http:// немесе https:// қосылғанын тексеріңіз."
 
 #~ msgid ""
-#~ "The official website. Try to use the most basic form of a URL i.e. http://example.com instead of http://example.com/"
-#~ "index.html."
+#~ "The official website. Try to use the most basic form of a URL i.e. http://"
+#~ "example.com instead of http://example.com/index.html."
 #~ msgstr ""
-#~ "Ресми веб сайты. Оңайлатылған түрін қолдануға тырысыңыз, мысалы, http://example.com (http://example.com/index.html емес)."
+#~ "Ресми веб сайты. Оңайлатылған түрін қолдануға тырысыңыз, мысалы, http://"
+#~ "example.com (http://example.com/index.html емес)."
 
 #~ msgid ""
-#~ "Phone number. Use the international format, starting with a + sign. Beware of local privacy laws, especially for private "
-#~ "phone numbers."
+#~ "Phone number. Use the international format, starting with a + sign. "
+#~ "Beware of local privacy laws, especially for private phone numbers."
 #~ msgstr ""
-#~ "Телефон нөмірі. +таңбасынан басталатын халықаралық пішімді қолданыңыз. Жергілікті жекелік заңдарды ескертіңіз, әсіресе, "
-#~ "жеке нөмірлер үшін."
+#~ "Телефон нөмірі. +таңбасынан басталатын халықаралық пішімді қолданыңыз. "
+#~ "Жергілікті жекелік заңдарды ескертіңіз, әсіресе, жеке нөмірлер үшін."
 
-#~ msgid "This is not a valid email address. Make sure to not include the mailto: protocol prefix."
-#~ msgstr "Бұл дұрыс эл. пошта адресі емес. mailto: хаттама префиксінің қосылмағанын тексеріңіз."
+#~ msgid ""
+#~ "This is not a valid email address. Make sure to not include the mailto: "
+#~ "protocol prefix."
+#~ msgstr ""
+#~ "Бұл дұрыс эл. пошта адресі емес. mailto: хаттама префиксінің қосылмағанын "
+#~ "тексеріңіз."
 
-#~ msgid "Contact email address for inquiries. Add only email addresses that are intended to be publicly used."
-#~ msgstr "Сұраулар үшін байланыс эл. пошта адресі. Публикалық пайдалануға арналған эл. пошта адрестерін ғана қосыңыз."
+#~ msgid ""
+#~ "Contact email address for inquiries. Add only email addresses that are "
+#~ "intended to be publicly used."
+#~ msgstr ""
+#~ "Сұраулар үшін байланыс эл. пошта адресі. Публикалық пайдалануға арналған "
+#~ "эл. пошта адрестерін ғана қосыңыз."
 
 #~ msgid "See the link in the label for help on format."
 #~ msgstr "Пішім көмегін алу үшін белгі сілтемесін қараңыз."
 
 #~ msgid ""
-#~ "Information used to inform other mappers about non-obvious information about an element, the author’s intent when "
-#~ "creating it, or hints for further improvement."
+#~ "Information used to inform other mappers about non-obvious information "
+#~ "about an element, the author’s intent when creating it, or hints for "
+#~ "further improvement."
 #~ msgstr ""
-#~ "Басқа карталар жасаушыларға элемент туралы айқын емес ақпаратты жеткізуге қолданатын ақпарат, немесе оны жасау кезіндегі "
-#~ "автордың пікірі, немесе болашақ жақсартулар туралы кеңестер."
+#~ "Басқа карталар жасаушыларға элемент туралы айқын емес ақпаратты жеткізуге "
+#~ "қолданатын ақпарат, немесе оны жасау кезіндегі автордың пікірі, немесе "
+#~ "болашақ жақсартулар туралы кеңестер."
 
 #~ msgid "Select Type"
 #~ msgstr "Түрін таңдаңыз"
@@ -2406,11 +2504,18 @@ msgstr "%s м"
 #~ msgid "Remove"
 #~ msgstr "Өшіру"
 
-#~ msgid "The format used should include the language code and the article title like “en:Article title”."
-#~ msgstr "Қолданылатын пішімі тіл коды және мақала атауынан тұруы керек (мыс, ”kk:Мақала атауы”)."
+#~ msgid ""
+#~ "The format used should include the language code and the article title "
+#~ "like “en:Article title”."
+#~ msgstr ""
+#~ "Қолданылатын пішімі тіл коды және мақала атауынан тұруы керек (мыс, "
+#~ "”kk:Мақала атауы”)."
 
-#~ msgid "Use the reload button to load the Wikidata tag for the selected article"
-#~ msgstr "Таңдалған мақала үшін Wikidata тегті жүктеу үшін қайта жүктеу батырмасын пайдаланыңыз"
+#~ msgid ""
+#~ "Use the reload button to load the Wikidata tag for the selected article"
+#~ msgstr ""
+#~ "Таңдалған мақала үшін Wikidata тегті жүктеу үшін қайта жүктеу батырмасын "
+#~ "пайдаланыңыз"
 
 #~ msgid "What's Here?"
 #~ msgstr "Осында не бар?"
@@ -2434,7 +2539,9 @@ msgstr "%s м"
 #~ msgstr "Бұл плагині соңғы келуді қолдамайды"
 
 #~ msgid "<span weight=\"bold\" size=\"x-large\">Sign in to edit maps</span>"
-#~ msgstr "<span weight=\"bold\" size=\"x-large\">Карталарды түзету үшін кіріңіз</span>"
+#~ msgstr ""
+#~ "<span weight=\"bold\" size=\"x-large\">Карталарды түзету үшін кіріңіз</"
+#~ "span>"
 
 #~ msgid ""
 #~ "Sign in to authorize access in a web browser.\n"
@@ -2473,10 +2580,12 @@ msgstr "%s м"
 #~ msgid "No filename specified"
 #~ msgstr "Файл аты көрсетілмеген"
 
-#~ msgid "Location was added to the map, note that it may take a while before it shows on the map and in search results."
+#~ msgid ""
+#~ "Location was added to the map, note that it may take a while before it "
+#~ "shows on the map and in search results."
 #~ msgstr ""
-#~ "Орналасу картаға қосылды. Бірақ, ол картада және іздеу нәтижелерінде көрінуіне дейін біршама уақыт өту керек болуын "
-#~ "ескертіңіз."
+#~ "Орналасу картаға қосылды. Бірақ, ол картада және іздеу нәтижелерінде "
+#~ "көрінуіне дейін біршама уақыт өту керек болуын ескертіңіз."
 
 #~ msgid "Takeaway"
 #~ msgstr "Алып кету"
@@ -2484,28 +2593,34 @@ msgstr "%s м"
 #~ msgid "Foursquare check-in privacy setting"
 #~ msgstr "Foursquare көмегімен белгіленудің жекелік баптауы"
 
-#~ msgid "Latest used Foursquare check-in privacy setting. Possible values are: public, followers or private."
-#~ msgstr "Foursquare көмегімен белгіленудің соңғы қолданылған жекелік баптауы. Мүмкін мәндері: public, followers не private."
+#~ msgid ""
+#~ "Latest used Foursquare check-in privacy setting. Possible values are: "
+#~ "public, followers or private."
+#~ msgstr ""
+#~ "Foursquare көмегімен белгіленудің соңғы қолданылған жекелік баптауы. "
+#~ "Мүмкін мәндері: public, followers не private."
 
 #~ msgid "Foursquare check-in Facebook broadcasting"
 #~ msgstr "Foursquare көмегімен белгіленудің Facebook ішіне жариялауы"
 
 #~ msgid ""
-#~ "Indicates if Foursquare should broadcast the check-in as a post in the Facebook account associated with the Foursquare "
-#~ "account."
+#~ "Indicates if Foursquare should broadcast the check-in as a post in the "
+#~ "Facebook account associated with the Foursquare account."
 #~ msgstr ""
-#~ "Foursquare көмегімен белгілену жасалса, оны ол Foursquare тіркелгісімен байланысқан Facebook тіркелгісіне жазба ретінде "
-#~ "жариялау керек пе, соны анықтайды."
+#~ "Foursquare көмегімен белгілену жасалса, оны ол Foursquare тіркелгісімен "
+#~ "байланысқан Facebook тіркелгісіне жазба ретінде жариялау керек пе, соны "
+#~ "анықтайды."
 
 #~ msgid "Foursquare check-in Twitter broadcasting"
 #~ msgstr "Foursquare көмегімен белгіленудің Twitter ішіне жариялауы"
 
 #~ msgid ""
-#~ "Indicates if Foursquare should broadcast the check-in as a tweet in the Twitter account associated with the Foursquare "
-#~ "account."
+#~ "Indicates if Foursquare should broadcast the check-in as a tweet in the "
+#~ "Twitter account associated with the Foursquare account."
 #~ msgstr ""
-#~ "Foursquare көмегімен белгілену жасалса, оны ол Foursquare тіркелгісімен байланысқан Twitter тіркелгісіне твит ретінде "
-#~ "жариялау керек пе, соны анықтайды."
+#~ "Foursquare көмегімен белгілену жасалса, оны ол Foursquare тіркелгісімен "
+#~ "байланысқан Twitter тіркелгісіне твит ретінде жариялау керек пе, соны "
+#~ "анықтайды."
 
 #~ msgid "Use hybrid aerial tiles"
 #~ msgstr "Гибридті әуе мозаикасын пайдалану"
@@ -2537,8 +2652,12 @@ msgstr "%s м"
 #~ msgid "Maps is offline!"
 #~ msgstr "Карталар желіге қосылмаған!"
 
-#~ msgid "Maps need an active internet connection to function properly, but one can’t be found."
-#~ msgstr "Карталар дұрыс жұмысы үшін интернетпен байланыс керек, бірақ ондай байланыс табылмады."
+#~ msgid ""
+#~ "Maps need an active internet connection to function properly, but one "
+#~ "can’t be found."
+#~ msgstr ""
+#~ "Карталар дұрыс жұмысы үшін интернетпен байланыс керек, бірақ ондай "
+#~ "байланыс табылмады."
 
 #~ msgid "Check your connection and proxy settings."
 #~ msgstr "Байланысу және прокси баптауларын тексеріңіз."
@@ -2548,10 +2667,12 @@ msgstr "%s м"
 
 #~ msgid ""
 #~ "Sorry, that didn’t work. Please try again, or visit\n"
-#~ "<a href=\"https://www.openstreetmap.org/user/forgot-password\">OpenStreetMap</a> to reset your password."
+#~ "<a href=\"https://www.openstreetmap.org/user/forgot-"
+#~ "password\">OpenStreetMap</a> to reset your password."
 #~ msgstr ""
 #~ "Кешіріңіз, бұл жасамады. Қайталап көріңіз, немесе\n"
-#~ "пароліңізді тастау үшін, <a href=\"https://www.openstreetmap.org/user/forgot-password\">OpenStreetMap</a> сайтын шолыңыз."
+#~ "пароліңізді тастау үшін, <a href=\"https://www.openstreetmap.org/user/"
+#~ "forgot-password\">OpenStreetMap</a> сайтын шолыңыз."
 
 #~ msgid "Check In…"
 #~ msgstr "Белгілену…"
@@ -2565,8 +2686,12 @@ msgstr "%s м"
 #~ msgid "Select a place"
 #~ msgstr "Орынды таңдаңыз"
 
-#~ msgid "Maps cannot find the place to check in to with Foursquare. Please select one from this list."
-#~ msgstr "Карталар Foursquare көмегімен белгілену үшін орынды таба алмады. Тізімнен біреуін таңдаңыз."
+#~ msgid ""
+#~ "Maps cannot find the place to check in to with Foursquare. Please select "
+#~ "one from this list."
+#~ msgstr ""
+#~ "Карталар Foursquare көмегімен белгілену үшін орынды таба алмады. Тізімнен "
+#~ "біреуін таңдаңыз."
 
 #, javascript-format
 #~ msgid "Check in to %s"
@@ -2583,8 +2708,12 @@ msgstr "%s м"
 #~ msgid "Cannot find a suitable place to check-in in this location"
 #~ msgstr "Бұл орналасуда белгілену үшін жарамды орынды табу мүмкін емес"
 
-#~ msgid "Credentials have expired, please open Online Accounts to sign in and enable this account"
-#~ msgstr "Тіркелу деректерінің мерзімі аяқталған, бұл тіркелгіге кіру және оны іске қосу үшін желілік тіркелгілерді ашыңыз"
+#~ msgid ""
+#~ "Credentials have expired, please open Online Accounts to sign in and "
+#~ "enable this account"
+#~ msgstr ""
+#~ "Тіркелу деректерінің мерзімі аяқталған, бұл тіркелгіге кіру және оны іске "
+#~ "қосу үшін желілік тіркелгілерді ашыңыз"
 
 #~ msgid "A map application for GNOME"
 #~ msgstr "GNOME үшін карталар қолданбасы"
@@ -2602,20 +2731,22 @@ msgstr "%s м"
 #~ msgstr "Түнгі режимі"
 
 #~ msgid ""
-#~ "You can even search for specific types of locations, such as “Pubs near Main Street, Boston” or “Hotels near "
-#~ "Alexanderplatz, Berlin”."
+#~ "You can even search for specific types of locations, such as “Pubs near "
+#~ "Main Street, Boston” or “Hotels near Alexanderplatz, Berlin”."
 #~ msgstr ""
-#~ "Сонымен қатар, орналасулардың нақты түрлерін де іздеуге болады, мысалы \"Гостиницы Астаны возле Байтерека\" немесе "
-#~ "\"Hotels near Gorky Park, Almaty\" (қазақша іздеу әлі мүмкін емес)."
+#~ "Сонымен қатар, орналасулардың нақты түрлерін де іздеуге болады, мысалы "
+#~ "\"Гостиницы Астаны возле Байтерека\" немесе \"Hotels near Gorky Park, "
+#~ "Almaty\" (қазақша іздеу әлі мүмкін емес)."
 
 #~ msgid "Facebook check-in privacy setting"
 #~ msgstr "Facebook көмегімен белгіленудің жекелік баптауы"
 
 #~ msgid ""
-#~ "Latest used Facebook check-in privacy setting. Possible values are: EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
+#~ "Latest used Facebook check-in privacy setting. Possible values are: "
+#~ "EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS or SELF."
 #~ msgstr ""
-#~ "Facebook көмегімен белгіленудің соңғы қолданылған жекелік баптауы. Мүмкін мәндері EVERYONE, FRIENDS_OF_FRIENDS, "
-#~ "ALL_FRIENDS және SELF."
+#~ "Facebook көмегімен белгіленудің соңғы қолданылған жекелік баптауы. Мүмкін "
+#~ "мәндері EVERYONE, FRIENDS_OF_FRIENDS, ALL_FRIENDS және SELF."
 
 #~ msgid "Everyone"
 #~ msgstr "Әркім"
@@ -2629,8 +2760,12 @@ msgstr "%s м"
 #~ msgid "Just me"
 #~ msgstr "Тек мен"
 
-#~ msgid "Maps cannot find the place to check in to with Facebook. Please select one from this list."
-#~ msgstr "Карталар Facebook көмегімен белгілену үшін орынды таба алмады. Тізімнен біреуін таңдаңыз."
+#~ msgid ""
+#~ "Maps cannot find the place to check in to with Facebook. Please select "
+#~ "one from this list."
+#~ msgstr ""
+#~ "Карталар Facebook көмегімен белгілену үшін орынды таба алмады. Тізімнен "
+#~ "біреуін таңдаңыз."
 
 #~ msgid "Find a Route"
 #~ msgstr "Бағдарды табу"
@@ -2767,14 +2902,19 @@ msgstr "%s м"
 #~ msgid "Last known location and accuracy"
 #~ msgstr "Соңғы белгілі орналасу және дәлдігі"
 
-#~ msgid "Last known location (latitude and longitude in degrees) and accuracy (in meters)."
-#~ msgstr "Соңғы белгілі орналасу (ендігі және бойлығы, градуспен) және дәлдігі (метрмен)."
+#~ msgid ""
+#~ "Last known location (latitude and longitude in degrees) and accuracy (in "
+#~ "meters)."
+#~ msgstr ""
+#~ "Соңғы белгілі орналасу (ендігі және бойлығы, градуспен) және дәлдігі "
+#~ "(метрмен)."
 
 #~ msgid "Description of last known location of user."
 #~ msgstr "Пайдаланушының соңғы белгілі орналасудың сипаттамасы."
 
 #~ msgid "Whether the last known location was set manually by the user."
-#~ msgstr "Соңғы белгілі орналасуды пайдаланушы қолмен көрсеткен ба, соны анықтайды."
+#~ msgstr ""
+#~ "Соңғы белгілі орналасуды пайдаланушы қолмен көрсеткен ба, соны анықтайды."
 
 #~ msgid "I’m here!"
 #~ msgstr "Мен осындамын!"
