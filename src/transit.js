@@ -30,7 +30,7 @@ const _ = gettext.gettext;
  * leg: the itinerary leg
  */
 export function getFromLabel(leg) {
-    return leg.from ?? _("Start");
+    return leg.from.name ?? _("Start");
 }
 
 /**
@@ -38,7 +38,7 @@ export function getFromLabel(leg) {
  * leg: the itinerary leg
  */
 export function getToLabel(leg) {
-    return leg.to ?? _("Arrive");
+    return leg.to.name ?? _("Arrive");
 }
 
 /**
