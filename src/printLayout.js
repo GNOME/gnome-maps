@@ -140,7 +140,7 @@ export class PrintLayout extends GObject.Object {
     }
 
     _drawText(cr, text, x, y, width, height, alignment) {
-        this._drawTextWithColor(cr, text, x, y, width, height, '000000', alignment);
+        this._drawTextWithColor(cr, text, x, y, width, height, Color.BLACK, alignment);
     }
 
     _drawTextWithColor(cr, text, x, y, width, height, color, alignment) {
@@ -151,31 +151,24 @@ export class PrintLayout extends GObject.Object {
     }
 
     _drawTextLayoutWithColor(cr, layout, x, y, width, height, color, alignment) {
-        let red = Color.parseColor(color, 0);
-        let green = Color.parseColor(color, 1);
-        let blue = Color.parseColor(color, 2);
-
         cr.moveTo(x, y);
-        cr.setSourceRGB(red, green, blue);
+        cr.setSourceRGB(color.red, color.green, color.blue);
         PangoCairo.show_layout(cr, layout);
     }
 
     _drawTextVerticallyCentered(cr, text, width, height, x, alignment) {
         this._drawTextVerticallyCenteredWithColor(cr, text, width, height, x,
-                                                  '000000', alignment);
+                                                  Color.BLACK, alignment);
     }
 
     _drawTextVerticallyCenteredWithColor(cr, text, width, height, x, color,
                                          alignment) {
         let layout = this._createTextLayout(cr, text, width, height, alignment);
         let [pWidth, pHeight] = layout.get_pixel_size();
-        let red = Color.parseColor(color, 0);
-        let green = Color.parseColor(color, 1);
-        let blue = Color.parseColor(color, 2);
 
         // place text centered
         cr.moveTo(x, (height - pHeight) / 2);
-        cr.setSourceRGB(red, green, blue);
+        cr.setSourceRGB(color.red, color.green, color.blue);
         PangoCairo.show_layout(cr, layout);
     }
 
