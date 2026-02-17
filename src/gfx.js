@@ -34,9 +34,6 @@ import * as Color from './color.js';
  * height: The height to draw the badge
  */
 export function drawColoredBagde(cr, bgColor, outlineColor, x, y, width, height) {
-    let bgRed = Color.parseColor(bgColor, 0);
-    let bgGreen = Color.parseColor(bgColor, 1);
-    let bgBlue = Color.parseColor(bgColor, 2);
     let radius = outlineColor ? 5 : 3;
 
     cr.newSubPath();
@@ -46,15 +43,11 @@ export function drawColoredBagde(cr, bgColor, outlineColor, x, y, width, height)
     cr.arc(radius + x, radius + y, radius, Math.PI, 3 * Math.PI / 2);
     cr.closePath();
 
-    cr.setSourceRGB(bgRed, bgGreen, bgBlue);
+    cr.setSourceRGB(bgColor.red, bgColor.green, bgColor.blue);
     cr.fillPreserve();
 
     if (outlineColor) {
-        let outlineRed = Color.parseColor(outlineColor, 0);
-        let outlineGreen = Color.parseColor(outlineColor, 1);
-        let outlineBlue = Color.parseColor(outlineColor, 2);
-
-        cr.setSourceRGB(outlineRed, outlineGreen, outlineBlue);
+        cr.setSourceRGB(outlineColor.red, outlineColor.green, outlineColor.blue);
         cr.setLineWidth(1);
         cr.stroke();
     }
