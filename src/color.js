@@ -24,8 +24,8 @@ import Gdk from 'gi://Gdk';
 /* Minimum contrast ratio for foreground/background color for i.e. route labels */
 const MIN_CONTRAST_RATIO = 2.0;
 
-const WHITE = new Gdk.RGBA({ red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 });
-const BLACK = new Gdk.RGBA({ red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0 });
+export const WHITE = new Gdk.RGBA({ red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 });
+export const BLACK = new Gdk.RGBA({ red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0 });
 
 /**
  * Returns the relative luminance (0.0 - 1.0) of a Gdk.RGBA value according to the W3C WCAG definition:
