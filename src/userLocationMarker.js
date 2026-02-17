@@ -26,12 +26,12 @@ import Graphene from 'gi://Graphene';
 import Gsk from 'gi://Gsk';
 import Shumate from 'gi://Shumate';
 
+import * as Color from './color.js';
 import {MapMarker} from './mapMarker.js';
 
 const LOCATION_MARKER_SIZE = 32;
 const LOCATION_MARKER_MARGIN = 4;
 const LOCATION_MARKER_SHADOW_RADIUS = 4;
-const WHITE = new Gdk.RGBA({ red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 });
 const SHADOW_COLOR = new Gdk.RGBA({ red: 0.0, green: 0.0, blue: 0.0, alpha: 0.05 });
 const ACCURACY_CIRCLE_OPACITY = 0.075;
 const ACCURACY_CIRCLE_OUTLINE_OPACITY = 0.225;
@@ -306,7 +306,7 @@ export class UserLocationMarker extends MapMarker {
         // draw outer white circle
         this._pathBuilder.add_circle(center, LOCATION_MARKER_SIZE / 2);
         snapshot.append_fill(this._pathBuilder.to_path(),
-                             Gsk.FILL_RULE_EVEN_ODD, WHITE);
+                             Gsk.FILL_RULE_EVEN_ODD, Color.WHITE);
 
         // draw inner accent-colored circle
         this._pathBuilder.add_circle(center, LOCATION_MARKER_SIZE / 2 -
