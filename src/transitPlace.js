@@ -25,13 +25,19 @@ import GObject from 'gi://GObject';
 import {Place} from './place.js';
 
 export class TransitPlace extends Place {
-    constructor({ id, ...params }) {
+    constructor({ id, modes, ...params }) {
         super(params);
         this._id = id;
+        this._modes = modes;
+        this._initModes();
     }
 
     get id() {
         return this._id;
+    }
+
+    get modes() {
+        return this._modes;
     }
 
     get uniqueID() {
@@ -46,23 +52,91 @@ export class TransitPlace extends Place {
         return GeocodeGlib.PlaceOsmType.UNKNOWN;
     }
 
+    get osmKey() {
+        return this._osmKey;
+    }
+
+    get osmValue() {
+        return this._osmValue;
+    }
+
+    get station() {
+        return this._station;
+    }
+
     get iconName() {
-        /* as we don't known the specific modes of transportation from
-         * stop positions from legs and intermediate stops, use the train
-         * icon as used for the public transit toggle in the mode toggle
-         * in the route planner to denote genetic "transit"
-         */
-        return 'train-symbolic';
+        return this._iconName;
+    }
+
+    _initModes() {
+        if (!this._modes) {
+            this._iconName = 'dialog-question-symbolic';
+
+            return;
+        }
+
+        // map transit modes to OSM types to get translated titles from POI types
+        if (this._modes.has('AIRPLANE')) {
+            this._iconName = 'flying-symbolic';
+            this._osmKey = 'aeroway';
+            this._osmValue = 'aerodrome';
+        } else if (this._modes.has('FERRY')) {
+            this._iconName = 'ferry-symbolic';
+            this._osmKey = 'amenity';
+            this._osmValue = 'ferry_terminal';
+        } else if (this._modes.has('RAIL') || this._modes.has('HIGHSPEED_RAIL') ||
+                   this._modes.has('LONG_DISTANCE') ||
+                   this._modes.has('NIGHT_RAIL') ||
+                   this._modes.has('REGIONAL_FAST_RAIL') ||
+                   this._modes.has('REGIONAL_RAIL') || this._modes.has('SUBURBAN')) {
+            this._iconName = 'train-symbolic';
+            this._osmKey = 'railway';
+            this._osmValue = 'station';
+            this._station = 'station';
+        } else if (this._modes.has('SUBWAY')) {
+            this._iconName = 'subway-symbolic';
+            this._osmKey = 'railway';
+            this._osmValue = 'station';
+            this._station = 'subway';
+        } else if (this._modes.has('TRAM')) {
+            this._iconName = 'tram-symbolic';
+            this._osmKey = 'railway';
+            this._osmValue = 'tram_stop';
+            this._station = 'tram';
+        } else if (this._modes.has('BUS') || this._modes.has('COACH')) {
+            this._iconName = 'bus-symbolic';
+            this._osmKey = 'highway';
+            this._osmValue = 'bus_stop';
+        } else if (this._modes.has('ODM')) {
+            this._iconName = 'taxi-symbolic';
+            this._osmKey = 'amenity';
+            this._osmValue = 'taxi_rank';
+        } else if (this._modes.has('FUNICULAR')) {
+            this._iconName = 'funicular-symbolic';
+            this._osmKey = 'railway';
+            this._osmValue = 'station';
+            this._station = 'funicular';
+        } else if (this._modes.has('AERIAL_LIFT')) {
+            this._iconName = 'gondola-symbolic';
+            this._osmKey = 'aerialway';
+            this._osmValue = 'station';
+        } else {
+            /* use a fallback question mark icon in case of some future,
+             * for now unknown mode appears */
+            this._iconName = 'dialog-question-symbolic';
+        }
     }
 
     toJSON() {
         const parentJSON = super.toJSON();
 
-        return { id: this._id, ...parentJSON };
+        return { id: this._id, modes: [...this._modes], ...parentJSON };
     }
 
     static fromJSON(obj) {
-        return new TransitPlace(Place.constructProperties(obj));
+        const { id, modes, ...rest } = Place.constructProperties(obj);
+
+        return new TransitPlace({ id: id, modes: new Set(modes), ...rest });
     }
 }
 GObject.registerClass(TransitPlace);
