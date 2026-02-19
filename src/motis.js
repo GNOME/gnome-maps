@@ -249,7 +249,8 @@ export class Motis {
             leg.from.stopId ?
             new TransitPlace({ name:     fromName,
                                location: fromLocation,
-                               id:       leg.from.stopId }) :
+                               id:       leg.from.stopId,
+                               modes:    new Set(leg.from.modes) }) :
             new Place({ name:     fromName,
                         location: fromLocation,
                         store:    false });
@@ -258,7 +259,8 @@ export class Motis {
             leg.to.stopId ?
             new TransitPlace({ name:     toName,
                                location: toLocation,
-                               id:       leg.to.stopId }) :
+                               id:       leg.to.stopId,
+                               modes:    new Set(leg.to.modes) }) :
             new Place({ name:     toName,
                         location: toLocation,
                         store:    false });
@@ -319,7 +321,8 @@ export class Motis {
                           arrival:              arrival,
                           departure:            departure,
                           location:             location,
-                          id:                   stop.stopId });
+                          id:                   stop.stopId,
+                          modes:                new Set(stop.modes) });
     }
 
     _parseSteps(steps, fromCoordinate, toCoordinate) {
