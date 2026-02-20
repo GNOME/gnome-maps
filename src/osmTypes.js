@@ -203,13 +203,6 @@ export function lookupType(key, value) {
 }
 
 export function getTypeNameForPlace(place) {
-    if (place instanceof TransitPlace) {
-        /* Translators: this is a generic title for public transit stops where
-         * the mode(s) of transportation is not well-known
-         */
-        return _("Public transportation stop");
-    }
-
     // special case for railway station types
     if (place.osmKey === 'railway') {
         switch (place.station) {
@@ -232,12 +225,22 @@ export function getTypeNameForPlace(place) {
                     case 'station':
                         return _("Railway station");
                     default:
-                        return lookupType(place.osmKey, place.osmValue);
+                        /* Translators: this is a generic title for public transit stops where
+                         * the mode(s) of transportation is not well-known
+                         */
+                        return lookupType(place.osmKey, place.osmValue) ??
+                               (place instanceof TransitPlace ?
+                                _("Public transportation stop") : null);
                 }
         }
     }
 
-    return lookupType(place.osmKey, place.osmValue);
+    /* Translators: this is a generic title for public transit stops where
+     * the mode(s) of transportation is not well-known
+     */
+    return lookupType(place.osmKey, place.osmValue) ??
+           (place instanceof TransitPlace ? _("Public transportation stop") :
+                                           null);
 }
 
 export class RecentTypesStore {
