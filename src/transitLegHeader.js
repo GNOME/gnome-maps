@@ -51,11 +51,18 @@ export class TransitLegHeader extends Gtk.Grid {
 
         // Headsign label
         if (!this._leg.transit || this._leg.headsign) {
-            let label =
+            const label =
                 GLib.markup_escape_text(Transit.getHeadsignLabel(this._leg), -1);
-            this._headsignLabel.label = this._leg.tripShortName
-                ? '<span size="small">%s • %s</span>'.format(label, this._leg.tripShortName)
-                : '<span size="small">%s</span>'.format(label);
+
+            /* show headsign and trip short name when it is available, and
+             * differs from the route name (shown in the badge),
+             * otherwise just show the headsign
+             */
+            this._headsignLabel.label =
+                this._leg.tripShortName &&
+                this._leg.tripShortName !== this._leg.route
+                ? `<span size="small">${label} • ${this._leg.tripShortName}</span>`
+                : `<span size="small">${label}</span>`;
         }
         
         this._updateExpandArrow();
