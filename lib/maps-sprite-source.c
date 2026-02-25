@@ -241,8 +241,12 @@ maps_sprite_source_load_shield_defs (MapsSpriteSource *self, const char *json)
   while (json_object_iter_next (&iter, &network_name, &network_node))
     {
       JsonObject *network;
+      MapsShield *shield = maps_shield_new (network_node);
 
-      g_hash_table_insert (self->shields, g_strdup (network_name), maps_shield_new (network_node));
+      if (g_str_equal (network_name, "DE:national"))
+        maps_shield_set_skip_prefix (shield, "B ");
+
+      g_hash_table_insert (self->shields, g_strdup (network_name), shield);
       network = json_node_get_object (network_node);
 
       if (json_object_has_member (network, "bannerMap"))
