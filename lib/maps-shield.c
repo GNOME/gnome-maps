@@ -142,6 +142,8 @@ struct _MapsShield {
   gboolean notext;
 
   char *ref;
+
+  char *skip_prefix;
 };
 
 G_DEFINE_TYPE (MapsShield, maps_shield, G_TYPE_OBJECT)
@@ -182,6 +184,13 @@ maps_shield_new_with_banners (JsonNode *node, JsonArray *banners)
   return self;
 }
 
+void
+maps_shield_set_skip_prefix (MapsShield *self, const char *prefix)
+{
+  g_clear_pointer (&self->skip_prefix, g_free);
+  self->skip_prefix = g_strdup (prefix);
+}
+
 static void
 maps_shield_finalize (GObject *object)
 {
@@ -194,6 +203,7 @@ maps_shield_finalize (GObject *object)
   g_clear_pointer (&self->override_by_name, g_hash_table_unref);
   g_clear_object (&self->override_noref);
   g_clear_pointer (&self->ref, g_free);
+  g_clear_pointer (&self->skip_prefix, g_free);
 
   G_OBJECT_CLASS (maps_shield_parent_class)->finalize (object);
 }
@@ -1695,6 +1705,9 @@ maps_shield_draw (MapsShield *self,
   g_autoptr(GdkTexture) texture = NULL;
 
   g_return_val_if_fail (MAPS_IS_SHIELD (self), NULL);
+
+  if (self->skip_prefix && g_str_has_prefix (ref, self->skip_prefix))
+    ref += strlen (self->skip_prefix);
 
   ctx = (RenderCtx){
     .shield = g_object_ref (self),

@@ -35,4 +35,6 @@ ShumateVectorSprite *maps_shield_draw (MapsShield *self,
                                        const char *color,
                                        double scale);
 
+void maps_shield_set_skip_prefix (MapsShield *self, const char *prefix);
+
 G_END_DECLS
