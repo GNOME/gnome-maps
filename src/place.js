@@ -471,6 +471,18 @@ export class Place extends GObject.Object {
         return this.osmTags?.station;
     }
 
+    get isTransitStop() {
+        return this.osmTags?.amenity === 'bus_station' ||
+               this.osmTags?.aeroway === 'aerodrome' ||
+               this.osmTags?.aerialway === 'station' ||
+               this.osmTags?.amenity === 'ferry_terminal' ||
+               this.osmTags?.highway === 'bus_stop' ||
+               this.osmTags?.railway === 'station' ||
+               this.osmTags?.railway === 'stop' ||
+               this.osmTags?.railway === 'halt' ||
+               this.osmTags?.railway === 'tram_stop';
+    }
+
     toJSON() {
         let boundingBox = null;
 
