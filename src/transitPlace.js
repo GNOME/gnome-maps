@@ -68,6 +68,10 @@ export class TransitPlace extends Place {
         return this._iconName;
     }
 
+    get isTransitStop() {
+        return true;
+    }
+
     _initModes() {
         if (!this._modes) {
             this._iconName = 'dialog-question-symbolic';
